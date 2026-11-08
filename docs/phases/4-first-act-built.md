@@ -1,7 +1,7 @@
 # Phase 4: the first story slice, built from the proven blocks
 
 Status: [PROGRESS.md](../PROGRESS.md). The plan: [PLAN.md](../PLAN.md). Edit this file as the phase goes; it is the phase's whole brief.
-Rewritten 2026-11-08 after the owner's third walk (tmp/walk-3-feedback.md, [owner-rulings](../owner-rulings.md)).
+Rewritten 2026-11-08 after the owner's third walk (tmp/walk-3-feedback.md, [owner-rulings](../owner-rulings.md)). **Status 2026-11-08: built, read back and deployed; the owner's walk is owed (docs/owner-walk-checks.md sections 5 to 7).**
 
 ## Already done (do not redo)
 
@@ -76,8 +76,6 @@ the quest is re-authored.
 
 ## Measured
 
-(filled as the phase goes)
-
 - **Clean-up built (2026-11-08).** `tools/ArgoniaPlugin/CleanUp.cs`, called after `Combat.Add` (overrides only, no new
   form ids): the eight slice clean-ups (lilmoth, hereguardplantation, dock2, dock5, helstrom, village, blackrose,
   blackmarshnorth.thorn1, whose three targets are in the coast ship's cell `0AA665`). Ten targets were built talkers and
@@ -87,32 +85,6 @@ the quest is re-authored.
   bases at a fixed level (the base's own, or 5 where it levelled with the player: talk.md's rule; no band-to-level
   table exists). Read-back `plugin.sh cleancheck`: all eight PASS (161 targets). `adaptation_check` counts a built
   talker as covered. Round trip clean, 558 YAML files.
-- **MQ01 and MQ03 not built: block gaps.** (1) A trigger zone gated by a condition is not a proven block: MQ01 41 to 90
-  and 42 to 91 (shore zone with `npcAtMark` and not `detectedBy`), MQ03 into 40 (house zone at night; and with
-  `npcAlive` failing). (2) W-navmesh is unproven (Phase 3, risk 1) and MQ01 stands on `we.mq01.pier-mesh`. These stages
-  go back to `quest-write` to be re-authored in proven shapes before the build.
-- **BC03 re-authored, not built (2026-11-08, hand-off).** Round-1 rulings applied to the record (`quest.bc.bc03`): the
-  tokens a Quest Object alias from stage 0 and "unseen" cut (F1); the yield split into `topic.bc03-yield-talk`
-  (Speechcraft 30, ends at 91) and `topic.bc03-yield-pay` (50 gold, new end stage 92) (F2); the side topics granted by
-  `topic.bc03-the-season` (F4); the token-breaking is Ussa-Rekh's own promise (F5); Ussa-Rekh and Heavy-Rope essential by
-  the alias flag. `brief.py` refuses a record with no fail-forward, so stage 94 and its death triggers stay wired
-  (unreachable while essential). F3 skipped. Briefs were rebuilt and both speakers' lines rewritten (Heavy-Rope 21, Ussa-Rekh 3;
-  lint 0). Fact requests: the tokens and the promise in Ussa-Rekh's season line are cut (gap QA21, not lore); the Owing
-  wording is kept, from labour-and-bondage.md §2. Navmesh: Dock2 (`02F35A`) is navmeshed by Black Marsh North.esp (`0A7784`, 225 triangles at dock height, x 47488..49152), not by Black Marsh.esm. An earlier note here said it had none: that was a misread of a truncated listing. The place stands. Still to do: the text-review pass, Chainbreakers.cs, the TIF/QF Papyrus, the read-back, then BC01 and BC02.
-- **MQ01 and MQ03 re-authored to the blocks (2026-11-08, planner rulings).** Every zone is gated by its prerequisite
-  stage only. MQ01: three shore boxes (90 from 41, 91 from 42, 93 from 40 under a parent that 41 and 42 turn off, as
-  they turn off the other choice's zone); the saved one follows by alias package and is moved to the mark by the
-  ending; Deesh-Duun's hut has a Novice-locked hatch (Lockpicking); `we.mq01.pier-mesh` dropped (no navmesh is
-  added), the march starts from copies on Dock1 (`we.mq01.march`) swapped in by enable parents at 10 and 40. MQ03:
-  stage 30 and its zone cut; the attack and the night set globals read by the oath answers; the answer, or
-  Nesh-Deeka's death, sets 40 (the dream); the dream's end sets 90 or 91 on `flag.mq03.reed-sworn`; no night gate.
-  One quest-review pass: 5 blocking, 3 major, 1 minor, all fixed (R6-1, R6-2 in each review). `brief.py` fixed to
-  read Skyrim skill names, to exempt scene stages, and to accept things with no states. Briefs:
-  `story/data/dialogue-writer/quest/mq01/` (11) and `mq03/` (6).
-- LQ30 and LQ25 records re-authored to proven blocks (2026-11-08; each record's review finding B1): both Start Game
-  Enabled with an opening topic; LQ30's gate zone unconditioned (prereq 40), detection and the reed trail cut, youth
-  among the roots of 0D7883, a death fail-forward 93; LQ25's lair moved to the shallows under the crew's plank walk in
-  0D77AF (0D7723 is a hillside), own bases for the crocodile and crew, a captain-death fail-forward 93.
 - LQ30 and LQ25 built (`tools/ArgoniaPlugin/LocalQuests.cs`, after Combat; BlackMarsh2 0D6960 overridden there),
   dialogue from `story/data/quest_lines/` (dialogue-write, text-review: 10 rewrites applied, lint 0), Papyrus 7 new
   scripts compiled on the GPU box (16 of 16 .pex, 0 failed). Read-back `plugin.sh localcheck`: every stage, journal,
@@ -188,3 +160,16 @@ the quest is re-authored.
   `plugin.sh bccheck`: 96 PASS, 0 FAIL (BC01, BC02, BC03); `localcheck` PASS; round trip clean (812 yaml files);
   `make check` green. Open: the low and high bands are not built (one band, as BC03); positions on the landing and in
   the keep are by navmesh height band, unwalked; the freed one's after-state greeting (review minor F5/F7) is not built.
+
+- **Integrated and deployed (2026-11-08, d15555cb).** Every lane merged on main and the plugin re-seeded once: 2,167
+  records, round trip clean (1,730 YAML files), the records listing 0 errors (it now knows MQ01's held quests). Read-backs
+  on the one ESP and the 80 compiled scripts: clean-up all PASS, blocktest every step PASS, main quest 476/476, local
+  quests PASS, Chainbreakers 96 PASS, MQ04/MQ05 all stages PASS, Night-Reed 231/231; `talk_check` 119 talkers in four
+  worlds, 0 problems; `make check` green. Fixed at integration: MQ05's Nesh-Deeka topic built after MainQuest places her
+  (MQ05.AddNesh); MQ05's two travel packages shared editor ids with their markers. Deployed to argonia-play (DEPLOY OK).
+  Owner checks: docs/owner-walk-checks.md sections 5 to 7.
+- **Known gaps, for the owner walk or later:** only the middle wording band of quest lines is built (no
+  disposition or race forms of address); the freed people of BC01/BC02 have no after-quest greeting; quest rumours on
+  settlement talkers are not yet written (talk.md: a rumour names only a quest that can start); positions at BC01's
+  landing, BC02's keep and the Reed's house (BM&V's tilted sinking cabin) were picked from navmesh, never walked; some
+  routes still have short or long legs (084A86 goes east before west; one Hereguard leg is 1,043 paces).

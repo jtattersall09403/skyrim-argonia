@@ -11,7 +11,7 @@ regeneration, the Levitate spell, the renamed people), and your old save has the
 
 Fixed after your walk of 2026-11-07 (feedback in `tmp/walk-2-feedback.md`).
 
-- [ ] **TrueHUD bars**, on the dock straight after the new game, without opening any menu: your health, magicka and
+- [ ] (superseded by 5.2) **TrueHUD bars**, on the dock straight after the new game, without opening any menu: your health, magicka and
       stamina bars sit at the top left, a little in from the corner, and show when they change (sprint a few
       seconds: the stamina bar shows, then fades once full). The vanilla bars at the bottom never show. In Esc, Mod
       Configuration, TrueHUD, Player Widget you should see your settings already there: Dynamic for all three bars,
@@ -27,7 +27,7 @@ Fixed after your walk of 2026-11-07 (feedback in `tmp/walk-2-feedback.md`).
       sets the drawn-weapon run to the same speed as the sheathed run.)
 - [x] **Levitate** (Magistrate's Levitate, new in the stack): the Magic menu, Alteration, lists "Levitate". Equip
       it and hold cast: you rise and float; look up or down to steer; let go of cast to come down.
-- [ ] **Dodge, standing still** (changed 2026-11-08, your ruling): stand still, hold no direction, tap Alt (pad: B).
+- [ ] (superseded by 5.1) **Dodge, standing still** (changed 2026-11-08, your ruling): stand still, hold no direction, tap Alt (pad: B).
       You now take one short hop back, about 2 metres (the first of Dynamic Dodge's two pushes; it went about 5.4 m).
       Say whether it looks right, whether the feet slide during the second half of the move (the clip keeps its full
       length), and whether the distance is too short: the fallback is Skyrim's own hop-back, about 3 metres. (A dodge
@@ -35,7 +35,7 @@ Fixed after your walk of 2026-11-07 (feedback in `tmp/walk-2-feedback.md`).
 - [x] **Parry window** (you passed parry and riposte on 2026-11-07; the window is now wider as you asked, half a
       second, was 0.3): against a bandit, say whether landing a parry is now hard but possible, too easy, or still too
       hard.
-- [ ] **Backstab**. Behind a bandit who has not seen you, about a sword's length away, facing the way
+- [ ] (superseded by 5.3) **Backstab**. Behind a bandit who has not seen you, about a sword's length away, facing the way
       he faces, locked on (F; pad: right stick click): hold block and tap attack (keyboard: right mouse, left mouse; pad:
       hold LB, tap RB). He lurches into a big stagger; attack again for the execution.
 - [ ] **Pad layout** (GameSir X2): RB light attack, RT heavy (power) attack in one press, LB block, LT shout, d-pad
@@ -92,8 +92,68 @@ check that did not happen as written.
       (in a new game: 2), one for each test quest, as Skyrim's own side quests add it in their last stage; tell us
       what "Quests Completed" says too (we expect the game to add those itself, but have no proof). (They were Misc
       quests, which Skyrim drops from the journal when done, and nothing added to the stats.)
-- [ ] Speak to various people, are you happy with their names, topics and talking style?
+- [ ] (superseded by section 6) Speak to various people, are you happy with their names, topics and talking style?
 
+
+## 5. Walk 3's fixes (built and deployed 2026-11-08)
+
+**Start a new game**: the game now opens in the barge hold (section 7), and the HUD defaults take only on a new character.
+
+- [ ] **5.1 Standing backstep.** The clip itself now ends at the end of its first push (0.33 s, about 2 m); before, it kept
+      playing after the push. Stand still, hold no direction, tap dodge (Alt; pad B): one short hop back that ends at once,
+      with no sliding or stepping after it.
+- [ ] **5.2 HUD from TrueHUD's Combined preset**, with your tweaks on top (Dynamic, width 150, max 500, anchor X 0.045,
+      Y 0.105). New game: health, magicka and stamina show as one combined block at the top left, appear when they
+      change and fade when full; the vanilla bars never show.
+- [ ] **5.3 Backstab like Dark Souls** (our plugin does it on a normal attack: no block, no lock-on, no stamina, one press
+      gives the stagger and the execution). Console `player.placeatme 3decb` (a vanilla bandit, a test target only), walk up
+      behind him a sword's length away facing his way, tap attack once: big stagger, then the execution by itself. From the
+      front one tap is a normal swing. Say whether your own swing also hit him first.
+- [ ] **5.4 Music.** BM&V's worlds had none; they now have Skyrim's own (marsh exploration in Black Marsh, pine forest in
+      Valenwood). Outside for a minute: music plays; in a fight: the battle music.
+- [ ] **5.5 Block Test, the end in the journal** (it had no objective, and the journal lists quests by their objectives).
+      Console `startquest ARG_BlockTest`, `setstage ARG_BlockTest 90`: both "Block Test" and "Block Test, the end" are in
+      the journal's completed quests.
+
+## 6. Talk: everyone in the act's places (recipe v2)
+
+119 people now have their own name, temperament and topics: Lilmoth, Hereguard and Soulrest's dock (30, redone), Low-Reed
+Village east of Lilmoth (6), Helstrom (7) and its river landing (5), Thorn, the coast ship's stop in Black Marsh North (33),
+and Blackrose (38). Directions are routes of two to four steps that end at things you can see; first words are cool to a
+stranger and warmer only for someone who likes you; facts are checked against BM&V's world; names follow the old naming
+rules.
+
+- [ ] **6.1 Directions.** In Lilmoth ask Deep-In-His-Cups (shore track south-west of Lilmoth Dock) "Directions" and walk
+      his route to Flaa Heet's village; in Blackrose ask the guard Tzeel-Vaa by the west gate's marker post the way to the
+      jail and walk it. Name any step whose landmark you could not find.
+- [ ] **6.2 Voices.** Talk to anyone you meet on the act's way (Thorn: try Quill-Teeth, a Tax Heel soldier by the house on
+      the east side). Say whether names, topics and manner sit right, any two who sound alike, and any "my friend" from a
+      stranger.
+
+## 7. The first story slice (Phase 4): play it from a new game
+
+All 11 quests are built and every stage reads back from the plugin; none has run in game. Reply with the step where any
+quest broke or stopped making sense. Positions marked * were picked from navmesh and never walked: say if anyone floats,
+sinks or stands in a wall.
+
+- [ ] **7.1 The opening (MQ01).** The race menu opens in a barge hold at Lilmoth's dock; you wear a tunic and footwraps.
+      Ask Wuleen-Sei "Why am I here?" and answer; leave by the hold's door and follow the gang along the shore to the
+      camp's fire at the edge of Hereguard Plantation. The attack: Mee-Tuja is killed and the huts burn; run to the shed
+      or into the water under the huts, then south to the shore; the one you saved follows.
+- [ ] **7.2 The Veiled Reed (MQ03).** On the shore: taste the spilled sap in the shed or dive for the brass tag in the
+      sunk fish-trap; "I am ready to go". In the house in Lilmoth*: tell Nesh-Deeka what you saw, get Ties to talk, answer
+      "I will serve the Reed" or "Not yet"; the dream in the hold, then back in the house.
+- [ ] **7.3 MQ04 and MQ05.** Low-Reed Village's Hist (dead tree while it is turned, a living one after: does it look
+      right?), Pays-Late's gum pot lifted after dark; then the coast ship to Helstrom's river landing, using the new door
+      between the ship's two halves both ways (a new building block), and on to Helstrom.
+- [ ] **7.4 Helstrom's locals.** LQ30: Haj-Wan inside the basin gate, the viper among the roots, Sei-Wan. LQ25 (after MQ05
+      reaches its basin warning): Okan-Zish by the landing's houses, the crocodile under the plank walk, the Bait Bucket.
+- [ ] **7.5 Night-Reed (TG01, TG02).** At Soulrest's house on the dock, Tilts-The-Jug's test and the thief Keeps-What-Floats;
+      the trapdoor north of Pusbottom, Bent-Spine, the lockbox in the deep water (does the horker-tusk "Worn Bone Figurine"
+      pass as a bone trinket?).
+- [ ] **7.6 Chainbreakers (BC01 to BC03).** In Blackrose, Never-Sold sends you to the estate landing* north of town;
+      Rows-For-Another down the channel at night; then the fire in the keep* west of the jail (BC02); then Heavy-Rope and
+      Ussa-Rekh on Soulrest's open dock (BC03).
 
 ## Done
 
