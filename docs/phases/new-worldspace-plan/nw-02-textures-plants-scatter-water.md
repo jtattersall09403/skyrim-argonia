@@ -92,6 +92,11 @@ world plugin); Sunshine lists "Argonia: New World"; masters check 0 missing. On 
 under ~/games/skyrimse/newworld-assets/<id>; 110 of 3,368 flora model paths do not resolve (62 are Tropical Skyrim's
 LE tree meshes) and are never placed.
 
+Owed on the reworked terrain (one pass, in this order): water_kinds → landcover → textures → place (with each habitat's
+refs per hectare calibrated to the measured source density within ±20%: BM&V swamp ground 198/ha, KotM rainforest and
+mud 130–150/ha, marsh grass 39/ha, river bottom 27/ha, table in the report) → world.sh (ESM with refs) → navmesh full
+run → LOD full run → the off-game read-back (step 12).
+
 Owner faults to carry into the skills once each fix is verified on the owner's next look (CLAUDE.md, Updating Skills):
 water classification (shape and connectivity decide kind, one kind per closed body; flow follows the channel graph to
 its outlet); texture edges (measured and
