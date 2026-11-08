@@ -122,3 +122,16 @@ the quest is re-authored.
   objective, fragment and .pex, alias, topic gate and trigger PASS for both; round trip clean (497 yaml files). Open:
   LQ25's MQ05 >= 40 gate is added when ARG_MQ05 is in the plugin (the check prints a NOTE until then); the record's
   ledger rows we.lq30.trail, we.lq25.beast and we.lq25.crew still carry the pre-B1 wording (quest review, 2026-11-08).
+- **TG01 and TG02 built** (2026-11-08, `tools/ArgoniaPlugin/NightReed.cs`, read-back `nightreedcheck`): 227 of 227
+  checks pass on the seed's ESP through Spriggit YAML and back, with the 30 .pex compiled (30 of 30). 2 quests,
+  21 lines in 14 topics, 11 people (plus 2 eels), 4 door locks and the trapdoor at Novice. Re-authored to proven
+  blocks: TG01 starts Start Game Enabled with an empty stage 0 and Tilts-The-Jug's line gated on stage 0; 20 to 30's
+  zone + night + unseen became an unconditioned zone at his bed (prereq 20) and the friend's line; TG02's "all three
+  claims" and "all three sold" are hidden stages 21-23 and 43-45 with a guarded check; any client's death is the
+  failed end 92 (three death aliases on one stage), replacing the 20-to-40 fail-forward. Measured: Pusbottom has no
+  water deeper than 24 units, so the lockbox, the fallen house and the eels are in the deep water two squares north
+  (cell 5,0, floor about -700) by the Chapter's trapdoor, clients on its south bank (navmesh 07EDF2); Soulrest's
+  docks have no navmesh at plank height, so the thief's round is on Soulrest's own navmesh 0A7785. Owed: the
+  records' review sections, the dialogue-write and text-review pass on the 21 lines (placeholders from the records'
+  intents), and the owner's in-game check.
+

@@ -179,6 +179,9 @@ static class Generate
         Music.Apply(mod, mods);
         // Phase 4's local quests LQ30 and LQ25 (LocalQuests.cs) in BlackMarsh2; allocated after Combat.
         LocalQuests.Add(mod, mods);
+        // The Night-Reed line, TG01 and TG02 (NightReed.cs): allocated after Combat; its TIF fragments' Papyrus to papyrus/generated.
+        NightReed.Add(mod, mods);
+        NightReed.WritePsc("papyrus/generated");
         var order = mods.Select(m => m.ModKey).Append(Ours).ToList();
         // The plugin whose worldspace record we override is a master even when no form of it is referenced, so ours
         // always loads after it.

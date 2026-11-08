@@ -13,3 +13,5 @@ the `.pex` files are build outputs and are sent by `infra/gpu-box/deploy.sh`.
 | `ARG_QF_BlockTestEnd.psc` | the second test quest `ARG_BlockTestEnd`'s stage 100: `IncSideQuests()` and `Stop()`, as vanilla side quests end |
 | `TIF_ARG_BT_20/40/50/90.psc` | the test quest's keeper lines: `GetOwningQuest().SetStage(n)` at the line's end (TR-topic) |
 | `SF_ARG_BT_Scene.psc` | the test scene's end fragment: stage 60 (TR-scene) |
+| `ARG_QF_TG01.psc`, `ARG_QF_TG02.psc` | the Night-Reed quests TG01 and TG02 (`tools/ArgoniaPlugin/NightReed.cs`): stage fragments and the helpers their lines call (pay, hand-overs, the guarded all-three checks) |
+| `generated/TIF_ARG_TG0*.psc` | their lines' end fragments, written by the seed from NightReed.cs (one call each) |
