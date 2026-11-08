@@ -107,10 +107,14 @@ CREATE TABLE "note_aspect" (
   "about" TEXT NOT NULL
 );
 
+-- Each kind's water type in the game (a WATR record we reuse; the world plugin sets it per cell as XCWT).
 CREATE TABLE "water_kind" (
   "id" TEXT NOT NULL PRIMARY KEY,
   "flows" BOOLEAN NOT NULL CHECK ("flows" IN (0, 1)),
-  "about" TEXT NOT NULL
+  "about" TEXT NOT NULL,
+  "watr_editor_id" TEXT,                 -- the WATR's editor id (the flowing kinds name the family; see flow_handling)
+  "watr_form_key" TEXT,                  -- Mutagen form key, local id:defining plugin (the load order's winner sets its look)
+  "flow_handling" TEXT                   -- how the flow reaches the game
 );
 
 -- ---------------------------------------------------------------------------------------------------------
@@ -316,7 +320,8 @@ CREATE TABLE "border_vertex" (
   PRIMARY KEY ("border_id", "part", "seq")
 );
 
--- Each connected body of water on the map, with its default kind (the owner may set kind and flow later).
+-- Each body of water on the map, classified by tools/newworld/water_kinds.py (shape, place, region research), with the
+-- owner's edits from the atlas's water editor applied last.
 CREATE TABLE "water_body" (
   "id" TEXT NOT NULL PRIMARY KEY,
   "water_kind_id" TEXT NOT NULL REFERENCES "water_kind"("id"),
@@ -326,6 +331,10 @@ CREATE TABLE "water_body" (
   "label_py" REAL NOT NULL,
   "flows" BOOLEAN NOT NULL CHECK ("flows" IN (0, 1)),
   "flow_toward_deg" REAL,                -- the way it flows (0 north, clockwise), when it flows
+  "speed" TEXT CHECK ("speed" IN ('still', 'slow', 'moderate', 'fast')),
+  "downstream_id" TEXT,                  -- the body it runs into (a water_body id)
+  "width_m" REAL,                        -- mean width
+  "region_id" TEXT,
   "flow_note" TEXT,
   "set_by" TEXT NOT NULL CHECK ("set_by" IN ('derived', 'owner')),
   "why" TEXT NOT NULL

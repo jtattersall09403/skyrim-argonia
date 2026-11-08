@@ -77,6 +77,36 @@ def terrain_image() -> tuple[Image.Image, str]:
     return Image.fromarray(masks_rgb(water, foreign)), "masks"
 
 
+KIND_LABEL = {"ocean": "Open sea", "shallow-coast": "Shallow coast", "bay": "Bay", "estuary": "Estuary",
+              "river": "River", "stream": "Stream", "lake": "Lake", "pond": "Pond", "green-marsh": "Green marsh",
+              "blackwater-swamp": "Blackwater swamp"}
+
+
+def water_layer(region_names: dict) -> tuple[list, str | None]:
+    """The classified water bodies (tools/newworld/water_kinds.py) for the water editor: a compact list and an index
+    image at the page's scale (body number in red + 256 * green), for tapping and colouring bodies."""
+    js, pn = f.OUT / "water_classified.json", f.OUT / "water_classified.png"
+    if not js.exists() or not pn.exists():
+        return [], None
+    rows = json.loads(js.read_text())
+    w, h = int(f.WIDTH_PX * SCALE), int(f.HEIGHT_PX * SCALE)
+    r = np.asarray(Image.open(pn)).astype(np.int32)
+    ys = (np.arange(h) / SCALE + 0.5 / SCALE).astype(int).clip(0, r.shape[0] - 1)
+    xs = (np.arange(w) / SCALE + 0.5 / SCALE).astype(int).clip(0, r.shape[1] - 1)
+    small = r[ys][:, xs]
+    rgb = np.zeros((h, w, 3), np.uint8)
+    rgb[..., 0], rgb[..., 1] = small % 256, small // 256
+    by_id = {b["id"]: b["raster_index"] for b in rows}
+    out = [None] * (len(rows) + 1)
+    for b in rows:
+        out[b["raster_index"]] = [b["id"], b["water_kind_id"], int(bool(b["flows"])), b.get("flow_deg"), b["speed"],
+                                  round(b["label_px"] * SCALE, 1), round(b["label_py"] * SCALE, 1),
+                                  round(b["area_m2"] / 1e4, 2), region_names.get(b.get("region_id"), "the margin"),
+                                  b["why"], by_id.get(b.get("downstream_id")), b.get("name"), b.get("set_by"),
+                                  b.get("width_m")]
+    return out, png(Image.fromarray(rgb))
+
+
 def masks_rgb(water: np.ndarray, foreign: np.ndarray) -> np.ndarray:
     """Land, foreign land and water from the raster masks alone, flat colours."""
     rgb = np.zeros(water.shape + (3,), np.uint8)
@@ -183,6 +213,9 @@ def main() -> None:
     d["terrainKind"] = kind
     d["size"] = list(terr.size)
     html = TEMPLATE.read_text()
+    wb, wimg = water_layer(d["regionNames"])
+    d["water"] = {"bodies": wb, "kinds": KIND_LABEL, "scale": SCALE}
+    html = html.replace("__WATERIDX__", wimg or "")
     html = html.replace("/*__DATA__*/null", json.dumps(d, separators=(",", ":")))
     html = html.replace("__TERRAIN__", jpeg(terr)).replace("__PTMAP__", jpeg(pt, 78))
     OUT.mkdir(parents=True, exist_ok=True)

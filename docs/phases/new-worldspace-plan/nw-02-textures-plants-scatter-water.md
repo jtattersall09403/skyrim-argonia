@@ -73,7 +73,7 @@ bucket, never in git.
 | 2 | Study: ground, water, roads, mist rules from the game and mod files (research/nw-02-ground-water-rules.md) | in progress |
 | 3 | Study: flora, rocks, seabed, cliffs catalogue, seating and placement rules (research/nw-02-flora-rules.md; catalogue of 1,287 bases in out/newworld/research/) | done; KoTM, TS and Depths meshes being copied from the play machine |
 | 4 | Terrain quality: nw-01's relief against Skyrim's, the improvement pass, room for large places | in progress |
-| 5 | Water: kinds and flow inferred, the owner's water editor, water types as records | in progress |
+| 5 | Water: kinds and flow inferred (tools/newworld/water_kinds.py, rerun after every terrain build), the owner's water editor in the atlas (tap a body: kind, still/flowing, speed, name, a drawn direction; paint a kind over an area; edits in the atlas's shared store, pulled by tools/newworld/water_overrides_pull.py into newworld/sources/water_overrides.json and water_paint.json), each kind's WATR in the db (water_kind: editor id, form key, flow handling; provisional until research/nw-02-ground-water-rules.md lands, from docs/research/skyrim/water-types.md and a read of the plugins) | done; WATR table to recheck against step 2 |
 | 6 | Region flora sets in the DB, seabed sets | in progress |
 | 7 | The world plugin: worldspace, land, textures without hard edges, water, regions, BM&V weather | in progress: core landed (WRLD ArgoniaBlackMarsh, 20,160 LAND cells, `coc ArgoniaNWStart`; rerun `tools/newworld/world/world.sh` under job_guard; read-back PASS); textures, water types, regions to do |
 | 8 | Trees, plants, rocks, cliffs, road dressing, water edges, placed and seated | todo |

@@ -73,6 +73,16 @@ dl.facts dd { margin: 0; min-width: 0; overflow-wrap: anywhere; }
 .back { font: 500 .82rem var(--f-label); letter-spacing: .05em; color: var(--link); background: none; border: 0; padding: 0; cursor: pointer; margin-bottom: 8px; }
 .list { display: grid; gap: 2px; }
 .list button { text-align: left; background: none; border: 0; padding: 4px 0; color: var(--link); font: 1rem var(--f-body); cursor: pointer; }
+.kinds { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
+.kindb, .seg button, .act { font: 500 .9rem var(--f-label); letter-spacing: .03em; padding: 9px 10px; min-height: 42px; border-radius: 8px; border: 1px solid var(--line); background: var(--chip); color: var(--ink); cursor: pointer; text-align: left; display: flex; align-items: center; gap: 8px; }
+.kindb[aria-pressed="true"], .seg button[aria-pressed="true"], .act.on { background: var(--ink); color: var(--panel); border-color: var(--ink); }
+.seg { display: flex; gap: 6px; margin: 4px 0 8px; } .seg button { flex: 1; justify-content: center; }
+.act { background: var(--accent); color: var(--panel); border-color: var(--accent); }
+.namerow { display: flex; gap: 6px; } .namerow input { flex: 1; min-width: 0; padding: 9px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--ink); font: 1rem var(--f-body); }
+.brush { display: grid; gap: 4px; margin: 6px 0; font-size: .95rem; } .brush input { width: 100%; }
+.strk { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; padding: 4px 0; font-size: .92rem; }
+.chip.own { background: #ffd34d; color: #1c2420; border-color: transparent; }
+.wstatus { background: var(--hilite); border-radius: 8px; padding: 8px 10px; font-size: .92rem; }
 @media (max-width: 760px) {
   .app { grid-template-columns: minmax(0, 1fr); grid-template-rows: minmax(0, 1fr) 46%; }
   .panel { border-left: 0; border-top: 1px solid var(--line); }
@@ -112,8 +122,8 @@ const placeById = Object.fromEntries(D.places.map(p => [p.id, p]));
 // ---- layers ----
 const LAYERS = [
   ["base", "Terrain"], ["pt", "Original map"], ["regions", "Regions"], ["danger", "Danger"],
-  ["roads", "Roads"], ["borders", "Borders"], ["places", "Places"], ["labels", "Names"]];
-const on = { base: true, pt: false, regions: true, danger: false, roads: true, borders: true, places: true, labels: true };
+  ["water", "Water"], ["roads", "Roads"], ["borders", "Borders"], ["places", "Places"], ["labels", "Names"]];
+const on = { base: true, pt: false, regions: true, danger: false, water: false, roads: true, borders: true, places: true, labels: true };
 try { Object.assign(on, JSON.parse(localStorage.getItem("bm-layers") || "{}")); } catch (e) {}
 function drawLayerButtons() {
   $("#layers").innerHTML = LAYERS.map(([k, n]) => `<button aria-pressed="${!!on[k]}" data-k="${k}">${n}</button>`).join("");
@@ -160,6 +170,7 @@ function draw() {
   ctx.imageSmoothingEnabled = view.s < 2;
   if (on.pt && imgs.pt.complete) ctx.drawImage(imgs.pt, 0, 0, W, H);
   else if (on.base && imgs.terrain.complete) ctx.drawImage(imgs.terrain, 0, 0, W, H);
+  drawWater();
   if (on.danger) {
     ctx.globalAlpha = .38;
     for (const c of D.cells) { if (!c[3]) continue; const [x, y] = cellBox(c[0], c[1]); ctx.fillStyle = BANDCOL(c[3]); ctx.fillRect(x, y, F.cell, F.cell); }
@@ -195,6 +206,7 @@ function draw() {
   ctx.restore();
   if (on.places) for (const p of D.places) glyph(p);
   if (on.labels) labels();
+  drawWaterArrows();
 }
 function poly(a) { ctx.beginPath(); ctx.moveTo(a[0], a[1]); for (let i = 2; i < a.length; i += 2) ctx.lineTo(a[i], a[i + 1]); }
 const TIER_R = { "settlement.metropolis": 9, "settlement.large-city": 8, "settlement.small-city": 7, "settlement.small-city-seat": 7, "settlement.town": 6, "settlement.town-seat": 6, "settlement.village": 5, "settlement.village-seat": 5, "settlement.outpost": 5, "settlement.minor": 3 };
@@ -249,8 +261,9 @@ function labels() {
 
 // ---- pointer: pan, pinch, wheel, tap ----
 const ptrs = new Map(); let dragged = false, last = null;
-cv.addEventListener("pointerdown", e => { cv.setPointerCapture(e.pointerId); ptrs.set(e.pointerId, [e.offsetX, e.offsetY]); dragged = false; last = null; cv.classList.add("drag"); });
+cv.addEventListener("pointerdown", e => { if (toolDown(e)) return; cv.setPointerCapture(e.pointerId); ptrs.set(e.pointerId, [e.offsetX, e.offsetY]); dragged = false; last = null; cv.classList.add("drag"); });
 cv.addEventListener("pointermove", e => {
+  if (toolMove(e)) return;
   const [mx, my] = toMap(e.offsetX, e.offsetY); const [cx, cy] = cellOf(mx, my);
   $("#coord").textContent = `Morrowind cell ${cx}, ${cy}` + (cellRegion.get(cx + "," + cy) ? " · " + D.regionNames[cellRegion.get(cx + "," + cy)[2]] : "");
   if (!ptrs.has(e.pointerId)) { hover(e); return; }
@@ -262,8 +275,8 @@ cv.addEventListener("pointermove", e => {
     last = { d, m }; dragged = true; draw();
   }
 });
-const up = e => { const was = ptrs.has(e.pointerId); ptrs.delete(e.pointerId); last = null; if (!ptrs.size) cv.classList.remove("drag"); if (was && !dragged && !ptrs.size) tap(e.offsetX, e.offsetY); };
-cv.addEventListener("pointerup", up); cv.addEventListener("pointercancel", e => { ptrs.delete(e.pointerId); last = null; });
+const up = e => { if (toolUp(e)) return; const was = ptrs.has(e.pointerId); ptrs.delete(e.pointerId); last = null; if (!ptrs.size) cv.classList.remove("drag"); if (was && !dragged && !ptrs.size) tap(e.offsetX, e.offsetY); };
+cv.addEventListener("pointerup", up); cv.addEventListener("pointercancel", e => { if (toolUp(e, true)) return; ptrs.delete(e.pointerId); last = null; });
 cv.addEventListener("wheel", e => { e.preventDefault(); zoomAt(e.offsetX, e.offsetY, Math.exp(-e.deltaY * .0015)); draw(); }, { passive: false });
 function zoomAt(sx, sy, k) { const s = Math.max(.25, Math.min(14, view.s * k)); k = s / view.s; view.x = sx - (sx - view.x) * k; view.y = sy - (sy - view.y) * k; view.s = s; }
 $("#zin").onclick = () => { zoomAt(wrap.clientWidth / 2, wrap.clientHeight / 2, 1.5); draw(); };
@@ -282,7 +295,8 @@ function hover(e) {
 function tap(sx, sy) {
   const p = hit(sx, sy);
   if (p) return showPlace(p.id);
-  const [mx, my] = toMap(sx, sy); const c = cellRegion.get(cellOf(mx, my).join(","));
+  const [mx, my] = toMap(sx, sy);
+  if (on.water) { const wi = waterAt(mx, my); if (wi && WB[wi]) return showWater(wi); } const c = cellRegion.get(cellOf(mx, my).join(","));
   if (c) showRegion(c[2], c);
 }
 function goTo(x, y, s) { const cw = wrap.clientWidth, ch = wrap.clientHeight; view.s = Math.max(view.s, s || 3); view.x = cw / 2 - x * view.s; view.y = ch / 2 - y * view.s; draw(); }
@@ -297,6 +311,7 @@ function wire() {
   body.querySelectorAll("[data-culture]").forEach(b => b.onclick = () => showCulture(b.dataset.culture));
   body.querySelectorAll("[data-home]").forEach(b => b.onclick = home);
   body.querySelectorAll("[data-key]").forEach(b => b.onclick = showKey);
+  wireWater();
 }
 const bandChip = (id, text) => id ? `<span class="chip band" style="background:${BANDCOL(id)}">${esc(text || id)}</span>` : "";
 const tierTag = t => t ? `<span class="tier ${t}" title="${esc(D.tiers[t])}">${TIER[t] || t}</span>` : "";
@@ -313,7 +328,7 @@ function home() {
   setBody(`<p class="lead">This is Project Tamriel's map of Black Marsh, the Argonian homeland, turned into the base of our new worldspace. Every symbol on it is a place in the database below, researched as it stands in 4E 201.</p>
   <div class="stats"><div><b>${n}</b><span>places</span></div><div><b>${D.regions.length}</b><span>regions</span></div><div><b>${Object.keys(D.cultures).length}</b><span>cultures</span></div><div><b>${km}</b><span>km of road</span></div><div><b>${D.cells.length}</b><span>cells, 117 m a side</span></div><div><b>${researched}</b><span>places researched</span></div></div>
   <p>Drag to move, pinch or scroll to zoom. Tap a place to read about it; tap open ground to read about its region. Switch layers above: <i>Original map</i> shows Project Tamriel's drawing, <i>Danger</i> colours each cell by how dangerous it is.</p>
-  <p><button class="chip" data-key>The map key: what every symbol means</button></p>
+  <p><button class="chip" data-key>The map key: what every symbol means</button> ${WB.length ? `<button class="chip" data-water>Water: kinds and flow, and the water editor</button>` : ""}</p>
   <h3>Regions</h3><div class="list">${D.regions.map(r => `<button data-region="${r.id}">${esc(r.n)}</button>`).join("")}</div>${legend}
   <p class="sub" style="margin-top:16px;color:var(--muted);font-size:.86rem">Terrain layer: ${D.terrainKind === "terrain" ? "shaded from the generated heightmap" : "land and water from the map (the heightmap is not built yet)"}.</p>`, "home");
 }
@@ -362,6 +377,205 @@ function showCulture(id) {
   <p class="lead">${esc(c.people)}</p><p>${esc(c.about)}</p><h3>Why we read it so</h3><p>${esc(c.why)}</p>
   <h3>Places (${ps.length})</h3><div class="list">${ps.map(p => `<button data-place="${p.id}">${esc(p.n)} <small style="color:var(--muted)">${esc(p.kind)} · ${esc(D.regionNames[p.reg])}</small></button>`).join("")}</div>`, "culture");
   sel = null; draw();
+}
+
+
+// ---- water: kinds, flow and the owner's edits (shared database: water_edits, water_paint) ----
+const WB = (D.water && D.water.bodies) || [];   // [id, kind, flows, deg, speed, x, y, ha, region, why, downIdx, name, setBy, width]
+const WK = (D.water && D.water.kinds) || {};
+const WS = (D.water && D.water.scale) || 0.5;
+const WCOL = { "ocean": [31, 64, 122], "shallow-coast": [72, 140, 190], "bay": [52, 104, 160], "estuary": [150, 110, 200],
+  "river": [40, 170, 230], "stream": [120, 220, 250], "lake": [20, 120, 140], "pond": [110, 190, 160],
+  "green-marsh": [110, 170, 60], "blackwater-swamp": [70, 50, 30] };
+const RUNS = new Set(["estuary", "river", "stream"]);
+const SPEED = { still: "Still", slow: "Slow", moderate: "Moderate", fast: "Fast" };
+const bodyIdx = Object.fromEntries(WB.map((b, i) => b ? [b[0], i] : null).filter(Boolean));
+const W2 = { edits: {}, paint: {}, db: null, me: null, status: "Connecting to the shared store…", mode: "pan", arrowFor: null,
+  brush: { kind: "green-marsh", flows: false, radiusM: 60 }, stroke: null, arrow: null };
+let widx = null, wover = null;
+{ const im = new Image(); im.onload = () => {
+    const c = document.createElement("canvas"); c.width = W; c.height = H; const g = c.getContext("2d");
+    g.drawImage(im, 0, 0); const d = g.getImageData(0, 0, W, H).data; widx = new Uint16Array(W * H);
+    for (let i = 0; i < W * H; i++) widx[i] = d[i * 4] + 256 * d[i * 4 + 1];
+    buildWaterOverlay(); draw(); };
+  if ("__WATERIDX__".startsWith("data:")) im.src = "__WATERIDX__"; }
+function bodyState(i) {          // the body as it stands with the owner's edits on top
+  const b = WB[i]; const e = W2.edits[b[0]] || {};
+  const kind = e.kind || b[1];
+  const flows = e.flows != null ? e.flows : (e.kind ? RUNS.has(kind) : !!b[2]);
+  return { id: b[0], kind, flows, deg: e.flow_deg != null ? e.flow_deg : (flows ? b[3] : null),
+    speed: e.speed || (flows ? (b[4] === "still" ? "moderate" : b[4]) : "still"), name: e.name || b[11],
+    edited: !!W2.edits[b[0]], x: b[5], y: b[6], ha: b[7], region: b[8], why: b[9], down: b[10], width: b[13] };
+}
+function bodyTitle(s) { return s.name || `${WK[s.kind] || s.kind} in ${s.region}`; }
+function buildWaterOverlay() {
+  if (!widx) return;
+  const c = wover || document.createElement("canvas"); c.width = W; c.height = H; wover = c;
+  const g = c.getContext("2d"), img = g.createImageData(W, H), d = img.data;
+  const lut = WB.map((b, i) => b ? (WCOL[bodyState(i).kind] || [255, 0, 255]) : null);
+  for (let p = 0; p < W * H; p++) { const k = widx[p]; if (!k || !lut[k]) continue; const c3 = lut[k]; d[p * 4] = c3[0]; d[p * 4 + 1] = c3[1]; d[p * 4 + 2] = c3[2]; d[p * 4 + 3] = 215; }
+  g.putImageData(img, 0, 0);
+  // painted areas: drawn over the bodies in their kind's colour
+  for (const st of Object.values(W2.paint)) {
+    const col = WCOL[st.kind] || [255, 0, 255]; g.strokeStyle = `rgb(${col})`; g.lineCap = g.lineJoin = "round";
+    g.lineWidth = 2 * st.radius_px * WS; g.globalCompositeOperation = "source-atop"; poly2(g, st.pts.map(v => v * WS)); g.stroke();
+  }
+  g.globalCompositeOperation = "source-over";
+}
+function poly2(g, a) { g.beginPath(); g.moveTo(a[0], a[1]); if (a.length === 2) g.lineTo(a[0] + .01, a[1]); for (let i = 2; i < a.length; i += 2) g.lineTo(a[i], a[i + 1]); }
+function drawWater() {
+  if (!on.water || !wover) return;
+  ctx.drawImage(wover, 0, 0, W, H);
+  if (sel && sel.type === "water" && widx) {     // outline the chosen body's label point
+    const s = bodyState(sel.i); ctx.strokeStyle = "#ffd34d"; ctx.lineWidth = 3 / view.s; ctx.beginPath(); ctx.arc(s.x, s.y, 9 / view.s, 0, 7); ctx.stroke();
+  }
+}
+function arrowAt(sx, sy, deg, len, col, w) {
+  const a = deg * Math.PI / 180, dx = Math.sin(a) * len, dy = -Math.cos(a) * len;
+  ctx.strokeStyle = col; ctx.fillStyle = col; ctx.lineWidth = w; ctx.beginPath(); ctx.moveTo(sx - dx / 2, sy - dy / 2); ctx.lineTo(sx + dx / 2, sy + dy / 2); ctx.stroke();
+  const hx = sx + dx / 2, hy = sy + dy / 2, ux = dx / len, uy = dy / len;
+  ctx.beginPath(); ctx.moveTo(hx + ux * 4, hy + uy * 4); ctx.lineTo(hx - ux * 6 - uy * 5, hy - uy * 6 + ux * 5); ctx.lineTo(hx - ux * 6 + uy * 5, hy - uy * 6 - ux * 5); ctx.closePath(); ctx.fill();
+}
+function drawWaterArrows() {
+  if (!on.water) return;
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  const minHa = view.s > 4 ? 0 : view.s > 2 ? 1 : 6;
+  for (let i = 1; i < WB.length; i++) {
+    if (!WB[i]) continue; const s = bodyState(i);
+    if (!s.flows || s.deg == null || (s.ha < minHa && !s.edited)) continue;
+    const [sx, sy] = toScreen(s.x, s.y); if (sx < -20 || sy < -20 || sx > wrap.clientWidth + 20 || sy > wrap.clientHeight + 20) continue;
+    arrowAt(sx, sy, s.deg, 22, "rgba(20,26,22,.8)", 4.5); arrowAt(sx, sy, s.deg, 22, s.edited ? "#ffd34d" : "#f6f4ec", 2);
+  }
+  if (W2.stroke) { ctx.save(); ctx.translate(view.x, view.y); ctx.scale(view.s, view.s); const col = WCOL[W2.brush.kind]; ctx.strokeStyle = `rgba(${col},.75)`; ctx.lineCap = ctx.lineJoin = "round"; ctx.lineWidth = 2 * brushPx() * WS; poly2(ctx, W2.stroke); ctx.stroke(); ctx.restore(); }
+  if (W2.arrow) { const [a, b] = [toScreen(W2.arrow[0], W2.arrow[1]), toScreen(W2.arrow[2], W2.arrow[3])]; const len = Math.hypot(b[0] - a[0], b[1] - a[1]);
+    if (len > 4) arrowAt((a[0] + b[0]) / 2, (a[1] + b[1]) / 2, (Math.atan2(b[0] - a[0], -(b[1] - a[1])) * 180 / Math.PI + 360) % 360, len, "#ffd34d", 3); }
+}
+const M_PX = 2.9257;   // metres per map pixel at full resolution
+const brushPx = () => W2.brush.radiusM / M_PX;
+function waterAt(mx, my) { if (!widx) return 0; const x = Math.floor(mx), y = Math.floor(my); if (x < 0 || y < 0 || x >= W || y >= H) return 0; return widx[y * W + x]; }
+
+// drawing tools take a single pen, mouse or finger; two fingers still move and zoom the map
+function toolDown(e) {
+  if (W2.mode === "pan" || ptrs.size) return false;
+  const [mx, my] = toMap(e.offsetX, e.offsetY);
+  cv.setPointerCapture(e.pointerId); W2.toolPtr = e.pointerId;
+  if (W2.mode === "paint") W2.stroke = [mx, my]; else W2.arrow = [mx, my, mx, my];
+  return true;
+}
+function toolMove(e) {
+  if (W2.toolPtr !== e.pointerId) return false;
+  const [mx, my] = toMap(e.offsetX, e.offsetY);
+  if (W2.stroke) { const n = W2.stroke.length; if (Math.hypot(mx - W2.stroke[n - 2], my - W2.stroke[n - 1]) * view.s > 4) W2.stroke.push(mx, my); }
+  if (W2.arrow) { W2.arrow[2] = mx; W2.arrow[3] = my; }
+  draw(); return true;
+}
+function toolUp(e, cancel) {
+  if (W2.toolPtr !== e.pointerId) return false;
+  W2.toolPtr = null;
+  if (!cancel && W2.stroke) savePaint(W2.stroke);
+  if (!cancel && W2.arrow) { const [x0, y0, x1, y1] = W2.arrow; if (Math.hypot(x1 - x0, y1 - y0) * view.s > 8) {
+      const deg = Math.round((Math.atan2(x1 - x0, -(y1 - y0)) * 180 / Math.PI + 360) % 360);
+      const i = W2.arrowFor || waterAt(x0, y0); if (i) { saveEdit(i, { flows: true, flow_deg: deg }); showWater(i); } }
+    W2.mode = "pan"; W2.arrowFor = null; }
+  W2.stroke = null; W2.arrow = null; draw(); return true;
+}
+
+// ---- the shared store ----
+(async () => {
+  let db = null, user = null;
+  try { db = await window.claude?.use?.("db"); user = await window.claude?.use?.("user"); } catch (e) {}
+  if (!db) { W2.status = "View only: the shared store is not available here, so edits cannot be saved."; refreshWaterPanel(); return; }
+  W2.db = db; try { W2.me = user ? await user.id() : null; } catch (e) {}
+  const timer = setTimeout(() => { W2.status = "The shared store is slow to answer; edits will show when it does."; refreshWaterPanel(); }, 10000);
+  db.collection("water_edits").onSnapshot(snap => { clearTimeout(timer); W2.edits = {}; snap.docs.forEach(d => W2.edits[d.id] = d.data()); W2.status = ""; buildWaterOverlay(); draw(); refreshWaterPanel(); },
+    err => { W2.status = "Could not read the shared edits: " + (err && err.message || err); refreshWaterPanel(); });
+  db.collection("water_paint").onSnapshot(snap => { W2.paint = {}; snap.docs.forEach(d => W2.paint[d.id] = d.data()); buildWaterOverlay(); draw(); refreshWaterPanel(); }, () => {});
+})();
+async function saveEdit(i, patch) {
+  const id = WB[i][0];
+  const doc = Object.assign({}, W2.edits[id] || {}, patch, { at: new Date().toISOString(), by: W2.me || null });
+  W2.edits[id] = doc; buildWaterOverlay(); draw();
+  if (!W2.db) { W2.status = "Not saved: the shared store is not available here."; return; }
+  try { await W2.db.collection("water_edits").doc(id).set(doc); W2.status = ""; }
+  catch (e) { W2.status = "Not saved: " + (e.message || e.code || e) + ". You may only have view access."; refreshWaterPanel(); }
+}
+async function clearEdit(i) {
+  const id = WB[i][0]; delete W2.edits[id]; buildWaterOverlay(); draw(); showWater(i);
+  if (W2.db) try { await W2.db.collection("water_edits").doc(id).delete(); } catch (e) { W2.status = "Not removed: " + (e.message || e); refreshWaterPanel(); }
+}
+async function savePaint(pts) {
+  const full = pts.map(v => Math.round(v / WS));
+  const doc = { kind: W2.brush.kind, flows: W2.brush.flows, radius_px: Math.round(brushPx()), pts: full, at: new Date().toISOString(), by: W2.me || null };
+  const id = "p" + Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
+  W2.paint[id] = doc; buildWaterOverlay(); draw(); refreshWaterPanel();
+  if (!W2.db) { W2.status = "Not saved: the shared store is not available here."; refreshWaterPanel(); return; }
+  try { await W2.db.collection("water_paint").doc(id).set(doc); } catch (e) { W2.status = "Not saved: " + (e.message || e); refreshWaterPanel(); }
+}
+async function deletePaint(id) {
+  delete W2.paint[id]; buildWaterOverlay(); draw(); refreshWaterPanel();
+  if (W2.db) try { await W2.db.collection("water_paint").doc(id).delete(); } catch (e) { W2.status = "Not removed: " + (e.message || e); refreshWaterPanel(); }
+}
+
+// ---- water panels ----
+function refreshWaterPanel() { if (state.view === "water" && sel && sel.type === "water") showWater(sel.i); else if (state.view === "waterhome") showWaterHome(); }
+const statusLine = () => W2.status ? `<p class="wstatus">${esc(W2.status)}</p>` : "";
+const kindButtons = (cur, attr) => `<div class="kinds">${Object.entries(WK).map(([k, n]) => `<button class="kindb" aria-pressed="${k === cur}" ${attr}="${k}"><span class="sw" style="background:rgb(${WCOL[k]})"></span>${esc(n)}</button>`).join("")}</div>`;
+function showWater(i) {
+  sel = { type: "water", i }; const s = bodyState(i); const b = WB[i]; draw();
+  const down = s.down && WB[s.down] ? bodyState(s.down) : null;
+  const flowText = !s.flows ? "Still water" : s.deg == null ? "Flowing; direction not set" : `Flows toward ${compass(s.deg)} (${s.deg}°)`;
+  setBody(`<button class="back" data-waterhome>← Water</button>
+  <h2>${esc(bodyTitle(s))}</h2>
+  <div class="chips"><span class="chip"><span class="sw" style="display:inline-block;vertical-align:-2px;background:rgb(${WCOL[s.kind]})"></span> ${esc(WK[s.kind] || s.kind)}</span><span class="chip">${esc(SPEED[s.speed] || s.speed)}</span>${s.edited ? `<span class="chip own">Your edit</span>` : `<span class="chip">Worked out from the map</span>`}</div>
+  ${statusLine()}
+  <dl class="facts"><dt>Flow</dt><dd>${flowText}</dd><dt>Size</dt><dd>${s.ha >= 100 ? (s.ha / 100).toFixed(2) + " km²" : s.ha + " ha"}${s.width ? `, about ${Math.round(s.width)} m across` : ""}</dd><dt>Region</dt><dd>${esc(s.region)}</dd>
+  ${down ? `<dt>Runs into</dt><dd><button class="chip" data-wgo="${s.down}">${esc(bodyTitle(down))}</button></dd>` : ""}
+  <dt>Why this kind</dt><dd>${esc(s.edited && W2.edits[s.id].kind ? "You set it." : s.why)}</dd></dl>
+  <h3>Kind</h3>${kindButtons(s.kind, "data-wkind")}
+  <h3>Flow</h3><div class="seg"><button aria-pressed="${!s.flows}" data-wflow="0">Still</button><button aria-pressed="${s.flows}" data-wflow="1">Flowing</button></div>
+  ${s.flows ? `<div class="seg"><button aria-pressed="${s.speed === "slow"}" data-wspeed="slow">Slow</button><button aria-pressed="${s.speed === "moderate"}" data-wspeed="moderate">Moderate</button><button aria-pressed="${s.speed === "fast"}" data-wspeed="fast">Fast</button></div>
+  <p><button class="act" data-warrow>${W2.mode === "arrow" ? "Now draw on the map: from upstream to downstream" : "Draw the direction on the map"}</button></p>` : ""}
+  <h3>Name</h3><div class="namerow"><input id="wname" type="text" value="${esc(s.name || "")}" placeholder="Unnamed" aria-label="Name of this water"><button class="act" data-wname>Save name</button></div>
+  ${s.edited ? `<p><button class="back" data-wclear>Undo my edits to this water</button></p>` : ""}
+  <p class="sub mono" style="color:var(--muted)">${esc(s.id)}</p>`, "water");
+}
+function compass(d) { return ["north", "north-east", "east", "south-east", "south", "south-west", "west", "north-west"][Math.round(d / 45) % 8]; }
+function showWaterHome() {
+  sel = null; draw();
+  const n = {}; let flowing = 0;
+  for (let i = 1; i < WB.length; i++) if (WB[i]) { const s = bodyState(i); n[s.kind] = (n[s.kind] || 0) + 1; if (s.flows) flowing++; }
+  const strokes = Object.entries(W2.paint).sort((a, b) => String(b[1].at).localeCompare(String(a[1].at)));
+  setBody(`<button class="back" data-home>← Overview</button><h2>Water</h2>
+  <p class="lead">Every body of water on the map, with the kind and flow worked out from its shape and its region's research. Change any of it here; the world build reads your edits.</p>
+  ${statusLine()}
+  <p>Tap water on the map to see and change its kind, whether it flows, its speed and its name. Arrows show which way water flows; a gold arrow is one you set.</p>
+  <div class="legend">${Object.entries(WK).map(([k, nm]) => `<div class="row"><span class="sw" style="background:rgb(${WCOL[k]})"></span>${esc(nm)} <span class="mono" style="color:var(--muted)">${n[k] || 0}</span></div>`).join("")}</div>
+  <p class="sub" style="color:var(--muted)">${flowing} flowing, ${WB.length - 1 - flowing} still. ${Object.keys(W2.edits).length} edited by hand.</p>
+  <h3>Paint a kind over an area</h3>
+  <p>Paint where one kind becomes another, for example where a river spreads into marsh. The painted part becomes its own body. Use a pen or one finger to paint; two fingers still move the map.</p>
+  ${kindButtons(W2.brush.kind, "data-bkind")}
+  <div class="seg"><button aria-pressed="${!W2.brush.flows}" data-bflow="0">Still</button><button aria-pressed="${W2.brush.flows}" data-bflow="1">Flowing</button></div>
+  <label class="brush" for="bsize">Brush width: <b>${W2.brush.radiusM * 2} m</b><input id="bsize" type="range" min="10" max="400" step="10" value="${W2.brush.radiusM}"></label>
+  <p><button class="act ${W2.mode === "paint" ? "on" : ""}" data-bpaint>${W2.mode === "paint" ? "Painting: tap here to stop" : "Start painting"}</button></p>
+  ${strokes.length ? `<h3>Painted areas (${strokes.length})</h3><div class="list">${strokes.map(([id, st]) => `<div class="strk"><span class="sw" style="background:rgb(${WCOL[st.kind]})"></span>${esc(WK[st.kind] || st.kind)}, ${st.flows ? "flowing" : "still"}, ${Math.round(st.radius_px * 2 * M_PX)} m wide <button class="chip" data-bgo="${id}">Show</button><button class="chip" data-bdel="${id}">Remove</button></div>`).join("")}</div>` : ""}`, "waterhome");
+}
+function wireWater() {
+  body.querySelectorAll("[data-waterhome]").forEach(b => b.onclick = () => { W2.mode = "pan"; showWaterHome(); });
+  body.querySelectorAll("[data-wgo]").forEach(b => b.onclick = () => { const i = +b.dataset.wgo; showWater(i); goTo(WB[i][5], WB[i][6], 3); });
+  const i = sel && sel.type === "water" ? sel.i : null;
+  body.querySelectorAll("[data-wkind]").forEach(b => b.onclick = () => { const k = b.dataset.wkind; saveEdit(i, { kind: k, flows: RUNS.has(k) }); showWater(i); });
+  body.querySelectorAll("[data-wflow]").forEach(b => b.onclick = () => { const f = b.dataset.wflow === "1"; saveEdit(i, f ? { flows: true } : { flows: false, speed: "still" }); showWater(i); });
+  body.querySelectorAll("[data-wspeed]").forEach(b => b.onclick = () => { saveEdit(i, { speed: b.dataset.wspeed }); showWater(i); });
+  body.querySelectorAll("[data-warrow]").forEach(b => b.onclick = () => { W2.mode = "arrow"; W2.arrowFor = i; showWater(i); });
+  body.querySelectorAll("[data-wname]").forEach(b => b.onclick = () => { saveEdit(i, { name: $("#wname").value.trim() || null }); showWater(i); });
+  body.querySelectorAll("[data-wclear]").forEach(b => b.onclick = () => clearEdit(i));
+  body.querySelectorAll("[data-bkind]").forEach(b => b.onclick = () => { W2.brush.kind = b.dataset.bkind; W2.brush.flows = RUNS.has(b.dataset.bkind); showWaterHome(); });
+  body.querySelectorAll("[data-bflow]").forEach(b => b.onclick = () => { W2.brush.flows = b.dataset.bflow === "1"; showWaterHome(); });
+  const bs = body.querySelector("#bsize"); if (bs) bs.oninput = () => { W2.brush.radiusM = +bs.value; bs.previousSibling.textContent = W2.brush.radiusM * 2 + " m"; };
+  body.querySelectorAll("[data-bpaint]").forEach(b => b.onclick = () => { W2.mode = W2.mode === "paint" ? "pan" : "paint"; if (W2.mode === "paint" && !on.water) { on.water = true; drawLayerButtons(); } showWaterHome(); draw(); });
+  body.querySelectorAll("[data-bdel]").forEach(b => b.onclick = () => deletePaint(b.dataset.bdel));
+  body.querySelectorAll("[data-bgo]").forEach(b => b.onclick = () => { const st = W2.paint[b.dataset.bgo]; goTo(st.pts[0] * WS, st.pts[1] * WS, 3); });
+  body.querySelectorAll("[data-water]").forEach(b => b.onclick = () => { if (!on.water) { on.water = true; drawLayerButtons(); } showWaterHome(); });
 }
 
 // ---- search ----

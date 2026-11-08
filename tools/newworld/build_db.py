@@ -383,6 +383,15 @@ def terrain_and_water(w: db.World) -> None:
         b = json.loads(tb.read_text())
         w.insert("terrain_build", **{k: b[k] for k in ("id", "water_level_units", "sample_units", "width", "height",
                                                       "origin_world_x", "origin_world_y", "files", "sha256", "about")})
+    wc = f.OUT / "water_classified.json"           # tools/newworld/water_kinds.py: kinds, flow, owner edits applied
+    if wc.exists():
+        for r in json.loads(wc.read_text()):
+            w.insert("water_body", id=r["id"], water_kind_id=r["water_kind_id"], name=r.get("name"),
+                     area_m2=r["area_m2"], label_px=r["label_px"], label_py=r["label_py"], flows=bool(r["flows"]),
+                     flow_toward_deg=r.get("flow_deg"), speed=r.get("speed"), downstream_id=r.get("downstream_id"),
+                     width_m=r.get("width_m"), region_id=r.get("region_id"), flow_note=r.get("flow_note"),
+                     set_by=r["set_by"], why=r["why"])
+        return
     wb = f.OUT / "water_bodies.json"
     if not wb.exists():
         return
