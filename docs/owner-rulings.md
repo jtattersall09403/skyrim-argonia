@@ -205,3 +205,8 @@ added here the day they are made, with the date and the issue.
   (docs/phases/new-worldspace-plan/). Project Tamriel's Black Marsh map, its regions map and the Hammerfell/High Rock
   key are public domain and are kept in the repo (newworld/sources/maps/), since they are the base the world is built
   from.
+- 2026-11-08 (new worldspace, nw-02, in session): the phase is delivered including the LOD (the brief had it after
+  the owner's walk; the owner changed this the same day). The goal is reached when the world, its LOD and the
+  in-game world map are deployed and the owner's walk check is posted. The owner's edits to the plan (nw-02's brief,
+  the README's lessons and the permission to use every mod named in the new-worldspace plan, nw-03's additions, the
+  CLAUDE.md rule on updating skills after verified feedback) are committed as written.

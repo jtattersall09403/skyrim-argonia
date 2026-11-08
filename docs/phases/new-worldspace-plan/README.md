@@ -21,7 +21,8 @@ During testing, I will want to be able to easily choose between which of the two
 
  World generation methods from earlier version of this repo was good at:
 • Land/terrain, starting from our previous threejs version and/or the all Tamriel Heightmap and turning it into a Skyrim worldspace
-• Mountains, slopes, cliffs the native Skyrim way
+* Most texture work was good. There were some issues with hard lines/edges between textures/painted areas - the new worldspace must have its texturing done in a way that avoids this from day 1. It also initially had some problems with large swathes of identical texturing, which we must not author like that again, and large swathes of a flat mossy pebble fallback texture with no groundcover/grass, which was then fixed by a later commit.
+• Mountains, slopes, cliff meshes/pieces the native Skyrim way
 • Vegetation and trees, variation between regions and local level variety within regions (so regions feel varied internally and consistently different to each other), consistent with ecology research
 • Creating realistic and nicely transitioning areas of forest and more open sections 
 • Rocks and scatter
@@ -33,5 +34,9 @@ During testing, I will want to be able to easily choose between which of the two
 
 What it was bad at:
 • Complicated water placement. So we will just have one water height for whole province.
-• authoring and placing water types and direction of flow for rivers and streams, vs still water like lakes and ponds. So I would like to be able to draw on/directly edit myself which bodies should flow (and in what direction), which should be still, what type of water they are (e.g. blackwater swamp vs green water marsh vs ponds vs estuary vs ocean)
-• building built places. It was ok I think at planning places conceptually, and good at designing in theory what they should deliver (from their data), but not at actually implementing the layout and placing the buildings and making it all look good. And very bad at things like boardwalks and bridges. Took a lot of work to get it to create pieces that connect/snap together as well. For every built place, I would like agents to find their closest semantically equivalent place in either the BM&V mod if it's there or KoTM if there isn't or vanilla Skyrim as last resort, and in the fancy new browser studio give me the 2d layout and 3d render of that place and in some way make it easy for me to use it as inspiration for the new place we're making. Like I want to be able to pick specific assets/meshes from the equivalent place, paired exteriors-and-interiors, etc, and place them myself on our new place (and as discussed have the vegetation clearance and land flattening and seating etc be taken care of automatically) and move them around if I want. And I want to be able to draw on paths and streets and so on, and them to automatically be textured and styled and dressed nicely in a Skyrim native way (and vegetation cleared).
+• authoring and placing water types and direction of flow for rivers and streams, vs still water like lakes and ponds.
+• building built places. It was ok I think at planning places conceptually, and good at designing in theory what they should deliver (from their data), but not at actually implementing the layout and placing the buildings and making it all look good. And very bad at things like boardwalks and bridges. Took a lot of work to get it to create pieces that connect/snap together as well. We will address this with the approach described in nw-03.
+
+# Permissions
+
+I have checked and I have permission to use all of the mods in all of the ways described in this new-worlspace phase plan.

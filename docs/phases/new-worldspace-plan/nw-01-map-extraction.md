@@ -16,6 +16,7 @@ Task list
 5. Create an interactive browser based version of the map, which reads from (4) for the terrain and from our place records for the places and from our roads data for the roads and paths. Data fields and ids and so on should be converted to human readable and understandable form. Assume I don't know the map or any of the places. Make it accessible to me as a claude Artefact.
 
 Do not do LOD yet. That will come later. And don't deploy anything onto the game machine yet or build the world into the game, that's the next phase.
+
 ## Working record (edited as the work goes)
 
 Layout: the new world is its own root, `newworld/`, laid out like this repo so `tools/argonia_world/db.py` loads it
