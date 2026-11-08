@@ -7,16 +7,17 @@ using static LocalQuests;
 // Phase 4's Chainbreakers line (story data quest.bc.bc01 to bc03), built from Phase 3's proven blocks with LocalQuests'
 // kit, all in BM&V's BlackMarsh (23D689). BC01 Four Months for a Boat: Never-Sold in the Chainbreakers' house (BM&V's
 // House, 15635D) and the estate landing at 31,-12 (095465, Black Marsh North's navmesh 0ACD06). BC02 Names Scratched Out:
-// the heirs' outer post, BM&V's walk-in keep 01cyKeep (151873, navmesh 0ACB8C) at 30,-15, and its gate-keeper at the
-// 'Black Rose Jail' marker (31,-15). BC03 The Broker's Mercy stands on Soulrest's open dock, BM&V's Dock2 (02F35A, 11,-2),
+// the heirs' outer post, BM&V's walk-in stone house 01Swamphousestone (1307CF, architecture\Swamp House.nif) on the shore
+// at the Rose's east edge, 34,-16 (cell 0AFE4F, Black Marsh North's navmesh 0ACC91 on the land inside), its gate-keepers
+// at its west side. (BM&V's keep 01cyKeep, cyrkeep.nif, is in no archive or folder of the load order: an empty hill.) BC03 The Broker's Mercy stands on Soulrest's open dock, BM&V's Dock2 (02F35A, 11,-2),
 // whose navmesh is Black Marsh North's 0A7784. The line's standing is ARG_ChainbreakersStanding (E-global). Allocated
 // after LocalQuests in Generate, BC01, BC02, BC03.
 static class Chainbreakers
 {
     public static readonly FormKey BlackMarsh = FormKey.Factory("23D689:Black Marsh.esm");
     const string Dock2 = "02F35A:Black Marsh.esm", Landing = "095465:Black Marsh.esm", HouseExt = "0AFC2C:Black Marsh.esm",
-        JailSquare = "095447:Black Marsh.esm";
-    static readonly FormKey House = FormKey.Factory("15635D:Black Marsh.esm"), KeepNav = FormKey.Factory("0ACB8C:Black Marsh North.esp");
+        PostCell = "0AFE4F:Black Marsh.esm";
+    static readonly FormKey House = FormKey.Factory("15635D:Black Marsh.esm");
     static readonly FormKey Gold = FormKey.Factory("00000F:Skyrim.esm"), Achievements = FormKey.Factory("0FC85D:Skyrim.esm"),
         PlayerRef = FormKey.Factory("000014:Skyrim.esm"), StrongBox = FormKey.Factory("09424C:Skyrim.esm"), OlavaToken = FormKey.Factory("059654:Skyrim.esm"),
         Journal = FormKey.Factory("10B2CD:Skyrim.esm"), Smoke = FormKey.Factory("0D5E82:Skyrim.esm");
@@ -24,12 +25,13 @@ static class Chainbreakers
     public const uint B3Ussa = 0, B3Rope = 1, B3Chest = 2, B3Tokens = 3;
     public const uint B1Patron = 0, B1Debtor = 1, B1Steward = 2, B1Chest = 3;
     public const uint B2Patron = 0, B2Keeper = 1, B2Speaker = 2, B2Killer = 3, B2Mother = 4;
-    // The keep's floor: navmesh 0ACB8C's triangles inside the footprint at the keep's ground (z 2550 to 2800).
+    // The post's floor: the navmesh triangles nearest these points, all well inside the house's footprint (16 x 20 m round
+    // its origin 140731,-63604; bmv_shell: 16 inner triangles, joined to the street); the gate 1100 west, towards the town.
     // Never-Sold's spot in HouseInt's small house (SmallHouseINT 156421): between the shelf (156424) and the hearth
     // (15642B), under its floor level plus a step (the highest floor crossing below Z).
     public static readonly (float X, float Y, float Z) RoomSpot = (520, -120, 1560);
-    public static readonly (float X, float Y)[] HeldAt = [(124750, -58050), (125150, -57550), (125400, -58100)];
-    public static readonly (float X, float Y) KeepCentre = (125079, -57867), JailMarker = (129953, -58803);
+    public static readonly (float X, float Y)[] HeldAt = [(140850, -63800), (140931, -63454), (140731, -63854)];
+    public static readonly (float X, float Y) PostCentre = (140731, -63604), GateAt = (139631, -63604);
 
     static GlobalShort? standing;
     public static void Add(SkyrimMod mod, List<ISkyrimModGetter> mods)
@@ -81,18 +83,13 @@ static class Chainbreakers
         var cell = cells[k].rec.DeepCopy(noRefs); sub.Cells.Add(cell); return cell;
     }
 
-    // The nearest triangle centre of one navmesh within a height band (the keep's floor, not the hill round it).
-    static readonly HashSet<(FormKey, int)> navUsed = [];
-    public static P3Float NavIn(List<ISkyrimModGetter> mods, FormKey navmesh, float x, float y, float zMin, float zMax)
+    // A snapped spot inside the post: fail the build if the nearest triangle lies outside the walls.
+    static P3Float Inside(Kit kit, float x, float y)
     {
-        var d = Survey.Winners<INavigationMeshGetter>(mods)[navmesh].rec.Data!; var v = d.Vertices;
-        var best = Enumerable.Range(0, d.Triangles.Count).Where(i => !navUsed.Contains((navmesh, i))).Select(i =>
-        {
-            var t = d.Triangles[i].Vertices; var a = v[t.X]; var b = v[t.Y]; var c = v[t.Z];
-            return (i, p: new P3Float((a.X + b.X + c.X) / 3, (a.Y + b.Y + c.Y) / 3, (a.Z + b.Z + c.Z) / 3));
-        }).Where(e => e.p.Z >= zMin && e.p.Z <= zMax).MinBy(e => (e.p.X - x) * (e.p.X - x) + (e.p.Y - y) * (e.p.Y - y));
-        navUsed.Add((navmesh, best.i));
-        return new P3Float(MathF.Round(best.p.X), MathF.Round(best.p.Y), MathF.Round(best.p.Z));
+        var p = kit.Snap.At(PostCell, x, y);
+        if (MathF.Sqrt((p.X - PostCentre.X) * (p.X - PostCentre.X) + (p.Y - PostCentre.Y) * (p.Y - PostCentre.Y)) > 500)
+            throw new InvalidOperationException($"BC02: the post's navmesh near {x},{y} lies outside the house ({p.X},{p.Y})");
+        return p;
     }
 
     // E-package: a copy of a vanilla package, its location (when it has one) set to a marker, gated on the stage.
@@ -184,7 +181,7 @@ static class Chainbreakers
     }
 
     // BC02 (after BC01 at 90 or 91): Never-Sold's fire topic (0 -> 20: smoke and the three held enabled); Tsaxi's gate
-    // topic at Speech 25 or the zone inside the keep (20 -> 30); a 'come with me' topic (30 -> 31, 32 or 33: the other two
+    // topic at Speech 25 or the zone inside the post (20 -> 30); a 'come with me' topic (30 -> 31, 32 or 33: the other two
     // disabled, the chosen follows); the exit zone at the gate for the chosen (31 -> 91, 32 -> 92, 33 -> 93); the chosen's
     // death (-> 94).
     static void Bc02(SkyrimMod mod, List<ISkyrimModGetter> mods, Kit kit, PlacedNpc patronRef, Quest bc01)
@@ -202,10 +199,10 @@ static class Chainbreakers
         string[] key = ["Speaker", "Killer", "Mother"]; string[] topic = ["speaker", "killer", "mother"];
         uint[] alias = [B2Speaker, B2Killer, B2Mother];
 
-        var gateAt = kit.Snap.At(JailSquare, JailMarker.X - 150, JailMarker.Y);
-        var gate2At = kit.Snap.At(JailSquare, JailMarker.X - 150, JailMarker.Y + 200);
-        var heldAt = HeldAt.Select(p => NavIn(mods, KeepNav, p.X, p.Y, 2550, 2800)).ToArray();
-        var keepFloor = NavIn(mods, KeepNav, KeepCentre.X, KeepCentre.Y, 2550, 2800);
+        var gateAt = kit.Snap.At(PostCell, GateAt.X, GateAt.Y);
+        var gate2At = kit.Snap.At(PostCell, GateAt.X, GateAt.Y + 200);
+        var heldAt = HeldAt.Select(p => Inside(kit, p.X, p.Y)).ToArray();
+        var keepFloor = Inside(kit, PostCentre.X, PostCentre.Y);
         var smokeParent = kit.Marker("ARG_BC02_SmokeParent", new P3Float(keepFloor.X, keepFloor.Y, keepFloor.Z - 200), 0xC00);
         var smoke = heldAt.Append(keepFloor).Select((p, i) =>
         {

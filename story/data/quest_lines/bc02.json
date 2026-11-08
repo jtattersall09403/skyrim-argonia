@@ -27,38 +27,38 @@
  },
  "topic.bc02-the-fire": {
   "speaker": "never-sold",
-  "prompt": "What is burning above Blackrose?",
+  "prompt": "What is burning at Blackrose's east edge?",
   "lines": [
-   "The heirs' outer post, the old keep above Blackrose, is burning. How it started is not known. Three are bound inside. Says-It-Plain is held for speaking against the heirs. Hides-In-Reeds is held for a killing. Keeps-The-Old-Count, Rows-For-Another's mother, is working off what the heirs reckon she owes. Third-Born Tsaxi keeps the way in."
+   "The heirs' outer post, an old stone house on the shore at Blackrose's east edge, is burning. How it started is not known. Three are bound inside. Says-It-Plain is held for speaking against the heirs. Hides-In-Reeds is held for a killing. Keeps-The-Old-Count, Rows-For-Another's mother, is working off what the heirs reckon she owes. Third-Born Tsaxi stands outside the west wall and keeps the way in."
   ],
   "lines@low": [
-   "The heirs' outer post, the old keep above Blackrose, is burning. Three are bound inside. Says-It-Plain, Hides-In-Reeds and Keeps-The-Old-Count. Third-Born Tsaxi keeps the way in."
+   "The heirs' outer post, an old stone house at Blackrose's east edge, is burning. Three are bound inside. Says-It-Plain, Hides-In-Reeds and Keeps-The-Old-Count. Third-Born Tsaxi keeps the way in, outside the west wall."
   ],
   "lines@high": [
-   "Listen well. The heirs' outer post, the old keep above Blackrose, is burning. How it started is not known. Three are bound inside. I want them brought out with their names kept. Says-It-Plain is held for speaking against the heirs. Hides-In-Reeds is held for a killing. Keeps-The-Old-Count, Rows-For-Another's mother, is working off what the heirs reckon she owes. Third-Born Tsaxi keeps the way in."
+   "Listen well. The heirs' outer post, an old stone house on the shore at Blackrose's east edge, is burning. How it started is not known. Three are bound inside. I want them brought out with their names kept. Says-It-Plain is held for speaking against the heirs. Hides-In-Reeds is held for a killing. Keeps-The-Old-Count, Rows-For-Another's mother, is working off what the heirs reckon she owes. Third-Born Tsaxi stands outside the west wall and keeps the way in."
   ]
  },
  "topic.bc02-come-speaker": {
   "speaker": "says-it-plain",
   "prompt": "Come with me. I will get you out.",
   "lines": [
-   "I will follow you. Three of us are bound in this keep, in the smoke: myself, Hides-In-Reeds and Keeps-The-Old-Count. Go. The way out is the way you came in. Remember that I spoke against the heirs."
+   "I will follow you. Three of us are bound in this old stone house, in the smoke: myself, Hides-In-Reeds and Keeps-The-Old-Count. Go. The way out is the way you came in. Remember that I spoke against the heirs."
   ],
   "lines@low": [
    "I will follow you. Go. The way out is the way you came in."
   ],
   "lines@high": [
-   "You came for me. I will follow you. Three of us are bound in this keep, in the smoke: myself, Hides-In-Reeds and Keeps-The-Old-Count. I was held for speaking against the heirs. I would have my words remembered. Lead on. The way out is the way you came in."
+   "You came for me. I will follow you. Three of us are bound in this old stone house, in the smoke: myself, Hides-In-Reeds and Keeps-The-Old-Count. I was held for speaking against the heirs. I would have my words remembered. Lead on. The way out is the way you came in."
   ]
  },
  "topic.bc02-the-gate": {
   "speaker": "third-born-tsaxi",
-  "prompt": "Let me into the keep.",
+  "prompt": "Let me into the stone house.",
   "lines": [
    "Your words hold. Go in. The heirs will not go in after you. The way out will bear one trip. One will come out. Whoever is left inside, the fire takes. Choose well."
   ],
   "fail": [
-   "No. I keep the way in. Your words do not move me yet. Find better words, or go back down the hill."
+   "No. I keep the way in. Your words do not move me yet. Find better words, or go back to the town."
   ],
   "lines@low": [
    "Go in. The heirs will not. The way out will bear one trip. Whoever is left inside, the fire takes."
@@ -70,23 +70,23 @@
    "No. I keep the way in. Your words do not move me yet."
   ],
   "fail@high": [
-   "I would hear you out if I could, but your words are not enough. I keep the way in. I will not open it. Find better words, or go back down the hill."
+   "I would hear you out if I could, but your words are not enough. I keep the way in. I will not open it. Find better words, or go back to the town."
   ]
  },
  "topic.bc02-let-by": {
   "speaker": "third-born-tsaxi",
   "prompt": "Let this one go by.",
   "lines": [
-   "Go by. The heirs lost nothing worth entering the keep to fetch. The way out will bear one trip. You have used it. Whoever is left inside, the fire takes."
+   "Go by. The heirs lost nothing worth entering the stone house to fetch. The way out will bear one trip. You have used it. Whoever is left inside, the fire takes."
   ],
   "fail": [
    "No. I keep the way. This one does not go by. Your words do not move me yet. Find better words."
   ],
   "lines@low": [
-   "Go by. The heirs lost nothing worth entering the keep to fetch."
+   "Go by. The heirs lost nothing worth entering the stone house to fetch."
   ],
   "lines@high": [
-   "You came out with one, so I will not stop you. Go by. The heirs lost nothing worth entering the keep to fetch. The way out will bear one trip. You have used it. Whoever is left inside, the fire takes. Go while you can."
+   "You came out with one, so I will not stop you. Go by. The heirs lost nothing worth entering the stone house to fetch. The way out will bear one trip. You have used it. Whoever is left inside, the fire takes. Go while you can."
   ],
   "fail@low": [
    "No. This one does not go by. Your words do not move me yet."

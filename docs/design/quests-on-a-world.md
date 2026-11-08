@@ -168,6 +168,9 @@ anyone a quest ending leaves standing; journal and objective text written and re
 - **Placement check** (`plugin.sh placecheck`) over every actor and object the plugin places: actors on the winning
   navmesh (0 to 40 above, within 150) and not inside a static or furniture; objects resting on their surface (within
   10; structures may sink, never float); the seed rests failing objects on their surface; 0 failures before deploy.
+- **Models exist** (run with the placement check): every ref the plugin places, and every load-order ref whose bounds
+  hold one of ours (the building a quest uses as a place), has a model that resolves in an archive or loose file of the
+  load order (without case); a host whose model is missing is an empty hill in game, so the quest moves to one that has.
 - **Integration:** parallel work lands as source only; the plugin is re-seeded once on the merged tree and every
   read-back runs on that one build before deploy.
 - **Deploy** the plugin, its ini and the compiled scripts to the play machine; stage-time mod changes with the stack.

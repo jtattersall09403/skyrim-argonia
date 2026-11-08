@@ -2,7 +2,7 @@
 {"quest_id":"quest.bc.bc01","ord":1,"skill":"sneak","use":"steal","reason":"the book is taken from the chest unseen"}
 {"quest_id":"quest.bc.bc01","ord":2,"skill":"sneak","use":"sneak-past","reason":"the two estate men stand the landing at night"}
 {"quest_id":"quest.bc.bc02","ord":0,"skill":"speechcraft","use":"persuade","reason":"the gate-keeper will not let a stranger in"}
-{"quest_id":"quest.bc.bc02","ord":1,"skill":"sneak","use":"sneak-past","reason":"or the player slips into the keep past him"}
+{"quest_id":"quest.bc.bc02","ord":1,"skill":"sneak","use":"sneak-past","reason":"or the player slips into the stone house past him"}
 {"quest_id":"quest.bc.bc03","ord":0,"skill":"speechcraft","use":"interrogate","reason":"the player hears both sides on the dock"}
 {"quest_id":"quest.bc.bc03","ord":1,"skill":"lockpicking","use":"open-a-strongbox","reason":"the tokens' chest on the dock is on a low lock"}
 {"quest_id":"quest.bc.bc03","ord":2,"skill":"speechcraft","use":"persuade","reason":"Heavy-Rope is talked into taking the refusal"}

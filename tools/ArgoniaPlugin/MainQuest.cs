@@ -345,7 +345,7 @@ static class MainQuest
         var dressing = new List<PlacedObject>
         {
             x.Marker("ARG_MQ01_Campfire", new P3Float(fireAt.X, fireAt.Y, fireAt.Z), K("035F49:Skyrim.esm"), 0x400, aftermath, opposite: true), // Campfire01Burning
-            x.Marker("ARG_MQ01_Shed", OnLand(Shed), K("0A53C4:Black Marsh.esm"), 0x400),                       // 01strawhut, the hatching shed (uxith)
+            x.Marker("ARG_MQ01_Shed", OnLand(Shed), K("0A013F:Black Marsh.esm"), 0x400),                       // 01shed, the hatching shed (uxith); 01strawhut's HutExterior.nif is in no archive
             x.Marker("ARG_MQ01_Cutting", OnLand(Cutting), K("1B32E5:Black Marsh.esm"), 0x400),                // 01swamptreecoolmoss, scaled down below
             x.Marker("ARG_MQ01_Hut1", new P3Float(Huts1.X, Huts1.Y, 0), K("0AA5F0:Black Marsh.esm"), 0x400, aftermath, opposite: true), // 001Hut2
             x.Marker("ARG_MQ01_Hut2", new P3Float(Huts2.X, Huts2.Y, 0), K("0AA5F2:Black Marsh.esm"), 0x400, aftermath, opposite: true), // 001hut3

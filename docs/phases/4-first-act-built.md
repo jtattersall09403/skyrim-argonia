@@ -208,6 +208,15 @@ the quest is re-authored.
   three, Tsaxi and the gate keeper, MQ04's camp men (still at the cut root by Low-Reed Village), LQ30's Sei-Wan and
   viper, MQ05's second wasp, MQ01's Ri-Sakka. Never-Sold stands in HouseInt's small house by the hearth, on its floor
   mesh (a named standing actor).
+- **BC02 re-hosted; models must exist (2026-11-08).** BC02's outer post moved from BM&V's keep (cyrkeep.nif, in no
+  archive or folder) to BM&V's walk-in stone house 01Swamphousestone (1307CF, `architecture\Swamp House.nif`, cell
+  0AFE4F at 34,-16 on the shore at Blackrose's east edge; navmesh 0ACC91 on the land inside, bmv_shell class A): the held
+  three, the smoke and the inside zone in its room, Tsaxi, the gate-keeper and the exit zones at its west side; record,
+  12 lines and the journals rewritten (one quest-review, one reader pass). placecheck now also fails a ref of ours, or a
+  host whose bounds hold one of ours, whose model resolves nowhere: 395 checked (102 ours, 293 hosts), 0 failed; it found
+  MQ01's shed (01strawhut, HutExterior.nif missing), now BM&V's 01shed (Shed.nif). Ahkeeh's second friend greeting and
+  Sells-Dear's Dwarven Ruins directions (now naming Helstrom on the route) rewritten. Every read-back PASS; placecheck
+  120/0/0; talk_check 0. Open from review: world_edit rows we.bc02.mesh, we.bc02.name, we.door.rose-jail still describe
+  the old host; the BM&V talkers by the house (1454F2, 1454F3) say nothing of the fire; the doorway's side is unproven.
 - **Known gaps, for the owner walk or later:** what the check cannot prove: how the tilted floor of the Reed's house
-  looks and whether its standing actors settle well; BC02's held three now wait on the hill where BM&V's keep should
-  stand, since its mesh is missing from BM&V's files; and how anything looks.
+  looks and whether its standing actors settle well; and how anything looks.

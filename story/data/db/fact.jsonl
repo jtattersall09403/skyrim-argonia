@@ -45,7 +45,7 @@
 {"id":"fact.bc01.night-men","claim":"Two estate men walk the landing at night.","ord":5,"from_ref":"t4","quest_id":"quest.bc.bc01"}
 {"id":"fact.bc01.put-by","claim":"Never-Sold has put by enough to buy out what the Owing was.","ord":4,"from_ref":"t3","quest_id":"quest.bc.bc01"}
 {"id":"fact.bc01.washed-out","claim":"She has grown grey from years away from her tree.","ord":3,"from_ref":"t2","quest_id":"quest.bc.bc01"}
-{"id":"fact.bc02.fire","claim":"The heirs' outer post, the old keep above Blackrose, is burning, and nobody says how it started. Third-Born Tsaxi keeps its way in.","ord":0,"from_ref":"t1","quest_id":"quest.bc.bc02"}
+{"id":"fact.bc02.fire","claim":"The heirs' outer post, the old stone house on the shore at Blackrose's east edge, is burning, and nobody says how it started. Third-Born Tsaxi keeps its way in.","ord":0,"from_ref":"t1","quest_id":"quest.bc.bc02"}
 {"id":"fact.bc02.one-out","claim":"The way out will bear one trip; whoever is left inside, the fire takes.","ord":2,"from_ref":"t3","quest_id":"quest.bc.bc02"}
 {"id":"fact.bc02.three-held","claim":"Three are bound inside: Says-It-Plain, held for speaking against the heirs; Hides-In-Reeds, held for a killing; and Keeps-The-Old-Count, Rows-For-Another's mother, working off what the heirs reckon she owes.","ord":1,"from_ref":"t2","quest_id":"quest.bc.bc02"}
 {"id":"fact.bc03.break","claim":"Ussa-Rekh promised that a crew who break their tokens before him are done with him.","ord":3,"from_ref":"t1","quest_id":"quest.bc.bc03"}

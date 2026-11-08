@@ -7,7 +7,7 @@
 {"quest_id":"quest.bc.bc02","section":"bondageSheet","value":"The debt: Keeps-The-Old-Count's Owing as the heirs reckon it; Says-It-Plain held for words; Hides-In-Reeds for a killing. The holder: the heirs of the Rose. The exit in law: none they own to. The exit in practice: the fire. What each wants: out."}
 {"quest_id":"quest.bc.bc02","section":"costToTheBound","value":"Two of the three die in the smoke whichever the player chooses; the one brought out is in the Chainbreakers' keeping and cannot go back to the heirs."}
 {"quest_id":"quest.bc.bc02","section":"deadline","value":"the smoke: a line, not a timer; the fire takes the other two only when the first comes away."}
-{"quest_id":"quest.bc.bc02","section":"revealOrder","value":"The fire (k2 at the keep), the three held, then the gate-keeper's word that only one comes out (k1)."}
+{"quest_id":"quest.bc.bc02","section":"revealOrder","value":"The fire (k2 at the stone house), the three held, then the gate-keeper's word that only one comes out (k1)."}
 {"quest_id":"quest.bc.bc03","section":"aftermath","value":"A greeting on the dock changes; nothing later turns on it."}
 {"quest_id":"quest.bc.bc03","section":"bondageSheet","value":"The debt: the crew's last season of hire, owed for the Owings he bought. The holder: Ussa-Rekh. The terms: he hires them out until it is worked. The exit in law: the season's end. The exit in practice: breaking the tokens before him. What they want: done a season early."}
 {"quest_id":"quest.bc.bc03","section":"costToTheBound","value":"With the crew, they lose his hire and must find their own on the dock; with him, they work the season out under him."}

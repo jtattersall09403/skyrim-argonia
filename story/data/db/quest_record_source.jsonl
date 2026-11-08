@@ -2,7 +2,7 @@
 {"quest_id":"quest.bc.bc01","source":"ledger","value":"we.bc01.house, we.bc01.never-sold, we.bc01.members, we.bc01.estate, we.bc01.landing, we.clean.road, we.clean.blackrose"}
 {"quest_id":"quest.bc.bc01","source":"lore"}
 {"quest_id":"quest.bc.bc01","source":"roster","value":"story/design/quests/36-cast-roster.md §56 (Blackrose Chainbreakers; Never-Sold)"}
-{"quest_id":"quest.bc.bc02","source":"bmv","value":"bmv_cell 15635D:Black Marsh.esm (House, navmesh); bmv_cell 095441:Black Marsh.esm (the bmv_shell row of 01cyKeep, class A, with navmesh)"}
+{"quest_id":"quest.bc.bc02","source":"bmv","value":"bmv_cell 15635D:Black Marsh.esm (House, navmesh); bmv_cell 0AFE4F:Black Marsh.esm (the bmv_shell row of 01Swamphousestone, class A, with navmesh 0ACC91)"}
 {"quest_id":"quest.bc.bc02","source":"ledger","value":"we.bc02.gate, we.bc02.fire, we.bc02.mesh, we.bc02.name, we.bc02.people, we.door.rose-jail, we.clean.blackrose"}
 {"quest_id":"quest.bc.bc02","source":"lore"}
 {"quest_id":"quest.bc.bc02","source":"roster","value":"story/design/quests/36-cast-roster.md §56 (Blackrose Chainbreakers; Never-Sold)"}

@@ -13,6 +13,8 @@ using Noggog;
 //   WARN (not a failure): no floor (land, a model's mesh, water) within 40 under the feet: a navmesh over nothing. Settle
 //   moves such an actor to the nearest triangle of the space's navmeshes (within 1200) whose floor is BM&V's own and proven.
 //   A navmesh more than 1000 above or below the feet is another storey and not this actor's.
+//   Models: every ref of ours, and every ref whose bounds hold one of ours (the host a quest uses as a place), fails
+//   when its base's model resolves in no archive or loose file of the load order (Models).
 //   Objects: the bottom of the bounds against the surface nearest it (the land, a static, furniture, a container; fail
 //   floating or sunk by more than 10); a structure (256 or more across) may stand sunk in the ground or the water as
 //   Bethesda sinks foundations, and fails only floating. Markers, zones, effects, lights and merchant chests are skipped.
@@ -34,7 +36,11 @@ static class PlaceCheck
             Console.WriteLine($"  {(r.Fail != null ? "FAIL" : r.Warn ? "WARN" : "PASS")} {r.Where} {r.EditorId} ({r.Ref.IDString()}) at {r.At.X:F0},{r.At.Y:F0},{r.At.Z:F0}: {r.Fail ?? r.Detail}");
         var failed = results.Count(r => r.Fail != null);
         Console.WriteLine($"placecheck: {results.Count} checked, {failed} failed, {results.Count(r => r.Warn)} warned (for the walk)");
-        return failed == 0 ? 0 : 1;
+        var models = Models(mods.Append(ours).ToList(), ours.ModKey, new Surface.Assets(paths));
+        foreach (var r in models.Where(r => r.Fail != null)) Console.WriteLine($"  FAIL model {r.Where} {r.EditorId} ({r.Ref.IDString()}:{r.Ref.ModKey}): {r.Fail}");
+        var mfailed = models.Count(r => r.Fail != null);
+        Console.WriteLine($"placecheck models: {models.Count} checked ({models.Count(r => r.Ref.ModKey == ours.ModKey)} ours, {models.Count(r => r.Ref.ModKey != ours.ModKey)} hosts), {mfailed} failed");
+        return failed + mfailed == 0 ? 0 : 1;
     }
 
     // Seed's last step: every object of ours that fails rests on the surface the check measured (same x, y; z only).
@@ -239,6 +245,71 @@ static class PlaceCheck
             }
             else continue;
             results.Add(new Result(key, where, r.EditorID, p, fail, warn == null ? detail : detail + "; WARN " + warn, fixZ, warn != null, moveTo));
+        }
+        return results;
+    }
+
+    // The model-exists check: every ref of ours, and every load-order ref that hosts one of ours (its rotated, scaled bounds
+    // hold our ref's point, z within 200: the building or floor a quest uses as a place), fails when its base names a model
+    // that resolves in no archive or loose folder of the load order (matched without case, Surface.Assets). Bases with no
+    // model are not checked; a host disabled at start is not a place.
+    public static List<Result> Models(List<ISkyrimModGetter> all, ModKey ours, Surface.Assets assets)
+    {
+        var baseOf = new Dictionary<FormKey, (string? EditorID, string? Model, IObjectBoundsGetter? Bounds)>();
+        foreach (var m in all)
+            foreach (var r in m.EnumerateMajorRecords())
+                if (r is IModeledGetter md && r is not IPlacedGetter)
+                    baseOf[r.FormKey] = (r.EditorID, md.Model?.File.DataRelativePath.Path, (r as IObjectBoundedGetter)?.ObjectBounds);
+        var spaces = new Dictionary<FormKey, (Dictionary<FormKey, (IPlacedObjectGetter r, string where)> objs, List<P3Float> ourAt)>();
+        foreach (var m in all)
+        {
+            void Add(FormKey space, string where, IEnumerable<IPlacedGetter> rs)
+            {
+                if (!spaces.TryGetValue(space, out var d)) spaces[space] = d = ([], []);
+                foreach (var r in rs)
+                {
+                    if (r.FormKey.ModKey == ours && m.ModKey == ours && r.Placement != null) d.ourAt.Add(r.Placement.Position);
+                    if (r is not IPlacedObjectGetter o) continue;
+                    if ((r.MajorRecordFlagsRaw & 0x20) != 0) d.objs.Remove(r.FormKey); else d.objs[r.FormKey] = (o, where);
+                }
+            }
+            foreach (var w in m.Worldspaces)
+            {
+                if (w.TopCell != null) Add(w.FormKey, w.EditorID ?? "", w.TopCell.Persistent.Concat(w.TopCell.Temporary));
+                foreach (var c in w.SubCells.SelectMany(b => b.Items).SelectMany(s => s.Items)) Add(w.FormKey, w.EditorID ?? "", c.Persistent.Concat(c.Temporary));
+            }
+            foreach (var c in m.Cells.Records.SelectMany(b => b.SubBlocks).SelectMany(s => s.Cells)) Add(c.FormKey, c.EditorID ?? c.FormKey.ToString(), c.Persistent.Concat(c.Temporary));
+        }
+        var exists = new Dictionary<string, bool>(StringComparer.OrdinalIgnoreCase);
+        bool Resolves(string model)
+        {
+            if (exists.TryGetValue(model, out var e)) return e;
+            var rel = model.Replace('/', '\\'); if (!rel.StartsWith("meshes\\", StringComparison.OrdinalIgnoreCase)) rel = "meshes\\" + rel;
+            return exists[model] = assets.Read(rel) != null;
+        }
+        var results = new List<Result>();
+        foreach (var (space, (objs, at)) in spaces)
+        {
+            if (at.Count == 0) continue;
+            foreach (var (r, where) in objs.Values)
+            {
+                if (r.Placement is not { } pl || !baseOf.TryGetValue(r.Base.FormKey, out var b) || string.IsNullOrEmpty(b.Model)) continue;
+                if (r.FormKey.ModKey != ours)
+                {
+                    if ((r.MajorRecordFlagsRaw & 0x800) != 0 || b.Bounds is not { } ob) continue;
+                    var s = r.Scale ?? 1; var rot = Surface.RefRot(pl.Rotation);
+                    var inv = new[] { rot[0], rot[3], rot[6], rot[1], rot[4], rot[7], rot[2], rot[5], rot[8] };
+                    bool Holds(P3Float p)
+                    {
+                        if (MathF.Abs(p.X - pl.Position.X) > 8000 || MathF.Abs(p.Y - pl.Position.Y) > 8000) return false;
+                        var d = Surface.Mul(inv, new P3Float(p.X - pl.Position.X, p.Y - pl.Position.Y, p.Z - pl.Position.Z), 1 / s);
+                        return d.X >= ob.First.X && d.X <= ob.Second.X && d.Y >= ob.First.Y && d.Y <= ob.Second.Y && d.Z >= ob.First.Z - 200 / s && d.Z <= ob.Second.Z + 200 / s;
+                    }
+                    if (!at.Any(Holds)) continue;
+                }
+                var ok = Resolves(b.Model!);
+                results.Add(new Result(r.FormKey, where, b.EditorID ?? r.EditorID, pl.Position, ok ? null : $"model {b.Model} is in no archive or loose folder of the load order", b.Model!, null, false));
+            }
         }
         return results;
     }

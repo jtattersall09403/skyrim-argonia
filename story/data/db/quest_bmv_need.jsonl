@@ -1,5 +1,4 @@
-{"quest":"quest.bc.bc02","target":"000811:Dawnguard.esm","what":"the cell's 67 refs as the outer post's cells (walkable shape and pieces to be confirmed in xEdit at build)"}
-{"quest":"quest.bc.bc02","target":"095447:Black Marsh.esm","what":"the gate square at BM&V's 'Black Rose Jail' marker, the outer post's site"}
+{"quest":"quest.bc.bc02","target":"0AFE4F:Black Marsh.esm","what":"the stone house 1307CF (01Swamphousestone, navmesh 0ACC91, one room) as the outer post; Tsaxi and the second gate-keeper stand at its west side"}
 {"quest":"quest.local.lq25","target":"0D7723:Black Marsh.esm","what":"the dive under the landing pier to the pilings, where the crocodile lairs, is deep enough to swim: measured at build"}
 {"quest":"quest.local.lq30","target":"08D5E9:Black Marsh North.esp","what":"Helstrom's soldier at the gate who will not follow"}
 {"quest":"quest.local.lq30","target":"0D7883:Black Marsh.esm","what":"the basin east of the gate along the cut reeds is swimmable and its Heart-Mud lies where the trail runs: measured at build"}

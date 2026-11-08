@@ -156,8 +156,8 @@ sinks or stands in a wall.
       the trapdoor north of Pusbottom, Bent-Spine, the lockbox in the deep water (does the horker-tusk "Worn Bone Figurine"
       pass as a bone trinket?).
 - [ ] **7.6 Chainbreakers (BC01 to BC03).** In Blackrose, Never-Sold sends you to the estate landing* north of town;
-      Rows-For-Another down the channel at night; then the fire in the keep* west of the jail (BC02); then Heavy-Rope and
-      Ussa-Rekh on Soulrest's open dock (BC03).
+      Rows-For-Another down the channel at night; then the fire in the old stone house* on the shore at Blackrose's east
+      edge, its two gate-keepers outside its west wall (BC02); then Heavy-Rope and Ussa-Rekh on Soulrest's open dock (BC03).
 - [ ] **7.7 Warmth and afterwards.** A quest person you have helped greets you more warmly than a stranger does. After
       BC01 ends, speak to Rows-For-Another: a short greeting about being out of the estate's hands (say the line, or
       "silent").
