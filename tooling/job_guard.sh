@@ -23,6 +23,8 @@
 #   machine take its lock in .seq order. JOBS_DIR overrides the spool directory (tests).
 set -euo pipefail
 JOBS="${JOBS_DIR:-$HOME/.argonia/jobs}"; mkdir -p "$JOBS"
+# Wait N seconds without CPU: read on a FIFO opened read-write blocks until the timeout (a read on /dev/zero spun a core).
+idle_wait() { [ -p "$JOBS/.wait.fifo" ] || mkfifo "$JOBS/.wait.fifo" 2>/dev/null || true; read -r -t "$1" <> "$JOBS/.wait.fifo" 2>/dev/null || true; }
 cmd=${1:-}; shift || true
 # Parses an optional --gpu[=machine] from "$@" (sets gpu, ARGONIA_PLAY, lock, and shifts via $shiftn).
 parse_gpu() {
@@ -72,7 +74,7 @@ launch() {
       echo "$unit" > "$JOBS/$name.unit"
       local i; jpid=0  # the main pid, once the unit has one; a unit already gone finished (its rc says so)
       for i in $(seq 40); do jpid=$(systemctl --user show -p MainPID --value "$unit" 2>/dev/null || echo 0)
-        [ "${jpid:-0}" != 0 ] || ! systemctl --user is-active -q "$unit" 2>/dev/null && break; read -t 0.1 < /dev/zero 2>/dev/null || true; done
+        [ "${jpid:-0}" != 0 ] || ! systemctl --user is-active -q "$unit" 2>/dev/null && break; idle_wait 0.1; done
       jpid=${jpid:-0}; return 0
     fi
   fi
@@ -101,7 +103,7 @@ case "$cmd" in
     done ;;
   _keepalive)  # a --gpu job holding the machine lock keeps the machine's busy flag fresh (idle-stop reads it, 15 min) every 5 min; killed when the job ends
     run=${GPU_KEEPALIVE_RUN:-$(dirname "$(readlink -f "$0")")/../infra/gpu-box/run.sh}
-    while :; do bash "$run" --machine "$1" ps 'exit 0' >/dev/null 2>&1 || true; read -t "${GPU_KEEPALIVE_S:-300}" < /dev/zero 2>/dev/null || true; done ;;
+    while :; do bash "$run" --machine "$1" ps 'exit 0' >/dev/null 2>&1 || true; idle_wait "${GPU_KEEPALIVE_S:-300}"; done ;;
   reserve|release)
     parse_gpu "$@"; shift $shiftn
     [ $gpu = 1 ] || { export ARGONIA_PLAY="${ARGONIA_PLAY:-argonia-play}"; parse_gpu --gpu; }
@@ -159,7 +161,7 @@ case "$cmd" in
         # The job may have written its result and exited between the two checks: look once more before calling it dead.
         if [ -f "$JOBS/$name.rc" ]; then continue; fi
         echo "job $name died without a result (gpu lock busy?)"; tail -5 "$JOBS/$name.log"; exit 1; fi
-      read -t 5 < /dev/zero 2>/dev/null || true
+      idle_wait 5
     done
     echo "job $name still running"; tail -3 "$JOBS/$name.log"; exit 3 ;;
   status)

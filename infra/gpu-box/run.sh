@@ -11,6 +11,8 @@
 #   run.sh start | stop             start or stop the instance
 #   run.sh up                       start it whatever its state: waits out a stop still in progress first
 set -euo pipefail
+# Wait N seconds without CPU: read on a private FIFO opened read-write blocks until the timeout (a read on /dev/zero spun a core).
+idle_wait() { local f; f=$(mktemp -u); mkfifo "$f" && { read -r -t "$1" <> "$f" 2>/dev/null; rm -f "$f"; }; return 0; }
 case "${1:-}" in --machine) export ARGONIA_PLAY=$2; shift 2 ;; --machine=*) export ARGONIA_PLAY=${1#--machine=}; shift ;; esac
 M=${ARGONIA_PLAY:-argonia-play}
 case "$M" in argonia-play|argonia-play-[0-9a-z]*) ;; *) echo "no such game machine: $M" >&2; exit 2 ;; esac
@@ -75,7 +77,7 @@ ps() {  # a connection failure (255) with a cached address re-reads it once: the
   return $rc
 }
 wait_ssh() {
-  local i; for i in $(seq 1 24); do ps 'hostname' >/dev/null 2>&1 && return 0; read -t 10 < /dev/zero 2>/dev/null || true; done
+  local i; for i in $(seq 1 24); do ps 'hostname' >/dev/null 2>&1 && return 0; idle_wait 10; done
   echo "no SSH after 4 minutes" >&2; return 1
 }
 
@@ -126,14 +128,14 @@ Get-Content $o -EA SilentlyContinue' ;;
       echo "$out"
       grep -q REBOOT-NEEDED <<<"$out" || exit 0
       echo "rebooting (pass $pass)"; ps 'Restart-Computer -Force' >/dev/null 2>&1 || true
-      read -t 45 < /dev/zero 2>/dev/null || true; wait_ssh
+      idle_wait 45; wait_ssh
     done ;;
   up)
     for i in $(seq 1 60); do
       s=$(aws ec2 describe-instances --region $R --instance-ids "$(id)" --query 'Reservations[0].Instances[0].State.Name' --output text)
       [ "$s" = running ] && { wait_ssh; echo "running at $(ip)"; exit 0; }
       [ "$s" = stopped ] && break
-      read -t 10 < /dev/zero 2>/dev/null || true
+      idle_wait 10
     done
     # A spot instance reads "stopped" a few seconds before its spot request settles; a start in that gap fails
     # with IncorrectSpotRequestState (seen 2026-10-29), so retry for a minute.
@@ -141,7 +143,7 @@ Get-Content $o -EA SilentlyContinue' ;;
     for i in $(seq 1 12); do
       out=$(aws ec2 start-instances --region $R --instance-ids "$(id)" 2>&1) && break
       grep -q InsufficientInstanceCapacity <<<"$out" && { echo "$M: no spot capacity in $R now" >&2; exit 3; }
-      read -t 5 < /dev/zero 2>/dev/null || true
+      idle_wait 5
     done
     wait_ssh; echo "running at $(ip)" ;;
   start) aws ec2 start-instances --region $R --instance-ids "$(id)" >/dev/null; wait_ssh; echo "running at $(ip)" ;;
@@ -158,7 +160,7 @@ Get-Content $o -EA SilentlyContinue' ;;
     # step, 2026-11-03 09:41) deployed onto a machine that was going down, so wait until the state has moved
     for i in $(seq 1 12); do
       s=$(aws ec2 describe-instances --region $R --instance-ids "$(id)" --query 'Reservations[0].Instances[0].State.Name' --output text 2>/dev/null)
-      [ "$s" != running ] && break; read -t 2 < /dev/zero 2>/dev/null || true
+      [ "$s" != running ] && break; idle_wait 2
     done
     echo "stopping $M" ;;
   *) sed -n '2,10p' "$0"; exit 2 ;;
