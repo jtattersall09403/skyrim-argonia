@@ -266,12 +266,11 @@ static class NewWorld
         }
         void NightFog(Mutagen.Bethesda.Skyrim.Weather w)
         {
-            w.FogDistance ??= new WeatherFogDistance();
-            w.FogDistance.NightNear = 0; w.FogDistance.NightFar = 8000; w.FogDistance.NightPower = 0.4f; w.FogDistance.NightMax = 0.75f;
+            w.FogDistanceNightNear = 0; w.FogDistanceNightFar = 8000; w.FogDistanceNightPower = 0.4f; w.FogDistanceNightMax = 0.75f;
         }
         var clear = Copy("SkyrimClear", "ANW_ClearMorningMist", NightFog);
         var cloudy = Copy("SkyrimCloudy", "ANW_CloudyMorningMist", NightFog);
-        var after = Copy("SkyrimFog", "ANW_AfterRainFog", w => { w.FogDistance ??= new WeatherFogDistance(); w.FogDistance.DayFar = 15000; });
+        var after = Copy("SkyrimFog", "ANW_AfterRainFog", w => w.FogDistanceDayFar = 15000);
         var key = new Dictionary<string, FormKey>
         {
             ["SkyrimFog"] = fc.Find("Skyrim.esm", "SkyrimFog").FormKey, ["SkyrimOvercastRain"] = fc.Find("Skyrim.esm", "SkyrimOvercastRain").FormKey,
@@ -290,10 +289,11 @@ static class NewWorld
         var climKey = fc.Get("Black Marsh.esm", "BlackMarshClimate", forceCopy: true);
         var clim = mod.Climates[climKey];
         clim.EditorID = "ANW_BlackMarshClimate";
-        clim.Weathers.Clear();
-        clim.Weathers.AddRange(Mix(JsonDocument.Parse("{\"SkyrimFog\":45,\"SkyrimOvercastRain\":20,\"SkyrimStormRain\":20,\"SkyrimCloudy\":10,\"SkyrimClear\":5}").RootElement));
-        clim.SunriseBegin = new DateTime(1, 1, 1, 5, 0, 0); clim.SunriseEnd = new DateTime(1, 1, 1, 12, 0, 0);
-        clim.SunsetBegin = new DateTime(1, 1, 1, 17, 0, 0); clim.SunsetEnd = new DateTime(1, 1, 1, 22, 0, 0);
+        clim.WeatherTypes ??= new ExtendedList<WeatherType>();
+        clim.WeatherTypes.Clear();
+        clim.WeatherTypes.AddRange(Mix(JsonDocument.Parse("{\"SkyrimFog\":45,\"SkyrimOvercastRain\":20,\"SkyrimStormRain\":20,\"SkyrimCloudy\":10,\"SkyrimClear\":5}").RootElement));
+        clim.SunriseBegin = new TimeOnly(5, 0); clim.SunriseEnd = new TimeOnly(12, 0);
+        clim.SunsetBegin = new TimeOnly(17, 0); clim.SunsetEnd = new TimeOnly(22, 0);
         return (climKey, Mix);
     }
 
@@ -439,11 +439,68 @@ static class NewWorld
             using var mm = SkyrimMod.CreateFromBinaryOverlay(Path.Combine(data, m), Rel, Survey.NoStrings);
             foreach (var r in mm.EnumerateMajorRecords()) if (r.EditorID is { } ed && (ed.Equals(StartCell, StringComparison.OrdinalIgnoreCase) || ed.Equals(WorldEdid, StringComparison.OrdinalIgnoreCase))) Fail($"{ed} also in {m}");
         }
+        // asset-only plugins: never a master, never a link target (owner ruling 2026-11-08)
+        using var bmc = SkyrimMod.CreateFromBinaryOverlay(Path.Combine(data, "Black Marsh.esm"), Rel, Survey.NoStrings);
+        var allowed = bmc.ModHeader.MasterReferences.Select(m => m.Master).Append(bmc.ModKey).Append(mod.ModKey).ToHashSet();
+        foreach (var m in masters) if (!allowed.Contains(ModKey.FromFileName(m))) Fail($"master {m} is not allowed");
+        long links = 0, badLinks = 0;
+        foreach (var r in mod.EnumerateMajorRecords())
+            foreach (var l in r.EnumerateFormLinks())
+            {
+                links++;
+                if (!l.IsNull && !allowed.Contains(l.FormKey.ModKey)) { badLinks++; Fail($"{r.FormKey} links into {l.FormKey.ModKey}"); }
+            }
+        // ground layers, water types, regions, refs
+        var ours = mod.LandscapeTextures.ToDictionary(t => t.FormKey);
+        var layerHist = new long[8]; long quads = 0, badLayers = 0;
+        var watrCells = new Dictionary<string, int>(); long regionCells = 0, cellsAll = 0;
+        var regionName = mod.Regions.ToDictionary(r => r.FormKey, r => r.EditorID ?? "");
+        var refsByRegion = new Dictionary<string, int>(); var refsByBase = new Dictionary<FormKey, int>();
+        using var sky = SkyrimMod.CreateFromBinaryOverlay(Path.Combine(data, "Skyrim.esm"), Rel, Survey.NoStrings);
+        var watrName = sky.Waters.ToDictionary(w => w.FormKey, w => w.EditorID ?? "");
+        foreach (var w in mod.Waters) watrName[w.FormKey] = w.EditorID ?? "";
+        foreach (var b in ws.SubCells) foreach (var sb in b.Items) foreach (var c in sb.Items)
+        {
+            cellsAll++;
+            var wn = c.Water.IsNull ? "(world) " + watrName.GetValueOrDefault(ws.Water.FormKey, ws.Water.FormKey.ToString()) : watrName.GetValueOrDefault(c.Water.FormKey, c.Water.FormKey.ToString());
+            watrCells[wn] = watrCells.GetValueOrDefault(wn) + 1;
+            var reg = c.Regions?.FirstOrDefault();
+            if (reg is not null) regionCells++;
+            foreach (var r in c.Temporary.OfType<IPlacedObjectGetter>())
+            {
+                if (r.EditorID == StartMarker) continue;
+                refsByBase[r.Base.FormKey] = refsByBase.GetValueOrDefault(r.Base.FormKey) + 1;
+                var rn = reg is null ? "(none)" : regionName.GetValueOrDefault(reg.FormKey, "?");
+                refsByRegion[rn] = refsByRegion.GetValueOrDefault(rn) + 1;
+            }
+            var l = c.Landscape;
+            if (l?.Layers is null) continue;
+            foreach (var g in l.Layers.GroupBy(x => x.Header!.Quadrant))
+            {
+                quads++;
+                var bases = g.Where(x => x is not IAlphaLayerGetter).ToList();
+                var alphas = g.OfType<IAlphaLayerGetter>().ToList();
+                layerHist[Math.Min(alphas.Count + bases.Count, 7)]++;
+                bool ok = bases.Count == 1 && alphas.Count <= 6 && alphas.Select(x => (int)x.Header!.LayerNumber).SequenceEqual(Enumerable.Range(0, alphas.Count))
+                          && g.All(x => ours.ContainsKey(x.Header!.Texture.FormKey))
+                          && alphas.All(x => x.AlphaLayerData is { } d && d.All(p => p.Opacity > 0 && p.Opacity <= 1.0001f && p.Position < 289));
+                if (!ok && badLayers++ < 5) Fail($"cell {c.Grid?.Point} quadrant {g.Key}: bad layers ({bases.Count} base, {alphas.Count} alpha)");
+            }
+        }
+        if (quads != 4L * expected) Fail($"{quads} painted quadrants, expected {4L * expected}");
+        if (regionCells != cellsAll) Fail($"{cellsAll - regionCells} cells without a region");
+        var grassy = mod.LandscapeTextures.Count(t => t.Grasses?.Count > 0);
         var stats = man.Root.GetProperty("stats");
         Console.WriteLine($"newworld check: {esmPath} ({new FileInfo(esmPath).Length} bytes), build {man.BuildId}");
         Console.WriteLine($"  cells {heights.Count}/{expected} with LAND; vertices {verts}; max height error {maxErr:F2} units ({maxErr / 70:F3} m) at {maxAt}; >half-step {over4}");
         Console.WriteLine($"  seams {seamEdges} edges, {seamBad} mismatches; VHGT overflow pairs before/after limiter {stats.GetProperty("overflow_pairs_before")}/{stats.GetProperty("overflow_pairs_after")}, limited vertices {stats.GetProperty("limited_vertices")}");
         Console.WriteLine($"  water: WRLD default {ws.LandDefaults?.DefaultWaterHeight}, cells off {wrongWater}; {markerLine}; coc {StartCell} (unique)");
+        Console.WriteLine($"  masters {string.Join(", ", masters)}; {links} links, {badLinks} into asset-only plugins");
+        Console.WriteLine($"  ground: {quads} quadrants, layers per quadrant (base + alpha) {string.Join(" ", layerHist.Select((n, i) => $"{i}:{n}").Skip(1))}, bad {badLayers}; our LTEX {ours.Count} ({grassy} with grass)");
+        Console.WriteLine($"  water types by cell: {string.Join(", ", watrCells.OrderByDescending(x => x.Value).Select(x => $"{x.Key} {x.Value}"))}");
+        Console.WriteLine($"  regions: {mod.Regions.Count} REGN, cells with a region {regionCells}/{cellsAll}; climate {ws.Climate.FormKey}");
+        Console.WriteLine($"  refs by region: {string.Join(", ", refsByRegion.OrderByDescending(x => x.Value).Select(x => $"{x.Key} {x.Value}"))}");
+        Console.WriteLine($"  refs by base: {string.Join(", ", refsByBase.OrderByDescending(x => x.Value).Select(x => $"{x.Key} {x.Value}"))}");
         Console.WriteLine($"  {(fails.Count == 0 ? "PASS" : "FAIL")} in {sw.Elapsed.TotalSeconds:F1} s");
         foreach (var f in fails) Console.WriteLine($"  FAIL {f}");
         return fails.Count == 0 ? 0 : 1;
