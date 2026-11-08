@@ -321,19 +321,24 @@ def stage_nested(m, key, archive, src, data, progress, unpack_fn=None, unrar_fn=
     if r.fresh:
         shutil.rmtree(data, ignore_errors=True)
         shutil.rmtree(src, ignore_errors=True)
-    if not r.done("unpack"):
+    todo = [name for name in m["nested"] if not r.done(f"rar:{name}")]
+    need = bool(todo) or bool(m.get("keep") and not r.done("textures"))  # the archive's rars are still read
+    # the unpacked tar is removed once every inner rar is laid, before the checks that follow; a rerun after one of
+    # those failed (2026-11-08: the completeness check) has nothing left to unpack, and one with a rar still to lay
+    # unpacks again if the tar's copy is gone
+    if need and (not r.done("unpack") or not src.exists()):
         unpack_fn(archive, src)
         r.mark("unpack")
         print(f"  {m['id']}: unpacked the archive", flush=True)
     data.mkdir(parents=True, exist_ok=True)
     inners = {}
-    for name in m["nested"]:
+    for name in (m["nested"] if need else []):
         inner = ci(data_root(src), name)
         if inner is None:
             raise SystemExit(f"{m['id']}: {name} not in the archive")
         inners[name] = inner
     sel = None
-    if m.get("keep"):
+    if m.get("keep") and need:
         listings = {name: list_fn(inner) for name, inner in inners.items()}
         sel = keep_select(listings, m)
         print(f"  {m['id']}: extraction list {sum(len(v) for v in sel.values())} of "
@@ -528,6 +533,14 @@ def place(m, src, data, tools, root):
     return []
 
 
+def left_out_on_purpose(p, m):
+    """An archive path (lower case, '/') that prune removes on purpose: tool leftovers, or the row's own `drop` list
+    (BM&V's ELFX-edited meshes, 2026-11-08: the completeness check failed the stage on all 62)."""
+    if p.endswith((".bat", ".pdb")) or (pathlib.PurePath(p).name.startswith("put your ") and p.endswith(".txt")):
+        return True
+    return any(fnmatch.fnmatch(p, d.lower()) or p.startswith(d.lower().rstrip("/") + "/") for d in m.get("drop", []))
+
+
 def complete_nested(m, archive, data):
     """Every file of a nested row's inner archives is laid (owner, 2026-11-05: 100% of BM&V, nothing missing): list each
     inner rar's files with `unrar lt` and fail on any not in the staged copy, bar what prune removes on purpose."""
@@ -545,8 +558,7 @@ def complete_nested(m, archive, data):
                 elif line.startswith("Type: ") and line[6:] == "File" and name:
                     want.add(name.replace("\\", "/").lower())
     have = {str(f.relative_to(data)).lower() for f in data.rglob("*") if f.is_file()}
-    on_purpose = lambda p: p.endswith((".bat", ".pdb")) or (pathlib.PurePath(p).name.startswith("put your ") and p.endswith(".txt"))
-    missing = sorted(p for p in want - have if not on_purpose(p))
+    missing = sorted(p for p in want - have if not left_out_on_purpose(p, m))
     if missing:
         raise SystemExit(f"{m['id']}: {len(missing)} archive files not laid, e.g. {missing[:3]}")
     print(f"  {m['id']}: complete: {len(want)} archive files, all laid")
@@ -752,7 +764,7 @@ def cmd_stage(a):
                 if m.get("install") == "tool":  # a tool is never a mod: nothing of it reaches Data
                     shutil.rmtree(tools / m["id"], ignore_errors=True)
                 taken = place(m, src, data, tools, root)
-            shutil.rmtree(src)
+            shutil.rmtree(src, ignore_errors=True)
             prune(data, m)
             if m.get("nested") and not m.get("keep"):
                 complete_nested(m, archive_path(m), data)

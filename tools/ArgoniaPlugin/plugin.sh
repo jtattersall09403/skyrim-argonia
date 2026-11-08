@@ -26,7 +26,10 @@ loadorder() {  # the staged profile's plugins after the game's, as stack.py lays
   for c in ccBGSSSE001-Fish.esm ccQDRSSE001-SurvivalMode.esl ccBGSSSE037-Curios.esl ccBGSSSE025-AdvDSGS.esm _ResourcePack.esl; do
     [ -f "$data/$c" ] && lo+=("$data/$c"); done
   while read -r p; do p=${p#\*}; [ -n "$p" ] || continue
-    f=$(compgen -G "$mo2/mods/*/$p" | head -1) || true; [ -n "$f" ] || { echo "not staged: $p" >&2; exit 1; }; lo+=("$f")
+    # the copy that wins in MO2: modlist.txt lists the highest priority first (rim-parry-ctd-fix's
+    # RimExecutionHitSA.esp over rim-parry's; a glob took the alphabetical first)
+    f=""; while read -r m; do [ -f "$mo2/mods/$m/$p" ] && { f="$mo2/mods/$m/$p"; break; }; done < <(tr -d '\r' < "$mo2/profiles/Argonia/modlist.txt" | sed -n 's/^+//p')
+    [ -n "$f" ] || { echo "not staged: $p" >&2; exit 1; }; lo+=("$f")
   done < <(tr -d '\r' < "$mo2/profiles/Argonia/plugins.txt" | grep -v -i '^\*\?argonia\.esp$')
 }
 case "${1:-}" in

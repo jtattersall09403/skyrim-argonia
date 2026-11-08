@@ -107,3 +107,28 @@ def test_send_tar_resends_only_unmarked_parts(tmp_path, monkeypatch):
     assert sorted(p.name for p in machine.iterdir()) == first  # only the lost part came back
     stack.send_tar(src, out, "m", "d2")  # new content: markers of d1 are dropped
     assert not (out / "parts" / "m-d1").exists()
+
+
+def test_rerun_after_tar_removed(tmp_path):
+    # every rar laid, then the caller removed the unpacked tar and a later check failed (2026-11-08): the rerun lays
+    # nothing and needs no tar
+    import shutil
+    calls, up, unrar = rig(tmp_path)
+    run_stage(tmp_path, "k1", up, unrar)
+    shutil.rmtree(tmp_path / "src")
+    calls.clear()
+    r = run_stage(tmp_path, "k1", up, unrar)
+    assert calls == [] and not r.fresh
+
+
+def test_rerun_with_rar_left_and_tar_gone_unpacks_again(tmp_path, monkeypatch):
+    import shutil
+    calls, up, unrar = rig(tmp_path)
+    monkeypatch.setenv("KILL_AT", "Data2.rar")
+    with pytest.raises(Killed):
+        run_stage(tmp_path, "k1", up, unrar)
+    monkeypatch.delenv("KILL_AT")
+    shutil.rmtree(tmp_path / "src")
+    calls.clear()
+    run_stage(tmp_path, "k1", up, unrar)
+    assert calls == ["unpack", "Data2.rar"]
