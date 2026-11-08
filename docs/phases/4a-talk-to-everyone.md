@@ -34,7 +34,9 @@ The owner found Lilmoth's 30 "much better", with four faults, each now a rule of
 
 **State (2026-11-08).** Recipe v2 tooling in: `talk_route` (routes), `talk_check` (facts, names, warm address,
 greetings), Talk.cs greetings by relationship rank, lint B11, the skill `talk-write`. Lilmoth's 30: facts and names
-redone (7 lore facts dropped, 22 directions routed, 7 renamed; facts 0, names 0); lines being rewritten.
+redone (7 lore facts dropped, 22 directions routed, 7 renamed; facts 0, names 0); 210 lines rewritten by 30
+writers (about 26,000 Sonnet tokens each, 25 to 45 s) and one reader pass (55,000), loaded; seed, check and
+`talk_check` 0 problems (30 talkers). Owner walk owed: the v2 lines in game.
 
 ## The census (`bmv_talker`, `python3 -m tools.argonia_world.talk_census build`)
 
