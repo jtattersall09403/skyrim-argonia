@@ -41,37 +41,68 @@ CLOSE = 60 * UNITS_M    # under this, in a near-straight line: paces and a compa
 TURN = 700.0            # Douglas-Peucker tolerance: a bend this far off the line is a turn
 REACH = 1600.0          # a leg's landmark lies this close to its end
 MIN_LEG = 1400.0        # a run shorter than this merges into the one before
-MAX_LEGS = 6            # a longer telling keeps only its longest legs, merged at the short ones
+SPACE = 3000.0          # two cuts of a telling stand at least this far apart along the path
+MAX_LEGS = 4            # Morrowind gives two to four legs
+RARE = 3000.0           # a landmark is distinctive when no other of its look stands this close
+SAME = 800.0            # pieces of one thing (a dock's planks, a waterfall's sheets) stand this close
 CLIMB = 700.0           # a leg rising this much is a climb
 WATER_FLAG = 0x0200     # NVNM triangle flag: on water
 BASE_SIGS = {"STAT", "SCOL", "TREE", "ACTI", "FURN", "CONT", "FLOR", "DOOR", "LIGH", "MSTT"}
 
-# What a person calls a thing, from its base's model path or editor id (lower case), most notable first: kind,
-# pattern, the phrase (what the player sees), weight.
+# What a person calls a thing, from its base's model path or editor id (lower case), most notable first: kind (the
+# class talk_check knows), pattern, the phrase (what the player sees, from what the model shows), weight, least size.
 LANDMARK = [
-    ("wreck", r"wreck|sunken", "the wrecked ship", 9, 600),
-    ("ship", r"shiplarge|shipimperial|imperialship|shipsail|longboat|caravel|carrack|galleon|daintysload",
-     "the big ship", 9, 1800),
-    ("rowboat", r"rowboat", "the rowing boat", 6, 400),
-    ("boat", r"(?<![a-z])boat|canoe", "the boat", 6, 400),
-    ("shrine", r"shrine", "the wayshrine", 8, 300),
-    ("statue", r"statue|totem|idol|obelisk|monument|standingstone", "the standing stone", 8, 300),
-    ("hist", r"(?<![a-z])hist(?!le)", "the Hist tree", 9, 600),
-    ("bigtree", r"treegiant|giant.?tree|treemere|bigtree|tree.*(huge|large|giant|big)", "the great tree", 7, 1200),
-    ("ruinhouse", r"destroyed|burnt|burned", "the ruined house", 7, 900),
-    ("ruin", r"ruins?|xanmeer|ziggurat|ayleid|dwemer", "the ruin", 8, 900),
-    ("lighthouse", r"lighthouse(?!fire)", "the lighthouse", 9, 1000),
-    ("tower", r"tower", "the tower", 7, 900),
+    ("wreck", r"wreck|sunken", "the wrecked boat", 10, 600),
+    ("ship", r"shiplargedaintysload|shiplarge|imperialship|shipimperial|caravel|carrack|galleon", "the big ship", 10,
+     1800),
+    ("ship", r"shiplongboat", "the longboat", 7, 600),
+    ("rowboat", r"rowboat", "the rowing boat", 5, 400),
+    ("boat", r"boatracked", "the boat on its rack", 5, 400),
+    ("boat", r"(?<![a-z])boat|canoe", "the boat", 5, 400),
+    ("shrine", r"wshrn|wayshrine", "the wayshrine", 10, 300),
+    ("shrine", r"shrine", "the shrine", 9, 300),
+    ("statue", r"statuewithsword", "the statue with the sword", 9, 300),
+    ("statue", r"standingstone|obelisk|monument", "the standing stone", 9, 300),
+    ("statue", r"totem|idol", "the totem", 8, 300),
+    ("statue", r"statue", "the statue", 8, 300),
+    ("hist", r"(?<![a-z])hist(?!le)", "the Hist tree", 10, 600),
+    ("bigtree", r"giantredwood|treegiant|giant.?tree|bigtree", "the giant tree", 7, 1200),
+    ("bigtree", r"vurt_deadtree|deadtree|treepineforestdead", "the dead tree", 6, 600),
+    ("ruinhouse", r"destroyed|burnt|burned", "the burnt-out house", 7, 900),
+    ("ruin", r"dwemer|dwespecial|dweruin", "the Dwemer ruin", 9, 900),
+    ("ruin", r"ayleid|arcolumn", "the old stone columns", 8, 600),
+    ("ruin", r"xanmeer|ziggurat", "the stepped ruin", 9, 900),
+    ("ruin", r"ruins?", "the ruin", 8, 900),
+    ("gate", r"obgate", "the red Daedric gate", 10, 500),
+    ("tower", r"cyrkeep", "the stone keep", 8, 1000),
+    ("lighthouse", r"lighthouse(?!fire)", "the lighthouse", 10, 1000),
+    ("tower", r"tower\w*dark", "the dark tower", 8, 900),
+    ("tower", r"tower", "the stone tower", 8, 900),
     ("bridge", r"bridge", "the bridge", 7, 600),
-    ("dock", r"\\docks?\\|dock\d|dockstr|dockpier|pier|jetty", "the dock", 6, 500),
+    ("waterfall", r"fxwaterfall(?!mist)", "the waterfall", 8, 1500),
+    ("graveyard", r"graveyardfence", "the graveyard", 7, 300),
+    ("bones", r"cobrabones|dragonbones|whalebone", "the great bones", 9, 500),
+    ("dock", r"dlc2rrdockpier|rtdockpier|pier|jetty", "the pier", 5, 500),
+    ("dock", r"\\docks?\\|dock\d|dockstr|dockpier", "the dock", 3, 500),
+    ("hut", r"stilthouse", "the stilt house", 6, 500),
+    ("hut", r"bamboohut", "the bamboo hut", 6, 400),
+    ("hut", r"alhut|hidehut", "the hide hut", 6, 400),
+    ("hut", r"shack", "the shack", 5, 400),
     ("hut", r"hut", "the hut", 5, 500),
-    ("house", r"house|haus|manor|longhs", "the house", 5, 800),
-    ("tent", r"tent(?!acle)", "the tent", 5, 300),
+    ("house", r"swamp house", "the swamp house", 5, 800),
+    ("house", r"tavern", "the big inn", 6, 800),
+    ("house", r"manor|castlehouse", "the big stone house", 6, 800),
+    ("house", r"farmhouse|bauernhaus", "the farmhouse", 5, 800),
+    ("house", r"house|haus|longhs", "the house", 4, 800),
+    ("tent", r"largeimperialtent", "the big tent", 5, 300),
+    ("tent", r"tent(?!acle)", "the tent", 4, 300),
     ("signpost", r"signpost|roadsign|directionsign", "the signpost", 8, 0),
     ("well", r"\\well|well\d", "the well", 5, 200),
+    ("cart", r"brokencart", "the broken cart", 6, 300),
     ("cart", r"cart\b|cart\d|wagon", "the cart", 4, 300),
-    ("spit", r"firespit|campfire|firepit", "the cooking fire", 4, 250),
-    ("cave", r"caveentr|cave.*entrance|mineentr", "the cave mouth", 7, 300),
+    ("spit", r"giantcampfire", "the big fire pit", 5, 250),
+    ("spit", r"firespit|campfire|firepit", "the cooking fire", 3, 250),
+    ("cave", r"caveentr|cave.*entrance|mineentr", "the cave mouth", 8, 300),
 ]
 NOT_LANDMARK = re.compile(r"ingrd|flora|workbench|wall|roof|stair|porch|int\d*$|int\.nif|clutter|lighthousefire|"
                           r"rock|door")
@@ -196,6 +227,20 @@ class World:
                     named = r["name"] if r["name"] and k in ("shrine", "statue", "ruin", "ship") else None
                     r["lm"] = (k, named or ph, w + min(3.0, r["size"] / 1500))
                     break
+        # distinctiveness: others of the same look near it (beyond its own pieces) make it a poor landmark
+        cells: dict[tuple, list] = {}
+        for r in self.refs:
+            if r["lm"]:
+                cells.setdefault((int(r["x"] // RARE), int(r["y"] // RARE)), []).append(r)
+        for r in self.refs:
+            if not r["lm"] or r["lm"][0] == "marker":
+                continue
+            cx, cy = int(r["x"] // RARE), int(r["y"] // RARE)
+            twins = sum(1 for i in (-1, 0, 1) for j in (-1, 0, 1) for o in cells.get((cx + i, cy + j), ())
+                        if o is not r and o["lm"][1] == r["lm"][1]
+                        and SAME < math.hypot(o["x"] - r["x"], o["y"] - r["y"]) < RARE)
+            r["twins"] = twins
+            r["lm"] = (r["lm"][0], r["lm"][1], r["lm"][2] - 2.0 * min(twins, 5))
 
     def height(self, x: float, y: float) -> float | None:
         gx, gy = math.floor(x / 4096), math.floor(y / 4096)
@@ -368,22 +413,27 @@ def _mode(G: Grid, k: int) -> str:
 
 
 def _landmark(W: World, x: float, y: float, used: set, heading: tuple) -> dict | None:
+    """The most distinctive landmark a stranger would pick out near (x, y): a map marker, else a thing with at most
+    one twin of the same look within RARE; nearer is better."""
     best, bs = None, -1e9
     for r in W.refs:
-        reach = REACH * (2 if r["lm"] and r["lm"][0] == "marker" else 1)
-        if not r["lm"] or r["key"] in used or abs(r["x"] - x) > reach or abs(r["y"] - y) > reach:
+        lm = r["lm"]
+        reach = REACH * (2 if lm and lm[0] == "marker" else 1)
+        if not lm or r["key"] in used or abs(r["x"] - x) > reach or abs(r["y"] - y) > reach:
+            continue
+        if lm[0] != "marker" and r.get("twins", 0) >= 2:
             continue
         d = math.hypot(r["x"] - x, r["y"] - y)
-        if d <= reach and r["lm"][2] - d / 400 > bs:
-            best, bs = r, r["lm"][2] - d / 400
-    if best is None:
+        if d <= reach and lm[2] - d / 400 > bs:
+            best, bs = r, lm[2] - d / 400
+    if best is None or bs < 3:
         return None
     cx, cy = best["x"] - x, best["y"] - y
     side = "ahead"
     if math.hypot(cx, cy) > 300:
         side = "on your left" if heading[0] * cy - heading[1] * cx > 0 else "on your right"
     return {"key": best["key"], "what": best["lm"][1], "kind": best["lm"][0], "x": round(best["x"]),
-            "y": round(best["y"]), "side": side}
+            "y": round(best["y"]), "side": side, "score": round(bs, 1)}
 
 
 def _island(G: Grid, k: int, start: int) -> bool:
@@ -436,64 +486,79 @@ def route(W: World, sx: float, sy: float, tx: float, ty: float, target: str) -> 
             merged[-1] += r[1:]
         else:
             merged.append(list(r))
-    legs, used = [], set()
-    for r in merged:
-        mode = max(("walk", "road", "shore", "bridge", "dock", "swim"), key=lambda m: sum(pts[i][3] == m for i in r))
-        sub = [pts[i] for i in r]
-        cut = _rdp(sub, TURN * (2 if mode == "swim" else 1))
-        for a, b in zip(cut, cut[1:]):
-            p0, p1 = sub[a], sub[b]
-            dx, dy = p1[0] - p0[0], p1[1] - p0[1]
-            d = math.hypot(dx, dy)
-            if d < MIN_LEG / 2 and legs:
+    for r in merged:                    # one mode a run: the run's most common
+        m = max(("walk", "road", "shore", "bridge", "dock", "swim"), key=lambda m: sum(pts[i][3] == m for i in r))
+        for i in r:
+            pts[i] = (*pts[i][:3], m)
+    along = [0.0]
+    for i in range(len(pts) - 1):
+        along.append(along[-1] + seg(i, i + 1))
+    out.update(kind="route", legs=_legs(W, G, s, pts, along, [r[0] for r in merged[1:]], target))
+    return out
+
+
+def _legs(W: World, G: Grid, s: int, pts: list, along: list, bounds: list, target: str) -> list[dict]:
+    """At most MAX_LEGS legs. The cuts a telling may use: where a swim or a bridge begins or ends (kept), and any
+    point of the path with a distinctive landmark near it, best at a turn; every other cut needs a landmark, so a
+    leg ends at a landmark, a far bank or the target. Neighbour legs of one kind and heading become one."""
+    n = len(pts)
+    seg = lambda a, b: math.hypot(pts[b][0] - pts[a][0], pts[b][1] - pts[a][1])
+    must = {i for i in bounds if "swim" in (pts[i - 1][3], pts[i + 1][3]) or "bridge" in (pts[i - 1][3],
+                                                                                          pts[i + 1][3])}
+    step = max(1, n // 300)
+    scored = []
+    for i in sorted(set(range(0, n, step)) | must):
+        if i <= 0 or i >= n - 1 or along[i] < MIN_LEG or along[-1] - along[i] < MIN_LEG:
+            continue
+        a, c = pts[max(0, i - 10)], pts[min(n - 1, i + 10)]
+        h1 = math.atan2(pts[i][1] - a[1], pts[i][0] - a[0])
+        h2 = math.atan2(c[1] - pts[i][1], c[0] - pts[i][0])
+        turn = abs((h2 - h1 + math.pi) % (2 * math.pi) - math.pi)
+        hx, hy = c[0] - a[0], c[1] - a[1]
+        hl = math.hypot(hx, hy) or 1.0
+        lm = _landmark(W, pts[i][0], pts[i][1], {target}, (hx / hl, hy / hl))
+        if lm is None and i not in must:
+            continue
+        dist = math.hypot(lm["x"] - pts[i][0], lm["y"] - pts[i][1]) if lm else 0.0
+        scored.append((100.0 if i in must else lm["score"] + 3 * turn - dist / 600, i, lm))
+    chosen, used, looks = [], {target}, set()
+    for sc, i, lm in sorted(scored, key=lambda x: -x[0]):
+        if len(chosen) >= MAX_LEGS - 1:
+            break
+        if any(abs(along[i] - along[j]) < SPACE for _, j, _ in chosen):
+            continue
+        if lm and (lm["key"] in used or lm["what"] in looks):
+            if i not in must:
                 continue
-            kind = "climb" if mode in ("walk", "road", "shore") and p1[2] - p0[2] > CLIMB else mode
-            legs.append({"kind": kind, "heading": compass(dx, dy), "m": round(d / UNITS_M), "paces": round(d / PACE),
-                         "start": (round(p0[0]), round(p0[1])), "end": (round(p1[0]), round(p1[1])),
-                         "_h": (dx / (d or 1), dy / (d or 1))})
-    legs = _merge(legs)
-    used.add(target)
-    for n, lg in enumerate(legs):
-        lm = None if n == len(legs) - 1 else _landmark(W, *lg["end"], used, lg["_h"])
+            lm = None
+        chosen.append((sc, i, lm))
         if lm:
             used.add(lm["key"])
-        lg["landmark"] = lm
-        if lg["kind"] == "swim":
+            looks.add(lm["what"])
+    cuts = [(0, None)] + sorted(((i, lm) for _, i, lm in chosen), key=lambda x: x[0]) + [(n - 1, None)]
+    legs = []
+    for (a, _), (b, lm) in zip(cuts, cuts[1:]):
+        p0, p1 = pts[a], pts[b]
+        d = along[b] - along[a]
+        modes: dict[str, float] = {}
+        for i in range(a, b):
+            modes[pts[i][3]] = modes.get(pts[i][3], 0.0) + seg(i, i + 1)
+        mode = max(modes, key=modes.get)
+        rise = p1[2] - p0[2]
+        kind = "climb" if mode in ("walk", "road", "shore") and rise > CLIMB else mode
+        lg = {"kind": kind, "heading": compass(p1[0] - p0[0], p1[1] - p0[1], 8), "m": round(d / UNITS_M),
+              "paces": round(d / PACE), "start": (round(p0[0]), round(p0[1])), "end": (round(p1[0]), round(p1[1])),
+              "landmark": lm, "past": []}
+        if kind == "swim":
             lg["island"] = _island(G, G.nearest_open(*G.ij(*lg["end"])), s)
-        del lg["_h"]
-    out.update(kind="route", legs=legs)
-    return out
-
-
-def _join(a: dict, b: dict) -> dict:
-    dx, dy = b["end"][0] - a["start"][0], b["end"][1] - a["start"][1]
-    d = math.hypot(dx, dy)
-    kind = a["kind"] if a["m"] >= b["m"] else b["kind"]
-    return {"kind": kind, "heading": compass(dx, dy), "m": round(d / UNITS_M), "paces": round(d / PACE),
-            "start": a["start"], "end": b["end"], "_h": (dx / (d or 1), dy / (d or 1))}
-
-
-def _merge(legs: list[dict]) -> list[dict]:
-    """Neighbours of one kind and heading become one leg; then the shortest leg joins a neighbour until MAX_LEGS
-    remain (a swim or a bridge is never merged away while another can go)."""
-    out = []
-    for lg in legs:
-        if out and out[-1]["kind"] == lg["kind"] and out[-1]["heading"] == lg["heading"]:
-            out[-1] = _join(out[-1], lg)
+        if legs and legs[-1]["kind"] == kind and legs[-1]["heading"] == lg["heading"] and kind != "swim":
+            pv = legs[-1]
+            lg.update(start=pv["start"], m=pv["m"] + lg["m"], paces=pv["paces"] + lg["paces"],
+                      past=([pv["landmark"]] if pv["landmark"] else pv["past"]))
+            legs[-1] = lg
         else:
-            out.append(lg)
-    while len(out) > MAX_LEGS:
-        i = min(range(len(out)), key=lambda n: out[n]["m"] * (3 if out[n]["kind"] in ("swim", "bridge") else 1))
-        j = i - 1 if i == len(out) - 1 or (i > 0 and out[i - 1]["m"] < out[i + 1]["m"]) else i + 1
-        a, b = sorted((i, j))
-        out[a:b + 1] = [_join(out[a], out[b])]
-    n = 0
-    while n < len(out) - 1:
-        if out[n]["kind"] == out[n + 1]["kind"] and out[n]["heading"] == out[n + 1]["heading"]:
-            out[n:n + 2] = [_join(out[n], out[n + 1])]
-        else:
-            n += 1
-    return out
+            legs.append(lg)
+    return legs
 
 
 VERB = {"walk": "walk {h}", "road": "follow the path {h}", "shore": "follow the shore {h}",
@@ -508,13 +573,18 @@ def describe(r: dict, target_name: str) -> str:
     if r["kind"] == "none":
         return f"{target_name} lies about {r['straight_m']} m {r['bearing']} of here; no way on foot was found."
     bits = []
-    for lg in r["legs"]:
+    for n, lg in enumerate(r["legs"]):
         v = VERB[lg["kind"]].format(h=lg["heading"])
         if lg["kind"] == "swim" and lg.get("island"):
             v = f"swim to the island you can see to the {lg['heading']}"
         s = f"{v} about {lg['paces']} paces"
+        if lg.get("past"):
+            s += " past " + " and ".join(p["what"] for p in lg["past"])
         if lg["landmark"]:
-            s += f" until {lg['landmark']['what']} ({lg['landmark']['side']})"
+            side = "" if lg["landmark"]["side"] == "ahead" else f" {lg['landmark']['side']}"
+            s += f" until you reach {lg['landmark']['what']}{side}"
+        elif lg["kind"] == "swim" and n < len(r["legs"]) - 1:
+            s += " to the far bank"
         bits.append(s)
     bits[-1] += f", and {target_name} is there"
     text = "; then ".join(bits)
@@ -522,8 +592,8 @@ def describe(r: dict, target_name: str) -> str:
 
 
 def source(r: dict, speaker: str, target: str) -> str:
-    wps = [f"{lg['landmark']['key']} {lg['landmark']['what']} ({lg['landmark']['x']}, {lg['landmark']['y']})"
-           for lg in r.get("legs", []) if lg.get("landmark")]
+    wps = [f"{m['key']} {m['what']} ({m['x']}, {m['y']})"
+           for lg in r.get("legs", []) for m in lg.get("past", []) + [lg.get("landmark")] if m]
     return (f"talk_route: speaker {speaker} {tuple(r['from'])}; " + (f"waypoints: {'; '.join(wps)}; " if wps else "")
             + f"target {target} {tuple(r['to_xy'])}")
 

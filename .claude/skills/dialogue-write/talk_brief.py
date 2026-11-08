@@ -97,12 +97,19 @@ def brief(w, who: str, out: pathlib.Path) -> int:
 
 
 def load(w, who: str, path: pathlib.Path) -> int:
-    allowed = {tt.topic for tt in w.rows("talker_topic", talker=who)}
+    tts = w.rows("talker_topic", talker=who)
+    allowed = {tt.topic for tt in tts}
+    # a writer sometimes puts a fact id where the topic id goes: map it to the topic that cites the fact
+    by_fact = {f.strip(): tt.topic for tt in tts for f in (tt.facts or "").split(",") if f.strip()}
     rows, n = [], {}
     for line in path.read_text().splitlines():
         if not line.strip():
             continue
         topic, text = line.split("\t", 1)
+        topic = topic.strip().strip("`")
+        if topic not in allowed and topic in by_fact:
+            print(f"{topic}: a fact id, loaded as {by_fact[topic]}")
+            topic = by_fact[topic]
         if topic not in allowed:
             print(f"{topic}: not one of {who}'s topics")
             return 1

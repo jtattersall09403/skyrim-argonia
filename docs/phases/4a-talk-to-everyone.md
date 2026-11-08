@@ -38,6 +38,14 @@ redone (7 lore facts dropped, 22 directions routed, 7 renamed; facts 0, names 0)
 writers (about 26,000 Sonnet tokens each, 25 to 45 s) and one reader pass (55,000), loaded; seed, check and
 `talk_check` 0 problems (30 talkers). Owner walk owed: the v2 lines in game.
 
+**Routes v2 (2026-11-08).** `talk_route` now tells at most four legs; a leg ends at a landmark or the target (a cut
+needs a landmark, save where a swim or a bridge begins or ends); landmarks are chosen for distinctiveness (map
+markers first; a thing with two or more twins of the same look within 3,000 units is never used) and named by
+what the model shows (the burnt-out house, the stilt house, the big ship, the wayshrine, the dead tree); legs of one
+kind and heading merge, passing the first landmark. Lilmoth's 22 directions re-routed, 14 people's directions
+lines rewritten (14 writers), one reader pass (97 lines fixed: comma-and splices, nobody/someone, stacked
+closers, shared tics); `talk_brief.py load` maps a fact id given as a topic to its topic. `talk_check` 0.
+
 ## The census (`bmv_talker`, `python3 -m tools.argonia_world.talk_census build`)
 
 725 enabled placed people: 553 silent (E opens nothing), 50 service (a vanilla trade menu only), 3 with vanilla
