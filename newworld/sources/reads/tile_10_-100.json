@@ -1,0 +1,63 @@
+{
+ "tile": "tile_10_-100",
+ "symbols": [
+  {
+   "cell": [
+    11,
+    -94
+   ],
+   "fx": 0.65,
+   "fy": 0.3,
+   "glyph": "settlement",
+   "shape": "triangle",
+   "icon": null,
+   "fill": "dark purple",
+   "outline": "white",
+   "square": "purple",
+   "square_cells": 1,
+   "label": "Shalaia",
+   "label_style": "regular",
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    18,
+    -93
+   ],
+   "fx": 0.5,
+   "fy": 0.2,
+   "glyph": "settlement",
+   "shape": "triangle",
+   "icon": null,
+   "fill": "dark purple",
+   "outline": "white",
+   "square": "purple",
+   "square_cells": 1,
+   "label": "Siluo",
+   "label_style": "regular",
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    18,
+    -100
+   ],
+   "fx": 0.55,
+   "fy": 0.3,
+   "glyph": "settlement",
+   "shape": "triangle",
+   "icon": null,
+   "fill": "dark purple",
+   "outline": "white",
+   "square": "purple",
+   "square_cells": 1,
+   "label": "Tapauo",
+   "label_style": "regular",
+   "sure": true,
+   "note": ""
+  }
+ ],
+ "unclear": []
+}

@@ -1,0 +1,27 @@
+{
+ "tile": "tile_-20_-60",
+ "symbols": [
+  {
+   "cell": [
+    -11,
+    -59
+   ],
+   "fx": 0.2,
+   "fy": 0.55,
+   "glyph": "icon",
+   "shape": null,
+   "icon": "Aldmer ruin",
+   "fill": "white",
+   "outline": "dark",
+   "square": null,
+   "square_cells": null,
+   "label": "Gemin",
+   "label_style": "italic",
+   "sure": true,
+   "note": "label to the left; possibly truncated name"
+  }
+ ],
+ "unclear": [
+  "Rest of tile is greyed out-of-region area and empty"
+ ]
+}

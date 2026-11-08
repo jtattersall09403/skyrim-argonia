@@ -1,0 +1,217 @@
+{
+ "tile": "tile_20_-110",
+ "symbols": [
+  {
+   "cell": [
+    22,
+    -102
+   ],
+   "fx": 0.7,
+   "fy": 0.45,
+   "glyph": "settlement",
+   "shape": "square",
+   "icon": null,
+   "fill": "pink",
+   "outline": "white",
+   "square": "pink",
+   "square_cells": 1,
+   "label": "Sal-Axan",
+   "label_style": "regular",
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    23,
+    -103
+   ],
+   "fx": 0.7,
+   "fy": 0.5,
+   "glyph": "icon",
+   "shape": null,
+   "icon": "Direnni ruin",
+   "fill": "olive green",
+   "outline": null,
+   "square": null,
+   "square_cells": null,
+   "label": null,
+   "label_style": null,
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    24,
+    -103
+   ],
+   "fx": 0.5,
+   "fy": 0.7,
+   "glyph": "settlement",
+   "shape": "triangle",
+   "icon": null,
+   "fill": "red",
+   "outline": "white",
+   "square": "red",
+   "square_cells": 1,
+   "label": "Fort Reedmoth",
+   "label_style": "regular",
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    28,
+    -103
+   ],
+   "fx": 0.7,
+   "fy": 0.6,
+   "glyph": "icon",
+   "shape": null,
+   "icon": "new: dark green spiky tower with curved tendrils, drawn on open water (sea ruin)",
+   "fill": "dark green",
+   "outline": null,
+   "square": null,
+   "square_cells": null,
+   "label": null,
+   "label_style": null,
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    22,
+    -104
+   ],
+   "fx": 0.35,
+   "fy": 0.55,
+   "glyph": "settlement",
+   "shape": "dot",
+   "icon": null,
+   "fill": "pink",
+   "outline": "white",
+   "square": null,
+   "square_cells": null,
+   "label": "[Farm]",
+   "label_style": "bracketed",
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    20,
+    -105
+   ],
+   "fx": 0.7,
+   "fy": 0.3,
+   "glyph": "icon",
+   "shape": null,
+   "icon": "Direnni ruin",
+   "fill": "olive green",
+   "outline": null,
+   "square": null,
+   "square_cells": null,
+   "label": null,
+   "label_style": null,
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    22,
+    -105
+   ],
+   "fx": 0.6,
+   "fy": 0.65,
+   "glyph": "icon",
+   "shape": null,
+   "icon": "Second Empire ruin",
+   "fill": "brown",
+   "outline": null,
+   "square": null,
+   "square_cells": null,
+   "label": null,
+   "label_style": null,
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    23,
+    -106
+   ],
+   "fx": 0.7,
+   "fy": 0.45,
+   "glyph": "settlement",
+   "shape": "triangle",
+   "icon": null,
+   "fill": "pink",
+   "outline": "white",
+   "square": "pink",
+   "square_cells": 1,
+   "label": "[Estate]",
+   "label_style": "bracketed",
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    29,
+    -108
+   ],
+   "fx": 0.6,
+   "fy": 0.3,
+   "glyph": "settlement",
+   "shape": "triangle",
+   "icon": null,
+   "fill": "red",
+   "outline": "white",
+   "square": "crimson",
+   "square_cells": 1,
+   "label": "Bell Station",
+   "label_style": "regular",
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    24,
+    -109
+   ],
+   "fx": 0.4,
+   "fy": 0.5,
+   "glyph": "icon",
+   "shape": null,
+   "icon": "new: dark green spiky tower with curved tendrils, drawn on open water (sea ruin)",
+   "fill": "dark green",
+   "outline": null,
+   "square": null,
+   "square_cells": null,
+   "label": null,
+   "label_style": null,
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    26,
+    -110
+   ],
+   "fx": 0.55,
+   "fy": 0.5,
+   "glyph": "icon",
+   "shape": null,
+   "icon": "Landmark",
+   "fill": "grey",
+   "outline": null,
+   "square": null,
+   "square_cells": null,
+   "label": "Echo Deep",
+   "label_style": "italic",
+   "sure": true,
+   "note": ""
+  }
+ ],
+ "unclear": [
+  "Tile spans 20..29 x -101..-110"
+ ]
+}

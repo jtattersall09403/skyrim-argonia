@@ -1,0 +1,46 @@
+{
+ "tile": "tile_-30_-120",
+ "symbols": [
+  {
+   "cell": [
+    -22,
+    -112
+   ],
+   "fx": 0.4,
+   "fy": 0.65,
+   "glyph": "settlement",
+   "shape": "square",
+   "icon": null,
+   "fill": "dark brown",
+   "outline": "white",
+   "square": "dark brown",
+   "square_cells": 1,
+   "label": "Acra-Tiin",
+   "label_style": "regular",
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    -25,
+    -113
+   ],
+   "fx": 0.7,
+   "fy": 0.5,
+   "glyph": "icon",
+   "shape": null,
+   "icon": "Shipwreck",
+   "fill": "olive",
+   "outline": null,
+   "square": null,
+   "square_cells": null,
+   "label": null,
+   "label_style": null,
+   "sure": true,
+   "note": "on a small island"
+  }
+ ],
+ "unclear": [
+  "core rows -120..-111 assumed from tile name; rows -119..-120 black off-map"
+ ]
+}

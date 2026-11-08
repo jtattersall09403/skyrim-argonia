@@ -1,0 +1,65 @@
+{
+ "tile": "tile_-20_-120",
+ "symbols": [
+  {
+   "cell": [
+    -17,
+    -112
+   ],
+   "fx": 0.1,
+   "fy": 0.3,
+   "glyph": "icon",
+   "shape": null,
+   "icon": "Mine",
+   "fill": "dark brown pick with torch",
+   "outline": null,
+   "square": null,
+   "square_cells": null,
+   "label": null,
+   "label_style": null,
+   "sure": true,
+   "note": "mine variant with lit torch"
+  },
+  {
+   "cell": [
+    -17,
+    -113
+   ],
+   "fx": 0.7,
+   "fy": 0.6,
+   "glyph": "icon",
+   "shape": null,
+   "icon": "Second Empire ruin",
+   "fill": "brown",
+   "outline": "dark",
+   "square": null,
+   "square_cells": null,
+   "label": null,
+   "label_style": null,
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    -15,
+    -112
+   ],
+   "fx": 0.5,
+   "fy": 0.25,
+   "glyph": "settlement",
+   "shape": "triangle",
+   "icon": null,
+   "fill": "light blue",
+   "outline": "white",
+   "square": "blue-grey",
+   "square_cells": 1,
+   "label": null,
+   "label_style": null,
+   "sure": true,
+   "note": ""
+  }
+ ],
+ "unclear": [
+  "Label ending cra-Tiin sits in column -21 (outside core), skipped; rows -120/-121 are black no-data"
+ ]
+}

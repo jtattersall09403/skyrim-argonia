@@ -1,0 +1,179 @@
+{
+ "tile": "tile_20_-100",
+ "symbols": [
+  {
+   "cell": [
+    20,
+    -91
+   ],
+   "fx": 0.65,
+   "fy": 0.55,
+   "glyph": "settlement",
+   "shape": "triangle",
+   "icon": null,
+   "fill": "purple",
+   "outline": "white",
+   "square": "purple",
+   "square_cells": 1,
+   "label": "Inoio",
+   "label_style": "regular",
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    26,
+    -92
+   ],
+   "fx": 0.6,
+   "fy": 0.7,
+   "glyph": "settlement",
+   "shape": "square",
+   "icon": null,
+   "fill": "orange-red",
+   "outline": "white",
+   "square": "orange",
+   "square_cells": 1,
+   "label": "Khiar",
+   "label_style": "regular",
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    28,
+    -92
+   ],
+   "fx": 0.3,
+   "fy": 0.65,
+   "glyph": "icon",
+   "shape": null,
+   "icon": "new: dark purple domed hut/beehive",
+   "fill": "dark purple",
+   "outline": null,
+   "square": null,
+   "square_cells": null,
+   "label": null,
+   "label_style": null,
+   "sure": true,
+   "note": "no label"
+  },
+  {
+   "cell": [
+    20,
+    -94
+   ],
+   "fx": 0.6,
+   "fy": 0.55,
+   "glyph": "icon",
+   "shape": null,
+   "icon": "new: grey fort with red banner",
+   "fill": "grey",
+   "outline": "dark",
+   "square": null,
+   "square_cells": null,
+   "label": "Fort Swiftmoth",
+   "label_style": "italic",
+   "sure": true,
+   "note": "label italic to the east"
+  },
+  {
+   "cell": [
+    22,
+    -95
+   ],
+   "fx": 0.75,
+   "fy": 0.75,
+   "glyph": "settlement",
+   "shape": "square",
+   "icon": null,
+   "fill": "pink",
+   "outline": "white",
+   "square": "pink",
+   "square_cells": 1,
+   "label": "Oju",
+   "label_style": "regular",
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    25,
+    -95
+   ],
+   "fx": 0.6,
+   "fy": 0.2,
+   "glyph": "icon",
+   "shape": null,
+   "icon": "Shipwreck",
+   "fill": "olive",
+   "outline": null,
+   "square": null,
+   "square_cells": null,
+   "label": null,
+   "label_style": null,
+   "sure": true,
+   "note": "on water, no label"
+  },
+  {
+   "cell": [
+    23,
+    -97
+   ],
+   "fx": 0.65,
+   "fy": 0.35,
+   "glyph": "icon",
+   "shape": null,
+   "icon": "new: dark purple domed hut/beehive",
+   "fill": "dark purple",
+   "outline": null,
+   "square": null,
+   "square_cells": null,
+   "label": null,
+   "label_style": null,
+   "sure": true,
+   "note": "no label"
+  },
+  {
+   "cell": [
+    27,
+    -98
+   ],
+   "fx": 0.7,
+   "fy": 0.35,
+   "glyph": "settlement",
+   "shape": "ringed-octagon",
+   "icon": null,
+   "fill": "gold",
+   "outline": "white",
+   "square": "tan",
+   "square_cells": 2,
+   "label": "ARCHON",
+   "label_style": "bold-caps-italic",
+   "sure": false,
+   "note": "ring may be heptagon/octagon; square 2 cells wide (x27-28)"
+  },
+  {
+   "cell": [
+    24,
+    -99
+   ],
+   "fx": 0.35,
+   "fy": 0.55,
+   "glyph": "settlement",
+   "shape": "triangle",
+   "icon": null,
+   "fill": "purple",
+   "outline": "white",
+   "square": "purple",
+   "square_cells": 1,
+   "label": "Xi-Inou",
+   "label_style": "regular",
+   "sure": true,
+   "note": ""
+  }
+ ],
+ "unclear": [
+  "dark icon at (29,-101) outside core (y=-101)"
+ ]
+}

@@ -1,0 +1,215 @@
+{
+ "tile": "tile_10_-110",
+ "symbols": [
+  {
+   "cell": [
+    11,
+    -101
+   ],
+   "fx": 0.5,
+   "fy": 0.3,
+   "glyph": "settlement",
+   "shape": "dot",
+   "icon": null,
+   "fill": "pink",
+   "outline": "white",
+   "square": "pink",
+   "square_cells": 1,
+   "label": "Delta Ferry",
+   "label_style": "regular",
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    17,
+    -103
+   ],
+   "fx": 1.0,
+   "fy": 0.45,
+   "glyph": "settlement",
+   "shape": "pentagon",
+   "icon": null,
+   "fill": "dark purple",
+   "outline": "white",
+   "square": "purple",
+   "square_cells": 2,
+   "label": "ULUO",
+   "label_style": "caps",
+   "sure": true,
+   "note": "concentric pentagon; on 17/18 boundary; square 2 cells"
+  },
+  {
+   "cell": [
+    10,
+    -103
+   ],
+   "fx": 0.55,
+   "fy": 0.8,
+   "glyph": "icon",
+   "shape": null,
+   "icon": "new: green domed building (Direnni/Aldmer-like ruin)",
+   "fill": "green-grey",
+   "outline": null,
+   "square": null,
+   "square_cells": null,
+   "label": null,
+   "label_style": null,
+   "sure": false,
+   "note": "possibly Direnni ruin"
+  },
+  {
+   "cell": [
+    10,
+    -105
+   ],
+   "fx": 0.4,
+   "fy": 0.55,
+   "glyph": "icon",
+   "shape": null,
+   "icon": "new: brown castle/barrow icon",
+   "fill": "dark brown",
+   "outline": null,
+   "square": null,
+   "square_cells": null,
+   "label": "Khariton",
+   "label_style": "italic",
+   "sure": false,
+   "note": ""
+  },
+  {
+   "cell": [
+    19,
+    -106
+   ],
+   "fx": 0.4,
+   "fy": 0.35,
+   "glyph": "settlement",
+   "shape": "square",
+   "icon": null,
+   "fill": "pink",
+   "outline": "white",
+   "square": "pink",
+   "square_cells": 1,
+   "label": "Nundi",
+   "label_style": "regular",
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    16,
+    -108
+   ],
+   "fx": 0.65,
+   "fy": 0.75,
+   "glyph": "settlement",
+   "shape": "triangle",
+   "icon": null,
+   "fill": "pink",
+   "outline": "white",
+   "square": "pink",
+   "square_cells": 1,
+   "label": "[Estate]",
+   "label_style": "bracketed",
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    14,
+    -109
+   ],
+   "fx": 0.45,
+   "fy": 0.6,
+   "glyph": "icon",
+   "shape": null,
+   "icon": "Second Empire ruin",
+   "fill": "gold-brown",
+   "outline": null,
+   "square": null,
+   "square_cells": null,
+   "label": null,
+   "label_style": null,
+   "sure": false,
+   "note": "yellow tower"
+  },
+  {
+   "cell": [
+    12,
+    -110
+   ],
+   "fx": 0.7,
+   "fy": 0.65,
+   "glyph": "icon",
+   "shape": null,
+   "icon": "new: green domed building (Direnni/Aldmer-like ruin)",
+   "fill": "green-grey",
+   "outline": null,
+   "square": null,
+   "square_cells": null,
+   "label": null,
+   "label_style": null,
+   "sure": false,
+   "note": ""
+  },
+  {
+   "cell": [
+    15,
+    -110
+   ],
+   "fx": 0.8,
+   "fy": 0.45,
+   "glyph": "settlement",
+   "shape": "triangle",
+   "icon": null,
+   "fill": "pink",
+   "outline": "white",
+   "square": "pink",
+   "square_cells": 1,
+   "label": "[Estate]",
+   "label_style": "bracketed",
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    19,
+    -110
+   ],
+   "fx": 0.6,
+   "fy": 0.35,
+   "glyph": "icon",
+   "shape": null,
+   "icon": "new: green domed building (Direnni/Aldmer-like ruin)",
+   "fill": "green-grey",
+   "outline": null,
+   "square": null,
+   "square_cells": null,
+   "label": null,
+   "label_style": null,
+   "sure": false,
+   "note": ""
+  },
+  {
+   "cell": [
+    18,
+    -110
+   ],
+   "fx": 0.8,
+   "fy": 0.85,
+   "glyph": "settlement",
+   "shape": "dot",
+   "icon": null,
+   "fill": "pink",
+   "outline": "white",
+   "square": null,
+   "square_cells": null,
+   "label": "[Farm]",
+   "label_style": "bracketed",
+   "sure": true,
+   "note": "no shaded square seen"
+  }
+ ],
+ "unclear": []
+}

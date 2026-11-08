@@ -1,0 +1,7 @@
+{
+"tile": "tile_40_-90",
+"symbols": [],
+"unclear": [
+"no symbols in core; faint label fragment at top-left edge (39,-80) is outside core; x>=47 black, x=45 is a map-edge strip"
+]
+}

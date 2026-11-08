@@ -1,0 +1,122 @@
+{
+"tile": "tile_30_-70",
+"symbols": [
+{
+"cell": [
+30,
+-63
+],
+"fx": 0.02,
+"fy": 0.15,
+"glyph": "settlement",
+"shape": "heptagon",
+"icon": null,
+"fill": "red",
+"outline": "white",
+"square": "red",
+"square_cells": 3,
+"label": "THORN",
+"label_style": "bold-caps-italic",
+"sure": true,
+"note": "glyph on boundary of 29/30; square spans 29-31 and runs off tile west"
+},
+{
+"cell": [
+32,
+-62
+],
+"fx": 0.6,
+"fy": 0.5,
+"glyph": "icon",
+"shape": null,
+"icon": "Shipwreck",
+"fill": "olive/brown",
+"outline": null,
+"square": null,
+"square_cells": null,
+"label": null,
+"label_style": null,
+"sure": true,
+"note": "on water"
+},
+{
+"cell": [
+31,
+-65
+],
+"fx": 0.35,
+"fy": 0.56,
+"glyph": "icon",
+"shape": null,
+"icon": "new: dark indigo stepped domed temple/ziggurat",
+"fill": "dark indigo",
+"outline": null,
+"square": null,
+"square_cells": null,
+"label": "Bala Karag",
+"label_style": "italic",
+"sure": true,
+"note": "label above"
+},
+{
+"cell": [
+31,
+-67
+],
+"fx": 0.4,
+"fy": 0.5,
+"glyph": "settlement",
+"shape": "triangle",
+"icon": null,
+"fill": "cyan",
+"outline": "white",
+"square": "blue",
+"square_cells": 1,
+"label": "Ysan",
+"label_style": "regular",
+"sure": true,
+"note": ""
+},
+{
+"cell": [
+33,
+-67
+],
+"fx": 0.4,
+"fy": 0.6,
+"glyph": "icon",
+"shape": null,
+"icon": "Shipwreck",
+"fill": "olive/brown",
+"outline": null,
+"square": null,
+"square_cells": null,
+"label": null,
+"label_style": null,
+"sure": true,
+"note": "on water"
+},
+{
+"cell": [
+34,
+-69
+],
+"fx": 0.65,
+"fy": 0.6,
+"glyph": "icon",
+"shape": null,
+"icon": "new: dark indigo stepped domed temple/ziggurat",
+"fill": "dark indigo",
+"outline": null,
+"square": null,
+"square_cells": null,
+"label": "Kornakim",
+"label_style": "italic",
+"sure": true,
+"note": "label below"
+}
+],
+"unclear": [
+"outside core: [Outpost] red dot at (29,-66), shipwreck (35,-71)"
+]
+}

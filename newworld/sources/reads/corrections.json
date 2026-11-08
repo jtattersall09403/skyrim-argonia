@@ -1,0 +1,207 @@
+{
+ "about": "Fixes to the tile reads, found by checking every read against the map in full-resolution crops with each read circled. 'add' lists symbols no reader recorded; 'drop' and 'set' name a read by its tile and its index in that tile's symbols list.",
+ "add": [
+  {
+   "cell": [
+    -16,
+    -68
+   ],
+   "px": 1020,
+   "py": 775,
+   "glyph": "settlement",
+   "shape": "triangle",
+   "icon": null,
+   "fill": "dark green",
+   "outline": "white",
+   "square": "dark green",
+   "square_cells": 1,
+   "label": null,
+   "label_style": null,
+   "sure": true,
+   "note": "missed by the tile reader; found in the review crops"
+  }
+ ],
+ "drop": [],
+ "set": [
+  {
+   "tile": "tile_-20_-70",
+   "index": 7,
+   "fields": {
+    "px": 1047.0,
+    "py": 849.0
+   },
+   "why": "the read sat on the Ayleid icon above; the [Outpost] dot is below-left"
+  },
+  {
+   "tile": "tile_20_-90",
+   "index": 6,
+   "fields": {
+    "px": 2772.0,
+    "py": 1492.0
+   },
+   "why": "the read sat east of the dot"
+  },
+  {
+   "tile": "tile_-20_-110",
+   "index": 4,
+   "fields": {
+    "px": 972.0,
+    "py": 2314.5
+   },
+   "why": "the read sat south of the mine icon"
+  },
+  {
+   "tile": "tile_0_-70",
+   "index": 2,
+   "fields": {
+    "px": 1867.9,
+    "py": 627.9
+   },
+   "why": "the read sat off its icon; moved onto it (measured in a 2x crop)"
+  },
+  {
+   "tile": "tile_-20_-70",
+   "index": 3,
+   "fields": {
+    "px": 1056.8,
+    "py": 736.5
+   },
+   "why": "the read sat off its icon; moved onto it (measured in a 2x crop)"
+  },
+  {
+   "tile": "tile_30_-70",
+   "index": 4,
+   "fields": {
+    "px": 2976.8,
+    "py": 743.0
+   },
+   "why": "the read sat off its icon; moved onto it (measured in a 2x crop)"
+  },
+  {
+   "tile": "tile_-20_-70",
+   "index": 7,
+   "fields": {
+    "px": 1057.0,
+    "py": 826.5
+   },
+   "why": "the read sat off its icon; moved onto it (measured in a 2x crop)"
+  },
+  {
+   "tile": "tile_-20_-80",
+   "index": 0,
+   "fields": {
+    "px": 946.3,
+    "py": 904.4
+   },
+   "why": "the read sat off its icon; moved onto it (measured in a 2x crop)"
+  },
+  {
+   "tile": "tile_-30_-80",
+   "index": 1,
+   "fields": {
+    "px": 735.9,
+    "py": 1102.6
+   },
+   "why": "the read sat off its icon; moved onto it (measured in a 2x crop)"
+  },
+  {
+   "tile": "tile_30_-80",
+   "index": 3,
+   "fields": {
+    "px": 3178.4,
+    "py": 1151.4
+   },
+   "why": "the read sat off its icon; moved onto it (measured in a 2x crop)"
+  },
+  {
+   "tile": "tile_-20_-90",
+   "index": 0,
+   "fields": {
+    "px": 1032.4,
+    "py": 1338.5
+   },
+   "why": "the read sat off its icon; moved onto it (measured in a 2x crop)"
+  },
+  {
+   "tile": "tile_-30_-90",
+   "index": 4,
+   "fields": {
+    "px": 670.4,
+    "py": 1468.4
+   },
+   "why": "the read sat off its icon; moved onto it (measured in a 2x crop)"
+  },
+  {
+   "tile": "tile_-30_-110",
+   "index": 1,
+   "fields": {
+    "px": 797.5,
+    "py": 2178.4
+   },
+   "why": "the read sat off its icon; moved onto it (measured in a 2x crop)"
+  },
+  {
+   "tile": "tile_0_-110",
+   "index": 2,
+   "fields": {
+    "px": 1743.1,
+    "py": 2211.0
+   },
+   "why": "the read sat off its icon; moved onto it (measured in a 2x crop)"
+  },
+  {
+   "tile": "tile_-20_-110",
+   "index": 8,
+   "fields": {
+    "px": 1230.6,
+    "py": 2332.5
+   },
+   "why": "the read sat off its icon; moved onto it (measured in a 2x crop)"
+  },
+  {
+   "tile": "tile_-20_-110",
+   "index": 7,
+   "fields": {
+    "px": 1177.6,
+    "py": 2328.4
+   },
+   "why": "the read sat off its icon; moved onto it (measured in a 2x crop)"
+  },
+  {
+   "tile": "tile_10_-110",
+   "index": 7,
+   "fields": {
+    "px": 2148.2,
+    "py": 2466.2
+   },
+   "why": "the read sat off its icon; moved onto it (measured in a 2x crop)"
+  },
+  {
+   "tile": "tile_-20_-120",
+   "index": 0,
+   "fields": {
+    "px": 965.5,
+    "py": 2533.3
+   },
+   "why": "the read sat off its icon; moved onto it (measured in a 2x crop)"
+  },
+  {
+   "tile": "tile_-30_-120",
+   "index": 1,
+   "fields": {
+    "px": 669.2,
+    "py": 2581.2
+   },
+   "why": "the read sat off its icon; moved onto it (measured in a 2x crop)"
+  },
+  {
+   "tile": "tile_-20_-120",
+   "index": 1,
+   "fields": {
+    "px": 988.8,
+    "py": 2583.7
+   },
+   "why": "the read sat off its icon; moved onto it (measured in a 2x crop)"
+  }
+ ]
+}

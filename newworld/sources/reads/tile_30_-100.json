@@ -1,0 +1,9 @@
+{
+ "tile": "tile_30_-100",
+ "symbols": [],
+ "unclear": [
+  "Label '...CHON' (bold caps italic, y=-98, probably a large settlement label whose glyph sits in x<=29) mostly in the outside ring at x=29, ends at x=30 fx~0.5: not recorded",
+  "Green icon at cell (30,-101) lies outside core row",
+  "Core is open sea, no symbols"
+ ]
+}

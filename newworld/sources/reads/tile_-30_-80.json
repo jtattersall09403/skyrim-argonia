@@ -1,0 +1,103 @@
+{
+ "tile": "tile_-30_-80",
+ "symbols": [
+  {
+   "cell": [
+    -21,
+    -74
+   ],
+   "fx": 0.4,
+   "fy": 0.55,
+   "glyph": "settlement",
+   "shape": "triangle",
+   "icon": null,
+   "fill": "magenta",
+   "outline": "white",
+   "square": "magenta",
+   "square_cells": 1,
+   "label": null,
+   "label_style": null,
+   "sure": true,
+   "note": "no label"
+  },
+  {
+   "cell": [
+    -23,
+    -76
+   ],
+   "fx": 0.4,
+   "fy": 0.5,
+   "glyph": "icon",
+   "shape": null,
+   "icon": "Other ruin (grey keep/tower)",
+   "fill": "grey",
+   "outline": null,
+   "square": null,
+   "square_cells": null,
+   "label": null,
+   "label_style": null,
+   "sure": false,
+   "note": "no label"
+  },
+  {
+   "cell": [
+    -24,
+    -79
+   ],
+   "fx": 0.4,
+   "fy": 0.45,
+   "glyph": "settlement",
+   "shape": "square",
+   "icon": null,
+   "fill": "pale green",
+   "outline": "white",
+   "square": "pale green",
+   "square_cells": 1,
+   "label": "Hixinoag",
+   "label_style": "regular",
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    -25,
+    -80
+   ],
+   "fx": 0.3,
+   "fy": 0.2,
+   "glyph": "icon",
+   "shape": null,
+   "icon": "Other ruin (grey keep/tower)",
+   "fill": "grey",
+   "outline": null,
+   "square": null,
+   "square_cells": null,
+   "label": null,
+   "label_style": null,
+   "sure": false,
+   "note": "no label"
+  },
+  {
+   "cell": [
+    -23,
+    -80
+   ],
+   "fx": 0.65,
+   "fy": 0.7,
+   "glyph": "settlement",
+   "shape": "triangle",
+   "icon": null,
+   "fill": "dark green",
+   "outline": "white",
+   "square": "green",
+   "square_cells": 1,
+   "label": null,
+   "label_style": null,
+   "sure": true,
+   "note": "no label"
+  }
+ ],
+ "unclear": [
+  "outside core: indigo triangle at (-20,-77)"
+ ]
+}

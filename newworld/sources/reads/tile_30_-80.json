@@ -1,0 +1,120 @@
+{
+ "tile": "tile_30_-80",
+ "symbols": [
+  {
+   "cell": [
+    35,
+    -71
+   ],
+   "fx": 0.9,
+   "fy": 0.1,
+   "glyph": "icon",
+   "shape": null,
+   "icon": "Shipwreck",
+   "fill": "olive/blue",
+   "outline": null,
+   "square": null,
+   "square_cells": null,
+   "label": null,
+   "label_style": null,
+   "sure": false,
+   "note": "near top edge of core row"
+  },
+  {
+   "cell": [
+    33,
+    -73
+   ],
+   "fx": 0.35,
+   "fy": 0.4,
+   "glyph": "settlement",
+   "shape": "triangle",
+   "icon": null,
+   "fill": "dark green",
+   "outline": "white",
+   "square": "dark green",
+   "square_cells": 1,
+   "label": "Yuva-Goli",
+   "label_style": "regular",
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    31,
+    -77
+   ],
+   "fx": 0.3,
+   "fy": 0.8,
+   "glyph": "settlement",
+   "shape": "square",
+   "icon": null,
+   "fill": "orange-red",
+   "outline": "white",
+   "square": "orange",
+   "square_cells": 1,
+   "label": "Arorha",
+   "label_style": "regular",
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    38,
+    -77
+   ],
+   "fx": 0.5,
+   "fy": 0.75,
+   "glyph": "icon",
+   "shape": null,
+   "icon": "Camp",
+   "fill": "yellow flame",
+   "outline": null,
+   "square": null,
+   "square_cells": null,
+   "label": "[Pirate Camp]",
+   "label_style": "bracketed",
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    39,
+    -79
+   ],
+   "fx": 0.4,
+   "fy": 0.5,
+   "glyph": "icon",
+   "shape": null,
+   "icon": "Landmark",
+   "fill": "grey",
+   "outline": null,
+   "square": null,
+   "square_cells": null,
+   "label": "[Peak]",
+   "label_style": "bracketed",
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    36,
+    -80
+   ],
+   "fx": 0.7,
+   "fy": 0.6,
+   "glyph": "icon",
+   "shape": null,
+   "icon": "Camp",
+   "fill": "yellow flame",
+   "outline": null,
+   "square": null,
+   "square_cells": null,
+   "label": "[Smuggler Camp]",
+   "label_style": "bracketed",
+   "sure": true,
+   "note": ""
+  }
+ ],
+ "unclear": []
+}

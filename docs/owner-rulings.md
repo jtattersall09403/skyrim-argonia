@@ -201,3 +201,7 @@ added here the day they are made, with the date and the issue.
   walk check. Walk checks: ticked checks stay where they are as the record; add the fewest checks that prove the
   change; the owner reports problems in the session. Goal for the session: resolve the walk, then deliver Phase 4
   with names, topics and dialogue for everyone in the places the opening act visits.
+- 2026-11-08 (new worldspace, nw-01, in session): the new worldspace runs in parallel with the BM&V work
+  (docs/phases/new-worldspace-plan/). Project Tamriel's Black Marsh map, its regions map and the Hammerfell/High Rock
+  key are public domain and are kept in the repo (newworld/sources/maps/), since they are the base the world is built
+  from.

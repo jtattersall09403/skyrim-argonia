@@ -1,0 +1,215 @@
+{
+ "tile": "tile_-20_-80",
+ "symbols": [
+  {
+   "cell": [
+    -18,
+    -71
+   ],
+   "fx": 0.7,
+   "fy": 0.6,
+   "glyph": "icon",
+   "shape": null,
+   "icon": "Aldmer ruin",
+   "fill": "white",
+   "outline": "dark",
+   "square": null,
+   "square_cells": null,
+   "label": null,
+   "label_style": null,
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    -14,
+    -71
+   ],
+   "fx": 0.4,
+   "fy": 0.7,
+   "glyph": "icon",
+   "shape": null,
+   "icon": "Breton crypt",
+   "fill": "grey",
+   "outline": null,
+   "square": null,
+   "square_cells": null,
+   "label": null,
+   "label_style": null,
+   "sure": false,
+   "note": "grey castle/tower icon, could be Other ruin"
+  },
+  {
+   "cell": [
+    -17,
+    -72
+   ],
+   "fx": 0.6,
+   "fy": 0.4,
+   "glyph": "settlement",
+   "shape": "square",
+   "icon": null,
+   "fill": "light green",
+   "outline": "white",
+   "square": "light green",
+   "square_cells": 1,
+   "label": "Umpholo",
+   "label_style": "regular",
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    -15,
+    -73
+   ],
+   "fx": 0.65,
+   "fy": 0.5,
+   "glyph": "settlement",
+   "shape": "triangle",
+   "icon": null,
+   "fill": "magenta",
+   "outline": "white",
+   "square": "magenta",
+   "square_cells": 1,
+   "label": null,
+   "label_style": null,
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    -12,
+    -74
+   ],
+   "fx": 0.6,
+   "fy": 0.45,
+   "glyph": "icon",
+   "shape": null,
+   "icon": "Camp",
+   "fill": null,
+   "outline": null,
+   "square": null,
+   "square_cells": null,
+   "label": "[Naga Camp]",
+   "label_style": "italic",
+   "sure": true,
+   "note": "label above glyph"
+  },
+  {
+   "cell": [
+    -19,
+    -74
+   ],
+   "fx": 0.4,
+   "fy": 0.4,
+   "glyph": "icon",
+   "shape": null,
+   "icon": "Second Empire ruin",
+   "fill": "brown",
+   "outline": "dark",
+   "square": null,
+   "square_cells": null,
+   "label": null,
+   "label_style": null,
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    -13,
+    -77
+   ],
+   "fx": 0.3,
+   "fy": 0.3,
+   "glyph": "icon",
+   "shape": null,
+   "icon": "Camp",
+   "fill": null,
+   "outline": null,
+   "square": null,
+   "square_cells": null,
+   "label": "[Paatru Camp]",
+   "label_style": "italic",
+   "sure": true,
+   "note": "label below glyph"
+  },
+  {
+   "cell": [
+    -17,
+    -77
+   ],
+   "fx": 0.5,
+   "fy": 0.95,
+   "glyph": "settlement",
+   "shape": "pentagon",
+   "icon": null,
+   "fill": "light green",
+   "outline": "white",
+   "square": "light green",
+   "square_cells": 1,
+   "label": "GUL-TEJ",
+   "label_style": "caps",
+   "sure": true,
+   "note": "shaded square spans 2 cells tall (-77,-78)"
+  },
+  {
+   "cell": [
+    -20,
+    -77
+   ],
+   "fx": 0.5,
+   "fy": 0.65,
+   "glyph": "settlement",
+   "shape": "triangle",
+   "icon": null,
+   "fill": "dark navy",
+   "outline": "white",
+   "square": "dark purple",
+   "square_cells": 1,
+   "label": null,
+   "label_style": null,
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    -19,
+    -79
+   ],
+   "fx": 0.6,
+   "fy": 0.4,
+   "glyph": "icon",
+   "shape": null,
+   "icon": "Breton crypt",
+   "fill": "grey",
+   "outline": null,
+   "square": null,
+   "square_cells": null,
+   "label": null,
+   "label_style": null,
+   "sure": false,
+   "note": "grey castle/tower icon"
+  },
+  {
+   "cell": [
+    -13,
+    -79
+   ],
+   "fx": 0.5,
+   "fy": 0.5,
+   "glyph": "settlement",
+   "shape": "triangle",
+   "icon": null,
+   "fill": "magenta",
+   "outline": "white",
+   "square": "magenta",
+   "square_cells": 1,
+   "label": null,
+   "label_style": null,
+   "sure": true,
+   "note": ""
+  }
+ ],
+ "unclear": []
+}

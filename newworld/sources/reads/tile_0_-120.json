@@ -1,0 +1,46 @@
+{
+ "tile": "tile_0_-120",
+ "symbols": [
+  {
+   "cell": [
+    0,
+    -111
+   ],
+   "fx": 0.2,
+   "fy": 0.2,
+   "glyph": "icon",
+   "shape": null,
+   "icon": "Shipwreck",
+   "fill": "olive/dark",
+   "outline": null,
+   "square": null,
+   "square_cells": null,
+   "label": null,
+   "label_style": null,
+   "sure": true,
+   "note": "no label"
+  },
+  {
+   "cell": [
+    9,
+    -114
+   ],
+   "fx": 0.35,
+   "fy": 0.5,
+   "glyph": "settlement",
+   "shape": "dot",
+   "icon": null,
+   "fill": "pink",
+   "outline": "white",
+   "square": null,
+   "square_cells": null,
+   "label": "[Lighthouse]",
+   "label_style": "bracketed",
+   "sure": true,
+   "note": "on a small island"
+  }
+ ],
+ "unclear": [
+  "label 'Southwa...' at (10,-113) is cut by tile edge, centre in cell x=10 (outside core)"
+ ]
+}

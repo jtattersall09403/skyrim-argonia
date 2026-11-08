@@ -1,0 +1,160 @@
+{
+ "tile": "tile_0_-100",
+ "symbols": [
+  {
+   "cell": [
+    4,
+    -91
+   ],
+   "fx": 0.3,
+   "fy": 0.5,
+   "glyph": "icon",
+   "shape": null,
+   "icon": "Camp",
+   "fill": null,
+   "outline": null,
+   "square": null,
+   "square_cells": null,
+   "label": "[Tumnatu Camp]",
+   "label_style": "italic",
+   "sure": true,
+   "note": "label above glyph"
+  },
+  {
+   "cell": [
+    8,
+    -92
+   ],
+   "fx": 0.2,
+   "fy": 0.2,
+   "glyph": "settlement",
+   "shape": "triangle",
+   "icon": null,
+   "fill": "olive grey",
+   "outline": "white",
+   "square": "olive grey",
+   "square_cells": 1,
+   "label": "Yalugo",
+   "label_style": "regular",
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    1,
+    -93
+   ],
+   "fx": 0.4,
+   "fy": 0.0,
+   "glyph": "settlement",
+   "shape": "pentagon",
+   "icon": null,
+   "fill": "dark crimson",
+   "outline": "white",
+   "square": "dark red",
+   "square_cells": 1,
+   "label": "KORYDON",
+   "label_style": "caps",
+   "sure": false,
+   "note": "concentric pentagons (white ring, inner crimson); square spans 2 cells tall (-92,-93); glyph on boundary of -92/-93"
+  },
+  {
+   "cell": [
+    5,
+    -95
+   ],
+   "fx": 0.75,
+   "fy": 0.55,
+   "glyph": "settlement",
+   "shape": "triangle",
+   "icon": null,
+   "fill": "dark red",
+   "outline": "white",
+   "square": "dark red",
+   "square_cells": 1,
+   "label": "Myroleon",
+   "label_style": "regular",
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    2,
+    -96
+   ],
+   "fx": 0.6,
+   "fy": 0.4,
+   "glyph": "settlement",
+   "shape": "triangle",
+   "icon": null,
+   "fill": "dark green",
+   "outline": "white",
+   "square": "olive green",
+   "square_cells": 1,
+   "label": null,
+   "label_style": null,
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    6,
+    -97
+   ],
+   "fx": 0.4,
+   "fy": 0.5,
+   "glyph": "settlement",
+   "shape": "dot",
+   "icon": null,
+   "fill": "white/pink",
+   "outline": "white",
+   "square": "pink",
+   "square_cells": 1,
+   "label": "[Farm]",
+   "label_style": "bracketed",
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    9,
+    -97
+   ],
+   "fx": 0.5,
+   "fy": 0.7,
+   "glyph": "icon",
+   "shape": null,
+   "icon": "new: brown multi-tier stilted hut/pagoda",
+   "fill": "dark brown",
+   "outline": "dark",
+   "square": null,
+   "square_cells": null,
+   "label": null,
+   "label_style": null,
+   "sure": true,
+   "note": "a small ring of water above it"
+  },
+  {
+   "cell": [
+    9,
+    -99
+   ],
+   "fx": 0.5,
+   "fy": 0.55,
+   "glyph": "settlement",
+   "shape": "square",
+   "icon": null,
+   "fill": "pink-red",
+   "outline": "white",
+   "square": "pink",
+   "square_cells": 1,
+   "label": "Tei-Kur",
+   "label_style": "regular",
+   "sure": true,
+   "note": ""
+  }
+ ],
+ "unclear": [
+  "Blackrose Prison triangle and Fort Gysill triangle centres lie outside core rows, skipped"
+ ]
+}

@@ -1,0 +1,65 @@
+{
+"tile": "tile_20_-120",
+"symbols": [
+{
+"cell": [
+25,
+-111
+],
+"fx": 0.66,
+"fy": 0.1,
+"glyph": "icon",
+"shape": null,
+"icon": "Shipwreck",
+"fill": "olive/brown",
+"outline": null,
+"square": null,
+"square_cells": null,
+"label": "[Downed Bathysphere]",
+"label_style": "bracketed",
+"sure": true,
+"note": "on water; label below"
+},
+{
+"cell": [
+27,
+-111
+],
+"fx": 0.5,
+"fy": 0.4,
+"glyph": "icon",
+"shape": null,
+"icon": "new: dark green spired dome with curved arms (underwater structure)",
+"fill": "dark green",
+"outline": null,
+"square": null,
+"square_cells": null,
+"label": null,
+"label_style": null,
+"sure": false,
+"note": "no label"
+},
+{
+"cell": [
+23,
+-112
+],
+"fx": 0.3,
+"fy": 0.5,
+"glyph": "icon",
+"shape": null,
+"icon": "new: dark green spired dome with curved arms (underwater structure)",
+"fill": "dark green",
+"outline": null,
+"square": null,
+"square_cells": null,
+"label": null,
+"label_style": null,
+"sure": false,
+"note": "no label"
+}
+],
+"unclear": [
+"outside core: landmark and 'Echo Deep' label at (26,-110), ruin icon (19,-110); rows below -118 are map edge/black"
+]
+}

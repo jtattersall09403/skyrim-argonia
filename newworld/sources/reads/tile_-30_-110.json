@@ -1,0 +1,84 @@
+{
+ "tile": "tile_-30_-110",
+ "symbols": [
+  {
+   "cell": [
+    -23,
+    -103
+   ],
+   "fx": 0.45,
+   "fy": 0.55,
+   "glyph": "icon",
+   "shape": null,
+   "icon": "Second Empire ruin",
+   "fill": "gold-brown",
+   "outline": null,
+   "square": null,
+   "square_cells": null,
+   "label": null,
+   "label_style": null,
+   "sure": true,
+   "note": "no label"
+  },
+  {
+   "cell": [
+    -22,
+    -103
+   ],
+   "fx": 0.9,
+   "fy": 0.5,
+   "glyph": "icon",
+   "shape": null,
+   "icon": "Mine",
+   "fill": "brown/torch",
+   "outline": null,
+   "square": null,
+   "square_cells": null,
+   "label": null,
+   "label_style": null,
+   "sure": true,
+   "note": "no label"
+  },
+  {
+   "cell": [
+    -24,
+    -107
+   ],
+   "fx": 0.0,
+   "fy": 0.35,
+   "glyph": "settlement",
+   "shape": "ringed-octagon",
+   "icon": null,
+   "fill": "dark brown",
+   "outline": "white",
+   "square": "dark brown",
+   "square_cells": 2,
+   "label": "SOULREST",
+   "label_style": "bold-caps-italic",
+   "sure": true,
+   "note": "glyph centre on the x -25/-24 boundary; square 2 wide (x-25..-24) and 3 tall (y-106..-108)"
+  },
+  {
+   "cell": [
+    -26,
+    -108
+   ],
+   "fx": 0.6,
+   "fy": 0.4,
+   "glyph": "settlement",
+   "shape": "triangle",
+   "icon": null,
+   "fill": "red",
+   "outline": "white",
+   "square": "red",
+   "square_cells": 1,
+   "label": "Fort Shellmoth",
+   "label_style": "regular",
+   "sure": true,
+   "note": ""
+  }
+ ],
+ "unclear": [
+  "outside core: Naxan square at (-24,-100); [Logging Camp] label at y=-101 centred ~x=-20/-21 edge, no glyph seen; [Logging Camp] label with dot at (-20,-107); Cha.. at x=-20"
+ ]
+}

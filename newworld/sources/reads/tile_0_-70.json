@@ -1,0 +1,160 @@
+{
+ "tile": "tile_0_-70",
+ "symbols": [
+  {
+   "cell": [
+    0,
+    -62
+   ],
+   "fx": 0.7,
+   "fy": 0.6,
+   "glyph": "settlement",
+   "shape": "triangle",
+   "icon": null,
+   "fill": "red",
+   "outline": "white",
+   "square": "red",
+   "square_cells": 1,
+   "label": "Fort Willowmoth",
+   "label_style": "regular",
+   "sure": true,
+   "note": "label above-left"
+  },
+  {
+   "cell": [
+    3,
+    -63
+   ],
+   "fx": 0.6,
+   "fy": 0.5,
+   "glyph": "settlement",
+   "shape": "square",
+   "icon": null,
+   "fill": "grey-brown",
+   "outline": "white",
+   "square": "grey-brown",
+   "square_cells": 1,
+   "label": "Tenmal",
+   "label_style": "regular",
+   "sure": true,
+   "note": "label above"
+  },
+  {
+   "cell": [
+    5,
+    -64
+   ],
+   "fx": 0.65,
+   "fy": 0.7,
+   "glyph": "icon",
+   "shape": null,
+   "icon": "Mine",
+   "fill": "dark brown pick with blue head and torch",
+   "outline": null,
+   "square": null,
+   "square_cells": null,
+   "label": null,
+   "label_style": null,
+   "sure": true,
+   "note": "mine variant: crossed pick plus lit torch"
+  },
+  {
+   "cell": [
+    0,
+    -65
+   ],
+   "fx": 0.55,
+   "fy": 0.3,
+   "glyph": "settlement",
+   "shape": "square",
+   "icon": null,
+   "fill": "grey-brown",
+   "outline": "white",
+   "square": "grey-brown",
+   "square_cells": 1,
+   "label": "Surkina",
+   "label_style": "regular",
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    6,
+    -65
+   ],
+   "fx": 0.5,
+   "fy": 0.5,
+   "glyph": "settlement",
+   "shape": "triangle",
+   "icon": null,
+   "fill": "dark green",
+   "outline": "white",
+   "square": "olive green",
+   "square_cells": 1,
+   "label": null,
+   "label_style": null,
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    1,
+    -67
+   ],
+   "fx": 0.4,
+   "fy": 0.7,
+   "glyph": "settlement",
+   "shape": "triangle",
+   "icon": null,
+   "fill": "teal green",
+   "outline": "white",
+   "square": "teal green",
+   "square_cells": 1,
+   "label": null,
+   "label_style": null,
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    2,
+    -68
+   ],
+   "fx": 0.4,
+   "fy": 0.4,
+   "glyph": "settlement",
+   "shape": "dot",
+   "icon": null,
+   "fill": "grey",
+   "outline": "white",
+   "square": null,
+   "square_cells": null,
+   "label": "[Outpost]",
+   "label_style": "bracketed",
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    7,
+    -69
+   ],
+   "fx": 0.3,
+   "fy": 0.7,
+   "glyph": "settlement",
+   "shape": "triangle",
+   "icon": null,
+   "fill": "teal green",
+   "outline": "white",
+   "square": "teal green",
+   "square_cells": 1,
+   "label": null,
+   "label_style": null,
+   "sure": true,
+   "note": ""
+  }
+ ],
+ "unclear": [
+  "Neighbour-overlap symbols at x=-1 (Outpost triangle, dot, Naga Camp labels, OLD..) are outside core, skipped"
+ ]
+}

@@ -1,0 +1,103 @@
+{
+ "tile": "tile_-20_-100",
+ "symbols": [
+  {
+   "cell": [
+    -18,
+    -91
+   ],
+   "fx": 0.4,
+   "fy": 0.6,
+   "glyph": "icon",
+   "shape": null,
+   "icon": "Camp",
+   "fill": "yellow",
+   "outline": null,
+   "square": null,
+   "square_cells": null,
+   "label": "[Paatru Camp]",
+   "label_style": "bracketed",
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    -19,
+    -95
+   ],
+   "fx": 0.5,
+   "fy": 0.0,
+   "glyph": "settlement",
+   "shape": "pentagon",
+   "icon": null,
+   "fill": "light blue",
+   "outline": "white",
+   "square": "blue-grey",
+   "square_cells": 1,
+   "label": "JARECAI",
+   "label_style": "caps",
+   "sure": false,
+   "note": "glyph centre on the -94/-95 border; shaded square spans 2 cells tall (-94,-95); concentric pentagon"
+  },
+  {
+   "cell": [
+    -13,
+    -96
+   ],
+   "fx": 0.7,
+   "fy": 0.3,
+   "glyph": "settlement",
+   "shape": "triangle",
+   "icon": null,
+   "fill": "steel blue",
+   "outline": "white",
+   "square": "blue-grey",
+   "square_cells": 1,
+   "label": null,
+   "label_style": null,
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    -17,
+    -97
+   ],
+   "fx": 0.5,
+   "fy": 0.3,
+   "glyph": "settlement",
+   "shape": "triangle",
+   "icon": null,
+   "fill": "dark green",
+   "outline": "white",
+   "square": "green",
+   "square_cells": 1,
+   "label": null,
+   "label_style": null,
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    -12,
+    -93
+   ],
+   "fx": 0.45,
+   "fy": 0.3,
+   "glyph": "icon",
+   "shape": null,
+   "icon": "Nord fortress ruin",
+   "fill": "grey",
+   "outline": null,
+   "square": null,
+   "square_cells": null,
+   "label": null,
+   "label_style": null,
+   "sure": false,
+   "note": "grey castle; could be Breton crypt/castle ruin"
+  }
+ ],
+ "unclear": [
+  "Jarecai cell ambiguous"
+ ]
+}

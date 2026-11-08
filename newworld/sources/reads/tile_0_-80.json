@@ -1,0 +1,46 @@
+{
+ "tile": "tile_0_-80",
+ "symbols": [
+  {
+   "cell": [
+    1,
+    -75
+   ],
+   "fx": 0.7,
+   "fy": 0.45,
+   "glyph": "settlement",
+   "shape": "triangle",
+   "icon": null,
+   "fill": "dark green",
+   "outline": "white",
+   "square": "green",
+   "square_cells": 1,
+   "label": null,
+   "label_style": null,
+   "sure": true,
+   "note": "no label"
+  },
+  {
+   "cell": [
+    6,
+    -77
+   ],
+   "fx": 0.5,
+   "fy": 0.55,
+   "glyph": "settlement",
+   "shape": "triangle",
+   "icon": null,
+   "fill": "dark green",
+   "outline": "white",
+   "square": "green",
+   "square_cells": 1,
+   "label": null,
+   "label_style": null,
+   "sure": true,
+   "note": "no label"
+  }
+ ],
+ "unclear": [
+  "[Naga Camp] label at ~(-1,-71) outside core (no glyph seen); Ica... label at x=10 and M at x=-1 outside; triangle at (1,-81) outside core"
+ ]
+}

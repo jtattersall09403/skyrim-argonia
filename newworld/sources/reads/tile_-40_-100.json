@@ -1,0 +1,82 @@
+{
+ "tile": "tile_-40_-100",
+ "symbols": [
+  {
+   "cell": [
+    -35,
+    -92
+   ],
+   "fx": 0.7,
+   "fy": 0.5,
+   "glyph": "settlement",
+   "shape": "triangle",
+   "icon": null,
+   "fill": "red",
+   "outline": "white",
+   "square": "red",
+   "square_cells": 1,
+   "label": "Aphon Belvedere",
+   "label_style": "regular",
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    -32,
+    -92
+   ],
+   "fx": 0.7,
+   "fy": 0.6,
+   "glyph": "icon",
+   "shape": null,
+   "icon": "Cave",
+   "fill": "grey",
+   "outline": null,
+   "square": null,
+   "square_cells": null,
+   "label": null,
+   "label_style": null,
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    -36,
+    -95
+   ],
+   "fx": 0.75,
+   "fy": 0.75,
+   "glyph": "icon",
+   "shape": null,
+   "icon": "Shipwreck",
+   "fill": "olive/blue",
+   "outline": null,
+   "square": null,
+   "square_cells": null,
+   "label": null,
+   "label_style": null,
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    -34,
+    -96
+   ],
+   "fx": 0.5,
+   "fy": 0.6,
+   "glyph": "icon",
+   "shape": null,
+   "icon": "Second Empire ruin",
+   "fill": "brown",
+   "outline": null,
+   "square": null,
+   "square_cells": null,
+   "label": null,
+   "label_style": null,
+   "sure": true,
+   "note": ""
+  }
+ ],
+ "unclear": []
+}

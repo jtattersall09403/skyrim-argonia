@@ -1,0 +1,103 @@
+{
+"tile": "tile_10_-90",
+"symbols": [
+{
+"cell": [
+12,
+-83
+],
+"fx": 0.3,
+"fy": 0.75,
+"glyph": "settlement",
+"shape": "square",
+"icon": null,
+"fill": "dark orange-red",
+"outline": "white",
+"square": "orange-brown",
+"square_cells": 1,
+"label": "Marzai",
+"label_style": "regular",
+"sure": true,
+"note": ""
+},
+{
+"cell": [
+17,
+-83
+],
+"fx": 0.1,
+"fy": 0.6,
+"glyph": "settlement",
+"shape": "pentagon",
+"icon": null,
+"fill": "lime",
+"outline": "white",
+"square": "yellow-lime",
+"square_cells": 2,
+"label": "YULCA",
+"label_style": "caps",
+"sure": true,
+"note": "concentric pentagon; square spans cells 16-17; label below"
+},
+{
+"cell": [
+14,
+-85
+],
+"fx": 0.4,
+"fy": 0.5,
+"glyph": "settlement",
+"shape": "triangle",
+"icon": null,
+"fill": "dark green",
+"outline": "white",
+"square": "dark green",
+"square_cells": 1,
+"label": null,
+"label_style": null,
+"sure": true,
+"note": ""
+},
+{
+"cell": [
+13,
+-89
+],
+"fx": 0.1,
+"fy": 0.3,
+"glyph": "settlement",
+"shape": "hexagon",
+"icon": null,
+"fill": "pink",
+"outline": "white",
+"square": "pink",
+"square_cells": 2,
+"label": "TRUOWA",
+"label_style": "bold-caps-italic",
+"sure": true,
+"note": "small-caps bold; square spans 12-13"
+},
+{
+"cell": [
+10,
+-90
+],
+"fx": 0.3,
+"fy": 0.6,
+"glyph": "settlement",
+"shape": "triangle",
+"icon": null,
+"fill": "light red",
+"outline": "white",
+"square": "red",
+"square_cells": 1,
+"label": "Fort Gysilla",
+"label_style": "regular",
+"sure": true,
+"note": "label sits just south, in row -91"
+}
+],
+"unclear": [
+"outside core: camp [..mp] at (9,-83), triangle (9,-85), square 'Ba..' (20,-87), triangle (20,-91)"
+]
+}

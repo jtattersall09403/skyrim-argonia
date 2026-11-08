@@ -1,0 +1,141 @@
+{
+ "tile": "tile_10_-120",
+ "symbols": [
+  {
+   "cell": [
+    11,
+    -111
+   ],
+   "fx": 0.5,
+   "fy": 0.6,
+   "glyph": "settlement",
+   "shape": "square",
+   "icon": null,
+   "fill": "pink",
+   "outline": "white",
+   "square": "pink",
+   "square_cells": 1,
+   "label": "Karketa",
+   "label_style": "regular",
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    15,
+    -111
+   ],
+   "fx": 0.3,
+   "fy": 0.8,
+   "glyph": "settlement",
+   "shape": "dot",
+   "icon": null,
+   "fill": "pink",
+   "outline": "white",
+   "square": null,
+   "square_cells": null,
+   "label": "[Farm]",
+   "label_style": "bracketed",
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    14,
+    -112
+   ],
+   "fx": 0.3,
+   "fy": 0.65,
+   "glyph": "settlement",
+   "shape": "dot",
+   "icon": null,
+   "fill": "pink",
+   "outline": "white",
+   "square": null,
+   "square_cells": null,
+   "label": "[Farm]",
+   "label_style": "bracketed",
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    16,
+    -112
+   ],
+   "fx": 0.8,
+   "fy": 0.75,
+   "glyph": "settlement",
+   "shape": "heptagon",
+   "icon": null,
+   "fill": "pink",
+   "outline": "white",
+   "square": "pink",
+   "square_cells": 2,
+   "label": "LILMOTH",
+   "label_style": "bold-caps-italic",
+   "sure": true,
+   "note": "square L-shaped, spans 2 cells wide"
+  },
+  {
+   "cell": [
+    18,
+    -112
+   ],
+   "fx": 0.5,
+   "fy": 0.6,
+   "glyph": "icon",
+   "shape": null,
+   "icon": "Second Empire ruin",
+   "fill": "gold-brown",
+   "outline": null,
+   "square": null,
+   "square_cells": null,
+   "label": null,
+   "label_style": null,
+   "sure": false,
+   "note": "yellow tower"
+  },
+  {
+   "cell": [
+    14,
+    -113
+   ],
+   "fx": 0.7,
+   "fy": 0.7,
+   "glyph": "icon",
+   "shape": null,
+   "icon": "new: green domed building (Direnni/Aldmer-like ruin)",
+   "fill": "green-grey",
+   "outline": null,
+   "square": null,
+   "square_cells": null,
+   "label": null,
+   "label_style": null,
+   "sure": false,
+   "note": ""
+  },
+  {
+   "cell": [
+    12,
+    -113
+   ],
+   "fx": 0.65,
+   "fy": 0.55,
+   "glyph": "settlement",
+   "shape": "triangle",
+   "icon": null,
+   "fill": "red",
+   "outline": "white",
+   "square": "dark red",
+   "square_cells": 1,
+   "label": "Southwatch Keep",
+   "label_style": "regular",
+   "sure": true,
+   "note": ""
+  }
+ ],
+ "unclear": [
+  "Tile core rows -120..-111 assumed from name; rows -119..-120 are black (off map) with no symbols"
+ ]
+}

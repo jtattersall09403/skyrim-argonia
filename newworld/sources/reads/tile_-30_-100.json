@@ -1,0 +1,65 @@
+{
+"tile": "tile_-30_-100",
+"symbols": [
+{
+"cell": [
+-30,
+-91
+],
+"fx": 0.8,
+"fy": 0.1,
+"glyph": "icon",
+"shape": null,
+"icon": "Shipwreck",
+"fill": "olive/brown",
+"outline": null,
+"square": null,
+"square_cells": null,
+"label": null,
+"label_style": null,
+"sure": true,
+"note": "on water"
+},
+{
+"cell": [
+-22,
+-98
+],
+"fx": 0.7,
+"fy": 0.25,
+"glyph": "settlement",
+"shape": "triangle",
+"icon": null,
+"fill": "dark navy",
+"outline": "white",
+"square": "purple",
+"square_cells": 1,
+"label": null,
+"label_style": null,
+"sure": true,
+"note": ""
+},
+{
+"cell": [
+-24,
+-100
+],
+"fx": 0.2,
+"fy": 0.4,
+"glyph": "settlement",
+"shape": "square",
+"icon": null,
+"fill": "dark brown",
+"outline": "white",
+"square": "brown-grey",
+"square_cells": 1,
+"label": "Naxan",
+"label_style": "regular",
+"sure": true,
+"note": ""
+}
+],
+"unclear": [
+"outside core: triangle (-25,-90), Armanias square (-22,-90), [Logging Camp label at (-21..,-101)"
+]
+}

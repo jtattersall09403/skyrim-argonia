@@ -1,0 +1,236 @@
+{
+ "tile": "tile_20_-90",
+ "symbols": [
+  {
+   "cell": [
+    28,
+    -82
+   ],
+   "fx": 0.75,
+   "fy": 0.15,
+   "glyph": "settlement",
+   "shape": "triangle",
+   "icon": null,
+   "fill": "lime yellow",
+   "outline": "white",
+   "square": "lime green",
+   "square_cells": 1,
+   "label": "Yina",
+   "label_style": "regular",
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    28,
+    -82
+   ],
+   "fx": 0.55,
+   "fy": 0.7,
+   "glyph": "icon",
+   "shape": null,
+   "icon": "new: dark purple pagoda/temple ruin",
+   "fill": "dark purple",
+   "outline": null,
+   "square": null,
+   "square_cells": null,
+   "label": null,
+   "label_style": null,
+   "sure": false,
+   "note": "second glyph in same cell as Yina"
+  },
+  {
+   "cell": [
+    21,
+    -83
+   ],
+   "fx": 0.5,
+   "fy": 0.5,
+   "glyph": "settlement",
+   "shape": "square",
+   "icon": null,
+   "fill": "orange-red",
+   "outline": "white",
+   "square": "orange",
+   "square_cells": 1,
+   "label": "Gaweja",
+   "label_style": "regular",
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    24,
+    -84
+   ],
+   "fx": 0.5,
+   "fy": 0.7,
+   "glyph": "icon",
+   "shape": null,
+   "icon": "new: dark purple pagoda/temple ruin",
+   "fill": "dark purple",
+   "outline": null,
+   "square": null,
+   "square_cells": null,
+   "label": null,
+   "label_style": null,
+   "sure": false,
+   "note": ""
+  },
+  {
+   "cell": [
+    29,
+    -85
+   ],
+   "fx": 0.6,
+   "fy": 0.4,
+   "glyph": "settlement",
+   "shape": "square",
+   "icon": null,
+   "fill": "orange-red",
+   "outline": "white",
+   "square": "orange",
+   "square_cells": 1,
+   "label": "Renhu",
+   "label_style": "regular",
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    24,
+    -86
+   ],
+   "fx": 0.6,
+   "fy": 0.5,
+   "glyph": "settlement",
+   "shape": "triangle",
+   "icon": null,
+   "fill": "lime yellow",
+   "outline": "white",
+   "square": "green-yellow",
+   "square_cells": 1,
+   "label": "Xibcan",
+   "label_style": "regular",
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    28,
+    -86
+   ],
+   "fx": 0.8,
+   "fy": 0.3,
+   "glyph": "settlement",
+   "shape": "dot",
+   "icon": null,
+   "fill": "slate blue",
+   "outline": "white",
+   "square": null,
+   "square_cells": null,
+   "label": "[Outpost]",
+   "label_style": "bracketed",
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    28,
+    -87
+   ],
+   "fx": 0.8,
+   "fy": 0.25,
+   "glyph": "icon",
+   "shape": null,
+   "icon": "Mine",
+   "fill": "brown",
+   "outline": "dark",
+   "square": null,
+   "square_cells": null,
+   "label": "Vicrium",
+   "label_style": "italic",
+   "sure": true,
+   "note": "pick with flame"
+  },
+  {
+   "cell": [
+    20,
+    -87
+   ],
+   "fx": 0.4,
+   "fy": 0.6,
+   "glyph": "settlement",
+   "shape": "square",
+   "icon": null,
+   "fill": "orange-red",
+   "outline": "white",
+   "square": "orange",
+   "square_cells": 1,
+   "label": "Badal",
+   "label_style": "regular",
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    28,
+    -87
+   ],
+   "fx": 0.55,
+   "fy": 0.85,
+   "glyph": "settlement",
+   "shape": "dot",
+   "icon": null,
+   "fill": "slate blue",
+   "outline": "white",
+   "square": null,
+   "square_cells": null,
+   "label": "[Farm]",
+   "label_style": "bracketed",
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    29,
+    -88
+   ],
+   "fx": 0.55,
+   "fy": 0.2,
+   "glyph": "settlement",
+   "shape": "dot",
+   "icon": null,
+   "fill": "slate blue",
+   "outline": "white",
+   "square": null,
+   "square_cells": null,
+   "label": "[Homestead]",
+   "label_style": "bracketed",
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    28,
+    -89
+   ],
+   "fx": 0.75,
+   "fy": 0.55,
+   "glyph": "settlement",
+   "shape": "dot",
+   "icon": null,
+   "fill": "slate blue",
+   "outline": "white",
+   "square": null,
+   "square_cells": null,
+   "label": "[Farm]",
+   "label_style": "bracketed",
+   "sure": true,
+   "note": ""
+  }
+ ],
+ "unclear": [
+  "Renhu label spills past tile edge, read as Renhu in zoom (maybe longer in next tile)"
+ ]
+}

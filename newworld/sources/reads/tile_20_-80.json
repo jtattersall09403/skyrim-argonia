@@ -1,0 +1,180 @@
+{
+ "tile": "tile_20_-80",
+ "symbols": [
+  {
+   "cell": [
+    20,
+    -71
+   ],
+   "fx": 0.8,
+   "fy": 0.0,
+   "glyph": "icon",
+   "shape": null,
+   "icon": "Mine",
+   "fill": "brown pickaxe, blue head",
+   "outline": null,
+   "square": null,
+   "square_cells": null,
+   "label": null,
+   "label_style": null,
+   "sure": false,
+   "note": "crossed pick with a small yellow flame (torch) at its top left; centre on the -70/-71 border"
+  },
+  {
+   "cell": [
+    25,
+    -71
+   ],
+   "fx": 0.5,
+   "fy": 0.6,
+   "glyph": "settlement",
+   "shape": "triangle",
+   "icon": null,
+   "fill": "dark green",
+   "outline": "white",
+   "square": "green",
+   "square_cells": 1,
+   "label": null,
+   "label_style": null,
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    27,
+    -71
+   ],
+   "fx": 0.4,
+   "fy": 0.55,
+   "glyph": "icon",
+   "shape": null,
+   "icon": "new: dark purple/indigo domed ruin with spikes",
+   "fill": "dark purple",
+   "outline": null,
+   "square": null,
+   "square_cells": null,
+   "label": "Balormaak",
+   "label_style": "italic",
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    23,
+    -73
+   ],
+   "fx": 0.3,
+   "fy": 0.6,
+   "glyph": "icon",
+   "shape": null,
+   "icon": "new: dark purple/indigo domed ruin with spikes",
+   "fill": "dark purple",
+   "outline": null,
+   "square": null,
+   "square_cells": null,
+   "label": null,
+   "label_style": null,
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    24,
+    -75
+   ],
+   "fx": 0.7,
+   "fy": 0.45,
+   "glyph": "settlement",
+   "shape": "square",
+   "icon": null,
+   "fill": "orange-red",
+   "outline": "white",
+   "square": "orange",
+   "square_cells": 1,
+   "label": "Joxhi",
+   "label_style": "regular",
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    28,
+    -75
+   ],
+   "fx": 0.7,
+   "fy": 0.25,
+   "glyph": "icon",
+   "shape": null,
+   "icon": "new: dark purple/indigo domed ruin with spikes",
+   "fill": "dark purple",
+   "outline": null,
+   "square": null,
+   "square_cells": null,
+   "label": "Virtluush",
+   "label_style": "italic",
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    28,
+    -76
+   ],
+   "fx": 0.45,
+   "fy": 0.25,
+   "glyph": "icon",
+   "shape": null,
+   "icon": "Camp",
+   "fill": "yellow",
+   "outline": null,
+   "square": null,
+   "square_cells": null,
+   "label": "[Sarpa Camp]",
+   "label_style": "bracketed",
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    22,
+    -77
+   ],
+   "fx": 0.6,
+   "fy": 0.4,
+   "glyph": "settlement",
+   "shape": "triangle",
+   "icon": null,
+   "fill": "dark green",
+   "outline": "white",
+   "square": "green",
+   "square_cells": 1,
+   "label": null,
+   "label_style": null,
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    26,
+    -78
+   ],
+   "fx": 0.0,
+   "fy": 0.6,
+   "glyph": "settlement",
+   "shape": "pentagon",
+   "icon": null,
+   "fill": "orange-red",
+   "outline": "white",
+   "square": "orange-brown",
+   "square_cells": 2,
+   "label": "INOJA",
+   "label_style": "caps",
+   "sure": false,
+   "note": "square 2 cells wide (25,26) x 1 tall; glyph centre on the 25/26 border"
+  }
+ ],
+ "unclear": [
+  "Inoja cell border",
+  "mine cell border"
+ ]
+}

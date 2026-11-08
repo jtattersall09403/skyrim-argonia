@@ -1,0 +1,236 @@
+{
+"tile": "tile_-10_-70",
+"symbols": [
+{
+"cell": [
+-1,
+-61
+],
+"fx": 0.7,
+"fy": 0.2,
+"glyph": "settlement",
+"shape": "triangle",
+"icon": null,
+"fill": "grey-brown",
+"outline": "white",
+"square": "tan-brown",
+"square_cells": 1,
+"label": "[Outpo",
+"label_style": "bracketed",
+"sure": false,
+"note": "label cut off by tile edge; probably [Outpost]"
+},
+{
+"cell": [
+-7,
+-61
+],
+"fx": 0.5,
+"fy": 0.7,
+"glyph": "icon",
+"shape": null,
+"icon": "Third Empire ruin (brown tower)",
+"fill": "brown",
+"outline": null,
+"square": null,
+"square_cells": null,
+"label": null,
+"label_style": null,
+"sure": true,
+"note": ""
+},
+{
+"cell": [
+-7,
+-62
+],
+"fx": 0.5,
+"fy": 0.5,
+"glyph": "settlement",
+"shape": "pentagon",
+"icon": null,
+"fill": "green",
+"outline": "white",
+"square": "green",
+"square_cells": 1,
+"label": "JAL-VEESA",
+"label_style": "caps",
+"sure": true,
+"note": "concentric pentagon (inner ring)"
+},
+{
+"cell": [
+-2,
+-62
+],
+"fx": 0.1,
+"fy": 0.5,
+"glyph": "settlement",
+"shape": "ringed-octagon",
+"icon": null,
+"fill": "grey-brown",
+"outline": "white",
+"square": "tan-brown",
+"square_cells": 2,
+"label": "STORMHOLD",
+"label_style": "bold-caps-italic",
+"sure": true,
+"note": "square spans cells -3 and -2"
+},
+{
+"cell": [
+-6,
+-64
+],
+"fx": 0.8,
+"fy": 0.7,
+"glyph": "settlement",
+"shape": "dot",
+"icon": null,
+"fill": "grey",
+"outline": "white",
+"square": null,
+"square_cells": null,
+"label": "[Farm]",
+"label_style": "bracketed",
+"sure": true,
+"note": ""
+},
+{
+"cell": [
+-1,
+-64
+],
+"fx": 0.3,
+"fy": 0.5,
+"glyph": "settlement",
+"shape": "dot",
+"icon": null,
+"fill": "grey",
+"outline": "white",
+"square": null,
+"square_cells": null,
+"label": "[Farm]",
+"label_style": "bracketed",
+"sure": true,
+"note": "label to the west"
+},
+{
+"cell": [
+-8,
+-65
+],
+"fx": 0.8,
+"fy": 0.2,
+"glyph": "icon",
+"shape": null,
+"icon": "new: glowing white trident/tree in dark arched tomb",
+"fill": "white/pale blue",
+"outline": null,
+"square": null,
+"square_cells": null,
+"label": null,
+"label_style": null,
+"sure": true,
+"note": ""
+},
+{
+"cell": [
+-6,
+-66
+],
+"fx": 0.6,
+"fy": 0.7,
+"glyph": "settlement",
+"shape": "triangle",
+"icon": null,
+"fill": "green",
+"outline": "white",
+"square": "green",
+"square_cells": 1,
+"label": null,
+"label_style": null,
+"sure": true,
+"note": ""
+},
+{
+"cell": [
+-3,
+-66
+],
+"fx": 0.4,
+"fy": 0.5,
+"glyph": "icon",
+"shape": null,
+"icon": "new: glowing white trident/tree in dark arched tomb",
+"fill": "white/pale blue",
+"outline": null,
+"square": null,
+"square_cells": null,
+"label": "Nenria",
+"label_style": "italic",
+"sure": true,
+"note": ""
+},
+{
+"cell": [
+-2,
+-68
+],
+"fx": 0.65,
+"fy": 0.5,
+"glyph": "icon",
+"shape": null,
+"icon": "Camp",
+"fill": "yellow flame",
+"outline": null,
+"square": null,
+"square_cells": null,
+"label": "[Naga Camp]",
+"label_style": "bracketed",
+"sure": true,
+"note": ""
+},
+{
+"cell": [
+-9,
+-68
+],
+"fx": 0.6,
+"fy": 0.7,
+"glyph": "icon",
+"shape": null,
+"icon": "new: glowing white trident/tree in dark arched tomb",
+"fill": "white/pale blue",
+"outline": null,
+"square": null,
+"square_cells": null,
+"label": "Gandranen",
+"label_style": "italic",
+"sure": true,
+"note": "label above icon"
+},
+{
+"cell": [
+-9,
+-70
+],
+"fx": 0.4,
+"fy": 0.5,
+"glyph": "icon",
+"shape": null,
+"icon": "Camp",
+"fill": "yellow flame",
+"outline": null,
+"square": null,
+"square_cells": null,
+"label": "[Naga Camp]",
+"label_style": "bracketed",
+"sure": true,
+"note": ""
+}
+],
+"unclear": [
+"outside core: Fort Willow label (red triangle at x0,y-62), square at x0,y-65, green triangles at (-3,-60),(-11,-63), camp (-2,-71)"
+]
+}

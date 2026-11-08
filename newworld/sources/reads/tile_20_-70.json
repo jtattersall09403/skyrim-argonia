@@ -1,0 +1,237 @@
+{
+ "tile": "tile_20_-70",
+ "symbols": [
+  {
+   "cell": [
+    25,
+    -62
+   ],
+   "fx": 0.55,
+   "fy": 0.35,
+   "glyph": "icon",
+   "shape": null,
+   "icon": "new: dark purple pagoda/temple ruin",
+   "fill": "dark purple",
+   "outline": null,
+   "square": null,
+   "square_cells": null,
+   "label": "Kharraluhl",
+   "label_style": "italic",
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    28,
+    -63
+   ],
+   "fx": 0.65,
+   "fy": 0.15,
+   "glyph": "settlement",
+   "shape": "triangle",
+   "icon": null,
+   "fill": "red",
+   "outline": "white",
+   "square": "salmon-red",
+   "square_cells": 1,
+   "label": "Fort Thornmoth",
+   "label_style": "regular",
+   "sure": true,
+   "note": "sits inside a large 3+ cell red square belonging to the big octagon"
+  },
+  {
+   "cell": [
+    25,
+    -63
+   ],
+   "fx": 0.55,
+   "fy": 0.85,
+   "glyph": "settlement",
+   "shape": "dot",
+   "icon": null,
+   "fill": "red",
+   "outline": "white",
+   "square": null,
+   "square_cells": null,
+   "label": "[Logging Camp]",
+   "label_style": "bracketed",
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    23,
+    -64
+   ],
+   "fx": 0.2,
+   "fy": 0.8,
+   "glyph": "settlement",
+   "shape": "dot",
+   "icon": null,
+   "fill": "red",
+   "outline": "white",
+   "square": null,
+   "square_cells": null,
+   "label": "[Outpost]",
+   "label_style": "bracketed",
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    26,
+    -65
+   ],
+   "fx": 0.45,
+   "fy": 0.7,
+   "glyph": "settlement",
+   "shape": "triangle",
+   "icon": null,
+   "fill": "dark green",
+   "outline": "white",
+   "square": "green",
+   "square_cells": 1,
+   "label": "Guxal",
+   "label_style": "regular",
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    28,
+    -65
+   ],
+   "fx": 0.75,
+   "fy": 0.8,
+   "glyph": "settlement",
+   "shape": "dot",
+   "icon": null,
+   "fill": "red",
+   "outline": "white",
+   "square": null,
+   "square_cells": null,
+   "label": "[Mine]",
+   "label_style": "bracketed",
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    29,
+    -66
+   ],
+   "fx": 0.25,
+   "fy": 0.15,
+   "glyph": "settlement",
+   "shape": "dot",
+   "icon": null,
+   "fill": "red",
+   "outline": "white",
+   "square": null,
+   "square_cells": null,
+   "label": "[Outpost]",
+   "label_style": "bracketed",
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    24,
+    -66
+   ],
+   "fx": 0.2,
+   "fy": 0.65,
+   "glyph": "icon",
+   "shape": null,
+   "icon": "new: dark purple pagoda/temple ruin",
+   "fill": "dark purple",
+   "outline": null,
+   "square": null,
+   "square_cells": null,
+   "label": "Ovezza",
+   "label_style": "italic",
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    20,
+    -68
+   ],
+   "fx": 0.45,
+   "fy": 0.45,
+   "glyph": "icon",
+   "shape": null,
+   "icon": "new: dark purple pagoda/temple ruin",
+   "fill": "dark purple",
+   "outline": null,
+   "square": null,
+   "square_cells": null,
+   "label": "Kaochalit",
+   "label_style": "italic",
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    25,
+    -68
+   ],
+   "fx": 0.45,
+   "fy": 0.3,
+   "glyph": "icon",
+   "shape": null,
+   "icon": "Mine",
+   "fill": "brown",
+   "outline": "dark",
+   "square": null,
+   "square_cells": null,
+   "label": null,
+   "label_style": null,
+   "sure": true,
+   "note": "pick with flame"
+  },
+  {
+   "cell": [
+    26,
+    -69
+   ],
+   "fx": 0.45,
+   "fy": 0.4,
+   "glyph": "settlement",
+   "shape": "triangle",
+   "icon": null,
+   "fill": "cyan",
+   "outline": "white",
+   "square": "light blue",
+   "square_cells": 1,
+   "label": "Ayiin",
+   "label_style": "regular",
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    20,
+    -70
+   ],
+   "fx": 0.75,
+   "fy": 0.95,
+   "glyph": "icon",
+   "shape": null,
+   "icon": "Mine",
+   "fill": "brown",
+   "outline": "dark",
+   "square": null,
+   "square_cells": null,
+   "label": null,
+   "label_style": null,
+   "sure": false,
+   "note": "pick with flame; on -70/-71 row border; label 'moth'/'Noota Nara..' nearby belongs to row -71"
+  }
+ ],
+ "unclear": [
+  "Large red octagon labelled 'TH0R...' (bold caps italic, likely THORNMOTH) centre at x=29/30 boundary, y=-63 (px 927,298): assigned outside core, belongs to tile_30 side; verify",
+  "Fort Thornmoth triangle might be 28 or 29 boundary-no, cell 28"
+ ]
+}

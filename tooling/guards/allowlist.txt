@@ -7,3 +7,5 @@ story/data/db/bmv_cell.jsonl
 story/data/db/bmv_shell.jsonl
 LICENSE
 LICENSE-content
+newworld/sources/maps/PT3-map-Black_Marsh.png
+newworld/sources/maps/PT3-map-Black_Marsh_Regions.png

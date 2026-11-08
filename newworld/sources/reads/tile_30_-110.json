@@ -1,0 +1,65 @@
+{
+ "tile": "tile_30_-110",
+ "symbols": [
+  {
+   "cell": [
+    30,
+    -101
+   ],
+   "fx": 0.3,
+   "fy": 0.35,
+   "glyph": "icon",
+   "shape": null,
+   "icon": "new: dark green spired temple/tower with curved side arms (offshore)",
+   "fill": "dark green",
+   "outline": null,
+   "square": null,
+   "square_cells": null,
+   "label": null,
+   "label_style": null,
+   "sure": true,
+   "note": "on water, no label"
+  },
+  {
+   "cell": [
+    30,
+    -108
+   ],
+   "fx": 0.55,
+   "fy": 0.55,
+   "glyph": "icon",
+   "shape": null,
+   "icon": "new: dark green spired temple/tower with curved side arms (offshore)",
+   "fill": "dark green",
+   "outline": null,
+   "square": null,
+   "square_cells": null,
+   "label": null,
+   "label_style": null,
+   "sure": true,
+   "note": "on water, no label"
+  },
+  {
+   "cell": [
+    31,
+    -110
+   ],
+   "fx": 0.4,
+   "fy": 0.4,
+   "glyph": "icon",
+   "shape": null,
+   "icon": "new: dark green spired temple/tower with curved side arms (offshore)",
+   "fill": "dark green",
+   "outline": null,
+   "square": null,
+   "square_cells": null,
+   "label": null,
+   "label_style": null,
+   "sure": true,
+   "note": "on water, no label"
+  }
+ ],
+ "unclear": [
+  "outside core: red triangle at (29,-108) with label '...ell Station'"
+ ]
+}

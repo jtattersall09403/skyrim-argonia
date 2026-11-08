@@ -1,0 +1,198 @@
+{
+ "tile": "tile_-30_-90",
+ "symbols": [
+  {
+   "cell": [
+    -25,
+    -83
+   ],
+   "fx": 0.4,
+   "fy": 0.7,
+   "glyph": "settlement",
+   "shape": "triangle",
+   "icon": null,
+   "fill": "light green",
+   "outline": "white",
+   "square": "light green",
+   "square_cells": 1,
+   "label": "Giovesse",
+   "label_style": "regular",
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    -26,
+    -84
+   ],
+   "fx": 0.4,
+   "fy": 0.1,
+   "glyph": "settlement",
+   "shape": "ringed-octagon",
+   "icon": null,
+   "fill": "light green",
+   "outline": "white",
+   "square": "light green",
+   "square_cells": 3,
+   "label": "GIDEON",
+   "label_style": "bold-caps-italic",
+   "sure": false,
+   "note": "concentric octagons; shaded area about 3x2 cells (-27..-25, -84..-83), overlapping Giovesse's square; glyph centre near the -83/-84 border"
+  },
+  {
+   "cell": [
+    -22,
+    -83
+   ],
+   "fx": 0.7,
+   "fy": 0.75,
+   "glyph": "icon",
+   "shape": null,
+   "icon": "Camp",
+   "fill": "yellow",
+   "outline": null,
+   "square": null,
+   "square_cells": null,
+   "label": "[Paatru Camp]",
+   "label_style": "bracketed",
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    -21,
+    -84
+   ],
+   "fx": 0.6,
+   "fy": 0.5,
+   "glyph": "icon",
+   "shape": null,
+   "icon": "Nord fortress ruin",
+   "fill": "grey",
+   "outline": null,
+   "square": null,
+   "square_cells": null,
+   "label": null,
+   "label_style": null,
+   "sure": false,
+   "note": "grey castle; could be Breton crypt/castle ruin"
+  },
+  {
+   "cell": [
+    -25,
+    -85
+   ],
+   "fx": 0.95,
+   "fy": 0.65,
+   "glyph": "icon",
+   "shape": null,
+   "icon": "Third Empire ruin",
+   "fill": "brown",
+   "outline": null,
+   "square": null,
+   "square_cells": null,
+   "label": null,
+   "label_style": null,
+   "sure": false,
+   "note": "could be Second Empire ruin (same brown icon)"
+  },
+  {
+   "cell": [
+    -23,
+    -87
+   ],
+   "fx": 0.6,
+   "fy": 0.7,
+   "glyph": "settlement",
+   "shape": "triangle",
+   "icon": null,
+   "fill": "red",
+   "outline": "white",
+   "square": "red",
+   "square_cells": 1,
+   "label": "Fort Silvermoth",
+   "label_style": "regular",
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    -27,
+    -87
+   ],
+   "fx": 0.7,
+   "fy": 0.4,
+   "glyph": "settlement",
+   "shape": "square",
+   "icon": null,
+   "fill": "light green",
+   "outline": "white",
+   "square": "light green",
+   "square_cells": 1,
+   "label": "Olvani",
+   "label_style": "regular",
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    -24,
+    -89
+   ],
+   "fx": 0.6,
+   "fy": 0.6,
+   "glyph": "icon",
+   "shape": null,
+   "icon": "Nord fortress ruin",
+   "fill": "grey",
+   "outline": null,
+   "square": null,
+   "square_cells": null,
+   "label": null,
+   "label_style": null,
+   "sure": false,
+   "note": "grey castle"
+  },
+  {
+   "cell": [
+    -22,
+    -90
+   ],
+   "fx": 0.6,
+   "fy": 0.3,
+   "glyph": "settlement",
+   "shape": "square",
+   "icon": null,
+   "fill": "light green",
+   "outline": "white",
+   "square": "light green",
+   "square_cells": 1,
+   "label": "Armanias",
+   "label_style": "regular",
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    -25,
+    -90
+   ],
+   "fx": 0.6,
+   "fy": 0.35,
+   "glyph": "settlement",
+   "shape": "triangle",
+   "icon": null,
+   "fill": "dark navy",
+   "outline": "white",
+   "square": "purple",
+   "square_cells": 1,
+   "label": null,
+   "label_style": null,
+   "sure": true,
+   "note": "no label"
+  }
+ ],
+ "unclear": [
+  "Gideon cell and extent"
+ ]
+}

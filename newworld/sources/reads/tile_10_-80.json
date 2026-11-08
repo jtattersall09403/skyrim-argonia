@@ -1,0 +1,158 @@
+{
+ "tile": "tile_10_-80",
+ "symbols": [
+  {
+   "cell": [
+    12,
+    -71
+   ],
+   "fx": 0.2,
+   "fy": 0.1,
+   "glyph": "icon",
+   "shape": null,
+   "icon": "Camp",
+   "fill": null,
+   "outline": null,
+   "square": null,
+   "square_cells": null,
+   "label": "[Sarpa Camp]",
+   "label_style": "italic",
+   "sure": true,
+   "note": "label to the right"
+  },
+  {
+   "cell": [
+    11,
+    -71
+   ],
+   "fx": 0.8,
+   "fy": 0.5,
+   "glyph": "icon",
+   "shape": null,
+   "icon": "Cave",
+   "fill": "grey",
+   "outline": null,
+   "square": null,
+   "square_cells": null,
+   "label": null,
+   "label_style": null,
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    18,
+    -71
+   ],
+   "fx": 0.5,
+   "fy": 0.5,
+   "glyph": "settlement",
+   "shape": "triangle",
+   "icon": null,
+   "fill": "red",
+   "outline": "white",
+   "square": "pink-red",
+   "square_cells": 1,
+   "label": "Fort Chalkmoth",
+   "label_style": "regular",
+   "sure": true,
+   "note": "label to the left"
+  },
+  {
+   "cell": [
+    19,
+    -72
+   ],
+   "fx": 0.65,
+   "fy": 0.5,
+   "glyph": "settlement",
+   "shape": "square",
+   "icon": null,
+   "fill": "orange-red",
+   "outline": "white",
+   "square": "orange-brown",
+   "square_cells": 1,
+   "label": "Noota Nara",
+   "label_style": "regular",
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    14,
+    -74
+   ],
+   "fx": 0.3,
+   "fy": 0.3,
+   "glyph": "settlement",
+   "shape": "triangle",
+   "icon": null,
+   "fill": "lime yellow",
+   "outline": "white",
+   "square": "lime",
+   "square_cells": 1,
+   "label": "Hirecan",
+   "label_style": "regular",
+   "sure": true,
+   "note": "label below"
+  },
+  {
+   "cell": [
+    11,
+    -77
+   ],
+   "fx": 0.7,
+   "fy": 0.65,
+   "glyph": "settlement",
+   "shape": "triangle",
+   "icon": null,
+   "fill": "lime yellow",
+   "outline": "white",
+   "square": "lime",
+   "square_cells": 1,
+   "label": "Icalca",
+   "label_style": "regular",
+   "sure": true,
+   "note": "label to the left"
+  },
+  {
+   "cell": [
+    15,
+    -78
+   ],
+   "fx": 0.5,
+   "fy": 0.3,
+   "glyph": "settlement",
+   "shape": "hexagon",
+   "icon": null,
+   "fill": "orange-red",
+   "outline": "white",
+   "square": "orange-brown",
+   "square_cells": 1,
+   "label": "AROXHU",
+   "label_style": "caps",
+   "sure": true,
+   "note": "concentric hexagons; square 2 cells tall (-77,-78); small-caps style"
+  },
+  {
+   "cell": [
+    19,
+    -79
+   ],
+   "fx": 0.7,
+   "fy": 0.6,
+   "glyph": "icon",
+   "shape": null,
+   "icon": "Camp",
+   "fill": null,
+   "outline": null,
+   "square": null,
+   "square_cells": null,
+   "label": "[Sarpa Camp]",
+   "label_style": "italic",
+   "sure": true,
+   "note": "label below"
+  }
+ ],
+ "unclear": []
+}

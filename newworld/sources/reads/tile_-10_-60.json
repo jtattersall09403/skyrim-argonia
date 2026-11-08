@@ -1,0 +1,27 @@
+{
+ "tile": "tile_-10_-60",
+ "symbols": [
+  {
+   "cell": [
+    -3,
+    -60
+   ],
+   "fx": 0.75,
+   "fy": 0.15,
+   "glyph": "settlement",
+   "shape": "triangle",
+   "icon": null,
+   "fill": "bright green",
+   "outline": "white",
+   "square": "bright green",
+   "square_cells": 1,
+   "label": null,
+   "label_style": null,
+   "sure": true,
+   "note": "no label"
+  }
+ ],
+ "unclear": [
+  "core taken as y -60..-51; items at y -61 (Outpost triangle at x -1, brown ruin x -7, tree icon x -11) are in the outer ring"
+ ]
+}

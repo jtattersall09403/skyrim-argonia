@@ -1,0 +1,120 @@
+{
+ "tile": "tile_0_-90",
+ "symbols": [
+  {
+   "cell": [
+    1,
+    -81
+   ],
+   "fx": 0.5,
+   "fy": 0.6,
+   "glyph": "settlement",
+   "shape": "triangle",
+   "icon": null,
+   "fill": "dark green",
+   "outline": "white",
+   "square": "dark green",
+   "square_cells": 1,
+   "label": null,
+   "label_style": null,
+   "sure": true,
+   "note": "no label seen"
+  },
+  {
+   "cell": [
+    5,
+    -83
+   ],
+   "fx": 0.7,
+   "fy": 0.4,
+   "glyph": "settlement",
+   "shape": "triangle",
+   "icon": null,
+   "fill": "olive",
+   "outline": "white",
+   "square": "grey-olive",
+   "square_cells": 1,
+   "label": "Julo",
+   "label_style": "regular",
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    9,
+    -83
+   ],
+   "fx": 0.65,
+   "fy": 0.6,
+   "glyph": "icon",
+   "shape": null,
+   "icon": "Camp",
+   "fill": "yellow flame",
+   "outline": null,
+   "square": null,
+   "square_cells": null,
+   "label": "[Tumnatu Camp]",
+   "label_style": "bracketed",
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    9,
+    -85
+   ],
+   "fx": 0.65,
+   "fy": 0.7,
+   "glyph": "settlement",
+   "shape": "triangle",
+   "icon": null,
+   "fill": "dark green",
+   "outline": "white",
+   "square": "dark green",
+   "square_cells": 1,
+   "label": null,
+   "label_style": null,
+   "sure": true,
+   "note": "no label seen"
+  },
+  {
+   "cell": [
+    2,
+    -87
+   ],
+   "fx": 0.4,
+   "fy": 0.75,
+   "glyph": "settlement",
+   "shape": "triangle",
+   "icon": null,
+   "fill": "dark crimson",
+   "outline": "white",
+   "square": "brown-red",
+   "square_cells": 1,
+   "label": "Nemeon",
+   "label_style": "regular",
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    7,
+    -87
+   ],
+   "fx": 0.45,
+   "fy": 0.45,
+   "glyph": "settlement",
+   "shape": "triangle",
+   "icon": null,
+   "fill": "olive",
+   "outline": "white",
+   "square": "grey-olive",
+   "square_cells": 1,
+   "label": "Luntoc",
+   "label_style": "regular",
+   "sure": true,
+   "note": ""
+  }
+ ],
+ "unclear": []
+}

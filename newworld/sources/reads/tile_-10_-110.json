@@ -1,0 +1,158 @@
+{
+ "tile": "tile_-10_-110",
+ "symbols": [
+  {
+   "cell": [
+    -3,
+    -102
+   ],
+   "fx": 0.4,
+   "fy": 0.5,
+   "glyph": "icon",
+   "shape": null,
+   "icon": "Direnni ruin",
+   "fill": "brown",
+   "outline": null,
+   "square": null,
+   "square_cells": null,
+   "label": "Bucalos",
+   "label_style": "italic",
+   "sure": false,
+   "note": "label sits left of icon; association probable dark hut icon; Direnni ruin by shape, darker tint than key"
+  },
+  {
+   "cell": [
+    -6,
+    -104
+   ],
+   "fx": 0.4,
+   "fy": 0.5,
+   "glyph": "icon",
+   "shape": null,
+   "icon": "Direnni ruin",
+   "fill": "olive",
+   "outline": null,
+   "square": null,
+   "square_cells": null,
+   "label": null,
+   "label_style": null,
+   "sure": false,
+   "note": " dark hut icon; Direnni ruin by shape, darker tint than key"
+  },
+  {
+   "cell": [
+    -2,
+    -104
+   ],
+   "fx": 0.6,
+   "fy": 0.5,
+   "glyph": "settlement",
+   "shape": "dot",
+   "icon": null,
+   "fill": "white/dark",
+   "outline": "dark",
+   "square": null,
+   "square_cells": null,
+   "label": "Lujei Ferry",
+   "label_style": "regular",
+   "sure": true,
+   "note": "minor location dot"
+  },
+  {
+   "cell": [
+    -1,
+    -104
+   ],
+   "fx": 0.95,
+   "fy": 0.5,
+   "glyph": "settlement",
+   "shape": "square",
+   "icon": null,
+   "fill": "olive green",
+   "outline": "white",
+   "square": "olive green",
+   "square_cells": 2,
+   "label": "Luje...",
+   "label_style": "regular",
+   "sure": false,
+   "note": "glyph centre on boundary of cells -1 and 0; label runs off tile (Lujei?)"
+  },
+  {
+   "cell": [
+    -6,
+    -107
+   ],
+   "fx": 0.45,
+   "fy": 0.55,
+   "glyph": "settlement",
+   "shape": "pentagon",
+   "icon": null,
+   "fill": "dark brown",
+   "outline": "white",
+   "square": "brown",
+   "square_cells": 1,
+   "label": "MIR-XAL",
+   "label_style": "caps",
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    -8,
+    -110
+   ],
+   "fx": 0.7,
+   "fy": 0.6,
+   "glyph": "settlement",
+   "shape": "square",
+   "icon": null,
+   "fill": "dark brown",
+   "outline": "white",
+   "square": "brown",
+   "square_cells": 1,
+   "label": "Salaxul",
+   "label_style": "regular",
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    -1,
+    -109
+   ],
+   "fx": 0.4,
+   "fy": 0.45,
+   "glyph": "settlement",
+   "shape": "square",
+   "icon": null,
+   "fill": "olive green",
+   "outline": "white",
+   "square": "olive",
+   "square_cells": 1,
+   "label": "Natai",
+   "label_style": "regular",
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    -4,
+    -109
+   ],
+   "fx": 0.6,
+   "fy": 0.5,
+   "glyph": "icon",
+   "shape": null,
+   "icon": "Direnni ruin",
+   "fill": "brown",
+   "outline": null,
+   "square": null,
+   "square_cells": null,
+   "label": null,
+   "label_style": null,
+   "sure": false,
+   "note": " dark hut icon; Direnni ruin by shape, darker tint than key"
+  }
+ ],
+ "unclear": []
+}

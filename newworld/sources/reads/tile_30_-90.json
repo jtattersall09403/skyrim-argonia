@@ -1,0 +1,65 @@
+{
+ "tile": "tile_30_-90",
+ "symbols": [
+  {
+   "cell": [
+    36,
+    -82
+   ],
+   "fx": 0.7,
+   "fy": 0.25,
+   "glyph": "icon",
+   "shape": null,
+   "icon": "Shipwreck",
+   "fill": "olive green",
+   "outline": "dark",
+   "square": null,
+   "square_cells": null,
+   "label": null,
+   "label_style": null,
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    30,
+    -89
+   ],
+   "fx": 0.35,
+   "fy": 0.65,
+   "glyph": "settlement",
+   "shape": "concentric-square",
+   "icon": null,
+   "fill": "dark navy",
+   "outline": "white",
+   "square": "grey-purple",
+   "square_cells": 1,
+   "label": "Seafalls",
+   "label_style": "regular",
+   "sure": true,
+   "note": "square within square; label above"
+  },
+  {
+   "cell": [
+    31,
+    -89
+   ],
+   "fx": 0.55,
+   "fy": 0.7,
+   "glyph": "settlement",
+   "shape": "dot",
+   "icon": null,
+   "fill": "dark navy",
+   "outline": "white",
+   "square": null,
+   "square_cells": null,
+   "label": "Seafalls Lighthouse",
+   "label_style": "regular",
+   "sure": true,
+   "note": "label to the right"
+  }
+ ],
+ "unclear": [
+  "Smuggler Camp glyph centre sits in row -80, outside core; Renhu, Yina, [Homestead] are in column 29, outside core"
+ ]
+}

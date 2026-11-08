@@ -1,0 +1,46 @@
+{
+ "tile": "tile_40_-80",
+ "symbols": [
+  {
+   "cell": [
+    40,
+    -77
+   ],
+   "fx": 0.6,
+   "fy": 0.7,
+   "glyph": "icon",
+   "shape": null,
+   "icon": "new: grey castle/keep with red banner (similar to Breton castle ruin)",
+   "fill": "grey",
+   "outline": null,
+   "square": null,
+   "square_cells": null,
+   "label": "Rainbreaker Keep",
+   "label_style": "italic",
+   "sure": false,
+   "note": "label below"
+  },
+  {
+   "cell": [
+    42,
+    -77
+   ],
+   "fx": 0.8,
+   "fy": 0.95,
+   "glyph": "icon",
+   "shape": null,
+   "icon": "Shipwreck",
+   "fill": "olive green",
+   "outline": "dark",
+   "square": null,
+   "square_cells": null,
+   "label": null,
+   "label_style": null,
+   "sure": true,
+   "note": "glyph near boundary of -77/-78"
+  }
+ ],
+ "unclear": [
+  "[Peak] landmark and [..p] label are in column 39, outside core; x 47+ black no-data"
+ ]
+}

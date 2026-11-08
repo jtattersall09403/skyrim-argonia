@@ -1,0 +1,215 @@
+{
+ "tile": "tile_-20_-110",
+ "symbols": [
+  {
+   "cell": [
+    -19,
+    -101
+   ],
+   "fx": 0.3,
+   "fy": 0.75,
+   "glyph": "settlement",
+   "shape": "dot",
+   "icon": null,
+   "fill": "dark",
+   "outline": "white",
+   "square": "dark brown",
+   "square_cells": 1,
+   "label": "[Logging Camp]",
+   "label_style": "bracketed",
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    -11,
+    -102
+   ],
+   "fx": 0.35,
+   "fy": 0.4,
+   "glyph": "settlement",
+   "shape": "triangle",
+   "icon": null,
+   "fill": "blue",
+   "outline": "white",
+   "square": "blue-grey",
+   "square_cells": 1,
+   "label": null,
+   "label_style": null,
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    -19,
+    -103
+   ],
+   "fx": 0.55,
+   "fy": 0.8,
+   "glyph": "settlement",
+   "shape": "triangle",
+   "icon": null,
+   "fill": "blue",
+   "outline": "white",
+   "square": "blue-grey",
+   "square_cells": 1,
+   "label": null,
+   "label_style": null,
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    -19,
+    -106
+   ],
+   "fx": 0.45,
+   "fy": 0.7,
+   "glyph": "settlement",
+   "shape": "square",
+   "icon": null,
+   "fill": "dark brown",
+   "outline": "white",
+   "square": "dark brown",
+   "square_cells": 1,
+   "label": "Chasepoint",
+   "label_style": "regular",
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    -17,
+    -107
+   ],
+   "fx": 0.3,
+   "fy": 0.2,
+   "glyph": "icon",
+   "shape": null,
+   "icon": "Mine",
+   "fill": "brown",
+   "outline": "dark",
+   "square": null,
+   "square_cells": null,
+   "label": null,
+   "label_style": null,
+   "sure": true,
+   "note": "mine pick with flame (camp-like) as in key Camp+Mine; y approx -106/-107 border"
+  },
+  {
+   "cell": [
+    -16,
+    -106
+   ],
+   "fx": 0.5,
+   "fy": 0.3,
+   "glyph": "icon",
+   "shape": null,
+   "icon": "Landmark",
+   "fill": "grey",
+   "outline": null,
+   "square": null,
+   "square_cells": null,
+   "label": "Percar Scar",
+   "label_style": "italic",
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    -14,
+    -107
+   ],
+   "fx": 0.99,
+   "fy": 0.4,
+   "glyph": "settlement",
+   "shape": "dot",
+   "icon": null,
+   "fill": "dark",
+   "outline": "white",
+   "square": "dark brown",
+   "square_cells": 2,
+   "label": "[Quarry]",
+   "label_style": "bracketed",
+   "sure": true,
+   "note": "dot on boundary of -14/-13, square 2 cells"
+  },
+  {
+   "cell": [
+    -12,
+    -107
+   ],
+   "fx": 0.4,
+   "fy": 0.25,
+   "glyph": "icon",
+   "shape": null,
+   "icon": "Mine",
+   "fill": "brown",
+   "outline": "dark",
+   "square": null,
+   "square_cells": null,
+   "label": null,
+   "label_style": null,
+   "sure": true,
+   "note": "pick with flame"
+  },
+  {
+   "cell": [
+    -11,
+    -107
+   ],
+   "fx": 0.75,
+   "fy": 0.3,
+   "glyph": "icon",
+   "shape": null,
+   "icon": "new: brown multi-turret castle/barrow icon",
+   "fill": "dark brown",
+   "outline": null,
+   "square": null,
+   "square_cells": null,
+   "label": null,
+   "label_style": null,
+   "sure": false,
+   "note": "resembles Breton castle ruin / Nord barrow"
+  },
+  {
+   "cell": [
+    -20,
+    -107
+   ],
+   "fx": 0.5,
+   "fy": 0.6,
+   "glyph": "settlement",
+   "shape": "dot",
+   "icon": null,
+   "fill": "dark",
+   "outline": "white",
+   "square": "dark brown",
+   "square_cells": 1,
+   "label": "[...ing Camp]",
+   "label_style": "bracketed",
+   "sure": false,
+   "note": "label cut off at tile edge, likely [Logging Camp]"
+  },
+  {
+   "cell": [
+    -18,
+    -109
+   ],
+   "fx": 0.5,
+   "fy": 0.5,
+   "glyph": "settlement",
+   "shape": "dot",
+   "icon": null,
+   "fill": "dark",
+   "outline": "white",
+   "square": "dark brown",
+   "square_cells": 1,
+   "label": "[Quarry]",
+   "label_style": "bracketed",
+   "sure": true,
+   "note": ""
+  }
+ ],
+ "unclear": []
+}

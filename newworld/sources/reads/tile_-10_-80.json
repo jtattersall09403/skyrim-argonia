@@ -1,0 +1,103 @@
+{
+ "tile": "tile_-10_-80",
+ "symbols": [
+  {
+   "cell": [
+    -2,
+    -71
+   ],
+   "fx": 0.75,
+   "fy": 0.7,
+   "glyph": "icon",
+   "shape": null,
+   "icon": "Camp",
+   "fill": "yellow",
+   "outline": null,
+   "square": null,
+   "square_cells": null,
+   "label": "[Naga Camp]",
+   "label_style": "bracketed",
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    -4,
+    -75
+   ],
+   "fx": 0.05,
+   "fy": 0.0,
+   "glyph": "settlement",
+   "shape": "heptagon",
+   "icon": null,
+   "fill": "dark green",
+   "outline": "white",
+   "square": "olive green",
+   "square_cells": 2,
+   "label": "HELSTROM",
+   "label_style": "bold-caps-italic",
+   "sure": false,
+   "note": "glyph centre at corner of 4 cells; square is 2x2 (-5,-4 x -75,-74)"
+  },
+  {
+   "cell": [
+    -7,
+    -77
+   ],
+   "fx": 0.35,
+   "fy": 0.6,
+   "glyph": "settlement",
+   "shape": "triangle",
+   "icon": null,
+   "fill": "magenta",
+   "outline": "white",
+   "square": "pink/magenta",
+   "square_cells": 1,
+   "label": null,
+   "label_style": null,
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    -2,
+    -79
+   ],
+   "fx": 0.7,
+   "fy": 0.5,
+   "glyph": "settlement",
+   "shape": "triangle",
+   "icon": null,
+   "fill": "dark green",
+   "outline": "white",
+   "square": "green",
+   "square_cells": 1,
+   "label": null,
+   "label_style": null,
+   "sure": true,
+   "note": ""
+  },
+  {
+   "cell": [
+    -7,
+    -80
+   ],
+   "fx": 0.35,
+   "fy": 0.3,
+   "glyph": "icon",
+   "shape": null,
+   "icon": "Camp",
+   "fill": "yellow",
+   "outline": null,
+   "square": null,
+   "square_cells": null,
+   "label": "[Naga Camp]",
+   "label_style": "bracketed",
+   "sure": true,
+   "note": ""
+  }
+ ],
+ "unclear": [
+  "Helstrom cell ambiguous"
+ ]
+}
