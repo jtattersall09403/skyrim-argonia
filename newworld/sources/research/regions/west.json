@@ -424,7 +424,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Gar fishing, salt-and-iron barter, herbs and caravan trade.",
+     "text": "The river-folk live by gar fishing, salt-and-iron barter, herbs and the caravan trade.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -502,7 +502,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Paatru camps, haunted Kothringi ruins and wild predators.",
+     "text": "Paatru camps, haunted Kothringi ruins and wild predators threaten travellers away from the stations.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -580,7 +580,7 @@
     },
     {
      "aspect": "climate",
-     "text": "Hot, humid, with monsoon flooding that shuts the roads.",
+     "text": "The country is hot and humid. Monsoon flooding shuts the roads.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -715,7 +715,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Fishing, shipping, smuggling and salvage.",
+     "text": "The bay's people live by fishing, shipping, smuggling and salvage along its shores.",
      "tier": "CANON_DERIVED",
      "sources": [
       {
@@ -738,7 +738,7 @@
     },
     {
      "aspect": "faith",
-     "text": "Sailors' charms and offerings to the Nine and Sithis.",
+     "text": "Sailors keep charms and make offerings to the Nine and to Sithis on the bay.",
      "tier": "CANON_DERIVED",
      "sources": [
       {
@@ -761,7 +761,7 @@
     },
     {
      "aspect": "look",
-     "text": "Grey-green water, mangrove coast and sandbars.",
+     "text": "The bay shows grey-green water, a mangrove coast and sandbars along its shores.",
      "tier": "CANON_DERIVED",
      "sources": [
       {
@@ -784,7 +784,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Pirates, storms and wrecks on the eastern coast.",
+     "text": "Pirates, storms and wrecks threaten ships on the eastern coast of the bay.",
      "tier": "CANON_DERIVED",
      "sources": [
       {
@@ -807,7 +807,7 @@
     },
     {
      "aspect": "landscape",
-     "text": "A shallow bay with mangrove shoreline and sand and mud.",
+     "text": "A shallow bay with a mangrove shoreline over sand and mud flats.",
      "tier": "CANON_DERIVED",
      "sources": [
       {
@@ -830,7 +830,7 @@
     },
     {
      "aspect": "ecology",
-     "text": "Sharks, crabs, mullet, eels and sea-birds.",
+     "text": "Sharks, crabs, mullet, eels and sea-birds live in the bay's shallow waters.",
      "tier": "CANON_DERIVED",
      "sources": [
       {
@@ -853,7 +853,7 @@
     },
     {
      "aspect": "climate",
-     "text": "Warm, with sea breezes and storm fronts.",
+     "text": "The bay is warm. Sea breezes and storm fronts pass over the water.",
      "tier": "CANON_DERIVED",
      "sources": [
       {
@@ -956,7 +956,7 @@
     },
     {
      "aspect": "people",
-     "text": "A handful of watchers and smugglers.",
+     "text": "A handful of watchers and smugglers live on the island, the watchers at the belvedere and the smugglers at the cave.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -977,7 +977,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Customs levies, smuggling and salvage.",
+     "text": "The island lives on customs levies, smuggling and salvage in Topal Bay.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -998,7 +998,7 @@
     },
     {
      "aspect": "faith",
-     "text": "Sailors' charms and a small Nine shrine.",
+     "text": "Sailors' charms and a small Nine shrine at the belvedere serve the island's few people.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1040,7 +1040,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Pirates, smugglers and the sea.",
+     "text": "Pirates, smugglers and the sea itself threaten visitors to the island.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1061,7 +1061,7 @@
     },
     {
      "aspect": "landscape",
-     "text": "A low hilly island with rocky shores and a high spine.",
+     "text": "A low hilly island with rocky shores and a high spine running through it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1082,7 +1082,7 @@
     },
     {
      "aspect": "ecology",
-     "text": "Scrub, gulls, crabs and kelp beds.",
+     "text": "Scrub covers the hills, with gulls, crabs and kelp beds along the shore.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1103,7 +1103,7 @@
     },
     {
      "aspect": "climate",
-     "text": "Breezy, with salt spray and sea mist.",
+     "text": "The island is breezy. Salt spray and sea mist blow in off Topal Bay.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1303,7 +1303,7 @@
     },
     {
      "aspect": "look",
-     "text": "Flooded channels, scorched timber and tiered stilt halls.",
+     "text": "Flooded channels, scorched timber and tiered stilt halls mark the basin.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1330,7 +1330,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Hostile posts, swamp predators and haunted ruins.",
+     "text": "Hostile posts, swamp predators and haunted ruins make the basin dangerous.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1357,7 +1357,7 @@
     },
     {
      "aspect": "landscape",
-     "text": "A shallow basin of channels and islets with dark water.",
+     "text": "A shallow basin of channels and islets, with dark water between them.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1384,7 +1384,7 @@
     },
     {
      "aspect": "ecology",
-     "text": "Reeds, mangrove, gar, death hoppers and fleshflies.",
+     "text": "Reeds and mangrove grow in the basin, with gar, death hoppers and fleshflies.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1411,7 +1411,7 @@
     },
     {
      "aspect": "climate",
-     "text": "Hot, humid, with monsoon flooding.",
+     "text": "The basin is hot and humid, with monsoon flooding in the wet season.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {

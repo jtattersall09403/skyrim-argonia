@@ -17,7 +17,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "UESP has no page for this region name (searched 2026-11-08); it is a Project Tamriel region. It holds Stormhold, the northern gate, with its customs, its forts and its farms.",
+     "text": "The valley of storms holds Stormhold, the northern gate, with its customs, its forts and its farms.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -167,7 +167,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D2 away from the roads: crocodiles, Naga bands and the haunted ruins; D1 on the northern road.",
+     "text": "Risky away from the roads: crocodiles, Naga bands and the haunted ruins. The northern road is mostly safe.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -264,7 +264,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "UESP has no page for this region name (searched 2026-11-08); it is a Project Tamriel region. It is named for the Barsaebic Ayleids; it holds Loriasel, Gandranen, Gemin and the western road to Slough Point.",
+     "text": "Barsaebica is named for the Barsaebic Ayleids and holds Loriasel, Gandranen, Gemin and the western road to Slough Point.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -363,7 +363,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Reed, fish, tolls and ruin-scavenging.",
+     "text": "The region lives on reed, fish, tolls and scavenging in the Ayleid ruins.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -390,7 +390,7 @@
     },
     {
      "aspect": "faith",
-     "text": "The Hist pool at Jal-Veesa; Ayleid shrines gone to ruin.",
+     "text": "The Hist pool at Jal-Veesa is the living shrine of the region, while the Ayleid shrines lie in ruin.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -444,7 +444,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D3 in the ruins and the marsh between them; D1 on the road.",
+     "text": "The ruins and the marsh between them are dangerous, while the roads are far safer.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -471,7 +471,7 @@
     },
     {
      "aspect": "landscape",
-     "text": "A hummocky plain with ruins on mounds and hills.",
+     "text": "A hummocky plain west of Stormhold, with ruins standing on mounds and hills.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -498,7 +498,7 @@
     },
     {
      "aspect": "ecology",
-     "text": "Lamias in Loriasel, giant snakes, wamasu and fleshflies.",
+     "text": "Lamias live in Loriasel's caverns, and giant snakes, wamasu and fleshflies range the plain.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -525,7 +525,7 @@
     },
     {
      "aspect": "climate",
-     "text": "Humid; tidal reach on the western rivers.",
+     "text": "The air is humid. The tide reaches far up the western rivers.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -569,7 +569,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "UESP has no page for this region name (searched 2026-11-08); it is a Project Tamriel region. It is the far south-west of our batch, the Argonian side of Blackwood.",
+     "text": "Blackwood here is the far south-west of the province, the Argonian side of Blackwood.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -652,7 +652,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Fish, clay, hunting, herbs and the Blackwood Road trade.",
+     "text": "Fish, clay, hunting, herbs and trade along the Blackwood Road support the frontier's people.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -696,7 +696,7 @@
     },
     {
      "aspect": "look",
-     "text": "Flooded hillscape, bog and cairn-fields.",
+     "text": "A flooded hillscape of bog and cairn-fields, with steep hills rising from standing water.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -718,7 +718,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D3: Sul-Xan raiders, death hoppers, hackwings.",
+     "text": "Sul-Xan raiders, death hoppers and hackwings make the frontier dangerous away from the roads.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -740,7 +740,7 @@
     },
     {
      "aspect": "landscape",
-     "text": "Flooded hillscape with steep, lightly forested hills.",
+     "text": "Flooded hillscape with steep, lightly forested hills at the western frontier of Black Marsh.",
      "tier": "CANON_EXPLICIT",
      "sources": [
       {
@@ -752,7 +752,7 @@
     },
     {
      "aspect": "ecology",
-     "text": "Death hoppers, hackwings, fleshflies and marsh giants.",
+     "text": "Death hoppers, hackwings, fleshflies and marsh giants live in the hills and bogs.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -774,7 +774,7 @@
     },
     {
      "aspect": "climate",
-     "text": "Humid; roads closed in the monsoon.",
+     "text": "The air is humid. The monsoon closes the roads of the frontier.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {

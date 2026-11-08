@@ -446,7 +446,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A village of stilt houses and tethered rafts on the northern caravan road above Gideon. Canon calls it a drifting village; the community moves house-rafts along the channels as the flood rises and falls.",
+     "text": "A village of stilt houses and tethered rafts on the northern caravan road above Gideon. It is a drifting village: the community moves house-rafts along the channels as the flood rises and falls.",
      "tier": "CANON_DERIVED",
      "sources": [
       {
@@ -682,7 +682,7 @@
     },
     {
      "aspect": "history",
-     "text": "Olvani is a Project Tamriel name with no canon history. It grew from a customs landing of the Imperial-era Gideon trade into a village that survived on fishing.",
+     "text": "It grew from a customs landing of the Imperial-era Gideon trade into a village that survived on fishing.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -1164,7 +1164,7 @@
     },
     {
      "aspect": "history",
-     "text": "Armanias is a Project Tamriel name; the place is a Gideon-era farming village that survived 4E 48 and has been rebuilt since.",
+     "text": "Armanias is a Gideon-era farming village that survived 4E 48 and has been rebuilt since.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -1290,7 +1290,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Safe; swamp predators raid the paddies at night.",
+     "text": "The village itself is safe, but swamp predators raid the paddies at night.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1377,7 +1377,7 @@
     },
     {
      "aspect": "history",
-     "text": "Gul-Tej is a Project Tamriel name with no canon page; it grew along the Onkobra line that canon runs east from Gideon, as the Gideon-side market for the river tribes.",
+     "text": "It grew along the Onkobra line that runs east from Gideon, as the Gideon-side market for the river tribes.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -3611,7 +3611,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A seasonal camp of Paatru hunters on the western edge of the Hist country, labelled as a Paatru camp on the map. It lies on a riverbank among reeds, with a smoke-rack and a drawn-up boat.",
+     "text": "A seasonal camp of Paatru hunters on the western edge of the Hist country. It lies on a riverbank among reeds, with a smoke-rack and a drawn-up boat.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3822,7 +3822,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A seasonal camp of Paatru hunters on the western edge of the Hist country, labelled as a Paatru camp on the map. It lies on dry ground at the basin's north edge, close to Mine-Burner land.",
+     "text": "A seasonal camp of Paatru hunters on the western edge of the Hist country. It lies on dry ground at the basin's north edge, close to Mine-Burner land.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4033,7 +4033,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A seasonal camp of Paatru hunters on the western edge of the Hist country, labelled as a Paatru camp on the map. It lies near a Kothringi ruin, which the hunters use as a shelter.",
+     "text": "A seasonal camp of Paatru hunters on the western edge of the Hist country. It lies near a Kothringi ruin, which the hunters use as a shelter.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4575,7 +4575,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Gar fishing and a small ferry for Gul-Tej's boats.",
+     "text": "The five Naka-Desh fish for gar and run a small ferry for Gul-Tej's boats.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4810,7 +4810,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Gar fishing and barter.",
+     "text": "The Naka-Desh fish for gar and barter salt and iron with the Paatru camps for hides.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5045,7 +5045,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Gar fishing and mangrove-bark gathering.",
+     "text": "The Naka-Desh fish for gar and gather mangrove bark, selling fish and rope to Gideon's boats.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6180,7 +6180,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Watching, fishing and a small toll on boats.",
+     "text": "The Mine-Burners watch the channel, fish it and take a small toll on boats between Jarecai and Kharaxos.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6406,7 +6406,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Watching and a small toll on caravans.",
+     "text": "The post watches the Nha Enasa border and takes a small toll on caravans.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6632,7 +6632,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Watching and a small toll on the Soulrest road.",
+     "text": "The post watches the road toward Soulrest and takes a small toll on the carts that use it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6793,7 +6793,7 @@
     },
     {
      "aspect": "history",
-     "text": "The tribes of the basin burned the Imperial mines and timber concessions in 3E 427 and never reconciled to the coast. Jarecai grew as their council town; the name has no canon page.",
+     "text": "The tribes of the basin burned the Imperial mines and timber concessions in 3E 427 and never reconciled to the coast. Jarecai grew as their council town.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -7056,7 +7056,7 @@
     },
     {
      "aspect": "history",
-     "text": "The name is older than the tribes and was kept on the maps; the Mine-Burners did not bother to change it.",
+     "text": "The name is older than the tribes and was kept by those who draw charts; the Mine-Burners did not bother to change it.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -7137,7 +7137,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Salvaged mine metal, fish and a river market.",
+     "text": "Kharaxos trades salvaged mine metal and fish in a river market on the basin's eastern shore.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7164,7 +7164,7 @@
     },
     {
      "aspect": "faith",
-     "text": "Sithis and Hist; burned-timber posts mark graves.",
+     "text": "The people honour Sithis and the Hist. Posts of burned timber mark their graves.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7379,7 +7379,7 @@
     },
     {
      "aspect": "people",
-     "text": "Chime-Keeper Argonians, craftsmen and traders.",
+     "text": "Chime-Keeper Argonians live here as craftsmen and traders, resettlers of a hamlet that bears a Kothringi name.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7483,7 +7483,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Safe; the basin's reeds are wild.",
+     "text": "The hamlet is safe, but the reeds of the basin around it are wild.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7645,7 +7645,7 @@
     },
     {
      "aspect": "people",
-     "text": "Soulrest Argonians, a Khajiit tallyman and a clerk.",
+     "text": "Argonians from Soulrest cut the timber, with a Khajiit tallyman and a clerk to count the logs.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7672,7 +7672,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Red mangrove timber and bark sold to Soulrest.",
+     "text": "The camp sells red mangrove timber and bark to Soulrest's merchants.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7753,7 +7753,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Swamp predators and Mine-Burner anger when fees are late.",
+     "text": "Swamp predators prowl the stand. The Mine-Burners grow angry when the camp's fees are late.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7780,7 +7780,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A late fee, a lost log-raft or a body found in the timber.",
+     "text": "A late fee, a lost log-raft or a body found in the timber could put the camp in trouble.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7895,7 +7895,7 @@
     },
     {
      "aspect": "people",
-     "text": "Uninhabited; smugglers use it at times.",
+     "text": "The sagging halls have no residents. Smugglers use them from time to time.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -7916,7 +7916,7 @@
     },
     {
      "aspect": "economy",
-     "text": "It was a fishing village; now it offers salvage.",
+     "text": "It was a fishing village; now it offers salvage from its rotting halls.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -8091,7 +8091,7 @@
     },
     {
      "aspect": "present",
-     "text": "The den is uninhabited; scholars and diggers come rarely.",
+     "text": "The den is uninhabited and half left to the weather; scholars and diggers come only rarely.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8114,7 +8114,7 @@
     },
     {
      "aspect": "people",
-     "text": "Uninhabited; the den was nomadic and left little.",
+     "text": "The den has no residents. The Lilmothiit were nomadic and left little behind.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8137,7 +8137,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Once a camp; now it offers fox-kite fabric and bone-charms.",
+     "text": "Once a camp of the fox-folk, it now offers scraps of fox-kite fabric and bone-charms to those who dig.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8160,7 +8160,7 @@
     },
     {
      "aspect": "faith",
-     "text": "Fox-spirit charms of orange paper hang in the dome.",
+     "text": "Charms of orange paper to the fox spirits still hang inside the dome.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8206,7 +8206,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Collapse and swamp predators.",
+     "text": "The dome may collapse on anyone who goes in. Swamp predators lie in the ground around it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8355,7 +8355,7 @@
     },
     {
      "aspect": "people",
-     "text": "Argonian watchers of Archein families and a Bosmer pilot.",
+     "text": "Argonian watchers of Archein families and a Bosmer pilot keep the lookout house on Aphon Isle.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8407,7 +8407,7 @@
     },
     {
      "aspect": "faith",
-     "text": "Sithis and a small Nine shrine kept from the old retreat.",
+     "text": "The watchers honour Sithis and keep a small Nine shrine left from the old Imperial retreat.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8459,7 +8459,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Bay pirates raid it at night; the watchers shoot first.",
+     "text": "Bay pirates raid the lookout at night. The watchers fire on them without warning.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8562,7 +8562,7 @@
     },
     {
      "aspect": "history",
-     "text": "Natural; smugglers have used it since Red Bramman's day.",
+     "text": "The cave is natural. Smugglers have used it since Red Bramman's day.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -8583,7 +8583,7 @@
     },
     {
      "aspect": "present",
-     "text": "A small crew of Bay smugglers stash cargo here.",
+     "text": "A small crew of Topal Bay smugglers stash cargo in the sea cave on Aphon Isle.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -8604,7 +8604,7 @@
     },
     {
      "aspect": "people",
-     "text": "Smugglers, often Khajiit and Argonian, who work Topal Bay.",
+     "text": "Smugglers, often Khajiit and Argonian, work Topal Bay from this cave on Aphon Isle's eastern shore.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -8625,7 +8625,7 @@
     },
     {
      "aspect": "economy",
-     "text": "A cache for moon-sugar and salvage.",
+     "text": "The cave is a cache for moon-sugar and salvage taken in the bay.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -8646,7 +8646,7 @@
     },
     {
      "aspect": "faith",
-     "text": "A sailor's charm to the sea.",
+     "text": "A sailor's charm to the sea hangs in the cave mouth above the kelp.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -8688,7 +8688,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Smugglers will fight; the tide fills the cave.",
+     "text": "The smugglers will fight intruders. The tide fills the cave.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -8709,7 +8709,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A stashed crate, a hidden chart or a smuggler captain.",
+     "text": "A stashed crate, a hidden chart or a smuggler captain might be found in the cave.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -8755,7 +8755,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A merchantman that sank off Gideon's estuary.",
+     "text": "The Grey Heron is a merchantman that sank off Gideon's estuary and now lies in Topal Bay.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -8968,7 +8968,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A smuggler's sloop wrecked on the rocks off Aphon.",
+     "text": "The Sallow Anne is a smuggler's sloop that was wrecked on the rocks off Aphon Isle.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -9136,7 +9136,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A smuggler's strongbox, a rival crew or a chart.",
+     "text": "The captain's strongbox has never been found. A rival crew or a chart may lead to it.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -9259,7 +9259,7 @@
     },
     {
      "aspect": "people",
-     "text": "Argonian soldiers of Archein descent and a Khajiit pilot.",
+     "text": "Argonian soldiers of Archein descent garrison the fort, with a Khajiit pilot.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -9285,7 +9285,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Tolls and a ferry for the garrison.",
+     "text": "The garrison collects tolls and keeps a ferry for its own needs.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -9311,7 +9311,7 @@
     },
     {
      "aspect": "faith",
-     "text": "Sithis and a small Nine shrine.",
+     "text": "The soldiers honour Sithis and keep a small shrine to the Nine.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -9363,7 +9363,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Bay pirates and storm surges.",
+     "text": "Bay pirates and storm surges threaten the fort on its shore.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {

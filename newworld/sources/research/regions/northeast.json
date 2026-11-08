@@ -17,7 +17,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "The Arnesian Jungle takes its name from Arnesia, the east-coast country around Thorn and Archon. UESP has no page for the jungle as a region; Lore:Arnesia names Arnesia only as a settlement and region near Archon and Thorn.",
+     "text": "The Arnesian Jungle takes its name from Arnesia, the east-coast country around Thorn and Archon, a settlement and region near both cities.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -202,7 +202,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D2 away from roads; D3 at the Velothi ruins; the Thorn road and towns are D1 and D0.",
+     "text": "Risky away from roads and dangerous at the Velothi ruins. The Thorn road and the towns are mostly safe.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -323,7 +323,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "UESP has no page for Chixathe Mesa; it is a Project Tamriel name. It lies between the Arnesian country and the Middle Argonian interior.",
+     "text": "Chixathe Mesa lies between the Arnesian country and the Middle Argonian interior.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -429,7 +429,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Quarried stone, chalk and lime, hides and books.",
+     "text": "Chixathe Mesa yields quarried stone, chalk and lime, hides and books, sent off the mesa to Thorn and the river towns.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -507,7 +507,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D3 away from roads: Sarpa raiders, Velothi undead and cliff falls.",
+     "text": "Dangerous away from roads: Sarpa raiders, Velothi undead and cliff falls.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {

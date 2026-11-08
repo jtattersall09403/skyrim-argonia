@@ -17,7 +17,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "The cape is the peninsula behind Soulrest. It holds the old Imperial mines and timber concessions, a few villages and a burn scar. There is no UESP page for Cape Percar (searched 2026-11-08).",
+     "text": "The cape is the peninsula behind Soulrest. It holds the old Imperial mines and timber concessions, a few villages and a burn scar.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -251,7 +251,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "The washes are the wet country around Blackrose where three rivers converge; Bramman's river runs out to Topal Bay. There is no UESP page for Tulmek Washes (searched 2026-11-08).",
+     "text": "The washes are the wet country around Blackrose where three rivers converge; Bramman's river runs out to Topal Bay.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -450,7 +450,7 @@
     },
     {
      "aspect": "climate",
-     "text": "Hot, humid, still; annual flood.",
+     "text": "The washes are hot, humid and still; every year the rivers flood the whole lowland between the cape and the delta.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -483,7 +483,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "The Sea of Mists is our name for the Southern Sea's water south of the cape; the map labels it Sea of Mists. There is no UESP page for the name; the Southern Sea page covers the body of water.",
+     "text": "The Sea of Mists is the part of the Southern Sea south of Cape Percar, a grey-green shelf sea off Black Marsh's south coast.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -506,7 +506,7 @@
     },
     {
      "aspect": "history",
-     "text": "Canon: pirates of the Southern Sea avoid attention and a large share of seafarers are Khajiit; legend says Murkmire once extended further south and was swallowed by the sea.",
+     "text": "Pirates of the Southern Sea avoid attention. Many of its seafarers are Khajiit. Legend says Murkmire once extended further south and was swallowed by the sea.",
      "tier": "CANON_EXPLICIT",
      "sources": [
       {
@@ -550,7 +550,7 @@
     },
     {
      "aspect": "people",
-     "text": "Argonian fishers, Khajiit coasters, a few Bosmer seafarers.",
+     "text": "Argonian fishers, Khajiit coasters and a few Bosmer seafarers work the sea's boats and landings along the coast.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -572,7 +572,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Fishing, salvage, coastal freight, smuggling.",
+     "text": "The sea's coast lives on fishing, wreck salvage, coastal freight and smuggling in small boats.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -588,7 +588,7 @@
     },
     {
      "aspect": "faith",
-     "text": "Sailors' rites for the drowned; Sithis tokens on boats.",
+     "text": "Sailors hold rites for the drowned, and Argonian boats carry a Sithis token on the stem.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -622,7 +622,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Sea-drakes, shoals, pirates, storms.",
+     "text": "Sea-drakes, shoals, pirates and wet-season storms threaten every boat that leaves the shore.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -644,7 +644,7 @@
     },
     {
      "aspect": "landscape",
-     "text": "A shelf sea about 35 m deep with sandbars and islets.",
+     "text": "The sea is a shelf about 35 m deep, scattered with sandbars and low islets.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -677,7 +677,7 @@
     },
     {
      "aspect": "climate",
-     "text": "Warm, humid, mist most mornings, storms in the wet season.",
+     "text": "The Sea of Mists is warm and humid with mist most mornings. Storms come in the wet season.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {

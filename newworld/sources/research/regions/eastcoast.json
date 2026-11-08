@@ -17,7 +17,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "The bight is the sea-bay that lies between Thorn in the north and the Arorha shore in the south, with a belt of grassland behind it. UESP has no page for Hatandros Bight; the name is the map's, and probably an old Cantemiric Velothi one.",
+     "text": "The bight is the sea-bay that lies between Thorn in the north and the Arorha shore in the south, with a belt of grassland behind it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -223,7 +223,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "The Padomaic is the vast ocean around most of Tamriel; here it is the eastern edge of Black Marsh, with Archon and Thornmarsh on its shore. The map's region covers only the shelf and open water off Thorn, Hatandros Bight and Skeith Isle.",
+     "text": "The Padomaic is the vast ocean around most of Tamriel; here it is the eastern edge of Black Marsh, with Archon and Thornmarsh on its shore. The region covers only the shelf and open water off Thorn, Hatandros Bight and Skeith Isle.",
      "tier": "CANON_EXPLICIT",
      "sources": [
       {
@@ -399,7 +399,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A rocky island east of the mainland, home to two outlaw camps, an old Imperial keep and a single crag. UESP has no page for Skeith Isle; canon's round island off Arnesia's coast has dark green-grey terrain, and this may be it.",
+     "text": "A rocky island east of the mainland, home to two outlaw camps, an old Imperial keep and a single crag. Its dark green-grey terrain may be that of the round island off Arnesia's coast.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -565,7 +565,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A broad region of red-clay mounds, lakes and creeks in the east of Middle Argonia. UESP has no page for Okuwun-Rahei; Lore:Middle Argonia places the Agaceph in the east, and the map shows the rest.",
+     "text": "A broad region of red-clay mounds, lakes and creeks in the east of Middle Argonia, where the Agaceph live.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {

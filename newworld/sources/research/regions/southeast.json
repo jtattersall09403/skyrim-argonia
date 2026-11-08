@@ -152,7 +152,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D2 away from the road: slaughterfish, crocodilians, ripper eels, smugglers and disease.",
+     "text": "Risky away from the road: slaughterfish, crocodilians, ripper eels, smugglers and disease.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -332,7 +332,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Rice, fish, salvage and ferrying; Lilmoth is the market.",
+     "text": "The islands live on rice, fish, salvage and ferrying; Lilmoth is the market for all of it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -383,7 +383,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D2 in the interior: bandits in the burnt forts, predators in the dens, sea-drakes at the coast.",
+     "text": "Risky in the interior: bandits in the burnt forts, predators in the dens, sea-drakes at the coast.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -422,7 +422,7 @@
     },
     {
      "aspect": "ecology",
-     "text": "Mangrove coasts, paddy fauna, wading birds, guar and crabs.",
+     "text": "Mangrove coasts, paddy fauna, wading birds, guar and crabs fill the islands.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -439,7 +439,7 @@
     },
     {
      "aspect": "climate",
-     "text": "Hot, humid, with sea winds and a monsoon.",
+     "text": "The islands are hot and humid, swept by sea winds and drenched by the monsoon.",
      "tier": "CANON_DERIVED",
      "sources": [
       {
@@ -539,7 +539,7 @@
     },
     {
      "aspect": "people",
-     "text": "No residents; divers, sea-drakes, dreugh.",
+     "text": "The sea floor has no residents. Divers, sea-drakes and dreugh come here.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -556,7 +556,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Salvage from the spires, licensed by the state.",
+     "text": "The spires yield salvage. The state licenses who may take it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -607,7 +607,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D3 across the floor; D4 at Echo Deep and the outer spires: sea-drakes, dreugh, drowning.",
+     "text": "Dangerous across the floor and deadly at Echo Deep and the outer spires: sea-drakes, dreugh, drowning.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {

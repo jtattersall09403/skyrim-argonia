@@ -245,7 +245,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Inside the walls it is D0 by law, but purse-cutters and bribed guards are the real risk. At the door the paddies and the coast road are D1; the saltrice workers bear grudges against the field-owners.",
+     "text": "Inside the walls it is safe by law, but purse-cutters and bribed guards are the real risk. At the door the paddies and the coast road are mostly safe; the saltrice workers bear grudges against the field-owners.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -326,7 +326,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A fort beside Thorn on the western approach, named in the Legion's '-moth' style. In 4E 201 it is a toll station, river watch and the south end of the frontier screen facing Morrowind. UESP has no page for it; it is a Project Tamriel name.",
+     "text": "A fort beside Thorn on the western approach, named in the Legion's '-moth' style. In 4E 201 it is a toll station, river watch and the south end of the frontier screen facing Morrowind. It stands a short way west of the town.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -508,7 +508,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D1: the garrison keeps the road. Bribery and smuggled goods make the gate a place to be careful with money more than with a blade.",
+     "text": "The garrison keeps the road. Bribery and smuggled goods make the gate a place to be careful with money more than with a blade.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -589,7 +589,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A small timber camp on the inlet's southern shore, west of Thorn, unlabelled on the map as [Logging Camp]. Its name, Cutbank Camp, is ours.",
+     "text": "A small timber camp on the inlet's southern shore, west of Thorn, called Cutbank Camp.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -736,7 +736,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D1: the shore is close to Thorn's patrols, though crocodiles take swimmers at the bank.",
+     "text": "The shore is close to Thorn's patrols, though crocodiles take swimmers at the bank.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -802,7 +802,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A roadside post unlabelled on the map as [Outpost], set where the Tsonac track meets the bay's southern shore. Its name is ours.",
+     "text": "A roadside post called Thornway Watch, set where the Tsonac track meets the bay's southern shore.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -949,7 +949,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D1: the road is watched; jungle cats come to the well at night.",
+     "text": "The road is watched; jungle cats come to the well at night.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1020,7 +1020,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A small Argonian stilt hamlet on the bay's southern shore, one of the Root-Folk's outposts at the eastern edge of the jungle. UESP has no page for Guxal.",
+     "text": "A small Argonian stilt hamlet on the bay's southern shore, one of the Root-Folk's outposts at the eastern edge of the jungle.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1209,7 +1209,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D2: the village is peaceful but the wilderness behind it is full of predators.",
+     "text": "The village is peaceful but the wilderness behind it is full of predators.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1288,7 +1288,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A ruin of the Cantemiric Velothi, the Dunmer dissident settlers of the eastern seaboard around Thorn, Archon and Arnesia. UESP has no page for Kharraluhl; the people are canon.",
+     "text": "A ruin of the Cantemiric Velothi, the Dunmer dissident settlers of the eastern seaboard around Thorn, Archon and Arnesia.",
      "tier": "CANON_DERIVED",
      "sources": [
       {
@@ -1451,7 +1451,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D3: undead of the flu-dead, pit traps and scavenger crews who guard their finds; it is dark and cold below.",
+     "text": "Undead of the flu-dead, pit traps and scavenger crews who guard their finds; it is dark and cold below.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1525,7 +1525,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A Cantemiric Velothi ruin on the water's edge. UESP has no page for it; the Velothi settlement of this coast is canon.",
+     "text": "A Cantemiric Velothi ruin on the water's edge, one of the Velothi settlements of this coast.",
      "tier": "CANON_DERIVED",
      "sources": [
       {
@@ -1688,7 +1688,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D3: wraiths of the flu-dead and crocodiles at the quay.",
+     "text": "The wraiths of the flu-dead drift through the ruin, and crocodiles lie at the drowned quay.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1761,7 +1761,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A hamlet in the Stone-Sleepers' country, on a river that runs to the bay. UESP has no page; the culture and name are ours.",
+     "text": "A hamlet in the Stone-Sleepers' country, on a river that runs to the bay. Its culture and name are the Stone-Sleepers' own.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -1950,7 +1950,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D1: settled country, with wildcats and snakes at the margins.",
+     "text": "Settled country, with wildcats and snakes at the margins.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2038,7 +2038,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A small regional city and the seat of the Stone-Sleepers (Tsona-Kaleel), unusual among Argonians in building in stone. UESP has no page for Tsonac; the people and their sleeping Hist are our extrapolation from the Xit-Xaht, a canon tribe that never stopped building in stone.",
+     "text": "A small regional city and the seat of the Stone-Sleepers (Tsona-Kaleel), unusual among Argonians in building in stone. The people and their sleeping Hist follow the Xit-Xaht, a tribe that never stopped building in stone.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -2220,7 +2220,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D0 inside the terraces; the jungle round it is D2.",
+     "text": "The elders keep order inside Tsonac's terraces. The jungle around the city is dangerous.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2296,7 +2296,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "An unlabelled outpost whose name we give: Xuvagol, in the Root-Folk's style. UESP has no page.",
+     "text": "Xuvagol is an outpost named in the Root-Folk's style, a hunting station on a forested rise at the western end of the jungle.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -2338,7 +2338,7 @@
     },
     {
      "aspect": "present",
-     "text": "Six live there; they hunt and trade pelts at Tselan.",
+     "text": "Six Root-Folk live on the forested rise a day beyond Tselan; they hunt the jungle edge and trade pelts at Tselan.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2380,7 +2380,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Pelts, feathers, smoked meat; they buy salt and arrowheads.",
+     "text": "The hunters of Xuvagol sell pelts, feathers and smoked meat, and buy salt and arrowheads in return.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2443,7 +2443,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D2: large predators and the odd hunter-bandit.",
+     "text": "Large predators and the odd hunter-turned-bandit threaten the rise at the western end of the jungle.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2510,7 +2510,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A ruin of the Cantemiric Velothi, the Dunmer settlers of the eastern coast. UESP has no page for Kaochalit; the Velothi settlement of the country is canon.",
+     "text": "A ruin of the Cantemiric Velothi, the Dunmer settlers of the eastern coast, standing on the mesa top south of Tsonac as part of the Velothi settlement of the country.",
      "tier": "CANON_DERIVED",
      "sources": [
       {
@@ -2670,7 +2670,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D3: flu-dead undead in the lower halls, loose stone and falling masonry.",
+     "text": "Flu-dead undead in the lower halls, loose stone and falling masonry.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2739,7 +2739,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A Cantemiric Velothi ruin of the east coast. UESP has no page for Balormaak; the Velothi settlement of this country is canon.",
+     "text": "A Cantemiric Velothi ruin of the east coast, on the eastern mesa as part of the Velothi settlement of this country.",
      "tier": "CANON_DERIVED",
      "sources": [
       {
@@ -2899,7 +2899,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D3: undead in the cellars, snakes and flooding.",
+     "text": "Undead walk the cellars under the vines in Balormaak. The open cellars hold snakes and flood in the rains.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2968,7 +2968,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "An unlabelled Cantemiric Velothi ruin, given the name Vorannuhl in Velothi style. UESP has no page for it; the Velothi settlement of the country is canon.",
+     "text": "Vorannuhl is a Cantemiric Velothi ruin named in Velothi style, part of the Velothi settlement of the country.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -3125,7 +3125,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D4: unquiet flu-dead, Sarpa hunters nearby and deep dark halls.",
+     "text": "Unquiet flu-dead, Sarpa hunters nearby and deep dark halls.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3198,7 +3198,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A hamlet in the Stone-Sleepers' eastern reach, on a river by the mesa. UESP has no page; the name and the people are ours.",
+     "text": "A hamlet in the Stone-Sleepers' eastern reach, on a river by the mesa. Its name and people are the Stone-Sleepers' own.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -3380,7 +3380,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D1: wildcats and the odd thief on the road.",
+     "text": "Wildcats prowl the river bank at Ayiin. The odd thief works the road toward Thorn.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3457,7 +3457,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "An unlabelled cave in the west of the mesa, named Sahlpesh Cave in the Argonian style. UESP has no page for it; the Sarpa are canon, exclusive to Middle Argonia.",
+     "text": "Sahlpesh Cave is a cave in the west of the mesa, named in the Argonian style. It belongs to the Sarpa, who live only in Middle Argonia.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -3639,7 +3639,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D3: Sarpa archers and diving attackers at the mouth, and falling rock.",
+     "text": "Sarpa archers and diving attackers at the mouth, and falling rock.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3715,7 +3715,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A tribal camp the map marks [Sarpa Camp], here named Hanaxi Roost. The Sarpa are canon: winged Argonians, exclusive to Middle Argonia and hostile to outsiders.",
+     "text": "Hanaxi Roost is a Sarpa camp on the western mesa edge. The Sarpa are winged Argonians found in Middle Argonia alone. They are hostile to outsiders.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3793,7 +3793,7 @@
     },
     {
      "aspect": "people",
-     "text": "A dozen Sarpa, hunters and a few elders.",
+     "text": "A dozen Sarpa live on the shelf: a warband of hunters and a few elders.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3897,7 +3897,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D3: archers, divers and spears; they attack on sight.",
+     "text": "Sarpa archers, divers and spear-bearers around Hanaxi Roost attack outsiders on sight.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3978,7 +3978,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "An Imperial fort named in the Legion's '-moth' style, in 4E 201 a toll and watch post across the mesa. UESP has no page for it; it is a Project Tamriel name.",
+     "text": "An Imperial fort named in the Legion's '-moth' style, in 4E 201 a toll and watch post across the mesa.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4082,7 +4082,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Tolls and a share of the chalk the pit sends to Thorn.",
+     "text": "The garrison of Fort Chalkmoth lives on tolls from the mesa road and on a share of the chalk that the pit sends on to Thorn.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4160,7 +4160,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D1: kept by the garrison; Sarpa raids come to its western approach.",
+     "text": "Kept by the garrison; Sarpa raids come to its western approach.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4241,7 +4241,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Noota Nara is a village in Black Marsh and the original home of the Argonian Dreekius. UESP gives no position; our map puts it on the river below Fort Chalkmoth.",
+     "text": "Noota Nara is a village in Black Marsh and the original home of the Argonian Dreekius. It sits on the river below Fort Chalkmoth.",
      "tier": "CANON_EXPLICIT",
      "sources": [
       {
@@ -4382,7 +4382,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D1: the village is safe by day; the mesa edge above it is wilder.",
+     "text": "The village is safe by day; the mesa edge above it is wilder.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4453,7 +4453,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A hamlet of the Agaceph, the canon Middle Argonian breed that is not a camp people. UESP has no page for Hirecan.",
+     "text": "A hamlet of the Agaceph, the Middle Argonian breed that is not a camp people.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4557,7 +4557,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Books, illusion work, fish and rare reeds.",
+     "text": "The Agaceph of Hirecan trade books, illusion work, river fish and rare reeds, carried by raft to Icalca and Yulca.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4635,7 +4635,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D2: the hamlet is peaceful but its illusionists test strangers.",
+     "text": "The hamlet is peaceful but its illusionists test strangers.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4716,7 +4716,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A Stone-Sleeper hamlet on the river at the mesa's north-west. UESP has no page; name and people are ours.",
+     "text": "A Stone-Sleeper hamlet on the river at the mesa's north-west. Its name and people are the Stone-Sleepers' own.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -4820,7 +4820,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Stone from Xanuc Diggings, river fish and tool-mending.",
+     "text": "Oxayo lives on stone cut at the Xanuc Diggings, river fish and the mending of tools for the quarry hands.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4898,7 +4898,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D1: the risk is Sarpa raiders to the south-west.",
+     "text": "Sarpa raiders from the south-west are the risk at Oxayo. The watch-elder's horn gives warning of them.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4975,7 +4975,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "The map shows an unlabelled mine symbol in the wall of Chixathe Mesa, between Oxayo and Fort Chalkmoth. We named it Xanuc Diggings; UESP has no page for it, and the symbol is Project Tamriel's.",
+     "text": "Xanuc Diggings is a mine in the wall of Chixathe Mesa, between Oxayo and Fort Chalkmoth.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -5157,7 +5157,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Rockfall inside, and an old tunnel behind the north wall. D2 outside; the road to Oxayo is watched from Fort Chalkmoth.",
+     "text": "There is rockfall inside and an old tunnel behind the north wall. The outside is risky, though the road to Oxayo is watched from Fort Chalkmoth.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5234,7 +5234,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "The map shows an unlabelled mine symbol on the mesa shoulder between Fort Chalkmoth and Noota Nara. We named it Chalkmoth Pit for the fort that guards it; UESP has no page for it, and the symbol is Project Tamriel's.",
+     "text": "Chalkmoth Pit is a mine on the mesa shoulder between Fort Chalkmoth and Noota Nara, named for the fort that guards it.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -5416,7 +5416,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "A rockfall risk inside; D1 outside because the road is watched.",
+     "text": "A rockfall risk inside; mostly safe outside because the road is watched.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5493,7 +5493,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "The map shows an unlabelled mine symbol on the mesa's east flank above Ayiin. We named it Kalaxo Cut; UESP has no page for it, and the symbol is Project Tamriel's.",
+     "text": "Kalaxo Cut is a stone quarry mine on the mesa's east flank above Ayiin.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -5675,7 +5675,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Rockfall inside and a long drop at the cutting edge. D2 outside because the Ayiin road is watched.",
+     "text": "Rockfall inside and a long drop at the cutting edge. The outside is risky because the Ayiin road is watched.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5751,7 +5751,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "An unlabelled outpost, given the name Yuvexa. UESP has no page for it.",
+     "text": "Yuvexa is a small outpost on the mesa, built by the Root-Folk of Helstrom.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -5933,7 +5933,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Mesa predators and the odd bandit from the Balormaak road. D2.",
+     "text": "Mesa predators and the odd bandit from the Balormaak road make this a risky post.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6009,7 +6009,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "The map shows no name for this outpost; Nuxhal is ours, and UESP has no page for it. Its stilt houses stand under a stand of trees, with a lookout built into a trunk.",
+     "text": "This outpost has no recorded name. Its stilt houses stand under a stand of trees, with a lookout built into a trunk.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -6191,7 +6191,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Mesa predators and a bandit now and then on the Tenmal road. D2.",
+     "text": "Mesa predators and a bandit now and then on the Tenmal road make this a risky post.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6267,7 +6267,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "The map shows no name for this outpost; Reeka-Veesa is ours, and UESP has no page for it. Its stilt houses stand under a few trees on the mesa's west side, with drying racks of reed and feather.",
+     "text": "This outpost has no recorded name. Its stilt houses stand under a few trees on the mesa's west side, with drying racks of reed and feather.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -6345,7 +6345,7 @@
     },
     {
      "aspect": "people",
-     "text": "Sedge-Warden families, one elder and a few youths.",
+     "text": "Sedge-Warden families from Jal-Veesa live at the post on the mesa's west side, with one elder and a few youths.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -6449,7 +6449,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Mesa predators, and a dark cave nearby that the wardens forbid their children to enter. D2.",
+     "text": "Mesa predators and a dark cave nearby make this a risky post. The wardens forbid their children to enter the cave.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {

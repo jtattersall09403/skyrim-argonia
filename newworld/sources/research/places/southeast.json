@@ -220,7 +220,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Safe inside the walls; the harbour is policed and the water is a public road. Pickpockets, drunk sailors and smugglers working the lower wharves are the usual trouble. Outside, the beaches are D1.",
+     "text": "Safe inside the walls; the harbour is policed and the water is a public road. Pickpockets, drunk sailors and smugglers working the lower wharves are the usual trouble. Outside, the beaches are mostly safe.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -510,7 +510,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "The town centre is D1: guarded by the council's men, with ripper eels in the canals and cutpurses in Pusbottom. The drowned Imperial quarter and the Hist's roots are D3, with sea-drakes in the deep water beyond.",
+     "text": "The town centre is mostly safe: guarded by the council's men, with ripper eels in the canals and cutpurses in Pusbottom. The drowned Imperial quarter and the Hist's roots are dangerous, with sea-drakes in the deep water beyond.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -631,7 +631,7 @@
     },
     {
      "aspect": "history",
-     "text": "Canon records only that the tribe's Elder Nuetepa was active in Archon in the Second Era. The tribe's first settlement on the islands is unrecorded; the town grew where the bayou channels meet the open strait, safe from the flu that emptied the coast of other peoples.",
+     "text": "All that is recorded is that the tribe's Elder Nuetepa was active in Archon in the Second Era. The tribe's first settlement on the islands is unrecorded; the town grew where the bayou channels meet the open strait, safe from the flu that emptied the coast of other peoples.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1808,7 +1808,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Mud-crabs, tidal flats that drown the careless, and the occasional patrol from the fort; D2.",
+     "text": "Mud-crabs, tidal flats that drown the careless, and the occasional patrol from the fort; risky ground.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2143,7 +2143,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Waterfowl-hunting predators, slaughterfish, floods; D2 outside the hamlet.",
+     "text": "Waterfowl-hunting predators, slaughterfish, floods; risky outside the hamlet.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2478,7 +2478,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Estuary tides, drunk sailors and smugglers; D1.",
+     "text": "The estuary tides below the landing are strong. Drunk sailors and smugglers put in at the quay by night.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2965,7 +2965,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D1. Slaughterfish and the odd predator in the inlet.",
+     "text": "Slaughterfish swim in the inlet by the landing. The odd predator comes down to drink there.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3177,7 +3177,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D2: a smugglers' watch, snakes and mud-crocodiles in the ruined lower rooms, and rot in the stairs.",
+     "text": "A smugglers' watch, snakes and mud-crocodiles in the ruined lower rooms, and rot in the stairs.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3413,7 +3413,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D3: ancestor ghosts, undead guards and collapse.",
+     "text": "Ancestor ghosts and undead guards walk the lower rooms, and the half-fallen dome can collapse on anyone beneath it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3605,7 +3605,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D1: crabs, a tide that traps the careless, sinking decks.",
+     "text": "Crabs swarm the hull, the tide traps anyone who lingers at the bar, and the decks give way underfoot.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -3845,7 +3845,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D1: sea-drake sightings beyond the reef, storms and cutpurses on the Lilmoth road.",
+     "text": "Sea-drake sightings beyond the reef, storms and cutpurses on the Lilmoth road.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4108,7 +4108,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D1: predators in the paddies, flood.",
+     "text": "Predators lurk in the paddies around the village. The low ground floods.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4371,7 +4371,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D1.",
+     "text": "The village sits by the fort road and is safe in daylight. The tide and the odd drunk soldier cause some trouble.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4640,7 +4640,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D2: the garrison are hostile to smugglers, and the marsh around is wild.",
+     "text": "The garrison are hostile to smugglers, and the marsh around is wild.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4826,7 +4826,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Tolls on anchorage; provisions from Karketa.",
+     "text": "The keep takes tolls on ships that anchor below it and gets its provisions from the fishermen of Karketa.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4852,7 +4852,7 @@
     },
     {
      "aspect": "faith",
-     "text": "No Hist; the garrison hatches and buries at Lilmoth.",
+     "text": "There is no Hist at the keep; the garrison hatches its young and buries its dead at Lilmoth.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4909,7 +4909,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D2: storms, sea-drakes beyond the reef, and wreckers on the shore.",
+     "text": "Storms, sea-drakes beyond the reef, and wreckers on the shore.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5201,7 +5201,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D1: the house guards and their dogs keep the paddies safe, and the dykes shelter slaughterfish and young crocodilians. Thieves and runaway bonded workers use the road that crosses the estate to Lilmoth.",
+     "text": "The house guards and their dogs keep the paddies safe, and the dykes shelter slaughterfish and young crocodilians. Thieves and runaway bonded workers use the road that crosses the estate to Lilmoth.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5376,7 +5376,7 @@
     },
     {
      "aspect": "people",
-     "text": "An Argonian landholder, his kin and tenant farmers.",
+     "text": "An Argonian landholder lives on the estate with his kin and the tenant farmers who work the fields.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5406,7 +5406,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Rice, reed and the hire of boats for the Lilmoth harbour.",
+     "text": "The estate grows rice and reed and hires out its boats to the Lilmoth harbour.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5496,7 +5496,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D1: the barn is watched by hired guards and dogs, and the reed channels hide snapping turtles and slaughterfish. Thieves at night are the usual danger, since the north road is always busy.",
+     "text": "The barn is watched by hired guards and dogs, and the reed channels hide snapping turtles and slaughterfish. Thieves at night are the usual danger, since the north road is always busy.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5641,7 +5641,7 @@
     },
     {
      "aspect": "present",
-     "text": "Six people in the house and quarters.",
+     "text": "Six people live in the house and the quarters beside the landing.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5701,7 +5701,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Rice shipped by lighter; hire of oarsmen to the fort.",
+     "text": "The rice goes by lighter to the markets. The estate hires out its oarsmen to Fort Reedmoth.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5791,7 +5791,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D1: sentries on the veranda and dogs keep the barn, while the shore dykes shelter crocodilians. Stragglers from Fort Reedmoth's garrison and smugglers using the landing at night are the likelier trouble.",
+     "text": "Sentries on the veranda and dogs keep the barn, while the shore dykes shelter crocodilians. Stragglers from Fort Reedmoth's garrison and smugglers using the landing at night are the likelier trouble.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5954,7 +5954,7 @@
     },
     {
      "aspect": "people",
-     "text": "A family of three keeps the farm.",
+     "text": "A family of three keeps Ixa-Ruu, which stands alone at the island's southern tip.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5980,7 +5980,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Roots, gourds, fowl and eggs for Karketa.",
+     "text": "The family grows roots and gourds and keeps fowl, and sends the roots and eggs to Karketa.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6058,7 +6058,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D1: sea-drakes offshore, storm surges.",
+     "text": "Sea-drakes hunt offshore. Storm surges wash over the low shore.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6213,7 +6213,7 @@
     },
     {
      "aspect": "people",
-     "text": "A family of four keeps guar and a vegetable plot.",
+     "text": "A family of four keeps Seeku, tending the guar and a vegetable plot.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6239,7 +6239,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Guar meat and hide, reed-roots, sold at Lilmoth.",
+     "text": "The farm sells guar meat and hide and reed-roots at Lilmoth.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6317,7 +6317,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D1: predators that steal guar.",
+     "text": "Predators from the marsh edge come for the guar at night, so the paddock is stockaded.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6472,7 +6472,7 @@
     },
     {
      "aspect": "people",
-     "text": "A couple and a child keep the farm.",
+     "text": "A couple and their child keep Wattle-Pool, a small family on the isle's firm centre.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6498,7 +6498,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Fruit, pond fish and honey from a few hives.",
+     "text": "The farm lives on fruit from its trees, fish from the pond and honey from a few hives.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6576,7 +6576,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D1: slaughterfish in the pond, wasps.",
+     "text": "Slaughterfish swim in the pond. Wasps nest in the fruit trees.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6602,7 +6602,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "Honey with an odd taste; a stranger who sleeps in the shed.",
+     "text": "The honey has an odd taste. A stranger has been sleeping in the shed.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6731,7 +6731,7 @@
     },
     {
      "aspect": "people",
-     "text": "A family of three, who sell to the garrison.",
+     "text": "A family of three keeps Tal-Neesh and sells its crops to the garrison of Fort Reedmoth.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6757,7 +6757,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Rice and eggs for the fort.",
+     "text": "The farm sends rice and eggs to the quartermaster of Fort Reedmoth.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6809,7 +6809,7 @@
     },
     {
      "aspect": "look",
-     "text": "A low plain house, a rice-paddy and a woodpile.",
+     "text": "A low plain house stands beside a rice-paddy, with a woodpile against its wall.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6835,7 +6835,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D1: road bandits, soldiers.",
+     "text": "Road bandits and passing soldiers both trouble the farm on the island road.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7092,7 +7092,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D2: the flooded cellar is the main risk, with snakes in the wall-gaps and a squatters' lookout on the north wall. Rotten floor timbers give way without warning near the old armoury.",
+     "text": "The flooded cellar is the main risk, with snakes in the wall-gaps and a squatters' lookout on the north wall. Rotten floor timbers give way without warning near the old armoury.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7348,7 +7348,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D2: the sea-cave floods on the tide and traps the unwary, while snakes nest in the tower rubble. Smugglers who guard the cache attack strangers without warning.",
+     "text": "The sea-cave floods on the tide and traps the unwary, while snakes nest in the tower rubble. Smugglers who guard the cache attack strangers without warning.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7579,7 +7579,7 @@
     },
     {
      "aspect": "look",
-     "text": "A burnt shell of a fort, charred timbers, stone footings.",
+     "text": "Fort Lowmoth is a burnt shell, its timbers charred black and only the stone footings standing.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7604,7 +7604,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D3: bandits with a leader and a lookout hold the shell, and the burnt floors fall away underfoot. The garrison's patrols avoid it, so the approach along the island road is unwatched.",
+     "text": "Bandits with a leader and a lookout hold the shell, and the burnt floors fall away underfoot. The garrison's patrols avoid it, so the approach along the island road is unwatched.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7910,7 +7910,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D3: the dome roofs are cracked and fall without warning, and fishermen report the dead walking the midden at night. Crabs and carrion-birds hold the beach below.",
+     "text": "The dome roofs are cracked and fall without warning, and fishermen report the dead walking the midden at night. Crabs and carrion-birds hold the beach below.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7942,7 +7942,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A fox-tail charm in a child's tomb; a carved bone flute.",
+     "text": "A fox-tail charm lies in a child's tomb, and a carved bone flute among the shells.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8198,7 +8198,7 @@
     },
     {
      "aspect": "look",
-     "text": "Domes half buried in dune sand, and tunnels in the dunes.",
+     "text": "Kitsa Burrow's domes sit half buried in dune sand, with tunnels running under the dunes.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8230,7 +8230,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D3: tunnels collapse under the dune sand, and the smugglers' door is guarded. At night the shifting sand sounds like footsteps.",
+     "text": "Tunnels collapse under the dune sand, and the smugglers' door is guarded. At night the shifting sand sounds like footsteps.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8550,7 +8550,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D3: the crown is hollow and island farmers report undead guarding the chieftain's tomb. Predators and bats nest in the lower galleries.",
+     "text": "The crown is hollow and island farmers report undead guarding the chieftain's tomb. Predators and bats nest in the lower galleries.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8582,7 +8582,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A chieftain's burial hoard; a fox-bone talisman.",
+     "text": "A chieftain's burial hoard may lie under the mound, with a fox-bone talisman.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8870,7 +8870,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D3: crocodilians and bats hold the tunnels, and Argonians nearby report undead stirring beyond them. Collapsing mound-roofs are a danger even in daylight.",
+     "text": "Crocodilians and bats hold the tunnels, and Argonians nearby report undead stirring beyond them. Collapsing mound-roofs are a danger even in daylight.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -9190,7 +9190,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D3: undead in the tomb-rooms and smugglers in the lower hall, with cracked domes overhead. The shore path from Fort Reedmoth is the only easy approach.",
+     "text": "Undead in the tomb-rooms and smugglers in the lower hall, with cracked domes overhead. The shore path from Fort Reedmoth is the only easy approach.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -9449,7 +9449,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D2: the platform is safe; below it lie sea-drakes, drowning and the deep.",
+     "text": "The platform is safe; below it lie sea-drakes, drowning and the deep.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -9659,7 +9659,7 @@
     },
     {
      "aspect": "faith",
-     "text": "Argonians hold it as a place where the drowned dwell.",
+     "text": "Argonians hold the trench to be a place where the drowned dwell.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -9705,7 +9705,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D4: sea-drakes, drowning, pressure and cold; sounds that draw divers over the edge.",
+     "text": "Sea-drakes, drowning, pressure and cold; sounds that draw divers over the edge.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -9895,7 +9895,7 @@
     },
     {
      "aspect": "faith",
-     "text": "Divers tap the sphere three times for luck.",
+     "text": "Divers tap the Kelp Lantern's sphere three times for luck as they pass.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -9935,7 +9935,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D3: sea-drakes, a shaft of cold current and a collapsed hatch.",
+     "text": "Sea-drakes, a shaft of cold current and a collapsed hatch.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -10199,7 +10199,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D3: drowning on the spiral stair, cold in the lower galleries, and the octopus's grip. Sealed doors have caught divers who took too long.",
+     "text": "Drowning on the spiral stair, cold in the lower galleries, and the octopus's grip. Sealed doors have caught divers who took too long.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -10475,7 +10475,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D3: slaughterfish in the flooded hall and the cold near Echo Deep's edge. Trapped galleries have killed salvagers who lost their line.",
+     "text": "Slaughterfish in the flooded hall and the cold near Echo Deep's edge. Trapped galleries have killed salvagers who lost their line.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -10501,7 +10501,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A diver trapped in a gallery; a salvage chest.",
+     "text": "A diver is trapped in one gallery of Haxtil-Meht. A salvage chest lies in the spire.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -10751,7 +10751,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D4: sea-drakes nest in the galleries and attack at once, and the cold and depth near Echo Deep wear a diver down. A leaning stair can drop away under weight.",
+     "text": "Sea-drakes nest in the galleries and attack at once, and the cold and depth near Echo Deep wear a diver down. A leaning stair can drop away under weight.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -10777,7 +10777,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A sea-drake's hoard; a dead diver's kit.",
+     "text": "A sea-drake's hoard lies in the nests of Zeshul-Tha. A dead diver's kit lies at the foot of the stair.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -11001,7 +11001,7 @@
     },
     {
      "aspect": "look",
-     "text": "A spire half sunk in silt, its top wrapped in coral.",
+     "text": "Naxiil-Ru is a spire half sunk in silt, its top wrapped in coral.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -11027,7 +11027,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D3: dreugh scouts, cold and silt that clouds the water in a moment. A carved prize in a dreugh's grip is bait.",
+     "text": "Dreugh scouts, cold and silt that clouds the water in a moment. A carved prize in a dreugh's grip is bait.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -11053,7 +11053,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A dreugh's carved prize; a diving-bell chain.",
+     "text": "The dreugh keep a carved prize in the spire. A diving-bell chain hangs cut beside it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -11277,7 +11277,7 @@
     },
     {
      "aspect": "look",
-     "text": "A lone spire on a sand plain, with a shrine on its summit.",
+     "text": "Okhu-Thteel is a lone spire on a sand plain, with a shrine on its summit.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -11303,7 +11303,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D3: eels at the foot, deep cold and the distance from Bell Station if a line fails. The lamp on the sand is a marker for the dead salvager's grave.",
+     "text": "Eels at the foot, deep cold and the distance from Bell Station if a line fails. The lamp on the sand is a marker for the dead salvager's grave.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -11329,7 +11329,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "An ancestor shrine with offerings; a salvager's lamp.",
+     "text": "An ancestor shrine on the summit holds divers' offerings. A salvager's lamp burns below.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -11579,7 +11579,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D3: drowning in the lower gallery where the crew died, and cold at depth. Their cache is trapped by the same fall that killed them.",
+     "text": "Drowning in the lower gallery where the crew died, and cold at depth. Their cache is trapped by the same fall that killed them.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -11605,7 +11605,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A failed crew's cache; the station's first bell.",
+     "text": "A failed crew's cache lies sealed in the lower gallery. The station's first bell hangs by the spire.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -11855,7 +11855,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D4: the ghost, the cold of the deep edge, and a current that pulls divers off the tower. Divers must not touch the sealed door.",
+     "text": "The ghost, the cold of the deep edge, and a current that pulls divers off the tower. Divers must not touch the sealed door.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -11881,7 +11881,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A sealed door and a ghost who guards it.",
+     "text": "Thul-Kesh is the outermost spire. A sealed door stands in it and a ghost guards the door.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {

@@ -170,7 +170,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D0 inside the walls, where guards keep order. Outside the gate are crocodile-infested ravines and sunken marsh; below the city the Silyanorn tunnels and a sunken Ayleid ruin are an outlaws' refuge (D3).",
+     "text": "Safe inside the walls, where guards keep order. Outside the gate are crocodile-infested ravines and sunken marsh; below the city the Silyanorn tunnels and a sunken Ayleid ruin are an outlaws' refuge.",
      "tier": "CANON_EXPLICIT",
      "sources": [
       {
@@ -245,7 +245,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Jal-Veesa is the one town of the Veesa-Teeleel, the northern Argonians of the valleys between Stormhold and the Barsaebic ruins. UESP has no page for it (searched 2026-11-08); it is a Project Tamriel name, placed on the road west of Stormhold.",
+     "text": "Jal-Veesa is the one town of the Veesa-Teeleel, the northern Argonians of the valleys between Stormhold and the Barsaebic ruins. It sits on the road west of Stormhold.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -266,7 +266,7 @@
     },
     {
      "aspect": "history",
-     "text": "No canon history. Reasoned: a Hist pool and sedge beds on high ground in an area ringed by Barsaebic ruins would have been settled early by Argonians; the Dunmer slave-raids of the Dres period came through this border country and are remembered here.",
+     "text": "A Hist pool and sedge beds on high ground in an area ringed by Barsaebic ruins would have been settled early by Argonians; the Dunmer slave-raids of the Dres period came through this border country and are remembered here.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -393,7 +393,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D1: the town is quiet. Its own wardens patrol. Off the road, crocodiles in the weir channels, and looters and Naga brigands on the track toward the ruins.",
+     "text": "The town is quiet. Its own wardens patrol. Off the road, crocodiles in the weir channels, and looters and Naga brigands on the track toward the ruins.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -465,7 +465,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Fort Willowmoth is one of the Legion's '-moth' forts, named in the same style as Swampmoth, Moonmoth and Frostmoth. UESP has no page for it (searched 2026-11-08); it is a Project Tamriel name.",
+     "text": "Fort Willowmoth is one of the Legion's '-moth' forts, named in the same style as Swampmoth, Moonmoth and Frostmoth. It stands a short walk east of Stormhold.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -486,7 +486,7 @@
     },
     {
      "aspect": "history",
-     "text": "Built by the Third Empire as a border fort beside Stormhold. Canon records no Imperial presence in Black Marsh after 4E 48; the garrison left or died, and the fort passed to the successor state.",
+     "text": "Built by the Third Empire as a border fort beside Stormhold. No Imperial presence is recorded in Black Marsh after 4E 48; the garrison left or died, and the fort passed to the successor state.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -599,7 +599,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D1: a guarded post, with road-side wildlife and the odd thief outside the gate.",
+     "text": "The post is guarded; outside the gate there is road-side wildlife and the odd thief.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -665,7 +665,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Surkina is a village in the Stormhold manner, a few miles south-east of the city. UESP has no page for it (searched 2026-11-08); it is a Project Tamriel name.",
+     "text": "Surkina is a village in the Stormhold manner, a few miles south-east of the city, living on the city's farm trade.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -691,7 +691,7 @@
     },
     {
      "aspect": "history",
-     "text": "No canon history. Reasoned: the causeway farmsteads grew up under the Dunmer colonial period, when Stormhold needed food from raised ground, and kept their stone footings after the Dunmer left.",
+     "text": "The causeway farmsteads grew up under the Dunmer colonial period, when Stormhold needed food from raised ground, and kept their stone footings after the Dunmer left.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -847,7 +847,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D1: wildlife and flooded causeways; crocodiles take the odd goat.",
+     "text": "Wildlife and flooded causeways; crocodiles take the odd goat.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -923,7 +923,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Tenmal is a village in the Stormhold manner on the road east of the city. UESP has no page for it (searched 2026-11-08); the name is close to Ten-Maur-Wolk (Tenmar Wall), the road hinge that canon names as a neighbour of Stormhold, and may be a village that grew along the same road.",
+     "text": "Tenmal is a village in the Stormhold manner on the road east of the city. Its name is close to Ten-Maur-Wolk (Tenmar Wall), the road hinge that neighbours Stormhold, and it may be a village that grew along the same road.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -949,7 +949,7 @@
     },
     {
      "aspect": "history",
-     "text": "No canon history. The name echoes Ten-Maur-Wolk, a Boethiah-worshipping Dunmer settlement after 1E 700 turned slave camp; if the villagers descend from that ground, they would not say so.",
+     "text": "The name echoes Ten-Maur-Wolk, a Boethiah-worshipping Dunmer settlement after 1E 700 turned slave camp; if the villagers descend from that ground, they would not say so.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1100,7 +1100,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D1: road-side wildlife; D2 in the pits.",
+     "text": "Wildlife threatens travellers on the river road east of Stormhold, and the crystal pits above the village are worse, with roof-falls and whatever lives in the old workings.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1181,7 +1181,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "An unlabelled farm on the Stormhold causeway country, named by us in the Stormhold manner (Dunmer family name, farm). UESP has no page (searched 2026-11-08).",
+     "text": "Vandrel Farm is a farm on the Stormhold causeway country, named in the Stormhold manner for a Dunmer-descended family.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -1197,7 +1197,7 @@
     },
     {
      "aspect": "history",
-     "text": "Reasoned: a smallholding on raised ground since the Dunmer colonial period; the family stayed when the Dunmer withdrew.",
+     "text": "A smallholding on raised ground since the Dunmer colonial period; the family stayed when the Dunmer withdrew.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1353,7 +1353,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D1: crocodiles in the ditch and the odd thief; nothing worse.",
+     "text": "Crocodiles in the ditch and the odd thief; nothing worse.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1430,7 +1430,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "An unlabelled outpost placed by us, named in the jade culture's reed-and-weir style. UESP has no page (searched 2026-11-08).",
+     "text": "Sedgeweir is an outpost in the jade culture's reed-and-weir style, a weir-wardens' camp on the river south-east of Stormhold.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -1446,7 +1446,7 @@
     },
     {
      "aspect": "history",
-     "text": "Reasoned: the weirs are older than the city's modern state and have been kept by the Sedge-Wardens since before the Dunmer.",
+     "text": "The weirs are older than Stormhold's modern city-state and have been kept by the Sedge-Wardens since before the Dunmer came.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1578,7 +1578,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D1: crocodiles at the weir and fleshflies in the heat.",
+     "text": "Crocodiles lie around the weir and fleshflies swarm over the drying racks in the heat, though the camp itself is safe for the wardens' families.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1646,7 +1646,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "An unlabelled minor outpost placed by us, named in the Stormhold manner (Dunmer family name and landing). UESP has no page (searched 2026-11-08).",
+     "text": "Ranvos Landing is a minor outpost named in the Stormhold manner for a Dunmer family and its landing, a ferry stage on the eastern river branch.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -1662,7 +1662,7 @@
     },
     {
      "aspect": "history",
-     "text": "Reasoned: a ferry point on the hinge road since the colonial period.",
+     "text": "A ferry point where the road toward Helstrom crosses the eastern branch of the river, kept since the colonial period.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1716,7 +1716,7 @@
     },
     {
      "aspect": "people",
-     "text": "A Dunmer-descended ferryman and his Argonian crew.",
+     "text": "A Dunmer-descended ferryman and his Argonian crew make up the ferry-keeper's family that holds the landing under the Vicecanon's writ.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1770,7 +1770,7 @@
     },
     {
      "aspect": "faith",
-     "text": "None formal; a grave-stake row on a rise behind the house.",
+     "text": "There is no formal worship; the family keeps a row of grave-stakes for its dead on a rise behind the house.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1824,7 +1824,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D2: wild country around; a Naga camp lies a short way south.",
+     "text": "Wild country around; a Naga camp lies a short way south.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1902,7 +1902,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "An unlabelled outpost placed by us, named for its position at the head of the northern causeway. UESP has no page (searched 2026-11-08).",
+     "text": "Causeway-Head Post is an outpost named for its position at the head of the northern causeway, north-west of Fort Willowmoth.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -1918,7 +1918,7 @@
     },
     {
      "aspect": "history",
-     "text": "Reasoned: a post where the road leaves the mounds, taking tolls since the colonial period.",
+     "text": "A post where the northern road leaves the mounds north-west of Fort Willowmoth, taking tolls on reed and fish cargoes since the colonial period.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1962,7 +1962,7 @@
     },
     {
      "aspect": "people",
-     "text": "A reeve, two Argonian guards and a clerk on market days.",
+     "text": "A Vicecanon's reeve with two Argonian guards, and a clerk who comes on market days to tally the tolls.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2050,7 +2050,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D1: highway wildlife and the odd thief.",
+     "text": "Highway wildlife and the odd thief are the only threats at this small guarded toll-house at the head of the causeway.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2119,7 +2119,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Sedge-Kal Camp is a seasonal reed-cutters' camp on the swamp north of Jal-Veesa, two cells from Stormhold, where Veesa-Teeleel crews cut sedge in the cool months for Stormhold's mat-makers. We placed and named it in the jade style for an unlabelled outpost symbol; UESP has no page for it (searched 2026-11-08).",
+     "text": "Sedge-Kal Camp is a seasonal reed-cutters' camp on the swamp north of Jal-Veesa, two cells from Stormhold, where Veesa-Teeleel crews cut sedge in the cool months for Stormhold's mat-makers. Its name is in the jade style.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -2135,7 +2135,7 @@
     },
     {
      "aspect": "history",
-     "text": "Reasoned: reed beds on the northern plain have been cut seasonally for as long as there have been mats to sell.",
+     "text": "The reed beds of the northern plain beyond Jal-Veesa have been cut seasonally for as long as there have been mats to sell.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2201,7 +2201,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Reed, cut and bundled, carried to Jal-Veesa and Stormhold.",
+     "text": "Cut reed is bundled at the camp and carried by flat boat to Jal-Veesa and on to Stormhold's mat-makers.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2223,7 +2223,7 @@
     },
     {
      "aspect": "faith",
-     "text": "A Hist-shoot on a post at the camp's centre.",
+     "text": "A Hist-shoot is set on a post at the centre of the camp, the cutters' shrine for the season.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2267,7 +2267,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D2: far from the guards; crocodiles in the channels and the odd Naga raider.",
+     "text": "Far from the guards; crocodiles in the channels and the odd Naga raider.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2335,7 +2335,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "An unlabelled mine placed by us, named for the nearby village. UESP has no page (searched 2026-11-08); Stormhold Crystal is a UESP page and the deposits run under the northern hills.",
+     "text": "Tenmal Pits is a mine named for the nearby village. It yields the Stormhold Crystal. The deposits run under the northern hills.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -2445,7 +2445,7 @@
     },
     {
      "aspect": "faith",
-     "text": "A small ancestor shrine at the adit mouth.",
+     "text": "A small ancestor shrine stands at the mouth of the adit, where the delvers pause before going down.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2491,7 +2491,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D2: roof-falls and what lives in the old galleries.",
+     "text": "Roof-falls threaten the delvers in the timber-propped galleries. Something lives in the old sealed galleries deeper in.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2562,7 +2562,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "An Ayleid ruin of the Barsaebics, marked on the map. UESP has no page (searched 2026-11-08); what it holds is ours to decide.",
+     "text": "An Ayleid ruin of the Barsaebics, a small hall in the marsh south of Jal-Veesa. What it holds is unrecorded.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -2706,7 +2706,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "The mound's flooded undercroft is the danger: giant snakes lie in the drowned cellar and ward-bound dead stand at the broken arch. At D3 the ground is the safe part, and the Vandrel Farm side is the usual way in.",
+     "text": "The mound's flooded undercroft is the danger: giant snakes lie in the drowned cellar and ward-bound dead stand at the broken arch. At dangerous the ground is the safe part, and the Vandrel Farm side is the usual way in.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2774,7 +2774,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "An unnamed Imperial ruin on the northern road, named by us in the Imperial manner. UESP has no page (searched 2026-11-08).",
+     "text": "Calvian Waystation is an Imperial ruin on the northern road, named in the Imperial manner for a road post that no one now keeps.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -2824,7 +2824,7 @@
     },
     {
      "aspect": "people",
-     "text": "None resident; passing scavengers.",
+     "text": "The roofless waystation has no residents. Scavengers sleep in its corners as they pass along the northern road.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2858,7 +2858,7 @@
     },
     {
      "aspect": "faith",
-     "text": "None; Imperial shrines had no Hist and left a plinth only.",
+     "text": "No shrine survives: Imperial shrines had no Hist, and the waystation kept only a plinth with a worn eagle.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2892,7 +2892,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D2: wildlife and the odd thief; fleshflies in the heat.",
+     "text": "Wildlife and the odd thief lurk in the reeds around the ruin. Fleshflies swarm over the mud in the heat.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2950,7 +2950,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "The map labels this place [Naga Camp]. UESP has no page for it (searched 2026-11-08); Naga themselves have a UESP page and are given in tribes.md.",
+     "text": "Karsh-Naal Camp is a Naga camp in the marsh south of Stormhold, home to the tribeless brigands who raid the road-sides and return to it between raids.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -2973,7 +2973,7 @@
     },
     {
      "aspect": "history",
-     "text": "Reasoned: the road traffic from Stormhold to Helstrom feeds the Naga highwaymen, who come and go as the merchants do.",
+     "text": "The Naga highwaymen live off the road traffic from Stormhold to Helstrom. They come and go as the merchants do.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3065,7 +3065,7 @@
     },
     {
      "aspect": "faith",
-     "text": "Sithis and a shrine of bones; no tree.",
+     "text": "The Naga worship Sithis at a shrine of bones; no Hist tree stands in the camp.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3111,7 +3111,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D3: Naga warbands, raids and traps.",
+     "text": "Naga warbands raid from the camp and strike at travellers. The approaches to it are set with traps.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3182,7 +3182,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Slough Point was an Imperial census-and-excise post with a Commission-built white bridge over a black tidal river, its guards chewed by fleshflies. UESP's Blackwood page lists it as an Imperial town in Blackwood, close to the Black Marsh border; the map puts it inside Black Marsh, beside Fort Rustmoth, which is how we place it. UESP has no page of its own.",
+     "text": "Slough Point was an Imperial census-and-excise post with a Commission-built white bridge over a black tidal river, its guards chewed by fleshflies. It stands inside Black Marsh, beside Fort Rustmoth, close to the Blackwood border.",
      "tier": "CANON_EXPLICIT",
      "sources": [
       {
@@ -3205,7 +3205,7 @@
     },
     {
      "aspect": "history",
-     "text": "The Empire built the post, bridge and customs house to tax the Blackwood Road. The Legion left and Imperial presence ends in canon by 4E 48; the families who served the post stayed on.",
+     "text": "The Empire built the post, bridge and customs house to tax the Blackwood Road. The Legion left and Imperial presence ended by 4E 48; the families who served the post stayed on.",
      "tier": "CANON_DERIVED",
      "sources": [
       {
@@ -3382,7 +3382,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D1: a guarded crossing; fleshflies in clouds, crocodiles in the river, the odd smuggler.",
+     "text": "A guarded crossing; fleshflies in clouds, crocodiles in the river, the odd smuggler.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3476,7 +3476,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Fort Rustmoth is a Project Tamriel name in the Legion's '-moth' series. UESP has no page (searched 2026-11-08). The register places the Third Empire's Fort Swampmoth on the same road between Slough Point and Gideon; Rustmoth fits that placement and may be its map name, which we leave open.",
+     "text": "Fort Rustmoth belongs to the Legion's '-moth' series of forts. The Third Empire's Fort Swampmoth stood on the same road between Slough Point and Gideon, and Rustmoth fits that placement and may be the same fort under a later name.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3614,7 +3614,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D1: a guarded fort; wildlife and fleshflies outside.",
+     "text": "The fort is guarded and safe inside; wildlife and fleshflies are the hazard on the Blackwood Road outside its walls.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3692,7 +3692,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "UESP's Vaults of Gemin are a ruined structure in Stormhold's city-state that once belonged to the Conclave of Baal, kept the ancient tablet for deciphering the Elder Scrolls and divining Murkwood's place, and sank into the ground when a spell failed.",
+     "text": "The Vaults of Gemin are a ruined structure in Stormhold's city-state that once belonged to the Conclave of Baal. They kept the ancient tablet for deciphering the Elder Scrolls and divining Murkwood's place, and sank into the ground when a spell failed.",
      "tier": "CANON_EXPLICIT",
      "sources": [
       {
@@ -3740,7 +3740,7 @@
     },
     {
      "aspect": "people",
-     "text": "None live here; the Conclave pays treasure-seekers.",
+     "text": "The vaults have no residents. The Conclave of Baal pays treasure-seekers to go down into the flooded ruin.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3832,7 +3832,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D4: undead and monsters in flooded halls; the roof is unsafe.",
+     "text": "Undead and monsters in flooded halls; the roof is unsafe.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4056,7 +4056,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D4: lamias, undead knights and keystone-fed wards.",
+     "text": "Lamias, undead knights and wards fed by the keystones guard the citadel and the caverns beneath it, making the hill deadly to anyone who enters.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4182,7 +4182,7 @@
     },
     {
      "aspect": "people",
-     "text": "None living; an occasional scholar.",
+     "text": "The ruin has no residents. An occasional scholar comes to the library, while the Fenlord's undead keep the tomb.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4274,7 +4274,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D4: Fenlord undead and the library's wards.",
+     "text": "The Fenlord's undead slave-guardians walk the tomb halls. The library's own wards guard its shelves.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4344,7 +4344,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Agia Nero is a Project Tamriel name. UESP has no page for it (searched 2026-11-08).",
+     "text": "Agia Nero is a ruined Imperial post west of Loriasel on the high ground, its walls broken and its yard sunk.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -4356,7 +4356,7 @@
     },
     {
      "aspect": "history",
-     "text": "Reasoned: an Imperial road fort of the Third Empire, abandoned when the Legions left.",
+     "text": "An Imperial road fort of the Third Empire, abandoned when the Legions left it to the reeds.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4390,7 +4390,7 @@
     },
     {
      "aspect": "people",
-     "text": "None resident; scavengers and smugglers shelter here.",
+     "text": "The ruin has no residents. Scavengers and smugglers shelter in the broken walls, with a scavenger camp in one corner of the yard.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4407,7 +4407,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Once a road post on the Gideon-Stormhold way; now stripped.",
+     "text": "Once a road post on the Gideon-Stormhold way, it is now stripped of anything of value and offers only shelter.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4424,7 +4424,7 @@
     },
     {
      "aspect": "faith",
-     "text": "None; an Imperial plinth.",
+     "text": "No Hist shoot grows at this Imperial post; only a worn plinth is left of its shrine.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4458,7 +4458,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D2: wildlife and the odd thief.",
+     "text": "Wildlife and the odd thief are the dangers of the ruin, which stands on high ground west of Loriasel.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4516,7 +4516,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A Barsaebic Ayleid ruin marked on the map at (-8,-65); named by us in the Ayleid manner. UESP has no page (searched 2026-11-08).",
+     "text": "A Barsaebic Ayleid ruin at (-8,-65), named Mirasel in the Ayleid manner.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -4533,7 +4533,7 @@
     },
     {
      "aspect": "history",
-     "text": "Mirasel is a small Barsaebic Ayleid hall on a sedge island east of Loriasel, from the settlement that grew in the region after 1E 198. Nothing is recorded of it; its name is a map label.",
+     "text": "Mirasel is a small Barsaebic Ayleid hall on a sedge island east of Loriasel, from the settlement that grew in the region after 1E 198. Nothing is recorded of it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4660,7 +4660,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Giant snakes in the reeds and undead guardians below the arch. At D3 the stairs are drowned and the wardens do not cross to the island.",
+     "text": "Giant snakes in the reeds and undead guardians below the arch. At dangerous the stairs are drowned and the wardens do not cross to the island.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4721,14 +4721,14 @@
    "siting": "swamp",
    "danger_band_id": "D3",
    "importance": 2,
-   "summary": "A small Barsaebic ayleid ruin on the high ground north-west of Slough Point (labelled [Outpost] on the map; reading it as a ruin), with white arches in the reeds and a flooded undercroft.",
+   "summary": "A small Barsaebic Ayleid ruin on the high ground north-west of Slough Point, with white arches in the reeds and a flooded undercroft.",
    "lore_page": null,
    "statement_tier_id": "AGENT_INVENTED",
    "aliases": [],
    "notes": [
     {
      "aspect": "overview",
-     "text": "The map labels Orimel [Outpost] at (-15,-69), north-west of Slough Point; we read it as a ruin and named it in the Ayleid manner. UESP has no page (searched 2026-11-08).",
+     "text": "Orimel is a small ruined Ayleid hall on high ground at (-15,-69), north-west of Slough Point, with a name in the Ayleid manner.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -4745,7 +4745,7 @@
     },
     {
      "aspect": "history",
-     "text": "Orimel is a small Barsaebic Ayleid hall on high ground north-west of Slough Point, one of the settlements left by the Ayleids after 1E 198. The map labels it an outpost; we read it as a ruin. Nothing is recorded of it.",
+     "text": "Orimel is a small Barsaebic Ayleid hall on high ground north-west of Slough Point, one of the settlements left by the Ayleids after 1E 198. Nothing is recorded of its builders or its fall.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4872,7 +4872,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Undead guardians in the arch and snakes in the reed edge. At D3 the lower rooms are flooded and the track is the only safe place.",
+     "text": "Undead guardians in the arch and snakes in the reed edge. At dangerous the lower rooms are flooded and the track is the only safe place.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4941,7 +4941,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Reed-Sill Weir is the weir-wardens' camp on the creek north-east of Gandranen, one of the Veesa-Teeleel traps that feed Jal-Veesa. We placed and named it in the jade style for an unlabelled outpost symbol; UESP has no page for it (searched 2026-11-08).",
+     "text": "Reed-Sill Weir is the weir-wardens' camp on the creek north-east of Gandranen, one of the Veesa-Teeleel traps that feed Jal-Veesa. Its name is in the jade style.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -4957,7 +4957,7 @@
     },
     {
      "aspect": "history",
-     "text": "Reasoned: the weirs date back to before the Dunmer.",
+     "text": "The weirs date back to before the Dunmer and are kept by the Veesa-Teeleel wardens of Jal-Veesa.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4999,7 +4999,7 @@
     },
     {
      "aspect": "people",
-     "text": "Veesa-Teeleel families on rotation from Jal-Veesa.",
+     "text": "Veesa-Teeleel families take turns at the weir, sent in rotation from Jal-Veesa, whose market the traps feed.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5020,7 +5020,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Eels and gar sold to Jal-Veesa and Stormhold.",
+     "text": "Eels and gar from the traps are sold to Jal-Veesa's market and on to Stormhold.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5041,7 +5041,7 @@
     },
     {
      "aspect": "faith",
-     "text": "A Hist-shoot post with the first catch.",
+     "text": "A Hist-shoot post stands at the landing. The wardens give it the first catch.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5083,7 +5083,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Crocodiles lie below the weir where the offal goes in, and the log walk is slick. At D1 the camp is safe; the creek downstream toward Mirasel is not.",
+     "text": "Crocodiles lie below the weir where the offal goes in, and the log walk is slick. At mostly safe the camp is safe; the creek downstream toward Mirasel is not.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5104,7 +5104,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "Someone has been taking from the traps at night.",
+     "text": "The weir traps are being robbed at night. The wardens want the thief found.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5150,7 +5150,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "An unlabelled outpost placed by us, named in the Stormhold manner. UESP has no page (searched 2026-11-08).",
+     "text": "Ashgate Post is an outpost named in the Stormhold manner, a stone road post west of Loriasel on the Slough Point road.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -5166,7 +5166,7 @@
     },
     {
      "aspect": "history",
-     "text": "Reasoned: a post on the long road from Stormhold to the western frontier.",
+     "text": "A post on the long road from Stormhold to the western frontier, west of Loriasel on the Slough Point road.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5187,7 +5187,7 @@
     },
     {
      "aspect": "present",
-     "text": "A small stone hut and a gate across the road.",
+     "text": "A small stone hut and a gate across the road mark the post. The reeve and guards watch the track toward the ruins.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5208,7 +5208,7 @@
     },
     {
      "aspect": "people",
-     "text": "A reeve and two guards.",
+     "text": "A Vicecanon's reeve and two guards hold the post, a long way from any other garrison.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5229,7 +5229,7 @@
     },
     {
      "aspect": "economy",
-     "text": "A small toll and a stall of lamp oil and dried fish.",
+     "text": "The post takes a small toll and sells lamp oil and dried fish from a stall to passing carters.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5250,7 +5250,7 @@
     },
     {
      "aspect": "faith",
-     "text": "A grave-stake for the post's dead.",
+     "text": "A grave-stake stands for the post's dead. It is the post's sole mark of worship.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5271,7 +5271,7 @@
     },
     {
      "aspect": "look",
-     "text": "A low stone hut and a gate across a causeway.",
+     "text": "A low stone hut and a wooden gate stand across a causeway on the road west of Loriasel.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5292,7 +5292,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D2: far from help; wildlife and the odd thief.",
+     "text": "The post is far from help; wildlife and the odd thief are the dangers on this stretch of road.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5359,7 +5359,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "An unlabelled outpost placed by us, named in the Root-Folk style. UESP has no page (searched 2026-11-08).",
+     "text": "Vel-Sapha Stand is an outpost named in the Root-Folk style, a sap-tapping and egg-tending station at the edge of Barsaebica.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -5375,7 +5375,7 @@
     },
     {
      "aspect": "history",
-     "text": "Reasoned: Hist-country outposts reach outward from Helstrom.",
+     "text": "Hist-country outposts reach outward from Helstrom, and this Root-Folk stand is one of them at the edge of Barsaebica.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5397,7 +5397,7 @@
     },
     {
      "aspect": "present",
-     "text": "A stand of stilt huts around a Hist sapling.",
+     "text": "Stilt huts stand in a ring around a young Hist sapling, with sap-tapping and egg-tending going on beneath the canopy.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5419,7 +5419,7 @@
     },
     {
      "aspect": "people",
-     "text": "Root-Folk, Saxhleel.",
+     "text": "Root-Folk of the Saxhleel tend the stand, sap-gatherers who came from the interior swamp.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5441,7 +5441,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Sap and eggs.",
+     "text": "The stand lives on tapped sap and tended eggs, the Root-Folk's work on the edge of Barsaebica.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5463,7 +5463,7 @@
     },
     {
      "aspect": "faith",
-     "text": "A young Hist tree at its centre.",
+     "text": "A young Hist tree stands at the centre of the camp. The Root-Folk worship at it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5485,7 +5485,7 @@
     },
     {
      "aspect": "look",
-     "text": "Root-hollows and stilt huts under a canopy.",
+     "text": "Root-hollows and stilt huts sit under a thick canopy at the western edge of the Hist country.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5507,7 +5507,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D2: wildlife; Root-Folk hostile to uninvited guests.",
+     "text": "Wildlife roams the swamp around the stand. The Root-Folk are hostile to uninvited guests.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5529,7 +5529,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A sapling that is dying; an invitation to the Root Talk.",
+     "text": "The sapling at the heart of the stand is dying. The Root-Folk offer an invitation to the Root Talk.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5576,7 +5576,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Teel-Fen Weir is the weir-wardens' camp on the creek north-east of Gandranen, closer to Jal-Veesa than Reed-Sill, with traps for eel and carp. We placed and named it in the jade style for an unlabelled outpost symbol; UESP has no page for it (searched 2026-11-08).",
+     "text": "Teel-Fen Weir is the weir-wardens' camp on the creek north-east of Gandranen, closer to Jal-Veesa than Reed-Sill, with traps for eel and carp. Its name is in the jade style.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -5592,7 +5592,7 @@
     },
     {
      "aspect": "history",
-     "text": "Reasoned: weirs of the Sedge-Wardens.",
+     "text": "The weirs here belong to the Sedge-Wardens, the Veesa-Teeleel who keep the traps for Jal-Veesa.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5634,7 +5634,7 @@
     },
     {
      "aspect": "people",
-     "text": "Veesa-Teeleel families.",
+     "text": "Veesa-Teeleel families live at the weir on the creek north-east of Gandranen, five wardens and their kin.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5655,7 +5655,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Eels and gar sold up river.",
+     "text": "Eels and gar from the traps are sold up river. The catch goes to Urvyn Farm's cart every other day.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5676,7 +5676,7 @@
     },
     {
      "aspect": "faith",
-     "text": "A Hist-shoot post.",
+     "text": "A Hist-shoot post stands at the weir, where the wardens keep their shrine.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5697,7 +5697,7 @@
     },
     {
      "aspect": "look",
-     "text": "Pale stilt huts and a woven weir.",
+     "text": "Pale stilt huts stand on a small platform beside a woven weir across the creek.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5718,7 +5718,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Crocodiles and water-snakes gather under the log boom. At D1 the camp is safe; the Nenria marsh south of it is not.",
+     "text": "Crocodiles and water-snakes gather under the log boom. At mostly safe the camp is safe; the Nenria marsh south of it is not.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5739,7 +5739,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "Strangers asking the way to Gandranen.",
+     "text": "Strangers come asking the way to Gandranen. The wardens wonder what they want there.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5785,7 +5785,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "An unlabelled farm placed by us, named in the Stormhold manner. UESP has no page (searched 2026-11-08).",
+     "text": "Urvyn Farm is a farm named in the Stormhold manner for the Urvyn family, a raised stone farmstead west of Jal-Veesa.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -5801,7 +5801,7 @@
     },
     {
      "aspect": "history",
-     "text": "Reasoned: a smallholding on raised ground.",
+     "text": "A smallholding on raised ground west of Jal-Veesa, beside the northern road.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5823,7 +5823,7 @@
     },
     {
      "aspect": "present",
-     "text": "One household works a few flooded fields.",
+     "text": "One household works a few flooded fields beside the northern road, with a stone barn on a mound.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5845,7 +5845,7 @@
     },
     {
      "aspect": "people",
-     "text": "A Dunmer-descended farmer and Argonian wife.",
+     "text": "A Dunmer-descended farmer and his Argonian wife of the Urvyn family keep the farm.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5867,7 +5867,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Saltrice and eels to Stormhold.",
+     "text": "The farm sends saltrice and eels to Stormhold along the northern road.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5889,7 +5889,7 @@
     },
     {
      "aspect": "faith",
-     "text": "Ancestor stones and a Hist shoot.",
+     "text": "Ancestor stones from the Dunmer side of the family stand by the house, beside a Hist shoot from the Argonian side.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5911,7 +5911,7 @@
     },
     {
      "aspect": "look",
-     "text": "A stone barn and house on a mound.",
+     "text": "A stone barn and a stone house stand on a mound that lifts the farm above the flooded fields.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5933,7 +5933,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D1: wildlife.",
+     "text": "Wildlife in the ditches and fields is the only danger at this quiet farm.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5955,7 +5955,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A traveller asks to rent the barn.",
+     "text": "A traveller asks to rent the Urvyns' barn for a few nights. The family has not said yes.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6001,7 +6001,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A Naga camp labelled [Naga Camp] on the map. UESP has no page (searched 2026-11-08); named by us.",
+     "text": "Ushaan Camp is a Naga camp in the marsh south of Gandranen, home to a band of tribeless Naga.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -6019,7 +6019,7 @@
     },
     {
      "aspect": "history",
-     "text": "Reasoned: Naga bands follow road traffic.",
+     "text": "Naga bands follow road traffic, and this camp south of Gandranen lives off the travellers of the road.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6042,7 +6042,7 @@
     },
     {
      "aspect": "present",
-     "text": "Reed-and-bone huts around a fire pit.",
+     "text": "Huts of reed and bone ring a fire pit in the marsh south of Gandranen.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6065,7 +6065,7 @@
     },
     {
      "aspect": "people",
-     "text": "Tribeless Naga.",
+     "text": "Tribeless Naga, a band of brigands who belong to no clan, hold the camp.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6088,7 +6088,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Highway robbery.",
+     "text": "The band lives by highway robbery on the road past Gandranen.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6111,7 +6111,7 @@
     },
     {
      "aspect": "faith",
-     "text": "Sithis and a bone shrine.",
+     "text": "The Naga worship Sithis at a shrine made of bones beside the fire pit, with no Hist tree.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6134,7 +6134,7 @@
     },
     {
      "aspect": "look",
-     "text": "Reed-and-bone huts and a trophy pole.",
+     "text": "Huts of reed and bone stand around the fire, and a pole hung with trophies marks the camp.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6157,7 +6157,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D3: Naga warbands.",
+     "text": "Naga warbands hold the camp and strike travellers on the road. The marsh around it is dangerous ground.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6180,7 +6180,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A captive; a Naga who wants out.",
+     "text": "The band holds a captive. One of the Naga wants out of the camp.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6228,7 +6228,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Umpholo is the site of a Temple of Mara built about 3E 378; the missionaries died of swamp rot within a month and the library was picked clean by about 3E 399. UESP has the story in The Argonian Account, Book 4 but no page of its own. The map puts it in the far west rather than in the interior; we follow the map.",
+     "text": "Umpholo is the site of a Temple of Mara built about 3E 378. The missionaries died of swamp rot within a month and the library was picked clean by about 3E 399. The story is told in The Argonian Account, Book 4. The site lies in the far west.",
      "tier": "CANON_EXPLICIT",
      "sources": [
       {
@@ -6379,7 +6379,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D2: wild country; Sul-Xan raiders are feared here.",
+     "text": "Umpholo stands in wild country at the far west. Its people fear Sul-Xan raiders from the Blackwood frontier.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6453,7 +6453,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "The map shows an unlabelled outpost here. We named it in the Hutan-Tzel style. UESP has no page (searched 2026-11-08).",
+     "text": "Hutan-Aru is an outpost of the Hutan-Tzel on a river branch in the far west, named in their style.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -6469,7 +6469,7 @@
     },
     {
      "aspect": "history",
-     "text": "Reasoned: the Hutan-Tzel hold a chain of river outposts and have for generations.",
+     "text": "The Hutan-Tzel hold a chain of river outposts in the far west and have held them for generations; Hutan-Aru is one link.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6490,7 +6490,7 @@
     },
     {
      "aspect": "present",
-     "text": "A palisade around a few huts, with a totem carved in runes.",
+     "text": "A palisade of dark posts surrounds a few huts, with a totem carved in runes standing inside.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6511,7 +6511,7 @@
     },
     {
      "aspect": "people",
-     "text": "Hutan-Tzel guards under a local naheesh.",
+     "text": "Hutan-Tzel guards live at the outpost under a local naheesh, an elder of the tribe.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6553,7 +6553,7 @@
     },
     {
      "aspect": "faith",
-     "text": "Totems carved in runes only they can read.",
+     "text": "The Hutan-Tzel carve their totems with runes that only they can read.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6574,7 +6574,7 @@
     },
     {
      "aspect": "look",
-     "text": "A palisade of dark posts, a rune-carved totem, a landing.",
+     "text": "A palisade of dark posts encloses a rune-carved totem and a few huts, with a landing on the river branch.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6595,7 +6595,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D2: touching a totem draws beasts.",
+     "text": "Touching a totem draws beasts down on the offender, so strangers keep their hands off the carvings.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6616,7 +6616,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A bargain for passage; a totem that has been defaced.",
+     "text": "A traveller can bargain here for passage. One of the totems has been defaced.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6662,7 +6662,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "An unlabelled outpost named by us. UESP has no page (searched 2026-11-08).",
+     "text": "Hutan-Veel is a Hutan-Tzel outpost in the far west on the Cyrodiil border, named in the style of its people.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -6678,7 +6678,7 @@
     },
     {
      "aspect": "history",
-     "text": "Reasoned: another link in the chain.",
+     "text": "Another link in the Hutan-Tzel chain of river outposts, standing on the far-west edge by the Cyrodiil border.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6695,7 +6695,7 @@
     },
     {
      "aspect": "present",
-     "text": "A palisade with a rune totem.",
+     "text": "A palisade of dark posts holds a rune-carved totem on the Cyrodiil border.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6712,7 +6712,7 @@
     },
     {
      "aspect": "people",
-     "text": "Hutan-Tzel guards.",
+     "text": "Hutan-Tzel guards live at the outpost under the elder styled naheesh.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6746,7 +6746,7 @@
     },
     {
      "aspect": "faith",
-     "text": "Rune-carved totems.",
+     "text": "The guards carve their totems with runes that outsiders cannot read.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6763,7 +6763,7 @@
     },
     {
      "aspect": "look",
-     "text": "A dark palisade and a landing.",
+     "text": "A dark palisade stands above a landing at the far-west edge of the marsh.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6780,7 +6780,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D2: beasts called by a disturbed totem.",
+     "text": "A disturbed totem calls beasts, so the outpost is dangerous to anyone who meddles with its runes.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6797,7 +6797,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A traveller who disappeared from the camp's far side.",
+     "text": "A traveller disappeared from the far side of the camp. He has not been found.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6838,7 +6838,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "An unnamed Imperial ruin named by us. UESP has no page (searched 2026-11-08).",
+     "text": "Aldanus Watchtower is an Imperial ruin on the border hills in the far west, a watchtower that no one now keeps.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -6850,7 +6850,7 @@
     },
     {
      "aspect": "history",
-     "text": "Reasoned: built by the Third Empire to watch the border.",
+     "text": "Built by the Third Empire to watch the border hills in the far west, and left to fall when the Legions withdrew.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6867,7 +6867,7 @@
     },
     {
      "aspect": "present",
-     "text": "A stump of a tower and a wall in a thicket.",
+     "text": "A stump of a tower and a length of wall stand in a thicket on the border hills.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6901,7 +6901,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Once a border watch; now stripped.",
+     "text": "Once a border watch of the Empire, the tower is now stripped of anything useful.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6935,7 +6935,7 @@
     },
     {
      "aspect": "look",
-     "text": "A broken tower and wall in a thicket.",
+     "text": "A broken tower and a wall stand in a thicket on the far-west hills.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6952,7 +6952,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D2: wildlife.",
+     "text": "Wildlife is the main danger in the thicket around the ruined tower.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6969,7 +6969,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A courier's satchel in the rubble.",
+     "text": "A courier's satchel is lodged in the rubble at the foot of the broken tower.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7010,7 +7010,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A Kothringi ruin on the map at (-14,-71); named by us in the style of Kothringi towns such as Korydon and Toklea. UESP has no page (searched 2026-11-08); the Kothringi do.",
+     "text": "A Kothringi ruin at (-14,-71), named Meliton in the style of Kothringi towns such as Korydon and Toklea. The Kothringi lived in towns of this kind.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -7033,7 +7033,7 @@
     },
     {
      "aspect": "history",
-     "text": "Meliton was a Kothringi town in the western hills that the Knahaten Flu of 2E 560 left empty, part of a homeland that once held many such towns. Its Kothringi name is on the map; the dead were laid in the cairns outside it.",
+     "text": "Meliton was a Kothringi town in the western hills that the Knahaten Flu of 2E 560 left empty, part of a homeland that once held many such towns. The dead were laid in the cairns outside it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7171,7 +7171,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Restless dead rise from the oldest cairns at night, and Sul-Xan diggers work the south side. At D3 the diggers are the greater danger by day.",
+     "text": "Restless dead rise from the oldest cairns at night, and Sul-Xan diggers work the south side. At dangerous the diggers are the greater danger by day.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7241,7 +7241,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "The map shows a Kothringi ruin at (-23,-76), close to the Cyrodiil border. We named it in the style of Kothringi towns such as Korydon and Toklea. UESP has no page (searched 2026-11-08).",
+     "text": "A Kothringi ruin at (-23,-76), close to the Cyrodiil border, named in the style of Kothringi towns such as Korydon and Toklea.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -7402,7 +7402,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Restless dead at the four cairns, and Sul-Xan raiders who dig from the stream side. At D3 the raiders come in the dark of the moon.",
+     "text": "Restless dead at the four cairns, and Sul-Xan raiders who dig from the stream side. At dangerous the raiders come in the dark of the moon.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7472,7 +7472,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A Barsaebic Ayleid ruin at (-18,-71), named by us. UESP has no page (searched 2026-11-08).",
+     "text": "Anutasil is a small Barsaebic Ayleid ruin at (-18,-71) in the western marsh.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -7489,7 +7489,7 @@
     },
     {
      "aspect": "history",
-     "text": "Barsaebic Ayleids reached Blackwood after 1E 198.",
+     "text": "Barsaebic Ayleids reached Blackwood after 1E 198, and Anutasil is one of the halls they left in the western marsh.",
      "tier": "CANON_EXPLICIT",
      "sources": [
       {
@@ -7501,7 +7501,7 @@
     },
     {
      "aspect": "present",
-     "text": "Half-flooded and avoided.",
+     "text": "The ruin in the western marsh is half-flooded and avoided by everyone nearby.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7535,7 +7535,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Once an Ayleid hall.",
+     "text": "Once an Ayleid hall, it now stands unused and half-flooded in the reeds.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7552,7 +7552,7 @@
     },
     {
      "aspect": "faith",
-     "text": "Fragments of a shrine.",
+     "text": "Fragments of an Ayleid shrine lie among the fallen arches and the vines.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7569,7 +7569,7 @@
     },
     {
      "aspect": "look",
-     "text": "White arches half-covered in vine; black water.",
+     "text": "White arches stand half-covered in vine above black water in the western marsh.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7586,7 +7586,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D3: undead guardians and giant snakes.",
+     "text": "Undead guardians and giant snakes make the flooded ruin dangerous.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7603,7 +7603,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A map to a vault.",
+     "text": "Among the treasure-seekers there is talk of a map to a vault beneath the ruin.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {

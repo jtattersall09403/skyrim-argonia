@@ -1,7 +1,7 @@
-{"region_id":"althii-archipelago","aspect_id":"climate","text":"Hot, humid, with sea winds and a monsoon.","statement_tier_id":"CANON_DERIVED"}
-{"region_id":"althii-archipelago","aspect_id":"dangers","text":"D2 in the interior: bandits in the burnt forts, predators in the dens, sea-drakes at the coast.","statement_tier_id":"EXTRAPOLATED"}
-{"region_id":"althii-archipelago","aspect_id":"ecology","text":"Mangrove coasts, paddy fauna, wading birds, guar and crabs.","statement_tier_id":"EXTRAPOLATED"}
-{"region_id":"althii-archipelago","aspect_id":"economy","text":"Rice, fish, salvage and ferrying; Lilmoth is the market.","statement_tier_id":"EXTRAPOLATED"}
+{"region_id":"althii-archipelago","aspect_id":"climate","text":"The islands are hot and humid, swept by sea winds and drenched by the monsoon.","statement_tier_id":"CANON_DERIVED"}
+{"region_id":"althii-archipelago","aspect_id":"dangers","text":"Risky in the interior: bandits in the burnt forts, predators in the dens, sea-drakes at the coast.","statement_tier_id":"EXTRAPOLATED"}
+{"region_id":"althii-archipelago","aspect_id":"ecology","text":"Mangrove coasts, paddy fauna, wading birds, guar and crabs fill the islands.","statement_tier_id":"EXTRAPOLATED"}
+{"region_id":"althii-archipelago","aspect_id":"economy","text":"The islands live on rice, fish, salvage and ferrying; Lilmoth is the market for all of it.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"althii-archipelago","aspect_id":"faith","text":"Lilmoth's feared third Hist is the islands' tree; Three Waters keep their own pool.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"althii-archipelago","aspect_id":"history","text":"Lilmothiit held the isles until the flu of 2E 560; Imperial forts, estates and a road arrived later. Lilmoth was destroyed in 4E 48 and its islands refilled.","statement_tier_id":"CANON_DERIVED"}
 {"region_id":"althii-archipelago","aspect_id":"landscape","text":"Low and flat with a few low hills, cut by inlets and inner channels; roads link the towns across land and ferries.","statement_tier_id":"EXTRAPOLATED"}
@@ -9,26 +9,26 @@
 {"region_id":"althii-archipelago","aspect_id":"overview","text":"A group of islands that holds Lilmoth and most of the rebuilt Murkmire coast's estates, and an Imperial road network gone to ruin.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"althii-archipelago","aspect_id":"people","text":"Lilmoth-coast Argonians, tenants and bonded labourers on estates, garrison families and the Three Waters Tribe.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"althii-archipelago","aspect_id":"present","text":"Lilmoth leads the islands; Archwarden forts hold the east and the south-west; Uluo's Three Waters people hold the north.","statement_tier_id":"EXTRAPOLATED"}
-{"region_id":"aphon-isle","aspect_id":"climate","text":"Breezy, with salt spray and sea mist.","statement_tier_id":"EXTRAPOLATED"}
-{"region_id":"aphon-isle","aspect_id":"dangers","text":"Pirates, smugglers and the sea.","statement_tier_id":"EXTRAPOLATED"}
-{"region_id":"aphon-isle","aspect_id":"ecology","text":"Scrub, gulls, crabs and kelp beds.","statement_tier_id":"EXTRAPOLATED"}
-{"region_id":"aphon-isle","aspect_id":"economy","text":"Customs levies, smuggling and salvage.","statement_tier_id":"EXTRAPOLATED"}
-{"region_id":"aphon-isle","aspect_id":"faith","text":"Sailors' charms and a small Nine shrine.","statement_tier_id":"EXTRAPOLATED"}
+{"region_id":"aphon-isle","aspect_id":"climate","text":"The island is breezy. Salt spray and sea mist blow in off Topal Bay.","statement_tier_id":"EXTRAPOLATED"}
+{"region_id":"aphon-isle","aspect_id":"dangers","text":"Pirates, smugglers and the sea itself threaten visitors to the island.","statement_tier_id":"EXTRAPOLATED"}
+{"region_id":"aphon-isle","aspect_id":"ecology","text":"Scrub covers the hills, with gulls, crabs and kelp beds along the shore.","statement_tier_id":"EXTRAPOLATED"}
+{"region_id":"aphon-isle","aspect_id":"economy","text":"The island lives on customs levies, smuggling and salvage in Topal Bay.","statement_tier_id":"EXTRAPOLATED"}
+{"region_id":"aphon-isle","aspect_id":"faith","text":"Sailors' charms and a small Nine shrine at the belvedere serve the island's few people.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"aphon-isle","aspect_id":"history","text":"An Imperial retreat island; the signal tower and belvedere were built to watch the bay.","statement_tier_id":"EXTRAPOLATED"}
-{"region_id":"aphon-isle","aspect_id":"landscape","text":"A low hilly island with rocky shores and a high spine.","statement_tier_id":"EXTRAPOLATED"}
+{"region_id":"aphon-isle","aspect_id":"landscape","text":"A low hilly island with rocky shores and a high spine running through it.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"aphon-isle","aspect_id":"look","text":"Low grey hills, scrub, white-washed lookout and a rocky shore.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"aphon-isle","aspect_id":"overview","text":"An island west of Gideon holding the Archwardens' lookout and a smugglers' cache.","statement_tier_id":"EXTRAPOLATED"}
-{"region_id":"aphon-isle","aspect_id":"people","text":"A handful of watchers and smugglers.","statement_tier_id":"EXTRAPOLATED"}
+{"region_id":"aphon-isle","aspect_id":"people","text":"A handful of watchers and smugglers live on the island, the watchers at the belvedere and the smugglers at the cave.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"aphon-isle","aspect_id":"present","text":"The Archwardens' customs watch holds the belvedere and the smugglers hold the cave.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"arnesian-jungle","aspect_id":"climate","text":"Hot and wet most of the year, with a drier cooler season when the road is easiest.","statement_tier_id":"EXTRAPOLATED"}
-{"region_id":"arnesian-jungle","aspect_id":"dangers","text":"D2 away from roads; D3 at the Velothi ruins; the Thorn road and towns are D1 and D0.","statement_tier_id":"EXTRAPOLATED"}
+{"region_id":"arnesian-jungle","aspect_id":"dangers","text":"Risky away from roads and dangerous at the Velothi ruins. The Thorn road and the towns are mostly safe.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"arnesian-jungle","aspect_id":"ecology","text":"Jungle hardwood, tree-ferns, vines and bright fungus, crocodiles on the banks, jungle cats and snakes inland, grass and saltrice near Thorn.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"arnesian-jungle","aspect_id":"economy","text":"Timber, quarried stone, hides and sap, sold to Thorn; saltrice and tools come back.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"arnesian-jungle","aspect_id":"faith","text":"The sky-blue people hold their city's Hist to be asleep; hamlets keep cairns for it, while the Root-Folk keep their own trees.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"arnesian-jungle","aspect_id":"history","text":"Barsaebic Ayleids and Cantemiric Velothi settled the country around Arnesia, Archon and Thorn before their extinction. The Arnesian War of 3E 396 began as a slave revolt in southern Dres lands and ended with Morrowind annexing Arnesia; from 3E 432 the Argonians began to reclaim the ground, and slavers were still active in Arnesia in the late Third Era.","statement_tier_id":"CANON_EXPLICIT"}
 {"region_id":"arnesian-jungle","aspect_id":"landscape","text":"A long inlet from the bay runs west to Tsonac, with rivers branching off to the south and north-west; rises of 30 to 60 m stand between them, and the ground is marshy at the shore.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"arnesian-jungle","aspect_id":"look","text":"Terraced stone towns among tall hardwoods, a broad bay inlet with muddy banks, Velothi ruins under vines.","statement_tier_id":"EXTRAPOLATED"}
-{"region_id":"arnesian-jungle","aspect_id":"overview","text":"The Arnesian Jungle takes its name from Arnesia, the east-coast country around Thorn and Archon. UESP has no page for the jungle as a region; Lore:Arnesia names Arnesia only as a settlement and region near Archon and Thorn.","statement_tier_id":"EXTRAPOLATED"}
+{"region_id":"arnesian-jungle","aspect_id":"overview","text":"The Arnesian Jungle takes its name from Arnesia, the east-coast country around Thorn and Archon, a settlement and region near both cities.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"arnesian-jungle","aspect_id":"people","text":"Mostly Stone-Sleeper Argonians, with Root-Folk hunters, Warden garrisons and field-owners' crews near Thorn, and Dunmer traders on the road.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"arnesian-jungle","aspect_id":"present","text":"In 4E 201 the jungle is the Stone-Sleepers' home country, with Tsonac as capital, and Thorn at its coastal edge holds the Warden forts, camps and posts.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"aunike-ridge","aspect_id":"climate","text":"Breezy and a little drier than the forest, with morning mist and monsoon rain from the north.","statement_tier_id":"EXTRAPOLATED"}
@@ -39,51 +39,51 @@
 {"region_id":"aunike-ridge","aspect_id":"history","text":"Nothing is recorded. The Kothringi-named hamlets on it, Nacydes and Tydeos, are read as Kothringi places resettled by Argonians after 2E 560 because the ridge is dry.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"aunike-ridge","aspect_id":"landscape","text":"A long spine of firm ground rising from marsh, with rock outcrops, two summits, steep faces on the north and shelving slopes on the south.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"aunike-ridge","aspect_id":"look","text":"Rock outcrops and grass-scrub above the reeds, stone-footed huts, windchimes, watchfires at night and wide views over the marsh.","statement_tier_id":"EXTRAPOLATED"}
-{"region_id":"aunike-ridge","aspect_id":"overview","text":"Aunike Ridge is a ridge of firm ground west and south-west of Helstrom, with two marked peaks and two Chime-Keeper hamlets. UESP has no page for it; the name is Project Tamriel's.","statement_tier_id":"EXTRAPOLATED"}
+{"region_id":"aunike-ridge","aspect_id":"overview","text":"Aunike Ridge is a ridge of firm ground west and south-west of Helstrom, with two peaks and two Chime-Keeper hamlets.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"aunike-ridge","aspect_id":"people","text":"Chime-Keepers at Nacydes and Tydeos; Paatru and Naga hold the camps at its margin.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"aunike-ridge","aspect_id":"present","text":"In 4E 201 its hamlets keep watch from the peaks and trade chimes for hides with the Paatru camp to the west; Naga bands of Salt-Tooth Camp range across it.","statement_tier_id":"EXTRAPOLATED"}
-{"region_id":"banujha-basin","aspect_id":"climate","text":"Hot, humid, with monsoon flooding.","statement_tier_id":"EXTRAPOLATED"}
-{"region_id":"banujha-basin","aspect_id":"dangers","text":"Hostile posts, swamp predators and haunted ruins.","statement_tier_id":"EXTRAPOLATED"}
-{"region_id":"banujha-basin","aspect_id":"ecology","text":"Reeds, mangrove, gar, death hoppers and fleshflies.","statement_tier_id":"EXTRAPOLATED"}
+{"region_id":"banujha-basin","aspect_id":"climate","text":"The basin is hot and humid, with monsoon flooding in the wet season.","statement_tier_id":"EXTRAPOLATED"}
+{"region_id":"banujha-basin","aspect_id":"dangers","text":"Hostile posts, swamp predators and haunted ruins make the basin dangerous.","statement_tier_id":"EXTRAPOLATED"}
+{"region_id":"banujha-basin","aspect_id":"ecology","text":"Reeds and mangrove grow in the basin, with gar, death hoppers and fleshflies.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"banujha-basin","aspect_id":"economy","text":"Fishing, salvaged mine metal, tolls on Soulrest's Argonians and a little timber.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"banujha-basin","aspect_id":"faith","text":"Sithis, the nearest Hist to Soulrest, and burned-mine shrines.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"banujha-basin","aspect_id":"history","text":"Imperial mines and timber concessions here were destroyed by the tribes in 3E 427; the Mine-Burners have held it since.","statement_tier_id":"CANON_DERIVED"}
-{"region_id":"banujha-basin","aspect_id":"landscape","text":"A shallow basin of channels and islets with dark water.","statement_tier_id":"EXTRAPOLATED"}
-{"region_id":"banujha-basin","aspect_id":"look","text":"Flooded channels, scorched timber and tiered stilt halls.","statement_tier_id":"EXTRAPOLATED"}
+{"region_id":"banujha-basin","aspect_id":"landscape","text":"A shallow basin of channels and islets, with dark water between them.","statement_tier_id":"EXTRAPOLATED"}
+{"region_id":"banujha-basin","aspect_id":"look","text":"Flooded channels, scorched timber and tiered stilt halls mark the basin.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"banujha-basin","aspect_id":"overview","text":"A flooded basin of channels and islets with Jarecai and Kharaxos as its towns.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"banujha-basin","aspect_id":"people","text":"Mine-Burner Argonians, Chime-Keepers, Root-Folk outposts and Paatru hunters; about 100 people.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"banujha-basin","aspect_id":"present","text":"Jarecai's council rules; Soulrest depends on the basin's Hist for hatching and burial; the Chime-Keepers hold Oeneas.","statement_tier_id":"EXTRAPOLATED"}
-{"region_id":"barsaebica","aspect_id":"climate","text":"Humid; tidal reach on the western rivers.","statement_tier_id":"EXTRAPOLATED"}
-{"region_id":"barsaebica","aspect_id":"dangers","text":"D3 in the ruins and the marsh between them; D1 on the road.","statement_tier_id":"EXTRAPOLATED"}
-{"region_id":"barsaebica","aspect_id":"ecology","text":"Lamias in Loriasel, giant snakes, wamasu and fleshflies.","statement_tier_id":"EXTRAPOLATED"}
-{"region_id":"barsaebica","aspect_id":"economy","text":"Reed, fish, tolls and ruin-scavenging.","statement_tier_id":"EXTRAPOLATED"}
-{"region_id":"barsaebica","aspect_id":"faith","text":"The Hist pool at Jal-Veesa; Ayleid shrines gone to ruin.","statement_tier_id":"EXTRAPOLATED"}
+{"region_id":"barsaebica","aspect_id":"climate","text":"The air is humid. The tide reaches far up the western rivers.","statement_tier_id":"EXTRAPOLATED"}
+{"region_id":"barsaebica","aspect_id":"dangers","text":"The ruins and the marsh between them are dangerous, while the roads are far safer.","statement_tier_id":"EXTRAPOLATED"}
+{"region_id":"barsaebica","aspect_id":"ecology","text":"Lamias live in Loriasel's caverns, and giant snakes, wamasu and fleshflies range the plain.","statement_tier_id":"EXTRAPOLATED"}
+{"region_id":"barsaebica","aspect_id":"economy","text":"The region lives on reed, fish, tolls and scavenging in the Ayleid ruins.","statement_tier_id":"EXTRAPOLATED"}
+{"region_id":"barsaebica","aspect_id":"faith","text":"The Hist pool at Jal-Veesa is the living shrine of the region, while the Ayleid shrines lie in ruin.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"barsaebica","aspect_id":"history","text":"Barsaebic Ayleids were driven east after 1E 198 and occupied north-eastern Black Marsh and parts of Blackwood, founding Silyanorn, Twyllbek, Archon, Thorn, Loriasel and Gandranen.","statement_tier_id":"CANON_EXPLICIT"}
-{"region_id":"barsaebica","aspect_id":"landscape","text":"A hummocky plain with ruins on mounds and hills.","statement_tier_id":"EXTRAPOLATED"}
+{"region_id":"barsaebica","aspect_id":"landscape","text":"A hummocky plain west of Stormhold, with ruins standing on mounds and hills.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"barsaebica","aspect_id":"look","text":"White Ayleid stone in reed beds; stilt huts and weirs; a long road west.","statement_tier_id":"EXTRAPOLATED"}
-{"region_id":"barsaebica","aspect_id":"overview","text":"UESP has no page for this region name (searched 2026-11-08); it is a Project Tamriel region. It is named for the Barsaebic Ayleids; it holds Loriasel, Gandranen, Gemin and the western road to Slough Point.","statement_tier_id":"EXTRAPOLATED"}
+{"region_id":"barsaebica","aspect_id":"overview","text":"Barsaebica is named for the Barsaebic Ayleids and holds Loriasel, Gandranen, Gemin and the western road to Slough Point.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"barsaebica","aspect_id":"people","text":"Veesa-Teeleel reed-wardens, Naga bands and the Lukiul of Slough Point.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"barsaebica","aspect_id":"present","text":"A country of ruins, weirs and one frontier village; the Veesa-Teeleel guard the ruins as sick ground.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"benthic-yobesh","aspect_id":"climate","text":"Warm shallows over cold deep currents; the surface storms in the monsoon.","statement_tier_id":"EXTRAPOLATED"}
-{"region_id":"benthic-yobesh","aspect_id":"dangers","text":"D3 across the floor; D4 at Echo Deep and the outer spires: sea-drakes, dreugh, drowning.","statement_tier_id":"EXTRAPOLATED"}
+{"region_id":"benthic-yobesh","aspect_id":"dangers","text":"Dangerous across the floor and deadly at Echo Deep and the outer spires: sea-drakes, dreugh, drowning.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"benthic-yobesh","aspect_id":"ecology","text":"Kelp, coral, slaughterfish, sea-drakes, dreugh, glowgill guar at the western edge.","statement_tier_id":"EXTRAPOLATED"}
-{"region_id":"benthic-yobesh","aspect_id":"economy","text":"Salvage from the spires, licensed by the state.","statement_tier_id":"EXTRAPOLATED"}
+{"region_id":"benthic-yobesh","aspect_id":"economy","text":"The spires yield salvage. The state licenses who may take it.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"benthic-yobesh","aspect_id":"faith","text":"Argonians hold the deep as the abode of the drowned and pray before diving.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"benthic-yobesh","aspect_id":"history","text":"By legend Murkmire was swallowed by the Southern Sea; the spires are what remained.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"benthic-yobesh","aspect_id":"landscape","text":"A shelf of silt about forty metres down, spires to eight metres below the surface, and a trench.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"benthic-yobesh","aspect_id":"look","text":"Blue-green water over silt, coral and kelp, spires rising, a black trench.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"benthic-yobesh","aspect_id":"overview","text":"The sea east of Lilmoth covers drowned ground with spires and a trench.","statement_tier_id":"EXTRAPOLATED"}
-{"region_id":"benthic-yobesh","aspect_id":"people","text":"No residents; divers, sea-drakes, dreugh.","statement_tier_id":"EXTRAPOLATED"}
+{"region_id":"benthic-yobesh","aspect_id":"people","text":"The sea floor has no residents. Divers, sea-drakes and dreugh come here.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"benthic-yobesh","aspect_id":"present","text":"Bell Station's licensed divers salvage the spires; elsewhere the sea floor is unclaimed.","statement_tier_id":"EXTRAPOLATED"}
-{"region_id":"blackwood","aspect_id":"climate","text":"Humid; roads closed in the monsoon.","statement_tier_id":"EXTRAPOLATED"}
-{"region_id":"blackwood","aspect_id":"dangers","text":"D3: Sul-Xan raiders, death hoppers, hackwings.","statement_tier_id":"EXTRAPOLATED"}
-{"region_id":"blackwood","aspect_id":"ecology","text":"Death hoppers, hackwings, fleshflies and marsh giants.","statement_tier_id":"EXTRAPOLATED"}
-{"region_id":"blackwood","aspect_id":"economy","text":"Fish, clay, hunting, herbs and the Blackwood Road trade.","statement_tier_id":"EXTRAPOLATED"}
+{"region_id":"blackwood","aspect_id":"climate","text":"The air is humid. The monsoon closes the roads of the frontier.","statement_tier_id":"EXTRAPOLATED"}
+{"region_id":"blackwood","aspect_id":"dangers","text":"Sul-Xan raiders, death hoppers and hackwings make the frontier dangerous away from the roads.","statement_tier_id":"EXTRAPOLATED"}
+{"region_id":"blackwood","aspect_id":"ecology","text":"Death hoppers, hackwings, fleshflies and marsh giants live in the hills and bogs.","statement_tier_id":"EXTRAPOLATED"}
+{"region_id":"blackwood","aspect_id":"economy","text":"Fish, clay, hunting, herbs and trade along the Blackwood Road support the frontier's people.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"blackwood","aspect_id":"faith","text":"Dibella and Z'en remembered; Hist shoots; the Sul-Xan's Dagon heresy.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"blackwood","aspect_id":"history","text":"Kothringi homeland in large numbers; the Knahaten Flu emptied it in 2E 560; the Maran mission died at Umpholo in the 3E.","statement_tier_id":"CANON_EXPLICIT"}
-{"region_id":"blackwood","aspect_id":"landscape","text":"Flooded hillscape with steep, lightly forested hills.","statement_tier_id":"CANON_EXPLICIT"}
-{"region_id":"blackwood","aspect_id":"look","text":"Flooded hillscape, bog and cairn-fields.","statement_tier_id":"EXTRAPOLATED"}
-{"region_id":"blackwood","aspect_id":"overview","text":"UESP has no page for this region name (searched 2026-11-08); it is a Project Tamriel region. It is the far south-west of our batch, the Argonian side of Blackwood.","statement_tier_id":"EXTRAPOLATED"}
+{"region_id":"blackwood","aspect_id":"landscape","text":"Flooded hillscape with steep, lightly forested hills at the western frontier of Black Marsh.","statement_tier_id":"CANON_EXPLICIT"}
+{"region_id":"blackwood","aspect_id":"look","text":"A flooded hillscape of bog and cairn-fields, with steep hills rising from standing water.","statement_tier_id":"EXTRAPOLATED"}
+{"region_id":"blackwood","aspect_id":"overview","text":"Blackwood here is the far south-west of the province, the Argonian side of Blackwood.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"blackwood","aspect_id":"people","text":"Lukiul, Naka-Desh and Hutan-Tzel, with Nibenese-descended families.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"blackwood","aspect_id":"present","text":"Dead towns, a few river villages and Hutan-Tzel outposts; Sul-Xan raiders are feared.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"cape-percar","aspect_id":"climate","text":"Humid and warm; sea mist on the south coast; wet season brings flooding.","statement_tier_id":"EXTRAPOLATED"}
@@ -94,18 +94,18 @@
 {"region_id":"cape-percar","aspect_id":"history","text":"Gold and timber concessions ran here until the tribes burned them in 3E 427; the Great Burn's underground network reached the cape in 1E 2828.","statement_tier_id":"CANON_EXPLICIT"}
 {"region_id":"cape-percar","aspect_id":"landscape","text":"Low hills up to about 45 m behind the coast, flat sandy shores, tidal creeks and mangrove edges.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"cape-percar","aspect_id":"look","text":"Red-gum hills, black burn-scars, grey-stone Imperial ruins and stilt villages on the coast.","statement_tier_id":"EXTRAPOLATED"}
-{"region_id":"cape-percar","aspect_id":"overview","text":"The cape is the peninsula behind Soulrest. It holds the old Imperial mines and timber concessions, a few villages and a burn scar. There is no UESP page for Cape Percar (searched 2026-11-08).","statement_tier_id":"EXTRAPOLATED"}
+{"region_id":"cape-percar","aspect_id":"overview","text":"The cape is the peninsula behind Soulrest. It holds the old Imperial mines and timber concessions, a few villages and a burn scar.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"cape-percar","aspect_id":"people","text":"Umber coast folk: Argonians, Khajiit coasters, Imperial-descended clerks, with Banujha watchers and a Naka-Desh river station at the edges.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"cape-percar","aspect_id":"present","text":"Villages and licensed camps work timber and stone under Soulrest's council; the mines stand derelict; Banujha mine-burners keep watch posts at its edges.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"chixathe-mesa","aspect_id":"climate","text":"Drier than the jungle; the mesa tops hold little water and cold nights follow hot days.","statement_tier_id":"EXTRAPOLATED"}
-{"region_id":"chixathe-mesa","aspect_id":"dangers","text":"D3 away from roads: Sarpa raiders, Velothi undead and cliff falls.","statement_tier_id":"EXTRAPOLATED"}
+{"region_id":"chixathe-mesa","aspect_id":"dangers","text":"Dangerous away from roads: Sarpa raiders, Velothi undead and cliff falls.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"chixathe-mesa","aspect_id":"ecology","text":"Scrub, tall grass, thorn-bush, snakes, cats, birds of prey and the Sarpa's winged hunters.","statement_tier_id":"EXTRAPOLATED"}
-{"region_id":"chixathe-mesa","aspect_id":"economy","text":"Quarried stone, chalk and lime, hides and books.","statement_tier_id":"EXTRAPOLATED"}
+{"region_id":"chixathe-mesa","aspect_id":"economy","text":"Chixathe Mesa yields quarried stone, chalk and lime, hides and books, sent off the mesa to Thorn and the river towns.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"chixathe-mesa","aspect_id":"faith","text":"A mix of Hist customs; the Sarpa keep High-Flower, the Stone-Sleepers a cairn, the Agaceph read.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"chixathe-mesa","aspect_id":"history","text":"The Cantemiric Velothi settled the east of Black Marsh before the Knahaten Flu of 2E 560-603 killed them; their ruins at Kaochalit, Balormaak and Vorannuhl stand on the mesa.","statement_tier_id":"CANON_DERIVED"}
 {"region_id":"chixathe-mesa","aspect_id":"landscape","text":"Flat mesa tops 60 to 110 m above the lowland, cliffs on the edges and river gorges between them.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"chixathe-mesa","aspect_id":"look","text":"Pale cliffs and flat tops, white chalk dust, stone cuts, rivers in green gorges.","statement_tier_id":"EXTRAPOLATED"}
-{"region_id":"chixathe-mesa","aspect_id":"overview","text":"UESP has no page for Chixathe Mesa; it is a Project Tamriel name. It lies between the Arnesian country and the Middle Argonian interior.","statement_tier_id":"EXTRAPOLATED"}
+{"region_id":"chixathe-mesa","aspect_id":"overview","text":"Chixathe Mesa lies between the Arnesian country and the Middle Argonian interior.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"chixathe-mesa","aspect_id":"people","text":"No single culture: Stone-Sleepers, Root-Folk, Agaceph, Sedge-Wardens and Clay-Mound families, with Sarpa to the west.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"chixathe-mesa","aspect_id":"present","text":"In 4E 201 it is a thin, mixed country: Stone-Sleeper hamlets and quarries to the north and east, Warden fort at Chalkmoth, Root-Folk and Sedge-Warden outposts, an Agaceph hamlet in the south and Sarpa on the western edge.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"hatandros-bight","aspect_id":"climate","text":"Milder than the interior with sea-fog in the early morning, humid summers and monsoon rains; the tide raises the rivers.","statement_tier_id":"EXTRAPOLATED"}
@@ -116,7 +116,7 @@
 {"region_id":"hatandros-bight","aspect_id":"history","text":"Cantemiric Velothi held this coast from Thorn to Archon until the Knahaten Flu of 2E 560 killed them. Dres slave-ships sailed from Thorn across it; the Arnesian War of 3E 396 was fought on its northern margin.","statement_tier_id":"CANON_DERIVED"}
 {"region_id":"hatandros-bight","aspect_id":"landscape","text":"A flat to gently rolling plain behind a wide bay, cut by shallow rivers that spread into mud-flats at the coast. Low clay rises carry the villages above flood; headlands of dark stone hold the ruins.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"hatandros-bight","aspect_id":"look","text":"A pale shore of grey mud-flats and sandy points with grass behind, bright green after rain, low red clay rises, black Velothi ruins on the headlands, sea fog.","statement_tier_id":"EXTRAPOLATED"}
-{"region_id":"hatandros-bight","aspect_id":"overview","text":"The bight is the sea-bay that lies between Thorn in the north and the Arorha shore in the south, with a belt of grassland behind it. UESP has no page for Hatandros Bight; the name is the map's, and probably an old Cantemiric Velothi one.","statement_tier_id":"EXTRAPOLATED"}
+{"region_id":"hatandros-bight","aspect_id":"overview","text":"The bight is the sea-bay that lies between Thorn in the north and the Arorha shore in the south, with a belt of grassland behind it.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"hatandros-bight","aspect_id":"people","text":"A mix of the clay-mound people of Arorha, the Stone-Sleepers of Tsonac at Ysan, a Root-Folk watch at Yuva-Goli, Warden Marches families at the posts, and a Sarpa camp inland.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"hatandros-bight","aspect_id":"present","text":"A thinly peopled coast: Arorha at its south end, small hamlets of Tsonac's stone-folk and Helstrom's Root-Folk, Warden posts toward Thorn, and three dead Velothi ruins. The coast road from Thorn to Seafalls and Archon runs through it.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"kotherra-mangroves","aspect_id":"climate","text":"Hot and humid year round, with a monsoon that closes the Blackwood Road and floods the delta.","statement_tier_id":"EXTRAPOLATED"}
@@ -138,7 +138,7 @@
 {"region_id":"lake-ulaish","aspect_id":"history","text":"Nothing is recorded. The lake is the interior's drain. The rivers all flow to Middle Argonia and pool here, which made it a meeting place for trade long before the Empire built a post at Gysilla.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"lake-ulaish","aspect_id":"landscape","text":"A shallow basin with flat shores, silt islets and a delta of river arms at the north-west; the south shore is firmer. The water level swings with the monsoon.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"lake-ulaish","aspect_id":"look","text":"A wide pale-grey lake fringed with reed, silt islets with lantern posts, stilt quays on the south-east shore, and stone-footed farmhouses on the northern deltas.","statement_tier_id":"EXTRAPOLATED"}
-{"region_id":"lake-ulaish","aspect_id":"overview","text":"Lake Ulaish is the large lake south-east of Helstrom where the river arms of the interior spread out and slow before moving on. UESP has no page for it; the name is Project Tamriel's.","statement_tier_id":"EXTRAPOLATED"}
+{"region_id":"lake-ulaish","aspect_id":"overview","text":"Lake Ulaish is the large lake south-east of Helstrom where the river arms of the interior spread out and slow before moving on.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"lake-ulaish","aspect_id":"people","text":"A mix: the Root-Folk's islet stations, stone-footed farm hamlets in the Stormhold manner, clay-mound people at Marzai, Tumnatu fishers, an Archwarden garrison and Truowa's Lilmoth-linked merchants.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"lake-ulaish","aspect_id":"present","text":"In 4E 201 the lake carries the boat traffic between Helstrom, Aroxhu, Truowa and the waters toward Korydon and Blackrose. An Archwardens garrison tolls it from Gysilla; Truowa's merchants and the Aroxhu mound people compete for its trade.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"murkwood","aspect_id":"climate","text":"Hot, wet and still; monsoon in late spring and early summer; fog in the early mornings and a perpetual warmth.","statement_tier_id":"EXTRAPOLATED"}
@@ -149,13 +149,13 @@
 {"region_id":"murkwood","aspect_id":"history","text":"In the Imperial Simulacrum of 3E 399 Jagar Tharn hid a piece of the Staff of Chaos in Murkwood, and the Eternal Champion fetched it. The forest has moved many times since; Helstrom and the Root-Folk have stood beside it through all of them.","statement_tier_id":"CANON_EXPLICIT"}
 {"region_id":"murkwood","aspect_id":"landscape","text":"Low, wet ground cut by braided river arms flowing toward the lake, with dry rises where the roots hold the soil. Heart-Mud flats lie on the south.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"murkwood","aspect_id":"look","text":"A dark wood of huge roots, hanging moss and black water; light comes green and dim, the air is thick and loud with insects, and the forest never looks the same twice.","statement_tier_id":"EXTRAPOLATED"}
-{"region_id":"murkwood","aspect_id":"overview","text":"Murkwood is the legendary dark forest that ever moves, on a river deep in the swamps of Black Marsh and home to many medusas. Canon has the Conclave of Baal at Stormhold find where it stands by reading the Elder Scrolls with an ancient tablet; our map shows where it stands in 4E 201, around Helstrom.","statement_tier_id":"CANON_EXPLICIT"}
+{"region_id":"murkwood","aspect_id":"overview","text":"Murkwood is the legendary dark forest that ever moves, on a river deep in the swamps of Black Marsh and home to many medusas. The Conclave of Baal at Stormhold finds where it stands by reading the Elder Scrolls with an ancient tablet; in 4E 201 it stands around Helstrom.","statement_tier_id":"CANON_EXPLICIT"}
 {"region_id":"murkwood","aspect_id":"people","text":"The Root-Folk of Helstrom (Saxhleel) hold the heart; the Hutan-Tzel hold the west; tribeless Naga and the toad-like Paatru hold the camps at the margin.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"murkwood","aspect_id":"present","text":"In 4E 201 the forest crowds the river arms around Helstrom, held by the Root-Folk, the Hutan-Tzel at its west edge, and several camps of Naga and Paatru. Few outsiders come.","statement_tier_id":"EXTRAPOLATED"}
-{"region_id":"nha-enasa","aspect_id":"climate","text":"Hot, humid, with monsoon flooding that shuts the roads.","statement_tier_id":"EXTRAPOLATED"}
-{"region_id":"nha-enasa","aspect_id":"dangers","text":"Paatru camps, haunted Kothringi ruins and wild predators.","statement_tier_id":"EXTRAPOLATED"}
+{"region_id":"nha-enasa","aspect_id":"climate","text":"The country is hot and humid. Monsoon flooding shuts the roads.","statement_tier_id":"EXTRAPOLATED"}
+{"region_id":"nha-enasa","aspect_id":"dangers","text":"Paatru camps, haunted Kothringi ruins and wild predators threaten travellers away from the stations.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"nha-enasa","aspect_id":"ecology","text":"Reeds, ferns, osheeja gar and death hoppers; hackwings over the banks.","statement_tier_id":"EXTRAPOLATED"}
-{"region_id":"nha-enasa","aspect_id":"economy","text":"Gar fishing, salt-and-iron barter, herbs and caravan trade.","statement_tier_id":"EXTRAPOLATED"}
+{"region_id":"nha-enasa","aspect_id":"economy","text":"The river-folk live by gar fishing, salt-and-iron barter, herbs and the caravan trade.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"nha-enasa","aspect_id":"faith","text":"Hist roots and chimes in memory of the Kothringi; Dibella wayside shrines.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"nha-enasa","aspect_id":"history","text":"Kothringi land before 2E 560, then vacant; it became the Gideon-Leyawiin trade route and a river-folk country.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"nha-enasa","aspect_id":"landscape","text":"Low river banks and reed flats, drier than the delta, cut by channels.","statement_tier_id":"EXTRAPOLATED"}
@@ -164,7 +164,7 @@
 {"region_id":"nha-enasa","aspect_id":"people","text":"Naka-Desh river-folk, Lukiul traders and Paatru hunters; about 60 people.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"nha-enasa","aspect_id":"present","text":"Gul-Tej holds the road; the Naka-Desh keep their stations; Paatru camps hunt the west edge.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"nushara-bayou","aspect_id":"climate","text":"Hot and humid, with a monsoon that floods the lower channels and closes the ferries for days.","statement_tier_id":"CANON_DERIVED"}
-{"region_id":"nushara-bayou","aspect_id":"dangers","text":"D2 away from the road: slaughterfish, crocodilians, ripper eels, smugglers and disease.","statement_tier_id":"EXTRAPOLATED"}
+{"region_id":"nushara-bayou","aspect_id":"dangers","text":"Risky away from the road: slaughterfish, crocodilians, ripper eels, smugglers and disease.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"nushara-bayou","aspect_id":"ecology","text":"Reed, mangrove, saltrice, slaughterfish, eels, wading birds and mud-crabs.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"nushara-bayou","aspect_id":"economy","text":"Rice, fish, reed, shellfish and back-water freight that avoids customs; Archon is the market.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"nushara-bayou","aspect_id":"faith","text":"Sithis and the Hist, with the town of Uluo keeping the nearest tree for hatching.","statement_tier_id":"EXTRAPOLATED"}
@@ -182,7 +182,7 @@
 {"region_id":"okuwun-rahei","aspect_id":"history","text":"A tribal country long before the Empire; the East Empire Company's boats worked its clay, and Cantemiric Velothi once held its coast. Since 4E 6 the clay-mound people have been the dominant power.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"okuwun-rahei","aspect_id":"landscape","text":"Low red clay mounds above flood plains, big lakes in the west and a maze of tidal creeks in the south-east, ending in cliffs and a falls at the coast.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"okuwun-rahei","aspect_id":"look","text":"Red-brown mounds in green-grey marsh, bright reed thatch, kilns smoking, pale lakes and brown creeks, black Velothi ruins, white falls at Seafalls.","statement_tier_id":"EXTRAPOLATED"}
-{"region_id":"okuwun-rahei","aspect_id":"overview","text":"A broad region of red-clay mounds, lakes and creeks in the east of Middle Argonia. UESP has no page for Okuwun-Rahei; Lore:Middle Argonia places the Agaceph in the east, and the map shows the rest.","statement_tier_id":"EXTRAPOLATED"}
+{"region_id":"okuwun-rahei","aspect_id":"overview","text":"A broad region of red-clay mounds, lakes and creeks in the east of Middle Argonia, where the Agaceph live.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"okuwun-rahei","aspect_id":"people","text":"Oxhu-Teeleel clay-mound people (the bulk), Agaceph raft-folk at Yulca, Icalca, Xibcan and Yina, Spray-Folk at Seafalls, Sarpa camps, a Root-Folk outpost.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"okuwun-rahei","aspect_id":"present","text":"The confederacy at Aroxhu is the largest tribal polity of the east; the Agaceph at Yulca and the Spray-Folk at Seafalls are its neighbours; Skeith's outlaws harass the coast.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"padomaic-ocean","aspect_id":"climate","text":"Stormy in the monsoon with squalls and sea-mist; calm and bright in the dry months.","statement_tier_id":"EXTRAPOLATED"}
@@ -193,19 +193,19 @@
 {"region_id":"padomaic-ocean","aspect_id":"history","text":"In the Dawn Era the Ehlnofey war sank most of the Hist's domain into the Padomaic, 'leaving only a small corner left standing', later Black Marsh. Topal the Pilot charted it first. Uriel Septim V's fleet crossed it against Akavir in the 270s of the Third Era.","statement_tier_id":"CANON_EXPLICIT"}
 {"region_id":"padomaic-ocean","aspect_id":"landscape","text":"A shallow shelf that falls to deep water within a few miles of the shore; sandbanks and shoals off the Seafalls point and Skeith Isle.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"padomaic-ocean","aspect_id":"look","text":"Grey-green water with long swell, white surf on the shore, dark kelp beds and pale sandbanks, drowned timbers rising from the shelf.","statement_tier_id":"EXTRAPOLATED"}
-{"region_id":"padomaic-ocean","aspect_id":"overview","text":"The Padomaic is the vast ocean around most of Tamriel; here it is the eastern edge of Black Marsh, with Archon and Thornmarsh on its shore. The map's region covers only the shelf and open water off Thorn, Hatandros Bight and Skeith Isle.","statement_tier_id":"CANON_EXPLICIT"}
+{"region_id":"padomaic-ocean","aspect_id":"overview","text":"The Padomaic is the vast ocean around most of Tamriel; here it is the eastern edge of Black Marsh, with Archon and Thornmarsh on its shore. The region covers only the shelf and open water off Thorn, Hatandros Bight and Skeith Isle.","statement_tier_id":"CANON_EXPLICIT"}
 {"region_id":"padomaic-ocean","aspect_id":"people","text":"Sea people: pilots and fishers of Seafalls and Archon, pirate crews from Marque Landing, smuggler boats from Hollow Tide Camp, Dunmer traders from Tear.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"padomaic-ocean","aspect_id":"present","text":"Argonia has no navy. Chartered pirates do that work. Boats from Archon, Seafalls and Thorn work the shelf; the Archwardens' reach ends where the water gets deep. The wrecks of a Dunmer slaver, a smuggler's sloop, an Imperial man-of-war and a freighter lie here.","statement_tier_id":"EXTRAPOLATED"}
-{"region_id":"sea-of-mists","aspect_id":"climate","text":"Warm, humid, mist most mornings, storms in the wet season.","statement_tier_id":"EXTRAPOLATED"}
-{"region_id":"sea-of-mists","aspect_id":"dangers","text":"Sea-drakes, shoals, pirates, storms.","statement_tier_id":"EXTRAPOLATED"}
+{"region_id":"sea-of-mists","aspect_id":"climate","text":"The Sea of Mists is warm and humid with mist most mornings. Storms come in the wet season.","statement_tier_id":"EXTRAPOLATED"}
+{"region_id":"sea-of-mists","aspect_id":"dangers","text":"Sea-drakes, shoals, pirates and wet-season storms threaten every boat that leaves the shore.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"sea-of-mists","aspect_id":"ecology","text":"Sea-drakes, fat sleeper, longlure eelfin, spotted seatrout, seabirds.","statement_tier_id":"EXTRAPOLATED"}
-{"region_id":"sea-of-mists","aspect_id":"economy","text":"Fishing, salvage, coastal freight, smuggling.","statement_tier_id":"EXTRAPOLATED"}
-{"region_id":"sea-of-mists","aspect_id":"faith","text":"Sailors' rites for the drowned; Sithis tokens on boats.","statement_tier_id":"EXTRAPOLATED"}
-{"region_id":"sea-of-mists","aspect_id":"history","text":"Canon: pirates of the Southern Sea avoid attention and a large share of seafarers are Khajiit; legend says Murkmire once extended further south and was swallowed by the sea.","statement_tier_id":"CANON_EXPLICIT"}
-{"region_id":"sea-of-mists","aspect_id":"landscape","text":"A shelf sea about 35 m deep with sandbars and islets.","statement_tier_id":"EXTRAPOLATED"}
+{"region_id":"sea-of-mists","aspect_id":"economy","text":"The sea's coast lives on fishing, wreck salvage, coastal freight and smuggling in small boats.","statement_tier_id":"EXTRAPOLATED"}
+{"region_id":"sea-of-mists","aspect_id":"faith","text":"Sailors hold rites for the drowned, and Argonian boats carry a Sithis token on the stem.","statement_tier_id":"EXTRAPOLATED"}
+{"region_id":"sea-of-mists","aspect_id":"history","text":"Pirates of the Southern Sea avoid attention. Many of its seafarers are Khajiit. Legend says Murkmire once extended further south and was swallowed by the sea.","statement_tier_id":"CANON_EXPLICIT"}
+{"region_id":"sea-of-mists","aspect_id":"landscape","text":"The sea is a shelf about 35 m deep, scattered with sandbars and low islets.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"sea-of-mists","aspect_id":"look","text":"Grey-green water, mist banks, low islets and mangrove edges.","statement_tier_id":"EXTRAPOLATED"}
-{"region_id":"sea-of-mists","aspect_id":"overview","text":"The Sea of Mists is our name for the Southern Sea's water south of the cape; the map labels it Sea of Mists. There is no UESP page for the name; the Southern Sea page covers the body of water.","statement_tier_id":"EXTRAPOLATED"}
-{"region_id":"sea-of-mists","aspect_id":"people","text":"Argonian fishers, Khajiit coasters, a few Bosmer seafarers.","statement_tier_id":"EXTRAPOLATED"}
+{"region_id":"sea-of-mists","aspect_id":"overview","text":"The Sea of Mists is the part of the Southern Sea south of Cape Percar, a grey-green shelf sea off Black Marsh's south coast.","statement_tier_id":"EXTRAPOLATED"}
+{"region_id":"sea-of-mists","aspect_id":"people","text":"Argonian fishers, Khajiit coasters and a few Bosmer seafarers work the sea's boats and landings along the coast.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"sea-of-mists","aspect_id":"present","text":"Fishing boats and small coasters ply it, with salvagers at the wrecks and smugglers' landings.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"skeith-isle","aspect_id":"climate","text":"Windy, salt-laden and drier than the mainland, with sea-fog and squalls.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"skeith-isle","aspect_id":"dangers","text":"Outlaws, trapped coves, cliffs and nesting hackwings; the tides are fast.","statement_tier_id":"EXTRAPOLATED"}
@@ -215,21 +215,21 @@
 {"region_id":"skeith-isle","aspect_id":"history","text":"The Empire's coastal keep was built to watch the pirate trade of the Archon coast; after the secession of 4E 6 the garrison left and pirates took the island.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"skeith-isle","aspect_id":"landscape","text":"A single rise of dark rock with cliff edges to the west and north, shingle beaches to the south and east, a central crag.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"skeith-isle","aspect_id":"look","text":"Dark grey-green rock in sea-worn crags, thin grass, wind-bent scrub, grey shingle beaches, a keep on a rise and a spire called the Grey Tooth.","statement_tier_id":"EXTRAPOLATED"}
-{"region_id":"skeith-isle","aspect_id":"overview","text":"A rocky island east of the mainland, home to two outlaw camps, an old Imperial keep and a single crag. UESP has no page for Skeith Isle; canon's round island off Arnesia's coast has dark green-grey terrain, and this may be it.","statement_tier_id":"EXTRAPOLATED"}
+{"region_id":"skeith-isle","aspect_id":"overview","text":"A rocky island east of the mainland, home to two outlaw camps, an old Imperial keep and a single crag. Its dark green-grey terrain may be that of the round island off Arnesia's coast.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"skeith-isle","aspect_id":"people","text":"About forty outlaws of mixed origin: Argonian boat-crews, Dunmer from Tear, runaway Archein families, Khajiit dealers.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"skeith-isle","aspect_id":"present","text":"Two rival outlaw crews hold it: the half-chartered pirates at Marque Landing and the smugglers at Hollow Tide Camp. Mainland boats avoid it.","statement_tier_id":"EXTRAPOLATED"}
-{"region_id":"topal-bay","aspect_id":"climate","text":"Warm, with sea breezes and storm fronts.","statement_tier_id":"CANON_DERIVED"}
-{"region_id":"topal-bay","aspect_id":"dangers","text":"Pirates, storms and wrecks on the eastern coast.","statement_tier_id":"CANON_DERIVED"}
-{"region_id":"topal-bay","aspect_id":"ecology","text":"Sharks, crabs, mullet, eels and sea-birds.","statement_tier_id":"CANON_DERIVED"}
-{"region_id":"topal-bay","aspect_id":"economy","text":"Fishing, shipping, smuggling and salvage.","statement_tier_id":"CANON_DERIVED"}
-{"region_id":"topal-bay","aspect_id":"faith","text":"Sailors' charms and offerings to the Nine and Sithis.","statement_tier_id":"CANON_DERIVED"}
+{"region_id":"topal-bay","aspect_id":"climate","text":"The bay is warm. Sea breezes and storm fronts pass over the water.","statement_tier_id":"CANON_DERIVED"}
+{"region_id":"topal-bay","aspect_id":"dangers","text":"Pirates, storms and wrecks threaten ships on the eastern coast of the bay.","statement_tier_id":"CANON_DERIVED"}
+{"region_id":"topal-bay","aspect_id":"ecology","text":"Sharks, crabs, mullet, eels and sea-birds live in the bay's shallow waters.","statement_tier_id":"CANON_DERIVED"}
+{"region_id":"topal-bay","aspect_id":"economy","text":"The bay's people live by fishing, shipping, smuggling and salvage along its shores.","statement_tier_id":"CANON_DERIVED"}
+{"region_id":"topal-bay","aspect_id":"faith","text":"Sailors keep charms and make offerings to the Nine and to Sithis on the bay.","statement_tier_id":"CANON_DERIVED"}
 {"region_id":"topal-bay","aspect_id":"history","text":"The Imperial fleet policed it until 4E 48; Red Bramman's pirates used its mangrove river in the First Era.","statement_tier_id":"CANON_DERIVED"}
-{"region_id":"topal-bay","aspect_id":"landscape","text":"A shallow bay with mangrove shoreline and sand and mud.","statement_tier_id":"CANON_DERIVED"}
-{"region_id":"topal-bay","aspect_id":"look","text":"Grey-green water, mangrove coast and sandbars.","statement_tier_id":"CANON_DERIVED"}
+{"region_id":"topal-bay","aspect_id":"landscape","text":"A shallow bay with a mangrove shoreline over sand and mud flats.","statement_tier_id":"CANON_DERIVED"}
+{"region_id":"topal-bay","aspect_id":"look","text":"The bay shows grey-green water, a mangrove coast and sandbars along its shores.","statement_tier_id":"CANON_DERIVED"}
 {"region_id":"topal-bay","aspect_id":"overview","text":"The bay enclosed by Elsweyr, Black Marsh and Cyrodiil, with Soulrest on its eastern shore.","statement_tier_id":"CANON_DERIVED"}
 {"region_id":"topal-bay","aspect_id":"people","text":"Seafarers, many of them Khajiit, plus Argonian fishers and Bosmer pilots.","statement_tier_id":"CANON_DERIVED"}
 {"region_id":"topal-bay","aspect_id":"present","text":"Piracy continues on the eastern coast; the Archwardens have no navy and Soulrest's merchants hire their own boats.","statement_tier_id":"EXTRAPOLATED"}
-{"region_id":"tulmek-washes","aspect_id":"climate","text":"Hot, humid, still; annual flood.","statement_tier_id":"EXTRAPOLATED"}
+{"region_id":"tulmek-washes","aspect_id":"climate","text":"The washes are hot, humid and still; every year the rivers flood the whole lowland between the cape and the delta.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"tulmek-washes","aspect_id":"dangers","text":"Crocodilians, gar, flood, bandits and the Rose; the deep washes are dangerous.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"tulmek-washes","aspect_id":"ecology","text":"Reeds, mangroves, cypress, gar, crocodilians, herons; sea-drakes at the south shore.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"tulmek-washes","aspect_id":"economy","text":"Tolls at the confluence, fish, reeds, rice, chimes, smuggling.","statement_tier_id":"EXTRAPOLATED"}
@@ -237,7 +237,7 @@
 {"region_id":"tulmek-washes","aspect_id":"history","text":"Lilmothiit lands, then Kothringi towns, then the Imperial prison and city, then Red Bramman's kingdom; the 4E 48 catastrophe emptied Murkmire to the south-east.","statement_tier_id":"CANON_EXPLICIT"}
 {"region_id":"tulmek-washes","aspect_id":"landscape","text":"Dead-flat floodplain with tiny rises; channels shift in the flood season.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"tulmek-washes","aspect_id":"look","text":"Brown water, reed beds, stilt towns, boardwalks, drowned domes and mist.","statement_tier_id":"EXTRAPOLATED"}
-{"region_id":"tulmek-washes","aspect_id":"overview","text":"The washes are the wet country around Blackrose where three rivers converge; Bramman's river runs out to Topal Bay. There is no UESP page for Tulmek Washes (searched 2026-11-08).","statement_tier_id":"EXTRAPOLATED"}
+{"region_id":"tulmek-washes","aspect_id":"overview","text":"The washes are the wet country around Blackrose where three rivers converge; Bramman's river runs out to Topal Bay.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"tulmek-washes","aspect_id":"people","text":"Olive lake-folk, oxblood Chime-Keepers, rose delta farmers, umber carters, the Blackguards' heirs and Naga.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"tulmek-washes","aspect_id":"present","text":"Blackrose city holds the lake; the Rose is held by the Blackguards' heirs; oxblood towns, rose delta villages and umber road towns sit around them.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"ultherus-swamp","aspect_id":"climate","text":"Hot and heavy, with monsoon from late spring to summer and a persistent warm fog on the channels.","statement_tier_id":"EXTRAPOLATED"}
@@ -245,20 +245,20 @@
 {"region_id":"ultherus-swamp","aspect_id":"ecology","text":"Dragon's-tongue, cattails, reed, water-lilies; eels, crocodiles, marsh-lizards and swarms of flesh-flies.","statement_tier_id":"CANON_DERIVED"}
 {"region_id":"ultherus-swamp","aspect_id":"economy","text":"Dragon's-tongue and other swamp herbs, chimes, rope and boats from Korydon, fish and pelts traded north to Helstrom and south to Blackrose.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"ultherus-swamp","aspect_id":"faith","text":"Sithis and the Hist; Korydon adds Z'en and Dibella, kept at a chime-hung shrine.","statement_tier_id":"EXTRAPOLATED"}
-{"region_id":"ultherus-swamp","aspect_id":"history","text":"Canon records nothing. The Kothringi-named towns here, Korydon, Myroleon, Nemeon, are read as old Kothringi places that Argonians resettled after the Knahaten Flu of 2E 560.","statement_tier_id":"EXTRAPOLATED"}
+{"region_id":"ultherus-swamp","aspect_id":"history","text":"No record survives of this swamp. The Kothringi-named towns here, Korydon, Myroleon and Nemeon, are taken to be old Kothringi places that Argonians resettled after the Knahaten Flu of 2E 560.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"ultherus-swamp","aspect_id":"landscape","text":"Flat and low, cut by many channels, with ring-like firm ground such as the one under Korydon; the south opens into the larger waters toward Blackrose.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"ultherus-swamp","aspect_id":"look","text":"The swamp is a grey-green maze of cattails, reed and black water, with rings of dry ground and stilt towns hung with metal chimes.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"ultherus-swamp","aspect_id":"overview","text":"The Ultherus Swamp, also written Utherus, is a region of Black Marsh of which little is known; the beautiful but deadly dragon's-tongue plant is especially common there. In our map it lies south of Helstrom around Korydon.","statement_tier_id":"CANON_EXPLICIT"}
 {"region_id":"ultherus-swamp","aspect_id":"people","text":"The Chime-Keepers of Korydon, Nemeon and Myroleon, Tumnatu hunters and a few Root-Folk boatmen.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"ultherus-swamp","aspect_id":"present","text":"In 4E 201 the swamp is crossed by boat; Korydon's Chime-Keepers harvest the dragon's-tongue, Tumnatu hunters keep to the reeds, and a Root-Folk waystation sits at its south.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"valley-of-storms","aspect_id":"climate","text":"Humid and warm; monsoon floods close the causeways for days at a time.","statement_tier_id":"EXTRAPOLATED"}
-{"region_id":"valley-of-storms","aspect_id":"dangers","text":"D2 away from the roads: crocodiles, Naga bands and the haunted ruins; D1 on the northern road.","statement_tier_id":"EXTRAPOLATED"}
+{"region_id":"valley-of-storms","aspect_id":"dangers","text":"Risky away from the roads: crocodiles, Naga bands and the haunted ruins. The northern road is mostly safe.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"valley-of-storms","aspect_id":"ecology","text":"Crocodiles in the ravines, fleshflies, giant snakes and wamasu in the deeper water.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"valley-of-storms","aspect_id":"economy","text":"River and road trade with Morrowind and Alten Corimont, saltrice, crystals and reed.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"valley-of-storms","aspect_id":"faith","text":"The town-square Hist, the grave-stake tradition and Dunmer ancestor stones.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"valley-of-storms","aspect_id":"history","text":"Barsaebic Ayleids built Silyanorn here; the Dunmer made the area the foothold of their slave trade; the Pact made Stormhold its capital; Umbriel overran it in 4E 48 with light damage.","statement_tier_id":"CANON_EXPLICIT"}
 {"region_id":"valley-of-storms","aspect_id":"landscape","text":"Stormhold stands on a mountainside and ravine-cut mounds; the rest is rolling marsh plain rising to the Morrowind border.","statement_tier_id":"CANON_EXPLICIT"}
 {"region_id":"valley-of-storms","aspect_id":"look","text":"Stone-footed farmsteads and mounds linked by stone causeways, the river and its branches, and the grey Imperial forts.","statement_tier_id":"EXTRAPOLATED"}
-{"region_id":"valley-of-storms","aspect_id":"overview","text":"UESP has no page for this region name (searched 2026-11-08); it is a Project Tamriel region. It holds Stormhold, the northern gate, with its customs, its forts and its farms.","statement_tier_id":"EXTRAPOLATED"}
+{"region_id":"valley-of-storms","aspect_id":"overview","text":"The valley of storms holds Stormhold, the northern gate, with its customs, its forts and its farms.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"valley-of-storms","aspect_id":"people","text":"Argonians and the oldest Dunmer minority in the province, with Veesa-Teeleel reed-wardens to the west.","statement_tier_id":"EXTRAPOLATED"}
 {"region_id":"valley-of-storms","aspect_id":"present","text":"A frontier of causeway farms, Archwarden forts and a Vicecanon-run city, still the province's working border with Morrowind.","statement_tier_id":"EXTRAPOLATED"}

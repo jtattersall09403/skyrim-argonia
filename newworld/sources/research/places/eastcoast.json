@@ -17,7 +17,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Arorha is the north-eastern outlier of the Aroxhu clay-mound country, a village on the first raised ground south of Hatandros Bight where the road from Inoja meets the sea. It exists to move the confederacy's clay, dye and pottery onto coastal boats. UESP has no page for it.",
+     "text": "Arorha is the north-eastern outlier of the Aroxhu clay-mound country, a village on the first raised ground south of Hatandros Bight where the road from Inoja meets the sea. It exists to move the confederacy's clay, dye and pottery onto coastal boats.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -244,7 +244,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A ruined Velothi hold on the rock off the Thorn coast, the nearest of the Hatandros Bight ruins to the city. It has no UESP page; its name is the map's, and its Velothi character follows from the Cantemiric Velothi's canon range between Archon, Arnesia and Thorn.",
+     "text": "A ruined Velothi hold on the rock off the Thorn coast, the nearest of the Hatandros Bight ruins to the city.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -484,7 +484,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A ruined Velothi coastal hold on the headland at the bight's seaward edge. UESP has no page for Kornakim; the map names it and the Cantemiric Velothi are canon for this coast.",
+     "text": "A ruined Velothi coastal hold on the headland at the bight's seaward edge, one of the Cantemiric Velothi holds of this coast.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -512,7 +512,7 @@
     },
     {
      "aspect": "history",
-     "text": "Cantemiric Velothi built along the eastern seaboard between Archon and Thorn and died in the Knahaten Flu (2E 560). Kornakim's position on a seaward point suggests a watch-hold over the sea lanes, which is our reading, not canon.",
+     "text": "Cantemiric Velothi built along the eastern seaboard between Archon and Thorn and died in the Knahaten Flu (2E 560). Kornakim's position on a seaward point suggests a watch-hold over the sea lanes, though no record says so.",
      "tier": "CANON_DERIVED",
      "sources": [
       {
@@ -679,7 +679,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A small rock-salt mine in the rise between Thorn and the bight, worked by Thorn's field-owners' hired hands. We named it in the Warden Marches' plain Imperial style; it has no UESP page.",
+     "text": "A small rock-salt mine in the rise between Thorn and the bight, worked by Thorn's field-owners' hired hands. We named it in the Warden Marches' plain Imperial style.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -912,7 +912,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A small garrison post where the Thorn road crosses the neck of land at the bight's northern end. We named it in the Marches' naming habit; no UESP page exists.",
+     "text": "A small garrison post where the Thorn road crosses the neck of land at the bight's northern end. We named it in the Marches' naming habit.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -1139,7 +1139,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A sunken saltrice freighter on the seabed of the bight, a short swim from the shore near Ysan. The ship and its name are AGENT_INVENTED; no UESP page exists for a wreck here.",
+     "text": "The Pale Harvest, a sunken saltrice freighter, lies on the seabed of Hatandros Bight, a short swim from the shore near Ysan.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -1307,7 +1307,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A permanent camp of Sarpa, one of the winged interior breeds, on high ground behind the bight. The name is ours; canon gives the Sarpa no camps here. No UESP page.",
+     "text": "A permanent camp of Sarpa, one of the winged interior breeds, on high ground behind the bight. The Sarpa are not otherwise known to keep camps on this coast.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -1334,7 +1334,7 @@
     },
     {
      "aspect": "history",
-     "text": "Sarpa are canon as exclusive to Middle Argonia; a camp on the eastern edge is an extension of their range, sited here because the Virtluush ruin offers high stone to roost on.",
+     "text": "The Sarpa live only in Middle Argonia, so a camp on the eastern edge is an extension of their range. It lies by the Virtluush ruin, which offers high stone to roost on.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1534,7 +1534,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A bigger Velothi ruin on a river bend behind the bight, with a Sarpa camp at its flank. It has no UESP page; the Velothi are canon for this seaboard.",
+     "text": "A bigger Velothi ruin on a river bend behind the bight, with a Sarpa camp at its flank. It is one of the Cantemiric Velothi settlements of this seaboard.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1607,7 +1607,7 @@
     },
     {
      "aspect": "people",
-     "text": "No living folk inside. Velothi ancestor ghosts in the lower halls and a lich-like household warden are an AGENT_INVENTED guard.",
+     "text": "No living folk inside. Velothi ancestor ghosts haunt the lower halls, and a lich-like household warden still keeps guard over them.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -1769,7 +1769,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A hamlet at the bight's northern shore where the Tsonac-Kaleel's stone and timber reach the sea. It has no UESP page; its culture is Tsonac's by the map.",
+     "text": "A hamlet at the bight's northern shore where the stone and timber of the Tsonac-Kaleel reach the sea. Its culture is that of Tsonac.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1956,7 +1956,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A hamlet of Helstrom's people, set on the open coast far from any Hist tree. It has no UESP page; the Root-Folk's hunting and egg-tending stations spread through the inner swamp, and this is their sea outlier.",
+     "text": "A hamlet of Helstrom's people, set on the open coast far from any Hist tree. The Root-Folk's hunting and egg-tending stations spread through the inner swamp. This is their outlier on the sea.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2143,7 +2143,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "The Silt Bride lies on her side on the shelf off Thorn, a short swim from shore. She was a Dres-chartered slaver of the Arnesian trade. The ship and its name are AGENT_INVENTED; there is no UESP page for it.",
+     "text": "The Silt Bride lies on her side on the shelf off Thorn, a short swim from shore. She was a Dres-chartered slaver of the Arnesian trade.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -2379,7 +2379,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "The Brindle Gull was a fast sloop on the Skeith Isle run to the Arorha shore. She rests upright in shallow green water on the Kornakim shoals. The ship and its name are AGENT_INVENTED; there is no UESP page for it.",
+     "text": "The Brindle Gull was a fast sloop on the Skeith Isle run to the Arorha shore. She rests upright in shallow green water on the Kornakim shoals.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -2615,7 +2615,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "The Resolute Crest sailed in Uriel Septim V's Far East Fleet and went down on the return from Akavir in the 3E 270s. She rests upright on the deep shelf east of Skeith Isle. The ship and its name are AGENT_INVENTED; there is no UESP page for it.",
+     "text": "The Resolute Crest sailed in Uriel Septim V's Far East Fleet and went down on the return from Akavir in the 3E 270s. She rests upright on the deep shelf east of Skeith Isle.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -2851,7 +2851,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A smuggler camp in the lee of Skeith Isle's low south-western bluffs. The name is ours; the map labels it only [Smuggler Camp]. No UESP page.",
+     "text": "Hollow Tide Camp is a smugglers' camp in the lee of Skeith Isle's low south-western bluffs, hidden from the sea lanes between Thorn and Archon.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -3038,7 +3038,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A stilt-and-hulk pirate camp in the shallows on Skeith Isle's western shore, serving Rainbreaker Keep. The name is ours; the map labels it [Pirate Camp]. No UESP page exists.",
+     "text": "Marque Landing is a stilt-and-hulk pirate camp in the shallows on Skeith Isle's western shore, serving Rainbreaker Keep above it.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -3266,7 +3266,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A bare grey-green peak of dark, sea-worn rock at the island's centre, named by us for its look. It is not on UESP's list; the Arnesian island's dark green-grey terrain is canon.",
+     "text": "A bare grey-green peak of dark, sea-worn rock at the island's centre, called the Grey Tooth for its look. Its dark green-grey stone fits the terrain of the Arnesian island.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3457,7 +3457,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A stone keep on a rise by the shore of Skeith Isle, built by the Empire and now held by pirates. The name is the map's; there is no UESP page and its Imperial origin is read from its symbol and name.",
+     "text": "A stone keep on a rise by the shore of Skeith Isle, built by the Empire and now held by pirates.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -3690,7 +3690,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A beached ship on the south-west shore of Skeith Isle, partly above the tide line. The ship and her name are AGENT_INVENTED; no UESP page.",
+     "text": "The Stormwidow lies beached on the south-west shore of Skeith Isle, partly above the tide line, where both island camps can reach her.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -3827,7 +3827,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "The seat of the Oxhu-Teeleel confederacy, a mound-town of red clay with a Hist at its centre, 40-odd people at the map's small-city tier. UESP has no page for Aroxhu; the people, the confederacy and the council are ours, built on canon's many unnamed tribes.",
+     "text": "The seat of the Oxhu-Teeleel confederacy, a mound-town of red clay with a Hist at its centre, 40-odd people at the size of a small city. The people, the confederacy and the council grow from the many tribes of the interior that have no recorded names.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -3946,7 +3946,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "The town is safe; the elders keep a quiet watch of spear-bearers. The road to Inoja is a D1, but Sarpa and Paatru bands raid the outlying mounds.",
+     "text": "The town is safe; the elders keep a quiet watch of spear-bearers. The road to Inoja is mostly safe, but Sarpa and Paatru bands raid the outlying mounds.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3999,7 +3999,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A town of about twenty on the river fork where roads from Aroxhu, Arorha and the southern villages meet. It is where outsiders deal with the confederacy. No UESP page for Inoja exists.",
+     "text": "A town of about twenty on the river fork where roads from Aroxhu, Arorha and the southern villages meet. It is where outsiders deal with the confederacy.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -4186,7 +4186,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A village beside a river bend in the northern mounds, known for its pits. No UESP page for Joxhi.",
+     "text": "A village beside a river bend in the northern mounds, known for its pits.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -4373,7 +4373,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A village on the lake edge on the western side of the mound country, the border village with the Agaceph. No UESP page for Gaweja.",
+     "text": "A village on the lake edge on the western side of the mound country, the border village with the Agaceph.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -4605,7 +4605,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A village between the inlet and the road to Seafalls, with a view of Skeith Isle on clear days. No UESP page for Renhu.",
+     "text": "A village between the inlet and the road to Seafalls, with a view of Skeith Isle on clear days.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -4792,7 +4792,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A cape village south of Seafalls, the confederacy's southern coastal outlier. No UESP page for Khiar.",
+     "text": "A cape village south of Seafalls, the confederacy's southern coastal outlier.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -4979,7 +4979,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A watchpost of the Oxhu-Teeleel on a mound above the Renhu-Seafalls road. The name is ours; no UESP page exists.",
+     "text": "A watchpost of the Oxhu-Teeleel on a mound above the Renhu-Seafalls road.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -5166,7 +5166,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A mine on the road between Renhu and Seafalls whose Imperial-sounding name marks an East Empire Company working. UESP has no page for Vicrium.",
+     "text": "A mine on the road between Renhu and Seafalls whose Imperial-sounding name marks an East Empire Company working.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -5358,7 +5358,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A coastal village at the falls where a river reaches the Padomaic, the reason cargo changes boats here. Canon names Seafalls as Archon's neighbour to the north-north-east and the settlement register calls it a falls-and-portage settlement; UESP has no page of its own.",
+     "text": "A coastal village at the falls where a river reaches the Padomaic, the reason cargo changes boats here. It lies north-north-east of Archon and is a falls-and-portage settlement.",
      "tier": "CANON_DERIVED",
      "sources": [
       {
@@ -5608,7 +5608,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A tall beacon house on the point south-east of the falls, guarding ships from the shoals. The tower and its keepers are ours; there is no UESP page.",
+     "text": "A tall beacon house on the point south-east of the falls, guarding ships from the shoals. The tower and its keepers are ours.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -5795,7 +5795,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A farm on the salt flats inland of Seafalls. The name is ours; no UESP page.",
+     "text": "A farm on the salt flats inland of Seafalls.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -5834,7 +5834,7 @@
     },
     {
      "aspect": "present",
-     "text": "A working holding that sells salt and sedge to Seafalls.",
+     "text": "A working holding on the salt flats that sells its salt and sedge to Seafalls.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5851,7 +5851,7 @@
     },
     {
      "aspect": "people",
-     "text": "Three Argonians, a mother and two grown children.",
+     "text": "Three Argonians of Seafalls live here, a mother and her two grown children.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5977,7 +5977,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A guar farm on the meadow between Seafalls and the Khiar road. The name is ours; no UESP page.",
+     "text": "A guar farm on the meadow between Seafalls and the Khiar road.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -6033,7 +6033,7 @@
     },
     {
      "aspect": "people",
-     "text": "Four Argonians, two adults and two hatchlings.",
+     "text": "Four Argonians of Seafalls keep the meadow: two adults and two hatchlings.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6159,7 +6159,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A solitary house above the shore between the farms and the sea. The name is ours; no UESP page.",
+     "text": "A solitary house above the shore between the farms and the sea.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -6181,7 +6181,7 @@
     },
     {
      "aspect": "history",
-     "text": "Built by a net-mender who preferred quiet to the village.",
+     "text": "A net-mender of Seafalls built the house here because she preferred the quiet of the shore to the village.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -6215,7 +6215,7 @@
     },
     {
      "aspect": "people",
-     "text": "Two Argonians, an old net-mender and her niece.",
+     "text": "Two Argonians live at Tidewatch, an old net-mender and her niece, who watch the surf together.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6232,7 +6232,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Nets, rope and cord of coast-grass, sold at Seafalls.",
+     "text": "The household twists nets, rope and cord from coast-grass and sells them at Seafalls.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6249,7 +6249,7 @@
     },
     {
      "aspect": "faith",
-     "text": "They hang votive cords on the fence, one for every wreck.",
+     "text": "They hang votive cords on the fence, one for every wreck on the coast, in the way of the Spray-Folk.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6341,7 +6341,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "An Agaceph hamlet on a lake in Okuwun-Rahei's west. No UESP page for Icalca; the Agaceph are canon in Middle Argonia.",
+     "text": "An Agaceph hamlet on a lake in the west of Okuwun-Rahei. The Agaceph are a people of Middle Argonia.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -6368,7 +6368,7 @@
     },
     {
      "aspect": "history",
-     "text": "In canon the Agaceph looted the dead Maran monastery at Umpholo for its books. Their hamlets hold such books. Icalca keeps a shelf of them.",
+     "text": "The Agaceph looted the dead Maran monastery at Umpholo for its books, and their hamlets hold such books. Icalca keeps a shelf of them.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6573,7 +6573,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A raft-and-stilt hamlet in the marsh between Gaweja and Renhu. No UESP page.",
+     "text": "A raft-and-stilt hamlet in the marsh between Gaweja and Renhu.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -6760,7 +6760,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A hamlet at the river bank where a Cantemiric Velothi ruin stands, on the map's own pairing of a hamlet and a ruin in one cell. No UESP page for Yina.",
+     "text": "A hamlet at the river bank where a Cantemiric Velothi ruin stands, the two sharing the same stretch of country.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -6992,7 +6992,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A raft-town on a wide lake in the west, the only Agaceph place of any size. No UESP page for Yulca; the Agaceph are canon in Middle Argonia, exclusive to it.",
+     "text": "A raft-town on a wide lake in the west, the only Agaceph place of any size. The Agaceph belong to Middle Argonia and live nowhere else.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -7024,7 +7024,7 @@
     },
     {
      "aspect": "history",
-     "text": "The Agaceph gathered here after the Maran missions died in the Third Era. In canon they looted the Maran monastery at Umpholo for its library. Yulca keeps the most books of any place in the east.",
+     "text": "The Agaceph gathered here after the Maran missions died in the Third Era. They looted the Maran monastery at Umpholo for its library, and Yulca keeps the most books of any place in the east.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7229,7 +7229,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "An unlabelled forest-green triangle on the map: a Root-Folk station on the edge of Okuwun-Rahei. We named it in Argonian style; no UESP page.",
+     "text": "Tazhul is a Root-Folk station on the edge of Okuwun-Rahei, a small outpost of Helstrom's people.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -7411,7 +7411,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A permanent Sarpa camp on a high mud-bank west of Aroxhu. The name is ours; no UESP page.",
+     "text": "A permanent Sarpa camp on a high mud-bank west of Aroxhu.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -7438,7 +7438,7 @@
     },
     {
      "aspect": "history",
-     "text": "The Sarpa are canon as winged and hostile to outsiders, exclusive to Middle Argonia; a camp on the edge of Oxhu country is consistent with the confederacy's frequent skirmishes with them.",
+     "text": "The Sarpa are winged and hostile to outsiders and live only in Middle Argonia; a camp on the edge of Oxhu country is consistent with the confederacy's frequent skirmishes with them.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7482,7 +7482,7 @@
     },
     {
      "aspect": "people",
-     "text": "About eight Sarpa led by a wing-chief with a scarred crest.",
+     "text": "About eight Sarpa live on the roost, led by a wing-chief with a scarred crest.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7570,7 +7570,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Air-borne archers and sudden raids; they attack at dusk.",
+     "text": "The Sarpa strike from the air with bows and in sudden raids. They attack at dusk.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7638,7 +7638,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Anvadas sits on a mud-ridge in the marsh south of Gaweja, with a leaning tower and a flooded courtyard. It is unnamed on the map; we named it in Velothi style. UESP has no page for it, and the Velothi are canon for this coast.",
+     "text": "Anvadas sits on a mud-ridge in the marsh south of Gaweja, with a leaning tower and a flooded courtyard. Its name is in Velothi style.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7875,7 +7875,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Sethiral is a black stone keep with a broken tower and reed rafts moored under its wall. Yina's Agaceph read in the upper halls and the lower halls are shut. It is unnamed on the map; we named it in Velothi style. UESP has no page for it, and the Velothi are canon for this coast.",
+     "text": "Sethiral is a black stone keep with a broken tower and reed rafts moored under its wall. Yina's Agaceph read in the upper halls and the lower halls are shut. Its name is in Velothi style.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8112,7 +8112,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Mazurath crowns a sea-cliff above the surf, with a broken sea-tower that glows faintly after dark. It is unnamed on the map; we named it in Velothi style. UESP has no page for it, and the Velothi are canon for this coast.",
+     "text": "Mazurath crowns a sea-cliff above the surf, with a broken sea-tower that glows faintly after dark. Its name is in Velothi style.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {

@@ -17,7 +17,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Murkwood is the legendary dark forest that ever moves, on a river deep in the swamps of Black Marsh and home to many medusas. Canon has the Conclave of Baal at Stormhold find where it stands by reading the Elder Scrolls with an ancient tablet; our map shows where it stands in 4E 201, around Helstrom.",
+     "text": "Murkwood is the legendary dark forest that ever moves, on a river deep in the swamps of Black Marsh and home to many medusas. The Conclave of Baal at Stormhold finds where it stands by reading the Elder Scrolls with an ancient tablet; in 4E 201 it stands around Helstrom.",
      "tier": "CANON_EXPLICIT",
      "sources": [
       {
@@ -230,7 +230,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Lake Ulaish is the large lake south-east of Helstrom where the river arms of the interior spread out and slow before moving on. UESP has no page for it; the name is Project Tamriel's.",
+     "text": "Lake Ulaish is the large lake south-east of Helstrom where the river arms of the interior spread out and slow before moving on.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -501,7 +501,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Aunike Ridge is a ridge of firm ground west and south-west of Helstrom, with two marked peaks and two Chime-Keeper hamlets. UESP has no page for it; the name is Project Tamriel's.",
+     "text": "Aunike Ridge is a ridge of firm ground west and south-west of Helstrom, with two peaks and two Chime-Keeper hamlets.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -701,7 +701,7 @@
   },
   {
    "id": "ultherus-swamp",
-   "summary": "The Ultherus Swamp is the great wetland south of Helstrom, in which the Kothringi-named town of Korydon lies. Canon says little of it except that the lovely and deadly dragon's-tongue is especially common there.",
+   "summary": "The Ultherus Swamp is the great wetland south of Helstrom, in which the Kothringi-named town of Korydon lies. Little is told of it, except that the lovely and deadly dragon's-tongue grows thickest there.",
    "landform": "A low wet maze of channels, hummocks and cattail beds, with rings of firmer ground.",
    "elevation_floor_m": 5.0,
    "elevation_summit_m": 14.0,
@@ -729,7 +729,7 @@
     },
     {
      "aspect": "history",
-     "text": "Canon records nothing. The Kothringi-named towns here, Korydon, Myroleon, Nemeon, are read as old Kothringi places that Argonians resettled after the Knahaten Flu of 2E 560.",
+     "text": "No record survives of this swamp. The Kothringi-named towns here, Korydon, Myroleon and Nemeon, are taken to be old Kothringi places that Argonians resettled after the Knahaten Flu of 2E 560.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {

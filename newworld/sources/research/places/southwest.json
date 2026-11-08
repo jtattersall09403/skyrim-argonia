@@ -67,7 +67,7 @@
     },
     {
      "aspect": "present",
-     "text": "A merchant council, the ex-Imperial civil apparatus with no sovereign, the mangrove-river interests and the interior mine-burning tribes contest the city, the unexplained 'struggle for regional hegemony' of canon. The government quarter is half empty and repurposed. The city has no Hist, so its Argonians hatch, name and bury inland in Banujha country.",
+     "text": "A merchant council, the ex-Imperial civil apparatus with no sovereign, the mangrove-river interests and the interior mine-burning tribes contest the city, in the unexplained 'struggle for regional hegemony'. The government quarter is half empty and repurposed. The city has no Hist, so its Argonians hatch, name and bury inland in Banujha country.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -131,7 +131,7 @@
     },
     {
      "aspect": "faith",
-     "text": "Sithis and the Hist through the interior tribes' trees; Imperial-descended families keep the Nine in small shrines; Khajiit sailors keep the moons. A Brotherhood of Seth presence is canon and stays hidden.",
+     "text": "Sithis and the Hist through the interior tribes' trees; Imperial-descended families keep the Nine in small shrines; Khajiit sailors keep the moons. A Brotherhood of Seth presence is known and stays hidden.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -486,7 +486,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "The canon Imperial prison, 'the Rose', a day's march from Blackrose city. It is a ruin reoccupied by the Blackguards' heirs.",
+     "text": "The Imperial prison, 'the Rose', a day's march from Blackrose city. It is a ruin reoccupied by the Blackguards' heirs.",
      "tier": "CANON_EXPLICIT",
      "sources": [
       {
@@ -1002,7 +1002,7 @@
     },
     {
      "aspect": "faith",
-     "text": "Local Sithis shrines; its dead go to the Banujha tree.",
+     "text": "Mir-Xal keeps small Sithis shrines along its main street. Its dead are carried out to the Banujha tree and are not buried in the washes.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1161,7 +1161,7 @@
     },
     {
      "aspect": "people",
-     "text": "Argonian fisher families, a few ex-prisoners' descendants.",
+     "text": "Lujei's families are Argonian fishers on the west bank of the channel, among them a few descended from the old Imperial prison's inmates.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1177,7 +1177,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Fish, eels, reeds, the ferry fare and pole-boat hire.",
+     "text": "Lujei lives on fish, eels and cut reeds from the channel shallows, and on the ferry fare and the hire of its pole-boats.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1358,7 +1358,7 @@
     },
     {
      "aspect": "people",
-     "text": "Argonian ferry families.",
+     "text": "The landing is kept by Argonian ferry families who live beside the raft, in huts on the Lujei shore of the channel.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1374,7 +1374,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Fares per head and per cart, with a charge for livestock.",
+     "text": "The crew charges a fare per head and per cart across the Blackrose channel, with an extra charge for each beast of livestock.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1540,7 +1540,7 @@
     },
     {
      "aspect": "people",
-     "text": "Argonian shellfish-gatherers and salvagers.",
+     "text": "Natai's villagers are Argonian shellfish-gatherers who also strip the wreck off their shore for anything the sea gives up.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1556,7 +1556,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Shellfish, salt, wreck salvage and sea fish.",
+     "text": "Natai lives on shellfish, sea fish, salt from its pans and cargo salvaged from the wreck beyond its shore.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1747,7 +1747,7 @@
     },
     {
      "aspect": "people",
-     "text": "Argonian fishers and boat-builders.",
+     "text": "Ka-Asei's households are Argonian fishers who also build boats, on stilts over the channel southeast of the island core.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1763,7 +1763,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Fish traps, boat hulls and the channel toll.",
+     "text": "Ka-Asei sets fish traps in the channel, builds boat hulls for the lake and delta, and pays and collects a toll on passing boats.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1954,7 +1954,7 @@
     },
     {
      "aspect": "people",
-     "text": "Argonian fishers, a few delta-born families.",
+     "text": "Amalaja's households are Argonian fishers on the headland, with a few families born in the delta who came to marry or trade.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1970,7 +1970,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Fish, rice swapped from the delta, small boats.",
+     "text": "Amalaja sells fish and swaps it for the delta's rice. It keeps small boats for the short runs to Lilmoth's coast.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2161,7 +2161,7 @@
     },
     {
      "aspect": "people",
-     "text": "Argonian farmers and their households.",
+     "text": "Tei-Kur's people are Argonian rice farmers who live with their households among the paddies east of Blackrose.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2177,7 +2177,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Rice and reed, fish traps, ferry connection to Delta Ferry.",
+     "text": "Tei-Kur grows rice and cuts reed, sets fish traps in the channels, and sends its rice on to Delta Ferry by the ferry connection.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2232,7 +2232,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Marsh predators and delta bandits at night.",
+     "text": "Marsh predators haunt the paddy edges and the channels. Bandits from the delta come by water at night.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2332,7 +2332,7 @@
     },
     {
      "aspect": "present",
-     "text": "Licensed by Lilmoth's merchant council.",
+     "text": "The ferry runs under a licence from Lilmoth's merchant council, which sets its fares and its right to land at either bank.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2348,7 +2348,7 @@
     },
     {
      "aspect": "people",
-     "text": "Argonian ferrymen and their families.",
+     "text": "The landing is worked by Argonian ferrymen, who live with their families in huts beside the raft on the delta bank.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2364,7 +2364,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Fares and rice-freight.",
+     "text": "The raft earns fares from travellers on the Lilmoth road and carries rice in freight across the delta channel.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2381,7 +2381,7 @@
     },
     {
      "aspect": "faith",
-     "text": "A Sithis-token on the landing post.",
+     "text": "A small Sithis-token hangs on the landing post, put there by the ferrymen for a safe crossing.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -2392,7 +2392,7 @@
     },
     {
      "aspect": "look",
-     "text": "A plank landing, a winch raft and a lamp post.",
+     "text": "A plank landing runs out to a winch raft, and a lamp post at the end guides the crossing after dark.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2409,7 +2409,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Crocodilians in the channel, outlaws on the road.",
+     "text": "Crocodilians lie in the delta channel beside the raft. Outlaws watch the road on either approach to the landing.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2488,7 +2488,7 @@
     },
     {
      "aspect": "history",
-     "text": "Cleared from marsh after 4E 48.",
+     "text": "The land was cleared from marsh after the 4E 48 catastrophe. The family has farmed the channel bank since.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2504,7 +2504,7 @@
     },
     {
      "aspect": "present",
-     "text": "Run by one family.",
+     "text": "One Argonian family runs the whole farm, working the paddies and selling the harvest at Tei-Kur and Delta Ferry.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2520,7 +2520,7 @@
     },
     {
      "aspect": "people",
-     "text": "An Argonian farming family.",
+     "text": "The household is a single Argonian farming family, with hatchlings and elders living under one stilted roof.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2536,7 +2536,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Rice, reeds and fish.",
+     "text": "The farm grows rice in its paddies, cuts reeds along the channel bank and takes fish for its own table and the market.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2568,7 +2568,7 @@
     },
     {
      "aspect": "look",
-     "text": "A stilted house, paddies, a rice shed.",
+     "text": "A stilted house stands above the paddies on the channel bank, with a rice shed beside it for the harvest.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2585,7 +2585,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Marsh predators.",
+     "text": "Marsh predators come up the channel bank to the paddies and the boat landing, so the family keeps watch at night.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2602,7 +2602,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A failing paddy, missing boat.",
+     "text": "One paddy is failing for no clear reason. The family's boat has gone missing from the landing.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2643,7 +2643,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A village on the south coast, below Mir-Xal.",
+     "text": "Salaxul is a village on the south coast of the cape, below Mir-Xal, where the road from the interior reaches the sea.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2665,7 +2665,7 @@
     },
     {
      "aspect": "history",
-     "text": "A Third Era timber landing that outlived the mines.",
+     "text": "Salaxul began as a Third Era timber landing and kept its trade as a coastal boat stop after the mines burned.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2702,7 +2702,7 @@
     },
     {
      "aspect": "people",
-     "text": "Argonian boatmen, a few Khajiit coasters.",
+     "text": "Salaxul's villagers are Argonian boatmen, joined by a few Khajiit coasters who put in at the jetty.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2724,7 +2724,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Landing fees, salt, shellfish, coastal freight.",
+     "text": "Salaxul earns landing fees from the boats that put in, and sells salt, shellfish and coastal freight.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2741,7 +2741,7 @@
     },
     {
      "aspect": "faith",
-     "text": "A tide-line Sithis shrine; hatchlings go inland.",
+     "text": "A Sithis shrine stands at the tide line. Hatchlings are sent inland from Salaxul to be hatched.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2757,7 +2757,7 @@
     },
     {
      "aspect": "look",
-     "text": "A wooden jetty, drying racks, low stilt houses, a salt pan.",
+     "text": "A wooden jetty runs out from the shore, with drying racks above the beach, low stilt houses and a salt pan behind them.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2774,7 +2774,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Sea-drakes, pirates on the Sea of Mists, flooded creeks.",
+     "text": "Sea-drakes patrol the shallows, pirates work the Sea of Mists offshore, and the creeks behind the village flood without warning.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2797,7 +2797,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A smuggler boat at night; a lost salt shipment.",
+     "text": "A smuggler's boat lands by night on the Salaxul beach. A shipment of salt has gone missing on its way to the jetty.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3126,7 +3126,7 @@
     },
     {
      "aspect": "economy",
-     "text": "A source of salvage stone and metal for Toklea.",
+     "text": "Toklea's people strip Bucalos for salvage, hauling its stone and metal across to build and mend their own town.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3176,7 +3176,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Wild predators; scavengers from Toklea's rivals.",
+     "text": "Wild predators roam the empty stilts. Scavengers from Toklea's rival towns raid the footings for stone and metal.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3382,7 +3382,7 @@
     },
     {
      "aspect": "look",
-     "text": "A ring of tiered halls on water, broken, covered in lichen.",
+     "text": "Tarak Shan is a ring of tiered halls standing on the water, broken by the old assault and covered in lichen.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4088,7 +4088,7 @@
     },
     {
      "aspect": "present",
-     "text": "Empty; outlaws and scavengers use it.",
+     "text": "The waystation stands empty. Outlaws and scavengers shelter in it with no garrison to move them on.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4105,7 +4105,7 @@
     },
     {
      "aspect": "people",
-     "text": "Passing outlaws.",
+     "text": "Only passing outlaws use Mudmoth, sleeping in the cellars for a night or two and moving on.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4122,7 +4122,7 @@
     },
     {
      "aspect": "economy",
-     "text": "A source of salvage; once a toll station.",
+     "text": "Mudmoth once collected tolls as a road station. Now scavengers pull salvage from its tumbled stone.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4139,7 +4139,7 @@
     },
     {
      "aspect": "faith",
-     "text": "None surviving.",
+     "text": "No shrine or worship survives at Mudmoth; the Imperial crest is all that is left of the ruin's old observance.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4173,7 +4173,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Outlaws, marsh predators and flooded cellars.",
+     "text": "Outlaws sleep in the cellars, marsh predators come in from the washes, and the lower cellars stand flooded.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4190,7 +4190,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A hidden Imperial strongbox; a smugglers' meeting.",
+     "text": "An Imperial strongbox may lie hidden in the ruin. Smugglers sometimes use its yard for a meeting.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -4226,7 +4226,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A Lilmothiit ruin: a cluster of turf domes near the south.",
+     "text": "Kit Mounds is a Lilmothiit ruin, a cluster of turf domes standing near the south of the washes.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4612,7 +4612,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A Lilmothiit ruin: a flooded den in the west washes.",
+     "text": "Tailhollow is a Lilmothiit ruin, a flooded fox-folk den lying in the west washes.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4805,7 +4805,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A wreck off the south shore.",
+     "text": "The Salt Heron is a merchant wreck lying off the south shore of the washes, a short boat ride from Natai.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -4822,7 +4822,7 @@
     },
     {
      "aspect": "history",
-     "text": "Wrecked on the shoals in a storm some years back.",
+     "text": "The Salt Heron ran onto the shoals off Natai in a storm some years back and broke up where she struck.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -4833,7 +4833,7 @@
     },
     {
      "aspect": "present",
-     "text": "Natai salvagers dive it by turns.",
+     "text": "Natai's salvagers dive the Salt Heron by turns, each taking a share of what they bring up.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4850,7 +4850,7 @@
     },
     {
      "aspect": "people",
-     "text": "No residents.",
+     "text": "The wreck has no residents. The Natai salvagers who dive it are its only visitors.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4867,7 +4867,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Cargo of salt, cloth and lamps.",
+     "text": "The Salt Heron carried a cargo of salt, cloth and lamps; Natai's divers still bring pieces of it up.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -4878,7 +4878,7 @@
     },
     {
      "aspect": "faith",
-     "text": "Natai holds a drowned-sailor rite for the wreck's lost.",
+     "text": "Natai holds a drowned-sailor rite each season for the Salt Heron's lost, with offerings cast into the water above her.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -4906,7 +4906,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Sea-drakes, drowning and sharp timbers.",
+     "text": "Sea-drakes hunt the shallows over the wreck, divers can drown in the hull, and broken timbers are sharp.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4990,7 +4990,7 @@
     },
     {
      "aspect": "history",
-     "text": "A road stage of the Third Era timber trade; canon names it Soulrest's eastern neighbour.",
+     "text": "A road stage of the Third Era timber trade, Soulrest's eastern neighbour.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5006,7 +5006,7 @@
     },
     {
      "aspect": "present",
-     "text": "Under Soulrest's merchant council and its toll.",
+     "text": "Chasepoint answers to Soulrest's merchant council, which takes a toll on the carts and goods that pass the village.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5043,7 +5043,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Carting, salvage, inns for travellers, tolls.",
+     "text": "Chasepoint lives by carting on the Percar road, salvage from wrecks, inns for travellers and the tolls that it collects.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5192,7 +5192,7 @@
     },
     {
      "aspect": "history",
-     "text": "Settled as a shore landing for the Soulrest port.",
+     "text": "Acra-Tiin was settled as a shore landing for the Soulrest port across the water, and has kept that role since.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5229,7 +5229,7 @@
     },
     {
      "aspect": "people",
-     "text": "Argonian fishers and salters.",
+     "text": "Acra-Tiin's households are Argonian fishers and salters who work the south shore of the cape.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5245,7 +5245,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Fish, salt, small boats.",
+     "text": "Acra-Tiin sends fish and salt in small boats across the water to the Soulrest port.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5288,7 +5288,7 @@
     },
     {
      "aspect": "look",
-     "text": "Low stilt houses, drying racks, a boat slip.",
+     "text": "Low stilt houses stand along the shore with drying racks beside them and a boat slip at the water's edge.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5305,7 +5305,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Sea-drakes and wreckers; storms off the Sea of Mists.",
+     "text": "Sea-drakes work the water off the village, wreckers lurk along the shore, and storms roll in from the Sea of Mists.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5322,7 +5322,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A smuggler's landing; a lost boat.",
+     "text": "A smuggler uses the landing after dark. One of the village's boats has gone out and not come back.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5399,7 +5399,7 @@
     },
     {
      "aspect": "history",
-     "text": "A shore village of the Third Era timber trade.",
+     "text": "Naxan began as a shore village of the Third Era timber trade on the cape's north coast. The timber trade is still its main work.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5415,7 +5415,7 @@
     },
     {
      "aspect": "present",
-     "text": "Governed by a reeve for Soulrest.",
+     "text": "A reeve governs Naxan on behalf of Soulrest's merchant council and settles disputes between its fishers and loggers.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5436,7 +5436,7 @@
     },
     {
      "aspect": "people",
-     "text": "Argonian fishers and loggers.",
+     "text": "Naxan's people are Argonian fishers and loggers, many of whom do both in a year.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5452,7 +5452,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Fish, timber hauling, coastal boats.",
+     "text": "Naxan lives on fish, on hauling timber from the forest to the log landing, and on coastal boats along the bay.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5495,7 +5495,7 @@
     },
     {
      "aspect": "look",
-     "text": "Timber stilt houses, a log landing, drying racks.",
+     "text": "Timber stilt houses stand on the shore, with a log landing at the water and drying racks for the catch.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5512,7 +5512,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Pirates of the bay; river predators.",
+     "text": "Pirates of the bay raid the coast boats. River predators prowl the channels near the village.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5529,7 +5529,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A boat hijack, a timber contract.",
+     "text": "A boat has been hijacked off Naxan's coast. A loggers' timber contract is open to anyone who can fill it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5626,7 +5626,7 @@
     },
     {
      "aspect": "present",
-     "text": "Flooded shafts and a ruined winch house.",
+     "text": "The mine is a ruin of flooded shafts and a winch house fallen into disrepair, with outlaws sheltering at its mouth.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5660,7 +5660,7 @@
     },
     {
      "aspect": "economy",
-     "text": "A gold mine of the Soulrest concession before 3E 427.",
+     "text": "Old Goldseam was a gold mine worked under the Soulrest concession until the tribes burned it in 3E 427.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5699,7 +5699,7 @@
     },
     {
      "aspect": "look",
-     "text": "Rusted rails, collapsed timber props, a broken sluice.",
+     "text": "Rusted rails run from the mine mouth past collapsed timber props to a broken sluice.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5716,7 +5716,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Flooding, cave-ins, predators and outlaws.",
+     "text": "Flooding fills the lower shafts, rotten props bring cave-ins, and predators and outlaws shelter in the workings.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5801,7 +5801,7 @@
     },
     {
      "aspect": "history",
-     "text": "Dug under the Soulrest concession; burned in 3E 427.",
+     "text": "Blackdrift was dug under the Soulrest concession for timber and ore, and was burned in 3E 427.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5890,7 +5890,7 @@
     },
     {
      "aspect": "look",
-     "text": "Black-scorched timbers and a collapsed portal.",
+     "text": "Black-scorched timbers lean over a collapsed portal, and the old overseer's shed stands crooked beside it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5907,7 +5907,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Gas pockets, cave-ins and scavengers.",
+     "text": "Gas gathers in the collapsed galleries, the roof can fall without warning, and scavengers at the portal are armed.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5924,7 +5924,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A sealed gallery with the old assay records.",
+     "text": "A gallery behind the collapse is sealed. The old assay records may lie inside it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5992,7 +5992,7 @@
     },
     {
      "aspect": "history",
-     "text": "Part of the Imperial concession; burned in 3E 427.",
+     "text": "Ninth Shaft was part of the Imperial concession on the south of the cape, and was burned in 3E 427 with the others.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6008,7 +6008,7 @@
     },
     {
      "aspect": "present",
-     "text": "Flooded at the bottom, with smugglers storing goods up top.",
+     "text": "The lower galleries are flooded. Smugglers use the dry upper levels to store their goods.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6081,7 +6081,7 @@
     },
     {
      "aspect": "look",
-     "text": "A timber headframe and a wide mouth.",
+     "text": "A timber headframe stands over a wide shaft mouth, black with old fire and rotted at the base.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6098,7 +6098,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Flooded galleries, smugglers.",
+     "text": "The flooded galleries drown the unwary. The smugglers who store goods in the mine are not friendly to strangers.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6115,7 +6115,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A smugglers' store hidden in the lower galleries.",
+     "text": "A smugglers' store is hidden in the lower galleries. Whoever finds it will have to deal with its owners.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6199,7 +6199,7 @@
     },
     {
      "aspect": "present",
-     "text": "Gas vents and ash.",
+     "text": "Gas vents hiss through the ash on the floor of the cut, and nothing grows on its burned slopes.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6272,7 +6272,7 @@
     },
     {
      "aspect": "look",
-     "text": "A black pit with gas shimmering over it.",
+     "text": "The cut is a black pit with gas shimmering over it, ringed by ash-grey slopes where the timber has burned away.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6289,7 +6289,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Gas, collapse and fire-scarred undead.",
+     "text": "Gas collects in the pit, the burned ground can collapse underfoot, and fire-scarred undead wander the floor of the cut.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6306,7 +6306,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A forgotten vent shaft to the burn network.",
+     "text": "A forgotten vent shaft in the cut leads down into the Great Burn's network of burned passages.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6374,7 +6374,7 @@
     },
     {
      "aspect": "history",
-     "text": "Opened in the Third Era for Soulrest's buildings.",
+     "text": "Stonecut Quarry was opened in the Third Era to supply stone for the buildings of Soulrest, and has worked on since.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6407,7 +6407,7 @@
     },
     {
      "aspect": "people",
-     "text": "A crew of five Argonian quarrymen.",
+     "text": "Five Argonian quarrymen work the Stonecut face, living in a shed by the Percar road.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6463,7 +6463,7 @@
     },
     {
      "aspect": "look",
-     "text": "A terraced cut and a stone sled track.",
+     "text": "A terraced cut climbs the hillside, with a stone sled track running down to the Percar road.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6480,7 +6480,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Rockfalls, bandits on the road.",
+     "text": "Rockfalls come down on the quarry face. Bandits watch the Percar road for the stone carts.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6497,7 +6497,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A stone contract; a find in the strata.",
+     "text": "A buyer offers a large stone contract. A find in the strata has stopped work at the face.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6564,7 +6564,7 @@
     },
     {
      "aspect": "history",
-     "text": "Opened for Soulrest's red stone.",
+     "text": "Redbank Quarry was opened to cut red stone for Soulrest's builders on the south side of the cape.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6597,7 +6597,7 @@
     },
     {
      "aspect": "people",
-     "text": "A crew of four Argonian quarrymen.",
+     "text": "Four Argonian quarrymen cut the Redbank face and live in a shed beside the sled track.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6653,7 +6653,7 @@
     },
     {
      "aspect": "look",
-     "text": "A red-stained cut and a sled track.",
+     "text": "A red-stained cut opens in the hillside, with a sled track running down to the shore.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6670,7 +6670,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Rockfalls, bandits.",
+     "text": "Rockfalls come down on the quarry face. Bandits watch the track to the shore for the barge loads.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6687,7 +6687,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A rival crew's sabotage.",
+     "text": "A rival stone crew is sabotaging Redbank's sleds and cut blocks to take over its Soulrest licence.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6733,7 +6733,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A timber camp in the cape's forest.",
+     "text": "Redgum Camp is a timber camp in the forest of the Percar hills, west of Chasepoint on the cape.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6760,7 +6760,7 @@
     },
     {
      "aspect": "history",
-     "text": "A continuation of the Third Era concession's timber trade.",
+     "text": "Redgum Camp carries on the timber trade of the Third Era concession, cutting the same red gum stands.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6776,7 +6776,7 @@
     },
     {
      "aspect": "present",
-     "text": "Under licence to Soulrest.",
+     "text": "The camp cuts under a licence from Soulrest, which sets the quota and takes the logs.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6792,7 +6792,7 @@
     },
     {
      "aspect": "people",
-     "text": "Five Argonian loggers.",
+     "text": "Five Argonian loggers live and work at Redgum Camp, sharing a single bunk house.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6808,7 +6808,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Timber for Soulrest.",
+     "text": "Redgum Camp fells red gum and hauls the logs along the track to Soulrest, which buys all it cuts.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6824,7 +6824,7 @@
     },
     {
      "aspect": "faith",
-     "text": "A small Sithis token on the felling-post.",
+     "text": "The loggers tie a small Sithis token to the felling-post for luck when a tree comes down.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -6835,7 +6835,7 @@
     },
     {
      "aspect": "look",
-     "text": "A clearing with a bunk house, a log yard and a haul track.",
+     "text": "A clearing in the forest holds a bunk house, a log yard stacked with red gum and the start of a haul track.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6852,7 +6852,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Predators and falling timber.",
+     "text": "Predators prowl the forest around the clearing. Falling timber kills loggers who work carelessly.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6869,7 +6869,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A missing logger; illegal cutting.",
+     "text": "One of the loggers has gone missing in the forest. A cutter is working outside the camp's licence.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6931,7 +6931,7 @@
     },
     {
      "aspect": "history",
-     "text": "Built as a coast watch; abandoned in the Fourth Era.",
+     "text": "Mistwatch was built as a coast watch on the cape's south shore, and was abandoned in the Fourth Era after the Empire fell.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6947,7 +6947,7 @@
     },
     {
      "aspect": "present",
-     "text": "Empty; smugglers use it.",
+     "text": "The tower stands empty. Smugglers use it as a lookout and a place to hide goods.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7020,7 +7020,7 @@
     },
     {
      "aspect": "look",
-     "text": "A broken stone tower on a rise.",
+     "text": "A broken stone tower stands on a rise above the shore, open to the weather at the top.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7037,7 +7037,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Smugglers and sea-birds.",
+     "text": "Smugglers who use the tower guard it. Sea-birds nest in the broken top and attack climbers.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7054,7 +7054,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A smugglers' signal lamp; a hidden Imperial log.",
+     "text": "A smugglers' signal lamp shows from the tower at night. An Imperial log of the old watch may be hidden in it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7126,7 +7126,7 @@
     },
     {
      "aspect": "history",
-     "text": "A Legion '-moth' fort abandoned after the Empire's fall.",
+     "text": "Wrackmoth is a Legion '-moth' fort on the north coast, abandoned after the Empire's fall.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7147,7 +7147,7 @@
     },
     {
      "aspect": "present",
-     "text": "Empty and flooded.",
+     "text": "The fort is empty and its yard and lower rooms stand flooded.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7220,7 +7220,7 @@
     },
     {
      "aspect": "look",
-     "text": "Stone walls grown over with creepers.",
+     "text": "Stone walls are grown over with creepers. The gate stands open to the flooded yard.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7237,7 +7237,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Outlaws and predators.",
+     "text": "Outlaws camp in the yard and predators come in through the flooded gate.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7254,7 +7254,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "An Imperial strongroom; outlaws' stash.",
+     "text": "An Imperial strongroom may lie under the fort. Outlaws have hidden a stash in the yard.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7321,7 +7321,7 @@
     },
     {
      "aspect": "history",
-     "text": "Emptied after the 3E 427 uprisings.",
+     "text": "Zeh-Orun was emptied after the 3E 427 uprisings, when the mine it served was burned and its families left.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7337,7 +7337,7 @@
     },
     {
      "aspect": "present",
-     "text": "Rotted stilts.",
+     "text": "Only rotted stilts remain, with the halls above them sagging and open to the weather.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7410,7 +7410,7 @@
     },
     {
      "aspect": "look",
-     "text": "A ring of rotted halls in the trees.",
+     "text": "A ring of rotted halls stands among the trees on sagging stilts, with creepers climbing the old walls.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7427,7 +7427,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Predators and scavengers.",
+     "text": "Predators den under the empty halls. Scavengers sleep in the dry ones and are wary of strangers.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7444,7 +7444,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A tree-minder's records; a family cache.",
+     "text": "The last tree-minder's records may lie in one of the halls. A family cache may be buried in the ring.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7517,7 +7517,7 @@
     },
     {
      "aspect": "history",
-     "text": "Placed by the tribes after the 3E 427 uprising.",
+     "text": "The tribes placed the Xal-Tarek watch post after the 3E 427 uprising to keep an eye on Soulrest's approaches.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7533,7 +7533,7 @@
     },
     {
      "aspect": "present",
-     "text": "Manned by watchers.",
+     "text": "Watchers man the platform day and night, taking turns at the lookout and the boat.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7550,7 +7550,7 @@
     },
     {
      "aspect": "people",
-     "text": "Six Banujha tribesmen.",
+     "text": "Six Banujha tribesmen live on the Xal-Tarek platform, sharing watches in turns.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7566,7 +7566,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Watching, fishing.",
+     "text": "The watchers spend their days watching the approaches to Soulrest and fishing from the platform and the boat.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7583,7 +7583,7 @@
     },
     {
      "aspect": "faith",
-     "text": "A Banujha tree-token shrine.",
+     "text": "The watchers keep a Banujha tree-token shrine on the platform. A token hangs at the lookout.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7599,7 +7599,7 @@
     },
     {
      "aspect": "look",
-     "text": "A tall stilt platform with a lookout and a boat.",
+     "text": "A tall stilt platform rises from the water with a lookout at the top and a boat tied below.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7616,7 +7616,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Hostile to Imperial-descended visitors.",
+     "text": "The watchers are hostile to Imperial-descended visitors and turn them away from the platform.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7632,7 +7632,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A message for the council; a wounded watcher.",
+     "text": "A message must be carried to the council. One of the watchers has been wounded and needs help.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7673,7 +7673,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A river station of the Naka-Desh near Naxan.",
+     "text": "Reek-Anu is a river station of the Naka-Desh near Naxan, on a bank at the northwest edge of the cape.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7695,7 +7695,7 @@
     },
     {
      "aspect": "history",
-     "text": "Kept since the Naka-Desh spread south.",
+     "text": "The Naka-Desh have kept the station since they spread south, and it has passed down through their river families.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7711,7 +7711,7 @@
     },
     {
      "aspect": "present",
-     "text": "A hut group and fishing weir.",
+     "text": "A group of huts stands on the bank beside a fishing weir that traps gar in the river.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7728,7 +7728,7 @@
     },
     {
      "aspect": "people",
-     "text": "Five Naka-Desh, wide-webbed, riddle-lovers.",
+     "text": "Five Naka-Desh live here, wide-webbed river-folk who love a good riddle.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7744,7 +7744,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Osheeja gar fishing.",
+     "text": "The station lives by fishing the osheeja gar from the weir and the river.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7760,7 +7760,7 @@
     },
     {
      "aspect": "faith",
-     "text": "They hold to their own Hist's roots. They love riddles.",
+     "text": "The Naka-Desh hold to the roots of their own Hist and tell riddles as part of their worship.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7776,7 +7776,7 @@
     },
     {
      "aspect": "look",
-     "text": "A small hut group on a river bank, with weirs.",
+     "text": "A small group of huts stands on a river bank, with fishing weirs running out into the water.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7793,7 +7793,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "They let pass a stranger who trades a good riddle.",
+     "text": "The Naka-Desh let a stranger pass if he trades them a good riddle. They are hostile to those who will not.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7809,7 +7809,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A riddle for passage; a message for Gideon.",
+     "text": "A good riddle gains passage past the station. A message for Gideon needs carrying on.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7898,7 +7898,7 @@
     },
     {
      "aspect": "present",
-     "text": "Still dead ground; smoke hangs low in damp weather.",
+     "text": "The scar is still dead ground. Smoke hangs low over it in damp weather.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7914,7 +7914,7 @@
     },
     {
      "aspect": "people",
-     "text": "None; sulphur-gatherers and scavengers.",
+     "text": "The scar has no residents. Sulphur-gatherers and scavengers go onto it, and few stay.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7930,7 +7930,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Sulphur and alchemical reagents.",
+     "text": "Sulphur and alchemical reagents are gathered from the vents and the burned soil of the scar.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7946,7 +7946,7 @@
     },
     {
      "aspect": "faith",
-     "text": "Argonians avoid it as a place of Sithis's anger.",
+     "text": "Argonians avoid the scar as a place of Sithis's anger and will not camp on it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7962,7 +7962,7 @@
     },
     {
      "aspect": "look",
-     "text": "Black ground, white ash, dead snags and gas vents.",
+     "text": "Black ground and white ash stretch away, with dead snags standing among the gas vents.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7984,7 +7984,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Gas, collapse, fire-undead.",
+     "text": "Gas pools in the hollows, the burned crust collapses underfoot, and fire-undead walk the vents.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8000,7 +8000,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A vent shaft to the burn network, reagent harvest.",
+     "text": "A vent shaft leads down to the burn network. Reagent harvesters work the scar's edge.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8063,7 +8063,7 @@
     },
     {
      "aspect": "history",
-     "text": "An Imperial light rebuilt by the Archwardens.",
+     "text": "The light was first built by the Empire and was rebuilt by the Archwardens after the old tower fell.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8079,7 +8079,7 @@
     },
     {
      "aspect": "present",
-     "text": "Kept by a keeper family.",
+     "text": "A keeper family lives in the stilt house at the base and tends the lamp each night.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8095,7 +8095,7 @@
     },
     {
      "aspect": "people",
-     "text": "A keeper's family of four.",
+     "text": "A keeper's family of four lives at the light, parents and two children who help with the lamp.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8111,7 +8111,7 @@
     },
     {
      "aspect": "economy",
-     "text": "A light fee on passing ships.",
+     "text": "The keepers collect a light fee from the ships that pass and rely on it for oil and upkeep.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8127,7 +8127,7 @@
     },
     {
      "aspect": "faith",
-     "text": "A Sithis token on the stairs.",
+     "text": "A Sithis token hangs on the stairs of the tower, and the keepers touch it on their way to the lamp.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -8155,7 +8155,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Shoals, sea-drakes.",
+     "text": "Shoals lie off the point. Sea-drakes work the water below the rock.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8172,7 +8172,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A false light by wreckers, a missing logbook.",
+     "text": "Wreckers have shown a false light on the shore. The keeper's logbook for last season has gone missing.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8217,7 +8217,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A wreck on the sea floor.",
+     "text": "The Brine Gull is a wreck lying on the sea floor off the southwest of the cape, near Acra-Tiin's islands.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -8234,7 +8234,7 @@
     },
     {
      "aspect": "history",
-     "text": "Wrecked in a storm.",
+     "text": "The Brine Gull went down in a storm off the cape and settled on the sea floor with her hull mostly whole.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -8245,7 +8245,7 @@
     },
     {
      "aspect": "present",
-     "text": "Visited by Soulrest salvagers.",
+     "text": "Soulrest salvagers visit the Brine Gull in good weather and dive her for cargo.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8262,7 +8262,7 @@
     },
     {
      "aspect": "people",
-     "text": "None.",
+     "text": "The wreck has no residents. The salvagers who dive her are its only visitors.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8279,7 +8279,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Cargo of cloth and lamp oil.",
+     "text": "The Brine Gull carried cloth and lamp oil, and the salvagers still bring up what the sea has spared.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -8290,7 +8290,7 @@
     },
     {
      "aspect": "faith",
-     "text": "A sailors' rite at the nearest harbour.",
+     "text": "Sailors hold a rite for the Brine Gull's drowned at the nearest harbour, and light a lamp for them.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -8301,7 +8301,7 @@
     },
     {
      "aspect": "look",
-     "text": "A dark hull in blue water.",
+     "text": "A dark hull lies on the sea floor in blue water, with weed trailing from her ribs.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8318,7 +8318,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Sea-drakes, drowning.",
+     "text": "Sea-drakes hunt over the wreck. Divers can drown inside the hull.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8335,7 +8335,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A captain's chest and a smuggler's cache.",
+     "text": "A captain's chest may lie in the stern. A smuggler's cache is hidden in the hold.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
