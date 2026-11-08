@@ -195,6 +195,8 @@ static class Generate
             new ScriptObjectProperty { Name = "StartMarker", Object = MainQuest.StartMarker.ToLink() }]);
         opening.VirtualMachineAdapter = null;
         MainQuest.Finish(mod);
+        // Quest rumours (Talk.cs): talkers' rumours of a quest that can start, gated as its giver's opening; after every quest.
+        Talk.Rumours(mod);
         var order = mods.Select(m => m.ModKey).Append(Ours).ToList();
         // The plugin whose worldspace record we override is a master even when no form of it is referenced, so ours
         // always loads after it.

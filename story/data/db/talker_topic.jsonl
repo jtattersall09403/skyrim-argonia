@@ -309,6 +309,7 @@
 {"talker":"05D7C8:Black Marsh.esm","topic":"talk.greet-stranger","facts":""}
 {"talker":"05D7C8:Black Marsh.esm","topic":"talk.here","facts":"fact.lilmoth.05d7c8.here.ship"}
 {"talker":"05D7C8:Black Marsh.esm","topic":"talk.lore","facts":"fact.lilmoth.lore.alten"}
+{"talker":"05D7C8:Black Marsh.esm","topic":"talk.rumours","facts":"fact.dock2.rumours.quest-bc03"}
 {"talker":"05D7C8:Black Marsh.esm","topic":"talk.self","facts":""}
 {"talker":"05D7C9:Black Marsh.esm","topic":"talk.greet-friend","facts":""}
 {"talker":"05D7C9:Black Marsh.esm","topic":"talk.greet-stranger","facts":""}
@@ -328,6 +329,7 @@
 {"talker":"05D7CB:Black Marsh.esm","topic":"talk.greet-stranger","facts":""}
 {"talker":"05D7CB:Black Marsh.esm","topic":"talk.harvest","facts":"fact.lilmoth.05d7cb.harvest.mush"}
 {"talker":"05D7CB:Black Marsh.esm","topic":"talk.lore","facts":"fact.lilmoth.lore.washed-out"}
+{"talker":"05D7CB:Black Marsh.esm","topic":"talk.rumours","facts":"fact.dock2.rumours.quest-tg01"}
 {"talker":"05D7CB:Black Marsh.esm","topic":"talk.self","facts":""}
 {"talker":"05D7CB:Black Marsh.esm","topic":"talk.someone","facts":"fact.lilmoth.05d7cb.someone.wades"}
 {"talker":"05D7CC:Black Marsh.esm","topic":"talk.greet-friend","facts":""}
@@ -341,12 +343,14 @@
 {"talker":"05D7CD:Black Marsh.esm","topic":"talk.greet-stranger","facts":""}
 {"talker":"05D7CD:Black Marsh.esm","topic":"talk.loot","facts":"fact.lilmoth.05d7cd.loot.chest"}
 {"talker":"05D7CD:Black Marsh.esm","topic":"talk.lore","facts":"fact.lilmoth.lore.docks-crews"}
+{"talker":"05D7CD:Black Marsh.esm","topic":"talk.rumours","facts":"fact.dock2.rumours.quest-tg01"}
 {"talker":"05D7CD:Black Marsh.esm","topic":"talk.self","facts":""}
 {"talker":"05D7CD:Black Marsh.esm","topic":"talk.trade","facts":"fact.lilmoth.05d7cd.trade.ship"}
 {"talker":"0616E8:Black Marsh North.esp","topic":"talk.greet-friend","facts":""}
 {"talker":"0616E8:Black Marsh North.esp","topic":"talk.greet-stranger","facts":""}
 {"talker":"0616E8:Black Marsh North.esp","topic":"talk.here","facts":"fact.lilmoth.0616e8.here.doors, fact.lilmoth.0616e8.here.pot"}
 {"talker":"0616E8:Black Marsh North.esp","topic":"talk.lore","facts":"fact.lilmoth.lore.owing, fact.lilmoth.lore.foreigners"}
+{"talker":"0616E8:Black Marsh North.esp","topic":"talk.rumours","facts":"fact.dock2.rumours.quest-bc03"}
 {"talker":"0616E8:Black Marsh North.esp","topic":"talk.self","facts":""}
 {"talker":"0616E8:Black Marsh North.esp","topic":"talk.someone","facts":"fact.lilmoth.0616e8.someone.minnow"}
 {"talker":"084A85:Black Marsh.esm","topic":"talk.advice","facts":"fact.village.084a85.advice.bench"}
@@ -402,6 +406,7 @@
 {"talker":"08D5E3:Black Marsh North.esp","topic":"talk.greet-stranger","facts":""}
 {"talker":"08D5E3:Black Marsh North.esp","topic":"talk.here","facts":"fact.helstrom.08d5e3.here.bench, fact.helstrom.08d5e3.here.houses"}
 {"talker":"08D5E3:Black Marsh North.esp","topic":"talk.lore","facts":"fact.helstrom.lore.river"}
+{"talker":"08D5E3:Black Marsh North.esp","topic":"talk.rumours","facts":"fact.helstrom.rumours.quest-lq30"}
 {"talker":"08D5E3:Black Marsh North.esp","topic":"talk.self","facts":""}
 {"talker":"08D5E3:Black Marsh North.esp","topic":"talk.someone","facts":"fact.helstrom.08d5e3.someone.namorine"}
 {"talker":"08D5E3:Black Marsh North.esp","topic":"talk.trade","facts":"fact.helstrom.08d5e3.trade.ruin"}
@@ -419,6 +424,7 @@
 {"talker":"08D5E8:Black Marsh North.esp","topic":"talk.greet-stranger","facts":""}
 {"talker":"08D5E8:Black Marsh North.esp","topic":"talk.here","facts":"fact.helstrom.08d5e8.here.ruin, fact.helstrom.08d5e8.here.houses"}
 {"talker":"08D5E8:Black Marsh North.esp","topic":"talk.lore","facts":"fact.helstrom.lore.capital"}
+{"talker":"08D5E8:Black Marsh North.esp","topic":"talk.rumours","facts":"fact.helstrom.rumours.quest-lq30"}
 {"talker":"08D5E8:Black Marsh North.esp","topic":"talk.self","facts":""}
 {"talker":"08D5E8:Black Marsh North.esp","topic":"talk.someone","facts":"fact.helstrom.08d5e8.someone.warden"}
 {"talker":"08D5E9:Black Marsh North.esp","topic":"talk.danger","facts":"fact.helstrom.lore.alleys"}
@@ -434,6 +440,7 @@
 {"talker":"08D5EA:Black Marsh North.esp","topic":"talk.greet-friend","facts":""}
 {"talker":"08D5EA:Black Marsh North.esp","topic":"talk.greet-stranger","facts":""}
 {"talker":"08D5EA:Black Marsh North.esp","topic":"talk.here","facts":"fact.dock5.08d5ea.here.columns, fact.dock5.08d5ea.here.door"}
+{"talker":"08D5EA:Black Marsh North.esp","topic":"talk.rumours","facts":"fact.dock5.rumours.quest-lq25"}
 {"talker":"08D5EA:Black Marsh North.esp","topic":"talk.self","facts":""}
 {"talker":"08D5EA:Black Marsh North.esp","topic":"talk.someone","facts":"fact.dock5.08d5ea.someone.warden"}
 {"talker":"08D5EA:Black Marsh North.esp","topic":"talk.trade","facts":"fact.dock5.08d5ea.trade.dock, fact.dock5.lore.coin"}
@@ -450,6 +457,7 @@
 {"talker":"08D5EC:Black Marsh North.esp","topic":"talk.greet-stranger","facts":""}
 {"talker":"08D5EC:Black Marsh North.esp","topic":"talk.here","facts":"fact.dock5.08d5ec.here.bridge, fact.dock5.08d5ec.here.door"}
 {"talker":"08D5EC:Black Marsh North.esp","topic":"talk.lore","facts":"fact.dock5.lore.guard"}
+{"talker":"08D5EC:Black Marsh North.esp","topic":"talk.rumours","facts":"fact.dock5.rumours.quest-lq25"}
 {"talker":"08D5EC:Black Marsh North.esp","topic":"talk.self","facts":""}
 {"talker":"08D5EC:Black Marsh North.esp","topic":"talk.someone","facts":"fact.dock5.08d5ec.someone.rafters"}
 {"talker":"08D5EC:Black Marsh North.esp","topic":"talk.trade","facts":"fact.dock5.08d5ec.trade.tower"}
@@ -573,14 +581,6 @@
 {"talker":"0934C5:Black Marsh North.esp","topic":"talk.self","facts":""}
 {"talker":"0934C5:Black Marsh North.esp","topic":"talk.someone","facts":"fact.thorn.0934c5.someone.owes"}
 {"talker":"0934C5:Black Marsh North.esp","topic":"talk.trade","facts":"fact.thorn.0934c5.trade.work"}
-{"talker":"166BC1:Black Marsh North.esp","topic":"talk.advice","facts":"fact.helstrom.lore.alleys"}
-{"talker":"166BC1:Black Marsh North.esp","topic":"talk.greet-friend","facts":""}
-{"talker":"166BC1:Black Marsh North.esp","topic":"talk.greet-stranger","facts":""}
-{"talker":"166BC1:Black Marsh North.esp","topic":"talk.here","facts":"fact.helstrom.166bc1.here.door"}
-{"talker":"166BC1:Black Marsh North.esp","topic":"talk.lore","facts":"fact.helstrom.lore.guard"}
-{"talker":"166BC1:Black Marsh North.esp","topic":"talk.rumours","facts":"fact.helstrom.lore.rival"}
-{"talker":"166BC1:Black Marsh North.esp","topic":"talk.self","facts":""}
-{"talker":"166BC1:Black Marsh North.esp","topic":"talk.someone","facts":"fact.helstrom.166bc1.someone.warden"}
 {"talker":"0C724F:Black Marsh.esm","topic":"talk.directions","facts":"fact.blackrose.0c724f.dir.1454dc"}
 {"talker":"0C724F:Black Marsh.esm","topic":"talk.greet-friend","facts":""}
 {"talker":"0C724F:Black Marsh.esm","topic":"talk.greet-stranger","facts":""}
@@ -684,12 +684,14 @@
 {"talker":"0C7263:Black Marsh.esm","topic":"talk.greet-stranger","facts":""}
 {"talker":"0C7263:Black Marsh.esm","topic":"talk.here","facts":"fact.blackrose.0c7263.here.0"}
 {"talker":"0C7263:Black Marsh.esm","topic":"talk.lore","facts":"fact.blackrose.lore.bramman"}
+{"talker":"0C7263:Black Marsh.esm","topic":"talk.rumours","facts":"fact.blackrose.rumours.quest-bc01"}
 {"talker":"0C7263:Black Marsh.esm","topic":"talk.self","facts":""}
 {"talker":"0C7263:Black Marsh.esm","topic":"talk.someone","facts":"fact.blackrose.0c7263.someone.0c725f"}
 {"talker":"0C7264:Black Marsh.esm","topic":"talk.directions","facts":"fact.blackrose.0c7264.dir.1454dc"}
 {"talker":"0C7264:Black Marsh.esm","topic":"talk.greet-friend","facts":""}
 {"talker":"0C7264:Black Marsh.esm","topic":"talk.greet-stranger","facts":""}
 {"talker":"0C7264:Black Marsh.esm","topic":"talk.here","facts":"fact.blackrose.0c7264.here.0, fact.blackrose.0c7264.here.1"}
+{"talker":"0C7264:Black Marsh.esm","topic":"talk.rumours","facts":"fact.blackrose.rumours.quest-bc01"}
 {"talker":"0C7264:Black Marsh.esm","topic":"talk.self","facts":""}
 {"talker":"0C7264:Black Marsh.esm","topic":"talk.someone","facts":"fact.blackrose.0c7264.someone.0c725a"}
 {"talker":"0C7266:Black Marsh.esm","topic":"talk.directions","facts":"fact.blackrose.0c7266.dir.082198"}
@@ -800,6 +802,7 @@
 {"talker":"141561:Black Marsh North.esp","topic":"talk.greet-stranger","facts":""}
 {"talker":"141561:Black Marsh North.esp","topic":"talk.here","facts":"fact.blackrose.141561.here.0"}
 {"talker":"141561:Black Marsh North.esp","topic":"talk.lore","facts":"fact.blackrose.lore.tolls"}
+{"talker":"141561:Black Marsh North.esp","topic":"talk.rumours","facts":"fact.blackrose.rumours.quest-bc01"}
 {"talker":"141561:Black Marsh North.esp","topic":"talk.self","facts":""}
 {"talker":"141561:Black Marsh North.esp","topic":"talk.someone","facts":"fact.blackrose.141561.someone.0c7260"}
 {"talker":"1454E3:Black Marsh.esm","topic":"talk.directions","facts":"fact.blackrose.1454e3.dir.082198"}
@@ -844,3 +847,11 @@
 {"talker":"1454FC:Black Marsh.esm","topic":"talk.rumours","facts":"fact.blackrose.rumours.haven"}
 {"talker":"1454FC:Black Marsh.esm","topic":"talk.self","facts":""}
 {"talker":"1454FC:Black Marsh.esm","topic":"talk.someone","facts":"fact.blackrose.1454fc.someone.0c7250"}
+{"talker":"166BC1:Black Marsh North.esp","topic":"talk.advice","facts":"fact.helstrom.lore.alleys"}
+{"talker":"166BC1:Black Marsh North.esp","topic":"talk.greet-friend","facts":""}
+{"talker":"166BC1:Black Marsh North.esp","topic":"talk.greet-stranger","facts":""}
+{"talker":"166BC1:Black Marsh North.esp","topic":"talk.here","facts":"fact.helstrom.166bc1.here.door"}
+{"talker":"166BC1:Black Marsh North.esp","topic":"talk.lore","facts":"fact.helstrom.lore.guard"}
+{"talker":"166BC1:Black Marsh North.esp","topic":"talk.rumours","facts":"fact.helstrom.lore.rival"}
+{"talker":"166BC1:Black Marsh North.esp","topic":"talk.self","facts":""}
+{"talker":"166BC1:Black Marsh North.esp","topic":"talk.someone","facts":"fact.helstrom.166bc1.someone.warden"}

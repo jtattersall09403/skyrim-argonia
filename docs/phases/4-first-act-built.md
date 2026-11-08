@@ -168,8 +168,13 @@ the quest is re-authored.
   worlds, 0 problems; `make check` green. Fixed at integration: MQ05's Nesh-Deeka topic built after MainQuest places her
   (MQ05.AddNesh); MQ05's two travel packages shared editor ids with their markers. Deployed to argonia-play (DEPLOY OK).
   Owner checks: docs/owner-walk-checks.md sections 5 to 7.
+- **Quest rumours built (2026-11-08):** 11 settlement talkers rumour 5 quests that can start (LQ30, LQ25, TG01, BC01,
+  BC03; BC02 and TG02 start from their line's earlier quest, so no rumour). Each rumour INFO (`Talk.Rumours`, at the
+  seed's end) is gated to the talker's ref and copies every GetStage condition of the giver's opening line (BC03's
+  BC01 >= 90 with it). `talk_check` reads each back: quest in the plugin, Start Game Enabled from its start-up stage,
+  the opening line found, the gate matched, no talker one of the quest's own people: 5 rumours, 0 problems; every
+  read-back PASS.
 - **Known gaps, for the owner walk or later:** only the middle wording band of quest lines is built (no
-  disposition or race forms of address); the freed people of BC01/BC02 have no after-quest greeting; quest rumours on
-  settlement talkers are not yet written (talk.md: a rumour names only a quest that can start); positions at BC01's
+  disposition or race forms of address); the freed people of BC01/BC02 have no after-quest greeting; positions at BC01's
   landing, BC02's keep and the Reed's house (BM&V's tilted sinking cabin) were picked from navmesh, never walked; some
   routes still have short or long legs (084A86 goes east before west; one Hereguard leg is 1,043 paces).

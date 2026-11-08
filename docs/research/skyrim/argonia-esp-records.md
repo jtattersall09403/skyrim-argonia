@@ -1,6 +1,6 @@
 # Argonia.esp: every record, read back from the built plugin
 
-Written by `make plugin-check` (tools/ArgoniaPlugin `list`) from `out/Argonia.esp`; masters: Skyrim.esm, Update.esm, Dawnguard.esm, HearthFires.esm, Dragonborn.esm, ccBGSSSE001-Fish.esm, ccBGSSSE025-AdvDSGS.esm, unofficial skyrim special edition patch.esp, Black Marsh.esm, Black Marsh North.esp, Valenwood.esp, RimExecutionHitSA.esp. 2167 records. Quest overrides keep the winning record (aliases, stages, scripts) with Start Game Enabled off and their player-visible text removed; story-manager overrides gain a first condition `GetGlobalValue ARG_VanillaStoryManager == 1` (the global is 0), so nothing under the node starts. The why is in `tools/ArgoniaPlugin/shutdown.json` and `mods/allowed-quests.json`.
+Written by `make plugin-check` (tools/ArgoniaPlugin `list`) from `out/Argonia.esp`; masters: Skyrim.esm, Update.esm, Dawnguard.esm, HearthFires.esm, Dragonborn.esm, ccBGSSSE001-Fish.esm, ccBGSSSE025-AdvDSGS.esm, unofficial skyrim special edition patch.esp, Black Marsh.esm, Black Marsh North.esp, Valenwood.esp, RimExecutionHitSA.esp. 2178 records. Quest overrides keep the winning record (aliases, stages, scripts) with Start Game Enabled off and their player-visible text removed; story-manager overrides gain a first condition `GetGlobalValue ARG_VanillaStoryManager == 1` (the global is 0), so nothing under the node starts. The why is in `tools/ArgoniaPlugin/shutdown.json` and `mods/allowed-quests.json`.
 
 | Group | Kind | Change | Records (editor id, form id) |
 |---|---|---|---|
@@ -527,12 +527,23 @@ Written by `make plugin-check` (tools/ArgoniaPlugin `list`) from `out/Argonia.es
 | ours | DialogResponses | new |  `000A82:Argonia.esp` |
 | ours | DialogResponses | new |  `000A84:Argonia.esp` |
 | ours | DialogResponses | new |  `000A81:Argonia.esp` |
+| ours | DialogResponses | new |  `000E1A:Argonia.esp` |
 | ours | DialogResponses | new |  `000A7D:Argonia.esp` |
+| ours | DialogResponses | new |  `000E20:Argonia.esp` |
 | ours | DialogResponses | new |  `000A7E:Argonia.esp` |
 | ours | DialogResponses | new |  `000A83:Argonia.esp` |
+| ours | DialogResponses | new |  `000E1E:Argonia.esp` |
+| ours | DialogResponses | new |  `000E1D:Argonia.esp` |
 | ours | DialogResponses | new |  `000A7F:Argonia.esp` |
 | ours | DialogResponses | new |  `000A7C:Argonia.esp` |
 | ours | DialogResponses | new |  `000A80:Argonia.esp` |
+| ours | DialogResponses | new |  `000E1F:Argonia.esp` |
+| ours | DialogResponses | new |  `000E1B:Argonia.esp` |
+| ours | DialogResponses | new |  `000E1C:Argonia.esp` |
+| ours | DialogResponses | new |  `000E23:Argonia.esp` |
+| ours | DialogResponses | new |  `000E22:Argonia.esp` |
+| ours | DialogResponses | new |  `000E24:Argonia.esp` |
+| ours | DialogResponses | new |  `000E21:Argonia.esp` |
 | ours | DialogTopic | new | ARG_LQ30_WalkedOut `000C1F:Argonia.esp` |
 | ours | DialogResponses | new |  `000C21:Argonia.esp` |
 | ours | DialogResponses | new |  `000C20:Argonia.esp` |
