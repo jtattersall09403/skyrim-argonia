@@ -6,7 +6,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Ruins, buyer? Climb east some seventy paces to the stone tower. From there walk north-east about five hundred and forty paces, and Way to Ruins is waiting. I charge nothing for that walk. Hah.
+    Value: Ruins, buyer? Climb east some seventy paces to the stone tower. From there follow the path north-east about two hundred and fifty paces to the old stone columns on your right. Then walk north-east another two hundred and ninety paces, and you are at Way to Ruins. I charge nothing for that walk. Hah.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 2
@@ -14,7 +14,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: The Dwarven Ruins will cost you good boots. Walk south about four hundred and fifty paces until Helstrom is on your right. Then follow the shore south-east some seven hundred paces to the standing stone on your right. Follow the shore east about ninety paces to the bridge on your right, and cross it east for another thirty paces. Hah.
+    Value: The Dwarven Ruins will cost you good boots. Walk south about two hundred and ninety paces until the stone tower is on your right. Then follow the shore south about a hundred and fifty paces until Helstrom is on your right. Go along the boards south about a hundred and fifty paces to the big ship on your left. Then climb south-east along the shore some five hundred and seventy paces to the standing stone on your right. Follow the shore east about ninety paces to the bridge on your right, and cross it east for another thirty paces. Hah.
   ScriptNotes: ''
   Edits: ''
 Conditions:

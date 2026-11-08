@@ -6,7 +6,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: The Dwemer ruin. Go west about eight hundred paces and it stands on your left. Then south-west about thirty paces more. Walk softly, walker.
+    Value: The Dwemer ruin. Follow the shore north about a hundred and ten paces until the giant tree stands on your left. Then climb west over open ground about three hundred and sixty paces until the burnt-out house stands on your left. Then west about three hundred and fifty paces more. Walk softly, walker.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 2
@@ -14,7 +14,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Alten Merihall. Go south-west about two hundred and thirty paces until the giant tree stands on your right. Then west some four hundred and fifty paces. The hall is there.
+    Value: Alten Merihall. Go south-west about two hundred and thirty paces until the giant tree stands on your right. Then west over open ground some four hundred and fifty paces. The hall is there.
   ScriptNotes: ''
   Edits: ''
 Conditions:

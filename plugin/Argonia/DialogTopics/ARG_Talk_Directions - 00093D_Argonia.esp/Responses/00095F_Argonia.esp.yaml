@@ -6,7 +6,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Alten Merihall? Follow the shore south-west about a hundred and eighty paces, until the giant tree stands on your right. Then walk west about four hundred and fifty paces. Alten Merihall is there, outsider.
+    Value: Alten Merihall? Follow the shore south-west about a hundred and eighty paces, until the giant tree stands on your right. Then walk west over open ground about four hundred and fifty paces. Alten Merihall is there, outsider.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 2
@@ -14,7 +14,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Longmont is easy. Walk south-east about a hundred paces until you reach the giant tree. Then follow the shore east about three hundred and sixty paces. Longmont is there.
+    Value: Longmont is easy. Walk south-east about a hundred paces until you reach the giant tree. Then follow the shore east about two hundred and sixty paces, until the rowing boat lies on your right. Then walk east about a hundred paces. Longmont is there.
   ScriptNotes: ''
   Edits: ''
 Conditions:

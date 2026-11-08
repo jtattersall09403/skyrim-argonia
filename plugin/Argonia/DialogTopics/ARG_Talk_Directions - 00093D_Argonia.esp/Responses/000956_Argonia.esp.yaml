@@ -6,7 +6,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: The big ship? Walk east about thirty paces, traveller, until the centre square of Thorn is on your right. Then follow the boards south about a hundred and fifty paces, and the big ship is there.
+    Value: The big ship? Follow the boards south about a hundred and eighty paces, traveller. The big ship is there.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 2
@@ -14,7 +14,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Temple Pass is north, traveller. Walk about nine hundred paces and go past the dead tree, and you are there.
+    Value: Temple Pass is north, traveller. Follow the path north about a hundred and ninety paces, until the dead tree is on your right. Then walk north over open ground about seven hundred paces, and you are there.
   ScriptNotes: ''
   Edits: ''
 Conditions:

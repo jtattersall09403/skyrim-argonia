@@ -6,7 +6,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: The jail. North-east thirty paces to the marker post of Black Rose. Keep it on your left. Climb north-east two hundred paces to the stone tower. Then north-east forty more. The jail is there.
+    Value: The jail. North-east two hundred and sixty paces. The jail is there.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 2
@@ -14,7 +14,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Haven. South-east a hundred and ten paces, past the marker post of Black Rose, to the boat on its rack. Then south-west two hundred and thirty paces, past the stone tower. Haven is there.
+    Value: Haven. South-east a hundred and ten paces, round the cliffs, to the boat on its rack. Then south-west two hundred and thirty paces, past the stone tower. Haven is there.
   ScriptNotes: ''
   Edits: ''
 Conditions:

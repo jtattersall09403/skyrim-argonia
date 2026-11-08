@@ -45,7 +45,7 @@ Persistent:
   - 0x400
   Base: 1E44EC:Black Marsh.esm
   Placement:
-    Position: 354, 2419, -452
+    Position: 354, 2419, -402
 - MutagenObjectType: PlacedObject
   FormKey: 000DE2:Argonia.esp
   MajorRecordFlagsRaw: 1024
@@ -54,7 +54,7 @@ Persistent:
   - 0x400
   Base: 06717F:Skyrim.esm
   Placement:
-    Position: 434, 2419, -422
+    Position: 434, 2419, -448
 Temporary:
 - MutagenObjectType: PlacedNpc
   FormKey: 166BC1:Black Marsh North.esp

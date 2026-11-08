@@ -155,7 +155,7 @@ TopCell:
       Reference: 000C3A:Argonia.esp
       Unknown: 0x000000
     Placement:
-      Position: -36520, 64134, 25
+      Position: -36520, 64134, 0
   - MutagenObjectType: PlacedObject
     FormKey: 000DD6:Argonia.esp
     MajorRecordFlagsRaw: 1024

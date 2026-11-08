@@ -198,7 +198,7 @@ Persistent:
     Reference: 000E8F:Argonia.esp
     Unknown: 0x000000
   Placement:
-    Position: 2650, 3700, 7010
+    Position: 2650, 3700, 7065
 - MutagenObjectType: PlacedObject
   FormKey: 000E92:Argonia.esp
   MajorRecordFlagsRaw: 1024
@@ -210,7 +210,7 @@ Persistent:
     Reference: 000E8F:Argonia.esp
     Unknown: 0x000000
   Placement:
-    Position: 3100, 3700, 7010
+    Position: 3100, 3700, 7065
 - MutagenObjectType: PlacedObject
   FormKey: 000E93:Argonia.esp
   MajorRecordFlagsRaw: 1024
@@ -222,7 +222,7 @@ Persistent:
     Reference: 000E8F:Argonia.esp
     Unknown: 0x000000
   Placement:
-    Position: 2600, 4300, 7010
+    Position: 2600, 4300, 7059
 - MutagenObjectType: PlacedObject
   FormKey: 000E94:Argonia.esp
   MajorRecordFlagsRaw: 1024
@@ -234,7 +234,7 @@ Persistent:
     Reference: 000E8F:Argonia.esp
     Unknown: 0x000000
   Placement:
-    Position: 3150, 4300, 7010
+    Position: 3150, 4300, 7059
 - MutagenObjectType: PlacedObject
   FormKey: 000E95:Argonia.esp
   MajorRecordFlagsRaw: 1024
@@ -246,7 +246,7 @@ Persistent:
     Reference: 000E8F:Argonia.esp
     Unknown: 0x000000
   Placement:
-    Position: 2700, 4850, 7010
+    Position: 2700, 4850, 7075
 - MutagenObjectType: PlacedObject
   FormKey: 000E96:Argonia.esp
   MajorRecordFlagsRaw: 1024
@@ -258,7 +258,7 @@ Persistent:
     Reference: 000E8F:Argonia.esp
     Unknown: 0x000000
   Placement:
-    Position: 3100, 4850, 7010
+    Position: 3100, 4850, 7075
 - MutagenObjectType: PlacedObject
   FormKey: 000E97:Argonia.esp
   MajorRecordFlagsRaw: 1024
