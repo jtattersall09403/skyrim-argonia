@@ -76,7 +76,9 @@ The work runs in this order; each part names the skill or tool that carries it.
 - Every main quest offers at least two ways through using different skills, so different builds can finish it.
   Faction quests lean on the faction's own skills.
 - A skill route can fail: a Speech check has a threshold and a gold or goods alternative; a lock has a level; a theft
-  or pickpocket can be seen; a fight can be lost. Failing moves the quest on or closes a way, never dead-ends it.
+  or pickpocket can be seen; a fight can be lost. A failed check may simply stay closed until the player comes back
+  stronger, as Skyrim's own checks do: the player can reload, train and try again. A fail-forward is used where the
+  story wants failure to matter, not as a rule.
 - Each route is built from the matching block: a skill condition on a line, a lock level, the crime engine, a
   fixed-level enemy and a death trigger.
 
