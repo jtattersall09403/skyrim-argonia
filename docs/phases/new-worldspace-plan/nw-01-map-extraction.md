@@ -32,7 +32,7 @@ Grid: 40 px per Morrowind cell (8192 units); the edge labels print the absolute 
 | 1 Map key (newworld/sources/key.json: 23 symbols with reasons, settlement tiers, 18 cultures) | done |
 | 2a Water, land, province (raster.py); region per cell (regions.py, 24 regions, every boundary checked on the regions map) | done |
 | 2b Places read tile by tile (6 readers, 48 tiles), checked in circled full-size crops, snapped (consolidate.py): 258 places | done |
-| 2c Roads and borders traced to a graph (roads.py; road_corrections.json for joins checked by eye): 127 major and 242 minor roads, 27 and 70 km; province and region borders | done |
+| 2c Roads and borders traced to a graph (roads.py; road_corrections.json for joins checked by eye): 130 major and 249 minor roads, 27 and 70 km, 98 % of the map's road ink traced; province and region borders | done |
 | 3 Place research: 258 places, 9 aspects each, tiered and sourced; text-review done | done |
 | 3b Region research: 24 regions, 11 aspects and relief numbers | done |
 | 3c Danger bands, every cell (danger.py): D0 85 cells, D1 1035, D2 822, D3 887, D4 411, D5 108 (Murkwood's heart) | done |

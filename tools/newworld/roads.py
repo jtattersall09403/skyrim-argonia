@@ -9,7 +9,7 @@ How it works:
 1. Ink. The local background is an 11 px median of the map. A pixel is road ink when it is the road colour
    (204,108,107) laid over its background at some opacity: the opacity of the fit is >= 0.35 and the residual
    off that blend line is small. That reads a road on plain land, on the pale grid bands and under a tinted
-   square alike. Border ink is read by colour: bright red with no green (province), navy (region). Road ink
+   square alike; a faint pixel (under 35%) counts only beside a stronger one. Border ink is read by colour: bright red with no green (province), navy (region). Road ink
    is dropped within 2 px of border ink, inside glyph discs (symbols.json), next to dark label text, and on
    steps of the background (square edges, shores), where the median fit is unreliable.
 2. Lines. The ink is dilated by 3 px, which closes a dash's gap, and thinned to a one-pixel skeleton; short
@@ -27,6 +27,8 @@ How it works:
    every ~11 px. A 40 px window's break count sets major or minor per pixel; an edge whose class changes part
    way is split there at a junction. Breaks inside bridges do not count.
 6. Points. Each edge's pixel path is smoothed (Gaussian, sigma 1.5 px along the path) and resampled every 3 px.
+6b. Second look (twice). Road ink the graph left more than 2 px from every line is thinned, joined (steps
+   3-4) and the graph rebuilt.
 7. Borders. Province and region ink are dilated by 4 px (closing dash-dot gaps), thinned, pruned, end-joined
    along their direction up to 40 px, and written as polylines.
 
@@ -142,6 +144,8 @@ def road_ink(a, bg, province, region, glyphs, water, squares, red_squares=None):
     step_len = np.linalg.norm(a - bg, axis=-1)
     along = np.sqrt(np.maximum(step_len ** 2 - res ** 2, 0)) / np.maximum(step_len, 1e-3)
     ink = (al > 0.15) & (along >= 0.95) & (res < 10)
+    # a faint pixel (under 35% road colour) is road only as the fringe of a stroke, next to a stronger one
+    ink &= (al >= 0.35) | ndi.binary_dilation(ink & (al >= 0.35), iterations=1)
     lum = a.mean(-1)
     text = ndi.binary_dilation((lum < 90) & (np.linalg.norm(a - bg, axis=-1) > 30), iterations=2) & ~region
     gy = ndi.sobel(bg.mean(-1), 0)
@@ -500,7 +504,7 @@ def smooth_resample(path_yx: list, sigma: float = 1.5, step: float = STEP_PX,
     return [[round(float(x), 2), round(float(y), 2)] for x, y in out]
 
 
-def refine(pts: list, weight: np.ndarray, reach: float = 4.0, passes: int = 2) -> list:
+def refine(pts: list, weight: np.ndarray, reach: float = 5.0, passes: int = 3) -> list:
     """Move each inner point across the line onto the ink's weighted centre (sub-pixel), where there is ink."""
     p = np.asarray(pts, float)
     if len(p) < 3:
@@ -663,9 +667,9 @@ def build_roads(sk, ink, skipmask, symbols, weight=None):
             if n["kind"] == "place":
                 # trim the points inside the glyph and run on to its centre
                 c = np.array([n["px"], n["py"]])
-                r = snap_radius(symbols[n["place_index"]])
+                gr = glyph_radius(symbols[n["place_index"]])
                 arr = pts if at == 0 else pts[::-1]
-                while len(arr) > 2 and math.hypot(arr[1][0] - c[0], arr[1][1] - c[1]) < r * 0.6:
+                while len(arr) > 2 and math.hypot(arr[1][0] - c[0], arr[1][1] - c[1]) < gr:
                     arr = arr[1:]
                 arr = [[n["px"], n["py"]]] + arr[1:] if len(arr) > 1 else [[n["px"], n["py"]]] + arr
                 arr = densify(arr)
@@ -758,15 +762,28 @@ def red_square_box(s: dict):
     return s["px"] - h, s["py"] - h, s["px"] + h, s["py"] + h
 
 
+def red_square_mask(shape, symbols) -> np.ndarray:
+    """The red-tinted culture squares, where the tint and the shore texture under it read as road colour and
+    no road can be read: no road ink is taken there."""
+    m = np.zeros(shape, bool)
+    for s in symbols:
+        b = red_square_box(s)
+        if b:
+            m[max(0, int(b[1])):int(b[3]) + 1, max(0, int(b[0])):int(b[2]) + 1] = True
+    return m
+
+
 def land_route_in_red_squares(nodes: list, edges: list, symbols: list, water: np.ndarray,
                               ink: np.ndarray) -> list:
-    """Inside a red-tinted culture square the road cannot be read, so every stretch of an edge inside the
-    square (from where it enters to the glyph, a junction or where it leaves) is re-routed: the shortest path
-    over dry land keeping >= 2 px from water (water is crossed only where road ink shows a bridge), smoothed
-    and resampled; its two ends stay where they were."""
+    """Inside a red-tinted culture square the road cannot be read, so every stretch of an edge inside it (from
+    where it enters to the glyph, a junction or where it leaves) that is mostly off road ink is re-routed: the
+    cheapest path, following road ink where it shows, else dry land keeping >= 2 px from water (water crossed
+    only where road ink shows a bridge), smoothed and resampled; its two ends stay where they were."""
     from skimage.graph import route_through_array
     clear = ndi.distance_transform_edt(~water) >= 2.5
-    cost_all = np.where(clear, 1.0, np.where(water & ~ndi.binary_dilation(ink, iterations=1), 1e4, 30.0))
+    on_ink = ndi.binary_dilation(ink, iterations=1)
+    cost_all = np.where(clear, 1.0, np.where(water & ~on_ink, 1e4, 30.0))
+    cost_all = np.where(on_ink, 0.2, cost_all)                 # drawn road ink is followed where it shows
     boxes = [b for b in (red_square_box(s) for s in symbols) if b]
     near_ink = ndi.binary_dilation(ink, iterations=2)
     out = []
@@ -786,9 +803,9 @@ def land_route_in_red_squares(nodes: list, edges: list, symbols: list, water: np
                 while k < len(pts) and inside[k]:
                     k += 1
                 lo, hi = max(a - 1, 0), min(k, len(pts) - 1)      # the run plus its outside neighbours
-                on_ink = np.mean([near_ink[int(y), int(x)] for x, y in pts[a:k]])
+                on_ink_share = np.mean([near_ink[int(y), int(x)] for x, y in pts[a:k]])
                 # where the road still reads (a quarter of the run on ink) the trace is kept
-                if on_ink >= 0.25 or math.dist(pts[max(a - 1, 0)], pts[min(k, len(pts) - 1)]) < 3:
+                if on_ink_share >= 0.25 or math.dist(pts[lo], pts[hi]) < 3:
                     new += pts[a:k]
                     continue
                 p0, p1 = pts[lo], pts[hi]
@@ -844,7 +861,7 @@ def main() -> None:
     region &= ~ruler
     squares = square_mask(a.shape[:2], symbols)
     ink, hidden = road_ink(a, bg, province, region, glyphs, water, square_mask(a.shape[:2], symbols, True),
-                          square_mask(a.shape[:2], symbols) & ~square_mask(a.shape[:2], symbols, True))
+                          red_square_mask(a.shape[:2], symbols))
     ink &= ~ruler
     hidden = hidden | water | ruler | squares
     places = [(int(s["py"]), int(s["px"])) for s in symbols]
@@ -869,6 +886,11 @@ def main() -> None:
     al, _ = blend_fit(a, bg)
     weight = np.clip(al, 0, 1) * ink_near
     nodes, edges = build_roads(sk, ink_near, skip, symbols, weight)
+    # second look: road ink the first graph left more than 2 px from any line (a stub into a square, a road
+    # beside a label) is thinned, joined to the network and the graph rebuilt
+    for _ in range(2):
+        nodes, edges, sk = second_look(a, ink, sk, nodes, edges, hidden, places, settlements, crossing, skip,
+                                       ink_near, symbols, weight)
     edges = land_route_in_red_squares(nodes, edges, symbols, water, ink)
     (f.OUT / "roads.json").write_text(json.dumps({"nodes": nodes, "edges": edges}))
 
@@ -880,6 +902,26 @@ def main() -> None:
     (CHECK / "stats.json").write_text(json.dumps(stats, indent=1))
     print(json.dumps({k: v for k, v in stats.items() if k != "dead_ends"}, indent=1))
     print("dead ends:", len(stats["dead_ends"]))
+
+
+def second_look(a, ink, sk, nodes, edges, hidden, places, settlements, crossing, skip, ink_near, symbols, weight):
+    """Road ink the graph left more than 2 px from every line (a stub into a square, a road beside a label) is
+    thinned, joined to the network and the graph rebuilt."""
+    lines = raster_lines(a.shape[:2], [e["points"] for e in edges])
+    left = ink & (ndi.distance_transform_edt(~lines) > 2)
+    lab, n_ = ndi.label(ndi.binary_dilation(left, iterations=2), np.ones((3, 3)))
+    sizes = ndi.sum(left, lab, range(1, n_ + 1))
+    left = np.isin(lab, np.nonzero(sizes >= 5)[0] + 1)
+    if left.any():
+        sk = sk | skeleton(ndi.binary_dilation(left, iterations=1))
+        sk, br5 = bridge(sk, hidden, places=places, settlements=settlements, crossing=crossing)
+        sk = prune(sk, spur=5)
+        sk, br6 = pair_ends(sk, crossing)
+        for y0, x0, y1, x1 in br5 + br6:
+            for p in line_px(y0, x0, y1, x1):
+                skip[p] = True
+        nodes, edges = build_roads(sk, ink_near, skip, symbols, weight)
+    return nodes, edges, sk
 
 
 def raster_lines(shape, polylines) -> np.ndarray:
