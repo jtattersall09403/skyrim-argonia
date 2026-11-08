@@ -70,9 +70,21 @@ The owner's first walk is the whole stack *inside* Black Marsh, so the stack and
   0.333 s at the first push's end, so it travels 1.86 m and the clip still plays whole (0.833 s). Measured
   alternatives: the vanilla DodgeBack 2.96 m in one 0.9 s push, TK Dodge's step 4.29 m, Elder Souls' backward
   dodge 4.97 m, Dynamic Dodge's diagonal steps 5.45 m. A dodge tapped during an attack (80210-80240) is the
-  author's back roll, 5.95 m, unchanged. The backstab is Rim Parry's: the
-  light bash (block held, attack tapped) within 30 degrees of straight behind, cast through Payload Interpreter; Elden
-  Parry's parry from behind does nothing because its parry only answers hits from the front. Magistrate Levitate
+  author's back roll, 5.95 m, unchanged. The backstab is Rim Parry's, started the Dark Souls way (owner, walk 3: "if
+  I stand behind someone, locked on or not, and do a normal attack"). Rim Parry's own route stays: every player bash
+  clip carries `PIE.$EldenCounterattackSA`, which Payload Interpreter casts as `EldenBlockCounterSA` (0x822, EREP's
+  copy: BackStabShoot 0xA3B, a feeler projectile 0xA3C at range 250, then ExeBackStab 0xA34, the big stagger) for 20
+  stamina; once the stagger lands Rim Parry marks the player (`EldenMarkSA` 0x841, 3 s), whose script casts
+  `ExeCheckExplode` (0xA7A, the execution) on the next attack press. Ours: on an attack press (no block held, weapon
+  drawn, no menu, not mid-dodge, not in a kill move, at most once a second) our SKSE plugin ArgoniaDodgeBuffer
+  (`core/backstab.h`, `[Backstab]` in its ini) picks the nearest living actor hostile to the player, not a teammate
+  or commanded, not in a kill move, that passes the rule, and casts 0x822 at it with no cost; when the mark arrives
+  within 3 s it casts 0xA7A itself and removes the mark, so one press gives the stagger and the execution. The rule:
+  flat distance at most 200 units (the feeler reaches 250) and height within 100; the player within 60 degrees of
+  straight behind the target; the player's heading within 45 degrees of the target's. Argonia.esp's Combat widens
+  BackStabShoot's and ExeBackStab's own check (GetRelativeAngle on Z, the headings' difference) from 30 to 45 degrees
+  (`BackstabFacingDegrees`), so the two agree. From the front the attack stays a normal attack, and block plus attack
+  stays the bash and Elden Parry's parry, which only answers hits from the front. Magistrate Levitate
   (Nexus 24695, data only) laid; its Levitate is in the test kit.
 - **Walk 3 (2026-11-08): passed and owed.** Passed: no health regen, the compass, the drawn-weapon run, Levitate, the
   parry window (0.5 s), Lilmoth's windows, the world map. Owed, each with one owner check: (1) the standing backstep's

@@ -43,6 +43,13 @@ struct Settings {
   std::vector<std::string> end_events{"TKDR_DodgeEnd", "TKDodgeStop", "tailCombatIdle"};
   std::string attack_event = "attackStart";
   std::string power_event = "attackPowerStartInPlace";
+  // The Dark Souls backstab (owner walk 3): a light attack behind a hostile casts Rim Parry's backstab (core/backstab.h).
+  bool backstab = true;
+  bool backstab_execute = true;  // then the execution, as the second attack press would
+  double backstab_reach = 200.0;
+  double backstab_height = 100.0;
+  double backstab_behind_deg = 60.0;
+  double backstab_facing_deg = 45.0;
 };
 
 // Reads `text` over `s`: an absent or unreadable key keeps the value already in `s`; a negative or non-numeric
@@ -73,6 +80,12 @@ inline std::vector<std::string> parse_ini(std::string_view text, Settings& s) {
     else if (key == "sdodgeendevents") { auto l = split_list(val); if (!l.empty()) s.end_events = l; }
     else if (key == "sattackevent") { if (!val.empty()) s.attack_event = val; }
     else if (key == "spowerevent") { if (!val.empty()) s.power_event = val; }
+    else if (key == "bbackstab") s.backstab = val != "0" && lower(val) != "false" && !val.empty();
+    else if (key == "bbackstabexecute") s.backstab_execute = val != "0" && lower(val) != "false" && !val.empty();
+    else if (key == "fbackstabreach") number(val, s.backstab_reach);
+    else if (key == "fbackstabheight") number(val, s.backstab_height);
+    else if (key == "fbackstabbehinddegrees") number(val, s.backstab_behind_deg);
+    else if (key == "fbackstabfacingdegrees") number(val, s.backstab_facing_deg);
     else unknown.push_back(key);
   }
   return unknown;

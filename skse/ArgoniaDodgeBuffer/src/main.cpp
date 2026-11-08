@@ -1,17 +1,22 @@
 // ArgoniaDodgeBuffer (owner ruling #51): the attack button pressed during a TK Dodge RE dodge is queued and played
-// as the dodge ends. The rules are in core/buffer.h (unit-tested); this file only joins them to the engine: an
+// as the dodge ends. Also the Dark Souls backstab (owner walk 3): an attack pressed behind a hostile casts Rim Parry's
+// backstab at it (core/backstab.h has the geometry), then plays its execution without a second press. The rules are in core/buffer.h (unit-tested); this file only joins them to the engine: an
 // animation-graph event sink on the player, an input sink, and a task that sends the attack event on the next frame.
 // Address Library only (CommonLibSSE-NG), so it is version independent; settings in Data/SKSE/Plugins/ArgoniaDodgeBuffer.ini.
 #include <spdlog/sinks/basic_file_sink.h>
 
+#include <atomic>
 #include <chrono>
+#include <cmath>
 #include <fstream>
 #include <optional>
 #include <sstream>
 
+#include "backstab.h"
 #include "buffer.h"
 
 namespace db = argonia::dodgebuffer;
+namespace bs = argonia::backstab;
 
 namespace {
 
@@ -56,7 +61,19 @@ db::Context EngineContext() {
   return c;
 }
 
-class Plugin : public RE::BSTEventSink<RE::BSAnimationGraphEvent>, public RE::BSTEventSink<RE::InputEvent*> {
+// Rim Parry and Execution's records (RimExecutionHitSA.esp, the CTD fix's copy; EREP_patchSA.esp overrides 0x822).
+constexpr auto kRimPlugin = "RimExecutionHitSA.esp"sv;
+constexpr RE::FormID kBackstabSpell = 0x822;     // EldenBlockCounterSA: the spell every player bash clip casts
+                                                 // (PIE.$EldenCounterattackSA); EREP's copy is BackStabShoot + ExeBackStab
+constexpr RE::FormID kMarkEffect = 0x843;        // NewCastSpellScript_OpenSA: "execution allowed" on the player (3 s);
+                                                 // its script casts kExecuteSpell on the next attack press
+constexpr RE::FormID kMarkSpell = 0x841;         // EldenMarkSA, which carries kMarkEffect
+constexpr RE::FormID kExecuteSpell = 0xA7A;      // ExeCheckExplode: the script's HitSpell, which starts the execution
+constexpr RE::FormID kExecutingKeyword = 0x84B;  // EldenBackOverKillSA: the execution clips' OAR condition
+
+class Plugin : public RE::BSTEventSink<RE::BSAnimationGraphEvent>,
+               public RE::BSTEventSink<RE::InputEvent*>,
+               public RE::BSTEventSink<RE::TESMagicEffectApplyEvent> {
  public:
   static Plugin& Get() {
     static Plugin p;
@@ -106,6 +123,92 @@ class Plugin : public RE::BSTEventSink<RE::BSAnimationGraphEvent>, public RE::BS
     }
   }
 
+  void AttachMagic() {
+    if (magicAttached_) return;
+    if (auto* h = RE::ScriptEventSourceHolder::GetSingleton()) {
+      h->AddEventSink<RE::TESMagicEffectApplyEvent>(this);
+      magicAttached_ = true;
+    }
+    auto* dh = RE::TESDataHandler::GetSingleton();
+    if (!dh) return;
+    backstabSpell_ = dh->LookupForm<RE::SpellItem>(kBackstabSpell, kRimPlugin);
+    executeSpell_ = dh->LookupForm<RE::SpellItem>(kExecuteSpell, kRimPlugin);
+    markSpell_ = dh->LookupForm<RE::SpellItem>(kMarkSpell, kRimPlugin);
+    markEffect_ = dh->LookupForm<RE::EffectSetting>(kMarkEffect, kRimPlugin);
+    executingKeyword_ = dh->LookupForm<RE::BGSKeyword>(kExecutingKeyword, kRimPlugin);
+    SKSE::log::info("backstab: spell {}, mark {}, execute {} ({})", backstabSpell_ ? "found" : "MISSING",
+                    markEffect_ ? "found" : "MISSING", executeSpell_ ? "found" : "MISSING", kRimPlugin);
+  }
+
+  // A press of the attack button: the Dark Souls backstab (owner walk 3). Main thread (input events).
+  void TryBackstab() {
+    db::Settings s;
+    {
+      std::lock_guard l(lock_);
+      if (!buffer_ || buffer_->dodging()) return;
+      s = buffer_->settings();
+    }
+    if (!s.backstab || !backstabSpell_) return;
+    const auto ctx = EngineContext();
+    auto* player = RE::PlayerCharacter::GetSingleton();
+    if (ctx.in_menu || !ctx.weapon_drawn || !player || player->IsDead() || player->IsInKillMove() ||
+        player->IsBlocking() || player->IsOnMount())
+      return;  // block + attack is the bash, which Rim Parry answers itself
+    if (Now() - lastBackstab_ < 1.0) return;
+    const bs::Rule rule{s.backstab_reach, s.backstab_height, s.backstab_behind_deg, s.backstab_facing_deg};
+    const auto pp = player->GetPosition();
+    const bs::Pose me{pp.x, pp.y, pp.z, player->GetAngleZ()};
+    RE::Actor* best = nullptr;
+    double bestDist = 1e9;
+    auto* pl = RE::ProcessLists::GetSingleton();
+    if (!pl) return;
+    for (auto& h : pl->highActorHandles) {
+      auto a = h.get();
+      if (!a || a.get() == player || a->IsDead() || a->IsInKillMove() || a->IsPlayerTeammate() ||
+          a->IsCommandedActor() || a->IsDisabled() || !a->Is3DLoaded() || !a->IsHostileToActor(player))
+        continue;
+      const auto tp = a->GetPosition();
+      const bs::Pose them{tp.x, tp.y, tp.z, a->GetAngleZ()};
+      if (bs::check(me, them, rule) != bs::Why::Ok) continue;
+      const double d = std::hypot(tp.x - pp.x, tp.y - pp.y);
+      if (d < bestDist) {
+        bestDist = d;
+        best = a.get();
+      }
+    }
+    if (!best) return;
+    lastBackstab_ = Now();
+    pendingExecute_ = s.backstab_execute ? lastBackstab_ : 0.0;
+    auto* caster = player->GetMagicCaster(RE::MagicSystem::CastingSource::kInstant);
+    if (!caster) return;
+    caster->CastSpellImmediate(backstabSpell_, false, best, 1.0f, false, 0.0f, player);
+    SKSE::log::info("backstab: cast at {:08X} '{}' ({:.0f} units)", best->GetFormID(), best->GetName(), bestDist);
+  }
+
+  // Rim Parry marks the player for the execution (kMarkEffect) once the backstab stagger lands; its script then waits
+  // for another press. After an attack that started a backstab, the execution plays at once, as in Dark Souls.
+  RE::BSEventNotifyControl ProcessEvent(const RE::TESMagicEffectApplyEvent* e,
+                                        RE::BSTEventSource<RE::TESMagicEffectApplyEvent>*) override {
+    if (!e || !e->target || !e->target->IsPlayerRef() || !markEffect_ || e->magicEffect != markEffect_->GetFormID())
+      return RE::BSEventNotifyControl::kContinue;
+    const double t = pendingExecute_.load();
+    if (t <= 0.0 || Now() - t > 3.0) return RE::BSEventNotifyControl::kContinue;
+    pendingExecute_ = 0.0;
+    SKSE::GetTaskInterface()->AddTask([this] {
+      auto* player = RE::PlayerCharacter::GetSingleton();
+      if (!player || !executeSpell_ || player->IsDead()) return;
+      if (executingKeyword_ && player->HasMagicEffectWithKeyword(executingKeyword_)) return;  // already executing
+      if (auto* caster = player->GetMagicCaster(RE::MagicSystem::CastingSource::kInstant))
+        caster->CastSpellImmediate(executeSpell_, false, player, 1.0f, false, 0.0f, player);
+      // as the mark's script does after its cast: the mark goes, so a later press does not cast it twice
+      if (auto* list = player->AsMagicTarget()->GetActiveEffectList())
+        for (auto* ae : *list)
+          if (ae && ae->spell == markSpell_) ae->Dispel(true);
+      SKSE::log::info("backstab: execution cast");
+    });
+    return RE::BSEventNotifyControl::kContinue;
+  }
+
   RE::BSEventNotifyControl ProcessEvent(const RE::BSAnimationGraphEvent* e,
                                         RE::BSTEventSource<RE::BSAnimationGraphEvent>*) override {
     if (!e || !e->holder || !e->holder->IsPlayerRef()) return RE::BSEventNotifyControl::kContinue;
@@ -128,6 +231,7 @@ class Plugin : public RE::BSTEventSink<RE::BSAnimationGraphEvent>, public RE::BS
       if (e->GetEventType() != RE::INPUT_EVENT_TYPE::kButton) continue;
       auto* b = e->AsButtonEvent();
       if (b && b->IsDown()) Reattach();
+      if (b && b->IsDown() && IsAttackButton(b)) TryBackstab();
       if (!b || !(b->IsDown() || b->IsUp()) || !IsAttackButton(b)) continue;
       std::lock_guard l(lock_);
       if (!buffer_) continue;
@@ -177,6 +281,14 @@ class Plugin : public RE::BSTEventSink<RE::BSAnimationGraphEvent>, public RE::BS
   std::mutex lock_;
   std::optional<db::Buffer> buffer_;
   bool inputAttached_ = false;
+  bool magicAttached_ = false;
+  RE::SpellItem* backstabSpell_ = nullptr;
+  RE::SpellItem* executeSpell_ = nullptr;
+  RE::SpellItem* markSpell_ = nullptr;
+  RE::EffectSetting* markEffect_ = nullptr;
+  RE::BGSKeyword* executingKeyword_ = nullptr;
+  double lastBackstab_ = 0.0;
+  std::atomic<double> pendingExecute_{0.0};
   bool graphAttached_ = false;  // main thread only (load messages and input events)
   double lastAttach_ = 0.0;
 };
@@ -184,7 +296,10 @@ class Plugin : public RE::BSTEventSink<RE::BSAnimationGraphEvent>, public RE::BS
 void OnMessage(SKSE::MessagingInterface::Message* m) {
   switch (m->type) {
     case SKSE::MessagingInterface::kInputLoaded:
-    case SKSE::MessagingInterface::kDataLoaded: Plugin::Get().AttachInput(); break;
+    case SKSE::MessagingInterface::kDataLoaded:
+      Plugin::Get().AttachInput();
+      if (m->type == SKSE::MessagingInterface::kDataLoaded) Plugin::Get().AttachMagic();
+      break;
     case SKSE::MessagingInterface::kPostLoadGame:
     case SKSE::MessagingInterface::kNewGame:
       if (Plugin::Get().Enabled()) Plugin::Get().AttachGraph();

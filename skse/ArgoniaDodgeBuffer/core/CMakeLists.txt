@@ -7,3 +7,8 @@ add_executable(test_buffer ../tests/test_buffer.cpp)
 target_link_libraries(test_buffer PRIVATE dodgebuffer_core)
 target_compile_options(test_buffer PRIVATE ${ARGONIA_WARNINGS})
 add_test(NAME dodgebuffer.buffer COMMAND test_buffer)
+
+add_executable(test_backstab ../tests/test_backstab.cpp)
+target_link_libraries(test_backstab PRIVATE dodgebuffer_core)
+target_compile_options(test_backstab PRIVATE ${ARGONIA_WARNINGS})
+add_test(NAME dodgebuffer.backstab COMMAND test_backstab)

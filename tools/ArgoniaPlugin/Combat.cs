@@ -66,5 +66,31 @@ static class Combat
         p.Range = BackstabRange;
         p.Name = null; // never shown (an empty FX projectile); its Chinese name would be re-encoded wrongly
         mod.Projectiles.Add(p);
+        BackstabAngle(mod, mods);
+    }
+
+    // The Dark Souls backstab (owner walk 3, "extremely fiddly"): our SKSE plugin casts EldenBlockCounterSA on a light
+    // attack from behind (skse/ArgoniaDodgeBuffer/core/backstab.h). The effects it carries, BackStabShoot (0xA3B) and
+    // ExeBackStab (0xA34), each test GetRelativeAngle(Player, Z) < 30 or > 330 on the target: the two headings within
+    // 30 degrees. Widened to 45 each side (Dark Souls' backstab forgives about that much), the plugin's own facing rule.
+    public const float BackstabFacingDegrees = 45f;
+    static void BackstabAngle(SkyrimMod mod, List<ISkyrimModGetter> mods)
+    {
+        var mgefs = Survey.Winners<IMagicEffectGetter>(mods);
+        foreach (var (id, edid) in new[] { ("000A3B", "BackStabShoot"), ("000A34", "ExeBackStab") })
+        {
+            var (w, _) = mgefs[FormKey.Factory($"{id}:RimExecutionHitSA.esp")];
+            if (w.EditorID != edid) throw new Exception($"{id}: {w.EditorID}, expected {edid}");
+            var m = w.DeepCopy();
+            var n = 0;
+            foreach (var c in m.Conditions.OfType<ConditionFloat>().Where(c => c.Data is GetRelativeAngleConditionData))
+            {
+                if (c.ComparisonValue == 30f) { c.ComparisonValue = BackstabFacingDegrees; n++; }
+                else if (c.ComparisonValue == 330f) { c.ComparisonValue = 360f - BackstabFacingDegrees; n++; }
+            }
+            if (n != 2) throw new Exception($"{edid}: {n} of 2 GetRelativeAngle conditions at 30/330");
+            m.Name = null; m.Description = null; // never shown; their Chinese text would be re-encoded wrongly
+            mod.MagicEffects.Add(m);
+        }
     }
 }

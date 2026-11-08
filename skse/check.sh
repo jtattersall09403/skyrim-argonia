@@ -15,4 +15,7 @@ else
   c++ -std=c++23 -Wall -Wextra -Wpedantic -Werror -I"$here/ArgoniaDodgeBuffer/core" \
     "$here/ArgoniaDodgeBuffer/tests/test_buffer.cpp" -o "$out/test_buffer"
   "$out/test_buffer"
+  c++ -std=c++23 -Wall -Wextra -Wpedantic -Werror -I"$here/ArgoniaDodgeBuffer/core" \
+    "$here/ArgoniaDodgeBuffer/tests/test_backstab.cpp" -o "$out/test_backstab"
+  "$out/test_backstab"
 fi
