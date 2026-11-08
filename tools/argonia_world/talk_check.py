@@ -28,7 +28,7 @@ from tools.argonia_world import db, esm
 
 GET_IS_REFERENCE = 136
 GET_STAGE = 58
-QUEST_SOURCE = re.compile(r"^quest (ARG_\w+) stage (\d+);")
+QUEST_SOURCE = re.compile(r"^quest (ARG_\w+) stages? (\d+)(?:-(\d+))?;")    # 'stages A-B': heard while the quest runs
 GET_RELATIONSHIP_RANK = 403     # Skyrim.esm's Hello INFOs: 148 gate on it with the player (>= 1 friend: 37 of them)
 GREET = {"talk.greet-stranger": 4, "talk.greet-friend": 3}     # topic -> compare operator (< 1, >= 1)
 WARM_MAX = 2
@@ -243,6 +243,22 @@ def check_rumours(w, pl, recs) -> int:
             continue
         flags = struct.unpack_from("<H", q.sub("DNAM"), 0)[0]
         idx = {struct.unpack_from("<H", d, 0)[0]: d[2] for d in q.all("INDX")}
+        if m.group(3):  # a running line: stages A and B+1 are the quest's (BC02: the fire 20, the first ending 91)
+            hi = int(m.group(3))
+            if start not in idx or hi + 1 not in idx:
+                why.append(f"stage {start} or {hi + 1} is not one of the quest's")
+            gate = {(q.key, 3, float(start)), (q.key, 5, float(hi))}    # GetStage >= A, <= B
+            for tt in w.rows("talker_topic", topic="talk.rumours"):
+                if f.id not in [x.strip() for x in (tt.facts or "").split(",")]:
+                    continue
+                mine = [r for d, r in infos if d is not None and d.edid == "ARG_Talk_Rumours" and tt.talker in refs(r)]
+                if len(mine) != 1:
+                    why.append(f"{tt.talker}: {len(mine)} rumour INFOs")
+                elif set(stages(mine[0])) != gate:
+                    why.append(f"{tt.talker}: rumour gate {stages(mine[0])} is not {sorted(gate)}")
+            print(f"RUMOUR {f.id}: {edid} stages {start}-{hi}" + (f"  PROBLEMS {'; '.join(why)}" if why else "  ok"))
+            bad += bool(why)
+            continue
         if not flags & 1:
             why.append("quest not Start Game Enabled")
         if start not in idx or not idx[start] & 2:

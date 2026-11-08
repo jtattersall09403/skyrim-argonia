@@ -217,6 +217,7 @@ the quest is re-authored.
   MQ01's shed (01strawhut, HutExterior.nif missing), now BM&V's 01shed (Shed.nif). Ahkeeh's second friend greeting and
   Sells-Dear's Dwarven Ruins directions (now naming Helstrom on the route) rewritten. Every read-back PASS; placecheck
   120/0/0; talk_check 0. Open from review: world_edit rows we.bc02.mesh, we.bc02.name, we.door.rose-jail still describe
-  the old host; the BM&V talkers by the house (1454F2, 1454F3) say nothing of the fire; the doorway's side is unproven.
+  the old host; the doorway's side is unproven. The BM&V talkers by the house, Ree-Shaal (1454F2) and Sleeps-Standing
+  (1454F3), each have one Rumours line on the smoke, gated GetStage ARG_BC02 >= 20 and <= 90 (talk_check reads it back).
 - **Known gaps, for the owner walk or later:** what the check cannot prove: how the tilted floor of the Reed's house
   looks and whether its standing actors settle well; and how anything looks.

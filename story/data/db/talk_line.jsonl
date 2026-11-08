@@ -959,3 +959,5 @@
 {"talker":"166BC1:Black Marsh North.esp","topic":"talk.rumours","ord":1,"text":"Helstrom and Stormhold are old rivals. The Stormhold folk are soft. I say it to anyone who asks."}
 {"talker":"166BC1:Black Marsh North.esp","topic":"talk.self","ord":1,"text":"Levy soldier. I guard this hall. I would sooner be indoors than on the street."}
 {"talker":"166BC1:Black Marsh North.esp","topic":"talk.someone","ord":1,"text":"Gih-Xaleel, the levy warden. He keeps the gate, just outside that door. Go and see him."}
+{"talker":"1454F2:Black Marsh.esm","topic":"talk.rumours","ord":1,"text":"There is smoke from the stone house just west of my dock. People are shut inside it, and Third-Born Tsaxi keeps the door."}
+{"talker":"1454F3:Black Marsh.esm","topic":"talk.rumours","ord":1,"text":"Hnn. Smoke is coming from the stone house west-north-west of here. People are shut inside it, and Third-Born Tsaxi keeps the door."}

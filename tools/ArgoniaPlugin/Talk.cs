@@ -104,12 +104,15 @@ static class Talk
     // Quest rumours (talk.md, talk.rumours: "a QUST that can start (its giver, its stage)"): a talker whose rumours fact
     // cites a quest ("quest ARG_X stage N; giver ...") is left out of Add and built by Rumours at the seed's end, once
     // every quest exists. Keyed (talker, topic) -> (quest editor id, start stage).
-    static readonly Regex QuestSource = new(@"^quest (ARG_\w+) stage (\d+);");
-    static Dictionary<(string, string), (string quest, int stage)> QuestRumours()
+    // A source 'quest ARG_X stages A-B; ...' is a line about the quest running, not one to start it (BC02's fire, seen by
+    // the talkers near the stone house): its INFO is gated GetStage >= A and <= B. hi is -1 for a start rumour.
+    static readonly Regex QuestSource = new(@"^quest (ARG_\w+) stages? (\d+)(?:-(\d+))?;");
+    static Dictionary<(string, string), (string quest, int stage, int hi)> QuestRumours()
     {
         var facts = Rows("talk_fact").Where(f => S(f, "topic") == "talk.rumours").Select(f => (id: S(f, "id"), m: QuestSource.Match(S(f, "source"))))
-            .Where(f => f.m.Success).ToDictionary(f => f.id, f => (f.m.Groups[1].Value, int.Parse(f.m.Groups[2].Value)));
-        var by = new Dictionary<(string, string), (string, int)>();
+            .Where(f => f.m.Success).ToDictionary(f => f.id, f => (f.m.Groups[1].Value, int.Parse(f.m.Groups[2].Value),
+                f.m.Groups[3].Success ? int.Parse(f.m.Groups[3].Value) : -1));
+        var by = new Dictionary<(string, string), (string, int, int)>();
         foreach (var tt in Rows("talker_topic").Where(r => S(r, "topic") == "talk.rumours"))
         {
             var all = S(tt, "facts").Split(',').Select(x => x.Trim()).Where(x => x.Length > 0).ToList();
@@ -132,11 +135,11 @@ static class Talk
         var t = mod.DialogTopics.First(x => x.EditorID == "ARG_Talk_Rumours");
         foreach (var who in lines.GroupBy(l => S(l, "talker")).OrderBy(w => w.Key))
         {
-            var (edid, stage) = want[(who.Key, "talk.rumours")];
+            var (edid, stage, hi) = want[(who.Key, "talk.rumours")];
             var q = mod.Quests.FirstOrDefault(x => x.EditorID == edid) ?? throw new Exception($"talk rumours: {edid} not in the plugin");
             bool IsStart(IConditionGetter c) => c is IConditionFloatGetter f && f.Data is IGetStageConditionDataGetter g && g.Quest.Link.FormKey == q.FormKey
                 && f.CompareOperator == CompareOperator.EqualTo && f.ComparisonValue == stage;
-            var opening = mod.DialogTopics.Where(d => d.Quest.FormKey == q.FormKey).SelectMany(d => d.Responses)
+            var opening = hi >= 0 ? null : mod.DialogTopics.Where(d => d.Quest.FormKey == q.FormKey).SelectMany(d => d.Responses)
                 .FirstOrDefault(r => r.Conditions.Any(IsStart)) ?? throw new Exception($"talk rumours: {edid} has no opening line at stage {stage}");
             var info = new DialogResponses(mod.GetNextFormKey(), SkyrimRelease.SkyrimSE) { Flags = new DialogResponseFlags(), Prompt = t.Name };
             byte n = 1;
@@ -145,8 +148,16 @@ static class Talk
             var d = new GetIsReferenceConditionData();
             d.Target.Link.SetTo(FormKey.Factory(who.Key));
             info.Conditions.Add(new ConditionFloat { CompareOperator = CompareOperator.EqualTo, ComparisonValue = 1, Data = d });
-            foreach (var c in opening.Conditions.Where(c => c is IConditionFloatGetter { Data: IGetStageConditionDataGetter }))
-                info.Conditions.Add(c.DeepCopy());
+            if (opening != null)
+                foreach (var c in opening.Conditions.Where(c => c is IConditionFloatGetter { Data: IGetStageConditionDataGetter }))
+                    info.Conditions.Add(c.DeepCopy());
+            else
+                foreach (var (op, v) in new[] { (CompareOperator.GreaterThanOrEqualTo, stage), (CompareOperator.LessThanOrEqualTo, hi) })
+                {
+                    var g = new GetStageConditionData();
+                    g.Quest.Link.SetTo(q.FormKey);
+                    info.Conditions.Add(new ConditionFloat { CompareOperator = op, ComparisonValue = v, Data = g });
+                }
             t.Responses.Add(info);
         }
         Console.WriteLine($"talk rumours: {lines.Select(l => S(l, "talker")).Distinct().Count()} talkers rumour {want.Values.Select(v => v.quest).Distinct().Count()} quests");

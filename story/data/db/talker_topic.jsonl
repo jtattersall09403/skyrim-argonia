@@ -855,3 +855,5 @@
 {"talker":"166BC1:Black Marsh North.esp","topic":"talk.rumours","facts":"fact.helstrom.lore.rival"}
 {"talker":"166BC1:Black Marsh North.esp","topic":"talk.self","facts":""}
 {"talker":"166BC1:Black Marsh North.esp","topic":"talk.someone","facts":"fact.helstrom.166bc1.someone.warden"}
+{"talker":"1454F2:Black Marsh.esm","topic":"talk.rumours","facts":"fact.blackrose.1454f2.rumours.bc02-fire"}
+{"talker":"1454F3:Black Marsh.esm","topic":"talk.rumours","facts":"fact.blackrose.1454f3.rumours.bc02-fire"}
