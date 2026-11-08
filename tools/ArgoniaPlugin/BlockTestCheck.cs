@@ -58,10 +58,10 @@ static class BlockTestCheck
         bool IsKeeper(IConditionDataGetter d) => d is IGetIsIDConditionDataGetter g && g.Object.Link.FormKey == F("ARG_BT_Keeper");
         bool StageEq(IConditionDataGetter d) => d is IGetStageConditionDataGetter g && g.Quest.Link.FormKey == q.FormKey;
         (IDialogTopicGetter t, IDialogResponsesGetter i)[] Lines(string topic) => infos.Where(x => x.t.EditorID == topic).ToArray();
-        bool Topic(string topic, string prompt, int? sets, Func<IReadOnlyList<IConditionGetter>, bool> conds, int index = 0)
+        // Any line of the topic (the INFO order in the plugin follows form ids, which move when records are added).
+        bool Topic(string topic, string prompt, int? sets, Func<IReadOnlyList<IConditionGetter>, bool> conds) => Lines(topic).Any(l => Line(l.t, l.i, prompt, sets, conds));
+        bool Line(IDialogTopicGetter t, IDialogResponsesGetter i, string prompt, int? sets, Func<IReadOnlyList<IConditionGetter>, bool> conds)
         {
-            var ls = Lines(topic); if (ls.Length <= index) return false;
-            var (t, i) = ls[index];
             var branch = mine.DialogBranches.SingleOrDefault(b => b.FormKey == t.Branch.FormKey);
             var okBranch = branch != null && branch.StartingTopic.FormKey == t.FormKey && branch.Flags?.HasFlag(DialogBranch.Flag.TopLevel) == true && branch.Quest.FormKey == q.FormKey;
             var okFrag = sets is int s
@@ -85,6 +85,10 @@ static class BlockTestCheck
         float Lvl(string e) => ours.Single(n => n.EditorID == e).Configuration.Level is INpcLevelGetter l ? l.Level : -1;
 
         Console.WriteLine($"compile.log: {pexLog.Length} lines, {pexLog.Count(l => l.Contains("error", StringComparison.OrdinalIgnoreCase) && !l.Contains("0 error", StringComparison.OrdinalIgnoreCase))} error lines; pex: {string.Join(", ", new[] { "ARG_QF_BlockTest", "TIF_ARG_BT_20", "TIF_ARG_BT_40", "TIF_ARG_BT_50", "TIF_ARG_BT_90", "SF_ARG_BT_Scene" }.Select(s => s + (File.Exists(Path.Combine(pexDir, s + ".pex")) ? "" : " MISSING")))}");
+        Step(0, "quest types and completion (blocks.md E-stage rule)",
+            ("both quests Side Quest", q.Type == Quest.TypeEnum.SideQuest && endQ.Type == Quest.TypeEnum.SideQuest),
+            ("no start-up stage completes", q.Stages.Concat(endQ.Stages).All(s => !s.Flags.HasFlag(QuestStage.Flag.StartUpStage) || s.LogEntries.All(l => l.Flags?.HasFlag(QuestLogEntry.Flag.CompleteQuest) != true))),
+            ("fragment 100 stops, never CompleteQuest()", Pex("ARG_QF_BlockTest", "Stop") && !Pex("ARG_QF_BlockTest", "CompleteQuest")));
         Step(1, "console start, aliases, persistent refs, E-move (player), E-stage, Naga removed",
             ("quest not SGE, not run-once", !q.Flags.HasFlag(Quest.Flag.StartGameEnabled) && !q.Flags.HasFlag(Quest.Flag.RunOnce) && q.Name?.String == "Block Test"),
             ("stage 10 start-up", q.Stages.Single(s => s.Index == 10).Flags.HasFlag(QuestStage.Flag.StartUpStage)),
@@ -99,7 +103,10 @@ static class BlockTestCheck
             ("line 20: GetIsID keeper, GetStage == 10, TIF_ARG_BT_20", Topic("ARG_BT_Topic20", "I am ready for the test.", 20, c => Has(c, StageEq, CompareOperator.EqualTo, 10))),
             ("fragment 20", Frag(20) && Pex("ARG_QF_BlockTest", "SetRelationshipRank", "AddItem", "Enable")), ("ShipKey prop", Prop("ShipKey", F("ARG_BT_Key"))),
             ("TokenParent prop, disabled", Prop("TokenParent", F("ARG_BT_TokenParent")) && Disabled(F("ARG_BT_TokenParent")) && Persistent(F("ARG_BT_TokenParent"))),
-            ("token ref enable parent, on 07EEF8", Parent(tokenRef, "ARG_BT_TokenParent") && Persistent(tokenRef) && OnNav(tokenRef, BlockTest.Navmesh)),
+            ("token ref enable parent, over the dock navmesh 07EEFF", Parent(tokenRef, "ARG_BT_TokenParent") && Persistent(tokenRef) && OnNav(tokenRef, FormKey.Factory("07EEFF:Black Marsh.esm"))),
+            ("token 30 above the dock planks' mesh top (BYOHFishDock01), not over land", placed[tokenRef].Placement!.Position is var tp
+                && Surface.Under(mods.Take(mods.Count - 1).ToList(), new Surface.Assets(paths), FormKey.Factory("23D689:Black Marsh.esm"), tp.X, tp.Y) is var under
+                && under.FirstOrDefault(h => h.Kind != "land") is { } top && top.EditorId == "BYOHFishDock01" && Math.Abs(tp.Z - top.Top - 30) <= 1),
             ("Keeper alias prop", Prop("Keeper", q.FormKey, 0)), ("objective 20", Obj(20)));
         Step(3, "TR-acquire, E-global",
             ("token alias: defaultSetStageOnPlayerAcquire myQST/preReqStage 20/StageToSet 30", AliasScript(3, "defaultSetStageOnPlayerAcquire", ("myQST", q.FormKey), ("preReqStage", 20), ("StageToSet", 30))),
@@ -134,7 +141,7 @@ static class BlockTestCheck
             ("fragment 60, CrabParent prop disabled, crab enable parent, crab on 07EEF8", Frag(60) && Prop("CrabParent", F("ARG_BT_CrabParent")) && Disabled(F("ARG_BT_CrabParent")) && Parent(crabRef, "ARG_BT_CrabParent") && Persistent(crabRef) && OnNav(crabRef, BlockTest.Navmesh)),
             ("objective 60", Obj(60)));
         Step(7, "C-detected",
-            ("package condition GetDetected player (on the walker)", Has(walk.Conditions, d => d is IGetDetectedConditionDataGetter g && g.TargetNpc.Link.FormKey == FormKey.Factory("000014:Skyrim.esm"), CompareOperator.GreaterThanOrEqualTo, 0)),
+            ("package condition GetDetected player, run on the subject (the walker detects the player)", Has(walk.Conditions, d => d is IGetDetectedConditionDataGetter g && g.TargetNpc.Link.FormKey == FormKey.Factory("000014:Skyrim.esm"), CompareOperator.GreaterThanOrEqualTo, 0, Condition.RunOnType.Subject)),
             ("ARG_BT_WalkerRef editor id for the console", byEdid.ContainsKey("ARG_BT_WalkerRef")));
         Step(8, "save and reload mid-quest",
             ("every ref a block names is persistent", new[] { start, keeperRef, walkerRef, crabRef, tokenRef, zoneA, zoneB, F("ARG_BT_WalkerMarker"), F("ARG_BT_DoorMarker"), F("ARG_BT_TokenParent"), F("ARG_BT_CrabParent"), BlockTest.Door }.All(Persistent)));
@@ -148,14 +155,17 @@ static class BlockTestCheck
                 && s.Properties.OfType<IScriptObjectPropertyGetter>().Any(p => p.Name == "myQuest" && p.Object.FormKey == q.FormKey)
                 && s.Properties.OfType<IScriptIntPropertyGetter>().Any(p => p.Name == "prereqStageOPT" && p.Data == 65)
                 && s.Properties.OfType<IScriptIntPropertyGetter>().Any(p => p.Name == "stage" && p.Data == stage)) == true && Persistent(z);
-        Step(10, "TR-zone, two triggers racing",
-            ("zone A (71) and B (72): defaultSetStageTrigScript myQuest/prereqStageOPT 65/stage, box, persistent", ZoneOk(zoneA, 71) && ZoneOk(zoneB, 72)),
+        Step(10, "TR-zone, two triggers for one stage",
+            ("zone A and B both set 71: defaultSetStageTrigScript myQuest/prereqStageOPT 65/stage, box, persistent", ZoneOk(zoneA, 71) && ZoneOk(zoneB, 71)),
+            ("no stage 72", q.Stages.All(s => s.Index != 72) && vm.Fragments.All(f => f.Stage != 72)),
             ("both boxes at one spot, on the ship door (within 2 m)", placed[zoneA].Placement!.Position.Equals(placed[zoneB].Placement!.Position)
                 && (placed[zoneA].Placement!.Position - door.Placement!.Position).Magnitude < 150),
-            ("fragments 71, 72, 75; ZoneA/ZoneB props", Frag(71) && Frag(72) && Frag(75) && Prop("ZoneA", q.FormKey, 5) && Prop("ZoneB", q.FormKey, 6) && Pex("ARG_QF_BlockTest", "Disable")),
+            ("fragments 71, 75; RaceHits/RaceRuns globals at 0, guard variable", Frag(71) && Frag(75) && Prop("RaceHits", F("ARG_BT_RaceHits")) && Prop("RaceRuns", F("ARG_BT_RaceRuns"))
+                && mine.Globals.Where(g => g.EditorID is "ARG_BT_RaceHits" or "ARG_BT_RaceRuns").Count(g => g is IGlobalShortGetter gs && gs.Data == 0) == 2 && Pex("ARG_QF_BlockTest", "raceTaken", "Mod")),
             ("objective 75", Obj(75)));
         Step(11, "save and reload, a trigger refiring",
-            ("the losing box is disabled by the winner's fragment; both persistent", Pex("ARG_QF_BlockTest", "Disable", "GetRef") && Persistent(zoneA) && Persistent(zoneB)));
+            ("boxes keep the script's doOnce/disableWhenDone defaults (each disables itself); both persistent", new[] { zoneA, zoneB }.All(z => placed[z] is IPlacedObjectGetter o
+                && o.VirtualMachineAdapter!.Scripts.Single().Properties.All(p => p.Name is not ("doOnce" or "disableWhenDone"))) && Persistent(zoneA) && Persistent(zoneB)));
         Step(12, "TR-activate, W-override (lock), setDoorAccess, W-name",
             ("door 0AA664 override: requires key ARG_BT_Key, persistent, teleport kept", door.Lock is { } lk && ((int)lk.Level & 0xFF) == 0xFF && lk.Key.FormKey == F("ARG_BT_Key") && Persistent(BlockTest.Door) && door.TeleportDestination?.Door.FormKey == FormKey.Factory("0AA837:Black Marsh.esm")),
             ("door alias: defaultSetStageAliasScript stage 80/prereqStageOPT 75/TriggerType 0 (activate)", AliasScript(4, "defaultSetStageAliasScript", ("stage", 80), ("prereqStageOPT", 75), ("TriggerType", 0))),
@@ -169,16 +179,17 @@ static class BlockTestCheck
             ("night line: hour < 6 OR >= 20", Topic("ARG_BT_Topic90", "The crab is dead.", 90, c =>
                 Has(c, d => d is IGetDeadConditionDataGetter && d.RunOnTypeIndex == 2, CompareOperator.EqualTo, 1, Condition.RunOnType.QuestAlias)
                 && Has(c, d => d is IGetCurrentTimeConditionDataGetter, CompareOperator.LessThan, 6, or: true) && Has(c, d => d is IGetCurrentTimeConditionDataGetter, CompareOperator.GreaterThanOrEqualTo, 20)
-                && Has(c, d => d is IGetStageDoneConditionDataGetter g && g.Stage == 80, CompareOperator.EqualTo, 1), index: 1)),
-            ("fragment 90 and 100, Gold001 and EndQuest props", Frag(90) && Frag(100) && Prop("Gold001", FormKey.Factory("00000F:Skyrim.esm")) && Prop("EndQuest", endQ.FormKey) && Pex("ARG_QF_BlockTest", "CompleteQuest")),
-            ("stage 100 log entry completes", q.Stages.Single(s => s.Index == 100).LogEntries.Any(l => l.Flags?.HasFlag(QuestLogEntry.Flag.CompleteQuest) == true)),
-            ("ARG_BlockTestEnd: stage 10 start-up, completes, its journal line", endQ.Stages.Count == 1 && endQ.Stages[0].Index == 10 && endQ.Stages[0].Flags.HasFlag(QuestStage.Flag.StartUpStage)
-                && endQ.Stages[0].LogEntries.Single().Flags?.HasFlag(QuestLogEntry.Flag.CompleteQuest) == true && endQ.Stages[0].LogEntries.Single().Entry?.String == "The second quest started from the first."));
+                && Has(c, d => d is IGetStageDoneConditionDataGetter g && g.Stage == 80, CompareOperator.EqualTo, 1))),
+            ("fragment 90 and 100, Gold001 and EndQuest props", Frag(90) && Frag(100) && Prop("Gold001", FormKey.Factory("00000F:Skyrim.esm")) && Prop("EndQuest", endQ.FormKey) && Pex("ARG_QF_BlockTest", "SetStage", "Stop")),
+            ("stage 100 log entry completes and has text", q.Stages.Single(s => s.Index == 100).LogEntries.Any(l => l.Flags?.HasFlag(QuestLogEntry.Flag.CompleteQuest) == true && !string.IsNullOrEmpty(l.Entry?.String))),
+            ("ARG_BlockTestEnd: empty start-up 0, text at 10, completes with text at 100", endQ.Stages.Select(s => s.Index).SequenceEqual(new ushort[] { 0, 10, 100 })
+                && endQ.Stages[0].Flags.HasFlag(QuestStage.Flag.StartUpStage) && endQ.Stages[1].LogEntries.Single().Entry?.String == "The second quest started from the first."
+                && endQ.Stages[2].LogEntries.Single() is { } le && le.Flags?.HasFlag(QuestLogEntry.Flag.CompleteQuest) == true && !string.IsNullOrEmpty(le.Entry?.String)));
         // Where the things stand (for the owner issue and the record).
         foreach (var e in new[] { "ARG_BT_StartMarker", "ARG_BT_KeeperRef", "ARG_BT_WalkerMarker", "ARG_BT_DoorMarker", "ARG_BT_CrabRef", "ARG_BT_TokenRef", "ARG_BT_ZoneA", "ARG_BT_WalkerRef" })
         {
             var p = placed[F(e)].Placement!.Position;
-            var hit = Seat.Under(mods, p).Where(h => h.Navmesh == BlockTest.Navmesh || h.Navmesh == BlockTest.ShipNavmesh).Select(h => $"{h.Navmesh.IDString()} tri {h.Triangle} z {h.Z:F0}").FirstOrDefault() ?? "no navmesh";
+            var hit = Seat.Under(mods, p).Where(h => h.Navmesh == BlockTest.Navmesh || h.Navmesh == BlockTest.ShipNavmesh || h.Navmesh.ID == 0x07EEFF).Select(h => $"{h.Navmesh.IDString()} tri {h.Triangle} z {h.Z:F0}").FirstOrDefault() ?? "no navmesh";
             Console.WriteLine($"  {e} {F(e).IDString()} at {p.X:F0},{p.Y:F0},{p.Z:F0}: {hit}");
         }
         Console.WriteLine(fails == 0 ? "blocktest: every step PASS" : $"blocktest: {fails} step(s) FAIL");
