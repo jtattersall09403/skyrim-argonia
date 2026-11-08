@@ -31,19 +31,14 @@ Fixed after your walk of 2026-11-07 (feedback in `tmp/walk-2-feedback.md`).
       sets the drawn-weapon run to the same speed as the sheathed run.)
 - [ ] **Levitate** (Magistrate's Levitate, new in the stack): the Magic menu, Alteration, lists "Levitate". Equip
       it and hold cast: you rise and float; look up or down to steer; let go of cast to come down.
-- [ ] **Mark and Recall.** Cast Mark, walk away, cast Recall: you return to where you cast Mark. They are Expert
-      spells, so first type `player.setav alteration 100` then `player.setav magicka 600` and wait a few seconds.
 - [ ] **Dodge, standing still** (changed 2026-11-08, your ruling): stand still, hold no direction, tap Alt (pad: B).
       You now take one short hop back, about 2 metres (the first of Dynamic Dodge's two pushes; it went about 5.4 m).
       Say whether it looks right, whether the feet slide during the second half of the move (the clip keeps its full
       length), and whether the distance is too short: the fallback is Skyrim's own hop-back, about 3 metres. (A dodge
       tapped mid-attack still plays the mod's back roll; that is unchanged.)
-- [ ] **Attack queued during a roll** (our own plugin): from the new game, roll and press attack mid-roll; the
-      swing comes straight out of the roll.
-- [ ] **Parry**, against a bandit (`player.placeatme 00039CF6`, click him, `additem 00012EB7 1`, `equipitem
-      00012EB7`): hold block and tap attack just as his swing lands. The window is now half a second (it was 0.3),
-      to allow for the stream's delay. He staggers and kneels; attack again for the riposte. Say if it is now too
-      easy or still too hard.
+- [ ] **Parry window** (you passed parry and riposte on 2026-11-07; the window is now wider as you asked, half a
+      second, was 0.3): against a bandit, say whether landing a parry is now hard but possible, too easy, or still too
+      hard.
 - [ ] **Backstab** (changed 2026-11-08: the last walk's parry-from-behind was the right input, but it never
       reached the bandit). Rim Parry turns every bash into its parry swing on purpose; from behind, that swing fires an
       invisible "feeler" that triggers the backstab, and the feeler only reached 100 units, less than an arm's length,
@@ -54,8 +49,6 @@ Fixed after your walk of 2026-11-07 (feedback in `tmp/walk-2-feedback.md`).
       fighting someone else. (3) From the front, the same input as his blow lands must still be a parry, with no
       backstab stagger. (4) From behind but three or more steps away: only the swing. Reply yes or what played, for
       each of 1 to 4; if 1 fails, say how far away you stood and whether you had a shield.
-- [ ] **Poise.** Hit a bandit with light attacks: after several hits he staggers; a power attack staggers sooner.
-      Bandits hitting you stagger you the same way.
 - [ ] **Pad layout** (GameSir X2): RB light attack, RT heavy (power) attack in one press, LB block, LT shout, d-pad
       left or right opens the Tween menu (skills, items, map, magic).
 - [ ] **Lock-on, sprint and climbing on the pad** (lock-on: right stick click).
@@ -138,7 +131,7 @@ true where it says. Walking time for all of them is about 40 minutes; nothing to
 
 #### The shore track south-west of the dock
 
-- [ ] **Breaks-The-Oar**, sellsword and brawler, the fists of a band of three; stands the band's camp on the shore track south-west of Lilmoth Dock, by the bedrolls. Ask "Dangers nearby" and check: The dead walk outside Lilmoth's walls; there are Walking Dead about 100 m north-north-west of here.
+- [ ] **Breaks-The-Oar**, sellsword and brawler, the fists of a band of three; stands on the band's camp on the shore track south-west of Lilmoth Dock, by the bedrolls. Ask "Dangers nearby" and check: The dead walk outside Lilmoth's walls; there are Walking Dead about 100 m north-north-west of here.
 - [ ] **Heem-Tsal**, battle-mage of fire, the band's spell and its scholar; stands a few paces from the band's bedrolls on the shore track, on the side away from the others. Ask "Directions" and check: A Dwemer ruin lies far to the east, about 435 m east of here.
 - [ ] **Keeps-Both-Edges**, swordsman with two blades, the band's watch; stands beside Breaks-The-Oar at the band's camp, facing the track so nothing comes up it unseen. Ask "Dangers nearby" and check: More dead walk among the gravestones north of Lilmoth's walls, about 195 m north-west of here.
 - [ ] **Deep-In-His-Cups**, drinker and talker, of no settled trade; sits out on the shore track south-west of Lilmoth Dock, where the guards do not bother him. Ask "Directions" and check: Flaa Heet's village lies on the marsh about 145 m south-west of here.
@@ -151,12 +144,12 @@ true where it says. Walking time for all of them is about 40 minutes; nothing to
 
 #### Hereguard Plantation (west of Lilmoth; the map marks it)
 
-- [ ] **Reads-The-Shallows**, boat captain who carries the plantation's rice to Lilmoth; stands the plantation's north-east edge by the goats, waiting for a load. Ask "Directions" and check: Lilmoth Dock lies about 365 m east of here.
+- [ ] **Reads-The-Shallows**, boat captain who carries the plantation's rice to Lilmoth; stands on the plantation's north-east edge by the goats, waiting for a load. Ask "Directions" and check: Lilmoth Dock lies about 365 m east of here.
 - [ ] **Hurz-Weel**, plantation hand who keeps the house's yard and stores; stands in the yard by the plantation house on its west side, between the barrels and the benches. Ask "Directions" and check: The walled part of Lilmoth lies about 200 m east-north-east of here.
 - [ ] **Lifts-The-Sacks**, plantation hand and loader; stands in the middle of the plantation among the goats and chickens, between the house and the workbenches. Ask "This place" and check: Goats and chickens keep the yard about 10 m west-north-west of here.
 - [ ] **Salith**, street seller of food and small goods to the plantation's hands; stands on the plantation's east side near the cooking spit, where the hands eat. Ask "Plants and ingredients" and check: A gleamblossom grows about 60 m south of here.
 - [ ] **Okan-Wul**, plantation hand who builds and mends the huts; stands near Salith on the east side of the plantation, by the huts he keeps standing. Ask "This place" and check: The hands' huts stand about 35 m west of here, and more about 40 m west-north-west.
-- [ ] **Stares-At-Clouds**, plantation hand who watches the flood water and the paddies' far edge; stands the north-east edge of the plantation, beyond the huts, where the water comes in. Ask "Directions" and check: the walled part of Lilmoth lies about 110 m east of here.
+- [ ] **Stares-At-Clouds**, plantation hand who watches the flood water and the paddies' far edge; stands on the north-east edge of the plantation, beyond the huts, where the water comes in. Ask "Directions" and check: the walled part of Lilmoth lies about 110 m east of here.
 - [ ] **Folds-The-Linen**, house servant at the plantation house; stands by the plantation house, near the bed and benches on its south side. Ask "Plants and ingredients" and check: Nightshade grows about 15 m east-north-east of here; keep it out of the kitchen.
 - [ ] **Mazei-Tul**, house servant who keeps the plantation's horses; stands on the north side of the plantation house, close to the horses. Ask "Directions" and check: Lilmoth Dock lies about 405 m east of here.
 - [ ] **Sees-No-Shade**, a soldier in the Lilmoth council's pay who guards the plantation's south side; stands on the south side of the plantation by a bench, facing the water and the shore. Ask "Dangers nearby" and check: A giant crab, Old Salty, lives in the shallows about 45 m east-south-east of here.
@@ -165,13 +158,13 @@ true where it says. Walking time for all of them is about 40 minutes; nothing to
 
 #### The Docks (the map's "Docks", about 240 m east of Lilmoth Dock)
 
-- [ ] **Seeks-The-Channel**, boat captain at the Docks east of Lilmoth Dock; stands the head of the Docks between the cooking spits and the north door, where boats tie up. Ask "Dangers nearby" and check: A bear and her cubs roam about 65 m south-south-east of here.
-- [ ] **Ushaa-Mei**, seller of food and small goods at the Docks; stands the south-west side of the Docks near the houses, where people come out to buy. Ask "Plants and ingredients" and check: Gourds grow about 20 m north-north-west of here.
+- [ ] **Seeks-The-Channel**, boat captain at the Docks east of Lilmoth Dock; stands on the head of the Docks between the cooking spits and the north door, where boats tie up. Ask "Dangers nearby" and check: A bear and her cubs roam about 65 m south-south-east of here.
+- [ ] **Ushaa-Mei**, seller of food and small goods at the Docks; stands on the south-west side of the Docks near the houses, where people come out to buy. Ask "Plants and ingredients" and check: Gourds grow about 20 m north-north-west of here.
 - [ ] **Little-Minnow**, a hatchling of the Docks; stands in the middle of the Docks between the chairs and the cooking fire, where the grown-ups talk. Ask "Plants and ingredients" and check: Deathbell, nightshade, jazbay and other flowers grow together about 50 m south-east of here.
 - [ ] **Plaits-The-Reed**, reed-weaver of the Docks, maker of mats and baskets; stands on the south-west side of the Docks near the houses, at her weaving. Ask "Dangers nearby" and check: A dead Vale Deer lies about 45 m south-east of here; something killed it.
-- [ ] **Chases-Cows**, a hatchling of the Docks; stands the north side of the Docks near the cooking spits, where he can reach the cows. Ask "Plants and ingredients" and check: Gourds grow about 15 m north-west of here.
+- [ ] **Chases-Cows**, a hatchling of the Docks; stands on the north side of the Docks near the cooking spits, where he can reach the cows. Ask "Plants and ingredients" and check: Gourds grow about 15 m north-west of here.
 - [ ] **Wades-Late**, dock hand who hauls and ties up for the boats; stands on the south-east side of the Docks by the benches, where cargo is set down. Ask "Directions" and check: Hereguard Plantation lies far to the west, about 640 m west of here.
-- [ ] **Feldril Nethri**, Dunmer labourer at the Docks working off an owing of months; stands the north end of the Docks by the north door, kept apart from the families. Ask "This place" and check: The north door of the Docks is about 10 m west of here and another about 5 m east-south-east.
+- [ ] **Feldril Nethri**, Dunmer labourer at the Docks working off an owing of months; stands on the north end of the Docks by the north door, kept apart from the families. Ask "This place" and check: The north door of the Docks is about 10 m west of here and another about 5 m east-south-east.
 
 - [ ] **Looks-At-Books' shop** (Hereguard Plantation): pick the trade option. She sells only books, paper and writing things: the four volumes of The Argonian Account, The Lusty Argonian Maid 1 and 2, The Sultry Argonian Bard 1, Short History of Morrowind, Welcome to Black Marsh (two copies), five rolls of paper, two inkwells and three quills, with about 300 gold to buy from you. She now has topics too (Yourself, My trade, Services, Someone in particular, Black Marsh).
 
@@ -184,6 +177,9 @@ true where it says. Walking time for all of them is about 40 minutes; nothing to
 ## Done
 
 - Climbing works (Phase 1 walk, 2026-11-06).
+- Your ticks of 2026-11-08 for the 2026-11-07 walk: Mark and Recall; the standing backstep (since shortened at your
+  ruling, so re-checked above); the attack queued after a roll (our plugin); parry and riposte; poise staggers; the
+  TrueHUD player bars; talk (W-talk) with Lilmoth's first 12.
 - Walk of 2026-11-07: New Game shows the race menu with a bare face; you start on Lilmoth's dock in third person, in
   roughspun, with a journal line; the Imperial sword, shield and Morrowind spells are in the inventory; a moving dodge
   rolls that way and holding it sprints; guard counter; lock-on, sprint and climbing on the Mac keyboard.
