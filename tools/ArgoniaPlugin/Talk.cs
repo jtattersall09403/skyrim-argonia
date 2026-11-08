@@ -131,25 +131,21 @@ static class Talk
     {
         var talkers = Rows("talker").OrderBy(r => S(r, "id")).ToList();
         var placed = Survey.Winners<IPlacedGetter>(mods);
-        var cells = Survey.Winners<ICellGetter>(mods);
-        // each talker's cell names its worldspace (bmv_cell); an interior talker keeps the shared base for now
+        // each talker's cell names its worldspace (bmv_cell); none means an interior
         var cellWs = Rows("bmv_cell").ToDictionary(r => S(r, "id"),
             r => r.TryGetProperty("worldspace", out var ws) && ws.ValueKind == JsonValueKind.String ? ws.GetString() : null);
-        var noRefs = new Cell.TranslationMask(true) { Persistent = false, Temporary = false, NavigationMeshes = false, Landscape = false };
-        // the worldspace each exterior cell belongs to (Helstrom is in BlackMarsh2, not BlackMarsh)
-        var worldOf = new Dictionary<FormKey, FormKey>();
-        foreach (var m in mods) foreach (var ws in m.Worldspaces) foreach (var b in ws.SubCells) foreach (var sb in b.Items) foreach (var c in sb.Items) worldOf[c.FormKey] = ws.FormKey;
-        int named = 0;
+        int named = 0, owned = 0;
         foreach (var t in talkers)
         {
             var id = S(t, "id"); var c = census[id];
             var name = S(t, "known_as");
             var oldName = c.TryGetProperty("name", out var nm) && nm.ValueKind == JsonValueKind.String ? nm.GetString() : null;
             if (name == oldName || name.StartsWith("the ")) continue;
+            var refKey = K(id);
+            if (LocalQuests.OwnsBase.Contains(refKey)) { owned++; continue; } // LQ25 gives this ref its base
+            if (Overrides.Placed(mod, refKey) != null) throw new Exception($"talk names: {id} already overridden in the mod");
             var wsKey = cellWs.GetValueOrDefault(S(c, "cell"));
-            // only Black Marsh's main world for now: a BlackMarsh2 cell copied here collides with another block's override
-            var world = wsKey == "23D689:Black Marsh.esm" ? mod.Worldspaces.First(w => w.FormKey == K(wsKey)) : null;
-            if (world == null) { Console.WriteLine($"talk names: {id} ({name}) keeps its base: cell {S(c, "cell")} is not in Black Marsh's main world"); continue; }
+            var world = wsKey == null ? null : Overrides.World(mod, mods, K(wsKey));
             var tpl = npcs[K(S(c, "npc"))].rec;
             var n = mod.Npcs.AddNew("ARG_Talker_" + id.Split(':')[0]);
             n.Name = name;
@@ -162,44 +158,20 @@ static class Talk
             var keep = NpcConfiguration.Flag.Female | NpcConfiguration.Flag.Essential | NpcConfiguration.Flag.Protected
                 | NpcConfiguration.Flag.Unique | NpcConfiguration.Flag.SimpleActor;
             n.Configuration.Flags = NpcConfiguration.Flag.AutoCalcStats | (tpl.Configuration.Flags & keep);
-            var refKey = K(id);
             if (refKey == LooksAtBooks) Vendor(mod, mods, world, n, tpl, (IPlacedNpcGetter)placed[refKey].rec);
 
             var r = (PlacedNpc)((IPlacedNpcGetter)placed[refKey].rec).DeepCopy();
             r.Base.SetTo(n.FormKey);
-            var cellKey = K(S(c, "cell"));
-            var w = worldOf.TryGetValue(cellKey, out var wk) && wk != world.FormKey ? LocalQuests.World(mod, mods, wk) : world;
-            if ((r.MajorRecordFlagsRaw & 0x400) != 0) w.TopCell!.Persistent.Add(r);
-            else CellOf(mod, w, cells[cellKey].rec, noRefs).Temporary.Add(r);
+            bool persistent = (r.MajorRecordFlagsRaw & 0x400) != 0;
+            if (world != null && persistent) world.TopCell!.Persistent.Add(r);
+            else
+            {
+                var cell = world != null ? Overrides.Exterior(mods, world, K(S(c, "cell"))) : Overrides.Interior(mod, mods, K(S(c, "cell")));
+                if (persistent) cell.Persistent.Add(r); else cell.Temporary.Add(r);
+            }
             named++;
         }
-        Console.WriteLine($"talk names: {named} people given bases of their own");
-    }
-
-    // Our override of an exterior cell in the worldspace, found if another block already added it, else added (the
-    // block and sub-block numbers are the grid divided by 32 and by 8, rounded down).
-    static Cell CellOf(SkyrimMod mod, Worldspace world, ICellGetter src, Cell.TranslationMask noRefs)
-    {
-        if (src.Flags.HasFlag(Cell.Flag.IsInteriorCell)) return CleanUp.Interior(mod, src, noRefs);  // an interior (a Helstrom house)
-        foreach (var b in world.SubCells) foreach (var sb in b.Items) foreach (var cell in sb.Items)
-            if (cell.FormKey == src.FormKey) return cell;
-        var g = src.Grid!.Point;
-        int bx = (int)Math.Floor(g.X / 32.0), by = (int)Math.Floor(g.Y / 32.0), sx = (int)Math.Floor(g.X / 8.0), sy = (int)Math.Floor(g.Y / 8.0);
-        var block = world.SubCells.FirstOrDefault(b => b.BlockNumberX == bx && b.BlockNumberY == by);
-        if (block == null)
-        {
-            block = new WorldspaceBlock { BlockNumberX = (short)bx, BlockNumberY = (short)by, GroupType = GroupTypeEnum.ExteriorCellBlock };
-            world.SubCells.Add(block);
-        }
-        var sub = block.Items.FirstOrDefault(s => s.BlockNumberX == sx && s.BlockNumberY == sy);
-        if (sub == null)
-        {
-            sub = new WorldspaceSubBlock { BlockNumberX = (short)sx, BlockNumberY = (short)sy, GroupType = GroupTypeEnum.ExteriorCellSubBlock };
-            block.Items.Add(sub);
-        }
-        var c = src.DeepCopy(noRefs);
-        sub.Items.Add(c);
-        return c;
+        Console.WriteLine($"talk names: {named} people given bases of their own, {owned} left to a quest's base");
     }
 
     // Looks-At-Books' own vendor faction (a copy of WEServiceMiscMerchant: its buy list, hours and ranks) whose chest is

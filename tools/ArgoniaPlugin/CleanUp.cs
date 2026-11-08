@@ -48,18 +48,18 @@ static class CleanUp
                     if (exterior.Contains(cellKey))
                     {
                         if ((mine.MajorRecordFlagsRaw & 0x400) != 0) world.TopCell!.Persistent.Add(mine);
-                        else CellOf(world, cells[cellKey].rec, noRefs).Temporary.Add(mine);
+                        else Overrides.Exterior(mods, world, cellKey).Temporary.Add(mine);
                     }
                     else if (!cells[cellKey].rec.Flags.HasFlag(Cell.Flag.IsInteriorCell))
                     {   // an exterior cell of another BM&V worldspace (Helstrom is in BlackMarsh2)
                         var wk = mods.SelectMany(m => m.Worldspaces.Where(w => w.SubCells.Any(b => b.Items.Any(sb => sb.Items.Any(cc => cc.FormKey == cellKey))))).First().FormKey;
-                        var w2 = LocalQuests.World(mod, mods, wk);
+                        var w2 = Overrides.World(mod, mods, wk);
                         if ((mine.MajorRecordFlagsRaw & 0x400) != 0) w2.TopCell!.Persistent.Add(mine);
-                        else CellOf(w2, cells[cellKey].rec, noRefs).Temporary.Add(mine);
+                        else Overrides.Exterior(mods, w2, cellKey).Temporary.Add(mine);
                     }
                     else
                     {
-                        var c = Interior(mod, cells[cellKey].rec, noRefs);
+                        var c = Overrides.Interior(mod, mods, cellKey);
                         if ((mine.MajorRecordFlagsRaw & 0x400) != 0) c.Persistent.Add(mine); else c.Temporary.Add(mine);
                     }
                 }
@@ -81,39 +81,12 @@ static class CleanUp
         Console.WriteLine($"clean-up: {off} placements disabled, {fixedN} templated placements at a fixed level");
     }
 
-    static IPlaced? Existing(SkyrimMod mod, FormKey key) =>
-        mod.EnumerateMajorRecords<IPlaced>().FirstOrDefault(r => r.FormKey == key);
+    static IPlaced? Existing(SkyrimMod mod, FormKey key) => Overrides.Placed(mod, key);
 
     // The cells of a worldspace across the load order (an exterior cell's override goes in its worldspace's blocks).
     public static HashSet<FormKey> ExteriorCells(List<ISkyrimModGetter> mods, FormKey ws) =>
         mods.SelectMany(m => m.Worldspaces.Where(w => w.FormKey == ws)).SelectMany(w => w.SubCells).SelectMany(b => b.Items).SelectMany(s => s.Items)
             .Select(c => c.FormKey).ToHashSet();
-
-    static Cell CellOf(Worldspace world, ICellGetter src, Cell.TranslationMask noRefs)
-    {
-        foreach (var b in world.SubCells) foreach (var sb in b.Items) foreach (var cell in sb.Items)
-            if (cell.FormKey == src.FormKey) return cell;
-        var g = src.Grid!.Point;
-        int bx = (int)Math.Floor(g.X / 32.0), by = (int)Math.Floor(g.Y / 32.0), sx = (int)Math.Floor(g.X / 8.0), sy = (int)Math.Floor(g.Y / 8.0);
-        var block = world.SubCells.FirstOrDefault(b => b.BlockNumberX == bx && b.BlockNumberY == by);
-        if (block == null) { block = new WorldspaceBlock { BlockNumberX = (short)bx, BlockNumberY = (short)by, GroupType = GroupTypeEnum.ExteriorCellBlock }; world.SubCells.Add(block); }
-        var sub = block.Items.FirstOrDefault(s => s.BlockNumberX == sx && s.BlockNumberY == sy);
-        if (sub == null) { sub = new WorldspaceSubBlock { BlockNumberX = (short)sx, BlockNumberY = (short)sy, GroupType = GroupTypeEnum.ExteriorCellSubBlock }; block.Items.Add(sub); }
-        var c = src.DeepCopy(noRefs); sub.Items.Add(c); return c;
-    }
-
-    // An interior cell's override: found if another block added it, else in block id % 10, sub-block (id / 10) % 10.
-    internal static Cell Interior(SkyrimMod mod, ICellGetter src, Cell.TranslationMask noRefs)
-    {
-        foreach (var b in mod.Cells.Records) foreach (var sb in b.SubBlocks) foreach (var cell in sb.Cells)
-            if (cell.FormKey == src.FormKey) return cell;
-        var id = src.FormKey.ID; int bn = (int)(id % 10), sn = (int)(id / 10 % 10);
-        var block = mod.Cells.Records.FirstOrDefault(b => b.BlockNumber == bn);
-        if (block == null) { block = new CellBlock { BlockNumber = bn, GroupType = GroupTypeEnum.InteriorCellBlock }; mod.Cells.Records.Add(block); }
-        var sub = block.SubBlocks.FirstOrDefault(s => s.BlockNumber == sn);
-        if (sub == null) { sub = new CellSubBlock { BlockNumber = sn, GroupType = GroupTypeEnum.InteriorCellSubBlock }; block.SubBlocks.Add(sub); }
-        var c = src.DeepCopy(noRefs); sub.Cells.Add(c); return c;
-    }
 
     // cleancheck <Argonia.esp> <plugins...>: the read-back from the built plugin: every target of every slice clean-up is
     // overridden in Argonia.esp as its row says, and no target is a talker. Exit 1 on any failure.

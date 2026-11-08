@@ -21,7 +21,7 @@ import dataclasses
 import re
 import struct
 import sys
-from collections import defaultdict
+from collections import Counter, defaultdict
 from pathlib import Path
 
 from tools.argonia_world import db, esm
@@ -223,6 +223,10 @@ def main() -> int:
     pl = esm.Plugin.read(Path(a.esp))
     recs = pl.records()
     by_key = {r.key: r for r in recs}
+    seen = Counter(r.key for r in recs)
+    # the world (WRLD group label) or interior each record sits in, for the read-back over every world
+    world_of = {r.key: next((pl.form_key(lab) for g, lab in r.parents if g == 1), "interior") for r in recs}
+    worlds = Counter()
     dial = {r.key: r.edid for r in recs if r.sig == "DIAL"}
     topic_of = {}
     for t in w.rows("talk_topic"):
@@ -232,6 +236,8 @@ def main() -> int:
         if r.sig != "INFO":
             continue
         edid = dial.get(pl.form_key(r.parents[-1][1]), "")
+        if not edid.startswith("ARG_Talk_"):
+            continue  # a quest's own topic gated on the same ref (LQ25, LQ30, MQ05) is not talk's
         topic = topic_of.get(edid, edid)
         for d in r.all("CTDA"):
             if struct.unpack_from("<H", d, 8)[0] == GET_RELATIONSHIP_RANK and edid == "ARG_Talk_Hello":
@@ -256,7 +262,11 @@ def main() -> int:
             if base is None or base.zstr("FULL") != t.known_as or base.ref("TPLT") != c.npc:
                 line += f"  NAME WRONG (ref {'overridden' if ref else 'not overridden'}, base {base.edid if base else None})"
                 bad += 1
+            elif seen[t.id] != 1 or seen[base.key] != 1:
+                line += f"  DUPLICATE (ref x{seen[t.id]}, base x{seen[base.key]})"
+                bad += 1
             else:
+                worlds[world_of[t.id]] += 1
                 line += f"  named: ref -> {base.edid} \"{base.zstr('FULL')}\" (template {c.npc})"
         print(line)
     for f in (r for r in recs if r.sig == "FACT" and r.ref("VENC")):
@@ -267,6 +277,7 @@ def main() -> int:
             continue
         stock = [(pl.form_key(struct.unpack_from("<I", d, 0)[0]), struct.unpack_from("<i", d, 4)[0]) for d in box.all("CNTO")]
         print(f"{f.edid}: chest {chest.edid} -> {box.edid}: " + ", ".join(f"{k} x{n}" for k, n in stock))
+    print("talk_check names by world: " + ", ".join(f"{k} {n}" for k, n in sorted(worlds.items())))
     print(f"talk_check: {len(talkers)} talkers, {bad} problems")
     return 1 if bad else 0
 

@@ -38,20 +38,10 @@ static class LocalQuests
     public static JsonElement Lines(string code) => JsonDocument.Parse(File.ReadAllText(Path.Combine("story", "data", "quest_lines", code + ".json"))).RootElement;
 
     // BlackMarsh2's override in our plugin: the load order's winner without its cells; persistent refs go in its top cell.
-    internal static Worldspace World(SkyrimMod mod, List<ISkyrimModGetter> mods, FormKey? key = null)
-    {
-        // MapFix may already hold the override (its pan box), without a top cell
-        var (win, from) = Survey.Winners<IWorldspaceGetter>(mods)[key ?? BlackMarsh2];
-        var w = mod.Worldspaces.FirstOrDefault(x => x.FormKey == (key ?? BlackMarsh2));
-        if (w == null)
-        {
-            w = win.DeepCopy(new Worldspace.TranslationMask(true) { SubCells = false, TopCell = false });
-            mod.Worldspaces.Add(w);
-        }
-        w.TopCell ??= win.TopCell!.DeepCopy(new Cell.TranslationMask(true) { Persistent = false, Temporary = false, NavigationMeshes = false, Landscape = false });
-        if (!Masters.Contains(from)) Masters.Add(from);
-        return w;
-    }
+    internal static Worldspace World(SkyrimMod mod, List<ISkyrimModGetter> mods, FormKey? key = null) => Overrides.World(mod, mods, key ?? BlackMarsh2);
+
+    // Placed refs whose base a quest here owns (LQ25's poler and steerer): Talk gates their lines but leaves the base to LQ25.
+    public static readonly FormKey[] OwnsBase = [Poler, Steerer];
 
     // The nearest unused triangle centre of the navmeshes of the named cells (the placement method, blocks.md W-ref).
     internal sealed class Snapper(List<ISkyrimModGetter> mods)
@@ -112,10 +102,15 @@ static class LocalQuests
         // A BM&V ref an alias names: persistent (record flag 0x400), and, when a new base is given, placing it.
         public void Persist(FormKey key, Npc? newBase = null)
         {
+            var other = Overrides.Placed(mod, key);
             var existing = World.TopCell!.Persistent.OfType<PlacedNpc>().FirstOrDefault(r => r.FormKey == key);
-            // talk's override (Talk.cs) may already hold it in its cell: take it from there, one record per form
-            foreach (var b in World.SubCells) foreach (var sb in b.Items) foreach (var c in sb.Items)
-                if (existing == null && c.Temporary.OfType<PlacedNpc>().FirstOrDefault(r => r.FormKey == key) is { } t) { c.Temporary.Remove(t); existing = t; }
+            if (other is PlacedNpc moved && existing == null)
+            {
+                // another step (Talk's names) overrode it in its exterior cell: move that override to the persistent cell
+                foreach (var b in World.SubCells) foreach (var sb in b.Items) foreach (var c in sb.Items) c.Temporary.Remove(moved);
+                existing = moved; World.TopCell!.Persistent.Add(moved);
+            }
+            else if (other != null && existing == null) throw new Exception($"{key}: overridden by another step where this quest cannot take it");
             var src = (IPlacedNpcGetter)Placed[key].rec;
             if (existing == null && newBase == null && (src.MajorRecordFlagsRaw & 0x400) != 0) return;
             var r = existing ?? (PlacedNpc)src.DeepCopy();
