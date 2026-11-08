@@ -9,18 +9,21 @@ Status: [PROGRESS.md](../PROGRESS.md). The plan: [PLAN.md](../PLAN.md). Edit thi
   block's shape; anything the act needs that is not a block goes back to Phase 2's method (a new block, proved first)
   or the quest is re-authored. The Phase 1 opening (the lightest form of the work detail) is replaced by the act's
   authored opening.
-- **The world map, block W-wrld-map (planned 2026-11-08 at the owner's ask; not built yet).** The native 3D map of
-  the real worldspace, the easiest and most reliable route (research of 2026-11-08 in
-  [Phase 1](1-stack-in-bmv.md) "The map"): (1) WRLD overrides in our plugin for BlackMarsh, BlackMarsh2, Thorn and
-  Valenwood setting MNAM's usable cells from their NAM0/NAM9 bounds (BlackMarsh NW (-36,20) SE (36,-39), BlackMarsh2
-  NW (-35,32) SE (32,-31), Thorn NW (-32,41) SE (32,-32), Valenwood NW (-34,37) SE (36,-34)), camera kept,
-  Valenwood.esp a master; the read-back checks MNAM in out/Argonia.esp; (2) the deploy writes
-  `lodsettings/BlackMarsh.lod`, `BlackMarsh2.lod` and `BlackMarshNorth.lod` from the extents of BM&V's own .btr
-  files (BlackMarsh: -64,-64, 128, 4, 32), generated on the machine, never committed; (3) Black Marsh North's map
-  marker `0934A4` renamed "Lilmoth" (it reads "Lolmoth"), and its "Unkown Cave" and "Southern Morowind Pass" typos
-  fixed, by name-only overrides; `sMapWorldDefaultWorldSpace=BlackMarsh` under `[MapMenu]` only if (1) alone does
-  not take; (4) one owner check: press M on Lilmoth's dock, in Thorn and in Valenwood: BM&V's land, pan and zoom,
-  markers. A few hours and one check. If the map is still Tamriel or blank, the next step is in Phase 5.
+- **The world map, block W-wrld-map (built 2026-11-08; owner check owed).** The native 3D map of the real
+  worldspace. As built: (1) `tools/ArgoniaPlugin/MapFix.cs` (called from Generate.cs; no new forms) overrides the four
+  worlds' WRLD from the load order's winner (BlackMarsh extends the opening's override) and sets only MNAM's NW/SE
+  cells. What differs from the plan: vanilla's convention, measured, is usable dimensions 0,0 (Tamriel, Solstheim) and
+  an NW/SE box that is the camera's pan area well inside the land (Tamriel land x-57..61 y-43..50, box NW(-30,15)
+  SE(40,-40)), so each box is the world's measured LAND extent (`plugin.sh mapprobe`) a quarter in from each side:
+  BlackMarsh NW(-18,4) SE(18,-25), BlackMarsh2 NW(-17,16) SE(16,-15), BlackMarshNorth (Thorn) NW(-17,16) SE(16,-16),
+  Valenwood NW(-16,19) SE(17,-16); camera kept; Valenwood.esp a master; the read-back (`plugin.sh check`) checks the
+  box, that nothing else differs from the winner, and the marker names. (2) `infra/gpu-box/lodsettings.py`, run by
+  `stack.py stage`, writes the derived mod `argonia-lodsettings` (LODSettings/BlackMarsh.lod -64,-64,128,4,32;
+  BlackMarsh2.lod -32,-32,64,4,32; BlackMarshNorth.lod -32,-32,128,4,32) from BM&V's .btr names, the rule that
+  reproduces BM&V's own Valenwood.lod; never committed. (3) Marker 0934A4 "Lolmoth" is "Lilmoth" and 083283
+  "Southern Morowind Pass" is "Southern Morrowind Pass" (name-only); "Unkown Cave" (Valenwood.esp 18F86D) stands in
+  Skyrim's Tamriel, not our worlds, and is left. No `sMapWorldDefaultWorldSpace`. (4) One owner check: M on Lilmoth's
+  dock, in Thorn and in Valenwood. If the map is still Tamriel or blank, the next step is in Phase 5.
 - **Rooms without load doors.** BM&V's towns stand many shell buildings you walk straight into (Lilmoth: 6
   exterior load doors, 52 shells). Done 2026-11-08: the `bmv_shell` table (`tools/argonia_world/bmv_shell.py`
   build/verify) holds 1,889 building refs in 86 settlements' exterior cells, classed by the winning navmesh inside
