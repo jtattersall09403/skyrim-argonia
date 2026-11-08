@@ -1,0 +1,30 @@
+FormKey: 000D8F:Argonia.esp
+EditorID: ARG_MQ04_PaysLate
+Configuration:
+  Flags:
+  - Essential
+  - AutoCalcStats
+  Level:
+    MutagenObjectType: NpcLevel
+    Level: 6
+  TemplateFlags:
+  - Traits
+  - Factions
+  - SpellList
+  - AIData
+  - AIPackages
+  - ModelAnimation
+  - Script
+  - DefPackList
+  - AttackData
+  - Keywords
+Template: 00FF4D:Black Marsh.esm
+Race: 013740:Skyrim.esm
+Items:
+- Item:
+    Item: 000D9F:Argonia.esp
+    Count: 1
+Class: 013176:Skyrim.esm
+Name:
+  TargetLanguage: English
+  Value: Pays-Late

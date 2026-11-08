@@ -1,8 +1,0 @@
-FormKey: 000D3D:Argonia.esp
-EditorID: ARG_MQ04_BoatTopic
-Name:
-  TargetLanguage: English
-  Value: the boat
-Branch: 000D3C:Argonia.esp
-Quest: 000D0B:Argonia.esp
-SubtypeName: CUST

@@ -1,0 +1,7 @@
+FormKey: 000CD5:Argonia.esp
+EditorID: ARG_TG02_TopicSellBeadsBranch
+Quest: 000C50:Argonia.esp
+Category: Player
+Flags:
+- TopLevel
+StartingTopic: 000CD6:Argonia.esp

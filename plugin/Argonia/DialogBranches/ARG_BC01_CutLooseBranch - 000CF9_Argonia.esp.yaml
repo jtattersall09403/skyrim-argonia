@@ -1,0 +1,7 @@
+FormKey: 000CF9:Argonia.esp
+EditorID: ARG_BC01_CutLooseBranch
+Quest: 000CDD:Argonia.esp
+Category: Player
+Flags:
+- TopLevel
+StartingTopic: 000CFA:Argonia.esp

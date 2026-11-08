@@ -1,0 +1,8 @@
+FormKey: 000DD0:Argonia.esp
+EditorID: ARG_MQ04_CutTopic
+Name:
+  TargetLanguage: English
+  Value: the cut
+Branch: 000DCF:Argonia.esp
+Quest: 000D8C:Argonia.esp
+SubtypeName: CUST

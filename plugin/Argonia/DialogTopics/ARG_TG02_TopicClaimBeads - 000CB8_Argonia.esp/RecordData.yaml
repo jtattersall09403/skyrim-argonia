@@ -1,0 +1,8 @@
+FormKey: 000CB8:Argonia.esp
+EditorID: ARG_TG02_TopicClaimBeads
+Name:
+  TargetLanguage: English
+  Value: What do you claim from the lockbox?
+Branch: 000CB7:Argonia.esp
+Quest: 000C50:Argonia.esp
+SubtypeName: CUST

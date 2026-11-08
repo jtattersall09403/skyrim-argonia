@@ -22,8 +22,8 @@ paste them into the repo.
 ## Speaker and listener
 
 - **The race name a speaker uses** for the player is the speaker's word, not always ours: Argonian speakers
-  in Morrowind call Imperials "Cyrodil". `[player race]` renders through `race-names` (a per-speaker-race
-  table, to build in 1.3 and 2.5); until then write the word the speaker would use.
+  in Morrowind call Imperials "Cyrodil". Write the word the speaker would use, in a variant line per player race
+  where it changes (no macros).
 - **Write listener variants only where the line changes.** A greeting or a line with an address term needs a
   variant per listener group the speaker treats differently (at least: same race, and others). A topic
   answer about the weather needs none.

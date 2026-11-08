@@ -1,0 +1,7 @@
+FormKey: 000E69:Argonia.esp
+EditorID: ARG_MQ01_TheWaterBranch
+Quest: 000E00:Argonia.esp
+Category: Player
+Flags:
+- TopLevel
+StartingTopic: 000E6A:Argonia.esp

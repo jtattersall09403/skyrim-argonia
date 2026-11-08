@@ -1,0 +1,8 @@
+FormKey: 000E60:Argonia.esp
+EditorID: ARG_MQ01_AnswerSilent
+Name:
+  TargetLanguage: English
+  Value: (Say nothing.)
+Branch: 000E5F:Argonia.esp
+Quest: 000E00:Argonia.esp
+SubtypeName: CUST

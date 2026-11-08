@@ -1,0 +1,147 @@
+FormKey: 000C35:Argonia.esp
+EditorID: ARG_LQ25
+VirtualMachineAdapter:
+  Scripts:
+  - Name: ARG_QF_LQ25
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: AchievementsQuest
+      Object: 0FC85D:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: BaitBucket
+      Object: 000C39:Argonia.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Captain
+      Object: 000C35:Argonia.esp
+      Alias: 2
+    - MutagenObjectType: ScriptObjectProperty
+      Name: CrocParent
+      Object: 000C3A:Argonia.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Gold001
+      Object: 00000F:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Steerer
+      Object: 000C35:Argonia.esp
+      Alias: 1
+  FileName: ARG_QF_LQ25
+  Fragments:
+  - Stage: 20
+    ScriptName: ARG_QF_LQ25
+    FragmentName: Fragment_20
+  - Stage: 40
+    ScriptName: ARG_QF_LQ25
+    FragmentName: Fragment_40
+  - Stage: 91
+    ScriptName: ARG_QF_LQ25
+    FragmentName: Fragment_91
+  - Stage: 92
+    ScriptName: ARG_QF_LQ25
+    FragmentName: Fragment_92
+  - Stage: 93
+    ScriptName: ARG_QF_LQ25
+    FragmentName: Fragment_93
+  Aliases:
+  - Property:
+      Name: ''
+      Object: 000C35:Argonia.esp
+      Alias: 3
+    Scripts:
+    - Name: defaultSetStageOnDeathRefAlias
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: myQST
+        Object: 000C35:Argonia.esp
+      - MutagenObjectType: ScriptIntProperty
+        Name: preReqStage
+        Data: 20
+      - MutagenObjectType: ScriptIntProperty
+        Name: StageToSet
+        Data: 40
+  - Property:
+      Name: ''
+      Object: 000C35:Argonia.esp
+      Alias: 2
+    Scripts:
+    - Name: defaultSetStageOnDeathRefAlias
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: myQST
+        Object: 000C35:Argonia.esp
+      - MutagenObjectType: ScriptIntProperty
+        Name: preReqStage
+        Data: 40
+      - MutagenObjectType: ScriptIntProperty
+        Name: StageToSet
+        Data: 93
+Name:
+  TargetLanguage: English
+  Value: The River Monster
+Flags:
+- StartGameEnabled
+Priority: 50
+Type: SideQuest
+Stages:
+- Flags:
+  - StartUpStage
+  LogEntries:
+  - Flags: []
+- Index: 20
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: A rafter at Helstrom's landing, Okan-Zish, wants the beast under the crew's plank walk killed. I'm to find its lair in the shallows under the walk and kill it, or shoot or burn it from the planks.
+- Index: 40
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: "The beast is dead. In its lair in the shallows under the plank walk lies the landing crew's bait bucket, offal in it: the crew's offal drew the beast that has kept traders off the river and off the boat captain's boat. I'm to take the bucket to the boat captain, who stands at Helstrom's north edge west of the levy's gate, or put it to Wuleen-Taza and take the crew's price to keep quiet."
+- Index: 91
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+    Entry:
+      TargetLanguage: English
+      Value: I showed the boat captain the crew's bait bucket. She paid me for what it showed her, and the crew have lost their trade on the river to her.
+- Index: 92
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+    Entry:
+      TargetLanguage: English
+      Value: Wuleen-Taza paid me to keep the bait to myself. The crew keep their trade, and the boat captain still thinks the river took her customers.
+- Index: 93
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+    Entry:
+      TargetLanguage: English
+      Value: The boat captain is dead. There is no one left on the river for the crew's bait to cheat.
+Objectives:
+- Index: 20
+  DisplayText:
+    TargetLanguage: English
+    Value: Kill the crocodile under the landing's plank walk.
+- Index: 40
+  DisplayText:
+    TargetLanguage: English
+    Value: Show the boat captain the crew's bait bucket, or take Wuleen-Taza's price at the landing to keep quiet.
+Aliases:
+- Name: Poler
+  Flags: []
+  ForcedReference: 08D5EE:Black Marsh North.esp
+- ID: 1
+  Name: Steerer
+  Flags: []
+  ForcedReference: 08D5EF:Black Marsh North.esp
+- ID: 2
+  Name: Captain
+  Flags: []
+  ForcedReference: 08D5F1:Black Marsh North.esp
+- ID: 3
+  Name: Crocodile
+  Flags:
+  - AllowDisabled
+  ForcedReference: 000C3B:Argonia.esp

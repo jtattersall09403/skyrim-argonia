@@ -1,0 +1,7 @@
+FormKey: 000D3E:Argonia.esp
+EditorID: ARG_BC02_ComeMotherBranch
+Quest: 000D0A:Argonia.esp
+Category: Player
+Flags:
+- TopLevel
+StartingTopic: 000D3F:Argonia.esp

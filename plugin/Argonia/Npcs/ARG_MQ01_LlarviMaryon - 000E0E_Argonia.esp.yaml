@@ -1,0 +1,27 @@
+FormKey: 000E0E:Argonia.esp
+EditorID: ARG_MQ01_LlarviMaryon
+Configuration:
+  Flags:
+  - Female
+  - AutoCalcStats
+  - Protected
+  Level:
+    MutagenObjectType: NpcLevel
+    Level: 4
+  TemplateFlags:
+  - Traits
+  - SpellList
+  - ModelAnimation
+  - Inventory
+  - AttackData
+  - Keywords
+Voice: 013ADC:Skyrim.esm
+Template: 01C196:Skyrim.esm
+Race: 013742:Skyrim.esm
+AIData:
+  Confidence: Average
+  Responsibility: NoCrime
+Class: 01317B:Skyrim.esm
+Name:
+  TargetLanguage: English
+  Value: Llarvi Maryon

@@ -1,0 +1,26 @@
+FormKey: 000D93:Argonia.esp
+EditorID: ARG_MQ04_Leech
+Configuration:
+  Flags:
+  - AutoCalcStats
+  Level:
+    MutagenObjectType: NpcLevel
+    Level: 4
+  TemplateFlags:
+  - Traits
+  - Factions
+  - SpellList
+  - AIData
+  - AIPackages
+  - ModelAnimation
+  - Inventory
+  - Script
+  - DefPackList
+  - AttackData
+  - Keywords
+Template: 084AD6:Black Marsh.esm
+Race: 013203:Skyrim.esm
+Class: 0131E6:Skyrim.esm
+Name:
+  TargetLanguage: English
+  Value: Leech

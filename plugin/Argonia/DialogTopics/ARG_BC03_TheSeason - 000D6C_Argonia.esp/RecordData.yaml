@@ -1,0 +1,8 @@
+FormKey: 000D6C:Argonia.esp
+EditorID: ARG_BC03_TheSeason
+Name:
+  TargetLanguage: English
+  Value: Tell me about the dock crews.
+Branch: 000D6B:Argonia.esp
+Quest: 000D5B:Argonia.esp
+SubtypeName: CUST

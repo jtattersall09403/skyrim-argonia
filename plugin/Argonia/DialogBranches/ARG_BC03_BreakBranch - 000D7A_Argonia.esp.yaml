@@ -1,0 +1,7 @@
+FormKey: 000D7A:Argonia.esp
+EditorID: ARG_BC03_BreakBranch
+Quest: 000D5B:Argonia.esp
+Category: Player
+Flags:
+- TopLevel
+StartingTopic: 000D7B:Argonia.esp

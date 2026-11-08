@@ -1,8 +1,0 @@
-FormKey: 000CD6:Argonia.esp
-EditorID: ARG_BC02_TheFire
-Name:
-  TargetLanguage: English
-  Value: What is burning above Blackrose?
-Branch: 000CD5:Argonia.esp
-Quest: 000CBB:Argonia.esp
-SubtypeName: CUST

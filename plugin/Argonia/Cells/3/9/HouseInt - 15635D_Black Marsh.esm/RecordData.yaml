@@ -45,12 +45,12 @@ Music: 01BA72:Skyrim.esm
 ImageSpace: 0CE16C:Skyrim.esm
 Persistent:
 - MutagenObjectType: PlacedNpc
-  FormKey: 000C9D:Argonia.esp
+  FormKey: 000CDC:Argonia.esp
   MajorRecordFlagsRaw: 1024
   EditorID: ARG_BC_NeverSoldRef
   SkyrimMajorRecordFlags:
   - 0x400
-  Base: 000C9C:Argonia.esp
+  Base: 000CDB:Argonia.esp
   Placement:
     Position: 1571, 931, 7520
   MajorFlags:

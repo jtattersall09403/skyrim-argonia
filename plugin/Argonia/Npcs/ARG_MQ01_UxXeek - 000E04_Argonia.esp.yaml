@@ -1,0 +1,28 @@
+FormKey: 000E04:Argonia.esp
+EditorID: ARG_MQ01_UxXeek
+Configuration:
+  Flags:
+  - Female
+  - AutoCalcStats
+  - Unique
+  - Protected
+  Level:
+    MutagenObjectType: NpcLevel
+    Level: 5
+  TemplateFlags:
+  - Traits
+  - SpellList
+  - ModelAnimation
+  - Inventory
+  - AttackData
+  - Keywords
+Voice: 013ADD:Skyrim.esm
+Template: 02A1EE:Black Marsh.esm
+Race: 013740:Skyrim.esm
+AIData:
+  Confidence: Average
+  Responsibility: NoCrime
+Class: 013176:Skyrim.esm
+Name:
+  TargetLanguage: English
+  Value: Ux-Xeek

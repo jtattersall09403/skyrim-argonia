@@ -1,8 +1,0 @@
-FormKey: 000E00:Argonia.esp
-EditorID: ARG_MQ03_TheBoat
-Name:
-  TargetLanguage: English
-  Value: I am ready to go.
-Branch: 000DFF:Argonia.esp
-Quest: 000D68:Argonia.esp
-SubtypeName: CUST

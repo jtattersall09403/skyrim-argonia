@@ -1,0 +1,8 @@
+FormKey: 000CD1:Argonia.esp
+EditorID: ARG_TG02_TopicSellCharm
+Name:
+  TargetLanguage: English
+  Value: No one remounts a charm that was only pledged.
+Branch: 000CD0:Argonia.esp
+Quest: 000C50:Argonia.esp
+SubtypeName: CUST

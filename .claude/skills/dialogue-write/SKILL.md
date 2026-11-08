@@ -67,7 +67,9 @@ and quote against the corpus before using it. Never paste Morrowind lines into t
 - **Plain and explicit:** who did what and why, in plain clauses (B05); every quest line can be acted on.
 - **British English** spelling and punctuation, no serial comma (B08); the style guide
   (`../../../story/design/text/style-guide.md`) and its culture registers bind every line.
-- Text macros: `[player]`, `[player race]`, `[player rank]`, `[name]`.
+- No text macros: Skyrim prints `[player]`, `[player race]` and the like as written. Address the player by a word the
+  speaker would use; where the address changes with the player's race, write a variant line for that race (it is built
+  as its own line, gated on the player's race).
 
 ## 5. Process
 

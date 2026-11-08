@@ -1,8 +1,0 @@
-FormKey: 000DD4:Argonia.esp
-EditorID: ARG_MQ01_TheMarch
-Name:
-  TargetLanguage: English
-  Value: What have the years away cost you?
-Branch: 000DD3:Argonia.esp
-Quest: 000D67:Argonia.esp
-SubtypeName: CUST

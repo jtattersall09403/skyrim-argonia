@@ -1,0 +1,7 @@
+FormKey: 000DEF:Argonia.esp
+EditorID: ARG_MQ05_QuarrelBranch
+Quest: 000D8D:Argonia.esp
+Category: Player
+Flags:
+- TopLevel
+StartingTopic: 000DF0:Argonia.esp

@@ -1,8 +1,0 @@
-FormKey: 000DD1:Argonia.esp
-EditorID: ARG_MQ01_TheWater
-Name:
-  TargetLanguage: English
-  Value: Is that water for me?
-Branch: 000DD0:Argonia.esp
-Quest: 000D67:Argonia.esp
-SubtypeName: CUST

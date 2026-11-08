@@ -1,0 +1,14 @@
+FormKey: 000DB4:Argonia.esp
+EditorID: ARG_MQ04_LowReedVillage
+Name:
+  TargetLanguage: English
+  Value: Low-Reed Village
+Ranks:
+- Number: 0
+  Title:
+    Male:
+      TargetLanguage: English
+      Value: Low-Reed Village
+    Female:
+      TargetLanguage: English
+      Value: Low-Reed Village

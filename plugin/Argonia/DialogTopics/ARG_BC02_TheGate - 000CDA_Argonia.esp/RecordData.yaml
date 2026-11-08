@@ -1,8 +1,0 @@
-FormKey: 000CDA:Argonia.esp
-EditorID: ARG_BC02_TheGate
-Name:
-  TargetLanguage: English
-  Value: Let me into the keep.
-Branch: 000CD9:Argonia.esp
-Quest: 000CBB:Argonia.esp
-SubtypeName: CUST

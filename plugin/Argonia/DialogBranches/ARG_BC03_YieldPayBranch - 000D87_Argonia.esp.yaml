@@ -1,0 +1,7 @@
+FormKey: 000D87:Argonia.esp
+EditorID: ARG_BC03_YieldPayBranch
+Quest: 000D5B:Argonia.esp
+Category: Player
+Flags:
+- TopLevel
+StartingTopic: 000D88:Argonia.esp

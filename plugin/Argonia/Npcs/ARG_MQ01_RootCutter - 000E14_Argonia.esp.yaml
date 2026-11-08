@@ -1,0 +1,29 @@
+FormKey: 000E14:Argonia.esp
+EditorID: ARG_MQ01_RootCutter
+Configuration:
+  Flags:
+  - AutoCalcStats
+  Level:
+    MutagenObjectType: NpcLevel
+    Level: 3
+  TemplateFlags:
+  - Traits
+  - SpellList
+  - ModelAnimation
+  - Inventory
+  - AttackData
+  - Keywords
+Factions:
+- Faction: 000E15:Argonia.esp
+  Fluff: 0x000000
+Voice: Null
+Template: 00FF4D:Black Marsh.esm
+Race: 013740:Skyrim.esm
+AIData:
+  Aggression: Aggressive
+  Confidence: Average
+  Responsibility: NoCrime
+Class: 013176:Skyrim.esm
+Name:
+  TargetLanguage: English
+  Value: Root-Cutter

@@ -1,0 +1,16 @@
+FormKey: 000C60:Argonia.esp
+VersionControl: 79128
+EditorID: ARG_TG02_BoneFigurine
+Version2: 10
+ObjectBounds:
+  First: -4, -47, 48
+  Second: 5, 0, 63
+Name:
+  TargetLanguage: English
+  Value: Worn Bone Figurine
+Model:
+  File: Clutter\HorkerTusk\HorkerTusk.nif
+  Data: 0x020000000200000000000000D0A61095646473001ED21273165BA429646473001ED21273
+Keywords: []
+Value: 60
+Weight: 1

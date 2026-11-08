@@ -1,0 +1,8 @@
+FormKey: 000CD6:Argonia.esp
+EditorID: ARG_TG02_TopicSellBeads
+Name:
+  TargetLanguage: English
+  Value: These beads are Kothringi glass from the old cairns.
+Branch: 000CD5:Argonia.esp
+Quest: 000C50:Argonia.esp
+SubtypeName: CUST

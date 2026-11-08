@@ -1,0 +1,7 @@
+FormKey: 000D34:Argonia.esp
+EditorID: ARG_BC02_ComeSpeakerBranch
+Quest: 000D0A:Argonia.esp
+Category: Player
+Flags:
+- TopLevel
+StartingTopic: 000D35:Argonia.esp

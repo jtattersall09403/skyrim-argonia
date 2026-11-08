@@ -1,0 +1,8 @@
+FormKey: 000C86:Argonia.esp
+EditorID: ARG_TG01_TopicBed
+Name:
+  TargetLanguage: English
+  Value: Where does Keeps-What-Floats sleep?
+Branch: 000C85:Argonia.esp
+Quest: 000C4F:Argonia.esp
+SubtypeName: CUST

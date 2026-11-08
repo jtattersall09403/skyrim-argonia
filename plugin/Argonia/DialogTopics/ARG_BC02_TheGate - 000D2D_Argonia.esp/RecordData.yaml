@@ -1,0 +1,8 @@
+FormKey: 000D2D:Argonia.esp
+EditorID: ARG_BC02_TheGate
+Name:
+  TargetLanguage: English
+  Value: Let me into the keep.
+Branch: 000D2C:Argonia.esp
+Quest: 000D0A:Argonia.esp
+SubtypeName: CUST

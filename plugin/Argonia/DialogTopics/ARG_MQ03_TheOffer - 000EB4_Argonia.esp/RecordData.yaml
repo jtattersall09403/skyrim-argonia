@@ -1,0 +1,8 @@
+FormKey: 000EB4:Argonia.esp
+EditorID: ARG_MQ03_TheOffer
+Name:
+  TargetLanguage: English
+  Value: Who are you?
+Branch: 000EB3:Argonia.esp
+Quest: 000E01:Argonia.esp
+SubtypeName: CUST

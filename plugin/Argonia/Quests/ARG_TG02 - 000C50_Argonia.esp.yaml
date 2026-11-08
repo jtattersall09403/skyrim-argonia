@@ -1,0 +1,223 @@
+FormKey: 000C50:Argonia.esp
+EditorID: ARG_TG02
+VirtualMachineAdapter:
+  Scripts:
+  - Name: ARG_QF_TG02
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: AchievementsQuest
+      Object: 0FC85D:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Beads
+      Object: 000C5F:Argonia.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: BentSpine
+      Object: 000C50:Argonia.esp
+      Alias: 0
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Charm
+      Object: 000C5E:Argonia.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: ClientsParent
+      Object: 000C63:Argonia.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Dar
+      Object: 000C50:Argonia.esp
+      Alias: 3
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Figurine
+      Object: 000C60:Argonia.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Gold001
+      Object: 00000F:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Neeta
+      Object: 000C50:Argonia.esp
+      Alias: 1
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Okan
+      Object: 000C50:Argonia.esp
+      Alias: 2
+  FileName: ARG_QF_TG02
+  Fragments:
+  - Stage: 20
+    ScriptName: ARG_QF_TG02
+    FragmentName: Fragment_20
+  - Stage: 21
+    ScriptName: ARG_QF_TG02
+    FragmentName: Fragment_21
+  - Stage: 22
+    ScriptName: ARG_QF_TG02
+    FragmentName: Fragment_22
+  - Stage: 23
+    ScriptName: ARG_QF_TG02
+    FragmentName: Fragment_23
+  - Stage: 40
+    ScriptName: ARG_QF_TG02
+    FragmentName: Fragment_40
+  - Stage: 43
+    ScriptName: ARG_QF_TG02
+    FragmentName: Fragment_43
+  - Stage: 44
+    ScriptName: ARG_QF_TG02
+    FragmentName: Fragment_44
+  - Stage: 45
+    ScriptName: ARG_QF_TG02
+    FragmentName: Fragment_45
+  - Stage: 90
+    ScriptName: ARG_QF_TG02
+    FragmentName: Fragment_90
+  - Stage: 91
+    ScriptName: ARG_QF_TG02
+    FragmentName: Fragment_91
+  - Stage: 92
+    ScriptName: ARG_QF_TG02
+    FragmentName: Fragment_92
+  Aliases:
+  - Property:
+      Name: ''
+      Object: 000C50:Argonia.esp
+      Alias: 1
+    Scripts:
+    - Name: defaultSetStageOnDeathRefAlias
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: myQST
+        Object: 000C50:Argonia.esp
+      - MutagenObjectType: ScriptIntProperty
+        Name: preReqStage
+        Data: 20
+      - MutagenObjectType: ScriptIntProperty
+        Name: StageToSet
+        Data: 92
+  - Property:
+      Name: ''
+      Object: 000C50:Argonia.esp
+      Alias: 2
+    Scripts:
+    - Name: defaultSetStageOnDeathRefAlias
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: myQST
+        Object: 000C50:Argonia.esp
+      - MutagenObjectType: ScriptIntProperty
+        Name: preReqStage
+        Data: 20
+      - MutagenObjectType: ScriptIntProperty
+        Name: StageToSet
+        Data: 92
+  - Property:
+      Name: ''
+      Object: 000C50:Argonia.esp
+      Alias: 3
+    Scripts:
+    - Name: defaultSetStageOnDeathRefAlias
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: myQST
+        Object: 000C50:Argonia.esp
+      - MutagenObjectType: ScriptIntProperty
+        Name: preReqStage
+        Data: 20
+      - MutagenObjectType: ScriptIntProperty
+        Name: StageToSet
+        Data: 92
+Name:
+  TargetLanguage: English
+  Value: The Drowned Lockbox
+Priority: 50
+Type: SideQuest
+Stages:
+- Flags:
+  - StartUpStage
+  LogEntries:
+  - Flags: []
+- Index: 20
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: I'm in the Night-Reed Chapter now, under Pusbottom in Lilmoth. Bent-Spine, the Chapter's fence, wants the lockbox of a merchant whose stilt house fell into the deep water just north of Pusbottom, by the Chapter's trapdoor; it lies locked on the floor beside the house, and ripper eels hunt the water. Three clients on the bank want it. I'm to talk to each of them, Neeta-Haj, Okan-Tei and Dar-Zeel, and get out of each what they claim the box holds for them.
+- Index: 21
+  LogEntries:
+  - Flags: []
+- Index: 22
+  LogEntries:
+  - Flags: []
+- Index: 23
+  LogEntries:
+  - Flags: []
+- Index: 40
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: Neeta-Haj says the bone figurine in the lockbox was carved for her clutch, Okan-Tei that the charm was only pledged and never sold, and Dar-Zeel that the beads are old family work. The box lies locked on the floor of the deep water north of Pusbottom beside the fallen stilt house, and ripper eels hunt the water. I'm to swim down to it, slip past the eels, pick its lock and take the figurine, the charm and the beads, then settle it on the bank, by handing all three things to one client or by selling each client the thing they claimed.
+- Index: 43
+  LogEntries:
+  - Flags: []
+- Index: 44
+  LogEntries:
+  - Flags: []
+- Index: 45
+  LogEntries:
+  - Flags: []
+- Index: 90
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+    Entry:
+      TargetLanguage: English
+      Value: I brought up the lockbox's figurine, charm and beads from the deep water north of Pusbottom, past the ripper eels, and gave all three to one of the clients on the bank, who paid me for them. The other two will not forget it.
+- Index: 91
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+    Entry:
+      TargetLanguage: English
+      Value: I brought up the lockbox's figurine, charm and beads from the deep water north of Pusbottom, past the ripper eels, and sold each client the thing they claimed. Neeta-Haj, Okan-Tei and Dar-Zeel paid, and none of them will greet me kindly again.
+- Index: 92
+  LogEntries:
+  - Flags:
+    - FailQuest
+    Entry:
+      TargetLanguage: English
+      Value: With one of Neeta-Haj, Okan-Tei or Dar-Zeel dead before I had settled with them, the lockbox's pledges cannot be settled, and the job for Bent-Spine has come to nothing.
+Objectives:
+- Index: 20
+  DisplayText:
+    TargetLanguage: English
+    Value: Get each of the three clients on the bank north of Pusbottom to say what they claim from the box
+- Index: 41
+  DisplayText:
+    TargetLanguage: English
+    Value: Dive to the lockbox beside the fallen house, pick its lock and take the three things in it
+- Index: 42
+  DisplayText:
+    TargetLanguage: English
+    Value: On the bank, give the three things to one client, or sell each client the thing they claimed
+Aliases:
+- Name: BentSpine
+  Flags:
+  - AllowDisabled
+  ForcedReference: 000C68:Argonia.esp
+- ID: 1
+  Name: Neeta
+  Flags:
+  - AllowDisabled
+  ForcedReference: 000C6B:Argonia.esp
+- ID: 2
+  Name: Okan
+  Flags:
+  - AllowDisabled
+  ForcedReference: 000C6C:Argonia.esp
+- ID: 3
+  Name: Dar
+  Flags:
+  - AllowDisabled
+  ForcedReference: 000C6D:Argonia.esp
+- ID: 4
+  Name: Lockbox
+  Flags:
+  - AllowDisabled
+  ForcedReference: 000C73:Argonia.esp

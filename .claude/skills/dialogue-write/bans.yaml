@@ -117,3 +117,11 @@
     - You came back, my friend. Sit. (the friend greeting)
   detect: "(?i)\\b(?:my (?:good |dear |old )?(?:friend|brother|sister|cousin)|friend|brother|sister|dear one|dearest|egg-kin|clutch-?mate)\\b"
   max_per_file: 2
+
+- id: B11-macro
+  rule: No text macros; Skyrim shows them as written. Use the speaker's own word, or a variant line per player race.
+  bad:
+    - Hear me, [player race].
+  good:
+    - Hear me, outlander.
+  detect: '\[(player|player race|player rank|name|PCName|PCRace)\]'

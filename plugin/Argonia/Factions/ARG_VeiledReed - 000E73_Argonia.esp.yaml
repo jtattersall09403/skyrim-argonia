@@ -1,0 +1,16 @@
+FormKey: 000E73:Argonia.esp
+EditorID: ARG_VeiledReed
+Name:
+  TargetLanguage: English
+  Value: Veiled Reed
+Flags:
+- HiddenFromPC
+Ranks:
+- Number: 0
+  Title:
+    Male:
+      TargetLanguage: English
+      Value: Sworn Hand
+    Female:
+      TargetLanguage: English
+      Value: Sworn Hand

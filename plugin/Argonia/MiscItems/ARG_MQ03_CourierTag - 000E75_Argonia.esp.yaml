@@ -1,0 +1,8 @@
+FormKey: 000E75:Argonia.esp
+EditorID: ARG_MQ03_CourierTag
+Name:
+  TargetLanguage: English
+  Value: Courier's Brass Tag
+Model:
+  File: Meshes/Clutter/Key01.nif
+Weight: 0.1

@@ -1,8 +1,0 @@
-FormKey: 000D09:Argonia.esp
-EditorID: ARG_BC03_YieldPay
-Name:
-  TargetLanguage: English
-  Value: Here are fifty gold for your crew.
-Branch: 000D08:Argonia.esp
-Quest: 000CEC:Argonia.esp
-SubtypeName: CUST

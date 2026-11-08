@@ -37,42 +37,42 @@ LightingTemplate: 08810C:Skyrim.esm
 WaterHeight: 0
 Persistent:
 - MutagenObjectType: PlacedNpc
-  FormKey: 000C53:Argonia.esp
+  FormKey: 000C68:Argonia.esp
   MajorRecordFlagsRaw: 1024
   EditorID: ARG_TG_BentSpineRef
   SkyrimMajorRecordFlags:
   - 0x400
-  Base: 000C41:Argonia.esp
+  Base: 000C56:Argonia.esp
   EnableParent:
-    Reference: 000C4D:Argonia.esp
+    Reference: 000C62:Argonia.esp
     Unknown: 0x000000
   Placement:
     Position: 1487, 2048, 5
   MajorFlags:
   - Persistent
 - MutagenObjectType: PlacedNpc
-  FormKey: 000C54:Argonia.esp
+  FormKey: 000C69:Argonia.esp
   MajorRecordFlagsRaw: 1024
   EditorID: ARG_TG_ChapterLookout1Ref
   SkyrimMajorRecordFlags:
   - 0x400
-  Base: 000C42:Argonia.esp
+  Base: 000C57:Argonia.esp
   EnableParent:
-    Reference: 000C4D:Argonia.esp
+    Reference: 000C62:Argonia.esp
     Unknown: 0x000000
   Placement:
     Position: 1901, 2600, 5
   MajorFlags:
   - Persistent
 - MutagenObjectType: PlacedNpc
-  FormKey: 000C55:Argonia.esp
+  FormKey: 000C6A:Argonia.esp
   MajorRecordFlagsRaw: 1024
   EditorID: ARG_TG_ChapterLookout2Ref
   SkyrimMajorRecordFlags:
   - 0x400
-  Base: 000C43:Argonia.esp
+  Base: 000C58:Argonia.esp
   EnableParent:
-    Reference: 000C4D:Argonia.esp
+    Reference: 000C62:Argonia.esp
     Unknown: 0x000000
   Placement:
     Position: 1469, 2198, 5

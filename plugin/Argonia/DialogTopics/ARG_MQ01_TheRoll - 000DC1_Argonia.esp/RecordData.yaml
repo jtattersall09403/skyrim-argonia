@@ -1,8 +1,0 @@
-FormKey: 000DC1:Argonia.esp
-EditorID: ARG_MQ01_TheRoll
-Name:
-  TargetLanguage: English
-  Value: Why am I here?
-Branch: 000DC0:Argonia.esp
-Quest: 000D67:Argonia.esp
-SubtypeName: CUST

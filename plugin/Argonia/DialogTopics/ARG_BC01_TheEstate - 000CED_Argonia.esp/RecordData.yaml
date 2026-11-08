@@ -1,0 +1,8 @@
+FormKey: 000CED:Argonia.esp
+EditorID: ARG_BC01_TheEstate
+Name:
+  TargetLanguage: English
+  Value: Who is Rows-For-Another?
+Branch: 000CEC:Argonia.esp
+Quest: 000CDD:Argonia.esp
+SubtypeName: CUST

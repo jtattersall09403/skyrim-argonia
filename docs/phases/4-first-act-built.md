@@ -191,7 +191,6 @@ the quest is re-authored.
   rumours; `make check` green. Bands live in `story/data/quest_lines/mq03.json`, `lq25.json`, `lq30.json`
   (`lines@low`/`lines@high`), `dialogue_line` `variants_low`/`variants_high` (MQ04, MQ05) and
   `story/data/dialogue-writer/quest/tg/nightreed.lines.tsv` (`<key>@<band>.<n>`); the writers' files are `*.bands.tsv`.
-- **Known gaps, for the owner walk or later:** the middle lines of MQ04's root herald still carry the `[player race]`
-  macro, which Skyrim does not fill; positions at BC01's
+- **Known gaps, for the owner walk or later:** positions at BC01's
   landing, BC02's keep and the Reed's house (BM&V's tilted sinking cabin) were picked from navmesh, never walked; some
   routes still have short or long legs (084A86 goes east before west; one Hereguard leg is 1,043 paces).

@@ -1,0 +1,26 @@
+FormKey: 000C54:Argonia.esp
+EditorID: ARG_TG_KeepsWhatFloats
+Configuration:
+  Flags:
+  - AutoCalcStats
+  - Unique
+  - Protected
+  Level:
+    MutagenObjectType: NpcLevel
+    Level: 5
+  TemplateFlags:
+  - Traits
+  - SpellList
+  - ModelAnimation
+  - Inventory
+  - AttackData
+  - Keywords
+Voice: Null
+Template: 043E58:Skyrim.esm
+Race: 013740:Skyrim.esm
+AIData:
+  Responsibility: NoCrime
+Class: 013176:Skyrim.esm
+Name:
+  TargetLanguage: English
+  Value: Keeps-What-Floats

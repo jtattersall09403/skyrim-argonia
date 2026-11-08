@@ -15,7 +15,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: I wait for Sei-Wan, my kin. He walked out into the basin alone four hours ago, to prove himself to Helstrom's Agaceph, the tribe that rules this city and that we belong to.
+    Value: I am glad you asked, friend. I wait for Sei-Wan, my kin. He walked out into the basin alone four hours ago.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 2
@@ -23,7 +23,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: The custom of the Agaceph forbids our own to follow a walk-out. The levy will not go, and I may not. It does not apply to an outsider.
+    Value: He went to prove himself to Helstrom's Agaceph, the tribe that rules this city and that we belong to.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 3
@@ -31,7 +31,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: He went east from the gate, through the shallows. Vipers live in the roots there. Anyone who walks into the basin may die there. A warning is posted at the gate.
+    Value: The custom of the Agaceph forbids our own to follow a walk-out. The levy will not go, and I may not.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 4
@@ -39,7 +39,31 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: If you go, bring him home alive. If he can walk home himself, let the walk-out be his own.
+    Value: It does not apply to an outsider, and I trust you with this. I would not say it to just anyone.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 5
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: He went east from the gate, through the shallows. Vipers live in the roots there.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 6
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Be careful. Anyone who walks into the basin may die there. A warning is posted at the gate.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 7
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: If you go, please bring him home alive. If he can walk home himself, let the walk-out be his own.
   ScriptNotes: ''
   Edits: ''
 Conditions:
@@ -52,6 +76,12 @@ Conditions:
   Data:
     MutagenObjectType: GetStageConditionData
     Quest: 000C14:Argonia.esp
+- MutagenObjectType: ConditionFloat
+  CompareOperator: GreaterThanOrEqualTo
+  Data:
+    MutagenObjectType: GetRelationshipRankConditionData
+    TargetNpc: 000014:Skyrim.esm
+  ComparisonValue: 1
 Prompt:
   TargetLanguage: English
   Value: What are you waiting for here?

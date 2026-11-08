@@ -44,7 +44,7 @@ Music: 0B9DCE:Skyrim.esm
 ImageSpace: 000167:Skyrim.esm
 Persistent:
 - MutagenObjectType: PlacedObject
-  FormKey: 000D82:Argonia.esp
+  FormKey: 000E1B:Argonia.esp
   MajorRecordFlagsRaw: 1024
   EditorID: ARG_MQ01_StartMarker
   SkyrimMajorRecordFlags:
@@ -53,7 +53,7 @@ Persistent:
   Placement:
     Position: 2753, 3878, 7015
 - MutagenObjectType: PlacedObject
-  FormKey: 000D83:Argonia.esp
+  FormKey: 000E1C:Argonia.esp
   MajorRecordFlagsRaw: 1024
   EditorID: ARG_MQ01_HoldParent
   SkyrimMajorRecordFlags:
@@ -62,7 +62,7 @@ Persistent:
   Placement:
     Position: 2750, 3700, 6700
 - MutagenObjectType: PlacedObject
-  FormKey: 000D84:Argonia.esp
+  FormKey: 000E1D:Argonia.esp
   MajorRecordFlagsRaw: 1024
   EditorID: ARG_MQ01_CrewParent
   SkyrimMajorRecordFlags:
@@ -71,105 +71,105 @@ Persistent:
   Placement:
     Position: 2750, 3750, 6700
 - MutagenObjectType: PlacedNpc
-  FormKey: 000D85:Argonia.esp
+  FormKey: 000E1E:Argonia.esp
   MajorRecordFlagsRaw: 1024
   EditorID: ARG_MQ01_WuleenSeiRef
   SkyrimMajorRecordFlags:
   - 0x400
-  Base: 000D69:Argonia.esp
+  Base: 000E02:Argonia.esp
   EnableParent:
-    Reference: 000D84:Argonia.esp
+    Reference: 000E1D:Argonia.esp
     Unknown: 0x000000
   Placement:
     Position: 2826, 4261, 7020
   MajorFlags:
   - Persistent
 - MutagenObjectType: PlacedNpc
-  FormKey: 000D86:Argonia.esp
+  FormKey: 000E1F:Argonia.esp
   MajorRecordFlagsRaw: 1024
   EditorID: ARG_MQ01_UxXeekRef
   SkyrimMajorRecordFlags:
   - 0x400
-  Base: 000D6B:Argonia.esp
+  Base: 000E04:Argonia.esp
   EnableParent:
-    Reference: 000D84:Argonia.esp
+    Reference: 000E1D:Argonia.esp
     Unknown: 0x000000
   Placement:
     Position: 2992, 4072, 7016
   MajorFlags:
   - Persistent
 - MutagenObjectType: PlacedNpc
-  FormKey: 000D87:Argonia.esp
+  FormKey: 000E20:Argonia.esp
   MajorRecordFlagsRaw: 1024
   EditorID: ARG_MQ01_DivesWithoutARopeHoldRef
   SkyrimMajorRecordFlags:
   - 0x400
-  Base: 000D6F:Argonia.esp
+  Base: 000E08:Argonia.esp
   EnableParent:
-    Reference: 000D83:Argonia.esp
+    Reference: 000E1C:Argonia.esp
     Unknown: 0x000000
   Placement:
     Position: 2679, 3957, 7013
   MajorFlags:
   - Persistent
 - MutagenObjectType: PlacedNpc
-  FormKey: 000D88:Argonia.esp
+  FormKey: 000E21:Argonia.esp
   MajorRecordFlagsRaw: 1024
   EditorID: ARG_MQ01_FindsTheOtherBankHoldRef
   SkyrimMajorRecordFlags:
   - 0x400
-  Base: 000D71:Argonia.esp
+  Base: 000E0A:Argonia.esp
   EnableParent:
-    Reference: 000D83:Argonia.esp
+    Reference: 000E1C:Argonia.esp
     Unknown: 0x000000
   Placement:
     Position: 2762, 3829, 7016
   MajorFlags:
   - Persistent
 - MutagenObjectType: PlacedNpc
-  FormKey: 000D89:Argonia.esp
+  FormKey: 000E22:Argonia.esp
   MajorRecordFlagsRaw: 1024
   EditorID: ARG_MQ01_RiSakkaHoldRef
   SkyrimMajorRecordFlags:
   - 0x400
-  Base: 000D73:Argonia.esp
+  Base: 000E0C:Argonia.esp
   EnableParent:
-    Reference: 000D83:Argonia.esp
+    Reference: 000E1C:Argonia.esp
     Unknown: 0x000000
   Placement:
     Position: 3015, 3928, 7018
   MajorFlags:
   - Persistent
 - MutagenObjectType: PlacedNpc
-  FormKey: 000D8A:Argonia.esp
+  FormKey: 000E23:Argonia.esp
   MajorRecordFlagsRaw: 1024
   EditorID: ARG_MQ01_TsanjiHoldRef
   SkyrimMajorRecordFlags:
   - 0x400
-  Base: 000D74:Argonia.esp
+  Base: 000E0D:Argonia.esp
   EnableParent:
-    Reference: 000D83:Argonia.esp
+    Reference: 000E1C:Argonia.esp
     Unknown: 0x000000
   Placement:
     Position: 3061, 4403, 7021
   MajorFlags:
   - Persistent
 - MutagenObjectType: PlacedNpc
-  FormKey: 000D8B:Argonia.esp
+  FormKey: 000E24:Argonia.esp
   MajorRecordFlagsRaw: 1024
   EditorID: ARG_MQ01_LlarviMaryonHoldRef
   SkyrimMajorRecordFlags:
   - 0x400
-  Base: 000D75:Argonia.esp
+  Base: 000E0E:Argonia.esp
   EnableParent:
-    Reference: 000D83:Argonia.esp
+    Reference: 000E1C:Argonia.esp
     Unknown: 0x000000
   Placement:
     Position: 2586, 4374, 7013
   MajorFlags:
   - Persistent
 - MutagenObjectType: PlacedObject
-  FormKey: 000DF6:Argonia.esp
+  FormKey: 000E8F:Argonia.esp
   MajorRecordFlagsRaw: 3072
   EditorID: ARG_MQ03_DreamParent
   SkyrimMajorRecordFlags:
@@ -179,7 +179,7 @@ Persistent:
   Placement:
     Position: 2850, 3300, 6700
 - MutagenObjectType: PlacedObject
-  FormKey: 000DF7:Argonia.esp
+  FormKey: 000E90:Argonia.esp
   MajorRecordFlagsRaw: 1024
   EditorID: ARG_MQ03_DreamMarker
   SkyrimMajorRecordFlags:
@@ -188,79 +188,79 @@ Persistent:
   Placement:
     Position: 2756, 3291, 6999
 - MutagenObjectType: PlacedObject
-  FormKey: 000DF8:Argonia.esp
+  FormKey: 000E91:Argonia.esp
   MajorRecordFlagsRaw: 1024
   EditorID: ARG_MQ03_DreamRoot1
   SkyrimMajorRecordFlags:
   - 0x400
   Base: 1B331F:Black Marsh.esm
   EnableParent:
-    Reference: 000DF6:Argonia.esp
+    Reference: 000E8F:Argonia.esp
     Unknown: 0x000000
   Placement:
     Position: 2650, 3700, 7010
 - MutagenObjectType: PlacedObject
-  FormKey: 000DF9:Argonia.esp
+  FormKey: 000E92:Argonia.esp
   MajorRecordFlagsRaw: 1024
   EditorID: ARG_MQ03_DreamRoot2
   SkyrimMajorRecordFlags:
   - 0x400
   Base: 1B331F:Black Marsh.esm
   EnableParent:
-    Reference: 000DF6:Argonia.esp
+    Reference: 000E8F:Argonia.esp
     Unknown: 0x000000
   Placement:
     Position: 3100, 3700, 7010
 - MutagenObjectType: PlacedObject
-  FormKey: 000DFA:Argonia.esp
+  FormKey: 000E93:Argonia.esp
   MajorRecordFlagsRaw: 1024
   EditorID: ARG_MQ03_DreamRoot3
   SkyrimMajorRecordFlags:
   - 0x400
   Base: 1B331F:Black Marsh.esm
   EnableParent:
-    Reference: 000DF6:Argonia.esp
+    Reference: 000E8F:Argonia.esp
     Unknown: 0x000000
   Placement:
     Position: 2600, 4300, 7010
 - MutagenObjectType: PlacedObject
-  FormKey: 000DFB:Argonia.esp
+  FormKey: 000E94:Argonia.esp
   MajorRecordFlagsRaw: 1024
   EditorID: ARG_MQ03_DreamRoot4
   SkyrimMajorRecordFlags:
   - 0x400
   Base: 1B331F:Black Marsh.esm
   EnableParent:
-    Reference: 000DF6:Argonia.esp
+    Reference: 000E8F:Argonia.esp
     Unknown: 0x000000
   Placement:
     Position: 3150, 4300, 7010
 - MutagenObjectType: PlacedObject
-  FormKey: 000DFC:Argonia.esp
+  FormKey: 000E95:Argonia.esp
   MajorRecordFlagsRaw: 1024
   EditorID: ARG_MQ03_DreamRoot5
   SkyrimMajorRecordFlags:
   - 0x400
   Base: 1B331F:Black Marsh.esm
   EnableParent:
-    Reference: 000DF6:Argonia.esp
+    Reference: 000E8F:Argonia.esp
     Unknown: 0x000000
   Placement:
     Position: 2700, 4850, 7010
 - MutagenObjectType: PlacedObject
-  FormKey: 000DFD:Argonia.esp
+  FormKey: 000E96:Argonia.esp
   MajorRecordFlagsRaw: 1024
   EditorID: ARG_MQ03_DreamRoot6
   SkyrimMajorRecordFlags:
   - 0x400
   Base: 1B331F:Black Marsh.esm
   EnableParent:
-    Reference: 000DF6:Argonia.esp
+    Reference: 000E8F:Argonia.esp
     Unknown: 0x000000
   Placement:
     Position: 3100, 4850, 7010
 - MutagenObjectType: PlacedObject
-  FormKey: 000DFE:Argonia.esp
+  FormKey: 000E97:Argonia.esp
   MajorRecordFlagsRaw: 1024
   EditorID: ARG_MQ03_ZoneDoor
   SkyrimMajorRecordFlags:
@@ -271,7 +271,7 @@ Persistent:
       Properties:
       - MutagenObjectType: ScriptObjectProperty
         Name: myQuest
-        Object: 000D68:Argonia.esp
+        Object: 000E01:Argonia.esp
       - MutagenObjectType: ScriptIntProperty
         Name: prereqStageOPT
         Data: 40

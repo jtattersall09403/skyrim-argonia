@@ -1,8 +1,0 @@
-FormKey: 000CFF:Argonia.esp
-EditorID: ARG_BC03_Brawl
-Name:
-  TargetLanguage: English
-  Value: Accept the refusal. Work the season.
-Branch: 000CFE:Argonia.esp
-Quest: 000CEC:Argonia.esp
-SubtypeName: CUST

@@ -58,26 +58,26 @@ Persistent:
   - Persistent
   - InitiallyDisabled
 - MutagenObjectType: PlacedObject
-  FormKey: 000D50:Argonia.esp
+  FormKey: 000DDF:Argonia.esp
   MajorRecordFlagsRaw: 1024
   EditorID: ARG_MQ05_ShipDoorA
   SkyrimMajorRecordFlags:
   - 0x400
   Base: 1DE5DF:Black Marsh.esm
   TeleportDestination:
-    Door: 000D51:Argonia.esp
+    Door: 000DE0:Argonia.esp
     Position: 5870, 5825, 8054
   Placement:
     Position: 3326, 5254, 7066
 - MutagenObjectType: PlacedObject
-  FormKey: 000D51:Argonia.esp
+  FormKey: 000DE0:Argonia.esp
   MajorRecordFlagsRaw: 1024
   EditorID: ARG_MQ05_ShipDoorB
   SkyrimMajorRecordFlags:
   - 0x400
   Base: 1DE5DF:Black Marsh.esm
   TeleportDestination:
-    Door: 000D50:Argonia.esp
+    Door: 000DDF:Argonia.esp
     Position: 3206, 5254, 7066
   Placement:
     Position: 5990, 5825, 8054

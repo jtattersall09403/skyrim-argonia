@@ -1,0 +1,7 @@
+FormKey: 000CA5:Argonia.esp
+EditorID: ARG_TG02_TopicJobBranch
+Quest: 000C50:Argonia.esp
+Category: Player
+Flags:
+- TopLevel
+StartingTopic: 000CA6:Argonia.esp

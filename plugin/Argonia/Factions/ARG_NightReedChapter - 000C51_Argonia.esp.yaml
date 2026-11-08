@@ -1,0 +1,16 @@
+FormKey: 000C51:Argonia.esp
+EditorID: ARG_NightReedChapter
+Name:
+  TargetLanguage: English
+  Value: Night-Reed Chapter
+Flags:
+- HiddenFromPC
+Ranks:
+- Number: 0
+  Title:
+    Male:
+      TargetLanguage: English
+      Value: Lookout
+    Female:
+      TargetLanguage: English
+      Value: Lookout

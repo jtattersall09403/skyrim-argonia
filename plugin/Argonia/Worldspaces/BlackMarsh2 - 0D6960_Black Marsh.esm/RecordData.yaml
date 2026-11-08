@@ -121,7 +121,7 @@ TopCell:
     Placement:
       Position: -27857.562, 77814.81, 120.18408
   - MutagenObjectType: PlacedObject
-    FormKey: 000C2D:Argonia.esp
+    FormKey: 000C3A:Argonia.esp
     MajorRecordFlagsRaw: 3072
     EditorID: ARG_LQ25_CrocParent
     SkyrimMajorRecordFlags:
@@ -131,33 +131,33 @@ TopCell:
     Placement:
       Position: -36460, 64147, -205
   - MutagenObjectType: PlacedNpc
-    FormKey: 000C2E:Argonia.esp
+    FormKey: 000C3B:Argonia.esp
     MajorRecordFlagsRaw: 1024
     EditorID: ARG_LQ25_CrocodileRef
     SkyrimMajorRecordFlags:
     - 0x400
-    Base: 000C2B:Argonia.esp
+    Base: 000C38:Argonia.esp
     EnableParent:
-      Reference: 000C2D:Argonia.esp
+      Reference: 000C3A:Argonia.esp
       Unknown: 0x000000
     Placement:
       Position: -36460, 64147, -5
     MajorFlags:
     - Persistent
   - MutagenObjectType: PlacedObject
-    FormKey: 000C2F:Argonia.esp
+    FormKey: 000C3C:Argonia.esp
     MajorRecordFlagsRaw: 1024
     EditorID: ARG_LQ25_BaitBucketRef
     SkyrimMajorRecordFlags:
     - 0x400
-    Base: 000C2C:Argonia.esp
+    Base: 000C39:Argonia.esp
     EnableParent:
-      Reference: 000C2D:Argonia.esp
+      Reference: 000C3A:Argonia.esp
       Unknown: 0x000000
     Placement:
       Position: -36520, 64134, 25
   - MutagenObjectType: PlacedObject
-    FormKey: 000D47:Argonia.esp
+    FormKey: 000DD6:Argonia.esp
     MajorRecordFlagsRaw: 1024
     EditorID: ARG_MQ05_KaskaPost
     SkyrimMajorRecordFlags:
@@ -166,7 +166,7 @@ TopCell:
     Placement:
       Position: -29724, 79360, 1572
   - MutagenObjectType: PlacedObject
-    FormKey: 000D48:Argonia.esp
+    FormKey: 000DD7:Argonia.esp
     MajorRecordFlagsRaw: 1024
     EditorID: ARG_MQ05_EiTujaPost
     SkyrimMajorRecordFlags:
@@ -175,7 +175,7 @@ TopCell:
     Placement:
       Position: -29251, 78264, 1572
   - MutagenObjectType: PlacedObject
-    FormKey: 000D49:Argonia.esp
+    FormKey: 000DD8:Argonia.esp
     MajorRecordFlagsRaw: 1024
     EditorID: ARG_MQ05_YoungHist
     SkyrimMajorRecordFlags:
@@ -185,7 +185,7 @@ TopCell:
     Placement:
       Position: -29927, 79260, 1572
   - MutagenObjectType: PlacedObject
-    FormKey: 000D4A:Argonia.esp
+    FormKey: 000DD9:Argonia.esp
     MajorRecordFlagsRaw: 1024
     EditorID: ARG_MQ05_ZoneGrove
     SkyrimMajorRecordFlags:
@@ -196,7 +196,7 @@ TopCell:
         Properties:
         - MutagenObjectType: ScriptObjectProperty
           Name: myQuest
-          Object: 000D0C:Argonia.esp
+          Object: 000D8D:Argonia.esp
         - MutagenObjectType: ScriptIntProperty
           Name: prereqStageOPT
           Data: 20
@@ -212,29 +212,29 @@ TopCell:
     Placement:
       Position: -29500, 78800, 1672
   - MutagenObjectType: PlacedNpc
-    FormKey: 000D4B:Argonia.esp
+    FormKey: 000DDA:Argonia.esp
     MajorRecordFlagsRaw: 1024
     EditorID: ARG_MQ05_KaskaMeenRef
     SkyrimMajorRecordFlags:
     - 0x400
-    Base: 000D44:Argonia.esp
+    Base: 000DD3:Argonia.esp
     Placement:
       Position: -29724, 79360, 1572
     MajorFlags:
     - Persistent
   - MutagenObjectType: PlacedNpc
-    FormKey: 000D4C:Argonia.esp
+    FormKey: 000DDB:Argonia.esp
     MajorRecordFlagsRaw: 1024
     EditorID: ARG_MQ05_EiTujaRef
     SkyrimMajorRecordFlags:
     - 0x400
-    Base: 000D45:Argonia.esp
+    Base: 000DD4:Argonia.esp
     Placement:
       Position: -29251, 78264, 1572
     MajorFlags:
     - Persistent
   - MutagenObjectType: PlacedObject
-    FormKey: 000D4D:Argonia.esp
+    FormKey: 000DDC:Argonia.esp
     MajorRecordFlagsRaw: 3072
     EditorID: ARG_MQ05_WayParent
     SkyrimMajorRecordFlags:
@@ -244,28 +244,28 @@ TopCell:
     Placement:
       Position: -27821, 74017, -193
   - MutagenObjectType: PlacedNpc
-    FormKey: 000D4E:Argonia.esp
+    FormKey: 000DDD:Argonia.esp
     MajorRecordFlagsRaw: 1024
     EditorID: ARG_MQ05_Wasp1
     SkyrimMajorRecordFlags:
     - 0x400
-    Base: 000D46:Argonia.esp
+    Base: 000DD5:Argonia.esp
     EnableParent:
-      Reference: 000D4D:Argonia.esp
+      Reference: 000DDC:Argonia.esp
       Unknown: 0x000000
     Placement:
       Position: -27821, 74017, 7
     MajorFlags:
     - Persistent
   - MutagenObjectType: PlacedNpc
-    FormKey: 000D4F:Argonia.esp
+    FormKey: 000DDE:Argonia.esp
     MajorRecordFlagsRaw: 1024
     EditorID: ARG_MQ05_Wasp2
     SkyrimMajorRecordFlags:
     - 0x400
-    Base: 000D46:Argonia.esp
+    Base: 000DD5:Argonia.esp
     EnableParent:
-      Reference: 000D4D:Argonia.esp
+      Reference: 000DDC:Argonia.esp
       Unknown: 0x000000
     Placement:
       Position: -27372, 73861, 53
@@ -286,7 +286,7 @@ TopCell:
     MajorRecordFlagsRaw: 1024
     SkyrimMajorRecordFlags:
     - 0x400
-    Base: 000C29:Argonia.esp
+    Base: 000C36:Argonia.esp
     Placement:
       Position: -37269.316, 63904.95, 161.9195
     MajorFlags:
@@ -296,7 +296,7 @@ TopCell:
     MajorRecordFlagsRaw: 1024
     SkyrimMajorRecordFlags:
     - 0x400
-    Base: 000C2A:Argonia.esp
+    Base: 000C37:Argonia.esp
     Placement:
       Position: -36824.04, 64087.633, 194.38165
     MajorFlags:

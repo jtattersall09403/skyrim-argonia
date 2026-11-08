@@ -1,8 +1,0 @@
-FormKey: 000D5A:Argonia.esp
-EditorID: ARG_MQ05_BasinTopic
-Name:
-  TargetLanguage: English
-  Value: the basin
-Branch: 000D59:Argonia.esp
-Quest: 000D0C:Argonia.esp
-SubtypeName: CUST
