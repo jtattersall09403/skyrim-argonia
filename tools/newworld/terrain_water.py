@@ -9,7 +9,7 @@ How the map's water (`out/newworld/raster/water.png`, one pixel 2.93 m) is cut i
    region named Bay and wherever sea water lies inside a land region. Open water joined to no sea is `lake`
    (under 0.05 km2 it is a `pond`).
 3. Channels and narrow water. Connected channel pixels are a `river`; where a channel meets sea water, its last
-   ~220 m (75 px) is an `estuary`, its tidal reach; connected narrow pixels are a `stream`. A narrow or channel part that touches no other water and is
+   ~220 m (75 px) is an `estuary`, its tidal reach, one body per mouth (pieces within 12 px join); connected narrow pixels are a `stream`. A narrow or channel part that touches no other water and is
    compact is a `pond`.
 4. Swamps. In a tree swamp region (swamp, wood) a pond or small lake (under 2 km2) is `blackwater-swamp`; in an open
    wet region (bayou, mangroves, basin, marsh) it is `green-marsh`.
@@ -116,8 +116,14 @@ def label_bodies(water: np.ndarray, region_code: np.ndarray, region_names: list,
     for mask, kind, why in ((chan & near_sea, "estuary", "a river's mouth: the last ~220 m of a channel that meets the sea"),
                             (chan & ~near_sea, "river", "a channel over ~23 m wide"),
                             (narrow, "stream", "a channel under ~23 m wide")):
-        lab, n = ndi.label(mask, EIGHT)
+        if kind == "estuary":                         # one body per mouth: pieces split by width changes join
+            lab, n = ndi.label(ndi.binary_dilation(mask, EIGHT, iterations=6), EIGHT)
+            lab = np.where(mask, lab, 0)
+        else:
+            lab, n = ndi.label(mask, EIGHT)
         for k, sl in enumerate(ndi.find_objects(lab), 1):
+            if sl is None:
+                continue
             add(lab[sl] == k, kind, why, sl)
 
     # slivers join the neighbour they touch most

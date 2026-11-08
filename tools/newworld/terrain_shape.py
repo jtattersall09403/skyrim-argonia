@@ -19,9 +19,8 @@ until none fail or a pixel is held both ways (reported with its px).
 Places. Needs come from `place_terrain_need`; a place with no row there takes its kind's fallback (FALLBACK_NEEDS):
 - flat-pad: land in the footprint is set to the footprint's median height (at least fb + 0.5 m), feathered over
   max(20 m, half the radius); water in it is left alone (stilts);
-- entrance-in-slope: the facing is the one of 24 headings whose 40 m ray is driest and falls most (or the table's
-  facing_deg); a bank 10 m high is raised behind the entrance, steep on its face, and a 6 m apron in front is
-  levelled to the entrance's ground;
+- entrance-in-slope: a knoll 8 m high added to the ground behind the entrance, its face 6 m deep holding the
+  opening, its back and sides easing out over 45 and 28 m; in front a corridor eased to at most 1 in 3;
 - rise: a mound of 3 to 12 m over the footprint; shore-access: a low pad 0.4 m above the water;
 - seabed: the bed under the place is lowered to the needed depth (sunken ruin 8 m, wreck 5 m);
 - island: nothing (the map's islands are kept by the water guarantee).
@@ -318,18 +317,20 @@ def entrance(h, water_s, grid, i0, j0, facing_deg, protect=None):
     fi, fj = -math.cos(a), math.sin(a)          # facing in (row, col)
     ground = float(ndi.map_coordinates(h, [[i0], [j0]], order=1)[0])
     ground = max(ground, FREEBOARD + 0.5 * U)
-    back_m, height_m, spread_m = 12.0, 10.0, 30.0
-    ci, cj = i0 - fi * back_m / grid.m, j0 - fj * back_m / grid.m
-    sl, di, dj = _disc(grid, ci, cj, (spread_m + 2) / grid.m)
+    # a knoll behind the entrance: its face (6 m deep) holds the opening, its back falls away over 45 m, its
+    # sides over 28 m; added to the ground so the land's own undulation carries over it (no rim, no plateau)
+    face_m, back_m, side_m, height_m = 6.0, 45.0, 28.0, 8.0
+    ci, cj = i0 - fi * face_m / grid.m, j0 - fj * face_m / grid.m
+    sl, di, dj = _disc(grid, ci, cj, (back_m + 2) / grid.m)
     along = (di * fi + dj * fj) * grid.m
     across = (di * fj - dj * fi) * grid.m
-    a_eff = np.where(along > 0, along * 2.5, along)
-    rr = np.hypot(a_eff, across) / spread_m
-    bump = height_m * U * (1 - _ease(rr))
+    rr = np.hypot(np.where(along > 0, along / face_m, along / back_m), across / side_m)
+    x = np.clip(rr, 0, 1)
+    bump = height_m * U * (1 - x * x * x * (x * (6 * x - 15) + 10))
     land = ~water_s[sl]
     if protect is not None:
         land = land & ~protect[sl]                    # a road's bed is never buried
-    h[sl] = np.where(land, np.maximum(h[sl], ground + bump), h[sl])
+    h[sl] = np.where(land, h[sl] + bump, h[sl])
     # the corridor: 2..30 m out, 5 m either side, eased to the entrance's ground at no more than 1 in 3
     sl, di, dj = _disc(grid, i0, j0, 32 / grid.m)
     along = (di * fi + dj * fj) * grid.m

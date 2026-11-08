@@ -748,6 +748,72 @@ def densify(pts, step: float = STEP_PX):
     return out
 
 
+def red_square_box(s: dict):
+    """(left, top, right, bottom) of a settlement's culture square when its tint hides the road, else None."""
+    tint = s.get("tint_rgb")
+    reddish = (tint and math.dist(tint, ROAD_RGB) < 50) or "red" in (s.get("square") or "")
+    if not s.get("square_cells") or not reddish:
+        return None
+    h = 20 * s["square_cells"] + 2
+    return s["px"] - h, s["py"] - h, s["px"] + h, s["py"] + h
+
+
+def land_route_in_red_squares(nodes: list, edges: list, symbols: list, water: np.ndarray,
+                              ink: np.ndarray) -> list:
+    """Inside a red-tinted culture square the road cannot be read, so every stretch of an edge inside the
+    square (from where it enters to the glyph, a junction or where it leaves) is re-routed: the shortest path
+    over dry land keeping >= 2 px from water (water is crossed only where road ink shows a bridge), smoothed
+    and resampled; its two ends stay where they were."""
+    from skimage.graph import route_through_array
+    clear = ndi.distance_transform_edt(~water) >= 2.5
+    cost_all = np.where(clear, 1.0, np.where(water & ~ndi.binary_dilation(ink, iterations=1), 1e4, 30.0))
+    boxes = [b for b in (red_square_box(s) for s in symbols) if b]
+    near_ink = ndi.binary_dilation(ink, iterations=2)
+    out = []
+    for e in edges:
+        pts = [list(p) for p in e["points"]]
+        for box in boxes:
+            inside = [box[0] <= x <= box[2] and box[1] <= y <= box[3] for x, y in pts]
+            if sum(inside) < 3:
+                continue
+            new, k = [], 0
+            while k < len(pts):
+                if not inside[k]:
+                    new.append(pts[k])
+                    k += 1
+                    continue
+                a = k
+                while k < len(pts) and inside[k]:
+                    k += 1
+                lo, hi = max(a - 1, 0), min(k, len(pts) - 1)      # the run plus its outside neighbours
+                on_ink = np.mean([near_ink[int(y), int(x)] for x, y in pts[a:k]])
+                # where the road still reads (a quarter of the run on ink) the trace is kept
+                if on_ink >= 0.25 or math.dist(pts[max(a - 1, 0)], pts[min(k, len(pts) - 1)]) < 3:
+                    new += pts[a:k]
+                    continue
+                p0, p1 = pts[lo], pts[hi]
+                x0 = int(max(0, min(box[0], p0[0], p1[0]) - 6))
+                y0 = int(max(0, min(box[1], p0[1], p1[1]) - 6))
+                x1 = int(min(water.shape[1], max(box[2], p0[0], p1[0]) + 7))
+                y1 = int(min(water.shape[0], max(box[3], p0[1], p1[1]) + 7))
+                try:
+                    path, _ = route_through_array(cost_all[y0:y1, x0:x1], (int(p0[1]) - y0, int(p0[0]) - x0),
+                                                  (int(p1[1]) - y0, int(p1[0]) - x0),
+                                                  fully_connected=True, geometric=True)
+                except ValueError:
+                    new += pts[a:k]
+                    continue
+                route = smooth_resample([(gy + y0, gx + x0) for gy, gx in path], sigma=2.0)
+                route[0], route[-1] = p0, p1
+                if new and new[-1] == p0:
+                    new.pop()
+                new += route
+                k = hi + 1
+            pts = new
+        out.append({**e, "points": pts})
+    return out
+
+
 # ---------------------------------------------------------------- borders
 
 def border_lines(core: np.ndarray, glyphs: np.ndarray, dil: int = 4, min_len: int = 30) -> list:
@@ -803,6 +869,7 @@ def main() -> None:
     al, _ = blend_fit(a, bg)
     weight = np.clip(al, 0, 1) * ink_near
     nodes, edges = build_roads(sk, ink_near, skip, symbols, weight)
+    edges = land_route_in_red_squares(nodes, edges, symbols, water, ink)
     (f.OUT / "roads.json").write_text(json.dumps({"nodes": nodes, "edges": edges}))
 
     borders = {"province": border_lines(province, glyphs), "region": border_lines(region, glyphs)}

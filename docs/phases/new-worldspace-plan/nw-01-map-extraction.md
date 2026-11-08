@@ -36,13 +36,13 @@ Grid: 40 px per Morrowind cell (8192 units); the edge labels print the absolute 
 | 3 Place research: 258 places, 9 aspects each, tiered and sourced; text-review done | done |
 | 3b Region research: 24 regions, 11 aspects and relief numbers | done |
 | 3c Danger bands, every cell (danger.py): D0 85 cells, D1 1035, D2 822, D3 887, D4 411, D5 108 (Murkwood's heart) | done |
-| 4 Terrain (terrain*.py): heightmap 5377 x 3841 at 128 units, water level 0, map water and land exact, roads, pads, 49 entrances, islands and seabed built in, 2470 water bodies with flow (owner edits in water_overrides.json); measurements in research/terrain-measurements.md | done |
+| 4 Terrain (terrain*.py): heightmap 5377 x 3841 at 128 units, water level 0, map water and land exact, roads, pads, 49 entrances, islands and seabed built in, 2319 water bodies with flow, one estuary a river mouth (owner edits in water_overrides.json); measurements in research/terrain-measurements.md | done |
 | 5 Interactive map (map_page.py), published: https://claude.ai/artifact/HytwbVPXzurvxNZWfvzo6g | done |
 
 Build everything from the sources: `python3 -m tools.newworld.raster`, `tiles`, `glyphs`, `consolidate`, `regions`,
 `roads`, `terrain`, `build_db`, `map_page` (each `tools.newworld.<name>`, with the venv's python).
 
-Known, for the owner's review in nw-02 (not faults of this phase's data): inside red-tinted culture squares the last
-stretch of a road runs straight to the glyph (the map's road cannot be told from the tint there); entrance banks
-read as small rings in the hillshade; water-body kinds and flow are defaults (222 estuary pieces, where each river
-mouth is several bodies) for the owner to set by hand.
+Checked and closed on the final build: inside the red culture squares each road follows the drawn ink to the glyph's
+edge (only the last pixels to its centre are straight, inside the settlement's own footprint); entrance banks are
+knolls blended into the land, no rings; each river mouth is one estuary body (71 in all). Water-body kinds and flow
+are defaults by design: the owner sets them by hand in `newworld/sources/water_overrides.json` (nw-02).
