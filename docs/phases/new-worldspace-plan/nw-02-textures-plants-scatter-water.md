@@ -63,8 +63,9 @@ in the game's map menu is drawn from the terrain LOD, so it is built with the LO
 
 How the owner gets there: the new world is its own plugin, `ArgoniaNewWorld.esm`, written by Mutagen from the
 generated data (too big for Spriggit YAML, as the old ArgoniaWorld.esm was), played from its own MO2 profile and
-Moonlight card ("Argonia: New World": the BM&V stack plus King of the Murkmire, Tropical Skyrim, Depths of Skyrim and
-the other world-asset mods, which left the stack at the pivot and the brief needs back); the BM&V card is unchanged.
+Moonlight card ("Argonia: New World": the BM&V stack plus the assets of King of the Murkmire, Tropical Skyrim, Depths of Skyrim
+and the other world-asset mods, their plugins off; our plugin copies the base records it uses and masters none of
+them); the BM&V card is unchanged.
 The owner reaches the world with `coc ArgoniaNWStart`. Built artefacts live in `out/newworld/` and the
 bucket, never in git.
 
