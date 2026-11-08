@@ -48,19 +48,16 @@
 {"quest_id":"quest.local.lh38","section":"timeline","ord":3,"value":"t4"}
 {"quest_id":"quest.local.lh38","section":"timeline","ord":4,"value":"t6"}
 {"quest_id":"quest.local.lh38","section":"timeline","ord":5,"value":"t7"}
-{"quest_id":"quest.local.lq25","section":"clueChoices","ord":0,"value":"the offal and the crew's bait bucket by the pilings"}
-{"quest_id":"quest.local.lq25","section":"clueChoices","ord":1,"value":"in the crocodile's lair under the pier"}
+{"quest_id":"quest.local.lq25","section":"clueChoices","ord":0,"value":"the crew's bait bucket, in the crocodile's lair under the plank walk"}
 {"quest_id":"quest.local.lq30","section":"beats","ord":0,"value":"Haj-Wan at the gate"}
-{"quest_id":"quest.local.lq30","section":"beats","ord":1,"value":"the cut reeds through the basin"}
-{"quest_id":"quest.local.lq30","section":"beats","ord":2,"value":"the viper at the shelter"}
-{"quest_id":"quest.local.lq30","section":"beats","ord":3,"value":"the choice to slip away or bring him home"}
-{"quest_id":"quest.local.lq30","section":"breakPoints","ord":0,"value":"the youth sees the player"}
-{"quest_id":"quest.local.lq30","section":"breakPoints","ord":1,"value":"the youth is brought home"}
-{"quest_id":"quest.local.lq30","section":"leads","ord":0,"value":"Haj-Wan says he cut reeds to mark his way"}
-{"quest_id":"quest.local.lq30","section":"leads","ord":1,"value":"the cut reeds themselves"}
+{"quest_id":"quest.local.lq30","section":"beats","ord":1,"value":"the shallows east of the gate"}
+{"quest_id":"quest.local.lq30","section":"beats","ord":2,"value":"the viper in the roots"}
+{"quest_id":"quest.local.lq30","section":"beats","ord":3,"value":"the choice to slip back to the gate or bring him home"}
+{"quest_id":"quest.local.lq30","section":"breakPoints","ord":0,"value":"the youth is talked into coming home"}
+{"quest_id":"quest.local.lq30","section":"leads","ord":0,"value":"Haj-Wan says he went east through the shallows"}
 {"quest_id":"quest.local.lq30","section":"nodes","ord":0,"value":"the gate"}
-{"quest_id":"quest.local.lq30","section":"nodes","ord":1,"value":"the cut reeds"}
-{"quest_id":"quest.local.lq30","section":"nodes","ord":2,"value":"the reed shelter"}
+{"quest_id":"quest.local.lq30","section":"nodes","ord":1,"value":"the shallows east of the gate"}
+{"quest_id":"quest.local.lq30","section":"nodes","ord":2,"value":"the roots where Sei-Wan is pinned"}
 {"quest_id":"quest.local.lq30","section":"openQuestions","ord":0,"value":"whether the walk-out still counts if the player is seen"}
 {"quest_id":"quest.main.mq01","section":"beats","ord":0,"value":"separation: the processing (the player is read as blank and loses a name)"}
 {"quest_id":"quest.main.mq01","section":"beats","ord":1,"value":"liminal: the camp at dusk, the player a debtor without a home Hist, among families whose cutting is their only home Hist, where the reading names Sal-Sei, keeper of the clutch, and Deesh-Duun aloud"}

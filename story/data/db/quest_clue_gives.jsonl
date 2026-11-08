@@ -46,7 +46,7 @@
 {"quest_id":"quest.local.lq25","clues_ord":1,"ord":0,"value":"fact.lq25.crew-baited"}
 {"quest_id":"quest.local.lq25","clues_ord":2,"ord":0,"value":"fact.lq25.crew-baited"}
 {"quest_id":"quest.local.lq30","clues_ord":0,"ord":0,"value":"fact.lq30.trail"}
-{"quest_id":"quest.local.lq30","clues_ord":1,"ord":0,"value":"fact.lq30.trail"}
+{"quest_id":"quest.local.lq30","clues_ord":1,"ord":0,"value":"fact.lq30.walked-out"}
 {"quest_id":"quest.local.lq30","clues_ord":2,"ord":0,"value":"fact.lq30.cornered"}
 {"quest_id":"quest.main.mq01","clues_ord":0,"ord":0,"value":"fact.mq01.satchel"}
 {"quest_id":"quest.main.mq01","clues_ord":0,"ord":1,"value":"fact.mq01.her-face"}

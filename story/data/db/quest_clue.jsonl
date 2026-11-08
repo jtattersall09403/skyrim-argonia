@@ -38,7 +38,7 @@
 {"quest_id":"quest.local.lq25","ord":1,"id":"k2","form":"item","carrier":"thing.lq25.bait"}
 {"quest_id":"quest.local.lq25","ord":2,"id":"k3","form":"line","carrier":"npc.hist-heartland.helstrom.lq25-crew-steerer"}
 {"quest_id":"quest.local.lq30","ord":0,"id":"k1","form":"line","carrier":"npc.hist-heartland.helstrom.lq30-kin"}
-{"quest_id":"quest.local.lq30","ord":1,"id":"k2","form":"place","carrier":"thing.lq30.trail"}
+{"quest_id":"quest.local.lq30","ord":1,"id":"k2","form":"line","carrier":"npc.hist-heartland.helstrom.levy-warden-01"}
 {"quest_id":"quest.local.lq30","ord":2,"id":"k3","form":"place","carrier":"thing.lq30.beast"}
 {"quest_id":"quest.main.mq01","ord":0,"id":"k1","form":"behaviour","carrier":"npc.hist-heartland.cult-raid-camp-unbound.leader-unbound-root"}
 {"quest_id":"quest.main.mq01","ord":1,"id":"k2","form":"line","carrier":"npc.pirate-freeholds.opening-work-camp.npc-opening-witness"}

@@ -112,3 +112,7 @@ the quest is re-authored.
   One quest-review pass: 5 blocking, 3 major, 1 minor, all fixed (R6-1, R6-2 in each review). `brief.py` fixed to
   read Skyrim skill names, to exempt scene stages, and to accept things with no states. Briefs:
   `story/data/dialogue-writer/quest/mq01/` (11) and `mq03/` (6).
+- LQ30 and LQ25 records re-authored to proven blocks (2026-11-08; each record's review finding B1): both Start Game
+  Enabled with an opening topic; LQ30's gate zone unconditioned (prereq 40), detection and the reed trail cut, youth
+  among the roots of 0D7883, a death fail-forward 93; LQ25's lair moved to the shallows under the crew's plank walk in
+  0D77AF (0D7723 is a hillside), own bases for the crocodile and crew, a captain-death fail-forward 93. Build next.

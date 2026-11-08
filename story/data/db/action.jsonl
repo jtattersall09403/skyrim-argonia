@@ -122,11 +122,13 @@
 {"list_id":"quest_ending:quest.local.lq25|1:rewards","ord":0,"term":"giveGold"}
 {"list_id":"quest_ending:quest.local.lq25|1:rewards","ord":1,"term":"changeDisposition"}
 {"list_id":"quest_ending:quest.local.lq25|1:world","ord":0,"term":"disableRef"}
+{"list_id":"quest_ending:quest.local.lq25|2:world","ord":0,"term":"disableRef"}
 {"list_id":"quest_ending:quest.local.lq30|0:world","ord":0,"term":"moveRef"}
 {"list_id":"quest_ending:quest.local.lq30|1:rewards","ord":0,"term":"giveGold"}
 {"list_id":"quest_ending:quest.local.lq30|1:rewards","ord":1,"term":"changeDisposition"}
 {"list_id":"quest_ending:quest.local.lq30|1:rewards","ord":2,"term":"changeDisposition"}
 {"list_id":"quest_ending:quest.local.lq30|1:world","ord":0,"term":"moveRef"}
+{"list_id":"quest_ending:quest.local.lq30|2:world","ord":0,"term":"disableRef"}
 {"list_id":"quest_ending:quest.main.mq01|0:rewards","ord":0,"term":"giveItem"}
 {"list_id":"quest_ending:quest.main.mq01|0:world","ord":0,"term":"enableRef"}
 {"list_id":"quest_ending:quest.main.mq01|0:world","ord":1,"term":"disableRef"}
