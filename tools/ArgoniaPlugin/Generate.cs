@@ -159,6 +159,7 @@ static class Generate
             }
         // Talk (Talk.cs): BM&V's people's own topics, from the story data; allocated last so earlier ids never move.
         Talk.Add(mod, mods);
+        WorldFix.Add(mod, mods);  // WorldFix.cs: overrides of BM&V's world (window meshes), no new forms
         // Name fix: BM&V's villager base 02A1EE (sixteen placements) is spelt "Aragonian Vliiager"; an override of its name
         // only, copied from the last plugin in the load order that defines it (not the master alone).
         {

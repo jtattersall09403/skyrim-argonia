@@ -67,6 +67,15 @@ The owner's first walk is the whole stack *inside* Black Marsh, so the stack and
   the markers; owed: the owner looks in the walk, and LOD is generated only if it is bare.
 - BM&V's known gap: 203 of its texture-set records name diffuse textures no archive holds
   ([research/bmv](../research/bmv/)); it is left as BM&V ships it unless the owner finds it ugly
+- BM&V's window gap (owner walk 2026-11-07, "Lilmoth docks windows look like they have some piece missing"): BM&V
+  ships 105 loose NIFs edited for Enhanced Lighting (ELFX), many at vanilla paths (Solitude, Whiterun, Riften houses,
+  imperial tents), naming `textures\effects\ELFX\windows\*` and `cubemaps\tundra_e.dds`, which nothing staged holds;
+  the panes draw flat pale blue. In BM&V's worlds 14 bases, 48 refs use them: Lilmoth 10 (5 Solitude houses, a pot),
+  tents 39 (Murkwood, Temple, Black Marsh North's marsh, Murkmire, Longmont, Castle, Valenwood), Riften farmhouses 2
+  (Dock2), 2 single Valenwood refs. Fixed by record (`tools/ArgoniaPlugin/WorldFix.cs`): SBrylingHouse, SStyrrsHouse,
+  SHouseForSale (5 Lilmoth refs) take BM&V's own clean "GKB" copies of their meshes. Owed, a file call: SErikurHouse
+  and SVittoriaViciHouseDestroyed (4 Lilmoth refs) and the rest have no clean copy; hiding BM&V's ELFX NIFs that
+  shadow a vanilla path in the stage (vanilla meshes then draw) would fix all of them at once.
 - In parallel: **The census, into the story data.** Redone 2026-11-05 over the whole of BM&V
   ([census](../research/bmv/census.md)): the first pass read `Black Marsh.esm` alone, from a trimmed BM&V. BM&V is
   four plugins (BosmerArmorMATY743.esm, Black Marsh.esm, Black Marsh North.esp, Valenwood.esp);
