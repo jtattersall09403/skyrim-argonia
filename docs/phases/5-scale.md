@@ -14,6 +14,9 @@ band; items. Each milestone is one owner test.
   minor, regional and standalone quests for BM&V's places towards Morrowind's density (old design target: about 20
   quests per km²), planned at this point from what Phase 2's capacity measure and ledger show is free; written with the
   same skills and the same whole-set checks so they never clash with the authored lines.
-- **The world map (owner, 2026-11-06: leave it until this phase).** The in-game world map is still Skyrim's map with
-  BM&V's markers drawn on it, and Black Marsh North.esp's map marker for Lilmoth (`0934A4`) is named "Lolmoth". Make our
-  own map of Black Marsh (or fix the one BM&V ships, if it has one) and correct the marker's name, as part of this phase.
+- **The world map, if Phase 4's W-wrld-map is not enough.** If the native map still shows Tamriel or draws BM&V
+  bare after the MNAM and lodsettings fix, generate terrain and object LOD for the four worlds with xLODGen on the
+  play machine from the owner's own files (nothing committed, decision 0003). A 2d parchment map with fog of war (the
+  old repo's route: Flat World Map Framework, Nexus 29932, plus Flat Map Markers and our own fog-of-war chart over the
+  map menu, `git show 93253542`) is days of work, needs a paper image per world (an owner ruling: we make no art) and
+  its 1.7.104 support is unknown; only if the owner asks for it after seeing the native map.

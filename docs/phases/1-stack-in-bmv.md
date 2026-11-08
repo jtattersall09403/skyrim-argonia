@@ -60,11 +60,14 @@ The owner's first walk is the whole stack *inside* Black Marsh, so the stack and
   (forward 80.1, back 45.45 and 71.93), so a drawn weapon walks; Dark Souls Movement's own 300 run loses. The mod's summary
   (Nexus 53528): "you can walk, you can sprint, you just can't run around". Its Mern edit (1HM run about 170) is the
   faster variant, a one-row `pick` in `stack.py` if the owner wants it.
-- **The map.** Skyrim's world map shows BM&V's worldspace when the player is in it (BM&V's own map if it ships
-  one; otherwise the vanilla map of that worldspace). Doors and boats to Skyrim are left as BM&V made them.
-  Read 2026-11-05: BM&V's `BlackMarsh` worldspace carries map data (camera heights 50000 to 80000, bounds) and
-  `Argonia.esp` keeps it unchanged, but the staged BM&V files hold no terrain LOD, so the map may show little but
-  the markers; owed: the owner looks in the walk, and LOD is generated only if it is bare.
+- **The map.** Owner, 2026-11-07 walk: in BlackMarsh the M map shows Skyrim's Tamriel with BM&V's markers. Measured
+  2026-11-08 (research lane): BM&V's four worldspaces have no parent and an all-zero MNAM (no usable map bounds; only
+  the camera heights 50000 to 80000 are set), and SkyrimSE.exe's `sMapWorldDefaultWorldSpace` default is Tamriel, so
+  the map falls back to Tamriel (inferred; the plan's first owner check settles it). BM&V does ship terrain LOD (levels
+  4 to 32, .btr under meshes/terrain/<world>, object LOD .bto for three worlds), but only Valenwood has a
+  `lodsettings/*.lod` file. The earlier line here ("map data ... bounds", "no terrain LOD") was wrong. The fix is
+  planned as block W-wrld-map in [Phase 4](4-first-act-built.md); the fallbacks in [Phase 5](5-scale.md). Doors and
+  boats to Skyrim are left as BM&V made them.
 - BM&V's known gap: 203 of its texture-set records name diffuse textures no archive holds
   ([research/bmv](../research/bmv/)); it is left as BM&V ships it unless the owner finds it ugly
 - In parallel: **The census, into the story data.** Redone 2026-11-05 over the whole of BM&V
