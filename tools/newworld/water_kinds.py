@@ -66,6 +66,7 @@ SEA = ("ocean", "shallow-coast", "bay")
 RUNNING = ("estuary", "river", "stream")
 COAST_M, ENCLOSE_M, ENCLOSED_LAND = 450, 3000, 0.45
 RIVER_W_M, SLOW_W_M, LAKE_M2, OPEN_POND_M = 40, 150, 500_000, 120
+FRAME_BAND = 2 * f.FRAME_PX + 4               # the ruler band, its rule and the sea margin beyond, in map px
 CHANNEL_MIN_M, CHANNEL_ELONG = 150, 8         # a channel: centreline 150 m or more and 8 widths long, or branching
 TREE_WORDS = {"forest", "hist", "cypress", "bog", "root", "roots", "moss", "mosses", "jungle", "trees", "wood", "mangrove", "mangroves", "swamp"}
 REED_WORDS = {"reed", "reeds", "sedge", "cattail", "cattails", "fen", "rice", "saltrice", "paddy", "paddies", "bayou",
@@ -297,6 +298,14 @@ def channel_shaped(m: np.ndarray) -> bool:
     if m.sum() < 30:
         return False
     sk = skeletonize(m)
+    # spurs: an irregular blob's skeleton sprouts a twig to every bump of its shore; strip end pixels as many
+    # times as the body is wide, so only the trunk and real branches (longer than the width) count
+    k8 = EIGHT.astype(np.int8)
+    for _ in range(min(60, int(2 * ndi.distance_transform_edt(m).max()))):
+        ends = sk & ((ndi.convolve(sk.astype(np.int8), k8, mode="constant") - 1) <= 1)
+        if not ends.any():
+            break
+        sk &= ~ends
     length = float(sk.sum())
     width = float(m.sum()) / max(length, 1.0)
     if length * M_PX < CHANNEL_MIN_M:
@@ -304,9 +313,9 @@ def channel_shaped(m: np.ndarray) -> bool:
     elong = length / max(width, 1.0)
     if elong >= CHANNEL_ELONG:
         return True
-    nb = ndi.convolve(sk.astype(np.int8), EIGHT.astype(np.int8), mode="constant") - 1
+    nb = ndi.convolve(sk.astype(np.int8), k8, mode="constant") - 1
     forks = int(((nb >= 3) & sk).sum())
-    return forks >= 2 and elong >= CHANNEL_ELONG / 2
+    return forks >= 4 and elong >= CHANNEL_ELONG / 2
 
 
 def classify(png: bool = False, chunks: bool = False) -> dict:
@@ -401,8 +410,11 @@ def classify(png: bool = False, chunks: bool = False) -> dict:
             continue
         ch = rchar.get(r["region_id"]) or {"wet": "pond", "name": "the margin", "swampy": False}
         sl = objs_final[r["raster_index"] - 1]
-        shaped = r["area_m2"] < LAKE_M2 and channel_shaped(raster[sl] == r["raster_index"])
-        if r["src_kind"] in ("river", "stream") or shaped:
+        shaped = channel_shaped(raster[sl] == r["raster_index"])
+        if r["src_kind"] in ("river", "stream") and not shaped and r["open_m"] >= OPEN_POND_M:
+            r["kind"] = "lake" if r["area_m2"] >= LAKE_M2 else "pond"
+            r["why"] = f"drawn in a channel network but open and compact, {r['open_m']:.0f} m across: still water"
+        elif r["src_kind"] in ("river", "stream") or shaped:
             r["kind"] = "river" if r["width_m"] >= RIVER_W_M else "stream"
             r["why"] = (f"a channel {r['width_m']:.0f} m wide on average"
                         + ("; channel-shaped (long or branching), so running whether or not the map joins it"
@@ -416,6 +428,24 @@ def classify(png: bool = False, chunks: bool = False) -> dict:
             r["why"] = (f"still water ({r['area_m2'] / 1e4:.1f} ha) in {ch['name']}, whose research reads "
                         + {"blackwater-swamp": "as tree swamp", "green-marsh": "as open reed marsh",
                            "pond": "as dry or firm ground"}[ch["wet"]])
+
+    # step 3b: the sea's edge. Water on the map's frame (the ruler band) is sea, never a river mouth; an estuary
+    # is only where a river meets the sea (a stream just runs into the shore), the rest of a coastal fringe is still shallow coast
+    fb = np.zeros(raster.shape, bool)
+    fb[:FRAME_BAND, :] = fb[-FRAME_BAND:, :] = fb[:, :FRAME_BAND] = fb[:, -FRAME_BAND:] = True
+    idx_all = np.arange(1, len(rows) + 1)
+    in_band = ndi.mean(fb, raster, idx_all)                  # share of each body's water on the frame
+    on_frame = {int(i) for i, v in zip(idx_all, in_band) if v >= 0.5}
+    adj_final = adjacency(raster)
+    by_i = {r["raster_index"]: r for r in rows}
+    for r in rows:
+        if r["set_by"] == "owner" or r["kind"] in SEA:
+            continue
+        i = r["raster_index"]
+        if i in on_frame:
+            r["kind"], r["why"] = "shallow-coast", "water lying mostly on the map's frame: sea, never a river mouth"
+        elif r["kind"] == "estuary" and not any(by_i[j]["kind"] == "river" for j in adj_final.get(i, ())):
+            r["kind"], r["why"] = "shallow-coast", "a coastal fringe with no river entering it (an estuary is a river's mouth): still sea"
 
     # step 4: flow down the channel graph's distance to its outlet
     kind_of = np.array(["land"] + [r["kind"] for r in rows])
