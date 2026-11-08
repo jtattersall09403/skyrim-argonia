@@ -81,7 +81,7 @@ bucket, never in git.
 | 7 | The world plugin: worldspace, land, textures without hard edges, water, regions, BM&V weather | in progress: core landed (WRLD ArgoniaBlackMarsh, 20,160 LAND cells, `coc ArgoniaNWStart`; rerun `tools/newworld/world/world.sh` under job_guard; read-back PASS); textures, water types, regions to do |
 | 8 | Trees, plants, rocks, cliffs, road dressing, water edges, placed and seated | in progress (on landcover a6520785) |
 | 9 | Ground mist over marsh and water, by hour and weather | in progress (with step 7's agent) |
-| 10 | Navmesh across the province | in progress (pipeline restored on the bare terrain; obstacles when step 8 lands) |
+| 10 | Navmesh across the province: `python -m tools.navmesh build` (tools/navmesh: Recast per cell, stitch, NVNM codec 15,966/15,966 Skyrim.esm NVNMs byte-identical; margin and off-table cells skipped, deep water none, shallow water flagged on the bed; placed collision from out/newworld/plugin/refs/*.jsonl), attached to the ESM by world.sh (NewWorldNavmesh.cs) | pipeline proven on a 16 x 16 sample (Lilmoth: 185 NAVM, checks green, 5/5 paths, 12 s); the full-province run is owed on the final terrain + step 8 refs |
 | 11 | LOD (terrain, objects, trees) and the world map | todo |
 | 12 | Off-game read-back loop over the built files, then deploy and the owner's walk check | todo |
 

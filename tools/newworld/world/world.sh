@@ -4,6 +4,7 @@
 #   tooling/job_guard.sh run nw-world -- tools/newworld/world/world.sh
 #   tooling/job_guard.sh wait nw-world
 # Stages: land shards (tools/newworld/world/land.py, keyed on build id + heightmap + code; resumes by row) ->
+# navmesh (python -m tools.navmesh build -> out/newworld/plugin/navmesh, attached by NewWorldNavmesh.cs) ->
 # ESM write (tools/ArgoniaPlugin `newworld write`, skipped when the stamp's key matches) -> read-back
 # (`newworld check`: cells, height error, seams, overflow, water, the coc marker) -> bucket
 # s3://argonia-private-050977237313/nw/plugin/<build id>/. Out: out/newworld/plugin/ (never git).
@@ -16,9 +17,11 @@ data="${ARGONIA_GAME_ROOT:-$HOME/games/skyrimse}/Data"
 out=out/newworld/plugin; esm=$out/ArgoniaNewWorld.esm; man=$out/land/manifest.json; stamp=$out/ArgoniaNewWorld.json
 bin=out/tools/ArgoniaPlugin
 "$py" -m tools.newworld.world.land --out "$out"
+# navmesh (tools/navmesh, per-cell cached; NW_NAVMESH=0 skips): red checks are reported, never block the land
+if [ "${NW_NAVMESH:-1}" = 1 ]; then "$py" -m tools.navmesh build --plugin "$out" --out "$out/navmesh" || echo "navmesh: checks red (see $out/navmesh/check.json)"; fi
 dotnet build -c Release -o "$bin" tools/ArgoniaPlugin >/dev/null
 key=$("$py" -c 'import json,sys; print(json.load(open(sys.argv[1]))["key"])' "$man")
-codekey=$(cat tools/ArgoniaPlugin/NewWorld.cs | sha256sum | cut -c1-16)
+codekey=$(cat tools/ArgoniaPlugin/NewWorld.cs tools/ArgoniaPlugin/NewWorldNavmesh.cs $(ls "$out"/navmesh/navi.json "$out"/navmesh/navm/cy*.jsonl.gz 2>/dev/null) | sha256sum | cut -c1-16)
 if [ -f "$esm" ] && [ -f "$stamp" ] && grep -q "\"key\": \"$key:$codekey\"" "$stamp"; then
   echo "esm current ($key)"
 else

@@ -25,7 +25,7 @@ static class NewWorld
     static readonly FormKey XMarkerHeading = FormKey.Factory("000034:Skyrim.esm");
     static readonly Quadrant[] Quads = { Quadrant.BottomLeft, Quadrant.BottomRight, Quadrant.TopLeft, Quadrant.TopRight };
     // fixed form ids: the bytes depend only on the shards
-    const uint IdWorld = 0x800, IdTopCell = 0x801, IdMarker = 0x802, IdCells = 0x1000;  // cell k: 0x1000 + 2k, its LAND +1
+    const uint IdWorld = 0x800, IdTopCell = 0x801, IdMarker = 0x802, IdCopies = 0x900, IdRegions = 0x880, IdCells = 0x100000, IdRefs = 0x200000;  // cell k: IdCells + 2k, its LAND +1; 0x900.. copied records
 
     record Manifest(JsonElement Root)
     {
@@ -50,6 +50,7 @@ static class NewWorld
     {
         "write" => Write(a[1], a[2], a[3]),
         "check" => Check(a[1], a[2], a[3]),
+        "navmesh" => NewWorldNavmesh.Run(a[1..]),
         _ => throw new ArgumentException("newworld write|check"),
     };
 
@@ -61,7 +62,6 @@ static class NewWorld
         float water = (float)man.Grid.GetProperty("water").GetDouble();
         using var bm = SkyrimMod.CreateFromBinaryOverlay(Path.Combine(data, "Black Marsh.esm"), Rel, Survey.NoStrings);
         var climate = Edid<IClimateGetter>(bm, "BlackMarshClimate").FormKey;
-        var ltex = Edid<ILandscapeTextureGetter>(bm, "01MOSS1").FormKey;
         var bmWorld = Edid<IWorldspaceGetter>(bm, "BlackMarsh");
         var watr = bmWorld.Water.FormKey;
 
@@ -93,16 +93,78 @@ static class NewWorld
             TopCell = new Cell(K(IdTopCell), Rel) { Flags = Cell.Flag.HasWater, Grid = new CellGrid { Point = new P2Int(0, 0) }, MajorFlags = Cell.MajorFlag.Persistent },
         };
         mod.Worldspaces.Add(ws);
+        // the ground paint (tools/newworld/world/texture.py): our own LTEX per material, copied from its source
+        // (asset-only plugins via ForeignCopy), with our grass list
+        var allowed = bm.ModHeader.MasterReferences.Select(m => m.Master).Append(bm.ModKey).ToList();
+        using var fc = new ForeignCopy(mod, allowed, data, IdCopies);
+        var texDir = Path.Combine(Path.GetDirectoryName(man.Dir)!, "tex");
+        var texMan = JsonDocument.Parse(File.ReadAllText(Path.Combine(texDir, "manifest.json"))).RootElement;
+        if (texMan.GetProperty("build_id").GetString() != man.BuildId) throw new InvalidDataException("tex shards are another terrain build");
+        int qBytes = texMan.GetProperty("quad_bytes").GetInt32(), maxL = texMan.GetProperty("max_layers").GetInt32();
+        var matKeys = new List<FormKey>();
+        foreach (var m in JsonDocument.Parse(File.ReadAllText(Path.Combine(texDir, "materials.json"))).RootElement.EnumerateArray())
+        {
+            var spec = m.GetProperty("ltex").GetString()!.Split(':');
+            var key = fc.Get(spec[0], spec[1], forceCopy: true);
+            var lt = mod.LandscapeTextures[key];
+            lt.EditorID = "ANW_Ground_" + m.GetProperty("id").GetString();
+            lt.Grasses.Clear();
+            foreach (var gs in m.GetProperty("grass").EnumerateArray().Select(x => x.GetString()!.Split(':')))
+                lt.Grasses.Add(new FormLink<IGrassGetter>(fc.Get(gs[0], gs[1])));
+            matKeys.Add(key);
+        }
+        // water types, regions and weather, placed refs (tools/newworld/world/cells.py)
+        var plugDir = Path.GetDirectoryName(man.Dir)!;
+        var cj = JsonDocument.Parse(File.ReadAllText(Path.Combine(plugDir, "cells.json"))).RootElement;
+        if (cj.GetProperty("build_id").GetString() != man.BuildId) throw new InvalidDataException("cells.json is another terrain build");
+        var watrKey = new Dictionary<string, FormKey>();
+        foreach (var p in cj.GetProperty("watr").EnumerateObject())
+        {
+            var v = p.Value;
+            if (v.TryGetProperty("link", out var l)) { var sp = l.GetString()!.Split(':'); watrKey[p.Name] = fc.Get(sp[0], sp[1]); continue; }
+            var src = v.GetProperty("copy").GetString()!.Split(':');
+            var key = new FormKey(modKey, fc.NextIdTake());
+            var w = (Water)fc.Find(src[0], src[1]).Duplicate(key);
+            w.EditorID = v.GetProperty("edid").GetString();
+            var vel = v.GetProperty("velocity");
+            w.LinearVelocity = new P3Float((float)vel[0].GetDouble(), (float)vel[1].GetDouble(), 0);
+            mod.Waters.Add(w);
+            watrKey[p.Name] = key;
+        }
+        ws.Water = new FormLinkNullable<IWaterGetter>(watrKey["sea"]);
+        ws.LodWater = new FormLinkNullable<IWaterGetter>(watrKey["sea"]);
+        var (climKey, regionWeather) = Weather(mod, fc, ws, cj);
+        ws.Climate = new FormLinkNullable<IClimateGetter>(climKey);
+        var regionKey = new Dictionary<string, FormKey>();
+        uint rid = IdRegions;
+        foreach (var r in cj.GetProperty("regions").EnumerateObject())
+        {
+            var reg = new Region(K(rid++), Rel)
+            {
+                EditorID = "ANW_Region_" + r.Name.Replace("-", "_"),
+                Worldspace = new FormLinkNullable<IWorldspaceGetter>(ws.FormKey),
+                MapColor = System.Drawing.Color.FromArgb(120, 140, 90),
+                Weather = new RegionWeather { Weathers = new ExtendedList<WeatherType>(regionWeather(r.Value.GetProperty("weathers"))) },
+                Map = new RegionMap { Name = r.Value.GetProperty("name").GetString() },
+            };
+            mod.Regions.Add(reg);
+            regionKey[r.Name] = reg.FormKey;
+        }
+        var cellInfo = cj.GetProperty("cells");
+        var refsByCell = Refs(plugDir, fc);
+        uint refId = IdRefs;
         var mk = man.Marker;
         var mCell = (mk.GetProperty("cell")[0].GetInt32(), mk.GetProperty("cell")[1].GetInt32());
 
         var blocks = new SortedDictionary<(int, int), SortedDictionary<(int, int), SortedDictionary<(int, int), Cell>>>();
         var buf = new byte[nx * (4 + V * V * 4)];
+        var tbuf = new byte[nx * 4 * qBytes];
         uint k = 0;
         foreach (var name in man.Root.GetProperty("shards").EnumerateArray().Select(e => e.GetString()!))
         {
             var cy = int.Parse(name[2..^4]);
             using (var f = File.OpenRead(Path.Combine(man.Dir, name))) f.ReadExactly(buf);
+            using (var f = File.OpenRead(Path.Combine(texDir, name))) f.ReadExactly(tbuf);
             for (var i = 0; i < nx; i++, k++)
             {
                 int cx = cx0 + i, o = i * (4 + V * V * 4);
@@ -124,8 +186,7 @@ static class NewWorld
                     VertexHeightMap = new LandscapeVertexHeightMap { Offset = BitConverter.ToSingle(buf, o), HeightMap = hm },
                     VertexNormals = nm,
                     VertexColors = cm,
-                    Layers = new ExtendedList<BaseLayer>(Quads.Select(qd => new BaseLayer
-                    { Header = new LayerHeader { Texture = new FormLink<ILandscapeTextureGetter>(ltex), Quadrant = qd, LayerNumber = 0xFFFF } })),
+                    Layers = GroundLayers(tbuf, i * 4 * qBytes, qBytes, maxL, matKeys),
                 };
                 var c = new Cell(K(IdCells + 2 * k), Rel)
                 {
@@ -134,6 +195,19 @@ static class NewWorld
                     WaterHeight = water,
                     Landscape = land,
                 };
+                if (cellInfo.TryGetProperty($"{cx},{cy}", out var ci))
+                {
+                    if (ci.TryGetProperty("water", out var wk) && wk.GetString() != "sea") c.Water = new FormLinkNullable<IWaterGetter>(watrKey[wk.GetString()!]);
+                    c.Regions = new ExtendedList<IFormLinkGetter<IRegionGetter>> { new FormLink<IRegionGetter>(regionKey[ci.GetProperty("region").GetString()!]) };
+                }
+                if (refsByCell.TryGetValue((cx, cy), out var rl))
+                    foreach (var (bk, pos, rot, sc) in rl)
+                        c.Temporary.Add(new PlacedObject(K(refId++), Rel)
+                        {
+                            Base = new FormLinkNullable<IPlaceableObjectGetter>(bk),
+                            Placement = new Placement { Position = pos, Rotation = rot },
+                            Scale = sc == 1f ? null : sc,
+                        });
                 if ((cx, cy) == mCell)
                 {
                     c.EditorID = StartCell;
@@ -165,6 +239,7 @@ static class NewWorld
             }
             ws.SubCells.Add(b);
         }
+        NewWorldNavmesh.Attach(mod, ws, outPath, man.BuildId);  // nw-02 step 10: the navmesh, when built for this land
         var lo = bm.ModHeader.MasterReferences.Select(m => m.Master).Append(bm.ModKey).Append(modKey).ToList();
         Directory.CreateDirectory(Path.GetDirectoryName(Path.GetFullPath(outPath))!);
         var tmpDir = Path.Combine(Path.GetDirectoryName(Path.GetFullPath(outPath))!, ".writing"); Directory.CreateDirectory(tmpDir);
@@ -175,6 +250,99 @@ static class NewWorld
         File.Move(tmp, outPath, true);
         Console.WriteLine($"newworld write: {outPath}: {k} cells with LAND, build {man.BuildId}, {new FileInfo(outPath).Length} bytes, {sw.Elapsed.TotalSeconds:F1} s");
         return 0;
+    }
+
+    // Our climate and weathers: BM&V's BlackMarshClimate copied as ours with a long sunrise/sunset window
+    // (05:00-12:00, 17:00-22:00) so the night fog lerps away by noon and back by night; SkyrimClear and SkyrimCloudy
+    // copied with a dense Night fog slot (near 0, far 8000, power 0.4, max 0.75): ground mist at dawn and night on
+    // fair days; ANW_AfterRainFog (a SkyrimFog copy, day far 15000) listed beside the rain so fog follows it often.
+    static (FormKey, Func<JsonElement, IEnumerable<WeatherType>>) Weather(SkyrimMod mod, ForeignCopy fc, Worldspace ws, JsonElement cj)
+    {
+        FormKey Copy(string edid, string ours, Action<Mutagen.Bethesda.Skyrim.Weather> edit)
+        {
+            var key = new FormKey(mod.ModKey, fc.NextIdTake());
+            var w = (Mutagen.Bethesda.Skyrim.Weather)fc.Find("Skyrim.esm", edid).Duplicate(key);
+            w.EditorID = ours; edit(w); mod.Weathers.Add(w); return key;
+        }
+        void NightFog(Mutagen.Bethesda.Skyrim.Weather w)
+        {
+            w.FogDistance ??= new WeatherFogDistance();
+            w.FogDistance.NightNear = 0; w.FogDistance.NightFar = 8000; w.FogDistance.NightPower = 0.4f; w.FogDistance.NightMax = 0.75f;
+        }
+        var clear = Copy("SkyrimClear", "ANW_ClearMorningMist", NightFog);
+        var cloudy = Copy("SkyrimCloudy", "ANW_CloudyMorningMist", NightFog);
+        var after = Copy("SkyrimFog", "ANW_AfterRainFog", w => { w.FogDistance ??= new WeatherFogDistance(); w.FogDistance.DayFar = 15000; });
+        var key = new Dictionary<string, FormKey>
+        {
+            ["SkyrimFog"] = fc.Find("Skyrim.esm", "SkyrimFog").FormKey, ["SkyrimOvercastRain"] = fc.Find("Skyrim.esm", "SkyrimOvercastRain").FormKey,
+            ["SkyrimStormRain"] = fc.Find("Skyrim.esm", "SkyrimStormRain").FormKey, ["SkyrimCloudy"] = cloudy, ["SkyrimClear"] = clear,
+        };
+        IEnumerable<WeatherType> Mix(JsonElement weathers)
+        {
+            foreach (var p in weathers.EnumerateObject())
+            {
+                var ch = p.Value.GetInt32();
+                if (p.Name == "SkyrimFog") { yield return Wt(key[p.Name], ch - ch / 3); yield return Wt(after, ch / 3); }
+                else yield return Wt(key[p.Name], ch);
+            }
+        }
+        static WeatherType Wt(FormKey k, int ch) => new() { Weather = new FormLink<IWeatherGetter>(k), Chance = ch };
+        var climKey = fc.Get("Black Marsh.esm", "BlackMarshClimate", forceCopy: true);
+        var clim = mod.Climates[climKey];
+        clim.EditorID = "ANW_BlackMarshClimate";
+        clim.Weathers.Clear();
+        clim.Weathers.AddRange(Mix(JsonDocument.Parse("{\"SkyrimFog\":45,\"SkyrimOvercastRain\":20,\"SkyrimStormRain\":20,\"SkyrimCloudy\":10,\"SkyrimClear\":5}").RootElement));
+        clim.SunriseBegin = new DateTime(1, 1, 1, 5, 0, 0); clim.SunriseEnd = new DateTime(1, 1, 1, 12, 0, 0);
+        clim.SunsetBegin = new DateTime(1, 1, 1, 17, 0, 0); clim.SunsetEnd = new DateTime(1, 1, 1, 22, 0, 0);
+        return (climKey, Mix);
+    }
+
+    // Placed refs from every producer's shards: <plugin dir>/refs/<producer>/cy<+NNN>.jsonl (format: cells.py).
+    static Dictionary<(int, int), List<(FormKey, P3Float, P3Float, float)>> Refs(string plugDir, ForeignCopy fc)
+    {
+        var res = new Dictionary<(int, int), List<(FormKey, P3Float, P3Float, float)>>();
+        var dir = Path.Combine(plugDir, "refs");
+        if (!Directory.Exists(dir)) return res;
+        var bases = new Dictionary<string, FormKey>();
+        foreach (var f in Directory.EnumerateFiles(dir, "*.jsonl", SearchOption.AllDirectories).Order())
+            foreach (var line in File.ReadLines(f))
+            {
+                if (line.Length == 0) continue;
+                var o = JsonDocument.Parse(line).RootElement;
+                var b = o.GetProperty("base").GetString()!;
+                if (!bases.TryGetValue(b, out var bk)) { var sp = b.Split(':', 2); bases[b] = bk = fc.Get(sp[0], sp[1]); }
+                float G(string k) => (float)o.GetProperty(k).GetDouble();
+                var pos = new P3Float(G("x"), G("y"), G("z"));
+                var cell = ((int)Math.Floor(pos.X / CELL), (int)Math.Floor(pos.Y / CELL));
+                if (!res.TryGetValue(cell, out var l)) res[cell] = l = new();
+                l.Add((bk, pos, new P3Float(G("rx"), G("ry"), G("rz")), G("scale")));
+            }
+        return res;
+    }
+
+    // One cell's LAND layers from its 4 tex quadrants: per quadrant one base (BTXT, layer 0xFFFF) then alpha layers
+    // 0..n-2 (ATXT + VTXT, only non-zero points), in the shard's order.
+    static ExtendedList<BaseLayer> GroundLayers(byte[] t, int off, int qBytes, int maxL, List<FormKey> mats)
+    {
+        var layers = new ExtendedList<BaseLayer>();
+        for (var q = 0; q < 4; q++)
+        {
+            int o = off + q * qBytes, n = t[o];
+            var quad = Quads[q];
+            layers.Add(new BaseLayer { Header = new LayerHeader { Texture = new FormLink<ILandscapeTextureGetter>(mats[t[o + 1]]), Quadrant = quad, LayerNumber = 0xFFFF } });
+            for (var k = 1; k < n; k++)
+            {
+                var ad = new ExtendedList<AlphaLayerData>();
+                int a = o + 1 + maxL + (k - 1) * 289;
+                for (ushort p = 0; p < 289; p++) if (t[a + p] > 0) ad.Add(new AlphaLayerData { Position = p, Opacity = t[a + p] / 255f });
+                layers.Add(new AlphaLayer
+                {
+                    Header = new LayerHeader { Texture = new FormLink<ILandscapeTextureGetter>(mats[t[o + 1 + k]]), Quadrant = quad, LayerNumber = (ushort)(k - 1) },
+                    AlphaLayerData = ad,
+                });
+            }
+        }
+        return layers;
     }
 
     static int Check(string esmPath, string manPath, string data)
