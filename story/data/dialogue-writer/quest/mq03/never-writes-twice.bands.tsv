@@ -1,0 +1,17 @@
+key	variant	band	n	line
+topic.mq03-the-boat	ready	low	0	A friend of the courier's sent us. You tasted the sap. You are hurt.
+topic.mq03-the-boat	ready	low	1	The boat takes the hurt to a house in Lilmoth. That means you.
+topic.mq03-the-boat	ready	high	0	A friend of the courier's sent us. You have tasted the sap and you are hurt. I am sorry for it.
+topic.mq03-the-boat	ready	high	1	The boat takes the hurt to a house in Lilmoth. You are one of them. You are welcome aboard.
+topic.mq03-the-boat	where	low	0	A friend of the courier's sent us. You are hurt, as the others are.
+topic.mq03-the-boat	where	low	1	The boat takes the hurt to a house in Lilmoth.
+topic.mq03-the-boat	where	low	2	The shed is beside the withdrawn cutting, at the camp's far end. Sap lies spilled on its floor.
+topic.mq03-the-boat	where	low	3	Burnt boards lie over deep water at the camp's fire.
+topic.mq03-the-boat	where	low	4	The courier's strap and tag lie in the gang families' locked fish-trap. It is on the bottom, straight below the boards.
+topic.mq03-the-boat	where	low	5	Lockpicks lie loose beside the fire. I do not know you well. That is all I give.
+topic.mq03-the-boat	where	high	0	A friend of the courier's sent us. You are hurt, as the others here are hurt. I am sorry for it.
+topic.mq03-the-boat	where	high	1	The boat takes the hurt to a house in Lilmoth. You are welcome on it.
+topic.mq03-the-boat	where	high	2	The shed stands beside the withdrawn cutting, at the camp's far end. Sap lies spilled on its floor.
+topic.mq03-the-boat	where	high	3	The burnt boards lie over deep water at the camp's fire.
+topic.mq03-the-boat	where	high	4	The courier's strap and tag lie in the gang families' locked fish-trap, on the bottom, straight below the boards.
+topic.mq03-the-boat	where	high	5	Lockpicks lie loose beside the fire. Use them. I trust you with this.

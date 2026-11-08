@@ -168,8 +168,30 @@ the quest is re-authored.
   worlds, 0 problems; `make check` green. Fixed at integration: MQ05's Nesh-Deeka topic built after MainQuest places her
   (MQ05.AddNesh); MQ05's two travel packages shared editor ids with their markers. Deployed to argonia-play (DEPLOY OK).
   Owner checks: docs/owner-walk-checks.md sections 5 to 7.
-- **Known gaps, for the owner walk or later:** only the middle wording band of quest lines is built (no
-  disposition or race forms of address); the freed people of BC01/BC02 have no after-quest greeting; quest rumours on
-  settlement talkers are not yet written (talk.md: a rumour names only a quest that can start); positions at BC01's
+- **Quest rumours built (2026-11-08):** 11 settlement talkers rumour 5 quests that can start (LQ30, LQ25, TG01, BC01,
+  BC03; BC02 and TG02 start from their line's earlier quest, so no rumour). Each rumour INFO (`Talk.Rumours`, at the
+  seed's end) is gated to the talker's ref and copies every GetStage condition of the giver's opening line (BC03's
+  BC01 >= 90 with it). `talk_check` reads each back: quest in the plugin, Start Game Enabled from its start-up stage,
+  the opening line found, the gate matched, no talker one of the quest's own people: 5 rumours, 0 problems; every
+  read-back PASS.
+- **Wording bands and after-quest greetings (2026-11-08):** the Chainbreakers' written low and high bands are built as
+  extra INFOs, warm on GetRelationshipRank with the player >= 1 and cool below 0, the default taking rank 0 (exclusive by
+  condition, since Spriggit's YAML does not keep INFO order): BC01 6/6, BC02 11/11, BC03 9/9 warm/cool; no race form is
+  written in any brief's lines. After-quest Hello topics (written, reader-checked): Rows-For-Another (BC01 90/91, 3),
+  the one out of the smoke (BC02 91/92/93, 3 each), Sei-Wan at the gate (LQ30 91/92, 2 each). bccheck and localcheck
+  read every band and greeting back (PASS).
+- **Wording bands for the act's quests (2026-11-08):** warm and cool bands written per speaker (one dialogue-writer
+  each, one reader pass applied: 41 rewrites) and built as BC's (warm on GetRelationshipRank with the player >= 1, cool
+  < 0, the default the complement; each band INFO keeps its gates and fragment, so no Papyrus changed): warm/cool MQ03
+  10/10, MQ04 7/7, MQ05 8/8, TG01 10/10, TG02 11/11, LQ25 4/4, LQ30 4/4. MQ01 is left on one band: it is the opening on
+  the barge, where no one can yet hold a rank with the player. Pays-Late's rows spoke all three old bands with
+  [low]/[words]/[high] markers in one INFO; the middle is now the words band with the directions, and the race macro
+  left in two MQ05 bands is gone. mainquestcheck, mqcheck, nightreedcheck and localcheck read every band's condition
+  and text back (498/498, all stages, 275/275, PASS); cleancheck, blocktest, bccheck PASS; talk_check 119/0 with 5
+  rumours; `make check` green. Bands live in `story/data/quest_lines/mq03.json`, `lq25.json`, `lq30.json`
+  (`lines@low`/`lines@high`), `dialogue_line` `variants_low`/`variants_high` (MQ04, MQ05) and
+  `story/data/dialogue-writer/quest/tg/nightreed.lines.tsv` (`<key>@<band>.<n>`); the writers' files are `*.bands.tsv`.
+- **Known gaps, for the owner walk or later:** the middle lines of MQ04's root herald still carry the `[player race]`
+  macro, which Skyrim does not fill; positions at BC01's
   landing, BC02's keep and the Reed's house (BM&V's tilted sinking cabin) were picked from navmesh, never walked; some
   routes still have short or long legs (084A86 goes east before west; one Hereguard leg is 1,043 paces).

@@ -1,0 +1,51 @@
+key	variant	band	n	line
+topic.mq03-the-attack	phial-carried	low	0	Sit. Tell me what you saw at the camp. All of it.
+topic.mq03-the-attack	phial-carried	low	1	Did you see jars at the camp? Think.
+topic.mq03-the-attack	phial-carried	low	2	You are carrying a phial. Give it to me. I will look at it.
+topic.mq03-the-attack	phial-carried	low	3	The jars again. How many ring-marks did you see?
+topic.mq03-the-attack	phial-carried	low	4	The Reed has word of a cell. It cuts a Hist's roots and draws its sap into jars.
+topic.mq03-the-attack	phial-carried	low	5	Your camp is the first work of it that the Reed has seen.
+topic.mq03-the-attack	phial-carried	low	6	The roll burnt in the camp's fire. No hand can show what you owe, or that you were ever on it.
+topic.mq03-the-attack	phial-carried	low	7	The courier's satchel was mine to see carried. I say no more of it.
+topic.mq03-the-attack	phial-carried	high	0	Sit, please. Tell me what you saw at the camp. Take your time, but leave nothing out.
+topic.mq03-the-attack	phial-carried	high	1	Did you see jars at the camp? Think it over. I am in no hurry.
+topic.mq03-the-attack	phial-carried	high	2	You are carrying a phial. Give it to me, and I will take care with it. I want to look at it.
+topic.mq03-the-attack	phial-carried	high	3	Tell me about the jars once more. How many ring-marks did you see?
+topic.mq03-the-attack	phial-carried	high	4	The Reed has word of a cell. It cuts a Hist's roots and draws its sap into jars. I tell you this because I trust you.
+topic.mq03-the-attack	phial-carried	high	5	Your camp is the first work of it that the Reed has seen.
+topic.mq03-the-attack	phial-carried	high	6	The roll burnt in the camp's fire. No hand can show what you owe, or that you were ever on it. I am glad of that for your sake.
+topic.mq03-the-attack	phial-carried	high	7	The courier's satchel was mine to see carried. I say no more of it. I am sorry I cannot.
+topic.mq03-the-attack	phial-none	low	0	Sit. Tell me what you saw at the camp. All of it.
+topic.mq03-the-attack	phial-none	low	1	Did you see jars at the camp? Think.
+topic.mq03-the-attack	phial-none	low	2	You took nothing from the shed. I have only your word. I will take it.
+topic.mq03-the-attack	phial-none	low	3	The jars again. How many ring-marks did you see?
+topic.mq03-the-attack	phial-none	low	4	The Reed has word of a cell. It cuts a Hist's roots and draws its sap into jars.
+topic.mq03-the-attack	phial-none	low	5	Your camp is the first work of it that the Reed has seen.
+topic.mq03-the-attack	phial-none	low	6	The roll burnt in the camp's fire. No hand can show what you owe, or that you were ever on it.
+topic.mq03-the-attack	phial-none	low	7	The courier's satchel was mine to see carried. I say no more of it.
+topic.mq03-the-attack	phial-none	high	0	Sit, please. Tell me what you saw at the camp. Take your time, but leave nothing out.
+topic.mq03-the-attack	phial-none	high	1	Did you see jars at the camp? Think it over. I am in no hurry.
+topic.mq03-the-attack	phial-none	high	2	You took nothing from the shed. I have only your word. I trust it, so I will take it.
+topic.mq03-the-attack	phial-none	high	3	Tell me about the jars once more. How many ring-marks did you see?
+topic.mq03-the-attack	phial-none	high	4	The Reed has word of a cell. It cuts a Hist's roots and draws its sap into jars. I tell you this because I trust you.
+topic.mq03-the-attack	phial-none	high	5	Your camp is the first work of it that the Reed has seen.
+topic.mq03-the-attack	phial-none	high	6	The roll burnt in the camp's fire. No hand can show what you owe, or that you were ever on it. I am glad of that for your sake.
+topic.mq03-the-attack	phial-none	high	7	The courier's satchel was mine to see carried. I say no more of it. I am sorry I cannot.
+topic.mq03-the-offer	main	low	0	I am of the Veiled Reed, the state's quiet service. We show no face. We want a hand we can deny.
+topic.mq03-the-offer	main	low	1	No master can claim you now. The roll burnt in the camp's fire, so the broker cannot show what you owe, or that you were ever on it.
+topic.mq03-the-offer	main	low	2	I offer you the Reed's protection, a door in Lilmoth and a stipend. The condition is that you serve the Reed.
+topic.mq03-the-offer	main	low	3	This is business. I do not know you well enough for more. Think before you answer.
+topic.mq03-the-offer	main	low	4	I want the survivor's account of the cell's work. When I have it, the Reed's people see the survivor home.
+topic.mq03-the-offer	main	high	0	I am of the Veiled Reed, the state's quiet service. We show no face. We want a hand we can deny. I would be glad if it were yours.
+topic.mq03-the-offer	main	high	1	No master can claim you now. The roll burnt in the camp's fire, so the broker cannot show what you owe, or that you were ever on it.
+topic.mq03-the-offer	main	high	2	I offer you the Reed's protection, a door in Lilmoth and a stipend. The condition is that you serve the Reed.
+topic.mq03-the-offer	main	high	3	I do not ask it lightly of someone I trust. Take your time before you answer.
+topic.mq03-the-offer	main	high	4	I want the survivor's account of the cell's work. When I have it, the Reed's people see the survivor home.
+topic.mq03-take-oath	main	low	0	Then you serve the Reed. The protection, the door in Lilmoth and the stipend are yours now.
+topic.mq03-take-oath	main	low	1	I have your word.
+topic.mq03-take-oath	main	high	0	Then you serve the Reed. I am glad of it, friend.
+topic.mq03-take-oath	main	high	1	The protection, the door in Lilmoth and the stipend are yours now. I have your word. I trust it.
+topic.mq03-refuse-oath	main	low	0	Then you do not take the Reed's protection, the door in Lilmoth or the stipend. That is your choice.
+topic.mq03-refuse-oath	main	low	1	The Reed will still send for you, and it will pay for the work.
+topic.mq03-refuse-oath	main	high	0	Then you do not take the Reed's protection, the door in Lilmoth or the stipend. That is your choice. I do not hold it against you.
+topic.mq03-refuse-oath	main	high	1	The Reed will still send for you, and it will pay for the work.

@@ -1,4 +1,5 @@
 using System.Text.Json;
+using System.Text.RegularExpressions;
 using Noggog;
 using Mutagen.Bethesda;
 using Mutagen.Bethesda.Plugins;
@@ -72,7 +73,8 @@ static class Talk
             }
         }
 
-        foreach (var g in lines.Where(l => !greet.ContainsKey(S(l, "topic"))).GroupBy(l => S(l, "topic")).OrderBy(g => g.Key))
+        var questRumour = QuestRumours();
+        foreach (var g in lines.Where(l => !greet.ContainsKey(S(l, "topic")) && !questRumour.ContainsKey((S(l, "talker"), S(l, "topic")))).GroupBy(l => S(l, "topic")).OrderBy(g => g.Key))
         {
             var tp = topics[g.Key];
             var prompt = S(tp, "prompt");
@@ -97,6 +99,57 @@ static class Talk
         }
         Console.WriteLine($"talk: {lines.Select(l => S(l, "talker")).Distinct().Count()} talkers, {mod.DialogTopics.Count(x => x.EditorID!.StartsWith("ARG_Talk_"))} topics, {lines.Count} responses");
         Names(mod, mods, census, npcs);
+    }
+
+    // Quest rumours (talk.md, talk.rumours: "a QUST that can start (its giver, its stage)"): a talker whose rumours fact
+    // cites a quest ("quest ARG_X stage N; giver ...") is left out of Add and built by Rumours at the seed's end, once
+    // every quest exists. Keyed (talker, topic) -> (quest editor id, start stage).
+    static readonly Regex QuestSource = new(@"^quest (ARG_\w+) stage (\d+);");
+    static Dictionary<(string, string), (string quest, int stage)> QuestRumours()
+    {
+        var facts = Rows("talk_fact").Where(f => S(f, "topic") == "talk.rumours").Select(f => (id: S(f, "id"), m: QuestSource.Match(S(f, "source"))))
+            .Where(f => f.m.Success).ToDictionary(f => f.id, f => (f.m.Groups[1].Value, int.Parse(f.m.Groups[2].Value)));
+        var by = new Dictionary<(string, string), (string, int)>();
+        foreach (var tt in Rows("talker_topic").Where(r => S(r, "topic") == "talk.rumours"))
+        {
+            var all = S(tt, "facts").Split(',').Select(x => x.Trim()).Where(x => x.Length > 0).ToList();
+            var cited = all.Where(facts.ContainsKey).ToList();
+            if (cited.Count == 0) continue;
+            if (cited.Count != all.Count || cited.Count > 1) throw new Exception($"talk rumours: {S(tt, "talker")} must cite one quest rumour alone");
+            by[(S(tt, "talker"), "talk.rumours")] = facts[cited[0]];
+        }
+        return by;
+    }
+
+    // Each quest rumour, one INFO under ARG_Talk_Rumours gated to the talker's ref (as Add) and on the quest not yet past
+    // its start: the giver's opening INFO in the quest's own topics (GetStage quest == start, the C-stage) gives the gate,
+    // and every GetStage condition on it (the quest's, and another quest's, as BC03's BC01 >= 90) is copied.
+    public static void Rumours(SkyrimMod mod)
+    {
+        var want = QuestRumours();
+        if (want.Count == 0) return;
+        var lines = Rows("talk_line").Where(l => want.ContainsKey((S(l, "talker"), S(l, "topic")))).ToList();
+        var t = mod.DialogTopics.First(x => x.EditorID == "ARG_Talk_Rumours");
+        foreach (var who in lines.GroupBy(l => S(l, "talker")).OrderBy(w => w.Key))
+        {
+            var (edid, stage) = want[(who.Key, "talk.rumours")];
+            var q = mod.Quests.FirstOrDefault(x => x.EditorID == edid) ?? throw new Exception($"talk rumours: {edid} not in the plugin");
+            bool IsStart(IConditionGetter c) => c is IConditionFloatGetter f && f.Data is IGetStageConditionDataGetter g && g.Quest.Link.FormKey == q.FormKey
+                && f.CompareOperator == CompareOperator.EqualTo && f.ComparisonValue == stage;
+            var opening = mod.DialogTopics.Where(d => d.Quest.FormKey == q.FormKey).SelectMany(d => d.Responses)
+                .FirstOrDefault(r => r.Conditions.Any(IsStart)) ?? throw new Exception($"talk rumours: {edid} has no opening line at stage {stage}");
+            var info = new DialogResponses(mod.GetNextFormKey(), SkyrimRelease.SkyrimSE) { Flags = new DialogResponseFlags(), Prompt = t.Name };
+            byte n = 1;
+            foreach (var l in who.OrderBy(l => l.GetProperty("ord").GetInt32()))
+                info.Responses.Add(new DialogResponse { Text = S(l, "text"), ResponseNumber = n++, Emotion = Emotion.Neutral });
+            var d = new GetIsReferenceConditionData();
+            d.Target.Link.SetTo(FormKey.Factory(who.Key));
+            info.Conditions.Add(new ConditionFloat { CompareOperator = CompareOperator.EqualTo, ComparisonValue = 1, Data = d });
+            foreach (var c in opening.Conditions.Where(c => c is IConditionFloatGetter { Data: IGetStageConditionDataGetter }))
+                info.Conditions.Add(c.DeepCopy());
+            t.Responses.Add(info);
+        }
+        Console.WriteLine($"talk rumours: {lines.Select(l => S(l, "talker")).Distinct().Count()} talkers rumour {want.Values.Select(v => v.quest).Distinct().Count()} quests");
     }
 
     static FormKey K(string k) => FormKey.Factory(k);

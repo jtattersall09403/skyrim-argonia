@@ -1,0 +1,20 @@
+key	variant	band	n	line
+ARG_TG01_TopicTest_0		low	0	The Chapter wants to see how you work. I do not know you yet, so I say it short.
+ARG_TG01_TopicTest_0		low	1	Keeps-What-Floats took a necklace of blue jaspers from another thief who was asleep. Bring it back. Do not harm him.
+ARG_TG01_TopicTest_0		low	2	He carries it on his round of the dock. Follow him. Sits-By-The-Water drinks with him.
+ARG_TG01_TopicTest_0		high	0	The Chapter wants to see how you work. I am glad to ask it of you.
+ARG_TG01_TopicTest_0		high	1	Keeps-What-Floats took a necklace of blue jaspers from another thief who was asleep. Bring it back. Do not harm him.
+ARG_TG01_TopicTest_0		high	2	He carries the necklace on his round of the dock, so follow him. Sits-By-The-Water drinks with him.
+ARG_TG01_TopicReturn_0		low	0	He lives. You have good hands. Here are one hundred gold and three lockpicks.
+ARG_TG01_TopicReturn_0		low	1	The Chapter's way down is a locked trapdoor at the edge of the deep water north of Pusbottom in Lilmoth.
+ARG_TG01_TopicReturn_0		low	2	Take the coast ship from this dock. Open the trapdoor with your own hand. Speak to whoever waits below.
+ARG_TG01_TopicReturn_0		high	0	He lives. You have good hands. I am proud to have sent you. Here are one hundred gold and three lockpicks.
+ARG_TG01_TopicReturn_0		high	1	The Chapter's way down is a locked trapdoor at the edge of the deep water, north of Pusbottom in Lilmoth. Take the coast ship from this dock.
+ARG_TG01_TopicReturn_0		high	2	Open the trapdoor with your own hand. Speak to whoever waits below.
+ARG_TG01_TopicReturn_1		low	0	He is dead. The Chapter wanted the necklace and no killing, so there is no pay. Take three lockpicks all the same.
+ARG_TG01_TopicReturn_1		low	1	The way down is a locked trapdoor at the edge of the deep water north of Pusbottom in Lilmoth.
+ARG_TG01_TopicReturn_1		low	2	Take the coast ship from this dock. Open the trapdoor with your own hand. Speak to whoever waits below.
+ARG_TG01_TopicReturn_1		high	0	He is dead. It grieves me. The Chapter wanted the necklace and no killing, so there is no pay.
+ARG_TG01_TopicReturn_1		high	1	Take three lockpicks all the same. I would not send you away with nothing.
+ARG_TG01_TopicReturn_1		high	2	The way down is a locked trapdoor at the edge of the deep water north of Pusbottom in Lilmoth. Take the coast ship from this dock.
+ARG_TG01_TopicReturn_1		high	3	Open the trapdoor with your own hand. Speak to whoever waits below.

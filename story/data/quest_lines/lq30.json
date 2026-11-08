@@ -13,6 +13,24 @@
    "fact.lq30.custom",
    "fact.lq30.trail",
    "fact.mq05.basin-lethal"
+  ],
+  "lines@low": [
+   "I wait for Sei-Wan, my kin. He walked out into the basin alone four hours ago.",
+   "He went to prove himself to Helstrom's Agaceph, the tribe that rules this city and that we belong to.",
+   "The custom of the Agaceph forbids our own to follow a walk-out. The levy will not go, and I may not.",
+   "It does not apply to an outsider. I do not know you, so I say only what you need.",
+   "He went east from the gate, through the shallows. Vipers live in the roots there.",
+   "Anyone who walks into the basin may die there. A warning is posted at the gate.",
+   "If you go, bring him home alive. If he can walk home himself, let the walk-out be his own."
+  ],
+  "lines@high": [
+   "I am glad you asked, friend. I wait for Sei-Wan, my kin. He walked out into the basin alone four hours ago.",
+   "He went to prove himself to Helstrom's Agaceph, the tribe that rules this city and that we belong to.",
+   "The custom of the Agaceph forbids our own to follow a walk-out. The levy will not go, and I may not.",
+   "It does not apply to an outsider, and I trust you with this. I would not say it to just anyone.",
+   "He went east from the gate, through the shallows. Vipers live in the roots there.",
+   "Be careful. Anyone who walks into the basin may die there. A warning is posted at the gate.",
+   "If you go, please bring him home alive. If he can walk home himself, let the walk-out be his own."
   ]
  },
  "topic.lq30-the-basin": {
@@ -26,6 +44,16 @@
   "facts": [
    "fact.lq30.custom",
    "fact.mq05.basin-lethal"
+  ],
+  "lines@low": [
+   "No. The custom of Helstrom's Agaceph forbids our own to follow a walk-out. It does not bind an outsider, so I will not stop you.",
+   "Know this. Anyone who walks into the basin round Helstrom may die there. The warning is posted at the gate.",
+   "What lies in the reed roots bites. The bite kills. The levy sends none after you. If we followed every youth out, no walk-out would be his own."
+  ],
+  "lines@high": [
+   "No, friend, I will not stop you. The custom of Helstrom's Agaceph forbids our own to follow a walk-out. It does not bind an outsider.",
+   "But hear me, for I would not see you lost. Anyone who walks into the basin round Helstrom may die there. A warning is posted at the gate.",
+   "What lies in the reed roots bites. The bite kills. The levy will send none of its own after you. If we followed every youth out, no walk-out would be his own."
   ]
  },
  "topic.lq30-come-back": {
@@ -38,6 +66,18 @@
   ],
   "facts": [
    "fact.lq30.walked-out"
+  ],
+  "lines@low": [
+   "I walked out alone four hours ago, to prove myself to Helstrom's Agaceph.",
+   "I wanted to walk home on my own feet.",
+   "The viper is dead and you are here. I cannot say no. I will come, but I do not thank you.",
+   "Walk ahead of me. I do not want to be seen coming home like this."
+  ],
+  "lines@high": [
+   "I walked out alone four hours ago, to prove myself to Helstrom's Agaceph.",
+   "I wanted to walk home on my own feet. I will tell you that, because I trust you.",
+   "The viper is dead. You came for me. I could not say no to you. I will come.",
+   "Walk ahead of me, please. I do not want to be seen coming home like this."
   ]
  }
 }

@@ -124,6 +124,11 @@ static class MainQuestCheck
                     if (info != null) Check($"{code} {tp.Name}/{v.GetProperty("variant").GetString()} speaker", SpeakerIs(info.Conditions, person));
                 }
             }
+            // The wording bands: each info's lines@high / lines@low, found by its default's lines.
+            var infosJ = lines.EnumerateObject().SelectMany(tp => tp.Value.GetProperty("infos").EnumerateArray()).ToList();
+            static List<string> Strs(JsonElement e) => [.. e.EnumerateArray().Select(l => l.GetString()!)];
+            ChainbreakersCheck.BandsBy(mine, q, (said, band) => infosJ.Where(v => Strs(v.GetProperty("lines")).SequenceEqual(said) && v.TryGetProperty($"lines@{band}", out _))
+                .Select(v => Strs(v.GetProperty($"lines@{band}"))).FirstOrDefault(), infosJ.Sum(v => v.EnumerateObject().Count(p => p.Name.StartsWith("lines@"))), (w, ok, _) => Check(w, ok));
         }
         IQuestGetter Q(string e) => mine.Quests.Single(x => x.EditorID == e);
         // An info of a topic, by its order, with a gate predicate and its fragment's call in the .pex (null: no fragment).

@@ -1,0 +1,9 @@
+key	variant	band	n	line
+ARG_TG01_TopicGiveBack_0		low	0	Take it. I could not sell it anyway.
+ARG_TG01_TopicGiveBack_0		low	1	I want no trouble. Go.
+ARG_TG01_TopicGiveBack_0		high	0	Take it. I could not sell it anyway. Here, it is yours.
+ARG_TG01_TopicGiveBack_0		high	1	I want no trouble, friend. Go well. Thank you.
+ARG_TG01_TopicGiveBack_1		low	0	Sixty gold. I had a buyer for this.
+ARG_TG01_TopicGiveBack_1		low	1	Here. It is yours.
+ARG_TG01_TopicGiveBack_1		high	0	Sixty gold, friend. I had a buyer for this, you know.
+ARG_TG01_TopicGiveBack_1		high	1	But I trust you. Here, it is yours.

@@ -1,0 +1,26 @@
+key	variant	band	n	line
+topic.mq04-the-village	default	low	0	You are from Lilmoth. I do not trust you. The Hist's light is out. Its leaves are shut.
+topic.mq04-the-village	default	low	1	Our uxith is dark. That is where the eggs lie. Leeches crowd its roots. They closed the tree.
+topic.mq04-the-village	default	low	2	Pays-Late, our tree-minder, let them in. He goes down to the roots at night. The village sees him go.
+topic.mq04-the-village	default	low	3	I hold back my welcome. I will not open the tree to you yet.
+topic.mq04-the-village	default	low	4	Win me round with words, or bring me two piles of salt. We cannot make salt here. Our water is fresh.
+topic.mq04-the-village	default	high	0	You are from Lilmoth, friend. I am glad you came. We do not trust strangers now.
+topic.mq04-the-village	default	high	1	The Hist's light is out. Its leaves are shut. Our uxith is dark.
+topic.mq04-the-village	default	high	2	That is where the eggs lie. Leeches crowd its roots. They closed the tree. Pays-Late, our tree-minder, let them in.
+topic.mq04-the-village	default	high	3	Pays-Late goes down to the roots at night. The village sees him go.
+topic.mq04-the-village	default	high	4	I will not open the tree to you yet. I am sorry for it.
+topic.mq04-the-village	default	high	5	Win me round with your words, or bring me two piles of salt. We cannot make salt here, because our water is fresh.
+topic.mq04-the-village	item	low	0	Two piles of salt. Give them here. Good. Salt is dear to us, because our water is fresh. Go to the tree.
+topic.mq04-the-village	item	low	1	The platform at the Hist's foot is mine. Walk softly there. Pays-Late goes down to the roots after dark, to wash the roots.
+topic.mq04-the-village	item	high	0	Two piles of salt, and you have brought them. Thank you, friend. Give them here.
+topic.mq04-the-village	item	high	1	Salt is dear to us, because our water is fresh. I will not forget this kindness. Go to the tree.
+topic.mq04-the-village	item	high	2	The platform at the Hist's foot is mine, so walk softly there.
+topic.mq04-the-village	item	high	3	Pays-Late goes down to the roots after dark, to wash the roots.
+topic.mq04-the-village	speech	low	0	You speak plainly. That is enough. The tree is yours to see.
+topic.mq04-the-village	speech	low	1	The platform at the Hist's foot is mine, so walk softly there.
+topic.mq04-the-village	speech	low	2	Pays-Late goes down to the roots every night after dark, to wash the roots. Go then, if you wish to see.
+topic.mq04-the-village	speech	low	3	Do not trust the leeches. They closed the tree.
+topic.mq04-the-village	speech	high	0	You speak plainly. I am glad to hear you. The tree is yours to see.
+topic.mq04-the-village	speech	high	1	The platform at the Hist's foot is mine, so walk softly there. I trust you will.
+topic.mq04-the-village	speech	high	2	Pays-Late goes down to the roots every night after dark, to wash the roots. Go there then, if you wish to see.
+topic.mq04-the-village	speech	high	3	Do not trust the leeches. They closed the tree.

@@ -7,7 +7,19 @@
    "The plank walk runs along the shore beside our houses. The beast lies in the water beneath it.",
    "Kill it for us. Then we can work the river again."
   ],
-  "facts": ["fact.lq25.beast-real"]
+  "facts": [
+   "fact.lq25.beast-real"
+  ],
+  "lines@low": [
+   "A crocodile lairs in the shallows under our plank walk. It took a raft. No one on the crew will take a raft out now.",
+   "The plank walk runs along the shore beside our houses. The beast lies in the water beneath it.",
+   "Kill it. Then we can work the river again. I ask no more of you than that."
+  ],
+  "lines@high": [
+   "I am glad you asked, friend. A crocodile lairs in the shallows under our plank walk. It took one of our rafts.",
+   "Now no one on the crew will take a raft out. The walk runs along the shore beside our houses. The beast lies in the water beneath it.",
+   "Will you kill it for us? I trust you with this. Then we can work the river again."
+  ]
  },
  "topic.lq25-tell-captain": {
   "speaker": "npc.hist-heartland.helstrom.boat-captain",
@@ -17,7 +29,17 @@
    "You have done me a great service. Take 60 gold for it.",
    "Now I will take my trade back on the river."
   ],
-  "facts": []
+  "facts": [],
+  "lines@low": [
+   "That is the landing crew's bucket. Full of offal. I thought the beast was always there. This says it was not.",
+   "You did a service. Take 60 gold for it.",
+   "Now I take my trade back on the river."
+  ],
+  "lines@high": [
+   "That is the landing crew's bucket. It is full of offal. I believed the beast had always been there.",
+   "This says it was not. You have done me a great service, friend. Please take 60 gold for it, with my thanks.",
+   "Now I will take my trade back on the river. I am glad it was you who found this."
+  ]
  },
  "topic.lq25-keep-quiet": {
   "speaker": "npc.hist-heartland.helstrom.lq25-crew-steerer",
@@ -27,6 +49,20 @@
    "If the boat captain hears of this, she will take all the river trade for herself. Say nothing to her.",
    "Here are 40 gold. It is a small price, but it is what we can pay."
   ],
-  "facts": ["fact.lq25.crew-baited"]
+  "facts": [
+   "fact.lq25.crew-baited"
+  ],
+  "lines@low": [
+   "Yes. We dumped the offal under the plank walk to fake a beast.",
+   "We meant to scare the boat captain's trade off the river.",
+   "If she hears of it, she takes all the river trade. Say nothing to her.",
+   "Take 40 gold. It is small. It is all we can pay. I do not give more."
+  ],
+  "lines@high": [
+   "Yes. You have found us out and I will not lie to you. We dumped the offal under the plank walk.",
+   "We wanted a beast to scare the boat captain's trade off the river.",
+   "If she hears of it, she will take all the river trade for herself. Please, say nothing to her.",
+   "Here are 40 gold. It is a small price, friend, but it is what we can pay. I trust you."
+  ]
  }
 }

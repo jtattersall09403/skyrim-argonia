@@ -27,6 +27,8 @@ from pathlib import Path
 from tools.argonia_world import db, esm
 
 GET_IS_REFERENCE = 136
+GET_STAGE = 58
+QUEST_SOURCE = re.compile(r"^quest (ARG_\w+) stage (\d+);")
 GET_RELATIONSHIP_RANK = 403     # Skyrim.esm's Hello INFOs: 148 gate on it with the player (>= 1 friend: 37 of them)
 GREET = {"talk.greet-stranger": 4, "talk.greet-friend": 3}     # topic -> compare operator (< 1, >= 1)
 WARM_MAX = 2
@@ -207,6 +209,63 @@ def check_names(w, settlements: list[str]) -> int:
     return bad
 
 
+def check_rumours(w, pl, recs) -> int:
+    """Each quest rumour (a talk.rumours fact whose source is 'quest ARG_X stage N; giver ...'): the quest is in the
+    plugin, Start Game Enabled with N its start-up stage; the giver's opening INFO (a topic of the quest's own gated
+    GetStage quest == N) exists; each talker citing the fact has an ARG_Talk_Rumours INFO gated to their ref carrying
+    every GetStage condition of that opening, so it is offered only while the quest can start; and no talker is one of
+    the quest's own people (a forced alias ref)."""
+    quests = {r.edid: r for r in recs if r.sig == "QUST"}
+    dial = {r.key: r for r in recs if r.sig == "DIAL"}
+
+    def stages(r):  # [(quest key, op, value)] of the INFO's GetStage conditions
+        return [(pl.form_key(struct.unpack_from("<I", d, 12)[0]), d[0] >> 5, struct.unpack_from("<f", d, 4)[0])
+                for d in r.all("CTDA") if struct.unpack_from("<H", d, 8)[0] == GET_STAGE]
+
+    def refs(r):
+        return {pl.form_key(struct.unpack_from("<I", d, 12)[0]) for d in r.all("CTDA")
+                if struct.unpack_from("<H", d, 8)[0] == GET_IS_REFERENCE}
+    infos = [(dial.get(pl.form_key(r.parents[-1][1])), r) for r in recs if r.sig == "INFO"]
+    bad = n = 0
+    for f in w.rows("talk_fact"):
+        m = QUEST_SOURCE.match(f.source or "") if f.topic == "talk.rumours" else None
+        if not m:
+            continue
+        n += 1
+        edid, start = m.group(1), int(m.group(2))
+        why = []
+        q = quests.get(edid)
+        if q is None:
+            print(f"RUMOUR {f.id}: {edid} not in the plugin")
+            bad += 1
+            continue
+        flags = struct.unpack_from("<H", q.sub("DNAM"), 0)[0]
+        idx = {struct.unpack_from("<H", d, 0)[0]: d[2] for d in q.all("INDX")}
+        if not flags & 1:
+            why.append("quest not Start Game Enabled")
+        if start not in idx or not idx[start] & 2:
+            why.append(f"stage {start} is not its start-up stage")
+        own = [r for d, r in infos if d is not None and d.ref("QNAM") == q.key
+               and (q.key, 0, float(start)) in stages(r)]
+        if not own:
+            why.append(f"no opening line of the quest gated on stage {start}")
+        people = {pl.form_key(struct.unpack_from("<I", d, 0)[0]) for d in q.all("ALFR")}
+        for tt in w.rows("talker_topic", topic="talk.rumours"):
+            if f.id not in [x.strip() for x in (tt.facts or "").split(",")]:
+                continue
+            if tt.talker in people:
+                why.append(f"{tt.talker} is one of the quest's own people")
+            mine = [r for d, r in infos if d is not None and d.edid == "ARG_Talk_Rumours" and tt.talker in refs(r)]
+            if len(mine) != 1:
+                why.append(f"{tt.talker}: {len(mine)} rumour INFOs")
+            elif own and not any(set(stages(o)) <= set(stages(mine[0])) for o in own):
+                why.append(f"{tt.talker}: rumour gate {stages(mine[0])} lacks the opening's {stages(own[0])}")
+        print(f"RUMOUR {f.id}: {edid} from stage {start}" + (f"  PROBLEMS {'; '.join(why)}" if why else "  ok"))
+        bad += bool(why)
+    print(f"talk_check rumours: {n} quest rumours, {bad} problems")
+    return bad
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--esp", default="out/Argonia.esp")
@@ -277,6 +336,7 @@ def main() -> int:
             continue
         stock = [(pl.form_key(struct.unpack_from("<I", d, 0)[0]), struct.unpack_from("<i", d, 4)[0]) for d in box.all("CNTO")]
         print(f"{f.edid}: chest {chest.edid} -> {box.edid}: " + ", ".join(f"{k} x{n}" for k, n in stock))
+    bad += check_rumours(w, pl, recs)
     print("talk_check names by world: " + ", ".join(f"{k} {n}" for k, n in sorted(worlds.items())))
     print(f"talk_check: {len(talkers)} talkers, {bad} problems")
     return 1 if bad else 0

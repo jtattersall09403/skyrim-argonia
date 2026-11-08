@@ -112,16 +112,16 @@ static class MQ04
         // TR-topic: the record's topics, each INFO gated on its speaker's base (GetIsID), the stage and its check.
         var salt = K("034CDF:Skyrim.esm"); // Salt Pile (item.salt-pile): two placed by Lilmoth's fish barrels (F6, F7)
         k.Topic("Village", Label("topic.mq04-the-village"),
-            k.Info(Lines("topic.mq04-the-village", Herald, "speech"), "TIF_ARG_MQ04_20", IsId(herald.FormKey), k.StageIs(10), Speech(25)),
-            k.Info(Lines("topic.mq04-the-village", Herald, "item"), "TIF_ARG_MQ04_20Food", [Obj("Salt", salt)], IsId(herald.FormKey), k.StageIs(10), Has(salt, 2)),
-            k.Info(Lines("topic.mq04-the-village", Herald), null, IsId(herald.FormKey), k.StageIs(10)));
+            k.Banded("topic.mq04-the-village", Herald, "speech", "TIF_ARG_MQ04_20", IsId(herald.FormKey), k.StageIs(10), Speech(25)),
+            k.Banded("topic.mq04-the-village", Herald, "item", "TIF_ARG_MQ04_20Food", [Obj("Salt", salt)], IsId(herald.FormKey), k.StageIs(10), Has(salt, 2)),
+            k.Banded("topic.mq04-the-village", Herald, "default", null, IsId(herald.FormKey), k.StageIs(10)));
         k.Topic("Boat", Label("topic.mq04-the-boat"),
-            k.Info(Lines("topic.mq04-the-boat", Egg, "speech"), "TIF_ARG_MQ04_40", IsId(egg.FormKey), k.StageIs(30), Speech(25)),
-            k.Info(Lines("topic.mq04-the-boat", Egg), null, IsId(egg.FormKey), k.StageIs(30)));
+            k.Banded("topic.mq04-the-boat", Egg, "speech", "TIF_ARG_MQ04_40", IsId(egg.FormKey), k.StageIs(30), Speech(25)),
+            k.Banded("topic.mq04-the-boat", Egg, "default", null, IsId(egg.FormKey), k.StageIs(30)));
         // The cut (review F1): at 30 only while the player holds the pot, and it sets 40; at 40 and after, freely.
         k.Topic("Cut", Label("topic.mq04-the-cut"),
-            k.Info(Lines("topic.mq04-the-cut", Minder, "item"), "TIF_ARG_MQ04_40", IsId(minder.FormKey), k.StageIs(30), Has(gumPot.FormKey, 1)),
-            k.Info(Lines("topic.mq04-the-cut", Minder), null, IsId(minder.FormKey), k.StageIs(40, CompareOperator.GreaterThanOrEqualTo)));
+            k.Banded("topic.mq04-the-cut", Minder, "item", "TIF_ARG_MQ04_40", IsId(minder.FormKey), k.StageIs(30), Has(gumPot.FormKey, 1)),
+            k.Banded("topic.mq04-the-cut", Minder, "default", null, IsId(minder.FormKey), k.StageIs(40, CompareOperator.GreaterThanOrEqualTo)));
 
         // The quest: Main Quest (the act's line), not Start Game Enabled; stages and objectives from the record.
         q.Name = "The Tree That Turned Its Face"; q.Priority = 60; q.Type = Quest.TypeEnum.MainQuest; q.Flags = Quest.Flag.RunOnce;

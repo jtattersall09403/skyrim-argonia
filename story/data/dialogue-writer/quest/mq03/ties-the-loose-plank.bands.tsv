@@ -1,0 +1,25 @@
+key	variant	band	n	line
+topic.mq03-the-night	tag	low	0	That is the courier's tag. Then I will tell you. I keep my warmth back.
+topic.mq03-the-night	tag	low	1	I watched from the shore at the end of my shift. A woman with a knotted cord at her wrist led the cell.
+topic.mq03-the-night	tag	low	2	She took the courier's satchel. She left the cutting to her cutters.
+topic.mq03-the-night	tag	low	3	The roots were cut clean at the ring, one stroke each, by hands that knew where.
+topic.mq03-the-night	tag	low	4	Wuleen-Sei marched the unhurt back to the barge at the dock. Hurt hands are no hire.
+topic.mq03-the-night	tag	high	0	That is the courier's tag. Then I will tell you. You have earned it.
+topic.mq03-the-night	tag	high	1	I watched from the shore at the end of my shift. A woman with a knotted cord at her wrist led the cell.
+topic.mq03-the-night	tag	high	2	She took the courier's satchel. She left the cutting to her cutters.
+topic.mq03-the-night	tag	high	3	The roots were cut clean at the ring, one stroke each, by hands that knew where.
+topic.mq03-the-night	tag	high	4	Wuleen-Sei marched the unhurt back to the barge at the dock, because hurt hands are no hire.
+topic.mq03-the-night	words	low	0	You ask fairly. I will tell it once, and I will not say it twice.
+topic.mq03-the-night	words	low	1	I watched from the shore at the end of my shift. A woman with a knotted cord at her wrist led the cell.
+topic.mq03-the-night	words	low	2	She took the courier's satchel. She left the cutting to her cutters.
+topic.mq03-the-night	words	low	3	The roots were cut clean at the ring, one stroke each, by hands that knew where.
+topic.mq03-the-night	words	low	4	Wuleen-Sei marched the unhurt back to the barge at the dock. Hurt hands are no hire.
+topic.mq03-the-night	words	high	0	You ask fairly and I trust you. I will tell it once, so listen well.
+topic.mq03-the-night	words	high	1	I watched from the shore at the end of my shift. A woman with a knotted cord at her wrist led the cell.
+topic.mq03-the-night	words	high	2	She took the courier's satchel. She left the cutting to her cutters.
+topic.mq03-the-night	words	high	3	The roots were cut clean at the ring, one stroke each, by hands that knew where.
+topic.mq03-the-night	words	high	4	Wuleen-Sei marched the unhurt back to the barge at the dock, because hurt hands are no hire.
+topic.mq03-the-night	low	low	0	I saw the camp that night. I do not tell strangers what I saw.
+topic.mq03-the-night	low	low	1	Give me a reason, or the tag.
+topic.mq03-the-night	low	high	0	I saw the camp that night, friend. I do not tell it to just anyone. I am sorry.
+topic.mq03-the-night	low	high	1	Give me a reason, or show me the tag, and I will think again.
