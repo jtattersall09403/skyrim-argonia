@@ -619,6 +619,7 @@
 {"id":"fact.mq04.uxith-dark","claim":"The village's uxith is dark, as the camp's was.","ord":2,"from_ref":"t3","quest_id":"quest.main.mq04"}
 {"id":"fact.mq05.basin-lethal","claim":"The basin round Helstrom kills what walks in it and the gate says so.","ord":2,"from_ref":"t3","quest_id":"quest.main.mq05"}
 {"id":"fact.mq05.eituja-view","claim":"Ei-Tuja holds that a Hist's silence is its own act, to be read and not clamped.","ord":8,"from_ref":"t5","quest_id":"quest.main.mq05"}
+{"id":"fact.mq05.grove-whole","claim":"The grove's young Hist stands whole, its roots uncut and unsealed: Helstrom has not seen a cut root.","ord":10,"from_ref":"t5","quest_id":"quest.main.mq05"}
 {"id":"fact.mq05.kaska-view","claim":"Kaska-Meen holds that a Hist that falls silent must be watched by tree-minders alone.","ord":7,"from_ref":"t5","quest_id":"quest.main.mq05"}
 {"id":"fact.mq05.marsh-way","claim":"The way in from the landing is root and shallows through the Heart-Mud.","ord":3,"from_ref":"t3","quest_id":"quest.main.mq05"}
 {"id":"fact.mq05.reed-goal","claim":"The Reed wants Helstrom's tree-minders and Nisswo to hear what a cut Hist looks like, and wants it said by someone it can deny.","ord":1,"from_ref":"t2","quest_id":"quest.main.mq05"}

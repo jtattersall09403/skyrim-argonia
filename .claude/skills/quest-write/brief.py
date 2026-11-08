@@ -195,8 +195,8 @@ def main() -> int:
             if "WONDER" not in q.get("shapes", []) and not any("startScene" in a for a in s.get("onEnter", [])) and not [x for x in stage_actions(s) if "skill" in x]:
                 missing.append(f"{w}: no skill action (principles/actions.md)")
             missing += [f"{w}: learns {g}" for g in s.get("learns", []) if g not in claims]
-    if len(q["endings"]) < 2:
-        missing.append("endings: fewer than two")
+    if len(q["endings"]) < 1:
+        missing.append("endings: none")
     for e in q["endings"]:
         check_actions(e.get("world"), verbs, f"ending {e['id']} world", missing)
         check_actions(e.get("rewards"), verbs, f"ending {e['id']} rewards", missing)

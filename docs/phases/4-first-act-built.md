@@ -160,3 +160,13 @@ the quest is re-authored.
   `localcheck` still PASS; round trip clean (679 yaml files). Open: the BC01 >= 90 gate is added when ARG_BC01 is
   built (the check prints a NOTE); the record's `changeStanding` (Chainbreakers +10) and `setFlag` effects have no
   global yet and are not built; the low and high bands are not built (one band, as LQ25 and LQ30).
+- **MQ04 and MQ05 built (2026-11-08).** `tools/ArgoniaPlugin/MQ04.cs`, `MQ05.cs` on `QuestKit.cs` (the block test's
+  shapes as helpers), fragments `papyrus/ARG_QF_MQ04.psc`, `ARG_QF_MQ05.psc` and seven TIFs (18 of 18 scripts compile).
+  MQ04 has the quest-review's F1 to F8 applied: Pays-Late is essential and carries the gum pot (pickpocketed; his topic
+  at 30 needs it, and sets 40), the way back has three leeches enabled at 45 and its own box (prereq 45 sets 91), the
+  far-side objective and zones are cut, the camp is enabled at 40, the food is Salt Pile (034CDF; two on Lilmoth's fish
+  barrel 02A1F6, at its bounds top). MQ05: the c2 conclusion gains a third clue (the grove's Hist whole); the ship's
+  inner door pair (new block, owed an owner check); the evening quarrel and MQ04's set dressing are cut (review rows).
+  Dialogue: 7 speakers, 51 `dialogue_line` rows, lint clean, one reader pass (11 of 14 hits applied). Read-back
+  `plugin.sh mqcheck` (`MQCheck.cs`): 10 of 11 stages PASS; MQ05 20 FAILS, waiting on `ARG_NeshDeekaRef` from the
+  MQ01/MQ03 lane (her topic is left out until that ref exists). MQ04 10 is set by MQ03 (that lane).

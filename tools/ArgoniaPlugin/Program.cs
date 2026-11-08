@@ -13,6 +13,7 @@ switch (args.FirstOrDefault())
     case "localcheck": return LocalQuestsCheck.Run(args[1], args[2], args[3..]);
     case "bccheck": return ChainbreakersCheck.Run(args[1], args[2], args[3..]);
     case "blocktest": return BlockTestCheck.Run(args[1], args[2], args[3..]);
+    case "mqcheck": return MQCheck.Run(args[1], args[2], args[3..]);
     case "mapprobe": MapFix.Probe(args[1..]); break;
     case "musicprobe": Music.Probe(args[1..]); break;
     case "blockstudy": BlockTestStudy.Run(args[1]); break;

@@ -5,6 +5,7 @@
 #   plugin.sh check    build, then serialize it back and diff with plugin/Argonia (round trip clean), then read the
 #                      ESP back (tools/ArgoniaPlugin list): every override carries its change; writes the records table
 #   plugin.sh blocktest  build, then Phase 3's agent check of ARG_BlockTest from the ESP and out/gpu/papyrus (the .pex)
+#   plugin.sh mqcheck  build, then the read-back of MQ04 and MQ05 from the ESP and out/gpu/papyrus against the record (MQCheck.cs)
 #   plugin.sh cleancheck  build, then read the slice's clean-ups back from the ESP (CleanUp.cs)
 #   plugin.sh bccheck  build, then read the Chainbreakers quests back from the ESP and the .pex (ChainbreakersCheck.cs)
 #   plugin.sh seed     regenerate plugin/Argonia from shutdown.json and the load order's winners (game data needed:
@@ -48,6 +49,7 @@ case "${1:-}" in
   blocktest) build; tool blocktest "$esp" out/gpu/papyrus "${lo[@]}" ;;
   localcheck) build; tool localcheck "$esp" out/gpu/papyrus "${lo[@]}" ;;
   bccheck) build; tool bccheck "$esp" out/gpu/papyrus "${lo[@]}" ;;
+  mqcheck) build; tool mqcheck "$esp" out/gpu/papyrus "${lo[@]}" ;;
   seed)
     loadorder
     tmp=$(mktemp -d); trap 'rm -rf "$tmp"' EXIT

@@ -205,6 +205,24 @@
 {"id":"topic.little-advice","topic_class":"newcomer","label":"little advice"}
 {"id":"topic.living-tags","topic_class":"quest","label":"tags for the living","keys_quest":"quest.local.lr39"}
 {"id":"topic.lot-four","topic_class":"quest","label":"the death on lot four","keys_quest":"quest.local.sx05"}
+{"id":"topic.mq04-the-boat","topic_class":"quest","label":"the boat","keys_quest":"quest.main.mq04"}
+
+{"id":"topic.mq04-the-cut","topic_class":"quest","label":"the cut","keys_quest":"quest.main.mq04"}
+
+{"id":"topic.mq04-the-village","topic_class":"quest","label":"the tree","keys_quest":"quest.main.mq04"}
+
+{"id":"topic.mq05-tell-minder","topic_class":"quest","label":"what I saw","keys_quest":"quest.main.mq05"}
+
+{"id":"topic.mq05-tell-nisswo","topic_class":"quest","label":"what I saw","keys_quest":"quest.main.mq05"}
+
+{"id":"topic.mq05-the-basin","topic_class":"quest","label":"the basin","keys_quest":"quest.main.mq05"}
+
+{"id":"topic.mq05-the-quarrel","topic_class":"quest","label":"the silent Hist","keys_quest":"quest.main.mq05"}
+
+{"id":"topic.mq05-the-watch","topic_class":"quest","label":"the watch","keys_quest":"quest.main.mq05"}
+
+{"id":"topic.mq05-the-word","topic_class":"quest","label":"Helstrom","keys_quest":"quest.main.mq05"}
+
 {"id":"topic.naga-highway-camp-active-north","topic_class":"local","label":"the North Cut Camp","keys_place":"place.naga-kur-deeps.naga-highway-camp-active-north","keys_aspect":"place"}
 {"id":"topic.naga-highway-camp-active-north-danger","topic_class":"local","label":"danger near the North Cut Camp","keys_place":"place.naga-kur-deeps.naga-highway-camp-active-north","keys_aspect":"danger"}
 {"id":"topic.naga-highway-camp-active-north-directions","topic_class":"local","label":"the way from the North Cut Camp","keys_place":"place.naga-kur-deeps.naga-highway-camp-active-north","keys_aspect":"directions"}
