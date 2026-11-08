@@ -9,6 +9,7 @@ Map: https://claude.ai/artifact/HytwbVPXzurvxNZWfvzo6g
 
 * There are a few bits of the road network that are recorded in our data as major road that should be minor roads/paths (that's how they are shown on the original source map). I am guessing these were image reader misreads. Look at an image of our road network on our terrain map yourself: you should be able to see that there are some patches of major road in the middle of a span of minor road/path; and some bits of major road that only come at the end of a stretch of minor road (e.g. connecting up a minor place to the minor road network). You should be able to measure these and correct them in our roads and paths data.
 * There are also one or two small gaps in the major road network that are errors, e.g. just north of Guj-Tei. FIx these too.
+* Something weird at the top of the map - see tmp/image copy 5.png. Compare with the top of the source map, tmp/image copy 6.png
 
 # General notes
 
@@ -71,7 +72,7 @@ bucket, never in git.
 | 1 | Study: what to salvage from the old pipeline (research/nw-02-salvage.md) | in progress |
 | 2 | Study: ground, water, roads, mist rules from the game and mod files (research/nw-02-ground-water-rules.md) | in progress |
 | 3 | Study: flora, rocks, seabed, cliffs catalogue, seating and placement rules (research/nw-02-flora-rules.md) | in progress |
-| 4 | Terrain quality: nw-01's relief against Skyrim's, the improvement pass, room for large places | todo |
+| 4 | Terrain quality: nw-01's relief against Skyrim's, the improvement pass, room for large places | in progress |
 | 5 | Water: kinds and flow inferred, the owner's water editor, water types as records | todo |
 | 6 | Region flora sets in the DB, seabed sets | todo |
 | 7 | The world plugin: worldspace, land, textures without hard edges, water, regions, BM&V weather | todo |
