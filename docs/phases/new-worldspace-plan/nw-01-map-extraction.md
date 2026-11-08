@@ -39,6 +39,9 @@ Grid: 40 px per Morrowind cell (8192 units); the edge labels print the absolute 
 | 4 Terrain (terrain*.py): heightmap 5377 x 3841 at 128 units, water level 0, map water and land exact, roads, pads, 49 entrances, islands and seabed built in, 2319 water bodies with flow, one estuary a river mouth (owner edits in water_overrides.json); measurements in research/terrain-measurements.md | done |
 | 5 Interactive map (map_page.py), published: https://claude.ai/artifact/HytwbVPXzurvxNZWfvzo6g | done |
 
+Skills made in this phase (README: a skill for anything done more than once): `place-research` (researching
+places and regions of the new world). Its review step is the existing `text-review` skill.
+
 Build everything from the sources: `python3 -m tools.newworld.raster`, `tiles`, `glyphs`, `consolidate`, `regions`,
 `roads`, `terrain`, `build_db`, `map_page` (each `tools.newworld.<name>`, with the venv's python).
 
