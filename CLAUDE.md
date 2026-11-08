@@ -39,6 +39,7 @@ world with minimal tweaks ([PLAN](docs/PLAN.md), [0038](docs/decisions/0038-the-
 - `make check` (lint, unit, guard) is the one gate; run it before a commit that reaches code.
 - Tidy up: delete temporary files on the VM and in the bucket when done; delete, never archive.
 - Model and effort live only in `.claude/agents/` frontmatter; one deliverable per context; return ≤ 25 lines.
+- Skills: Agent Skills should not read as a patchwork or a history referencing feedback and decisions. They must always read simply as a clean recipe for how to do the thing correctly. If you ever touch a Skill (to read or edit it), leave it like this.
 
 ## The owner
 
