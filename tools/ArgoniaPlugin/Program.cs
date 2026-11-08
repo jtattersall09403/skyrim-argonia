@@ -22,6 +22,7 @@ switch (args.FirstOrDefault())
     case "inspect": Inspect.Run(args[1], args[2..]); break;
     case "quests": Study2.Run(args[1], args[2..]); break;
     case "nightreed": NightReedStudy.Run(args[1..]); break;
+    case "mainquestcheck": return MainQuestCheck.Run(args[1], args[2], args[3..]);
     case "nightreedcheck": return NightReedCheck.Run(args[1], args[2], args[3..]);
     default: Console.Error.WriteLine("ArgoniaPlugin seed <out.esp> <plugins...> | blocktest <esp> <pexdir> <plugins...> | list <esp> <md> | survey <plugins...> | study|quests|cell|find ..."); return 2;
 }

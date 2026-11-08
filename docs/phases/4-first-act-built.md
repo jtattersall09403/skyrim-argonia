@@ -136,20 +136,6 @@ the quest is re-authored.
   now vanilla HorkerTusk's ivory (03AD68), not the Companions totem CRTotem2 (decision 0006). Read-back 228 of 228 (a
   new check: the figurine's model is not a totem), 37 of 37 .pex. Owed: the owner's in-game check.
 
-- **MQ01 and MQ03 lines written (2026-11-08)** for every speaker with a topic (`*.lines.txt` beside each brief):
-  Wuleen-Sei (4 topics), Buys-The-Months, Ux-Xeek, Dives-Without-A-Rope, Nesh-Deeka (4), Never-Writes-Twice, Ties;
-  `lint.py` clean on all seven (B10 "courier" warnings justified, province-vibe §9). Not yet done: the text-review
-  reader pass; three different file layouts, to be made one before loading. Fact requests to answer in the records:
-  why Ties must be persuaded; whether the player knows "the Reed" by stage 20; who Wuleen-Sei is to Ties's listener;
-  whether the player knows Nesh-Deeka at stage 10; who keeps the Lilmoth house and when the boat leaves; the figure
-  for the food months (or "no figure"); whether Ux-Xeek may call the blank line aloud.
-- **Hand-off: the MQ01/MQ03 build (next context).** Not started: `MQ01.cs`, `MQ03.cs` (after `CleanUp.Add` in
-  Generate.cs), their Papyrus, the read-backs, the .pex. Copy the shapes from BlockTest.cs (zones, alias scripts,
-  scenes, topics with TIF fragments, the race guard on 91). Rulings to keep: quest editor ids ARG_MQ01/ARG_MQ03;
-  Nesh-Deeka's ref `ARG_NeshDeekaRef`; MQ03 90 and 91 call ARG_MQ04's SetStage(10) (look it up by editor id; allow
-  for it being absent); MQ101's override starts ARG_MQ01 in place of ARG_Opening; every placement on BM&V's own
-  navmesh (Surface/Snapper helpers); the camp in cell 005911 at the paddy edge. Order: MQ01 (the new game first),
-  then MQ03.
 - **BC03 built (2026-11-08).** `tools/ArgoniaPlugin/Chainbreakers.cs`, called after `LocalQuests.Add` (it reuses
   LocalQuests' kit, now internal, with `TopicV` for an info's variant lines). Ussa-Rekh, Heavy-Rope and his chest
   (vanilla StrongBox, Novice lock, owned by him) are snapped to Dock2's navmesh (Black Marsh North's `0A7784`), and both men are
@@ -170,3 +156,22 @@ the quest is re-authored.
   Dialogue: 7 speakers, 51 `dialogue_line` rows, lint clean, one reader pass (11 of 14 hits applied). Read-back
   `plugin.sh mqcheck` (`MQCheck.cs`): 10 of 11 stages PASS; MQ05 20 FAILS, waiting on `ARG_NeshDeekaRef` from the
   MQ01/MQ03 lane (her topic is left out until that ref exists). MQ04 10 is set by MQ03 (that lane).
+- **MQ01 and MQ03 built (2026-11-08, `tools/ArgoniaPlugin/MainQuest.cs`, read-back `plugin.sh mainquestcheck`):**
+  465 of 465 checks pass from the seed's ESP (through Spriggit YAML and back) and the .pex (50 of 50 compiled on the GPU
+  box, 13 new: `ARG_QF_MQ01`, `ARG_QF_MQ03`, 11 TIF). MQ101's override starts `ARG_MQ01` at a marker in the barge hold
+  (0F9178, its 'Dainty Sload' location cleared); `ARG_MQ01` runs character creation, then 10; `ARG_Opening` keeps its forms,
+  has no script and nothing starts it. 23 people (march copies on Dock1's navmesh 079823, the camp on 07990E at the
+  paddy edge, -3750,1300; deep water west of -4400), 18 lines in 13 topics from `story/data/quest_lines/mq01.json` and
+  `mq03.json` (the seven `*.lines.txt` normalised into these two, words band, no listener variants; reader pass: 9
+  rewrites applied, 7 declined as against the record's facts). MQ03's endings start `ARG_MQ04` at 10 when it is in the
+  plugin (absent now); BM&V's 01Captain and Valenwood's two start quests are held back and started by MQ03's endings.
+  **Re-authored to blocks:** the three scenes have no written lines, so the march ends at a fire zone (10 to 40, the march
+  packages read the answer's global), the strike is stage 40's fragment (the courier killed, the two moved), and the dream
+  ends at a zone at the hold door (40 to a hidden 45, which sets 90 or 91 on the sworn global); the taste is a hidden
+  stage 11 (the sap's alias, on activate). **Cut:** disposition bands and race vocatives in the lines; the families' night
+  schedules, the hut hatch (no door-into-water block: Deesh-Duun's huts are a water zone), grave-stakes, the cutting's
+  light, the fog, the house doors' base swap and the screen; Nesh-Deeka named by the stranger (fact questions 2 and 4).
+  **Fact questions answered:** Ties needs the tag or Speech 25 (the record's stage-20 action); the player knows
+  Wuleen-Sei from MQ01; Salts-The-Catch keeps the house (t3, QA8); the boat goes when the player says so; no figure for
+  the food months (labour-and-bondage §2 gives none); Ux-Xeek never reads the blank line. The house (0FE7F7) has no
+  navmesh where its rooms are; its people stand 10 units over the tilted floor. Owed: the owner's walk from a new game.

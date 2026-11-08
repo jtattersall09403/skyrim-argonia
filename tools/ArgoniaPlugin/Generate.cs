@@ -111,11 +111,7 @@ static class Generate
                     new ScriptEntry
                     {
                         Name = "ARG_QF_MQ101",
-                        Properties =
-                        {
-                            new ScriptObjectProperty { Name = "ARGOpening", Object = opening.ToLink() },
-                            new ScriptObjectProperty { Name = "StartMarker", Object = marker.ToLink() },
-                        },
+                        // StartQuest and StartMarker are set below once ARG_MQ01 is allocated (MainQuest.cs).
                     },
                 },
                 Fragments = { new QuestScriptFragment { Stage = 0, StageIndex = 0, ScriptName = "ARG_QF_MQ101", FragmentName = "Fragment_0" } },
@@ -189,6 +185,15 @@ static class Generate
         var mq05 = mod.Quests.AddNew("ARG_MQ05");
         MQ04.Add(mod, mods, mq04, mq05);
         MQ05.Add(mod, mods, mq05);
+        // The opening act's MQ01 and MQ03 (MainQuest.cs): allocated after NightReed. MQ101's override starts ARG_MQ01 in the
+        // barge hold; ARG_Opening keeps its forms (ids never move) and never starts: nothing starts it and its script is gone.
+        MainQuest.Add(mod, mods);
+        MainQuest.WritePsc("papyrus/generated");
+        mq101.VirtualMachineAdapter!.Scripts[0].Properties.AddRange([
+            new ScriptObjectProperty { Name = "StartQuest", Object = MainQuest.Mq01.ToLink() },
+            new ScriptObjectProperty { Name = "StartMarker", Object = MainQuest.StartMarker.ToLink() }]);
+        opening.VirtualMachineAdapter = null;
+        MainQuest.Finish(mod);
         var order = mods.Select(m => m.ModKey).Append(Ours).ToList();
         // The plugin whose worldspace record we override is a master even when no form of it is referenced, so ours
         // always loads after it.

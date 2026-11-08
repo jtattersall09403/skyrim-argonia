@@ -32,7 +32,7 @@ static class NightReed
     public static readonly (float X, float Y) BoxXY = (22400, 1024), HouseXY = (22784, 1408);
     public static readonly (float X, float Y)[] EelXY = [(22560, 1200), (22300, 1350)];
 
-    sealed class Snapper(List<ISkyrimModGetter> mods)
+    internal sealed class Snapper(List<ISkyrimModGetter> mods)
     {
         readonly Dictionary<FormKey, (INavigationMeshGetter rec, ModKey from)> nav = Survey.Winners<INavigationMeshGetter>(mods);
         readonly HashSet<(FormKey, int)> used = [];
@@ -47,21 +47,33 @@ static class NightReed
             used.Add((mesh, best.i));
             return new P3Float(MathF.Round(best.p.X), MathF.Round(best.p.Y), MathF.Round(best.p.Z));
         }
+        // The same, nearest in three dimensions: a deck above a deck (MainQuest's barge hold) keeps to the named level.
+        public P3Float At(FormKey mesh, float x, float y, float z)
+        {
+            var d = nav[mesh].rec.Data!; var v = d.Vertices;
+            var best = Enumerable.Range(0, d.Triangles.Count).Where(i => !used.Contains((mesh, i))).Select(i =>
+            {
+                var t = d.Triangles[i].Vertices; var a = v[t.X]; var b = v[t.Y]; var c = v[t.Z];
+                return (i, p: new P3Float((a.X + b.X + c.X) / 3, (a.Y + b.Y + c.Y) / 3, (a.Z + b.Z + c.Z) / 3));
+            }).MinBy(e => (e.p.X - x) * (e.p.X - x) + (e.p.Y - y) * (e.p.Y - y) + 16 * (e.p.Z - z) * (e.p.Z - z));
+            used.Add((mesh, best.i));
+            return new P3Float(MathF.Round(best.p.X), MathF.Round(best.p.Y), MathF.Round(best.p.Z));
+        }
     }
 
-    static ConditionFloat C(ConditionData d, CompareOperator op, float v, bool or = false) =>
+    internal static ConditionFloat C(ConditionData d, CompareOperator op, float v, bool or = false) =>
         new() { CompareOperator = op, ComparisonValue = v, Data = d, Flags = or ? Condition.Flag.OR : 0 };
-    static T OnPlayer<T>(T d) where T : ConditionData { d.RunOnType = Condition.RunOnType.Reference; d.Reference.SetTo(PlayerRef); return d; }
-    static ConditionFloat StageLt(Quest q, int s) { var d = new GetStageConditionData(); d.Quest.Link.SetTo(q.FormKey); return C(d, CompareOperator.LessThan, s); }
-    static ConditionFloat StageIs(Quest q, int s) { var d = new GetStageConditionData(); d.Quest.Link.SetTo(q.FormKey); return C(d, CompareOperator.EqualTo, s); }
-    static ConditionFloat Speech(float v) => C(OnPlayer(new GetActorValueConditionData { ActorValue = ActorValue.Speech }), CompareOperator.GreaterThanOrEqualTo, v);
-    static ConditionFloat Has(FormKey item, float n) { var d = new GetItemCountConditionData(); d.ItemOrList.Link.SetTo(item); OnPlayer(d); return C(d, CompareOperator.GreaterThanOrEqualTo, n); }
-    static ConditionFloat IsId(Npc n) { var d = new GetIsIDConditionData(); d.Object.Link.SetTo(n.FormKey); return C(d, CompareOperator.EqualTo, 1); }
-    static ConditionFloat Dead(uint alias, bool dead) => C(new GetDeadConditionData { RunOnType = Condition.RunOnType.QuestAlias, RunOnTypeIndex = (int)alias }, CompareOperator.EqualTo, dead ? 1 : 0);
-    static ScriptEntry Script(string name, params ScriptProperty[] ps) { var e = new ScriptEntry { Name = name }; e.Properties.AddRange(ps); return e; }
-    static ScriptObjectProperty Obj(string n, FormKey k) => new() { Name = n, Object = L(k) };
-    static ScriptObjectProperty Alias(string n, Quest q, uint id) => new() { Name = n, Object = L(q.FormKey), Alias = (short)id };
-    static ScriptIntProperty Int(string n, int v) => new() { Name = n, Data = v };
+    internal static T OnPlayer<T>(T d) where T : ConditionData { d.RunOnType = Condition.RunOnType.Reference; d.Reference.SetTo(PlayerRef); return d; }
+    internal static ConditionFloat StageLt(Quest q, int s) { var d = new GetStageConditionData(); d.Quest.Link.SetTo(q.FormKey); return C(d, CompareOperator.LessThan, s); }
+    internal static ConditionFloat StageIs(Quest q, int s) { var d = new GetStageConditionData(); d.Quest.Link.SetTo(q.FormKey); return C(d, CompareOperator.EqualTo, s); }
+    internal static ConditionFloat Speech(float v) => C(OnPlayer(new GetActorValueConditionData { ActorValue = ActorValue.Speech }), CompareOperator.GreaterThanOrEqualTo, v);
+    internal static ConditionFloat Has(FormKey item, float n) { var d = new GetItemCountConditionData(); d.ItemOrList.Link.SetTo(item); OnPlayer(d); return C(d, CompareOperator.GreaterThanOrEqualTo, n); }
+    internal static ConditionFloat IsId(Npc n) { var d = new GetIsIDConditionData(); d.Object.Link.SetTo(n.FormKey); return C(d, CompareOperator.EqualTo, 1); }
+    internal static ConditionFloat Dead(uint alias, bool dead) => C(new GetDeadConditionData { RunOnType = Condition.RunOnType.QuestAlias, RunOnTypeIndex = (int)alias }, CompareOperator.EqualTo, dead ? 1 : 0);
+    internal static ScriptEntry Script(string name, params ScriptProperty[] ps) { var e = new ScriptEntry { Name = name }; e.Properties.AddRange(ps); return e; }
+    internal static ScriptObjectProperty Obj(string n, FormKey k) => new() { Name = n, Object = L(k) };
+    internal static ScriptObjectProperty Alias(string n, Quest q, uint id) => new() { Name = n, Object = L(q.FormKey), Alias = (short)id };
+    internal static ScriptIntProperty Int(string n, int v) => new() { Name = n, Data = v };
 
     // The written lines, one per INFO, by its TIF id; NightReedCheck and the dialogue pass read them from here.
     public sealed record Line(string Topic, string Prompt, string Text, string? Fragment);
@@ -329,13 +341,13 @@ static class NightReed
         foreach (var (s, _, _) in stages.Where(x => x.s != 0))
             q.VirtualMachineAdapter!.Fragments.Add(new QuestScriptFragment { Stage = (ushort)s, StageIndex = 0, ScriptName = script, FragmentName = $"Fragment_{s}" });
     }
-    static QuestAlias Forced(Quest q, uint id, string name, FormKey r, QuestAlias.Flag flags = 0)
+    internal static QuestAlias Forced(Quest q, uint id, string name, FormKey r, QuestAlias.Flag flags = 0)
     {
         var a = new QuestAlias { ID = id, Type = QuestAlias.TypeEnum.Reference, Name = name, Flags = flags };
         a.ForcedReference.SetTo(r); q.Aliases.Add(a); return a;
     }
-    static QuestFragmentAlias AliasScript(Quest q, uint id, ScriptEntry s) { var f = new QuestFragmentAlias { Property = Alias("", q, id) }; f.Scripts.Add(s); return f; }
-    static ScriptEntry OnDeath(Quest q, int pre, int set) => Script("defaultSetStageOnDeathRefAlias", Obj("myQST", q.FormKey), Int("preReqStage", pre), Int("StageToSet", set));
+    internal static QuestFragmentAlias AliasScript(Quest q, uint id, ScriptEntry s) { var f = new QuestFragmentAlias { Property = Alias("", q, id) }; f.Scripts.Add(s); return f; }
+    internal static ScriptEntry OnDeath(Quest q, int pre, int set) => Script("defaultSetStageOnDeathRefAlias", Obj("myQST", q.FormKey), Int("preReqStage", pre), Int("StageToSet", set));
 
     static void Build1(SkyrimMod mod, Quest q, Quest next, Faction chapter, Npc tilts, Npc stabi, Npc thief, Npc friend, Npc bent, Armor necklace,
         PlacedNpc tiltsRef, PlacedNpc stabiRef, PlacedNpc thiefRef, PlacedNpc friendRef, PlacedNpc bentRef, PlacedObject zone, PlacedObject parent,

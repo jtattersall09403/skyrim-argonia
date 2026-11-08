@@ -1,0 +1,131 @@
+{
+ "topic.mq01-the-roll": {
+  "speaker": "npc.pirate-freeholds.opening-work-barge.npc-opening-overseer",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Why am I here?",
+    "lines": [
+     "Listen. Everyone on the broker's gang owes months. Months are the work we owe. The roll adds more months for food.",
+     "I have read your line, and it has no name on it. What name do I call?"
+    ],
+    "facts": [
+     "fact.mq01.owing-roll",
+     "fact.mq01.blank-line"
+    ]
+   }
+  ]
+ },
+ "topic.mq01-answer-name": {
+  "speaker": "npc.pirate-freeholds.opening-work-barge.npc-opening-overseer",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Put down the name I carry.",
+    "lines": [
+     "The hold heard you. Your line had no name on it, and now it has one.",
+     "Take the door up to the plank. The gang walks the shore path, north and west."
+    ],
+    "facts": [
+     "fact.mq01.blank-line"
+    ]
+   }
+  ]
+ },
+ "topic.mq01-answer-silent": {
+  "speaker": "npc.pirate-freeholds.opening-work-barge.npc-opening-overseer",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "(Say nothing.)",
+    "lines": [
+     "You say nothing. I read your line blank again. It has no name on it.",
+     "Take the door up to the plank. The gang walks the shore path, north and west."
+    ],
+    "facts": [
+     "fact.mq01.blank-line"
+    ]
+   }
+  ]
+ },
+ "topic.mq01-answer-defy": {
+  "speaker": "npc.pirate-freeholds.opening-work-barge.npc-opening-overseer",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Do what you like with your roll.",
+    "lines": [
+     "Ux-Xeek, who calls the names, laughed once and stopped. The gang heard you. Your line stays with no name on it.",
+     "Take the door up to the plank. The gang walks the shore path, north and west."
+    ],
+    "facts": [
+     "fact.mq01.blank-line"
+    ]
+   }
+  ]
+ },
+ "topic.mq01-the-hire": {
+  "speaker": "npc.mercantile-coast.lilmoth.broker-buys-the-months",
+  "infos": [
+   {
+    "variant": "after-answer",
+    "prompt": "Whose gang is this?",
+    "lines": [
+     "I will say it plainly. Every hand in this gang owes months of work. I hold those months. I hire the gang out to Hereguard Plantation, where the shore path meets the reeds. The roll adds months for food as well.",
+     "Your line on the roll has no name on it. That line is mine to fill or to leave. I cannot hire out a hand who owes nothing, so if you want it filled, give me a reason.",
+     "I heard the answer you gave the overseer, Wuleen-Sei. It was enough for her. It is not enough for me, because the months are mine to hire out. They are not hers."
+    ],
+    "facts": [
+     "fact.mq01.broker-holds",
+     "fact.mq01.owing-roll"
+    ]
+   },
+   {
+    "variant": "before-answer",
+    "prompt": "Whose gang is this?",
+    "lines": [
+     "I will say it plainly. Every hand in this gang owes months of work. I hold those months. I hire the gang out to Hereguard Plantation, where the shore path meets the reeds. The roll adds months for food as well.",
+     "Your line on the roll has no name on it. That line is mine to fill or to leave. I cannot hire out a hand who owes nothing, so if you want it filled, give me a reason."
+    ],
+    "facts": [
+     "fact.mq01.broker-holds",
+     "fact.mq01.owing-roll"
+    ]
+   }
+  ]
+ },
+ "topic.mq01-the-water": {
+  "speaker": "npc.pirate-freeholds.opening-work-barge.npc-opening-roll-reader",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Is that water for me?",
+    "lines": [
+     "Here is the day's water. Drink what you need and pass the cup to the next hand. I call the names in the hold every day, in order. I have never lost one.",
+     "Every hand in this gang owes months of work. The roll adds months for food as well, so every meal is counted against the hand who eats it."
+    ],
+    "facts": [
+     "fact.mq01.owing-roll"
+    ]
+   }
+  ]
+ },
+ "topic.mq01-the-march": {
+  "speaker": "npc.pirate-freeholds.opening-work-camp.n1-2",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "What have the years away cost you?",
+    "lines": [
+     "Two of us in this gang have been kept from the Hist so long that our colour and markings have thinned. Mine is going.",
+     "The gang families keep a cutting of the Hist from Nine Bends at the camp. Their egg clutch lies at its roots. I cannot stand beside my own Hist, so I want to stand beside the cutting before my colour is gone.",
+     "The camp is where the shore path meets the reeds. You will see the huts, the fire and the hatching shed. The shed stands beside the cutting at the far end."
+    ],
+    "facts": [
+     "fact.mq01.washed-out",
+     "fact.mq01.gang-hist"
+    ]
+   }
+  ]
+ }
+}

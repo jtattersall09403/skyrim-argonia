@@ -1,0 +1,159 @@
+{
+ "topic.mq03-the-boat": {
+  "speaker": "npc.dunmer-north.stormhold.reed-officer",
+  "infos": [
+   {
+    "variant": "ready",
+    "prompt": "I am ready to go.",
+    "lines": [
+     "A friend of the courier's sent us. You have tasted the sap. You are hurt.",
+     "The boat takes the hurt to a house in Lilmoth. That includes you."
+    ],
+    "facts": []
+   },
+   {
+    "variant": "where",
+    "prompt": "Who sent you?",
+    "lines": [
+     "A friend of the courier's sent us. You are hurt, as the others here are hurt. The boat takes the hurt to a house in Lilmoth.",
+     "The shed stands beside the withdrawn cutting, at the camp's far end. Sap lies spilled on its floor.",
+     "The burnt boards lie over deep water at the camp's fire. The courier's strap and tag lie in the gang families' locked fish-trap on the bottom, straight below them. Lockpicks lie loose beside the fire."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.mq03-the-attack": {
+  "speaker": "npc.nesh-deeka",
+  "infos": [
+   {
+    "variant": "phial-carried",
+    "prompt": "I will tell you what I saw at the camp.",
+    "lines": [
+     "Sit. Tell me what you saw at the camp. Leave nothing out.",
+     "Did you see jars at the camp? Think carefully.",
+     "You are carrying a phial. Give it to me. I want to look at it.",
+     "Tell me about the jars once more. How many ring-marks did you see?",
+     "The Reed has word of a cell. It cuts a Hist's roots and draws its sap into jars. Your camp is the first work of it that the Reed has seen.",
+     "The roll burnt in the camp's fire. No hand can show what you owe, or that you were ever on it.",
+     "The courier's satchel was mine to see carried. I say no more of it."
+    ],
+    "facts": [
+     "fact.mq03.sap-cell",
+     "fact.mq03.no-claim",
+     "fact.mq03.satchel-hers"
+    ]
+   },
+   {
+    "variant": "phial-none",
+    "prompt": "I will tell you what I saw at the camp.",
+    "lines": [
+     "Sit. Tell me what you saw at the camp. Leave nothing out.",
+     "Did you see jars at the camp? Think carefully.",
+     "You took nothing from the shed. Then I have only your word. I will take it.",
+     "Tell me about the jars once more. How many ring-marks did you see?",
+     "The Reed has word of a cell. It cuts a Hist's roots and draws its sap into jars. Your camp is the first work of it that the Reed has seen.",
+     "The roll burnt in the camp's fire. No hand can show what you owe, or that you were ever on it.",
+     "The courier's satchel was mine to see carried. I say no more of it."
+    ],
+    "facts": [
+     "fact.mq03.sap-cell",
+     "fact.mq03.no-claim",
+     "fact.mq03.satchel-hers"
+    ]
+   }
+  ]
+ },
+ "topic.mq03-the-night": {
+  "speaker": "npc.pirate-freeholds.opening-work-camp.n1",
+  "infos": [
+   {
+    "variant": "tag",
+    "prompt": "What did you see that night?",
+    "lines": [
+     "That is the courier's tag. Then I will tell you.",
+     "I watched from the shore at the end of my shift. A woman with a knotted cord at her wrist led the cell. She took the courier's satchel. She left the cutting to her cutters. The roots were cut clean at the ring, one stroke each, by hands that knew where.",
+     "Wuleen-Sei marched the unhurt back to the barge at the dock, because hurt hands are no hire."
+    ],
+    "facts": [
+     "fact.mq03.cord-woman",
+     "fact.mq03.clean-cut",
+     "fact.mq03.barge-gone"
+    ]
+   },
+   {
+    "variant": "words",
+    "prompt": "What did you see that night?",
+    "lines": [
+     "You ask fairly. I will tell it once.",
+     "I watched from the shore at the end of my shift. A woman with a knotted cord at her wrist led the cell. She took the courier's satchel. She left the cutting to her cutters. The roots were cut clean at the ring, one stroke each, by hands that knew where.",
+     "Wuleen-Sei marched the unhurt back to the barge at the dock, because hurt hands are no hire."
+    ],
+    "facts": [
+     "fact.mq03.cord-woman",
+     "fact.mq03.clean-cut",
+     "fact.mq03.barge-gone"
+    ]
+   },
+   {
+    "variant": "low",
+    "prompt": "What did you see that night?",
+    "lines": [
+     "I saw the camp that night. I do not tell strangers what I saw. Give me a reason."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.mq03-the-offer": {
+  "speaker": "npc.nesh-deeka",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Who are you?",
+    "lines": [
+     "I am of the Veiled Reed. It is the state's quiet service. We show no face. We want a hand we can deny.",
+     "No master can claim you now. The roll burnt in the camp's fire, so the broker cannot show what you owe, or that you were ever on it.",
+     "I offer you the Reed's protection, a door in Lilmoth and a stipend. The condition is that you serve the Reed. Think before you answer.",
+     "I want the survivor's account of the cell's work. When I have it, the Reed's people see the survivor home."
+    ],
+    "facts": [
+     "fact.mq03.reed-named",
+     "fact.mq03.no-claim",
+     "fact.mq03.reed-offer",
+     "fact.mq03.witness-wanted"
+    ]
+   }
+  ]
+ },
+ "topic.mq03-take-oath": {
+  "speaker": "npc.nesh-deeka",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "I will serve the Reed.",
+    "lines": [
+     "Then you serve the Reed. The protection, the door in Lilmoth and the stipend are yours now. I have your word."
+    ],
+    "facts": [
+     "fact.mq03.reed-offer"
+    ]
+   }
+  ]
+ },
+ "topic.mq03-refuse-oath": {
+  "speaker": "npc.nesh-deeka",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Not yet.",
+    "lines": [
+     "Then you do not take the Reed's protection, the door in Lilmoth or the stipend. That is your choice. The Reed will still send for you, and it will pay for the work."
+    ],
+    "facts": [
+     "fact.mq03.reed-offer"
+    ]
+   }
+  ]
+ }
+}
