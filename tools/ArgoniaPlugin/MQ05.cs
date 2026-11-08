@@ -36,6 +36,7 @@ static class MQ05
     public static void Add(SkyrimMod mod, List<ISkyrimModGetter> mods, Quest q)
     {
         var k = new QuestKit(mod, mods, q, "ARG_MQ05_");
+        Kit = k; Q = q;
         var world = World(mod, mods);
 
         // W-npc: Kaska-Meen and Ei-Tuja (band 0), templated on BM&V's villagers.
@@ -90,17 +91,10 @@ static class MQ05
         // E-global (the endings' flags), E-package (each at their post).
         var minders = k.Global("MindersHold");
         var nisswo = k.Global("NisswoRead");
-        var kaskaPkg = k.Travel("KaskaPost", kaskaPost);
-        var eiPkg = k.Travel("EiTujaPost", eiPost);
+        var kaskaPkg = k.Travel("KaskaGoPost", kaskaPost);
+        var eiPkg = k.Travel("EiTujaGoPost", eiPost);
 
         // TR-topic. Nesh-Deeka is the MQ01/MQ03 lane's person: her lines gate on her placed ref (GetIsReference).
-        var neshRef = mod.EnumerateMajorRecords<IPlacedNpcGetter>().FirstOrDefault(r => r.EditorID == NeshRefId);
-        if (neshRef != null)
-            k.Topic("Word", Label("topic.mq05-the-word"),
-                k.Info(Lines("topic.mq05-the-word", Nesh, "speech"), "TIF_ARG_MQ05_20", IsRef(neshRef.FormKey), k.StageIs(10), Speech(25)),
-                k.Info(Lines("topic.mq05-the-word", Nesh, "item"), "TIF_ARG_MQ05_20Gold", [Obj("Gold001", Gold)], IsRef(neshRef.FormKey), k.StageIs(10), Has(Gold, 40)),
-                k.Info(Lines("topic.mq05-the-word", Nesh), null, IsRef(neshRef.FormKey), k.StageIs(10)));
-        else Console.WriteLine($"MQ05: WARN no {NeshRefId} in the plugin (the MQ01/MQ03 lane's); stage 10's topic and fail-forward left out");
         k.Topic("Basin", Label("topic.mq05-the-basin"),
             k.Info(Lines("topic.mq05-the-basin", Warden), null, IsRef(WardenRef), k.StageIs(20, CompareOperator.GreaterThanOrEqualTo)));
         k.Topic("Quarrel", Label("topic.mq05-the-quarrel"),
@@ -118,12 +112,26 @@ static class MQ05
         k.Forced(AKaska, "KaskaMeen", kaskaRef).PackageData.Add(kaskaPkg.ToLink());
         k.Forced(AEiTuja, "EiTuja", eiRef).PackageData.Add(eiPkg.ToLink());
         k.Forced(AZone, "ZoneGrove", zone);
-        if (neshRef != null) k.Forced(ANesh, "NeshDeeka", neshRef, QuestAlias.Flag.Optional);
         q.VirtualMachineAdapter!.Scripts.Add(Script("ARG_QF_MQ05", k.Alias("KaskaMeen", AKaska), k.Alias("EiTuja", AEiTuja),
             Obj("WayParent", way.FormKey), Obj("MindersHold", minders.FormKey), Obj("NisswoRead", nisswo.FormKey)));
         q.VirtualMachineAdapter.Aliases.Add(DeathSets(k, AKaska, 40, 92)); // fail-forward: Kaska-Meen dead
-        if (neshRef != null) q.VirtualMachineAdapter.Aliases.Add(DeathSets(k, ANesh, 10, 20)); // fail-forward: Nesh-Deeka dead
 
         world.TopCell!.Persistent.AddRange([kaskaPost, eiPost, hist, zone, way, kaskaRef, eiRef, wasp1, wasp2]);
+    }
+
+    static QuestKit? Kit; static Quest? Q;
+    // Nesh-Deeka's part of MQ05: called from Generate.cs after MainQuest.Add, which places ARG_NeshDeekaRef.
+    public static void AddNesh(SkyrimMod mod)
+    {
+        var k = Kit!; var q = Q!;
+        var neshRef = mod.EnumerateMajorRecords<IPlacedNpcGetter>().FirstOrDefault(r => r.EditorID == NeshRefId);
+        if (neshRef != null)
+            k.Topic("Word", Label("topic.mq05-the-word"),
+                k.Info(Lines("topic.mq05-the-word", Nesh, "speech"), "TIF_ARG_MQ05_20", IsRef(neshRef.FormKey), k.StageIs(10), Speech(25)),
+                k.Info(Lines("topic.mq05-the-word", Nesh, "item"), "TIF_ARG_MQ05_20Gold", [Obj("Gold001", Gold)], IsRef(neshRef.FormKey), k.StageIs(10), Has(Gold, 40)),
+                k.Info(Lines("topic.mq05-the-word", Nesh), null, IsRef(neshRef.FormKey), k.StageIs(10)));
+        else Console.WriteLine($"MQ05: WARN no {NeshRefId} in the plugin (the MQ01/MQ03 lane's); stage 10's topic and fail-forward left out");
+        if (neshRef != null) k.Forced(ANesh, "NeshDeeka", neshRef, QuestAlias.Flag.Optional);
+        if (neshRef != null) q.VirtualMachineAdapter!.Aliases.Add(DeathSets(k, ANesh, 10, 20)); // fail-forward: Nesh-Deeka dead
     }
 }

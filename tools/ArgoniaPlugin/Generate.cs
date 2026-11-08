@@ -188,6 +188,7 @@ static class Generate
         // The opening act's MQ01 and MQ03 (MainQuest.cs): allocated after NightReed. MQ101's override starts ARG_MQ01 in the
         // barge hold; ARG_Opening keeps its forms (ids never move) and never starts: nothing starts it and its script is gone.
         MainQuest.Add(mod, mods);
+        MQ05.AddNesh(mod); // MQ05's Nesh-Deeka topic and alias need her ref, placed by MainQuest
         MainQuest.WritePsc("papyrus/generated");
         mq101.VirtualMachineAdapter!.Scripts[0].Properties.AddRange([
             new ScriptObjectProperty { Name = "StartQuest", Object = MainQuest.Mq01.ToLink() },
