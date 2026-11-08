@@ -67,7 +67,7 @@ RUNNING = ("estuary", "river", "stream")
 COAST_M, ENCLOSE_M, ENCLOSED_LAND = 450, 3000, 0.45
 RIVER_W_M, SLOW_W_M, LAKE_M2, OPEN_POND_M = 40, 150, 500_000, 120
 FRAME_BAND = 2 * f.FRAME_PX + 4               # the ruler band, its rule and the sea margin beyond, in map px
-CHANNEL_MIN_M, CHANNEL_ELONG = 150, 8         # a channel: centreline 150 m or more and 8 widths long, or branching
+CHANNEL_MIN_M, CHANNEL_ELONG = 100, 8         # a channel: centreline 100 m or more and 8 widths long, or branching
 TREE_WORDS = {"forest", "hist", "cypress", "bog", "root", "roots", "moss", "mosses", "jungle", "trees", "wood", "mangrove", "mangroves", "swamp"}
 REED_WORDS = {"reed", "reeds", "sedge", "cattail", "cattails", "fen", "rice", "saltrice", "paddy", "paddies", "bayou",
               "marsh", "lilies", "flats"}
@@ -318,6 +318,136 @@ def channel_shaped(m: np.ndarray) -> bool:
     return forks >= 4 and elong >= CHANNEL_ELONG / 2
 
 
+def carve(raster, rows, r, part, kind, why, dist) -> dict | None:
+    """Split the pixels `part` (a full-size mask inside body r) off as a new body of `kind`; r keeps the rest."""
+    i = r["raster_index"]
+    part = part & (raster == i)
+    rest = (raster == i) & ~part
+    if part.sum() < 20 or rest.sum() < 20:
+        if part.sum() >= 20 and not rest.any():
+            r["kind"], r["why"] = kind, why
+        return None
+    k = len(rows) + 1
+    raster[part] = k
+    out = []
+    for m_full, row in ((part, None), (rest, r)):
+        sl = ndi.find_objects(m_full.astype(np.int8))[0]
+        m = m_full[sl]
+        bid, px, py = body_id(m, dist, sl)
+        vals = {"area_m2": round(float(m.sum()) * M_PX * M_PX, 1), "label_px": px, "label_py": py,
+                "width_m": round(4 * float(dist[sl][m].mean()) * M_PX, 1),
+                "open_m": round(2 * float(dist[sl][m].max()) * M_PX, 1)}
+        if row is None:
+            row = dict(r, id=bid, raster_index=k, kind=kind, why=why, **{x: v for x, v in vals.items()})
+            out.append(row)
+        else:
+            row.update(vals, id=bid)
+    rows.append(out[0])
+    return out[0]
+
+
+def pools_and_mouths(raster, rows, dist) -> None:
+    """Step 3b, by local width rather than whole-body shape.
+    - A pool in a channel: where the open water is three times or more wider than the channel's own width (the
+      median width along its centreline) and 120 m or more across, that part is still water (pond, or lake from
+      0.5 km2); the channel runs into it and out again.
+    - Water joined to the sea that is wider than a channel and not channel-shaped (a lagoon, a coastal shelf) is
+      sea: shallow coast. A lake has no sea connection, or meets it only through a river.
+    - Water lying mostly on the map's frame (the ruler band) is sea, never a river mouth.
+    - An estuary is a river's mouth: it is kept only where a river meets it, and only within three river widths
+      (at most 400 m) of that meeting; the rest of the coastal fringe is still shallow coast."""
+    from skimage.morphology import skeletonize
+    objs = ndi.find_objects(raster)
+    for r in list(rows):
+        if r["set_by"] == "owner" or r["kind"] not in ("river", "stream"):
+            continue
+        sl = objs[r["raster_index"] - 1]
+        m = raster[sl] == r["raster_index"]
+        d = dist[sl] * m
+        sk = skeletonize(m)
+        if sk.sum() < 10:
+            continue
+        ref = float(np.median(d[sk]))
+        core = (d >= 1.5 * ref) & (2 * d * M_PX >= max(OPEN_POND_M, 3 * 2 * ref * M_PX))
+        if not core.any():
+            continue
+        lab, n = ndi.label(core, EIGHT)
+        dd, (iy, ix) = ndi.distance_transform_edt(~core, return_indices=True)
+        pool = m & (dd <= d[iy, ix])
+        plab, pn = ndi.label(pool, EIGHT)
+        for j in range(1, pn + 1):
+            pm = plab == j
+            area = pm.sum() * M_PX * M_PX
+            if area < 2 * (2 * ref * M_PX) ** 2 * 9:      # several channel widths each way
+                continue
+            full = np.zeros(raster.shape, bool)
+            full[sl] = pm
+            k = "lake" if area >= LAKE_M2 else "pond"
+            carve(raster, rows, r, full, k,
+                  f"a pool in a channel, {2 * float(d[pm].max()) * M_PX:.0f} m across against a "
+                  f"{2 * ref * M_PX:.0f} m channel: still water, the channel runs into it and out", dist)
+    adj = adjacency(raster)
+    by_i = {r["raster_index"]: r for r in rows}
+    for r in rows:                     # a whole body that is a pool: twice as open as every channel at it
+        if r["set_by"] == "owner" or r["kind"] not in ("river", "stream") or r["area_m2"] < 30_000:
+            continue
+        nb = [by_i[j] for j in adj.get(r["raster_index"], ())]
+        if nb and not any(x["kind"] in SEA + ("estuary", "lake", "pond") for x in nb) and \
+                r["open_m"] >= max(OPEN_POND_M, 2 * max(x["width_m"] for x in nb)):
+            r["kind"] = "lake" if r["area_m2"] >= LAKE_M2 else "pond"
+            r["why"] = (f"open water {r['open_m']:.0f} m across, twice as wide as every channel at it "
+                        f"(widest {max(x['width_m'] for x in nb):.0f} m): still, the channels run into it and out")
+    fb = np.zeros(raster.shape, bool)
+    fb[:FRAME_BAND, :] = fb[-FRAME_BAND:, :] = fb[:, :FRAME_BAND] = fb[:, -FRAME_BAND:] = True
+    idx = np.arange(1, len(rows) + 1)
+    in_band = ndi.mean(fb, raster, idx)
+    for r, v in zip(rows, in_band):
+        if v >= 0.5 and r["set_by"] != "owner" and r["kind"] not in SEA:
+            r["kind"], r["why"] = "shallow-coast", "water lying mostly on the map's frame: sea, never a river mouth"
+    for r in rows:
+        if r["set_by"] != "owner" and r["kind"] in ("lake", "pond") and \
+                any(by_i[j]["kind"] in SEA + ("estuary",) for j in adj.get(r["raster_index"], ())):
+            r["kind"] = "bay" if r["area_m2"] >= LAKE_M2 else "shallow-coast"
+            r["why"] = "open water joined to the sea or a river mouth, wider than a channel: sea"
+    river = np.isin(np.array(["land"] + [r["kind"] for r in rows]), ("river",))[raster]
+    for r in list(rows):
+        if r["set_by"] == "owner" or r["kind"] != "estuary":
+            continue
+        i = r["raster_index"]
+        m = raster == i
+        touch = river & ndi.binary_dilation(m, EIGHT, iterations=2)
+        if not touch.any():
+            r["kind"], r["why"] = "shallow-coast", "a coastal fringe with no river entering it: still sea"
+            continue
+        w = float(np.median(2 * dist[touch])) * M_PX
+        reach = min(400.0, 3 * w) / M_PX
+        far = m & (ndi.distance_transform_edt(~touch) > reach)
+        carve(raster, rows, r, far, "shallow-coast",
+              "the coastal water beyond a river's mouth: still sea", dist)
+
+
+def braid_smooth(raster, rows, vec, sigma: float = 40.0):
+    """In a braided reach (a running body that splits round islands) every braid flows the reach's way: the flow
+    is averaged over the reach, so no braid runs back against its neighbours."""
+    objs = ndi.find_objects(raster)
+    for r in rows:
+        if r["kind"] not in RUNNING:
+            continue
+        sl = objs[r["raster_index"] - 1]
+        if sl is None:
+            continue
+        m = raster[sl] == r["raster_index"]
+        holes = ndi.binary_fill_holes(m) & ~m
+        if ndi.label(holes)[1] < 2:
+            continue
+        wsum = ndi.gaussian_filter(m.astype(np.float32), sigma) + 1e-6
+        for c in (0, 1):
+            v = vec[c][sl]
+            n = np.hypot(vec[0][sl], vec[1][sl]) + 1e-6
+            sm = ndi.gaussian_filter(np.where(m, v / n, 0).astype(np.float32), sigma) / wsum
+            v[m] = (sm * 32)[m]
+
+
 def classify(png: bool = False, chunks: bool = False) -> dict:
     bj = json.loads((f.OUT / "water_bodies.json").read_text())
     raster = np.asarray(Image.open(f.OUT / "terrain" / "water_bodies.png")).astype(np.int32)
@@ -429,29 +559,15 @@ def classify(png: bool = False, chunks: bool = False) -> dict:
                         + {"blackwater-swamp": "as tree swamp", "green-marsh": "as open reed marsh",
                            "pond": "as dry or firm ground"}[ch["wet"]])
 
-    # step 3b: the sea's edge. Water on the map's frame (the ruler band) is sea, never a river mouth; an estuary
-    # is only where a river meets the sea (a stream just runs into the shore), the rest of a coastal fringe is still shallow coast
-    fb = np.zeros(raster.shape, bool)
-    fb[:FRAME_BAND, :] = fb[-FRAME_BAND:, :] = fb[:, :FRAME_BAND] = fb[:, -FRAME_BAND:] = True
-    idx_all = np.arange(1, len(rows) + 1)
-    in_band = ndi.mean(fb, raster, idx_all)                  # share of each body's water on the frame
-    on_frame = {int(i) for i, v in zip(idx_all, in_band) if v >= 0.5}
-    adj_final = adjacency(raster)
-    by_i = {r["raster_index"]: r for r in rows}
-    for r in rows:
-        if r["set_by"] == "owner" or r["kind"] in SEA:
-            continue
-        i = r["raster_index"]
-        if i in on_frame:
-            r["kind"], r["why"] = "shallow-coast", "water lying mostly on the map's frame: sea, never a river mouth"
-        elif r["kind"] == "estuary" and not any(by_i[j]["kind"] == "river" for j in adj_final.get(i, ())):
-            r["kind"], r["why"] = "shallow-coast", "a coastal fringe with no river entering it (an estuary is a river's mouth): still sea"
+    # step 3b: pools in channels, lagoons, the frame and river mouths
+    pools_and_mouths(raster, rows, ndi.distance_transform_edt(raster > 0))
 
     # step 4: flow down the channel graph's distance to its outlet
     kind_of = np.array(["land"] + [r["kind"] for r in rows])
     gmap, outlet = outlet_distance(raster, kind_of)
     nxt = descent(gmap, raster > 0)
     vec = flow_vectors(nxt, raster.shape)
+    braid_smooth(raster, rows, vec)
     by_k = {r["raster_index"]: r for r in rows}
     for r in rows:
         r["flows"] = r["kind"] in RUNNING
@@ -514,6 +630,13 @@ def classify(png: bool = False, chunks: bool = False) -> dict:
             r["speed"] = "moderate"
         if o.get("name"):
             r["name"] = o["name"]
+    seen: set = set()
+    for r in rows:                     # ids are unique: a carved body whose label point repeats takes a suffix
+        base, n = r["id"], 1
+        while r["id"] in seen:
+            n += 1
+            r["id"] = f"{base}-{n}"
+        seen.add(r["id"])
     for r in rows:
         r.pop("src_kind", None)
         r["water_kind_id"] = r.pop("kind")
