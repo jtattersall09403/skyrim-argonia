@@ -132,6 +132,10 @@
    "mod": "freeclimb"
   },
   {
+   "file": "Magistrate Levitate.esp",
+   "mod": "magistrate-levitate"
+  },
+  {
    "file": "Argonia.esp",
    "mod": "ours",
    "note": "our plugin, built from plugin/Argonia by make plugin; laid last and enabled by infra/gpu-box/stack.ps1 from C:\\argonia\\ours, never staged by stack.py"
@@ -1869,11 +1873,11 @@
      "section": "General",
      "set": {
       "fParryWindow_Start": "0.02",
-      "fParryWindow_End": "0.3"
+      "fParryWindow_End": "0.5"
      }
     }
    ],
-   "settings_why": "Start 0.02: Rim Parry And Execution's page says Start must be above 0 with Elden Parry. End 0.3: Elden Parry's own shipped value (Rim's author plays at 0.2 for challenge). Owner walk 2026-11-07: 37 hits checked against the player's parry, none in the window (EldenParry.log: canParry logged 37 times, 'Sent melee parry event' 0 times), so the author's wider window is restored."
+   "settings_why": "Start 0.02: Rim Parry And Execution's page says Start must be above 0 with Elden Parry. End 0.5 (owner walk 2026-11-07: 0.3, the author's shipped value, was still too hard over the stream): the stream adds about 0.1 to 0.15 s between the swing on screen and the key reaching the game, so 0.5 gives the player about the author's 0.3 s of reaction plus that delay and a little margin; still about a third of a typical NPC swing, so a mistimed press still eats the hit. Earlier walk (2026-11-07): 37 hits checked, none in a narrower window."
   },
   {
    "id": "elden-parry-1.7.99",
@@ -2312,7 +2316,7 @@
    "version": "1.1.10",
    "archive": "TrueHUD 62775 1.1.10 2026-08-31T16-21Z 31i7IoHze.7z",
    "size_kb": 4284,
-   "why": "lock-on reticle, boss bars and the player's bars (always shown: the default mode 1 hides each bar while it is full and TrueHUD hides vanilla's, so a rested player at the dock saw no bars at all, owner walk 2026-11-07)",
+   "why": "lock-on reticle, boss bars and the player's bars",
    "required": true,
    "profile": "play",
    "sha256": "ad10182e0806c47998bc6bf7badd34b8160c9ff008b85b796245e031a77ceed5",
@@ -2321,9 +2325,16 @@
      "file": "mcm/config/truehud/settings.ini",
      "section": "PlayerWidget",
      "set": {
-      "uPlayerWidgetHealthMode": "2",
-      "uPlayerWidgetMagickaMode": "2",
-      "uPlayerWidgetStaminaMode": "2"
+      "uPlayerWidgetHealthMode": "1",
+      "uPlayerWidgetMagickaMode": "1",
+      "uPlayerWidgetStaminaMode": "1",
+      "bPlayerWidgetHideVanillaBars": "1",
+      "fPlayerWidgetBarWidth": "150",
+      "fPlayerWidgetMinBarWidth": "50",
+      "fPlayerWidgetMaxBarWidth": "500",
+      "bPlayerWidgetScaleBars": "1",
+      "fPlayerWidgetX": "0.045",
+      "fPlayerWidgetY": "0.105"
      }
     }
    ],
@@ -2337,7 +2348,8 @@
    ],
    "runtime": "loads on 1.7.104.0 (TrueHUD.dll: SKSE 'loaded correctly', 2026-10-29)",
    "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
-   "linked_or_forked_by": "none: depended on as the player’s own download"
+   "linked_or_forked_by": "none: depended on as the player’s own download",
+   "settings_why": "The owner's MCM settings of the walk 2026-11-07 as the new-game defaults, the rest the mod's own: display mode 1 'Dynamic' (TrueHUD's config.json option order Never 0, Dynamic 1, In combat 2, When another shown 3, Always 4; the earlier 2 was 'In combat', not 'always') for health, magicka and stamina, hide vanilla bars on, bar width 150, min 50, max 500, scale bars on, player widget anchor X 0.045, Y 0.105. MCM Helper keeps a player's own MCM edits in Data/MCM/Settings/TrueHUD.ini (MO2's overwrite folder), which beats these defaults; that file was deleted on argonia-play 2026-11-08 so these defaults hold."
   },
   {
    "id": "magic-expanded",
@@ -2441,6 +2453,36 @@
    "runtime": "a Windows tool, runs beside the game",
    "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
    "linked_or_forked_by": "none: a dev tool on our machine"
+  },
+  {
+   "id": "magistrate-levitate",
+   "group": "magic",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 24695,
+    "file": 598855
+   },
+   "name": "Magistrate Levitate SE",
+   "author": "n7magistrate",
+   "version": "2.85",
+   "archive": "Magistrate Levitate SE-24695-2-85-1740481724.7z",
+   "size_kb": 355,
+   "why": "a Levitate spell (Expert Alteration) the owner asked for (walk 2026-11-07); Magic Expanded has none",
+   "required": true,
+   "profile": "play",
+   "sha256": "d30de331ad189ad476c5c2e70befe7847b20b32d97132452b593d270597ad0e0",
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API v1 mod 24695 description read 2026-11-08: no permission or AI text",
+   "plugins": [
+    "Magistrate Levitate.esp"
+   ],
+   "runtime": "data only (no DLL): an ESP (masters Skyrim.esm, Update.esm), one script (j3xlevitateeffectscript.pex: SKSE's Utility.SetIniFloat, Math, SetMotionType), DAR-format animation folders read by Open Animation Replacer, two sounds and a mesh; nothing tied to a runtime version",
+   "conflicts": "not checked in houseCARL; it overrides one vanilla interior CELL (0CAB91) and Tamriel's persistent cell to hold its two floor plates and the spell tome's container",
+   "linked_or_forked_by": "none: depended on as the player’s own download",
+   "settings_why": "Its spell _Magistrate_LevitateSpell (Magistrate Levitate.esp 0083EB, 'Levitate') is given by the opening's test kit (Generate.cs) so it is in the Magic menu on a new game."
   }
  ]
 }

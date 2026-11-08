@@ -166,3 +166,9 @@ added here the day they are made, with the date and the issue.
 - 2026-11-07: the g4dn's $0.80 an hour is fine: play is about 20 hours a month at most, not 50; the play machine
   must stop itself when the owner is not playing (its 15-minute idle stop stays on).
 - 2026-11-07: every BM&V person must be talkable, with a light backstory grounded in their place, trade and spot, and their own topics (directions, dangers, rumours that lead to quests, loot spots, ingredients, more), every fact real and true in the loaded world; do all of Lilmoth's people now, and put a phase in the plan for the rest (Phase 4a, docs/design/talk.md).
+- 2026-11-07 (walk 2, combat and HUD): TrueHUD's new-game defaults are the mod's own except dynamic display for the
+  three player bars, hide vanilla bars on, bar width 150 (min 50, max 500), scale bars on, player widget anchor X 0.045,
+  Y 0.105. No health regeneration for the player; magicka and stamina regenerate. The compass is back on. One backstep
+  per dodge tap if ours, the mod's clip if that is how it ships. Backstab must work; the parry window wider (hard, not
+  impossible). With a weapon drawn the player runs at the normal run. Add Magistrate Levitate (Nexus 24695) and put
+  its spell in the opening's test kit.
