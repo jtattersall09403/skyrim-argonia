@@ -2349,7 +2349,7 @@
    "runtime": "loads on 1.7.104.0 (TrueHUD.dll: SKSE 'loaded correctly', 2026-10-29)",
    "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
    "linked_or_forked_by": "none: depended on as the player’s own download",
-   "settings_why": "The owner's MCM settings of the walk 2026-11-07 as the new-game defaults, the rest the mod's own: display mode 1 'Dynamic' (TrueHUD's config.json option order Never 0, Dynamic 1, In combat 2, When another shown 3, Always 4; the earlier 2 was 'In combat', not 'always') for health, magicka and stamina, hide vanilla bars on, bar width 150, min 50, max 500, scale bars on, player widget anchor X 0.045, Y 0.105. MCM Helper keeps a player's own MCM edits in Data/MCM/Settings/TrueHUD.ini (MO2's overwrite folder), which beats these defaults; that file was deleted on argonia-play 2026-11-08 so these defaults hold."
+   "settings_why": "The owner's MCM settings of the walk 2026-11-07 as the new-game defaults, the rest the mod's own: display mode 1 'Dynamic' (TrueHUD's config.json option order Never 0, Dynamic 1, In combat 2, When another shown 3, Always 4; the earlier 2 was 'In combat', not 'always') for health, magicka and stamina, hide vanilla bars on, bar width 150, min 50, max 500, scale bars on, player widget anchor X 0.045, Y 0.105. MCM Helper keeps a player's own MCM edits in Data/MCM/Settings/TrueHUD.ini (MO2's overwrite folder), which beats these defaults; argonia-play held no such file on 2026-11-08 (searched C:\\argonia\\MO2 and the game Data; the lay step deletes one if found)."
   },
   {
    "id": "magic-expanded",

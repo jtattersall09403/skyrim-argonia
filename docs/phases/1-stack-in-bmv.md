@@ -61,7 +61,7 @@ The owner's first walk is the whole stack *inside* Black Marsh, so the stack and
   (`NPC_Default_MT`, Dark Souls Movement); walk and turn speeds stay AMMCO's. Bows stay AMMCO's (run 300).
 - **Combat and HUD after walk 2 (2026-11-07).** TrueHUD's MCM defaults in the staged `settings.ini` (row `truehud`;
   display mode 1 is "Dynamic", the earlier 2 was "In combat"), and MCM Helper's user file
-  `MCM/Settings/TrueHUD.ini` deleted on argonia-play so they hold. No health regen for the player: an ability
+  `MCM/Settings/TrueHUD.ini` absent on argonia-play (searched 2026-11-08), so they hold. No health regen for the player: an ability
   `ARG_NoHealthRegen` (Value Modifier, HealRateMult -100) on the Player's base record, no script. Compass on in
   `stack.ps1`; quest markers stay off. Elden Parry's window end 0.5 s (stream delay; row `elden-parry`). The standing
   dodge's travel (about 5.4 m in two pushes) is Dynamic Dodge's backstep clip as shipped (its AMR `animmotion`
