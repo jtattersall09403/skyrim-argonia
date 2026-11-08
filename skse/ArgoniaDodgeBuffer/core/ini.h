@@ -45,7 +45,7 @@ struct Settings {
   std::string power_event = "attackPowerStartInPlace";
   // The Dark Souls backstab (owner walk 3): a light attack behind a hostile casts Rim Parry's backstab (core/backstab.h).
   bool backstab = true;
-  bool backstab_execute = true;  // then the execution, as the second attack press would
+  bool backstab_execute = true;  // then the execution (EldenSkillSA), once the stagger lands and the swing ends
   double backstab_reach = 200.0;
   double backstab_height = 100.0;
   double backstab_behind_deg = 60.0;

@@ -1149,7 +1149,7 @@
    "why": "our own SKSE plugin: an attack pressed during a TK Dodge RE dodge plays as the dodge ends (owner ruling #51); a light attack from behind a hostile casts Rim Parry's backstab and execution (owner walk 3)",
    "required": true,
    "profile": "play",
-   "sha256": "fa12a65e45a8f0c8b0d2c61bc21594bf1e002977c09479a53d71d4b32f38f725",
+   "sha256": "91db642003180c2feef56ce0b561e76120e5b59f2b0776f5599bb12288019073",
    "licence": "GPL-3.0-or-later (our own code, skse/ArgoniaDodgeBuffer/; links CommonLibSSE-NG, GPL-3.0-or-later)",
    "permission_summary": "Our own build from source in this repo; nothing of anyone else's is in it. Built on the game machine by infra/gpu-box/skse_build.sh and never committed (decision 0003).",
    "ai_clause": "none: our own code",
@@ -1176,10 +1176,6 @@
    "sha256": "831d95c3adde9702981298ba93b526b169751c41acf7704965b1b05aea87f058",
    "pick": [
     "Dynamic Dodge/Roll to cancel attack/Dynamic Dodge - TK Dodge RE-0.55-rc3/*",
-    "Dynamic Dodge/Roll to cancel attack/Dynamic Dodge - TK Dodge RE-0.55-rc3/meshes/actors/character/animations/OpenAnimationReplacer/Dynamic Dodge - TK Dodge RE-0.55-rc3/70110/TKDodge/StepDodgeBack.hkx",
-    "Dynamic Dodge/Roll to cancel attack/Dynamic Dodge - TK Dodge RE-0.55-rc3/meshes/actors/character/animations/OpenAnimationReplacer/Dynamic Dodge - TK Dodge RE-0.55-rc3/70120/TKDodge/StepDodgeBack.hkx",
-    "Dynamic Dodge/Roll to cancel attack/Dynamic Dodge - TK Dodge RE-0.55-rc3/meshes/actors/character/animations/OpenAnimationReplacer/Dynamic Dodge - TK Dodge RE-0.55-rc3/70130/TKDodge/StepDodgeBack.hkx",
-    "Dynamic Dodge/Roll to cancel attack/Dynamic Dodge - TK Dodge RE-0.55-rc3/meshes/actors/character/animations/OpenAnimationReplacer/Dynamic Dodge - TK Dodge RE-0.55-rc3/70140/TKDodge/StepDodgeBack.hkx",
     "Dynamic Dodge/Roll to cancel attack/Dynamic Dodge - TK Dodge RE-0.55-rc3/meshes/actors/character/animations/OpenAnimationReplacer/Dynamic Dodge - TK Dodge RE-0.55-rc3/70210/TKDodge/StepDodgeBack.hkx",
     "Dynamic Dodge/Roll to cancel attack/Dynamic Dodge - TK Dodge RE-0.55-rc3/meshes/actors/character/animations/OpenAnimationReplacer/Dynamic Dodge - TK Dodge RE-0.55-rc3/70220/TKDodge/StepDodgeBack.hkx",
     "Dynamic Dodge/Roll to cancel attack/Dynamic Dodge - TK Dodge RE-0.55-rc3/meshes/actors/character/animations/OpenAnimationReplacer/Dynamic Dodge - TK Dodge RE-0.55-rc3/70230/TKDodge/StepDodgeBack.hkx",
@@ -1194,10 +1190,6 @@
    "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
    "linked_or_forked_by": "none: depended on as the player’s own download",
    "pick_to": {
-    "Dynamic Dodge/Roll to cancel attack/Dynamic Dodge - TK Dodge RE-0.55-rc3/meshes/actors/character/animations/OpenAnimationReplacer/Dynamic Dodge - TK Dodge RE-0.55-rc3/70110/TKDodge/StepDodgeBack.hkx": "meshes/actors/character/animations/OpenAnimationReplacer/Dynamic Dodge - TK Dodge RE-0.55-rc3/80110/DodgeBack.hkx",
-    "Dynamic Dodge/Roll to cancel attack/Dynamic Dodge - TK Dodge RE-0.55-rc3/meshes/actors/character/animations/OpenAnimationReplacer/Dynamic Dodge - TK Dodge RE-0.55-rc3/70120/TKDodge/StepDodgeBack.hkx": "meshes/actors/character/animations/OpenAnimationReplacer/Dynamic Dodge - TK Dodge RE-0.55-rc3/80120/DodgeBack.hkx",
-    "Dynamic Dodge/Roll to cancel attack/Dynamic Dodge - TK Dodge RE-0.55-rc3/meshes/actors/character/animations/OpenAnimationReplacer/Dynamic Dodge - TK Dodge RE-0.55-rc3/70130/TKDodge/StepDodgeBack.hkx": "meshes/actors/character/animations/OpenAnimationReplacer/Dynamic Dodge - TK Dodge RE-0.55-rc3/80130/DodgeBack.hkx",
-    "Dynamic Dodge/Roll to cancel attack/Dynamic Dodge - TK Dodge RE-0.55-rc3/meshes/actors/character/animations/OpenAnimationReplacer/Dynamic Dodge - TK Dodge RE-0.55-rc3/70140/TKDodge/StepDodgeBack.hkx": "meshes/actors/character/animations/OpenAnimationReplacer/Dynamic Dodge - TK Dodge RE-0.55-rc3/80140/DodgeBack.hkx",
     "Dynamic Dodge/Roll to cancel attack/Dynamic Dodge - TK Dodge RE-0.55-rc3/meshes/actors/character/animations/OpenAnimationReplacer/Dynamic Dodge - TK Dodge RE-0.55-rc3/70210/TKDodge/StepDodgeBack.hkx": "meshes/actors/character/animations/OpenAnimationReplacer/Dynamic Dodge - TK Dodge RE-0.55-rc3/80210/DodgeBack.hkx",
     "Dynamic Dodge/Roll to cancel attack/Dynamic Dodge - TK Dodge RE-0.55-rc3/meshes/actors/character/animations/OpenAnimationReplacer/Dynamic Dodge - TK Dodge RE-0.55-rc3/70220/TKDodge/StepDodgeBack.hkx": "meshes/actors/character/animations/OpenAnimationReplacer/Dynamic Dodge - TK Dodge RE-0.55-rc3/80220/DodgeBack.hkx",
     "Dynamic Dodge/Roll to cancel attack/Dynamic Dodge - TK Dodge RE-0.55-rc3/meshes/actors/character/animations/OpenAnimationReplacer/Dynamic Dodge - TK Dodge RE-0.55-rc3/70230/TKDodge/StepDodgeBack.hkx": "meshes/actors/character/animations/OpenAnimationReplacer/Dynamic Dodge - TK Dodge RE-0.55-rc3/80230/DodgeBack.hkx",
@@ -1237,13 +1229,25 @@
      "text": "{\n    \"name\": \"80240 Argonia: standing backstep (no direction held), clips of 70240\",\n    \"priority\": 80240,\n    \"keepRandomResultsOnLoop\": true,\n    \"conditions\": [\n        {\n            \"condition\": \"IsWeaponDrawn\",\n            \"requiredVersion\": \"1.0.0.0\"\n        },\n        {\n            \"condition\": \"IsAttacking\",\n            \"requiredVersion\": \"1.0.0.0\"\n        },\n        {\n            \"condition\": \"IsInCombat\",\n            \"requiredVersion\": \"1.0.0.0\"\n        },\n        {\n            \"condition\": \"OR\",\n            \"requiredVersion\": \"1.0.0.0\",\n            \"Conditions\": [\n                {\n                    \"condition\": \"IsEquippedHasKeyword\",\n                    \"requiredVersion\": \"1.0.0.0\",\n                    \"Keyword\": {\n                        \"form\": {\n                            \"pluginName\": \"SkyrimSpearMechanic.esp\",\n                            \"formID\": \"D4C9\"\n                        }\n                    },\n                    \"Left hand\": false\n                },\n                {\n                    \"condition\": \"IsEquippedHasKeyword\",\n                    \"requiredVersion\": \"1.0.0.0\",\n                    \"Keyword\": {\n                        \"form\": {\n                            \"pluginName\": \"Smooth Weapon.esm\",\n                            \"formID\": \"80B\"\n                        }\n                    },\n                    \"Left hand\": false\n                }\n            ]\n        },\n        {\n            \"condition\": \"HasMagicEffect\",\n            \"requiredVersion\": \"1.0.0.0\",\n            \"negated\": true,\n            \"Magic effect\": {\n                \"pluginName\": \"Keytrace.esp\",\n                \"formID\": \"801\"\n            },\n            \"Active effects only\": false\n        },\n        {\n            \"condition\": \"HasMagicEffect\",\n            \"requiredVersion\": \"1.0.0.0\",\n            \"negated\": true,\n            \"Magic effect\": {\n                \"pluginName\": \"Keytrace.esp\",\n                \"formID\": \"802\"\n            },\n            \"Active effects only\": false\n        },\n        {\n            \"condition\": \"HasMagicEffect\",\n            \"requiredVersion\": \"1.0.0.0\",\n            \"negated\": true,\n            \"Magic effect\": {\n                \"pluginName\": \"Keytrace.esp\",\n                \"formID\": \"803\"\n            },\n            \"Active effects only\": false\n        },\n        {\n            \"condition\": \"HasMagicEffect\",\n            \"requiredVersion\": \"1.0.0.0\",\n            \"negated\": true,\n            \"Magic effect\": {\n                \"pluginName\": \"Keytrace.esp\",\n                \"formID\": \"804\"\n            },\n            \"Active effects only\": false\n        }\n    ]\n}\n"
     }
    ],
-   "settings_why": "TK Dodge RE sends TKDodgeBack both standing still (its sDefaultDodgeEvent) and moving back, and Dynamic Dodge's no-direction submods (70110-70240) play the back roll for it, so standing gave a roll (owner walk 2026-11-07). The author ships a backstep clip per submod (TKDodge/StepDodgeBack.hkx, played only in TK's all-step mode). Each no-direction submod gets a copy at priority +10000 with the same conditions plus 'no Keytrace direction effect' (801-804, the author's own direction markers), laying that submod's backstep as DodgeBack.hkx: standing taps backstep, any held direction still rolls. Config only; the clip is the author's. The standing backstep is cut to its first push (owner rulings 2026-11-08, walk 3): backstep.py, at stage time on the player's own copy, sets the clip's duration to the first push's last key (0.333 s of 0.933 s) and drops the annotations after it (motion keys and the 0.6 s footstep), so it travels 1.86 m instead of 5.42 m and ends there; the spline track data is untouched (sampled by frame time). 80210-80240 (dodge tapped during an attack) copy the author's back roll, not a backstep, and are left as they are.",
-   "first_push": [
-    "meshes/actors/character/animations/OpenAnimationReplacer/Dynamic Dodge - TK Dodge RE-0.55-rc3/80110/DodgeBack.hkx",
-    "meshes/actors/character/animations/OpenAnimationReplacer/Dynamic Dodge - TK Dodge RE-0.55-rc3/80120/DodgeBack.hkx",
-    "meshes/actors/character/animations/OpenAnimationReplacer/Dynamic Dodge - TK Dodge RE-0.55-rc3/80130/DodgeBack.hkx",
-    "meshes/actors/character/animations/OpenAnimationReplacer/Dynamic Dodge - TK Dodge RE-0.55-rc3/80140/DodgeBack.hkx"
-   ]
+   "settings_why": "TK Dodge RE sends TKDodgeBack both standing still (its sDefaultDodgeEvent) and moving back, and Dynamic Dodge's no-direction submods (70110-70240) play the back roll for it, so standing gave a roll (owner walk 2026-11-07). Each no-direction submod gets a copy at priority +10000 with the same conditions plus 'no Keytrace direction effect' (801-804, the author's own direction markers). 80110-80140 lay Skyrim's own DodgeBack.hkx (the vanilla hop back, copied at stage time from the player's Skyrim - Animations.bsa by bsa.py; owner walk 4, 2026-11-08: Dynamic Dodge's two-push backstep, even cut, was wrong): standing still, a tap hops back the vanilla way in one push, about 3 m (TKDodgeBack's root motion is vanilla DodgeBack's, animdata.py), and any held direction still rolls. 80210-80240 (dodge tapped during an attack) copy the author's back roll and are left as they are.",
+   "vanilla_files": {
+    "meshes/actors/character/animations/OpenAnimationReplacer/Dynamic Dodge - TK Dodge RE-0.55-rc3/80110/DodgeBack.hkx": [
+     "Skyrim - Animations.bsa",
+     "meshes/actors/character/animations/DodgeBack.hkx"
+    ],
+    "meshes/actors/character/animations/OpenAnimationReplacer/Dynamic Dodge - TK Dodge RE-0.55-rc3/80120/DodgeBack.hkx": [
+     "Skyrim - Animations.bsa",
+     "meshes/actors/character/animations/DodgeBack.hkx"
+    ],
+    "meshes/actors/character/animations/OpenAnimationReplacer/Dynamic Dodge - TK Dodge RE-0.55-rc3/80130/DodgeBack.hkx": [
+     "Skyrim - Animations.bsa",
+     "meshes/actors/character/animations/DodgeBack.hkx"
+    ],
+    "meshes/actors/character/animations/OpenAnimationReplacer/Dynamic Dodge - TK Dodge RE-0.55-rc3/80140/DodgeBack.hkx": [
+     "Skyrim - Animations.bsa",
+     "meshes/actors/character/animations/DodgeBack.hkx"
+    ]
+   }
   },
   {
    "id": "iframe-generator",

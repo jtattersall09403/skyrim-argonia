@@ -667,15 +667,21 @@ def apply_files(m, data):
         print(f"  {m['id']}: wrote {f['path']}")
 
 
-def apply_first_push(m, data):
-    """The row's `first_push` clips cut to their first push of AMR root motion (backstep.py; owner ruling
-    2026-11-08: the standing backstep travels about half as far), in place on the staged copy."""
-    import backstep
-    for rel in m.get("first_push", []):
-        f = data / rel
-        out, old, new = backstep.cut(f.read_bytes())
-        f.write_bytes(out)
-        print(f"  {m['id']}: {rel} travel {old / backstep.UNITS_PER_M:.2f} m -> {new / backstep.UNITS_PER_M:.2f} m")
+def game_data():
+    """The player's own game Data on the build VM (the owner's licensed copy; plugin.sh reads the same)."""
+    return pathlib.Path(os.environ.get("ARGONIA_GAME_ROOT", HOME / "games" / "skyrimse")) / "Data"
+
+
+def apply_vanilla(m, data):
+    """The row's `vanilla_files`: {path under the mod: [archive, path inside]}, each a file of the player's own game
+    copied out of its archive (bsa.py) and laid there, e.g. Skyrim's own DodgeBack.hkx as the standing backstep
+    (owner walk 4, 2026-11-08). Derived at stage time from the player's copy (decision 0003); never committed."""
+    import bsa
+    for rel, (archive, inner) in m.get("vanilla_files", {}).items():
+        out = data / rel
+        out.parent.mkdir(parents=True, exist_ok=True)
+        out.write_bytes(bsa.read_file(str(game_data() / archive), inner))
+        print(f"  {m['id']}: {rel} <- {archive}:{inner} ({sha256(out)[:16]})")
 
 
 def masters_of(plugin):
@@ -730,9 +736,27 @@ def cmd_plan(a):
     return todo, need
 
 
+STAGE_INPUTS = ("mods/dependencies.json", "infra/gpu-box")
+
+
+def behind_main(repo=REPO):
+    """Paths of STAGE_INPUTS that origin/main changed in commits this tree lacks. The real stack is shared by every
+    lane: a stage from a tree behind main lays an older manifest over main's and pushes it to the machine."""
+    g = ["git", "-C", str(repo)]
+    subprocess.run(g + ["fetch", "-q", "origin", "main"], check=False, capture_output=True)
+    out = subprocess.run(g + ["log", "--format=", "--name-only", "HEAD..origin/main", "--", *STAGE_INPUTS],
+                         capture_output=True, text=True)
+    return sorted({x for x in out.stdout.split() if x}) if out.returncode == 0 else []
+
+
 def cmd_stage(a):
     rows = chosen(manifest(), a.dev)
     STACK, MO2 = stack_dirs(a)  # noqa: N806 (a scratch stage for a dry run, else the build VM's stack)
+    if not getattr(a, "into", None):
+        stale = behind_main()
+        if stale:
+            raise SystemExit(f"stage: this tree is behind origin/main on {', '.join(stale)}; merge main first (the "
+                             "stack is shared: an older manifest would be laid over main's and pushed)")
     group = getattr(a, "group", None)
     if group:  # one group alone: a dry run's file lists, never the real stack (it would remove every other row)
         if not getattr(a, "into", None):
@@ -781,7 +805,7 @@ def cmd_stage(a):
                 complete_nested(m, archive_path(m), data)
             apply_ini(m, data)
             apply_files(m, data)
-            apply_first_push(m, data)
+            apply_vanilla(m, data)
             kf.write_text(json.dumps({"key": key, "fomod": taken}))
             if resume is not None:
                 resume.clear()

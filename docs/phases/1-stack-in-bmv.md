@@ -64,22 +64,25 @@ The owner's first walk is the whole stack *inside* Black Marsh, so the stack and
   `MCM/Settings/TrueHUD.ini` absent on argonia-play (searched 2026-11-08), so they hold. No health regen for the player: an ability
   `ARG_NoHealthRegen` (Value Modifier, HealRateMult -100) on the Player's base record, no script. Compass on in
   `stack.ps1`; quest markers stay off. Elden Parry's window end 0.5 s (stream delay; row `elden-parry`). The standing
-  dodge is Dynamic Dodge's backstep clip (our 80110-80140 submods lay its `StepDodgeBack.hkx`), cut to its first
-  push (owner, 2026-11-08): its AMR `animmotion` keys travel 1.86 m in 0 to 0.333 s, then 3.56 m more to 0.833 s;
-  `infra/gpu-box/backstep.py`, run at stage time on the player's own copy (row `first_push`), holds every key after
-  0.333 s at the first push's end, so it travels 1.86 m and the clip still plays whole (0.833 s). Measured
-  alternatives: the vanilla DodgeBack 2.96 m in one 0.9 s push, TK Dodge's step 4.29 m, Elder Souls' backward
-  dodge 4.97 m, Dynamic Dodge's diagonal steps 5.45 m. A dodge tapped during an attack (80210-80240) is the
-  author's back roll, 5.95 m, unchanged. The backstab is Rim Parry's, started the Dark Souls way (owner, walk 3: "if
-  I stand behind someone, locked on or not, and do a normal attack"). Rim Parry's own route stays: every player bash
-  clip carries `PIE.$EldenCounterattackSA`, which Payload Interpreter casts as `EldenBlockCounterSA` (0x822, EREP's
-  copy: BackStabShoot 0xA3B, a feeler projectile 0xA3C at range 250, then ExeBackStab 0xA34, the big stagger) for 20
-  stamina; once the stagger lands Rim Parry marks the player (`EldenMarkSA` 0x841, 3 s), whose script casts
-  `ExeCheckExplode` (0xA7A, the execution) on the next attack press. Ours: on an attack press (no block held, weapon
-  drawn, no menu, not mid-dodge, not in a kill move, at most once a second) our SKSE plugin ArgoniaDodgeBuffer
-  (`core/backstab.h`, `[Backstab]` in its ini) picks the nearest living actor hostile to the player, not a teammate
-  or commanded, not in a kill move, that passes the rule, and casts 0x822 at it with no cost; when the mark arrives
-  within 3 s it casts 0xA7A itself and removes the mark, so one press gives the stagger and the execution. The rule:
+  dodge is Skyrim's own hop back (owner walk 4): our 80110-80140 OAR submods (Dynamic Dodge's no-direction submods
+  plus "no Keytrace direction effect") lay vanilla `DodgeBack.hkx`, copied at stage time from the player's own
+  `Skyrim - Animations.bsa` by `infra/gpu-box/bsa.py` (row `vanilla_files`); TK Dodge's TKDodgeBack root motion is
+  vanilla DodgeBack's (`animdata.py`), one push, measured 2.96 m. A held direction still rolls; a dodge tapped during
+  an attack (80210-80240) is the author's back roll, 5.95 m, unchanged. The backstab is Rim Parry's, started the Dark
+  Souls way (owner, walk 3: "if I stand behind someone, locked on or not, and do a normal attack"). On an attack press
+  (no block held, weapon drawn, no menu, not mid-dodge, not in a kill move, at most once a second, none already
+  running) our SKSE plugin ArgoniaDodgeBuffer (`core/backstab.h`, `[Backstab]` in its ini) picks the nearest living
+  actor hostile to the player, not a teammate or commanded, that passes the rule, and casts Rim Parry's
+  `EldenBlockCounterSA` (0x822, EREP's copy: BackStabShoot 0xA3B and ExeBackStab 0xA34, the big stagger) at it with no
+  cost. Then, every 50 ms: the stagger must land (ExeBackStabStagger 0xA35 on the victim) within 0.6 s, else Rim Parry
+  refused it (its cooldown ExeBackStabCD, or its angle) and the swing stays a swing; the victim gets
+  `ExeStaggerAllowExe` (0xA23, the red light and ExecutionConfirmRP 0xA21) if its stagger clip has not cast it; when
+  the player's own swing has ended (at most 1.5 s) the plugin casts `EldenSkillSA` (0x849) on the player, which OAR
+  plays as Rim Parry's execution clip for the weapon held (keyword EldenBackOverKillSA 0x84B on `IdleCombatStart`),
+  and sends `IdleCombatStart` itself; the clip's annotations place the victim and deal the execution's damage. Rim
+  Parry's own route waited for a mark (`EldenMarkSA` 0x841) that its script sends seconds after the stagger, then for
+  a press; walk 4 measured that route fail (12 backstab casts, one mark in time, no execution: the execution spell was
+  cast mid-swing, when the graph takes no idle). The mark is now dispelled when it comes after our execution. The rule:
   flat distance at most 200 units (the feeler reaches 250) and height within 100; the player within 60 degrees of
   straight behind the target; the player's heading within 45 degrees of the target's. Argonia.esp's Combat widens
   BackStabShoot's and ExeBackStab's own check (GetRelativeAngle on Z, the headings' difference) from 30 to 45 degrees
@@ -91,21 +94,24 @@ The owner's first walk is the whole stack *inside* Black Marsh, so the stack and
   clip cut at the end of its first push (0.333 s), not its keys held while the clip plays whole; (2) TrueHUD from the
   Player Widget's "Combined" preset, then the owner's tweaks (the list above); (3) the backstab as Dark Souls': behind
   a person, locked on or not, a normal attack plays Rim Parry's backstab and execution; (4) Skyrim's normal game
-  music on in BM&V's worlds. Done, owner checks owed: (1) `backstep.py` now ends the clip itself: the hkaAnimation's
-  duration 0.933 s becomes the first push's last key, 0.333 s, and the annotations after it are dropped (sorted in
-  place first: the author's are not in time order); the spline data is untouched (sampled by frame time) and no
-  byte moves. Measured on the player's copy: duration 0.333 s, travel 1.86 m (was 5.42 m by 0.833 s). The animation
-  data needs no change: the clip generator plays the replacement clip to its own duration, and AMR's keys, not the
-  animdata motion block, move it. Deployed by `stack.py install --skip-fetch`. (2) Row `truehud`'s ini set is
-  TrueHUD_MCM.psc's `LoadPreset("PlayerWidgetCombined")` (bar directions 0, display modes 1, shout indicator 3,
-  hide vanilla bars, enchantment meter, scale bars, combined on, X 0.045, min 50) with the owner's tweaks over it
-  (width 150 for 100, max 500 for 400, Y 0.105 for 0.920); deployed the same way. (4) Cause, measured
+  music on in BM&V's worlds. Done, owner checks owed: (1), (2) and (3) are walk 4's (below). (4) Cause, measured
   (`plugin.sh musicprobe`): BM&V's five worlds carry no WRLD music (ZNAM) and none of their regions a music
   entry, so outdoors the engine has no music type; interiors mostly carry the author's own and combat music is the
   engine's. Fix Bethesda's way for a separate world (Solstheim's ZNAM): `Music.cs` sets ZNAM on BlackMarsh,
   BlackMarsh2 and BlackMarshNorth (MUSExploreMarsh), Valenwood (MUSExploreForestPine) and the Underdark
   (MUSDungeonCave); no new forms; `plugin.sh check` reads each back. The ESP needs the integrator's re-seed and
   deploy.
+- **Walk 4 (2026-11-08): the backstep, the HUD and the backstab redone.** The owner saw walk 2's HUD and the
+  first-push backstep, not walk 3's: two walk-3 lanes ran `stack.py install` minutes apart, and the backstab lane's
+  worktree held the manifest from before the HUD lane's change, so its stage (14:41) re-laid TrueHUD's walk-2
+  `settings.ini` and the old backstep over the HUD lane's (14:40) and pushed them (argonia-play's file: 4353 bytes,
+  14:41, bar directions 1/0/2, `bPlayerWidgetCombined = 0`). TrueHUD reads `Data/MCM/Config/TrueHUD/settings.ini` then
+  `Data/MCM/Settings/TrueHUD.ini` (its DLL's strings); no user file exists on the machine, so the staged file is what
+  the game reads, at every load. Fix at source: `stack.py stage` (and so `install`) refuses to run from a tree behind
+  origin/main on `mods/dependencies.json` or `infra/gpu-box` (`behind_main`), so a lane can no longer lay an older
+  manifest over main's. Then (1) the vanilla hop back, (2) row `truehud`'s Combined set, (3) the backstab's execution
+  driven by our plugin (above), each deployed by `stack.py install --skip-fetch` and read back on argonia-play; owner
+  checks 8.1 to 8.3.
 - **The map.** Owner, 2026-11-07 walk: in BlackMarsh the M map shows Skyrim's Tamriel with BM&V's markers. Measured
   2026-11-08 (research lane): BM&V's four worldspaces have no parent and an all-zero MNAM (no usable map bounds; only
   the camera heights 50000 to 80000 are set), and SkyrimSE.exe's `sMapWorldDefaultWorldSpace` default is Tamriel, so

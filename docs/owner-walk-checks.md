@@ -99,13 +99,13 @@ check that did not happen as written.
 
 **Start a new game**: the game now opens in the barge hold (section 7), and the HUD defaults take only on a new character.
 
-- [ ] **5.1 Standing backstep.** The clip itself now ends at the end of its first push (0.33 s, about 2 m); before, it kept
+- [ ] **5.1 (superseded by 8.1) Standing backstep.** The clip itself now ends at the end of its first push (0.33 s, about 2 m); before, it kept
       playing after the push. Stand still, hold no direction, tap dodge (Alt; pad B): one short hop back that ends at once,
       with no sliding or stepping after it.
-- [ ] **5.2 HUD from TrueHUD's Combined preset**, with your tweaks on top (Dynamic, width 150, max 500, anchor X 0.045,
+- [ ] **5.2 (superseded by 8.2) HUD from TrueHUD's Combined preset**, with your tweaks on top (Dynamic, width 150, max 500, anchor X 0.045,
       Y 0.105). New game: health, magicka and stamina show as one combined block at the top left, appear when they
       change and fade when full; the vanilla bars never show.
-- [ ] **5.3 Backstab like Dark Souls** (our plugin does it on a normal attack: no block, no lock-on, no stamina, one press
+- [ ] **5.3 (superseded by 8.3) Backstab like Dark Souls** (our plugin does it on a normal attack: no block, no lock-on, no stamina, one press
       gives the stagger and the execution). Console `player.placeatme 3decb` (a vanilla bandit, a test target only), walk up
       behind him a sword's length away facing his way, tap attack once: big stagger, then the execution by itself. From the
       front one tap is a normal swing. Say whether your own swing also hit him first.
@@ -164,6 +164,22 @@ sinks or stands in a wall.
 - [ ] (superseded: all eleven now proven on a real floor or moved onto one) **7.8 Eleven spots the off-game check could not prove** (the navmesh is there, but no visible floor under it): say
       if anyone floats or stands in nothing at MQ04's camp by Low-Reed Village (the likeliest problem), BC02's keep and
       gate, LQ30's Sei-Wan and the viper, MQ05's second wasp, and MQ01's Ri-Sakka and Never-Sold.
+
+## 8. Walk 4's fixes (built and deployed 2026-11-08)
+
+Walk 3's backstep and HUD never reached the game: a second job, run minutes later from an older copy of our settings,
+put the old ones back. That can no longer happen (the install now refuses an out-of-date copy). **Start a new game.**
+
+- [ ] **8.1 Standing backstep, Skyrim's own.** Stand still, hold no direction, tap dodge (Alt; pad B): one hop back of
+      about 3 metres in a single movement, the hop Skyrim's own characters use, with no second push. Holding a
+      direction and tapping dodge still rolls that way.
+- [ ] **8.2 HUD from TrueHUD's Combined preset**, with your tweaks (Dynamic, width 150, max 500, anchor X 0.045,
+      Y 0.105). New game: health, magicka and stamina are one combined block at the top left; take a hit or sprint and
+      it shows, then fades when full; Skyrim's own three bars never show.
+- [ ] **8.3 Backstab, one press.** Console `player.placeatme 3decb` (a vanilla bandit, a test target only), walk up
+      behind him a sword's length away facing his way, tap attack once: he staggers with the red light, your swing
+      finishes, then you play the execution and he takes its big damage, all from that one tap. Wait 10 seconds and do
+      it again on a second bandit. From the front one tap is a normal swing. Say if the execution did not play.
 
 ## Done
 
