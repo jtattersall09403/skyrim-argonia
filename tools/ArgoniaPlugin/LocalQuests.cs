@@ -38,11 +38,11 @@ static class LocalQuests
     public static JsonElement Lines(string code) => JsonDocument.Parse(File.ReadAllText(Path.Combine("story", "data", "quest_lines", code + ".json"))).RootElement;
 
     // BlackMarsh2's override in our plugin: the load order's winner without its cells; persistent refs go in its top cell.
-    static Worldspace World(SkyrimMod mod, List<ISkyrimModGetter> mods)
+    internal static Worldspace World(SkyrimMod mod, List<ISkyrimModGetter> mods, FormKey? key = null)
     {
         // MapFix may already hold the override (its pan box), without a top cell
-        var (win, from) = Survey.Winners<IWorldspaceGetter>(mods)[BlackMarsh2];
-        var w = mod.Worldspaces.FirstOrDefault(x => x.FormKey == BlackMarsh2);
+        var (win, from) = Survey.Winners<IWorldspaceGetter>(mods)[key ?? BlackMarsh2];
+        var w = mod.Worldspaces.FirstOrDefault(x => x.FormKey == (key ?? BlackMarsh2));
         if (w == null)
         {
             w = win.DeepCopy(new Worldspace.TranslationMask(true) { SubCells = false, TopCell = false });
@@ -54,7 +54,7 @@ static class LocalQuests
     }
 
     // The nearest unused triangle centre of the navmeshes of the named cells (the placement method, blocks.md W-ref).
-    sealed class Snapper(List<ISkyrimModGetter> mods)
+    internal sealed class Snapper(List<ISkyrimModGetter> mods)
     {
         readonly Dictionary<FormKey, (INavigationMeshGetter rec, ModKey from)> nav = Survey.Winners<INavigationMeshGetter>(mods);
         readonly HashSet<(FormKey, int)> used = [];
@@ -82,11 +82,11 @@ static class LocalQuests
         | NpcConfiguration.TemplateFlag.ModelAnimation | NpcConfiguration.TemplateFlag.Inventory | NpcConfiguration.TemplateFlag.Script
         | NpcConfiguration.TemplateFlag.DefPackList | NpcConfiguration.TemplateFlag.AttackData | NpcConfiguration.TemplateFlag.Keywords;
 
-    sealed class Kit(SkyrimMod mod, List<ISkyrimModGetter> mods)
+    internal sealed class Kit(SkyrimMod mod, List<ISkyrimModGetter> mods, FormKey? world = null)
     {
         public readonly Dictionary<FormKey, (INpcGetter rec, ModKey from)> Npcs = Survey.Winners<INpcGetter>(mods);
         public readonly Dictionary<FormKey, (IPlacedGetter rec, ModKey from)> Placed = Survey.Winners<IPlacedGetter>(mods);
-        public readonly Worldspace World = World(mod, mods);
+        public readonly Worldspace World = World(mod, mods, world);
         public readonly Snapper Snap = new(mods);
 
         // W-npc / W-fixed: our base templated on BM&V's for looks and AI; stats ours, a fixed level (decision 0035).
@@ -136,16 +136,16 @@ static class LocalQuests
     }
 
     public static ScriptEntry Script(string name, params ScriptProperty[] ps) { var e = new ScriptEntry { Name = name }; e.Properties.AddRange(ps); return e; }
-    static ScriptObjectProperty Obj(string n, FormKey k) => new() { Name = n, Object = L(k) };
-    static ScriptObjectProperty Alias(string n, Quest q, uint id) => new() { Name = n, Object = L(q.FormKey), Alias = (short)id };
-    static ScriptIntProperty Int(string n, int v) => new() { Name = n, Data = v };
-    static ConditionFloat C(ConditionData d, CompareOperator op, float v) => new() { CompareOperator = op, ComparisonValue = v, Data = d };
+    internal static ScriptObjectProperty Obj(string n, FormKey k) => new() { Name = n, Object = L(k) };
+    internal static ScriptObjectProperty Alias(string n, Quest q, uint id) => new() { Name = n, Object = L(q.FormKey), Alias = (short)id };
+    internal static ScriptIntProperty Int(string n, int v) => new() { Name = n, Data = v };
+    internal static ConditionFloat C(ConditionData d, CompareOperator op, float v) => new() { CompareOperator = op, ComparisonValue = v, Data = d };
     public static ConditionFloat StageIs(Quest q, CompareOperator op, int s) { var d = new GetStageConditionData(); d.Quest.Link.SetTo(q.FormKey); return C(d, op, s); }
-    static ConditionFloat IsId(FormKey npc) { var d = new GetIsIDConditionData(); d.Object.Link.SetTo(npc); return C(d, CompareOperator.EqualTo, 1); }
-    static ConditionFloat IsRef(FormKey r) { var d = new GetIsReferenceConditionData(); d.Target.Link.SetTo(r); return C(d, CompareOperator.EqualTo, 1); }
+    internal static ConditionFloat IsId(FormKey npc) { var d = new GetIsIDConditionData(); d.Object.Link.SetTo(npc); return C(d, CompareOperator.EqualTo, 1); }
+    internal static ConditionFloat IsRef(FormKey r) { var d = new GetIsReferenceConditionData(); d.Target.Link.SetTo(r); return C(d, CompareOperator.EqualTo, 1); }
 
     // The quest: Side Quest, Start Game Enabled, empty start-up stage 0, a log entry per stage, completing stages flagged.
-    static Quest NewQuest(SkyrimMod mod, string edid, string name, string id, int[] stages, int[] ends)
+    internal static Quest NewQuest(SkyrimMod mod, string edid, string name, string id, int[] stages, int[] ends)
     {
         var q = mod.Quests.AddNew(edid);
         q.Name = name; q.Priority = 50; q.Type = Quest.TypeEnum.SideQuest; q.Flags = Quest.Flag.StartGameEnabled;
@@ -157,18 +157,21 @@ static class LocalQuests
             q.Objectives.Add(new QuestObjective { Index = (ushort)s, DisplayText = text });
         return q;
     }
-    static QuestAlias Forced(Quest q, uint id, string name, FormKey r, QuestAlias.Flag flags = 0)
+    internal static QuestAlias Forced(Quest q, uint id, string name, FormKey r, QuestAlias.Flag flags = 0)
     {
         var a = new QuestAlias { ID = id, Type = QuestAlias.TypeEnum.Reference, Name = name, Flags = flags };
         a.ForcedReference.SetTo(r);
         q.Aliases.Add(a);
         return a;
     }
-    static QuestFragmentAlias AliasScript(Quest q, uint id, ScriptEntry s) { var f = new QuestFragmentAlias { Property = Alias("", q, id) }; f.Scripts.Add(s); return f; }
-    static ScriptEntry OnDeath(Quest q, int prereq, int set) => Script("defaultSetStageOnDeathRefAlias", Obj("myQST", q.FormKey), Int("preReqStage", prereq), Int("StageToSet", set));
+    internal static QuestFragmentAlias AliasScript(Quest q, uint id, ScriptEntry s) { var f = new QuestFragmentAlias { Property = Alias("", q, id) }; f.Scripts.Add(s); return f; }
+    internal static ScriptEntry OnDeath(Quest q, int prereq, int set) => Script("defaultSetStageOnDeathRefAlias", Obj("myQST", q.FormKey), Int("preReqStage", prereq), Int("StageToSet", set));
 
     // TR-topic: one top-level player topic per record topic; one INFO per stage band, each gated on the speaker and stage.
-    static void Topic(SkyrimMod mod, Quest q, string code, JsonElement lines, string topic, ConditionFloat speaker, params (int? sets, ConditionFloat[] conds)[] infos)
+    static void Topic(SkyrimMod mod, Quest q, string code, JsonElement lines, string topic, ConditionFloat speaker, params (int? sets, ConditionFloat[] conds)[] infos) =>
+        TopicV(mod, q, code, lines, topic, speaker, infos.Select(i => (i.sets, i.conds, (string?)null)).ToArray());
+    // As Topic; an info with a variant speaks the topic's lines under that key (e.g. "fail") instead of "lines".
+    internal static void TopicV(SkyrimMod mod, Quest q, string code, JsonElement lines, string topic, ConditionFloat speaker, params (int? sets, ConditionFloat[] conds, string? variant)[] infos)
     {
         var t0 = lines.GetProperty(topic);
         var prompt = S(t0, "prompt");
@@ -179,11 +182,11 @@ static class LocalQuests
         branch.StartingTopic.SetTo(t.FormKey);
         t.Name = prompt; t.Quest.SetTo(q.FormKey); t.Branch.SetTo(branch.FormKey); t.Priority = 50;
         t.Category = DialogTopic.CategoryEnum.Topic; t.Subtype = DialogTopic.SubtypeEnum.Custom; t.SubtypeName = new RecordType("CUST");
-        foreach (var (sets, conds) in infos)
+        foreach (var (sets, conds, variant) in infos)
         {
             var info = new DialogResponses(mod.GetNextFormKey(), SkyrimRelease.SkyrimSE) { Flags = new DialogResponseFlags(), Prompt = prompt };
             byte n = 1;
-            foreach (var l in t0.GetProperty("lines").EnumerateArray())
+            foreach (var l in t0.GetProperty(variant ?? "lines").EnumerateArray())
                 info.Responses.Add(new DialogResponse { Text = l.GetString()!, ResponseNumber = n++, Emotion = Emotion.Neutral });
             info.Conditions.Add(speaker.DeepCopy());
             info.Conditions.AddRange(conds);
@@ -199,7 +202,7 @@ static class LocalQuests
             t.Responses.Add(info);
         }
     }
-    static void Fragments(Quest q, string script, IEnumerable<int> stages)
+    internal static void Fragments(Quest q, string script, IEnumerable<int> stages)
     {
         foreach (var s in stages)
             q.VirtualMachineAdapter!.Fragments.Add(new QuestScriptFragment { Stage = (ushort)s, StageIndex = 0, ScriptName = script, FragmentName = $"Fragment_{s}" });

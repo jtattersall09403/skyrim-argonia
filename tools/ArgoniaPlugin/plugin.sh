@@ -6,6 +6,7 @@
 #                      ESP back (tools/ArgoniaPlugin list): every override carries its change; writes the records table
 #   plugin.sh blocktest  build, then Phase 3's agent check of ARG_BlockTest from the ESP and out/gpu/papyrus (the .pex)
 #   plugin.sh cleancheck  build, then read the slice's clean-ups back from the ESP (CleanUp.cs)
+#   plugin.sh bccheck  build, then read the Chainbreakers quests back from the ESP and the .pex (ChainbreakersCheck.cs)
 #   plugin.sh seed     regenerate plugin/Argonia from shutdown.json and the load order's winners (game data needed:
 #                      $ARGONIA_GAME_ROOT/Data or ~/games/skyrimse/Data, the staged profile ~/.argonia/stack/MO2)
 set -euo pipefail
@@ -46,11 +47,12 @@ case "${1:-}" in
   musicprobe) loadorder; tool musicprobe "${lo[@]}" ;;
   blocktest) build; tool blocktest "$esp" out/gpu/papyrus "${lo[@]}" ;;
   localcheck) build; tool localcheck "$esp" out/gpu/papyrus "${lo[@]}" ;;
+  bccheck) build; tool bccheck "$esp" out/gpu/papyrus "${lo[@]}" ;;
   seed)
     loadorder
     tmp=$(mktemp -d); trap 'rm -rf "$tmp"' EXIT
     tool seed "$tmp/Argonia.esp" "${lo[@]}"
     "${spriggit[@]}" serialize -i "$tmp/Argonia.esp" -o "$tmp/y" -g SkyrimSE "${spr[@]}" >/dev/null
     rm -rf "$yaml"; mkdir -p plugin; mv "$tmp/y" "$yaml"; echo "seeded $yaml" ;;
-  *) sed -n '2,9p' "$0"; exit 2 ;;
+  *) sed -n '2,10p' "$0"; exit 2 ;;
 esac

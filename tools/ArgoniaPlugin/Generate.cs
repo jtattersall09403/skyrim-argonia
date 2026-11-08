@@ -182,6 +182,8 @@ static class Generate
         // The Night-Reed line, TG01 and TG02 (NightReed.cs): allocated after Combat; its TIF fragments' Papyrus to papyrus/generated.
         NightReed.Add(mod, mods);
         NightReed.WritePsc("papyrus/generated");
+        // Phase 4's Chainbreakers line (Chainbreakers.cs): BC03 on Soulrest's dock; allocated after LocalQuests.
+        Chainbreakers.Add(mod, mods);
         var order = mods.Select(m => m.ModKey).Append(Ours).ToList();
         // The plugin whose worldspace record we override is a master even when no form of it is referenced, so ours
         // always loads after it.

@@ -146,3 +146,13 @@ the quest is re-authored.
   for it being absent); MQ101's override starts ARG_MQ01 in place of ARG_Opening; every placement on BM&V's own
   navmesh (Surface/Snapper helpers); the camp in cell 005911 at the paddy edge. Order: MQ01 (the new game first),
   then MQ03.
+- **BC03 built (2026-11-08).** `tools/ArgoniaPlugin/Chainbreakers.cs`, called after `LocalQuests.Add` (it reuses
+  LocalQuests' kit, now internal, with `TopicV` for an info's variant lines). Ussa-Rekh, Heavy-Rope and his chest
+  (vanilla StrongBox, Novice lock, owned by him) are snapped to Dock2's navmesh (Black Marsh North's `0A7784`), and both men are
+  essential by alias flag. The tokens are a Quest Object alias created in the chest (F1). Hearing the season sets
+  `ARG_BC03_SeasonHeard`, which gates the two side topics (F4). Yield-talk needs Speechcraft 30 (pass or fail line) and
+  ends at 91; yield-pay needs 50 gold and ends at 92. A TR-death on each man sets 94. Lines: `story/data/quest_lines/bc03.json` (the words band
+  of the TSVs). Papyrus: 8 new scripts (24 of 24 .pex, 0 failed). Read-back `plugin.sh bccheck`: 30 PASS, 0 FAIL;
+  `localcheck` still PASS; round trip clean (679 yaml files). Open: the BC01 >= 90 gate is added when ARG_BC01 is
+  built (the check prints a NOTE); the record's `changeStanding` (Chainbreakers +10) and `setFlag` effects have no
+  global yet and are not built; the low and high bands are not built (one band, as LQ25 and LQ30).
