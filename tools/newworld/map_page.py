@@ -55,8 +55,10 @@ def terrain_image() -> tuple[Image.Image, str]:
         wx, wy = f.px_to_world((xs + 0.5) / SCALE, (ys + 0.5) / SCALE)
         col = (wx - b["origin_world_x"]) / b["sample_units"]
         row = (b["origin_world_y"] - wy) / b["sample_units"]
-        col = np.clip(np.round(col).astype(int), 0, hm.shape[1] - 1)
-        row = np.clip(np.round(row).astype(int), 0, hm.shape[0] - 1)
+        col, row = np.round(col).astype(int), np.round(row).astype(int)
+        built = (col >= 0) & (col < hm.shape[1]) & (row >= 0) & (row < hm.shape[0])
+        col = np.clip(col, 0, hm.shape[1] - 1)
+        row = np.clip(row, 0, hm.shape[0] - 1)
         zz = z[row, col] - level
         gy, gx = np.gradient(zz)
         px_m = 1 / SCALE * f.UNITS_PER_PX / f.UNITS_PER_METRE
@@ -68,12 +70,20 @@ def terrain_image() -> tuple[Image.Image, str]:
         sea = np.stack([92 - 50 * deep, 132 - 60 * deep, 140 - 40 * deep], -1)
         rgb = np.where((zz > 0)[..., None], land * shade[..., None], sea)
         rgb[foreign & (zz > 0)] = rgb[foreign & (zz > 0)] * 0.55 + 70
+        # beyond the built heightmap (the map's margins, the north past the terrain's scope) the ground is read
+        # from the map's own masks, never stretched from the heightmap's edge
+        rgb[~built] = masks_rgb(water, foreign)[~built]
         return Image.fromarray(np.clip(rgb, 0, 255).astype(np.uint8)), "terrain"
-    rgb = np.zeros((h, w, 3), np.uint8)
+    return Image.fromarray(masks_rgb(water, foreign)), "masks"
+
+
+def masks_rgb(water: np.ndarray, foreign: np.ndarray) -> np.ndarray:
+    """Land, foreign land and water from the raster masks alone, flat colours."""
+    rgb = np.zeros(water.shape + (3,), np.uint8)
     rgb[~water] = (150, 156, 112)
     rgb[foreign & ~water] = (128, 126, 118)
     rgb[water] = (70, 108, 122)
-    return Image.fromarray(rgb), "masks"
+    return rgb
 
 
 def data(w: db.World) -> dict:

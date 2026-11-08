@@ -29,6 +29,9 @@ How it works:
 6. Points. Each edge's pixel path is smoothed (Gaussian, sigma 1.5 px along the path) and resampled every 3 px.
 6b. Second look (twice). Road ink the graph left more than 2 px from every line is thinned, joined (steps
    3-4) and the graph rebuilt.
+6c. Corrections (newworld/sources/road_corrections.json, checked by eye and by measuring the ink): `minor` sets
+   the class of the edge through a point (a dashed run the reader took for solid); `connect` joins two nodes by a
+   straight road of a class (the map's ink runs on under a label or glyph). Its `join` list is build_db's.
 7. Borders. Province and region ink are dilated by 4 px (closing dash-dot gaps), thinned, pruned, end-joined
    along their direction up to 40 px, and written as polylines.
 
@@ -892,6 +895,7 @@ def main() -> None:
         nodes, edges, sk = second_look(a, ink, sk, nodes, edges, hidden, places, settlements, crossing, skip,
                                        ink_near, symbols, weight)
     edges = land_route_in_red_squares(nodes, edges, symbols, water, ink)
+    nodes, edges = apply_corrections(nodes, edges)
     (f.OUT / "roads.json").write_text(json.dumps({"nodes": nodes, "edges": edges}))
 
     borders = {"province": border_lines(province, glyphs), "region": border_lines(region, glyphs)}
@@ -902,6 +906,39 @@ def main() -> None:
     (CHECK / "stats.json").write_text(json.dumps(stats, indent=1))
     print(json.dumps({k: v for k, v in stats.items() if k != "dead_ends"}, indent=1))
     print("dead ends:", len(stats["dead_ends"]))
+
+
+def apply_corrections(nodes: list, edges: list) -> tuple[list, list]:
+    """Apply road_corrections.json's `minor` and `connect` lists (see 6c). Each point must find its edge or node
+    within a few px, else the correction is stale and the build stops."""
+    cp = f.ROOT / "sources" / "road_corrections.json"
+    if not cp.exists():
+        return nodes, edges
+    c = json.loads(cp.read_text())
+    for fix in c.get("minor", []):
+        at = np.asarray(fix["at"], float)
+        dist = [float(np.hypot(*(np.asarray(e["points"]) - at).T).min()) for e in edges]
+        if min(dist) > 3:
+            raise ValueError(f"road correction: no edge within 3 px of {fix['at']}")
+        for e, dd in zip(edges, dist):
+            if dd <= max(1.0, min(dist)):     # the edge through the point, and a twin drawn on top of it
+                e["class"] = "minor"
+    for fix in c.get("connect", []):
+        ends = []
+        for pt in (fix["from"], fix["to"]):
+            n = min(nodes, key=lambda n: math.dist((n["px"], n["py"]), pt))
+            if math.dist((n["px"], n["py"]), pt) > 8:
+                raise ValueError(f"road correction: no node within 8 px of {pt}")
+            ends.append(n)
+        a_, b_ = ends
+        k = max(2, int(math.dist((a_["px"], a_["py"]), (b_["px"], b_["py"])) / STEP_PX))
+        pts = [[round(a_["px"] + (b_["px"] - a_["px"]) * i / k, 2), round(a_["py"] + (b_["py"] - a_["py"]) * i / k, 2)]
+               for i in range(k + 1)]
+        edges.append({"id": max(e["id"] for e in edges) + 1, "class": fix["class"], "from": a_["id"], "to": b_["id"], "points": pts})
+        for n in ends:
+            if n["kind"] == "end":
+                n["kind"] = "junction"
+    return nodes, edges
 
 
 def second_look(a, ink, sk, nodes, edges, hidden, places, settlements, crossing, skip, ink_near, symbols, weight):

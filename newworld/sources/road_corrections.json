@@ -1,10 +1,487 @@
 {
  "about": "Joins the road tracer cannot see, found by checking each dead end on the map by eye: the road continues to the place under a label or a culture square. Each joins the road node at 'end' (map px) to the place 'place'.",
  "join": [
-  {"end": [2421, 971], "place": "noota-nara", "why": "the dashed road curls up into Noota Nara's square"},
-  {"end": [971, 1203], "place": "gul-tej", "why": "the road runs on into Gul-Tej's square"},
-  {"end": [2868, 1587], "place": "seafalls", "why": "the dashed road from the homestead continues down to Seafalls"},
-  {"end": [1238, 2054], "place": "abandoned-village-m10-m100", "why": "the dashes run under the 10.100 ruler label to the ruin"},
-  {"end": [901, 2337], "place": "logging-camp-m20-m107", "why": "the road passes the logging camp; its spur to the dot is hidden under the culture square"}
+  {
+   "end": [
+    2421,
+    971
+   ],
+   "place": "noota-nara",
+   "why": "the dashed road curls up into Noota Nara's square"
+  },
+  {
+   "end": [
+    971,
+    1203
+   ],
+   "place": "gul-tej",
+   "why": "the road runs on into Gul-Tej's square"
+  },
+  {
+   "end": [
+    2868,
+    1587
+   ],
+   "place": "seafalls",
+   "why": "the dashed road from the homestead continues down to Seafalls"
+  },
+  {
+   "end": [
+    1238,
+    2054
+   ],
+   "place": "abandoned-village-m10-m100",
+   "why": "the dashes run under the 10.100 ruler label to the ruin"
+  },
+  {
+   "end": [
+    901,
+    2337
+   ],
+   "place": "logging-camp-m20-m107",
+   "why": "the road passes the logging camp; its spur to the dot is hidden under the culture square"
+  }
+ ],
+ "about_minor": "Edges the reader classed major where the map draws a dashed (minor) line, each checked on a full-resolution crop; 'at' is a point on the edge, 'ink' the measured breaks in the road ink along it (a solid road has none; a dashed one about 4-5 per 40 px; short runs read under glyphs or labels were judged on the crop). roads.py sets each to minor.",
+ "minor": [
+  {
+   "at": [
+    2243.5,
+    2578.9
+   ],
+   "ink": "5.0 breaks per 40 px, 70% inked over 39 px",
+   "near": "lilmothiit-ruin-14-m113"
+  },
+  {
+   "at": [
+    989.0,
+    2569.1
+   ],
+   "ink": "5.33 breaks per 40 px, 73% inked over 30 px",
+   "near": "imperial-ruin-m17-m113"
+  },
+  {
+   "at": [
+    1045.5,
+    2521.8
+   ],
+   "ink": "3.75 breaks per 40 px, 56% inked over 32 px",
+   "near": "outpost-m15-m112"
+  },
+  {
+   "at": [
+    2208.5,
+    2551.3
+   ],
+   "ink": "4.71 breaks per 40 px, 76% inked over 16 px",
+   "near": "farm-14-m112"
+  },
+  {
+   "at": [
+    2272.5,
+    2514.5
+   ],
+   "ink": "3.08 breaks per 40 px, 77% inked over 43 px",
+   "near": "farm-15-m111"
+  },
+  {
+   "at": [
+    894.5,
+    2465.7
+   ],
+   "ink": "4.44 breaks per 40 px, 72% inked over 36 px",
+   "near": "quarry-m18-m109"
+  },
+  {
+   "at": [
+    2241.1,
+    2425.9
+   ],
+   "ink": "4.71 breaks per 40 px, 71% inked over 46 px",
+   "near": "imperial-ruin-14-m109"
+  },
+  {
+   "at": [
+    1302.6,
+    2386.7
+   ],
+   "ink": "6.0 breaks per 40 px, 60% inked over 50 px",
+   "near": "abandoned-village-m11-m107"
+  },
+  {
+   "at": [
+    2037.0,
+    2253.5
+   ],
+   "ink": "4.32 breaks per 40 px, 56% inked over 36 px",
+   "near": "khariton"
+  },
+  {
+   "at": [
+    2558.2,
+    2265.4
+   ],
+   "ink": "7.14 breaks per 40 px, 71% inked over 28 px",
+   "near": "imperial-ruin-22-m105"
+  },
+  {
+   "at": [
+    874.9,
+    2179.5
+   ],
+   "ink": "4.62 breaks per 40 px, 62% inked over 55 px",
+   "near": "outpost-m19-m103"
+  },
+  {
+   "at": [
+    2556.2,
+    2154.5
+   ],
+   "ink": "2.35 breaks per 40 px, 41% inked over 34 px",
+   "near": "sal-axan"
+  },
+  {
+   "at": [
+    2048.9,
+    2036.2
+   ],
+   "ink": "4.71 breaks per 40 px, 65% inked over 64 px",
+   "near": "tei-kur"
+  },
+  {
+   "at": [
+    1267.5,
+    1990.0
+   ],
+   "ink": "4.71 breaks per 40 px, 65% inked over 46 px",
+   "near": "outpost-m9-m99"
+  },
+  {
+   "at": [
+    1911.7,
+    1937.0
+   ],
+   "ink": "4.0 breaks per 40 px, 67% inked over 30 px",
+   "near": "farm-6-m97"
+  },
+  {
+   "at": [
+    2543.4,
+    1857.0
+   ],
+   "ink": "2.96 breaks per 40 px, 44% inked over 26 px",
+   "near": "oju"
+  },
+  {
+   "at": [
+    1600.2,
+    1896.1
+   ],
+   "ink": "4.14 breaks per 40 px, 76% inked over 28 px",
+   "near": "outpost-2-m96"
+  },
+  {
+   "at": [
+    1499.1,
+    1755.2
+   ],
+   "ink": "4.62 breaks per 40 px, 69% inked over 26 px",
+   "near": "tydeos"
+  },
+  {
+   "at": [
+    2382.2,
+    1756.7
+   ],
+   "ink": "4.62 breaks per 40 px, 77% inked over 26 px",
+   "near": "siluo"
+  },
+  {
+   "at": [
+    361.0,
+    1773.3
+   ],
+   "ink": "5.22 breaks per 40 px, 72% inked over 76 px",
+   "near": "cave-m32-m92"
+  },
+  {
+   "at": [
+    331.2,
+    1843.7
+   ],
+   "ink": "4.44 breaks per 40 px, 74% inked over 26 px",
+   "near": "imperial-ruin-m34-m96"
+  },
+  {
+   "at": [
+    2727.7,
+    1703.9
+   ],
+   "ink": "4.16 breaks per 40 px, 68% inked over 107 px",
+   "near": "khiar"
+  },
+  {
+   "at": [
+    1527.8,
+    1713.4
+   ],
+   "ink": "0.0 breaks per 40 px, 0% inked over 52 px",
+   "near": "tydeos"
+  },
+  {
+   "at": [
+    1514.8,
+    1741.2
+   ],
+   "ink": "4.29 breaks per 40 px, 68% inked over 28 px",
+   "near": "tydeos"
+  },
+  {
+   "at": [
+    2110.1,
+    1826.6
+   ],
+   "ink": "0.0 breaks per 40 px, 0% inked over 44 px",
+   "near": "shalaia"
+  },
+  {
+   "at": [
+    2266.4,
+    1669.9
+   ],
+   "ink": "2.67 breaks per 40 px, 60% inked over 45 px",
+   "near": "truowa"
+  },
+  {
+   "at": [
+    2289.4,
+    1676.2
+   ],
+   "ink": "10.0 breaks per 40 px, 42% inked over 11 px",
+   "near": "siluo"
+  },
+  {
+   "at": [
+    1675.1,
+    1569.3
+   ],
+   "ink": "4.34 breaks per 40 px, 67% inked over 113 px",
+   "near": "nemeon"
+  },
+  {
+   "at": [
+    1522.5,
+    1498.7
+   ],
+   "ink": "2.86 breaks per 40 px, 71% inked over 44 px",
+   "near": "outpost-m3-m83"
+  },
+  {
+   "at": [
+    1517.2,
+    1565.8
+   ],
+   "ink": "4.44 breaks per 40 px, 74% inked over 27 px",
+   "near": "peak-m4-m90"
+  },
+  {
+   "at": [
+    1385.4,
+    1453.2
+   ],
+   "ink": "5.33 breaks per 40 px, 67% inked over 75 px",
+   "near": "nacydes"
+  },
+  {
+   "at": [
+    943.1,
+    1394.9
+   ],
+   "ink": "4.14 breaks per 40 px, 72% inked over 28 px",
+   "near": "outpost-m18-m84"
+  },
+  {
+   "at": [
+    2857.9,
+    1164.8
+   ],
+   "ink": "3.24 breaks per 40 px, 62% inked over 66 px",
+   "near": "arorha"
+  },
+  {
+   "at": [
+    1920.2,
+    1152.8
+   ],
+   "ink": "4.21 breaks per 40 px, 50% inked over 37 px",
+   "near": "outpost-6-m77"
+  },
+  {
+   "at": [
+    831.3,
+    1150.6
+   ],
+   "ink": "5.0 breaks per 40 px, 53% inked over 61 px",
+   "near": "outpost-m20-m77"
+  },
+  {
+   "at": [
+    2672.0,
+    1063.6
+   ],
+   "ink": "4.57 breaks per 40 px, 66% inked over 35 px",
+   "near": "joxhi"
+  },
+  {
+   "at": [
+    1458.4,
+    1000.9
+   ],
+   "ink": "2.96 breaks per 40 px, 30% inked over 84 px",
+   "near": "helstrom"
+  },
+  {
+   "at": [
+    948.9,
+    909.5
+   ],
+   "ink": "0.0 breaks per 40 px, 25% inked over 11 px",
+   "near": "ayleid-ruin-m18-m71"
+  },
+  {
+   "at": [
+    949.4,
+    909.0
+   ],
+   "ink": "0.0 breaks per 40 px, 33% inked over 11 px",
+   "near": "ayleid-ruin-m18-m71"
+  },
+  {
+   "at": [
+    1461.0,
+    953.4
+   ],
+   "ink": "3.87 breaks per 40 px, 77% inked over 31 px",
+   "near": "helstrom"
+  },
+  {
+   "at": [
+    2664.3,
+    928.0
+   ],
+   "ink": "0.0 breaks per 40 px, 55% inked over 40 px",
+   "near": "outpost-25-m71"
+  },
+  {
+   "at": [
+    2423.1,
+    907.2
+   ],
+   "ink": "5.08 breaks per 40 px, 65% inked over 92 px",
+   "near": "noota-nara"
+  },
+  {
+   "at": [
+    1908.5,
+    880.5
+   ],
+   "ink": "4.57 breaks per 40 px, 74% inked over 34 px",
+   "near": "outpost-7-m69"
+  },
+  {
+   "at": [
+    2468.2,
+    889.9
+   ],
+   "ink": "1.9 breaks per 40 px, 86% inked over 20 px",
+   "near": "mine-20-m70"
+  },
+  {
+   "at": [
+    2449.5,
+    889.4
+   ],
+   "ink": "2.35 breaks per 40 px, 76% inked over 46 px",
+   "near": "mine-20-m70"
+  },
+  {
+   "at": [
+    2237.8,
+    839.8
+   ],
+   "ink": "5.0 breaks per 40 px, 69% inked over 46 px",
+   "near": "mine-16-m69"
+  },
+  {
+   "at": [
+    2160.5,
+    780.7
+   ],
+   "ink": "3.2 breaks per 40 px, 72% inked over 55 px",
+   "near": "oxayo"
+  },
+  {
+   "at": [
+    2809.2,
+    703.9
+   ],
+   "ink": "4.32 breaks per 40 px, 70% inked over 37 px",
+   "near": "outpost-29-m66"
+  },
+  {
+   "at": [
+    2218.9,
+    641.6
+   ],
+   "ink": "3.48 breaks per 40 px, 48% inked over 22 px",
+   "near": "tselan"
+  },
+  {
+   "at": [
+    1393.4,
+    571.6
+   ],
+   "ink": "4.0 breaks per 40 px, 56% inked over 59 px",
+   "near": "jal-veesa"
+  },
+  {
+   "at": [
+    2371.6,
+    669.4
+   ],
+   "ink": "5.0 breaks per 40 px, 72% inked over 31 px",
+   "near": "tsonac"
+  },
+  {
+   "at": [
+    2734.7,
+    528.1
+   ],
+   "ink": "4.14 breaks per 40 px, 72% inked over 28 px",
+   "near": "fort-thornmoth"
+  },
+  {
+   "at": [
+    1539.1,
+    503.7
+   ],
+   "ink": "5.71 breaks per 40 px, 64% inked over 28 px",
+   "near": "stormhold"
+  }
+ ],
+ "about_connect": "Gaps in the major network where the map's solid ink runs on under a label or glyph: roads.py joins the two nodes nearest 'from' and 'to' with a straight road of 'class'.",
+ "connect": [
+  {
+   "from": [
+    1008,
+    1119
+   ],
+   "to": [
+    979.9,
+    1158.6
+   ],
+   "class": "major",
+   "why": "the solid road from Umpholo runs on under the GUL-TEJ label into Gul-Tej's glyph"
+  }
  ]
 }
