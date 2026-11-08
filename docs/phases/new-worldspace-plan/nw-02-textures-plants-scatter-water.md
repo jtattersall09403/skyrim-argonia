@@ -68,7 +68,7 @@ bucket, never in git.
 
 | Step | What | Status |
 |---|---|---|
-| 0 | Map quick fixes: road classes, major-road gaps | in progress |
+| 0 | Map quick fixes: 53 road edges major→minor by measured ink, the gap north of Gul-Tej joined, the top strip drawn from the source (1f689739); the hatched province land in the north and a 4-cell margin beyond the border join the terrain in step 4 | done |
 | 1 | Study: what to salvage from the old pipeline (research/nw-02-salvage.md) | done |
 | 2 | Study: ground, water, roads, mist rules from the game and mod files (research/nw-02-ground-water-rules.md) | in progress |
 | 3 | Study: flora, rocks, seabed, cliffs catalogue, seating and placement rules (research/nw-02-flora-rules.md) | in progress |
