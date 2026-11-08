@@ -281,6 +281,16 @@ of out/Argonia.esp finds every person's topics gated to their ref (12 of 12), AR
 voice override in place. Not this block: Lilmoth's five Naga (hostile) and the three Dunmer corpses. The rest of
 BM&V is [Phase 4a](4a-talk-to-everyone.md). Owner check: docs/owner-walk-checks.md, Phase 3 section.
 
+Owner walk 2026-11-07: everyone had topics, but all said the same things; villagers, the boat captain and the New
+Order soldiers still opened nothing; nobody had a name; Looks-At-Books had no topics and a huge stock. Rebuilt
+2026-11-08: 30 people (Flaa Heet's village and the shore track, Hereguard Plantation's 11 and the Docks' 7, which
+the census had filed under other settlements), each with personality columns in the brief (talk.md
+"Personality"), their own facts, and a name on a base of their own (`ARG_Talker_<ref>`, templated on the old base,
+the ref overridden; talk.md "Names and bases"); Looks-At-Books sells a bookseller's fixed stock from her own vendor
+faction `ARG_VendorLooksAtBooks` and chest (talk.md "A trader's stock"). 13 topics, 166 responses; `talk_check`:
+30 of 30 gated, 28 renamed refs on their named bases (Flaa Heet and Deep-In-His-Cups keep BM&V's names), the chest's
+stock as listed, 0 problems.
+
 ## Risks
 
 1. **W-navmesh is not on this route.** The dock and the ship both have navmesh, and navmesh is made only in the

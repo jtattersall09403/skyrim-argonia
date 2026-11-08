@@ -1,4 +1,5 @@
 using System.Text.Json;
+using Noggog;
 using Mutagen.Bethesda;
 using Mutagen.Bethesda.Plugins;
 using Mutagen.Bethesda.Plugins.Records;
@@ -39,6 +40,7 @@ static class Talk
             var c = census[who];
             if (c.TryGetProperty("voice", out var v) && v.ValueKind != JsonValueKind.Null) continue;
             var baseKey = FormKey.Factory(S(c, "npc"));
+            if (mod.Npcs.ContainsKey(baseKey)) continue; // a base two silent talkers share
             var npc = (Npc)npcs[baseKey].rec.DeepCopy();
             npc.Voice.SetTo(silent.FormKey);
             mod.Npcs.Add(npc);
@@ -68,5 +70,124 @@ static class Talk
             }
         }
         Console.WriteLine($"talk: {lines.Select(l => S(l, "talker")).Distinct().Count()} talkers, {mod.DialogTopics.Count(x => x.EditorID!.StartsWith("ARG_Talk_"))} topics, {lines.Count} responses");
+        Names(mod, mods, census, npcs);
+    }
+
+    static FormKey K(string k) => FormKey.Factory(k);
+    // W-npc's look flags (BlockTest.cs): the face, race, voice, AI, inventory, factions and scripts come from the base
+    // BM&V placed, so the person looks and behaves as before. Use Traits carries the face: the engine draws a templated
+    // NPC with its template's FaceGen (facegeom/facetint under the template's plugin and form id), as ARG_BT_Keeper shows
+    // on the dock. Use Base Data is off, so the name is ours; Use Stats is off, so the level is fixed (decision 0035).
+    const NpcConfiguration.TemplateFlag Looks = NpcConfiguration.TemplateFlag.Traits | NpcConfiguration.TemplateFlag.Factions
+        | NpcConfiguration.TemplateFlag.SpellList | NpcConfiguration.TemplateFlag.AIData | NpcConfiguration.TemplateFlag.AIPackages
+        | NpcConfiguration.TemplateFlag.ModelAnimation | NpcConfiguration.TemplateFlag.Inventory | NpcConfiguration.TemplateFlag.Script
+        | NpcConfiguration.TemplateFlag.DefPackList | NpcConfiguration.TemplateFlag.AttackData | NpcConfiguration.TemplateFlag.Keywords;
+
+    // Looks-At-Books (03E418, Black Marsh North's "Looks at books") sold from vanilla's WEServiceMiscMerchant chest, whose
+    // levelled lists stock any misc merchant in Skyrim; she gets a vendor faction of her own whose chest holds a book
+    // trader's fixed stock: vanilla and BM&V books with no Nordic subject (decision 0006), paper, ink and quills.
+    static readonly FormKey LooksAtBooks = K("03E418:Black Marsh North.esp"), MiscMerchant = K("0B5D55:Skyrim.esm");
+    static readonly (string item, int count)[] BookStock =
+    [
+        ("01AFD7:Skyrim.esm", 1), ("01ACE7:Skyrim.esm", 1), ("01AFFC:Skyrim.esm", 1), ("01ACE8:Skyrim.esm", 1), // The Argonian Account 1 to 4
+        ("01ACEF:Skyrim.esm", 1), ("0F699D:Skyrim.esm", 1),   // The Lusty Argonian Maid v1, v2
+        ("006925:Dawnguard.esm", 1),                          // The Sultry Argonian Bard v1
+        ("01B22B:Skyrim.esm", 1),                             // Short History of Morrowind
+        ("166BB6:Black Marsh North.esp", 2),                  // Welcome to Black Marsh
+        ("033761:Skyrim.esm", 5), ("04C3C6:Skyrim.esm", 2), ("04C3C8:Skyrim.esm", 3), // roll of paper, inkwell, quill
+        ("00000F:Skyrim.esm", 300),                           // gold: a small trader's purse
+    ];
+
+    // Names (owner walk 2026-11-07): a placed ref's base is shared (02A1EE stands in sixteen places), so each talker whose
+    // known_as differs from the base's name gets a base of their own, ARG_Talker_<ref>, templated on the old base for
+    // its look, and the ref is overridden to place it. Allocated after the talk records, in sorted order.
+    static void Names(SkyrimMod mod, List<ISkyrimModGetter> mods, Dictionary<string, JsonElement> census, Dictionary<FormKey, (INpcGetter rec, ModKey from)> npcs)
+    {
+        var talkers = Rows("talker").OrderBy(r => S(r, "id")).ToList();
+        var placed = Survey.Winners<IPlacedGetter>(mods);
+        var cells = Survey.Winners<ICellGetter>(mods);
+        var world = mod.Worldspaces.First(w => w.FormKey == K("23D689:Black Marsh.esm"));
+        var noRefs = new Cell.TranslationMask(true) { Persistent = false, Temporary = false, NavigationMeshes = false, Landscape = false };
+        int named = 0;
+        foreach (var t in talkers)
+        {
+            var id = S(t, "id"); var c = census[id];
+            var name = S(t, "known_as");
+            var oldName = c.TryGetProperty("name", out var nm) && nm.ValueKind == JsonValueKind.String ? nm.GetString() : null;
+            if (name == oldName || name.StartsWith("the ")) continue;
+            var tpl = npcs[K(S(c, "npc"))].rec;
+            var n = mod.Npcs.AddNew("ARG_Talker_" + id.Split(':')[0]);
+            n.Name = name;
+            n.Template.SetTo(tpl.FormKey);
+            n.Race.SetTo(tpl.Race.FormKey);
+            n.Class.SetTo(tpl.Class.FormKey);
+            n.Configuration.TemplateFlags = Looks;
+            // the old base's level when it is fixed, else 5 (a PC-level-mult base would level against the player)
+            n.Configuration.Level = new NpcLevel { Level = tpl.Configuration.Level is INpcLevelGetter l ? l.Level : (short)5 };
+            var keep = NpcConfiguration.Flag.Female | NpcConfiguration.Flag.Essential | NpcConfiguration.Flag.Protected
+                | NpcConfiguration.Flag.Unique | NpcConfiguration.Flag.SimpleActor;
+            n.Configuration.Flags = NpcConfiguration.Flag.AutoCalcStats | (tpl.Configuration.Flags & keep);
+            var refKey = K(id);
+            if (refKey == LooksAtBooks) Vendor(mod, mods, world, n, tpl, (IPlacedNpcGetter)placed[refKey].rec);
+
+            var r = (PlacedNpc)((IPlacedNpcGetter)placed[refKey].rec).DeepCopy();
+            r.Base.SetTo(n.FormKey);
+            if ((r.MajorRecordFlagsRaw & 0x400) != 0) world.TopCell!.Persistent.Add(r);
+            else CellOf(world, cells[K(S(c, "cell"))].rec, noRefs).Temporary.Add(r);
+            named++;
+        }
+        Console.WriteLine($"talk names: {named} people given bases of their own");
+    }
+
+    // Our override of an exterior cell in the worldspace, found if another block already added it, else added (the
+    // block and sub-block numbers are the grid divided by 32 and by 8, rounded down).
+    static Cell CellOf(Worldspace world, ICellGetter src, Cell.TranslationMask noRefs)
+    {
+        foreach (var b in world.SubCells) foreach (var sb in b.Items) foreach (var cell in sb.Items)
+            if (cell.FormKey == src.FormKey) return cell;
+        var g = src.Grid!.Point;
+        int bx = (int)Math.Floor(g.X / 32.0), by = (int)Math.Floor(g.Y / 32.0), sx = (int)Math.Floor(g.X / 8.0), sy = (int)Math.Floor(g.Y / 8.0);
+        var block = world.SubCells.FirstOrDefault(b => b.BlockNumberX == bx && b.BlockNumberY == by);
+        if (block == null)
+        {
+            block = new WorldspaceBlock { BlockNumberX = (short)bx, BlockNumberY = (short)by, GroupType = GroupTypeEnum.ExteriorCellBlock };
+            world.SubCells.Add(block);
+        }
+        var sub = block.Items.FirstOrDefault(s => s.BlockNumberX == sx && s.BlockNumberY == sy);
+        if (sub == null)
+        {
+            sub = new WorldspaceSubBlock { BlockNumberX = (short)sx, BlockNumberY = (short)sy, GroupType = GroupTypeEnum.ExteriorCellSubBlock };
+            block.Items.Add(sub);
+        }
+        var c = src.DeepCopy(noRefs);
+        sub.Items.Add(c);
+        return c;
+    }
+
+    // Looks-At-Books' own vendor faction (a copy of WEServiceMiscMerchant: its buy list, hours and ranks) whose chest is
+    // ours, a persistent container ref 30 m under her stall holding BookStock; her base takes the old base's factions
+    // with WEServiceMiscMerchant swapped for it (the Factions template flag off).
+    static void Vendor(SkyrimMod mod, List<ISkyrimModGetter> mods, Worldspace world, Npc n, INpcGetter tpl, IPlacedNpcGetter at)
+    {
+        var src = Survey.Winners<IFactionGetter>(mods)[MiscMerchant].rec;
+        var f = mod.Factions.AddNew("ARG_VendorLooksAtBooks");
+        f.DeepCopyIn(src, new Faction.TranslationMask(true) { EditorID = false, FormVersion = false, VersionControl = false });
+        var srcChest = Survey.Winners<IPlacedObjectGetter>(mods)[src.MerchantContainer.FormKey].rec;
+        var chestBase = Survey.Winners<IContainerGetter>(mods)[srcChest.Base.FormKey].rec;
+        var box = mod.Containers.AddNew("ARG_VendorLooksAtBooksChest");
+        box.DeepCopyIn(chestBase, new Container.TranslationMask(true) { EditorID = false, FormVersion = false, VersionControl = false, Items = false, Name = false });
+        box.Items = BookStock.Select(s => new ContainerEntry { Item = new ContainerItem { Item = new FormLink<IItemGetter>(K(s.item)), Count = s.count } }).ToExtendedList();
+        var p = at.Placement!.Position;
+        var chest = new PlacedObject(mod.GetNextFormKey(), SkyrimRelease.SkyrimSE)
+        {
+            EditorID = "ARG_VendorLooksAtBooksChestRef", MajorRecordFlagsRaw = 0x400,
+            Placement = new Placement { Position = new P3Float(p.X, p.Y, p.Z - 2100) },
+        };
+        chest.Base.SetTo(box.FormKey);
+        world.TopCell!.Persistent.Add(chest);
+        f.MerchantContainer.SetTo(chest.FormKey);
+        n.Configuration.TemplateFlags &= ~NpcConfiguration.TemplateFlag.Factions;
+        foreach (var r in tpl.Factions)
+            n.Factions.Add(new RankPlacement { Faction = new FormLink<IFactionGetter>(r.Faction.FormKey == MiscMerchant ? f.FormKey : r.Faction.FormKey), Rank = r.Rank });
     }
 }

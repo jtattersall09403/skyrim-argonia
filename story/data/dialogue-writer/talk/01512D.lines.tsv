@@ -1,4 +1,7 @@
-talk.directions	The walls of Lilmoth are a short walk east-north-east of here, about a hundred paces. Hereguard Plantation, which Bretons hold, is a little further the other way, west-south-west. Flaa Heet's village is a longer walk to the south-east.
-talk.here	Lilmoth is built over shallow water, so large ships cannot dock. They anchor out, and small boats bring the goods in.
-talk.lore	Lilmoth has no single ruler. A council of powerful merchants governs it. It has its own Hist tree, though no tribe of its own.
-talk.self	I fish the shallows below the walls, out among the lily pads, and sell my catch inside. I live outside the walls because the rent inside is more than fish pay.
+talk.danger	Slaughterfish, dry-foot. Twenty paces north of here the water is full of them. More lie ten paces off to the south-west. They take my catch off the line. I do not forgive it. Wade slow and do not splash.
+talk.danger	Giant mudcrabs sit on the shore about thirty paces south-south-west. They are slow, but I leave them alone, and so should you.
+talk.directions	Lolmoth is the walled part of Lilmoth. Walk east-north-east from here, about a hundred paces. You will meet the walls. I think those walls keep out the wrong people.
+talk.directions	Hereguard Plantation is west-south-west, a little over a hundred paces. Ask for Salith when you get there. She sells me my bait. The plantation pays its hands too little, but Salith is fair.
+talk.harvest	Wild leeks grow on the bank, east-south-east of here, about a hundred paces. Keep to the bank when you go. The lily pads are mine. I do not want anyone splashing about on them.
+talk.secret	Hm. I do not tell this to everyone. There is a giant crab called Old Salty in the shallows to the south-south-west, about ninety paces from here. He is old. He is not to be bothered. Leave him be, dry-foot.
+talk.self	I am Uleesh. I fish the shallows below the walls and sell my catch inside. Rent in there costs more than fish pay, so I live out here. I have fished this water twenty years and I know it.
