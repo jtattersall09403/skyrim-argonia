@@ -86,8 +86,7 @@ vertical ray through the model's triangles under the ref's rotation and scale (S
 the dock's own navmesh), and the land's height from the cell's LAND. `SURFACE_GRID=<step>` prints a 13 x 13 map of
 mesh top / navmesh height around a point, to see where a surface runs. In code, `Surface.On(Surface.Under(...),
 "<editor id or model fragment>", lift)` gives the z for a spot on the named surface (null when it is not under that x,y,
-so a build fails rather than placing on the wrong thing). A loose item goes 30 units above the surface (Havok settles
-it); an actor or marker at the surface, on the navmesh that covers it. Effects meshes (fog) are skipped. The model's
+so a build fails rather than placing on the wrong thing). A loose item rests on the surface (within 10, `plugin.sh placecheck`); an actor or marker at the surface, on the navmesh that covers it. Effects meshes (fog) are skipped. The model's
 render geometry stands in for its collision (the two match on planks, floors and decks); the read-back check
 re-runs the helper on every placed thing it names. Game files are read and never written or committed (decision 0003).
 

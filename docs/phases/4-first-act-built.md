@@ -191,5 +191,15 @@ the quest is re-authored.
   rumours; `make check` green. Bands live in `story/data/quest_lines/mq03.json`, `lq25.json`, `lq30.json`
   (`lines@low`/`lines@high`), `dialogue_line` `variants_low`/`variants_high` (MQ04, MQ05) and
   `story/data/dialogue-writer/quest/tg/nightreed.lines.tsv` (`<key>@<band>.<n>`); the writers' files are `*.bands.tsv`.
-- **Known gaps, for the owner walk or later:** positions at BC01's
-  landing, BC02's keep and the Reed's house (BM&V's tilted sinking cabin) were picked from navmesh, never walked.
+- **Placement check (2026-11-08):** `plugin.sh placecheck` reads every actor and object the built plugin places (all
+  quests, worlds and interiors; 120) against the load order: actors on the winning navmesh (0 to 40 above, a triangle
+  within 150) and no static or furniture mesh through the body; objects resting on the surface under them (within 10;
+  structures may sink, never float). 19 failed before; the seed now rests failing objects on their surface (17 moved:
+  loose items 25 to 30 up, MQ03's dream roots and MQ05's seat sunk, MQ01's shed, burnt hut and hut fire, MQ04's camp
+  fire, TG01's bedroll, the block test's token; the shed 117 up out of the land), and it reads 0 failed. BC01's
+  landing and BC02's keep pass; the Reed's house has no navmesh in its rooms, so Nesh-Deeka and Salts-The-Catch are
+  named standing actors, checked 10 above the floor mesh. Every read-back PASS after the re-seed; `make check` green.
+- **Known gaps, for the owner walk or later:** what the check cannot prove: how the tilted floor of the Reed's house
+  looks and whether its two standing actors settle well; 11 actors whose navmesh has no modelled ground under it (BC02's
+  keep and gate, MQ04's camp, LQ30's Sei-Wan and viper, MQ05's second wasp, MQ01's Ri-Sakka on the shore, Never-Sold's
+  house): a collision-only floor or a navmesh over nothing, which only the walk tells apart; and how anything looks.

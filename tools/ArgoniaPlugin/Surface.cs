@@ -117,12 +117,12 @@ static class Surface
         Walk(0, [1, 0, 0, 0, 1, 0, 0, 0, 1], new P3Float(0, 0, 0), 1, 0);
         return outTris;
     }
-    static P3Float Add(P3Float a, P3Float b) => new(a.X + b.X, a.Y + b.Y, a.Z + b.Z);
-    static P3Float Mul(float[] m, P3Float v, float s) => new(s * (m[0] * v.X + m[1] * v.Y + m[2] * v.Z), s * (m[3] * v.X + m[4] * v.Y + m[5] * v.Z), s * (m[6] * v.X + m[7] * v.Y + m[8] * v.Z));
+    internal static P3Float Add(P3Float a, P3Float b) => new(a.X + b.X, a.Y + b.Y, a.Z + b.Z);
+    internal static P3Float Mul(float[] m, P3Float v, float s) => new(s * (m[0] * v.X + m[1] * v.Y + m[2] * v.Z), s * (m[3] * v.X + m[4] * v.Y + m[5] * v.Z), s * (m[6] * v.X + m[7] * v.Y + m[8] * v.Z));
 
     // A ref's rotation (Skyrim: radians, applied Z then Y then X, i.e. world = Rz * Ry * Rx; we need its inverse to bring
     // the probe into model space).
-    static float[] RefRot(P3Float r)
+    internal static float[] RefRot(P3Float r)
     {
         float cx = MathF.Cos(-r.X), sx = MathF.Sin(-r.X), cy = MathF.Cos(-r.Y), sy = MathF.Sin(-r.Y), cz = MathF.Cos(-r.Z), sz = MathF.Sin(-r.Z);
         float[] X = [1, 0, 0, 0, cx, -sx, 0, sx, cx], Y = [cy, 0, sy, 0, 1, 0, -sy, 0, cy], Z = [cz, -sz, 0, sz, cz, 0, 0, 0, 1];
@@ -136,9 +136,12 @@ static class Surface
     }
 
     // The highest point of a model's triangles at a world x,y, if the vertical line there crosses any.
-    static float? MeshTop(List<(P3Float a, P3Float b, P3Float c)> tris, float[] rot, P3Float origin, float scale, float x, float y)
+    static float? MeshTop(List<(P3Float a, P3Float b, P3Float c)> tris, float[] rot, P3Float origin, float scale, float x, float y) =>
+        MeshCrossings(tris, rot, origin, scale, x, y).Cast<float?>().DefaultIfEmpty(null).Max();
+    // Every height at which a model's triangles cross the vertical line at a world x,y (a deck under a ceiling).
+    static List<float> MeshCrossings(List<(P3Float a, P3Float b, P3Float c)> tris, float[] rot, P3Float origin, float scale, float x, float y)
     {
-        float? best = null;
+        var all = new List<float>();
         foreach (var (a0, b0, c0) in tris)
         {
             P3Float W(P3Float p) => Add(origin, Mul(rot, p, scale));
@@ -149,32 +152,41 @@ static class Surface
             var l2 = ((c.Y - a.Y) * (x - c.X) + (a.X - c.X) * (y - c.Y)) / den;
             var l3 = 1 - l1 - l2;
             if (l1 < 0 || l2 < 0 || l3 < 0) continue;
-            var z = l1 * a.Z + l2 * b.Z + l3 * c.Z;
-            if (best == null || z > best) best = z;
+            all.Add(l1 * a.Z + l2 * b.Z + l3 * c.Z);
         }
-        return best;
+        return all;
     }
 
     // The land's height at x,y from the winning LAND of the exterior cell (33 x 33 vertices, 128 units apart).
     public static float? Land(List<ISkyrimModGetter> mods, FormKey world, float x, float y)
     {
         var gx = (int)MathF.Floor(x / 4096); var gy = (int)MathF.Floor(y / 4096);
-        ILandscapeGetter? land = null;
-        foreach (var m in mods)
-            foreach (var w in m.Worldspaces.Where(w => w.FormKey == world))
-                foreach (var c in w.SubCells.SelectMany(b => b.Items).SelectMany(s => s.Items))
-                    if (c.Grid?.Point == new P2Int(gx, gy) && c.Landscape?.VertexHeightMap != null) land = c.Landscape;
-        if (land?.VertexHeightMap is not { } hm) return null;
-        var h = new float[33, 33]; var rowStart = hm.Offset * 8;
-        for (var row = 0; row < 33; row++)
+        if (!ReferenceEquals(landFor, mods)) { landFor = mods; landCache.Clear(); }
+        if (!landCache.TryGetValue((world, gx, gy), out var h))
         {
-            rowStart += (sbyte)hm.HeightMap[0, row] * 8; var v = rowStart; h[0, row] = v;
-            for (var col = 1; col < 33; col++) { v += (sbyte)hm.HeightMap[col, row] * 8; h[col, row] = v; }
+            ILandscapeGetter? land = null;
+            foreach (var m in mods)
+                foreach (var w in m.Worldspaces.Where(w => w.FormKey == world))
+                    foreach (var c in w.SubCells.SelectMany(b => b.Items).SelectMany(s => s.Items))
+                        if (c.Grid?.Point == new P2Int(gx, gy) && c.Landscape?.VertexHeightMap != null) land = c.Landscape;
+            if (land?.VertexHeightMap is { } hm)
+            {
+                h = new float[33, 33]; var rowStart = hm.Offset * 8;
+                for (var row = 0; row < 33; row++)
+                {
+                    rowStart += (sbyte)hm.HeightMap[0, row] * 8; var v = rowStart; h[0, row] = v;
+                    for (var col = 1; col < 33; col++) { v += (sbyte)hm.HeightMap[col, row] * 8; h[col, row] = v; }
+                }
+            }
+            landCache[(world, gx, gy)] = h;
         }
+        if (h == null) return null;
         float fx = (x - gx * 4096) / 128, fy = (y - gy * 4096) / 128;
         int ix = Math.Clamp((int)fx, 0, 31), iy = Math.Clamp((int)fy, 0, 31); float tx = fx - ix, ty = fy - iy;
         return (h[ix, iy] * (1 - tx) + h[ix + 1, iy] * tx) * (1 - ty) + (h[ix, iy + 1] * (1 - tx) + h[ix + 1, iy + 1] * tx) * ty;
     }
+
+    static object? landFor; static readonly Dictionary<(FormKey, int, int), float[,]?> landCache = [];
 
     // Every placed static (or other modelled base) whose model lies under x,y, highest first; the land last.
     static object? prepFor; static FormKey prepWorld;
@@ -187,20 +199,47 @@ static class Surface
     {
         if (!ReferenceEquals(prepFor, mods) || prepWorld != world)
         {
-            prepFor = mods; prepWorld = world;
-        bases = Survey.Winners<IStaticGetter>(mods).ToDictionary(k => k.Key, k => (k.Value.rec.EditorID, k.Value.rec.Model?.File.DataRelativePath.Path, k.Value.rec.ObjectBounds));
-        foreach (var (k, (a, _)) in Survey.Winners<IMoveableStaticGetter>(mods)) bases[k] = (a.EditorID, a.Model?.File.DataRelativePath.Path, a.ObjectBounds);
-        foreach (var (k, (a, _)) in Survey.Winners<IActivatorGetter>(mods)) bases[k] = (a.EditorID, a.Model?.File.DataRelativePath.Path, a.ObjectBounds);
-        foreach (var (k, (a, _)) in Survey.Winners<IFurnitureGetter>(mods)) bases[k] = (a.EditorID, a.Model?.File.DataRelativePath.Path, a.ObjectBounds);
+            prepFor = mods; prepWorld = world; Bases(mods);
             allRefs = [];
             foreach (var m in mods)
                 foreach (var w in m.Worldspaces.Where(w => w.FormKey == world))
                     foreach (var r in (w.TopCell?.Persistent ?? []).Concat(w.SubCells.SelectMany(b => b.Items).SelectMany(s => s.Items).SelectMany(c => c.Persistent.Concat(c.Temporary))))
                         if (r is IPlacedObjectGetter o && o.Placement != null) allRefs[o.FormKey] = o;
         }
-        var refs = allRefs!.Values.Where(o => MathF.Abs(o.Placement!.Position.X - x) < radius && MathF.Abs(o.Placement!.Position.Y - y) < radius).ToDictionary(o => o.FormKey);
+        var hits = UnderRefs(allRefs!.Values.Where(o => MathF.Abs(o.Placement!.Position.X - x) < radius && MathF.Abs(o.Placement!.Position.Y - y) < radius), assets, x, y);
+        if (Land(mods, world, x, y) is float lz) hits.Add(new Hit("land", FormKey.Null, FormKey.Null, null, "", lz, lz));
+        return hits;
+    }
+
+    // The bases with a model (statics, moveable statics, activators, furniture), load-order winners, read once per load.
+    static object? basesFor;
+    internal static void Bases(List<ISkyrimModGetter> mods)
+    {
+        if (ReferenceEquals(basesFor, mods)) return;
+        basesFor = mods;
+        bases = Survey.Winners<IStaticGetter>(mods).ToDictionary(k => k.Key, k => (k.Value.rec.EditorID, k.Value.rec.Model?.File.DataRelativePath.Path, k.Value.rec.ObjectBounds));
+        foreach (var (k, (a, _)) in Survey.Winners<IMoveableStaticGetter>(mods)) bases[k] = (a.EditorID, a.Model?.File.DataRelativePath.Path, a.ObjectBounds);
+        foreach (var (k, (a, _)) in Survey.Winners<IActivatorGetter>(mods)) bases[k] = (a.EditorID, a.Model?.File.DataRelativePath.Path, a.ObjectBounds);
+        foreach (var (k, (a, _)) in Survey.Winners<IFurnitureGetter>(mods)) bases[k] = (a.EditorID, a.Model?.File.DataRelativePath.Path, a.ObjectBounds);
+    }
+    internal static void AddBases(Dictionary<FormKey, (string? EditorID, string? Model, IObjectBoundsGetter? ObjectBounds)> more) { foreach (var (k, v) in more) bases[k] = v; }
+    internal static (string? EditorID, string? Model, IObjectBoundsGetter? ObjectBounds)? Base(FormKey k) => bases.TryGetValue(k, out var b) ? b : null;
+    // A model's triangles in model space (cached; null when the model cannot be read).
+    internal static List<(P3Float a, P3Float b, P3Float c)>? Mesh(Assets assets, string model)
+    {
+        if (meshCache.TryGetValue(model, out var tris)) return tris;
+        var rel = model.Replace('/', '\\'); if (!rel.StartsWith("meshes\\", StringComparison.OrdinalIgnoreCase)) rel = "meshes\\" + rel;
+        var bytes = assets.Read(rel);
+        try { tris = bytes == null ? null : Triangles(bytes); } catch { tris = null; }
+        return meshCache[model] = tris;
+    }
+
+    // The modelled surfaces of the given refs under x,y (any world or interior cell), highest first; Bases must be read.
+    // With every crossing, each height a model crosses is a hit of its own (the floor of a one-mesh interior under its roof).
+    internal static List<Hit> UnderRefs(IEnumerable<IPlacedObjectGetter> refs, Assets assets, float x, float y, bool everyCrossing = false)
+    {
         var hits = new List<Hit>();
-        foreach (var o in refs.Values)
+        foreach (var o in refs)
         {
             if ((o.MajorRecordFlagsRaw & 0x800) != 0 || !bases.TryGetValue(o.Base.FormKey, out var b) || b.Item2 is not { } model) continue;
             if (model.Replace('/', '\\').Contains("Effects\\", StringComparison.OrdinalIgnoreCase)) continue; // fog, light shafts: no surface
@@ -214,20 +253,18 @@ static class Surface
             float obTop = float.MinValue;
             foreach (var cx in new[] { ob.First.X, ob.Second.X }) foreach (var cy in new[] { ob.First.Y, ob.Second.Y }) foreach (var cz in new[] { ob.First.Z, ob.Second.Z })
                 obTop = MathF.Max(obTop, Add(p.Position, Mul(rot, new P3Float(cx, cy, cz), s)).Z);
-            if (!meshCache.TryGetValue(model, out var tris))
+            var tris = Mesh(assets, model);
+            if (everyCrossing && tris != null)
             {
-                var rel = model.Replace('/', '\\'); if (!rel.StartsWith("meshes\\", StringComparison.OrdinalIgnoreCase)) rel = "meshes\\" + rel;
-                var bytes = assets.Read(rel);
-                try { tris = bytes == null ? null : Triangles(bytes); } catch { tris = null; }
-                meshCache[model] = tris;
+                foreach (var z in MeshCrossings(tris, rot, p.Position, s, x, y).Select(z => MathF.Round(z)).Distinct())
+                    hits.Add(new Hit("mesh", o.FormKey, o.Base.FormKey, b.EditorID, model, z, z));
+                continue;
             }
             var top = tris == null ? null : MeshTop(tris, rot, p.Position, s, x, y);
             if (tris != null && top == null) continue; // the footprint's box, but the model has nothing at this x,y
             hits.Add(new Hit(tris == null ? "bounds" : "mesh", o.FormKey, o.Base.FormKey, b.EditorID, model, top ?? obTop, top));
         }
-        hits = hits.OrderByDescending(h => h.Top).ToList();
-        if (Land(mods, world, x, y) is float lz) hits.Add(new Hit("land", FormKey.Null, FormKey.Null, null, "", lz, lz));
-        return hits;
+        return hits.OrderByDescending(h => h.Top).ToList();
     }
 
     // The top of the named surface (an editor id or model path fragment) under x,y, plus a lift; null if none is there.

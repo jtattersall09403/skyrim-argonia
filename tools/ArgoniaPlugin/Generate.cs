@@ -197,6 +197,8 @@ static class Generate
         MainQuest.Finish(mod);
         // Quest rumours (Talk.cs): talkers' rumours of a quest that can start, gated as its giver's opening; after every quest.
         Talk.Rumours(mod);
+        // Every object rests on the surface under it (PlaceCheck: floating or sunk more than 10 moves onto it); after every builder.
+        PlaceCheck.Settle(mod, mods, Surface.Paths);
         var order = mods.Select(m => m.ModKey).Append(Ours).ToList();
         // The plugin whose worldspace record we override is a master even when no form of it is referenced, so ours
         // always loads after it.

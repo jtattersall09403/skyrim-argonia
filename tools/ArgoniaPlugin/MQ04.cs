@@ -69,7 +69,7 @@ static class MQ04
         var boat = k.Ref("CampBoat", K("08ABC1:Black Marsh.esm"), boatAt, camp);
 
         // The gum pot in Pays-Late's inventory; TR-acquire: the jars with the knife in one bundle by the camp's fire
-        // (a loose item 30 units above the ground).
+        // (a loose item on the ground: PlaceCheck.Settle rests it).
         var gumPot = k.Item("GumPot", "Pays-Late's Gum Pot", k.ModelOf(K("1C40C2:Black Marsh.esm")), 1);
         minder.Items = [new ContainerEntry { Item = new ContainerItem { Item = gumPot.ToLink<IItemGetter>(), Count = 1 } }];
         var jars = k.Item("SapJars", "Jars of Hist Sap", k.ModelOf(K("08AB9C:Black Marsh.esm")), 4);

@@ -111,9 +111,9 @@ static class BlockTestCheck
             ("fragment 20", Frag(20) && Pex("ARG_QF_BlockTest", "SetRelationshipRank", "AddItem", "Enable")), ("ShipKey prop", Prop("ShipKey", F("ARG_BT_Key"))),
             ("TokenParent prop, disabled", Prop("TokenParent", F("ARG_BT_TokenParent")) && Disabled(F("ARG_BT_TokenParent")) && Persistent(F("ARG_BT_TokenParent"))),
             ("token ref enable parent, over the dock navmesh 07EEFF", Parent(tokenRef, "ARG_BT_TokenParent") && Persistent(tokenRef) && OnNav(tokenRef, FormKey.Factory("07EEFF:Black Marsh.esm"))),
-            ("token 30 above the dock planks' mesh top (BYOHFishDock01), not over land", placed[tokenRef].Placement!.Position is var tp
+            ("token resting on the dock planks' mesh top (BYOHFishDock01), not over land", placed[tokenRef].Placement!.Position is var tp
                 && Surface.Under(mods.Take(mods.Count - 1).ToList(), new Surface.Assets(paths), FormKey.Factory("23D689:Black Marsh.esm"), tp.X, tp.Y) is var under
-                && under.FirstOrDefault(h => h.Kind != "land") is { } top && top.EditorId == "BYOHFishDock01" && Math.Abs(tp.Z - top.Top - 30) <= 1),
+                && under.FirstOrDefault(h => h.Kind != "land") is { } top && top.EditorId == "BYOHFishDock01" && Math.Abs(tp.Z - top.Top) <= 10),
             ("Keeper alias prop", Prop("Keeper", q.FormKey, 0)), ("objective 20", Obj(20)));
         Step(3, "TR-acquire, E-global",
             ("token alias: defaultSetStageOnPlayerAcquire myQST/preReqStage 20/StageToSet 30", AliasScript(3, "defaultSetStageOnPlayerAcquire", ("myQST", q.FormKey), ("preReqStage", 20), ("StageToSet", 30))),

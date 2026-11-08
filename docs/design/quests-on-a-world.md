@@ -164,6 +164,9 @@ anyone a quest ending leaves standing; journal and objective text written and re
 - **Read-backs** from the built plugin and the compiled scripts, never from the source: every stage, journal,
   objective, fragment, alias, trigger area, enable parent, condition, line and band against the record; the talk
   check over every talker; the clean-up list; the shutdown list; a clean Spriggit round trip; the gate (`make check`).
+- **Placement check** (`plugin.sh placecheck`) over every actor and object the plugin places: actors on the winning
+  navmesh (0 to 40 above, within 150) and not inside a static or furniture; objects resting on their surface (within
+  10; structures may sink, never float); the seed rests failing objects on their surface; 0 failures before deploy.
 - **Integration:** parallel work lands as source only; the plugin is re-seeded once on the merged tree and every
   read-back runs on that one build before deploy.
 - **Deploy** the plugin, its ini and the compiled scripts to the play machine; stage-time mod changes with the stack.

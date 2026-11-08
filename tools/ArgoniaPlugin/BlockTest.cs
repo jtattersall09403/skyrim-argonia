@@ -90,12 +90,12 @@ static class BlockTest
         var doorPos = placed[Door].rec.Placement!.Position;
         var doorAt = snap.At(Navmesh, doorPos.X - 150, doorPos.Y);    // in front of the ship door
         var crabAt = snap.At(Navmesh, spot.X + 1050, spot.Y);         // 15 m east, or 07EEF8's nearest to it
-        // The token on the dock planks (BM&V's BYOHFishDock01 02A20A), 3 m east of the keeper, 30 units above the planks'
+        // The token on the dock planks (BM&V's BYOHFishDock01 02A20A), 3 m east of the keeper, resting on the planks'
         // own top surface read from their mesh by the placement helper (Surface.cs; blocks.md W-ref). The start marker and
         // the keeper stand on land: navmesh 07EEF8 covers both, so a navmesh spot "between them" was land (owner walk
-        // 2026-11-07, item 4). Loose items 30 units up settle onto the surface (Havok), never inside it.
+        // 2026-11-07, item 4). A loose item rests on its surface (placecheck: within 10).
         var tokenXY = (X: 31040f, Y: -2700f);
-        var tokenTop = Surface.On(Surface.Under(mods, new Surface.Assets(Surface.Paths), world.FormKey, tokenXY.X, tokenXY.Y), "BYOHFishDock01", 30)
+        var tokenTop = Surface.On(Surface.Under(mods, new Surface.Assets(Surface.Paths), world.FormKey, tokenXY.X, tokenXY.Y), "BYOHFishDock01", 0)
             ?? throw new InvalidOperationException("ARG_BT_TokenRef: no dock planks under the token's spot");
         var tokenAt = new P3Float(tokenXY.X, tokenXY.Y, tokenTop);
         // The ship door stands off 07EEF8's east edge (no navmesh at dock height reaches it in BlackMarsh; 0FE9A3 under it

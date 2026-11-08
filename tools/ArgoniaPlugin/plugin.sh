@@ -9,6 +9,8 @@
 #   plugin.sh cleancheck  build, then read the slice's clean-ups back from the ESP (CleanUp.cs)
 #   plugin.sh bccheck  build, then read the Chainbreakers quests back from the ESP and the .pex (ChainbreakersCheck.cs)
 #   plugin.sh nightreedcheck  build, then read TG01/TG02 back from the ESP and the .pex (NightReedCheck.cs)
+#   plugin.sh placecheck  build, then check every actor and object the plugin places against the winning navmesh, the
+#                      surface under it and the statics round it (PlaceCheck.cs)
 #   plugin.sh seed     regenerate plugin/Argonia from shutdown.json and the load order's winners (game data needed:
 #                      $ARGONIA_GAME_ROOT/Data or ~/games/skyrimse/Data, the staged profile ~/.argonia/stack/MO2)
 set -euo pipefail
@@ -44,6 +46,7 @@ case "${1:-}" in
     "${spriggit[@]}" serialize -i "$esp" -o "$rt/y" -g SkyrimSE "${spr[@]}" >/dev/null
     diff -r "$yaml" "$rt/y" && echo "round trip clean: $(find "$yaml" -name '*.yaml' | wc -l) yaml files"
     tool list "$esp" docs/research/skyrim/argonia-esp-records.md "${lo[@]}" ;;
+  surface) loadorder; tool surface "$2" "$3" "${lo[@]}" ;;
   mapprobe) loadorder; tool mapprobe "${lo[@]}" ;;
   cleancheck) build; tool cleancheck "$esp" "${lo[@]}" ;;
   musicprobe) loadorder; tool musicprobe "${lo[@]}" ;;
@@ -53,6 +56,7 @@ case "${1:-}" in
   bccheck) build; tool bccheck "$esp" out/gpu/papyrus "${lo[@]}" ;;
   mqcheck) build; tool mqcheck "$esp" out/gpu/papyrus "${lo[@]}" ;;
   nightreedcheck) build; tool nightreedcheck "$esp" out/gpu/papyrus "${lo[@]}" ;;
+  placecheck) build; tool placecheck "$esp" "${lo[@]}" ;;
   seed)
     loadorder
     tmp=$(mktemp -d); trap 'rm -rf "$tmp"' EXIT
