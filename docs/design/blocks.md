@@ -68,7 +68,10 @@ leaves the journal; owner walk 2026-11-07: a Misc test quest left no entry and c
 of 23 side quests. The completing stage holds a log entry with text and the Complete Quest flag; its fragment completes
 the last objective and calls `Stop()`, never `CompleteQuest()` (vanilla's QF_dunVolunruudQST Fragment_16 is exactly
 SetObjectiveCompleted, IncSideQuests, Stop). No quest completes in its start-up stage (0 of 300 do); the start-up stage
-is an empty entry, and a chained quest is started by `NextQuest.SetStage(10)`.
+is an empty entry, and a chained quest is started by `NextQuest.SetStage(10)`. **The Stats page**: the engine counts "Quests Completed" when a Side Quest
+completes (no vanilla script names that stat), but "Side Quests Completed" is explicit: 21 of the 23 completing side
+quests' last fragments call `AchievementsQuest.IncSideQuests()` (an `AchievementsScript` property on Skyrim.esm's
+`AchievementsQuest` 0FC85D; it runs `Game.IncrementStat("Side Quests Completed")`) before `Stop()`, and so does each of ours.
 
 Aliases are a rule of the blocks, not a block: every alias in an act quest is a **forced reference** to a persistent
 ref we placed or a BM&V ref (2,687 forced-ref aliases in 425 vanilla quests), never "find matching".

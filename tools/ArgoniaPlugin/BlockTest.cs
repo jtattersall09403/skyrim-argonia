@@ -15,7 +15,7 @@ static class BlockTest
     public static readonly FormKey Navmesh = K("07EEF8:Black Marsh.esm"), ShipNavmesh = K("0AA666:Black Marsh.esm");
     public static readonly FormKey Door = K("0AA664:Black Marsh.esm"), Ship = K("0AA665:Black Marsh.esm"), DockCell = K("005A21:Black Marsh.esm");
     public static readonly string[] Naga = ["03E409", "03E40A", "03E40B", "03E40C", "03E40D"];
-    static readonly FormKey XMarker = K("00003B:Skyrim.esm"), PlayerRef = K("000014:Skyrim.esm"), Gold = K("00000F:Skyrim.esm");
+    static readonly FormKey XMarker = K("00003B:Skyrim.esm"), PlayerRef = K("000014:Skyrim.esm"), Gold = K("00000F:Skyrim.esm"), Achievements = K("0FC85D:Skyrim.esm");
     // Alias ids, in the order the design lists them.
     public const uint AKeeper = 0, AWalker = 1, ACrab = 2, AToken = 3, ADoor = 4, AZoneA = 5, AZoneB = 6;
 
@@ -303,7 +303,7 @@ static class BlockTest
                     Alias("Keeper", q, AKeeper), Alias("Walker", q, AWalker), Obj("RaceHits", raceHits.FormKey), Obj("RaceRuns", raceRuns.FormKey),
                     Obj("StartMarker", startMarker.FormKey), Obj("WalkerMarker", walkerMarker.FormKey), Obj("TokenParent", tokenParent.FormKey), Obj("CrabParent", crabParent.FormKey),
                     Obj("ShipKey", key.FormKey), Obj("Token", token.FormKey), Obj("Gold001", Gold), Obj("Standing", standing.FormKey), Obj("DockHands", faction.FormKey),
-                    Obj("TalkScene", scene.FormKey), Obj("EndQuest", end.FormKey)),
+                    Obj("TalkScene", scene.FormKey), Obj("EndQuest", end.FormKey), Obj("AchievementsQuest", Achievements)),
             },
             Aliases =
             {
@@ -321,6 +321,10 @@ static class BlockTest
         end.Stages.Add(new QuestStage { Index = 0, Flags = QuestStage.Flag.StartUpStage, LogEntries = { new QuestLogEntry { Flags = 0 } } });
         end.Stages.Add(new QuestStage { Index = 10, LogEntries = { new QuestLogEntry { Flags = 0, Entry = "The second quest started from the first." } } });
         end.Stages.Add(new QuestStage { Index = 100, LogEntries = { new QuestLogEntry { Flags = QuestLogEntry.Flag.CompleteQuest, Entry = "The second quest ended with the first." } } });
+        // Vanilla side quests count on the Stats page by their own last fragment (blockstudy: 21 of Skyrim.esm's 23 completing
+        // side quests call AchievementsScript.IncSideQuests(), Game.IncrementStat("Side Quests Completed")), so this one too.
+        end.VirtualMachineAdapter = new QuestAdapter { FileName = "ARG_QF_BlockTestEnd", Scripts = { Script("ARG_QF_BlockTestEnd", Obj("AchievementsQuest", Achievements)) } };
+        end.VirtualMachineAdapter.Fragments.Add(new QuestScriptFragment { Stage = 100, StageIndex = 0, ScriptName = "ARG_QF_BlockTestEnd", FragmentName = "Fragment_100" });
 
         // The world edits: our dock refs in the worldspace's persistent cell; the door's lock (W-override); the five
         // Naga disabled where Black Marsh North placed them (W-ref removal); the ship's name and the walker inside (W-name).

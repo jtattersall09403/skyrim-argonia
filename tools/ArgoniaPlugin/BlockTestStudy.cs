@@ -51,5 +51,32 @@ static class BlockTestStudy
         }
         var misc = completing.Where(q => q.Type == Quest.TypeEnum.Misc).ToList();
         Console.WriteLine($"misc quests: completing entry with CNAM {misc.Count(q => q.Stages.First(Completes).LogEntries.Any(l => l.Flags?.HasFlag(QuestLogEntry.Flag.CompleteQuest) == true && l.Entry != null))} of {misc.Count}");
+        Stats(esm, mod, Completes);
+    }
+
+    // (3) The Stats page: which compiled scripts in Skyrim - Misc.bsa name IncrementStat and the quest stats, by the quest
+    // type of the quest whose fragment file it is (a pex keeps its string table as plain length-prefixed strings).
+    static void Stats(string esm, ISkyrimModGetter mod, Func<IQuestStageGetter, bool> completes)
+    {
+        var bsa = Mutagen.Bethesda.Archives.Archive.CreateReader(GameRelease.SkyrimSE, new Noggog.FilePath(Path.Combine(Path.GetDirectoryName(Path.GetFullPath(esm))!, "Skyrim - Misc.bsa")));
+        var byScript = mod.Quests.Where(q => q.VirtualMachineAdapter?.FileName is { Length: > 0 }).GroupBy(q => q.VirtualMachineAdapter!.FileName!.ToLowerInvariant()).ToDictionary(g => g.Key, g => g.First());
+        string[] names = ["IncSideQuests", "IncDaedricQuests", "\0\u0010Quests Completed", "Side Quests Completed", "Misc Objectives Completed", "Questlines Completed"];
+        var hits = new Dictionary<string, List<string>>(); int pex = 0, inc = 0;
+        foreach (var f in bsa.Files.Where(f => f.Path.EndsWith(".pex", StringComparison.OrdinalIgnoreCase)))
+        {
+            pex++; var text = System.Text.Encoding.Latin1.GetString(f.GetBytes());
+            if (!text.Contains("IncrementStat", StringComparison.OrdinalIgnoreCase) && !text.Contains("IncSideQuests", StringComparison.OrdinalIgnoreCase)) continue; inc++;
+            var stem = Path.GetFileNameWithoutExtension(f.Path.Replace('\\', '/')).ToLowerInvariant();
+            var q = byScript.GetValueOrDefault(stem);
+            foreach (var n in names.Where(n => text.Contains(n, StringComparison.OrdinalIgnoreCase)))
+                (hits.TryGetValue(n, out var l) ? l : hits[n] = []).Add($"{stem}{(q != null ? $" ({q.EditorID}, {q.Type})" : "")}");
+        }
+        Console.WriteLine($"stats: {pex} pex in Skyrim - Misc.bsa, {inc} name IncrementStat");
+        foreach (var n in names) Console.WriteLine($"  \"{n}\": {hits.GetValueOrDefault(n)?.Count ?? 0} scripts{(hits.TryGetValue(n, out var l) ? ": " + string.Join(", ", l.Take(12)) : "")}");
+        // Which completing quests, by type, call AchievementsScript.IncSideQuests() (IncrementStat("Side Quests Completed"))
+        // from their fragment file; no script names "Quests Completed" on its own, so the engine counts that one.
+        var named = hits["IncSideQuests"].Select(s => s.Split(' ')[0]).ToHashSet();
+        foreach (var g in mod.Quests.Where(q => q.Stages.Any(completes)).GroupBy(q => q.Type).OrderByDescending(g => g.Count()))
+            Console.WriteLine($"  completing {g.Key}: {g.Count()}, of which the fragment file calls IncSideQuests: {g.Count(q => q.VirtualMachineAdapter?.FileName is { } fn && named.Contains(fn.ToLowerInvariant()))}");
     }
 }
