@@ -34,8 +34,22 @@ static class Listing
                    && mq.VirtualMachineAdapter is IQuestAdapterGetter a && a.Fragments.Single().Stage == 0 && a.Scripts.Single().Name == "ARG_QF_MQ101";
         if (!mqOk) errs.Add("MQ101 is not the one-stage diversion (stage 0 needs one log entry for its fragment to run)");
         sb.AppendLine($"| intro | quest | replaced: one stage 0 with one empty log entry, which its fragment (ARG_QF_MQ101) binds to (no entry, no fragment: New Game stayed on the menu, 2026-11-06); the fragment moves the player to ARG_OpeningMarker, starts ARG_Opening and stops MQ101; no aliases, scenes or Helgen stages | MQ101 `{mq.FormKey}` |");
-        var ws = mod.Worldspaces.Single();
+        var ws = mod.Worldspaces.Single(w => w.FormKey == FormKey.Factory("23D689:Black Marsh.esm"));
         sb.AppendLine($"| opening | worldspace | BM&V's record kept, our marker in its persistent cell | {ws.EditorID} `{ws.FormKey}` |");
+        // The map (MapFix.cs): the four BM&V worlds' MNAM pan box set, the marker names fixed.
+        foreach (var w in mod.Worldspaces)
+        {
+            var mnam = w.MapData;
+            if (mnam == null || mnam.NorthwestCellCoords.X >= mnam.SoutheastCellCoords.X || mnam.NorthwestCellCoords.Y <= mnam.SoutheastCellCoords.Y)
+                errs.Add($"{w.EditorID}: no map box");
+            else sb.AppendLine($"| map | worldspace | MNAM pan box NW({mnam.NorthwestCellCoords.X},{mnam.NorthwestCellCoords.Y}) SE({mnam.SoutheastCellCoords.X},{mnam.SoutheastCellCoords.Y}), the rest kept | {w.EditorID} `{w.FormKey}` |");
+        }
+        if (mod.Worldspaces.Count != 4) errs.Add($"{mod.Worldspaces.Count} worldspace overrides, not 4");
+        var markers = mod.Worldspaces.SelectMany(w => w.TopCell?.Persistent.OfType<IPlacedObjectGetter>() ?? []).Where(r => r.MapMarker != null)
+            .ToDictionary(r => r.FormKey.ToString(), r => r.MapMarker!.Name?.String);
+        foreach (var (k, n) in new[] { ("0934A4:Black Marsh North.esp", "Lilmoth"), ("083283:Black Marsh North.esp", "Southern Morrowind Pass") })
+            if (!markers.TryGetValue(k, out var got) || got != n) errs.Add($"map marker {k}: '{got}', not '{n}'");
+            else sb.AppendLine($"| map | map marker | name only: {n} | `{k}` |");
         var seen = new HashSet<string> { "MQ101", "ARG_Opening" };
         foreach (var g in plan.GetProperty("quests_sge_off").EnumerateObject())
         {
@@ -86,11 +100,18 @@ static class Listing
                     errs.Add($"{n.EditorID ?? n.FormKey.ToString()}: differs from the winner beyond the gate");
             }
             // The worldspace: the winner's own fields, and its plugin a master.
-            var (ww, wfrom) = Survey.Winners<IWorldspaceGetter>(lo)[ws.FormKey];
-            var wmask = new Worldspace.TranslationMask(true) { SubCells = false, TopCell = false, SubCellsTimestamp = false };  // the group stamp is the writer's
-            if (!ws.DeepCopy(wmask).Equals(ww.DeepCopy(wmask))) errs.Add($"{ws.EditorID}: not the winner's record ({wfrom}): {ws.DeepCopy(wmask).GetEqualsMask(ww.DeepCopy(wmask))}");
+            // Each world (the map's four): the winner's own fields but MNAM's NW/SE cells, and its plugin a master.
             var masters = mod.ModHeader.MasterReferences.Select(m => m.Master).ToList();
-            if (!masters.Contains(wfrom)) errs.Add($"{ws.EditorID}: its winner {wfrom} is not a master");
+            var wwin = Survey.Winners<IWorldspaceGetter>(lo);
+            foreach (var wo in mod.Worldspaces)
+            {
+                var (wwo, wfo) = wwin[wo.FormKey];
+                var wmask = new Worldspace.TranslationMask(true) { SubCells = false, TopCell = false, SubCellsTimestamp = false, SubCellsUnknown = false };  // the group stamp is the writer's
+                var wa = wo.DeepCopy(wmask); var wb = wwo.DeepCopy(wmask);
+                if (wa.MapData != null && wb.MapData != null) { wb.MapData.NorthwestCellCoords = wa.MapData.NorthwestCellCoords; wb.MapData.SoutheastCellCoords = wa.MapData.SoutheastCellCoords; }
+                if (!wa.Equals(wb)) errs.Add($"{wo.EditorID}: not the winner's record ({wfo}) beyond the map box: {wa.GetEqualsMask(wb)}");
+                if (!masters.Contains(wfo)) errs.Add($"{wo.EditorID}: its winner {wfo} is not a master");
+            }
             // Every overridden record's winning plugin is a master, and the masters are in load order.
             foreach (var r in mod.EnumerateMajorRecords().Where(r => r.FormKey.ModKey != mod.ModKey))
                 if (!masters.Contains(r.FormKey.ModKey)) errs.Add($"{r.EditorID}: {r.FormKey.ModKey} not a master");
@@ -100,6 +121,7 @@ static class Listing
             // The marker stands on a winning navmesh triangle of its worldspace, within 16 units of its height.
             var mk = mod.EnumerateMajorRecords<IPlacedObjectGetter>().Single(r => r.EditorID == "ARG_OpeningMarker");
             var spot = mk.Placement!.Position;
+            var (ww, wfrom) = wwin[ws.FormKey];
             var wsNav = ww.SubCells.SelectMany(b => b.Items).SelectMany(sb => sb.Items).SelectMany(c => c.NavigationMeshes).Select(n => n.FormKey).ToHashSet();
             foreach (var m in lo) foreach (var w2 in m.Worldspaces.Where(w2 => w2.FormKey == ws.FormKey))
                 foreach (var c in w2.SubCells.SelectMany(b => b.Items).SelectMany(sb => sb.Items)) foreach (var n in c.NavigationMeshes) wsNav.Add(n.FormKey);

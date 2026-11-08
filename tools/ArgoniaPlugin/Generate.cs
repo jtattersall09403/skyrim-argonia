@@ -51,6 +51,8 @@ static class Generate
         world.TopCell = bmWorld.TopCell!.DeepCopy(new Cell.TranslationMask(true) { Persistent = false, Temporary = false, NavigationMeshes = false, Landscape = false });
         world.TopCell.Persistent.Add(marker);
         mod.Worldspaces.Add(world);
+        // The world map's pan box on the four BM&V worlds (MapFix.cs); no new forms.
+        MapFix.Apply(mod, mods, world);
         // Phase 3's test quest (BlockTest.cs): allocated next, removed after the owner's walk.
         BlockTest.Add(mod, mods, world, Spot);
 

@@ -722,7 +722,7 @@ def cmd_stage(a):
     names, record, ids, pruned, restaged = [], {}, {m["id"] for m in rows}, set(), {"pandora-output"}
     prev = json.loads((STACK / "installed.json").read_text())["files"] if (STACK / "installed.json").exists() else {}
     for d in list(mods.iterdir()):
-        if d.name not in ids and d.name != "pandora-output":
+        if d.name not in ids and d.name not in ("pandora-output", LODS):
             shutil.rmtree(d)
     for d in list(tools.iterdir()):  # a tool no row names any more
         if d.is_dir() and d.name not in ids:
@@ -767,6 +767,18 @@ def cmd_stage(a):
             names.append(m["id"])
         record[m["id"]] = {"fomod": taken} if taken else {}
     shutil.rmtree(work, ignore_errors=True)
+    # LODSettings for the worlds whose terrain LOD ships without one (lodsettings.py; the world map needs them),
+    # derived from the staged mods; kept as made when a pruned row no longer holds its .btr files
+    import lodsettings
+    tmp = mods / f"{LODS}.new"
+    shutil.rmtree(tmp, ignore_errors=True)
+    if lodsettings.derive(mods, tmp):
+        shutil.rmtree(mods / LODS, ignore_errors=True)
+        tmp.rename(mods / LODS)
+        restaged.add(LODS)
+    shutil.rmtree(tmp, ignore_errors=True)
+    if (mods / LODS).exists():
+        names.append(LODS)
     names.append("pandora-output")  # filled when Pandora runs on the machine; highest priority
     (mods / "pandora-output").mkdir(exist_ok=True)
     prof = MO2 / "profiles" / PROFILE
@@ -1037,6 +1049,7 @@ def cmd_install(a):
     # No main-menu launch here: agents never run the game (owner, 2026-11-05); the laid files are checked by reading.
 
 
+LODS = "argonia-lodsettings"  # derived in cmd_stage, never a row
 ANIMDATA = r"meshes\animationdatasinglefile.txt"
 
 

@@ -37,6 +37,7 @@ case "${1:-}" in
     "${spriggit[@]}" serialize -i "$esp" -o "$rt/y" -g SkyrimSE "${spr[@]}" >/dev/null
     diff -r "$yaml" "$rt/y" && echo "round trip clean: $(find "$yaml" -name '*.yaml' | wc -l) yaml files"
     tool list "$esp" docs/research/skyrim/argonia-esp-records.md "${lo[@]}" ;;
+  mapprobe) loadorder; tool mapprobe "${lo[@]}" ;;
   blocktest) build; tool blocktest "$esp" out/gpu/papyrus "${lo[@]}" ;;
   seed)
     loadorder
