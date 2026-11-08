@@ -161,6 +161,9 @@ sinks or stands in a wall.
 - [ ] **7.7 Warmth and afterwards.** A quest person you have helped greets you more warmly than a stranger does. After
       BC01 ends, speak to Rows-For-Another: a short greeting about being out of the estate's hands (say the line, or
       "silent").
+- [ ] **7.8 Eleven spots the off-game check could not prove** (the navmesh is there, but no visible floor under it): say
+      if anyone floats or stands in nothing at MQ04's camp by Low-Reed Village (the likeliest problem), BC02's keep and
+      gate, LQ30's Sei-Wan and the viper, MQ05's second wasp, and MQ01's Ri-Sakka and Never-Sold.
 
 ## Done
 
