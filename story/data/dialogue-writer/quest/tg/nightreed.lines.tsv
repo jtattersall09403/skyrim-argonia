@@ -1,0 +1,22 @@
+# Night-Reed TG01/TG02 written lines (dialogue-write, one writer per speaker; text-reviewed). KEY<TAB>line; read by tools/ArgoniaPlugin/NightReed.cs.
+ARG_TG01_TopicWelcome_0	You opened the trapdoor with your own hand. Then you are a Lookout of the Night-Reed Chapter. Stay. I have work for you.
+ARG_TG01_TopicWelcome_1	I have heard the dock thief is dead. You are a Lookout of the Night-Reed Chapter all the same, because you opened the trapdoor with your own hand. Stay. I have work for you.
+ARG_TG02_TopicJob_0	A merchant's stilt house fell into the deep water just north of here, by the trapdoor. His lockbox is locked on the floor beside it. Ripper eels hunt that water. Three of his clients wait on the south bank. Bring the things in the box up before they find a diver. Do what you think best with them.
+ARG_TG02_TopicClaimBeads_0	The beads are old family work. My family made them. They are worth nothing to a buyer.
+ARG_TG02_TopicHandOverDar_0	All three are here. I will take them. Here are eighty gold.
+ARG_TG02_TopicSellBeads_0	Yes, it is Kothringi glass. I will not say otherwise. Here are fifty gold for the beads.
+ARG_TG01_TopicGiveBack_0	Take it. I could not sell it anyway. I want no trouble, so go.
+ARG_TG01_TopicGiveBack_1	Sixty gold. I had a buyer for this, you know. Here, it is yours.
+ARG_TG02_TopicClaimFigurine_0	The bone figurine is mine. It was carved for my clutch. It should come back to me.
+ARG_TG02_TopicHandOverNeeta_0	You have the figurine, the charm and the beads. Good. Here is eighty gold. Take it.
+ARG_TG02_TopicSellFigurine_0	Yes, it is worn smooth. It is older than my clutch. I will pay you fifty gold for it.
+ARG_TG02_TopicClaimCharm_0	Very well. The Neesak charm was only pledged. I never sold it.
+ARG_TG02_TopicClaimCharm_1	That is enough. The Neesak charm was only pledged. I never sold it.
+ARG_TG02_TopicHandOverOkan_0	All three. Good. Here are eighty gold.
+ARG_TG02_TopicSellCharm_0	You are right. A new silver mount means the merchant bought it outright. I will give you fifty gold for the charm.
+ARG_TG01_TopicDoor_0	Quiet work? This one does not sell it, but Khajiit knows who does. Go into the house on the dock behind this Khajiit and ask for Tilts-The-Jug. She sometimes has use for careful hands.
+ARG_TG01_TopicBed_0	You ask plainly, so I will answer. Keeps-What-Floats drinks with me at the bench by the water until the lamps are low. Then he sleeps on a bedroll under the eaves of the shacks, north-west of the house. He runs from any shout, so keep your voice down.
+ARG_TG01_TopicBed_1	That is a good drink, thank you. Keeps-What-Floats sits with me at the bench by the water until the lamps are low. Then he sleeps on a bedroll under the eaves of the shacks, north-west of the house. Shout at him and he runs.
+ARG_TG01_TopicTest_0	The Chapter wants to see how you work. Keeps-What-Floats took a necklace of blue jaspers from another thief who was asleep. Bring it back and do not harm him. He carries the necklace on his round of the dock, so follow him. Sits-By-The-Water drinks with him.
+ARG_TG01_TopicReturn_0	He lives. You have good hands. Here are one hundred gold and three lockpicks. The Chapter's way down is a locked trapdoor at the edge of the deep water north of Pusbottom in Lilmoth. Take the coast ship from this dock. Open the trapdoor with your own hand, and speak to whoever waits below.
+ARG_TG01_TopicReturn_1	He is dead. The Chapter wanted the necklace and no killing, so there is no pay. Take three lockpicks all the same. The way down is a locked trapdoor at the edge of the deep water north of Pusbottom in Lilmoth. Take the coast ship from this dock. Open the trapdoor with your own hand, and speak to whoever waits below.

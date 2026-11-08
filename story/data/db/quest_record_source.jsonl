@@ -54,7 +54,7 @@
 {"quest_id":"quest.tg.tg01","source":"ledger","value":"we.tg01.fence, we.tg01.trader, we.tg01.thief, we.tg01.dock, we.tg01.round, we.tg01.doors, we.tg01.trapdoor, we.tg01.chapter, we.tg01.pusbottom, we.name.soulrest, we.clean.dock2, we.clean.lilmoth"}
 {"quest_id":"quest.tg.tg01","source":"lore"}
 {"quest_id":"quest.tg.tg01","source":"roster","value":"story/design/quests/36-cast-roster.md §56 (Tilts-The-Jug, the Soulrest desk)"}
-{"quest_id":"quest.tg.tg02","source":"bmv","value":"bmv_cell 16BF81:Black Marsh North.esp (the Chapter), 005A0B:Black Marsh.esm (Pusbottom); doors 16C05B/16BF7F (the trapdoor); Slaughterfish 023AB8:Skyrim.esm (the eels)"}
+{"quest_id":"quest.tg.tg02","source":"bmv","value":"bmv_cell 16BF81:Black Marsh North.esp (the Chapter), the deep water north of Pusbottom (cell 5,0; its south bank's navmesh 07EDF2); doors 16C05B/16BF7F (the trapdoor); Slaughterfish 023AB8:Skyrim.esm (the eels)"}
 {"quest_id":"quest.tg.tg02","source":"culture"}
 {"quest_id":"quest.tg.tg02","source":"ledger","value":"we.tg01.chapter, we.tg02.house, we.tg02.clients, we.tg02.eels, we.clean.lilmoth"}
 {"quest_id":"quest.tg.tg02","source":"lore"}

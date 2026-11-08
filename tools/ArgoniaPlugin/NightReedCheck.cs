@@ -131,6 +131,7 @@ static class NightReedCheck
         Check("TG02 20->23 Dar-Zeel's claim", Line("ARG_TG02_TopicClaimBeads", t2, c => Speaker(c, "ARG_TG_DarZeel") && StageCond(c, t2, CompareOperator.EqualTo, 20), "SetStage"));
         Check("TG02 21/22/23->40 guarded check in .pex", Pex("ARG_QF_TG02", "ClaimHeard", "GetStageDone", "claimsTaken"));
         var fig = F("ARG_TG02_BoneFigurine"); var charm = F("ARG_TG02_NeesakCharm"); var beads = F("ARG_TG02_GlassBeads");
+        Check("TG02 figurine model is not a Nordic totem (0006)", mine.MiscItems.FirstOrDefault(m => m.FormKey == fig)?.Model?.File.DataRelativePath.Path is { } mp && !mp.Contains("WerewolfTotems", StringComparison.OrdinalIgnoreCase));
         foreach (var (who, id) in new[] { ("ARG_TG_NeetaHaj", "Neeta"), ("ARG_TG_OkanTei", "Okan"), ("ARG_TG_DarZeel", "Dar") })
             Check($"TG02 40->90 hand-over to {id} with all three", Line($"ARG_TG02_TopicHandOver{id}", t2, c => Speaker(c, who) && StageCond(c, t2, CompareOperator.EqualTo, 40) && ItemAtLeast(c, fig, 1) && ItemAtLeast(c, charm, 1) && ItemAtLeast(c, beads, 1), "HandOver"));
         foreach (var (topic, who, item) in new[] { ("ARG_TG02_TopicSellFigurine", "ARG_TG_NeetaHaj", fig), ("ARG_TG02_TopicSellCharm", "ARG_TG_OkanTei", charm), ("ARG_TG02_TopicSellBeads", "ARG_TG_DarZeel", beads) })

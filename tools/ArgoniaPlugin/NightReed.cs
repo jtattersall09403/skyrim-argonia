@@ -138,7 +138,9 @@ static class NightReed
         var necklace = Jewel("ARG_TG01_JasperNecklace", "Blue Jasper Necklace", "087832:Skyrim.esm", 120);
         var charm = Jewel("ARG_TG02_NeesakCharm", "Newly Mounted Neesak Charm", "087833:Skyrim.esm", 90);
         var beads = Jewel("ARG_TG02_GlassBeads", "Kothringi Glass Beads", "09171B:Skyrim.esm", 90);
-        var figurine = Survey.Winners<IMiscItemGetter>(mods)[K("0E3147:Skyrim.esm")].rec.Duplicate(mod.GetNextFormKey());
+        // the figurine: vanilla HorkerTusk's ivory (Clutter\HorkerTusk), worn bone with no culture's mark; CRTotem2 (a Companions
+        // totem) was Nordic (decision 0006)
+        var figurine = Survey.Winners<IMiscItemGetter>(mods)[K("03AD68:Skyrim.esm")].rec.Duplicate(mod.GetNextFormKey());
         figurine.EditorID = "ARG_TG02_BoneFigurine"; figurine.Name = "Worn Bone Figurine"; figurine.Value = 60;
         figurine.Keywords?.Clear(); figurine.VirtualMachineAdapter = null;
         mod.MiscItems.Add(figurine);
@@ -282,6 +284,11 @@ static class NightReed
     // One top-level player topic per line set (TR-topic): its INFOs, each with its conditions and a TIF fragment whose
     // body calls the quest script (properties stay on the quest script; Papyrus in papyrus/generated is written by
     // `nightreed-psc`).
+    // The written lines (dialogue-write pass, text-reviewed), one per INFO keyed "<topic>_<n>"; the inline texts below are
+    // the records' intents the lines were written to, and every INFO must have its written line.
+    const string WrittenPath = "story/data/dialogue-writer/quest/tg/nightreed.lines.tsv";
+    static readonly Dictionary<string, string> Written = File.ReadLines(WrittenPath).Where(l => l.Length > 0 && l[0] != '#')
+        .Select(l => l.Split('\t', 2)).ToDictionary(x => x[0], x => x[1]);
     static void Topic(SkyrimMod mod, Quest q, string id, string prompt, params (string text, string? body, ConditionFloat[] conds)[] infos)
     {
         var branch = mod.DialogBranches.AddNew(id + "Branch");
@@ -294,7 +301,8 @@ static class NightReed
         foreach (var (text, body, conds) in infos)
         {
             var info = new DialogResponses(mod.GetNextFormKey(), SkyrimRelease.SkyrimSE) { Flags = new DialogResponseFlags(), Prompt = prompt };
-            info.Responses.Add(new DialogResponse { Text = text, ResponseNumber = 1, Emotion = Emotion.Neutral });
+            var said = Written.TryGetValue($"{id}_{n}", out var w) ? w : throw new InvalidDataException($"no written line {id}_{n} in {WrittenPath}");
+            info.Responses.Add(new DialogResponse { Text = said, ResponseNumber = 1, Emotion = Emotion.Neutral });
             info.Conditions.AddRange(conds);
             string? script = null;
             if (body != null)
@@ -307,7 +315,7 @@ static class NightReed
                 };
                 TifBodies.Add((script, body));
             }
-            Lines.Add(new Line(id, prompt, text, script));
+            Lines.Add(new Line(id, prompt, said, script));
             t.Responses.Add(info);
             n++;
         }
@@ -345,7 +353,7 @@ static class NightReed
         };
         Stages(q, [
             (0, null, 0),
-            (20, "Tilts-The-Jug, inside the house on Soulrest's dock, keeps the Chapter's desk at Soulrest and wants to see how I work. Keeps-What-Floats, a dock thief, took a necklace of polished blue jaspers from another thief, and it must come back with no harm done to him. I'm to follow him on the dock until he goes to his bed for the night, or get out of the friend he drinks with where he sleeps.", 0),
+            (20, "Tilts-The-Jug, inside the house on Soulrest's dock, keeps the Chapter's desk at Soulrest and wants to see how I work. Keeps-What-Floats, a dock thief, took a necklace of polished blue jaspers from another thief, and it must come back with no harm done to him. I'm to follow him on the dock until he goes to his bed for the night, or get out of Sits-By-The-Water, who drinks with him, where he sleeps.", 0),
             (30, "Keeps-What-Floats, who took the necklace of blue jaspers, keeps it on him on the dock by day, at the bench by the water in the evening, and on his bedroll north-west of the house at night. I'm to get the necklace back without hurting him, by lifting it off him by day or while he sleeps, or by talking him out of it, and bring it to Tilts-The-Jug inside Soulrest's house.", 0),
             (40, "I brought the necklace of blue jaspers back to Tilts-The-Jug at Soulrest, and Keeps-What-Floats came to no harm. She paid me and gave me three lockpicks. The Chapter's way down is a locked trapdoor two squares north of Pusbottom in Lilmoth. I'm to take the coast ship from Soulrest's dock to Lilmoth, open the trapdoor, go down to the Chapter and speak to whoever waits below.", 0),
             (41, "I brought the necklace of blue jaspers back to Tilts-The-Jug at Soulrest, but Keeps-What-Floats is dead. She paid me nothing, and said the Chapter wanted the necklace without a body, but she gave me three lockpicks and sent me on. The Chapter's way down is a locked trapdoor two squares north of Pusbottom in Lilmoth. I'm to take the coast ship from Soulrest's dock to Lilmoth, open the trapdoor, go down to the Chapter and speak to whoever waits below.", 0),
