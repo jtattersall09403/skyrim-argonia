@@ -223,7 +223,8 @@ added here the day they are made, with the date and the issue.
   swathes), so the new world's texturing proves edges gone by measurement and by looking at close crops. Water
   classification faults: closed little bodies classed as stream must be swamp, marsh or pond; a closed larger body
   is one congruent marsh, not part marsh and part stream; river stretches are never blackwater swamp; flow directions were mostly wrong (downstream along each channel to its
-  outlet, from the channel graph, never across a channel or reversing mid-channel). Fixed at the
+  outlet, from the channel graph, never across a channel or reversing mid-channel; a flowing channel may run into a still body, where its flow stops, and
+  flow starts again where a channel leaves it). Fixed at the
   method's root and checked by a visual loop over the map in chunks until it reads sensibly.
 - 2026-11-08 (nw-02, in session): King of the Murkmire, Tropical Skyrim, Depths of Skyrim and the other world-asset
   mods are asset dependencies of the new world's plugin, not active plugins: their meshes and textures are laid,
