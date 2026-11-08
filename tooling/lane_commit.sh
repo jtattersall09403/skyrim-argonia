@@ -24,6 +24,20 @@ done
 
 git add -- "${paths[@]}" || die "git add failed"
 if git diff --cached --quiet -- "${paths[@]}"; then die "nothing to commit in the given paths"; fi
+# A commit that touches the C# plugin tool must leave it building: build HEAD plus exactly the staged change in a
+# scratch worktree (another lane's half-done .cs swept into a commit broke main's build for every lane, 2026-11-08).
+if [ -z "${LANE_SKIP_CS_BUILD:-}" ] && git diff --cached --name-only -- "${paths[@]}" | grep -qE '^tools/ArgoniaPlugin/.*\.(cs|csproj)$'; then
+  cs=$(mktemp -d "${TMPDIR:-/tmp}/lane_cs.XXXXXX") || die "mktemp failed"
+  git worktree add -q --detach "$cs/wt" HEAD || die "worktree add failed"
+  git diff --cached --binary -- "${paths[@]}" | git -C "$cs/wt" apply --index - || { git worktree remove --force "$cs/wt"; rm -rf "$cs"; die "could not apply the staged change for the build check"; }
+  dn=$(command -v dotnet || echo "$HOME/.dotnet/dotnet")
+  if ! out=$(cd "$cs/wt/tools/ArgoniaPlugin" && "$dn" build -nologo -v q -o "$cs/bin" 2>&1); then
+    git worktree remove --force "$cs/wt"; rm -rf "$cs"; git worktree prune
+    echo "$out" | grep -oE '[A-Za-z0-9_]+\.cs\([0-9]+,[0-9]+\): error [A-Z0-9]+: [^[]*' | sort -u | head -10 >&2
+    die "refused: tools/ArgoniaPlugin does not build with this commit (staged, not committed; commit only your own compiling files)"
+  fi
+  git worktree remove --force "$cs/wt"; rm -rf "$cs"; git worktree prune
+fi
 git commit -q -m "$msg" -m "Co-Authored-By: $COAUTHOR" -- "${paths[@]}" || die "commit failed"
 new=$(git rev-parse HEAD)
 echo "committed $new"
