@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # ArgoniaNewWorld.esm from the current terrain build (out/newworld/terrain/build.json names it), then its read-back
 # and the upload. Masters: Skyrim.esm, Update.esm (+ Black Marsh.esm and its masters when linked); records of
-# asset-only mods are copied as ours (ArgoniaPlugin ForeignCopy.cs). Rerun after any terrain rebuild: Rerun after any terrain rebuild; each stage skips what already matches:
+# asset-only mods are copied as ours (ArgoniaPlugin ForeignCopy.cs). Rerun after any terrain rebuild; each stage skips what already matches:
 #   tooling/job_guard.sh run nw-world -- tools/newworld/world/world.sh
 #   tooling/job_guard.sh wait nw-world
 # Stages: land shards (tools/newworld/world/land.py, keyed on build id + heightmap + code; resumes by row) ->
@@ -24,10 +24,6 @@ mkdir -p "$out"; pidf="$out/world.sh.pid"
 if [ -f "$pidf" ] && kill -0 "$(cat "$pidf")" 2>/dev/null; then
   echo "world.sh: another run (pid $(cat "$pidf")) is writing $out; wait for it (tooling/job_guard.sh status)" >&2; exit 2
 fi
-# the native map (nw-02 step 11): settlement markers and MNAM/ONAM, applied whenever the ESM lacks this build's map
-"$py" -m tools.newworld.world.mapdata build >/dev/null
-dotnet "$bin/ArgoniaPlugin.dll" nwmap check "$esm" "$out/map" >/dev/null || dotnet "$bin/ArgoniaPlugin.dll" nwmap apply "$esm" "$out/map" "$data"
-dotnet "$bin/ArgoniaPlugin.dll" nwmap check "$esm" "$out/map" | tee "$out/map-check.txt"
 echo $$ > "$pidf"; trap 'rm -f "$pidf"' EXIT
 "$py" -m tools.newworld.world.land --out "$out"
 "$py" -m tools.newworld.landcover
@@ -49,6 +45,10 @@ else
     "$key:$codekey" "$esm" "$(echo "$t1 - $t0" | bc)" "$stamp.tmp"
   mv "$stamp.tmp" "$stamp"
 fi
+# the native map (nw-02 step 11): settlement markers and MNAM/ONAM, applied whenever the ESM lacks this build's map
+"$py" -m tools.newworld.world.mapdata build >/dev/null
+dotnet "$bin/ArgoniaPlugin.dll" nwmap check "$esm" "$out/map" >/dev/null || dotnet "$bin/ArgoniaPlugin.dll" nwmap apply "$esm" "$out/map" "$data"
+dotnet "$bin/ArgoniaPlugin.dll" nwmap check "$esm" "$out/map" | tee "$out/map-check.txt"
 dotnet "$bin/ArgoniaPlugin.dll" newworld check "$esm" "$man" "$data" | tee "$out/check.txt"
 "$py" -m tools.newworld.world.texcheck --out "$out" | tee -a "$out/check.txt"
 if [ "${NW_UPLOAD:-1}" = 1 ]; then
