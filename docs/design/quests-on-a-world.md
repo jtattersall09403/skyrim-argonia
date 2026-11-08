@@ -1,83 +1,162 @@
 # Putting a quest system onto a world
 
-How to take a written quest system (lines, quests, factions, people) and make it play in a world someone else built,
-with small edits to that world. This is the recipe as it stands; it is kept current in the same commit as any change
-to the method, and it is the source the post-Phase-4 skills are cut from. It states how to do the work, never how
-the method was arrived at.
+How to take a written quest system (its lines, quests, factions, people, lore and voice) and make it play in a world
+someone else built, with small edits to that world. This is the recipe as it stands, kept current in the same commit
+as any change to the method; the skills are cut from it (PLAN Phase 4b). It states how to do the work, never how the
+method was arrived at.
 
-## 1. Measure the world first
+The work runs in this order; each part names the skill or tool that carries it.
 
-- **Census tables** of the loaded world, one row per thing, each with its form key and position: settlements and
-  their cells, map markers, doors and interiors, placed people (`bmv_talker`), walk-in shell buildings and the
-  navmesh inside each (`bmv_shell`), containers, flora, books, corpses, hostile placements.
-- **Read the winner.** A record's live version is the last plugin in the load order that overrides it, never the
+| Part | What | Carried by |
+|---|---|---|
+| 1 | Make the world the game's world | stack and plugin setup |
+| 2 | Measure the world | census tools |
+| 3 | Fit the quest system to the world | adaptation, quest-write, quest-review |
+| 4 | Edit the world lightly | world-edit builders |
+| 5 | Build every quest from proven blocks | the quest kit, Papyrus |
+| 6 | Give everyone something to say | talk-write |
+| 7 | Write the quest dialogue | dialogue-write, text-review |
+| 8 | Read back, integrate, deploy | read-backs, plugin.sh, deploy |
+| 9 | Hand it to the owner | walk checks, rulings |
+| 10 | Run it as parallel work | lanes, briefs, landing |
+
+## 1. Make the world the game's world
+
+- **A new game starts in the world**, through a start quest of our own that replaces the vanilla opening; character
+  creation happens there.
+- **The base game is quarantined:** its main quest, radiant and courier quests, world events and start-game quests
+  that would reach the player are switched off (Start Game Enabled off, text stripped), listed in one shutdown file and
+  read back. The world's own start-game quests are held back until the story releases them.
+- **The world works as a world:** its map has a pan box from its measured land and terrain-detail settings; its
+  regions or worldspaces have music; its marker and cell names are spelled right.
+- **The mod stack** is a list of rows (source, version, why, credit), fetched and staged from the player's own copies;
+  a mod's files are changed only at stage time on the player's copy (an animation trimmed, an ini set), never
+  committed; nothing the player does not own is committed.
+- **Gameplay settings** (HUD, combat, movement, regeneration) live in the plugin or the staged ini files, each with one
+  owner check.
+
+## 2. Measure the world
+
+- **Census tables** of the loaded world, one row per thing with its form key and position: worldspaces, settlements
+  and their cells, map markers, doors and interiors, placed people (race, class, factions, voice, status: silent,
+  service, hostile, corpse), walk-in shell buildings and the navmesh inside each, containers, flora and ingredients,
+  books, corpses, hostile placements, quests the world already has.
+- **Read the winner:** a record's live version is the last plugin in the load order that overrides it, never the
   master alone; every override copies the winner.
-- **Navmesh and surfaces are the ground truth for placement.** A spot is usable only if the winning navmesh covers
-  it (for people) or a modelled surface carries it (for things: the surface reader gives the mesh top). Height alone
-  is not enough; a cell with no navmesh hosts no people.
+- **Ground truth for placement:** a spot is usable for people only where the winning navmesh covers it, and for things
+  only on a modelled surface (the surface reader gives the mesh top). A cell with no navmesh hosts no people.
+- **The census is complete** when a miner and a critical reviewer agree nothing in the world is unrecorded that the
+  quests could need.
 
-## 2. Allocate the whole system at once
+## 3. Fit the quest system to the world
 
-- Every line gets its seat and hubs, every quest its host places and cast, chosen together so no two lines compete
-  for a place or a person unless the design wants them to meet.
-- One ledger of world edits, each edit once, linked to every quest that needs it; a checker fails a quest hosted on a
-  place that does not exist, an edit one quest makes and another undoes, or a place over capacity.
-- Places are called by the names the player will see (the world's names, or a rename edit).
+- **Inputs:** the quest system as data (lines, quests, stages, cast, factions, places, items), the lore dossiers and
+  the agreed extrapolation, the province's vibe (the mood every quest serves), the naming rules and the voice cards.
+- **The spirit of each line first:** for every line and quest, what it promises the player, its emotional core and
+  signature beats, and which details are free to change.
+- **Capacity:** what each settlement, region and dungeon can host (people, rooms, seats, danger band, travel links).
+- **One allocation for the whole system:** each line's seat and hubs, each quest's host places and cast, chosen
+  together so no two lines compete for a place or person unless the design wants them to meet; danger rises along each
+  line in fixed bands; travel between a line's places fits the world's roads, boats and doors.
+- **One ledger:** per quest a verdict (keep, adapt, merge, drop), its adapted premise and host places; per world edit
+  one row, linked to every quest that needs it. A checker in the gate fails a quest on a place that does not exist,
+  an edit one quest undoes for another, a broken prerequisite graph, a place over capacity, a levelled placement in a
+  host without a clean-up, a call that cites no lore.
+- **Each quest is written as a record** with `quest-write` (hidden truth, cast knowledge, things, clues, actions,
+  stages, endings, topics) and reviewed by a fresh `quest-review` reader; the loop ends when a full round raises
+  nothing blocking. Every stage says plainly what to do; every main quest offers at least two ways through with
+  different named skills; faction quests use the faction's own skills; everything is checked against the lore and
+  the vibe.
+- **A slice first:** fit the opening act and a few lines that do not clash, play them, then the rest.
 
-## 3. Write each quest only in proven shapes
+## 4. Edit the world lightly
 
-A quest is stages joined by triggers, gated by conditions, firing effects, on top of world edits. Only shapes proven
-once in game are used (the block set: `docs/design/blocks.md`). A step that needs an unproven shape is rewritten
-into proven ones that keep its point; only when no rewrite keeps the quest's spirit is a new block built and proved.
+- **Clean-up per host place:** placements that break the setting or level with the player are disabled by override;
+  each templated survivor gets a fixed level (nothing levelled against the player). A person given talk is kept.
+- **People:** our own base templated on a world base (face, race, voice, outfit and behaviour kept; our name, fixed
+  level, factions as needed); a person with no voice type gets a silent voice; placed on existing navmesh; essential
+  where the story must not lose them.
+- **Things:** placed on a read surface; containers with ownership and lock level; items of our own only where no world
+  or base-game item serves; no new art.
+- **Rooms:** an existing interior first, a walk-in shell with navmesh next, an exterior scene on navmesh after. No new
+  navmesh.
+- **Doors:** lock, unlock or re-point existing doors first; a new linked pair only where no existing door serves.
+- **Moving a quest spot** within its settlement to the nearest usable ground is a record edit, not a redesign.
+- **Traders:** a trader whose stock does not fit gets a vendor faction and chest of their own with a fixed stock.
+- **Overrides** of a world, cell or placed reference are made once and shared through one lookup; anything a quest
+  alias or condition names is persistent.
+
+## 5. Build every quest from proven blocks
+
+The block set (`docs/design/blocks.md`): triggers (a dialogue line, entering an area, activating, picking up, a death,
+another quest's stage, a scene's end), conditions (stage, global, faction, item, skill, time, alive, detected,
+relationship rank, the speaker's placed reference), effects (stage with journal and objective, enable parent, item or
+gold, move, faction, scene, alias package, global, regard), world edits (templated person, fixed-level actor, placed or
+disabled reference, overridden world record). Each is proved; every quest is a composition of them joined by stages.
+A step needing anything else is rewritten into these shapes; only when no rewrite keeps the quest's point is a new
+block built, read back and given one owner check.
 
 | Needed | Proven way to do it |
 |---|---|
 | a quest that starts when the player arrives somewhere | Start Game Enabled with an empty stage 0; the giver's opening line sets the first stage, or the previous quest's ending starts it |
-| a quest gated on another quest's progress | a stage condition on the opening line (C-stage) |
-| a trigger area that should also check time, detection or who is present | an unconditioned trigger area gated only by its prerequisite stage; the extra check moves to an AI package's schedule, a condition on a dialogue line, a death trigger's fail-forward, or the crime engine |
-| "do it unseen" | a detection condition on a line, or theft or pickpocket judged by the crime engine |
-| "after dark" | a time condition on a line, or a package schedule that only puts the person there at night |
-| an escort reaching a place | a follow package on the person, and a trigger area the player enters at the destination |
-| "bring N of a kind of thing" | N of one named item through the item block |
+| a quest gated on another quest's progress | a stage condition on the opening line |
+| a trigger area that should also check time, detection or who is present | an unconditioned trigger area gated only by its prerequisite stage; the extra check moves to a package schedule, a line's condition, a death trigger's fail-forward, or the crime engine |
+| "do it unseen" | a detection condition on a line, or theft and pickpocket judged by the crime engine |
+| "after dark" | a time condition on a line, or a package schedule that puts the person there only at night |
+| an escort reaching a place | a follow package, and a trigger area the player enters at the destination |
+| "bring N of a kind of thing" | N of one named item |
 | several things that must all happen | one hidden stage per thing, each checking the others before setting the joint stage |
-| any of several people dying | a death trigger on each person's alias setting the same stage, behind a guard |
-| removing people from a scene | disable them through their own enable parents; never kill in a dialogue fragment |
-| a fight or a brawl | a fixed-level enemy and a death trigger, or a Speech or gold alternative |
-| a person the player must not lose | essential; the record still names a fail-forward for its checker |
-| a person picked out to speak | a condition on their placed reference, the reference made persistent |
-| a named person standing in the world | our own base templated on the world's (look and behaviour kept, our name and fixed level) |
+| any of several people dying | a death trigger on each alias setting one guarded stage |
+| removing people from a scene | disable through their own enable parents; never kill in a line's fragment |
+| a fight or brawl | a fixed-level enemy and a death trigger, or a Speech or gold route |
+| a person the player must not lose | essential; the record still names a fail-forward |
+| a person picked out to speak | a condition on their placed reference, made persistent |
 | standing with a faction | a global the endings add to |
 
-Every main quest offers at least two ways through using different named skills; every stage says plainly what to do.
-
-## 4. Edit the world lightly
-
-- **Clean-up:** each host place's jarring or levelled placements are disabled by override, each templated survivor
-  set to a fixed level (nothing levelled against the player). A person who has been given talk is kept.
-- **New people and things** stand on existing navmesh or a read surface; no new navmesh.
-- **Moving a quest spot** within its settlement to the nearest usable ground is a record edit, not a redesign.
-- **Doors:** lock, unlock or re-point existing doors first; a new linked pair only where no existing door serves.
-- **Overrides** of a world, a cell or a placed reference are made once and shared: every step asks the one lookup
-  for the mod's existing override before making a new one.
-- **Persistent references** for anything a quest alias or a condition names.
-
-## 5. Build and read back
-
-- One builder file per quest line, called in a fixed order so form ids never move; Papyrus fragments compiled with the
-  game's compiler; editor ids unique.
-- A read-back per line, from the built plugin and the compiled scripts: every stage, journal, objective, fragment,
-  alias, trigger area, enable parent, condition and line against the record.
-- The whole plugin is re-seeded once after merging parallel work, and every read-back runs on that one build before
-  it is deployed; nothing is tested in game by the builder.
+- **Engine rules every quest keeps:** race guards on stages two triggers can set at once; aliases are forced
+  references, never find-matching; quest objects for things the player must not drop; a quest shows in the journal
+  only with an objective, and side quests count on the Stats page through their last fragment; quest types as Bethesda
+  uses them; save and reload mid-quest leaves state intact.
+- **Code:** one builder per line in the plugin generator, on the shared quest kit, called in a fixed order so form ids
+  never move; Papyrus fragments compiled with the game's compiler; editor ids unique; rewards fixed, never levelled.
 
 ## 6. Give everyone something to say
 
-Every person who can be talked to is named, given a short backstory, a personality and their own true topics,
-through the `talk-write` skill: facts from the loaded world (the world wins over a lore line it contradicts),
-directions as routes of two to four landmarked steps, a cool first greeting and warmth only with regard, names by
-the naming rules, rumours that point to a quest only while it can start.
+Every person who can be talked to gets a name, a short backstory, a personality and their own true topics through
+`talk-write`: facts from the loaded world (the world wins over a lore line it contradicts), directions as routes of two
+to four landmarked steps, a cool first greeting and warmth only with regard, names by the naming rules, a trader's
+services matching their stock, and rumours that point to a quest only while it can start.
 
-## 7. Quest dialogue
+## 7. Write the quest dialogue
 
-Written per speaker from the record (`dialogue-write`), reviewed once (`text-review`), with cool, middle and warm
-bands separated by the engine's relationship rank, and a short greeting for anyone a quest ending leaves standing.
+Per speaker from the record with `dialogue-write` (matched lines from the reference corpus as the model; the speaker's
+brief generated from the data), one `text-review` pass by another agent, then loaded. Cool, middle and warm bands are
+separated by the engine's relationship rank; race forms of address only where the brief asks; a short greeting for
+anyone a quest ending leaves standing; journal and objective text written and reviewed the same way.
+
+## 8. Read back, integrate, deploy
+
+- **Read-backs** from the built plugin and the compiled scripts, never from the source: every stage, journal,
+  objective, fragment, alias, trigger area, enable parent, condition, line and band against the record; the talk
+  check over every talker; the clean-up list; the shutdown list; a clean Spriggit round trip; the gate (`make check`).
+- **Integration:** parallel work lands as source only; the plugin is re-seeded once on the merged tree and every
+  read-back runs on that one build before deploy.
+- **Deploy** the plugin, its ini and the compiled scripts to the play machine; stage-time mod changes with the stack.
+- **The builder never plays the game.**
+
+## 9. Hand it to the owner
+
+- **Walk checks:** the fewest checks that prove what was built, each in plain words with the place, what to do and
+  what passing looks like; ticked checks stay as the record; superseded checks are marked.
+- **Looks are the owner's call:** a model or a placement's look goes to the owner, never decided by a reviewer.
+- **Rulings** are recorded the day they are made, and the plan is updated from the walk before new work starts.
+
+## 10. Run it as parallel work
+
+- **One lane per independent deliverable** (a quest line, a settlement's people, a stack fix), in its own worktree,
+  with a brief that names the inputs, the proven shapes, what not to touch and a measurable acceptance.
+- **The planner rules on gaps** at once (a rewrite in proven shapes, a moved spot, a cut recorded in the review) so a
+  lane never waits.
+- **Shared things** (the generator's call order, overrides, editor ids, a person two lanes use) are agreed in the
+  briefs; a lane that runs out of room commits and leaves a hand-off note, and a fresh lane resumes from it.
+- **Costs** are measured per person and per quest and reported with each check-in.
