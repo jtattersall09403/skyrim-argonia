@@ -79,6 +79,15 @@ The owner's first walk is the whole stack *inside* Black Marsh, so the stack and
   boats to Skyrim are left as BM&V made them.
 - BM&V's known gap: 203 of its texture-set records name diffuse textures no archive holds
   ([research/bmv](../research/bmv/)); it is left as BM&V ships it unless the owner finds it ugly
+- BM&V's window gap (owner walk 2026-11-07, "Lilmoth docks windows look like they have some piece missing"): BM&V
+  ships 105 loose NIFs edited for Enhanced Lighting (ELFX), many at vanilla paths (Solitude, Whiterun, Riften houses,
+  imperial tents), naming `textures\effects\ELFX\windows\*` and `cubemaps\tundra_e.dds`, which nothing staged holds;
+  the panes draw flat pale blue. In BM&V's worlds 14 bases, 48 refs use them: Lilmoth 10 (5 Solitude houses, a pot),
+  tents 39 (Murkwood, Temple, Black Marsh North's marsh, Murkmire, Longmont, Castle, Valenwood), Riften farmhouses 2
+  (Dock2), 2 single Valenwood refs. Fixed in the stage: the bmv row's `drop` in `mods/dependencies.json` removes the
+  62 ELFX meshes whose path the game's own archives also hold, so the vanilla mesh draws (all 14 bases, 48 refs). The
+  other 43 matches (BM&V's own ELFX\* meshes, terrain .bto, rocks) shadow nothing and are kept; none is placed in
+  Lilmoth. Owner check owed on the next walk.
 - In parallel: **The census, into the story data.** Redone 2026-11-05 over the whole of BM&V
   ([census](../research/bmv/census.md)): the first pass read `Black Marsh.esm` alone, from a trimmed BM&V. BM&V is
   four plugins (BosmerArmorMATY743.esm, Black Marsh.esm, Black Marsh North.esp, Valenwood.esp);
