@@ -67,7 +67,7 @@ TopCell:
       Reference: 000C18:Argonia.esp
       Unknown: 0x000000
     Placement:
-      Position: -18324, 77678, 134
+      Position: -18525, 77230, 146
     MajorFlags:
     - Persistent
   - MutagenObjectType: PlacedNpc
@@ -81,7 +81,7 @@ TopCell:
       Reference: 000C18:Argonia.esp
       Unknown: 0x000000
     Placement:
-      Position: -18093, 77568, 153
+      Position: -18052, 77267, 169
     MajorFlags:
     - Persistent
   - MutagenObjectType: PlacedObject
@@ -268,7 +268,7 @@ TopCell:
       Reference: 000DDC:Argonia.esp
       Unknown: 0x000000
     Placement:
-      Position: -27372, 73861, 53
+      Position: -27383, 73619, 37
     MajorFlags:
     - Persistent
   - MutagenObjectType: PlacedNpc

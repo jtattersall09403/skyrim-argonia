@@ -6,7 +6,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: The Dwemer Ruin, traveller? Walk south-east about a hundred and fifty paces. The ruin is there.
+    Value: The Dwemer Ruin, traveller? Easy enough. Walk south-east from here, about a hundred and fifty paces, and you are standing in it.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 2
@@ -14,7 +14,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Alten Merihall, traveller? Walk south-east about a hundred and twenty paces, until the Dwemer Ruin is on your left. Then walk south-east about two hundred and ninety paces. Alten Merihall is there. If you would rather go by water, I can take you.
+    Value: Alten Merihall, traveller? Walk south-east about a hundred and twenty paces, until the Dwemer Ruin is on your left, and then keep south-east about two hundred and ninety paces more. Alten Merihall is there, and the money with it. If you would rather go by water, I can take you.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 3
@@ -22,7 +22,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Lilmoth Dock, traveller? Walk west about fifty paces, until Soulrest is on your left. Then walk north-west about eighty paces, until the big ship is on your left. Then climb west about three hundred paces. The dock is there.
+    Value: Lilmoth Dock, traveller? Walk west about a hundred and twenty paces, until the big ship is on your left, and then climb west about three hundred paces more. The dock is there.
   ScriptNotes: ''
   Edits: ''
 Conditions:

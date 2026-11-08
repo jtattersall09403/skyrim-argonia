@@ -6,7 +6,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: No. I keep the way in. Your words do not move me yet. Find better words, or go back down the hill.
+    Value: No. I keep the way in. Your words do not move me yet. Find better words, or go back to the town.
   ScriptNotes: ''
   Edits: ''
 Conditions:
@@ -41,4 +41,4 @@ Conditions:
     TargetNpc: 000014:Skyrim.esm
 Prompt:
   TargetLanguage: English
-  Value: Let me into the keep.
+  Value: Let me into the stone house.

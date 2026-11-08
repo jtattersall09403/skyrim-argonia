@@ -15,7 +15,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Listen well. The heirs' outer post, the old keep above Blackrose, is burning. How it started is not known. Three are bound inside. I want them brought out with their names kept. Says-It-Plain is held for speaking against the heirs. Hides-In-Reeds is held for a killing. Keeps-The-Old-Count, Rows-For-Another's mother, is working off what the heirs reckon she owes. Third-Born Tsaxi keeps the way in.
+    Value: Listen well. The heirs' outer post, an old stone house on the shore at Blackrose's east edge, is burning. How it started is not known. Three are bound inside. I want them brought out with their names kept. Says-It-Plain is held for speaking against the heirs. Hides-In-Reeds is held for a killing. Keeps-The-Old-Count, Rows-For-Another's mother, is working off what the heirs reckon she owes. Third-Born Tsaxi stands outside the west wall and keeps the way in.
   ScriptNotes: ''
   Edits: ''
 Conditions:
@@ -42,4 +42,4 @@ Conditions:
   ComparisonValue: 1
 Prompt:
   TargetLanguage: English
-  Value: What is burning above Blackrose?
+  Value: What is burning at Blackrose's east edge?

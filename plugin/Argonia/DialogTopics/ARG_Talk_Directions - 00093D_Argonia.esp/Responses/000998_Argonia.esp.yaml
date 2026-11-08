@@ -6,7 +6,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Haven? Walk south-east about sixty paces until you reach Black Rose. Then walk south about a hundred and eighty-five paces, until you reach the stone tower. From there south-west a little over a hundred and thirty paces. Haven is there.
+    Value: Haven? Walk south-east about two hundred and fifty paces, until you reach the stone tower. Then south-west a little over a hundred and thirty paces. Haven is there.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 2
@@ -14,7 +14,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: You mean the market's cooking fire, not mine. Walk south-east about fifty paces until you reach the marker post of Black Rose. Keep it on your right. Then walk east about two hundred and twenty-five paces. You will find the fire.
+    Value: The cooking fire? Walk east about two hundred and eighty paces. You will find it there.
   ScriptNotes: ''
   Edits: ''
 Conditions:

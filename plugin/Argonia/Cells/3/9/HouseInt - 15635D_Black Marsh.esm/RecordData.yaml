@@ -52,7 +52,7 @@ Persistent:
   - 0x400
   Base: 000CDB:Argonia.esp
   Placement:
-    Position: 1571, 931, 7520
+    Position: 520, -120, 1504
   MajorFlags:
   - Persistent
 MajorFlags:

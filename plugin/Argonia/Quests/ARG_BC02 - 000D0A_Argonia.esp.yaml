@@ -149,80 +149,80 @@ Stages:
   - Flags: []
     Entry:
       TargetLanguage: English
-      Value: Never-Sold told me the heirs' outer post, the old keep on the hill west of Blackrose, is burning. The heirs, born of the prisoners once held at the Rose, keep it. Three people whom the heirs hold are inside, Rows-For-Another's mother among them, and the heirs' gate-keepers will not go in. I'm to get past Third-Born Tsaxi at the keep's way in, by talking him round or slipping by, and go inside.
+      Value: Never-Sold told me the heirs' outer post, the old stone house on the shore at Blackrose's east edge, is burning. The heirs, born of the prisoners once held at the Rose, keep it. Three people whom the heirs hold are inside, Rows-For-Another's mother among them, and the heirs' gate-keepers will not go in. I'm to get past Third-Born Tsaxi outside the stone house's west wall, by talking him round or slipping by, and go inside.
 - Index: 30
   LogEntries:
   - Flags: []
     Entry:
       TargetLanguage: English
-      Value: "I'm inside the burning keep above Blackrose. Three people whom the heirs hold are bound inside: Says-It-Plain, held for speaking against the heirs; Hides-In-Reeds, held for a killing; and Keeps-The-Old-Count, Rows-For-Another's mother, held on her Owing. The way out will bear one trip. I'm to choose one and tell them to come with me."
+      Value: "I'm inside the burning stone house on the shore at Blackrose's east edge. Three people whom the heirs hold are bound inside: Says-It-Plain, held for speaking against the heirs; Hides-In-Reeds, held for a killing; and Keeps-The-Old-Count, Rows-For-Another's mother, held on her Owing. The way out will bear one trip. I'm to choose one and tell them to come with me."
 - Index: 31
   LogEntries:
   - Flags: []
     Entry:
       TargetLanguage: English
-      Value: I told Says-It-Plain to come with me. The fire took the other two. I'm to bring him out of the keep's way in.
+      Value: I told Says-It-Plain to come with me. The fire took the other two. I'm to bring him out of the stone house, past Third-Born Tsaxi.
 - Index: 32
   LogEntries:
   - Flags: []
     Entry:
       TargetLanguage: English
-      Value: I told Hides-In-Reeds to come with me. The fire took the other two. I'm to bring her out of the keep's way in.
+      Value: I told Hides-In-Reeds to come with me. The fire took the other two. I'm to bring her out of the stone house, past Third-Born Tsaxi.
 - Index: 33
   LogEntries:
   - Flags: []
     Entry:
       TargetLanguage: English
-      Value: I told Keeps-The-Old-Count to come with me. The fire took the other two. I'm to bring her out of the keep's way in.
+      Value: I told Keeps-The-Old-Count to come with me. The fire took the other two. I'm to bring her out of the stone house, past Third-Born Tsaxi.
 - Index: 91
   LogEntries:
   - Flags:
     - CompleteQuest
     Entry:
       TargetLanguage: English
-      Value: Never-Sold of the Chainbreakers sent me into the heirs' burning keep above Blackrose, where they held three. I brought Says-It-Plain out; the other two died in the fire. He walked free from the keep, to speak their names to Never-Sold.
+      Value: Never-Sold of the Chainbreakers sent me into the heirs' burning stone house on the shore at Blackrose's east edge, where they held three. I brought Says-It-Plain out; the other two died in the fire. He walked free from the stone house, to speak their names to Never-Sold.
 - Index: 92
   LogEntries:
   - Flags:
     - CompleteQuest
     Entry:
       TargetLanguage: English
-      Value: Never-Sold of the Chainbreakers sent me into the heirs' burning keep above Blackrose, where they held three. I brought Hides-In-Reeds out; the other two died in the fire. She does not deny her killing. She walked free from the keep, to speak their names to Never-Sold.
+      Value: Never-Sold of the Chainbreakers sent me into the heirs' burning stone house on the shore at Blackrose's east edge, where they held three. I brought Hides-In-Reeds out; the other two died in the fire. She does not deny her killing. She walked free from the stone house, to speak their names to Never-Sold.
 - Index: 93
   LogEntries:
   - Flags:
     - CompleteQuest
     Entry:
       TargetLanguage: English
-      Value: Never-Sold of the Chainbreakers sent me into the heirs' burning keep above Blackrose, where they held three. I brought Keeps-The-Old-Count, Rows-For-Another's mother, out; the other two died in the fire. She walked free from the keep, to speak their names to Never-Sold.
+      Value: Never-Sold of the Chainbreakers sent me into the heirs' burning stone house on the shore at Blackrose's east edge, where they held three. I brought Keeps-The-Old-Count, Rows-For-Another's mother, out; the other two died in the fire. She walked free from the stone house, to speak their names to Never-Sold.
 - Index: 94
   LogEntries:
   - Flags:
     - CompleteQuest
     Entry:
       TargetLanguage: English
-      Value: Never-Sold of the Chainbreakers sent me into the heirs' burning keep above Blackrose, where they held three. All three died in the keep. Never-Sold at the Chainbreakers' house keeps the three names herself.
+      Value: Never-Sold of the Chainbreakers sent me into the heirs' burning stone house on the shore at Blackrose's east edge, where they held three. All three died in the stone house. Never-Sold at the Chainbreakers' house keeps the three names herself.
 Objectives:
 - Index: 20
   DisplayText:
     TargetLanguage: English
-    Value: Get past Third-Born Tsaxi into the burning keep on the hill west of Blackrose, by talking him round or slipping by.
+    Value: Get past Third-Born Tsaxi into the burning stone house on the shore at Blackrose's east edge, by talking him round or slipping by.
 - Index: 30
   DisplayText:
     TargetLanguage: English
-    Value: In the burning keep, tell one of the three captives to come with me.
+    Value: In the burning stone house, tell one of the three captives to come with me.
 - Index: 31
   DisplayText:
     TargetLanguage: English
-    Value: Bring Says-It-Plain out of the burning keep and past Third-Born Tsaxi, by talking him round or slipping by.
+    Value: Bring Says-It-Plain out of the burning stone house and past Third-Born Tsaxi, by talking him round or slipping by.
 - Index: 32
   DisplayText:
     TargetLanguage: English
-    Value: Bring Hides-In-Reeds out of the burning keep and past Third-Born Tsaxi, by talking him round or slipping by.
+    Value: Bring Hides-In-Reeds out of the burning stone house and past Third-Born Tsaxi, by talking him round or slipping by.
 - Index: 33
   DisplayText:
     TargetLanguage: English
-    Value: Bring Keeps-The-Old-Count out of the burning keep and past Third-Born Tsaxi, by talking him round or slipping by.
+    Value: Bring Keeps-The-Old-Count out of the burning stone house and past Third-Born Tsaxi, by talking him round or slipping by.
 Aliases:
 - Name: Patron
   Flags:

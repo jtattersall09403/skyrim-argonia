@@ -527,7 +527,7 @@ TopCell:
     - InitiallyDisabled
     Base: 00003B:Skyrim.esm
     Placement:
-      Position: 125163, -57749, 2496
+      Position: 140736, -63616, -216
   - MutagenObjectType: PlacedObject
     FormKey: 000D11:Argonia.esp
     MajorRecordFlagsRaw: 1024
@@ -539,7 +539,7 @@ TopCell:
       Reference: 000D10:Argonia.esp
       Unknown: 0x000000
     Placement:
-      Position: 124779, -58048, 2846
+      Position: 140949, -63765, 134
   - MutagenObjectType: PlacedObject
     FormKey: 000D12:Argonia.esp
     MajorRecordFlagsRaw: 1024
@@ -551,7 +551,7 @@ TopCell:
       Reference: 000D10:Argonia.esp
       Unknown: 0x000000
     Placement:
-      Position: 125141, -57472, 2827
+      Position: 140971, -63360, 134
   - MutagenObjectType: PlacedObject
     FormKey: 000D13:Argonia.esp
     MajorRecordFlagsRaw: 1024
@@ -563,7 +563,7 @@ TopCell:
       Reference: 000D10:Argonia.esp
       Unknown: 0x000000
     Placement:
-      Position: 125419, -58048, 2846
+      Position: 140672, -64043, 134
   - MutagenObjectType: PlacedObject
     FormKey: 000D14:Argonia.esp
     MajorRecordFlagsRaw: 1024
@@ -575,7 +575,7 @@ TopCell:
       Reference: 000D10:Argonia.esp
       Unknown: 0x000000
     Placement:
-      Position: 125163, -57749, 2846
+      Position: 140736, -63616, 134
   - MutagenObjectType: PlacedObject
     FormKey: 000D15:Argonia.esp
     MajorRecordFlagsRaw: 3072
@@ -585,7 +585,7 @@ TopCell:
     - InitiallyDisabled
     Base: 00003B:Skyrim.esm
     Placement:
-      Position: 124779, -58048, 2496
+      Position: 140949, -63765, -216
   - MutagenObjectType: PlacedObject
     FormKey: 000D16:Argonia.esp
     MajorRecordFlagsRaw: 3072
@@ -595,7 +595,7 @@ TopCell:
     - InitiallyDisabled
     Base: 00003B:Skyrim.esm
     Placement:
-      Position: 125141, -57472, 2477
+      Position: 140971, -63360, -216
   - MutagenObjectType: PlacedObject
     FormKey: 000D17:Argonia.esp
     MajorRecordFlagsRaw: 3072
@@ -605,7 +605,7 @@ TopCell:
     - InitiallyDisabled
     Base: 00003B:Skyrim.esm
     Placement:
-      Position: 125419, -58048, 2496
+      Position: 140672, -64043, -216
   - MutagenObjectType: PlacedNpc
     FormKey: 000D18:Argonia.esp
     MajorRecordFlagsRaw: 1024
@@ -617,7 +617,7 @@ TopCell:
       Reference: 000D15:Argonia.esp
       Unknown: 0x000000
     Placement:
-      Position: 124779, -58048, 2696
+      Position: 140949, -63765, -16
     MajorFlags:
     - Persistent
   - MutagenObjectType: PlacedNpc
@@ -631,7 +631,7 @@ TopCell:
       Reference: 000D16:Argonia.esp
       Unknown: 0x000000
     Placement:
-      Position: 125141, -57472, 2677
+      Position: 140971, -63360, -16
     MajorFlags:
     - Persistent
   - MutagenObjectType: PlacedNpc
@@ -645,7 +645,7 @@ TopCell:
       Reference: 000D17:Argonia.esp
       Unknown: 0x000000
     Placement:
-      Position: 125419, -58048, 2696
+      Position: 140672, -64043, -16
     MajorFlags:
     - Persistent
   - MutagenObjectType: PlacedNpc
@@ -656,7 +656,7 @@ TopCell:
     - 0x400
     Base: 000D0B:Argonia.esp
     Placement:
-      Position: 129804, -58836, -5
+      Position: 139712, -63680, -15
     MajorFlags:
     - Persistent
   - MutagenObjectType: PlacedNpc
@@ -667,7 +667,7 @@ TopCell:
     - 0x400
     Base: 000D0C:Argonia.esp
     Placement:
-      Position: 129748, -58476, 1091
+      Position: 139627, -63317, -8
     MajorFlags:
     - Persistent
   - MutagenObjectType: PlacedObject
@@ -696,7 +696,7 @@ TopCell:
       Unknown: 0.15
       Type: Box
     Placement:
-      Position: 125163, -57749, 2796
+      Position: 140736, -63616, 84
   - MutagenObjectType: PlacedObject
     FormKey: 000D1E:Argonia.esp
     MajorRecordFlagsRaw: 1024
@@ -723,7 +723,7 @@ TopCell:
       Unknown: 0.15
       Type: Box
     Placement:
-      Position: 129804, -58836, 95
+      Position: 139712, -63680, 85
   - MutagenObjectType: PlacedObject
     FormKey: 000D1F:Argonia.esp
     MajorRecordFlagsRaw: 1024
@@ -750,7 +750,7 @@ TopCell:
       Unknown: 0.15
       Type: Box
     Placement:
-      Position: 129804, -58836, 95
+      Position: 139712, -63680, 85
   - MutagenObjectType: PlacedObject
     FormKey: 000D20:Argonia.esp
     MajorRecordFlagsRaw: 1024
@@ -777,7 +777,7 @@ TopCell:
       Unknown: 0.15
       Type: Box
     Placement:
-      Position: 129804, -58836, 95
+      Position: 139712, -63680, 85
   - MutagenObjectType: PlacedNpc
     FormKey: 000D60:Argonia.esp
     MajorRecordFlagsRaw: 1024
@@ -897,7 +897,7 @@ TopCell:
       Reference: 000D95:Argonia.esp
       Unknown: 0x000000
     Placement:
-      Position: 91051, -7467, 32
+      Position: 91051, -7467, 56
   - MutagenObjectType: PlacedObject
     FormKey: 000D9D:Argonia.esp
     MajorRecordFlagsRaw: 1024
@@ -933,7 +933,7 @@ TopCell:
       Reference: 000D95:Argonia.esp
       Unknown: 0x000000
     Placement:
-      Position: 91171, -7467, 9
+      Position: 91171, -7467, 39.452637
   - MutagenObjectType: PlacedNpc
     FormKey: 000DA2:Argonia.esp
     MajorRecordFlagsRaw: 1024
@@ -978,7 +978,7 @@ TopCell:
       Reference: 000D95:Argonia.esp
       Unknown: 0x000000
     Placement:
-      Position: 91456, -7573, 135
+      Position: 91157, -7765, 30
     MajorFlags:
     - Persistent
   - MutagenObjectType: PlacedNpc
@@ -992,7 +992,7 @@ TopCell:
       Reference: 000D95:Argonia.esp
       Unknown: 0x000000
     Placement:
-      Position: 90987, -6869, 156
+      Position: 91392, -6933, 143
     MajorFlags:
     - Persistent
   - MutagenObjectType: PlacedNpc
@@ -1470,7 +1470,7 @@ TopCell:
       Reference: 000E31:Argonia.esp
       Unknown: 0x000000
     Placement:
-      Position: -3806, 605, 80
+      Position: -3999, 604, 72
     MajorFlags:
     - Persistent
   - MutagenObjectType: PlacedNpc
@@ -1521,9 +1521,9 @@ TopCell:
     EditorID: ARG_MQ01_Shed
     SkyrimMajorRecordFlags:
     - 0x400
-    Base: 0A53C4:Black Marsh.esm
+    Base: 0A013F:Black Marsh.esm
     Placement:
-      Position: -3450, 1800, 173
+      Position: -3450, 1800, 56
   - MutagenObjectType: PlacedObject
     FormKey: 000E44:Argonia.esp
     MajorRecordFlagsRaw: 1024
@@ -1595,7 +1595,7 @@ TopCell:
       Reference: 000E2E:Argonia.esp
       Unknown: 0x000000
     Placement:
-      Position: -4500, 1450, 120
+      Position: -4500, 1450, 97
   - MutagenObjectType: PlacedObject
     FormKey: 000E4A:Argonia.esp
     MajorRecordFlagsRaw: 1024

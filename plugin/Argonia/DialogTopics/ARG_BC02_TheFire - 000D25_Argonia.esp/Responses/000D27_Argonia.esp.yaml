@@ -15,7 +15,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: The heirs' outer post, the old keep above Blackrose, is burning. Three are bound inside. Says-It-Plain, Hides-In-Reeds and Keeps-The-Old-Count. Third-Born Tsaxi keeps the way in.
+    Value: The heirs' outer post, an old stone house at Blackrose's east edge, is burning. Three are bound inside. Says-It-Plain, Hides-In-Reeds and Keeps-The-Old-Count. Third-Born Tsaxi keeps the way in, outside the west wall.
   ScriptNotes: ''
   Edits: ''
 Conditions:
@@ -41,4 +41,4 @@ Conditions:
     TargetNpc: 000014:Skyrim.esm
 Prompt:
   TargetLanguage: English
-  Value: What is burning above Blackrose?
+  Value: What is burning at Blackrose's east edge?
