@@ -163,7 +163,7 @@ names its place and its source.
 
 Also jarring: a Nordic element (decision 0006); a professional standing army or navy; the Thalmor or the Empire
 in plain sight, beyond the Cyrodilic Collections and at most a trade factor at Archon (state §5; guilds §4); a quest with more than a third of its stages hollow, or whose central action is delivering, filing, counting or
-reading a record (quest-write §4b.3).
+reading a record (quest-write §6b.3).
 
 ## 10. What sings
 

@@ -372,3 +372,20 @@ def test_skill_routes_scene_stage_exempt():
     assert ac.skill_routes(rc) == []                                       # a scene's end is not a skill route
     rc.stages["q"][10]["succ"] = [(20, {"inZone"}, set())]
     assert any("stage 10 names no skill" in x for x in ac.skill_routes(rc))
+
+
+def test_proven_shapes():
+    rc = recs()
+    rc.start = {"q": 10}
+    rc.start_when = {"q"}
+    rc.stages["q"][20] = {"succ": [], "ff": set()}
+    rc.stage_end = {"q": {20}}
+    assert wires(rc) == []                                            # an area gated only by its stage is proven
+    rc.start_terms = {"q": {"all", "inCell"}}
+    rc.stages["q"][10]["succ"].append((20, {"all", "inZone", "timeOfDay"}, set()))
+    w = wires(rc)
+    assert any("starts on entering a place" in x for x in w)
+    assert any("stage 10 -> 20" in x and "timeOfDay" in x for x in w)
+    rc.start_terms = {"q": {"questStage"}}
+    rc.stages["q"][10]["succ"][-1] = (20, {"all", "inZone", "questStage"}, set())
+    assert wires(rc) == []

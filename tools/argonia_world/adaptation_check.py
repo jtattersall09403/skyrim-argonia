@@ -424,6 +424,7 @@ class Records:
     faction_skills: dict = field(default_factory=dict)  # faction -> the skills it leans on
     start: dict = field(default_factory=dict)         # quest -> its start stage
     start_when: set = field(default_factory=set)      # quests with a startWhen
+    start_terms: dict = field(default_factory=dict)   # quest -> condition terms of its startWhen
     topic_rows: set = field(default_factory=set)      # (quest, topic id, speaker) of every quest_topic row
     heard: list = field(default_factory=list)         # (quest, topic, speaker) named by a topicHeardFrom condition
     given: dict = field(default_factory=dict)         # item -> [(quest, stage or None for an ending)] a giveItem hands over
@@ -507,6 +508,8 @@ def load_records() -> Records:
                        {tuple(r) for r in w.query("SELECT quest_id, id FROM quest_cast")})
     rc.quest_text = {r[0]: f"{r[1] or ''} {r[2] or ''}" for r in w.query("SELECT id, foundation, notes FROM quest")}
     tree = _tree(w)
+    rc.start_terms = {r[0]: tree.get(r[1], (set(), set()))[0]
+                      for r in w.query("SELECT id, start_when FROM quest WHERE start_when IS NOT NULL")}
     sid = {(r[0], r[1]): r[2] for r in w.query("SELECT quest_id, ord, id FROM quest_stage")}
     for (q, o), s in sid.items():
         rc.stages.setdefault(q, {})[s] = {"succ": [], "ff": set(), "ff_to": []}
@@ -824,7 +827,27 @@ def rule_topic_per_speaker(rc: Records) -> list[str]:
                    for q, t, p in rc.heard if (q, t, p) not in rc.topic_rows})
 
 
-WIRING = (rule_reachable, rule_acquire_prereq, rule_present_before_start, rule_topic_per_speaker)
+PLACE_TERMS = {"inCell", "inZone", "inSettlement", "inRegion"}
+AREA_TERMS = {"inZone", "inCell"}
+AREA_GATES = AREA_TERMS | {"all", "questStage", "stageEverReached"}
+
+
+def rule_proven_shapes(rc: Records) -> list[str]:
+    """Stages use the proven shapes (docs/design/quests-on-a-world.md part 5): a quest starts by an opening line or
+    another quest's stage, never on entering a place; a trigger area is gated only by its prerequisite stage."""
+    out = [f"{q}: starts on entering a place ({', '.join(sorted(t & PLACE_TERMS))}); start it by an opening line or a chain"
+           for q, t in sorted(rc.start_terms.items()) if t & PLACE_TERMS]
+    for q, sts in sorted(rc.stages.items()):
+        for s, d in sorted(sts.items()):
+            for to, t, _ in d["succ"]:
+                if t & AREA_TERMS and "any" not in t and t - AREA_GATES:   # "any": the area is one way among others
+                    out.append(f"{q}: stage {s} -> {to} is a trigger area that also checks "
+                               f"{', '.join(sorted(t - AREA_GATES))}; move that check to a line, a schedule, "
+                               "a death fail-forward or the crime engine")
+    return out
+
+
+WIRING = (rule_proven_shapes, rule_reachable, rule_acquire_prereq, rule_present_before_start, rule_topic_per_speaker)
 
 
 def wiring(rc: Records) -> list[str]:

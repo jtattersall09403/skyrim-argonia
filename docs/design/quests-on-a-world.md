@@ -132,7 +132,7 @@ block built, read back and given one owner check.
 | any of several people dying | a death trigger on each alias setting one guarded stage |
 | removing people from a scene | disable through their own enable parents; never kill in a line's fragment |
 | a fight or brawl | a fixed-level enemy and a death trigger, or a Speech or gold route |
-| a person the player must not lose | essential; the record still names a fail-forward |
+| a person the player must not lose | essential, with no fail-forward |
 | a person picked out to speak | a condition on their placed reference, made persistent |
 | standing with a faction | a global the endings add to |
 

@@ -20,7 +20,7 @@ import yaml
 
 HERE = pathlib.Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE.parents[2]))
-from tools.argonia_world import db, quest_record, records  # noqa: E402
+from tools.argonia_world import adaptation_check, db, quest_record, records  # noqa: E402
 VOICES = HERE.parent / "dialogue-write" / "voices.md"
 WEAPONS = ["long-blade", "short-blade", "axe", "blunt-weapon", "spear", "marksman", "hand-to-hand"]
 STAGE_FIELDS = ["id", "place", "journal"]   # onEnter, objectives, successors: no rows is an empty list
@@ -98,6 +98,11 @@ def main() -> int:
     things = {t["id"]: t for t in q["things"]}
     cast = {c["id"]: c for c in q["cast"]}
     truth = {t["id"] for t in q["truth"]}
+    text = f"{q.get('foundation') or ''} {q.get('notes') or ''}"
+
+    def guarded(pid):
+        """An essential or protected person needs no fail-forward: the record's text says so of them."""
+        return any(adaptation_check._guarded(text, n) for n in (pid, npcs.get(pid, {}).get("name")) if n)
     stage_ids = {s["id"] for s in q["stages"]}
     missing = []
 
@@ -190,8 +195,9 @@ def main() -> int:
             if not s.get("successors"):
                 missing.append(f"{w}: no successors and not an ending")
             named = re.findall(r"npc\.[a-z0-9.-]+", json.dumps({k: v for k, v in s.items() if k != "failForward"}))
-            if named and not s.get("failForward"):
-                missing.append(f"{w}: names {named[0]} but has no failForward (old 0138: nobody is unkillable)")
+            loose = [n for n in named if not guarded(n)]
+            if loose and not s.get("failForward"):
+                missing.append(f"{w}: needs {loose[0]} alive, who is not essential or protected and has no failForward")
             if "WONDER" not in q.get("shapes", []) and not any("startScene" in a for a in s.get("onEnter", [])) and not [x for x in stage_actions(s) if "skill" in x]:
                 missing.append(f"{w}: no skill action (principles/actions.md)")
             missing += [f"{w}: learns {g}" for g in s.get("learns", []) if g not in claims]
