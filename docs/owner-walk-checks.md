@@ -131,7 +131,7 @@ true where it says. Walking time for all of them is about 40 minutes; nothing to
 
 #### The shore track south-west of the dock
 
-- [ ] **Breaks-The-Oar**, sellsword and brawler, the fists of a band of three; stands on the band's camp on the shore track south-west of Lilmoth Dock, by the bedrolls. Ask "Dangers nearby" and check: The dead walk outside Lilmoth's walls; there are Walking Dead about 100 m north-north-west of here.
+- [ ] **Breaks-The-Oar**, sellsword and brawler, the fists of a band of three; stands at the band's camp on the shore track south-west of Lilmoth Dock, by the bedrolls. Ask "Dangers nearby" and check: The dead walk outside Lilmoth's walls; there are Walking Dead about 100 m north-north-west of here.
 - [ ] **Heem-Tsal**, battle-mage of fire, the band's spell and its scholar; stands a few paces from the band's bedrolls on the shore track, on the side away from the others. Ask "Directions" and check: A Dwemer ruin lies far to the east, about 435 m east of here.
 - [ ] **Keeps-Both-Edges**, swordsman with two blades, the band's watch; stands beside Breaks-The-Oar at the band's camp, facing the track so nothing comes up it unseen. Ask "Dangers nearby" and check: More dead walk among the gravestones north of Lilmoth's walls, about 195 m north-west of here.
 - [ ] **Deep-In-His-Cups**, drinker and talker, of no settled trade; sits out on the shore track south-west of Lilmoth Dock, where the guards do not bother him. Ask "Directions" and check: Flaa Heet's village lies on the marsh about 145 m south-west of here.
@@ -144,12 +144,12 @@ true where it says. Walking time for all of them is about 40 minutes; nothing to
 
 #### Hereguard Plantation (west of Lilmoth; the map marks it)
 
-- [ ] **Reads-The-Shallows**, boat captain who carries the plantation's rice to Lilmoth; stands on the plantation's north-east edge by the goats, waiting for a load. Ask "Directions" and check: Lilmoth Dock lies about 365 m east of here.
+- [ ] **Reads-The-Shallows**, boat captain who carries the plantation's rice to Lilmoth; stands at the plantation's north-east edge by the goats, waiting for a load. Ask "Directions" and check: Lilmoth Dock lies about 365 m east of here.
 - [ ] **Hurz-Weel**, plantation hand who keeps the house's yard and stores; stands in the yard by the plantation house on its west side, between the barrels and the benches. Ask "Directions" and check: The walled part of Lilmoth lies about 200 m east-north-east of here.
 - [ ] **Lifts-The-Sacks**, plantation hand and loader; stands in the middle of the plantation among the goats and chickens, between the house and the workbenches. Ask "This place" and check: Goats and chickens keep the yard about 10 m west-north-west of here.
 - [ ] **Salith**, street seller of food and small goods to the plantation's hands; stands on the plantation's east side near the cooking spit, where the hands eat. Ask "Plants and ingredients" and check: A gleamblossom grows about 60 m south of here.
 - [ ] **Okan-Wul**, plantation hand who builds and mends the huts; stands near Salith on the east side of the plantation, by the huts he keeps standing. Ask "This place" and check: The hands' huts stand about 35 m west of here, and more about 40 m west-north-west.
-- [ ] **Stares-At-Clouds**, plantation hand who watches the flood water and the paddies' far edge; stands on the north-east edge of the plantation, beyond the huts, where the water comes in. Ask "Directions" and check: the walled part of Lilmoth lies about 110 m east of here.
+- [ ] **Stares-At-Clouds**, plantation hand who watches the flood water and the paddies' far edge; stands at the north-east edge of the plantation, beyond the huts, where the water comes in. Ask "Directions" and check: the walled part of Lilmoth lies about 110 m east of here.
 - [ ] **Folds-The-Linen**, house servant at the plantation house; stands by the plantation house, near the bed and benches on its south side. Ask "Plants and ingredients" and check: Nightshade grows about 15 m east-north-east of here; keep it out of the kitchen.
 - [ ] **Mazei-Tul**, house servant who keeps the plantation's horses; stands on the north side of the plantation house, close to the horses. Ask "Directions" and check: Lilmoth Dock lies about 405 m east of here.
 - [ ] **Sees-No-Shade**, a soldier in the Lilmoth council's pay who guards the plantation's south side; stands on the south side of the plantation by a bench, facing the water and the shore. Ask "Dangers nearby" and check: A giant crab, Old Salty, lives in the shallows about 45 m east-south-east of here.
@@ -158,13 +158,13 @@ true where it says. Walking time for all of them is about 40 minutes; nothing to
 
 #### The Docks (the map's "Docks", about 240 m east of Lilmoth Dock)
 
-- [ ] **Seeks-The-Channel**, boat captain at the Docks east of Lilmoth Dock; stands on the head of the Docks between the cooking spits and the north door, where boats tie up. Ask "Dangers nearby" and check: A bear and her cubs roam about 65 m south-south-east of here.
+- [ ] **Seeks-The-Channel**, boat captain at the Docks east of Lilmoth Dock; stands at the head of the Docks between the cooking spits and the north door, where boats tie up. Ask "Dangers nearby" and check: A bear and her cubs roam about 65 m south-south-east of here.
 - [ ] **Ushaa-Mei**, seller of food and small goods at the Docks; stands on the south-west side of the Docks near the houses, where people come out to buy. Ask "Plants and ingredients" and check: Gourds grow about 20 m north-north-west of here.
 - [ ] **Little-Minnow**, a hatchling of the Docks; stands in the middle of the Docks between the chairs and the cooking fire, where the grown-ups talk. Ask "Plants and ingredients" and check: Deathbell, nightshade, jazbay and other flowers grow together about 50 m south-east of here.
 - [ ] **Plaits-The-Reed**, reed-weaver of the Docks, maker of mats and baskets; stands on the south-west side of the Docks near the houses, at her weaving. Ask "Dangers nearby" and check: A dead Vale Deer lies about 45 m south-east of here; something killed it.
 - [ ] **Chases-Cows**, a hatchling of the Docks; stands on the north side of the Docks near the cooking spits, where he can reach the cows. Ask "Plants and ingredients" and check: Gourds grow about 15 m north-west of here.
 - [ ] **Wades-Late**, dock hand who hauls and ties up for the boats; stands on the south-east side of the Docks by the benches, where cargo is set down. Ask "Directions" and check: Hereguard Plantation lies far to the west, about 640 m west of here.
-- [ ] **Feldril Nethri**, Dunmer labourer at the Docks working off an owing of months; stands on the north end of the Docks by the north door, kept apart from the families. Ask "This place" and check: The north door of the Docks is about 10 m west of here and another about 5 m east-south-east.
+- [ ] **Feldril Nethri**, Dunmer labourer at the Docks working off an owing of months; stands at the north end of the Docks by the north door, kept apart from the families. Ask "This place" and check: The north door of the Docks is about 10 m west of here and another about 5 m east-south-east.
 
 - [ ] **Looks-At-Books' shop** (Hereguard Plantation): pick the trade option. She sells only books, paper and writing things: the four volumes of The Argonian Account, The Lusty Argonian Maid 1 and 2, The Sultry Argonian Bard 1, Short History of Morrowind, Welcome to Black Marsh (two copies), five rolls of paper, two inkwells and three quills, with about 300 gold to buy from you. She now has topics too (Yourself, My trade, Services, Someone in particular, Black Marsh).
 
