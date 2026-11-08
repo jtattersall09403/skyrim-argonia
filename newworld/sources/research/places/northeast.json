@@ -949,7 +949,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "The road is watched; jungle cats come to the well at night.",
+     "text": "The road past the post is watched. Travellers are stopped and questioned. At night jungle cats come down to drink at the well.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1950,7 +1950,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Settled country, with wildcats and snakes at the margins.",
+     "text": "Tselan sits in settled country. Its people keep the paths clear. Wildcats and snakes still hunt at the margins of the jungle round the hamlet.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3125,7 +3125,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Unquiet flu-dead, Sarpa hunters nearby and deep dark halls.",
+     "text": "The flu-dead of the old Velothi household are unquiet in the deep, dark halls. Sarpa hunters roost nearby and shoot at anyone whom they take for a robber.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4635,7 +4635,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "The hamlet is peaceful but its illusionists test strangers.",
+     "text": "The hamlet is peaceful. Its guards rarely draw a blade. Its Agaceph illusionists test strangers with glamours and false paths before they let them in.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {

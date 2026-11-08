@@ -328,7 +328,7 @@
 {"place_id":"farm-28-m87","aspect_id":"history","text":"Cleared by a Seafalls family who wanted ground for growing food that the sea does not provide.","statement_tier_id":"AGENT_INVENTED"}
 {"place_id":"farm-28-m87","aspect_id":"hooks","text":"The family's youngest has found a smuggler's cache in the pans and is afraid to tell anyone.","statement_tier_id":"AGENT_INVENTED"}
 {"place_id":"farm-28-m87","aspect_id":"look","text":"Flat grey salt-pans, stacked sedge, a single reed house on a mound, drying racks, a boiling shed with a stack.","statement_tier_id":"EXTRAPOLATED"}
-{"place_id":"farm-28-m87","aspect_id":"overview","text":"A farm on the salt flats inland of Seafalls.","statement_tier_id":"AGENT_INVENTED"}
+{"place_id":"farm-28-m87","aspect_id":"overview","text":"A farm on the salt flats inland of Seafalls. Its few households raise salt-tolerant rice and fowl and sell them down the road to Seafalls' harbour.","statement_tier_id":"AGENT_INVENTED"}
 {"place_id":"farm-28-m87","aspect_id":"people","text":"Three Argonians of Seafalls live here, a mother and her two grown children.","statement_tier_id":"EXTRAPOLATED"}
 {"place_id":"farm-28-m87","aspect_id":"present","text":"A working holding on the salt flats that sells its salt and sedge to Seafalls.","statement_tier_id":"EXTRAPOLATED"}
 {"place_id":"farm-28-m89","aspect_id":"dangers","text":"Crocodiles in the paddy, marsh predators for the herd, and smuggler thieves.","statement_tier_id":"EXTRAPOLATED"}
@@ -349,7 +349,7 @@
 {"place_id":"farm-6-m97","aspect_id":"overview","text":"A farm on the channel bank, named Reedfall after its reed falls on the water.","statement_tier_id":"AGENT_INVENTED"}
 {"place_id":"farm-6-m97","aspect_id":"people","text":"The household is a single Argonian farming family, with hatchlings and elders living under one stilted roof.","statement_tier_id":"EXTRAPOLATED"}
 {"place_id":"farm-6-m97","aspect_id":"present","text":"One Argonian family runs the whole farm, working the paddies and selling the harvest at Tei-Kur and Delta Ferry.","statement_tier_id":"EXTRAPOLATED"}
-{"place_id":"farm-m1-m64","aspect_id":"dangers","text":"Crocodiles in the ditch and the odd thief; nothing worse.","statement_tier_id":"EXTRAPOLATED"}
+{"place_id":"farm-m1-m64","aspect_id":"dangers","text":"Crocodiles lie in the irrigation ditch. A thief sometimes comes up the valley road at night. Stormhold's patrols ride past the farm.","statement_tier_id":"EXTRAPOLATED"}
 {"place_id":"farm-m1-m64","aspect_id":"economy","text":"Saltrice and eels sold to Stormhold on the causeway; a share goes to the Vicecanon's reeve.","statement_tier_id":"EXTRAPOLATED"}
 {"place_id":"farm-m1-m64","aspect_id":"faith","text":"Ancestor stones by the door and a Hist shoot in a clay pot, the family's one concession to both.","statement_tier_id":"EXTRAPOLATED"}
 {"place_id":"farm-m1-m64","aspect_id":"history","text":"A smallholding on raised ground since the Dunmer colonial period; the family stayed when the Dunmer withdrew.","statement_tier_id":"EXTRAPOLATED"}
@@ -466,7 +466,7 @@
 {"place_id":"gaweja","aspect_id":"overview","text":"A village on the lake edge on the western side of the mound country, the border village with the Agaceph.","statement_tier_id":"AGENT_INVENTED"}
 {"place_id":"gaweja","aspect_id":"people","text":"About eleven Argonians of the Oxhu-Teeleel, fishers and rice-growers, with a few Agaceph visitors.","statement_tier_id":"EXTRAPOLATED"}
 {"place_id":"gaweja","aspect_id":"present","text":"A quiet village. The elders keep good relations with Yulca, which is rare. A fair is held at the lake's edge each autumn.","statement_tier_id":"EXTRAPOLATED"}
-{"place_id":"gemin","aspect_id":"dangers","text":"Undead and monsters in flooded halls; the roof is unsafe.","statement_tier_id":"EXTRAPOLATED"}
+{"place_id":"gemin","aspect_id":"dangers","text":"Undead and swamp monsters walk the flooded halls of the sunken vaults. The roof is unsafe and gives way in places under any weight.","statement_tier_id":"EXTRAPOLATED"}
 {"place_id":"gemin","aspect_id":"economy","text":"Once the Conclave's vault; now a source of tablet fragments and relics for scavengers and the Conclave's agents.","statement_tier_id":"EXTRAPOLATED"}
 {"place_id":"gemin","aspect_id":"faith","text":"The Conclave's faith in learning and Molag Bal's name in their title; the Veesa-Teeleel call the ground sick.","statement_tier_id":"EXTRAPOLATED"}
 {"place_id":"gemin","aspect_id":"history","text":"The vaults sank when an associate of the Conclave cast a powerful spell. In the Simulacrum the Eternal Champion was sent in to recover the tablet.","statement_tier_id":"CANON_EXPLICIT"}
@@ -520,7 +520,7 @@
 {"place_id":"helstrom","aspect_id":"overview","text":"Helstrom is one of Black Marsh's eight great cities, in the reputedly inhospitable middle of the province, and many call it the immortal capital of the Argonians. It is the formal seat of the Archwardens' successor state and the meeting place of the Root Talk, though it is run by its own people, not by any distant government.","statement_tier_id":"CANON_EXPLICIT"}
 {"place_id":"helstrom","aspect_id":"people","text":"Overwhelmingly Argonian, drawn from the interior's exclusive breeds: Agaceph on tail-poled rafts, with Paatru and Naga visitors, and a very small licensed outsider presence of perhaps a few dozen. The guard is a tribal levy answerable to the assembly, not to strangers.","statement_tier_id":"CANON_DERIVED"}
 {"place_id":"helstrom","aspect_id":"present","text":"In 4E 201 Helstrom is intact and the least Imperialised city in the province. The state's formal seat is lodged here and largely ignored. The assembly of naheesh and tree-minders decides by consensus. A half-swallowed ring of Third Era villages lies on its approaches.","statement_tier_id":"EXTRAPOLATED"}
-{"place_id":"hirecan","aspect_id":"dangers","text":"The hamlet is peaceful but its illusionists test strangers.","statement_tier_id":"EXTRAPOLATED"}
+{"place_id":"hirecan","aspect_id":"dangers","text":"The hamlet is peaceful. Its guards rarely draw a blade. Its Agaceph illusionists test strangers with glamours and false paths before they let them in.","statement_tier_id":"EXTRAPOLATED"}
 {"place_id":"hirecan","aspect_id":"economy","text":"The Agaceph of Hirecan trade books, illusion work, river fish and rare reeds, carried by raft to Icalca and Yulca.","statement_tier_id":"EXTRAPOLATED"}
 {"place_id":"hirecan","aspect_id":"faith","text":"They follow the Hist but are scholars; they keep books taken from dead missions.","statement_tier_id":"EXTRAPOLATED"}
 {"place_id":"hirecan","aspect_id":"history","text":"A hamlet founded as the Agaceph spread along the mesa's rivers.","statement_tier_id":"EXTRAPOLATED"}
@@ -1285,7 +1285,7 @@
 {"place_id":"outpost-14-m85","aspect_id":"overview","text":"Four Saxhleel of the Root-Folk of Helstrom hold a reed-built platform with a lamp tower and racks of dried fish.","statement_tier_id":"AGENT_INVENTED"}
 {"place_id":"outpost-14-m85","aspect_id":"people","text":"About four Saxhleel live on the reed platform in the lake's eastern reaches: watchers, and an egg-tender.","statement_tier_id":"AGENT_INVENTED"}
 {"place_id":"outpost-14-m85","aspect_id":"present","text":"Four Saxhleel hold the islet, watching the water between Marzai and Truowa and tending eggs. They pass news of the eastern shore to a tree-minder when a boat comes by.","statement_tier_id":"EXTRAPOLATED"}
-{"place_id":"outpost-2-m68","aspect_id":"dangers","text":"Wild country around; a Naga camp lies a short way south.","statement_tier_id":"EXTRAPOLATED"}
+{"place_id":"outpost-2-m68","aspect_id":"dangers","text":"The country around the post is wild, with predators in the sedge. A Naga camp lies a short way south. Its raiders watch the road.","statement_tier_id":"EXTRAPOLATED"}
 {"place_id":"outpost-2-m68","aspect_id":"economy","text":"Ferry fares, a night's bed, smoked meat for the road to Helstrom.","statement_tier_id":"EXTRAPOLATED"}
 {"place_id":"outpost-2-m68","aspect_id":"faith","text":"There is no formal worship; the family keeps a row of grave-stakes for its dead on a rise behind the house.","statement_tier_id":"EXTRAPOLATED"}
 {"place_id":"outpost-2-m68","aspect_id":"history","text":"A ferry point where the road toward Helstrom crosses the eastern branch of the river, kept since the colonial period.","statement_tier_id":"EXTRAPOLATED"}
@@ -1312,7 +1312,7 @@
 {"place_id":"outpost-22-m77","aspect_id":"overview","text":"Tazhul is a Root-Folk station on the edge of Okuwun-Rahei, a small outpost of Helstrom's people.","statement_tier_id":"AGENT_INVENTED"}
 {"place_id":"outpost-22-m77","aspect_id":"people","text":"About four Saxhleel, hunters and an egg-minder; wary of strangers.","statement_tier_id":"EXTRAPOLATED"}
 {"place_id":"outpost-22-m77","aspect_id":"present","text":"A small station with a rack of eggs and a hunters' lodge; the Root-Folk keep apart from the mounds and the Agaceph.","statement_tier_id":"EXTRAPOLATED"}
-{"place_id":"outpost-23-m64","aspect_id":"dangers","text":"The road is watched; jungle cats come to the well at night.","statement_tier_id":"EXTRAPOLATED"}
+{"place_id":"outpost-23-m64","aspect_id":"dangers","text":"The road past the post is watched. Travellers are stopped and questioned. At night jungle cats come down to drink at the well.","statement_tier_id":"EXTRAPOLATED"}
 {"place_id":"outpost-23-m64","aspect_id":"economy","text":"Small tolls and a share of whatever the travellers carry; it sells water and dried fish.","statement_tier_id":"EXTRAPOLATED"}
 {"place_id":"outpost-23-m64","aspect_id":"faith","text":"A tree-hollow offering box for the Hist is nailed to the post's gate.","statement_tier_id":"AGENT_INVENTED"}
 {"place_id":"outpost-23-m64","aspect_id":"history","text":"Imperial forts once ran a chain of waystations along the track; this is one the Archwardens kept.","statement_tier_id":"EXTRAPOLATED"}
@@ -1753,7 +1753,7 @@
 {"place_id":"shipwreck-0-m111","aspect_id":"overview","text":"The Salt Heron is a merchant wreck lying off the south shore of the washes, a short boat ride from Natai.","statement_tier_id":"AGENT_INVENTED"}
 {"place_id":"shipwreck-0-m111","aspect_id":"people","text":"The wreck has no residents. The Natai salvagers who dive it are its only visitors.","statement_tier_id":"EXTRAPOLATED"}
 {"place_id":"shipwreck-0-m111","aspect_id":"present","text":"Natai's salvagers dive the Salt Heron by turns, each taking a share of what they bring up.","statement_tier_id":"EXTRAPOLATED"}
-{"place_id":"shipwreck-25-m111","aspect_id":"dangers","text":"Sea-drakes, a shaft of cold current and a collapsed hatch.","statement_tier_id":"AGENT_INVENTED"}
+{"place_id":"shipwreck-25-m111","aspect_id":"dangers","text":"Sea-drakes hunt the water above the wreck. A shaft of cold current runs past its stern. Inside, a collapsed hatch can trap a diver who goes too deep.","statement_tier_id":"AGENT_INVENTED"}
 {"place_id":"shipwreck-25-m111","aspect_id":"economy","text":"It once let a salvage master carry out dives into the spires; now it is itself salvage.","statement_tier_id":"AGENT_INVENTED"}
 {"place_id":"shipwreck-25-m111","aspect_id":"faith","text":"Divers tap the Kelp Lantern's sphere three times for luck as they pass.","statement_tier_id":"AGENT_INVENTED"}
 {"place_id":"shipwreck-25-m111","aspect_id":"history","text":"Built by a salvage master of Lilmoth to reach the deep spires without a bell and lowered by a barge. Its cable parted in a storm and it was lost. The master died of grief.","statement_tier_id":"AGENT_INVENTED"}
@@ -2029,7 +2029,7 @@
 {"place_id":"tribal-camp-19-m79","aspect_id":"history","text":"The Sarpa are winged and hostile to outsiders and live only in Middle Argonia; a camp on the edge of Oxhu country is consistent with the confederacy's frequent skirmishes with them.","statement_tier_id":"EXTRAPOLATED"}
 {"place_id":"tribal-camp-19-m79","aspect_id":"hooks","text":"The wing-chief wants a stolen perch-pole returned from Aroxhu. An Aroxhu spear-captain wants peace and needs an envoy.","statement_tier_id":"AGENT_INVENTED"}
 {"place_id":"tribal-camp-19-m79","aspect_id":"look","text":"Tall perches and streamers over a mud-bank, tents of reed and hide, rope nets, droppings white on stones.","statement_tier_id":"EXTRAPOLATED"}
-{"place_id":"tribal-camp-19-m79","aspect_id":"overview","text":"A permanent Sarpa camp on a high mud-bank west of Aroxhu.","statement_tier_id":"AGENT_INVENTED"}
+{"place_id":"tribal-camp-19-m79","aspect_id":"overview","text":"A permanent Sarpa camp on a high mud-bank west of Aroxhu. The winged hunters roost in reed shelters on the bank's crown, where they can watch the clay-mound country around them.","statement_tier_id":"AGENT_INVENTED"}
 {"place_id":"tribal-camp-19-m79","aspect_id":"people","text":"About eight Sarpa live on the roost, led by a wing-chief with a scarred crest.","statement_tier_id":"EXTRAPOLATED"}
 {"place_id":"tribal-camp-19-m79","aspect_id":"present","text":"A camp of perches and tents; Aroxhu's spears and the Sarpa fight now and then, then make peace.","statement_tier_id":"EXTRAPOLATED"}
 {"place_id":"tribal-camp-28-m76","aspect_id":"dangers","text":"Sarpa archers attack intruders at range from the air; the camp's boundary poles are marked in feathers and bones.","statement_tier_id":"EXTRAPOLATED"}
@@ -2149,7 +2149,7 @@
 {"place_id":"truowa","aspect_id":"overview","text":"Truowa is a small city, on the scale of Falkreath, at the south-east edge of Lake Ulaish where the water runs out toward Lilmoth. It belongs to Lilmoth's trade: goods from the delta and the coast arrive here and go up the lake to the Helstrom country.","statement_tier_id":"EXTRAPOLATED"}
 {"place_id":"truowa","aspect_id":"people","text":"About 38 residents, mostly Argonian, with a small foreign dock population of Imperial, Khajiit and Bosmer traders. Council merchants, harbour watchmen, ferrymen, rice factors and a visible tree-minder.","statement_tier_id":"AGENT_INVENTED"}
 {"place_id":"truowa","aspect_id":"present","text":"In 4E 201 a merchant council, copying Lilmoth's, runs the city, taxes the lake traffic and keeps a harbour watch. It trades openly with the delta and the Lilmoth coast and is cool toward the nearby Archwarden fort at Gysilla.","statement_tier_id":"EXTRAPOLATED"}
-{"place_id":"tselan","aspect_id":"dangers","text":"Settled country, with wildcats and snakes at the margins.","statement_tier_id":"EXTRAPOLATED"}
+{"place_id":"tselan","aspect_id":"dangers","text":"Tselan sits in settled country. Its people keep the paths clear. Wildcats and snakes still hunt at the margins of the jungle round the hamlet.","statement_tier_id":"EXTRAPOLATED"}
 {"place_id":"tselan","aspect_id":"economy","text":"Quarried stone, fish, jungle fruit; it buys cloth and tools from Tsonac.","statement_tier_id":"EXTRAPOLATED"}
 {"place_id":"tselan","aspect_id":"faith","text":"The Stone-Sleepers believe their Hist sleeps; at Tselan a stone cairn takes the place of a tree, and dreams are reported to Tsonac's tree-minder.","statement_tier_id":"EXTRAPOLATED"}
 {"place_id":"tselan","aspect_id":"history","text":"Founded over an old foundation as the Stone-Sleepers spread west along the river.","statement_tier_id":"EXTRAPOLATED"}
@@ -2194,7 +2194,7 @@
 {"place_id":"umpholo","aspect_id":"overview","text":"Umpholo is the site of a Temple of Mara built about 3E 378. The missionaries died of swamp rot within a month and the library was picked clean by about 3E 399. The story is told in The Argonian Account, Book 4. The site lies in the far west.","statement_tier_id":"CANON_EXPLICIT"}
 {"place_id":"umpholo","aspect_id":"people","text":"Lukiul and Naka-Desh Argonians of the Blackwood frontier; a few Agaceph visitors come to trade in books.","statement_tier_id":"EXTRAPOLATED"}
 {"place_id":"umpholo","aspect_id":"present","text":"A hamlet of river Argonians living in and around the stripped stone chapel, which the swamp has been overgrowing for two centuries. A fish-and-reed trade with Slough Point.","statement_tier_id":"EXTRAPOLATED"}
-{"place_id":"velothi-ruin-23-m73","aspect_id":"dangers","text":"Unquiet flu-dead, Sarpa hunters nearby and deep dark halls.","statement_tier_id":"EXTRAPOLATED"}
+{"place_id":"velothi-ruin-23-m73","aspect_id":"dangers","text":"The flu-dead of the old Velothi household are unquiet in the deep, dark halls. Sarpa hunters roost nearby and shoot at anyone whom they take for a robber.","statement_tier_id":"EXTRAPOLATED"}
 {"place_id":"velothi-ruin-23-m73","aspect_id":"economy","text":"Once a river-quay market; now a ruin with uncollected goods and no trade.","statement_tier_id":"EXTRAPOLATED"}
 {"place_id":"velothi-ruin-23-m73","aspect_id":"faith","text":"The Velothi followed Mephala; the Hist-guarded land beyond is held to be worse than the ruin itself.","statement_tier_id":"EXTRAPOLATED"}
 {"place_id":"velothi-ruin-23-m73","aspect_id":"history","text":"A Velothi town of the east, emptied by the Knahaten Flu in 2E 560-603; too far from any road to have been scavenged.","statement_tier_id":"CANON_DERIVED"}

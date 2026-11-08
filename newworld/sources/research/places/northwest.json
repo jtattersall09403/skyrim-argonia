@@ -1353,7 +1353,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Crocodiles in the ditch and the odd thief; nothing worse.",
+     "text": "Crocodiles lie in the irrigation ditch. A thief sometimes comes up the valley road at night. Stormhold's patrols ride past the farm.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1824,7 +1824,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Wild country around; a Naga camp lies a short way south.",
+     "text": "The country around the post is wild, with predators in the sedge. A Naga camp lies a short way south. Its raiders watch the road.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3832,7 +3832,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Undead and monsters in flooded halls; the roof is unsafe.",
+     "text": "Undead and swamp monsters walk the flooded halls of the sunken vaults. The roof is unsafe and gives way in places under any weight.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
