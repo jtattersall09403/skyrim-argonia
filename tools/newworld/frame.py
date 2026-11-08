@@ -25,6 +25,7 @@ KEY_IMAGE = MAPS / "PT3-key-Hammerfell-High-Rock.png"
 OUT = REPO / "out" / "newworld"
 
 WIDTH_PX, HEIGHT_PX = 3521, 2841
+FRAME_PX = 42                          # the ruler band (and its white rule) on every edge: no ground
 PX_PER_CELL = 40
 CELL_UNITS = 8192                      # a Morrowind exterior cell
 UNITS_PER_PX = CELL_UNITS / PX_PER_CELL  # 204.8

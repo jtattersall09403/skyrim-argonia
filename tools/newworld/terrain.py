@@ -19,13 +19,15 @@ The recipe:
    `newworld/sources/water_overrides.json` ({"<body id>": {"water_kind_id", "flows", "flow_toward_deg", "name"}},
    read on every build); its kind sets the bed (BED).
 4. Relief (terrain_relief): region parameters from the region table, the fallback table where empty.
-5. Banks and beds (terrain_shape.compose). Then places' needs from `place_terrain_need` (a place with no row takes
+5. Weathering (terrain_erode): drainage erosion, slope detail and talus on the natural ground, then a buildable
+   core for every large built place (town tier and up; radius by tier and slope limit in terrain_erode).
+6. Banks and beds (terrain_shape.compose). Then places' needs from `place_terrain_need` (a place with no row takes
    its kind's fallback) in this order: flat pads, rises, sea beds, shore access; then the roads, solved as one
    network and laid; then entrances, each facing down its road when one comes within 60 m, else the best dry and
    open heading, never burying a road's bed. Then LAND's 8-unit rounding and step limit, the map's water guaranteed
    pixel by pixel, and any entrance the rounding spoiled shaped again.
-6. Cliff mask: slope over 55 degrees (FreeClimb climbs them; cliff meshes go there later).
-7. Outputs in out/newworld/terrain/: heightmap.npy (float32 units), heightmap.png (16-bit, h = offset + scale v),
+7. Cliff mask: slope over 55 degrees (FreeClimb climbs them; cliff meshes go there later).
+8. Outputs in out/newworld/terrain/: heightmap.npy (float32 units), heightmap.png (16-bit, h = offset + scale v),
    cliff.png, water_bodies.png (16-bit body index, map px) with out/newworld/water_bodies.json, roads_terrain.json
    (crossings, cut and fill), places_terrain.json, hillshade.png and crops/, check.json, build.json (the
    terrain_build row and the scale). Then all of it to s3://argonia-private-050977237313/nw/terrain/<stamp>/.
@@ -45,6 +47,7 @@ from PIL import Image
 from scipy import ndimage as ndi
 
 from tools.newworld import frame as f
+from tools.newworld import terrain_erode as te
 from tools.newworld import terrain_relief as tr
 from tools.newworld import terrain_shape as ts
 from tools.newworld import terrain_water as tw
@@ -198,6 +201,12 @@ def build(upload: bool = True) -> dict:
     log("noise and fields")
     relief_m = tr.relief(F, n, coast_full)
     del n
+    relief_m = te.weather(relief_m, water_s, F, SEED)
+    sym_tier0 = {s.id: s.settlement_tier_id for s in w.rows("symbol")}
+    big = [(*(float(v) for v in grid.ij(p.px, p.py)), sym_tier0.get(p.symbol_id)) for p in w.rows("place")
+           if sym_tier0.get(p.symbol_id) in te.BUILD_R_M and not p.on_water]
+    settled = te.settle_places(relief_m, big, sm)
+    log("weathered; large places settled", len(settled))
 
     # 5. banks and beds
     jx = np.clip(np.floor(grid.p0x + np.arange(grid.cols) * grid.k).astype(int), 0, W - 1)
@@ -350,7 +359,7 @@ def build(upload: bool = True) -> dict:
              "about": ("float32 game units (70 a metre), north-up, row 0 the north edge; heightmap.png is 16-bit: "
                        f"h = {offset} + 8 v units; water bodies at map px; cliffs over {CLIFF_DEG} deg"),
              "png_offset_units": offset, "png_scale_units": ts.QUANT,
-             "regions": psrc, "water_overrides": len(overrides), "water_override_problems": ov_problems, "roads_used": bool(plans), "seconds": round(time.time() - t0)}
+             "regions": psrc, "water_overrides": len(overrides), "water_override_problems": ov_problems, "roads_used": bool(plans), "settled_places": settled, "seconds": round(time.time() - t0)}
     (OUT / "build.json").write_text(json.dumps(bjson, indent=1, default=_j))
     log("checks", json.dumps({k: v for k, v in chk.items() if k != "guarantee_fails_px"}, default=_j))
     if upload:

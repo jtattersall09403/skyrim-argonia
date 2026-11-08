@@ -239,11 +239,13 @@ def build() -> db.World:
                  label_px=px, label_py=py, **{k: r.get(k) for k in region_cols})
         write_notes(w, "region", rid, r, source)
 
-    # cells (their danger bands are set by danger.py once places and roads are in)
+    # cells (their danger bands are set by danger.py once places and roads are in); margin cells are border scenery
+    mfile = f.OUT / "margin_cells.json"
+    margin = {tuple(c) for c in json.loads(mfile.read_text())} if mfile.exists() else set()
     for (x, y), rid in sorted(cell_region.items()):
         l, t, rr, b = f.cell_px_box(x, y)
         land = 1.0 - float(water[max(t, 0):b, max(l, 0):rr].mean())
-        w.insert("cell", x=x, y=y, region_id=rid, land_share=round(land, 3))
+        w.insert("cell", x=x, y=y, region_id=rid, land_share=round(land, 3), margin=int((x, y) in margin))
 
     # places
     rows, seen = [], Counter()

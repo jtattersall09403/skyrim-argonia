@@ -32,16 +32,17 @@ from scipy import ndimage as ndi
 # The one fallback table: replaced, column by column, by the region table's own values once researched.
 # floor_m, summit_m: heights above the water; rough_m: hummock relief; cliff: share of steep slopes;
 # wet: 0 dry upland .. 1 standing swamp; ramp_m: shore ramp length (how far inland the ground reaches its relief).
+# Low ground ramps over 6 m: BM&V's marsh is level about 1.7 m up by 10 to 16 m inland (terrain-measurements.md).
 FALLBACK = {
     #  landform     floor  summit rough cliff  wet  ramp  form
-    "swamp":      (0.4,   4.0,  1.2, 0.00, 0.90, 12, "low"),
-    "bayou":      (0.3,   3.0,  1.0, 0.00, 0.95, 10, "low"),
-    "mangroves":  (0.3,   2.5,  0.8, 0.00, 1.00,  8, "low"),
-    "basin":      (0.5,   6.0,  1.5, 0.00, 0.80, 15, "low"),
-    "washes":     (0.5,   8.0,  2.0, 0.02, 0.60, 15, "low"),
-    "lake":       (0.5,  10.0,  1.5, 0.00, 0.70, 15, "low"),
-    "bight":      (0.6,  15.0,  2.5, 0.02, 0.60, 15, "low"),
-    "marsh":      (0.4,   6.0,  1.5, 0.00, 0.85, 12, "low"),
+    "swamp":      (0.4,   4.0,  1.2, 0.00, 0.90,  6, "low"),
+    "bayou":      (0.3,   3.0,  1.0, 0.00, 0.95,  6, "low"),
+    "mangroves":  (0.3,   2.5,  0.8, 0.00, 1.00,  6, "low"),
+    "basin":      (0.5,   6.0,  1.5, 0.00, 0.80,  6, "low"),
+    "washes":     (0.5,   8.0,  2.0, 0.02, 0.60,  6, "low"),
+    "lake":       (0.5,  10.0,  1.5, 0.00, 0.70,  6, "low"),
+    "bight":      (0.6,  15.0,  2.5, 0.02, 0.60,  6, "low"),
+    "marsh":      (0.4,   6.0,  1.5, 0.00, 0.85,  6, "low"),
     "wood":       (1.0,  30.0,  3.0, 0.03, 0.60, 25, "hills"),
     "jungle":     (2.0,  60.0,  5.0, 0.05, 0.50, 35, "hills"),
     "valley":     (3.0, 110.0,  6.0, 0.10, 0.30, 40, "hills"),

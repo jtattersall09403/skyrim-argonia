@@ -10,7 +10,8 @@ How a pixel is read:
   s = 0.94 r + 0.34 g, the direction from base water to base land;
 - marks drawn over the ground (labels, icons, glyphs, roads, borders, the grid's highlighted bands are ground) are
   removed and take the class of the nearest ground pixel; so does the whole disc of every settlement glyph (from
-  out/newworld/symbols.json when it exists), whose fill and rings are no ground at all.
+  out/newworld/symbols.json when it exists), whose fill and rings are no ground at all;
+- the ruler band round the map's edge (frame.FRAME_PX) is print, not ground: it takes the nearest ground inside.
 
     python3 -m tools.newworld.raster      # water.png, foreign.png, hatched.png, preview.png
 """
@@ -63,10 +64,10 @@ def otsu(v: np.ndarray) -> tuple[float, float]:
 
 
 def scope_mask(shape) -> np.ndarray:
-    """Pixels of the cells the regions map tints (the province and its seas)."""
-    from tools.newworld.tiles import scope_cells
+    """Pixels of the province's cells (tinted, and the hatched land inside the northern border)."""
+    from tools.newworld.tiles import province_cells
     m = np.zeros(shape, bool)
-    for cx, cy in scope_cells():
+    for cx, cy in province_cells():
         l, t, r, b = f.cell_px_box(cx, cy)
         m[max(t, 0):b, max(l, 0):r] = True
     return m
@@ -143,6 +144,10 @@ def classify(a: np.ndarray) -> dict[str, np.ndarray]:
     cls[known & water] = 1
     cls[known & ~water & ~grey] = 2
     cls[known & grey] = 3
+    # the rulers round the map's edge are print, not ground: they take the nearest ground inside the frame
+    fp = f.FRAME_PX
+    cls[:fp, :] = cls[-fp:, :] = 0
+    cls[:, :fp] = cls[:, -fp:] = 0
     # unknown pixels take the class of the nearest known pixel
     idx = ndi.distance_transform_edt(cls == 0, return_distances=False, return_indices=True)
     filled = cls == 0

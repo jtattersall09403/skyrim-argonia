@@ -13,6 +13,7 @@ The rules, applied in order, each cell keeping the first that sets it:
    the baseline stands, so the heart of a dreadful region keeps the province's worst band.
 5. A minor road lowers the cells it passes through by one band, never below D1.
 Sea cells take their region's baseline within 2 cells of a coast, and one band higher (at most D3) beyond.
+Margin cells (border scenery past the province) take no band; the province's edge is measured against them.
 
     from tools.newworld import danger; danger.assign(w)     # fills cell.danger_band_id and cell.danger_why
 """
@@ -33,7 +34,7 @@ NB8 = [(dx, dy) for dx in (-1, 0, 1) for dy in (-1, 0, 1) if dx or dy]
 
 
 def assign(w: db.World) -> None:
-    cells = {(c.x, c.y): c for c in w.rows("cell")}
+    cells = {(c.x, c.y): c for c in w.rows("cell") if not c.margin}   # the margin is scenery: no band
     regions = {r.id: r for r in w.rows("region")}
     sea = {k for k, c in cells.items() if regions[c.region_id].kind == "sea"}
     band: dict = {}

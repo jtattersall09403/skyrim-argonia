@@ -169,12 +169,13 @@ CREATE TABLE "region" (
   "statement_tier_id" TEXT REFERENCES "statement_tier"("id")
 );
 
--- Every cell inside the regions (the province and its seas).
+-- Every cell the world is built over: the province and its seas, and the margin round them.
 CREATE TABLE "cell" (
   "x" INTEGER NOT NULL,
   "y" INTEGER NOT NULL,
   "region_id" TEXT NOT NULL REFERENCES "region"("id"),
   "land_share" REAL NOT NULL,            -- share of the cell that is dry land on the map
+  "margin" INTEGER NOT NULL CHECK ("margin" IN (0, 1)),  -- 1: border scenery past the province (no navmesh, flora detail or danger)
   "danger_band_id" TEXT REFERENCES "danger_band"("id"),
   "danger_why" TEXT,                     -- the rule that set the band
   PRIMARY KEY ("x", "y")

@@ -98,3 +98,30 @@ def test_fallback_by_landform_word():
     R.elevation_summit_m = 99.0
     p, src = tr.region_params(R)
     assert p["summit"] == 99.0 and "db" in src
+
+
+def test_weathering_drains_keeps_marsh_flat_and_settles_places():
+    from tools.newworld import terrain_erode as te
+    n = 160
+    rng = np.random.default_rng(3)
+    water = np.zeros((n, n), bool)
+    water[:, :10] = True
+    relief = (tr.noise((n, n), 12, 5) * 6 + 30).astype(np.float32)
+    relief[water] = 0
+    F = {"floor": np.full((n, n), 5.0), "summit": np.full((n, n), 80.0), "rough": np.full((n, n), 3.0),
+         "w_mesa": np.zeros((n, n))}
+    out = te.weather(relief, water, F, 7)
+    land = ~water
+    assert out[land].min() >= min(te.DRY_M, relief[land].min()) - 1e-4     # no new water
+    from skimage.morphology import reconstruction
+    outlet = water.copy()
+    outlet[0, :] = outlet[-1, :] = outlet[:, 0] = outlet[:, -1] = True
+    filled = reconstruction(np.where(outlet, out, out.max() + 1), out, method="erosion")
+    assert (filled - out)[land].max() < 0.01                                # no closed hollow: it all drains
+    before = reconstruction(np.where(outlet, relief, relief.max() + 1), relief, method="erosion")
+    assert (before - relief)[land].max() > 0.5                              # (the noise had hollows to drain)
+    del rng
+    r = out.copy()
+    done = te.settle_places(r, [(80.0, 90.0, "town")], te.M)
+    assert done and done[0]["slope_p98_deg"] <= te.BUILD_MAX_SLOPE_DEG + 0.5
+    assert done[0]["relief_m"] > 0.05                                       # not bulldozed flat

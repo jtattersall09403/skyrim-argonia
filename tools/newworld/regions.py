@@ -1,4 +1,6 @@
-"""Each in-scope cell's region, read from Project Tamriel's regions map, which tints whole cells, one colour a region.
+"""Each in-scope cell's region, read from Project Tamriel's regions map, which tints whole cells, one colour a region;
+an untinted cell (the hatched land inside the northern border, the margin past the province) takes its nearest tinted
+cell's region.
 
 The regions map is the base map under a translucent overlay: per channel G = 0.505 B + m, where m is fixed by the
 region's colour (the blend factor measured by regressing G on B inside 277 cells). So m = G - 0.505 B is the same
@@ -67,7 +69,9 @@ def signatures(cells) -> dict:
 
 
 def assign() -> tuple[dict, dict]:
-    cells = [tuple(c) for c in json.loads((f.OUT / "scope_cells.json").read_text())]
+    from tools.newworld.tiles import tinted_cells
+    scope = [tuple(c) for c in json.loads((f.OUT / "scope_cells.json").read_text())]
+    cells = sorted(tinted_cells() & set(scope))
     sig = signatures(cells)
     nbrs = ((1, 0), (-1, 0), (0, 1), (0, -1))
     comp: dict = {}
@@ -111,6 +115,15 @@ def assign() -> tuple[dict, dict]:
         if len(left) == len(loose):
             break
         loose = left
+    # the untinted cells (the hatched land inside the northern border, and the margin past the province's edge)
+    # take the region of the nearest tinted cell, so each region runs on to the border and beyond it
+    rest = [c for c in scope if c not in reg]
+    if rest:
+        from scipy.spatial import cKDTree
+        known = list(reg)
+        _, k = cKDTree(np.array(known)).query(np.array(rest))
+        for c, i in zip(rest, k):
+            reg[c] = reg[known[i]]
     return reg, sig
 
 
