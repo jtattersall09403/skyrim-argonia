@@ -1,0 +1,956 @@
+{
+ "records": [
+  {
+   "id": "murkwood",
+   "summary": "Murkwood is the Hist forest at the heart of Black Marsh, the legendary dark wood that ever moves, around Helstrom. Its people are the Root-Folk, its beasts are medusas and Naga, and outsiders who enter without leave do not come out.",
+   "landform": "Low swamp forest of root-hummocks, braided river arms and black Heart-Mud flats, with a few dry rises.",
+   "elevation_floor_m": 5.0,
+   "elevation_summit_m": 20.0,
+   "roughness_m": 1.2,
+   "cliff_share": 0.03,
+   "wetness": 0.8,
+   "biome": "Dense Hist swamp forest of great roots and hanging moss, black Heart-Mud flats and slow rivers",
+   "climate": "Hot, humid and overcast, with flesh-fly clouds in the warm months and heavy monsoon rain from late spring.",
+   "culture_id": "forest-green",
+   "danger_band_id": "D4",
+   "statement_tier_id": "CANON_DERIVED",
+   "notes": [
+    {
+     "aspect": "overview",
+     "text": "Murkwood is the legendary dark forest that ever moves, on a river deep in the swamps of Black Marsh and home to many medusas. Canon has the Conclave of Baal at Stormhold find where it stands by reading the Elder Scrolls with an ancient tablet; our map shows where it stands in 4E 201, around Helstrom.",
+     "tier": "CANON_EXPLICIT",
+     "sources": [
+      {
+       "kind": "uesp",
+       "title": "Lore:Murkwood",
+       "locator": "Lore:Murkwood",
+       "url": "https://en.uesp.net/wiki/Lore:Murkwood"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/middle-argonia.md",
+       "locator": "story/lore/regions/middle-argonia.md",
+       "section": "Murkwood"
+      }
+     ]
+    },
+    {
+     "aspect": "history",
+     "text": "In the Imperial Simulacrum of 3E 399 Jagar Tharn hid a piece of the Staff of Chaos in Murkwood, and the Eternal Champion fetched it. The forest has moved many times since; Helstrom and the Root-Folk have stood beside it through all of them.",
+     "tier": "CANON_EXPLICIT",
+     "sources": [
+      {
+       "kind": "uesp",
+       "title": "Lore:Murkwood",
+       "locator": "Lore:Murkwood",
+       "url": "https://en.uesp.net/wiki/Lore:Murkwood"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/topics/loading-facts.md",
+       "locator": "story/lore/topics/loading-facts.md"
+      }
+     ]
+    },
+    {
+     "aspect": "present",
+     "text": "In 4E 201 the forest crowds the river arms around Helstrom, held by the Root-Folk, the Hutan-Tzel at its west edge, and several camps of Naga and Paatru. Few outsiders come, and fewer come back.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "regions murkwood"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "forest-green"
+      }
+     ]
+    },
+    {
+     "aspect": "people",
+     "text": "The Root-Folk of Helstrom (Saxhleel) hold the heart; the Hutan-Tzel hold the west; tribeless Naga and the toad-like Paatru hold the camps at the margin.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "regions murkwood"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "forest-green"
+      }
+     ]
+    },
+    {
+     "aspect": "economy",
+     "text": "Fellrunner feathers, sap, eggs, hides and river fish; farmers trade sacks of feathers to hunters, and a single armband of the pale down lets a hunter move through Murkwood undetected.",
+     "tier": "CANON_EXPLICIT",
+     "sources": [
+      {
+       "kind": "uesp",
+       "title": "Lore:Murkwood",
+       "locator": "Lore:Murkwood",
+       "url": "https://en.uesp.net/wiki/Lore:Murkwood"
+      }
+     ]
+    },
+    {
+     "aspect": "faith",
+     "text": "The Hist: every settlement sends its people to a village tree to hatch and bury. The Root Talk at Helstrom is the occasion on which the tribes hear the trees speak.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "regions murkwood"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "forest-green"
+      }
+     ]
+    },
+    {
+     "aspect": "look",
+     "text": "A dark wood of huge roots, hanging moss and black water; light comes green and dim, the air is thick and loud with insects, and the forest never looks the same twice.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "regions murkwood"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "forest-green"
+      }
+     ]
+    },
+    {
+     "aspect": "dangers",
+     "text": "Medusas in the deep wood, Naga ambushes on the river arms, Paatru who kill on sight, and the moving wood itself, which can swallow a path overnight.",
+     "tier": "CANON_DERIVED",
+     "sources": [
+      {
+       "kind": "uesp",
+       "title": "Lore:Murkwood",
+       "locator": "Lore:Murkwood",
+       "url": "https://en.uesp.net/wiki/Lore:Murkwood"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/middle-argonia.md",
+       "locator": "story/lore/regions/middle-argonia.md",
+       "section": "The interior breeds"
+      }
+     ]
+    },
+    {
+     "aspect": "landscape",
+     "text": "Low, wet ground cut by braided river arms flowing toward the lake, with dry rises where the roots hold the soil. Heart-Mud flats lie on the south.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "regions murkwood"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "forest-green"
+      }
+     ]
+    },
+    {
+     "aspect": "ecology",
+     "text": "Great Hist trees, mosses and ferns; fellrunners, medusas, rootworms, crocodiles, flesh-flies and torchbugs. Fellrunner pale down is the region's famous good.",
+     "tier": "CANON_DERIVED",
+     "sources": [
+      {
+       "kind": "uesp",
+       "title": "Lore:Murkwood",
+       "locator": "Lore:Murkwood",
+       "url": "https://en.uesp.net/wiki/Lore:Murkwood"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/middle-argonia.md",
+       "locator": "story/lore/regions/middle-argonia.md",
+       "section": "Murkwood"
+      }
+     ]
+    },
+    {
+     "aspect": "climate",
+     "text": "Hot, wet and still; monsoon in late spring and early summer; fog in the early mornings and a perpetual warmth.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "regions murkwood"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "forest-green"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "lake-ulaish",
+   "summary": "Lake Ulaish is the great lake south-east of Helstrom where the interior waters pool before running to Lilmoth and Blackrose. Fishing hamlets, a toll fort and a trading city share its shores, and boats are its roads.",
+   "landform": "A broad shallow lake with silt islets, reed shores and river deltas at its north-west corner.",
+   "elevation_floor_m": 3.0,
+   "elevation_summit_m": 10.0,
+   "roughness_m": 0.8,
+   "cliff_share": 0.02,
+   "wetness": 0.9,
+   "biome": "Shallow freshwater lake, reed beds, silt islets and delta marsh",
+   "climate": "Humid and warm, with squalls across open water and monsoon flooding of the shores.",
+   "culture_id": null,
+   "danger_band_id": "D2",
+   "statement_tier_id": "EXTRAPOLATED",
+   "notes": [
+    {
+     "aspect": "overview",
+     "text": "Lake Ulaish is the large lake south-east of Helstrom where the river arms of the interior spread out and slow before moving on. UESP has no page for it; the name is Project Tamriel's.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "uesp",
+       "title": "Lore:Lake Ulaish (no page)",
+       "locator": "UESP search and page lookup, 2026-11-08: no Lore page for Lake Ulaish",
+       "url": "https://en.uesp.net/w/index.php?search=Lake+Ulaish"
+      },
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "regions lake-ulaish"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/middle-argonia.md",
+       "locator": "story/lore/regions/middle-argonia.md",
+       "section": "The interior as canon describes it"
+      }
+     ]
+    },
+    {
+     "aspect": "history",
+     "text": "Nothing is recorded. The lake is the interior's drain: the rivers all flow to Middle Argonia, and this is where they pool, which made it a meeting place for trade long before the Empire built a post at Gysilla.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "regions lake-ulaish"
+      },
+      {
+       "kind": "reasoning",
+       "title": "The interior rivers all drain to Middle Argonia, so a lake is where they pool (Lore:Middle Argonia)",
+       "locator": "The interior rivers all drain to Middle Argonia, so a lake is where they pool (Lore:Middle Argonia)"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/middle-argonia.md",
+       "locator": "story/lore/regions/middle-argonia.md",
+       "section": "The interior as canon describes it"
+      }
+     ]
+    },
+    {
+     "aspect": "present",
+     "text": "In 4E 201 the lake carries the boat traffic between Helstrom, Aroxhu, Truowa and the waters toward Korydon and Blackrose. An Archwardens garrison tolls it from Gysilla; Truowa's merchants and the Aroxhu mound people compete for its trade.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "regions lake-ulaish"
+      },
+      {
+       "kind": "reasoning",
+       "title": "The interior rivers all drain to Middle Argonia, so a lake is where they pool (Lore:Middle Argonia)",
+       "locator": "The interior rivers all drain to Middle Argonia, so a lake is where they pool (Lore:Middle Argonia)"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/middle-argonia.md",
+       "locator": "story/lore/regions/middle-argonia.md",
+       "section": "The interior as canon describes it"
+      }
+     ]
+    },
+    {
+     "aspect": "people",
+     "text": "A mix: the Root-Folk's islet stations, stone-footed farm hamlets in the Stormhold manner, clay-mound people at Marzai, Tumnatu fishers, an Archwarden garrison and Truowa's Lilmoth-linked merchants.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "regions lake-ulaish"
+      },
+      {
+       "kind": "reasoning",
+       "title": "The interior rivers all drain to Middle Argonia, so a lake is where they pool (Lore:Middle Argonia)",
+       "locator": "The interior rivers all drain to Middle Argonia, so a lake is where they pool (Lore:Middle Argonia)"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/middle-argonia.md",
+       "locator": "story/lore/regions/middle-argonia.md",
+       "section": "The interior as canon describes it"
+      }
+     ]
+    },
+    {
+     "aspect": "economy",
+     "text": "Fish, eels, saltrice, pottery, sap and a through trade in cloth, tin and salt, all taxed by tolls at Gysilla and Truowa.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "regions lake-ulaish"
+      },
+      {
+       "kind": "reasoning",
+       "title": "The interior rivers all drain to Middle Argonia, so a lake is where they pool (Lore:Middle Argonia)",
+       "locator": "The interior rivers all drain to Middle Argonia, so a lake is where they pool (Lore:Middle Argonia)"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/middle-argonia.md",
+       "locator": "story/lore/regions/middle-argonia.md",
+       "section": "The interior as canon describes it"
+      }
+     ]
+    },
+    {
+     "aspect": "faith",
+     "text": "The Hist at each village tree; Sithis privately; shrines of the Nine kept by foreign factors at Truowa and a few Archein households.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "regions lake-ulaish"
+      },
+      {
+       "kind": "reasoning",
+       "title": "The interior rivers all drain to Middle Argonia, so a lake is where they pool (Lore:Middle Argonia)",
+       "locator": "The interior rivers all drain to Middle Argonia, so a lake is where they pool (Lore:Middle Argonia)"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/middle-argonia.md",
+       "locator": "story/lore/regions/middle-argonia.md",
+       "section": "The interior as canon describes it"
+      }
+     ]
+    },
+    {
+     "aspect": "look",
+     "text": "A wide pale-grey lake fringed with reed, silt islets with lantern posts, stilt quays on the south-east shore, and stone-footed farmhouses on the northern deltas.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "regions lake-ulaish"
+      },
+      {
+       "kind": "reasoning",
+       "title": "The interior rivers all drain to Middle Argonia, so a lake is where they pool (Lore:Middle Argonia)",
+       "locator": "The interior rivers all drain to Middle Argonia, so a lake is where they pool (Lore:Middle Argonia)"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/middle-argonia.md",
+       "locator": "story/lore/regions/middle-argonia.md",
+       "section": "The interior as canon describes it"
+      }
+     ]
+    },
+    {
+     "aspect": "dangers",
+     "text": "Storm squalls, deep-water predators, boat-robbers and smugglers; the Archwardens' toll and Truowa's quarrels are the social hazards.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "regions lake-ulaish"
+      },
+      {
+       "kind": "reasoning",
+       "title": "The interior rivers all drain to Middle Argonia, so a lake is where they pool (Lore:Middle Argonia)",
+       "locator": "The interior rivers all drain to Middle Argonia, so a lake is where they pool (Lore:Middle Argonia)"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/middle-argonia.md",
+       "locator": "story/lore/regions/middle-argonia.md",
+       "section": "The interior as canon describes it"
+      }
+     ]
+    },
+    {
+     "aspect": "landscape",
+     "text": "A shallow basin with flat shores, silt islets and a delta of river arms at the north-west; the south shore is firmer. The water level swings with the monsoon.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "regions lake-ulaish"
+      },
+      {
+       "kind": "reasoning",
+       "title": "The interior rivers all drain to Middle Argonia, so a lake is where they pool (Lore:Middle Argonia)",
+       "locator": "The interior rivers all drain to Middle Argonia, so a lake is where they pool (Lore:Middle Argonia)"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/middle-argonia.md",
+       "locator": "story/lore/regions/middle-argonia.md",
+       "section": "The interior as canon describes it"
+      }
+     ]
+    },
+    {
+     "aspect": "ecology",
+     "text": "Eels, reed fish, crocodiles in the delta, water-birds in the reed beds, and rice paddies on raised banks.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "regions lake-ulaish"
+      },
+      {
+       "kind": "reasoning",
+       "title": "The interior rivers all drain to Middle Argonia, so a lake is where they pool (Lore:Middle Argonia)",
+       "locator": "The interior rivers all drain to Middle Argonia, so a lake is where they pool (Lore:Middle Argonia)"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/middle-argonia.md",
+       "locator": "story/lore/regions/middle-argonia.md",
+       "section": "The interior as canon describes it"
+      }
+     ]
+    },
+    {
+     "aspect": "climate",
+     "text": "Warm and humid, with afternoon squalls over the open water and monsoon floods of the shore from late spring.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "regions lake-ulaish"
+      },
+      {
+       "kind": "reasoning",
+       "title": "The interior rivers all drain to Middle Argonia, so a lake is where they pool (Lore:Middle Argonia)",
+       "locator": "The interior rivers all drain to Middle Argonia, so a lake is where they pool (Lore:Middle Argonia)"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/middle-argonia.md",
+       "locator": "story/lore/regions/middle-argonia.md",
+       "section": "The interior as canon describes it"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "aunike-ridge",
+   "summary": "Aunike Ridge is the long rise of drier ground west and south-west of Helstrom, with two peaks and a few Chime-Keeper hamlets. It is the interior's rare high ground and the line between the Hist forest and the Paatru country.",
+   "landform": "A long low ridge of firm ground, rock outcrops and two summits, among reed marsh.",
+   "elevation_floor_m": 8.0,
+   "elevation_summit_m": 70.0,
+   "roughness_m": 4.0,
+   "cliff_share": 0.15,
+   "wetness": 0.5,
+   "biome": "Upland marsh ridge of rock outcrop, scrub, reed and a few stunted trees",
+   "climate": "Warmer and drier than the forest, with steady breeze on the summits and monsoon rain from the north.",
+   "culture_id": "oxblood",
+   "danger_band_id": "D3",
+   "statement_tier_id": "EXTRAPOLATED",
+   "notes": [
+    {
+     "aspect": "overview",
+     "text": "Aunike Ridge is a ridge of firm ground west and south-west of Helstrom, with two marked peaks and two Chime-Keeper hamlets. UESP has no page for it; the name is Project Tamriel's.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "uesp",
+       "title": "Lore:Aunike Ridge (no page)",
+       "locator": "UESP search and page lookup, 2026-11-08: no Lore page for Aunike Ridge",
+       "url": "https://en.uesp.net/w/index.php?search=Aunike+Ridge"
+      },
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "regions aunike-ridge"
+      }
+     ]
+    },
+    {
+     "aspect": "history",
+     "text": "Nothing is recorded. The Kothringi-named hamlets on it, Nacydes and Tydeos, are read as Kothringi places resettled by Argonians after 2E 560 because the ridge is dry.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "regions aunike-ridge"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "oxblood"
+      }
+     ]
+    },
+    {
+     "aspect": "present",
+     "text": "In 4E 201 its hamlets keep watch from the peaks and trade chimes for hides with the Paatru camp to the west; Naga bands of Salt-Tooth Camp range across it.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "regions aunike-ridge"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "oxblood"
+      }
+     ]
+    },
+    {
+     "aspect": "people",
+     "text": "Chime-Keepers at Nacydes and Tydeos; Paatru and Naga hold the camps at its margin.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "regions aunike-ridge"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "oxblood"
+      }
+     ]
+    },
+    {
+     "aspect": "economy",
+     "text": "Lizard-herding, hides, hunting and tin chimes traded with the Paatru, with Helstrom's levy and with Korydon.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "regions aunike-ridge"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "oxblood"
+      }
+     ]
+    },
+    {
+     "aspect": "faith",
+     "text": "Sithis and a quiet Dibella among the Chime-Keepers; watchfires on the peaks are a small offering to the Hist.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "regions aunike-ridge"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "oxblood"
+      }
+     ]
+    },
+    {
+     "aspect": "look",
+     "text": "Rock outcrops and grass-scrub above the reeds, stone-footed huts, windchimes, watchfires at night and wide views over the marsh.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "regions aunike-ridge"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "oxblood"
+      }
+     ]
+    },
+    {
+     "aspect": "dangers",
+     "text": "Naga and Paatru raiders, ridge cats, falls on the summit paths, and cold wind at night on the open top.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "regions aunike-ridge"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "oxblood"
+      }
+     ]
+    },
+    {
+     "aspect": "landscape",
+     "text": "A long spine of firm ground rising from marsh, with rock outcrops, two summits, steep faces on the north and shelving slopes on the south.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "regions aunike-ridge"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "oxblood"
+      }
+     ]
+    },
+    {
+     "aspect": "ecology",
+     "text": "Grass, scrub, stunted trees and lizards; ridge cats and marsh-lizard herds; fewer insects than the forest.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "regions aunike-ridge"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "oxblood"
+      }
+     ]
+    },
+    {
+     "aspect": "climate",
+     "text": "Breezy and a little drier than the forest, with morning mist and monsoon rain from the north.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "regions aunike-ridge"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "oxblood"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ultherus-swamp",
+   "summary": "The Ultherus Swamp is the great wetland south of Helstrom, in which the Kothringi-named town of Korydon lies. Canon says little of it except that the lovely and deadly dragon's-tongue is especially common there.",
+   "landform": "A low wet maze of channels, hummocks and cattail beds, with rings of firmer ground.",
+   "elevation_floor_m": 5.0,
+   "elevation_summit_m": 14.0,
+   "roughness_m": 0.9,
+   "cliff_share": 0.02,
+   "wetness": 0.85,
+   "biome": "Cattail and reed swamp with dragon's-tongue beds, hummocks and braided channels",
+   "climate": "Hot, humid and heavy, with monsoon rain and constant insects.",
+   "culture_id": "oxblood",
+   "danger_band_id": "D3",
+   "statement_tier_id": "CANON_DERIVED",
+   "notes": [
+    {
+     "aspect": "overview",
+     "text": "The Ultherus Swamp, also written Utherus, is a region of Black Marsh of which little is known; the beautiful but deadly dragon's-tongue plant is especially common there. In our map it lies south of Helstrom around Korydon.",
+     "tier": "CANON_EXPLICIT",
+     "sources": [
+      {
+       "kind": "uesp",
+       "title": "Lore:Ultherus Swamp",
+       "locator": "Lore:Ultherus Swamp",
+       "url": "https://en.uesp.net/wiki/Lore:Ultherus_Swamp"
+      }
+     ]
+    },
+    {
+     "aspect": "history",
+     "text": "Canon records nothing. The Kothringi-named towns here, Korydon, Myroleon, Nemeon, are read as old Kothringi places that Argonians resettled after the Knahaten Flu of 2E 560.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "regions ultherus-swamp"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "oxblood"
+      },
+      {
+       "kind": "uesp",
+       "title": "Lore:Ultherus Swamp",
+       "locator": "Lore:Ultherus Swamp",
+       "url": "https://en.uesp.net/wiki/Lore:Ultherus_Swamp"
+      }
+     ]
+    },
+    {
+     "aspect": "present",
+     "text": "In 4E 201 the swamp is crossed by boat; Korydon's Chime-Keepers harvest the dragon's-tongue, Tumnatu hunters keep to the reeds, and a Root-Folk waystation sits at its south.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "regions ultherus-swamp"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "oxblood"
+      },
+      {
+       "kind": "uesp",
+       "title": "Lore:Ultherus Swamp",
+       "locator": "Lore:Ultherus Swamp",
+       "url": "https://en.uesp.net/wiki/Lore:Ultherus_Swamp"
+      }
+     ]
+    },
+    {
+     "aspect": "people",
+     "text": "The Chime-Keepers of Korydon, Nemeon and Myroleon, Tumnatu hunters, and a few Root-Folk boatmen.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "regions ultherus-swamp"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "oxblood"
+      },
+      {
+       "kind": "uesp",
+       "title": "Lore:Ultherus Swamp",
+       "locator": "Lore:Ultherus Swamp",
+       "url": "https://en.uesp.net/wiki/Lore:Ultherus_Swamp"
+      }
+     ]
+    },
+    {
+     "aspect": "economy",
+     "text": "Dragon's-tongue and other swamp herbs, chimes, rope and boats from Korydon, fish, and pelts traded north to Helstrom and south to Blackrose.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "regions ultherus-swamp"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "oxblood"
+      },
+      {
+       "kind": "uesp",
+       "title": "Lore:Ultherus Swamp",
+       "locator": "Lore:Ultherus Swamp",
+       "url": "https://en.uesp.net/wiki/Lore:Ultherus_Swamp"
+      }
+     ]
+    },
+    {
+     "aspect": "faith",
+     "text": "Sithis and the Hist; Korydon adds Z'en and Dibella, kept at a chime-hung shrine.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "regions ultherus-swamp"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "oxblood"
+      },
+      {
+       "kind": "uesp",
+       "title": "Lore:Ultherus Swamp",
+       "locator": "Lore:Ultherus Swamp",
+       "url": "https://en.uesp.net/wiki/Lore:Ultherus_Swamp"
+      }
+     ]
+    },
+    {
+     "aspect": "look",
+     "text": "A grey-green maze of cattails, reed and black water, with rings of dry ground and stilt towns hung with metal chimes.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "regions ultherus-swamp"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "oxblood"
+      },
+      {
+       "kind": "uesp",
+       "title": "Lore:Ultherus Swamp",
+       "locator": "Lore:Ultherus Swamp",
+       "url": "https://en.uesp.net/wiki/Lore:Ultherus_Swamp"
+      }
+     ]
+    },
+    {
+     "aspect": "dangers",
+     "text": "Dragon's-tongue patches that kill the careless, deep-water predators, Tumnatu parties and fog-bound channels that lose boats.",
+     "tier": "CANON_DERIVED",
+     "sources": [
+      {
+       "kind": "uesp",
+       "title": "Lore:Ultherus Swamp",
+       "locator": "Lore:Ultherus Swamp",
+       "url": "https://en.uesp.net/wiki/Lore:Ultherus_Swamp"
+      }
+     ]
+    },
+    {
+     "aspect": "landscape",
+     "text": "Flat and low, cut by many channels, with ring-like firm ground such as the one under Korydon; the south opens into the larger waters toward Blackrose.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "regions ultherus-swamp"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "oxblood"
+      },
+      {
+       "kind": "uesp",
+       "title": "Lore:Ultherus Swamp",
+       "locator": "Lore:Ultherus Swamp",
+       "url": "https://en.uesp.net/wiki/Lore:Ultherus_Swamp"
+      }
+     ]
+    },
+    {
+     "aspect": "ecology",
+     "text": "Dragon's-tongue, cattails, reed, water-lilies; eels, crocodiles, marsh-lizards and swarms of flesh-flies.",
+     "tier": "CANON_DERIVED",
+     "sources": [
+      {
+       "kind": "uesp",
+       "title": "Lore:Ultherus Swamp",
+       "locator": "Lore:Ultherus Swamp",
+       "url": "https://en.uesp.net/wiki/Lore:Ultherus_Swamp"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/topics/fauna-hazards.md",
+       "locator": "story/lore/topics/fauna-hazards.md"
+      }
+     ]
+    },
+    {
+     "aspect": "climate",
+     "text": "Hot and heavy, with monsoon from late spring to summer and a persistent warm fog on the channels.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "regions ultherus-swamp"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "oxblood"
+      },
+      {
+       "kind": "uesp",
+       "title": "Lore:Ultherus Swamp",
+       "locator": "Lore:Ultherus Swamp",
+       "url": "https://en.uesp.net/wiki/Lore:Ultherus_Swamp"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

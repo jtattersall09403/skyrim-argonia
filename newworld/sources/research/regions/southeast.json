@@ -1,0 +1,696 @@
+{
+ "records": [
+  {
+   "id": "nushara-bayou",
+   "summary": "The Nushara Bayou is the wet country of channels, reed beds and low hummocks behind the south-east coast between Archon and the Althii islands. The Three Waters Tribe lives on its rafts and stilts, and its back-water routes carry trade past the customs men.",
+   "landform": "A bayou of braided channels, reed flats and low hummocks, open at its south edge to the strait",
+   "elevation_floor_m": 4.0,
+   "elevation_summit_m": 12.0,
+   "roughness_m": 0.8,
+   "cliff_share": 0.02,
+   "wetness": 0.9,
+   "biome": "Tidal bayou and saltrice marsh",
+   "climate": "Hot and humid year-round, with a monsoon and tidal flooding",
+   "culture_id": "plum",
+   "danger_band_id": "D2",
+   "statement_tier_id": "EXTRAPOLATED",
+   "notes": [
+    {
+     "aspect": "overview",
+     "text": "The marsh country between Archon, the Althii islands and the mound country, laced by channels and settled by the Three Waters Tribe. It links Archon with the Lilmoth coast by water.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/black-marsh-province.md",
+       "locator": "black-marsh-province.md"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "story/lore/extrapolation/argonia-4e201-state.md",
+       "locator": "argonia-4e201-state.md"
+      },
+      {
+       "kind": "reasoning",
+       "title": "UESP search of the Lore namespace (2026-11-08) finds no page for Nushara Bayou: a Project Tamriel region name"
+      }
+     ]
+    },
+    {
+     "aspect": "history",
+     "text": "The bayou was Lilmothiit and Cantemiric Velothi ground; both peoples died in the flu of 2E 560, while the Three Waters Tribe survived and spread. It was untouched by Umbriel.",
+     "tier": "CANON_DERIVED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/black-marsh-province.md",
+       "locator": "black-marsh-province.md"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "story/lore/extrapolation/argonia-4e201-state.md",
+       "locator": "argonia-4e201-state.md"
+      },
+      {
+       "kind": "uesp",
+       "title": "Lore:Archon",
+       "locator": "Lore:Archon",
+       "url": "https://en.uesp.net/wiki/Lore:Archon"
+      },
+      {
+       "kind": "uesp",
+       "title": "Lore:Lilmothiit",
+       "locator": "Lore:Lilmothiit",
+       "url": "https://en.uesp.net/wiki/Lore:Lilmothiit"
+      }
+     ]
+    },
+    {
+     "aspect": "present",
+     "text": "The tribe holds the channels and its hamlets, Archon and Lilmoth trade through it, and Fort Swiftmoth stands unmanned beside the road.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/black-marsh-province.md",
+       "locator": "black-marsh-province.md"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "story/lore/extrapolation/argonia-4e201-state.md",
+       "locator": "argonia-4e201-state.md"
+      }
+     ]
+    },
+    {
+     "aspect": "people",
+     "text": "The Three Waters Argonians, with Clay-Mound families at Badal and Lilmoth-coast families at Oju, plus Archon's boatmen.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/black-marsh-province.md",
+       "locator": "black-marsh-province.md"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "story/lore/extrapolation/argonia-4e201-state.md",
+       "locator": "argonia-4e201-state.md"
+      }
+     ]
+    },
+    {
+     "aspect": "economy",
+     "text": "Rice, fish, reed, shellfish and back-water freight that avoids customs; Archon is the market.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/black-marsh-province.md",
+       "locator": "black-marsh-province.md"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "story/lore/extrapolation/argonia-4e201-state.md",
+       "locator": "argonia-4e201-state.md"
+      }
+     ]
+    },
+    {
+     "aspect": "faith",
+     "text": "Sithis and the Hist, with the town of Uluo keeping the nearest tree for hatching.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/black-marsh-province.md",
+       "locator": "black-marsh-province.md"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "story/lore/extrapolation/argonia-4e201-state.md",
+       "locator": "argonia-4e201-state.md"
+      }
+     ]
+    },
+    {
+     "aspect": "look",
+     "text": "Sheets of brown water between reed banks and hummocks of trees, lines of raft-houses, and herons.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/black-marsh-province.md",
+       "locator": "black-marsh-province.md"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "story/lore/extrapolation/argonia-4e201-state.md",
+       "locator": "argonia-4e201-state.md"
+      }
+     ]
+    },
+    {
+     "aspect": "dangers",
+     "text": "D2 away from the road: slaughterfish, crocodilians, ripper eels, smugglers and disease.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/black-marsh-province.md",
+       "locator": "black-marsh-province.md"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "story/lore/extrapolation/argonia-4e201-state.md",
+       "locator": "argonia-4e201-state.md"
+      }
+     ]
+    },
+    {
+     "aspect": "landscape",
+     "text": "Flat, braided and shifting: channels move with each flood; firm ground lies in thin ridges. The north rises slightly to clay mounds.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/black-marsh-province.md",
+       "locator": "black-marsh-province.md"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "story/lore/extrapolation/argonia-4e201-state.md",
+       "locator": "argonia-4e201-state.md"
+      },
+      {
+       "kind": "map",
+       "title": "PT3 map, cells (11-30, -87 to -103)",
+       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
+      }
+     ]
+    },
+    {
+     "aspect": "ecology",
+     "text": "Reed, mangrove, saltrice, slaughterfish, eels, wading birds and mud-crabs.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/black-marsh-province.md",
+       "locator": "black-marsh-province.md"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "story/lore/extrapolation/argonia-4e201-state.md",
+       "locator": "argonia-4e201-state.md"
+      }
+     ]
+    },
+    {
+     "aspect": "climate",
+     "text": "Hot and humid, with a monsoon that floods the lower channels and closes the ferries for days.",
+     "tier": "CANON_DERIVED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/black-marsh-province.md",
+       "locator": "black-marsh-province.md"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "story/lore/extrapolation/argonia-4e201-state.md",
+       "locator": "argonia-4e201-state.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/topics/ecology-encounters-loot.md",
+       "locator": "topics/ecology-encounters-loot.md",
+       "section": "6. Seasonal keying"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "althii-archipelago",
+   "summary": "The Althii Archipelago is two main low islands and a scatter of islets off the south-east coast, with Lilmoth at the southern end and the Three Waters town of Uluo on the north. Estates, farms and Imperial and Lilmothiit ruins fill the interior.",
+   "landform": "Low islands of firm ground with inner marsh, hills of a few metres and sea-cut coasts",
+   "elevation_floor_m": 3.0,
+   "elevation_summit_m": 16.0,
+   "roughness_m": 1.0,
+   "cliff_share": 0.05,
+   "wetness": 0.7,
+   "biome": "Coastal marsh and rice paddy",
+   "climate": "Hot, humid, with sea winds and a monsoon",
+   "culture_id": "rose",
+   "danger_band_id": "D2",
+   "statement_tier_id": "EXTRAPOLATED",
+   "notes": [
+    {
+     "aspect": "overview",
+     "text": "A group of islands that holds Lilmoth and most of the rebuilt Murkmire coast's estates, and an Imperial road network gone to ruin.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/lilmoth.md",
+       "locator": "lilmoth.md"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "story/lore/extrapolation/argonia-4e201-state.md",
+       "locator": "argonia-4e201-state.md"
+      },
+      {
+       "kind": "reasoning",
+       "title": "UESP search of the Lore namespace (2026-11-08) finds no page for Althii Archipelago: a Project Tamriel region name"
+      }
+     ]
+    },
+    {
+     "aspect": "history",
+     "text": "Lilmothiit held the isles until the flu of 2E 560; Imperial forts, estates and a road arrived later. Lilmoth was destroyed in 4E 48 and its islands refilled.",
+     "tier": "CANON_DERIVED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/lilmoth.md",
+       "locator": "lilmoth.md"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "story/lore/extrapolation/argonia-4e201-state.md",
+       "locator": "argonia-4e201-state.md"
+      },
+      {
+       "kind": "uesp",
+       "title": "Lore:Lilmothiit",
+       "locator": "Lore:Lilmothiit",
+       "url": "https://en.uesp.net/wiki/Lore:Lilmothiit"
+      },
+      {
+       "kind": "uesp",
+       "title": "Lore:Lilmoth",
+       "locator": "Lore:Lilmoth",
+       "url": "https://en.uesp.net/wiki/Lore:Lilmoth"
+      }
+     ]
+    },
+    {
+     "aspect": "present",
+     "text": "Lilmoth leads the islands; Archwarden forts hold the east and the south-west; Uluo's Three Waters people hold the north.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/lilmoth.md",
+       "locator": "lilmoth.md"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "story/lore/extrapolation/argonia-4e201-state.md",
+       "locator": "argonia-4e201-state.md"
+      }
+     ]
+    },
+    {
+     "aspect": "people",
+     "text": "Lilmoth-coast Argonians, tenants and bonded labourers on estates, garrison families, and the Three Waters Tribe.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/lilmoth.md",
+       "locator": "lilmoth.md"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "story/lore/extrapolation/argonia-4e201-state.md",
+       "locator": "argonia-4e201-state.md"
+      }
+     ]
+    },
+    {
+     "aspect": "economy",
+     "text": "Rice, fish, salvage and ferrying; Lilmoth is the market.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/lilmoth.md",
+       "locator": "lilmoth.md"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "story/lore/extrapolation/argonia-4e201-state.md",
+       "locator": "argonia-4e201-state.md"
+      }
+     ]
+    },
+    {
+     "aspect": "faith",
+     "text": "Lilmoth's feared third Hist is the islands' tree; Three Waters keep their own pool.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/lilmoth.md",
+       "locator": "lilmoth.md"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "story/lore/extrapolation/argonia-4e201-state.md",
+       "locator": "argonia-4e201-state.md"
+      }
+     ]
+    },
+    {
+     "aspect": "look",
+     "text": "Green rice paddies, stilt villages and brick ruins in vines, with sea on every side.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/lilmoth.md",
+       "locator": "lilmoth.md"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "story/lore/extrapolation/argonia-4e201-state.md",
+       "locator": "argonia-4e201-state.md"
+      }
+     ]
+    },
+    {
+     "aspect": "dangers",
+     "text": "D2 in the interior: bandits in the burnt forts, predators in the dens, sea-drakes at the coast.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/lilmoth.md",
+       "locator": "lilmoth.md"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "story/lore/extrapolation/argonia-4e201-state.md",
+       "locator": "argonia-4e201-state.md"
+      }
+     ]
+    },
+    {
+     "aspect": "landscape",
+     "text": "Low and flat with a few low hills, cut by inlets and inner channels; roads link the towns across land and ferries.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/lilmoth.md",
+       "locator": "lilmoth.md"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "story/lore/extrapolation/argonia-4e201-state.md",
+       "locator": "argonia-4e201-state.md"
+      },
+      {
+       "kind": "map",
+       "title": "PT3 map, cells (11-24, -102 to -113)",
+       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
+      }
+     ]
+    },
+    {
+     "aspect": "ecology",
+     "text": "Mangrove coasts, paddy fauna, wading birds, guar and crabs.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/lilmoth.md",
+       "locator": "lilmoth.md"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "story/lore/extrapolation/argonia-4e201-state.md",
+       "locator": "argonia-4e201-state.md"
+      }
+     ]
+    },
+    {
+     "aspect": "climate",
+     "text": "Hot, humid, with sea winds and a monsoon.",
+     "tier": "CANON_DERIVED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/lilmoth.md",
+       "locator": "lilmoth.md"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "story/lore/extrapolation/argonia-4e201-state.md",
+       "locator": "argonia-4e201-state.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/topics/ecology-encounters-loot.md",
+       "locator": "topics/ecology-encounters-loot.md",
+       "section": "6. Seasonal keying"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "benthic-yobesh",
+   "summary": "Benthic Yobesh is the open sea floor east of the Althii islands where seven drowned spires, Echo Deep and the downed Kelp Lantern lie. Only Bell Station's divers work it.",
+   "landform": "A sea floor of silt and coral flats with drowned spires and a deep trench",
+   "elevation_floor_m": -45.0,
+   "elevation_summit_m": -8.0,
+   "roughness_m": 3.0,
+   "cliff_share": 0.2,
+   "wetness": 1.0,
+   "biome": "Open sea floor, coral and kelp",
+   "climate": "Warm shallow water over cold deep currents",
+   "culture_id": null,
+   "danger_band_id": "D3",
+   "statement_tier_id": "EXTRAPOLATED",
+   "notes": [
+    {
+     "aspect": "overview",
+     "text": "The sea east of Lilmoth, drowned ground with spires and a trench.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/waters.md",
+       "locator": "regions/waters.md"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "story/lore/extrapolation/argonia-4e201-state.md",
+       "locator": "argonia-4e201-state.md"
+      },
+      {
+       "kind": "reasoning",
+       "title": "UESP search of the Lore namespace (2026-11-08) finds no page for Benthic Yobesh: a Project Tamriel region name"
+      }
+     ]
+    },
+    {
+     "aspect": "history",
+     "text": "By legend Murkmire was swallowed by the Southern Sea; the spires are what remained.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/waters.md",
+       "locator": "regions/waters.md"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "story/lore/extrapolation/argonia-4e201-state.md",
+       "locator": "argonia-4e201-state.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/murkmire.md",
+       "locator": "regions/murkmire.md"
+      }
+     ]
+    },
+    {
+     "aspect": "present",
+     "text": "Bell Station's licensed divers salvage the spires; elsewhere the sea floor is unclaimed.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/waters.md",
+       "locator": "regions/waters.md"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "story/lore/extrapolation/argonia-4e201-state.md",
+       "locator": "argonia-4e201-state.md"
+      }
+     ]
+    },
+    {
+     "aspect": "people",
+     "text": "No residents; divers, sea-drakes, dreugh.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/waters.md",
+       "locator": "regions/waters.md"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "story/lore/extrapolation/argonia-4e201-state.md",
+       "locator": "argonia-4e201-state.md"
+      }
+     ]
+    },
+    {
+     "aspect": "economy",
+     "text": "Salvage from the spires, licensed by the state.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/waters.md",
+       "locator": "regions/waters.md"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "story/lore/extrapolation/argonia-4e201-state.md",
+       "locator": "argonia-4e201-state.md"
+      }
+     ]
+    },
+    {
+     "aspect": "faith",
+     "text": "Argonians hold the deep as the abode of the drowned and pray before diving.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/waters.md",
+       "locator": "regions/waters.md"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "story/lore/extrapolation/argonia-4e201-state.md",
+       "locator": "argonia-4e201-state.md"
+      }
+     ]
+    },
+    {
+     "aspect": "look",
+     "text": "Blue-green water over silt, coral and kelp, spires rising, a black trench.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/waters.md",
+       "locator": "regions/waters.md"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "story/lore/extrapolation/argonia-4e201-state.md",
+       "locator": "argonia-4e201-state.md"
+      }
+     ]
+    },
+    {
+     "aspect": "dangers",
+     "text": "D3 across the floor; D4 at Echo Deep and the outer spires: sea-drakes, dreugh, drowning.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/waters.md",
+       "locator": "regions/waters.md"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "story/lore/extrapolation/argonia-4e201-state.md",
+       "locator": "argonia-4e201-state.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/topics/ecology-encounters-loot.md",
+       "locator": "topics/ecology-encounters-loot.md",
+       "section": "5. Underwater ecology"
+      }
+     ]
+    },
+    {
+     "aspect": "landscape",
+     "text": "A shelf of silt about forty metres down, spires to eight metres below the surface, and a trench.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/waters.md",
+       "locator": "regions/waters.md"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "story/lore/extrapolation/argonia-4e201-state.md",
+       "locator": "argonia-4e201-state.md"
+      },
+      {
+       "kind": "map",
+       "title": "PT3 map, cells (22-31, -101 to -112)",
+       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
+      }
+     ]
+    },
+    {
+     "aspect": "ecology",
+     "text": "Kelp, coral, slaughterfish, sea-drakes, dreugh, glowgill guar at the western edge.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/waters.md",
+       "locator": "regions/waters.md"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "story/lore/extrapolation/argonia-4e201-state.md",
+       "locator": "argonia-4e201-state.md"
+      },
+      {
+       "kind": "uesp",
+       "title": "Lore:Archon",
+       "locator": "Lore:Archon",
+       "url": "https://en.uesp.net/wiki/Lore:Archon"
+      }
+     ]
+    },
+    {
+     "aspect": "climate",
+     "text": "Warm shallows over cold deep currents; the surface storms in the monsoon.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/waters.md",
+       "locator": "regions/waters.md"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "story/lore/extrapolation/argonia-4e201-state.md",
+       "locator": "argonia-4e201-state.md"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -9,3 +9,4 @@ LICENSE
 LICENSE-content
 newworld/sources/maps/PT3-map-Black_Marsh.png
 newworld/sources/maps/PT3-map-Black_Marsh_Regions.png
+newworld/story/data/db/road_vertex.jsonl

@@ -290,8 +290,9 @@ def build() -> db.World:
                  world_y=round(p["world"][1], 1), on_water=bool(water[y, x]), read_sure=bool(s.get("sure", True)),
                  **{k: r.get(k) for k in place_cols})
         for al in r.get("aliases", []):
+            src = al.get("source")
             w.insert("place_alias", place_id=p["id"], alias=al["alias"],
-                     source_id=source(**al["source"]) if al.get("source") else None)
+                     source_id=source(src["kind"], src["title"], src.get("locator"), src.get("url")) if src else None)
         write_notes(w, "place", p["id"], r, source)
         for need in r.get("terrain_needs", []):
             w.insert("place_terrain_need", place_id=p["id"], terrain_need_id=need["id"], radius_m=need["radius_m"],

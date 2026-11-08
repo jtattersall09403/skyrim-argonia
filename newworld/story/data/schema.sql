@@ -203,7 +203,7 @@ CREATE TABLE "place" (
   "footprint_radius_m" REAL,
   "siting" TEXT,                         -- its ground: riverbank, coast, island, lakeshore, inland, hilltop, seabed
   "danger_band_id" TEXT REFERENCES "danger_band"("id"),
-  "importance" INTEGER,                  -- 1 province-shaping .. 5 local colour
+  "importance" INTEGER,                  -- 5 shapes the province .. 1 local colour
   "summary" TEXT,                        -- two or three sentences for the reader who knows nothing
   "lore_page" TEXT,                      -- the UESP page, when canon names it
   "statement_tier_id" TEXT REFERENCES "statement_tier"("id")   -- the tier of the place's identity as a whole

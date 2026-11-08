@@ -1,0 +1,1442 @@
+{
+ "records": [
+  {
+   "id": "kotherra-mangroves",
+   "summary": "The Kotherra Mangroves are the tidal delta country around Gideon, where mangrove channels, red-clay banks and the Blackwood Road meet Topal Bay.",
+   "landform": "mangrove delta and tidal flat",
+   "elevation_floor_m": 3.0,
+   "elevation_summit_m": 14.0,
+   "roughness_m": 0.9,
+   "cliff_share": 0.03,
+   "wetness": 0.9,
+   "biome": "mangrove swamp and estuary",
+   "climate": "hot, humid, tidal; monsoon floods the road",
+   "culture_id": "pale-green",
+   "danger_band_id": "D2",
+   "statement_tier_id": "EXTRAPOLATED",
+   "notes": [
+    {
+     "aspect": "overview",
+     "text": "A low coastal delta of mangrove channels around Gideon, the province's western gateway. Gideon, its villages and its roads sit on the few dry rises.",
+     "tier": "CANON_DERIVED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/blackwood-and-gloommire.md",
+       "locator": "story/lore/regions/blackwood-and-gloommire.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/gideon.md",
+       "locator": "story/lore/gideon.md"
+      },
+      {
+       "kind": "reasoning",
+       "title": "UESP search of the Lore namespace for 'Kotherra Mangroves' found no page (2026-11-08): a Project Tamriel name"
+      },
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell region"
+      }
+     ]
+    },
+    {
+     "aspect": "history",
+     "text": "Barsaebic Ayleids, Kothringi and Imperial settlers each built here; the Kothringi died in 2E 560 and the Empire left after 4E 48. Gideon alone kept the paper tradition.",
+     "tier": "CANON_EXPLICIT",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/blackwood-and-gloommire.md",
+       "locator": "story/lore/regions/blackwood-and-gloommire.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/gideon.md",
+       "locator": "story/lore/gideon.md"
+      },
+      {
+       "kind": "reasoning",
+       "title": "UESP search of the Lore namespace for 'Kotherra Mangroves' found no page (2026-11-08): a Project Tamriel name"
+      },
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell region"
+      }
+     ]
+    },
+    {
+     "aspect": "present",
+     "text": "Gideon's council holds the dry land; the Archwardens hold Fort Silvermoth on the south road; the mangroves hold the rest. Roads close in monsoon.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/blackwood-and-gloommire.md",
+       "locator": "story/lore/regions/blackwood-and-gloommire.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/gideon.md",
+       "locator": "story/lore/gideon.md"
+      },
+      {
+       "kind": "reasoning",
+       "title": "UESP search of the Lore namespace for 'Kotherra Mangroves' found no page (2026-11-08): a Project Tamriel name"
+      },
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell region"
+      }
+     ]
+    },
+    {
+     "aspect": "people",
+     "text": "Majority Lukiul Argonians, Nibenese-descended families, Naka-Desh river-folk and a few Khajiit sailors. Perhaps 130 live in the region.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/blackwood-and-gloommire.md",
+       "locator": "story/lore/regions/blackwood-and-gloommire.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/gideon.md",
+       "locator": "story/lore/gideon.md"
+      },
+      {
+       "kind": "reasoning",
+       "title": "UESP search of the Lore namespace for 'Kotherra Mangroves' found no page (2026-11-08): a Project Tamriel name"
+      },
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell region"
+      }
+     ]
+    },
+    {
+     "aspect": "economy",
+     "text": "Hunting, herbs, red-clay pottery, fishing and the Leyawiin trade along the Blackwood Road.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/blackwood-and-gloommire.md",
+       "locator": "story/lore/regions/blackwood-and-gloommire.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/gideon.md",
+       "locator": "story/lore/gideon.md"
+      },
+      {
+       "kind": "reasoning",
+       "title": "UESP search of the Lore namespace for 'Kotherra Mangroves' found no page (2026-11-08): a Project Tamriel name"
+      },
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell region"
+      }
+     ]
+    },
+    {
+     "aspect": "faith",
+     "text": "Dibella in Gideon, Sithis in the villages; Kothringi chimes in the ruins; the Hist is a planted cutting.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/blackwood-and-gloommire.md",
+       "locator": "story/lore/regions/blackwood-and-gloommire.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/gideon.md",
+       "locator": "story/lore/gideon.md"
+      },
+      {
+       "kind": "reasoning",
+       "title": "UESP search of the Lore namespace for 'Kotherra Mangroves' found no page (2026-11-08): a Project Tamriel name"
+      },
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell region"
+      }
+     ]
+    },
+    {
+     "aspect": "look",
+     "text": "Black water between stilt houses, red mud, tangled mangrove roots and grey Imperial stone along the road.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/blackwood-and-gloommire.md",
+       "locator": "story/lore/regions/blackwood-and-gloommire.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/gideon.md",
+       "locator": "story/lore/gideon.md"
+      },
+      {
+       "kind": "reasoning",
+       "title": "UESP search of the Lore namespace for 'Kotherra Mangroves' found no page (2026-11-08): a Project Tamriel name"
+      },
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell region"
+      }
+     ]
+    },
+    {
+     "aspect": "dangers",
+     "text": "Death hoppers, hackwings, fleshflies and haunted Kothringi and Imperial ruins; the north is wilder than the road.",
+     "tier": "CANON_DERIVED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/blackwood-and-gloommire.md",
+       "locator": "story/lore/regions/blackwood-and-gloommire.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/gideon.md",
+       "locator": "story/lore/gideon.md"
+      },
+      {
+       "kind": "reasoning",
+       "title": "UESP search of the Lore namespace for 'Kotherra Mangroves' found no page (2026-11-08): a Project Tamriel name"
+      },
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell region"
+      }
+     ]
+    },
+    {
+     "aspect": "landscape",
+     "text": "Tidal flats and mangrove channels with a few raised banks; the Onkobra delta feeds red clay and the estuary floods the north.",
+     "tier": "CANON_DERIVED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/blackwood-and-gloommire.md",
+       "locator": "story/lore/regions/blackwood-and-gloommire.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/gideon.md",
+       "locator": "story/lore/gideon.md"
+      },
+      {
+       "kind": "reasoning",
+       "title": "UESP search of the Lore namespace for 'Kotherra Mangroves' found no page (2026-11-08): a Project Tamriel name"
+      },
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell region"
+      }
+     ]
+    },
+    {
+     "aspect": "ecology",
+     "text": "Mangrove, reed and fern; death hoppers, eels, crows and fleshflies in the wet season; gar in the channels.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/blackwood-and-gloommire.md",
+       "locator": "story/lore/regions/blackwood-and-gloommire.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/gideon.md",
+       "locator": "story/lore/gideon.md"
+      },
+      {
+       "kind": "reasoning",
+       "title": "UESP search of the Lore namespace for 'Kotherra Mangroves' found no page (2026-11-08): a Project Tamriel name"
+      },
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell region"
+      }
+     ]
+    },
+    {
+     "aspect": "climate",
+     "text": "Hot and humid year round, with a monsoon that closes the Blackwood Road and floods the delta.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/blackwood-and-gloommire.md",
+       "locator": "story/lore/regions/blackwood-and-gloommire.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/gideon.md",
+       "locator": "story/lore/gideon.md"
+      },
+      {
+       "kind": "reasoning",
+       "title": "UESP search of the Lore namespace for 'Kotherra Mangroves' found no page (2026-11-08): a Project Tamriel name"
+      },
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell region"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nha-enasa",
+   "summary": "Nha Enasa is the drier river country north-east of Gideon, with Naka-Desh river stations, Kothringi ruins and the market town of Gul-Tej.",
+   "landform": "river plain with low banks",
+   "elevation_floor_m": 5.0,
+   "elevation_summit_m": 24.0,
+   "roughness_m": 1.4,
+   "cliff_share": 0.04,
+   "wetness": 0.75,
+   "biome": "river swamp with reed banks",
+   "climate": "hot, humid; monsoon floods",
+   "culture_id": "indigo",
+   "danger_band_id": "D2",
+   "statement_tier_id": "EXTRAPOLATED",
+   "notes": [
+    {
+     "aspect": "overview",
+     "text": "A region of river forks and low banks between Gideon and the interior, held by Naka-Desh river-folk and a handful of traders.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/tribes.md",
+       "locator": "story/lore/tribes.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/blackwood-and-gloommire.md",
+       "locator": "story/lore/regions/blackwood-and-gloommire.md"
+      },
+      {
+       "kind": "reasoning",
+       "title": "UESP search of the Lore namespace for 'Nha Enasa' found no page (2026-11-08): a Project Tamriel name"
+      },
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell region"
+      }
+     ]
+    },
+    {
+     "aspect": "history",
+     "text": "Kothringi land before 2E 560, then vacant; it became the Gideon-Leyawiin trade route and a river-folk country.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/tribes.md",
+       "locator": "story/lore/tribes.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/blackwood-and-gloommire.md",
+       "locator": "story/lore/regions/blackwood-and-gloommire.md"
+      },
+      {
+       "kind": "reasoning",
+       "title": "UESP search of the Lore namespace for 'Nha Enasa' found no page (2026-11-08): a Project Tamriel name"
+      },
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell region"
+      }
+     ]
+    },
+    {
+     "aspect": "present",
+     "text": "Gul-Tej holds the road; the Naka-Desh keep their stations; Paatru camps hunt the west edge.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/tribes.md",
+       "locator": "story/lore/tribes.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/blackwood-and-gloommire.md",
+       "locator": "story/lore/regions/blackwood-and-gloommire.md"
+      },
+      {
+       "kind": "reasoning",
+       "title": "UESP search of the Lore namespace for 'Nha Enasa' found no page (2026-11-08): a Project Tamriel name"
+      },
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell region"
+      }
+     ]
+    },
+    {
+     "aspect": "people",
+     "text": "Naka-Desh river-folk, Lukiul traders and Paatru hunters; about 60 people.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/tribes.md",
+       "locator": "story/lore/tribes.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/blackwood-and-gloommire.md",
+       "locator": "story/lore/regions/blackwood-and-gloommire.md"
+      },
+      {
+       "kind": "reasoning",
+       "title": "UESP search of the Lore namespace for 'Nha Enasa' found no page (2026-11-08): a Project Tamriel name"
+      },
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell region"
+      }
+     ]
+    },
+    {
+     "aspect": "economy",
+     "text": "Gar fishing, salt-and-iron barter, herbs and caravan trade.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/tribes.md",
+       "locator": "story/lore/tribes.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/blackwood-and-gloommire.md",
+       "locator": "story/lore/regions/blackwood-and-gloommire.md"
+      },
+      {
+       "kind": "reasoning",
+       "title": "UESP search of the Lore namespace for 'Nha Enasa' found no page (2026-11-08): a Project Tamriel name"
+      },
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell region"
+      }
+     ]
+    },
+    {
+     "aspect": "faith",
+     "text": "Hist roots and chimes in memory of the Kothringi; Dibella wayside shrines.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/tribes.md",
+       "locator": "story/lore/tribes.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/blackwood-and-gloommire.md",
+       "locator": "story/lore/regions/blackwood-and-gloommire.md"
+      },
+      {
+       "kind": "reasoning",
+       "title": "UESP search of the Lore namespace for 'Nha Enasa' found no page (2026-11-08): a Project Tamriel name"
+      },
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell region"
+      }
+     ]
+    },
+    {
+     "aspect": "look",
+     "text": "Reed banks, black rivers, stilt platforms and grey ruin stones.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/tribes.md",
+       "locator": "story/lore/tribes.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/blackwood-and-gloommire.md",
+       "locator": "story/lore/regions/blackwood-and-gloommire.md"
+      },
+      {
+       "kind": "reasoning",
+       "title": "UESP search of the Lore namespace for 'Nha Enasa' found no page (2026-11-08): a Project Tamriel name"
+      },
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell region"
+      }
+     ]
+    },
+    {
+     "aspect": "dangers",
+     "text": "Paatru camps, haunted Kothringi ruins and wild predators.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/tribes.md",
+       "locator": "story/lore/tribes.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/blackwood-and-gloommire.md",
+       "locator": "story/lore/regions/blackwood-and-gloommire.md"
+      },
+      {
+       "kind": "reasoning",
+       "title": "UESP search of the Lore namespace for 'Nha Enasa' found no page (2026-11-08): a Project Tamriel name"
+      },
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell region"
+      }
+     ]
+    },
+    {
+     "aspect": "landscape",
+     "text": "Low river banks and reed flats, drier than the delta, cut by channels.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/tribes.md",
+       "locator": "story/lore/tribes.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/blackwood-and-gloommire.md",
+       "locator": "story/lore/regions/blackwood-and-gloommire.md"
+      },
+      {
+       "kind": "reasoning",
+       "title": "UESP search of the Lore namespace for 'Nha Enasa' found no page (2026-11-08): a Project Tamriel name"
+      },
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell region"
+      }
+     ]
+    },
+    {
+     "aspect": "ecology",
+     "text": "Reeds, ferns, osheeja gar and death hoppers; hackwings over the banks.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/tribes.md",
+       "locator": "story/lore/tribes.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/blackwood-and-gloommire.md",
+       "locator": "story/lore/regions/blackwood-and-gloommire.md"
+      },
+      {
+       "kind": "reasoning",
+       "title": "UESP search of the Lore namespace for 'Nha Enasa' found no page (2026-11-08): a Project Tamriel name"
+      },
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell region"
+      }
+     ]
+    },
+    {
+     "aspect": "climate",
+     "text": "Hot, humid, with monsoon flooding that shuts the roads.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/tribes.md",
+       "locator": "story/lore/tribes.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/blackwood-and-gloommire.md",
+       "locator": "story/lore/regions/blackwood-and-gloommire.md"
+      },
+      {
+       "kind": "reasoning",
+       "title": "UESP search of the Lore namespace for 'Nha Enasa' found no page (2026-11-08): a Project Tamriel name"
+      },
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell region"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "topal-bay",
+   "summary": "Topal Bay is the placid bay on the west coast, notorious for piracy on its eastern shore and the route to Soulrest and Gideon.",
+   "landform": "sea",
+   "elevation_floor_m": -25.0,
+   "elevation_summit_m": 1.0,
+   "roughness_m": 0.3,
+   "cliff_share": 0.0,
+   "wetness": 0.0,
+   "biome": "coastal sea",
+   "climate": "warm, humid, with sea breeze and storms",
+   "culture_id": "umber",
+   "danger_band_id": "D2",
+   "statement_tier_id": "CANON_DERIVED",
+   "notes": [
+    {
+     "aspect": "overview",
+     "text": "The bay enclosed by Elsweyr, Black Marsh and Cyrodiil, with Soulrest on its eastern shore.",
+     "tier": "CANON_DERIVED",
+     "sources": [
+      {
+       "kind": "uesp",
+       "title": "Lore:Topal Bay",
+       "locator": "Lore:Topal Bay",
+       "url": "https://en.uesp.net/wiki/Lore:Topal_Bay"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/waters.md",
+       "locator": "story/lore/regions/waters.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/soulrest.md",
+       "locator": "story/lore/soulrest.md"
+      }
+     ]
+    },
+    {
+     "aspect": "history",
+     "text": "The Imperial fleet policed it until 4E 48; Red Bramman's pirates used its mangrove river in the First Era.",
+     "tier": "CANON_DERIVED",
+     "sources": [
+      {
+       "kind": "uesp",
+       "title": "Lore:Topal Bay",
+       "locator": "Lore:Topal Bay",
+       "url": "https://en.uesp.net/wiki/Lore:Topal_Bay"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/waters.md",
+       "locator": "story/lore/regions/waters.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/soulrest.md",
+       "locator": "story/lore/soulrest.md"
+      }
+     ]
+    },
+    {
+     "aspect": "present",
+     "text": "Piracy continues on the eastern coast; the Archwardens have no navy and Soulrest's merchants hire their own boats.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "uesp",
+       "title": "Lore:Topal Bay",
+       "locator": "Lore:Topal Bay",
+       "url": "https://en.uesp.net/wiki/Lore:Topal_Bay"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/waters.md",
+       "locator": "story/lore/regions/waters.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/soulrest.md",
+       "locator": "story/lore/soulrest.md"
+      }
+     ]
+    },
+    {
+     "aspect": "people",
+     "text": "Seafarers, many of them Khajiit, plus Argonian fishers and Bosmer pilots.",
+     "tier": "CANON_DERIVED",
+     "sources": [
+      {
+       "kind": "uesp",
+       "title": "Lore:Topal Bay",
+       "locator": "Lore:Topal Bay",
+       "url": "https://en.uesp.net/wiki/Lore:Topal_Bay"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/waters.md",
+       "locator": "story/lore/regions/waters.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/soulrest.md",
+       "locator": "story/lore/soulrest.md"
+      }
+     ]
+    },
+    {
+     "aspect": "economy",
+     "text": "Fishing, shipping, smuggling and salvage.",
+     "tier": "CANON_DERIVED",
+     "sources": [
+      {
+       "kind": "uesp",
+       "title": "Lore:Topal Bay",
+       "locator": "Lore:Topal Bay",
+       "url": "https://en.uesp.net/wiki/Lore:Topal_Bay"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/waters.md",
+       "locator": "story/lore/regions/waters.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/soulrest.md",
+       "locator": "story/lore/soulrest.md"
+      }
+     ]
+    },
+    {
+     "aspect": "faith",
+     "text": "Sailors' charms and offerings to the Nine and Sithis.",
+     "tier": "CANON_DERIVED",
+     "sources": [
+      {
+       "kind": "uesp",
+       "title": "Lore:Topal Bay",
+       "locator": "Lore:Topal Bay",
+       "url": "https://en.uesp.net/wiki/Lore:Topal_Bay"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/waters.md",
+       "locator": "story/lore/regions/waters.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/soulrest.md",
+       "locator": "story/lore/soulrest.md"
+      }
+     ]
+    },
+    {
+     "aspect": "look",
+     "text": "Grey-green water, mangrove coast and sandbars.",
+     "tier": "CANON_DERIVED",
+     "sources": [
+      {
+       "kind": "uesp",
+       "title": "Lore:Topal Bay",
+       "locator": "Lore:Topal Bay",
+       "url": "https://en.uesp.net/wiki/Lore:Topal_Bay"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/waters.md",
+       "locator": "story/lore/regions/waters.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/soulrest.md",
+       "locator": "story/lore/soulrest.md"
+      }
+     ]
+    },
+    {
+     "aspect": "dangers",
+     "text": "Pirates, storms and wrecks on the eastern coast.",
+     "tier": "CANON_DERIVED",
+     "sources": [
+      {
+       "kind": "uesp",
+       "title": "Lore:Topal Bay",
+       "locator": "Lore:Topal Bay",
+       "url": "https://en.uesp.net/wiki/Lore:Topal_Bay"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/waters.md",
+       "locator": "story/lore/regions/waters.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/soulrest.md",
+       "locator": "story/lore/soulrest.md"
+      }
+     ]
+    },
+    {
+     "aspect": "landscape",
+     "text": "A shallow bay with mangrove shoreline and sand and mud.",
+     "tier": "CANON_DERIVED",
+     "sources": [
+      {
+       "kind": "uesp",
+       "title": "Lore:Topal Bay",
+       "locator": "Lore:Topal Bay",
+       "url": "https://en.uesp.net/wiki/Lore:Topal_Bay"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/waters.md",
+       "locator": "story/lore/regions/waters.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/soulrest.md",
+       "locator": "story/lore/soulrest.md"
+      }
+     ]
+    },
+    {
+     "aspect": "ecology",
+     "text": "Sharks, crabs, mullet, eels and sea-birds.",
+     "tier": "CANON_DERIVED",
+     "sources": [
+      {
+       "kind": "uesp",
+       "title": "Lore:Topal Bay",
+       "locator": "Lore:Topal Bay",
+       "url": "https://en.uesp.net/wiki/Lore:Topal_Bay"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/waters.md",
+       "locator": "story/lore/regions/waters.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/soulrest.md",
+       "locator": "story/lore/soulrest.md"
+      }
+     ]
+    },
+    {
+     "aspect": "climate",
+     "text": "Warm, with sea breezes and storm fronts.",
+     "tier": "CANON_DERIVED",
+     "sources": [
+      {
+       "kind": "uesp",
+       "title": "Lore:Topal Bay",
+       "locator": "Lore:Topal Bay",
+       "url": "https://en.uesp.net/wiki/Lore:Topal_Bay"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/waters.md",
+       "locator": "story/lore/regions/waters.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/soulrest.md",
+       "locator": "story/lore/soulrest.md"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "aphon-isle",
+   "summary": "Aphon Isle is a small island in Topal Bay with a belvedere, a signal tower and a smugglers' cave.",
+   "landform": "island",
+   "elevation_floor_m": 4.0,
+   "elevation_summit_m": 26.0,
+   "roughness_m": 2.0,
+   "cliff_share": 0.12,
+   "wetness": 0.4,
+   "biome": "coastal island scrub",
+   "climate": "warm and breezy with salt spray",
+   "culture_id": "crimson-red",
+   "danger_band_id": "D2",
+   "statement_tier_id": "EXTRAPOLATED",
+   "notes": [
+    {
+     "aspect": "overview",
+     "text": "An island west of Gideon holding the Archwardens' lookout and a smugglers' cache.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/waters.md",
+       "locator": "story/lore/regions/waters.md"
+      },
+      {
+       "kind": "reasoning",
+       "title": "UESP search of the Lore namespace for 'Aphon Isle' found no page (2026-11-08): a Project Tamriel name"
+      },
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell region"
+      }
+     ]
+    },
+    {
+     "aspect": "history",
+     "text": "An Imperial retreat island; the signal tower and belvedere were built to watch the bay.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/waters.md",
+       "locator": "story/lore/regions/waters.md"
+      },
+      {
+       "kind": "reasoning",
+       "title": "UESP search of the Lore namespace for 'Aphon Isle' found no page (2026-11-08): a Project Tamriel name"
+      },
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell region"
+      }
+     ]
+    },
+    {
+     "aspect": "present",
+     "text": "The Archwardens' customs watch holds the belvedere and the smugglers hold the cave.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/waters.md",
+       "locator": "story/lore/regions/waters.md"
+      },
+      {
+       "kind": "reasoning",
+       "title": "UESP search of the Lore namespace for 'Aphon Isle' found no page (2026-11-08): a Project Tamriel name"
+      },
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell region"
+      }
+     ]
+    },
+    {
+     "aspect": "people",
+     "text": "A handful of watchers and smugglers.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/waters.md",
+       "locator": "story/lore/regions/waters.md"
+      },
+      {
+       "kind": "reasoning",
+       "title": "UESP search of the Lore namespace for 'Aphon Isle' found no page (2026-11-08): a Project Tamriel name"
+      },
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell region"
+      }
+     ]
+    },
+    {
+     "aspect": "economy",
+     "text": "Customs levies, smuggling and salvage.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/waters.md",
+       "locator": "story/lore/regions/waters.md"
+      },
+      {
+       "kind": "reasoning",
+       "title": "UESP search of the Lore namespace for 'Aphon Isle' found no page (2026-11-08): a Project Tamriel name"
+      },
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell region"
+      }
+     ]
+    },
+    {
+     "aspect": "faith",
+     "text": "Sailors' charms and a small Nine shrine.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/waters.md",
+       "locator": "story/lore/regions/waters.md"
+      },
+      {
+       "kind": "reasoning",
+       "title": "UESP search of the Lore namespace for 'Aphon Isle' found no page (2026-11-08): a Project Tamriel name"
+      },
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell region"
+      }
+     ]
+    },
+    {
+     "aspect": "look",
+     "text": "Low grey hills, scrub, white-washed lookout and a rocky shore.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/waters.md",
+       "locator": "story/lore/regions/waters.md"
+      },
+      {
+       "kind": "reasoning",
+       "title": "UESP search of the Lore namespace for 'Aphon Isle' found no page (2026-11-08): a Project Tamriel name"
+      },
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell region"
+      }
+     ]
+    },
+    {
+     "aspect": "dangers",
+     "text": "Pirates, smugglers and the sea.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/waters.md",
+       "locator": "story/lore/regions/waters.md"
+      },
+      {
+       "kind": "reasoning",
+       "title": "UESP search of the Lore namespace for 'Aphon Isle' found no page (2026-11-08): a Project Tamriel name"
+      },
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell region"
+      }
+     ]
+    },
+    {
+     "aspect": "landscape",
+     "text": "A low hilly island with rocky shores and a high spine.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/waters.md",
+       "locator": "story/lore/regions/waters.md"
+      },
+      {
+       "kind": "reasoning",
+       "title": "UESP search of the Lore namespace for 'Aphon Isle' found no page (2026-11-08): a Project Tamriel name"
+      },
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell region"
+      }
+     ]
+    },
+    {
+     "aspect": "ecology",
+     "text": "Scrub, gulls, crabs and kelp beds.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/waters.md",
+       "locator": "story/lore/regions/waters.md"
+      },
+      {
+       "kind": "reasoning",
+       "title": "UESP search of the Lore namespace for 'Aphon Isle' found no page (2026-11-08): a Project Tamriel name"
+      },
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell region"
+      }
+     ]
+    },
+    {
+     "aspect": "climate",
+     "text": "Breezy, with salt spray and sea mist.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/waters.md",
+       "locator": "story/lore/regions/waters.md"
+      },
+      {
+       "kind": "reasoning",
+       "title": "UESP search of the Lore namespace for 'Aphon Isle' found no page (2026-11-08): a Project Tamriel name"
+      },
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell region"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "banujha-basin",
+   "summary": "The Banujha Basin is the wet interior behind Soulrest, held by the Mine-Burner tribes who burned the Imperial mines in 3E 427.",
+   "landform": "flooded basin and river maze",
+   "elevation_floor_m": 5.0,
+   "elevation_summit_m": 22.0,
+   "roughness_m": 1.0,
+   "cliff_share": 0.02,
+   "wetness": 0.85,
+   "biome": "flooded basin swamp",
+   "climate": "hot, humid, with monsoon",
+   "culture_id": "steel-blue",
+   "danger_band_id": "D3",
+   "statement_tier_id": "EXTRAPOLATED",
+   "notes": [
+    {
+     "aspect": "overview",
+     "text": "A flooded basin of channels and islets with Jarecai and Kharaxos as its towns.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/soulrest.md",
+       "locator": "story/lore/soulrest.md"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "story/lore/extrapolation/argonia-4e201-state.md",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md",
+       "section": "Soulrest"
+      },
+      {
+       "kind": "reasoning",
+       "title": "UESP search of the Lore namespace for 'Banujha Basin' found no page (2026-11-08): a Project Tamriel name"
+      },
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell region"
+      }
+     ]
+    },
+    {
+     "aspect": "history",
+     "text": "Imperial mines and timber concessions here were destroyed by the tribes in 3E 427; the Mine-Burners have held it since.",
+     "tier": "CANON_DERIVED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/soulrest.md",
+       "locator": "story/lore/soulrest.md"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "story/lore/extrapolation/argonia-4e201-state.md",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md",
+       "section": "Soulrest"
+      },
+      {
+       "kind": "reasoning",
+       "title": "UESP search of the Lore namespace for 'Banujha Basin' found no page (2026-11-08): a Project Tamriel name"
+      },
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell region"
+      }
+     ]
+    },
+    {
+     "aspect": "present",
+     "text": "Jarecai's council rules; Soulrest depends on the basin's Hist for hatching and burial; the Chime-Keepers hold Oeneas.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/soulrest.md",
+       "locator": "story/lore/soulrest.md"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "story/lore/extrapolation/argonia-4e201-state.md",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md",
+       "section": "Soulrest"
+      },
+      {
+       "kind": "reasoning",
+       "title": "UESP search of the Lore namespace for 'Banujha Basin' found no page (2026-11-08): a Project Tamriel name"
+      },
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell region"
+      }
+     ]
+    },
+    {
+     "aspect": "people",
+     "text": "Mine-Burner Argonians, Chime-Keepers, Root-Folk outposts and Paatru hunters; about 100 people.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/soulrest.md",
+       "locator": "story/lore/soulrest.md"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "story/lore/extrapolation/argonia-4e201-state.md",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md",
+       "section": "Soulrest"
+      },
+      {
+       "kind": "reasoning",
+       "title": "UESP search of the Lore namespace for 'Banujha Basin' found no page (2026-11-08): a Project Tamriel name"
+      },
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell region"
+      }
+     ]
+    },
+    {
+     "aspect": "economy",
+     "text": "Fishing, salvaged mine metal, tolls on Soulrest's Argonians and a little timber.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/soulrest.md",
+       "locator": "story/lore/soulrest.md"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "story/lore/extrapolation/argonia-4e201-state.md",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md",
+       "section": "Soulrest"
+      },
+      {
+       "kind": "reasoning",
+       "title": "UESP search of the Lore namespace for 'Banujha Basin' found no page (2026-11-08): a Project Tamriel name"
+      },
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell region"
+      }
+     ]
+    },
+    {
+     "aspect": "faith",
+     "text": "Sithis, the nearest Hist to Soulrest, and burned-mine shrines.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/soulrest.md",
+       "locator": "story/lore/soulrest.md"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "story/lore/extrapolation/argonia-4e201-state.md",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md",
+       "section": "Soulrest"
+      },
+      {
+       "kind": "reasoning",
+       "title": "UESP search of the Lore namespace for 'Banujha Basin' found no page (2026-11-08): a Project Tamriel name"
+      },
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell region"
+      }
+     ]
+    },
+    {
+     "aspect": "look",
+     "text": "Flooded channels, scorched timber and tiered stilt halls.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/soulrest.md",
+       "locator": "story/lore/soulrest.md"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "story/lore/extrapolation/argonia-4e201-state.md",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md",
+       "section": "Soulrest"
+      },
+      {
+       "kind": "reasoning",
+       "title": "UESP search of the Lore namespace for 'Banujha Basin' found no page (2026-11-08): a Project Tamriel name"
+      },
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell region"
+      }
+     ]
+    },
+    {
+     "aspect": "dangers",
+     "text": "Hostile posts, swamp predators and haunted ruins.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/soulrest.md",
+       "locator": "story/lore/soulrest.md"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "story/lore/extrapolation/argonia-4e201-state.md",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md",
+       "section": "Soulrest"
+      },
+      {
+       "kind": "reasoning",
+       "title": "UESP search of the Lore namespace for 'Banujha Basin' found no page (2026-11-08): a Project Tamriel name"
+      },
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell region"
+      }
+     ]
+    },
+    {
+     "aspect": "landscape",
+     "text": "A shallow basin of channels and islets with dark water.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/soulrest.md",
+       "locator": "story/lore/soulrest.md"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "story/lore/extrapolation/argonia-4e201-state.md",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md",
+       "section": "Soulrest"
+      },
+      {
+       "kind": "reasoning",
+       "title": "UESP search of the Lore namespace for 'Banujha Basin' found no page (2026-11-08): a Project Tamriel name"
+      },
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell region"
+      }
+     ]
+    },
+    {
+     "aspect": "ecology",
+     "text": "Reeds, mangrove, gar, death hoppers and fleshflies.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/soulrest.md",
+       "locator": "story/lore/soulrest.md"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "story/lore/extrapolation/argonia-4e201-state.md",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md",
+       "section": "Soulrest"
+      },
+      {
+       "kind": "reasoning",
+       "title": "UESP search of the Lore namespace for 'Banujha Basin' found no page (2026-11-08): a Project Tamriel name"
+      },
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell region"
+      }
+     ]
+    },
+    {
+     "aspect": "climate",
+     "text": "Hot, humid, with monsoon flooding.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/soulrest.md",
+       "locator": "story/lore/soulrest.md"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "story/lore/extrapolation/argonia-4e201-state.md",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md",
+       "section": "Soulrest"
+      },
+      {
+       "kind": "reasoning",
+       "title": "UESP search of the Lore namespace for 'Banujha Basin' found no page (2026-11-08): a Project Tamriel name"
+      },
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell region"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

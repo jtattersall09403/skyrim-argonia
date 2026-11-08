@@ -1,0 +1,751 @@
+{
+ "records": [
+  {
+   "id": "hatandros-bight",
+   "summary": "Hatandros Bight is the open bay and coastal plain south of Thorn, a strip of grassland, mud-flats and low clay rises with Cantemiric Velothi ruins on its headlands.",
+   "landform": "coastal plain and bay shore",
+   "elevation_floor_m": 3.0,
+   "elevation_summit_m": 22.0,
+   "roughness_m": 1.3,
+   "cliff_share": 0.06,
+   "wetness": 0.55,
+   "biome": "temperate coastal grassland and salt marsh",
+   "climate": "mild, humid; sea fog in the mornings and heavy rains in the monsoon season",
+   "culture_id": null,
+   "danger_band_id": "D2",
+   "statement_tier_id": "EXTRAPOLATED",
+   "notes": [
+    {
+     "aspect": "overview",
+     "text": "The bight is the sea-bay that lies between Thorn in the north and the Arorha shore in the south, with a belt of grassland behind it. UESP has no page for Hatandros Bight; the name is the map's, and probably an old Cantemiric Velothi one.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "uesp",
+       "title": "Lore:Hatandros Bight (searched 2026-11-08: no page)",
+       "locator": "no page"
+      },
+      {
+       "kind": "map",
+       "title": "Project Tamriel Black Marsh map (PT3-map-Black_Marsh.png)",
+       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
+      },
+      {
+       "kind": "dossier",
+       "title": "Thornmarsh and the eastern seaboard",
+       "locator": "story/lore/regions/thornmarsh-and-east.md"
+      }
+     ]
+    },
+    {
+     "aspect": "history",
+     "text": "Cantemiric Velothi held this coast from Thorn to Archon until the Knahaten Flu of 2E 560 killed them. Dres slave-ships sailed from Thorn across it; the Arnesian War of 3E 396 was fought on its northern margin.",
+     "tier": "CANON_DERIVED",
+     "sources": [
+      {
+       "kind": "uesp",
+       "title": "Lore:Cantemiric Velothi",
+       "locator": "Lore:Cantemiric Velothi",
+       "url": "https://en.uesp.net/wiki/Lore:Cantemiric_Velothi"
+      },
+      {
+       "kind": "uesp",
+       "title": "Lore:Arnesia",
+       "locator": "Lore:Arnesia",
+       "url": "https://en.uesp.net/wiki/Lore:Arnesia"
+      },
+      {
+       "kind": "dossier",
+       "title": "Thornmarsh and the eastern seaboard",
+       "locator": "story/lore/regions/thornmarsh-and-east.md"
+      }
+     ]
+    },
+    {
+     "aspect": "present",
+     "text": "A thinly peopled coast: Arorha at its south end, small hamlets of Tsonac's stone-folk and Helstrom's Root-Folk, Warden posts toward Thorn, and three dead Velothi ruins. The coast road from Thorn to Seafalls and Archon runs through it.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "extrapolation",
+       "title": "The 4E 201 state of Argonia",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      },
+      {
+       "kind": "map",
+       "title": "Project Tamriel Black Marsh map (PT3-map-Black_Marsh.png)",
+       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
+      }
+     ]
+    },
+    {
+     "aspect": "people",
+     "text": "A mix of the clay-mound people of Arorha, the Stone-Sleepers of Tsonac at Ysan, a Root-Folk watch at Yuva-Goli, Warden Marches families at the posts, and a Sarpa camp inland.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "Project Tamriel Black Marsh map (PT3-map-Black_Marsh.png)",
+       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "research/cultures.json: culture rust",
+       "locator": "newworld/sources/research/cultures.json"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "research/cultures.json: culture sky-blue",
+       "locator": "newworld/sources/research/cultures.json"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "research/cultures.json: culture crimson-red",
+       "locator": "newworld/sources/research/cultures.json"
+      }
+     ]
+    },
+    {
+     "aspect": "economy",
+     "text": "Salt, stone, timber, clay and pottery, sold up and down the coast to Thorn and Archon. Tolls at the wardens' posts and smugglers' landings take a share.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "Thornmarsh and the eastern seaboard",
+       "locator": "story/lore/regions/thornmarsh-and-east.md"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "The 4E 201 state of Argonia",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      }
+     ]
+    },
+    {
+     "aspect": "faith",
+     "text": "Mostly Hist-less: coast villages send eggs inland; Velothi ancestor tablets mark the ruins; the Sarpa read the wind.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "Hist placement",
+       "locator": "story/lore/topics/hist-placement.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "Lost peoples",
+       "locator": "story/lore/topics/lost-peoples.md"
+      }
+     ]
+    },
+    {
+     "aspect": "look",
+     "text": "A pale shore of grey mud-flats and sandy points with grass behind, bright green after rain, low red clay rises, black Velothi ruins on the headlands, sea fog.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "Project Tamriel Black Marsh map (PT3-map-Black_Marsh.png)",
+       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
+      }
+     ]
+    },
+    {
+     "aspect": "dangers",
+     "text": "Smuggler landings, mudcrab swarms, fleshflies and ghosts in the three ruins; the inland margin has Sarpa raiders.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "Fauna, flora and hazards",
+       "locator": "story/lore/topics/fauna-hazards.md"
+      }
+     ]
+    },
+    {
+     "aspect": "landscape",
+     "text": "A flat to gently rolling plain behind a wide bay, cut by shallow rivers that spread into mud-flats at the coast. Low clay rises carry the villages above flood; headlands of dark stone hold the ruins.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "Project Tamriel Black Marsh map (PT3-map-Black_Marsh.png)",
+       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
+      }
+     ]
+    },
+    {
+     "aspect": "ecology",
+     "text": "Marsh grasses, reeds and salt-tolerant shrubs; crabs, eels, hackwings and coastal crocodiles; temperate grassland more than swamp, as in the rest of the north.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "Thornmarsh and the eastern seaboard",
+       "locator": "story/lore/regions/thornmarsh-and-east.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "Fauna, flora and hazards",
+       "locator": "story/lore/topics/fauna-hazards.md"
+      }
+     ]
+    },
+    {
+     "aspect": "climate",
+     "text": "Milder than the interior with sea-fog in the early morning, humid summers and monsoon rains; the tide raises the rivers.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "Thornmarsh and the eastern seaboard",
+       "locator": "story/lore/regions/thornmarsh-and-east.md"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "padomaic-ocean",
+   "summary": "The Padomaic Ocean is the open sea off Black Marsh's eastern coast, where Skeith Isle's pirates and the coast boats work and the wrecks of three eras lie on the shelf.",
+   "landform": "continental shelf and open sea",
+   "elevation_floor_m": -25.0,
+   "elevation_summit_m": 0.0,
+   "roughness_m": 1.5,
+   "cliff_share": 0.0,
+   "wetness": 1.0,
+   "biome": "open sea, kelp and sandbank",
+   "climate": "windy and wet; storms and sea-mist off the shelf, calm in the dry season",
+   "culture_id": null,
+   "danger_band_id": "D3",
+   "statement_tier_id": "EXTRAPOLATED",
+   "notes": [
+    {
+     "aspect": "overview",
+     "text": "The Padomaic is the vast ocean around most of Tamriel; here it is the eastern edge of Black Marsh, with Archon and Thornmarsh on its shore. The map's region covers only the shelf and open water off Thorn, Hatandros Bight and Skeith Isle.",
+     "tier": "CANON_EXPLICIT",
+     "sources": [
+      {
+       "kind": "uesp",
+       "title": "Lore:Padomaic Ocean",
+       "locator": "Lore:Padomaic Ocean",
+       "url": "https://en.uesp.net/wiki/Lore:Padomaic_Ocean"
+      },
+      {
+       "kind": "map",
+       "title": "Project Tamriel Black Marsh map (PT3-map-Black_Marsh.png)",
+       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
+      }
+     ]
+    },
+    {
+     "aspect": "history",
+     "text": "In the Dawn Era the Ehlnofey war sank most of the Hist's domain into the Padomaic, 'leaving only a small corner left standing', later Black Marsh. Topal the Pilot charted it first. Uriel Septim V's fleet crossed it against Akavir in the 270s of the Third Era.",
+     "tier": "CANON_EXPLICIT",
+     "sources": [
+      {
+       "kind": "uesp",
+       "title": "Lore:Padomaic Ocean",
+       "locator": "Lore:Padomaic Ocean",
+       "url": "https://en.uesp.net/wiki/Lore:Padomaic_Ocean"
+      }
+     ]
+    },
+    {
+     "aspect": "present",
+     "text": "Argonia's navy is the pirates it charters. Boats from Archon, Seafalls and Thorn work the shelf; the Archwardens' reach ends where the water gets deep. The wrecks of a Dunmer slaver, a smuggler's sloop, an Imperial man-of-war and a freighter lie here.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "extrapolation",
+       "title": "The 4E 201 state of Argonia",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      }
+     ]
+    },
+    {
+     "aspect": "people",
+     "text": "Sea people: pilots and fishers of Seafalls and Archon, pirate crews from Marque Landing, smuggler boats from Hollow Tide Camp, Dunmer traders from Tear.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "extrapolation",
+       "title": "The 4E 201 state of Argonia",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "Archon",
+       "locator": "story/lore/archon.md"
+      }
+     ]
+    },
+    {
+     "aspect": "economy",
+     "text": "Fishing, piloting, salvage, piracy and smuggling; the north-east link between Thorn, Seafalls and Archon is run by sea as well as by road.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "extrapolation",
+       "title": "Settlement register",
+       "locator": "story/lore/extrapolation/settlement-register.md"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "The 4E 201 state of Argonia",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      }
+     ]
+    },
+    {
+     "aspect": "faith",
+     "text": "The Spray-Folk hold that the sea keeps memories the Hist let fall; sailors leave knotted cords and painted shells on shore for the lost.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "extrapolation",
+       "title": "research/cultures.json: culture pearl",
+       "locator": "newworld/sources/research/cultures.json"
+      },
+      {
+       "kind": "dossier",
+       "title": "Hist placement",
+       "locator": "story/lore/topics/hist-placement.md"
+      }
+     ]
+    },
+    {
+     "aspect": "look",
+     "text": "Grey-green water with long swell, white surf on the shore, dark kelp beds and pale sandbanks, drowned timbers rising from the shelf.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "Project Tamriel Black Marsh map (PT3-map-Black_Marsh.png)",
+       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
+      }
+     ]
+    },
+    {
+     "aspect": "dangers",
+     "text": "Pirates, storms, sea-drakes, slaughterfish and drowned dead in the wrecks; deep water beyond the shelf.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "Fauna, flora and hazards",
+       "locator": "story/lore/topics/fauna-hazards.md"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "The 4E 201 state of Argonia",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      }
+     ]
+    },
+    {
+     "aspect": "landscape",
+     "text": "A shallow shelf that falls to deep water within a few miles of the shore; sandbanks and shoals off the Seafalls point and Skeith Isle.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "Project Tamriel Black Marsh map (PT3-map-Black_Marsh.png)",
+       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
+      }
+     ]
+    },
+    {
+     "aspect": "ecology",
+     "text": "Kelp, fish shoals, eels, crabs and sea-drakes; sea-birds along the shore.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "Fauna, flora and hazards",
+       "locator": "story/lore/topics/fauna-hazards.md"
+      }
+     ]
+    },
+    {
+     "aspect": "climate",
+     "text": "Stormy in the monsoon with squalls and sea-mist; calm and bright in the dry months.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "Project Tamriel Black Marsh map (PT3-map-Black_Marsh.png)",
+       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "skeith-isle",
+   "summary": "Skeith Isle is a rugged island off the Okuwun-Rahei coast, dark grey-green rock, held by pirates and smugglers and topped by an old Imperial keep.",
+   "landform": "rocky island",
+   "elevation_floor_m": 2.0,
+   "elevation_summit_m": 60.0,
+   "roughness_m": 3.5,
+   "cliff_share": 0.28,
+   "wetness": 0.2,
+   "biome": "rock, sea-grass and scrub",
+   "climate": "windy and salt-laden, drier than the mainland",
+   "culture_id": null,
+   "danger_band_id": "D3",
+   "statement_tier_id": "EXTRAPOLATED",
+   "notes": [
+    {
+     "aspect": "overview",
+     "text": "A rocky island east of the mainland, home to two outlaw camps, an old Imperial keep and a single crag. UESP has no page for Skeith Isle; canon's round island off Arnesia's coast has dark green-grey terrain, and this may be it.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "uesp",
+       "title": "Lore:Skeith Isle (searched 2026-11-08: no page)",
+       "locator": "no page"
+      },
+      {
+       "kind": "uesp",
+       "title": "Lore:Arnesia",
+       "locator": "Lore:Arnesia",
+       "url": "https://en.uesp.net/wiki/Lore:Arnesia"
+      },
+      {
+       "kind": "map",
+       "title": "Project Tamriel Black Marsh map (PT3-map-Black_Marsh.png)",
+       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
+      }
+     ]
+    },
+    {
+     "aspect": "history",
+     "text": "The Empire's coastal keep was built to watch the pirate trade of the Archon coast; after the secession of 4E 6 the garrison left and pirates took the island.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "Archon",
+       "locator": "story/lore/archon.md"
+      },
+      {
+       "kind": "map",
+       "title": "Project Tamriel Black Marsh map (PT3-map-Black_Marsh.png)",
+       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
+      }
+     ]
+    },
+    {
+     "aspect": "present",
+     "text": "Two rival outlaw crews hold it: the half-chartered pirates at Marque Landing and the smugglers at Hollow Tide Camp. Mainland boats avoid it.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "extrapolation",
+       "title": "The 4E 201 state of Argonia",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      }
+     ]
+    },
+    {
+     "aspect": "people",
+     "text": "About forty outlaws of mixed origin: Argonian boat-crews, Dunmer from Tear, runaway Archein families, Khajiit dealers.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "extrapolation",
+       "title": "The 4E 201 state of Argonia",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      }
+     ]
+    },
+    {
+     "aspect": "economy",
+     "text": "Piracy, smuggling and salvage; the island has little soil and imports food from the mainland.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "extrapolation",
+       "title": "The 4E 201 state of Argonia",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      }
+     ]
+    },
+    {
+     "aspect": "faith",
+     "text": "Ships' figureheads and sea-luck; the Imperial shrine in the keep is stacked with crates.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "Project Tamriel Black Marsh map (PT3-map-Black_Marsh.png)",
+       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
+      }
+     ]
+    },
+    {
+     "aspect": "look",
+     "text": "Dark grey-green rock in sea-worn crags, thin grass, wind-bent scrub, grey shingle beaches, a keep on a rise and a spire called the Grey Tooth.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "uesp",
+       "title": "Lore:Arnesia",
+       "locator": "Lore:Arnesia",
+       "url": "https://en.uesp.net/wiki/Lore:Arnesia"
+      }
+     ]
+    },
+    {
+     "aspect": "dangers",
+     "text": "Outlaws, trapped coves, cliffs and nesting hackwings; the tides are fast.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "Fauna, flora and hazards",
+       "locator": "story/lore/topics/fauna-hazards.md"
+      }
+     ]
+    },
+    {
+     "aspect": "landscape",
+     "text": "A single rise of dark rock with cliff edges to the west and north, shingle beaches to the south and east, a central crag.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "Project Tamriel Black Marsh map (PT3-map-Black_Marsh.png)",
+       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
+      }
+     ]
+    },
+    {
+     "aspect": "ecology",
+     "text": "Sea-grass, scrub, goats gone feral, sea-birds, crabs and eels; no Hist and little soil.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "Fauna, flora and hazards",
+       "locator": "story/lore/topics/fauna-hazards.md"
+      }
+     ]
+    },
+    {
+     "aspect": "climate",
+     "text": "Windy, salt-laden and drier than the mainland, with sea-fog and squalls.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "Project Tamriel Black Marsh map (PT3-map-Black_Marsh.png)",
+       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "okuwun-rahei",
+   "summary": "Okuwun-Rahei is the mound-and-lake country of the east interior, the home of the Clay-Mound People of Aroxhu, the Agaceph and the Spray-Folk of Seafalls.",
+   "landform": "mound country, lakes and marsh",
+   "elevation_floor_m": 4.0,
+   "elevation_summit_m": 26.0,
+   "roughness_m": 1.8,
+   "cliff_share": 0.05,
+   "wetness": 0.65,
+   "biome": "clay mounds, lakes and marsh with tidal creeks",
+   "climate": "hot, wet and humid, with monsoon floods that cut roads for days",
+   "culture_id": "rust",
+   "danger_band_id": "D2",
+   "statement_tier_id": "EXTRAPOLATED",
+   "notes": [
+    {
+     "aspect": "overview",
+     "text": "A broad region of red-clay mounds, lakes and creeks in the east of Middle Argonia. UESP has no page for Okuwun-Rahei; Lore:Middle Argonia places the Agaceph in the east, and the map shows the rest.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "uesp",
+       "title": "Lore:Okuwun-Rahei (searched 2026-11-08: no page)",
+       "locator": "no page"
+      },
+      {
+       "kind": "dossier",
+       "title": "Middle Argonia",
+       "locator": "story/lore/regions/middle-argonia.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "Argonian tribes",
+       "locator": "story/lore/tribes.md"
+      },
+      {
+       "kind": "map",
+       "title": "Project Tamriel Black Marsh map (PT3-map-Black_Marsh.png)",
+       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
+      }
+     ]
+    },
+    {
+     "aspect": "history",
+     "text": "A tribal country long before the Empire; the East Empire Company's boats worked its clay, and Cantemiric Velothi once held its coast. Since 4E 6 the clay-mound people have been the dominant power.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "Lost peoples",
+       "locator": "story/lore/topics/lost-peoples.md"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "research/cultures.json: culture rust",
+       "locator": "newworld/sources/research/cultures.json"
+      }
+     ]
+    },
+    {
+     "aspect": "present",
+     "text": "The confederacy at Aroxhu is the largest tribal polity of the east; the Agaceph at Yulca and the Spray-Folk at Seafalls are its neighbours; Skeith's outlaws harass the coast.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "extrapolation",
+       "title": "The 4E 201 state of Argonia",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "research/cultures.json: culture rust",
+       "locator": "newworld/sources/research/cultures.json"
+      }
+     ]
+    },
+    {
+     "aspect": "people",
+     "text": "Oxhu-Teeleel clay-mound people (the bulk), Agaceph raft-folk at Yulca, Icalca, Xibcan and Yina, Spray-Folk at Seafalls, Sarpa camps, a Root-Folk outpost.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "extrapolation",
+       "title": "research/cultures.json: culture rust",
+       "locator": "newworld/sources/research/cultures.json"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "research/cultures.json: culture lime",
+       "locator": "newworld/sources/research/cultures.json"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "research/cultures.json: culture pearl",
+       "locator": "newworld/sources/research/cultures.json"
+      },
+      {
+       "kind": "dossier",
+       "title": "Argonian tribes",
+       "locator": "story/lore/tribes.md"
+      }
+     ]
+    },
+    {
+     "aspect": "economy",
+     "text": "Clay, pottery, dye and ochre; fish and rice; books and illusion-work from the Agaceph; Seafalls' piloting and portage. The river trade to Archon and Thorn runs on clay.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "extrapolation",
+       "title": "research/cultures.json: culture rust",
+       "locator": "newworld/sources/research/cultures.json"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "Settlement register",
+       "locator": "story/lore/extrapolation/settlement-register.md"
+      }
+     ]
+    },
+    {
+     "aspect": "faith",
+     "text": "The Aroxhu Hist at the centre; the Spray-Folk's sea-memory; the Agaceph's detachment; Velothi ancestor tablets in the ruins; Sarpa wind-omens.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "Hist placement",
+       "locator": "story/lore/topics/hist-placement.md"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "research/cultures.json: culture pearl",
+       "locator": "newworld/sources/research/cultures.json"
+      }
+     ]
+    },
+    {
+     "aspect": "look",
+     "text": "Red-brown mounds in green-grey marsh, bright reed thatch, kilns smoking, pale lakes and brown creeks, black Velothi ruins, white falls at Seafalls.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "Project Tamriel Black Marsh map (PT3-map-Black_Marsh.png)",
+       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
+      }
+     ]
+    },
+    {
+     "aspect": "dangers",
+     "text": "Crocodiles, giant snakes, Sarpa raiders, smuggler landings, ghosts in the Velothi ruins and the monsoon floods.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "Fauna, flora and hazards",
+       "locator": "story/lore/topics/fauna-hazards.md"
+      }
+     ]
+    },
+    {
+     "aspect": "landscape",
+     "text": "Low red clay mounds above flood plains, big lakes in the west and a maze of tidal creeks in the south-east, ending in cliffs and a falls at the coast.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "Project Tamriel Black Marsh map (PT3-map-Black_Marsh.png)",
+       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
+      }
+     ]
+    },
+    {
+     "aspect": "ecology",
+     "text": "Reeds, rice, madder and ochre-stained marsh plants; crocodiles, eels, giant snakes, fleshflies and hackwings; guar on the meadows.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "Fauna, flora and hazards",
+       "locator": "story/lore/topics/fauna-hazards.md"
+      }
+     ]
+    },
+    {
+     "aspect": "climate",
+     "text": "Hot, humid and rainy; a monsoon with floods that cut the road crossings for days and drive people onto the mounds.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "Fauna, flora and hazards",
+       "locator": "story/lore/topics/fauna-hazards.md"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

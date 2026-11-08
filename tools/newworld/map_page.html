@@ -1,0 +1,394 @@
+<title>Black Marsh Atlas</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,600;0,700;1,400&family=Alegreya+Sans+SC:wght@500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: the map fills the screen; a reading panel sits beside it (a bottom sheet on a phone). */
+:root {
+  --bg: #e7ebe4; --panel: #f5f6f1; --ink: #1c2420; --muted: #59655e; --line: #c8cfc5; --chip: #e6eae2;
+  --accent: #96570f; --link: #2b6a65; --hilite: rgba(150, 87, 15, .16);
+  --d0: #5b8fc4; --d1: #4f9a5a; --d2: #c9b03a; --d3: #d9822b; --d4: #c4412f; --d5: #6d2a6b;
+  --f-body: "Alegreya", Georgia, "Times New Roman", serif;
+  --f-label: "Alegreya Sans SC", "Gill Sans", "Trebuchet MS", sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #111715; --panel: #172019; --ink: #e2e8e1; --muted: #98a59d; --line: #2d3a33; --chip: #212b25;
+  --accent: #e0a24f; --link: #74b9b0; --hilite: rgba(224, 162, 79, .16); color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #111715; --panel: #172019; --ink: #e2e8e1; --muted: #98a59d; --line: #2d3a33; --chip: #212b25;
+  --accent: #e0a24f; --link: #74b9b0; --hilite: rgba(224, 162, 79, .16); color-scheme: dark }
+html, body { height: 100%; }
+body { background: var(--bg); color: var(--ink); font: 16px/1.5 var(--f-body); overflow: hidden; }
+.app { display: grid; grid-template-columns: minmax(0, 1fr) 400px; height: 100%; }
+.mapwrap { position: relative; min-width: 0; min-height: 0; background: #33463f; touch-action: none; overflow: hidden; }
+canvas#map { width: 100%; height: 100%; display: block; cursor: grab; }
+canvas#map.drag { cursor: grabbing; }
+.panel { background: var(--panel); border-left: 1px solid var(--line); display: flex; flex-direction: column; min-height: 0; }
+.ph { padding-block: 14px 10px; padding-left: 18px; padding-right: max(18px, env(safe-area-inset-right, 0px)); border-bottom: 1px solid var(--line); display: grid; gap: 10px; }
+.ph h1 { margin: 0; font: 700 1.45rem/1.1 var(--f-body); letter-spacing: .01em; text-wrap: balance; }
+.ph .sub { color: var(--muted); font-size: .92rem; margin-top: 2px; }
+.search { position: relative; }
+.search input { width: 100%; box-sizing: border-box; padding: 9px 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--ink); font: 1rem var(--f-body); }
+.search input:focus-visible, button:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.results { position: absolute; z-index: 5; left: 0; right: 0; top: calc(100% + 4px); background: var(--panel); border: 1px solid var(--line); border-radius: 8px; max-height: 50vh; overflow: auto; box-shadow: 0 8px 24px rgba(0,0,0,.18); }
+.results button { display: flex; width: 100%; justify-content: space-between; gap: 10px; text-align: left; padding: 8px 12px; border: 0; background: none; color: var(--ink); font: 1rem var(--f-body); cursor: pointer; }
+.results button:hover, .results button.on { background: var(--hilite); }
+.results small { color: var(--muted); font-family: var(--f-label); }
+.layers { display: flex; flex-wrap: wrap; gap: 6px; }
+.layers button, .chipbtn { font: 500 .82rem var(--f-label); letter-spacing: .04em; padding: 4px 10px; border-radius: 999px; border: 1px solid var(--line); background: var(--chip); color: var(--muted); cursor: pointer; }
+.layers button[aria-pressed="true"] { background: var(--ink); color: var(--panel); border-color: var(--ink); }
+.body { overflow: auto; padding-block: 14px 28px; padding-left: 18px; padding-right: max(18px, env(safe-area-inset-right, 0px)); min-height: 0; flex: 1; }
+.body h2 { font: 700 1.6rem/1.15 var(--f-body); margin: 0 0 6px; text-wrap: balance; }
+.body h3 { font: 700 .86rem var(--f-label); letter-spacing: .07em; color: var(--accent); margin: 18px 0 4px; }
+.body p { margin: 0 0 8px; }
+.lead { font-size: 1.06rem; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0 10px; }
+.chip { font: 500 .8rem var(--f-label); letter-spacing: .04em; padding: 3px 9px; border-radius: 999px; background: var(--chip); color: var(--ink); border: 1px solid var(--line); }
+a.chip, button.chip { cursor: pointer; color: var(--link); }
+.band { color: #fff; border-color: transparent; }
+dl.facts { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 4px 14px; margin: 6px 0 4px; font-size: .95rem; }
+dl.facts dt { font: 500 .82rem var(--f-label); letter-spacing: .05em; color: var(--muted); padding-top: 2px; }
+dl.facts dd { margin: 0; min-width: 0; overflow-wrap: anywhere; }
+.mono { font-family: var(--f-mono); font-size: .84rem; font-variant-numeric: tabular-nums; }
+.note { border-top: 1px solid var(--line); padding-top: 8px; margin-top: 10px; }
+.note .meta { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: baseline; margin-top: 4px; font-size: .82rem; color: var(--muted); }
+.tier { font: 500 .74rem var(--f-label); letter-spacing: .05em; padding: 1px 7px; border-radius: 4px; border: 1px solid var(--line); }
+.tier.CANON_EXPLICIT { color: var(--d1); border-color: var(--d1); }
+.tier.CANON_DERIVED { color: var(--link); border-color: var(--link); }
+.tier.EXTRAPOLATED { color: var(--accent); border-color: var(--accent); }
+.tier.AGENT_INVENTED { color: var(--muted); }
+.note a { color: var(--link); }
+.legend { display: grid; gap: 4px; font-size: .9rem; }
+.legend .row { display: flex; align-items: center; gap: 8px; }
+.sw { width: 14px; height: 14px; border-radius: 3px; flex: none; border: 1px solid rgba(0,0,0,.2); }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 8px; margin: 10px 0; }
+.stats div { background: var(--chip); border-radius: 8px; padding: 8px 10px; }
+.stats b { display: block; font: 700 1.3rem var(--f-body); font-variant-numeric: tabular-nums; }
+.stats span { font: 500 .78rem var(--f-label); letter-spacing: .05em; color: var(--muted); }
+.zoom { position: absolute; right: calc(12px + env(safe-area-inset-right, 0px)); top: calc(12px + env(safe-area-inset-top, 0px)); display: grid; gap: 6px; }
+.zoom button { width: 40px; height: 40px; border-radius: 8px; border: 1px solid rgba(0,0,0,.25); background: rgba(245,246,241,.92); color: #1c2420; font: 700 1.2rem var(--f-body); cursor: pointer; }
+.coord { position: absolute; left: calc(10px + env(safe-area-inset-left, 0px)); bottom: calc(10px + env(safe-area-inset-bottom, 0px)); background: rgba(20,28,24,.78); color: #e6ece5; padding: 4px 9px; border-radius: 6px; font: .78rem var(--f-mono); pointer-events: none; }
+.tip { position: absolute; pointer-events: none; background: rgba(20,28,24,.9); color: #f0f3ee; padding: 4px 9px; border-radius: 6px; font: .9rem var(--f-body); white-space: nowrap; transform: translate(12px, -50%); }
+.back { font: 500 .82rem var(--f-label); letter-spacing: .05em; color: var(--link); background: none; border: 0; padding: 0; cursor: pointer; margin-bottom: 8px; }
+.list { display: grid; gap: 2px; }
+.list button { text-align: left; background: none; border: 0; padding: 4px 0; color: var(--link); font: 1rem var(--f-body); cursor: pointer; }
+@media (max-width: 760px) {
+  .app { grid-template-columns: minmax(0, 1fr); grid-template-rows: minmax(0, 1fr) 46%; }
+  .panel { border-left: 0; border-top: 1px solid var(--line); }
+  .ph, .body { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+}
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
+</style>
+
+<div class="app">
+  <div class="mapwrap" id="wrap">
+    <canvas id="map" aria-label="Map of Black Marsh: drag to move, pinch or scroll to zoom, tap a place or region to read about it" role="img"></canvas>
+    <div class="zoom"><button id="zin" aria-label="Zoom in">+</button><button id="zout" aria-label="Zoom out">−</button><button id="zfit" aria-label="Show the whole province">⤢</button></div>
+    <div class="coord" id="coord">Morrowind cell –</div>
+    <div class="tip" id="tip" hidden></div>
+  </div>
+  <aside class="panel">
+    <div class="ph">
+      <div><h1>Black Marsh Atlas</h1><div class="sub">Project Tamriel's map of Black Marsh, read into our database and researched for 4E 201</div></div>
+      <div class="search"><input id="q" type="search" placeholder="Find a place, region or culture" autocomplete="off" aria-label="Search"><div class="results" id="res" hidden></div></div>
+      <div class="layers" id="layers"></div>
+    </div>
+    <div class="body" id="body"></div>
+  </aside>
+</div>
+
+<script>
+const D = /*__DATA__*/null;
+const IMG = { terrain: "__TERRAIN__", pt: "__PTMAP__" };
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const TIER = { CANON_EXPLICIT: "Canon", CANON_DERIVED: "From canon", EXTRAPOLATED: "Extrapolated", AGENT_INVENTED: "Invented" };
+const BANDCOL = id => css("--d" + String(id || "D2").slice(1));
+const regionById = Object.fromEntries(D.regions.map(r => [r.id, r]));
+const placeById = Object.fromEntries(D.places.map(p => [p.id, p]));
+
+// ---- layers ----
+const LAYERS = [
+  ["base", "Terrain"], ["pt", "Original map"], ["regions", "Regions"], ["danger", "Danger"],
+  ["roads", "Roads"], ["borders", "Borders"], ["places", "Places"], ["labels", "Names"]];
+const on = { base: true, pt: false, regions: true, danger: false, roads: true, borders: true, places: true, labels: true };
+try { Object.assign(on, JSON.parse(localStorage.getItem("bm-layers") || "{}")); } catch (e) {}
+function drawLayerButtons() {
+  $("#layers").innerHTML = LAYERS.map(([k, n]) => `<button aria-pressed="${!!on[k]}" data-k="${k}">${n}</button>`).join("");
+  $("#layers").querySelectorAll("button").forEach(b => b.onclick = () => {
+    const k = b.dataset.k; on[k] = !on[k];
+    if (k === "pt" && on.pt) on.base = false; if (k === "base" && on.base) on.pt = false;
+    try { localStorage.setItem("bm-layers", JSON.stringify(on)); } catch (e) {}
+    drawLayerButtons(); draw(); if (state.view === "home") home();
+  });
+}
+
+// ---- canvas, view ----
+const cv = $("#map"), ctx = cv.getContext("2d"), wrap = $("#wrap");
+const imgs = {}; let loaded = 0;
+for (const k of ["terrain", "pt"]) { const im = new Image(); im.onload = () => { loaded++; draw(); }; im.src = IMG[k]; imgs[k] = im; }
+const [W, H] = D.size;
+const view = { s: 1, x: 0, y: 0 };
+let dpr = 1;
+function resize() {
+  dpr = window.devicePixelRatio || 1;
+  cv.width = wrap.clientWidth * dpr; cv.height = wrap.clientHeight * dpr; draw();
+}
+function fit() {
+  // the province: places' extent with a margin
+  const xs = D.places.map(p => p.x), ys = D.places.map(p => p.y);
+  const x0 = Math.min(...xs) - 30, x1 = Math.max(...xs) + 30, y0 = Math.min(...ys) - 30, y1 = Math.max(...ys) + 30;
+  const cw = wrap.clientWidth, ch = wrap.clientHeight;
+  view.s = Math.min(cw / (x1 - x0), ch / (y1 - y0));
+  view.x = cw / 2 - view.s * (x0 + x1) / 2; view.y = ch / 2 - view.s * (y0 + y1) / 2; draw();
+}
+const toScreen = (x, y) => [x * view.s + view.x, y * view.s + view.y];
+const toMap = (sx, sy) => [(sx - view.x) / view.s, (sy - view.y) / view.s];
+const F = D.frame;
+const cellOf = (x, y) => [Math.floor((x - F.x0) / F.cell), -Math.floor((y - F.y0) / F.cell) - 1];
+const cellBox = (cx, cy) => [F.x0 + cx * F.cell, F.y0 - (cy + 1) * F.cell];
+
+const cellRegion = new Map(D.cells.map(c => [c[0] + "," + c[1], c]));
+let sel = null;   // {type, id}
+
+function draw() {
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  ctx.fillStyle = "#33463f"; ctx.fillRect(0, 0, cv.width, cv.height);
+  ctx.save(); ctx.translate(view.x, view.y); ctx.scale(view.s, view.s);
+  ctx.imageSmoothingEnabled = view.s < 2;
+  if (on.pt && imgs.pt.complete) ctx.drawImage(imgs.pt, 0, 0, W, H);
+  else if (on.base && imgs.terrain.complete) ctx.drawImage(imgs.terrain, 0, 0, W, H);
+  if (on.danger) {
+    ctx.globalAlpha = .38;
+    for (const c of D.cells) { if (!c[3]) continue; const [x, y] = cellBox(c[0], c[1]); ctx.fillStyle = BANDCOL(c[3]); ctx.fillRect(x, y, F.cell, F.cell); }
+    ctx.globalAlpha = 1;
+  }
+  if (on.regions) {
+    ctx.lineWidth = 1.6 / view.s; ctx.strokeStyle = "rgba(255,255,255,.75)";
+    ctx.beginPath();
+    for (const c of D.cells) {
+      const [x, y] = cellBox(c[0], c[1]);
+      const r = k => (cellRegion.get(k) || [])[2];
+      if (r((c[0] + 1) + "," + c[1]) !== c[2]) { ctx.moveTo(x + F.cell, y); ctx.lineTo(x + F.cell, y + F.cell); }
+      if (r(c[0] + "," + (c[1] - 1)) !== c[2]) { ctx.moveTo(x, y + F.cell); ctx.lineTo(x + F.cell, y + F.cell); }
+      if (r((c[0] - 1) + "," + c[1]) !== c[2]) { ctx.moveTo(x, y); ctx.lineTo(x, y + F.cell); }
+      if (r(c[0] + "," + (c[1] + 1)) !== c[2]) { ctx.moveTo(x, y); ctx.lineTo(x + F.cell, y); }
+    }
+    ctx.stroke();
+    if (sel && sel.type === "region") {
+      ctx.fillStyle = "rgba(255,255,255,.22)";
+      for (const c of D.cells) if (c[2] === sel.id) { const [x, y] = cellBox(c[0], c[1]); ctx.fillRect(x, y, F.cell, F.cell); }
+    }
+  }
+  if (on.borders) for (const b of D.borders) {
+    ctx.setLineDash(b.k === "province" ? [9 / view.s, 4 / view.s, 2 / view.s, 4 / view.s] : [6 / view.s, 4 / view.s]);
+    ctx.strokeStyle = b.k === "province" ? "#d23c2e" : "rgba(24,34,80,.85)"; ctx.lineWidth = (b.k === "province" ? 2.6 : 1.8) / view.s;
+    poly(b.p); ctx.stroke(); ctx.setLineDash([]);
+  }
+  if (on.roads) for (const r of D.roads) {
+    if (r.c === "minor") { ctx.setLineDash([4 / view.s, 3 / view.s]); ctx.strokeStyle = "#e8a676"; ctx.lineWidth = 1.5 / view.s; }
+    else { ctx.setLineDash([]); ctx.strokeStyle = "#d9542c"; ctx.lineWidth = 2.4 / view.s; }
+    poly(r.p); ctx.stroke(); ctx.setLineDash([]);
+  }
+  ctx.restore();
+  if (on.places) for (const p of D.places) glyph(p);
+  if (on.labels) labels();
+}
+function poly(a) { ctx.beginPath(); ctx.moveTo(a[0], a[1]); for (let i = 2; i < a.length; i += 2) ctx.lineTo(a[i], a[i + 1]); }
+const TIER_R = { "settlement.metropolis": 9, "settlement.large-city": 8, "settlement.small-city": 7, "settlement.small-city-seat": 7, "settlement.town": 6, "settlement.town-seat": 6, "settlement.village": 5, "settlement.village-seat": 5, "settlement.outpost": 5, "settlement.minor": 3 };
+const SIDES = { "settlement.metropolis": 8, "settlement.large-city": 7, "settlement.small-city": 6, "settlement.small-city-seat": 6, "settlement.town": 5, "settlement.town-seat": 5, "settlement.village": 4, "settlement.village-seat": 4, "settlement.outpost": 3 };
+const FAMCOL = { ruin: "#efe2c6", cave: "#b7b2a8", camp: "#f2c33a", landmark: "#dfe8e4", wreck: "#8fb7c9", sunken: "#5fa58b", work: "#cfc6b0", military: "#cfc6b0", settlement: "#cfc6b0" };
+function glyph(p) {
+  const [sx, sy] = toScreen(p.x, p.y);
+  if (sx < -20 || sy < -20 || sx > wrap.clientWidth + 20 || sy > wrap.clientHeight + 20) return;
+  const z = Math.max(.75, Math.min(1.6, Math.sqrt(view.s)));
+  const selected = sel && sel.type === "place" && sel.id === p.id;
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  ctx.lineWidth = 1.6;
+  if (p.symid.startsWith("settlement")) {
+    const r = (TIER_R[p.symid] || 4) * z, n = SIDES[p.symid];
+    ctx.fillStyle = (D.cultures[p.cul] || {}).hex || "#999"; ctx.strokeStyle = "#fff";
+    ctx.beginPath();
+    if (!n) ctx.arc(sx, sy, r, 0, 7);
+    else for (let i = 0; i < n; i++) { const a = -Math.PI / 2 + i * 2 * Math.PI / n + (n === 4 ? Math.PI / 4 : 0); const rr = n === 4 ? r * 1.25 : r; ctx[i ? "lineTo" : "moveTo"](sx + rr * Math.cos(a), sy + rr * Math.sin(a)); }
+    ctx.closePath(); ctx.fill(); ctx.stroke();
+    if (p.symid.endsWith("seat") || p.symid === "settlement.metropolis") { ctx.beginPath(); ctx.arc(sx, sy, r + 3.5, 0, 7); ctx.stroke(); }
+  } else {
+    const r = 4.2 * z;
+    ctx.fillStyle = FAMCOL[p.fam] || "#ddd"; ctx.strokeStyle = "#1c2420";
+    ctx.beginPath(); ctx.moveTo(sx, sy - r); ctx.lineTo(sx + r, sy); ctx.lineTo(sx, sy + r); ctx.lineTo(sx - r, sy); ctx.closePath(); ctx.fill(); ctx.stroke();
+  }
+  if (selected) { ctx.strokeStyle = css("--accent") || "#96570f"; ctx.lineWidth = 3; ctx.beginPath(); ctx.arc(sx, sy, 14 * z, 0, 7); ctx.stroke(); }
+}
+function labels() {
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  ctx.textBaseline = "middle"; ctx.lineJoin = "round";
+  const placed = [];
+  const order = [...D.places].sort((a, b) => (TIER_R[b.symid] || 2) - (TIER_R[a.symid] || 2));
+  for (const p of order) {
+    const big = (TIER_R[p.symid] || 0) >= 6;
+    if (!big && view.s < 1.6) continue;
+    if (!p.symid.startsWith("settlement") && view.s < 2.6) continue;
+    if (p.n.startsWith("Unnamed") && view.s < 4) continue;
+    const [sx, sy] = toScreen(p.x, p.y);
+    ctx.font = (big ? "700 15px " : "500 13px ") + css("--f-body");
+    const t = p.n, w = ctx.measureText(t).width, box = [sx + 10, sy - 9, sx + 12 + w, sy + 9];
+    if (placed.some(b => !(box[2] < b[0] || box[0] > b[2] || box[3] < b[1] || box[1] > b[3]))) continue;
+    placed.push(box);
+    ctx.strokeStyle = "rgba(20,26,22,.85)"; ctx.lineWidth = 3.5; ctx.strokeText(t, sx + 10, sy);
+    ctx.fillStyle = "#f6f4ec"; ctx.fillText(t, sx + 10, sy);
+  }
+  if (on.regions && view.s < 2.2) {
+    ctx.font = "700 13px " + css("--f-label"); ctx.textAlign = "center";
+    for (const r of D.regions) { const [sx, sy] = toScreen(r.x, r.y); ctx.strokeStyle = "rgba(20,26,22,.7)"; ctx.lineWidth = 3; ctx.strokeText(r.n.toUpperCase(), sx, sy); ctx.fillStyle = "#fff8e3"; ctx.fillText(r.n.toUpperCase(), sx, sy); }
+    ctx.textAlign = "start";
+  }
+}
+
+// ---- pointer: pan, pinch, wheel, tap ----
+const ptrs = new Map(); let dragged = false, last = null;
+cv.addEventListener("pointerdown", e => { cv.setPointerCapture(e.pointerId); ptrs.set(e.pointerId, [e.offsetX, e.offsetY]); dragged = false; last = null; cv.classList.add("drag"); });
+cv.addEventListener("pointermove", e => {
+  const [mx, my] = toMap(e.offsetX, e.offsetY); const [cx, cy] = cellOf(mx, my);
+  $("#coord").textContent = `Morrowind cell ${cx}, ${cy}` + (cellRegion.get(cx + "," + cy) ? " · " + D.regionNames[cellRegion.get(cx + "," + cy)[2]] : "");
+  if (!ptrs.has(e.pointerId)) { hover(e); return; }
+  const prev = ptrs.get(e.pointerId); ptrs.set(e.pointerId, [e.offsetX, e.offsetY]);
+  if (ptrs.size === 1) { const dx = e.offsetX - prev[0], dy = e.offsetY - prev[1]; if (Math.abs(dx) + Math.abs(dy) > 2) dragged = true; view.x += dx; view.y += dy; draw(); }
+  else if (ptrs.size === 2) {
+    const [a, b] = [...ptrs.values()]; const d = Math.hypot(a[0] - b[0], a[1] - b[1]); const m = [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2];
+    if (last) { zoomAt(m[0], m[1], d / last.d); view.x += m[0] - last.m[0]; view.y += m[1] - last.m[1]; }
+    last = { d, m }; dragged = true; draw();
+  }
+});
+const up = e => { const was = ptrs.has(e.pointerId); ptrs.delete(e.pointerId); last = null; if (!ptrs.size) cv.classList.remove("drag"); if (was && !dragged && !ptrs.size) tap(e.offsetX, e.offsetY); };
+cv.addEventListener("pointerup", up); cv.addEventListener("pointercancel", e => { ptrs.delete(e.pointerId); last = null; });
+cv.addEventListener("wheel", e => { e.preventDefault(); zoomAt(e.offsetX, e.offsetY, Math.exp(-e.deltaY * .0015)); draw(); }, { passive: false });
+function zoomAt(sx, sy, k) { const s = Math.max(.25, Math.min(14, view.s * k)); k = s / view.s; view.x = sx - (sx - view.x) * k; view.y = sy - (sy - view.y) * k; view.s = s; }
+$("#zin").onclick = () => { zoomAt(wrap.clientWidth / 2, wrap.clientHeight / 2, 1.5); draw(); };
+$("#zout").onclick = () => { zoomAt(wrap.clientWidth / 2, wrap.clientHeight / 2, 1 / 1.5); draw(); };
+$("#zfit").onclick = fit;
+function hit(sx, sy) {
+  let best = null, bd = 16;
+  if (on.places) for (const p of D.places) { const [x, y] = toScreen(p.x, p.y); const d = Math.hypot(x - sx, y - sy); if (d < bd) { bd = d; best = p; } }
+  return best;
+}
+function hover(e) {
+  const p = hit(e.offsetX, e.offsetY); const t = $("#tip");
+  if (p) { t.hidden = false; t.style.left = e.offsetX + "px"; t.style.top = e.offsetY + "px"; t.textContent = `${p.n} · ${p.kind}`; cv.style.cursor = "pointer"; }
+  else { t.hidden = true; cv.style.cursor = ""; }
+}
+function tap(sx, sy) {
+  const p = hit(sx, sy);
+  if (p) return showPlace(p.id);
+  const [mx, my] = toMap(sx, sy); const c = cellRegion.get(cellOf(mx, my).join(","));
+  if (c) showRegion(c[2], c);
+}
+function goTo(x, y, s) { const cw = wrap.clientWidth, ch = wrap.clientHeight; view.s = Math.max(view.s, s || 3); view.x = cw / 2 - x * view.s; view.y = ch / 2 - y * view.s; draw(); }
+
+// ---- panel views ----
+const state = { view: "home", stack: [] };
+const body = $("#body");
+function setBody(html, view) { state.view = view; body.innerHTML = html; body.scrollTop = 0; wire(); }
+function wire() {
+  body.querySelectorAll("[data-place]").forEach(b => b.onclick = () => { const p = placeById[b.dataset.place]; showPlace(p.id); goTo(p.x, p.y, 3); });
+  body.querySelectorAll("[data-region]").forEach(b => b.onclick = () => showRegion(b.dataset.region));
+  body.querySelectorAll("[data-culture]").forEach(b => b.onclick = () => showCulture(b.dataset.culture));
+  body.querySelectorAll("[data-home]").forEach(b => b.onclick = home);
+  body.querySelectorAll("[data-key]").forEach(b => b.onclick = showKey);
+}
+const bandChip = (id, text) => id ? `<span class="chip band" style="background:${BANDCOL(id)}">${esc(text || id)}</span>` : "";
+const tierTag = t => t ? `<span class="tier ${t}" title="${esc(D.tiers[t])}">${TIER[t] || t}</span>` : "";
+function notesHtml(notes) {
+  return notes.map(n => `<div class="note"><h3>${esc(n.a)}</h3><p>${esc(n.t)}</p><div class="meta">${tierTag(n.tier)}${n.src.map(s => s.u ? `<a href="${esc(s.u)}" target="_blank" rel="noopener">${esc(s.t)}</a>` : `<span>${esc(s.t)}${s.s ? " · " + esc(s.s) : ""}</span>`).join("")}</div></div>`).join("");
+}
+function home() {
+  const n = D.places.length, named = D.places.filter(p => !p.n.startsWith("Unnamed")).length;
+  const km = Math.round(D.roads.reduce((a, r) => a + r.len, 0) / 1000);
+  const researched = D.places.filter(p => p.sum).length;
+  let legend = "";
+  if (on.danger) legend += `<h3>Danger bands</h3><div class="legend">${Object.entries(D.bands).map(([k, b]) => `<div class="row"><span class="sw" style="background:${BANDCOL(k)}"></span><b>${k}</b> ${esc(b.label)}: ${esc(b.about)}</div>`).join("")}</div>`;
+  legend += `<h3>Cultures</h3><div class="legend">${Object.entries(D.cultures).map(([k, c]) => `<div class="row"><span class="sw" style="background:${c.hex}"></span><button class="chip" data-culture="${k}">${esc(c.n)}</button></div>`).join("")}</div>`;
+  setBody(`<p class="lead">This is Project Tamriel's map of Black Marsh, the Argonian homeland, turned into the base of our new worldspace. Every symbol on it is a place in the database below, researched as it stands in 4E 201.</p>
+  <div class="stats"><div><b>${n}</b><span>places</span></div><div><b>${D.regions.length}</b><span>regions</span></div><div><b>${Object.keys(D.cultures).length}</b><span>cultures</span></div><div><b>${km}</b><span>km of road</span></div><div><b>${D.cells.length}</b><span>cells, 117 m a side</span></div><div><b>${researched}</b><span>places researched</span></div></div>
+  <p>Drag to move, pinch or scroll to zoom. Tap a place to read about it; tap open ground to read about its region. Switch layers above: <i>Original map</i> shows Project Tamriel's drawing, <i>Danger</i> colours each cell by how dangerous it is.</p>
+  <p><button class="chip" data-key>The map key: what every symbol means</button></p>
+  <h3>Regions</h3><div class="list">${D.regions.map(r => `<button data-region="${r.id}">${esc(r.n)}</button>`).join("")}</div>${legend}
+  <p class="sub" style="margin-top:16px;color:var(--muted);font-size:.86rem">Terrain layer: ${D.terrainKind === "terrain" ? "shaded from the generated heightmap" : "land and water from the map (the heightmap is not built yet)"}.</p>`, "home");
+}
+function showKey() {
+  setBody(`<button class="back" data-home>← Overview</button><h2>The map key</h2><p>What each symbol on Project Tamriel's Black Marsh map means in our world, and why.</p>${D.symbols.map(s => `<div class="note"><h3>${esc(s.label)}</h3><p><i>${esc(s.glyph)}</i>${s.pt ? ` · Project Tamriel's key: ${esc(s.pt)}` : " · not in Project Tamriel's key"}</p><p>${esc(s.meaning)}</p><p style="color:var(--muted)">${esc(s.why)}</p><div class="meta">${tierTag(s.tier)} · ${D.places.filter(p => p.symid === s.id).length} on the map</div></div>`).join("")}`, "key");
+}
+function showPlace(id) {
+  const p = placeById[id]; sel = { type: "place", id }; draw();
+  const cul = D.cultures[p.cul], reg = regionById[p.reg];
+  const facts = [
+    ["Status", p.status], ["Held by", p.held], ["Population", p.pop != null ? p.pop : null],
+    ["Built area", p.radius ? `about ${Math.round(p.radius)} m across its radius` : null], ["Ground", p.siting],
+    ["Importance", p.imp ? ["", "local colour", "local", "regional", "major", "shapes the province"][p.imp] : null],
+    ["On the map", (p.label ? `“${p.label}”, ` : "unlabelled, ") + p.sym + (p.sure ? "" : " (read with doubt)")],
+    ["Morrowind cell", `<span class="mono">${p.cell[0]}, ${p.cell[1]}</span>`],
+    ["Skyrim cell", `<span class="mono">${p.skyrim_cell[0]}, ${p.skyrim_cell[1]}</span>`],
+    ["Game position", `<span class="mono">${p.world[0]}, ${p.world[1]}</span>`],
+    ["Also called", p.alias.length ? p.alias.map(esc).join(", ") : null],
+    ["Canon page", p.lore ? `<a href="https://en.uesp.net/wiki/${encodeURIComponent(p.lore.replace(/ /g, "_"))}" target="_blank" rel="noopener">${esc(p.lore)}</a>` : null],
+  ].filter(f => f[1] != null && f[1] !== "");
+  setBody(`<button class="back" data-home>← Overview</button>
+  <h2>${esc(p.n)}</h2>
+  <div class="chips"><span class="chip">${esc(p.kind)}</span>${bandChip(p.bandid, p.band)}${cul ? `<button class="chip" data-culture="${p.cul}">${esc(cul.n)}</button>` : ""}<button class="chip" data-region="${p.reg}">${esc(reg.n)}</button>${tierTag(p.tier)}</div>
+  ${p.sum ? `<p class="lead">${esc(p.sum)}</p>` : `<p class="lead" style="color:var(--muted)">Not researched yet.</p>`}
+  <dl class="facts">${facts.map(([k, v]) => `<dt>${k}</dt><dd>${typeof v === "number" ? v : (String(v).startsWith("<") ? v : esc(v))}</dd>`).join("")}</dl>
+  ${p.needs.length ? `<h3>What it needs of the ground</h3>${p.needs.map(n => `<p>${esc(n.n)} <span class="mono">(${Math.round(n.r)} m)</span>: ${esc(n.why)}</p>`).join("")}` : ""}
+  ${notesHtml(p.notes)}`, "place");
+}
+function showRegion(id, cell) {
+  const r = regionById[id]; sel = { type: "region", id }; draw();
+  const ps = D.places.filter(p => p.reg === id).sort((a, b) => (b.imp || 0) - (a.imp || 0) || a.n.localeCompare(b.n));
+  const cul = D.cultures[r.cul];
+  const facts = [["Kind", r.kind === "sea" ? "Sea" : "Land"], ["Landform", r.landform], ["Height above water", r.elev[0] != null ? `${r.elev[0]} to ${r.elev[1]} m` : null], ["Plants", r.biome], ["Climate", r.climate]].filter(f => f[1]);
+  setBody(`<button class="back" data-home>← Overview</button><h2>${esc(r.n)}</h2>
+  <div class="chips"><span class="chip">Region</span>${r.band ? bandChip(r.band.slice(0, 2), r.band) : ""}${cul ? `<button class="chip" data-culture="${r.cul}">${esc(cul.n)}</button>` : ""}${tierTag(r.tier)}</div>
+  ${r.sum ? `<p class="lead">${esc(r.sum)}</p>` : `<p class="lead" style="color:var(--muted)">Not researched yet.</p>`}
+  ${cell ? `<p class="sub" style="color:var(--muted)">You tapped cell <span class="mono">${cell[0]}, ${cell[1]}</span>: ${bandChip(cell[3], cell[3] + " · " + (D.bands[cell[3]] || {}).label)} ${esc(cell[5] || "")}</p>` : ""}
+  <dl class="facts">${facts.map(([k, v]) => `<dt>${k}</dt><dd>${esc(v)}</dd>`).join("")}</dl>
+  <h3>Places (${ps.length})</h3><div class="list">${ps.map(p => `<button data-place="${p.id}">${esc(p.n)} <small style="color:var(--muted)">${esc(p.kind)}</small></button>`).join("")}</div>
+  ${notesHtml(r.notes)}`, "region");
+}
+function showCulture(id) {
+  const c = D.cultures[id]; const ps = D.places.filter(p => p.cul === id);
+  setBody(`<button class="back" data-home>← Overview</button><h2>${esc(c.n)}</h2>
+  <div class="chips"><span class="chip"><span class="sw" style="display:inline-block;vertical-align:-2px;background:${c.hex}"></span> Culture</span>${tierTag(c.tier)}</div>
+  <p class="lead">${esc(c.people)}</p><p>${esc(c.about)}</p><h3>Why we read it so</h3><p>${esc(c.why)}</p>
+  <h3>Places (${ps.length})</h3><div class="list">${ps.map(p => `<button data-place="${p.id}">${esc(p.n)} <small style="color:var(--muted)">${esc(p.kind)} · ${esc(D.regionNames[p.reg])}</small></button>`).join("")}</div>`, "culture");
+  sel = null; draw();
+}
+
+// ---- search ----
+const idx = [
+  ...D.places.map(p => ({ t: p.n, s: `${p.kind} · ${D.regionNames[p.reg]}`, k: [p.n, p.label, ...p.alias].join(" ").toLowerCase(), go: () => { showPlace(p.id); goTo(p.x, p.y, 3); } })),
+  ...D.regions.map(r => ({ t: r.n, s: "Region", k: r.n.toLowerCase(), go: () => { showRegion(r.id); goTo(r.x, r.y, 1.2); } })),
+  ...Object.entries(D.cultures).map(([id, c]) => ({ t: c.n, s: "Culture", k: (c.n + " " + c.people).toLowerCase(), go: () => showCulture(id) })),
+];
+let hits = [], hi = 0;
+$("#q").addEventListener("input", e => {
+  const q = e.target.value.trim().toLowerCase();
+  hits = q.length < 2 ? [] : idx.filter(i => i.k.includes(q)).sort((a, b) => (a.k.startsWith(q) ? 0 : 1) - (b.k.startsWith(q) ? 0 : 1)).slice(0, 12);
+  hi = 0; renderHits();
+});
+$("#q").addEventListener("keydown", e => {
+  if (e.key === "ArrowDown") { hi = Math.min(hi + 1, hits.length - 1); renderHits(); e.preventDefault(); }
+  if (e.key === "ArrowUp") { hi = Math.max(hi - 1, 0); renderHits(); e.preventDefault(); }
+  if (e.key === "Enter" && hits[hi]) { hits[hi].go(); $("#res").hidden = true; }
+  if (e.key === "Escape") $("#res").hidden = true;
+});
+function renderHits() {
+  const r = $("#res"); r.hidden = !hits.length;
+  r.innerHTML = hits.map((h, i) => `<button class="${i === hi ? "on" : ""}" data-i="${i}">${esc(h.t)} <small>${esc(h.s)}</small></button>`).join("");
+  r.querySelectorAll("button").forEach(b => b.onclick = () => { hits[+b.dataset.i].go(); r.hidden = true; });
+}
+document.addEventListener("click", e => { if (!e.target.closest(".search")) $("#res").hidden = true; });
+
+window.addEventListener("resize", resize);
+drawLayerButtons(); resize(); fit(); home();
+</script>

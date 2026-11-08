@@ -1,0 +1,615 @@
+{
+ "records": [
+  {
+   "id": "arnesian-jungle",
+   "summary": "The Arnesian Jungle is the humid, forested upland of the north-east, between Thorn on the coast and the mesa country to the south. It is the Stone-Sleepers' country: stone-built hamlets and a terraced city, a long inlet from the bay, Velothi ruins on the shores and a crimson-marked corner of Warden forts and camps round Thorn.",
+   "landform": "Low forested uplands cut by a long tidal inlet from Thorn's bay, with rises, river terraces and shores",
+   "elevation_floor_m": 6.0,
+   "elevation_summit_m": 60.0,
+   "roughness_m": 3.0,
+   "cliff_share": 0.08,
+   "wetness": 0.55,
+   "biome": "Humid lowland jungle and riverine forest, with grassland at the Thorn end",
+   "climate": "Warm, humid, with heavy summer rain and sea fog on the coast",
+   "culture_id": "sky-blue",
+   "danger_band_id": "D2",
+   "statement_tier_id": "EXTRAPOLATED",
+   "notes": [
+    {
+     "aspect": "overview",
+     "text": "The Arnesian Jungle takes its name from Arnesia, the east-coast country around Thorn and Archon. UESP has no page for the jungle as a region; Lore:Arnesia names Arnesia only as a settlement and region near Archon and Thorn.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "Arnesian Jungle: UESP's Lore:Arnesia and the 4E 201 state document"
+      },
+      {
+       "kind": "map",
+       "title": "ARNESIAN JUNGLE label sits north of Tsonac, with the long inlet, Thorn and Tsonac on the map",
+       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
+      },
+      {
+       "kind": "dossier",
+       "title": "Thornmarsh and the east",
+       "locator": "story/lore/regions/thornmarsh-and-east.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "Argonia in 4E 201 (state document)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      }
+     ]
+    },
+    {
+     "aspect": "history",
+     "text": "Barsaebic Ayleids and Cantemiric Velothi settled the country around Arnesia, Archon and Thorn before their extinction. The Arnesian War of 3E 396 began as a slave revolt in southern Dres lands and ended with Morrowind annexing Arnesia; from 3E 432 the Argonians began to reclaim the ground, and slavers were still active in Arnesia in the late Third Era.",
+     "tier": "CANON_EXPLICIT",
+     "sources": [
+      {
+       "kind": "uesp",
+       "title": "Lore:Arnesia",
+       "locator": "Lore:Arnesia",
+       "url": "https://en.uesp.net/wiki/Lore:Arnesia"
+      },
+      {
+       "kind": "uesp",
+       "title": "Lore:Cantemiric Velothi",
+       "locator": "Lore:Cantemiric Velothi",
+       "url": "https://en.uesp.net/wiki/Lore:Cantemiric_Velothi"
+      },
+      {
+       "kind": "dossier",
+       "title": "Thornmarsh and the east",
+       "locator": "story/lore/regions/thornmarsh-and-east.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "Argonia in 4E 201 (state document)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      }
+     ]
+    },
+    {
+     "aspect": "present",
+     "text": "In 4E 201 the jungle is the Stone-Sleepers' home country, with Tsonac as capital, and Thorn at its coastal edge holds the Warden forts, camps and posts.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "Arnesian Jungle: UESP's Lore:Arnesia and the 4E 201 state document"
+      },
+      {
+       "kind": "map",
+       "title": "ARNESIAN JUNGLE label sits north of Tsonac, with the long inlet, Thorn and Tsonac on the map",
+       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
+      },
+      {
+       "kind": "dossier",
+       "title": "Thornmarsh and the east",
+       "locator": "story/lore/regions/thornmarsh-and-east.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "Argonia in 4E 201 (state document)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      }
+     ]
+    },
+    {
+     "aspect": "people",
+     "text": "Mostly Stone-Sleeper Argonians, with Root-Folk hunters, Warden garrisons and field-owners' crews near Thorn, and Dunmer traders on the road.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "Arnesian Jungle: UESP's Lore:Arnesia and the 4E 201 state document"
+      },
+      {
+       "kind": "map",
+       "title": "ARNESIAN JUNGLE label sits north of Tsonac, with the long inlet, Thorn and Tsonac on the map",
+       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
+      },
+      {
+       "kind": "dossier",
+       "title": "Thornmarsh and the east",
+       "locator": "story/lore/regions/thornmarsh-and-east.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "Argonia in 4E 201 (state document)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      }
+     ]
+    },
+    {
+     "aspect": "economy",
+     "text": "Timber, quarried stone, hides and sap, sold to Thorn; saltrice and tools come back.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "Arnesian Jungle: UESP's Lore:Arnesia and the 4E 201 state document"
+      },
+      {
+       "kind": "map",
+       "title": "ARNESIAN JUNGLE label sits north of Tsonac, with the long inlet, Thorn and Tsonac on the map",
+       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
+      },
+      {
+       "kind": "dossier",
+       "title": "Thornmarsh and the east",
+       "locator": "story/lore/regions/thornmarsh-and-east.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "Argonia in 4E 201 (state document)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      }
+     ]
+    },
+    {
+     "aspect": "faith",
+     "text": "The sky-blue people hold their city's Hist to be asleep; hamlets keep cairns for it, while the Root-Folk keep their own trees.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "Arnesian Jungle: UESP's Lore:Arnesia and the 4E 201 state document"
+      },
+      {
+       "kind": "map",
+       "title": "ARNESIAN JUNGLE label sits north of Tsonac, with the long inlet, Thorn and Tsonac on the map",
+       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
+      },
+      {
+       "kind": "dossier",
+       "title": "Thornmarsh and the east",
+       "locator": "story/lore/regions/thornmarsh-and-east.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "Argonia in 4E 201 (state document)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      }
+     ]
+    },
+    {
+     "aspect": "look",
+     "text": "Terraced stone towns among tall hardwoods, a broad bay inlet with muddy banks, Velothi ruins under vines.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "Arnesian Jungle: UESP's Lore:Arnesia and the 4E 201 state document"
+      },
+      {
+       "kind": "map",
+       "title": "ARNESIAN JUNGLE label sits north of Tsonac, with the long inlet, Thorn and Tsonac on the map",
+       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
+      },
+      {
+       "kind": "dossier",
+       "title": "Thornmarsh and the east",
+       "locator": "story/lore/regions/thornmarsh-and-east.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "Argonia in 4E 201 (state document)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      }
+     ]
+    },
+    {
+     "aspect": "dangers",
+     "text": "D2 away from roads; D3 at the Velothi ruins; the Thorn road and towns are D1 and D0.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "Arnesian Jungle: UESP's Lore:Arnesia and the 4E 201 state document"
+      },
+      {
+       "kind": "map",
+       "title": "ARNESIAN JUNGLE label sits north of Tsonac, with the long inlet, Thorn and Tsonac on the map",
+       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
+      },
+      {
+       "kind": "dossier",
+       "title": "Thornmarsh and the east",
+       "locator": "story/lore/regions/thornmarsh-and-east.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "Argonia in 4E 201 (state document)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      }
+     ]
+    },
+    {
+     "aspect": "landscape",
+     "text": "A long inlet from the bay runs west to Tsonac, with rivers branching off to the south and north-west; rises of 30 to 60 m stand between them, and the ground is marshy at the shore.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "Arnesian Jungle: UESP's Lore:Arnesia and the 4E 201 state document"
+      },
+      {
+       "kind": "map",
+       "title": "ARNESIAN JUNGLE label sits north of Tsonac, with the long inlet, Thorn and Tsonac on the map",
+       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
+      },
+      {
+       "kind": "dossier",
+       "title": "Thornmarsh and the east",
+       "locator": "story/lore/regions/thornmarsh-and-east.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "Argonia in 4E 201 (state document)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      }
+     ]
+    },
+    {
+     "aspect": "ecology",
+     "text": "Jungle hardwood, tree-ferns, vines and bright fungus, crocodiles on the banks, jungle cats and snakes inland, grass and saltrice near Thorn.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "Arnesian Jungle: UESP's Lore:Arnesia and the 4E 201 state document"
+      },
+      {
+       "kind": "map",
+       "title": "ARNESIAN JUNGLE label sits north of Tsonac, with the long inlet, Thorn and Tsonac on the map",
+       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
+      },
+      {
+       "kind": "dossier",
+       "title": "Thornmarsh and the east",
+       "locator": "story/lore/regions/thornmarsh-and-east.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "Argonia in 4E 201 (state document)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      }
+     ]
+    },
+    {
+     "aspect": "climate",
+     "text": "Hot and wet most of the year, with a drier cooler season when the road is easiest.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "Arnesian Jungle: UESP's Lore:Arnesia and the 4E 201 state document"
+      },
+      {
+       "kind": "map",
+       "title": "ARNESIAN JUNGLE label sits north of Tsonac, with the long inlet, Thorn and Tsonac on the map",
+       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
+      },
+      {
+       "kind": "dossier",
+       "title": "Thornmarsh and the east",
+       "locator": "story/lore/regions/thornmarsh-and-east.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "Argonia in 4E 201 (state document)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chixathe-mesa",
+   "summary": "Chixathe Mesa is a high, dry, flat-topped upland south of the Arnesian Jungle, with cliff edges, quarries and chalk pits, Velothi ruins and a Sarpa-held western edge. It is the quarry country of the Stone-Sleepers and the Wardens.",
+   "landform": "Flat-topped mesas with cliff sides, cut by rivers, with quarries and chalk faces",
+   "elevation_floor_m": 10.0,
+   "elevation_summit_m": 110.0,
+   "roughness_m": 6.0,
+   "cliff_share": 0.3,
+   "wetness": 0.3,
+   "biome": "Dry upland scrub and stunted forest on the mesa tops, riverine jungle in the cuts",
+   "climate": "Warm and drier than the jungle, with sharp winds on the heights",
+   "culture_id": null,
+   "danger_band_id": "D3",
+   "statement_tier_id": "EXTRAPOLATED",
+   "notes": [
+    {
+     "aspect": "overview",
+     "text": "UESP has no page for Chixathe Mesa; it is a Project Tamriel name. It lies between the Arnesian country and the Middle Argonian interior.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "Chixathe Mesa: no UESP page; Velothi, Sarpa and Stone-Sleeper facts"
+      },
+      {
+       "kind": "map",
+       "title": "CHIXATHE MESA label sits at the mesa's centre on the map",
+       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
+      },
+      {
+       "kind": "dossier",
+       "title": "Tribes",
+       "locator": "story/lore/tribes.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "Middle Argonia",
+       "locator": "story/lore/regions/middle-argonia.md"
+      }
+     ]
+    },
+    {
+     "aspect": "history",
+     "text": "The Cantemiric Velothi settled the east of Black Marsh before the Knahaten Flu of 2E 560-603 killed them; their ruins at Kaochalit, Balormaak and Vorannuhl stand on the mesa.",
+     "tier": "CANON_DERIVED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "Tribes",
+       "locator": "story/lore/tribes.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "Middle Argonia",
+       "locator": "story/lore/regions/middle-argonia.md"
+      },
+      {
+       "kind": "uesp",
+       "title": "Lore:Cantemiric Velothi",
+       "locator": "Lore:Cantemiric Velothi",
+       "url": "https://en.uesp.net/wiki/Lore:Cantemiric_Velothi"
+      },
+      {
+       "kind": "dossier",
+       "title": "Argonia in 4E 201 (state document)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      }
+     ]
+    },
+    {
+     "aspect": "present",
+     "text": "In 4E 201 it is a thin, mixed country: Stone-Sleeper hamlets and quarries to the north and east, Warden fort at Chalkmoth, Root-Folk and Sedge-Warden outposts, an Agaceph hamlet in the south and Sarpa on the western edge.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "Chixathe Mesa: no UESP page; Velothi, Sarpa and Stone-Sleeper facts"
+      },
+      {
+       "kind": "map",
+       "title": "CHIXATHE MESA label sits at the mesa's centre on the map",
+       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
+      },
+      {
+       "kind": "dossier",
+       "title": "Tribes",
+       "locator": "story/lore/tribes.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "Middle Argonia",
+       "locator": "story/lore/regions/middle-argonia.md"
+      }
+     ]
+    },
+    {
+     "aspect": "people",
+     "text": "No single culture: Stone-Sleepers, Root-Folk, Agaceph, Sedge-Wardens and Clay-Mound families, with Sarpa to the west.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "Chixathe Mesa: no UESP page; Velothi, Sarpa and Stone-Sleeper facts"
+      },
+      {
+       "kind": "map",
+       "title": "CHIXATHE MESA label sits at the mesa's centre on the map",
+       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
+      },
+      {
+       "kind": "dossier",
+       "title": "Tribes",
+       "locator": "story/lore/tribes.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "Middle Argonia",
+       "locator": "story/lore/regions/middle-argonia.md"
+      }
+     ]
+    },
+    {
+     "aspect": "economy",
+     "text": "Quarried stone, chalk and lime, hides and books.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "Chixathe Mesa: no UESP page; Velothi, Sarpa and Stone-Sleeper facts"
+      },
+      {
+       "kind": "map",
+       "title": "CHIXATHE MESA label sits at the mesa's centre on the map",
+       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
+      },
+      {
+       "kind": "dossier",
+       "title": "Tribes",
+       "locator": "story/lore/tribes.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "Middle Argonia",
+       "locator": "story/lore/regions/middle-argonia.md"
+      }
+     ]
+    },
+    {
+     "aspect": "faith",
+     "text": "A mix of Hist customs; the Sarpa keep High-Flower, the Stone-Sleepers a cairn, the Agaceph read.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "Chixathe Mesa: no UESP page; Velothi, Sarpa and Stone-Sleeper facts"
+      },
+      {
+       "kind": "map",
+       "title": "CHIXATHE MESA label sits at the mesa's centre on the map",
+       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
+      },
+      {
+       "kind": "dossier",
+       "title": "Tribes",
+       "locator": "story/lore/tribes.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "Middle Argonia",
+       "locator": "story/lore/regions/middle-argonia.md"
+      }
+     ]
+    },
+    {
+     "aspect": "look",
+     "text": "Pale cliffs and flat tops, white chalk dust, stone cuts, rivers in green gorges.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "Chixathe Mesa: no UESP page; Velothi, Sarpa and Stone-Sleeper facts"
+      },
+      {
+       "kind": "map",
+       "title": "CHIXATHE MESA label sits at the mesa's centre on the map",
+       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
+      },
+      {
+       "kind": "dossier",
+       "title": "Tribes",
+       "locator": "story/lore/tribes.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "Middle Argonia",
+       "locator": "story/lore/regions/middle-argonia.md"
+      }
+     ]
+    },
+    {
+     "aspect": "dangers",
+     "text": "D3 away from roads: Sarpa raiders, Velothi undead and cliff falls.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "Chixathe Mesa: no UESP page; Velothi, Sarpa and Stone-Sleeper facts"
+      },
+      {
+       "kind": "map",
+       "title": "CHIXATHE MESA label sits at the mesa's centre on the map",
+       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
+      },
+      {
+       "kind": "dossier",
+       "title": "Tribes",
+       "locator": "story/lore/tribes.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "Middle Argonia",
+       "locator": "story/lore/regions/middle-argonia.md"
+      }
+     ]
+    },
+    {
+     "aspect": "landscape",
+     "text": "Flat mesa tops 60 to 110 m above the lowland, cliffs on the edges and river gorges between them.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "Chixathe Mesa: no UESP page; Velothi, Sarpa and Stone-Sleeper facts"
+      },
+      {
+       "kind": "map",
+       "title": "CHIXATHE MESA label sits at the mesa's centre on the map",
+       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
+      },
+      {
+       "kind": "dossier",
+       "title": "Tribes",
+       "locator": "story/lore/tribes.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "Middle Argonia",
+       "locator": "story/lore/regions/middle-argonia.md"
+      }
+     ]
+    },
+    {
+     "aspect": "ecology",
+     "text": "Scrub, tall grass, thorn-bush, snakes, cats, birds of prey and the Sarpa's winged hunters.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "Chixathe Mesa: no UESP page; Velothi, Sarpa and Stone-Sleeper facts"
+      },
+      {
+       "kind": "map",
+       "title": "CHIXATHE MESA label sits at the mesa's centre on the map",
+       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
+      },
+      {
+       "kind": "dossier",
+       "title": "Tribes",
+       "locator": "story/lore/tribes.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "Middle Argonia",
+       "locator": "story/lore/regions/middle-argonia.md"
+      }
+     ]
+    },
+    {
+     "aspect": "climate",
+     "text": "Drier than the jungle; the mesa tops hold little water and cold nights follow hot days.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "reasoning",
+       "title": "Chixathe Mesa: no UESP page; Velothi, Sarpa and Stone-Sleeper facts"
+      },
+      {
+       "kind": "map",
+       "title": "CHIXATHE MESA label sits at the mesa's centre on the map",
+       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
+      },
+      {
+       "kind": "dossier",
+       "title": "Tribes",
+       "locator": "story/lore/tribes.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "Middle Argonia",
+       "locator": "story/lore/regions/middle-argonia.md"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -37,7 +37,7 @@ names. Rebuild after writing: `/home/ubuntu/.argonia/venv/bin/python -m tools.ne
  "footprint_radius_m": 0,
  "siting": "riverbank | coast | island | lakeshore | inland | hilltop | swamp | seabed",
  "danger_band_id": "D0..D5 (the place itself, inside and at the door)",
- "importance": 1,
+ "importance": "5 shapes the province, 4 major, 3 regional, 2 local, 1 local colour",
  "summary": "<two or three sentences>",
  "lore_page": "Lore:<Name> or null",
  "statement_tier_id": "<the tier of the place's identity as a whole>",

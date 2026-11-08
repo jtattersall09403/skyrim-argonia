@@ -1,0 +1,6287 @@
+{
+ "records": [
+  {
+   "id": "helstrom",
+   "name": "Helstrom",
+   "status": "inhabited",
+   "held_by": "The Helstrom assembly of interior naheesh and tree-minders; a tribal levy keeps the guard",
+   "population": 60,
+   "footprint_radius_m": 220,
+   "siting": "riverbank",
+   "danger_band_id": "D1",
+   "importance": 5,
+   "summary": "Helstrom is the interior capital of Black Marsh, the one great city no invader has ever taken, on the river fork at the heart of the Hist forest. In 4E 201 a standing assembly of tribal elders and tree-minders runs it, and it hosts the great Root Talk each Hist-Tsoko. Outsiders may enter on sufferance; the city's real danger is its own guard and alleys.",
+   "lore_page": "Lore:Helstrom",
+   "statement_tier_id": "CANON_EXPLICIT",
+   "aliases": [
+    {
+     "alias": "The immortal capital of the Argonians",
+     "source": {
+      "kind": "uesp",
+      "title": "Lore:Helstrom",
+      "locator": "Lore:Helstrom",
+      "url": "https://en.uesp.net/wiki/Lore:Helstrom"
+     }
+    }
+   ],
+   "notes": [
+    {
+     "aspect": "overview",
+     "text": "Helstrom is one of Black Marsh's eight great cities, in the reputedly inhospitable middle of the province, and many call it the immortal capital of the Argonians. It is the formal seat of the Archwardens' successor state and the meeting place of the Root Talk, though it is run by its own people, not by any distant government.",
+     "tier": "CANON_EXPLICIT",
+     "sources": [
+      {
+       "kind": "uesp",
+       "title": "Lore:Helstrom",
+       "locator": "Lore:Helstrom",
+       "url": "https://en.uesp.net/wiki/Lore:Helstrom"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/helstrom.md",
+       "locator": "story/lore/helstrom.md",
+       "section": "Canon"
+      }
+     ]
+    },
+    {
+     "aspect": "history",
+     "text": "Helstrom was already active in the late First Era, during the Blackwater War. After the defeat at the Battle of Argonia in 1E 2811 the native armies retreated here; the Empire refused to follow and never besieged it, and in 1E 2836 the Argonians simply stopped fighting. In the Third Era it became an incorporated city-state, and settlements were built around it by the fourth century; the Umbriel storm of 4E 48 passed it by.",
+     "tier": "CANON_EXPLICIT",
+     "sources": [
+      {
+       "kind": "uesp",
+       "title": "Lore:Helstrom",
+       "locator": "Lore:Helstrom",
+       "url": "https://en.uesp.net/wiki/Lore:Helstrom",
+       "section": "History"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/helstrom.md",
+       "locator": "story/lore/helstrom.md",
+       "section": "Sweep addendum"
+      }
+     ]
+    },
+    {
+     "aspect": "present",
+     "text": "In 4E 201 Helstrom is intact and the least Imperialised city in the province. The state's formal seat is lodged here and largely ignored; the assembly of naheesh and tree-minders decides by consensus, and a half-swallowed ring of Third Era villages lies on its approaches.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "extrapolation",
+       "title": "story/lore/extrapolation/argonia-4e201-state.md",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md",
+       "section": "Helstrom: the interior capital"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/helstrom.md",
+       "locator": "story/lore/helstrom.md",
+       "section": "Notes for authoring"
+      }
+     ]
+    },
+    {
+     "aspect": "people",
+     "text": "Overwhelmingly Argonian, drawn from the interior's exclusive breeds: Agaceph on tail-poled rafts, with Paatru and Naga visitors, and a very small licensed outsider presence of perhaps a few dozen. The guard is a tribal levy answerable to the assembly, not to strangers.",
+     "tier": "CANON_DERIVED",
+     "sources": [
+      {
+       "kind": "extrapolation",
+       "title": "story/lore/extrapolation/argonia-4e201-state.md",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md",
+       "section": "Helstrom: the interior capital"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/middle-argonia.md",
+       "locator": "story/lore/regions/middle-argonia.md",
+       "section": "The interior breeds"
+      }
+     ]
+    },
+    {
+     "aspect": "economy",
+     "text": "Helstrom does not trade outward; it receives and redistributes, because the rivers all drain to it. Rootworm and raft traffic, the Panther River fork and pilgrimage to the Root Talk feed it, and its market sells Murkwood feathers, sap, eggs and river fish.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "extrapolation",
+       "title": "story/lore/extrapolation/argonia-4e201-state.md",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md",
+       "section": "Helstrom: the interior capital"
+      },
+      {
+       "kind": "uesp",
+       "title": "Lore:Panther River",
+       "locator": "Lore:Panther River",
+       "url": "https://en.uesp.net/wiki/Lore:Panther_River"
+      }
+     ]
+    },
+    {
+     "aspect": "faith",
+     "text": "The Hist, above all. Helstrom's city tree and its tree-minders matter more than any office, and the Root Talk, the occasion at which the Hist's alignment becomes audible to all the tribes, is held here in the holy month Hist-Tsoko. Sithis is honoured quietly; the Nine have no temple.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "extrapolation",
+       "title": "story/lore/extrapolation/argonia-4e201-state.md",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md",
+       "section": "The great Root Talk"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "forest-green"
+      }
+     ]
+    },
+    {
+     "aspect": "look",
+     "text": "Stilt and root-hollow houses of reed, mud and living wood, with no stone and no outward wall, because the marsh is the wall. Black Heart-Mud pools between the roots, the air is thick and warm, and rafts and plank walks thread the districts.",
+     "tier": "CANON_DERIVED",
+     "sources": [
+      {
+       "kind": "uesp",
+       "title": "Lore:Helstrom",
+       "locator": "Lore:Helstrom",
+       "url": "https://en.uesp.net/wiki/Lore:Helstrom"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/helstrom.md",
+       "locator": "story/lore/helstrom.md",
+       "section": "Canon"
+      }
+     ]
+    },
+    {
+     "aspect": "dangers",
+     "text": "UESP calls the city's alleys both wonderful and dangerous and its guard reportedly dangerous. The danger is social: a levy that is not accountable to strangers, assembly politics, and a sour-spring cycle nobody will name. Past the city every approach is deep swamp.",
+     "tier": "CANON_EXPLICIT",
+     "sources": [
+      {
+       "kind": "uesp",
+       "title": "Lore:Helstrom",
+       "locator": "Lore:Helstrom",
+       "url": "https://en.uesp.net/wiki/Lore:Helstrom"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/helstrom.md",
+       "locator": "story/lore/helstrom.md",
+       "section": "Notes for authoring"
+      }
+     ]
+    },
+    {
+     "aspect": "hooks",
+     "text": "A stranger can be stranded here and rescued by an Agaceph raftsman; the assembly will not time its sour spring in open session; the Root Talk draws every naheesh in the interior; and the ring of drowned Third Era villages holds the first settlers' abandoned goods.",
+     "tier": "AGENT_INVENTED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/helstrom.md",
+       "locator": "story/lore/helstrom.md",
+       "section": "Quest fact LH07"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Helstrom's canon traits (alleys, guard, river fork, never besieged) as story seeds",
+       "locator": "Helstrom's canon traits (alleys, guard, river fork, never besieged) as story seeds"
+      }
+     ]
+    }
+   ],
+   "terrain_needs": [
+    {
+     "id": "flat-pad",
+     "radius_m": 220,
+     "why": "the city's built area on firm ground between the river arms"
+    },
+    {
+     "id": "shore-access",
+     "radius_m": 60,
+     "why": "the river landings where rafts and rootworm traffic arrive"
+    }
+   ]
+  },
+  {
+   "id": "korydon",
+   "name": "Korydon",
+   "status": "inhabited",
+   "held_by": "A council of craft-guild elders of the Chime-Keepers",
+   "population": 22,
+   "footprint_radius_m": 110,
+   "siting": "island",
+   "danger_band_id": "D0",
+   "importance": 3,
+   "summary": "Korydon is the principal Chime-Keeper town of the interior, on a ring of dry ground encircled by water between Helstrom and the southern lakes. Argonians resettled it after the Kothringi died out and kept its name. It is orderly, prosperous for the marsh, and known for tin-and-copper chimes, metal-woven rope and shallow-draft boats.",
+   "lore_page": null,
+   "statement_tier_id": "EXTRAPOLATED",
+   "aliases": [],
+   "notes": [
+    {
+     "aspect": "overview",
+     "text": "Korydon is a market town of about two dozen households on a ground-ring ringed by water, the chief of the Kothringi-named towns of the Ultherus country. The name is a Kothringi one, kept by the Argonians who moved in; no source describes the place itself.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "uesp",
+       "title": "Lore:Korydon (no page)",
+       "locator": "UESP search and page lookup, 2026-11-08: no Lore page for Korydon",
+       "url": "https://en.uesp.net/w/index.php?search=Korydon"
+      },
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 1,-93"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "oxblood"
+      }
+     ]
+    },
+    {
+     "aspect": "history",
+     "text": "A Kothringi town until the Knahaten Flu of 2E 560 emptied it. Argonians, immune to the flu, moved into the empty houses and kept the old name, as a name belonged to the place. Over the centuries they added Kothringi habits the Hist did not forbid, and the 4E 48 nativists called them half-foreign.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "oxblood"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/topics/lost-peoples.md",
+       "locator": "story/lore/topics/lost-peoples.md",
+       "section": "Kothringi"
+      }
+     ]
+    },
+    {
+     "aspect": "present",
+     "text": "In 4E 201 Korydon is the most orderly town in the interior, run by a council of guild elders, cold toward the Archwardens and warm toward Gideon. Its chimes ring from every eave and mark the hours, the water level and the weather.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 1,-93"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "oxblood"
+      }
+     ]
+    },
+    {
+     "aspect": "people",
+     "text": "About 22 residents, nearly all Argonian with a few mixed families. Chime-smiths, rope-weavers, boat-wrights, a tin broker and the elders; a few families keep a stone cairn for the old Kothringi dead.",
+     "tier": "AGENT_INVENTED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 1,-93"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "oxblood"
+      }
+     ]
+    },
+    {
+     "aspect": "economy",
+     "text": "It makes tuned chimes, metal-woven rope and shallow-draft sail-and-paddle boats, and trades them up the channels to Helstrom, Truowa and Blackrose for tin, copper, sap and dragon's-tongue gathered in the swamp.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/topics/lost-peoples.md",
+       "locator": "story/lore/topics/lost-peoples.md",
+       "section": "Kothringi"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "oxblood"
+      }
+     ]
+    },
+    {
+     "aspect": "faith",
+     "text": "Sithis and the Hist beside a quiet regard for Z'en, the Kothringi god of toil, and Dibella, kept at a small chime-hung shrine. The town's tree-minder tends a village tree where eggs are laid.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/topics/lost-peoples.md",
+       "locator": "story/lore/topics/lost-peoples.md",
+       "section": "Kothringi"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "oxblood"
+      }
+     ]
+    },
+    {
+     "aspect": "look",
+     "text": "Stilt houses on stone footings, a Kothringi habit; chimes of tin and copper hung from every eave; a market square on the ring of ground; boats moored three deep in the surrounding channel. The air hums with metal.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "story/lore/topics/lost-peoples.md",
+       "locator": "story/lore/topics/lost-peoples.md",
+       "section": "Kothringi"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "oxblood"
+      }
+     ]
+    },
+    {
+     "aspect": "dangers",
+     "text": "The town itself is safe: its elders hold watch and its ring of water keeps predators out. Beyond the channel lie Ultherus swamp with its dragon's-tongue, Tumnatu hunters and deep-water predators.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 1,-93"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "oxblood"
+      }
+     ]
+    },
+    {
+     "aspect": "hooks",
+     "text": "A Kothringi cairn bead-trove under the oldest footings; a chime that rings with no wind; the guild elders' dispute over who may tune the Hist-shrine chime; a boatwright who needs rare Ultherus herbs.",
+     "tier": "AGENT_INVENTED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 1,-93"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "oxblood"
+      }
+     ]
+    }
+   ],
+   "terrain_needs": [
+    {
+     "id": "flat-pad",
+     "radius_m": 110,
+     "why": "the town's built ground inside its ring of water"
+    },
+    {
+     "id": "shore-access",
+     "radius_m": 50,
+     "why": "boat landings on the encircling channel"
+    }
+   ]
+  },
+  {
+   "id": "truowa",
+   "name": "Truowa",
+   "status": "inhabited",
+   "held_by": "A merchant council allied to Lilmoth's",
+   "population": 38,
+   "footprint_radius_m": 160,
+   "siting": "lakeshore",
+   "danger_band_id": "D0",
+   "importance": 4,
+   "summary": "Truowa is a small trading city on the south-east shore of Lake Ulaish, where the lake's waters meet the Nushara channels toward Lilmoth. A merchant council runs it, tied to Lilmoth's commerce, and it is the interior's lake harbour. It is richer than the villages around it and wary of the Archwardens.",
+   "lore_page": null,
+   "statement_tier_id": "EXTRAPOLATED",
+   "aliases": [],
+   "notes": [
+    {
+     "aspect": "overview",
+     "text": "Truowa is a small city, on the scale of Falkreath, at the south-east edge of Lake Ulaish where the water runs out toward Lilmoth. It belongs to Lilmoth's trade: goods from the delta and the coast arrive here and go up the lake to the Helstrom country.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "uesp",
+       "title": "Lore:Truowa (no page)",
+       "locator": "UESP search and page lookup, 2026-11-08: no Lore page for Truowa",
+       "url": "https://en.uesp.net/w/index.php?search=Truowa"
+      },
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 13,-89"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "rose"
+      }
+     ]
+    },
+    {
+     "aspect": "history",
+     "text": "Nothing in canon records Truowa. It grew from a lake landing where interior goods met coast-bound boats, and the 4E 48 collapse of Lilmoth and Gideon's rice trade made it a refuge for traders who would not live under the successor state.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 13,-89"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "rose"
+      }
+     ]
+    },
+    {
+     "aspect": "present",
+     "text": "In 4E 201 a merchant council, copying Lilmoth's, runs the city, taxes the lake traffic and keeps a harbour watch. It trades openly with the delta and the Lilmoth coast and is cool toward the nearby Archwarden fort at Gysilla.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 13,-89"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "rose"
+      }
+     ]
+    },
+    {
+     "aspect": "people",
+     "text": "About 38 residents, mostly Argonian, with a small foreign dock population of Imperial, Khajiit and Bosmer traders. Council merchants, harbour watchmen, ferrymen, rice factors and a visible tree-minder.",
+     "tier": "AGENT_INVENTED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 13,-89"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "rose"
+      }
+     ]
+    },
+    {
+     "aspect": "economy",
+     "text": "Rice, fish, sap, feathers and clay come down the lake; cloth, tin, tools and salt go back up. The harbour master charges a mooring toll and the council holds the lake's one deep-water quay.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "rose"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "story/lore/extrapolation/argonia-4e201-state.md",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md",
+       "section": "Routes"
+      }
+     ]
+    },
+    {
+     "aspect": "faith",
+     "text": "The Hist, in a small city tree; Sithis privately; and a shrine to Zenithar kept by the foreign factors.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 13,-89"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "rose"
+      }
+     ]
+    },
+    {
+     "aspect": "look",
+     "text": "Stilt quays and warehouses on reed piles, rose-washed plaster on the merchants' houses in the Lilmoth manner, rafts and canoes at every landing, and the lake spread flat and grey-green to the west.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "rose"
+      },
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 13,-89"
+      }
+     ]
+    },
+    {
+     "aspect": "dangers",
+     "text": "Safe inside the harbour watch. Smuggling and tolls make quarrels; the lake outside hides storm squalls, deep-water predators and rival boatmen.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 13,-89"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "rose"
+      }
+     ]
+    },
+    {
+     "aspect": "hooks",
+     "text": "A cargo has gone missing from the quay and each side blames the other; the council owes the Archwardens a toll it will not pay; a Lilmoth factor wants a safe route to Helstrom.",
+     "tier": "AGENT_INVENTED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 13,-89"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "rose"
+      }
+     ]
+    }
+   ],
+   "terrain_needs": [
+    {
+     "id": "flat-pad",
+     "radius_m": 160,
+     "why": "the city's built area on the lakeshore"
+    },
+    {
+     "id": "shore-access",
+     "radius_m": 120,
+     "why": "quays and the lake harbour"
+    }
+   ]
+  },
+  {
+   "id": "marzai",
+   "name": "Marzai",
+   "status": "inhabited",
+   "held_by": "The elders of the Clay-Mound People",
+   "population": 10,
+   "footprint_radius_m": 60,
+   "siting": "lakeshore",
+   "danger_band_id": "D1",
+   "importance": 2,
+   "summary": "Marzai is a clay-mound village on the north-east shore of Lake Ulaish, the western outlier of the Aroxhu mound country. A few households fish the lake, fire pottery and ferry goods toward Aroxhu and Truowa.",
+   "lore_page": null,
+   "statement_tier_id": "EXTRAPOLATED",
+   "aliases": [],
+   "notes": [
+    {
+     "aspect": "overview",
+     "text": "Marzai is a village of about ten on a raised mound of red clay where the lake meets the eastern shore, a western outlier of the Clay-Mound People of Aroxhu. The name has no UESP page.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "uesp",
+       "title": "Lore:Marzai (no page)",
+       "locator": "UESP search and page lookup, 2026-11-08: no Lore page for Marzai",
+       "url": "https://en.uesp.net/w/index.php?search=Marzai"
+      },
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 12,-83"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "rust"
+      }
+     ]
+    },
+    {
+     "aspect": "history",
+     "text": "Nothing is recorded. The mound-building habit and the Tumnatu camp to the west imply a village founded as a lake landing for Aroxhu's pottery trade, in the settled period after 4E 48.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 12,-83"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "rust"
+      }
+     ]
+    },
+    {
+     "aspect": "present",
+     "text": "It sends two elders to the Aroxhu council and keeps cool peace with its Tumnatu neighbours across the water, trading eggs and smoked fish for clay-fired pots.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 12,-83"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "rust"
+      }
+     ]
+    },
+    {
+     "aspect": "people",
+     "text": "About ten residents of the Oxhu-Teeleel people: potters, fishers, a ferryman and an elder-woman who keeps the mound's tally of floods.",
+     "tier": "AGENT_INVENTED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 12,-83"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "rust"
+      }
+     ]
+    },
+    {
+     "aspect": "economy",
+     "text": "Red-clay pottery and dye, fish and eels. Pots go by canoe to Truowa and Aroxhu; salt and tin come back.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "rust"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Red clay, pottery and dye are canon trades of the marsh (cultures.json rust)",
+       "locator": "Red clay, pottery and dye are canon trades of the marsh (cultures.json rust)"
+      }
+     ]
+    },
+    {
+     "aspect": "faith",
+     "text": "Hist and Sithis; the mound's small tree is tended by a tree-minder who also keeps the eggs of the three neighbouring camps.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 12,-83"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "rust"
+      }
+     ]
+    },
+    {
+     "aspect": "look",
+     "text": "Low reed houses on a raised red-clay mound, drying racks of pots and dyed cloth, a kiln-smoke haze, and canoes drawn up on the lake shore.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 12,-83"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "rust"
+      }
+     ]
+    },
+    {
+     "aspect": "dangers",
+     "text": "Quiet by day. Lake eels and flood surge, and the odd raid from a hungry Tumnatu party or a Naga band off the north road.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 12,-83"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "rust"
+      }
+     ]
+    },
+    {
+     "aspect": "hooks",
+     "text": "The kiln-fired clay will not set since the mound flooded; a pot-dye recipe is wanted at Aroxhu; the ferryman has seen lights on the lake at night.",
+     "tier": "AGENT_INVENTED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 12,-83"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "rust"
+      }
+     ]
+    }
+   ],
+   "terrain_needs": [
+    {
+     "id": "flat-pad",
+     "radius_m": 60,
+     "why": "the mound and its built ground"
+    },
+    {
+     "id": "shore-access",
+     "radius_m": 40,
+     "why": "canoe landing on the lake"
+    }
+   ]
+  },
+  {
+   "id": "julo",
+   "name": "Julo",
+   "status": "inhabited",
+   "held_by": "A family of causeway farmers in the Stormhold manner",
+   "population": 6,
+   "footprint_radius_m": 40,
+   "siting": "riverbank",
+   "danger_band_id": "D2",
+   "importance": 1,
+   "summary": "Julo is a hamlet of stone-footed farmhouses at the mouth of the river braid where it enters the north-west corner of Lake Ulaish. A few families farm saltrice and run a ferry across the braid.",
+   "lore_page": null,
+   "statement_tier_id": "EXTRAPOLATED",
+   "aliases": [],
+   "notes": [
+    {
+     "aspect": "overview",
+     "text": "Julo is a hamlet of about six people at the delta where Helstrom's waters spread into the lake. It follows the Stormhold manner of raised stone footings and causeways; the name has no UESP page.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "uesp",
+       "title": "Lore:Julo (no page)",
+       "locator": "UESP search and page lookup, 2026-11-08: no Lore page for Julo",
+       "url": "https://en.uesp.net/w/index.php?search=Julo"
+      },
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 5,-83"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "stone-grey"
+      }
+     ]
+    },
+    {
+     "aspect": "history",
+     "text": "Nothing is recorded. A Stormhold-style farm outpost this far inland is read as a settlement by families who left the northern river after 4E 48 and brought the habit of stone footings with them.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 5,-83"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "stone-grey"
+      }
+     ]
+    },
+    {
+     "aspect": "present",
+     "text": "In 4E 201 it holds a small saltrice patch and a ferry. It pays an annual tribute of rice to Helstrom's levy and keeps good terms with the Root-Folk outposts upstream.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 5,-83"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "stone-grey"
+      }
+     ]
+    },
+    {
+     "aspect": "people",
+     "text": "About six residents, Argonian farmers with one Dunmer-descended grandmother who keeps the ledgers.",
+     "tier": "AGENT_INVENTED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 5,-83"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "stone-grey"
+      }
+     ]
+    },
+    {
+     "aspect": "economy",
+     "text": "Saltrice, a ferry toll across the braid, and small trade with Helstrom's outposts for sap and eggs.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 5,-83"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "stone-grey"
+      }
+     ]
+    },
+    {
+     "aspect": "faith",
+     "text": "Hist and Sithis at a little roadside tree; the Dunmer grandmother still tends a household Ancestor shrine.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 5,-83"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "stone-grey"
+      }
+     ]
+    },
+    {
+     "aspect": "look",
+     "text": "Low stone footings with reed-and-mud walls, a causeway of laid stone out to the ferry post, flat rice paddies fenced with reed, and the lake's wide grey sheet beyond.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 5,-83"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "stone-grey"
+      }
+     ]
+    },
+    {
+     "aspect": "dangers",
+     "text": "A Naga band hunts the delta shallows; crocodiles in the braid; the ferry is the weak point.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 5,-83"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "stone-grey"
+      }
+     ]
+    },
+    {
+     "aspect": "hooks",
+     "text": "The ferry-rope has been cut twice; a cairn on the nearest firm bank has been opened; a salt trader's body washed up at the paddies.",
+     "tier": "AGENT_INVENTED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 5,-83"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "stone-grey"
+      }
+     ]
+    }
+   ],
+   "terrain_needs": [
+    {
+     "id": "flat-pad",
+     "radius_m": 40,
+     "why": "the farmhouses on raised stone footings"
+    },
+    {
+     "id": "shore-access",
+     "radius_m": 30,
+     "why": "the ferry landing on the braid"
+    }
+   ]
+  },
+  {
+   "id": "luntoc",
+   "name": "Luntoc",
+   "status": "inhabited",
+   "held_by": "A fishing family and its kin",
+   "population": 5,
+   "footprint_radius_m": 40,
+   "siting": "island",
+   "danger_band_id": "D2",
+   "importance": 1,
+   "summary": "Luntoc is a hamlet on a low island in the south-west of Lake Ulaish. It is the last dry ground between the lake's western shore and its deep water, and the families there fish, set eel traps and guide boats through the shoals.",
+   "lore_page": null,
+   "statement_tier_id": "EXTRAPOLATED",
+   "aliases": [],
+   "notes": [
+    {
+     "aspect": "overview",
+     "text": "Luntoc is a small island hamlet in the lake, built in the stone-footed Stormhold manner; it serves as a pilot station for the shoals. The name has no UESP page.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "uesp",
+       "title": "Lore:Luntoc (no page)",
+       "locator": "UESP search and page lookup, 2026-11-08: no Lore page for Luntoc",
+       "url": "https://en.uesp.net/w/index.php?search=Luntoc"
+      },
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 7,-87"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "stone-grey"
+      }
+     ]
+    },
+    {
+     "aspect": "history",
+     "text": "Nothing is recorded. The island's stone footings are read as work by incomers after 4E 48; before them the island was a bare reed bank.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 7,-87"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "stone-grey"
+      }
+     ]
+    },
+    {
+     "aspect": "present",
+     "text": "Five people keep eel traps, a lantern for night boats, and a causeway of stones across a shoal that surfaces at low water.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 7,-87"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "stone-grey"
+      }
+     ]
+    },
+    {
+     "aspect": "people",
+     "text": "About five residents, one extended Argonian fishing family and a boy who pilots strangers.",
+     "tier": "AGENT_INVENTED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 7,-87"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "stone-grey"
+      }
+     ]
+    },
+    {
+     "aspect": "economy",
+     "text": "Eels, fish, piloting fees and the lantern toll from boats crossing between Julo and Yalugo.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 7,-87"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "stone-grey"
+      }
+     ]
+    },
+    {
+     "aspect": "faith",
+     "text": "Sithis and the lake itself; a stone cairn on the high point is where the island's dead are laid.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 7,-87"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "stone-grey"
+      }
+     ]
+    },
+    {
+     "aspect": "look",
+     "text": "Low reed-and-stone houses on a hump of silt, eel pots drying on poles, a lantern post at the south tip, and flat water on every side.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 7,-87"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "stone-grey"
+      }
+     ]
+    },
+    {
+     "aspect": "dangers",
+     "text": "Storm squalls on the open lake; deep-water predators near the landing; the shoal causeway drowns at high water.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 7,-87"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "stone-grey"
+      }
+     ]
+    },
+    {
+     "aspect": "hooks",
+     "text": "A lantern signal has been answered from open water; the old boy-pilot knows a hidden passage across the lake; eel pots keep catching something that is not eel.",
+     "tier": "AGENT_INVENTED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 7,-87"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "stone-grey"
+      }
+     ]
+    }
+   ],
+   "terrain_needs": [
+    {
+     "id": "island",
+     "radius_m": 40,
+     "why": "the hamlet sits on its own low island in the lake"
+    },
+    {
+     "id": "shore-access",
+     "radius_m": 30,
+     "why": "boat landing on the island's sheltered side"
+    }
+   ]
+  },
+  {
+   "id": "yalugo",
+   "name": "Yalugo",
+   "status": "inhabited",
+   "held_by": "Two farm families of the Stormhold manner",
+   "population": 6,
+   "footprint_radius_m": 40,
+   "siting": "lakeshore",
+   "danger_band_id": "D1",
+   "importance": 1,
+   "summary": "Yalugo is a hamlet on the south shore of Lake Ulaish, on the boat road between Truowa and the Korydon waters. Its stone-footed farms supply rice and fish to Fort Gysilla's garrison and to passing traders.",
+   "lore_page": null,
+   "statement_tier_id": "EXTRAPOLATED",
+   "aliases": [],
+   "notes": [
+    {
+     "aspect": "overview",
+     "text": "Yalugo is a hamlet of about six on the south lake shore between Truowa and the waters toward Korydon. It follows the Stormhold manner of raised stone footings; the name has no UESP page.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "uesp",
+       "title": "Lore:Yalugo (no page)",
+       "locator": "UESP search and page lookup, 2026-11-08: no Lore page for Yalugo",
+       "url": "https://en.uesp.net/w/index.php?search=Yalugo"
+      },
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 8,-92"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "stone-grey"
+      }
+     ]
+    },
+    {
+     "aspect": "history",
+     "text": "Nothing is recorded. It is read as a farm settlement founded to feed the traders and garrison at the lake's south side after 4E 48.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 8,-92"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "stone-grey"
+      }
+     ]
+    },
+    {
+     "aspect": "present",
+     "text": "Two farm families sell grain and smoked fish to Fort Gysilla and wayfarers, and keep a spare boat for anyone crossing to Luntoc or south toward Korydon.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 8,-92"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "stone-grey"
+      }
+     ]
+    },
+    {
+     "aspect": "people",
+     "text": "About six residents, Argonian farmers and a retired garrison cook of Archein descent.",
+     "tier": "AGENT_INVENTED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 8,-92"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "stone-grey"
+      }
+     ]
+    },
+    {
+     "aspect": "economy",
+     "text": "Rice, fish and ferry hire. The garrison buys at a fixed low price, which the farmers resent.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 8,-92"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "stone-grey"
+      }
+     ]
+    },
+    {
+     "aspect": "faith",
+     "text": "Sithis and a small village tree, with an Archein household still keeping a Divines-style roadside shrine.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 8,-92"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "stone-grey"
+      }
+     ]
+    },
+    {
+     "aspect": "look",
+     "text": "Stone-footed reed houses along a low shore, paddies fenced with reed, a small plank quay, and the fort's lamp visible across the water at dusk.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 8,-92"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "stone-grey"
+      }
+     ]
+    },
+    {
+     "aspect": "dangers",
+     "text": "Safe by day. Smugglers land on the south bank at night; crocodiles in the paddies.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 8,-92"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "stone-grey"
+      }
+     ]
+    },
+    {
+     "aspect": "hooks",
+     "text": "The garrison's price dispute is nearing a strike; a stranger paid for a night's boat and left a sealed pouch behind; the south bank's smugglers want a dry store.",
+     "tier": "AGENT_INVENTED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 8,-92"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "stone-grey"
+      }
+     ]
+    }
+   ],
+   "terrain_needs": [
+    {
+     "id": "flat-pad",
+     "radius_m": 40,
+     "why": "the farmsteads on raised footings"
+    },
+    {
+     "id": "shore-access",
+     "radius_m": 30,
+     "why": "a small quay on the south shore"
+    }
+   ]
+  },
+  {
+   "id": "fort-gysilla",
+   "name": "Fort Gysilla",
+   "status": "garrisoned",
+   "held_by": "An Archwardens garrison of old Archein families",
+   "population": 10,
+   "footprint_radius_m": 40,
+   "siting": "island",
+   "danger_band_id": "D1",
+   "importance": 2,
+   "summary": "Fort Gysilla is an old Imperial stone fort on a lake island at the south of Lake Ulaish, now an Archwardens toll and watch station. Its small garrison taxes boat traffic between Truowa and the southern waters and watches the lake.",
+   "lore_page": null,
+   "statement_tier_id": "EXTRAPOLATED",
+   "aliases": [],
+   "notes": [
+    {
+     "aspect": "overview",
+     "text": "Fort Gysilla is a small stone fort on an islet at the lake's southern end, one of the Empire's old posts now held by the successor state. UESP has no page for it; it is a Project Tamriel name.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "uesp",
+       "title": "Lore:Fort Gysilla (no page)",
+       "locator": "UESP search and page lookup, 2026-11-08: no Lore page for Fort Gysilla",
+       "url": "https://en.uesp.net/w/index.php?search=Fort+Gysilla"
+      },
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 10,-90"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "crimson-red"
+      }
+     ]
+    },
+    {
+     "aspect": "history",
+     "text": "Built by the Empire as a lake post on the interior boat road; the Legion left after the Imperial presence ended and Archein families took the keys and kept the toll, as they did at the other forts.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 10,-90"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "crimson-red"
+      }
+     ]
+    },
+    {
+     "aspect": "present",
+     "text": "A garrison of about ten keeps the toll and watch for the Archwardens, who barely supervise it. It is cool with Truowa's council and in a standing quarrel with Yalugo over the price of grain.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 10,-90"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "crimson-red"
+      }
+     ]
+    },
+    {
+     "aspect": "people",
+     "text": "About ten, Argonian Archein families who still keep Imperial-style ranks and paperwork, a few freed-labourer's grandchildren as boatmen and one clerk.",
+     "tier": "AGENT_INVENTED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 10,-90"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "crimson-red"
+      }
+     ]
+    },
+    {
+     "aspect": "economy",
+     "text": "A toll on lake boats and a levy on grain; the garrison buys food from Yalugo and fish from Luntoc.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 10,-90"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "crimson-red"
+      }
+     ]
+    },
+    {
+     "aspect": "faith",
+     "text": "The fort has no Hist, so the garrison goes home to a village tree to hatch and bury; a small stone chapel of the Nine, empty but swept, is kept out of habit.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 10,-90"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "crimson-red"
+      }
+     ]
+    },
+    {
+     "aspect": "look",
+     "text": "A squat stone keep and curtain wall on an islet, mossed and re-roofed in reed, a toll chain across the channel and a signal lantern on the tower.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 10,-90"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "crimson-red"
+      }
+     ]
+    },
+    {
+     "aspect": "dangers",
+     "text": "A fortified post is safe inside; outside lies open water and boat-robbers; the chain and the garrison's tempers are the usual hazards.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 10,-90"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "crimson-red"
+      }
+     ]
+    },
+    {
+     "aspect": "hooks",
+     "text": "The toll ledger shows a boat that never left; a cellar under the keep is sealed; the Truowa council would pay to see the garrison replaced.",
+     "tier": "AGENT_INVENTED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 10,-90"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "crimson-red"
+      }
+     ]
+    }
+   ],
+   "terrain_needs": [
+    {
+     "id": "island",
+     "radius_m": 40,
+     "why": "the fort stands on an islet at the lake's south"
+    },
+    {
+     "id": "shore-access",
+     "radius_m": 30,
+     "why": "the fort's landing and toll quay"
+    }
+   ]
+  },
+  {
+   "id": "myroleon",
+   "name": "Myroleon",
+   "status": "inhabited",
+   "held_by": "A family of chime-keepers",
+   "population": 6,
+   "footprint_radius_m": 40,
+   "siting": "swamp",
+   "danger_band_id": "D2",
+   "importance": 1,
+   "summary": "Myroleon is a hamlet at the southern edge of the Ultherus swamp, where the land breaks into channels toward Blackrose. A few families harvest herbs and keep a chime-post that guides boats through the maze of water.",
+   "lore_page": null,
+   "statement_tier_id": "EXTRAPOLATED",
+   "aliases": [],
+   "notes": [
+    {
+     "aspect": "overview",
+     "text": "Myroleon is a hamlet of about six Chime-Keepers at the southern end of the Ultherus swamp country, on the first channels toward Blackrose. The name has no UESP page.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "uesp",
+       "title": "Lore:Myroleon (no page)",
+       "locator": "UESP search and page lookup, 2026-11-08: no Lore page for Myroleon",
+       "url": "https://en.uesp.net/w/index.php?search=Myroleon"
+      },
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 5,-95"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "oxblood"
+      },
+      {
+       "kind": "uesp",
+       "title": "Lore:Ultherus Swamp",
+       "locator": "Lore:Ultherus Swamp",
+       "url": "https://en.uesp.net/wiki/Lore:Ultherus_Swamp"
+      }
+     ]
+    },
+    {
+     "aspect": "history",
+     "text": "A Kothringi-named settlement, resettled by Argonians after 2E 560; its chime-post is the oldest working one in the Ultherus country.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 5,-95"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "oxblood"
+      },
+      {
+       "kind": "uesp",
+       "title": "Lore:Ultherus Swamp",
+       "locator": "Lore:Ultherus Swamp",
+       "url": "https://en.uesp.net/wiki/Lore:Ultherus_Swamp"
+      }
+     ]
+    },
+    {
+     "aspect": "present",
+     "text": "In 4E 201 it keeps the chime-post for boats, gathers dragon's-tongue and sells it up to Korydon.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 5,-95"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "oxblood"
+      },
+      {
+       "kind": "uesp",
+       "title": "Lore:Ultherus Swamp",
+       "locator": "Lore:Ultherus Swamp",
+       "url": "https://en.uesp.net/wiki/Lore:Ultherus_Swamp"
+      }
+     ]
+    },
+    {
+     "aspect": "people",
+     "text": "About six, Argonian herb-gatherers; one of them is the post's chime-tender.",
+     "tier": "AGENT_INVENTED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 5,-95"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "oxblood"
+      },
+      {
+       "kind": "uesp",
+       "title": "Lore:Ultherus Swamp",
+       "locator": "Lore:Ultherus Swamp",
+       "url": "https://en.uesp.net/wiki/Lore:Ultherus_Swamp"
+      }
+     ]
+    },
+    {
+     "aspect": "economy",
+     "text": "Dragon's-tongue and other swamp herbs, fish, and a small guide fee for boats going south.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 5,-95"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "oxblood"
+      },
+      {
+       "kind": "uesp",
+       "title": "Lore:Ultherus Swamp",
+       "locator": "Lore:Ultherus Swamp",
+       "url": "https://en.uesp.net/wiki/Lore:Ultherus_Swamp"
+      }
+     ]
+    },
+    {
+     "aspect": "faith",
+     "text": "Sithis and a small Dibella chime, kept for travellers; the hamlet's eggs are laid at Korydon.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 5,-95"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "oxblood"
+      },
+      {
+       "kind": "uesp",
+       "title": "Lore:Ultherus Swamp",
+       "locator": "Lore:Ultherus Swamp",
+       "url": "https://en.uesp.net/wiki/Lore:Ultherus_Swamp"
+      }
+     ]
+    },
+    {
+     "aspect": "look",
+     "text": "Stilt houses on a hummock, a tall chime-post of tin and copper above the roofs, herb racks and boats tied to every post.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 5,-95"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "oxblood"
+      },
+      {
+       "kind": "uesp",
+       "title": "Lore:Ultherus Swamp",
+       "locator": "Lore:Ultherus Swamp",
+       "url": "https://en.uesp.net/wiki/Lore:Ultherus_Swamp"
+      }
+     ]
+    },
+    {
+     "aspect": "dangers",
+     "text": "Dragon's-tongue patches are deadly to the careless; channels hide predators; Tumnatu parties pass by.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 5,-95"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "oxblood"
+      },
+      {
+       "kind": "uesp",
+       "title": "Lore:Ultherus Swamp",
+       "locator": "Lore:Ultherus Swamp",
+       "url": "https://en.uesp.net/wiki/Lore:Ultherus_Swamp"
+      }
+     ]
+    },
+    {
+     "aspect": "hooks",
+     "text": "The chime-tender has lost count of the strikes; a boat came up from Blackrose with a corpse aboard; a rare herb grows only at one hummock.",
+     "tier": "AGENT_INVENTED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 5,-95"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "oxblood"
+      },
+      {
+       "kind": "uesp",
+       "title": "Lore:Ultherus Swamp",
+       "locator": "Lore:Ultherus Swamp",
+       "url": "https://en.uesp.net/wiki/Lore:Ultherus_Swamp"
+      }
+     ]
+    }
+   ],
+   "terrain_needs": [
+    {
+     "id": "flat-pad",
+     "radius_m": 40,
+     "why": "the hamlet on a firm hummock"
+    },
+    {
+     "id": "shore-access",
+     "radius_m": 30,
+     "why": "channel landing"
+    }
+   ]
+  },
+  {
+   "id": "nemeon",
+   "name": "Nemeon",
+   "status": "inhabited",
+   "held_by": "Chime-Keeper households",
+   "population": 6,
+   "footprint_radius_m": 40,
+   "siting": "swamp",
+   "danger_band_id": "D2",
+   "importance": 1,
+   "summary": "Nemeon is a hamlet on a small waterway between the lake and Korydon, a staging stop for boats and herb-gatherers. It is quiet, poor and forgotten, and keeps an old Kothringi name.",
+   "lore_page": null,
+   "statement_tier_id": "EXTRAPOLATED",
+   "aliases": [],
+   "notes": [
+    {
+     "aspect": "overview",
+     "text": "Nemeon is a small hamlet on a side waterway between Lake Ulaish and Korydon. The name has no UESP page; its form follows the Kothringi-named towns.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "uesp",
+       "title": "Lore:Nemeon (no page)",
+       "locator": "UESP search and page lookup, 2026-11-08: no Lore page for Nemeon",
+       "url": "https://en.uesp.net/w/index.php?search=Nemeon"
+      },
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 2,-87"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "oxblood"
+      }
+     ]
+    },
+    {
+     "aspect": "history",
+     "text": "Nothing is recorded. The Kothringi name implies a Kothringi site resettled by Argonians; it has been small ever since.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 2,-87"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "oxblood"
+      }
+     ]
+    },
+    {
+     "aspect": "present",
+     "text": "It stages boats going between the lake and Korydon and keeps a waystation bench and a lantern.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 2,-87"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "oxblood"
+      }
+     ]
+    },
+    {
+     "aspect": "people",
+     "text": "About six Argonians, a boat-wife, her sons and a hired herb-picker.",
+     "tier": "AGENT_INVENTED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 2,-87"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "oxblood"
+      }
+     ]
+    },
+    {
+     "aspect": "economy",
+     "text": "Staging fees, herbs, fish and mending; mostly it lives on the traffic that passes.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 2,-87"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "oxblood"
+      }
+     ]
+    },
+    {
+     "aspect": "faith",
+     "text": "Sithis; the family's eggs are laid at Korydon's tree.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 2,-87"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "oxblood"
+      }
+     ]
+    },
+    {
+     "aspect": "look",
+     "text": "A few stilt houses beside a green waterway, hung with chimes; a lantern post; mossy moorings.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 2,-87"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "oxblood"
+      }
+     ]
+    },
+    {
+     "aspect": "dangers",
+     "text": "Wild at night; predators on the bank; Tumnatu hunters in the reeds.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 2,-87"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "oxblood"
+      }
+     ]
+    },
+    {
+     "aspect": "hooks",
+     "text": "A wrecked boat in the reeds with unsold goods; a hidden Kothringi cairn behind the houses; the lantern has been lit from outside.",
+     "tier": "AGENT_INVENTED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 2,-87"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "oxblood"
+      }
+     ]
+    }
+   ],
+   "terrain_needs": [
+    {
+     "id": "flat-pad",
+     "radius_m": 40,
+     "why": "the hamlet on a firm bank"
+    },
+    {
+     "id": "shore-access",
+     "radius_m": 30,
+     "why": "the waterway landing"
+    }
+   ]
+  },
+  {
+   "id": "nacydes",
+   "name": "Nacydes",
+   "status": "inhabited",
+   "held_by": "A family of Chime-Keepers",
+   "population": 5,
+   "footprint_radius_m": 40,
+   "siting": "inland",
+   "danger_band_id": "D2",
+   "importance": 1,
+   "summary": "Nacydes is a hamlet on high ground on the west side of the Aunike Ridge country, the last Chime-Keeper settlement before Paatru and Naga territory. The families there herd marsh-lizards and trade metal chimes for hides.",
+   "lore_page": null,
+   "statement_tier_id": "EXTRAPOLATED",
+   "aliases": [],
+   "notes": [
+    {
+     "aspect": "overview",
+     "text": "Nacydes is a hamlet of about five on a ridge shoulder at the west of the Aunike country, among the few Chime-Keeper places that sit on drier ground. The name has no UESP page.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "uesp",
+       "title": "Lore:Nacydes (no page)",
+       "locator": "UESP search and page lookup, 2026-11-08: no Lore page for Nacydes",
+       "url": "https://en.uesp.net/w/index.php?search=Nacydes"
+      },
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -8,-85"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "oxblood"
+      }
+     ]
+    },
+    {
+     "aspect": "history",
+     "text": "A Kothringi-named place resettled after 2E 560; the ridge made it a lookout, and in 4E 48 refugees from the north hid here.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -8,-85"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "oxblood"
+      }
+     ]
+    },
+    {
+     "aspect": "present",
+     "text": "Five people hold the hamlet, keep lizard-steeds and trade chimes for hides. They post a watch on the nearest peak.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -8,-85"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "oxblood"
+      }
+     ]
+    },
+    {
+     "aspect": "people",
+     "text": "About five Argonians, lizard-herders and a chime-maker; they speak to the Paatru camp across the ridge by bargaining.",
+     "tier": "AGENT_INVENTED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -8,-85"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "oxblood"
+      }
+     ]
+    },
+    {
+     "aspect": "economy",
+     "text": "Lizard-herding, hides, tin chimes traded with the Paatru and with Helstrom's levy.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -8,-85"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "oxblood"
+      }
+     ]
+    },
+    {
+     "aspect": "faith",
+     "text": "Sithis and Dibella; a small cairn for the old dead.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -8,-85"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "oxblood"
+      }
+     ]
+    },
+    {
+     "aspect": "look",
+     "text": "Low stone-footed huts on a ridge shoulder, lizard pens, windchimes everywhere, wide views over the marsh.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -8,-85"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "oxblood"
+      }
+     ]
+    },
+    {
+     "aspect": "dangers",
+     "text": "Paatru and Naga raiders cross the ridge; wild lizards in the pens.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -8,-85"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "oxblood"
+      }
+     ]
+    },
+    {
+     "aspect": "hooks",
+     "text": "The Paatru camp wants a chime tuned; a Naga band is watching the pass; the old watchman saw a light on the peak.",
+     "tier": "AGENT_INVENTED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -8,-85"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "oxblood"
+      }
+     ]
+    }
+   ],
+   "terrain_needs": [
+    {
+     "id": "flat-pad",
+     "radius_m": 40,
+     "why": "the hamlet on a ridge shoulder"
+    }
+   ]
+  },
+  {
+   "id": "tydeos",
+   "name": "Tydeos",
+   "status": "inhabited",
+   "held_by": "A family of Chime-Keepers",
+   "population": 6,
+   "footprint_radius_m": 40,
+   "siting": "inland",
+   "danger_band_id": "D2",
+   "importance": 1,
+   "summary": "Tydeos is a hamlet on firm ground at the foot of the Aunike Ridge's southern peak. The families keep chimes, lizard-pens and a path across the ridge to the western waters.",
+   "lore_page": null,
+   "statement_tier_id": "EXTRAPOLATED",
+   "aliases": [],
+   "notes": [
+    {
+     "aspect": "overview",
+     "text": "Tydeos is a hamlet of about six at the foot of the ridge's southern peak, a Kothringi-named place kept by Argonians. UESP has no page for it, and the Chime-Keeper reading is ours.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "uesp",
+       "title": "Lore:Tydeos (no page)",
+       "locator": "UESP search and page lookup, 2026-11-08: no Lore page for Tydeos",
+       "url": "https://en.uesp.net/w/index.php?search=Tydeos"
+      },
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -3,-91"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "oxblood"
+      }
+     ]
+    },
+    {
+     "aspect": "history",
+     "text": "A Kothringi settlement before 2E 560; Argonian chime-keepers moved in, and its watchfire on the peak has burned ever since.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -3,-91"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "oxblood"
+      }
+     ]
+    },
+    {
+     "aspect": "present",
+     "text": "Six people tend the peak's watchfire, keep goods for passing parties and trade with Korydon.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -3,-91"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "oxblood"
+      }
+     ]
+    },
+    {
+     "aspect": "people",
+     "text": "About six Argonians, chime-menders, a watchfire-keeper and young hunters.",
+     "tier": "AGENT_INVENTED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -3,-91"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "oxblood"
+      }
+     ]
+    },
+    {
+     "aspect": "economy",
+     "text": "Hunting, herb-gathering, lizard-hides and chime-mending for Korydon.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -3,-91"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "oxblood"
+      }
+     ]
+    },
+    {
+     "aspect": "faith",
+     "text": "Sithis; the watchfire is also a small offering to the Hist.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -3,-91"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "oxblood"
+      }
+     ]
+    },
+    {
+     "aspect": "look",
+     "text": "Stilt-and-stone houses against a rock rise, a signal fire basket on the peak, chimes in the wind.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -3,-91"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "oxblood"
+      }
+     ]
+    },
+    {
+     "aspect": "dangers",
+     "text": "Naga hunters from the north camps, ridge cats, bad footing at night.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -3,-91"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "oxblood"
+      }
+     ]
+    },
+    {
+     "aspect": "hooks",
+     "text": "The fire went dark one night and a stranger was found beside it; the ridge path hides a Kothringi cache.",
+     "tier": "AGENT_INVENTED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -3,-91"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "oxblood"
+      }
+     ]
+    }
+   ],
+   "terrain_needs": [
+    {
+     "id": "flat-pad",
+     "radius_m": 40,
+     "why": "the hamlet at the ridge foot"
+    }
+   ]
+  },
+  {
+   "id": "outpost-1-m75",
+   "name": "Tseli-Oon",
+   "status": "inhabited",
+   "held_by": "Root-Folk tree-minder of the nearest village tree",
+   "population": 5,
+   "footprint_radius_m": 40,
+   "siting": "riverbank",
+   "danger_band_id": "D3",
+   "importance": 1,
+   "summary": "Tseli-Oon is a small outpost on a bank of the river arm that runs north-east out of Helstrom, kept for sap-gathering. Boatmen going up the arm toward the forest tie up here for a night, and few outsiders ever do.",
+   "lore_page": null,
+   "statement_tier_id": "AGENT_INVENTED",
+   "aliases": [],
+   "notes": [
+    {
+     "aspect": "overview",
+     "text": "Tseli-Oon is a small outpost on a bank of the river arm that runs north-east out of Helstrom. It is a station of the Root-Folk of Helstrom for sap-gathering. The map gives it no name and UESP has none; the name is ours.",
+     "tier": "AGENT_INVENTED",
+     "sources": [
+      {
+       "kind": "uesp",
+       "title": "Lore:Tseli-Oon (no page)",
+       "locator": "UESP search and page lookup, 2026-11-08: no Lore page for Tseli-Oon",
+       "url": "https://en.uesp.net/w/index.php?search=Tseli-Oon"
+      },
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 1,-75"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "forest-green"
+      }
+     ]
+    },
+    {
+     "aspect": "history",
+     "text": "A hunters' camp for Helstrom's market, grown into a permanent station once the tribes returned to the interior after 4E 48.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 1,-75"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "forest-green"
+      }
+     ]
+    },
+    {
+     "aspect": "present",
+     "text": "Five Saxhleel keep the station through the year, tapping sap from the trees along the bank. They report to a tree-minder in Helstrom by boat, and nothing about the station is written down.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 1,-75"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "forest-green"
+      }
+     ]
+    },
+    {
+     "aspect": "people",
+     "text": "About five Saxhleel sap-gatherers, a young egg-tender and a boy sent to learn the trees.",
+     "tier": "AGENT_INVENTED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 1,-75"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "forest-green"
+      }
+     ]
+    },
+    {
+     "aspect": "economy",
+     "text": "Sap tapped from the Hist-tended trees on the bank goes down to Helstrom's market; the station barters it for dried fish and cloth.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 1,-75"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "forest-green"
+      }
+     ]
+    },
+    {
+     "aspect": "faith",
+     "text": "There is no Hist at the station; the keepers carry hatchlings and the dead to the nearest village tree. A small totem-post at the landing, carved with a sap-drop, is touched on leaving.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 1,-75"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "forest-green"
+      }
+     ]
+    },
+    {
+     "aspect": "look",
+     "text": "Four stilt huts and a drying frame of sap-skins on a firm bank, an eel-trap line across the shallows, and a canoe landing wreathed in hanging moss.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 1,-75"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "forest-green"
+      }
+     ]
+    },
+    {
+     "aspect": "dangers",
+     "text": "The Naga camp to the north hunts here; predators come to the sap-skins and the station keeps spears at each door.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 1,-75"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "forest-green"
+      }
+     ]
+    },
+    {
+     "aspect": "hooks",
+     "text": "A sap-skin has been found slashed and replaced with a wrong one; the young tree-minder wants an egg-clutch carried to Helstrom unseen.",
+     "tier": "AGENT_INVENTED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 1,-75"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "forest-green"
+      }
+     ]
+    }
+   ],
+   "terrain_needs": [
+    {
+     "id": "flat-pad",
+     "radius_m": 40,
+     "why": "the station's built ground"
+    },
+    {
+     "id": "shore-access",
+     "radius_m": 30,
+     "why": "the landing"
+    }
+   ]
+  },
+  {
+   "id": "outpost-1-m81",
+   "name": "Gaxu-Reet",
+   "status": "inhabited",
+   "held_by": "Root-Folk tree-minder of the nearest village tree",
+   "population": 5,
+   "footprint_radius_m": 40,
+   "siting": "riverbank",
+   "danger_band_id": "D3",
+   "importance": 1,
+   "summary": "Gaxu-Reet is a small outpost where the river arms south-east of Helstrom join and spread into the lake delta, kept for egg-tending and river watch. Boats from Helstrom to the lake's south shore pass through its landing, and few outsiders see more than the totem-post.",
+   "lore_page": null,
+   "statement_tier_id": "AGENT_INVENTED",
+   "aliases": [],
+   "notes": [
+    {
+     "aspect": "overview",
+     "text": "Gaxu-Reet is a small outpost where the river arms south-east of Helstrom join and spread into the lake delta. It is a station of the Root-Folk of Helstrom for egg-tending and river watch. The map gives it no name and UESP has none; the name is ours.",
+     "tier": "AGENT_INVENTED",
+     "sources": [
+      {
+       "kind": "uesp",
+       "title": "Lore:Gaxu-Reet (no page)",
+       "locator": "UESP search and page lookup, 2026-11-08: no Lore page for Gaxu-Reet",
+       "url": "https://en.uesp.net/w/index.php?search=Gaxu-Reet"
+      },
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 1,-81"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "forest-green"
+      }
+     ]
+    },
+    {
+     "aspect": "history",
+     "text": "The junction's old nest-pits are read as sites the Root-Folk kept from before the Empire; the station is the watch they keep on them.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 1,-81"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "forest-green"
+      }
+     ]
+    },
+    {
+     "aspect": "present",
+     "text": "Five Saxhleel hold the station where the river arms spread into the delta. They tend eggs, watch the water for strangers, and send word to Helstrom's tree-minders once a month.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 1,-81"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "forest-green"
+      }
+     ]
+    },
+    {
+     "aspect": "people",
+     "text": "About five egg-tenders and watchers; one is an old sap-speaker.",
+     "tier": "AGENT_INVENTED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 1,-81"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "forest-green"
+      }
+     ]
+    },
+    {
+     "aspect": "economy",
+     "text": "Hatchery eggs, fish and sap exchanged with boats going between Helstrom and the lake.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 1,-81"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "forest-green"
+      }
+     ]
+    },
+    {
+     "aspect": "faith",
+     "text": "The station has no Hist of its own, so hatching and burial are done at the nearest village tree. A totem-post carved with a heron stands at the landing, and boatmen bow to it passing.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 1,-81"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "forest-green"
+      }
+     ]
+    },
+    {
+     "aspect": "look",
+     "text": "Tall stilt platforms over a wide river junction, nest-pits of clay lined with moss, a watch post with a lantern and a horn.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 1,-81"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "forest-green"
+      }
+     ]
+    },
+    {
+     "aspect": "dangers",
+     "text": "Naga and Tumnatu parties pass here; the junction's currents drown the careless.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 1,-81"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "forest-green"
+      }
+     ]
+    },
+    {
+     "aspect": "hooks",
+     "text": "A clutch is missing from the nest-pits; boats pass that did not come up the river; the old sap-speaker will name who took it for a price.",
+     "tier": "AGENT_INVENTED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 1,-81"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "forest-green"
+      }
+     ]
+    }
+   ],
+   "terrain_needs": [
+    {
+     "id": "flat-pad",
+     "radius_m": 40,
+     "why": "the station's built ground"
+    },
+    {
+     "id": "shore-access",
+     "radius_m": 30,
+     "why": "the landing"
+    }
+   ]
+  },
+  {
+   "id": "outpost-6-m77",
+   "name": "Hokal-Ush",
+   "status": "inhabited",
+   "held_by": "Root-Folk tree-minder of the nearest village tree",
+   "population": 4,
+   "footprint_radius_m": 40,
+   "siting": "swamp",
+   "danger_band_id": "D3",
+   "importance": 1,
+   "summary": "Hokal-Ush is a small outpost on a hummock beside a river bend east of Helstrom, kept for hunting and fellrunner-feather trading. It trades feathers to the river-boats that come east from Helstrom, and keeps to itself otherwise.",
+   "lore_page": null,
+   "statement_tier_id": "AGENT_INVENTED",
+   "aliases": [],
+   "notes": [
+    {
+     "aspect": "overview",
+     "text": "Hokal-Ush is a small outpost on a hummock beside a river bend east of Helstrom. It is a station of the Root-Folk of Helstrom for hunting and fellrunner-feather trading. The map gives it no name and UESP has none; the name is ours.",
+     "tier": "AGENT_INVENTED",
+     "sources": [
+      {
+       "kind": "uesp",
+       "title": "Lore:Hokal-Ush (no page)",
+       "locator": "UESP search and page lookup, 2026-11-08: no Lore page for Hokal-Ush",
+       "url": "https://en.uesp.net/w/index.php?search=Hokal-Ush"
+      },
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 6,-77"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "forest-green"
+      }
+     ]
+    },
+    {
+     "aspect": "history",
+     "text": "A hunters' stand using Murkwood's canon fellrunner trade (Lore:Murkwood), settled once the hunters kept their feathers here between runs.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 6,-77"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "forest-green"
+      }
+     ]
+    },
+    {
+     "aspect": "present",
+     "text": "Four Saxhleel keep the hummock, hunting along the bend and trading fellrunner feathers to passing boats. They answer to a tree-minder in Helstrom and send a share of every sale.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 6,-77"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "forest-green"
+      }
+     ]
+    },
+    {
+     "aspect": "people",
+     "text": "About four hunters and a feather-trader.",
+     "tier": "AGENT_INVENTED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 6,-77"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "forest-green"
+      }
+     ]
+    },
+    {
+     "aspect": "economy",
+     "text": "Fellrunner feathers and pelts traded to Helstrom's market; a single armband of the pale down lets a hunter cross Murkwood unseen.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 6,-77"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "forest-green"
+      }
+     ]
+    },
+    {
+     "aspect": "faith",
+     "text": "No Hist grows here; the keepers go to a village tree for hatching and burial. A feather-hung totem-post stands at the bend, and the first feather of each season is given to it.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 6,-77"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "forest-green"
+      }
+     ]
+    },
+    {
+     "aspect": "look",
+     "text": "A hummock hung with drying skins and feather bundles, three stilt huts, and a narrow canoe lane under overhanging roots.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 6,-77"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "forest-green"
+      }
+     ]
+    },
+    {
+     "aspect": "dangers",
+     "text": "Murkwood's medusas lie to the west, and the station never goes beyond the third bend after dusk; fellrunners themselves bite.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 6,-77"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "forest-green"
+      }
+     ]
+    },
+    {
+     "aspect": "hooks",
+     "text": "A hunter went into Murkwood wearing a feather band and has not come back; a feather-trader will pay for a missing band recovered.",
+     "tier": "AGENT_INVENTED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 6,-77"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "forest-green"
+      }
+     ]
+    }
+   ],
+   "terrain_needs": [
+    {
+     "id": "flat-pad",
+     "radius_m": 40,
+     "why": "the station's built ground"
+    },
+    {
+     "id": "shore-access",
+     "radius_m": 30,
+     "why": "the landing"
+    }
+   ]
+  },
+  {
+   "id": "outpost-m2-m79",
+   "name": "Ixu-Maan",
+   "status": "inhabited",
+   "held_by": "Root-Folk tree-minder of the nearest village tree",
+   "population": 5,
+   "footprint_radius_m": 40,
+   "siting": "swamp",
+   "danger_band_id": "D3",
+   "importance": 1,
+   "summary": "Ixu-Maan is a small outpost on a small rise south of Helstrom, between the river arms, kept for egg-tending and a night watch on the city's south approach. The lamp on its rise is the last light on the city's south approach, and travellers take it as a sign to slow.",
+   "lore_page": null,
+   "statement_tier_id": "AGENT_INVENTED",
+   "aliases": [],
+   "notes": [
+    {
+     "aspect": "overview",
+     "text": "Ixu-Maan is a small outpost on a small rise south of Helstrom, between the river arms. It is a station of the Root-Folk of Helstrom for egg-tending and a night watch on the city's south approach. The map gives it no name and UESP has none; the name is ours.",
+     "tier": "AGENT_INVENTED",
+     "sources": [
+      {
+       "kind": "uesp",
+       "title": "Lore:Ixu-Maan (no page)",
+       "locator": "UESP search and page lookup, 2026-11-08: no Lore page for Ixu-Maan",
+       "url": "https://en.uesp.net/w/index.php?search=Ixu-Maan"
+      },
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -2,-79"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "forest-green"
+      }
+     ]
+    },
+    {
+     "aspect": "history",
+     "text": "A watch kept since the Third Era interior settlements on Helstrom's approaches, now a Root-Folk station.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -2,-79"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "forest-green"
+      }
+     ]
+    },
+    {
+     "aspect": "present",
+     "text": "Five Saxhleel keep a night watch on the rise and tend a clutch of eggs. They light a lamp for travellers on the south road and report each dawn to a tree-minder in Helstrom.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -2,-79"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "forest-green"
+      }
+     ]
+    },
+    {
+     "aspect": "people",
+     "text": "About five egg-tenders and watchers.",
+     "tier": "AGENT_INVENTED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -2,-79"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "forest-green"
+      }
+     ]
+    },
+    {
+     "aspect": "economy",
+     "text": "Eggs, fish and a small toll for rafts passing between the south fork and Helstrom.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -2,-79"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "forest-green"
+      }
+     ]
+    },
+    {
+     "aspect": "faith",
+     "text": "The rise has no Hist; hatchlings are carried the short way to Helstrom's own tree. A small totem-post with a lamp-niche stands on the crest, and the keepers speak to it at dusk.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -2,-79"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "forest-green"
+      }
+     ]
+    },
+    {
+     "aspect": "look",
+     "text": "Stilt huts around a clay nest-pit on a low rise, a signal pole and a rope bridge to the next hummock.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -2,-79"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "forest-green"
+      }
+     ]
+    },
+    {
+     "aspect": "dangers",
+     "text": "Naga raiders from the south-west camp and swamp predators; the watch is the city's first warning of anyone coming up from the south.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -2,-79"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "forest-green"
+      }
+     ]
+    },
+    {
+     "aspect": "hooks",
+     "text": "A signal went up at night with no visitor in sight; an egg-tender claims the Hist spoke to her in the mud.",
+     "tier": "AGENT_INVENTED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -2,-79"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "forest-green"
+      }
+     ]
+    }
+   ],
+   "terrain_needs": [
+    {
+     "id": "flat-pad",
+     "radius_m": 40,
+     "why": "the station's built ground"
+    },
+    {
+     "id": "shore-access",
+     "radius_m": 30,
+     "why": "the landing"
+    }
+   ]
+  },
+  {
+   "id": "outpost-m3-m83",
+   "name": "Vesh-Aneel",
+   "status": "inhabited",
+   "held_by": "Root-Folk tree-minder of the nearest village tree",
+   "population": 4,
+   "footprint_radius_m": 40,
+   "siting": "swamp",
+   "danger_band_id": "D3",
+   "importance": 1,
+   "summary": "Vesh-Aneel is a small outpost on an isolated hummock in the marsh south-west of Helstrom, kept for a hunters' camp and a waypoint on the long route to Nacydes. Hunters crossing to Nacydes rest here, and it is the only dry ground for miles around.",
+   "lore_page": null,
+   "statement_tier_id": "AGENT_INVENTED",
+   "aliases": [],
+   "notes": [
+    {
+     "aspect": "overview",
+     "text": "Vesh-Aneel is a small outpost on an isolated hummock in the marsh south-west of Helstrom. It is a station of the Root-Folk of Helstrom for a hunters' camp and a waypoint on the long route to Nacydes. The map gives it no name and UESP has none; the name is ours.",
+     "tier": "AGENT_INVENTED",
+     "sources": [
+      {
+       "kind": "uesp",
+       "title": "Lore:Vesh-Aneel (no page)",
+       "locator": "UESP search and page lookup, 2026-11-08: no Lore page for Vesh-Aneel",
+       "url": "https://en.uesp.net/w/index.php?search=Vesh-Aneel"
+      },
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -3,-83"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "forest-green"
+      }
+     ]
+    },
+    {
+     "aspect": "history",
+     "text": "A hunters' camp that became permanent because the marsh to the south-west has no other dry ground.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -3,-83"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "forest-green"
+      }
+     ]
+    },
+    {
+     "aspect": "present",
+     "text": "Four Saxhleel hold the hummock, hunting in the marsh and feeding the hunters who pass to Nacydes. They send a message to a tree-minder by boat once a season.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -3,-83"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "forest-green"
+      }
+     ]
+    },
+    {
+     "aspect": "people",
+     "text": "About four hunters and a guide.",
+     "tier": "AGENT_INVENTED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -3,-83"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "forest-green"
+      }
+     ]
+    },
+    {
+     "aspect": "economy",
+     "text": "Hides, herbs and guide fees for those crossing the marsh toward Nacydes and the ridge.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -3,-83"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "forest-green"
+      }
+     ]
+    },
+    {
+     "aspect": "faith",
+     "text": "There is no Hist on the hummock; the keepers walk the long route to the nearest village tree for hatching and burial. A totem-post at the path-head is hung with hunters' bone-charms.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -3,-83"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "forest-green"
+      }
+     ]
+    },
+    {
+     "aspect": "look",
+     "text": "A single hummock with two huts, a firepit and a signal post, with open reed all round.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -3,-83"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "forest-green"
+      }
+     ]
+    },
+    {
+     "aspect": "dangers",
+     "text": "Deep swamp predators and Naga hunters; the hummock is the only dry ground for hours.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -3,-83"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "forest-green"
+      }
+     ]
+    },
+    {
+     "aspect": "hooks",
+     "text": "A guide lost a party at the last crossing; the post's fire was lit three nights running without a keeper.",
+     "tier": "AGENT_INVENTED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -3,-83"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "forest-green"
+      }
+     ]
+    }
+   ],
+   "terrain_needs": [
+    {
+     "id": "flat-pad",
+     "radius_m": 40,
+     "why": "the station's built ground"
+    },
+    {
+     "id": "shore-access",
+     "radius_m": 30,
+     "why": "the landing"
+    }
+   ]
+  },
+  {
+   "id": "outpost-9-m85",
+   "name": "Uzu-Tegh",
+   "status": "inhabited",
+   "held_by": "Root-Folk tree-minder of the nearest village tree",
+   "population": 4,
+   "footprint_radius_m": 40,
+   "siting": "island",
+   "danger_band_id": "D2",
+   "importance": 1,
+   "summary": "Uzu-Tegh is a small outpost on a low islet in the lake's northern shallows, kept for eel-trapping and a lake watch. Its eel-traps are known to every lake boatman, though few ever land on the islet.",
+   "lore_page": null,
+   "statement_tier_id": "AGENT_INVENTED",
+   "aliases": [],
+   "notes": [
+    {
+     "aspect": "overview",
+     "text": "Uzu-Tegh is a small outpost on a low islet in the lake's northern shallows. It is a station of the Root-Folk of Helstrom for eel-trapping and a lake watch. The map gives it no name and UESP has none; the name is ours.",
+     "tier": "AGENT_INVENTED",
+     "sources": [
+      {
+       "kind": "uesp",
+       "title": "Lore:Uzu-Tegh (no page)",
+       "locator": "UESP search and page lookup, 2026-11-08: no Lore page for Uzu-Tegh",
+       "url": "https://en.uesp.net/w/index.php?search=Uzu-Tegh"
+      },
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 9,-85"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "forest-green"
+      }
+     ]
+    },
+    {
+     "aspect": "history",
+     "text": "A lake station of the Root-Folk, founded to keep the lake's northern fishing open to the Helstrom country.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 9,-85"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "forest-green"
+      }
+     ]
+    },
+    {
+     "aspect": "present",
+     "text": "Four Saxhleel live on the islet, trapping eels and watching the lake's north shallows. A tree-minder in Helstrom hears their news at the autumn eel-run.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 9,-85"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "forest-green"
+      }
+     ]
+    },
+    {
+     "aspect": "people",
+     "text": "About four eel-trappers and a watcher.",
+     "tier": "AGENT_INVENTED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 9,-85"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "forest-green"
+      }
+     ]
+    },
+    {
+     "aspect": "economy",
+     "text": "Eels and lake fish traded to Marzai, Julo and passing boats.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 9,-85"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "forest-green"
+      }
+     ]
+    },
+    {
+     "aspect": "faith",
+     "text": "The islet has no Hist, so the keepers row to a village tree on the shore for hatching and burial. A totem-post carved with an eel stands at the landing, and the first eel of the run is given to it.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 9,-85"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "forest-green"
+      }
+     ]
+    },
+    {
+     "aspect": "look",
+     "text": "An islet of silt with two reed huts, eel pots on poles and a lantern at the water's edge.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 9,-85"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "forest-green"
+      }
+     ]
+    },
+    {
+     "aspect": "dangers",
+     "text": "Storm squalls and deep-water predators; Tumnatu canoes pass without leave.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 9,-85"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "forest-green"
+      }
+     ]
+    },
+    {
+     "aspect": "hooks",
+     "text": "A canoe was found drifting with its paddles shipped; the lantern was lit by someone who left no boat.",
+     "tier": "AGENT_INVENTED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 9,-85"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "forest-green"
+      }
+     ]
+    }
+   ],
+   "terrain_needs": [
+    {
+     "id": "island",
+     "radius_m": 40,
+     "why": "the station is on its own islet"
+    },
+    {
+     "id": "shore-access",
+     "radius_m": 30,
+     "why": "the landing"
+    }
+   ]
+  },
+  {
+   "id": "outpost-14-m85",
+   "name": "Neexa-Lul",
+   "status": "inhabited",
+   "held_by": "Root-Folk tree-minder of the nearest village tree",
+   "population": 4,
+   "footprint_radius_m": 40,
+   "siting": "island",
+   "danger_band_id": "D2",
+   "importance": 1,
+   "summary": "Neexa-Lul is a small outpost on an islet in the lake's eastern reaches, between Marzai and Truowa, kept for a lake watch and egg-tending. Boats crossing between Marzai and Truowa often use its landing to wait out the wind.",
+   "lore_page": null,
+   "statement_tier_id": "AGENT_INVENTED",
+   "aliases": [],
+   "notes": [
+    {
+     "aspect": "overview",
+     "text": "Neexa-Lul is a small outpost on an islet in the lake's eastern reaches, between Marzai and Truowa. It is a station of the Root-Folk of Helstrom for a lake watch and egg-tending. The map gives it no name and UESP has none; the name is ours.",
+     "tier": "AGENT_INVENTED",
+     "sources": [
+      {
+       "kind": "uesp",
+       "title": "Lore:Neexa-Lul (no page)",
+       "locator": "UESP search and page lookup, 2026-11-08: no Lore page for Neexa-Lul",
+       "url": "https://en.uesp.net/w/index.php?search=Neexa-Lul"
+      },
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 14,-85"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "forest-green"
+      }
+     ]
+    },
+    {
+     "aspect": "history",
+     "text": "A lake station kept by the Root-Folk to guard their share of the lake's eastern trade.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 14,-85"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "forest-green"
+      }
+     ]
+    },
+    {
+     "aspect": "present",
+     "text": "Four Saxhleel hold the islet, watching the water between Marzai and Truowa and tending eggs. They pass news of the eastern shore to a tree-minder when a boat comes by.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 14,-85"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "forest-green"
+      }
+     ]
+    },
+    {
+     "aspect": "people",
+     "text": "About four watchers and an egg-tender.",
+     "tier": "AGENT_INVENTED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 14,-85"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "forest-green"
+      }
+     ]
+    },
+    {
+     "aspect": "economy",
+     "text": "Fish, eggs and a small mooring fee for boats on the Marzai-Truowa run.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 14,-85"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "forest-green"
+      }
+     ]
+    },
+    {
+     "aspect": "faith",
+     "text": "The islet has no Hist; hatchlings are rowed to the nearest village tree. A totem-post at the landing is hung with Marzai shells, and the keepers touch it before a crossing.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 14,-85"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "forest-green"
+      }
+     ]
+    },
+    {
+     "aspect": "look",
+     "text": "A reed-built platform on silt with a lamp tower, an eel line and a stack of dried fish racks.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 14,-85"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "forest-green"
+      }
+     ]
+    },
+    {
+     "aspect": "dangers",
+     "text": "Squalls and storm surf; smugglers use the islet at night and the keepers pretend not to see them.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 14,-85"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "forest-green"
+      }
+     ]
+    },
+    {
+     "aspect": "hooks",
+     "text": "A cask left on the platform is marked for Truowa and nobody claims it; the egg-tender has found new eggs in an old nest.",
+     "tier": "AGENT_INVENTED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 14,-85"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "forest-green"
+      }
+     ]
+    }
+   ],
+   "terrain_needs": [
+    {
+     "id": "island",
+     "radius_m": 40,
+     "why": "the station is on its own islet"
+    },
+    {
+     "id": "shore-access",
+     "radius_m": 30,
+     "why": "the landing"
+    }
+   ]
+  },
+  {
+   "id": "outpost-2-m96",
+   "name": "Orji-Hael",
+   "status": "inhabited",
+   "held_by": "Root-Folk tree-minder of the nearest village tree",
+   "population": 5,
+   "footprint_radius_m": 40,
+   "siting": "swamp",
+   "danger_band_id": "D3",
+   "importance": 1,
+   "summary": "Orji-Hael is a small outpost south of Korydon on firm ground by the great southern water, kept for a waystation for boats going south toward Blackrose. Boats going south toward Blackrose pause at its landing before they leave the sheltered water.",
+   "lore_page": null,
+   "statement_tier_id": "AGENT_INVENTED",
+   "aliases": [],
+   "notes": [
+    {
+     "aspect": "overview",
+     "text": "Orji-Hael is a small outpost south of Korydon on firm ground by the great southern water. It is a station of the Root-Folk of Helstrom for a waystation for boats going south toward Blackrose. The map gives it no name and UESP has none; the name is ours.",
+     "tier": "AGENT_INVENTED",
+     "sources": [
+      {
+       "kind": "uesp",
+       "title": "Lore:Orji-Hael (no page)",
+       "locator": "UESP search and page lookup, 2026-11-08: no Lore page for Orji-Hael",
+       "url": "https://en.uesp.net/w/index.php?search=Orji-Hael"
+      },
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 2,-96"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "forest-green"
+      }
+     ]
+    },
+    {
+     "aspect": "history",
+     "text": "A waystation of the Root-Folk, the one forest-green place south of Korydon; it keeps the Helstrom assembly's ear on the Blackrose waters.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 2,-96"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "forest-green"
+      }
+     ]
+    },
+    {
+     "aspect": "present",
+     "text": "Five Saxhleel keep the waystation, feeding boat crews bound south and watching the great water. They report to the tree-minder of Korydon at each full moon.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 2,-96"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "forest-green"
+      }
+     ]
+    },
+    {
+     "aspect": "people",
+     "text": "About five boatmen and herb-gatherers.",
+     "tier": "AGENT_INVENTED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 2,-96"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "forest-green"
+      }
+     ]
+    },
+    {
+     "aspect": "economy",
+     "text": "Lodging for boatmen, dragon's-tongue and swamp herbs, fish and mending.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 2,-96"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "forest-green"
+      }
+     ]
+    },
+    {
+     "aspect": "faith",
+     "text": "There is no Hist at the station; the keepers go to Korydon's tree for hatching and burial. A totem-post at the jetty is carved with a boat-prow, and the crews touch it for fair passage.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 2,-96"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "forest-green"
+      }
+     ]
+    },
+    {
+     "aspect": "look",
+     "text": "Stilt huts around a boat-yard with a bell at the landing and herb racks on every rail.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 2,-96"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "forest-green"
+      }
+     ]
+    },
+    {
+     "aspect": "dangers",
+     "text": "Ultherus herbs can kill the careless; predators in the open water south; Tumnatu parties.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 2,-96"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "forest-green"
+      }
+     ]
+    },
+    {
+     "aspect": "hooks",
+     "text": "A herb-gatherer wants dragon's-tongue taken to Korydon before it spoils; a boat from Blackrose never put in.",
+     "tier": "AGENT_INVENTED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 2,-96"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "forest-green"
+      }
+     ]
+    }
+   ],
+   "terrain_needs": [
+    {
+     "id": "flat-pad",
+     "radius_m": 40,
+     "why": "the station's built ground"
+    },
+    {
+     "id": "shore-access",
+     "radius_m": 30,
+     "why": "the landing"
+    }
+   ]
+  },
+  {
+   "id": "outpost-m13-m79",
+   "name": "Tzel-Haar",
+   "status": "inhabited",
+   "held_by": "Hutan-Tzel naheesh",
+   "population": 6,
+   "footprint_radius_m": 40,
+   "siting": "riverbank",
+   "danger_band_id": "D3",
+   "importance": 2,
+   "summary": "Tzel-Haar is a small outpost on the Panther River's west bank, north-west of Helstrom, kept for a river watch and trade. It is a stopping point on the water routes through the Panther River country, known to few outsiders.",
+   "lore_page": null,
+   "statement_tier_id": "AGENT_INVENTED",
+   "aliases": [],
+   "notes": [
+    {
+     "aspect": "overview",
+     "text": "Tzel-Haar is a small outpost on the Panther River's west bank, north-west of Helstrom. It is a station of the Hutan-Tzel for a river watch and trade. The map gives it no name and UESP has none; the name is ours.",
+     "tier": "AGENT_INVENTED",
+     "sources": [
+      {
+       "kind": "uesp",
+       "title": "Lore:Tzel-Haar (no page)",
+       "locator": "UESP search and page lookup, 2026-11-08: no Lore page for Tzel-Haar",
+       "url": "https://en.uesp.net/w/index.php?search=Tzel-Haar"
+      },
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -13,-79"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "magenta"
+      }
+     ]
+    },
+    {
+     "aspect": "history",
+     "text": "The Hutan-Tzel keep fortified outposts along the Panther River, per the tribe's canon (Online, via tribes.md).",
+     "tier": "CANON_DERIVED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -13,-79"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "magenta"
+      }
+     ]
+    },
+    {
+     "aspect": "present",
+     "text": "Six Hutan-Tzel keep the bank, watching the river and taking a small toll from boats. They answer to the naheesh at their own tree, not to Helstrom, and send a share of every toll.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -13,-79"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "magenta"
+      }
+     ]
+    },
+    {
+     "aspect": "people",
+     "text": "About six Hutan-Tzel watchers and a rune-carver.",
+     "tier": "AGENT_INVENTED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -13,-79"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "magenta"
+      }
+     ]
+    },
+    {
+     "aspect": "economy",
+     "text": "Tolls and trade with river traders from the Gideon country who come openly.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -13,-79"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "magenta"
+      }
+     ]
+    },
+    {
+     "aspect": "faith",
+     "text": "A rune-carved totem marks the ground by the landing. The Hutan-Tzel say that meddling with one draws dangerous beasts, and the keepers wipe it clean and speak to it at dawn.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -13,-79"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "magenta"
+      }
+     ]
+    },
+    {
+     "aspect": "look",
+     "text": "A fenced bank with a palisade of reed, rune-carved totems and a ferry.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -13,-79"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "magenta"
+      }
+     ]
+    },
+    {
+     "aspect": "dangers",
+     "text": "Meddling with a totem draws dangerous beasts; Paatru raiders from the west camp.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -13,-79"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "magenta"
+      }
+     ]
+    },
+    {
+     "aspect": "hooks",
+     "text": "A totem has been moved and the beasts have come; the rune-carver can read the stolen one.",
+     "tier": "AGENT_INVENTED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -13,-79"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "magenta"
+      }
+     ]
+    }
+   ],
+   "terrain_needs": [
+    {
+     "id": "flat-pad",
+     "radius_m": 40,
+     "why": "the station's built ground"
+    },
+    {
+     "id": "shore-access",
+     "radius_m": 30,
+     "why": "the landing"
+    }
+   ]
+  },
+  {
+   "id": "outpost-m7-m77",
+   "name": "Hutan-Ketu",
+   "status": "inhabited",
+   "held_by": "Hutan-Tzel naheesh",
+   "population": 6,
+   "footprint_radius_m": 40,
+   "siting": "riverbank",
+   "danger_band_id": "D3",
+   "importance": 2,
+   "summary": "Hutan-Ketu is a small outpost on the river west of Helstrom, at the Murkwood edge, kept for a go-between post between Helstrom and the west. It is a stopping point on the water routes through the Panther River country, known to few outsiders.",
+   "lore_page": null,
+   "statement_tier_id": "AGENT_INVENTED",
+   "aliases": [],
+   "notes": [
+    {
+     "aspect": "overview",
+     "text": "Hutan-Ketu is a small outpost on the river west of Helstrom, at the Murkwood edge. It is a station of the Hutan-Tzel for a go-between post between Helstrom and the west. The map gives it no name and UESP has none; the name is ours.",
+     "tier": "AGENT_INVENTED",
+     "sources": [
+      {
+       "kind": "uesp",
+       "title": "Lore:Hutan-Ketu (no page)",
+       "locator": "UESP search and page lookup, 2026-11-08: no Lore page for Hutan-Ketu",
+       "url": "https://en.uesp.net/w/index.php?search=Hutan-Ketu"
+      },
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -7,-77"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "magenta"
+      }
+     ]
+    },
+    {
+     "aspect": "history",
+     "text": "The Hutan-Tzel sit between Helstrom and the Gideon country and act as go-betweens (cultures.json).",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -7,-77"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "magenta"
+      }
+     ]
+    },
+    {
+     "aspect": "present",
+     "text": "Six Hutan-Tzel keep the post on the Murkwood edge and carry messages between Helstrom and the west. They house the go-betweens overnight and answer to their own naheesh.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -7,-77"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "magenta"
+      }
+     ]
+    },
+    {
+     "aspect": "people",
+     "text": "About six Hutan-Tzel and their naheesh's messenger.",
+     "tier": "AGENT_INVENTED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -7,-77"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "magenta"
+      }
+     ]
+    },
+    {
+     "aspect": "economy",
+     "text": "Messages, tolls and guide fees between Helstrom's Root-Folk and the Gideon country.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -7,-77"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "magenta"
+      }
+     ]
+    },
+    {
+     "aspect": "faith",
+     "text": "A rune-carved totem stands at the Murkwood edge of the post, and the keepers leave a bowl of river water at its foot. They say it keeps the wood's beasts from the landing.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -7,-77"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "magenta"
+      }
+     ]
+    },
+    {
+     "aspect": "look",
+     "text": "A palisade of reed on the bank, totem posts with runes only the tribe reads, and a long canoe shed.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -7,-77"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "magenta"
+      }
+     ]
+    },
+    {
+     "aspect": "dangers",
+     "text": "Totem rules; Naga parties from the south-west camp; Murkwood's medusas just across the bend.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -7,-77"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "magenta"
+      }
+     ]
+    },
+    {
+     "aspect": "hooks",
+     "text": "A messenger came with a letter and no body; the naheesh wants a bargain brokered with the Root-Folk.",
+     "tier": "AGENT_INVENTED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -7,-77"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "newworld/sources/research/cultures.json",
+       "locator": "newworld/sources/research/cultures.json",
+       "section": "magenta"
+      }
+     ]
+    }
+   ],
+   "terrain_needs": [
+    {
+     "id": "flat-pad",
+     "radius_m": 40,
+     "why": "the station's built ground"
+    },
+    {
+     "id": "shore-access",
+     "radius_m": 30,
+     "why": "the landing"
+    }
+   ]
+  },
+  {
+   "id": "tribal-camp-m2-m71",
+   "name": "Dry-Fang Camp",
+   "status": "inhabited",
+   "held_by": "A tribeless Naga band",
+   "population": 9,
+   "footprint_radius_m": 30,
+   "siting": "swamp",
+   "danger_band_id": "D3",
+   "importance": 1,
+   "summary": "Dry-Fang Camp is a Naga camp on dry ground north of Helstrom.",
+   "lore_page": null,
+   "statement_tier_id": "EXTRAPOLATED",
+   "aliases": [],
+   "notes": [
+    {
+     "aspect": "overview",
+     "text": "Dry-Fang Camp is a Naga camp on dry ground north of Helstrom. The map labels it a Naga camp; UESP has no page for it, and the name is ours.",
+     "tier": "AGENT_INVENTED",
+     "sources": [
+      {
+       "kind": "uesp",
+       "title": "Lore:Dry-Fang Camp (no page)",
+       "locator": "UESP search and page lookup, 2026-11-08: no Lore page for Dry-Fang Camp",
+       "url": "https://en.uesp.net/w/index.php?search=Dry-Fang+Camp"
+      },
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -2,-71"
+      },
+      {
+       "kind": "reasoning",
+       "title": "[Naga Camp] on the map at cell -2,-71",
+       "locator": "[Naga Camp] on the map at cell -2,-71"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/tribes.md",
+       "locator": "story/lore/tribes.md",
+       "section": "Naga and the Naga-Kur"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/middle-argonia.md",
+       "locator": "story/lore/regions/middle-argonia.md",
+       "section": "The interior breeds"
+      }
+     ]
+    },
+    {
+     "aspect": "history",
+     "text": "The Naga were road-robbers on Imperial plantation routes and retreated to the inner swamps when the roads failed; this camp is where one band settled (Lore:Naga).",
+     "tier": "CANON_DERIVED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -2,-71"
+      },
+      {
+       "kind": "reasoning",
+       "title": "[Naga Camp] on the map at cell -2,-71",
+       "locator": "[Naga Camp] on the map at cell -2,-71"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/tribes.md",
+       "locator": "story/lore/tribes.md",
+       "section": "Naga and the Naga-Kur"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/middle-argonia.md",
+       "locator": "story/lore/regions/middle-argonia.md",
+       "section": "The interior breeds"
+      }
+     ]
+    },
+    {
+     "aspect": "present",
+     "text": "About nine Naga hold it in 4E 201, outside the Helstrom assembly's writ and preying on the north river arm.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -2,-71"
+      },
+      {
+       "kind": "reasoning",
+       "title": "[Naga Camp] on the map at cell -2,-71",
+       "locator": "[Naga Camp] on the map at cell -2,-71"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/tribes.md",
+       "locator": "story/lore/tribes.md",
+       "section": "Naga and the Naga-Kur"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/middle-argonia.md",
+       "locator": "story/lore/regions/middle-argonia.md",
+       "section": "The interior breeds"
+      }
+     ]
+    },
+    {
+     "aspect": "people",
+     "text": "About nine tribeless Naga, adder-featured, seven to eight feet tall, led by a scarred old female.",
+     "tier": "AGENT_INVENTED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -2,-71"
+      },
+      {
+       "kind": "reasoning",
+       "title": "[Naga Camp] on the map at cell -2,-71",
+       "locator": "[Naga Camp] on the map at cell -2,-71"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/tribes.md",
+       "locator": "story/lore/tribes.md",
+       "section": "Naga and the Naga-Kur"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/middle-argonia.md",
+       "locator": "story/lore/regions/middle-argonia.md",
+       "section": "The interior breeds"
+      }
+     ]
+    },
+    {
+     "aspect": "economy",
+     "text": "They live on river raids, hunting and what they take from passing boats.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -2,-71"
+      },
+      {
+       "kind": "reasoning",
+       "title": "[Naga Camp] on the map at cell -2,-71",
+       "locator": "[Naga Camp] on the map at cell -2,-71"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/tribes.md",
+       "locator": "story/lore/tribes.md",
+       "section": "Naga and the Naga-Kur"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/middle-argonia.md",
+       "locator": "story/lore/regions/middle-argonia.md",
+       "section": "The interior breeds"
+      }
+     ]
+    },
+    {
+     "aspect": "faith",
+     "text": "Sithis, above all. The camp keeps no village tree; its dead are laid in the dry ground north of Helstrom with a snake's fang as marker.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -2,-71"
+      },
+      {
+       "kind": "reasoning",
+       "title": "[Naga Camp] on the map at cell -2,-71",
+       "locator": "[Naga Camp] on the map at cell -2,-71"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/tribes.md",
+       "locator": "story/lore/tribes.md",
+       "section": "Naga and the Naga-Kur"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/middle-argonia.md",
+       "locator": "story/lore/regions/middle-argonia.md",
+       "section": "The interior breeds"
+      }
+     ]
+    },
+    {
+     "aspect": "look",
+     "text": "Hide-covered lean-tos on a dry mound, bones strung on lines, a fire pit and a slit-trench latrine; a hiss in the dark.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -2,-71"
+      },
+      {
+       "kind": "reasoning",
+       "title": "[Naga Camp] on the map at cell -2,-71",
+       "locator": "[Naga Camp] on the map at cell -2,-71"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/tribes.md",
+       "locator": "story/lore/tribes.md",
+       "section": "Naga and the Naga-Kur"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/middle-argonia.md",
+       "locator": "story/lore/regions/middle-argonia.md",
+       "section": "The interior breeds"
+      }
+     ]
+    },
+    {
+     "aspect": "dangers",
+     "text": "Naga ambush boats and lone travellers; needle fangs and poison; they flee from numbers.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -2,-71"
+      },
+      {
+       "kind": "reasoning",
+       "title": "[Naga Camp] on the map at cell -2,-71",
+       "locator": "[Naga Camp] on the map at cell -2,-71"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/tribes.md",
+       "locator": "story/lore/tribes.md",
+       "section": "Naga and the Naga-Kur"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/middle-argonia.md",
+       "locator": "story/lore/regions/middle-argonia.md",
+       "section": "The interior breeds"
+      }
+     ]
+    },
+    {
+     "aspect": "hooks",
+     "text": "A prisoner is held here for ransom; a stolen sap-skin shipment is cached; the leader will bargain for a boat.",
+     "tier": "AGENT_INVENTED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -2,-71"
+      },
+      {
+       "kind": "reasoning",
+       "title": "[Naga Camp] on the map at cell -2,-71",
+       "locator": "[Naga Camp] on the map at cell -2,-71"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/tribes.md",
+       "locator": "story/lore/tribes.md",
+       "section": "Naga and the Naga-Kur"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/middle-argonia.md",
+       "locator": "story/lore/regions/middle-argonia.md",
+       "section": "The interior breeds"
+      }
+     ]
+    }
+   ],
+   "terrain_needs": [
+    {
+     "id": "flat-pad",
+     "radius_m": 30,
+     "why": "the camp's cleared ground"
+    }
+   ]
+  },
+  {
+   "id": "tribal-camp-m12-m74",
+   "name": "Hiss-Bank Camp",
+   "status": "inhabited",
+   "held_by": "A tribeless Naga band",
+   "population": 8,
+   "footprint_radius_m": 30,
+   "siting": "swamp",
+   "danger_band_id": "D3",
+   "importance": 1,
+   "summary": "Hiss-Bank Camp is a Naga camp on the western river bank.",
+   "lore_page": null,
+   "statement_tier_id": "EXTRAPOLATED",
+   "aliases": [],
+   "notes": [
+    {
+     "aspect": "overview",
+     "text": "Hiss-Bank Camp is a Naga camp on the western river bank. The map labels it a Naga camp; UESP has no page for it, and the name is ours.",
+     "tier": "AGENT_INVENTED",
+     "sources": [
+      {
+       "kind": "uesp",
+       "title": "Lore:Hiss-Bank Camp (no page)",
+       "locator": "UESP search and page lookup, 2026-11-08: no Lore page for Hiss-Bank Camp",
+       "url": "https://en.uesp.net/w/index.php?search=Hiss-Bank+Camp"
+      },
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -12,-74"
+      },
+      {
+       "kind": "reasoning",
+       "title": "[Naga Camp] on the map at cell -12,-74",
+       "locator": "[Naga Camp] on the map at cell -12,-74"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/tribes.md",
+       "locator": "story/lore/tribes.md",
+       "section": "Naga and the Naga-Kur"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/middle-argonia.md",
+       "locator": "story/lore/regions/middle-argonia.md",
+       "section": "The interior breeds"
+      }
+     ]
+    },
+    {
+     "aspect": "history",
+     "text": "A band of the Naga who left the Panther River road after the plantations ended (Lore:Naga).",
+     "tier": "CANON_DERIVED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -12,-74"
+      },
+      {
+       "kind": "reasoning",
+       "title": "[Naga Camp] on the map at cell -12,-74",
+       "locator": "[Naga Camp] on the map at cell -12,-74"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/tribes.md",
+       "locator": "story/lore/tribes.md",
+       "section": "Naga and the Naga-Kur"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/middle-argonia.md",
+       "locator": "story/lore/regions/middle-argonia.md",
+       "section": "The interior breeds"
+      }
+     ]
+    },
+    {
+     "aspect": "present",
+     "text": "Eight Naga hold a bend of the western river and raid the Hutan-Tzel's boats.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -12,-74"
+      },
+      {
+       "kind": "reasoning",
+       "title": "[Naga Camp] on the map at cell -12,-74",
+       "locator": "[Naga Camp] on the map at cell -12,-74"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/tribes.md",
+       "locator": "story/lore/tribes.md",
+       "section": "Naga and the Naga-Kur"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/middle-argonia.md",
+       "locator": "story/lore/regions/middle-argonia.md",
+       "section": "The interior breeds"
+      }
+     ]
+    },
+    {
+     "aspect": "people",
+     "text": "About eight Naga, a few young ones, and a seer who reads bones.",
+     "tier": "AGENT_INVENTED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -12,-74"
+      },
+      {
+       "kind": "reasoning",
+       "title": "[Naga Camp] on the map at cell -12,-74",
+       "locator": "[Naga Camp] on the map at cell -12,-74"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/tribes.md",
+       "locator": "story/lore/tribes.md",
+       "section": "Naga and the Naga-Kur"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/middle-argonia.md",
+       "locator": "story/lore/regions/middle-argonia.md",
+       "section": "The interior breeds"
+      }
+     ]
+    },
+    {
+     "aspect": "economy",
+     "text": "Raids, hunting and a lucrative extortion of the ferry at Tzel-Haar.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -12,-74"
+      },
+      {
+       "kind": "reasoning",
+       "title": "[Naga Camp] on the map at cell -12,-74",
+       "locator": "[Naga Camp] on the map at cell -12,-74"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/tribes.md",
+       "locator": "story/lore/tribes.md",
+       "section": "Naga and the Naga-Kur"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/middle-argonia.md",
+       "locator": "story/lore/regions/middle-argonia.md",
+       "section": "The interior breeds"
+      }
+     ]
+    },
+    {
+     "aspect": "faith",
+     "text": "Sithis, above all. This band keeps no village tree; it buries its dead at the water's edge on the western bank, each marked with a snake's fang pushed into the mud.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -12,-74"
+      },
+      {
+       "kind": "reasoning",
+       "title": "[Naga Camp] on the map at cell -12,-74",
+       "locator": "[Naga Camp] on the map at cell -12,-74"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/tribes.md",
+       "locator": "story/lore/tribes.md",
+       "section": "Naga and the Naga-Kur"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/middle-argonia.md",
+       "locator": "story/lore/regions/middle-argonia.md",
+       "section": "The interior breeds"
+      }
+     ]
+    },
+    {
+     "aspect": "look",
+     "text": "Lean-tos under a root arch, fish-bone racks and a bank trampled bare.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -12,-74"
+      },
+      {
+       "kind": "reasoning",
+       "title": "[Naga Camp] on the map at cell -12,-74",
+       "locator": "[Naga Camp] on the map at cell -12,-74"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/tribes.md",
+       "locator": "story/lore/tribes.md",
+       "section": "Naga and the Naga-Kur"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/middle-argonia.md",
+       "locator": "story/lore/regions/middle-argonia.md",
+       "section": "The interior breeds"
+      }
+     ]
+    },
+    {
+     "aspect": "dangers",
+     "text": "Ambush on the river and the ferry; the Hutan-Tzel fight them on sight.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -12,-74"
+      },
+      {
+       "kind": "reasoning",
+       "title": "[Naga Camp] on the map at cell -12,-74",
+       "locator": "[Naga Camp] on the map at cell -12,-74"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/tribes.md",
+       "locator": "story/lore/tribes.md",
+       "section": "Naga and the Naga-Kur"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/middle-argonia.md",
+       "locator": "story/lore/regions/middle-argonia.md",
+       "section": "The interior breeds"
+      }
+     ]
+    },
+    {
+     "aspect": "hooks",
+     "text": "The Hutan-Tzel pay a bounty for the seer; a stolen totem-stone is in the camp.",
+     "tier": "AGENT_INVENTED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -12,-74"
+      },
+      {
+       "kind": "reasoning",
+       "title": "[Naga Camp] on the map at cell -12,-74",
+       "locator": "[Naga Camp] on the map at cell -12,-74"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/tribes.md",
+       "locator": "story/lore/tribes.md",
+       "section": "Naga and the Naga-Kur"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/middle-argonia.md",
+       "locator": "story/lore/regions/middle-argonia.md",
+       "section": "The interior breeds"
+      }
+     ]
+    }
+   ],
+   "terrain_needs": [
+    {
+     "id": "flat-pad",
+     "radius_m": 30,
+     "why": "the camp's cleared ground"
+    }
+   ]
+  },
+  {
+   "id": "tribal-camp-m7-m80",
+   "name": "Salt-Tooth Camp",
+   "status": "inhabited",
+   "held_by": "A tribeless Naga band",
+   "population": 10,
+   "footprint_radius_m": 30,
+   "siting": "swamp",
+   "danger_band_id": "D3",
+   "importance": 1,
+   "summary": "Salt-Tooth Camp is a Naga camp in the marsh south-west of Helstrom.",
+   "lore_page": null,
+   "statement_tier_id": "EXTRAPOLATED",
+   "aliases": [],
+   "notes": [
+    {
+     "aspect": "overview",
+     "text": "Salt-Tooth Camp is a Naga camp in the marsh south-west of Helstrom. The map labels it a Naga camp; UESP has no page for it, and the name is ours.",
+     "tier": "AGENT_INVENTED",
+     "sources": [
+      {
+       "kind": "uesp",
+       "title": "Lore:Salt-Tooth Camp (no page)",
+       "locator": "UESP search and page lookup, 2026-11-08: no Lore page for Salt-Tooth Camp",
+       "url": "https://en.uesp.net/w/index.php?search=Salt-Tooth+Camp"
+      },
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -7,-80"
+      },
+      {
+       "kind": "reasoning",
+       "title": "[Naga Camp] on the map at cell -7,-80",
+       "locator": "[Naga Camp] on the map at cell -7,-80"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/tribes.md",
+       "locator": "story/lore/tribes.md",
+       "section": "Naga and the Naga-Kur"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/middle-argonia.md",
+       "locator": "story/lore/regions/middle-argonia.md",
+       "section": "The interior breeds"
+      }
+     ]
+    },
+    {
+     "aspect": "history",
+     "text": "A band of Naga who retreated into the deep swamp when the Imperial roads ended (Lore:Naga).",
+     "tier": "CANON_DERIVED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -7,-80"
+      },
+      {
+       "kind": "reasoning",
+       "title": "[Naga Camp] on the map at cell -7,-80",
+       "locator": "[Naga Camp] on the map at cell -7,-80"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/tribes.md",
+       "locator": "story/lore/tribes.md",
+       "section": "Naga and the Naga-Kur"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/middle-argonia.md",
+       "locator": "story/lore/regions/middle-argonia.md",
+       "section": "The interior breeds"
+      }
+     ]
+    },
+    {
+     "aspect": "present",
+     "text": "Ten Naga hunt the marsh toward Nacydes and Murkwood's edge, and sell Murkwood feathers they should not have.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -7,-80"
+      },
+      {
+       "kind": "reasoning",
+       "title": "[Naga Camp] on the map at cell -7,-80",
+       "locator": "[Naga Camp] on the map at cell -7,-80"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/tribes.md",
+       "locator": "story/lore/tribes.md",
+       "section": "Naga and the Naga-Kur"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/middle-argonia.md",
+       "locator": "story/lore/regions/middle-argonia.md",
+       "section": "The interior breeds"
+      }
+     ]
+    },
+    {
+     "aspect": "people",
+     "text": "About ten Naga, led by a one-eyed male with a feather armband.",
+     "tier": "AGENT_INVENTED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -7,-80"
+      },
+      {
+       "kind": "reasoning",
+       "title": "[Naga Camp] on the map at cell -7,-80",
+       "locator": "[Naga Camp] on the map at cell -7,-80"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/tribes.md",
+       "locator": "story/lore/tribes.md",
+       "section": "Naga and the Naga-Kur"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/middle-argonia.md",
+       "locator": "story/lore/regions/middle-argonia.md",
+       "section": "The interior breeds"
+      }
+     ]
+    },
+    {
+     "aspect": "economy",
+     "text": "Hunting, raids and a trade in stolen fellrunner feathers.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -7,-80"
+      },
+      {
+       "kind": "reasoning",
+       "title": "[Naga Camp] on the map at cell -7,-80",
+       "locator": "[Naga Camp] on the map at cell -7,-80"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/tribes.md",
+       "locator": "story/lore/tribes.md",
+       "section": "Naga and the Naga-Kur"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/middle-argonia.md",
+       "locator": "story/lore/regions/middle-argonia.md",
+       "section": "The interior breeds"
+      }
+     ]
+    },
+    {
+     "aspect": "faith",
+     "text": "Sithis, above all. The band has no tree; its dead are sunk in the marsh south-west of Helstrom with a salt-crusted fang to mark the place.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -7,-80"
+      },
+      {
+       "kind": "reasoning",
+       "title": "[Naga Camp] on the map at cell -7,-80",
+       "locator": "[Naga Camp] on the map at cell -7,-80"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/tribes.md",
+       "locator": "story/lore/tribes.md",
+       "section": "Naga and the Naga-Kur"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/middle-argonia.md",
+       "locator": "story/lore/regions/middle-argonia.md",
+       "section": "The interior breeds"
+      }
+     ]
+    },
+    {
+     "aspect": "look",
+     "text": "Hide tents on a salt-crusted mound, bones and feather bundles on poles, smoke from a hidden fire.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -7,-80"
+      },
+      {
+       "kind": "reasoning",
+       "title": "[Naga Camp] on the map at cell -7,-80",
+       "locator": "[Naga Camp] on the map at cell -7,-80"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/tribes.md",
+       "locator": "story/lore/tribes.md",
+       "section": "Naga and the Naga-Kur"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/middle-argonia.md",
+       "locator": "story/lore/regions/middle-argonia.md",
+       "section": "The interior breeds"
+      }
+     ]
+    },
+    {
+     "aspect": "dangers",
+     "text": "Ambushes near Nacydes and the marsh crossing; Murkwood's medusas nearby are a danger to them too.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -7,-80"
+      },
+      {
+       "kind": "reasoning",
+       "title": "[Naga Camp] on the map at cell -7,-80",
+       "locator": "[Naga Camp] on the map at cell -7,-80"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/tribes.md",
+       "locator": "story/lore/tribes.md",
+       "section": "Naga and the Naga-Kur"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/middle-argonia.md",
+       "locator": "story/lore/regions/middle-argonia.md",
+       "section": "The interior breeds"
+      }
+     ]
+    },
+    {
+     "aspect": "hooks",
+     "text": "A feather armband lies in the leader's tent; Nacydes would pay to see the band gone; the one-eyed leader seeks a boat.",
+     "tier": "AGENT_INVENTED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -7,-80"
+      },
+      {
+       "kind": "reasoning",
+       "title": "[Naga Camp] on the map at cell -7,-80",
+       "locator": "[Naga Camp] on the map at cell -7,-80"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/tribes.md",
+       "locator": "story/lore/tribes.md",
+       "section": "Naga and the Naga-Kur"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/middle-argonia.md",
+       "locator": "story/lore/regions/middle-argonia.md",
+       "section": "The interior breeds"
+      }
+     ]
+    }
+   ],
+   "terrain_needs": [
+    {
+     "id": "flat-pad",
+     "radius_m": 30,
+     "why": "the camp's cleared ground"
+    }
+   ]
+  },
+  {
+   "id": "tribal-camp-m13-m77",
+   "name": "Mud-Croak Camp",
+   "status": "inhabited",
+   "held_by": "A band of Paatru",
+   "population": 12,
+   "footprint_radius_m": 30,
+   "siting": "swamp",
+   "danger_band_id": "D4",
+   "importance": 1,
+   "summary": "Mud-Croak Camp is a Paatru camp west of Murkwood.",
+   "lore_page": null,
+   "statement_tier_id": "EXTRAPOLATED",
+   "aliases": [],
+   "notes": [
+    {
+     "aspect": "overview",
+     "text": "Mud-Croak Camp is a Paatru camp on the western edge of Murkwood's reach. The Paatru are toad-like Argonians found only in Middle Argonia; UESP has no page for the camp and the name is ours.",
+     "tier": "AGENT_INVENTED",
+     "sources": [
+      {
+       "kind": "uesp",
+       "title": "Lore:Mud-Croak Camp (no page)",
+       "locator": "UESP search and page lookup, 2026-11-08: no Lore page for Mud-Croak Camp",
+       "url": "https://en.uesp.net/w/index.php?search=Mud-Croak+Camp"
+      },
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -13,-77"
+      },
+      {
+       "kind": "reasoning",
+       "title": "[Paatru Camp] on the map at cell -13,-77",
+       "locator": "[Paatru Camp] on the map at cell -13,-77"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/tribes.md",
+       "locator": "story/lore/tribes.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/middle-argonia.md",
+       "locator": "story/lore/regions/middle-argonia.md",
+       "section": "The interior breeds"
+      }
+     ]
+    },
+    {
+     "aspect": "history",
+     "text": "The Paatru live exclusively in the interior (Lore:Middle Argonia); the camp is one of their lasting grounds, here since before the Empire.",
+     "tier": "CANON_DERIVED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -13,-77"
+      },
+      {
+       "kind": "reasoning",
+       "title": "[Paatru Camp] on the map at cell -13,-77",
+       "locator": "[Paatru Camp] on the map at cell -13,-77"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/tribes.md",
+       "locator": "story/lore/tribes.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/middle-argonia.md",
+       "locator": "story/lore/regions/middle-argonia.md",
+       "section": "The interior breeds"
+      }
+     ]
+    },
+    {
+     "aspect": "present",
+     "text": "About twelve Paatru hold it and kill outsiders on the spot, as canon says they do; they bargain only with Nacydes' chime-makers.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -13,-77"
+      },
+      {
+       "kind": "reasoning",
+       "title": "[Paatru Camp] on the map at cell -13,-77",
+       "locator": "[Paatru Camp] on the map at cell -13,-77"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/tribes.md",
+       "locator": "story/lore/tribes.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/middle-argonia.md",
+       "locator": "story/lore/regions/middle-argonia.md",
+       "section": "The interior breeds"
+      }
+     ]
+    },
+    {
+     "aspect": "people",
+     "text": "About twelve toad-like Paatru, led by a croaking elder; a hostile tribe.",
+     "tier": "AGENT_INVENTED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -13,-77"
+      },
+      {
+       "kind": "reasoning",
+       "title": "[Paatru Camp] on the map at cell -13,-77",
+       "locator": "[Paatru Camp] on the map at cell -13,-77"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/tribes.md",
+       "locator": "story/lore/tribes.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/middle-argonia.md",
+       "locator": "story/lore/regions/middle-argonia.md",
+       "section": "The interior breeds"
+      }
+     ]
+    },
+    {
+     "aspect": "economy",
+     "text": "Hunting, frogspawn and mudpot herbs; they trade with the Chime-Keepers at Nacydes.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -13,-77"
+      },
+      {
+       "kind": "reasoning",
+       "title": "[Paatru Camp] on the map at cell -13,-77",
+       "locator": "[Paatru Camp] on the map at cell -13,-77"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/tribes.md",
+       "locator": "story/lore/tribes.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/middle-argonia.md",
+       "locator": "story/lore/regions/middle-argonia.md",
+       "section": "The interior breeds"
+      }
+     ]
+    },
+    {
+     "aspect": "faith",
+     "text": "The Hist and Sithis, each in a mud-shrine; the Paatru believe the toad-forms of the dead stay in the pools.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -13,-77"
+      },
+      {
+       "kind": "reasoning",
+       "title": "[Paatru Camp] on the map at cell -13,-77",
+       "locator": "[Paatru Camp] on the map at cell -13,-77"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/tribes.md",
+       "locator": "story/lore/tribes.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/middle-argonia.md",
+       "locator": "story/lore/regions/middle-argonia.md",
+       "section": "The interior breeds"
+      }
+     ]
+    },
+    {
+     "aspect": "look",
+     "text": "Domed mud huts at the edge of a mere, croaking at dusk, hung with strings of knuckle-bones.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -13,-77"
+      },
+      {
+       "kind": "reasoning",
+       "title": "[Paatru Camp] on the map at cell -13,-77",
+       "locator": "[Paatru Camp] on the map at cell -13,-77"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/tribes.md",
+       "locator": "story/lore/tribes.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/middle-argonia.md",
+       "locator": "story/lore/regions/middle-argonia.md",
+       "section": "The interior breeds"
+      }
+     ]
+    },
+    {
+     "aspect": "dangers",
+     "text": "Paatru kill unwary outsiders on sight; their mere is deep and poisoned.",
+     "tier": "CANON_DERIVED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -13,-77"
+      },
+      {
+       "kind": "reasoning",
+       "title": "[Paatru Camp] on the map at cell -13,-77",
+       "locator": "[Paatru Camp] on the map at cell -13,-77"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/tribes.md",
+       "locator": "story/lore/tribes.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/middle-argonia.md",
+       "locator": "story/lore/regions/middle-argonia.md",
+       "section": "The interior breeds"
+      }
+     ]
+    },
+    {
+     "aspect": "hooks",
+     "text": "The elder wants a chime tuned and will let one trusted visitor in; a hunter vanished at the mere's edge; a lost caravan's goods rest in the mud.",
+     "tier": "AGENT_INVENTED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -13,-77"
+      },
+      {
+       "kind": "reasoning",
+       "title": "[Paatru Camp] on the map at cell -13,-77",
+       "locator": "[Paatru Camp] on the map at cell -13,-77"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/tribes.md",
+       "locator": "story/lore/tribes.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "story/lore/regions/middle-argonia.md",
+       "locator": "story/lore/regions/middle-argonia.md",
+       "section": "The interior breeds"
+      }
+     ]
+    }
+   ],
+   "terrain_needs": [
+    {
+     "id": "flat-pad",
+     "radius_m": 30,
+     "why": "the camp's cleared ground"
+    }
+   ]
+  },
+  {
+   "id": "tribal-camp-9-m83",
+   "name": "Tumnatu Reed Camp",
+   "status": "inhabited",
+   "held_by": "The Tumnatu hunters",
+   "population": 8,
+   "footprint_radius_m": 30,
+   "siting": "swamp",
+   "danger_band_id": "D2",
+   "importance": 1,
+   "summary": "Tumnatu Reed Camp is a Tumnatu camp on the lake's north shore.",
+   "lore_page": null,
+   "statement_tier_id": "EXTRAPOLATED",
+   "aliases": [],
+   "notes": [
+    {
+     "aspect": "overview",
+     "text": "Tumnatu Reed Camp is a Tumnatu camp on the lake's north shore near Marzai. The map names the tribe; UESP has no page for the Tumnatu or the camp, so the tribe's ways are our extrapolation.",
+     "tier": "AGENT_INVENTED",
+     "sources": [
+      {
+       "kind": "uesp",
+       "title": "Lore:Tumnatu Reed Camp (no page)",
+       "locator": "UESP search and page lookup, 2026-11-08: no Lore page for Tumnatu Reed Camp",
+       "url": "https://en.uesp.net/w/index.php?search=Tumnatu+Reed+Camp"
+      },
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 9,-83"
+      },
+      {
+       "kind": "reasoning",
+       "title": "[Tumnatu Camp] on the map at cell 9,-83",
+       "locator": "[Tumnatu Camp] on the map at cell 9,-83"
+      }
+     ]
+    },
+    {
+     "aspect": "history",
+     "text": "The Tumnatu are named only by Project Tamriel's map; the camp is read as a lake tribe's seasonal ground. Nothing else is recorded.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 9,-83"
+      },
+      {
+       "kind": "reasoning",
+       "title": "[Tumnatu Camp] on the map at cell 9,-83",
+       "locator": "[Tumnatu Camp] on the map at cell 9,-83"
+      }
+     ]
+    },
+    {
+     "aspect": "present",
+     "text": "Eight Tumnatu hold the camp in the fishing season and keep cool peace with Marzai, trading eggs for pots.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 9,-83"
+      },
+      {
+       "kind": "reasoning",
+       "title": "[Tumnatu Camp] on the map at cell 9,-83",
+       "locator": "[Tumnatu Camp] on the map at cell 9,-83"
+      }
+     ]
+    },
+    {
+     "aspect": "people",
+     "text": "About eight Tumnatu: fishers, hunters and a headwoman who bargains openly.",
+     "tier": "AGENT_INVENTED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 9,-83"
+      },
+      {
+       "kind": "reasoning",
+       "title": "[Tumnatu Camp] on the map at cell 9,-83",
+       "locator": "[Tumnatu Camp] on the map at cell 9,-83"
+      }
+     ]
+    },
+    {
+     "aspect": "economy",
+     "text": "Fish, eels and reed mats traded to Marzai and Julo.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 9,-83"
+      },
+      {
+       "kind": "reasoning",
+       "title": "[Tumnatu Camp] on the map at cell 9,-83",
+       "locator": "[Tumnatu Camp] on the map at cell 9,-83"
+      }
+     ]
+    },
+    {
+     "aspect": "faith",
+     "text": "Sithis and the lake; the Tumnatu leave a bowl of eel-fat at the waterline.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 9,-83"
+      },
+      {
+       "kind": "reasoning",
+       "title": "[Tumnatu Camp] on the map at cell 9,-83",
+       "locator": "[Tumnatu Camp] on the map at cell 9,-83"
+      }
+     ]
+    },
+    {
+     "aspect": "look",
+     "text": "Reed shelters on a low bank, fish racks and drag-nets, dugout canoes drawn up.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 9,-83"
+      },
+      {
+       "kind": "reasoning",
+       "title": "[Tumnatu Camp] on the map at cell 9,-83",
+       "locator": "[Tumnatu Camp] on the map at cell 9,-83"
+      }
+     ]
+    },
+    {
+     "aspect": "dangers",
+     "text": "Wary but not hostile to those who come openly; raiders if provoked.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 9,-83"
+      },
+      {
+       "kind": "reasoning",
+       "title": "[Tumnatu Camp] on the map at cell 9,-83",
+       "locator": "[Tumnatu Camp] on the map at cell 9,-83"
+      }
+     ]
+    },
+    {
+     "aspect": "hooks",
+     "text": "A net-line has been cut by someone from Marzai; the headwoman wants a go-between; a pot of strange coin was dredged up.",
+     "tier": "AGENT_INVENTED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 9,-83"
+      },
+      {
+       "kind": "reasoning",
+       "title": "[Tumnatu Camp] on the map at cell 9,-83",
+       "locator": "[Tumnatu Camp] on the map at cell 9,-83"
+      }
+     ]
+    }
+   ],
+   "terrain_needs": [
+    {
+     "id": "flat-pad",
+     "radius_m": 30,
+     "why": "the camp's cleared ground"
+    }
+   ]
+  },
+  {
+   "id": "tribal-camp-4-m91",
+   "name": "Tumnatu Cattail Camp",
+   "status": "inhabited",
+   "held_by": "The Tumnatu hunters",
+   "population": 8,
+   "footprint_radius_m": 30,
+   "siting": "swamp",
+   "danger_band_id": "D2",
+   "importance": 1,
+   "summary": "Tumnatu Cattail Camp is a Tumnatu camp in the Ultherus swamp near Korydon.",
+   "lore_page": null,
+   "statement_tier_id": "EXTRAPOLATED",
+   "aliases": [],
+   "notes": [
+    {
+     "aspect": "overview",
+     "text": "Tumnatu Cattail Camp is a Tumnatu camp on the northern edge of Korydon's ring of water. The map names the tribe; UESP has no page for it, so the tribe's ways are our extrapolation.",
+     "tier": "AGENT_INVENTED",
+     "sources": [
+      {
+       "kind": "uesp",
+       "title": "Lore:Tumnatu Cattail Camp (no page)",
+       "locator": "UESP search and page lookup, 2026-11-08: no Lore page for Tumnatu Cattail Camp",
+       "url": "https://en.uesp.net/w/index.php?search=Tumnatu+Cattail+Camp"
+      },
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 4,-91"
+      },
+      {
+       "kind": "reasoning",
+       "title": "[Tumnatu Camp] on the map at cell 4,-91",
+       "locator": "[Tumnatu Camp] on the map at cell 4,-91"
+      }
+     ]
+    },
+    {
+     "aspect": "history",
+     "text": "Named only by the map. Read as a swamp-hunters' ground near the dragon's-tongue beds, older than the resettled towns.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 4,-91"
+      },
+      {
+       "kind": "reasoning",
+       "title": "[Tumnatu Camp] on the map at cell 4,-91",
+       "locator": "[Tumnatu Camp] on the map at cell 4,-91"
+      }
+     ]
+    },
+    {
+     "aspect": "present",
+     "text": "Eight Tumnatu hunt the swamp and bargain with Korydon's guild elders for chimes.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 4,-91"
+      },
+      {
+       "kind": "reasoning",
+       "title": "[Tumnatu Camp] on the map at cell 4,-91",
+       "locator": "[Tumnatu Camp] on the map at cell 4,-91"
+      }
+     ]
+    },
+    {
+     "aspect": "people",
+     "text": "About eight Tumnatu: hunters, a herb-wife and a boy who knows the best channels.",
+     "tier": "AGENT_INVENTED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 4,-91"
+      },
+      {
+       "kind": "reasoning",
+       "title": "[Tumnatu Camp] on the map at cell 4,-91",
+       "locator": "[Tumnatu Camp] on the map at cell 4,-91"
+      }
+     ]
+    },
+    {
+     "aspect": "economy",
+     "text": "Herbs including dragon's-tongue, pelts and fish; they trade with Korydon.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 4,-91"
+      },
+      {
+       "kind": "reasoning",
+       "title": "[Tumnatu Camp] on the map at cell 4,-91",
+       "locator": "[Tumnatu Camp] on the map at cell 4,-91"
+      }
+     ]
+    },
+    {
+     "aspect": "faith",
+     "text": "Sithis and the swamp; each hunter wears a tuft of swamp-moss for luck.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 4,-91"
+      },
+      {
+       "kind": "reasoning",
+       "title": "[Tumnatu Camp] on the map at cell 4,-91",
+       "locator": "[Tumnatu Camp] on the map at cell 4,-91"
+      }
+     ]
+    },
+    {
+     "aspect": "look",
+     "text": "Reed shelters on a hummock among cattails, herb bundles on poles and a smoke fire.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 4,-91"
+      },
+      {
+       "kind": "reasoning",
+       "title": "[Tumnatu Camp] on the map at cell 4,-91",
+       "locator": "[Tumnatu Camp] on the map at cell 4,-91"
+      }
+     ]
+    },
+    {
+     "aspect": "dangers",
+     "text": "Peaceable with those who come openly; dragon's-tongue beds around the camp can kill the careless.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 4,-91"
+      },
+      {
+       "kind": "reasoning",
+       "title": "[Tumnatu Camp] on the map at cell 4,-91",
+       "locator": "[Tumnatu Camp] on the map at cell 4,-91"
+      }
+     ]
+    },
+    {
+     "aspect": "hooks",
+     "text": "The herb-wife needs help to harvest dragon's-tongue; Korydon's elders accuse the camp of stealing a chime.",
+     "tier": "AGENT_INVENTED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell 4,-91"
+      },
+      {
+       "kind": "reasoning",
+       "title": "[Tumnatu Camp] on the map at cell 4,-91",
+       "locator": "[Tumnatu Camp] on the map at cell 4,-91"
+      }
+     ]
+    }
+   ],
+   "terrain_needs": [
+    {
+     "id": "flat-pad",
+     "radius_m": 30,
+     "why": "the camp's cleared ground"
+    }
+   ]
+  },
+  {
+   "id": "peak-m4-m90",
+   "name": "Aunike Crown",
+   "status": "seasonal",
+   "held_by": "Chime-Keeper lookout parties",
+   "population": 0,
+   "footprint_radius_m": 30,
+   "siting": "hilltop",
+   "danger_band_id": "D2",
+   "importance": 1,
+   "summary": "Aunike Crown is the high point of the Aunike Ridge, above Tydeos, from which the marsh can be seen for hours.",
+   "lore_page": null,
+   "statement_tier_id": "AGENT_INVENTED",
+   "aliases": [],
+   "notes": [
+    {
+     "aspect": "overview",
+     "text": "Aunike Crown is the high point of the Aunike Ridge, above Tydeos, from which the marsh can be seen for hours. The map marks it only as a peak; UESP has no page for it, and the name is ours.",
+     "tier": "AGENT_INVENTED",
+     "sources": [
+      {
+       "kind": "uesp",
+       "title": "Lore:Aunike Crown (no page)",
+       "locator": "UESP search and page lookup, 2026-11-08: no Lore page for Aunike Crown",
+       "url": "https://en.uesp.net/w/index.php?search=Aunike+Crown"
+      },
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -4,-90"
+      },
+      {
+       "kind": "reasoning",
+       "title": "a [Peak] landmark on the map, a high point of the Aunike Ridge",
+       "locator": "a [Peak] landmark on the map, a high point of the Aunike Ridge"
+      }
+     ]
+    },
+    {
+     "aspect": "history",
+     "text": "A lookout for the Chime-Keepers of Tydeos, whose watchfire burns on its top.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -4,-90"
+      },
+      {
+       "kind": "reasoning",
+       "title": "a [Peak] landmark on the map, a high point of the Aunike Ridge",
+       "locator": "a [Peak] landmark on the map, a high point of the Aunike Ridge"
+      }
+     ]
+    },
+    {
+     "aspect": "present",
+     "text": "Tydeos' watchfire-keeper climbs it each dusk; otherwise it is empty.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -4,-90"
+      },
+      {
+       "kind": "reasoning",
+       "title": "a [Peak] landmark on the map, a high point of the Aunike Ridge",
+       "locator": "a [Peak] landmark on the map, a high point of the Aunike Ridge"
+      }
+     ]
+    },
+    {
+     "aspect": "people",
+     "text": "No one lives here; hunters pass.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -4,-90"
+      },
+      {
+       "kind": "reasoning",
+       "title": "a [Peak] landmark on the map, a high point of the Aunike Ridge",
+       "locator": "a [Peak] landmark on the map, a high point of the Aunike Ridge"
+      }
+     ]
+    },
+    {
+     "aspect": "economy",
+     "text": "Nothing is made here; the watchfire basket is the only work.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -4,-90"
+      },
+      {
+       "kind": "reasoning",
+       "title": "a [Peak] landmark on the map, a high point of the Aunike Ridge",
+       "locator": "a [Peak] landmark on the map, a high point of the Aunike Ridge"
+      }
+     ]
+    },
+    {
+     "aspect": "faith",
+     "text": "The watchfire is a small offering to the Hist.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -4,-90"
+      },
+      {
+       "kind": "reasoning",
+       "title": "a [Peak] landmark on the map, a high point of the Aunike Ridge",
+       "locator": "a [Peak] landmark on the map, a high point of the Aunike Ridge"
+      }
+     ]
+    },
+    {
+     "aspect": "look",
+     "text": "A bare rock summit above the marsh with a fire-basket, a few stunted trees and a view of lakes.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -4,-90"
+      },
+      {
+       "kind": "reasoning",
+       "title": "a [Peak] landmark on the map, a high point of the Aunike Ridge",
+       "locator": "a [Peak] landmark on the map, a high point of the Aunike Ridge"
+      }
+     ]
+    },
+    {
+     "aspect": "dangers",
+     "text": "Falls, ridge cats and Naga parties on the summit path.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -4,-90"
+      },
+      {
+       "kind": "reasoning",
+       "title": "a [Peak] landmark on the map, a high point of the Aunike Ridge",
+       "locator": "a [Peak] landmark on the map, a high point of the Aunike Ridge"
+      }
+     ]
+    },
+    {
+     "aspect": "hooks",
+     "text": "The summit holds a Kothringi cairn bead-cache; a stranger was found dead beside the fire.",
+     "tier": "AGENT_INVENTED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -4,-90"
+      },
+      {
+       "kind": "reasoning",
+       "title": "a [Peak] landmark on the map, a high point of the Aunike Ridge",
+       "locator": "a [Peak] landmark on the map, a high point of the Aunike Ridge"
+      }
+     ]
+    }
+   ],
+   "terrain_needs": [
+    {
+     "id": "rise",
+     "radius_m": 30,
+     "why": "the summit rises above the marsh"
+    }
+   ]
+  },
+  {
+   "id": "peak-m11-m84",
+   "name": "Nacydes Watch",
+   "status": "seasonal",
+   "held_by": "Chime-Keeper lookout parties",
+   "population": 0,
+   "footprint_radius_m": 30,
+   "siting": "hilltop",
+   "danger_band_id": "D2",
+   "importance": 1,
+   "summary": "Nacydes Watch is a ridge peak on the west of Aunike Ridge, above Nacydes, overlooking Paatru and Naga ground.",
+   "lore_page": null,
+   "statement_tier_id": "AGENT_INVENTED",
+   "aliases": [],
+   "notes": [
+    {
+     "aspect": "overview",
+     "text": "Nacydes Watch is a ridge peak on the west of Aunike Ridge, above Nacydes, overlooking Paatru and Naga ground. The map marks it only as a peak; UESP has no page for it, and the name is ours.",
+     "tier": "AGENT_INVENTED",
+     "sources": [
+      {
+       "kind": "uesp",
+       "title": "Lore:Nacydes Watch (no page)",
+       "locator": "UESP search and page lookup, 2026-11-08: no Lore page for Nacydes Watch",
+       "url": "https://en.uesp.net/w/index.php?search=Nacydes+Watch"
+      },
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -11,-84"
+      },
+      {
+       "kind": "reasoning",
+       "title": "a [Peak] landmark on the map, a high point of the Aunike Ridge",
+       "locator": "a [Peak] landmark on the map, a high point of the Aunike Ridge"
+      }
+     ]
+    },
+    {
+     "aspect": "history",
+     "text": "A lookout kept by the people of Nacydes, who post a watch here when raiders move.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -11,-84"
+      },
+      {
+       "kind": "reasoning",
+       "title": "a [Peak] landmark on the map, a high point of the Aunike Ridge",
+       "locator": "a [Peak] landmark on the map, a high point of the Aunike Ridge"
+      }
+     ]
+    },
+    {
+     "aspect": "present",
+     "text": "Nacydes keeps a watch on the summit when the Paatru or the Naga stir.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -11,-84"
+      },
+      {
+       "kind": "reasoning",
+       "title": "a [Peak] landmark on the map, a high point of the Aunike Ridge",
+       "locator": "a [Peak] landmark on the map, a high point of the Aunike Ridge"
+      }
+     ]
+    },
+    {
+     "aspect": "people",
+     "text": "No one lives here; a sentry sits in the hut when needed.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -11,-84"
+      },
+      {
+       "kind": "reasoning",
+       "title": "a [Peak] landmark on the map, a high point of the Aunike Ridge",
+       "locator": "a [Peak] landmark on the map, a high point of the Aunike Ridge"
+      }
+     ]
+    },
+    {
+     "aspect": "economy",
+     "text": "Nothing is made here; it is a post.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -11,-84"
+      },
+      {
+       "kind": "reasoning",
+       "title": "a [Peak] landmark on the map, a high point of the Aunike Ridge",
+       "locator": "a [Peak] landmark on the map, a high point of the Aunike Ridge"
+      }
+     ]
+    },
+    {
+     "aspect": "faith",
+     "text": "A small chime hangs at the top for the wind's blessing.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -11,-84"
+      },
+      {
+       "kind": "reasoning",
+       "title": "a [Peak] landmark on the map, a high point of the Aunike Ridge",
+       "locator": "a [Peak] landmark on the map, a high point of the Aunike Ridge"
+      }
+     ]
+    },
+    {
+     "aspect": "look",
+     "text": "A rocky summit with a hut and a chime, with wide views over reed and mere.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -11,-84"
+      },
+      {
+       "kind": "reasoning",
+       "title": "a [Peak] landmark on the map, a high point of the Aunike Ridge",
+       "locator": "a [Peak] landmark on the map, a high point of the Aunike Ridge"
+      }
+     ]
+    },
+    {
+     "aspect": "dangers",
+     "text": "Raiders, falls, ridge cats.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -11,-84"
+      },
+      {
+       "kind": "reasoning",
+       "title": "a [Peak] landmark on the map, a high point of the Aunike Ridge",
+       "locator": "a [Peak] landmark on the map, a high point of the Aunike Ridge"
+      }
+     ]
+    },
+    {
+     "aspect": "hooks",
+     "text": "The sentry saw a light in the Paatru camp that is not a fire; a lost scout's pack lies in a crevice.",
+     "tier": "AGENT_INVENTED",
+     "sources": [
+      {
+       "kind": "map",
+       "title": "PT3-map-Black_Marsh.png",
+       "locator": "cell -11,-84"
+      },
+      {
+       "kind": "reasoning",
+       "title": "a [Peak] landmark on the map, a high point of the Aunike Ridge",
+       "locator": "a [Peak] landmark on the map, a high point of the Aunike Ridge"
+      }
+     ]
+    }
+   ],
+   "terrain_needs": [
+    {
+     "id": "rise",
+     "radius_m": 30,
+     "why": "the summit rises above the marsh"
+    }
+   ]
+  }
+ ]
+}

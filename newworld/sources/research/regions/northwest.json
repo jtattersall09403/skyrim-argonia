@@ -1,0 +1,800 @@
+{
+ "records": [
+  {
+   "id": "valley-of-storms",
+   "summary": "The Shadowfen's northern frontier country around Stormhold: a rolling, ravine-cut plain of mounds, reed beds and river branches beside the Morrowind border.",
+   "landform": "rolling river plain of mounds and ravines",
+   "elevation_floor_m": 6.0,
+   "elevation_summit_m": 38.0,
+   "roughness_m": 2.8,
+   "cliff_share": 0.12,
+   "wetness": 0.6,
+   "biome": "fresh marsh and sedge plain",
+   "climate": "humid; heavy summer rain; monsoon closes the causeways",
+   "culture_id": "stone-grey",
+   "danger_band_id": "D2",
+   "statement_tier_id": "EXTRAPOLATED",
+   "notes": [
+    {
+     "aspect": "overview",
+     "text": "UESP has no page for this region name (searched 2026-11-08); it is a Project Tamriel region. It holds Stormhold, the northern gate, with its customs, its forts and its farms.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "extrapolation",
+       "title": "argonia-4e201-state.md",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "stormhold.md",
+       "locator": "story/lore/stormhold.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "shadowfen.md",
+       "locator": "story/lore/regions/shadowfen.md"
+      }
+     ]
+    },
+    {
+     "aspect": "history",
+     "text": "Barsaebic Ayleids built Silyanorn here; the Dunmer made the area the foothold of their slave trade; the Pact made Stormhold its capital; Umbriel overran it in 4E 48 with light damage.",
+     "tier": "CANON_EXPLICIT",
+     "sources": [
+      {
+       "kind": "uesp",
+       "title": "Lore:Stormhold",
+       "locator": "Lore:Stormhold",
+       "url": "https://en.uesp.net/wiki/Lore:Stormhold"
+      },
+      {
+       "kind": "dossier",
+       "title": "stormhold.md",
+       "locator": "story/lore/stormhold.md"
+      }
+     ]
+    },
+    {
+     "aspect": "present",
+     "text": "A frontier of causeway farms, Archwarden forts and a Vicecanon-run city, still the province's working border with Morrowind.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "extrapolation",
+       "title": "argonia-4e201-state.md",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "stormhold.md",
+       "locator": "story/lore/stormhold.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "shadowfen.md",
+       "locator": "story/lore/regions/shadowfen.md"
+      }
+     ]
+    },
+    {
+     "aspect": "people",
+     "text": "Argonians and the oldest Dunmer minority in the province, with Veesa-Teeleel reed-wardens to the west.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "extrapolation",
+       "title": "argonia-4e201-state.md",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "stormhold.md",
+       "locator": "story/lore/stormhold.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "shadowfen.md",
+       "locator": "story/lore/regions/shadowfen.md"
+      }
+     ]
+    },
+    {
+     "aspect": "economy",
+     "text": "River and road trade with Morrowind and Alten Corimont, saltrice, crystals and reed.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "extrapolation",
+       "title": "argonia-4e201-state.md",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "stormhold.md",
+       "locator": "story/lore/stormhold.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "shadowfen.md",
+       "locator": "story/lore/regions/shadowfen.md"
+      }
+     ]
+    },
+    {
+     "aspect": "faith",
+     "text": "The town-square Hist, the grave-stake tradition and Dunmer ancestor stones.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "extrapolation",
+       "title": "argonia-4e201-state.md",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "stormhold.md",
+       "locator": "story/lore/stormhold.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "shadowfen.md",
+       "locator": "story/lore/regions/shadowfen.md"
+      }
+     ]
+    },
+    {
+     "aspect": "look",
+     "text": "Stone-footed farmsteads and mounds linked by stone causeways, the river and its branches, and the grey Imperial forts.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "extrapolation",
+       "title": "argonia-4e201-state.md",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "stormhold.md",
+       "locator": "story/lore/stormhold.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "shadowfen.md",
+       "locator": "story/lore/regions/shadowfen.md"
+      }
+     ]
+    },
+    {
+     "aspect": "dangers",
+     "text": "D2 away from the roads: crocodiles, Naga bands and the haunted ruins; D1 on the northern road.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "extrapolation",
+       "title": "argonia-4e201-state.md",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "stormhold.md",
+       "locator": "story/lore/stormhold.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "shadowfen.md",
+       "locator": "story/lore/regions/shadowfen.md"
+      }
+     ]
+    },
+    {
+     "aspect": "landscape",
+     "text": "Stormhold stands on a mountainside and ravine-cut mounds; the rest is rolling marsh plain rising to the Morrowind border.",
+     "tier": "CANON_EXPLICIT",
+     "sources": [
+      {
+       "kind": "uesp",
+       "title": "Lore:Stormhold",
+       "locator": "Lore:Stormhold",
+       "url": "https://en.uesp.net/wiki/Lore:Stormhold",
+       "section": "Layout & Geography"
+      }
+     ]
+    },
+    {
+     "aspect": "ecology",
+     "text": "Crocodiles in the ravines, fleshflies, giant snakes and wamasu in the deeper water.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "extrapolation",
+       "title": "argonia-4e201-state.md",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "stormhold.md",
+       "locator": "story/lore/stormhold.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "shadowfen.md",
+       "locator": "story/lore/regions/shadowfen.md"
+      }
+     ]
+    },
+    {
+     "aspect": "climate",
+     "text": "Humid and warm; monsoon floods close the causeways for days at a time.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "extrapolation",
+       "title": "argonia-4e201-state.md",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "stormhold.md",
+       "locator": "story/lore/stormhold.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "shadowfen.md",
+       "locator": "story/lore/regions/shadowfen.md"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "barsaebica",
+   "summary": "The ruin-studded high ground west of Stormhold, the Barsaebic Ayleids' old country, now home to the reed-wardens of Jal-Veesa and the frontier at Slough Point.",
+   "landform": "hummocky marsh plain with sunken ruin mounds",
+   "elevation_floor_m": 5.0,
+   "elevation_summit_m": 26.0,
+   "roughness_m": 1.6,
+   "cliff_share": 0.06,
+   "wetness": 0.78,
+   "biome": "fen and sedge",
+   "climate": "humid and warm; heavy rain; tides reach the western rivers",
+   "culture_id": "jade",
+   "danger_band_id": "D3",
+   "statement_tier_id": "EXTRAPOLATED",
+   "notes": [
+    {
+     "aspect": "overview",
+     "text": "UESP has no page for this region name (searched 2026-11-08); it is a Project Tamriel region. It is named for the Barsaebic Ayleids; it holds Loriasel, Gandranen, Gemin and the western road to Slough Point.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "lost-peoples.md",
+       "locator": "story/lore/topics/lost-peoples.md"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "argonia-4e201-state.md",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "shadowfen.md",
+       "locator": "story/lore/regions/shadowfen.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "secondary-settlements.md",
+       "locator": "story/lore/regions/secondary-settlements.md"
+      }
+     ]
+    },
+    {
+     "aspect": "history",
+     "text": "Barsaebic Ayleids were driven east after 1E 198 and occupied north-eastern Black Marsh and parts of Blackwood, founding Silyanorn, Twyllbek, Archon, Thorn, Loriasel and Gandranen.",
+     "tier": "CANON_EXPLICIT",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "lost-peoples.md",
+       "locator": "story/lore/topics/lost-peoples.md"
+      },
+      {
+       "kind": "uesp",
+       "title": "Lore:Loriasel",
+       "locator": "Lore:Loriasel",
+       "url": "https://en.uesp.net/wiki/Lore:Loriasel"
+      }
+     ]
+    },
+    {
+     "aspect": "present",
+     "text": "A country of ruins, weirs and one frontier village; the Veesa-Teeleel guard the ruins as sick ground.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "lost-peoples.md",
+       "locator": "story/lore/topics/lost-peoples.md"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "argonia-4e201-state.md",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "shadowfen.md",
+       "locator": "story/lore/regions/shadowfen.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "secondary-settlements.md",
+       "locator": "story/lore/regions/secondary-settlements.md"
+      }
+     ]
+    },
+    {
+     "aspect": "people",
+     "text": "Veesa-Teeleel reed-wardens, Naga bands and the Lukiul of Slough Point.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "lost-peoples.md",
+       "locator": "story/lore/topics/lost-peoples.md"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "argonia-4e201-state.md",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "shadowfen.md",
+       "locator": "story/lore/regions/shadowfen.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "secondary-settlements.md",
+       "locator": "story/lore/regions/secondary-settlements.md"
+      }
+     ]
+    },
+    {
+     "aspect": "economy",
+     "text": "Reed, fish, tolls and ruin-scavenging.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "lost-peoples.md",
+       "locator": "story/lore/topics/lost-peoples.md"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "argonia-4e201-state.md",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "shadowfen.md",
+       "locator": "story/lore/regions/shadowfen.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "secondary-settlements.md",
+       "locator": "story/lore/regions/secondary-settlements.md"
+      }
+     ]
+    },
+    {
+     "aspect": "faith",
+     "text": "The Hist pool at Jal-Veesa; Ayleid shrines gone to ruin.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "lost-peoples.md",
+       "locator": "story/lore/topics/lost-peoples.md"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "argonia-4e201-state.md",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "shadowfen.md",
+       "locator": "story/lore/regions/shadowfen.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "secondary-settlements.md",
+       "locator": "story/lore/regions/secondary-settlements.md"
+      }
+     ]
+    },
+    {
+     "aspect": "look",
+     "text": "White Ayleid stone in reed beds; stilt huts and weirs; a long road west.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "lost-peoples.md",
+       "locator": "story/lore/topics/lost-peoples.md"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "argonia-4e201-state.md",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "shadowfen.md",
+       "locator": "story/lore/regions/shadowfen.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "secondary-settlements.md",
+       "locator": "story/lore/regions/secondary-settlements.md"
+      }
+     ]
+    },
+    {
+     "aspect": "dangers",
+     "text": "D3 in the ruins and the marsh between them; D1 on the road.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "lost-peoples.md",
+       "locator": "story/lore/topics/lost-peoples.md"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "argonia-4e201-state.md",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "shadowfen.md",
+       "locator": "story/lore/regions/shadowfen.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "secondary-settlements.md",
+       "locator": "story/lore/regions/secondary-settlements.md"
+      }
+     ]
+    },
+    {
+     "aspect": "landscape",
+     "text": "A hummocky plain with ruins on mounds and hills.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "lost-peoples.md",
+       "locator": "story/lore/topics/lost-peoples.md"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "argonia-4e201-state.md",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "shadowfen.md",
+       "locator": "story/lore/regions/shadowfen.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "secondary-settlements.md",
+       "locator": "story/lore/regions/secondary-settlements.md"
+      }
+     ]
+    },
+    {
+     "aspect": "ecology",
+     "text": "Lamias in Loriasel, giant snakes, wamasu and fleshflies.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "lost-peoples.md",
+       "locator": "story/lore/topics/lost-peoples.md"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "argonia-4e201-state.md",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "shadowfen.md",
+       "locator": "story/lore/regions/shadowfen.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "secondary-settlements.md",
+       "locator": "story/lore/regions/secondary-settlements.md"
+      }
+     ]
+    },
+    {
+     "aspect": "climate",
+     "text": "Humid; tidal reach on the western rivers.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "lost-peoples.md",
+       "locator": "story/lore/topics/lost-peoples.md"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "argonia-4e201-state.md",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "shadowfen.md",
+       "locator": "story/lore/regions/shadowfen.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "secondary-settlements.md",
+       "locator": "story/lore/regions/secondary-settlements.md"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "blackwood",
+   "summary": "The western frontier of Black Marsh, the Blackwood end of the Gideon country: hills and bog with a few villages, Hutan-Tzel outposts and the dead Kothringi towns.",
+   "landform": "bog and low hills",
+   "elevation_floor_m": 4.0,
+   "elevation_summit_m": 45.0,
+   "roughness_m": 3.0,
+   "cliff_share": 0.1,
+   "wetness": 0.82,
+   "biome": "bog and low forest",
+   "climate": "humid; monsoon closes the western roads",
+   "culture_id": "pale-green",
+   "danger_band_id": "D3",
+   "statement_tier_id": "EXTRAPOLATED",
+   "notes": [
+    {
+     "aspect": "overview",
+     "text": "UESP has no page for this region name (searched 2026-11-08); it is a Project Tamriel region. It is the far south-west of our batch, the Argonian side of Blackwood.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "blackwood-and-gloommire.md",
+       "locator": "story/lore/regions/blackwood-and-gloommire.md"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "argonia-4e201-state.md",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "lost-peoples.md",
+       "locator": "story/lore/topics/lost-peoples.md"
+      }
+     ]
+    },
+    {
+     "aspect": "history",
+     "text": "Kothringi homeland in large numbers; the Knahaten Flu emptied it in 2E 560; the Maran mission died at Umpholo in the 3E.",
+     "tier": "CANON_EXPLICIT",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "lost-peoples.md",
+       "locator": "story/lore/topics/lost-peoples.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "blackwood-and-gloommire.md",
+       "locator": "story/lore/regions/blackwood-and-gloommire.md"
+      }
+     ]
+    },
+    {
+     "aspect": "present",
+     "text": "Dead towns, a few river villages and Hutan-Tzel outposts; Sul-Xan raiders are feared.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "blackwood-and-gloommire.md",
+       "locator": "story/lore/regions/blackwood-and-gloommire.md"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "argonia-4e201-state.md",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "lost-peoples.md",
+       "locator": "story/lore/topics/lost-peoples.md"
+      }
+     ]
+    },
+    {
+     "aspect": "people",
+     "text": "Lukiul, Naka-Desh and Hutan-Tzel, with Nibenese-descended families.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "blackwood-and-gloommire.md",
+       "locator": "story/lore/regions/blackwood-and-gloommire.md"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "argonia-4e201-state.md",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "lost-peoples.md",
+       "locator": "story/lore/topics/lost-peoples.md"
+      }
+     ]
+    },
+    {
+     "aspect": "economy",
+     "text": "Fish, clay, hunting, herbs and the Blackwood Road trade.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "blackwood-and-gloommire.md",
+       "locator": "story/lore/regions/blackwood-and-gloommire.md"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "argonia-4e201-state.md",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "lost-peoples.md",
+       "locator": "story/lore/topics/lost-peoples.md"
+      }
+     ]
+    },
+    {
+     "aspect": "faith",
+     "text": "Dibella and Z'en remembered; Hist shoots; the Sul-Xan's Dagon heresy.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "blackwood-and-gloommire.md",
+       "locator": "story/lore/regions/blackwood-and-gloommire.md"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "argonia-4e201-state.md",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "lost-peoples.md",
+       "locator": "story/lore/topics/lost-peoples.md"
+      }
+     ]
+    },
+    {
+     "aspect": "look",
+     "text": "Flooded hillscape, bog and cairn-fields.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "blackwood-and-gloommire.md",
+       "locator": "story/lore/regions/blackwood-and-gloommire.md"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "argonia-4e201-state.md",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "lost-peoples.md",
+       "locator": "story/lore/topics/lost-peoples.md"
+      }
+     ]
+    },
+    {
+     "aspect": "dangers",
+     "text": "D3: Sul-Xan raiders, death hoppers, hackwings.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "blackwood-and-gloommire.md",
+       "locator": "story/lore/regions/blackwood-and-gloommire.md"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "argonia-4e201-state.md",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "lost-peoples.md",
+       "locator": "story/lore/topics/lost-peoples.md"
+      }
+     ]
+    },
+    {
+     "aspect": "landscape",
+     "text": "Flooded hillscape with steep, lightly forested hills.",
+     "tier": "CANON_EXPLICIT",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "blackwood-and-gloommire.md",
+       "locator": "story/lore/regions/blackwood-and-gloommire.md"
+      }
+     ]
+    },
+    {
+     "aspect": "ecology",
+     "text": "Death hoppers, hackwings, fleshflies and marsh giants.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "blackwood-and-gloommire.md",
+       "locator": "story/lore/regions/blackwood-and-gloommire.md"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "argonia-4e201-state.md",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "lost-peoples.md",
+       "locator": "story/lore/topics/lost-peoples.md"
+      }
+     ]
+    },
+    {
+     "aspect": "climate",
+     "text": "Humid; roads closed in the monsoon.",
+     "tier": "EXTRAPOLATED",
+     "sources": [
+      {
+       "kind": "dossier",
+       "title": "blackwood-and-gloommire.md",
+       "locator": "story/lore/regions/blackwood-and-gloommire.md"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "argonia-4e201-state.md",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      },
+      {
+       "kind": "dossier",
+       "title": "lost-peoples.md",
+       "locator": "story/lore/topics/lost-peoples.md"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
