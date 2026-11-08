@@ -9,7 +9,8 @@ How a pixel is read:
   land about 50 brighter in red than water under it: each square is split by its own threshold (Otsu) on
   s = 0.94 r + 0.34 g, the direction from base water to base land;
 - marks drawn over the ground (labels, icons, glyphs, roads, borders, the grid's highlighted bands are ground) are
-  removed and take the class of the nearest ground pixel.
+  removed and take the class of the nearest ground pixel; so does the whole disc of every settlement glyph (from
+  out/newworld/symbols.json when it exists), whose fill and rings are no ground at all.
 
     python3 -m tools.newworld.raster      # water.png, foreign.png, hatched.png, preview.png
 """
@@ -112,17 +113,48 @@ def classify(a: np.ndarray) -> dict[str, np.ndarray]:
             big = (slice(max(sl[0].start - 4, 0), sl[0].stop + 4), slice(max(sl[1].start - 4, 0), sl[1].stop + 4))
             ring = ndi.binary_dilation(lab[big] == i, iterations=3) & ~(lab[big] == i) & ~mk[big]
             sub_water[inside] = water[big][ring].mean() > 0.5 if ring.any() else False
+        # water inside a square always enters from outside it (a river, the coast): a blob that never reaches the
+        # square's edge is a shading artefact of the split, so it is land
+        blobs, nb = ndi.label(sub_water & (lab[sl] == i))
+        if nb:
+            edge = set(np.unique(np.concatenate([blobs[0], blobs[-1], blobs[:, 0], blobs[:, -1]]))) - {0}
+            for b in set(range(1, nb + 1)) - edge:
+                sub_water[blobs == b] = False
         water[sl] = sub_water
         tan[sl] = np.where(inside, ~sub_water, tan[sl])
         plain[sl] |= inside
     known = (plain | sq) & ~mk
+    # a settlement glyph's own disc carries no ground: clear it, so it takes the ground round it (a river under a
+    # glyph carries straight through from both sides)
+    syms = f.OUT / "symbols.json"
+    if syms.exists():
+        import json
+        for g in json.loads(syms.read_text()):
+            if g.get("glyph") != "settlement":
+                continue
+            rad = max(8, int(g.get("glyph_px") or 16) // 2 + 3)
+            x, y = int(round(g["px"])), int(round(g["py"]))
+            yy, xx = np.ogrid[-rad:rad + 1, -rad:rad + 1]
+            disc = xx * xx + yy * yy <= rad * rad
+            sl = (slice(y - rad, y + rad + 1), slice(x - rad, x + rad + 1))
+            if known[sl].shape == disc.shape:
+                known[sl] &= ~disc
     cls = np.zeros(a.shape[:2], np.uint8)        # 0 unknown, 1 water, 2 province land, 3 foreign land
     cls[known & water] = 1
     cls[known & ~water & ~grey] = 2
     cls[known & grey] = 3
     # unknown pixels take the class of the nearest known pixel
     idx = ndi.distance_transform_edt(cls == 0, return_distances=False, return_indices=True)
+    filled = cls == 0
     cls = cls[idx[0], idx[1]]
+    # the fill copies the nearest ground, so beside a river it can draw streaks of water into a glyph or label:
+    # a small water blob made mostly of filled pixels (the map never showed it) is land
+    blobs, nb = ndi.label(cls == 1)
+    if nb:
+        size = ndi.sum(np.ones_like(blobs), blobs, index=np.arange(1, nb + 1))
+        fill_share = ndi.mean(filled, blobs, index=np.arange(1, nb + 1))
+        bad = np.flatnonzero((size < 600) & (fill_share > 0.6)) + 1
+        cls[np.isin(blobs, bad)] = 2
     hatched = hatch_mask(a, cls) & ~scope
     return {"water": cls == 1, "land": cls == 2, "foreign": cls == 3, "hatched": hatched}
 

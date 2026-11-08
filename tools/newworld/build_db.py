@@ -300,6 +300,7 @@ def build() -> db.World:
 
     roads_and_borders(w)
     danger.assign(w)
+    terrain_and_water(w)
     w.insert_many("source", sorted(sources.values(), key=lambda r: r["id"]))
     w.save()
     return w
@@ -371,6 +372,27 @@ def roads_and_borders(w: db.World) -> None:
                     wx, wy = f.px_to_world(x, y)
                     w.insert("border_vertex", border_id=bid, part=k, seq=i, px=round(x, 2), py=round(y, 2),
                              world_x=round(wx, 1), world_y=round(wy, 1))
+
+
+def terrain_and_water(w: db.World) -> None:
+    """The terrain build's record and the water bodies (tools/newworld/terrain.py's outputs), with the owner's
+    overrides of a body's kind, name and flow (newworld/sources/water_overrides.json) on top."""
+    tb = f.OUT / "terrain" / "build.json"
+    if tb.exists():
+        b = json.loads(tb.read_text())
+        w.insert("terrain_build", **{k: b[k] for k in ("id", "water_level_units", "sample_units", "width", "height",
+                                                      "origin_world_x", "origin_world_y", "files", "sha256", "about")})
+    wb = f.OUT / "water_bodies.json"
+    if not wb.exists():
+        return
+    ov_path = SRC / "water_overrides.json"
+    ov = json.loads(ov_path.read_text()) if ov_path.exists() else {}
+    for r in json.loads(wb.read_text()):
+        o = ov.get(r["id"], {})
+        w.insert("water_body", id=r["id"], water_kind_id=o.get("water_kind_id", r["water_kind_id"]),
+                 name=o.get("name"), area_m2=r["area_m2"], label_px=r["label_px"], label_py=r["label_py"],
+                 flows=bool(o.get("flows", r["flows"])), flow_toward_deg=o.get("flow_toward_deg", r.get("flow_deg")),
+                 flow_note=r.get("flow_note"), set_by="owner" if o else "derived", why=r["why"])
 
 
 def main() -> None:

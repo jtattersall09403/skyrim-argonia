@@ -47,10 +47,9 @@ def terrain_image() -> tuple[Image.Image, str]:
     foreign = np.asarray(Image.open(f.OUT / "raster" / "foreign.png").convert("L").resize((w, h))) > 127
     if tb.exists():
         b = json.loads(tb.read_text())
-        hm = np.load(f.OUT / "terrain" / b.get("height_file", "height.npy")).astype(np.float32)
-        units = b.get("height_units", "m")
-        z = hm if units == "m" else hm / f.UNITS_PER_METRE
-        level = b["water_level_units"] / f.UNITS_PER_METRE if units != "m" else b.get("water_level_m", 0.0)
+        hm = np.load(f.OUT / "terrain" / "heightmap.npy").astype(np.float32)     # game units
+        z = hm / f.UNITS_PER_METRE
+        level = b["water_level_units"] / f.UNITS_PER_METRE
         # map pixel centres -> world -> heightmap sample
         ys, xs = np.mgrid[0:h, 0:w]
         wx, wy = f.px_to_world((xs + 0.5) / SCALE, (ys + 0.5) / SCALE)

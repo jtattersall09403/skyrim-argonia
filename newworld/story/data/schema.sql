@@ -324,6 +324,9 @@ CREATE TABLE "water_body" (
   "area_m2" REAL NOT NULL,
   "label_px" REAL NOT NULL,              -- a point inside it
   "label_py" REAL NOT NULL,
+  "flows" BOOLEAN NOT NULL CHECK ("flows" IN (0, 1)),
+  "flow_toward_deg" REAL,                -- the way it flows (0 north, clockwise), when it flows
+  "flow_note" TEXT,
   "set_by" TEXT NOT NULL CHECK ("set_by" IN ('derived', 'owner')),
   "why" TEXT NOT NULL
 );
