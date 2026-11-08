@@ -52,7 +52,7 @@ static class ChainbreakersCheck
                 && p.Conditions.Any(c => c.Data is IGetStageConditionDataGetter g && g.Quest.Link.FormKey == q.FormKey && ((IConditionFloatGetter)c).ComparisonValue == stage));
         }
         var lines = LocalQuests.Lines(code);
-        foreach (var t in ours.DialogTopics.Where(x => x.Quest.FormKey == q.FormKey))
+        foreach (var t in ours.DialogTopics.Where(x => x.Quest.FormKey == q.FormKey && x.Subtype == DialogTopic.SubtypeEnum.Custom))
         {
             var key = lines.EnumerateObject().First(o => t.EditorID == $"ARG_{code.ToUpper()}_" + string.Concat(o.Name.Split('-').Skip(1).Select(w => char.ToUpper(w[0]) + w[1..])));
             foreach (var r in t.Responses)
@@ -64,6 +64,63 @@ static class ChainbreakersCheck
                 Ok($"topic {t.EditorID} info", match && r.Conditions.Any(c => c.Data is IGetIsIDConditionDataGetter) && (tif == null || Pex(tif, "SetStage")), $"lines {(match ? "=record" : "DIFFER")}, sets via {tif ?? "-"}");
             }
         }
+        BandsOf(ours, q, lines, code, Ok);
+    }
+
+    static IEnumerable<IConditionFloatGetter> Ranks(IDialogResponsesGetter r) => r.Conditions.Where(c => c.Data is IGetRelationshipRankConditionDataGetter).Cast<IConditionFloatGetter>();
+    static bool Is(IConditionFloatGetter c, CompareOperator op, float v) => c.CompareOperator == op && c.ComparisonValue == v;
+    // A band INFO: warm (rank >= 1) or cool (rank < 0); the default of a banded topic carries the complement (< 1, >= 0).
+    internal static bool Banded(IDialogResponsesGetter r) => Ranks(r).Any(c => Is(c, CompareOperator.GreaterThanOrEqualTo, 1) || Is(c, CompareOperator.LessThan, 0));
+
+    // The wording bands: every rank-gated INFO speaks its key@high (rank >= 1 with the player) or key@low (rank < 0) lines,
+    // and a default INFO with the same other gates and fragment carries the complement, so the bands are exclusive by
+    // condition (Spriggit's YAML does not keep INFO order). Prints the counts.
+    public static void BandsOf(ISkyrimModGetter ours, IQuestGetter q, System.Text.Json.JsonElement lines, string code, Action<string, bool, string> ok)
+    {
+        int warm = 0, cool = 0;
+        string Sig(IDialogResponsesGetter r) => string.Join(",", r.Conditions.Where(c => c.Data is not IGetRelationshipRankConditionDataGetter)
+            .Select(c => c.Data.GetType().Name + ((IConditionFloatGetter)c).CompareOperator + ((IConditionFloatGetter)c).ComparisonValue))
+            + "|" + r.VirtualMachineAdapter?.ScriptFragments?.OnEnd?.ScriptName;
+        foreach (var t in ours.DialogTopics.Where(x => x.Quest.FormKey == q.FormKey && x.Subtype == DialogTopic.SubtypeEnum.Custom))
+        {
+            var key = lines.EnumerateObject().First(o => t.EditorID == $"ARG_{code.ToUpper()}_" + string.Concat(o.Name.Split('-').Skip(1).Select(w => char.ToUpper(w[0]) + w[1..])));
+            var rs = t.Responses.ToList();
+            for (var i = 0; i < rs.Count; i++)
+            {
+                if (!Banded(rs[i])) continue;
+                var rank = Ranks(rs[i]).Single();
+                var band = rank.CompareOperator == CompareOperator.GreaterThanOrEqualTo && rank.ComparisonValue == 1 ? "high"
+                    : rank.CompareOperator == CompareOperator.LessThan && rank.ComparisonValue == 0 ? "low" : "?";
+                var onPlayer = ((IGetRelationshipRankConditionDataGetter)rank.Data).TargetNpc.Link.FormKey == FormKey.Factory("000014:Skyrim.esm");
+                var text = rs[i].Responses.Select(x => x.Text.String).ToList();
+                var match = key.Value.EnumerateObject().Where(v => v.Name.EndsWith("@" + band)).Any(v => v.Value.EnumerateArray().Select(l => l.GetString()).SequenceEqual(text));
+                var dflt = rs.Any(r => !Banded(r) && Sig(r) == Sig(rs[i]) && Ranks(r).Any(c => band == "high" ? Is(c, CompareOperator.LessThan, 1) : Is(c, CompareOperator.GreaterThanOrEqualTo, 0)));
+                if (band == "high") warm++; else cool++;
+                ok($"{t.EditorID} {band} band: rank with the player {rank.CompareOperator} {rank.ComparisonValue}, default excludes it", band != "?" && onPlayer && match && dflt,
+                    $"lines {(match ? "=record" : "DIFFER")}, default with the same gates and fragment and the complement {dflt}");
+            }
+        }
+        Console.WriteLine($"  BANDS {q.EditorID}: warm {warm}, cool {cool}, race 0");
+    }
+
+    // An after-quest Hello: per person, one INFO per written line, gated on the ref and on the endings (OR'd, each EqualTo).
+    public static void AfterOf(ISkyrimModGetter ours, IQuestGetter q, string topic, (FormKey who, List<string> said, int[] endings)[] people, Action<string, bool, string> ok)
+    {
+        var t = ours.DialogTopics.FirstOrDefault(x => x.EditorID == topic);
+        ok($"{topic}: a Hello topic of {q.EditorID}", t != null && t.Subtype == DialogTopic.SubtypeEnum.Hello && t.Quest.FormKey == q.FormKey, "");
+        if (t == null) return;
+        foreach (var (who, said, endings) in people)
+        {
+            var mine = t.Responses.Where(r => r.Conditions.Any(c => c.Data is IGetIsReferenceConditionDataGetter g && g.Target.Link.FormKey == who)
+                && r.Conditions.Any(c => c.Data is IGetStageConditionDataGetter && endings.Contains((int)((IConditionFloatGetter)c).ComparisonValue))).ToList();
+            var text = mine.Select(r => r.Responses.Single().Text.String).ToList();
+            var gates = mine.All(r => r.Conditions.Where(c => c.Data is IGetStageConditionDataGetter g && g.Quest.Link.FormKey == q.FormKey)
+                .Select(c => (int)((IConditionFloatGetter)c).ComparisonValue).Order().SequenceEqual(endings.Order())
+                && r.Conditions.Where(c => c.Data is IGetStageConditionDataGetter).All(c => ((IConditionFloatGetter)c).CompareOperator == CompareOperator.EqualTo)
+                && r.Conditions.Count(c => c.Flags.HasFlag(Condition.Flag.OR)) == endings.Length - 1);
+            ok($"{topic}: {who} after {string.Join("/", endings)}", said.Count >= 2 && text.Order().SequenceEqual(said.Order()) && gates, $"{mine.Count} lines, gates {gates}");
+        }
+        Console.WriteLine($"  AFTER {q.EditorID}: {t.Responses.Count} after-quest INFOs");
     }
 
     public static int Run(string esp, string pexDir, string[] paths)
@@ -137,7 +194,7 @@ static class ChainbreakersCheck
         foreach (var i in infos)
         {
             var t = ours.DialogTopics.First(x => x.EditorID == i.topic);
-            var hits = t.Responses.Where(r => r.Conditions.Any(c => c.Data is IGetStageConditionDataGetter g && g.Quest.Link.FormKey == q.FormKey
+            var hits = t.Responses.Where(r => !Banded(r) && r.Conditions.Any(c => c.Data is IGetStageConditionDataGetter g && g.Quest.Link.FormKey == q.FormKey
                 && c is IConditionFloatGetter cf && cf.ComparisonValue == i.stage && cf.CompareOperator == i.op)).ToList();
             bool Gate(IDialogResponsesGetter r) => i.gate switch
             {
@@ -156,8 +213,9 @@ static class ChainbreakersCheck
             Ok($"topic {i.topic} at stage {i.op} {i.stage} {i.gate}", hit != null && speaker == i.speaker && setsOk && text.SequenceEqual(want),
                 $"speaker {(speaker == i.speaker ? "ok" : speaker)}, sets {(i.sets?.ToString() ?? "nothing")} via {tif ?? "-"}, lines {(text.SequenceEqual(want) ? "=record" : "DIFFER")}");
         }
-        var season = ours.DialogTopics.First(x => x.EditorID == "ARG_BC03_TheSeason").Responses[0];
-        Ok("F4 the season sets ARG_BC03_SeasonHeard", season.VirtualMachineAdapter?.ScriptFragments?.OnEnd?.ScriptName == "TIF_ARG_BC03_Season" && Pex("TIF_ARG_BC03_Season", "SetValue"));
+        BandsOf(ours, q, lines, "bc03", Ok);
+        var seasons = ours.DialogTopics.First(x => x.EditorID == "ARG_BC03_TheSeason").Responses;
+        Ok("F4 the season sets ARG_BC03_SeasonHeard (every band)", seasons.All(season => season.VirtualMachineAdapter?.ScriptFragments?.OnEnd?.ScriptName == "TIF_ARG_BC03_Season") && Pex("TIF_ARG_BC03_Season", "SetValue"), $"{seasons.Count} infos");
         var bc01q = ours.Quests.First(x => x.EditorID == "ARG_BC01");
         var opens = ours.DialogTopics.First(x => x.EditorID == "ARG_BC03_LastSeason").Responses;
         Ok("BC03 opens once BC01 is at 90 or more", opens.SelectMany(r => r.Conditions).Any(c => c.Data is IGetStageConditionDataGetter g && g.Quest.Link.FormKey == bc01q.FormKey && ((IConditionFloatGetter)c).ComparisonValue == 90));
@@ -166,6 +224,8 @@ static class ChainbreakersCheck
         Generic(ours, placed, Pex, "ARG_BC01", "quest.bc.bc01", "bc01", [10, 40, 90, 91, 94], [90, 91, 94],
             ["Patron", "Debtor", "Steward", "Chest"], [("ARG_BC01_ChannelEndZone", 40, 91)],
             [("Patron", "ARG_BC01_PatronAtLanding", 10), ("Debtor", "ARG_BC01_DebtorFollow", 40)]);
+        FormKey RefOf(string e) => ours.EnumerateMajorRecords<IPlacedGetter>().First(r => r.EditorID == e).FormKey;
+        AfterOf(ours, ours.Quests.First(x => x.EditorID == "ARG_BC01"), "ARG_BC01_AfterHello", [(RefOf("ARG_BC01_RowsForAnotherRef"), LocalQuests.After("bc01", "rows-for-another"), [90, 91])], Ok);
         var cuts = ours.DialogTopics.First(x => x.EditorID == "ARG_BC01_CutLoose").Responses;
         Ok("BC01 cut-loose: night (C-time) and unseen by three (C-detected)", cuts.Any(cut => cut.Conditions.Count(c => c.Data is IGetCurrentTimeConditionDataGetter) == 2 && cut.Conditions.Count(c => c.Data is IGetDetectedConditionDataGetter) == 3 && cut.VirtualMachineAdapter != null),
             string.Join(" | ", cuts.Select(r => string.Join(",", r.Conditions.Select(c => c.Data.GetType().Name.Replace("ConditionData", "").Replace("BinaryOverlay", ""))))));
@@ -176,6 +236,9 @@ static class ChainbreakersCheck
             ["Patron", "GateKeeper", "Speaker", "Killer", "Mother"],
             [("ARG_BC02_InZone", 20, 30), ("ARG_BC02_OutSpeakerZone", 31, 91), ("ARG_BC02_OutKillerZone", 32, 92), ("ARG_BC02_OutMotherZone", 33, 93)],
             [("Speaker", "ARG_BC02_SpeakerFollow", 31), ("Killer", "ARG_BC02_KillerFollow", 32), ("Mother", "ARG_BC02_MotherFollow", 33)]);
+        string[] writer = ["says-it-plain", "hides-in-reeds", "keeps-the-old-count"]; string[] held = ["Speaker", "Killer", "Mother"];
+        AfterOf(ours, ours.Quests.First(x => x.EditorID == "ARG_BC02"), "ARG_BC02_AfterHello",
+            [.. Enumerable.Range(0, 3).Select(i => (RefOf($"ARG_BC02_{held[i]}Ref"), LocalQuests.After("bc02", writer[i]), new[] { 91 + i }))], Ok);
         var fires = ours.DialogTopics.First(x => x.EditorID == "ARG_BC02_TheFire").Responses;
         Ok("BC02 opens once BC01 is at 90 or more", fires.SelectMany(r => r.Conditions).Any(c => c.Data is IGetStageConditionDataGetter g && g.Quest.Link.FormKey == bc01q.FormKey && ((IConditionFloatGetter)c).ComparisonValue == 90));
         Ok("BC02 gate and let-by at Speech 25", new[] { "ARG_BC02_TheGate", "ARG_BC02_LetBy" }.All(t => ours.DialogTopics.First(x => x.EditorID == t).Responses.Any(r => r.Conditions.Any(c => c.Data is IGetActorValueConditionDataGetter && ((IConditionFloatGetter)c).ComparisonValue == 25))));

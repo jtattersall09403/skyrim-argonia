@@ -58,10 +58,11 @@ static class LocalQuestsCheck
                 int P(string n) => f?.Properties.OfType<IScriptIntPropertyGetter>().FirstOrDefault(p => p.Name == n)?.Data ?? -1;
                 Ok($"TR-death on alias {d.alias}: {d.prereq} -> {d.set}", P("preReqStage") == d.prereq && P("StageToSet") == d.set);
             }
+            ChainbreakersCheck.BandsOf(ours, q, LocalQuests.Lines(edid[4..].ToLower()), edid[4..].ToLower(), Ok);
             foreach (var i in infos)
             {
                 var t = ours.DialogTopics.First(x => x.EditorID == i.topic);
-                var hit = t.Responses.FirstOrDefault(r => r.Conditions.Any(c => c.Data is IGetStageConditionDataGetter g && g.Quest.Link.FormKey == q.FormKey
+                var hit = t.Responses.FirstOrDefault(r => !ChainbreakersCheck.Banded(r) && r.Conditions.Any(c => c.Data is IGetStageConditionDataGetter g && g.Quest.Link.FormKey == q.FormKey
                     && c is IConditionFloatGetter cf && cf.ComparisonValue == i.stage && cf.CompareOperator == CompareOperator.EqualTo));
                 var speaker = hit?.Conditions.Select(c => c.Data switch { IGetIsIDConditionDataGetter x => x.Object.Link.FormKey.ToString(), IGetIsReferenceConditionDataGetter x => x.Target.Link.FormKey.ToString(), _ => null }).FirstOrDefault(x => x != null);
                 var tif = hit?.VirtualMachineAdapter?.ScriptFragments?.OnEnd?.ScriptName;
@@ -79,6 +80,9 @@ static class LocalQuestsCheck
             [new("ARG_LQ30_WalkedOut", Base("ARG_LQ30_HajWan"), 0, 30), new("ARG_LQ30_WalkedOut", Base("ARG_LQ30_HajWan"), 30, null),
              new("ARG_LQ30_TheBasin", LocalQuests.Warden.ToString(), 30, null), new("ARG_LQ30_ComeBack", Base("ARG_LQ30_SeiWan"), 40, 92)],
             [("Kin", Ref("ARG_LQ30_HajWanRef")), ("Youth", Ref("ARG_LQ30_SeiWanRef")), ("Viper", Ref("ARG_LQ30_ViperRef")), ("Warden", LocalQuests.Warden.ToString())]);
+        var seiWan = FormKey.Factory(Ref("ARG_LQ30_SeiWanRef"));
+        ChainbreakersCheck.AfterOf(ours, ours.Quests.First(x => x.EditorID == "ARG_LQ30"), "ARG_LQ30_AfterHello",
+            [(seiWan, LocalQuests.After("lq30", "sei-wan", "after91"), [91]), (seiWan, LocalQuests.After("lq30", "sei-wan", "after92"), [92])], Ok);
         var zone = ours.EnumerateMajorRecords<IPlacedObjectGetter>().First(r => r.EditorID == "ARG_LQ30_GateZone");
         int Z(string n) => zone.VirtualMachineAdapter!.Scripts[0].Properties.OfType<IScriptIntPropertyGetter>().First(p => p.Name == n).Data;
         Ok("  TR-zone at the gate: 40 -> 91, unconditioned", Z("prereqStageOPT") == 40 && Z("stage") == 91 && (zone.MajorRecordFlagsRaw & 0x400) != 0);

@@ -174,7 +174,13 @@ the quest is re-authored.
   BC01 >= 90 with it). `talk_check` reads each back: quest in the plugin, Start Game Enabled from its start-up stage,
   the opening line found, the gate matched, no talker one of the quest's own people: 5 rumours, 0 problems; every
   read-back PASS.
-- **Known gaps, for the owner walk or later:** only the middle wording band of quest lines is built (no
-  disposition or race forms of address); the freed people of BC01/BC02 have no after-quest greeting; positions at BC01's
+- **Wording bands and after-quest greetings (2026-11-08):** the Chainbreakers' written low and high bands are built as
+  extra INFOs, warm on GetRelationshipRank with the player >= 1 and cool below 0, the default taking rank 0 (exclusive by
+  condition, since Spriggit's YAML does not keep INFO order): BC01 6/6, BC02 11/11, BC03 9/9 warm/cool; no race form is
+  written in any brief's lines. After-quest Hello topics (written, reader-checked): Rows-For-Another (BC01 90/91, 3),
+  the one out of the smoke (BC02 91/92/93, 3 each), Sei-Wan at the gate (LQ30 91/92, 2 each). bccheck and localcheck
+  read every band and greeting back (PASS).
+- **Known gaps, for the owner walk or later:** MQ01, MQ03, MQ04, MQ05, TG01, TG02, LQ25 and LQ30 have only their middle
+  wording band written (their low and high bands are owed by the writers, then build as BC's); positions at BC01's
   landing, BC02's keep and the Reed's house (BM&V's tilted sinking cabin) were picked from navmesh, never walked; some
   routes still have short or long legs (084A86 goes east before west; one Hereguard leg is 1,043 paces).

@@ -141,6 +141,35 @@ static class LocalQuests
     public static ConditionFloat StageIs(Quest q, CompareOperator op, int s) { var d = new GetStageConditionData(); d.Quest.Link.SetTo(q.FormKey); return C(d, op, s); }
     internal static ConditionFloat IsId(FormKey npc) { var d = new GetIsIDConditionData(); d.Object.Link.SetTo(npc); return C(d, CompareOperator.EqualTo, 1); }
     internal static ConditionFloat IsRef(FormKey r) { var d = new GetIsReferenceConditionData(); d.Target.Link.SetTo(r); return C(d, CompareOperator.EqualTo, 1); }
+    // The speaker's regard for the player (Talk's greet-friend gate): warm at rank >= 1, cool below 0 (rival or worse).
+    internal static ConditionFloat Rank(CompareOperator op, float v) { var d = new GetRelationshipRankConditionData(); d.TargetNpc.Link.SetTo(PlayerRef); return C(d, op, v); }
+    internal static readonly (string band, CompareOperator op, float v)[] Bands = [("high", CompareOperator.GreaterThanOrEqualTo, 1), ("low", CompareOperator.LessThan, 0)];
+    // An after-quest greeting (a Hello topic of the quest): one Random INFO per written line, gated on the person's ref
+    // and on the quest's ending stages (any of them).
+    internal static void AfterHello(SkyrimMod mod, Quest q, string id, params (FormKey who, List<string> said, int[] endings)[] people)
+    {
+        var t = mod.DialogTopics.AddNew(id);
+        t.Quest.SetTo(q.FormKey); t.Priority = 50;
+        t.Category = DialogTopic.CategoryEnum.Misc; t.Subtype = DialogTopic.SubtypeEnum.Hello; t.SubtypeName = new RecordType("HELO");
+        foreach (var (who, said, endings) in people)
+        foreach (var l in said)
+        {
+            var info = new DialogResponses(mod.GetNextFormKey(), SkyrimRelease.SkyrimSE) { Flags = new DialogResponseFlags { Flags = DialogResponses.Flag.Random } };
+            info.Responses.Add(new DialogResponse { Text = l, ResponseNumber = 1, Emotion = Emotion.Neutral });
+            info.Conditions.Add(IsRef(who));
+            for (var i = 0; i < endings.Length; i++)
+            {
+                var c = StageIs(q, CompareOperator.EqualTo, endings[i]);
+                if (i < endings.Length - 1) c.Flags = Condition.Flag.OR;
+                info.Conditions.Add(c);
+            }
+            t.Responses.Add(info);
+        }
+    }
+    // The written after-quest lines (story/data/dialogue-writer/quest/<code>/<who>.after.tsv) of one variant.
+    internal static List<string> After(string code, string who, string variant = "after") =>
+        File.ReadLines(Path.Combine("story", "data", "dialogue-writer", "quest", code, who + ".after.tsv")).Skip(1)
+            .Select(l => l.Split('\t')).Where(p => p.Length >= 5 && p[1] == variant).Select(p => p[4]).ToList();
 
     // The quest: Side Quest, Start Game Enabled, empty start-up stage 0, a log entry per stage, completing stages flagged.
     internal static Quest NewQuest(SkyrimMod mod, string edid, string name, string id, int[] stages, int[] ends)
@@ -182,9 +211,25 @@ static class LocalQuests
         t.Category = DialogTopic.CategoryEnum.Topic; t.Subtype = DialogTopic.SubtypeEnum.Custom; t.SubtypeName = new RecordType("CUST");
         foreach (var (sets, conds, variant) in infos)
         {
+            // The wording bands (dialogue-write's low/words/high), Skyrim's way as the talk block: the warm band (key@high)
+            // gated GetRelationshipRank with the player >= 1, the cool band (key@low) < 0, both ahead of the default. The
+            // default then takes the rest (rank 0, >= 0 and < 1): Spriggit's YAML does not keep INFO order, so the bands
+            // are exclusive by condition, as the talk block's stranger and friend greetings are.
+            var key = variant ?? "lines";
+            var rest = new List<ConditionFloat>(conds);
+            foreach (var (band, op, v) in Bands)
+                if (t0.TryGetProperty($"{key}@{band}", out var bl))
+                {
+                    Add(sets, bl, [.. conds.Select(c => c.DeepCopy()), Rank(op, v)]);
+                    rest.Add(band == "high" ? Rank(CompareOperator.LessThan, 1) : Rank(CompareOperator.GreaterThanOrEqualTo, 0));
+                }
+            Add(sets, t0.GetProperty(key), [.. rest]);
+        }
+        void Add(int? sets, JsonElement said, ConditionFloat[] conds)
+        {
             var info = new DialogResponses(mod.GetNextFormKey(), SkyrimRelease.SkyrimSE) { Flags = new DialogResponseFlags(), Prompt = prompt };
             byte n = 1;
-            foreach (var l in t0.GetProperty(variant ?? "lines").EnumerateArray())
+            foreach (var l in said.EnumerateArray())
                 info.Responses.Add(new DialogResponse { Text = l.GetString()!, ResponseNumber = n++, Emotion = Emotion.Neutral });
             info.Conditions.Add(speaker.DeepCopy());
             info.Conditions.AddRange(conds);
@@ -255,6 +300,9 @@ static class LocalQuests
             (30, [StageIs(q, CompareOperator.EqualTo, 0)]), (null, [StageIs(q, CompareOperator.EqualTo, 30)]));
         Topic(mod, q, "LQ30", lines, "topic.lq30-the-basin", IsRef(Warden), (null, [StageIs(q, CompareOperator.EqualTo, 30)]));
         Topic(mod, q, "LQ30", lines, "topic.lq30-come-back", IsId(youth.FormKey), (92, [StageIs(q, CompareOperator.EqualTo, 40)]));
+        // Sei-Wan at the gate after the quest (the record's after-90 state): his greeting by ending, 91 or 92.
+        AfterHello(mod, q, "ARG_LQ30_AfterHello", (youthRef.FormKey, After("lq30", "sei-wan", "after91"), [91]),
+            (youthRef.FormKey, After("lq30", "sei-wan", "after92"), [92]));
     }
 
     // LQ25 The River Monster: Okan-Zish's topic once MQ05 is at 40 (0 -> 20), the crocodile's death (20 -> 40), the

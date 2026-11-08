@@ -167,6 +167,8 @@ static class Chainbreakers
                 Unseen(stewardRef), .. menRefs.Select(Unseen)], null),
             (null, [StageIs(q, CompareOperator.EqualTo, 10)], "day"));
         TopicV(mod, q, "BC01", lines, "topic.bc01-bring-down", isPatron, (90, [StageIs(q, CompareOperator.EqualTo, 10), Has(book.FormKey, 1)], null));
+        // Rows-For-Another free of the book after either ending (90 the book brought down, 91 out by the channel).
+        AfterHello(mod, q, "ARG_BC01_AfterHello", (debtorRef.FormKey, After("bc01", "rows-for-another"), [90, 91]));
         return q;
     }
 
@@ -241,6 +243,9 @@ static class Chainbreakers
             (92, [StageIs(q, CompareOperator.EqualTo, 32), Speech(CompareOperator.GreaterThanOrEqualTo, 25)], null),
             (93, [StageIs(q, CompareOperator.EqualTo, 33), Speech(CompareOperator.GreaterThanOrEqualTo, 25)], null),
             (null, [StageIs(q, CompareOperator.GreaterThanOrEqualTo, 31), StageIs(q, CompareOperator.LessThanOrEqualTo, 33), Speech(CompareOperator.LessThan, 25)], "fail"));
+        // The one brought out of the smoke greets the player after their own ending (91, 92 or 93).
+        string[] writer = ["says-it-plain", "hides-in-reeds", "keeps-the-old-count"];
+        AfterHello(mod, q, "ARG_BC02_AfterHello", [.. Enumerable.Range(0, 3).Select(i => (heldRefs[i].FormKey, After("bc02", writer[i]), new[] { 91 + i }))]);
     }
 
     // BC03: Heavy-Rope's last-season topic (0 -> 10, once BC01 is at 90 or more); Ussa-Rekh's season topic opens the sides;
@@ -293,8 +298,8 @@ static class Chainbreakers
         var isRope = IsId(rope.FormKey); var isUssa = IsId(ussa.FormKey);
         TopicV(mod, q, "BC03", lines, "topic.bc03-last-season", isRope, (10, open, null), (null, [StageIs(q, CompareOperator.GreaterThanOrEqualTo, 10)], null));
         TopicV(mod, q, "BC03", lines, "topic.bc03-the-season", isUssa, (null, [StageIs(q, CompareOperator.GreaterThanOrEqualTo, 10)], null));
-        // F4: hearing the season opens the sides; its info's fragment sets ARG_BC03_SeasonHeard (E-global).
-        var season = mod.DialogTopics.First(t => t.EditorID == "ARG_BC03_TheSeason").Responses[0];
+        // F4: hearing the season opens the sides; each of its infos' (every band's) fragment sets ARG_BC03_SeasonHeard (E-global).
+        foreach (var season in mod.DialogTopics.First(t => t.EditorID == "ARG_BC03_TheSeason").Responses)
         season.VirtualMachineAdapter = new DialogResponsesAdapter
         {
             Scripts = { Script("TIF_ARG_BC03_Season", Obj("SeasonHeard", heard.FormKey)) },
