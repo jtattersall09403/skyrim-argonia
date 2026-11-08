@@ -34,7 +34,6 @@
 {"quest":"quest.main.mq01","edit":"we.mq01.hold-location"}
 {"quest":"quest.main.mq01","edit":"we.mq01.no-valenwood"}
 {"quest":"quest.main.mq01","edit":"we.mq01.no-welcome"}
-{"quest":"quest.main.mq01","edit":"we.mq01.pier-mesh"}
 {"quest":"quest.main.mq01","edit":"we.mq01.start"}
 {"quest":"quest.main.mq03","edit":"we.clean.hereguardplantation"}
 {"quest":"quest.main.mq03","edit":"we.clean.lilmoth"}
@@ -82,3 +81,4 @@
 {"quest":"quest.tg.tg02","edit":"we.tg02.clients"}
 {"quest":"quest.tg.tg02","edit":"we.tg02.eels"}
 {"quest":"quest.tg.tg02","edit":"we.tg02.house"}
+{"quest":"quest.main.mq01","edit":"we.mq01.march"}

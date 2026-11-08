@@ -158,7 +158,7 @@ def main() -> int:
                 if x.get("use") not in cat["supporting"]:
                     missing.append(f"stage {s['id']}: supporting {x.get('use')} not in skill-uses.yaml")
                 continue
-            skills = WEAPONS if x.get("skill") == "any-weapon" else [cat["aliases"].get(re.sub("[^a-z]", "", str(x.get("skill")).lower()), x.get("skill"))]
+            skills = WEAPONS if x.get("skill") == "any-weapon" else [cat["aliases"].get(re.sub("[^a-z]", "", str(x.get("skill")).lower()), str(x.get("skill")).lower())]
             if not any(sk in cat["skills"] and x.get("use") in cat["skills"][sk]["uses"] for sk in skills):
                 missing.append(f"stage {s['id']}: {x.get('skill')}: {x.get('use')} is not in skill-uses.yaml")
             used.add(x.get("use"))
@@ -192,7 +192,7 @@ def main() -> int:
             named = re.findall(r"npc\.[a-z0-9.-]+", json.dumps({k: v for k, v in s.items() if k != "failForward"}))
             if named and not s.get("failForward"):
                 missing.append(f"{w}: names {named[0]} but has no failForward (old 0138: nobody is unkillable)")
-            if "WONDER" not in q.get("shapes", []) and not [x for x in stage_actions(s) if "skill" in x]:
+            if "WONDER" not in q.get("shapes", []) and not any("startScene" in a for a in s.get("onEnter", [])) and not [x for x in stage_actions(s) if "skill" in x]:
                 missing.append(f"{w}: no skill action (principles/actions.md)")
             missing += [f"{w}: learns {g}" for g in s.get("learns", []) if g not in claims]
     if len(q["endings"]) < 2:
@@ -262,7 +262,7 @@ def main() -> int:
         L += ["", "## Others in the quest (the player may be sent to them)"]
         L += [f"- {person(o['id'])['name']}: {person(o['id'])['role']}" for o in q["cast"] if o is not c]
         L += ["", "## Things lines may name (and only these)"]
-        L += [f"- `{t['id']}`: {t['kind']}; {t.get('where', t['source'])}; {t['states']}" for t in q["things"]]
+        L += [f"- `{t['id']}`: {t['kind']}; {t.get('where', t['source'])}; {t.get('states', {})}" for t in q["things"]]
         L += ["", "## Topics"]
         for t in my_topics:
             first = t["stages"][0]

@@ -102,3 +102,13 @@ the quest is re-authored.
   Black Marsh.esm, Black Marsh North.esp or Valenwood.esp (`ArgoniaPlugin cell` on each), though the record says
   it has one. The people and the chest need a navmeshed spot (another Soulrest dock cell), or the place goes back to
   quest-write. Still to do: the text-review pass, Chainbreakers.cs, the TIF/QF Papyrus, the read-back, then BC01 and BC02.
+- **MQ01 and MQ03 re-authored to the blocks (2026-11-08, planner rulings).** Every zone is gated by its prerequisite
+  stage only. MQ01: three shore boxes (90 from 41, 91 from 42, 93 from 40 under a parent that 41 and 42 turn off, as
+  they turn off the other choice's zone); the saved one follows by alias package and is moved to the mark by the
+  ending; Deesh-Duun's hut has a Novice-locked hatch (Lockpicking); `we.mq01.pier-mesh` dropped (no navmesh is
+  added), the march starts from copies on Dock1 (`we.mq01.march`) swapped in by enable parents at 10 and 40. MQ03:
+  stage 30 and its zone cut; the attack and the night set globals read by the oath answers; the answer, or
+  Nesh-Deeka's death, sets 40 (the dream); the dream's end sets 90 or 91 on `flag.mq03.reed-sworn`; no night gate.
+  One quest-review pass: 5 blocking, 3 major, 1 minor, all fixed (R6-1, R6-2 in each review). `brief.py` fixed to
+  read Skyrim skill names, to exempt scene stages, and to accept things with no states. Briefs:
+  `story/data/dialogue-writer/quest/mq01/` (11) and `mq03/` (6).

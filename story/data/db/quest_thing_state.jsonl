@@ -67,6 +67,8 @@
 {"quest_id":"quest.main.mq01","things_ord":2,"state":"after-90","value":"gone from the pier"}
 {"quest_id":"quest.main.mq01","things_ord":2,"state":"before-90","value":"on the pier"}
 {"quest_id":"quest.main.mq01","things_ord":3,"state":"all","value":"present until the strike"}
+{"quest_id":"quest.main.mq01","things_ord":4,"state":"after-41","value":"Sal-Sei follows the player (alias package, stages 41 to 90)"}
+{"quest_id":"quest.main.mq01","things_ord":4,"state":"after-42","value":"Deesh-Duun follows the player (alias package, stages 42 to 91)"}
 {"quest_id":"quest.main.mq01","things_ord":4,"state":"all","value":"present until the strike"}
 {"quest_id":"quest.main.mq01","things_ord":5,"state":"after-90","value":"on the shore, burnt and wet"}
 {"quest_id":"quest.main.mq01","things_ord":5,"state":"before-90","value":"off"}
@@ -96,7 +98,6 @@
 {"quest_id":"quest.main.mq03","things_ord":6,"state":"before-20","value":"on the shore"}
 {"quest_id":"quest.main.mq03","things_ord":7,"state":"at-40","value":"on"}
 {"quest_id":"quest.main.mq03","things_ord":7,"state":"before-40","value":"off"}
-{"quest_id":"quest.main.mq03","things_ord":8,"state":"all","value":"present"}
 {"quest_id":"quest.main.mq04","things_ord":0,"state":"after-90","value":"reconciled (light back low)"}
 {"quest_id":"quest.main.mq04","things_ord":0,"state":"before-90","value":"withdrawn"}
 {"quest_id":"quest.main.mq04","things_ord":1,"state":"all","value":"present"}
