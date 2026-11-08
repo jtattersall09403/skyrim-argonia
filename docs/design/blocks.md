@@ -40,7 +40,7 @@ Flags in the records (`flag.mq*`) are not a block of their own: each is a stage 
 
 | Block | Record shape | Papyrus shape | Precedent |
 |---|---|---|---|
-| **E-stage**: the next stage, its journal entry and objective | QUST stage with log entry (CNAM) and QOBJ objective, no target | QF_ `SetStage`, `SetObjectiveDisplayed/Completed` | 726 log stages in 203 quests; 1,452 objectives in 396 |
+| **E-stage**: the next stage, its journal entry and objective | QUST stage with log entry (CNAM) and QOBJ objective, no target; the quest's ending by the completion rule below | QF_ `SetStage`, `SetObjectiveDisplayed/Completed`; the ending stage `SetObjectiveCompleted`, then `Stop()` | 726 log stages in 203 quests; 1,452 objectives in 396 |
 | **E-enable**: show or hide a set of things | each set's refs carry XESP to one XMarker parent; the parent starts disabled or enabled | QF_ `Parent.Enable()` / `Disable()` | 23,239 refs with XESP; 911 initially disabled with one |
 | **E-item**: give or take an item or gold | the item is a MISC/BOOK/WEAP record (fixed, never a levelled list) | QF_/TIF_ `Game.GetPlayer().AddItem/RemoveItem` | every vanilla reward; fragment bodies not counted (compiled) |
 | **E-move**: place or move an actor or the player | an XMarker as the destination | QF_ `Ref.MoveTo(Marker)` | MQ101 and the vanilla dream quest DA16 do this; not counted |
@@ -56,13 +56,37 @@ Flags in the records (`flag.mq*`) are not a block of their own: each is a stage 
 |---|---|---|
 | **W-npc**: a new person from a template, on existing navmesh | NPC_ with TPLT to a BM&V or vanilla base, our name, placed ACHR, persistent | 3,651 of 5,118 NPC_ have a template |
 | **W-fixed**: a creature or enemy at a fixed level | NPC_ with the PC-level-mult flag off, a fixed level for its band (decision 0035) | 4,664 of 5,118 NPC_ are fixed level |
-| **W-ref**: a new, moved or removed reference | REFR in a BM&V cell (our override of the cell's persistent/temporary group); a removal is the ref's own override set initially disabled (record flag 0x800), or a set under an enable parent that stays off, never a delete | 4,072 placements start disabled (2,682 REFR, 1,390 ACHR); 23,239 carry an enable parent (XESP) |
+| **W-ref**: a new, moved or removed reference | REFR in a BM&V cell (our override of the cell's persistent/temporary group), placed by the placement method below; a removal is the ref's own override set initially disabled (record flag 0x800), or a set under an enable parent that stays off, never a delete | 4,072 placements start disabled (2,682 REFR, 1,390 ACHR); 23,239 carry an enable parent (XESP) |
 | **W-navmesh**: navmesh for a room that has none, so placed people can walk | NAVM in the interior CELL's group, made in the Creation Kit from the room's geometry | 583 of 590 interiors carry navmesh (1,519 NAVM); the seven without are test, preload or maze cells |
 | **W-name**: a name for a place (an interior cell, or a map marker) | CELL FULL, or a map-marker REFR (XMRK) with FULL, overriding BM&V's | 583 CELLs carry FULL (all interiors); 397 map markers, every one named |
 | **W-override**: a changed BM&V record (a lock, a door, a container) | the BM&V record overridden in Argonia.esp (Argonia.esp already does this for MQ101 and 182 others) | Update.esm overrides Skyrim.esm the same way; not counted |
 
+**The completion rule** (every quest, measured in Skyrim.esm 2026-11-08 with `ArgoniaPlugin blockstudy`): a quest
+the player should see in the journal is type **Side Quest** (or Main Quest for the act's line), never Misc: Skyrim.esm's
+104 completing misc quests carry text on the completing entry in 7 (they are objective lists, and a completed misc quest
+leaves the journal; owner walk 2026-11-07: a Misc test quest left no entry and counted no completed quest), against 21
+of 23 side quests. The completing stage holds a log entry with text and the Complete Quest flag; its fragment completes
+the last objective and calls `Stop()`, never `CompleteQuest()` (vanilla's QF_dunVolunruudQST Fragment_16 is exactly
+SetObjectiveCompleted, IncSideQuests, Stop). No quest completes in its start-up stage (0 of 300 do); the start-up stage
+is an empty entry, and a chained quest is started by `NextQuest.SetStage(10)`.
+
 Aliases are a rule of the blocks, not a block: every alias in an act quest is a **forced reference** to a persistent
 ref we placed or a BM&V ref (2,687 forced-ref aliases in 425 vanilla quests), never "find matching".
+
+**The placement method** (W-ref; every placement from Phase 3 on). Navmesh says where an actor can walk, not what is
+there: one navmesh covers land and dock alike, so a spot snapped to a navmesh triangle "between the marker and the
+keeper" was land (owner walk 2026-11-07). A placer names the surface, and the helper finds it:
+`ArgoniaPlugin surface <worldspace> <x,y[;x,y...]> <load order...>` (`tools/ArgoniaPlugin/Surface.cs`) lists every
+surface under each point, highest first: each winning placed static, moveable static, activator or furniture of the
+worldspace near the point, its base's model read from the load order's archives and loose files (later wins), a
+vertical ray through the model's triangles under the ref's rotation and scale (Skyrim's rotation order, checked against
+the dock's own navmesh), and the land's height from the cell's LAND. `SURFACE_GRID=<step>` prints a 13 x 13 map of
+mesh top / navmesh height around a point, to see where a surface runs. In code, `Surface.On(Surface.Under(...),
+"<editor id or model fragment>", lift)` gives the z for a spot on the named surface (null when it is not under that x,y,
+so a build fails rather than placing on the wrong thing). A loose item goes 30 units above the surface (Havok settles
+it); an actor or marker at the surface, on the navmesh that covers it. Effects meshes (fog) are skipped. The model's
+render geometry stands in for its collision (the two match on planks, floors and decks); the read-back check
+re-runs the helper on every placed thing it names. Game files are read and never written or committed (decision 0003).
 
 ## Dropped, and why
 
@@ -90,7 +114,7 @@ works, adding a stage adds one edge of proven kinds through the proven joint, so
 
 | Failure | Why it breaks | Guard (a rule of the block or a case in the composite) |
 |---|---|---|
-| Two triggers racing for one stage | MQ01 stage 40: two zones (the shed, the dock) could both fire; SetStage is not atomic with the read of the stage | Rule of TR-zone and TR-topic: every trigger carries a prerequisite (`GetStage == n`, the trigger script's prereq property), and the two outcomes are different stages (41, 42), each fragment disabling the other's trigger first. The composite has two zones that fire in the same frame. |
+| Two triggers racing for one stage | MQ01 stage 40: two zones (the shed, the dock) could both fire. `defaultSetStageTrigScript` checks `GetStageDone(stage)` and then calls `SetStage`, a call to the quest between check and set, so two boxes entered in one frame both pass (owner walk 2026-11-07: both 71 and 72 done; a fragment disabling the other box came too late) | Rule of TR-zone and TR-topic (Bethesda's shape: 22 (quest, stage) pairs in Skyrim.esm are set by 2 to 6 boxes): every trigger carries a prerequisite (the trigger script's prereq property, or `GetStage == n`); triggers for one outcome all set **one** stage; that stage's fragment guards itself by reading and setting a script variable with no call between them (Papyrus runs one function at a time on a script object and yields only at a call), then does its work. Two different outcomes are two stages only when the story needs both to differ, and then the second fragment checks the first's stage with `GetStageDone` before its work. The test proves it with run counters read from the console. |
 | Alias filling at quest start | a forced alias whose ref is disabled or in an unloaded cell fails to fill, and the quest refuses to start | Rule: forced refs only, every aliased ref persistent, aliases that may be gone marked Optional; no find-matching. The composite starts while its aliased refs are disabled and two cells away. |
 | Persistent references | a non-persistent ref in an unloaded cell cannot be enabled, moved or filled | Rule of W-ref and W-npc: every ref a block names is persistent (in the cell's persistent group); the build check lists any quest-named ref that is not. |
 | AI package priority | an alias package can lose to the actor's own (BM&V or template) package, or to combat | Rule of E-package: alias packages sit on the alias (which outranks the actor's own) and each has its conditions on the stage; a scene's actors are aliases of the scene's quest. The composite runs an escort while a hostile is enabled. |

@@ -90,10 +90,14 @@ static class BlockTest
         var doorPos = placed[Door].rec.Placement!.Position;
         var doorAt = snap.At(Navmesh, doorPos.X - 150, doorPos.Y);    // in front of the ship door
         var crabAt = snap.At(Navmesh, spot.X + 1050, spot.Y);         // 15 m east, or 07EEF8's nearest to it
-        // The token between the player's start and the keeper (07EEF8 tri 30), 30 units above the navmesh: a loose item
-        // placed at navmesh height sits inside the planks' collision and Havok drops it through (owner walk 2026-11-07:
-        // stage 20 ran clean in Papyrus.0.log, the bowl never showed at 30603,-2893,0).
-        var tokenAt = new P3Float(MathF.Round((startAt.X + keeperAt.X) / 2), MathF.Round((startAt.Y + keeperAt.Y) / 2), startAt.Z + 30);
+        // The token on the dock planks (BM&V's BYOHFishDock01 02A20A), 3 m east of the keeper, 30 units above the planks'
+        // own top surface read from their mesh by the placement helper (Surface.cs; blocks.md W-ref). The start marker and
+        // the keeper stand on land: navmesh 07EEF8 covers both, so a navmesh spot "between them" was land (owner walk
+        // 2026-11-07, item 4). Loose items 30 units up settle onto the surface (Havok), never inside it.
+        var tokenXY = (X: 31040f, Y: -2700f);
+        var tokenTop = Surface.On(Surface.Under(mods, new Surface.Assets(Surface.Paths), world.FormKey, tokenXY.X, tokenXY.Y), "BYOHFishDock01", 30)
+            ?? throw new InvalidOperationException("ARG_BT_TokenRef: no dock planks under the token's spot");
+        var tokenAt = new P3Float(tokenXY.X, tokenXY.Y, tokenTop);
         // The ship door stands off 07EEF8's east edge (no navmesh at dock height reaches it in BlackMarsh; 0FE9A3 under it
         // is another worldspace's): the door marker is 07EEF8's nearest triangle, and the zone boxes (the player's, not an
         // actor's) sit on the door, 1.5 m toward the dock, so the player enters them on the way to it.
@@ -132,7 +136,11 @@ static class BlockTest
         key.Name = "Ship Door Key"; key.Value = 0; key.Weight = 0;
         key.Model = new Model { File = mods[0].Keys.First(k => k.Model != null).Model!.File.DataRelativePath.Path };
 
-        // TR-zone and the race: two vanilla set-stage trigger boxes at one spot.
+        // TR-zone and two triggers for one outcome: two vanilla set-stage boxes at one spot, both setting the same stage 71
+        // (Bethesda's shape: 22 (quest, stage) pairs in Skyrim.esm are set by 2 to 6 boxes, e.g. CWSiege 8 by 6). The
+        // box script checks GetStageDone(stage) and then calls SetStage, a cross-object call between check and set, so two
+        // boxes entered in one frame can both call SetStage(71) (owner walk 2026-11-07: 71 and 72 both done); fragment 71
+        // guards itself (blocks.md, the race guard) and counts its runs in two globals the owner reads from the console.
         var trigTemplate = mods[0].EnumerateMajorRecords<IPlacedObjectGetter>().First(r => r.Base.FormKey == K("099312:Skyrim.esm") && r.Primitive != null);
         PlacedObject Zone(string id, int stage)
         {
@@ -147,10 +155,12 @@ static class BlockTest
             return z;
         }
         var zoneA = Zone("ARG_BT_ZoneA", 71);
-        var zoneB = Zone("ARG_BT_ZoneB", 72);
+        var zoneB = Zone("ARG_BT_ZoneB", 71);
 
         // E-global, E-faction.
         var standing = mod.Globals.AddNewShort("ARG_BT_Global"); standing.Data = 0;
+        var raceHits = mod.Globals.AddNewShort("ARG_BT_RaceHits"); raceHits.Data = 0; // every entry into fragment 71
+        var raceRuns = mod.Globals.AddNewShort("ARG_BT_RaceRuns"); raceRuns.Data = 0; // entries past the guard: must be 1
         var faction = mod.Factions.AddNew("ARG_BT_Faction");
         faction.Name = "Dock Hands";
         faction.Ranks.Add(new Rank { Number = 0, Title = new GenderedItem<TranslatedString?>(new TranslatedString(Language.English, "Hand"), new TranslatedString(Language.English, "Hand")) });
@@ -251,8 +261,13 @@ static class BlockTest
             Info("At this hour. Done.", 90, CrabDead(), Hour(CompareOperator.LessThan, 6, or: true), Hour(CompareOperator.GreaterThanOrEqualTo, 20), C(Done(q, 80), CompareOperator.EqualTo, 1)));
 
         // The quest: E-stage and its objectives; one log entry per stage so each fragment binds.
-        q.Name = "Block Test"; q.Priority = 50; q.Type = Quest.TypeEnum.Misc; q.Flags = 0;
-        int[] stages = [10, 20, 30, 40, 50, 60, 65, 71, 72, 75, 80, 90, 100];
+        // Side Quest, not Misc: Skyrim.esm's misc quests (104 that complete) are objective lists whose completing entry
+        // carries text in 7; completed misc quests leave the journal. The rule (blocks.md, E-stage): type Side Quest, the
+        // completing stage has the Complete Quest flag on a log entry with text, its fragment completes the last objective
+        // and calls Stop() (no CompleteQuest(); vanilla's QF_dunVolunruudQST Fragment_16 is exactly that), and no quest
+        // completes in its start-up stage (0 of Skyrim.esm's 300 completing quests do).
+        q.Name = "Block Test"; q.Priority = 50; q.Type = Quest.TypeEnum.SideQuest; q.Flags = 0;
+        int[] stages = [10, 20, 30, 40, 50, 60, 65, 71, 75, 80, 90, 100];
         foreach (var s in stages)
             q.Stages.Add(new QuestStage
             {
@@ -278,14 +293,14 @@ static class BlockTest
         Forced(AZoneA, "ZoneA", zoneA);
         Forced(AZoneB, "ZoneB", zoneB);
         QuestFragmentAlias AliasScript(uint id, ScriptEntry s) { var f = new QuestFragmentAlias { Property = Alias("", q, id) }; f.Scripts.Add(s); return f; }
-        int[] fragStages = [10, 20, 30, 40, 50, 60, 65, 71, 72, 75, 80, 90, 100];
+        int[] fragStages = [10, 20, 30, 40, 50, 60, 65, 71, 75, 80, 90, 100];
         q.VirtualMachineAdapter = new QuestAdapter
         {
             FileName = "ARG_QF_BlockTest",
             Scripts =
             {
                 Script("ARG_QF_BlockTest",
-                    Alias("Keeper", q, AKeeper), Alias("Walker", q, AWalker), Alias("ZoneA", q, AZoneA), Alias("ZoneB", q, AZoneB),
+                    Alias("Keeper", q, AKeeper), Alias("Walker", q, AWalker), Obj("RaceHits", raceHits.FormKey), Obj("RaceRuns", raceRuns.FormKey),
                     Obj("StartMarker", startMarker.FormKey), Obj("WalkerMarker", walkerMarker.FormKey), Obj("TokenParent", tokenParent.FormKey), Obj("CrabParent", crabParent.FormKey),
                     Obj("ShipKey", key.FormKey), Obj("Token", token.FormKey), Obj("Gold001", Gold), Obj("Standing", standing.FormKey), Obj("DockHands", faction.FormKey),
                     Obj("TalkScene", scene.FormKey), Obj("EndQuest", end.FormKey)),
@@ -300,9 +315,12 @@ static class BlockTest
         foreach (var s in fragStages)
             q.VirtualMachineAdapter.Fragments.Add(new QuestScriptFragment { Stage = (ushort)s, StageIndex = 0, ScriptName = "ARG_QF_BlockTest", FragmentName = $"Fragment_{s}" });
 
-        // TR-chain: the second quest, one start-up stage that completes it.
-        end.Name = "Block Test, the end"; end.Priority = 50; end.Type = Quest.TypeEnum.Misc;
-        end.Stages.Add(new QuestStage { Index = 10, Flags = QuestStage.Flag.StartUpStage, LogEntries = { new QuestLogEntry { Flags = QuestLogEntry.Flag.CompleteQuest, Entry = "The second quest started from the first." } } });
+        // TR-chain: the second quest, started by the first's SetStage(10) (Bethesda's chain shape) and completed at 100 by
+        // the first quest's last fragment; an empty start-up stage 0, as vanilla's (none completes in its start-up stage).
+        end.Name = "Block Test, the end"; end.Priority = 50; end.Type = Quest.TypeEnum.SideQuest;
+        end.Stages.Add(new QuestStage { Index = 0, Flags = QuestStage.Flag.StartUpStage, LogEntries = { new QuestLogEntry { Flags = 0 } } });
+        end.Stages.Add(new QuestStage { Index = 10, LogEntries = { new QuestLogEntry { Flags = 0, Entry = "The second quest started from the first." } } });
+        end.Stages.Add(new QuestStage { Index = 100, LogEntries = { new QuestLogEntry { Flags = QuestLogEntry.Flag.CompleteQuest, Entry = "The second quest ended with the first." } } });
 
         // The world edits: our dock refs in the worldspace's persistent cell; the door's lock (W-override); the five
         // Naga disabled where Black Marsh North placed them (W-ref removal); the ship's name and the walker inside (W-name).
