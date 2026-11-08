@@ -28,3 +28,17 @@ should be water (all at once level, correct water types authored and implemented
 Kaochalit's dark line in the hillshade is a designed cliff: Kaochalit stands in Chixathe Mesa (researched landform
 "flat-topped mesas with cliff sides"); the line drops from about 32 m to 5 m, and 337 of its 394 samples steeper
 than 45 deg lie in the generator's cliff mask.
+
+## The plan README's requirements, as they bear on nw-01
+
+| README says | nw-01 |
+|---|---|
+| "Create a new worldspace in parallel with our main work in this repo" | Run alongside the Phase 4 agent (row above); none of the 15 nw-01 commits touches `story/`, `plugin/`, `papyrus/`, `skse/`, `infra/` or `mods/`, and no BM&V tool refers to `newworld/` |
+| "release the new worldspace ... as its own mod (with dependencies) separate from our BM&V adaptation" | The new world is its own root, `newworld/` (its maps, reads, key, research, schema and database), with its own code in `tools/newworld/`; it shares only the generic loader `tools/argonia_world/db.py`, unchanged |
+| "choose between which of the two I play in Moonlight (via separate cards)" | Needs a playable world: nw-02's ("an additional loaded worldspace ... I can teleport to"); nothing in nw-01 to play |
+| "for anything that will be done more than once, ... agent skills ... a clean recipe" | `place-research` (the research done seven times here and for every later place), with `text-review` reused; the map reading, key and terrain are one-time steps kept as code with docstring recipes (`tools/newworld/*.py`) |
+| Previous strengths to keep: land from a heightmap, "mountains, slopes, cliffs the native Skyrim way" | The terrain is built from the map's own water and land plus the researched relief per region (the All-Tamriel heightmap is not on hand and does not match Project Tamriel's coast); cliffs designed past 55 deg with a cliff mask for cliff meshes; mesa 3.5 % and ridge 2.6 % of slopes over 55 deg against BM&V's 2-6 % |
+| Previous strengths: vegetation, scatter, navmesh, LOD, NPCs, creature spawning by danger band | Later phases (nw-02, nw-03, nw-11); nw-01 supplies their inputs: region biome and ecology notes, a danger band on every cell, place records |
+| "just one water height for whole province" | Water level 0 everywhere; every map water pixel under it, every land pixel above |
+| "I would like to be able to draw on/directly edit myself which bodies should flow (and in what direction), which should be still, what type of water they are" | Every body of water is a record (`water_body`: kind, flows, flow direction), derived as a default, and `newworld/sources/water_overrides.json` sets any of them by hand and is read on every build; the drawing tool is nw-02's |
+| Built places from their closest equivalents in BM&V, KoTM or Skyrim | nw-03 and nw-04; nw-01 gives each place its kind, culture, size, siting and terrain needs to match on |
