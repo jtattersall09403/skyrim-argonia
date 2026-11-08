@@ -8,16 +8,28 @@
 #   stack.ps1 menu                 launch through SKSE, wait for the main menu, keep a still, print SKSE's plugin lines
 #   stack.ps1 verify [-Full]       every laid file's hash against installed.json (cached by size and mtime; -Full rehashes)
 #   stack.ps1 play-vanilla | play-modded [-Wait]   switch, then launch (the owner's stream cards)
+#   stack.ps1 play-newworld [-Wait]  the same for the NewWorld profile (its own card, "Argonia: New World")
+#   -World Argonia|NewWorld        the profile on/verify/menu use (default: the one laid last, else Argonia). NewWorld
+#                                  is Argonia's stack plus the new-world rows, with ours\newworld\ArgoniaNewWorld.esm last
 #   stack.ps1 play-modded -Shaders on|off [-Wait]   the same with Community Shaders' DLL laid or set aside (the
 #                                  owner's on/off comparison, #16); the next `on` lays it again (exact undo)
-param([Parameter(Mandatory)][string]$Cmd, [switch]$Wait, [switch]$Full, [ValidateSet('', 'on', 'off')][string]$Shaders = '')
+param([Parameter(Mandatory)][string]$Cmd, [switch]$Wait, [switch]$Full, [ValidateSet('', 'on', 'off')][string]$Shaders = '',
+      [ValidateSet('', 'Argonia', 'NewWorld')][string]$World = '')
 $ErrorActionPreference = 'Stop'
 $Game = 'C:\Program Files (x86)\Steam\steamapps\common\Skyrim Special Edition'
 $Data = "$Game\Data"
 $Root = 'C:\argonia'
 $Mo2 = "$Root\MO2"
-$Profile = "$Mo2\profiles\Argonia"
 $State = "$Root\stack-state"
+if (-not $World) { $World = if (Test-Path "$State\world") { (Get-Content "$State\world" -TotalCount 1).Trim() } else { 'Argonia' } }
+$Profile = "$Mo2\profiles\$World"
+$Installed = if ($World -eq 'Argonia') { "$Mo2\installed.json" } else { "$Mo2\installed-$World.json" }
+# our own plugins this profile lays last, in order (Argonia.esp; the new world's master after it)
+$OursPlugins = @(@{ name = 'Argonia.esp'; src = "$Root\ours\Argonia.esp" })
+if ($World -eq 'NewWorld') { $OursPlugins += @{ name = 'ArgoniaNewWorld.esm'; src = "$Root\ours\newworld\ArgoniaNewWorld.esm" } }
+# derived folders laid over every mod (decision 0014): ours\derived\<name> in both worlds; ours\derived-NewWorld\<name>
+# (the new world's LOD, infra/gpu-box/lod.sh) in the NewWorld profile only
+$Derived = @("$Root\ours\derived") + @(if ($World -eq 'NewWorld') { "$Root\ours\derived-NewWorld" })
 $Prefs = "$env:LOCALAPPDATA\Skyrim Special Edition"
 New-Item -ItemType Directory -Force $State, $Prefs | Out-Null
 
@@ -143,7 +155,7 @@ switch ($Cmd) {
     }
     # Derived folders (decision 0014: made at install on the build VM from the player's mods, sent by deploy.sh to
     # ours\derived\<name>, e.g. argonia-ground's textures with mips and normals): over every mod
-    foreach ($d in @(Get-ChildItem "$Root\ours\derived" -Directory -EA SilentlyContinue)) {
+    foreach ($d in @($Derived | % { Get-ChildItem $_ -Directory -EA SilentlyContinue })) {
       foreach ($f in [IO.Directory]::EnumerateFiles($d.FullName, '*', 'AllDirectories')) { $want[$f.Substring($d.FullName.Length).ToLower()] = $f } }
     $vanilla = @{}; Get-Content "$Root\infra\vanilla-data-files.txt" | % { $vanilla[$_.ToLower()] = 1 }
     $removed = 0
@@ -186,16 +198,17 @@ switch ($Cmd) {
     # Our own plugin (enabled, last in Plugins.txt), its ini and compiled scripts, laid with the profile so the laid
     # Data can be read back before any launch (2026-11-06; until then only the Argonia card's launch laid them).
     # Argonia.esp (decision 0038); the dead total conversion's ArgoniaWorld.esm/Argonia.esm are never laid.
-    foreach ($e in @('Argonia.esp')) { if (Test-Path "$Root\ours\$e") {
-      Copy-Item "$Root\ours\$e" "$Data\$e" -Force
+    foreach ($o in $OursPlugins) { $e = $o.name; if (Test-Path $o.src) {
+      Copy-Item $o.src "$Data\$e" -Force
       $lines = @(Get-Content "$Prefs\Plugins.txt" | ? { $_.TrimStart('*') -ne $e }); $lines += "*$e"
       $lines | Set-Content "$Prefs\Plugins.txt" -Encoding ASCII } }
     if (Test-Path "$Root\ours\Argonia.ini") { Copy-Item "$Root\ours\Argonia.ini" "$Data\Argonia.ini" -Force }
     $pex = @(Get-ChildItem "$Root\ours\scripts\*.pex" -EA SilentlyContinue)
     if ($pex) { New-Item -ItemType Directory -Force "$Data\Scripts" | Out-Null; $pex | Copy-Item -Destination "$Data\Scripts" -Force }
-    "argonia: $((Get-Content "$Prefs\Plugins.txt" | ? { $_ -like '*Argonia.esp' }) -join ', '); $($pex.Count) .pex"
+    "argonia: $((Get-Content "$Prefs\Plugins.txt" | ? { $_.TrimStart('*') -in $OursPlugins.name }) -join ', '); $($pex.Count) .pex"
     New-Item -ItemType File -Force "$State\mode-on" | Out-Null
-    "argonia profile on: $n files laid, $kept already laid, $removed removed, from $($order.Count) mods"
+    Set-Content "$State\world" $World -Encoding ASCII
+    "$World profile on: $n files laid, $kept already laid, $removed removed, from $($order.Count) mods"
   }
   'off' {
     # Independent of any record: everything in Data that the vanilla install does not have goes (the game's own
@@ -224,7 +237,7 @@ switch ($Cmd) {
     # a copy (never write through a link). Its own bundled patches (mod\tkuc and 15 more) are never laid: it
     # generates only the codes our stack laid.
     $out = "$Mo2\mods\pandora-output"; Remove-Item $out -Recurse -Force -EA SilentlyContinue
-    & $PSCommandPath on | Out-Null
+    & $PSCommandPath on -World $World | Out-Null
     $codes = @(Get-ChildItem "$Data\Nemesis_Engine\mod" -Directory -EA SilentlyContinue | % Name)
     $tool = "$Mo2\tools\nemesis\Nemesis_Engine"
     foreach ($f in [IO.Directory]::EnumerateFiles($tool, '*', 'AllDirectories')) {
@@ -259,7 +272,7 @@ switch ($Cmd) {
       $dst = "$out\$rel"; [void][IO.Directory]::CreateDirectory([IO.Path]::GetDirectoryName($dst)); [IO.File]::Copy($f, $dst, $true); $n++
     }
     if ($n -eq 0) { throw "Nemesis wrote no behaviours; see $log" }
-    & $PSCommandPath on | Out-Null
+    & $PSCommandPath on -World $World | Out-Null
     "nemesis: $n output files from $($codes.Count) mods ($($codes -join ', '))"
   }
   'pandora' {
@@ -267,7 +280,7 @@ switch ($Cmd) {
     # Pandora (a GUI app: run in the desktop session) writes to the outputPath in its Settings.json and, with
     # --auto_run, patches the mods cached in <output>\Pandora_Engine\ActiveMods.json (code, active, priority).
     $out = "$Mo2\mods\pandora-output"; Remove-Item $out -Recurse -Force -EA SilentlyContinue
-    & $PSCommandPath on | Out-Null   # Data must be this profile without an older output
+    & $PSCommandPath on -World $World | Out-Null   # Data must be this profile without an older output
     New-Item -ItemType Directory -Force "$out\Pandora_Engine" | Out-Null
     $tool = "$Mo2\tools\pandora"
     $settings = @{ app = @{ theme = 0 }; games = @{ SkyrimSE = @{ gameDataPath = $Data; outputPath = $out } } }
@@ -282,12 +295,12 @@ switch ($Cmd) {
     if ($n -eq 0) { throw "Pandora wrote no behaviours (exit $($p.ExitCode)); see $out\Engine.log" }
     Remove-Item "$out\Pandora_Engine" -Recurse -Force -EA SilentlyContinue
     Move-Item "$out\Engine.log" "$Root\logs\pandora-engine.log" -Force -EA SilentlyContinue
-    & $PSCommandPath on | Out-Null
+    & $PSCommandPath on -World $World | Out-Null
     "pandora: $n behaviour files from $($codes.Count) mods ($($codes -join ', '))"
   }
   'menu' {
     if (Get-Process SkyrimSE -EA SilentlyContinue) { Stop-Process -Name SkyrimSE -Force; Start-Sleep 3 }
-    if (-not (Test-Path "$State\mode-on")) { & $PSCommandPath on | Out-Null }
+    if (-not (Test-Path "$State\mode-on")) { & $PSCommandPath on -World $World | Out-Null }
     # -Shaders on|off (round 5's sky A/B, 2026-11-03): only Community Shaders' DLL is laid or set aside, as the
     # play-modded cards do (its settings files stay).
     $cs = "$Data\SKSE\Plugins\CommunityShaders.dll"
@@ -325,7 +338,7 @@ switch ($Cmd) {
     # file, so the cache holds across off/on); the rest are hashed on every core, with progress every 500.
     # -Full ignores the cache.
     $t0 = Get-Date
-    $inst = Get-Content "$Mo2\installed.json" -Raw -Encoding UTF8 | ConvertFrom-Json  # 5.1 reads ANSI otherwise
+    $inst = Get-Content $Installed -Raw -Encoding UTF8 | ConvertFrom-Json  # 5.1 reads ANSI otherwise
     $rec = @{}; foreach ($p in $inst.files.PSObject.Properties) { $rec[$p.Name.ToLower()] = $p.Value }
     $cacheFile = "$State\hashcache.tsv"; $cache = @{}
     if (-not $Full -and (Test-Path $cacheFile)) {
@@ -350,8 +363,9 @@ public static class ParHash {
     # Pandora's outputs replace some mods' behaviour files in Data: those paths hold Pandora's file, not the mod's;
     # the machine-made outputs are not in installed.json
     # our own files, laid by `on` from C:\argonia\ours (Argonia.esp, Argonia.ini, scripts\*.pex): expected, not extra
-    $ours = @{}; foreach ($f in @(Get-ChildItem "$Root\ours" -Recurse -File -EA SilentlyContinue | ? { $_.FullName -notlike "$Root\ours\derived\*" })) {
+    $ours = @{}; foreach ($f in @(Get-ChildItem "$Root\ours" -Recurse -File -EA SilentlyContinue | ? { $_.FullName -notlike "$Root\ours\derived\*" -and $_.FullName -notlike "$Root\ours\derived-*" })) {
       $ours[$f.FullName.Substring("$Root\ours\".Length).ToLower()] = 1 }
+    foreach ($o in $OursPlugins) { $ours[$o.name.ToLower()] = 1 }
     $pandora = @{}; foreach ($gen in 'pandora-output') { if (Test-Path "$Mo2\mods\$gen") {
       Get-ChildItem "$Mo2\mods\$gen" -Recurse -File | % { $pandora[$_.FullName.Substring("$Mo2\mods\$gen\".Length).ToLower()] = 1 } } }
     $bad = 0; $n = 0; $todo = New-Object System.Collections.Generic.List[object]; $hits = 0
@@ -388,13 +402,13 @@ public static class ParHash {
       $rel = $f.Substring($f.IndexOf('\Data\') + 6).ToLower()
       if ($vanilla[$rel] -or $pandora[$rel] -or $rec[$rel] -or $keepSet[$rel] -or $ours[$rel] -or $rel.StartsWith('shadercache\') -or $rel.StartsWith('mcm\settings\') -or $rel -eq 'interface\controls\pc\controlmap.txt' -or
           ($rel -match '^skse\\(plugins\\[^\\]+\.ini|[^\\]+\.log)$')) { continue }  # inis and logs the plugins write at first run
-      if (@(Get-ChildItem "$Root\ours\derived\*\$rel" -EA SilentlyContinue).Count) { continue }  # a derived folder's (on)
+      if (@($Derived | ? { @(Get-ChildItem "$_\*\$rel" -EA SilentlyContinue).Count }).Count) { continue }  # a derived folder's (on)
       "unrecorded: $rel"; $extra++
     }
     "$n recorded files checked, $bad bad, $extra unrecorded, $($pandora.Count) Pandora outputs, $([int]((Get-Date) - $t0).TotalSeconds) s"
     if ($bad -eq 0 -and $extra -eq 0) { 'VERIFY OK' }
   }
-  { $_ -in 'play-vanilla', 'play-modded' } {
+  { $_ -in 'play-vanilla', 'play-modded', 'play-newworld' } {
     # Already running (a reconnect, or the other card): bring it to the front; never start a second copy.
     if (Focus-Skyrim) {
       'Skyrim already running: brought to the front'
@@ -405,7 +419,7 @@ public static class ParHash {
     Start-Process powershell.exe -WindowStyle Hidden -ArgumentList '-ExecutionPolicy', 'Bypass', '-File', "$Root\infra\splash.ps1"
     if ($Cmd -eq 'play-vanilla') { & $PSCommandPath off; Wait-Steam | Out-Null; Start-Process "$Game\SkyrimSE.exe" -WorkingDirectory $Game }
     else {
-      & $PSCommandPath on
+      & $PSCommandPath on -World $(if ($Cmd -eq 'play-newworld') { 'NewWorld' } else { 'Argonia' })
       # our own plugin, its ini and scripts are laid by `on` itself (above), so Data is checkable before a launch
       # Shaders off: only CS's DLL leaves Data (a hard link: its mod file stays); its settings files stay ($Keep)
       $cs = "$Data\SKSE\Plugins\CommunityShaders.dll"

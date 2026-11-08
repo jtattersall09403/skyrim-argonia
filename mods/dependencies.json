@@ -1,5 +1,5 @@
 {
- "_about": "Every mod the Argonia profile installs, in load order, grouped: core (script extender, fixes, frameworks, USSEP, the TDM/TrueHUD lock-on), combat (Nexus collection xyf1u3 'Soulsborne Combat' out of the box, one row per mod), traversal (FreeClimb), magic (Magic Expanded), world (Black Marsh & Valenwood, the default world), start (Alternate Start), dev (laid only with --dev, never shipped). Archives are downloaded to ~/.argonia/mods by infra/gpu-box/stack.py, cached in s3://argonia-private-050977237313/mods/, and never committed (decision 0003). sha256 is the archive's: null on a new row until `stack.py fetch --record` fills it; stack.py verify checks it and the installed files' hashes. check: a question to answer before the row is trusted. Row order is load order: stage writes plugins.txt from it; `plugins` lists the result (the Skyrim masters, USSEP, Black Marsh.esm, Alternate Start, then the collection's plugins in its order, Magic.esp, FreeClimb.esp).",
+ "_about": "Every mod the Argonia profile installs, in load order, grouped: core (script extender, fixes, frameworks, USSEP, the TDM/TrueHUD lock-on), combat (Nexus collection xyf1u3 'Soulsborne Combat' out of the box, one row per mod), traversal (FreeClimb), magic (Magic Expanded), world (Black Marsh & Valenwood, the default world), start (Alternate Start), dev (laid only with --dev, never shipped). Archives are downloaded to ~/.argonia/mods by infra/gpu-box/stack.py, cached in s3://argonia-private-050977237313/mods/, and never committed (decision 0003). sha256 is the archive's: null on a new row until `stack.py fetch --record` fills it; stack.py verify checks it and the installed files' hashes. check: a question to answer before the row is trusted. Row order is load order: stage writes plugins.txt from it; `plugins` lists the result (the Skyrim masters, USSEP, Black Marsh.esm, Alternate Start, then the collection's plugins in its order, Magic.esp, FreeClimb.esp). newworld: laid only in the NewWorld profile (stack.py stage writes profiles Argonia and NewWorld; NewWorld = every play row, then the newworld rows asset-only (asset_only: assets loose, BSAs extracted, plugins never active), then ArgoniaNewWorld.esm last).",
  "game": "skyrimspecialedition",
  "runtime": "1.7.104.0 (Steam build 24914197), SKSE 2.3.1",
  "plugins": [
@@ -139,6 +139,10 @@
    "file": "Argonia.esp",
    "mod": "ours",
    "note": "our plugin, built from plugin/Argonia by make plugin; laid last and enabled by infra/gpu-box/stack.ps1 from C:\\argonia\\ours, never staged by stack.py"
+  },
+  {
+   "file": "ArgoniaNewWorld.esm",
+   "mod": "ours (NewWorld profile, last)"
   }
  ],
  "mods": [
@@ -2564,6 +2568,336 @@
    "conflicts": "not checked in houseCARL; it overrides one vanilla interior CELL (0CAB91) and Tamriel's persistent cell to hold its two floor plates and the spell tome's container",
    "linked_or_forked_by": "none: depended on as the player’s own download",
    "settings_why": "Its spell _Magistrate_LevitateSpell (Magistrate Levitate.esp 0083EB, 'Levitate') is given by the opening's test kit (Generate.cs) so it is in the Magic menu on a new game."
+  },
+  {
+   "id": "tropical-skyrim-sse",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 78044,
+    "file": 328450
+   },
+   "name": "Tropical Skyrim conversion to SSE",
+   "author": "Soolie-Tron91-Kaegus1",
+   "version": "1.1",
+   "archive": "Tropical Skyrim for SE V1.1-78044-1-1-1667415678.rar",
+   "size_kb": 774366,
+   "why": "the land: tropical trees, grass and climate (decision 0028); the new world (phase nw-02) reads its records and assets: asset-only: its meshes and textures laid loose (its BSAs extracted) in the NewWorld profile alone, its plugins never active; ArgoniaNewWorld.esm carries its own base records pointing at these paths (owner, 2026-11-08)",
+   "drop": [
+    "meshes/interface",
+    "textures/interface",
+    "textures/landscape/riverbottom_n.dds",
+    "textures/landscape/rivermud_n.dds",
+    "textures/landscape/riverbededge_n.dds",
+    "textures/landscape/coastoceanfloor01_n.dds",
+    "textures/landscape/coastbeach01_n.dds",
+    "textures/landscape/coastbeachgrass01_n.dds",
+    "textures/landscape/frozenmarshlichen01_n.dds",
+    "textures/landscape/frozenmarshgrass01_n.dds",
+    "textures/landscape/fallforestdirt01_n.dds",
+    "textures/landscape/fallforestleaves01_n.dds",
+    "textures/landscape/pineforest03_n.dds",
+    "textures/landscape/pineforest02_n.dds",
+    "textures/landscape/fieldgrass02_n.dds",
+    "textures/landscape/reachmoss01_n.dds",
+    "textures/landscape/reachmossyrocks01_n.dds",
+    "textures/landscape/reachdirt01_n.dds",
+    "textures/landscape/rocks01_n.dds",
+    "textures/landscape/tundrarocks01_n.dds",
+    "textures/landscape/dirtpath01_n.dds"
+   ],
+   "drop_why": "the 19 landscape normals: our ground TXSTs name Skyrim.esm's own (terrain/texture_sets.py); TS's DXT1 copies carry specular alpha 255 against vanilla's p50 ~20, the shiny ground of owner play test 3 findings 16-17 (lane 1.15-r4-materials). The interface: its main-menu fog particles (meshes/interface/intmenufogparticles.nif over textures/interface/objects/background*.dds) are the scrolling tree/desert bar on the main menu and behind loads (owner play test 1; 1.9); Dear Diary's menu meshes win once these go",
+   "required": true,
+   "profile": "newworld",
+   "sha256": "6d58bb0018f8fed106cb3dc534f9eaac668595f7d59d0c4a689ba4774732e167",
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission. It converts Soolie's mod, whose terms demand permission for use of contents.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus description: SSE conversion of Soolie's Tropical Skyrim by Tron91; no terms; inherits skyrim-33017's permission requirement (assets-creatures.md line 129)",
+   "plugins": [
+    "Tropical Skyrim -- Birds.esp",
+    "Tropical Skyrim.esp"
+   ],
+   "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download; ArgoniaWorld.esm copies the bodies of its winning WATR overrides DefaultWater (000018, ARG_WATR_sea and _lake), DefaultMarshWater (105CC3, _marsh) and DefaultMarshWaterTransition (105CC4, _brackish), read from the player's own plugin at build time (water/layer.py winners; 1.15 r5 water types, 2026-11-03)",
+   "asset_only": true
+  },
+  {
+   "id": "xanmeer-tileset",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 181193,
+    "file": 790547
+   },
+   "name": "Argonian Xanmeer Tileset - Modder's Resource",
+   "author": "DarthVitrial",
+   "version": "1.1",
+   "archive": "Xanmeer Resources 181193 1.1 2026-08-15T23-35Z tSBIcEWjI.7z",
+   "size_kb": 63357,
+   "why": "Argonian ruin pieces; the new world (phase nw-02) reads its records and assets: asset-only: its meshes and textures laid loose (its BSAs extracted) in the NewWorld profile alone, its plugins never active; ArgoniaNewWorld.esm carries its own base records pointing at these paths (owner, 2026-11-08)",
+   "required": true,
+   "profile": "newworld",
+   "sha256": "29baf86a70d81a1b74bead256c6ce2ed2e607ff1a6b04331a651ba6a0e366e2e",
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus description read: tileset 'purely the models/textures'; credits NorthWindBlue/Jonathan Morris; assets-creatures.md says 'available for this project' per audit-world.md line 53",
+   "plugins": [
+    "XanmeerResources.esp"
+   ],
+   "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download",
+   "from": "2.W5",
+   "asset_only": true
+  },
+  {
+   "id": "king-of-the-murkmire",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 190459,
+    "file": 822292
+   },
+   "name": "King of the Murkmire",
+   "author": "pancake0723",
+   "version": "1.1.1",
+   "archive": "King of the Murkmire - Main 190459 1.1.1 2026-10-18T16-06Z N2AYL5DmV.7z",
+   "size_kb": 700308,
+   "why": "Saxhleel clothing, Murkmire buildings and props; the new world (phase nw-02) reads its records and assets: asset-only: its meshes and textures laid loose (its BSAs extracted) in the NewWorld profile alone, its plugins never active; ArgoniaNewWorld.esm carries its own base records pointing at these paths (owner, 2026-11-08)",
+   "required": true,
+   "profile": "newworld",
+   "sha256": "00abb3b460ee395e0c2df62330aaa63f6a02d78eb9f5ad4e6497c346205746b0",
+   "licence": "Author terms on page: free for free mods that do not use AI",
+   "permission_summary": "Page allows use of its assets in free mods that do not make use of AI; depending is fine, but our pipeline uses AI so the owner's permission held since 2026-09-24 is what covers our placement of its items.",
+   "ai_clause": "restricts AI: \"do not make use of AI\" (audit quote of page terms)",
+   "permission_ask": true,
+   "permission_evidence": "Nexus description: 'Lastly, if you want to make an addon, please don't make use of AI in it at all'; assets-creatures.md line 131: 'free for use in your mods if they are released for free and do not make use of AI'; sourcing-register: author permission held by owner 2026-09-24",
+   "plugins": [
+    "King of the Murkmire.esp"
+   ],
+   "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
+   "conflicts": "336 dangling refs inside King of the Murkmire.esp's own records (upstream leftovers; no missing master; houseCARL check 2026-10-29)",
+   "linked_or_forked_by": "none: depended on as the player’s own download; ArgoniaWorld.esm no longer copies its DefaultBlackmarshWater WATR (08184260; olive 130,116,34, read as grey-green in the round 5 stills); the black type copies Update.esm's MurkyWater (docs/research/2026-11-03/lane-1.15-r5-black-water.md); this row is kept for the other KotM content",
+   "asset_only": true
+  },
+  {
+   "id": "htbm",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 35929,
+    "file": 576886
+   },
+   "name": "Here There Be Monsters SSE",
+   "author": "Araanim",
+   "version": "9.31",
+   "archive": "Here There Be Monsters SSE-35929-9-31-1735389344.7z",
+   "size_kb": 306335,
+   "why": "Here There Be Monsters: Sign of Cipactli's requirement; the new world (phase nw-02) reads its records and assets: asset-only: its meshes and textures laid loose (its BSAs extracted) in the NewWorld profile alone, its plugins never active; ArgoniaNewWorld.esm carries its own base records pointing at these paths (owner, 2026-11-08)",
+   "required": true,
+   "profile": "newworld",
+   "sha256": "59058ce25da13590dcfc9cd578e4cca7107e05f75a96592efb9ea61912658f83",
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found",
+   "plugins": [
+    "Here There Be Monsters.esp"
+   ],
+   "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
+   "conflicts": "13 dangling refs inside Here There Be Monsters.esp's own records (upstream leftovers; no missing master; houseCARL check 2026-10-29)",
+   "linked_or_forked_by": "none: depended on as the player’s own download",
+   "asset_only": true
+  },
+  {
+   "id": "htbm-cipactli",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 35933,
+    "file": 207025
+   },
+   "name": "Here There Be Monsters - Sign of Cipactli SSE",
+   "author": "Araanim",
+   "version": "2.92",
+   "archive": "Here There Be Monsters - Sign of Cipactli SSE-35933-2-92-1622685794.7z",
+   "size_kb": 1537198,
+   "why": "Argonian architecture, armour and creatures; the new world (phase nw-02) reads its records and assets: asset-only: its meshes and textures laid loose (its BSAs extracted) in the NewWorld profile alone, its plugins never active; ArgoniaNewWorld.esm carries its own base records pointing at these paths (owner, 2026-11-08)",
+   "required": true,
+   "profile": "newworld",
+   "sha256": "c44da49e52ae68d41df23fdf672b406d09ea72a9338e3e496b5be86784d0aed6",
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found; sourcing-register uses its native clothing (modder's resource, use with credit)",
+   "plugins": [
+    "Here There Be Monsters - Curse of Cipactli.esp"
+   ],
+   "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
+   "conflicts": "2 dangling refs inside Here There Be Monsters - Curse of Cipactli.esp's own records (upstream leftovers; no missing master; houseCARL check 2026-10-29)",
+   "linked_or_forked_by": "none: depended on as the player’s own download",
+   "asset_only": true
+  },
+  {
+   "id": "mud-mother-grove",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 146557,
+    "file": 612822
+   },
+   "name": "Mud Mother Grove - An Argonian Mud Hut",
+   "author": "geminivoid",
+   "version": "1.5.1",
+   "archive": "Mud Mother Grove - ESL File-146557-1-5-1-1743543511.rar",
+   "size_kb": 51745,
+   "why": "Argonian mud hut kit (ESL); the new world (phase nw-02) reads its records and assets: asset-only: its meshes and textures laid loose (its BSAs extracted) in the NewWorld profile alone, its plugins never active; ArgoniaNewWorld.esm carries its own base records pointing at these paths (owner, 2026-11-08)",
+   "required": true,
+   "profile": "newworld",
+   "sha256": "7ac552437eeac11ff87cf14a4d22e3d4769d16fb7dde6f3c0218c7a133e017f2",
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found",
+   "plugins": [
+    "ArgonianLakeHouse.esl"
+   ],
+   "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download",
+   "asset_only": true
+  },
+  {
+   "id": "cc-ayleid-resources",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 83999,
+    "file": 355319
+   },
+   "name": "Creation Club Ayleid Ruin Resources",
+   "author": "Sarthes Arai",
+   "version": "1.0",
+   "archive": "CC Ayleid Ruins Resources 1 0-83999-1-0-1675274373.zip",
+   "size_kb": 11210,
+   "why": "Ayleid ruin pieces; the new world (phase nw-02) reads its records and assets: asset-only: its meshes and textures laid loose (its BSAs extracted) in the NewWorld profile alone, its plugins never active; ArgoniaNewWorld.esm carries its own base records pointing at these paths (owner, 2026-11-08)",
+   "required": true,
+   "profile": "newworld",
+   "sha256": "03f9203f14744f481e089901fa307fe190660f4bfad953d51b0f28743fed25be",
+   "licence": "Author terms on page: free for unsold mods with credit",
+   "permission_summary": "Free to use in mods that are not sold, with credit; depending is fine and our free mod may use it with credit, but the page says nothing on AI.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus description: 'Feel free to use these assets in your mods as long as these are not being sold ... proper credit'",
+   "plugins": [
+    "CCAyliedRuinsResources.esp"
+   ],
+   "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download",
+   "from": "2.W5",
+   "asset_only": true
+  },
+  {
+   "id": "sleeping-hist-tree",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 116792,
+    "file": 498345
+   },
+   "name": "Skyfall's Sleeping Hist Tree Overhaul",
+   "author": "Skyfall515 - ToosTruus - Clofas",
+   "version": "1.4",
+   "archive": "Skyfall Sleeping Hist Tree Overhaul-116792-1-4-1714968243.7z",
+   "size_kb": 32211,
+   "why": "Hist tree meshes; the new world (phase nw-02) reads its records and assets: asset-only: its meshes and textures laid loose (its BSAs extracted) in the NewWorld profile alone, its plugins never active; ArgoniaNewWorld.esm carries its own base records pointing at these paths (owner, 2026-11-08)",
+   "required": true,
+   "profile": "newworld",
+   "sha256": "1b7f3e3149f2db8735403bb44ef849ee865063300e01dd5f188551dfaf2ea5cf",
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus description: author gives permission only to backport to LE ('You have my permission')",
+   "plugins": [
+    "Skyfall Sleeping Tree Overhaul.esp"
+   ],
+   "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download",
+   "from": "2.W5",
+   "asset_only": true
+  },
+  {
+   "id": "depths-of-skyrim",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 26913,
+    "file": 175564
+   },
+   "name": "Depths of Skyrim - An Underwater Overhaul SSE",
+   "author": "TheBlackpixel",
+   "version": "1.1.7",
+   "archive": "Depths of Skyrim-26913-1-1-7-1608572556.rar",
+   "size_kb": 105657,
+   "why": "underwater flora; the new world (phase nw-02) reads its records and assets: asset-only: its meshes and textures laid loose (its BSAs extracted) in the NewWorld profile alone, its plugins never active; ArgoniaNewWorld.esm carries its own base records pointing at these paths (owner, 2026-11-08)",
+   "required": true,
+   "profile": "newworld",
+   "sha256": "45256b8e537d48e12f1b9ae81512b6005478b86fb328e0dcdee3a2684ec2acd8",
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found",
+   "plugins": [
+    "DepthsOfSkyrim.esp"
+   ],
+   "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
+   "conflicts": "22 dangling refs inside DepthsOfSkyrim.esp's own records (upstream leftovers; no missing master; houseCARL check 2026-10-29)",
+   "linked_or_forked_by": "none: depended on as the player’s own download",
+   "from": "2.W5",
+   "asset_only": true
+  },
+  {
+   "id": "sirenroot",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 70917,
+    "file": 747488
+   },
+   "name": "SIRENROOT - Deluge of Deceit",
+   "author": "Everglaid",
+   "version": "1.30",
+   "archive": "SIRENROOT - Deluge of Deceit 1.30-70917-1-30-1777622316.zip",
+   "size_kb": 345903,
+   "why": "ruin blocks and caustics; the new world (phase nw-02) reads its records and assets: asset-only: its meshes and textures laid loose (its BSAs extracted) in the NewWorld profile alone, its plugins never active; ArgoniaNewWorld.esm carries its own base records pointing at these paths (owner, 2026-11-08)",
+   "required": true,
+   "profile": "newworld",
+   "sha256": "c1ba1454928262e37fb2c01d75aefbc492c75964df65cc253cfdd75e5948578b",
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found",
+   "plugins": [
+    "evgSIRENROOT.esm"
+   ],
+   "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download",
+   "from": "2.W5",
+   "asset_only": true
   }
  ]
 }

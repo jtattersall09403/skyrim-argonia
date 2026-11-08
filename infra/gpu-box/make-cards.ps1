@@ -4,6 +4,7 @@ Add-Type -AssemblyName System.Drawing
 $out = 'C:\argonia\cards'; New-Item -ItemType Directory -Force $out | Out-Null
 $cards = @(
   @{ file = 'argonia.png'; title = "ARGONIA"; sub = "modded"; colour = '#2b3a2b' },
+  @{ file = 'newworld.png'; title = "ARGONIA"; sub = "new world"; colour = '#2b3a36' },
   @{ file = 'vanilla.png'; title = "SKYRIM"; sub = "vanilla"; colour = '#2b2f3a' }
 )
 Get-ChildItem $out -Filter '*.png' -ErrorAction SilentlyContinue | Remove-Item -Force

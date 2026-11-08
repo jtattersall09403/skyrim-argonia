@@ -43,7 +43,12 @@ HOME = pathlib.Path.home()
 MODS = HOME / ".argonia" / "mods"
 STACK = HOME / ".argonia" / "stack"
 MO2 = STACK / "MO2"
-PROFILE = "Argonia"
+PROFILE = "Argonia"  # the BM&V world: every play row
+NEWWORLD = "NewWorld"  # the new world (phase nw-02): every play row, then the newworld rows
+
+
+def installed_name(profile):
+    return "installed.json" if profile == PROFILE else f"installed-{profile}.json"
 RUN = str(HERE / "run.sh")
 
 
@@ -80,8 +85,13 @@ def save_manifest(doc):
 
 
 def chosen(doc, dev):
-    """The rows the profile lays, in load order: play rows (dev rows with --dev)."""
-    return [m for m in doc["mods"] if m["profile"] == "play" or (m["profile"] == "dev" and dev)]
+    """The rows stage places, in load order: play and newworld rows (dev rows with --dev). The Argonia profile lays
+    all but the newworld rows; the NewWorld profile lays them all (profile_rows)."""
+    return [m for m in doc["mods"] if m["profile"] in ("play", NEWWORLD.lower()) or (m["profile"] == "dev" and dev)]
+
+
+def profile_rows(rows, profile):
+    return [m for m in rows if profile == NEWWORLD or m["profile"] != NEWWORLD.lower()]
 
 
 # ---- fetch --------------------------------------------------------------------------------------------------------
@@ -564,6 +574,30 @@ def complete_nested(m, archive, data):
     print(f"  {m['id']}: complete: {len(want)} archive files, all laid")
 
 
+def assets_only(data):
+    """An asset-only row (owner, 2026-11-08): its plugins are never active, and a BSA loads only beside an active
+    plugin of its name, so each BSA is extracted loose (a loose file the mod already ships wins, as in game) and
+    the BSAs and plugins leave the staged folder."""
+    import sys
+    sys.path.insert(0, str(REPO / "tools"))
+    from navmesh import bsa
+    n = 0
+    for arc in sorted(data.glob("*.bsa")):
+        a = bsa.Archive(bsa.local(arc))
+        room(sum(v[1] for v in a.files.values()) * 2, f"extract {arc.name}")
+        for key in a.files:
+            dst = data / key
+            if not dst.exists():
+                dst.parent.mkdir(parents=True, exist_ok=True)
+                dst.write_bytes(a.get(key))
+                n += 1
+        arc.unlink()
+    for f in data.iterdir():
+        if f.suffix.lower() in PLUGIN_EXT:
+            f.unlink()
+    print(f"  asset-only: {n} files extracted from BSAs; plugins and BSAs removed")
+
+
 def prune(data, m):
     for f in list(data.rglob("*")):
         if f.is_file() and (f.name.lower().startswith("put your ") and f.suffix.lower() == ".txt"
@@ -767,7 +801,10 @@ def cmd_stage(a):
     for d in (mods, tools, root, keys):
         d.mkdir(parents=True, exist_ok=True)
     names, record, ids, pruned, restaged = [], {}, {m["id"] for m in rows}, set(), {"pandora-output"}
-    prev = json.loads((STACK / "installed.json").read_text())["files"] if (STACK / "installed.json").exists() else {}
+    prev = {}
+    for profile in (NEWWORLD, PROFILE):
+        if (STACK / installed_name(profile)).exists():
+            prev.update(json.loads((STACK / installed_name(profile)).read_text())["files"])
     for d in list(mods.iterdir()):
         if d.name not in ids and d.name not in ("pandora-output", LODS):
             shutil.rmtree(d)
@@ -800,6 +837,8 @@ def cmd_stage(a):
                     shutil.rmtree(tools / m["id"], ignore_errors=True)
                 taken = place(m, src, data, tools, root)
             shutil.rmtree(src, ignore_errors=True)
+            if m.get("asset_only"):
+                assets_only(data)
             prune(data, m)
             if m.get("nested") and not m.get("keep"):
                 complete_nested(m, archive_path(m), data)
@@ -829,52 +868,57 @@ def cmd_stage(a):
         names.append(LODS)
     names.append("pandora-output")  # filled when Pandora runs on the machine; highest priority
     (mods / "pandora-output").mkdir(exist_ok=True)
-    prof = MO2 / "profiles" / PROFILE
-    shutil.rmtree(prof, ignore_errors=True)
-    prof.mkdir(parents=True)
-    (prof / "modlist.txt").write_text("".join(f"+{n}\r\n" for n in reversed(names)))  # MO2 order: highest first
-    plugins, have, unmet = [], {p.lower() for p in vanilla_plugins()}, []
-    order = {m["id"]: [x.lower() for x in m.get("plugins", [])] for m in rows}
+    all_names = names
+    for profile in (PROFILE, NEWWORLD):
+        prows = profile_rows(rows, profile)
+        pids = {m["id"] for m in prows}
+        names = [n for n in all_names if n in pids or n not in ids]  # derived folders (LODs, Pandora) in both
+        prof = MO2 / "profiles" / profile
+        shutil.rmtree(prof, ignore_errors=True)
+        prof.mkdir(parents=True)
+        (prof / "modlist.txt").write_text("".join(f"+{n}\r\n" for n in reversed(names)))  # MO2 order: highest first
+        plugins, have, unmet = [], {p.lower() for p in vanilla_plugins()}, []
+        order = {m["id"]: [x.lower() for x in m.get("plugins", [])] for m in prows}
 
-    def plugin_key(n, f):
-        """A row's own `plugins` list is its load order; else masters (.esm, .esl) before .esp, then by name
-        (alphabetical alone put "Black Marsh North.esp" before its master "Black Marsh.esm", 2026-11-05)."""
-        want = order.get(n, [])
-        if f.name.lower() in want:
-            return (0, want.index(f.name.lower()), "")
-        return (1, 0 if f.suffix.lower() in (".esm", ".esl") else 1, f.name.lower())
+        def plugin_key(n, f):
+            """A row's own `plugins` list is its load order; else masters (.esm, .esl) before .esp, then by name
+            (alphabetical alone put "Black Marsh North.esp" before its master "Black Marsh.esm", 2026-11-05)."""
+            want = order.get(n, [])
+            if f.name.lower() in want:
+                return (0, want.index(f.name.lower()), "")
+            return (1, 0 if f.suffix.lower() in (".esm", ".esl") else 1, f.name.lower())
 
-    for n in names:
-        for f in sorted((mods / n).iterdir(), key=lambda f: plugin_key(n, f)):
-            if f.suffix.lower() in PLUGIN_EXT and f.name.lower() not in have:
-                missing = [x for x in masters_of(f) if x.lower() not in have]
-                if missing:
-                    unmet.append(f"{n}: {f.name} needs masters not loaded before it: {missing}")
-                plugins.append(f.name)
-                have.add(f.name.lower())
-    if unmet and not group:
-        raise SystemExit("\n".join(unmet))
-    print("\n".join(f"  (one group: {u})" for u in unmet))
-    (prof / "plugins.txt").write_text("".join(f"*{p}\r\n" for p in plugins))
-    (prof / "loadorder.txt").write_text("".join(f"{p}\r\n" for p in vanilla_plugins() + plugins))
-    files = {}
-    for n in names:  # later mods win
-        hf = keys / f"{n}.files.json"  # the row's own file hashes, kept with its key: a skipped row is not re-hashed
-        if n in restaged or not hf.exists():
-            # a row restaged now is hashed from disk even if it was pruned before: the pruned record is its old
-            # content (BM&V's trimmed keep list stood in for the whole mod, 2026-11-05)
-            if n in pruned and n not in restaged:  # pushed, verified on the machine and cut to its plugins here
-                own = {k: v[1] for k, v in prev.items() if v[0] == n}
-            else:
-                own = {str(f.relative_to(mods / n)).replace("/", "\\").lower(): sha256(f)
-                       for f in sorted((mods / n).rglob("*")) if f.is_file()}
-            hf.write_text(json.dumps(own, indent=0))
-        files.update((k, [n, h]) for k, h in json.loads(hf.read_text()).items())
-    for f in sorted(root.rglob("*")):
-        if f.is_file():
-            files["..\\" + f.name.lower()] = ["skse", sha256(f)]
-    (STACK / "installed.json").write_text(json.dumps({"rows": record, "plugins": plugins, "files": files}, indent=0))
-    print(f"profile {PROFILE}: {len(names) - 1} mods, {len(plugins)} plugins, {len(files)} files")
+        for n in names:
+            for f in sorted((mods / n).iterdir(), key=lambda f: plugin_key(n, f)):
+                if f.suffix.lower() in PLUGIN_EXT and f.name.lower() not in have:
+                    missing = [x for x in masters_of(f) if x.lower() not in have]
+                    if missing:
+                        unmet.append(f"{n}: {f.name} needs masters not loaded before it: {missing}")
+                    plugins.append(f.name)
+                    have.add(f.name.lower())
+        if unmet and not group:
+            raise SystemExit("\n".join(unmet))
+        print("\n".join(f"  (one group: {u})" for u in unmet))
+        (prof / "plugins.txt").write_text("".join(f"*{p}\r\n" for p in plugins))
+        (prof / "loadorder.txt").write_text("".join(f"{p}\r\n" for p in vanilla_plugins() + plugins))
+        files = {}
+        for n in names:  # later mods win
+            hf = keys / f"{n}.files.json"  # the row's own file hashes, kept with its key: a skipped row is not re-hashed
+            if n in restaged or not hf.exists():
+                # a row restaged now is hashed from disk even if it was pruned before: the pruned record is its old
+                # content (BM&V's trimmed keep list stood in for the whole mod, 2026-11-05)
+                if n in pruned and n not in restaged:  # pushed, verified on the machine and cut to its plugins here
+                    own = {k: v[1] for k, v in prev.items() if v[0] == n}
+                else:
+                    own = {str(f.relative_to(mods / n)).replace("/", "\\").lower(): sha256(f)
+                           for f in sorted((mods / n).rglob("*")) if f.is_file()}
+                hf.write_text(json.dumps(own, indent=0))
+            files.update((k, [n, h]) for k, h in json.loads(hf.read_text()).items())
+        for f in sorted(root.rglob("*")):
+            if f.is_file():
+                files["..\\" + f.name.lower()] = ["skse", sha256(f)]
+        (STACK / installed_name(profile)).write_text(json.dumps({"rows": record, "plugins": plugins, "files": files}, indent=0))
+        print(f"profile {profile}: {len(names) - 1} mods, {len(plugins)} plugins, {len(files)} files")
     return restaged - {"pandora-output"}
 
 
@@ -1017,15 +1061,22 @@ def cmd_push(a):
     sent = json.loads((out / "sent.json").read_text()) if (out / "sent.json").exists() else {}
     names = [d.name for d in sorted((MO2 / "mods").iterdir())]
     digest = {}
-    inst = json.loads((STACK / "installed.json").read_text())["files"]
+    inst = {}
+    for profile in (PROFILE, NEWWORLD):  # a mod's files are the same in either profile
+        inst.update(json.loads((STACK / installed_name(profile)).read_text())["files"])
     for n in names:
         digest[n] = hashlib.sha256("".join(sorted(f"{k}{v[1]}" for k, v in inst.items() if v[0] == n)).encode()).hexdigest()
     todo = [n for n in names if sent.get(n) != digest[n] and n != "pandora-output"]
+    only = getattr(a, "only", None)
+    if only:  # these rows alone: every other mod, and its record on the machine, stays as the machine has it
+        todo = [n for n in todo if n in only]
+    print(f"push: {len(todo)} mods to send: {', '.join(todo)}", flush=True)
     run("ps", r"New-Item -ItemType Directory -Force C:\argonia\MO2\mods, C:\argonia\MO2\push, C:\argonia\MO2\tools,"
-              rf" C:\argonia\MO2\profiles\{PROFILE}, C:\argonia\MO2\root | Out-Null")
+              rf" C:\argonia\MO2\profiles\{PROFILE}, C:\argonia\MO2\profiles\{NEWWORLD}, C:\argonia\MO2\root | Out-Null")
     batch = [todo[i:i + 12] for i in range(0, len(todo), 12)]
     for group in batch:
         for n in group:
+            print(f"sending {n}", flush=True)
             send_tar(MO2 / "mods" / n, out, n, digest[n])
         script = "; ".join(unpack_script(n) for n in group)
         out_ps = run("ps", script + "; 'UNPACKED'", check=False, capture=True)  # absent after any failure
@@ -1036,20 +1087,37 @@ def cmd_push(a):
             shutil.rmtree(out / "parts" / f"{n}-{digest[n][:16]}", ignore_errors=True)
         (out / "sent.json").write_text(json.dumps(sent))
         print("pushed", ", ".join(group))
-    for d in ("tools", "root"):
+    for d in () if only else ("tools", "root"):  # --only: the machine's tools and root stand
         subprocess.run(["tar", "-cf", str(out / f"{d}.tar"), "-C", str(MO2 / d), "."], check=True)
         run("put", str(out / f"{d}.tar"), f"C:/argonia/MO2/push/{d}.tar")
         run("ps", rf"Remove-Item -Recurse -Force C:\argonia\MO2\{d} -EA SilentlyContinue; New-Item -ItemType Directory"
                   rf" C:\argonia\MO2\{d} | Out-Null; tar -xf C:\argonia\MO2\push\{d}.tar -C C:\argonia\MO2\{d}")
-    run("put", str(MO2 / "profiles" / PROFILE) + "/.", f"C:/argonia/MO2/profiles/{PROFILE}/")
-    stale = [n for n in sent if n not in names]
+    for profile in (PROFILE, NEWWORLD):
+        if only and not (set(read_profile_mods(profile)) - set(read_profile_mods(PROFILE))) & set(only):
+            continue  # --only: a profile none of the pushed rows belong to alone stays as on the machine
+        run("put", str(MO2 / "profiles" / profile) + "/.", f"C:/argonia/MO2/profiles/{profile}/")
+    stale = [] if only else [n for n in sent if n not in names]
     if stale:  # rows no longer in the profile (a set swapped out)
         run("ps", "; ".join(rf"Remove-Item -Recurse -Force -LiteralPath 'C:\argonia\MO2\mods\{n}' -EA SilentlyContinue"
                             for n in stale))
         for n in stale:
             sent.pop(n)
         (out / "sent.json").write_text(json.dumps(sent))
-    run("put", str(STACK / "installed.json"), "C:/argonia/MO2/installed.json")
+    for profile in (PROFILE, NEWWORLD):
+        src = STACK / installed_name(profile)
+        if only:  # the machine's record, with only the pushed rows' files taken from here (later rows win)
+            with tempfile.TemporaryDirectory() as t:
+                run("get", "C:/argonia/MO2/installed.json", f"{t}/m.json")
+                rec = json.loads(pathlib.Path(f"{t}/m.json").read_text(encoding="utf-8-sig"))
+            local = json.loads(src.read_text())
+            prof_mods = set(read_profile_mods(profile))
+            if profile == PROFILE and not (prof_mods & set(only)):
+                continue  # nothing of this profile was pushed: its record on the machine stands
+            rec["files"].update((k, v) for k, v in local["files"].items() if v[0] in only)
+            rec["plugins"] = local["plugins"]
+            src = out / installed_name(profile)
+            src.write_text(json.dumps(rec, indent=0))
+        run("put", str(src), f"C:/argonia/MO2/{installed_name(profile)}")
     # a portable MO2 instance description, so houseCARL (which reads MO2 instances) sees this profile
     ini = out / "ModOrganizer.ini"
     ini.write_text("[General]\r\ngameName=Skyrim Special Edition\r\ngamePath=@ByteArray(C:\\\\Program Files (x86)"
@@ -1058,11 +1126,15 @@ def cmd_push(a):
     run("put", str(ini), "C:/argonia/MO2/ModOrganizer.ini")
     (out / "portable.txt").write_text("")
     run("put", str(out / "portable.txt"), "C:/argonia/MO2/portable.txt")
-    for f in ("stack.ps1", "splash.ps1", "display.ps1"):
+    for f in ("stack.ps1", "splash.ps1", "display.ps1", "sunshine-apps.json", "make-cards.ps1"):
         run("put", str(HERE / f), f"C:/argonia/infra/{f}")
     if todo:  # what changed is laid into Data at once when the profile is on
         run("ps", r"if (Test-Path C:\argonia\stack-state\mode-on) { & C:\argonia\infra\stack.ps1 on | Out-Null }")
     print(f"pushed {len(todo)} changed of {len(names)} mods")
+
+
+def read_profile_mods(profile):
+    return [x[1:].strip() for x in (MO2 / "profiles" / profile / "modlist.txt").read_text().splitlines() if x.startswith("+")]
 
 
 def cmd_menu(a):
@@ -1180,7 +1252,8 @@ def main():
         elif name == "stage":
             s.add_argument("--into", help="stage into this dir instead of ~/.argonia/stack (a dry run)")
             s.add_argument("--group", help="with --into: only this group's rows")
-    for name in ("push", "menu", "prune", "evict", "animdata"):
+    sub.add_parser("push").add_argument("--only", nargs="*", help="send these mods alone (the rest stay as on the machine)")
+    for name in ("menu", "prune", "evict", "animdata"):
         sub.add_parser(name)
     sub.add_parser("verify").add_argument("--full", action="store_true", help="rehash every file (no cache)")
     a = p.parse_args()

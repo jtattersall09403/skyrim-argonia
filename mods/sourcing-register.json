@@ -736,5 +736,95 @@
   "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it): the Levitate spell in the opening's test kit (owner walk 2026-11-07)",
   "linked_or_forked_by": "none: depended on as the player’s own download",
   "notes": "author n7magistrate; floating animations credited by the author to DualSun. No terms or AI clause stated on the page."
+ },
+ {
+  "name": "Tropical Skyrim conversion to SSE (Nexus 78044)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/78044?tab=files&file_id=328450",
+  "version": "1.1 (mods/dependencies.json row tropical-skyrim-sse)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it): records and meshes the new world (ArgoniaNewWorld.esm, phase nw-02) places",
+  "linked_or_forked_by": "none: depended on as the player’s own download; ArgoniaWorld.esm copies the bodies of its winning WATR overrides DefaultWater (000018, ARG_WATR_sea and _lake), DefaultMarshWater (105CC3, _marsh) and DefaultMarshWaterTransition (105CC4, _brackish), read from the player's own plugin at build time (water/layer.py winners; 1.15 r5 water types, 2026-11-03)",
+  "notes": "author Soolie-Tron91-Kaegus1. No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission. It converts Soolie's mod, whose terms demand permission for use of contents."
+ },
+ {
+  "name": "Argonian Xanmeer Tileset - Modder's Resource (Nexus 181193)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/181193?tab=files&file_id=790547",
+  "version": "1.1 (mods/dependencies.json row xanmeer-tileset)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it): records and meshes the new world (ArgoniaNewWorld.esm, phase nw-02) places",
+  "linked_or_forked_by": "none: depended on as the player’s own download",
+  "notes": "author DarthVitrial. No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission."
+ },
+ {
+  "name": "King of the Murkmire (Nexus 190459)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/190459?tab=files&file_id=822292",
+  "version": "1.1.1 (mods/dependencies.json row king-of-the-murkmire)",
+  "licence": "Author terms on page: free for free mods that do not use AI",
+  "used_by": "the NewWorld profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it): records and meshes the new world (ArgoniaNewWorld.esm, phase nw-02) places",
+  "linked_or_forked_by": "none: depended on as the player’s own download; ArgoniaWorld.esm no longer copies its DefaultBlackmarshWater WATR (08184260; olive 130,116,34, read as grey-green in the round 5 stills); the black type copies Update.esm's MurkyWater (docs/research/2026-11-03/lane-1.15-r5-black-water.md); this row is kept for the other KotM content",
+  "notes": "author pancake0723. Page allows use of its assets in free mods that do not make use of AI; depending is fine, but our pipeline uses AI so the owner's permission held since 2026-09-24 is what covers our placement of its items."
+ },
+ {
+  "name": "Here There Be Monsters SSE (Nexus 35929)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/35929?tab=files&file_id=576886",
+  "version": "9.31 (mods/dependencies.json row htbm)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it): records and meshes the new world (ArgoniaNewWorld.esm, phase nw-02) places",
+  "linked_or_forked_by": "none: depended on as the player’s own download",
+  "notes": "author Araanim. No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission."
+ },
+ {
+  "name": "Here There Be Monsters - Sign of Cipactli SSE (Nexus 35933)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/35933?tab=files&file_id=207025",
+  "version": "2.92 (mods/dependencies.json row htbm-cipactli)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it): records and meshes the new world (ArgoniaNewWorld.esm, phase nw-02) places",
+  "linked_or_forked_by": "none: depended on as the player’s own download",
+  "notes": "author Araanim. No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission."
+ },
+ {
+  "name": "Mud Mother Grove - An Argonian Mud Hut (Nexus 146557)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/146557?tab=files&file_id=612822",
+  "version": "1.5.1 (mods/dependencies.json row mud-mother-grove)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it): records and meshes the new world (ArgoniaNewWorld.esm, phase nw-02) places",
+  "linked_or_forked_by": "none: depended on as the player’s own download",
+  "notes": "author geminivoid. No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission."
+ },
+ {
+  "name": "Creation Club Ayleid Ruin Resources (Nexus 83999)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/83999?tab=files&file_id=355319",
+  "version": "1.0 (mods/dependencies.json row cc-ayleid-resources)",
+  "licence": "Author terms on page: free for unsold mods with credit",
+  "used_by": "the NewWorld profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it): records and meshes the new world (ArgoniaNewWorld.esm, phase nw-02) places",
+  "linked_or_forked_by": "none: depended on as the player’s own download",
+  "notes": "author Sarthes Arai. Free to use in mods that are not sold, with credit; depending is fine and our free mod may use it with credit, but the page says nothing on AI."
+ },
+ {
+  "name": "Skyfall's Sleeping Hist Tree Overhaul (Nexus 116792)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/116792?tab=files&file_id=498345",
+  "version": "1.4 (mods/dependencies.json row sleeping-hist-tree)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it): records and meshes the new world (ArgoniaNewWorld.esm, phase nw-02) places",
+  "linked_or_forked_by": "none: depended on as the player’s own download",
+  "notes": "author Skyfall515 - ToosTruus - Clofas. No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission."
+ },
+ {
+  "name": "Depths of Skyrim - An Underwater Overhaul SSE (Nexus 26913)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/26913?tab=files&file_id=175564",
+  "version": "1.1.7 (mods/dependencies.json row depths-of-skyrim)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it): records and meshes the new world (ArgoniaNewWorld.esm, phase nw-02) places",
+  "linked_or_forked_by": "none: depended on as the player’s own download",
+  "notes": "author TheBlackpixel. No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission."
+ },
+ {
+  "name": "SIRENROOT - Deluge of Deceit (Nexus 70917)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/70917?tab=files&file_id=747488",
+  "version": "1.30 (mods/dependencies.json row sirenroot)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it): records and meshes the new world (ArgoniaNewWorld.esm, phase nw-02) places",
+  "linked_or_forked_by": "none: depended on as the player’s own download",
+  "notes": "author Everglaid. No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission."
  }
 ]

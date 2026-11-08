@@ -16,6 +16,20 @@
       "wait-all": true
     },
     {
+      "name": "Argonia: New World",
+      "prep-cmd": [
+        {
+          "do": "powershell.exe -ExecutionPolicy Bypass -WindowStyle Hidden -File C:\\argonia\\infra\\sunshine-prep.ps1",
+          "undo": "",
+          "elevated": false
+        }
+      ],
+      "image-path": "C:\\argonia\\cards\\newworld.png",
+      "cmd": "powershell.exe -ExecutionPolicy Bypass -WindowStyle Hidden -File C:\\argonia\\infra\\stack.ps1 play-newworld -Wait",
+      "auto-detach": false,
+      "wait-all": true
+    },
+    {
       "name": "Vanilla Skyrim",
       "prep-cmd": [
         {
