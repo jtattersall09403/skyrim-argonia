@@ -1,0 +1,13 @@
+key	variant	band	n	line
+ARG_TG02_TopicClaimBeads_0		low	0	The beads are old family work. My family made them.
+ARG_TG02_TopicClaimBeads_0		low	1	A buyer would give you nothing for them.
+ARG_TG02_TopicClaimBeads_0		high	0	I will tell it plainly, friend. The beads are old family work. My family made them.
+ARG_TG02_TopicClaimBeads_0		high	1	No buyer would give you anything for them.
+ARG_TG02_TopicHandOverDar_0		low	0	All three are here. I will take them.
+ARG_TG02_TopicHandOverDar_0		low	1	Here are eighty gold.
+ARG_TG02_TopicHandOverDar_0		high	0	All three are here. Thank you. I will take them.
+ARG_TG02_TopicHandOverDar_0		high	1	Here are eighty gold.
+ARG_TG02_TopicSellBeads_0		low	0	Yes, it is Kothringi glass. I will not say otherwise.
+ARG_TG02_TopicSellBeads_0		low	1	Here are fifty gold for the beads.
+ARG_TG02_TopicSellBeads_0		high	0	You have it right, friend. It is Kothringi glass. I will not say otherwise.
+ARG_TG02_TopicSellBeads_0		high	1	Here are fifty gold for the beads. I trust you.

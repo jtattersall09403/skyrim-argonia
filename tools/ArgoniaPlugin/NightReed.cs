@@ -290,8 +290,11 @@ static class NightReed
     // The written lines (dialogue-write pass, text-reviewed), one per INFO keyed "<topic>_<n>"; the inline texts below are
     // the records' intents the lines were written to, and every INFO must have its written line.
     const string WrittenPath = "story/data/dialogue-writer/quest/tg/nightreed.lines.tsv";
-    static readonly Dictionary<string, string> Written = File.ReadLines(WrittenPath).Where(l => l.Length > 0 && l[0] != '#')
+    internal static readonly Dictionary<string, string> Written = File.ReadLines(WrittenPath).Where(l => l.Length > 0 && l[0] != '#')
         .Select(l => l.Split('\t', 2)).ToDictionary(x => x[0], x => x[1]);
+    // A band's spoken lines: keys "<key>@<band>.<n>" in the TSV, in n order; empty when not written.
+    internal static List<string> Band(string key, string band) =>
+        [.. Written.Where(w => w.Key.StartsWith($"{key}@{band}.")).OrderBy(w => int.Parse(w.Key[(w.Key.LastIndexOf('.') + 1)..])).Select(w => w.Value)];
     static void Topic(SkyrimMod mod, Quest q, string id, string prompt, params (string text, string? body, ConditionFloat[] conds)[] infos)
     {
         var branch = mod.DialogBranches.AddNew(id + "Branch");
@@ -319,6 +322,21 @@ static class NightReed
                 TifBodies.Add((script, body));
             }
             Lines.Add(new Line(id, prompt, said, script));
+            // The wording bands ("<key>@high", "<key>@low", one spoken line each in the TSV, in order), as LocalQuests.TopicV:
+            // a copy of this INFO (gates and fragment) on GetRelationshipRank with the player, the default the complement.
+            foreach (var (band, op, rv) in LocalQuests.Bands)
+            {
+                var bl = Band($"{id}_{n}", band);
+                if (bl.Count == 0) continue;
+                var b = new DialogResponses(mod.GetNextFormKey(), SkyrimRelease.SkyrimSE) { Flags = new DialogResponseFlags(), Prompt = prompt };
+                byte br = 1;
+                foreach (var l in bl) b.Responses.Add(new DialogResponse { Text = l, ResponseNumber = br++, Emotion = Emotion.Neutral });
+                b.Conditions.AddRange(info.Conditions.Where(c => c.Data is not GetRelationshipRankConditionData).Select(c => c.DeepCopy()));
+                b.Conditions.Add(LocalQuests.Rank(op, rv));
+                info.Conditions.Add(LocalQuests.Rank(band == "high" ? CompareOperator.LessThan : CompareOperator.GreaterThanOrEqualTo, band == "high" ? 1 : 0));
+                b.VirtualMachineAdapter = info.VirtualMachineAdapter?.DeepCopy();
+                t.Responses.Add(b);
+            }
             t.Responses.Add(info);
             n++;
         }

@@ -145,6 +145,14 @@ static class NightReedCheck
         Check("TG02 lockbox: Apprentice lock, three things, under water", placed[box] is IPlacedObjectGetter b && b.Lock?.Level == LockLevel.Apprentice && b.Placement!.Position.Z < -300
             && mine.Containers.Single(c => c.EditorID == "ARG_TG02_Lockbox").Items!.Select(i => i.Item.Item.FormKey).ToHashSet().SetEquals([fig, charm, beads]));
 
+        // The wording bands: each written line's "<key>@high.n" / "<key>@low.n" (NightReed.Band), found by its default's line.
+        foreach (var (qq, code) in new[] { (t1, "ARG_TG01_"), (t2, "ARG_TG02_") })
+        {
+            var keys = NightReed.Written.Keys.Where(k => k.StartsWith(code) && !k.Contains('@')).ToList();
+            ChainbreakersCheck.BandsBy(mine, qq, (said, band) => keys.Where(k => said.Count == 1 && NightReed.Written[k] == said[0]).Select(k => NightReed.Band(k, band)).FirstOrDefault(),
+                keys.Sum(k => (NightReed.Band(k, "low").Count > 0 ? 1 : 0) + (NightReed.Band(k, "high").Count > 0 ? 1 : 0)), (w, ok, _) => Check(w, ok));
+        }
+
         Console.WriteLine("People and places");
         var p1 = F("ARG_TG01_Parent"); var p2 = F("ARG_TG02_Parent");
         foreach (var (r, mesh, parent) in new[] {

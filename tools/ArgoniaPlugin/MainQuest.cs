@@ -204,6 +204,20 @@ static class MainQuest
             foreach (var l in text) info.Responses.Add(new DialogResponse { Text = l, ResponseNumber = r++, Emotion = Emotion.Neutral });
             info.Conditions.AddRange(speaker.Select(c => c.DeepCopy()));
             info.Conditions.AddRange(conds);
+            // The wording bands (lines@high, lines@low), as LocalQuests.TopicV: each a copy of this INFO (gates and fragment)
+            // on GetRelationshipRank with the player (>= 1, < 0), the default taking the complement.
+            var bands = new List<DialogResponses>();
+            foreach (var (band, op, rv) in LocalQuests.Bands)
+                if (v.TryGetProperty($"lines@{band}", out var bl))
+                {
+                    var b = new DialogResponses(mod.GetNextFormKey(), SkyrimRelease.SkyrimSE) { Flags = new DialogResponseFlags(), Prompt = prompt };
+                    byte br = 1;
+                    foreach (var l in bl.EnumerateArray()) b.Responses.Add(new DialogResponse { Text = l.GetString()!, ResponseNumber = br++, Emotion = Emotion.Neutral });
+                    b.Conditions.AddRange(info.Conditions.Where(c => c.Data is not GetRelationshipRankConditionData).Select(c => c.DeepCopy()));
+                    b.Conditions.Add(LocalQuests.Rank(op, rv));
+                    info.Conditions.Add(LocalQuests.Rank(band == "high" ? CompareOperator.LessThan : CompareOperator.GreaterThanOrEqualTo, band == "high" ? 1 : 0));
+                    bands.Add(b);
+                }
             string? script = null;
             if (body != null)
             {
@@ -216,6 +230,7 @@ static class MainQuest
                 TifBodies.Add((script, body));
             }
             Lines.Add(new Line(code, topic, variant, id, prompt, text, script, body));
+            foreach (var b in bands) { b.VirtualMachineAdapter = info.VirtualMachineAdapter?.DeepCopy(); t.Responses.Add(b); }
             t.Responses.Add(info);
             n++;
         }

@@ -89,15 +89,15 @@ static class MQ05
 
         // TR-topic. Nesh-Deeka is the MQ01/MQ03 lane's person: her lines gate on her placed ref (GetIsReference).
         k.Topic("Basin", Label("topic.mq05-the-basin"),
-            k.Info(Lines("topic.mq05-the-basin", Warden), null, IsRef(WardenRef), k.StageIs(20, CompareOperator.GreaterThanOrEqualTo)));
+            k.Banded("topic.mq05-the-basin", Warden, "default", null, IsRef(WardenRef), k.StageIs(20, CompareOperator.GreaterThanOrEqualTo)));
         k.Topic("Quarrel", Label("topic.mq05-the-quarrel"),
-            k.Info(Lines("topic.mq05-the-quarrel", EiTuja), null, IsId(ei.FormKey), k.StageIs(40, CompareOperator.GreaterThanOrEqualTo)));
+            k.Banded("topic.mq05-the-quarrel", EiTuja, "default", null, IsId(ei.FormKey), k.StageIs(40, CompareOperator.GreaterThanOrEqualTo)));
         k.Topic("Watch", Label("topic.mq05-the-watch"),
-            k.Info(Lines("topic.mq05-the-watch", Kaska), null, IsId(kaska.FormKey), k.StageIs(40, CompareOperator.GreaterThanOrEqualTo)));
+            k.Banded("topic.mq05-the-watch", Kaska, "default", null, IsId(kaska.FormKey), k.StageIs(40, CompareOperator.GreaterThanOrEqualTo)));
         k.Topic("TellMinder", Label("topic.mq05-tell-minder"),
-            k.Info(Lines("topic.mq05-tell-minder", Kaska), "TIF_ARG_MQ05_91", IsId(kaska.FormKey), k.StageIs(40)));
+            k.Banded("topic.mq05-tell-minder", Kaska, "default", "TIF_ARG_MQ05_91", IsId(kaska.FormKey), k.StageIs(40)));
         k.Topic("TellNisswo", Label("topic.mq05-tell-nisswo"),
-            k.Info(Lines("topic.mq05-tell-nisswo", EiTuja), "TIF_ARG_MQ05_92", IsId(ei.FormKey), k.StageIs(40)));
+            k.Banded("topic.mq05-tell-nisswo", EiTuja, "default", "TIF_ARG_MQ05_92", IsId(ei.FormKey), k.StageIs(40)));
 
         q.Name = "The Word Carried Inland"; q.Priority = 60; q.Type = Quest.TypeEnum.MainQuest; q.Flags = Quest.Flag.RunOnce;
         k.StagesFromRecord(Id, "ARG_QF_MQ05", FragmentStages);
@@ -120,9 +120,9 @@ static class MQ05
         var neshRef = mod.EnumerateMajorRecords<IPlacedNpcGetter>().FirstOrDefault(r => r.EditorID == NeshRefId);
         if (neshRef != null)
             k.Topic("Word", Label("topic.mq05-the-word"),
-                k.Info(Lines("topic.mq05-the-word", Nesh, "speech"), "TIF_ARG_MQ05_20", IsRef(neshRef.FormKey), k.StageIs(10), Speech(25)),
-                k.Info(Lines("topic.mq05-the-word", Nesh, "item"), "TIF_ARG_MQ05_20Gold", [Obj("Gold001", Gold)], IsRef(neshRef.FormKey), k.StageIs(10), Has(Gold, 40)),
-                k.Info(Lines("topic.mq05-the-word", Nesh), null, IsRef(neshRef.FormKey), k.StageIs(10)));
+                k.Banded("topic.mq05-the-word", Nesh, "speech", "TIF_ARG_MQ05_20", IsRef(neshRef.FormKey), k.StageIs(10), Speech(25)),
+                k.Banded("topic.mq05-the-word", Nesh, "item", "TIF_ARG_MQ05_20Gold", [Obj("Gold001", Gold)], IsRef(neshRef.FormKey), k.StageIs(10), Has(Gold, 40)),
+                k.Banded("topic.mq05-the-word", Nesh, "default", null, IsRef(neshRef.FormKey), k.StageIs(10)));
         else Console.WriteLine($"MQ05: WARN no {NeshRefId} in the plugin (the MQ01/MQ03 lane's); stage 10's topic and fail-forward left out");
         if (neshRef != null) k.Forced(ANesh, "NeshDeeka", neshRef, QuestAlias.Flag.Optional);
         if (neshRef != null) q.VirtualMachineAdapter!.Aliases.Add(DeathSets(k, ANesh, 10, 20)); // fail-forward: Nesh-Deeka dead

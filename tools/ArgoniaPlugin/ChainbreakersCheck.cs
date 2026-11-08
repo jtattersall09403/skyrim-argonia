@@ -103,6 +103,35 @@ static class ChainbreakersCheck
         Console.WriteLine($"  BANDS {q.EditorID}: warm {warm}, cool {cool}, race 0");
     }
 
+    // The wording bands of a quest whose band text is looked up from its default's (MQ03, MQ04, MQ05, TG01, TG02): every
+    // rank-gated INFO of its topics is on the player (warm >= 1, cool < 0), speaks expect(default's lines, band), and has a
+    // default with the same other gates and fragment carrying the complement; and the counts equal the written bands'.
+    public static void BandsBy(ISkyrimModGetter ours, IQuestGetter q, Func<List<string>, string, List<string>?> expect, int written, Action<string, bool, string> ok)
+    {
+        int warm = 0, cool = 0;
+        foreach (var t in ours.DialogTopics.Where(x => x.Quest.FormKey == q.FormKey && x.Subtype == DialogTopic.SubtypeEnum.Custom))
+        {
+            var rs = t.Responses.ToList();
+            foreach (var r in rs.Where(Banded))
+            {
+                var rank = Ranks(r).Single();
+                var band = Is(rank, CompareOperator.GreaterThanOrEqualTo, 1) ? "high" : Is(rank, CompareOperator.LessThan, 0) ? "low" : "?";
+                var onPlayer = ((IGetRelationshipRankConditionDataGetter)rank.Data).TargetNpc.Link.FormKey == FormKey.Factory("000014:Skyrim.esm");
+                var dflt = rs.FirstOrDefault(d => !Banded(d) && Sig(d) == Sig(r) && Ranks(d).Any(c => band == "high" ? Is(c, CompareOperator.LessThan, 1) : Is(c, CompareOperator.GreaterThanOrEqualTo, 0)));
+                var want = dflt == null ? null : expect([.. dflt.Responses.Select(x => x.Text.String ?? "")], band);
+                var match = want != null && want.Count > 0 && !want.Any(l => l.Contains("[player race]")) && r.Responses.Select(x => x.Text.String).SequenceEqual(want);
+                if (band == "high") warm++; else cool++;
+                ok($"{t.EditorID} {band} band: rank with the player {rank.CompareOperator} {rank.ComparisonValue}, default excludes it", band != "?" && onPlayer && dflt != null && match,
+                    $"lines {(match ? "=record" : "DIFFER")}, default with the same gates and fragment and the complement {dflt != null}");
+            }
+        }
+        ok($"{q.EditorID} bands built = written ({written})", warm + cool == written, $"warm {warm}, cool {cool}");
+        Console.WriteLine($"  BANDS {q.EditorID}: warm {warm}, cool {cool}, race 0");
+    }
+    static string Sig(IDialogResponsesGetter r) => string.Join(",", r.Conditions.Where(c => c.Data is not IGetRelationshipRankConditionDataGetter)
+        .Select(c => c.Data.GetType().Name + ((IConditionFloatGetter)c).CompareOperator + ((IConditionFloatGetter)c).ComparisonValue))
+        + "|" + r.VirtualMachineAdapter?.ScriptFragments?.OnEnd?.ScriptName;
+
     // An after-quest Hello: per person, one INFO per written line, gated on the ref and on the endings (OR'd, each EqualTo).
     public static void AfterOf(ISkyrimModGetter ours, IQuestGetter q, string topic, (FormKey who, List<string> said, int[] endings)[] people, Action<string, bool, string> ok)
     {

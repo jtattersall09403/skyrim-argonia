@@ -44,6 +44,41 @@ sealed class QuestKit(SkyrimMod mod, List<ISkyrimModGetter> mods, Quest q, strin
     public static List<string> Lines(string topic, string speaker, string gate = "default") =>
         Rows("dialogue_line").Where(r => Str(r, "keys_topic") == topic && Str(r, "speaker") == speaker && Str(r, "id")!.Split('.')[^2] == gate)
             .OrderBy(r => Str(r, "id")).Select(r => Str(r, "words")!).ToList();
+    /// A gate's wording band (low or high): the variants_<band> of the gate's first row, the whole band's text, spoken as
+    /// lines split at sentence ends (about 150 characters each); empty when the band is not written.
+    public static List<string> BandLines(string topic, string speaker, string gate, string band)
+    {
+        var row = Rows("dialogue_line").Where(r => Str(r, "keys_topic") == topic && Str(r, "speaker") == speaker && Str(r, "id")!.Split('.')[^2] == gate)
+            .OrderBy(r => Str(r, "id")).FirstOrDefault();
+        var s = row.ValueKind == JsonValueKind.Undefined ? null : Str(row, "variants_" + band);
+        if (string.IsNullOrWhiteSpace(s)) return [];
+        var lines = new List<string>();
+        foreach (var sentence in System.Text.RegularExpressions.Regex.Split(s.Trim(), @"(?<=[.!?])\s+"))
+            if (lines.Count > 0 && lines[^1].Length + 1 + sentence.Length <= 150) lines[^1] += " " + sentence; else lines.Add(sentence);
+        return lines;
+    }
+    /// The gates (topic, speaker, gate) of the written quest lines whose topic starts with the prefix (topic.mq04-).
+    public static List<(string topic, string speaker, string gate)> Gates(string prefix) =>
+        [.. Rows("dialogue_line").Where(r => Str(r, "keys_topic")?.StartsWith(prefix) == true && Str(r, "status") == "written")
+            .Select(r => (Str(r, "keys_topic")!, Str(r, "speaker")!, Str(r, "id")!.Split('.')[^2])).Distinct()];
+    /// One gate of a topic with its wording bands (as LocalQuests.TopicV): the warm band on GetRelationshipRank with the
+    /// player >= 1, the cool < 0, and the default with the complement, so they are exclusive by condition; each band INFO
+    /// carries the same gates and the same fragment (no new script).
+    public DialogResponses[] Banded(string topic, string speaker, string gate, string? tif, ScriptProperty[] props, params ConditionFloat[] conds)
+    {
+        var infos = new List<DialogResponses>();
+        var rest = conds.ToList();
+        foreach (var (band, op, v) in LocalQuests.Bands)
+        {
+            var said = BandLines(topic, speaker, gate, band);
+            if (said.Count == 0) continue;
+            infos.Add(Info(said, tif, [.. props.Select(p => (ScriptProperty)p.DeepCopy())], [.. conds.Select(c => c.DeepCopy()), LocalQuests.Rank(op, v)]));
+            rest.Add(LocalQuests.Rank(band == "high" ? CompareOperator.LessThan : CompareOperator.GreaterThanOrEqualTo, band == "high" ? 1 : 0));
+        }
+        infos.Add(Info(Lines(topic, speaker, gate), tif, props, [.. rest]));
+        return [.. infos];
+    }
+    public DialogResponses[] Banded(string topic, string speaker, string gate, string? tif, params ConditionFloat[] conds) => Banded(topic, speaker, gate, tif, [], conds);
     public static string Label(string topic) =>
         Rows("quest_topic").Where(r => Str(r, "id") == topic).Select(r => Str(r, "label")).FirstOrDefault() ?? throw new Exception($"no topic {topic}");
 
@@ -183,6 +218,8 @@ sealed class QuestKit(SkyrimMod mod, List<ISkyrimModGetter> mods, Quest q, strin
         foreach (var i in infos) { i.Prompt = prompt; t.Responses.Add(i); }
         return t;
     }
+    /// A topic of banded gates (Banded): each gate's band INFOs and its default.
+    public DialogTopic Topic(string id, string prompt, params DialogResponses[][] gates) => Topic(id, prompt, [.. gates.SelectMany(g => g)]);
     public DialogResponses Info(IEnumerable<string> lines, string? tif, params ConditionFloat[] conds) => Info(lines, tif, [], conds);
     public DialogResponses Info(IEnumerable<string> lines, string? tif, ScriptProperty[] props, params ConditionFloat[] conds)
     {

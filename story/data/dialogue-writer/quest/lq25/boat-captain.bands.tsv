@@ -1,0 +1,7 @@
+key	variant	band	n	line
+topic.lq25-tell-captain	lines	low	0	That is the landing crew's bucket. Full of offal. I thought the beast was always there. This says it was not.
+topic.lq25-tell-captain	lines	low	1	You did a service. Take 60 gold for it.
+topic.lq25-tell-captain	lines	low	2	Now I take my trade back on the river.
+topic.lq25-tell-captain	lines	high	0	That is the landing crew's bucket. It is full of offal. I believed the beast had always been there.
+topic.lq25-tell-captain	lines	high	1	This says it was not. You have done me a great service, friend. Please take 60 gold for it, with my thanks.
+topic.lq25-tell-captain	lines	high	2	Now I will take my trade back on the river. I am glad it was you who found this.

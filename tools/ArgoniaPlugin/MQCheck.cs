@@ -74,6 +74,12 @@ static class MQCheck
                 Console.WriteLine($"{(why.Count == 0 ? "PASS" : "FAIL")} {edid} {s}: set by {setBy}{(why.Count == 0 ? "" : "; " + string.Join("; ", why))}");
                 if (why.Count > 0) fails++;
             }
+            // The wording bands: each gate's variants_high / variants_low (QuestKit.BandLines), found by its default's lines.
+            var gates = QuestKit.Gates($"topic.{edid[4..].ToLower()}-");
+            ChainbreakersCheck.BandsBy(mine, q, (said, band) => gates.Where(g => QuestKit.Lines(g.topic, g.speaker, g.gate).SequenceEqual(said))
+                .Select(g => QuestKit.BandLines(g.topic, g.speaker, g.gate, band)).FirstOrDefault(),
+                gates.Sum(g => (QuestKit.BandLines(g.topic, g.speaker, g.gate, "low").Count > 0 ? 1 : 0) + (QuestKit.BandLines(g.topic, g.speaker, g.gate, "high").Count > 0 ? 1 : 0)),
+                (w, ok, d) => { Console.WriteLine($"{(ok ? "PASS" : "FAIL")} {w}{(ok ? "" : "; " + d)}"); if (!ok) fails++; });
         }
         Console.WriteLine(fails == 0 ? "mqcheck: all stages pass" : $"mqcheck: {fails} stage(s) fail");
         return fails == 0 ? 0 : 1;

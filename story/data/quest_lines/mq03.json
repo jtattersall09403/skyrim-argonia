@@ -9,7 +9,15 @@
      "A friend of the courier's sent us. You have tasted the sap. You are hurt.",
      "The boat takes the hurt to a house in Lilmoth. That includes you."
     ],
-    "facts": []
+    "facts": [],
+    "lines@low": [
+     "A friend of the courier's sent us. You tasted the sap. You are hurt.",
+     "The boat takes the hurt to a house in Lilmoth. That means you."
+    ],
+    "lines@high": [
+     "A friend of the courier's sent us. You have tasted the sap and you are hurt. I am sorry for it.",
+     "The boat takes the hurt to a house in Lilmoth. You are one of them. You are welcome aboard."
+    ]
    },
    {
     "variant": "where",
@@ -19,7 +27,23 @@
      "The shed stands beside the withdrawn cutting, at the camp's far end. Sap lies spilled on its floor.",
      "The burnt boards lie over deep water at the camp's fire. The courier's strap and tag lie in the gang families' locked fish-trap on the bottom, straight below them. Lockpicks lie loose beside the fire."
     ],
-    "facts": []
+    "facts": [],
+    "lines@low": [
+     "A friend of the courier's sent us. You are hurt, as the others are.",
+     "The boat takes the hurt to a house in Lilmoth.",
+     "The shed is beside the withdrawn cutting, at the camp's far end. Sap lies spilled on its floor.",
+     "Burnt boards lie over deep water at the camp's fire.",
+     "The courier's strap and tag lie in the gang families' locked fish-trap. It is on the bottom, straight below the boards.",
+     "Lockpicks lie loose beside the fire. I do not know you well. That is all I give."
+    ],
+    "lines@high": [
+     "A friend of the courier's sent us. You are hurt, as the others here are hurt. I am sorry for it.",
+     "The boat takes the hurt to a house in Lilmoth. You are welcome on it.",
+     "The shed stands beside the withdrawn cutting, at the camp's far end. Sap lies spilled on its floor.",
+     "The burnt boards lie over deep water at the camp's fire.",
+     "The courier's strap and tag lie in the gang families' locked fish-trap, on the bottom, straight below the boards.",
+     "Lockpicks lie loose beside the fire. Use them. I trust you with this."
+    ]
    }
   ]
  },
@@ -42,6 +66,26 @@
      "fact.mq03.sap-cell",
      "fact.mq03.no-claim",
      "fact.mq03.satchel-hers"
+    ],
+    "lines@low": [
+     "Sit. Tell me what you saw at the camp. All of it.",
+     "Did you see jars at the camp? Think.",
+     "You are carrying a phial. Give it to me. I will look at it.",
+     "The jars again. How many ring-marks did you see?",
+     "The Reed has word of a cell. It cuts a Hist's roots and draws its sap into jars.",
+     "Your camp is the first work of it that the Reed has seen.",
+     "The roll burnt in the camp's fire. No hand can show what you owe, or that you were ever on it.",
+     "The courier's satchel was mine to see carried. I say no more of it."
+    ],
+    "lines@high": [
+     "Sit, please. Tell me what you saw at the camp. Take your time, but leave nothing out.",
+     "Did you see jars at the camp? Think it over. I am in no hurry.",
+     "You are carrying a phial. Give it to me, and I will take care with it. I want to look at it.",
+     "Tell me about the jars once more. How many ring-marks did you see?",
+     "The Reed has word of a cell. It cuts a Hist's roots and draws its sap into jars. I tell you this because I trust you.",
+     "Your camp is the first work of it that the Reed has seen.",
+     "The roll burnt in the camp's fire. No hand can show what you owe, or that you were ever on it. I am glad of that for your sake.",
+     "The courier's satchel was mine to see carried. I say no more of it. I am sorry I cannot."
     ]
    },
    {
@@ -60,6 +104,26 @@
      "fact.mq03.sap-cell",
      "fact.mq03.no-claim",
      "fact.mq03.satchel-hers"
+    ],
+    "lines@low": [
+     "Sit. Tell me what you saw at the camp. All of it.",
+     "Did you see jars at the camp? Think.",
+     "You took nothing from the shed. I have only your word. I will take it.",
+     "The jars again. How many ring-marks did you see?",
+     "The Reed has word of a cell. It cuts a Hist's roots and draws its sap into jars.",
+     "Your camp is the first work of it that the Reed has seen.",
+     "The roll burnt in the camp's fire. No hand can show what you owe, or that you were ever on it.",
+     "The courier's satchel was mine to see carried. I say no more of it."
+    ],
+    "lines@high": [
+     "Sit, please. Tell me what you saw at the camp. Take your time, but leave nothing out.",
+     "Did you see jars at the camp? Think it over. I am in no hurry.",
+     "You took nothing from the shed. I have only your word. I trust it, so I will take it.",
+     "Tell me about the jars once more. How many ring-marks did you see?",
+     "The Reed has word of a cell. It cuts a Hist's roots and draws its sap into jars. I tell you this because I trust you.",
+     "Your camp is the first work of it that the Reed has seen.",
+     "The roll burnt in the camp's fire. No hand can show what you owe, or that you were ever on it. I am glad of that for your sake.",
+     "The courier's satchel was mine to see carried. I say no more of it. I am sorry I cannot."
     ]
    }
   ]
@@ -79,6 +143,20 @@
      "fact.mq03.cord-woman",
      "fact.mq03.clean-cut",
      "fact.mq03.barge-gone"
+    ],
+    "lines@low": [
+     "That is the courier's tag. Then I will tell you. I keep my warmth back.",
+     "I watched from the shore at the end of my shift. A woman with a knotted cord at her wrist led the cell.",
+     "She took the courier's satchel. She left the cutting to her cutters.",
+     "The roots were cut clean at the ring, one stroke each, by hands that knew where.",
+     "Wuleen-Sei marched the unhurt back to the barge at the dock. Hurt hands are no hire."
+    ],
+    "lines@high": [
+     "That is the courier's tag. Then I will tell you. You have earned it.",
+     "I watched from the shore at the end of my shift. A woman with a knotted cord at her wrist led the cell.",
+     "She took the courier's satchel. She left the cutting to her cutters.",
+     "The roots were cut clean at the ring, one stroke each, by hands that knew where.",
+     "Wuleen-Sei marched the unhurt back to the barge at the dock, because hurt hands are no hire."
     ]
    },
    {
@@ -93,6 +171,20 @@
      "fact.mq03.cord-woman",
      "fact.mq03.clean-cut",
      "fact.mq03.barge-gone"
+    ],
+    "lines@low": [
+     "You ask fairly. I will tell it once, and I will not say it twice.",
+     "I watched from the shore at the end of my shift. A woman with a knotted cord at her wrist led the cell.",
+     "She took the courier's satchel. She left the cutting to her cutters.",
+     "The roots were cut clean at the ring, one stroke each, by hands that knew where.",
+     "Wuleen-Sei marched the unhurt back to the barge at the dock. Hurt hands are no hire."
+    ],
+    "lines@high": [
+     "You ask fairly and I trust you. I will tell it once, so listen well.",
+     "I watched from the shore at the end of my shift. A woman with a knotted cord at her wrist led the cell.",
+     "She took the courier's satchel. She left the cutting to her cutters.",
+     "The roots were cut clean at the ring, one stroke each, by hands that knew where.",
+     "Wuleen-Sei marched the unhurt back to the barge at the dock, because hurt hands are no hire."
     ]
    },
    {
@@ -101,7 +193,15 @@
     "lines": [
      "I saw the camp that night. I do not tell strangers what I saw. Give me a reason."
     ],
-    "facts": []
+    "facts": [],
+    "lines@low": [
+     "I saw the camp that night. I do not tell strangers what I saw.",
+     "Give me a reason, or the tag."
+    ],
+    "lines@high": [
+     "I saw the camp that night, friend. I do not tell it to just anyone. I am sorry.",
+     "Give me a reason, or show me the tag, and I will think again."
+    ]
    }
   ]
  },
@@ -122,6 +222,20 @@
      "fact.mq03.no-claim",
      "fact.mq03.reed-offer",
      "fact.mq03.witness-wanted"
+    ],
+    "lines@low": [
+     "I am of the Veiled Reed, the state's quiet service. We show no face. We want a hand we can deny.",
+     "No master can claim you now. The roll burnt in the camp's fire, so the broker cannot show what you owe, or that you were ever on it.",
+     "I offer you the Reed's protection, a door in Lilmoth and a stipend. The condition is that you serve the Reed.",
+     "This is business. I do not know you well enough for more. Think before you answer.",
+     "I want the survivor's account of the cell's work. When I have it, the Reed's people see the survivor home."
+    ],
+    "lines@high": [
+     "I am of the Veiled Reed, the state's quiet service. We show no face. We want a hand we can deny. I would be glad if it were yours.",
+     "No master can claim you now. The roll burnt in the camp's fire, so the broker cannot show what you owe, or that you were ever on it.",
+     "I offer you the Reed's protection, a door in Lilmoth and a stipend. The condition is that you serve the Reed.",
+     "I do not ask it lightly of someone I trust. Take your time before you answer.",
+     "I want the survivor's account of the cell's work. When I have it, the Reed's people see the survivor home."
     ]
    }
   ]
@@ -137,6 +251,14 @@
     ],
     "facts": [
      "fact.mq03.reed-offer"
+    ],
+    "lines@low": [
+     "Then you serve the Reed. The protection, the door in Lilmoth and the stipend are yours now.",
+     "I have your word."
+    ],
+    "lines@high": [
+     "Then you serve the Reed. I am glad of it, friend.",
+     "The protection, the door in Lilmoth and the stipend are yours now. I have your word. I trust it."
     ]
    }
   ]
@@ -152,6 +274,14 @@
     ],
     "facts": [
      "fact.mq03.reed-offer"
+    ],
+    "lines@low": [
+     "Then you do not take the Reed's protection, the door in Lilmoth or the stipend. That is your choice.",
+     "The Reed will still send for you, and it will pay for the work."
+    ],
+    "lines@high": [
+     "Then you do not take the Reed's protection, the door in Lilmoth or the stipend. That is your choice. I do not hold it against you.",
+     "The Reed will still send for you, and it will pay for the work."
     ]
    }
   ]
