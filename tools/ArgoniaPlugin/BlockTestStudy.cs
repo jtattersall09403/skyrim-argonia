@@ -49,6 +49,8 @@ static class BlockTestStudy
             var st = q.Stages.First(Completes);
             Console.WriteLine($"  {q.EditorID}: completes at {st.Index}, fragment {q.VirtualMachineAdapter?.FileName}.{q.VirtualMachineAdapter?.Fragments.FirstOrDefault(f => f.Stage == st.Index)?.FragmentName}, later stages {string.Join(",", q.Stages.Where(s => s.Index > st.Index).Select(s => s.Index))}");
         }
+        // The journal lists a quest by its objectives (owner walk 2026-11-08): side quests that complete with none.
+        Console.WriteLine($"side quests: with objectives {side.Count(q => q.Objectives.Count > 0)} of {side.Count}; none: {string.Join(", ", side.Where(q => q.Objectives.Count == 0).Select(q => q.EditorID))}; all completing quests with a name and no objectives: {completing.Count(q => q.Objectives.Count == 0 && q.Name?.String is { Length: > 0 })} of {completing.Count}");
         var misc = completing.Where(q => q.Type == Quest.TypeEnum.Misc).ToList();
         Console.WriteLine($"misc quests: completing entry with CNAM {misc.Count(q => q.Stages.First(Completes).LogEntries.Any(l => l.Flags?.HasFlag(QuestLogEntry.Flag.CompleteQuest) == true && l.Entry != null))} of {misc.Count}");
         Stats(esm, mod, Completes);

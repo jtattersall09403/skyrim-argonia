@@ -321,9 +321,13 @@ static class BlockTest
         end.Stages.Add(new QuestStage { Index = 0, Flags = QuestStage.Flag.StartUpStage, LogEntries = { new QuestLogEntry { Flags = 0 } } });
         end.Stages.Add(new QuestStage { Index = 10, LogEntries = { new QuestLogEntry { Flags = 0, Entry = "The second quest started from the first." } } });
         end.Stages.Add(new QuestStage { Index = 100, LogEntries = { new QuestLogEntry { Flags = QuestLogEntry.Flag.CompleteQuest, Entry = "The second quest ended with the first." } } });
+        // The journal lists a quest by its objectives: all 23 of Skyrim.esm's completing Side Quests have some (blockstudy),
+        // and the end quest, which had none, showed "completed" on screen and in the Stats but not in the journal (walk 3).
+        end.Objectives.Add(new QuestObjective { Index = 10, DisplayText = "Wait for the first quest to end" });
         // Vanilla side quests count on the Stats page by their own last fragment (blockstudy: 21 of Skyrim.esm's 23 completing
         // side quests call AchievementsScript.IncSideQuests(), Game.IncrementStat("Side Quests Completed")), so this one too.
         end.VirtualMachineAdapter = new QuestAdapter { FileName = "ARG_QF_BlockTestEnd", Scripts = { Script("ARG_QF_BlockTestEnd", Obj("AchievementsQuest", Achievements)) } };
+        end.VirtualMachineAdapter.Fragments.Add(new QuestScriptFragment { Stage = 10, StageIndex = 0, ScriptName = "ARG_QF_BlockTestEnd", FragmentName = "Fragment_10" });
         end.VirtualMachineAdapter.Fragments.Add(new QuestScriptFragment { Stage = 100, StageIndex = 0, ScriptName = "ARG_QF_BlockTestEnd", FragmentName = "Fragment_100" });
 
         // The world edits: our dock refs in the worldspace's persistent cell; the door's lock (W-override); the five

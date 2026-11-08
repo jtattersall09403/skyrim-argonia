@@ -192,6 +192,7 @@ static class BlockTestCheck
             ("ARG_BlockTestEnd: empty start-up 0, text at 10, completes with text at 100", endQ.Stages.Select(s => s.Index).SequenceEqual(new ushort[] { 0, 10, 100 })
                 && endQ.Stages[0].Flags.HasFlag(QuestStage.Flag.StartUpStage) && endQ.Stages[1].LogEntries.Single().Entry?.String == "The second quest started from the first."
                 && endQ.Stages[2].LogEntries.Single() is { } le && le.Flags?.HasFlag(QuestLogEntry.Flag.CompleteQuest) == true && !string.IsNullOrEmpty(le.Entry?.String)));
+        Console.WriteLine($"  ARG_BlockTestEnd journal objective: objective 10 has text {endQ.Objectives.Any(o => o.Index == 10 && !string.IsNullOrEmpty(o.DisplayText?.String))}; fragments 10 and 100 {endQ.VirtualMachineAdapter!.Fragments.Count(f => f.Stage is 10 or 100)} of 2; pex Fragment_10 shows it {Pex("ARG_QF_BlockTestEnd", "Fragment_10", "SetObjectiveDisplayed")}, Fragment_100 completes it {Pex("ARG_QF_BlockTestEnd", "Fragment_100", "SetObjectiveCompleted")}");
         // Where the things stand (for the owner issue and the record).
         foreach (var e in new[] { "ARG_BT_StartMarker", "ARG_BT_KeeperRef", "ARG_BT_WalkerMarker", "ARG_BT_DoorMarker", "ARG_BT_CrabRef", "ARG_BT_TokenRef", "ARG_BT_ZoneA", "ARG_BT_WalkerRef" })
         {

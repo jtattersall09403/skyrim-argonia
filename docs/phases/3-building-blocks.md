@@ -303,6 +303,12 @@ door marker 30981,-3029 (22), crab 31351,-3506 (189), token 31040,-2700,50 (over
 Checks A to D passed (RaceHits 1). Owed: "Block Test, the end" shows "completed" on screen and counts on the Stats
 page, but is missing from the journal's completed list (Block Test is there). Fix, then one owner check.
 
+Cause and fix (2026-11-08): `ARG_BlockTestEnd` had no objectives; the journal lists a quest by its objectives, and
+Skyrim.esm's completing Side Quests all have some (23 of 23, `blockstudy`; Misc 92 of 104). Flags, type, the
+Complete Quest entry with text and `Stop()` already matched `dunVolunruudQST`. Now objective 10 ("Wait for the first
+quest to end"), displayed by new Fragment_10 at stage 10 and completed by Fragment_100 before IncSideQuests and
+Stop. Read-back (`plugin.sh blocktest`): every step PASS. Owner re-check posted by the integrator after re-seed.
+
 ## Owner test
 
 One issue: the console command, where it puts you, and the step table's last two columns. You play it once and reply
