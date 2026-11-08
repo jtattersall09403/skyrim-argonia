@@ -50,8 +50,14 @@ VirtualMachineAdapter:
       Object: 000E00:Argonia.esp
       Alias: 7
     - MutagenObjectType: ScriptObjectProperty
+      Name: FireMark
+      Object: 000E33:Argonia.esp
+    - MutagenObjectType: ScriptObjectProperty
       Name: Footwraps
       Object: 03CA00:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: HoldDoor
+      Object: 0F92EC:Black Marsh.esm
     - MutagenObjectType: ScriptObjectProperty
       Name: HoldParent
       Object: 000E1C:Argonia.esp
@@ -60,7 +66,7 @@ VirtualMachineAdapter:
       Object: 000E35:Argonia.esp
     - MutagenObjectType: ScriptObjectProperty
       Name: HutsZone
-      Object: 000E50:Argonia.esp
+      Object: 000E51:Argonia.esp
     - MutagenObjectType: ScriptObjectProperty
       Name: Leader
       Object: 000E00:Argonia.esp
@@ -92,7 +98,7 @@ VirtualMachineAdapter:
       Object: 000E34:Argonia.esp
     - MutagenObjectType: ScriptObjectProperty
       Name: ShedZone
-      Object: 000E4F:Argonia.esp
+      Object: 000E50:Argonia.esp
     - MutagenObjectType: ScriptObjectProperty
       Name: Shore93Parent
       Object: 000E32:Argonia.esp
@@ -125,6 +131,15 @@ VirtualMachineAdapter:
   - Stage: 10
     ScriptName: ARG_QF_MQ01
     FragmentName: Fragment_10
+  - Stage: 20
+    ScriptName: ARG_QF_MQ01
+    FragmentName: Fragment_20
+  - Stage: 30
+    ScriptName: ARG_QF_MQ01
+    FragmentName: Fragment_30
+  - Stage: 35
+    ScriptName: ARG_QF_MQ01
+    FragmentName: Fragment_35
   - Stage: 40
     ScriptName: ARG_QF_MQ01
     FragmentName: Fragment_40
@@ -143,6 +158,22 @@ VirtualMachineAdapter:
   - Stage: 93
     ScriptName: ARG_QF_MQ01
     FragmentName: Fragment_93
+  Aliases:
+  - Property:
+      Name: ''
+      Object: 000E00:Argonia.esp
+      Alias: 20
+    Scripts:
+    - Name: defaultSetStageAliasScript
+      Properties:
+      - MutagenObjectType: ScriptIntProperty
+        Name: prereqStageOPT
+        Data: 20
+      - MutagenObjectType: ScriptIntProperty
+        Name: stage
+        Data: 30
+      - MutagenObjectType: ScriptIntProperty
+        Name: TriggerType
 Name:
   TargetLanguage: English
   Value: No Name on the Work Roll
@@ -159,6 +190,21 @@ Stages:
     Entry:
       TargetLanguage: English
       Value: I came to in the hold of a broker's barge at Lilmoth's dock, among an Owing gang. Wuleen-Sei, the overseer, is reading the roll aloud, each name, the months owed and the months added for food, and my line is blank. I'm to answer her when she reaches it, then follow Wuleen-Sei up the plank, past Buys-The-Months, the broker on the pier, and north and west along the shore path to the families' camp at the edge of Hereguard Plantation, to the camp's fire.
+- Index: 20
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: I gave Wuleen-Sei my answer when she read my blank line. The gang goes ashore by the door at the top of the hold's stairs and walks the shore path to a work camp at the edge of Hereguard Plantation.
+- Index: 30
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: I came up out of the hold onto the pier at Lilmoth's dock. The gang is setting off along the shore path, north and west, to the families' camp at the edge of Hereguard Plantation.
+- Index: 35
+  LogEntries:
+  - Flags: []
 - Index: 40
   LogEntries:
   - Flags: []
@@ -202,7 +248,9 @@ Objectives:
 - Index: 10
   DisplayText:
     TargetLanguage: English
-    Value: In the barge's hold, answer Wuleen-Sei when she reads the blank line (give a name, say nothing or tell her what she can do with it), then follow her up the plank and along the shore path to the fire in the middle of the camp.
+    Value: Speak to Wuleen-Sei, the overseer, in the barge's hold, and answer her when she reads your blank line on the roll.
+  Targets:
+  - {}
 - Index: 40
   DisplayText:
     TargetLanguage: English
@@ -215,6 +263,18 @@ Objectives:
   DisplayText:
     TargetLanguage: English
     Value: Bring Deesh-Duun out of the burning huts and south through the deep water under the plank boards to the shore below the camp, out of the cutters' sight or past their bodies.
+- Index: 20
+  DisplayText:
+    TargetLanguage: English
+    Value: Leave the barge's hold by the door at the top of the stairs.
+  Targets:
+  - AliasID: 20
+- Index: 30
+  DisplayText:
+    TargetLanguage: English
+    Value: Follow the gang along the shore path, north and west, to the fire in the middle of their camp at the edge of Hereguard Plantation.
+  Targets:
+  - AliasID: 21
 Aliases:
 - Name: WuleenSei
   Flags:
@@ -237,7 +297,8 @@ Aliases:
   - Essential
   ForcedReference: 000E28:Argonia.esp
   PackageData:
-  - 000E54:Argonia.esp
+  - 000E56:Argonia.esp
+  - 000E57:Argonia.esp
 - ID: 4
   Name: WuleenSeiMarch
   Flags:
@@ -245,42 +306,46 @@ Aliases:
   - AllowDisabled
   ForcedReference: 000E29:Argonia.esp
   PackageData:
-  - 000E54:Argonia.esp
+  - 000E56:Argonia.esp
+  - 000E57:Argonia.esp
 - ID: 5
   Name: UxXeekMarch
   Flags:
   - AllowDisabled
   ForcedReference: 000E2A:Argonia.esp
   PackageData:
-  - 000E54:Argonia.esp
+  - 000E56:Argonia.esp
+  - 000E57:Argonia.esp
 - ID: 6
   Name: DivesMarch
   Flags:
   - AllowDisabled
   ForcedReference: 000E2B:Argonia.esp
   PackageData:
-  - 000E54:Argonia.esp
+  - 000E56:Argonia.esp
+  - 000E57:Argonia.esp
 - ID: 7
   Name: FindsMarch
   Flags:
   - AllowDisabled
   ForcedReference: 000E2C:Argonia.esp
   PackageData:
-  - 000E54:Argonia.esp
+  - 000E56:Argonia.esp
+  - 000E57:Argonia.esp
 - ID: 8
   Name: SalSei
   Flags:
   - Essential
   ForcedReference: 000E38:Argonia.esp
   PackageData:
-  - 000E57:Argonia.esp
+  - 000E5A:Argonia.esp
 - ID: 9
   Name: DeeshDuun
   Flags:
   - Essential
   ForcedReference: 000E39:Argonia.esp
   PackageData:
-  - 000E58:Argonia.esp
+  - 000E5B:Argonia.esp
 - ID: 10
   Name: CutsTheOldKnot
   Flags:
@@ -288,21 +353,21 @@ Aliases:
   - Protected
   ForcedReference: 000E3B:Argonia.esp
   PackageData:
-  - 000E55:Argonia.esp
+  - 000E58:Argonia.esp
 - ID: 11
   Name: RootCutter1
   Flags:
   - AllowDisabled
   ForcedReference: 000E3C:Argonia.esp
   PackageData:
-  - 000E56:Argonia.esp
+  - 000E59:Argonia.esp
 - ID: 12
   Name: RootCutter2
   Flags:
   - AllowDisabled
   ForcedReference: 000E3D:Argonia.esp
   PackageData:
-  - 000E56:Argonia.esp
+  - 000E59:Argonia.esp
 - ID: 13
   Name: TiesTheLoosePlank
   Flags:
@@ -311,27 +376,39 @@ Aliases:
 - ID: 14
   Name: ZoneFire
   Flags: []
-  ForcedReference: 000E4E:Argonia.esp
+  ForcedReference: 000E4F:Argonia.esp
 - ID: 15
   Name: ZoneShed
   Flags:
   - AllowDisabled
-  ForcedReference: 000E4F:Argonia.esp
+  ForcedReference: 000E50:Argonia.esp
 - ID: 16
   Name: ZoneHuts
   Flags:
   - AllowDisabled
-  ForcedReference: 000E50:Argonia.esp
+  ForcedReference: 000E51:Argonia.esp
 - ID: 17
   Name: ZoneShore90
   Flags: []
-  ForcedReference: 000E51:Argonia.esp
+  ForcedReference: 000E52:Argonia.esp
 - ID: 18
   Name: ZoneShore91
   Flags: []
-  ForcedReference: 000E52:Argonia.esp
+  ForcedReference: 000E53:Argonia.esp
 - ID: 19
   Name: ZoneShore93
   Flags:
   - AllowDisabled
-  ForcedReference: 000E53:Argonia.esp
+  ForcedReference: 000E54:Argonia.esp
+- ID: 20
+  Name: HoldDoor
+  Flags: []
+  ForcedReference: 0F92EC:Black Marsh.esm
+- ID: 21
+  Name: FireMarker
+  Flags: []
+  ForcedReference: 000E33:Argonia.esp
+- ID: 22
+  Name: ZoneCamp
+  Flags: []
+  ForcedReference: 000E4E:Argonia.esp

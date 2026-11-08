@@ -97,13 +97,20 @@ The work runs in this order; each part names the skill or tool that carries it.
 - **Clean-up per host place:** placements that break the setting or level with the player are disabled by override;
   each templated survivor gets a fixed level (nothing levelled against the player). A person given talk is kept.
 - **People:** our own base templated on a world base (face, race, voice, outfit and behaviour kept; our name, fixed
-  level, factions as needed); a person with no voice type gets a silent voice; placed on existing navmesh; essential
-  where the story must not lose them.
+  level, factions as needed); a person with no voice type, through the template chain, gets a silent voice; one whose
+  drawn height (the template's, through Use Traits) is off 1 is scaled on the ref to stand at 1; placed on existing
+  navmesh; essential where the story must not lose them.
 - **Things:** placed on a read surface; containers with ownership and lock level; items of our own only where no world
   or base-game item serves; no new art.
 - **Rooms:** an existing interior first, a walk-in shell with navmesh next, an exterior scene on navmesh after. No new
   navmesh.
-- **Doors:** lock, unlock or re-point existing doors first; a new linked pair only where no existing door serves.
+- **Doors:** lock, unlock or re-point existing doors first; a new linked pair only where no existing door serves. A
+  load door (a model with no opening animation) always teleports to its pair, and the pair back; a door with a room
+  behind it never teleports. A room the player must not leave before a stage has its way out locked with no key, and
+  that stage's fragment unlocks it. `plugin.sh inspect doors` lists every door we touch, with its pair, lock and model.
+- **Walking:** the world's navmeshes carry no edge links (`plugin.sh inspect navstat`), so nobody walks from one
+  navmesh to another. A group that leads the player sets off along its own navmesh, and is moved to the destination
+  by a hidden stage at a zone around it, before the player arrives.
 - **Moving a quest spot** within its settlement to the nearest usable ground is a record edit, not a redesign.
 - **Traders:** a trader whose stock does not fit gets a vendor faction and chest of their own with a fixed stock.
 - **Overrides** of a world, cell or placed reference are made once and shared through one lookup; anything a quest
@@ -135,6 +142,9 @@ block built, read back and given one owner check.
 | a person the player must not lose | essential, with no fail-forward |
 | a person picked out to speak | a condition on their placed reference, made persistent |
 | standing with a faction | a global the endings add to |
+| a question the player answers | the question's INFO links to one choice topic per answer, in its own branch and not top level, so the answers follow it at once and come back with it |
+| where to go next | a stage per step (speak, leave, follow, arrive), each with a journal entry and an objective whose target is an alias on the person, door or marker |
+| a door the player uses to move the quest on | the door as a forced-ref alias with the vanilla set-stage alias script on activate, gated by its prerequisite stage |
 
 - **Engine rules every quest keeps:** race guards on stages two triggers can set at once; aliases are forced
   references, never find-matching; quest objects for things the player must not drop; a quest shows in the journal
@@ -173,7 +183,11 @@ anyone a quest ending leaves standing; journal and objective text written and re
   load order (without case); a host whose model is missing is an empty hill in game, so the quest moves to one that has.
 - **Integration:** parallel work lands as source only; the plugin is re-seeded once on the merged tree and every
   read-back runs on that one build before deploy.
-- **Deploy** the plugin, its ini and the compiled scripts to the play machine; stage-time mod changes with the stack.
+- **Everyone talks:** every person the plugin places has a voice and at least one line (`plugin.sh inspect silent`);
+  the slice quests' own people with no quest topic answer "Who are you?" from `quest_lines/quest_people.json`.
+- **Deploy** the plugin, its ini, its SEQ file (`SEQ/Argonia.seq`: every start-game quest of ours, which the engine
+  starts before a new game's first frame; without it their dialogue is missing until a save is loaded) and the compiled
+  scripts to the play machine; stage-time mod changes with the stack.
 - **The builder never plays the game.**
 
 ## 9. Hand it to the owner

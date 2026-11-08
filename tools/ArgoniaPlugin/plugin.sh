@@ -24,7 +24,8 @@ build() {
   mkdir -p out; "${spriggit[@]}" deserialize -i "$yaml" -o "$esp" "${spr[@]}" >/dev/null
   loadorder; tool fixup "$esp" "${lo[@]}"  # the conditions Spriggit's YAML cannot carry (shutdown.json)
   cp plugin/Argonia.ini out/Argonia.ini      # the plugin's own ini, loaded beside it
-  echo "built $esp ($(stat -c %s "$esp") bytes) and out/Argonia.ini"
+  tool seq "$esp" out/SEQ/Argonia.seq        # its start-game quests, started before a new game's first frame (Seq.cs)
+  echo "built $esp ($(stat -c %s "$esp") bytes), out/Argonia.ini and out/SEQ/Argonia.seq"
 }
 loadorder() {  # the staged profile's plugins after the game's, as stack.py lays them
   local data="${ARGONIA_GAME_ROOT:-$HOME/games/skyrimse}/Data" mo2="$HOME/.argonia/stack/MO2" p f c
@@ -49,6 +50,7 @@ case "${1:-}" in
   surface) loadorder; tool surface "$2" "$3" "${lo[@]}" ;;
   mapprobe) loadorder; tool mapprobe "${lo[@]}" ;;
   cleancheck) build; tool cleancheck "$esp" "${lo[@]}" ;;
+  inspect) loadorder; [ -f "$esp" ] && lo+=("$esp"); tool inspect "$2" "${lo[@]}" ;;  # the load order, our built ESP last
   musicprobe) loadorder; tool musicprobe "${lo[@]}" ;;
   blocktest) build; tool blocktest "$esp" out/gpu/papyrus "${lo[@]}" ;;
   mainquestcheck) build; tool mainquestcheck "$esp" out/gpu/papyrus "${lo[@]}" ;;

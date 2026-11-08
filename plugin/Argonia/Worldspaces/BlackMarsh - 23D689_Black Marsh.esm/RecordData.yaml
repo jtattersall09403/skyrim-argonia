@@ -288,6 +288,7 @@ TopCell:
     EnableParent:
       Reference: 000C63:Argonia.esp
       Unknown: 0x000000
+    Scale: 0.526
     Placement:
       Position: 23463, 508, 16
     MajorFlags:
@@ -1204,6 +1205,7 @@ TopCell:
     SkyrimMajorRecordFlags:
     - 0x400
     Base: 000E07:Argonia.esp
+    Scale: 0.526
     Placement:
       Position: 5344, -7330, 93
     MajorFlags:
@@ -1454,6 +1456,7 @@ TopCell:
     - 0x400
     - InitiallyDisabled
     Base: 000E12:Argonia.esp
+    Scale: 0.526
     Placement:
       Position: -4053, 804, 58
     MajorFlags:
@@ -1638,6 +1641,33 @@ TopCell:
   - MutagenObjectType: PlacedObject
     FormKey: 000E4E:Argonia.esp
     MajorRecordFlagsRaw: 1024
+    EditorID: ARG_MQ01_ZoneCamp
+    SkyrimMajorRecordFlags:
+    - 0x400
+    VirtualMachineAdapter:
+      Scripts:
+      - Name: defaultSetStageTrigScript
+        Properties:
+        - MutagenObjectType: ScriptObjectProperty
+          Name: myQuest
+          Object: 000E00:Argonia.esp
+        - MutagenObjectType: ScriptIntProperty
+          Name: prereqStageOPT
+          Data: 30
+        - MutagenObjectType: ScriptIntProperty
+          Name: stage
+          Data: 35
+    Base: 099312:Skyrim.esm
+    Primitive:
+      Bounds: 2500, 2500, 1500
+      Color: '#00CC4C33'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -3765, 1220, 165
+  - MutagenObjectType: PlacedObject
+    FormKey: 000E4F:Argonia.esp
+    MajorRecordFlagsRaw: 1024
     EditorID: ARG_MQ01_ZoneFire
     SkyrimMajorRecordFlags:
     - 0x400
@@ -1650,7 +1680,7 @@ TopCell:
           Object: 000E00:Argonia.esp
         - MutagenObjectType: ScriptIntProperty
           Name: prereqStageOPT
-          Data: 10
+          Data: 35
         - MutagenObjectType: ScriptIntProperty
           Name: stage
           Data: 40
@@ -1663,7 +1693,7 @@ TopCell:
     Placement:
       Position: -3765, 1220, 165
   - MutagenObjectType: PlacedObject
-    FormKey: 000E4F:Argonia.esp
+    FormKey: 000E50:Argonia.esp
     MajorRecordFlagsRaw: 1024
     EditorID: ARG_MQ01_ZoneShed
     SkyrimMajorRecordFlags:
@@ -1690,7 +1720,7 @@ TopCell:
     Placement:
       Position: -3450, 1700, 156
   - MutagenObjectType: PlacedObject
-    FormKey: 000E50:Argonia.esp
+    FormKey: 000E51:Argonia.esp
     MajorRecordFlagsRaw: 1024
     EditorID: ARG_MQ01_ZoneHuts
     SkyrimMajorRecordFlags:
@@ -1717,7 +1747,7 @@ TopCell:
     Placement:
       Position: -4500, 1300, -100
   - MutagenObjectType: PlacedObject
-    FormKey: 000E51:Argonia.esp
+    FormKey: 000E52:Argonia.esp
     MajorRecordFlagsRaw: 1024
     EditorID: ARG_MQ01_ZoneShore90
     SkyrimMajorRecordFlags:
@@ -1744,7 +1774,7 @@ TopCell:
     Placement:
       Position: -3999, 604, 172
   - MutagenObjectType: PlacedObject
-    FormKey: 000E52:Argonia.esp
+    FormKey: 000E53:Argonia.esp
     MajorRecordFlagsRaw: 1024
     EditorID: ARG_MQ01_ZoneShore91
     SkyrimMajorRecordFlags:
@@ -1771,7 +1801,7 @@ TopCell:
     Placement:
       Position: -3999, 604, 172
   - MutagenObjectType: PlacedObject
-    FormKey: 000E53:Argonia.esp
+    FormKey: 000E54:Argonia.esp
     MajorRecordFlagsRaw: 1024
     EditorID: ARG_MQ01_ZoneShore93
     SkyrimMajorRecordFlags:
@@ -1800,6 +1830,15 @@ TopCell:
       Unknown: 0x000000
     Placement:
       Position: -3999, 604, 172
+  - MutagenObjectType: PlacedObject
+    FormKey: 000E55:Argonia.esp
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_MQ01_DockEndMarker
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 00003B:Skyrim.esm
+    Placement:
+      Position: 5344, -5005, 61
   - MutagenObjectType: PlacedObject
     FormKey: 000E7E:Argonia.esp
     MajorRecordFlagsRaw: 3072
@@ -1932,6 +1971,7 @@ TopCell:
     EnableParent:
       Reference: 000E7F:Argonia.esp
       Unknown: 0x000000
+    Scale: 0.526
     Placement:
       Position: -3720, 423, 94
     MajorFlags:
@@ -1986,6 +2026,19 @@ TopCell:
     Placement:
       Position: 21469.715, 2400.6975, 53.758984
       Rotation: 0.20000188, -5.5422333E-13, 4.6831923
+  - MutagenObjectType: PlacedObject
+    FormKey: 005AB4:Black Marsh.esm
+    MajorRecordFlagsRaw: 1024
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 0176ED:Dawnguard.esm
+    TeleportDestination:
+      Door: 0F92EC:Black Marsh.esm
+      Position: 2887.8513, 3773.7437, 7284.1035
+      Rotation: 0, 0, 2.9039984
+    Placement:
+      Position: 5687.6074, -9381.743, 177.92078
+      Rotation: 0, 0, 4.8831882
   - MutagenObjectType: PlacedObject
     FormKey: 0AA664:Black Marsh.esm
     MajorRecordFlagsRaw: 1024

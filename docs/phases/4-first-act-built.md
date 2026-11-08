@@ -76,6 +76,30 @@ the quest is re-authored.
 
 ## Measured
 
+- **Walk 4's quest fixes (2026-11-08, owner walk 4).** Root causes and fixes, each read back from the built plugin:
+  (1) talk silent on a new game: the plugin shipped no SEQ file, so its Start Game Enabled quests (ARG_Talk and the six
+  side quests) had no dialogue until a save was loaded; walk 3 passed from a loaded save. `plugin.sh build` now writes
+  `out/SEQ/Argonia.seq` (Seq.cs, Bethesda's format: file-relative form ids, as `update.seq` and `dawnguard.seq` in
+  Skyrim - Misc.bsa), deploy sends it and the stack lays it in `Data\SEQ`; talk_check reads it: 119/119 talkers
+  reachable on a new game. (2) MQ01: the answers were top-level topics behind a global and set no stage, and the gang
+  could never march, because BM&V's navmeshes have no edge links (0 of 17,589; `inspect navstat`), so the dock's
+  navmesh 079823 is an island (`inspect navpath`). Now the roll's INFO links to its three answers (TR-choice); stages
+  10 speak to Wuleen-Sei, 20 leave the hold (the answer sets it, its fragment unlocks the stair door), 30 follow the
+  gang (opening the stair door, TR-activate; the gang walks Dock1 to its landward end), 35 hidden (the camp's edge
+  zone moves the gang to the fire), 40 the strike; objectives 10/20/30 target Wuleen-Sei, the stair door and the fire.
+  (3) every person the quests place has a line and a voice (`inspect silent`: 1 of 58 without, the block test's dock
+  walker): 19 people answer "Who are you?" from `quest_lines/quest_people.json` (Talk.QuestPeople), and voiceless
+  templates get the silent voice (Talk.Voices; 1DE49D had none, so Mee-Tuja, Dar-Zeel and the Reed's stranger could not
+  be spoken to). (4) Buys-The-Months's line asked for a reason with no reply; it now sends the player to Wuleen-Sei.
+  (5) Mee-Tuja drew his template's height 1.9 (BM&V's tribe-leader bases 1DE49D and 02A1E6); Heights.cs scales every
+  such ref to stand at 1 (Mee-Tuja, Ties-The-Loose-Plank, Bent-Spine, Dar-Zeel, the stranger: scale 0.526, drawn 1.00).
+  (6) the hold is BM&V's copy of the ship 01Ship: its stair door 0F92EC had a load door's model and no teleport, and
+  its far door 0F9399 opened onto a room yet teleported; the stair door now pairs both ways with the pier door 005AB4,
+  0F9399 has no teleport. Door audit (`plugin.sh inspect doors`, 12 doors we add or change): MQ05's ship pair
+  000DDF/000DE0 both ways; MQ03's house door 0FE95A to its key; TG01's four locked pairs and the Novice trapdoor;
+  the block test's ship door to its key; every one pairs both ways, none disabled. Read-backs: mainquestcheck 537/537, mqcheck, bccheck, nightreedcheck 275/275, localcheck,
+  cleancheck, blocktest all PASS; placecheck 120/0; round trip clean.
+
 - **Clean-up built (2026-11-08).** `tools/ArgoniaPlugin/CleanUp.cs`, called after `Combat.Add` (overrides only, no new
   form ids): the eight slice clean-ups (lilmoth, hereguardplantation, dock2, dock5, helstrom, village, blackrose,
   blackmarshnorth.thorn1, whose three targets are in the coast ship's cell `0AA665`). Ten targets were built talkers and

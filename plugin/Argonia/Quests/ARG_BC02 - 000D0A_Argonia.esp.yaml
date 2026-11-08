@@ -161,19 +161,19 @@ Stages:
   - Flags: []
     Entry:
       TargetLanguage: English
-      Value: I told Says-It-Plain to come with me. The fire took the other two. I'm to bring him out of the stone house, past Third-Born Tsaxi.
+      Value: I told Says-It-Plain to come with me. The other two died in the fire. I'm to bring him out of the stone house, past Third-Born Tsaxi.
 - Index: 32
   LogEntries:
   - Flags: []
     Entry:
       TargetLanguage: English
-      Value: I told Hides-In-Reeds to come with me. The fire took the other two. I'm to bring her out of the stone house, past Third-Born Tsaxi.
+      Value: I told Hides-In-Reeds to come with me. The other two died in the fire. I'm to bring her out of the stone house, past Third-Born Tsaxi.
 - Index: 33
   LogEntries:
   - Flags: []
     Entry:
       TargetLanguage: English
-      Value: I told Keeps-The-Old-Count to come with me. The fire took the other two. I'm to bring her out of the stone house, past Third-Born Tsaxi.
+      Value: I told Keeps-The-Old-Count to come with me. The other two died in the fire. I'm to bring her out of the stone house, past Third-Born Tsaxi.
 - Index: 91
   LogEntries:
   - Flags:

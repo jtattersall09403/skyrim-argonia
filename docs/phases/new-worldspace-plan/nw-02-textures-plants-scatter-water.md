@@ -83,7 +83,7 @@ bucket, never in git.
 | 9 | Ground mist over marsh and water, by hour and weather | in progress (with step 7's agent) |
 | 10 | Navmesh across the province: pipeline restored (tools/navmesh, NewWorldNavmesh.cs; ff1205f1), proven on 256 cells round Lilmoth (all land cells covered, 0 seam faults, 99% connected, 5/5 paths, codec byte-exact on Skyrim); full-province run (~15 min) owed on the final terrain and placed refs | in progress |
 | 11 | LOD (terrain, objects, trees) and the world map: map data and 116 settlement map markers (only Stormhold known) built and checked off game; LOD settings and tooling (xLODGen 132, DynDOLOD Alpha-217) laid on the play machine (b698ff61); the LOD run is waiting on the new-world profile, then the full build once the world is final (`NW_LOD=1 tooling/job_guard.sh run --gpu nw-lod -- infra/gpu-box/lod.sh stage`) | in progress |
-| 12 | Off-game read-back loop over the built files, then deploy and the owner's walk check: `tooling/job_guard.sh run nw-verify -- python3 -m tools.newworld.verify` reads the ESM (ArgoniaPlugin `nwverify dump`), the NewWorld profile's laid files and archives, the LOD listing and map data, and writes a PASS/FAIL table (out/newworld/verify/report.md, 41 s); walk draft in nw-02-walk.md, posted once every row passes | in progress: verifier and walk draft ready; on build 20261108T213548Z 10 PASS, 19 FAIL (textures, water types, refs, mist, regions, navmesh, LOD, map data, Update.esm master and deploy not yet in the ESM or profile) |
+| 12 | Off-game read-back loop over the built files, then deploy and the owner's walk check | in progress (verifier and walk-check draft being built ahead of the final world) |
 
 The new-world card (2e3215a5, d64744de): 10 asset-only rows (KotM, Tropical Skyrim, Depths, HTBM + Cipactli, Xanmeer,
 CC Ayleid, Sleeping Hist Tree, Mud Mother Grove, SIRENROOT) marked `profile: newworld`, their BSAs unpacked to loose
@@ -93,8 +93,7 @@ under ~/games/skyrimse/newworld-assets/<id>; 110 of 3,368 flora model paths do n
 LE tree meshes) and are never placed.
 
 Owed on the reworked terrain (one pass, in this order): water_kinds → landcover → textures → place (with each habitat's
-refs per hectare calibrated to the measured source density within ±20%, and every texture named inside a
-placed model resolving in the NewWorld profile (25 KotM/TR texture paths do not): BM&V swamp ground 198/ha, KotM rainforest and
+refs per hectare calibrated to the measured source density within ±20%: BM&V swamp ground 198/ha, KotM rainforest and
 mud 130–150/ha, marsh grass 39/ha, river bottom 27/ha, table in the report) → world.sh (ESM with refs) → navmesh full
 run → LOD full run → the off-game read-back (step 12).
 

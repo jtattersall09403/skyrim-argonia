@@ -18,6 +18,7 @@ dialogue fragment, `TIF_`). Precedent is counted in Skyrim.esm (decision 0034; t
 | **TR-acquire**: picking up an item | the item is a forced-ref alias | the vanilla `defaultSetStageOnPlayerAcquire` | 16 quests |
 | **TR-death**: a death, or a group cleared | the actor (or each of the group) is a forced-ref alias | the vanilla `defaultSetStageOnDeathRefAlias`; for a group, `defaultCounterIncrementOnDeath` | 20 and 47 |
 | **TR-chain**: another quest's stage | the next quest's QUST (not Start Game Enabled) | QF_ `NextQuest.Start()` / `SetStage(10)` at the ending stage | 86 quests read another quest's stage; 1,596 INFOs do |
+| **TR-choice**: an answer to a question | each answer a DIAL in the question's own branch (not top level), the question's INFO linking to them (TCLT) | TIF_ on the answer's INFO | Skyrim's question-and-answer pairs; MQ01's roll and its three answers |
 | **TR-scene**: a scene finishing | SCEN owned by the quest | SCEN end fragment `SetStage(n)` | 577 scenes have fragments; 1,706 scenes in 1,378 quests |
 
 ## Conditions (what gates a trigger or a line), all CTDA on INFO, QUST or PACK
@@ -48,6 +49,7 @@ Flags in the records (`flag.mq*`) are not a block of their own: each is a stage 
 | **E-scene**: start a scene | SCEN owned by the quest, actors as aliases | QF_ `Scene.Start()` | 1,706 scenes |
 | **E-package**: give an actor new behaviour | alias package list (ALPC: follow, travel, sandbox at a marker) | none: the alias filling applies it | 4,125 alias packages in 365 quests |
 | **E-global**: change standing, owings, a remembered choice | GLOB record | QF_/TIF_ `Global.SetValue/Mod` | backs the 1,579 GetGlobalValue uses |
+| **E-target**: a compass marker on an objective | QOBJ target (QSTA) naming a forced-ref alias (a person, door or marker) | none | Skyrim.esm's objectives point at aliases this way (MQ01's stages 10, 20, 30) |
 | **E-regard**: a person likes the player more or less | none | TIF_ `Actor.SetRelationshipRank(Player, n)` | the vanilla favour quests' `favorNPCDeathScript` set (46 quests) stand on it; not counted |
 
 ## World edits (the records under the blocks)

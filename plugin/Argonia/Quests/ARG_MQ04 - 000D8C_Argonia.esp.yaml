@@ -112,19 +112,19 @@ Stages:
   - Flags: []
     Entry:
       TargetLanguage: English
-      Value: The Reed sent me east of Lilmoth to Low-Reed Village, where the Hist has turned its face. The root-herald, on the platform at the Hist's foot, does not like strangers from Lilmoth. I'm to talk her round, or bring her two handfuls of salt, which the village cannot make on fresh water, for leave to see the tree.
+      Value: The Reed sent me east of Lilmoth to Low-Reed Village, where the Hist has turned its face. The root-herald, on the platform at the Hist's foot, does not like strangers from Lilmoth. I'm to talk her round, or bring her two handfuls of salt, which the villagers cannot make on fresh water, for leave to see the tree.
 - Index: 20
   LogEntries:
   - Flags: []
     Entry:
       TargetLanguage: English
-      Value: The tending-ground at Low-Reed Village is closed, the Hist dark and its leaves shut, and the uxith is dark, as it was at the camp. The village says the leeches did it. I'm to go down into the water under the stilts, to the tree's lowest root, and see for myself.
+      Value: The tending-ground at Low-Reed Village is closed, the Hist dark and its leaves shut, and the uxith is dark, as it was at the camp. The villagers say the leeches did it. I'm to go down into the water under the stilts, to the tree's lowest root, and see for myself.
 - Index: 30
   LogEntries:
   - Flags: []
     Entry:
       TargetLanguage: English
-      Value: A root of the Hist was cut at the ring and sealed with black gum, and the leeches only came to the weeping sap. Pays-Late, the tree-minder, whom the village blames, goes down to wash it after dark. I'm to watch him there after dark and lift the pot of gum he carries without his knowing, then show it him, or ask the egg-tender at the uxith by day, and find out who cut it.
+      Value: A root of the Hist was cut at the ring and sealed with black gum, and the leeches only came to the weeping sap. Pays-Late, the tree-minder, whom the villagers blame, goes down to wash it after dark. I'm to watch him there after dark and lift the pot of gum he carries without his knowing, then show it him, or ask the egg-tender at the uxith by day, and find out who cut it.
 - Index: 40
   LogEntries:
   - Flags: []
@@ -143,7 +143,7 @@ Stages:
     - CompleteQuest
     Entry:
       TargetLanguage: English
-      Value: I poured the jars back at the cut root and left Pays-Late's knife with them. The village knows now that it was strangers' work and not his keeping. The Hist's light is coming back, low and slow. The village has taken me in.
+      Value: I poured the jars back at the cut root and left Pays-Late's knife with them. The villagers know now that it was strangers' work and not his keeping. The Hist's light is coming back, low and slow. The villagers have taken me in.
 Objectives:
 - Index: 10
   DisplayText:

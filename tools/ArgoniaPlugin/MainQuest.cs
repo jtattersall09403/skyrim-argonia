@@ -27,7 +27,7 @@ static class MainQuest
     // the rooms are, a floor tilted 0.4 rad, top z = 7409 + (1301 - y) * 0.4228, read from its floor pieces).
     public static readonly FormKey HoldCell = K("0F9178:Black Marsh.esm"), HoldNav = K("0F9179:Black Marsh.esm"),
         DockNav = K("079823:Black Marsh.esm"), CampNav = K("07990E:Black Marsh.esm"), HouseCell = K("0FE7F7:Black Marsh.esm"),
-        HoldDoor = K("0F9399:Black Marsh.esm"), HouseDoorOut = K("0FE95A:Black Marsh.esm"), DaintySload = K("07B91A:Skyrim.esm"),
+        HoldDoor = K("0F92EC:Black Marsh.esm"), HoldDoorFar = K("0F9399:Black Marsh.esm"), PierDoor = K("005AB4:Black Marsh.esm"), HouseDoorOut = K("0FE95A:Black Marsh.esm"), DaintySload = K("07B91A:Skyrim.esm"),
         Welcome = K("03B21E:Black Marsh.esm");
     public static readonly string[] Valenwood = ["0BCC51:Valenwood.esp", "0F0F3E:Valenwood.esp"];
     public static float HouseFloor(float y) => MathF.Round(7409 + (1301 - y) * 0.4228f);
@@ -39,12 +39,13 @@ static class MainQuest
     // MQ01 alias ids.
     public const uint A1WuleenHold = 0, A1UxHold = 1, A1Buys = 2, A1Courier = 3, A1WuleenMarch = 4, A1UxMarch = 5, A1DivesMarch = 6,
         A1FindsMarch = 7, A1Sal = 8, A1Deesh = 9, A1Leader = 10, A1Cutter1 = 11, A1Cutter2 = 12, A1Ties = 13, A1ZoneFire = 14,
-        A1ZoneShed = 15, A1ZoneHuts = 16, A1Shore90 = 17, A1Shore91 = 18, A1Shore93 = 19;
+        A1ZoneShed = 15, A1ZoneHuts = 16, A1Shore90 = 17, A1Shore91 = 18, A1Shore93 = 19, A1HoldDoor = 20, A1FireMark = 21, A1ZoneCamp = 22;
     // MQ03 alias ids.
     public const uint A3Officer = 0, A3Stranger = 1, A3Sap = 2, A3Nesh = 3, A3Salts = 4, A3Ties = 5, A3DoorZone = 6, A3Trap = 7;
 
     public static Quest Mq01 = null!, Mq03 = null!;
     public static PlacedObject StartMarker = null!;
+    static P3Float HoldInside;  // the arrival spot inside the hold, in front of its stair door
     // record person id -> our base editor ids that speak for it (the read-back's speaker check)
     public static readonly Dictionary<string, string[]> Speakers = [];
     public sealed record Line(string Quest, string Topic, string Variant, string Edid, string Prompt, string[] Text, string? Script, string? Body);
@@ -182,15 +183,21 @@ static class MainQuest
 
     // TR-topic: one top-level player topic per record topic; one INFO per (variant, conditions, fragment body). The lines come
     // from the topic's JSON infos by variant; the body calls the quest script (properties stay on it).
-    static void Topic(SkyrimMod mod, Quest q, string code, JsonElement lines, string topic, ConditionFloat[] speaker, params (string variant, string? body, ConditionFloat[] conds)[] infos)
+    // A choice (Under set): the topic joins that branch, not top level, and is offered only by an INFO's Link To (TCLT), as
+    // Skyrim's question-and-answer pairs: the question's INFO lists its answers, which follow it in the same conversation.
+    static DialogBranch? Under;
+    static DialogTopic Topic(SkyrimMod mod, Quest q, string code, JsonElement lines, string topic, ConditionFloat[] speaker, params (string variant, string? body, ConditionFloat[] conds)[] infos)
     {
         var t0 = lines.GetProperty(topic);
         var id = $"ARG_{code}_" + string.Concat(topic.Split('-').Skip(1).Select(p => char.ToUpper(p[0]) + p[1..]));
-        var branch = mod.DialogBranches.AddNew(id + "Branch");
+        var branch = Under ?? mod.DialogBranches.AddNew(id + "Branch");
         var t = mod.DialogTopics.AddNew(id);
         var first = t0.GetProperty("infos")[0].GetProperty("prompt").GetString()!;
-        branch.Quest.SetTo(q.FormKey); branch.Category = DialogBranch.CategoryType.Player; branch.Flags = DialogBranch.Flag.TopLevel;
-        branch.StartingTopic.SetTo(t.FormKey);
+        if (Under == null)
+        {
+            branch.Quest.SetTo(q.FormKey); branch.Category = DialogBranch.CategoryType.Player; branch.Flags = DialogBranch.Flag.TopLevel;
+            branch.StartingTopic.SetTo(t.FormKey);
+        }
         t.Name = first; t.Quest.SetTo(q.FormKey); t.Branch.SetTo(branch.FormKey); t.Priority = 50;
         t.Category = DialogTopic.CategoryEnum.Topic; t.Subtype = DialogTopic.SubtypeEnum.Custom; t.SubtypeName = new RecordType("CUST");
         var n = 0;
@@ -234,6 +241,7 @@ static class MainQuest
             t.Responses.Add(info);
             n++;
         }
+        return t;
     }
 
     public static void Add(SkyrimMod mod, List<ISkyrimModGetter> mods)
@@ -306,6 +314,28 @@ static class MainQuest
         var hold = x.Interior(HoldCell);
         hold.Location.Clear();
         hold.Persistent.AddRange([StartMarker, holdParent, crewParent, wuleenRef, uxRef, .. gangHold]);
+        // we.mq01.hold-door (W-override, the door audit of walk 4): the hold is BM&V's copy of the ship 01Ship, whose way out
+        // Black Marsh North moved to the door at the top of the stairs (0AA6C9); the copy's stair door 0F92EC has a load
+        // door's model and no teleport (it did nothing), and its far door 0F9399, an opening door with a room behind it,
+        // teleported to the pier. The stair door becomes the way out, paired with the pier door 005AB4 both ways (the
+        // arrival in the hold is BMN's own in front of 0AA6C9; on the pier, 0F9399's old one), locked with no key until
+        // the answer (stage 20's fragment unlocks it); 0F9399 loses its teleport and opens onto its room.
+        var holdTo = ((IPlacedObjectGetter)x.Placed[HoldDoorFar].rec).TeleportDestination!;
+        var stairIn = ((IPlacedObjectGetter)x.Placed[K("039827:Black Marsh.esm")].rec).TeleportDestination!;
+        var stairDoor = (PlacedObject)((IPlacedObjectGetter)x.Placed[HoldDoor].rec).DeepCopy();
+        stairDoor.MajorRecordFlagsRaw |= 0x400;
+        stairDoor.TeleportDestination = new TeleportDestination { Position = holdTo.Position, Rotation = holdTo.Rotation };
+        stairDoor.TeleportDestination.Door.SetTo(PierDoor);
+        stairDoor.Lock = new LockData { Level = LockLevel.RequiresKey };
+        var farDoor = (PlacedObject)((IPlacedObjectGetter)x.Placed[HoldDoorFar].rec).DeepCopy();
+        farDoor.TeleportDestination = null; farDoor.MajorRecordFlagsRaw |= 0x400;
+        var pierDoor = (PlacedObject)((IPlacedObjectGetter)x.Placed[PierDoor].rec).DeepCopy();
+        pierDoor.MajorRecordFlagsRaw |= 0x400;
+        pierDoor.TeleportDestination = new TeleportDestination { Position = stairIn.Position, Rotation = stairIn.Rotation };
+        pierDoor.TeleportDestination.Door.SetTo(HoldDoor);
+        hold.Persistent.AddRange([stairDoor, farDoor]);
+        x.World.TopCell!.Persistent.Add(pierDoor);
+        HoldInside = stairIn.Position;
 
         // The pier (we.mq01.broker) and the march copies at the plank's foot (we.mq01.march), Dock1's navmesh 079823.
         var brokerParent = x.Marker("ARG_MQ01_BrokerParent", new P3Float(5380, -7500, -300), null, 0x400);
@@ -358,8 +388,11 @@ static class MainQuest
             dressing.Add(x.Marker($"ARG_MQ01_Egg{dressing.Count}", OnLand((Shed.X + dx, Shed.Y + dy), 5), K("17BF06:Black Marsh.esm"), 0x400)); // 01egg, the clutch
         dressing.Single(d => d.EditorID == "ARG_MQ01_Cutting").Scale = 0.15f;
         dressing.Single(d => d.EditorID == "ARG_MQ01_Planks").Placement!.Rotation = new P3Float(0, 0, MathF.PI / 2);
-        // Zones: the fire (the march's end, 10 -> 40), the shed (40 -> 41), the huts' water (40 -> 42), the shore's three boxes.
-        var fireZone = x.Zone("ARG_MQ01_ZoneFire", new P3Float(fireAt.X, fireAt.Y, fireAt.Z + 100), new P3Float(300, 300, 200), q, 10, 40);
+        // Zones: the camp's edge (30 -> 35, hidden: the gang is put at the fire before the player arrives), the fire (the
+        // march's end, 35 -> 40), the shed (40 -> 41), the huts' water (40 -> 42), the shore's three boxes. The camp box
+        // holds the fire box, so any way in crosses it first.
+        var campZone = x.Zone("ARG_MQ01_ZoneCamp", new P3Float(fireAt.X, fireAt.Y, fireAt.Z + 100), new P3Float(2500, 2500, 1500), q, 30, 35);
+        var fireZone = x.Zone("ARG_MQ01_ZoneFire", new P3Float(fireAt.X, fireAt.Y, fireAt.Z + 100), new P3Float(300, 300, 200), q, 35, 40);
         var shedZone = x.Zone("ARG_MQ01_ZoneShed", new P3Float(Shed.X, Shed.Y - 100, x.Land(Shed.X, Shed.Y) + 100), new P3Float(250, 250, 200), q, 40, 41);
         var hutsZone = x.Zone("ARG_MQ01_ZoneHuts", new P3Float(Huts1.X, Huts1.Y - 150, -100), new P3Float(300, 350, 250), q, 40, 42);
         var shoreAt = new P3Float(shoreMark.Placement!.Position.X, shoreMark.Placement.Position.Y, shoreMark.Placement.Position.Z + 100);
@@ -367,24 +400,32 @@ static class MainQuest
         var shore91 = x.Zone("ARG_MQ01_ZoneShore91", shoreAt, new P3Float(350, 350, 250), q, 42, 91);
         var shore93 = x.Zone("ARG_MQ01_ZoneShore93", shoreAt, new P3Float(350, 350, 250), q, 40, 93, shore93Parent);
 
-        // Packages on the aliases (E-package): the march to the fire once an answer is given (C-global, C-stage); the
-        // leader to the water's edge from 40, the cutters from 41 (they go and are disabled at the ending); the saved one
-        // follows the player on 41 or 42.
-        var march = x.Travel("ARG_MQ01_MarchToFire", fireMark, 300, Stage(q, CompareOperator.EqualTo, 10), Glob(answered, 1));
+        // Packages on the aliases (E-package). BM&V's navmeshes carry no edge links (0 of 17,589 in Black Marsh.esm and
+        // Black Marsh North.esp; `plugin.sh inspect navstat`), so no one walks from one navmesh to another: the gang sets off
+        // along Dock1's own navmesh to its landward end (30 to 34) and is moved to the fire at the camp's edge zone (35,
+        // E-move), where it waits (35 to 39). The leader to the water's edge from 40, the cutters from 41 (they go and are
+        // disabled at the ending); the saved one follows the player on 41 or 42.
+        var dockEnd = x.Marker("ARG_MQ01_DockEndMarker", x.Snap.At(DockNav, 5340, -5000));
+        var march = x.Travel("ARG_MQ01_MarchOff", dockEnd, 200, Stage(q, CompareOperator.GreaterThanOrEqualTo, 30), Stage(q, CompareOperator.LessThan, 35));
+        var atFire = x.Travel("ARG_MQ01_WaitAtFire", fireMark, 300, Stage(q, CompareOperator.GreaterThanOrEqualTo, 35), Stage(q, CompareOperator.LessThan, 40));
         var leave = x.Travel("ARG_MQ01_LeaderLeaves", waterMark, 128, Stage(q, CompareOperator.GreaterThanOrEqualTo, 40));
         var cutLeave = x.Travel("ARG_MQ01_CuttersLeave", waterMark, 200, Stage(q, CompareOperator.GreaterThanOrEqualTo, 41));
         var salFollow = x.Follow("ARG_MQ01_SalSeiFollows", Stage(q, CompareOperator.EqualTo, 41));
         var deeshFollow = x.Follow("ARG_MQ01_DeeshDuunFollows", Stage(q, CompareOperator.EqualTo, 42));
 
-        NewQuest(q, "No Name on the Work Roll", "quest.main.mq01", [], [90, 91, 93], "ARG_QF_MQ01");
+        NewQuest(q, "No Name on the Work Roll", "quest.main.mq01", [35], [90, 91, 93], "ARG_QF_MQ01");
         const QuestAlias.Flag AD = QuestAlias.Flag.AllowDisabled;
         Forced(q, A1WuleenHold, "WuleenSei", wuleenRef.FormKey, AD | QuestAlias.Flag.Essential);
         Forced(q, A1UxHold, "UxXeek", uxRef.FormKey, AD);
         Forced(q, A1Buys, "BuysTheMonths", buysRef.FormKey, AD);
-        Forced(q, A1Courier, "Courier", courierRef.FormKey, QuestAlias.Flag.Essential).PackageData.Add(march.ToLink());
+        var courierA = Forced(q, A1Courier, "Courier", courierRef.FormKey, QuestAlias.Flag.Essential);
+        courierA.PackageData.Add(march.ToLink()); courierA.PackageData.Add(atFire.ToLink());
         foreach (var (id, name, r, f) in new[] { (A1WuleenMarch, "WuleenSeiMarch", wuleenMRef, AD | QuestAlias.Flag.Essential), (A1UxMarch, "UxXeekMarch", uxMRef, AD),
                      (A1DivesMarch, "DivesMarch", divesMRef, AD), (A1FindsMarch, "FindsMarch", findsMRef, AD) })
-            Forced(q, id, name, r.FormKey, f).PackageData.Add(march.ToLink());
+        {
+            var a = Forced(q, id, name, r.FormKey, f);
+            a.PackageData.Add(march.ToLink()); a.PackageData.Add(atFire.ToLink());
+        }
         Forced(q, A1Sal, "SalSei", salRef.FormKey, QuestAlias.Flag.Essential).PackageData.Add(salFollow.ToLink());
         Forced(q, A1Deesh, "DeeshDuun", deeshRef.FormKey, QuestAlias.Flag.Essential).PackageData.Add(deeshFollow.ToLink());
         Forced(q, A1Leader, "CutsTheOldKnot", leaderRef.FormKey, AD | QuestAlias.Flag.Protected).PackageData.Add(leave.ToLink());
@@ -397,6 +438,14 @@ static class MainQuest
         Forced(q, A1Shore90, "ZoneShore90", shore90.FormKey);
         Forced(q, A1Shore91, "ZoneShore91", shore91.FormKey);
         Forced(q, A1Shore93, "ZoneShore93", shore93.FormKey, AD);
+        // TR-activate on the hold's stair door (BlockTest's door shape): opening it once the answer is given sets 30.
+        Forced(q, A1HoldDoor, "HoldDoor", HoldDoor);
+        Forced(q, A1FireMark, "FireMarker", fireMark.FormKey);
+        Forced(q, A1ZoneCamp, "ZoneCamp", campZone.FormKey);
+        q.VirtualMachineAdapter!.Aliases.Add(AliasScript(q, A1HoldDoor, Script("defaultSetStageAliasScript", Int("stage", 30), Int("prereqStageOPT", 20), Int("TriggerType", 0))));
+        // Objective targets (the compass marker): Wuleen-Sei at 10, the stair door at 20, the camp's fire at 30.
+        foreach (var (o, a) in new[] { (10, A1WuleenHold), (20, A1HoldDoor), (30, A1FireMark) })
+            q.Objectives.Single(ob => ob.Index == o).Targets.Add(new QuestObjectiveTarget { AliasID = (int)a });
         q.VirtualMachineAdapter!.Scripts.Add(Script("ARG_QF_MQ01",
             Obj("StartMarker", StartMarker.FormKey), Obj("Tunic", K("03C9FE:Skyrim.esm")), Obj("Footwraps", K("03CA00:Skyrim.esm")),
             Obj("RollRead", rollRead.FormKey), Obj("Answered", answered.FormKey), Obj("SavedSal", savedSal.FormKey), Obj("SavedDeesh", savedDeesh.FormKey),
@@ -405,29 +454,38 @@ static class MainQuest
             Obj("BrokerParent", brokerParent.FormKey), Obj("CellParent", cellParent.FormKey), Obj("SurvivorsParent", survivors.FormKey),
             Obj("Shore93Parent", shore93Parent.FormKey), Obj("ShedZone", shedZone.FormKey), Obj("HutsZone", hutsZone.FormKey),
             Obj("ShedMark", shedMark.FormKey), Obj("HutsMark", hutsMark.FormKey), Obj("ShoreMark", shoreMark.FormKey),
+            Obj("FireMark", fireMark.FormKey), Obj("HoldDoor", HoldDoor),
             Alias("Courier", q, A1Courier), Alias("Leader", q, A1Leader), Alias("SalSei", q, A1Sal), Alias("DeeshDuun", q, A1Deesh),
             Alias("WuleenMarch", q, A1WuleenMarch), Alias("UxMarch", q, A1UxMarch), Alias("Ties", q, A1Ties),
             Alias("Cutter1", q, A1Cutter1), Alias("Cutter2", q, A1Cutter2), Alias("DivesMarch", q, A1DivesMarch), Alias("FindsMarch", q, A1FindsMarch),
             Obj("ReedKnife", knife.FormKey), Obj("NextQuest", Mq03.FormKey)));
 
-        // Lines (TR-topic): the roll at 10 sets RollRead; the three answers once it is read and none given (C-global), each
-        // sets Answered, which starts the march; the broker, the port hand and Dives-Without-A-Rope at 10.
+        // Lines (TR-topic). The roll at 10 is a question: its INFO links to the three answers (choices in its branch, as
+        // Skyrim's question-and-answer pairs), so they follow it at once and come back with it if the player walks off.
+        // Each answer sets Answered (the broker's line) and stage 20; the broker, the port hand and Dives-Without-A-Rope
+        // from 10 until the strike.
         var lines = LinesOf("mq01");
         const string Q = "(GetOwningQuest() as ARG_QF_MQ01)";
         ConditionFloat[] Who(params Npc[] ns) => ns.Select((n, i) => i < ns.Length - 1 ? Or(IsId(n)) : IsId(n)).ToArray();
         var at10 = Stage(q, CompareOperator.EqualTo, 10);
-        Topic(mod, q, "MQ01", lines, "topic.mq01-the-roll", Who(wuleen), ("main", $"{Q}.ReadRoll()", [at10.DeepCopy()]));
+        ConditionFloat[] Before40() => [Stage(q, CompareOperator.GreaterThanOrEqualTo, 10), Stage(q, CompareOperator.LessThan, 40)];
+        var roll = Topic(mod, q, "MQ01", lines, "topic.mq01-the-roll", Who(wuleen), ("main", $"{Q}.ReadRoll()", [at10.DeepCopy()]));
+        Under = mod.DialogBranches.Single(b => b.FormKey == roll.Branch.FormKey);
         foreach (var t in new[] { "topic.mq01-answer-name", "topic.mq01-answer-silent", "topic.mq01-answer-defy" })
-            Topic(mod, q, "MQ01", lines, t, Who(wuleen), ("main", $"{Q}.Answer()", [at10.DeepCopy(), Glob(rollRead, 1), Glob(answered, 0)]));
-        Topic(mod, q, "MQ01", lines, "topic.mq01-the-hire", Who(buys), ("after-answer", null, [at10.DeepCopy(), Glob(answered, 1)]), ("before-answer", null, [at10.DeepCopy()]));
-        Topic(mod, q, "MQ01", lines, "topic.mq01-the-water", Who(ux, uxM), ("main", null, [at10.DeepCopy()]));
-        Topic(mod, q, "MQ01", lines, "topic.mq01-the-march", Who(dives, divesM), ("main", null, [at10.DeepCopy()]));
+        {
+            var answer = Topic(mod, q, "MQ01", lines, t, Who(wuleen), ("main", $"{Q}.Answer()", [at10.DeepCopy()]));
+            foreach (var r in roll.Responses) r.LinkTo.Add(answer.ToLink<IDialogTopicGetter>());
+        }
+        Under = null;
+        Topic(mod, q, "MQ01", lines, "topic.mq01-the-hire", Who(buys), ("after-answer", null, [.. Before40(), Glob(answered, 1)]), ("before-answer", null, [at10.DeepCopy()]));
+        Topic(mod, q, "MQ01", lines, "topic.mq01-the-water", Who(ux, uxM), ("main", null, Before40()));
+        Topic(mod, q, "MQ01", lines, "topic.mq01-the-march", Who(dives, divesM), ("main", null, Before40()));
 
         // World edits: exterior persistent refs in the worldspace's persistent cell.
         x.World.TopCell!.Persistent.AddRange([brokerParent, marchParent, buysRef, courierRef, wuleenMRef, uxMRef, divesMRef, findsMRef,
             orderly, attacked, aftermath, cellParent, survivors, shore93Parent, fireMark, shedMark, hutsMark, shoreMark, waterMark,
             salRef, deeshRef, neshNeelRef, leaderRef, cutter1Ref, cutter2Ref, tiesRef, .. survivorRefs, .. dressing,
-            fireZone, shedZone, hutsZone, shore90, shore91, shore93]);
+            fireZone, shedZone, hutsZone, shore90, shore91, shore93, dockEnd, campZone]);
         // we.mq01.no-valenwood, we.mq01.no-welcome: Valenwood.esp's start-game quests and BM&V's greeting quest off at
         // the start; MQ03's ending starts them (Valenwood's two deferred there too: no first-entry trigger is a block).
         foreach (var k in Valenwood.Append(Welcome.ToString()))
@@ -509,8 +567,8 @@ static class MainQuest
         var dreamMark = x.Marker("ARG_MQ03_DreamMarker", x.Snap.At(HoldNav, 2850, 3300, 7010));
         var roots = new[] { (2650f, 3700f), (3100f, 3700f), (2600f, 4300f), (3150f, 4300f), (2700f, 4850f), (3100f, 4850f) }
             .Select((p, i) => x.Marker($"ARG_MQ03_DreamRoot{i + 1}", new P3Float(p.Item1, p.Item2, 7010), K("1B331F:Black Marsh.esm"), 0x400, dreamParent)).ToList();
-        var doorPos = x.Placed[HoldDoor].rec.Placement!.Position;
-        var doorZone = x.Zone("ARG_MQ03_ZoneDoor", new P3Float(doorPos.X, doorPos.Y - 150, doorPos.Z), new P3Float(150, 150, 150), q, 40, 45);
+        var doorPos = HoldInside; // in front of the hold's stair door, its way out (MQ01)
+        var doorZone = x.Zone("ARG_MQ03_ZoneDoor", doorPos, new P3Float(150, 150, 150), q, 40, 45);
         x.Interior(HoldCell).Persistent.AddRange([dreamParent, dreamMark, .. roots, doorZone]);
 
         // we.mq03.door: the outer door locked to the house key (setDoorAccess: the key handed at e-sworn).

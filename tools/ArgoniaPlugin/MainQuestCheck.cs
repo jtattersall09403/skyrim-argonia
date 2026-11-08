@@ -112,8 +112,10 @@ static class MainQuestCheck
                 var person = tp.Value.GetProperty("speaker").GetString()!;
                 Check($"{code} {tp.Name} speaker is the record's", recTopics.Count == 0 || recTopics.GetValueOrDefault(tp.Name) == person);
                 var t = mine.DialogTopics.SingleOrDefault(x => x.EditorID == topicId);
-                Check($"{code} topic {topicId} built, top-level player branch of the quest", t != null && t.Quest.FormKey == q.FormKey
-                    && mine.DialogBranches.Any(b => b.FormKey == t.Branch.FormKey && b.StartingTopic.FormKey == t.FormKey && b.Flags?.HasFlag(DialogBranch.Flag.TopLevel) == true && b.Quest.FormKey == q.FormKey));
+                // a top-level topic starts its own branch; a choice (TR-choice) sits in its question's branch, linked from it
+                bool choice = t != null && mine.DialogTopics.Any(o => o.Branch.FormKey == t.Branch.FormKey && o.Responses.Any(r => r.LinkTo.Any(l => l.FormKey == t.FormKey)));
+                Check($"{code} topic {topicId} built, {(choice ? "a choice linked from its question's branch" : "top-level player branch")} of the quest", t != null && t.Quest.FormKey == q.FormKey
+                    && mine.DialogBranches.Any(b => b.FormKey == t.Branch.FormKey && (choice || b.StartingTopic.FormKey == t.FormKey) && b.Flags?.HasFlag(DialogBranch.Flag.TopLevel) == true && b.Quest.FormKey == q.FormKey));
                 if (t == null) continue;
                 foreach (var v in tp.Value.GetProperty("infos").EnumerateArray())
                 {
@@ -156,9 +158,9 @@ static class MainQuestCheck
 
         // ---- MQ01 ----
         var m1 = Q("ARG_MQ01"); var m3 = Q("ARG_MQ03");
-        QuestCheck("MQ01", "quest.main.mq01", "ARG_MQ01", "ARG_QF_MQ01", [], [90, 91, 93], new()
+        QuestCheck("MQ01", "quest.main.mq01", "ARG_MQ01", "ARG_QF_MQ01", [35], [90, 91, 93], new()
         {
-            [10] = ["Enable", "SetObjectiveDisplayed"], [40] = ["Enable", "Disable", "Kill", "MoveTo", "Clear"], [41] = ["Choose", "choiceTaken", "GetStageDone"],
+            [10] = ["Enable", "SetObjectiveDisplayed"], [20] = ["Lock", "SetObjectiveCompleted", "SetObjectiveDisplayed"], [30] = ["March", "SetObjectiveDisplayed"], [35] = ["MoveTo", "March"], [40] = ["Enable", "Disable", "Kill", "MoveTo", "Clear"], [41] = ["Choose", "choiceTaken", "GetStageDone"],
             [42] = ["Choose", "choiceTaken", "GetStageDone"], [90] = ["Ending", "endTaken", "AddItem", "SetValue"], [91] = ["Ending", "endTaken", "SetValue"], [93] = ["Ending", "Kill"],
         });
         Check("MQ01 chargen and stage 10 in the quest script (.pex)", Pex("ARG_QF_MQ01", "ShowRaceMenu", "OnUpdate", "IsRunning") && Pex("ARG_QF_MQ01", "Ending", "Stop", "NextQuest"));
@@ -170,17 +172,40 @@ static class MainQuestCheck
         var opening = mine.Quests.SingleOrDefault(x => x.EditorID == "ARG_Opening");
         Check("ARG_Opening kept, never starts (not start-enabled, no script, nothing names it)", opening != null && !opening.Flags.HasFlag(Quest.Flag.StartGameEnabled) && opening.VirtualMachineAdapter == null
             && !mine.EnumerateMajorRecords().Where(r => r.FormKey != opening.FormKey).SelectMany(r => r.EnumerateFormLinks()).Any(l => l.FormKey == opening.FormKey));
-        Zone("ARG_MQ01_ZoneFire", "ARG_MQ01", 10, 40); Zone("ARG_MQ01_ZoneShed", "ARG_MQ01", 40, 41); Zone("ARG_MQ01_ZoneHuts", "ARG_MQ01", 40, 42);
+        Zone("ARG_MQ01_ZoneCamp", "ARG_MQ01", 30, 35); Zone("ARG_MQ01_ZoneFire", "ARG_MQ01", 35, 40); Zone("ARG_MQ01_ZoneShed", "ARG_MQ01", 40, 41); Zone("ARG_MQ01_ZoneHuts", "ARG_MQ01", 40, 42);
         Zone("ARG_MQ01_ZoneShore90", "ARG_MQ01", 41, 90); Zone("ARG_MQ01_ZoneShore91", "ARG_MQ01", 42, 91); Zone("ARG_MQ01_ZoneShore93", "ARG_MQ01", 40, 93, "ARG_MQ01_Shore93Parent");
         Info("ARG_MQ01_TheRoll", 0, "Wuleen-Sei at 10 reads the roll", c => StageCond(c, m1, CompareOperator.EqualTo, 10), "ReadRoll");
+        var rollT = mine.DialogTopics.Single(x => x.EditorID == "ARG_MQ01_TheRoll");
         foreach (var t in new[] { "ARG_MQ01_AnswerName", "ARG_MQ01_AnswerSilent", "ARG_MQ01_AnswerDefy" })
-            Info(t, 0, "an answer at 10 once the roll is read and none given", c => StageCond(c, m1, CompareOperator.EqualTo, 10) && GlobCond(c, "ARG_MQ01_RollRead", 1) && GlobCond(c, "ARG_MQ01_Answered", 0), "Answer");
-        Info("ARG_MQ01_TheHire", 0, "the broker after the answer", c => StageCond(c, m1, CompareOperator.EqualTo, 10) && GlobCond(c, "ARG_MQ01_Answered", 1), null);
+        {
+            Info(t, 0, "an answer at 10 sets Answered and stage 20", c => StageCond(c, m1, CompareOperator.EqualTo, 10), "Answer");
+            var at = mine.DialogTopics.Single(x => x.EditorID == t);
+            Check($"{t} a choice the roll's INFO links to, in its branch (not top level)", at.Branch.FormKey == rollT.Branch.FormKey
+                && rollT.Responses.All(r => r.LinkTo.Any(l => l.FormKey == at.FormKey)));
+        }
+        Check("MQ01 Answer sets Answered and stage 20; stage 20 unlocks the hold door (.pex)", Pex("ARG_QF_MQ01", "Answer", "SetStage", "Fragment_20", "Lock") && Pex("ARG_QF_MQ01", "Fragment_35", "MoveTo", "March"));
+        Info("ARG_MQ01_TheHire", 0, "the broker after the answer, until the strike", c => StageCond(c, m1, CompareOperator.LessThan, 40) && GlobCond(c, "ARG_MQ01_Answered", 1), null);
         Info("ARG_MQ01_TheHire", 1, "the broker before it", c => StageCond(c, m1, CompareOperator.EqualTo, 10), null);
-        Info("ARG_MQ01_TheWater", 0, "the water at 10", c => StageCond(c, m1, CompareOperator.EqualTo, 10), null);
-        Info("ARG_MQ01_TheMarch", 0, "the march at 10", c => StageCond(c, m1, CompareOperator.EqualTo, 10), null);
+        Info("ARG_MQ01_TheWater", 0, "the water from 10 until the strike", c => StageCond(c, m1, CompareOperator.GreaterThanOrEqualTo, 10) && StageCond(c, m1, CompareOperator.LessThan, 40), null);
+        Info("ARG_MQ01_TheMarch", 0, "the march from 10 until the strike", c => StageCond(c, m1, CompareOperator.GreaterThanOrEqualTo, 10) && StageCond(c, m1, CompareOperator.LessThan, 40), null);
         foreach (var a in new[] { MainQuest.A1Courier, MainQuest.A1WuleenMarch, MainQuest.A1UxMarch, MainQuest.A1DivesMarch, MainQuest.A1FindsMarch })
-            Pkg("ARG_MQ01", a, "ARG_MQ01_MarchToFire", c => StageCond(c, m1, CompareOperator.EqualTo, 10) && GlobCond(c, "ARG_MQ01_Answered", 1));
+        {
+            Pkg("ARG_MQ01", a, "ARG_MQ01_MarchOff", c => StageCond(c, m1, CompareOperator.GreaterThanOrEqualTo, 30) && StageCond(c, m1, CompareOperator.LessThan, 35));
+            Pkg("ARG_MQ01", a, "ARG_MQ01_WaitAtFire", c => StageCond(c, m1, CompareOperator.GreaterThanOrEqualTo, 35) && StageCond(c, m1, CompareOperator.LessThan, 40));
+        }
+        // The hold's doors (we.mq01.hold-door): the stair door the way out, paired both ways with the pier door, locked with
+        // no key until 20, opening it at 20 sets 30 (TR-activate); the far door opens onto its room.
+        var stair = placed.GetValueOrDefault(MainQuest.HoldDoor) as IPlacedObjectGetter; var pier = placed.GetValueOrDefault(MainQuest.PierDoor) as IPlacedObjectGetter;
+        var far = placed.GetValueOrDefault(MainQuest.HoldDoorFar) as IPlacedObjectGetter;
+        Check("hold stair door 0F92EC teleports to the pier door 005AB4, which teleports back", stair?.TeleportDestination?.Door.FormKey == MainQuest.PierDoor && pier?.TeleportDestination?.Door.FormKey == MainQuest.HoldDoor
+            && Persistent(MainQuest.HoldDoor) && Persistent(MainQuest.PierDoor));
+        Check("hold stair door locked, requires key, no key (stage 20 unlocks it)", stair?.Lock is { } lk && ((int)lk.Level & 0xFF) == 0xFF && lk.Key.IsNull);
+        Check("hold far door 0F9399 has no teleport (opens onto its room)", far != null && far.TeleportDestination == null);
+        Check("hold door alias: defaultSetStageAliasScript on activate, prereq 20, sets 30", m1.VirtualMachineAdapter!.Aliases.Any(a => a.Property.Alias == MainQuest.A1HoldDoor
+            && a.Scripts.Any(s => s.Name == "defaultSetStageAliasScript" && s.Properties.OfType<IScriptIntPropertyGetter>().Any(p => p.Name == "stage" && p.Data == 30)
+            && s.Properties.OfType<IScriptIntPropertyGetter>().Any(p => p.Name == "prereqStageOPT" && p.Data == 20) && s.Properties.OfType<IScriptIntPropertyGetter>().Any(p => p.Name == "TriggerType" && p.Data == 0))));
+        foreach (var (o, a) in new[] { (10, MainQuest.A1WuleenHold), (20, MainQuest.A1HoldDoor), (30, MainQuest.A1FireMark) })
+            Check($"MQ01 objective {o} targets alias {a}", m1.Objectives.SingleOrDefault(x => x.Index == o)?.Targets.Any(t => t.AliasID == a) == true);
         Pkg("ARG_MQ01", MainQuest.A1Leader, "ARG_MQ01_LeaderLeaves", c => StageCond(c, m1, CompareOperator.GreaterThanOrEqualTo, 40));
         Pkg("ARG_MQ01", MainQuest.A1Cutter1, "ARG_MQ01_CuttersLeave", c => StageCond(c, m1, CompareOperator.GreaterThanOrEqualTo, 41));
         Pkg("ARG_MQ01", MainQuest.A1Cutter2, "ARG_MQ01_CuttersLeave", c => StageCond(c, m1, CompareOperator.GreaterThanOrEqualTo, 41));

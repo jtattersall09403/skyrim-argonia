@@ -2,6 +2,7 @@ switch (args.FirstOrDefault())
 {
     case "study": Study.Run(args[1]); break;
     case "fixup": Fixup.Run(args[1], args[2..]); break;
+    case "seq": return Seq.Run(args[1], args[2]);
     case "probe": Probe.Run(args[1], args[2]); break;
     case "list": return Listing.Run(args[1], args[2], args[3..]);
     case "find": Find.Run(args[1], args[2]); break;
@@ -25,7 +26,6 @@ switch (args.FirstOrDefault())
     case "mainquestcheck": return MainQuestCheck.Run(args[1], args[2], args[3..]);
     case "newworld": return NewWorld.Run(args[1..]);
     case "nwmap": return NewWorldMap.Run(args[1..]);
-    case "nwverify": return NewWorldVerify.Run(args[1..]);
     case "placecheck": return PlaceCheck.Run(args[1], args[2..]);
     case "nightreedcheck": return NightReedCheck.Run(args[1], args[2], args[3..]);
     default: Console.Error.WriteLine("ArgoniaPlugin seed <out.esp> <plugins...> | blocktest <esp> <pexdir> <plugins...> | list <esp> <md> | survey <plugins...> | study|quests|cell|find ..."); return 2;

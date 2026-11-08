@@ -14,7 +14,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Leeches crowd its roots. They closed the tree. Pays-Late, our tree-minder, let them in. He goes down to the roots at night. The village sees him go.
+    Value: Leeches crowd its roots. They closed the tree. Pays-Late, our tree-minder, let them in. He goes down to the roots at night.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 3
@@ -22,7 +22,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: I hold back my welcome. I will not open the tree to you yet. Win me round with words, or bring me two piles of salt. We cannot make salt here.
+    Value: Folk in the village see him go. I hold back my welcome. I will not open the tree to you yet. Win me round with words, or bring me two piles of salt.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 4
@@ -30,7 +30,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Our water is fresh.
+    Value: We cannot make salt here. Our water is fresh.
   ScriptNotes: ''
   Edits: ''
 Conditions:

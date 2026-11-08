@@ -37,15 +37,6 @@ Conditions:
     MutagenObjectType: GetStageConditionData
     Quest: 000E00:Argonia.esp
   ComparisonValue: 10
-- MutagenObjectType: ConditionFloat
-  Data:
-    MutagenObjectType: GetGlobalValueConditionData
-    Global: 000E17:Argonia.esp
-  ComparisonValue: 1
-- MutagenObjectType: ConditionFloat
-  Data:
-    MutagenObjectType: GetGlobalValueConditionData
-    Global: 000E18:Argonia.esp
 Prompt:
   TargetLanguage: English
   Value: Do what you like with your roll.

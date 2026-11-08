@@ -33,7 +33,7 @@ VirtualMachineAdapter:
       Object: 000E7D:Argonia.esp
     - MutagenObjectType: ScriptObjectProperty
       Name: HoldDoor
-      Object: 0F9399:Black Marsh.esm
+      Object: 0F92EC:Black Marsh.esm
     - MutagenObjectType: ScriptObjectProperty
       Name: HouseKey
       Object: 000E78:Argonia.esp
@@ -175,7 +175,7 @@ Stages:
   - Flags: []
     Entry:
       TargetLanguage: English
-      Value: I lay down on the mats in the house in Lilmoth with the camp's sap still on my tongue, and dreamed. I stood in fog among a ring of trees whose roots climbed up and up, and at the top was a gap like a door that nobody has built. A dry voice spoke that I could not place. The dream walked me to the door.
+      Value: I lay down on the mats in the house in Lilmoth with the camp's sap still on my tongue, and dreamed. I stood in fog among a ring of trees whose roots climbed up and up, and at the top was a gap like a door that nobody has built. A dry voice spoke that I could not place. In the dream I walked to the door.
 - Index: 45
   LogEntries:
   - Flags: []
@@ -185,14 +185,14 @@ Stages:
     - CompleteQuest
     Entry:
       TargetLanguage: English
-      Value: "The dream led me to the door, and I woke in the house in Lilmoth. I have taken the Veiled Reed's oath: Nesh-Deeka says no one will come asking what I owe, the house's door is open to me, and she put the first of a stipend in my hand."
+      Value: "I walked to the door in the dream, and I woke in the house in Lilmoth. I have taken the Veiled Reed's oath: Nesh-Deeka says no one will come asking what I owe, the house's door is open to me, and she put the first of a stipend in my hand."
 - Index: 91
   LogEntries:
   - Flags:
     - CompleteQuest
     Entry:
       TargetLanguage: English
-      Value: The dream led me to the door, and I woke in the house in Lilmoth. I have taken no oath. The house's door is not mine, but the Reed will send for me when it has work, and pay for it.
+      Value: I walked to the door in the dream, and I woke in the house in Lilmoth. I have taken no oath. The house's door is not mine, but the Reed will send for me when it has work, and pay for it.
 Objectives:
 - Index: 10
   DisplayText:

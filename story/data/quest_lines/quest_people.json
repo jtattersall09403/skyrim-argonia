@@ -1,0 +1,66 @@
+{
+  "_about": "Everyone a slice quest places who has no quest topic of their own (owner walk 4, 2026-11-08: everyone in the places the slice quests touch has dialogue). One reply each to the prompt, built into ARG_Talk (QuestPeople in Talk.cs) gated GetIsID to the base; 'when' gates it on a quest's stage (lo inclusive, hi exclusive).",
+  "ARG_MQ01_FindsTheOtherBank": [
+    {"when": ["ARG_MQ01", 0, 40], "prompt": "Who are you?", "lines": ["Finds-The-Other-Bank. I was sold on from the lower channel with the families. Keep your voice down while Wuleen-Sei reads, or she starts the line again."]},
+    {"when": ["ARG_MQ01", 40, 1000], "prompt": "Who are you?", "lines": ["Finds-The-Other-Bank. I came out of that fire on my own legs. The roll burned. I do not know yet whether that is good."]}
+  ],
+  "ARG_MQ01_RiSakka": [
+    {"when": ["ARG_MQ01", 0, 40], "prompt": "Who are you?", "lines": ["Ri'Sakka. This one owes eleven months, and the broker adds two more for every winter of bread. Do not eat more than you must."]},
+    {"when": ["ARG_MQ01", 40, 1000], "prompt": "Who are you?", "lines": ["Ri'Sakka. This one ran when the huts caught. Now there is no roll and no overseer, and Ri'Sakka is wet and has no bread."]}
+  ],
+  "ARG_MQ01_Tsanji": [
+    {"when": ["ARG_MQ01", 0, 40], "prompt": "Who are you?", "lines": ["Tsanji. Ri'Sakka and I came on together, off a caravan that went bad. Stay near the middle of the gang on the shore path. The ends get the heavy loads."]},
+    {"when": ["ARG_MQ01", 40, 1000], "prompt": "Who are you?", "lines": ["Tsanji. I saw the woman with the knotted cord walk out of the smoke. She looked at no one but you."]}
+  ],
+  "ARG_MQ01_LlarviMaryon": [
+    {"when": ["ARG_MQ01", 0, 40], "prompt": "Who are you?", "lines": ["Llarvi Maryon. I signed my months in Lilmoth for a debt I can no longer remember. Your line is blank, they say. Lucky. Mine is very full."]},
+    {"when": ["ARG_MQ01", 40, 1000], "prompt": "Who are you?", "lines": ["Llarvi Maryon. Whatever I owed burned with the roll. I will walk back to Lilmoth and see who still remembers it."]}
+  ],
+  "ARG_MQ01_WuleenSeiMarch": [
+    {"when": ["ARG_MQ01", 0, 40], "prompt": "Where are we going?", "lines": ["To the camp on Hereguard Plantation, where the shore path meets the reeds. Keep up with the gang. I count heads at the fire."]}
+  ],
+  "ARG_MQ01_FindsTheOtherBankMarch": [
+    {"when": ["ARG_MQ01", 0, 40], "prompt": "Who are you?", "lines": ["Finds-The-Other-Bank. We walk the shore path to the camp now. Stay with the gang; there is soft ground under the reeds."]}
+  ],
+  "ARG_MQ01_MeeTuja": [
+    {"when": ["ARG_MQ01", 0, 40], "prompt": "Who are you?", "lines": ["Mee-Tuja, a courier for the state. I carry papers upriver and I walk with your gang as far as the camp. Ask me nothing about what is in the satchel."]}
+  ],
+  "ARG_MQ01_SalSei": [
+    {"when": ["ARG_MQ01", 0, 40], "prompt": "Who are you?", "lines": ["Sal-Sei. I keep the clutch in the hatching shed, by the cutting we brought down from Nine Bends. Walk around the shed, not through it."]},
+    {"when": ["ARG_MQ01", 40, 1000], "prompt": "Who are you?", "lines": ["Sal-Sei. I kept the clutch. They cut the roots, and the eggs are dead. You pulled me out, and I will not forget it."]}
+  ],
+  "ARG_MQ01_DeeshDuun": [
+    {"when": ["ARG_MQ01", 0, 40], "prompt": "Who are you?", "lines": ["Deesh-Duun. My family keeps the huts over the water. Mind the plank boards; two of them are loose and we have no nails."]},
+    {"when": ["ARG_MQ01", 40, 1000], "prompt": "Who are you?", "lines": ["Deesh-Duun. I saw her face in the smoke as close as I see yours. I would know her again anywhere."]}
+  ],
+  "ARG_MQ01_NeshNeel": [
+    {"when": ["ARG_MQ01", 0, 40], "prompt": "Who are you?", "lines": ["Nesh-Neel, of the families here. Sit by the fire when Wuleen-Sei reads. She counts the ones who sit."]}
+  ],
+  "ARG_MQ01_CutsTheOldKnot": [
+    {"when": ["ARG_MQ01", 0, 40], "prompt": "Who are you?", "lines": ["No one you need to remember. Go and sit by your fire."]}
+  ],
+  "ARG_MQ03_SaltsTheCatch": [
+    {"when": ["ARG_MQ03", 0, 1000], "prompt": "Who are you?", "lines": ["Salts-The-Catch. I watch this door for the one in the back room. Go in if you are expected. If you are not, go back to the dock."]}
+  ],
+  "ARG_MQ03_ReedStranger": [
+    {"when": ["ARG_MQ03", 0, 1000], "prompt": "Who are you?", "lines": ["A stranger on a shore. If you were at that camp last night, someone in Lilmoth wants to hear about it. Not from me."]}
+  ],
+  "ARG_MQ04_HidesHisWake": [
+    {"when": ["ARG_MQ04", 0, 1000], "prompt": "Who are you?", "lines": ["Hides-His-Wake. I work this camp and I do not talk about it with strangers. Move along."]}
+  ],
+  "ARG_MQ04_CountsTheJars": [
+    {"when": ["ARG_MQ04", 0, 1000], "prompt": "Who are you?", "lines": ["Counts-The-Jars. I count what comes in and what goes out. You are neither. Go."]}
+  ],
+  "ARG_BC01_EstateMan": [
+    {"when": null, "prompt": "Who are you?", "lines": ["I work for the estate. This landing is the estate's, and so is what is tied up at it. Keep walking."]}
+  ],
+  "ARG_BC02_GateKeeper": [
+    {"when": null, "prompt": "Who are you?", "lines": ["I keep this gate. No one goes into the stone house without a word from inside. Do you have one? Then go."]}
+  ],
+  "ARG_TG_ChapterLookout1": [
+    {"when": null, "prompt": "Who are you?", "lines": ["A lookout. I watch the stair and the water. Talk to Bent-Spine, not to me."]}
+  ],
+  "ARG_TG_ChapterLookout2": [
+    {"when": null, "prompt": "Who are you?", "lines": ["I watch the water. If you came down the trapdoor, Bent-Spine knows already."]}
+  ]
+}

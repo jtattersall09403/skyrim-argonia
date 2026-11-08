@@ -72,8 +72,8 @@
     "prompt": "Whose gang is this?",
     "lines": [
      "I will say it plainly. Every hand in this gang owes months of work. I hold those months. I hire the gang out to Hereguard Plantation, where the shore path meets the reeds. I add months for food to the roll as well.",
-     "Your line on the roll has no name on it. That line is mine to fill or to leave. I cannot hire out a hand who owes nothing, so if you want it filled, give me a reason.",
-     "I heard the answer you gave the overseer, Wuleen-Sei. It was enough for her. It is not enough for me, because the months are mine to hire out. They are not hers."
+     "Your line on the roll has no name on it. That line is mine to fill or to leave. Wuleen-Sei asks the names for me.",
+     "I heard the answer you gave the overseer, Wuleen-Sei. It was enough for her, and it is written. Walk with the gang."
     ],
     "facts": [
      "fact.mq01.broker-holds",
@@ -85,7 +85,7 @@
     "prompt": "Whose gang is this?",
     "lines": [
      "I will say it plainly. Every hand in this gang owes months of work. I hold those months. I hire the gang out to Hereguard Plantation, where the shore path meets the reeds. I add months for food to the roll as well.",
-     "Your line on the roll has no name on it. That line is mine to fill or to leave. I cannot hire out a hand who owes nothing, so if you want it filled, give me a reason."
+     "Your line on the roll has no name on it. That line is mine to fill or to leave. Wuleen-Sei asks the names for me. Give her your answer in the hold."
     ],
     "facts": [
      "fact.mq01.broker-holds",

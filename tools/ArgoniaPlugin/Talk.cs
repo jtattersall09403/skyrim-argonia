@@ -163,6 +163,80 @@ static class Talk
         Console.WriteLine($"talk rumours: {lines.Select(l => S(l, "talker")).Distinct().Count()} talkers rumour {want.Values.Select(v => v.quest).Distinct().Count()} quests");
     }
 
+    // The slice quests' own people with no quest topic (story/data/quest_lines/quest_people.json): one top-level topic per
+    // prompt in ARG_Talk, an INFO per person gated GetIsID to their base (a base of ours stands in one or two places) and
+    // on a quest's stage window when given. After every quest, at the seed's end.
+    public static void QuestPeople(SkyrimMod mod)
+    {
+        var doc = JsonDocument.Parse(File.ReadAllText(Path.Combine("story", "data", "quest_lines", "quest_people.json"))).RootElement;
+        var q = mod.Quests.First(x => x.EditorID == "ARG_Talk");
+        var topics = new Dictionary<string, DialogTopic>();
+        int n = 0;
+        foreach (var who in doc.EnumerateObject().Where(p => !p.Name.StartsWith('_')).OrderBy(p => p.Name))
+        {
+            var npc = mod.Npcs.FirstOrDefault(x => x.EditorID == who.Name) ?? throw new Exception($"quest people: no base {who.Name}");
+            foreach (var v in who.Value.EnumerateArray())
+            {
+                var prompt = S(v, "prompt");
+                if (!topics.TryGetValue(prompt, out var t))
+                {
+                    var id = "ARG_Talk_Quest" + string.Concat(prompt.Where(char.IsLetter));
+                    var branch = mod.DialogBranches.AddNew(id + "Branch");
+                    t = mod.DialogTopics.AddNew(id);
+                    branch.Quest.SetTo(q.FormKey); branch.Category = DialogBranch.CategoryType.Player; branch.Flags = DialogBranch.Flag.TopLevel;
+                    branch.StartingTopic.SetTo(t.FormKey);
+                    t.Name = prompt; t.Quest.SetTo(q.FormKey); t.Branch.SetTo(branch.FormKey); t.Priority = 50;
+                    t.Category = DialogTopic.CategoryEnum.Topic; t.Subtype = DialogTopic.SubtypeEnum.Custom; t.SubtypeName = new RecordType("CUST");
+                    topics[prompt] = t;
+                }
+                var info = new DialogResponses(mod.GetNextFormKey(), SkyrimRelease.SkyrimSE) { Flags = new DialogResponseFlags(), Prompt = prompt };
+                byte r = 1;
+                foreach (var l in v.GetProperty("lines").EnumerateArray())
+                    info.Responses.Add(new DialogResponse { Text = l.GetString()!, ResponseNumber = r++, Emotion = Emotion.Neutral });
+                var d = new GetIsIDConditionData();
+                d.Object.Link.SetTo(npc.FormKey);
+                info.Conditions.Add(new ConditionFloat { CompareOperator = CompareOperator.EqualTo, ComparisonValue = 1, Data = d });
+                if (v.GetProperty("when") is { ValueKind: JsonValueKind.Array } w)
+                {
+                    var wq = mod.Quests.First(x => x.EditorID == w[0].GetString());
+                    foreach (var (op, val) in new[] { (CompareOperator.GreaterThanOrEqualTo, w[1].GetInt32()), (CompareOperator.LessThan, w[2].GetInt32()) })
+                    {
+                        var g = new GetStageConditionData(); g.Quest.Link.SetTo(wq.FormKey);
+                        info.Conditions.Add(new ConditionFloat { CompareOperator = op, ComparisonValue = val, Data = g });
+                    }
+                }
+                t.Responses.Add(info); n++;
+            }
+        }
+        Console.WriteLine($"quest people: {n} replies, {doc.EnumerateObject().Count(p => !p.Name.StartsWith('_'))} people, {topics.Count} topics");
+    }
+
+    // Every person we place has a voice: a base of ours drawn through Use Traits speaks with its template's voice, and a
+    // voiceless BM&V template (1DE49D, ArgonianMaleTribeLeader1) leaves the person with no dialogue at all. The template at
+    // the end of the Traits chain is overridden with ARG_TalkSilentVoice, as Add does for voiceless talkers.
+    public static void Voices(SkyrimMod mod, List<ISkyrimModGetter> mods)
+    {
+        var npcs = Survey.Winners<INpcGetter>(mods);
+        foreach (var n in mod.Npcs) npcs[n.FormKey] = (n, mod.ModKey);
+        var silent = mod.VoiceTypes.First(v => v.EditorID == "ARG_TalkSilentVoice");
+        var races = Survey.Winners<IRaceGetter>(mods);
+        var done = new List<string>();
+        foreach (var r in mod.EnumerateMajorRecords<IPlacedNpcGetter>().ToList())
+        {
+            if (!npcs.TryGetValue(r.Base.FormKey, out var b) || b.rec.FormKey.ModKey != mod.ModKey) continue;
+            if (!races.TryGetValue(b.rec.Race.FormKey, out var race) || !race.rec.Flags.HasFlag(Race.Flag.Playable)) continue; // people, not creatures
+            var v = b.rec;
+            for (var i = 0; i < 8 && v.Configuration.TemplateFlags.HasFlag(NpcConfiguration.TemplateFlag.Traits) && npcs.TryGetValue(v.Template.FormKey, out var t); i++) v = t.rec;
+            if (!v.Voice.IsNull) continue;
+            var own = mod.Npcs.FirstOrDefault(x => x.FormKey == v.FormKey);
+            if (own == null) { own = (Npc)v.DeepCopy(); mod.Npcs.Add(own); }
+            own.Voice.SetTo(silent.FormKey);
+            npcs[own.FormKey] = (own, mod.ModKey);
+            done.Add(own.EditorID ?? own.FormKey.ToString());
+        }
+        Console.WriteLine($"voices: {done.Count} voiceless bases given ARG_TalkSilentVoice ({string.Join(", ", done)})");
+    }
+
     static FormKey K(string k) => FormKey.Factory(k);
     // W-npc's look flags (BlockTest.cs): the face, race, voice, AI, inventory, factions and scripts come from the base
     // BM&V placed, so the person looks and behaves as before. Use Traits carries the face: the engine draws a templated

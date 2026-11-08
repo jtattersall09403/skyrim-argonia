@@ -38,6 +38,8 @@ ReferenceAlias Property Cutter1 Auto
 ReferenceAlias Property Cutter2 Auto
 Weapon Property ReedKnife Auto
 Quest Property NextQuest Auto
+ObjectReference Property FireMark Auto
+ObjectReference Property HoldDoor Auto
 
 ; The race guards (blocks.md): the choice (41, 42, 93) and the ending (90, 91, 93) each run once; check and set with no
 ; call between them.
@@ -73,15 +75,47 @@ Function ReadRoll()
 	RollRead.SetValue(1)
 EndFunction
 
-; One answer given: the march to the camp may start (its packages read Answered).
+; One answer given (the broker's line reads Answered): the hold's door opens (stage 20).
 Function Answer()
 	Answered.SetValue(1)
+	SetStage(20)
+EndFunction
+
+; The gang's packages read the stage.
+Function March()
 	WuleenMarch.TryToEvaluatePackage()
 	UxMarch.TryToEvaluatePackage()
 	DivesMarch.TryToEvaluatePackage()
 	FindsMarch.TryToEvaluatePackage()
 	Courier.TryToEvaluatePackage()
 EndFunction
+
+;BEGIN FRAGMENT Fragment_20
+Function Fragment_20() ; the answer: the stair door unlocked, E-stage
+	HoldDoor.Lock(False)
+	SetObjectiveCompleted(10)
+	SetObjectiveDisplayed(20)
+EndFunction
+;END FRAGMENT
+
+;BEGIN FRAGMENT Fragment_30
+Function Fragment_30() ; out of the hold (the door, TR-activate): the gang sets off along the dock, E-package
+	SetObjectiveCompleted(20)
+	SetObjectiveDisplayed(30)
+	March()
+EndFunction
+;END FRAGMENT
+
+;BEGIN FRAGMENT Fragment_35
+Function Fragment_35() ; the camp's edge (hidden): the gang at the fire before the player, E-move
+	WuleenMarch.GetRef().MoveTo(FireMark, 120.0, 60.0)
+	UxMarch.GetRef().MoveTo(FireMark, -120.0, 60.0)
+	DivesMarch.GetRef().MoveTo(FireMark, 100.0, -120.0)
+	FindsMarch.GetRef().MoveTo(FireMark, -100.0, -120.0)
+	Courier.GetRef().MoveTo(FireMark, 0.0, 160.0)
+	March()
+EndFunction
+;END FRAGMENT
 
 ;BEGIN FRAGMENT Fragment_10
 Function Fragment_10() ; E-enable (the camp, the march), E-stage
@@ -103,7 +137,7 @@ Function Fragment_40() ; the strike: E-enable, the courier killed, E-move (the t
 	SalSei.GetRef().MoveTo(ShedMark)
 	DeeshDuun.GetRef().MoveTo(HutsMark)
 	Leader.TryToEvaluatePackage()
-	SetObjectiveCompleted(10)
+	SetObjectiveCompleted(30)
 	SetObjectiveDisplayed(40)
 EndFunction
 ;END FRAGMENT

@@ -203,6 +203,8 @@ switch ($Cmd) {
       $lines = @(Get-Content "$Prefs\Plugins.txt" | ? { $_.TrimStart('*') -ne $e }); $lines += "*$e"
       $lines | Set-Content "$Prefs\Plugins.txt" -Encoding ASCII } }
     if (Test-Path "$Root\ours\Argonia.ini") { Copy-Item "$Root\ours\Argonia.ini" "$Data\Argonia.ini" -Force }
+    $seq = @(Get-ChildItem "$Root\ours\SEQ\*.seq" -EA SilentlyContinue)   # its SEQ (Seq.cs): start-game quests a new game starts first
+    if ($seq) { New-Item -ItemType Directory -Force "$Data\SEQ" | Out-Null; $seq | Copy-Item -Destination "$Data\SEQ" -Force }
     $pex = @(Get-ChildItem "$Root\ours\scripts\*.pex" -EA SilentlyContinue)
     if ($pex) { New-Item -ItemType Directory -Force "$Data\Scripts" | Out-Null; $pex | Copy-Item -Destination "$Data\Scripts" -Force }
     "argonia: $((Get-Content "$Prefs\Plugins.txt" | ? { $_.TrimStart('*') -in $OursPlugins.name }) -join ', '); $($pex.Count) .pex"

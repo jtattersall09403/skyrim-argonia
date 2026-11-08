@@ -2577,3 +2577,9 @@
 {"condition_id":"quest_successor:quest.tg.tg04|0|1:when","ord":0,"value":"item.flotilla-hull-tally"}
 {"condition_id":"quest_successor:quest.tg.tg04|1|0:when","ord":0,"value":"topic.flotilla-tally-handover"}
 {"condition_id":"quest_successor:quest.tg.tg04|1|0:when","ord":1,"value":"npc.mercantile-coast.lighter-flotilla.purser"}
+{"condition_id": "quest_objective:quest.main.mq01|7|0:complete_when", "ord": 0, "value": "quest.main.mq01"}
+{"condition_id": "quest_objective:quest.main.mq01|7|0:complete_when", "ord": 1, "value": "≥"}
+{"condition_id": "quest_objective:quest.main.mq01|7|0:complete_when", "ord": 2, "value": 30}
+{"condition_id": "quest_objective:quest.main.mq01|8|0:complete_when", "ord": 0, "value": "quest.main.mq01"}
+{"condition_id": "quest_objective:quest.main.mq01|8|0:complete_when", "ord": 1, "value": "≥"}
+{"condition_id": "quest_objective:quest.main.mq01|8|0:complete_when", "ord": 2, "value": 40}

@@ -285,7 +285,7 @@ Persistent:
     Unknown: 0.15
     Type: Box
   Placement:
-    Position: 2923.5498, 4961.9062, 7040.7993
+    Position: 2887.8513, 3773.7437, 7284.1035
 - MutagenObjectType: PlacedNpc
   FormKey: 0F920A:Black Marsh.esm
   MajorRecordFlagsRaw: 3072
@@ -308,5 +308,30 @@ Persistent:
   MajorFlags:
   - Persistent
   - InitiallyDisabled
+- MutagenObjectType: PlacedObject
+  FormKey: 0F92EC:Black Marsh.esm
+  MajorRecordFlagsRaw: 1024
+  SkyrimMajorRecordFlags:
+  - 0x400
+  Base: 0C227B:Skyrim.esm
+  TeleportDestination:
+    Door: 005AB4:Black Marsh.esm
+    Position: 5570.5205, -9381.743, 177.92078
+    Rotation: 0, 0, -0.3999971
+  Lock:
+    Level: 255
+    Unused: 0x000000
+    Unused2: 0x0000000000000000000000
+  Placement:
+    Position: 2924.9524, 3852.492, 7255.7437
+- MutagenObjectType: PlacedObject
+  FormKey: 0F9399:Black Marsh.esm
+  MajorRecordFlagsRaw: 1024
+  SkyrimMajorRecordFlags:
+  - 0x400
+  Base: 025FF7:Skyrim.esm
+  LocationReference: 07B91A:Skyrim.esm
+  Placement:
+    Position: 2923.5498, 5111.9062, 7040.7993
 MajorFlags:
 - 0x40000

@@ -3347,3 +3347,5 @@
 {"id":"quest_successor:quest.tg.tg04|0|0:when.1","parent_id":"quest_successor:quest.tg.tg04|0|0:when","ord":1,"term":"worstCrimeIs"}
 {"id":"quest_successor:quest.tg.tg04|0|1:when","term":"hasItem"}
 {"id":"quest_successor:quest.tg.tg04|1|0:when","term":"topicHeardFrom"}
+{"id": "quest_objective:quest.main.mq01|7|0:complete_when", "term": "questStage"}
+{"id": "quest_objective:quest.main.mq01|8|0:complete_when", "term": "questStage"}

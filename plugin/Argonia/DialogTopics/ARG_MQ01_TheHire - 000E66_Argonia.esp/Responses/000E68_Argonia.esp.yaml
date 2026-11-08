@@ -6,7 +6,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: I will say it plainly. Every hand in this gang owes months of work. I hold those months. I hire the gang out to Hereguard Plantation, where the shore path meets the reeds. The roll adds months for food as well.
+    Value: I will say it plainly. Every hand in this gang owes months of work. I hold those months. I hire the gang out to Hereguard Plantation, where the shore path meets the reeds. I add months for food to the roll as well.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 2
@@ -14,7 +14,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Your line on the roll has no name on it. That line is mine to fill or to leave. I cannot hire out a hand who owes nothing, so if you want it filled, give me a reason.
+    Value: Your line on the roll has no name on it. That line is mine to fill or to leave. Wuleen-Sei asks the names for me. Give her your answer in the hold.
   ScriptNotes: ''
   Edits: ''
 Conditions:

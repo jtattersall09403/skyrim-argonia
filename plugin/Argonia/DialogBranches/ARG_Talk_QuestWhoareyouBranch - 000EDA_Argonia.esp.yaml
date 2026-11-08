@@ -1,0 +1,7 @@
+FormKey: 000EDA:Argonia.esp
+EditorID: ARG_Talk_QuestWhoareyouBranch
+Quest: 000833:Argonia.esp
+Category: Player
+Flags:
+- TopLevel
+StartingTopic: 000EDB:Argonia.esp

@@ -39,10 +39,17 @@ Conditions:
     Object: 000E09:Argonia.esp
   ComparisonValue: 1
 - MutagenObjectType: ConditionFloat
+  CompareOperator: GreaterThanOrEqualTo
   Data:
     MutagenObjectType: GetStageConditionData
     Quest: 000E00:Argonia.esp
   ComparisonValue: 10
+- MutagenObjectType: ConditionFloat
+  CompareOperator: LessThan
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 000E00:Argonia.esp
+  ComparisonValue: 40
 Prompt:
   TargetLanguage: English
   Value: What have the years away cost you?

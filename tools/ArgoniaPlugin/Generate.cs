@@ -197,7 +197,10 @@ static class Generate
         MainQuest.Finish(mod);
         // Quest rumours (Talk.cs): talkers' rumours of a quest that can start, gated as its giver's opening; after every quest.
         Talk.Rumours(mod);
+        Talk.QuestPeople(mod); // the slice quests' own people with no quest topic
+        Talk.Voices(mod, mods); // every person we place has a voice
         // Every object rests on the surface under it (PlaceCheck: floating or sunk more than 10 moves onto it); after every builder.
+        Heights.Fix(mod, mods); // people at their race's height (Heights.cs)
         PlaceCheck.Settle(mod, mods, Surface.Paths);
         var order = mods.Select(m => m.ModKey).Append(Ours).ToList();
         // The plugin whose worldspace record we override is a master even when no form of it is referenced, so ours

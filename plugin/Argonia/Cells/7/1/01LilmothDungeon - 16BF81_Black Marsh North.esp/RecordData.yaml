@@ -46,6 +46,7 @@ Persistent:
   EnableParent:
     Reference: 000C62:Argonia.esp
     Unknown: 0x000000
+  Scale: 0.526
   Placement:
     Position: 1487, 2048, 5
   MajorFlags:

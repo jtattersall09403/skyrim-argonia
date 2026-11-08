@@ -1,0 +1,20 @@
+FormKey: 000EF5:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: A lookout. I watch the stair and the water. Talk to Bent-Spine, not to me.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 000C57:Argonia.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Who are you?

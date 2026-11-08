@@ -12,7 +12,7 @@
 #   run.sh up                       start it whatever its state: waits out a stop still in progress first
 set -euo pipefail
 # Wait N seconds without CPU: read on a private FIFO opened read-write blocks until the timeout (a read on /dev/zero spun a core).
-idle_wait() { local f; f=$(mktemp -u); mkfifo "$f" && { read -r -t "$1" <> "$f" 2>/dev/null || true; rm -f "$f"; }; return 0; }
+idle_wait() { local f; f=$(mktemp -u); mkfifo "$f" && { read -r -t "$1" <> "$f" 2>/dev/null; rm -f "$f"; }; return 0; }
 case "${1:-}" in --machine) export ARGONIA_PLAY=$2; shift 2 ;; --machine=*) export ARGONIA_PLAY=${1#--machine=}; shift ;; esac
 M=${ARGONIA_PLAY:-argonia-play}
 case "$M" in argonia-play|argonia-play-[0-9a-z]*) ;; *) echo "no such game machine: $M" >&2; exit 2 ;; esac

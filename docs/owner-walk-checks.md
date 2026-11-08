@@ -140,7 +140,7 @@ All 11 quests are built and every stage reads back from the plugin; none has run
 quest broke or stopped making sense. Positions marked * were picked from navmesh and never walked: say if anyone floats,
 sinks or stands in a wall.
 
-- [ ] **7.1 The opening (MQ01).** The race menu opens in a barge hold at Lilmoth's dock; you wear a tunic and footwraps.
+- [ ] (superseded by 9.2 and 9.3) **7.1 The opening (MQ01).** The race menu opens in a barge hold at Lilmoth's dock; you wear a tunic and footwraps.
       Ask Wuleen-Sei "Why am I here?" and answer; leave by the hold's door and follow the gang along the shore to the
       camp's fire at the edge of Hereguard Plantation. The attack: Mee-Tuja is killed and the huts burn; run to the shed
       or into the water under the huts, then south to the shore; the one you saved follows.
@@ -180,6 +180,28 @@ put the old ones back. That can no longer happen (the install now refuses an out
       behind him a sword's length away facing his way, tap attack once: he staggers with the red light, your swing
       finishes, then you play the execution and he takes its big damage, all from that one tap. Wait 10 seconds and do
       it again on a second bandit. From the front one tap is a normal swing. Say if the execution did not play.
+
+## 9. Walk 4's quest fixes (built and deployed 2026-11-08)
+
+**Start a new game** for all of these (several fixes only take on a new game).
+
+- [ ] **9.1 Everyone talks again.** On Lilmoth's dock, talk to three of the people who were silent on walk 4 (anyone
+      near the pier, for example Deep-In-His-Cups on the shore track south-west of the dock). Each has topics. The cause
+      was a missing file the game reads to start our quests on a new game; it is now sent with the plugin.
+- [ ] **9.2 The opening's steps.** In the barge hold the journal says to speak to Wuleen-Sei, with a marker on her.
+      "Why am I here?" ends with her question, and the three answers follow at once. Before you answer, the door at the
+      top of the stairs is locked; after you answer, the journal moves on to "Leave the barge's hold by the door at the
+      top of the stairs" (marker on the door). Open it: you come out on the pier, the journal says to follow the gang
+      (marker on the camp's fire), and the gang walks off along the dock. On the shore path they go ahead of you and
+      are waiting at the fire when you reach the camp.
+- [ ] **9.3 The hold's doors.** The stair door takes you to the pier, and the pier door brings you back to the top of
+      the stairs. The other door (down in the hold and up the far stairs) now opens onto its room and does not move you.
+- [ ] **9.4 Everyone in the opening has something to say.** In the hold, ask Ri'Sakka, Tsanji, Llarvi Maryon and
+      Finds-The-Other-Bank "Who are you?"; on the pier, Mee-Tuja the courier; at the camp, Sal-Sei and Deesh-Duun.
+- [ ] **9.5 Buys-The-Months on the pier** no longer asks you for something you cannot give: he tells you Wuleen-Sei
+      asks the names, and after you have answered her, that it is written.
+- [ ] **9.6 Heights.** Mee-Tuja on the pier, and Ties-The-Loose-Plank on the shore after the fire, stand as tall as the
+      others (they were about twelve feet).
 
 ## Done
 

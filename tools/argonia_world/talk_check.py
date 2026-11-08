@@ -354,6 +354,18 @@ def main() -> int:
             continue
         stock = [(pl.form_key(struct.unpack_from("<I", d, 0)[0]), struct.unpack_from("<i", d, 4)[0]) for d in box.all("CNTO")]
         print(f"{f.edid}: chest {chest.edid} -> {box.edid}: " + ", ".join(f"{k} x{n}" for k, n in stock))
+    # Reachable on a new game: every talk INFO sits in ARG_Talk, which must be Start Game Enabled and listed in the
+    # plugin's SEQ file (SEQ/<plugin>.seq beside it: the quests the engine starts before a new game's first frame; one
+    # missing from it has no dialogue until a save is loaded, owner walk 4).
+    seq_path = Path(a.esp).parent / "SEQ" / (Path(a.esp).stem + ".seq")
+    seq = set(struct.unpack(f"<{seq_path.stat().st_size // 4}I", seq_path.read_bytes())) if seq_path.exists() else set()
+    talk = next((r for r in recs if r.sig == "QUST" and r.edid == "ARG_Talk"), None)
+    sge = talk is not None and struct.unpack_from("<H", talk.sub("DNAM"), 0)[0] & 1
+    in_seq = talk is not None and talk.formid in seq
+    ok = sum(1 for t in talkers if gated.get(t.id)) if (sge and in_seq) else 0
+    print(f"talk_check: ARG_Talk start-game {bool(sge)}, in {seq_path.name} {in_seq}; talkers reachable on a new game {ok}/{len(talkers)}")
+    if ok != len(talkers):
+        bad += 1
     bad += check_rumours(w, pl, recs)
     print("talk_check names by world: " + ", ".join(f"{k} {n}" for k, n in sorted(worlds.items())))
     print(f"talk_check: {len(talkers)} talkers, {bad} problems")

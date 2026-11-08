@@ -104,14 +104,14 @@ Stages:
     - CompleteQuest
     Entry:
       TargetLanguage: English
-      Value: I showed the boat captain the crew's bait bucket. She paid me for what it showed her, and the crew have lost their trade on the river to her.
+      Value: I showed the boat captain the crew's bait bucket. She paid me for what I showed her, and the crew have lost their trade on the river to her.
 - Index: 92
   LogEntries:
   - Flags:
     - CompleteQuest
     Entry:
       TargetLanguage: English
-      Value: Wuleen-Taza paid me to keep the bait to myself. The crew keep their trade, and the boat captain still thinks the river took her customers.
+      Value: Wuleen-Taza paid me to keep the bait to myself. The crew keep their trade, and the boat captain still thinks the beast drove off her customers.
 - Index: 93
   LogEntries:
   - Flags:

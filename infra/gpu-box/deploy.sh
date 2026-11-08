@@ -14,7 +14,8 @@ plugins=(out/*.esm out/*.esp out/Argonia.ini); pex=(out/gpu/papyrus/*.pex)
 plugins=($(printf '%s\n' "${plugins[@]}" | while read -r f; do [ -f "$f" ] && echo "$f"; done)) || true
 [ -f "${pex[0]:-}" ] || pex=()
 [ ${#plugins[@]} -gt 0 ] || [ ${#pex[@]} -gt 0 ] || { echo "nothing to send: no out/*.esp|esm and no out/gpu/papyrus/*.pex" >&2; exit 1; }
-key=$({ [ ${#plugins[@]} -gt 0 ] && sha256sum "${plugins[@]}"; [ ${#pex[@]} -gt 0 ] && sha256sum "${pex[@]}"; true; } | sha256sum | cut -c1-12)
+seq=(out/SEQ/*.seq); [ -f "${seq[0]:-}" ] || seq=()  # Seq.cs: the start-game quests a new game starts first
+key=$({ [ ${#plugins[@]} -gt 0 ] && sha256sum "${plugins[@]}"; [ ${#seq[@]} -gt 0 ] && sha256sum "${seq[@]}"; [ ${#pex[@]} -gt 0 ] && sha256sum "${pex[@]}"; true; } | sha256sum | cut -c1-12)
 step "machine up" "$run" up
 have=$("$run" ps 'Get-Content C:\argonia\state\deployed.key -EA SilentlyContinue' 2>/dev/null | tr -d '\r\n ' || true)
 if [ -z "${DEPLOY_FORCE:-}" ] && [ "$have" = "$key" ]; then echo "DEPLOY held: $key, skipped in $(( SECONDS - t0 )) s"; exit 0; fi
@@ -26,6 +27,8 @@ send() {
   for f in "${plugins[@]}"; do "$run" put "$f" "C:/argonia/ours/$(basename "$f")" >/dev/null; echo "$(basename "$f") sent"; done
   "$run" ps 'Remove-Item C:\argonia\ours\scripts -Recurse -Force -EA SilentlyContinue; New-Item -ItemType Directory -Force C:\argonia\ours\scripts | Out-Null' >/dev/null
   [ ${#pex[@]} -gt 0 ] && { "$run" put "${pex[@]}" C:/argonia/ours/scripts/ >/dev/null; echo "${#pex[@]} .pex sent"; }
+  "$run" ps 'Remove-Item C:\argonia\ours\SEQ -Recurse -Force -EA SilentlyContinue; New-Item -ItemType Directory -Force C:\argonia\ours\SEQ | Out-Null' >/dev/null
+  [ ${#seq[@]} -gt 0 ] && { "$run" put "${seq[@]}" C:/argonia/ours/SEQ/ >/dev/null; echo "${#seq[@]} .seq sent"; }
   # the machine-side helpers and Moonlight's cards
   "$run" put "$here"/{stack.ps1,idle-stop.ps1,spot-watch.ps1,stream-activity.ps1,saves-sync.ps1,vanilla-data-files.txt,sunshine-apps.json,make-cards.ps1} C:/argonia/infra/ >/dev/null
   "$run" ps "& C:\\argonia\\infra\\make-cards.ps1; \$a='C:\\Program Files\\Sunshine\\config\\apps.json'; \$n='C:\\argonia\\infra\\sunshine-apps.json'; if ((Get-FileHash \$n).Hash -ne (Get-FileHash \$a -EA SilentlyContinue).Hash) { Copy-Item \$n \$a -Force; Restart-Service SunshineService; 'sunshine: app list changed, restarted' } else { 'sunshine: app list unchanged' }"
