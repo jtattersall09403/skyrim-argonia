@@ -95,7 +95,7 @@ static class NewWorld
         mod.Worldspaces.Add(ws);
         // the ground paint (tools/newworld/world/texture.py): our own LTEX per material, copied from its source
         // (asset-only plugins via ForeignCopy), with our grass list
-        var allowed = bm.ModHeader.MasterReferences.Select(m => m.Master).Append(bm.ModKey).ToList();
+        var allowed = bm.ModHeader.MasterReferences.Select(m => m.Master).Append(bm.ModKey).Append(ModKey.FromFileName("Update.esm")).ToList();
         using var fc = new ForeignCopy(mod, allowed, data, IdCopies);
         var texDir = Path.Combine(Path.GetDirectoryName(man.Dir)!, "tex");
         var texMan = JsonDocument.Parse(File.ReadAllText(Path.Combine(texDir, "manifest.json"))).RootElement;
@@ -108,6 +108,8 @@ static class NewWorld
             var key = fc.Get(spec[0], spec[1], forceCopy: true);
             var lt = mod.LandscapeTextures[key];
             lt.EditorID = "ANW_Ground_" + m.GetProperty("id").GetString();
+            var ts = lt.TextureSet.FormKey;  // our own TXST too, so the ground's diffuse paths read from this plugin alone
+            if (!ts.IsNull && ts.ModKey != modKey) lt.TextureSet.SetTo(fc.Get(ts, ts.ModKey.FileName, forceCopy: true));
             lt.Grasses.Clear();
             foreach (var gs in m.GetProperty("grass").EnumerateArray().Select(x => x.GetString()!.Split(':')))
                 lt.Grasses.Add(new FormLink<IGrassGetter>(fc.Get(gs[0], gs[1])));
@@ -197,7 +199,7 @@ static class NewWorld
                 };
                 if (cellInfo.TryGetProperty($"{cx},{cy}", out var ci))
                 {
-                    if (ci.TryGetProperty("water", out var wk) && wk.GetString() != "sea") c.Water = new FormLinkNullable<IWaterGetter>(watrKey[wk.GetString()!]);
+                    if (ci.TryGetProperty("water", out var wk)) c.Water = new FormLinkNullable<IWaterGetter>(watrKey[wk.GetString()!]);
                     c.Regions = new ExtendedList<IFormLinkGetter<IRegionGetter>> { new FormLink<IRegionGetter>(regionKey[ci.GetProperty("region").GetString()!]) };
                 }
                 if (refsByCell.TryGetValue((cx, cy), out var rl))
@@ -241,11 +243,13 @@ static class NewWorld
         }
         NewWorldNavmesh.Attach(mod, ws, outPath, man.BuildId);  // nw-02 step 10: the navmesh, when built for this land
         var lo = bm.ModHeader.MasterReferences.Select(m => m.Master).Append(bm.ModKey).Append(modKey).ToList();
+        var upd = ModKey.FromFileName("Update.esm");  // a master always (its WATR/WTHR records win), placed after Skyrim.esm
+        if (!lo.Contains(upd)) lo.Insert(lo.IndexOf(ModKey.FromFileName("Skyrim.esm")) + 1, upd);
         Directory.CreateDirectory(Path.GetDirectoryName(Path.GetFullPath(outPath))!);
         var tmpDir = Path.Combine(Path.GetDirectoryName(Path.GetFullPath(outPath))!, ".writing"); Directory.CreateDirectory(tmpDir);
         var tmp = Path.Combine(tmpDir, Path.GetFileName(outPath));  // same file name: Mutagen matches it to the mod key
         mod.BeginWrite.ToPath(tmp).WithLoadOrder(lo).WithDataFolder(data)
-            .WithExtraIncludedMasters(ModKey.FromFileName("Skyrim.esm"), ModKey.FromFileName("Update.esm"))
+            .WithExtraIncludedMasters(ModKey.FromFileName("Skyrim.esm"), upd)
             .SingleThread().Write();
         File.Move(tmp, outPath, true);
         Console.WriteLine($"newworld write: {outPath}: {k} cells with LAND, build {man.BuildId}, {new FileInfo(outPath).Length} bytes, {sw.Elapsed.TotalSeconds:F1} s");
@@ -304,8 +308,14 @@ static class NewWorld
         var dir = Path.Combine(plugDir, "refs");
         if (!Directory.Exists(dir)) return res;
         var bases = new Dictionary<string, FormKey>();
+        // NW_REF_PRODUCERS (comma list, e.g. "mist") limits the producers read; a shard a producer is replacing is skipped
+        var only = Environment.GetEnvironmentVariable("NW_REF_PRODUCERS")?.Split(',', StringSplitOptions.RemoveEmptyEntries).ToHashSet();
         foreach (var f in Directory.EnumerateFiles(dir, "*.jsonl", SearchOption.AllDirectories).Order())
-            foreach (var line in File.ReadLines(f))
+        {
+            if (only is not null && !only.Contains(Path.GetFileName(Path.GetDirectoryName(f)!))) continue;
+            string[] lines;
+            try { lines = File.ReadAllLines(f); } catch (FileNotFoundException) { Console.WriteLine($"refs: {f} vanished while read, skipped"); continue; }
+            foreach (var line in lines)
             {
                 if (line.Length == 0) continue;
                 var o = JsonDocument.Parse(line).RootElement;
@@ -317,6 +327,7 @@ static class NewWorld
                 if (!res.TryGetValue(cell, out var l)) res[cell] = l = new();
                 l.Add((bk, pos, new P3Float(G("rx"), G("ry"), G("rz")), G("scale")));
             }
+        }
         return res;
     }
 
@@ -358,7 +369,7 @@ static class NewWorld
         using var mod = SkyrimMod.CreateFromBinaryOverlay(esmPath, Rel, Survey.NoStrings);
         if (!mod.ModHeader.Flags.HasFlag(SkyrimModHeader.HeaderFlag.Master)) Fail("ESM flag not set");
         var masters = mod.ModHeader.MasterReferences.Select(m => m.Master.FileName.String).ToList();
-        foreach (var need in new[] { "Skyrim.esm", "Update.esm", "Black Marsh.esm" }) if (!masters.Contains(need)) Fail($"master {need} missing");
+        foreach (var need in new[] { "Skyrim.esm", "Update.esm" }) if (!masters.Contains(need)) Fail($"master {need} missing");
         var wss = mod.Worldspaces.ToList();
         if (wss.Count != 1) Fail($"{wss.Count} worldspaces");
         var ws = wss[0];
@@ -441,7 +452,7 @@ static class NewWorld
         }
         // asset-only plugins: never a master, never a link target (owner ruling 2026-11-08)
         using var bmc = SkyrimMod.CreateFromBinaryOverlay(Path.Combine(data, "Black Marsh.esm"), Rel, Survey.NoStrings);
-        var allowed = bmc.ModHeader.MasterReferences.Select(m => m.Master).Append(bmc.ModKey).Append(mod.ModKey).ToHashSet();
+        var allowed = bmc.ModHeader.MasterReferences.Select(m => m.Master).Append(bmc.ModKey).Append(ModKey.FromFileName("Update.esm")).Append(mod.ModKey).ToHashSet();
         foreach (var m in masters) if (!allowed.Contains(ModKey.FromFileName(m))) Fail($"master {m} is not allowed");
         long links = 0, badLinks = 0;
         foreach (var r in mod.EnumerateMajorRecords())
