@@ -43,7 +43,7 @@ Built by quest-write/brief.py from the quest record and the world records. Do no
 ### the roll (`topic.mq01-the-roll`; stages [10]; essential: no refusal band)
 - Intent: reads the player's blank line aloud and asks for a name; any answer, none, or an insult
 - May state:
-  - `fact.mq01.owing-roll`: Everyone on the broker's gang owes months, and the roll adds months for food.
+  - `fact.mq01.owing-roll`: Everyone on the broker's gang owes months, and the overseer adds months to the roll for food.
   - `fact.mq01.blank-line`: The roll has a line for me and no name on it.
 - What the player does at these stages (set it up: who, where, what danger, what they need):
   - Speechcraft: lie (Wuleen-Sei), before witnesses (a council, a hearing, a household)

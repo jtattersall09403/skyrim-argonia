@@ -44,7 +44,7 @@ Built by quest-write/brief.py from the quest record and the world records. Do no
 - Intent: on the pier at the plank: whose the gang's months are and where they are hired; what he makes of the answer he heard given
 - May state:
   - `fact.mq01.broker-holds`: The broker on the pier at Lilmoth's dock holds the gang's months and hires them out to Hereguard Plantation; my blank line is his to fill or to leave.
-  - `fact.mq01.owing-roll`: Everyone on the broker's gang owes months, and the roll adds months for food.
+  - `fact.mq01.owing-roll`: Everyone on the broker's gang owes months, and the overseer adds months to the roll for food.
 - What the player does at these stages (set it up: who, where, what danger, what they need):
   - Speechcraft: lie (Wuleen-Sei), before witnesses (a council, a hearing, a household)
   - Sneak: spy (Mee-Tuja), in a crowd or a market

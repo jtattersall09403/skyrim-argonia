@@ -43,7 +43,7 @@ Built by quest-write/brief.py from the quest record and the world records. Do no
 ### the water and the months (`topic.mq01-the-water`; stages [10]; not essential)
 - Intent: hands the player the day's water and calls the names; says what the months for food come to
 - May state:
-  - `fact.mq01.owing-roll`: Everyone on the broker's gang owes months, and the roll adds months for food.
+  - `fact.mq01.owing-roll`: Everyone on the broker's gang owes months, and the overseer adds months to the roll for food.
 - What the player does at these stages (set it up: who, where, what danger, what they need):
   - Speechcraft: lie (Wuleen-Sei), before witnesses (a council, a hearing, a household)
   - Sneak: spy (Mee-Tuja), in a crowd or a market
