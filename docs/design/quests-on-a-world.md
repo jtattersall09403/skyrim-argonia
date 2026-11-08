@@ -147,7 +147,8 @@ block built, read back and given one owner check.
 
 Every person who can be talked to gets a name, a short backstory, a personality and their own true topics through
 `talk-write`: facts from the loaded world (the world wins over a lore line it contradicts), directions as routes of two
-to four landmarked steps, a cool first greeting and warmth only with regard, names by the naming rules, a trader's
+to four landmarked steps (a longer way gives its first three, then "from there, ask again"; never the speaker's own
+place as a step), a cool first greeting and warmth only with regard, names by the naming rules, a trader's
 services matching their stock, and rumours that point to a quest only while it can start.
 
 ## 7. Write the quest dialogue

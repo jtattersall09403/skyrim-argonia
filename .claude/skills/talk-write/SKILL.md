@@ -43,7 +43,10 @@ Design: `docs/design/talk.md` (the tables, the topic catalogue). The four rules 
    - a leg over 350 paces is cut at a landmark near its middle (the search widens along the leg and out from it);
      a long leg with no landmark at all names what it follows (along the shore, along the path, over open ground);
    - a first leg more than 90 degrees off the target is re-planned from the next-best start; when the world forces
-     it, the leg says why (round the inlet, round the cliffs).
+     it, the leg says why (round the inlet, round the cliffs);
+   - at most four legs: a longer route tells its first three landmarked legs, then "from there, ask again" with the
+     target's bearing (an `ask` leg);
+   - never the speaker's own place as a waypoint (the map marker nearest the speaker within one cell).
    A leg that breaks a rule without its reason fails talk_check. When a route changes, rewrite only the
    directions lines that tell it.
 4. **Lore facts**: from `story/lore`, rule 3; cite a ref where the claim is physical.

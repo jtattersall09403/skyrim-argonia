@@ -36,15 +36,30 @@ static class Surface
             for (var i = sources.Count - 1; i >= 0; i--)
             {
                 var (dir, bsas) = sources[i];
-                var loose = Path.Combine(dir, rel.Replace('\\', '/'));
-                if (File.Exists(loose)) return File.ReadAllBytes(loose);
-                var ci = Directory.Exists(Path.GetDirectoryName(loose)) ? Directory.GetFiles(Path.GetDirectoryName(loose)!).FirstOrDefault(f => string.Equals(Path.GetFileName(f), Path.GetFileName(loose), StringComparison.OrdinalIgnoreCase)) : null;
-                if (ci != null) return File.ReadAllBytes(ci);
+                if (Loose(dir, rel) is { } ci) return File.ReadAllBytes(ci);
                 for (var j = bsas.Count - 1; j >= 0; j--)
                     foreach (var f in bsas[j].Files)
                         if (string.Equals(f.Path.Replace('/', '\\'), rel, StringComparison.OrdinalIgnoreCase)) return f.GetBytes();
             }
             return null;
+        }
+        // A loose file under dir, each folder and the name matched without case (the game's paths ignore case; a
+        // record's "Meshes\Architecture\..." names the folder "meshes/architecture" on this disk).
+        static string? Loose(string dir, string rel)
+        {
+            var at = dir;
+            var parts = rel.Split('\\', StringSplitOptions.RemoveEmptyEntries);
+            for (var i = 0; i < parts.Length; i++)
+            {
+                var exact = Path.Combine(at, parts[i]);
+                var last = i == parts.Length - 1;
+                if (last ? File.Exists(exact) : Directory.Exists(exact)) { at = exact; continue; }
+                if (!Directory.Exists(at)) return null;
+                var hit = (last ? Directory.GetFiles(at) : Directory.GetDirectories(at)).FirstOrDefault(f => string.Equals(Path.GetFileName(f), parts[i], StringComparison.OrdinalIgnoreCase));
+                if (hit == null) return null;
+                at = hit;
+            }
+            return at;
         }
     }
 

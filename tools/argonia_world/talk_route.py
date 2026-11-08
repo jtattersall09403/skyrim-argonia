@@ -42,7 +42,9 @@ TURN = 700.0            # Douglas-Peucker tolerance: a bend this far off the lin
 REACH = 1600.0          # a leg's landmark lies this close to its end
 MIN_LEG = 1400.0        # a run shorter than this merges into the one before
 SPACE = 3000.0          # two cuts of a telling stand at least this far apart along the path
-MAX_LEGS = 4            # Morrowind gives two to four legs (before the leg rules split a long one)
+MAX_LEGS = 4            # Morrowind gives two to four legs; a told route never has more
+TOLD = 3                # a longer route tells this many landmarked legs, then "from there, ask again"
+OWN = 4096.0            # the map marker nearest the speaker within this is the speaker's own place: never a waypoint
 MERGE = 50 * PACE       # leg rule 1: a leg shorter joins its neighbour
 SPLIT = 350 * PACE      # leg rule 2: a leg longer is cut at a landmark near its middle
 SHORT = 150 * PACE      # a whole route shorter keeps its short legs
@@ -219,6 +221,7 @@ class World:
         self.land, self.water, self.dw, self.tris, self.refs = (d["land"], d["water"], d["default_water"],
                                                                 d["tris"], d["refs"])
         self.by_key = {r["key"]: r for r in self.refs}
+        self.own: set = set()           # the speaker's own place for the route being told (route sets it)
         for r in self.refs:
             text = (r["model"] + " " + r["edid"]).lower()
             r["lm"] = ("marker", (names or {}).get(r["marker"], r["marker"]), 10) if r["marker"] else None
@@ -423,7 +426,7 @@ def _landmark(W: World, x: float, y: float, used: set, heading: tuple, wide: flo
     for r in W.refs:
         lm = r["lm"]
         reach = REACH * wide * (2 if lm and lm[0] == "marker" else 1)
-        if not lm or r["key"] in used or abs(r["x"] - x) > reach or abs(r["y"] - y) > reach:
+        if not lm or r["key"] in used or r["key"] in W.own or abs(r["x"] - x) > reach or abs(r["y"] - y) > reach:
             continue
         if lm[0] != "marker" and r.get("twins", 0) >= 2:
             continue
@@ -469,6 +472,7 @@ def route(W: World, sx: float, sy: float, tx: float, ty: float, target: str, sha
     straight = math.hypot(tx - sx, ty - sy)
     out = {"from": (round(sx), round(sy)), "to": target, "to_xy": (round(tx), round(ty)),
            "straight_m": round(straight / UNITS_M), "bearing": compass(tx - sx, ty - sy)}
+    W.own = own_place(W, sx, sy)
     G = Grid(W, sx, sy, tx, ty)
     s, t = G.nearest_open(*G.ij(sx, sy)), G.nearest_open(*G.ij(tx, ty))
     path = G.astar(s, t)
@@ -506,8 +510,25 @@ def route(W: World, sx: float, sy: float, tx: float, ty: float, target: str, sha
             out["route_m"] = round(plan["along"][-1] / UNITS_M)
         else:
             plan["legs"][0]["why"] = _forced(G, s, t, plan["legs"][0])
-    out.update(kind="route", legs=plan["legs"])
+    legs = plan["legs"]
+    if shape and len(legs) > MAX_LEGS:
+        # Morrowind's way: the first landmarked legs, then "from there, ask again"
+        keep = TOLD
+        while keep > 1 and not legs[keep - 1]["landmark"]:
+            keep -= 1
+        end = legs[keep - 1]["end"]
+        legs = legs[:keep] + [{"kind": "ask", "heading": compass(tx - end[0], ty - end[1], 8), "m": 0, "paces": 0,
+                               "start": end, "end": (round(tx), round(ty)), "landmark": None, "past": []}]
+    out.update(kind="route", legs=legs)
     return out
+
+
+def own_place(W: World, x: float, y: float) -> set:
+    """The speaker's own place: the map marker nearest (x, y) within OWN."""
+    best = min((r for r in W.refs if r["lm"] and r["lm"][0] == "marker"
+                and abs(r["x"] - x) < OWN and abs(r["y"] - y) < OWN),
+               key=lambda r: math.hypot(r["x"] - x, r["y"] - y), default=None)
+    return {best["key"]} if best and math.hypot(best["x"] - x, best["y"] - y) <= OWN else set()
 
 
 def _near_index(G: Grid, path: list, xy: tuple) -> int:
@@ -728,6 +749,9 @@ def describe(r: dict, target_name: str) -> str:
         return f"{target_name} lies about {r['straight_m']} m {r['bearing']} of here; no way on foot was found."
     bits = []
     for n, lg in enumerate(r["legs"]):
+        if lg["kind"] == "ask":
+            bits.append(f"from there, ask again for {target_name}, which lies further {lg['heading']}")
+            continue
         v = VERB[lg["kind"]].format(h=lg["heading"])
         if lg["kind"] == "swim" and lg.get("island"):
             v = f"swim to the island you can see to the {lg['heading']}"
@@ -743,7 +767,8 @@ def describe(r: dict, target_name: str) -> str:
         elif lg["kind"] == "swim" and n < len(r["legs"]) - 1:
             s += " to the far bank"
         bits.append(s)
-    bits[-1] += f", and {target_name} is there"
+    if r["legs"][-1]["kind"] != "ask":
+        bits[-1] += f", and {target_name} is there"
     text = "; then ".join(bits)
     return text[0].upper() + text[1:] + "."
 
@@ -763,9 +788,10 @@ def legs_field(r: dict) -> str:
 LEG = re.compile(r"(\w+) (\d+)@(\d+)(?: \(([^)]*)\))?")
 
 
-def leg_problems(src: str) -> list[str]:
+def leg_problems(src: str, W: World | None = None) -> list[str]:
     """The leg rules a directions fact's source breaks without a recorded reason: (1) a leg under MERGE in a route
-    of SHORT or more, (2) a leg over SPLIT, (3) a first leg more than AWAY off the target."""
+    of SHORT or more, (2) a leg over SPLIT, (3) a first leg more than AWAY off the target; and always (4) more than
+    MAX_LEGS legs, (5) given the world, a waypoint that is the speaker's own place (own_place)."""
     m = re.search(r"legs: ([^;]*);", src)
     pos = re.findall(r"\((-?\d+), (-?\d+)\)", src)
     if not m or len(pos) < 2:
@@ -773,7 +799,16 @@ def leg_problems(src: str) -> list[str]:
     legs = [(k, int(p), int(d), why) for k, p, d, why in LEG.findall(m.group(1))]
     if not legs or legs[0][0] in ("close", "none"):
         return []
-    out, total = [], sum(p for _, p, _, _ in legs)
+    out: list[str] = []
+    if len(legs) > MAX_LEGS:
+        out.append(f"{len(legs)} legs (over {MAX_LEGS}: tell {TOLD}, then ask again)")
+    if W is not None:
+        sx, sy = map(float, pos[0])
+        wps = re.search(r"waypoints: (.*?); legs:", src)
+        out += [f"waypoint {k} is the speaker's own place" for k in own_place(W, sx, sy)
+                if wps and k in wps.group(1)]
+    legs = [lg for lg in legs if lg[0] != "ask"]
+    out, total = out, sum(p for _, p, _, _ in legs)
     for n, (k, p, d, why) in enumerate(legs, 1):
         if p * PACE < MERGE and total * PACE >= SHORT and len(legs) > 1 and not why:
             out.append(f"leg {n} is {p} paces (under {round(MERGE / PACE)})")

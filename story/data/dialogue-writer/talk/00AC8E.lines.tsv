@@ -1,5 +1,8 @@
-talk.directions	Lilmoth Dock is a short pull east of here, passenger. It is a mess of small craft when you get there. Alten Merihall is a long haul down the coast, east-south-east. I charge for every channel on the way.
-talk.here	There is a longboat drawn up on the bank, a short walk south. Lifts-The-Sacks is the only hand here who loads a boat properly. I would sooner trust him with a boat than the soldiers, Sees-No-Shade and Rakhee-Tul.
-talk.lore	Lilmoth sits over shallow water, so the big ships cannot dock. They anchor out. Boats like mine carry the goods in. Since Lilmoth fell, Alten Merihall has taken much of the bay's outside trade. That is more water for the rest of us to cross.
-talk.rumours	There is a large ship on the shore, a short walk south. A captain's journal and some armour lie beside it, a little nearer. Her crew lost her and still say she ran herself aground. Go and look, passenger. Judge the water for yourself.
-talk.self	I am Reads-The-Shallows. I run a flat boat with the plantation's rice to Lilmoth. I know every channel between here and the walls. I am waiting for a full load and a fair wind. I would rather leave before the steward changes his mind about the price.
+talk.directions	Lilmoth Dock? Follow the shore north-east, three hundred paces, until Lilmoth is on your right. Then east, a hundred and ninety, to the burnt-out house on your left. South-east a hundred and thirty-five more, and the dock is there, passenger.
+talk.directions	Alten Merihall? Follow the shore north-east, three hundred paces, until Lilmoth is on your right. Then east, a hundred and ninety, to the burnt-out house on your left. South-east a hundred and thirty brings you to Lilmoth Dock. From there, ask again for Alten Merihall. It lies further south-east.
+talk.greet-friend	There you are, my friend. The water is calm today and I have room in the boat. Sit where you like.
+talk.greet-stranger	Passenger. Have you a load, or only questions? I am waiting for the next one.
+talk.here	A longboat is drawn up about sixty-five paces south of here. If you want the water, that is the way to it.
+talk.lore	Since Lilmoth fell, Alten Merihall has taken much of the bay's outside trade. I still carry for Lilmoth. I know every turn of the channel to its walls.
+talk.rumours	A large ship lies on the shore about a hundred paces south of here. Her captain's journal and his armour were left beside her, some ninety-five paces south. Her crew lost her. They still tell people I ran her aground.
+talk.self	I am Reads-The-Shallows. I run a flat boat and carry Hereguard's crop to Lilmoth. I know every channel from here to the walls. I charge for each one.

@@ -1,4 +1,6 @@
-talk.danger	Halt, citizen. Keep off the shore. Old Salty, a giant crab, holds the shallows forty-five paces east-south-east. Giant mudcrabs sit on the shore sixty paces east-north-east. I hold my post well back from the water. I was told to.
-talk.directions	State your business, citizen. The Docks lie east, six hundred paces, a long walk. Sheathe that weapon first, and do not wander.
-talk.self	I am Sees-No-Shade, in the pay of the Lilmoth council, posted to guard the south side of the plantation, where the rice is grown that Lilmoth buys. I face the water because whatever comes, comes from the shore. Nothing happens on my watch, citizen. State your business or move along.
-talk.someone	Rakhee-Tul holds the easier post, five paces north of here, and sleeps on it, citizen. Go and see for yourself.
+talk.danger	State your business first, citizen. Then hear this. A giant crab, Old Salty, lives in the shallows, forty-five paces east-south-east of this bench. Giant mudcrabs sit on the shore sixty paces east-north-east. Keep clear of both.
+talk.directions	Soulrest? Attend, citizen. Go north-east, about two hundred and sixty paces, until Lilmoth is on your right. Then east two hundred paces, until the burnt-out house is on your left. Then south-east, about a hundred and thirty paces, to Lilmoth Dock. From there, ask again. Soulrest lies further east.
+talk.greet-friend	You again, my friend. Good. The watch is quiet. Stand easy and I will tell you if that changes.
+talk.greet-stranger	Halt, citizen. State your business. Keep your hands clear of your weapon.
+talk.self	I am Hard-Scale. I am a soldier in the pay of the Lilmoth council. I guard the south side of Hereguard, where the crop is grown. Nothing happens here while I stand watch.
+talk.someone	Rakhee-Tul stands five paces north of this bench. He holds the easier post. He sleeps on it. Report to him if you must, citizen. Do not expect much.

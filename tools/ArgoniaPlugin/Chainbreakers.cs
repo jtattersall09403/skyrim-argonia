@@ -25,6 +25,9 @@ static class Chainbreakers
     public const uint B1Patron = 0, B1Debtor = 1, B1Steward = 2, B1Chest = 3;
     public const uint B2Patron = 0, B2Keeper = 1, B2Speaker = 2, B2Killer = 3, B2Mother = 4;
     // The keep's floor: navmesh 0ACB8C's triangles inside the footprint at the keep's ground (z 2550 to 2800).
+    // Never-Sold's spot in HouseInt's small house (SmallHouseINT 156421): between the shelf (156424) and the hearth
+    // (15642B), under its floor level plus a step (the highest floor crossing below Z).
+    public static readonly (float X, float Y, float Z) RoomSpot = (520, -120, 1560);
     public static readonly (float X, float Y)[] HeldAt = [(124750, -58050), (125150, -57550), (125400, -58100)];
     public static readonly (float X, float Y) KeepCentre = (125079, -57867), JailMarker = (129953, -58803);
 
@@ -51,7 +54,15 @@ static class Chainbreakers
     static PlacedNpc NeverSold(SkyrimMod mod, List<ISkyrimModGetter> mods, Kit kit)
     {
         var b = Person(kit, "ARG_BC_NeverSold", "Never-Sold", true, 10);
-        var at = kit.Snap.At(House.ToString(), 0, 0);
+        // BM&V's HouseInt has no navmesh in its rooms (its one navmesh lies at z 7520 over nothing): he stands in the small
+        // house by the hearth and the shelf, on the floor its mesh carries (PlaceCheck.Standing).
+        var cellRefs = mods.SelectMany(m => m.Cells.Records.SelectMany(b => b.SubBlocks).SelectMany(s => s.Cells)).Where(c => c.FormKey == House)
+            .SelectMany(c => c.Persistent.Concat(c.Temporary)).OfType<IPlacedObjectGetter>().Where(o => o.Placement != null).ToList();
+        Surface.Bases(mods);
+        var hits = Surface.UnderRefs(cellRefs, new Surface.Assets(Surface.Paths), RoomSpot.X, RoomSpot.Y, everyCrossing: true);
+        var floor = hits.Where(h => h.Top <= RoomSpot.Z).Select(h => h.Top).DefaultIfEmpty(float.NaN).Max();
+        if (float.IsNaN(floor)) throw new InvalidOperationException($"no floor under Never-Sold's spot ({cellRefs.Count} refs; crossings {string.Join(", ", hits.Select(h => $"{h.EditorId} {h.Top:F0}"))})");
+        var at = new P3Float(RoomSpot.X, RoomSpot.Y, MathF.Round(floor) + 10);
         var r = kit.Actor("ARG_BC_NeverSoldRef", b, at);
         Interior(mod, mods, House).Persistent.Add(r);
         return r;

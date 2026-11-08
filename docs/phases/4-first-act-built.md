@@ -199,7 +199,15 @@ the quest is re-authored.
   fire, TG01's bedroll, the block test's token; the shed 117 up out of the land), and it reads 0 failed. BC01's
   landing and BC02's keep pass; the Reed's house has no navmesh in its rooms, so Nesh-Deeka and Salts-The-Catch are
   named standing actors, checked 10 above the floor mesh. Every read-back PASS after the re-seed; `make check` green.
+- **Floors under the navmesh:** placecheck 120 checked, 0 failed, 0 warned. The 11 warned actors were read down to
+  what lies under them: the mesh reader missed BM&V's loose meshes whose folders differ in case from the record's path
+  (now matched without case), and giant trees carry navmesh on their roots (trees are now read as floors). BM&V's keep
+  (cyrkeep.nif) and the gate's stone base (crtstonebase.nif) are in no archive or folder of the load order, so their
+  navmesh lies over nothing in game; BM&V's HouseInt navmesh lies at z 7520 over no room. The seed now moves an actor
+  on a navmesh with no proven floor to the nearest navmesh triangle (within 1200) over BM&V's own floor: BC02's held
+  three, Tsaxi and the gate keeper, MQ04's camp men (still at the cut root by Low-Reed Village), LQ30's Sei-Wan and
+  viper, MQ05's second wasp, MQ01's Ri-Sakka. Never-Sold stands in HouseInt's small house by the hearth, on its floor
+  mesh (a named standing actor).
 - **Known gaps, for the owner walk or later:** what the check cannot prove: how the tilted floor of the Reed's house
-  looks and whether its two standing actors settle well; 11 actors whose navmesh has no modelled ground under it (BC02's
-  keep and gate, MQ04's camp, LQ30's Sei-Wan and viper, MQ05's second wasp, MQ01's Ri-Sakka on the shore, Never-Sold's
-  house): a collision-only floor or a navmesh over nothing, which only the walk tells apart; and how anything looks.
+  looks and whether its standing actors settle well; BC02's held three now wait on the hill where BM&V's keep should
+  stand, since its mesh is missing from BM&V's files; and how anything looks.

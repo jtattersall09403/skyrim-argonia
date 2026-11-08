@@ -10,8 +10,9 @@ using Noggog;
 //   whose bounding box holds the actor, crosses a 40-wide column 30 to 110 above the feet: inside a wall or a table).
 //   An actor under the water with no navmesh swims; an actor the builder names as standing (Standing) has no navmesh by
 //   the host's making and is checked on its floor instead.
-//   WARN (not a failure): no modelled ground (land, a model's render mesh, water) within 40 under the feet; collision-only
-//   floors are not read, so only the walk can tell a navmesh over nothing from one over a collision floor.
+//   WARN (not a failure): no floor (land, a model's mesh, water) within 40 under the feet: a navmesh over nothing. Settle
+//   moves such an actor to the nearest triangle of the space's navmeshes (within 1200) whose floor is BM&V's own and proven.
+//   A navmesh more than 1000 above or below the feet is another storey and not this actor's.
 //   Objects: the bottom of the bounds against the surface nearest it (the land, a static, furniture, a container; fail
 //   floating or sunk by more than 10); a structure (256 or more across) may stand sunk in the ground or the water as
 //   Bethesda sinks foundations, and fails only floating. Markers, zones, effects, lights and merchant chests are skipped.
@@ -20,10 +21,10 @@ using Noggog;
 static class PlaceCheck
 {
     // Actors placed where the host has no navmesh (the Reed's house: BM&V's sinking cabin has none in its rooms).
-    public static readonly HashSet<string> Standing = ["ARG_NeshDeekaRef", "ARG_MQ03_SaltsTheCatchRef"];
+    public static readonly HashSet<string> Standing = ["ARG_NeshDeekaRef", "ARG_MQ03_SaltsTheCatchRef", "ARG_BC_NeverSoldRef"];
 
     sealed record Nav(FormKey Parent, List<(P3Float a, P3Float b, P3Float c)> Tris);
-    public sealed record Result(FormKey Ref, string Where, string? EditorId, P3Float At, string? Fail, string Detail, float? FixZ, bool Warn);
+    public sealed record Result(FormKey Ref, string Where, string? EditorId, P3Float At, string? Fail, string Detail, float? FixZ, bool Warn, P3Float? MoveTo = null);
 
     public static int Run(string esp, string[] paths)
     {
@@ -43,6 +44,11 @@ static class PlaceCheck
         foreach (var o in mod.EnumerateMajorRecords<PlacedObject>())
             if (fixes.TryGetValue(o.FormKey, out var z)) o.Placement!.Position = new P3Float(o.Placement.Position.X, o.Placement.Position.Y, MathF.Round(z));
         Console.WriteLine($"placecheck settle: {fixes.Count} objects rested on their surface");
+        // an actor on a navmesh with no floor under it moves to the nearest triangle of that navmesh whose floor is proven
+        var moves = Check([.. mods, mod], mod.ModKey, new Surface.Assets(paths)).Where(r => r.Warn && r.MoveTo != null).ToDictionary(r => r.Ref, r => r.MoveTo!.Value);
+        foreach (var a in mod.EnumerateMajorRecords<PlacedNpc>())
+            if (moves.TryGetValue(a.FormKey, out var to)) a.Placement!.Position = to;
+        Console.WriteLine($"placecheck settle: {moves.Count} actors moved off a navmesh with no floor ({string.Join(", ", moves.Keys.Select(k => k.IDString()))})");
     }
 
     public static List<Result> Check(List<ISkyrimModGetter> all, ModKey ours, Surface.Assets assets)
@@ -59,6 +65,8 @@ static class PlaceCheck
             T(m.Lights, "LIGH"); T(m.Doors, "DOOR"); T(m.Florae, "FLOR"); T(m.Weapons, "WEAP");
             T(m.Armors, "ARMO"); T(m.Ingestibles, "ALCH"); T(m.SoundMarkers, "SOUN"); T(m.IdleMarkers, "IDLM");
             foreach (var c in m.Containers) containerModels[c.FormKey] = (c.EditorID, c.Model?.File.DataRelativePath.Path, c.ObjectBounds);
+            T(m.Trees, "TREE"); // a giant tree's roots and platforms carry navmesh
+            foreach (var t in m.Trees) containerModels[t.FormKey] = (t.EditorID, t.Model?.File.DataRelativePath.Path, t.ObjectBounds);
         }
         Surface.AddBases(containerModels); // a barrel's lid is a surface too
 
@@ -116,7 +124,7 @@ static class PlaceCheck
         List<Surface.Hit> Under(FormKey space, FormKey self, float x, float y)
         {
             var near = refsIn[space].Values.OfType<IPlacedObjectGetter>().Where(o => o.Placement != null && (o.MajorRecordFlagsRaw & 0x800) == 0 && o.FormKey != self
-                && types.GetValueOrDefault(o.Base.FormKey) is "STAT" or "FURN" or "ACTI" or "CONT" && !merchant.Contains(o.FormKey)
+                && types.GetValueOrDefault(o.Base.FormKey) is "STAT" or "FURN" or "ACTI" or "CONT" or "TREE" && !merchant.Contains(o.FormKey) && !(Surface.Base(o.Base.FormKey)?.EditorID ?? "").Contains("Marker", StringComparison.OrdinalIgnoreCase)
                 && MathF.Abs(o.Placement.Position.X - x) < 3000 && MathF.Abs(o.Placement.Position.Y - y) < 3000);
             var hits = Surface.UnderRefs(near, assets, x, y, everyCrossing: true);
             float? landZ = worlds.ContainsKey(space) ? Surface.Land(all, space, x, y) : null;
@@ -126,13 +134,33 @@ static class PlaceCheck
         }
         static string List(List<Surface.Hit> hits) => " [" + string.Join(", ", hits.Take(6).Select(h => $"{h.EditorId ?? h.Kind} {h.Top:F0}")) + "]";
 
+        // The nearest triangle centre of the space's navmeshes (within 1200) with a floor within 40 under it, not water.
+        var taken = new List<P3Float>();
+        P3Float? Proven(FormKey space, P3Float p)
+        {
+            foreach (var c in navs[space].SelectMany(n => n.Tris).Select(t => new P3Float((t.a.X + t.b.X + t.c.X) / 3, (t.a.Y + t.b.Y + t.c.Y) / 3, (t.a.Z + t.b.Z + t.c.Z) / 3))
+                         .Where(c => Dist2(c, p) < 1200).OrderBy(c => Dist2(c, p) + MathF.Abs(c.Z - p.Z)))
+            {
+                var hs = Under(space, FormKey.Null, c.X, c.Y);
+                var w = Water(space, c.X, c.Y);
+                if (w is float wz && c.Z < wz - 1) continue;
+                var onWater = w is float wz2 && c.Z - wz2 <= 40;
+                // BM&V's own floor (never a prop we placed), and no two moved actors on one spot
+                var sup = hs.Where(h => h.Kind != "water" && h.Ref.ModKey != ours).FirstOrDefault(h => h.Top <= c.Z + 10);
+                if (!onWater && (sup == null || c.Z - sup.Top > 30) || taken.Any(t => Dist2(t, c) < 80)) continue;
+                var to = new P3Float(MathF.Round(c.X), MathF.Round(c.Y), MathF.Round(c.Z)); taken.Add(to);
+                return to;
+            }
+            return null;
+        }
+
         var results = new List<Result>();
         foreach (var (key, (space, where)) in mine.OrderBy(e => e.Value.where).ThenBy(e => refsIn[e.Value.space][e.Key].EditorID))
         {
             var r = refsIn[space][key];
             if (r.Placement is not { } pl) continue;
             var p = pl.Position;
-            string? fail = null, warn = null; string detail; float? fixZ = null;
+            string? fail = null, warn = null; string detail; float? fixZ = null; P3Float? moveTo = null;
             if (r is IPlacedNpcGetter)
             {
                 // the navmesh: the nearest triangle (0 when under the feet), of those the one nearest in height
@@ -144,6 +172,7 @@ static class PlaceCheck
                         if (dist < far.dist) far = (dist, new P3Float((a.X + b.X + c.X) / 3, (a.Y + b.Y + c.Y) / 3, (a.Z + b.Z + c.Z) / 3));
                         if (dist > 150) continue;
                         var gap = p.Z - z;
+                        if (MathF.Abs(gap) > 1000) continue; // a navmesh a storey or more away (another room of a shared cell) is not under this actor
                         if (dist < best.dist - 0.5f || (dist <= best.dist + 0.5f && MathF.Abs(gap) < MathF.Abs(best.gap))) best = (gap, dist);
                     }
                 var hits = Under(space, key, p.X, p.Y);
@@ -162,7 +191,12 @@ static class PlaceCheck
                         : $"navmesh gap {best.gap:F0} at {best.dist:F0} off, ground {(support == null ? "none" : $"{floor:+0;-0;0} on {support.EditorId ?? support.Kind}")}";
                     var onWater = water is float w2 && p.Z >= w2 - 1 && p.Z - w2 <= 40;
                     if (float.IsNaN(best.gap) || best.gap > 40 || best.gap < -1) fail = detail;
-                    else if (!onWater && (support == null || floor > 40)) warn = "no modelled ground under the navmesh (a collision-only floor, or a navmesh over nothing: the walk decides)" + List(hits);
+                    else if (!onWater && (support == null || floor > 40))
+                    {
+                        warn = "no floor under the navmesh (land, a model's mesh or its collision, water)" + List(hits);
+                        moveTo = Proven(space, p);
+                        if (moveTo is { } m) warn += $"; settle moves it to the nearest proven floor {m.X:F0},{m.Y:F0},{m.Z:F0} ({Dist2(m, p):F0} off)";
+                    }
                 }
                 // the body: a static's or furniture's mesh within 200 whose box holds the actor, crossing its column
                 foreach (var o in refsIn[space].Values.OfType<IPlacedObjectGetter>())
@@ -204,7 +238,7 @@ static class PlaceCheck
                 if (near == null || gap > 10 || gap < -10) { fail = detail + List(hits); if (near != null) fixZ = p.Z - gap; }
             }
             else continue;
-            results.Add(new Result(key, where, r.EditorID, p, fail, warn == null ? detail : detail + "; WARN " + warn, fixZ, warn != null));
+            results.Add(new Result(key, where, r.EditorID, p, fail, warn == null ? detail : detail + "; WARN " + warn, fixZ, warn != null, moveTo));
         }
         return results;
     }

@@ -1,7 +1,8 @@
-talk.directions	Hereguard Plantation. West, ojel. A long way. About six hundred and forty paces. I would not walk it with a heavy pack.
-talk.loot	There is a chest by the big ship. Seventy paces west-south-west of here. I do not go near it. Look if you want to, ojel.
-talk.lore	I know the Docks, ojel, not all of Black Marsh. On the bigger docks a ship's crew is bought with somebody's months of owing. The harbourmaster calls it hiring. It takes paid work from free hands. I do not like it.
-talk.self	Wades-Late. I haul and I tie up boats. Half the Docks owe me coin, ojel. I wait for it. I am slow, but I am not forgetting.
-talk.self	I am Wades-Late, kin or ojel, it does not matter. I carry the loads here and tie the boats. I talk little.
-talk.trade	I carry cargo and tie up boats, here on the south-east side, by the benches where loads are set down. Mind your feet, ojel.
-talk.trade	The large ship is about seventy-five paces west. Its door leads aboard. I will say nothing more of it until I am paid.
+talk.directions	Hereguard Plantation. Go north-west, three hundred paces and a little more, until Lilmoth Dock is on your left. Climb west a hundred paces, to the big ship on your left. Then west again, a hundred and fifty paces, to the dead tree on your left. From there, ask again, ojel. The plantation lies further west.
+talk.greet-friend	Kin. Good. Sit by the benches a while. The loads can wait.
+talk.greet-stranger	Mm. What do you want, ojel? I have loads to move.
+talk.loot	There is a chest by the big ship. West-south-west of here, seventy paces or so. I do not know more than that.
+talk.lore	On the big docks they hire a ship's crew with another man's months of owing. The harbourmaster calls it hiring. It takes paid work off free hands.
+talk.rumours	Tilts-The-Jug is inside the house on the dock. Sometimes there is a use for careful hands, ojel.
+talk.self	I am Xeeh-Nah. I haul cargo and tie up the boats here at Soulrest, on the south-east side. Half of Soulrest owes me money.
+talk.trade	I carry loads and tie the boats up. The big ship lies west of here, seventy-five paces. Its door leads aboard.
