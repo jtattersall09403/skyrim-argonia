@@ -45,5 +45,26 @@ static class Combat
         player.ActorEffect ??= new();
         player.ActorEffect.Add(spel.ToLink<ISpellRecordGetter>());
         if (!mod.Npcs.Any(n => n.FormKey == key)) mod.Npcs.Add(player);
+
+        BackstabReach(mod, mods);
+    }
+
+    // Rim Parry's backstab (owner walk 2026-11-07: block + attack from behind parried and never staggered). Every player
+    // bash clip carries PIE.$EldenCounterattackSA, which Payload Interpreter casts as EldenBlockCounterSA (0x822, overridden
+    // by EREP_patchSA.esp to BackStabShoot + ExeBackStab): an aimed spell with no target, so it lands only if its projectile
+    // BackStabProjectile (0xA3C) reaches the back. Its range is 100 units (collision radius 32), less than an arm's length
+    // apart under TDM's lock-on; it vanished in the air. The range goes to 250, about a sword's reach plus a step. ExeBackStab's
+    // own conditions still decide (headings within 30 degrees, i.e. behind; hostile; alive), so from the front the bash
+    // stays Elden Parry's parry.
+    public const float BackstabRange = 250f;
+    static void BackstabReach(SkyrimMod mod, List<ISkyrimModGetter> mods)
+    {
+        var k = FormKey.Factory("000A3C:RimExecutionHitSA.esp");
+        var (w, _) = Survey.Winners<IProjectileGetter>(mods)[k];
+        if (w.EditorID != "BackStabProjectile" || w.Range != 100f) throw new Exception($"BackStabProjectile: {w.EditorID} range {w.Range}, expected 100");
+        var p = w.DeepCopy();
+        p.Range = BackstabRange;
+        p.Name = null; // never shown (an empty FX projectile); its Chinese name would be re-encoded wrongly
+        mod.Projectiles.Add(p);
     }
 }
