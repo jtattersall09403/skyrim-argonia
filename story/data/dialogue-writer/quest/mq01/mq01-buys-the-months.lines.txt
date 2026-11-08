@@ -1,0 +1,26 @@
+# Buys-The-Months (argonian, male; the debt-labour broker on the pier at Lilmoth's dock). MQ01 No Name on the Work Roll.
+# Format: a comment row gives [band | listener]; the row after it is the line. Bands: low below 30, words 30 to 69, high 70 and over.
+# Source: dialogue brief mq01-buys-the-months.md. No stance row exists for him yet (2.4 composes one); voice is the argonian card.
+
+## topic.mq01-the-hire (stage 10; not essential)
+# facts stated: fact.mq01.broker-holds, fact.mq01.owing-roll. fact.mq01.blank-line is known to him and is named only as "the line with no name".
+
+# [low | any]
+I hold this gang's months. I hire them out to Hereguard Plantation, at the far end of the shore path. That is all I tell a stranger on my pier. The line with no name on it is another matter. I do not discuss it with strangers, so speak to me again when I have reason to trust you.
+
+# [words | argonian]
+You are Argonian, so I will say it plainly. Every hand in this gang owes months of work. I hold those months. I hire the gang out to Hereguard Plantation, where the shore path meets the reeds. The roll adds months for food as well. Your line on the roll has no name on it. That line is mine to fill or to leave. I cannot hire out a hand who owes nothing, so if you want it filled, give me a reason.
+
+# [words | other]
+You are [player race], so I will say it plainly. Every hand in this gang owes months of work. I hold those months. I hire the gang out to Hereguard Plantation, where the shore path meets the reeds. The roll adds months for food as well. Your line on the roll has no name on it. That line is mine to fill or to leave. I cannot hire out a hand who owes nothing, so if you want it filled, give me a reason.
+
+# [words | any, what he makes of the answer he heard]
+I heard the answer you gave the overseer, Wuleen-Sei. It was enough for her. It is not enough for me, because the months are mine to hire out and hers are not. I cannot yet tell whether it was true.
+
+# [high | argonian]
+I will tell you how it stands. Every hand in this gang owes months of work. The roll adds months for the food each hand eats. I hold all of those months. I hire the gang out to Hereguard Plantation. From the plank, the shore path runs north and west along the water, past the first of the rice dikes. The gang lives in the huts of the camp, on the reed bank at the paddy edge where the path meets the reeds. I want every hand up the plank and in the paddies by dark.
+Your line has no name on it. It is mine to fill or to leave. If I leave it, you owe nothing. I cannot hire out what is not owed. That is why I am careful with you. Tell me why I should fill it.
+
+# [high | other]
+You have been fair with me, [player race], so I will be fair with you. Every hand in this gang owes months of work. The roll adds months for the food each hand eats. I hold all of those months. I hire the gang out to Hereguard Plantation. From the plank, the shore path runs north and west along the water, past the first of the rice dikes. The gang lives in the huts of the camp, on the reed bank at the paddy edge where the path meets the reeds. I want every hand up the plank and in the paddies by dark.
+Your line has no name on it. It is mine to fill or to leave. If I leave it, you owe nothing. I cannot hire out what is not owed. That is why I am careful with you. Tell me why I should fill it.

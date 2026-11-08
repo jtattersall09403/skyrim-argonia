@@ -98,10 +98,7 @@ the quest is re-authored.
   the alias flag. `brief.py` refuses a record with no fail-forward, so stage 94 and its death triggers stay wired
   (unreachable while essential). F3 skipped. Briefs were rebuilt and both speakers' lines rewritten (Heavy-Rope 21, Ussa-Rekh 3;
   lint 0). Fact requests: the tokens and the promise in Ussa-Rekh's season line are cut (gap QA21, not lore); the Owing
-  wording is kept, from labour-and-bondage.md §2. **Blocker found:** Dock2 (`02F35A`, 11,-2) has **no navmesh** in
-  Black Marsh.esm, Black Marsh North.esp or Valenwood.esp (`ArgoniaPlugin cell` on each), though the record says
-  it has one. The people and the chest need a navmeshed spot (another Soulrest dock cell), or the place goes back to
-  quest-write. Still to do: the text-review pass, Chainbreakers.cs, the TIF/QF Papyrus, the read-back, then BC01 and BC02.
+  wording is kept, from labour-and-bondage.md §2. Navmesh: Dock2 (`02F35A`) is navmeshed by Black Marsh North.esp (`0A7784`, 225 triangles at dock height, x 47488..49152), not by Black Marsh.esm. An earlier note here said it had none: that was a misread of a truncated listing. The place stands. Still to do: the text-review pass, Chainbreakers.cs, the TIF/QF Papyrus, the read-back, then BC01 and BC02.
 - **MQ01 and MQ03 re-authored to the blocks (2026-11-08, planner rulings).** Every zone is gated by its prerequisite
   stage only. MQ01: three shore boxes (90 from 41, 91 from 42, 93 from 40 under a parent that 41 and 42 turn off, as
   they turn off the other choice's zone); the saved one follows by alias package and is moved to the mark by the
@@ -135,3 +132,17 @@ the quest is re-authored.
   records' review sections, the dialogue-write and text-review pass on the 21 lines (placeholders from the records'
   intents), and the owner's in-game check.
 
+- **MQ01 and MQ03 lines written (2026-11-08)** for every speaker with a topic (`*.lines.txt` beside each brief):
+  Wuleen-Sei (4 topics), Buys-The-Months, Ux-Xeek, Dives-Without-A-Rope, Nesh-Deeka (4), Never-Writes-Twice, Ties;
+  `lint.py` clean on all seven (B10 "courier" warnings justified, province-vibe §9). Not yet done: the text-review
+  reader pass; three different file layouts, to be made one before loading. Fact requests to answer in the records:
+  why Ties must be persuaded; whether the player knows "the Reed" by stage 20; who Wuleen-Sei is to Ties's listener;
+  whether the player knows Nesh-Deeka at stage 10; who keeps the Lilmoth house and when the boat leaves; the figure
+  for the food months (or "no figure"); whether Ux-Xeek may call the blank line aloud.
+- **Hand-off: the MQ01/MQ03 build (next context).** Not started: `MQ01.cs`, `MQ03.cs` (after `CleanUp.Add` in
+  Generate.cs), their Papyrus, the read-backs, the .pex. Copy the shapes from BlockTest.cs (zones, alias scripts,
+  scenes, topics with TIF fragments, the race guard on 91). Rulings to keep: quest editor ids ARG_MQ01/ARG_MQ03;
+  Nesh-Deeka's ref `ARG_NeshDeekaRef`; MQ03 90 and 91 call ARG_MQ04's SetStage(10) (look it up by editor id; allow
+  for it being absent); MQ101's override starts ARG_MQ01 in place of ARG_Opening; every placement on BM&V's own
+  navmesh (Surface/Snapper helpers); the camp in cell 005911 at the paddy edge. Order: MQ01 (the new game first),
+  then MQ03.
