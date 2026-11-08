@@ -84,7 +84,7 @@
     },
     {
      "aspect": "people",
-     "text": "The Three Waters Argonians, with Clay-Mound families at Badal and Lilmoth-coast families at Oju, plus Archon's boatmen.",
+     "text": "The people are the Three Waters Argonians. Clay-Mound families live at Badal and Lilmoth-coast families at Oju. Archon's boatmen also work the channels.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -135,7 +135,7 @@
     },
     {
      "aspect": "look",
-     "text": "Sheets of brown water between reed banks and hummocks of trees, lines of raft-houses, and herons.",
+     "text": "Sheets of brown water between reed banks and hummocks of trees, lines of raft-houses and herons.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -315,7 +315,7 @@
     },
     {
      "aspect": "people",
-     "text": "Lilmoth-coast Argonians, tenants and bonded labourers on estates, garrison families, and the Three Waters Tribe.",
+     "text": "Lilmoth-coast Argonians, tenants and bonded labourers on estates, garrison families and the Three Waters Tribe.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -479,7 +479,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "The sea east of Lilmoth, drowned ground with spires and a trench.",
+     "text": "The sea east of Lilmoth covers drowned ground with spires and a trench.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {

@@ -10,7 +10,7 @@
    "siting": "coast",
    "danger_band_id": "D0",
    "importance": 5,
-   "summary": "Thorn is the north-east's one large city, a grassland border town on the Padomaic coast beside the road to Tear in Morrowind. It lives on saltrice, tolls and smuggling, and is run by Vicecanons and the families who hold the old saltrice fields. Its guards are paid to look the other way.",
+   "summary": "Thorn is the north-east's one large city, a grassland border town on the Padomaic coast beside the road to Tear in Morrowind. It lives on saltrice, tolls and smuggling and is run by Vicecanons and the families who hold the old saltrice fields. Its guards are paid to look the other way.",
    "lore_page": "Lore:Thorn",
    "statement_tier_id": "CANON_EXPLICIT",
    "aliases": [
@@ -107,7 +107,7 @@
     },
     {
      "aspect": "present",
-     "text": "In 4E 201 Thorn is intact and the most prosperous place in the north-east. With Dres gone the saltrice fields passed to whoever stood in them: freed labourers' descendants and the ex-Archein families who managed them. Who holds title to which field is the city's standing quarrel, settled by Vicecanons when it is settled at all.",
+     "text": "In 4E 201 Thorn is intact and the most prosperous place in the north-east. With Dres gone the saltrice fields passed to whoever stood in them: freed labourers' descendants and the ex-Archein families who managed them. Who holds title to which field is the city's standing quarrel, settled by Vicecanons.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -404,7 +404,7 @@
     },
     {
      "aspect": "people",
-     "text": "Argonian garrison families, mostly old Archein lines with new letterhead, led by a captain who answers to the Archwardens and is on friendly terms with Thorn's Vicecanons. A few Dunmer drivers and merchants wait at the gate.",
+     "text": "Argonian garrison families, mostly old Archein lines under new seals, led by a captain who answers to the Archwardens and is on friendly terms with Thorn's Vicecanons. A few Dunmer drivers and merchants wait at the gate.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1001,7 +1001,7 @@
    "siting": "riverbank",
    "danger_band_id": "D2",
    "importance": 1,
-   "summary": "Guxal is a hamlet of stilt houses on the south shore of the bay, a hunting and sap-gathering station of Root-Folk families. They trade fish and sap to Thorn but keep to themselves.",
+   "summary": "Guxal is a hamlet of stilt houses on the south shore of the bay, a hunting and sap-gathering station of Root-Folk families. They trade fish and sap to Thorn but have no other dealings with the city.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
@@ -1313,7 +1313,7 @@
     },
     {
      "aspect": "history",
-     "text": "The Velothi settled the coast between the First Era and the Second; the Knahaten Flu of 2E 560-603 killed every non-Argonian in the province, and the Velothi went with them.",
+     "text": "The Velothi settled the coast between the First Era and the Second. The Knahaten Flu of 2E 560-603 killed every non-Argonian in the province, the Velothi among them.",
      "tier": "CANON_DERIVED",
      "sources": [
       {
@@ -1404,7 +1404,7 @@
     },
     {
      "aspect": "faith",
-     "text": "Cantemiric Velothi followed Mephala, according to the Chimeri story; some shrine marks may remain, and the Hist hold the ground to be sick.",
+     "text": "Cantemiric Velothi followed Mephala, according to the Chimeri story; some shrine marks may remain. The Hist hold the ground to be sick.",
      "tier": "CANON_DERIVED",
      "sources": [
       {
@@ -1710,7 +1710,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A Thorn ferryman asks you to find his father's boat, last seen tied to the old quay, and a sealed cellar door with Velothi marks.",
+     "text": "A Thorn ferryman wants his father's boat found, last seen tied to the old quay. A sealed cellar door has Velothi marks.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -1923,7 +1923,7 @@
     },
     {
      "aspect": "look",
-     "text": "Square stone houses with reed roofs, terraced vegetable plots, and a riverside quay for stone barges.",
+     "text": "Square stone houses with reed roofs, terraced vegetable plots and a riverside quay for stone barges.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2090,7 +2090,7 @@
     },
     {
      "aspect": "present",
-     "text": "Tsonac is peaceful, dry and proud, and run by elders and a tree-minder. It is the Stone-Sleepers' one city and watches the road to Thorn.",
+     "text": "Tsonac is peaceful, dry and proud and run by elders and a tree-minder. It is the Stone-Sleepers' one city and watches the road to Thorn.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2168,7 +2168,7 @@
     },
     {
      "aspect": "faith",
-     "text": "The Hist at its centre is said to be asleep; the tree-minder reads its dreams by the shape of the sap and the dreams of the town's children, and the town treats the sleeping tree as a living elder, never to be woken.",
+     "text": "The Hist at its centre is held by the townsfolk to be asleep. The tree-minder reads its dreams by the shape of the sap and the dreams of the town's children, and the town treats the sleeping tree as a living elder, never to be woken.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -2582,7 +2582,7 @@
     },
     {
      "aspect": "people",
-     "text": "No residents; a hermit Dunmer herbalist is said to live in a tomb at its edge.",
+     "text": "No residents; travellers report a hermit Dunmer herbalist living in a tomb at its edge.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -2921,7 +2921,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "Ayiin's hunters ask you to retrieve a child's lost egg-charm from a cellar, and a Thorn merchant wants a Velothi ledger.",
+     "text": "Ayiin's hunters want a child's lost egg-charm retrieved from a cellar, and a Thorn merchant wants a Velothi ledger.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -3561,7 +3561,7 @@
     },
     {
      "aspect": "economy",
-     "text": "A larder and nest, with a little hoarded loot from raided travellers.",
+     "text": "It serves as a larder and nest, with a little hoarded loot from raided travellers.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3845,7 +3845,7 @@
     },
     {
      "aspect": "faith",
-     "text": "They keep the Hist of High-Flower, the Sarpa tree, and mark their ground with feathers.",
+     "text": "They keep the Hist of High-Flower, the Sarpa tree and mark their ground with feathers.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4222,7 +4222,7 @@
    "siting": "riverbank",
    "danger_band_id": "D1",
    "importance": 3,
-   "summary": "Noota Nara is a village below Fort Chalkmoth where, in legend, the villagers once heated spear-tips in a dragon's own fire and killed it. Its walls are rebuilt and its grievance, the dragon's lost head, is not forgotten.",
+   "summary": "Noota Nara is a village below Fort Chalkmoth where, in legend, the villagers once heated spear-tips in a dragon's own fire and killed it. Its walls have been rebuilt. The villagers still resent the loss of the dragon's head.",
    "lore_page": "Lore:Noota Nara",
    "statement_tier_id": "CANON_EXPLICIT",
    "aliases": [],
@@ -4340,7 +4340,7 @@
     },
     {
      "aspect": "faith",
-     "text": "The village keeps a Hist tree; a dragon-spear is displayed beside it as a relic.",
+     "text": "A Hist tree grows in the village. A dragon-spear is displayed beside it as a relic.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4453,7 +4453,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A hamlet of the Agaceph, the one canon Middle Argonian breed that is not a camp people. UESP has no page for Hirecan.",
+     "text": "A hamlet of the Agaceph, the canon Middle Argonian breed that is not a camp people. UESP has no page for Hirecan.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4898,7 +4898,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D1: Sarpa raiders to the south-west are the one risk.",
+     "text": "D1: the risk is Sarpa raiders to the south-west.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4975,7 +4975,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "An unlabelled mine, named Xanuc Diggings. UESP has no page for it; it is a Project Tamriel symbol.",
+     "text": "The map shows an unlabelled mine symbol in the wall of Chixathe Mesa, between Oxayo and Fort Chalkmoth. We named it Xanuc Diggings; UESP has no page for it, and the symbol is Project Tamriel's.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -5001,7 +5001,7 @@
     },
     {
      "aspect": "history",
-     "text": "Xanuc Diggings has cut building stone from the wall of Chixathe Mesa since Imperial times, when Oxayo's carters first hauled it out; the Archwardens kept it going afterward. It lies between Oxayo and Fort Chalkmoth.",
+     "text": "Xanuc Diggings has cut building stone from the wall of Chixathe Mesa since Imperial times, when Oxayo's carters first hauled it out; the Archwardens kept it working afterward. It lies between Oxayo and Fort Chalkmoth.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5183,7 +5183,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "The north gallery has broken through into an older tunnel nobody can account for, and the foreman asks you to find a missing hand.",
+     "text": "The north gallery has broken through into an older tunnel that the crew cannot explain. The foreman wants a missing hand found.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -5234,7 +5234,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "An unlabelled mine, named Chalkmoth Pit. UESP has no page for it; it is a Project Tamriel symbol.",
+     "text": "The map shows an unlabelled mine symbol on the mesa shoulder between Fort Chalkmoth and Noota Nara. We named it Chalkmoth Pit for the fort that guards it; UESP has no page for it, and the symbol is Project Tamriel's.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -5493,7 +5493,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "An unlabelled mine, named Kalaxo Cut. UESP has no page for it; it is a Project Tamriel symbol.",
+     "text": "The map shows an unlabelled mine symbol on the mesa's east flank above Ayiin. We named it Kalaxo Cut; UESP has no page for it, and the symbol is Project Tamriel's.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -5519,7 +5519,7 @@
     },
     {
      "aspect": "history",
-     "text": "Kalaxo Cut has taken stone from the east flank of the mesa above Ayiin since Imperial times, when the Thorn builders first quarried it; the tribes of Ayiin kept it going. Its blocks go west to Thorn.",
+     "text": "Kalaxo Cut has taken stone from the east flank of the mesa above Ayiin since Imperial times, when the Thorn builders first quarried it; the tribes of Ayiin kept it working. Its blocks go west to Thorn.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5803,7 +5803,7 @@
     },
     {
      "aspect": "present",
-     "text": "Five or so people live here, hunting and gathering, and trading to Ayiin. A lookout post faces Vorannuhl.",
+     "text": "Five or so people live here, hunting and gathering and trading to Ayiin. A lookout post faces Vorannuhl.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5907,7 +5907,7 @@
     },
     {
      "aspect": "look",
-     "text": "Stilt houses under a few trees on the mesa's south edge, drying racks, and a lookout in a trunk that faces the Velothi ruins.",
+     "text": "Stilt houses under a few trees on the mesa's south edge, drying racks and a lookout in a trunk that faces the Velothi ruins.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5995,7 +5995,7 @@
    "siting": "inland",
    "danger_band_id": "D2",
    "importance": 1,
-   "summary": "Nuxhal is a small outpost of Root-Folk hunters on the mesa. A few families hunt and watch from the rise.",
+   "summary": "Nuxhal is a Root-Folk hunters' post on the western mesa, where two families hunt and look out toward the smoke of Tenmal Pits. Its hides and reeds go to Tenmal and the pit crews.",
    "lore_page": null,
    "statement_tier_id": "AGENT_INVENTED",
    "aliases": [],
@@ -6009,7 +6009,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "An unlabelled outpost, given the name Nuxhal. UESP has no page for it.",
+     "text": "The map shows no name for this outpost; Nuxhal is ours, and UESP has no page for it. Its stilt houses stand under a stand of trees, with a lookout built into a trunk.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -6267,7 +6267,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "An unlabelled outpost, given the name Reeka-Veesa. UESP has no page for it.",
+     "text": "The map shows no name for this outpost; Reeka-Veesa is ours, and UESP has no page for it. Its stilt houses stand under a few trees on the mesa's west side, with drying racks of reed and feather.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -6319,7 +6319,7 @@
     },
     {
      "aspect": "present",
-     "text": "Five or so people live here, hunting and gathering, and answer to Jal-Veesa's wardens.",
+     "text": "Five or so people live here, hunting and gathering and answer to Jal-Veesa's wardens.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6449,7 +6449,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Mesa predators, and a dark cave nearby that the wardens keep their children away from. D2.",
+     "text": "Mesa predators, and a dark cave nearby that the wardens forbid their children to enter. D2.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6475,7 +6475,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A hunter has seen strange tracks near the Sarpa camp, and a trade-pouch for Ranvos Landing was left at the gate.",
+     "text": "A child of the post has slipped into the dark cave nearby that the wardens forbid. A bundle of feathers meant for Ranvos Landing was left at the gate unclaimed.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {

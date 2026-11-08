@@ -10,7 +10,7 @@
    "siting": "riverbank",
    "danger_band_id": "D1",
    "importance": 5,
-   "summary": "Helstrom is the interior capital of Black Marsh, the one great city no invader has ever taken, on the river fork at the heart of the Hist forest. In 4E 201 a standing assembly of tribal elders and tree-minders runs it, and it hosts the great Root Talk each Hist-Tsoko. Outsiders may enter on sufferance; the city's real danger is its own guard and alleys.",
+   "summary": "Helstrom is the interior capital of Black Marsh, a great city that no invader has taken, on the river fork at the heart of the Hist forest. In 4E 201 a standing assembly of tribal elders and tree-minders runs it. It hosts the great Root Talk each Hist-Tsoko. Outsiders may enter on sufferance. The city's real danger is its own guard and alleys.",
    "lore_page": "Lore:Helstrom",
    "statement_tier_id": "CANON_EXPLICIT",
    "aliases": [
@@ -46,7 +46,7 @@
     },
     {
      "aspect": "history",
-     "text": "Helstrom was already active in the late First Era, during the Blackwater War. After the defeat at the Battle of Argonia in 1E 2811 the native armies retreated here; the Empire refused to follow and never besieged it, and in 1E 2836 the Argonians simply stopped fighting. In the Third Era it became an incorporated city-state, and settlements were built around it by the fourth century; the Umbriel storm of 4E 48 passed it by.",
+     "text": "Helstrom was already active in the late First Era, during the Blackwater War. After the defeat at the Battle of Argonia in 1E 2811 the native armies retreated here. The Empire refused to follow. It never besieged the city. In 1E 2836 the Argonians simply stopped fighting. In the Third Era it became an incorporated city-state. Settlements were built around it by the fourth century. The Umbriel storm of 4E 48 passed it by.",
      "tier": "CANON_EXPLICIT",
      "sources": [
       {
@@ -66,7 +66,7 @@
     },
     {
      "aspect": "present",
-     "text": "In 4E 201 Helstrom is intact and the least Imperialised city in the province. The state's formal seat is lodged here and largely ignored; the assembly of naheesh and tree-minders decides by consensus, and a half-swallowed ring of Third Era villages lies on its approaches.",
+     "text": "In 4E 201 Helstrom is intact and the least Imperialised city in the province. The state's formal seat is lodged here and largely ignored. The assembly of naheesh and tree-minders decides by consensus. A half-swallowed ring of Third Era villages lies on its approaches.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -161,7 +161,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "UESP calls the city's alleys both wonderful and dangerous and its guard reportedly dangerous. The danger is social: a levy that is not accountable to strangers, assembly politics, and a sour-spring cycle nobody will name. Past the city every approach is deep swamp.",
+     "text": "UESP calls the city's alleys both wonderful and dangerous and its guard reportedly dangerous. The danger is social: a levy that is not accountable to strangers, assembly politics and a sour-spring cycle that the assembly will not discuss. Past the city every approach is deep swamp.",
      "tier": "CANON_EXPLICIT",
      "sources": [
       {
@@ -227,7 +227,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Korydon is a market town of about two dozen households on a ground-ring ringed by water, the chief of the Kothringi-named towns of the Ultherus country. The name is a Kothringi one, kept by the Argonians who moved in; no source describes the place itself.",
+     "text": "Korydon is a market town of about two dozen households on a ring of dry ground surrounded by water, the chief of the Kothringi-named towns of the Ultherus country. The name is a Kothringi one, kept by the Argonians who moved in; no source describes the place itself.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -251,7 +251,7 @@
     },
     {
      "aspect": "history",
-     "text": "A Kothringi town until the Knahaten Flu of 2E 560 emptied it. Argonians, immune to the flu, moved into the empty houses and kept the old name, as a name belonged to the place. Over the centuries they added Kothringi habits the Hist did not forbid, and the 4E 48 nativists called them half-foreign.",
+     "text": "A Kothringi town until the Knahaten Flu of 2E 560 emptied it. Argonians, immune to the flu, moved into the empty houses and kept the old name because it belonged to the place. Over the centuries they added Kothringi habits that the Hist did not forbid. The 4E 48 nativists called them half-foreign.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -421,7 +421,7 @@
    "siting": "lakeshore",
    "danger_band_id": "D0",
    "importance": 4,
-   "summary": "Truowa is a small trading city on the south-east shore of Lake Ulaish, where the lake's waters meet the Nushara channels toward Lilmoth. A merchant council runs it, tied to Lilmoth's commerce, and it is the interior's lake harbour. It is richer than the villages around it and wary of the Archwardens.",
+   "summary": "Truowa is a small trading city on the south-east shore of Lake Ulaish, where the lake's waters meet the Nushara channels toward Lilmoth. A merchant council tied to Lilmoth's commerce runs it. It is the interior's lake harbour, richer than the villages around it and wary of the Archwardens.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
@@ -506,7 +506,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Rice, fish, sap, feathers and clay come down the lake; cloth, tin, tools and salt go back up. The harbour master charges a mooring toll and the council holds the lake's one deep-water quay.",
+     "text": "Rice, fish, sap, feathers and clay come down the lake; cloth, tin, tools and salt go back up. The harbour master charges a mooring toll and the council holds the deep-water quay on the lake.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -525,7 +525,7 @@
     },
     {
      "aspect": "faith",
-     "text": "The Hist, in a small city tree; Sithis privately; and a shrine to Zenithar kept by the foreign factors.",
+     "text": "The Hist grows in a small city tree. Sithis is kept privately. The foreign factors keep a shrine to Zenithar.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -740,7 +740,7 @@
     },
     {
      "aspect": "look",
-     "text": "Low reed houses on a raised red-clay mound, drying racks of pots and dyed cloth, a kiln-smoke haze, and canoes drawn up on the lake shore.",
+     "text": "Low reed houses on a raised red-clay mound, drying racks of pots and dyed cloth, a kiln-smoke haze and canoes drawn up on the lake shore.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1062,7 +1062,7 @@
     },
     {
      "aspect": "present",
-     "text": "Five people keep eel traps, a lantern for night boats, and a causeway of stones across a shoal that surfaces at low water.",
+     "text": "Five people keep eel traps, a lantern for night boats and a causeway of stones across a shoal that surfaces at low water.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1367,7 +1367,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "The garrison's price dispute is nearing a strike; a stranger paid for a night's boat and left a sealed pouch behind; the south bank's smugglers want a dry store.",
+     "text": "The garrison's price dispute is close to a refusal by the farmers to sell; a stranger paid for a night's boat and left a sealed pouch behind; the south bank's smugglers want a dry store.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -1641,7 +1641,7 @@
     },
     {
      "aspect": "history",
-     "text": "A Kothringi-named settlement, resettled by Argonians after 2E 560; its chime-post is the oldest working one in the Ultherus country.",
+     "text": "The name is Kothringi in style, and Argonians resettled the place after 2E 560. Its chime-post is the oldest working one in the Ultherus country.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1713,7 +1713,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Dragon's-tongue and other swamp herbs, fish, and a small guide fee for boats going south.",
+     "text": "Dragon's-tongue and other swamp herbs, fish and a small guide fee for boats going south.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1809,7 +1809,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "The chime-tender has lost count of the strikes; a boat came up from Blackrose with a corpse aboard; a rare herb grows only at one hummock.",
+     "text": "The chime-tender has lost count of the strikes; a boat came up from Blackrose with a corpse aboard; a rare herb grows at one hummock.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -1855,7 +1855,7 @@
    "siting": "swamp",
    "danger_band_id": "D2",
    "importance": 1,
-   "summary": "Nemeon is a hamlet on a small waterway between the lake and Korydon, a staging stop for boats and herb-gatherers. It is quiet, poor and forgotten, and keeps an old Kothringi name.",
+   "summary": "Nemeon is a hamlet on a small waterway between the lake and Korydon, a staging stop for boats and herb-gatherers. It is quiet and poor. It keeps an old Kothringi name.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
@@ -1940,7 +1940,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Staging fees, herbs, fish and mending; mostly it lives on the traffic that passes.",
+     "text": "Staging fees, herbs, fish and mending. Most of the income comes from passing traffic.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2436,14 +2436,14 @@
    "siting": "riverbank",
    "danger_band_id": "D3",
    "importance": 1,
-   "summary": "Tseli-Oon is a small outpost on a bank of the river arm that runs north-east out of Helstrom, kept for sap-gathering. Boatmen going up the arm toward the forest tie up here for a night, and few outsiders ever do.",
+   "summary": "Tseli-Oon is a small outpost on a bank of the river arm that runs north-east out of Helstrom, kept for sap-gathering. Boatmen going up the arm toward the forest tie up here for a night. Few outsiders do.",
    "lore_page": null,
    "statement_tier_id": "AGENT_INVENTED",
    "aliases": [],
    "notes": [
     {
      "aspect": "overview",
-     "text": "Tseli-Oon is a small outpost on a bank of the river arm that runs north-east out of Helstrom. It is a station of the Root-Folk of Helstrom for sap-gathering. The map gives it no name and UESP has none; the name is ours.",
+     "text": "The map gives this outpost no name and UESP has none; the name is ours. Five Saxhleel of the Root-Folk of Helstrom keep it, tapping sap from the trees along the bank and answering to a tree-minder in Helstrom.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -2485,7 +2485,7 @@
     },
     {
      "aspect": "present",
-     "text": "Five Saxhleel keep the station through the year, tapping sap from the trees along the bank. They report to a tree-minder in Helstrom by boat, and nothing about the station is written down.",
+     "text": "Five Saxhleel keep the station through the year, tapping sap from the trees along the bank. They report to a tree-minder in Helstrom by boat. Nothing about the station is written down.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2640,7 +2640,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Gaxu-Reet is a small outpost where the river arms south-east of Helstrom join and spread into the lake delta. It is a station of the Root-Folk of Helstrom for egg-tending and river watch. The map gives it no name and UESP has none; the name is ours.",
+     "text": "The map gives this outpost no name and UESP has none; the name is ours. Five Saxhleel of the Root-Folk of Helstrom hold its stilt platforms over the junction and tend eggs in clay nest-pits.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -2664,7 +2664,7 @@
     },
     {
      "aspect": "history",
-     "text": "The junction's old nest-pits are read as sites the Root-Folk kept from before the Empire; the station is the watch they keep on them.",
+     "text": "The junction's old nest-pits are read as sites that the Root-Folk kept from before the Empire; the station is the watch they keep on them.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2830,14 +2830,14 @@
    "siting": "swamp",
    "danger_band_id": "D3",
    "importance": 1,
-   "summary": "Hokal-Ush is a small outpost on a hummock beside a river bend east of Helstrom, kept for hunting and fellrunner-feather trading. It trades feathers to the river-boats that come east from Helstrom, and keeps to itself otherwise.",
+   "summary": "Hokal-Ush is a small outpost on a hummock beside a river bend east of Helstrom, kept for hunting and fellrunner-feather trading. It trades feathers to the river-boats that come east from Helstrom and has little other dealing with outsiders.",
    "lore_page": null,
    "statement_tier_id": "AGENT_INVENTED",
    "aliases": [],
    "notes": [
     {
      "aspect": "overview",
-     "text": "Hokal-Ush is a small outpost on a hummock beside a river bend east of Helstrom. It is a station of the Root-Folk of Helstrom for hunting and fellrunner-feather trading. The map gives it no name and UESP has none; the name is ours.",
+     "text": "The map gives this outpost no name and UESP has none; the name is ours. Four Saxhleel of the Root-Folk of Helstrom keep three stilt huts on a hummock hung with drying skins and feather bundles.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -2951,7 +2951,7 @@
     },
     {
      "aspect": "look",
-     "text": "A hummock hung with drying skins and feather bundles, three stilt huts, and a narrow canoe lane under overhanging roots.",
+     "text": "A hummock hung with drying skins and feather bundles, three stilt huts and a narrow canoe lane under overhanging roots.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2969,7 +2969,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Murkwood's medusas lie to the west, and the station never goes beyond the third bend after dusk; fellrunners themselves bite.",
+     "text": "Murkwood's medusas lie to the west. The keepers never go beyond the third bend after dusk. Fellrunners also bite.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3027,14 +3027,14 @@
    "siting": "swamp",
    "danger_band_id": "D3",
    "importance": 1,
-   "summary": "Ixu-Maan is a small outpost on a small rise south of Helstrom, between the river arms, kept for egg-tending and a night watch on the city's south approach. The lamp on its rise is the last light on the city's south approach, and travellers take it as a sign to slow.",
+   "summary": "Ixu-Maan is a small outpost on a small rise south of Helstrom, between the river arms, kept for egg-tending and a night watch. The lamp on its rise is the last light on the city's south approach. Travellers take it as a sign to slow.",
    "lore_page": null,
    "statement_tier_id": "AGENT_INVENTED",
    "aliases": [],
    "notes": [
     {
      "aspect": "overview",
-     "text": "Ixu-Maan is a small outpost on a small rise south of Helstrom, between the river arms. It is a station of the Root-Folk of Helstrom for egg-tending and a night watch on the city's south approach. The map gives it no name and UESP has none; the name is ours.",
+     "text": "The map gives this outpost no name and UESP has none; the name is ours. Five Saxhleel of the Root-Folk of Helstrom keep stilt huts round a clay nest-pit, with a signal pole on the crest.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -3058,7 +3058,7 @@
     },
     {
      "aspect": "history",
-     "text": "A watch kept since the Third Era interior settlements on Helstrom's approaches, now a Root-Folk station.",
+     "text": "A watch has been kept here since the Third Era settlements on Helstrom's approaches. It is now a Root-Folk station.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3224,14 +3224,14 @@
    "siting": "swamp",
    "danger_band_id": "D3",
    "importance": 1,
-   "summary": "Vesh-Aneel is a small outpost on an isolated hummock in the marsh south-west of Helstrom, kept for a hunters' camp and a waypoint on the long route to Nacydes. Hunters crossing to Nacydes rest here, and it is the only dry ground for miles around.",
+   "summary": "Vesh-Aneel is a small outpost on an isolated hummock in the marsh south-west of Helstrom, kept for a hunters' camp and a waypoint on the long route to Nacydes. Hunters crossing to Nacydes rest here. It is the only dry ground for miles around.",
    "lore_page": null,
    "statement_tier_id": "AGENT_INVENTED",
    "aliases": [],
    "notes": [
     {
      "aspect": "overview",
-     "text": "Vesh-Aneel is a small outpost on an isolated hummock in the marsh south-west of Helstrom. It is a station of the Root-Folk of Helstrom for a hunters' camp and a waypoint on the long route to Nacydes. The map gives it no name and UESP has none; the name is ours.",
+     "text": "The map gives this outpost no name and UESP has none; the name is ours. Four Saxhleel of the Root-Folk of Helstrom hold two huts, a firepit and a signal post, with open reed on every side.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -3428,7 +3428,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Uzu-Tegh is a small outpost on a low islet in the lake's northern shallows. It is a station of the Root-Folk of Helstrom for eel-trapping and a lake watch. The map gives it no name and UESP has none; the name is ours.",
+     "text": "The map gives this outpost no name and UESP has none; the name is ours. Four Saxhleel of the Root-Folk of Helstrom live in two reed huts, with eel pots on poles round the islet.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -3578,7 +3578,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A canoe was found drifting with its paddles shipped; the lantern was lit by someone who left no boat.",
+     "text": "A canoe was found drifting with its paddles shipped. The lantern was lit although no boat had come.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -3625,7 +3625,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Neexa-Lul is a small outpost on an islet in the lake's eastern reaches, between Marzai and Truowa. It is a station of the Root-Folk of Helstrom for a lake watch and egg-tending. The map gives it no name and UESP has none; the name is ours.",
+     "text": "The map gives this outpost no name and UESP has none; the name is ours. Four Saxhleel of the Root-Folk of Helstrom hold a reed-built platform with a lamp tower and racks of dried fish.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -3775,7 +3775,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A cask left on the platform is marked for Truowa and nobody claims it; the egg-tender has found new eggs in an old nest.",
+     "text": "A cask left on the platform is marked for Truowa. It has not been claimed. The egg-tender has found new eggs in an old nest.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -3815,14 +3815,14 @@
    "siting": "swamp",
    "danger_band_id": "D3",
    "importance": 1,
-   "summary": "Orji-Hael is a small outpost south of Korydon on firm ground by the great southern water, kept for a waystation for boats going south toward Blackrose. Boats going south toward Blackrose pause at its landing before they leave the sheltered water.",
+   "summary": "Orji-Hael is a small outpost south of Korydon on firm ground by the great southern water. It serves as a waystation. Boats going south toward Blackrose pause at its landing before they leave the sheltered water.",
    "lore_page": null,
    "statement_tier_id": "AGENT_INVENTED",
    "aliases": [],
    "notes": [
     {
      "aspect": "overview",
-     "text": "Orji-Hael is a small outpost south of Korydon on firm ground by the great southern water. It is a station of the Root-Folk of Helstrom for a waystation for boats going south toward Blackrose. The map gives it no name and UESP has none; the name is ours.",
+     "text": "The map gives this outpost no name and UESP has none; the name is ours. Five Saxhleel of the Root-Folk of Helstrom keep stilt huts round a boat-yard, with a bell at the landing.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -3846,7 +3846,7 @@
     },
     {
      "aspect": "history",
-     "text": "A waystation of the Root-Folk, the one forest-green place south of Korydon; it keeps the Helstrom assembly's ear on the Blackrose waters.",
+     "text": "A waystation of the Root-Folk, shown in forest green on the map south of Korydon. It lets the Helstrom assembly hear of the Blackrose waters.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4019,7 +4019,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Tzel-Haar is a small outpost on the Panther River's west bank, north-west of Helstrom. It is a station of the Hutan-Tzel for a river watch and trade. The map gives it no name and UESP has none; the name is ours.",
+     "text": "The map gives this outpost no name and UESP has none; the name is ours. Six Hutan-Tzel keep a fenced bank with a reed palisade, rune-carved totems and a ferry.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -4061,7 +4061,7 @@
     },
     {
      "aspect": "present",
-     "text": "Six Hutan-Tzel keep the bank, watching the river and taking a small toll from boats. They answer to the naheesh at their own tree, not to Helstrom, and send a share of every toll.",
+     "text": "Six Hutan-Tzel keep the bank, watching the river and taking a small toll from boats. They answer to the naheesh at their own tree, not to Helstrom and send a share of every toll.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4216,7 +4216,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Hutan-Ketu is a small outpost on the river west of Helstrom, at the Murkwood edge. It is a station of the Hutan-Tzel for a go-between post between Helstrom and the west. The map gives it no name and UESP has none; the name is ours.",
+     "text": "The map gives this outpost no name and UESP has none; the name is ours. Six Hutan-Tzel keep a reed palisade on the bank, totem posts and a long canoe shed.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -4413,7 +4413,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Dry-Fang Camp is a Naga camp on dry ground north of Helstrom. The map labels it a Naga camp; UESP has no page for it, and the name is ours.",
+     "text": "The map labels this place a Naga camp; UESP has no page for it, and the name is ours. About nine tribeless Naga live in hide-covered lean-tos on a dry mound, led by a scarred old female.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -4593,7 +4593,7 @@
     },
     {
      "aspect": "look",
-     "text": "Hide-covered lean-tos on a dry mound, bones strung on lines, a fire pit and a slit-trench latrine; a hiss in the dark.",
+     "text": "Hide-covered lean-tos on a dry mound, bones strung on lines, a fire pit and a slit-trench latrine.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4704,7 +4704,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Hiss-Bank Camp is a Naga camp on the western river bank. The map labels it a Naga camp; UESP has no page for it, and the name is ours.",
+     "text": "The map labels this place a Naga camp; UESP has no page for it, and the name is ours. About eight Naga live in lean-tos under a root arch on a trampled bank, with a seer who reads bones.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -4826,7 +4826,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Raids, hunting and a lucrative extortion of the ferry at Tzel-Haar.",
+     "text": "Raids, hunting and extortion of the ferry at Tzel-Haar.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4995,7 +4995,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Salt-Tooth Camp is a Naga camp in the marsh south-west of Helstrom. The map labels it a Naga camp; UESP has no page for it, and the name is ours.",
+     "text": "The map labels this place a Naga camp; UESP has no page for it, and the name is ours. Ten Naga live in hide tents on a salt-crusted mound, led by a one-eyed male with a feather armband.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -5059,7 +5059,7 @@
     },
     {
      "aspect": "present",
-     "text": "Ten Naga hunt the marsh toward Nacydes and Murkwood's edge, and sell Murkwood feathers they should not have.",
+     "text": "Ten Naga hunt the marsh toward Nacydes and Murkwood's edge, and sell Murkwood feathers that they should not have.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5460,7 +5460,7 @@
     },
     {
      "aspect": "look",
-     "text": "Domed mud huts at the edge of a mere, croaking at dusk, hung with strings of knuckle-bones.",
+     "text": "Domed mud huts at the edge of a mere, hung with strings of knuckle-bones. The Paatru croak at dusk.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5568,7 +5568,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Tumnatu Reed Camp is a Tumnatu camp on the lake's north shore near Marzai. The map names the tribe; UESP has no page for the Tumnatu or the camp, so the tribe's ways are our extrapolation.",
+     "text": "Tumnatu Reed Camp lies near Marzai, in reed shelters on a low bank of the lake. The map names the tribe; UESP has no page for the Tumnatu or the camp, so the tribe's ways are our extrapolation.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -5934,7 +5934,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Aunike Crown is the high point of the Aunike Ridge, above Tydeos, from which the marsh can be seen for hours. The map marks it only as a peak; UESP has no page for it, and the name is ours.",
+     "text": "The map marks Aunike Crown only as a peak; UESP has no page for it, and the name is ours. Tydeos' watchfire-keeper climbs its bare rock summit each dusk to tend a fire-basket.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -5991,7 +5991,7 @@
     },
     {
      "aspect": "people",
-     "text": "No one lives here; hunters pass.",
+     "text": "The peak has no residents; hunters pass.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6117,7 +6117,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Nacydes Watch is a ridge peak on the west of Aunike Ridge, above Nacydes, overlooking Paatru and Naga ground. The map marks it only as a peak; UESP has no page for it, and the name is ours.",
+     "text": "The map marks Nacydes Watch only as a peak; UESP has no page for it, and the name is ours. A hut and a small chime stand on its rocky summit, where Nacydes posts a sentry when raiders move.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -6174,7 +6174,7 @@
     },
     {
      "aspect": "people",
-     "text": "No one lives here; a sentry sits in the hut when needed.",
+     "text": "The peak has no residents; a sentry sits in the hut when needed.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {

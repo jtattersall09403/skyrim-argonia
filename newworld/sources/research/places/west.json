@@ -10,7 +10,7 @@
    "siting": "coast",
    "danger_band_id": "D0",
    "importance": 5,
-   "summary": "Gideon is the western frontier city of Black Marsh, built on the one dry road through a flooded hillscape and on the Ayleid ruins of Twyllbek. In 4E 201 it keeps a working courthouse, records and a civic council, and openly denies the legitimacy of the Archwardens' successor state.",
+   "summary": "Gideon is the western frontier city of Black Marsh, built on the dry road through a flooded hillscape and on the Ayleid ruins of Twyllbek. In 4E 201 it keeps a working courthouse, records and a civic council. It openly denies the legitimacy of the Archwardens' successor state.",
    "lore_page": "Lore:Gideon",
    "statement_tier_id": "CANON_DERIVED",
    "aliases": [
@@ -64,7 +64,7 @@
     },
     {
      "aspect": "present",
-     "text": "In 4E 201 the council still sits in the Governor's Mansion and the courthouse still hears cases, because Gideon is the one place with a paper tradition to keep. The town denies the successor state's claim over it and trades with the Archwardens only for what it must, while the Blackwood Road to Leyawiin carries traffic whenever the monsoon allows.",
+     "text": "In 4E 201 the council still sits in the Governor's Mansion and the courthouse still hears cases, because Gideon has a long tradition of keeping paper records. The town denies the successor state's claim over it and trades with the Archwardens only for what it must. The Blackwood Road to Leyawiin carries traffic except in the worst of the monsoon.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -81,7 +81,7 @@
     },
     {
      "aspect": "people",
-     "text": "Majority Lukiul Argonians who speak Cyrodiilic, do business quietly and lean away from Argonian philosophy, beside Nibenese-descended families two centuries settled. Archein families survive as landholders and clerks. About 90 people live in the walls; Khajiit and Bosmer traders pass through.",
+     "text": "Majority Lukiul Argonians who speak Cyrodiilic, trade with outsiders and hold apart from Argonian philosophy, beside Nibenese-descended families two centuries settled. Archein families survive as landholders and clerks. About 90 people live in the walls; Khajiit and Bosmer traders pass through.",
      "tier": "CANON_EXPLICIT",
      "sources": [
       {
@@ -99,7 +99,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Hunting produce, herbs, red-clay pottery from the Onkobra delta, and the Leyawiin trade; the cooks serve outsiders the swamp food they can stomach. The rootworm's winter terminus brings Middle Argonian goods, and salt and iron go out to the river stations of the Naka-Desh.",
+     "text": "Hunting produce, herbs, red-clay pottery from the Onkobra delta, and the Leyawiin trade; the cooks serve outsiders swamp food that they can stomach. Rootworm traffic ends at Gideon in winter and brings Middle Argonian goods, and salt and iron go out to the river stations of the Naka-Desh.",
      "tier": "CANON_DERIVED",
      "sources": [
       {
@@ -121,7 +121,7 @@
     },
     {
      "aspect": "faith",
-     "text": "Dibella is worshipped openly in the old Dorcia Martius manor, a devotion the Nibenese took from the Kothringi substrate; Sithis is honoured quietly by the Argonians. The Hist garden holds a planted cutting whose ownership is disputed.",
+     "text": "Dibella is worshipped openly in the old Dorcia Martius manor, a devotion the Nibenese took from the Kothringi substrate; Sithis is honoured in private by the Argonians. The Hist garden holds a planted cutting whose ownership is disputed.",
      "tier": "CANON_DERIVED",
      "sources": [
       {
@@ -252,7 +252,7 @@
     },
     {
      "aspect": "history",
-     "text": "Calvus Vanin was the first lord; Empress Tavia was held here from 1E 2899. The castle fell to ruin and canon calls it haunted by the modern era. The hamlet is the name that outlived the keep.",
+     "text": "Calvus Vanin was the first lord; Empress Tavia was held here from 1E 2899. The castle fell to ruin. By the modern era it is described as haunted. The name now belongs to the hamlet.",
      "tier": "CANON_EXPLICIT",
      "sources": [
       {
@@ -312,7 +312,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Guiding, scavenged stone and iron from the castle walls, eels and herbs sold at Gideon's gate. The ruin once housed a lord and a prison; now it houses nothing worth owning, though everyone keeps looking.",
+     "text": "Guiding, scavenged stone and iron from the castle walls, eels and herbs sold at Gideon's gate. The ruin once housed a lord and a prison. It now holds nothing of value.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -354,7 +354,7 @@
     },
     {
      "aspect": "look",
-     "text": "Grey, root-split castle walls on a low mound, a dozen huts below on stilts, a plank causeway to Gideon's gate and lamps burning all night against what the villagers will not name.",
+     "text": "Grey, root-split castle walls on a low mound, a dozen huts below on stilts, a plank causeway to Gideon's gate and lamps burning all night.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -439,7 +439,7 @@
    "siting": "swamp",
    "danger_band_id": "D1",
    "importance": 2,
-   "summary": "Hixinoag is a village that is canon for being on the northern caravan road and for drifting: its rafts and stilt houses shift with the water. It is Gideon's northern waystation and the first stop for caravans from the lake country.",
+   "summary": "Hixinoag is a village on the northern caravan road, known for drifting: its rafts and stilt houses shift with the water. It is Gideon's northern waystation and the first stop for caravans from the lake country.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
@@ -464,7 +464,7 @@
     },
     {
      "aspect": "history",
-     "text": "The Argonian Account mentions Hixinoag on the northern road in the Imperial era; the village outlasted the Empire because it never stood still long enough to be taxed. After 4E 48 it took in survivors from the plantation country.",
+     "text": "The Argonian Account mentions Hixinoag on the northern road in the Imperial era. The village outlasted the Empire, since its rafts moved and collectors seldom found it. After 4E 48 it took in survivors from the plantation country.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -485,7 +485,7 @@
     },
     {
      "aspect": "present",
-     "text": "About ten people keep a ferry and a rest-house for caravans. They bargain with the Archein landholders for reed rights and with Gideon for salt, and they ignore the Archwardens' collectors, who cannot find the village twice in the same place.",
+     "text": "About ten people keep a ferry and a rest-house for caravans. They bargain with the Archein landholders for reed rights and with Gideon for salt. They ignore the Archwardens' collectors, who seldom find the village in the same place twice.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -682,7 +682,7 @@
     },
     {
      "aspect": "history",
-     "text": "Olvani is a Project Tamriel name with no canon history; it grew from a customs landing of the Imperial-era Gideon trade into a village that survived because the sea still needs fish.",
+     "text": "Olvani is a Project Tamriel name with no canon history. It grew from a customs landing of the Imperial-era Gideon trade into a village that survived on fishing.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -703,7 +703,7 @@
     },
     {
      "aspect": "present",
-     "text": "About twelve people haul nets on the mudflats and ferry travellers to Aphon Isle. They report smugglers to Gideon when it pays and keep quiet when it does not.",
+     "text": "About twelve people haul nets on the mudflats and ferry travellers to Aphon Isle. They report smugglers to Gideon when there is a reward and say nothing when there is not.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1227,7 +1227,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Red-clay pottery, saltrice, and a toll-free rest-house for Soulrest caravans.",
+     "text": "Red-clay pottery, saltrice and a toll-free rest-house for Soulrest caravans.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1311,7 +1311,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A missing kiln-master, a pot with a hidden message, or a clay seam that shouldn't be there.",
+     "text": "A missing kiln-master, a pot with a hidden message, or a clay seam that should not be there.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1574,7 +1574,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A ruin of the Kothringi, the silver-skinned humans of the Blackwood who died of the Knahaten Flu in 2E 560. a Dibella shrine of leaf-carved stone half sunk in mangrove roots.",
+     "text": "A ruin of the Kothringi, the silver-skinned humans of the Blackwood who died of the Knahaten Flu in 2E 560. It is a Dibella shrine of leaf-carved stone half sunk in mangrove roots.",
      "tier": "CANON_DERIVED",
      "sources": [
       {
@@ -1642,7 +1642,7 @@
     },
     {
      "aspect": "people",
-     "text": "No one lives here. A Nibenese shrine-seeker from Gideon may leave an offering at the altar slab, and the diggers keep a camp on the one dry hummock beside it.",
+     "text": "The shrine is uninhabited. A Nibenese shrine-seeker from Gideon may leave an offering at the altar slab. The diggers keep a camp on the dry hummock beside it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1734,7 +1734,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Mangrove crocodiles and mudcrabs lie in the channel at the landing, and the footing around the altar gives way under a heavy boot. Ghost lights at dusk are said to draw the careless into the pools.",
+     "text": "Mangrove crocodiles and mudcrabs lie in the channel at the landing, and the footing around the altar gives way under a heavy boot. Gideon's diggers say that ghost lights at dusk draw the careless into the pools.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1805,7 +1805,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A ruin of the Kothringi, the silver-skinned humans of the Blackwood who died of the Knahaten Flu in 2E 560. a hall of Kothringi knights who served in Gideon's Imperial garrison.",
+     "text": "A ruin of the Kothringi, the silver-skinned humans of the Blackwood who died of the Knahaten Flu in 2E 560. It is a hall of Kothringi knights who served in Gideon's Imperial garrison.",
      "tier": "CANON_DERIVED",
      "sources": [
       {
@@ -1873,7 +1873,7 @@
     },
     {
      "aspect": "people",
-     "text": "No one lives here. Off-duty guards from Gideon sometimes camp in its doorway and tell the hall's story to newcomers, and treasure-hunters come for the knights' tombs.",
+     "text": "The hall is uninhabited. Off-duty guards from Gideon sometimes camp in its doorway and tell the hall's story to newcomers. Treasure-hunters come for the knights' tombs.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2036,7 +2036,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A ruin of the Kothringi, the silver-skinned humans of the Blackwood who died of the Knahaten Flu in 2E 560. a terrace of burial stones with a ring of chime-posts.",
+     "text": "A ruin of the Kothringi, the silver-skinned humans of the Blackwood who died of the Knahaten Flu in 2E 560. It is a terrace of burial stones with a ring of chime-posts.",
      "tier": "CANON_DERIVED",
      "sources": [
       {
@@ -2081,7 +2081,7 @@
     },
     {
      "aspect": "present",
-     "text": "No one holds it. The Naka-Desh treat it as a place to be visited, not lived in, and paddle up from the channels to renew their chimes. Diggers who rob the terraces are driven off if the river-folk catch them.",
+     "text": "No one holds it. The Naka-Desh treat it as a place to be visited, not lived in and paddle up from the channels to renew their chimes. Diggers who rob the terraces are driven off if the river-folk catch them.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2104,7 +2104,7 @@
     },
     {
      "aspect": "people",
-     "text": "Nobody lives here. Naka-Desh come in pairs at the turn of the year to tend the chime-posts, and now and then a grave-robber from Gideon is found in the reeds.",
+     "text": "The terrace is uninhabited. Naka-Desh come in pairs at the turn of the year to tend the chime-posts. Now and then a grave-robber from Gideon is found in the reeds.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2127,7 +2127,7 @@
     },
     {
      "aspect": "economy",
-     "text": "The terrace was the Kothringi's burial ground, so it never traded. Now it draws grave-robbers after the burial goods, and the Naka-Desh keep it as a place of memory worth more than any grave-gold.",
+     "text": "The terrace was the Kothringi's burial ground, so it never traded. Now it draws grave-robbers after the burial goods. The Naka-Desh keep it as a place of memory.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2267,7 +2267,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A ruin of the Kothringi, the silver-skinned humans of the Blackwood who died of the Knahaten Flu in 2E 560. a river quay and a boat-house for shallow-draft Kothringi sail-and-paddle boats.",
+     "text": "A ruin of the Kothringi, the silver-skinned humans of the Blackwood who died of the Knahaten Flu in 2E 560. It is a river quay and a boat-house for shallow-draft Kothringi sail-and-paddle boats.",
      "tier": "CANON_DERIVED",
      "sources": [
       {
@@ -2335,7 +2335,7 @@
     },
     {
      "aspect": "people",
-     "text": "No one lives here. Naka-Desh fishers sleep under the boat-house roof in bad weather, and boatwrights from Gideon visit now and then to look at the Kothringi hull design.",
+     "text": "The quay is uninhabited. Naka-Desh fishers sleep under the boat-house roof in bad weather. Boatwrights from Gideon visit now and then to look at the Kothringi hull design.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2498,7 +2498,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A ruin of the Kothringi, the silver-skinned humans of the Blackwood who died of the Knahaten Flu in 2E 560. a hall with a leviathan-horn carved on its lintel, the longhouse of a seafaring family.",
+     "text": "A ruin of the Kothringi, the silver-skinned humans of the Blackwood who died of the Knahaten Flu in 2E 560. It is a hall with a leviathan-horn carved on its lintel, the longhouse of a seafaring family.",
      "tier": "CANON_DERIVED",
      "sources": [
       {
@@ -2566,7 +2566,7 @@
     },
     {
      "aspect": "people",
-     "text": "Nobody lives here. Paatru hunters from the camps to the east use the hall's hearth during the rains, and a Gideon scholar comes now and then to copy the lintel.",
+     "text": "The hall is uninhabited. Paatru hunters from the camps to the east use the hall's hearth during the rains. A Gideon scholar comes now and then to copy the lintel.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2681,7 +2681,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "The horn itself, a family tomb, or a haunting that follows the hall's old boat-song.",
+     "text": "The horn itself, a family tomb or a haunting that follows the hall's old boat-song.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2729,7 +2729,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A ruin of the Kothringi, the silver-skinned humans of the Blackwood who died of the Knahaten Flu in 2E 560. a long music-hall whose columns once held rows of chimes.",
+     "text": "A ruin of the Kothringi, the silver-skinned humans of the Blackwood who died of the Knahaten Flu in 2E 560. It is a long music-hall whose columns once held rows of chimes.",
      "tier": "CANON_DERIVED",
      "sources": [
       {
@@ -2774,7 +2774,7 @@
     },
     {
      "aspect": "present",
-     "text": "The hall is unheld. It stands on dry ground on the north edge of the Banujha Basin, and Mine-Burner watchers from the nearby posts know it as a place where the wind still plays.",
+     "text": "The hall is unheld. It stands on dry ground on the north edge of the Banujha Basin, and Mine-Burner watchers from the nearby posts know it as a place where the wind still sounds the chimes.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2797,7 +2797,7 @@
     },
     {
      "aspect": "people",
-     "text": "No one lives here. The Mine-Burner watchers sometimes shelter in the porch, and the occasional bard from Gideon makes the walk to hear the columns sing.",
+     "text": "The hall is uninhabited. The Mine-Burner watchers sometimes shelter in the porch. The occasional bard from Gideon makes the walk to hear the columns sing.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2843,7 +2843,7 @@
     },
     {
      "aspect": "faith",
-     "text": "Music was the Kothringi's prayer to Dibella and Kynareth, and the columns were tuned so that the wind would sing for both. Mine-Burner tribesmen leave the hall alone out of respect.",
+     "text": "Music was the Kothringi's prayer to Dibella and Kynareth, and the columns were tuned so that the wind would sing for both. Mine-Burner tribesmen do not enter the hall, out of respect.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2953,14 +2953,14 @@
    "siting": "inland",
    "danger_band_id": "D2",
    "importance": 2,
-   "summary": "Nine Reeds Waystation is an Imperial ruin in the Nha Enasa. A waystation on the road north of Gideon, a stone tower with a granary and a signal fire.",
+   "summary": "Nine Reeds Waystation is an Imperial ruin in the Nha Enasa, a stone tower with a granary and a signal fire on the road north of Gideon.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
    "notes": [
     {
      "aspect": "overview",
-     "text": "A ruined Imperial tower or waystation in the Nha Enasa. A waystation on the road north of Gideon, a stone tower with a granary and a signal fire.",
+     "text": "A ruined Imperial waystation in the Nha Enasa, on the road north of Gideon: a stone tower with a granary and a signal fire.",
      "tier": "CANON_DERIVED",
      "sources": [
       {
@@ -3020,7 +3020,7 @@
     },
     {
      "aspect": "people",
-     "text": "No one lives here. A band of road-bandits holds the tower by turns with a gang of smugglers, and Gideon's guard looks in only when a caravan goes missing.",
+     "text": "The tower is uninhabited. A band of road-bandits holds it by turns with a gang of smugglers. Gideon's guard looks in only when a caravan goes missing.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3130,7 +3130,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A legion pay-chest, a forged road-pass, or a bandit leader holding the tower.",
+     "text": "A legion pay-chest, a forged road-pass or a bandit leader holding the tower.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3170,14 +3170,14 @@
    "siting": "inland",
    "danger_band_id": "D2",
    "importance": 2,
-   "summary": "Gideon South Watch is an Imperial ruin in the Kotherra Mangroves. A watch tower on the south side of Gideon, built to watch the delta approaches.",
+   "summary": "Gideon South Watch is an Imperial ruin in the Kotherra Mangroves, a watch tower on the south side of Gideon built to watch the delta approaches.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
    "notes": [
     {
      "aspect": "overview",
-     "text": "A ruined Imperial tower or waystation in the Kotherra Mangroves. A watch tower on the south side of Gideon, built to watch the delta approaches.",
+     "text": "A ruined Imperial watch tower in the Kotherra Mangroves, on the south side of Gideon, built to watch the delta approaches.",
      "tier": "CANON_DERIVED",
      "sources": [
       {
@@ -3237,7 +3237,7 @@
     },
     {
      "aspect": "people",
-     "text": "No one lives here. Smugglers meet their buyers at the tower's foot, and Gideon's patrol boats come by now and then to move them on.",
+     "text": "The tower is uninhabited. Smugglers meet their buyers at the tower's foot. Gideon's patrol boats come by now and then to move them on.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3281,7 +3281,7 @@
     },
     {
      "aspect": "faith",
-     "text": "The watch kept a small Akatosh candle-niche in the tower stair for the night watch. It is cold now, and the garrison's Imperial altar has long gone.",
+     "text": "The watch kept a small Akatosh candle-niche in the tower stair for the night watch. The niche is cold now. The garrison's Imperial altar is long gone.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3347,7 +3347,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A watchman's ledger, a hidden cellar, or Gideon's guard wanting it cleared.",
+     "text": "A watchman's ledger, a hidden cellar or Gideon's guard wanting it cleared.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3387,14 +3387,14 @@
    "siting": "hilltop",
    "danger_band_id": "D2",
    "importance": 2,
-   "summary": "Aphon Signal Tower is an Imperial ruin in the Aphon Isle. A signal tower on the island's high ground, paired with Aphon Belvedere to watch the bay.",
+   "summary": "Aphon Signal Tower is an Imperial ruin on Aphon Isle, a signal tower on the island's high ground paired with Aphon Belvedere to watch the bay.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
    "notes": [
     {
      "aspect": "overview",
-     "text": "A ruined Imperial tower or waystation in the Aphon Isle. A signal tower on the island's high ground, paired with Aphon Belvedere to watch the bay.",
+     "text": "A ruined Imperial signal tower on the high ground of Aphon Isle, paired with Aphon Belvedere to watch the bay.",
      "tier": "CANON_DERIVED",
      "sources": [
       {
@@ -3454,7 +3454,7 @@
     },
     {
      "aspect": "people",
-     "text": "No one lives here. Sea-smugglers keep a small band at the tower in the fishing season, and Aphon's fishers pass it without a word.",
+     "text": "The tower is uninhabited. Sea-smugglers keep a small band at the tower in the fishing season. Aphon's fishers pass it without a word.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3498,7 +3498,7 @@
     },
     {
      "aspect": "faith",
-     "text": "Sailors who wait out a storm on the isle leave a knot of rope on the tower door for Kynareth and for safe sailing. No one tends it.",
+     "text": "Sailors who wait out a storm on the isle leave a knot of rope on the tower door for Kynareth and for safe sailing.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3564,7 +3564,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A signal lamp with a code, a pirate lookout, or a lost message-chest.",
+     "text": "A signal lamp with a code, a pirate lookout or a lost message-chest.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4049,7 +4049,7 @@
     },
     {
      "aspect": "history",
-     "text": "Nul-Sakeesh Camp was set beside a Kothringi ruin, so that the hunters could use its walls against the monsoon. The Paatru picked the site long ago for the solid roof, not the history.",
+     "text": "Nul-Sakeesh Camp was set beside a Kothringi ruin, so that the hunters could use its walls against the monsoon. The Paatru picked the site long ago for its solid roof.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -4137,7 +4137,7 @@
     },
     {
      "aspect": "faith",
-     "text": "They honour Sithis and the Hist of Low-Crown. They make a point of leaving a bowl of salt at the ruin's door, since the Kothringi dead are said to want it.",
+     "text": "They honour Sithis and the Hist of Low-Crown. They make a point of leaving a bowl of salt at the ruin's door since, the Paatru say, the Kothringi dead want it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4244,7 +4244,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Ukeel Station is a small river station in the Banujha Basin. It is a river station on the banks of the Banujha, where Naka-Desh fishers net osheeja gar and trade at the water's edge.",
+     "text": "Ukeel Station is a reed-thatched stilt platform above the Banujha with a fish-rack, a net-drying frame and a boat landing. Five Naka-Desh keep it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4479,7 +4479,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Sakeepa Station is a small river station in the Nha Enasa. It is a river station on the Nha Enasa channel east of Gideon, where the river-folk trade with Gul-Tej.",
+     "text": "Sakeepa Station is a reed-thatched platform on stilts at a bend of the Nha Enasa channel, with a long boat-landing and poled barges moored beneath. Five Naka-Desh keep it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4667,7 +4667,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A trade in gar-leather, a Paatru dispute, or a Kothringi ruin the river-folk watch.",
+     "text": "A trade in gar-leather, a Paatru dispute or a Kothringi ruin the river-folk watch.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4714,7 +4714,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Nahk-Zeel Station is a small river station in the Nha Enasa. It is a river station at the northern edge of Nha Enasa, close to Gul-Tej and the Paatru camps.",
+     "text": "Nahk-Zeel Station is a reed platform on stilts with a lamp-post, a fish-rack and a boat landing. Five Naka-Desh keep a lamp lit there for boats.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4949,7 +4949,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Teth-Kasa Station is a small river station in the Kotherra Mangroves. It is a river station among the mangrove channels south of Gideon, the Naka-Desh's western-most post.",
+     "text": "Teth-Kasa Station is a platform on stilts among mangrove roots, with a rope-walk and a hidden landing. Five Naka-Desh keep it out of sight of the sea.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5184,7 +5184,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Sarth-Hul Station is a small Root-Folk hunting and egg-tending station in the Nha Enasa. It lies deep in Nha Enasa's reeds, a stilt post where hunters tend a Hist sapling and a clutch of eggs.",
+     "text": "Sarth-Hul Station is a stilt platform in the reed-beds with an egg-hut and a young Hist sapling ringed with stones. Four Saxhleel hold it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5410,7 +5410,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Olaxa Station is a small Root-Folk hunting and egg-tending station in the Banujha Basin. It lies in the basin's northern reeds, a stilt post with a drying rack and an egg-hut.",
+     "text": "Olaxa Station is a stilt platform with a long drying rack, a thatched egg-hut and a landing hidden in the grass. Four Saxhleel hold it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5636,7 +5636,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Zul-Meeka Station is a small Root-Folk hunting and egg-tending station in the Banujha Basin. It lies on the south-east basin's edge, near the lilmothiit den and the abandoned village.",
+     "text": "Zul-Meeka Station is a stilt platform on dry ground with an egg-hut and a lookout post. Four Saxhleel hold it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5816,7 +5816,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A hunter guarding a clutch, a Mine-Burner dispute, or a missing sap-gatherer.",
+     "text": "A hunter guarding a clutch, a Mine-Burner dispute or a missing sap-gatherer.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5862,7 +5862,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Banu-Veeth Post is a small watch post in the Banujha Basin. It is a watch post on the water at the south of the basin, covering the channel toward Soulrest.",
+     "text": "Banu-Veeth Post is a stilt watch-post with a lookout platform, a long boat-landing and a toll chain across the channel. Six Mine-Burner Argonians hold it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5932,7 +5932,7 @@
     },
     {
      "aspect": "people",
-     "text": "Six Mine-Burner Argonians: three watchers, a ferryman, a cook and a boy who runs messages to the basin. They are hard with anyone from the coast.",
+     "text": "Six Mine-Burner Argonians: three watchers, a ferryman, a cook and a boy who runs messages to the basin. They are hostile to anyone from the coast.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6088,7 +6088,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Jal-Resh Post is a small watch post in the Banujha Basin. It is a watch post on the Banujha waters between Jarecai and Kharaxos.",
+     "text": "Jal-Resh Post is a stilt post at a channel bend with a lookout tower, a signal horn and two war-canoes drawn up at the landing. Six Mine-Burner Argonians hold it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6268,7 +6268,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A watch officer needing a courier, a wrecked boat, or a stranger arrested.",
+     "text": "A watch officer needing a courier, a wrecked boat or a stranger arrested.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6314,7 +6314,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Xul-Banu Post is a small watch post in the Banujha Basin. It is a watch post at the basin's north-west edge, facing Nha Enasa and Gul-Tej.",
+     "text": "Xul-Banu Post is a stilt post with a gate-tower and a trading float tied beside the landing. Six Mine-Burner Argonians hold it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6362,7 +6362,7 @@
     },
     {
      "aspect": "present",
-     "text": "A few Mine-Burner tribesmen hold the post and watch the border with Nha Enasa. They trade with the Naka-Desh across the water but allow none into the basin without leave.",
+     "text": "A few Mine-Burner tribesmen hold the post and watch the border with Nha Enasa. They trade with the Naka-Desh across the water but admit travellers to the basin only with leave.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6540,7 +6540,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Deshaa Post is a small watch post in the Banujha Basin. It is a watch post at the south-west basin edge, covering the road toward Soulrest and Chasepoint.",
+     "text": "Deshaa Post is a stilt post with a toll gate, a lookout and a wagon yard beside a raised causeway. Six Mine-Burner Argonians hold it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6720,7 +6720,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A road-warden needs a witness, a smuggler's crate, or a Soulrest agent.",
+     "text": "A road-warden needs a witness, a smuggler's crate or a Soulrest agent.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6865,7 +6865,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Fishing, mine-metal salvage, a toll on every Soulrest Argonian who comes inland to hatch, name or bury, and trade with Kharaxos.",
+     "text": "Fishing, mine-metal salvage, a toll on every Soulrest Argonian who comes inland to hatch, name or bury and trade with Kharaxos.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6973,7 +6973,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A Soulrest Argonian who must hatch before the season ends, a mine-burning trial, or the council's price for a pass.",
+     "text": "A Soulrest Argonian who must hatch before the season ends, a mine-burning trial or the council's price for a pass.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7245,7 +7245,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A metal dispute, a war-band muster, or a Chime-Keeper wedding.",
+     "text": "A metal dispute, a war-band muster or a Chime-Keeper wedding.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7327,7 +7327,7 @@
     },
     {
      "aspect": "history",
-     "text": "A name given by the Kothringi stayed on the place; Argonians re-settled it after the Flu and kept the name because a name belonged to the place.",
+     "text": "A name given by the Kothringi stayed on the place. Argonians re-settled it after the Flu and kept the name.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -7353,7 +7353,7 @@
     },
     {
      "aspect": "present",
-     "text": "About eight people make chimes, boats and rope; the hamlet is orderly and cold toward the Archwardens, warm toward Gideon.",
+     "text": "About eight people make chimes, boats and rope. The hamlet is orderly. Its people treat the Archwardens' officials coldly and Gideon's traders warmly.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7509,7 +7509,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A chime-maker's commission, a boat race, or a stolen tuning-fork.",
+     "text": "A chime-maker's commission, a boat race or a stolen tuning-fork.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7780,7 +7780,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A late fee, a lost log-raft, or a body found in the timber.",
+     "text": "A late fee, a lost log-raft or a body found in the timber.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7874,7 +7874,7 @@
     },
     {
      "aspect": "present",
-     "text": "Nobody holds it; squatters and smugglers use it, and the Mine-Burners avoid it.",
+     "text": "The village is unheld. Squatters and smugglers use it, and the Mine-Burners avoid it.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -7895,7 +7895,7 @@
     },
     {
      "aspect": "people",
-     "text": "No one; sometimes smugglers.",
+     "text": "Uninhabited; smugglers use it at times.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -8091,7 +8091,7 @@
     },
     {
      "aspect": "present",
-     "text": "Nobody lives here; scholars and diggers come rarely.",
+     "text": "The den is uninhabited; scholars and diggers come rarely.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8114,7 +8114,7 @@
     },
     {
      "aspect": "people",
-     "text": "No one; the den was nomadic and left little.",
+     "text": "Uninhabited; the den was nomadic and left little.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8229,7 +8229,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A fox-folk charm, a hidden kit-cache, or a scholar seeking Lilmothiit lore.",
+     "text": "A fox-folk charm, a hidden kit-cache or a scholar seeking Lilmothiit lore.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8748,7 +8748,7 @@
    "siting": "seabed",
    "danger_band_id": "D2",
    "importance": 1,
-   "summary": "The Grey Heron is a wreck in Topal Bay: A merchantman that sank off Gideon's estuary.",
+   "summary": "The Grey Heron is a wreck in Topal Bay, a merchantman that sank off Gideon's estuary.",
    "lore_page": null,
    "statement_tier_id": "AGENT_INVENTED",
    "aliases": [],
@@ -8818,7 +8818,7 @@
     },
     {
      "aspect": "people",
-     "text": "No one. A pair of salvage boats from Gideon visit in the summer, and local fishers mark the spot with a float.",
+     "text": "A pair of salvage boats from Gideon visit in the summer. Local fishers mark the spot with a float.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -8961,7 +8961,7 @@
    "siting": "seabed",
    "danger_band_id": "D2",
    "importance": 1,
-   "summary": "The Sallow Anne is a wreck in the sea off Aphon Isle: A smuggler's sloop wrecked on the rocks off Aphon.",
+   "summary": "The Sallow Anne is a wreck in the sea off Aphon Isle, a smuggler's sloop wrecked on the rocks off Aphon.",
    "lore_page": null,
    "statement_tier_id": "AGENT_INVENTED",
    "aliases": [],
@@ -8989,7 +8989,7 @@
     },
     {
      "aspect": "history",
-     "text": "The Sallow Anne was a smuggler's sloop that ran onto the rocks off Aphon Isle while fleeing a patrol. It was lost in the years after the Empire's fleet left, and no one claimed the crew.",
+     "text": "The Sallow Anne was a smuggler's sloop that ran onto the rocks off Aphon Isle while fleeing a patrol. It was lost in the years after the Empire's fleet left. Its crew went unclaimed.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -9010,7 +9010,7 @@
     },
     {
      "aspect": "present",
-     "text": "Divers from Aphon and Soulrest visit the wreck in calm weather, and smugglers search for its hidden cargo. Some say the captain's strongbox was never found.",
+     "text": "Divers from Aphon and Soulrest visit the wreck in calm weather, and smugglers search for its hidden cargo. Smugglers say the captain's strongbox was never found.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -9031,7 +9031,7 @@
     },
     {
      "aspect": "people",
-     "text": "No one. Aphon fishers dive on it for what they can sell, and a smuggler from the bay comes by now and then to search.",
+     "text": "Aphon fishers dive on it for what they can sell. A smuggler from the bay comes by now and then to search.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {

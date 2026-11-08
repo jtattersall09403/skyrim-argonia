@@ -75,7 +75,7 @@
     },
     {
      "aspect": "present",
-     "text": "In 4E 201 Archon is intact, busy and at ease with the successor state, which keeps customs officers in the port without trying to run it. The old Company wharves, bonded stores and counting-houses still stand and are used by the harbour authority, though the charter that built them is long dead.",
+     "text": "The harbour authority uses the old Company wharves, the bonded stores and the counting-houses, which still stand. The charter that built them lapsed long ago.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -191,7 +191,7 @@
     },
     {
      "aspect": "look",
-     "text": "A low harbour town of stone wharves and timber warehouses with Company brick at the waterfront, wooden stilt houses behind, and resort-style taverns whose balconies overlook the bay. Boats and swimmers fill the water; the sea smells of tar, salt and rotting weed.",
+     "text": "A low harbour town of stone wharves and timber warehouses with Company brick at the waterfront, wooden stilt houses behind, and taverns whose balconies overlook the bay. Boats and swimmers fill the water; the sea smells of tar, salt and rotting weed.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -220,7 +220,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Safe inside the walls; the harbour is policed and the water is a public road. Pickpockets, drunk sailors, and smugglers working the lower wharves are the usual trouble. Outside, the beaches are D1.",
+     "text": "Safe inside the walls; the harbour is policed and the water is a public road. Pickpockets, drunk sailors and smugglers working the lower wharves are the usual trouble. Outside, the beaches are D1.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -249,7 +249,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "The sealed Shadowscale facility, which the Dark Brotherhood wants reopened and the city quietly watches, with a very old ku-vastei living near it. Paperwork disputes between chartered privateers and customs. Underwater games a visitor can join, which teach swimming before the deep water does.",
+     "text": "The sealed Shadowscale facility, which the Dark Brotherhood wants reopened and the townspeople watch, with a very old ku-vastei living near it. Paperwork disputes between chartered privateers and customs. Underwater games that a visitor can join, which teach swimming.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -300,7 +300,7 @@
    "siting": "coast",
    "danger_band_id": "D1",
    "importance": 5,
-   "summary": "Lilmoth is the Festering Jewel of Black Marsh, destroyed in 4E 48 and rebuilt smaller as a wholly Argonian stilt town over a mass grave. Its Old Imperial quarter lies drowned and unrepaired. A young Hist, feared and tended under a rotating guard of tree-minders, grows in the lower town.",
+   "summary": "Lilmoth is the Festering Jewel of Black Marsh, destroyed in 4E 48 and rebuilt smaller as a wholly Argonian stilt town over a mass grave. Its Old Imperial quarter lies drowned and unrepaired. A young Hist grows in the lower town. It is feared and tended under a rotating guard of tree-minders.",
    "lore_page": "Lore:Lilmoth",
    "statement_tier_id": "CANON_EXPLICIT",
    "aliases": [],
@@ -365,7 +365,7 @@
     },
     {
      "aspect": "present",
-     "text": "Rebuilt but not restored: smaller, lower, and wholly Argonian in its fabric. The merchant council sets tariffs and pays guards. It is hostile to the successor state, which was the party that killed it, and the old law keeping unlicensed foreigners on the docks lapses in places and is enforced in others.",
+     "text": "Rebuilt but not restored: smaller, lower and wholly Argonian in its fabric. The merchant council sets tariffs and pays guards. It is hostile to the successor state, which was the party that killed it, and the old law keeping unlicensed foreigners on the docks lapses in places and is enforced in others.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -423,7 +423,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Lighterage, bay trade, salvage from the drowned quarter, and rice from Hereguard-style plantations nearby. Pusbottom, repopulated as slums always are, supplies the criminal trade of the coast.",
+     "text": "Lighterage, bay trade, salvage from the drowned quarter, and rice from Hereguard-style plantations nearby. Pusbottom, repopulated as a slum, supplies the criminal trade of the coast.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -539,7 +539,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "The unnamed name of the drowned quarter, which locals will not say to strangers. The third Hist and the rule written around it. Pusbottom's criminal quarter and the lapsed docks-only law. Salvage from the drowned villas, and the sunken shrine of Xhon-Mehl.",
+     "text": "The name of the drowned quarter, which locals will not say to strangers. The third Hist and the rule written around it. Pusbottom's criminal quarter and the lapsed docks-only law. Salvage from the drowned villas, and the sunken shrine of Xhon-Mehl.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1036,7 +1036,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Ferry fares in coin or goods, fish, and a small trade in spare poles, rope and lamp oil. Passing cargo is quietly noted for the elder.",
+     "text": "Ferry fares in coin or goods, fish and a small trade in spare poles, rope and lamp oil. Passing cargo is quietly noted for the elder.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1104,7 +1104,7 @@
     },
     {
      "aspect": "look",
-     "text": "Six raft-houses on pole stilts either side of the channel, a long guide-rope between two stump posts, lanterns on poles, and boats pulled onto mud.",
+     "text": "Six raft-houses on pole stilts either side of the channel, a long guide-rope between two stump posts, lanterns on poles and boats pulled onto mud.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1303,7 +1303,7 @@
     },
     {
      "aspect": "present",
-     "text": "Six households cut, dry and bundle reed in season and trap eels in the off-season; the hamlet is quiet and rarely sees outsiders.",
+     "text": "Six households cut, dry and bundle reed in season and trap eels in the off-season. The hamlet is quiet and few outsiders come.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1563,7 +1563,7 @@
    "siting": "coast",
    "danger_band_id": "D2",
    "importance": 2,
-   "summary": "Shalaia is a shellfish hamlet on the western edge of the bayou, in sight of Truowa's waters and Fort Gysilla's smoke. The Three Waters people here fish, and mostly keep the fort at arm's length.",
+   "summary": "Shalaia is a shellfish hamlet on the western edge of the bayou, in sight of Truowa's waters and Fort Gysilla's smoke. The Three Waters people here fish, and mostly keep away from the fort.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
@@ -2109,7 +2109,7 @@
     },
     {
      "aspect": "look",
-     "text": "Rafts of rice-bed in neat rows beside stilt storehouses, with drying racks, sacks, and a long landing of poles.",
+     "text": "Rafts of rice-bed in neat rows beside stilt storehouses, with drying racks, sacks and a long landing of poles.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3087,7 +3087,7 @@
     },
     {
      "aspect": "present",
-     "text": "No one holds it. Part of the roof has gone; the upper floor is dry enough for refugees. The Archwardens have not garrisoned it as they have Fort Reedmoth.",
+     "text": "The fort is unheld. Part of the roof has gone; the upper floor is dry enough for refugees. The Archwardens have not garrisoned it as they have Fort Reedmoth.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3194,7 +3194,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A cache of contraband that someone wants moved; a sealed cellar of the old garrison's pay chest; an Imperial banner someone is keen to retrieve.",
+     "text": "A cache of contraband waiting to be moved; a sealed cellar of the old garrison's pay chest; an Imperial banner waiting to be retrieved.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3319,7 +3319,7 @@
     },
     {
      "aspect": "people",
-     "text": "No living residents. Velothi dead are said to walk its lower rooms.",
+     "text": "No living residents. The Three Waters people say the Velothi dead walk its lower rooms.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3767,7 +3767,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Fresh and salted fish, sea salt, boat repair, and ferry service to the northern island.",
+     "text": "Fresh and salted fish, sea salt, boat repair and ferry service to the northern island.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3819,7 +3819,7 @@
     },
     {
      "aspect": "look",
-     "text": "Stilt houses on grey pilings facing the sea, drying racks, salt pans, and a long jetty with a tower lamp.",
+     "text": "Stilt houses on grey pilings facing the sea, drying racks, salt pans and a long jetty with a tower lamp.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3845,7 +3845,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D1: sea-drake sightings beyond the reef, storms, and cutpurses on the Lilmoth road.",
+     "text": "D1: sea-drake sightings beyond the reef, storms and cutpurses on the Lilmoth road.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3871,7 +3871,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A boat lost beyond the reef with someone's father aboard; a salt pan seized by a Lilmoth creditor.",
+     "text": "A boat lost beyond the reef with a villager's father aboard; a salt pan seized by a Lilmoth creditor.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4030,7 +4030,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Rice, fish, and a ferry across the strait to the southern island.",
+     "text": "Rice, fish and a ferry across the strait to the southern island.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4082,7 +4082,7 @@
     },
     {
      "aspect": "look",
-     "text": "Stilt houses beside paddies cut in low ground, sluice gates, and a ferry pier.",
+     "text": "Stilt houses beside paddies cut in low ground, sluice gates and a ferry pier.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4345,7 +4345,7 @@
     },
     {
      "aspect": "look",
-     "text": "Stilt houses on a low rise by the road, fish racks, a landing, and the fort's tower visible to the east.",
+     "text": "Stilt houses on a low rise by the road, fish racks, a landing and the fort's tower visible to the east.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5081,7 +5081,7 @@
     },
     {
      "aspect": "people",
-     "text": "Mixed-blood heirs with Argonian wives and husbands, a steward, and about a dozen tenants and bonded workers.",
+     "text": "Mixed-blood heirs with Argonian wives and husbands, a steward and about a dozen tenants and bonded workers.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5466,7 +5466,7 @@
     },
     {
      "aspect": "look",
-     "text": "Low thatched halls on stilts, a large rice-barn, and reed-lined channels.",
+     "text": "Low thatched halls on stilts, a large rice-barn and reed-lined channels.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5496,7 +5496,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D1: the barn is watched by hired guards and dogs, and the reed channels hide snapping turtles and slaughterfish. The danger is a thief at night rather than a wild beast, since the north road sees constant traffic.",
+     "text": "D1: the barn is watched by hired guards and dogs, and the reed channels hide snapping turtles and slaughterfish. Thieves at night are the usual danger, since the north road is always busy.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5876,7 +5876,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A small coastal farm at the south end of the southern island, near Southwatch Keep, growing roots and keeping fowl.",
+     "text": "A family of three keeps Ixa-Ruu, a thatched stilt house with a gourd garden on a rise and chicken coops. Southwatch Keep's patrols are welcomed at the door.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6135,7 +6135,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A farm west of Lilmoth on firm ground, growing reed-roots and keeping marsh-guar.",
+     "text": "A family of four keeps Seeku: a low house, a stockaded guar paddock and a vegetable plot, a short walk from Lilmoth's tree.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6394,7 +6394,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A farm on the island's firm centre, with fruit trees and a pool teeming with fish.",
+     "text": "A couple and a child keep Wattle-Pool, a small stilt house among fruit trees beside a pond ringed with wattle. They sell honey and fruit at the nearest village.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6498,7 +6498,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Fruit, pond fish, and honey from a few hives.",
+     "text": "Fruit, pond fish and honey from a few hives.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6653,7 +6653,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A farm between Sal-Axan and Fort Reedmoth on the island road, growing rice for the fort.",
+     "text": "A family of three keeps Tal-Neesh, a low plain house with a rice-paddy and a woodpile. It sells rice and eggs to the quartermaster of Fort Reedmoth.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6912,7 +6912,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A ruined Imperial fort on the road between Karketa and Lilmoth, never rebuilt after the Empire left.",
+     "text": "Fort Sallowmoth is a low square fort of stone and brick, its wall broken at one corner and green with vines. Squatters hold the roofless yard.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6987,7 +6987,7 @@
     },
     {
      "aspect": "people",
-     "text": "Nobody lives in Fort Sallowmoth, but squatters keep a watch from the roofless yard and smugglers pass through. Karketa's villagers know the faces and say little to strangers.",
+     "text": "Fort Sallowmoth has no residents, but squatters keep a watch from the roofless yard and smugglers pass through. Karketa's villagers know the faces and say little to strangers.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7168,7 +7168,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A ruined Imperial waystation on the south shore east of Lilmoth, once a customs shed and signal tower.",
+     "text": "Brackwater Waystation is a low brick shed with a toppled signal tower beside it and a sea-cave beneath. Smugglers use the cave.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7243,7 +7243,7 @@
     },
     {
      "aspect": "people",
-     "text": "No one lives at Brackwater Waystation, but smugglers use the sea-cave and fishers from Nundi stop in the shed during squalls. The sea-cave is known to both and spoken of by neither.",
+     "text": "Brackwater Waystation has no residents, but smugglers use the sea-cave and fishers from Nundi stop in the shed during squalls. Both groups know the sea-cave and do not discuss it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7293,7 +7293,7 @@
     },
     {
      "aspect": "faith",
-     "text": "There is no Hist and no shrine, only a rusted iron ring in the shed wall where the customs men hung a charm to Julianos. Fishers touch it as they shelter and say nothing.",
+     "text": "There is no Hist and no shrine, only a rusted iron ring in the shed wall where the customs men hung a charm to Julianos. Fishers touch it as they shelter.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7348,7 +7348,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D2: the sea-cave floods on the tide and traps the unwary, while snakes nest in the tower rubble. Smugglers who guard the cache meet strangers with a knife rather than a warning.",
+     "text": "D2: the sea-cave floods on the tide and traps the unwary, while snakes nest in the tower rubble. Smugglers who guard the cache attack strangers without warning.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7424,7 +7424,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A ruined Imperial fort on the island road, close to Fort Reedmoth and left as a ruin because the garrison there is too small to hold both.",
+     "text": "Fort Lowmoth is a burnt shell of charred timbers and stone footings, built as an outlier of Fort Reedmoth. Road bandits hold it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7499,7 +7499,7 @@
     },
     {
      "aspect": "people",
-     "text": "No one lives in Fort Lowmoth, but the bandits who use it as a lair post watchers on the island road. Villagers from Sal-Axan and the Tal-Neesh farm pay them in rice rather than argue.",
+     "text": "Fort Lowmoth has no residents, but the bandits who use it as a lair post watchers on the island road. Villagers from Sal-Axan and the Tal-Neesh farm pay them in rice and do not argue.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7680,7 +7680,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A ruined den-village of the Lilmothiit on the south-western shore of the southern island.",
+     "text": "Ashiit Den is a cluster of low turf-and-leaf domes, cracked and weed-grown, above a midden of shells. Vine covers it and Argonians keep away.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7776,7 +7776,7 @@
     },
     {
      "aspect": "people",
-     "text": "No one lives at Ashiit, though fishermen swear they hear kits' voices on still nights. Beachcombers and a few treasure-hunters visit in the dry months and do not stay.",
+     "text": "Ashiit has no residents, though fishermen swear they hear kits' voices on still nights. Beachcombers and a few treasure-hunters visit in the dry months and do not stay.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7910,7 +7910,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D3: the dome roofs are cracked and fall without warning, and the dead are said to walk the midden at night. Crabs and carrion-birds hold the beach below.",
+     "text": "D3: the dome roofs are cracked and fall without warning, and fishermen report the dead walking the midden at night. Crabs and carrion-birds hold the beach below.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8000,7 +8000,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A small ruined burrow-village at the southern tip of the island, with tunnels under the dunes.",
+     "text": "Kitsa Burrow is a set of domes half buried in dune sand, with a door that smugglers have cut into its tunnel.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8096,7 +8096,7 @@
     },
     {
      "aspect": "people",
-     "text": "No one lives here; the wind moves the sand and nothing else. Smugglers have cut a door into the tunnel, and they alone use it.",
+     "text": "Kitsa Burrow has no residents. Smugglers have cut a door into the tunnel. They alone use it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8320,7 +8320,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A ruined den-mound in the centre of the southern island, the largest of the dens on the isle.",
+     "text": "Reknaa-iit is a large turf mound crowned with a fallen leaf-roof and ringed by fallen posts. It was the meeting-ground of the island's fox-folk and was last used in the Second Era.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8416,7 +8416,7 @@
     },
     {
      "aspect": "people",
-     "text": "No one lives on the mound, and no village stands near it. Island farmers like Wattle-Pool's couple see lights there some nights and stay indoors.",
+     "text": "The mound has no residents. No village stands near it. Island farmers like Wattle-Pool's couple see lights there some nights and stay indoors.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8550,7 +8550,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D3: the crown is hollow and undead are said to guard the chieftain's tomb. Predators and bats nest in the lower galleries.",
+     "text": "D3: the crown is hollow and island farmers report undead guarding the chieftain's tomb. Predators and bats nest in the lower galleries.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8640,7 +8640,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A ruined den on the northern island's heart, now a lair of marsh predators.",
+     "text": "Rushiit Den is a set of turf-and-leaf mounds whose entrance predators have gnawed wide. Crocodilians and bats hold the tunnels.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8736,7 +8736,7 @@
     },
     {
      "aspect": "people",
-     "text": "No one lives at Rushiit, and the predators have driven off even beachcombers. A scholar's party went in some seasons back and did not return.",
+     "text": "Rushiit has no residents. The predators have driven off even beachcombers. A scholar's party went in some seasons back and did not return.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8870,7 +8870,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D3: crocodilians and bats hold the tunnels, and the undead are said to stir beyond them. Collapsing mound-roofs are a danger even in daylight.",
+     "text": "D3: crocodilians and bats hold the tunnels, and Argonians nearby report undead stirring beyond them. Collapsing mound-roofs are a danger even in daylight.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8960,7 +8960,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A ruined den on the north-eastern shore of the northern island, close to Fort Reedmoth.",
+     "text": "Tailfall Mound is a set of domes overlooking the shore, with a ring of tails carved in its doorposts. Smugglers hide in the lower rooms.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -9056,7 +9056,7 @@
     },
     {
      "aspect": "people",
-     "text": "No one lives at Tailfall, but smugglers hide in the lower rooms and watch the strait. Reedmoth's soldiers pretend not to know.",
+     "text": "Tailfall has no residents, but smugglers hide in the lower rooms and watch the strait. Reedmoth's soldiers pretend not to know.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -9682,7 +9682,7 @@
     },
     {
      "aspect": "look",
-     "text": "A wall of black water on the sea floor, cold currents, and sound returning from below.",
+     "text": "A wall of black water on the sea floor, cold currents and sound returning from below.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -9815,7 +9815,7 @@
     },
     {
      "aspect": "history",
-     "text": "Built by a salvage master of Lilmoth to reach the deep spires without a bell and lowered by a barge. Its cable parted in a storm and it was lost, and the master died of grief.",
+     "text": "Built by a salvage master of Lilmoth to reach the deep spires without a bell and lowered by a barge. Its cable parted in a storm and it was lost. The master died of grief.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -9855,7 +9855,7 @@
     },
     {
      "aspect": "people",
-     "text": "No residents. The ghost of its pilot is said to tap at the glass.",
+     "text": "No residents. Divers report the ghost of its pilot tapping at the glass.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -10089,7 +10089,7 @@
     },
     {
      "aspect": "people",
-     "text": "No one lives there; a hermit octopus has taken a gallery. Divers say a dead priest walks the stair on moonless tides.",
+     "text": "A hermit octopus has taken a gallery. Divers say a dead priest walks the stair on moonless tides.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -10365,7 +10365,7 @@
     },
     {
      "aspect": "people",
-     "text": "No one lives there, though a school of slaughterfish and their hunters do. A diver is said to be still trapped in one gallery, and divers avoid it.",
+     "text": "A school of slaughterfish and their hunters live there. Divers avoid it and tell of a diver still trapped in one gallery.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -10641,7 +10641,7 @@
     },
     {
      "aspect": "people",
-     "text": "No one lives there; sea-drakes do, and they defend the nests. A dead diver's kit lies at the foot of the stair.",
+     "text": "Sea-drakes live there and defend the nests. A dead diver's kit lies at the foot of the stair.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -10917,7 +10917,7 @@
     },
     {
      "aspect": "people",
-     "text": "No one lives there but dreugh scouts, who keep carved prizes and watch the water. The station's crews tell of a diving-bell chain that was cut from below.",
+     "text": "Dreugh scouts live there, keep carved prizes and watch the water. The station's crews tell of a diving-bell chain that was cut from below.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -11027,7 +11027,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D3: dreugh scouts, cold, and silt that clouds the water in a moment. A carved prize in a dreugh's grip is a bait, not a gift.",
+     "text": "D3: dreugh scouts, cold and silt that clouds the water in a moment. A carved prize in a dreugh's grip is bait.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -11193,7 +11193,7 @@
     },
     {
      "aspect": "people",
-     "text": "No one lives there; eels haunt the foot of the spire, and a dead salvager's lamp still burns on the sand. Divers who come leave offerings at the shrine.",
+     "text": "Eels live at the foot of the spire. A dead salvager's lamp still burns on the sand. Divers who come leave offerings at the shrine.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -11251,7 +11251,7 @@
     },
     {
      "aspect": "faith",
-     "text": "A summit shrine of ancestors still bears offerings, and divers pray there before entering. It is the one spire where the old faith is still kept up.",
+     "text": "A summit shrine of ancestors still bears offerings, and divers pray there before entering. The old faith is still practised at this spire.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -11303,7 +11303,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D3: eels at the foot, deep cold, and the distance from Bell Station if a line fails. The lamp on the sand is a marker for the dead salvager's grave.",
+     "text": "D3: eels at the foot, deep cold and the distance from Bell Station if a line fails. The lamp on the sand is a marker for the dead salvager's grave.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -11469,7 +11469,7 @@
     },
     {
      "aspect": "people",
-     "text": "No one lives there, but a failed salvage crew lies in its lower gallery. The station keeps their cache sealed and their names unspoken.",
+     "text": "Nothing lives there, but a failed salvage crew lies in its lower gallery. The station keeps their cache sealed and does not speak their names.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -11745,7 +11745,7 @@
     },
     {
      "aspect": "people",
-     "text": "No one lives there, but a drowned sea-priest's ghost keeps the sealed door. Divers who have seen it describe a figure bright in the water.",
+     "text": "A drowned sea-priest's ghost keeps the sealed door. Divers who have seen it describe a figure bright in the water.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -11855,7 +11855,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D4: the ghost, the cold of the deep edge, and a current that pulls divers off the tower. The sealed door is the one thing they must not touch.",
+     "text": "D4: the ghost, the cold of the deep edge, and a current that pulls divers off the tower. Divers must not touch the sealed door.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {

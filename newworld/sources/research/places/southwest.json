@@ -153,7 +153,7 @@
     },
     {
      "aspect": "look",
-     "text": "A port behind its gates where the sea's noise drops away: stone Imperial quarter at the peninsula's neck, timber and stilt wharves below, mangrove creeks to the south, xanmeers etched with wraxu, and burn-scarred dead ground and gas vents on its landward edge.",
+     "text": "A port behind its gates: stone Imperial quarter at the peninsula's neck, timber and stilt wharves below, mangrove creeks to the south, xanmeers etched with wraxu, and burn-scarred dead ground and gas vents on its landward edge.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -197,7 +197,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "Whoever controls Bramman's river controls smuggling: a faction contest for the council, a hidden mangrove landing to find, derelict Imperial mines to enter, and the hatching-ground leverage the Banujha tribes hold over the city.",
+     "text": "A faction contest for the council, a hidden mangrove landing to find, derelict Imperial mines to enter, the hatching-ground leverage that the Banujha tribes hold over the city, and control of smuggling through Bramman's river.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -333,7 +333,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Tolls and transit at the three-river confluence, lake commerce by canoe, fish and reeds, and whatever comes out of the Rose by water or by raft.",
+     "text": "Tolls and transit at the three-river confluence, lake commerce by canoe, fish and reeds and whatever comes out of the Rose by water or by raft.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -486,7 +486,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "The canon Imperial prison, 'the Rose', a day's march from Blackrose city; the owner ruling makes it a ruin reoccupied by the Blackguards' heirs.",
+     "text": "The canon Imperial prison, 'the Rose', a day's march from Blackrose city. It is a ruin reoccupied by the Blackguards' heirs.",
      "tier": "CANON_EXPLICIT",
      "sources": [
       {
@@ -530,7 +530,7 @@
     },
     {
      "aspect": "present",
-     "text": "Held by Blackguard families three generations deep and a Naga raj-kaal who resent the word prison. The upper walls are their stronghold and the lower levels are not theirs.",
+     "text": "Held by Blackguard families three generations deep and a Naga raj-kaal who resent the word prison. The upper walls are their stronghold. The lower levels are held by the undead.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -632,7 +632,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Blackguard bands above, Naga and undead below, and a sanctum path left open to test challengers. Deadly to the unprepared.",
+     "text": "Blackguard bands above, Naga and undead below, and a sanctum path left open to test challengers.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -784,7 +784,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Tin and copper chimes, metal-woven rope, shallow-draft sail-and-paddle boats, and fees from river traffic.",
+     "text": "Tin and copper chimes, metal-woven rope, shallow-draft sail-and-paddle boats and fees from river traffic.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1177,7 +1177,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Fish, eels, reeds, the ferry fare, and pole-boat hire.",
+     "text": "Fish, eels, reeds, the ferry fare and pole-boat hire.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1199,7 +1199,7 @@
     },
     {
      "aspect": "faith",
-     "text": "Lujei's tree-minder keeps the hatching records for the ferry families and carries the dead out by boat to the drowned Blackrose tree, a short pole across the lake. The village pays a share of its crossing tolls to the island core as the price of that burial right.",
+     "text": "Lujei's tree-minder keeps the hatching records for the ferry families and carries the dead out by boat to the drowned Blackrose tree, a short pole across the lake. The elders pay a share of the crossing tolls to the island core as the price of that burial right.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1785,7 +1785,7 @@
     },
     {
      "aspect": "faith",
-     "text": "Ka-Asei has no tree of its own, so its minder sends each clutch by lake barge to the Blackrose Hist and keeps a ledger of names on knotted cords under the longhouse eaves. Mourners tie a reed to a stilt for every death, and the posts at the channel mouth bristle with them.",
+     "text": "Ka-Asei has no tree of its own, so its minder sends each clutch by lake barge to the Blackrose Hist and keeps a ledger of names on knotted cords under the longhouse eaves. Mourners tie a reed to a stilt for every death. The posts at the channel mouth are covered with reeds.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1992,7 +1992,7 @@
     },
     {
      "aspect": "faith",
-     "text": "Amalaja's minder looks east rather than north: eggs go with the salt-and-rice boats toward the delta trees, and drowned fishermen are given back to the sea at the point instead of the lake. The Hist is honoured in a small rice-straw shrine above the tide line.",
+     "text": "Amalaja's minder looks east: eggs go with the salt-and-rice boats toward the delta trees, and drowned fishermen are given back to the sea at the point. The Hist is honoured in a small rice-straw shrine above the tide line.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2047,7 +2047,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A rice-swap dispute, a lost boat, or a message for Lilmoth's merchant council.",
+     "text": "A rice-swap dispute, a lost boat or a message for Lilmoth's merchant council.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2097,7 +2097,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A square-glyph village in Lilmoth's delta orbit, in the farmed land east of Blackrose.",
+     "text": "A village in the farmed land east of Blackrose, within Lilmoth's trade.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2145,7 +2145,7 @@
     },
     {
      "aspect": "present",
-     "text": "Part of Lilmoth's commercial orbit and hostile to the Archwardens.",
+     "text": "Part of Lilmoth's trade network and hostile to the Archwardens.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2249,7 +2249,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A paddy blight, a landlord's feud, and a chance to carry rice to Blackrose.",
+     "text": "A paddy blight, a landlord's feud and a chance to carry rice to Blackrose.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2643,7 +2643,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A square-glyph village on the south coast, below Mir-Xal.",
+     "text": "A village on the south coast, below Mir-Xal.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2842,7 +2842,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Khariton is a Kothringi-named town of the resettled interior, abandoned after 4E 48 and left to the washes.",
+     "text": "Khariton is a dozen rotted stilt houses on stone footings, with tin chimes rusting in the reeds. It stood on the Ka-Asei channel.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2913,7 +2913,7 @@
     },
     {
      "aspect": "people",
-     "text": "Nobody lives in Khariton. Brushmound hunters shelter under its few sound roofs in the dry season, and scavengers strip the last pegs from its stilt halls.",
+     "text": "Khariton is uninhabited. Brushmound hunters shelter under its few sound roofs in the dry season, and scavengers strip the last pegs from its stilt halls.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2947,7 +2947,7 @@
     },
     {
      "aspect": "faith",
-     "text": "The Chime-Keepers' tin and glass chimes still hang in the dead town's central tree, tuned to no one and rung only by wind. The minder's shrine beneath them is dry and has been unvisited since the town emptied.",
+     "text": "The Chime-Keepers' tin and glass chimes still hang in the dead town's central tree, rung only by wind. The minder's shrine beneath them is dry. It has not been visited since the town emptied.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3038,7 +3038,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Bucalos is a Kothringi-named stilt town beside Toklea, abandoned when its people moved into the larger town.",
+     "text": "Bucalos is a set of stone footings, a half-fallen hall and rusted chimes under green moss. Toklea's people quarry its stone.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3245,7 +3245,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Tarak Shan is a ruined Argonian stronghold on the water east of the washes, stormed by the Third Legion in the early Second Era.",
+     "text": "Tarak Shan is a ring of broken tiered halls on the water, covered in lichen, with a flooded stockade and a sunken landing. A feather-serpent legend clings to it.",
      "tier": "CANON_DERIVED",
      "sources": [
       {
@@ -3332,7 +3332,7 @@
     },
     {
      "aspect": "people",
-     "text": "No one lives within Tarak Shan's broken walls. Scavengers come by boat for Legion brass and the occasional skull, and hunters from Amalaja will not stay a night.",
+     "text": "Tarak Shan is uninhabited. Scavengers come by boat for Legion brass and the occasional skull. Hunters from Amalaja will not stay a night.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3366,7 +3366,7 @@
     },
     {
      "aspect": "faith",
-     "text": "Nothing is worshipped at Tarak Shan now. Amalaja's minder leaves a reed offering at the old gate for the defenders the Third Legion killed, and the washes keep a superstition that the water here is a grave.",
+     "text": "Nothing is worshipped at Tarak Shan now. Amalaja's minder leaves a reed offering at the old gate for the defenders whom the Third Legion killed. People in the washes hold that the water here is a grave.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3455,14 +3455,14 @@
    "siting": "swamp",
    "danger_band_id": "D3",
    "importance": 1,
-   "summary": "Sheh-Ara is a half-sunken stilt village south of Lujei, an unnamed place on the map that we name here.",
+   "summary": "Sheh-Ara is a half-sunken stilt village south of Lujei.",
    "lore_page": null,
    "statement_tier_id": "AGENT_INVENTED",
    "aliases": [],
    "notes": [
     {
      "aspect": "overview",
-     "text": "Sheh-Ara is a half-sunken stilt village south of Lujei, an unnamed place on the map that we name here.",
+     "text": "Sheh-Ara has two halls on leaning posts above a flooded yard. A ferry channel from Lujei runs close beside it.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -3489,7 +3489,7 @@
     },
     {
      "aspect": "history",
-     "text": "Sheh-Ara lost its people to rising lake water between Lujei and Blackrose, and the last families left for Lujei's ferry landing after the 4E 48 catastrophe. Its name is ours: the map gives only a ruined-village symbol.",
+     "text": "Sheh-Ara lost its people to rising lake water between Lujei and Blackrose. The last families left for Lujei's ferry landing after the 4E 48 catastrophe.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -3533,7 +3533,7 @@
     },
     {
      "aspect": "people",
-     "text": "Nobody lives in Sheh-Ara. Lujei ferrymen cut across its channel and a few salvagers sleep on the one dry platform.",
+     "text": "Sheh-Ara has no residents. Lujei ferrymen cut across its channel, and a few salvagers sleep on the dry platform.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3600,7 +3600,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Crocodiles lie up in the flooded yard and leeches thicken the shallows. At D3 the Lujei road above is the only safe approach.",
+     "text": "Crocodiles lie up in the flooded yard and leeches thicken the shallows. The Lujei road above is the only safe approach.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3651,14 +3651,14 @@
    "siting": "swamp",
    "danger_band_id": "D3",
    "importance": 1,
-   "summary": "Oru-Neel is a stilt village in the northeast farm country, emptied by flood, an unnamed place on the map that we name here.",
+   "summary": "Oru-Neel is a stilt village in the northeast farm country, emptied by flood.",
    "lore_page": null,
    "statement_tier_id": "AGENT_INVENTED",
    "aliases": [],
    "notes": [
     {
      "aspect": "overview",
-     "text": "Oru-Neel is a stilt village in the northeast farm country, emptied by flood, an unnamed place on the map that we name here.",
+     "text": "Oru-Neel is a ring of grey posts in an empty paddy, with a tilted hall platform and sluice gates hanging from the old dyke. A spring flood took its rice fields.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -3685,7 +3685,7 @@
     },
     {
      "aspect": "history",
-     "text": "Oru-Neel stood in the north-eastern farm country between Tei-Kur and Reedfall and was emptied by a spring flood that took its rice fields; its families moved to Tei-Kur. The map gives only a ruined-village symbol, so the name is ours.",
+     "text": "Oru-Neel stood in the north-eastern farm country between Tei-Kur and Reedfall and was emptied by a spring flood that took its rice fields; its families moved to Tei-Kur.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -3729,7 +3729,7 @@
     },
     {
      "aspect": "people",
-     "text": "Oru-Neel has no residents. Tei-Kur farmhands pass through to reach the far paddies, and nobody stays a night.",
+     "text": "Oru-Neel has no residents. Tei-Kur farmhands pass through to reach the far paddies, and none of them stays a night.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3796,7 +3796,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Snake nests under the rotten platform and stinging midges at dusk, with silt that hides deep holes. At D3 a stranger is likelier to be hurt by the ground than a person.",
+     "text": "Snake nests under the rotten platform and stinging midges at dusk, with silt that hides deep holes. A stranger is likelier to be hurt by the ground than by a person.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3847,14 +3847,14 @@
    "siting": "swamp",
    "danger_band_id": "D3",
    "importance": 1,
-   "summary": "Zul-Etha is a collapsed village in the southern washes, abandoned after the 4E 48 catastrophe, an unnamed place on the map that we name here.",
+   "summary": "Zul-Etha is a collapsed village in the southern washes, abandoned after the 4E 48 catastrophe.",
    "lore_page": null,
    "statement_tier_id": "AGENT_INVENTED",
    "aliases": [],
    "notes": [
     {
      "aspect": "overview",
-     "text": "Zul-Etha is a collapsed village in the southern washes, abandoned after the 4E 48 catastrophe, an unnamed place on the map that we name here.",
+     "text": "Zul-Etha stood between Mir-Xal and Natai. Three roof peaks and a leaning platform now show above green water, and Natai fishermen call it the drowned place.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -3881,7 +3881,7 @@
     },
     {
      "aspect": "history",
-     "text": "Zul-Etha stood in the southern washes between Mir-Xal and Natai until the 4E 48 catastrophe sent its families to the larger towns. The name is ours, for an unlabelled ruined-village symbol.",
+     "text": "Zul-Etha stood in the southern washes between Mir-Xal and Natai until the 4E 48 catastrophe sent its families to the larger towns.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -3992,7 +3992,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Deep water hides the old lanes and house floors, and crocodiles lie among the roof peaks. At D3 the danger is drowning more than any person.",
+     "text": "Deep water hides the old lanes and house floors, and crocodiles lie among the roof peaks. Drowning is a greater danger than any person.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4050,7 +4050,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A tumbled Imperial waystation whose name follows the Legion's '-moth' naming; AGENT_INVENTED name.",
+     "text": "A tumbled Imperial waystation whose name follows the Legion's '-moth' naming.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -4219,7 +4219,7 @@
    "siting": "swamp",
    "danger_band_id": "D3",
    "importance": 2,
-   "summary": "Kit Mounds is a cluster of turf domes near the south: a Lilmothiit den, a fox-folk burrow of turf and leaf left from before the Knahaten Flu. The name is AGENT_INVENTED.",
+   "summary": "Kit Mounds is a cluster of turf domes near the south: a Lilmothiit den, a fox-folk burrow of turf and leaf left from before the Knahaten Flu.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
@@ -4356,7 +4356,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Sinkholes under the turf, snakes in the burrow roofs and the shades of the plague dead at the third dome. At D3 a stranger is likelier to be lost than attacked.",
+     "text": "Sinkholes under the turf, snakes in the burrow roofs and the shades of the plague dead at the third dome. A stranger is likelier to be lost than attacked.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4412,7 +4412,7 @@
    "siting": "swamp",
    "danger_band_id": "D3",
    "importance": 2,
-   "summary": "Brushmound is a bramble-covered den north-east of Ka-Asei: a Lilmothiit den, a fox-folk burrow of turf and leaf left from before the Knahaten Flu. The name is AGENT_INVENTED.",
+   "summary": "Brushmound is a bramble-covered den north-east of Ka-Asei: a Lilmothiit den, a fox-folk burrow of turf and leaf left from before the Knahaten Flu.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
@@ -4549,7 +4549,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Thorn tangles that hold a person like a net, venomous snakes in the burrow roofs and plague-dead who rise on the crown at dusk. At D3 the brambles are the worst of it.",
+     "text": "Thorn tangles that hold a person like a net, venomous snakes in the burrow roofs and plague-dead who rise on the crown at dusk. The brambles are the worst of it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4605,7 +4605,7 @@
    "siting": "swamp",
    "danger_band_id": "D3",
    "importance": 2,
-   "summary": "Tailhollow is a flooded den in the west washes: a Lilmothiit den, a fox-folk burrow of turf and leaf left from before the Knahaten Flu. The name is AGENT_INVENTED.",
+   "summary": "Tailhollow is a flooded den in the west washes: a Lilmothiit den, a fox-folk burrow of turf and leaf left from before the Knahaten Flu.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
@@ -4655,7 +4655,7 @@
     },
     {
      "aspect": "present",
-     "text": "The den is waterlogged, with the roof fallen in and the burrows open to the sky. Mir-Xal watermen use it as a landmark on the western channel.",
+     "text": "The den is waterlogged. The roof has fallen in and the burrows are open to the sky. Mir-Xal watermen use it as a landmark on the western channel.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4672,7 +4672,7 @@
     },
     {
      "aspect": "people",
-     "text": "Nobody lives at Tailhollow. Mir-Xal reed-cutters work the edges and an old Bucalos hunter keeps a blind in the hollow.",
+     "text": "Tailhollow has no residents. Mir-Xal reed-cutters work the edges and an old Bucalos hunter keeps a blind in the hollow.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4742,7 +4742,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Flooded tunnels with no dry exit, snakes in the fallen roof and plague-dead in the lower burrow. At D3 a person in the hollow can be trapped by rising water.",
+     "text": "Flooded tunnels with no dry exit, snakes in the fallen roof and plague-dead in the lower burrow. A person in the hollow can be trapped by rising water.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4759,7 +4759,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A Mir-Xal reed-cutter has found a sealed clay jar in the hollow he will not open, and the Bucalos hunter asks that his blind be left alone.",
+     "text": "A Mir-Xal reed-cutter has found a sealed clay jar in the hollow that he will not open, and the Bucalos hunter asks that his blind be left alone.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4805,7 +4805,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A wreck off the south shore; the name is AGENT_INVENTED.",
+     "text": "A wreck off the south shore.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -4958,7 +4958,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Chasepoint is the coast road stage east of Soulrest, a wreck-salvage and carting village on the Percar road. It stands where the road meets the first fork of the interior river.",
+     "text": "Chasepoint is a spit of timber and stone stilt houses with carts under sheds and a salvage yard of ship timber. Soulrest's merchant council rules it and takes its toll.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5165,7 +5165,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Acra-Tiin is a fishing village on the south shore of the cape, across the water from Soulrest's southern islands. It sends fish and salt to the port.",
+     "text": "Acra-Tiin is a row of low stilt houses with drying racks and a boat slip. A reeve runs it for Soulrest's council.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5372,7 +5372,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Naxan is a small fishing and timber village on the cape's north coast, the western end of the Topal Bay road.",
+     "text": "Naxan has timber stilt houses, a log landing and drying racks at the western end of the Topal Bay road. A reeve governs it for Soulrest, and the ruined fort of Wrackmoth lies on the same coast.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5474,7 +5474,7 @@
     },
     {
      "aspect": "faith",
-     "text": "Naxan's Sithis shrine is a ring of pale stones on the headland, where fishermen and loggers both pause on the way to the Topal Bay road. The village keeps a single shared egg-chest that goes to the Banujha tree once a year by Soulrest's coast road.",
+     "text": "Naxan's Sithis shrine is a ring of pale stones on the headland, where fishermen and loggers both pause on the way to the Topal Bay road. The families share a single egg-chest that goes to the Banujha tree once a year by Soulrest's coast road.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5579,7 +5579,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A derelict gold mine of the Imperial concession, burned out by the tribes in 3E 427.",
+     "text": "Old Goldseam is a run of rusted rails, collapsed timber props and a broken sluice, with flooded shafts and a ruined winch house. Outlaws from the Percar hills shelter in the mine mouth.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5643,7 +5643,7 @@
     },
     {
      "aspect": "people",
-     "text": "Nobody lives at Old Goldseam. A few outlaws from the Percar hills shelter in the mine mouth, and scavengers pass between Stonecut Quarry and Zeh-Orun.",
+     "text": "Old Goldseam has no residents. A few outlaws from the Percar hills shelter in the mine mouth, and scavengers pass between Stonecut Quarry and Zeh-Orun.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5780,7 +5780,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A burned timber-and-gold mine in the Percar hills.",
+     "text": "Blackdrift is a mine of black-scorched timbers and a collapsed portal, with a scavenger camp at the portal. It cut timber and gold-bearing ore together.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5851,7 +5851,7 @@
     },
     {
      "aspect": "economy",
-     "text": "It once cut timber and gold-bearing ore together for the Imperial concession; now Chasepoint salvagers haul its iron and charred beams away and little else draws anyone.",
+     "text": "It once cut timber and gold-bearing ore together for the Imperial concession. Now Chasepoint salvagers haul its iron and charred beams away.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5873,7 +5873,7 @@
     },
     {
      "aspect": "faith",
-     "text": "A half-burned miners' tally board with a Sithis scratch hangs near the portal and no one has taken it down. Chasepoint carters make the sign as they pass.",
+     "text": "A half-burned miners' tally board with a Sithis scratch hangs near the portal, still in place. Chasepoint carters make the sign as they pass.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5971,7 +5971,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A numbered Imperial mine on the south side of the cape.",
+     "text": "Ninth Shaft has a timber headframe over a wide mouth, flooded below, with smugglers storing goods above.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6064,7 +6064,7 @@
     },
     {
      "aspect": "faith",
-     "text": "A cracked Imperial votive niche is cut into the shaft head and holds a single drowned lamp. Miners' superstition says the ninth shaft took its tithe, and Xal-Tarek's men avoid the name.",
+     "text": "A cracked Imperial votive niche is cut into the shaft head and holds a single drowned lamp. Miners say that the ninth shaft took a toll of lives, and Xal-Tarek's men avoid the name.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6162,7 +6162,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A burn-scarred open cut near Naxan.",
+     "text": "Ashfall Cut is a black pit with gas shimmering over it. Redtimber loggers cut through it on the way to Naxan.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6353,7 +6353,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A working quarry on the Percar road, licensed by Soulrest.",
+     "text": "Stonecut Quarry is a terraced cut with a stone sled track beside the Percar road. Its grey blocks go to Soulrest's harbour works and the coast road.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6390,7 +6390,7 @@
     },
     {
      "aspect": "present",
-     "text": "A crew of about a dozen works the Percar road face under a Soulrest licence, cutting grey blocks for the harbour works and the coast road.",
+     "text": "A crew of five works the Percar road face under a Soulrest licence, cutting grey blocks for the harbour works and the coast road.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6543,7 +6543,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A red-stone quarry on the south side of the cape.",
+     "text": "Redbank Quarry is a red-stained cut with a sled track and a short track to the shore. Its blocks are prized for their colour.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6580,7 +6580,7 @@
     },
     {
      "aspect": "present",
-     "text": "A crew of about ten works the red-stone face on the south side of the cape, under a Soulrest licence, with a short track to the shore.",
+     "text": "A crew of four works the red-stone face on the south side of the cape, under a Soulrest licence, with a short track to the shore.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6910,7 +6910,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A ruined Imperial watchtower on the cape's south shore, left since the Empire's fall.",
+     "text": "Mistwatch is a broken stone tower on a rise, with a chipped Divines' niche at its base. Smugglers use it.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -6964,7 +6964,7 @@
     },
     {
      "aspect": "people",
-     "text": "Mistwatch holds no one. Xal-Tarek's patrols pass by, and sea-wreckers sometimes light a fire in the tower stump.",
+     "text": "Mistwatch has no residents. Xal-Tarek's patrols pass by, and sea-wreckers sometimes light a fire in the tower stump.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7003,7 +7003,7 @@
     },
     {
      "aspect": "faith",
-     "text": "A chipped Imperial Divines' niche in the tower base holds a rain-filled bowl, and Xal-Tarek's men leave it alone.",
+     "text": "A chipped Imperial Divines' niche in the tower base holds a rain-filled bowl, and Xal-Tarek's men do not touch it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7100,7 +7100,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A ruined Imperial fort on the cape's north coast.",
+     "text": "Wrackmoth is a flooded fort of stone walls grown over with creepers. It once guarded the Topal Bay road.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -7300,7 +7300,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A stilt village on the cape abandoned after the 3E 427 uprisings.",
+     "text": "Zeh-Orun is a ring of rotted halls in the trees. It housed the Old Goldseam crews and their families until the uprisings.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -7760,7 +7760,7 @@
     },
     {
      "aspect": "faith",
-     "text": "They hold to their own Hist's roots, and love riddles.",
+     "text": "They hold to their own Hist's roots. They love riddles.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8041,7 +8041,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A lighthouse on the south coast at the edge of the Sea of Mists, AGENT_INVENTED name.",
+     "text": "A lighthouse on the south coast at the edge of the Sea of Mists.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8217,7 +8217,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A wreck on the sea floor; the name is AGENT_INVENTED.",
+     "text": "A wreck on the sea floor.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {

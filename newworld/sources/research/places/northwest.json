@@ -27,7 +27,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Stormhold is the largest settlement of Shadowfen, a major city of Black Marsh, sited near the banks of the river that forms the border with Morrowind. The city of the Valley of Storms region and the player's likeliest first sight of the province.",
+     "text": "The city of the Valley of Storms region and the likeliest first sight of the province for a newcomer. (full TEXT: \"Stormhold is the largest settlement of Shadowfen, a major city of Black Marsh, sited near the banks of the river that forms the border with Morrowind. The city of the Valley of Storms region and the likeliest first sight of the province for a newcomer.\")",
      "tier": "CANON_EXPLICIT",
      "sources": [
       {
@@ -70,7 +70,7 @@
     },
     {
      "aspect": "present",
-     "text": "The waterfall, the ravine-severed mounds, the Hist in its pond and the Silyanorn substructure all survived 4E 48; 153 years have rebuilt the rest. The scar that remains is in the population, not the stone. The Vicecanons keep the river customs and the frontier screen's offices here.",
+     "text": "The waterfall, the ravine-severed mounds, the Hist in its pond and the Silyanorn substructure all survived 4E 48. The rest has been rebuilt in the 153 years since. The damage that remains is in the population. The Vicecanons keep the river customs and the frontier screen's offices here.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -194,7 +194,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "The Silyanorn undercity, with its crystal tunnels and a lost book of wisdom about the natural energies of Black Marsh; the Conclave of Baal and its Vaults of Gemin; the old quarrel between the Argonian west quarter and the Dunmer; the Vicecanons' courts. A natural opening for a player: the whole province's history is visible in one walk.",
+     "text": "The Silyanorn undercity holds crystal tunnels and a lost book of wisdom about the natural energies of Black Marsh. The Conclave of Baal keeps its Vaults of Gemin. The old quarrel between the Argonian west quarter and the Dunmer is a further hook, and so are the Vicecanons' courts.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -393,7 +393,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "D1: the town is quiet, and its own wardens patrol. Off the road, crocodiles in the weir channels, and looters and Naga brigands on the track toward the ruins.",
+     "text": "D1: the town is quiet. Its own wardens patrol. Off the road, crocodiles in the weir channels, and looters and Naga brigands on the track toward the ruins.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -665,7 +665,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Surkina is a village in the Stormhold manner, a few kilometres south-east of the city. UESP has no page for it (searched 2026-11-08); it is a Project Tamriel name.",
+     "text": "Surkina is a village in the Stormhold manner, a few miles south-east of the city. UESP has no page for it (searched 2026-11-08); it is a Project Tamriel name.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1962,7 +1962,7 @@
     },
     {
      "aspect": "people",
-     "text": "A reeve, two Argonian guards, and a clerk on market days.",
+     "text": "A reeve, two Argonian guards and a clerk on market days.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2618,7 +2618,7 @@
     },
     {
      "aspect": "people",
-     "text": "Nobody lives here; a hermit scavenger sometimes does.",
+     "text": "The ruin has no residents; a hermit scavenger sometimes lives there.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2950,7 +2950,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A Naga camp, labelled on the map as [Naga Camp]. UESP has no page for it (searched 2026-11-08); Naga themselves have a UESP page and are given in tribes.md.",
+     "text": "The map labels this place [Naga Camp]. UESP has no page for it (searched 2026-11-08); Naga themselves have a UESP page and are given in tribes.md.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -3019,7 +3019,7 @@
     },
     {
      "aspect": "people",
-     "text": "Tribeless Naga, tall and beady-eyed; their cruelty is professional rather than ideological.",
+     "text": "Tribeless Naga, tall and beady-eyed. Their cruelty is professional.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3469,7 +3469,7 @@
    "siting": "inland",
    "danger_band_id": "D1",
    "importance": 3,
-   "summary": "A stone Imperial keep beside Slough Point, held as the western customs fort on the Blackwood Road. The imperial eagle still hangs over the gate, nobody having chiselled it off.",
+   "summary": "A stone Imperial keep beside Slough Point, held as the western customs fort on the Blackwood Road. The Imperial eagle still hangs over the gate. It has not been chiselled off.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
@@ -3942,7 +3942,7 @@
     },
     {
      "aspect": "present",
-     "text": "The ghost-knights were freed in 2E 582; the Enchanter's works and the keystones remain. Argonians put the amphitheatre to uses the Ayleids never envisioned, and the Veesa-Teeleel guard the ruin from looters.",
+     "text": "The ghost-knights were freed in 2E 582; the Enchanter's works and the keystones remain. Argonians put the amphitheatre to uses that the Ayleids never envisioned. The Veesa-Teeleel guard the ruin from looters.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4572,7 +4572,7 @@
     },
     {
      "aspect": "people",
-     "text": "Nobody lives at Mirasel. Weir-wardens from Reed-Sill and Teel-Fen see its white arches on their rounds and name no one who has stayed.",
+     "text": "Mirasel has no residents. Weir-wardens from Reed-Sill and Teel-Fen see its white arches on their rounds and have never seen a visitor stay.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4594,7 +4594,7 @@
     },
     {
      "aspect": "economy",
-     "text": "It was a minor hall of the Ayleid settlement. It now draws scavengers and relic-hunters from Jal-Veesa, who come by the Teel-Fen creek.",
+     "text": "It was a minor hall of the Ayleid settlement. Scavengers and relic-hunters now come from Jal-Veesa by the Teel-Fen creek.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4728,7 +4728,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A Barsaebic Ayleid ruin marked on the map at (-15,-69); named by us in the Ayleid manner. UESP has no page (searched 2026-11-08).",
+     "text": "The map labels Orimel [Outpost] at (-15,-69), north-west of Slough Point; we read it as a ruin and named it in the Ayleid manner. UESP has no page (searched 2026-11-08).",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -4784,7 +4784,7 @@
     },
     {
      "aspect": "people",
-     "text": "No one lives at Orimel. Hunters from Vel-Sapha Stand and the Fort Rustmoth garrison patrol the track below it, and neither side goes up.",
+     "text": "Orimel has no residents. Hunters from Vel-Sapha Stand and the Fort Rustmoth garrison patrol the track below it. Neither side goes up.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4806,7 +4806,7 @@
     },
     {
      "aspect": "economy",
-     "text": "It was a small Ayleid hall; it now draws relic-hunters from Slough Point and the odd Fort Rustmoth soldier looking for white stone.",
+     "text": "It was a small Ayleid hall. Relic-hunters from Slough Point now come to it, with the odd Fort Rustmoth soldier looking for white stone.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6221,7 +6221,7 @@
    "siting": "riverbank",
    "danger_band_id": "D2",
    "importance": 3,
-   "summary": "A river village at the empty stone chapel of the Maran mission, in the far west. Its people live around a church that was eaten by the swamp two centuries ago.",
+   "summary": "A river village at the empty stone chapel of the Maran mission, in the far west. Its people live around a church that the swamp overgrew two centuries ago.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
@@ -6269,7 +6269,7 @@
     },
     {
      "aspect": "present",
-     "text": "A hamlet of river Argonians living in and around the stripped stone chapel, which is two centuries into being eaten by the swamp. A fish-and-reed trade with Slough Point.",
+     "text": "A hamlet of river Argonians living in and around the stripped stone chapel, which the swamp has been overgrowing for two centuries. A fish-and-reed trade with Slough Point.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6357,7 +6357,7 @@
     },
     {
      "aspect": "look",
-     "text": "A stone chapel with a fallen roof, vine-covered, and stilt houses along the bank.",
+     "text": "A stone chapel with a fallen roof, vine-covered and stilt houses along the bank.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6453,7 +6453,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "An unlabelled outpost, named by us in the Hutan-Tzel style. UESP has no page (searched 2026-11-08).",
+     "text": "The map shows an unlabelled outpost here. We named it in the Hutan-Tzel style. UESP has no page (searched 2026-11-08).",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -6532,7 +6532,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Hutan-Aru's people hunt and guide travellers across the river branch, and sell hides and smoked fish to Umpholo and the Meliton hill-folk. They bargain hard for bridge-tolls, the one thing every passing caravan needs.",
+     "text": "Hutan-Aru's people hunt and guide travellers across the river branch, and sell hides and smoked fish to Umpholo and the Meliton hill-folk. They bargain hard over bridge-tolls, which every passing caravan must pay.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6729,7 +6729,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Hutan-Veel earns its living on the far-west border road: guiding, selling meat to Nahk-Zeel Station and bargaining at the palisade gate with Cyrodilic traders. A toll in salt keeps it fed.",
+     "text": "Hutan-Veel earns its living on the far-west border road: guiding, selling meat to Nahk-Zeel Station and bargaining at the palisade gate with Cyrodilic traders. The outpost lives on a toll paid in salt.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6884,7 +6884,7 @@
     },
     {
      "aspect": "people",
-     "text": "Nobody lives at Aldanus Watchtower. Hutan-Veel scouts climb it for the view and sleep rough in its yard when they range south.",
+     "text": "Aldanus Watchtower has no residents. Hutan-Veel scouts climb it for the view and sleep rough in its yard when they range south.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7010,7 +7010,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A Kothringi ruin on the map at (-14,-71); named by us in the Greek-style of Kothringi towns such as Korydon and Toklea. UESP has no page (searched 2026-11-08); the Kothringi do.",
+     "text": "A Kothringi ruin on the map at (-14,-71); named by us in the style of Kothringi towns such as Korydon and Toklea. UESP has no page (searched 2026-11-08); the Kothringi do.",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -7079,7 +7079,7 @@
     },
     {
      "aspect": "people",
-     "text": "No one lives here. The Naka-Desh come on foot from the west in the dry months, and Hutan-Aru hunters leave them alone.",
+     "text": "The ruin has no residents. The Naka-Desh come on foot from the west in the dry months, and Hutan-Aru hunters leave them alone.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7102,7 +7102,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Once a craft town of glass beads and moonstone. It now draws treasure-diggers, and the Sul-Xan raiders who come for the cairns.",
+     "text": "Once a craft town of glass beads and moonstone. Treasure-diggers now work it, as do the Sul-Xan raiders who come for the cairns.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7125,7 +7125,7 @@
     },
     {
      "aspect": "faith",
-     "text": "The Kothringi honoured Z'en, Dibella, Mara and Kynareth, and their cairns still hold bead strings. Naka-Desh chimes hang in a single thorn tree beside the largest cairn.",
+     "text": "The Kothringi honoured Z'en, Dibella, Mara and Kynareth and their cairns still hold bead strings. Naka-Desh chimes hang in a single thorn tree beside the largest cairn.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7234,14 +7234,14 @@
    "siting": "inland",
    "danger_band_id": "D3",
    "importance": 2,
-   "summary": "A dead Kothringi town of cairns and stone footings in the western hills, left empty since the Knahaten Flu of 2E 560.",
+   "summary": "Aithros is a dead Kothringi town of cairns and stone footings above a stream, a day south-west of Hutan-Veel near the Cyrodiil border. The Knahaten Flu of 2E 560 emptied it.",
    "lore_page": null,
    "statement_tier_id": "AGENT_INVENTED",
    "aliases": [],
    "notes": [
     {
      "aspect": "overview",
-     "text": "A Kothringi ruin on the map at (-23,-76); named by us in the Greek-style of Kothringi towns such as Korydon and Toklea. UESP has no page (searched 2026-11-08); the Kothringi do.",
+     "text": "The map shows a Kothringi ruin at (-23,-76), close to the Cyrodiil border. We named it in the style of Kothringi towns such as Korydon and Toklea. UESP has no page (searched 2026-11-08).",
      "tier": "AGENT_INVENTED",
      "sources": [
       {
@@ -7310,7 +7310,7 @@
     },
     {
      "aspect": "people",
-     "text": "No one lives here. Naka-Desh come in small parties and Hixinoag villagers cut wood on the slope below without crossing it.",
+     "text": "The ruin has no residents. Naka-Desh come in small parties and Hixinoag villagers cut wood on the slope below without crossing it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7333,7 +7333,7 @@
     },
     {
      "aspect": "economy",
-     "text": "A craft town once, with beadwork and a pottery lane; it now draws treasure-diggers and Cyrodilic relic-buyers from Nahk-Zeel Station.",
+     "text": "It was a craft town with beadwork and a pottery lane. Treasure-diggers and Cyrodilic relic-buyers from Nahk-Zeel Station now visit it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7518,7 +7518,7 @@
     },
     {
      "aspect": "people",
-     "text": "Nobody lives at Anutasil. Umpholo reed-cutters see its arches from their flats and keep clear, and the odd Meliton-bound traveller sleeps in its dry corner.",
+     "text": "Anutasil has no residents. Umpholo reed-cutters see its arches from their flats and keep clear, and the odd Meliton-bound traveller sleeps in its dry corner.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {

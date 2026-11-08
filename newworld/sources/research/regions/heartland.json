@@ -54,7 +54,7 @@
     },
     {
      "aspect": "present",
-     "text": "In 4E 201 the forest crowds the river arms around Helstrom, held by the Root-Folk, the Hutan-Tzel at its west edge, and several camps of Naga and Paatru. Few outsiders come, and fewer come back.",
+     "text": "In 4E 201 the forest crowds the river arms around Helstrom, held by the Root-Folk, the Hutan-Tzel at its west edge, and several camps of Naga and Paatru. Few outsiders come.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -254,7 +254,7 @@
     },
     {
      "aspect": "history",
-     "text": "Nothing is recorded. The lake is the interior's drain: the rivers all flow to Middle Argonia, and this is where they pool, which made it a meeting place for trade long before the Empire built a post at Gysilla.",
+     "text": "Nothing is recorded. The lake is the interior's drain. The rivers all flow to Middle Argonia and pool here, which made it a meeting place for trade long before the Empire built a post at Gysilla.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -777,7 +777,7 @@
     },
     {
      "aspect": "people",
-     "text": "The Chime-Keepers of Korydon, Nemeon and Myroleon, Tumnatu hunters, and a few Root-Folk boatmen.",
+     "text": "The Chime-Keepers of Korydon, Nemeon and Myroleon, Tumnatu hunters and a few Root-Folk boatmen.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -801,7 +801,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Dragon's-tongue and other swamp herbs, chimes, rope and boats from Korydon, fish, and pelts traded north to Helstrom and south to Blackrose.",
+     "text": "Dragon's-tongue and other swamp herbs, chimes, rope and boats from Korydon, fish and pelts traded north to Helstrom and south to Blackrose.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -849,7 +849,7 @@
     },
     {
      "aspect": "look",
-     "text": "A grey-green maze of cattails, reed and black water, with rings of dry ground and stilt towns hung with metal chimes.",
+     "text": "The swamp is a grey-green maze of cattails, reed and black water, with rings of dry ground and stilt towns hung with metal chimes.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
