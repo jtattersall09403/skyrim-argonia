@@ -826,5 +826,32 @@
   "used_by": "the NewWorld profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it): records and meshes the new world (ArgoniaNewWorld.esm, phase nw-02) places",
   "linked_or_forked_by": "none: depended on as the player’s own download",
   "notes": "author Everglaid. No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission."
+ },
+ {
+  "name": "xLODGen - Terrain LOD beta",
+  "source_url": "https://github.com/sheson/xLODGen/releases/tag/v132",
+  "version": "beta 132 (mods/dependencies.json row xlodgen)",
+  "licence": "MPL 1.1 (xEdit-based; github sheson/xLODGen has no licence file of its own)",
+  "used_by": "a LOD tool run on the game machine by infra/gpu-box/lod.ps1 (nw-02 step 11); never laid into Data or shipped",
+  "linked_or_forked_by": "none: a tool the player downloads and runs",
+  "notes": "author sheson. A free tool the player downloads and runs; nothing of it is copied into our files or shipped, so no permission is needed. Its output is made on the player's machine."
+ },
+ {
+  "name": "DynDOLOD 3 Alpha (standalone: DynDOLOD, TexGen, LODGen, Texconv)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/68518?tab=files&file_id=826588",
+  "version": "3.00 Alpha-217 (mods/dependencies.json row dyndolod)",
+  "licence": "CC BY-NC-SA 4.0 (DynDOLOD and its assets); DynDOLOD.exe, TexGen.exe and LODGen.exe under MPL 1.1 as xEdit derivatives (DynDOLOD-LICENSE.txt in the archive)",
+  "used_by": "a LOD tool run on the game machine by infra/gpu-box/lod.ps1 (nw-02 step 11); never laid into Data or shipped",
+  "linked_or_forked_by": "none: a tool the player downloads and runs",
+  "notes": "author sheson. Non-commercial share-alike: the player downloads and runs it on their own machine; nothing of it is copied into our files or shipped, and its output is derived there (0014 §4), so no permission is asked. A shipped LOD made with it would carry BY-NC-SA."
+ },
+ {
+  "name": "DynDOLOD Resources SE 3",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/52897?tab=files&file_id=747879",
+  "version": "3.00 Alpha-59 (mods/dependencies.json row dyndolod-resources)",
+  "licence": "CC BY-NC-SA 4.0 (DynDOLOD and its assets); DynDOLOD.exe, TexGen.exe and LODGen.exe under MPL 1.1 as xEdit derivatives (DynDOLOD-LICENSE.txt in the archive)",
+  "used_by": "a LOD tool run on the game machine by infra/gpu-box/lod.ps1 (nw-02 step 11); never laid into Data or shipped",
+  "linked_or_forked_by": "none: a tool the player downloads and runs",
+  "notes": "author sheson. Non-commercial share-alike: the player downloads and runs it on their own machine; nothing of it is copied into our files or shipped, and its output is derived there (0014 §4), so no permission is asked. A shipped LOD made with it would carry BY-NC-SA."
  }
 ]
