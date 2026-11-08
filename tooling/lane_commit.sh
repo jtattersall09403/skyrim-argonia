@@ -24,6 +24,27 @@ done
 
 git add -- "${paths[@]}" || die "git add failed"
 if git diff --cached --quiet -- "${paths[@]}"; then die "nothing to commit in the given paths"; fi
+# A commit made from a tree behind main must not undo other lanes' work: refuse any staged file that goes back to an
+# earlier version from main's last 50 commits, or that deletes a file main added in that span (a stale tree swept
+# into one commit deleted and reverted another lane's files, 2026-11-08). LANE_ALLOW_REVERT=1 for a deliberate revert.
+if [ -z "${LANE_ALLOW_REVERT:-}" ]; then
+  bad=()
+  while IFS=$'\t' read -r st f; do
+    if [ "$st" = D ]; then
+      [ -n "$(git log -n1 --format=%h --diff-filter=A HEAD~50..HEAD -- "$f" 2>/dev/null)" ] && bad+=("$f (deletes a file added in main's last 50 commits)")
+      continue
+    fi
+    staged=$(git rev-parse ":$f" 2>/dev/null) || continue
+    [ "$staged" = "$(git rev-parse "HEAD:$f" 2>/dev/null)" ] && continue
+    for c in $(git log -n 20 --format=%H HEAD~50..HEAD -- "$f" 2>/dev/null); do
+      [ "$(git rev-parse "$c^:$f" 2>/dev/null)" = "$staged" ] && { bad+=("$f (back to its version before ${c:0:8})"); break; }
+    done
+  done < <(git diff --cached --name-status --no-renames -- "${paths[@]}")
+  if [ "${#bad[@]}" -gt 0 ]; then
+    printf '  %s\n' "${bad[@]}" >&2
+    die "refused: this commit would undo recent work on main (staged, not committed). Bring your tree level with origin/main and commit only your own files; LANE_ALLOW_REVERT=1 if the revert is deliberate"
+  fi
+fi
 # A commit that touches the C# plugin tool must leave it building: build HEAD plus exactly the staged change in a
 # scratch worktree (another lane's half-done .cs swept into a commit broke main's build for every lane, 2026-11-08).
 if [ -z "${LANE_SKIP_CS_BUILD:-}" ] && git diff --cached --name-only -- "${paths[@]}" | grep -qE '^tools/ArgoniaPlugin/.*\.(cs|csproj)$'; then
