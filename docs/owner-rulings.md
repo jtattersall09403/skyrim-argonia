@@ -166,3 +166,15 @@ added here the day they are made, with the date and the issue.
 - 2026-11-07: the g4dn's $0.80 an hour is fine: play is about 20 hours a month at most, not 50; the play machine
   must stop itself when the owner is not playing (its 15-minute idle stop stays on).
 - 2026-11-07: every BM&V person must be talkable, with a light backstory grounded in their place, trade and spot, and their own topics (directions, dangers, rumours that lead to quests, loot spots, ingredients, more), every fact real and true in the loaded world; do all of Lilmoth's people now, and put a phase in the plan for the rest (Phase 4a, docs/design/talk.md).
+- 2026-11-08 (walk-2 feedback, tmp/walk-2-feedback.md): TrueHUD's new-game defaults are the mod's own except display
+  criteria "dynamic" for all three player bars, hide vanilla bars on, bar width 150 (minimum 50, maximum 500), scale
+  bars on, player widget anchor X 0.045 and Y 0.105. The player's health does not regenerate; magicka and stamina do.
+  The compass is back on (the owner needs it to follow directions). A weapon drawn runs at the normal run speed, not a
+  fast walk. Elden Parry's window is widened again (hard, not impossible, over the stream). A standing dodge is one
+  backstep, not two (unless that is the mod's own clip). Magistrate's Levitate (Nexus SSE 24695) goes into the stack
+  and its Levitate spell into the starting Magic menu. Talk: each person needs their own personality and their own
+  knowledge, written into the speaker brief so the dialogue writer flavours their lines; every Lilmoth person is
+  talkable and named; the Looks-At-Books trader gets topics and a stock that fits a small trader. Lilmoth's walk-in
+  shell buildings count as rooms for quests and homes. Fix the windows that render as flat blue panes in Lilmoth.
+  The next walk re-tests only the blocks still unproved, not the whole test quest. The world map: investigate and
+  plan (native or 2d parchment with fog of war, whichever is easiest and most reliable); do not build it yet.

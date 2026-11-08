@@ -84,8 +84,9 @@ function Set-GameWindow {
   # the auto-vanity camera: after fAutoVanityModeDelay seconds idle the camera orbits the player and no first-person
   # switch takes; never in the studio
   & $set "$docs\Skyrim.ini" 'Camera' @{ 'fAutoVanityModeDelay' = 1000000 }
-  # No compass and no quest marker (1.2 §a, Morrowind's way): the player finds places by the chart and directions.
-  & $set "$docs\SkyrimPrefs.ini" 'Interface' @{ 'bShowCompass' = 0 }
+  # The compass is on (owner walk 2026-11-07: "I need the compass so I can follow directions"); quest markers stay off
+  # (below, Morrowind's way), so the compass shows places and directions but no quest target.
+  & $set "$docs\SkyrimPrefs.ini" 'Interface' @{ 'bShowCompass' = 1 }
   # Light shafts: the engine's volumetric lighting, linked per weather (WTHR HNAM, lane 1.15-r6-light); off by default in the prefs the stack writes.
   & $set "$docs\SkyrimPrefs.ini" 'Display' @{ 'bVolumetricLightingEnable' = 1 }
   & $set "$docs\SkyrimPrefs.ini" 'GamePlay' @{ 'bShowQuestMarkers' = 0; 'bShowFloatingQuestMarkers' = 0 }

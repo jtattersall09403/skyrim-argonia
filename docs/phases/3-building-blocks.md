@@ -40,8 +40,8 @@ triangle centre (as the opening marker was) and the read-back checks it.
 
 | Record | Type | Block | What it is |
 |---|---|---|---|
-| `ARG_BlockTest` | QUST | E-stage | the test quest; not Start Game Enabled; stages 10 to 100 below; Run Once off (re-runnable for a re-test) |
-| `ARG_BlockTestEnd` | QUST | TR-chain | the second quest: one start-up stage 10, journal "The second quest started from the first.", then completes |
+| `ARG_BlockTest` | QUST, type Side Quest | E-stage | the test quest; not Start Game Enabled; stages 10 to 100 below; Run Once off (re-runnable for a re-test) |
+| `ARG_BlockTestEnd` | QUST, type Side Quest | TR-chain | the second quest: empty start-up stage 0; stage 10 (set by `ARG_BlockTest` 90) journal "The second quest started from the first."; stage 100 (set by `ARG_BlockTest` 100) completes, journal "The second quest ended with the first." |
 | `ARG_BT_Keeper` | NPC_ | W-npc, W-fixed | "Dock Keeper", TPLT `00FF4D:Black Marsh.esm` (ArgonianMaleVillager), fixed level 5, not essential; our voice type none (topics are text with silent lines, as the act's will be until voiced) |
 | `ARG_BT_Walker` | NPC_ | W-npc, W-fixed | "Dock Walker", TPLT `02A1EE:Black Marsh.esm` (ArgonianFemaleVillager), fixed level 5, protected |
 | `ARG_BT_Crab` | NPC_ | W-fixed | "Mudcrab", TPLT `0E4011:Skyrim.esm` (EncMudcrabLarge), fixed level 4 (decision 0035: a fixed band, never the player's) |
@@ -51,12 +51,13 @@ triangle centre (as the opening marker was) and the read-back checks it.
 | `ARG_BT_StartMarker`, `ARG_BT_WalkerMarker`, `ARG_BT_DoorMarker` | REFR XMarker (`00003B`), persistent | E-move, E-package | where the player lands (2 m from the keeper), where the walker appears (beside the keeper), where she walks to (in front of the ship door) |
 | `ARG_BT_TokenParent`, `ARG_BT_CrabParent` | REFR XMarker, persistent, initially disabled | E-enable | enable parents |
 | `ARG_BT_Token` | MISC "Test Token" (value 0, a vanilla shell model such as `Clutter\Common\...` picked by the build agent from BM&V's dock clutter) | TR-acquire | the thing to pick up |
-| `ARG_BT_TokenRef` | REFR, persistent | TR-acquire, E-enable | the token on the dock planks between the start marker and the keeper, 30 units above the navmesh so it settles onto the planks, enable parent `ARG_BT_TokenParent` |
+| `ARG_BT_TokenRef` | REFR, persistent | TR-acquire, E-enable | the token on the dock planks (BM&V's `BYOHFishDock01` ref `02A20A`) 3 m east of the keeper, at 31040,-2700, 30 units above the planks' mesh top (19.9) read by the placement helper (blocks.md W-ref), enable parent `ARG_BT_TokenParent` |
 | `ARG_BT_Key` | KEYM "Ship Door Key" | E-item (setDoorAccess) | the key the keeper hands over |
 | `0AA664:Black Marsh.esm` override | REFR (W-override) | W-override, setDoorAccess | the ship door, XLOC level "requires key", key `ARG_BT_Key`; persistent flag set |
 | `0AA665:Black Marsh.esm` override | CELL (W-name) | W-name | the ship's FULL "Test Ship" (BM&V's is "Ship") |
 | `03E409`, `03E40A`, `03E40B`, `03E40C`, `03E40D` overrides | ACHR (W-ref removal) | W-ref | Black Marsh North's five Naga on and around the dock, each override flagged initially disabled (they are `we.clean.lilmoth` targets; the test builds them first) |
-| `ARG_BT_ZoneA`, `ARG_BT_ZoneB` | REFR of ACTI `099312:Skyrim.esm` (defaultSetStageTRIGPlayerOnly), XPRM box 300 x 300 x 200, persistent | TR-zone, race guard | two boxes at the same spot on the planks before the ship door, so both fire in the same frame |
+| `ARG_BT_ZoneA`, `ARG_BT_ZoneB` | REFR of ACTI `099312:Skyrim.esm` (defaultSetStageTRIGPlayerOnly), XPRM box 300 x 300 x 200, persistent | TR-zone, race guard | two boxes at the same spot before the ship door, both setting stage 71, so both fire in the same frame |
+| `ARG_BT_RaceHits`, `ARG_BT_RaceRuns` | GLOB short, 0 | race guard | fragment 71's counters: every entry, and entries past the guard (must end at 1) |
 | `ARG_BT_Global` | GLOB short, 0 | E-global, C-global | the remembered "standing" |
 | `ARG_BT_Faction` | FACT "Dock Hands", one rank "Hand" | E-faction, C-faction | the faction joined |
 | `ARG_BT_Scene` | SCEN owned by `ARG_BlockTest`, actors the keeper and walker aliases | E-scene, TR-scene | two lines each, one phase, end fragment sets stage 60 |
@@ -70,7 +71,7 @@ Protected), Crab (`ARG_BT_CrabRef`, Allow Disabled; script `defaultSetStageOnDea
 `myQST`, `preReqStage` 20, `StageToSet` 30), ShipDoor (`0AA664`; script `defaultSetStageAliasScript`: `stage` 80,
 `prereqStageOPT` 75, `TriggerType` as vanilla's activate uses, copied from a vanilla alias that sets a stage on
 activate), ZoneA and ZoneB (the two boxes). Each zone box's own `defaultSetStageTrigScript` properties: `myQuest`
-this quest, `prereqStageOPT` 65, `stage` 71 (A) or 72 (B). Property names are as Skyrim.esm writes them
+this quest, `prereqStageOPT` 65, `stage` 71 (both). Property names are as Skyrim.esm writes them
 (measured 2026-11-06: 88 refs use `prereqStageOPT`/`myQuest`/`stage`; 8 acquire aliases `myQST`/`preReqStage`/`StageToSet`).
 
 **The keeper's lines** (INFO conditions are CTDA run on the keeper unless said; each fragment is the TR-topic shape,
@@ -97,13 +98,13 @@ About ten minutes. Each line is one thing to look at; the stage is what the cons
 | 4 | 40 | TR-topic; C-item; C-global; E-item (taken); E-faction | Talk to the keeper, pick "Here is the token." | The token leaves your inventory. `player.getinfaction ARG_BT_Faction` says 1. |
 | 5 | 50 | C-faction; C-skill (both sides); E-move (an actor from an unloaded cell); E-enable; E-scene | Talk to the keeper again | "Talk me into it." shows; "Talk me into it, master." does not. Pick the first: the Dock Walker appears beside the keeper and the two of them speak two lines each. |
 | 6 | 60 | TR-scene; E-package; E-enable (a hostile); AI package priority | Watch | When the talk ends, the walker walks to the ship door. A mudcrab appears 15 m east and comes for you. The walker keeps to her walk (or flees and goes back to it); she does not stand still. |
-| 7 | 60 | C-detected (GetDetected, `detectedBy`) | Crouch behind the dock clutter while the walker walks, then step into her view; each time type `player.getdetected ARG_BT_WalkerRef` in the console | Hidden it says 0 (the walker's package also checks it as a PACK condition); in her view it says 1. |
+| 7 | 60 | C-detected (GetDetected, `detectedBy`) | Crouch behind the dock clutter while the walker walks, then step into her view; each time type `ARG_BT_WalkerRef.getdetected player` in the console (the walker asks whether she detects you; the walk of 2026-11-07 typed it the other way round, `player.getdetected`, which asks whether you detect her and printed -1000) | Hidden it says 0; in her view it says 1. The walker's package carries the same condition, run on her with the player as target. |
 | 8 | 60 | save and reload mid-quest | Save, then load that save | The walker carries on to the ship door; the crab is still there; the journal is as before. |
 | 9 | 65 | TR-death; W-fixed | Kill the mudcrab | Objective "Walk to the ship door". The crab was the same strength as on any other day (level 4; `getlevel` on it says 4). |
-| 10 | 71 or 72, then 75 | TR-zone; two triggers racing for one stage | Walk onto the planks in front of the ship door | `sqs ARG_BlockTest` shows exactly one of 71 or 72 done, never both, and 75 done. Objective "Open the ship door". |
-| 11 | 75 | save and reload; a trigger refiring | Save, load, walk off the planks and back on | Nothing changes: still exactly one of 71 or 72. |
+| 10 | 71, then 75 | TR-zone; two triggers for one stage | Walk onto the planks in front of the ship door | `sqs ARG_BlockTest` shows 71 and 75 done. `getglobalvalue ARG_BT_RaceRuns` says 1 (fragment 71's work ran once); `getglobalvalue ARG_BT_RaceHits` says 1 or 2 (2: both boxes fired and the guard held). Objective "Open the ship door". |
+| 11 | 75 | save and reload; a trigger refiring | Save, load, walk off the planks and back on | Nothing changes: `ARG_BT_RaceRuns` still 1, `ARG_BT_RaceHits` as before (each box disabled itself after firing). |
 | 12 | 80 | TR-activate; W-override (the lock); setDoorAccess (the key opens it) | Open the ship door | It opens with the key (no lockpick prompt) and you are inside "Test Ship" (W-name, on the loading screen and the map). Objective "Tell the Dock Keeper". |
-| 13 | 90, 100 | C-alive; C-time; TR-topic; E-item (gold); TR-chain | Go back out, talk to the keeper, pick "The crab is dead." | His reply says "By day" between six in the morning and eight at night, "At this hour" otherwise (tell us the game hour). 10 gold in your inventory. The journal shows "Block Test" complete and a second entry, "Block Test, the end": "The second quest started from the first." |
+| 13 | 90, 100 | C-alive; C-time; TR-topic; E-item (gold); TR-chain | Go back out, talk to the keeper, pick "The crab is dead." | His reply says "By day" between six in the morning and eight at night, "At this hour" otherwise (tell us the game hour). 10 gold in your inventory. The journal's completed quests list "Block Test" and "Block Test, the end" ("The second quest started from the first.", "The second quest ended with the first."). |
 
 Every trigger (7), condition (7) and effect (9) in blocks.md is in the table; of the world edits, W-npc, W-fixed,
 W-ref (placement, enable parent and removal), W-name and W-override are; W-navmesh is not (risk 1). The two blocks
@@ -124,8 +125,8 @@ Scriptname ARG_QF_BlockTest extends Quest Hidden
 
 ReferenceAlias Property Keeper Auto
 ReferenceAlias Property Walker Auto
-ReferenceAlias Property ZoneA Auto
-ReferenceAlias Property ZoneB Auto
+GlobalVariable Property RaceHits Auto
+GlobalVariable Property RaceRuns Auto
 ObjectReference Property StartMarker Auto
 ObjectReference Property WalkerMarker Auto
 ObjectReference Property TokenParent Auto
@@ -137,6 +138,10 @@ GlobalVariable Property Standing Auto
 Faction Property DockHands Auto
 Scene Property TalkScene Auto
 Quest Property EndQuest Auto
+
+; Fragment 71's guard. Papyrus runs one function at a time on this script object, and a call to another object can
+; yield it: the check and the set below have no call between them, so they are atomic (docs/design/blocks.md).
+Bool raceTaken = False
 
 Function Fragment_10() ; start-up stage: E-move (the player), E-stage
 	Game.GetPlayer().MoveTo(StartMarker)
@@ -185,14 +190,14 @@ Function Fragment_65() ; E-stage
 	SetObjectiveDisplayed(65)
 EndFunction
 
-Function Fragment_71() ; the race: disable the other trigger first
-	ZoneB.GetRef().Disable()
-	SetStage(75)
-EndFunction
-
-Function Fragment_72()
-	ZoneA.GetRef().Disable()
-	SetStage(75)
+Function Fragment_71() ; two boxes, one stage: the guard first, then the work, counted for the console
+	Bool first = !raceTaken
+	raceTaken = True
+	RaceHits.Mod(1)
+	If first
+		RaceRuns.Mod(1)
+		SetStage(75)
+	EndIf
 EndFunction
 
 Function Fragment_75()
@@ -208,20 +213,20 @@ EndFunction
 Function Fragment_90() ; E-item (gold), TR-chain
 	Game.GetPlayer().AddItem(Gold001, 10)
 	SetObjectiveCompleted(80)
-	EndQuest.Start()
+	EndQuest.SetStage(10)
 	SetStage(100)
 EndFunction
 
-Function Fragment_100()
-	CompleteQuest()
+Function Fragment_100() ; the stage's Complete Quest flag completes the quest; vanilla's last fragments only Stop()
+	EndQuest.SetStage(100)
 	Stop()
 EndFunction
 ```
 
 Dialogue fragments, one per line that sets a stage, the TR-topic shape (`TIF_ARG_BT_<stage>.psc`, Hidden, extends
 TopicInfo): `GetOwningQuest().SetStage(n)` in `Fragment_0` (end). The scene's end fragment
-(`SF_ARG_BT_Scene.psc`, extends Scene): `GetOwningQuest().SetStage(60)`. `ARG_BlockTestEnd`'s stage 10 needs no
-script: its log entry is the proof, and its stage carries the Complete Quest flag.
+(`SF_ARG_BT_Scene.psc`, extends Scene): `GetOwningQuest().SetStage(60)`. `ARG_BlockTestEnd` needs no script: its
+stages 10 and 100 are set by `ARG_BlockTest`'s fragments 90 and 100, and its stage 100 carries the Complete Quest flag.
 
 ## Agent check, before the owner
 
@@ -257,8 +262,40 @@ the .pex strings, the compile log); all 13 steps pass. Where the build differs f
 - **Stats are ours**: the three bases inherit everything from their templates but Stats and Base Data (name,
   Protected), with fixed levels 5, 5 and 4 and AutoCalcStats on the template's class.
 
+**Owner walk 2026-11-07, fixed 2026-11-08** (steps 1 to 6, 8, 9, 12 and 13's reply passed; these four did not):
+
+- **Step 7, C-detected.** `player.getdetected ARG_BT_WalkerRef` asks whether the player detects the walker (the
+  calling reference detects the target); the player has no detection AI, so it printed -1000 with the light level.
+  The package condition was the right way round (run on the subject, the walker, target the player); the check line
+  is now `ARG_BT_WalkerRef.getdetected player`. No record changed.
+- **Steps 10 and 11, two triggers for one stage.** Both 71 and 72 were done. Vanilla's `defaultSetStageTrigScript`
+  (its bytecode, read from Skyrim - Misc.bsa) checks `GetStageDone(stage) == 0` and then calls `SetStage(stage)`;
+  each box is its own script object and the check is a call to the quest, so two boxes entered in one frame both pass
+  their checks before either sets, and a fragment's "disable the other box" comes too late. Bethesda's shape for
+  several triggers to one outcome is several boxes setting one stage: 22 (quest, stage) pairs in Skyrim.esm are set by
+  2 to 6 boxes (CWSiege stage 8 by 6, dunRobbersGorgeQST 40 by 4). So both boxes now set 71, and fragment 71 guards
+  itself: it reads and sets a script variable with no call between (Papyrus runs one function at a time on a script
+  object and yields only at a call), then counts `ARG_BT_RaceHits` (every entry) and `ARG_BT_RaceRuns` (entries past
+  the guard, which must end at 1). Whether `SetStage` on a done stage runs its fragment again is not documented in the
+  shipped sources (Quest.psc says only that SetStage is latent); vanilla's set-stage scripts all guard with
+  `GetStageDone` before setting, which is what one does if it does; the counters show it in game either way. Stage 72
+  is gone; the boxes keep the script's defaults (`doOnce`, `disableWhenDone`), so each disables itself after firing.
+- **Step 13b, the journal.** Both quests were type Misc. Skyrim.esm's 104 completing misc quests carry text on the
+  completing entry in 7 (they are objective lists, and a completed one leaves the journal), against 21 of 23 side
+  quests; no quest of the 300 that complete does so in its start-up stage, and the completing fragment of a side quest
+  completes its last objective and calls `Stop()` (QF_dunVolunruudQST Fragment_16: SetObjectiveCompleted 30,
+  IncSideQuests, Stop), never `CompleteQuest()`. Both quests are now Side Quest; `ARG_BlockTestEnd` has an empty
+  start-up stage 0, text at 10 and the completing entry, with text, at 100; fragment 100 sets the end quest's 100 and
+  stops. `ARG_Opening` already is a Side Quest and has no ending yet; its ending, when written, copies the rule.
+- **Step 2, the token on the planks.** The start marker and the keeper both stand on land (07EEF8 covers land and dock
+  alike); the planks are BM&V's two `BYOHFishDock01` statics east of them. The placement helper (blocks.md W-ref)
+  found their top at z 19.9 under 31040,-2700; the token stands at z 50 there, 3 m east of the keeper.
+
+Measured with `ArgoniaPlugin blockstudy <Skyrim.esm>` and `ArgoniaPlugin surface`; the check (`plugin.sh blocktest`)
+reads each fix back: step 0 (types and completion), step 2 (the token over the planks' mesh), steps 10 and 11.
+
 Positions (07EEF8 triangle): start marker 30535,-2646 (29), keeper 30757,-2589 (32), walker marker 30714,-2461 (31),
-door marker 30981,-3029 (22), crab 31351,-3506 (189), token 30646,-2618,30 (over 30); the walker in `01Ship` at 2907,5107,7046
+door marker 30981,-3029 (22), crab 31351,-3506 (189), token 31040,-2700,50 (over the dock's own navmesh 07EEFF, the planks' top 19.9); the walker in `01Ship` at 2907,5107,7046
 (0AA666 triangle 28).
 
 ## Owner test
@@ -281,6 +318,16 @@ of out/Argonia.esp finds every person's topics gated to their ref (12 of 12), AR
 voice override in place. Not this block: Lilmoth's five Naga (hostile) and the three Dunmer corpses. The rest of
 BM&V is [Phase 4a](4a-talk-to-everyone.md). Owner check: docs/owner-walk-checks.md, Phase 3 section.
 
+Owner walk 2026-11-07: everyone had topics, but all said the same things; villagers, the boat captain and the New
+Order soldiers still opened nothing; nobody had a name; Looks-At-Books had no topics and a huge stock. Rebuilt
+2026-11-08: 30 people (Flaa Heet's village and the shore track, Hereguard Plantation's 11 and the Docks' 7, which
+the census had filed under other settlements), each with personality columns in the brief (talk.md
+"Personality"), their own facts, and a name on a base of their own (`ARG_Talker_<ref>`, templated on the old base,
+the ref overridden; talk.md "Names and bases"); Looks-At-Books sells a bookseller's fixed stock from her own vendor
+faction `ARG_VendorLooksAtBooks` and chest (talk.md "A trader's stock"). 13 topics, 166 responses; `talk_check`:
+30 of 30 gated, 28 renamed refs on their named bases (Flaa Heet and Deep-In-His-Cups keep BM&V's names), the chest's
+stock as listed, 0 problems.
+
 ## Risks
 
 1. **W-navmesh is not on this route.** The dock and the ship both have navmesh, and navmesh is made only in the
@@ -293,9 +340,8 @@ BM&V is [Phase 4a](4a-talk-to-everyone.md). Owner check: docs/owner-walk-checks.
    their five disables first; without them step 1 is a fight.
 4. **SCEN, PACK and DIAL by Mutagen are new to our generator** (it has written only QUST, GLOB, worldspace refs and
    story-manager records so far). The first build may need a round of read-back in xEdit; the shapes then stand.
-5. **The race (step 9) may not race.** Two boxes in the same place fire in the same frame only if the engine handles
-   both enter events before either fragment runs; if one always wins first, the guard is shown to hold but the race is
-   not proven. A pass is "exactly one of 71 and 72", whichever way it comes.
+5. **The race (step 10) may not race.** It did on 2026-11-07 (both boxes fired). A pass is now `ARG_BT_RaceRuns` 1;
+   `ARG_BT_RaceHits` 2 shows the guard held a real race, 1 that one box won outright.
 6. **Package priority is judged by eye.** A mudcrab may draw the walker into combat (she is a villager and will flee);
    the pass is that she returns to her walk once it ends, not that she ignores the crab.
 7. **C-skill's line depends on the start's Speech.** Every race starts at Speech 15 or more, so ">= 15" shows and

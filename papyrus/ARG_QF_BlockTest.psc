@@ -3,8 +3,8 @@ Scriptname ARG_QF_BlockTest extends Quest Hidden
 
 ReferenceAlias Property Keeper Auto
 ReferenceAlias Property Walker Auto
-ReferenceAlias Property ZoneA Auto
-ReferenceAlias Property ZoneB Auto
+GlobalVariable Property RaceHits Auto
+GlobalVariable Property RaceRuns Auto
 ObjectReference Property StartMarker Auto
 ObjectReference Property WalkerMarker Auto
 ObjectReference Property TokenParent Auto
@@ -16,6 +16,10 @@ GlobalVariable Property Standing Auto
 Faction Property DockHands Auto
 Scene Property TalkScene Auto
 Quest Property EndQuest Auto
+
+; Fragment 71's guard. Papyrus runs one function at a time on this script object, and a call to another object can
+; yield it: the check and the set below have no call between them, so they are atomic (docs/design/blocks.md).
+Bool raceTaken = False
 
 ;BEGIN FRAGMENT Fragment_10
 Function Fragment_10() ; start-up stage: E-move (the player), E-stage
@@ -79,16 +83,14 @@ EndFunction
 ;END FRAGMENT
 
 ;BEGIN FRAGMENT Fragment_71
-Function Fragment_71() ; the race: disable the other trigger first
-	ZoneB.GetRef().Disable()
-	SetStage(75)
-EndFunction
-;END FRAGMENT
-
-;BEGIN FRAGMENT Fragment_72
-Function Fragment_72()
-	ZoneA.GetRef().Disable()
-	SetStage(75)
+Function Fragment_71() ; two boxes, one stage: the guard first, then the work, counted for the console
+	Bool first = !raceTaken
+	raceTaken = True
+	RaceHits.Mod(1)
+	If first
+		RaceRuns.Mod(1)
+		SetStage(75)
+	EndIf
 EndFunction
 ;END FRAGMENT
 
@@ -110,14 +112,14 @@ EndFunction
 Function Fragment_90() ; E-item (gold), TR-chain
 	Game.GetPlayer().AddItem(Gold001, 10)
 	SetObjectiveCompleted(80)
-	EndQuest.Start()
+	EndQuest.SetStage(10)
 	SetStage(100)
 EndFunction
 ;END FRAGMENT
 
 ;BEGIN FRAGMENT Fragment_100
-Function Fragment_100()
-	CompleteQuest()
+Function Fragment_100() ; the stage's Complete Quest flag completes the quest; vanilla's last fragments only Stop()
+	EndQuest.SetStage(100)
 	Stop()
 EndFunction
 ;END FRAGMENT

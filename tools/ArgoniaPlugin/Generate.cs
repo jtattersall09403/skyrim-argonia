@@ -88,7 +88,9 @@ static class Generate
                         // an Imperial sword and light shield (decision 0006: no Nordic item) and a set of Magic Expanded spells.
                         new ScriptObjectProperty { Name = "TestWeapon", Object = Fk("0135B8:Skyrim.esm") }, // Imperialsword
                         new ScriptObjectProperty { Name = "TestShield", Object = Fk("013AB2:Skyrim.esm") }, // ArmorImperialLightShield
-                        new ScriptObjectListProperty { Name = "TestSpells", Objects = TestSpells.Select(k => new ScriptObjectProperty { Object = Fk(k + ":Magic.esp") }).ToExtendedList() },
+                        // and Magistrate Levitate's Levitate (owner walk 2026-11-07), last
+                        new ScriptObjectListProperty { Name = "TestSpells", Objects = TestSpells.Select(k => new ScriptObjectProperty { Object = Fk(k + ":Magic.esp") })
+                            .Append(new ScriptObjectProperty { Object = Fk("0083EB:Magistrate Levitate.esp") }).ToExtendedList() },
                     },
                 },
             },
@@ -169,6 +171,8 @@ static class Generate
             villager.Name = "Argonian Villager";
             if (!mod.Npcs.Any(n => n.FormKey == key)) mod.Npcs.Add(villager);
         }
+        // Combat (Combat.cs): drawn-weapon run speeds and no player health regen; allocated after Talk.
+        Combat.Add(mod, mods);
         var order = mods.Select(m => m.ModKey).Append(Ours).ToList();
         // The plugin whose worldspace record we override is a master even when no form of it is referenced, so ours
         // always loads after it.
