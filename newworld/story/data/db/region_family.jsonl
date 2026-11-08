@@ -1,0 +1,73 @@
+{"region_id":"althii-archipelago","flora_family_id":"bald_cypress","boost":0.0,"note_aspect_id":"ecology","why":"No cypress named: mangrove and paddy islands."}
+{"region_id":"althii-archipelago","flora_family_id":"coast_palm","boost":1.6,"note_aspect_id":"climate","why":"Sea winds and monsoon: the coconut coast."}
+{"region_id":"althii-archipelago","flora_family_id":"hanging_moss","boost":1.5,"note_aspect_id":"look","why":"Brick ruins in vines."}
+{"region_id":"aphon-isle","flora_family_id":"coast_palm","boost":0.5,"note_aspect_id":"climate","why":"Breezy and salt-swept: few tall palms."}
+{"region_id":"aphon-isle","flora_family_id":"dry_tree","boost":1.6,"note_aspect_id":"look","why":"Low grey hills and scrub."}
+{"region_id":"aphon-isle","flora_family_id":"jungle_tree","boost":0.0,"note_aspect_id":"ecology","why":"Scrub island, no forest."}
+{"region_id":"arnesian-jungle","flora_family_id":"giant_mushroom","boost":1.8,"note_aspect_id":"ecology","why":"Bright fungus."}
+{"region_id":"arnesian-jungle","flora_family_id":"hanging_moss","boost":1.6,"note_aspect_id":"look","why":"Velothi ruins under vines."}
+{"region_id":"arnesian-jungle","flora_family_id":"jungle_emergent","boost":1.8,"note_aspect_id":"look","why":"Tall hardwoods."}
+{"region_id":"arnesian-jungle","flora_family_id":"swamp_shrub","boost":1.5,"note_aspect_id":"ecology","why":"Tree-ferns."}
+{"region_id":"aunike-ridge","flora_family_id":"dry_tree","boost":1.5,"note_aspect_id":"ecology","why":"A few stunted trees."}
+{"region_id":"aunike-ridge","flora_family_id":"flowers","boost":1.3,"note_aspect_id":"climate","why":"A little drier, with morning mist."}
+{"region_id":"aunike-ridge","flora_family_id":"jungle_tree","boost":0.0,"note_aspect_id":"ecology","why":"Fewer trees than the forest."}
+{"region_id":"banujha-basin","flora_family_id":"coast_palm","boost":0.0,"note_aspect_id":"climate","why":"Inland basin."}
+{"region_id":"banujha-basin","flora_family_id":"swamp_dead","boost":1.8,"note_aspect_id":"look","why":"Scorched timber marks the basin."}
+{"region_id":"banujha-basin","flora_family_id":"swamp_log","boost":1.5,"note_aspect_id":"look","why":"Scorched timber."}
+{"region_id":"barsaebica","flora_family_id":"bald_cypress","boost":0.4,"why":"Fen, not forest."}
+{"region_id":"barsaebica","flora_family_id":"marsh_herb","boost":1.6,"why":"Fen and sedge (biome)."}
+{"region_id":"barsaebica","flora_family_id":"rock_den","boost":2.0,"note_aspect_id":"ecology","why":"Caverns."}
+{"region_id":"benthic-yobesh","flora_family_id":"coral","boost":2.2,"note_aspect_id":"look","why":"Coral and kelp."}
+{"region_id":"benthic-yobesh","flora_family_id":"kelp","boost":1.2,"note_aspect_id":"ecology","why":"Kelp."}
+{"region_id":"benthic-yobesh","flora_family_id":"seabed_rock","boost":1.6,"note_aspect_id":"landscape","why":"Drowned spires."}
+{"region_id":"blackwood","flora_family_id":"boulder","boost":1.4,"note_aspect_id":"look","why":"Cairn-fields."}
+{"region_id":"blackwood","flora_family_id":"giant_mushroom","boost":0.5,"note_aspect_id":"ecology","why":"Hill bogs, not jungle."}
+{"region_id":"blackwood","flora_family_id":"swamp_dead","boost":1.5,"why":"Bog forest."}
+{"region_id":"cape-percar","flora_family_id":"coast_palm","boost":1.3,"note_aspect_id":"landscape","why":"Sandy shores."}
+{"region_id":"cape-percar","flora_family_id":"erut","boost":1.8,"note_aspect_id":"ecology","why":"Red gum (KoTM erut stands in for red gum)."}
+{"region_id":"cape-percar","flora_family_id":"swamp_dead","boost":1.5,"note_aspect_id":"look","why":"Black burn-scars."}
+{"region_id":"chixathe-mesa","flora_family_id":"bottle_tree","boost":1.6,"note_aspect_id":"climate","why":"Mesa tops hold little water."}
+{"region_id":"chixathe-mesa","flora_family_id":"date_palm","boost":1.4,"note_aspect_id":"climate","why":"Hot dry days."}
+{"region_id":"chixathe-mesa","flora_family_id":"dry_tree","boost":1.7,"note_aspect_id":"ecology","why":"Thorn-bush and stunted forest."}
+{"region_id":"chixathe-mesa","flora_family_id":"rock_wall","boost":1.6,"note_aspect_id":"landscape","why":"Flat-topped mesas, cliff sides 60 to 110 m."}
+{"region_id":"hatandros-bight","flora_family_id":"coast_palm","boost":0.3,"note_aspect_id":"climate","why":"Milder than the interior."}
+{"region_id":"hatandros-bight","flora_family_id":"dry_tree","boost":1.5,"note_aspect_id":"ecology","why":"Salt-tolerant shrubs, temperate."}
+{"region_id":"hatandros-bight","flora_family_id":"flowers","boost":1.4,"note_aspect_id":"look","why":"Bright green after rain."}
+{"region_id":"hatandros-bight","flora_family_id":"jungle_tree","boost":0.0,"note_aspect_id":"ecology","why":"Temperate, not jungle."}
+{"region_id":"hatandros-bight","flora_family_id":"seju","boost":0.0,"note_aspect_id":"ecology","why":"Temperate north."}
+{"region_id":"kotherra-mangroves","flora_family_id":"fern","boost":1.6,"note_aspect_id":"ecology","why":"Fern."}
+{"region_id":"kotherra-mangroves","flora_family_id":"mangrove","boost":1.4,"why":"Mangrove swamp and estuary (biome)."}
+{"region_id":"lake-ulaish","flora_family_id":"mangrove","boost":0.0,"why":"Freshwater lake."}
+{"region_id":"lake-ulaish","flora_family_id":"reed","boost":1.3,"note_aspect_id":"ecology","why":"Reed beds."}
+{"region_id":"lake-ulaish","flora_family_id":"willow","boost":1.8,"note_aspect_id":"landscape","why":"Delta of river arms."}
+{"region_id":"murkwood","flora_family_id":"coast_palm","boost":0.0,"note_aspect_id":"look","why":"Dark wood."}
+{"region_id":"murkwood","flora_family_id":"giant_mushroom","boost":1.5,"note_aspect_id":"ecology","why":"Torchbugs and bright growth."}
+{"region_id":"murkwood","flora_family_id":"hanging_moss","boost":2.0,"note_aspect_id":"look","why":"Hanging moss."}
+{"region_id":"murkwood","flora_family_id":"hist_root","boost":1.8,"note_aspect_id":"look","why":"Huge roots."}
+{"region_id":"nha-enasa","flora_family_id":"fern","boost":1.5,"note_aspect_id":"ecology","why":"Reeds and ferns."}
+{"region_id":"nha-enasa","flora_family_id":"mangrove","boost":0.0,"why":"Inland river swamp."}
+{"region_id":"nha-enasa","flora_family_id":"reed","boost":1.3,"note_aspect_id":"ecology","why":"Reeds."}
+{"region_id":"nushara-bayou","flora_family_id":"jungle_emergent","boost":0.0,"note_aspect_id":"landscape","why":"Flat, shifting; no tall forest."}
+{"region_id":"nushara-bayou","flora_family_id":"marsh_herb","boost":1.5,"note_aspect_id":"ecology","why":"Saltrice."}
+{"region_id":"nushara-bayou","flora_family_id":"willow","boost":1.3,"note_aspect_id":"look","why":"Hummocks of trees."}
+{"region_id":"okuwun-rahei","flora_family_id":"bamboo","boost":1.5,"note_aspect_id":"look","why":"Bright reed thatch."}
+{"region_id":"okuwun-rahei","flora_family_id":"flowers","boost":1.6,"note_aspect_id":"ecology","why":"Madder: ochre-stained marsh plants."}
+{"region_id":"padomaic-ocean","flora_family_id":"coral","boost":0.4,"why":"Open sea, kelp and sandbank (biome)."}
+{"region_id":"padomaic-ocean","flora_family_id":"kelp","boost":2.2,"note_aspect_id":"look","why":"Dark kelp beds."}
+{"region_id":"padomaic-ocean","flora_family_id":"shell","boost":1.5,"note_aspect_id":"ecology","why":"Crabs."}
+{"region_id":"sea-of-mists","flora_family_id":"mangrove","boost":1.4,"why":"Shallow sea with mangrove fringes (biome)."}
+{"region_id":"sea-of-mists","flora_family_id":"seaweed","boost":1.5,"note_aspect_id":"look","why":"Grey-green water."}
+{"region_id":"skeith-isle","flora_family_id":"coast_palm","boost":0.3,"note_aspect_id":"climate","why":"Windy and salt-laden."}
+{"region_id":"skeith-isle","flora_family_id":"hist","boost":0.0,"note_aspect_id":"ecology","why":"No Hist and little soil."}
+{"region_id":"skeith-isle","flora_family_id":"jungle_tree","boost":0.0,"note_aspect_id":"ecology","why":"Little soil."}
+{"region_id":"skeith-isle","flora_family_id":"rock_wall","boost":1.5,"note_aspect_id":"look","why":"A spire called the Grey Tooth."}
+{"region_id":"topal-bay","flora_family_id":"coral","boost":1.2,"note_aspect_id":"climate","why":"The bay is warm."}
+{"region_id":"topal-bay","flora_family_id":"shell","boost":1.8,"note_aspect_id":"ecology","why":"Crabs, mullet."}
+{"region_id":"tulmek-washes","flora_family_id":"cypress_knee","boost":1.5,"note_aspect_id":"ecology","why":"Cypress."}
+{"region_id":"tulmek-washes","flora_family_id":"swamp_dead","boost":1.3,"note_aspect_id":"look","why":"Drowned domes and mist."}
+{"region_id":"ultherus-swamp","flora_family_id":"lily","boost":1.6,"note_aspect_id":"ecology","why":"Water-lilies."}
+{"region_id":"ultherus-swamp","flora_family_id":"marsh_herb","boost":1.4,"note_aspect_id":"ecology","why":"Dragon's-tongue beds."}
+{"region_id":"ultherus-swamp","flora_family_id":"reed","boost":1.6,"note_aspect_id":"ecology","why":"Cattails and reed."}
+{"region_id":"valley-of-storms","flora_family_id":"dry_tree","boost":1.3,"note_aspect_id":"landscape","why":"Rising to the Morrowind border."}
+{"region_id":"valley-of-storms","flora_family_id":"seju","boost":0.4,"note_aspect_id":"landscape","why":"Cooler north."}
+{"region_id":"valley-of-storms","flora_family_id":"willow","boost":1.5,"note_aspect_id":"look","why":"River branches."}

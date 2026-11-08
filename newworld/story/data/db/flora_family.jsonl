@@ -1,0 +1,40 @@
+{"id":"bald_cypress","flora_class_id":"canopy_tree","standing_water_max_m":3.0,"water_only":0,"cluster_size":2,"about":"Bald cypress: BM2 cypress1/3/5 25 to 73 % flooded, median 0.7 to 3.0 m; KoTM 1 to 5 % at 1.3 to 1.8 m."}
+{"id":"bamboo","flora_class_id":"understorey","water_only":0,"cluster_size":4,"about":"Bamboo and banana stands."}
+{"id":"bottle_tree","flora_class_id":"understorey","water_only":0,"cluster_size":3,"about":"Bottle trees of the dry ground."}
+{"id":"boulder","flora_class_id":"boulder","standing_water_max_m":1.0,"water_only":0,"cluster_size":3,"about":"Boulders and rock piles: KoTM nn 5.3 m (clumped); KoTM coast rocks 60 to 100 % in 0.2 to 3 m."}
+{"id":"cliff_piece","flora_class_id":"cliff","water_only":0,"cluster_size":2,"about":"Rock and dirt cliff pieces: KoTM nn 13.6 m, overlap 20 to 40 %."}
+{"id":"coast_palm","flora_class_id":"palm","standing_water_max_m":0.5,"water_only":0,"cluster_size":2,"about":"Coconut and fan palms: CTQ palms 6 to 19 % at 0.3 to 0.5 m; Palm04 with Palm01 lift 21."}
+{"id":"coral","flora_class_id":"seabed_plant","water_only":0,"seabed_min_m":2.4,"seabed_max_m":5.5,"cluster_size":3,"about":"Depths corals: 2.4 to 5.5 m only (median 3.3 to 3.7)."}
+{"id":"cypress_knee","flora_class_id":"understorey","standing_water_max_m":1.5,"water_only":0,"cluster_size":4,"about":"Cypress knees: KoTM 13 to 48 % flooded, median 0.5 m, max 1.5 m; knee with knee lift 32."}
+{"id":"cypress_knee_giant","flora_class_id":"canopy_tree","standing_water_max_m":3.0,"water_only":0,"cluster_size":1,"about":"KoTM giant cypress knees."}
+{"id":"date_palm","flora_class_id":"palm","standing_water_max_m":0.5,"water_only":0,"cluster_size":2,"about":"Date palms: KoTM 0.3 to 1 % in water."}
+{"id":"dry_tree","flora_class_id":"canopy_tree","water_only":0,"cluster_size":2,"about":"Dry-ground trees and thorn scrub."}
+{"id":"erut","flora_class_id":"canopy_tree","water_only":0,"cluster_size":2,"about":"KoTM erut trees of the firm ground."}
+{"id":"fern","flora_class_id":"fern","standing_water_max_m":0.5,"water_only":0,"cluster_size":5,"about":"Ferns: BM2 SwordFern 17 to 35 % flooded at 0.3 to 1.2 m; clumped (R 0.36 to 0.50); fern with fern lift 32 to 35."}
+{"id":"flowers","flora_class_id":"herb","water_only":0,"cluster_size":5,"about":"Flowering herbs of the open ground."}
+{"id":"giant_mushroom","flora_class_id":"mushroom","water_only":0,"cluster_size":2,"about":"Giant fungus."}
+{"id":"hanging_moss","flora_class_id":"vine_moss","water_only":0,"cluster_size":2,"about":"Hanging moss and vines."}
+{"id":"hist","flora_class_id":"canopy_tree","water_only":0,"cluster_size":1,"about":"Hist trees, trunks and flowers: sacred, on dry rises only."}
+{"id":"hist_root","flora_class_id":"log","standing_water_max_m":1.0,"water_only":0,"cluster_size":2,"about":"Hist roots and root arches."}
+{"id":"jungle_emergent","flora_class_id":"canopy_tree","standing_water_max_m":0.5,"water_only":0,"cluster_size":1,"about":"Emergent jungle hardwoods (40 to 85 m)."}
+{"id":"jungle_tree","flora_class_id":"canopy_tree","standing_water_max_m":0.5,"water_only":0,"cluster_size":2,"about":"Mid-canopy jungle trees: BM2 jungletreenew1 41 to 70 % flooded at 0.7 m; dry trees capped 0.5 m."}
+{"id":"kelp","flora_class_id":"seabed_plant","water_only":0,"seabed_min_m":1.4,"seabed_max_m":20.0,"cluster_size":5,"about":"Kelp (BM&V water kelp): GRAS rules 130 to 390 u (1.9 to 5.6 m) below water; BM1 reeds/lily with WaterKelpTall lift 4."}
+{"id":"lily","flora_class_id":"water_plant","standing_water_max_m":2.0,"water_only":1,"cluster_size":8,"about":"Lilies and water weed: KoTM 100 % in water at 0.5 to 0.6 m; nn 3.1 m, R 0.09 (tight patches); rule 0.5 to 2 m."}
+{"id":"mangrove","flora_class_id":"canopy_tree","standing_water_max_m":3.0,"water_only":0,"cluster_size":1,"about":"Mangrove: BM2 14 to 73 % flooded, median 0.7 to 1.4 m, p90 2.4 to 3.2; solitary (nn 25 m, R 0.77)."}
+{"id":"marsh_herb","flora_class_id":"herb","water_only":0,"cluster_size":4,"about":"Marsh herbs and the alchemy plants of the lore (marshmerrow, bog beacon, redwort, kreshweed, hackle-lo)."}
+{"id":"moss_cypress","flora_class_id":"canopy_tree","standing_water_max_m":3.0,"water_only":0,"cluster_size":1,"about":"Moss-hung cypress."}
+{"id":"mushroom","flora_class_id":"mushroom","water_only":0,"cluster_size":4,"about":"Small fungus: fern to mushroom lift 3."}
+{"id":"reed","flora_class_id":"reed","standing_water_max_m":1.5,"water_only":0,"cluster_size":8,"about":"Reeds: vurt_reeds 99 % flooded, median 1.2 m; rule 0 to 1.5 m."}
+{"id":"rock_den","flora_class_id":"cliff","water_only":0,"cluster_size":1,"about":"Den and cave mouths."}
+{"id":"rock_wall","flora_class_id":"cliff","water_only":0,"cluster_size":1,"about":"Large cliff walls and mountain pieces (sink 4 to 16 m)."}
+{"id":"seabed_rock","flora_class_id":"seabed_rock","water_only":0,"seabed_min_m":3.0,"seabed_max_m":33.0,"cluster_size":3,"about":"Depths moss rocks and seabed cliffs: 10 to 16 m median (3..33), sink 0 to 1 m."}
+{"id":"seaweed","flora_class_id":"seabed_plant","water_only":0,"seabed_min_m":7.5,"seabed_max_m":64.0,"cluster_size":3,"about":"Depths seaweed: deep floor, median 29 to 33 m (p10..p90 12..64); cluster 7.5 m."}
+{"id":"seju","flora_class_id":"palm","standing_water_max_m":0.5,"water_only":0,"cluster_size":3,"about":"Seju palms and saplings."}
+{"id":"shell","flora_class_id":"seabed_plant","water_only":0,"seabed_min_m":2.0,"seabed_max_m":53.0,"cluster_size":3,"about":"Clams: median 20 m (2..53)."}
+{"id":"small_palm","flora_class_id":"understorey","water_only":0,"cluster_size":3,"about":"Small palms and fronds."}
+{"id":"swamp_dead","flora_class_id":"canopy_tree","standing_water_max_m":3.0,"water_only":0,"cluster_size":1,"about":"Dead and leafless swamp trees: BM2 leafless01/02 flooded, leafless01 with cypress5 lift 9."}
+{"id":"swamp_giant","flora_class_id":"canopy_tree","standing_water_max_m":1.5,"water_only":0,"cluster_size":1,"about":"Tall swamp trees: SwampTreeTall 36 to 42 % flooded at 0.7 m, max 3.1."}
+{"id":"swamp_log","flora_class_id":"log","standing_water_max_m":1.5,"water_only":0,"cluster_size":2,"about":"Logs, stumps, branch piles: vanilla logs 26 to 83 % flooded at 1.3 to 2.0 m; vine/moss to logs lift 4 to 9."}
+{"id":"swamp_shrub","flora_class_id":"understorey","standing_water_max_m":0.5,"water_only":0,"cluster_size":3,"about":"Swamp shrubs and tree-ferns."}
+{"id":"undergrowth","flora_class_id":"understorey","water_only":0,"cluster_size":4,"about":"Undergrowth shrubs: BM2 shrubs 120/ha near water, 64/ha flooded."}
+{"id":"willow","flora_class_id":"canopy_tree","standing_water_max_m":0.5,"water_only":0,"cluster_size":2,"about":"Willows of the banks."}

@@ -27,6 +27,7 @@ from PIL import Image
 
 from tools.argonia_world import db
 from tools.newworld import danger
+from tools.newworld import flora
 from tools.newworld import frame as f
 from tools.newworld.regions import REGIONS
 
@@ -301,6 +302,7 @@ def build() -> db.World:
     roads_and_borders(w)
     danger.assign(w)
     terrain_and_water(w)
+    flora.build(w)
     w.insert_many("source", sorted(sources.values(), key=lambda r: r["id"]))
     w.save()
     return w

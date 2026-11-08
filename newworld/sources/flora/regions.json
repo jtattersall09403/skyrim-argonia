@@ -1,0 +1,101 @@
+{
+  "about": "Each region's flora, derived from its research (region and region_note rows). habitats: share of the region's flora-bearing ground, with the region_note aspect it rests on and why. boost: a family multiplier (0 = left out) with its aspect and why. Bases inside a family are chosen per region (a deterministic, region-seeded subset), so regions that share a family still show different meshes.",
+  "regions": {
+    "althii-archipelago": {
+      "habitats": {"mangrove_fringe": [0.22, "ecology", "Mangrove coasts ring the islands."], "reed_marsh": [0.22, "look", "Green rice paddies and inner marsh: reed and saltrice beds."], "dry_hammock": [0.22, "landscape", "Low firm ground and hills of a few metres carry estates and farms."], "beach_shore": [0.12, "look", "Sea on every side."], "coastal_grassland": [0.14, "economy", "Rice and farm land between the estates."], "rocky_outcrop": [0.08, "landscape", "Sea-cut coasts and low hills."]},
+      "boost": {"coast_palm": [1.6, "climate", "Sea winds and monsoon: the coconut coast."], "hanging_moss": [1.5, "look", "Brick ruins in vines."], "bald_cypress": [0, "ecology", "No cypress named: mangrove and paddy islands."]}
+    },
+    "aphon-isle": {
+      "habitats": {"upland_scrub": [0.35, "ecology", "Scrub covers the hills."], "rocky_outcrop": [0.25, "landscape", "Rocky shores and a high spine."], "beach_shore": [0.15, "look", "A rocky shore."], "cliff_face": [0.1, "landscape", "Cliff share 0.12 on the spine."], "coastal_grassland": [0.15, "climate", "Salt spray and sea mist: wind-cut grass."]},
+      "boost": {"dry_tree": [1.6, "look", "Low grey hills and scrub."], "coast_palm": [0.5, "climate", "Breezy and salt-swept: few tall palms."], "jungle_tree": [0, "ecology", "Scrub island, no forest."]}
+    },
+    "arnesian-jungle": {
+      "habitats": {"rainforest_floor": [0.45, "ecology", "Jungle hardwood, tree-ferns, vines and bright fungus."], "riverine_forest": [0.2, "landscape", "Rivers branch off the long inlet."], "swamp_hummock": [0.1, "landscape", "The ground is marshy at the shore."], "coastal_grassland": [0.1, "ecology", "Grass and saltrice near Thorn."], "rocky_outcrop": [0.08, "landscape", "Rises of 30 to 60 m."], "cliff_face": [0.07, "look", "Terraced stone towns on the rises."]},
+      "boost": {"jungle_emergent": [1.8, "look", "Tall hardwoods."], "swamp_shrub": [1.5, "ecology", "Tree-ferns."], "hanging_moss": [1.6, "look", "Velothi ruins under vines."], "giant_mushroom": [1.8, "ecology", "Bright fungus."]}
+    },
+    "aunike-ridge": {
+      "habitats": {"upland_scrub": [0.38, "ecology", "Grass, scrub and stunted trees."], "rocky_outcrop": [0.22, "landscape", "Rock outcrops and two summits."], "cliff_face": [0.12, "landscape", "Steep faces on the north."], "reed_marsh": [0.18, "look", "Reeds below the ridge."], "coastal_grassland": [0.1, "look", "Grass-scrub above the reeds."]},
+      "boost": {"dry_tree": [1.5, "ecology", "A few stunted trees."], "jungle_tree": [0, "ecology", "Fewer trees than the forest."], "flowers": [1.3, "climate", "A little drier, with morning mist."]}
+    },
+    "banujha-basin": {
+      "habitats": {"reed_marsh": [0.3, "ecology", "Reeds grow in the basin."], "mangrove_fringe": [0.25, "ecology", "Mangrove grows in the basin."], "drowned_forest": [0.2, "landscape", "Channels and islets with dark water between them; flooded basin."], "open_still_water": [0.1, "landscape", "Dark still water between the islets."], "swamp_hummock": [0.15, "landscape", "The islets."]},
+      "boost": {"swamp_dead": [1.8, "look", "Scorched timber marks the basin."], "swamp_log": [1.5, "look", "Scorched timber."], "coast_palm": [0, "climate", "Inland basin."]}
+    },
+    "barsaebica": {
+      "habitats": {"reed_marsh": [0.38, "look", "White Ayleid stone in reed beds."], "swamp_hummock": [0.22, "landscape", "A hummocky plain."], "dry_hammock": [0.15, "landscape", "Ruins standing on mounds and hills."], "open_still_water": [0.1, "climate", "The tide reaches far up the western rivers: sedge pools."], "rocky_outcrop": [0.1, "ecology", "Lamias in Loriasel's caverns."], "cliff_face": [0.05, "landscape", "Mound sides."]},
+      "boost": {"marsh_herb": [1.6, "region", "Fen and sedge (biome)."], "bald_cypress": [0.4, "region", "Fen, not forest."], "rock_den": [2.0, "ecology", "Caverns."]}
+    },
+    "benthic-yobesh": {
+      "habitats": {"seabed_shallow": [0.2, "landscape", "Spires to eight metres below the surface."], "seabed_mid": [0.3, "ecology", "Kelp and coral over silt."], "seabed_deep": [0.5, "landscape", "A shelf of silt about forty metres down, and a trench."]},
+      "boost": {"coral": [2.2, "look", "Coral and kelp."], "seabed_rock": [1.6, "landscape", "Drowned spires."], "kelp": [1.2, "ecology", "Kelp."]}
+    },
+    "blackwood": {
+      "habitats": {"drowned_forest": [0.25, "look", "A flooded hillscape: steep hills rising from standing water."], "cypress_swamp": [0.2, "region", "Bog and low forest (biome)."], "swamp_hummock": [0.15, "landscape", "Lightly forested hills."], "rocky_outcrop": [0.15, "look", "Cairn-fields."], "cliff_face": [0.1, "landscape", "Steep hills."], "reed_marsh": [0.15, "ecology", "Bogs."]},
+      "boost": {"swamp_dead": [1.5, "region", "Bog forest."], "boulder": [1.4, "look", "Cairn-fields."], "giant_mushroom": [0.5, "ecology", "Hill bogs, not jungle."]}
+    },
+    "cape-percar": {
+      "habitats": {"mangrove_fringe": [0.22, "ecology", "Mangrove at the shore."], "dry_hammock": [0.28, "look", "Red-gum hills."], "swamp_hummock": [0.15, "region", "Coastal swamp forest (biome)."], "beach_shore": [0.12, "landscape", "Flat sandy shores."], "coastal_grassland": [0.13, "ecology", "The burn-scar is bare: grass and scrub regrow."], "rocky_outcrop": [0.1, "landscape", "Low hills to 45 m."]},
+      "boost": {"erut": [1.8, "ecology", "Red gum (KoTM erut stands in for red gum)."], "swamp_dead": [1.5, "look", "Black burn-scars."], "coast_palm": [1.3, "landscape", "Sandy shores."]}
+    },
+    "chixathe-mesa": {
+      "habitats": {"upland_scrub": [0.35, "ecology", "Scrub, tall grass and thorn-bush on the mesa tops."], "cliff_face": [0.2, "landscape", "Cliffs on the edges."], "rocky_outcrop": [0.15, "look", "Pale cliffs, stone cuts."], "riverine_forest": [0.2, "region", "Riverine jungle in the cuts (biome)."], "rainforest_floor": [0.1, "look", "Rivers in green gorges."]},
+      "boost": {"dry_tree": [1.7, "ecology", "Thorn-bush and stunted forest."], "bottle_tree": [1.6, "climate", "Mesa tops hold little water."], "date_palm": [1.4, "climate", "Hot dry days."], "rock_wall": [1.6, "landscape", "Flat-topped mesas, cliff sides 60 to 110 m."]}
+    },
+    "hatandros-bight": {
+      "habitats": {"coastal_grassland": [0.35, "ecology", "Temperate grassland more than swamp."], "reed_marsh": [0.22, "ecology", "Marsh grasses and reeds."], "beach_shore": [0.15, "look", "Grey mud-flats and sandy points."], "dry_hammock": [0.13, "landscape", "Low clay rises carry the villages."], "rocky_outcrop": [0.1, "landscape", "Headlands of dark stone."], "cliff_face": [0.05, "look", "Headlands."]},
+      "boost": {"dry_tree": [1.5, "ecology", "Salt-tolerant shrubs, temperate."], "flowers": [1.4, "look", "Bright green after rain."], "jungle_tree": [0, "ecology", "Temperate, not jungle."], "seju": [0, "ecology", "Temperate north."], "coast_palm": [0.3, "climate", "Milder than the interior."]}
+    },
+    "kotherra-mangroves": {
+      "habitats": {"mangrove_fringe": [0.45, "look", "Tangled mangrove roots."], "reed_marsh": [0.18, "ecology", "Mangrove, reed and fern."], "swamp_hummock": [0.15, "landscape", "A few raised banks."], "drowned_forest": [0.1, "climate", "The estuary floods the north."], "open_still_water": [0.07, "look", "Black water between stilt houses."], "beach_shore": [0.05, "landscape", "Tidal flats."]},
+      "boost": {"fern": [1.6, "ecology", "Fern."], "mangrove": [1.4, "region", "Mangrove swamp and estuary (biome)."]}
+    },
+    "lake-ulaish": {
+      "habitats": {"reed_marsh": [0.35, "look", "A wide lake fringed with reed."], "lake_bed": [0.25, "landscape", "A broad shallow lake."], "open_still_water": [0.12, "region", "Shallow freshwater lake (biome)."], "swamp_hummock": [0.13, "landscape", "Silt islets and delta marsh."], "dry_hammock": [0.15, "landscape", "The south shore is firmer; farmhouses on the deltas."]},
+      "boost": {"willow": [1.8, "landscape", "Delta of river arms."], "reed": [1.3, "ecology", "Reed beds."], "mangrove": [0, "region", "Freshwater lake."]}
+    },
+    "murkwood": {
+      "habitats": {"hist_grove": [0.3, "ecology", "Great Hist trees, mosses and ferns."], "cypress_swamp": [0.25, "look", "Huge roots, hanging moss and black water."], "drowned_forest": [0.15, "landscape", "Low wet ground cut by braided river arms."], "swamp_hummock": [0.2, "landscape", "Dry rises where the roots hold the soil."], "open_still_water": [0.1, "landscape", "Black Heart-Mud flats and pools."]},
+      "boost": {"hanging_moss": [2.0, "look", "Hanging moss."], "hist_root": [1.8, "look", "Huge roots."], "giant_mushroom": [1.5, "ecology", "Torchbugs and bright growth."], "coast_palm": [0, "look", "Dark wood."]}
+    },
+    "nha-enasa": {
+      "habitats": {"reed_marsh": [0.4, "look", "Reed banks."], "riverine_forest": [0.2, "landscape", "Low river banks."], "swamp_hummock": [0.18, "landscape", "Drier than the delta."], "open_still_water": [0.1, "look", "Black rivers' backwaters."], "rocky_outcrop": [0.07, "look", "Grey ruin stones."], "cypress_swamp": [0.05, "region", "River swamp (biome)."]},
+      "boost": {"fern": [1.5, "ecology", "Reeds and ferns."], "reed": [1.3, "ecology", "Reeds."], "mangrove": [0, "region", "Inland river swamp."]}
+    },
+    "nushara-bayou": {
+      "habitats": {"reed_marsh": [0.3, "look", "Reed banks."], "mangrove_fringe": [0.22, "ecology", "Reed, mangrove, saltrice."], "swamp_hummock": [0.18, "look", "Hummocks of trees."], "open_still_water": [0.15, "look", "Sheets of brown water."], "dry_hammock": [0.1, "landscape", "Thin ridges; the north rises to clay mounds."], "beach_shore": [0.05, "region", "Open to the sea (tidal bayou)."]},
+      "boost": {"marsh_herb": [1.5, "ecology", "Saltrice."], "willow": [1.3, "look", "Hummocks of trees."], "jungle_emergent": [0, "landscape", "Flat, shifting; no tall forest."]}
+    },
+    "okuwun-rahei": {
+      "habitats": {"reed_marsh": [0.28, "ecology", "Reeds, rice, madder and ochre-stained marsh plants."], "dry_hammock": [0.25, "landscape", "Low red clay mounds above flood plains."], "coastal_grassland": [0.12, "ecology", "Guar on the meadows."], "open_still_water": [0.1, "landscape", "Big lakes in the west."], "lake_bed": [0.08, "look", "Pale lakes."], "cliff_face": [0.07, "landscape", "Cliffs and a falls at the coast."], "rocky_outcrop": [0.1, "look", "Black Velothi ruins."]},
+      "boost": {"flowers": [1.6, "ecology", "Madder: ochre-stained marsh plants."], "bamboo": [1.5, "look", "Bright reed thatch."]}
+    },
+    "padomaic-ocean": {
+      "habitats": {"seabed_shallow": [0.25, "landscape", "Sandbanks and shoals."], "seabed_mid": [0.35, "look", "Dark kelp beds."], "seabed_deep": [0.4, "landscape", "Falls to deep water within a few miles."]},
+      "boost": {"kelp": [2.2, "look", "Dark kelp beds."], "coral": [0.4, "region", "Open sea, kelp and sandbank (biome)."], "shell": [1.5, "ecology", "Crabs."]}
+    },
+    "sea-of-mists": {
+      "habitats": {"seabed_shallow": [0.35, "landscape", "Sandbars."], "seabed_mid": [0.35, "landscape", "A shelf about 35 m deep."], "mangrove_fringe": [0.15, "look", "Mangrove edges."], "beach_shore": [0.05, "landscape", "Low islets."], "seabed_deep": [0.1, "landscape", "The shelf's deeper parts."]},
+      "boost": {"seaweed": [1.5, "look", "Grey-green water."], "mangrove": [1.4, "region", "Shallow sea with mangrove fringes (biome)."]}
+    },
+    "skeith-isle": {
+      "habitats": {"rocky_outcrop": [0.35, "look", "Sea-worn crags."], "cliff_face": [0.2, "landscape", "Cliff edges to the west and north."], "upland_scrub": [0.2, "look", "Thin grass, wind-bent scrub."], "beach_shore": [0.15, "landscape", "Shingle beaches."], "coastal_grassland": [0.1, "ecology", "Sea-grass."]},
+      "boost": {"hist": [0, "ecology", "No Hist and little soil."], "jungle_tree": [0, "ecology", "Little soil."], "coast_palm": [0.3, "climate", "Windy and salt-laden."], "rock_wall": [1.5, "look", "A spire called the Grey Tooth."]}
+    },
+    "topal-bay": {
+      "habitats": {"seabed_shallow": [0.5, "ecology", "The bay's shallow waters."], "mangrove_fringe": [0.25, "landscape", "A mangrove shoreline."], "seabed_mid": [0.25, "landscape", "Sand and mud flats."]},
+      "boost": {"shell": [1.8, "ecology", "Crabs, mullet."], "coral": [1.2, "climate", "The bay is warm."]}
+    },
+    "tulmek-washes": {
+      "habitats": {"reed_marsh": [0.25, "ecology", "Reeds."], "cypress_swamp": [0.22, "ecology", "Cypress."], "mangrove_fringe": [0.15, "ecology", "Mangroves; sea-drakes at the south shore."], "drowned_forest": [0.18, "climate", "Every year the rivers flood the whole lowland."], "open_still_water": [0.1, "landscape", "Lakes."], "swamp_hummock": [0.1, "landscape", "Mud islands."]},
+      "boost": {"cypress_knee": [1.5, "ecology", "Cypress."], "swamp_dead": [1.3, "look", "Drowned domes and mist."]}
+    },
+    "ultherus-swamp": {
+      "habitats": {"reed_marsh": [0.42, "look", "A maze of cattails, reed and black water."], "open_still_water": [0.18, "ecology", "Water-lilies."], "swamp_hummock": [0.2, "landscape", "Hummocks and ring-like firm ground."], "cypress_swamp": [0.12, "region", "Hummocks and braided channels."], "lake_bed": [0.08, "landscape", "The south opens into larger waters."]},
+      "boost": {"reed": [1.6, "ecology", "Cattails and reed."], "lily": [1.6, "ecology", "Water-lilies."], "marsh_herb": [1.4, "ecology", "Dragon's-tongue beds."]}
+    },
+    "valley-of-storms": {
+      "habitats": {"reed_marsh": [0.25, "region", "Fresh marsh and sedge plain (biome)."], "coastal_grassland": [0.2, "landscape", "Rolling marsh plain."], "riverine_forest": [0.15, "look", "The river and its branches."], "dry_hammock": [0.15, "look", "Mounds linked by causeways."], "rocky_outcrop": [0.13, "landscape", "Ravine-cut mounds; Stormhold on a mountainside."], "cliff_face": [0.12, "landscape", "Ravines."]},
+      "boost": {"willow": [1.5, "look", "River branches."], "dry_tree": [1.3, "landscape", "Rising to the Morrowind border."], "seju": [0.4, "landscape", "Cooler north."]}
+    }
+  }
+}

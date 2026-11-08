@@ -1,0 +1,127 @@
+{"region_id":"althii-archipelago","habitat_id":"beach_shore","share":0.12,"note_aspect_id":"look","why":"Sea on every side."}
+{"region_id":"althii-archipelago","habitat_id":"coastal_grassland","share":0.14,"note_aspect_id":"economy","why":"Rice and farm land between the estates."}
+{"region_id":"althii-archipelago","habitat_id":"dry_hammock","share":0.22,"note_aspect_id":"landscape","why":"Low firm ground and hills of a few metres carry estates and farms."}
+{"region_id":"althii-archipelago","habitat_id":"mangrove_fringe","share":0.22,"note_aspect_id":"ecology","why":"Mangrove coasts ring the islands."}
+{"region_id":"althii-archipelago","habitat_id":"reed_marsh","share":0.22,"note_aspect_id":"look","why":"Green rice paddies and inner marsh: reed and saltrice beds."}
+{"region_id":"althii-archipelago","habitat_id":"rocky_outcrop","share":0.08,"note_aspect_id":"landscape","why":"Sea-cut coasts and low hills."}
+{"region_id":"aphon-isle","habitat_id":"beach_shore","share":0.15,"note_aspect_id":"look","why":"A rocky shore."}
+{"region_id":"aphon-isle","habitat_id":"cliff_face","share":0.1,"note_aspect_id":"landscape","why":"Cliff share 0.12 on the spine."}
+{"region_id":"aphon-isle","habitat_id":"coastal_grassland","share":0.15,"note_aspect_id":"climate","why":"Salt spray and sea mist: wind-cut grass."}
+{"region_id":"aphon-isle","habitat_id":"rocky_outcrop","share":0.25,"note_aspect_id":"landscape","why":"Rocky shores and a high spine."}
+{"region_id":"aphon-isle","habitat_id":"upland_scrub","share":0.35,"note_aspect_id":"ecology","why":"Scrub covers the hills."}
+{"region_id":"arnesian-jungle","habitat_id":"cliff_face","share":0.07,"note_aspect_id":"look","why":"Terraced stone towns on the rises."}
+{"region_id":"arnesian-jungle","habitat_id":"coastal_grassland","share":0.1,"note_aspect_id":"ecology","why":"Grass and saltrice near Thorn."}
+{"region_id":"arnesian-jungle","habitat_id":"rainforest_floor","share":0.45,"note_aspect_id":"ecology","why":"Jungle hardwood, tree-ferns, vines and bright fungus."}
+{"region_id":"arnesian-jungle","habitat_id":"riverine_forest","share":0.2,"note_aspect_id":"landscape","why":"Rivers branch off the long inlet."}
+{"region_id":"arnesian-jungle","habitat_id":"rocky_outcrop","share":0.08,"note_aspect_id":"landscape","why":"Rises of 30 to 60 m."}
+{"region_id":"arnesian-jungle","habitat_id":"swamp_hummock","share":0.1,"note_aspect_id":"landscape","why":"The ground is marshy at the shore."}
+{"region_id":"aunike-ridge","habitat_id":"cliff_face","share":0.12,"note_aspect_id":"landscape","why":"Steep faces on the north."}
+{"region_id":"aunike-ridge","habitat_id":"coastal_grassland","share":0.1,"note_aspect_id":"look","why":"Grass-scrub above the reeds."}
+{"region_id":"aunike-ridge","habitat_id":"reed_marsh","share":0.18,"note_aspect_id":"look","why":"Reeds below the ridge."}
+{"region_id":"aunike-ridge","habitat_id":"rocky_outcrop","share":0.22,"note_aspect_id":"landscape","why":"Rock outcrops and two summits."}
+{"region_id":"aunike-ridge","habitat_id":"upland_scrub","share":0.38,"note_aspect_id":"ecology","why":"Grass, scrub and stunted trees."}
+{"region_id":"banujha-basin","habitat_id":"drowned_forest","share":0.2,"note_aspect_id":"landscape","why":"Channels and islets with dark water between them; flooded basin."}
+{"region_id":"banujha-basin","habitat_id":"mangrove_fringe","share":0.25,"note_aspect_id":"ecology","why":"Mangrove grows in the basin."}
+{"region_id":"banujha-basin","habitat_id":"open_still_water","share":0.1,"note_aspect_id":"landscape","why":"Dark still water between the islets."}
+{"region_id":"banujha-basin","habitat_id":"reed_marsh","share":0.3,"note_aspect_id":"ecology","why":"Reeds grow in the basin."}
+{"region_id":"banujha-basin","habitat_id":"swamp_hummock","share":0.15,"note_aspect_id":"landscape","why":"The islets."}
+{"region_id":"barsaebica","habitat_id":"cliff_face","share":0.05,"note_aspect_id":"landscape","why":"Mound sides."}
+{"region_id":"barsaebica","habitat_id":"dry_hammock","share":0.15,"note_aspect_id":"landscape","why":"Ruins standing on mounds and hills."}
+{"region_id":"barsaebica","habitat_id":"open_still_water","share":0.1,"note_aspect_id":"climate","why":"The tide reaches far up the western rivers: sedge pools."}
+{"region_id":"barsaebica","habitat_id":"reed_marsh","share":0.38,"note_aspect_id":"look","why":"White Ayleid stone in reed beds."}
+{"region_id":"barsaebica","habitat_id":"rocky_outcrop","share":0.1,"note_aspect_id":"ecology","why":"Lamias in Loriasel's caverns."}
+{"region_id":"barsaebica","habitat_id":"swamp_hummock","share":0.22,"note_aspect_id":"landscape","why":"A hummocky plain."}
+{"region_id":"benthic-yobesh","habitat_id":"seabed_deep","share":0.5,"note_aspect_id":"landscape","why":"A shelf of silt about forty metres down, and a trench."}
+{"region_id":"benthic-yobesh","habitat_id":"seabed_mid","share":0.3,"note_aspect_id":"ecology","why":"Kelp and coral over silt."}
+{"region_id":"benthic-yobesh","habitat_id":"seabed_shallow","share":0.2,"note_aspect_id":"landscape","why":"Spires to eight metres below the surface."}
+{"region_id":"blackwood","habitat_id":"cliff_face","share":0.1,"note_aspect_id":"landscape","why":"Steep hills."}
+{"region_id":"blackwood","habitat_id":"cypress_swamp","share":0.2,"why":"Bog and low forest (biome)."}
+{"region_id":"blackwood","habitat_id":"drowned_forest","share":0.25,"note_aspect_id":"look","why":"A flooded hillscape: steep hills rising from standing water."}
+{"region_id":"blackwood","habitat_id":"reed_marsh","share":0.15,"note_aspect_id":"ecology","why":"Bogs."}
+{"region_id":"blackwood","habitat_id":"rocky_outcrop","share":0.15,"note_aspect_id":"look","why":"Cairn-fields."}
+{"region_id":"blackwood","habitat_id":"swamp_hummock","share":0.15,"note_aspect_id":"landscape","why":"Lightly forested hills."}
+{"region_id":"cape-percar","habitat_id":"beach_shore","share":0.12,"note_aspect_id":"landscape","why":"Flat sandy shores."}
+{"region_id":"cape-percar","habitat_id":"coastal_grassland","share":0.13,"note_aspect_id":"ecology","why":"The burn-scar is bare: grass and scrub regrow."}
+{"region_id":"cape-percar","habitat_id":"dry_hammock","share":0.28,"note_aspect_id":"look","why":"Red-gum hills."}
+{"region_id":"cape-percar","habitat_id":"mangrove_fringe","share":0.22,"note_aspect_id":"ecology","why":"Mangrove at the shore."}
+{"region_id":"cape-percar","habitat_id":"rocky_outcrop","share":0.1,"note_aspect_id":"landscape","why":"Low hills to 45 m."}
+{"region_id":"cape-percar","habitat_id":"swamp_hummock","share":0.15,"why":"Coastal swamp forest (biome)."}
+{"region_id":"chixathe-mesa","habitat_id":"cliff_face","share":0.2,"note_aspect_id":"landscape","why":"Cliffs on the edges."}
+{"region_id":"chixathe-mesa","habitat_id":"rainforest_floor","share":0.1,"note_aspect_id":"look","why":"Rivers in green gorges."}
+{"region_id":"chixathe-mesa","habitat_id":"riverine_forest","share":0.2,"why":"Riverine jungle in the cuts (biome)."}
+{"region_id":"chixathe-mesa","habitat_id":"rocky_outcrop","share":0.15,"note_aspect_id":"look","why":"Pale cliffs, stone cuts."}
+{"region_id":"chixathe-mesa","habitat_id":"upland_scrub","share":0.35,"note_aspect_id":"ecology","why":"Scrub, tall grass and thorn-bush on the mesa tops."}
+{"region_id":"hatandros-bight","habitat_id":"beach_shore","share":0.15,"note_aspect_id":"look","why":"Grey mud-flats and sandy points."}
+{"region_id":"hatandros-bight","habitat_id":"cliff_face","share":0.05,"note_aspect_id":"look","why":"Headlands."}
+{"region_id":"hatandros-bight","habitat_id":"coastal_grassland","share":0.35,"note_aspect_id":"ecology","why":"Temperate grassland more than swamp."}
+{"region_id":"hatandros-bight","habitat_id":"dry_hammock","share":0.13,"note_aspect_id":"landscape","why":"Low clay rises carry the villages."}
+{"region_id":"hatandros-bight","habitat_id":"reed_marsh","share":0.22,"note_aspect_id":"ecology","why":"Marsh grasses and reeds."}
+{"region_id":"hatandros-bight","habitat_id":"rocky_outcrop","share":0.1,"note_aspect_id":"landscape","why":"Headlands of dark stone."}
+{"region_id":"kotherra-mangroves","habitat_id":"beach_shore","share":0.05,"note_aspect_id":"landscape","why":"Tidal flats."}
+{"region_id":"kotherra-mangroves","habitat_id":"drowned_forest","share":0.1,"note_aspect_id":"climate","why":"The estuary floods the north."}
+{"region_id":"kotherra-mangroves","habitat_id":"mangrove_fringe","share":0.45,"note_aspect_id":"look","why":"Tangled mangrove roots."}
+{"region_id":"kotherra-mangroves","habitat_id":"open_still_water","share":0.07,"note_aspect_id":"look","why":"Black water between stilt houses."}
+{"region_id":"kotherra-mangroves","habitat_id":"reed_marsh","share":0.18,"note_aspect_id":"ecology","why":"Mangrove, reed and fern."}
+{"region_id":"kotherra-mangroves","habitat_id":"swamp_hummock","share":0.15,"note_aspect_id":"landscape","why":"A few raised banks."}
+{"region_id":"lake-ulaish","habitat_id":"dry_hammock","share":0.15,"note_aspect_id":"landscape","why":"The south shore is firmer; farmhouses on the deltas."}
+{"region_id":"lake-ulaish","habitat_id":"lake_bed","share":0.25,"note_aspect_id":"landscape","why":"A broad shallow lake."}
+{"region_id":"lake-ulaish","habitat_id":"open_still_water","share":0.12,"why":"Shallow freshwater lake (biome)."}
+{"region_id":"lake-ulaish","habitat_id":"reed_marsh","share":0.35,"note_aspect_id":"look","why":"A wide lake fringed with reed."}
+{"region_id":"lake-ulaish","habitat_id":"swamp_hummock","share":0.13,"note_aspect_id":"landscape","why":"Silt islets and delta marsh."}
+{"region_id":"murkwood","habitat_id":"cypress_swamp","share":0.25,"note_aspect_id":"look","why":"Huge roots, hanging moss and black water."}
+{"region_id":"murkwood","habitat_id":"drowned_forest","share":0.15,"note_aspect_id":"landscape","why":"Low wet ground cut by braided river arms."}
+{"region_id":"murkwood","habitat_id":"hist_grove","share":0.3,"note_aspect_id":"ecology","why":"Great Hist trees, mosses and ferns."}
+{"region_id":"murkwood","habitat_id":"open_still_water","share":0.1,"note_aspect_id":"landscape","why":"Black Heart-Mud flats and pools."}
+{"region_id":"murkwood","habitat_id":"swamp_hummock","share":0.2,"note_aspect_id":"landscape","why":"Dry rises where the roots hold the soil."}
+{"region_id":"nha-enasa","habitat_id":"cypress_swamp","share":0.05,"why":"River swamp (biome)."}
+{"region_id":"nha-enasa","habitat_id":"open_still_water","share":0.1,"note_aspect_id":"look","why":"Black rivers' backwaters."}
+{"region_id":"nha-enasa","habitat_id":"reed_marsh","share":0.4,"note_aspect_id":"look","why":"Reed banks."}
+{"region_id":"nha-enasa","habitat_id":"riverine_forest","share":0.2,"note_aspect_id":"landscape","why":"Low river banks."}
+{"region_id":"nha-enasa","habitat_id":"rocky_outcrop","share":0.07,"note_aspect_id":"look","why":"Grey ruin stones."}
+{"region_id":"nha-enasa","habitat_id":"swamp_hummock","share":0.18,"note_aspect_id":"landscape","why":"Drier than the delta."}
+{"region_id":"nushara-bayou","habitat_id":"beach_shore","share":0.05,"why":"Open to the sea (tidal bayou)."}
+{"region_id":"nushara-bayou","habitat_id":"dry_hammock","share":0.1,"note_aspect_id":"landscape","why":"Thin ridges; the north rises to clay mounds."}
+{"region_id":"nushara-bayou","habitat_id":"mangrove_fringe","share":0.22,"note_aspect_id":"ecology","why":"Reed, mangrove, saltrice."}
+{"region_id":"nushara-bayou","habitat_id":"open_still_water","share":0.15,"note_aspect_id":"look","why":"Sheets of brown water."}
+{"region_id":"nushara-bayou","habitat_id":"reed_marsh","share":0.3,"note_aspect_id":"look","why":"Reed banks."}
+{"region_id":"nushara-bayou","habitat_id":"swamp_hummock","share":0.18,"note_aspect_id":"look","why":"Hummocks of trees."}
+{"region_id":"okuwun-rahei","habitat_id":"cliff_face","share":0.07,"note_aspect_id":"landscape","why":"Cliffs and a falls at the coast."}
+{"region_id":"okuwun-rahei","habitat_id":"coastal_grassland","share":0.12,"note_aspect_id":"ecology","why":"Guar on the meadows."}
+{"region_id":"okuwun-rahei","habitat_id":"dry_hammock","share":0.25,"note_aspect_id":"landscape","why":"Low red clay mounds above flood plains."}
+{"region_id":"okuwun-rahei","habitat_id":"lake_bed","share":0.08,"note_aspect_id":"look","why":"Pale lakes."}
+{"region_id":"okuwun-rahei","habitat_id":"open_still_water","share":0.1,"note_aspect_id":"landscape","why":"Big lakes in the west."}
+{"region_id":"okuwun-rahei","habitat_id":"reed_marsh","share":0.28,"note_aspect_id":"ecology","why":"Reeds, rice, madder and ochre-stained marsh plants."}
+{"region_id":"okuwun-rahei","habitat_id":"rocky_outcrop","share":0.1,"note_aspect_id":"look","why":"Black Velothi ruins."}
+{"region_id":"padomaic-ocean","habitat_id":"seabed_deep","share":0.4,"note_aspect_id":"landscape","why":"Falls to deep water within a few miles."}
+{"region_id":"padomaic-ocean","habitat_id":"seabed_mid","share":0.35,"note_aspect_id":"look","why":"Dark kelp beds."}
+{"region_id":"padomaic-ocean","habitat_id":"seabed_shallow","share":0.25,"note_aspect_id":"landscape","why":"Sandbanks and shoals."}
+{"region_id":"sea-of-mists","habitat_id":"beach_shore","share":0.05,"note_aspect_id":"landscape","why":"Low islets."}
+{"region_id":"sea-of-mists","habitat_id":"mangrove_fringe","share":0.15,"note_aspect_id":"look","why":"Mangrove edges."}
+{"region_id":"sea-of-mists","habitat_id":"seabed_deep","share":0.1,"note_aspect_id":"landscape","why":"The shelf's deeper parts."}
+{"region_id":"sea-of-mists","habitat_id":"seabed_mid","share":0.35,"note_aspect_id":"landscape","why":"A shelf about 35 m deep."}
+{"region_id":"sea-of-mists","habitat_id":"seabed_shallow","share":0.35,"note_aspect_id":"landscape","why":"Sandbars."}
+{"region_id":"skeith-isle","habitat_id":"beach_shore","share":0.15,"note_aspect_id":"landscape","why":"Shingle beaches."}
+{"region_id":"skeith-isle","habitat_id":"cliff_face","share":0.2,"note_aspect_id":"landscape","why":"Cliff edges to the west and north."}
+{"region_id":"skeith-isle","habitat_id":"coastal_grassland","share":0.1,"note_aspect_id":"ecology","why":"Sea-grass."}
+{"region_id":"skeith-isle","habitat_id":"rocky_outcrop","share":0.35,"note_aspect_id":"look","why":"Sea-worn crags."}
+{"region_id":"skeith-isle","habitat_id":"upland_scrub","share":0.2,"note_aspect_id":"look","why":"Thin grass, wind-bent scrub."}
+{"region_id":"topal-bay","habitat_id":"mangrove_fringe","share":0.25,"note_aspect_id":"landscape","why":"A mangrove shoreline."}
+{"region_id":"topal-bay","habitat_id":"seabed_mid","share":0.25,"note_aspect_id":"landscape","why":"Sand and mud flats."}
+{"region_id":"topal-bay","habitat_id":"seabed_shallow","share":0.5,"note_aspect_id":"ecology","why":"The bay's shallow waters."}
+{"region_id":"tulmek-washes","habitat_id":"cypress_swamp","share":0.22,"note_aspect_id":"ecology","why":"Cypress."}
+{"region_id":"tulmek-washes","habitat_id":"drowned_forest","share":0.18,"note_aspect_id":"climate","why":"Every year the rivers flood the whole lowland."}
+{"region_id":"tulmek-washes","habitat_id":"mangrove_fringe","share":0.15,"note_aspect_id":"ecology","why":"Mangroves; sea-drakes at the south shore."}
+{"region_id":"tulmek-washes","habitat_id":"open_still_water","share":0.1,"note_aspect_id":"landscape","why":"Lakes."}
+{"region_id":"tulmek-washes","habitat_id":"reed_marsh","share":0.25,"note_aspect_id":"ecology","why":"Reeds."}
+{"region_id":"tulmek-washes","habitat_id":"swamp_hummock","share":0.1,"note_aspect_id":"landscape","why":"Mud islands."}
+{"region_id":"ultherus-swamp","habitat_id":"cypress_swamp","share":0.12,"why":"Hummocks and braided channels."}
+{"region_id":"ultherus-swamp","habitat_id":"lake_bed","share":0.08,"note_aspect_id":"landscape","why":"The south opens into larger waters."}
+{"region_id":"ultherus-swamp","habitat_id":"open_still_water","share":0.18,"note_aspect_id":"ecology","why":"Water-lilies."}
+{"region_id":"ultherus-swamp","habitat_id":"reed_marsh","share":0.42,"note_aspect_id":"look","why":"A maze of cattails, reed and black water."}
+{"region_id":"ultherus-swamp","habitat_id":"swamp_hummock","share":0.2,"note_aspect_id":"landscape","why":"Hummocks and ring-like firm ground."}
+{"region_id":"valley-of-storms","habitat_id":"cliff_face","share":0.12,"note_aspect_id":"landscape","why":"Ravines."}
+{"region_id":"valley-of-storms","habitat_id":"coastal_grassland","share":0.2,"note_aspect_id":"landscape","why":"Rolling marsh plain."}
+{"region_id":"valley-of-storms","habitat_id":"dry_hammock","share":0.15,"note_aspect_id":"look","why":"Mounds linked by causeways."}
+{"region_id":"valley-of-storms","habitat_id":"reed_marsh","share":0.25,"why":"Fresh marsh and sedge plain (biome)."}
+{"region_id":"valley-of-storms","habitat_id":"riverine_forest","share":0.15,"note_aspect_id":"look","why":"The river and its branches."}
+{"region_id":"valley-of-storms","habitat_id":"rocky_outcrop","share":0.13,"note_aspect_id":"landscape","why":"Ravine-cut mounds; Stormhold on a mountainside."}

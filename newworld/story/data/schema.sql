@@ -356,3 +356,117 @@ CREATE TABLE "terrain_build" (
   "sha256" TEXT NOT NULL,                -- of the heightmap file
   "about" TEXT NOT NULL
 );
+
+-- ---------------------------------------------------------------------------------------------------------
+-- Flora: plant, tree and rock sets per region (nw-02 step 6; tools/newworld/flora.py from newworld/sources/flora/)
+-- ---------------------------------------------------------------------------------------------------------
+
+-- A placement class: how bases of the class tilt with the ground and sink when no measured seating exists.
+CREATE TABLE "flora_class" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "tilt_factor" REAL NOT NULL,           -- tilt = factor x ground slope
+  "tilt_max_deg" REAL NOT NULL,
+  "sink_m" REAL,                         -- fallback pivot sink below ground (trees, plants)
+  "sink_ratio" REAL,                     -- fallback sink as a share of the base's height (rocks, cliffs)
+  "about" TEXT NOT NULL
+);
+
+-- A family of bases that look and behave alike (bald cypress, coconut palm, reed, coral...).
+CREATE TABLE "flora_family" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "flora_class_id" TEXT NOT NULL REFERENCES "flora_class"("id"),
+  "standing_water_max_m" REAL,           -- deepest still water a base may stand in; NULL = never in water
+  "water_only" INTEGER NOT NULL CHECK ("water_only" IN (0, 1)),  -- 1: only on a water surface (lilies)
+  "seabed_min_m" REAL,                   -- for seabed families: the depth band measured in Depths of Skyrim
+  "seabed_max_m" REAL,
+  "cluster_size" INTEGER NOT NULL,       -- typical refs per clump (from nearest-neighbour clumping)
+  "about" TEXT NOT NULL                  -- with the study's measured evidence
+);
+
+-- One base object from a mod, as the flora study catalogued it.
+CREATE TABLE "flora_base" (
+  "id" TEXT NOT NULL PRIMARY KEY,        -- our id: mod and editor id, slugged
+  "form_key" TEXT NOT NULL,              -- FormID:plugin, as in the catalogue
+  "plugin" TEXT NOT NULL,
+  "mod" TEXT NOT NULL,                   -- BM&V, KoTM, TS, Depths
+  "edid" TEXT NOT NULL,
+  "model" TEXT NOT NULL,                 -- mesh path under meshes\
+  "flora_family_id" TEXT NOT NULL REFERENCES "flora_family"("id"),
+  "size" TEXT NOT NULL CHECK ("size" IN ('small', 'medium', 'large', 'huge')),
+  "height_m" REAL NOT NULL,              -- OBND height
+  "sink_m" REAL NOT NULL,                -- pivot Z = ground Z - sink_m (measured median, or the class fallback)
+  "sink_lo_m" REAL,                      -- measured IQR, for jitter
+  "sink_hi_m" REAL,
+  "sink_measured_in" TEXT,               -- the worldspace the median comes from; NULL = class fallback
+  "scale_med" REAL,                      -- the authors' median scale where measured
+  "placed_refs" INTEGER NOT NULL,        -- refs the authors placed (all worlds)
+  "nordic_override" TEXT                 -- why a base the study's name flag marked Nordic is not Nordic
+);
+
+-- Where flora stands: dry ground, still water (never flowing), or a seabed depth band.
+CREATE TABLE "habitat" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "name" TEXT NOT NULL,
+  "water" TEXT NOT NULL CHECK ("water" IN ('dry', 'standing', 'seabed')),
+  "depth_min_m" REAL,
+  "depth_max_m" REAL,                    -- standing: the deepest still water; seabed: the band's floor
+  "density_per_ha" REAL NOT NULL,        -- all flora refs per hectare
+  "about" TEXT NOT NULL
+);
+
+-- The share of a habitat's refs each family takes.
+CREATE TABLE "habitat_family" (
+  "habitat_id" TEXT NOT NULL REFERENCES "habitat"("id"),
+  "flora_family_id" TEXT NOT NULL REFERENCES "flora_family"("id"),
+  "share" REAL NOT NULL,
+  PRIMARY KEY ("habitat_id", "flora_family_id")
+);
+
+-- Companion groups: families the authors stamp together (co-occurrence lifts within 10 m).
+CREATE TABLE "flora_guild" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "lift" REAL NOT NULL,
+  "evidence" TEXT NOT NULL
+);
+
+CREATE TABLE "flora_guild_member" (
+  "flora_guild_id" TEXT NOT NULL REFERENCES "flora_guild"("id"),
+  "flora_family_id" TEXT NOT NULL REFERENCES "flora_family"("id"),
+  "role" TEXT NOT NULL CHECK ("role" IN ('anchor', 'partner')),
+  PRIMARY KEY ("flora_guild_id", "flora_family_id")
+);
+
+-- A region's habitats and the research they rest on. Standing-water habitats here are the only places a base
+-- may stand in water, to the lesser of the habitat's and the family's depth.
+CREATE TABLE "region_habitat" (
+  "region_id" TEXT NOT NULL REFERENCES "region"("id"),
+  "habitat_id" TEXT NOT NULL REFERENCES "habitat"("id"),
+  "share" REAL NOT NULL,                 -- of the region's flora-bearing ground
+  "note_aspect_id" TEXT REFERENCES "note_aspect"("id"),  -- the region_note it cites; NULL = the region row
+  "why" TEXT NOT NULL,
+  PRIMARY KEY ("region_id", "habitat_id")
+);
+
+-- A region's own leaning toward or away from a family, from its research.
+CREATE TABLE "region_family" (
+  "region_id" TEXT NOT NULL REFERENCES "region"("id"),
+  "flora_family_id" TEXT NOT NULL REFERENCES "flora_family"("id"),
+  "boost" REAL NOT NULL,                 -- multiplier on the habitat share; 0 = left out
+  "note_aspect_id" TEXT REFERENCES "note_aspect"("id"),
+  "why" TEXT NOT NULL,
+  PRIMARY KEY ("region_id", "flora_family_id")
+);
+
+-- The set: each base a region grows, in which habitat and how much. Its reason is the research it rests on:
+-- region_habitat.why for (region, habitat) and region_family.why for (region, the base's family), each citing its
+-- region_note; clump size is the family's cluster_size.
+CREATE TABLE "region_flora" (
+  "region_id" TEXT NOT NULL REFERENCES "region"("id"),
+  "habitat_id" TEXT NOT NULL REFERENCES "habitat"("id"),
+  "flora_base_id" TEXT NOT NULL REFERENCES "flora_base"("id"),
+  "weight" REAL NOT NULL,                -- share of the region's flora refs (sums to 1 per region)
+  "density_per_ha" REAL NOT NULL,        -- refs per hectare of this habitat
+  "water_max_m" REAL,                    -- still water it may stand in here (habitat and family allow); NULL = dry
+  PRIMARY KEY ("region_id", "habitat_id", "flora_base_id"),
+  FOREIGN KEY ("region_id", "habitat_id") REFERENCES "region_habitat"("region_id", "habitat_id")
+);

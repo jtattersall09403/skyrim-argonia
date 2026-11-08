@@ -1,0 +1,431 @@
+{
+ "about": "Flora families: each catalogue row (out/newworld/research/flora_catalogue.json, the nw-02 flora study) is matched, first match wins, against `match` (a regex over 'edid model' in lower case, then over the study's visual label when nothing matched). `exclude` drops a row from the world entirely. standing_water_max_m: the deepest still water a base of the family may stand in (study section 3, 'Trees and plants in water'); null = never in water. Classes carry the tilt factor and the sink fallback (study sections 2.1 to 2.3).",
+ "exclude": "wreck|ship|booktower|bones|cobra|dugup|coastwaves|eggnest|amber|test|rug1|road|tundra|pine|aspen|snow|lava|burnt|redwood|giantred|sugarmaple|cyrodil|maple|birch|cedar|ginkgo|11sky|purp|scottish|watercolor|mucksponge|muckspone|potbut|coalround|stoneflower|cairnevil|fsomnalius|citsalkanet|dwasp|\\bcorn|tulip|pinkdaf|crane|treeofwolene|templetree|mountainpeak|ridge01|ayld|xanmeer|dead.*(marshmud|marshgrass|rainforest)|white\\b|whitebush|redtree|redred|bushred|skyred|tropicaltree.*v2tropical",
+ "nordic_overrides": {
+  "mangrovereachtree": "The gkb mangrove meshes carry 'reachtree' in their file name only; they are mangroves (study section 1: 'mangrove 6 (gkb mangrovereachtree0gkb2/3/8/9 mesh family')), the Black Marsh coast tree, not a Reach tree. The study's nordic_flag is a name regex ('verify before relying on a single row')."
+ },
+ "classes": {
+  "canopy_tree": {
+   "tilt_factor": 0.1,
+   "tilt_max_deg": 5,
+   "sink_m": 0.1,
+   "about": "Upright trees; vanilla tilt/slope 0.10, pines and aspens p95 3 to 5 deg (study 2.3)."
+  },
+  "understorey": {
+   "tilt_factor": 0.9,
+   "tilt_max_deg": 30,
+   "sink_m": 0.1,
+   "about": "Shrubs and thicket trees follow the slope (vanilla shrubs 0.96, thickets up to 30 deg)."
+  },
+  "palm": {
+   "tilt_factor": 0.1,
+   "tilt_max_deg": 5,
+   "sink_m": 0.1,
+   "about": "Palms stand upright like trees."
+  },
+  "fern": {
+   "tilt_factor": 0.58,
+   "tilt_max_deg": 33,
+   "sink_m": 0.1,
+   "about": "Ferns: vanilla tilt/slope 0.58, p95 33 deg."
+  },
+  "herb": {
+   "tilt_factor": 0.6,
+   "tilt_max_deg": 33,
+   "sink_m": 0.05,
+   "about": "Marsh herbs and harvestable plants."
+  },
+  "reed": {
+   "tilt_factor": 0.55,
+   "tilt_max_deg": 36,
+   "sink_m": 0.05,
+   "about": "Reeds: vanilla 0.55, p95 36 deg."
+  },
+  "water_plant": {
+   "tilt_factor": 0.97,
+   "tilt_max_deg": 39,
+   "sink_m": 0.0,
+   "about": "Lilies and water weed: vanilla water plants 0.97."
+  },
+  "mushroom": {
+   "tilt_factor": 0.6,
+   "tilt_max_deg": 33,
+   "sink_m": 0.05,
+   "about": "Fungus, giant and small."
+  },
+  "vine_moss": {
+   "tilt_factor": 0.6,
+   "tilt_max_deg": 30,
+   "sink_m": 0.0,
+   "about": "Hanging moss and vines."
+  },
+  "log": {
+   "tilt_factor": 0.76,
+   "tilt_max_deg": 60,
+   "sink_m": 0.1,
+   "about": "Logs, stumps, roots: vanilla logs 0.76."
+  },
+  "boulder": {
+   "tilt_factor": 0.85,
+   "tilt_max_deg": 61,
+   "sink_ratio": 0.26,
+   "about": "Boulders sink 0.26 x height and tilt 0.85 x slope (study 2.2, 2.3)."
+  },
+  "cliff": {
+   "tilt_factor": 0.21,
+   "tilt_max_deg": 45,
+   "sink_ratio": 0.32,
+   "about": "Cliff shells sink 0.32 x height, open back to uphill (study 2.2, 2.4)."
+  },
+  "seabed_plant": {
+   "tilt_factor": 0.97,
+   "tilt_max_deg": 39,
+   "sink_m": 0.0,
+   "about": "Depths seaweed and coral: upright to 11 deg, sink 0 (study 5)."
+  },
+  "seabed_rock": {
+   "tilt_factor": 0.85,
+   "tilt_max_deg": 20,
+   "sink_ratio": 0.26,
+   "about": "Depths moss rocks: same rule as land boulders (study 2.2)."
+  }
+ },
+ "families": [
+  {
+   "id": "rock_wall",
+   "class": "cliff",
+   "match": "rockwall|mountaintrimslab|mountaincliff|redcliff|rockmoss|mountainslope|mudrockcliff|mountainmoss",
+   "standing_water_max_m": null,
+   "cluster": 1,
+   "about": "Large cliff walls and mountain pieces (sink 4 to 16 m)."
+  },
+  {
+   "id": "cliff_piece",
+   "class": "cliff",
+   "match": "rockcliff|dirtcliff",
+   "standing_water_max_m": null,
+   "cluster": 2,
+   "about": "Rock and dirt cliff pieces: KoTM nn 13.6 m, overlap 20 to 40 %."
+  },
+  {
+   "id": "rock_den",
+   "class": "cliff",
+   "match": "animalden|rockcave|caveentrance|mosscave|rockden",
+   "standing_water_max_m": null,
+   "cluster": 1,
+   "about": "Den and cave mouths."
+  },
+  {
+   "id": "seabed_rock",
+   "class": "seabed_rock",
+   "match": "^tbp.*(rock|trim|cliff|cave)",
+   "seabed": [
+    3,
+    33
+   ],
+   "cluster": 3,
+   "about": "Depths moss rocks and seabed cliffs: 10 to 16 m median (3..33), sink 0 to 1 m."
+  },
+  {
+   "id": "boulder",
+   "class": "boulder",
+   "match": "rock|cairn|mountaintrim",
+   "standing_water_max_m": 1.0,
+   "cluster": 3,
+   "about": "Boulders and rock piles: KoTM nn 5.3 m (clumped); KoTM coast rocks 60 to 100 % in 0.2 to 3 m."
+  },
+  {
+   "id": "coral",
+   "class": "seabed_plant",
+   "match": "coral",
+   "seabed": [
+    2.4,
+    5.5
+   ],
+   "cluster": 3,
+   "about": "Depths corals: 2.4 to 5.5 m only (median 3.3 to 3.7)."
+  },
+  {
+   "id": "seaweed",
+   "class": "seabed_plant",
+   "match": "seaweed",
+   "seabed": [
+    7.5,
+    64
+   ],
+   "cluster": 3,
+   "about": "Depths seaweed: deep floor, median 29 to 33 m (p10..p90 12..64); cluster 7.5 m."
+  },
+  {
+   "id": "kelp",
+   "class": "seabed_plant",
+   "match": "kelp",
+   "seabed": [
+    1.4,
+    20
+   ],
+   "cluster": 5,
+   "about": "Kelp (BM&V water kelp): GRAS rules 130 to 390 u (1.9 to 5.6 m) below water; BM1 reeds/lily with WaterKelpTall lift 4."
+  },
+  {
+   "id": "shell",
+   "class": "seabed_plant",
+   "match": "clam",
+   "seabed": [
+    2,
+    53
+   ],
+   "cluster": 3,
+   "about": "Clams: median 20 m (2..53)."
+  },
+  {
+   "id": "lily",
+   "class": "water_plant",
+   "match": "lily|lillipad|duckweed|waterweed",
+   "standing_water_max_m": 2.0,
+   "water_only": true,
+   "cluster": 8,
+   "about": "Lilies and water weed: KoTM 100 % in water at 0.5 to 0.6 m; nn 3.1 m, R 0.09 (tight patches); rule 0.5 to 2 m."
+  },
+  {
+   "id": "mangrove",
+   "class": "canopy_tree",
+   "match": "mangrove",
+   "standing_water_max_m": 3.0,
+   "cluster": 1,
+   "about": "Mangrove: BM2 14 to 73 % flooded, median 0.7 to 1.4 m, p90 2.4 to 3.2; solitary (nn 25 m, R 0.77)."
+  },
+  {
+   "id": "cypress_knee_giant",
+   "class": "canopy_tree",
+   "match": "kneegiant",
+   "standing_water_max_m": 3.0,
+   "cluster": 1,
+   "about": "KoTM giant cypress knees."
+  },
+  {
+   "id": "cypress_knee",
+   "class": "understorey",
+   "match": "cypressknee",
+   "standing_water_max_m": 1.5,
+   "cluster": 4,
+   "about": "Cypress knees: KoTM 13 to 48 % flooded, median 0.5 m, max 1.5 m; knee with knee lift 32."
+  },
+  {
+   "id": "moss_cypress",
+   "class": "canopy_tree",
+   "match": "swampcypressmoss|cypressmoss",
+   "standing_water_max_m": 3.0,
+   "cluster": 1,
+   "about": "Moss-hung cypress."
+  },
+  {
+   "id": "hist",
+   "class": "canopy_tree",
+   "match": "argoniatreehist|histtree0|histtrunk|histgland0[123]\\b|histgland0[123] |histflower",
+   "standing_water_max_m": null,
+   "cluster": 1,
+   "about": "Hist trees, trunks and flowers: sacred, on dry rises only."
+  },
+  {
+   "id": "hist_root",
+   "class": "log",
+   "match": "histroot|histgland0\\droots",
+   "standing_water_max_m": 1.0,
+   "cluster": 2,
+   "about": "Hist roots and root arches."
+  },
+  {
+   "id": "swamp_log",
+   "class": "log",
+   "match": "cypress(log|stump|branchpile|cut)|cypresslog|swamplog|swampstump|uprooted|jungle.*(stump|log)|mega.*(stump|log)|shrubstump|seju(fallen|log|stump)|driftwood",
+   "standing_water_max_m": 1.5,
+   "cluster": 2,
+   "about": "Logs, stumps, branch piles: vanilla logs 26 to 83 % flooded at 1.3 to 2.0 m; vine/moss to logs lift 4 to 9."
+  },
+  {
+   "id": "bald_cypress",
+   "class": "canopy_tree",
+   "match": "cypress",
+   "standing_water_max_m": 3.0,
+   "cluster": 2,
+   "about": "Bald cypress: BM2 cypress1/3/5 25 to 73 % flooded, median 0.7 to 3.0 m; KoTM 1 to 5 % at 1.3 to 1.8 m."
+  },
+  {
+   "id": "swamp_dead",
+   "class": "canopy_tree",
+   "match": "swampdead|swampbroken|leafless|leefless|01dead|bigdeadtree|skydead|deadtreebroke|histtree0\\ddead|histgland0\\ddead",
+   "standing_water_max_m": 3.0,
+   "cluster": 1,
+   "about": "Dead and leafless swamp trees: BM2 leafless01/02 flooded, leafless01 with cypress5 lift 9."
+  },
+  {
+   "id": "swamp_giant",
+   "class": "canopy_tree",
+   "match": "argoniatreeswamp0|swamptreetall",
+   "standing_water_max_m": 1.5,
+   "cluster": 1,
+   "about": "Tall swamp trees: SwampTreeTall 36 to 42 % flooded at 0.7 m, max 3.1."
+  },
+  {
+   "id": "swamp_shrub",
+   "class": "understorey",
+   "match": "swampplant|swampfern|swamptreecool|01swamp\\d|01swamptree|paradise",
+   "standing_water_max_m": 0.5,
+   "cluster": 3,
+   "about": "Swamp shrubs and tree-ferns."
+  },
+  {
+   "id": "willow",
+   "class": "canopy_tree",
+   "match": "willow",
+   "standing_water_max_m": 0.5,
+   "cluster": 2,
+   "about": "Willows of the banks."
+  },
+  {
+   "id": "jungle_emergent",
+   "class": "canopy_tree",
+   "match": "kapok|treemega|jungle0[4-9]|jungle10|jungletree(new)?(1[0-9]|2[0-9])",
+   "standing_water_max_m": 0.5,
+   "cluster": 1,
+   "about": "Emergent jungle hardwoods (40 to 85 m)."
+  },
+  {
+   "id": "jungle_tree",
+   "class": "canopy_tree",
+   "match": "argoniatreejungle|jungletree|mjytropicaltree|junglemid|tropicplant|leaningtree|fanikgoc",
+   "standing_water_max_m": 0.5,
+   "cluster": 2,
+   "about": "Mid-canopy jungle trees: BM2 jungletreenew1 41 to 70 % flooded at 0.7 m; dry trees capped 0.5 m."
+  },
+  {
+   "id": "erut",
+   "class": "canopy_tree",
+   "match": "erut",
+   "standing_water_max_m": null,
+   "cluster": 2,
+   "about": "KoTM erut trees of the firm ground."
+  },
+  {
+   "id": "bottle_tree",
+   "class": "understorey",
+   "match": "bottle",
+   "standing_water_max_m": null,
+   "cluster": 3,
+   "about": "Bottle trees of the dry ground."
+  },
+  {
+   "id": "seju",
+   "class": "palm",
+   "match": "seju",
+   "standing_water_max_m": 0.5,
+   "cluster": 3,
+   "about": "Seju palms and saplings."
+  },
+  {
+   "id": "date_palm",
+   "class": "palm",
+   "match": "date|daepalm",
+   "standing_water_max_m": 0.5,
+   "cluster": 2,
+   "about": "Date palms: KoTM 0.3 to 1 % in water."
+  },
+  {
+   "id": "bamboo",
+   "class": "understorey",
+   "match": "bamboo|banana|sugarcane",
+   "standing_water_max_m": null,
+   "cluster": 4,
+   "about": "Bamboo and banana stands."
+  },
+  {
+   "id": "small_palm",
+   "class": "understorey",
+   "match": "whiteelephant|latan|madagascar|palmfronds|palmplant|palmleaves|groundplant01|fallforestshrub",
+   "standing_water_max_m": null,
+   "cluster": 3,
+   "about": "Small palms and fronds."
+  },
+  {
+   "id": "coast_palm",
+   "class": "palm",
+   "match": "beachpalm|coastpalm|palmtree3|bendingpalm|thickpalm|tropicpalm|fanpalm|palmoke|palmgiant|argoniatreepalm0|palm",
+   "standing_water_max_m": 0.5,
+   "cluster": 2,
+   "about": "Coconut and fan palms: CTQ palms 6 to 19 % at 0.3 to 0.5 m; Palm04 with Palm01 lift 21."
+  },
+  {
+   "id": "giant_mushroom",
+   "class": "mushroom",
+   "match": "marshroom|giantmushroom",
+   "standing_water_max_m": null,
+   "cluster": 2,
+   "about": "Giant fungus."
+  },
+  {
+   "id": "mushroom",
+   "class": "mushroom",
+   "match": "mushroom|russula|morrowindroot|mushroomroot",
+   "standing_water_max_m": null,
+   "cluster": 4,
+   "about": "Small fungus: fern to mushroom lift 3."
+  },
+  {
+   "id": "hanging_moss",
+   "class": "vine_moss",
+   "match": "mosscluster|vinenode|vine|mossbush|prettytree",
+   "standing_water_max_m": null,
+   "cluster": 2,
+   "about": "Hanging moss and vines."
+  },
+  {
+   "id": "fern",
+   "class": "fern",
+   "match": "fern|braken",
+   "standing_water_max_m": 0.5,
+   "cluster": 5,
+   "about": "Ferns: BM2 SwordFern 17 to 35 % flooded at 0.3 to 1.2 m; clumped (R 0.36 to 0.50); fern with fern lift 32 to 35."
+  },
+  {
+   "id": "reed",
+   "class": "reed",
+   "match": "(?<!t)reed|cattail",
+   "standing_water_max_m": 1.5,
+   "cluster": 8,
+   "about": "Reeds: vurt_reeds 99 % flooded, median 1.2 m; rule 0 to 1.5 m."
+  },
+  {
+   "id": "flowers",
+   "class": "herb",
+   "match": "flower|meadow|crocus|blueflowers|rasberry|thistle",
+   "standing_water_max_m": null,
+   "cluster": 5,
+   "about": "Flowering herbs of the open ground."
+  },
+  {
+   "id": "marsh_herb",
+   "class": "herb",
+   "match": "marshmerrow|bogbeacon|redwort|goldkanet|kanet|kreshweed|hackle|chokeberry|groundplant|marshgrass|nettle|chickweed|manabloom|morrowindplant|groundcover|grplant|stingingnettel",
+   "standing_water_max_m": null,
+   "cluster": 4,
+   "about": "Marsh herbs and the alchemy plants of the lore (marshmerrow, bog beacon, redwort, kreshweed, hackle-lo)."
+  },
+  {
+   "id": "dry_tree",
+   "class": "canopy_tree",
+   "match": "drytree|thornbush|seabuckthorn|dwarfjunip|juniper|junip|bristlecone|briscone|salix|alder|oak|poplar|popular|plaintree|treeplains|sticktree|browntwigs|twigs|funky",
+   "standing_water_max_m": null,
+   "cluster": 2,
+   "about": "Dry-ground trees and thorn scrub."
+  },
+  {
+   "id": "undergrowth",
+   "class": "understorey",
+   "match": "undergrowth|argoniatreeshrub|tropicalshrub|tropicalplant|tropical2|tropical11|gorsebush|bush|thicket|manfern|shrub",
+   "standing_water_max_m": null,
+   "cluster": 4,
+   "about": "Undergrowth shrubs: BM2 shrubs 120/ha near water, 64/ha flooded."
+  }
+ ]
+}

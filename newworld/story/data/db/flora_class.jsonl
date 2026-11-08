@@ -1,0 +1,14 @@
+{"id":"boulder","tilt_factor":0.85,"tilt_max_deg":61.0,"sink_ratio":0.26,"about":"Boulders sink 0.26 x height and tilt 0.85 x slope (study 2.2, 2.3)."}
+{"id":"canopy_tree","tilt_factor":0.1,"tilt_max_deg":5.0,"sink_m":0.1,"about":"Upright trees; vanilla tilt/slope 0.10, pines and aspens p95 3 to 5 deg (study 2.3)."}
+{"id":"cliff","tilt_factor":0.21,"tilt_max_deg":45.0,"sink_ratio":0.32,"about":"Cliff shells sink 0.32 x height, open back to uphill (study 2.2, 2.4)."}
+{"id":"fern","tilt_factor":0.58,"tilt_max_deg":33.0,"sink_m":0.1,"about":"Ferns: vanilla tilt/slope 0.58, p95 33 deg."}
+{"id":"herb","tilt_factor":0.6,"tilt_max_deg":33.0,"sink_m":0.05,"about":"Marsh herbs and harvestable plants."}
+{"id":"log","tilt_factor":0.76,"tilt_max_deg":60.0,"sink_m":0.1,"about":"Logs, stumps, roots: vanilla logs 0.76."}
+{"id":"mushroom","tilt_factor":0.6,"tilt_max_deg":33.0,"sink_m":0.05,"about":"Fungus, giant and small."}
+{"id":"palm","tilt_factor":0.1,"tilt_max_deg":5.0,"sink_m":0.1,"about":"Palms stand upright like trees."}
+{"id":"reed","tilt_factor":0.55,"tilt_max_deg":36.0,"sink_m":0.05,"about":"Reeds: vanilla 0.55, p95 36 deg."}
+{"id":"seabed_plant","tilt_factor":0.97,"tilt_max_deg":39.0,"sink_m":0.0,"about":"Depths seaweed and coral: upright to 11 deg, sink 0 (study 5)."}
+{"id":"seabed_rock","tilt_factor":0.85,"tilt_max_deg":20.0,"sink_ratio":0.26,"about":"Depths moss rocks: same rule as land boulders (study 2.2)."}
+{"id":"understorey","tilt_factor":0.9,"tilt_max_deg":30.0,"sink_m":0.1,"about":"Shrubs and thicket trees follow the slope (vanilla shrubs 0.96, thickets up to 30 deg)."}
+{"id":"vine_moss","tilt_factor":0.6,"tilt_max_deg":30.0,"sink_m":0.0,"about":"Hanging moss and vines."}
+{"id":"water_plant","tilt_factor":0.97,"tilt_max_deg":39.0,"sink_m":0.0,"about":"Lilies and water weed: vanilla water plants 0.97."}

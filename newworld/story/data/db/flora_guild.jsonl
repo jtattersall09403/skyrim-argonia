@@ -1,0 +1,8 @@
+{"id":"cliff-foot","lift":0.0,"evidence":"vanilla cliff -> boulder within 10 m 0.38; BM&V/KoTM 0.01 to 0.08, so the layer is added (study rec. 4)"}
+{"id":"cypress-knee-moss","lift":18.0,"evidence":"KoTM CypressKnee01 -> SwampCypress02 0.63 (lift 18); knee with knee 0.64 (lift 32)"}
+{"id":"fern-fungus","lift":3.0,"evidence":"fern -> mushroom lift 3"}
+{"id":"fern-shrub-herb","lift":27.0,"evidence":"BM2 VineMaple01 with SwordFern04 0.94 vs 0.03 (lift 33); Thistle01 + SwordFern04 + VineMaple01 (lifts 27 to 28)"}
+{"id":"leafless-cypress","lift":9.0,"evidence":"BM1 leafless01 with cypress5 0.94 (lift 9)"}
+{"id":"log-moss","lift":4.0,"evidence":"vine/moss -> logs lift 4 to 9 (KoTM, Valenwood)"}
+{"id":"palm-pair","lift":21.0,"evidence":"KoTM Palm04 with Palm01 0.52 (lift 21)"}
+{"id":"reed-lily-kelp","lift":4.0,"evidence":"BM1 reeds/lily with WaterKelpTall 0.72 to 0.75 (lift 4)"}
