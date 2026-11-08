@@ -264,16 +264,7 @@ static class NightReed
         world.TopCell!.Persistent.AddRange([p1, p2, stabiRef, thiefRef, friendRef, neetaRef, okanRef, darRef, dayMarker, drinkMarker, sleepMarker, bedroll, zone, boxRef, houseRef]);
         world.TopCell.Persistent.AddRange(eelRefs);
         houseRef.MajorRecordFlagsRaw = 0x400;
-        Cell Interior(FormKey k)
-        {
-            foreach (var b in mod.Cells.Records) foreach (var sb in b.SubBlocks) foreach (var c in sb.Cells) if (c.FormKey == k) return c;
-            var id = k.ID; var bn = (int)(id % 10); var sn = (int)(id / 10 % 10);
-            var block = mod.Cells.Records.FirstOrDefault(b => b.BlockNumber == bn);
-            if (block == null) { block = new CellBlock { BlockNumber = bn, GroupType = GroupTypeEnum.InteriorCellBlock }; mod.Cells.Records.Add(block); }
-            var sub = block.SubBlocks.FirstOrDefault(s => s.BlockNumber == sn);
-            if (sub == null) { sub = new CellSubBlock { BlockNumber = sn, GroupType = GroupTypeEnum.InteriorCellSubBlock }; block.SubBlocks.Add(sub); }
-            var cell = cells[k].rec.DeepCopy(noRefs); sub.Cells.Add(cell); return cell;
-        }
+        Cell Interior(FormKey k) => Overrides.Interior(mod, mods, k);
         Interior(HouseCell).Persistent.Add(tiltsRef);
         Interior(ChapterCell).Persistent.AddRange([bentRef, look1Ref, look2Ref]);
         // W-override: two of the house's door pairs locked with no key (both sides); the Chapter's trapdoor at Novice.

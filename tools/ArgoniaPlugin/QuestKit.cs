@@ -224,47 +224,10 @@ sealed class QuestKit(SkyrimMod mod, List<ISkyrimModGetter> mods, Quest q, strin
 
     // ---- cells: our override of an exterior cell's or interior cell's record, merged with one already in the mod
     static readonly Cell.TranslationMask NoRefs = new(true) { Persistent = false, Temporary = false, NavigationMeshes = false, Landscape = false };
-    public Cell Interior(FormKey cellKey)
-    {
-        foreach (var b in mod.Cells.Records) foreach (var sb in b.SubBlocks) foreach (var c in sb.Cells) if (c.FormKey == cellKey) return c;
-        var cell = Survey.Winners<ICellGetter>(mods)[cellKey].rec.DeepCopy(NoRefs);
-        int id = (int)cellKey.ID, block = id % 10, sub = id / 10 % 10;
-        var blk = mod.Cells.Records.FirstOrDefault(x => x.BlockNumber == block)
-            ?? new CellBlock { BlockNumber = block, GroupType = GroupTypeEnum.InteriorCellBlock };
-        if (!mod.Cells.Records.Contains(blk)) mod.Cells.Records.Add(blk);
-        var sblk = blk.SubBlocks.FirstOrDefault(x => x.BlockNumber == sub)
-            ?? new CellSubBlock { BlockNumber = sub, GroupType = GroupTypeEnum.InteriorCellSubBlock };
-        if (!blk.SubBlocks.Contains(sblk)) blk.SubBlocks.Add(sblk);
-        sblk.Cells.Add(cell);
-        return cell;
-    }
-    public Cell Exterior(Worldspace world, FormKey cellKey)
-    {
-        foreach (var b in world.SubCells) foreach (var sb in b.Items) foreach (var c in sb.Items) if (c.FormKey == cellKey) return c;
-        var cell = Survey.Winners<ICellGetter>(mods)[cellKey].rec.DeepCopy(NoRefs);
-        var g = cell.Grid!.Point;
-        short bx = (short)Math.Floor(g.X / 32.0), by = (short)Math.Floor(g.Y / 32.0), sx = (short)Math.Floor(g.X / 8.0), sy = (short)Math.Floor(g.Y / 8.0);
-        var blk = world.SubCells.FirstOrDefault(x => x.BlockNumberX == bx && x.BlockNumberY == by)
-            ?? new WorldspaceBlock { BlockNumberX = bx, BlockNumberY = by, GroupType = GroupTypeEnum.ExteriorCellBlock };
-        if (!world.SubCells.Contains(blk)) world.SubCells.Add(blk);
-        var sblk = blk.Items.FirstOrDefault(x => x.BlockNumberX == sx && x.BlockNumberY == sy)
-            ?? new WorldspaceSubBlock { BlockNumberX = sx, BlockNumberY = sy, GroupType = GroupTypeEnum.ExteriorCellSubBlock };
-        if (!blk.Items.Contains(sblk)) blk.Items.Add(sblk);
-        sblk.Items.Add(cell);
-        return cell;
-    }
+    public Cell Interior(FormKey cellKey) => Overrides.Interior(mod, mods, cellKey);
+    public Cell Exterior(Worldspace world, FormKey cellKey) => Overrides.Exterior(mods, world, cellKey);
     /// The worldspace override in the mod (Generate's BlackMarsh, MapFix's others), with its persistent cell.
-    public Worldspace World(FormKey wk)
-    {
-        var w = mod.Worldspaces.FirstOrDefault(x => x.FormKey == wk);
-        if (w == null)
-        {
-            w = Survey.Winners<IWorldspaceGetter>(mods)[wk].rec.DeepCopy(new Worldspace.TranslationMask(true) { SubCells = false, TopCell = false });
-            mod.Worldspaces.Add(w);
-        }
-        w.TopCell ??= Survey.Winners<IWorldspaceGetter>(mods)[wk].rec.TopCell!.DeepCopy(NoRefs);
-        return w;
-    }
+    public Worldspace World(FormKey wk) => Overrides.World(mod, mods, wk);
     public static Faction Faction(SkyrimMod mod, string id, string name)
     {
         var f = mod.Factions.AddNew(id);

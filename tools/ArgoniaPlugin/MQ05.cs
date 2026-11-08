@@ -24,14 +24,7 @@ static class MQ05
     public static readonly int[] FragmentStages = [10, 20, 40, 91, 92];
 
     // BlackMarsh2's override (private here so the LQ25/LQ30 lane's own stays separate; coordinator, 2026-11-08).
-    static Worldspace World(SkyrimMod mod, List<ISkyrimModGetter> mods)
-    {
-        var src = Survey.Winners<IWorldspaceGetter>(mods)[World2].rec;
-        var w = mod.Worldspaces.FirstOrDefault(x => x.FormKey == World2);
-        if (w == null) { w = src.DeepCopy(new Worldspace.TranslationMask(true) { SubCells = false, TopCell = false }); mod.Worldspaces.Add(w); }
-        w.TopCell ??= src.TopCell!.DeepCopy(new Cell.TranslationMask(true) { Persistent = false, Temporary = false, NavigationMeshes = false, Landscape = false });
-        return w;
-    }
+    static Worldspace World(SkyrimMod mod, List<ISkyrimModGetter> mods) => Overrides.World(mod, mods, World2);
 
     public static void Add(SkyrimMod mod, List<ISkyrimModGetter> mods, Quest q)
     {
