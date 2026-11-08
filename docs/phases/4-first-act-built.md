@@ -128,9 +128,13 @@ the quest is re-authored.
   failed end 92 (three death aliases on one stage), replacing the 20-to-40 fail-forward. Measured: Pusbottom has no
   water deeper than 24 units, so the lockbox, the fallen house and the eels are in the deep water two squares north
   (cell 5,0, floor about -700) by the Chapter's trapdoor, clients on its south bank (navmesh 07EDF2); Soulrest's
-  docks have no navmesh at plank height, so the thief's round is on Soulrest's own navmesh 0A7785. Owed: the
-  records' review sections, the dialogue-write and text-review pass on the 21 lines (placeholders from the records'
-  intents), and the owner's in-game check.
+  docks have no navmesh at plank height, so the thief's round is on Soulrest's own navmesh 0A7785. Records: the
+  re-authors are review findings B1-B4 in both, stage and journal text matches the build, and one quest-reviewer round
+  ran (its 4 blocking findings applied as text and fact changes only; its notes 5-13 left open). Lines: one
+  dialogue-writer per speaker (8) from brief.py's briefs, one reader pass (11 rewrites applied), lint clean;
+  NightReed.cs builds all 21 from `story/data/dialogue-writer/quest/tg/nightreed.lines.tsv` (2026-11-08). The figurine is
+  now vanilla HorkerTusk's ivory (03AD68), not the Companions totem CRTotem2 (decision 0006). Read-back 228 of 228 (a
+  new check: the figurine's model is not a totem), 37 of 37 .pex. Owed: the owner's in-game check.
 
 - **MQ01 and MQ03 lines written (2026-11-08)** for every speaker with a topic (`*.lines.txt` beside each brief):
   Wuleen-Sei (4 topics), Buys-The-Months, Ux-Xeek, Dives-Without-A-Rope, Nesh-Deeka (4), Never-Writes-Twice, Ties;
@@ -146,3 +150,23 @@ the quest is re-authored.
   for it being absent); MQ101's override starts ARG_MQ01 in place of ARG_Opening; every placement on BM&V's own
   navmesh (Surface/Snapper helpers); the camp in cell 005911 at the paddy edge. Order: MQ01 (the new game first),
   then MQ03.
+- **BC03 built (2026-11-08).** `tools/ArgoniaPlugin/Chainbreakers.cs`, called after `LocalQuests.Add` (it reuses
+  LocalQuests' kit, now internal, with `TopicV` for an info's variant lines). Ussa-Rekh, Heavy-Rope and his chest
+  (vanilla StrongBox, Novice lock, owned by him) are snapped to Dock2's navmesh (Black Marsh North's `0A7784`), and both men are
+  essential by alias flag. The tokens are a Quest Object alias created in the chest (F1). Hearing the season sets
+  `ARG_BC03_SeasonHeard`, which gates the two side topics (F4). Yield-talk needs Speechcraft 30 (pass or fail line) and
+  ends at 91; yield-pay needs 50 gold and ends at 92. A TR-death on each man sets 94. Lines: `story/data/quest_lines/bc03.json` (the words band
+  of the TSVs). Papyrus: 8 new scripts (24 of 24 .pex, 0 failed). Read-back `plugin.sh bccheck`: 30 PASS, 0 FAIL;
+  `localcheck` still PASS; round trip clean (679 yaml files). Open: the BC01 >= 90 gate is added when ARG_BC01 is
+  built (the check prints a NOTE); the record's `changeStanding` (Chainbreakers +10) and `setFlag` effects have no
+  global yet and are not built; the low and high bands are not built (one band, as LQ25 and LQ30).
+- **MQ04 and MQ05 built (2026-11-08).** `tools/ArgoniaPlugin/MQ04.cs`, `MQ05.cs` on `QuestKit.cs` (the block test's
+  shapes as helpers), fragments `papyrus/ARG_QF_MQ04.psc`, `ARG_QF_MQ05.psc` and seven TIFs (18 of 18 scripts compile).
+  MQ04 has the quest-review's F1 to F8 applied: Pays-Late is essential and carries the gum pot (pickpocketed; his topic
+  at 30 needs it, and sets 40), the way back has three leeches enabled at 45 and its own box (prereq 45 sets 91), the
+  far-side objective and zones are cut, the camp is enabled at 40, the food is Salt Pile (034CDF; two on Lilmoth's fish
+  barrel 02A1F6, at its bounds top). MQ05: the c2 conclusion gains a third clue (the grove's Hist whole); the ship's
+  inner door pair (new block, owed an owner check); the evening quarrel and MQ04's set dressing are cut (review rows).
+  Dialogue: 7 speakers, 51 `dialogue_line` rows, lint clean, one reader pass (11 of 14 hits applied). Read-back
+  `plugin.sh mqcheck` (`MQCheck.cs`): 10 of 11 stages PASS; MQ05 20 FAILS, waiting on `ARG_NeshDeekaRef` from the
+  MQ01/MQ03 lane (her topic is left out until that ref exists). MQ04 10 is set by MQ03 (that lane).

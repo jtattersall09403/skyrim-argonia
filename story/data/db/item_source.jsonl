@@ -609,6 +609,8 @@
 {"item_id":"item.rootland-mushroom","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md:36"}
 {"item_id":"item.rootworm-mucus","ord":0,"value":"world/sources/lore/topics/ecology-encounters-loot.md:S1"}
 {"item_id":"item.rootworm-mucus","ord":1,"value":"Morrowind:Sload Soap (UESP)"}
+{"item_id":"item.salt-pile","ord":0,"value":"Skyrim.esm:INGR SaltPile"}
+
 {"item_id":"item.saltrice-flatbread","ord":0,"value":"King of the Murkmire.esp:ALCH SaltriceFlatbread"}
 {"item_id":"item.saltrice-loaf","ord":0,"value":"world/sources/lore/topics/material-culture.md:139"}
 {"item_id":"item.saltrice-loaf","ord":1,"value":"world/sources/lore/topics/foreign-powers.md:89"}

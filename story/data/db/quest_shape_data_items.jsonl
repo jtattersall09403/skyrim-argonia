@@ -92,10 +92,10 @@
 {"quest_id":"quest.tg.tg01","section":"objections","ord":1,"value":"he says he has a buyer"}
 {"quest_id":"quest.tg.tg01","section":"planTexts","ord":0,"value":"lift it off him on the dock by day"}
 {"quest_id":"quest.tg.tg01","section":"planTexts","ord":1,"value":"lift it off him while he sleeps"}
-{"quest_id":"quest.tg.tg01","section":"planTexts","ord":2,"value":"talk or buy it off him at the drinking spot"}
+{"quest_id":"quest.tg.tg01","section":"planTexts","ord":2,"value":"talk or buy it off him at the bench by the water"}
 {"quest_id":"quest.tg.tg01","section":"routes","ord":0,"value":"Pickpocket on the dock by day"}
 {"quest_id":"quest.tg.tg01","section":"routes","ord":1,"value":"Pickpocket while he sleeps at night"}
-{"quest_id":"quest.tg.tg01","section":"routes","ord":2,"value":"Speechcraft or gold at the drinking spot"}
+{"quest_id":"quest.tg.tg01","section":"routes","ord":2,"value":"Speechcraft or gold at the bench by the water"}
 {"quest_id":"quest.tg.tg01","section":"sides","ord":0,"value":"Keeps-What-Floats"}
 {"quest_id":"quest.tg.tg01","section":"sides","ord":1,"value":"who wants to keep it"}
 {"quest_id":"quest.tg.tg01","section":"sides","ord":2,"value":"and the player"}
@@ -103,11 +103,11 @@
 {"quest_id":"quest.tg.tg01","section":"sources","ord":0,"value":"Tilts-The-Jug names the thief and the necklace"}
 {"quest_id":"quest.tg.tg01","section":"sources","ord":1,"value":"Sits-By-The-Water tells where he sleeps"}
 {"quest_id":"quest.tg.tg01","section":"sources","ord":2,"value":"following his round shows it"}
-{"quest_id":"quest.tg.tg02","section":"planTexts","ord":0,"value":"dive to the canal floor"}
+{"quest_id":"quest.tg.tg02","section":"planTexts","ord":0,"value":"dive to the floor of the deep water"}
 {"quest_id":"quest.tg.tg02","section":"planTexts","ord":1,"value":"slip past the eels"}
 {"quest_id":"quest.tg.tg02","section":"planTexts","ord":2,"value":"open the box where it lies"}
 {"quest_id":"quest.tg.tg02","section":"planTexts","ord":3,"value":"swim out"}
-{"quest_id":"quest.tg.tg02","section":"routes","ord":0,"value":"Swimming to the canal floor"}
+{"quest_id":"quest.tg.tg02","section":"routes","ord":0,"value":"Swimming to the floor of the deep water"}
 {"quest_id":"quest.tg.tg02","section":"routes","ord":1,"value":"Sneak and timing past the eels"}
 {"quest_id":"quest.tg.tg02","section":"routes","ord":2,"value":"Lockpicking on the box; fighting the eels is open to any build"}
 {"quest_id":"quest.tg.tg02","section":"sources","ord":0,"value":"Bent-Spine names the box and where it lies"}

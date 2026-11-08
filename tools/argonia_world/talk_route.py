@@ -15,7 +15,7 @@ as paces and a compass point only.
 
     python3 -m tools.argonia_world.talk_route cache    [--world 23D689:Black Marsh.esm]
     python3 -m tools.argonia_world.talk_route route    --from REF --to REF|MARKER|x,y [--json]
-    python3 -m tools.argonia_world.talk_route facts    --settlement bmv.lilmoth [--write]   # every directions fact
+    python3 -m tools.argonia_world.talk_route facts    --settlement bmv.lilmoth [--write] [--world W]  # every directions fact
 """
 from __future__ import annotations
 
@@ -628,12 +628,12 @@ def resolve(W: World, w, key: str) -> tuple[float, float, str]:
     raise SystemExit(f"unknown target {key}")
 
 
-def facts(settlements: list[str], write: bool) -> int:
+def facts(settlements: list[str], write: bool, world: str = WORLD) -> int:
     """Every directions fact of the settlements re-made as a route from its speaker to its target; the old source
     names both ("speaker 00AC8E", "map marker 082193" or "target <key>")."""
     w = db.open()
     names = renames(w)
-    W = World(names=names)
+    W = World(world, names=names)
     marks = {m.id[:6]: m for m in w.rows("bmv_map_marker")}
     talkers = {t.id[:6]: t for t in w.rows("bmv_talker")}
     n = 0
@@ -683,12 +683,13 @@ def main(argv: list[str] | None = None) -> int:
     f = sp.add_parser("facts")
     f.add_argument("--settlement", action="append", required=True)
     f.add_argument("--write", action="store_true")
+    f.add_argument("--world", default=WORLD, help="the settlement's worldspace (the north: 0D6960:Black Marsh.esm)")
     a = ap.parse_args(argv)
     if a.cmd == "cache":
         cache(a.world)
         return 0
     if a.cmd == "facts":
-        facts(a.settlement, a.write)
+        facts(a.settlement, a.write, a.world)
         return 0
     w = db.open()
     W = World(names=renames(w))

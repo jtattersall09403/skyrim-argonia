@@ -61,7 +61,8 @@
 {"quest_id":"quest.main.mq05","ord":1,"id":"k3","form":"place","carrier":"thing.mq05.way"}
 {"quest_id":"quest.main.mq05","ord":2,"id":"k4","form":"line","carrier":"npc.hist-heartland.helstrom.nisswo-interpreter-debating-house"}
 {"quest_id":"quest.main.mq05","ord":3,"id":"k5","form":"line","carrier":"npc.hist-heartland.helstrom.grove-s-senior-tree"}
-{"quest_id":"quest.main.mq05","ord":4,"id":"k6","form":"place","carrier":"thing.mq05.hall"}
+{"quest_id":"quest.main.mq05","ord":4,"id":"k7","form":"place","carrier":"thing.mq05.grove"}
+{"quest_id":"quest.main.mq05","ord":5,"id":"k6","form":"place","carrier":"thing.mq05.hall"}
 {"quest_id":"quest.mr.mr01","ord":0,"id":"k1","form":"thing","carrier":"thing.river-fork"}
 {"quest_id":"quest.mr.mr01","ord":1,"id":"k2","form":"line","carrier":"npc.hist-heartland.greenspring.root-herald"}
 {"quest_id":"quest.mr.mr01","ord":2,"id":"k3","form":"thing","carrier":"thing.sample-2"}

@@ -1,0 +1,54 @@
+{
+ "topic.bc03-last-season": {
+  "speaker": "npc.mercantile-coast.soulrest.crew-boss",
+  "prompt": "What is wrong with your crew?",
+  "lines": [
+   "Our crew asked to end its last season early. Ussa-Rekh, the broker, refused us. He bought out our Owings for thirty years. Owings are debts of labour. He freed us. Now he hires us out. Ask him yourself. He sits on the long dock with his chest beside him."
+  ]
+ },
+ "topic.bc03-the-tokens": {
+  "speaker": "npc.mercantile-coast.soulrest.crew-boss",
+  "prompt": "Your crew is right. What now?",
+  "lines": [
+   "Ussa-Rekh keeps our carved tokens in the chest beside him on the dock. He keeps them until our last season is worked. He promised that a crew who break their tokens before him are done with him."
+  ]
+ },
+ "topic.bc03-break": {
+  "speaker": "npc.mercantile-coast.soulrest.crew-boss",
+  "prompt": "I have your crew's tokens.",
+  "lines": [
+   "You have them. Give them to me. We will break them before Ussa-Rekh. He promised that then we are done with him."
+  ]
+ },
+ "topic.bc03-brawl": {
+  "speaker": "npc.mercantile-coast.soulrest.crew-boss",
+  "prompt": "Accept the refusal. Work the season.",
+  "lines": [
+   "His no, from your mouth? We asked to end our last season early and were refused. I will not take that from you. Give me a reason worth hearing or keep clear."
+  ]
+ },
+ "topic.bc03-yield-talk": {
+  "speaker": "npc.mercantile-coast.soulrest.crew-boss",
+  "prompt": "Let this end. Work the season.",
+  "lines": [
+   "Your words hold. I will not fight over a season I cannot end. We will work it."
+  ],
+  "fail": [
+   "Your words are too thin to move my crew. Find better words, or give my crew something for its lost days. Until then I will not take it."
+  ]
+ },
+ "topic.bc03-yield-pay": {
+  "speaker": "npc.mercantile-coast.soulrest.crew-boss",
+  "prompt": "Here are fifty gold for your crew.",
+  "lines": [
+   "Fifty gold for my crew's lost days. It will do. We will work the season."
+  ]
+ },
+ "topic.bc03-the-season": {
+  "speaker": "npc.imperial-penal-south.blackrose-prison.chainbreaker-envoy-camped-causeway",
+  "prompt": "Tell me about the dock crews.",
+  "lines": [
+   "For thirty years I bought out Owings, the debts that bind a person to labour. I freed those crews. Now I hire them out. They work the season as agreed. Heavy-Rope's crew asked to end their last season early. I refused them. Heavy-Rope, on this dock, can tell you of the refusal and the tokens."
+  ]
+ }
+}

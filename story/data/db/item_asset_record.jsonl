@@ -148,6 +148,8 @@
 {"item_id":"item.river-betty","ord":0,"value":"CritterPondFish03Ingredient"}
 {"item_id":"item.rock-warbler-egg","ord":0,"value":"BirdEgg01"}
 {"item_id":"item.roll-of-paper","ord":0,"value":"PaperRoll"}
+{"item_id":"item.salt-pile","ord":0,"value":"SaltPile"}
+
 {"item_id":"item.saltrice-flatbread","ord":0,"value":"SaltriceFlatbread"}
 {"item_id":"item.saltrice-noodles","ord":0,"value":"SaltriceNoodles"}
 {"item_id":"item.saxhleel-axe","ord":0,"value":"EnchSaxhleelWarAxeSparks04"}
