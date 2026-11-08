@@ -229,3 +229,5 @@ added here the day they are made, with the date and the issue.
   mods are asset dependencies of the new world's plugin, not active plugins: their meshes and textures are laid,
   their plugins stay off, and ArgoniaNewWorld.esm carries its own copies of the base records it uses (never mastering
   them).
+- 2026-11-08 (in session): the personification ban goes into the dialogue skills now, without waiting for the owner's
+  next walk; the owner is changing CLAUDE.md's rule on when skills are updated.
