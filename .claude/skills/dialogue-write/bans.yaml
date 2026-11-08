@@ -107,3 +107,13 @@
     - Go yourself, or ask the root-herald to carry word to the naheesh.
   detect: "(?i)\\b(couriers?|dispatch(es)?|letters?|scrolls? (of|from|to)|messengers?|runners?|ledgers?|tall(y|ies|ied)|work rolls?|registers?|accounts? book|officials?|passes|sealed|seals? of|messages?|envoys?|deeds?|documents?|records(?! of thunder)|clerks?|scribes?|permits?|licen[cs]es?|paperwork|papers|filing|writ|summons|pay a fine|fined|censuses)\\b"
   severity: warn
+
+- id: B11-warm-address
+  rule: A warm address ("my friend", "brother", "dear one") at most twice in all of one person's lines, never to a stranger; it follows standing (the friend greeting is its place), not habit.
+  bad:
+    - Ah, my good friend, the dock is that way. (in every reply)
+  good:
+    - The dock? Follow the shore east. (to a stranger)
+    - You came back, my friend. Sit. (the friend greeting)
+  detect: "(?i)\\b(?:my (?:good |dear |old )?(?:friend|brother|sister|cousin)|friend|brother|sister|dear one|dearest|egg-kin|clutch-?mate)\\b"
+  max_per_file: 2

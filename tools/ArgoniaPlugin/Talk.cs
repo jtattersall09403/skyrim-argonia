@@ -46,7 +46,33 @@ static class Talk
             mod.Npcs.Add(npc);
         }
 
-        foreach (var g in lines.GroupBy(l => S(l, "topic")).OrderBy(g => g.Key))
+        // Greetings by standing (recipe v2 rule 2), Skyrim's own way: Skyrim.esm's Hello INFOs gate a friend's line on
+        // GetRelationshipRank with the player >= 1 (37 of them) and the rest below it. One Hello topic in ARG_Talk; per
+        // talker a stranger INFO (rank < 1) and a friend INFO (rank >= 1), each gated GetIsReference too.
+        var greet = new Dictionary<string, CompareOperator> { ["talk.greet-stranger"] = CompareOperator.LessThan, ["talk.greet-friend"] = CompareOperator.GreaterThanOrEqualTo };
+        var hellos = lines.Where(l => greet.ContainsKey(S(l, "topic"))).ToList();
+        if (hellos.Count > 0)
+        {
+            var hello = mod.DialogTopics.AddNew("ARG_Talk_Hello");
+            hello.Quest.SetTo(q.FormKey); hello.Priority = 50;
+            hello.Category = DialogTopic.CategoryEnum.Misc; hello.Subtype = DialogTopic.SubtypeEnum.Hello; hello.SubtypeName = new RecordType("HELO");
+            foreach (var who in hellos.GroupBy(l => (S(l, "talker"), S(l, "topic"))).OrderBy(w => w.Key.Item1).ThenByDescending(w => w.Key.Item2))
+            {
+                var info = new DialogResponses(mod.GetNextFormKey(), SkyrimRelease.SkyrimSE) { Flags = new DialogResponseFlags() };
+                byte n = 1;
+                foreach (var l in who.OrderBy(l => l.GetProperty("ord").GetInt32()))
+                    info.Responses.Add(new DialogResponse { Text = S(l, "text"), ResponseNumber = n++, Emotion = Emotion.Neutral });
+                var d = new GetIsReferenceConditionData();
+                d.Target.Link.SetTo(FormKey.Factory(who.Key.Item1));
+                info.Conditions.Add(new ConditionFloat { CompareOperator = CompareOperator.EqualTo, ComparisonValue = 1, Data = d });
+                var rank = new GetRelationshipRankConditionData();
+                rank.TargetNpc.Link.SetTo(FormKey.Factory("000014:Skyrim.esm"));
+                info.Conditions.Add(new ConditionFloat { CompareOperator = greet[who.Key.Item2], ComparisonValue = 1, Data = rank });
+                hello.Responses.Add(info);
+            }
+        }
+
+        foreach (var g in lines.Where(l => !greet.ContainsKey(S(l, "topic"))).GroupBy(l => S(l, "topic")).OrderBy(g => g.Key))
         {
             var tp = topics[g.Key];
             var prompt = S(tp, "prompt");

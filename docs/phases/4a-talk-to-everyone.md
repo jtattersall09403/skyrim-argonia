@@ -32,6 +32,10 @@ The owner found Lilmoth's 30 "much better", with four faults, each now a rule of
    image (reed, root, water, stone, shadow, ...) once per settlement; no canon person's name for a nobody; nothing
    from the never-reuse list; no Nordic element.
 
+**State (2026-11-08).** Recipe v2 tooling in: `talk_route` (routes), `talk_check` (facts, names, warm address,
+greetings), Talk.cs greetings by relationship rank, lint B11, the skill `talk-write`. Lilmoth's 30: facts and names
+redone (7 lore facts dropped, 22 directions routed, 7 renamed; facts 0, names 0); lines being rewritten.
+
 ## The census (`bmv_talker`, `python3 -m tools.argonia_world.talk_census build`)
 
 725 enabled placed people: 553 silent (E opens nothing), 50 service (a vanilla trade menu only), 3 with vanilla

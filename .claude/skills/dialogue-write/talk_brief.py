@@ -48,9 +48,17 @@ def brief(w, who: str, out: pathlib.Path) -> int:
         return 1
     L = [f"# Talk brief: {t.known_as} ({who})", "",
          "Write each topic's reply in this person's voice. State only the facts listed under the topic; add none. "
-         "Distances and directions are measured from where the person stands; say them as a local would (paces, "
-         "a short walk, north-east of here), but keep them true. One to three sentences a reply; a second line "
-         "only where the person would go on. No Skyrim place, person or thing (decision 0006). British English.", "",
+         "One to three sentences a reply (a route may take four); a second line only where the person would go on. "
+         "No Skyrim place, person or thing (decision 0006). British English.", "",
+         "**Directions** are routes from where the person stands, as Morrowind gives them: retell the legs in order "
+         "with their landmarks and headings (\"walk west until you see the wrecked boat, then follow the shore "
+         "north...\"), in this person's words; drop a leg's count of paces or round it as a local would, merge two "
+         "short legs, but never add a landmark, change a heading or skip a turn. Vary the telling with the person; "
+         "a place in sight is paces and a compass point only.", "",
+         "**Standing.** The player is a stranger unless they become a friend. Every topic reply is said to a "
+         "stranger: neutral or cool by temperament, no warm address. The friend greeting is the one place a warm "
+         "word fits; at most two warm address terms (\"my friend\", \"brother\", \"dear\") in all of this person's "
+         "lines (lint B11).", "",
          "## Who", "",
          f"- Seen: {race}, {c.sex}; census class {c.class_name}; factions {c.factions or 'none'}; "
          f"voice type {c.voice or 'none (our silent voice)'}.",

@@ -99,7 +99,7 @@ factions with the vendor faction swapped. Her `talk.services` facts list the sam
 | `talk.trade` | My trade | trade | census class and faction, the talker row |
 | `talk.services` | Services | trade | a Job* faction, vendor or trainer data on the base |
 | `talk.here` | This place | place | settlement cells, map markers, story/lore |
-| `talk.directions` | Directions | place | map-marker positions: compass and metres from the speaker's spot |
+| `talk.directions` | Directions | place | a `talk_route` route from the speaker's ref, every waypoint a ref |
 | `talk.danger` | Dangers nearby | place | hostile placed actors, corpses, traps, by ref |
 | `talk.rumours` | Latest rumours | place | a QUST that can start (its giver, its stage) or a placed thing worth finding |
 | `talk.loot` | Anything worth finding | place | CONT refs, treasure corpses, books (`bmv_book`) |
@@ -130,8 +130,10 @@ the world: anything the player could check is a `talk_fact` with a source.
 
 - A fact is written only from a record in the load order (form key and position) or a lore line; the source is
   kept in `talk_fact.source` and the writer states no other fact (the dialogue-write skill's rule).
-- Directions: compass and metres from the speaker's position to a map marker (70 units a metre); the writer may
-  say "a short walk" but keeps the order and the bearing.
+- Recipe v2 (owner walk 3, 2026-11-08): directions are `talk_route` routes with landmarks, address follows
+  standing (two greetings gated on GetRelationshipRank), a lore line never makes a physical claim the world does
+  not show, names follow §54. The rules and the loop are the skill `.claude/skills/talk-write`; `talk_check`
+  enforces them.
 - A fact that our own plugin changes (Lilmoth's five Naga, disabled by ARG_BlockTest and later `we.clean.lilmoth`)
   is not stated until the change is permanent.
 
