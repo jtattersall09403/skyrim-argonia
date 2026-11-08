@@ -25,19 +25,19 @@
   "speaker": "npc.hist-heartland.helstrom.boat-captain",
   "prompt": "I found this bucket under the crew's plank walk.",
   "lines": [
-   "That is the landing crew's bucket. It is full of offal. I believed the beast had always been there. This says it did not.",
+   "That is the landing crew's bucket. It is full of offal. I believed the beast had always been there. This proves it did not.",
    "You have done me a great service. Take 60 gold for it.",
    "Now I will take my trade back on the river."
   ],
   "facts": [],
   "lines@low": [
-   "That is the landing crew's bucket. Full of offal. I thought the beast was always there. This says it was not.",
+   "That is the landing crew's bucket. Full of offal. I thought the beast was always there. This proves it was not.",
    "You did a service. Take 60 gold for it.",
    "Now I take my trade back on the river."
   ],
   "lines@high": [
    "That is the landing crew's bucket. It is full of offal. I believed the beast had always been there.",
-   "This says it was not. You have done me a great service, friend. Please take 60 gold for it, with my thanks.",
+   "This proves it was not. You have done me a great service, friend. Please take 60 gold for it, with my thanks.",
    "Now I will take my trade back on the river. I am glad it was you who found this."
   ]
  },

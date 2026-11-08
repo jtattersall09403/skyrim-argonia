@@ -15,15 +15,15 @@ chain; directions in landmark prose; failure entries flat, with the consequence.
 - The player knows: fact.mq03.clean-cut, fact.mq03.jar-rings, fact.mq03.sap-fresh, fact.mq03.courier-token, fact.mq03.house-reed, fact.mq03.sap-cell, fact.mq03.no-claim, fact.mq03.reed-named, fact.mq03.reed-offer, fact.mq03.witness-wanted
 
 ## Stage 40 (`text.journal.mq03.40`)
-- Draft: I lay down on the mats in the house in Lilmoth with the camp's sap still on my tongue, and dreamed. I stood in fog among a ring of trees whose roots climbed up and up, and at the top was a gap like a door that nobody has built. A dry voice spoke that I could not place. The dream walked me to the door.
+- Draft: I lay down on the mats in the house in Lilmoth with the camp's sap still on my tongue, and dreamed. I stood in fog among a ring of trees whose roots climbed up and up, and at the top was a gap like a door that nobody has built. A dry voice spoke that I could not place. In the dream I walked to the door.
 - Directions: The roots of the ring rise from the fog to the door-gap at the top; the dream walks you there.
 - The player knows: fact.mq03.clean-cut, fact.mq03.jar-rings, fact.mq03.sap-fresh, fact.mq03.courier-token, fact.mq03.house-reed, fact.mq03.sap-cell, fact.mq03.no-claim, fact.mq03.reed-named, fact.mq03.reed-offer, fact.mq03.witness-wanted
 
 ## Stage 90 (`text.journal.mq03.90`) ending: complete
-- Draft: The dream led me to the door, and I woke in the house in Lilmoth. I have taken the Veiled Reed's oath: Nesh-Deeka says no one will come asking what I owe, the house's door is open to me, and she put the first of a stipend in my hand.
+- Draft: I walked to the door in the dream, and I woke in the house in Lilmoth. I have taken the Veiled Reed's oath: Nesh-Deeka says no one will come asking what I owe, the house's door is open to me, and she put the first of a stipend in my hand.
 - The player knows: fact.mq03.clean-cut, fact.mq03.jar-rings, fact.mq03.sap-fresh, fact.mq03.courier-token, fact.mq03.house-reed, fact.mq03.sap-cell, fact.mq03.no-claim, fact.mq03.reed-named, fact.mq03.reed-offer, fact.mq03.witness-wanted
 
 ## Stage 91 (`text.journal.mq03.91`) ending: complete
-- Draft: The dream led me to the door, and I woke in the house in Lilmoth. I have taken no oath. The house's door is not mine, but the Reed will send for me when it has work, and pay for it.
+- Draft: I walked to the door in the dream, and I woke in the house in Lilmoth. I have taken no oath. The house's door is not mine, but the Reed will send for me when it has work, and pay for it.
 - The player knows: fact.mq03.clean-cut, fact.mq03.jar-rings, fact.mq03.sap-fresh, fact.mq03.courier-token, fact.mq03.house-reed, fact.mq03.sap-cell, fact.mq03.no-claim, fact.mq03.reed-named, fact.mq03.reed-offer, fact.mq03.witness-wanted
 

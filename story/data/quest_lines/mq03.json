@@ -7,30 +7,30 @@
     "prompt": "I am ready to go.",
     "lines": [
      "A friend of the courier's sent us. You have tasted the sap. You are hurt.",
-     "The boat takes the hurt to a house in Lilmoth. That includes you."
+     "We take the hurt to a house in Lilmoth by boat. That includes you."
     ],
     "facts": [],
     "lines@low": [
      "A friend of the courier's sent us. You tasted the sap. You are hurt.",
-     "The boat takes the hurt to a house in Lilmoth. That means you."
+     "We take the hurt to a house in Lilmoth by boat. That means you."
     ],
     "lines@high": [
      "A friend of the courier's sent us. You have tasted the sap and you are hurt. I am sorry for it.",
-     "The boat takes the hurt to a house in Lilmoth. You are one of them. You are welcome aboard."
+     "We take the hurt to a house in Lilmoth by boat. You are one of them. You are welcome aboard."
     ]
    },
    {
     "variant": "where",
     "prompt": "Who sent you?",
     "lines": [
-     "A friend of the courier's sent us. You are hurt, as the others here are hurt. The boat takes the hurt to a house in Lilmoth.",
+     "A friend of the courier's sent us. You are hurt, as the others here are hurt. We take the hurt to a house in Lilmoth by boat.",
      "The shed stands beside the withdrawn cutting, at the camp's far end. Sap lies spilled on its floor.",
      "The burnt boards lie over deep water at the camp's fire. The courier's strap and tag lie in the gang families' locked fish-trap on the bottom, straight below them. Lockpicks lie loose beside the fire."
     ],
     "facts": [],
     "lines@low": [
      "A friend of the courier's sent us. You are hurt, as the others are.",
-     "The boat takes the hurt to a house in Lilmoth.",
+     "We take the hurt to a house in Lilmoth by boat.",
      "The shed is beside the withdrawn cutting, at the camp's far end. Sap lies spilled on its floor.",
      "Burnt boards lie over deep water at the camp's fire.",
      "The courier's strap and tag lie in the gang families' locked fish-trap. It is on the bottom, straight below the boards.",
@@ -38,7 +38,7 @@
     ],
     "lines@high": [
      "A friend of the courier's sent us. You are hurt, as the others here are hurt. I am sorry for it.",
-     "The boat takes the hurt to a house in Lilmoth. You are welcome on it.",
+     "We take the hurt to a house in Lilmoth by boat. You are welcome on the boat.",
      "The shed stands beside the withdrawn cutting, at the camp's far end. Sap lies spilled on its floor.",
      "The burnt boards lie over deep water at the camp's fire.",
      "The courier's strap and tag lie in the gang families' locked fish-trap, on the bottom, straight below the boards.",

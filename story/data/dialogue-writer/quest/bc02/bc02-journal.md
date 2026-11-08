@@ -15,17 +15,17 @@ chain; directions in landmark prose; failure entries flat, with the consequence.
 - The player knows: fact.bc02.fire, fact.bc02.three-held, fact.bc02.three-held, fact.bc02.one-out
 
 ## Stage 31 (`text.journal.bc02.31`)
-- Draft: I told Says-It-Plain to come with me, and the fire took the other two. I'm to bring him out of the keep's way in.
+- Draft: I told Says-It-Plain to come with me, and the other two died in the fire. I'm to bring him out of the keep's way in.
 - Directions: The way out is the way I came in, past Tsaxi.
 - The player knows: fact.bc02.fire, fact.bc02.three-held, fact.bc02.three-held, fact.bc02.one-out, fact.bc02.one-out
 
 ## Stage 32 (`text.journal.bc02.32`)
-- Draft: I told Hides-In-Reeds to come with me, and the fire took the other two. I'm to bring her out of the keep's way in.
+- Draft: I told Hides-In-Reeds to come with me, and the other two died in the fire. I'm to bring her out of the keep's way in.
 - Directions: The way out is the way I came in, past Tsaxi.
 - The player knows: fact.bc02.fire, fact.bc02.three-held, fact.bc02.three-held, fact.bc02.one-out, fact.bc02.one-out, fact.bc02.one-out
 
 ## Stage 33 (`text.journal.bc02.33`)
-- Draft: I told Keeps-The-Old-Count to come with me, and the fire took the other two. I'm to bring her out of the keep's way in.
+- Draft: I told Keeps-The-Old-Count to come with me, and the other two died in the fire. I'm to bring her out of the keep's way in.
 - Directions: The way out is the way I came in, past Tsaxi.
 - The player knows: fact.bc02.fire, fact.bc02.three-held, fact.bc02.three-held, fact.bc02.one-out, fact.bc02.one-out, fact.bc02.one-out, fact.bc02.one-out
 
