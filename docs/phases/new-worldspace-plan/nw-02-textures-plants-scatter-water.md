@@ -85,6 +85,13 @@ bucket, never in git.
 | 11 | LOD (terrain, objects, trees) and the world map: map data and 116 settlement map markers (only Stormhold known) built and checked off game; LOD settings and tooling (xLODGen 132, DynDOLOD Alpha-217) laid on the play machine (b698ff61); the LOD run is waiting on the new-world profile, then the full build once the world is final (`NW_LOD=1 tooling/job_guard.sh run --gpu nw-lod -- infra/gpu-box/lod.sh stage`) | in progress |
 | 12 | Off-game read-back loop over the built files, then deploy and the owner's walk check | todo |
 
+The new-world card (2e3215a5, d64744de): 10 asset-only rows (KotM, Tropical Skyrim, Depths, HTBM + Cipactli, Xanmeer,
+CC Ayleid, Sleeping Hist Tree, Mud Mother Grove, SIRENROOT) marked `profile: newworld`, their BSAs unpacked to loose
+files in stage and their plugins off; stack.py stages two profiles (Argonia unchanged; NewWorld = it + the 10 + our
+world plugin); Sunshine lists "Argonia: New World"; masters check 0 missing. On the build VM the assets are hard-linked
+under ~/games/skyrimse/newworld-assets/<id>; 110 of 3,368 flora model paths do not resolve (62 are Tropical Skyrim's
+LE tree meshes) and are never placed.
+
 Owner faults to carry into the skills once each fix is verified on the owner's next look (CLAUDE.md, Updating Skills):
 water classification (shape and connectivity decide kind, one kind per closed body; flow follows the channel graph to
 its outlet); texture edges (measured and
