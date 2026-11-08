@@ -1,0 +1,32 @@
+{
+ "topic.lq25-the-beast": {
+  "speaker": "npc.hist-heartland.helstrom.lq25-crew-poler",
+  "prompt": "Why is the crew not out on the river?",
+  "lines": [
+   "A crocodile lairs in the shallows under our plank walk. It took one of our rafts. Now no crew member will take a raft out.",
+   "The plank walk runs along the shore beside our houses. The beast lies in the water beneath it.",
+   "Kill it for us. Then we can work the river again."
+  ],
+  "facts": ["fact.lq25.beast-real"]
+ },
+ "topic.lq25-tell-captain": {
+  "speaker": "npc.hist-heartland.helstrom.boat-captain",
+  "prompt": "I found this bucket under the crew's plank walk.",
+  "lines": [
+   "That is the landing crew's bucket. It is full of offal. I believed the beast had always been there. This says it did not.",
+   "You have done me a great service. Take 60 gold for it.",
+   "Now I will take my trade back on the river."
+  ],
+  "facts": []
+ },
+ "topic.lq25-keep-quiet": {
+  "speaker": "npc.hist-heartland.helstrom.lq25-crew-steerer",
+  "prompt": "I know about the offal under your plank walk.",
+  "lines": [
+   "Yes. We dumped it there to fake a beast and scare the boat captain's trade off the river.",
+   "If the boat captain hears of this, she will take all the river trade for herself. Say nothing to her.",
+   "Here are 40 gold. It is a small price, but it is what we can pay."
+  ],
+  "facts": ["fact.lq25.crew-baited"]
+ }
+}

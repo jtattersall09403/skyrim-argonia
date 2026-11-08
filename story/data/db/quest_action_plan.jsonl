@@ -33,9 +33,8 @@
 {"quest_id":"quest.local.lq25","ord":2,"skill":"destruction","use":"kill-from-range","reason":"the crocodile is burnt or frozen from the planks"}
 {"quest_id":"quest.local.lq25","ord":3,"skill":"speechcraft","use":"present-evidence","reason":"the crew's bait bucket is put to the boat captain or to the crew"}
 {"quest_id":"quest.local.lq30","ord":0,"skill":"marksman","use":"snipe","reason":"the viper is shot from cover so the youth never sees who did it"}
-{"quest_id":"quest.local.lq30","ord":1,"skill":"oneHanded","use":"fight","reason":"the viper is fought at the shelter"}
-{"quest_id":"quest.local.lq30","ord":2,"skill":"sneak","use":"sneak-past","reason":"the player leaves the shelter unseen so the walk-out stays the youth's"}
-{"quest_id":"quest.local.lq30","ord":3,"skill":"speechcraft","use":"persuade","reason":"the youth is talked into coming back"}
+{"quest_id":"quest.local.lq30","ord":1,"skill":"oneHanded","use":"fight","reason":"the viper is fought among the roots in the shallows of 0D7883"}
+{"quest_id":"quest.local.lq30","ord":2,"skill":"speechcraft","use":"persuade","reason":"the youth is talked into coming back"}
 {"quest_id":"quest.main.mq01","ord":0,"skill":"Speechcraft","use":"lie","reason":"at the roll the player gives any name, or none, or an insult; one answer, and the gang goes on"}
 {"quest_id":"quest.main.mq01","ord":1,"skill":"Destruction","use":"fight","reason":"the two root-cutters at the shed with Flames, the spell every new character starts with"}
 {"quest_id":"quest.main.mq01","ord":2,"skill":"Sneak","use":"sneak-past","reason":"out of the burning huts under the plank boards to the shore, unseen by the cutters (the dive is the way in, not the skill)"}

@@ -55,7 +55,7 @@
 {"quest_id":"quest.local.lq25","things_ord":2,"state":"all","value":"present"}
 {"quest_id":"quest.local.lq30","things_ord":0,"state":"after-30","value":"dead"}
 {"quest_id":"quest.local.lq30","things_ord":0,"state":"before-30","value":"absent"}
-{"quest_id":"quest.local.lq30","things_ord":0,"state":"during","value":"at the shelter"}
+{"quest_id":"quest.local.lq30","things_ord":0,"state":"during","value":"among the roots in the shallows of 0D7883"}
 {"quest_id":"quest.local.lq30","things_ord":1,"state":"after-90","value":"Sei-Wan at the gate"}
 {"quest_id":"quest.local.lq30","things_ord":1,"state":"before-30","value":"Haj-Wan by the gate, Sei-Wan absent"}
 {"quest_id":"quest.local.lq30","things_ord":1,"state":"during","value":"Sei-Wan among the roots and Haj-Wan by the gate"}

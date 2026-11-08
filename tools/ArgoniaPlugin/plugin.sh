@@ -45,6 +45,7 @@ case "${1:-}" in
   cleancheck) build; tool cleancheck "$esp" "${lo[@]}" ;;
   musicprobe) loadorder; tool musicprobe "${lo[@]}" ;;
   blocktest) build; tool blocktest "$esp" out/gpu/papyrus "${lo[@]}" ;;
+  localcheck) build; tool localcheck "$esp" out/gpu/papyrus "${lo[@]}" ;;
   seed)
     loadorder
     tmp=$(mktemp -d); trap 'rm -rf "$tmp"' EXIT

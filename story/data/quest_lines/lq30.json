@@ -1,0 +1,43 @@
+{
+ "topic.lq30-walked-out": {
+  "speaker": "npc.hist-heartland.helstrom.lq30-kin",
+  "prompt": "What are you waiting for here?",
+  "lines": [
+   "I wait for Sei-Wan, my kin. He walked out into the basin alone four hours ago, to prove himself to Helstrom's Agaceph, the tribe that rules this city and that we belong to.",
+   "The custom of the Agaceph forbids our own to follow a walk-out. The levy will not go, and I may not. It does not apply to an outsider.",
+   "He went east from the gate, through the shallows. Vipers live in the roots there. Anyone who walks into the basin may die there. A warning is posted at the gate.",
+   "If you go, bring him home alive. If he can walk home himself, let the walk-out be his own."
+  ],
+  "facts": [
+   "fact.lq30.walked-out",
+   "fact.lq30.custom",
+   "fact.lq30.trail",
+   "fact.mq05.basin-lethal"
+  ]
+ },
+ "topic.lq30-the-basin": {
+  "speaker": "npc.hist-heartland.helstrom.levy-warden-01",
+  "prompt": "Will you stop me going out into the basin?",
+  "lines": [
+   "No. The custom of Helstrom's Agaceph forbids our own to follow a walk-out. It does not apply to an outsider, so I will not stop you.",
+   "But know this. Anyone who walks into the basin round Helstrom may die there. A warning is posted at the gate. What lies in the reed roots bites. The bite kills.",
+   "The levy will send none of its own after you. If we followed every youth out, no walk-out would be his own."
+  ],
+  "facts": [
+   "fact.lq30.custom",
+   "fact.mq05.basin-lethal"
+  ]
+ },
+ "topic.lq30-come-back": {
+  "speaker": "npc.hist-heartland.helstrom.lq30-youth",
+  "prompt": "Sei-Wan, come home now. Your kin is waiting.",
+  "lines": [
+   "I walked out alone four hours ago, to prove myself to Helstrom's Agaceph. I wanted to walk home on my own feet.",
+   "The viper is dead. You are standing here. I cannot say no to you. I will come.",
+   "Walk ahead of me. I do not want to be seen coming home like this."
+  ],
+  "facts": [
+   "fact.lq30.walked-out"
+  ]
+ }
+}

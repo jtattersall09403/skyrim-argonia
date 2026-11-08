@@ -115,4 +115,10 @@ the quest is re-authored.
 - LQ30 and LQ25 records re-authored to proven blocks (2026-11-08; each record's review finding B1): both Start Game
   Enabled with an opening topic; LQ30's gate zone unconditioned (prereq 40), detection and the reed trail cut, youth
   among the roots of 0D7883, a death fail-forward 93; LQ25's lair moved to the shallows under the crew's plank walk in
-  0D77AF (0D7723 is a hillside), own bases for the crocodile and crew, a captain-death fail-forward 93. Build next.
+  0D77AF (0D7723 is a hillside), own bases for the crocodile and crew, a captain-death fail-forward 93.
+- LQ30 and LQ25 built (`tools/ArgoniaPlugin/LocalQuests.cs`, after Combat; BlackMarsh2 0D6960 overridden there),
+  dialogue from `story/data/quest_lines/` (dialogue-write, text-review: 10 rewrites applied, lint 0), Papyrus 7 new
+  scripts compiled on the GPU box (16 of 16 .pex, 0 failed). Read-back `plugin.sh localcheck`: every stage, journal,
+  objective, fragment and .pex, alias, topic gate and trigger PASS for both; round trip clean (497 yaml files). Open:
+  LQ25's MQ05 >= 40 gate is added when ARG_MQ05 is in the plugin (the check prints a NOTE until then); the record's
+  ledger rows we.lq30.trail, we.lq25.beast and we.lq25.crew still carry the pre-B1 wording (quest review, 2026-11-08).

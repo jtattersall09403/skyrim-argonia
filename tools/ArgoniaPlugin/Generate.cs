@@ -177,10 +177,12 @@ static class Generate
         CleanUp.Add(mod, mods);
         // Skyrim's game music in BM&V's worlds (Music.cs): WRLD ZNAM only, no new forms; after Combat.
         Music.Apply(mod, mods);
+        // Phase 4's local quests LQ30 and LQ25 (LocalQuests.cs) in BlackMarsh2; allocated after Combat.
+        LocalQuests.Add(mod, mods);
         var order = mods.Select(m => m.ModKey).Append(Ours).ToList();
         // The plugin whose worldspace record we override is a master even when no form of it is referenced, so ours
         // always loads after it.
-        mod.BeginWrite.ToPath(outPath).WithLoadOrder(order).WithNoDataFolder().WithExtraIncludedMasters(worldFrom).Write();
+        mod.BeginWrite.ToPath(outPath).WithLoadOrder(order).WithNoDataFolder().WithExtraIncludedMasters([worldFrom, .. LocalQuests.Masters]).Write();
         Console.WriteLine($"wrote {outPath}: {mod.EnumerateMajorRecords().Count()} records");
     }
 }

@@ -53,9 +53,8 @@
 {"quest_id":"quest.local.lh38","stages_ord":3,"ord":4,"value":"fact.lh38.night-watch"}
 {"quest_id":"quest.local.lh38","stages_ord":4,"ord":0,"value":"fact.lh38.packet"}
 {"quest_id":"quest.local.lq25","stages_ord":0,"ord":0,"value":"fact.lq25.beast-real"}
-{"quest_id":"quest.local.lq25","stages_ord":0,"ord":1,"value":"fact.lq25.bait"}
-{"quest_id":"quest.local.lq25","stages_ord":0,"ord":2,"value":"fact.lq25.bait-drew-it"}
-{"quest_id":"quest.local.lq25","stages_ord":0,"ord":3,"value":"fact.lq25.crew-baited"}
+{"quest_id":"quest.local.lq25","stages_ord":1,"ord":0,"value":"fact.lq25.bait"}
+{"quest_id":"quest.local.lq25","stages_ord":1,"ord":1,"value":"fact.lq25.bait-drew-it"}
 {"quest_id":"quest.local.lq30","stages_ord":0,"ord":0,"value":"fact.lq30.walked-out"}
 {"quest_id":"quest.local.lq30","stages_ord":0,"ord":1,"value":"fact.lq30.custom"}
 {"quest_id":"quest.local.lq30","stages_ord":0,"ord":2,"value":"fact.lq30.trail"}
