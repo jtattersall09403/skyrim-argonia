@@ -24,6 +24,10 @@ mkdir -p "$out"; pidf="$out/world.sh.pid"
 if [ -f "$pidf" ] && kill -0 "$(cat "$pidf")" 2>/dev/null; then
   echo "world.sh: another run (pid $(cat "$pidf")) is writing $out; wait for it (tooling/job_guard.sh status)" >&2; exit 2
 fi
+# the native map (nw-02 step 11): settlement markers and MNAM/ONAM, applied whenever the ESM lacks this build's map
+"$py" -m tools.newworld.world.mapdata build >/dev/null
+dotnet "$bin/ArgoniaPlugin.dll" nwmap check "$esm" "$out/map" >/dev/null || dotnet "$bin/ArgoniaPlugin.dll" nwmap apply "$esm" "$out/map" "$data"
+dotnet "$bin/ArgoniaPlugin.dll" nwmap check "$esm" "$out/map" | tee "$out/map-check.txt"
 echo $$ > "$pidf"; trap 'rm -f "$pidf"' EXIT
 "$py" -m tools.newworld.world.land --out "$out"
 "$py" -m tools.newworld.landcover

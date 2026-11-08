@@ -3,6 +3,7 @@ switch (args.FirstOrDefault())
     case "study": Study.Run(args[1]); break;
     case "fixup": Fixup.Run(args[1], args[2..]); break;
     case "seq": return Seq.Run(args[1], args[2]);
+    case "nwverify": return NewWorldVerify.Run(args[1..]);
     case "probe": Probe.Run(args[1], args[2]); break;
     case "list": return Listing.Run(args[1], args[2], args[3..]);
     case "find": Find.Run(args[1], args[2]); break;
