@@ -59,7 +59,8 @@ Design: `docs/design/talk.md` (the tables, the topic catalogue). The four rules 
 8. **Lines.** `export ARGONIA_PRIVATE=/home/ubuntu/argonia-private` (the Morrowind corpus, for corpus-find; dotnet
    is ~/.dotnet, plugin.sh sets PATH). One `dialogue-writer` agent per person, in parallel (at most 20 at once), each given its brief and an output path
    (TSV `<topic>\t<text>`), lint run with `--race`. Then `talk_brief.py load LINES.tsv --talker REF`.
-9. **Reader.** One `reader` pass over all the settlement's lines (style guide, bans); fix and reload.
+9. **Reader.** One `reader` pass over all the settlement's lines (style guide, bans, personification B01 by name:
+   no thing, place or institution doing a person's act); fix and reload.
 10. **Build.** `tools/ArgoniaPlugin/plugin.sh seed`, `plugin.sh check`, then `python3 -m
     tools.argonia_world.talk_check` (lines, facts, names, the ESP read-back) to 0 problems; set the talkers
     `built`; commit the story data (never `plugin/Argonia/`; the integrator re-seeds).

@@ -75,7 +75,9 @@ and quote against the corpus before using it. Never paste Morrowind lines into t
 
 1. Read the brief, `voices.md` and the whole of `bans.yaml`.
 2. Run the Find agents (section 3) and read their picks.
-3. Write each topic's bands and the listener variants it needs, modelling shape and cadence on the picks.
+3. Write each topic's bands and the listener variants it needs, modelling shape and cadence on the picks. Give
+   every act to a person: a roll, a hold, a town, a ship or a law never hears, wants, adds, knows or decides (B01);
+   name who does it, or state the plain fact.
 4. Run `python3 .claude/skills/dialogue-write/lint.py LINES.txt --race <speaker race>` (required; exit 1 on
    any hit, 0 when clean; a `warn` hit such as B10 never fails the run); fix every hit or note why it stands, and
    justify each B10 warning against `story/design/province-vibe.md` §9 or reword it; then check each `review`

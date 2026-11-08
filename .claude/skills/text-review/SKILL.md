@@ -9,7 +9,9 @@ One review per change set: one `reader` pass, then the linter. The writer never 
 
 1. **Reader pass.** Spawn ONE `reader` over every changed prose file. Its brief (from `tooling/brief_template.py`)
    names the file list, the report path, the style guide (`story/design/text/style-guide.md`; the
-   culture register only when dialogue is in scope) and `Mode: prose`. Split only when the set will not fit one
+   culture register only when dialogue is in scope) and `Mode: prose`, and names personification as a check:
+   every sentence whose subject is a thing, place, document, institution or abstraction doing a person's act
+   (hears, wants, adds, knows, decides, says) is a hit, rewritten so a person does it or as the plain fact. Split only when the set will not fit one
    context, launching every reader in the same message. It returns `file:line | rule | reason | rewrite` rows.
 2. **Apply** each rewrite unless it changes a fact, name, number, lore claim or typed field, or breaks a ban
    (note those). Never swap one device for another or reuse one fix across the set.

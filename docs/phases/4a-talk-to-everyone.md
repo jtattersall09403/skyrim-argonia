@@ -92,19 +92,6 @@ the rest. One settlement is one commit and one build.
 4. `plugin.sh seed`, `plugin.sh check`, `python3 -m tools.argonia_world.talk_check` until 0 problems; commit;
    deploy with the next batch.
 
-## Personification (owner, walk 4, 2026-11-08)
-
-The owner heard "the roll adds more months for food" and "the hold heard you": an inanimate subject (a roll, a
-hold, a town, a ship, the marsh, a law, a debt) doing a person's act (adds, heard, wants, knows, says, watches,
-decides). Ban B01 in dialogue-write's `bans.yaml` already named it, but its regex knew only a few nouns, present-tense
-verbs and sentence starts, and no skill step made the writer hunt for it, so it passed. The linter now builds B01
-from subject and act lists (any tense, any position; `tooling/tests/test_dialogue_lint_personification.py`), and
-every dialogue, journal and fact source was swept and rewritten so a person or a plain fact does the act.
-
-Owed, after the owner's next walk confirms the rewritten lines: add the personification ban to the dialogue-write,
-talk-write and text-review skill text, as its general shape: never give an inanimate subject a person's act; name
-who does it ("the overseer adds months on the roll", "they heard you in the hold"), or state the plain fact.
-
 ## Cost (measured on Lilmoth's 30, 2026-11-08)
 
 About $0.45 a person all in: the 573 not yet built, about $260, about 14% of a week's allowance. Build: seed and

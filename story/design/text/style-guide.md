@@ -187,6 +187,11 @@ definite-article abstractions.
   is Khajiit illeism. This is the single most important negative rule here.
 - **No modern idiom in a mouth that could not hold it** — "okay", "issue"
   (meaning problem), "reach out", "impact" as a verb, "process" as a noun.
+- **No personification.** A thing, place, document, institution or abstraction
+  never does what only a person does: not "the roll adds months", "the hold
+  heard you", "the village wants", "the law knows". Name who does it ("I add
+  months to the roll", "we heard you in the hold") or state the plain fact.
+  Lint ban B01.
 - **No em-dash-and-gravitas syntax.** See §2.
 - **No packed, pithy sentence that assumes the player knows the speaker.**
   See §2.9; "claim", "the count" and "the tally" are on the overuse list.

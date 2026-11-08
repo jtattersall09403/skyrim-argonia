@@ -7,13 +7,23 @@
 # `review` entry by id. Keep each entry short so the list stays cheap to read in full.
 
 - id: B01-personification
-  rule: Places, objects, goods and institutions do not talk, want, know, pay, wait or decide; people do.
+  rule: >-
+    No personification. An inanimate subject (an object, place, document, institution or abstraction: a roll, a
+    hold, a town, a ship, the marsh, a law, a debt) never does a person's act (hears, wants, adds, knows, decides,
+    watches, remembers, says, gives, takes). Name the person who does it, or state the plain fact. Check every
+    sentence's subject: if it is not a person, creature or Hist, its verb must be something a thing can do.
   bad:
+    - The roll adds more months for food.
+    - The hold heard you.
+    - The village gives us nothing.
     - The lodge talks of salt.
     - Rumours are for the lodge.
     - Beds and rope pay for everything else.
     - The mud will take your boots.
   good:
+    - I add more months to the roll for food.
+    - We all heard you in the hold.
+    - The villagers give us nothing.
     - The people at the lodge talk about nothing but salt.
     - If you want rumours, ask at the lodge. People talk there in the evenings.
     - The water is free. We make our living from the beds and the rope we sell to travellers.
