@@ -43,6 +43,7 @@ class Ledger:
     levelled_at: dict = field(default_factory=dict)   # settlement -> placements that may scale (LVLN or templated)
     edit_targets: dict = field(default_factory=dict)  # edit -> every form it acts on
     levelled_in: dict = field(default_factory=dict)   # cell -> placements that may scale there
+    talkers: set = field(default_factory=set)         # built talkers' placements (their own base is fixed level)
     no_navmesh: set = field(default_factory=set)      # cells without navmesh
     all_quests: set = field(default_factory=set)
 
@@ -84,6 +85,8 @@ def load() -> Ledger:
         lg.levelled_at.setdefault(s, set()).add(pid)
     for e, tg in w.query("SELECT edit, target FROM world_edit_target"):
         lg.edit_targets.setdefault(e, set()).add(tg)
+    # A built talker (talk lines of its own) left the clean-up: its own base fixes its level (Phase 4 part B, talk.md).
+    lg.talkers = set(w.values("SELECT DISTINCT talker FROM talk_line"))
     lg.no_navmesh = set(w.values("SELECT id FROM bmv_cell WHERE NOT has_navmesh"))
     nord_races = set(w.values("SELECT id FROM bmv_race WHERE editor_id LIKE 'Nord%'")) if _has_col(
         w, "bmv_race", "editor_id") else set()
@@ -315,7 +318,7 @@ def check_nordic_and_levelled(lg: Ledger) -> list[str]:
                 out.append(f"{q}: hosted at {c or s}, which has {len(scaling)} placement(s) that may scale and "
                            f"no clean-up edit {clean} linked (0035)")
             else:
-                left = scaling - lg.edit_targets.get(clean, set())
+                left = scaling - lg.edit_targets.get(clean, set()) - lg.talkers
                 if left:
                     out.append(f"{q}: {clean} leaves {len(left)} placement(s) that may scale (first {min(left)}; 0035)")
     for q, t in lg.needs:

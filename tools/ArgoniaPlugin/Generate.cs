@@ -173,6 +173,8 @@ static class Generate
         }
         // Combat (Combat.cs): drawn-weapon run speeds and no player health regen; allocated after Talk.
         Combat.Add(mod, mods);
+        // The slice's clean-ups (CleanUp.cs): overrides only, no new form ids.
+        CleanUp.Add(mod, mods);
         var order = mods.Select(m => m.ModKey).Append(Ours).ToList();
         // The plugin whose worldspace record we override is a master even when no form of it is referenced, so ours
         // always loads after it.

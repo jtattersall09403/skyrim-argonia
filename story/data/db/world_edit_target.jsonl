@@ -70,7 +70,6 @@
 {"edit":"we.clean.dock2","target":"05D7D9:Black Marsh.esm","what":"disabled: Bear Cub BearCub"}
 {"edit":"we.clean.dock2","target":"05D7DA:Black Marsh.esm","what":"disabled: Bear Cub BearCub"}
 {"edit":"we.clean.dock2","target":"05D7DB:Black Marsh.esm","what":"fixed level: DLC2LvlBoar"}
-{"edit":"we.clean.dock2","target":"0616E8:Black Marsh North.esp","what":"disabled: Slave 01darkelfslave"}
 {"edit":"we.clean.dock5","target":"054613:Black Marsh North.esp","what":"disabled: Tax Heel Soldier 01argguardfemale"}
 {"edit":"we.clean.dock5","target":"054614:Black Marsh North.esp","what":"disabled: New Order Soldier NOSoldier"}
 {"edit":"we.clean.dock5","target":"08D5ED:Black Marsh North.esp","what":"disabled: Rebelion Soldier Argonianguard2"}
@@ -100,20 +99,11 @@
 {"edit":"we.clean.hereguardplantation","target":"02A239:Black Marsh.esm","what":"disabled: DLC2EncBoarWild"}
 {"edit":"we.clean.hereguardplantation","target":"02A23A:Black Marsh.esm","what":"disabled: DLC2EncBoarWild"}
 {"edit":"we.clean.hereguardplantation","target":"02A23B:Black Marsh.esm","what":"disabled: DLC2EncBoarWild"}
-{"edit":"we.clean.hereguardplantation","target":"03E413:Black Marsh North.esp","what":"disabled: New Order Soldier NOSoldier"}
-{"edit":"we.clean.hereguardplantation","target":"03E415:Black Marsh North.esp","what":"disabled: New Order Soldier NOSoldier1"}
-{"edit":"we.clean.hereguardplantation","target":"03E418:Black Marsh North.esp","what":"fixed level: Looks at books 01ArgFMerch2"}
 {"edit":"we.clean.hereguardplantation","target":"0AA651:Black Marsh.esm","what":"disabled: Forest Spider 0Forestspider"}
 {"edit":"we.clean.hereguardplantation","target":"0AA652:Black Marsh.esm","what":"disabled: Forest Spider 0Forestspider"}
 {"edit":"we.clean.lilmoth","target":"015176:Black Marsh.esm","what":"fixed level: Albino Spider DLC2ExpSpiderAlbinoFriend"}
 {"edit":"we.clean.lilmoth","target":"015184:Black Marsh.esm","what":"disabled: Old Salty DLC2dunNorthshoreLandingCrabBoss"}
 {"edit":"we.clean.lilmoth","target":"029A7F:Black Marsh.esm","what":"fixed level: Albino Spider DLC2ExpSpiderAlbinoFriend"}
-{"edit":"we.clean.lilmoth","target":"02A204:Black Marsh.esm","what":"fixed level: Argonian WEAdventurerBrawlerArgonianM"}
-{"edit":"we.clean.lilmoth","target":"02A205:Black Marsh.esm","what":"fixed level: WEAdventurerMageShieldStaffArgonianMFire"}
-{"edit":"we.clean.lilmoth","target":"02A206:Black Marsh.esm","what":"fixed level: Argonian WEAdventurerWarriorDualArgonianM"}
-{"edit":"we.clean.lilmoth","target":"02A207:Black Marsh.esm","what":"disabled: Deep-In-His-Cups WEDL08DeepInHisCups"}
-{"edit":"we.clean.lilmoth","target":"02A208:Black Marsh.esm","what":"fixed level: WEThiefArgonianM"}
-{"edit":"we.clean.lilmoth","target":"02A209:Black Marsh.esm","what":"fixed level: WEThiefArgonianM"}
 {"edit":"we.clean.lilmoth","target":"02A22B:Black Marsh.esm","what":"disabled: Mist Man DLC1SoulCairnEncMistMen01Magic1"}
 {"edit":"we.clean.lilmoth","target":"02A22C:Black Marsh.esm","what":"disabled: Mist Man DLC1SoulCairnEncMistMen01Magic1"}
 {"edit":"we.clean.lilmoth","target":"02A22D:Black Marsh.esm","what":"disabled: Shade DLC1SoulCairnEncSkeletonNecro01Melee1H02"}

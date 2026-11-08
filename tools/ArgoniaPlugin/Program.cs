@@ -9,6 +9,7 @@ switch (args.FirstOrDefault())
     case "cell": CellStudy.Run(args[1], args[2]); break;
     case "survey": Survey.Run(args[1..]); break;
     case "seat": Seat.Run(args[1..]); break;
+    case "cleancheck": return CleanUp.Check(args[1], args[2..]);
     case "blocktest": return BlockTestCheck.Run(args[1], args[2], args[3..]);
     case "mapprobe": MapFix.Probe(args[1..]); break;
     case "blockstudy": BlockTestStudy.Run(args[1]); break;

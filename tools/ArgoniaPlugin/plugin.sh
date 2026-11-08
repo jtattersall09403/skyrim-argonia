@@ -5,6 +5,7 @@
 #   plugin.sh check    build, then serialize it back and diff with plugin/Argonia (round trip clean), then read the
 #                      ESP back (tools/ArgoniaPlugin list): every override carries its change; writes the records table
 #   plugin.sh blocktest  build, then Phase 3's agent check of ARG_BlockTest from the ESP and out/gpu/papyrus (the .pex)
+#   plugin.sh cleancheck  build, then read the slice's clean-ups back from the ESP (CleanUp.cs)
 #   plugin.sh seed     regenerate plugin/Argonia from shutdown.json and the load order's winners (game data needed:
 #                      $ARGONIA_GAME_ROOT/Data or ~/games/skyrimse/Data, the staged profile ~/.argonia/stack/MO2)
 set -euo pipefail
@@ -41,6 +42,7 @@ case "${1:-}" in
     diff -r "$yaml" "$rt/y" && echo "round trip clean: $(find "$yaml" -name '*.yaml' | wc -l) yaml files"
     tool list "$esp" docs/research/skyrim/argonia-esp-records.md "${lo[@]}" ;;
   mapprobe) loadorder; tool mapprobe "${lo[@]}" ;;
+  cleancheck) build; tool cleancheck "$esp" "${lo[@]}" ;;
   blocktest) build; tool blocktest "$esp" out/gpu/papyrus "${lo[@]}" ;;
   seed)
     loadorder

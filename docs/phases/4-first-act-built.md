@@ -77,3 +77,17 @@ the quest is re-authored.
 ## Measured
 
 (filled as the phase goes)
+
+- **Clean-up built (2026-11-08).** `tools/ArgoniaPlugin/CleanUp.cs`, called after `Combat.Add` (overrides only, no new
+  form ids): the eight slice clean-ups (lilmoth, hereguardplantation, dock2, dock5, helstrom, village, blackrose,
+  blackmarshnorth.thorn1, whose three targets are in the coast ship's cell `0AA665`). Ten targets were built talkers and
+  left the clean-up (rows deleted, the note on each `world_edit`): six at Lilmoth (Deep-In-His-Cups and five
+  adventurers and thieves), three at Hereguard (the two New Order soldiers, Looks-At-Books) and the Dark Elf slave at
+  Soulrest; none is Nord, Thalmor, Imperial official or undead. Built: 149 placements disabled, 12 templated placements'
+  bases at a fixed level (the base's own, or 5 where it levelled with the player: talk.md's rule; no band-to-level
+  table exists). Read-back `plugin.sh cleancheck`: all eight PASS (161 targets). `adaptation_check` counts a built
+  talker as covered. Round trip clean, 558 YAML files.
+- **MQ01 and MQ03 not built: block gaps.** (1) A trigger zone gated by a condition is not a proven block: MQ01 41 to 90
+  and 42 to 91 (shore zone with `npcAtMark` and not `detectedBy`), MQ03 into 40 (house zone at night; and with
+  `npcAlive` failing). (2) W-navmesh is unproven (Phase 3, risk 1) and MQ01 stands on `we.mq01.pier-mesh`. These stages
+  go back to `quest-write` to be re-authored in proven shapes before the build.
