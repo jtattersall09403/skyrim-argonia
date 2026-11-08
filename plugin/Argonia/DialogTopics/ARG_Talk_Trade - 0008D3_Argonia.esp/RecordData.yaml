@@ -1,0 +1,8 @@
+FormKey: 0008D3:Argonia.esp
+EditorID: ARG_Talk_Trade
+Name:
+  TargetLanguage: English
+  Value: My trade
+Branch: 0008D2:Argonia.esp
+Quest: 000833:Argonia.esp
+SubtypeName: CUST

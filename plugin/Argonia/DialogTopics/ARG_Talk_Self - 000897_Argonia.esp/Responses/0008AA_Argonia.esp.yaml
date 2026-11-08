@@ -1,0 +1,20 @@
+FormKey: 0008AA:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I am Sheeh-Vos, cousin. I gather what is dropped at the dock and, well, I take what is not. I crouch among the leeks so that I look like a gatherer, eh? Waits-For-Lanterns works with me. I do not like him.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 02A208:Black Marsh.esm
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Yourself

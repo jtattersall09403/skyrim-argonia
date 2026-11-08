@@ -1,0 +1,28 @@
+FormKey: 0008CE:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Seeks-The-Channel, the boat captain, stands about ten paces east of here, sir. Please go and look at the boats with the captain. It is the best thing in the whole Docks.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Feldril Nethri, the Dunmer, works about fifteen paces north-east of here, miss. I am fond of Feldril. Feldril makes things from wood, and never says I am in the way.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 05D7CA:Black Marsh.esm
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Someone in particular

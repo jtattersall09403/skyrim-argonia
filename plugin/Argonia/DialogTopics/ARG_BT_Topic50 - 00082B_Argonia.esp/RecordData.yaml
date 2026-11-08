@@ -1,0 +1,8 @@
+FormKey: 00082B:Argonia.esp
+EditorID: ARG_BT_Topic50
+Name:
+  TargetLanguage: English
+  Value: Talk me into it.
+Branch: 00082A:Argonia.esp
+Quest: 000803:Argonia.esp
+SubtypeName: CUST

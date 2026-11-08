@@ -1,0 +1,20 @@
+FormKey: 0008BB:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I have the four volumes of The Argonian Account. I would rather sell them together than singly. I have The Lusty Argonian Maid, volumes 1 and 2, and The Sultry Argonian Bard, volume 1. There are Short History of Morrowind and Welcome to Black Marsh besides, with rolls of paper, inkwells and quills. Mind the pages.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 03E418:Black Marsh North.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Services

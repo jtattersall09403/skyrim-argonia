@@ -1,0 +1,20 @@
+FormKey: 000890:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Rumours, is it, my good friend? Well, I sit here and I see things. There are three dead Dunmer lying at the east end of the dock, about seventy paces north-north-east of here. They lie unburied, which is not right, not right at all. Have you got a drop of anything about you, for an old man who talks?
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 02A207:Black Marsh.esm
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Latest rumours

@@ -1,0 +1,8 @@
+FormKey: 000832:Argonia.esp
+EditorID: ARG_BT_Topic90
+Name:
+  TargetLanguage: English
+  Value: The crab is dead.
+Branch: 000831:Argonia.esp
+Quest: 000803:Argonia.esp
+SubtypeName: CUST

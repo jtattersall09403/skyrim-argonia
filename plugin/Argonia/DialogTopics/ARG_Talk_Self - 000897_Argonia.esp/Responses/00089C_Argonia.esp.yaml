@@ -1,0 +1,28 @@
+FormKey: 00089C:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I am Okan-Wul. I build and mend the huts here. I stay near Salith's stall between jobs. She is the one who really runs this plantation, whatever the title says. One day I mean to build something that will not rot in a season.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I am Okan-Wul, stranger. I keep the hands' huts standing. It is hard work with this timber. If I had good timber and someone to show me how stone is laid, you would see something.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 01512C:Black Marsh.esm
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Yourself

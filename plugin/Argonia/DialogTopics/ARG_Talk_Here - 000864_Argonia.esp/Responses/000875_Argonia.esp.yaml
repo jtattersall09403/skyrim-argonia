@@ -1,0 +1,28 @@
+FormKey: 000875:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: You ask what this place is. It is a dock. I would say so more gently, outlander, if I were paid to. The north door stands about a dozen paces west of me, and another lies some six paces east-south-east, so you will not want for ways out.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: The cooking pot hangs about a dozen paces south-east of where I stand. I know its place exactly, having been put where I may smell it and not sit by it.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 0616E8:Black Marsh North.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: This place

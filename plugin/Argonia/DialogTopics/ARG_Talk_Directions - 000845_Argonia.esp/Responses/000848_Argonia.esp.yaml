@@ -1,0 +1,28 @@
+FormKey: 000848:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: The walled part of Lilmoth? Walk east-north-east from here, about a hundred paces. You will meet the walls. I think those walls keep out the wrong people.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Hereguard Plantation is west-south-west, a little over a hundred paces. Ask for Salith when you get there. She sells me my bait. The plantation pays its hands too little, but Salith is fair.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 01512D:Black Marsh.esm
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Directions

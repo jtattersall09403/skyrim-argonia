@@ -1,0 +1,7 @@
+FormKey: 000824:Argonia.esp
+EditorID: ARG_BT_Branch20
+Quest: 000803:Argonia.esp
+Category: Player
+Flags:
+- TopLevel
+StartingTopic: 000825:Argonia.esp

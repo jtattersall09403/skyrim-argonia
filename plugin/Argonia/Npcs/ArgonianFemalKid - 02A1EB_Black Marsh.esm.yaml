@@ -1,0 +1,137 @@
+FormKey: 02A1EB:Black Marsh.esm
+IsCompressed: True
+MajorRecordFlagsRaw: 262144
+EditorID: ArgonianFemalKid
+SkyrimMajorRecordFlags:
+- Compressed
+ObjectBounds:
+  First: -22, -14, 0
+  Second: 22, 14, 128
+Configuration:
+  Flags:
+  - Female
+  - IsCharGenFacePreset
+  Level:
+    MutagenObjectType: NpcLevel
+    Level: 1
+  SpeedMultiplier: 100
+  DispositionBase: 35
+Voice: 000834:Argonia.esp
+Race: 013740:Skyrim.esm
+WornArmor: 069CE3:Skyrim.esm
+AIData:
+  Confidence: Average
+  EnergyLevel: 50
+  Responsibility: NoCrime
+Packages:
+- 10F587:Skyrim.esm
+Class: 013176:Skyrim.esm
+Name:
+  TargetLanguage: English
+  Value: Aragonian Child
+PlayerSkills:
+  SkillValues:
+  - Key: OneHanded
+    Value: 5
+  - Key: TwoHanded
+    Value: 5
+  - Key: Archery
+    Value: 5
+  - Key: Block
+    Value: 5
+  - Key: Smithing
+    Value: 5
+  - Key: HeavyArmor
+    Value: 5
+  - Key: LightArmor
+    Value: 5
+  - Key: Pickpocket
+    Value: 5
+  - Key: Lockpicking
+    Value: 5
+  - Key: Sneak
+    Value: 5
+  - Key: Alchemy
+    Value: 5
+  - Key: Speech
+    Value: 5
+  - Key: Alteration
+    Value: 5
+  - Key: Conjuration
+    Value: 5
+  - Key: Destruction
+    Value: 5
+  - Key: Illusion
+    Value: 5
+  - Key: Restoration
+    Value: 5
+  - Key: Enchanting
+    Value: 5
+  SkillOffsets:
+  - Key: OneHanded
+    Value: 0
+  - Key: TwoHanded
+    Value: 0
+  - Key: Archery
+    Value: 0
+  - Key: Block
+    Value: 0
+  - Key: Smithing
+    Value: 0
+  - Key: HeavyArmor
+    Value: 0
+  - Key: LightArmor
+    Value: 0
+  - Key: Pickpocket
+    Value: 0
+  - Key: Lockpicking
+    Value: 0
+  - Key: Sneak
+    Value: 0
+  - Key: Alchemy
+    Value: 0
+  - Key: Speech
+    Value: 0
+  - Key: Alteration
+    Value: 0
+  - Key: Conjuration
+    Value: 0
+  - Key: Destruction
+    Value: 0
+  - Key: Illusion
+    Value: 0
+  - Key: Restoration
+    Value: 0
+  - Key: Enchanting
+    Value: 0
+  Health: 31328
+  Magicka: 234
+  GearedUpWeapons: 1
+HeadParts:
+- 0B2FDC:Skyrim.esm
+- 09D749:Skyrim.esm
+- 0B2FCB:Skyrim.esm
+- 0D334E:Skyrim.esm
+HairColor: 0829CF:Skyrim.esm
+NAM5: 255
+Height: 0.8
+Weight: 25
+SoundLevel: Normal
+DefaultOutfit: 0CE095:Skyrim.esm
+HeadTexture: 069CDD:Skyrim.esm
+TextureLighting: '#007F7631'
+FaceMorph:
+  NoseLongVsShort: -0.7
+  NoseUpVsDown: 0.4
+  JawUpVsDown: -0.6
+  JawNarrowVsWide: 1
+  JawForwardVsBack: -0.3
+  EyesUpVsDown: -0.2
+  EyesInVsOut: -0.2
+  Unknown: 3.4028235E+38
+FaceParts:
+  Nose: 5
+  Unknown: 4294967295
+  Eyes: 4
+MajorFlags:
+- 0x40000

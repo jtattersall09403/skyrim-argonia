@@ -1,0 +1,20 @@
+FormKey: 0008C1:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Okan-Wul is usually about five paces north of here; I mother that hatchling, whatever they say. Stares-At-Clouds is about twenty-five paces north-north-east, lazy and sweet. For Uleesh, go about forty-five paces east to the shallows below the walls of Lilmoth; he fishes there. He is the most honest man outside the walls.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 01512B:Black Marsh.esm
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Someone in particular

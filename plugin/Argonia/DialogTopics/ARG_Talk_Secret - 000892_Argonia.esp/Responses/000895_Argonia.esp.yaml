@@ -1,0 +1,20 @@
+FormKey: 000895:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: My friend, I do not give this away. I would not have you think it is free. Near the graves north of Lilmoth's walls, perhaps a hundred and forty-five paces north-west of here, there is a trapdoor in the ground. It leads down under the city. Do not trouble yourself with the chest beside it; someone with less patience emptied it already.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 02A209:Black Marsh.esm
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Little secret

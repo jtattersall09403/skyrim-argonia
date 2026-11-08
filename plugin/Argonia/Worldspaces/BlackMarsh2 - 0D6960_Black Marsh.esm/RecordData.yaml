@@ -1,0 +1,23 @@
+FormKey: 0D6960:Black Marsh.esm
+EditorID: BlackMarsh2
+Name:
+  TargetLanguage: English
+  Value: Black Marsh2
+Climate: 130762:Black Marsh.esm
+Water: 062A72:Skyrim.esm
+LodWater: 062A72:Skyrim.esm
+LodWaterHeight: 0
+LandDefaults:
+  DefaultLandHeight: -2048
+MapData:
+  NorthwestCellCoords: -17, 16
+  SoutheastCellCoords: 16, -15
+  CameraMinHeight: 50000
+  CameraMaxHeight: 80000
+  CameraInitialPitch: 50
+WorldMapOffsetScale: 1
+DistantLodMultiplier: 1
+Flags:
+- SmallWorld
+ObjectBoundsMin: -35, -31
+ObjectBoundsMax: 32, 32

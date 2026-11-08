@@ -1,0 +1,22 @@
+FormKey: 000A3C:RimExecutionHitSA.esp
+EditorID: BackStabProjectile
+FormVersion: 40
+ObjectBounds:
+  First: -178, -12, -261
+  Second: 178, 757, 21
+Model:
+  File: Effects\FXEmptyObject.nif
+  Data: 0x020000000300000001000000A74147496464730038973CEA6C6AC81F6464730038973CEA64FD960E64647300582C553301000000
+Flags:
+- Supersonic
+- PassThroughSmallTransparent
+Type: Missile
+Speed: 2500
+Range: 250
+MuzzleFlashDuration: 0.5
+FadeDuration: 0.5
+ConeSpread: 5
+CollisionRadius: 32
+RelaunchInterval: 0.125
+MuzzleFlashModel: ''
+SoundLevel: 2

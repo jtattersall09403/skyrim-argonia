@@ -1,0 +1,25 @@
+FormKey: 005900:Valenwood.esp
+EditorID: Valenwood
+Name:
+  TargetLanguage: English
+  Value: Valenwood
+Climate: 01CECA:Valenwood.esp
+Water: 000018:Skyrim.esm
+LodWater: 000018:Skyrim.esm
+LodWaterHeight: 0
+LandDefaults:
+  DefaultLandHeight: -2048
+MapData:
+  NorthwestCellCoords: -16, 19
+  SoutheastCellCoords: 17, -16
+  CameraMinHeight: 50000
+  CameraMaxHeight: 80000
+  CameraInitialPitch: 50
+WorldMapOffsetScale: 1
+DistantLodMultiplier: 1
+Flags:
+- SmallWorld
+ObjectBoundsMin: -34, -34
+ObjectBoundsMax: 36, 37
+HdLodDiffuseTexture: data\textures\landscape\mountains\mountainslab02.dds
+HdLodNormalTexture: data\textures\landscape\mountains\mountainslab02_n.dds

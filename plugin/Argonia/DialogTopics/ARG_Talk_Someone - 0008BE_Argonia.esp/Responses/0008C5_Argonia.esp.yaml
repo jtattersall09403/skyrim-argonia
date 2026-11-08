@@ -1,0 +1,28 @@
+FormKey: 0008C5:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Flaa Heet is the headman. He knows everything, big one. Everything! He stands by the cooking spit, about twenty paces south of here. Will you tell him I sent you?
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Hums-To-The-Rain is usually about twenty paces south-south-west of here, on the west side of the village. Singing, singing, singing. Do you sing, big one? Please do not.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 02A1E9:Black Marsh.esm
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Someone in particular

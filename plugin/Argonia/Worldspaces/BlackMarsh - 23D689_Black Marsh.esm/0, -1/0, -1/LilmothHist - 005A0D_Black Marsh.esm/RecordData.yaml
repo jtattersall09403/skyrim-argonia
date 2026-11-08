@@ -1,0 +1,30 @@
+FormKey: 005A0D:Black Marsh.esm
+EditorID: LilmothHist
+Flags:
+- HasWater
+Grid:
+  Point: 6, -2
+  Flags: 926986496
+WaterHeight: 3.4028235E+38
+Temporary:
+- MutagenObjectType: PlacedNpc
+  FormKey: 02A204:Black Marsh.esm
+  Base: 0008E5:Argonia.esp
+  Placement:
+    Position: 27279.895, -7315.138, 26.586441
+- MutagenObjectType: PlacedNpc
+  FormKey: 02A205:Black Marsh.esm
+  Base: 0008E6:Argonia.esp
+  Placement:
+    Position: 26687.338, -7478.493, 26.58635
+- MutagenObjectType: PlacedNpc
+  FormKey: 02A206:Black Marsh.esm
+  Base: 0008E7:Argonia.esp
+  Placement:
+    Position: 27078.896, -7294.5723, 26.586319
+- MutagenObjectType: PlacedNpc
+  FormKey: 02A208:Black Marsh.esm
+  Base: 0008E8:Argonia.esp
+  Placement:
+    Position: 28651, -4594, 0
+    Rotation: 0, 0, 2.4

@@ -1,0 +1,27 @@
+FormKey: 0008E4:Argonia.esp
+EditorID: ARG_Talker_02A1F2
+Configuration:
+  Flags:
+  - Female
+  - AutoCalcStats
+  Level:
+    MutagenObjectType: NpcLevel
+    Level: 1
+  TemplateFlags:
+  - Traits
+  - Factions
+  - SpellList
+  - AIData
+  - AIPackages
+  - ModelAnimation
+  - Inventory
+  - Script
+  - DefPackList
+  - AttackData
+  - Keywords
+Template: 0B2E12:Skyrim.esm
+Race: 013740:Skyrim.esm
+Class: 013176:Skyrim.esm
+Name:
+  TargetLanguage: English
+  Value: Okeeh-Jas

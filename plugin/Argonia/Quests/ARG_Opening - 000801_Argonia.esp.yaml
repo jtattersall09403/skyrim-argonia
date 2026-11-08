@@ -44,6 +44,8 @@ VirtualMachineAdapter:
         Object: 000823:Magic.esp
       - Name: ''
         Object: 0009D3:Magic.esp
+      - Name: ''
+        Object: 0083EB:Magistrate Levitate.esp
     - MutagenObjectType: ScriptObjectProperty
       Name: TestWeapon
       Object: 0135B8:Skyrim.esm

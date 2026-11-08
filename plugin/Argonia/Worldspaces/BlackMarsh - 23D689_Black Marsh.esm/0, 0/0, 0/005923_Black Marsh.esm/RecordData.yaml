@@ -1,0 +1,20 @@
+FormKey: 005923:Black Marsh.esm
+IsCompressed: True
+MajorRecordFlagsRaw: 262144
+SkyrimMajorRecordFlags:
+- Compressed
+Flags:
+- HasWater
+Grid:
+  Point: 1, 0
+  Flags: -1536086528
+WaterHeight: 3.4028235E+38
+Temporary:
+- MutagenObjectType: PlacedNpc
+  FormKey: 01512E:Black Marsh.esm
+  Base: 0008DE:Argonia.esp
+  Placement:
+    Position: 7810.627, 1069.3103, 56
+    Rotation: 0, 0, 1.6
+MajorFlags:
+- 0x40000

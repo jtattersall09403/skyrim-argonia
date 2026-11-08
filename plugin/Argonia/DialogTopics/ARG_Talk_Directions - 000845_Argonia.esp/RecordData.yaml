@@ -1,0 +1,8 @@
+FormKey: 000845:Argonia.esp
+EditorID: ARG_Talk_Directions
+Name:
+  TargetLanguage: English
+  Value: Directions
+Branch: 000844:Argonia.esp
+Quest: 000833:Argonia.esp
+SubtypeName: CUST

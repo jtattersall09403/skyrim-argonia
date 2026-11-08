@@ -1,0 +1,20 @@
+FormKey: 0008AC:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I am Sees-No-Shade, in the pay of the Lilmoth council, posted to guard the south side of the plantation, where the rice is grown that Lilmoth buys. I face the water because whatever comes, comes from the shore. Nothing happens on my watch, citizen. State your business or move along.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 03E413:Black Marsh North.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Yourself

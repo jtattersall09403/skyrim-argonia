@@ -5,11 +5,14 @@ VirtualMachineAdapter:
   - Name: ARG_QF_BlockTest
     Properties:
     - MutagenObjectType: ScriptObjectProperty
+      Name: AchievementsQuest
+      Object: 0FC85D:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
       Name: CrabParent
       Object: 000809:Argonia.esp
     - MutagenObjectType: ScriptObjectProperty
       Name: DockHands
-      Object: 000816:Argonia.esp
+      Object: 000818:Argonia.esp
     - MutagenObjectType: ScriptObjectProperty
       Name: EndQuest
       Object: 000804:Argonia.esp
@@ -21,6 +24,12 @@ VirtualMachineAdapter:
       Object: 000803:Argonia.esp
       Alias: 0
     - MutagenObjectType: ScriptObjectProperty
+      Name: RaceHits
+      Object: 000816:Argonia.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: RaceRuns
+      Object: 000817:Argonia.esp
+    - MutagenObjectType: ScriptObjectProperty
       Name: ShipKey
       Object: 000812:Argonia.esp
     - MutagenObjectType: ScriptObjectProperty
@@ -31,7 +40,7 @@ VirtualMachineAdapter:
       Object: 00080D:Argonia.esp
     - MutagenObjectType: ScriptObjectProperty
       Name: TalkScene
-      Object: 000820:Argonia.esp
+      Object: 000822:Argonia.esp
     - MutagenObjectType: ScriptObjectProperty
       Name: Token
       Object: 000810:Argonia.esp
@@ -45,14 +54,6 @@ VirtualMachineAdapter:
     - MutagenObjectType: ScriptObjectProperty
       Name: WalkerMarker
       Object: 00080E:Argonia.esp
-    - MutagenObjectType: ScriptObjectProperty
-      Name: ZoneA
-      Object: 000803:Argonia.esp
-      Alias: 5
-    - MutagenObjectType: ScriptObjectProperty
-      Name: ZoneB
-      Object: 000803:Argonia.esp
-      Alias: 6
   FileName: ARG_QF_BlockTest
   Fragments:
   - Stage: 10
@@ -79,9 +80,6 @@ VirtualMachineAdapter:
   - Stage: 71
     ScriptName: ARG_QF_BlockTest
     FragmentName: Fragment_71
-  - Stage: 72
-    ScriptName: ARG_QF_BlockTest
-    FragmentName: Fragment_72
   - Stage: 75
     ScriptName: ARG_QF_BlockTest
     FragmentName: Fragment_75
@@ -146,7 +144,7 @@ Name:
   TargetLanguage: English
   Value: Block Test
 Priority: 50
-Type: Misc
+Type: SideQuest
 Stages:
 - Index: 10
   Flags:
@@ -175,9 +173,6 @@ Stages:
   LogEntries:
   - Flags: []
 - Index: 71
-  LogEntries:
-  - Flags: []
-- Index: 72
   LogEntries:
   - Flags: []
 - Index: 75
@@ -237,7 +232,7 @@ Aliases:
   - Protected
   ForcedReference: 00080B:Argonia.esp
   PackageData:
-  - 000817:Argonia.esp
+  - 000819:Argonia.esp
 - ID: 2
   Name: Crab
   Flags:

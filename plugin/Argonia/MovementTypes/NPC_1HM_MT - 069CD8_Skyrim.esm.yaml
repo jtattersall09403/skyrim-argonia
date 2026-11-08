@@ -1,0 +1,19 @@
+FormKey: 069CD8:Skyrim.esm
+EditorID: NPC_1HM_MT
+FormVersion: 30
+Name: NPC1HM
+LeftWalk: 80.09
+LeftRun: 300
+RightWalk: 79.75
+RightRun: 300
+ForwardWalk: 80.1
+ForwardRun: 300
+BackWalk: 45.45
+BackRun: 300
+RotateInPlaceWalk: 180.00006
+RotateInPlaceRun: 180.00006
+RotateWhileMovingRun: 180.00006
+AnimationChangeThresholds:
+  Directional: 3.4028235E+38
+  MovementSpeed: 3.4028235E+38
+  RotationSpeed: 3.4028235E+38

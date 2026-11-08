@@ -33,21 +33,27 @@ Fixed after your walk of 2026-11-07 (feedback in `tmp/walk-2-feedback.md`).
       it and hold cast: you rise and float; look up or down to steer; let go of cast to come down.
 - [ ] **Mark and Recall.** Cast Mark, walk away, cast Recall: you return to where you cast Mark. They are Expert
       spells, so first type `player.setav alteration 100` then `player.setav magicka 600` and wait a few seconds.
-- [ ] **Dodge, standing still.** You asked us to check the double backstep: it is Dynamic Dodge's own backstep
-      animation as the mod ships it (one clip, about 5 metres in two pushes, with two footsteps in it), not two
-      dodges firing. Nothing changed. Tick this if that is fine, or say "cut it to one step" and we will look for a
-      shorter clip.
+- [ ] **Dodge, standing still** (changed 2026-11-08, your ruling): stand still, hold no direction, tap Alt (pad: B).
+      You now take one short hop back, about 2 metres (the first of Dynamic Dodge's two pushes; it went about 5.4 m).
+      Say whether it looks right, whether the feet slide during the second half of the move (the clip keeps its full
+      length), and whether the distance is too short: the fallback is Skyrim's own hop-back, about 3 metres. (A dodge
+      tapped mid-attack still plays the mod's back roll; that is unchanged.)
 - [ ] **Attack queued during a roll** (our own plugin): from the new game, roll and press attack mid-roll; the
       swing comes straight out of the roll.
 - [ ] **Parry**, against a bandit (`player.placeatme 00039CF6`, click him, `additem 00012EB7 1`, `equipitem
       00012EB7`): hold block and tap attack just as his swing lands. The window is now half a second (it was 0.3),
       to allow for the stream's delay. He staggers and kneels; attack again for the riposte. Say if it is now too
       easy or still too hard.
-- [ ] **Backstab.** It is Rim Parry's: the light bash (hold block, tap attack; pad: hold LB, tap RB) from straight
-      behind the bandit (within about 30 degrees of directly behind; a little to one side fails). The bandit drops to
-      his knees; attack again to execute. Try first on a bandit busy with something else (no `tai`); then click a
-      bandit in the console, type `tai`, close the console and try again, so we learn whether a frozen bandit can be
-      backstabbed. If nothing happens, say where you stood, whether lock-on (F) was on, and what animation played.
+- [ ] **Backstab** (changed 2026-11-08: the last walk's parry-from-behind was the right input, but it never
+      reached the bandit). Rim Parry turns every bash into its parry swing on purpose; from behind, that swing fires an
+      invisible "feeler" that triggers the backstab, and the feeler only reached 100 units, less than an arm's length,
+      so at sword distance it vanished before touching his back. Its reach is now 250 units. Have at least 20 magicka
+      (the mod refuses below 20). (1) Behind a bandit who has not seen you, about a sword's length away, facing the way
+      he faces, locked on (F; pad: right stick click): hold block and tap attack (keyboard: right mouse, left mouse; pad:
+      hold LB, tap RB). He lurches into a big stagger; attack again for the execution. (2) The same on a bandit busy
+      fighting someone else. (3) From the front, the same input as his blow lands must still be a parry, with no
+      backstab stagger. (4) From behind but three or more steps away: only the swing. Reply yes or what played, for
+      each of 1 to 4; if 1 fails, say how far away you stood and whether you had a shield.
 - [ ] **Poise.** Hit a bandit with light attacks: after several hits he staggers; a power attack staggers sooner.
       Bandits hitting you stagger you the same way.
 - [ ] **Pad layout** (GameSir X2): RB light attack, RT heavy (power) attack in one press, LB block, LT shout, d-pad
@@ -68,7 +74,19 @@ Fixed after your walk of 2026-11-07 (feedback in `tmp/walk-2-feedback.md`).
       For each you try, say: can you walk in, is there a floor (not sunk into the ground or floating), and could a
       person live or a scene play there. No console needed.
 
-## 3. The building blocks: only what is still unproved (Phase 3)
+## 3. The world map (new, 2026-11-08)
+
+Pressing M in Black Marsh showed Skyrim's map. Our plugin now gives BM&V's four worlds the map area they lacked, and
+the game now gets the terrain-detail settings files BM&V left out (made on the play machine from your copy of BM&V).
+The marker "Lolmoth" now reads "Lilmoth", and "Southern Morowind Pass" reads "Southern Morrowind Pass".
+
+- [ ] **Lilmoth:** on the dock (the new game puts you there), press M: Black Marsh's own land, not Skyrim's; you can
+      pan and zoom; Lilmoth's walled town marker reads "Lilmoth".
+- [ ] **Thorn:** console `cow BlackMarshNorth -6 5`, close the console, press M: Thorn's land, pan and zoom.
+- [ ] **Valenwood:** console `cow Valenwood 17 27` (Arenthi), press M: Valenwood's land, pan and zoom.
+      If a map shows only cloud or only part of the land, say which world and whether you could pan to the edges.
+
+## 4. The building blocks: only what is still unproved (Phase 3)
 
 Steps 1 to 6, 8, 9, 12 and the keeper's reply in 13 passed on 2026-11-07 and are not asked again. Each check below
 starts the test quest and jumps straight to the stage it needs, so there is no replay. Reply with the letter of any
@@ -96,11 +114,12 @@ check that did not happen as written.
 - [ ] **D. The finished quests in the journal** (step 13). Any game: `startquest ARG_BlockTest`, then `setstage
       ARG_BlockTest 90`. You get 10 gold. Open the journal (J). Pass: "Block Test" ("I passed the block test.") and
       "Block Test, the end" ("The second quest started from the first." and "The second quest ended with the
-      first.") are listed as completed. Also tell us what the Stats page says for "Quests Completed" and "Side Quests
-      Completed". (They were Misc quests, which Skyrim drops from the journal when done; they are now Side Quests that
-      end the way Skyrim's do.)
+      first.") are listed as completed. Then the Stats page (Quests section): "Side Quests Completed" has gone up by 2
+      (in a new game: 2), one for each test quest, as Skyrim's own side quests add it in their last stage; tell us
+      what "Quests Completed" says too (we expect the game to add those itself, but have no proof). (They were Misc
+      quests, which Skyrim drops from the journal when done, and nothing added to the stats.)
 
-## 4. Talk to Lilmoth's people (block W-talk, again)
+## 5. Talk to Lilmoth's people (block W-talk, again)
 
 Everyone in and around Lilmoth now opens a talk menu, shows their own name under the crosshair, and should sound
 different from their neighbours: 30 people (12 before), each with their own temperament, wants, grudges and local
@@ -140,8 +159,8 @@ true where it says. Walking time for all of them is about 40 minutes; nothing to
 - [ ] **Stares-At-Clouds**, plantation hand who watches the flood water and the paddies' far edge; stands the north-east edge of the plantation, beyond the huts, where the water comes in. Ask "Directions" and check: the walled part of Lilmoth lies about 110 m east of here.
 - [ ] **Folds-The-Linen**, house servant at the plantation house; stands by the plantation house, near the bed and benches on its south side. Ask "Plants and ingredients" and check: Nightshade grows about 15 m east-north-east of here; keep it out of the kitchen.
 - [ ] **Mazei-Tul**, house servant who keeps the plantation's horses; stands on the north side of the plantation house, close to the horses. Ask "Directions" and check: Lilmoth Dock lies about 405 m east of here.
-- [ ] **Sees-No-Shade**, hired soldier who guards the plantation's south side; stands on the south side of the plantation by a bench, facing the water and the shore. Ask "Dangers nearby" and check: A giant crab, Old Salty, lives in the shallows about 45 m east-south-east of here.
-- [ ] **Rakhee-Tul**, hired soldier who guards the plantation's south side with Sees-No-Shade; stands a few paces north of Sees-No-Shade on the plantation's south side, nearer the yard. Ask "Dangers nearby" and check: Fly amanita grows about 30 m west-south-west of here; do not eat it.
+- [ ] **Sees-No-Shade**, a soldier in the Lilmoth council's pay who guards the plantation's south side; stands on the south side of the plantation by a bench, facing the water and the shore. Ask "Dangers nearby" and check: A giant crab, Old Salty, lives in the shallows about 45 m east-south-east of here.
+- [ ] **Rakhee-Tul**, a soldier in the Lilmoth council's pay who guards the plantation's south side with Sees-No-Shade; stands a few paces north of Sees-No-Shade on the plantation's south side, nearer the yard. Ask "Dangers nearby" and check: Fly amanita grows about 30 m west-south-west of here; do not eat it.
 - [ ] **Looks-At-Books**, bookseller and seller of paper and writing things; stands by the tables on the west side of the plantation house, where she keeps her books out of the rain. Ask "Someone in particular" and check: Folds-The-Linen keeps the house about 15 m east of here.
 
 #### The Docks (the map's "Docks", about 240 m east of Lilmoth Dock)
@@ -158,9 +177,8 @@ true where it says. Walking time for all of them is about 40 minutes; nothing to
 
 ## Later (not yet buildable)
 
-- The world map: in BM&V it still shows Skyrim's map. Investigated 2026-11-08 and planned as block W-wrld-map in
-  docs/phases/4-first-act-built.md (the native map of BM&V's own land, with "Lolmoth" renamed "Lilmoth"); a
-  parchment map only if you want it after seeing that.
+- The world map, if section 3 fails: terrain detail generated for BM&V's worlds (docs/phases/5-scale.md); a
+  parchment map only if you want it after seeing the native one.
 - Phase 4: play the first story slice from a new game.
 
 ## Done

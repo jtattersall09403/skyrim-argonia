@@ -1,0 +1,20 @@
+FormKey: 000839:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Advice, boss? Free, and worth what you pay. If your gear is hanging loose, there is an armour workbench some twenty-five paces north-north-east of here. Go on, I will not report you for using it, which is more than Sees-No-Shade, the other guard, would do.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 03E415:Black Marsh North.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Little advice

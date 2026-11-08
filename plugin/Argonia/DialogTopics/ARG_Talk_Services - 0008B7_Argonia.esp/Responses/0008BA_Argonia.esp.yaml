@@ -1,0 +1,20 @@
+FormKey: 0008BA:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Food and small goods, dear, all of it from this stall. You can look all you like. Whatever you may have heard about what I sell, hear it from me instead. I laugh at my own prices, so you may as well laugh with me and then pay them.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 02A1F2:Black Marsh.esm
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Services

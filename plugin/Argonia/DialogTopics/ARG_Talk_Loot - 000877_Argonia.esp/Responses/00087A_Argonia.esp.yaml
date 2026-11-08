@@ -1,0 +1,20 @@
+FormKey: 00087A:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Between us, boss, I think that wreck is full of things nobody has bothered to take. There is iron and leather armour, weapons, a silver plate and a captain's journal by the beached ship, about ninety paces south of here. A passage door near the ship, about a hundred paces south, leads in. I would go before somebody else has the same idea.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 03E415:Black Marsh North.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Anything worth finding

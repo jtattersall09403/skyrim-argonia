@@ -1,0 +1,28 @@
+FormKey: 00088B:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Allow me to explain the law of this marsh as it was explained to me, with a great deal of patience and very little choice. When you lose what is not yours to lose, an arbitrator weighs the loss and turns it into months of labour, which they count in nushmeekos, and when those months are worked the matter is over. I have asked, more than once, who is doing the counting.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: There was a time, outlander, when a foreigner without a licence was kept to the docks of Lilmoth and barred from the city itself. I mention it only because I, a guest of this marsh, find the arrangement so familiar that I could almost call it hospitality.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 0616E8:Black Marsh North.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Black Marsh

@@ -10,6 +10,8 @@ LodWaterHeight: 0
 LandDefaults:
   DefaultLandHeight: -2048
 MapData:
+  NorthwestCellCoords: -18, 4
+  SoutheastCellCoords: 18, -25
   CameraMinHeight: 50000
   CameraMaxHeight: 80000
   CameraInitialPitch: 50
@@ -50,7 +52,7 @@ TopCell:
     - InitiallyDisabled
     Base: 00003B:Skyrim.esm
     Placement:
-      Position: 30646, -2618, -170
+      Position: 31040, -2700, -150
   - MutagenObjectType: PlacedObject
     FormKey: 000809:Argonia.esp
     MajorRecordFlagsRaw: 3072
@@ -124,7 +126,7 @@ TopCell:
       Reference: 000808:Argonia.esp
       Unknown: 0x000000
     Placement:
-      Position: 30646, -2618, 30
+      Position: 31040, -2700, 50
   - MutagenObjectType: PlacedObject
     FormKey: 000813:Argonia.esp
     MajorRecordFlagsRaw: 1024
@@ -170,7 +172,7 @@ TopCell:
           Data: 65
         - MutagenObjectType: ScriptIntProperty
           Name: stage
-          Data: 72
+          Data: 71
     Base: 099312:Skyrim.esm
     Primitive:
       Bounds: 150, 150, 100
@@ -179,6 +181,31 @@ TopCell:
       Type: Box
     Placement:
       Position: 32087, -2475, 85
+  - MutagenObjectType: PlacedObject
+    FormKey: 0008EF:Argonia.esp
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_VendorLooksAtBooksChestRef
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 0008EE:Argonia.esp
+    Placement:
+      Position: 1646.1263, -3525.361, -1986.3772
+  - MutagenObjectType: PlacedObject
+    FormKey: 0934A4:Black Marsh North.esp
+    MajorRecordFlagsRaw: 1024
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000010:Skyrim.esm
+    MapMarker:
+      Flags:
+      - Visible
+      - CanTravelTo
+      Name:
+        TargetLanguage: English
+        Value: Lilmoth
+      Type: Town
+    Placement:
+      Position: 15595.911, 1612.8079, 49.0934
   - MutagenObjectType: PlacedObject
     FormKey: 0AA664:Black Marsh.esm
     MajorRecordFlagsRaw: 1024

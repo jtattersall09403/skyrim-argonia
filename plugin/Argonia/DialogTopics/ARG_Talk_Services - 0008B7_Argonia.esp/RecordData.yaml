@@ -1,0 +1,8 @@
+FormKey: 0008B7:Argonia.esp
+EditorID: ARG_Talk_Services
+Name:
+  TargetLanguage: English
+  Value: Services
+Branch: 0008B6:Argonia.esp
+Quest: 000833:Argonia.esp
+SubtypeName: CUST

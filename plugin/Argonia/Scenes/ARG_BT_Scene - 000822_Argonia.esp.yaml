@@ -1,0 +1,59 @@
+FormKey: 000822:Argonia.esp
+EditorID: ARG_BT_Scene
+VirtualMachineAdapter:
+  Scripts:
+  - Name: SF_ARG_BT_Scene
+  ScriptFragments:
+    FileName: SF_ARG_BT_Scene
+    OnEnd:
+      ScriptName: SF_ARG_BT_Scene
+      FragmentName: Fragment_0
+Phases:
+- Name: ''
+Actors:
+- Flags: []
+  BehaviorFlags:
+  - DeathEnd
+  - CombatEnd
+  - DialoguePause
+- ID: 1
+  Flags: []
+  BehaviorFlags:
+  - DeathEnd
+  - CombatEnd
+  - DialoguePause
+Actions:
+- Name: ''
+  ActorID: 0
+  Index: 1
+  Flags:
+  - FaceTarget
+  StartPhase: 0
+  EndPhase: 0
+  Topic: 00081A:Argonia.esp
+- Name: ''
+  ActorID: 1
+  Index: 2
+  Flags:
+  - FaceTarget
+  StartPhase: 0
+  EndPhase: 0
+  Topic: 00081C:Argonia.esp
+- Name: ''
+  ActorID: 0
+  Index: 3
+  Flags:
+  - FaceTarget
+  StartPhase: 0
+  EndPhase: 0
+  Topic: 00081E:Argonia.esp
+- Name: ''
+  ActorID: 1
+  Index: 4
+  Flags:
+  - FaceTarget
+  StartPhase: 0
+  EndPhase: 0
+  Topic: 000820:Argonia.esp
+Quest: 000803:Argonia.esp
+LastActionIndex: 4

@@ -1,8 +1,0 @@
-FormKey: 00085C:Argonia.esp
-EditorID: ARG_Talk_Rumours
-Name:
-  TargetLanguage: English
-  Value: Latest rumours
-Branch: 00085B:Argonia.esp
-Quest: 000831:Argonia.esp
-SubtypeName: CUST

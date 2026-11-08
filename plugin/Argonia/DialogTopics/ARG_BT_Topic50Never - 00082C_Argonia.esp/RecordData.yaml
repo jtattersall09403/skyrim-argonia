@@ -1,8 +1,0 @@
-FormKey: 00082C:Argonia.esp
-EditorID: ARG_BT_Topic50Never
-Name:
-  TargetLanguage: English
-  Value: Talk me into it, master.
-Branch: 00082B:Argonia.esp
-Quest: 000803:Argonia.esp
-SubtypeName: CUST

@@ -1,0 +1,20 @@
+FormKey: 000850:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Ah, my good friend, the village, Flaa Heet's village, is out on the marsh about a hundred and forty-five paces south-west of here. The dock is only fifty-odd paces north-north-east, where the boats are. Mind you, I know the dock better. I knew every plank of it once. Now where was I going with that?
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 02A207:Black Marsh.esm
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Directions

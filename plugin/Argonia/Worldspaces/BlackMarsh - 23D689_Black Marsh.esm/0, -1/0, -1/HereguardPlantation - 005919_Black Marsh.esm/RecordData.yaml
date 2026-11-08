@@ -1,0 +1,48 @@
+FormKey: 005919:Black Marsh.esm
+IsCompressed: True
+MajorRecordFlagsRaw: 262144
+EditorID: HereguardPlantation
+SkyrimMajorRecordFlags:
+- Compressed
+Flags:
+- HasWater
+Grid:
+  Point: 0, -1
+  Flags: -1536086528
+WaterHeight: 3.4028235E+38
+Temporary:
+- MutagenObjectType: PlacedNpc
+  FormKey: 03E418:Black Marsh North.esp
+  Base: 0008EC:Argonia.esp
+  LevelModifier: Easy
+  Placement:
+    Position: 1646.1263, -3525.361, 113.62277
+- MutagenObjectType: PlacedNpc
+  FormKey: 00FF4E:Black Marsh.esm
+  Base: 0008D9:Argonia.esp
+  LinkedReferences:
+  - Reference: 0934A0:Black Marsh North.esp
+  ActivateParents:
+    Parents:
+    - Reference: 0934A0:Black Marsh North.esp
+  Placement:
+    Position: 2570.751, -3095.882, 83.522095
+    Rotation: 0, 0, 1.4
+- MutagenObjectType: PlacedNpc
+  FormKey: 015193:Black Marsh.esm
+  Base: 0008DF:Argonia.esp
+  LinkedReferences:
+  - Reference: 09349E:Black Marsh North.esp
+  ActivateParents:
+    Parents:
+    - Reference: 09349E:Black Marsh North.esp
+  Placement:
+    Position: 2708.8247, -3332.1423, 64
+- MutagenObjectType: PlacedNpc
+  FormKey: 015195:Black Marsh.esm
+  Base: 0008E0:Argonia.esp
+  Placement:
+    Position: 2496.2334, -2703.2942, 141.13235
+    Rotation: 0, 0, 1.6000018
+MajorFlags:
+- 0x40000

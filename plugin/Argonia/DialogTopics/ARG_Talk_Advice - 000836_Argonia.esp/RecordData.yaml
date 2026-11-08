@@ -1,0 +1,8 @@
+FormKey: 000836:Argonia.esp
+EditorID: ARG_Talk_Advice
+Name:
+  TargetLanguage: English
+  Value: Little advice
+Branch: 000835:Argonia.esp
+Quest: 000833:Argonia.esp
+SubtypeName: CUST

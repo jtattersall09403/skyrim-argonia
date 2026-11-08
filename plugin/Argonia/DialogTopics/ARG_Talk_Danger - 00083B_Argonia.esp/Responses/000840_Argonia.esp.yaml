@@ -1,0 +1,20 @@
+FormKey: 000840:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Halt, citizen. Keep off the shore. Old Salty, a giant crab, holds the shallows forty-five paces east-south-east. Giant mudcrabs sit on the shore sixty paces east-north-east. I hold my post well back from the water. I was told to.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 03E413:Black Marsh North.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Dangers nearby

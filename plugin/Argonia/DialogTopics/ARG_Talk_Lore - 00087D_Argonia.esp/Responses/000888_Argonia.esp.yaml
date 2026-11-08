@@ -1,0 +1,20 @@
+FormKey: 000888:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Since Lilmoth fell, Alten Merihall has taken much of the bay's outside trade. That is where the money is now. Out in the deep water off Lilmoth live the sea-drakes, which are crocodile-like beasts with paddle legs. I have no wish to meet one.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 05D7C8:Black Marsh.esm
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Black Marsh

@@ -1,0 +1,20 @@
+FormKey: 0008A5:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Me? I sell from this stall where the rowboat comes in, so I trade with anyone who lands. I married into this village, but I still talk like the city. I am not sorry for it. Now tell me, where have you come from, and is that a fresh cut on your arm?
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 02A1F2:Black Marsh.esm
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Yourself
