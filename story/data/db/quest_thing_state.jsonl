@@ -17,7 +17,6 @@
 {"quest_id":"quest.bc.bc03","things_ord":0,"state":"all","value":"present"}
 {"quest_id":"quest.bc.bc03","things_ord":1,"state":"all","value":"present"}
 {"quest_id":"quest.bc.bc03","things_ord":2,"state":"after-90","value":"broken"}
-{"quest_id":"quest.bc.bc03","things_ord":2,"state":"before-20","value":"absent"}
 {"quest_id":"quest.bc.bc03","things_ord":2,"state":"during","value":"in the chest, or carried"}
 {"quest_id":"quest.bc.bc03","things_ord":3,"state":"all","value":"present"}
 {"quest_id":"quest.local.lf83","things_ord":0,"state":"after-40","value":"a band of fresh grey clay rammed in behind the coping and down the lining on the ford side (place_local_state_variants lf83-well-clayed)"}

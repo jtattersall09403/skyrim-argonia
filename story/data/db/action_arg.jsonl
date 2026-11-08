@@ -136,6 +136,8 @@
 {"list_id":"quest_ending:quest.bc.bc03|1:rewards","ord":1,"arg_ord":1,"value":-20}
 {"list_id":"quest_ending:quest.bc.bc03|1:world","ord":0,"arg_ord":0,"value":"flag.bc03.with-broker"}
 {"list_id":"quest_ending:quest.bc.bc03|1:world","ord":0,"arg_ord":1,"value":1}
+{"list_id":"quest_ending:quest.bc.bc03|2:world","ord":0,"arg_ord":0,"value":"flag.bc03.with-crew"}
+{"list_id":"quest_ending:quest.bc.bc03|2:world","ord":0,"arg_ord":1,"value":0}
 {"list_id":"quest_ending:quest.local.lf83|0:rewards","ord":0,"arg_ord":0,"value":"ferry.imperial-fringe.drowning-gate"}
 {"list_id":"quest_ending:quest.local.lf83|0:rewards","ord":0,"arg_ord":1,"value":0}
 {"list_id":"quest_ending:quest.local.lf83|0:rewards","ord":1,"arg_ord":0,"value":"item.potion-of-regeneration"}
@@ -357,8 +359,6 @@
 {"list_id":"quest_stage:quest.bc.bc03|0:on_enter","ord":2,"arg_ord":0,"value":"topic.bc03-the-tokens"}
 {"list_id":"quest_stage:quest.bc.bc03|0:on_enter","ord":3,"arg_ord":0,"value":"topic.bc03-brawl"}
 {"list_id":"quest_stage:quest.bc.bc03|1:on_enter","ord":0,"arg_ord":0,"value":"topic.bc03-break"}
-{"list_id":"quest_stage:quest.bc.bc03|1:on_enter","ord":1,"arg_ord":0,"value":"ref.bc03.tokens-parent"}
-{"list_id":"quest_stage:quest.bc.bc03|2:on_enter","ord":0,"arg_ord":0,"value":"topic.bc03-brawl"}
 {"list_id":"quest_stage:quest.fg.fg07|1:on_enter","ord":0,"arg_ord":0,"value":"flag.fg07.levy-ended"}
 {"list_id":"quest_stage:quest.fg.fg07|1:on_enter","ord":0,"arg_ord":1,"value":1}
 {"list_id":"quest_stage:quest.local.ld65|0:on_enter","ord":0,"arg_ord":0,"value":"topic.wamasu-shrine-turn"}

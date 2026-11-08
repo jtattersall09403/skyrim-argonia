@@ -1843,7 +1843,6 @@
 {"condition_id":"quest:quest.bc.bc03:start_when.0","ord":0,"value":"quest.bc.bc01"}
 {"condition_id":"quest:quest.bc.bc03:start_when.0","ord":1,"value":"≥"}
 {"condition_id":"quest:quest.bc.bc03:start_when.0","ord":2,"value":90}
-{"condition_id":"quest:quest.bc.bc03:start_when.1","ord":0,"value":"02F35A:Black Marsh.esm"}
 {"condition_id":"quest:quest.local.lf83:start_when.0","ord":0,"value":"dry"}
 {"condition_id":"quest:quest.local.lf83:start_when.1.0","ord":0,"value":"topic.claywater-two-charges"}
 {"condition_id":"quest:quest.local.lf83:start_when.1.0","ord":1,"value":"npc.imperial-fringe.claywater-station.n1-3"}
@@ -1877,6 +1876,12 @@
 {"condition_id":"quest_fail_forward:quest.bc.bc02|1|0:when.0.0","ord":0,"value":"npc.imperial-penal-south.blackrose.held-speaker"}
 {"condition_id":"quest_fail_forward:quest.bc.bc02|1|0:when.1.0","ord":0,"value":"npc.imperial-penal-south.blackrose.held-killer"}
 {"condition_id":"quest_fail_forward:quest.bc.bc02|1|0:when.2.0","ord":0,"value":"npc.imperial-penal-south.blackrose.held-mother"}
+{"condition_id":"quest_fail_forward:quest.bc.bc03|0|0:when.0.0","ord":0,"value":"npc.mercantile-coast.soulrest.crew-boss"}
+{"condition_id":"quest_fail_forward:quest.bc.bc03|0|0:when.1.0","ord":0,"value":"npc.imperial-penal-south.blackrose-prison.chainbreaker-envoy-camped-causeway"}
+{"condition_id":"quest_fail_forward:quest.bc.bc03|1|0:when.0.0","ord":0,"value":"npc.mercantile-coast.soulrest.crew-boss"}
+{"condition_id":"quest_fail_forward:quest.bc.bc03|1|0:when.1.0","ord":0,"value":"npc.imperial-penal-south.blackrose-prison.chainbreaker-envoy-camped-causeway"}
+{"condition_id":"quest_fail_forward:quest.bc.bc03|2|0:when.0.0","ord":0,"value":"npc.mercantile-coast.soulrest.crew-boss"}
+{"condition_id":"quest_fail_forward:quest.bc.bc03|2|0:when.1.0","ord":0,"value":"npc.imperial-penal-south.blackrose-prison.chainbreaker-envoy-camped-causeway"}
 {"condition_id":"quest_fail_forward:quest.bc.bc05|0|0:when.0.0","ord":0,"value":"npc.imperial-penal-south.rose-bone-waystation.tag-keeper"}
 {"condition_id":"quest_fail_forward:quest.bc.bc05|0|0:when.1.0","ord":0,"value":"npc.imperial-penal-south.rose-bone-waystation.carrier"}
 {"condition_id":"quest_fail_forward:quest.local.ld65|0|0:when.0","ord":0,"value":"npc.dunmer-north.the-wamasu-shrine.headwoman"}
@@ -2314,8 +2319,13 @@
 {"condition_id":"quest_successor:quest.bc.bc03|0|1:when","ord":1,"value":"npc.mercantile-coast.soulrest.crew-boss"}
 {"condition_id":"quest_successor:quest.bc.bc03|1|0:when","ord":0,"value":"topic.bc03-break"}
 {"condition_id":"quest_successor:quest.bc.bc03|1|0:when","ord":1,"value":"npc.mercantile-coast.soulrest.crew-boss"}
-{"condition_id":"quest_successor:quest.bc.bc03|2|0:when","ord":0,"value":"topic.bc03-yield"}
-{"condition_id":"quest_successor:quest.bc.bc03|2|0:when","ord":1,"value":"npc.mercantile-coast.soulrest.crew-boss"}
+{"condition_id":"quest_successor:quest.bc.bc03|2|0:when.0.0","ord":0,"value":"topic.bc03-yield"}
+{"condition_id":"quest_successor:quest.bc.bc03|2|0:when.0.0","ord":1,"value":"npc.mercantile-coast.soulrest.crew-boss"}
+{"condition_id":"quest_successor:quest.bc.bc03|2|0:when.0.1","ord":0,"value":"speechcraft"}
+{"condition_id":"quest_successor:quest.bc.bc03|2|0:when.0.1","ord":1,"value":30}
+{"condition_id":"quest_successor:quest.bc.bc03|2|0:when.1.0","ord":0,"value":"topic.bc03-yield"}
+{"condition_id":"quest_successor:quest.bc.bc03|2|0:when.1.0","ord":1,"value":"npc.mercantile-coast.soulrest.crew-boss"}
+{"condition_id":"quest_successor:quest.bc.bc03|2|0:when.1.1","ord":0,"value":50}
 {"condition_id":"quest_successor:quest.bc.bc05|0|0:when","ord":0,"value":"topic.white-rose-graves"}
 {"condition_id":"quest_successor:quest.bc.bc05|0|0:when","ord":1,"value":"npc.imperial-penal-south.rose-bone-waystation.carrier"}
 {"condition_id":"quest_successor:quest.fg.fg07|0|0:when","ord":0,"value":"place.imperial-fringe.the-broke-column"}

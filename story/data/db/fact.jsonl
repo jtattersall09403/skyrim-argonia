@@ -52,7 +52,7 @@
 {"id":"fact.bc03.break","claim":"A crew that breaks its tokens before him is done with him.","ord":3,"from_ref":"t1","quest_id":"quest.bc.bc03"}
 {"id":"fact.bc03.freed-and-hired","claim":"Ussa-Rekh bought out Owings for thirty years, and now hires out the crews he freed.","ord":0,"from_ref":"t1","quest_id":"quest.bc.bc03"}
 {"id":"fact.bc03.refused","claim":"Heavy-Rope's crew asked to end their last season early and were refused.","ord":2,"from_ref":"t2","quest_id":"quest.bc.bc03"}
-{"id":"fact.bc03.tokens","claim":"He keeps a crew's carved tokens in a chest in his cabin on the dock until their last season is worked.","ord":1,"from_ref":"t1","quest_id":"quest.bc.bc03"}
+{"id":"fact.bc03.tokens","claim":"He keeps a crew's carved tokens in the chest beside him on the dock until their last season is worked.","ord":1,"from_ref":"t1","quest_id":"quest.bc.bc03"}
 {"id":"fact.blackguards.brigands","says":"The Blackguards are Argonian pirates and brigands of the south coast."}
 {"id":"fact.blackguards.inmates","says":"The Blackguards descend from the inmates of Blackrose Prison."}
 {"id":"fact.blackguards.largest","says":"The Blackguards are the largest band of criminals in Murkmire."}

@@ -20,6 +20,9 @@
 {"quest_id":"quest.bc.bc03","review_findings_ord":1,"ord":2,"value":"facts.fact.bc03.break"}
 {"quest_id":"quest.bc.bc03","review_findings_ord":2,"ord":0,"value":"endings"}
 {"quest_id":"quest.bc.bc03","review_findings_ord":3,"ord":0,"value":"stages.30"}
+{"quest_id":"quest.bc.bc03","review_findings_ord":4,"ord":0,"value":"startWhen"}
+{"quest_id":"quest.bc.bc03","review_findings_ord":4,"ord":1,"value":"stages.30"}
+{"quest_id":"quest.bc.bc03","review_findings_ord":4,"ord":2,"value":"things.thing.bc03.cabin"}
 {"quest_id":"quest.local.lf83","review_findings_ord":0,"ord":0,"value":"item.station-water-ledger"}
 {"quest_id":"quest.local.lf83","review_findings_ord":0,"ord":1,"value":"document.station-water-ledger"}
 {"quest_id":"quest.local.lf83","review_findings_ord":0,"ord":2,"value":"t1"}
