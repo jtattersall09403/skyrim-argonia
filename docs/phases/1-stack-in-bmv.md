@@ -72,10 +72,10 @@ The owner's first walk is the whole stack *inside* Black Marsh, so the stack and
   imperial tents), naming `textures\effects\ELFX\windows\*` and `cubemaps\tundra_e.dds`, which nothing staged holds;
   the panes draw flat pale blue. In BM&V's worlds 14 bases, 48 refs use them: Lilmoth 10 (5 Solitude houses, a pot),
   tents 39 (Murkwood, Temple, Black Marsh North's marsh, Murkmire, Longmont, Castle, Valenwood), Riften farmhouses 2
-  (Dock2), 2 single Valenwood refs. Fixed by record (`tools/ArgoniaPlugin/WorldFix.cs`): SBrylingHouse, SStyrrsHouse,
-  SHouseForSale (5 Lilmoth refs) take BM&V's own clean "GKB" copies of their meshes. Owed, a file call: SErikurHouse
-  and SVittoriaViciHouseDestroyed (4 Lilmoth refs) and the rest have no clean copy; hiding BM&V's ELFX NIFs that
-  shadow a vanilla path in the stage (vanilla meshes then draw) would fix all of them at once.
+  (Dock2), 2 single Valenwood refs. Fixed in the stage: the bmv row's `drop` in `mods/dependencies.json` removes the
+  62 ELFX meshes whose path the game's own archives also hold, so the vanilla mesh draws (all 14 bases, 48 refs). The
+  other 43 matches (BM&V's own ELFX\* meshes, terrain .bto, rocks) shadow nothing and are kept; none is placed in
+  Lilmoth. Owner check owed on the next walk.
 - In parallel: **The census, into the story data.** Redone 2026-11-05 over the whole of BM&V
   ([census](../research/bmv/census.md)): the first pass read `Black Marsh.esm` alone, from a trimmed BM&V. BM&V is
   four plugins (BosmerArmorMATY743.esm, Black Marsh.esm, Black Marsh North.esp, Valenwood.esp);
