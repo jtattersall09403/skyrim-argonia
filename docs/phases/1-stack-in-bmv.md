@@ -74,6 +74,12 @@ The owner's first walk is the whole stack *inside* Black Marsh, so the stack and
   light bash (block held, attack tapped) within 30 degrees of straight behind, cast through Payload Interpreter; Elden
   Parry's parry from behind does nothing because its parry only answers hits from the front. Magistrate Levitate
   (Nexus 24695, data only) laid; its Levitate is in the test kit.
+- **Walk 3 (2026-11-08): passed and owed.** Passed: no health regen, the compass, the drawn-weapon run, Levitate, the
+  parry window (0.5 s), Lilmoth's windows, the world map. Owed, each with one owner check: (1) the standing backstep's
+  clip cut at the end of its first push (0.333 s), not its keys held while the clip plays whole; (2) TrueHUD from the
+  Player Widget's "Combined" preset, then the owner's tweaks (the list above); (3) the backstab as Dark Souls': behind
+  a person, locked on or not, a normal attack plays Rim Parry's backstab and execution; (4) Skyrim's normal game
+  music on in BM&V's worlds.
 - **The map.** Owner, 2026-11-07 walk: in BlackMarsh the M map shows Skyrim's Tamriel with BM&V's markers. Measured
   2026-11-08 (research lane): BM&V's four worldspaces have no parent and an all-zero MNAM (no usable map bounds; only
   the camera heights 50000 to 80000 are set), and SkyrimSE.exe's `sMapWorldDefaultWorldSpace` default is Tamriel, so

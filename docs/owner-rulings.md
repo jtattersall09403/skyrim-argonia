@@ -184,3 +184,20 @@ added here the day they are made, with the date and the issue.
   permissions: customising is allowed) or by a shorter backstep clip, whichever is better. A lore fact said by two
   or three people is fine. The "New Order" soldiers' lines must be consistent with our lore, as everything must.
   Skyrim ingredient names are fine where BM&V places those ingredients.
+- 2026-11-08 (walk-3 feedback, tmp/walk-3-feedback.md; ticks in docs/owner-walk-checks.md, e570c531): passed: no
+  health regen, compass, drawn-weapon run, Levitate, the parry window, Lilmoth's windows, the world map in all three
+  worlds, block checks A to D. The standing backstep: cut the clip itself at the end of the first push (holding the
+  keys while the clip plays whole "looks stupid"). TrueHUD: start from the Player Widget's "Combined" preset, then
+  apply the owner's tweaks (Dynamic for the three bars, hide vanilla bars, width 150, min 50, max 500, scale bars,
+  anchor X 0.045, Y 0.105). "Block Test, the end" shows "completed" but is missing from the journal's completed
+  list (Block Test is there; Stats count 2). Directions are Morrowind's: a route by real landmarks taken from the
+  world (follow the shore, swim to the island, take the path north, on your left a ...), varied by person and
+  context; paces and a compass point only where the place is close. "My friend" at most once or twice a person, and
+  friendly address only where the person's standing with the player warrants it. Every topic fact is true of BM&V's
+  world (not the old place records: Lilmoth's "lighters, no big ships" is false, a big ship docks); the old repo's
+  naming rules apply to these people; the recipe for naming people, personality and topics becomes a skill. The
+  backstab is Dark Souls': stand behind someone, locked on or not, and a normal attack does Rim Parry's backstab and
+  execution. Skyrim's normal game music is on for now (Argonia music later). Walk-in shells: the owner dropped the
+  walk check. Walk checks: ticked checks stay where they are as the record; add the fewest checks that prove the
+  change; the owner reports problems in the session. Goal for the session: resolve the walk, then deliver Phase 4
+  with names, topics and dialogue for everyone in the places the opening act visits.

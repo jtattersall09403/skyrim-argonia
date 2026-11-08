@@ -1,36 +1,79 @@
 # Phase 4: the first story slice, built from the proven blocks
 
 Status: [PROGRESS.md](../PROGRESS.md). The plan: [PLAN.md](../PLAN.md). Edit this file as the phase goes; it is the phase's whole brief.
+Rewritten 2026-11-08 after the owner's third walk (tmp/walk-3-feedback.md, [owner-rulings](../owner-rulings.md)).
 
-- **Dialogue and text** for every speaker in the act, through `dialogue-write` and `text-review`, from Phase 2's
-  records (now final).
-- **Build the slice** (the opening act with the new-game flow and the opening scene, our Helgen, plus the chosen
-  faction and questline subset) from Phase 3's blocks only: every stage, trigger, condition and effect is a copy of a proven
-  block's shape; anything the act needs that is not a block goes back to Phase 2's method (a new block, proved first)
-  or the quest is re-authored. The Phase 1 opening (the lightest form of the work detail) is replaced by the act's
-  authored opening.
-- **The world map, block W-wrld-map (built 2026-11-08; owner check owed).** The native 3D map of the real
-  worldspace. As built: (1) `tools/ArgoniaPlugin/MapFix.cs` (called from Generate.cs; no new forms) overrides the four
-  worlds' WRLD from the load order's winner (BlackMarsh extends the opening's override) and sets only MNAM's NW/SE
-  cells. What differs from the plan: vanilla's convention, measured, is usable dimensions 0,0 (Tamriel, Solstheim) and
-  an NW/SE box that is the camera's pan area well inside the land (Tamriel land x-57..61 y-43..50, box NW(-30,15)
-  SE(40,-40)), so each box is the world's measured LAND extent (`plugin.sh mapprobe`) a quarter in from each side:
-  BlackMarsh NW(-18,4) SE(18,-25), BlackMarsh2 NW(-17,16) SE(16,-15), BlackMarshNorth (Thorn) NW(-17,16) SE(16,-16),
-  Valenwood NW(-16,19) SE(17,-16); camera kept; Valenwood.esp a master; the read-back (`plugin.sh check`) checks the
-  box, that nothing else differs from the winner, and the marker names. (2) `infra/gpu-box/lodsettings.py`, run by
-  `stack.py stage`, writes the derived mod `argonia-lodsettings` (LODSettings/BlackMarsh.lod -64,-64,128,4,32;
-  BlackMarsh2.lod -32,-32,64,4,32; BlackMarshNorth.lod -32,-32,128,4,32) from BM&V's .btr names, the rule that
-  reproduces BM&V's own Valenwood.lod; never committed. (3) Marker 0934A4 "Lolmoth" is "Lilmoth" and 083283
-  "Southern Morowind Pass" is "Southern Morrowind Pass" (name-only); "Unkown Cave" (Valenwood.esp 18F86D) stands in
-  Skyrim's Tamriel, not our worlds, and is left. No `sMapWorldDefaultWorldSpace`. (4) One owner check: M on Lilmoth's
-  dock, in Thorn and in Valenwood. If the map is still Tamriel or blank, the next step is in Phase 5.
-- **Rooms without load doors.** BM&V's towns stand many shell buildings you walk straight into (Lilmoth: 6
-  exterior load doors, 52 shells). Done 2026-11-08: the `bmv_shell` table (`tools/argonia_world/bmv_shell.py`
-  build/verify) holds 1,889 building refs in 86 settlements' exterior cells, classed by the winning navmesh inside
-  each footprint: A 86 (joined to the street, >= 10 triangles), B 114, C 166, D 595, X 928 walkways and docks;
-  counts per settlement in [census.md](../research/bmv/census.md#shells-rooms-without-load-doors). Quests and homes
-  cite a shell by its `bmv_shell.id`, never "a house". Left: one owner walk into Lilmoth's 14 class-A shells, its
-  verdict in `owner_verdict` (navmesh is a proxy, not proof; shells stand up to 12 m sunk).
-- **Loop**: read the files that the game will consume and verify (to the extent that you can) that everything you intended to implement has been implemented correctly. If not, diagnose, fix, then repeat this loop until your read of the built game files (esm and plugin and whatever else) does meet this bar. But do not run the actual game yourself, just read/mine from the game files that you build. *Then* pass on to the owner.
+## Already done (do not redo)
+
+- **The world map (block W-wrld-map)**: passed in the owner's walk 3 in Lilmoth, Thorn and Valenwood
+  (`tools/ArgoniaPlugin/MapFix.cs`, `infra/gpu-box/lodsettings.py`).
+- **Rooms without load doors**: the `bmv_shell` table (`tools/argonia_world/bmv_shell.py`), 1,889 building refs in 86
+  settlements, classed A 86, B 114, C 166, D 595, X 928 by the navmesh inside each footprint
+  ([census.md](../research/bmv/census.md#shells-rooms-without-load-doors)). The owner dropped the shell walk check;
+  a quest or home cites a shell by its `bmv_shell.id` and reads its navmesh, never "a house".
+- **Every block the slice uses is proved** (Phase 3, owner walks 2026-11-07 and 2026-11-08: steps 1 to 13 and checks
+  A to D), and the talk block W-talk on Lilmoth's 30. Still owed in Phase 3: only the journal entry of
+  `ARG_BlockTestEnd` (below).
+
+## A. The walk-3 fixes (first; each lands with one owner check in docs/owner-walk-checks.md)
+
+| Fix | Where it is recorded |
+|---|---|
+| Standing backstep: the clip itself cut at the end of its first push (not keys held while the clip plays whole) | Phase 1 |
+| TrueHUD: the Player Widget's "Combined" preset as the base, the owner's tweaks on top | Phase 1 |
+| Backstab like Dark Souls: behind a person, locked on or not, a normal attack plays Rim Parry's backstab and execution | Phase 1 |
+| Skyrim's normal game music on in BM&V's worlds (Argonia music later) | Phase 1 |
+| "Block Test, the end" listed among completed quests in the journal | Phase 3 |
+| Talk recipe v2 (route directions, address by standing, facts true of BM&V, the naming rules) as the skill `talk-write`; Lilmoth's 30 redone with it | 4a and part B here |
+
+## B. Names, topics and dialogue for everyone in the act's places
+
+Owner, 2026-11-08: every person in every place the opening act and the slice visit is named, has their own
+topics and talks, not only quest people. Recipe: the skill `.claude/skills/talk-write` (part A), then
+[Phase 4a's loop](4a-talk-to-everyone.md) per settlement.
+
+| Place (census settlement) | Visited by | Talkable (silent + service) | On the clean-up list | To write |
+|---|---|---|---|---|
+| Lilmoth, Hereguard Plantation, the Docks (Soulrest) | MQ01, MQ03, MQ05, TG01, TG02, BC03 | 30 | 9 | redo all 30 with recipe v2 |
+| The village east of Lilmoth (`bmv.village`) | MQ04 | 6 | 0 | 6 |
+| Helstrom's river landing (`bmv.dock5`) | MQ05, LQ25 | 8 | 3 | 5 |
+| Helstrom (`bmv.helstrom`) | MQ05, LQ30 | 11 | 4 | 7 |
+| The ship stop in Black Marsh North (`bmv.blackmarshnorth.thorn1`) | MQ05 | 33 | 0 | 33 |
+| Blackrose (`bmv.blackrose`) | BC01, BC02 | 66 | 28 | 38 |
+| Quest people we add (the broker, overseer, gang, the Veiled Reed, the Chapter, ...) | the quests | - | - | quest dialogue, part C |
+
+**The clean-up and the talkers.** Nine of Lilmoth's 30 talkers (Looks-At-Books, two "New Order" soldiers now in the
+Lilmoth council's pay, Deep-In-His-Cups and five more) are also `we.clean.*` targets from Phase 2. The talkers win:
+the owner has walked them, and a talker's own base already fixes its level and name, which is what the clean-up was
+for. Rule: a talker with a built `talker` row leaves the clean-up (its `world_edit_target` row is deleted with a
+note); a clean-up target that is Nord, Thalmor, vanilla Imperial official or undead stays disabled and gets no
+talker row. Clean-up targets are left out of the counts above.
+
+## C. Build the slice
+
+The opening act (MQ01 with the new-game flow and the opening scene, our Helgen, replacing Phase 1's lightest
+opening; MQ03, MQ04, MQ05) and the chosen lines (BC01 to BC03 Chainbreakers, TG01 and TG02 Night-Reed, locals LQ25
+and LQ30): 11 quests, records in the story data (`quest.main.mq01` ...), the clean-up and world edits in
+`world_edit` and `world_edit_target`. Built from Phase 3's blocks only: every stage, trigger, condition and effect
+is a copy of a proven block's shape (`docs/design/blocks.md`; the stage tables from
+`python3 -m tools.argonia_world.slice_ledger.stage_blocks`); anything not a block goes back to Phase 2's method or
+the quest is re-authored.
+
+- **Code layout:** one C# file per quest (or per line) in `tools/ArgoniaPlugin/`, called from `Generate.cs` after
+  the existing allocations so earlier form ids never move; Papyrus fragments in `papyrus/`, compiled on the play
+  machine. `ARG_BlockTest` stays until the slice is built, then is removed with its forms.
+- **Quest dialogue** for every speaker in the records, through `dialogue-write` and `text-review`, from the records.
+- **Quest rumours:** each settlement's talkers gain a rumours topic for a quest that can start there (talk.md).
+
+## D. The loop, then the owner
+
+- **Loop**: read the files the game will consume (the ESP, the .pex, the staged ini files) and verify that
+  everything intended is there and correct (`plugin.sh check`, `talk_check`, a per-quest read-back: every stage's
+  journal, objective, fragment, alias and condition as the record says). If not, diagnose, fix and repeat. Never run
+  the game; then pass to the owner.
 - **Owner test:** play the slice from a new game: the new-game flow, the opening scene, the opening act and the
-  chosen faction lines.
+  chosen faction lines; talk to people in each place.
+
+## Measured
+
+(filled as the phase goes)

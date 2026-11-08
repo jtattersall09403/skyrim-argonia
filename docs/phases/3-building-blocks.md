@@ -298,6 +298,11 @@ Positions (07EEF8 triangle): start marker 30535,-2646 (29), keeper 30757,-2589 (
 door marker 30981,-3029 (22), crab 31351,-3506 (189), token 31040,-2700,50 (over the dock's own navmesh 07EEFF, the planks' top 19.9); the walker in `01Ship` at 2907,5107,7046
 (0AA666 triangle 28).
 
+## Walk 3 (2026-11-08)
+
+Checks A to D passed (RaceHits 1). Owed: "Block Test, the end" shows "completed" on screen and counts on the Stats
+page, but is missing from the journal's completed list (Block Test is there). Fix, then one owner check.
+
 ## Owner test
 
 One issue: the console command, where it puts you, and the step table's last two columns. You play it once and reply
