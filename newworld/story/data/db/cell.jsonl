@@ -22,9 +22,9 @@
 {"x":-36,"y":-96,"region_id":"aphon-isle","land_share":0.635,"danger_band_id":"D2","danger_why":"0 cells from the province's edge"}
 {"x":-36,"y":-95,"region_id":"aphon-isle","land_share":0.078,"danger_band_id":"D2","danger_why":"0 cells from the province's edge"}
 {"x":-36,"y":-94,"region_id":"topal-bay","land_share":0.0,"danger_band_id":"D2","danger_why":"coastal water of Topal Bay"}
-{"x":-36,"y":-93,"region_id":"topal-bay","land_share":0.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":-36,"y":-92,"region_id":"topal-bay","land_share":0.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":-36,"y":-91,"region_id":"topal-bay","land_share":0.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
+{"x":-36,"y":-93,"region_id":"topal-bay","land_share":0.0,"danger_band_id":"D2","danger_why":"coastal water of Topal Bay"}
+{"x":-36,"y":-92,"region_id":"topal-bay","land_share":0.0,"danger_band_id":"D2","danger_why":"coastal water of Topal Bay"}
+{"x":-36,"y":-91,"region_id":"topal-bay","land_share":0.0,"danger_band_id":"D2","danger_why":"coastal water of Topal Bay"}
 {"x":-36,"y":-90,"region_id":"topal-bay","land_share":0.0,"danger_band_id":"D2","danger_why":"coastal water of Topal Bay"}
 {"x":-36,"y":-89,"region_id":"topal-bay","land_share":0.0,"danger_band_id":"D2","danger_why":"coastal water of Topal Bay"}
 {"x":-35,"y":-100,"region_id":"topal-bay","land_share":0.0,"danger_band_id":"D2","danger_why":"coastal water of Topal Bay"}
@@ -34,9 +34,9 @@
 {"x":-35,"y":-96,"region_id":"aphon-isle","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":-35,"y":-95,"region_id":"aphon-isle","land_share":0.855,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":-35,"y":-94,"region_id":"aphon-isle","land_share":0.219,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":-35,"y":-93,"region_id":"aphon-isle","land_share":0.248,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":-35,"y":-92,"region_id":"aphon-isle","land_share":0.438,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":-35,"y":-91,"region_id":"aphon-isle","land_share":0.057,"danger_band_id":"D1","danger_why":"on or beside a major road"}
+{"x":-35,"y":-93,"region_id":"aphon-isle","land_share":0.248,"danger_band_id":"D2","danger_why":"0 cells from the province's edge"}
+{"x":-35,"y":-92,"region_id":"aphon-isle","land_share":0.438,"danger_band_id":"D1","danger_why":"at Aphon Belvedere"}
+{"x":-35,"y":-91,"region_id":"aphon-isle","land_share":0.057,"danger_band_id":"D2","danger_why":"0 cells from the province's edge"}
 {"x":-35,"y":-90,"region_id":"topal-bay","land_share":0.0,"danger_band_id":"D2","danger_why":"coastal water of Topal Bay"}
 {"x":-35,"y":-89,"region_id":"topal-bay","land_share":0.0,"danger_band_id":"D2","danger_why":"coastal water of Topal Bay"}
 {"x":-34,"y":-100,"region_id":"topal-bay","land_share":0.0,"danger_band_id":"D2","danger_why":"coastal water of Topal Bay"}
@@ -48,7 +48,7 @@
 {"x":-34,"y":-94,"region_id":"aphon-isle","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":-34,"y":-93,"region_id":"aphon-isle","land_share":0.671,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":-34,"y":-92,"region_id":"aphon-isle","land_share":0.588,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":-34,"y":-91,"region_id":"aphon-isle","land_share":0.188,"danger_band_id":"D1","danger_why":"on or beside a major road"}
+{"x":-34,"y":-91,"region_id":"aphon-isle","land_share":0.188,"danger_band_id":"D2","danger_why":"0 cells from the province's edge"}
 {"x":-34,"y":-90,"region_id":"topal-bay","land_share":0.0,"danger_band_id":"D2","danger_why":"coastal water of Topal Bay"}
 {"x":-34,"y":-89,"region_id":"topal-bay","land_share":0.0,"danger_band_id":"D2","danger_why":"coastal water of Topal Bay"}
 {"x":-34,"y":-88,"region_id":"topal-bay","land_share":0.0,"danger_band_id":"D2","danger_why":"coastal water of Topal Bay"}
@@ -126,9 +126,9 @@
 {"x":-27,"y":-112,"region_id":"sea-of-mists","land_share":0.0,"danger_band_id":"D2","danger_why":"coastal water of Sea of Mists"}
 {"x":-27,"y":-111,"region_id":"sea-of-mists","land_share":0.0,"danger_band_id":"D2","danger_why":"coastal water of Sea of Mists"}
 {"x":-27,"y":-110,"region_id":"sea-of-mists","land_share":0.0,"danger_band_id":"D2","danger_why":"coastal water of Sea of Mists"}
-{"x":-27,"y":-109,"region_id":"sea-of-mists","land_share":0.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":-27,"y":-108,"region_id":"topal-bay","land_share":0.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":-27,"y":-107,"region_id":"topal-bay","land_share":0.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
+{"x":-27,"y":-109,"region_id":"sea-of-mists","land_share":0.0,"danger_band_id":"D2","danger_why":"coastal water of Sea of Mists"}
+{"x":-27,"y":-108,"region_id":"topal-bay","land_share":0.0,"danger_band_id":"D2","danger_why":"coastal water of Topal Bay"}
+{"x":-27,"y":-107,"region_id":"topal-bay","land_share":0.0,"danger_band_id":"D2","danger_why":"coastal water of Topal Bay"}
 {"x":-27,"y":-106,"region_id":"topal-bay","land_share":0.0,"danger_band_id":"D3","danger_why":"open water of Topal Bay"}
 {"x":-27,"y":-105,"region_id":"topal-bay","land_share":0.0,"danger_band_id":"D3","danger_why":"open water of Topal Bay"}
 {"x":-27,"y":-96,"region_id":"topal-bay","land_share":0.0,"danger_band_id":"D2","danger_why":"coastal water of Topal Bay"}
@@ -152,8 +152,8 @@
 {"x":-26,"y":-110,"region_id":"cape-percar","land_share":0.026,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":-26,"y":-109,"region_id":"cape-percar","land_share":0.396,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":-26,"y":-108,"region_id":"topal-bay","land_share":0.474,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":-26,"y":-107,"region_id":"topal-bay","land_share":0.073,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":-26,"y":-106,"region_id":"topal-bay","land_share":0.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
+{"x":-26,"y":-107,"region_id":"topal-bay","land_share":0.073,"danger_band_id":"D2","danger_why":"coastal water of Topal Bay"}
+{"x":-26,"y":-106,"region_id":"topal-bay","land_share":0.0,"danger_band_id":"D2","danger_why":"coastal water of Topal Bay"}
 {"x":-26,"y":-105,"region_id":"topal-bay","land_share":0.0,"danger_band_id":"D2","danger_why":"coastal water of Topal Bay"}
 {"x":-26,"y":-104,"region_id":"topal-bay","land_share":0.0,"danger_band_id":"D2","danger_why":"coastal water of Topal Bay"}
 {"x":-26,"y":-103,"region_id":"topal-bay","land_share":0.0,"danger_band_id":"D2","danger_why":"coastal water of Topal Bay"}
@@ -256,9 +256,9 @@
 {"x":-24,"y":-80,"region_id":"kotherra-mangroves","land_share":0.917,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":-24,"y":-79,"region_id":"kotherra-mangroves","land_share":0.815,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":-24,"y":-78,"region_id":"kotherra-mangroves","land_share":0.769,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":-24,"y":-77,"region_id":"blackwood","land_share":0.819,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":-24,"y":-76,"region_id":"blackwood","land_share":0.902,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":-24,"y":-75,"region_id":"blackwood","land_share":0.87,"danger_band_id":"D1","danger_why":"on or beside a major road"}
+{"x":-24,"y":-77,"region_id":"blackwood","land_share":0.819,"danger_band_id":"D3","danger_why":"1 cells from the province's edge; moved toward Blackwood's baseline D3"}
+{"x":-24,"y":-76,"region_id":"blackwood","land_share":0.902,"danger_band_id":"D3","danger_why":"0 cells from the province's edge; moved toward Blackwood's baseline D3"}
+{"x":-24,"y":-75,"region_id":"blackwood","land_share":0.87,"danger_band_id":"D3","danger_why":"0 cells from the province's edge; moved toward Blackwood's baseline D3"}
 {"x":-23,"y":-115,"region_id":"sea-of-mists","land_share":0.0,"danger_band_id":"D3","danger_why":"open water of Sea of Mists"}
 {"x":-23,"y":-114,"region_id":"sea-of-mists","land_share":0.0,"danger_band_id":"D2","danger_why":"coastal water of Sea of Mists"}
 {"x":-23,"y":-113,"region_id":"sea-of-mists","land_share":0.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
@@ -297,9 +297,9 @@
 {"x":-23,"y":-80,"region_id":"nha-enasa","land_share":0.806,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":-23,"y":-79,"region_id":"nha-enasa","land_share":0.949,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":-23,"y":-78,"region_id":"nha-enasa","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":-23,"y":-77,"region_id":"blackwood","land_share":0.769,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":-23,"y":-76,"region_id":"blackwood","land_share":0.787,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":-23,"y":-75,"region_id":"blackwood","land_share":0.828,"danger_band_id":"D1","danger_why":"on or beside a major road"}
+{"x":-23,"y":-77,"region_id":"blackwood","land_share":0.769,"danger_band_id":"D2","danger_why":"2 cells from the province's edge; moved toward Blackwood's baseline D3; a minor road"}
+{"x":-23,"y":-76,"region_id":"blackwood","land_share":0.787,"danger_band_id":"D2","danger_why":"1 cells from the province's edge; moved toward Blackwood's baseline D3; a minor road"}
+{"x":-23,"y":-75,"region_id":"blackwood","land_share":0.828,"danger_band_id":"D3","danger_why":"0 cells from the province's edge; moved toward Blackwood's baseline D3"}
 {"x":-23,"y":-74,"region_id":"blackwood","land_share":0.776,"danger_band_id":"D3","danger_why":"0 cells from the province's edge; moved toward Blackwood's baseline D3"}
 {"x":-22,"y":-115,"region_id":"sea-of-mists","land_share":0.0,"danger_band_id":"D2","danger_why":"coastal water of Sea of Mists"}
 {"x":-22,"y":-114,"region_id":"sea-of-mists","land_share":0.0,"danger_band_id":"D2","danger_why":"coastal water of Sea of Mists"}
@@ -338,11 +338,11 @@
 {"x":-22,"y":-81,"region_id":"nha-enasa","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":-22,"y":-80,"region_id":"nha-enasa","land_share":0.97,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":-22,"y":-79,"region_id":"nha-enasa","land_share":0.963,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":-22,"y":-78,"region_id":"nha-enasa","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":-22,"y":-77,"region_id":"nha-enasa","land_share":0.935,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":-22,"y":-76,"region_id":"blackwood","land_share":0.817,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":-22,"y":-75,"region_id":"blackwood","land_share":0.677,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":-22,"y":-74,"region_id":"blackwood","land_share":0.891,"danger_band_id":"D1","danger_why":"on or beside a major road"}
+{"x":-22,"y":-78,"region_id":"nha-enasa","land_share":1.0,"danger_band_id":"D1","danger_why":"3 cells from the province's edge; a minor road"}
+{"x":-22,"y":-77,"region_id":"nha-enasa","land_share":0.935,"danger_band_id":"D1","danger_why":"3 cells from the province's edge; a minor road"}
+{"x":-22,"y":-76,"region_id":"blackwood","land_share":0.817,"danger_band_id":"D3","danger_why":"2 cells from the province's edge; moved toward Blackwood's baseline D3"}
+{"x":-22,"y":-75,"region_id":"blackwood","land_share":0.677,"danger_band_id":"D3","danger_why":"1 cells from the province's edge; moved toward Blackwood's baseline D3"}
+{"x":-22,"y":-74,"region_id":"blackwood","land_share":0.891,"danger_band_id":"D3","danger_why":"0 cells from the province's edge; moved toward Blackwood's baseline D3"}
 {"x":-21,"y":-115,"region_id":"sea-of-mists","land_share":0.0,"danger_band_id":"D2","danger_why":"coastal water of Sea of Mists"}
 {"x":-21,"y":-114,"region_id":"sea-of-mists","land_share":0.0,"danger_band_id":"D2","danger_why":"coastal water of Sea of Mists"}
 {"x":-21,"y":-113,"region_id":"sea-of-mists","land_share":0.001,"danger_band_id":"D1","danger_why":"on or beside a major road"}
@@ -352,7 +352,7 @@
 {"x":-21,"y":-109,"region_id":"cape-percar","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":-21,"y":-108,"region_id":"cape-percar","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":-21,"y":-107,"region_id":"cape-percar","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":-21,"y":-106,"region_id":"cape-percar","land_share":0.675,"danger_band_id":"D1","danger_why":"on or beside a major road"}
+{"x":-21,"y":-106,"region_id":"cape-percar","land_share":0.675,"danger_band_id":"D2","danger_why":"3 cells from the province's edge"}
 {"x":-21,"y":-105,"region_id":"cape-percar","land_share":0.55,"danger_band_id":"D2","danger_why":"3 cells from the province's edge"}
 {"x":-21,"y":-104,"region_id":"cape-percar","land_share":0.94,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":-21,"y":-103,"region_id":"cape-percar","land_share":0.951,"danger_band_id":"D1","danger_why":"on or beside a major road"}
@@ -380,12 +380,12 @@
 {"x":-21,"y":-81,"region_id":"nha-enasa","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":-21,"y":-80,"region_id":"nha-enasa","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":-21,"y":-79,"region_id":"nha-enasa","land_share":1.0,"danger_band_id":"D1","danger_why":"4 cells from the province's edge; moved toward Nha Enasa's baseline D2; a minor road"}
-{"x":-21,"y":-78,"region_id":"nha-enasa","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":-21,"y":-77,"region_id":"nha-enasa","land_share":0.813,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":-21,"y":-76,"region_id":"blackwood","land_share":0.853,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":-21,"y":-75,"region_id":"blackwood","land_share":0.584,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":-21,"y":-74,"region_id":"blackwood","land_share":0.669,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":-21,"y":-73,"region_id":"blackwood","land_share":0.642,"danger_band_id":"D1","danger_why":"on or beside a major road"}
+{"x":-21,"y":-78,"region_id":"nha-enasa","land_share":1.0,"danger_band_id":"D1","danger_why":"4 cells from the province's edge; moved toward Nha Enasa's baseline D2; a minor road"}
+{"x":-21,"y":-77,"region_id":"nha-enasa","land_share":0.813,"danger_band_id":"D1","danger_why":"3 cells from the province's edge; a minor road"}
+{"x":-21,"y":-76,"region_id":"blackwood","land_share":0.853,"danger_band_id":"D2","danger_why":"2 cells from the province's edge; moved toward Blackwood's baseline D3; a minor road"}
+{"x":-21,"y":-75,"region_id":"blackwood","land_share":0.584,"danger_band_id":"D2","danger_why":"1 cells from the province's edge; moved toward Blackwood's baseline D3; a minor road"}
+{"x":-21,"y":-74,"region_id":"blackwood","land_share":0.669,"danger_band_id":"D1","danger_why":"at Hutan-Veel"}
+{"x":-21,"y":-73,"region_id":"blackwood","land_share":0.642,"danger_band_id":"D3","danger_why":"0 cells from the province's edge; moved toward Blackwood's baseline D3"}
 {"x":-20,"y":-115,"region_id":"sea-of-mists","land_share":0.0,"danger_band_id":"D2","danger_why":"coastal water of Sea of Mists"}
 {"x":-20,"y":-114,"region_id":"sea-of-mists","land_share":0.0,"danger_band_id":"D2","danger_why":"coastal water of Sea of Mists"}
 {"x":-20,"y":-113,"region_id":"cape-percar","land_share":0.388,"danger_band_id":"D2","danger_why":"0 cells from the province's edge"}
@@ -400,12 +400,12 @@
 {"x":-20,"y":-104,"region_id":"banujha-basin","land_share":0.936,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":-20,"y":-103,"region_id":"banujha-basin","land_share":0.863,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":-20,"y":-102,"region_id":"cape-percar","land_share":0.988,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":-20,"y":-101,"region_id":"cape-percar","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":-20,"y":-100,"region_id":"cape-percar","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
+{"x":-20,"y":-101,"region_id":"cape-percar","land_share":1.0,"danger_band_id":"D2","danger_why":"4 cells from the province's edge; moved toward Cape Percar's baseline D2"}
+{"x":-20,"y":-100,"region_id":"cape-percar","land_share":1.0,"danger_band_id":"D2","danger_why":"4 cells from the province's edge; moved toward Cape Percar's baseline D2"}
 {"x":-20,"y":-99,"region_id":"cape-percar","land_share":0.766,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":-20,"y":-98,"region_id":"cape-percar","land_share":0.981,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":-20,"y":-97,"region_id":"cape-percar","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":-20,"y":-96,"region_id":"banujha-basin","land_share":0.978,"danger_band_id":"D3","danger_why":"4 cells from the province's edge"}
+{"x":-20,"y":-96,"region_id":"banujha-basin","land_share":0.978,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":-20,"y":-95,"region_id":"banujha-basin","land_share":0.603,"danger_band_id":"D3","danger_why":"4 cells from the province's edge"}
 {"x":-20,"y":-94,"region_id":"banujha-basin","land_share":0.895,"danger_band_id":"D3","danger_why":"5 cells from the province's edge"}
 {"x":-20,"y":-93,"region_id":"nha-enasa","land_share":1.0,"danger_band_id":"D1","danger_why":"5 cells from the province's edge; moved toward Nha Enasa's baseline D2; a minor road"}
@@ -423,12 +423,12 @@
 {"x":-20,"y":-81,"region_id":"nha-enasa","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":-20,"y":-80,"region_id":"nha-enasa","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":-20,"y":-79,"region_id":"nha-enasa","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":-20,"y":-78,"region_id":"nha-enasa","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":-20,"y":-77,"region_id":"nha-enasa","land_share":0.709,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":-20,"y":-76,"region_id":"nha-enasa","land_share":0.996,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":-20,"y":-75,"region_id":"blackwood","land_share":0.751,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":-20,"y":-74,"region_id":"blackwood","land_share":0.514,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":-20,"y":-73,"region_id":"blackwood","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
+{"x":-20,"y":-78,"region_id":"nha-enasa","land_share":1.0,"danger_band_id":"D2","danger_why":"5 cells from the province's edge; moved toward Nha Enasa's baseline D2"}
+{"x":-20,"y":-77,"region_id":"nha-enasa","land_share":0.709,"danger_band_id":"D1","danger_why":"at Nahk-Zeel Station"}
+{"x":-20,"y":-76,"region_id":"nha-enasa","land_share":0.996,"danger_band_id":"D1","danger_why":"3 cells from the province's edge; a minor road"}
+{"x":-20,"y":-75,"region_id":"blackwood","land_share":0.751,"danger_band_id":"D3","danger_why":"2 cells from the province's edge; moved toward Blackwood's baseline D3"}
+{"x":-20,"y":-74,"region_id":"blackwood","land_share":0.514,"danger_band_id":"D3","danger_why":"1 cells from the province's edge; moved toward Blackwood's baseline D3"}
+{"x":-20,"y":-73,"region_id":"blackwood","land_share":1.0,"danger_band_id":"D3","danger_why":"0 cells from the province's edge; moved toward Blackwood's baseline D3"}
 {"x":-20,"y":-72,"region_id":"blackwood","land_share":0.681,"danger_band_id":"D3","danger_why":"0 cells from the province's edge; moved toward Blackwood's baseline D3"}
 {"x":-20,"y":-71,"region_id":"blackwood","land_share":0.786,"danger_band_id":"D3","danger_why":"0 cells from the province's edge; moved toward Blackwood's baseline D3"}
 {"x":-19,"y":-115,"region_id":"sea-of-mists","land_share":0.0,"danger_band_id":"D2","danger_why":"coastal water of Sea of Mists"}
@@ -445,8 +445,8 @@
 {"x":-19,"y":-104,"region_id":"banujha-basin","land_share":0.271,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":-19,"y":-103,"region_id":"banujha-basin","land_share":0.807,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":-19,"y":-102,"region_id":"banujha-basin","land_share":0.944,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":-19,"y":-101,"region_id":"banujha-basin","land_share":0.995,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":-19,"y":-100,"region_id":"cape-percar","land_share":0.885,"danger_band_id":"D1","danger_why":"on or beside a major road"}
+{"x":-19,"y":-101,"region_id":"banujha-basin","land_share":0.995,"danger_band_id":"D1","danger_why":"at Redtimber Camp"}
+{"x":-19,"y":-100,"region_id":"cape-percar","land_share":0.885,"danger_band_id":"D1","danger_why":"5 cells from the province's edge; moved toward Cape Percar's baseline D2; a minor road"}
 {"x":-19,"y":-99,"region_id":"banujha-basin","land_share":0.786,"danger_band_id":"D2","danger_why":"5 cells from the province's edge; a minor road"}
 {"x":-19,"y":-98,"region_id":"banujha-basin","land_share":0.579,"danger_band_id":"D3","danger_why":"5 cells from the province's edge"}
 {"x":-19,"y":-97,"region_id":"banujha-basin","land_share":0.731,"danger_band_id":"D3","danger_why":"5 cells from the province's edge"}
@@ -461,7 +461,7 @@
 {"x":-19,"y":-88,"region_id":"nha-enasa","land_share":1.0,"danger_band_id":"D2","danger_why":"7 cells from the province's edge; moved toward Nha Enasa's baseline D2"}
 {"x":-19,"y":-87,"region_id":"nha-enasa","land_share":1.0,"danger_band_id":"D2","danger_why":"7 cells from the province's edge; moved toward Nha Enasa's baseline D2"}
 {"x":-19,"y":-86,"region_id":"nha-enasa","land_share":1.0,"danger_band_id":"D2","danger_why":"8 cells from the province's edge; moved toward Nha Enasa's baseline D2"}
-{"x":-19,"y":-85,"region_id":"nha-enasa","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
+{"x":-19,"y":-85,"region_id":"nha-enasa","land_share":1.0,"danger_band_id":"D2","danger_why":"8 cells from the province's edge; moved toward Nha Enasa's baseline D2"}
 {"x":-19,"y":-84,"region_id":"nha-enasa","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":-19,"y":-83,"region_id":"nha-enasa","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":-19,"y":-82,"region_id":"nha-enasa","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
@@ -469,14 +469,14 @@
 {"x":-19,"y":-80,"region_id":"nha-enasa","land_share":0.954,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":-19,"y":-79,"region_id":"nha-enasa","land_share":0.783,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":-19,"y":-78,"region_id":"nha-enasa","land_share":0.924,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":-19,"y":-77,"region_id":"nha-enasa","land_share":0.655,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":-19,"y":-76,"region_id":"nha-enasa","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
+{"x":-19,"y":-77,"region_id":"nha-enasa","land_share":0.655,"danger_band_id":"D1","danger_why":"5 cells from the province's edge; moved toward Nha Enasa's baseline D2; a minor road"}
+{"x":-19,"y":-76,"region_id":"nha-enasa","land_share":1.0,"danger_band_id":"D2","danger_why":"4 cells from the province's edge; moved toward Nha Enasa's baseline D2"}
 {"x":-19,"y":-75,"region_id":"blackwood","land_share":0.881,"danger_band_id":"D3","danger_why":"3 cells from the province's edge; moved toward Blackwood's baseline D3"}
 {"x":-19,"y":-74,"region_id":"blackwood","land_share":0.388,"danger_band_id":"D3","danger_why":"2 cells from the province's edge; moved toward Blackwood's baseline D3"}
-{"x":-19,"y":-73,"region_id":"blackwood","land_share":0.501,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":-19,"y":-72,"region_id":"blackwood","land_share":0.766,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":-19,"y":-71,"region_id":"blackwood","land_share":0.995,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":-19,"y":-70,"region_id":"blackwood","land_share":0.917,"danger_band_id":"D1","danger_why":"on or beside a major road"}
+{"x":-19,"y":-73,"region_id":"blackwood","land_share":0.501,"danger_band_id":"D3","danger_why":"1 cells from the province's edge; moved toward Blackwood's baseline D3"}
+{"x":-19,"y":-72,"region_id":"blackwood","land_share":0.766,"danger_band_id":"D3","danger_why":"1 cells from the province's edge; moved toward Blackwood's baseline D3"}
+{"x":-19,"y":-71,"region_id":"blackwood","land_share":0.995,"danger_band_id":"D3","danger_why":"0 cells from the province's edge; moved toward Blackwood's baseline D3"}
+{"x":-19,"y":-70,"region_id":"blackwood","land_share":0.917,"danger_band_id":"D3","danger_why":"0 cells from the province's edge; moved toward Blackwood's baseline D3"}
 {"x":-18,"y":-115,"region_id":"sea-of-mists","land_share":0.0,"danger_band_id":"D2","danger_why":"coastal water of Sea of Mists"}
 {"x":-18,"y":-114,"region_id":"sea-of-mists","land_share":0.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":-18,"y":-113,"region_id":"cape-percar","land_share":0.509,"danger_band_id":"D1","danger_why":"on or beside a major road"}
@@ -491,8 +491,8 @@
 {"x":-18,"y":-104,"region_id":"banujha-basin","land_share":0.577,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":-18,"y":-103,"region_id":"banujha-basin","land_share":0.424,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":-18,"y":-102,"region_id":"banujha-basin","land_share":0.882,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":-18,"y":-101,"region_id":"banujha-basin","land_share":0.886,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":-18,"y":-100,"region_id":"banujha-basin","land_share":0.643,"danger_band_id":"D1","danger_why":"on or beside a major road"}
+{"x":-18,"y":-101,"region_id":"banujha-basin","land_share":0.886,"danger_band_id":"D2","danger_why":"6 cells from the province's edge; a minor road"}
+{"x":-18,"y":-100,"region_id":"banujha-basin","land_share":0.643,"danger_band_id":"D3","danger_why":"6 cells from the province's edge"}
 {"x":-18,"y":-99,"region_id":"banujha-basin","land_share":0.951,"danger_band_id":"D2","danger_why":"6 cells from the province's edge; a minor road"}
 {"x":-18,"y":-98,"region_id":"banujha-basin","land_share":0.969,"danger_band_id":"D2","danger_why":"6 cells from the province's edge; a minor road"}
 {"x":-18,"y":-97,"region_id":"banujha-basin","land_share":0.753,"danger_band_id":"D3","danger_why":"6 cells from the province's edge"}
@@ -507,7 +507,7 @@
 {"x":-18,"y":-88,"region_id":"nha-enasa","land_share":1.0,"danger_band_id":"D2","danger_why":"8 cells from the province's edge; moved toward Nha Enasa's baseline D2"}
 {"x":-18,"y":-87,"region_id":"nha-enasa","land_share":0.938,"danger_band_id":"D1","danger_why":"8 cells from the province's edge; moved toward Nha Enasa's baseline D2; a minor road"}
 {"x":-18,"y":-86,"region_id":"nha-enasa","land_share":0.714,"danger_band_id":"D1","danger_why":"9 cells from the province's edge; moved toward Nha Enasa's baseline D2; a minor road"}
-{"x":-18,"y":-85,"region_id":"nha-enasa","land_share":0.828,"danger_band_id":"D1","danger_why":"on or beside a major road"}
+{"x":-18,"y":-85,"region_id":"nha-enasa","land_share":0.828,"danger_band_id":"D1","danger_why":"9 cells from the province's edge; moved toward Nha Enasa's baseline D2; a minor road"}
 {"x":-18,"y":-84,"region_id":"nha-enasa","land_share":0.994,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":-18,"y":-83,"region_id":"nha-enasa","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":-18,"y":-82,"region_id":"nha-enasa","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
@@ -555,7 +555,7 @@
 {"x":-17,"y":-88,"region_id":"nha-enasa","land_share":1.0,"danger_band_id":"D2","danger_why":"9 cells from the province's edge; moved toward Nha Enasa's baseline D2"}
 {"x":-17,"y":-87,"region_id":"nha-enasa","land_share":0.582,"danger_band_id":"D1","danger_why":"9 cells from the province's edge; moved toward Nha Enasa's baseline D2; a minor road"}
 {"x":-17,"y":-86,"region_id":"nha-enasa","land_share":0.975,"danger_band_id":"D3","danger_why":"10 cells from the province's edge; moved toward Nha Enasa's baseline D2"}
-{"x":-17,"y":-85,"region_id":"nha-enasa","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
+{"x":-17,"y":-85,"region_id":"nha-enasa","land_share":1.0,"danger_band_id":"D3","danger_why":"10 cells from the province's edge; moved toward Nha Enasa's baseline D2"}
 {"x":-17,"y":-84,"region_id":"nha-enasa","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":-17,"y":-83,"region_id":"nha-enasa","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":-17,"y":-82,"region_id":"nha-enasa","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
@@ -709,9 +709,9 @@
 {"x":-14,"y":-83,"region_id":"aunike-ridge","land_share":1.0,"danger_band_id":"D3","danger_why":"12 cells from the province's edge; moved toward Aunike Ridge's baseline D3"}
 {"x":-14,"y":-82,"region_id":"aunike-ridge","land_share":1.0,"danger_band_id":"D3","danger_why":"11 cells from the province's edge; moved toward Aunike Ridge's baseline D3"}
 {"x":-14,"y":-81,"region_id":"murkwood","land_share":0.943,"danger_band_id":"D4","danger_why":"11 cells from the province's edge"}
-{"x":-14,"y":-80,"region_id":"murkwood","land_share":0.851,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":-14,"y":-79,"region_id":"murkwood","land_share":0.529,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":-14,"y":-78,"region_id":"murkwood","land_share":0.676,"danger_band_id":"D1","danger_why":"on or beside a major road"}
+{"x":-14,"y":-80,"region_id":"murkwood","land_share":0.851,"danger_band_id":"D4","danger_why":"11 cells from the province's edge"}
+{"x":-14,"y":-79,"region_id":"murkwood","land_share":0.529,"danger_band_id":"D4","danger_why":"11 cells from the province's edge"}
+{"x":-14,"y":-78,"region_id":"murkwood","land_share":0.676,"danger_band_id":"D3","danger_why":"11 cells from the province's edge; a minor road"}
 {"x":-14,"y":-77,"region_id":"murkwood","land_share":0.931,"danger_band_id":"D3","danger_why":"10 cells from the province's edge; a minor road"}
 {"x":-14,"y":-76,"region_id":"murkwood","land_share":0.951,"danger_band_id":"D3","danger_why":"9 cells from the province's edge; moved toward Murkwood's baseline D4; a minor road"}
 {"x":-14,"y":-75,"region_id":"murkwood","land_share":0.988,"danger_band_id":"D4","danger_why":"8 cells from the province's edge; moved toward Murkwood's baseline D4"}
@@ -761,9 +761,9 @@
 {"x":-13,"y":-83,"region_id":"aunike-ridge","land_share":1.0,"danger_band_id":"D3","danger_why":"13 cells from the province's edge; moved toward Aunike Ridge's baseline D3"}
 {"x":-13,"y":-82,"region_id":"aunike-ridge","land_share":1.0,"danger_band_id":"D3","danger_why":"12 cells from the province's edge; moved toward Aunike Ridge's baseline D3"}
 {"x":-13,"y":-81,"region_id":"murkwood","land_share":1.0,"danger_band_id":"D4","danger_why":"12 cells from the province's edge"}
-{"x":-13,"y":-80,"region_id":"murkwood","land_share":0.971,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":-13,"y":-79,"region_id":"murkwood","land_share":0.626,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":-13,"y":-78,"region_id":"murkwood","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
+{"x":-13,"y":-80,"region_id":"murkwood","land_share":0.971,"danger_band_id":"D4","danger_why":"12 cells from the province's edge"}
+{"x":-13,"y":-79,"region_id":"murkwood","land_share":0.626,"danger_band_id":"D1","danger_why":"at Tzel-Haar"}
+{"x":-13,"y":-78,"region_id":"murkwood","land_share":1.0,"danger_band_id":"D3","danger_why":"12 cells from the province's edge; a minor road"}
 {"x":-13,"y":-77,"region_id":"murkwood","land_share":1.0,"danger_band_id":"D3","danger_why":"11 cells from the province's edge; a minor road"}
 {"x":-13,"y":-76,"region_id":"murkwood","land_share":1.0,"danger_band_id":"D3","danger_why":"10 cells from the province's edge; a minor road"}
 {"x":-13,"y":-75,"region_id":"murkwood","land_share":0.801,"danger_band_id":"D4","danger_why":"9 cells from the province's edge; moved toward Murkwood's baseline D4"}
@@ -817,9 +817,9 @@
 {"x":-12,"y":-83,"region_id":"aunike-ridge","land_share":1.0,"danger_band_id":"D3","danger_why":"14 cells from the province's edge; moved toward Aunike Ridge's baseline D3"}
 {"x":-12,"y":-82,"region_id":"aunike-ridge","land_share":1.0,"danger_band_id":"D3","danger_why":"13 cells from the province's edge; moved toward Aunike Ridge's baseline D3"}
 {"x":-12,"y":-81,"region_id":"murkwood","land_share":0.966,"danger_band_id":"D4","danger_why":"13 cells from the province's edge"}
-{"x":-12,"y":-80,"region_id":"murkwood","land_share":0.629,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":-12,"y":-79,"region_id":"murkwood","land_share":0.507,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":-12,"y":-78,"region_id":"murkwood","land_share":0.934,"danger_band_id":"D1","danger_why":"on or beside a major road"}
+{"x":-12,"y":-80,"region_id":"murkwood","land_share":0.629,"danger_band_id":"D4","danger_why":"13 cells from the province's edge"}
+{"x":-12,"y":-79,"region_id":"murkwood","land_share":0.507,"danger_band_id":"D4","danger_why":"13 cells from the province's edge"}
+{"x":-12,"y":-78,"region_id":"murkwood","land_share":0.934,"danger_band_id":"D4","danger_why":"13 cells from the province's edge"}
 {"x":-12,"y":-77,"region_id":"murkwood","land_share":0.955,"danger_band_id":"D4","danger_why":"12 cells from the province's edge"}
 {"x":-12,"y":-76,"region_id":"murkwood","land_share":0.877,"danger_band_id":"D4","danger_why":"11 cells from the province's edge"}
 {"x":-12,"y":-75,"region_id":"murkwood","land_share":0.537,"danger_band_id":"D4","danger_why":"10 cells from the province's edge"}
@@ -847,7 +847,7 @@
 {"x":-11,"y":-110,"region_id":"tulmek-washes","land_share":0.966,"danger_band_id":"D3","danger_why":"3 cells from the province's edge; moved toward Tulmek Washes's baseline D3"}
 {"x":-11,"y":-109,"region_id":"tulmek-washes","land_share":0.558,"danger_band_id":"D3","danger_why":"4 cells from the province's edge"}
 {"x":-11,"y":-108,"region_id":"tulmek-washes","land_share":0.801,"danger_band_id":"D3","danger_why":"5 cells from the province's edge"}
-{"x":-11,"y":-107,"region_id":"cape-percar","land_share":0.701,"danger_band_id":"D1","danger_why":"6 cells from the province's edge; moved toward Cape Percar's baseline D2; a minor road"}
+{"x":-11,"y":-107,"region_id":"cape-percar","land_share":0.701,"danger_band_id":"D2","danger_why":"6 cells from the province's edge; moved toward Cape Percar's baseline D2"}
 {"x":-11,"y":-106,"region_id":"cape-percar","land_share":0.708,"danger_band_id":"D1","danger_why":"7 cells from the province's edge; moved toward Cape Percar's baseline D2; a minor road"}
 {"x":-11,"y":-105,"region_id":"banujha-basin","land_share":0.803,"danger_band_id":"D2","danger_why":"8 cells from the province's edge; a minor road"}
 {"x":-11,"y":-104,"region_id":"banujha-basin","land_share":0.021,"danger_band_id":"D3","danger_why":"9 cells from the province's edge"}
@@ -1064,7 +1064,7 @@
 {"x":-8,"y":-63,"region_id":"barsaebica","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":-8,"y":-62,"region_id":"valley-of-storms","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":-8,"y":-61,"region_id":"valley-of-storms","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":-8,"y":-60,"region_id":"valley-of-storms","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
+{"x":-8,"y":-60,"region_id":"valley-of-storms","land_share":1.0,"danger_band_id":"D2","danger_why":"0 cells from the province's edge"}
 {"x":-7,"y":-114,"region_id":"sea-of-mists","land_share":0.0,"danger_band_id":"D2","danger_why":"coastal water of Sea of Mists"}
 {"x":-7,"y":-113,"region_id":"sea-of-mists","land_share":0.0,"danger_band_id":"D2","danger_why":"coastal water of Sea of Mists"}
 {"x":-7,"y":-112,"region_id":"tulmek-washes","land_share":0.151,"danger_band_id":"D3","danger_why":"0 cells from the province's edge; moved toward Tulmek Washes's baseline D3"}
@@ -1467,9 +1467,9 @@
 {"x":0,"y":-97,"region_id":"ultherus-swamp","land_share":0.66,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":0,"y":-96,"region_id":"ultherus-swamp","land_share":0.78,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":0,"y":-95,"region_id":"ultherus-swamp","land_share":0.866,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":0,"y":-94,"region_id":"ultherus-swamp","land_share":0.879,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":0,"y":-93,"region_id":"ultherus-swamp","land_share":0.325,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":0,"y":-92,"region_id":"ultherus-swamp","land_share":0.568,"danger_band_id":"D1","danger_why":"on or beside a major road"}
+{"x":0,"y":-94,"region_id":"ultherus-swamp","land_share":0.879,"danger_band_id":"D3","danger_why":"10 cells from the province's edge; moved toward Ultherus Swamp's baseline D3"}
+{"x":0,"y":-93,"region_id":"ultherus-swamp","land_share":0.325,"danger_band_id":"D3","danger_why":"11 cells from the province's edge; moved toward Ultherus Swamp's baseline D3"}
+{"x":0,"y":-92,"region_id":"ultherus-swamp","land_share":0.568,"danger_band_id":"D2","danger_why":"12 cells from the province's edge; moved toward Ultherus Swamp's baseline D3; a minor road"}
 {"x":0,"y":-91,"region_id":"ultherus-swamp","land_share":0.731,"danger_band_id":"D2","danger_why":"13 cells from the province's edge; moved toward Ultherus Swamp's baseline D3; a minor road"}
 {"x":0,"y":-90,"region_id":"ultherus-swamp","land_share":0.894,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":0,"y":-89,"region_id":"ultherus-swamp","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
@@ -1518,12 +1518,12 @@
 {"x":1,"y":-100,"region_id":"tulmek-washes","land_share":0.436,"danger_band_id":"D3","danger_why":"3 cells from the province's edge; moved toward Tulmek Washes's baseline D3"}
 {"x":1,"y":-99,"region_id":"ultherus-swamp","land_share":0.666,"danger_band_id":"D3","danger_why":"4 cells from the province's edge"}
 {"x":1,"y":-98,"region_id":"ultherus-swamp","land_share":0.677,"danger_band_id":"D3","danger_why":"5 cells from the province's edge"}
-{"x":1,"y":-97,"region_id":"ultherus-swamp","land_share":0.52,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":1,"y":-96,"region_id":"ultherus-swamp","land_share":0.859,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":1,"y":-95,"region_id":"ultherus-swamp","land_share":0.867,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":1,"y":-94,"region_id":"ultherus-swamp","land_share":0.692,"danger_band_id":"D1","danger_why":"on or beside a major road"}
+{"x":1,"y":-97,"region_id":"ultherus-swamp","land_share":0.52,"danger_band_id":"D3","danger_why":"6 cells from the province's edge"}
+{"x":1,"y":-96,"region_id":"ultherus-swamp","land_share":0.859,"danger_band_id":"D2","danger_why":"7 cells from the province's edge; a minor road"}
+{"x":1,"y":-95,"region_id":"ultherus-swamp","land_share":0.867,"danger_band_id":"D2","danger_why":"8 cells from the province's edge; a minor road"}
+{"x":1,"y":-94,"region_id":"ultherus-swamp","land_share":0.692,"danger_band_id":"D3","danger_why":"9 cells from the province's edge"}
 {"x":1,"y":-93,"region_id":"ultherus-swamp","land_share":0.411,"danger_band_id":"D0","danger_why":"inside Korydon"}
-{"x":1,"y":-92,"region_id":"ultherus-swamp","land_share":0.374,"danger_band_id":"D1","danger_why":"on or beside a major road"}
+{"x":1,"y":-92,"region_id":"ultherus-swamp","land_share":0.374,"danger_band_id":"D2","danger_why":"11 cells from the province's edge; moved toward Ultherus Swamp's baseline D3; a minor road"}
 {"x":1,"y":-91,"region_id":"ultherus-swamp","land_share":0.502,"danger_band_id":"D3","danger_why":"12 cells from the province's edge; moved toward Ultherus Swamp's baseline D3"}
 {"x":1,"y":-90,"region_id":"ultherus-swamp","land_share":0.937,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":1,"y":-89,"region_id":"murkwood","land_share":0.946,"danger_band_id":"D1","danger_why":"on or beside a major road"}
@@ -1571,12 +1571,12 @@
 {"x":2,"y":-100,"region_id":"tulmek-washes","land_share":0.159,"danger_band_id":"D3","danger_why":"2 cells from the province's edge; moved toward Tulmek Washes's baseline D3"}
 {"x":2,"y":-99,"region_id":"ultherus-swamp","land_share":0.346,"danger_band_id":"D3","danger_why":"3 cells from the province's edge; moved toward Ultherus Swamp's baseline D3"}
 {"x":2,"y":-98,"region_id":"ultherus-swamp","land_share":0.823,"danger_band_id":"D3","danger_why":"4 cells from the province's edge"}
-{"x":2,"y":-97,"region_id":"ultherus-swamp","land_share":0.658,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":2,"y":-96,"region_id":"ultherus-swamp","land_share":0.855,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":2,"y":-95,"region_id":"ultherus-swamp","land_share":0.416,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":2,"y":-94,"region_id":"ultherus-swamp","land_share":0.339,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":2,"y":-93,"region_id":"ultherus-swamp","land_share":0.854,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":2,"y":-92,"region_id":"ultherus-swamp","land_share":0.752,"danger_band_id":"D1","danger_why":"on or beside a major road"}
+{"x":2,"y":-97,"region_id":"ultherus-swamp","land_share":0.658,"danger_band_id":"D3","danger_why":"5 cells from the province's edge"}
+{"x":2,"y":-96,"region_id":"ultherus-swamp","land_share":0.855,"danger_band_id":"D1","danger_why":"at Orji-Hael"}
+{"x":2,"y":-95,"region_id":"ultherus-swamp","land_share":0.416,"danger_band_id":"D3","danger_why":"7 cells from the province's edge"}
+{"x":2,"y":-94,"region_id":"ultherus-swamp","land_share":0.339,"danger_band_id":"D3","danger_why":"8 cells from the province's edge"}
+{"x":2,"y":-93,"region_id":"ultherus-swamp","land_share":0.854,"danger_band_id":"D3","danger_why":"9 cells from the province's edge"}
+{"x":2,"y":-92,"region_id":"ultherus-swamp","land_share":0.752,"danger_band_id":"D3","danger_why":"10 cells from the province's edge; moved toward Ultherus Swamp's baseline D3"}
 {"x":2,"y":-91,"region_id":"ultherus-swamp","land_share":0.438,"danger_band_id":"D3","danger_why":"11 cells from the province's edge; moved toward Ultherus Swamp's baseline D3"}
 {"x":2,"y":-90,"region_id":"ultherus-swamp","land_share":0.901,"danger_band_id":"D3","danger_why":"12 cells from the province's edge; moved toward Ultherus Swamp's baseline D3"}
 {"x":2,"y":-89,"region_id":"murkwood","land_share":0.997,"danger_band_id":"D1","danger_why":"on or beside a major road"}
@@ -1623,10 +1623,10 @@
 {"x":3,"y":-100,"region_id":"tulmek-washes","land_share":0.0,"danger_band_id":"D3","danger_why":"1 cells from the province's edge; moved toward Tulmek Washes's baseline D3"}
 {"x":3,"y":-99,"region_id":"tulmek-washes","land_share":0.044,"danger_band_id":"D3","danger_why":"2 cells from the province's edge; moved toward Tulmek Washes's baseline D3"}
 {"x":3,"y":-98,"region_id":"ultherus-swamp","land_share":0.407,"danger_band_id":"D3","danger_why":"3 cells from the province's edge; moved toward Ultherus Swamp's baseline D3"}
-{"x":3,"y":-97,"region_id":"ultherus-swamp","land_share":0.557,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":3,"y":-96,"region_id":"ultherus-swamp","land_share":0.494,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":3,"y":-95,"region_id":"ultherus-swamp","land_share":0.134,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":3,"y":-94,"region_id":"ultherus-swamp","land_share":0.503,"danger_band_id":"D1","danger_why":"on or beside a major road"}
+{"x":3,"y":-97,"region_id":"ultherus-swamp","land_share":0.557,"danger_band_id":"D3","danger_why":"4 cells from the province's edge"}
+{"x":3,"y":-96,"region_id":"ultherus-swamp","land_share":0.494,"danger_band_id":"D3","danger_why":"5 cells from the province's edge"}
+{"x":3,"y":-95,"region_id":"ultherus-swamp","land_share":0.134,"danger_band_id":"D3","danger_why":"6 cells from the province's edge"}
+{"x":3,"y":-94,"region_id":"ultherus-swamp","land_share":0.503,"danger_band_id":"D3","danger_why":"7 cells from the province's edge"}
 {"x":3,"y":-93,"region_id":"ultherus-swamp","land_share":0.494,"danger_band_id":"D3","danger_why":"8 cells from the province's edge"}
 {"x":3,"y":-92,"region_id":"ultherus-swamp","land_share":0.427,"danger_band_id":"D3","danger_why":"9 cells from the province's edge"}
 {"x":3,"y":-91,"region_id":"ultherus-swamp","land_share":0.505,"danger_band_id":"D3","danger_why":"10 cells from the province's edge; moved toward Ultherus Swamp's baseline D3"}
@@ -1672,7 +1672,7 @@
 {"x":4,"y":-103,"region_id":"tulmek-washes","land_share":0.819,"danger_band_id":"D0","danger_why":"inside Blackrose"}
 {"x":4,"y":-102,"region_id":"tulmek-washes","land_share":0.265,"danger_band_id":"D0","danger_why":"inside Blackrose"}
 {"x":4,"y":-101,"region_id":"tulmek-washes","land_share":0.0,"danger_band_id":"D0","danger_why":"inside Blackrose"}
-{"x":4,"y":-100,"region_id":"tulmek-washes","land_share":0.0,"danger_band_id":"D3","danger_why":"0 cells from the province's edge; moved toward Tulmek Washes's baseline D3"}
+{"x":4,"y":-100,"region_id":"tulmek-washes","land_share":0.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":4,"y":-99,"region_id":"tulmek-washes","land_share":0.0,"danger_band_id":"D3","danger_why":"1 cells from the province's edge; moved toward Tulmek Washes's baseline D3"}
 {"x":4,"y":-98,"region_id":"tulmek-washes","land_share":0.0,"danger_band_id":"D3","danger_why":"2 cells from the province's edge; moved toward Tulmek Washes's baseline D3"}
 {"x":4,"y":-97,"region_id":"ultherus-swamp","land_share":0.188,"danger_band_id":"D3","danger_why":"3 cells from the province's edge; moved toward Ultherus Swamp's baseline D3"}
@@ -1706,8 +1706,8 @@
 {"x":4,"y":-69,"region_id":"murkwood","land_share":0.797,"danger_band_id":"D4","danger_why":"7 cells from the province's edge; moved toward Murkwood's baseline D4"}
 {"x":4,"y":-68,"region_id":"valley-of-storms","land_share":1.0,"danger_band_id":"D2","danger_why":"6 cells from the province's edge; moved toward Valley of Storms's baseline D2"}
 {"x":4,"y":-67,"region_id":"valley-of-storms","land_share":1.0,"danger_band_id":"D1","danger_why":"5 cells from the province's edge; moved toward Valley of Storms's baseline D2; a minor road"}
-{"x":4,"y":-66,"region_id":"valley-of-storms","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":4,"y":-65,"region_id":"valley-of-storms","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
+{"x":4,"y":-66,"region_id":"valley-of-storms","land_share":1.0,"danger_band_id":"D1","danger_why":"4 cells from the province's edge; moved toward Valley of Storms's baseline D2; a minor road"}
+{"x":4,"y":-65,"region_id":"valley-of-storms","land_share":1.0,"danger_band_id":"D1","danger_why":"3 cells from the province's edge; a minor road"}
 {"x":4,"y":-64,"region_id":"valley-of-storms","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":4,"y":-63,"region_id":"valley-of-storms","land_share":0.947,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":4,"y":-62,"region_id":"valley-of-storms","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
@@ -1716,17 +1716,17 @@
 {"x":5,"y":-110,"region_id":"tulmek-washes","land_share":0.0,"danger_band_id":"D3","danger_why":"0 cells from the province's edge; moved toward Tulmek Washes's baseline D3"}
 {"x":5,"y":-109,"region_id":"tulmek-washes","land_share":0.289,"danger_band_id":"D3","danger_why":"1 cells from the province's edge; moved toward Tulmek Washes's baseline D3"}
 {"x":5,"y":-108,"region_id":"tulmek-washes","land_share":0.887,"danger_band_id":"D3","danger_why":"2 cells from the province's edge; moved toward Tulmek Washes's baseline D3"}
-{"x":5,"y":-107,"region_id":"tulmek-washes","land_share":0.935,"danger_band_id":"D3","danger_why":"3 cells from the province's edge; moved toward Tulmek Washes's baseline D3"}
+{"x":5,"y":-107,"region_id":"tulmek-washes","land_share":0.935,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":5,"y":-106,"region_id":"tulmek-washes","land_share":0.874,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":5,"y":-105,"region_id":"tulmek-washes","land_share":0.962,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":5,"y":-104,"region_id":"tulmek-washes","land_share":0.976,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":5,"y":-103,"region_id":"tulmek-washes","land_share":0.725,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":5,"y":-102,"region_id":"tulmek-washes","land_share":0.021,"danger_band_id":"D3","danger_why":"0 cells from the province's edge; moved toward Tulmek Washes's baseline D3"}
-{"x":5,"y":-100,"region_id":"tulmek-washes","land_share":0.251,"danger_band_id":"D2","danger_why":"0 cells from the province's edge; moved toward Tulmek Washes's baseline D3; a minor road"}
+{"x":5,"y":-102,"region_id":"tulmek-washes","land_share":0.021,"danger_band_id":"D1","danger_why":"on or beside a major road"}
+{"x":5,"y":-100,"region_id":"tulmek-washes","land_share":0.251,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":5,"y":-99,"region_id":"tulmek-washes","land_share":0.22,"danger_band_id":"D3","danger_why":"1 cells from the province's edge; moved toward Tulmek Washes's baseline D3"}
 {"x":5,"y":-98,"region_id":"tulmek-washes","land_share":0.172,"danger_band_id":"D3","danger_why":"2 cells from the province's edge; moved toward Tulmek Washes's baseline D3"}
 {"x":5,"y":-97,"region_id":"tulmek-washes","land_share":0.224,"danger_band_id":"D3","danger_why":"3 cells from the province's edge; moved toward Tulmek Washes's baseline D3"}
-{"x":5,"y":-96,"region_id":"ultherus-swamp","land_share":0.576,"danger_band_id":"D2","danger_why":"4 cells from the province's edge; a minor road"}
+{"x":5,"y":-96,"region_id":"ultherus-swamp","land_share":0.576,"danger_band_id":"D3","danger_why":"4 cells from the province's edge"}
 {"x":5,"y":-95,"region_id":"ultherus-swamp","land_share":0.784,"danger_band_id":"D1","danger_why":"at Myroleon"}
 {"x":5,"y":-94,"region_id":"ultherus-swamp","land_share":0.842,"danger_band_id":"D3","danger_why":"6 cells from the province's edge"}
 {"x":5,"y":-93,"region_id":"ultherus-swamp","land_share":0.654,"danger_band_id":"D3","danger_why":"7 cells from the province's edge"}
@@ -1756,11 +1756,11 @@
 {"x":5,"y":-69,"region_id":"chixathe-mesa","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":5,"y":-68,"region_id":"chixathe-mesa","land_share":1.0,"danger_band_id":"D3","danger_why":"6 cells from the province's edge"}
 {"x":5,"y":-67,"region_id":"chixathe-mesa","land_share":1.0,"danger_band_id":"D2","danger_why":"5 cells from the province's edge; a minor road"}
-{"x":5,"y":-66,"region_id":"chixathe-mesa","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":5,"y":-65,"region_id":"valley-of-storms","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":5,"y":-64,"region_id":"valley-of-storms","land_share":0.978,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":5,"y":-63,"region_id":"valley-of-storms","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":5,"y":-62,"region_id":"valley-of-storms","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
+{"x":5,"y":-66,"region_id":"chixathe-mesa","land_share":1.0,"danger_band_id":"D2","danger_why":"4 cells from the province's edge; a minor road"}
+{"x":5,"y":-65,"region_id":"valley-of-storms","land_share":1.0,"danger_band_id":"D1","danger_why":"3 cells from the province's edge; a minor road"}
+{"x":5,"y":-64,"region_id":"valley-of-storms","land_share":0.978,"danger_band_id":"D1","danger_why":"at Tenmal Pits"}
+{"x":5,"y":-63,"region_id":"valley-of-storms","land_share":1.0,"danger_band_id":"D1","danger_why":"1 cells from the province's edge; a minor road"}
+{"x":5,"y":-62,"region_id":"valley-of-storms","land_share":1.0,"danger_band_id":"D1","danger_why":"0 cells from the province's edge; a minor road"}
 {"x":6,"y":-113,"region_id":"sea-of-mists","land_share":0.0,"danger_band_id":"D2","danger_why":"coastal water of Sea of Mists"}
 {"x":6,"y":-112,"region_id":"sea-of-mists","land_share":0.0,"danger_band_id":"D2","danger_why":"coastal water of Sea of Mists"}
 {"x":6,"y":-111,"region_id":"sea-of-mists","land_share":0.0,"danger_band_id":"D2","danger_why":"coastal water of Sea of Mists"}
@@ -1772,9 +1772,9 @@
 {"x":6,"y":-105,"region_id":"tulmek-washes","land_share":0.976,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":6,"y":-104,"region_id":"tulmek-washes","land_share":0.865,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":6,"y":-103,"region_id":"tulmek-washes","land_share":0.081,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":6,"y":-102,"region_id":"tulmek-washes","land_share":0.458,"danger_band_id":"D3","danger_why":"0 cells from the province's edge; moved toward Tulmek Washes's baseline D3"}
-{"x":6,"y":-101,"region_id":"tulmek-washes","land_share":0.94,"danger_band_id":"D1","danger_why":"at Blackrose Prison"}
-{"x":6,"y":-100,"region_id":"tulmek-washes","land_share":0.979,"danger_band_id":"D2","danger_why":"0 cells from the province's edge; moved toward Tulmek Washes's baseline D3; a minor road"}
+{"x":6,"y":-102,"region_id":"tulmek-washes","land_share":0.458,"danger_band_id":"D1","danger_why":"on or beside a major road"}
+{"x":6,"y":-101,"region_id":"tulmek-washes","land_share":0.94,"danger_band_id":"D1","danger_why":"on or beside a major road"}
+{"x":6,"y":-100,"region_id":"tulmek-washes","land_share":0.979,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":6,"y":-99,"region_id":"tulmek-washes","land_share":0.455,"danger_band_id":"D3","danger_why":"1 cells from the province's edge; moved toward Tulmek Washes's baseline D3"}
 {"x":6,"y":-98,"region_id":"tulmek-washes","land_share":0.896,"danger_band_id":"D2","danger_why":"2 cells from the province's edge; moved toward Tulmek Washes's baseline D3; a minor road"}
 {"x":6,"y":-97,"region_id":"tulmek-washes","land_share":0.926,"danger_band_id":"D1","danger_why":"at Reedfall Farm"}
@@ -1808,9 +1808,9 @@
 {"x":6,"y":-69,"region_id":"chixathe-mesa","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":6,"y":-68,"region_id":"chixathe-mesa","land_share":1.0,"danger_band_id":"D2","danger_why":"6 cells from the province's edge; a minor road"}
 {"x":6,"y":-67,"region_id":"chixathe-mesa","land_share":1.0,"danger_band_id":"D2","danger_why":"5 cells from the province's edge; a minor road"}
-{"x":6,"y":-66,"region_id":"chixathe-mesa","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":6,"y":-65,"region_id":"chixathe-mesa","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":6,"y":-64,"region_id":"valley-of-storms","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
+{"x":6,"y":-66,"region_id":"chixathe-mesa","land_share":1.0,"danger_band_id":"D3","danger_why":"4 cells from the province's edge"}
+{"x":6,"y":-65,"region_id":"chixathe-mesa","land_share":1.0,"danger_band_id":"D1","danger_why":"at Nuxhal"}
+{"x":6,"y":-64,"region_id":"valley-of-storms","land_share":1.0,"danger_band_id":"D2","danger_why":"2 cells from the province's edge"}
 {"x":6,"y":-63,"region_id":"valley-of-storms","land_share":1.0,"danger_band_id":"D2","danger_why":"1 cells from the province's edge"}
 {"x":6,"y":-62,"region_id":"valley-of-storms","land_share":1.0,"danger_band_id":"D1","danger_why":"0 cells from the province's edge; a minor road"}
 {"x":7,"y":-114,"region_id":"sea-of-mists","land_share":0.0,"danger_band_id":"D3","danger_why":"open water of Sea of Mists"}
@@ -1825,9 +1825,9 @@
 {"x":7,"y":-105,"region_id":"tulmek-washes","land_share":0.964,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":7,"y":-104,"region_id":"tulmek-washes","land_share":0.552,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":7,"y":-103,"region_id":"tulmek-washes","land_share":0.166,"danger_band_id":"D3","danger_why":"2 cells from the province's edge; moved toward Tulmek Washes's baseline D3"}
-{"x":7,"y":-102,"region_id":"tulmek-washes","land_share":0.981,"danger_band_id":"D3","danger_why":"1 cells from the province's edge; moved toward Tulmek Washes's baseline D3"}
-{"x":7,"y":-101,"region_id":"tulmek-washes","land_share":0.902,"danger_band_id":"D3","danger_why":"1 cells from the province's edge; moved toward Tulmek Washes's baseline D3"}
-{"x":7,"y":-100,"region_id":"tulmek-washes","land_share":0.97,"danger_band_id":"D2","danger_why":"1 cells from the province's edge; moved toward Tulmek Washes's baseline D3; a minor road"}
+{"x":7,"y":-102,"region_id":"tulmek-washes","land_share":0.981,"danger_band_id":"D1","danger_why":"on or beside a major road"}
+{"x":7,"y":-101,"region_id":"tulmek-washes","land_share":0.902,"danger_band_id":"D1","danger_why":"on or beside a major road"}
+{"x":7,"y":-100,"region_id":"tulmek-washes","land_share":0.97,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":7,"y":-99,"region_id":"tulmek-washes","land_share":0.971,"danger_band_id":"D2","danger_why":"2 cells from the province's edge; moved toward Tulmek Washes's baseline D3; a minor road"}
 {"x":7,"y":-98,"region_id":"tulmek-washes","land_share":0.938,"danger_band_id":"D2","danger_why":"3 cells from the province's edge; moved toward Tulmek Washes's baseline D3; a minor road"}
 {"x":7,"y":-97,"region_id":"tulmek-washes","land_share":0.723,"danger_band_id":"D2","danger_why":"4 cells from the province's edge; a minor road"}
@@ -1861,9 +1861,9 @@
 {"x":7,"y":-69,"region_id":"chixathe-mesa","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":7,"y":-68,"region_id":"chixathe-mesa","land_share":1.0,"danger_band_id":"D2","danger_why":"6 cells from the province's edge; a minor road"}
 {"x":7,"y":-67,"region_id":"chixathe-mesa","land_share":1.0,"danger_band_id":"D3","danger_why":"5 cells from the province's edge"}
-{"x":7,"y":-66,"region_id":"chixathe-mesa","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":7,"y":-65,"region_id":"chixathe-mesa","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":7,"y":-64,"region_id":"arnesian-jungle","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
+{"x":7,"y":-66,"region_id":"chixathe-mesa","land_share":1.0,"danger_band_id":"D3","danger_why":"4 cells from the province's edge"}
+{"x":7,"y":-65,"region_id":"chixathe-mesa","land_share":1.0,"danger_band_id":"D3","danger_why":"3 cells from the province's edge; moved toward Chixathe Mesa's baseline D3"}
+{"x":7,"y":-64,"region_id":"arnesian-jungle","land_share":1.0,"danger_band_id":"D2","danger_why":"2 cells from the province's edge"}
 {"x":7,"y":-63,"region_id":"arnesian-jungle","land_share":0.998,"danger_band_id":"D2","danger_why":"1 cells from the province's edge"}
 {"x":7,"y":-62,"region_id":"arnesian-jungle","land_share":0.957,"danger_band_id":"D2","danger_why":"0 cells from the province's edge"}
 {"x":8,"y":-115,"region_id":"sea-of-mists","land_share":0.0,"danger_band_id":"D3","danger_why":"open water of Sea of Mists"}
@@ -2081,10 +2081,10 @@
 {"x":11,"y":-68,"region_id":"chixathe-mesa","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":11,"y":-67,"region_id":"chixathe-mesa","land_share":0.988,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":11,"y":-66,"region_id":"arnesian-jungle","land_share":0.807,"danger_band_id":"D2","danger_why":"4 cells from the province's edge; moved toward Arnesian Jungle's baseline D2"}
-{"x":11,"y":-65,"region_id":"arnesian-jungle","land_share":0.643,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":11,"y":-64,"region_id":"arnesian-jungle","land_share":0.566,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":11,"y":-63,"region_id":"arnesian-jungle","land_share":0.839,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":11,"y":-62,"region_id":"arnesian-jungle","land_share":0.536,"danger_band_id":"D1","danger_why":"on or beside a major road"}
+{"x":11,"y":-65,"region_id":"arnesian-jungle","land_share":0.643,"danger_band_id":"D2","danger_why":"3 cells from the province's edge"}
+{"x":11,"y":-64,"region_id":"arnesian-jungle","land_share":0.566,"danger_band_id":"D2","danger_why":"2 cells from the province's edge"}
+{"x":11,"y":-63,"region_id":"arnesian-jungle","land_share":0.839,"danger_band_id":"D2","danger_why":"1 cells from the province's edge"}
+{"x":11,"y":-62,"region_id":"arnesian-jungle","land_share":0.536,"danger_band_id":"D2","danger_why":"0 cells from the province's edge"}
 {"x":12,"y":-116,"region_id":"sea-of-mists","land_share":0.0,"danger_band_id":"D2","danger_why":"coastal water of Sea of Mists"}
 {"x":12,"y":-115,"region_id":"sea-of-mists","land_share":0.0,"danger_band_id":"D2","danger_why":"coastal water of Sea of Mists"}
 {"x":12,"y":-114,"region_id":"sea-of-mists","land_share":0.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
@@ -2136,10 +2136,10 @@
 {"x":12,"y":-68,"region_id":"chixathe-mesa","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":12,"y":-67,"region_id":"chixathe-mesa","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":12,"y":-66,"region_id":"arnesian-jungle","land_share":1.0,"danger_band_id":"D2","danger_why":"4 cells from the province's edge; moved toward Arnesian Jungle's baseline D2"}
-{"x":12,"y":-65,"region_id":"arnesian-jungle","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":12,"y":-64,"region_id":"arnesian-jungle","land_share":0.869,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":12,"y":-63,"region_id":"arnesian-jungle","land_share":0.954,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":12,"y":-62,"region_id":"arnesian-jungle","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
+{"x":12,"y":-65,"region_id":"arnesian-jungle","land_share":1.0,"danger_band_id":"D1","danger_why":"3 cells from the province's edge; a minor road"}
+{"x":12,"y":-64,"region_id":"arnesian-jungle","land_share":0.869,"danger_band_id":"D1","danger_why":"2 cells from the province's edge; a minor road"}
+{"x":12,"y":-63,"region_id":"arnesian-jungle","land_share":0.954,"danger_band_id":"D1","danger_why":"at Xuvagol"}
+{"x":12,"y":-62,"region_id":"arnesian-jungle","land_share":1.0,"danger_band_id":"D2","danger_why":"0 cells from the province's edge"}
 {"x":13,"y":-116,"region_id":"sea-of-mists","land_share":0.0,"danger_band_id":"D2","danger_why":"coastal water of Sea of Mists"}
 {"x":13,"y":-115,"region_id":"sea-of-mists","land_share":0.0,"danger_band_id":"D2","danger_why":"coastal water of Sea of Mists"}
 {"x":13,"y":-114,"region_id":"althii-archipelago","land_share":0.046,"danger_band_id":"D1","danger_why":"on or beside a major road"}
@@ -2194,7 +2194,7 @@
 {"x":13,"y":-65,"region_id":"arnesian-jungle","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":13,"y":-64,"region_id":"arnesian-jungle","land_share":0.893,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":13,"y":-63,"region_id":"arnesian-jungle","land_share":0.417,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":13,"y":-62,"region_id":"arnesian-jungle","land_share":0.627,"danger_band_id":"D1","danger_why":"on or beside a major road"}
+{"x":13,"y":-62,"region_id":"arnesian-jungle","land_share":0.627,"danger_band_id":"D2","danger_why":"0 cells from the province's edge"}
 {"x":14,"y":-116,"region_id":"sea-of-mists","land_share":0.0,"danger_band_id":"D2","danger_why":"coastal water of Sea of Mists"}
 {"x":14,"y":-115,"region_id":"sea-of-mists","land_share":0.0,"danger_band_id":"D2","danger_why":"coastal water of Sea of Mists"}
 {"x":14,"y":-114,"region_id":"althii-archipelago","land_share":0.194,"danger_band_id":"D1","danger_why":"on or beside a major road"}
@@ -2374,9 +2374,9 @@
 {"x":17,"y":-104,"region_id":"althii-archipelago","land_share":0.907,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":17,"y":-103,"region_id":"althii-archipelago","land_share":0.226,"danger_band_id":"D0","danger_why":"inside Uluo"}
 {"x":17,"y":-102,"region_id":"nushara-bayou","land_share":0.047,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":17,"y":-101,"region_id":"nushara-bayou","land_share":0.567,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":17,"y":-100,"region_id":"nushara-bayou","land_share":0.906,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":17,"y":-99,"region_id":"nushara-bayou","land_share":0.892,"danger_band_id":"D1","danger_why":"on or beside a major road"}
+{"x":17,"y":-101,"region_id":"nushara-bayou","land_share":0.567,"danger_band_id":"D2","danger_why":"8 cells from the province's edge; moved toward Nushara Bayou's baseline D2"}
+{"x":17,"y":-100,"region_id":"nushara-bayou","land_share":0.906,"danger_band_id":"D2","danger_why":"8 cells from the province's edge; moved toward Nushara Bayou's baseline D2"}
+{"x":17,"y":-99,"region_id":"nushara-bayou","land_share":0.892,"danger_band_id":"D2","danger_why":"9 cells from the province's edge; moved toward Nushara Bayou's baseline D2"}
 {"x":17,"y":-98,"region_id":"nushara-bayou","land_share":0.976,"danger_band_id":"D3","danger_why":"10 cells from the province's edge; moved toward Nushara Bayou's baseline D2"}
 {"x":17,"y":-97,"region_id":"nushara-bayou","land_share":0.856,"danger_band_id":"D3","danger_why":"10 cells from the province's edge; moved toward Nushara Bayou's baseline D2"}
 {"x":17,"y":-96,"region_id":"nushara-bayou","land_share":0.585,"danger_band_id":"D2","danger_why":"9 cells from the province's edge; moved toward Nushara Bayou's baseline D2"}
@@ -2403,9 +2403,9 @@
 {"x":17,"y":-75,"region_id":"okuwun-rahei","land_share":0.739,"danger_band_id":"D3","danger_why":"13 cells from the province's edge; moved toward Okuwun Rahei's baseline D2"}
 {"x":17,"y":-74,"region_id":"okuwun-rahei","land_share":0.849,"danger_band_id":"D2","danger_why":"12 cells from the province's edge; moved toward Okuwun Rahei's baseline D2; a minor road"}
 {"x":17,"y":-73,"region_id":"okuwun-rahei","land_share":0.981,"danger_band_id":"D3","danger_why":"11 cells from the province's edge; moved toward Okuwun Rahei's baseline D2"}
-{"x":17,"y":-72,"region_id":"chixathe-mesa","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":17,"y":-71,"region_id":"chixathe-mesa","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":17,"y":-70,"region_id":"chixathe-mesa","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
+{"x":17,"y":-72,"region_id":"chixathe-mesa","land_share":1.0,"danger_band_id":"D3","danger_why":"10 cells from the province's edge; moved toward Chixathe Mesa's baseline D3"}
+{"x":17,"y":-71,"region_id":"chixathe-mesa","land_share":1.0,"danger_band_id":"D2","danger_why":"9 cells from the province's edge; a minor road"}
+{"x":17,"y":-70,"region_id":"chixathe-mesa","land_share":1.0,"danger_band_id":"D3","danger_why":"8 cells from the province's edge"}
 {"x":17,"y":-69,"region_id":"chixathe-mesa","land_share":1.0,"danger_band_id":"D3","danger_why":"7 cells from the province's edge"}
 {"x":17,"y":-68,"region_id":"chixathe-mesa","land_share":0.958,"danger_band_id":"D3","danger_why":"6 cells from the province's edge"}
 {"x":17,"y":-67,"region_id":"arnesian-jungle","land_share":0.706,"danger_band_id":"D1","danger_why":"on or beside a major road"}
@@ -2428,10 +2428,10 @@
 {"x":18,"y":-104,"region_id":"althii-archipelago","land_share":0.985,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":18,"y":-103,"region_id":"althii-archipelago","land_share":0.988,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":18,"y":-102,"region_id":"althii-archipelago","land_share":0.158,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":18,"y":-101,"region_id":"nushara-bayou","land_share":0.861,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":18,"y":-100,"region_id":"nushara-bayou","land_share":0.82,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":18,"y":-99,"region_id":"nushara-bayou","land_share":0.962,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":18,"y":-98,"region_id":"nushara-bayou","land_share":0.814,"danger_band_id":"D1","danger_why":"on or beside a major road"}
+{"x":18,"y":-101,"region_id":"nushara-bayou","land_share":0.861,"danger_band_id":"D2","danger_why":"7 cells from the province's edge; moved toward Nushara Bayou's baseline D2"}
+{"x":18,"y":-100,"region_id":"nushara-bayou","land_share":0.82,"danger_band_id":"D1","danger_why":"at Tapauo"}
+{"x":18,"y":-99,"region_id":"nushara-bayou","land_share":0.962,"danger_band_id":"D1","danger_why":"8 cells from the province's edge; moved toward Nushara Bayou's baseline D2; a minor road"}
+{"x":18,"y":-98,"region_id":"nushara-bayou","land_share":0.814,"danger_band_id":"D2","danger_why":"9 cells from the province's edge; moved toward Nushara Bayou's baseline D2"}
 {"x":18,"y":-97,"region_id":"nushara-bayou","land_share":0.993,"danger_band_id":"D2","danger_why":"9 cells from the province's edge; moved toward Nushara Bayou's baseline D2"}
 {"x":18,"y":-96,"region_id":"nushara-bayou","land_share":1.0,"danger_band_id":"D2","danger_why":"8 cells from the province's edge; moved toward Nushara Bayou's baseline D2"}
 {"x":18,"y":-95,"region_id":"nushara-bayou","land_share":0.989,"danger_band_id":"D2","danger_why":"8 cells from the province's edge; moved toward Nushara Bayou's baseline D2"}
@@ -2456,7 +2456,7 @@
 {"x":18,"y":-76,"region_id":"okuwun-rahei","land_share":0.787,"danger_band_id":"D3","danger_why":"14 cells from the province's edge; moved toward Okuwun Rahei's baseline D2"}
 {"x":18,"y":-75,"region_id":"okuwun-rahei","land_share":0.909,"danger_band_id":"D3","danger_why":"13 cells from the province's edge; moved toward Okuwun Rahei's baseline D2"}
 {"x":18,"y":-74,"region_id":"okuwun-rahei","land_share":0.918,"danger_band_id":"D2","danger_why":"12 cells from the province's edge; moved toward Okuwun Rahei's baseline D2; a minor road"}
-{"x":18,"y":-73,"region_id":"okuwun-rahei","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
+{"x":18,"y":-73,"region_id":"okuwun-rahei","land_share":1.0,"danger_band_id":"D3","danger_why":"11 cells from the province's edge; moved toward Okuwun Rahei's baseline D2"}
 {"x":18,"y":-72,"region_id":"chixathe-mesa","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":18,"y":-71,"region_id":"chixathe-mesa","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":18,"y":-70,"region_id":"chixathe-mesa","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
@@ -2482,10 +2482,10 @@
 {"x":19,"y":-104,"region_id":"althii-archipelago","land_share":0.861,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":19,"y":-103,"region_id":"althii-archipelago","land_share":0.906,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":19,"y":-102,"region_id":"althii-archipelago","land_share":0.109,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":19,"y":-101,"region_id":"nushara-bayou","land_share":0.637,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":19,"y":-100,"region_id":"nushara-bayou","land_share":0.944,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":19,"y":-99,"region_id":"nushara-bayou","land_share":0.993,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":19,"y":-98,"region_id":"nushara-bayou","land_share":0.843,"danger_band_id":"D1","danger_why":"on or beside a major road"}
+{"x":19,"y":-101,"region_id":"nushara-bayou","land_share":0.637,"danger_band_id":"D2","danger_why":"6 cells from the province's edge; moved toward Nushara Bayou's baseline D2"}
+{"x":19,"y":-100,"region_id":"nushara-bayou","land_share":0.944,"danger_band_id":"D2","danger_why":"6 cells from the province's edge; moved toward Nushara Bayou's baseline D2"}
+{"x":19,"y":-99,"region_id":"nushara-bayou","land_share":0.993,"danger_band_id":"D1","danger_why":"7 cells from the province's edge; moved toward Nushara Bayou's baseline D2; a minor road"}
+{"x":19,"y":-98,"region_id":"nushara-bayou","land_share":0.843,"danger_band_id":"D1","danger_why":"8 cells from the province's edge; moved toward Nushara Bayou's baseline D2; a minor road"}
 {"x":19,"y":-97,"region_id":"nushara-bayou","land_share":1.0,"danger_band_id":"D1","danger_why":"8 cells from the province's edge; moved toward Nushara Bayou's baseline D2; a minor road"}
 {"x":19,"y":-96,"region_id":"nushara-bayou","land_share":1.0,"danger_band_id":"D1","danger_why":"7 cells from the province's edge; moved toward Nushara Bayou's baseline D2; a minor road"}
 {"x":19,"y":-95,"region_id":"nushara-bayou","land_share":1.0,"danger_band_id":"D1","danger_why":"7 cells from the province's edge; moved toward Nushara Bayou's baseline D2; a minor road"}
@@ -2510,7 +2510,7 @@
 {"x":19,"y":-76,"region_id":"okuwun-rahei","land_share":0.956,"danger_band_id":"D2","danger_why":"13 cells from the province's edge; moved toward Okuwun Rahei's baseline D2; a minor road"}
 {"x":19,"y":-75,"region_id":"okuwun-rahei","land_share":1.0,"danger_band_id":"D2","danger_why":"13 cells from the province's edge; moved toward Okuwun Rahei's baseline D2; a minor road"}
 {"x":19,"y":-74,"region_id":"okuwun-rahei","land_share":1.0,"danger_band_id":"D2","danger_why":"12 cells from the province's edge; moved toward Okuwun Rahei's baseline D2; a minor road"}
-{"x":19,"y":-73,"region_id":"okuwun-rahei","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
+{"x":19,"y":-73,"region_id":"okuwun-rahei","land_share":1.0,"danger_band_id":"D2","danger_why":"11 cells from the province's edge; moved toward Okuwun Rahei's baseline D2; a minor road"}
 {"x":19,"y":-72,"region_id":"chixathe-mesa","land_share":0.875,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":19,"y":-71,"region_id":"chixathe-mesa","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":19,"y":-70,"region_id":"chixathe-mesa","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
@@ -2536,10 +2536,10 @@
 {"x":20,"y":-104,"region_id":"althii-archipelago","land_share":0.968,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":20,"y":-103,"region_id":"althii-archipelago","land_share":0.716,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":20,"y":-102,"region_id":"althii-archipelago","land_share":0.152,"danger_band_id":"D2","danger_why":"5 cells from the province's edge; moved toward Althii Archipelago's baseline D2"}
-{"x":20,"y":-101,"region_id":"nushara-bayou","land_share":0.771,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":20,"y":-100,"region_id":"nushara-bayou","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":20,"y":-99,"region_id":"nushara-bayou","land_share":0.649,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":20,"y":-98,"region_id":"nushara-bayou","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
+{"x":20,"y":-101,"region_id":"nushara-bayou","land_share":0.771,"danger_band_id":"D2","danger_why":"5 cells from the province's edge; moved toward Nushara Bayou's baseline D2"}
+{"x":20,"y":-100,"region_id":"nushara-bayou","land_share":1.0,"danger_band_id":"D2","danger_why":"5 cells from the province's edge; moved toward Nushara Bayou's baseline D2"}
+{"x":20,"y":-99,"region_id":"nushara-bayou","land_share":0.649,"danger_band_id":"D2","danger_why":"6 cells from the province's edge; moved toward Nushara Bayou's baseline D2"}
+{"x":20,"y":-98,"region_id":"nushara-bayou","land_share":1.0,"danger_band_id":"D1","danger_why":"7 cells from the province's edge; moved toward Nushara Bayou's baseline D2; a minor road"}
 {"x":20,"y":-97,"region_id":"nushara-bayou","land_share":1.0,"danger_band_id":"D2","danger_why":"7 cells from the province's edge; moved toward Nushara Bayou's baseline D2"}
 {"x":20,"y":-96,"region_id":"nushara-bayou","land_share":1.0,"danger_band_id":"D2","danger_why":"6 cells from the province's edge; moved toward Nushara Bayou's baseline D2"}
 {"x":20,"y":-95,"region_id":"nushara-bayou","land_share":1.0,"danger_band_id":"D1","danger_why":"6 cells from the province's edge; moved toward Nushara Bayou's baseline D2; a minor road"}
@@ -2564,7 +2564,7 @@
 {"x":20,"y":-76,"region_id":"okuwun-rahei","land_share":1.0,"danger_band_id":"D2","danger_why":"12 cells from the province's edge; moved toward Okuwun Rahei's baseline D2; a minor road"}
 {"x":20,"y":-75,"region_id":"okuwun-rahei","land_share":0.885,"danger_band_id":"D2","danger_why":"12 cells from the province's edge; moved toward Okuwun Rahei's baseline D2; a minor road"}
 {"x":20,"y":-74,"region_id":"okuwun-rahei","land_share":0.746,"danger_band_id":"D3","danger_why":"12 cells from the province's edge; moved toward Okuwun Rahei's baseline D2"}
-{"x":20,"y":-73,"region_id":"okuwun-rahei","land_share":0.76,"danger_band_id":"D1","danger_why":"on or beside a major road"}
+{"x":20,"y":-73,"region_id":"okuwun-rahei","land_share":0.76,"danger_band_id":"D3","danger_why":"11 cells from the province's edge; moved toward Okuwun Rahei's baseline D2"}
 {"x":20,"y":-72,"region_id":"chixathe-mesa","land_share":0.916,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":20,"y":-71,"region_id":"chixathe-mesa","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":20,"y":-70,"region_id":"chixathe-mesa","land_share":0.978,"danger_band_id":"D1","danger_why":"on or beside a major road"}
@@ -2829,9 +2829,9 @@
 {"x":25,"y":-72,"region_id":"chixathe-mesa","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":25,"y":-71,"region_id":"chixathe-mesa","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":25,"y":-70,"region_id":"chixathe-mesa","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":25,"y":-69,"region_id":"chixathe-mesa","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":25,"y":-68,"region_id":"chixathe-mesa","land_share":0.858,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":25,"y":-67,"region_id":"arnesian-jungle","land_share":0.841,"danger_band_id":"D1","danger_why":"on or beside a major road"}
+{"x":25,"y":-69,"region_id":"chixathe-mesa","land_share":1.0,"danger_band_id":"D2","danger_why":"7 cells from the province's edge; a minor road"}
+{"x":25,"y":-68,"region_id":"chixathe-mesa","land_share":0.858,"danger_band_id":"D1","danger_why":"at Kalaxo Cut"}
+{"x":25,"y":-67,"region_id":"arnesian-jungle","land_share":0.841,"danger_band_id":"D1","danger_why":"5 cells from the province's edge; moved toward Arnesian Jungle's baseline D2; a minor road"}
 {"x":25,"y":-66,"region_id":"arnesian-jungle","land_share":0.981,"danger_band_id":"D1","danger_why":"4 cells from the province's edge; moved toward Arnesian Jungle's baseline D2; a minor road"}
 {"x":25,"y":-65,"region_id":"arnesian-jungle","land_share":0.768,"danger_band_id":"D2","danger_why":"3 cells from the province's edge"}
 {"x":25,"y":-64,"region_id":"arnesian-jungle","land_share":0.639,"danger_band_id":"D1","danger_why":"2 cells from the province's edge; a minor road"}
@@ -2881,14 +2881,14 @@
 {"x":26,"y":-72,"region_id":"chixathe-mesa","land_share":0.911,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":26,"y":-71,"region_id":"chixathe-mesa","land_share":0.962,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":26,"y":-70,"region_id":"chixathe-mesa","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":26,"y":-69,"region_id":"chixathe-mesa","land_share":0.999,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":26,"y":-68,"region_id":"chixathe-mesa","land_share":0.969,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":26,"y":-67,"region_id":"arnesian-jungle","land_share":0.963,"danger_band_id":"D1","danger_why":"on or beside a major road"}
+{"x":26,"y":-69,"region_id":"chixathe-mesa","land_share":0.999,"danger_band_id":"D1","danger_why":"at Ayiin"}
+{"x":26,"y":-68,"region_id":"chixathe-mesa","land_share":0.969,"danger_band_id":"D2","danger_why":"6 cells from the province's edge; a minor road"}
+{"x":26,"y":-67,"region_id":"arnesian-jungle","land_share":0.963,"danger_band_id":"D2","danger_why":"5 cells from the province's edge; moved toward Arnesian Jungle's baseline D2"}
 {"x":26,"y":-66,"region_id":"arnesian-jungle","land_share":0.793,"danger_band_id":"D1","danger_why":"4 cells from the province's edge; moved toward Arnesian Jungle's baseline D2; a minor road"}
 {"x":26,"y":-65,"region_id":"arnesian-jungle","land_share":0.954,"danger_band_id":"D1","danger_why":"at Guxal"}
 {"x":26,"y":-64,"region_id":"arnesian-jungle","land_share":0.226,"danger_band_id":"D2","danger_why":"2 cells from the province's edge"}
-{"x":26,"y":-63,"region_id":"arnesian-jungle","land_share":0.529,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":26,"y":-62,"region_id":"arnesian-jungle","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
+{"x":26,"y":-63,"region_id":"arnesian-jungle","land_share":0.529,"danger_band_id":"D1","danger_why":"1 cells from the province's edge; a minor road"}
+{"x":26,"y":-62,"region_id":"arnesian-jungle","land_share":1.0,"danger_band_id":"D1","danger_why":"0 cells from the province's edge; a minor road"}
 {"x":27,"y":-112,"region_id":"benthic-yobesh","land_share":0.0,"danger_band_id":"D3","danger_why":"open water of Benthic Yobesh"}
 {"x":27,"y":-111,"region_id":"benthic-yobesh","land_share":0.0,"danger_band_id":"D3","danger_why":"open water of Benthic Yobesh"}
 {"x":27,"y":-110,"region_id":"benthic-yobesh","land_share":0.0,"danger_band_id":"D3","danger_why":"open water of Benthic Yobesh"}
@@ -2931,21 +2931,21 @@
 {"x":27,"y":-73,"region_id":"chixathe-mesa","land_share":0.825,"danger_band_id":"D3","danger_why":"6 cells from the province's edge"}
 {"x":27,"y":-72,"region_id":"chixathe-mesa","land_share":0.996,"danger_band_id":"D3","danger_why":"6 cells from the province's edge"}
 {"x":27,"y":-71,"region_id":"chixathe-mesa","land_share":1.0,"danger_band_id":"D2","danger_why":"7 cells from the province's edge; a minor road"}
-{"x":27,"y":-70,"region_id":"chixathe-mesa","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":27,"y":-69,"region_id":"hatandros-bight","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":27,"y":-68,"region_id":"hatandros-bight","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":27,"y":-67,"region_id":"hatandros-bight","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
+{"x":27,"y":-70,"region_id":"chixathe-mesa","land_share":1.0,"danger_band_id":"D2","danger_why":"7 cells from the province's edge; a minor road"}
+{"x":27,"y":-69,"region_id":"hatandros-bight","land_share":1.0,"danger_band_id":"D1","danger_why":"6 cells from the province's edge; moved toward Hatandros Bight's baseline D2; a minor road"}
+{"x":27,"y":-68,"region_id":"hatandros-bight","land_share":1.0,"danger_band_id":"D1","danger_why":"6 cells from the province's edge; moved toward Hatandros Bight's baseline D2; a minor road"}
+{"x":27,"y":-67,"region_id":"hatandros-bight","land_share":1.0,"danger_band_id":"D2","danger_why":"5 cells from the province's edge; moved toward Hatandros Bight's baseline D2"}
 {"x":27,"y":-66,"region_id":"arnesian-jungle","land_share":0.95,"danger_band_id":"D2","danger_why":"4 cells from the province's edge; moved toward Arnesian Jungle's baseline D2"}
 {"x":27,"y":-65,"region_id":"arnesian-jungle","land_share":0.47,"danger_band_id":"D2","danger_why":"3 cells from the province's edge"}
-{"x":27,"y":-64,"region_id":"arnesian-jungle","land_share":0.362,"danger_band_id":"D2","danger_why":"2 cells from the province's edge"}
+{"x":27,"y":-64,"region_id":"arnesian-jungle","land_share":0.362,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":27,"y":-63,"region_id":"arnesian-jungle","land_share":0.836,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":27,"y":-62,"region_id":"arnesian-jungle","land_share":0.976,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":28,"y":-112,"region_id":"benthic-yobesh","land_share":0.0,"danger_band_id":"D3","danger_why":"open water of Benthic Yobesh"}
 {"x":28,"y":-111,"region_id":"benthic-yobesh","land_share":0.0,"danger_band_id":"D3","danger_why":"open water of Benthic Yobesh"}
 {"x":28,"y":-110,"region_id":"benthic-yobesh","land_share":0.0,"danger_band_id":"D3","danger_why":"open water of Benthic Yobesh"}
-{"x":28,"y":-109,"region_id":"benthic-yobesh","land_share":0.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":28,"y":-108,"region_id":"benthic-yobesh","land_share":0.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":28,"y":-107,"region_id":"benthic-yobesh","land_share":0.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
+{"x":28,"y":-109,"region_id":"benthic-yobesh","land_share":0.0,"danger_band_id":"D3","danger_why":"open water of Benthic Yobesh"}
+{"x":28,"y":-108,"region_id":"benthic-yobesh","land_share":0.0,"danger_band_id":"D3","danger_why":"open water of Benthic Yobesh"}
+{"x":28,"y":-107,"region_id":"benthic-yobesh","land_share":0.0,"danger_band_id":"D3","danger_why":"coastal water of Benthic Yobesh"}
 {"x":28,"y":-106,"region_id":"benthic-yobesh","land_share":0.0,"danger_band_id":"D3","danger_why":"coastal water of Benthic Yobesh"}
 {"x":28,"y":-105,"region_id":"benthic-yobesh","land_share":0.0,"danger_band_id":"D3","danger_why":"coastal water of Benthic Yobesh"}
 {"x":28,"y":-104,"region_id":"benthic-yobesh","land_share":0.0,"danger_band_id":"D3","danger_why":"coastal water of Benthic Yobesh"}
@@ -2983,19 +2983,19 @@
 {"x":28,"y":-72,"region_id":"chixathe-mesa","land_share":1.0,"danger_band_id":"D3","danger_why":"5 cells from the province's edge"}
 {"x":28,"y":-71,"region_id":"chixathe-mesa","land_share":1.0,"danger_band_id":"D2","danger_why":"6 cells from the province's edge; a minor road"}
 {"x":28,"y":-70,"region_id":"hatandros-bight","land_share":1.0,"danger_band_id":"D1","danger_why":"6 cells from the province's edge; moved toward Hatandros Bight's baseline D2; a minor road"}
-{"x":28,"y":-69,"region_id":"hatandros-bight","land_share":0.983,"danger_band_id":"D1","danger_why":"on or beside a major road"}
+{"x":28,"y":-69,"region_id":"hatandros-bight","land_share":0.983,"danger_band_id":"D1","danger_why":"5 cells from the province's edge; moved toward Hatandros Bight's baseline D2; a minor road"}
 {"x":28,"y":-68,"region_id":"hatandros-bight","land_share":0.912,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":28,"y":-67,"region_id":"hatandros-bight","land_share":1.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":28,"y":-66,"region_id":"hatandros-bight","land_share":0.801,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":28,"y":-65,"region_id":"hatandros-bight","land_share":0.989,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":28,"y":-64,"region_id":"arnesian-jungle","land_share":0.845,"danger_band_id":"D2","danger_why":"2 cells from the province's edge"}
+{"x":28,"y":-64,"region_id":"arnesian-jungle","land_share":0.845,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":28,"y":-63,"region_id":"arnesian-jungle","land_share":0.639,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":28,"y":-62,"region_id":"arnesian-jungle","land_share":0.853,"danger_band_id":"D1","danger_why":"on or beside a major road"}
 {"x":29,"y":-111,"region_id":"benthic-yobesh","land_share":0.0,"danger_band_id":"D3","danger_why":"open water of Benthic Yobesh"}
 {"x":29,"y":-110,"region_id":"benthic-yobesh","land_share":0.0,"danger_band_id":"D3","danger_why":"open water of Benthic Yobesh"}
-{"x":29,"y":-109,"region_id":"benthic-yobesh","land_share":0.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":29,"y":-108,"region_id":"benthic-yobesh","land_share":0.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":29,"y":-107,"region_id":"benthic-yobesh","land_share":0.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
+{"x":29,"y":-109,"region_id":"benthic-yobesh","land_share":0.0,"danger_band_id":"D3","danger_why":"open water of Benthic Yobesh"}
+{"x":29,"y":-108,"region_id":"benthic-yobesh","land_share":0.0,"danger_band_id":"D1","danger_why":"at Bell Station"}
+{"x":29,"y":-107,"region_id":"benthic-yobesh","land_share":0.0,"danger_band_id":"D3","danger_why":"open water of Benthic Yobesh"}
 {"x":29,"y":-106,"region_id":"benthic-yobesh","land_share":0.0,"danger_band_id":"D3","danger_why":"open water of Benthic Yobesh"}
 {"x":29,"y":-105,"region_id":"benthic-yobesh","land_share":0.0,"danger_band_id":"D3","danger_why":"open water of Benthic Yobesh"}
 {"x":29,"y":-104,"region_id":"benthic-yobesh","land_share":0.0,"danger_band_id":"D3","danger_why":"open water of Benthic Yobesh"}
@@ -3043,9 +3043,9 @@
 {"x":29,"y":-62,"region_id":"arnesian-jungle","land_share":0.457,"danger_band_id":"D0","danger_why":"inside Thorn"}
 {"x":30,"y":-111,"region_id":"benthic-yobesh","land_share":0.0,"danger_band_id":"D3","danger_why":"open water of Benthic Yobesh"}
 {"x":30,"y":-110,"region_id":"benthic-yobesh","land_share":0.0,"danger_band_id":"D3","danger_why":"open water of Benthic Yobesh"}
-{"x":30,"y":-109,"region_id":"benthic-yobesh","land_share":0.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":30,"y":-108,"region_id":"benthic-yobesh","land_share":0.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":30,"y":-107,"region_id":"benthic-yobesh","land_share":0.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
+{"x":30,"y":-109,"region_id":"benthic-yobesh","land_share":0.0,"danger_band_id":"D3","danger_why":"open water of Benthic Yobesh"}
+{"x":30,"y":-108,"region_id":"benthic-yobesh","land_share":0.0,"danger_band_id":"D3","danger_why":"open water of Benthic Yobesh"}
+{"x":30,"y":-107,"region_id":"benthic-yobesh","land_share":0.0,"danger_band_id":"D3","danger_why":"open water of Benthic Yobesh"}
 {"x":30,"y":-106,"region_id":"benthic-yobesh","land_share":0.0,"danger_band_id":"D3","danger_why":"open water of Benthic Yobesh"}
 {"x":30,"y":-105,"region_id":"benthic-yobesh","land_share":0.0,"danger_band_id":"D3","danger_why":"open water of Benthic Yobesh"}
 {"x":30,"y":-104,"region_id":"benthic-yobesh","land_share":0.0,"danger_band_id":"D3","danger_why":"open water of Benthic Yobesh"}
@@ -3165,9 +3165,9 @@
 {"x":32,"y":-67,"region_id":"hatandros-bight","land_share":0.333,"danger_band_id":"D2","danger_why":"0 cells from the province's edge"}
 {"x":32,"y":-66,"region_id":"hatandros-bight","land_share":0.149,"danger_band_id":"D2","danger_why":"0 cells from the province's edge"}
 {"x":32,"y":-65,"region_id":"hatandros-bight","land_share":0.101,"danger_band_id":"D2","danger_why":"0 cells from the province's edge"}
-{"x":32,"y":-64,"region_id":"padomaic-ocean","land_share":0.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":32,"y":-63,"region_id":"padomaic-ocean","land_share":0.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
-{"x":32,"y":-62,"region_id":"padomaic-ocean","land_share":0.0,"danger_band_id":"D1","danger_why":"on or beside a major road"}
+{"x":32,"y":-64,"region_id":"padomaic-ocean","land_share":0.0,"danger_band_id":"D3","danger_why":"coastal water of Padomaic Ocean"}
+{"x":32,"y":-63,"region_id":"padomaic-ocean","land_share":0.0,"danger_band_id":"D3","danger_why":"coastal water of Padomaic Ocean"}
+{"x":32,"y":-62,"region_id":"padomaic-ocean","land_share":0.0,"danger_band_id":"D3","danger_why":"coastal water of Padomaic Ocean"}
 {"x":33,"y":-91,"region_id":"padomaic-ocean","land_share":0.0,"danger_band_id":"D3","danger_why":"coastal water of Padomaic Ocean"}
 {"x":33,"y":-90,"region_id":"padomaic-ocean","land_share":0.0,"danger_band_id":"D3","danger_why":"coastal water of Padomaic Ocean"}
 {"x":33,"y":-89,"region_id":"padomaic-ocean","land_share":0.0,"danger_band_id":"D3","danger_why":"coastal water of Padomaic Ocean"}
