@@ -4,5 +4,6 @@ story/data/sources/assets/registry-bmv.jsonl
 story/data/db/place.jsonl
 story/data/db/dialogue_line.jsonl
 story/data/db/bmv_cell.jsonl
+story/data/db/bmv_shell.jsonl
 LICENSE
 LICENSE-content

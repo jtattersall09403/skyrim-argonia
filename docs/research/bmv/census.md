@@ -146,6 +146,43 @@ reachable only by a script of ours): Gallows Rock 01grock1 (1,407 refs,
 | bmv_book | 12 | each placed once |
 | bmv_settlement / _cell | 88 / 5,096 | 86 settlements, 2 sites |
 | bmv_interior_exit | 293 | |
+| bmv_shell | 1,889 | building refs in settlements' exterior cells, by `bmv_shell.py` (below) |
+
+## Shells: rooms without load doors
+
+`python3 -m tools.argonia_world.bmv_shell build` reads every STAT or SCOL ref the load order places in a
+settlement's exterior cells (83,773), keeps buildings by base model and editor id (houses, huts, towers, tents,
+ships; walkways, docks and platforms as class X) at least 200 units a side and 100 high, and measures the winning
+NAVM inside each footprint (the OBND box turned by the ref's rotation). `verify` proves every ref is a row or
+excluded with a counted reason (nature 67,979, not a building 4,079, wall 1,357, clutter 1,344, small 846, ...).
+Class A: navmesh inside joined to the street, >= 10 triangles; B: 1 to 9 joined; C: inside, not joined; D: none
+inside (441 of the 595 stand where there is no navmesh at all, `navmesh_around` false: most of Valenwood); X:
+walkway or platform. Built 2026-11-08 in 14 s.
+
+| settlement | A | B | C | D | X |
+|---|---|---|---|---|---|
+| bmv.lilmoth | 14 | 12 | 19 | 7 | 15 |
+| bmv.valenwood.eldenroot | 9 | 10 | 10 | 44 | 201 |
+| bmv.blackrose | 5 | 9 | 26 | 29 | 61 |
+| bmv.blackmarshnorth.manor (Dres village) | 5 | 7 | 0 | 2 | 2 |
+| bmv.blackmarshnorth.thorn1 (Thorn) | 4 | 15 | 38 | 12 | 16 |
+| bmv.longmont | 3 | 6 | 1 | 1 | 0 |
+| bmv.dock5 (Helstrom dock) | 3 | 1 | 2 | 4 | 25 |
+| bmv.murkwood | 2 | 1 | 1 | 40 | 115 |
+| bmv.valenwood.bosmer (Silvenar) | 2 | 10 | 1 | 15 | 56 |
+| bmv.helstrom | 1 | 3 | 10 | 7 | 0 |
+| bmv.blackmarshnorth.marsh | 1 | 4 | 2 | 8 | 0 |
+| bmv.blackmarshnorth.tear1 | 1 | 3 | 5 | 1 | 0 |
+| bmv.altenmeirhall | 0 | 3 | 19 | 1 | 3 |
+| bmv.murkmire | 0 | 4 | 1 | 34 | 5 |
+| Woodhearth, gg, Haven, Falinesti (2), Arenthia, Southpoint, town2 (no navmesh) | 0 | 0 | 14 | 304 | 158 |
+| 44 other settlements | 36 | 26 | 17 | 86 | 271 |
+| all 86 | 86 | 114 | 166 | 595 | 928 |
+
+A quest or home cites a shell by `bmv_shell.id` (the ref's form key, e.g. `0246BE:Black Marsh.esm`, Styrr's house
+shell in Lilmoth) and reads its `settlement`, `x y z`, footprint and nearest `door`; prefer class A, and a shell
+with an `owner_verdict` of the owner's walk. Navmesh is a proxy: `sunk_m` (ground above the origin; 65 A/B shells
+are over 8 m sunk or 5 m above the ground) and the class need the owner's walk before a quest leans on one.
 
 ## Mapping coverage (place_bmv 19, npc_bmv 0, faction_bmv 0)
 

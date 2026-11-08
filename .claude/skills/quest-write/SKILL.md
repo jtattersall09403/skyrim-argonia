@@ -30,6 +30,7 @@ through `python3 -m tools.argonia_world.db query "SELECT ..."` or `db show <tabl
   `../../../story/lore/`, and the province's vibe from `../../../story/design/province-vibe.md`: the quest
   adds to that vibe and must not jar against it (§4b). The old places are design intent: map each onto the BM&V place that will host the quest,
   and name that place (its cell or editor id) in `foundation`.
+- A room or home without a load door is a walk-in building from `bmv_shell` (by `settlement`, class A first), cited by its `id`.
 - **Cast:** a recurring or principal person comes from `../../../story/design/quests/36-cast-roster.md` (the
   line's desks and its argument, §56; the principal cast, §55; oddities, §58), under the rules of
   `../../../story/design/quests/35-cast.md`; a placed person is an `npc` row. A person the quest needs who

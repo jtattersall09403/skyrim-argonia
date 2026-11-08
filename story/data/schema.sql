@@ -2903,6 +2903,43 @@ CREATE TABLE "bmv_interior_exit" (
   PRIMARY KEY ("interior", "door")
 );
 
+-- Home of a building BM&V places in a settlement's exterior cells, as a room without a load door: where it stands, its
+-- footprint, and what the winning navmesh says of its inside, read by `tools/argonia_world/bmv_shell.py` (class A
+-- navmesh inside joined to the street, >= 10 triangles; B 1 to 9 joined; C inside, not joined; D none inside; X a
+-- walkway or platform; D where `navmesh_around` is false only means the place has no navmesh). `sunk_m` is the ground
+-- around it above its origin, in metres; `door` the nearest exterior load door, `door_m` how far.
+-- A quest cites a shell by its id (the ref's form key). `owner_verdict` is the owner's in-game word, kept by rebuilds.
+CREATE TABLE "bmv_shell" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "settlement" TEXT NOT NULL REFERENCES "bmv_settlement"("id"),
+  "worldspace" TEXT NOT NULL REFERENCES "bmv_worldspace"("id"),
+  "cell" TEXT NOT NULL REFERENCES "bmv_cell"("id"),
+  "base" TEXT NOT NULL,
+  "base_editor_id" TEXT,
+  "model" TEXT,
+  "x" REAL NOT NULL,
+  "y" REAL NOT NULL,
+  "z" REAL NOT NULL,
+  "rot_x" REAL NOT NULL,
+  "rot_y" REAL NOT NULL,
+  "rot_z" REAL NOT NULL,
+  "scale" REAL NOT NULL,
+  "footprint_w_m" REAL NOT NULL,
+  "footprint_d_m" REAL NOT NULL,
+  "height_m" REAL NOT NULL,
+  "class" TEXT NOT NULL CHECK ("class" IN ('A', 'B', 'C', 'D', 'X')),
+  "inner_tris" INTEGER NOT NULL CHECK ("inner_tris" >= 0),
+  "joined_tris" INTEGER NOT NULL CHECK ("joined_tris" >= 0 AND "joined_tris" <= "inner_tris"),
+  "floor_levels" INTEGER NOT NULL CHECK ("floor_levels" >= 0),
+  "ground_z" REAL,
+  "navmesh_around" BOOLEAN NOT NULL,
+  "sunk_m" REAL,
+  "navmesh" TEXT,
+  "door" TEXT REFERENCES "bmv_door"("id"),
+  "door_m" INTEGER,
+  "owner_verdict" TEXT
+);
+
 -- Home of a designed place's landing in BM&V: a settlement or a cell, or waiting when BM&V has nothing for it.
 CREATE TABLE "place_bmv" (
   "place" TEXT NOT NULL PRIMARY KEY REFERENCES "place"("id"),

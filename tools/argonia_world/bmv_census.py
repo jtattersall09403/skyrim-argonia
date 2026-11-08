@@ -34,7 +34,7 @@ MAPMARKER = "000010:Skyrim.esm"
 TABLES = ["bmv_book", "bmv_map_marker", "bmv_interior_exit", "bmv_settlement_cell", "bmv_settlement", "bmv_door",
           "bmv_placement", "bmv_npc_faction", "bmv_quest", "bmv_npc", "bmv_faction", "bmv_class", "bmv_race",
           "bmv_cell", "bmv_location", "bmv_worldspace"]
-MAPS = ["place_bmv", "npc_bmv", "faction_bmv"]   # ours, kept across a rebuild
+MAPS = ["place_bmv", "npc_bmv", "faction_bmv", "bmv_shell"]   # kept across a rebuild (bmv_shell: rerun its build)
 OLD_WORLDS = ("23D689:Black Marsh.esm", "0D6960:Black Marsh.esm")   # their settlements keep the bare bmv.<edid> ids
 LINK_GRID = 2       # named exterior cells this close (Chebyshev, in squares) are one settlement
 PREFIX_GRID = 5     # ... or this close when their editor ids share a first word (Blackrose, Blackrosemarket)
