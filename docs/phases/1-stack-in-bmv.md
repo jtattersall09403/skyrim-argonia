@@ -110,8 +110,11 @@ The owner's first walk is the whole stack *inside* Black Marsh, so the stack and
   the game reads, at every load. Fix at source: `stack.py stage` (and so `install`) refuses to run from a tree behind
   origin/main on `mods/dependencies.json` or `infra/gpu-box` (`behind_main`), so a lane can no longer lay an older
   manifest over main's. Then (1) the vanilla hop back, (2) row `truehud`'s Combined set, (3) the backstab's execution
-  driven by our plugin (above), each deployed by `stack.py install --skip-fetch` and read back on argonia-play; owner
-  checks 8.1 to 8.3.
+  driven by our plugin (above). Deployed 2026-11-08 22:07 as the three rows alone (re-staged from main's manifest and
+  pushed; the new-world lane was staging and pushing its own rows) and read back in argonia-play's Data: TrueHUD's
+  `settings.ini` sha256 bb20a2dd (directions 0/0/0, modes 1, shout 3, combined 1, width 150, min 50, max 500, X 0.045,
+  Y 0.105; no `MCM/Settings/TrueHUD.ini`), the four 80110-80140 `DodgeBack.hkx` 844248c2 (vanilla's, 13152 bytes),
+  `ArgoniaDodgeBuffer.dll` df74661e. Owner checks 8.1 to 8.3.
 - **The map.** Owner, 2026-11-07 walk: in BlackMarsh the M map shows Skyrim's Tamriel with BM&V's markers. Measured
   2026-11-08 (research lane): BM&V's four worldspaces have no parent and an all-zero MNAM (no usable map bounds; only
   the camera heights 50000 to 80000 are set), and SkyrimSE.exe's `sMapWorldDefaultWorldSpace` default is Tamriel, so
