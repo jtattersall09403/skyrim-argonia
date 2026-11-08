@@ -29,12 +29,15 @@ Grid: 40 px per Morrowind cell (8192 units); the edge labels print the absolute 
 | Step | Status |
 |---|---|
 | 0 Maps in the repo, grid calibrated (tools/newworld/frame.py) | done |
-| 1 Map key (symbols, tiers, cultures) | todo |
-| 2a Raster layers: water, land, province (raster.py); region per cell (regions.py, 24 regions, every boundary checked on the regions map) | done |
-| 2b Places read tile by tile (6 readers, 48 tiles), every read checked in circled full-size crops (1 miss added), snapped (consolidate.py): 260 symbols | in progress (labels to confirm, into the db) |
-| 2c Roads (major, minor) traced to a graph with vertices | todo |
-| 3 Place research (lore, UESP, extrapolation) | todo |
-| 3b Region research | todo |
-| 3c Danger bands, every cell | todo |
-| 4 Terrain inputs: heightmap, water level, entrance and road shaping | todo |
-| 5 Interactive map as an Artifact | todo |
+| 1 Map key (newworld/sources/key.json: 23 symbols with reasons, settlement tiers, 18 cultures) | done |
+| 2a Water, land, province (raster.py); region per cell (regions.py, 24 regions, every boundary checked on the regions map) | done |
+| 2b Places read tile by tile (6 readers, 48 tiles), checked in circled full-size crops, snapped (consolidate.py): 258 places | done |
+| 2c Roads and borders traced to a graph (roads.py) | in progress (round 2: one spurious bridge, shortcuts in squares, hidden-label joins, the south checked by eye) |
+| 3 Place research: 258 places, 9 aspects each, tiered and sourced; text-review done | done |
+| 3b Region research: 24 regions, 11 aspects and relief numbers | done |
+| 3c Danger bands, every cell (danger.py) | done (rerun with the final roads) |
+| 4 Terrain (terrain*.py): heightmap at LAND spacing, one water level, roads and place needs built in, water bodies | in progress (round 2: landforms, pads, junctions, entrances, estuaries, owner water overrides) |
+| 5 Interactive map (map_page.py), published: https://claude.ai/artifact/HytwbVPXzurvxNZWfvzo6g | in progress (republish with the final roads and terrain) |
+
+Build everything from the sources: `python3 -m tools.newworld.raster`, `tiles`, `glyphs`, `consolidate`, `regions`,
+`roads`, `terrain`, `build_db`, `map_page` (each `tools.newworld.<name>`, with the venv's python).
