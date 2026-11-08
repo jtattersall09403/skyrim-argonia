@@ -84,11 +84,18 @@ static class BlockTestCheck
         var ship = mine.Cells.SelectMany(b => b.SubBlocks).SelectMany(s => s.Cells).Single(c => c.FormKey == BlockTest.Ship);
         float Lvl(string e) => ours.Single(n => n.EditorID == e).Configuration.Level is INpcLevelGetter l ? l.Level : -1;
 
-        Console.WriteLine($"compile.log: {pexLog.Length} lines, {pexLog.Count(l => l.Contains("error", StringComparison.OrdinalIgnoreCase) && !l.Contains("0 error", StringComparison.OrdinalIgnoreCase))} error lines; pex: {string.Join(", ", new[] { "ARG_QF_BlockTest", "TIF_ARG_BT_20", "TIF_ARG_BT_40", "TIF_ARG_BT_50", "TIF_ARG_BT_90", "SF_ARG_BT_Scene" }.Select(s => s + (File.Exists(Path.Combine(pexDir, s + ".pex")) ? "" : " MISSING")))}");
-        Step(0, "quest types and completion (blocks.md E-stage rule)",
+        Console.WriteLine($"compile.log: {pexLog.Length} lines, {pexLog.Count(l => l.Contains("error", StringComparison.OrdinalIgnoreCase) && !l.Contains("0 error", StringComparison.OrdinalIgnoreCase))} error lines; pex: {string.Join(", ", new[] { "ARG_QF_BlockTest", "ARG_QF_BlockTestEnd", "TIF_ARG_BT_20", "TIF_ARG_BT_40", "TIF_ARG_BT_50", "TIF_ARG_BT_90", "SF_ARG_BT_Scene" }.Select(s => s + (File.Exists(Path.Combine(pexDir, s + ".pex")) ? "" : " MISSING")))}");
+        Step(0, "quest types and completion (blocks.md E-stage rule; Stats page)",
             ("both quests Side Quest", q.Type == Quest.TypeEnum.SideQuest && endQ.Type == Quest.TypeEnum.SideQuest),
             ("no start-up stage completes", q.Stages.Concat(endQ.Stages).All(s => !s.Flags.HasFlag(QuestStage.Flag.StartUpStage) || s.LogEntries.All(l => l.Flags?.HasFlag(QuestLogEntry.Flag.CompleteQuest) != true))),
-            ("fragment 100 stops, never CompleteQuest()", Pex("ARG_QF_BlockTest", "Stop") && !Pex("ARG_QF_BlockTest", "CompleteQuest")));
+            ("fragment 100 stops, never CompleteQuest()", Pex("ARG_QF_BlockTest", "Stop") && !Pex("ARG_QF_BlockTest", "CompleteQuest")),
+            // The Stats page (blockstudy): the engine counts "Quests Completed" for a completed Side Quest; "Side Quests
+            // Completed" is the quest's own last fragment calling AchievementsQuest.IncSideQuests(), as 21 of 23 vanilla side quests do.
+            ("both stage-100 fragments call AchievementsQuest.IncSideQuests(), then Stop()",
+                Prop("AchievementsQuest", FormKey.Factory("0FC85D:Skyrim.esm")) && Pex("ARG_QF_BlockTest", "AchievementsQuest", "IncSideQuests")
+                && endQ.VirtualMachineAdapter is { } evm && evm.Fragments.Any(f => f.Stage == 100 && f.ScriptName == "ARG_QF_BlockTestEnd" && f.FragmentName == "Fragment_100")
+                && evm.Scripts.Any(sc => sc.Name == "ARG_QF_BlockTestEnd" && sc.Properties.OfType<IScriptObjectPropertyGetter>().Any(p => p.Name == "AchievementsQuest" && p.Object.FormKey == FormKey.Factory("0FC85D:Skyrim.esm")))
+                && Pex("ARG_QF_BlockTestEnd", "Fragment_100", "IncSideQuests", "Stop") && !Pex("ARG_QF_BlockTestEnd", "CompleteQuest")));
         Step(1, "console start, aliases, persistent refs, E-move (player), E-stage, Naga removed",
             ("quest not SGE, not run-once", !q.Flags.HasFlag(Quest.Flag.StartGameEnabled) && !q.Flags.HasFlag(Quest.Flag.RunOnce) && q.Name?.String == "Block Test"),
             ("stage 10 start-up", q.Stages.Single(s => s.Index == 10).Flags.HasFlag(QuestStage.Flag.StartUpStage)),

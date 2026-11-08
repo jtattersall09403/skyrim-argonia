@@ -16,6 +16,7 @@ GlobalVariable Property Standing Auto
 Faction Property DockHands Auto
 Scene Property TalkScene Auto
 Quest Property EndQuest Auto
+AchievementsScript Property AchievementsQuest Auto ; Skyrim.esm AchievementsQuest, as vanilla side quests
 
 ; Fragment 71's guard. Papyrus runs one function at a time on this script object, and a call to another object can
 ; yield it: the check and the set below have no call between them, so they are atomic (docs/design/blocks.md).
@@ -118,8 +119,9 @@ EndFunction
 ;END FRAGMENT
 
 ;BEGIN FRAGMENT Fragment_100
-Function Fragment_100() ; the stage's Complete Quest flag completes the quest; vanilla's last fragments only Stop()
+Function Fragment_100() ; the stage's Complete Quest flag completes the quest; as vanilla side quests' last fragments (QF_MS07 Fragment_46): IncSideQuests(), then Stop()
 	EndQuest.SetStage(100)
+	AchievementsQuest.IncSideQuests()
 	Stop()
 EndFunction
 ;END FRAGMENT
