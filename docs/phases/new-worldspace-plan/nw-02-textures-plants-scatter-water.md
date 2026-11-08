@@ -62,15 +62,17 @@ Owner, 2026-11-08: the LOD is built in this phase too, before the walk (supersed
 in the game's map menu is drawn from the terrain LOD, so it is built with the LOD.
 
 How the owner gets there: the new world is its own plugin, `ArgoniaNewWorld.esm`, written by Mutagen from the
-generated data (too big for Spriggit YAML, as the old ArgoniaWorld.esm was), loaded after our plugins in the
-current BM&V game; the owner reaches it with `coc` from the console. Built artefacts live in `out/newworld/` and the
+generated data (too big for Spriggit YAML, as the old ArgoniaWorld.esm was), played from its own MO2 profile and
+Moonlight card ("Argonia: New World": the BM&V stack plus King of the Murkmire, Tropical Skyrim, Depths of Skyrim and
+the other world-asset mods, which left the stack at the pivot and the brief needs back); the BM&V card is unchanged.
+The owner reaches the world with `coc ArgoniaNWStart`. Built artefacts live in `out/newworld/` and the
 bucket, never in git.
 
 | Step | What | Status |
 |---|---|---|
 | 0 | Map quick fixes: 53 road edges major→minor by measured ink, the gap north of Gul-Tej joined, the top strip drawn from the source (1f689739); the hatched province land in the north and a 4-cell margin beyond the border join the terrain in step 4 | done |
 | 1 | Study: what to salvage from the old pipeline (research/nw-02-salvage.md) | done |
-| 2 | Study: ground, water, roads, mist rules from the game and mod files (research/nw-02-ground-water-rules.md) | in progress |
+| 2 | Study: ground, water, roads, mist rules from the game and mod files (research/nw-02-ground-water-rules.md) | done |
 | 3 | Study: flora, rocks, seabed, cliffs catalogue, seating and placement rules (research/nw-02-flora-rules.md; catalogue of 1,287 bases in out/newworld/research/) | done; KoTM, TS and Depths meshes being copied from the play machine |
 | 4 | Terrain quality: nw-01's relief against Skyrim's, the improvement pass, room for large places | in progress |
 | 5 | Water: kinds and flow inferred (tools/newworld/water_kinds.py, rerun after every terrain build), the owner's water editor in the atlas (tap a body: kind, still/flowing, speed, name, a drawn direction; paint a kind over an area; edits in the atlas's shared store, pulled by tools/newworld/water_overrides_pull.py into newworld/sources/water_overrides.json and water_paint.json), each kind's WATR in the db (water_kind: editor id, form key, flow handling; provisional until research/nw-02-ground-water-rules.md lands, from docs/research/skyrim/water-types.md and a read of the plugins) | done; WATR table to recheck against step 2 |
