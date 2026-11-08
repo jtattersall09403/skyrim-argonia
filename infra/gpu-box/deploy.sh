@@ -44,6 +44,8 @@ controls() {
   rm -rf "$t"
 }
 step "controls" controls
-step "stack on" "$run" ps 'powershell -ExecutionPolicy Bypass -File C:\argonia\infra\stack.ps1 on'
+# A child powershell's failure (stack.ps1's throw, e.g. "Data is held by ...") does not reach ssh's exit code on its
+# own: the outer shell exits 0 unless it passes $LASTEXITCODE on. Without this the deploy said OK over a failed lay.
+step "stack on" "$run" ps 'powershell -ExecutionPolicy Bypass -File C:\argonia\infra\stack.ps1 on; if ($LASTEXITCODE) { exit $LASTEXITCODE }'
 "$run" ps "Set-Content -NoNewline C:\\argonia\\state\\deployed.key '$key'" >/dev/null
 echo "DEPLOY OK in $(( SECONDS - t0 )) s"
