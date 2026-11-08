@@ -64,8 +64,13 @@ The owner's first walk is the whole stack *inside* Black Marsh, so the stack and
   `MCM/Settings/TrueHUD.ini` absent on argonia-play (searched 2026-11-08), so they hold. No health regen for the player: an ability
   `ARG_NoHealthRegen` (Value Modifier, HealRateMult -100) on the Player's base record, no script. Compass on in
   `stack.ps1`; quest markers stay off. Elden Parry's window end 0.5 s (stream delay; row `elden-parry`). The standing
-  dodge's travel (about 5.4 m in two pushes) is Dynamic Dodge's backstep clip as shipped (its AMR `animmotion`
-  annotations; our 80xxx submods are byte copies of its `StepDodgeBack.hkx`), kept. The backstab is Rim Parry's: the
+  dodge is Dynamic Dodge's backstep clip (our 80110-80140 submods lay its `StepDodgeBack.hkx`), cut to its first
+  push (owner, 2026-11-08): its AMR `animmotion` keys travel 1.86 m in 0 to 0.333 s, then 3.56 m more to 0.833 s;
+  `infra/gpu-box/backstep.py`, run at stage time on the player's own copy (row `first_push`), holds every key after
+  0.333 s at the first push's end, so it travels 1.86 m and the clip still plays whole (0.833 s). Measured
+  alternatives: the vanilla DodgeBack 2.96 m in one 0.9 s push, TK Dodge's step 4.29 m, Elder Souls' backward
+  dodge 4.97 m, Dynamic Dodge's diagonal steps 5.45 m. A dodge tapped during an attack (80210-80240) is the
+  author's back roll, 5.95 m, unchanged. The backstab is Rim Parry's: the
   light bash (block held, attack tapped) within 30 degrees of straight behind, cast through Payload Interpreter; Elden
   Parry's parry from behind does nothing because its parry only answers hits from the front. Magistrate Levitate
   (Nexus 24695, data only) laid; its Levitate is in the test kit.
