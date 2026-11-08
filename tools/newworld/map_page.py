@@ -10,8 +10,6 @@ words: ids and codes are turned into names.
 """
 from __future__ import annotations
 
-import base64
-import io
 import json
 from collections import defaultdict
 
@@ -26,21 +24,10 @@ TEMPLATE = f.REPO / "tools" / "newworld" / "map_page.html"
 SCALE = 0.5          # image layers at half the map's resolution (1760 x 1420 px): 5.9 m a pixel
 
 
-def jpeg(img: Image.Image, q: int = 82) -> str:
-    b = io.BytesIO()
-    img.convert("RGB").save(b, "JPEG", quality=q, optimize=True)
-    return "data:image/jpeg;base64," + base64.b64encode(b.getvalue()).decode()
-
-
-def png(img: Image.Image) -> str:
-    b = io.BytesIO()
-    img.save(b, "PNG", optimize=True)
-    return "data:image/png;base64," + base64.b64encode(b.getvalue()).decode()
-
-
-def terrain_image() -> tuple[Image.Image, str]:
+def terrain_image(scale: float = SCALE) -> tuple[Image.Image, str]:
     """The terrain layer at map pixels: shaded relief and water depth from the built heightmap, resampled onto the
     map frame; the masks alone when no terrain is built."""
+    SCALE = scale  # noqa: N806 (the module default, overridden for the tile pyramid)
     w, h = int(f.WIDTH_PX * SCALE), int(f.HEIGHT_PX * SCALE)
     tb = f.OUT / "terrain" / "build.json"
     water = np.asarray(Image.open(f.OUT / "raster" / "water.png").convert("L").resize((w, h))) > 127
@@ -82,20 +69,13 @@ KIND_LABEL = {"ocean": "Open sea", "shallow-coast": "Shallow coast", "bay": "Bay
               "blackwater-swamp": "Blackwater swamp"}
 
 
-def water_layer(region_names: dict) -> tuple[list, str | None]:
-    """The classified water bodies (tools/newworld/water_kinds.py) for the water editor: a compact list and an index
-    image at the page's scale (body number in red + 256 * green), for tapping and colouring bodies."""
-    js, pn = f.OUT / "water_classified.json", f.OUT / "water_classified.png"
-    if not js.exists() or not pn.exists():
-        return [], None
+def water_layer(region_names: dict) -> list:
+    """The classified water bodies (tools/newworld/water_kinds.py) for the water editor, indexed by their number in
+    the body raster (published beside the page as water_index.png at full resolution, for tapping)."""
+    js = f.OUT / "water_classified.json"
+    if not js.exists():
+        return []
     rows = json.loads(js.read_text())
-    w, h = int(f.WIDTH_PX * SCALE), int(f.HEIGHT_PX * SCALE)
-    r = np.asarray(Image.open(pn)).astype(np.int32)
-    ys = (np.arange(h) / SCALE + 0.5 / SCALE).astype(int).clip(0, r.shape[0] - 1)
-    xs = (np.arange(w) / SCALE + 0.5 / SCALE).astype(int).clip(0, r.shape[1] - 1)
-    small = r[ys][:, xs]
-    rgb = np.zeros((h, w, 3), np.uint8)
-    rgb[..., 0], rgb[..., 1] = small % 256, small // 256
     by_id = {b["id"]: b["raster_index"] for b in rows}
     out = [None] * (len(rows) + 1)
     for b in rows:
@@ -104,7 +84,7 @@ def water_layer(region_names: dict) -> tuple[list, str | None]:
                                   round(b["area_m2"] / 1e4, 2), region_names.get(b.get("region_id"), "the margin"),
                                   b["why"], by_id.get(b.get("downstream_id")), b.get("name"), b.get("set_by"),
                                   b.get("width_m")]
-    return out, png(Image.fromarray(rgb))
+    return out
 
 
 def masks_rgb(water: np.ndarray, foreign: np.ndarray) -> np.ndarray:
@@ -205,22 +185,94 @@ def simplify(pts: list, tol: float) -> list:
     return [pts[0], pts[-1]]
 
 
+TILE = 512
+TERRAIN_SCALE = 1.6        # the heightmap's own resolution: 128 units a sample against 204.8 a map pixel
+
+
+def pyramid(img: Image.Image, native: float, name: str, q: int = 80) -> dict:
+    """A tile pyramid of `img` (map pixels x `native`): 512 px WebP tiles at native, native/2, ... down to a level
+    that fits in two tiles; out/newworld/map/tiles/<name>/<level>/<col>_<row>.webp. Returns the level table the page
+    reads (scale = image px per page unit, the page working at SCALE map px a unit)."""
+    levels, cur, z = [], img, 0
+    while True:
+        levels.append(cur)
+        if max(cur.size) <= 2 * TILE:
+            break
+        cur = cur.resize((max(1, cur.width // 2), max(1, cur.height // 2)), Image.LANCZOS)
+    levels.reverse()
+    meta = []
+    for z, im in enumerate(levels):
+        d = OUT / "tiles" / name / str(z)
+        d.mkdir(parents=True, exist_ok=True)
+        cols, rows = -(-im.width // TILE), -(-im.height // TILE)
+        for c in range(cols):
+            for r in range(rows):
+                im.crop((c * TILE, r * TILE, min(im.width, (c + 1) * TILE), min(im.height, (r + 1) * TILE))) \
+                    .save(d / f"{c}_{r}.webp", "WEBP", quality=q, method=5)
+        sc = native / (2 ** (len(levels) - 1 - z)) / SCALE
+        meta.append({"z": z, "s": round(sc, 6), "c": cols, "r": rows, "w": im.width, "h": im.height})
+    return {"name": name, "tile": TILE, "levels": meta}
+
+
+def water_shapes(rows: list) -> dict:
+    """Every water body's outline traced from the full-resolution body raster (sub-pixel, lightly smoothed), in page
+    units, so the water stays crisp at any zoom: {raster index: [ring, ...]} with each ring a flat [x, y, ...]."""
+    from skimage.measure import approximate_polygon, find_contours
+    from scipy import ndimage as ndi
+    r = np.asarray(Image.open(f.OUT / "water_classified.png")).astype(np.int32)
+    out = {}
+    for k, sl in enumerate(ndi.find_objects(r), 1):
+        if sl is None:
+            continue
+        y0, x0 = max(sl[0].start - 2, 0), max(sl[1].start - 2, 0)
+        m = (r[y0:sl[0].stop + 2, x0:sl[1].stop + 2] == k).astype(np.float32)
+        m = ndi.gaussian_filter(m, 1.2)
+        rings = []
+        for c in find_contours(m, 0.5):
+            c = approximate_polygon(c, 0.25)
+            if len(c) < 3:
+                continue
+            xy = np.empty(2 * len(c))
+            xy[0::2] = (c[:, 1] + x0 + 0.5) * SCALE
+            xy[1::2] = (c[:, 0] + y0 + 0.5) * SCALE
+            rings.append(np.round(xy, 2).tolist())
+        if rings:
+            out[k] = rings
+    return out
+
+
 def main() -> None:
+    import shutil
+    Image.MAX_IMAGE_PIXELS = None
     w = db.open(f.ROOT, cache=False)
-    terr, kind = terrain_image()
-    pt = Image.open(f.BASE_MAP).convert("RGB").resize(terr.size, Image.LANCZOS)
+    if (OUT / "tiles").exists():
+        shutil.rmtree(OUT / "tiles")
+    terr, kind = terrain_image(TERRAIN_SCALE)
+    tiles = {"terrain": pyramid(terr, TERRAIN_SCALE, "terrain")}
+    pt = Image.open(f.BASE_MAP).convert("RGB")
+    tiles["pt"] = pyramid(pt, 1.0, "pt", 78)
     d = data(w)
     d["terrainKind"] = kind
-    d["size"] = list(terr.size)
+    d["size"] = [int(f.WIDTH_PX * SCALE), int(f.HEIGHT_PX * SCALE)]
+    d["tiles"] = tiles
     html = TEMPLATE.read_text()
-    wb, wimg = water_layer(d["regionNames"])
+    wb = water_layer(d["regionNames"])
     d["water"] = {"bodies": wb, "kinds": KIND_LABEL, "scale": SCALE}
-    html = html.replace("__WATERIDX__", wimg or "")
-    html = html.replace("/*__DATA__*/null", json.dumps(d, separators=(",", ":")))
-    html = html.replace("__TERRAIN__", jpeg(terr)).replace("__PTMAP__", jpeg(pt, 78))
     OUT.mkdir(parents=True, exist_ok=True)
+    if wb:
+        rows = json.loads((f.OUT / "water_classified.json").read_text())
+        (OUT / "water_shapes.json").write_text(json.dumps(water_shapes(rows), separators=(",", ":")))
+        r = np.asarray(Image.open(f.OUT / "water_classified.png")).astype(np.int32)
+        rgb = np.zeros(r.shape + (3,), np.uint8)
+        rgb[..., 0], rgb[..., 1] = r % 256, r // 256          # body number = red + 256 * green, for tapping
+        Image.fromarray(rgb).save(OUT / "water_index_rgb.png", optimize=True)
+        arrows = json.loads((f.OUT / "water_arrows.json").read_text()) if (f.OUT / "water_arrows.json").exists() else []
+        (OUT / "water_arrows.json").write_text(json.dumps(
+            [[round(x * SCALE, 1), round(y * SCALE, 1), deg, k] for x, y, deg, k in arrows], separators=(",", ":")))
+    html = html.replace("/*__DATA__*/null", json.dumps(d, separators=(",", ":")))
     (OUT / "index.html").write_text(html)
-    print(f"{OUT / 'index.html'}: {len(html) / 1e6:.1f} MB; terrain layer from {kind}")
+    files = sorted(p.relative_to(OUT).as_posix() for p in OUT.rglob("*") if p.is_file() and p.name != "index.html")
+    print(f"{OUT / 'index.html'}: {len(html) / 1e6:.1f} MB; terrain layer from {kind}; {len(files)} supporting files")
 
 
 if __name__ == "__main__":
