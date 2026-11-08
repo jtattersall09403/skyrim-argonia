@@ -49,7 +49,7 @@
 {"id":"fact.bc02.one-out","claim":"When the first comes away with the player, the fire takes the other two; only one comes out.","ord":3,"from_ref":"t3","quest_id":"quest.bc.bc02"}
 {"id":"fact.bc02.three-held","claim":"Three are held inside: a man for speaking against the heirs, a woman for a killing, and Rows-For-Another's mother on the heirs' reckoning of her Owing.","ord":1,"from_ref":"t2","quest_id":"quest.bc.bc02"}
 {"id":"fact.bc02.ways","claim":"One cell is behind a lock, one is reached by a collapsed way, one is flooded.","ord":2,"from_ref":"t3","quest_id":"quest.bc.bc02"}
-{"id":"fact.bc03.break","claim":"A crew that breaks its tokens before him is done with him.","ord":3,"from_ref":"t1","quest_id":"quest.bc.bc03"}
+{"id":"fact.bc03.break","claim":"Ussa-Rekh promised that a crew who break their tokens before him are done with him.","ord":3,"from_ref":"t1","quest_id":"quest.bc.bc03"}
 {"id":"fact.bc03.freed-and-hired","claim":"Ussa-Rekh bought out Owings for thirty years, and now hires out the crews he freed.","ord":0,"from_ref":"t1","quest_id":"quest.bc.bc03"}
 {"id":"fact.bc03.refused","claim":"Heavy-Rope's crew asked to end their last season early and were refused.","ord":2,"from_ref":"t2","quest_id":"quest.bc.bc03"}
 {"id":"fact.bc03.tokens","claim":"He keeps a crew's carved tokens in the chest beside him on the dock until their last season is worked.","ord":1,"from_ref":"t1","quest_id":"quest.bc.bc03"}

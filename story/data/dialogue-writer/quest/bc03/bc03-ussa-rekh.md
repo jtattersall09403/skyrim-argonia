@@ -26,10 +26,11 @@ Built by quest-write/brief.py from the quest record and the world records. Do no
 
 ## Topics
 ### the season (`topic.bc03-the-season`; stages [10]; not essential)
-- Intent: thirty years of buying Owings, and the crews he freed now hired out; the crew were refused
+- Intent: thirty years of buying Owings, and the crews he freed now hired out; the crew were refused; hearing it opens the-tokens and the-refusal with Heavy-Rope
 - May state:
   - `fact.bc03.freed-and-hired`: Ussa-Rekh bought out Owings for thirty years, and now hires out the crews he freed.
   - `fact.bc03.refused`: Heavy-Rope's crew asked to end their last season early and were refused.
+- Words that become topic links: topic.bc03-the-tokens, topic.bc03-brawl
 - What the player does at these stages (set it up: who, where, what danger, what they need):
   - speechcraft: interrogate (Ussa-Rekh and Heavy-Rope), in a crowd or a market
 - Directions to give: Soulrest's open dock is the long dock on the town's water, where the crews wait for hire; Ussa-Rekh keeps his chest beside him on the planks.

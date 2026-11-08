@@ -11,7 +11,7 @@
 {"quest_id":"quest.bc.bc02","ord":4,"id":"thing.bc02.zones","kind":"triggers","source":"new (TR-zone): zone.bc02.cells (inside the cells' door), zone.bc02.gate-inner (the passage behind Tsaxi)","where":"the outer post"}
 {"quest_id":"quest.bc.bc03","ord":0,"id":"thing.bc03.dock","kind":"place","source":"existing: BM&V's Dock2 (02F35A:Black Marsh.esm), Soulrest's open dock","where":"Soulrest"}
 {"quest_id":"quest.bc.bc03","ord":1,"id":"thing.bc03.cabin","kind":"place","source":"new (we.bc03.cabin, W-ref): Ussa-Rekh's chest on the dock planks beside him, on a low lock, owned by him","where":"Soulrest's dock"}
-{"quest_id":"quest.bc.bc03","ord":2,"id":"item.bc03.tokens","kind":"item","source":"new (we.bc03.cabin): a bundle of carved tokens, a MISC record, in Ussa-Rekh's chest from the start","where":"Ussa-Rekh's chest"}
+{"quest_id":"quest.bc.bc03","ord":2,"id":"item.bc03.tokens","kind":"item","source":"new (we.bc03.cabin): a bundle of carved tokens, a MISC record, in Ussa-Rekh's chest from the start; a Quest Object alias (forced ref) from stage 0, so it cannot be dropped or sold","where":"Ussa-Rekh's chest"}
 {"quest_id":"quest.bc.bc03","ord":3,"id":"thing.bc03.people","kind":"actors","source":"new (we.bc03.people, W-npc, band 0): Ussa-Rekh and Heavy-Rope on the dock among the crews","where":"Soulrest's dock"}
 {"quest_id":"quest.local.lf83","ord":0,"id":"thing.lf83.well-head","kind":"well","source":"existing: socket.claywater-station.evidence-the-cracked-well (the well, parcel.claywater-station.the-well)"}
 {"quest_id":"quest.local.lf83","ord":1,"id":"item.lf83.well-silt","kind":"item","source":"new","where":"socket.claywater-station.lf83-well-silt (under the windlass cover at the well)"}

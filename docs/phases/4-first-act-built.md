@@ -91,3 +91,14 @@ the quest is re-authored.
   and 42 to 91 (shore zone with `npcAtMark` and not `detectedBy`), MQ03 into 40 (house zone at night; and with
   `npcAlive` failing). (2) W-navmesh is unproven (Phase 3, risk 1) and MQ01 stands on `we.mq01.pier-mesh`. These stages
   go back to `quest-write` to be re-authored in proven shapes before the build.
+- **BC03 re-authored, not built (2026-11-08, hand-off).** Round-1 rulings applied to the record (`quest.bc.bc03`): the
+  tokens a Quest Object alias from stage 0 and "unseen" cut (F1); the yield split into `topic.bc03-yield-talk`
+  (Speechcraft 30, ends at 91) and `topic.bc03-yield-pay` (50 gold, new end stage 92) (F2); the side topics granted by
+  `topic.bc03-the-season` (F4); the token-breaking is Ussa-Rekh's own promise (F5); Ussa-Rekh and Heavy-Rope essential by
+  the alias flag. `brief.py` refuses a record with no fail-forward, so stage 94 and its death triggers stay wired
+  (unreachable while essential). F3 skipped. Briefs were rebuilt and both speakers' lines rewritten (Heavy-Rope 21, Ussa-Rekh 3;
+  lint 0). Fact requests: the tokens and the promise in Ussa-Rekh's season line are cut (gap QA21, not lore); the Owing
+  wording is kept, from labour-and-bondage.md §2. **Blocker found:** Dock2 (`02F35A`, 11,-2) has **no navmesh** in
+  Black Marsh.esm, Black Marsh North.esp or Valenwood.esp (`ArgoniaPlugin cell` on each), though the record says
+  it has one. The people and the chest need a navmeshed spot (another Soulrest dock cell), or the place goes back to
+  quest-write. Still to do: the text-review pass, Chainbreakers.cs, the TIF/QF Papyrus, the read-back, then BC01 and BC02.

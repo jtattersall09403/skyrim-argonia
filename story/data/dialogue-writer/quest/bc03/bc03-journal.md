@@ -10,7 +10,7 @@ chain; directions in landmark prose; failure entries flat, with the consequence.
 - The player knows: fact.bc03.freed-and-hired, fact.bc03.refused
 
 ## Stage 20 (`text.journal.bc03.20`)
-- Draft: I stood with Heavy-Rope's crew on Soulrest's open dock. Ussa-Rekh keeps their carved tokens in the chest beside him on the dock, and a crew that breaks its tokens before him is done with him. I'm to take the tokens from the chest unseen and give them to Heavy-Rope.
+- Draft: I stood with Heavy-Rope's crew on Soulrest's open dock. Ussa-Rekh keeps their carved tokens in the chest beside him on the dock, and he promised that a crew who break their tokens before him are done with him. I'm to take the tokens from the chest and give them to Heavy-Rope.
 - Directions: Ussa-Rekh's chest stands on the planks beside him, on a low lock.
 - The player knows: fact.bc03.freed-and-hired, fact.bc03.refused, fact.bc03.tokens, fact.bc03.break
 
@@ -24,7 +24,11 @@ chain; directions in landmark prose; failure entries flat, with the consequence.
 - The player knows: fact.bc03.freed-and-hired, fact.bc03.refused, fact.bc03.tokens, fact.bc03.break, fact.bc03.refused
 
 ## Stage 91 (`text.journal.bc03.91`) ending: complete
-- Draft: On Soulrest's open dock the broker Ussa-Rekh, who bought out Owings for thirty years and hires out the crews he freed, refused to let Heavy-Rope's crew end their last season early. I stood with Ussa-Rekh and settled Heavy-Rope. The crew will work their last season under him.
+- Draft: On Soulrest's open dock the broker Ussa-Rekh, who bought out Owings for thirty years and hires out the crews he freed, refused to let Heavy-Rope's crew end their last season early. I stood with Ussa-Rekh and talked Heavy-Rope into taking the refusal. The crew will work their last season under him.
+- The player knows: fact.bc03.freed-and-hired, fact.bc03.refused, fact.bc03.tokens, fact.bc03.break, fact.bc03.refused
+
+## Stage 92 (`text.journal.bc03.92`) ending: complete
+- Draft: On Soulrest's open dock the broker Ussa-Rekh, who bought out Owings for thirty years and hires out the crews he freed, refused to let Heavy-Rope's crew end their last season early. I stood with Ussa-Rekh and paid Heavy-Rope's crew 50 gold to take the refusal. The crew will work their last season under him.
 - The player knows: fact.bc03.freed-and-hired, fact.bc03.refused, fact.bc03.tokens, fact.bc03.break, fact.bc03.refused
 
 ## Stage 94 (`text.journal.bc03.94`) ending: complete

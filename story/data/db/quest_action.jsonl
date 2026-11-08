@@ -9,9 +9,8 @@
 {"quest_id":"quest.bc.bc02","stages_ord":1,"ord":2,"skill":"swimming","use":"swim","setting":"in a flooded ruin, root-cave or under water","note":"the cell is under water to the ceiling","target":"the flooded cell of Keeps-The-Old-Count"}
 {"quest_id":"quest.bc.bc03","stages_ord":0,"ord":0,"skill":"speechcraft","use":"interrogate","setting":"in a crowd or a market","note":"each tells it his way; the player takes one side","target":"Ussa-Rekh and Heavy-Rope"}
 {"quest_id":"quest.bc.bc03","stages_ord":1,"ord":0,"skill":"lockpicking","use":"open-a-strongbox","setting":"in a crowd or a market","note":"a low lock","target":"Ussa-Rekh's chest"}
-{"quest_id":"quest.bc.bc03","stages_ord":1,"ord":1,"skill":"sneak","use":"steal","setting":"in a crowd or a market","note":"taken while Ussa-Rekh looks away","target":"the crew's tokens"}
-{"quest_id":"quest.bc.bc03","stages_ord":2,"ord":0,"skill":"speechcraft","use":"persuade","setting":"in a crowd or a market","note":"a persuasion check on topic.bc03-yield","target":"Heavy-Rope"}
-{"quest_id":"quest.bc.bc03","stages_ord":2,"ord":1,"skill":"mercantile","use":"bribe","setting":"in a crowd or a market","note":"50 gold to the crew on topic.bc03-yield","target":"Heavy-Rope"}
+{"quest_id":"quest.bc.bc03","stages_ord":2,"ord":0,"skill":"speechcraft","use":"persuade","setting":"in a crowd or a market","note":"Speechcraft 30 on topic.bc03-yield-talk","target":"Heavy-Rope"}
+{"quest_id":"quest.bc.bc03","stages_ord":2,"ord":1,"skill":"mercantile","use":"bribe","setting":"in a crowd or a market","note":"50 gold to the crew on topic.bc03-yield-pay","target":"Heavy-Rope"}
 {"quest_id":"quest.local.lh38","stages_ord":2,"ord":0,"skill":"swimming","use":"swim","setting":"in a flooded ruin, root-cave or under water","note":"one breath; alteration: water-breathe also serves"}
 {"quest_id":"quest.local.lh38","stages_ord":2,"ord":1,"skill":"illusion","use":"light-a-dark-place","note":"optional: a torch will not burn underwater"}
 {"quest_id":"quest.local.lq25","stages_ord":0,"ord":0,"skill":"oneHanded","use":"fight","setting":"in a flooded ruin, root-cave or under water","note":"the crocodile is fought in its lair by the pilings","target":"a crocodile (fixed level, band 1)"}

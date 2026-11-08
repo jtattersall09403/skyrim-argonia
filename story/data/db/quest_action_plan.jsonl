@@ -10,9 +10,8 @@
 {"quest_id":"quest.bc.bc02","ord":4,"skill":"swimming","use":"swim","reason":"the third cell is flooded"}
 {"quest_id":"quest.bc.bc03","ord":0,"skill":"speechcraft","use":"interrogate","reason":"the player hears both sides on the dock"}
 {"quest_id":"quest.bc.bc03","ord":1,"skill":"lockpicking","use":"open-a-strongbox","reason":"the tokens' chest on the dock is on a low lock"}
-{"quest_id":"quest.bc.bc03","ord":2,"skill":"sneak","use":"steal","reason":"the tokens are taken unseen"}
-{"quest_id":"quest.bc.bc03","ord":3,"skill":"speechcraft","use":"persuade","reason":"Heavy-Rope is talked into taking the refusal"}
-{"quest_id":"quest.bc.bc03","ord":4,"skill":"mercantile","use":"bribe","reason":"or the crew are paid to take it"}
+{"quest_id":"quest.bc.bc03","ord":2,"skill":"speechcraft","use":"persuade","reason":"Heavy-Rope is talked into taking the refusal"}
+{"quest_id":"quest.bc.bc03","ord":3,"skill":"mercantile","use":"bribe","reason":"or the crew are paid to take it"}
 {"quest_id":"quest.local.lf83","ord":0,"skill":"spear","use":"hunt","reason":"a crocodile has taken the deep pool under the clay cut below the ford, where the landing digs its plaster clay; the landing will not dig until it is dead"}
 {"quest_id":"quest.local.lf83","ord":1,"skill":"marksman","use":"snipe","reason":"or shoot it from the station's wall above the cut when it suns"}
 {"quest_id":"quest.local.lf83","ord":2,"skill":"speechcraft","use":"present-evidence","reason":"each keeper's objections are answered with what the player found (the cracked and re-mortared head, the silt, the ledger, the doubter's word) or by persuasion"}
