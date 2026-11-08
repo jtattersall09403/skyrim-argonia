@@ -157,14 +157,14 @@ the quest is re-authored.
   `plugin.sh mqcheck` (`MQCheck.cs`): 10 of 11 stages PASS; MQ05 20 FAILS, waiting on `ARG_NeshDeekaRef` from the
   MQ01/MQ03 lane (her topic is left out until that ref exists). MQ04 10 is set by MQ03 (that lane).
 - **MQ01 and MQ03 built (2026-11-08, `tools/ArgoniaPlugin/MainQuest.cs`, read-back `plugin.sh mainquestcheck`):**
-  465 of 465 checks pass from the seed's ESP (through Spriggit YAML and back) and the .pex (50 of 50 compiled on the GPU
+  476 of 476 checks pass from the seed's ESP (through Spriggit YAML and back) and the .pex (67 of 67 compiled on the GPU
   box, 13 new: `ARG_QF_MQ01`, `ARG_QF_MQ03`, 11 TIF). MQ101's override starts `ARG_MQ01` at a marker in the barge hold
   (0F9178, its 'Dainty Sload' location cleared); `ARG_MQ01` runs character creation, then 10; `ARG_Opening` keeps its forms,
   has no script and nothing starts it. 23 people (march copies on Dock1's navmesh 079823, the camp on 07990E at the
   paddy edge, -3750,1300; deep water west of -4400), 18 lines in 13 topics from `story/data/quest_lines/mq01.json` and
   `mq03.json` (the seven `*.lines.txt` normalised into these two, words band, no listener variants; reader pass: 9
-  rewrites applied, 7 declined as against the record's facts). MQ03's endings start `ARG_MQ04` at 10 when it is in the
-  plugin (absent now); BM&V's 01Captain and Valenwood's two start quests are held back and started by MQ03's endings.
+  rewrites applied, 7 declined as against the record's facts). MQ03's endings start `ARG_MQ04` at 10 (looked up by editor id at the
+  seed's end; checked); BM&V's 01Captain and Valenwood's two start quests are held back and started by MQ03's endings.
   **Re-authored to blocks:** the three scenes have no written lines, so the march ends at a fire zone (10 to 40, the march
   packages read the answer's global), the strike is stage 40's fragment (the courier killed, the two moved), and the dream
   ends at a zone at the hold door (40 to a hidden 45, which sets 90 or 91 on the sworn global); the taste is a hidden
@@ -174,4 +174,5 @@ the quest is re-authored.
   **Fact questions answered:** Ties needs the tag or Speech 25 (the record's stage-20 action); the player knows
   Wuleen-Sei from MQ01; Salts-The-Catch keeps the house (t3, QA8); the boat goes when the player says so; no figure for
   the food months (labour-and-bondage §2 gives none); Ux-Xeek never reads the blank line. The house (0FE7F7) has no
-  navmesh where its rooms are; its people stand 10 units over the tilted floor. Owed: the owner's walk from a new game.
+  navmesh where its rooms are; its people stand 10 units over the tilted floor. Open: MQ05 looks `ARG_NeshDeekaRef` up before MainQuest allocates it, so its stage-10 topic is still left out; its lookup
+  should move to a hook after `MainQuest.Add` (the MQ05 lane). Owed: the owner's walk from a new game.
