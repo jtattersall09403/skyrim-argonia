@@ -746,6 +746,14 @@ def _row(args):
     return cy, out, dict(tally)
 
 
+def dropped_by_region(P: Palette) -> dict:
+    """Per region: distinct db bases in its region_flora rows, and how many were dropped (unresolved model, ...)."""
+    rows = defaultdict(set)
+    for r in jsonl("region_flora"):
+        rows[r["region_id"]].add(r["flora_base_id"])
+    return {g: {"bases": len(b), "dropped": len(b - P.usable), "kept": len(b & P.usable)} for g, b in sorted(rows.items())}
+
+
 def key() -> str:
     h = hashlib.sha256()
     for p in [Path(__file__), LC / "legend.json", MANIFEST, *sorted(DB.glob("flora_*.jsonl")), DB / "region_flora.jsonl",
@@ -818,7 +826,8 @@ def run(force: bool = False, workers: int = 3) -> dict:
            "per_cell_natural": {"p50": float(np.percentile(counts, 50)), "p99": float(np.percentile(counts, 99)),
                                 "max": int(counts.max()), "p50_nonempty": float(np.percentile(land, 50)) if len(land) else 0,
                                 "vanilla": {"p95": 83, "max": 162}},
-           "skipped_bases": {k2: v for k2, v in P.skipped.items()}, "tally": dict(sorted(tally.items()))}
+           "skipped_bases": {k2: v for k2, v in P.skipped.items()},
+           "region_flora_dropped": dropped_by_region(P), "tally": dict(sorted(tally.items()))}
     mpath.write_text(json.dumps(man, indent=1))
     log(f"{total} refs in {len(rows)} shards, {len(used)} bases, {man['seconds']} s")
     return man
