@@ -2,10 +2,10 @@
 //   waterblend study <Data dir>     Tamriel's adjacent-cell water types (XCWT) in Skyrim.esm + Update.esm: which
 //                                   records neighbour each other and how far their colours and fog step at a seam.
 // The writer (NewWorld.cs) calls Blend: each water cell's type becomes a weighted mix of the types of the cells
-// round it (a 13 x 13 tent; types that differ only in flow count as one look), so where kinds change the colour, fog and reflection step across a
+// round it (a 29 x 29 tent; types that differ only in flow count as one look), so where kinds change the colour, fog and reflection step across a
 // band of cells instead of at one cell edge. A mix is our own WATR record: a copy of the cell's own type (its
 // textures, flow velocity and flags) with every colour and every scalar water/fog value interpolated by the weights.
-// Weights are quantised to twelfths so equal mixes share a record. Skyrim's own answer (waterblend study): 96% of
+// Weights are quantised to 32nds so equal mixes share a record. Skyrim's own answer (waterblend study): 96% of
 // Tamriel's seams join types of one look (sea, river and flow-blend records share colours), the rest step hard.
 using System.Drawing;
 using System.Reflection;
@@ -18,8 +18,8 @@ using Noggog;
 
 static class WaterBlend
 {
-    const int R = 6;                          // band half-width in cells: a seam is graded over 2 R + 1 cells
-    const int Q = 12;                         // weights in twelfths
+    const int R = 14;                         // band half-width in cells: a seam is graded over 2 R + 1 cells
+    const int Q = 32;                         // weights in 32nds
     static readonly Dictionary<string, double> scale = new();   // each fog value's largest size among the types
 
     // the interpolated members: every colour, the opacity and every scalar value (fog, specular, reflection,
@@ -133,20 +133,34 @@ static class WaterBlend
             outMap[(cx, cy)] = m.fk;
             eff[(cx, cy)] = m.w;
         }
-        double before = 0, after = 0, fogBefore = 0, fogAfter = 0;
+        double before = 0, fogBefore = 0, fogAfter = 0;
+        var steps = new List<double>();       // the colour step at every edge (side or corner) between two water cells
+        var stepsBefore = new List<double>();
+        (int, int) at = default; double after = -1;
         foreach (var ((cx, cy), own) in cells)
             foreach (var (dx, dy) in new[] { (1, 0), (0, 1), (1, 1), (1, -1) })
                 if (cells.TryGetValue((cx + dx, cy + dy), out var nb))
                 {
-                    before = Math.Max(before, Delta(recs[own], recs[nb]));
+                    var b0 = Delta(recs[own], recs[nb]);
+                    before = Math.Max(before, b0); stepsBefore.Add(b0);
                     fogBefore = Math.Max(fogBefore, FogDelta(recs[own], recs[nb]));
-                    after = Math.Max(after, Delta(eff[(cx, cy)], eff[(cx + dx, cy + dy)]));
+                    var a = Delta(eff[(cx, cy)], eff[(cx + dx, cy + dy)]);
+                    steps.Add(a);
+                    if (a > after) { after = a; at = (cx, cy); }
                     fogAfter = Math.Max(fogAfter, FogDelta(eff[(cx, cy)], eff[(cx + dx, cy + dy)]));
                 }
+        steps.Sort(); stepsBefore.Sort();
+        var changed = steps.Where(x => x > 0).ToList();
+        var changedBefore = stepsBefore.Where(x => x > 0).ToList();
+        double Pct(List<double> l, double q) => l.Count == 0 ? 0 : l[Math.Min(l.Count - 1, (int)(q * l.Count))];
         var report = new Dictionary<string, object>
         {
             ["looks"] = rep.Count, ["blend_records"] = made.Count, ["water_cells"] = cells.Count, ["band_cells"] = 2 * R + 1,
-            ["max_colour_step_before"] = before, ["max_colour_step_after"] = after,
+            ["max_colour_step_before"] = before, ["max_colour_step_after"] = after, ["max_at_cell"] = new[] { at.Item1, at.Item2 },
+            ["edges"] = steps.Count, ["edges_changing_before"] = changedBefore.Count, ["edges_changing_after"] = changed.Count,
+            ["step_p50_p99_before"] = new[] { Pct(changedBefore, .5), Pct(changedBefore, .99) },
+            ["step_p50_p99_after"] = new[] { Pct(changed, .5), Pct(changed, .99) },
+            ["edges_over_12_after"] = changed.Count(x => x > 12),
             ["max_fog_step_before"] = Math.Round(fogBefore, 3), ["max_fog_step_after"] = Math.Round(fogAfter, 3),
         };
         return (outMap, report);

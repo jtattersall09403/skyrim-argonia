@@ -435,6 +435,7 @@ def pools_and_mouths(raster, rows, dist) -> None:
 WET = ("green-marsh", "blackwater-swamp")
 FRINGE_M2 = 20_000                 # a fringe network is under 2 ha (measured: the largest on the 2026-11-09 map is 1.5 ha)
 HELSTROM_REGIONS = ("murkwood",)   # the Hist forest round Helstrom (region table)
+TRIB_SHARE = 0.12                  # Helstrom's streams: the largest 12% of tributary systems stay stream
 MAIN_W_M, MAIN_LEN_M = 50, 1500    # Helstrom's main courses: 50 m wide or more along 1.5 km of centreline
 
 
@@ -485,7 +486,8 @@ def helstrom_rivers(raster, rows, regions, names) -> dict:
     them, and squiggly marsh. Width is measured along each river's centreline (twice the distance to the bank,
     smoothed over ~60 m, a braided reach measured whole with its islands) and given to every pixel from its nearest centreline point; a main course is river 50 m wide
     or more along at least 1.5 km of centreline, and a narrower reach up to 1 km that joins two main
-    courses. The owner's edit on a body here keeps its name and flow; its kind
+    courses. Then the streams: of the region's tributary systems (connected stream water) the largest 12% by area stay
+    stream and the rest become green marsh. The owner's edit on a body here keeps its name and flow; its kind
     stays river on the main courses (its point stays inside one) and the narrower arms become marsh."""
     from skimage.morphology import skeletonize
     codes = [names.index(x) for x in HELSTROM_REGIONS if x in names]
@@ -540,7 +542,37 @@ def helstrom_rivers(raster, rows, regions, names) -> dict:
                 by_i[new["raster_index"]] = new
             elif r["kind"] == "green-marsh":
                 r["set_by"] = "derived"
-    return {"river_m2_kept": round(kept), "river_m2_to_marsh": round(moved)}
+    # the streams: a few principal tributaries stay, the rest is marsh. A tributary is one connected stream system
+    # in the region (bodies joined by touching); it is ranked by its area (width x length); the top share by count
+    # stays stream, at least one per river system it feeds.
+    kind_of = np.array(["land"] + [r["kind"] for r in rows])
+    own = np.array([False] + [r["set_by"] == "owner" for r in rows])
+    st = (kind_of[raster] == "stream") & np.isin(regions, codes) & ~own[raster]
+    lab, n = ndi.label(st, EIGHT)
+    s_kept = s_moved = 0
+    if n:
+        area = ndi.sum(st, lab, np.arange(1, n + 1))
+        keep_n = max(1, int(round(TRIB_SHARE * n)))
+        keep = set((np.argsort(-area)[:keep_n] + 1).tolist())
+        for j, sl in enumerate(ndi.find_objects(lab), 1):
+            part = np.zeros(raster.shape, bool)
+            part[sl] = lab[sl] == j
+            if j in keep:
+                s_kept += 1
+                continue
+            s_moved += 1
+            for i in np.unique(raster[part]).tolist():
+                r = by_i.get(i)
+                if r is None or r["set_by"] == "owner":
+                    continue
+                new = carve(raster, rows, r, part & (raster == i), "green-marsh",
+                            "round Helstrom only a few principal tributaries stay stream: a lesser one, green marsh", dist)
+                if new is not None:
+                    new["set_by"] = "derived"
+                    new.pop("name", None)
+                    by_i[new["raster_index"]] = new
+    return {"river_m2_kept": round(kept), "river_m2_to_marsh": round(moved), "tributaries": n,
+            "tributaries_kept": s_kept, "tributaries_to_marsh": s_moved}
 
 
 def no_sea_still(raster, rows, rchar) -> int:
