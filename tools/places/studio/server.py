@@ -12,8 +12,6 @@ import os
 import platform
 import re
 import subprocess
-import sys
-from datetime import datetime, timezone
 from pathlib import Path
 
 import warnings
@@ -142,21 +140,24 @@ async def bundle_file(req: web.Request) -> web.StreamResponse:
 
 # ---- assets and search -----------------------------------------------------------------------------------------
 
-async def asset(req: web.Request, kind: str, args: tuple) -> web.StreamResponse:
+async def asset(req: web.Request, kind: str, args: tuple, cache: str = "public, max-age=86400"):
+    """Lane A converts synchronously (a cold mesh is under a second), off the event loop."""
     try:
         p = await asyncio.get_running_loop().run_in_executor(None, links.asset, kind, *args)
-    except links.Missing as e:
-        return jerr(503, f"the asset converter is not built yet ({e})")
     except FileNotFoundError as e:
         return jerr(404, str(e))
-    if p is None:
-        return jok({"state": "converting"}, status=202, headers={"Retry-After": "2"})
-    return await send_file(req, p, cache="public, max-age=86400")
+    if p is None or not p.exists():
+        return jerr(404, f"no such {kind}")
+    return await send_file(req, p, cache=cache)
 
 
 async def asset_mesh(req: web.Request):
-    m = req.query.get("model")
-    return await asset(req, "mesh", (m,)) if m else jerr(400, "model= is required")
+    m, lv = req.query.get("model"), req.query.get("level", "0")
+    if not m:
+        return jerr(400, "model= is required")
+    if lv not in ("0", "1"):
+        return jerr(400, "level is 0 or 1")
+    return await asset(req, "mesh", (m, int(lv)))
 
 
 async def asset_tex(req: web.Request):
@@ -167,12 +168,22 @@ async def asset_tex(req: web.Request):
         size = int(req.query.get("size", "512"))
     except ValueError:
         return jerr(400, "size must be a number")
-    return await asset(req, "tex", (p, size))
+    return await asset(req, "tex", (p, size), cache="public, max-age=2592000, immutable")
 
 
 async def asset_thumb(req: web.Request):
     m = req.query.get("model")
     return await asset(req, "thumb", (m,)) if m else jerr(400, "model= is required")
+
+
+async def asset_land(req: web.Request):
+    return await asset(req, "land", (), cache="no-cache")
+
+
+async def asset_land_file(req: web.Request):
+    t = await asyncio.get_running_loop().run_in_executor(None, links.asset, "land")
+    p = inside(t.parent, req.match_info["file"]) if t else None
+    return await send_file(req, p, cache="public, max-age=86400") if p else jerr(404, "no such land texture")
 
 
 async def search(req: web.Request) -> web.Response:
@@ -304,7 +315,6 @@ async def bucket_worker(app: web.Application) -> None:
 # ---- finalise and runs -----------------------------------------------------------------------------------------
 
 async def finalise(req: web.Request) -> web.Response:
-    cfg: Config = req.app["cfg"]
     pid = req.match_info["place_id"]
     try:
         body = await req.json()
@@ -315,58 +325,31 @@ async def finalise(req: web.Request) -> web.Response:
         return jerr(400, "finalise needs the save_id of a named save")
     if not req.app["saves"].read(pid, sid):
         return jerr(404, "no such save")
-    run_id = f"{pid}-{datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')}"
-    rdir = cfg.out / "runs" / run_id
-    if rdir.exists():
-        return jerr(409, "a finalise started this second; try again")
-    job = f"places-finalise-{run_id}"
-    atomic_write(rdir / "run.json", json.dumps({"run_id": run_id, "place_id": pid, "save_id": sid, "job": job,
-                                                "at": datetime.now(timezone.utc).isoformat()}).encode())
-    cmd = [str(ROOT / "tooling" / "job_guard.sh"), "run", job, "--", "env", f"ARGONIA_RUN_ID={run_id}",
-           sys.executable, "-m", "tools.places", "finalise", pid, sid]
-    r = await asyncio.create_subprocess_exec(*cmd, cwd=ROOT, stdout=asyncio.subprocess.PIPE,
-                                             stderr=asyncio.subprocess.STDOUT)
-    out, _ = await r.communicate()
-    if r.returncode:
-        return jerr(500, "could not start the finalise job", log=out.decode(errors="replace")[-500:])
+    run_id = await asyncio.get_running_loop().run_in_executor(None, links.run_start, pid, sid)
     return jok({"run_id": run_id}, status=202)
 
 
-def tail(p: Path, n: int = 40) -> str:
-    if not p.exists():
-        return ""
-    with p.open("rb") as f:
-        f.seek(max(0, p.stat().st_size - 16384))
-        return b"\n".join(f.read().splitlines()[-n:]).decode(errors="replace")
-
-
 async def run_get(req: web.Request) -> web.Response:
+    """The contract's {run_id, save_id, state, step, rc, log, report} over lane F's read_run (kept whole beside)."""
     cfg: Config = req.app["cfg"]
-    rid = req.match_info["run_id"]
-    if not RUN_ID.match(rid):
-        return jerr(400, "bad run id")
-    rdir = cfg.out / "runs" / rid
-    if not (rdir / "run.json").exists():
-        return jerr(404, "no such run")
-    run = json.loads((rdir / "run.json").read_text())
-    if run.get("place_id") != req.match_info["place_id"]:
+    rid, pid = req.match_info["run_id"], req.match_info["place_id"]
+    if not RUN_ID.match(rid) or not rid.startswith(pid + "."):
         return jerr(404, "no such run for this place")
-    job = run["job"]
-    st = json.loads((rdir / "state.json").read_text()) if (rdir / "state.json").exists() else {}
-    alive = False
-    try:
-        os.kill(int((cfg.jobs / f"{job}.pid").read_text().strip()), 0)
-        alive = True
-    except (OSError, ValueError):
-        pass
-    rc = (cfg.jobs / f"{job}.rc").read_text().strip() if (cfg.jobs / f"{job}.rc").exists() else None
-    state = st.get("state") or ("running" if alive else "done" if rc == "0" else "failed" if rc else "starting")
-    if not alive and rc is not None and state == "running":
+    rdir = cfg.out / "runs" / rid
+    job = cfg.jobs / f"finalise.{rid}"
+    pidf, rcf = Path(f"{job}.pid"), Path(f"{job}.rc")
+    if not rdir.exists() and not pidf.exists():
+        return jerr(404, "no such run")
+    st = await asyncio.get_running_loop().run_in_executor(None, links.run_read, rdir)
+    rc = rcf.read_text().strip() if rcf.exists() else None
+    state = st.get("state")
+    if state in (None, "queued"):
+        state = "starting" if rc is None else ("done" if rc == "0" else "failed")
+    elif state == "running" and rc is not None:
         state = "done" if rc == "0" else "failed"
-    report = rdir / "report.md"
-    return jok({"run_id": rid, "save_id": run["save_id"], "state": state, "step": st.get("step"), "rc": rc,
-                "log": tail(cfg.jobs / f"{job}.log"),
-                "report": report.read_text(encoding="utf-8") if report.exists() else None})
+    return jok(st | {"run_id": rid, "save_id": st.get("save_id") or rid[len(pid) + 1:], "state": state,
+                     "step": st.get("step"), "rc": rc, "log": "\n".join(st.get("log_tail") or []),
+                     "report": st.get("report_md")})
 
 
 # ---- seat, heartbeat, status --------------------------------------------------------------------------------------
@@ -381,8 +364,6 @@ async def seat(req: web.Request) -> web.Response:
     try:
         r = await asyncio.get_running_loop().run_in_executor(None, links.seat_at, pid, x, y, cfg.out / "bundles",
                                                              cfg.places)
-    except links.Missing as e:
-        return jerr(503, f"seating is not built yet ({e})")
     except FileNotFoundError as e:
         return jerr(404, str(e))
     return jok(r)
@@ -407,8 +388,6 @@ async def status(req: web.Request) -> web.Response:
     from tools.places.search.index import Index
     try:
         g = await asyncio.get_running_loop().run_in_executor(None, links.ground_status)
-    except links.Missing as e:
-        g = {"ground_sha": None, "deployed_sha": None, "match": None, "error": f"not built yet ({e})"}
     except Exception as e:  # the check failing is itself the answer the studio shows
         g = {"ground_sha": None, "deployed_sha": None, "match": False, "error": str(e)[:300]}
     ix = Index.open(req.app["cfg"].out / "search")
@@ -438,7 +417,16 @@ async def errors(req: web.Request, handler):
         raise
 
 
+def warm_search(out: Path) -> None:
+    """Load the index and the model at start, so the first query is as fast as the rest."""
+    from tools.places.search.index import Index
+    ix = Index.open(out / "search")
+    if ix.rows:
+        ix.embed(["warm"])
+
+
 async def on_start(app: web.Application) -> None:
+    asyncio.get_running_loop().run_in_executor(None, warm_search, app["cfg"].out)
     app["tasks"] = [asyncio.create_task(commit_worker(app))]
     if app["cfg"].bucket:
         app["tasks"].append(asyncio.create_task(bucket_worker(app)))
@@ -462,6 +450,8 @@ def make_app(cfg: Config | None = None) -> web.Application:
     r.add_get("/api/asset/mesh", asset_mesh)
     r.add_get("/api/asset/tex", asset_tex)
     r.add_get("/api/asset/thumb", asset_thumb)
+    r.add_get("/api/asset/land", asset_land)
+    r.add_get("/api/asset/land/{file:.+}", asset_land_file)
     r.add_get("/api/search", search)
     r.add_get("/api/place/{place_id}/saves", saves_list)
     r.add_get("/api/place/{place_id}/saves/{save_id}", save_get)

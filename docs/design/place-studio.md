@@ -149,7 +149,8 @@ spaces/<space_id>/space.json     interiors: {copy_of: "<source_id>/<space_id>"};
 clear.jsonl            world plants and scatter switched off: {base, pos, by: draft|owner}; matched to the world's
                        ref at build by base and nearest position, so a world rebuild re-applies it
 land.jsonl             land patches: {cell, verts:[[row,col,dz]...], textures?, why}; the last resort
-paths.jsonl            streets and paths: {id, kind, points:[[x,y]...], width, style}
+paths.jsonl            streets and paths: {id, kind: path|street, points:[[x,y]...], width, style}; style is a land
+                       texture key (the source place's own road texture) or the draft's style word (dirt, boardwalk)
 people.jsonl           one person per line: {id, name, base_from, role, home, bed, work, services, faction_ranks,
                        routine:[{start, hours, kind, at:{space, ref | pos, radius}, days?}], patrol?}
 edits/<save_id>.json   a studio save (below); finalised saves stay here as the lessons' evidence
@@ -170,7 +171,7 @@ An op: `{n, at, op, space, call: "fault"|"taste", note?, stroke?, ...payload wit
 
 | op | payload |
 |---|---|
-| `ref.add` | `ref` (whole row; `src` set when copied from a source ref, `base` when from search) |
+| `ref.add` | `ref` (whole row; `src` set when copied from a source ref, `base` when from search); the first op into a space the place does not have yet carries `space_copy_of: "<source_id>/<space_id>"` and `space_name`, which become that interior's `space.json` |
 | `ref.remove` | `id`, `before` |
 | `ref.move` | `id`, `before:{pos,rot,scale,seat}`, `after:{...}` |
 | `veg.clear` / `veg.restore` | `items:[{base,pos}]` |
@@ -199,12 +200,13 @@ semantics; the front end's JavaScript mirror is tested against the same files.
 
 ```
 GET  /api/places                              places with a draft; each: place_id, title, source_id, similar,
-                                              stamps:{draft, ground, source}
+                                              stamps:{draft, ground, source}, fit (place.json's fit as the draft
+                                              wrote it, or null: the studio's linked views map through it)
 GET  /api/bundle/<bundle_id>/...              the bundle's files as written
-GET  /api/asset/mesh?model=<path>&level=0|1   GLB (converted on demand; 202 + Retry-After while converting);
+GET  /api/asset/mesh?model=<path>&level=0|1   GLB (converted on demand, off the event loop);
                                               level 1 is the light version (trees, plants, far away)
-GET  /api/asset/tex?path=<path>&size=<n>      WebP (the same 202 rule)
-GET  /api/asset/thumb?model=<path>            WebP thumbnail of a mesh (the same 202 rule)
+GET  /api/asset/tex?path=<path>&size=<n>      WebP; cached a month (immutable: the GLBs' texture URIs)
+GET  /api/asset/thumb?model=<path>            256 px WebP thumbnail of a mesh
 GET  /api/asset/land                          land.json: the land textures for the terrain splat (Assets, below)
 GET  /api/asset/land/<file>                   one land texture, WebP
 GET  /api/search?q=&scope=source|all&source_id=&kind=&limit=
@@ -219,23 +221,23 @@ PUT  /api/place/<id>/saves/<save_id>          write a save {name, base, ops, rev
                                               or is final. save_id: [a-z0-9][a-z0-9._-]*; "autosave" is the autosave
 POST /api/place/<id>/finalise {save_id}       starts the chain; 202 {run_id}
 GET  /api/place/<id>/runs/<run_id>            {run_id, save_id, state: starting|running|done|failed, step, rc,
-                                              log (tail), report (markdown, when done)}
+                                              log (tail), report (markdown, when done)} plus every
+                                              field of finalise.read_run (steps, log_tail, report_md)
 GET  /api/place/<id>/seat?x=&y=               ground height, water height, slope at a point (the same code as seat)
 POST /api/heartbeat                           an open tab, every 60 s; {held, started, release_after_s}
 GET  /api/status                              {ground_sha, deployed_sha, match, error?, versions:{studio, repo_head,
                                               python, aiohttp, search_model, search_rows}, awake:{job_alive}}
 ```
 
-Errors are `{error}` with a plain-English message. A part not built yet answers 503. Bundle, web and asset files
+Errors are `{error}` with a plain-English message; a missing source is 404. Bundle, web and asset files
 carry ETags, honour range requests, and are sent brotli- or gzip-compressed when the browser accepts it and no
 range is asked.
 
 **The server** (`tools/places/studio`, aiohttp) calls each other part through one function
 (`tools/places/studio/links.py`): `tools.places.assets.mesh(model, level)`, `tex(path, size)` and `thumb(model)`
-return the converted file's path, or None once conversion has started; `land_table()` returns land.json's path; `tools.places.seat.ground_for(place_id).at(x, y)`;
-`tools.places.ground_check.status()` returns `{ground_sha, deployed_sha, match}`. Finalise runs under the job
-name `places-finalise-<run_id>` with `ARGONIA_RUN_ID` set; the chain writes `out/places/runs/<run_id>/state.json`
-`{state, step}` as it goes and `report.md` at the end; the server adds `run.json`.
+return the converted file's path (synchronous, run off the event loop); `land_table()` returns land.json's path; `tools.places.seat.ground_for(place_id).at(x, y)`;
+`tools.places.ground_check.status()` returns `{ground_sha, deployed_sha, match}`. Finalise calls `tools.places.finalise.start` and runs
+are read with `read_run` (Finalise, below); `rc` is the job_guard job `finalise.<run_id>`'s exit code.
 
 **Saves.** Writes are atomic. A named save is committed and pushed by path (`tooling/lane_commit.sh`) after each
 write, so it survives a stopped machine and a lost disk; the autosave goes to the private bucket at most once a

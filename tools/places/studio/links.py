@@ -1,35 +1,22 @@
 """The studio's calls into the other parts, each behind one function so the server never reaches past them.
 
-  assets:  tools.places.assets.mesh(model) / tex(path, size) / thumb(model) -> Path | None (None: converting)
+  assets:  tools.places.assets.mesh(model, level) / tex(path, size) / thumb(model) / land_table()
   seat:    tools.places.seat.ground_for(place_id).at(x, y)
-  ground:  tools.places.ground_check.status() -> {ground_sha, deployed_sha, match}
-A part not built yet raises Missing, which the server answers with 503 and the part's name."""
+  ground:  tools.places.ground_check.status() -> {ground_sha, deployed_sha, match, ...}
+  runs:    tools.places.finalise.start(place_id, save_id) / read_run(run_dir)"""
 from __future__ import annotations
 
-import importlib
 import threading
 from pathlib import Path
 
-
-class Missing(RuntimeError):
-    pass
-
-
-def _module(name: str):
-    try:
-        return importlib.import_module(name)
-    except ModuleNotFoundError as e:
-        if e.name and name.startswith(e.name):
-            raise Missing(name) from None
-        raise
+from tools.places import assets, finalise, ground_check, seat
 
 
 def asset(kind: str, *args) -> Path | None:
-    """kind: mesh, tex or thumb. A path when the converted file is ready; None when conversion has started."""
-    fn = getattr(_module("tools.places.assets"), kind, None)
-    if fn is None:
-        raise Missing(f"tools.places.assets.{kind}")
-    p = fn(*args)
+    """kind: mesh, tex, thumb or land; the converted file's path (None: the source does not exist)."""
+    if kind == "land":
+        return assets.land_table()
+    p = getattr(assets, kind)(*args)
     return Path(p) if p else None
 
 
@@ -38,7 +25,6 @@ _glock = threading.Lock()
 
 
 def seat_at(place_id: str, x: float, y: float, bundles: Path, places: Path) -> dict:
-    seat = _module("tools.places.seat")
     bj = bundles / f"ground.{place_id}" / "bundle.json"
     if not bj.exists():
         raise FileNotFoundError(f"no ground bundle for {place_id}")
@@ -53,4 +39,12 @@ def seat_at(place_id: str, x: float, y: float, bundles: Path, places: Path) -> d
 
 
 def ground_status() -> dict:
-    return dict(_module("tools.places.ground_check").status())
+    return dict(ground_check.status())
+
+
+def run_start(place_id: str, save_id: str) -> str:
+    return finalise.start(place_id, save_id)
+
+
+def run_read(run_dir: Path) -> dict:
+    return finalise.read_run(run_dir)
