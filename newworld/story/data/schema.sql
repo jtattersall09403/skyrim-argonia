@@ -100,6 +100,15 @@ CREATE TABLE "terrain_need" (
   "about" TEXT NOT NULL
 );
 
+-- What a place gives the player (newworld/sources/research/give_kinds.json; docs/research/new-world-place-gives.md).
+CREATE TABLE "give_kind" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "group" TEXT NOT NULL CHECK ("group" IN ('travel', 'trade', 'craft', 'train', 'rest', 'blessing', 'resource', 'loot', 'combat')),
+  "name" TEXT NOT NULL,
+  "delivers" TEXT NOT NULL,              -- what it does in the game
+  "evidence" TEXT NOT NULL               -- how Skyrim does it, counted from Skyrim.esm and the DLC
+);
+
 -- The aspects a place's or region's research prose is filed under.
 CREATE TABLE "note_aspect" (
   "id" TEXT NOT NULL PRIMARY KEY,
@@ -248,6 +257,17 @@ CREATE TABLE "place_terrain_need" (
   "facing_deg" REAL,                     -- for an entrance: the way the opening faces (0 north, clockwise)
   "why" TEXT NOT NULL,
   PRIMARY KEY ("place_id", "terrain_need_id")
+);
+
+-- What each place gives (a place record's gives list, in order); a combat give names the loot give that rewards it.
+CREATE TABLE "place_give" (
+  "place_id" TEXT NOT NULL REFERENCES "place"("id"),
+  "seq" INTEGER NOT NULL,                -- its order in the record
+  "give_kind_id" TEXT NOT NULL REFERENCES "give_kind"("id"),
+  "detail" TEXT NOT NULL,                -- specific: 'Expert Alteration trainer', 'iron and corundum veins'
+  "count" INTEGER NOT NULL CHECK ("count" >= 1),
+  "reward_kind_id" TEXT REFERENCES "give_kind"("id"),   -- combat only: the loot give at this place that pays for it
+  PRIMARY KEY ("place_id", "seq")
 );
 
 CREATE TABLE "region_note" (

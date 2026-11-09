@@ -10,6 +10,7 @@ switch (args.FirstOrDefault())
     case "seed": Surface.Paths = args[2..]; Generate.Run(args[1], args[2..]); break;
     case "cell": CellStudy.Run(args[1], args[2]); break;
     case "survey": Survey.Run(args[1..]); break;
+    case "gives": GiveStudy.Run(args[1..]); break;
     case "seat": Seat.Run(args[1..]); break;
     case "cleancheck": return CleanUp.Check(args[1], args[2..]);
     case "localcheck": return LocalQuestsCheck.Run(args[1], args[2], args[3..]);

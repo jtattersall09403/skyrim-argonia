@@ -45,7 +45,10 @@ names. Rebuild after writing: `/home/ubuntu/.argonia/venv/bin/python -m tools.ne
  "notes": [{"aspect": "overview", "text": "...", "tier": "EXTRAPOLATED",
             "sources": [{"kind": "uesp", "title": "Lore:Helstrom", "locator": "Lore:Helstrom",
                          "url": "https://en.uesp.net/wiki/Lore:Helstrom", "section": "History"}]}],
- "terrain_needs": [{"id": "flat-pad", "radius_m": 200, "why": "the city's built area"}]}
+ "terrain_needs": [{"id": "flat-pad", "radius_m": 200, "why": "the city's built area"}],
+ "gives": [{"kind": "trainer", "detail": "Expert Alteration trainer", "count": 1},
+           {"kind": "combat-boss", "detail": "the smugglers' captain", "count": 1, "reward": "boss-chest"},
+           {"kind": "boss-chest", "detail": "boss chest, D3 tier", "count": 1}]}
 ```
 
 Every place carries every field above (aliases and terrain needs may be empty lists), and one note for each of
@@ -59,6 +62,48 @@ ruins with an entrance into the ground need `entrance-in-slope`; places on the w
 
 Population (people living there in 4E 201, at Skyrim's scale: Solitude has about 70 named residents): use the
 tier's range in `settlement_tier` unless the research says otherwise; 0 for a ruin or wild place.
+
+## Gives
+
+`gives` lists what the place gives the player as gameplay. Leave out local colour, quests and factions. A place can
+list several kinds, and several of one kind.
+
+- `kind` is an id from `give_kinds.json`. Its groups are travel, trade, craft, train, rest, blessing, resource, loot
+  and combat.
+- `detail` is specific: name the skill and tier of a trainer, the schools a spell vendor sells, the ore of a vein,
+  the plant of a harvest and the foes of a fight.
+- `count` is how many, 1 or more.
+- A combat give (`combat-foes`, `combat-boss`, `combat-creature`) needs a `reward`. The reward is the id of a loot
+  give that the same place also lists: `boss-chest`, `treasure`, `gold-hoard` or `unique-item`. A boss needs a
+  boss-chest, a gold-hoard or a unique-item.
+- The build rejects an unknown kind, an empty detail and a combat give without its reward.
+
+The reward's tier is the place's danger band, never the player's level (docs/research/new-world-place-gives.md):
+
+| Band | Combat | Reward |
+|---|---|---|
+| D0 | none | none |
+| D1 | foes, creatures | treasure (up to 50 gold, iron and steel) |
+| D2 | + a boss | boss-chest at level 10 (Orcish, Dwarven, Elven light) |
+| D3 | as D2 | boss-chest at level 20 (Elven, steel plate, scaled) |
+| D4 | as D2 | boss-chest + gold-hoard at level 35 (glass, ebony) |
+| D5 | as D2 | boss-chest + unique-item at level 50 (Daedric, dragon) |
+
+## Deliverable in Skyrim
+
+A note promises only what Skyrim's own systems deliver: records, AI packages, scripts on activators and triggers,
+and weather, light and sound records. The engine does not have these, so no note promises them:
+
+- Water: no currents or flow that push the player or boats, no tides, no waves that rise or fall, no rising water
+  or floods, no swimming hazard beyond drowning when the breath runs out.
+- Terrain: no collapsing ground, sinking mud, quicksand or terrain that changes during play.
+- Weather: no storm that comes when the story calls for it, only weather records chosen by region and chance. No
+  seasons.
+- Fire and plants: no fire that spreads and no plants that grow or die during play.
+- People: no routine beyond AI packages (rest, eat, work, sandbox, patrol at set hours). No crowds that trade with
+  each other and no prices that move with supply.
+- Creatures: no herds that migrate and no breeding. Foes respawn only when a cell resets.
+- Building: nothing is built or destroyed during play except by enabling and disabling placed references.
 
 ## Region record (`regions/<batch>.json`)
 

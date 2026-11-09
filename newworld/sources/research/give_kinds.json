@@ -1,0 +1,334 @@
+{
+ "about": "What a place gives the player (docs/research/new-world-place-gives.md). A place record's gives list points here by id.",
+ "kinds": [
+  {
+   "id": "fast-travel",
+   "group": "travel",
+   "name": "Fast-travel map marker",
+   "delivers": "A map marker (REFR XMRK) the player discovers on arrival and can fast travel to from the world map.",
+   "evidence": "471 map markers in Skyrim+DLC: Cave 81, NordicRuins 40, Fort 33, Shack 20, Landmark 19, DwemerRuin 16, Mine 12, Shipwreck 12, Settlement 12, Town 11; every location the player can enter or clear has one."
+  },
+  {
+   "id": "carriage-or-boat",
+   "group": "travel",
+   "name": "Paid carriage or boat",
+   "delivers": "A driver or boatman whose dialogue moves the player to a fixed list of destinations for gold (Skyrim's carriages and the Northern Maiden).",
+   "evidence": "Skyrim's 5 Stable markers (the hold-city carriages) and the ToSolstheim/ToSkyrim markers."
+  },
+  {
+   "id": "trader-general",
+   "group": "trade",
+   "name": "General goods trader",
+   "delivers": "Buys everything not on the VendorNoSale list and sells mixed stock; 750 gold to start, restocked every 48 hours.",
+   "evidence": "Vendor factions buying all but Key,VendorNoSale: 29 (caravans, Belethor, Riverwood Trader, Pawned Prawn); the commonest vendor."
+  },
+  {
+   "id": "trader-blacksmith",
+   "group": "trade",
+   "name": "Blacksmith trader",
+   "delivers": "Buys and sells weapons, armour, arrows, ingots, ore, hides and tools.",
+   "evidence": "24 vendor factions with the list AnimalHide,Armor,Arrow,OreIngot,Tool,Weapon (every hold city's smith, the quartermasters, the Orc strongholds)."
+  },
+  {
+   "id": "trader-apothecary",
+   "group": "trade",
+   "name": "Apothecary",
+   "delivers": "Buys and sells ingredients, potions, poisons, food and recipes.",
+   "evidence": "22 vendor factions with AnimalPart,Food,FoodRaw,Ingredient,Poison,Potion,Recipe (Arcadia's Cauldron, the White Phial)."
+  },
+  {
+   "id": "trader-spells",
+   "group": "trade",
+   "name": "Spell vendor",
+   "delivers": "Sells spell tomes (name the schools and the highest tier sold), scrolls, staves, soul gems, robes, jewellery and books.",
+   "evidence": "17 vendor factions with Book,Clothing,DaedricArtifact,Jewelry,Scroll,SoulGem,SpellTome,Staff (court wizards, the College); 111 spell tomes: Conjuration 29, Destruction 27, Restoration 22, Alteration 17, Illusion 16, Novice to Master."
+  },
+  {
+   "id": "trader-innkeeper",
+   "group": "trade",
+   "name": "Innkeeper or food seller",
+   "delivers": "Sells food and drink, buys food; an innkeeper also rents a room (see inn-room).",
+   "evidence": "29 vendor factions buying Food,FoodRaw (the inns, the market stalls); 20 LocTypeInn locations."
+  },
+  {
+   "id": "trader-fletcher",
+   "group": "trade",
+   "name": "Fletcher",
+   "delivers": "Buys and sells bows, arrows and light weapons.",
+   "evidence": "2 vendor factions with Armor,Arrow,Tool,Weapon (Fletcher in Solitude)."
+  },
+  {
+   "id": "trader-jeweller",
+   "group": "trade",
+   "name": "Jeweller",
+   "delivers": "Buys and sells gems, jewellery, ingots and tools.",
+   "evidence": "3 vendor factions with Gem,Jewelry,OreIngot,Tool (Markarth's jewellery stall)."
+  },
+  {
+   "id": "trader-clothier",
+   "group": "trade",
+   "name": "Clothier",
+   "delivers": "Buys and sells clothing and jewellery.",
+   "evidence": "1 vendor faction with Clothing,Jewelry (Radiant Raiment)."
+  },
+  {
+   "id": "trader-bookseller",
+   "group": "trade",
+   "name": "Bookseller",
+   "delivers": "Buys and sells books and spell tomes.",
+   "evidence": "1 vendor faction with Book,SpellTome (Urag gro-Shub)."
+  },
+  {
+   "id": "trader-hunter",
+   "group": "trade",
+   "name": "Hunter buyer",
+   "delivers": "Buys hides, animal parts and raw meat out in the wild.",
+   "evidence": "WEServicesHunterFaction buys AnimalHide,AnimalPart,FoodRaw: 24 hunters met on the road."
+  },
+  {
+   "id": "fence",
+   "group": "trade",
+   "name": "Fence",
+   "delivers": "Buys stolen goods (OnlyBuysStolenItems or the fence perk's list).",
+   "evidence": "1 vendor faction flagged stolen-only (Tonilia); the other fences open through the Thieves Guild."
+  },
+  {
+   "id": "forge",
+   "group": "craft",
+   "name": "Forge",
+   "delivers": "Makes weapons and armour from ingots, leather and strips.",
+   "evidence": "100 placed with keyword CraftingSmithingForge in Skyrim+DLC."
+  },
+  {
+   "id": "anvil",
+   "group": "craft",
+   "name": "Anvil",
+   "delivers": "Bethesda pairs one with every forge; record it with the forge, not alone.",
+   "evidence": "100 placed with keyword (the forge's own anvil, CraftingSmithingForge) in Skyrim+DLC."
+  },
+  {
+   "id": "armour-workbench",
+   "group": "craft",
+   "name": "Workbench",
+   "delivers": "Improves armour (smithing tempering).",
+   "evidence": "91 placed with keyword CraftingSmithingArmorTable in Skyrim+DLC."
+  },
+  {
+   "id": "grindstone",
+   "group": "craft",
+   "name": "Grindstone",
+   "delivers": "Improves weapons.",
+   "evidence": "120 placed with keyword CraftingSmithingSharpeningWheel in Skyrim+DLC."
+  },
+  {
+   "id": "smelter",
+   "group": "craft",
+   "name": "Smelter",
+   "delivers": "Turns ore into ingots.",
+   "evidence": "41 placed with keyword CraftingSmelter in Skyrim+DLC."
+  },
+  {
+   "id": "tanning-rack",
+   "group": "craft",
+   "name": "Tanning rack",
+   "delivers": "Turns hides into leather and strips.",
+   "evidence": "133 placed with keyword CraftingTanningRack in Skyrim+DLC."
+  },
+  {
+   "id": "arcane-enchanter",
+   "group": "craft",
+   "name": "Arcane enchanter",
+   "delivers": "Learns enchantments by disenchanting and enchants items with filled soul gems.",
+   "evidence": "101 placed with keyword WICraftingEnchanting / isEnchanting in Skyrim+DLC."
+  },
+  {
+   "id": "alchemy-lab",
+   "group": "craft",
+   "name": "Alchemy lab",
+   "delivers": "Makes potions and poisons from ingredients.",
+   "evidence": "167 placed with keyword WICraftingAlchemy / isAlchemy in Skyrim+DLC."
+  },
+  {
+   "id": "cooking-pot",
+   "group": "craft",
+   "name": "Cooking pot",
+   "delivers": "Cooks food that restores health and stamina.",
+   "evidence": "260 placed with keyword CraftingCookpot (197 small pots, 63 spits) in Skyrim+DLC."
+  },
+  {
+   "id": "oven",
+   "group": "craft",
+   "name": "Oven",
+   "delivers": "Bakes pies and bread (HearthFires).",
+   "evidence": "3 placed with keyword BYOHCraftingOven in Skyrim+DLC."
+  },
+  {
+   "id": "staff-enchanter",
+   "group": "craft",
+   "name": "Staff enchanter",
+   "delivers": "Makes staves from a staff, a heart stone and a soul gem (Dragonborn).",
+   "evidence": "1 placed in Skyrim+DLC (DLC2StaffEnchanter keyword, in Dragonborn), the rarest crafting station."
+  },
+  {
+   "id": "atronach-forge",
+   "group": "craft",
+   "name": "Atronach forge",
+   "delivers": "Turns given offerings into set items; sigil stone unlocks Daedric recipes.",
+   "evidence": "One, in the Midden under the College of Winterhold (an activator with its own script, not a crafting keyword)."
+  },
+  {
+   "id": "trainer",
+   "group": "train",
+   "name": "Skill trainer",
+   "delivers": "Raises a skill for gold up to the trainer's cap: Journeyman 50, Expert 75, Master 90 (the CLAS cap); five trainings per player level. Detail names the skill and tier.",
+   "evidence": "54 JobTrainer<Skill>Faction members: Master 21, Expert 22, Journeyman 11; every one of the 18 skills has a Master and an Expert."
+  },
+  {
+   "id": "skill-book",
+   "group": "train",
+   "name": "Skill book",
+   "delivers": "A book placed in the world that raises its skill by one the first time it is read.",
+   "evidence": "Skill books for all 18 skills (BOOK with a skill target)."
+  },
+  {
+   "id": "spell-tome",
+   "group": "train",
+   "name": "Spell tome found",
+   "delivers": "A tome placed as loot that teaches one spell (name it and its tier).",
+   "evidence": "111 spell tomes (BOOK teaching a SPEL), Novice to Master."
+  },
+  {
+   "id": "inn-room",
+   "group": "rest",
+   "name": "Rented room",
+   "delivers": "An innkeeper rents a bed for a day (10 gold): sleep restores and gives the Rested bonus.",
+   "evidence": "20 LocTypeInn locations; beds placed: 1082 beds, 796 bedrolls."
+  },
+  {
+   "id": "free-bed",
+   "group": "rest",
+   "name": "Free bed",
+   "delivers": "A bed or bedroll the player may sleep in without trespass (camps, barracks, owned houses).",
+   "evidence": "796 bedrolls placed, most in camps and dungeons the player has cleared."
+  },
+  {
+   "id": "player-home",
+   "group": "rest",
+   "name": "Player home",
+   "delivers": "A house the player can buy or build: safe storage, bed and crafting stations.",
+   "evidence": "8 LocTypePlayerHouse locations (the hold-city houses and the HearthFires plots)."
+  },
+  {
+   "id": "follower",
+   "group": "rest",
+   "name": "Follower",
+   "delivers": "A person who joins the player when asked or after a favour.",
+   "evidence": "67 NPCs in PotentialFollowerFaction."
+  },
+  {
+   "id": "shrine-blessing",
+   "group": "blessing",
+   "name": "Shrine blessing",
+   "delivers": "Activating a shrine gives its god's blessing (a timed ability, 8 hours) and cures disease.",
+   "evidence": "TempleBlessingScript shrines placed: Talos 20, Arkay 15, Dibella 11, Kynareth 10, Mara 10, Akatosh 9, Zenithar 9, Julianos 8, Stendarr 8, Auriel 4, Nocturnal 1."
+  },
+  {
+   "id": "standing-stone",
+   "group": "blessing",
+   "name": "Standing stone",
+   "delivers": "A stone that sets the player's one permanent sign power; activating another replaces it.",
+   "evidence": "13 Doomstones (powerShrineScript) and 5 Skaal standing stones; 11 Doomstone and 5 BeastStone map markers."
+  },
+  {
+   "id": "word-wall",
+   "group": "blessing",
+   "name": "Word of power",
+   "delivers": "A wall that teaches one word of a shout (the player still needs a soul to unlock it).",
+   "evidence": "60 word walls placed (WordWallTrigger 47, DLC1 4, DLC2 9); 117 shouts and 107 words."
+  },
+  {
+   "id": "altar-power",
+   "group": "blessing",
+   "name": "Power or ability altar",
+   "delivers": "A shrine or altar that gives a power or ability other than a god's blessing (the vampire shrines, the Black Book stones).",
+   "evidence": "DLC1VampireShrineScript (Night Power, Blood Magic); DLC2 altar shrines."
+  },
+  {
+   "id": "ore-vein",
+   "group": "resource",
+   "name": "Ore or mineral vein",
+   "delivers": "A vein the player mines with a pickaxe for ore, gems or clay (name the ore and how many).",
+   "evidence": "MineOreScript veins placed: iron 694, corundum 249, silver 119, gold 97, orichalcum 93, quicksilver 73, moonstone 58, ebony 47, malachite 35, stalhrim 22, heart stone 28, clay 85, stone 57, gem geodes 52."
+  },
+  {
+   "id": "harvest-rare",
+   "group": "resource",
+   "name": "Rare harvestable",
+   "delivers": "A plant, fungus or creature part that grows in few places and sells or brews well (name it).",
+   "evidence": "Least-placed ingredient flora (of 70): pearls 157, bird eggs 365, giant lichen 143, swamp fungal pod 143, glow plants 66, nightshade 333, deathbell 237; against mountain flower 2314 and hanging moss 1895."
+  },
+  {
+   "id": "harvest-common",
+   "group": "resource",
+   "name": "Common harvestables",
+   "delivers": "Plenty of one or two ingredients or foods (name them).",
+   "evidence": "Most-placed ingredient flora: mountain flowers 6000+, hanging moss 1895, snowberry 1837, chaurus eggs 1633."
+  },
+  {
+   "id": "fishing",
+   "group": "resource",
+   "name": "Fish and clams",
+   "delivers": "Fish caught by hand from schools in the water, clams on the shore (name the catch).",
+   "evidence": "FoodClamMeat 1106, FoodSalmon 697, slaughterfish eggs 613 placed as harvest."
+  },
+  {
+   "id": "boss-chest",
+   "group": "loot",
+   "name": "Boss chest",
+   "delivers": "The locked chest at a hostile place's end, beside its strongest foe: gold, gems, a magic item chance, potions, scrolls and soul gems, at the place's tier (see the reward table).",
+   "evidence": "255 boss chests placed (bandit 80, draugr 67, dwarven 24, warlock 22, falmer 18, vampire 14, hagraven 13); one per cleared dungeon; contents are the levelled LootXChestBoss lists."
+  },
+  {
+   "id": "treasure",
+   "group": "loot",
+   "name": "Lesser treasure",
+   "delivers": "Ordinary chests, satchels, coin purses and urns along the way: small gold and common items at the place's tier.",
+   "evidence": "3645 non-boss Treas* containers placed; 806 coin purses as harvest."
+  },
+  {
+   "id": "unique-item",
+   "group": "loot",
+   "name": "Unique item",
+   "delivers": "One named, fixed item placed by hand (a unique weapon, armour piece, staff or jewel), never levelled; reserved for the highest bands.",
+   "evidence": "Bethesda's fixed rewards: the dragon priest masks (8 LocTypeDragonPriestLair) and the uniques on altars and bodies."
+  },
+  {
+   "id": "gold-hoard",
+   "group": "loot",
+   "name": "Gold hoard",
+   "delivers": "Loose gold and gems laid out (a dragon's hoard, a pirate stash).",
+   "evidence": "Gold piles beside boss chests in dragon lairs (11 LocTypeDragonLair)."
+  },
+  {
+   "id": "combat-foes",
+   "group": "combat",
+   "name": "Hostile occupants",
+   "delivers": "The place's foes at its fixed danger band (name who). Must name its reward.",
+   "evidence": "Every LocTypeClearable location (244) pairs its foes with a boss chest; 349 of 355 encounter zones set a minimum level, 90 never reset."
+  },
+  {
+   "id": "combat-boss",
+   "group": "combat",
+   "name": "Boss fight",
+   "delivers": "One strong named or leader foe at the place's end (name it). Must name its reward, a boss-chest, unique-item or gold-hoard.",
+   "evidence": "Bethesda puts the boss chest in the boss's room: 255 boss chests for 244 clearable locations."
+  },
+  {
+   "id": "combat-creature",
+   "group": "combat",
+   "name": "Dangerous wildlife",
+   "delivers": "Predators or monsters roaming the site (name them). Must name its reward (their pelts and parts count only as harvest-common).",
+   "evidence": "Animal dens (20 LocTypeAnimalDen) carry 5 boss chests; the rest reward with hides and parts."
+  }
+ ]
+}

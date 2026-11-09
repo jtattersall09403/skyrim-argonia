@@ -169,6 +169,9 @@ def build() -> db.World:
     for table in ("statement_tier", "settlement_tier", "place_kind", "symbol", "road_class", "danger_band",
                   "terrain_need", "note_aspect", "water_kind"):
         w.insert_many(table, key[table])
+    give_kinds = load_give_kinds()
+    w.insert_many("give_kind", give_kinds)
+    give_kinds = {k["id"]: k for k in give_kinds}
 
     sources: dict[str, dict] = {}
 
@@ -297,6 +300,7 @@ def build() -> db.World:
             w.insert("place_alias", place_id=p["id"], alias=al["alias"],
                      source_id=source(src["kind"], src["title"], src.get("locator"), src.get("url")) if src else None)
         write_notes(w, "place", p["id"], r, source)
+        w.insert_many("place_give", place_gives(p["id"], r, give_kinds))
         for need in r.get("terrain_needs", []):
             w.insert("place_terrain_need", place_id=p["id"], terrain_need_id=need["id"], radius_m=need["radius_m"],
                      facing_deg=need.get("facing_deg"), why=need["why"])
@@ -308,6 +312,48 @@ def build() -> db.World:
     w.insert_many("source", sorted(sources.values(), key=lambda r: r["id"]))
     w.save()
     return w
+
+
+GIVE_KINDS = RESEARCH / "give_kinds.json"
+REWARD_FOR = {"combat-foes": ("boss-chest", "treasure", "gold-hoard", "unique-item"),
+              "combat-boss": ("boss-chest", "gold-hoard", "unique-item"),
+              "combat-creature": ("boss-chest", "treasure", "gold-hoard", "unique-item")}
+
+
+def load_give_kinds(path: Path = GIVE_KINDS) -> list[dict]:
+    kinds = json.loads(path.read_text())["kinds"]
+    ids = [k["id"] for k in kinds]
+    if len(ids) != len(set(ids)):
+        raise ValueError("give_kinds.json: duplicate id")
+    return kinds
+
+
+def place_gives(pid: str, r: dict, kinds: dict[str, dict]) -> list[dict]:
+    """A place record's gives as place_give rows. Rejects an unknown kind, an empty detail, and a combat give whose
+    reward is not a loot give the same place also lists (combat is always paired with its reward)."""
+    gives = r.get("gives") or []
+    listed = {g.get("kind") for g in gives}
+    rows = []
+    for i, g in enumerate(gives):
+        kind = g.get("kind")
+        if kind not in kinds:
+            raise ValueError(f"{pid}: give {i}: unknown kind {kind!r}")
+        if not (g.get("detail") or "").strip():
+            raise ValueError(f"{pid}: give {i} ({kind}): no detail")
+        reward = g.get("reward")
+        if kinds[kind]["group"] == "combat":
+            if reward not in REWARD_FOR.get(kind, ()):
+                raise ValueError(f"{pid}: give {i} ({kind}): reward must be one of {REWARD_FOR.get(kind)}, got {reward!r}")
+            if reward not in listed:
+                raise ValueError(f"{pid}: give {i} ({kind}): its reward {reward!r} is not among the place's gives")
+        elif reward is not None:
+            raise ValueError(f"{pid}: give {i} ({kind}): only a combat give names a reward")
+        count = int(g.get("count", 1))
+        if count < 1:
+            raise ValueError(f"{pid}: give {i} ({kind}): count must be at least 1")
+        rows.append({"place_id": pid, "seq": i, "give_kind_id": kind, "detail": g["detail"].strip(), "count": count,
+                     "reward_kind_id": reward})
+    return rows
 
 
 def write_notes(w: db.World, kind: str, rid: str, r: dict, source) -> None:
@@ -442,6 +488,8 @@ def main() -> None:
     print(n)
     unfilled = [p.id for p in w.rows("place") if not p.summary]
     print(len(unfilled), "places without research yet")
+    given = {g.place_id for g in w.rows("place_give")}
+    print(sum(p.id not in given for p in w.rows("place")), "places without gives yet")
 
 
 if __name__ == "__main__":
