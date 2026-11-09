@@ -9,8 +9,8 @@
    "roughness_m": 0.8,
    "cliff_share": 0.02,
    "wetness": 0.9,
-   "biome": "Tidal bayou and saltrice marsh",
-   "climate": "Hot and humid year-round, with a monsoon and tidal flooding",
+   "biome": "Bayou and saltrice marsh",
+   "climate": "Hot and humid year-round, under a fixed weather of heavy rain and mist",
    "culture_id": "plum",
    "danger_band_id": "D2",
    "statement_tier_id": "EXTRAPOLATED",
@@ -33,13 +33,18 @@
       {
        "kind": "reasoning",
        "title": "UESP search of the Lore namespace (2026-11-08) finds no page for Nushara Bayou: a Project Tamriel region name"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Reasoned from the spine: 10.2 (Althii Archipelago, Benthic Yobesh, Nushara Bayou: the Three Waters Tribe, Lilmoth's merchant council, Warden coast forts Lilmoth refuses); 10.1 (2E 560-603 Flu, 4E 5-10 secession); 10.4",
+       "locator": "argonia-4e201-state.md §10.1-10.4"
       }
      ]
     },
     {
      "aspect": "history",
-     "text": "The bayou was Lilmothiit and Cantemiric Velothi ground; both peoples died in the flu of 2E 560, while the Three Waters Tribe survived and spread. It was untouched by Umbriel.",
-     "tier": "CANON_DERIVED",
+     "text": "The bayou was Lilmothiit and Cantemiric Velothi ground; no Lilmothiit or Velothi lives here after the Knahaten Flu (2E 560-603), while the Three Waters Tribe survived and spread. Its villages lie east of the island path through Murkmire that Umbriel laid waste in 4E 48.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "dossier",
@@ -62,12 +67,17 @@
        "title": "Lore:Lilmothiit",
        "locator": "Lore:Lilmothiit",
        "url": "https://en.uesp.net/wiki/Lore:Lilmothiit"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Reasoned from the spine: 10.2 (Althii Archipelago, Benthic Yobesh, Nushara Bayou: the Three Waters Tribe, Lilmoth's merchant council, Warden coast forts Lilmoth refuses); 10.1 (2E 560-603 Flu, 4E 5-10 secession); 10.4",
+       "locator": "argonia-4e201-state.md §10.1-10.4"
       }
      ]
     },
     {
      "aspect": "present",
-     "text": "The tribe holds the channels and its hamlets, Archon and Lilmoth trade through it, and Fort Swiftmoth stands unmanned beside the road.",
+     "text": "The Three Waters Tribe holds the channels and its hamlets, Archon and Lilmoth trade through it, and Fort Swiftmoth beside the road has stood empty since the secession.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -79,6 +89,11 @@
        "kind": "extrapolation",
        "title": "story/lore/extrapolation/argonia-4e201-state.md",
        "locator": "argonia-4e201-state.md"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Reasoned from the spine: 10.2 (Althii Archipelago, Benthic Yobesh, Nushara Bayou: the Three Waters Tribe, Lilmoth's merchant council, Warden coast forts Lilmoth refuses); 10.1 (2E 560-603 Flu, 4E 5-10 secession); 10.4",
+       "locator": "argonia-4e201-state.md §10.1-10.4"
       }
      ]
     },
@@ -96,6 +111,11 @@
        "kind": "extrapolation",
        "title": "story/lore/extrapolation/argonia-4e201-state.md",
        "locator": "argonia-4e201-state.md"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Reasoned from the spine: 10.2 (Althii Archipelago, Benthic Yobesh, Nushara Bayou: the Three Waters Tribe, Lilmoth's merchant council, Warden coast forts Lilmoth refuses); 10.1 (2E 560-603 Flu, 4E 5-10 secession); 10.4",
+       "locator": "argonia-4e201-state.md §10.1-10.4"
       }
      ]
     },
@@ -113,6 +133,11 @@
        "kind": "extrapolation",
        "title": "story/lore/extrapolation/argonia-4e201-state.md",
        "locator": "argonia-4e201-state.md"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Reasoned from the spine: 10.2 (Althii Archipelago, Benthic Yobesh, Nushara Bayou: the Three Waters Tribe, Lilmoth's merchant council, Warden coast forts Lilmoth refuses); 10.1 (2E 560-603 Flu, 4E 5-10 secession); 10.4",
+       "locator": "argonia-4e201-state.md §10.1-10.4"
       }
      ]
     },
@@ -152,7 +177,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Risky away from the road: slaughterfish, crocodilians, ripper eels, smugglers and disease.",
+     "text": "Risky away from the road: slaughterfish in every deep channel, crocodilians on the hummocks, ripper eels, smugglers and swamp disease.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -169,7 +194,7 @@
     },
     {
      "aspect": "landscape",
-     "text": "Flat, braided and shifting: channels move with each flood; firm ground lies in thin ridges. The north rises slightly to clay mounds.",
+     "text": "Flat and braided: channels split and rejoin around thin ridges of firm ground, and the walkable ground is a chain of hummocks joined by raft-bridges. The north climbs slightly to clay mounds.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -208,8 +233,8 @@
     },
     {
      "aspect": "climate",
-     "text": "Hot and humid, with a monsoon that floods the lower channels and closes the ferries for days.",
-     "tier": "CANON_DERIVED",
+     "text": "Hot and humid all year; the region's fixed weather is heavy warm rain and low mist over the water.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "dossier",
@@ -226,6 +251,11 @@
        "title": "story/lore/topics/ecology-encounters-loot.md",
        "locator": "topics/ecology-encounters-loot.md",
        "section": "6. Seasonal keying"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Reasoned from the spine: 10.2 (Althii Archipelago, Benthic Yobesh, Nushara Bayou: the Three Waters Tribe, Lilmoth's merchant council, Warden coast forts Lilmoth refuses); 10.1 (2E 560-603 Flu, 4E 5-10 secession); 10.4",
+       "locator": "argonia-4e201-state.md §10.1-10.4"
       }
      ]
     }
@@ -241,14 +271,14 @@
    "cliff_share": 0.05,
    "wetness": 0.7,
    "biome": "Coastal marsh and rice paddy",
-   "climate": "Hot, humid, with sea winds and a monsoon",
+   "climate": "Hot and humid, under a fixed weather of sea wind and warm rain",
    "culture_id": "rose",
    "danger_band_id": "D2",
    "statement_tier_id": "EXTRAPOLATED",
    "notes": [
     {
      "aspect": "overview",
-     "text": "A group of islands that holds Lilmoth and most of the rebuilt Murkmire coast's estates, and an Imperial road network gone to ruin.",
+     "text": "A group of islands that holds Lilmoth, the estates of the rebuilt coast, and an Imperial road gone to ruin.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -264,13 +294,18 @@
       {
        "kind": "reasoning",
        "title": "UESP search of the Lore namespace (2026-11-08) finds no page for Althii Archipelago: a Project Tamriel region name"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Reasoned from the spine: 10.1 (2E 560-603 Flu, 4E 5-10 secession, 4E 8 second Hist, 4E 48 Umbriel); 10.2 (Lilmoth's merchant council, Warden coast forts, Three Waters Tribe); 10.4 (Lilmothiit withdrawal, Imperial forts)",
+       "locator": "argonia-4e201-state.md §10.1-10.4"
       }
      ]
     },
     {
      "aspect": "history",
-     "text": "Lilmothiit held the isles until the flu of 2E 560; Imperial forts, estates and a road arrived later. Lilmoth was destroyed in 4E 48 and its islands refilled.",
-     "tier": "CANON_DERIVED",
+     "text": "The Lilmothiit withdrew inland over generations and the Knahaten Flu (2E 560-603) finished their remnant. The Empire's forts, estates and road came later and were left at the secession (4E 5-10). Lilmoth was destroyed in 4E 48, and the islands were refilled in the generations after.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "dossier",
@@ -293,12 +328,17 @@
        "title": "Lore:Lilmoth",
        "locator": "Lore:Lilmoth",
        "url": "https://en.uesp.net/wiki/Lore:Lilmoth"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Reasoned from the spine: 10.1 (2E 560-603 Flu, 4E 5-10 secession, 4E 8 second Hist, 4E 48 Umbriel); 10.2 (Lilmoth's merchant council, Warden coast forts, Three Waters Tribe); 10.4 (Lilmothiit withdrawal, Imperial forts)",
+       "locator": "argonia-4e201-state.md §10.1-10.4"
       }
      ]
     },
     {
      "aspect": "present",
-     "text": "Lilmoth leads the islands; Archwarden forts hold the east and the south-west; Uluo's Three Waters people hold the north.",
+     "text": "Lilmoth leads the islands; Archwarden forts hold the east and the south-west, some of them against Lilmoth's wishes; Uluo's Three Waters people hold the north.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -310,12 +350,17 @@
        "kind": "extrapolation",
        "title": "story/lore/extrapolation/argonia-4e201-state.md",
        "locator": "argonia-4e201-state.md"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Reasoned from the spine: 10.1 (2E 560-603 Flu, 4E 5-10 secession, 4E 8 second Hist, 4E 48 Umbriel); 10.2 (Lilmoth's merchant council, Warden coast forts, Three Waters Tribe); 10.4 (Lilmothiit withdrawal, Imperial forts)",
+       "locator": "argonia-4e201-state.md §10.1-10.4"
       }
      ]
     },
     {
      "aspect": "people",
-     "text": "Lilmoth-coast Argonians, tenants and bonded labourers on estates, garrison families and the Three Waters Tribe.",
+     "text": "Lilmoth-coast Argonians, tenants and labourers on the estates, garrison families of the Warden forts and the Three Waters Tribe.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -327,6 +372,11 @@
        "kind": "extrapolation",
        "title": "story/lore/extrapolation/argonia-4e201-state.md",
        "locator": "argonia-4e201-state.md"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Reasoned from the spine: 10.1 (2E 560-603 Flu, 4E 5-10 secession, 4E 8 second Hist, 4E 48 Umbriel); 10.2 (Lilmoth's merchant council, Warden coast forts, Three Waters Tribe); 10.4 (Lilmothiit withdrawal, Imperial forts)",
+       "locator": "argonia-4e201-state.md §10.1-10.4"
       }
      ]
     },
@@ -344,12 +394,17 @@
        "kind": "extrapolation",
        "title": "story/lore/extrapolation/argonia-4e201-state.md",
        "locator": "argonia-4e201-state.md"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Reasoned from the spine: 10.1 (2E 560-603 Flu, 4E 5-10 secession, 4E 8 second Hist, 4E 48 Umbriel); 10.2 (Lilmoth's merchant council, Warden coast forts, Three Waters Tribe); 10.4 (Lilmothiit withdrawal, Imperial forts)",
+       "locator": "argonia-4e201-state.md §10.1-10.4"
       }
      ]
     },
     {
      "aspect": "faith",
-     "text": "Lilmoth's feared third Hist is the islands' tree; Three Waters keep their own pool.",
+     "text": "Lilmoth's second Hist, grown in 4E 8 and cut off from the others, is the islands' feared tree; the Three Waters keep their own pool.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -439,8 +494,8 @@
     },
     {
      "aspect": "climate",
-     "text": "The islands are hot and humid, swept by sea winds and drenched by the monsoon.",
-     "tier": "CANON_DERIVED",
+     "text": "The islands are hot and humid; the region's fixed weather is a steady sea wind and warm rain.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "dossier",
@@ -457,6 +512,11 @@
        "title": "story/lore/topics/ecology-encounters-loot.md",
        "locator": "topics/ecology-encounters-loot.md",
        "section": "6. Seasonal keying"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Reasoned from the spine: 10.1 (2E 560-603 Flu, 4E 5-10 secession, 4E 8 second Hist, 4E 48 Umbriel); 10.2 (Lilmoth's merchant council, Warden coast forts, Three Waters Tribe); 10.4 (Lilmothiit withdrawal, Imperial forts)",
+       "locator": "argonia-4e201-state.md §10.1-10.4"
       }
      ]
     }
@@ -472,7 +532,7 @@
    "cliff_share": 0.2,
    "wetness": 1.0,
    "biome": "Open sea floor, coral and kelp",
-   "climate": "Warm shallow water over cold deep currents",
+   "climate": "Warm shallow water over cold deep water",
    "culture_id": null,
    "danger_band_id": "D3",
    "statement_tier_id": "EXTRAPOLATED",
@@ -495,12 +555,17 @@
       {
        "kind": "reasoning",
        "title": "UESP search of the Lore namespace (2026-11-08) finds no page for Benthic Yobesh: a Project Tamriel region name"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Reasoned from the spine: 10.1 (Dawn Era sinking, 4E 5-10 secession); 10.2 (Lilmoth's merchant council); 10.3 (Southern Sea seafarers, Altmer and Maormer warships since 4E 22-29); 10.4",
+       "locator": "argonia-4e201-state.md §10.1-10.4"
       }
      ]
     },
     {
      "aspect": "history",
-     "text": "By legend Murkmire was swallowed by the Southern Sea; the spires are what remained.",
+     "text": "Myth says the Southern Sea swallowed Murkmire in the Dawn Era, when the Hist's land sank but for one corner; the spires are what is told to remain.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -517,12 +582,17 @@
        "kind": "dossier",
        "title": "story/lore/regions/murkmire.md",
        "locator": "regions/murkmire.md"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Reasoned from the spine: 10.1 (Dawn Era sinking, 4E 5-10 secession); 10.2 (Lilmoth's merchant council); 10.3 (Southern Sea seafarers, Altmer and Maormer warships since 4E 22-29); 10.4",
+       "locator": "argonia-4e201-state.md §10.1-10.4"
       }
      ]
     },
     {
      "aspect": "present",
-     "text": "Bell Station's licensed divers salvage the spires; elsewhere the sea floor is unclaimed.",
+     "text": "Bell Station's licensed divers salvage the spires; elsewhere the sea floor belongs to no one.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -534,6 +604,11 @@
        "kind": "extrapolation",
        "title": "story/lore/extrapolation/argonia-4e201-state.md",
        "locator": "argonia-4e201-state.md"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Reasoned from the spine: 10.1 (Dawn Era sinking, 4E 5-10 secession); 10.2 (Lilmoth's merchant council); 10.3 (Southern Sea seafarers, Altmer and Maormer warships since 4E 22-29); 10.4",
+       "locator": "argonia-4e201-state.md §10.1-10.4"
       }
      ]
     },
@@ -551,12 +626,17 @@
        "kind": "extrapolation",
        "title": "story/lore/extrapolation/argonia-4e201-state.md",
        "locator": "argonia-4e201-state.md"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Reasoned from the spine: 10.1 (Dawn Era sinking, 4E 5-10 secession); 10.2 (Lilmoth's merchant council); 10.3 (Southern Sea seafarers, Altmer and Maormer warships since 4E 22-29); 10.4",
+       "locator": "argonia-4e201-state.md §10.1-10.4"
       }
      ]
     },
     {
      "aspect": "economy",
-     "text": "The spires yield salvage. The state licenses who may take it.",
+     "text": "The spires yield salvage: drowned metal, carved stone and coral-crusted glass. Bell Station's boats decide who dives.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -568,6 +648,11 @@
        "kind": "extrapolation",
        "title": "story/lore/extrapolation/argonia-4e201-state.md",
        "locator": "argonia-4e201-state.md"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Reasoned from the spine: 10.1 (Dawn Era sinking, 4E 5-10 secession); 10.2 (Lilmoth's merchant council); 10.3 (Southern Sea seafarers, Altmer and Maormer warships since 4E 22-29); 10.4",
+       "locator": "argonia-4e201-state.md §10.1-10.4"
       }
      ]
     },
@@ -590,7 +675,7 @@
     },
     {
      "aspect": "look",
-     "text": "Blue-green water over silt, coral and kelp, spires rising, a black trench.",
+     "text": "Blue-green water over silt, coral and kelp, spires standing from the floor, a black trench.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -607,7 +692,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Dangerous across the floor and deadly at Echo Deep and the outer spires: sea-drakes, dreugh, drowning.",
+     "text": "Dangerous across the floor and deadly at Echo Deep and the outer spires: sea-drakes, dreugh, and deep water where a diver's breath runs out.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -675,7 +760,7 @@
     },
     {
      "aspect": "climate",
-     "text": "Warm shallows over cold deep currents; the surface storms in the monsoon.",
+     "text": "Warm shallows over cold deep water; the surface under a fixed grey overcast and a steady swell.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -687,6 +772,11 @@
        "kind": "extrapolation",
        "title": "story/lore/extrapolation/argonia-4e201-state.md",
        "locator": "argonia-4e201-state.md"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Reasoned from the spine: 10.1 (Dawn Era sinking, 4E 5-10 secession); 10.2 (Lilmoth's merchant council); 10.3 (Southern Sea seafarers, Altmer and Maormer warships since 4E 22-29); 10.4",
+       "locator": "argonia-4e201-state.md §10.1-10.4"
       }
      ]
     }
