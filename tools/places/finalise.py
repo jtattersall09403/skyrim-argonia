@@ -214,7 +214,7 @@ def step_learn(run: Run, budget: float, turns: int) -> dict:
     started.write_text(now())
     (run.dir / "lessons.json").unlink(missing_ok=True)
     cmd = agent_cmd(run, budget, turns)
-    run.log("learn: the lessons agent started (budget $%.0f, %d turns)" % (budget, turns))
+    run.log("learn: the lessons agent started (budget $%.2f, %d turns)" % (budget, turns))
     env = {k: v for k, v in os.environ.items() if not k.startswith("CLAUDE_CODE_")}
     try:
         r = subprocess.run(cmd, cwd=CODE_REPO, capture_output=True, text=True, env=env, timeout=3600)

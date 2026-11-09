@@ -77,7 +77,7 @@ Fix anything that fails, then reread once more.
 ## The lessons file
 
 Write it last, to the path the prompt gives, as JSON. Every text field is plain English for the owner: full
-sentences, no jargon, no op numbers or ids in the prose.
+sentences, no jargon, no op numbers or ids in the prose, distances in metres (70 game units is about a metre).
 
 ```
 {"lessons": [{"ops": [n...], "where": "recipe" | "tool",
