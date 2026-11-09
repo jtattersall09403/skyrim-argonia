@@ -3,7 +3,8 @@
 The owner's walk of the new Black Marsh world, posted once the off-game read-back passes in full
 (`tooling/job_guard.sh run nw-verify -- python3 -m tools.newworld.verify`; the table is `out/newworld/verify/report.md`).
 It sits apart from `docs/owner-walk-checks.md`, which is the walk list for the BM&V game; ticks go here, in the same way.
-Posted 2026-11-09 as issue #56 after the read-back passed 50/50.
+Posted 2026-11-09 as issue #56 after the read-back passed 50/50; rebuilt the same day with the owner's 2026-11-09
+feedback (round 2: water, islets, places, six asset mods, keys) and posted to #56 again as ready.
 
 ---
 
@@ -33,6 +34,8 @@ south of Stormhold. To jump to any other place, type `cow ArgoniaBlackMarsh X Y`
   forced change; wait a few seconds for it to settle).
 - `tg` hides and shows grass, `tt` hides and shows trees: use them only to see the ground underneath.
 - M: the map menu.
+- **New keys on the keyboard:** a tap of Space dodges and a hold of Space sprints; Left Shift jumps (and climbs);
+  hold Option (Alt) to walk. The pad is unchanged.
 
 ## The checks
 
@@ -59,7 +62,7 @@ show in the console with `getpos x` and `getpos y`, or just name the place). A s
 - [ ] **G. Water types.** Visit: black swamp water in the Banujha Basin (`cow ArgoniaBlackMarsh -25 -195`); green
       marsh water in Okuwun-Rahei (`cow ArgoniaBlackMarsh 55 -168`); a river in the Tulmek Washes
       (`cow ArgoniaBlackMarsh 15 -207`); a stream in the Kotherra mangroves (`cow ArgoniaBlackMarsh -55 -163`); a pond
-      in Blackwood (`cow ArgoniaBlackMarsh -73 -130`); an estuary on the Sea of Mists (`cow ArgoniaBlackMarsh -50 -239`);
+      in Blackwood (`cow ArgoniaBlackMarsh -73 -130`); an estuary on the Arnesian coast (`cow ArgoniaBlackMarsh 56 -115`);
       the open sea (`cow ArgoniaBlackMarsh 77 -150`). Each looks like its kind (dark, green, clear, sea), the river and
       stream visibly flow, and ponds, marsh and swamp lie still.
 - [ ] **H. Flow goes the right way.** On the river and the stream in G, the water runs downstream toward the sea or
@@ -85,3 +88,14 @@ show in the console with `getpos x` and `getpos y`, or just name the place). A s
       mesas (Chixathe mesa at Fort Chalkmoth, `cow ArgoniaBlackMarsh 37 -142`; the Aunike ridge at Aunike Crown,
       `cow ArgoniaBlackMarsh -8 -179`). If you want more hills or higher
       mesas anywhere, say where; it is a change to the region table, then one rebuild.
+- [ ] **P. Islets.** Places that stand in lakes now have land under them: Luntoc
+      (`cow ArgoniaBlackMarsh 14 -174`), Uzu-Tegh (`cow ArgoniaBlackMarsh 19 -170`) and Fort Gysilla
+      (`cow ArgoniaBlackMarsh 20 -180`) in Lake Ulaish. Each is a small island with water all round, not drowned.
+- [ ] **Q. Helstrom's waters.** Round Helstrom (`cow ArgoniaBlackMarsh -8 -148`) and along the river south-west of it
+      (`cow ArgoniaBlackMarsh -21 -140`): a few main rivers that flow, a few tributary streams, and many winding arms
+      of still green marsh between them.
+- [ ] **R. Water seams.** Wherever two kinds of water meet (fly along the river at Q into the marsh, or at G from a
+      river out to sea): the water is one surface at one level, with no gaps, and its colour changes gradually over
+      several cells, with no straight line or square edge where one kind meets the next.
+- [ ] **S. Keys.** On the keyboard: tap Space to dodge, hold Space to sprint, Left Shift to jump and to climb,
+      hold Option to walk. Nothing else happens on those keys.

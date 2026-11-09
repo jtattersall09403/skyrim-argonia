@@ -25,7 +25,7 @@
 {"place_id":"badal","terrain_need_id":"rise","radius_m":60.0,"why":"the village stands on clay mounds above the flood"}
 {"place_id":"badal","terrain_need_id":"shore-access","radius_m":60.0,"why":"a landing on the inlet"}
 {"place_id":"bala-karag","terrain_need_id":"entrance-in-slope","radius_m":60.0,"facing_deg":270.0,"why":"the hall entrance is cut into the rock"}
-{"place_id":"bala-karag","terrain_need_id":"island","radius_m":80.0,"why":"the ruin stands on its rocky peninsula"}
+{"place_id":"bala-karag","terrain_need_id":"island","radius_m":80.0,"why":"the ruin stands on its rocky island"}
 {"place_id":"bala-karag","terrain_need_id":"shore-access","radius_m":60.0,"why":"the causeway to the shore"}
 {"place_id":"balormaak","terrain_need_id":"entrance-in-slope","radius_m":30.0,"facing_deg":180.0,"why":"the lower halls are cut into the mesa's foot"}
 {"place_id":"bell-station","terrain_need_id":"island","radius_m":40.0,"why":"a platform on pilings in open sea"}
@@ -83,10 +83,10 @@
 {"place_id":"helstrom","terrain_need_id":"flat-pad","radius_m":220.0,"why":"the city's built area on firm ground between the river arms"}
 {"place_id":"helstrom","terrain_need_id":"shore-access","radius_m":60.0,"why":"the river landings where rafts and rootworm traffic arrive"}
 {"place_id":"hirecan","terrain_need_id":"flat-pad","radius_m":40.0,"why":"the stilt hamlet"}
-{"place_id":"hirecan","terrain_need_id":"shore-access","radius_m":50.0,"why":"raft landings"}
+{"place_id":"hirecan","terrain_need_id":"shore-access","radius_m":180.0,"why":"a path down to the river and the raft landings, a short walk off"}
 {"place_id":"hixinoag","terrain_need_id":"flat-pad","radius_m":60.0,"why":"stilt platform and ferry landing"}
 {"place_id":"hixinoag","terrain_need_id":"shore-access","radius_m":60.0,"why":"rafts moor at the channel bank"}
-{"place_id":"homestead-29-m88","terrain_need_id":"shore-access","radius_m":25.0,"why":"house at the tide line"}
+{"place_id":"homestead-29-m88","terrain_need_id":"shore-access","radius_m":70.0,"why":"the beach lies a short walk down from the house"}
 {"place_id":"icalca","terrain_need_id":"flat-pad","radius_m":30.0,"why":"stilt houses"}
 {"place_id":"icalca","terrain_need_id":"shore-access","radius_m":40.0,"why":"raft landings"}
 {"place_id":"imperial-ruin-14-m109","terrain_need_id":"entrance-in-slope","radius_m":40.0,"facing_deg":180.0,"why":"a cellar door cut into the rise"}
@@ -105,7 +105,7 @@
 {"place_id":"inoja","terrain_need_id":"flat-pad","radius_m":110.0,"why":"the town"}
 {"place_id":"inoja","terrain_need_id":"shore-access","radius_m":60.0,"why":"ferry landing"}
 {"place_id":"jal-veesa","terrain_need_id":"flat-pad","radius_m":110.0,"why":"the town's built area on a ring of mud banks"}
-{"place_id":"jal-veesa","terrain_need_id":"shore-access","radius_m":110.0,"why":"the Hist pool and the reed-boat lanes"}
+{"place_id":"jal-veesa","terrain_need_id":"shore-access","radius_m":190.0,"why":"the creek and its reed-boat lanes lie a short walk beyond the built ring"}
 {"place_id":"jarecai","terrain_need_id":"flat-pad","radius_m":110.0,"why":"stilt hall platform"}
 {"place_id":"jarecai","terrain_need_id":"shore-access","radius_m":110.0,"why":"the town stands on the water"}
 {"place_id":"joxhi","terrain_need_id":"flat-pad","radius_m":60.0,"why":"the village mounds"}
@@ -203,7 +203,7 @@
 {"place_id":"outpost-12-m63","terrain_need_id":"flat-pad","radius_m":40.0,"why":"stilt platforms and a drying yard"}
 {"place_id":"outpost-14-m85","terrain_need_id":"island","radius_m":40.0,"why":"the station is on its own islet"}
 {"place_id":"outpost-14-m85","terrain_need_id":"shore-access","radius_m":30.0,"why":"the landing"}
-{"place_id":"outpost-2-m68","terrain_need_id":"shore-access","radius_m":25.0,"why":"the ferry landing"}
+{"place_id":"outpost-2-m68","terrain_need_id":"shore-access","radius_m":80.0,"why":"the ferry landing lies a short walk down from the house"}
 {"place_id":"outpost-2-m96","terrain_need_id":"flat-pad","radius_m":40.0,"why":"the station's built ground"}
 {"place_id":"outpost-2-m96","terrain_need_id":"shore-access","radius_m":30.0,"why":"the landing"}
 {"place_id":"outpost-22-m77","terrain_need_id":"flat-pad","radius_m":40.0,"why":"lodges and egg-bank"}
@@ -251,7 +251,7 @@
 {"place_id":"ovezza","terrain_need_id":"entrance-in-slope","radius_m":30.0,"facing_deg":0.0,"why":"the lower rooms are cut into a bank"}
 {"place_id":"ovezza","terrain_need_id":"shore-access","radius_m":40.0,"why":"the old quay is on the water"}
 {"place_id":"oxayo","terrain_need_id":"flat-pad","radius_m":40.0,"why":"houses and stone store"}
-{"place_id":"oxayo","terrain_need_id":"shore-access","radius_m":50.0,"why":"it stands on a river"}
+{"place_id":"oxayo","terrain_need_id":"shore-access","radius_m":200.0,"why":"the hamlet stands on the rise and a path leads down to the river"}
 {"place_id":"peak-39-m79","terrain_need_id":"rise","radius_m":40.0,"why":"stands on the island's crag"}
 {"place_id":"peak-m11-m84","terrain_need_id":"rise","radius_m":30.0,"why":"the summit rises above the marsh"}
 {"place_id":"peak-m4-m90","terrain_need_id":"rise","radius_m":30.0,"why":"the summit rises above the marsh"}
