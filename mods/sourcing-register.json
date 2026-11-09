@@ -898,5 +898,32 @@
   "used_by": "the NewWorld profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it): asset and source-place dependency for Dunmer, shanty-town and Ashlander places in the new world (ArgoniaNewWorld.esm, phase nw-02)",
   "linked_or_forked_by": "none: depended on as the player’s own download; its plugins never active, never a master",
   "notes": "author pancake. The player's own download is fine as a dependency; placing its meshes/textures or copied records in our generated plugin needs the author's permission."
+ },
+ {
+  "name": "Gray Quarter Overhaul (Nexus 30180)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/30180?tab=files&file_id=112361",
+  "version": "2 (mods/dependencies.json row grey-quarter-overhaul)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it): asset and source-place dependency: the Grey Quarter shanty look for shanty-town places in the new world (ArgoniaNewWorld.esm, phase nw-02)",
+  "linked_or_forked_by": "none: depended on as the player’s own download; its plugins never active, never a master",
+  "notes": "author FarrinRacer. The player's own download is fine as a dependency; placing its meshes/textures or copied records in our generated plugin needs the author's permission."
+ },
+ {
+  "name": "Dawn of Skyrim (Director's Cut) SE (Nexus 9074)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/9074?tab=files&file_id=144970",
+  "version": "1.5 (mods/dependencies.json row dawn-of-skyrim)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it): asset and source-place dependency: the Grey Quarter shanty look for shanty-town places in the new world (ArgoniaNewWorld.esm, phase nw-02)",
+  "linked_or_forked_by": "none: depended on as the player’s own download; its plugins never active, never a master",
+  "notes": "author Vaelka. The player's own download is fine as a dependency; placing its meshes/textures or copied records in our generated plugin needs the author's permission."
+ },
+ {
+  "name": "Dawn of Gray Quarter Expansion Overhauled (Nexus 71162)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/71162?tab=files&file_id=298037",
+  "version": "1 (mods/dependencies.json row dawn-of-grey-quarter)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it): source-place reference only (no assets): the Grey Quarter shanty placements in the new world (ArgoniaNewWorld.esm, phase nw-02)",
+  "linked_or_forked_by": "none: depended on as the player’s own download; its plugins never active, never a master",
+  "notes": "author Jwat8345. The player's own download is fine as a dependency; placing its meshes/textures or copied records in our generated plugin needs the author's permission."
  }
 ]
