@@ -59,5 +59,8 @@ if ! { command -v rtk >/dev/null && rtk --version 2>&1 | grep -q "$want"; }; the
   install -m 0755 "$(find "$tmp/x" -type f -name rtk | head -1)" "$HOME/.local/bin/rtk"
 fi
 
+# nifdump, the place studio's mesh reader, compiled from the pinned ousnius/nifly (tools/places/assets/nifdump)
+[ -x "$HOME/.argonia/bin/nifdump" ] || bash "$HERE/../../tools/places/assets/nifdump/build.sh"
+
 echo "setup ok. Activate with:"
 echo '  export PATH="$HOME/.argonia/venv/bin:$HOME/.dotnet:$HOME/.dotnet/tools:$HOME/.local/bin:$PATH" DOTNET_ROOT="$HOME/.dotnet"'
