@@ -232,3 +232,29 @@ added here the day they are made, with the date and the issue.
   them).
 - 2026-11-08 (in session): the personification ban goes into the dialogue skills now, without waiting for the owner's
   next walk; the owner is changing CLAUDE.md's rule on when skills are updated.
+- 2026-11-09 (new-world feedback, tmp/new-world-feedback-2026-11-09.md, in session): every place promises only
+  what Skyrim's own systems can deliver (a "strong current" is not something the game does), and every place gets a
+  field for what it gives the player: hard gameplay, not local colour, drawn from the full range Skyrim's places
+  give (fast travel, traders and specialist traders, smithing, crafting, cooking, enchanting, alchemy, spells,
+  trainers, combat always paired with a reward in proportion to its difficulty, shrine blessings, rare ingredients
+  and materials, treasure and so on; quests and factions left out for now). A place can give several kinds, and
+  several of each. No purely invented place: every AGENT_INVENTED place is re-derived from the lore by logical
+  extrapolation (neighbouring provinces may be drawn on, e.g. wrecks from Morrowind, Cyrodiil, Elsweyr or Valenwood,
+  with a reason), and all extrapolation is one consistent story and timeline. Ledgers, rolls, tallies and the like
+  are cut to a few, in vocabulary Black Marsh's own lore uses; all place data is reviewed and edited.
+  Water: streams in the north that flow inland are reversed; flow follows each channel's curved course downstream
+  toward the sea (even where it ends in a still body); a channel with no continuous water surface to the sea cannot
+  be a stream or river and is a still kind. The owner's atlas edits (saved 2026-11-09, "update-2026-11-09b") are kept;
+  the small stream fringes on the edges of bodies the owner made swamp or marsh become that body's kind; round
+  Helstrom only the widest river courses stay river and the rest become green marsh. The terrain honours each
+  place's terrain needs (islets for places in lakes). Then the terrain, the plants and the LOD are rebuilt and
+  deployed for the owner's first walk or fly, posted as an update to issue #56, and the atlas updated.
+  Six mods are asset and source-place dependencies only (never active plugins), for Dunmer, shanty and Ashlander
+  places in the new world: Dunmer Settlements of Solstheim (Nexus 33751), Dawn of Grey Quarter expansion
+  overhaul (71162), Project AHO (15996), Nexus 180133 (a Dunmer village), Ashlander camp New Zainab (14229), and
+  Journey to Baan Mular and Morrowind (114518). Updating skills from feedback gets one consistent system, written
+  into CLAUDE.md. On the desktop keyboard, dodge and sprint move from Alt to Space, and jump moves to Shift, on both
+  cards (BM&V and New World).
+- 2026-11-09 (in session): the atlas's water layer may look blobby, but in the game all water is one continuous
+  connected surface at one level, and the seams between water areas, kinds and colours are smooth and gradual, never
+  hard edges or gaps (a cell's water type changes only through a blend of neighbouring types, measured off game).

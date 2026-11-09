@@ -98,7 +98,19 @@ placed model resolving in the NewWorld profile (25 KotM/TR texture paths do not)
 mud 130–150/ha, marsh grass 39/ha, river bottom 27/ha, table in the report) → world.sh (ESM with refs) → navmesh full
 run → LOD full run → the off-game read-back (step 12).
 
-Owner faults to carry into the skills once each fix is verified on the owner's next look (CLAUDE.md, Updating Skills):
-water classification (shape and connectivity decide kind, one kind per closed body; flow follows the channel graph to
-its outlet); texture edges (measured and
-looked at, never assumed from old code).
+Owner faults whose lessons land in the recipes once verified are in docs/skill-fixes.md.
+
+## Round 2: the owner's feedback of 2026-11-09 (before the first walk)
+
+The owner's feedback (owner-rulings.md, 2026-11-09) is delivered before the walk; the walk check (nw-02-walk.md) is
+then updated and posted to issue #56 as ready.
+
+| Lane | What | Status |
+|---|---|---|
+| W | Water: one continuous surface at one level in game, with gradual seams between kinds (no hard colour line at a cell edge, no gap); the owner's atlas edits pulled (290, kept); fringe stream bits on the owner's swamp and marsh bodies take the body's kind; Helstrom's rivers kept only on the widest courses, the rest green marsh; flow from the channel graph downstream toward the sea, northern streams included; a channel not connected by water to the sea is a still kind; atlas arrows follow each channel's curve | todo |
+| T | Terrain honours place_terrain_need (islets for places in lakes, shores, rises), measured per place | todo |
+| P | Places: a "gives the player" field from Skyrim's own range (taxonomy mined from Skyrim.esm); every promise audited for Skyrim-native delivery; no AGENT_INVENTED place (re-derived from the lore, one consistent timeline); ledger, roll and tally vocabulary cut and all place prose reviewed | todo |
+| M | Six asset and source-place mods (Nexus 33751, 71162, 15996, 180133, 14229, 114518): dependencies rows, credits, assets laid in the NewWorld profile with plugins off | todo |
+| K | Keyboard: dodge and sprint on Space, jump on Shift, on both cards | done (controlmap.py KEYBOARD: Space sprint+dodge, LShift jump, Run to Alt; reaches the machine on the next deploy.sh) |
+| S | Skills from feedback: one system (docs/skill-fixes.md, the rule in CLAUDE.md), the open rows moved there | done |
+| R | Rebuild after W and T: terrain, water, landcover, place, world ESM, navmesh, LOD; read-back; deploy; atlas republished; walk check updated and posted to #56 | todo |
