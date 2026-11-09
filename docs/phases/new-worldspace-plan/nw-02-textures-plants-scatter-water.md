@@ -114,3 +114,37 @@ then updated and posted to issue #56 as ready.
 | K | Keyboard: dodge and sprint on Space, jump on Shift, on both cards | done (controlmap.py KEYBOARD: Space sprint+dodge, LShift jump, Run to Alt; reaches the machine on the next deploy.sh) |
 | S | Skills from feedback: one system (docs/skill-fixes.md, the rule in CLAUDE.md), the open rows moved there | done |
 | R | Rebuild after W and T: terrain 20261109T204317Z; the owner's atlas edits of the evening (Update-2026-11-09c) pulled and final over the Helstrom split; water, landcover, place, world ESM with graded water seams (max colour step 14/255), navmesh; atlas v15 published; LOD (Medium), the eight new mod folders, the keyboard map and the NewWorld lay on the play machine; walk check updated | in progress (deploy running) |
+
+**Handover: finishing round 2** (written 2026-11-09 21:55 UTC, while `nw-r2-deploy` ran; a fresh session takes it from here).
+The job `nw-r2-deploy` (`tooling/job_guard.sh run --gpu`, script `~/.argonia/chain/nw02_r2_deploy.sh`, log
+`~/.argonia/jobs/nw-r2-deploy.log`) runs these steps on argonia-play, in order:
+1. Push the eight new mod folders.
+2. Build the LOD at Medium: tools, then send (this sends the ESM and writes `out/newworld/verify/play-esm.sha256`), then
+   run (prepare, terrain, texgen, dyndolod, collect), then check, then archive.
+3. Put the keyboard map on the machine.
+4. Lay the NewWorld profile, then run `stack.ps1 verify -World NewWorld` (output in
+   `out/newworld/verify/play-verify.txt`).
+5. Lay the Argonia profile again.
+
+By 21:55 the push, the tools, the send, prepare (28 s), terrain (1,599 s) and texgen (298 s) were done.
+To finish:
+1. `tooling/job_guard.sh wait nw-r2-deploy`. Then read the log's `== ` lines and `TOTAL`. On a failure, fix the
+   cause and rerun only the steps that are left (lod.sh skips steps whose markers match this ESM).
+2. Check the LOD and the lay:
+   - `lod.sh check` lists every level as expected = found.
+   - `play-verify.txt` ends in VERIFY OK with 0 bad.
+   - The machine is back on the Argonia profile.
+3. `~/.argonia/venv/bin/python -m tools.newworld.verify`. Expect 50/50; the deploy row passes once the send has written
+   the sha.
+4. Fill in `docs/phases/new-worldspace-plan/nw-02-round2-update.md`:
+   - {VERIFY}: the PASS count.
+   - {AWS}: `aws ce get-cost-and-usage` month to date (it was $91.77 at 21:50).
+   - {C1} and {C7}: `python3 tooling/session_tokens.py --last 1` and `--last 7` totals divided by $19 (they were
+     $408 and $2,460).
+5. Post the update: `python3 tooling/owner_inbox.py --comment 56 --body-file docs/phases/new-worldspace-plan/nw-02-round2-update.md`.
+   It posts as the bot, so it is not a false owner wake; never use `gh issue comment`.
+6. Mark the R row done here. Move PROGRESS's nw-02 row to "owed: the owner's walk, issue #56". Delete
+   nw-02-round2-update.md. Commit with `tooling/lane_commit.sh`.
+7. Make sure argonia-play is stopped (it idle-stops itself; check with `infra/gpu-box/run.sh`). Stop the build VM
+   with `tooling/agent_stop.sh` only if no other session is still working on it.
+
