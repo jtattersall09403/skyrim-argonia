@@ -2900,6 +2900,198 @@
    "asset_only": true
   },
   {
+   "id": "dunmer-settlements-solstheim",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 33751,
+    "file": 291202
+   },
+   "name": "Dunmer Settlements of Solstheim",
+   "author": "Symonson",
+   "version": "2.5",
+   "archive": "Dunmer Settlements of Solstheim-33751-2-5-1655213506.zip",
+   "size_kb": 1674,
+   "why": "asset and source-place dependency for Dunmer, shanty-town and Ashlander places in the new world (phase nw-02): asset-only: its meshes and textures laid loose (its BSAs extracted) in the NewWorld profile alone, its plugins never active; ArgoniaNewWorld.esm copies the records it uses as its own and never masters it (owner, 2026-11-09)",
+   "required": true,
+   "profile": "newworld",
+   "sha256": "2d49f176b93f228f03f0a69e52362a67cbc9c13f9d55908fa67dc42b0887d1b0",
+   "licence": "none stated",
+   "permission_summary": "The player's own download is fine as a dependency; placing its meshes/textures or copied records in our generated plugin is using its contents in our mod and needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API mod 33751 file 291202 (MAIN), read 2026-11-09",
+   "plugins": [
+    "dunmer settlements solstheim.esp"
+   ],
+   "masters": [
+    "Skyrim.esm",
+    "Update.esm",
+    "Dragonborn.esm"
+   ],
+   "runtime": "data only; plugins off (asset-only)",
+   "conflicts": "not swept (plugins never active)",
+   "linked_or_forked_by": "none: depended on as the player’s own download",
+   "asset_only": true
+  },
+  {
+   "id": "project-aho",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 15996,
+    "file": 87556
+   },
+   "name": "Project AHO",
+   "author": "Haem Projects",
+   "version": "2.0",
+   "archive": "Project AHO (EN)-15996-2-0-1554570948.rar",
+   "size_kb": 465123,
+   "why": "asset and source-place dependency for Dunmer, shanty-town and Ashlander places in the new world (phase nw-02): asset-only: its meshes and textures laid loose (its BSAs extracted) in the NewWorld profile alone, its plugins never active; ArgoniaNewWorld.esm copies the records it uses as its own and never masters it (owner, 2026-11-09)",
+   "required": true,
+   "profile": "newworld",
+   "sha256": "414f4765ee9e8b8a145b7fa09922ff793e7a39c88d8f11f5a93edc75d33269f1",
+   "licence": "none stated",
+   "permission_summary": "The player's own download is fine as a dependency; placing its meshes/textures or copied records in our generated plugin is using its contents in our mod and needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API mod 15996 file 87556 (MAIN), read 2026-11-09",
+   "plugins": [
+    "Dwarfsphere.esp"
+   ],
+   "masters": [
+    "Skyrim.esm",
+    "Update.esm",
+    "Dawnguard.esm",
+    "HearthFires.esm",
+    "Dragonborn.esm"
+   ],
+   "runtime": "data only; plugins off (asset-only)",
+   "conflicts": "not swept (plugins never active)",
+   "linked_or_forked_by": "none: depended on as the player’s own download",
+   "asset_only": true
+  },
+  {
+   "id": "solstheim-dunmer-additions",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 180133,
+    "file": 765927
+   },
+   "name": "Solstheim Expansion - Dunmer Style Additions",
+   "author": "WangJuhua",
+   "version": "1.1",
+   "archive": "SolstheimExpand 1.02-Main 180133 1.1 2026-06-20T13-09Z QRde312Yr.zip",
+   "size_kb": 472264,
+   "why": "asset and source-place dependency for Dunmer, shanty-town and Ashlander places in the new world (phase nw-02): asset-only: its meshes and textures laid loose (its BSAs extracted) in the NewWorld profile alone, its plugins never active; ArgoniaNewWorld.esm copies the records it uses as its own and never masters it (owner, 2026-11-09)",
+   "required": true,
+   "profile": "newworld",
+   "sha256": "b06bf568033f3593de7c37876e32a6d6e891e0f3fa0474d02c9dbaded7519e5a",
+   "licence": "none stated",
+   "permission_summary": "The player's own download is fine as a dependency; placing its meshes/textures or copied records in our generated plugin is using its contents in our mod and needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API mod 180133 file 765927 (MAIN), read 2026-11-09",
+   "plugins": [
+    "SolstheimExpand.esp"
+   ],
+   "masters": [
+    "Skyrim.esm",
+    "Update.esm",
+    "Dawnguard.esm",
+    "HearthFires.esm",
+    "Dragonborn.esm",
+    "ccasvsse001-almsivi.esm",
+    "ccBGSSSE001-Fish.esm",
+    "ccQDRSSE001-SurvivalMode.esl",
+    "ccBGSSSE037-Curios.esl",
+    "ccbgssse068-bloodfall.esl",
+    "ccBGSSSE025-AdvDSGS.esm",
+    "_ResourcePack.esl"
+   ],
+   "runtime": "data only; plugins off (asset-only)",
+   "conflicts": "not swept (plugins never active)",
+   "linked_or_forked_by": "none: depended on as the player’s own download",
+   "asset_only": true
+  },
+  {
+   "id": "ashlander-camp-new-zainab",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 14229,
+    "file": 695882
+   },
+   "name": "Ashlander Camp New Zainab SSE",
+   "author": "Antiscamp",
+   "version": "1.4",
+   "archive": "Ashlander Camp New Zainab SSE-14229-1-4-1765232903.rar",
+   "size_kb": 38188,
+   "why": "asset and source-place dependency for Dunmer, shanty-town and Ashlander places in the new world (phase nw-02): asset-only: its meshes and textures laid loose (its BSAs extracted) in the NewWorld profile alone, its plugins never active; ArgoniaNewWorld.esm copies the records it uses as its own and never masters it (owner, 2026-11-09)",
+   "required": true,
+   "profile": "newworld",
+   "sha256": "788ab22d080181e4eb960da010944178b2f56dde526f1422ca9973553eb76333",
+   "licence": "none stated",
+   "permission_summary": "The player's own download is fine as a dependency; placing its meshes/textures or copied records in our generated plugin is using its contents in our mod and needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API mod 14229 file 695882 (MAIN), read 2026-11-09",
+   "plugins": [
+    "CampNewZainab.esp"
+   ],
+   "masters": [
+    "Skyrim.esm",
+    "Update.esm",
+    "Dawnguard.esm",
+    "HearthFires.esm",
+    "Dragonborn.esm"
+   ],
+   "runtime": "data only; plugins off (asset-only)",
+   "conflicts": "not swept (plugins never active)",
+   "linked_or_forked_by": "none: depended on as the player’s own download",
+   "asset_only": true
+  },
+  {
+   "id": "journey-to-baan-malur",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 114518,
+    "file": 632485
+   },
+   "name": "Journey to Baan Malur and Morrowind",
+   "author": "pancake",
+   "version": "i1.1.9b",
+   "archive": "Journey to Baan Malur-114518-i1-1-9b-1748515734.7z",
+   "size_kb": 751652,
+   "why": "asset and source-place dependency for Dunmer, shanty-town and Ashlander places in the new world (phase nw-02): asset-only: its meshes and textures laid loose (its BSAs extracted) in the NewWorld profile alone, its plugins never active; ArgoniaNewWorld.esm copies the records it uses as its own and never masters it (owner, 2026-11-09)",
+   "required": true,
+   "profile": "newworld",
+   "sha256": "cf6db91f7c4a7c4759ef56dc6576a224af6ba6814a828784cbea3e556a971e60",
+   "licence": "none stated",
+   "permission_summary": "The player's own download is fine as a dependency; placing its meshes/textures or copied records in our generated plugin is using its contents in our mod and needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API mod 114518 file 632485 (MAIN), read 2026-11-09",
+   "plugins": [
+    "Journey to Baan Malur.esp"
+   ],
+   "masters": [
+    "Skyrim.esm",
+    "Update.esm",
+    "Dawnguard.esm",
+    "HearthFires.esm",
+    "Dragonborn.esm",
+    "ccBGSSSE001-Fish.esm",
+    "ccBGSSSE037-Curios.esl"
+   ],
+   "runtime": "data only; plugins off (asset-only)",
+   "conflicts": "not swept (plugins never active)",
+   "linked_or_forked_by": "none: depended on as the player’s own download",
+   "asset_only": true
+  },
+  {
    "id": "xlodgen",
    "source": {
     "github": "sheson/xLODGen",

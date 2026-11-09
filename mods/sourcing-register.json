@@ -853,5 +853,50 @@
   "used_by": "a LOD tool run on the game machine by infra/gpu-box/lod.ps1 (nw-02 step 11); never laid into Data or shipped",
   "linked_or_forked_by": "none: a tool the player downloads and runs",
   "notes": "author sheson. Non-commercial share-alike: the player downloads and runs it on their own machine; nothing of it is copied into our files or shipped, and its output is derived there (0014 §4), so no permission is asked. A shipped LOD made with it would carry BY-NC-SA."
+ },
+ {
+  "name": "Dunmer Settlements of Solstheim (Nexus 33751)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/33751?tab=files&file_id=291202",
+  "version": "2.5 (mods/dependencies.json row dunmer-settlements-solstheim)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it): asset and source-place dependency for Dunmer, shanty-town and Ashlander places in the new world (ArgoniaNewWorld.esm, phase nw-02)",
+  "linked_or_forked_by": "none: depended on as the player’s own download; its plugins never active, never a master",
+  "notes": "author Symonson. The player's own download is fine as a dependency; placing its meshes/textures or copied records in our generated plugin needs the author's permission."
+ },
+ {
+  "name": "Project AHO (Nexus 15996)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/15996?tab=files&file_id=87556",
+  "version": "2.0 (mods/dependencies.json row project-aho)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it): asset and source-place dependency for Dunmer, shanty-town and Ashlander places in the new world (ArgoniaNewWorld.esm, phase nw-02)",
+  "linked_or_forked_by": "none: depended on as the player’s own download; its plugins never active, never a master",
+  "notes": "author Haem Projects. The player's own download is fine as a dependency; placing its meshes/textures or copied records in our generated plugin needs the author's permission."
+ },
+ {
+  "name": "Solstheim Expansion - Dunmer Style Additions (Nexus 180133)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/180133?tab=files&file_id=765927",
+  "version": "1.1 (mods/dependencies.json row solstheim-dunmer-additions)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it): asset and source-place dependency for Dunmer, shanty-town and Ashlander places in the new world (ArgoniaNewWorld.esm, phase nw-02)",
+  "linked_or_forked_by": "none: depended on as the player’s own download; its plugins never active, never a master",
+  "notes": "author WangJuhua. The player's own download is fine as a dependency; placing its meshes/textures or copied records in our generated plugin needs the author's permission."
+ },
+ {
+  "name": "Ashlander Camp New Zainab SSE (Nexus 14229)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/14229?tab=files&file_id=695882",
+  "version": "1.4 (mods/dependencies.json row ashlander-camp-new-zainab)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it): asset and source-place dependency for Dunmer, shanty-town and Ashlander places in the new world (ArgoniaNewWorld.esm, phase nw-02)",
+  "linked_or_forked_by": "none: depended on as the player’s own download; its plugins never active, never a master",
+  "notes": "author Antiscamp. The player's own download is fine as a dependency; placing its meshes/textures or copied records in our generated plugin needs the author's permission."
+ },
+ {
+  "name": "Journey to Baan Malur and Morrowind (Nexus 114518)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/114518?tab=files&file_id=632485",
+  "version": "i1.1.9b (mods/dependencies.json row journey-to-baan-malur)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it): asset and source-place dependency for Dunmer, shanty-town and Ashlander places in the new world (ArgoniaNewWorld.esm, phase nw-02)",
+  "linked_or_forked_by": "none: depended on as the player’s own download; its plugins never active, never a master",
+  "notes": "author pancake. The player's own download is fine as a dependency; placing its meshes/textures or copied records in our generated plugin needs the author's permission."
  }
 ]
