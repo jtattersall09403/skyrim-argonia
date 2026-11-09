@@ -52,6 +52,7 @@ DIFFUSE = 0.12            # hillslope diffusion per step (share of the Laplacian
 TALUS_DEG = 42.0
 DROPS_PER_SAMPLE = 0.5
 RISER_K = 1.5
+LOW_HOLLOW_M = 0.8        # deepest dry dip left on low ground (metres)
 LOW_FILL = 0.5            # share of a low-ground hollow's depth filled: shallow dry dips stay, no dead flats             # erodibility of a mesa's riser, as a multiple of full  # rain droplets per erodible sample
 CLIFF_KEEP_DEG = 55.0
 # Room to build: the buildable core's radius (metres) by settlement tier, the steepest slope left in it, and how much
@@ -234,7 +235,9 @@ def weather(relief_m: np.ndarray, water_s: np.ndarray, F: dict, seed: int = 1952
     outlet[0, :] = outlet[-1, :] = outlet[:, 0] = outlet[:, -1] = True
     seed = np.where(outlet, out, out.max() + 1.0)
     filled = reconstruction(seed.astype(np.float32), out.astype(np.float32), method="erosion")
-    out = out + LOW_FILL * np.clip((40.0 - span) / 25.0, 0, 1) * (filled - out)
+    lw_f = np.clip((40.0 - span) / 25.0, 0, 1)
+    out = out + lw_f * (np.maximum(out, filled - LOW_HOLLOW_M) - out)       # no low-ground hollow deeper than this
+    out = out + LOW_FILL * lw_f * (filled - out)
     return np.maximum(out, np.minimum(relief_m, DRY_M)).astype(np.float32)
 
 

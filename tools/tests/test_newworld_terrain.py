@@ -120,9 +120,10 @@ def test_weathering_drains_keeps_marsh_flat_and_settles_places():
     assert (before - relief)[land].max() > 0.5                              # (the noise had hollows to drain)
     assert np.abs(out - relief)[land].max() > 0.3                          # rain and drainage cut the hills
     low = dict(F, summit=np.full((n, n), 15.0))                             # low ground: every hollow drains
-    lo = te.weather((relief - 25).clip(1, None).astype(np.float32), water, low, 7)
-    filled = reconstruction(np.where(outlet, lo, lo.max() + 1), lo, method="erosion")
-    assert (filled - lo)[land].max() < 0.01
+    raw = (relief - 25).clip(1, None).astype(np.float32)
+    lo = te.weather(raw, water, low, 7)
+    depth = lambda z: (reconstruction(np.where(outlet, z, z.max() + 1), z, method="erosion") - z)[land].max()
+    assert depth(lo) <= te.LOW_HOLLOW_M * te.LOW_FILL + 0.05 < depth(raw)   # low ground: only shallow dips
     del rng
     r = out.copy()
     done = te.settle_places(r, [(80.0, 90.0, "town")], te.M)
