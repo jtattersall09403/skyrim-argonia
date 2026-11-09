@@ -23,20 +23,44 @@ from tools.places.seat import STEP, Ground, foot_points, foot_relief
 
 LANDING_WEIGHT = 3.0
 COARSE_SAMPLES = 6
-W_WET, W_SLOPE, W_OFF = 10.0, 1.0, 50.0
+W_WET, W_SLOPE, W_OFF = 1000.0, 1.0, 1000.0   # water and land are hard: a miss outweighs any move
 W_MOVE, W_TURN, W_NEIGH, W_OVERLAP = 0.6, 0.4, 0.8, 6.0
 RELIEF_SLACK, RELIEF_MIN = 48.0, 64.0
+WATERLINE_GAP = 8.0
 
 
-def relief_allowed(src_relief: float, seat: dict) -> float | None:
-    """How far the ground under a building may rise: the source's own rise and some slack, or as deep as the source
-    sank it; None when it does not stand on the ground (bridges, piers, things on other things)."""
+NORM_PCT, NORM_MAX = 0.75, 256.0
+
+
+def relief_norm(src: Ground, refs: list[dict], bases: dict) -> float:
+    """How much rise the source's own builders commonly set a building on: the NORM_PCT percentile of the ground's
+    rise under its buildings that stand on the ground, between RELIEF_MIN and NORM_MAX."""
+    from tools.places.draft import seating
+    rel = []
+    for r in refs:
+        f = geom.foot(r, bases)
+        if r.get("kind") != "building" or not f:
+            continue
+        if seating.infer(r, [], bases, src, False).get("mode") == "ground":
+            rel.append(foot_relief(src, r["pos"][0], r["pos"][1], r.get("rot", [0, 0, 0])[2], f))
+    if not rel:
+        return RELIEF_MIN
+    rel.sort()
+    return round(max(RELIEF_MIN, min(NORM_MAX, rel[int(NORM_PCT * (len(rel) - 1))])), 1)
+
+
+def relief_allowed(src_relief: float, seat: dict, norm: float = RELIEF_MIN) -> float | None:
+    """How far the ground under a building may rise: the source's own rise there and some slack, what the source's
+    builders commonly set a building on (`norm`), or as deep as the source sank it; None when it does not stand on
+    the ground (bridges, piers, things on other things)."""
     if seat.get("mode") != "ground":
         return None
-    return max(src_relief + RELIEF_SLACK, RELIEF_MIN, -float(seat.get("dz", 0.0)))
+    return max(src_relief + RELIEF_SLACK, norm, -float(seat.get("dz", 0.0)))
 LOCAL_SHIFTS = [-384.0, -256.0, -128.0, 0.0, 128.0, 256.0, 384.0]
 LOCAL_TURNS = [math.radians(a) for a in (-15, -7.5, 0, 7.5, 15)]
 LANDING_SHIFTS = [-1024.0, -768.0, -512.0, -256.0, 0.0, 256.0, 512.0, 768.0, 1024.0]
+WIDE_SHIFTS = [float(v) for v in range(-1536, 1537, 256)]   # a cluster whose spot fails slides further
+WIDE_TURNS = [math.radians(a) for a in range(-45, 46, 15)]
 
 
 @dataclass
@@ -96,6 +120,15 @@ class Scorer:
                 allow = max(self.src_relief[(c.id, fid)] + RELIEF_SLACK, RELIEF_MIN)
                 cost += W_SLOPE * max(0.0, rel - allow) / 128.0
         return cost * (self.landing_weight if c.kind == "landing" else 1.0)
+
+    def misses(self, c: Cluster, xf: geom.Xf) -> int:
+        """Sample points of a cluster on the wrong side of the waterline (or off our map)."""
+        g = self.ours
+        n = 0
+        for px, py, w in c.wet:
+            qx, qy = xf.pt(px, py)
+            n += (not g.has(qx, qy)) or g.wet(qx, qy) != w
+        return n
 
     def total(self, xf: geom.Xf, coarse: bool = False) -> float:
         if not coarse:
@@ -177,24 +210,32 @@ def local_fit(sc: Scorer, clusters: list[Cluster], xf: geom.Xf, bases_radius: di
         rng = LANDING_SHIFTS if c.kind == "landing" else LOCAL_SHIFTS
         neigh = [(shifts[o.id], geom.dist(c.centre, o.centre)) for o in clusters
                  if o.id in shifts and geom.dist(c.centre, o.centre) < 2048]
-        best = None
-        for dr in LOCAL_TURNS:
-            for dx in rng:
-                for dy in rng:
-                    cand = xf.then(dx, dy, dr, about)
-                    k = sc.cost(c, cand)
-                    k += W_MOVE * (dx * dx + dy * dy) / 256.0 ** 2 + W_TURN * (dr / math.radians(15)) ** 2
-                    if neigh:
-                        wsum = sum(1 / (d + 256) for _, d in neigh)
-                        mx = sum(s[0] / (d + 256) for s, d in neigh) / wsum
-                        my = sum(s[1] / (d + 256) for s, d in neigh) / wsum
-                        k += W_NEIGH * ((dx - mx) ** 2 + (dy - my) ** 2) / 256.0 ** 2
-                    if c.kind == "building":
-                        mine = [(*cand.pt(f[1], f[2]), math.hypot(*f[4])) for f in c.feet[:1]]
-                        k += W_OVERLAP * sum(_overlap(m, o) for m in mine for o in circles)
-                    key = (round(k, 6), abs(dx) + abs(dy), abs(dr))
-                    if best is None or key < best[0]:
-                        best = (key, cand, dx, dy, dr)
+        def search(rng, turns, w_neigh):
+            best = None
+            for dr in turns:
+                for dx in rng:
+                    for dy in rng:
+                        cand = xf.then(dx, dy, dr, about)
+                        k = sc.cost(c, cand)
+                        k += W_MOVE * (dx * dx + dy * dy) / 256.0 ** 2 + W_TURN * (dr / math.radians(15)) ** 2
+                        if neigh:
+                            wsum = sum(1 / (d + 256) for _, d in neigh)
+                            mx = sum(s[0] / (d + 256) for s, d in neigh) / wsum
+                            my = sum(s[1] / (d + 256) for s, d in neigh) / wsum
+                            k += w_neigh * ((dx - mx) ** 2 + (dy - my) ** 2) / 256.0 ** 2
+                        if c.kind == "building":
+                            mine = [(*cand.pt(f[1], f[2]), math.hypot(*f[4])) for f in c.feet[:1]]
+                            k += W_OVERLAP * sum(_overlap(m, o) for m in mine for o in circles)
+                        key = (round(k, 6), abs(dx) + abs(dy), abs(dr))
+                        if best is None or key < best[0]:
+                            best = (key, cand, dx, dy, dr)
+            return best
+        best = search(rng, LOCAL_TURNS, W_NEIGH)
+        if sc.misses(c, best[1]):
+            # its spot fails on water or land: slide along the bank, turn, step to the next ground of its kind
+            wide = search(WIDE_SHIFTS, WIDE_TURNS, W_NEIGH * 0.1)
+            if sc.misses(c, wide[1]) < sc.misses(c, best[1]):
+                best = wide
         _, cand, dx, dy, dr = best
         fit.per[c.id] = cand
         shifts[c.id] = (dx, dy)
@@ -206,9 +247,10 @@ def local_fit(sc: Scorer, clusters: list[Cluster], xf: geom.Xf, bases_radius: di
     return fit
 
 
-def patch_verts(ours: Ground, x: float, y: float, rz: float, f, target: float) -> dict:
+def patch_verts(ours: Ground, x: float, y: float, rz: float, f, target: float, max_dz: float = 1e9) -> dict:
     """Vertex offsets that bring the land under a footprint (and a vertex beyond) to `target`, blended out over
-    the next vertex and a half: {(cx, cy): [[row, col, dz]...]} (an edge vertex is written to both cells)."""
+    the next vertex: {(cx, cy): [[row, col, dz]...]} (an edge vertex is written to both cells). No change is over
+    max_dz, and no point crosses the waterline (it stays WATERLINE_GAP clear of the surface on its own side)."""
     half = math.hypot(*f) + 2 * STEP
     verts: dict[tuple[int, int], list] = {}
     gx0, gx1 = math.floor((x - half) / STEP), math.ceil((x + half) / STEP)
@@ -225,7 +267,14 @@ def patch_verts(ours: Ground, x: float, y: float, rz: float, f, target: float) -
             h = ours.vertex(gx, gy)
             if h is None or blend <= 0:
                 continue
-            dz = round((target - h) * blend, 1)
+            dz = max(-max_dz, min(max_dz, (target - h) * blend))
+            w = ours.water(gx * STEP, gy * STEP)
+            if w is not None:
+                if h < w:
+                    dz = min(dz, max(0.0, w - WATERLINE_GAP - h))
+                else:
+                    dz = max(dz, min(0.0, w + WATERLINE_GAP - h))
+            dz = round(dz, 1)
             if abs(dz) < 1:
                 continue
             cx, col = divmod(gx, 32)
@@ -241,7 +290,8 @@ def patch_verts(ours: Ground, x: float, y: float, rz: float, f, target: float) -
 
 
 def patch_for(ours: Ground, src: Ground, r_src: dict, x: float, y: float, rz: float, f, kind: str,
-              src_relief: float | None, which: str = "both", seat: dict | None = None) -> tuple[float, str] | None:
+              src_relief: float | None, which: str = "both", seat: dict | None = None,
+              norm: float = RELIEF_MIN) -> tuple[float, str] | None:
     """The land patch one placed thing still needs after the fit, as (target height, reason), or None.
 
     - a building on ground steeper than the source's own: level to the median under it;
@@ -259,7 +309,7 @@ def patch_for(ours: Ground, src: Ground, r_src: dict, x: float, y: float, rz: fl
         above = max(32.0, (sh - swl) if swl is not None and sh is not None else 32.0)
         return w + above, "stood on the source's dry land; our water is here"
     if kind == "building" and f and src_relief is not None and which in ("relief", "both"):
-        allow = relief_allowed(src_relief, seat or {"mode": "ground"})
+        allow = relief_allowed(src_relief, seat or {"mode": "ground"}, norm)
         rel = foot_relief(ours, x, y, rz, f)
         if allow is not None and rel > allow:
             hs = sorted(h for h in (ours.height(px, py) for px, py in foot_points(x, y, rz, f, 5)) if h is not None)

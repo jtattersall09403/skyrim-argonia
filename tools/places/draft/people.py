@@ -30,6 +30,12 @@ ROLE_MATCH = {
     "resident": r"citizen|villager|farmer|resident|townsperson|commoner",
 }
 INDOOR = {"innkeeper", "spell-trader"}
+NO_BED = {"innkeeper"}
+OUTDOOR_WORK = {"smith"}  # a smith works the forge in the yard       # Skyrim's innkeepers keep the inn all day and night: one 24-hour package, no bed
+STATION_OWNER = {"forge": "smith", "anvil": "smith", "grindstone": "smith", "armour-workbench": "smith",
+                 "smelter": "smith", "tanning-rack": "smith", "alchemy-lab": "apothecary",
+                 "arcane-enchanter": "spell-trader", "staff-enchanter": "spell-trader", "cooking-pot": "innkeeper",
+                 "oven": "innkeeper"}
 SERVICE_HOURS = (8, 20)      # vendors open (town-life.md: VendorFaction hours)
 NAMES_A = ["Ah", "Bee", "Chee", "Dee", "Ee", "Heem", "Jaa", "Kee", "Lee", "Mee", "Naa", "Okee", "Paa", "Ree",
            "Sei", "Tee", "Ula", "Vee", "Wan", "Xil", "Yee", "Zee", "Nur", "Tsa", "Heeta", "Ra"]
@@ -113,9 +119,8 @@ def routine(role: str, bed: dict, work: dict, eat: dict, wander: dict, shift: st
         return [{"start": 21, "hours": 12, "kind": "patrol", "at": work},
                 {"start": 9, "hours": 1, "kind": "eat", "at": eat},
                 {"start": 10, "hours": 11, "kind": "sleep", "at": bed}]
-    if role == "innkeeper":
-        return [{"start": 0, "hours": 6, "kind": "sleep", "at": bed},
-                {"start": 6, "hours": 18, "kind": "work", "at": work}]
+    if role in NO_BED:
+        return [{"start": 0, "hours": 24, "kind": "work", "at": work}]
     if role == "resident":
         return [{"start": 0, "hours": 7, "kind": "sleep", "at": bed},
                 {"start": 7, "hours": 1, "kind": "eat", "at": eat},

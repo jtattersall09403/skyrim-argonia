@@ -23,15 +23,20 @@ from pathlib import Path
 
 from tools.places.draft import clear as clearmod
 from tools.places.draft import geom, interiors, io, people, seating
+from tools.places.draft import paths as paths_mod
 from tools.places.draft.geom import LEVELLED
 from tools.places.draft.cluster import VEG, decompose
-from tools.places.draft.fit import Scorer, global_fit, local_fit, patch_for, patch_verts
+from tools.places.draft.fit import Scorer, global_fit, local_fit, patch_for, patch_verts, relief_norm
 from tools.places.draft.fit import _pivot as fit_pivot
 from tools.places.draft.paths import PATH_WIDTH, STREET_WIDTH, NavGraph, network, simplify
-from tools.places.seat import Ground, foot_relief, seat_all
+from tools.places.seat import Ground, foot_points, foot_relief, seat_all
 
 UNITS_PER_M = 70.0
-PATCH_ROUNDS = 3
+STREET_SLOPE_MIN, STREET_SLOPE_MAX = 15.0, 35.0   # degrees: our streets climb no steeper than the source's did
+DIRECTIONAL = {"door", "building", "static", "furniture", "activator"}
+PATCH_MAX = 105.0          # 1.5 m: the most a patch changes any height point
+CLUSTER_NUDGE = [float(v) for v in range(64, 2049, 64)]
+NUDGE_STEPS = [64.0, 128.0, 192.0, 256.0, 320.0, 384.0]
 PATCH_KINDS = {"building", "static", "furniture", "container", "door", "activator"}
 TOOL_FILES = ["run.py", "cluster.py", "fit.py", "seating.py", "paths.py", "clear.py", "interiors.py", "people.py",
               "geom.py", "io.py"]
@@ -74,7 +79,7 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
         return {"skipped": True, "key": key}
     S = src.ground
     G = Ground.load(grd.path)
-    bases = io.place_bases(src, grd, place.get("draft") or {})
+    bases = io.place_bases(src, grd, place)
     ext = [r for r in src.exterior.refs]
     by_src = {r["id"]: r for r in ext}
     clusters, of, wild = decompose(ext, bases, S)
@@ -121,14 +126,24 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
         rot = list(r.get("rot") or [0, 0, 0])
         rot[2] = round(cx.yaw(rot[2]), 5)
         rep = replace.get(r["base"])
+        al = None
         if rep:
-            rot[2] = round((rot[2] + math.radians(float(rep.get("turn_deg", 0)))) % (2 * math.pi), 5)
+            al = geom.align(bases.get(r["base"]) or {}, bases.get(rep["base"]) or {}, rep.get("turn_deg")) \
+                if r.get("kind") in DIRECTIONAL else None
+            orig_yaw = rot[2]
+            rot[2] = round((rot[2] + math.radians(al["turn_deg"] if al else float(rep.get("turn_deg", 0))))
+                           % (2 * math.pi), 5)
+            if al:
+                sx, sy = geom.turn(al["shift_local"], orig_yaw)
+                x, y = x + sx, y + sy
         row = {"id": io.mint(place_id, "exterior", rid), "base": rep["base"] if rep else r["base"], "kind": r.get("kind"),
                "pos": [round(x, 2), round(y, 2), r["pos"][2]], "rot": rot, "scale": r.get("scale", 1.0),
                "layer": "place", "flags": r.get("flags") or [], "src": rid, "seat": seat, "cluster": cid}
         for k in ("owner", "lock", "door", "linked", "enable_parent", "primitive", "map_marker", "edid"):
             if r.get(k) is not None:
                 row[k] = r[k]
+        if al:
+            row["align"] = {"turn_deg": al["turn_deg"], "shift": [round(sx, 1), round(sy, 1)], "of": r["base"]}
         our_id[rid] = row["id"]
         our.append(row)
         loc = fit.local.get(cid, {})
@@ -169,30 +184,115 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
         if not b:
             row["base_unknown"] = True
         our.append(row)
-    # --- land patches, the last resort: what the fit could not settle, thing by thing ---
+    # --- water and land as our world has them: a thing on the wrong side of the waterline after the fit is
+    # nudged to the nearest ground of its kind, or dropped; the land is never turned to water or water to land ---
+    gone: dict[str, str] = {}
+    lrow_of = {lr.get("as"): lr for lr in ledger if lr["space"] == "exterior"}
+
+    def wrong(row) -> bool:
+        if not row.get("src") or row["seat"].get("mode") in ("on", "free", "above") or row.get("kind") not in PATCH_KINDS:
+            return False
+        r_src = by_src[row["src"]]
+        return G.wet(row["pos"][0], row["pos"][1], 16) != S.wet(r_src["pos"][0], r_src["pos"][1], 16)
+
+    # a door never leaves its building: a cluster whose door is on the wrong side moves whole
+    by_cluster: dict[str, list[dict]] = {}
+    for row in our:
+        by_cluster.setdefault(row.get("cluster"), []).append(row)
+    for cid, rows in sorted(by_cluster.items(), key=lambda kv: str(kv[0])):
+        if not any(r.get("kind") == "door" and wrong(r) for r in rows):
+            continue
+        best = None
+        for d in [0.0] + CLUSTER_NUDGE:
+            for k in range(16):
+                dx, dy = d * math.cos(k * math.pi / 8), d * math.sin(k * math.pi / 8)
+                for r in rows:
+                    r["pos"][0] += dx
+                    r["pos"][1] += dy
+                bad_doors = sum(1 for r in rows if r.get("kind") == "door" and wrong(r))
+                n = sum(1 for r in rows if wrong(r))
+                for r in rows:
+                    r["pos"][0] -= dx
+                    r["pos"][1] -= dy
+                key = (bad_doors, n, d)
+                if best is None or key < best[0]:
+                    best = (key, dx, dy)
+                if d == 0.0:
+                    break
+            if best[0][:2] == (0, 0):
+                break
+        _, dx, dy = best
+        for r in rows:
+            r["pos"][0], r["pos"][1] = round(r["pos"][0] + dx, 2), round(r["pos"][1] + dy, 2)
+            lr = lrow_of[r["id"]]
+            if lr["status"] == "placed" and (dx or dy):
+                lr["status"] = "adapted"
+        fit.local.setdefault(cid, {})["nudge"] = [round(dx, 1), round(dy, 1)]
+    for row in sorted(our, key=lambda r: r["id"]):
+        if not row.get("src") or row["seat"].get("mode") in ("on", "free", "above") or row.get("kind") not in PATCH_KINDS:
+            continue
+        r_src = by_src[row["src"]]
+        want = S.wet(r_src["pos"][0], r_src["pos"][1], 16)
+        x, y = row["pos"][0], row["pos"][1]
+        if G.wet(x, y, 16) == want:
+            continue
+        spot = next(((x + d * math.cos(a), y + d * math.sin(a)) for d in NUDGE_STEPS
+                     for a in (k * math.pi / 4 for k in range(8)) if G.wet(x + d * math.cos(a), y + d * math.sin(a), 16) == want
+                     and G.has(x + d * math.cos(a), y + d * math.sin(a))), None)
+        lr = lrow_of[row["id"]]
+        if spot:
+            row["pos"][0], row["pos"][1] = round(spot[0], 2), round(spot[1], 2)
+            lr["status"] = "adapted" if lr["status"] == "placed" else lr["status"]
+            lr["nudge"] = round(geom.dist((x, y), spot), 1)
+        else:
+            gone[row["id"]] = (f"no {'water' if want else 'dry land'} within {NUDGE_STEPS[-1]:.0f} units of its fitted spot;"
+                               " our water and land are kept as they are")
+    # what stood on a dropped thing goes with it
+    changed = True
+    while changed:
+        changed = False
+        for row in our:
+            if row["id"] not in gone and row["seat"].get("on") in gone:
+                gone[row["id"]] = "stood on a thing that was dropped"
+                changed = True
+    for row in our:
+        if row["id"] in gone:
+            lr = lrow_of[row["id"]]
+            lr.update({"status": "dropped", "why": gone[row["id"]]})
+            lr.pop("as", None)
+    our = [r for r in our if r["id"] not in gone]
+    our_id = {k: v for k, v in our_id.items() if v not in gone}
+    for row in our:
+        if (row.get("enable_parent") or {}).get("ref") in gone:
+            row.pop("enable_parent")
+        if row.get("linked"):
+            row["linked"] = [lk for lk in row["linked"] if lk.get("ref") not in gone]
+
+    # --- land patches, the last resort: only to ease the ground under a building, bounded, never across the
+    # waterline ---
     sums: dict[tuple, dict] = {}
-    patched: dict[str, str] = {}
+    norm = relief_norm(S, ext, bases)
     if dec.get("keep_patches", True):
-        # water and land first, then the ground under buildings, so a level floor is never undercut after
-        cand = [r for r in our if r.get("src") and r["seat"].get("mode") not in ("on", "free")
-                and r.get("kind") in PATCH_KINDS]
-        one = [(r, "wet") for r in sorted(cand, key=lambda r: r["id"])] + \
-              [(r, "relief") for r in sorted(cand, key=lambda r: r["id"]) if r.get("kind") == "building"]
-        passes = one * PATCH_ROUNDS     # overlapping patches settle in a few rounds
-        for row, which in passes:
+        for row in sorted((r for r in our if r.get("kind") == "building" and r.get("src")), key=lambda r: r["id"]):
+            f = row["seat"].get("foot")
+            if not f or row["seat"].get("mode") != "ground":
+                continue
             r_src = by_src[row["src"]]
-            f = row["seat"].get("foot") or [64.0, 64.0]
-            src_rel = foot_relief(S, r_src["pos"][0], r_src["pos"][1], r_src["rot"][2], f) \
-                if row.get("kind") == "building" and row["seat"].get("foot") else None
+            src_rel = foot_relief(S, r_src["pos"][0], r_src["pos"][1], r_src["rot"][2], f)
             need = patch_for(G, S, r_src, row["pos"][0], row["pos"][1], row["rot"][2], f, row["kind"],
-                             src_rel, which, row["seat"])
+                             src_rel, "relief", row["seat"], norm)
             if not need:
                 continue
             target, why = need
-            verts = patch_verts(G, row["pos"][0], row["pos"][1], row["rot"][2], f, target)
+            verts = patch_verts(G, row["pos"][0], row["pos"][1], row["rot"][2], f, target, PATCH_MAX)
+            if not verts:
+                continue
             G.apply_patches([{"cell": list(k), "verts": v} for k, v in verts.items()])
             label = f"{row.get('cluster')} {row['base']}: {why}"
-            patched[row["src"]] = why
+            lr = lrow_of[row["id"]]
+            if lr["status"] == "placed":
+                lr["status"] = "adapted"
+            lr["patch"] = why
             for cell, vs in verts.items():
                 c = sums.setdefault(cell, {"verts": {}, "why": []})
                 for rr, cc, dz in vs:
@@ -201,10 +301,6 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
                     c["why"].append(label)
     land = [{"cell": list(cell), "verts": [[k[0], k[1], v] for k, v in sorted(c["verts"].items()) if abs(v) >= 1],
              "why": "; ".join(c["why"]), "by": "draft"} for cell, c in sorted(sums.items())]
-    for lrow in ledger:
-        if lrow["src"] in patched and lrow["status"] == "placed":
-            lrow["status"] = "adapted"
-            lrow["patch"] = patched[lrow["src"]]
     seat_all(our, G)
 
     # --- interiors ---
@@ -245,16 +341,26 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
         rz = src_door.get("rot", [0, 0, 0])[2]
         return (src_door["pos"][0] - 128 * math.sin(rz), src_door["pos"][1] - 128 * math.cos(rz))
 
+    our_row_of_src = {r["src"]: r for r in our if r.get("src")}
+
+    def to_ours(src_ref_id: str, p) -> tuple[float, float]:
+        """A source point near a placed ref, taken with that ref as it was finally placed (fit, then any nudge)."""
+        row = our_row_of_src[src_ref_id]
+        xf = fit.per[row["cluster"]]
+        m, at = xf.pt(*p), xf.pt(*by_src[src_ref_id]["pos"][:2])
+        return (m[0] + row["pos"][0] - at[0], m[1] + row["pos"][1] - at[1])
+
     nodes_src, nodes_our = {}, {}
     for d in ext_doors:
         f = front(d)
         nodes_src[d["id"]] = f
-        nodes_our[d["id"]] = fit.per[of[d["id"]]].pt(*f)
+        nodes_our[d["id"]] = to_ours(d["id"], f)
     landing = next((c for c in clusters if c.kind == "landing"), None)
     if landing:
         # the landing's shore end: from its member nearest the town, walk towards the town until dry land
-        cand = [by_src[i] for i in landing.members if by_src[i].get("kind") not in VEG]
-        start = min(cand, key=lambda r: (geom.dist(r["pos"], pivot), r["id"]))["pos"]
+        cand = [by_src[i] for i in landing.members if by_src[i].get("kind") not in VEG and i in our_row_of_src]
+        first = min(cand, key=lambda r: (geom.dist(r["pos"], pivot), r["id"]))
+        start = first["pos"]
         d = geom.dist(start, pivot) or 1.0
         ux, uy = (pivot[0] - start[0]) / d, (pivot[1] - start[1]) / d
         land_src = (start[0], start[1])
@@ -264,19 +370,115 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
                 land_src = p
                 break
         nodes_src["landing"] = land_src
-        nodes_our["landing"] = fit.per[landing.id].pt(*land_src)
-    nav = NavGraph(src.exterior.navmesh)
+        q = to_ours(first["id"], land_src)
+        # on our side too, the shore end stands on dry ground
+        q = next(((q[0] + r * math.cos(t), q[1] + r * math.sin(t)) for r in [0.0] + NUDGE_STEPS * 2
+                  for t in (k * math.pi / 8 for k in range(16)) if not G.wet(q[0] + r * math.cos(t), q[1] + r * math.sin(t), 16)), q)
+        nodes_our["landing"] = q
+
+    # the source's streets: its painted roads, its walkways, its navmesh's preferred paths
+    paint = paths_mod.road_points(src.exterior.path)
+    paint_grid = {(round(x / 128), round(y / 128)) for x, y in paint}
+    walk_src = [r for r in ext if r.get("kind") in ("building", "static") and paths_mod.WALKWAY.search(
+        str((bases.get(r["base"]) or {}).get("model", "")))]
+    prefer = {(int(x // 128), int(y // 128)) for x, y in paint}
+    for r in walk_src:
+        for x, y in foot_points(r["pos"][0], r["pos"][1], r["rot"][2], geom.foot(r, bases), 5):
+            prefer.add((int(x // 128), int(y // 128)))
+    nav = NavGraph(src.exterior.navmesh, prefer)
     edges = network(nodes_src, nav)
+    max_slope = max(STREET_SLOPE_MIN, min(STREET_SLOPE_MAX, sorted(
+        [paths_mod.route_slope(S, simplify(pts, 32)) for _, _, pts in edges] or [STREET_SLOPE_MIN])[
+        int(0.9 * (len(edges) - 1)) if edges else 0] + 5))
+    # where our streets may not go: water with no walkway of ours over it, inside a building
+    walk_our = [r for r in our if r.get("src") in {w["id"] for w in walk_src}]
+    blocked_cells: set = set()
+    for r in our:
+        f = geom.foot(r, bases)
+        if r.get("kind") == "building" and f and r not in walk_our:
+            rad = geom.reach(r, bases)
+            for i in range(round((r["pos"][0] - rad - 80) / 128), round((r["pos"][0] + rad + 80) / 128) + 1):
+                for j in range(round((r["pos"][1] - rad - 80) / 128), round((r["pos"][1] + rad + 80) / 128) + 1):
+                    if geom.contains_xy(r, bases, i * 128.0, j * 128.0, 80):
+                        blocked_cells.add((i, j))
+    walk_cells: set = set()
+    for r in walk_our:
+        f = geom.foot(r, bases) or [64.0, 64.0]
+        for x, y in foot_points(r["pos"][0], r["pos"][1], r["rot"][2], [f[0] + 64, f[1] + 64], 7):
+            walk_cells.add((round(x / 128), round(y / 128)))
+
+    def blocked(x, y) -> bool:
+        k = (round(x / 128), round(y / 128))
+        return k in blocked_cells or (G.wet(x, y, 8) and k not in walk_cells)
+    bridges: list[dict] = []
+    walk_base = None
+    if walk_src:
+        counts: dict[str, int] = {}
+        for r in walk_src:
+            kb = (replace.get(r["base"]) or {}).get("base", r["base"])
+            if not (bases.get(kb) or {}).get("nordic") and geom.foot({"base": kb, "kind": "building"}, bases):
+                counts[kb] = counts.get(kb, 0) + 1
+        walk_base = max(sorted(counts), key=lambda kb: counts[kb]) if counts else None
+
+    def bridge_over(route, k) -> list[dict]:
+        """Walkway pieces end to end over each wet stretch of a route, along it, standing on stilts."""
+        if not walk_base:
+            return []
+        b = bases[walk_base]["bounds"]
+        length = max(64.0, b[1][1] - b[0][1] - 16)
+        out = []
+        for i, (p, q) in enumerate(zip(route, route[1:])):
+            seg = geom.dist(p, q)
+            n = max(1, int(seg // length) + 1)
+            yaw = math.atan2(q[0] - p[0], q[1] - p[1]) % (2 * math.pi)
+            for j in range(n):
+                x = p[0] + (q[0] - p[0]) * (j + 0.5) / n
+                y = p[1] + (q[1] - p[1]) * (j + 0.5) / n
+                if not G.wet(x, y, 8):
+                    continue
+                out.append({"id": io.mint(place_id, "bridge", str(k), str(i), str(j)), "base": walk_base,
+                            "kind": "building", "pos": [round(x, 2), round(y, 2), 0.0], "rot": [0.0, 0.0, round(yaw, 5)],
+                            "scale": 1.0, "layer": "place", "flags": [], "src": None,
+                            "seat": {"mode": "stilts", "dz": 0.0, "foot": geom.foot({"base": walk_base,
+                                                                                    "kind": "building"}, bases)},
+                            "why": f"carries street {k + 1:02d} over our water, which parts what the source's land joined"})
+        return out
+
+    # a door that opens onto the water (on a ship or a pier) is reached over the source's own walkways from the
+    # landing, not by a street: its link is laid as the source's line and marked a walkway
+    afloat = {n for n, p in nodes_our.items() if n != "landing" and G.wet(p[0], p[1], 16)}
     paths_src, paths_our = [], []
     for k, (a, b, pts) in enumerate(edges):
-        width = STREET_WIDTH if any(nav.flags[nav.nearest(p)] & 0x40 for p in pts[1:-1]) or not nav else PATH_WIDTH
-        mapped = [nodes_our[a]] + [fit.warp(*p) for p in pts[1:-1]] + [nodes_our[b]]
-        mapped = simplify([(round(p[0], 1), round(p[1], 1)) for p in mapped])
-        wet = sum(1 for p in mapped if G.wet(*p)) > len(mapped) / 2
+        if a in afloat or b in afloat:
+            line = [nodes_our[a]] + [fit.warp(*p) for p in simplify(pts, 32)[1:-1]] + [nodes_our[b]]
+            paths_src.append({"points": [list(p) for p in pts], "width": PATH_WIDTH})
+            paths_our.append({"id": f"{place_id}.path.{k + 1:02d}", "kind": "walkway",
+                              "points": [[round(p[0], 1), round(p[1], 1)] for p in line], "width": PATH_WIDTH,
+                              "style": "boardwalk", "from": a, "to": b, "laid": "the source's walkway, mapped"})
+            continue
+        street = sum(nav.pref[nav.nearest(p)] for p in pts[1:-1]) * 2 >= max(1, len(pts) - 2) if nav else True
+        width = paths_mod.width_from_paint(pts, paint_grid, STREET_WIDTH if street else PATH_WIDTH)
+        guide = [nodes_our[a]] + [fit.warp(*p) for p in simplify(pts, 32)[1:-1]] + [nodes_our[b]]
+        routed = paths_mod.astar(G, nodes_our[a], nodes_our[b], blocked, max_slope, guide)
+        if routed is None:
+            # our water parts what the source's land joined: cross it, and carry the street on the source's own
+            # walkway pieces (a bridge the place needs that the source lacks, in the source's style)
+            routed = paths_mod.astar(G, nodes_our[a], nodes_our[b], lambda x, y: (round(x / 128), round(y / 128))
+                                     in blocked_cells, max_slope, guide)
+            if routed:
+                bridges.extend(bridge_over(routed, k))
+        laid = simplify([(round(p[0], 1), round(p[1], 1)) for p in (routed or guide)], 24)
+        wet = sum(1 for p in laid if G.wet(*p)) > len(laid) / 2
         paths_src.append({"points": [list(p) for p in pts], "width": width})
-        paths_our.append({"id": f"{place_id}.path.{k + 1:02d}", "kind": "street" if width >= STREET_WIDTH else "path",
-                          "points": [list(p) for p in mapped], "width": width,
-                          "style": "boardwalk" if wet else "dirt", "from": a, "to": b})
+        paths_our.append({"id": f"{place_id}.path.{k + 1:02d}", "kind": "street" if street else "path",
+                          "points": [list(p) for p in laid], "width": width,
+                          "style": "boardwalk" if wet else "dirt", "from": a, "to": b,
+                          "laid": "routed on our ground" if routed else "the source's line, mapped"})
+
+    if bridges:
+        our.extend(bridges)
+        walk_cells.update((round(r["pos"][0] / 128), round(r["pos"][1] / 128)) for r in bridges)
+        seat_all(our, G)
 
     # --- vegetation clearance ---
     src_buildings = [r for r in ext if r.get("kind") == "building"]
@@ -289,7 +491,8 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
 
     # --- people ---
     folk, factions, stations = draft_people(place_id, rec, gives, src, bases, our, spaces, clusters, fit, of,
-                                            nodes_our, paths_our, dec, ledger)
+                                            nodes_our, paths_our, dec, ledger, G)
+    seat_all(our, G)
 
     # --- write ---
     io.write_jsonl(pdir / "spaces" / "exterior" / "refs.jsonl", our)
@@ -329,7 +532,8 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
             src.spaces[sp["src_space"]].refs, bases, sp["room"])),
     }
     place.update({
-        "fit": {**fit.as_dict(), "clusters_info": [c.as_dict() for c in clusters]},
+        "fit": {**fit.as_dict(), "clusters_info": [c.as_dict() for c in clusters], "relief_norm": norm,
+                "patch_max": PATCH_MAX},
         "clearance": clearance,
         "factions": factions,
         "stations": stations,
@@ -343,7 +547,7 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
     return counts
 
 
-def draft_people(place_id, rec, gives, src, bases, our, spaces, clusters, fit, of, nodes_our, paths_our, dec, ledger):
+def draft_people(place_id, rec, gives, src, bases, our, spaces, clusters, fit, of, nodes_our, paths_our, dec, ledger, G):
     roles_override = dec.get("roles") or {}
     # beds of each copy
     slots: dict[str, list[dict]] = {}
@@ -385,7 +589,7 @@ def draft_people(place_id, rec, gives, src, bases, our, spaces, clusters, fit, o
     stations_need = sorted({g["give_kind_id"] for g in gives if g["give_kind_id"] in people.STATIONS})
     found: dict[str, list[str]] = {}
     for st in stations_need:
-        pat = re.compile(people.STATION_MATCH[st], re.I)
+        pat = re.compile(io.STATION_EDID[st], re.I)
         found[st] = sorted(r["id"] for r in our if pat.search(str((bases.get(r["base"]) or {}).get("edid", ""))))
     stations = {"needed": stations_need, "found": found,
                 "missing": [s for s in stations_need if not found[s]]}
@@ -396,7 +600,14 @@ def draft_people(place_id, rec, gives, src, bases, our, spaces, clusters, fit, o
     factions = [{"id": crime, "kind": "crime", "name": rec.get("name"), "jail": None},
                 {"id": f"{place_id}.guard", "kind": "guard", "crime": crime},
                 {"id": f"{place_id}.town", "kind": "town", "crime": crime}]
-    inn_space = halls[0] if halls else None
+    # the inn: the hall with the most beds that no source trader keeps as a shop
+    shops = {sp_id for sp_id, r in actors if people.usable(src.npcs[r["base"]]) and any(
+        people.role_score(src.npcs[r["base"]], ro) >= 2 for ro in ("merchant", "smith", "apothecary", "spell-trader"))}
+    inn_space = next((h for h in halls if spaces[h]["src_space"] not in shops), halls[0] if halls else None)
+    copies_of: dict[str, list[str]] = {}
+    for sid_, sp_ in sorted(spaces.items()):
+        copies_of.setdefault(sp_["src_space"], []).append(sid_)
+    our_by_id = {r["id"]: r for r in our}
     indoor_free = list(halls)
 
     def work_for(role: str, n: int) -> dict:
@@ -406,15 +617,31 @@ def draft_people(place_id, rec, gives, src, bases, our, spaces, clusters, fit, o
         if role == "boatman" and "landing" in nodes_our:
             p = nodes_our["landing"]
             return {"space": "exterior", "pos": [round(p[0], 1), round(p[1], 1)], "radius": 384}
+        # where the source's own person of this trade worked (Bethesda places a trader in their shop)
+        for sp_id, r in actors:
+            n_ = src.npcs[r["base"]]
+            if people.usable(n_) and people.role_score(n_, role) >= 2 and sp_id != "exterior" and copies_of.get(sp_id):
+                sid = copies_of[sp_id][0]
+                if role in people.OUTDOOR_WORK:
+                    # a smith works the yard outside the shop's door
+                    door = spaces[sid]["door_from"]
+                    src_door = next((k for k in nodes_our if our_by_id.get(door, {}).get("src") == k), None)
+                    if src_door:
+                        p = nodes_our[src_door]
+                        return {"space": "exterior", "pos": [round(p[0], 1), round(p[1], 1)], "radius": 384}
+                if sid in indoor_free:
+                    indoor_free.remove(sid)
+                return {"space": sid, "radius": 1024}
         if role in people.INDOOR and indoor_free:
-            sid = inn_space if role == "innkeeper" and inn_space in indoor_free else indoor_free[0]
+            others = [i for i in indoor_free if i != inn_space] or indoor_free
+            sid = inn_space if role == "innkeeper" and inn_space in indoor_free else others[0]
             indoor_free.remove(sid)
             return {"space": sid, "radius": 1024}
         if role == "smith" and stations["found"].get("forge"):
             r = next(x for x in our if x["id"] == stations["found"]["forge"][0])
             return {"space": "exterior", "ref": r["id"], "radius": 512}
         for k, p in building_doors:
-            if k not in used_fronts:
+            if k not in used_fronts and not G.wet(p[0], p[1], 16):
                 used_fronts.add(k)
                 return {"space": "exterior", "pos": [round(p[0], 1), round(p[1], 1)], "radius": 384}
         return town
@@ -426,6 +653,13 @@ def draft_people(place_id, rec, gives, src, bases, our, spaces, clusters, fit, o
                 return s
         return None
 
+    def station_used(ref_id: str, w: dict) -> bool:
+        row = next((r for r in our if r["id"] == ref_id), None)
+        if row is None or w.get("space", "exterior") != "exterior":
+            return False
+        c = w.get("pos") or next((r["pos"] for r in our if r["id"] == w.get("ref")), None)
+        return c is not None and geom.dist(row["pos"], c) <= w.get("radius", 384) + 256
+
     services = people.service_people(gives)
     free_houses = list(houses)
     for n, sp in enumerate(services):
@@ -436,8 +670,11 @@ def draft_people(place_id, rec, gives, src, bases, our, spaces, clusters, fit, o
             home = work["space"]
         elif free_houses:
             home = free_houses.pop(0)
-        bed = bed_for([home] if home else []) or bed_for(houses + halls)
-        home = bed["space"] if bed else home
+        if role in people.NO_BED:
+            bed, home = None, work.get("space") if work.get("space") != "exterior" else home
+        else:
+            bed = bed_for([home] if home else []) or bed_for(houses + halls)
+            home = bed["space"] if bed else home
         pid = io.mint(place_id, "person", role, str(n))
         bed_at = {"space": bed["space"], "ref": bed["ref"], "radius": 128} if bed else town
         eat = {"space": home, "radius": 1024} if home else town
@@ -454,18 +691,84 @@ def draft_people(place_id, rec, gives, src, bases, our, spaces, clusters, fit, o
                      "role": role, "home": home, "bed": bed_at if bed else None, "work": work,
                      "services": sp["gives"], "faction_ranks": fr,
                      "routine": people.routine(role, bed_at, work, eat, wander)})
+    # the crafting stations the record promises and the source lacks, by the person who works them, the way
+    # Skyrim's towns set them (town-life.md): the smith's yard, the apothecary's lab, the enchanter with the spell
+    # trader, the cooking pot at the inn
+    added = []
+    for st in stations_need:
+        role = people.STATION_OWNER.get(st)
+        owner = next((p for p in folk if p["role"] == role), None) or next((p for p in folk if p["role"] != "guard"), None)
+        if owner is None:
+            continue
+        w = owner["work"]
+        used = [i for i in found[st] if station_used(i, w)]
+        if used:
+            continue
+        b = io.station_base(st)
+        if b is None:
+            continue
+        bases[b["key"]] = b
+        k = sum(1 for a in added if a["by"] == owner["id"])
+        if w.get("space", "exterior") == "exterior":
+            c = w.get("pos") or next(r["pos"] for r in our if r["id"] == w.get("ref"))
+            spot = None
+            for ring in (224.0, 320.0, 416.0, 512.0, 640.0, 768.0, 1024.0, 1280.0, 1536.0):
+                for j in range(12):
+                    t = (k * 2 + j) * math.pi / 6
+                    q = (c[0] + ring * math.sin(t), c[1] + ring * math.cos(t))
+                    if G.has(*q) and not G.wet(q[0], q[1], 16) and not any(
+                            r.get("kind") == "building" and geom.contains_xy(r, bases, q[0], q[1], 48) for r in our):
+                        spot = (q, t)
+                        break
+                if spot:
+                    break
+            if spot is None:
+                continue
+            (qx, qy), t = spot
+            row = {"id": io.mint(place_id, "station", st), "base": b["key"], "kind": "furniture",
+                   "pos": [round(qx, 2), round(qy, 2), 0.0], "rot": [0.0, 0.0, round((t + math.pi) % (2 * math.pi), 5)],
+                   "scale": 1.0, "layer": "place", "flags": [], "src": None,
+                   "seat": {"mode": "ground", "dz": 0.0, **({"foot": geom.foot({"base": b["key"], "kind": "furniture"},
+                                                                                bases)} if geom.foot(
+                       {"base": b["key"], "kind": "furniture"}, bases) else {})},
+                   "why": f"{st}: promised by the place record ({owner['role']}'s work), lacking in the source"}
+            our.append(row)
+            space = "exterior"
+        else:
+            space = w["space"]
+            sp = spaces[space]
+            src_refs = src.spaces[sp["src_space"]].refs
+            beds = interiors.beds_in(src_refs, bases, sp["room"])
+            anchor_ids = {b_["ref"] for b_ in beds} or {sp.get("room")}
+            pts = [r["pos"] for r in src_refs if r["id"] in anchor_ids] or [src_refs[0]["pos"]]
+            cx_ = sum(p[0] for p in pts) / len(pts) + 128 * (k + 1)
+            cy_ = sum(p[1] for p in pts) / len(pts)
+            row = {"id": io.mint(place_id, "station", st), "base": b["key"], "kind": "furniture",
+                   "pos": [round(cx_, 2), round(cy_, 2), round(min(p[2] for p in pts), 2)], "rot": [0.0, 0.0, 0.0],
+                   "scale": 1.0, "layer": "place", "flags": [], "src": None, "seat": {"mode": "free"},
+                   "why": f"{st}: promised by the place record ({owner['role']}'s work), lacking in the source"}
+            sp["overrides"].append(row)
+        if space == "exterior" and (st == "forge" or not station_used(row["id"], w)):
+            # the worker's stop is the station (the forge for a smith; a lab that had to stand further off)
+            w.pop("pos", None)
+            w["ref"] = row["id"]
+        added.append({"station": st, "id": row["id"], "base": b["key"], "space": space, "by": owner["id"]})
+        found[st].append(row["id"])
+    stations["added"] = added
+    stations["missing"] = [s_ for s_ in stations_need if not found[s_]]
+
     # guards: patrol the streets in two shifts
-    patrol_pts = []
-    for p in paths_our:
-        for q in p["points"]:
-            if not patrol_pts or geom.dist(patrol_pts[-1], q) > 256:
-                patrol_pts.append([round(q[0], 1), round(q[1], 1)])
+    # each guard walks streets end to end and back, never cutting across: the day and night guard of a pair share
+    # a beat (Whiterun's patrol chains run along its streets, town-life.md)
+    beats = [[[round(q[0], 1), round(q[1], 1)] for q in p["points"]] for p in
+             sorted(paths_our, key=lambda p: -sum(geom.dist(a, b) for a, b in zip(p["points"], p["points"][1:])))]
     n_guards = people.guard_count(sum(1 for c in clusters if c.kind == "building"))
     for k in range(n_guards):
         shift = "day" if k % 2 == 0 else "night"
         bed = bed_for(halls + houses)
         pid = io.mint(place_id, "person", "guard", str(k))
-        pts = patrol_pts[k // 2 % max(1, len(patrol_pts)):] + patrol_pts[:k // 2 % max(1, len(patrol_pts))]
+        beat = beats[(k // 2) % len(beats)] if beats else []
+        pts = beat + beat[-2:0:-1]
         work = {"space": "exterior", "pos": pts[0] if pts else town["pos"], "radius": 256}
         bed_at = {"space": bed["space"], "ref": bed["ref"], "radius": 128} if bed else town
         folk.append({"id": pid, "name": people.placeholder_name(pid, taken_names), "base_from": pick_base("guard"),

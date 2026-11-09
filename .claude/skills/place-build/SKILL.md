@@ -35,31 +35,51 @@ seat rules, ids) is `docs/design/place-studio.md`. Never write mod record or ass
 
 ## 3. Draft and read the fit
 
+What the tools hold to, so you can judge their output: our water and land are never changed to fit the source.
+A cluster that stood on dry land goes on our dry land, one in or over water (jetties, stilt houses, shallows,
+boats) on our water; a cluster whose spot fails slides, turns or steps to the next ground of its kind, and a door
+moves with its whole building. A single piece that still has no ground of its kind is dropped and listed. Land
+patches only ease the ground under a building, at most 1.5 m at any point and never across the waterline; a
+building on a slope first takes the rise the source's own builders commonly built on (`fit.relief_norm`).
+
 1. `python -m tools.places draft <place_id>` then `draft render <place_id>`; compare `side-by-side.png`: the same
    cluster ids sit in the same order, facing their street and their water.
-2. In `place.json` `fit.clusters`, a cluster with a high `cost_after` sits badly (wrong side of the water, on a
-   slope). When moving the anchor or the turn would serve the whole town better, do it and redraft.
-3. Read `land.jsonl`: each patch has its reason. A patch is the last resort; when one cluster carries several,
-   prefer a better anchor or turn over the patches.
+2. In `place.json` `fit.clusters`, a cluster with a high `cost_after` sits badly. In `ledger.jsonl`, pieces dropped
+   for want of water or land, and doors above all, say the anchor or the turn is wrong: move them and redraft
+   rather than accept the losses.
+3. Streets (orange in the render) come from the source's painted roads, walkways and preferred navmesh, laid on
+   our ground round buildings and water at no steeper climb than the source's streets made. A link to a door on
+   the water is a walkway (brown). A street that will not route without crossing our water is carried on bridges
+   of the source's own walkway pieces; look at each one.
 
 ## 4. Settle what the cost cannot
 
 - **Nordic bases** (decision 0006): `ledger.jsonl` lists each dropped one. For each base, find a piece of like
   size and use from a non-Nordic source we deploy (`python -m tools.places search query "<what it is>"`, or the
   catalogue `out/places/catalogue/bases.jsonl`), and set `draft.replace` `{old: new}`, or
-  `{old: {base, turn_deg}}` when the new model's front faces another way (compare the bounds' long axis). A door
-  that leads indoors is always replaced, never dropped. Drop decorative pieces with no equal.
+  `{old: {base, turn_deg}}`. The tools line a replaced door or directional piece up with the original's plane
+  from both meshes (the turn and the shift, `align` on the ref) and `draft check` proves it; which face points
+  out cannot be told from geometry, so name every replaced door in your report for a look. A door that leads
+  indoors is always replaced, never dropped. Drop decorative pieces with no equal.
 - **Leftovers**: `draft.drop` `{source ref id: reason}` for anything the source placed that our place must not have.
-- **Promises the source lacks**: `place.json` `stations.missing` lists crafting stations the record promises
-  with none in the source; add each with `draft.add` `[{base, pos, rot_z, kind, why}]` beside the person who
-  works it. A service person's workplace that the default gets wrong: `draft.roles` `{role: {space} | {pos}}`.
+- **What the record promises and the source lacks is added in the source's own style.** The tools add each
+  missing crafting station by the person who works it, the way Skyrim's towns do (the smith's forge, anvil,
+  grindstone, workbench, tanning rack and smelter as one yard outside the smithy; the alchemy lab with the
+  apothecary; the enchanter with the spell trader; the cooking pot at the inn), from the plugins whose style the
+  place already uses. Check each in the render (`stations.added`); move one with `draft.add` and `draft.roles`
+  when it stands wrong. Traders work where the source's own trader of that trade worked.
+- **People follow Skyrim's days** (`docs/research/skyrim/town-life.md`): an innkeeper keeps the inn day and
+  night and owns no bed; guards keep two 12-hour shifts on the streets. Never bend a day to satisfy a check;
+  if a check disagrees with how Skyrim does it, the check is wrong.
 - Nothing levelled is ever placed (decision 0035); the tools drop it and list it.
 
 ## 5. Check and iterate
 
 1. `python -m tools.places draft check <place_id>` must PASS: every source ref accounted for, seated by its
-   rule, buildings on ground no steeper than the source's, water and land as the source had them, every door on
-   a path, every promised service given, a bed for everyone.
+   rule, buildings on ground no steeper than the source's, water and land as the source had them, patches within
+   bound, streets clear of buildings and open water, every door on a path, every promised service and station
+   given and worked, a bed for every sleeper, replaced pieces in the original's plane. Its `measures` line gives
+   the patched cells and points and the streets' length: keep the patches as near nothing as the land allows.
 2. Render again and look: does it read as the same town sitting naturally on our land? If not, go back to 2.
 3. `python -m tools.places seat <place_id>` must report 0 refs moved.
 

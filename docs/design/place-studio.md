@@ -148,7 +148,8 @@ spaces/<space_id>/space.json     interiors: {copy_of: "<source_id>/<space_id>"};
                        changes to the copy (moved, removed, added)
 clear.jsonl            world plants and scatter switched off: {base, pos, by: draft|owner}; matched to the world's
                        ref at build by base and nearest position, so a world rebuild re-applies it
-land.jsonl             land patches: {cell, verts:[[row,col,dz]...], textures?, why}; the last resort
+land.jsonl             land patches: {cell, verts:[[row,col,dz]...], textures?, why}; the last resort, only to ease
+                       the ground under a building: |dz| <= place.json fit.patch_max (1.5 m), never across the waterline
 paths.jsonl            streets and paths: {id, kind: path|street, points:[[x,y]...], width, style}; style is a land
                        texture key (the source place's own road texture) or the draft's style word (dirt, boardwalk)
 people.jsonl           one person per line: {id, name, base_from, role, home, bed, work, services, faction_ranks,
@@ -164,16 +165,22 @@ max(ground, water) under the footprint + dz; `on` z = the ref `on`'s z + dz; `fr
 the footprint's half extents `[hx, hy]` in the ref's own frame. dz is measured in the source the same way.
 
 `place.json` also holds: `draft` (the agent's calls: `anchor`, `rot_deg`, `search`, `replace`, `drop`, `add`,
-`roles`, `keep_patches`; skill `place-build`), `fit` (global and per-cluster transforms, `clusters_info`),
+`roles`, `keep_patches`; skill `place-build`), `fit` (global and per-cluster transforms, `clusters_info`,
+`relief_norm`, `patch_max`),
 `clearance` (the source's measured clearance), `factions` (`<place_id>.crime`, `.guard`, `.town`, and one
-`.vendor.NN` per trader with hours and `chest`), `stations` (needed, found, missing), `ground`, `source`,
+`.vendor.NN` per trader with hours and `chest`), `stations` (needed, found, missing, added: {station, id, base,
+space, by}), `ground`, `source`,
 `radius_m`, `counts`, `draft_key`.
 
 An interior copy brings every ref of the source space except actors. Its `space.json` adds `door_from` (our door
 that leads in), `parent` and `room`: when the source packs several rooms into one cell, the source door of this
 copy's own room (its beds are the ones nearer that door than any other way out). Its `refs.jsonl` rows carry `src`
 (the source ref they override, by its source id); refs not listed are copied unchanged. A person's `bed` and
-routine `at` name a copied ref by its source id with the copy's `space`. `clear.jsonl` rows add `why` and `ref`.
+routine `at` name a copied ref by its source id with the copy's `space`; a row with no `src` in a copy is an
+addition (a station). `clear.jsonl` rows add `why` and `ref`. A ref the draft added (station, bridge) has `src`
+null and a `why`; a replaced door or directional piece carries `align: {turn_deg, shift, of}` (already applied
+to its pos and rot; the record of how its plane was matched to the original's). A person in an innkeeper's role
+has `bed` null and one 24-hour work stop (Skyrim's innkeepers keep no bed).
 
 Seating is data, never baked: `pos[2]` is what the last seating wrote, and `python -m tools.places seat` rewrites
 it from `seat` and the ground bundle. A ground rebuild is followed by `seat`, `build`, nothing else.

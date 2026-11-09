@@ -14,7 +14,7 @@
 {"src":"Black Marsh North.esp:04F235","space":"exterior","status":"replaced","as":"helstrom.D4FE07AGDGZPCEASBZDP4PM24M","cluster":"landing","base":"Dragonborn.esm:038A35"}
 {"src":"Black Marsh North.esp:04F236","space":"exterior","status":"replaced","as":"helstrom.CANRW3SVZEQRY2TWQQKE2FRNP1","cluster":"landing","base":"Dragonborn.esm:038A35"}
 {"src":"Black Marsh North.esp:05460C","space":"exterior","status":"dropped","why":"Nordic base (decision 0006); no replacement chosen"}
-{"src":"Black Marsh North.esp:05460D","space":"exterior","status":"placed","as":"helstrom.0MC11ND848G0SJ58X223SAJXYM","cluster":"b41"}
+{"src":"Black Marsh North.esp:05460D","space":"exterior","status":"adapted","as":"helstrom.0MC11ND848G0SJ58X223SAJXYM","cluster":"b41"}
 {"src":"Black Marsh North.esp:05460E","space":"exterior","status":"adapted","as":"helstrom.B6M56DAN0CWWTQ2MX6FATPNBZ9","cluster":"b42"}
 {"src":"Black Marsh North.esp:05460F","space":"exterior","status":"adapted","as":"helstrom.4KX8XN68EPEYN6P03X165AMSTT","cluster":"b42"}
 {"src":"Black Marsh North.esp:054610","space":"exterior","status":"adapted","as":"helstrom.QFC7HWNXA0DJA5PVHK4V3XCNDK","cluster":"b42"}
@@ -50,43 +50,43 @@
 {"src":"Black Marsh North.esp:0783A8","space":"exterior","status":"placed","as":"helstrom.S8AXPV5Q8QVWR19V3NEZA7D66E","cluster":"s02"}
 {"src":"Black Marsh North.esp:0783A9","space":"exterior","status":"placed","as":"helstrom.S39RXSNW03ZN6KRXHF5ZDZEDB8","cluster":"s02"}
 {"src":"Black Marsh North.esp:0785D6","space":"exterior","status":"placed","as":"helstrom.ZPEZ6E0VPRFPD1G675T65WXGS5","cluster":"b51"}
-{"src":"Black Marsh North.esp:0785D7","space":"exterior","status":"placed","as":"helstrom.W5V3MDSXKG3ED996PBSWTWPEMQ","cluster":"w02"}
-{"src":"Black Marsh North.esp:0785D8","space":"exterior","status":"placed","as":"helstrom.1N95EAMZX0XJMSZF43AFN5GQC3","cluster":"w02"}
-{"src":"Black Marsh North.esp:0785D9","space":"exterior","status":"placed","as":"helstrom.29WNGBMFMP6Q6M350X7TW57Y51","cluster":"w02"}
-{"src":"Black Marsh North.esp:0785DA","space":"exterior","status":"placed","as":"helstrom.R10CCVT714682C9QYG5DVSAABN","cluster":"w02"}
-{"src":"Black Marsh North.esp:0785DB","space":"exterior","status":"placed","as":"helstrom.A84SADYSK5WS46W8FFXB0BG0TQ","cluster":"w02"}
-{"src":"Black Marsh North.esp:0785DC","space":"exterior","status":"placed","as":"helstrom.J9SNKYNDXS86DD2HC1KJ1B9WWD","cluster":"w02"}
-{"src":"Black Marsh North.esp:0785DD","space":"exterior","status":"placed","as":"helstrom.DRYPCRYVDD3VTYFMAP2XYE7425","cluster":"w02"}
-{"src":"Black Marsh North.esp:0785DE","space":"exterior","status":"placed","as":"helstrom.NDF5DYHYXN3J1WF5SGY9K20Z5E","cluster":"w02"}
-{"src":"Black Marsh North.esp:0785DF","space":"exterior","status":"placed","as":"helstrom.ENQQFA60G272891Q2XQAQR7EYC","cluster":"w02"}
-{"src":"Black Marsh North.esp:0785E0","space":"exterior","status":"placed","as":"helstrom.AKRBF4XZZNX9M772ZN3EH6WYRM","cluster":"w02"}
-{"src":"Black Marsh North.esp:0785E1","space":"exterior","status":"placed","as":"helstrom.M9JKFJVX9NWJPTAS64JA950FYC","cluster":"w02"}
-{"src":"Black Marsh North.esp:0785E2","space":"exterior","status":"placed","as":"helstrom.4RNNADCNR60HS6EBJTZ3VAA9MY","cluster":"w02"}
-{"src":"Black Marsh North.esp:0785E3","space":"exterior","status":"placed","as":"helstrom.JQBRPT6S79B8X510RN8MG40D16","cluster":"w02"}
-{"src":"Black Marsh North.esp:0785E4","space":"exterior","status":"placed","as":"helstrom.23HBZ4GR6VQDSGGJW0742PA4V0","cluster":"w02"}
-{"src":"Black Marsh North.esp:0785E5","space":"exterior","status":"placed","as":"helstrom.M93QQD9TZJ965M1AP7VZ6X0D3R","cluster":"w02"}
-{"src":"Black Marsh North.esp:0785E6","space":"exterior","status":"placed","as":"helstrom.RQ152NDJ0FC8P24GBNTWBHWY9J","cluster":"w02"}
-{"src":"Black Marsh North.esp:0785E7","space":"exterior","status":"placed","as":"helstrom.SJDMCFSTCY7XDEQQ6AETCXZ551","cluster":"w02"}
-{"src":"Black Marsh North.esp:0785E8","space":"exterior","status":"placed","as":"helstrom.RBHBYX14T2EJBT9ZX188EYE71G","cluster":"w02"}
-{"src":"Black Marsh North.esp:0785E9","space":"exterior","status":"placed","as":"helstrom.NVH9QTXC97TDBN049AHTQCEXJ3","cluster":"w02"}
-{"src":"Black Marsh North.esp:0785EA","space":"exterior","status":"placed","as":"helstrom.T7V3Y8KQ2HA4M7RAY2F5EH9NXY","cluster":"w02"}
-{"src":"Black Marsh North.esp:0785EB","space":"exterior","status":"placed","as":"helstrom.36Y4G7HY8FMKEXKNKCSHHKS5RS","cluster":"w02"}
-{"src":"Black Marsh North.esp:0785EC","space":"exterior","status":"placed","as":"helstrom.B94WFCMQX5Z4GBXFNVC9TXPAPW","cluster":"w02"}
-{"src":"Black Marsh North.esp:0785ED","space":"exterior","status":"placed","as":"helstrom.NMBG7WNDGJW6MAJNNXQPB89QBY","cluster":"w02"}
-{"src":"Black Marsh North.esp:0785EE","space":"exterior","status":"placed","as":"helstrom.CKQXVVSP1JJAC723EPGRB5KR0J","cluster":"w02"}
-{"src":"Black Marsh North.esp:0785EF","space":"exterior","status":"placed","as":"helstrom.5H123JZBFDQ7JAS63QEYKP2TD7","cluster":"w02"}
-{"src":"Black Marsh North.esp:0785F0","space":"exterior","status":"placed","as":"helstrom.PJ00E3M307BGDPK4830CW7QZGC","cluster":"w02"}
-{"src":"Black Marsh North.esp:0785F1","space":"exterior","status":"placed","as":"helstrom.124MEJ6FZKC99ECAYTWS52SZRV","cluster":"w02"}
-{"src":"Black Marsh North.esp:0785F2","space":"exterior","status":"placed","as":"helstrom.H1AZ9K3GXX0M65XAA2HSBXYFZW","cluster":"w02"}
-{"src":"Black Marsh North.esp:0785F3","space":"exterior","status":"placed","as":"helstrom.Z5FEWRAHDP8QKTSJCF8FH57J4B","cluster":"w02"}
+{"src":"Black Marsh North.esp:0785D7","space":"exterior","status":"adapted","as":"helstrom.W5V3MDSXKG3ED996PBSWTWPEMQ","cluster":"w02"}
+{"src":"Black Marsh North.esp:0785D8","space":"exterior","status":"adapted","as":"helstrom.1N95EAMZX0XJMSZF43AFN5GQC3","cluster":"w02"}
+{"src":"Black Marsh North.esp:0785D9","space":"exterior","status":"adapted","as":"helstrom.29WNGBMFMP6Q6M350X7TW57Y51","cluster":"w02"}
+{"src":"Black Marsh North.esp:0785DA","space":"exterior","status":"adapted","as":"helstrom.R10CCVT714682C9QYG5DVSAABN","cluster":"w02"}
+{"src":"Black Marsh North.esp:0785DB","space":"exterior","status":"adapted","as":"helstrom.A84SADYSK5WS46W8FFXB0BG0TQ","cluster":"w02"}
+{"src":"Black Marsh North.esp:0785DC","space":"exterior","status":"adapted","as":"helstrom.J9SNKYNDXS86DD2HC1KJ1B9WWD","cluster":"w02"}
+{"src":"Black Marsh North.esp:0785DD","space":"exterior","status":"adapted","as":"helstrom.DRYPCRYVDD3VTYFMAP2XYE7425","cluster":"w02"}
+{"src":"Black Marsh North.esp:0785DE","space":"exterior","status":"adapted","as":"helstrom.NDF5DYHYXN3J1WF5SGY9K20Z5E","cluster":"w02"}
+{"src":"Black Marsh North.esp:0785DF","space":"exterior","status":"adapted","as":"helstrom.ENQQFA60G272891Q2XQAQR7EYC","cluster":"w02"}
+{"src":"Black Marsh North.esp:0785E0","space":"exterior","status":"adapted","as":"helstrom.AKRBF4XZZNX9M772ZN3EH6WYRM","cluster":"w02"}
+{"src":"Black Marsh North.esp:0785E1","space":"exterior","status":"adapted","as":"helstrom.M9JKFJVX9NWJPTAS64JA950FYC","cluster":"w02"}
+{"src":"Black Marsh North.esp:0785E2","space":"exterior","status":"adapted","as":"helstrom.4RNNADCNR60HS6EBJTZ3VAA9MY","cluster":"w02"}
+{"src":"Black Marsh North.esp:0785E3","space":"exterior","status":"adapted","as":"helstrom.JQBRPT6S79B8X510RN8MG40D16","cluster":"w02"}
+{"src":"Black Marsh North.esp:0785E4","space":"exterior","status":"adapted","as":"helstrom.23HBZ4GR6VQDSGGJW0742PA4V0","cluster":"w02"}
+{"src":"Black Marsh North.esp:0785E5","space":"exterior","status":"adapted","as":"helstrom.M93QQD9TZJ965M1AP7VZ6X0D3R","cluster":"w02"}
+{"src":"Black Marsh North.esp:0785E6","space":"exterior","status":"adapted","as":"helstrom.RQ152NDJ0FC8P24GBNTWBHWY9J","cluster":"w02"}
+{"src":"Black Marsh North.esp:0785E7","space":"exterior","status":"adapted","as":"helstrom.SJDMCFSTCY7XDEQQ6AETCXZ551","cluster":"w02"}
+{"src":"Black Marsh North.esp:0785E8","space":"exterior","status":"adapted","as":"helstrom.RBHBYX14T2EJBT9ZX188EYE71G","cluster":"w02"}
+{"src":"Black Marsh North.esp:0785E9","space":"exterior","status":"adapted","as":"helstrom.NVH9QTXC97TDBN049AHTQCEXJ3","cluster":"w02"}
+{"src":"Black Marsh North.esp:0785EA","space":"exterior","status":"adapted","as":"helstrom.T7V3Y8KQ2HA4M7RAY2F5EH9NXY","cluster":"w02"}
+{"src":"Black Marsh North.esp:0785EB","space":"exterior","status":"adapted","as":"helstrom.36Y4G7HY8FMKEXKNKCSHHKS5RS","cluster":"w02"}
+{"src":"Black Marsh North.esp:0785EC","space":"exterior","status":"adapted","as":"helstrom.B94WFCMQX5Z4GBXFNVC9TXPAPW","cluster":"w02"}
+{"src":"Black Marsh North.esp:0785ED","space":"exterior","status":"adapted","as":"helstrom.NMBG7WNDGJW6MAJNNXQPB89QBY","cluster":"w02"}
+{"src":"Black Marsh North.esp:0785EE","space":"exterior","status":"adapted","as":"helstrom.CKQXVVSP1JJAC723EPGRB5KR0J","cluster":"w02"}
+{"src":"Black Marsh North.esp:0785EF","space":"exterior","status":"adapted","as":"helstrom.5H123JZBFDQ7JAS63QEYKP2TD7","cluster":"w02"}
+{"src":"Black Marsh North.esp:0785F0","space":"exterior","status":"adapted","as":"helstrom.PJ00E3M307BGDPK4830CW7QZGC","cluster":"w02"}
+{"src":"Black Marsh North.esp:0785F1","space":"exterior","status":"adapted","as":"helstrom.124MEJ6FZKC99ECAYTWS52SZRV","cluster":"w02"}
+{"src":"Black Marsh North.esp:0785F2","space":"exterior","status":"adapted","as":"helstrom.H1AZ9K3GXX0M65XAA2HSBXYFZW","cluster":"w02"}
+{"src":"Black Marsh North.esp:0785F3","space":"exterior","status":"adapted","as":"helstrom.Z5FEWRAHDP8QKTSJCF8FH57J4B","cluster":"w02"}
 {"src":"Black Marsh North.esp:0785F4","space":"exterior","status":"placed","as":"helstrom.AR9FHNVN1JBK79W3QFSNJFBY62","cluster":"b51"}
-{"src":"Black Marsh North.esp:0785F5","space":"exterior","status":"placed","as":"helstrom.K20R5C81DD59G8P9QV9SY5VS0K","cluster":"w02"}
-{"src":"Black Marsh North.esp:0785F6","space":"exterior","status":"placed","as":"helstrom.DDB809JS2TXZR3ZCZ4K3XRJ2JD","cluster":"w02"}
-{"src":"Black Marsh North.esp:0785F7","space":"exterior","status":"placed","as":"helstrom.FNK6JF1DVHWEA5GVS75J8VXZER","cluster":"w02"}
-{"src":"Black Marsh North.esp:0785F8","space":"exterior","status":"placed","as":"helstrom.ZRVNEY424XZDQFV53W3WQYQHVZ","cluster":"w02"}
-{"src":"Black Marsh North.esp:0785F9","space":"exterior","status":"placed","as":"helstrom.V3ECZ4F6NS9QA96DN2KH44DY40","cluster":"w02"}
+{"src":"Black Marsh North.esp:0785F5","space":"exterior","status":"adapted","as":"helstrom.K20R5C81DD59G8P9QV9SY5VS0K","cluster":"w02"}
+{"src":"Black Marsh North.esp:0785F6","space":"exterior","status":"adapted","as":"helstrom.DDB809JS2TXZR3ZCZ4K3XRJ2JD","cluster":"w02"}
+{"src":"Black Marsh North.esp:0785F7","space":"exterior","status":"adapted","as":"helstrom.FNK6JF1DVHWEA5GVS75J8VXZER","cluster":"w02"}
+{"src":"Black Marsh North.esp:0785F8","space":"exterior","status":"adapted","as":"helstrom.ZRVNEY424XZDQFV53W3WQYQHVZ","cluster":"w02"}
+{"src":"Black Marsh North.esp:0785F9","space":"exterior","status":"adapted","as":"helstrom.V3ECZ4F6NS9QA96DN2KH44DY40","cluster":"w02"}
 {"src":"Black Marsh North.esp:0785FA","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh North.esp:0785FB","space":"exterior","status":"placed","as":"helstrom.CB7555E8K4RKWWN9953PDZT6QJ","cluster":"w02"}
+{"src":"Black Marsh North.esp:0785FB","space":"exterior","status":"adapted","as":"helstrom.CB7555E8K4RKWWN9953PDZT6QJ","cluster":"w02"}
 {"src":"Black Marsh North.esp:0785FF","space":"exterior","status":"placed","as":"helstrom.X22AVE6CFP2JTQ8D9NN8HVPA9E","cluster":"b51"}
 {"src":"Black Marsh North.esp:078600","space":"exterior","status":"placed","as":"helstrom.HJXGR3VTGB1GFHWQRBA2NM1Y3E","cluster":"b51"}
 {"src":"Black Marsh North.esp:078601","space":"exterior","status":"placed","as":"helstrom.754PBYGZ0GMDR39V1YH4MRE6TM","cluster":"b51"}
@@ -111,7 +111,7 @@
 {"src":"Black Marsh North.esp:078614","space":"exterior","status":"placed","as":"helstrom.VBFGC1QSQK3T8K52YHTX1P95D9","cluster":"b51"}
 {"src":"Black Marsh North.esp:078615","space":"exterior","status":"placed","as":"helstrom.J2FKB6J0XAKAWBQYESXG9ZRNEK","cluster":"b51"}
 {"src":"Black Marsh North.esp:078616","space":"exterior","status":"placed","as":"helstrom.FDQS9MHX3BCTE8VNGG1NT6SK1R","cluster":"b51"}
-{"src":"Black Marsh North.esp:078617","space":"exterior","status":"placed","as":"helstrom.E5W4XE30CYM8ZAH00TJP5Q5FX8","cluster":"w02"}
+{"src":"Black Marsh North.esp:078617","space":"exterior","status":"adapted","as":"helstrom.E5W4XE30CYM8ZAH00TJP5Q5FX8","cluster":"w02"}
 {"src":"Black Marsh North.esp:078618","space":"exterior","status":"placed","as":"helstrom.TNANJTQ46VGZ2J9YCY5W4F0DV2","cluster":"b51"}
 {"src":"Black Marsh North.esp:078619","space":"exterior","status":"placed","as":"helstrom.RWKGJ6KPARK1487MQTSC6685BV","cluster":"b51"}
 {"src":"Black Marsh North.esp:07861A","space":"exterior","status":"placed","as":"helstrom.TZSB6SB60RE2KRAC868ZHDRE0G","cluster":"b51"}
@@ -133,7 +133,7 @@
 {"src":"Black Marsh North.esp:07862B","space":"exterior","status":"placed","as":"helstrom.YHQ0BAEVBV38S18KW2ZPP0JTAP","cluster":"b51"}
 {"src":"Black Marsh North.esp:07862C","space":"exterior","status":"placed","as":"helstrom.7SVBEJSJCRH13JYKGT128N9S58","cluster":"b51"}
 {"src":"Black Marsh North.esp:07862D","space":"exterior","status":"placed","as":"helstrom.219V59FZ9S7W74GF4CGA28HP0T","cluster":"b51"}
-{"src":"Black Marsh North.esp:07862E","space":"exterior","status":"placed","as":"helstrom.NW4S8YN32RKYZFWWGXT4BXH57G","cluster":"w02"}
+{"src":"Black Marsh North.esp:07862E","space":"exterior","status":"adapted","as":"helstrom.NW4S8YN32RKYZFWWGXT4BXH57G","cluster":"w02"}
 {"src":"Black Marsh North.esp:07862F","space":"exterior","status":"placed","as":"helstrom.J7MVG1ZPGVS22Z9QZ7KEMTFE1J","cluster":"b51"}
 {"src":"Black Marsh North.esp:078631","space":"exterior","status":"placed","as":"helstrom.JJKKPG58FNGC9PWE1DTDDWSJ98","cluster":"b51"}
 {"src":"Black Marsh North.esp:078632","space":"exterior","status":"placed","as":"helstrom.1FC71GDYD94R4BAY9M08786R88","cluster":"b51"}
@@ -146,13 +146,13 @@
 {"src":"Black Marsh North.esp:078639","space":"exterior","status":"placed","as":"helstrom.4SZ59J4D82GRMVD7AS737DZA07","cluster":"b51"}
 {"src":"Black Marsh North.esp:07863A","space":"exterior","status":"placed","as":"helstrom.6A15FDP1AMF59PTRDSKAAF65RA","cluster":"b51"}
 {"src":"Black Marsh North.esp:07863B","space":"exterior","status":"placed","as":"helstrom.HZG9YW605ESYVG7R0820S2B850","cluster":"b51"}
-{"src":"Black Marsh North.esp:07863C","space":"exterior","status":"placed","as":"helstrom.SF3PD0ZDZ6KEDW722NP8MB0ZND","cluster":"w02"}
+{"src":"Black Marsh North.esp:07863C","space":"exterior","status":"adapted","as":"helstrom.SF3PD0ZDZ6KEDW722NP8MB0ZND","cluster":"w02"}
 {"src":"Black Marsh North.esp:07863D","space":"exterior","status":"placed","as":"helstrom.BF7HPVNM93WJ8ADVMP7Y35JR89","cluster":"b51"}
 {"src":"Black Marsh North.esp:07863E","space":"exterior","status":"placed","as":"helstrom.20SSJG2E8YCQ59E5PA80NRRVWT","cluster":"b51"}
 {"src":"Black Marsh North.esp:07863F","space":"exterior","status":"placed","as":"helstrom.B3PJZY0TPBE0KFYR536VQA8AAE","cluster":"b51"}
 {"src":"Black Marsh North.esp:078640","space":"exterior","status":"placed","as":"helstrom.4RXG9W4MNJH6CKVR593JBZJ0QQ","cluster":"b51"}
 {"src":"Black Marsh North.esp:078641","space":"exterior","status":"placed","as":"helstrom.5KT59E3AA54TNPM77H4DRJQF52","cluster":"b51"}
-{"src":"Black Marsh North.esp:078642","space":"exterior","status":"placed","as":"helstrom.DV14D0ZT1CYRD4KB34XV2TDK06","cluster":"w02"}
+{"src":"Black Marsh North.esp:078642","space":"exterior","status":"adapted","as":"helstrom.DV14D0ZT1CYRD4KB34XV2TDK06","cluster":"w02"}
 {"src":"Black Marsh North.esp:078643","space":"exterior","status":"placed","as":"helstrom.91EQ977YPPNKXQGPAPQ37R0M5M","cluster":"b51"}
 {"src":"Black Marsh North.esp:078644","space":"exterior","status":"placed","as":"helstrom.2HR9BFFP3X60BD5B6DHJC6415T","cluster":"b51"}
 {"src":"Black Marsh North.esp:078645","space":"exterior","status":"placed","as":"helstrom.39XM6VPZAB645YFQDAJR9DD4JB","cluster":"b51"}
@@ -465,13 +465,13 @@
 {"src":"Black Marsh North.esp:08D5E4","space":"exterior","status":"replaced","as":["helstrom.V7CK5843EKQS34ZEHS9HJ39CHN","helstrom.KXGAGQM60ANV7DVJBNTY46FYAN"]}
 {"src":"Black Marsh North.esp:08D5E6","space":"exterior","status":"replaced","as":["helstrom.8A62J4KYJ8DA3F58WKMRY3Y79F"]}
 {"src":"Black Marsh North.esp:08D5E7","space":"exterior","status":"dropped","why":"people come from the place record's promises, the guards and the beds"}
-{"src":"Black Marsh North.esp:08D5E8","space":"exterior","status":"replaced","as":["helstrom.AZBB3MKKD7RXK477V5P4Q20373","helstrom.27HEYZ8JQ16G29JJ49V6PW551Z","helstrom.93DEY86JNKQHJMDD6XG2CEMEY6","helstrom.AADTD3DNC5VXN4R7TWAZXV034D","helstrom.YSHZKND0ZHEMN9K5FBC2KPK18B","helstrom.2XGAS6151RPSP9V039WAPCAVWE","helstrom.2XC26VFV49CVC6MMG24SW81Z5N","helstrom.C72K61PGJ6NNZ53Z8RWKR1SMY7","helstrom.NJMSPRDE0S07463DPEQBAYTKY4","helstrom.K3KEW6JNDH6HQTS3EANF71X664","helstrom.GSD19Y7FZNH25ASYFXRF61NYYT","helstrom.9GXR0J529K0PP7Z1K6YXQ4G7WA","helstrom.ZR7FV9KK7WPC43BHFMS2J0BY2D","helstrom.70XB8VD8S4A3J2CHESHXF26B2C","helstrom.2SN1HV4PXJWQD4A9FS08RQ2TWC"]}
+{"src":"Black Marsh North.esp:08D5E8","space":"exterior","status":"replaced","as":["helstrom.AZBB3MKKD7RXK477V5P4Q20373","helstrom.27HEYZ8JQ16G29JJ49V6PW551Z","helstrom.93DEY86JNKQHJMDD6XG2CEMEY6","helstrom.AADTD3DNC5VXN4R7TWAZXV034D","helstrom.YSHZKND0ZHEMN9K5FBC2KPK18B","helstrom.2XGAS6151RPSP9V039WAPCAVWE","helstrom.2XC26VFV49CVC6MMG24SW81Z5N","helstrom.C72K61PGJ6NNZ53Z8RWKR1SMY7","helstrom.NJMSPRDE0S07463DPEQBAYTKY4","helstrom.K3KEW6JNDH6HQTS3EANF71X664","helstrom.GSD19Y7FZNH25ASYFXRF61NYYT","helstrom.9GXR0J529K0PP7Z1K6YXQ4G7WA","helstrom.ZR7FV9KK7WPC43BHFMS2J0BY2D","helstrom.70XB8VD8S4A3J2CHESHXF26B2C","helstrom.2SN1HV4PXJWQD4A9FS08RQ2TWC","helstrom.P6H0C0W4XJXXW7DSNE4GWYNMYE"]}
 {"src":"Black Marsh North.esp:08D5E9","space":"exterior","status":"replaced","as":["helstrom.4GBW9ZEQ76A1V9ZGQ97EVH2G8Y","helstrom.87WTH0EW4WJ6AQ9CTRC7GXAZTS"]}
 {"src":"Black Marsh North.esp:08D5EA","space":"exterior","status":"dropped","why":"people come from the place record's promises, the guards and the beds"}
 {"src":"Black Marsh North.esp:08D5EB","space":"exterior","status":"replaced","as":["helstrom.4GBW9ZEQ76A1V9ZGQ97EVH2G8Y","helstrom.87WTH0EW4WJ6AQ9CTRC7GXAZTS"]}
 {"src":"Black Marsh North.esp:08D5EC","space":"exterior","status":"replaced","as":["helstrom.4GBW9ZEQ76A1V9ZGQ97EVH2G8Y","helstrom.87WTH0EW4WJ6AQ9CTRC7GXAZTS"]}
 {"src":"Black Marsh North.esp:08D5ED","space":"exterior","status":"replaced","as":["helstrom.V7CK5843EKQS34ZEHS9HJ39CHN","helstrom.KXGAGQM60ANV7DVJBNTY46FYAN"]}
-{"src":"Black Marsh North.esp:08D5EE","space":"exterior","status":"replaced","as":["helstrom.AZBB3MKKD7RXK477V5P4Q20373","helstrom.27HEYZ8JQ16G29JJ49V6PW551Z","helstrom.93DEY86JNKQHJMDD6XG2CEMEY6","helstrom.AADTD3DNC5VXN4R7TWAZXV034D","helstrom.YSHZKND0ZHEMN9K5FBC2KPK18B","helstrom.2XGAS6151RPSP9V039WAPCAVWE","helstrom.2XC26VFV49CVC6MMG24SW81Z5N","helstrom.C72K61PGJ6NNZ53Z8RWKR1SMY7","helstrom.NJMSPRDE0S07463DPEQBAYTKY4","helstrom.K3KEW6JNDH6HQTS3EANF71X664","helstrom.GSD19Y7FZNH25ASYFXRF61NYYT","helstrom.9GXR0J529K0PP7Z1K6YXQ4G7WA","helstrom.ZR7FV9KK7WPC43BHFMS2J0BY2D","helstrom.70XB8VD8S4A3J2CHESHXF26B2C","helstrom.2SN1HV4PXJWQD4A9FS08RQ2TWC"]}
+{"src":"Black Marsh North.esp:08D5EE","space":"exterior","status":"replaced","as":["helstrom.AZBB3MKKD7RXK477V5P4Q20373","helstrom.27HEYZ8JQ16G29JJ49V6PW551Z","helstrom.93DEY86JNKQHJMDD6XG2CEMEY6","helstrom.AADTD3DNC5VXN4R7TWAZXV034D","helstrom.YSHZKND0ZHEMN9K5FBC2KPK18B","helstrom.2XGAS6151RPSP9V039WAPCAVWE","helstrom.2XC26VFV49CVC6MMG24SW81Z5N","helstrom.C72K61PGJ6NNZ53Z8RWKR1SMY7","helstrom.NJMSPRDE0S07463DPEQBAYTKY4","helstrom.K3KEW6JNDH6HQTS3EANF71X664","helstrom.GSD19Y7FZNH25ASYFXRF61NYYT","helstrom.9GXR0J529K0PP7Z1K6YXQ4G7WA","helstrom.ZR7FV9KK7WPC43BHFMS2J0BY2D","helstrom.70XB8VD8S4A3J2CHESHXF26B2C","helstrom.2SN1HV4PXJWQD4A9FS08RQ2TWC","helstrom.P6H0C0W4XJXXW7DSNE4GWYNMYE"]}
 {"src":"Black Marsh North.esp:08D5EF","space":"exterior","status":"replaced","as":["helstrom.82Z8NX6PFJJAFJTXPT9AFW5F4G","helstrom.6P3T5QK6SCB0ACS5W0BK2BKA5B","helstrom.TQRTJ0F942RQNR31D17MBB4J60","helstrom.705TBPJ2KY2PCAM2NN1H0HVHXT","helstrom.C27961WTY6QXSFMPVKFY3T2FPH","helstrom.P47W625FPEBNNT468NCZNW8Q41","helstrom.Y6V2AJA47H4FJE53P96NXCNTEK","helstrom.QX0K55RYNW76K37N2DWEGSDHEP","helstrom.C2855503QH3SHVRJDJSG1E9MKM","helstrom.GB97J7STHRZRTTP72ZHG4RN4BE","helstrom.HV5320ZME61ST3NG6ANDRGJSAS","helstrom.XG4SJG30BVXAPMN71DQ2GEZY6A","helstrom.TA28STYJ3XNYJ9FPVMQEYJVQQ4","helstrom.HNKX48AJYF89Q7WGNA02D1YV62","helstrom.VP6HTF3EAYM7XEM7WECSPEG8FN","helstrom.BW3NCY7HAY3B814SESJG6NG0ZW"]}
 {"src":"Black Marsh North.esp:08D5F0","space":"exterior","status":"replaced","as":["helstrom.82Z8NX6PFJJAFJTXPT9AFW5F4G","helstrom.6P3T5QK6SCB0ACS5W0BK2BKA5B","helstrom.TQRTJ0F942RQNR31D17MBB4J60","helstrom.705TBPJ2KY2PCAM2NN1H0HVHXT","helstrom.C27961WTY6QXSFMPVKFY3T2FPH","helstrom.P47W625FPEBNNT468NCZNW8Q41","helstrom.Y6V2AJA47H4FJE53P96NXCNTEK","helstrom.QX0K55RYNW76K37N2DWEGSDHEP","helstrom.C2855503QH3SHVRJDJSG1E9MKM","helstrom.GB97J7STHRZRTTP72ZHG4RN4BE","helstrom.HV5320ZME61ST3NG6ANDRGJSAS","helstrom.XG4SJG30BVXAPMN71DQ2GEZY6A","helstrom.TA28STYJ3XNYJ9FPVMQEYJVQQ4","helstrom.HNKX48AJYF89Q7WGNA02D1YV62","helstrom.VP6HTF3EAYM7XEM7WECSPEG8FN","helstrom.BW3NCY7HAY3B814SESJG6NG0ZW"]}
 {"src":"Black Marsh North.esp:08D5F1","space":"exterior","status":"replaced","as":["helstrom.YFMTJK20VGQ52AK51GM46YJQYR"]}
@@ -492,10 +492,10 @@
 {"src":"Black Marsh North.esp:08D605","space":"exterior","status":"replaced","as":"helstrom.ZEG6JWYPQYT5768WX2CJ8392NA","cluster":"b13","base":"King of the Murkmire.esp:0259D2"}
 {"src":"Black Marsh.esm:069B5D","space":"exterior","status":"adapted","as":"helstrom.K8P42F9JTG4F0E7EXSSA2P86GQ","cluster":"b20"}
 {"src":"Black Marsh.esm:069B5E","space":"exterior","status":"placed","as":"helstrom.V7C4J9BFEG939AMN1WZMZST75A","cluster":"b40"}
-{"src":"Black Marsh.esm:069B5F","space":"exterior","status":"placed","as":"helstrom.DMYM25H8B5SQNNWKZG39PKSG1D","cluster":"s87"}
+{"src":"Black Marsh.esm:069B5F","space":"exterior","status":"adapted","as":"helstrom.DMYM25H8B5SQNNWKZG39PKSG1D","cluster":"s87"}
 {"src":"Black Marsh.esm:069B60","space":"exterior","status":"placed","as":"helstrom.Q5Y4CWPMNXX66HS5GK1BEHFB92","cluster":"b23"}
 {"src":"Black Marsh.esm:069B61","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh.esm:069B62","space":"exterior","status":"placed","as":"helstrom.R34EB2VVQAE2538KHR39EJ6CMM","cluster":"s13"}
+{"src":"Black Marsh.esm:069B62","space":"exterior","status":"adapted","as":"helstrom.R34EB2VVQAE2538KHR39EJ6CMM","cluster":"s13"}
 {"src":"Black Marsh.esm:069B63","space":"exterior","status":"adapted","as":"helstrom.35C8ZT0NA1TW0FMPP8VNTNWR1T","cluster":"b20"}
 {"src":"Black Marsh.esm:069B64","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:069B65","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
@@ -521,9 +521,9 @@
 {"src":"Black Marsh.esm:1C412C","space":"exterior","status":"replaced","as":"helstrom.K98NH6047J21PKCYREEVDDQBTS","cluster":"landing","base":"Dragonborn.esm:038A2D"}
 {"src":"Black Marsh.esm:1C412D","space":"exterior","status":"replaced","as":"helstrom.BW1G9BK67YDXYCRW9ZPBYQG9DY","cluster":"landing","base":"Dragonborn.esm:038A2D"}
 {"src":"Black Marsh.esm:1C412E","space":"exterior","status":"replaced","as":"helstrom.91KEFP3FCA9W7482TQGGE35EK6","cluster":"landing","base":"Dragonborn.esm:038A2D"}
-{"src":"Black Marsh.esm:1C412F","space":"exterior","status":"replaced","as":"helstrom.MDTC177C0PYMB60MB6MPWCZXH5","cluster":"landing","base":"Dragonborn.esm:038A2D"}
+{"src":"Black Marsh.esm:1C412F","space":"exterior","status":"replaced","as":"helstrom.MDTC177C0PYMB60MB6MPWCZXH5","cluster":"landing","base":"Dragonborn.esm:038A2D","nudge":64.0}
 {"src":"Black Marsh.esm:1C4130","space":"exterior","status":"replaced","as":"helstrom.G9K1CH4FRV0MFFCMXG06G71DXT","cluster":"landing","base":"Dragonborn.esm:038A2D"}
-{"src":"Black Marsh.esm:1C4131","space":"exterior","status":"replaced","as":"helstrom.P3SVR50DHV28XV8S7QA6WFNE7S","cluster":"landing","base":"Dragonborn.esm:038A2D"}
+{"src":"Black Marsh.esm:1C4131","space":"exterior","status":"replaced","as":"helstrom.P3SVR50DHV28XV8S7QA6WFNE7S","cluster":"landing","base":"Dragonborn.esm:038A2D","nudge":64.0}
 {"src":"Black Marsh.esm:1C4132","space":"exterior","status":"replaced","as":"helstrom.K4SFH8Q92134KNPE1A3VP2JF4H","cluster":"landing","base":"Dragonborn.esm:038A2D"}
 {"src":"Black Marsh.esm:1C4133","space":"exterior","status":"replaced","as":"helstrom.A4FF01MMJD57AA29WZW83EJAR4","cluster":"landing","base":"Dragonborn.esm:038A35"}
 {"src":"Black Marsh.esm:1C4134","space":"exterior","status":"replaced","as":"helstrom.Q5F62DKGRA0CE57P6N20F3RTWR","cluster":"landing","base":"Dragonborn.esm:038A35"}
@@ -567,10 +567,10 @@
 {"src":"Black Marsh.esm:1C4168","space":"exterior","status":"adapted","as":"helstrom.7BA1672AZXS9JNVJK53N0J1PC8","cluster":"b20"}
 {"src":"Black Marsh.esm:1C4169","space":"exterior","status":"adapted","as":"helstrom.B6W40P9Q7X0AJZKS1QYPBH76BZ","cluster":"b20"}
 {"src":"Black Marsh.esm:1C416A","space":"exterior","status":"adapted","as":"helstrom.TTB40NS4R248GXJG0DS26VKWJR","cluster":"s15"}
-{"src":"Black Marsh.esm:1C416B","space":"exterior","status":"placed","as":"helstrom.5CKX230Y4XE4JMJFGZSF226227","cluster":"s17"}
+{"src":"Black Marsh.esm:1C416B","space":"exterior","status":"adapted","as":"helstrom.5CKX230Y4XE4JMJFGZSF226227","cluster":"s17"}
 {"src":"Black Marsh.esm:1C416C","space":"exterior","status":"adapted","as":"helstrom.P1JNNEZQ207ZTW4Z6Y306HHQRF","cluster":"b20"}
 {"src":"Black Marsh.esm:1C416D","space":"exterior","status":"adapted","as":"helstrom.4KQQXGPMFSAZ619CCGBQD8356P","cluster":"b20"}
-{"src":"Black Marsh.esm:1C416E","space":"exterior","status":"placed","as":"helstrom.SKCM5NY91FKNGAGZ6TXKW6QQWG","cluster":"s17"}
+{"src":"Black Marsh.esm:1C416E","space":"exterior","status":"adapted","as":"helstrom.SKCM5NY91FKNGAGZ6TXKW6QQWG","cluster":"s17"}
 {"src":"Black Marsh.esm:1C416F","space":"exterior","status":"adapted","as":"helstrom.TZM7TZQZQ2PZ37DQ6JXC8JHTXP","cluster":"b20"}
 {"src":"Black Marsh.esm:1C4170","space":"exterior","status":"adapted","as":"helstrom.VA9JF8P2P6TPZ53Z03Q4RHMF8Z","cluster":"b20"}
 {"src":"Black Marsh.esm:1C4171","space":"exterior","status":"adapted","as":"helstrom.C62QKHA6XRBY9TQDXH0E3M73B5","cluster":"b20"}
@@ -611,7 +611,7 @@
 {"src":"Black Marsh.esm:1CE8FB","space":"exterior","status":"adapted","as":"helstrom.3ZJ0R885CBM96JY062KHB9NTEF","cluster":"b20"}
 {"src":"Black Marsh.esm:1CE8FD","space":"exterior","status":"placed","as":"helstrom.GRGXT3RJ29CXQZ8RKCP6GT900V","cluster":"b15"}
 {"src":"Black Marsh.esm:1CE8FE","space":"exterior","status":"placed","as":"helstrom.BBZ9QX0W54HFA1AXW56PF38YJT","cluster":"b15"}
-{"src":"Black Marsh.esm:1CE8FF","space":"exterior","status":"adapted","as":"helstrom.4NXXKFGVXWCXB6XPKFQ97076TF","cluster":"b20"}
+{"src":"Black Marsh.esm:1CE8FF","space":"exterior","status":"dropped","cluster":"b20","why":"no dry land within 384 units of its fitted spot; our water and land are kept as they are"}
 {"src":"Black Marsh.esm:1CE900","space":"exterior","status":"adapted","as":"helstrom.TNG8EDV0X30N2EXC8WMW5AS456","cluster":"b20"}
 {"src":"Black Marsh.esm:1CE901","space":"exterior","status":"placed","as":"helstrom.GAHGA55A8A818SRSA8G351BX69","cluster":"b16"}
 {"src":"Black Marsh.esm:1CE902","space":"exterior","status":"placed","as":"helstrom.19P2E3MZWDVJZ0TD4Z3808B2CR","cluster":"b16"}
@@ -663,7 +663,7 @@
 {"src":"Black Marsh.esm:1CE938","space":"exterior","status":"adapted","as":"helstrom.7EZB673NHQKFRBPQSREJ2SGA3Y","cluster":"b20"}
 {"src":"Black Marsh.esm:1CE939","space":"exterior","status":"replaced","as":"helstrom.RZDRBRKEP5DJNENSZBMS150Y4A","cluster":"s19","base":"Dragonborn.esm:038A35"}
 {"src":"Black Marsh.esm:1CE93C","space":"exterior","status":"replaced","as":"helstrom.AM714NNPJMJJEXHBB2V29A6T7S","cluster":"b25","base":"Dragonborn.esm:038A35"}
-{"src":"Black Marsh.esm:1CE93E","space":"exterior","status":"adapted","as":"helstrom.WM9340DTMM0393GKPKNHY73BSF","cluster":"b26","patch":"stood on the source's dry land; our water is here"}
+{"src":"Black Marsh.esm:1CE93E","space":"exterior","status":"adapted","as":"helstrom.WM9340DTMM0393GKPKNHY73BSF","cluster":"b26"}
 {"src":"Black Marsh.esm:1CE93F","space":"exterior","status":"placed","as":"helstrom.JSR4WGJJHJMWBJ4A04VYHZGD0A","cluster":"b27"}
 {"src":"Black Marsh.esm:1CE941","space":"exterior","status":"adapted","as":"helstrom.8HPE3NWYEARTHZC0KTWNQS5KG3","cluster":"w48"}
 {"src":"Black Marsh.esm:1CE942","space":"exterior","status":"placed","as":"helstrom.EF98CMFYNZBEFNJND7NFDG4EH0","cluster":"b28"}
@@ -772,13 +772,13 @@
 {"src":"Black Marsh.esm:1CE9C0","space":"exterior","status":"placed","as":"helstrom.3HR73RQKR3GAE5Z78ET0F2YGH2","cluster":"b14"}
 {"src":"Black Marsh.esm:1CE9C2","space":"exterior","status":"adapted","as":"helstrom.Z2DAP7EB869Y0GX0A43A5459FK","cluster":"b20"}
 {"src":"Black Marsh.esm:1CE9C3","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh.esm:1CE9C4","space":"exterior","status":"placed","as":"helstrom.S8JGM0BW5N0QPTCAVDPNHG6WQW","cluster":"b22"}
+{"src":"Black Marsh.esm:1CE9C4","space":"exterior","status":"adapted","as":"helstrom.S8JGM0BW5N0QPTCAVDPNHG6WQW","cluster":"b22"}
 {"src":"Black Marsh.esm:1CE9C5","space":"exterior","status":"adapted","as":"helstrom.7J7SDJ9AHGSPKRBFFV216D0BQF","cluster":"b35"}
 {"src":"Black Marsh.esm:1CE9C6","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1CE9C7","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1CE9C8","space":"exterior","status":"placed","as":"helstrom.CHVJ0QBBVGYWH0AA9T2Q973K59","cluster":"b01"}
 {"src":"Black Marsh.esm:1CE9C9","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh.esm:1CE9CA","space":"exterior","status":"placed","as":"helstrom.4359XEMW35T2GVT032W4G5SH3G","cluster":"s73"}
+{"src":"Black Marsh.esm:1CE9CA","space":"exterior","status":"adapted","as":"helstrom.4359XEMW35T2GVT032W4G5SH3G","cluster":"s73"}
 {"src":"Black Marsh.esm:1CE9CB","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1CE9CC","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1CE9CD","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
@@ -827,7 +827,7 @@
 {"src":"Black Marsh.esm:1D3CCA","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1D3CCC","space":"exterior","status":"adapted","as":"helstrom.HNZ57ZW8PJPXDEZKGPCPN37D2S","cluster":"s25"}
 {"src":"Black Marsh.esm:1D3CCE","space":"exterior","status":"adapted","as":"helstrom.6F28KHN3332DQ68EDN03D6H2ZM","cluster":"b21"}
-{"src":"Black Marsh.esm:1D3CCF","space":"exterior","status":"placed","as":"helstrom.Y7WVG97B9GF2YG5DE2QVZYBVCS","cluster":"b22"}
+{"src":"Black Marsh.esm:1D3CCF","space":"exterior","status":"adapted","as":"helstrom.Y7WVG97B9GF2YG5DE2QVZYBVCS","cluster":"b22"}
 {"src":"Black Marsh.esm:1D3CD0","space":"exterior","status":"adapted","as":"helstrom.2WZ2T70CJH2HB0VQ8QJST97XFV","cluster":"b20"}
 {"src":"Black Marsh.esm:1D3CD3","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1D3CD4","space":"exterior","status":"adapted","as":"helstrom.FK2QGYPW2Y3MP97QP4C9F7VEEQ","cluster":"b20"}
@@ -917,18 +917,18 @@
 {"src":"Black Marsh.esm:1D3D49","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1D3D53","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1D3D54","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh.esm:1D3D59","space":"exterior","status":"placed","as":"helstrom.RYQHM33RVX1DD5TE754S6471HG","cluster":"b26"}
+{"src":"Black Marsh.esm:1D3D59","space":"exterior","status":"adapted","as":"helstrom.RYQHM33RVX1DD5TE754S6471HG","cluster":"b26"}
 {"src":"Black Marsh.esm:1D3D5A","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1D3D5B","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1D3D5C","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1D3D5D","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1D3D5E","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1D3D61","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh.esm:1D3D62","space":"exterior","status":"placed","as":"helstrom.XX6YD6JHPFZDZ36CHZ2GAA0Q1M","cluster":"b36"}
+{"src":"Black Marsh.esm:1D3D62","space":"exterior","status":"adapted","as":"helstrom.XX6YD6JHPFZDZ36CHZ2GAA0Q1M","cluster":"b36"}
 {"src":"Black Marsh.esm:1D3D64","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh.esm:1D3D65","space":"exterior","status":"placed","as":"helstrom.VQQA93NEA1QJ3CD6FCYQFZMDTN","cluster":"s63"}
+{"src":"Black Marsh.esm:1D3D65","space":"exterior","status":"adapted","as":"helstrom.VQQA93NEA1QJ3CD6FCYQFZMDTN","cluster":"s63"}
 {"src":"Black Marsh.esm:1D3D66","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh.esm:1D3D67","space":"exterior","status":"placed","as":"helstrom.5VAB9JFY2DEED3V0ZAGMV65HXZ","cluster":"s63"}
+{"src":"Black Marsh.esm:1D3D67","space":"exterior","status":"adapted","as":"helstrom.5VAB9JFY2DEED3V0ZAGMV65HXZ","cluster":"s63"}
 {"src":"Black Marsh.esm:1D3D68","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1D3D69","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1D3D6A","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
@@ -940,7 +940,7 @@
 {"src":"Black Marsh.esm:1D3D70","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1D3D71","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1D3D72","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh.esm:1D3D73","space":"exterior","status":"placed","as":"helstrom.X9RZNW0A9YZ081G5R11W2D7HVF","cluster":"s59"}
+{"src":"Black Marsh.esm:1D3D73","space":"exterior","status":"adapted","as":"helstrom.X9RZNW0A9YZ081G5R11W2D7HVF","cluster":"s59"}
 {"src":"Black Marsh.esm:1D3D74","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1D3D75","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1D3D76","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
@@ -954,15 +954,15 @@
 {"src":"Black Marsh.esm:1D3D7E","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1D3D7F","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1D3D80","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh.esm:1D3D81","space":"exterior","status":"placed","as":"helstrom.VKQXGZSPNV9S1YQ1YWJE0WP0KB","cluster":"b36"}
+{"src":"Black Marsh.esm:1D3D81","space":"exterior","status":"adapted","as":"helstrom.VKQXGZSPNV9S1YQ1YWJE0WP0KB","cluster":"b36"}
 {"src":"Black Marsh.esm:1D3D82","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1D3D83","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1D3D84","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh.esm:1D3D85","space":"exterior","status":"placed","as":"helstrom.DGGSYHTD7Y5C1D5C63B9081VPY","cluster":"s72"}
+{"src":"Black Marsh.esm:1D3D85","space":"exterior","status":"adapted","as":"helstrom.DGGSYHTD7Y5C1D5C63B9081VPY","cluster":"s72"}
 {"src":"Black Marsh.esm:1D3D86","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1D3D87","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1D3D88","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh.esm:1D3D89","space":"exterior","status":"placed","as":"helstrom.9XSE4D7WK2T3FMW7V4KEAD8YKQ","cluster":"s59"}
+{"src":"Black Marsh.esm:1D3D89","space":"exterior","status":"adapted","as":"helstrom.9XSE4D7WK2T3FMW7V4KEAD8YKQ","cluster":"s59"}
 {"src":"Black Marsh.esm:1D3D8A","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1D3D8C","space":"exterior","status":"dropped","why":"the source's water plane; our world's water stands here"}
 {"src":"Black Marsh.esm:1D3D8E","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
@@ -984,7 +984,7 @@
 {"src":"Black Marsh.esm:1D3D9E","space":"exterior","status":"dropped","why":"the source's water plane; our world's water stands here"}
 {"src":"Black Marsh.esm:1D3D9F","space":"exterior","status":"placed","as":"helstrom.DCQ9VPHGXMXKZHW4DW70088XFT","cluster":"b40"}
 {"src":"Black Marsh.esm:1D3DA0","space":"exterior","status":"placed","as":"helstrom.0GS9P2AN3RARX60DZ99ZZJ52EP","cluster":"b40"}
-{"src":"Black Marsh.esm:1D3DA1","space":"exterior","status":"placed","as":"helstrom.G4QEW21VFCJN62YTGAXPS3GVQ0","cluster":"b36"}
+{"src":"Black Marsh.esm:1D3DA1","space":"exterior","status":"adapted","as":"helstrom.G4QEW21VFCJN62YTGAXPS3GVQ0","cluster":"b36"}
 {"src":"Black Marsh.esm:1D3DA2","space":"exterior","status":"placed","as":"helstrom.3WH9C0TCQ6FGAF6GHQCZ47DSAF","cluster":"b40"}
 {"src":"Black Marsh.esm:1D3DA3","space":"exterior","status":"adapted","as":"helstrom.3XQJ3VQFCDMHYGN5YAV07SSFYH","cluster":"b38"}
 {"src":"Black Marsh.esm:1D3DA4","space":"exterior","status":"dropped","why":"the source's water plane; our world's water stands here"}
@@ -1004,7 +1004,7 @@
 {"src":"Black Marsh.esm:1D3DB2","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1D3DB3","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1D3DB4","space":"exterior","status":"adapted","as":"helstrom.R3WB9ND5BJANS5RN8E2HC5KC0Z","cluster":"s52"}
-{"src":"Black Marsh.esm:1D3DB5","space":"exterior","status":"placed","as":"helstrom.N7DJWJ5F0NCRG1WJVVXC8VABYS","cluster":"b36"}
+{"src":"Black Marsh.esm:1D3DB5","space":"exterior","status":"adapted","as":"helstrom.N7DJWJ5F0NCRG1WJVVXC8VABYS","cluster":"b36"}
 {"src":"Black Marsh.esm:1D3DB6","space":"exterior","status":"dropped","why":"the source's water plane; our world's water stands here"}
 {"src":"Black Marsh.esm:1D3DB7","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1D3DB8","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
@@ -1025,7 +1025,7 @@
 {"src":"Black Marsh.esm:1D3DC8","space":"exterior","status":"dropped","why":"the source's water plane; our world's water stands here"}
 {"src":"Black Marsh.esm:1D3DC9","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1D3DCA","space":"exterior","status":"adapted","as":"helstrom.8W5N57CZRG9JSQSHGRH5R7YBBH","cluster":"b10"}
-{"src":"Black Marsh.esm:1D3DCB","space":"exterior","status":"placed","as":"helstrom.SCVDJD5SW3990R63V24616274Y","cluster":"s73"}
+{"src":"Black Marsh.esm:1D3DCB","space":"exterior","status":"adapted","as":"helstrom.SCVDJD5SW3990R63V24616274Y","cluster":"s73"}
 {"src":"Black Marsh.esm:1D3DCC","space":"exterior","status":"adapted","as":"helstrom.BXEE18J4SQ41MBKA6VAXPRGFS5","cluster":"b10"}
 {"src":"Black Marsh.esm:1D3DCD","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1D3DCE","space":"exterior","status":"placed","as":"helstrom.XGZT09AM485DZ0A34BB4BCZ8CQ","cluster":"b08"}
@@ -1057,7 +1057,7 @@
 {"src":"Black Marsh.esm:1D3DE8","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1D3DE9","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1D3DEA","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh.esm:1D3DEB","space":"exterior","status":"placed","as":"helstrom.JD0H8XDJ6QKEHW17Y8SGZ358NW","cluster":"b22"}
+{"src":"Black Marsh.esm:1D3DEB","space":"exterior","status":"adapted","as":"helstrom.JD0H8XDJ6QKEHW17Y8SGZ358NW","cluster":"b22"}
 {"src":"Black Marsh.esm:1D3DEC","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1D3DED","space":"exterior","status":"adapted","as":"helstrom.P40F4BX9Q4QCNBXHAG2HZ7SKZ6","cluster":"b20"}
 {"src":"Black Marsh.esm:1D3DEE","space":"exterior","status":"adapted","as":"helstrom.CJDH9X1130RQDN3NM90C6C8N9Q","cluster":"b20"}
@@ -1125,10 +1125,10 @@
 {"src":"Black Marsh.esm:1D910F","space":"exterior","status":"adapted","as":"helstrom.CRTB9Q0H1SQ3MQFJVMH9F542B0","cluster":"s25"}
 {"src":"Black Marsh.esm:1D9110","space":"exterior","status":"adapted","as":"helstrom.3MQW0VW2H713R7CKNR3RHM0KST","cluster":"s44"}
 {"src":"Black Marsh.esm:1D9111","space":"exterior","status":"adapted","as":"helstrom.ZRDZ6TS4FP4Y9A2CVQEW77HD9Z","cluster":"s45"}
-{"src":"Black Marsh.esm:1D9112","space":"exterior","status":"placed","as":"helstrom.379Y3AN2G3QZSNW067WQBXNG9E","cluster":"b36"}
-{"src":"Black Marsh.esm:1D9113","space":"exterior","status":"placed","as":"helstrom.Y5YQZN6DBSZA86GAYXWSNSFWTQ","cluster":"s46"}
+{"src":"Black Marsh.esm:1D9112","space":"exterior","status":"adapted","as":"helstrom.379Y3AN2G3QZSNW067WQBXNG9E","cluster":"b36"}
+{"src":"Black Marsh.esm:1D9113","space":"exterior","status":"adapted","as":"helstrom.Y5YQZN6DBSZA86GAYXWSNSFWTQ","cluster":"s46"}
 {"src":"Black Marsh.esm:1D9114","space":"exterior","status":"adapted","as":"helstrom.9MEZD5RXHEC5D45GBHNTMW5AJF","cluster":"s47"}
-{"src":"Black Marsh.esm:1D9115","space":"exterior","status":"placed","as":"helstrom.ZM1HTASP7Q0C0SX7BF6YPMMGCE","cluster":"s48"}
+{"src":"Black Marsh.esm:1D9115","space":"exterior","status":"adapted","as":"helstrom.ZM1HTASP7Q0C0SX7BF6YPMMGCE","cluster":"s48"}
 {"src":"Black Marsh.esm:1D9116","space":"exterior","status":"placed","as":"helstrom.2ZE9BXJJ9BWGZ09JSQWSZKM8Z9","cluster":"b37"}
 {"src":"Black Marsh.esm:1D9117","space":"exterior","status":"placed","as":"helstrom.95AFSXGHD6HZAR6H98AHC943BZ","cluster":"s49"}
 {"src":"Black Marsh.esm:1D9118","space":"exterior","status":"placed","as":"helstrom.GQD1A6RXYZP0ZEERXWA7X88FAQ","cluster":"s50"}
@@ -1162,23 +1162,23 @@
 {"src":"Black Marsh.esm:1D9137","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1D9138","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1D913A","space":"exterior","status":"adapted","as":"helstrom.XBAG304W65YGB3DQ9YHVAHM3Y8","cluster":"s19"}
-{"src":"Black Marsh.esm:1D913B","space":"exterior","status":"placed","as":"helstrom.V5S634WE0DX4J9C5W8MWH9X7HD","cluster":"s55"}
-{"src":"Black Marsh.esm:1D913C","space":"exterior","status":"placed","as":"helstrom.18XTTMJ8RP9FBARNCRR3YN9GFW","cluster":"s55"}
-{"src":"Black Marsh.esm:1D913D","space":"exterior","status":"placed","as":"helstrom.CYZECDNMB41MS3J5TBWP038JRQ","cluster":"s55"}
-{"src":"Black Marsh.esm:1D9140","space":"exterior","status":"placed","as":"helstrom.WJ93SS07RA5BKG8FPNGGJNMZE5","cluster":"s55"}
-{"src":"Black Marsh.esm:1D9141","space":"exterior","status":"placed","as":"helstrom.X5WM856JJCNC2X58CSZGJ6JK8A","cluster":"s55"}
-{"src":"Black Marsh.esm:1D9142","space":"exterior","status":"placed","as":"helstrom.M6M414P833P7XWS9Y8N0FPR5PP","cluster":"s55"}
-{"src":"Black Marsh.esm:1D9143","space":"exterior","status":"placed","as":"helstrom.8HDJND5H90VWSECE6AFHG7Y50V","cluster":"s55"}
+{"src":"Black Marsh.esm:1D913B","space":"exterior","status":"adapted","as":"helstrom.V5S634WE0DX4J9C5W8MWH9X7HD","cluster":"s55"}
+{"src":"Black Marsh.esm:1D913C","space":"exterior","status":"adapted","as":"helstrom.18XTTMJ8RP9FBARNCRR3YN9GFW","cluster":"s55"}
+{"src":"Black Marsh.esm:1D913D","space":"exterior","status":"adapted","as":"helstrom.CYZECDNMB41MS3J5TBWP038JRQ","cluster":"s55"}
+{"src":"Black Marsh.esm:1D9140","space":"exterior","status":"adapted","as":"helstrom.WJ93SS07RA5BKG8FPNGGJNMZE5","cluster":"s55"}
+{"src":"Black Marsh.esm:1D9141","space":"exterior","status":"adapted","as":"helstrom.X5WM856JJCNC2X58CSZGJ6JK8A","cluster":"s55"}
+{"src":"Black Marsh.esm:1D9142","space":"exterior","status":"adapted","as":"helstrom.M6M414P833P7XWS9Y8N0FPR5PP","cluster":"s55"}
+{"src":"Black Marsh.esm:1D9143","space":"exterior","status":"adapted","as":"helstrom.8HDJND5H90VWSECE6AFHG7Y50V","cluster":"s55"}
 {"src":"Black Marsh.esm:1D9144","space":"exterior","status":"adapted","as":"helstrom.8VC7HH27ER87XGQGFSCPCQCN9Q","cluster":"s19"}
 {"src":"Black Marsh.esm:1D9145","space":"exterior","status":"adapted","as":"helstrom.PYFAF9G5R6KS4ECRB9XQ6PCGRG","cluster":"s19"}
-{"src":"Black Marsh.esm:1D9146","space":"exterior","status":"placed","as":"helstrom.FSPX06AJSWSCSTGC0AM5442GZD","cluster":"s55"}
-{"src":"Black Marsh.esm:1D9147","space":"exterior","status":"placed","as":"helstrom.AS6D7Q8ZS04H3ZY96KKF8HN6H1","cluster":"s55"}
-{"src":"Black Marsh.esm:1D9148","space":"exterior","status":"placed","as":"helstrom.HRBBV0KWDPZCW8R2T9N5Z5GJ7B","cluster":"s55"}
-{"src":"Black Marsh.esm:1D9149","space":"exterior","status":"placed","as":"helstrom.PPTASS73A0H4AQJY9Z0H4DKZNH","cluster":"s55"}
-{"src":"Black Marsh.esm:1D914A","space":"exterior","status":"placed","as":"helstrom.6RFV5WVAPE76BRBMXAG2C3T8FT","cluster":"s55"}
-{"src":"Black Marsh.esm:1D914B","space":"exterior","status":"placed","as":"helstrom.KSGB5GPV97A774Z1H5V3TVZV89","cluster":"s55"}
-{"src":"Black Marsh.esm:1D914C","space":"exterior","status":"placed","as":"helstrom.HFKG21SMDCPPPTN4TGHB8M2JFD","cluster":"s55"}
-{"src":"Black Marsh.esm:1D914D","space":"exterior","status":"placed","as":"helstrom.FA13TCBQ64H60Q8WZSPP44SFSC","cluster":"s55"}
+{"src":"Black Marsh.esm:1D9146","space":"exterior","status":"adapted","as":"helstrom.FSPX06AJSWSCSTGC0AM5442GZD","cluster":"s55"}
+{"src":"Black Marsh.esm:1D9147","space":"exterior","status":"adapted","as":"helstrom.AS6D7Q8ZS04H3ZY96KKF8HN6H1","cluster":"s55"}
+{"src":"Black Marsh.esm:1D9148","space":"exterior","status":"adapted","as":"helstrom.HRBBV0KWDPZCW8R2T9N5Z5GJ7B","cluster":"s55"}
+{"src":"Black Marsh.esm:1D9149","space":"exterior","status":"adapted","as":"helstrom.PPTASS73A0H4AQJY9Z0H4DKZNH","cluster":"s55"}
+{"src":"Black Marsh.esm:1D914A","space":"exterior","status":"adapted","as":"helstrom.6RFV5WVAPE76BRBMXAG2C3T8FT","cluster":"s55"}
+{"src":"Black Marsh.esm:1D914B","space":"exterior","status":"adapted","as":"helstrom.KSGB5GPV97A774Z1H5V3TVZV89","cluster":"s55"}
+{"src":"Black Marsh.esm:1D914C","space":"exterior","status":"adapted","as":"helstrom.HFKG21SMDCPPPTN4TGHB8M2JFD","cluster":"s55"}
+{"src":"Black Marsh.esm:1D914D","space":"exterior","status":"adapted","as":"helstrom.FA13TCBQ64H60Q8WZSPP44SFSC","cluster":"s55"}
 {"src":"Black Marsh.esm:1D914E","space":"exterior","status":"adapted","as":"helstrom.Y29QJKN4GVFFWEJJCJF06M4DSJ","cluster":"s19"}
 {"src":"Black Marsh.esm:1D914F","space":"exterior","status":"adapted","as":"helstrom.8GNAGVV07KYCG9QNT9209T2YN9","cluster":"s19"}
 {"src":"Black Marsh.esm:1D9155","space":"exterior","status":"adapted","as":"helstrom.3Z59VNH6Y79GT9B8XTR9T2TZEJ","cluster":"w06"}
@@ -1236,13 +1236,13 @@
 {"src":"Black Marsh.esm:1D918E","space":"exterior","status":"adapted","as":"helstrom.TVPPD9AC4P0YHMVC1ASBYF9XW1","cluster":"landing"}
 {"src":"Black Marsh.esm:1D918F","space":"exterior","status":"adapted","as":"helstrom.AP3ANF0TKGPSCYZTXDSC49S2H9","cluster":"landing"}
 {"src":"Black Marsh.esm:1D9190","space":"exterior","status":"adapted","as":"helstrom.BHB9GD0M4DAMZDSSWBNHK774QH","cluster":"landing"}
-{"src":"Black Marsh.esm:1D9191","space":"exterior","status":"placed","as":"helstrom.ANAZK6692T4C604N1J4E0TVKEF","cluster":"s59"}
-{"src":"Black Marsh.esm:1D9192","space":"exterior","status":"placed","as":"helstrom.4FNGZJZ9W1W5YCSMEE0T5VW8VX","cluster":"s59"}
-{"src":"Black Marsh.esm:1D9193","space":"exterior","status":"placed","as":"helstrom.PET4X8SKC2JE9M1Y845MVGFEK9","cluster":"s59"}
-{"src":"Black Marsh.esm:1D9194","space":"exterior","status":"placed","as":"helstrom.GH7KXARK3Q46VHE8PHNAP3N18Y","cluster":"s59"}
-{"src":"Black Marsh.esm:1D9195","space":"exterior","status":"placed","as":"helstrom.5PSJYDB5F4ZYAA96V49X077BM2","cluster":"s59"}
-{"src":"Black Marsh.esm:1D9196","space":"exterior","status":"placed","as":"helstrom.25XWVE1JWDTGA5V6Y6C73BA4Y6","cluster":"s64"}
-{"src":"Black Marsh.esm:1D9197","space":"exterior","status":"placed","as":"helstrom.YYYT6PGHCA5A0H4VRFXCJ903A0","cluster":"s64"}
+{"src":"Black Marsh.esm:1D9191","space":"exterior","status":"adapted","as":"helstrom.ANAZK6692T4C604N1J4E0TVKEF","cluster":"s59"}
+{"src":"Black Marsh.esm:1D9192","space":"exterior","status":"adapted","as":"helstrom.4FNGZJZ9W1W5YCSMEE0T5VW8VX","cluster":"s59"}
+{"src":"Black Marsh.esm:1D9193","space":"exterior","status":"adapted","as":"helstrom.PET4X8SKC2JE9M1Y845MVGFEK9","cluster":"s59"}
+{"src":"Black Marsh.esm:1D9194","space":"exterior","status":"adapted","as":"helstrom.GH7KXARK3Q46VHE8PHNAP3N18Y","cluster":"s59"}
+{"src":"Black Marsh.esm:1D9195","space":"exterior","status":"adapted","as":"helstrom.5PSJYDB5F4ZYAA96V49X077BM2","cluster":"s59"}
+{"src":"Black Marsh.esm:1D9196","space":"exterior","status":"adapted","as":"helstrom.25XWVE1JWDTGA5V6Y6C73BA4Y6","cluster":"s64"}
+{"src":"Black Marsh.esm:1D9197","space":"exterior","status":"adapted","as":"helstrom.YYYT6PGHCA5A0H4VRFXCJ903A0","cluster":"s64"}
 {"src":"Black Marsh.esm:1D9198","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1D9199","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1D919A","space":"exterior","status":"placed","as":"helstrom.57FAJJZ3G1DSC8D306P5T10QQ3","cluster":"b08"}
@@ -2051,8 +2051,8 @@
 {"src":"Black Marsh.esm:1DECCA","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1DECCB","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1DECCC","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh.esm:1DECCD","space":"exterior","status":"placed","as":"helstrom.GWF16Y5GCZ58X3D9HQ9CZ2K8CB","cluster":"b26"}
-{"src":"Black Marsh.esm:1DECCE","space":"exterior","status":"placed","as":"helstrom.29HK32RTQGWD5JVFF5J762QJQG","cluster":"b26"}
+{"src":"Black Marsh.esm:1DECCD","space":"exterior","status":"adapted","as":"helstrom.GWF16Y5GCZ58X3D9HQ9CZ2K8CB","cluster":"b26"}
+{"src":"Black Marsh.esm:1DECCE","space":"exterior","status":"adapted","as":"helstrom.29HK32RTQGWD5JVFF5J762QJQG","cluster":"b26"}
 {"src":"Black Marsh.esm:1DECCF","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1DECD0","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1DECD3","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
@@ -2075,22 +2075,22 @@
 {"src":"Black Marsh.esm:1DECE4","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1DECE5","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1DECE6","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh.esm:1DECE7","space":"exterior","status":"placed","as":"helstrom.472AS5W0ZPBT5QDZ0VP6HVX1CG","cluster":"b22"}
+{"src":"Black Marsh.esm:1DECE7","space":"exterior","status":"adapted","as":"helstrom.472AS5W0ZPBT5QDZ0VP6HVX1CG","cluster":"b22"}
 {"src":"Black Marsh.esm:1DECE8","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1DECE9","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1DECEA","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh.esm:1DECEB","space":"exterior","status":"placed","as":"helstrom.9GTS8JDHAXRG28TMP90W3SN88S","cluster":"b22"}
+{"src":"Black Marsh.esm:1DECEB","space":"exterior","status":"adapted","as":"helstrom.9GTS8JDHAXRG28TMP90W3SN88S","cluster":"b22"}
 {"src":"Black Marsh.esm:1DECEC","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh.esm:1DECED","space":"exterior","status":"placed","as":"helstrom.8V7QTM7ZKXRR5C78EAAGKT485F","cluster":"b22"}
-{"src":"Black Marsh.esm:1DECEE","space":"exterior","status":"placed","as":"helstrom.4VTZA0WMF8JD0X9GR18BARDZDM","cluster":"b22"}
-{"src":"Black Marsh.esm:1DECEF","space":"exterior","status":"placed","as":"helstrom.H6SPW0EAE0S7RV1GCQ4Y8Z8FAP","cluster":"b22"}
+{"src":"Black Marsh.esm:1DECED","space":"exterior","status":"adapted","as":"helstrom.8V7QTM7ZKXRR5C78EAAGKT485F","cluster":"b22"}
+{"src":"Black Marsh.esm:1DECEE","space":"exterior","status":"adapted","as":"helstrom.4VTZA0WMF8JD0X9GR18BARDZDM","cluster":"b22"}
+{"src":"Black Marsh.esm:1DECEF","space":"exterior","status":"adapted","as":"helstrom.H6SPW0EAE0S7RV1GCQ4Y8Z8FAP","cluster":"b22"}
 {"src":"Black Marsh.esm:1DECF0","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh.esm:1DECF1","space":"exterior","status":"placed","as":"helstrom.KH404QE35EC4RER6QF22XKG4DA","cluster":"b22"}
-{"src":"Black Marsh.esm:1DECF2","space":"exterior","status":"placed","as":"helstrom.64JYY9M4KP1PWMRMY14HH72ZSN","cluster":"b22"}
+{"src":"Black Marsh.esm:1DECF1","space":"exterior","status":"adapted","as":"helstrom.KH404QE35EC4RER6QF22XKG4DA","cluster":"b22"}
+{"src":"Black Marsh.esm:1DECF2","space":"exterior","status":"adapted","as":"helstrom.64JYY9M4KP1PWMRMY14HH72ZSN","cluster":"b22"}
 {"src":"Black Marsh.esm:1DECF3","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh.esm:1DECF4","space":"exterior","status":"placed","as":"helstrom.H9RTWCR5C6FAV9VTBT2DJDAN28","cluster":"b22"}
+{"src":"Black Marsh.esm:1DECF4","space":"exterior","status":"adapted","as":"helstrom.H9RTWCR5C6FAV9VTBT2DJDAN28","cluster":"b22"}
 {"src":"Black Marsh.esm:1DECF5","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh.esm:1DECF6","space":"exterior","status":"placed","as":"helstrom.FAK5D4D0XCYZ2GJ0R7WAJBMP23","cluster":"b22"}
+{"src":"Black Marsh.esm:1DECF6","space":"exterior","status":"adapted","as":"helstrom.FAK5D4D0XCYZ2GJ0R7WAJBMP23","cluster":"b22"}
 {"src":"Black Marsh.esm:1DECF7","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1DECF8","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1DECF9","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
@@ -2381,17 +2381,17 @@
 {"src":"Black Marsh.esm:1DEE1D","space":"exterior","status":"adapted","as":"helstrom.ERHTHFZ0JTVXYW01SN2FKG5469","cluster":"b09"}
 {"src":"Black Marsh.esm:1DEE1E","space":"exterior","status":"adapted","as":"helstrom.4TJ0TJDW6HPTVNX3BG4DN7WYYF","cluster":"b09"}
 {"src":"Black Marsh.esm:1DEE1F","space":"exterior","status":"replaced","as":"helstrom.2973MW77T91ZRH332PY5MXFPJ7","cluster":"b09","base":"Dragonborn.esm:039E51"}
-{"src":"Black Marsh.esm:1DEE20","space":"exterior","status":"placed","as":"helstrom.BYTMNX7Q8WSC0HGGRKJYBE21WF","cluster":"w39"}
-{"src":"Black Marsh.esm:1DEE21","space":"exterior","status":"placed","as":"helstrom.CE7Y40NP5GE0CEAM9DCDFZEHEK","cluster":"w39"}
+{"src":"Black Marsh.esm:1DEE20","space":"exterior","status":"adapted","as":"helstrom.BYTMNX7Q8WSC0HGGRKJYBE21WF","cluster":"w39"}
+{"src":"Black Marsh.esm:1DEE21","space":"exterior","status":"adapted","as":"helstrom.CE7Y40NP5GE0CEAM9DCDFZEHEK","cluster":"w39"}
 {"src":"Black Marsh.esm:1DEE22","space":"exterior","status":"replaced","as":"helstrom.K0WGE3798DZ9DXN85KR3B30HFW","cluster":"b09","base":"Dragonborn.esm:039E51"}
-{"src":"Black Marsh.esm:1DEE23","space":"exterior","status":"placed","as":"helstrom.VDBM986Q60ABBSBGFVJ4VN0AAQ","cluster":"w37"}
-{"src":"Black Marsh.esm:1DEE24","space":"exterior","status":"placed","as":"helstrom.67595MDEPHFJGQV90PAGEK3RTQ","cluster":"w37"}
+{"src":"Black Marsh.esm:1DEE23","space":"exterior","status":"adapted","as":"helstrom.VDBM986Q60ABBSBGFVJ4VN0AAQ","cluster":"w37"}
+{"src":"Black Marsh.esm:1DEE24","space":"exterior","status":"adapted","as":"helstrom.67595MDEPHFJGQV90PAGEK3RTQ","cluster":"w37"}
 {"src":"Black Marsh.esm:1DEE25","space":"exterior","status":"replaced","as":"helstrom.0BQ4C40KEWBWNJZYMF4E4W0971","cluster":"w37","base":"Dragonborn.esm:039E51"}
 {"src":"Black Marsh.esm:1DEE26","space":"exterior","status":"adapted","as":"helstrom.AJM6D2J9CKKS4Z28PYVP95SQS0","cluster":"b25"}
 {"src":"Black Marsh.esm:1DEE27","space":"exterior","status":"adapted","as":"helstrom.TBNBQR6EK01M61PZSQP0BNMZVD","cluster":"b25"}
 {"src":"Black Marsh.esm:1DEE28","space":"exterior","status":"replaced","as":"helstrom.EP8NHE7YM1P4NZ9WKG3S5B469D","cluster":"b25","base":"Dragonborn.esm:039E51"}
-{"src":"Black Marsh.esm:1DEE29","space":"exterior","status":"placed","as":"helstrom.5G68A7G61MJDGY3X6NHNX1F24E","cluster":"w40"}
-{"src":"Black Marsh.esm:1DEE2A","space":"exterior","status":"placed","as":"helstrom.BWB05GEYB4FZWKQM8Q9ZEH9DBC","cluster":"w40"}
+{"src":"Black Marsh.esm:1DEE29","space":"exterior","status":"adapted","as":"helstrom.5G68A7G61MJDGY3X6NHNX1F24E","cluster":"w40"}
+{"src":"Black Marsh.esm:1DEE2A","space":"exterior","status":"adapted","as":"helstrom.BWB05GEYB4FZWKQM8Q9ZEH9DBC","cluster":"w40"}
 {"src":"Black Marsh.esm:1DEE2B","space":"exterior","status":"replaced","as":"helstrom.APFP1T721NBXHXEM2KMTJMPHR2","cluster":"b25","base":"Dragonborn.esm:039E51"}
 {"src":"Black Marsh.esm:1DEE2C","space":"exterior","status":"adapted","as":"helstrom.P3B9E88A28CZD2JC28F2VFY363","cluster":"w06"}
 {"src":"Black Marsh.esm:1DEE2D","space":"exterior","status":"adapted","as":"helstrom.3NTXC97CCY5FWV97X5ZQGQ21GY","cluster":"w06"}
@@ -2462,8 +2462,8 @@
 {"src":"Black Marsh.esm:1DEE80","space":"exterior","status":"adapted","as":"helstrom.XQ8K4H3VVFKQ0H3RK8G7J13XWB","cluster":"s14"}
 {"src":"Black Marsh.esm:1DEE81","space":"exterior","status":"adapted","as":"helstrom.RR5683BGDHP7KQEYM3EJYCJTQW","cluster":"s14"}
 {"src":"Black Marsh.esm:1DEE82","space":"exterior","status":"replaced","as":"helstrom.7XEBGFAMGPQGV1E1EGS47J7MWJ","cluster":"s14","base":"Dragonborn.esm:039E51"}
-{"src":"Black Marsh.esm:1DEE83","space":"exterior","status":"placed","as":"helstrom.QWJSAAB1YCQC9AXDX4FN9080A5","cluster":"b36"}
-{"src":"Black Marsh.esm:1DEE84","space":"exterior","status":"placed","as":"helstrom.ZE5G973ZBVBZBE7ZDHAZ7CPNWR","cluster":"b36"}
+{"src":"Black Marsh.esm:1DEE83","space":"exterior","status":"adapted","as":"helstrom.QWJSAAB1YCQC9AXDX4FN9080A5","cluster":"b36"}
+{"src":"Black Marsh.esm:1DEE84","space":"exterior","status":"adapted","as":"helstrom.ZE5G973ZBVBZBE7ZDHAZ7CPNWR","cluster":"b36"}
 {"src":"Black Marsh.esm:1DEE85","space":"exterior","status":"replaced","as":"helstrom.BZV0KYKZ13DRAR26KW2YMYKTNJ","cluster":"b36","base":"Dragonborn.esm:039E51"}
 {"src":"Black Marsh.esm:1DEE86","space":"exterior","status":"adapted","as":"helstrom.9E33XVFZZ76BV17TCSQ8R62WXD","cluster":"landing"}
 {"src":"Black Marsh.esm:1DEE87","space":"exterior","status":"adapted","as":"helstrom.KCW700FPA355KBN3Y07GV0CV7N","cluster":"landing"}
@@ -2531,24 +2531,24 @@
 {"src":"Black Marsh.esm:1DEECB","space":"exterior","status":"placed","as":"helstrom.YJPPV9RS13CQ3A1Z292DFTTC3C","cluster":"s10"}
 {"src":"Black Marsh.esm:1DEECC","space":"exterior","status":"placed","as":"helstrom.KGYQMJGRMF0H3D7HDDYJZJ5C30","cluster":"s10"}
 {"src":"Black Marsh.esm:1DEECD","space":"exterior","status":"placed","as":"helstrom.F4NK4Q842JQJ1SN23ZWPM0PDHH","cluster":"s10"}
-{"src":"Black Marsh.esm:1DEECE","space":"exterior","status":"placed","as":"helstrom.VTVD2V707NP3XKJA8Y7WNZ0PXG","cluster":"s63"}
-{"src":"Black Marsh.esm:1DEECF","space":"exterior","status":"placed","as":"helstrom.RGEHFY7ENS6RM5ARCQR0F32QV0","cluster":"s63"}
-{"src":"Black Marsh.esm:1DEED0","space":"exterior","status":"placed","as":"helstrom.CZ00QEYPDYSZK0W374X1YP5EB8","cluster":"s63"}
-{"src":"Black Marsh.esm:1DEED1","space":"exterior","status":"placed","as":"helstrom.N9VXZDMHJ4PCEG3SSCT4EENCX3","cluster":"s63"}
-{"src":"Black Marsh.esm:1DEED2","space":"exterior","status":"placed","as":"helstrom.1Z1FB9X9WRVCCP7MW53ES0Z29A","cluster":"s63"}
-{"src":"Black Marsh.esm:1DEED3","space":"exterior","status":"placed","as":"helstrom.5F4D3ZY1B5JWKN4BDKSNKZPET3","cluster":"s63"}
+{"src":"Black Marsh.esm:1DEECE","space":"exterior","status":"adapted","as":"helstrom.VTVD2V707NP3XKJA8Y7WNZ0PXG","cluster":"s63"}
+{"src":"Black Marsh.esm:1DEECF","space":"exterior","status":"adapted","as":"helstrom.RGEHFY7ENS6RM5ARCQR0F32QV0","cluster":"s63"}
+{"src":"Black Marsh.esm:1DEED0","space":"exterior","status":"adapted","as":"helstrom.CZ00QEYPDYSZK0W374X1YP5EB8","cluster":"s63"}
+{"src":"Black Marsh.esm:1DEED1","space":"exterior","status":"adapted","as":"helstrom.N9VXZDMHJ4PCEG3SSCT4EENCX3","cluster":"s63"}
+{"src":"Black Marsh.esm:1DEED2","space":"exterior","status":"adapted","as":"helstrom.1Z1FB9X9WRVCCP7MW53ES0Z29A","cluster":"s63"}
+{"src":"Black Marsh.esm:1DEED3","space":"exterior","status":"adapted","as":"helstrom.5F4D3ZY1B5JWKN4BDKSNKZPET3","cluster":"s63"}
 {"src":"Black Marsh.esm:1DEED4","space":"exterior","status":"placed","as":"helstrom.VEAPCZK22ARCENXPZF0RR41TN8","cluster":"s49"}
 {"src":"Black Marsh.esm:1DEED5","space":"exterior","status":"placed","as":"helstrom.MBKRYTE4Y0CSGED76HGZG4TAK2","cluster":"s49"}
 {"src":"Black Marsh.esm:1DEED6","space":"exterior","status":"placed","as":"helstrom.MXMX8K7FJG4P8SPYYSVW9G89KE","cluster":"s49"}
 {"src":"Black Marsh.esm:1DEED7","space":"exterior","status":"placed","as":"helstrom.65XVD6S7DQW8N32FJWC17N0ZST","cluster":"s49"}
 {"src":"Black Marsh.esm:1DEED8","space":"exterior","status":"placed","as":"helstrom.HK9Q70XWNZTYDWZXEGA9CWHGPM","cluster":"s49"}
 {"src":"Black Marsh.esm:1DEED9","space":"exterior","status":"placed","as":"helstrom.PTV02SZ88TP5R2X236CV8V9P63","cluster":"s49"}
-{"src":"Black Marsh.esm:1DEEEC","space":"exterior","status":"placed","as":"helstrom.GQ4TAG2SVSPGZSF9H4X06AYXEA","cluster":"s64"}
-{"src":"Black Marsh.esm:1DEEED","space":"exterior","status":"placed","as":"helstrom.7JRCCPNYB1XN5GHT7NCCJ8S67A","cluster":"s64"}
-{"src":"Black Marsh.esm:1DEEEE","space":"exterior","status":"placed","as":"helstrom.PHRH90DY9JGJ5V134N48YBYQFT","cluster":"s64"}
-{"src":"Black Marsh.esm:1DEEEF","space":"exterior","status":"placed","as":"helstrom.DFMAHGJDN2GX2CR0FN6Y2H4387","cluster":"s64"}
-{"src":"Black Marsh.esm:1DEEF0","space":"exterior","status":"placed","as":"helstrom.JSBXV5NDC59KVCEGTH6C5FP6P0","cluster":"s64"}
-{"src":"Black Marsh.esm:1DEEF1","space":"exterior","status":"placed","as":"helstrom.E39PEK7D8WNX34RQRBVYAN449G","cluster":"s64"}
+{"src":"Black Marsh.esm:1DEEEC","space":"exterior","status":"adapted","as":"helstrom.GQ4TAG2SVSPGZSF9H4X06AYXEA","cluster":"s64"}
+{"src":"Black Marsh.esm:1DEEED","space":"exterior","status":"adapted","as":"helstrom.7JRCCPNYB1XN5GHT7NCCJ8S67A","cluster":"s64"}
+{"src":"Black Marsh.esm:1DEEEE","space":"exterior","status":"adapted","as":"helstrom.PHRH90DY9JGJ5V134N48YBYQFT","cluster":"s64"}
+{"src":"Black Marsh.esm:1DEEEF","space":"exterior","status":"adapted","as":"helstrom.DFMAHGJDN2GX2CR0FN6Y2H4387","cluster":"s64"}
+{"src":"Black Marsh.esm:1DEEF0","space":"exterior","status":"adapted","as":"helstrom.JSBXV5NDC59KVCEGTH6C5FP6P0","cluster":"s64"}
+{"src":"Black Marsh.esm:1DEEF1","space":"exterior","status":"adapted","as":"helstrom.E39PEK7D8WNX34RQRBVYAN449G","cluster":"s64"}
 {"src":"Black Marsh.esm:1DEEF2","space":"exterior","status":"adapted","as":"helstrom.3FDMKD8JN7FT29YPPV1HFFEKZB","cluster":"s65"}
 {"src":"Black Marsh.esm:1DEEF3","space":"exterior","status":"adapted","as":"helstrom.2P5P5424JBFZAGJFBMA357TMEH","cluster":"s65"}
 {"src":"Black Marsh.esm:1DEEF4","space":"exterior","status":"adapted","as":"helstrom.NT4J7RGV16DTDZ8CANHK9KZWQS","cluster":"s65"}
@@ -2573,12 +2573,12 @@
 {"src":"Black Marsh.esm:1DEF07","space":"exterior","status":"adapted","as":"helstrom.BX6TBN7BAE7PJSNXHG1BWX986X","cluster":"s66"}
 {"src":"Black Marsh.esm:1DEF08","space":"exterior","status":"adapted","as":"helstrom.3T06VERQ066K104YMN7G0E8XJ7","cluster":"s66"}
 {"src":"Black Marsh.esm:1DEF09","space":"exterior","status":"adapted","as":"helstrom.367TFRSSAZ2GW12PV9RTHV4XHW","cluster":"s66"}
-{"src":"Black Marsh.esm:1DEF0A","space":"exterior","status":"placed","as":"helstrom.7SNCCMG3PXHN9H9PTVJZ4T3VBA","cluster":"b22"}
-{"src":"Black Marsh.esm:1DEF0B","space":"exterior","status":"placed","as":"helstrom.MP24WVBX94G0QMCZ0B8SYKQDW6","cluster":"w16"}
-{"src":"Black Marsh.esm:1DEF0C","space":"exterior","status":"placed","as":"helstrom.3GD7PTXGN7MQAHZG3Q39MVCMGT","cluster":"w16"}
-{"src":"Black Marsh.esm:1DEF0D","space":"exterior","status":"placed","as":"helstrom.F33E4YZMKF6FNM0VXZRWGHEF57","cluster":"w16"}
-{"src":"Black Marsh.esm:1DEF0E","space":"exterior","status":"placed","as":"helstrom.016EV1QAK4M31W61ETV9S6FC66","cluster":"w16"}
-{"src":"Black Marsh.esm:1DEF0F","space":"exterior","status":"placed","as":"helstrom.3YPSCFJP3H69AZ3EFFWN0FS79X","cluster":"w16"}
+{"src":"Black Marsh.esm:1DEF0A","space":"exterior","status":"adapted","as":"helstrom.7SNCCMG3PXHN9H9PTVJZ4T3VBA","cluster":"b22"}
+{"src":"Black Marsh.esm:1DEF0B","space":"exterior","status":"adapted","as":"helstrom.MP24WVBX94G0QMCZ0B8SYKQDW6","cluster":"w16"}
+{"src":"Black Marsh.esm:1DEF0C","space":"exterior","status":"adapted","as":"helstrom.3GD7PTXGN7MQAHZG3Q39MVCMGT","cluster":"w16"}
+{"src":"Black Marsh.esm:1DEF0D","space":"exterior","status":"adapted","as":"helstrom.F33E4YZMKF6FNM0VXZRWGHEF57","cluster":"w16"}
+{"src":"Black Marsh.esm:1DEF0E","space":"exterior","status":"adapted","as":"helstrom.016EV1QAK4M31W61ETV9S6FC66","cluster":"w16"}
+{"src":"Black Marsh.esm:1DEF0F","space":"exterior","status":"adapted","as":"helstrom.3YPSCFJP3H69AZ3EFFWN0FS79X","cluster":"w16"}
 {"src":"Black Marsh.esm:1DEF10","space":"exterior","status":"adapted","as":"helstrom.55X6S6KM21VXMNZQ3CCF6H0D8Y","cluster":"b20"}
 {"src":"Black Marsh.esm:1DEF11","space":"exterior","status":"adapted","as":"helstrom.N4JP8CSGGAAPFVMJBDX8SQVN71","cluster":"b20"}
 {"src":"Black Marsh.esm:1DEF12","space":"exterior","status":"adapted","as":"helstrom.4FVZH7JE8NC348DX874PZBDGFE","cluster":"b20"}
@@ -2605,11 +2605,11 @@
 {"src":"Black Marsh.esm:1DEF27","space":"exterior","status":"placed","as":"helstrom.GANVV8TW9EJJQX21BYCQB80VD7","cluster":"s69"}
 {"src":"Black Marsh.esm:1E41F3","space":"exterior","status":"adapted","as":"helstrom.65321QN9ZQ1DNX10EEVVJSXJ5E","cluster":"w06"}
 {"src":"Black Marsh.esm:1E41F4","space":"exterior","status":"adapted","as":"helstrom.MA25J7K462JTMQ40T15ZBDY9W4","cluster":"w06"}
-{"src":"Black Marsh.esm:1E41F5","space":"exterior","status":"placed","as":"helstrom.T4JNPSYMGA1H1KDFXD3PYFKBSG","cluster":"w37"}
-{"src":"Black Marsh.esm:1E41F6","space":"exterior","status":"placed","as":"helstrom.ZWX56NR07BADS1J532ZDE0XR5D","cluster":"w39"}
+{"src":"Black Marsh.esm:1E41F5","space":"exterior","status":"adapted","as":"helstrom.T4JNPSYMGA1H1KDFXD3PYFKBSG","cluster":"w37"}
+{"src":"Black Marsh.esm:1E41F6","space":"exterior","status":"adapted","as":"helstrom.ZWX56NR07BADS1J532ZDE0XR5D","cluster":"w39"}
 {"src":"Black Marsh.esm:1E41F7","space":"exterior","status":"adapted","as":"helstrom.A9KKX9Q0NFNWT4AQ946YFJE5X1","cluster":"b09"}
 {"src":"Black Marsh.esm:1E41F8","space":"exterior","status":"adapted","as":"helstrom.Z3ZVBRZG282HAE4S1CA232GM2N","cluster":"b25"}
-{"src":"Black Marsh.esm:1E41F9","space":"exterior","status":"placed","as":"helstrom.8RFE0BYRY9BDPSZ31JMDFQ8V5K","cluster":"w40"}
+{"src":"Black Marsh.esm:1E41F9","space":"exterior","status":"adapted","as":"helstrom.8RFE0BYRY9BDPSZ31JMDFQ8V5K","cluster":"w40"}
 {"src":"Black Marsh.esm:1E41FA","space":"exterior","status":"placed","as":"helstrom.Y80YK1KSJ1KVGY4GRTT78DFWG4","cluster":"b07"}
 {"src":"Black Marsh.esm:1E41FB","space":"exterior","status":"placed","as":"helstrom.M90XXPMYD1BJMC84R07K15NGCT","cluster":"b02"}
 {"src":"Black Marsh.esm:1E41FC","space":"exterior","status":"placed","as":"helstrom.52F3HQK8J1TJZV60GGYMSVK036","cluster":"b06"}
@@ -2654,27 +2654,27 @@
 {"src":"Black Marsh.esm:1E4223","space":"exterior","status":"adapted","as":"helstrom.2BCK1CQA4K2QKTMYB9V22PGCDD","cluster":"s52"}
 {"src":"Black Marsh.esm:1E4224","space":"exterior","status":"adapted","as":"helstrom.J2VMQC41XDZ3X2P16TD1WD7594","cluster":"b38"}
 {"src":"Black Marsh.esm:1E4225","space":"exterior","status":"adapted","as":"helstrom.B4CHP5MXN06PE1JRS3AG210DKZ","cluster":"s54"}
-{"src":"Black Marsh.esm:1E4226","space":"exterior","status":"placed","as":"helstrom.15E9XZYZ2KDZE4WZ6312NKH3K8","cluster":"s46"}
-{"src":"Black Marsh.esm:1E4227","space":"exterior","status":"placed","as":"helstrom.Z3HD7SN8JE4W5B9MHW03H5NXN6","cluster":"b36"}
-{"src":"Black Marsh.esm:1E4228","space":"exterior","status":"placed","as":"helstrom.VWPE5RFA0P8HTK1QXVT9P0Q7KP","cluster":"b36"}
+{"src":"Black Marsh.esm:1E4226","space":"exterior","status":"adapted","as":"helstrom.15E9XZYZ2KDZE4WZ6312NKH3K8","cluster":"s46"}
+{"src":"Black Marsh.esm:1E4227","space":"exterior","status":"adapted","as":"helstrom.Z3HD7SN8JE4W5B9MHW03H5NXN6","cluster":"b36"}
+{"src":"Black Marsh.esm:1E4228","space":"exterior","status":"adapted","as":"helstrom.VWPE5RFA0P8HTK1QXVT9P0Q7KP","cluster":"b36"}
 {"src":"Black Marsh.esm:1E4229","space":"exterior","status":"placed","as":"helstrom.4WVA0WFQVRQJBYKM2RE238M7JZ","cluster":"b37"}
 {"src":"Black Marsh.esm:1E422A","space":"exterior","status":"placed","as":"helstrom.TSCXWNW2SV3MYP79NQCDKPENE1","cluster":"s51"}
 {"src":"Black Marsh.esm:1E422B","space":"exterior","status":"placed","as":"helstrom.JPRSHGVRGE2KA88NX1C4FBBB9C","cluster":"s49"}
 {"src":"Black Marsh.esm:1E422C","space":"exterior","status":"adapted","as":"helstrom.D5E1H8ZPTNG74PGHD0CM9YNFK8","cluster":"landing"}
 {"src":"Black Marsh.esm:1E422D","space":"exterior","status":"adapted","as":"helstrom.Z6NKR4NYK64RH293HHNYBHFZEW","cluster":"landing"}
 {"src":"Black Marsh.esm:1E422E","space":"exterior","status":"placed","as":"helstrom.BFTFSNTR4FHT8NA39B2WYT72QD","cluster":"s10"}
-{"src":"Black Marsh.esm:1E422F","space":"exterior","status":"placed","as":"helstrom.M3SGNNB8WF4KQ89BRTGKP5RRGP","cluster":"w23"}
+{"src":"Black Marsh.esm:1E422F","space":"exterior","status":"adapted","as":"helstrom.M3SGNNB8WF4KQ89BRTGKP5RRGP","cluster":"w23"}
 {"src":"Black Marsh.esm:1E4230","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh.esm:1E4231","space":"exterior","status":"placed","as":"helstrom.VKYXBE1Z7TF60W59WHNFJKVQ1R","cluster":"w23"}
-{"src":"Black Marsh.esm:1E4232","space":"exterior","status":"placed","as":"helstrom.68T4SYSQ3CZ2BXX0VH7JKFGBWR","cluster":"w24"}
-{"src":"Black Marsh.esm:1E4233","space":"exterior","status":"placed","as":"helstrom.XY2XWK72TNKV0PCEGK18E5SN3K","cluster":"w24"}
-{"src":"Black Marsh.esm:1E4234","space":"exterior","status":"placed","as":"helstrom.6QHMYBK557F0GH6BZNAW6YYCBB","cluster":"w24"}
+{"src":"Black Marsh.esm:1E4231","space":"exterior","status":"adapted","as":"helstrom.VKYXBE1Z7TF60W59WHNFJKVQ1R","cluster":"w23"}
+{"src":"Black Marsh.esm:1E4232","space":"exterior","status":"adapted","as":"helstrom.68T4SYSQ3CZ2BXX0VH7JKFGBWR","cluster":"w24"}
+{"src":"Black Marsh.esm:1E4233","space":"exterior","status":"adapted","as":"helstrom.XY2XWK72TNKV0PCEGK18E5SN3K","cluster":"w24"}
+{"src":"Black Marsh.esm:1E4234","space":"exterior","status":"adapted","as":"helstrom.6QHMYBK557F0GH6BZNAW6YYCBB","cluster":"w24"}
 {"src":"Black Marsh.esm:1E4235","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh.esm:1E4236","space":"exterior","status":"placed","as":"helstrom.9078353PESPG96G1C9CCZP2WBD","cluster":"w23"}
-{"src":"Black Marsh.esm:1E4237","space":"exterior","status":"placed","as":"helstrom.5DZD948X8NY2XWS608SGTDPW8V","cluster":"w24"}
-{"src":"Black Marsh.esm:1E4238","space":"exterior","status":"placed","as":"helstrom.VJ34K7E98ABB901WZXR8TGW4HQ","cluster":"w24"}
-{"src":"Black Marsh.esm:1E4239","space":"exterior","status":"placed","as":"helstrom.S2EMGT32ABTR23Q71VG6H40S3P","cluster":"w23"}
-{"src":"Black Marsh.esm:1E423A","space":"exterior","status":"placed","as":"helstrom.DMR79XANVMADD8P390JJS56DYX","cluster":"w23"}
+{"src":"Black Marsh.esm:1E4236","space":"exterior","status":"adapted","as":"helstrom.9078353PESPG96G1C9CCZP2WBD","cluster":"w23"}
+{"src":"Black Marsh.esm:1E4237","space":"exterior","status":"adapted","as":"helstrom.5DZD948X8NY2XWS608SGTDPW8V","cluster":"w24"}
+{"src":"Black Marsh.esm:1E4238","space":"exterior","status":"adapted","as":"helstrom.VJ34K7E98ABB901WZXR8TGW4HQ","cluster":"w24"}
+{"src":"Black Marsh.esm:1E4239","space":"exterior","status":"adapted","as":"helstrom.S2EMGT32ABTR23Q71VG6H40S3P","cluster":"w23"}
+{"src":"Black Marsh.esm:1E423A","space":"exterior","status":"adapted","as":"helstrom.DMR79XANVMADD8P390JJS56DYX","cluster":"w23"}
 {"src":"Black Marsh.esm:1E4253","space":"exterior","status":"placed","as":"helstrom.41P54KZT6ZXVJHZKMM471BMW68","cluster":"w17"}
 {"src":"Black Marsh.esm:1E4255","space":"exterior","status":"placed","as":"helstrom.DBSFPS6WCW5D7YQBAPF47YF1T6","cluster":"w17"}
 {"src":"Black Marsh.esm:1E4259","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
@@ -2718,8 +2718,8 @@
 {"src":"Black Marsh.esm:1E42B8","space":"exterior","status":"replaced","as":"helstrom.WE70CCQDKMX08WGEB3VTV01566","cluster":"b36","base":"Here There Be Monsters - Curse of Cipactli.esp:029DC6"}
 {"src":"Black Marsh.esm:1E42B9","space":"exterior","status":"replaced","as":"helstrom.C9KJC9MNXATB4EYGRRW711GR3E","cluster":"b37","base":"Here There Be Monsters - Curse of Cipactli.esp:029DC6"}
 {"src":"Black Marsh.esm:1E44AE","space":"exterior","status":"replaced","as":"helstrom.SPXR35NGE7XF7BGVQ6BPPM306H","cluster":"b35","base":"Here There Be Monsters - Curse of Cipactli.esp:029DC6"}
-{"src":"Black Marsh.esm:1E44AF","space":"exterior","status":"adapted","as":"helstrom.F800YEF8G5A7CAKR6JJGW1EQXZ","cluster":"s63","patch":"stood on the source's dry land; our water is here"}
-{"src":"Black Marsh.esm:1E44B0","space":"exterior","status":"adapted","as":"helstrom.HPJK55SXTPJHXVMSB4AMABE02R","cluster":"s63","patch":"ground under it rises 115 units against the source's 1"}
+{"src":"Black Marsh.esm:1E44AF","space":"exterior","status":"adapted","as":"helstrom.F800YEF8G5A7CAKR6JJGW1EQXZ","cluster":"s63","nudge":384.0}
+{"src":"Black Marsh.esm:1E44B0","space":"exterior","status":"adapted","as":"helstrom.HPJK55SXTPJHXVMSB4AMABE02R","cluster":"s63","nudge":384.0}
 {"src":"Black Marsh.esm:1E44B1","space":"exterior","status":"adapted","as":"helstrom.QCYZYE41MTN3M0EMX6QW4X6T7C","cluster":"landing"}
 {"src":"Black Marsh.esm:1E44B2","space":"exterior","status":"adapted","as":"helstrom.3QWNT6D1J3T2YBFNEYW6VG5Z59","cluster":"landing"}
 {"src":"Black Marsh.esm:1E44B3","space":"exterior","status":"adapted","as":"helstrom.JRGZP17WSPWF4FC9XCNVKQVMRX","cluster":"landing"}
@@ -2755,16 +2755,16 @@
 {"src":"Black Marsh.esm:1E4501","space":"exterior","status":"adapted","as":"helstrom.KJVJTAM0EQJ4XR02A94S6AF71B","cluster":"w06"}
 {"src":"Black Marsh.esm:1E4502","space":"exterior","status":"adapted","as":"helstrom.2NJM71JYKGRX41JH997MV52B10","cluster":"w06"}
 {"src":"Black Marsh.esm:1E4503","space":"exterior","status":"adapted","as":"helstrom.43Q43CVA0SGADA7JP4GVJK0C3G","cluster":"w06"}
-{"src":"Black Marsh.esm:1E4505","space":"exterior","status":"placed","as":"helstrom.XJK28RVNR2W10X8NV1JZ52QJZN","cluster":"s55"}
-{"src":"Black Marsh.esm:1E4506","space":"exterior","status":"placed","as":"helstrom.7832DJKWBYS43H3NBTWM24CJS8","cluster":"s55"}
+{"src":"Black Marsh.esm:1E4505","space":"exterior","status":"adapted","as":"helstrom.XJK28RVNR2W10X8NV1JZ52QJZN","cluster":"s55"}
+{"src":"Black Marsh.esm:1E4506","space":"exterior","status":"adapted","as":"helstrom.7832DJKWBYS43H3NBTWM24CJS8","cluster":"s55"}
 {"src":"Black Marsh.esm:1E4509","space":"exterior","status":"placed","as":"helstrom.5ENSH9YC5J8E91X4C6Y0Q7F98E","cluster":"s71"}
 {"src":"Black Marsh.esm:1E450D","space":"exterior","status":"placed","as":"helstrom.GCV4YZSQFFSDS3D6XH7NANGK8R","cluster":"w49"}
 {"src":"Black Marsh.esm:1E450F","space":"exterior","status":"adapted","as":"helstrom.NMWG2WMAX4VA6ZNJEHRE0CJHA0","cluster":"s23"}
-{"src":"Black Marsh.esm:1E4512","space":"exterior","status":"placed","as":"helstrom.78NMMJZY37ZR5859MBD0GQC4TN","cluster":"s72"}
-{"src":"Black Marsh.esm:1E4513","space":"exterior","status":"placed","as":"helstrom.9KG76Q6899M7SF5KZ4AMJH3CX2","cluster":"s72"}
-{"src":"Black Marsh.esm:1E4517","space":"exterior","status":"placed","as":"helstrom.J766QAX99PHH9Z455QHB847E3P","cluster":"s73"}
+{"src":"Black Marsh.esm:1E4512","space":"exterior","status":"adapted","as":"helstrom.78NMMJZY37ZR5859MBD0GQC4TN","cluster":"s72"}
+{"src":"Black Marsh.esm:1E4513","space":"exterior","status":"adapted","as":"helstrom.9KG76Q6899M7SF5KZ4AMJH3CX2","cluster":"s72"}
+{"src":"Black Marsh.esm:1E4517","space":"exterior","status":"adapted","as":"helstrom.J766QAX99PHH9Z455QHB847E3P","cluster":"s73"}
 {"src":"Black Marsh.esm:1E4518","space":"exterior","status":"placed","as":"helstrom.YVKA7WG70F1CBD2QW7KGV9MRSE","cluster":"b23"}
-{"src":"Black Marsh.esm:1E4519","space":"exterior","status":"adapted","as":"helstrom.6N14Y9HF7A1HAGEDA39FD3974N","cluster":"s55","patch":"stood on the source's dry land; our water is here"}
+{"src":"Black Marsh.esm:1E4519","space":"exterior","status":"adapted","as":"helstrom.6N14Y9HF7A1HAGEDA39FD3974N","cluster":"s55"}
 {"src":"Black Marsh.esm:1E451A","space":"exterior","status":"adapted","as":"helstrom.3CJ1QZ2HFR3JC03GSRWGX282JS","cluster":"b20"}
 {"src":"Black Marsh.esm:1E451B","space":"exterior","status":"adapted","as":"helstrom.RWEADJCD2JX7NPAJD5EEZ9TZBB","cluster":"b20"}
 {"src":"Black Marsh.esm:1E451C","space":"exterior","status":"placed","as":"helstrom.5TAPCS8F8JXXNB02VSYTC0ZC60","cluster":"s74"}
@@ -2772,7 +2772,7 @@
 {"src":"Black Marsh.esm:1E451E","space":"exterior","status":"adapted","as":"helstrom.TK9Y37HM9GKHNZ4RAWRFQZ86F4","cluster":"b30"}
 {"src":"Black Marsh.esm:1E97F3","space":"exterior","status":"adapted","as":"helstrom.S4SMSZ9W79H2E281RCHQQVKXC7","cluster":"b39"}
 {"src":"Black Marsh.esm:1E97F4","space":"exterior","status":"placed","as":"helstrom.2KBYMP2N4ESYVRH3FBQGYWGCBG","cluster":"b40"}
-{"src":"Black Marsh.esm:1E97F5","space":"exterior","status":"placed","as":"helstrom.R6HF0W0M57D2DV1TRAPCD02KYR","cluster":"b41"}
+{"src":"Black Marsh.esm:1E97F5","space":"exterior","status":"adapted","as":"helstrom.R6HF0W0M57D2DV1TRAPCD02KYR","cluster":"b41"}
 {"src":"Black Marsh.esm:1E97F6","space":"exterior","status":"adapted","as":"helstrom.XVY708HFWP5ES3JDYE1Q53XG8B","cluster":"b42"}
 {"src":"Black Marsh.esm:1E97F7","space":"exterior","status":"adapted","as":"helstrom.ZHME14AW7VB45M14HSR5ZNK7PG","cluster":"b43"}
 {"src":"Black Marsh.esm:1E97F8","space":"exterior","status":"adapted","as":"helstrom.AW33E6QRNG9TKB73KVTE82XQE3","cluster":"b44"}
@@ -2788,26 +2788,26 @@
 {"src":"Black Marsh.esm:1E9802","space":"exterior","status":"placed","as":"helstrom.DD4XHJ8D3KXQHQNAMH2VW2J3MH","cluster":"b40"}
 {"src":"Black Marsh.esm:1E9803","space":"exterior","status":"placed","as":"helstrom.SKSY5ZKSWV63J4G8463H4WNHPP","cluster":"b40"}
 {"src":"Black Marsh.esm:1E9804","space":"exterior","status":"placed","as":"helstrom.2B3S1E9DJFY55ZGHX43ETY81NW","cluster":"b40"}
-{"src":"Black Marsh.esm:1E9806","space":"exterior","status":"placed","as":"helstrom.93SA78W6VWH0F9PS8BKXG1D0TT","cluster":"s55"}
-{"src":"Black Marsh.esm:1E9807","space":"exterior","status":"placed","as":"helstrom.NHCWJN9ERYHWT9QDTP8QMJPXBF","cluster":"s55"}
-{"src":"Black Marsh.esm:1E9808","space":"exterior","status":"placed","as":"helstrom.TBJYZBY3JM3VD22WBPTMBJRHCJ","cluster":"s55"}
-{"src":"Black Marsh.esm:1E9809","space":"exterior","status":"placed","as":"helstrom.HW51DYQYGT39XZXN2H446WSYT7","cluster":"s55"}
-{"src":"Black Marsh.esm:1E980A","space":"exterior","status":"placed","as":"helstrom.G1JY7A0W7QPGCM4NZ23Q8S7CGC","cluster":"s55"}
+{"src":"Black Marsh.esm:1E9806","space":"exterior","status":"adapted","as":"helstrom.93SA78W6VWH0F9PS8BKXG1D0TT","cluster":"s55"}
+{"src":"Black Marsh.esm:1E9807","space":"exterior","status":"adapted","as":"helstrom.NHCWJN9ERYHWT9QDTP8QMJPXBF","cluster":"s55"}
+{"src":"Black Marsh.esm:1E9808","space":"exterior","status":"adapted","as":"helstrom.TBJYZBY3JM3VD22WBPTMBJRHCJ","cluster":"s55"}
+{"src":"Black Marsh.esm:1E9809","space":"exterior","status":"adapted","as":"helstrom.HW51DYQYGT39XZXN2H446WSYT7","cluster":"s55"}
+{"src":"Black Marsh.esm:1E980A","space":"exterior","status":"adapted","as":"helstrom.G1JY7A0W7QPGCM4NZ23Q8S7CGC","cluster":"s55"}
 {"src":"Black Marsh.esm:1E980B","space":"exterior","status":"adapted","as":"helstrom.117N148X542YFVTHTSZE6FXPX8","cluster":"b25"}
 {"src":"Black Marsh.esm:1E980C","space":"exterior","status":"adapted","as":"helstrom.9EYSYTDQ1FJQ5JEKP07BY74C4F","cluster":"b25"}
 {"src":"Black Marsh.esm:1E980D","space":"exterior","status":"adapted","as":"helstrom.XJP0RQ2AX5KXZYVB3YMR4ASA9G","cluster":"b25"}
 {"src":"Black Marsh.esm:1E980E","space":"exterior","status":"adapted","as":"helstrom.N9KCYVZWY72NADADHY08T2AM3G","cluster":"b25"}
 {"src":"Black Marsh.esm:1E980F","space":"exterior","status":"adapted","as":"helstrom.T0MNFSKV0YM1GD4Z1XVCRY51AP","cluster":"b25"}
-{"src":"Black Marsh.esm:1E9810","space":"exterior","status":"placed","as":"helstrom.BS1FJP03Z22HDV71ZBDS0GT4PB","cluster":"s55"}
-{"src":"Black Marsh.esm:1E9811","space":"exterior","status":"placed","as":"helstrom.JACD9ZW4852XN6NXH3HXZWRGCE","cluster":"s55"}
-{"src":"Black Marsh.esm:1E9812","space":"exterior","status":"placed","as":"helstrom.DDXDSG8E6N3RPXQ7DRKP37F5FA","cluster":"s55"}
-{"src":"Black Marsh.esm:1E9813","space":"exterior","status":"placed","as":"helstrom.7QE02C3R7ZNMHQTJP918GRMX64","cluster":"s55"}
-{"src":"Black Marsh.esm:1E9814","space":"exterior","status":"placed","as":"helstrom.QH8BN6D5ZD17VVVH9XF83FE2ED","cluster":"s55"}
-{"src":"Black Marsh.esm:1E9815","space":"exterior","status":"placed","as":"helstrom.WH6K9D2MQ7CJWP1158H1RXZC47","cluster":"s55"}
-{"src":"Black Marsh.esm:1E9816","space":"exterior","status":"placed","as":"helstrom.8QSPGHPBP791J1R2JP0GBAGH03","cluster":"s55"}
-{"src":"Black Marsh.esm:1E9817","space":"exterior","status":"placed","as":"helstrom.W4XH3AJ1XVS5X3YXHAWQQ8JMAY","cluster":"s55"}
-{"src":"Black Marsh.esm:1E9818","space":"exterior","status":"placed","as":"helstrom.TVMP0G68XXRY9M0TVFX3H2QBHS","cluster":"s55"}
-{"src":"Black Marsh.esm:1E9819","space":"exterior","status":"placed","as":"helstrom.MX1YTDP6WJCP63GP0R801AE4M9","cluster":"s55"}
+{"src":"Black Marsh.esm:1E9810","space":"exterior","status":"adapted","as":"helstrom.BS1FJP03Z22HDV71ZBDS0GT4PB","cluster":"s55"}
+{"src":"Black Marsh.esm:1E9811","space":"exterior","status":"adapted","as":"helstrom.JACD9ZW4852XN6NXH3HXZWRGCE","cluster":"s55"}
+{"src":"Black Marsh.esm:1E9812","space":"exterior","status":"adapted","as":"helstrom.DDXDSG8E6N3RPXQ7DRKP37F5FA","cluster":"s55"}
+{"src":"Black Marsh.esm:1E9813","space":"exterior","status":"adapted","as":"helstrom.7QE02C3R7ZNMHQTJP918GRMX64","cluster":"s55"}
+{"src":"Black Marsh.esm:1E9814","space":"exterior","status":"adapted","as":"helstrom.QH8BN6D5ZD17VVVH9XF83FE2ED","cluster":"s55"}
+{"src":"Black Marsh.esm:1E9815","space":"exterior","status":"adapted","as":"helstrom.WH6K9D2MQ7CJWP1158H1RXZC47","cluster":"s55"}
+{"src":"Black Marsh.esm:1E9816","space":"exterior","status":"adapted","as":"helstrom.8QSPGHPBP791J1R2JP0GBAGH03","cluster":"s55"}
+{"src":"Black Marsh.esm:1E9817","space":"exterior","status":"adapted","as":"helstrom.W4XH3AJ1XVS5X3YXHAWQQ8JMAY","cluster":"s55"}
+{"src":"Black Marsh.esm:1E9818","space":"exterior","status":"adapted","as":"helstrom.TVMP0G68XXRY9M0TVFX3H2QBHS","cluster":"s55"}
+{"src":"Black Marsh.esm:1E9819","space":"exterior","status":"adapted","as":"helstrom.MX1YTDP6WJCP63GP0R801AE4M9","cluster":"s55"}
 {"src":"Black Marsh.esm:1E981A","space":"exterior","status":"adapted","as":"helstrom.D539NPXT65J38754JSQ9TGT2W7","cluster":"s19"}
 {"src":"Black Marsh.esm:1E981B","space":"exterior","status":"adapted","as":"helstrom.BF7NVEF26V9DR0B2R3EY3N78G8","cluster":"s19"}
 {"src":"Black Marsh.esm:1E981C","space":"exterior","status":"adapted","as":"helstrom.4KZANRQP1T993QSX3SHXED4EM0","cluster":"s19"}
@@ -2866,15 +2866,15 @@
 {"src":"Black Marsh.esm:1E9852","space":"exterior","status":"placed","as":"helstrom.JX23Z3H9MTHRQZ5E2NHNBN6SVC","cluster":"b40"}
 {"src":"Black Marsh.esm:1E9853","space":"exterior","status":"placed","as":"helstrom.9SFP6CNCF7MGVQZ34GNRJZ4GHJ","cluster":"b40"}
 {"src":"Black Marsh.esm:1E9854","space":"exterior","status":"placed","as":"helstrom.GY75G13AZP44NWQARZV3JEXRV3","cluster":"b40"}
-{"src":"Black Marsh.esm:1E9856","space":"exterior","status":"placed","as":"helstrom.KQKA4F4W0HW2P233NCE1FA13PG","cluster":"b41"}
-{"src":"Black Marsh.esm:1E9857","space":"exterior","status":"placed","as":"helstrom.0QH5G6V31JH4HWB67MPNK2W6N8","cluster":"b41"}
-{"src":"Black Marsh.esm:1E9858","space":"exterior","status":"placed","as":"helstrom.B5D59CSX8GEAV30Y99H95TZBDY","cluster":"b41"}
-{"src":"Black Marsh.esm:1E9859","space":"exterior","status":"placed","as":"helstrom.B0SD0K51EMCEMKB0EBKD5RGDV5","cluster":"b41"}
-{"src":"Black Marsh.esm:1E985A","space":"exterior","status":"placed","as":"helstrom.4G5ZQ1TJPV00132TXNA94H5XRR","cluster":"b41"}
-{"src":"Black Marsh.esm:1E985B","space":"exterior","status":"placed","as":"helstrom.R6CXZCV3KYC2JDJQG17ZNN8RBQ","cluster":"b41"}
-{"src":"Black Marsh.esm:1E985C","space":"exterior","status":"placed","as":"helstrom.RZV8RHR5TW539ZQKBQHM1JTB3Q","cluster":"b41"}
-{"src":"Black Marsh.esm:1E985D","space":"exterior","status":"placed","as":"helstrom.HH8KCHD8QAFS509MJYP0HH07A0","cluster":"b41"}
-{"src":"Black Marsh.esm:1E985E","space":"exterior","status":"placed","as":"helstrom.CGBP4VPH02HYHE27Y9ACG6TZG3","cluster":"b41"}
+{"src":"Black Marsh.esm:1E9856","space":"exterior","status":"adapted","as":"helstrom.KQKA4F4W0HW2P233NCE1FA13PG","cluster":"b41"}
+{"src":"Black Marsh.esm:1E9857","space":"exterior","status":"adapted","as":"helstrom.0QH5G6V31JH4HWB67MPNK2W6N8","cluster":"b41"}
+{"src":"Black Marsh.esm:1E9858","space":"exterior","status":"adapted","as":"helstrom.B5D59CSX8GEAV30Y99H95TZBDY","cluster":"b41"}
+{"src":"Black Marsh.esm:1E9859","space":"exterior","status":"adapted","as":"helstrom.B0SD0K51EMCEMKB0EBKD5RGDV5","cluster":"b41"}
+{"src":"Black Marsh.esm:1E985A","space":"exterior","status":"adapted","as":"helstrom.4G5ZQ1TJPV00132TXNA94H5XRR","cluster":"b41"}
+{"src":"Black Marsh.esm:1E985B","space":"exterior","status":"adapted","as":"helstrom.R6CXZCV3KYC2JDJQG17ZNN8RBQ","cluster":"b41"}
+{"src":"Black Marsh.esm:1E985C","space":"exterior","status":"adapted","as":"helstrom.RZV8RHR5TW539ZQKBQHM1JTB3Q","cluster":"b41"}
+{"src":"Black Marsh.esm:1E985D","space":"exterior","status":"adapted","as":"helstrom.HH8KCHD8QAFS509MJYP0HH07A0","cluster":"b41"}
+{"src":"Black Marsh.esm:1E985E","space":"exterior","status":"adapted","as":"helstrom.CGBP4VPH02HYHE27Y9ACG6TZG3","cluster":"b41"}
 {"src":"Black Marsh.esm:1E985F","space":"exterior","status":"dropped","why":"Nordic base (decision 0006); no replacement chosen"}
 {"src":"Black Marsh.esm:1E9861","space":"exterior","status":"placed","as":"helstrom.VCWAWP59A0EG814X2S59SC8FZ8","cluster":"b40"}
 {"src":"Black Marsh.esm:1E9862","space":"exterior","status":"placed","as":"helstrom.D2QR0ZKG0E4GP8J3RCZW7YBHHE","cluster":"b40"}
@@ -2941,22 +2941,22 @@
 {"src":"Black Marsh.esm:1EEC35","space":"exterior","status":"placed","as":"helstrom.C530J8RCKGEN4353E6ZRR3A5RZ","cluster":"s78"}
 {"src":"Black Marsh.esm:1EEC37","space":"exterior","status":"placed","as":"helstrom.2YJN5HXMAG55H3P0BZQY6QGBFF","cluster":"w14"}
 {"src":"Black Marsh.esm:1EEC62","space":"exterior","status":"placed","as":"helstrom.AFQHYZ5JM3B9BKMEWK90Z1913X","cluster":"w14"}
-{"src":"Black Marsh.esm:1EEC67","space":"exterior","status":"placed","as":"helstrom.7WY4E4C3GV3KH4RDM5RXCAGCQR","cluster":"w02"}
-{"src":"Black Marsh.esm:1EEC68","space":"exterior","status":"placed","as":"helstrom.0XH27E3WZ31RYBKT7Q59CPYBQ5","cluster":"w02"}
-{"src":"Black Marsh.esm:1EEC6A","space":"exterior","status":"placed","as":"helstrom.D047GNHP4HXEGW7DQ2GJ1TH29F","cluster":"w02"}
+{"src":"Black Marsh.esm:1EEC67","space":"exterior","status":"adapted","as":"helstrom.7WY4E4C3GV3KH4RDM5RXCAGCQR","cluster":"w02"}
+{"src":"Black Marsh.esm:1EEC68","space":"exterior","status":"adapted","as":"helstrom.0XH27E3WZ31RYBKT7Q59CPYBQ5","cluster":"w02"}
+{"src":"Black Marsh.esm:1EEC6A","space":"exterior","status":"adapted","as":"helstrom.D047GNHP4HXEGW7DQ2GJ1TH29F","cluster":"w02"}
 {"src":"Black Marsh.esm:1EEC6C","space":"exterior","status":"placed","as":"helstrom.51WCHHPT86Y6MZ68NE7MD9RF4T","cluster":"b51"}
 {"src":"Black Marsh.esm:1EEC70","space":"exterior","status":"placed","as":"helstrom.R50S3BP92Z6X32BKHYWCZVWSJH","cluster":"w50"}
 {"src":"Black Marsh.esm:1EEC71","space":"exterior","status":"placed","as":"helstrom.6N2GEX4VB3QCF64JTVJX8T7AP3","cluster":"s79"}
 {"src":"Black Marsh.esm:1EEC7C","space":"exterior","status":"placed","as":"helstrom.SZM3Y0DRRKCN7XAJHR9SW0GY1G","cluster":"s80"}
 {"src":"Black Marsh.esm:1EEC7D","space":"exterior","status":"placed","as":"helstrom.MZQJXF7WV42W829QX4NQ9ZVJBP","cluster":"w14"}
-{"src":"Black Marsh.esm:1EEC7E","space":"exterior","status":"placed","as":"helstrom.JFSTTAVPS4SS03142TMWV77B1Z","cluster":"w02"}
+{"src":"Black Marsh.esm:1EEC7E","space":"exterior","status":"adapted","as":"helstrom.JFSTTAVPS4SS03142TMWV77B1Z","cluster":"w02"}
 {"src":"Black Marsh.esm:1EEC7F","space":"exterior","status":"placed","as":"helstrom.TEFK5P8GEEYJ3JFNPDM955YFBT","cluster":"s78"}
-{"src":"Black Marsh.esm:1EEC80","space":"exterior","status":"placed","as":"helstrom.H829SX6JP7XB5NH75W00P6Z16W","cluster":"w51"}
+{"src":"Black Marsh.esm:1EEC80","space":"exterior","status":"adapted","as":"helstrom.H829SX6JP7XB5NH75W00P6Z16W","cluster":"w51"}
 {"src":"Black Marsh.esm:1EEC81","space":"exterior","status":"adapted","as":"helstrom.1CHG9C3ABZHBA0S1P118GPEWXG","cluster":"w52"}
 {"src":"Black Marsh.esm:1F010B","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh.esm:1F010C","space":"exterior","status":"placed","as":"helstrom.93YPGMM7VZ9F23TADGEQSC6Z7Q","cluster":"w42"}
+{"src":"Black Marsh.esm:1F010C","space":"exterior","status":"adapted","as":"helstrom.93YPGMM7VZ9F23TADGEQSC6Z7Q","cluster":"w42"}
 {"src":"Black Marsh.esm:1F010D","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh.esm:1F010E","space":"exterior","status":"placed","as":"helstrom.07GBJV2HXR2NP44KSG696QRYZJ","cluster":"w42"}
+{"src":"Black Marsh.esm:1F010E","space":"exterior","status":"adapted","as":"helstrom.07GBJV2HXR2NP44KSG696QRYZJ","cluster":"w42"}
 {"src":"Black Marsh.esm:1F010F","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1F0110","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1F0111","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
@@ -2983,7 +2983,7 @@
 {"src":"Black Marsh.esm:1F012B","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1F012C","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1F012E","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh.esm:1F012F","space":"exterior","status":"placed","as":"helstrom.Z68ER6T7KADRK1SWD03G6RDW07","cluster":"w10"}
+{"src":"Black Marsh.esm:1F012F","space":"exterior","status":"adapted","as":"helstrom.Z68ER6T7KADRK1SWD03G6RDW07","cluster":"w10"}
 {"src":"Black Marsh.esm:1F0130","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1F0131","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1F0132","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
@@ -2994,26 +2994,26 @@
 {"src":"Black Marsh.esm:1F0138","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1F0139","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1F013A","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh.esm:1F013B","space":"exterior","status":"placed","as":"helstrom.QNZJB363ANV5D77YGEMK0CWBDJ","cluster":"w10"}
+{"src":"Black Marsh.esm:1F013B","space":"exterior","status":"adapted","as":"helstrom.QNZJB363ANV5D77YGEMK0CWBDJ","cluster":"w10"}
 {"src":"Black Marsh.esm:1F013C","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh.esm:1F013D","space":"exterior","status":"placed","as":"helstrom.4ND4D10DV31GZNVGEVJ2R7GNGN","cluster":"w10"}
-{"src":"Black Marsh.esm:1F013E","space":"exterior","status":"placed","as":"helstrom.XYBDXXTRJZVD4BFCT1MBSQK661","cluster":"w10"}
+{"src":"Black Marsh.esm:1F013D","space":"exterior","status":"adapted","as":"helstrom.4ND4D10DV31GZNVGEVJ2R7GNGN","cluster":"w10"}
+{"src":"Black Marsh.esm:1F013E","space":"exterior","status":"adapted","as":"helstrom.XYBDXXTRJZVD4BFCT1MBSQK661","cluster":"w10"}
 {"src":"Black Marsh.esm:1F013F","space":"exterior","status":"placed","as":"helstrom.4EA682VF0MBRRMZHYWPM8G8S6S","cluster":"w15"}
 {"src":"Black Marsh.esm:1F0140","space":"exterior","status":"placed","as":"helstrom.V7YS0NMR1PT4E63JF1D9K422BW","cluster":"s28"}
 {"src":"Black Marsh.esm:1F0141","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1F0142","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh.esm:1F0143","space":"exterior","status":"placed","as":"helstrom.0AHMEF46C53CN60FGZ86KNMZXE","cluster":"w10"}
+{"src":"Black Marsh.esm:1F0143","space":"exterior","status":"adapted","as":"helstrom.0AHMEF46C53CN60FGZ86KNMZXE","cluster":"w10"}
 {"src":"Black Marsh.esm:1F0144","space":"exterior","status":"placed","as":"helstrom.0XM64S456ZF61RZM3P7XNQM5ET","cluster":"s81"}
 {"src":"Black Marsh.esm:1F0145","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1F0147","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1F0149","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1F014A","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh.esm:1F014C","space":"exterior","status":"placed","as":"helstrom.8F6QF9EFKK83JD5VEWGK12PS20","cluster":"w10"}
+{"src":"Black Marsh.esm:1F014C","space":"exterior","status":"adapted","as":"helstrom.8F6QF9EFKK83JD5VEWGK12PS20","cluster":"w10"}
 {"src":"Black Marsh.esm:1F014D","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1F014E","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1F014F","space":"exterior","status":"placed","as":"helstrom.ABJ8DCBQX92F9T7T0EJM21HFFG","cluster":"s81"}
 {"src":"Black Marsh.esm:1F0152","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh.esm:1F0153","space":"exterior","status":"placed","as":"helstrom.TBBQQ2Z7DW6FRRTM3RCF5PTM2E","cluster":"w10"}
+{"src":"Black Marsh.esm:1F0153","space":"exterior","status":"adapted","as":"helstrom.TBBQQ2Z7DW6FRRTM3RCF5PTM2E","cluster":"w10"}
 {"src":"Black Marsh.esm:1F0154","space":"exterior","status":"placed","as":"helstrom.F263JA4DN9J8ADXC5BM3RKRBCH","cluster":"w38"}
 {"src":"Black Marsh.esm:1F0155","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1F0156","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
@@ -3021,7 +3021,7 @@
 {"src":"Black Marsh.esm:1F0158","space":"exterior","status":"placed","as":"helstrom.C0M58TTPM5EJRQ98ZKFH1FV0ZJ","cluster":"s81"}
 {"src":"Black Marsh.esm:1F0159","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1F015A","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh.esm:1F015B","space":"exterior","status":"placed","as":"helstrom.YEREDSCXQ71NJQ3N66B28G8BA4","cluster":"w10"}
+{"src":"Black Marsh.esm:1F015B","space":"exterior","status":"adapted","as":"helstrom.YEREDSCXQ71NJQ3N66B28G8BA4","cluster":"w10"}
 {"src":"Black Marsh.esm:1F015C","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1F015E","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1F015F","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
@@ -3056,12 +3056,12 @@
 {"src":"Black Marsh.esm:1F0182","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1F0183","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1F0184","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh.esm:1F0185","space":"exterior","status":"placed","as":"helstrom.8GGBVJH37EM4R3QWB8NTB3HRC9","cluster":"w10"}
+{"src":"Black Marsh.esm:1F0185","space":"exterior","status":"adapted","as":"helstrom.8GGBVJH37EM4R3QWB8NTB3HRC9","cluster":"w10"}
 {"src":"Black Marsh.esm:1F0188","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1F0189","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1F018B","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh.esm:1F018C","space":"exterior","status":"placed","as":"helstrom.VZW1AGJT19HXH0ZEGQFD188XEM","cluster":"w10"}
-{"src":"Black Marsh.esm:1F018D","space":"exterior","status":"placed","as":"helstrom.WVBVKG1FEE5VBJJSNBZGH7K2CC","cluster":"w10"}
+{"src":"Black Marsh.esm:1F018C","space":"exterior","status":"adapted","as":"helstrom.VZW1AGJT19HXH0ZEGQFD188XEM","cluster":"w10"}
+{"src":"Black Marsh.esm:1F018D","space":"exterior","status":"adapted","as":"helstrom.WVBVKG1FEE5VBJJSNBZGH7K2CC","cluster":"w10"}
 {"src":"Black Marsh.esm:1F018E","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1F018F","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1F0190","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
@@ -3202,16 +3202,16 @@
 {"src":"Black Marsh.esm:1F07C4","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1F07C5","space":"exterior","status":"replaced","as":"helstrom.MAWPVENQB5313X3X33CBKTBFT1","cluster":"b41","base":"Dragonborn.esm:039E51"}
 {"src":"Black Marsh.esm:1F07C6","space":"exterior","status":"replaced","as":"helstrom.2W22AY6HDSAX1PFE6ES1P9XWNV","cluster":"b40","base":"Dragonborn.esm:039E51"}
-{"src":"Black Marsh.esm:1F07C7","space":"exterior","status":"placed","as":"helstrom.F2V72CCHBQF16Z44E8PWG7JWYW","cluster":"b41"}
+{"src":"Black Marsh.esm:1F07C7","space":"exterior","status":"adapted","as":"helstrom.F2V72CCHBQF16Z44E8PWG7JWYW","cluster":"b41"}
 {"src":"Black Marsh.esm:1F07C8","space":"exterior","status":"placed","as":"helstrom.DHFA72H9HDRWS625ZAPX8PNJ26","cluster":"b40"}
 {"src":"Black Marsh.esm:1F07C9","space":"exterior","status":"placed","as":"helstrom.826VBMYX8V19XGWRDD4N36W103","cluster":"b40"}
-{"src":"Black Marsh.esm:1F07CA","space":"exterior","status":"placed","as":"helstrom.QPZ472YVMY8HMHQH5W3PRNRAJ7","cluster":"b41"}
+{"src":"Black Marsh.esm:1F07CA","space":"exterior","status":"adapted","as":"helstrom.QPZ472YVMY8HMHQH5W3PRNRAJ7","cluster":"b41"}
 {"src":"Black Marsh.esm:1F07CB","space":"exterior","status":"placed","as":"helstrom.PKW91KXNGPT91RAPKS62N3HG78","cluster":"b40"}
-{"src":"Black Marsh.esm:1F07CC","space":"exterior","status":"placed","as":"helstrom.JQKD6DVS6FKKG80XH9AQQGVA7H","cluster":"s87"}
+{"src":"Black Marsh.esm:1F07CC","space":"exterior","status":"adapted","as":"helstrom.JQKD6DVS6FKKG80XH9AQQGVA7H","cluster":"s87"}
 {"src":"Black Marsh.esm:1F07E0","space":"exterior","status":"placed","as":"helstrom.2GANVTMZ9TFZ5PD8XAFGJFEBPC","cluster":"s88"}
 {"src":"Black Marsh.esm:1F07EA","space":"exterior","status":"placed","as":"helstrom.GFG2MNFPXVGGWA65DDK2KKMMDC","cluster":"s89"}
 {"src":"Black Marsh.esm:1F07ED","space":"exterior","status":"placed","as":"helstrom.0NYZWN341P7TYVQ3FCVVBHAM1H","cluster":"s80"}
-{"src":"Black Marsh.esm:1F07EE","space":"exterior","status":"placed","as":"helstrom.011WE2F5D2H4ZWMGPHQFRBT2HQ","cluster":"w02"}
+{"src":"Black Marsh.esm:1F07EE","space":"exterior","status":"adapted","as":"helstrom.011WE2F5D2H4ZWMGPHQFRBT2HQ","cluster":"w02"}
 {"src":"Black Marsh.esm:1F07EF","space":"exterior","status":"placed","as":"helstrom.2RRAA10C99RD1ZB1DX2D1TDPG9","cluster":"s77"}
 {"src":"Black Marsh.esm:2001D7","space":"exterior","status":"placed","as":"helstrom.KWM4CZ7PDWXSXV67S65PXFV4EK","cluster":"b51"}
 {"src":"Black Marsh.esm:2001D8","space":"exterior","status":"placed","as":"helstrom.47AT69JWQKB4YW1HVCCG2SVEJB","cluster":"b51"}
@@ -3228,8 +3228,8 @@
 {"src":"Black Marsh.esm:2001E3","space":"exterior","status":"placed","as":"helstrom.B4SVW5PQE8Z099QJC6Q5DHVBBE","cluster":"b51"}
 {"src":"Black Marsh.esm:2001E4","space":"exterior","status":"placed","as":"helstrom.74ACEX3QA5RHYNMFFECJCSXSVF","cluster":"b51"}
 {"src":"Black Marsh.esm:2001E5","space":"exterior","status":"placed","as":"helstrom.XE15PX7XYP69R21161KMVYG1PB","cluster":"b51"}
-{"src":"Black Marsh.esm:2001E6","space":"exterior","status":"adapted","as":"helstrom.PH14ZSCJWCH5P0XDRVPHNB74K9","cluster":"w43","patch":"stood in the source's water; our land here is dry"}
-{"src":"Black Marsh.esm:2001E8","space":"exterior","status":"adapted","as":"helstrom.NWP7QA1MKSM7ANYNFEXNKG3N41","cluster":"w43","patch":"stood in the source's water; our land here is dry"}
+{"src":"Black Marsh.esm:2001E6","space":"exterior","status":"dropped","cluster":"w43","why":"no water within 384 units of its fitted spot; our water and land are kept as they are"}
+{"src":"Black Marsh.esm:2001E8","space":"exterior","status":"dropped","cluster":"w43","why":"no water within 384 units of its fitted spot; our water and land are kept as they are"}
 {"src":"Black Marsh.esm:2001ED","space":"exterior","status":"placed","as":"helstrom.CD2DNVX0BFW1CTG6VW88KV49JJ","cluster":"b51"}
 {"src":"Black Marsh.esm:2001EF","space":"exterior","status":"placed","as":"helstrom.BM34ZFFSN3VYD6WE6F8XVPQ85X","cluster":"b51"}
 {"src":"Black Marsh.esm:2001F0","space":"exterior","status":"placed","as":"helstrom.5PVZ5XTVK7HZR048FYYCDTAS7E","cluster":"b51"}
@@ -3271,13 +3271,13 @@
 {"src":"Black Marsh.esm:200223","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:200225","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:200226","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh.esm:200227","space":"exterior","status":"placed","as":"helstrom.GECT3FMB6VNR3NXZFZZGZX8K7A","cluster":"w04"}
-{"src":"Black Marsh.esm:200228","space":"exterior","status":"placed","as":"helstrom.4E41EVCWDJJK69Q91Y00RBDDRT","cluster":"w04"}
+{"src":"Black Marsh.esm:200227","space":"exterior","status":"adapted","as":"helstrom.GECT3FMB6VNR3NXZFZZGZX8K7A","cluster":"w04"}
+{"src":"Black Marsh.esm:200228","space":"exterior","status":"adapted","as":"helstrom.4E41EVCWDJJK69Q91Y00RBDDRT","cluster":"w04"}
 {"src":"Black Marsh.esm:200229","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh.esm:20022A","space":"exterior","status":"placed","as":"helstrom.D3MXFA2ZTMPEJ8EP0QARKQYWTA","cluster":"w04"}
-{"src":"Black Marsh.esm:20022B","space":"exterior","status":"placed","as":"helstrom.KJBT3ZJPXK87ESHW4Z7Y1C4JTN","cluster":"w04"}
+{"src":"Black Marsh.esm:20022A","space":"exterior","status":"adapted","as":"helstrom.D3MXFA2ZTMPEJ8EP0QARKQYWTA","cluster":"w04"}
+{"src":"Black Marsh.esm:20022B","space":"exterior","status":"adapted","as":"helstrom.KJBT3ZJPXK87ESHW4Z7Y1C4JTN","cluster":"w04"}
 {"src":"Black Marsh.esm:20022C","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh.esm:20022D","space":"exterior","status":"placed","as":"helstrom.W3AYS3JEBGYH1HKBN9XP6EBB4K","cluster":"w04"}
+{"src":"Black Marsh.esm:20022D","space":"exterior","status":"adapted","as":"helstrom.W3AYS3JEBGYH1HKBN9XP6EBB4K","cluster":"w04"}
 {"src":"Black Marsh.esm:200240","space":"exterior","status":"placed","as":"helstrom.Y7Y0EX4WFP82NG57RNNYGJKDQF","cluster":"b51"}
 {"src":"Black Marsh.esm:200241","space":"exterior","status":"placed","as":"helstrom.8BWZ7FCCW89JK7XKF5SKE742R2","cluster":"b51"}
 {"src":"Black Marsh.esm:200242","space":"exterior","status":"placed","as":"helstrom.XJ3EG5GDEPZC750W80HQYMFN5N","cluster":"b51"}
@@ -3332,11 +3332,11 @@
 {"src":"Black Marsh.esm:200279","space":"exterior","status":"placed","as":"helstrom.ZY8W4E7NDFNN9E9ESK6EZFHH1H","cluster":"w28"}
 {"src":"Black Marsh.esm:20027A","space":"exterior","status":"placed","as":"helstrom.ZTNXYBG9N5E1D5HD12EH2HYRKQ","cluster":"w28"}
 {"src":"Black Marsh.esm:20027B","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh.esm:20027C","space":"exterior","status":"placed","as":"helstrom.W7QQPRRZ8150345QENVC2E1PCW","cluster":"w29"}
-{"src":"Black Marsh.esm:20027D","space":"exterior","status":"placed","as":"helstrom.DB56T6WJSV4W9XERX92TW4V619","cluster":"w29"}
-{"src":"Black Marsh.esm:20027E","space":"exterior","status":"placed","as":"helstrom.7VXKTYB48GE61XPGT2MWACQ0VP","cluster":"w29"}
-{"src":"Black Marsh.esm:20027F","space":"exterior","status":"placed","as":"helstrom.QKHHZKJ2MZC5CM8PSB58Y3GBHT","cluster":"w29"}
-{"src":"Black Marsh.esm:200280","space":"exterior","status":"placed","as":"helstrom.00WYE6T0J8AHWXCD03TNSV25B7","cluster":"w29"}
+{"src":"Black Marsh.esm:20027C","space":"exterior","status":"adapted","as":"helstrom.W7QQPRRZ8150345QENVC2E1PCW","cluster":"w29"}
+{"src":"Black Marsh.esm:20027D","space":"exterior","status":"adapted","as":"helstrom.DB56T6WJSV4W9XERX92TW4V619","cluster":"w29"}
+{"src":"Black Marsh.esm:20027E","space":"exterior","status":"adapted","as":"helstrom.7VXKTYB48GE61XPGT2MWACQ0VP","cluster":"w29"}
+{"src":"Black Marsh.esm:20027F","space":"exterior","status":"adapted","as":"helstrom.QKHHZKJ2MZC5CM8PSB58Y3GBHT","cluster":"w29"}
+{"src":"Black Marsh.esm:200280","space":"exterior","status":"adapted","as":"helstrom.00WYE6T0J8AHWXCD03TNSV25B7","cluster":"w29"}
 {"src":"Black Marsh.esm:200281","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:200282","space":"exterior","status":"placed","as":"helstrom.7F33QFP03WPQRDW6YV421WC0Q1","cluster":"w30"}
 {"src":"Black Marsh.esm:200283","space":"exterior","status":"placed","as":"helstrom.TK3W2W2XYRBY5VZHDYYKJPNGHC","cluster":"w30"}
@@ -3344,19 +3344,19 @@
 {"src":"Black Marsh.esm:200285","space":"exterior","status":"placed","as":"helstrom.BC8912VHW8BSNWFE67TDQGBEZJ","cluster":"w30"}
 {"src":"Black Marsh.esm:200286","space":"exterior","status":"placed","as":"helstrom.03BFJ4WZFKJ061P9DSVYRDDEGZ","cluster":"w30"}
 {"src":"Black Marsh.esm:200287","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh.esm:200289","space":"exterior","status":"placed","as":"helstrom.7TH6666CTEKFBH57E17WC8TS0Q","cluster":"w04"}
-{"src":"Black Marsh.esm:20028C","space":"exterior","status":"placed","as":"helstrom.EE8Z5J35ZE6P41BXSV0JGMS2WB","cluster":"w04"}
-{"src":"Black Marsh.esm:20028F","space":"exterior","status":"placed","as":"helstrom.2P3WP6BASESPW035A9KRZZ26VN","cluster":"w04"}
-{"src":"Black Marsh.esm:200290","space":"exterior","status":"placed","as":"helstrom.S4C6GB8K2QYRV6X8A7HSZ0RSYQ","cluster":"w04"}
-{"src":"Black Marsh.esm:200293","space":"exterior","status":"placed","as":"helstrom.YYFBY2CMW8B8CRFEHW2NB8D0FY","cluster":"w04"}
-{"src":"Black Marsh.esm:200294","space":"exterior","status":"placed","as":"helstrom.23WDH8Z0R54RZ9CPET9S4JAGZ5","cluster":"w04"}
-{"src":"Black Marsh.esm:200295","space":"exterior","status":"placed","as":"helstrom.4FQVTDWRNMRVYG6VRTFM0CSPEF","cluster":"w04"}
-{"src":"Black Marsh.esm:200296","space":"exterior","status":"placed","as":"helstrom.XPHZ4QFKWSRTWE6XFDA38NTP3G","cluster":"w31"}
+{"src":"Black Marsh.esm:200289","space":"exterior","status":"adapted","as":"helstrom.7TH6666CTEKFBH57E17WC8TS0Q","cluster":"w04"}
+{"src":"Black Marsh.esm:20028C","space":"exterior","status":"adapted","as":"helstrom.EE8Z5J35ZE6P41BXSV0JGMS2WB","cluster":"w04"}
+{"src":"Black Marsh.esm:20028F","space":"exterior","status":"adapted","as":"helstrom.2P3WP6BASESPW035A9KRZZ26VN","cluster":"w04"}
+{"src":"Black Marsh.esm:200290","space":"exterior","status":"adapted","as":"helstrom.S4C6GB8K2QYRV6X8A7HSZ0RSYQ","cluster":"w04"}
+{"src":"Black Marsh.esm:200293","space":"exterior","status":"adapted","as":"helstrom.YYFBY2CMW8B8CRFEHW2NB8D0FY","cluster":"w04"}
+{"src":"Black Marsh.esm:200294","space":"exterior","status":"adapted","as":"helstrom.23WDH8Z0R54RZ9CPET9S4JAGZ5","cluster":"w04"}
+{"src":"Black Marsh.esm:200295","space":"exterior","status":"adapted","as":"helstrom.4FQVTDWRNMRVYG6VRTFM0CSPEF","cluster":"w04"}
+{"src":"Black Marsh.esm:200296","space":"exterior","status":"adapted","as":"helstrom.XPHZ4QFKWSRTWE6XFDA38NTP3G","cluster":"w31"}
 {"src":"Black Marsh.esm:200297","space":"exterior","status":"adapted","as":"helstrom.YCRH4N18D1J5R2Z36KPAYXZ534","cluster":"w11"}
-{"src":"Black Marsh.esm:200299","space":"exterior","status":"placed","as":"helstrom.Q3F0E9PER9EZKPW2M2W74DJTKZ","cluster":"w31"}
+{"src":"Black Marsh.esm:200299","space":"exterior","status":"adapted","as":"helstrom.Q3F0E9PER9EZKPW2M2W74DJTKZ","cluster":"w31"}
 {"src":"Black Marsh.esm:20029A","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:20029B","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh.esm:20029C","space":"exterior","status":"placed","as":"helstrom.N6NEH3J73PHYBX5B2TG07EN07Q","cluster":"w31"}
+{"src":"Black Marsh.esm:20029C","space":"exterior","status":"adapted","as":"helstrom.N6NEH3J73PHYBX5B2TG07EN07Q","cluster":"w31"}
 {"src":"Black Marsh.esm:20029E","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:20029F","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:2002A0","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
@@ -3368,9 +3368,9 @@
 {"src":"Black Marsh.esm:2002A9","space":"exterior","status":"adapted","as":"helstrom.27JDB462AVXGXRPDMZPWGP0Z1B","cluster":"w11"}
 {"src":"Black Marsh.esm:2002AA","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:2002AB","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh.esm:2002AC","space":"exterior","status":"placed","as":"helstrom.Y4H01CS0XN4W2CW06C677YSH5Z","cluster":"w31"}
+{"src":"Black Marsh.esm:2002AC","space":"exterior","status":"adapted","as":"helstrom.Y4H01CS0XN4W2CW06C677YSH5Z","cluster":"w31"}
 {"src":"Black Marsh.esm:2002AE","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh.esm:2002B0","space":"exterior","status":"placed","as":"helstrom.C9Q259ZTM26WTSXH2M985S0E6T","cluster":"w31"}
+{"src":"Black Marsh.esm:2002B0","space":"exterior","status":"adapted","as":"helstrom.C9Q259ZTM26WTSXH2M985S0E6T","cluster":"w31"}
 {"src":"Black Marsh.esm:2002B1","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:2002B2","space":"exterior","status":"adapted","as":"helstrom.SNN62RYR8KFYDN7S3RD4M53S6A","cluster":"w11"}
 {"src":"Black Marsh.esm:2002B3","space":"exterior","status":"placed","as":"helstrom.H59DXK9RRERQS00EY32H45DXF1","cluster":"s91"}
@@ -3667,15 +3667,15 @@
 {"src":"Black Marsh.esm:2004E9","space":"exterior","status":"adapted","as":"helstrom.STA3KBVME5ZPFMX71ZHVBZF6G7","cluster":"s118"}
 {"src":"Black Marsh.esm:2004EA","space":"exterior","status":"adapted","as":"helstrom.EEXXT1GWKC24DHP8N4V7GYK7R2","cluster":"s118"}
 {"src":"Black Marsh.esm:2004EB","space":"exterior","status":"adapted","as":"helstrom.WESPSQN8JFSTXNN5CHX66T4S8W","cluster":"s97"}
-{"src":"Black Marsh.esm:2004EC","space":"exterior","status":"placed","as":"helstrom.QN5XV48VSRXXKBSSW32TTFGSZY","cluster":"s112"}
+{"src":"Black Marsh.esm:2004EC","space":"exterior","status":"adapted","as":"helstrom.QN5XV48VSRXXKBSSW32TTFGSZY","cluster":"s112"}
 {"src":"Black Marsh.esm:2004ED","space":"exterior","status":"adapted","as":"helstrom.ZXYR67HN1YX0GJDS0X8H05W3VK","cluster":"s97"}
 {"src":"Black Marsh.esm:2004EE","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:2004EF","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:2004F0","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:2004F1","space":"exterior","status":"placed","as":"helstrom.M187X78PX98TZWPF88H5TA1TRB","cluster":"s110"}
-{"src":"Black Marsh.esm:2004F2","space":"exterior","status":"placed","as":"helstrom.ZR1KE5P1RQW67TBEPZCVX448BS","cluster":"s111"}
+{"src":"Black Marsh.esm:2004F2","space":"exterior","status":"adapted","as":"helstrom.ZR1KE5P1RQW67TBEPZCVX448BS","cluster":"s111"}
 {"src":"Black Marsh.esm:2004F3","space":"exterior","status":"adapted","as":"helstrom.S4ED15DGV9S1DBNH573VAJ0JMK","cluster":"s108"}
-{"src":"Black Marsh.esm:2004F4","space":"exterior","status":"placed","as":"helstrom.9HQ0RPVTVKZ2HZ4AW74BJZ26CJ","cluster":"s112"}
+{"src":"Black Marsh.esm:2004F4","space":"exterior","status":"adapted","as":"helstrom.9HQ0RPVTVKZ2HZ4AW74BJZ26CJ","cluster":"s112"}
 {"src":"Black Marsh.esm:2004F5","space":"exterior","status":"adapted","as":"helstrom.C4VF4YDW2JG1YXBSC9YF9PFWG0","cluster":"s113"}
 {"src":"Black Marsh.esm:2004F6","space":"exterior","status":"adapted","as":"helstrom.DY6QFKSA0ZK746SHRHCHP2X7PJ","cluster":"s97"}
 {"src":"Black Marsh.esm:2004F7","space":"exterior","status":"adapted","as":"helstrom.Y137CQZC2FEW7JNVHKJEZ0C1C9","cluster":"s97"}
@@ -3685,13 +3685,13 @@
 {"src":"Black Marsh.esm:2004FB","space":"exterior","status":"adapted","as":"helstrom.J2WZM4C113YGW03DEGJT3VGZZ5","cluster":"s113"}
 {"src":"Black Marsh.esm:2004FC","space":"exterior","status":"adapted","as":"helstrom.KCQ3KNEYF7QXR8BE9KTP9VY5JT","cluster":"s114"}
 {"src":"Black Marsh.esm:2004FD","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh.esm:2004FE","space":"exterior","status":"placed","as":"helstrom.QFSAGGRQ3A5RQKCMN7HQRJQBF1","cluster":"s111"}
+{"src":"Black Marsh.esm:2004FE","space":"exterior","status":"adapted","as":"helstrom.QFSAGGRQ3A5RQKCMN7HQRJQBF1","cluster":"s111"}
 {"src":"Black Marsh.esm:2004FF","space":"exterior","status":"adapted","as":"helstrom.697CT6PSK9DRAKAF0W3DE0K8Y4","cluster":"s97"}
 {"src":"Black Marsh.esm:200500","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh.esm:200501","space":"exterior","status":"placed","as":"helstrom.X7XYWKEEAV2V9DDTCK1XXR7YD1","cluster":"s112"}
+{"src":"Black Marsh.esm:200501","space":"exterior","status":"adapted","as":"helstrom.X7XYWKEEAV2V9DDTCK1XXR7YD1","cluster":"s112"}
 {"src":"Black Marsh.esm:200502","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh.esm:200503","space":"exterior","status":"placed","as":"helstrom.RFRSS3WDBQP2DGGZX55T3M5BHE","cluster":"s112"}
-{"src":"Black Marsh.esm:200504","space":"exterior","status":"placed","as":"helstrom.1XWC817V4AX45VSNADE5JB4X0F","cluster":"s111"}
+{"src":"Black Marsh.esm:200503","space":"exterior","status":"adapted","as":"helstrom.RFRSS3WDBQP2DGGZX55T3M5BHE","cluster":"s112"}
+{"src":"Black Marsh.esm:200504","space":"exterior","status":"adapted","as":"helstrom.1XWC817V4AX45VSNADE5JB4X0F","cluster":"s111"}
 {"src":"Black Marsh.esm:200505","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:200506","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:200507","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
@@ -3700,36 +3700,36 @@
 {"src":"Black Marsh.esm:20050A","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:20050B","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:20050C","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh.esm:20050D","space":"exterior","status":"placed","as":"helstrom.56GSBXB3416Y5EWBVPVZP9YN3G","cluster":"s112"}
-{"src":"Black Marsh.esm:20050E","space":"exterior","status":"placed","as":"helstrom.WD116TNNY56M83P2RD5YJ7QQS4","cluster":"s111"}
-{"src":"Black Marsh.esm:20050F","space":"exterior","status":"placed","as":"helstrom.RDH86C1QYRYMX1FQ3813PXS06J","cluster":"s111"}
+{"src":"Black Marsh.esm:20050D","space":"exterior","status":"adapted","as":"helstrom.56GSBXB3416Y5EWBVPVZP9YN3G","cluster":"s112"}
+{"src":"Black Marsh.esm:20050E","space":"exterior","status":"adapted","as":"helstrom.WD116TNNY56M83P2RD5YJ7QQS4","cluster":"s111"}
+{"src":"Black Marsh.esm:20050F","space":"exterior","status":"adapted","as":"helstrom.RDH86C1QYRYMX1FQ3813PXS06J","cluster":"s111"}
 {"src":"Black Marsh.esm:200510","space":"exterior","status":"adapted","as":"helstrom.C61Z0KT5CR7266F4A91XSJA8EM","cluster":"s97"}
 {"src":"Black Marsh.esm:200511","space":"exterior","status":"adapted","as":"helstrom.T6F9YXSPJE6V6BZDPZ6WG5B20M","cluster":"s114"}
 {"src":"Black Marsh.esm:200512","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh.esm:200513","space":"exterior","status":"placed","as":"helstrom.KHHA29J8ZBXNM4P9W1CEAGM5FF","cluster":"s112"}
+{"src":"Black Marsh.esm:200513","space":"exterior","status":"adapted","as":"helstrom.KHHA29J8ZBXNM4P9W1CEAGM5FF","cluster":"s112"}
 {"src":"Black Marsh.esm:200514","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh.esm:200515","space":"exterior","status":"placed","as":"helstrom.Q11Q3XA4VEPXT3XHDVX5BW4V52","cluster":"s111"}
+{"src":"Black Marsh.esm:200515","space":"exterior","status":"adapted","as":"helstrom.Q11Q3XA4VEPXT3XHDVX5BW4V52","cluster":"s111"}
 {"src":"Black Marsh.esm:200516","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh.esm:200517","space":"exterior","status":"placed","as":"helstrom.H80JNWDF1EZ8B4NMFS3XTS46WG","cluster":"s112"}
+{"src":"Black Marsh.esm:200517","space":"exterior","status":"adapted","as":"helstrom.H80JNWDF1EZ8B4NMFS3XTS46WG","cluster":"s112"}
 {"src":"Black Marsh.esm:200518","space":"exterior","status":"adapted","as":"helstrom.249W8KV4BVGDBW5BVBEDXRTDE8","cluster":"s97"}
 {"src":"Black Marsh.esm:200519","space":"exterior","status":"adapted","as":"helstrom.69WSFN5SFWFW8YK06XGFS967ZA","cluster":"s108"}
 {"src":"Black Marsh.esm:20051A","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh.esm:20051B","space":"exterior","status":"placed","as":"helstrom.9NEKSBBDVQH5NQK8G3ZZV25C4B","cluster":"s112"}
-{"src":"Black Marsh.esm:20051C","space":"exterior","status":"placed","as":"helstrom.Q7HJYADC4W190BG2KC3K6PP4C1","cluster":"s112"}
-{"src":"Black Marsh.esm:20051D","space":"exterior","status":"placed","as":"helstrom.1SYY1GS2XHE0X6Z74W36H6FP9E","cluster":"s112"}
-{"src":"Black Marsh.esm:20051E","space":"exterior","status":"placed","as":"helstrom.C1DV4Z0CZVFYSMDNQ57ZC1MFJA","cluster":"s111"}
-{"src":"Black Marsh.esm:20051F","space":"exterior","status":"placed","as":"helstrom.N611017RSP3DD5GF1MJP9RZ1TB","cluster":"s112"}
+{"src":"Black Marsh.esm:20051B","space":"exterior","status":"adapted","as":"helstrom.9NEKSBBDVQH5NQK8G3ZZV25C4B","cluster":"s112"}
+{"src":"Black Marsh.esm:20051C","space":"exterior","status":"adapted","as":"helstrom.Q7HJYADC4W190BG2KC3K6PP4C1","cluster":"s112"}
+{"src":"Black Marsh.esm:20051D","space":"exterior","status":"adapted","as":"helstrom.1SYY1GS2XHE0X6Z74W36H6FP9E","cluster":"s112"}
+{"src":"Black Marsh.esm:20051E","space":"exterior","status":"adapted","as":"helstrom.C1DV4Z0CZVFYSMDNQ57ZC1MFJA","cluster":"s111"}
+{"src":"Black Marsh.esm:20051F","space":"exterior","status":"adapted","as":"helstrom.N611017RSP3DD5GF1MJP9RZ1TB","cluster":"s112"}
 {"src":"Black Marsh.esm:200520","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:200521","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh.esm:200522","space":"exterior","status":"placed","as":"helstrom.Z1RB6C17NPG7SB92JRMN47EGTZ","cluster":"s112"}
+{"src":"Black Marsh.esm:200522","space":"exterior","status":"adapted","as":"helstrom.Z1RB6C17NPG7SB92JRMN47EGTZ","cluster":"s112"}
 {"src":"Black Marsh.esm:200523","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh.esm:200524","space":"exterior","status":"placed","as":"helstrom.J343S094SH80VS2RT1Y0R3SAXW","cluster":"s123"}
-{"src":"Black Marsh.esm:200525","space":"exterior","status":"placed","as":"helstrom.402GWPCZKD4RZPYTTRWQS6G6W0","cluster":"s112"}
-{"src":"Black Marsh.esm:200526","space":"exterior","status":"placed","as":"helstrom.661W6T8BTA6TTP8MDXJJYGMJP9","cluster":"s112"}
+{"src":"Black Marsh.esm:200524","space":"exterior","status":"adapted","as":"helstrom.J343S094SH80VS2RT1Y0R3SAXW","cluster":"s123"}
+{"src":"Black Marsh.esm:200525","space":"exterior","status":"adapted","as":"helstrom.402GWPCZKD4RZPYTTRWQS6G6W0","cluster":"s112"}
+{"src":"Black Marsh.esm:200526","space":"exterior","status":"adapted","as":"helstrom.661W6T8BTA6TTP8MDXJJYGMJP9","cluster":"s112"}
 {"src":"Black Marsh.esm:200527","space":"exterior","status":"adapted","as":"helstrom.7RE7BV2GWMFH1BTBGCRW8R21WS","cluster":"s108"}
-{"src":"Black Marsh.esm:200528","space":"exterior","status":"placed","as":"helstrom.4R1RMCACT0V2SQCPG8ZYG8XW44","cluster":"s112"}
-{"src":"Black Marsh.esm:200529","space":"exterior","status":"placed","as":"helstrom.7HXTXT7VJTCPSMZYGNM0BC6SSB","cluster":"s112"}
-{"src":"Black Marsh.esm:20052A","space":"exterior","status":"placed","as":"helstrom.E133PHCH6KMFYZ4GPWTZ2HS2PE","cluster":"s112"}
+{"src":"Black Marsh.esm:200528","space":"exterior","status":"adapted","as":"helstrom.4R1RMCACT0V2SQCPG8ZYG8XW44","cluster":"s112"}
+{"src":"Black Marsh.esm:200529","space":"exterior","status":"adapted","as":"helstrom.7HXTXT7VJTCPSMZYGNM0BC6SSB","cluster":"s112"}
+{"src":"Black Marsh.esm:20052A","space":"exterior","status":"adapted","as":"helstrom.E133PHCH6KMFYZ4GPWTZ2HS2PE","cluster":"s112"}
 {"src":"Black Marsh.esm:20052B","space":"exterior","status":"adapted","as":"helstrom.V9TMC3W5ZAT8NDA08X2RCF3S05","cluster":"s97"}
 {"src":"Black Marsh.esm:20052C","space":"exterior","status":"adapted","as":"helstrom.N8A1WH2A3DY978C8H9WYM22NYB","cluster":"s113"}
 {"src":"Black Marsh.esm:20052D","space":"exterior","status":"adapted","as":"helstrom.GAAYSMVRD5KXTFYQ89TPRGND4J","cluster":"s113"}
@@ -3881,22 +3881,22 @@
 {"src":"Black Marsh.esm:2005D0","space":"exterior","status":"adapted","as":"helstrom.HQ9SKYDVPHSZ6QQMDJS1VQ017N","cluster":"s120"}
 {"src":"Black Marsh.esm:2005D1","space":"exterior","status":"adapted","as":"helstrom.7XHC22TQY1KGD4TKWPCT2XYWQ5","cluster":"s120"}
 {"src":"Black Marsh.esm:2005D2","space":"exterior","status":"adapted","as":"helstrom.DCJ5FVNQ42FFG1N0E3JFX501E6","cluster":"s121"}
-{"src":"Black Marsh.esm:2005D3","space":"exterior","status":"placed","as":"helstrom.V723ZBZBEBS9R7SYHNTA1DDGNV","cluster":"s123"}
+{"src":"Black Marsh.esm:2005D3","space":"exterior","status":"adapted","as":"helstrom.V723ZBZBEBS9R7SYHNTA1DDGNV","cluster":"s123"}
 {"src":"Black Marsh.esm:2005D4","space":"exterior","status":"adapted","as":"helstrom.TSNT88PPMC50YQF46RW1FCDJQH","cluster":"s121"}
 {"src":"Black Marsh.esm:2005D5","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh.esm:2005D6","space":"exterior","status":"placed","as":"helstrom.9ETWYJEJRZDTYWTY54YCSE3RQM","cluster":"s122"}
-{"src":"Black Marsh.esm:2005D7","space":"exterior","status":"placed","as":"helstrom.A8KF87KJ48N1H2V94R3AEVYNAF","cluster":"s123"}
+{"src":"Black Marsh.esm:2005D6","space":"exterior","status":"adapted","as":"helstrom.9ETWYJEJRZDTYWTY54YCSE3RQM","cluster":"s122"}
+{"src":"Black Marsh.esm:2005D7","space":"exterior","status":"adapted","as":"helstrom.A8KF87KJ48N1H2V94R3AEVYNAF","cluster":"s123"}
 {"src":"Black Marsh.esm:2005D8","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:2005D9","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh.esm:2005DA","space":"exterior","status":"placed","as":"helstrom.3A29YQRG31X8S77W1BRVJWZKYX","cluster":"s122"}
+{"src":"Black Marsh.esm:2005DA","space":"exterior","status":"adapted","as":"helstrom.3A29YQRG31X8S77W1BRVJWZKYX","cluster":"s122"}
 {"src":"Black Marsh.esm:2005DB","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh.esm:2005DC","space":"exterior","status":"placed","as":"helstrom.SJHP2ESNNAGQ5NSE5T7RTZ1CQW","cluster":"s122"}
-{"src":"Black Marsh.esm:2005DD","space":"exterior","status":"placed","as":"helstrom.HR0QGDNB4B6MTNDX67YBHXDQ4V","cluster":"s122"}
-{"src":"Black Marsh.esm:2005DE","space":"exterior","status":"placed","as":"helstrom.VTZMCNBAEVFGFWWSF7AMWY1G9B","cluster":"s122"}
-{"src":"Black Marsh.esm:2005DF","space":"exterior","status":"placed","as":"helstrom.SXCVXG6MSBHYY4V9ZFQ5TH3C89","cluster":"s122"}
+{"src":"Black Marsh.esm:2005DC","space":"exterior","status":"adapted","as":"helstrom.SJHP2ESNNAGQ5NSE5T7RTZ1CQW","cluster":"s122"}
+{"src":"Black Marsh.esm:2005DD","space":"exterior","status":"adapted","as":"helstrom.HR0QGDNB4B6MTNDX67YBHXDQ4V","cluster":"s122"}
+{"src":"Black Marsh.esm:2005DE","space":"exterior","status":"adapted","as":"helstrom.VTZMCNBAEVFGFWWSF7AMWY1G9B","cluster":"s122"}
+{"src":"Black Marsh.esm:2005DF","space":"exterior","status":"adapted","as":"helstrom.SXCVXG6MSBHYY4V9ZFQ5TH3C89","cluster":"s122"}
 {"src":"Black Marsh.esm:2005E0","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:2005E1","space":"exterior","status":"adapted","as":"helstrom.9EGRR8SQGQ09WD9QQYRWWPVXDC","cluster":"s121"}
-{"src":"Black Marsh.esm:2005E2","space":"exterior","status":"placed","as":"helstrom.6QXKA7G2EG1Q3Z0F0W46X52SY0","cluster":"s122"}
+{"src":"Black Marsh.esm:2005E2","space":"exterior","status":"adapted","as":"helstrom.6QXKA7G2EG1Q3Z0F0W46X52SY0","cluster":"s122"}
 {"src":"Black Marsh.esm:2005E3","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:2005E4","space":"exterior","status":"adapted","as":"helstrom.S6S9VH9HK9MVKTXFWHRDVXR0V0","cluster":"s104"}
 {"src":"Black Marsh.esm:2005E6","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
@@ -4073,15 +4073,15 @@
 {"src":"Black Marsh.esm:2006D5","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:2006D6","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:2006D7","space":"exterior","status":"placed","as":"helstrom.QA25RGK1E05SD35EKP0S8AYS1Z","cluster":"s128"}
-{"src":"Black Marsh.esm:2006D8","space":"exterior","status":"placed","as":"helstrom.5AB1NQABMYD8RT162C916970P2","cluster":"s130"}
+{"src":"Black Marsh.esm:2006D8","space":"exterior","status":"adapted","as":"helstrom.5AB1NQABMYD8RT162C916970P2","cluster":"s130"}
 {"src":"Black Marsh.esm:2006D9","space":"exterior","status":"placed","as":"helstrom.7WZMJ9VTMJE18GRCBZM1Q0T71Y","cluster":"s128"}
 {"src":"Black Marsh.esm:2006DA","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:2006DB","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:2006DC","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh.esm:2006DD","space":"exterior","status":"placed","as":"helstrom.X5RZ2YHNPVST0895NGYEY52CS2","cluster":"s130"}
-{"src":"Black Marsh.esm:2006DE","space":"exterior","status":"placed","as":"helstrom.C83G6C771012TB426ZQSGABFVZ","cluster":"s131"}
+{"src":"Black Marsh.esm:2006DD","space":"exterior","status":"adapted","as":"helstrom.X5RZ2YHNPVST0895NGYEY52CS2","cluster":"s130"}
+{"src":"Black Marsh.esm:2006DE","space":"exterior","status":"adapted","as":"helstrom.C83G6C771012TB426ZQSGABFVZ","cluster":"s131"}
 {"src":"Black Marsh.esm:2006DF","space":"exterior","status":"placed","as":"helstrom.RE32GPVSVTWTMWPN1B752S9DJZ","cluster":"s129"}
-{"src":"Black Marsh.esm:2006E0","space":"exterior","status":"placed","as":"helstrom.QM78GA709KPR8N65Q7ZHQN2Y7H","cluster":"s130"}
+{"src":"Black Marsh.esm:2006E0","space":"exterior","status":"adapted","as":"helstrom.QM78GA709KPR8N65Q7ZHQN2Y7H","cluster":"s130"}
 {"src":"Black Marsh.esm:2006E1","space":"exterior","status":"placed","as":"helstrom.FYQZVXGB63DPSSEGRXCZ08PC50","cluster":"s132"}
 {"src":"Black Marsh.esm:2006E2","space":"exterior","status":"placed","as":"helstrom.1BMMPMCHMX107A0AA360KZAP2C","cluster":"s128"}
 {"src":"Black Marsh.esm:2006E3","space":"exterior","status":"placed","as":"helstrom.KNDGVYA5329WX69XMHHSNCVHC9","cluster":"s128"}
@@ -4089,15 +4089,15 @@
 {"src":"Black Marsh.esm:2006E5","space":"exterior","status":"placed","as":"helstrom.MRHW40PZQHHPN8WNHSJJ9TSTK5","cluster":"s129"}
 {"src":"Black Marsh.esm:2006E6","space":"exterior","status":"placed","as":"helstrom.7B46TEDEEKHNSXF9E93REHQPS9","cluster":"s128"}
 {"src":"Black Marsh.esm:2006E7","space":"exterior","status":"placed","as":"helstrom.JT6BDY0TYX749VP5H2V4QA6NKX","cluster":"s132"}
-{"src":"Black Marsh.esm:2006E8","space":"exterior","status":"placed","as":"helstrom.JYP01MTX2DTST9CKB6C35J0SKC","cluster":"s131"}
+{"src":"Black Marsh.esm:2006E8","space":"exterior","status":"adapted","as":"helstrom.JYP01MTX2DTST9CKB6C35J0SKC","cluster":"s131"}
 {"src":"Black Marsh.esm:2006E9","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh.esm:2006EA","space":"exterior","status":"placed","as":"helstrom.AV6K0067B7WKVQPGR181QQS30G","cluster":"s131"}
+{"src":"Black Marsh.esm:2006EA","space":"exterior","status":"adapted","as":"helstrom.AV6K0067B7WKVQPGR181QQS30G","cluster":"s131"}
 {"src":"Black Marsh.esm:2006EB","space":"exterior","status":"placed","as":"helstrom.0EZWGJ0TDWDRR7TDDSETVAF5JA","cluster":"s128"}
 {"src":"Black Marsh.esm:2006EC","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh.esm:2006ED","space":"exterior","status":"placed","as":"helstrom.WC2DNE9SBVMY61JKK72SDN4RQ7","cluster":"s130"}
+{"src":"Black Marsh.esm:2006ED","space":"exterior","status":"adapted","as":"helstrom.WC2DNE9SBVMY61JKK72SDN4RQ7","cluster":"s130"}
 {"src":"Black Marsh.esm:2006EE","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh.esm:2006EF","space":"exterior","status":"placed","as":"helstrom.DYTZXV7K31V7WMBN6KEDVZQHVH","cluster":"s130"}
-{"src":"Black Marsh.esm:2006F0","space":"exterior","status":"placed","as":"helstrom.BK13V4H81QRWVH9ZJNJGMG2GEH","cluster":"s131"}
+{"src":"Black Marsh.esm:2006EF","space":"exterior","status":"adapted","as":"helstrom.DYTZXV7K31V7WMBN6KEDVZQHVH","cluster":"s130"}
+{"src":"Black Marsh.esm:2006F0","space":"exterior","status":"adapted","as":"helstrom.BK13V4H81QRWVH9ZJNJGMG2GEH","cluster":"s131"}
 {"src":"Black Marsh.esm:2006F1","space":"exterior","status":"placed","as":"helstrom.AS207B13THWWW8MP5K7BN1EEZ0","cluster":"s134"}
 {"src":"Black Marsh.esm:2006F2","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:2006F3","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
@@ -4106,42 +4106,42 @@
 {"src":"Black Marsh.esm:2006F6","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:2006F7","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:2006F8","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh.esm:2006F9","space":"exterior","status":"placed","as":"helstrom.KBFBCWGKAR24VYPNT7A3MH9PND","cluster":"s130"}
-{"src":"Black Marsh.esm:2006FA","space":"exterior","status":"placed","as":"helstrom.G041GBK4VNWR2YDWZKS2D33EEA","cluster":"s131"}
-{"src":"Black Marsh.esm:2006FB","space":"exterior","status":"placed","as":"helstrom.XS422YK5CG434N7W8Q8FA6SRMA","cluster":"s131"}
+{"src":"Black Marsh.esm:2006F9","space":"exterior","status":"adapted","as":"helstrom.KBFBCWGKAR24VYPNT7A3MH9PND","cluster":"s130"}
+{"src":"Black Marsh.esm:2006FA","space":"exterior","status":"adapted","as":"helstrom.G041GBK4VNWR2YDWZKS2D33EEA","cluster":"s131"}
+{"src":"Black Marsh.esm:2006FB","space":"exterior","status":"adapted","as":"helstrom.XS422YK5CG434N7W8Q8FA6SRMA","cluster":"s131"}
 {"src":"Black Marsh.esm:2006FC","space":"exterior","status":"placed","as":"helstrom.NPEQ6FN09SJZ0WEVRW5THGJ2PW","cluster":"s128"}
-{"src":"Black Marsh.esm:2006FD","space":"exterior","status":"placed","as":"helstrom.AZMCGQXYQMDQ4F7W5BDRHE0662","cluster":"s131"}
+{"src":"Black Marsh.esm:2006FD","space":"exterior","status":"adapted","as":"helstrom.AZMCGQXYQMDQ4F7W5BDRHE0662","cluster":"s131"}
 {"src":"Black Marsh.esm:2006FE","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh.esm:2006FF","space":"exterior","status":"placed","as":"helstrom.1F45RHA5TPRQ7BZFJD5F5N4E19","cluster":"s130"}
+{"src":"Black Marsh.esm:2006FF","space":"exterior","status":"adapted","as":"helstrom.1F45RHA5TPRQ7BZFJD5F5N4E19","cluster":"s130"}
 {"src":"Black Marsh.esm:200700","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh.esm:200701","space":"exterior","status":"placed","as":"helstrom.0YGC506MPSEFFY74QD475YT0PR","cluster":"s131"}
+{"src":"Black Marsh.esm:200701","space":"exterior","status":"adapted","as":"helstrom.0YGC506MPSEFFY74QD475YT0PR","cluster":"s131"}
 {"src":"Black Marsh.esm:200702","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh.esm:200703","space":"exterior","status":"placed","as":"helstrom.YD13QXNDD1R58ACSKCP9NENTKR","cluster":"s130"}
+{"src":"Black Marsh.esm:200703","space":"exterior","status":"adapted","as":"helstrom.YD13QXNDD1R58ACSKCP9NENTKR","cluster":"s130"}
 {"src":"Black Marsh.esm:200704","space":"exterior","status":"placed","as":"helstrom.ZBSJGQNH65JV7C4EG61W1JFXAS","cluster":"s128"}
 {"src":"Black Marsh.esm:200705","space":"exterior","status":"placed","as":"helstrom.0PXTXJ4Y1GWZWQ76Z058QS8MWN","cluster":"s129"}
 {"src":"Black Marsh.esm:200706","space":"exterior","status":"placed","as":"helstrom.F15BA5V69JNEYYFCKPQZQT812M","cluster":"s134"}
-{"src":"Black Marsh.esm:200707","space":"exterior","status":"placed","as":"helstrom.6QRXMCFVNRHN4RZH7BNSP5ZE9C","cluster":"s130"}
-{"src":"Black Marsh.esm:200708","space":"exterior","status":"placed","as":"helstrom.07BQFGKJV7D3ZC70NEH5QY6GE5","cluster":"s130"}
-{"src":"Black Marsh.esm:200709","space":"exterior","status":"placed","as":"helstrom.DDFNB542VTEH3WFRVTTAWHPXK4","cluster":"s130"}
-{"src":"Black Marsh.esm:20070A","space":"exterior","status":"placed","as":"helstrom.CTZ5413YN7QGZ6VE1PKCTT2JFP","cluster":"s131"}
-{"src":"Black Marsh.esm:20070B","space":"exterior","status":"placed","as":"helstrom.C36H00R1AFEXC16NE0Y4PGYZY2","cluster":"s130"}
+{"src":"Black Marsh.esm:200707","space":"exterior","status":"adapted","as":"helstrom.6QRXMCFVNRHN4RZH7BNSP5ZE9C","cluster":"s130"}
+{"src":"Black Marsh.esm:200708","space":"exterior","status":"adapted","as":"helstrom.07BQFGKJV7D3ZC70NEH5QY6GE5","cluster":"s130"}
+{"src":"Black Marsh.esm:200709","space":"exterior","status":"adapted","as":"helstrom.DDFNB542VTEH3WFRVTTAWHPXK4","cluster":"s130"}
+{"src":"Black Marsh.esm:20070A","space":"exterior","status":"adapted","as":"helstrom.CTZ5413YN7QGZ6VE1PKCTT2JFP","cluster":"s131"}
+{"src":"Black Marsh.esm:20070B","space":"exterior","status":"adapted","as":"helstrom.C36H00R1AFEXC16NE0Y4PGYZY2","cluster":"s130"}
 {"src":"Black Marsh.esm:20070C","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:20070D","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh.esm:20070E","space":"exterior","status":"placed","as":"helstrom.H0TYNQTH88MV1QY7ZXBJZVJCWX","cluster":"s130"}
+{"src":"Black Marsh.esm:20070E","space":"exterior","status":"adapted","as":"helstrom.H0TYNQTH88MV1QY7ZXBJZVJCWX","cluster":"s130"}
 {"src":"Black Marsh.esm:20070F","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:200710","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh.esm:200711","space":"exterior","status":"placed","as":"helstrom.4YZ7SBG04PZ297CCBNT7NR06J2","cluster":"s130"}
-{"src":"Black Marsh.esm:200712","space":"exterior","status":"placed","as":"helstrom.ENJPWKXKH9FC8GV3N36853CGM1","cluster":"s130"}
+{"src":"Black Marsh.esm:200711","space":"exterior","status":"adapted","as":"helstrom.4YZ7SBG04PZ297CCBNT7NR06J2","cluster":"s130"}
+{"src":"Black Marsh.esm:200712","space":"exterior","status":"adapted","as":"helstrom.ENJPWKXKH9FC8GV3N36853CGM1","cluster":"s130"}
 {"src":"Black Marsh.esm:200713","space":"exterior","status":"placed","as":"helstrom.W0BZK0RV0HSXDFE4QAG8CH68BT","cluster":"s129"}
-{"src":"Black Marsh.esm:200714","space":"exterior","status":"placed","as":"helstrom.V3C1XRTKQXHXB8BEH7XHPBMZ1A","cluster":"s130"}
-{"src":"Black Marsh.esm:200715","space":"exterior","status":"placed","as":"helstrom.R2ECVNEMAT9WF498WA7SVTVDQQ","cluster":"s130"}
-{"src":"Black Marsh.esm:200716","space":"exterior","status":"placed","as":"helstrom.Z5XEAVA6QR2F2ECA3Q3HHMM18E","cluster":"s130"}
+{"src":"Black Marsh.esm:200714","space":"exterior","status":"adapted","as":"helstrom.V3C1XRTKQXHXB8BEH7XHPBMZ1A","cluster":"s130"}
+{"src":"Black Marsh.esm:200715","space":"exterior","status":"adapted","as":"helstrom.R2ECVNEMAT9WF498WA7SVTVDQQ","cluster":"s130"}
+{"src":"Black Marsh.esm:200716","space":"exterior","status":"adapted","as":"helstrom.Z5XEAVA6QR2F2ECA3Q3HHMM18E","cluster":"s130"}
 {"src":"Black Marsh.esm:200717","space":"exterior","status":"placed","as":"helstrom.W9F9QT4Q7Y59QT0V17SAECBCRB","cluster":"s128"}
 {"src":"Black Marsh.esm:200718","space":"exterior","status":"placed","as":"helstrom.FGTV0BSBQC4HFAAQJ1RP3WB35X","cluster":"s132"}
 {"src":"Black Marsh.esm:200719","space":"exterior","status":"placed","as":"helstrom.65RF2DY2DQSGMWR3GXM3PYN8S8","cluster":"s132"}
-{"src":"Black Marsh.esm:20071A","space":"exterior","status":"placed","as":"helstrom.5XXK5RVH0NVNS3NCJ4G12SSGJ9","cluster":"s131"}
+{"src":"Black Marsh.esm:20071A","space":"exterior","status":"adapted","as":"helstrom.5XXK5RVH0NVNS3NCJ4G12SSGJ9","cluster":"s131"}
 {"src":"Black Marsh.esm:20071B","space":"exterior","status":"adapted","as":"helstrom.NWM5A1VWXSTZ64AXVQ70F6V49J","cluster":"s133"}
-{"src":"Black Marsh.esm:20071C","space":"exterior","status":"placed","as":"helstrom.W5CHTAS1E036DYMB2Y74509XPZ","cluster":"s131"}
+{"src":"Black Marsh.esm:20071C","space":"exterior","status":"adapted","as":"helstrom.W5CHTAS1E036DYMB2Y74509XPZ","cluster":"s131"}
 {"src":"Black Marsh.esm:20071D","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:20071E","space":"exterior","status":"adapted","as":"helstrom.EXTGXYXARV6NZ6FBWYM363KGBV","cluster":"s133"}
 {"src":"Black Marsh.esm:20071F","space":"exterior","status":"adapted","as":"helstrom.BKSA3MXHCXADTJKRRQ1K4BMFC0","cluster":"s133"}
@@ -4189,22 +4189,22 @@
 {"src":"Black Marsh.esm:20085D","space":"exterior","status":"placed","as":"helstrom.G8V36H2BGDZSGBENXW6JF0CH8Z","cluster":"s137"}
 {"src":"Black Marsh.esm:20085E","space":"exterior","status":"placed","as":"helstrom.2YZMP0ZEN86TM30856H4KD9N1Z","cluster":"s137"}
 {"src":"Black Marsh.esm:200862","space":"exterior","status":"placed","as":"helstrom.J66FXCF0YFERG3G3NCB0XNNPQW","cluster":"s136"}
-{"src":"Black Marsh.esm:200863","space":"exterior","status":"placed","as":"helstrom.PT56075DQEZMZFGVGGK5B6S8EW","cluster":"s139"}
+{"src":"Black Marsh.esm:200863","space":"exterior","status":"adapted","as":"helstrom.PT56075DQEZMZFGVGGK5B6S8EW","cluster":"s139"}
 {"src":"Black Marsh.esm:200864","space":"exterior","status":"placed","as":"helstrom.X7T1DDNP1V6YK9DXV1YRE4FJZ7","cluster":"s136"}
 {"src":"Black Marsh.esm:200865","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh.esm:200866","space":"exterior","status":"placed","as":"helstrom.Q41ZKQF5ZDNWYTBWY7D4SBC735","cluster":"s138"}
-{"src":"Black Marsh.esm:200867","space":"exterior","status":"placed","as":"helstrom.FXGR1GXH1JDMD8G3QGQVKT5C4F","cluster":"s139"}
+{"src":"Black Marsh.esm:200866","space":"exterior","status":"adapted","as":"helstrom.Q41ZKQF5ZDNWYTBWY7D4SBC735","cluster":"s138"}
+{"src":"Black Marsh.esm:200867","space":"exterior","status":"adapted","as":"helstrom.FXGR1GXH1JDMD8G3QGQVKT5C4F","cluster":"s139"}
 {"src":"Black Marsh.esm:200868","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:200869","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh.esm:20086A","space":"exterior","status":"placed","as":"helstrom.S73RVC2RTWHJH9BQXS6JH99KK8","cluster":"s138"}
+{"src":"Black Marsh.esm:20086A","space":"exterior","status":"adapted","as":"helstrom.S73RVC2RTWHJH9BQXS6JH99KK8","cluster":"s138"}
 {"src":"Black Marsh.esm:20086B","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh.esm:20086C","space":"exterior","status":"placed","as":"helstrom.AFZRKNQH9Y7FG8AMD4M85904J0","cluster":"s138"}
-{"src":"Black Marsh.esm:20086D","space":"exterior","status":"placed","as":"helstrom.K9591XCR29Q30FQXYT19SRZPZT","cluster":"s138"}
-{"src":"Black Marsh.esm:20086E","space":"exterior","status":"placed","as":"helstrom.79J8G0HZG6J0TPZNG0FF5J9ZNQ","cluster":"s138"}
-{"src":"Black Marsh.esm:20086F","space":"exterior","status":"placed","as":"helstrom.CMS4G5HMWNJGAKRN2DS7BRFPEZ","cluster":"s138"}
+{"src":"Black Marsh.esm:20086C","space":"exterior","status":"adapted","as":"helstrom.AFZRKNQH9Y7FG8AMD4M85904J0","cluster":"s138"}
+{"src":"Black Marsh.esm:20086D","space":"exterior","status":"adapted","as":"helstrom.K9591XCR29Q30FQXYT19SRZPZT","cluster":"s138"}
+{"src":"Black Marsh.esm:20086E","space":"exterior","status":"adapted","as":"helstrom.79J8G0HZG6J0TPZNG0FF5J9ZNQ","cluster":"s138"}
+{"src":"Black Marsh.esm:20086F","space":"exterior","status":"adapted","as":"helstrom.CMS4G5HMWNJGAKRN2DS7BRFPEZ","cluster":"s138"}
 {"src":"Black Marsh.esm:200870","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:200871","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh.esm:200872","space":"exterior","status":"placed","as":"helstrom.QCSB23MSVYHYABEBHR3A9WZH9W","cluster":"s138"}
+{"src":"Black Marsh.esm:200872","space":"exterior","status":"adapted","as":"helstrom.QCSB23MSVYHYABEBHR3A9WZH9W","cluster":"s138"}
 {"src":"Black Marsh.esm:20096A","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:20096B","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:20096E","space":"exterior","status":"placed","as":"helstrom.5V6FW06VDWYDTPWS935BN22QG3","cluster":"s140"}
@@ -4339,29 +4339,29 @@
 {"src":"Black Marsh.esm:200E8A","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:200E8B","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:200E8D","space":"exterior","status":"placed","as":"helstrom.W8MPZ65X8N73G707PPV0ECV4ZZ","cluster":"s154"}
-{"src":"Black Marsh.esm:200E8E","space":"exterior","status":"placed","as":"helstrom.9CX7RFNA10CT3CPV8KDXCP0AH1","cluster":"s155"}
+{"src":"Black Marsh.esm:200E8E","space":"exterior","status":"adapted","as":"helstrom.9CX7RFNA10CT3CPV8KDXCP0AH1","cluster":"s155"}
 {"src":"Black Marsh.esm:200E98","space":"exterior","status":"adapted","as":"helstrom.Q1QQ3EZRC8BTCK3BQ2CRR924EW","cluster":"s156"}
 {"src":"Black Marsh.esm:200E99","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh.esm:200E9A","space":"exterior","status":"placed","as":"helstrom.97T4HGA5SKAFQ15657RQ5M508X","cluster":"s155"}
+{"src":"Black Marsh.esm:200E9A","space":"exterior","status":"adapted","as":"helstrom.97T4HGA5SKAFQ15657RQ5M508X","cluster":"s155"}
 {"src":"Black Marsh.esm:200E9D","space":"exterior","status":"adapted","as":"helstrom.53TV4Z4AA4BCV9D2BVQVM62MF1","cluster":"s157"}
 {"src":"Black Marsh.esm:200E9E","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:200E9F","space":"exterior","status":"adapted","as":"helstrom.6ZFE49NM53QHC9F6ZR7DWHD6XR","cluster":"s157"}
-{"src":"Black Marsh.esm:200EA0","space":"exterior","status":"placed","as":"helstrom.D0V36ETF5601S32MTV34CG14EZ","cluster":"s155"}
+{"src":"Black Marsh.esm:200EA0","space":"exterior","status":"adapted","as":"helstrom.D0V36ETF5601S32MTV34CG14EZ","cluster":"s155"}
 {"src":"Black Marsh.esm:200EA2","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:200EA5","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:200EA6","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:200EA7","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:200EA8","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:200EA9","space":"exterior","status":"adapted","as":"helstrom.5S7ZJNAW9X815BQR2THGP6N3HZ","cluster":"s157"}
-{"src":"Black Marsh.esm:200EAA","space":"exterior","status":"placed","as":"helstrom.MNB95CWTT2N8QBWA3DNY94PPCS","cluster":"s155"}
-{"src":"Black Marsh.esm:200EAB","space":"exterior","status":"placed","as":"helstrom.AK4VX02JV1CFPC5HYGPDJMJ9CS","cluster":"s155"}
+{"src":"Black Marsh.esm:200EAA","space":"exterior","status":"adapted","as":"helstrom.MNB95CWTT2N8QBWA3DNY94PPCS","cluster":"s155"}
+{"src":"Black Marsh.esm:200EAB","space":"exterior","status":"adapted","as":"helstrom.AK4VX02JV1CFPC5HYGPDJMJ9CS","cluster":"s155"}
 {"src":"Black Marsh.esm:200EAD","space":"exterior","status":"adapted","as":"helstrom.9K20K0K7C5PXAW7G9SCFPGPXQA","cluster":"s156"}
 {"src":"Black Marsh.esm:200EAF","space":"exterior","status":"adapted","as":"helstrom.EZSV7WR3P9V56QDWQEDZD8CENE","cluster":"s157"}
 {"src":"Black Marsh.esm:200EB0","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh.esm:200EB1","space":"exterior","status":"placed","as":"helstrom.XC5M9ZEE54DFYDVYYY6DKPF3JQ","cluster":"s155"}
+{"src":"Black Marsh.esm:200EB1","space":"exterior","status":"adapted","as":"helstrom.XC5M9ZEE54DFYDVYYY6DKPF3JQ","cluster":"s155"}
 {"src":"Black Marsh.esm:200EB3","space":"exterior","status":"adapted","as":"helstrom.534EFZRQ10F52SC5RMC0Z27Q7D","cluster":"s157"}
 {"src":"Black Marsh.esm:200EB9","space":"exterior","status":"adapted","as":"helstrom.QN4YWRRZZ4CMG93XJ7XGV7WA3X","cluster":"s157"}
-{"src":"Black Marsh.esm:200EBA","space":"exterior","status":"placed","as":"helstrom.FYPT64MBN0ZT2WW7VJX42WP0PT","cluster":"s155"}
+{"src":"Black Marsh.esm:200EBA","space":"exterior","status":"adapted","as":"helstrom.FYPT64MBN0ZT2WW7VJX42WP0PT","cluster":"s155"}
 {"src":"Black Marsh.esm:200EBB","space":"exterior","status":"adapted","as":"helstrom.JVQDEM7HCJ1Y7YNCNMN4Y3Z1BN","cluster":"s157"}
 {"src":"Black Marsh.esm:200EBC","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:200EBE","space":"exterior","status":"adapted","as":"helstrom.WRRABWP9EFCFTASTXRS51A9SXB","cluster":"s157"}
@@ -4691,12 +4691,12 @@
 {"src":"Black Marsh.esm:2017BE","space":"exterior","status":"placed","as":"helstrom.V1C4YZWXHG6EAJ2J5TVZFYR73B","cluster":"w09"}
 {"src":"Black Marsh.esm:201A56","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:201A5B","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh.esm:201A5C","space":"exterior","status":"placed","as":"helstrom.738129MMZA2G38C29FJX31503S","cluster":"w35"}
-{"src":"Black Marsh.esm:201A64","space":"exterior","status":"placed","as":"helstrom.E59E9XX4BGCXGZBBR2RVE742EX","cluster":"w35"}
+{"src":"Black Marsh.esm:201A5C","space":"exterior","status":"adapted","as":"helstrom.738129MMZA2G38C29FJX31503S","cluster":"w35"}
+{"src":"Black Marsh.esm:201A64","space":"exterior","status":"adapted","as":"helstrom.E59E9XX4BGCXGZBBR2RVE742EX","cluster":"w35"}
 {"src":"Black Marsh.esm:201A65","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh.esm:201A6B","space":"exterior","status":"placed","as":"helstrom.KMHDM97CXWD4D33TRRE8PKQ3W3","cluster":"w35"}
-{"src":"Black Marsh.esm:201A6E","space":"exterior","status":"placed","as":"helstrom.KSD4ZTFRTCFN04XG37GSTYS1D7","cluster":"w35"}
-{"src":"Black Marsh.esm:201A70","space":"exterior","status":"placed","as":"helstrom.N1BYP0TBNK06MBSBRKMTQZ2RCD","cluster":"w35"}
+{"src":"Black Marsh.esm:201A6B","space":"exterior","status":"adapted","as":"helstrom.KMHDM97CXWD4D33TRRE8PKQ3W3","cluster":"w35"}
+{"src":"Black Marsh.esm:201A6E","space":"exterior","status":"adapted","as":"helstrom.KSD4ZTFRTCFN04XG37GSTYS1D7","cluster":"w35"}
+{"src":"Black Marsh.esm:201A70","space":"exterior","status":"adapted","as":"helstrom.N1BYP0TBNK06MBSBRKMTQZ2RCD","cluster":"w35"}
 {"src":"Black Marsh.esm:201A71","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:201A76","space":"exterior","status":"placed","as":"helstrom.7NDW7HATZ1ASD48KTZB20SDNX2","cluster":"w13"}
 {"src":"Black Marsh.esm:201A79","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
@@ -4733,34 +4733,34 @@
 {"src":"Black Marsh.esm:201ACF","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:201AD8","space":"exterior","status":"placed","as":"helstrom.E2DAMH1W4YYBB06KTMVZWFAVH1","cluster":"w46"}
 {"src":"Black Marsh.esm:201ADA","space":"exterior","status":"placed","as":"helstrom.FYY0E50DKJNY11F5AZ5WX2D3QR","cluster":"w46"}
-{"src":"Black Marsh.esm:207497","space":"exterior","status":"placed","as":"helstrom.56RQMZ6GTEB1F3PDG9RTS8W6J4","cluster":"s130"}
-{"src":"Black Marsh.esm:207498","space":"exterior","status":"placed","as":"helstrom.1HPX4QN7KKSH0YJES0MZ18ZM2D","cluster":"s130"}
-{"src":"Black Marsh.esm:207499","space":"exterior","status":"placed","as":"helstrom.YN9KF6F9Q7FPWFXSRYVKXZQMFT","cluster":"s130"}
-{"src":"Black Marsh.esm:20749A","space":"exterior","status":"placed","as":"helstrom.TR1H0MCYFGCQ8D2S5HDW7EW873","cluster":"s130"}
-{"src":"Black Marsh.esm:20749B","space":"exterior","status":"adapted","as":"helstrom.3G1RGYGY78SYWSF96ZWPDCVZQD","cluster":"s118"}
-{"src":"Black Marsh.esm:20749C","space":"exterior","status":"adapted","as":"helstrom.D78TAF8HSV8A5P2QDNHQTE93W3","cluster":"s118"}
-{"src":"Black Marsh.esm:20749D","space":"exterior","status":"adapted","as":"helstrom.1TH93407V14EHET250FG1MY0WP","cluster":"s118"}
-{"src":"Black Marsh.esm:20749E","space":"exterior","status":"adapted","as":"helstrom.J9K25QSFPK6QYD6R9VVXF8YTTW","cluster":"s118"}
+{"src":"Black Marsh.esm:207497","space":"exterior","status":"adapted","as":"helstrom.56RQMZ6GTEB1F3PDG9RTS8W6J4","cluster":"s130"}
+{"src":"Black Marsh.esm:207498","space":"exterior","status":"adapted","as":"helstrom.1HPX4QN7KKSH0YJES0MZ18ZM2D","cluster":"s130"}
+{"src":"Black Marsh.esm:207499","space":"exterior","status":"adapted","as":"helstrom.YN9KF6F9Q7FPWFXSRYVKXZQMFT","cluster":"s130"}
+{"src":"Black Marsh.esm:20749A","space":"exterior","status":"adapted","as":"helstrom.TR1H0MCYFGCQ8D2S5HDW7EW873","cluster":"s130"}
+{"src":"Black Marsh.esm:20749B","space":"exterior","status":"adapted","as":"helstrom.3G1RGYGY78SYWSF96ZWPDCVZQD","cluster":"s118","nudge":256.0}
+{"src":"Black Marsh.esm:20749C","space":"exterior","status":"adapted","as":"helstrom.D78TAF8HSV8A5P2QDNHQTE93W3","cluster":"s118","nudge":192.0}
+{"src":"Black Marsh.esm:20749D","space":"exterior","status":"adapted","as":"helstrom.1TH93407V14EHET250FG1MY0WP","cluster":"s118","nudge":320.0}
+{"src":"Black Marsh.esm:20749E","space":"exterior","status":"adapted","as":"helstrom.J9K25QSFPK6QYD6R9VVXF8YTTW","cluster":"s118","nudge":256.0}
 {"src":"Black Marsh.esm:20749F","space":"exterior","status":"adapted","as":"helstrom.BA23XBRZZAT4HE12RR3BAA88FP","cluster":"s127"}
 {"src":"Black Marsh.esm:2074A0","space":"exterior","status":"adapted","as":"helstrom.CD7K5A5SG2S3ZTDJA9TJV5TAYM","cluster":"s127"}
 {"src":"Black Marsh.esm:2074A1","space":"exterior","status":"adapted","as":"helstrom.ERM95P55PRB6E46DXHWB7NGA9K","cluster":"s127"}
 {"src":"Black Marsh.esm:2074A2","space":"exterior","status":"adapted","as":"helstrom.4E60MD3SEG99NXV463HFM1BRH0","cluster":"s127"}
-{"src":"Black Marsh.esm:2074A3","space":"exterior","status":"adapted","as":"helstrom.14X6A98SRHADGCGFG51V2W6GDW","cluster":"s133"}
-{"src":"Black Marsh.esm:2074A4","space":"exterior","status":"adapted","as":"helstrom.FJGGBWCACQJV5HXQRCYFRAA74K","cluster":"s133"}
-{"src":"Black Marsh.esm:2074A5","space":"exterior","status":"adapted","as":"helstrom.J84D765GBE1V755XKFRYZBGB4S","cluster":"s133"}
-{"src":"Black Marsh.esm:2074A6","space":"exterior","status":"adapted","as":"helstrom.7MP2NXV69XHSADED5GFQA7JBVM","cluster":"s133"}
-{"src":"Black Marsh.esm:2074A7","space":"exterior","status":"placed","as":"helstrom.5BZ4X1SDMR83TFG792KSMHQMEK","cluster":"s131"}
-{"src":"Black Marsh.esm:2074A8","space":"exterior","status":"placed","as":"helstrom.NVEYXGM90X3DDC2FZ6T0PWYCJZ","cluster":"s131"}
-{"src":"Black Marsh.esm:2074A9","space":"exterior","status":"placed","as":"helstrom.SB92DE5ADQWTVAQT5W9T9GD0YR","cluster":"s131"}
-{"src":"Black Marsh.esm:2074AA","space":"exterior","status":"placed","as":"helstrom.XCV5WFST2YSQD1ZW766TVV80FM","cluster":"s131"}
+{"src":"Black Marsh.esm:2074A3","space":"exterior","status":"dropped","cluster":"s133","why":"no dry land within 384 units of its fitted spot; our water and land are kept as they are"}
+{"src":"Black Marsh.esm:2074A4","space":"exterior","status":"dropped","cluster":"s133","why":"no dry land within 384 units of its fitted spot; our water and land are kept as they are"}
+{"src":"Black Marsh.esm:2074A5","space":"exterior","status":"dropped","cluster":"s133","why":"no dry land within 384 units of its fitted spot; our water and land are kept as they are"}
+{"src":"Black Marsh.esm:2074A6","space":"exterior","status":"dropped","cluster":"s133","why":"no dry land within 384 units of its fitted spot; our water and land are kept as they are"}
+{"src":"Black Marsh.esm:2074A7","space":"exterior","status":"dropped","cluster":"s131","why":"no dry land within 384 units of its fitted spot; our water and land are kept as they are"}
+{"src":"Black Marsh.esm:2074A8","space":"exterior","status":"adapted","as":"helstrom.NVEYXGM90X3DDC2FZ6T0PWYCJZ","cluster":"s131","nudge":320.0}
+{"src":"Black Marsh.esm:2074A9","space":"exterior","status":"dropped","cluster":"s131","why":"no dry land within 384 units of its fitted spot; our water and land are kept as they are"}
+{"src":"Black Marsh.esm:2074AA","space":"exterior","status":"adapted","as":"helstrom.XCV5WFST2YSQD1ZW766TVV80FM","cluster":"s131","nudge":128.0}
 {"src":"Black Marsh.esm:2074AB","space":"exterior","status":"placed","as":"helstrom.KHXFC0HF4P6FT1WGMBPA20SDJN","cluster":"s165"}
 {"src":"Black Marsh.esm:2074AC","space":"exterior","status":"placed","as":"helstrom.0FNKA9S91ATQGARNEFA5XBNGJD","cluster":"s165"}
 {"src":"Black Marsh.esm:2074AD","space":"exterior","status":"placed","as":"helstrom.3R4151TM03S05KNGVZ6BKEMVJQ","cluster":"s165"}
 {"src":"Black Marsh.esm:2074AE","space":"exterior","status":"placed","as":"helstrom.Q6X99F166BWBNTAJ1ZJ2QEGNNB","cluster":"s165"}
-{"src":"Black Marsh.esm:207617","space":"exterior","status":"adapted","as":"helstrom.RA36VYZ38R9Y9Y6TR8NS467JY7","cluster":"w04","patch":"stood in the source's water; our land here is dry"}
-{"src":"Black Marsh.esm:207618","space":"exterior","status":"adapted","as":"helstrom.79BCZMH4PZXETGMHWEKZJ6VQAQ","cluster":"w04","patch":"stood in the source's water; our land here is dry"}
-{"src":"Black Marsh.esm:207619","space":"exterior","status":"placed","as":"helstrom.K2Q8W84NEHY2W362MZ1KACCPS0","cluster":"w04"}
-{"src":"Black Marsh.esm:20761A","space":"exterior","status":"placed","as":"helstrom.WDMDW355Y94FSSTMG8EZ0GHRQ5","cluster":"w04"}
+{"src":"Black Marsh.esm:207617","space":"exterior","status":"dropped","cluster":"w04","why":"no water within 384 units of its fitted spot; our water and land are kept as they are"}
+{"src":"Black Marsh.esm:207618","space":"exterior","status":"dropped","cluster":"w04","why":"no water within 384 units of its fitted spot; our water and land are kept as they are"}
+{"src":"Black Marsh.esm:207619","space":"exterior","status":"dropped","cluster":"w04","why":"no water within 384 units of its fitted spot; our water and land are kept as they are"}
+{"src":"Black Marsh.esm:20761A","space":"exterior","status":"dropped","cluster":"w04","why":"no water within 384 units of its fitted spot; our water and land are kept as they are"}
 {"src":"Black Marsh.esm:2076B3","space":"exterior","status":"adapted","as":"helstrom.4A2MND1ZDCN07F73HSEDDAFQ8S","cluster":"s104"}
 {"src":"Black Marsh.esm:2076B4","space":"exterior","status":"adapted","as":"helstrom.R1M323Y7EEHKX7HAC136EJT04E","cluster":"s104"}
 {"src":"Black Marsh.esm:2076B5","space":"exterior","status":"adapted","as":"helstrom.YWWYJWS8E1SQ22CGXKED22G041","cluster":"s104"}
@@ -4778,39 +4778,39 @@
 {"src":"Black Marsh.esm:207723","space":"exterior","status":"replaced","as":"helstrom.4YYFS2443G9T534AHYA0VW9YJ2","cluster":"b19","base":"Here There Be Monsters - Curse of Cipactli.esp:029DC6"}
 {"src":"Black Marsh.esm:207724","space":"exterior","status":"replaced","as":"helstrom.NZ0SG8YJDSSAN3DVH1HW4PM05B","cluster":"b20","base":"Here There Be Monsters - Curse of Cipactli.esp:029DC6"}
 {"src":"Black Marsh.esm:207725","space":"exterior","status":"replaced","as":"helstrom.JC5FH223GR0VM0WJ449DAH21T7","cluster":"b20","base":"Here There Be Monsters - Curse of Cipactli.esp:029DC6"}
-{"src":"Black Marsh.esm:207731","space":"exterior","status":"placed","as":"helstrom.VYBBFW4JBKDHQA37DDDW49A10G","cluster":"w05"}
-{"src":"Black Marsh.esm:207732","space":"exterior","status":"placed","as":"helstrom.MYTVE1SH00P3KMJ0840WSX8C30","cluster":"w05"}
-{"src":"Black Marsh.esm:207733","space":"exterior","status":"placed","as":"helstrom.414YVPW5RE53T234Y3G7A46G5X","cluster":"w05"}
-{"src":"Black Marsh.esm:207734","space":"exterior","status":"placed","as":"helstrom.N6A619WCSKXZ28FCX77TE3G1RD","cluster":"w05"}
-{"src":"Black Marsh.esm:207735","space":"exterior","status":"placed","as":"helstrom.RMM6TEGZ058CDRAJ7C46GK3JSJ","cluster":"w05"}
-{"src":"Black Marsh.esm:207736","space":"exterior","status":"placed","as":"helstrom.3Y90DP7P3PHNQN4MSHS6WDR3GA","cluster":"w05"}
-{"src":"Black Marsh.esm:207737","space":"exterior","status":"placed","as":"helstrom.TEK774EY0WQYNAB0AAKTMHHMYM","cluster":"w05"}
-{"src":"Black Marsh.esm:207738","space":"exterior","status":"placed","as":"helstrom.W723CSPFWFBT2E1N9ZRBV18N6F","cluster":"w05"}
-{"src":"Black Marsh.esm:207739","space":"exterior","status":"placed","as":"helstrom.19J6D9RARG3VTASAWC2JTHQK8J","cluster":"w05"}
-{"src":"Black Marsh.esm:20773A","space":"exterior","status":"placed","as":"helstrom.1Q9RZ539NNC50CCZCFEF3NV9EK","cluster":"w05"}
-{"src":"Black Marsh.esm:20773B","space":"exterior","status":"placed","as":"helstrom.AYAE8Q3HZ16FCWKJ0ZM6TMD99E","cluster":"w05"}
-{"src":"Black Marsh.esm:20773C","space":"exterior","status":"placed","as":"helstrom.GMB218E9K3FB909C0ZZYDK61BH","cluster":"w05"}
-{"src":"Black Marsh.esm:20773D","space":"exterior","status":"placed","as":"helstrom.VREJD18H4CJNRX7DYCCHVP6R5C","cluster":"w05"}
-{"src":"Black Marsh.esm:20773E","space":"exterior","status":"placed","as":"helstrom.Q3K3J4J7V053N96Q04XEARXKD2","cluster":"w05"}
-{"src":"Black Marsh.esm:20773F","space":"exterior","status":"placed","as":"helstrom.G2JB1SXDEQBD9RN6N6WE2KCBQD","cluster":"w05"}
-{"src":"Black Marsh.esm:207740","space":"exterior","status":"placed","as":"helstrom.SAN5SVX1471NQ6MVPYSXN9M7XM","cluster":"w05"}
-{"src":"Black Marsh.esm:207741","space":"exterior","status":"placed","as":"helstrom.7QJNHACASCHRKBG7Y8NM4AV2ND","cluster":"w05"}
-{"src":"Black Marsh.esm:207742","space":"exterior","status":"placed","as":"helstrom.HED8Y7CYFHR17BZ7PM88AT87YE","cluster":"w05"}
-{"src":"Black Marsh.esm:207743","space":"exterior","status":"placed","as":"helstrom.GMT6HV77AHY137PNNK953KSMFK","cluster":"w05"}
-{"src":"Black Marsh.esm:207744","space":"exterior","status":"placed","as":"helstrom.AS7YFT4W079BEYFZ2Y2KV1Q8A5","cluster":"w05"}
-{"src":"Black Marsh.esm:207745","space":"exterior","status":"placed","as":"helstrom.HNKF04H1SPD224T8PJ52W8S912","cluster":"w05"}
-{"src":"Black Marsh.esm:207746","space":"exterior","status":"placed","as":"helstrom.6WEZC9NY21YH1STJPSYNXY4CR1","cluster":"w05"}
-{"src":"Black Marsh.esm:207747","space":"exterior","status":"placed","as":"helstrom.WBM0S66V64DX91X9Y8EX8ZE7BP","cluster":"w04"}
-{"src":"Black Marsh.esm:207748","space":"exterior","status":"placed","as":"helstrom.0BDXMT4MKTS50F8RHJZHHGYWZY","cluster":"w04"}
-{"src":"Black Marsh.esm:207749","space":"exterior","status":"placed","as":"helstrom.WNTXSB10T63X5R713D5WVBTAFJ","cluster":"w04"}
-{"src":"Black Marsh.esm:20774A","space":"exterior","status":"placed","as":"helstrom.4SKFRG66FA9JJJC241PZ0N5PGY","cluster":"w04"}
-{"src":"Black Marsh.esm:20774B","space":"exterior","status":"placed","as":"helstrom.Q68Y3PHNCMKM51JRDB8PEF8RT1","cluster":"w04"}
-{"src":"Black Marsh.esm:20774C","space":"exterior","status":"placed","as":"helstrom.JA6NBX0MJT2F668X57YY5XK042","cluster":"w04"}
-{"src":"Black Marsh.esm:20774D","space":"exterior","status":"placed","as":"helstrom.R27AS3MZ2VV8EMV0G7JGABQC71","cluster":"w04"}
-{"src":"Black Marsh.esm:20774E","space":"exterior","status":"placed","as":"helstrom.KVNZ499FW2V1FZP47E2QTRE8HA","cluster":"w04"}
-{"src":"Black Marsh.esm:20774F","space":"exterior","status":"placed","as":"helstrom.A03T5QD382NZYRES4HMAGPVYTQ","cluster":"w04"}
-{"src":"Black Marsh.esm:207750","space":"exterior","status":"placed","as":"helstrom.3YMEDFQ95S9HCXMJ2TF5TE3YP8","cluster":"w04"}
-{"src":"Black Marsh.esm:207751","space":"exterior","status":"placed","as":"helstrom.XX0CJJQ7051QKSAVHF4V8ATHJ7","cluster":"w04"}
+{"src":"Black Marsh.esm:207731","space":"exterior","status":"adapted","as":"helstrom.VYBBFW4JBKDHQA37DDDW49A10G","cluster":"w05"}
+{"src":"Black Marsh.esm:207732","space":"exterior","status":"adapted","as":"helstrom.MYTVE1SH00P3KMJ0840WSX8C30","cluster":"w05"}
+{"src":"Black Marsh.esm:207733","space":"exterior","status":"adapted","as":"helstrom.414YVPW5RE53T234Y3G7A46G5X","cluster":"w05"}
+{"src":"Black Marsh.esm:207734","space":"exterior","status":"adapted","as":"helstrom.N6A619WCSKXZ28FCX77TE3G1RD","cluster":"w05"}
+{"src":"Black Marsh.esm:207735","space":"exterior","status":"adapted","as":"helstrom.RMM6TEGZ058CDRAJ7C46GK3JSJ","cluster":"w05"}
+{"src":"Black Marsh.esm:207736","space":"exterior","status":"adapted","as":"helstrom.3Y90DP7P3PHNQN4MSHS6WDR3GA","cluster":"w05"}
+{"src":"Black Marsh.esm:207737","space":"exterior","status":"adapted","as":"helstrom.TEK774EY0WQYNAB0AAKTMHHMYM","cluster":"w05"}
+{"src":"Black Marsh.esm:207738","space":"exterior","status":"adapted","as":"helstrom.W723CSPFWFBT2E1N9ZRBV18N6F","cluster":"w05"}
+{"src":"Black Marsh.esm:207739","space":"exterior","status":"adapted","as":"helstrom.19J6D9RARG3VTASAWC2JTHQK8J","cluster":"w05"}
+{"src":"Black Marsh.esm:20773A","space":"exterior","status":"adapted","as":"helstrom.1Q9RZ539NNC50CCZCFEF3NV9EK","cluster":"w05"}
+{"src":"Black Marsh.esm:20773B","space":"exterior","status":"adapted","as":"helstrom.AYAE8Q3HZ16FCWKJ0ZM6TMD99E","cluster":"w05"}
+{"src":"Black Marsh.esm:20773C","space":"exterior","status":"adapted","as":"helstrom.GMB218E9K3FB909C0ZZYDK61BH","cluster":"w05"}
+{"src":"Black Marsh.esm:20773D","space":"exterior","status":"adapted","as":"helstrom.VREJD18H4CJNRX7DYCCHVP6R5C","cluster":"w05"}
+{"src":"Black Marsh.esm:20773E","space":"exterior","status":"adapted","as":"helstrom.Q3K3J4J7V053N96Q04XEARXKD2","cluster":"w05"}
+{"src":"Black Marsh.esm:20773F","space":"exterior","status":"adapted","as":"helstrom.G2JB1SXDEQBD9RN6N6WE2KCBQD","cluster":"w05"}
+{"src":"Black Marsh.esm:207740","space":"exterior","status":"adapted","as":"helstrom.SAN5SVX1471NQ6MVPYSXN9M7XM","cluster":"w05"}
+{"src":"Black Marsh.esm:207741","space":"exterior","status":"adapted","as":"helstrom.7QJNHACASCHRKBG7Y8NM4AV2ND","cluster":"w05"}
+{"src":"Black Marsh.esm:207742","space":"exterior","status":"adapted","as":"helstrom.HED8Y7CYFHR17BZ7PM88AT87YE","cluster":"w05"}
+{"src":"Black Marsh.esm:207743","space":"exterior","status":"adapted","as":"helstrom.GMT6HV77AHY137PNNK953KSMFK","cluster":"w05"}
+{"src":"Black Marsh.esm:207744","space":"exterior","status":"adapted","as":"helstrom.AS7YFT4W079BEYFZ2Y2KV1Q8A5","cluster":"w05"}
+{"src":"Black Marsh.esm:207745","space":"exterior","status":"adapted","as":"helstrom.HNKF04H1SPD224T8PJ52W8S912","cluster":"w05"}
+{"src":"Black Marsh.esm:207746","space":"exterior","status":"adapted","as":"helstrom.6WEZC9NY21YH1STJPSYNXY4CR1","cluster":"w05"}
+{"src":"Black Marsh.esm:207747","space":"exterior","status":"adapted","as":"helstrom.WBM0S66V64DX91X9Y8EX8ZE7BP","cluster":"w04"}
+{"src":"Black Marsh.esm:207748","space":"exterior","status":"adapted","as":"helstrom.0BDXMT4MKTS50F8RHJZHHGYWZY","cluster":"w04"}
+{"src":"Black Marsh.esm:207749","space":"exterior","status":"adapted","as":"helstrom.WNTXSB10T63X5R713D5WVBTAFJ","cluster":"w04"}
+{"src":"Black Marsh.esm:20774A","space":"exterior","status":"adapted","as":"helstrom.4SKFRG66FA9JJJC241PZ0N5PGY","cluster":"w04"}
+{"src":"Black Marsh.esm:20774B","space":"exterior","status":"adapted","as":"helstrom.Q68Y3PHNCMKM51JRDB8PEF8RT1","cluster":"w04"}
+{"src":"Black Marsh.esm:20774C","space":"exterior","status":"adapted","as":"helstrom.JA6NBX0MJT2F668X57YY5XK042","cluster":"w04"}
+{"src":"Black Marsh.esm:20774D","space":"exterior","status":"adapted","as":"helstrom.R27AS3MZ2VV8EMV0G7JGABQC71","cluster":"w04"}
+{"src":"Black Marsh.esm:20774E","space":"exterior","status":"adapted","as":"helstrom.KVNZ499FW2V1FZP47E2QTRE8HA","cluster":"w04"}
+{"src":"Black Marsh.esm:20774F","space":"exterior","status":"adapted","as":"helstrom.A03T5QD382NZYRES4HMAGPVYTQ","cluster":"w04"}
+{"src":"Black Marsh.esm:207750","space":"exterior","status":"adapted","as":"helstrom.3YMEDFQ95S9HCXMJ2TF5TE3YP8","cluster":"w04"}
+{"src":"Black Marsh.esm:207751","space":"exterior","status":"adapted","as":"helstrom.XX0CJJQ7051QKSAVHF4V8ATHJ7","cluster":"w04"}
 {"src":"Black Marsh.esm:2077FB","space":"exterior","status":"placed","as":"helstrom.QJDTKZAY0CCHP5BJZC0APX0Q4V","cluster":"s166"}
 {"src":"Black Marsh.esm:2077FC","space":"exterior","status":"adapted","as":"helstrom.QFNF1KW1CGTJ270TM02HQ94A2M","cluster":"s119"}
 {"src":"Black Marsh.esm:2077FD","space":"exterior","status":"adapted","as":"helstrom.BCD447C14775YS7YZY32H5CK2N","cluster":"s121"}
@@ -4827,7 +4827,7 @@
 {"src":"Black Marsh.esm:207808","space":"exterior","status":"adapted","as":"helstrom.MHZFHY97D5ABQ20N7VC83TSFDX","cluster":"s133"}
 {"src":"Black Marsh.esm:207809","space":"exterior","status":"adapted","as":"helstrom.ZCZGDNWQ3TC0EADRDG4G1HK25C","cluster":"s133"}
 {"src":"Black Marsh.esm:20780A","space":"exterior","status":"adapted","as":"helstrom.NQZYDNXWRZJMVHQC23369S1DX1","cluster":"s133"}
-{"src":"Black Marsh.esm:20780B","space":"exterior","status":"placed","as":"helstrom.BS9ZVE5B74F3BWJ4X60E6R4C59","cluster":"s131"}
+{"src":"Black Marsh.esm:20780B","space":"exterior","status":"adapted","as":"helstrom.BS9ZVE5B74F3BWJ4X60E6R4C59","cluster":"s131"}
 {"src":"Black Marsh.esm:207828","space":"exterior","status":"placed","as":"helstrom.KFJGTNJR08C7V9TMVK751KMKQG","cluster":"s167"}
 {"src":"Black Marsh.esm:20783D","space":"exterior","status":"placed","as":"helstrom.WNPVYRENS02WD06PPY251C3EN5","cluster":"s168"}
 {"src":"Black Marsh.esm:20783E","space":"exterior","status":"placed","as":"helstrom.XEM7N9NN6D1TKCJBHMZ4W9QY2W","cluster":"s168"}
@@ -4911,8 +4911,8 @@
 {"src":"Black Marsh.esm:20F3F0","space":"exterior","status":"placed","as":"helstrom.GVNQ96YR7WR1P4Z1EBPCM56HFV","cluster":"b51"}
 {"src":"Black Marsh.esm:22B868","space":"exterior","status":"placed","as":"helstrom.2DTJ0GKVTY5Y5N1H11DFWHA22E","cluster":"b24"}
 {"src":"Black Marsh.esm:22B869","space":"exterior","status":"placed","as":"helstrom.S8BC1V7C0C83BYAD82WHKNPFJR","cluster":"b52"}
-{"src":"Black Marsh.esm:22B86B","space":"exterior","status":"adapted","as":"helstrom.5NWVCPEKBJ542FSXKMD6ZB15SP","cluster":"w57","patch":"stood in the source's water; our land here is dry"}
-{"src":"Black Marsh.esm:22B86D","space":"exterior","status":"adapted","as":"helstrom.98HVZ25C8T8JMGRJ6K8XS6Z9VF","cluster":"s57"}
-{"src":"Black Marsh.esm:22B86F","space":"exterior","status":"placed","as":"helstrom.DP08PZTJZSWTARCFBTY7J2NRV9","cluster":"s173"}
+{"src":"Black Marsh.esm:22B86B","space":"exterior","status":"adapted","as":"helstrom.5NWVCPEKBJ542FSXKMD6ZB15SP","cluster":"w57"}
+{"src":"Black Marsh.esm:22B86D","space":"exterior","status":"adapted","as":"helstrom.98HVZ25C8T8JMGRJ6K8XS6Z9VF","cluster":"s57","nudge":384.0}
+{"src":"Black Marsh.esm:22B86F","space":"exterior","status":"adapted","as":"helstrom.DP08PZTJZSWTARCFBTY7J2NRV9","cluster":"s173"}
 {"src":"Black Marsh.esm:22B878","space":"exterior","status":"placed","as":"helstrom.KBME9VE5V6TE9X8QXVBR5H19RK","cluster":"w58"}
 {"src":"Black Marsh.esm:23D458","space":"exterior","status":"replaced","as":"helstrom.XFGBG5HECYYJ1RY98225KWWC1J","cluster":"landing","base":"King of the Murkmire.esp:093D0D"}

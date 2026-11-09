@@ -145,3 +145,27 @@ def test_xf_compose():
     xf = geom.Xf((0, 0), (10, 0), 0.0).then(5, 0, math.pi / 2, (10, 0))
     x, y = xf.pt(1, 0)
     assert (round(x, 6), round(y, 6)) == (15.0, -1.0)
+
+
+def test_check_refuses_a_large_or_waterline_patch(fx, tmp_path):
+    root, _ = fx
+    import shutil
+    copy = tmp_path / "c"
+    shutil.copytree(root, copy)
+    # cell (10, 0) holds our river's edge at x = 40000 (col 24): lift a wet point across the waterline, far past the bound
+    (copy / "places/fx/land.jsonl").write_text(json.dumps({"cell": [10, 0], "verts": [[4, 30, 400.0]], "why": "t"}) + "\n")
+    bad = check.check("fx", copy / "bundles", copy / "places", gives=F.GIVES)
+    assert any("bound" in b for b in bad) and any("waterline" in b for b in bad)
+
+
+def test_innkeeper_keeps_the_inn_all_night(fx):
+    root, _ = fx
+    folk = [json.loads(line) for line in (root / "places/fx/people.jsonl").read_text().splitlines()]
+    inn = next(p for p in folk if p["role"] == "innkeeper")
+    assert inn["bed"] is None and [s["hours"] for s in inn["routine"]] == [24]
+
+
+def test_patches_never_fill_water(fx):
+    root, _ = fx
+    land = [json.loads(line) for line in (root / "places/fx/land.jsonl").read_text().splitlines()]
+    assert all(abs(v[2]) <= 105 for p in land for v in p["verts"])

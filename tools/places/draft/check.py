@@ -11,13 +11,15 @@ import json
 import math
 from pathlib import Path
 
-from tools.places.draft import interiors, io, people
+from tools.places.draft import geom, interiors, io, people
+from tools.places.draft import paths as paths_mod
 from tools.places.draft.geom import LEVELLED
 from tools.places.draft.fit import relief_allowed
 from tools.places.draft.paths import connected, dist_to_paths
 from tools.places.seat import Ground, foot_relief, seat_all
 
 SEAT_TOL = 1.0
+summary: dict = {}       # the last check's measures (patches, streets, aligned pieces), printed by main
 DOOR_REACH = 160.0
 
 
@@ -26,7 +28,7 @@ def check(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, g
     place = json.loads((pdir / "place.json").read_text())
     src = io.load(f"src.{place['source_id']}", bundles)
     grd = io.load(f"ground.{place_id}", bundles)
-    bases = io.place_bases(src, grd, place.get("draft") or {})
+    bases = io.place_bases(src, grd, place)
     if gives is None:
         from tools.places.draft.run import place_record
         gives = place_record(place_id)[1]
@@ -39,6 +41,7 @@ def check(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, g
     paths = io.read_jsonl(pdir / "paths.jsonl")
     folk = io.read_jsonl(pdir / "people.jsonl")
     bad: list[str] = []
+    summary.clear()
 
     # 1. every source ref accounted for
     seen = {(r["space"], r["src"]) for r in ledger}
@@ -70,7 +73,7 @@ def check(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, g
         s = src_by.get(r.get("src"))
         src_rel = foot_relief(S, s["pos"][0], s["pos"][1], s["rot"][2], f) if s else 0.0
         rel = foot_relief(G, r["pos"][0], r["pos"][1], r["rot"][2], f)
-        allow = relief_allowed(src_rel, r["seat"])
+        allow = relief_allowed(src_rel, r["seat"], place["fit"].get("relief_norm", 64.0))
         if allow is not None and rel > allow + 1:
             cell = (math.floor(r["pos"][0] / 4096), math.floor(r["pos"][1] / 4096))
             bad.append(f"{r['id']} on ground rising {rel:.0f} (source {src_rel:.0f})"
@@ -119,10 +122,18 @@ def check(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, g
         for b in interiors.beds_in(src.spaces[copy_of].refs, bases, sj.get("room")):
             beds_total += b["sleeps"]
             bed_refs[(sdir.name, b["ref"])] = b["sleeps"]
-    if beds_total < len(folk):
-        bad.append(f"{len(folk)} people for {beds_total} beds")
+    sleepers = [p for p in folk if p["role"] not in people.NO_BED]   # innkeepers keep the inn all night (Skyrim)
+    if beds_total < len(sleepers):
+        bad.append(f"{len(sleepers)} sleepers for {beds_total} beds")
     use: dict = {}
     for p in folk:
+        hours = sum(s["hours"] for s in p["routine"])
+        if hours != 24:
+            bad.append(f"{p['id']} routine covers {hours} hours")
+        if p["role"] in people.NO_BED:
+            if any(s["kind"] == "sleep" for s in p["routine"]):
+                bad.append(f"{p['id']} ({p['role']}) sleeps, but the role keeps its post all day and night")
+            continue
         if not p.get("bed"):
             bad.append(f"{p['id']} ({p['role']}) has no bed")
             continue
@@ -130,9 +141,6 @@ def check(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, g
         if k not in bed_refs:
             bad.append(f"{p['id']} sleeps in {k}, which is not a bed of the draft")
         use[k] = use.get(k, 0) + 1
-        hours = sum(s["hours"] for s in p["routine"])
-        if hours != 24:
-            bad.append(f"{p['id']} routine covers {hours} hours")
     for k, n in use.items():
         if n > bed_refs.get(k, 0):
             bad.append(f"bed {k} slept in by {n}")
@@ -143,6 +151,89 @@ def check(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, g
             bad.append(f"{p['id']} ({p['role']}) has no actor base")
         elif p["base_from"] in src.npcs and not people.usable(src.npcs[p["base_from"]]):
             bad.append(f"{p['id']} built on a Nordic or levelled actor {p['base_from']}")
+
+    # 8. land patches: small, bounded, never across the waterline
+    G0 = Ground.load(grd.path)
+    pmax = place.get("fit", {}).get("patch_max", 105.0)
+    points = 0
+    for p in land:
+        cx, cy = p["cell"]
+        for row, col, dz in p["verts"]:
+            points += 1
+            if abs(dz) > pmax + 0.5:
+                bad.append(f"land patch at cell {p['cell']} ({row},{col}) changes the ground by {dz:.0f} (bound {pmax:.0f})")
+            gx, gy = cx * 32 + col, cy * 32 + row
+            h0 = G0.vertex(gx, gy)
+            w = G0.water(gx * 128.0, gy * 128.0)
+            if h0 is not None and w is not None and (h0 < w) != (h0 + dz < w):
+                bad.append(f"land patch at cell {p['cell']} ({row},{col}) moves the ground across the waterline")
+    summary["patch_cells"], summary["patch_points"] = len(land), points
+    summary["patch_largest"] = max((abs(v[2]) for p in land for v in p["verts"]), default=0.0)
+
+    # 9. streets: never through a building, never over open water without a walkway
+    walk = [r for r in refs if paths_mod.WALKWAY.search(str((bases.get(r["base"]) or {}).get("model", "")))
+            or "street" in str(r.get("why", ""))]
+    solid_b = [r for r in refs if r.get("kind") == "building" and r not in walk and r["seat"].get("foot")]
+    total = 0.0
+    for p in paths:
+        pts = p["points"]
+        for a, b in zip(pts, pts[1:]):
+            n = max(1, int(math.dist(a, b) // 128))
+            total += math.dist(a, b)
+            if p.get("kind") == "walkway":
+                continue          # the source's own pier and deck to a door on the water
+            for k in range(1, n):
+                q = (a[0] + (b[0] - a[0]) * k / n, a[1] + (b[1] - a[1]) * k / n)
+                if min(math.dist(q, pts[0]), math.dist(q, pts[-1])) < DOOR_REACH:
+                    continue      # the step up to a door
+                if any(geom.contains_xy(r, bases, q[0], q[1], -48) for r in solid_b):
+                    bad.append(f"street {p['id']} runs through a building at {q[0]:.0f},{q[1]:.0f}")
+                    break
+                if G.wet(q[0], q[1], 32) and not any(geom.contains_xy(r, bases, q[0], q[1], 96) for r in walk):
+                    bad.append(f"street {p['id']} crosses open water at {q[0]:.0f},{q[1]:.0f} with no walkway")
+                    break
+    summary["streets"], summary["street_length_m"] = len(paths), round(total / 70.0)
+
+    # 10. every promised crafting station placed and worked by someone
+    st = place.get("stations") or {}
+    for s_ in st.get("missing") or []:
+        bad.append(f"promised station {s_} is missing")
+    ref_by = {r["id"]: r for r in refs}
+    for a in st.get("added") or []:
+        w = next((p["work"] for p in folk if p["id"] == a["by"]), None)
+        if w is None:
+            bad.append(f"station {a['station']} has nobody to work it")
+        elif a["space"] == "exterior":
+            r = ref_by.get(a["id"])
+            c = w.get("pos") or (ref_by.get(w.get("ref")) or {}).get("pos")
+            if r is None or c is None or math.dist(r["pos"][:2], c[:2]) > w.get("radius", 384) + 256:
+                bad.append(f"station {a['station']} stands away from its worker's work stop")
+        elif w.get("space") != a["space"]:
+            bad.append(f"station {a['station']} is not where its worker works")
+
+    # 11. a replaced door or directional piece lies in the original's plane
+    for r in refs:
+        al = r.get("align")
+        if not al:
+            continue
+        old, new = geom.plane(bases.get(al["of"]) or {}), geom.plane(bases.get(r["base"]) or {})
+        if not old or not new:
+            bad.append(f"{r['id']}: no geometry to prove its plane against {al['of']}")
+            continue
+        rz = r["rot"][2]
+        rz0 = rz - math.radians(al["turn_deg"])
+        o = geom.turn(old["centre"], rz0)
+        n_ = geom.turn(new["centre"], rz)
+        ow = (r["pos"][0] - al["shift"][0] + o[0], r["pos"][1] - al["shift"][1] + o[1])
+        nw = (r["pos"][0] + n_[0], r["pos"][1] + n_[1])
+        ao = geom.turn((1.0, 0.0) if old["axis"] == 0 else (0.0, 1.0), rz0)
+        an = geom.turn((1.0, 0.0) if new["axis"] == 0 else (0.0, 1.0), rz)
+        if abs(ao[0] * an[0] + ao[1] * an[1]) < 0.97:
+            bad.append(f"{r['id']} ({r['kind']}) faces across the original's plane")
+        if math.dist(ow, nw) > 16:
+            bad.append(f"{r['id']} ({r['kind']}) plane {math.dist(ow, nw):.0f} units from the original's")
+        summary.setdefault("aligned", 0)
+        summary["aligned"] += 1
 
     # 7. no Nordic or levelled base placed
     for r in refs:
@@ -163,6 +254,7 @@ def main(argv: list[str]) -> int:
         print("FAIL", b)
     if len(bad) > 200:
         print(f"... and {len(bad) - 200} more")
+    print("measures:", json.dumps(summary))
     print(f"draft check {argv[0]}: {'PASS' if not bad else f'{len(bad)} problems'}")
     return 0 if not bad else 1
 

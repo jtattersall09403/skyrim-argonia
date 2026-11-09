@@ -18,7 +18,7 @@ OUT = io.ROOT / "out" / "places" / "renders"
 PX = 1000
 KIND_COLOUR = {"building": (150, 95, 60), "static": (120, 120, 120), "clutter": (230, 200, 90), "light": (255, 240, 0),
                "furniture": (170, 120, 200), "door": (255, 255, 255), "container": (200, 140, 40),
-               "tree": (20, 110, 30), "plant": (60, 160, 60), "rock": (90, 90, 90), "marker": (255, 0, 255)}
+               "tree": (20, 110, 30), "plant": (60, 160, 60), "rock": (90, 90, 90), "marker": (120, 140, 200)}
 ROLE_COLOUR = {"guard": (220, 30, 30), "resident": (255, 255, 255), "boatman": (0, 200, 255)}
 
 
@@ -73,7 +73,7 @@ def render(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, 
     place = json.loads((pdir / "place.json").read_text())
     src = io.load(f"src.{place['source_id']}", bundles)
     grd = io.load(f"ground.{place_id}", bundles)
-    bases = io.place_bases(src, grd, place.get("draft") or {})
+    bases = io.place_bases(src, grd, place)
     G = Ground.load(grd.path)
     G.apply_patches(io.read_jsonl(pdir / "land.jsonl"))
     refs = io.read_jsonl(pdir / "spaces" / "exterior" / "refs.jsonl")
@@ -93,15 +93,21 @@ def render(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, 
 
     # ours
     oimg, od, oto, oscale = _canvas(G, fit["anchor"], half)
+    for p in io.read_jsonl(pdir / "paths.jsonl"):
+        w = max(3, int(p["width"] * oscale))
+        od.line([oto(q) for q in p["points"]], fill=(150, 100, 50) if p.get("kind") == "walkway" else (255, 170, 40),
+                width=w)
     for p in io.read_jsonl(pdir / "land.jsonl"):
         cx, cy = p["cell"]
+        big = max((abs(v[2]) for v in p["verts"]), default=0)
+        half = max(2, 64 * oscale)
         for row, col, _ in p["verts"]:
             x, y = oto(((cx * 32 + col) * STEP, (cy * 32 + row) * STEP))
-            od.rectangle([x - 1, y - 1, x + 1, y + 1], outline=(255, 0, 255))
-    for p in io.read_jsonl(pdir / "paths.jsonl"):
-        w = max(2, int(p["width"] * oscale))
-        od.line([oto(q) for q in p["points"]], fill=(200, 170, 120) if p["style"] != "boardwalk" else (140, 100, 60),
-                width=w)
+            od.rectangle([x - half, y - half, x + half, y + half], fill=(255, 0, 255))
+        if p["verts"]:
+            row, col, _ = p["verts"][0]
+            x, y = oto(((cx * 32 + col) * STEP, (cy * 32 + row) * STEP))
+            od.text((x + 6, y - 14), f"patch {len(p['verts'])} pts, max {big / 70:.1f} m", fill=(255, 0, 255))
     for c in io.read_jsonl(pdir / "clear.jsonl"):
         x, y = oto(c["pos"])
         od.line([x - 3, y - 3, x + 3, y + 3], fill=(255, 40, 40))

@@ -38,6 +38,14 @@ def radius(ref: dict, bases: dict) -> float:
     return math.hypot(*f) if f else 32.0
 
 
+def reach(ref: dict, bases: dict) -> float:
+    """How far from its origin a ref's footprint reaches (bounds need not be centred on the origin)."""
+    b = bounds(ref, bases)
+    if not b:
+        return 32.0
+    return max(math.hypot(x, y) for x in (b[0][0], b[1][0]) for y in (b[0][1], b[1][1]))
+
+
 def bottom(ref: dict, bases: dict) -> float:
     b = bounds(ref, bases)
     return ref["pos"][2] + (b[0][2] if b else 0.0)
@@ -90,3 +98,50 @@ class Xf:
 
 def dist(a, b) -> float:
     return math.hypot(a[0] - b[0], a[1] - b[1])
+
+
+_mesh_cache: dict[str, list | None] = {}
+
+
+def mesh_bounds(base: dict) -> list | None:
+    """The model's own geometry bounds (lane A's converter), falling back to the record's bounds."""
+    m = base.get("model")
+    if not m:
+        return base.get("bounds")
+    if m not in _mesh_cache:
+        try:
+            from tools.places import assets
+            _mesh_cache[m] = assets.mesh_info(m).get("bounds")
+        except Exception:
+            _mesh_cache[m] = None
+    return _mesh_cache[m] or base.get("bounds")
+
+
+def plane(base: dict, scale: float = 1.0) -> dict | None:
+    """A door-like piece's plane in its own frame: the thin horizontal axis (0 = x, 1 = y), the centre and the width."""
+    b = mesh_bounds(base)
+    if not b:
+        return None
+    ex, ey = (b[1][0] - b[0][0]) * scale, (b[1][1] - b[0][1]) * scale
+    return {"axis": 0 if ex < ey else 1, "centre": [(b[0][0] + b[1][0]) / 2 * scale, (b[0][1] + b[1][1]) / 2 * scale],
+            "width": max(ex, ey)}
+
+
+def turn(v, rz: float) -> tuple[float, float]:
+    """A local offset turned by a clockwise yaw into the world."""
+    c, s = math.cos(rz), math.sin(rz)
+    return (v[0] * c + v[1] * s, -v[0] * s + v[1] * c)
+
+
+def align(old: dict, new: dict, turn_deg: float | None) -> dict | None:
+    """How to set a replacement so its plane lies where the original's did: the turn (the agent's when it lines the
+    planes up, else the nearest that does) and the shift of the origin, in the original's frame."""
+    po, pn = plane(old), plane(new)
+    if not po or not pn:
+        return None
+    t = float(turn_deg or 0.0)
+    if (pn["axis"] + round(t / 90)) % 2 != po["axis"]:
+        t = (t + 90.0) % 360.0
+    rn = turn(pn["centre"], math.radians(t))
+    return {"turn_deg": t, "shift_local": [round(po["centre"][0] - rn[0], 1), round(po["centre"][1] - rn[1], 1)],
+            "width_ratio": round(pn["width"] / po["width"], 2) if po["width"] else None}

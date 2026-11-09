@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import re
 from dataclasses import dataclass, field
 from pathlib import Path
 
@@ -94,8 +95,10 @@ def catalogue_bases(keys: set[str], path: Path = CATALOGUE) -> dict[str, dict]:
     return out
 
 
-def place_bases(src: "Bundle", grd: "Bundle", decisions: dict) -> dict[str, dict]:
-    """Every base a draft may place: the source's, the ground's, and the catalogue's for the agent's choices."""
+def place_bases(src: "Bundle", grd: "Bundle", place: dict) -> dict[str, dict]:
+    """Every base a draft may place: the source's, the ground's, and the catalogue's for the agent's choices and the
+    stations and bridges the draft added (place.json)."""
+    decisions = place.get("draft") or {}
     bases = dict(src.bases)
     for k, b in grd.bases.items():
         bases.setdefault(k, b)
@@ -103,5 +106,39 @@ def place_bases(src: "Bundle", grd: "Bundle", decisions: dict) -> dict[str, dict
     for v in (decisions.get("replace") or {}).values():
         want.add(v["base"] if isinstance(v, dict) else v)
     want |= {a["base"] for a in decisions.get("add") or []}
+    want |= {a["base"] for a in (place.get("stations") or {}).get("added") or []}
     bases.update(catalogue_bases(want - set(bases)))
     return bases
+
+
+STATION_EDID = {
+    "forge": r"^CraftingBlacksmithForge", "anvil": r"Anvil", "grindstone": r"SharpeningWheel|Grindstone",
+    "smelter": r"Smelter", "tanning-rack": r"TanningRack", "alchemy-lab": r"AlchemyWorkbench|AlchemyLab",
+    "arcane-enchanter": r"EnchantingWorkbench|ArcaneEnchanter", "cooking-pot": r"CookingPot|Cookpot",
+    "armour-workbench": r"ArmorWorkbench|ArmorTable", "oven": r"Oven", "staff-enchanter": r"StaffEnchant",
+}
+STATION_SKIP = r"Invisible|Inv$|test|Drink|NPC|Skyforge|Tabletop|Poison|DB|WR$|Dwe|DwaSp"
+STYLE_ORDER = ["Black Marsh.esm", "Black Marsh North.esp", "King of the Murkmire.esp", "XanmeerResources.esp",
+               "Here There Be Monsters - Curse of Cipactli.esp", "Here There Be Monsters.esp", "Dragonborn.esm",
+               "Skyrim.esm"]
+_stations: dict | None = None
+
+
+def station_base(station: str, path: Path = CATALOGUE) -> dict | None:
+    """The working crafting furniture for a station kind, from the catalogue: non-Nordic, in the plugins whose style
+    our places use first (STYLE_ORDER), never a hidden, test or dungeon variant."""
+    global _stations
+    if _stations is None:
+        _stations = {}
+        if path.exists():
+            with path.open() as f:
+                for line in f:
+                    if '"FURN"' in line:
+                        r = json.loads(line)
+                        if r.get("type") == "FURN" and not r.get("nordic") and r.get("model") \
+                                and r.get("plugin") in STYLE_ORDER and not re.search(STATION_SKIP, r.get("edid") or ""):
+                            for st, pat in STATION_EDID.items():
+                                if re.search(pat, r.get("edid") or "", re.I):
+                                    _stations.setdefault(st, []).append(r)
+    cands = _stations.get(station) or []
+    return min(cands, key=lambda r: (STYLE_ORDER.index(r["plugin"]), r["key"])) if cands else None

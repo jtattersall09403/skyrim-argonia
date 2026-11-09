@@ -8,8 +8,12 @@ edge's route is mapped onto our land through the fit and its ends are pinned to 
 """
 from __future__ import annotations
 
+import base64
 import heapq
+import json
 import math
+import re
+from pathlib import Path
 
 from tools.places.draft import geom
 
@@ -19,10 +23,12 @@ PREFERRED_DISCOUNT = 0.5
 STREET_WIDTH = 256.0
 PATH_WIDTH = 160.0
 SIMPLIFY = 64.0
+END_FREE = 256.0      # a street may leave a doorway or a landing through what crowds it
 
 
 class NavGraph:
-    def __init__(self, navmeshes: list[dict]):
+    def __init__(self, navmeshes: list[dict], prefer: set | None = None):
+        """prefer: grid keys (x // 128, y // 128) of the source's painted streets and walkways."""
         self.cent: list[tuple[float, float]] = []
         self.flags: list[int] = []
         self.adj: list[list[int]] = []
@@ -41,6 +47,9 @@ class NavGraph:
                 for e in ((a, b), (b, c), (c, a)):
                     k = tuple(sorted((tuple(round(v) for v in verts[e[0]][:2]), tuple(round(v) for v in verts[e[1]][:2]))))
                     edge_of.setdefault(k, []).append(i)
+        prefer = prefer or set()
+        self.pref = [bool(f & PREFERRED) or (int(c[0] // 128), int(c[1] // 128)) in prefer
+                     for c, f in zip(self.cent, self.flags)]
         for tris in edge_of.values():
             for i in tris:
                 for j in tris:
@@ -66,7 +75,7 @@ class NavGraph:
                 continue
             for j in self.adj[i]:
                 w = geom.dist(self.cent[i], self.cent[j])
-                if self.flags[j] & PREFERRED:
+                if self.pref[j]:
                     w *= PREFERRED_DISCOUNT
                 nd = d + w
                 if nd < dist.get(j, math.inf):
@@ -172,3 +181,131 @@ def connected(paths: list[dict], join: float = 32.0) -> bool:
                 seen.add(j)
                 stack.append(j)
     return len(seen) == len(paths)
+
+
+# --- recovering the source's streets ---------------------------------------------------------------------------
+
+ROAD_TEX = re.compile(r"road|path|street|cobble|trail", re.I)
+WALKWAY = re.compile(r"dock|boardwalk|bridge|walkway|steps|stair|road|plank|pier|jetty", re.I)
+QUADS = {"BottomLeft": (0, 0), "BottomRight": (0, 16), "TopLeft": (16, 0), "TopRight": (16, 16)}
+PAINTED = 0.5
+
+
+def road_points(space_dir: Path) -> list[tuple[float, float]]:
+    """Land vertices the source painted with a road or path texture (opacity >= PAINTED), as world points."""
+    tj = space_dir / "terrain.json"
+    if not tj.exists():
+        return []
+    t = json.loads(tj.read_text())
+    ltex = t.get("ltex") or {}
+    road = {k for k, v in ltex.items() if ROAD_TEX.search(f"{v.get('edid', '')} {v.get('diffuse', '')}")}
+    out = set()
+    for c in t["cells"]:
+        cx, cy = c["cell"]
+        for lay in c.get("layers") or []:
+            if lay.get("tex") not in road or lay.get("quad") not in QUADS:
+                continue
+            r0, c0 = QUADS[lay["quad"]]
+            alpha = base64.b64decode(lay["alpha"]) if lay.get("alpha") else bytes([255]) * 289
+            for i, a in enumerate(alpha[:289]):
+                if a / 255 >= PAINTED:
+                    row, col = r0 + i // 17, c0 + i % 17
+                    out.add((cx * 4096 + col * 128.0, cy * 4096 + row * 128.0))
+    return sorted(out)
+
+
+def width_from_paint(route: list, paint_grid: set, default: float) -> float:
+    """A street's width from the source's paint along it: painted area round the route over its length."""
+    if not paint_grid or len(route) < 2:
+        return default
+    hits = n = 0
+    for a, b in zip(route, route[1:]):
+        steps = max(1, int(geom.dist(a, b) // 128))
+        for k in range(steps):
+            x = a[0] + (b[0] - a[0]) * k / steps
+            y = a[1] + (b[1] - a[1]) * k / steps
+            n += 1
+            hits += sum((round(x / 128) + i, round(y / 128) + j) in paint_grid for i in range(-2, 3) for j in range(-2, 3))
+    if not n or hits / n < 1.0:
+        return default
+    return float(max(128.0, min(512.0, round(hits / n * 128 / 5 / 32) * 32)))
+
+
+# --- laying a street on our ground -----------------------------------------------------------------------------
+
+def astar(g, a, b, blocked, max_slope: float, guide: list, step: float = 128.0, pad: float = 1536.0):
+    """A street from a to b on our ground: 8-neighbour search on a `step` grid round the guide line; a step is dearer
+    the steeper it climbs and the further it strays from the guide; `blocked(x, y)` cells (water without a
+    walkway, building footprints) and climbs steeper than max_slope degrees are never taken."""
+    xs = [p[0] for p in guide] + [a[0], b[0]]
+    ys = [p[1] for p in guide] + [a[1], b[1]]
+    x0, x1, y0, y1 = min(xs) - pad, max(xs) + pad, min(ys) - pad, max(ys) + pad
+    start = (round(a[0] / step), round(a[1] / step))
+    goal = (round(b[0] / step), round(b[1] / step))
+    tan_max = math.tan(math.radians(max_slope))
+
+    def stray(i, j):
+        p = (i * step, j * step)
+        return min(seg_dist(p, u, v) for u, v in zip(guide, guide[1:])) if len(guide) > 1 else 0.0
+    hcache: dict = {}
+
+    def h(i, j):
+        if (i, j) not in hcache:
+            hcache[(i, j)] = g.height(i * step, j * step)
+        return hcache[(i, j)]
+    openq = [(0.0, start)]
+    cost = {start: 0.0}
+    prev: dict = {}
+    while openq:
+        _, cur = heapq.heappop(openq)
+        if cur == goal:
+            break
+        if len(cost) > 200000:
+            return None
+        for di in (-1, 0, 1):
+            for dj in (-1, 0, 1):
+                if not di and not dj:
+                    continue
+                nx, ny = cur[0] + di, cur[1] + dj
+                px, py = nx * step, ny * step
+                if not (x0 <= px <= x1 and y0 <= py <= y1):
+                    continue
+                near_end = min(math.dist((nx, ny), start), math.dist((nx, ny), goal)) * step <= END_FREE
+                if not near_end and blocked(px, py):
+                    continue
+                ha, hb = h(*cur), h(nx, ny)
+                if ha is None or hb is None:
+                    continue
+                d = step * math.hypot(di, dj)
+                rise = abs(hb - ha) / d
+                if rise > tan_max and not near_end:
+                    continue
+                c = cost[cur] + d * (1 + 4 * (rise / max(tan_max, 1e-3)) ** 2) + 0.5 * d * stray(nx, ny) / 256.0
+                if c < cost.get((nx, ny), math.inf):
+                    cost[(nx, ny)] = c
+                    prev[(nx, ny)] = cur
+                    heapq.heappush(openq, (c + math.dist((nx, ny), goal) * step, (nx, ny)))
+    if goal not in prev and goal != start:
+        return None
+    pts, k = [], goal
+    while k != start:
+        pts.append((k[0] * step, k[1] * step))
+        k = prev[k]
+    pts.append((start[0] * step, start[1] * step))
+    pts.reverse()
+    return [tuple(a)] + pts[1:-1] + [tuple(b)]
+
+
+def route_slope(g, pts) -> float:
+    """The steepest climb along a route, in degrees, sampled every 128 units."""
+    worst = 0.0
+    for a, b in zip(pts, pts[1:]):
+        n = max(1, int(geom.dist(a, b) // 128))
+        prev = g.height(*a)
+        for k in range(1, n + 1):
+            q = (a[0] + (b[0] - a[0]) * k / n, a[1] + (b[1] - a[1]) * k / n)
+            hq = g.height(*q)
+            if prev is not None and hq is not None:
+                worst = max(worst, math.degrees(math.atan(abs(hq - prev) / (geom.dist(a, b) / n or 1))))
+            prev = hq
+    return worst
