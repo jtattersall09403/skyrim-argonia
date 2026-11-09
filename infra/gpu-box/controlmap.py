@@ -4,8 +4,10 @@ dodge/sprint button and LB to be block ... Rb to be normal light attack and R2 t
 The Tween menu can be moved to d pad left/right ... LT can be shouts"). docs/controls.md is the player's table.
 
 Reads Skyrim's own PC controlmap from the player's `Skyrim - Interface.bsa` (an uncompressed v105 archive) and
-writes it with the gameplay gamepad column changed, for `C:\argonia\controls\controlmap.txt` on the play machine;
-`stack.ps1 on` lays it loose in Data, which Skyrim reads over its archive. Keyboard, mouse and menu bindings are
+writes it with the gameplay gamepad column and a few keyboard keys changed (owner ruling 2026-11-09: the Mac sends
+Option as Alt, which is awkward, so sprint and dodge move to Space and jump to Left Shift; the walk/run hold that
+Left Shift held moves to Alt), for `C:\argonia\controls\controlmap.txt` on the play machine;
+`stack.ps1 on` lays it loose in Data, which Skyrim reads over its archive. Other keyboard, mouse and menu bindings are
 untouched. Neither the archive nor the output is committed (decision 0003).
 
     controlmap.py <Skyrim - Interface.bsa> <controlmap.txt>
@@ -18,6 +20,18 @@ import sys
 DPAD_UP, DPAD_DOWN, DPAD_LEFT, DPAD_RIGHT = 0x0001, 0x0002, 0x0004, 0x0008
 START, BACK, LS, RS, LB, RB = 0x0010, 0x0020, 0x0040, 0x0080, 0x0100, 0x0200
 A, B, X, Y, LT, RT = 0x1000, 0x2000, 0x4000, 0x8000, 0x0009, 0x000A
+
+# Keyboard scancodes (DirectInput)
+LSHIFT, SPACE, LALT = 0x2A, 0x39, 0x38
+
+# Main Gameplay keyboard column. TK Dodge RE bUseSprintKey reads the Sprint event, so dodge follows Sprint (a tap
+# dodges, a hold sprints). Run (the hold-to-walk-or-run key) held Left Shift in Skyrim's map; it takes Alt, where
+# Sprint was. Menu contexts are separate and keep their own keys.
+KEYBOARD = {
+    "Sprint": SPACE,
+    "Jump": LSHIFT,
+    "Run": LALT,
+}
 
 GAMEPLAY = {
     # RB light attack. RT also sits here because One Click Power Attack reads its key (281, RT) only inside the
@@ -70,15 +84,19 @@ def remap(text: str) -> str:
             section = line
         fields = line.split("\t")
         name = fields[0].strip()
-        if section and "Main Gameplay" in section and name in GAMEPLAY:
+        if section and "Main Gameplay" in section and (name in GAMEPLAY or name in KEYBOARD):
             values = [i for i, v in enumerate(fields) if v.strip()]
-            pad = values[3]   # name, keyboard, mouse, gamepad, ...
-            codes = GAMEPLAY[name]
-            fields[pad] = ",".join(f"0x{c:04x}" for c in codes) if codes else "0xff"
-            done.add(name)
+            if name in GAMEPLAY:
+                pad = values[3]   # name, keyboard, mouse, gamepad, ...
+                codes = GAMEPLAY[name]
+                fields[pad] = ",".join(f"0x{c:04x}" for c in codes) if codes else "0xff"
+                done.add(name)
+            if name in KEYBOARD:
+                fields[values[1]] = f"0x{KEYBOARD[name]:02x}"
+                done.add(name)
             line = "\t".join(fields)
         out.append(line)
-    missing = set(GAMEPLAY) - done
+    missing = (set(GAMEPLAY) | set(KEYBOARD)) - done
     if missing:
         raise SystemExit(f"not in the gameplay section: {sorted(missing)}")
     return "\r\n".join(out) + "\r\n"

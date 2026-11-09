@@ -4,7 +4,7 @@ Current truth for the play stack (`mods/dependencies.json`). The keyboard is a M
 the GameSir X2 in Xbox layout (Skyrim reads it as an Xbox pad), laid out like Dark Souls by owner ruling #51
 (2026-11-06). The pad layout is Skyrim's own control map with its gameplay pad column changed by
 `infra/gpu-box/controlmap.py`; `C:\argonia\controls\controlmap.txt` on the play machine is laid loose in Data by
-`stack.ps1 on`, and `deploy.sh` re-applies it. Keyboard and mouse are Skyrim's defaults plus the mods' own.
+`stack.ps1 on`, and `deploy.sh` re-applies it. The same file moves three keyboard keys (ruling 2026-11-09: Option/Alt is awkward on a Mac): sprint and dodge on Space, jump on Left Shift, and the walk/run hold that Left Shift held now on Alt. Other keyboard and mouse bindings are Skyrim's defaults plus the mods' own.
 
 ## Moonlight on a Mac
 
@@ -18,10 +18,10 @@ the GameSir X2 in Xbox layout (Skyrim reads it as an Xbox pad), laid out like Da
 | Action | Mac keyboard | GameSir X2 (Xbox layout) | Notes |
 |---|---|---|---|
 | Move | W A S D | left stick | 8-way (True Directional Movement) |
-| Walk / run toggle | Caps Lock | push stick part way | |
-| Sprint | hold Option (Alt) | hold B | hold longer than half a second |
-| Dodge: backstep | tap Option, standing still | tap B, stick centred | TK Dodge RE: tap under 0.5 s; costs 15 stamina; i-frames |
-| Dodge: roll | tap Option while moving | tap B with the stick held | rolls the way you move (Dynamic Dodge, 8-way) |
+| Walk / run toggle | Caps Lock (hold Option (Alt) to walk) | push stick part way | |
+| Sprint | hold Space | hold B | hold longer than half a second |
+| Dodge: backstep | tap Space, standing still | tap B, stick centred | TK Dodge RE: tap under 0.5 s; costs 15 stamina; i-frames |
+| Dodge: roll | tap Space while moving | tap B with the stick held | rolls the way you move (Dynamic Dodge, 8-way) |
 | Light attack (right hand) | left click | RB | |
 | Heavy (power) attack | hold left click | RT (one press) | One Click Power Attack (`iKeycode 281`); RT is also bound to the right attack so the attack handler sees it |
 | Block | hold right click | hold LB | needs an empty left hand, a shield or a two-hander |
@@ -31,8 +31,8 @@ the GameSir X2 in Xbox layout (Skyrim reads it as an Xbox pad), laid out like Da
 | Guard counter | block a hit, then power attack within 1.5 s | block a hit (LB), then RT within 1.5 s | Elden Counter; kept beside the parry (they key on different moves: a block versus a bash) |
 | Lock on | tap F | click right stick | hold F switches first/third person |
 | Switch locked target | mouse flick / scroll wheel | flick right stick | |
-| Jump | Space | Y | |
-| Climb | W + Space at a wall | Y at a wall | FreeClimb; drop off with Space / Y again |
+| Jump | Left Shift | Y | |
+| Climb | W + Left Shift at a wall | Y at a wall | FreeClimb; drop off with Left Shift / Y again |
 | Draw / sheathe | R | X | |
 | Activate / talk / take | E | A | |
 | Sneak | Ctrl | click left stick | |
