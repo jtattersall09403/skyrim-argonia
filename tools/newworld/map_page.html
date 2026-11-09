@@ -376,6 +376,7 @@ function showPlace(id) {
   <div class="chips"><span class="chip">${esc(p.kind)}</span>${bandChip(p.bandid, p.band)}${cul ? `<button class="chip" data-culture="${p.cul}">${esc(cul.n)}</button>` : ""}<button class="chip" data-region="${p.reg}">${esc(reg.n)}</button>${tierTag(p.tier)}</div>
   ${p.sum ? `<p class="lead">${esc(p.sum)}</p>` : `<p class="lead" style="color:var(--muted)">Not researched yet.</p>`}
   <dl class="facts">${facts.map(([k, v]) => `<dt>${k}</dt><dd>${typeof v === "number" ? v : (String(v).startsWith("<") ? v : esc(v))}</dd>`).join("")}</dl>
+  ${p.gives && p.gives.length ? `<h3>What it gives the player</h3>${p.gives.map(g => `<p><b>${esc(g.k)}</b>${g.c > 1 ? ` ×${g.c}` : ""}: ${esc(g.d)}${g.r ? ` <span style="color:var(--muted)">(reward: ${esc(g.r)})</span>` : ""}</p>`).join("")}` : ""}
   ${p.needs.length ? `<h3>What it needs of the ground</h3>${p.needs.map(n => `<p>${esc(n.n)} <span class="mono">(${Math.round(n.r)} m)</span>: ${esc(n.why)}</p>`).join("")}` : ""}
   ${notesHtml(p.notes)}`, "place");
 }

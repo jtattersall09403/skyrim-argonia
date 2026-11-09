@@ -106,6 +106,7 @@ def data(w: db.World) -> dict:
     regions = {r.id: r for r in w.rows("region")}
     symbols = {s.id: s for s in w.rows("symbol")}
     needs = {n.id: n.about for n in w.rows("terrain_need")}
+    give_kinds = {g.id: g for g in w.rows("give_kind")}
 
     def notes(table: str, key: str, rid: str) -> list:
         out = []
@@ -137,6 +138,9 @@ def data(w: db.World) -> dict:
             "alias": [a.alias for a in w.rows("place_alias", place_id=p.id)],
             "needs": [{"n": needs[t.terrain_need_id], "r": t.radius_m, "why": t.why}
                       for t in w.rows("place_terrain_need", place_id=p.id)],
+            "gives": [{"k": give_kinds[g.give_kind_id].name, "g": give_kinds[g.give_kind_id].group, "d": g.detail,
+                       "c": g.count, "r": give_kinds[g.reward_kind_id].name if g.reward_kind_id else None}
+                      for g in sorted(w.rows("place_give", place_id=p.id), key=lambda g: g.seq)],
             "notes": notes("place", "place_id", p.id),
         })
     regs = []
