@@ -364,6 +364,15 @@
   ],
   "water_kind_id": "blackwater-swamp"
  },
+ "wb-1289-2564": {
+  "at": "2026-11-09T21:11:20.391Z",
+  "flows": true,
+  "point": [
+   1289,
+   2564
+  ],
+  "water_kind_id": "estuary"
+ },
  "wb-1300-1162": {
   "at": "2026-11-09T19:37:06.971Z",
   "flows": true,
@@ -514,6 +523,15 @@
   ],
   "water_kind_id": "river"
  },
+ "wb-1557-2428": {
+  "at": "2026-11-09T21:11:12.915Z",
+  "flows": true,
+  "point": [
+   1557,
+   2428
+  ],
+  "water_kind_id": "estuary"
+ },
  "wb-1559-2264": {
   "at": "2026-11-09T19:14:16.488Z",
   "flows": false,
@@ -524,13 +542,13 @@
   "water_kind_id": "green-marsh"
  },
  "wb-1568-2389": {
-  "at": "2026-11-09T19:35:28.171Z",
-  "flows": false,
+  "at": "2026-11-09T21:11:14.790Z",
+  "flows": true,
   "point": [
    1568,
    2389
   ],
-  "water_kind_id": "shallow-coast"
+  "water_kind_id": "estuary"
  },
  "wb-1579-1691": {
   "at": "2026-11-09T19:33:43.451Z",
@@ -587,9 +605,22 @@
   "water_kind_id": "blackwater-swamp"
  },
  "wb-1606-2279": {
-  "at": "2026-11-08T21:32:32.532Z",
-  "flows": true,
-  "water_kind_id": "river"
+  "at": "2026-11-09T21:10:48.316Z",
+  "flows": false,
+  "point": [
+   1606,
+   2279
+  ],
+  "water_kind_id": "blackwater-swamp"
+ },
+ "wb-1614-2303": {
+  "at": "2026-11-09T21:11:02.524Z",
+  "flows": false,
+  "point": [
+   1614,
+   2303
+  ],
+  "water_kind_id": "blackwater-swamp"
  },
  "wb-1645-2331": {
   "at": "2026-11-09T19:39:31.723Z",
@@ -834,6 +865,15 @@
   ],
   "water_kind_id": "lake"
  },
+ "wb-1726-2370": {
+  "at": "2026-11-09T21:11:50.210Z",
+  "flows": false,
+  "point": [
+   1726,
+   2370
+  ],
+  "water_kind_id": "shallow-coast"
+ },
  "wb-1727-1947": {
   "at": "2026-11-09T19:29:04.419Z",
   "flows": false,
@@ -894,6 +934,15 @@
   "flows": false,
   "water_kind_id": "blackwater-swamp"
  },
+ "wb-1737-2381": {
+  "at": "2026-11-09T21:11:51.970Z",
+  "flows": false,
+  "point": [
+   1737,
+   2381
+  ],
+  "water_kind_id": "shallow-coast"
+ },
  "wb-1738-2000": {
   "at": "2026-11-09T19:29:41.343Z",
   "flows": false,
@@ -939,28 +988,28 @@
   ],
   "water_kind_id": "blackwater-swamp"
  },
+ "wb-1766-2376": {
+  "at": "2026-11-09T21:11:48.665Z",
+  "flows": false,
+  "point": [
+   1766,
+   2376
+  ],
+  "water_kind_id": "shallow-coast"
+ },
  "wb-1767-2299": {
   "at": "2026-11-08T21:33:41.659Z",
   "flows": false,
   "water_kind_id": "blackwater-swamp"
  },
  "wb-1769-1966": {
-  "at": "2026-11-09T19:29:50.803Z",
+  "at": "2026-11-09T21:10:11.880Z",
   "flows": false,
   "point": [
-   1769,
-   1966
+   1594,
+   2350
   ],
-  "water_kind_id": "lake"
- },
- "wb-1774-1332": {
-  "at": "2026-11-09T19:20:21.873Z",
-  "flows": true,
-  "point": [
-   1774,
-   1332
-  ],
-  "water_kind_id": "river"
+  "water_kind_id": "blackwater-swamp"
  },
  "wb-1779-1671": {
   "at": "2026-11-09T19:33:46.629Z",
@@ -1007,14 +1056,14 @@
   ],
   "water_kind_id": "lake"
  },
- "wb-1802-1339": {
-  "at": "2026-11-09T19:20:23.713Z",
-  "flows": true,
+ "wb-1802-2423": {
+  "at": "2026-11-09T21:11:38.722Z",
+  "flows": false,
   "point": [
    1802,
-   1339
+   2423
   ],
-  "water_kind_id": "river"
+  "water_kind_id": "shallow-coast"
  },
  "wb-1804-1286": {
   "at": "2026-11-09T19:14:58.616Z",
@@ -1031,6 +1080,15 @@
   "point": [
    1806,
    1951
+  ],
+  "water_kind_id": "lake"
+ },
+ "wb-1807-1384": {
+  "at": "2026-11-09T21:12:14.326Z",
+  "flows": false,
+  "point": [
+   1807,
+   1384
   ],
   "water_kind_id": "lake"
  },
@@ -1070,6 +1128,15 @@
   ],
   "water_kind_id": "lake"
  },
+ "wb-1815-2409": {
+  "at": "2026-11-09T21:11:41.654Z",
+  "flows": false,
+  "point": [
+   1815,
+   2409
+  ],
+  "water_kind_id": "shallow-coast"
+ },
  "wb-1816-1375": {
   "at": "2026-11-09T19:12:04.712Z",
   "flows": false,
@@ -1092,6 +1159,15 @@
    1713
   ],
   "water_kind_id": "blackwater-swamp"
+ },
+ "wb-1826-2399": {
+  "at": "2026-11-09T21:11:44.697Z",
+  "flows": false,
+  "point": [
+   1826,
+   2399
+  ],
+  "water_kind_id": "shallow-coast"
  },
  "wb-1827-1383": {
   "at": "2026-11-09T19:12:01.464Z",
@@ -1134,6 +1210,23 @@
   ],
   "water_kind_id": "lake"
  },
+ "wb-1841-2408": {
+  "at": "2026-11-09T21:11:45.878Z",
+  "flows": false,
+  "point": [
+   1841,
+   2408
+  ],
+  "water_kind_id": "shallow-coast"
+ },
+ "wb-1846-2606": {
+  "at": "2026-11-09T21:14:07.765Z",
+  "name": "Update-2026-11-09c",
+  "point": [
+   1846,
+   2606
+  ]
+ },
  "wb-1850-1539": {
   "at": "2026-11-09T19:15:38.264Z",
   "flows": false,
@@ -1143,28 +1236,10 @@
   ],
   "water_kind_id": "green-marsh"
  },
- "wb-1853-1258": {
-  "at": "2026-11-09T19:15:01.312Z",
-  "flows": true,
-  "point": [
-   1853,
-   1258
-  ],
-  "water_kind_id": "river"
- },
  "wb-1858-1529": {
   "at": "2026-11-08T21:34:07.761Z",
   "flows": false,
   "water_kind_id": "green-marsh"
- },
- "wb-1865-1324": {
-  "at": "2026-11-09T19:20:25.897Z",
-  "flows": true,
-  "point": [
-   1865,
-   1324
-  ],
-  "water_kind_id": "river"
  },
  "wb-1870-1540": {
   "at": "2026-11-08T21:34:06.006Z",
@@ -1179,6 +1254,15 @@
    1183
   ],
   "water_kind_id": "blackwater-swamp"
+ },
+ "wb-1876-2389": {
+  "at": "2026-11-09T21:11:58.325Z",
+  "flows": false,
+  "point": [
+   1876,
+   2389
+  ],
+  "water_kind_id": "shallow-coast"
  },
  "wb-1880-1164": {
   "at": "2026-11-09T19:15:08.208Z",
@@ -1206,6 +1290,15 @@
    1381
   ],
   "water_kind_id": "lake"
+ },
+ "wb-1891-2419": {
+  "at": "2026-11-09T21:11:56.056Z",
+  "flows": false,
+  "point": [
+   1891,
+   2419
+  ],
+  "water_kind_id": "shallow-coast"
  },
  "wb-1899-1282": {
   "at": "2026-11-09T19:14:50.858Z",
@@ -1585,13 +1678,14 @@
   "water_kind_id": "green-marsh"
  },
  "wb-2205-1990": {
-  "at": "2026-11-09T19:04:06.639Z",
+  "at": "2026-11-09T21:08:02.198Z",
   "flow_toward_deg": 334,
-  "flows": true,
+  "flows": false,
   "point": [
    2205,
    1990
-  ]
+  ],
+  "speed": "still"
  },
  "wb-2209-1693": {
   "at": "2026-11-09T19:04:33.302Z",
@@ -1963,15 +2057,6 @@
   ],
   "water_kind_id": "green-marsh"
  },
- "wb-2553-94": {
-  "at": "2026-11-09T19:07:31.599Z",
-  "flow_toward_deg": 109,
-  "flows": true,
-  "point": [
-   2553,
-   94
-  ]
- },
  "wb-2554-2309": {
   "at": "2026-11-09T19:01:49.142Z",
   "flows": false,
@@ -1990,15 +2075,6 @@
   ],
   "water_kind_id": "shallow-coast"
  },
- "wb-2582-106": {
-  "at": "2026-11-09T19:07:27.639Z",
-  "flow_toward_deg": 111,
-  "flows": true,
-  "point": [
-   2582,
-   106
-  ]
- },
  "wb-2594-1500": {
   "at": "2026-11-09T19:05:46.167Z",
   "flows": false,
@@ -2008,15 +2084,6 @@
   ],
   "water_kind_id": "pond"
  },
- "wb-2596-108": {
-  "at": "2026-11-09T19:07:46.375Z",
-  "flow_toward_deg": 153,
-  "flows": true,
-  "point": [
-   2596,
-   108
-  ]
- },
  "wb-2599-2135": {
   "at": "2026-11-09T19:02:58.383Z",
   "flows": false,
@@ -2025,78 +2092,6 @@
    2135
   ],
   "water_kind_id": "green-marsh"
- },
- "wb-2602-115": {
-  "at": "2026-11-09T19:07:42.989Z",
-  "flow_toward_deg": 117,
-  "flows": true,
-  "point": [
-   2602,
-   115
-  ]
- },
- "wb-2610-133": {
-  "at": "2026-11-09T19:07:54.680Z",
-  "flow_toward_deg": 191,
-  "flows": true,
-  "point": [
-   2610,
-   133
-  ]
- },
- "wb-2611-192": {
-  "at": "2026-11-09T19:08:18.175Z",
-  "flow_toward_deg": 266,
-  "flows": true,
-  "point": [
-   2611,
-   192
-  ]
- },
- "wb-2612-143": {
-  "at": "2026-11-09T19:07:58.719Z",
-  "flow_toward_deg": 134,
-  "flows": true,
-  "point": [
-   2612,
-   143
-  ]
- },
- "wb-2613-121": {
-  "at": "2026-11-09T19:07:51.744Z",
-  "flow_toward_deg": 186,
-  "flows": true,
-  "point": [
-   2613,
-   121
-  ]
- },
- "wb-2628-179": {
-  "at": "2026-11-09T19:08:13.078Z",
-  "flow_toward_deg": 204,
-  "flows": true,
-  "point": [
-   2628,
-   179
-  ]
- },
- "wb-2629-150": {
-  "at": "2026-11-09T19:08:06.073Z",
-  "flow_toward_deg": 141,
-  "flows": true,
-  "point": [
-   2629,
-   150
-  ]
- },
- "wb-2640-163": {
-  "at": "2026-11-09T19:08:08.848Z",
-  "flow_toward_deg": 212,
-  "flows": true,
-  "point": [
-   2640,
-   163
-  ]
  },
  "wb-2652-1528": {
   "at": "2026-11-09T19:05:44.256Z",
@@ -2510,13 +2505,13 @@
   "water_kind_id": "pond"
  },
  "wb-897-997": {
-  "at": "2026-11-09T19:19:53.625Z",
-  "flows": false,
+  "at": "2026-11-09T21:10:23.181Z",
+  "flows": true,
   "point": [
-   897,
-   997
+   1300,
+   1162
   ],
-  "water_kind_id": "pond"
+  "water_kind_id": "river"
  },
  "wb-900-2227": {
   "at": "2026-11-08T21:33:07.107Z",

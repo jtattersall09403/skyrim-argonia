@@ -487,8 +487,7 @@ def helstrom_rivers(raster, rows, regions, names) -> dict:
     smoothed over ~60 m, a braided reach measured whole with its islands) and given to every pixel from its nearest centreline point; a main course is river 50 m wide
     or more along at least 1.5 km of centreline, and a narrower reach up to 1 km that joins two main
     courses. Then the streams: of the region's tributary systems (connected stream water) the largest 12% by area stay
-    stream and the rest become green marsh. The owner's edit on a body here keeps its name and flow; its kind
-    stays river on the main courses (its point stays inside one) and the narrower arms become marsh."""
+    stream and the rest become green marsh. A body the owner has set keeps the owner's kind whole."""
     from skimage.morphology import skeletonize
     codes = [names.index(x) for x in HELSTROM_REGIONS if x in names]
     kind_of = np.array(["land"] + [r["kind"] for r in rows])
@@ -531,7 +530,7 @@ def helstrom_rivers(raster, rows, regions, names) -> dict:
         owners = np.unique(raster[part])
         for i in owners.tolist():
             r = by_i.get(i)
-            if r is None:
+            if r is None or r["set_by"] == "owner":   # the owner's kind on a body is final, here as everywhere
                 continue
             why = (f"round Helstrom only the main river courses ({MAIN_W_M} m wide or more) stay river: "
                    "a narrower arm, green marsh")
