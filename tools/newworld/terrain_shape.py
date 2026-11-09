@@ -183,13 +183,16 @@ def hold_water(h: np.ndarray, water_s: np.ndarray) -> int:
 
 def quantise(h: np.ndarray) -> np.ndarray:
     """Heights onto the LAND step (QUANT units), dithered: a fixed fine pattern (a few samples across, half a step)
-    decides the rounding, so gentle ground does not show its step edges as long contour ribbons."""
+    decides the rounding where the ground leans gently (level ground stays one level), so gentle ground does not show its step edges as long contour ribbons."""
     from tools.newworld.terrain_relief import noise
     d = np.empty(h.shape, np.float32)
     band = 1024
     for i0 in range(0, h.shape[0], band):
         d[i0:i0 + band] = noise((min(band, h.shape[0] - i0), h.shape[1]), 2.5, 4409 + i0)
-    d = np.clip(d * 0.22, -0.45, 0.45)
+    # only where the ground leans a little (a step every 1 to 20 samples): level ground stays one clean level,
+    # steeper ground has no ribbons to hide
+    g = np.hypot(*np.gradient(ndi.gaussian_filter(h, 1.5))) / QUANT
+    d = np.clip(d * 0.22, -0.45, 0.45) * np.clip((g - 0.05) / 0.1, 0, 1) * np.clip((1.5 - g) / 0.5, 0, 1)
     return (np.round(h / QUANT + d) * QUANT).astype(np.float32)
 
 
