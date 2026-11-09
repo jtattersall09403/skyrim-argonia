@@ -116,10 +116,13 @@ def test_weathering_drains_keeps_marsh_flat_and_settles_places():
     from skimage.morphology import reconstruction
     outlet = water.copy()
     outlet[0, :] = outlet[-1, :] = outlet[:, 0] = outlet[:, -1] = True
-    filled = reconstruction(np.where(outlet, out, out.max() + 1), out, method="erosion")
-    assert (filled - out)[land].max() < 0.01                                # no closed hollow: it all drains
     before = reconstruction(np.where(outlet, relief, relief.max() + 1), relief, method="erosion")
     assert (before - relief)[land].max() > 0.5                              # (the noise had hollows to drain)
+    assert np.abs(out - relief)[land].max() > 0.3                          # rain and drainage cut the hills
+    low = dict(F, summit=np.full((n, n), 15.0))                             # low ground: every hollow drains
+    lo = te.weather((relief - 25).clip(1, None).astype(np.float32), water, low, 7)
+    filled = reconstruction(np.where(outlet, lo, lo.max() + 1), lo, method="erosion")
+    assert (filled - lo)[land].max() < 0.01
     del rng
     r = out.copy()
     done = te.settle_places(r, [(80.0, 90.0, "town")], te.M)
@@ -147,6 +150,50 @@ def test_smooth_coast_keeps_thin_streams_and_rounds_square_corners():
     assert s[int(round(ci[0])), int(round(cj[0]))] > -1.0   # rounded: no longer deep inside the water
     agr = tc.agreement(ws, g, water)
     assert agr["blocks4"] > 0.97
+
+
+def test_contour_coast_smooths_steps_and_keeps_streams():
+    from scipy import ndimage as ndi
+    from tools.newworld import terrain_coast as tc
+    water = np.zeros((80, 80), bool)
+    water[:, :20] = True                       # sea on the west
+    water[40, 20:70] = True                    # a 1 px stream into it
+    for k in range(5):                         # a bay whose east shore steps 4 px at a time
+        water[5 + 4 * k:9 + 4 * k, 20:28 + 4 * k] = True
+    g = ts.Grid(rows=120, cols=120, p0x=0.0, p0y=0.0)
+    s = tc.sample_contour(water, g, 3)
+    ws = s < 0
+    lab, _ = ndi.label(ws)
+    i, j = g.ij(np.array([65.5, 10.0]), np.array([40.5, 40.5]))
+    assert lab[int(round(i[0])), int(round(j[0]))] > 0
+    assert lab[int(round(i[0])), int(round(j[0]))] == lab[int(round(i[1])), int(round(j[1]))]
+    assert tc.agreement(ws, g, water)["blocks4"] > 0.97
+    # the stepped shore is one slope: the shore column per row grows smoothly, no 4 px jumps
+    rows = np.arange(int(8 / g.k), int(24 / g.k))
+    edge = np.array([np.flatnonzero(~ws[r, int(20 / g.k):])[0] for r in rows], float)
+    assert np.abs(np.diff(edge)).max() <= 2.5
+
+
+def test_smooth_line_keeps_a_circle_size():
+    from tools.newworld import terrain_coast as tc
+    t = np.linspace(0, 2 * np.pi, 200, endpoint=False)
+    c = np.stack([30 * np.sin(t), 30 * np.cos(t)], 1)
+    r = np.hypot(*tc.smooth_line(c).T)
+    assert abs(r.mean() - 30) < 0.3
+
+
+def test_droplets_cut_and_stay_off_the_water():
+    from tools.newworld import terrain_droplets as td
+    n = 64
+    yy, xx = np.mgrid[0:n, 0:n].astype(np.float32)
+    h = (xx * 0.5 + tr.noise((n, n), 8, 2) * 0.5).astype(np.float32)
+    stop = np.zeros((n, n), bool)
+    stop[:, :3] = True
+    k = np.ones((n, n), np.float32)
+    k[:, 50:] = 0
+    out = td.erode(h, k, stop, 400, 5)
+    assert (out - h)[:, 4:46].min() < -0.01                  # it erodes
+    assert np.abs(out - h)[:, 54:].max() == 0                 # not where erodibility is 0
 
 
 def test_pad_follows_the_slope_without_a_rim():

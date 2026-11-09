@@ -178,10 +178,9 @@ def build(upload: bool = True) -> dict:
         [{k: b.get(k) for k in ("id", "water_kind_id", "area_m2", "label_px", "label_py", "flows", "flow_note",
                                 "why", "raster_index", "region_id", "flow_deg", "name", "overridden")} for b in bodies], indent=1, default=_j))
 
-    # the smooth coast: the map's water as a signed distance on the samples (terrain_coast)
-    sd_px, thin, force = tc.signed_distance(water_px, SEED)
-    sd_m = tc.sample(sd_px, thin, grid, SEED, force=force)
-    del sd_px, thin, force
+    # the smooth coast: the map's shores as smoothed polylines, filled and turned into a signed distance on the
+    # samples (terrain_coast.sample_contour)
+    sd_m = tc.sample_contour(water_px, grid, SEED)
     rejoined = tc.repair(sd_m, grid, water_px)
     water_s = sd_m < 0
     coast = tc.agreement(water_s, grid, water_px)
@@ -212,11 +211,13 @@ def build(upload: bool = True) -> dict:
     F = {k: tr.upsample(v, shape, C, order=1) for k, v in Fc.items()}
     coast_full = tr.upsample(coast_t, shape, C, order=1)
     sm = grid.m
-    n = {"big": tr.fbm(shape, sm, tr.SCALES["big"], SEED), "mid": tr.fbm(shape, sm, tr.SCALES["mid"], SEED + 1),
-         "small": tr.fbm(shape, sm, tr.SCALES["small"], SEED + 2),
-         "hum": tr.noise(shape, tr.SCALES["hum"][0] / sm, SEED + 3),
-         "knoll": tr.fbm(shape, sm, tr.SCALES["knoll"], SEED + 4), "amod": tr.fbm(shape, sm, tr.SCALES["amod"], SEED + 5),
-         "micro": tr.fbm(shape, sm, tr.SCALES["micro"], SEED + 6)}
+    wp = tr.warp_field(shape, sm, SEED + 7)
+    n = {k: tr.fbm(shape, sm, tr.SCALES[k], SEED + s_, wp) for s_, k in
+         ((8, "swell"), (0, "big"), (1, "mid"), (4, "knoll"), (9, "esc"))}
+    n["edge"] = tr.edge_field(shape, sm, SEED, wp)
+    del wp
+    n.update(small=tr.fbm(shape, sm, tr.SCALES["small"], SEED + 2), amod=tr.fbm(shape, sm, tr.SCALES["amod"], SEED + 5),
+             micro=tr.fbm(shape, sm, tr.SCALES["micro"], SEED + 6))
     log("noise and fields")
     relief_m = tr.relief(F, n, coast_full)
     del n
@@ -347,8 +348,10 @@ def build(upload: bool = True) -> dict:
     cliff = ts.slope_deg(h) > CLIFF_DEG
 
     # entrances judged on the finished ground; any spoiled by the rounding or the water guarantee is shaped again
-    redo = [e for e in entrances if not ts.entrance_ok(h, water_s, cliff, grid, e[1], e[2], e[3])["open"]]
-    if redo:
+    for _round in range(3):
+        redo = [e for e in entrances if not ts.entrance_ok(h, water_s, cliff, grid, e[1], e[2], e[3])["open"]]
+        if not redo:
+            break
         for e in redo:
             entrances.remove(e)
             shape_entrance(e[0], e[4], e[5], e[6])

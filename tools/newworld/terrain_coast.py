@@ -5,14 +5,21 @@ The recipe:
 1. Signed distance at every map pixel centre, in pixels: positive on land, negative on water, the shore half way
    between a land and a water pixel (sd = +/- (EDT - 0.5)). Read between pixel centres it is already the sub-pixel
    contour (a staircase becomes its diagonal).
-2. Smoothed: a Gaussian of 0.9 px everywhere; a Gaussian of 3.5 px where the mask has a straight axis-aligned run
-   (a boundary straight for 7 px or more, the map's square notches and cell-aligned edges), faded in over 3 px.
+2. Smoothed by feature width (smooth_by_width): a Gaussian whose sigma is 0.45 of the narrower side's inscribed
+   width nearby (0.9 to 4.5 px), at least 3.5 px on a straight axis-aligned run, so broad coasts lose the map's
+   3-6 px staircases and square notches while streams keep their width.
 3. Thin features kept: water or land narrower than 5 px (one- and two-pixel streams, spits, islets) keeps the raw
    distance less 0.3 px on its own side, so no stream is cut and no diagonal stream pinches at a corner.
 4. Small-scale irregularity: fine noise (23 m and 9 m) added to the distance, and the field read at a domain-warped
    position (12 px wavelength), each scaled down near thin features, so a coast wanders by a metre or two between
    the map's pixels while its map-scale shape holds.
 5. Read bilinearly at every sample (off the map: sea), in metres. Water is sd < 0.
+
+The build uses `sample_contour`: the shore traced by marching squares at sub-pixel, each shore line smoothed along
+itself (smooth_line: a 2.5 px Gaussian along the line, shrink put back), so the map's 3-6 px staircases and square notches become curves while streams keep
+their width; the lines are filled on the samples and turned into a signed distance there, then the fine noise of
+step 4 and the thin-feature forcing of step 3 are applied. Steps 1-5 above remain the per-pixel field it borrows the
+thin features from.
 
 `agreement` reports how far the samples' water follows the map: per pixel, and on 4 x 4 pixel blocks (majority).
 """
@@ -24,6 +31,9 @@ from scipy import ndimage as ndi
 M_PER_PX = 204.8 / 70.0
 SIGMA_PX = 0.9
 SIGMA_STRAIGHT_PX = 3.5
+SIGMA_MAX_PX = 4.5
+SIGMA_WIDTH_SHARE = 0.45
+LEVELS = (0.9, 1.6, 2.6, 3.5, 4.5)
 RUN_PX = 7
 NOISE = ((8.0, 0.35), (3.0, 0.15))      # (wavelength px, amplitude px)
 WARP = (12.0, 0.6)                     # (wavelength px, amplitude px)
@@ -49,16 +59,32 @@ def straight_runs(water: np.ndarray, run: int = RUN_PX) -> np.ndarray:
     return out
 
 
+def smooth_by_width(sd: np.ndarray, water: np.ndarray) -> np.ndarray:
+    """The signed distance blurred with a Gaussian whose width follows the local feature width: a third of the
+    narrower of the water and the land within 6 px (each side's widest inscribed distance), from SIGMA_PX up to
+    SIGMA_MAX_PX, and SIGMA_STRAIGHT_PX on a straight axis-aligned run. A broad coast's 3-6 px staircase and the
+    map's square notches become one curve; a 3-9 px stream keeps its width (its own sigma stays near a pixel)."""
+    hw_w = ndi.maximum_filter(np.where(water, -sd, 0), size=13)
+    hw_l = ndi.maximum_filter(np.where(water, 0, sd), size=13)
+    sig = np.clip(SIGMA_WIDTH_SHARE * np.minimum(hw_w, hw_l), SIGMA_PX, SIGMA_MAX_PX)
+    st = ndi.gaussian_filter(ndi.binary_dilation(straight_runs(water), iterations=3).astype(np.float32), 1.5)
+    sig = np.maximum(sig, np.minimum(np.clip(st * 2.0, 0, 1) * SIGMA_STRAIGHT_PX, SIGMA_WIDTH_SHARE * 2 * np.minimum(hw_w, hw_l)))
+    sig = ndi.gaussian_filter(sig, 2.0)
+    out = ndi.gaussian_filter(sd, LEVELS[0])
+    for a, b in zip(LEVELS[:-1], LEVELS[1:]):
+        t = np.clip((sig - a) / (b - a), 0, 1)
+        if not t.any():
+            continue
+        out = out + t * (ndi.gaussian_filter(sd, b) - out)
+    return out.astype(np.float32)
+
+
 def signed_distance(water: np.ndarray, seed: int = 1952) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
     """The smoothed signed distance at map pixel centres (px), the thin-feature weight (0..1), and the thin pixels
     (int8: -1 thin water, +1 thin land, 0 neither), which `sample` forces so no stream is cut."""
     sd = np.where(water, -(ndi.distance_transform_edt(water) - 0.5),
                   ndi.distance_transform_edt(~water) - 0.5).astype(np.float32)
-    st = ndi.gaussian_filter(ndi.binary_dilation(straight_runs(water), iterations=3).astype(np.float32), 1.5)
-    st = np.clip(st * 2.0, 0, 1)
-    fine = ndi.gaussian_filter(sd, SIGMA_PX)
-    broad = ndi.gaussian_filter(sd, SIGMA_STRAIGHT_PX)
-    s = (1 - st) * fine + st * broad
+    s = smooth_by_width(sd, water)
     # thin = narrow: the widest inscribed distance within 2 px is under 2.5 px (a feature under 5 px across); a big
     # body's convex corner is not thin, so it is rounded like any other shore
     thin_w = water & (ndi.maximum_filter(np.where(water, -sd, 0), size=5) < 2.0)
@@ -183,3 +209,101 @@ def repair(sd_m: np.ndarray, grid, water: np.ndarray, rounds: int = 3) -> int:
         put = zone & old & (sd_m >= 0)
         sd_m[put] = -0.15 * M_PER_PX
     return int(fixed.sum())
+
+
+SHORE_SIGMA_PX = 2.5      # smoothing length along a shore line (map px): takes out the map's 3-6 px staircases
+SHORE_STEP_PX = 0.5       # shore lines are resampled to this spacing first
+
+
+CHAIKIN_ITERS = 4
+
+
+def chaikin(p: np.ndarray, closed: bool, iters: int = CHAIKIN_ITERS) -> np.ndarray:
+    """Corner cutting: each segment replaced by its 1/4 and 3/4 points, `iters` times; pixel stairs become slopes."""
+    for _ in range(iters):
+        if len(p) < 3:
+            return p
+        a = p if closed else p[:-1]
+        b = np.roll(p, -1, 0) if closed else p[1:]
+        q = np.empty((2 * len(a), 2))
+        q[0::2] = 0.75 * a + 0.25 * b
+        q[1::2] = 0.25 * a + 0.75 * b
+        p = q if closed else np.vstack([p[:1], q, p[-1:]])
+    return p
+
+
+def smooth_line(pts: np.ndarray, closed: bool = True, sigma_px: float = SHORE_SIGMA_PX) -> np.ndarray:
+    """A polyline smoothed along itself: resampled to an even SHORE_STEP_PX spacing, then each coordinate blurred
+    by a Gaussian of `sigma_px` measured along the line (a closed line wraps), so steps and notches go while straight
+    runs and widths stay. A small closed shape (an islet, a pond) is smoothed by at most a sixth of its perimeter,
+    and the shrink a blur gives a curve is put back (each point pushed out by the blur's own offset, once)."""
+    p = chaikin(pts.astype(np.float64), closed)
+    if closed:
+        p = np.vstack([p, p[:1]])
+    seg = np.hypot(*np.diff(p, axis=0).T)
+    s = np.concatenate([[0], np.cumsum(seg)])
+    if s[-1] < 4 * SHORE_STEP_PX:
+        return pts
+    n = max(int(s[-1] / SHORE_STEP_PX), 4)
+    t = np.linspace(0, s[-1], n, endpoint=not closed)
+    q = np.stack([np.interp(t, s, p[:, 0]), np.interp(t, s, p[:, 1])], 1)
+    sg = min(sigma_px, s[-1] / 6) / SHORE_STEP_PX
+    mode = "wrap" if closed else "nearest"
+    g = ndi.gaussian_filter1d(q, sg, axis=0, mode=mode)
+    g2 = ndi.gaussian_filter1d(g, sg, axis=0, mode=mode)
+    return g + (g - g2)
+
+
+def contour_water(water: np.ndarray, grid) -> np.ndarray:
+    """The map's water as smoothed shore polylines filled on the samples (bool, True water): marching squares on the
+    signed distance at sub-pixel, each shore line smoothed along itself (smooth_line), then filled even-odd. Off the map is
+    sea. A one-pixel stream keeps its width: both banks are smoothed along their length, never across."""
+    from PIL import Image, ImageDraw
+    from skimage import measure
+    sd = np.where(water, -(ndi.distance_transform_edt(water) - 0.5),
+                  ndi.distance_transform_edt(~water) - 0.5).astype(np.float32)
+    pad = 4
+    big = np.pad(sd, pad, mode="constant", constant_values=-pad)
+    out = np.zeros((grid.rows, grid.cols), bool)
+    for c in measure.find_contours(big, 0.0):
+        closed = np.allclose(c[0], c[-1])
+        p = smooth_line(c[:-1] if closed else c, closed=closed)
+        # contour index (row, col) in the padded array -> map px (centre at index + 0.5) -> sample index
+        i = (p[:, 0] - pad + 0.5 - grid.p0y) / grid.k
+        j = (p[:, 1] - pad + 0.5 - grid.p0x) / grid.k
+        i0, i1 = max(0, int(np.floor(i.min()))), min(out.shape[0], int(np.ceil(i.max())) + 1)
+        j0, j1 = max(0, int(np.floor(j.min()))), min(out.shape[1], int(np.ceil(j.max())) + 1)
+        if i1 <= i0 or j1 <= j0:
+            continue
+        img = Image.new("1", (j1 - j0, i1 - i0), 0)
+        ImageDraw.Draw(img).polygon(list(zip((j - j0).tolist(), (i - i0).tolist())), fill=1)
+        out[i0:i1, j0:j1] ^= np.asarray(img, bool)
+    # samples off the map are sea
+    py = grid.p0y + np.arange(grid.rows) * grid.k
+    px = grid.p0x + np.arange(grid.cols) * grid.k
+    off = ((py < 0) | (py > water.shape[0]))[:, None] | ((px < 0) | (px > water.shape[1]))[None, :]
+    return ~out | off       # the filled shapes are land: the padding round the map is water
+
+
+def sample_contour(water: np.ndarray, grid, seed: int = 1952) -> np.ndarray:
+    """The signed distance (metres, water < 0) on the samples from the smoothed shore polylines (contour_water), with
+    fine irregularity (NOISE) added away from thin features, thin map water and land forced as `sample` does."""
+    ws = contour_water(water, grid)
+    m = grid.m
+    sd = np.where(ws, -(ndi.distance_transform_edt(ws) - 0.5), ndi.distance_transform_edt(~ws) - 0.5) * m
+    sd = ndi.gaussian_filter(sd.astype(np.float32), 0.7)
+    _, thin, _ = signed_distance(water, seed)
+    # forced: only features at most 2 px across (a stream the smoothing could cut); wider ones trust the lines
+    raw = np.where(water, -(ndi.distance_transform_edt(water) - 0.5), ndi.distance_transform_edt(~water) - 0.5)
+    tw = water & (ndi.maximum_filter(np.where(water, -raw, 0), size=5) < 1.0)
+    tl = ~water & (ndi.maximum_filter(np.where(water, 0, raw), size=5) < 1.0)
+    force = np.where(tw, -1, np.where(tl, 1, 0)).astype(np.int8)
+    H, W = water.shape
+    fy = np.clip(np.floor(grid.p0y + np.arange(grid.rows) * grid.k).astype(int), 0, H - 1)
+    fx = np.clip(np.floor(grid.p0x + np.arange(grid.cols) * grid.k).astype(int), 0, W - 1)
+    th = thin[np.ix_(fy, fx)]
+    fc = force[np.ix_(fy, fx)]
+    for n, (wl, amp) in enumerate(NOISE):
+        sd += (1 - th) * amp * M_PER_PX * _noise(sd.shape, wl / grid.k, seed + 70 + n)
+    sd = np.where(fc < 0, np.minimum(sd, -0.15 * M_PER_PX), np.where(fc > 0, np.maximum(sd, 0.15 * M_PER_PX), sd))
+    return sd.astype(np.float32)

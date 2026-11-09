@@ -182,7 +182,15 @@ def hold_water(h: np.ndarray, water_s: np.ndarray) -> int:
 
 
 def quantise(h: np.ndarray) -> np.ndarray:
-    return (np.round(h / QUANT) * QUANT).astype(np.float32)
+    """Heights onto the LAND step (QUANT units), dithered: a fixed fine pattern (a few samples across, half a step)
+    decides the rounding, so gentle ground does not show its step edges as long contour ribbons."""
+    from tools.newworld.terrain_relief import noise
+    d = np.empty(h.shape, np.float32)
+    band = 1024
+    for i0 in range(0, h.shape[0], band):
+        d[i0:i0 + band] = noise((min(band, h.shape[0] - i0), h.shape[1]), 2.5, 4409 + i0)
+    d = np.clip(d * 0.22, -0.45, 0.45)
+    return (np.round(h / QUANT + d) * QUANT).astype(np.float32)
 
 
 def clamp_steps(h: np.ndarray, limit: float = MAX_STEP, passes: int = 200) -> int:
@@ -230,8 +238,8 @@ def _ease(x):
     return x * x * (3 - 2 * x)
 
 
-PAD_TILT_DEG = 2.5            # a pad follows the land's lie up to this tilt
-PAD_KEEP = 0.25               # share of the land's fine relief a pad keeps
+PAD_TILT_DEG = 6.0            # a pad follows the land's lie up to this tilt
+PAD_KEEP = 0.4                # share of the land's fine relief a pad keeps
 
 
 def wobble(i0: float, j0: float, theta: np.ndarray, amount: float = 0.25) -> np.ndarray:

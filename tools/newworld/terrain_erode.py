@@ -16,15 +16,19 @@ The recipe (each step measured against Skyrim's Tamriel and BM&V's Black Marsh i
 3. Valleys, not trenches: the coarse cut is spread over two widths (VALLEY_SIGMA, mixed by VALLEY_MIX), so a
    valley's width and depth grow with its drainage and its floor is rounded; no cut is deeper than MAX_CUT_SHARE of
    the ground's height over its lowest point within 400 m. Then resampled (cubic) onto the full-resolution ground.
-4. Detail: slope-weighted fine relief at 20 to 45 m (ridged noise, strongest on slopes, none on flats and valley
-   floors), sized from the region's roughness, so hillsides carry Skyrim's 20 m texture.
+4. Rain (terrain_droplets): particle erosion at full resolution, DROPS_PER_SAMPLE droplets per erodible sample, so
+   slopes carry rills and gullies that branch and widen downstream and their sediment settles in fans; erodibility
+   grows with relief span (none under 6 m) and mesa tops keep their flats. Then detail by place, not one texture:
+   convex crests and shoulders a little rough (ridged noise, 30 m), sized from the region's roughness; flats and
+   valley floors smooth.
 5. Thermal weathering at full resolution: wherever two neighbours differ by more than the talus slope (TALUS_DEG,
    unless the slope is a cliff by design, over CLIFF_KEEP_DEG), a share of the difference moves downhill. This
    rounds noise spikes into scree without touching the cliffs FreeClimb climbs.
 6. Low ground: where the region's relief span is under 40 m, fine relief under 15 m is cut to a sixth (fading in
    from 15 m span), so marsh lies flat between softer hummocks, as BM&V's does.
-7. Hollows: every closed hollow on land is filled to its spill height (the water and the grid's edge are the
-   outlets), so all ground drains and low ground lies flat between its hummocks, as BM&V's marsh does.
+7. Hollows: on low ground (relief span under 40 m, fading in from 15 m) every closed hollow is filled to its spill
+   height (the water and the grid's edge are the outlets) by half its depth (LOW_FILL), so marsh lies flat between its hummocks, as BM&V's does;
+   hills keep the hollows between their knolls (filling them lays featureless plains across the uplands).
 8. Room to build (settle_places): each large built place (settlement tier town and up) gets a buildable core:
    within the radius BUILD_R_M[tier] the ground is eased toward its own broad shape (a 60 m Gaussian) until no slope
    exceeds BUILD_MAX_SLOPE; the remaining natural relief is kept at BUILD_KEEP of its amplitude, and the ease fades
@@ -39,19 +43,22 @@ from skimage.morphology import reconstruction
 M = 128.0 / 70.0          # metres a sample
 C = 8                     # drainage grid: one node every C samples (14.6 m)
 DRY_M = 0.8               # eroded land stays this far above the water: valleys are dry
-K0 = 4.5e-3               # stream-power erodibility (per step, A in m^2, S dimensionless)
-STEPS = 30
-VALLEY_SIGMA = (1.0, 3.0)  # the incision spread over two widths (drainage nodes): swales and broad valleys
-VALLEY_MIX = (0.6, 1.2)
-MAX_CUT_SHARE = 0.4        # no valley deeper than this share of the ground's height over its lowest point in 400 m
+K0 = 1.2e-2               # stream-power erodibility (per step, A in m^2, S dimensionless)
+STEPS = 40
+VALLEY_SIGMA = (0.6, 2.0)  # the incision spread over two widths (drainage nodes): swales and broad valleys
+VALLEY_MIX = (0.5, 0.6)
+MAX_CUT_SHARE = 0.6        # no valley deeper than this share of the ground's height over its lowest point in 400 m
 DIFFUSE = 0.12            # hillslope diffusion per step (share of the Laplacian)
 TALUS_DEG = 42.0
+DROPS_PER_SAMPLE = 0.5
+RISER_K = 1.5
+LOW_FILL = 0.5            # share of a low-ground hollow's depth filled: shallow dry dips stay, no dead flats             # erodibility of a mesa's riser, as a multiple of full  # rain droplets per erodible sample
 CLIFF_KEEP_DEG = 55.0
 # Room to build: the buildable core's radius (metres) by settlement tier, the steepest slope left in it, and how much
 # of the natural relief inside it survives.
 BUILD_R_M = {"megalopolis": 450.0, "metropolis": 300.0, "large-city": 220.0, "small-city": 160.0, "town": 110.0}
-BUILD_MAX_SLOPE_DEG = 8.0
-BUILD_KEEP = 0.35
+BUILD_MAX_SLOPE_DEG = 9.0
+BUILD_KEEP = 0.6
 
 _NB = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
 
@@ -173,7 +180,13 @@ def weather(relief_m: np.ndarray, water_s: np.ndarray, F: dict, seed: int = 1952
     span = np.maximum(F["summit"] - F["floor"], 0)
     kfac = np.clip((span - 15.0) / 45.0, 0, 1)
     plateau = F["w_mesa"] * (ndi.gaussian_filter(relief_m, 2) - ndi.gaussian_filter(relief_m, 12) > -0.5)
-    kfac = kfac * (1 - 0.8 * np.clip(plateau, 0, 1))
+    # mesa tops keep their flats; their risers erode hardest, so ravines cut back into the escarpment (headward
+    # erosion embays the edge, as drainage does to a real mesa) instead of the edge tracing one smooth line
+    gy, gx = np.gradient(ndi.gaussian_filter(relief_m, 2), M)
+    steep = np.hypot(gx, gy)
+    top = np.clip(plateau, 0, 1) * (steep < 0.12)
+    riser = F["w_mesa"] * np.clip((steep - 0.2) / 0.4, 0, 1)
+    kfac = np.clip(kfac * (1 - 0.8 * ndi.gaussian_filter(top.astype(np.float32), 2)) + RISER_K * riser, 0, RISER_K)
     hc = _down(relief_m, C)
     oc = _down(water_s.astype(np.float32), C) > 0
     oc[0, :] = oc[-1, :] = oc[:, 0] = oc[:, -1] = True
@@ -191,23 +204,37 @@ def weather(relief_m: np.ndarray, water_s: np.ndarray, F: dict, seed: int = 1952
     # weighted by the full-resolution erodibility (a cubic resample of a near-zero field rings, and a hard mask of
     # it flips in drainage-grid blocks)
     out = relief_m + _up(cut, shape, C) * np.clip(kfac / 0.05, 0, 1)
-    # detail: ridged fine relief on slopes, sized by the region's roughness
-    gy, gx = np.gradient(ndi.gaussian_filter(out, 3), M)
+    # rain: particle erosion at full resolution cuts rills and gullies that branch, join and widen downstream, and
+    # settles their sediment as fans and smooth floors (terrain_droplets); none on marsh floors or mesa tops
+    from tools.newworld import terrain_droplets as td
+    stop = water_s.copy()
+    stop[:2, :] = stop[-2:, :] = stop[:, :2] = stop[:, -2:] = True
+    # no rain cut within 25 m of the water: droplets gathering at a channel's head carved hooks round its tip
+    near_w = np.clip(ndi.distance_transform_edt(~water_s) * M / 25.0, 0, 1)
+    kd = near_w * np.clip((span - 6.0) / 40.0, 0, 1) * (1 - 0.85 * ndi.gaussian_filter(top.astype(np.float32), 3))
+    out = td.erode(out, kd, stop, int(DROPS_PER_SAMPLE * float((kd > 0.02).sum())), seed + 13)
+    # detail by place, not one texture: crests and convex shoulders a little rough, slopes carry the rills the rain
+    # cut, flats and valley floors stay smooth
+    sm3 = ndi.gaussian_filter(out, 3)
+    gy, gx = np.gradient(sm3, M)
     sl = np.clip(np.hypot(gx, gy) / 0.35, 0, 1)
-    det = 0.6 * ridged(shape, 45 / M, seed + 11) + 0.4 * ridged(shape, 20 / M, seed + 12)
-    out = out + (0.1 + 0.3 * kfac) * F["rough"] * sl * det
+    convex = np.clip((sm3 - ndi.gaussian_filter(out, 12)) / 1.5, 0, 1)
+    det = ridged(shape, 30 / M, seed + 11)
+    out = out + (0.05 + 0.2 * np.minimum(kfac, 1)) * F["rough"] * sl * convex * det * (1 - 0.8 * np.clip(plateau, 0, 1))
     out = thermal(out)
-    # low ground (little relief span) keeps only a third of its fine relief under 15 m: marsh lies flat between
+    # low ground (little relief span) keeps most of its fine relief under 15 m: marsh lies flat between
     # rarer, softer hummocks
     lw = np.clip(1 - kfac, 0, 1) * np.clip((40.0 - span) / 25.0, 0, 1)
     broad = ndi.gaussian_filter(out, 15 / M / 2)
-    out = broad + (1 - 0.85 * lw) * (out - broad)
-    # closed hollows on land filled to their spill height: ground drains to the water, marsh lies flat between
-    # its hummocks (BM&V's marsh is flat ground about 1.7 m up, with few hollows)
+    out = broad + (1 - 0.3 * lw) * (out - broad)
+    # closed hollows on low ground filled to their spill height: marsh lies flat between its hummocks (BM&V's marsh
+    # is flat ground about 1.7 m up, with few hollows). Hills keep theirs: filling every hollow between knolls lays
+    # featureless plains across the uplands; the drainage step has already opened their valleys
     outlet = water_s.copy()
     outlet[0, :] = outlet[-1, :] = outlet[:, 0] = outlet[:, -1] = True
     seed = np.where(outlet, out, out.max() + 1.0)
-    out = reconstruction(seed.astype(np.float32), out.astype(np.float32), method="erosion")
+    filled = reconstruction(seed.astype(np.float32), out.astype(np.float32), method="erosion")
+    out = out + LOW_FILL * np.clip((40.0 - span) / 25.0, 0, 1) * (filled - out)
     return np.maximum(out, np.minimum(relief_m, DRY_M)).astype(np.float32)
 
 
