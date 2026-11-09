@@ -22,9 +22,14 @@ Places. Needs come from `place_terrain_need`; a place with no row there takes it
   alone (stilts);
 - entrance-in-slope: a knoll 8 m high added to the ground behind the entrance, its face 6 m deep holding the
   opening, its back and sides easing out over 45 and 28 m; in front a corridor eased to at most 1 in 3;
-- rise: a mound of 3 to 12 m over the footprint; shore-access: a low pad 0.4 m above the water;
+- rise: a mound standing 3 to 12 m over the land round it (a ring 1.6 to 2.5 radii out), so a place on a slope
+  still stands above its surround; shore-access: a low pad 0.4 m above the water;
 - seabed: the bed under the place is lowered to the needed depth (sunken ruin 8 m, wreck 5 m);
-- island: nothing (the map's islands are kept by the water guarantee).
+- island (Bethesda's way: an island is land raised above the water): before the water is labelled, the map's
+  pixels of a place standing in the water become an islet (its radius, shrunk to keep a ring of water to the
+  nearest shore, which is held as water), so every later stage (bodies, coast, banks, water kinds) sees the islet as map land;
+  the islet then takes a low mound (2 m over half its radius) so it reads above the water and keeps a gentle
+  shore.
 
 Roads (Skyrim's way, measured on Skyrim.esm): the centreline height is the ground smoothed along the road (sigma
 15 m), held at least 0.4 m above the water and to the class's grade (grade_max less 10% headroom) by forward and
@@ -56,7 +61,7 @@ QUANT = 8.0
 MAX_STEP = 127 * QUANT
 FORD_M = 8.0
 # bed: (slope down from the shore, cap in metres)
-BED = {"ocean": (0.30, 80.0), "bay": (0.30, 30.0), "estuary": (0.10, 5.0), "river": (0.10, 4.0),
+BED = {"ocean": (0.30, 80.0), "bay": (0.30, 30.0), "shallow-coast": (0.10, 3.0), "estuary": (0.10, 5.0), "river": (0.10, 4.0),
        "stream": (0.12, 1.2), "lake": (0.20, 15.0), "pond": (0.15, 2.5), "blackwater-swamp": (0.10, 1.5),
        "green-marsh": (0.08, 0.9)}   # measured: sea bed 0.9 m at 4 m, 5.3 m at 16 m; channel depth ~0.05 x width
 TROUGH_D = np.array([0.0, 1.5, 2.0, 4.0, 6.0, 8.0, 99.0])
@@ -242,7 +247,7 @@ def _ease(x):
 
 
 PAD_TILT_DEG = 6.0            # a pad follows the land's lie up to this tilt
-PAD_KEEP = 0.4                # share of the land's fine relief a pad keeps
+PAD_KEEP = 0.25               # share of the land's fine relief a pad keeps
 
 
 def wobble(i0: float, j0: float, theta: np.ndarray, amount: float = 0.25) -> np.ndarray:
@@ -262,7 +267,7 @@ def flat_pad(h, water_s, grid, i0, j0, r_m, floor_units=None):
     skirt = max(40.0, r_m)
     sl, di, dj = _disc(grid, i0, j0, (1.3 * r_m + skirt) / grid.m)
     d = np.hypot(di, dj) * grid.m
-    rr = r_m * wobble(i0, j0, np.arctan2(di, dj))
+    rr = r_m * np.maximum(1.0, wobble(i0, j0, np.arctan2(di, dj)))   # the footprint covers the radius
     land = ~water_s[sl]
     inner = land & (d <= rr)
     if not inner.any():
@@ -302,11 +307,56 @@ def shore_access(h, water_s, grid, i0, j0, r_m):
     h[sl] = np.where(land, np.minimum(h[sl], h[sl] * (1 - w) + np.minimum(h[sl], target) * w), h[sl])
 
 
-def rise(h, water_s, grid, i0, j0, r_m):
-    H = float(np.clip(0.1 * r_m + 3, 3, 12)) * U
-    sl, di, dj = _disc(grid, i0, j0, 1.6 * r_m / grid.m)
+def rise(h, water_s, grid, i0, j0, r_m, height_m=None):
+    """A mound whose top stands H (3 to 12 m by radius) over the land in a ring 1.6 to 2.5 radii out, eased out
+    from half a radius out to 1.6 radii (a level top, so a pad on it stays level): on a slope the mound grows by what
+    the uphill ring stands over the place."""
+    H = (height_m if height_m is not None else float(np.clip(0.1 * r_m + 3, 3, 12))) * U
+    sl, di, dj = _disc(grid, i0, j0, 2.6 * r_m / grid.m)
     d = np.hypot(di, dj) * grid.m
-    h[sl] = np.where(~water_s[sl], h[sl] + H * (1 - _ease(d / (1.6 * r_m))), h[sl])
+    land = ~water_s[sl]
+    top, ring = land & (d <= 0.5 * r_m), land & (d >= 1.6 * r_m) & (d <= 2.5 * r_m)
+    lift = H
+    if top.any() and ring.any():
+        lift = max(H, float(h[sl][ring].mean()) + H - float(h[sl][top].mean()))
+    h[sl] = np.where(land, h[sl] + lift * (1 - _ease((d - 0.5 * r_m) / (1.1 * r_m))), h[sl])
+
+
+ISLET_MOAT_M = 12.0
+
+
+ISLET_MIN_M = 12.0
+
+
+def carve_islets(water_px: np.ndarray, islets, m_per_px: float) -> list:
+    """Every island need made true on the map before anything reads it. A place standing in the water gets an
+    islet: land under an irregular footprint of its radius, shrunk to leave ISLET_MOAT_M (or a quarter radius) of
+    water between it and the nearest shore (never under ISLET_MIN_M), and that ring held as water, so it is cut free
+    of any shore. A place on the map's land is left as the map draws it (no moat is dug round it). `islets` is
+    [(place_id, px, py, r_m)]. Mutates water_px; returns a record per islet."""
+    out = []
+    H, W = water_px.shape
+    for pid, px, py, r_m in islets:
+        if not water_px[int(py), int(px)]:
+            out.append({"place_id": pid, "radius_m": r_m, "note": "on the map's land: left as drawn"})
+            continue
+        moat_m = max(ISLET_MOAT_M, 0.25 * r_m)
+        R = int((1.3 * r_m + moat_m) / m_per_px) + 3
+        y0, y1, x0, x1 = max(0, int(py) - R), min(H, int(py) + R + 1), max(0, int(px) - R), min(W, int(px) + R + 1)
+        win = water_px[y0:y1, x0:x1]
+        Y, X = np.mgrid[y0:y1, x0:x1]
+        dy, dx = Y + 0.5 - py, X + 0.5 - px
+        d = np.hypot(dy, dx) * m_per_px
+        shore_m = float(d[~win].min()) if (~win).any() else 1e9
+        r_eff = max(ISLET_MIN_M, min(r_m, shore_m - moat_m))
+        rr = r_eff * wobble(py, px, np.arctan2(dy, dx), 0.25)
+        isle, ring = d <= rr, (d > rr) & (d <= rr + moat_m)
+        raised, flooded = int((win & isle).sum()), int((~win & ring).sum())
+        win[isle] = False
+        win[ring] = True
+        out.append({"place_id": pid, "radius_m": r_m, "islet_radius_m": round(r_eff, 1), "px_raised": raised,
+                    "px_flooded": flooded})
+    return out
 
 
 def seabed(h, water_s, grid, i0, j0, r_m, depth_m):

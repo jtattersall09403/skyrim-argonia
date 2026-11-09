@@ -15,14 +15,18 @@ The recipe:
    under it and every land pixel above it.
 2. Grid: the scope's bounding box plus one Morrowind cell all round, samples every 128 units, north-up, sample (0, 0)
    at the north-west corner (origin in build.json). Heights are float32 game units (70 a metre).
-3. Water bodies (terrain_water): every body labelled with a kind and flow guess, then the owner's hand edits from
+3. Islands (terrain_shape.carve_islets): every place whose `place_terrain_need` is island gets its islet on the map
+   pixels (land under the footprint, a ring of water round it) before anything reads the water.
+   Water bodies (terrain_water): every body labelled with a kind and flow guess, then the owner's hand edits from
    `newworld/sources/water_overrides.json` ({"<body id>": {"water_kind_id", "flows", "flow_toward_deg", "name"}},
    read on every build); its kind sets the bed (BED).
 4. Relief (terrain_relief): region parameters from the region table, the fallback table where empty.
 5. Weathering (terrain_erode): drainage erosion, slope detail and talus on the natural ground, then a buildable
    core for every large built place (town tier and up; radius by tier and slope limit in terrain_erode).
 6. Banks and beds (terrain_shape.compose). Then places' needs from `place_terrain_need` (a place with no row takes
-   its kind's fallback) in this order: flat pads, rises, sea beds, shore access; then the roads, solved as one
+   its kind's fallback) in this order: shore access, rises, flat pads (a
+   rise is raised over its landing and a pad fitted level on top of its rise; a rise smaller than its pad
+   stands on the pad, after it), sea beds; then the roads, solved as one
    network and laid; then entrances, each facing down its road when one comes within 60 m, else the best dry and
    open heading, never burying a road's bed. Then LAND's 8-unit rounding and step limit, the map's water guaranteed
    pixel by pixel, and any entrance the rounding spoiled shaped again.
@@ -102,7 +106,7 @@ def region_px(cell_region: dict, names: list, shape) -> np.ndarray:
     return code[np.clip(ys.stop - 1 - cyv, 0, len(ys) - 1), np.clip(cx, 0, len(xs) - 1)]
 
 
-NEED_ORDER = {"flat-pad": 0, "rise": 1, "seabed": 2, "shore-access": 3, "island": 4, "entrance-in-slope": 5}
+NEED_ORDER = {"shore-access": 0, "rise": 1, "flat-pad": 2, "seabed": 3, "island": 4, "entrance-in-slope": 5}
 
 
 def toward_road(plans, grid, i0, j0, fallback):
@@ -165,6 +169,17 @@ def build(upload: bool = True) -> dict:
     grid = make_grid(scope)
     log("grid", grid.rows, "x", grid.cols)
 
+    # islands first (terrain_shape.carve_islets): every place that needs an island gets one on the map itself, so
+    # the bodies, the coast, the banks and the water kinds all see it
+    try:
+        isl_rows = [r for r in w.rows("place_terrain_need") if r.terrain_need_id == "island"]
+    except Exception:
+        isl_rows = []
+    pl_at = {p.id: p for p in w.rows("place")}
+    islets = ts.carve_islets(water_px, [(r.place_id, pl_at[r.place_id].px, pl_at[r.place_id].py, r.radius_m)
+                                        for r in isl_rows if r.place_id in pl_at], f.UNITS_PER_PX / f.UNITS_PER_METRE)
+    log("islets", len(islets))
+
     # 3. water bodies
     rpx = region_px(cell_region, names, water_px.shape)
     body_r, bodies = tw.label_bodies(water_px, rpx, names, rkind, word, f.UNITS_PER_PX / f.UNITS_PER_METRE)
@@ -204,7 +219,7 @@ def build(upload: bool = True) -> dict:
     Fc = tr.coarse_fields(wx, wy, cell_region, params, ff, {n for n in names if rkind[n] == "sea"}, ridge_cells)
     sea_c = np.ones(wx.shape, bool)
     kind_arr = np.array(["land"] + [b["water_kind_id"] for b in bodies])
-    sea_body = np.isin(kind_arr, ["ocean", "bay"])[body_r]
+    sea_body = np.isin(kind_arr, ["ocean", "bay", "shallow-coast"])[body_r]
     sea_c[inb] = sea_body[cpy[inb].astype(int), cpx[inb].astype(int)]
     coast_t = 1 - np.exp(-ndi.distance_transform_edt(~sea_c) * C * ts.STEP / f.UNITS_PER_METRE / 5000.0)
     shape = (grid.rows, grid.cols)
@@ -272,9 +287,16 @@ def build(upload: bool = True) -> dict:
         i0, j0 = (float(v) for v in grid.ij(p.px, p.py))
         if not (2 <= i0 < grid.rows - 2 and 2 <= j0 < grid.cols - 2):
             continue
+        pad_r = max([r for n, r, *_ in lst if n == "flat-pad"], default=0)
         for nd, r_m, facing, why in lst:
-            todo.append((NEED_ORDER.get(nd, 9), p, nd, r_m, facing, why, i0, j0))
+            o = NEED_ORDER.get(nd, 9)
+            if nd == "rise" and r_m < pad_r:     # a mound smaller than its pad stands on the pad, after it
+                o = NEED_ORDER["flat-pad"] + 0.5
+            todo.append((o, p, nd, r_m, facing, why, i0, j0))
     todo.sort(key=lambda t: (t[0], t[1].id))
+
+    def lst_of(p):
+        return [t[2:] for t in todo if t[1].id == p.id]
     entrances = []
     roads_done = False
     corridor = plans = None
@@ -323,12 +345,17 @@ def build(upload: bool = True) -> dict:
             if p.on_water:
                 rec["note"] = "on water: stands on stilts, no pad"
             else:
-                pad = ts.flat_pad(h, water_s, grid, i0, j0, r_m)
+                on_rise = any(n == "rise" and rr_ >= r_m for n, rr_, *_ in lst_of(p))   # level at the rise's top, not its mean
+                top = float(ndi.gaussian_filter(h[int(i0) - 3:int(i0) + 4, int(j0) - 3:int(j0) + 4], 1)[3, 3])
+                pad = ts.flat_pad(h, water_s, grid, i0, j0, r_m, floor_units=top if on_rise else None)
                 rec["pad_m"] = None if pad is None else round(pad / ts.U, 2)
         elif nd == "rise":
             ts.rise(h, water_s, grid, i0, j0, r_m)
         elif nd == "shore-access":
             ts.shore_access(h, water_s, grid, i0, j0, r_m)
+        elif nd == "island":      # the islet was carved on the map; a low mound unless the place is levelled
+            if not any(n == "flat-pad" for n, *_ in lst_of(p)):
+                ts.rise(h, water_s, grid, i0, j0, 0.5 * r_m, height_m=2.0)
         elif nd == "seabed":
             ts.seabed(h, water_s, grid, i0, j0, r_m, SEABED_DEPTH.get(p.place_kind_id, 6.0))
         elif nd == "entrance-in-slope":
@@ -386,7 +413,7 @@ def build(upload: bool = True) -> dict:
              "about": ("float32 game units (70 a metre), north-up, row 0 the north edge; heightmap.png is 16-bit: "
                        f"h = {offset} + 8 v units; water bodies at map px; cliffs over {CLIFF_DEG} deg"),
              "png_offset_units": offset, "png_scale_units": ts.QUANT,
-             "regions": psrc, "water_overrides": len(overrides), "water_override_problems": ov_problems, "roads_used": bool(plans), "settled_places": settled, "seconds": round(time.time() - t0)}
+             "regions": psrc, "water_overrides": len(overrides), "water_override_problems": ov_problems, "roads_used": bool(plans), "settled_places": settled, "islets": islets, "seconds": round(time.time() - t0)}
     (OUT / "build.json").write_text(json.dumps(bjson, indent=1, default=_j))
     log("checks", json.dumps({k: v for k, v in chk.items() if k != "guarantee_fails_px"}, default=_j))
     if upload and not TRIAL:
