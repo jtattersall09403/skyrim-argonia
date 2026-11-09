@@ -98,8 +98,9 @@ def plan(P: dict, S: dict, ids, facts: dict, notes: list[str]) -> dict:
             r = find_ref(at)
             at["ref"] = r["id"]
             return at
-        if at.get("ref"):
-            raise SystemExit(f"people.jsonl: stop ref {at['ref']} is not in the place")
+        if at.get("ref"):  # a source ref the copy did not keep: the space's first furniture stands in, noted
+            notes.append(f"people.jsonl: stop ref {at['ref']} in {at.get('space')} is not in the place; its space's first furniture is used")
+            at.pop("ref")
         if at.get("pos") is None:  # a stop that names only a space: its first furniture, else its first ref
             sp = at.get("space", "exterior")
             rs = [r for r in S["refs"] if r["space"] == sp]
@@ -131,6 +132,9 @@ def plan(P: dict, S: dict, ids, facts: dict, notes: list[str]) -> dict:
     for p in people:
         who = p["id"]
         npc_fk = ids(f"npc:{who}")
+        if isinstance(p.get("bed"), dict):
+            b = find_ref(p["bed"])
+            p["bed"] = b["id"] if b else p["bed"]["ref"]
         packs = []
         for i, st in enumerate(p.get("routine", [])):
             kind = st["kind"]
@@ -162,9 +166,6 @@ def plan(P: dict, S: dict, ids, facts: dict, notes: list[str]) -> dict:
             out["packages"].append({"fk": fk, "edid": f"ANP_{pid}_{_edid(who)}_home", "from": TEMPLATE["sandbox"], "kind": "sandbox",
                                     "hour": -1, "minutes": 0, "location": {"ref": place_at(home, f"{who}:home"), "radius": DEFAULT_RADIUS}})
             packs.append(fk)
-        if isinstance(p.get("bed"), dict):
-            b = find_ref(p["bed"])
-            p["bed"] = b["id"] if b else p["bed"]["ref"]
         if p.get("bed"):
             bed = by_id.get(p["bed"])
             if bed is None:
@@ -245,7 +246,7 @@ def plan(P: dict, S: dict, ids, facts: dict, notes: list[str]) -> dict:
         spot = p.get("placed_at") or (p["routine"][0]["at"] if p.get("routine") else None)
         if spot is None:
             raise SystemExit(f"people.jsonl: {who}: no routine stop to place them at")
-        pos, space = _spot(spot, by_id)
+        pos, space = _spot(norm_at(spot), by_id)
         out["npcs"].append({"fk": npc_fk, "edid": f"ANP_{pid}_{_edid(who)}", "name": p.get("name") or who, "from": p["base_from"],
                             "level": int(p.get("level", 10)), "factions": factions, "packages": packs,
                             "class": cls["fk"] if cls else None, "gives": gives, "role": p.get("role"), "id": who})
