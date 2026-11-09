@@ -350,6 +350,8 @@ class Palette:
                 self.skipped["editor id does not name this record in its plugin"].append(bid); continue
             if self.resolver.where(rec["model"]) is None:
                 self.skipped["model not in the NewWorld profile"].append(bid); continue
+            if self.missing_textures(rec["model"]):
+                self.skipped["a texture inside the model not in the NewWorld profile"].append(bid); continue
             c = fam["flora_class_id"]
             name = rec["model"].replace("\\", "/").rsplit("/", 1)[-1].lower()
             b["open_az"] = sides.get(name, "unknown")
@@ -362,8 +364,24 @@ class Palette:
             if r["flora_base_id"] in self.usable:
                 self.rows[(regions.index(r["region_id"]) if r["region_id"] in regions else -1,
                            habs.index(r["habitat_id"]))].append((r["flora_base_id"], r["density_per_ha"]))
+        self.dress_ok = {k for k in dress_keys if k in self.rec and self.rec[k]["model"]
+                         and self.resolver.where(self.rec[k]["model"]) and not self.missing_textures(self.rec[k]["model"])}
         self.class_of = {bid: self.fam[b["flora_family_id"]]["flora_class_id"] for bid, b in self.base.items()}
         self.prio = {c: i for i, c in enumerate(ORDER)}
+
+    def missing_textures(self, model: str) -> list[str]:
+        """Texture paths named inside the model's nif that the NewWorld profile does not lay (the verifier's reader:
+        the engine reads from the last textures\\ on)."""
+        from tools.newworld import verify
+        if not hasattr(self, "_assets"):
+            self._assets = verify.assets()
+        out = []
+        for t in sorted(verify.nif_textures(self.resolver.read(model) or b"")):
+            i = t.rfind("textures\\")
+            t = t[i:] if i >= 0 else "textures\\" + t
+            if not self._assets.has(t):
+                out.append(t)
+        return out
 
     def sink_m(self, bid, rng):
         """Metres at scale 1 the pivot is set under the ground."""
@@ -426,6 +444,7 @@ _P: Palette | None = None
 _R: Roads | None = None
 _DRESS: dict | None = None
 _MARGIN: set | None = None
+_FACTOR: dict = {}  # habitat idx -> density factor (calibrate(): the habitat's mean refs/ha hits its target)
 
 
 def _init():
@@ -481,7 +500,7 @@ def place_cell(cx: int, cy: int, pre: list[dict]) -> tuple[list[dict], dict]:
                 if margin and c not in MARGIN_CLASSES:
                     continue
                 k = max(1, int(f.get("cluster_size") or 1))
-                lam = dens * area / k * (MARGIN_FACTOR if margin else 1.0)
+                lam = dens * area / k * (MARGIN_FACTOR if margin else 1.0) * _FACTOR.get(hi, 1.0)
                 if edge_part and c in SMALL:
                     lam *= EDGE_BOOST
                 if c in TREES:
@@ -637,7 +656,7 @@ def place_cell(cx: int, cy: int, pre: list[dict]) -> tuple[list[dict], dict]:
                 continue
         p = {"cell": [cx, cy], "base": P.key_of[b], "pos": [round(float(x), 1), round(float(y), 1), round(float(z), 1)],
              "rot": [round(rx, 5), round(ry, 5), round(rz, 5)], "scale": round(float(sc), 4), "cls": c, "db": b,
-             "_r": rad}
+             "_r": rad, "_h": int(his[i])}
         placed.append(p)
         grid[gk].append((x, y, rad, c))
         natural += 1
@@ -688,6 +707,7 @@ def dressing(W: World, P: Palette, R: Roads) -> list[dict]:
             a = rng.uniform(0, 2 * math.pi)
             q = R.pts[i] + np.array([math.cos(a), math.sin(a)]) * (R.edge[i] + 0.8) * UPM
             out.append(("sign", "signpost", SIGNPOST, q, a + math.pi))
+    out = [o for o in out if o[0] == "dress" or o[2] in P.dress_ok]
     refs = []
     xs = np.array([o[3][0] for o in out]); ys = np.array([o[3][1] for o in out])
     z0 = W.ground(xs, ys); flags = W.at("flags", xs, ys); slope = W.at("slope", xs, ys)
@@ -734,7 +754,9 @@ def dressing(W: World, P: Palette, R: Roads) -> list[dict]:
 
 
 def _row(args):
-    cy, cxs, pre_by_cell = args
+    global _FACTOR
+    cy, cxs, pre_by_cell, factor = args
+    _FACTOR = factor
     _init()
     out, tally = [], defaultdict(int)
     for cx in cxs:
@@ -747,11 +769,89 @@ def _row(args):
 
 
 def dropped_by_region(P: Palette) -> dict:
-    """Per region: distinct db bases in its region_flora rows, and how many were dropped (unresolved model, ...)."""
+    """Per region: distinct db bases in its region_flora rows, how many were kept, and the dropped ones by reason."""
     rows = defaultdict(set)
     for r in jsonl("region_flora"):
         rows[r["region_id"]].add(r["flora_base_id"])
-    return {g: {"bases": len(b), "dropped": len(b - P.usable), "kept": len(b & P.usable)} for g, b in sorted(rows.items())}
+    why = {b: w for w, bs in P.skipped.items() for b in bs}
+    out = {}
+    for g, b in sorted(rows.items()):
+        d = defaultdict(list)
+        for x in sorted(b - P.usable):
+            d[why.get(x, "unknown")].append(x)
+        out[g] = {"bases": len(b), "kept": len(b & P.usable), "dropped": dict(d)}
+    return out
+
+
+CAL_ROWS = 4  # calibration pilots run every 4th row
+CAL_PASSES = 3
+CAL_CLAMP = (0.2, 12.0)
+
+
+def density(W: World, P: Palette, results: dict, rows: list[int]) -> dict:
+    """Per habitat (idx): natural refs placed and the hectares it covers in those rows where its region has flora rows
+    for it (a stratum without rows can hold nothing: "bare_ha" is that share, a gap in region_flora), margin cells left
+    out (they carry 0.15 x on purpose)."""
+    g = W.grid
+    hab = np.asarray(W.habitat); reg = np.asarray(W.region)
+    area = defaultdict(float); bare = defaultdict(float); cells = defaultdict(int); n = defaultdict(int)
+    for cy in rows:
+        r0 = (g["cy_top"] - cy) * 32
+        band = hab[r0:r0 + 32]; rband = reg[r0:r0 + 32]
+        for cx, refs in results[cy]:
+            if (cx, cy) in _MARGIN:
+                continue
+            c0 = (cx - g["cx0"]) * 32
+            pair = band[:, c0:c0 + 32].astype(np.int64) * 65536 + (rband[:, c0:c0 + 32].astype(np.int64) & 0xFFFF)
+            v, cnt = np.unique(pair, return_counts=True)
+            seen = set()
+            for pv, k in zip(v.tolist(), cnt.tolist()):
+                hi, ri = pv >> 16, pv & 0xFFFF
+                ri = ri - 65536 if ri >= 32768 else ri
+                if not hi:
+                    continue
+                if P.rows.get((ri, hi)):
+                    area[hi] += k * SAMPLE_HA
+                    if hi not in seen:
+                        cells[hi] += 1; seen.add(hi)
+                else:
+                    bare[hi] += k * SAMPLE_HA
+            for r in refs:
+                if "_h" in r:
+                    n[r["_h"]] += 1
+    return {hi: {"refs": n[hi], "ha": area[hi], "cells": cells[hi], "bare_ha": bare[hi]} for hi in set(area) | set(bare)}
+
+
+def targets(W: World, P: Palette) -> dict:
+    return {i: float(P.hab[h]["density_per_ha"]) for i, h in enumerate(W.legend["habitats"])
+            if h in P.hab and P.hab[h].get("density_per_ha")}
+
+
+def place_rows(jobs, factor, workers):
+    results, tally = {}, defaultdict(int)
+    with Pool(workers) as pool:
+        for cy, out, t in pool.imap_unordered(_row, [(*j, factor) for j in jobs]):
+            results[cy] = out
+            for a, b in t.items():
+                tally[a] += b
+    return results, tally
+
+
+def calibrate(W: World, P: Palette, jobs, workers) -> dict:
+    """Density factor per habitat: pilot runs on every CAL_ROWS-th row, each pass scaling the factor by target /
+    achieved refs per hectare (the refusals, canopy, budget and spacing all thin what the rows ask for)."""
+    tg = targets(W, P)
+    factor = {hi: 1.0 for hi in tg}
+    pilot = jobs[::CAL_ROWS]
+    for k in range(CAL_PASSES):
+        res, _ = place_rows(pilot, factor, workers)
+        d = density(W, P, res, [j[0] for j in pilot])
+        for hi, t in tg.items():
+            got = d.get(hi, {}).get("refs", 0) / max(d.get(hi, {}).get("ha", 0), 1e-9)
+            if d.get(hi, {}).get("ha", 0) > 1 and got > 0:
+                factor[hi] = float(np.clip(factor[hi] * t / got, *CAL_CLAMP))
+        log(f"calibration pass {k + 1}: " + ", ".join(f"{W.legend['habitats'][h]} {f:.2f}" for h, f in sorted(factor.items())))
+    return factor
 
 
 def key() -> str:
@@ -784,13 +884,16 @@ def run(force: bool = False, workers: int = 3) -> dict:
     cxs = list(range(g["cx0"], g["cx1"] + 1))
     rows = list(range(g["cy_top"], g["cy_bottom"] - 1, -1))
     jobs = [(cy, cxs, {c: v for c, v in pre.items() if c[1] == cy}) for cy in rows]
-    results = {}
-    tally = defaultdict(int)
-    with Pool(workers) as pool:
-        for cy, out, t in pool.imap_unordered(_row, jobs):
-            results[cy] = out
-            for a, b in t.items():
-                tally[a] += b
+    factor = calibrate(W, P, jobs, workers)
+    results, tally = place_rows(jobs, factor, workers)
+    tg = targets(W, P)
+    dens = {}
+    for hi, d in sorted(density(W, P, results, rows).items()):
+        name = W.legend["habitats"][hi]; got = d["refs"] / d["ha"] if d["ha"] else 0.0
+        dens[name] = {"target_ha": tg.get(hi), "achieved_ha": round(got, 1), "cells": d["cells"], "ha": round(d["ha"], 1),
+                      "bare_share": round(d["bare_ha"] / max(d["ha"] + d["bare_ha"], 1e-9), 3),
+                      "factor": round(factor.get(hi, 1.0), 3),
+                      "within_20pct": bool(tg.get(hi) and abs(got - tg[hi]) <= 0.2 * tg[hi])}
     used = sorted({r["base"] for out in results.values() for _, refs in out for r in refs})
     db_of = {v: kk for kk, v in P.key_of.items()}
     bases = [{"key": b, "ref": f"{P.rec[b]['plugin']}:{P.rec[b]['edid']}", "copied": b.split(":", 1)[1] not in MASTERS,
@@ -805,7 +908,7 @@ def run(force: bool = False, workers: int = 3) -> dict:
         for cx, refs in results[cy]:
             per_cell[(cx, cy)] = sum(1 for r in refs if not r["cls"].startswith("road_"))
             for r in refs:
-                r.pop("_r", None)
+                r.pop("_r", None); r.pop("_h", None)
                 rec = P.rec[r["base"]]
                 (x, y, z), (rx, ry, rz) = r["pos"], r["rot"]
                 o = {"base": f"{rec['plugin']}:{rec['edid']}", "x": x, "y": y, "z": z, "rx": rx, "ry": ry, "rz": rz,
@@ -827,6 +930,7 @@ def run(force: bool = False, workers: int = 3) -> dict:
                                 "max": int(counts.max()), "p50_nonempty": float(np.percentile(land, 50)) if len(land) else 0,
                                 "vanilla": {"p95": 83, "max": 162}},
            "skipped_bases": {k2: v for k2, v in P.skipped.items()},
+           "density_by_habitat": dens,
            "region_flora_dropped": dropped_by_region(P), "tally": dict(sorted(tally.items()))}
     mpath.write_text(json.dumps(man, indent=1))
     log(f"{total} refs in {len(rows)} shards, {len(used)} bases, {man['seconds']} s")

@@ -140,6 +140,9 @@ class Assets:
         return k in self.loose or k.replace("\\", "/") in self.archived
 
 
+MESHES = re.compile(r"^[\\/]?meshes[\\/]", re.I)
+
+
 def nif_textures(raw: bytes) -> set[str]:
     return {m.decode("latin-1").lower().replace("/", "\\") for m in re.findall(rb"[\x21-\x7e][\x20-\x7e]{2,}\.dds", raw, re.I)}
 
@@ -266,7 +269,7 @@ def run(plugin: Path, out: Path, do_dump: bool = True) -> int:
         from tools.navmesh import meshes
         meshes.PROFILE = "NewWorld"
         rv = meshes.Resolver(DATA, STACK / "MO2")
-        models = sorted({r["model"] for r in placed if r["model"]})
+        models = sorted({MESHES.sub("", r["model"]) for r in placed if r["model"]})  # the dump keeps the data-relative Meshes/
         nomodel = [m for m in models if rv.where(m) is None]
         rep.row("refs", "every ref's base model resolves in the NewWorld profile", f"{len(models) - len(nomodel)}/{len(models)}",
                 not nomodel, f"missing e.g. {nomodel[:4]}")
@@ -402,11 +405,14 @@ def place_rows(rep: Report, natural: list[dict], out: Path) -> None:
     src = P.REFS / "bases.json"
     bases = jload(src)["bases"]
     by_key = {b["key"].lower(): b for b in bases}
-    by_edid = {b["edid"].lower(): b for b in bases}
+    def em(edid, model):  # two sources may share an editor id (BM&V North and Valenwood): the model tells them apart
+        return (edid or "").lower(), MESHES.sub("", (model or "").replace("/", "\\")).lower()
+    by_edid = {em(b["edid"], b["model"]): b for b in bases}
     Pa = P.Palette(P.World())
     rows, unmapped = [], 0
     for r in natural:
-        b = by_key.get(r["base"].lower()) or by_edid.get((r["edid"] or "").lower())
+        e = (r["edid"] or "").lower()
+        b = by_key.get(r["base"].lower()) or by_edid.get(em(e[4:] if e.startswith("anw_") else e, r["model"]))  # ForeignCopy names a copy ANW_<edid>
         if b is None:
             unmapped += 1
             continue
