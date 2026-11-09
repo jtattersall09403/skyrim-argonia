@@ -1,9 +1,9 @@
-# New world walk check (nw-02), draft
+# New world walk check (nw-02)
 
 The owner's walk of the new Black Marsh world, posted once the off-game read-back passes in full
 (`tooling/job_guard.sh run nw-verify -- python3 -m tools.newworld.verify`; the table is `out/newworld/verify/report.md`).
 It sits apart from `docs/owner-walk-checks.md`, which is the walk list for the BM&V game; ticks go here, in the same way.
-Do not post this until every row of the read-back passes.
+Posted 2026-11-09 as issue #56 after the read-back passed 50/50.
 
 ---
 
@@ -82,5 +82,6 @@ show in the console with `getpos x` and `getpos y`, or just name the place). A s
       not stuck or walking into the water at random.
 - [ ] **O. Relief (your call).** The terrain follows the region research: most of Black Marsh is low and nearly
       flat, like BM&V's own marsh (10 to 25 m of height in most regions), with more relief only in the uplands and
-      mesas (Chixathe mesa, `cow ArgoniaBlackMarsh 20 -175`; the Aunike ridge). If you want more hills or higher
+      mesas (Chixathe mesa at Fort Chalkmoth, `cow ArgoniaBlackMarsh 37 -142`; the Aunike ridge at Aunike Crown,
+      `cow ArgoniaBlackMarsh -8 -179`). If you want more hills or higher
       mesas anywhere, say where; it is a change to the region table, then one rebuild.
