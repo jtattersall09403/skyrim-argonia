@@ -153,8 +153,27 @@ paths.jsonl            streets and paths: {id, kind: path|street, points:[[x,y].
                        texture key (the source place's own road texture) or the draft's style word (dirt, boardwalk)
 people.jsonl           one person per line: {id, name, base_from, role, home, bed, work, services, faction_ranks,
                        routine:[{start, hours, kind, at:{space, ref | pos, radius}, days?}], patrol?}
+ledger.jsonl           one row per source ref: {src, space, status: placed|adapted|replaced|dropped, as?, why?,
+                       cluster?, patch?}; every source ref has one
 edits/<save_id>.json   a studio save (below); finalised saves stay here as the lessons' evidence
 ```
+
+Seat rule `seat:{mode, dz, on?, foot?}` (one function, `tools/places/seat.py`): `ground` z = lowest ground under
+the footprint + dz; `above` z = ground at the origin + dz; `water` z = water surface + dz; `stilts` z = lowest of
+max(ground, water) under the footprint + dz; `on` z = the ref `on`'s z + dz; `free` z kept (interiors). `foot` is
+the footprint's half extents `[hx, hy]` in the ref's own frame. dz is measured in the source the same way.
+
+`place.json` also holds: `draft` (the agent's calls: `anchor`, `rot_deg`, `search`, `replace`, `drop`, `add`,
+`roles`, `keep_patches`; skill `place-build`), `fit` (global and per-cluster transforms, `clusters_info`),
+`clearance` (the source's measured clearance), `factions` (`<place_id>.crime`, `.guard`, `.town`, and one
+`.vendor.NN` per trader with hours and `chest`), `stations` (needed, found, missing), `ground`, `source`,
+`radius_m`, `counts`, `draft_key`.
+
+An interior copy brings every ref of the source space except actors. Its `space.json` adds `door_from` (our door
+that leads in), `parent` and `room`: when the source packs several rooms into one cell, the source door of this
+copy's own room (its beds are the ones nearer that door than any other way out). Its `refs.jsonl` rows carry `src`
+(the source ref they override, by its source id); refs not listed are copied unchanged. A person's `bed` and
+routine `at` name a copied ref by its source id with the copy's `space`. `clear.jsonl` rows add `why` and `ref`.
 
 Seating is data, never baked: `pos[2]` is what the last seating wrote, and `python -m tools.places seat` rewrites
 it from `seat` and the ground bundle. A ground rebuild is followed by `seat`, `build`, nothing else.

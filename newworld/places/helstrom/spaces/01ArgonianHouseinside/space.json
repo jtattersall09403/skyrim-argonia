@@ -1,0 +1,8 @@
+{
+ "space_id": "01ArgonianHouseinside",
+ "copy_of": "bmv.helstrom/01ArgonianHouseinside",
+ "name": "House",
+ "door_from": "helstrom.82D8KB7P3HT6XHBGSQN3CC1HGK",
+ "parent": "exterior",
+ "room": "Black Marsh.esm:1DE5DE"
+}

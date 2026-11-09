@@ -1,0 +1,13 @@
+{"id":"helstrom.path.01","kind":"path","points":[[-21526.4,-632237.5],[-23414.7,-633080.8]],"width":160.0,"style":"boardwalk","from":"Black Marsh North.esp:04F22F","to":"Black Marsh North.esp:0830A8"}
+{"id":"helstrom.path.02","kind":"path","points":[[-23414.7,-633080.8],[-27853.6,-627848.3]],"width":160.0,"style":"dirt","from":"Black Marsh North.esp:0830A8","to":"Black Marsh.esm:1E42B9"}
+{"id":"helstrom.path.03","kind":"path","points":[[-28510.2,-623287.0],[-27853.6,-627848.3]],"width":160.0,"style":"dirt","from":"Black Marsh.esm:1E42B7","to":"Black Marsh.esm:1E42B9"}
+{"id":"helstrom.path.04","kind":"path","points":[[-28510.2,-623287.0],[-25333.6,-622077.8]],"width":160.0,"style":"dirt","from":"Black Marsh.esm:1E42B7","to":"Black Marsh.esm:1E42B8"}
+{"id":"helstrom.path.05","kind":"path","points":[[-25333.6,-622077.8],[-23422.6,-622755.3]],"width":160.0,"style":"dirt","from":"Black Marsh.esm:1E42B8","to":"landing"}
+{"id":"helstrom.path.06","kind":"path","points":[[-23378.2,-611149.8],[-23422.6,-622755.3]],"width":160.0,"style":"dirt","from":"Black Marsh.esm:1E44AE","to":"landing"}
+{"id":"helstrom.path.07","kind":"path","points":[[-23378.2,-611149.8],[-28617.0,-602658.4]],"width":160.0,"style":"dirt","from":"Black Marsh.esm:1E44AE","to":"Black Marsh.esm:207718"}
+{"id":"helstrom.path.08","kind":"path","points":[[-26033.8,-597115.7],[-28617.0,-602658.4]],"width":160.0,"style":"dirt","from":"Black Marsh.esm:1E42B5","to":"Black Marsh.esm:207718"}
+{"id":"helstrom.path.09","kind":"path","points":[[-26033.8,-597115.7],[-25284.9,-590782.4]],"width":160.0,"style":"dirt","from":"Black Marsh.esm:1E42B5","to":"Black Marsh.esm:1E42B6"}
+{"id":"helstrom.path.10","kind":"path","points":[[-33229.9,-589480.9],[-25284.9,-590782.4]],"width":160.0,"style":"dirt","from":"Black Marsh.esm:1E42B2","to":"Black Marsh.esm:1E42B6"}
+{"id":"helstrom.path.11","kind":"path","points":[[-33229.9,-589480.9],[-36344.6,-592412.6]],"width":160.0,"style":"dirt","from":"Black Marsh.esm:1E42B2","to":"Black Marsh.esm:1E42B4"}
+{"id":"helstrom.path.12","kind":"path","points":[[-33229.9,-589480.9],[-32011.9,-583296.8]],"width":160.0,"style":"dirt","from":"Black Marsh.esm:1E42B2","to":"Black Marsh.esm:1E42B3"}
+{"id":"helstrom.path.13","kind":"path","points":[[-32011.9,-583296.8],[-45012.0,-577530.6]],"width":160.0,"style":"dirt","from":"Black Marsh.esm:1E42B3","to":"Black Marsh.esm:1EEB70"}

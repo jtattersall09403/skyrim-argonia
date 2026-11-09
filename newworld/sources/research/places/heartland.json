@@ -6,7 +6,7 @@
    "status": "inhabited",
    "held_by": "The Helstrom assembly of interior naheesh and tree-minders; a tribal levy keeps the guard",
    "population": 60,
-   "footprint_radius_m": 220,
+   "footprint_radius_m": 535.0,
    "siting": "riverbank",
    "danger_band_id": "D1",
    "importance": 5,

@@ -1,0 +1,8 @@
+{
+ "space_id": "01Exit2",
+ "copy_of": "bmv.helstrom/01Exit2",
+ "name": "To Helstrom",
+ "door_from": "helstrom.8GXDM3P8M3NCZKG52NB6XJCPMQ",
+ "parent": "exterior",
+ "room": null
+}

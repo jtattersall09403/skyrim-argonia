@@ -1,0 +1,8 @@
+{
+ "space_id": "01BlackRoseJail",
+ "copy_of": "bmv.helstrom/01BlackRoseJail",
+ "name": "Quick Test Cell",
+ "door_from": "helstrom.BEYD4B38BPBT4FQSB7KS4W1SW4",
+ "parent": "exterior",
+ "room": null
+}
