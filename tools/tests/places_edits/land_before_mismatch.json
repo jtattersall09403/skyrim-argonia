@@ -1,0 +1,22 @@
+{
+ "error": "expected",
+ "ops": [
+  {
+   "cell": [
+    3,
+    7
+   ],
+   "n": 1,
+   "op": "land.patch",
+   "space": "exterior",
+   "verts": [
+    [
+     4,
+     4,
+     0.0,
+     5.0
+    ]
+   ]
+  }
+ ]
+}

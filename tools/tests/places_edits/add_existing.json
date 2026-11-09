@@ -1,0 +1,33 @@
+{
+ "error": "already exists",
+ "ops": [
+  {
+   "n": 1,
+   "op": "ref.add",
+   "ref": {
+    "base": "Black Marsh.esm:0D7001",
+    "flags": [],
+    "id": "fix.01",
+    "kind": "building",
+    "layer": "place",
+    "pos": [
+     1000,
+     2000,
+     50
+    ],
+    "rot": [
+     0,
+     0,
+     1.57
+    ],
+    "scale": 1.0,
+    "seat": {
+     "dz": 0.0,
+     "mode": "ground"
+    },
+    "src": "bmv.helstrom:01"
+   },
+   "space": "exterior"
+  }
+ ]
+}

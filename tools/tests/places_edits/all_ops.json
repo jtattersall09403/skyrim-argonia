@@ -1,0 +1,531 @@
+{
+ "expected": {
+  "clear": [
+   {
+    "base": "Black Marsh.esm:0A0002",
+    "by": "owner",
+    "pos": [
+     1395,
+     1995,
+     48
+    ]
+   }
+  ],
+  "land": [
+   {
+    "cell": [
+     3,
+     7
+    ],
+    "verts": [
+     [
+      4,
+      5,
+      -6.5
+     ]
+    ],
+    "why": "doorstep"
+   }
+  ],
+  "paths": [
+   {
+    "id": "fix.path1",
+    "kind": "street",
+    "points": [
+     [
+      1000,
+      1900
+     ],
+     [
+      1400,
+      1900
+     ]
+    ],
+    "style": "mud",
+    "width": 320
+   },
+   {
+    "id": "fix.path2",
+    "kind": "path",
+    "points": [
+     [
+      1400,
+      1900
+     ],
+     [
+      1400,
+      2200
+     ]
+    ],
+    "style": "mud",
+    "width": 128
+   }
+  ],
+  "people": [
+   {
+    "base_from": "Black Marsh.esm:0E0001",
+    "bed": "fix.10",
+    "faction_ranks": [],
+    "home": "fix.01",
+    "id": "fix.p1",
+    "name": "Guard 1",
+    "patrol": [
+     [
+      1000,
+      1900
+     ],
+     [
+      1200,
+      1800
+     ],
+     [
+      1400,
+      1900
+     ]
+    ],
+    "role": "guard",
+    "routine": [
+     {
+      "at": {
+       "pos": [
+        1000,
+        1900,
+        50
+       ],
+       "radius": 256,
+       "space": "exterior"
+      },
+      "hours": 12,
+      "kind": "patrol",
+      "start": 8
+     }
+    ],
+    "services": [],
+    "work": null
+   }
+  ],
+  "place": {
+   "place_id": "fixture",
+   "similar": [],
+   "source_id": "bmv.fixture"
+  },
+  "spaces": {
+   "FixHouse01": {
+    "refs": [
+     {
+      "base": "Black Marsh.esm:0D7010",
+      "flags": [],
+      "id": "fix.10",
+      "kind": "furniture",
+      "layer": "place",
+      "pos": [
+       40,
+       20,
+       0
+      ],
+      "rot": [
+       0,
+       0,
+       0
+      ],
+      "scale": 1.0,
+      "seat": {
+       "dz": 0.0,
+       "mode": "free"
+      },
+      "src": "bmv.helstrom:10"
+     }
+    ],
+    "space": {
+     "copy_of": "bmv.fixture/FixHouse01"
+    }
+   },
+   "exterior": {
+    "refs": [
+     {
+      "base": "Black Marsh.esm:0D7001",
+      "flags": [],
+      "id": "fix.01",
+      "kind": "building",
+      "layer": "place",
+      "pos": [
+       1000,
+       1950,
+       52
+      ],
+      "rot": [
+       0,
+       0,
+       0
+      ],
+      "scale": 1.0,
+      "seat": {
+       "dz": 0.0,
+       "mode": "ground"
+      },
+      "src": "bmv.helstrom:01"
+     },
+     {
+      "base": "Black Marsh.esm:0D7002",
+      "flags": [],
+      "id": "fix.02",
+      "kind": "building",
+      "layer": "place",
+      "pos": [
+       1400,
+       2000,
+       48
+      ],
+      "rot": [
+       0,
+       0,
+       0
+      ],
+      "scale": 1.0,
+      "seat": {
+       "dz": 0.0,
+       "mode": "ground"
+      },
+      "src": "bmv.helstrom:02"
+     },
+     {
+      "base": "Black Marsh.esm:0D7020",
+      "flags": [],
+      "id": "fix.20",
+      "kind": "static",
+      "layer": "place",
+      "pos": [
+       1200,
+       2100,
+       49
+      ],
+      "rot": [
+       0,
+       0,
+       0
+      ],
+      "scale": 1.0,
+      "seat": {
+       "dz": 0.0,
+       "mode": "ground"
+      },
+      "src": "bmv.helstrom:20"
+     }
+    ],
+    "space": null
+   }
+  }
+ },
+ "ops": [
+  {
+   "after": {
+    "pos": [
+     1000,
+     1950,
+     52
+    ],
+    "rot": [
+     0,
+     0,
+     0
+    ]
+   },
+   "before": {
+    "pos": [
+     1000,
+     2000,
+     50
+    ],
+    "rot": [
+     0,
+     0,
+     1.57
+    ]
+   },
+   "call": "fault",
+   "id": "fix.01",
+   "n": 1,
+   "note": "off the bank",
+   "op": "ref.move",
+   "space": "exterior"
+  },
+  {
+   "before": {
+    "base": "Black Marsh.esm:0D7003",
+    "flags": [],
+    "id": "fix.03",
+    "kind": "clutter",
+    "layer": "place",
+    "pos": [
+     1010,
+     2050,
+     51
+    ],
+    "rot": [
+     0,
+     0,
+     0
+    ],
+    "scale": 0.8,
+    "seat": {
+     "dz": 0.0,
+     "mode": "on"
+    },
+    "src": "bmv.helstrom:03"
+   },
+   "call": "taste",
+   "id": "fix.03",
+   "n": 2,
+   "op": "ref.remove",
+   "space": "exterior"
+  },
+  {
+   "n": 3,
+   "op": "ref.add",
+   "ref": {
+    "base": "Black Marsh.esm:0D7020",
+    "flags": [],
+    "id": "fix.20",
+    "kind": "static",
+    "layer": "place",
+    "pos": [
+     1200,
+     2100,
+     49
+    ],
+    "rot": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1.0,
+    "seat": {
+     "dz": 0.0,
+     "mode": "ground"
+    },
+    "src": "bmv.helstrom:20"
+   },
+   "space": "exterior"
+  },
+  {
+   "items": [
+    {
+     "base": "Black Marsh.esm:0A0002",
+     "pos": [
+      1395,
+      1995,
+      48
+     ]
+    }
+   ],
+   "n": 4,
+   "op": "veg.clear",
+   "space": "exterior"
+  },
+  {
+   "items": [
+    {
+     "base": "Black Marsh.esm:0A0001",
+     "by": "draft",
+     "pos": [
+      990,
+      1990,
+      50
+     ]
+    }
+   ],
+   "n": 5,
+   "op": "veg.restore",
+   "space": "exterior"
+  },
+  {
+   "cell": [
+    3,
+    7
+   ],
+   "n": 6,
+   "op": "land.patch",
+   "space": "exterior",
+   "tool": {
+    "kind": "lower",
+    "radius": 128,
+    "strength": 0.5
+   },
+   "verts": [
+    [
+     4,
+     4,
+     12.0,
+     0.0
+    ],
+    [
+     4,
+     5,
+     0.0,
+     -6.5
+    ]
+   ]
+  },
+  {
+   "before": {
+    "id": "fix.path1",
+    "kind": "street",
+    "points": [
+     [
+      1000,
+      1900
+     ],
+     [
+      1400,
+      1900
+     ]
+    ],
+    "style": "mud",
+    "width": 256
+   },
+   "n": 7,
+   "op": "path.edit",
+   "path": {
+    "id": "fix.path1",
+    "kind": "street",
+    "points": [
+     [
+      1000,
+      1900
+     ],
+     [
+      1400,
+      1900
+     ]
+    ],
+    "style": "mud",
+    "width": 320
+   },
+   "space": "exterior"
+  },
+  {
+   "n": 8,
+   "op": "path.add",
+   "path": {
+    "id": "fix.path2",
+    "kind": "path",
+    "points": [
+     [
+      1400,
+      1900
+     ],
+     [
+      1400,
+      2200
+     ]
+    ],
+    "style": "mud",
+    "width": 128
+   },
+   "space": "exterior"
+  },
+  {
+   "before": {
+    "base_from": "Black Marsh.esm:0E0001",
+    "bed": "fix.10",
+    "faction_ranks": [],
+    "home": "fix.01",
+    "id": "fix.p1",
+    "name": "Guard 1",
+    "patrol": [
+     [
+      1000,
+      1900
+     ],
+     [
+      1400,
+      1900
+     ]
+    ],
+    "role": "guard",
+    "routine": [
+     {
+      "at": {
+       "pos": [
+        1000,
+        1900,
+        50
+       ],
+       "radius": 256,
+       "space": "exterior"
+      },
+      "hours": 12,
+      "kind": "patrol",
+      "start": 8
+     }
+    ],
+    "services": [],
+    "work": null
+   },
+   "n": 9,
+   "op": "person.edit",
+   "person": {
+    "base_from": "Black Marsh.esm:0E0001",
+    "bed": "fix.10",
+    "faction_ranks": [],
+    "home": "fix.01",
+    "id": "fix.p1",
+    "name": "Guard 1",
+    "patrol": [
+     [
+      1000,
+      1900
+     ],
+     [
+      1200,
+      1800
+     ],
+     [
+      1400,
+      1900
+     ]
+    ],
+    "role": "guard",
+    "routine": [
+     {
+      "at": {
+       "pos": [
+        1000,
+        1900,
+        50
+       ],
+       "radius": 256,
+       "space": "exterior"
+      },
+      "hours": 12,
+      "kind": "patrol",
+      "start": 8
+     }
+    ],
+    "services": [],
+    "work": null
+   },
+   "space": "exterior"
+  },
+  {
+   "after": {
+    "pos": [
+     40,
+     20,
+     0
+    ]
+   },
+   "before": {
+    "pos": [
+     10,
+     20,
+     0
+    ]
+   },
+   "id": "fix.10",
+   "n": 10,
+   "op": "ref.move",
+   "space": "FixHouse01"
+  }
+ ]
+}

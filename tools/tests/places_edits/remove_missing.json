@@ -1,0 +1,34 @@
+{
+ "error": "is not in",
+ "ops": [
+  {
+   "before": {
+    "base": "Black Marsh.esm:0D7020",
+    "flags": [],
+    "id": "fix.20",
+    "kind": "static",
+    "layer": "place",
+    "pos": [
+     1200,
+     2100,
+     49
+    ],
+    "rot": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1.0,
+    "seat": {
+     "dz": 0.0,
+     "mode": "ground"
+    },
+    "src": "bmv.helstrom:20"
+   },
+   "id": "fix.99",
+   "n": 1,
+   "op": "ref.remove",
+   "space": "exterior"
+  }
+ ]
+}

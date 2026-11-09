@@ -1,0 +1,10 @@
+{
+ "error": "unknown op",
+ "ops": [
+  {
+   "n": 1,
+   "op": "ref.paint",
+   "space": "exterior"
+  }
+ ]
+}

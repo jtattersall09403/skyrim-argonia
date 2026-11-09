@@ -1,0 +1,20 @@
+{
+ "error": "is not cleared",
+ "ops": [
+  {
+   "items": [
+    {
+     "base": "Black Marsh.esm:0A0009",
+     "pos": [
+      0,
+      0,
+      0
+     ]
+    }
+   ],
+   "n": 1,
+   "op": "veg.restore",
+   "space": "exterior"
+  }
+ ]
+}

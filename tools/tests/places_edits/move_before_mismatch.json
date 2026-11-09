@@ -1,0 +1,37 @@
+{
+ "error": "differs|expected",
+ "ops": [
+  {
+   "after": {
+    "pos": [
+     1000,
+     1950,
+     52
+    ],
+    "rot": [
+     0,
+     0,
+     0
+    ]
+   },
+   "before": {
+    "pos": [
+     999,
+     2000,
+     50
+    ],
+    "rot": [
+     0,
+     0,
+     1.57
+    ]
+   },
+   "call": "fault",
+   "id": "fix.01",
+   "n": 1,
+   "note": "off the bank",
+   "op": "ref.move",
+   "space": "exterior"
+  }
+ ]
+}

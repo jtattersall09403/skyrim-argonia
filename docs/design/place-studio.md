@@ -126,9 +126,22 @@ An op: `{n, at, op, space, call: "fault"|"taste", note?, stroke?, ...payload wit
 | `path.add` / `path.remove` / `path.edit` | `path`, `before?` |
 | `person.add` / `person.remove` / `person.edit` | `person`, `before?` (placement, routine stops, patrol points) |
 
-`call` defaults to `fault`. Applying a save to the place files is one function (`tools/places/edits.py: apply`),
-used by load (in memory) and by finalise (to disk); the front end's JavaScript mirror is tested against the same
-fixtures.
+- `land.patch` heights are the patch's `dz` at that vertex, as `land.jsonl` holds it (0 is the world's own ground).
+- `path.add` and `person.add` carry the new row; `.remove` carries the removed row; `.edit` carries the row after
+  and `before` the row before.
+- `veg.clear` writes `by: owner` unless the item names `by`; `veg.restore` items carry the `by` they had, so the
+  inverse restores it.
+- Rows are kept in one order (refs, paths and people by id, land by cell, clearance by base and position), so
+  independent ops give the same files in any order. Floats match within 0.001.
+- An op whose `before` (or the row it names) does not match the files is a conflict: the save is not applied and
+  the error names the op. Every op has an inverse; a save then its inverse gives back the files.
+- `place.json` lists `saves_applied`; a save already listed is rejected. Applying a save also appends each `taste`
+  op to `place.json` `preferences` as `{save, n, op, what, note}`.
+
+`call` defaults to `fault`. Applying a save to the place files is one function (`tools/places/edits.py: apply`,
+`apply_save` for a whole save), used by load (in memory) and by finalise (to disk). The fixtures in
+`tools/tests/places_edits/` (`place.json`, and per case `ops` with `expected` or an `error` pattern) are the
+semantics; the front end's JavaScript mirror is tested against the same files.
 
 ## Studio API (`/api`, JSON; the front end uses nothing else)
 
