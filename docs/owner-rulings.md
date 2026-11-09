@@ -263,3 +263,29 @@ added here the day they are made, with the date and the issue.
   records, registers, counts and papers are reworked into Argonian life (the Hist, eggs, trade by water, raiding,
   ruins, beasts, kin, memory carried in speech and carving), keeping a few where a document is natural (an outsider's
   papers). The rework stays faithful to canon and to the one extrapolation spine, history and faith above all: a fact other places rely on is kept and only the way it is carried changes.
+- 2026-11-09 (in session, the nw-03 interview): the place builder and the studio.
+  **Scope.** The whole of nw-03 is built in one overnight run, with no core-first trial: the studio at a URL, the
+  first draft of Helstrom loaded beside BM&V's Helstrom, the place-builder skill, the edits-to-lessons agent, and
+  both interim save-and-load and save-and-finalise proven end to end. Everything is delivered; nothing is left
+  for a later pass. Nothing is deployed to the play machine until after the owner's nw-02 walk.
+  **Built for every place.** The tooling is built from the ground up for any place seeded on any source place;
+  Helstrom on BM&V's Helstrom is only the first.
+  **Real ground and plants.** The draft and the studio use the real current in-game world: heights, water level,
+  trees, plants, ground cover and scatter are read from the built game file, checked identical to the deployed
+  one. The draft seats every placed thing correctly in or on the terrain. The agent clears vegetation as
+  appropriate while drafting; the owner can clear more and un-clear in the studio. The owner's terrain edits
+  finalise into the land records that are then deployed.
+  **Extent.** All of BM&V's Helstrom at its true size, landing included, the landing on our real riverbank. The
+  layout is adapted to fit our terrain wherever possible; a land patch is the last resort. Our record's radius
+  is corrected to what was built.
+  **People.** Every service person our place record promises, working, with a bed and a routine; guards and a
+  crime faction; residents only up to the bed count of the copied homes; each of the nine houses its own
+  interior; placeholder names until nw-05; no talk beyond services.
+  **Hosting.** The studio is drawn in the tablet's browser and served from the build machine behind the owner's
+  Cloudflare login; the machine stays awake while a studio tab is open. AWS going over $100 in November 2026 is
+  accepted for this (estimate $130 to $160).
+  **Interiors.** Open in the studio from the first night with the same tools; routines run unbroken from street
+  to room.
+  **Finalise.** One tap runs record, build, learn and report unattended. Lessons from fault edits land in the
+  skill as their own revertible commit; taste edits never become rules.
+  **The phase file.** The owner's wording in a phase plan is preserved; agents add below it, never rewrite it.

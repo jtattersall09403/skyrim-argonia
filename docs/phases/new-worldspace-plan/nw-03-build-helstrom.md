@@ -26,3 +26,44 @@ Studio Tooling: I want to access it in a browser so I can use it from my tablet.
 
 
 Figure out and implement some smart and super fast way for us to test/prove the core functionality of this tooling, and try it out with me first before we dive into all of the above. I'm pretty confident we can build most of it, so just think about what the riskiest functionalities are and let's prove those as simply and rapidly as possible first before building the rest.
+
+
+---
+
+## Agreed in the interview of 2026-11-09 (added by the agent; the owner's text above is unchanged)
+
+The rulings are recorded in [owner-rulings](../../owner-rulings.md) under 2026-11-09. They change or add to the
+text above as follows.
+
+- **No core-first trial.** The whole of this phase is built in one overnight run and delivered complete.
+- **Nothing reaches the play machine yet.** The first deploy of Helstrom follows the owner's nw-02 walk and
+  first real finalise. Save-and-load and save-and-finalise are both proven end to end off the game.
+- **Built for every place.** A place is a row that points at a source place in any plugin we hold. Helstrom on
+  BM&V's Helstrom is the first row. The source pane is a chooser, ready for nw-04's allocated source and three
+  similar places and for nw-06's drop-down.
+- **The real world, in the draft and in the studio.** Heights, water level, trees, plants, ground cover and
+  scatter are read from the built game file, checked identical to the deployed one. The studio shows every
+  height point. The studio shows the build's fingerprint and warns when it differs from the deployed one.
+- **Seating.** The draft seats every placed thing correctly in or on the terrain.
+- **Vegetation.** The agent clears vegetation while drafting, following the source place's own clearance. The
+  owner clears more, or un-clears, in the studio; un-clearing restores the plant the world had at that spot.
+- **Terrain edits.** Each becomes a patch to that cell's land record, read back point for point, seams included.
+- **Extent.** All of BM&V's Helstrom at its true size, landing included, with the landing on our real
+  riverbank. The layout adapts to our terrain wherever possible; a land patch is the last resort and each one
+  is listed in the studio. The place record's radius is corrected to what was built.
+- **People.** Every service person the place record promises, working, with a bed and a routine. Guards and a
+  crime faction. Residents only up to the bed count of the copied homes. Each of the nine houses has its own
+  interior. Placeholder names until nw-05. No talk beyond services.
+- **Interiors in the studio.** Tap a door to step inside, on either side. The same tools work there, and
+  routines run unbroken from street to room.
+- **Hosting.** Drawn in the tablet's browser, served from the build machine behind the owner's Cloudflare
+  login. The machine stays awake while a studio tab is open and stops itself after the last one closes.
+- **Interim save and load.** Named saves of work in progress, reloadable in a later session, separate from
+  finalise.
+- **Finalise.** One tap runs four steps unattended: record the edits in the database, build the place and its
+  navmesh and run the checkers, learn (an agent turns fault edits into a cleaner skill recipe, as its own
+  revertible commit; taste edits stay preferences for that place), and report in the studio in plain English.
+- **Places are a layer.** Places are built as a separate layer over the world file. Layouts are stored relative
+  to the place and re-seated automatically when the ground changes, so a world rebuild and a place build never
+  touch each other.
+- **Wide search.** The all-sources search shows Nordic pieces clearly marked (decision 0006).
