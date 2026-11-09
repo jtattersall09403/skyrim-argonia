@@ -273,16 +273,25 @@ def run(plugin: Path, out: Path, do_dump: bool = True) -> int:
         nomodel = [m for m in models if rv.where(m) is None]
         rep.row("refs", "every ref's base model resolves in the NewWorld profile", f"{len(models) - len(nomodel)}/{len(models)}",
                 not nomodel, f"missing e.g. {nomodel[:4]}")
-        notex = Counter()
+        # only a missing diffuse shows purple: it fails unless the placer's alternate-texture repair covers the shape
+        # (bases.json alt_textures, written onto our copy as MODS + TXST); other missing slots are a warning count
+        from tools.newworld.place import place as P, texsets
+        src = P.REFS / "bases.json"
+        fixed = {(MESHES.sub("", b["model"]).lower().replace("/", "\\"), a["shape"]) for b in (jload(src)["bases"] if src.exists() else [])
+                 for a in b.get("alt_textures", []) if a["slots"][0]}
+        audit = texsets.Audit(A, P.mod_textures)
+        notex, other = Counter(), 0
         for m in models:
             raw = rv.read(m) if m not in nomodel else None
-            for t in nif_textures(raw or b""):
-                i = t.rfind("textures\\")  # the engine reads from the last textures\ on (authoring paths keep a prefix)
-                t = t[i:] if i >= 0 else "textures\\" + t
-                if not A.has(t):
-                    notex[t] += 1
-        rep.row("refs", "every model's textures resolve in the NewWorld profile", len(notex), not notex,
-                f"missing e.g. {list(notex)[:4]}")
+            a = audit.model(raw or b"", P.model_mod(rv, m))
+            other += len(a["missing_other"])
+            for d in a["missing_diffuse"]:
+                notex[d["path"]] += 1
+            for r in a["repairs"]:
+                if r["slots"][0] and (m.lower().replace("/", "\\"), r["shape"]) not in fixed:
+                    notex[r["from"][0]] += 1
+        rep.row("refs", "every model's diffuse textures resolve in the NewWorld profile (alt textures applied)", len(notex), not notex,
+                f"missing e.g. {list(notex)[:4]}; " * bool(notex) + f"warning: {other} non-diffuse slots missing")
         place_rows(rep, natural, out)
 
     @section(rep, "mist")
@@ -348,11 +357,13 @@ def run(plugin: Path, out: Path, do_dump: bool = True) -> int:
 
     @section(rep, "map")
     def _map():
-        mu = (H.get("world") or {}).get("map_usable") or [0, 0]
-        rep.row("map", "world map area (WRLD MNAM usable size)", mu, all(v > 0 for v in mu),
-                "" if all(v > 0 for v in mu) else "MNAM empty: `lod.sh map` (nwmap apply) has not run on this ESM")
-        mk = sum(1 for r in refs if r["edid"] == "MapMarker")
-        rep.row("map", f"map markers ({MARKERS})", mk, mk == MARKERS)
+        w = H.get("world") or {}
+        nw, se = w.get("map_nw") or [0, 0], w.get("map_se") or [0, 0]
+        ok = se[0] > nw[0] and nw[1] > se[1]  # usable size stays 0,0 as on Tamriel; the NW/SE pan box carries the map
+        rep.row("map", "world map pan box (WRLD MNAM NW/SE cells)", f"NW{nw} SE{se}", ok,
+                "" if ok else "MNAM empty: world.sh's map stage (nwmap apply) has not run on this ESM")
+        mk = w.get("map_markers", 0)
+        rep.row("map", f"map markers in the persistent cell ({MARKERS})", mk, mk == MARKERS)
 
     @section(rep, "start")
     def _start():
@@ -412,7 +423,7 @@ def place_rows(rep: Report, natural: list[dict], out: Path) -> None:
     rows, unmapped = [], 0
     for r in natural:
         e = (r["edid"] or "").lower()
-        b = by_key.get(r["base"].lower()) or by_edid.get(em(e[4:] if e.startswith("anw_") else e, r["model"]))  # ForeignCopy names a copy ANW_<edid>
+        b = by_key.get(r["base"].lower()) or by_edid.get(em(re.sub(r"^anw_[a-z0-9]+_", "", e), r["model"]))  # ForeignCopy: ANW_<initials>_<edid>
         if b is None:
             unmapped += 1
             continue

@@ -7,8 +7,13 @@
 //   FormKey ours = fc.Get(someForeignFormKey, "Tropical Skyrim.esp");     // by form key, read from that plugin
 // A record found in an allowed master (Skyrim.esm, Update.esm, Black Marsh.esm and its masters) is linked, not
 // copied, unless Get(..., forceCopy: true); one named from a non-allowed plugin is always copied as that plugin has it. A copy keeps every field (model and texture paths point at the mod's
-// installed assets), gets EditorID "ANW_" + the source's, and each of its own links into a non-allowed plugin is
+// installed assets), gets EditorID "ANW_<plugin initials>_" + the source's (BM&V North and Valenwood share editor ids;
+// the plugin it was read from keeps them apart, the same every build), and each of its own links into a non-allowed plugin is
 // copied the same way first (recursively, once each: `Map` holds source -> ours), so the copy is self-contained.
+// A copy's link into an allowed master that names no record there (King of the Murkmire's alternate textures pointing
+// at 000028:Skyrim.esm) is dropped: the alternate-texture entry is removed, any other such link is nulled; each logged.
+// AltTextures(ours, [(shape, 3D index, 8 nif slot paths)]) puts a texture repair on a copy's model: a new TXST of
+// ours with the corrected paths, listed in the model's MODS (Skyrim's alternate textures; the mesh is untouched).
 // Plugins are read from the Data folder, else from ~/.argonia/stack/MO2/mods/*/ (asset-only mods are staged there).
 using Mutagen.Bethesda;
 using Mutagen.Bethesda.Plugins;
@@ -80,12 +85,73 @@ sealed class ForeignCopy : IDisposable
         var ours = new FormKey(mod.ModKey, next++);
         Map[src.FormKey] = ours;
         var dup = (IMajorRecord)src.Duplicate(ours);
-        dup.EditorID = "ANW_" + (src.EditorID ?? src.FormKey.IDString());
+        dup.EditorID = $"ANW_{Initials(file)}_{src.EditorID ?? src.FormKey.IDString()}";
         foreach (var l in src.EnumerateFormLinks().Select(l => l.FormKey).Distinct().ToList())
             if (!l.IsNull && !allowed.Contains(l.ModKey) && !Map.ContainsKey(l)) Get(l, file);
         dup.RemapLinks(Map);
+        DropDangling(dup);
         mod.GetTopLevelGroup(dup.GetType()).AddUntyped(dup);
+        Copies[ours] = dup;
         return ours;
+    }
+
+    public readonly Dictionary<FormKey, IMajorRecord> Copies = new();
+
+    // "Black Marsh North.esp" -> BMN, "King of the Murkmire.esp" -> KotM, "DepthsOfSkyrim.esp" -> DOS
+    public static string Initials(string file) =>
+        string.Concat(System.Text.RegularExpressions.Regex.Matches(Path.GetFileNameWithoutExtension(file), "[A-Z][a-z]*|[a-z]+|[0-9]+").Select(m => m.Value[0]));
+
+    readonly Dictionary<ModKey, HashSet<FormKey>> masterKeys = new();
+    bool Exists(FormKey fk)
+    {
+        if (fk.ModKey == mod.ModKey) return true;
+        if (!masterKeys.TryGetValue(fk.ModKey, out var ks))
+            masterKeys[fk.ModKey] = ks = Plugin(fk.ModKey.FileName).EnumerateMajorRecords().Select(r => r.FormKey).ToHashSet();
+        return ks.Contains(fk);
+    }
+
+    void DropDangling(IMajorRecord dup)
+    {
+        var bad = dup.EnumerateFormLinks().Select(l => l.FormKey).Where(k => !k.IsNull && allowed.Contains(k.ModKey) && !Exists(k)).ToHashSet();
+        if (bad.Count == 0) return;
+        if (dup is IModeled { Model.AlternateTextures: { } alts })
+        {
+            var n = alts.RemoveAll(a => bad.Contains(a.NewTexture.FormKey));
+            if (n > 0) Console.WriteLine($"foreign copy: {dup.EditorID}: {n} alternate texture(s) into a missing record dropped ({string.Join(", ", bad)})");
+        }
+        var left = dup.EnumerateFormLinks().Select(l => l.FormKey).Where(bad.Contains).ToHashSet();
+        if (left.Count == 0) return;
+        dup.RemapLinks(left.ToDictionary(k => k, _ => FormKey.Null));
+        Console.WriteLine($"foreign copy: {dup.EditorID}: links into missing records nulled ({string.Join(", ", left)})");
+    }
+
+    public void AltTextures(FormKey ours, IEnumerable<(string Shape, int Index, string[] Slots)> alts)
+    {
+        if (!Copies.TryGetValue(ours, out var rec) || rec is not IModeled { Model: { } model })
+            throw new InvalidDataException($"{ours}: not a copied record with a model; alternate textures need our copy");
+        model.AlternateTextures ??= new();
+        foreach (var (shape, index, s) in alts)
+        {
+            var ts = new TextureSet(new FormKey(mod.ModKey, next++), SkyrimRelease.SkyrimSE)
+            {
+                EditorID = $"{rec.EditorID}_Tex{index}",
+                ObjectBounds = new ObjectBounds(),
+            };
+            string? P(int i) => i < s.Length && s[i] != "" ? s[i] : null;
+            // nif slots -> TXST: 0 diffuse, 1 normal, 2 glow, 3 height, 4 environment, 5 environment mask, 6 multilayer, 7 backlight
+            if (P(0) is { } d) ts.Diffuse = d;
+            if (P(1) is { } nrm) ts.NormalOrGloss = nrm;
+            if (P(2) is { } g) ts.GlowOrDetailMap = g;
+            if (P(3) is { } h) ts.Height = h;
+            if (P(4) is { } e) ts.Environment = e;
+            if (P(5) is { } em) ts.EnvironmentMaskOrSubsurfaceTint = em;
+            if (P(6) is { } ml) ts.Multilayer = ml;
+            if (P(7) is { } bl) ts.BacklightMaskOrSpecular = bl;
+            mod.TextureSets.Add(ts);
+            model.AlternateTextures.RemoveAll(a => a.Name == shape);
+            model.AlternateTextures.Add(new AlternateTexture { Name = shape, Index = index, NewTexture = ts.ToLink<ITextureSetGetter>() });
+            Console.WriteLine($"alt texture: {rec.EditorID} shape '{shape}' #{index} -> {ts.EditorID} ({P(0)})");
+        }
     }
 
     public void Dispose() { foreach (var p in plugins.Values) p.Dispose(); }

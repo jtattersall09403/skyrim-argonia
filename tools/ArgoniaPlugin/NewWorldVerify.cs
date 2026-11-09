@@ -107,6 +107,10 @@ static class NewWorldVerify
             climate_weathers = clim?.WeatherTypes.Select(w => new { weather = Ed(w.Weather.FormKey), chance = w.Chance }).ToList(),
             water = ws.Water.IsNull ? null : Ed(ws.Water.FormKey), default_water = ws.LandDefaults?.DefaultWaterHeight,
             map_usable = ws.MapData is { } md ? new[] { md.UsableDimensions.X, md.UsableDimensions.Y } : null,
+            map_nw = ws.MapData is { } m1 ? new[] { m1.NorthwestCellCoords.X, m1.NorthwestCellCoords.Y } : null,
+            map_se = ws.MapData is { } m2 ? new[] { m2.SoutheastCellCoords.X, m2.SoutheastCellCoords.Y } : null,
+            // map markers live in the world's persistent cell (NewWorldMap.cs), which the cell walk below never reads
+            map_markers = ws.TopCell?.Persistent.OfType<IPlacedObjectGetter>().Count(r => r.MapMarker is not null) ?? 0,
         };
         object? marker = null; int startCells = 0;
         using var cw = new StreamWriter(Path.Combine(outDir, "cells.tsv"));

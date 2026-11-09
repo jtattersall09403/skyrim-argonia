@@ -26,6 +26,7 @@ static class NewWorld
     static readonly Quadrant[] Quads = { Quadrant.BottomLeft, Quadrant.BottomRight, Quadrant.TopLeft, Quadrant.TopRight };
     // fixed form ids: the bytes depend only on the shards
     const uint IdWorld = 0x800, IdTopCell = 0x801, IdMarker = 0x802, IdCopies = 0x900, IdRegions = 0x880, IdCells = 0x100000, IdRefs = 0x200000;  // cell k: IdCells + 2k, its LAND +1; 0x900.. copied records
+    static readonly string[] Allowed = { "Skyrim.esm", "Update.esm", "Black Marsh.esm" };  // the only masters (verify.py MASTERS)
 
     record Manifest(JsonElement Root)
     {
@@ -95,7 +96,7 @@ static class NewWorld
         mod.Worldspaces.Add(ws);
         // the ground paint (tools/newworld/world/texture.py): our own LTEX per material, copied from its source
         // (asset-only plugins via ForeignCopy), with our grass list
-        var allowed = bm.ModHeader.MasterReferences.Select(m => m.Master).Append(bm.ModKey).Append(ModKey.FromFileName("Update.esm")).ToList();
+        var allowed = Allowed.Select(f => ModKey.FromFileName(f)).ToList();  // a DLC record (Black Marsh's own masters) is copied too
         using var fc = new ForeignCopy(mod, allowed, data, IdCopies);
         var texDir = Path.Combine(Path.GetDirectoryName(man.Dir)!, "tex");
         var texMan = JsonDocument.Parse(File.ReadAllText(Path.Combine(texDir, "manifest.json"))).RootElement;
@@ -310,6 +311,17 @@ static class NewWorld
         var bases = new Dictionary<string, FormKey>();
         // NW_REF_PRODUCERS (comma list, e.g. "mist") limits the producers read; a shard a producer is replacing is skipped
         var only = Environment.GetEnvironmentVariable("NW_REF_PRODUCERS")?.Split(',', StringSplitOptions.RemoveEmptyEntries).ToHashSet();
+        // a producer's bases.json may carry alternate textures for a base ("alt_textures": [{shape, index, slots[8]}],
+        // tools/newworld/place/texsets.py): that base is always copied and the repair put on our copy's model
+        var alts = new Dictionary<string, List<(string, int, string[])>>();
+        foreach (var bj in Directory.EnumerateFiles(dir, "bases.json", SearchOption.AllDirectories).Order())
+        {
+            if (only is not null && !only.Contains(Path.GetFileName(Path.GetDirectoryName(bj)!))) continue;
+            foreach (var e in JsonDocument.Parse(File.ReadAllText(bj)).RootElement.GetProperty("bases").EnumerateArray())
+                if (e.TryGetProperty("alt_textures", out var at))
+                    alts[e.GetProperty("ref").GetString()!] = at.EnumerateArray().Select(a => (a.GetProperty("shape").GetString()!,
+                        a.GetProperty("index").GetInt32(), a.GetProperty("slots").EnumerateArray().Select(x => x.GetString() ?? "").ToArray())).ToList();
+        }
         foreach (var f in Directory.EnumerateFiles(dir, "*.jsonl", SearchOption.AllDirectories).Order())
         {
             if (only is not null && !only.Contains(Path.GetFileName(Path.GetDirectoryName(f)!))) continue;
@@ -320,7 +332,13 @@ static class NewWorld
                 if (line.Length == 0) continue;
                 var o = JsonDocument.Parse(line).RootElement;
                 var b = o.GetProperty("base").GetString()!;
-                if (!bases.TryGetValue(b, out var bk)) { var sp = b.Split(':', 2); bases[b] = bk = fc.Get(sp[0], sp[1]); }
+                if (!bases.TryGetValue(b, out var bk))
+                {
+                    var sp = b.Split(':', 2);
+                    if (alts.TryGetValue(b, out var alt)) { bk = fc.Get(sp[0], sp[1], forceCopy: true); fc.AltTextures(bk, alt); }
+                    else bk = fc.Get(sp[0], sp[1]);
+                    bases[b] = bk;
+                }
                 float G(string k) => (float)o.GetProperty(k).GetDouble();
                 var pos = new P3Float(G("x"), G("y"), G("z"));
                 var cell = ((int)Math.Floor(pos.X / CELL), (int)Math.Floor(pos.Y / CELL));
@@ -452,7 +470,7 @@ static class NewWorld
         }
         // asset-only plugins: never a master, never a link target (owner ruling 2026-11-08)
         using var bmc = SkyrimMod.CreateFromBinaryOverlay(Path.Combine(data, "Black Marsh.esm"), Rel, Survey.NoStrings);
-        var allowed = bmc.ModHeader.MasterReferences.Select(m => m.Master).Append(bmc.ModKey).Append(ModKey.FromFileName("Update.esm")).Append(mod.ModKey).ToHashSet();
+        var allowed = Allowed.Select(f => ModKey.FromFileName(f)).Append(mod.ModKey).ToHashSet();
         foreach (var m in masters) if (!allowed.Contains(ModKey.FromFileName(m))) Fail($"master {m} is not allowed");
         long links = 0, badLinks = 0;
         foreach (var r in mod.EnumerateMajorRecords())

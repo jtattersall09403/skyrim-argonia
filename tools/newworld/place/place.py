@@ -46,6 +46,7 @@ The recipe (numbers from research/nw-02-flora-rules.md, nw-02-ground-water-rules
 """
 from __future__ import annotations
 
+import functools
 import hashlib
 import json
 import math
@@ -350,8 +351,8 @@ class Palette:
                 self.skipped["editor id does not name this record in its plugin"].append(bid); continue
             if self.resolver.where(rec["model"]) is None:
                 self.skipped["model not in the NewWorld profile"].append(bid); continue
-            if self.missing_textures(rec["model"]):
-                self.skipped["a texture inside the model not in the NewWorld profile"].append(bid); continue
+            if self.tex_audit(rec["model"])["missing_diffuse"]:
+                self.skipped["a diffuse texture inside the model not in the NewWorld profile"].append(bid); continue
             c = fam["flora_class_id"]
             name = rec["model"].replace("\\", "/").rsplit("/", 1)[-1].lower()
             b["open_az"] = sides.get(name, "unknown")
@@ -365,23 +366,21 @@ class Palette:
                 self.rows[(regions.index(r["region_id"]) if r["region_id"] in regions else -1,
                            habs.index(r["habitat_id"]))].append((r["flora_base_id"], r["density_per_ha"]))
         self.dress_ok = {k for k in dress_keys if k in self.rec and self.rec[k]["model"]
-                         and self.resolver.where(self.rec[k]["model"]) and not self.missing_textures(self.rec[k]["model"])}
+                         and self.resolver.where(self.rec[k]["model"]) and not self.tex_audit(self.rec[k]["model"])["missing_diffuse"]}
         self.class_of = {bid: self.fam[b["flora_family_id"]]["flora_class_id"] for bid, b in self.base.items()}
         self.prio = {c: i for i, c in enumerate(ORDER)}
 
-    def missing_textures(self, model: str) -> list[str]:
-        """Texture paths named inside the model's nif that the NewWorld profile does not lay (the verifier's reader:
-        the engine reads from the last textures\\ on)."""
+    def tex_audit(self, model: str) -> dict:
+        """The model's texture sets against the NewWorld profile (texsets.py): missing diffuses (the base is refused),
+        missing other slots (a warning) and the alternate-texture repairs the writer puts on our copy."""
         from tools.newworld import verify
-        if not hasattr(self, "_assets"):
-            self._assets = verify.assets()
-        out = []
-        for t in sorted(verify.nif_textures(self.resolver.read(model) or b"")):
-            i = t.rfind("textures\\")
-            t = t[i:] if i >= 0 else "textures\\" + t
-            if not self._assets.has(t):
-                out.append(t)
-        return out
+        from tools.newworld.place import texsets
+        if not hasattr(self, "_tex"):
+            self._tex = {}
+            self._audit = texsets.Audit(verify.assets(), mod_textures)
+        if model not in self._tex:
+            self._tex[model] = self._audit.model(self.resolver.read(model) or b"", model_mod(self.resolver, model))
+        return self._tex[model]
 
     def sink_m(self, bid, rng):
         """Metres at scale 1 the pivot is set under the ground."""
@@ -768,6 +767,35 @@ def _row(args):
     return cy, out, dict(tally)
 
 
+def model_mod(resolver, model: str) -> str | None:
+    """The MO2 mod that lays the model (loose or in one of its archives), None for the game's own archives."""
+    w = resolver.where(model)
+    if w is None:
+        return None
+    if w.startswith("loose:"):
+        return w[6:]
+    for m in resolver.mods:
+        if (m / w).is_file():
+            return m.name
+    return None
+
+
+@functools.lru_cache(maxsize=None)
+def mod_textures(mod: str) -> frozenset[str]:
+    """Every texture path the mod lays, loose or archived (lower case, backslashes, data-relative)."""
+    from tools.navmesh import bsa
+    root = MO2 / mod
+    out = set()
+    for d in (p for p in root.iterdir() if p.is_dir() and p.name.lower() == "textures") if root.is_dir() else ():
+        out |= {str(f.relative_to(root)).lower().replace("/", "\\") for f in d.rglob("*") if f.is_file()}
+    for p in sorted(root.glob("*.bsa")):
+        try:
+            out |= {f.replace("/", "\\") for f in bsa.Archive(bsa.local(p)).files if f.startswith("textures/")}
+        except (ValueError, OSError):
+            continue
+    return frozenset(out)
+
+
 def dropped_by_region(P: Palette) -> dict:
     """Per region: distinct db bases in its region_flora rows, how many were kept, and the dropped ones by reason."""
     rows = defaultdict(set)
@@ -897,7 +925,9 @@ def run(force: bool = False, workers: int = 3) -> dict:
     used = sorted({r["base"] for out in results.values() for _, refs in out for r in refs})
     db_of = {v: kk for kk, v in P.key_of.items()}
     bases = [{"key": b, "ref": f"{P.rec[b]['plugin']}:{P.rec[b]['edid']}", "copied": b.split(":", 1)[1] not in MASTERS,
-              **{kk: P.rec[b][kk] for kk in ("sig", "model", "obnd", "edid", "plugin")}, "db_id": db_of.get(b)} for b in used]
+              **{kk: P.rec[b][kk] for kk in ("sig", "model", "obnd", "edid", "plugin")}, "db_id": db_of.get(b),
+              **({"alt_textures": P.tex_audit(P.rec[b]["model"])["repairs"]} if P.tex_audit(P.rec[b]["model"])["repairs"] else {}),
+              "missing_non_diffuse": len(P.tex_audit(P.rec[b]["model"])["missing_other"])} for b in used]
     for old in REFS.glob("cy*.jsonl"):
         old.unlink()
     per_cell = {}
