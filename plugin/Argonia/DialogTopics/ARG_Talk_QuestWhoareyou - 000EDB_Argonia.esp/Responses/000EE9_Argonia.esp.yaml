@@ -6,7 +6,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Ri'Sakka. This one ran when the huts burned. The roll is ash now. This one is wet and hungry.
+    Value: Ri'Sakka. This one owes months to the broker on the pier. The overseer adds more months for every meal. This one eats only when it must.
   ScriptNotes: ''
   Edits: ''
 Conditions:
@@ -20,13 +20,12 @@ Conditions:
   Data:
     MutagenObjectType: GetStageConditionData
     Quest: 000E00:Argonia.esp
-  ComparisonValue: 40
 - MutagenObjectType: ConditionFloat
   CompareOperator: LessThan
   Data:
     MutagenObjectType: GetStageConditionData
     Quest: 000E00:Argonia.esp
-  ComparisonValue: 1000
+  ComparisonValue: 40
 Prompt:
   TargetLanguage: English
   Value: Who are you?

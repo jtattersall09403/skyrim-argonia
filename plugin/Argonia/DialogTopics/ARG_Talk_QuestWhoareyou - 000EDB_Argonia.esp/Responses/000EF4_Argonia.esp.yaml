@@ -6,14 +6,14 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Hides-His-Wake. I work this camp, and I do not talk about it with strangers. Go back the way you came.
+    Value: Counts-The-Jars. I tend the jars of sap at this camp. You have no business here. Go.
   ScriptNotes: ''
   Edits: ''
 Conditions:
 - MutagenObjectType: ConditionFloat
   Data:
     MutagenObjectType: GetIsIDConditionData
-    Object: 000D91:Argonia.esp
+    Object: 000D92:Argonia.esp
   ComparisonValue: 1
 - MutagenObjectType: ConditionFloat
   CompareOperator: GreaterThanOrEqualTo

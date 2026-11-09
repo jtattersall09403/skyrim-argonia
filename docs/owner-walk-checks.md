@@ -198,6 +198,7 @@ put the old ones back. That can no longer happen (the install now refuses an out
       the stairs. The other door (down in the hold and up the far stairs) now opens onto its room and does not move you.
 - [ ] **9.4 Everyone in the opening has something to say.** In the hold, ask Ri'Sakka, Tsanji, Llarvi Maryon and
       Finds-The-Other-Bank "Who are you?"; on the pier, Mee-Tuja the courier; at the camp, Sal-Sei and Deesh-Duun.
+      The block test's Dock Walker answers too (`startquest ARG_BlockTest`, `setstage ARG_BlockTest 50`, then ask him).
 - [ ] **9.5 Buys-The-Months on the pier** no longer asks you for something you cannot give: he tells you Wuleen-Sei
       asks the names, and after you have answered her, that it is written.
 - [ ] **9.6 Heights.** Mee-Tuja on the pier, and Ties-The-Loose-Plank on the shore after the fire, stand as tall as the

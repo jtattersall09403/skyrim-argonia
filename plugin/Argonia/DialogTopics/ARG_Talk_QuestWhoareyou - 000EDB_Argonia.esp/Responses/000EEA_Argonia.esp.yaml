@@ -6,26 +6,27 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: I am Sal-Sei. I keep the clutch of eggs at the roots of the Hist cutting from Nine Bends. Do not go near the eggs.
+    Value: Ri'Sakka. This one ran when the huts burned. The roll is ash now. This one is wet and hungry.
   ScriptNotes: ''
   Edits: ''
 Conditions:
 - MutagenObjectType: ConditionFloat
   Data:
     MutagenObjectType: GetIsIDConditionData
-    Object: 000E10:Argonia.esp
+    Object: 000E0C:Argonia.esp
   ComparisonValue: 1
 - MutagenObjectType: ConditionFloat
   CompareOperator: GreaterThanOrEqualTo
   Data:
     MutagenObjectType: GetStageConditionData
     Quest: 000E00:Argonia.esp
+  ComparisonValue: 40
 - MutagenObjectType: ConditionFloat
   CompareOperator: LessThan
   Data:
     MutagenObjectType: GetStageConditionData
     Quest: 000E00:Argonia.esp
-  ComparisonValue: 40
+  ComparisonValue: 1000
 Prompt:
   TargetLanguage: English
   Value: Who are you?

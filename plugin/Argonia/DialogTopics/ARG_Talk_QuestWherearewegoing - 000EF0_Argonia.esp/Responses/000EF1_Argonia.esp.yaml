@@ -6,26 +6,26 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: You do not know me. If you were at the Hereguard camp, a person in Lilmoth wants to hear about it. I will say no more.
+    Value: We go to the camp at the edge of the paddies on Hereguard Plantation. The broker has hired you out to work there. Keep up with the gang.
   ScriptNotes: ''
   Edits: ''
 Conditions:
 - MutagenObjectType: ConditionFloat
   Data:
     MutagenObjectType: GetIsIDConditionData
-    Object: 000E72:Argonia.esp
+    Object: 000E03:Argonia.esp
   ComparisonValue: 1
 - MutagenObjectType: ConditionFloat
   CompareOperator: GreaterThanOrEqualTo
   Data:
     MutagenObjectType: GetStageConditionData
-    Quest: 000E01:Argonia.esp
+    Quest: 000E00:Argonia.esp
 - MutagenObjectType: ConditionFloat
   CompareOperator: LessThan
   Data:
     MutagenObjectType: GetStageConditionData
-    Quest: 000E01:Argonia.esp
-  ComparisonValue: 1000
+    Quest: 000E00:Argonia.esp
+  ComparisonValue: 40
 Prompt:
   TargetLanguage: English
-  Value: Who are you?
+  Value: Where are we going?

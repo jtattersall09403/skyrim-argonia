@@ -6,14 +6,14 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: I am Deesh-Duun. I owe months on the roll, like you. I want to be off the roll and out of the broker's hire.
+    Value: You do not need my name. Go and sit by your fire.
   ScriptNotes: ''
   Edits: ''
 Conditions:
 - MutagenObjectType: ConditionFloat
   Data:
     MutagenObjectType: GetIsIDConditionData
-    Object: 000E11:Argonia.esp
+    Object: 000E13:Argonia.esp
   ComparisonValue: 1
 - MutagenObjectType: ConditionFloat
   CompareOperator: GreaterThanOrEqualTo

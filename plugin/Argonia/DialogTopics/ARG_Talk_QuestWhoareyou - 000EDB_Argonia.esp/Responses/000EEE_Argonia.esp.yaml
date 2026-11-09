@@ -1,4 +1,4 @@
-FormKey: 000EF0:Argonia.esp
+FormKey: 000EEE:Argonia.esp
 Flags: {}
 Responses:
 - ResponseNumber: 1
@@ -6,26 +6,27 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: We go to the camp at the edge of the paddies on Hereguard Plantation. The broker has hired you out to work there. Keep up with the gang.
+    Value: Tsanji. This one saw a tall woman with a knotted cord at her wrist. She led the ones who set the fire.
   ScriptNotes: ''
   Edits: ''
 Conditions:
 - MutagenObjectType: ConditionFloat
   Data:
     MutagenObjectType: GetIsIDConditionData
-    Object: 000E03:Argonia.esp
+    Object: 000E0D:Argonia.esp
   ComparisonValue: 1
 - MutagenObjectType: ConditionFloat
   CompareOperator: GreaterThanOrEqualTo
   Data:
     MutagenObjectType: GetStageConditionData
     Quest: 000E00:Argonia.esp
+  ComparisonValue: 40
 - MutagenObjectType: ConditionFloat
   CompareOperator: LessThan
   Data:
     MutagenObjectType: GetStageConditionData
     Quest: 000E00:Argonia.esp
-  ComparisonValue: 40
+  ComparisonValue: 1000
 Prompt:
   TargetLanguage: English
-  Value: Where are we going?
+  Value: Who are you?

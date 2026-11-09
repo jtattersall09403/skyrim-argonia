@@ -1,7 +1,7 @@
-FormKey: 000EEE:Argonia.esp
+FormKey: 000EEF:Argonia.esp
 EditorID: ARG_Talk_QuestWherearewegoingBranch
 Quest: 000833:Argonia.esp
 Category: Player
 Flags:
 - TopLevel
-StartingTopic: 000EEF:Argonia.esp
+StartingTopic: 000EF0:Argonia.esp

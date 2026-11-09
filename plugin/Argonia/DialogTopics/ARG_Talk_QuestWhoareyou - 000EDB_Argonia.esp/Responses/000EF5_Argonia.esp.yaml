@@ -6,15 +6,26 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: I am a lookout. I watch the stair and the water. If you have business here, talk to Bent-Spine, not to me.
+    Value: Hides-His-Wake. I work this camp, and I do not talk about it with strangers. Go back the way you came.
   ScriptNotes: ''
   Edits: ''
 Conditions:
 - MutagenObjectType: ConditionFloat
   Data:
     MutagenObjectType: GetIsIDConditionData
-    Object: 000C57:Argonia.esp
+    Object: 000D91:Argonia.esp
   ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  CompareOperator: GreaterThanOrEqualTo
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 000D8C:Argonia.esp
+- MutagenObjectType: ConditionFloat
+  CompareOperator: LessThan
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 000D8C:Argonia.esp
+  ComparisonValue: 1000
 Prompt:
   TargetLanguage: English
   Value: Who are you?

@@ -63,10 +63,10 @@ Black Marsh's main world (BlackMarsh2's 18 crashed the seed); they keep the shar
 
 **The slice quests' people (2026-11-08).** On a new game 119 talkers are reachable: the SEQ file
 (`out/SEQ/Argonia.seq`, from Seq.cs) starts the start-game quests that carry their dialogue. Of the 25 people the
-slice quests place, 24 speak: those with no quest topic of their own answer "Who are you?" (or "Where are we
-going?") from `story/data/quest_lines/quest_people.json`, 25 lines written through dialogue-write and text-review
-(one reader pass, lint 0), built into ARG_Talk by Talk.cs QuestPeople and gated on the quest's stage. The block
-test's Dock Walker alone stays silent. Owed: the owner's walk checks, `docs/owner-walk-checks.md` §9.
+slice quests place, all 25 speak: those with no quest topic of their own answer "Who are you?" (or "Where are we
+going?") from `story/data/quest_lines/quest_people.json`, 26 lines written through dialogue-write and text-review
+(one reader pass, lint 0), built into ARG_Talk by Talk.cs QuestPeople and gated on the quest's stage (the block test's Dock
+Walker on ARG_BlockTest). Owed: the owner's walk checks, `docs/owner-walk-checks.md` §9.
 
 ## The census (`bmv_talker`, `python3 -m tools.argonia_world.talk_census build`)
 

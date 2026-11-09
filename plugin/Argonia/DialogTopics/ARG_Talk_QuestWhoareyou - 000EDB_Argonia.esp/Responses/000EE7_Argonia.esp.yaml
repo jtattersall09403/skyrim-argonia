@@ -6,14 +6,14 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: I am Nesh-Neel. My family works off its months here, like the rest of the gang. Sit by the fire when Ux-Xeek reads the roll.
+    Value: Mee-Tuja. I carry a satchel upriver. I walk with your gang as far as the camp. I will not say whose satchel it is.
   ScriptNotes: ''
   Edits: ''
 Conditions:
 - MutagenObjectType: ConditionFloat
   Data:
     MutagenObjectType: GetIsIDConditionData
-    Object: 000E0F:Argonia.esp
+    Object: 000E07:Argonia.esp
   ComparisonValue: 1
 - MutagenObjectType: ConditionFloat
   CompareOperator: GreaterThanOrEqualTo

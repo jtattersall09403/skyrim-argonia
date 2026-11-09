@@ -296,5 +296,18 @@
         "I am a lookout. I watch the water. If you came down the trapdoor, Bent-Spine has been told."
       ]
     }
+  ],
+  "ARG_BT_Walker": [
+    {
+      "when": [
+        "ARG_BlockTest",
+        0,
+        1000
+      ],
+      "prompt": "Who are you?",
+      "lines": [
+        "I walk the dock and count the crates in the ship's hold. When the keeper says go, I go."
+      ]
+    }
   ]
 }

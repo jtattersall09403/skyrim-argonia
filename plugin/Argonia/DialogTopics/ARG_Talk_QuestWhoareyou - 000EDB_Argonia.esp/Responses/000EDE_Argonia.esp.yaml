@@ -6,26 +6,26 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: You do not need my name. Go and sit by your fire.
+    Value: I walk the dock and count the crates in the ship's hold. When the keeper says go, I go.
   ScriptNotes: ''
   Edits: ''
 Conditions:
 - MutagenObjectType: ConditionFloat
   Data:
     MutagenObjectType: GetIsIDConditionData
-    Object: 000E13:Argonia.esp
+    Object: 000806:Argonia.esp
   ComparisonValue: 1
 - MutagenObjectType: ConditionFloat
   CompareOperator: GreaterThanOrEqualTo
   Data:
     MutagenObjectType: GetStageConditionData
-    Quest: 000E00:Argonia.esp
+    Quest: 000803:Argonia.esp
 - MutagenObjectType: ConditionFloat
   CompareOperator: LessThan
   Data:
     MutagenObjectType: GetStageConditionData
-    Quest: 000E00:Argonia.esp
-  ComparisonValue: 40
+    Quest: 000803:Argonia.esp
+  ComparisonValue: 1000
 Prompt:
   TargetLanguage: English
   Value: Who are you?
