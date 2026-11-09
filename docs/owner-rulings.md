@@ -258,3 +258,8 @@ added here the day they are made, with the date and the issue.
 - 2026-11-09 (in session): the atlas's water layer may look blobby, but in the game all water is one continuous
   connected surface at one level, and the seams between water areas, kinds and colours are smooth and gradual, never
   hard edges or gaps (a cell's water type changes only through a blend of neighbouring types, measured off game).
+- 2026-11-09 (in session): on ledgers, tallies and the like it is the theme as well as the word: Black Marsh is not
+  a bureaucratic place, and the player's play should not revolve round ledgers and documents. Concepts built on
+  records, registers, counts and papers are reworked into Argonian life (the Hist, eggs, trade by water, raiding,
+  ruins, beasts, kin, memory carried in speech and carving), keeping a few where a document is natural (an outsider's
+  papers).
