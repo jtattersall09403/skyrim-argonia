@@ -80,3 +80,7 @@ show in the console with `getpos x` and `getpos y`, or just name the place). A s
 - [ ] **N. People can get around.** Optional: near Lilmoth (`cow ArgoniaBlackMarsh 33 -224`), type
       `player.placeatme 00023ABE` (a wolf), let it chase you and run round trees and along the road: it follows,
       not stuck or walking into the water at random.
+- [ ] **O. Relief (your call).** The terrain follows the region research: most of Black Marsh is low and nearly
+      flat, like BM&V's own marsh (10 to 25 m of height in most regions), with more relief only in the uplands and
+      mesas (Chixathe mesa, `cow ArgoniaBlackMarsh 20 -175`; the Aunike ridge). If you want more hills or higher
+      mesas anywhere, say where; it is a change to the region table, then one rebuild.
