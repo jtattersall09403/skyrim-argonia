@@ -225,7 +225,7 @@
     },
     {
      "aspect": "climate",
-     "text": "Humid and warm; monsoon floods close the causeways for days at a time.",
+     "text": "Humid and warm, with heavy rain and thunder in the region's weather; the lower causeway stretches lie under shallow water that carts wade.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -525,7 +525,7 @@
     },
     {
      "aspect": "climate",
-     "text": "The air is humid. The tide reaches far up the western rivers.",
+     "text": "The air is humid and the rain frequent. Black tidal water fills the western river mouths, brackish and slow.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -591,7 +591,7 @@
     },
     {
      "aspect": "history",
-     "text": "Kothringi homeland in large numbers; the Knahaten Flu emptied it in 2E 560; the Maran mission died at Umpholo in the 3E.",
+     "text": "Kothringi homeland in large numbers; the Knahaten Flu emptied it by 2E 603; the Maran mission died at Umpholo in the 3E.",
      "tier": "CANON_EXPLICIT",
      "sources": [
       {
@@ -774,7 +774,7 @@
     },
     {
      "aspect": "climate",
-     "text": "The air is humid. The monsoon closes the roads of the frontier.",
+     "text": "The air is humid, with long rains and fog over the bogs; the frontier roads are mud where they are not causeway.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {

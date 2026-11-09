@@ -27,7 +27,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "The city of the Valley of Storms region and the likeliest first sight of the province for a newcomer. (full TEXT: \"Stormhold is the largest settlement of Shadowfen, a major city of Black Marsh, sited near the banks of the river that forms the border with Morrowind. The city of the Valley of Storms region and the likeliest first sight of the province for a newcomer.\")",
+     "text": "Stormhold is the largest settlement of Shadowfen and a major city of Black Marsh, near the banks of the river that forms the border with Morrowind. It is the city of the Valley of Storms and the likeliest first sight of the province for a newcomer.",
      "tier": "CANON_EXPLICIT",
      "sources": [
       {
@@ -194,7 +194,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "The Silyanorn undercity holds crystal tunnels and a lost book of wisdom about the natural energies of Black Marsh. The Conclave of Baal keeps its Vaults of Gemin. The old quarrel between the Argonian west quarter and the Dunmer is a further hook, and so are the Vicecanons' courts.",
+     "text": "Below the city, the Silyanorn tunnels hold crystal galleries and an Ayleid well-room that outlaws use as a hideout. The old quarrel between the Argonian west quarter and the Dunmer families flares over a stolen clutch of eggs from the square's Hist pond, and the Vicecanons' court wants the thief found before the quarters settle it themselves.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -225,6 +225,108 @@
      "id": "shore-access",
      "radius_m": 300,
      "why": "the border river runs practically outside the walls"
+    }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "map marker: Stormhold, the city gate",
+     "count": 1
+    },
+    {
+     "kind": "carriage-or-boat",
+     "detail": "a riverboat at the quay sailing to Alten Corimont and back up to the Morrowind border crossing",
+     "count": 1
+    },
+    {
+     "kind": "trader-general",
+     "detail": "a Dunmer merchant in the old Ayleid compound, mixed goods from both sides of the border",
+     "count": 1
+    },
+    {
+     "kind": "trader-blacksmith",
+     "detail": "the screen's armourer, selling chitin, iron and steel, and Stormhold Crystal-studded tools",
+     "count": 1
+    },
+    {
+     "kind": "trader-apothecary",
+     "detail": "an Argonian herbalist on the west quarter's mounds",
+     "count": 1
+    },
+    {
+     "kind": "trader-spells",
+     "detail": "a Dunmer mage selling Alteration and Illusion tomes up to Adept, scrolls and soul gems",
+     "count": 1
+    },
+    {
+     "kind": "trader-jeweller",
+     "detail": "a crystal-cutter selling cut Stormhold Crystals (Skyrim's amethyst and garnet) and silver rings",
+     "count": 1
+    },
+    {
+     "kind": "trader-innkeeper",
+     "detail": "a tavern on the bridge mounds",
+     "count": 1
+    },
+    {
+     "kind": "inn-room",
+     "detail": "a room above the bridge tavern",
+     "count": 1
+    },
+    {
+     "kind": "forge",
+     "detail": "the frontier screen's forge with its anvil",
+     "count": 1
+    },
+    {
+     "kind": "grindstone",
+     "detail": "by the forge",
+     "count": 1
+    },
+    {
+     "kind": "armour-workbench",
+     "detail": "by the forge",
+     "count": 1
+    },
+    {
+     "kind": "smelter",
+     "detail": "in the crystal tunnels' mouth",
+     "count": 1
+    },
+    {
+     "kind": "tanning-rack",
+     "detail": "on the west quarter's mounds",
+     "count": 1
+    },
+    {
+     "kind": "alchemy-lab",
+     "detail": "the herbalist's",
+     "count": 1
+    },
+    {
+     "kind": "arcane-enchanter",
+     "detail": "the Dunmer mage's",
+     "count": 1
+    },
+    {
+     "kind": "cooking-pot",
+     "detail": "in the tavern",
+     "count": 1
+    },
+    {
+     "kind": "trainer",
+     "detail": "Expert Alteration trainer, the Dunmer Vicecanon's mage",
+     "count": 1
+    },
+    {
+     "kind": "trainer",
+     "detail": "Adept Light Armor trainer, a sergeant of the frontier screen",
+     "count": 1
+    },
+    {
+     "kind": "shrine-blessing",
+     "detail": "the Hist in the square's pond: a blessing of resist poison, given by its tree-minder",
+     "count": 1
     }
    ]
   },
@@ -308,7 +410,7 @@
     },
     {
      "aspect": "people",
-     "text": "Veesa-Teeleel Argonians, courteous to Dunmer without trusting them. Elders and a tree-minder at the pool; a few Stormhold factors lodge in the market season.",
+     "text": "Veesa-Teeleel Argonians, courteous to Dunmer without trusting them. Elders and a tree-minder at the pool; a few Stormhold buyers lodge on market days.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -414,7 +516,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A looter caught with Ayleid goods and the elders' refusal to hand him to Stormhold; a weir warden who sees lights at Nenria at night; the Hist pool's tree-minder asking the player to carry a message to the Root-Folk.",
+     "text": "A looter caught with Ayleid goods, and the elders' refusal to hand him to Stormhold; a weir warden who sees lights at Nenria at night; the tree-minder asking the player to carry a phial of the pool's sap to the Root-Folk at Vel-Sapha Stand.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -444,6 +546,53 @@
      "id": "shore-access",
      "radius_m": 110,
      "why": "the Hist pool and the reed-boat lanes"
+    }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "map marker: Jal-Veesa",
+     "count": 1
+    },
+    {
+     "kind": "trader-general",
+     "detail": "reed boats, mats, rope and dried fish at the jetty market",
+     "count": 1
+    },
+    {
+     "kind": "trader-innkeeper",
+     "detail": "a fish-smoker's stall on the road side",
+     "count": 1
+    },
+    {
+     "kind": "free-bed",
+     "detail": "a mat in the elders' long house",
+     "count": 1
+    },
+    {
+     "kind": "trainer",
+     "detail": "Adept Archery trainer, a ruin-warden of the Veesa-Teeleel",
+     "count": 1
+    },
+    {
+     "kind": "fishing",
+     "detail": "the weir channels: eels and gar",
+     "count": 1
+    },
+    {
+     "kind": "cooking-pot",
+     "detail": "at the fish racks",
+     "count": 1
+    },
+    {
+     "kind": "tanning-rack",
+     "detail": "by the boat sheds",
+     "count": 1
+    },
+    {
+     "kind": "shrine-blessing",
+     "detail": "the Hist pool: a blessing of waterbreathing and resist disease from the tree-minder",
+     "count": 1
     }
    ]
   },
@@ -486,24 +635,25 @@
     },
     {
      "aspect": "history",
-     "text": "Built by the Third Empire as a border fort beside Stormhold. No Imperial presence is recorded in Black Marsh after 4E 48; the garrison left or died, and the fort passed to the successor state.",
+     "text": "Built by the Third Empire as a border fort beside Stormhold. The Legion marched out at the secession (4E 5-10), and an ex-Archein family took the keys and has held the fort in the Archwardens' name since.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
-       "kind": "dossier",
-       "title": "foreign-powers.md",
-       "locator": "story/lore/topics/foreign-powers.md"
+       "kind": "uesp",
+       "title": "Lore:Fourth Era",
+       "locator": "Lore:Fourth Era",
+       "url": "https://en.uesp.net/wiki/Lore:Fourth_Era"
       },
       {
        "kind": "extrapolation",
-       "title": "settlement-register.md",
-       "locator": "story/lore/extrapolation/settlement-register.md"
+       "title": "argonia-4e201-state.md §10 (the spine)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     },
     {
      "aspect": "present",
-     "text": "A garrison of a few Archwarden soldiers collects river and road tolls and watches the crossing to Morrowind. The ranks and paperwork are half Cyrodiilic, kept by old Archein families.",
+     "text": "A garrison of a few Archwarden soldiers takes the road and river tolls and watches the crossing to Morrowind. The ranks and drill are half Cyrodiilic, kept by the old Archein family that holds the keys.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -524,7 +674,7 @@
     },
     {
      "aspect": "people",
-     "text": "Argonian soldiers and a handful of clerks from Archein families; the commander answers to the Vicecanons for customs and to the state for the screen.",
+     "text": "Argonian soldiers under a captain of an ex-Archein family; the captain answers to the Vicecanons for the tolls and to the Archwardens for the screen.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -620,7 +770,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A smuggled cargo held at the gate; a clerk selling false toll stamps; a tower watchman who reports fires in the Morrowind hills.",
+     "text": "A Dunmer trader's raft held at the gate for a cargo of slaves' shackles nobody will explain; a tower watchman who sees fires in the Morrowind hills and is not believed.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -645,6 +795,43 @@
      "id": "flat-pad",
      "radius_m": 60,
      "why": "the fort's yard and walls"
+    }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "map marker: Fort Willowmoth",
+     "count": 1
+    },
+    {
+     "kind": "trader-blacksmith",
+     "detail": "the garrison quartermaster: iron and steel arms, arrows",
+     "count": 1
+    },
+    {
+     "kind": "forge",
+     "detail": "the fort yard's forge with its anvil",
+     "count": 1
+    },
+    {
+     "kind": "grindstone",
+     "detail": "in the fort yard",
+     "count": 1
+    },
+    {
+     "kind": "armour-workbench",
+     "detail": "in the fort yard",
+     "count": 1
+    },
+    {
+     "kind": "trainer",
+     "detail": "Adept Block trainer, the fort's captain",
+     "count": 1
+    },
+    {
+     "kind": "free-bed",
+     "detail": "a bunk in the barracks for a traveller who pays the toll",
+     "count": 1
     }
    ]
   },
@@ -717,7 +904,7 @@
     },
     {
      "aspect": "present",
-     "text": "A dozen households of Argonians and Dunmer on stone mounds, linked to Stormhold by a causeway that floods in the monsoon.",
+     "text": "A dozen households of Argonians and Dunmer on stone mounds, linked to Stormhold by a causeway whose lower stretch lies under shallow black water that carts wade through.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -847,7 +1034,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Wildlife and flooded causeways; crocodiles take the odd goat.",
+     "text": "Wildlife on the causeway; crocodiles lie in the drowned stretch and take the odd goat.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -873,7 +1060,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A causeway washed out in the monsoon and a family cut off; a feud between the Argonian and Dunmer farm-holders over a water-right.",
+     "text": "A family on the far mound whose causeway stones were pulled out by someone in the night, so their saltrice cannot reach market; a feud between the Argonian and Dunmer farm-holders over a water-right.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -903,6 +1090,33 @@
      "id": "flat-pad",
      "radius_m": 60,
      "why": "the village's raised stone platforms"
+    }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "map marker: Surkina",
+     "count": 1
+    },
+    {
+     "kind": "harvest-common",
+     "detail": "saltrice paddies and marsh greens on the mounds",
+     "count": 3
+    },
+    {
+     "kind": "fishing",
+     "detail": "eels in the paddy ditches",
+     "count": 1
+    },
+    {
+     "kind": "cooking-pot",
+     "detail": "the headman's yard",
+     "count": 1
+    },
+    {
+     "kind": "trader-innkeeper",
+     "detail": "a farm wife selling saltrice cakes and smoked eel",
+     "count": 1
     }
    ]
   },
@@ -1100,7 +1314,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Wildlife threatens travellers on the river road east of Stormhold, and the crystal pits above the village are worse, with roof-falls and whatever lives in the old workings.",
+     "text": "Wildlife threatens travellers on the river road east of Stormhold, and the crystal pits above the village are worse, with rockfall traps and whatever lives in the old workings.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1126,7 +1340,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A pit-boss who has found a vein that hums; a traveller who arrived by river and has not left his room.",
+     "text": "A pit-boss who has found a vein that hums; a traveller who came by river with a sack of Dres slave-irons and has not left his room since.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1162,6 +1376,38 @@
      "radius_m": 60,
      "why": "the river landing"
     }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "map marker: Tenmal",
+     "count": 1
+    },
+    {
+     "kind": "trader-innkeeper",
+     "detail": "the long wayhouse",
+     "count": 1
+    },
+    {
+     "kind": "inn-room",
+     "detail": "a room in the wayhouse",
+     "count": 1
+    },
+    {
+     "kind": "carriage-or-boat",
+     "detail": "the ferryman's boat up the river to Stormhold's quay",
+     "count": 1
+    },
+    {
+     "kind": "trader-jeweller",
+     "detail": "the pit-boss's wife, selling raw Stormhold Crystal (amethyst and garnet) bought from the pits",
+     "count": 1
+    },
+    {
+     "kind": "cooking-pot",
+     "detail": "the wayhouse hearth",
+     "count": 1
+    }
    ]
   },
   {
@@ -1176,22 +1422,27 @@
    "importance": 1,
    "summary": "A raised stone farmstead of one Dunmer-descended family, south-west of Fort Willowmoth, growing saltrice for Stormhold.",
    "lore_page": null,
-   "statement_tier_id": "AGENT_INVENTED",
+   "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
    "notes": [
     {
      "aspect": "overview",
-     "text": "Vandrel Farm is a farm on the Stormhold causeway country, named in the Stormhold manner for a Dunmer-descended family.",
-     "tier": "AGENT_INVENTED",
+     "text": "Vandrel Farm is one of the Dunmer-descended smallholdings that ring Stormhold: the city keeps the oldest Dunmer minority in the province, descended from the colonial slave-trade years, and its families farm the raised causeway ground south of the city. The name is Dunmeri, like the family's.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
-       "kind": "map",
-       "title": "[Farm] marker at (-1,-64)",
-       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
+       "kind": "dossier",
+       "title": "stormhold.md",
+       "locator": "story/lore/stormhold.md"
       },
       {
        "kind": "reasoning",
-       "title": "naming style of stone-grey culture: Dunmer family names on farms"
+       "title": "Stormhold's Dunmer minority (stormhold.md, spine §10.2); causeway farm siting SW of Fort Willowmoth on the map; Dunmer house names (Vandrel)"
+      },
+      {
+       "kind": "map",
+       "title": "farm icon at (-1,-64) SW of Fort Willowmoth",
+       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
       }
      ]
     },
@@ -1275,7 +1526,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Saltrice and eels sold to Stormhold on the causeway; a share goes to the Vicecanon's reeve.",
+     "text": "Saltrice and eels carried to Stormhold on the causeway; the family pays the causeway toll at the post like any carter.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1410,6 +1661,28 @@
      "radius_m": 25,
      "why": "the farmyard and barn on a mound"
     }
+   ],
+   "gives": [
+    {
+     "kind": "harvest-common",
+     "detail": "saltrice in the flooded fields",
+     "count": 2
+    },
+    {
+     "kind": "cooking-pot",
+     "detail": "the farmhouse hearth",
+     "count": 1
+    },
+    {
+     "kind": "tanning-rack",
+     "detail": "by the barn",
+     "count": 1
+    },
+    {
+     "kind": "free-bed",
+     "detail": "the barn loft, if the family likes the player",
+     "count": 1
+    }
    ]
   },
   {
@@ -1425,22 +1698,27 @@
    "importance": 1,
    "summary": "A weir-wardens' camp on the river south-east of Stormhold, keeping fish traps and sedge beds that feed the city.",
    "lore_page": null,
-   "statement_tier_id": "AGENT_INVENTED",
+   "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
    "notes": [
     {
      "aspect": "overview",
-     "text": "Sedgeweir is an outpost in the jade culture's reed-and-weir style, a weir-wardens' camp on the river south-east of Stormhold.",
-     "tier": "AGENT_INVENTED",
+     "text": "Sedgeweir is one of the Veesa-Teeleel fish-weirs that feed Stormhold: the reed-wardens of Jal-Veesa keep the creeks round the city, and the creek south-east of the city is where they set one of their weirs. The name is the wardens' plain word for it.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
+       "kind": "reasoning",
+       "title": "Veesa-Teeleel hold the weirs of the Valley of Storms (spine §10.2); outpost on a creek south-east of Stormhold (map)"
+      },
+      {
        "kind": "map",
-       "title": "green triangle at (1,-67)",
+       "title": "outpost icon on the river SE of Stormhold",
        "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
       },
       {
-       "kind": "reasoning",
-       "title": "jade culture reed-and-weir naming"
+       "kind": "extrapolation",
+       "title": "argonia-4e201-state.md §10 (the spine)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     },
@@ -1534,7 +1812,7 @@
     },
     {
      "aspect": "faith",
-     "text": "A small Hist-shoot shrine fed with the first catch of the season.",
+     "text": "A small Hist-shoot shrine fed with the first eel of each catch.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1600,7 +1878,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "Someone is pulling up the weir stakes at night; a boat of Dunmer traders asks to cross without paying.",
+     "text": "Someone is pulling up the weir stakes at night and leaving the crocodiles a way in; a boat of Dunmer traders asks to cross without paying.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1627,6 +1905,34 @@
      "radius_m": 40,
      "why": "boat landing and weir"
     }
+   ],
+   "gives": [
+    {
+     "kind": "fishing",
+     "detail": "the weir: eels and gar",
+     "count": 1
+    },
+    {
+     "kind": "cooking-pot",
+     "detail": "by the drying racks",
+     "count": 1
+    },
+    {
+     "kind": "tanning-rack",
+     "detail": "on the bank",
+     "count": 1
+    },
+    {
+     "kind": "combat-creature",
+     "detail": "crocodiles in the weir pool",
+     "count": 3,
+     "reward": "treasure"
+    },
+    {
+     "kind": "treasure",
+     "detail": "a drowned trader's strongbox under the weir, D1 tier",
+     "count": 1
+    }
    ]
   },
   {
@@ -1641,22 +1947,27 @@
    "importance": 1,
    "summary": "A ferry stage and wayhouse on the eastern branch of the river south-east of Stormhold, on the road toward Helstrom.",
    "lore_page": null,
-   "statement_tier_id": "AGENT_INVENTED",
+   "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
    "notes": [
     {
      "aspect": "overview",
-     "text": "Ranvos Landing is a minor outpost named in the Stormhold manner for a Dunmer family and its landing, a ferry stage on the eastern river branch.",
-     "tier": "AGENT_INVENTED",
+     "text": "Ranvos Landing is the ferry where the road from Stormhold toward Helstrom meets the river's eastern branch, kept by a Dunmer-descended family of the Stormhold country. The Dunmeri house name follows the city's old minority.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
+       "kind": "reasoning",
+       "title": "road from Stormhold toward Helstrom crosses the eastern branch (map); Stormhold's Dunmer families farm and keep the crossings round the city (stormhold.md)"
+      },
+      {
        "kind": "map",
-       "title": "[Outpost] dot at (2,-68)",
+       "title": "outpost icon on the eastern branch SE of Stormhold",
        "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
       },
       {
-       "kind": "reasoning",
-       "title": "stone-grey naming"
+       "kind": "dossier",
+       "title": "stormhold.md",
+       "locator": "story/lore/stormhold.md"
       }
      ]
     },
@@ -1716,7 +2027,7 @@
     },
     {
      "aspect": "people",
-     "text": "A Dunmer-descended ferryman and his Argonian crew make up the ferry-keeper's family that holds the landing under the Vicecanon's writ.",
+     "text": "A Dunmer-descended ferryman and his Argonian crew, the one family that keeps the landing with the Vicecanons' leave.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1883,6 +2194,28 @@
      "radius_m": 25,
      "why": "the ferry landing"
     }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "map marker: Ranvos Landing",
+     "count": 1
+    },
+    {
+     "kind": "carriage-or-boat",
+     "detail": "the rope-hauled ferry across the eastern branch to the Helstrom road",
+     "count": 1
+    },
+    {
+     "kind": "trader-innkeeper",
+     "detail": "the roadhouse: smoked meat and saltrice",
+     "count": 1
+    },
+    {
+     "kind": "inn-room",
+     "detail": "a room in the roadhouse",
+     "count": 1
+    }
    ]
   },
   {
@@ -1897,22 +2230,27 @@
    "importance": 1,
    "summary": "A road post on the northern trunk where it leaves Stormhold's causeway north-west of Fort Willowmoth, taking a small toll on reed and fish cargoes.",
    "lore_page": null,
-   "statement_tier_id": "AGENT_INVENTED",
+   "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
    "notes": [
     {
      "aspect": "overview",
-     "text": "Causeway-Head Post is an outpost named for its position at the head of the northern causeway, north-west of Fort Willowmoth.",
-     "tier": "AGENT_INVENTED",
+     "text": "Causeway-Head Post stands where the northern road leaves Stormhold's mounds, north-west of Fort Willowmoth. A city that takes tolls on its causeways and its river would keep a bar at the head of the busiest one; the name says where it is.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
+       "kind": "reasoning",
+       "title": "Archwarden and Vicecanon revenue is tolls at crossings (spine §10.2); road leaves the causeway NW of Fort Willowmoth (map)"
+      },
+      {
        "kind": "map",
-       "title": "[Outpost] triangle at (-1,-61) on the northern road",
+       "title": "outpost icon NW of Fort Willowmoth on the northern road",
        "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
       },
       {
-       "kind": "reasoning",
-       "title": "stone-grey naming"
+       "kind": "extrapolation",
+       "title": "argonia-4e201-state.md §10 (the spine)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     },
@@ -1962,7 +2300,7 @@
     },
     {
      "aspect": "people",
-     "text": "A Vicecanon's reeve with two Argonian guards, and a clerk who comes on market days to tally the tolls.",
+     "text": "A Vicecanon's reeve with two Argonian guards; the reeve knows every carter by face and who still owes the toll.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2072,7 +2410,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A cart with a sealed crate that the clerk is told to let through; a night guard who has seen lights on the northern road.",
+     "text": "A cart with a nailed-shut crate that the reeve has been paid to wave through; a night guard who has seen lights on the northern road.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2099,13 +2437,25 @@
      "radius_m": 35,
      "why": "toll-house and bar"
     }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "map marker: Causeway-Head Post",
+     "count": 1
+    },
+    {
+     "kind": "trader-general",
+     "detail": "a stall of lamp oil, rope and travel food",
+     "count": 1
+    }
    ]
   },
   {
    "id": "outpost-m3-m60",
    "name": "Sedge-Kal Camp",
    "culture_id": "jade",
-   "status": "seasonal",
+   "status": "inhabited",
    "held_by": "Veesa-Teeleel reed-cutters on rotation",
    "population": 5,
    "footprint_radius_m": 40,
@@ -2114,28 +2464,33 @@
    "importance": 1,
    "summary": "A seasonal cutters' camp on the northern road beyond Jal-Veesa, where the reed is cut for Stormhold's mat-makers.",
    "lore_page": null,
-   "statement_tier_id": "AGENT_INVENTED",
+   "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
    "notes": [
     {
      "aspect": "overview",
-     "text": "Sedge-Kal Camp is a seasonal reed-cutters' camp on the swamp north of Jal-Veesa, two cells from Stormhold, where Veesa-Teeleel crews cut sedge in the cool months for Stormhold's mat-makers. Its name is in the jade style.",
-     "tier": "AGENT_INVENTED",
+     "text": "Sedge-Kal Camp is where Veesa-Teeleel crews cut the northern plain's reed for Stormhold's mat-makers. Jal-Veesa lives on reed mats sold to the city, and the reed beds beyond it on the northern road are the nearest wide stand; the name is in the wardens' tongue.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
+       "kind": "reasoning",
+       "title": "Jal-Veesa's reed trade with Stormhold; reed beds on the plain north of Jal-Veesa (map)"
+      },
+      {
        "kind": "map",
-       "title": "green triangle at (-3,-60)",
+       "title": "outpost icon on the swamp N of Jal-Veesa",
        "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
       },
       {
-       "kind": "reasoning",
-       "title": "jade naming"
+       "kind": "extrapolation",
+       "title": "argonia-4e201-state.md §10 (the spine)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     },
     {
      "aspect": "history",
-     "text": "The reed beds of the northern plain beyond Jal-Veesa have been cut seasonally for as long as there have been mats to sell.",
+     "text": "The reed beds of the northern plain beyond Jal-Veesa have been cut for as long as there have been mats to sell.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2157,7 +2512,7 @@
     },
     {
      "aspect": "present",
-     "text": "A cluster of lean-to huts and boat landings, occupied from the dry season's start until the reed is bound.",
+     "text": "A cluster of lean-to huts and boat landings, where a crew of cutters lives until the reed is bound and then another crew takes its place.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2289,7 +2644,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "Cutters report a stranger who is paying for reed to be burned; a child has gone missing near the old Imperial ruin to the south.",
+     "text": "Cutters report a stranger who is paying for reed to be burned; a child has gone missing near the old Imperial waystation to the south.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2316,13 +2671,41 @@
      "radius_m": 40,
      "why": "the camp's huts"
     }
+   ],
+   "gives": [
+    {
+     "kind": "harvest-common",
+     "detail": "sedge and swamp fungus on the cut beds",
+     "count": 2
+    },
+    {
+     "kind": "free-bed",
+     "detail": "a lean-to",
+     "count": 1
+    },
+    {
+     "kind": "cooking-pot",
+     "detail": "the camp fire",
+     "count": 1
+    },
+    {
+     "kind": "combat-creature",
+     "detail": "crocodiles in the cut channels",
+     "count": 2,
+     "reward": "treasure"
+    },
+    {
+     "kind": "treasure",
+     "detail": "a cutters' stash of coin and a steel knife, D2 tier",
+     "count": 1
+    }
    ]
   },
   {
    "id": "mine-5-m64",
    "name": "Tenmal Pits",
    "status": "inhabited",
-   "held_by": "A pit-boss and a handful of delvers on a Vicecanon's licence",
+   "held_by": "A pit-boss and a handful of delvers, by the Vicecanons' leave",
    "population": 6,
    "footprint_radius_m": 40,
    "siting": "hilltop",
@@ -2330,24 +2713,33 @@
    "importance": 2,
    "summary": "A crystal pit in the hills above Tenmal, worked for Stormhold Crystals by a few households.",
    "lore_page": null,
-   "statement_tier_id": "AGENT_INVENTED",
+   "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
    "notes": [
     {
      "aspect": "overview",
-     "text": "Tenmal Pits is a mine named for the nearby village. It yields the Stormhold Crystal. The deposits run under the northern hills.",
-     "tier": "AGENT_INVENTED",
+     "text": "Tenmal Pits is a crystal pit above Tenmal village. Canon puts the Stormhold Crystals in the tunnels under the city, dug in the late 3E; a seam running into the hills east of it would be worked by the nearest village once the prison diggings stopped.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
-       "kind": "map",
-       "title": "mine icon at (5,-64)",
-       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
+       "kind": "uesp",
+       "title": "Lore:Stormhold",
+       "locator": "Lore:Stormhold",
+       "url": "https://en.uesp.net/wiki/Lore:Stormhold"
       },
       {
-       "kind": "uesp",
-       "title": "Lore:Stormhold Crystal",
-       "locator": "Lore:Stormhold Crystal",
-       "url": "https://en.uesp.net/wiki/Lore:Stormhold_Crystal"
+       "kind": "dossier",
+       "title": "stormhold.md",
+       "locator": "story/lore/stormhold.md"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Stormhold Crystals dug under the city (Lore:Stormhold); mine icon in the hills above Tenmal (map)"
+      },
+      {
+       "kind": "map",
+       "title": "mine icon above Tenmal",
+       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
       }
      ]
     },
@@ -2422,7 +2814,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Raw crystal sold to Stormhold's guild halls; the pit pays a fee to the Vicecanons.",
+     "text": "Raw crystal sold to Stormhold's crystal-cutters; a share of every load goes to the Vicecanons for the right to dig.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2491,7 +2883,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Roof-falls threaten the delvers in the timber-propped galleries. Something lives in the old sealed galleries deeper in.",
+     "text": "Rockfall traps in the timber-propped galleries. Chaurus nest in the old walled-off galleries deeper in.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2514,7 +2906,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A vein that sings at night; a pit-boss who wants someone to look at a gallery that was sealed.",
+     "text": "A vein that sings at night; a pit-boss who wants someone to go through the wall the old delvers built across a gallery.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2543,6 +2935,45 @@
      "facing_deg": 270,
      "why": "the adit is cut into a hillside"
     }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "map marker: Tenmal Pits",
+     "count": 1
+    },
+    {
+     "kind": "ore-vein",
+     "detail": "geode veins (amethyst and garnet: the Stormhold Crystal)",
+     "count": 4
+    },
+    {
+     "kind": "ore-vein",
+     "detail": "iron ore",
+     "count": 2
+    },
+    {
+     "kind": "smelter",
+     "detail": "in the tipping-yard",
+     "count": 1
+    },
+    {
+     "kind": "combat-creature",
+     "detail": "chaurus in the walled-off galleries",
+     "count": 5,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "combat-boss",
+     "detail": "a chaurus reaper in the deepest gallery",
+     "count": 1,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "boss-chest",
+     "detail": "behind the old wall, D2 tier (level 10)",
+     "count": 1
+    }
    ]
   },
   {
@@ -2557,29 +2988,36 @@
    "importance": 2,
    "summary": "A small Barsaebic ayleid ruin on a mound in the marsh south of Jal-Veesa, with broken arches and a flooded undercroft.",
    "lore_page": null,
-   "statement_tier_id": "AGENT_INVENTED",
+   "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
    "notes": [
     {
      "aspect": "overview",
-     "text": "An Ayleid ruin of the Barsaebics, a small hall in the marsh south of Jal-Veesa. What it holds is unrecorded.",
-     "tier": "AGENT_INVENTED",
+     "text": "Nenria is a small Barsaebic Ayleid hall in the marsh south of Jal-Veesa. The Barsaebics settled this country after 1E 198 and left halls round Silyanorn and Loriasel; this one stands among them, and its name keeps the Ayleid shape.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
-       "kind": "map",
-       "title": "Ayleid-ruin icon at (-3,-66), on water",
-       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
+       "kind": "uesp",
+       "title": "Lore:Black Marsh",
+       "locator": "Lore:Black Marsh",
+       "url": "https://en.uesp.net/wiki/Lore:Black_Marsh",
+       "section": "History"
       },
       {
        "kind": "dossier",
        "title": "lost-peoples.md",
        "locator": "story/lore/topics/lost-peoples.md"
+      },
+      {
+       "kind": "map",
+       "title": "Ayleid-ruin icon S of Jal-Veesa",
+       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
       }
      ]
     },
     {
      "aspect": "history",
-     "text": "Barsaebic Ayleids settled this country after 1E 198 and were beaten by the Hist, by legend. Nothing is known of this site.",
+     "text": "Barsaebic Ayleids settled this country after 1E 198 and were beaten by the Hist, by legend. Of this hall, the wardens know only that their grandmothers ringed it with stakes.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2706,7 +3144,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "The mound's flooded undercroft is the danger: giant snakes lie in the drowned cellar and ward-bound dead stand at the broken arch. At dangerous the ground is the safe part, and the Vandrel Farm side is the usual way in.",
+     "text": "The flooded undercroft is the danger: giant snakes lie in the drowned cellar and Ayleid dead stand at the broken arch. The mound top is open ground, and the way in from the Vandrel Farm side is the dry one.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2728,7 +3166,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A looter's map that marks a Fenlord's vault; ward-stakes pulled up one by one.",
+     "text": "A Welkynd stone that lights by itself in the undercroft; ward-stakes pulled up one by one, and a Jal-Veesa youth seen near the mound at dusk.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2755,6 +3193,41 @@
      "radius_m": 70,
      "why": "a ruin on a marsh mound"
     }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "map marker: Nenria",
+     "count": 1
+    },
+    {
+     "kind": "combat-creature",
+     "detail": "giant snakes in the drowned cellar",
+     "count": 2,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "Ayleid skeletons and a ghost at the arch",
+     "count": 4,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "combat-boss",
+     "detail": "a ghost-knight of the hall",
+     "count": 1,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "boss-chest",
+     "detail": "the undercroft altar, D3 tier (level 20)",
+     "count": 1
+    },
+    {
+     "kind": "treasure",
+     "detail": "Welkynd stones in the wall sconces",
+     "count": 2
+    }
    ]
   },
   {
@@ -2769,28 +3242,35 @@
    "importance": 1,
    "summary": "A ruined Imperial road waystation north of Jal-Veesa, roofless and half sunk in mud.",
    "lore_page": null,
-   "statement_tier_id": "AGENT_INVENTED",
+   "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
    "notes": [
     {
      "aspect": "overview",
-     "text": "Calvian Waystation is an Imperial ruin on the northern road, named in the Imperial manner for a road post that no one now keeps.",
-     "tier": "AGENT_INVENTED",
+     "text": "Calvian Waystation is a Third Empire staging post on the northern road toward Morrowind. The Empire ran its roads with posts like it until the Legion left at the secession; the name is the Cyrodiilic one its builders gave it.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
-       "kind": "map",
-       "title": "Imperial ruin icon at (-7,-61)",
-       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
+       "kind": "uesp",
+       "title": "Lore:Fourth Era",
+       "locator": "Lore:Fourth Era",
+       "url": "https://en.uesp.net/wiki/Lore:Fourth_Era"
       },
       {
-       "kind": "reasoning",
-       "title": "Imperial Latin-style names on Legion works"
+       "kind": "extrapolation",
+       "title": "argonia-4e201-state.md §10 (the spine)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      },
+      {
+       "kind": "map",
+       "title": "Imperial-ruin icon N of Jal-Veesa on the northern road",
+       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
       }
      ]
     },
     {
      "aspect": "history",
-     "text": "Built by the Third Empire as a staging post on the road toward Morrowind; abandoned when the Legion withdrew.",
+     "text": "Built by the Third Empire as a staging post on the road toward Morrowind; empty since the Legion marched out at the secession.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2931,6 +3411,30 @@
      "radius_m": 40,
      "why": "the ruin's yard and wall"
     }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "map marker: Calvian Waystation",
+     "count": 1
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "scavenger bandits sleeping in the corners",
+     "count": 4,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "combat-boss",
+     "detail": "the scavengers' leader",
+     "count": 1,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "boss-chest",
+     "detail": "in the plinth's hollow, D2 tier (level 10)",
+     "count": 1
+    }
    ]
   },
   {
@@ -2945,19 +3449,14 @@
    "importance": 2,
    "summary": "A Naga camp in the marsh south of Stormhold, where the brigands of the road-sides live between raids.",
    "lore_page": null,
-   "statement_tier_id": "AGENT_INVENTED",
+   "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
    "notes": [
     {
      "aspect": "overview",
-     "text": "Karsh-Naal Camp is a Naga camp in the marsh south of Stormhold, home to the tribeless brigands who raid the road-sides and return to it between raids.",
-     "tier": "AGENT_INVENTED",
+     "text": "Karsh-Naal Camp is a Naga brigands' camp in the marsh south of Stormhold. The Naga are the tribeless Argonians of canon who rob travellers on the roads; the busy road from Stormhold toward Helstrom is where such a band would live.",
+     "tier": "EXTRAPOLATED",
      "sources": [
-      {
-       "kind": "map",
-       "title": "[Naga Camp] icon at (-2,-68)",
-       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
-      },
       {
        "kind": "uesp",
        "title": "Lore:Naga",
@@ -2965,9 +3464,13 @@
        "url": "https://en.uesp.net/wiki/Lore:Naga"
       },
       {
-       "kind": "dossier",
-       "title": "tribes.md",
-       "locator": "story/lore/tribes.md"
+       "kind": "reasoning",
+       "title": "Naga highwaymen (Lore:Naga); tribal-camp icon S of Stormhold near the Helstrom road (map)"
+      },
+      {
+       "kind": "map",
+       "title": "tribal-camp icon S of Stormhold",
+       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
       }
      ]
     },
@@ -3162,6 +3665,35 @@
      "radius_m": 45,
      "why": "the camp's huts"
     }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "map marker: Karsh-Naal Camp",
+     "count": 1
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "Naga brigands",
+     "count": 6,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "combat-boss",
+     "detail": "the Naga band's chief",
+     "count": 1,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "boss-chest",
+     "detail": "the chief's chest, D3 tier (level 20)",
+     "count": 1
+    },
+    {
+     "kind": "treasure",
+     "detail": "stolen goods in the huts",
+     "count": 2
+    }
    ]
   },
   {
@@ -3175,7 +3707,7 @@
    "siting": "riverbank",
    "danger_band_id": "D1",
    "importance": 3,
-   "summary": "A frontier village at the old border crossing, built where the Imperial census-and-excise post stood, beside a black tidal river whose bridge the tide swamps for days. It lives on the Blackwood Road trade and the toll fort beside it.",
+   "summary": "A frontier village at the old border crossing, built round the Imperial census-and-excise post beside a black river whose white bridge has lost its middle span. It lives on the Blackwood Road trade and the toll fort beside it.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
@@ -3205,24 +3737,25 @@
     },
     {
      "aspect": "history",
-     "text": "The Empire built the post, bridge and customs house to tax the Blackwood Road. The Legion left and Imperial presence ended by 4E 48; the families who served the post stayed on.",
+     "text": "The Empire built the post, bridge and customs house to tax the Blackwood Road. The Legion left at the secession; the families who served the post stayed on.",
      "tier": "CANON_DERIVED",
      "sources": [
       {
-       "kind": "dossier",
-       "title": "blackwood-and-gloommire.md",
-       "locator": "story/lore/regions/blackwood-and-gloommire.md"
+       "kind": "uesp",
+       "title": "Lore:Fourth Era",
+       "locator": "Lore:Fourth Era",
+       "url": "https://en.uesp.net/wiki/Lore:Fourth_Era"
       },
       {
-       "kind": "dossier",
-       "title": "foreign-powers.md",
-       "locator": "story/lore/topics/foreign-powers.md"
+       "kind": "extrapolation",
+       "title": "argonia-4e201-state.md §10 (the spine)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     },
     {
      "aspect": "present",
-     "text": "A village around the old customs house and the bridge. The tide still swamps the bridge for days at a time and shuts the crossing, as the Argonian Account describes. The toll is kept by the garrison of Fort Rustmoth next door.",
+     "text": "A village around the old customs house and the bridge. The bridge's low middle span lies under the black water, and a rope ferry carries the road across. The toll is kept by the garrison of Fort Rustmoth next door.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3286,7 +3819,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Road trade to Gideon and Leyawiin, tolls, a market of smugglers and herb-sellers, and a ferry for when the bridge is under water.",
+     "text": "Road trade to Gideon and Leyawiin, the ferry fare, a market of smugglers and herb-sellers.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3350,7 +3883,7 @@
     },
     {
      "aspect": "look",
-     "text": "A long white bridge over a black river; a stone customs house with weathered Imperial seals; mud-and-timber houses on stilts and a few Cyrodiilic gables; fleshfly-chewed guards.",
+     "text": "A long white bridge broken in the middle over a black river; a stone customs house with weathered Imperial eagles; mud-and-timber houses on stilts and a few Cyrodiilic gables; fleshfly-chewed guards.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3414,7 +3947,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A smuggler who wants the bridge swamped on the night he crosses; the customs ledgers; Gideon's refusal to honour the successor state's seals.",
+     "text": "A smuggler who wants the ferry rope cut on the night he crosses; a Gideon trader who will not pay a toll to the successor state and is held at the fort.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3455,6 +3988,48 @@
      "id": "shore-access",
      "radius_m": 70,
      "why": "the tidal river and the bridge head"
+    }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "map marker: Slough Point",
+     "count": 1
+    },
+    {
+     "kind": "carriage-or-boat",
+     "detail": "the rope ferry over the broken bridge's gap",
+     "count": 1
+    },
+    {
+     "kind": "trader-general",
+     "detail": "a Khajiit trader on the Blackwood Road",
+     "count": 1
+    },
+    {
+     "kind": "trader-apothecary",
+     "detail": "a herb-seller at the market",
+     "count": 1
+    },
+    {
+     "kind": "fence",
+     "detail": "a smuggler in the market who buys stolen goods",
+     "count": 1
+    },
+    {
+     "kind": "trader-innkeeper",
+     "detail": "the ferry tavern",
+     "count": 1
+    },
+    {
+     "kind": "inn-room",
+     "detail": "a room in the ferry tavern",
+     "count": 1
+    },
+    {
+     "kind": "shrine-blessing",
+     "detail": "the Dibella shrine in the old customs house",
+     "count": 1
     }
    ]
   },
@@ -3497,24 +4072,25 @@
     },
     {
      "aspect": "history",
-     "text": "Built by the Third Empire to command the Blackwood Road; rumoured emptied when the Legions were recalled at the Oblivion Crisis; not Imperial after 4E 48.",
+     "text": "Built by the Third Empire to command the Blackwood Road; not Imperial since the secession, when the Legion left and an ex-Archein family took the keys in the Archwardens' name.",
      "tier": "CANON_DERIVED",
      "sources": [
       {
-       "kind": "extrapolation",
-       "title": "settlement-register.md",
-       "locator": "story/lore/extrapolation/settlement-register.md"
+       "kind": "uesp",
+       "title": "Lore:Fourth Era",
+       "locator": "Lore:Fourth Era",
+       "url": "https://en.uesp.net/wiki/Lore:Fourth_Era"
       },
       {
-       "kind": "dossier",
-       "title": "foreign-powers.md",
-       "locator": "story/lore/topics/foreign-powers.md"
+       "kind": "extrapolation",
+       "title": "argonia-4e201-state.md §10 (the spine)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     },
     {
      "aspect": "present",
-     "text": "Held, but not by the Empire: an Archwarden garrison charges tolls and keeps a customs ledger for the successor state, in the old Imperial style.",
+     "text": "Held, but not by the Empire: an Archwarden garrison charges the road toll and the customs on goods bound for Gideon and Leyawiin, with the old Imperial drill.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3536,7 +4112,7 @@
     },
     {
      "aspect": "people",
-     "text": "Argonian soldiers under an old Archein-lineage captain; clerks; a few Nibenese families in the kitchens.",
+     "text": "Argonian soldiers under an old Archein-lineage captain; a few Nibenese families in the kitchens.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3636,7 +4212,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A captain who has been paid not to look at a cart; a ledger that does not agree with the barracks' stores.",
+     "text": "A captain who has been paid not to look at a cart; a barracks storeroom short of arrows and armour, and a sergeant who says the captain is selling them to the Sul-Xan.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3662,6 +4238,38 @@
      "id": "rise",
      "radius_m": 70,
      "why": "a keep on a mound above the road"
+    }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "map marker: Fort Rustmoth",
+     "count": 1
+    },
+    {
+     "kind": "trader-blacksmith",
+     "detail": "the quartermaster: steel arms and armour",
+     "count": 1
+    },
+    {
+     "kind": "forge",
+     "detail": "the keep yard's forge with its anvil",
+     "count": 1
+    },
+    {
+     "kind": "grindstone",
+     "detail": "in the yard",
+     "count": 1
+    },
+    {
+     "kind": "armour-workbench",
+     "detail": "in the yard",
+     "count": 1
+    },
+    {
+     "kind": "trainer",
+     "detail": "Adept Heavy Armor trainer, the Archein captain",
+     "count": 1
     }
    ]
   },
@@ -3832,7 +4440,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Undead and swamp monsters walk the flooded halls of the sunken vaults. The roof is unsafe and gives way in places under any weight.",
+     "text": "Undead and swamp monsters walk the flooded halls of the sunken vaults. Rockfall traps are set in the lower halls.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3855,7 +4463,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "The tablet itself; a Conclave scholar who needs someone to find the lower archive.",
+     "text": "The tablet itself; a Conclave scholar who needs someone to swim the drowned lowest hall.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3883,6 +4491,46 @@
      "radius_m": 90,
      "facing_deg": 180,
      "why": "the sunk vault entrance cut into a slope"
+    }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "map marker: the Vaults of Gemin",
+     "count": 1
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "undead of the sunken vaults",
+     "count": 6,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "combat-creature",
+     "detail": "swamp monsters in the flooded halls",
+     "count": 3,
+     "reward": "gold-hoard"
+    },
+    {
+     "kind": "combat-boss",
+     "detail": "the vault's warden, a dread wraith",
+     "count": 1,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "boss-chest",
+     "detail": "the lowest hall, D4 tier (level 35)",
+     "count": 1
+    },
+    {
+     "kind": "gold-hoard",
+     "detail": "the Conclave's vault store, D4 tier",
+     "count": 1
+    },
+    {
+     "kind": "unique-item",
+     "detail": "a fragment of the Murkwood tablet",
+     "count": 1
     }
    ]
   },
@@ -4079,7 +4727,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A keystone that still holds a soul; the Azura shrine outside and its keeper; a looter band missing since the monsoon.",
+     "text": "A keystone that still holds a soul; the Azura shrine outside and its keeper; a looter band that went into the caverns and has not come out.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4112,6 +4760,51 @@
      "radius_m": 50,
      "facing_deg": 90,
      "why": "the lamia caverns below open into the hill"
+    }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "map marker: Loriasel",
+     "count": 1
+    },
+    {
+     "kind": "combat-creature",
+     "detail": "lamias in the caverns",
+     "count": 5,
+     "reward": "gold-hoard"
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "Ayleid undead knights",
+     "count": 5,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "combat-boss",
+     "detail": "the Enchanter's ghost at the keystone hall",
+     "count": 1,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "boss-chest",
+     "detail": "the keystone hall, D4 tier (level 35)",
+     "count": 1
+    },
+    {
+     "kind": "gold-hoard",
+     "detail": "the tomb wings' grave goods, D4 tier",
+     "count": 1
+    },
+    {
+     "kind": "arcane-enchanter",
+     "detail": "the Enchanter's workbench",
+     "count": 1
+    },
+    {
+     "kind": "shrine-blessing",
+     "detail": "the shrine of Azura outside the walls",
+     "count": 1
     }
    ]
   },
@@ -4325,6 +5018,45 @@
      "radius_m": 100,
      "why": "the ruin sits among water on a reed island"
     }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "map marker: Gandranen",
+     "count": 1
+    },
+    {
+     "kind": "skill-book",
+     "detail": "the library's shelves: Alteration, Enchanting and Illusion books",
+     "count": 3
+    },
+    {
+     "kind": "spell-tome",
+     "detail": "an Adept Alteration tome on a reading stand",
+     "count": 1
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "the Fenlord's undead slave-guardians",
+     "count": 6,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "combat-boss",
+     "detail": "the Fenlord in his tomb",
+     "count": 1,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "boss-chest",
+     "detail": "the Fenlord's sarcophagus, D4 tier (level 35)",
+     "count": 1
+    },
+    {
+     "kind": "gold-hoard",
+     "detail": "the Fenlord's vault, D4 tier",
+     "count": 1
+    }
    ]
   },
   {
@@ -4339,24 +5071,35 @@
    "importance": 1,
    "summary": "A ruined Imperial post west of Loriasel on the high ground, its walls broken and its yard sunk.",
    "lore_page": null,
-   "statement_tier_id": "AGENT_INVENTED",
+   "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
    "notes": [
     {
      "aspect": "overview",
-     "text": "Agia Nero is a ruined Imperial post west of Loriasel on the high ground, its walls broken and its yard sunk.",
-     "tier": "AGENT_INVENTED",
+     "text": "Agia Nero is a Third Empire road post on the high ground west of Loriasel, on the Gideon-Stormhold way. The Empire held that road with posts and forts until the secession; this one was never re-held, as the Archwardens keep only the forts on the trunk routes.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
+       "kind": "uesp",
+       "title": "Lore:Fourth Era",
+       "locator": "Lore:Fourth Era",
+       "url": "https://en.uesp.net/wiki/Lore:Fourth_Era"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "argonia-4e201-state.md §10 (the spine)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      },
+      {
        "kind": "map",
-       "title": "Imperial ruin icon labelled Agia Nero at (-15,-67)",
+       "title": "Imperial-ruin icon W of Loriasel on high ground",
        "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
       }
      ]
     },
     {
      "aspect": "history",
-     "text": "An Imperial road fort of the Third Empire, abandoned when the Legions left it to the reeds.",
+     "text": "An Imperial road post of the Third Empire, empty since the Legion left at the secession.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4475,7 +5218,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A smuggler's cache under the tower; a ledger hidden in the wall.",
+     "text": "A smuggler's cache under the tower; a Khajiit runner who hid moon sugar in the wall and wants it back.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4497,6 +5240,30 @@
      "radius_m": 50,
      "why": "the ruin's yard"
     }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "map marker: Agia Nero",
+     "count": 1
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "smugglers in the broken walls",
+     "count": 4,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "combat-boss",
+     "detail": "the smugglers' chief",
+     "count": 1,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "boss-chest",
+     "detail": "the cache under the tower, D2 tier (level 10)",
+     "count": 1
+    }
    ]
   },
   {
@@ -4511,29 +5278,37 @@
    "importance": 2,
    "summary": "A small Barsaebic ayleid ruin on a sedge island east of Loriasel, with white arches in the reeds and a flooded undercroft.",
    "lore_page": null,
-   "statement_tier_id": "AGENT_INVENTED",
+   "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
    "notes": [
     {
      "aspect": "overview",
-     "text": "A Barsaebic Ayleid ruin at (-8,-65), named Mirasel in the Ayleid manner.",
-     "tier": "AGENT_INVENTED",
+     "text": "Mirasel is a Barsaebic Ayleid hall on a sedge island east of Loriasel, one of the small halls that ringed the Barsaebic citadel; the name keeps the Ayleid form of Loriasel itself.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
-       "kind": "map",
-       "title": "Ayleid-ruin icon at (-8,-65)",
-       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
+       "kind": "uesp",
+       "title": "Lore:Loriasel",
+       "locator": "Lore:Loriasel",
+       "url": "https://en.uesp.net/wiki/Lore:Loriasel"
       },
       {
-       "kind": "dossier",
-       "title": "lost-peoples.md",
-       "locator": "story/lore/topics/lost-peoples.md"
+       "kind": "uesp",
+       "title": "Lore:Black Marsh",
+       "locator": "Lore:Black Marsh",
+       "url": "https://en.uesp.net/wiki/Lore:Black_Marsh",
+       "section": "History"
+      },
+      {
+       "kind": "map",
+       "title": "Ayleid-ruin icon E of Loriasel, on water",
+       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
       }
      ]
     },
     {
      "aspect": "history",
-     "text": "Mirasel is a small Barsaebic Ayleid hall on a sedge island east of Loriasel, from the settlement that grew in the region after 1E 198. Nothing is recorded of it.",
+     "text": "Mirasel is a small Barsaebic Ayleid hall on a sedge island east of Loriasel, from the settlement that grew in the region after 1E 198. The weir-wardens say it fell with Loriasel.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4660,7 +5435,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Giant snakes in the reeds and undead guardians below the arch. At dangerous the stairs are drowned and the wardens do not cross to the island.",
+     "text": "Giant snakes in the reeds and undead guardians below the arch; the undercroft stairs go down under black water.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4682,7 +5457,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A Jal-Veesa relic-seller will pay for a rubbing of the altar, and a Teel-Fen warden says a ward-stake on the west side has been pulled.",
+     "text": "A Jal-Veesa relic-seller will pay for the altar's Welkynd stone, and a Teel-Fen warden says a ward-stake on the west side has been pulled.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4709,6 +5484,41 @@
      "radius_m": 60,
      "why": "a ruin on a marsh mound"
     }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "map marker: Mirasel",
+     "count": 1
+    },
+    {
+     "kind": "combat-creature",
+     "detail": "giant snakes in the reeds",
+     "count": 2,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "Ayleid skeletons below the arch",
+     "count": 3,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "combat-boss",
+     "detail": "a drowned Ayleid guardian in the undercroft",
+     "count": 1,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "boss-chest",
+     "detail": "the undercroft, reached by swimming, D3 tier (level 20)",
+     "count": 1
+    },
+    {
+     "kind": "harvest-rare",
+     "detail": "nirnroot at the water's edge",
+     "count": 2
+    }
    ]
   },
   {
@@ -4723,17 +5533,24 @@
    "importance": 2,
    "summary": "A small Barsaebic Ayleid ruin on the high ground north-west of Slough Point, with white arches in the reeds and a flooded undercroft.",
    "lore_page": null,
-   "statement_tier_id": "AGENT_INVENTED",
+   "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
    "notes": [
     {
      "aspect": "overview",
-     "text": "Orimel is a small ruined Ayleid hall on high ground at (-15,-69), north-west of Slough Point, with a name in the Ayleid manner.",
-     "tier": "AGENT_INVENTED",
+     "text": "Orimel is a small Barsaebic Ayleid hall on high ground north-west of Slough Point. Canon has the Barsaebics holding parts of Blackwood, so their halls reach this far west; the name is in the Ayleid manner.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
+       "kind": "uesp",
+       "title": "Lore:Black Marsh",
+       "locator": "Lore:Black Marsh",
+       "url": "https://en.uesp.net/wiki/Lore:Black_Marsh",
+       "section": "History"
+      },
+      {
        "kind": "map",
-       "title": "Ayleid-ruin icon at (-15,-69)",
+       "title": "Ayleid-ruin icon NW of Slough Point on high ground",
        "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
       },
       {
@@ -4745,7 +5562,7 @@
     },
     {
      "aspect": "history",
-     "text": "Orimel is a small Barsaebic Ayleid hall on high ground north-west of Slough Point, one of the settlements left by the Ayleids after 1E 198. Nothing is recorded of its builders or its fall.",
+     "text": "Orimel is a small Barsaebic Ayleid hall on high ground north-west of Slough Point, one of the settlements left by the Ayleids after 1E 198. Nobody living can say who built it or how it fell.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4762,7 +5579,7 @@
     },
     {
      "aspect": "present",
-     "text": "The mound is dry in the cool months and flooded in the wet; Vel-Sapha Stand's people watch it from the track and the Veesa-Teeleel call it sick ground.",
+     "text": "The mound's lower rooms stand in black water; Vel-Sapha Stand's people watch it from the track and the Veesa-Teeleel call it sick ground.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4872,7 +5689,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Undead guardians in the arch and snakes in the reed edge. At dangerous the lower rooms are flooded and the track is the only safe place.",
+     "text": "Undead guardians in the arch and snakes in the reed edge. The lower rooms are flooded and the track below is the only safe ground.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4894,7 +5711,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A Vel-Sapha hunter has a rubbing from the shrine-stone he cannot read, and a Fort Rustmoth sergeant wants the mound's ward-stakes counted.",
+     "text": "A Vel-Sapha hunter has a carved stone from the shrine he wants rid of, and a Fort Rustmoth sergeant wants to know who keeps re-setting the mound's ward-stakes.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4921,6 +5738,41 @@
      "radius_m": 60,
      "why": "a ruin on a marsh mound"
     }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "map marker: Orimel",
+     "count": 1
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "Ayleid undead guardians",
+     "count": 4,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "combat-creature",
+     "detail": "snakes in the reed edge",
+     "count": 2,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "combat-boss",
+     "detail": "the hall's warden, a wraith",
+     "count": 1,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "boss-chest",
+     "detail": "the flooded lower rooms, D3 tier (level 20)",
+     "count": 1
+    },
+    {
+     "kind": "treasure",
+     "detail": "Welkynd stones in the arches",
+     "count": 2
+    }
    ]
   },
   {
@@ -4936,22 +5788,27 @@
    "importance": 1,
    "summary": "A weir-wardens' camp on the creek north-east of Gandranen, keeping the traps for Jal-Veesa.",
    "lore_page": null,
-   "statement_tier_id": "AGENT_INVENTED",
+   "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
    "notes": [
     {
      "aspect": "overview",
-     "text": "Reed-Sill Weir is the weir-wardens' camp on the creek north-east of Gandranen, one of the Veesa-Teeleel traps that feed Jal-Veesa. Its name is in the jade style.",
-     "tier": "AGENT_INVENTED",
+     "text": "Reed-Sill Weir is a Veesa-Teeleel weir on the creek north-east of Gandranen. The Sedge-Wardens hold the creeks of Barsaebica and sell their catch at Jal-Veesa; an outpost on a creek in their country is one of their weirs.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
+       "kind": "reasoning",
+       "title": "Veesa-Teeleel hold Barsaebica's weirs and guard its ruins (spine §10.2); outpost on the creek NE of Gandranen (map)"
+      },
+      {
        "kind": "map",
-       "title": "green triangle at (-11,-63)",
+       "title": "outpost icon on the creek NE of Gandranen",
        "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
       },
       {
-       "kind": "reasoning",
-       "title": "jade naming"
+       "kind": "extrapolation",
+       "title": "argonia-4e201-state.md §10 (the spine)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     },
@@ -5083,7 +5940,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Crocodiles lie below the weir where the offal goes in, and the log walk is slick. At mostly safe the camp is safe; the creek downstream toward Mirasel is not.",
+     "text": "Crocodiles lie below the weir where the offal goes in, and the log walk is slick. The camp is safe; the creek downstream toward Mirasel is not.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5130,6 +5987,29 @@
      "radius_m": 40,
      "why": "weir and landing"
     }
+   ],
+   "gives": [
+    {
+     "kind": "fishing",
+     "detail": "the weir traps: eels and gar",
+     "count": 1
+    },
+    {
+     "kind": "cooking-pot",
+     "detail": "by the landing",
+     "count": 1
+    },
+    {
+     "kind": "combat-creature",
+     "detail": "crocodiles below the weir",
+     "count": 2,
+     "reward": "treasure"
+    },
+    {
+     "kind": "treasure",
+     "detail": "a thief's sack of stolen traps and coin hidden in the reeds, D1 tier",
+     "count": 1
+    }
    ]
   },
   {
@@ -5145,22 +6025,27 @@
    "importance": 1,
    "summary": "A stone road post west of Loriasel on the Slough Point road, watching the track toward the ruins.",
    "lore_page": null,
-   "statement_tier_id": "AGENT_INVENTED",
+   "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
    "notes": [
     {
      "aspect": "overview",
-     "text": "Ashgate Post is an outpost named in the Stormhold manner, a stone road post west of Loriasel on the Slough Point road.",
-     "tier": "AGENT_INVENTED",
+     "text": "Ashgate Post is a Vicecanon's road post west of Loriasel on the Slough Point road. Stormhold keeps the road toward the western frontier and its toll; the gate stands where the track to the ruins leaves it.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
+       "kind": "reasoning",
+       "title": "the Stormhold-Slough Point road (map); Vicecanons keep the roads and tolls round Stormhold (spine §10.2)"
+      },
+      {
        "kind": "map",
-       "title": "[Outpost] triangle at (-13,-65)",
+       "title": "outpost icon W of Loriasel on the road",
        "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
       },
       {
-       "kind": "reasoning",
-       "title": "stone-grey naming"
+       "kind": "dossier",
+       "title": "stormhold.md",
+       "locator": "story/lore/stormhold.md"
       }
      ]
     },
@@ -5339,6 +6224,23 @@
      "radius_m": 35,
      "why": "hut and gate"
     }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "map marker: Ashgate Post",
+     "count": 1
+    },
+    {
+     "kind": "trader-general",
+     "detail": "a stall of lamp oil and dried fish",
+     "count": 1
+    },
+    {
+     "kind": "free-bed",
+     "detail": "a bench in the hut",
+     "count": 1
+    }
    ]
   },
   {
@@ -5354,28 +6256,40 @@
    "importance": 1,
    "summary": "A sap-tapping and egg-tending station of the Root-Folk, a long way west of Helstrom, at the edge of Barsaebica.",
    "lore_page": null,
-   "statement_tier_id": "AGENT_INVENTED",
+   "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
    "notes": [
     {
      "aspect": "overview",
-     "text": "Vel-Sapha Stand is an outpost named in the Root-Folk style, a sap-tapping and egg-tending station at the edge of Barsaebica.",
-     "tier": "AGENT_INVENTED",
+     "text": "Vel-Sapha Stand is a Root-Folk stand round a young Hist at the western edge of Barsaebica. The Root-Folk of Helstrom carry sap and eggs to new trees, and a Hist that rose far from the others would draw a few of them to tend it; the name is in their tongue.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
+       "kind": "uesp",
+       "title": "Lore:Hist",
+       "locator": "Lore:Hist",
+       "url": "https://en.uesp.net/wiki/Lore:Hist"
+      },
+      {
+       "kind": "dossier",
+       "title": "hist-placement.md",
+       "locator": "story/lore/topics/hist-placement.md"
+      },
+      {
        "kind": "map",
-       "title": "dark-green triangle at (-16,-68)",
+       "title": "outpost icon W of Loriasel near Slough Point",
        "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
       },
       {
-       "kind": "reasoning",
-       "title": "forest-green culture: Root-Folk outposts"
+       "kind": "extrapolation",
+       "title": "argonia-4e201-state.md §10 (the spine)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     },
     {
      "aspect": "history",
-     "text": "Hist-country outposts reach outward from Helstrom, and this Root-Folk stand is one of them at the edge of Barsaebica.",
+     "text": "The sapling rose in the generations after 4E 48, and Root-Folk came from the interior to tend it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5485,7 +6399,7 @@
     },
     {
      "aspect": "look",
-     "text": "Root-hollows and stilt huts sit under a thick canopy at the western edge of the Hist country.",
+     "text": "Root-hollows and stilt huts sit under a thick canopy on the Barsaebica edge.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5556,6 +6470,33 @@
      "radius_m": 40,
      "why": "the stand's huts"
     }
+   ],
+   "gives": [
+    {
+     "kind": "shrine-blessing",
+     "detail": "the young Hist: a blessing of resist poison from its tenders",
+     "count": 1
+    },
+    {
+     "kind": "trader-apothecary",
+     "detail": "a sap-gatherer selling Hist sap, swamp fungus and eggshells",
+     "count": 1
+    },
+    {
+     "kind": "trainer",
+     "detail": "Adept Alchemy trainer, the stand's sap-gatherer",
+     "count": 1
+    },
+    {
+     "kind": "alchemy-lab",
+     "detail": "a sap bench in a root-hollow",
+     "count": 1
+    },
+    {
+     "kind": "harvest-rare",
+     "detail": "Hist sap at the tapping cuts",
+     "count": 1
+    }
    ]
   },
   {
@@ -5571,22 +6512,27 @@
    "importance": 1,
    "summary": "A weir-wardens' camp on the creek north-east of Gandranen, keeping traps for Jal-Veesa.",
    "lore_page": null,
-   "statement_tier_id": "AGENT_INVENTED",
+   "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
    "notes": [
     {
      "aspect": "overview",
-     "text": "Teel-Fen Weir is the weir-wardens' camp on the creek north-east of Gandranen, closer to Jal-Veesa than Reed-Sill, with traps for eel and carp. Its name is in the jade style.",
-     "tier": "AGENT_INVENTED",
+     "text": "Teel-Fen Weir is the Veesa-Teeleel weir closest to Jal-Veesa on the Gandranen creek; its catch goes to Urvyn Farm's cart on the northern road, the nearest way to market.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
+       "kind": "reasoning",
+       "title": "Veesa-Teeleel weirs feed Jal-Veesa; Urvyn Farm on the northern road beside it (map)"
+      },
+      {
        "kind": "map",
-       "title": "green triangle at (-6,-66)",
+       "title": "outpost icon on the creek between Jal-Veesa and Gandranen",
        "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
       },
       {
-       "kind": "reasoning",
-       "title": "jade naming"
+       "kind": "extrapolation",
+       "title": "argonia-4e201-state.md §10 (the spine)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     },
@@ -5718,7 +6664,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Crocodiles and water-snakes gather under the log boom. At mostly safe the camp is safe; the Nenria marsh south of it is not.",
+     "text": "Crocodiles and water-snakes gather under the log boom. The camp is safe; the Nenria marsh south of it is not.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5765,6 +6711,23 @@
      "radius_m": 40,
      "why": "weir and landing"
     }
+   ],
+   "gives": [
+    {
+     "kind": "fishing",
+     "detail": "the traps: eels and carp",
+     "count": 1
+    },
+    {
+     "kind": "cooking-pot",
+     "detail": "by the drying rack",
+     "count": 1
+    },
+    {
+     "kind": "tanning-rack",
+     "detail": "on the platform",
+     "count": 1
+    }
    ]
   },
   {
@@ -5780,22 +6743,27 @@
    "importance": 1,
    "summary": "A raised stone farmstead west of Jal-Veesa on the northern road.",
    "lore_page": null,
-   "statement_tier_id": "AGENT_INVENTED",
+   "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
    "notes": [
     {
      "aspect": "overview",
-     "text": "Urvyn Farm is a farm named in the Stormhold manner for the Urvyn family, a raised stone farmstead west of Jal-Veesa.",
-     "tier": "AGENT_INVENTED",
+     "text": "Urvyn Farm is a Dunmer-descended family's smallholding west of Jal-Veesa, the furthest of the Stormhold causeway farms; it stands where the northern road lifts out of the reed beds. The family name is Dunmeri, from the city's old minority.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
-       "kind": "map",
-       "title": "[Farm] dot at (-6,-64)",
-       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
+       "kind": "dossier",
+       "title": "stormhold.md",
+       "locator": "story/lore/stormhold.md"
       },
       {
        "kind": "reasoning",
-       "title": "stone-grey naming"
+       "title": "Stormhold's Dunmer minority farms the country round the city; farm icon W of Jal-Veesa (map)"
+      },
+      {
+       "kind": "map",
+       "title": "farm icon W of Jal-Veesa",
+       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
       }
      ]
     },
@@ -5955,7 +6923,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A traveller asks to rent the Urvyns' barn for a few nights. The family has not said yes.",
+     "text": "A traveller asks to rent the Urvyns' barn for a few nights, and the Argonian wife has seen him by the Gandranen creek at dusk.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5982,6 +6950,23 @@
      "radius_m": 25,
      "why": "farmyard"
     }
+   ],
+   "gives": [
+    {
+     "kind": "harvest-common",
+     "detail": "saltrice and greens",
+     "count": 2
+    },
+    {
+     "kind": "cooking-pot",
+     "detail": "the farmhouse",
+     "count": 1
+    },
+    {
+     "kind": "trader-innkeeper",
+     "detail": "the Urvyns sell eels and saltrice to passers",
+     "count": 1
+    }
    ]
   },
   {
@@ -5996,24 +6981,28 @@
    "importance": 2,
    "summary": "A Naga camp in the marsh south of Gandranen, living off the road traffic.",
    "lore_page": null,
-   "statement_tier_id": "AGENT_INVENTED",
+   "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
    "notes": [
     {
      "aspect": "overview",
-     "text": "Ushaan Camp is a Naga camp in the marsh south of Gandranen, home to a band of tribeless Naga.",
-     "tier": "AGENT_INVENTED",
+     "text": "Ushaan Camp is a second Naga band's camp, in the marsh south of Gandranen on the road toward Slough Point. Naga rob road traffic, and the Blackwood Road trade passes close by.",
+     "tier": "EXTRAPOLATED",
      "sources": [
-      {
-       "kind": "map",
-       "title": "[Naga Camp] icon at (-9,-70)",
-       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
-      },
       {
        "kind": "uesp",
        "title": "Lore:Naga",
        "locator": "Lore:Naga",
        "url": "https://en.uesp.net/wiki/Lore:Naga"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Naga highwaymen (Lore:Naga); Blackwood Road trade via Slough Point (spine §10.3)"
+      },
+      {
+       "kind": "map",
+       "title": "tribal-camp icon S of Gandranen",
+       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
       }
      ]
     },
@@ -6180,7 +7169,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "The band holds a captive. One of the Naga wants out of the camp.",
+     "text": "The band holds a Khajiit trader for ransom; one of the Naga wants out of the camp and will open the stockade at night for a price.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6207,6 +7196,30 @@
      "id": "flat-pad",
      "radius_m": 45,
      "why": "camp"
+    }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "map marker: Ushaan Camp",
+     "count": 1
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "Naga brigands",
+     "count": 6,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "combat-boss",
+     "detail": "the band's leader",
+     "count": 1,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "boss-chest",
+     "detail": "in the leader's hut, D3 tier (level 20)",
+     "count": 1
     }
    ]
   },
@@ -6291,7 +7304,7 @@
     },
     {
      "aspect": "people",
-     "text": "Lukiul and Naka-Desh Argonians of the Blackwood frontier; a few Agaceph visitors come to trade in books.",
+     "text": "Lukiul and Naka-Desh Argonians of the Blackwood frontier; Agaceph come now and then to trade.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6313,7 +7326,7 @@
     },
     {
      "aspect": "economy",
-     "text": "River fish, clay pots and reed; a book trade that never quite died.",
+     "text": "River fish, clay pots and reed, carried to Slough Point.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6401,7 +7414,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A book that was left in the chapel; a visiting Agaceph who wants it; a Sul-Xan scout in the reeds.",
+     "text": "A silver Mara amulet the villagers found under the chapel floor; a visiting Agaceph who wants it; a Sul-Xan scout in the reeds.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6433,6 +7446,33 @@
      "radius_m": 60,
      "why": "river bank"
     }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "map marker: Umpholo",
+     "count": 1
+    },
+    {
+     "kind": "trader-general",
+     "detail": "a potter's stall: clay pots, fish and reed goods",
+     "count": 1
+    },
+    {
+     "kind": "fishing",
+     "detail": "the river below the chapel",
+     "count": 1
+    },
+    {
+     "kind": "shrine-blessing",
+     "detail": "the stripped altar of Mara, which still gives Mara's blessing",
+     "count": 1
+    },
+    {
+     "kind": "cooking-pot",
+     "detail": "by the chapel steps",
+     "count": 1
+    }
    ]
   },
   {
@@ -6448,22 +7488,27 @@
    "importance": 2,
    "summary": "A fortified outpost of the Hutan-Tzel on a river branch in the far west, one of a chain along the river.",
    "lore_page": null,
-   "statement_tier_id": "AGENT_INVENTED",
+   "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
    "notes": [
     {
      "aspect": "overview",
-     "text": "Hutan-Aru is an outpost of the Hutan-Tzel on a river branch in the far west, named in their style.",
-     "tier": "AGENT_INVENTED",
+     "text": "Hutan-Aru is a Hutan-Tzel palisade on a river branch in the far west. The spine sets the Hutan-Tzel as river-folk of Blackwood who hold the crossings, and this palisade on the branch is one of their posts; the name is in their style.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
+       "kind": "reasoning",
+       "title": "Hutan-Tzel river-folk of Blackwood (spine §10.2); outpost on a river branch in the far west (map)"
+      },
+      {
        "kind": "map",
-       "title": "magenta triangle at (-15,-73)",
+       "title": "outpost icon on a river branch in the far west",
        "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
       },
       {
-       "kind": "reasoning",
-       "title": "magenta culture: Hutan-Tzel fortified outposts"
+       "kind": "extrapolation",
+       "title": "argonia-4e201-state.md §10 (the spine)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     },
@@ -6642,6 +7687,28 @@
      "radius_m": 40,
      "why": "palisade"
     }
+   ],
+   "gives": [
+    {
+     "kind": "trader-hunter",
+     "detail": "a Hutan-Tzel hunter buying hides and meat",
+     "count": 1
+    },
+    {
+     "kind": "tanning-rack",
+     "detail": "inside the palisade",
+     "count": 1
+    },
+    {
+     "kind": "trainer",
+     "detail": "Adept Archery trainer, the naheesh's best hunter",
+     "count": 1
+    },
+    {
+     "kind": "cooking-pot",
+     "detail": "by the totem",
+     "count": 1
+    }
    ]
   },
   {
@@ -6657,22 +7724,27 @@
    "importance": 2,
    "summary": "A second Hutan-Tzel palisade outpost, far west, on the edge of the Cyrodiil border.",
    "lore_page": null,
-   "statement_tier_id": "AGENT_INVENTED",
+   "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
    "notes": [
     {
      "aspect": "overview",
-     "text": "Hutan-Veel is a Hutan-Tzel outpost in the far west on the Cyrodiil border, named in the style of its people.",
-     "tier": "AGENT_INVENTED",
+     "text": "Hutan-Veel is the Hutan-Tzel post closest to the Cyrodiil border, where the tribe deals with Cyrodiilic traders at its gate rather than let them into the marsh.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
+       "kind": "reasoning",
+       "title": "Hutan-Tzel of Blackwood (spine §10.2); Cyrodiilic traders on the Blackwood Road (spine §10.3); outpost at the far-west border (map)"
+      },
+      {
        "kind": "map",
-       "title": "magenta triangle at (-21,-74)",
+       "title": "outpost icon on the Cyrodiil border",
        "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
       },
       {
-       "kind": "reasoning",
-       "title": "magenta culture"
+       "kind": "extrapolation",
+       "title": "argonia-4e201-state.md §10 (the spine)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     },
@@ -6819,6 +7891,23 @@
      "radius_m": 40,
      "why": "palisade"
     }
+   ],
+   "gives": [
+    {
+     "kind": "trader-hunter",
+     "detail": "the gate-keeper, buying hides and meat",
+     "count": 1
+    },
+    {
+     "kind": "trainer",
+     "detail": "Journeyman Sneak trainer, a border scout",
+     "count": 1
+    },
+    {
+     "kind": "cooking-pot",
+     "detail": "inside the palisade",
+     "count": 1
+    }
    ]
   },
   {
@@ -6833,24 +7922,35 @@
    "importance": 1,
    "summary": "A ruined Imperial watchtower on the border hills in the far west.",
    "lore_page": null,
-   "statement_tier_id": "AGENT_INVENTED",
+   "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
    "notes": [
     {
      "aspect": "overview",
-     "text": "Aldanus Watchtower is an Imperial ruin on the border hills in the far west, a watchtower that no one now keeps.",
-     "tier": "AGENT_INVENTED",
+     "text": "Aldanus Watchtower is a Third Empire watchtower on the border hills above the Blackwood Road. The Empire watched the road to Leyawiin until the secession, and no one re-held a tower so far from the trunk routes.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
+       "kind": "uesp",
+       "title": "Lore:Fourth Era",
+       "locator": "Lore:Fourth Era",
+       "url": "https://en.uesp.net/wiki/Lore:Fourth_Era"
+      },
+      {
+       "kind": "extrapolation",
+       "title": "argonia-4e201-state.md §10 (the spine)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      },
+      {
        "kind": "map",
-       "title": "Imperial ruin icon at (-19,-74)",
+       "title": "Imperial-ruin icon on the far-west hills",
        "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
       }
      ]
     },
     {
      "aspect": "history",
-     "text": "Built by the Third Empire to watch the border hills in the far west, and left to fall when the Legions withdrew.",
+     "text": "Built by the Third Empire to watch the border hills in the far west, and left to fall when the Legion marched out at the secession.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6969,7 +8069,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A courier's satchel is lodged in the rubble at the foot of the broken tower.",
+     "text": "A Legion courier's bones lie in the rubble at the tower's foot, still wearing an officer's silver ring.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6991,6 +8091,30 @@
      "radius_m": 40,
      "why": "ruin"
     }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "map marker: Aldanus Watchtower",
+     "count": 1
+    },
+    {
+     "kind": "combat-creature",
+     "detail": "death hoppers in the thicket",
+     "count": 3,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "combat-boss",
+     "detail": "a hackwing nesting on the tower stump",
+     "count": 1,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "boss-chest",
+     "detail": "the courier's strongbox, D2 tier (level 10)",
+     "count": 1
+    }
    ]
   },
   {
@@ -7005,19 +8129,14 @@
    "importance": 2,
    "summary": "A dead Kothringi town of cairns and stone footings in the western hills, left empty since the Knahaten Flu of 2E 560.",
    "lore_page": null,
-   "statement_tier_id": "AGENT_INVENTED",
+   "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
    "notes": [
     {
      "aspect": "overview",
-     "text": "A Kothringi ruin at (-14,-71), named Meliton in the style of Kothringi towns such as Korydon and Toklea. The Kothringi lived in towns of this kind.",
-     "tier": "AGENT_INVENTED",
+     "text": "Meliton is a Kothringi town in the western hills, named like Korydon and Toklea. Canon makes this Blackwood country the Kothringi homeland, which the Knahaten Flu emptied by 2E 603; the ruin above Hutan-Aru is one of those towns.",
+     "tier": "EXTRAPOLATED",
      "sources": [
-      {
-       "kind": "map",
-       "title": "Kothringi-ruin icon at (-14,-71)",
-       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
-      },
       {
        "kind": "uesp",
        "title": "Lore:Kothringi",
@@ -7025,9 +8144,20 @@
        "url": "https://en.uesp.net/wiki/Lore:Kothringi"
       },
       {
+       "kind": "uesp",
+       "title": "Lore:Knahaten Flu",
+       "locator": "Lore:Knahaten Flu",
+       "url": "https://en.uesp.net/wiki/Lore:Knahaten_Flu"
+      },
+      {
        "kind": "dossier",
        "title": "lost-peoples.md",
        "locator": "story/lore/topics/lost-peoples.md"
+      },
+      {
+       "kind": "map",
+       "title": "Kothringi-ruin icon above Hutan-Aru",
+       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
       }
      ]
     },
@@ -7056,7 +8186,7 @@
     },
     {
      "aspect": "present",
-     "text": "Cairns, footings and two standing walls on a hill-shoulder above Hutan-Aru, visited each year by the Naka-Desh who hang chimes in memory of their friends.",
+     "text": "Cairns, footings and two standing walls on a hill-shoulder above Hutan-Aru, where Naka-Desh come now and then to hang chimes for the dead.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7079,7 +8209,7 @@
     },
     {
      "aspect": "people",
-     "text": "The ruin has no residents. The Naka-Desh come on foot from the west in the dry months, and Hutan-Aru hunters leave them alone.",
+     "text": "The ruin has no residents. The Naka-Desh come on foot from the west, and Hutan-Aru hunters leave them alone.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7171,7 +8301,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Restless dead rise from the oldest cairns at night, and Sul-Xan diggers work the south side. At dangerous the diggers are the greater danger by day.",
+     "text": "Restless dead rise from the oldest cairns, and Sul-Xan diggers work the south side by day.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7222,6 +8352,41 @@
      "radius_m": 70,
      "why": "the town's footings"
     }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "map marker: Meliton",
+     "count": 1
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "Sul-Xan diggers on the south side",
+     "count": 4,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "combat-creature",
+     "detail": "restless Kothringi dead at the cairns",
+     "count": 3,
+     "reward": "treasure"
+    },
+    {
+     "kind": "combat-boss",
+     "detail": "the Sul-Xan dig-leader",
+     "count": 1,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "boss-chest",
+     "detail": "the diggers' haul, D3 tier (level 20)",
+     "count": 1
+    },
+    {
+     "kind": "treasure",
+     "detail": "bead strings and moonstone in the cairns",
+     "count": 2
+    }
    ]
   },
   {
@@ -7236,19 +8401,14 @@
    "importance": 2,
    "summary": "Aithros is a dead Kothringi town of cairns and stone footings above a stream, a day south-west of Hutan-Veel near the Cyrodiil border. The Knahaten Flu of 2E 560 emptied it.",
    "lore_page": null,
-   "statement_tier_id": "AGENT_INVENTED",
+   "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
    "notes": [
     {
      "aspect": "overview",
-     "text": "A Kothringi ruin at (-23,-76), close to the Cyrodiil border, named in the style of Kothringi towns such as Korydon and Toklea.",
-     "tier": "AGENT_INVENTED",
+     "text": "Aithros is a Kothringi town near the Cyrodiil border, one of the homeland's towns the Flu left empty. Its four cairns for Z'en, Dibella, Mara and Kynareth follow the Kothringi faith canon gives.",
+     "tier": "EXTRAPOLATED",
      "sources": [
-      {
-       "kind": "map",
-       "title": "Kothringi-ruin icon at (-23,-76)",
-       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
-      },
       {
        "kind": "uesp",
        "title": "Lore:Kothringi",
@@ -7256,9 +8416,20 @@
        "url": "https://en.uesp.net/wiki/Lore:Kothringi"
       },
       {
+       "kind": "uesp",
+       "title": "Lore:Knahaten Flu",
+       "locator": "Lore:Knahaten Flu",
+       "url": "https://en.uesp.net/wiki/Lore:Knahaten_Flu"
+      },
+      {
        "kind": "dossier",
        "title": "lost-peoples.md",
        "locator": "story/lore/topics/lost-peoples.md"
+      },
+      {
+       "kind": "map",
+       "title": "Kothringi-ruin icon near the Cyrodiil border",
+       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
       }
      ]
     },
@@ -7287,7 +8458,7 @@
     },
     {
      "aspect": "present",
-     "text": "Footings, cairns and a few walls above a stream, visited in the dry months by Naka-Desh chime-hangers from the border road.",
+     "text": "Footings, cairns and a few walls above a stream; small Naka-Desh parties come from the border road to hang chimes.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7402,7 +8573,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Restless dead at the four cairns, and Sul-Xan raiders who dig from the stream side. At dangerous the raiders come in the dark of the moon.",
+     "text": "Restless dead at the four cairns, and Sul-Xan raiders camped in a trench on the stream side.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7453,6 +8624,46 @@
      "radius_m": 70,
      "why": "the town's footings"
     }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "map marker: Aithros",
+     "count": 1
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "Sul-Xan raiders in the stream trench",
+     "count": 4,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "combat-creature",
+     "detail": "restless dead at the four cairns",
+     "count": 4,
+     "reward": "treasure"
+    },
+    {
+     "kind": "combat-boss",
+     "detail": "the raiders' leader",
+     "count": 1,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "boss-chest",
+     "detail": "the raiders' trench, D3 tier (level 20)",
+     "count": 1
+    },
+    {
+     "kind": "treasure",
+     "detail": "unbroken Kothringi bowls and coloured glass",
+     "count": 2
+    },
+    {
+     "kind": "harvest-common",
+     "detail": "clay from the pottery heap by the stream",
+     "count": 1
+    }
    ]
   },
   {
@@ -7467,17 +8678,24 @@
    "importance": 2,
    "summary": "A small Barsaebic ayleid ruin in the western marsh, white arches in the reeds.",
    "lore_page": null,
-   "statement_tier_id": "AGENT_INVENTED",
+   "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
    "notes": [
     {
      "aspect": "overview",
-     "text": "Anutasil is a small Barsaebic Ayleid ruin at (-18,-71) in the western marsh.",
-     "tier": "AGENT_INVENTED",
+     "text": "Anutasil is a Barsaebic Ayleid hall in the western marsh, the furthest west of their halls in the province. Canon has the Barsaebics holding parts of Blackwood after 1E 198; the name keeps the Ayleid form.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
+       "kind": "uesp",
+       "title": "Lore:Black Marsh",
+       "locator": "Lore:Black Marsh",
+       "url": "https://en.uesp.net/wiki/Lore:Black_Marsh",
+       "section": "History"
+      },
+      {
        "kind": "map",
-       "title": "Ayleid-ruin icon at (-18,-71)",
+       "title": "Ayleid-ruin icon in the western marsh",
        "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
       },
       {
@@ -7603,7 +8821,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "Among the treasure-seekers there is talk of a map to a vault beneath the ruin.",
+     "text": "Umpholo reed-cutters say a white light moves in the flooded hall at night, and a Welkynd stone lies on the stair below the water.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7624,6 +8842,36 @@
      "id": "rise",
      "radius_m": 60,
      "why": "ruin on a mound"
+    }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "map marker: Anutasil",
+     "count": 1
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "Ayleid undead guardians",
+     "count": 4,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "combat-creature",
+     "detail": "giant snakes in the flooded hall",
+     "count": 2,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "combat-boss",
+     "detail": "a ghost-knight in the drowned hall",
+     "count": 1,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "boss-chest",
+     "detail": "in the drowned hall, reached by swimming, D3 tier (level 20)",
+     "count": 1
     }
    ]
   }
