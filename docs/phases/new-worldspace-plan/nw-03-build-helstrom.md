@@ -67,3 +67,19 @@ text above as follows.
   to the place and re-seated automatically when the ground changes, so a world rebuild and a place build never
   touch each other.
 - **Wide search.** The all-sources search shows Nordic pieces clearly marked (decision 0006).
+
+## The work (the agent's lanes; status moves in the commit that changes it)
+
+The design and the contracts every lane builds to: [place-studio](../../design/place-studio.md). A fresh session
+resumes from this table: a lane not `done` is relaunched with its row as the starting point.
+
+| Lane | What | Paths | Status |
+|---|---|---|---|
+| X | Extract: any place out of any plugin into a bundle; our real ground, plants and water the same way; `bmv.helstrom` declared at its true extent; ground-check against the deployed file | `tools/ArgoniaPlaces/Extract`, `tools/places/extract*`, `xform.py`, `ground_check.py`, `newworld/places/sources.jsonl` | todo |
+| A | Assets: meshes and textures converted for the browser on demand and cached; the catalogue of every base form across every source we hold | `tools/places/assets` | todo |
+| V | Studio server: the API, saves, runs, search (embedding index), hosting behind the owner's Cloudflare login, awake while a tab is open | `tools/places/studio` (not `web/`), `tools/places/search`, `infra/build-vm/studio*` | todo |
+| W | Studio front end: every feature in the owner's list, for a tablet and stylus | `tools/places/studio/web` | todo |
+| D | Draft: source bundle and our ground into place files (fit, seating, clearance, paths, people and routines, interiors); the skill `place-build`; Helstrom's first draft | `tools/places/draft`, `tools/places/seat.py`, `.claude/skills/place-build`, `newworld/places/helstrom` | todo |
+| B | Build: place files into the place layer plugin (refs, interiors, doors, people, packages, guards, crime, services, land patches, clearance, paths, navmesh) and the checks | `tools/ArgoniaPlaces/Build`, `tools/places/build.py`, `tools/places/check.py` | todo |
+| F | Edits and finalise: applying a save, the finalise chain, the skill `place-lessons`, the report | `tools/places/edits.py`, `tools/places/finalise.py`, `.claude/skills/place-lessons` | todo |
+| I | Integration (the lead): Helstrom end to end; save, load and finalise proven with test edits; the studio at its URL; the owner check posted | all | todo |
