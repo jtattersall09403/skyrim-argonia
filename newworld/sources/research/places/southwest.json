@@ -39,29 +39,19 @@
     },
     {
      "aspect": "history",
-     "text": "Argonians lived here since the wraxu birds were alive. Red Bramman ran pirates from a mangrove river nearby in 1E; the Great Burn (1E 2828) reached its edge; the tribes burned its plantations and mines in 3E 427, ending gold and timber exports. The Empire left after the 4E 48 catastrophe.",
+     "text": "Argonians lived here since the wraxu birds were alive. Red Bramman ran pirates from a mangrove river nearby in 1E; the Great Burn (1E 2828) reached its edge; the tribes burned its plantations and mines in 3E 427, ending gold and timber exports. The Legion and the Company sailed away at the secession (4E 5-10).",
      "tier": "CANON_EXPLICIT",
      "sources": [
       {
        "kind": "uesp",
-       "title": "Lore:Soulrest",
-       "locator": "Lore:Soulrest",
-       "url": "https://en.uesp.net/wiki/Lore:Soulrest"
+       "title": "Lore:Fourth Era",
+       "locator": "Lore:Fourth Era",
+       "url": "https://en.uesp.net/wiki/Lore:Fourth_Era"
       },
       {
        "kind": "dossier",
-       "title": "Soulrest dossier",
-       "locator": "story/lore/soulrest.md"
-      },
-      {
-       "kind": "uesp",
-       "title": "Lore:Blackrose",
-       "locator": "Lore:Blackrose",
-       "url": "https://en.uesp.net/wiki/Lore:Blackrose"
-      },
-      {
-       "kind": "reasoning",
-       "title": "metropolis on Cape Percar, umber culture, Soulrest 4E 201 state"
+       "title": "Argonia in 4E 201, section 10 (the spine)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     },
@@ -228,6 +218,123 @@
      "radius_m": 300,
      "why": "the port frontage on the bay"
     }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Soulrest map marker at the landward gate",
+     "count": 1
+    },
+    {
+     "kind": "carriage-or-boat",
+     "detail": "harbour boatman to Blackrose by Bramman's river, to Chasepoint and to Naxan",
+     "count": 1
+    },
+    {
+     "kind": "trader-general",
+     "detail": "harbour general goods trader dealing in salvage and Khajiit sea goods",
+     "count": 1
+    },
+    {
+     "kind": "trader-blacksmith",
+     "detail": "Imperial-quarter smith selling steel and Imperial arms",
+     "count": 1
+    },
+    {
+     "kind": "trader-apothecary",
+     "detail": "apothecary selling burn-scar sulphur and mangrove ingredients",
+     "count": 1
+    },
+    {
+     "kind": "trader-spells",
+     "detail": "Imperial-descended mage selling Alteration and Restoration tomes to Adept",
+     "count": 1
+    },
+    {
+     "kind": "trader-innkeeper",
+     "detail": "harbour inn with rooms",
+     "count": 1
+    },
+    {
+     "kind": "inn-room",
+     "detail": "room at the harbour inn",
+     "count": 1
+    },
+    {
+     "kind": "trader-clothier",
+     "detail": "Bosmer silk and Valenwood cloth seller on the wharf",
+     "count": 1
+    },
+    {
+     "kind": "fence",
+     "detail": "smugglers' fence on the mangrove landing, buying stolen goods",
+     "count": 1
+    },
+    {
+     "kind": "forge",
+     "detail": "Imperial-quarter forge with its anvil",
+     "count": 1
+    },
+    {
+     "kind": "armour-workbench",
+     "detail": "workbench at the Imperial smithy",
+     "count": 1
+    },
+    {
+     "kind": "grindstone",
+     "detail": "grindstone at the Imperial smithy",
+     "count": 1
+    },
+    {
+     "kind": "smelter",
+     "detail": "harbour smelter for salvage iron",
+     "count": 1
+    },
+    {
+     "kind": "tanning-rack",
+     "detail": "tanning rack by the fish market",
+     "count": 1
+    },
+    {
+     "kind": "alchemy-lab",
+     "detail": "alchemy lab at the apothecary",
+     "count": 1
+    },
+    {
+     "kind": "arcane-enchanter",
+     "detail": "enchanter in the half-empty government quarter",
+     "count": 1
+    },
+    {
+     "kind": "cooking-pot",
+     "detail": "cooking pots at the inn and the wharf stalls",
+     "count": 1
+    },
+    {
+     "kind": "trainer",
+     "detail": "Expert Speech trainer, a merchant-council factor",
+     "count": 1
+    },
+    {
+     "kind": "trainer",
+     "detail": "Expert Light Armor trainer, a Khajiit ship's mate",
+     "count": 1
+    },
+    {
+     "kind": "trainer",
+     "detail": "Journeyman Alteration trainer, the Imperial-descended mage",
+     "count": 1
+    },
+    {
+     "kind": "shrine-blessing",
+     "detail": "shrine of the Nine in the Imperial quarter: blessing of Stendarr",
+     "count": 1
+    },
+    {
+     "kind": "fishing",
+     "detail": "fishing from the harbour wall",
+     "count": 1
+    }
    ]
   },
   {
@@ -375,7 +482,7 @@
     },
     {
      "aspect": "look",
-     "text": "A walled island core of stone, most of the city over the lake on stilt and boardwalk districts raised above flood level, shore quarters at the feeder mouths, canoes everywhere, mist off the water at dawn.",
+     "text": "A walled island core of stone, most of the city over the lake on stilt and boardwalk districts raised well above the water, shore quarters at the feeder mouths, canoes everywhere, mist off the water at dawn.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -450,6 +557,103 @@
      "radius_m": 220,
      "why": "stilt districts and landings around the island"
     }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Blackrose map marker on the island core's landing",
+     "count": 1
+    },
+    {
+     "kind": "carriage-or-boat",
+     "detail": "canoe-men to Lujei, Ka-Asei, Toklea and down Bramman's river to Soulrest",
+     "count": 1
+    },
+    {
+     "kind": "trader-general",
+     "detail": "island-core trader in lake goods and Rose plunder",
+     "count": 1
+    },
+    {
+     "kind": "trader-blacksmith",
+     "detail": "island-core smith working bog iron",
+     "count": 1
+    },
+    {
+     "kind": "trader-apothecary",
+     "detail": "lake herbalist selling swamp ingredients and poisons",
+     "count": 1
+    },
+    {
+     "kind": "trader-innkeeper",
+     "detail": "boardwalk tavern with rooms",
+     "count": 1
+    },
+    {
+     "kind": "inn-room",
+     "detail": "room at the boardwalk tavern",
+     "count": 1
+    },
+    {
+     "kind": "trader-hunter",
+     "detail": "gar and crocodile hide buyer on the shore quarter",
+     "count": 1
+    },
+    {
+     "kind": "fence",
+     "detail": "boardwalk fence who buys from the Rose's outlaws",
+     "count": 1
+    },
+    {
+     "kind": "forge",
+     "detail": "island-core forge with its anvil",
+     "count": 1
+    },
+    {
+     "kind": "grindstone",
+     "detail": "grindstone at the island forge",
+     "count": 1
+    },
+    {
+     "kind": "tanning-rack",
+     "detail": "tanning racks in the shore quarter",
+     "count": 1
+    },
+    {
+     "kind": "alchemy-lab",
+     "detail": "alchemy lab at the herbalist's",
+     "count": 1
+    },
+    {
+     "kind": "cooking-pot",
+     "detail": "cooking pots on the boardwalks",
+     "count": 1
+    },
+    {
+     "kind": "trainer",
+     "detail": "Master Sneak trainer, a Blackguard deserter on the boardwalks",
+     "count": 1
+    },
+    {
+     "kind": "trainer",
+     "detail": "Expert Alchemy trainer, the lake herbalist",
+     "count": 1
+    },
+    {
+     "kind": "trainer",
+     "detail": "Journeyman One-handed trainer, an island-core guard",
+     "count": 1
+    },
+    {
+     "kind": "shrine-blessing",
+     "detail": "the drowned Blackrose Hist, reached by diving: a blessing of the Hist (Waterbreathing and resist disease)",
+     "count": 1
+    },
+    {
+     "kind": "fishing",
+     "detail": "fishing from the stilt districts",
+     "count": 1
+    }
    ]
   },
   {
@@ -462,7 +666,7 @@
    "siting": "inland",
    "danger_band_id": "D4",
    "importance": 4,
-   "summary": "The Rose is the Second Empire's fortress prison, built in a day from the ruins of Lilmothiit Blackrose. In 4E 201 it is held by the prison-born Blackguards' heirs under a Naga raj-kaal, with the undead the 4E 48 catastrophe left in its lower levels.",
+   "summary": "The Rose is the Second Empire's fortress prison, built in a day from the ruins of Lilmothiit Blackrose. In 4E 201 it is held by the prison-born Blackguards' heirs under a Naga raj-kaal, and its drowned lower levels hold the risen dead of its old inmates.",
    "lore_page": "Lore:Blackrose Prison",
    "statement_tier_id": "CANON_DERIVED",
    "aliases": [
@@ -508,7 +712,7 @@
     },
     {
      "aspect": "history",
-     "text": "Raised by Pelladil Direnni with stone atronachs for Potentate Versidue-Shaie, abandoned in the Second Empire's fall, held by the inmates' descendants, reclaimed by the Third Empire, and broken in 3E 432. After 4E 48 the cycle ran a third time.",
+     "text": "Raised by Pelladil Direnni with stone atronachs for Potentate Versidue-Shaie, abandoned in the Second Empire's fall, held by the inmates' descendants, reclaimed by the Third Empire, and broken in 3E 432. When the Empire left at the secession, the inmates' heirs took it a third time.",
      "tier": "CANON_EXPLICIT",
      "sources": [
       {
@@ -518,13 +722,15 @@
        "url": "https://en.uesp.net/wiki/Lore:Blackrose_Prison"
       },
       {
-       "kind": "dossier",
-       "title": "The prison province",
-       "locator": "story/lore/topics/prisons.md"
+       "kind": "uesp",
+       "title": "Lore:Fourth Era",
+       "locator": "Lore:Fourth Era",
+       "url": "https://en.uesp.net/wiki/Lore:Fourth_Era"
       },
       {
-       "kind": "reasoning",
-       "title": "prison in the Tulmek Washes, Warden Marches culture, owner ruling Q3"
+       "kind": "dossier",
+       "title": "Argonia in 4E 201, section 10 (the spine)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     },
@@ -684,6 +890,56 @@
      "id": "flat-pad",
      "radius_m": 120,
      "why": "the fortress footprint and its yard"
+    }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "the Rose map marker at the causeway gate",
+     "count": 1
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "Blackguard heirs on the walls, outlaw archers and swordsmen",
+     "count": 10,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "risen inmates in the drowned lower cells",
+     "count": 8,
+     "reward": "gold-hoard"
+    },
+    {
+     "kind": "combat-boss",
+     "detail": "the Naga raj-kaal in his hall",
+     "count": 1,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "boss-chest",
+     "detail": "boss chest, D4 tier (level 35): the raj-kaal's chest, glass and ebony tier",
+     "count": 1
+    },
+    {
+     "kind": "gold-hoard",
+     "detail": "gold hoard from the Rose's highway tolls, D4 tier, in the old warden's vault",
+     "count": 1
+    },
+    {
+     "kind": "forge",
+     "detail": "the Blackguards' forge in the yard with its anvil",
+     "count": 1
+    },
+    {
+     "kind": "fence",
+     "detail": "a Blackguard quartermaster who buys stolen goods once the gate is opened to the player",
+     "count": 1
+    },
+    {
+     "kind": "skill-book",
+     "detail": "a Lockpicking skill book in the old warden's office",
+     "count": 1
     }
    ]
   },
@@ -881,6 +1137,58 @@
      "radius_m": 110,
      "why": "boat landings on the fork"
     }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Toklea map marker",
+     "count": 1
+    },
+    {
+     "kind": "trader-general",
+     "detail": "chime-maker and general trader on the stone footing",
+     "count": 1
+    },
+    {
+     "kind": "trader-jeweller",
+     "detail": "tin, copper and glass chime-smith who buys and sells ingots and gems",
+     "count": 1
+    },
+    {
+     "kind": "trader-innkeeper",
+     "detail": "river-fork inn with rooms",
+     "count": 1
+    },
+    {
+     "kind": "inn-room",
+     "detail": "room at the river-fork inn",
+     "count": 1
+    },
+    {
+     "kind": "smelter",
+     "detail": "chime-smith's smelter",
+     "count": 1
+    },
+    {
+     "kind": "forge",
+     "detail": "chime-smith's forge with its anvil",
+     "count": 1
+    },
+    {
+     "kind": "cooking-pot",
+     "detail": "cooking pot at the inn",
+     "count": 1
+    },
+    {
+     "kind": "trainer",
+     "detail": "Journeyman Smithing trainer, the chime-smith",
+     "count": 1
+    },
+    {
+     "kind": "fishing",
+     "detail": "fishing at the river fork",
+     "count": 1
+    }
    ]
   },
   {
@@ -964,7 +1272,7 @@
     },
     {
      "aspect": "people",
-     "text": "Argonians, a few Khajiit teamsters, Imperial-descended clerks.",
+     "text": "Argonians, a few Khajiit teamsters, and two Imperial-descended families who keep the toll house for Soulrest.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1077,6 +1385,63 @@
      "id": "flat-pad",
      "radius_m": 110,
      "why": "the built area on the ridge"
+    }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Mir-Xal map marker",
+     "count": 1
+    },
+    {
+     "kind": "carriage-or-boat",
+     "detail": "road carter to Soulrest and Salaxul",
+     "count": 1
+    },
+    {
+     "kind": "trader-general",
+     "detail": "market-house trader in timber, stone and road goods",
+     "count": 1
+    },
+    {
+     "kind": "trader-blacksmith",
+     "detail": "road smith who shoes carts and sells steel",
+     "count": 1
+    },
+    {
+     "kind": "trader-innkeeper",
+     "detail": "stage inn with rooms",
+     "count": 1
+    },
+    {
+     "kind": "inn-room",
+     "detail": "room at the stage inn",
+     "count": 1
+    },
+    {
+     "kind": "forge",
+     "detail": "road smith's forge with its anvil",
+     "count": 1
+    },
+    {
+     "kind": "grindstone",
+     "detail": "grindstone at the road smithy",
+     "count": 1
+    },
+    {
+     "kind": "tanning-rack",
+     "detail": "tanning rack at the teamsters' yard",
+     "count": 1
+    },
+    {
+     "kind": "cooking-pot",
+     "detail": "cooking pot at the stage inn",
+     "count": 1
+    },
+    {
+     "kind": "trainer",
+     "detail": "Journeyman Archery trainer, a toll-house guard",
+     "count": 1
     }
    ]
   },
@@ -1199,7 +1564,7 @@
     },
     {
      "aspect": "faith",
-     "text": "Lujei's tree-minder keeps the hatching records for the ferry families and carries the dead out by boat to the drowned Blackrose tree, a short pole across the lake. The elders pay a share of the crossing tolls to the island core as the price of that burial right.",
+     "text": "Lujei's tree-minder knows every egg the ferry families lay and carries the dead out by boat to the drowned Blackrose tree, a short pole across the lake. The elders pay a share of the crossing tolls to the island core as the price of that burial right.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1284,6 +1649,38 @@
      "id": "shore-access",
      "radius_m": 60,
      "why": "the village landing"
+    }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Lujei map marker",
+     "count": 1
+    },
+    {
+     "kind": "trader-innkeeper",
+     "detail": "ferry families' cookhouse selling fish and eel",
+     "count": 1
+    },
+    {
+     "kind": "trader-hunter",
+     "detail": "gar-hide buyer at the landing",
+     "count": 1
+    },
+    {
+     "kind": "cooking-pot",
+     "detail": "cooking pot in the ferry families' cookhouse",
+     "count": 1
+    },
+    {
+     "kind": "fishing",
+     "detail": "eel and fish traps in the channel shallows",
+     "count": 1
+    },
+    {
+     "kind": "harvest-common",
+     "detail": "cut reeds and swamp fungus along the channel",
+     "count": 1
     }
    ]
   },
@@ -1391,12 +1788,18 @@
     },
     {
      "aspect": "faith",
-     "text": "A small Sithis-token tied to the landing post for crossing luck.",
-     "tier": "AGENT_INVENTED",
+     "text": "A knot of eel-skin, a Sithis-token, is tied to the landing post, and the polemen touch it before a night crossing.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
+       "kind": "uesp",
+       "title": "Lore:Sithis",
+       "locator": "Lore:Sithis",
+       "url": "https://en.uesp.net/wiki/Lore:Sithis"
+      },
+      {
        "kind": "reasoning",
-       "title": "ferry in the Tulmek Washes, olive culture, Blackrose approach"
+       "title": "Argonians worship Sithis (Lore:Sithis); a ferry crew on a predator-filled channel asks for a safe crossing"
       }
      ]
     },
@@ -1456,6 +1859,34 @@
      "id": "shore-access",
      "radius_m": 25,
      "why": "the ferry landing"
+    }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Lujei Ferry map marker",
+     "count": 1
+    },
+    {
+     "kind": "carriage-or-boat",
+     "detail": "pole-raft across the Blackrose channel to the island core",
+     "count": 1
+    },
+    {
+     "kind": "combat-creature",
+     "detail": "crocodiles in the channel beside the landing",
+     "count": 2,
+     "reward": "treasure"
+    },
+    {
+     "kind": "treasure",
+     "detail": "treasure, D1 tier (up to 50 gold, iron and steel): a drowned traveller's purse in the reeds",
+     "count": 1
+    },
+    {
+     "kind": "fishing",
+     "detail": "fishing from the landing",
+     "count": 1
     }
    ]
   },
@@ -1578,7 +2009,7 @@
     },
     {
      "aspect": "faith",
-     "text": "The Natai tree-minder keeps a drift-tree shrine of Sithis at the tide line; the dead are carried to the Blackrose Hist by boat on a yearly trip.",
+     "text": "The Natai tree-minder keeps a driftwood shrine of Sithis on the beach above the salt pans; the dead are carried to the Blackrose Hist by boat once a year.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1599,7 +2030,7 @@
     },
     {
      "aspect": "look",
-     "text": "Low stilt houses at the tide line, salt pans, drying racks, weathered salvage timber.",
+     "text": "Low stilt houses along the beach, salt pans, drying racks, weathered salvage timber.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1663,6 +2094,43 @@
      "id": "shore-access",
      "radius_m": 60,
      "why": "beach and boat landing"
+    }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Natai map marker",
+     "count": 1
+    },
+    {
+     "kind": "trader-general",
+     "detail": "salt-pan family trading salt, shellfish and Salt Heron salvage",
+     "count": 1
+    },
+    {
+     "kind": "cooking-pot",
+     "detail": "cooking pot by the drying racks",
+     "count": 1
+    },
+    {
+     "kind": "free-bed",
+     "detail": "a salvager's spare bed in the longhouse",
+     "count": 1
+    },
+    {
+     "kind": "harvest-common",
+     "detail": "shellfish and salt from the pans",
+     "count": 1
+    },
+    {
+     "kind": "fishing",
+     "detail": "sea fishing off the beach",
+     "count": 1
+    },
+    {
+     "kind": "trainer",
+     "detail": "Journeyman Pickpocket trainer, a salvager who strips the wreck first",
+     "count": 1
     }
    ]
   },
@@ -1785,7 +2253,7 @@
     },
     {
      "aspect": "faith",
-     "text": "Ka-Asei has no tree of its own, so its minder sends each clutch by lake barge to the Blackrose Hist and keeps a ledger of names on knotted cords under the longhouse eaves. Mourners tie a reed to a stilt for every death. The posts at the channel mouth are covered with reeds.",
+     "text": "Ka-Asei has no tree of its own, so its minder sends each clutch by lake barge to the Blackrose Hist and ties a knot in a cord under the longhouse eaves for every hatchling named there. Mourners tie a reed to a stilt for every death. The posts at the channel mouth are covered with reeds.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1870,6 +2338,39 @@
      "id": "flat-pad",
      "radius_m": 40,
      "why": "a shore platform"
+    }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Ka-Asei map marker",
+     "count": 1
+    },
+    {
+     "kind": "trader-general",
+     "detail": "boatwright's family selling rope, tools and fish",
+     "count": 1
+    },
+    {
+     "kind": "cooking-pot",
+     "detail": "cooking pot on the longhouse platform",
+     "count": 1
+    },
+    {
+     "kind": "fishing",
+     "detail": "fish traps in the channel mouth",
+     "count": 1
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "night bandit boats at the channel mouth",
+     "count": 3,
+     "reward": "treasure"
+    },
+    {
+     "kind": "treasure",
+     "detail": "treasure, D1 tier (up to 50 gold, iron and steel): the bandits' boat strongbox",
+     "count": 1
     }
    ]
   },
@@ -1992,7 +2493,7 @@
     },
     {
      "aspect": "faith",
-     "text": "Amalaja's minder looks east: eggs go with the salt-and-rice boats toward the delta trees, and drowned fishermen are given back to the sea at the point. The Hist is honoured in a small rice-straw shrine above the tide line.",
+     "text": "Amalaja's minder looks east: eggs go with the salt-and-rice boats toward the delta trees, and drowned fishermen are given back to the sea at the point. The Hist is honoured in a small rice-straw shrine on the dune above the boats.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2077,6 +2578,33 @@
      "id": "shore-access",
      "radius_m": 60,
      "why": "beach landing"
+    }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Amalaja map marker",
+     "count": 1
+    },
+    {
+     "kind": "trader-innkeeper",
+     "detail": "fish-and-rice seller on the dune",
+     "count": 1
+    },
+    {
+     "kind": "cooking-pot",
+     "detail": "cooking pot on the dune above the boats",
+     "count": 1
+    },
+    {
+     "kind": "fishing",
+     "detail": "sea fishing off the point",
+     "count": 1
+    },
+    {
+     "kind": "harvest-common",
+     "detail": "rice and dried fish from the delta swap",
+     "count": 1
     }
    ]
   },
@@ -2270,6 +2798,44 @@
      "radius_m": 60,
      "why": "the village"
     }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Tei-Kur map marker",
+     "count": 1
+    },
+    {
+     "kind": "trader-innkeeper",
+     "detail": "rice-and-fish seller at the granary",
+     "count": 1
+    },
+    {
+     "kind": "cooking-pot",
+     "detail": "cooking pot at the granary",
+     "count": 1
+    },
+    {
+     "kind": "harvest-common",
+     "detail": "rice from the paddies and reed from the channel",
+     "count": 1
+    },
+    {
+     "kind": "fishing",
+     "detail": "fish traps in the farm channels",
+     "count": 1
+    },
+    {
+     "kind": "combat-creature",
+     "detail": "mudcrabs and a crocodile at the paddy edges",
+     "count": 3,
+     "reward": "treasure"
+    },
+    {
+     "kind": "treasure",
+     "detail": "treasure, D1 tier (up to 50 gold, iron and steel): a farmhand's lost pouch at the paddy edge",
+     "count": 1
+    }
    ]
   },
   {
@@ -2381,12 +2947,18 @@
     },
     {
      "aspect": "faith",
-     "text": "A small Sithis-token hangs on the landing post, put there by the ferrymen for a safe crossing.",
-     "tier": "AGENT_INVENTED",
+     "text": "The ferrymen have hung a carved gar-tooth on the landing post as a gift to Sithis, and nobody casts off without rapping it once.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
+       "kind": "uesp",
+       "title": "Lore:Sithis",
+       "locator": "Lore:Sithis",
+       "url": "https://en.uesp.net/wiki/Lore:Sithis"
+      },
+      {
        "kind": "reasoning",
-       "title": "ferry in the Tulmek Washes, rose culture, Lilmoth road"
+       "title": "Argonians worship Sithis (Lore:Sithis); a crocodilian-haunted delta channel is the danger a ferry crew would ward against"
       }
      ]
     },
@@ -2447,6 +3019,33 @@
      "radius_m": 25,
      "why": "the ferry landing"
     }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Delta Ferry map marker",
+     "count": 1
+    },
+    {
+     "kind": "carriage-or-boat",
+     "detail": "raft across the delta channel toward Lilmoth",
+     "count": 1
+    },
+    {
+     "kind": "trader-general",
+     "detail": "ferry-house trader in rice and road goods",
+     "count": 1
+    },
+    {
+     "kind": "cooking-pot",
+     "detail": "cooking pot in the ferry house",
+     "count": 1
+    },
+    {
+     "kind": "fishing",
+     "detail": "fishing from the raft landing",
+     "count": 1
+    }
    ]
   },
   {
@@ -2466,23 +3065,22 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A farm on the channel bank, named Reedfall after its reed falls on the water.",
-     "tier": "AGENT_INVENTED",
+     "text": "A family rice farm on the channel bank on the road to Tei-Kur, named Reedfall for the reed beds that lean over its landing. Its paddies feed Blackrose and the travellers on the Lilmoth road.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "map",
        "title": "Project Tamriel: Black Marsh map",
-       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png",
-       "url": "https://en.uesp.net/wiki/File:PT3-map-Black_Marsh.png"
+       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
+      },
+      {
+       "kind": "dossier",
+       "title": "Blackrose dossier",
+       "locator": "story/lore/blackrose.md"
       },
       {
        "kind": "reasoning",
-       "title": "farm in the Tulmek Washes, rose culture"
-      },
-      {
-       "kind": "uesp",
-       "title": "Lore:Reedfall Farm: no page (API title lookup and namespace-130 search, 2026-11-08)",
-       "locator": "Lore:Reedfall Farm"
+       "title": "a farm marked on the map in the delta farm country between the Blackrose lake and the Lilmoth coast (state section 6: rice and reed from the delta)"
       }
      ]
     },
@@ -2624,7 +3222,34 @@
      "why": "the farm"
     }
    ],
-   "culture_id": "rose"
+   "culture_id": "rose",
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Reedfall Farm map marker",
+     "count": 1
+    },
+    {
+     "kind": "harvest-common",
+     "detail": "rice from the paddies and reeds on the bank",
+     "count": 1
+    },
+    {
+     "kind": "cooking-pot",
+     "detail": "the family's cooking pot",
+     "count": 1
+    },
+    {
+     "kind": "fishing",
+     "detail": "fishing at the boat landing",
+     "count": 1
+    },
+    {
+     "kind": "trader-innkeeper",
+     "detail": "the farm family sells rice and fish to passers",
+     "count": 1
+    }
+   ]
   },
   {
    "id": "salaxul",
@@ -2741,7 +3366,7 @@
     },
     {
      "aspect": "faith",
-     "text": "A Sithis shrine stands at the tide line. Hatchlings are sent inland from Salaxul to be hatched.",
+     "text": "A Sithis shrine of piled conch shells stands at the top of the beach. Salaxul's eggs go inland to be hatched under a Banujha tree.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2774,7 +3399,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Sea-drakes patrol the shallows, pirates work the Sea of Mists offshore, and the creeks behind the village flood without warning.",
+     "text": "Sea-drakes patrol the shallows, pirates work the Sea of Mists offshore, and the deep creeks behind the village hold slaughterfish.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2822,6 +3447,44 @@
      "id": "shore-access",
      "radius_m": 60,
      "why": "the jetty and beach"
+    }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Salaxul map marker",
+     "count": 1
+    },
+    {
+     "kind": "carriage-or-boat",
+     "detail": "coastal boat along the south shore to Natai and Acra-Tiin",
+     "count": 1
+    },
+    {
+     "kind": "trader-general",
+     "detail": "landing trader in salt, shellfish and coastal freight",
+     "count": 1
+    },
+    {
+     "kind": "cooking-pot",
+     "detail": "cooking pot at the landing",
+     "count": 1
+    },
+    {
+     "kind": "fishing",
+     "detail": "shellfish and fishing off the jetty",
+     "count": 1
+    },
+    {
+     "kind": "combat-creature",
+     "detail": "slaughterfish in the creeks behind the village",
+     "count": 3,
+     "reward": "treasure"
+    },
+    {
+     "kind": "treasure",
+     "detail": "treasure, D1 tier (up to 50 gold, iron and steel): a smuggler's purse hidden under the jetty",
+     "count": 1
     }
    ]
   },
@@ -2913,7 +3576,7 @@
     },
     {
      "aspect": "people",
-     "text": "Khariton is uninhabited. Brushmound hunters shelter under its few sound roofs in the dry season, and scavengers strip the last pegs from its stilt halls.",
+     "text": "Khariton is uninhabited. Brushmound hunters shelter under its few sound roofs on long hunts, and scavengers strip the last pegs from its stilt halls.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3019,7 +3682,47 @@
      "why": "the stilt village's footprint"
     }
    ],
-   "culture_id": "oxblood"
+   "culture_id": "oxblood",
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Khariton map marker",
+     "count": 1
+    },
+    {
+     "kind": "combat-creature",
+     "detail": "crocodiles and gar in the drowned lanes",
+     "count": 4,
+     "reward": "treasure"
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "a Blackguard watch post of three outlaws",
+     "count": 3,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "combat-boss",
+     "detail": "the Blackguard watch captain",
+     "count": 1,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "treasure",
+     "detail": "treasure: a chime-maker's cache of tin and copper ingots under the footings",
+     "count": 1
+    },
+    {
+     "kind": "boss-chest",
+     "detail": "boss chest, D3 tier (level 20): the watch captain's chest",
+     "count": 1
+    },
+    {
+     "kind": "ore-vein",
+     "detail": "tin and copper scrap piles to strip, as ore",
+     "count": 3
+    }
+   ]
   },
   {
    "id": "bucalos",
@@ -3215,7 +3918,42 @@
      "why": "the stilt village's footprint"
     }
    ],
-   "culture_id": "oxblood"
+   "culture_id": "oxblood",
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Bucalos map marker",
+     "count": 1
+    },
+    {
+     "kind": "combat-creature",
+     "detail": "crocodiles and giant snakes under the empty stilts",
+     "count": 4,
+     "reward": "treasure"
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "rival scavengers raiding the footings",
+     "count": 4,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "combat-boss",
+     "detail": "the scavenger gang's leader",
+     "count": 1,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "treasure",
+     "detail": "treasure: a Kothringi cache of chimes and silver under the footings",
+     "count": 1
+    },
+    {
+     "kind": "boss-chest",
+     "detail": "boss chest, D3 tier (level 20): the scavenger leader's chest",
+     "count": 1
+    }
+   ]
   },
   {
    "id": "tarak-shan",
@@ -3443,7 +4181,52 @@
      "why": "stilts on water"
     }
    ],
-   "culture_id": "olive"
+   "culture_id": "olive",
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Tarak Shan map marker",
+     "count": 1
+    },
+    {
+     "kind": "combat-creature",
+     "detail": "feather-serpents (winged serpents) in the halls",
+     "count": 4,
+     "reward": "gold-hoard"
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "undead of the 2E assault, Legion and tribal",
+     "count": 8,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "combat-boss",
+     "detail": "the feather-serpent in its den in the great hall",
+     "count": 1,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "boss-chest",
+     "detail": "boss chest, D4 tier (level 35): the serpent's den, glass and ebony tier",
+     "count": 1
+    },
+    {
+     "kind": "gold-hoard",
+     "detail": "gold hoard, D4 tier: a Second Era war-chest in the drowned stockade",
+     "count": 1
+    },
+    {
+     "kind": "unique-item",
+     "detail": "an old Legion banner-blade from the storming, fixed enchantment",
+     "count": 1
+    },
+    {
+     "kind": "treasure",
+     "detail": "treasure: a pile of rusted Imperial arms from the storming",
+     "count": 1
+    }
+   ]
   },
   {
    "id": "abandoned-village-2-m104",
@@ -3455,21 +4238,20 @@
    "siting": "swamp",
    "danger_band_id": "D3",
    "importance": 1,
-   "summary": "Sheh-Ara is a half-sunken stilt village south of Lujei.",
+   "summary": "Sheh-Ara is a half-sunken stilt village south of Lujei, emptied by raiders from the Rose and left to the lake.",
    "lore_page": null,
-   "statement_tier_id": "AGENT_INVENTED",
+   "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
    "notes": [
     {
      "aspect": "overview",
-     "text": "Sheh-Ara has two halls on leaning posts above a flooded yard. A ferry channel from Lujei runs close beside it.",
-     "tier": "AGENT_INVENTED",
+     "text": "Sheh-Ara has two halls on leaning posts above a flooded yard, on the ferry channel south of Lujei. It stood outside the island core's protection, and the Rose's raiders emptied it.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "map",
        "title": "Project Tamriel: Black Marsh map",
-       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png",
-       "url": "https://en.uesp.net/wiki/File:PT3-map-Black_Marsh.png"
+       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
       },
       {
        "kind": "dossier",
@@ -3477,26 +4259,31 @@
        "locator": "story/lore/blackrose.md"
       },
       {
-       "kind": "reasoning",
-       "title": "abandoned village in the Tulmek Washes"
+       "kind": "uesp",
+       "title": "Lore:Blackrose Prison",
+       "locator": "Lore:Blackrose Prison",
+       "url": "https://en.uesp.net/wiki/Lore:Blackrose_Prison"
       },
       {
-       "kind": "uesp",
-       "title": "Lore:Sheh-Ara: no page (API title lookup and namespace-130 search, 2026-11-08)",
-       "locator": "Lore:Sheh-Ara"
+       "kind": "dossier",
+       "title": "Argonia in 4E 201, section 10 (the spine)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      },
+      {
+       "kind": "reasoning",
+       "title": "an abandoned village on the map on the ferry channel south of Lujei; the Rose's Blackguard heirs raid the roads round Blackrose (spine 10.2); Lujei sits under the island core's protection"
       }
      ]
     },
     {
      "aspect": "history",
-     "text": "Sheh-Ara lost its people to rising lake water between Lujei and Blackrose. The last families left for Lujei's ferry landing after the 4E 48 catastrophe.",
-     "tier": "AGENT_INVENTED",
+     "text": "Sheh-Ara fished the channel between Lujei and Blackrose. The Blackguards' heirs at the Rose raided it for boats and food until its families gave up and moved to Lujei, which pays the island core for shelter. The posts have since settled into the soft lake bed.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "map",
        "title": "Project Tamriel: Black Marsh map",
-       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png",
-       "url": "https://en.uesp.net/wiki/File:PT3-map-Black_Marsh.png"
+       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
       },
       {
        "kind": "dossier",
@@ -3504,8 +4291,19 @@
        "locator": "story/lore/blackrose.md"
       },
       {
+       "kind": "uesp",
+       "title": "Lore:Blackrose Prison",
+       "locator": "Lore:Blackrose Prison",
+       "url": "https://en.uesp.net/wiki/Lore:Blackrose_Prison"
+      },
+      {
+       "kind": "dossier",
+       "title": "Argonia in 4E 201, section 10 (the spine)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      },
+      {
        "kind": "reasoning",
-       "title": "abandoned village in the Tulmek Washes"
+       "title": "an abandoned village on the map on the ferry channel south of Lujei; the Rose's Blackguard heirs raid the roads round Blackrose (spine 10.2); Lujei sits under the island core's protection"
       }
      ]
     },
@@ -3617,7 +4415,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A ferryman's lost child's bead string is caught in the dead tree, and a Lujei elder wants the village's hatching register fetched from the minder's platform.",
+     "text": "A ferryman's lost child's bead string is caught in the dead tree, and a Lujei elder wants the egg-stone from the minder's platform, the stone every Sheh-Ara hatchling was named over, carried to Lujei.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3639,7 +4437,36 @@
      "why": "the village platform"
     }
    ],
-   "culture_id": "olive"
+   "culture_id": "olive",
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Sheh-Ara map marker",
+     "count": 1
+    },
+    {
+     "kind": "combat-creature",
+     "detail": "crocodiles in the flooded yard",
+     "count": 3,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "combat-boss",
+     "detail": "a large crocodile under the minder's platform",
+     "count": 1,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "boss-chest",
+     "detail": "boss chest, D3 tier (level 20): sunk under the minder's platform, the raiders' leavings",
+     "count": 1
+    },
+    {
+     "kind": "harvest-common",
+     "detail": "reed bundles and leeches in the shallows",
+     "count": 1
+    }
+   ]
   },
   {
    "id": "abandoned-village-9-m97",
@@ -3651,21 +4478,20 @@
    "siting": "swamp",
    "danger_band_id": "D3",
    "importance": 1,
-   "summary": "Oru-Neel is a stilt village in the northeast farm country, emptied by flood.",
+   "summary": "Oru-Neel is a stilt village in the north-east farm country, emptied when its rice market at Lilmoth was destroyed in 4E 48 and its dyke went unmended.",
    "lore_page": null,
-   "statement_tier_id": "AGENT_INVENTED",
+   "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
    "notes": [
     {
      "aspect": "overview",
-     "text": "Oru-Neel is a ring of grey posts in an empty paddy, with a tilted hall platform and sluice gates hanging from the old dyke. A spring flood took its rice fields.",
-     "tier": "AGENT_INVENTED",
+     "text": "Oru-Neel is a ring of grey posts in an empty paddy, with a tilted hall platform and sluice gates hanging from a broken dyke. Salt water stands where its rice grew.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "map",
        "title": "Project Tamriel: Black Marsh map",
-       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png",
-       "url": "https://en.uesp.net/wiki/File:PT3-map-Black_Marsh.png"
+       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
       },
       {
        "kind": "dossier",
@@ -3673,26 +4499,37 @@
        "locator": "story/lore/blackrose.md"
       },
       {
-       "kind": "reasoning",
-       "title": "abandoned village in the Tulmek Washes"
+       "kind": "uesp",
+       "title": "Lore:Lilmoth",
+       "locator": "Lore:Lilmoth",
+       "url": "https://en.uesp.net/wiki/Lore:Lilmoth"
       },
       {
        "kind": "uesp",
-       "title": "Lore:Oru-Neel: no page (API title lookup and namespace-130 search, 2026-11-08)",
-       "locator": "Lore:Oru-Neel"
+       "title": "Lore:Umbriel",
+       "locator": "Lore:Umbriel",
+       "url": "https://en.uesp.net/wiki/Lore:Umbriel"
+      },
+      {
+       "kind": "dossier",
+       "title": "Argonia in 4E 201, section 10 (the spine)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      },
+      {
+       "kind": "reasoning",
+       "title": "an abandoned village on the map in the delta farm country on the Lilmoth road; Umbriel destroyed Lilmoth in 4E 48 (Lore:Umbriel), and the spine allows a 4E 48 loss in Lilmoth country"
       }
      ]
     },
     {
      "aspect": "history",
-     "text": "Oru-Neel stood in the north-eastern farm country between Tei-Kur and Reedfall and was emptied by a spring flood that took its rice fields; its families moved to Tei-Kur.",
-     "tier": "AGENT_INVENTED",
+     "text": "Oru-Neel grew rice for Lilmoth on the road between Tei-Kur and Reedfall. When Umbriel destroyed Lilmoth in 4E 48 its buyers were gone, nobody mended the dyke, and salt water came into the paddies; its families moved to Tei-Kur.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "map",
        "title": "Project Tamriel: Black Marsh map",
-       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png",
-       "url": "https://en.uesp.net/wiki/File:PT3-map-Black_Marsh.png"
+       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
       },
       {
        "kind": "dossier",
@@ -3700,8 +4537,25 @@
        "locator": "story/lore/blackrose.md"
       },
       {
+       "kind": "uesp",
+       "title": "Lore:Lilmoth",
+       "locator": "Lore:Lilmoth",
+       "url": "https://en.uesp.net/wiki/Lore:Lilmoth"
+      },
+      {
+       "kind": "uesp",
+       "title": "Lore:Umbriel",
+       "locator": "Lore:Umbriel",
+       "url": "https://en.uesp.net/wiki/Lore:Umbriel"
+      },
+      {
+       "kind": "dossier",
+       "title": "Argonia in 4E 201, section 10 (the spine)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      },
+      {
        "kind": "reasoning",
-       "title": "abandoned village in the Tulmek Washes"
+       "title": "an abandoned village on the map in the delta farm country on the Lilmoth road; Umbriel destroyed Lilmoth in 4E 48 (Lore:Umbriel), and the spine allows a 4E 48 loss in Lilmoth country"
       }
      ]
     },
@@ -3763,7 +4617,7 @@
     },
     {
      "aspect": "faith",
-     "text": "The village tree-minder's platform has fallen in. Farmers from Tei-Kur leave a rice-sheaf at the dry corner each harvest, a small courtesy to the people who first cleared the ground.",
+     "text": "The village tree-minder's platform has fallen in. Farmers from Tei-Kur leave a rice-sheaf at the dry corner after each harvest, a small courtesy to the people who first cleared the ground.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3813,7 +4667,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A Tei-Kur farmer wants the old dyke survey stone found, and a half-buried granary may still hold sealed rice seed.",
+     "text": "A Tei-Kur farmer wants his grandmother's grave-stake pulled from the salt paddy and set again at Tei-Kur, and a half-buried granary may still hold sealed rice seed.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3835,7 +4689,36 @@
      "why": "the village platform"
     }
    ],
-   "culture_id": "olive"
+   "culture_id": "olive",
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Oru-Neel map marker",
+     "count": 1
+    },
+    {
+     "kind": "combat-creature",
+     "detail": "giant snakes nesting under the rotten platform",
+     "count": 4,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "combat-boss",
+     "detail": "a wamasu in the salt paddy",
+     "count": 1,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "boss-chest",
+     "detail": "boss chest, D3 tier (level 20): the half-buried granary's locked bin",
+     "count": 1
+    },
+    {
+     "kind": "harvest-common",
+     "detail": "wild rice at the paddy edges",
+     "count": 1
+    }
+   ]
   },
   {
    "id": "abandoned-village-m4-m109",
@@ -3847,57 +4730,72 @@
    "siting": "swamp",
    "danger_band_id": "D3",
    "importance": 1,
-   "summary": "Zul-Etha is a collapsed village in the southern washes, abandoned after the 4E 48 catastrophe.",
+   "summary": "Zul-Etha is a drowned village in the southern washes, a carting stage emptied when the Soulrest gold trade ended in 3E 427.",
    "lore_page": null,
-   "statement_tier_id": "AGENT_INVENTED",
+   "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
    "notes": [
     {
      "aspect": "overview",
-     "text": "Zul-Etha stood between Mir-Xal and Natai. Three roof peaks and a leaning platform now show above green water, and Natai fishermen call it the drowned place.",
-     "tier": "AGENT_INVENTED",
+     "text": "Zul-Etha stood between Mir-Xal and Natai on the old cart road. Three roof peaks and a leaning platform now show above green water, and Natai fishermen call it the drowned place.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "map",
        "title": "Project Tamriel: Black Marsh map",
-       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png",
-       "url": "https://en.uesp.net/wiki/File:PT3-map-Black_Marsh.png"
+       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
       },
       {
        "kind": "dossier",
-       "title": "Blackrose dossier",
-       "locator": "story/lore/blackrose.md"
-      },
-      {
-       "kind": "reasoning",
-       "title": "abandoned village in the Tulmek Washes"
+       "title": "Soulrest dossier",
+       "locator": "story/lore/soulrest.md"
       },
       {
        "kind": "uesp",
-       "title": "Lore:Zul-Etha: no page (API title lookup and namespace-130 search, 2026-11-08)",
-       "locator": "Lore:Zul-Etha"
+       "title": "Lore:Soulrest",
+       "locator": "Lore:Soulrest",
+       "url": "https://en.uesp.net/wiki/Lore:Soulrest"
+      },
+      {
+       "kind": "dossier",
+       "title": "Argonia in 4E 201, section 10 (the spine)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      },
+      {
+       "kind": "reasoning",
+       "title": "an abandoned village on the map on the old road between Mir-Xal and Natai; the gold and timber trade it carted died when the tribes burned the concessions in 3E 427 (Lore:Soulrest)"
       }
      ]
     },
     {
      "aspect": "history",
-     "text": "Zul-Etha stood in the southern washes between Mir-Xal and Natai until the 4E 48 catastrophe sent its families to the larger towns.",
-     "tier": "AGENT_INVENTED",
+     "text": "Zul-Etha carted ore and timber from the concession road to the south coast. When the tribes burned the mines in 3E 427 the carts stopped, its families moved to Mir-Xal, and the washes covered the street.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "map",
        "title": "Project Tamriel: Black Marsh map",
-       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png",
-       "url": "https://en.uesp.net/wiki/File:PT3-map-Black_Marsh.png"
+       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
       },
       {
        "kind": "dossier",
-       "title": "Blackrose dossier",
-       "locator": "story/lore/blackrose.md"
+       "title": "Soulrest dossier",
+       "locator": "story/lore/soulrest.md"
+      },
+      {
+       "kind": "uesp",
+       "title": "Lore:Soulrest",
+       "locator": "Lore:Soulrest",
+       "url": "https://en.uesp.net/wiki/Lore:Soulrest"
+      },
+      {
+       "kind": "dossier",
+       "title": "Argonia in 4E 201, section 10 (the spine)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       },
       {
        "kind": "reasoning",
-       "title": "abandoned village in the Tulmek Washes"
+       "title": "an abandoned village on the map on the old road between Mir-Xal and Natai; the gold and timber trade it carted died when the tribes burned the concessions in 3E 427 (Lore:Soulrest)"
       }
      ]
     },
@@ -4009,7 +4907,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A Natai fisherman says a trap line came up with a dated brass tag from the drowned street, and a Mir-Xal factor will pay for a salvage count of the iron.",
+     "text": "A Natai fisherman's trap line snagged a carved grave-stake in the drowned street, and a Mir-Xal family wants its ancestor's stake raised before the eels have it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4031,7 +4929,36 @@
      "why": "the village platform"
     }
    ],
-   "culture_id": "olive"
+   "culture_id": "olive",
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Zul-Etha map marker",
+     "count": 1
+    },
+    {
+     "kind": "combat-creature",
+     "detail": "crocodiles among the roof peaks",
+     "count": 4,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "combat-boss",
+     "detail": "an old bull crocodile in the drowned street",
+     "count": 1,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "boss-chest",
+     "detail": "boss chest, D3 tier (level 20): an underwater chest in the drowned carting yard",
+     "count": 1
+    },
+    {
+     "kind": "fishing",
+     "detail": "eel weirs between the posts",
+     "count": 1
+    }
+   ]
   },
   {
    "id": "imperial-ruin-2-m109",
@@ -4043,46 +4970,62 @@
    "siting": "swamp",
    "danger_band_id": "D3",
    "importance": 2,
-   "summary": "Mudmoth is a ruined Imperial waystation in the southern washes. The Legion's '-moth' forts follow the same style and the Archwardens have left this one.",
+   "summary": "Mudmoth is a ruined Imperial road station in the southern washes, left at the secession. Mir-Xal took over the road's toll, so the Archwardens never re-held it.",
    "lore_page": null,
-   "statement_tier_id": "AGENT_INVENTED",
+   "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
    "notes": [
     {
      "aspect": "overview",
-     "text": "A tumbled Imperial waystation whose name follows the Legion's '-moth' naming.",
-     "tier": "AGENT_INVENTED",
+     "text": "A tumbled Imperial waystation on the Soulrest-Blackrose road, named in the Legion's '-moth' fashion like the forts the Archwardens keep elsewhere.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "map",
        "title": "Project Tamriel: Black Marsh map",
-       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png",
-       "url": "https://en.uesp.net/wiki/File:PT3-map-Black_Marsh.png"
+       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
       },
       {
-       "kind": "reasoning",
-       "title": "Imperial ruin in the southern washes"
+       "kind": "dossier",
+       "title": "Argonia in 4E 201, section 10 (the spine)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       },
       {
        "kind": "uesp",
-       "title": "Lore:Mudmoth: no page (API title lookup and namespace-130 search, 2026-11-08)",
-       "locator": "Lore:Mudmoth"
+       "title": "Lore:Fourth Era",
+       "locator": "Lore:Fourth Era",
+       "url": "https://en.uesp.net/wiki/Lore:Fourth_Era"
+      },
+      {
+       "kind": "reasoning",
+       "title": "an Imperial ruin on the map on the Soulrest-Blackrose road in the washes; the Imperial posts were left at the secession (spine 10.4); Mir-Xal now takes the road toll for Soulrest, so the Archwardens never re-held it"
       }
      ]
     },
     {
      "aspect": "history",
-     "text": "Built by the Empire as a road post, abandoned after 4E 48; no garrison since.",
+     "text": "Built by the Empire as a road post on the washes road; left when the Legion marched out at the secession (4E 5-10), and never garrisoned since.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
+       "kind": "map",
+       "title": "Project Tamriel: Black Marsh map",
+       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
+      },
+      {
        "kind": "dossier",
-       "title": "Argonia in 4E 201",
+       "title": "Argonia in 4E 201, section 10 (the spine)",
        "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       },
       {
+       "kind": "uesp",
+       "title": "Lore:Fourth Era",
+       "locator": "Lore:Fourth Era",
+       "url": "https://en.uesp.net/wiki/Lore:Fourth_Era"
+      },
+      {
        "kind": "reasoning",
-       "title": "Imperial ruin in the southern washes"
+       "title": "an Imperial ruin on the map on the Soulrest-Blackrose road in the washes; the Imperial posts were left at the secession (spine 10.4); Mir-Xal now takes the road toll for Soulrest, so the Archwardens never re-held it"
       }
      ]
     },
@@ -4190,12 +5133,28 @@
     },
     {
      "aspect": "hooks",
-     "text": "An Imperial strongbox may lie hidden in the ruin. Smugglers sometimes use its yard for a meeting.",
-     "tier": "AGENT_INVENTED",
+     "text": "The station's paymaster sank his iron strongbox in the flooded cellar when the Legion left, and it has never been raised. Smugglers meet in the yard on moonless nights.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
+       "kind": "map",
+       "title": "Project Tamriel: Black Marsh map",
+       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
+      },
+      {
+       "kind": "dossier",
+       "title": "Argonia in 4E 201, section 10 (the spine)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      },
+      {
+       "kind": "uesp",
+       "title": "Lore:Fourth Era",
+       "locator": "Lore:Fourth Era",
+       "url": "https://en.uesp.net/wiki/Lore:Fourth_Era"
+      },
+      {
        "kind": "reasoning",
-       "title": "Imperial ruin in the southern washes"
+       "title": "an Imperial ruin on the map on the Soulrest-Blackrose road in the washes; the Imperial posts were left at the secession (spine 10.4); Mir-Xal now takes the road toll for Soulrest, so the Archwardens never re-held it"
       }
      ]
     }
@@ -4207,7 +5166,47 @@
      "why": "the tower stands on a mud rise"
     }
    ],
-   "culture_id": "crimson-red"
+   "culture_id": "crimson-red",
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Mudmoth map marker",
+     "count": 1
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "outlaws sleeping in the cellars",
+     "count": 5,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "combat-boss",
+     "detail": "the outlaw leader in the tower",
+     "count": 1,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "combat-creature",
+     "detail": "slaughterfish in the flooded lower cellar",
+     "count": 3,
+     "reward": "treasure"
+    },
+    {
+     "kind": "boss-chest",
+     "detail": "boss chest, D3 tier (level 20): the paymaster's iron strongbox in the flooded cellar",
+     "count": 1
+    },
+    {
+     "kind": "treasure",
+     "detail": "treasure: the outlaws' stash in the tower",
+     "count": 1
+    },
+    {
+     "kind": "forge",
+     "detail": "a cold Legion forge in the yard with its anvil",
+     "count": 1
+    }
+   ]
   },
   {
    "id": "lilmothiit-ruin-1-m107",
@@ -4248,28 +5247,31 @@
     },
     {
      "aspect": "history",
-     "text": "Kit Mounds was one of the fox-folk dens near the inland edge of the washes before the Knahaten Flu of 2E 560, and its last families fled toward Blackrose and left it empty.",
+     "text": "Kit Mounds was one of the fox-folk dens near the inland edge of the washes. Its families went inland toward Blackrose over generations in the Lilmothiit's long withdrawal, and the Knahaten Flu of 2E 560 finished the last of them.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
-       "kind": "dossier",
-       "title": "Lost peoples",
-       "locator": "story/lore/topics/lost-peoples.md"
+       "kind": "uesp",
+       "title": "Lore:Lilmothiit",
+       "locator": "Lore:Lilmothiit",
+       "url": "https://en.uesp.net/wiki/Lore:Lilmothiit"
+      },
+      {
+       "kind": "uesp",
+       "title": "Lore:Knahaten Flu",
+       "locator": "Lore:Knahaten Flu",
+       "url": "https://en.uesp.net/wiki/Lore:Knahaten_Flu"
       },
       {
        "kind": "dossier",
-       "title": "Blackrose dossier",
-       "locator": "story/lore/blackrose.md"
-      },
-      {
-       "kind": "reasoning",
-       "title": "Lilmothiit ruin in the Tulmek Washes"
+       "title": "Argonia in 4E 201, section 10 (the spine)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     },
     {
      "aspect": "present",
-     "text": "The domes are overgrown with sedge and wet-season water stands in the lower burrows. Scholars from Blackrose have mapped it twice and left pegs in the turf.",
+     "text": "The domes are overgrown with sedge and standing water fills the lower burrows. Scholars from Blackrose have dug here twice and left pegs in the turf.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4286,7 +5288,7 @@
     },
     {
      "aspect": "people",
-     "text": "There are no Lilmothiit left to live here. The nearest living people are Lujei hunters and Natai fishermen, who avoid the mounds, and a Blackrose scholar who comes in the dry months.",
+     "text": "There are no Lilmothiit left to live here. The nearest living people are Lujei hunters and Natai fishermen, who avoid the mounds, and a Blackrose scholar who camps here when the rain eases.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4318,7 +5320,7 @@
     },
     {
      "aspect": "faith",
-     "text": "Fox-kite tokens hang in a ring of three burrows facing south, spirit tokens set for the dead who fled. Some are fresh, left by people who do not say who they are.",
+     "text": "Fox-kite tokens hang in a ring of three burrows facing south, spirit tokens for the fox-folk dead. Some are fresh, left by people who do not say who they are.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4334,7 +5336,7 @@
     },
     {
      "aspect": "look",
-     "text": "Three low turf domes with doorways no taller than a seated Argonian, leaf-lined and flooded to the knee in the wet. A line of rotting fox-kite poles runs between them, pointing toward Mudmoth.",
+     "text": "Three low turf domes with doorways no taller than a seated Argonian, leaf-lined and flooded to the knee. A line of rotting fox-kite poles runs between them, pointing toward Mudmoth.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4373,7 +5375,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A Blackrose antiquary wants a dated fox-kite pole from the south dome, and a Natai herb-woman says the burrows carry the voices of the flight.",
+     "text": "A Blackrose antiquary wants the carved fox-kite pole from the south dome brought to her whole, and a Natai herb-woman says a fox-folk mask lies in the third dome with the last of its dead.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4399,6 +5401,41 @@
      "radius_m": 25,
      "why": "a den door cut into a mound",
      "facing_deg": 180
+    }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Kit Mounds map marker",
+     "count": 1
+    },
+    {
+     "kind": "combat-creature",
+     "detail": "giant snakes in the burrow roofs",
+     "count": 3,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "plague-dead shades at the third dome",
+     "count": 4,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "combat-boss",
+     "detail": "the eldest shade in the third dome",
+     "count": 1,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "boss-chest",
+     "detail": "boss chest, D3 tier (level 20): the third dome's grave goods, with a fox-folk mask",
+     "count": 1
+    },
+    {
+     "kind": "harvest-rare",
+     "detail": "dye roots in the burrow walls",
+     "count": 3
     }
    ]
   },
@@ -4441,22 +5478,25 @@
     },
     {
      "aspect": "history",
-     "text": "Brushmound was a Lilmothiit den between Khariton and the delta ferry that its families left for Blackrose during the Knahaten Flu of 2E 560. Bramble overran the mound afterward.",
+     "text": "Brushmound was a Lilmothiit den between Khariton and the delta ferry, left empty in the fox-folk's long withdrawal inland; the Knahaten Flu of 2E 560 took the few who stayed. Bramble overran the mound afterward.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
-       "kind": "dossier",
-       "title": "Lost peoples",
-       "locator": "story/lore/topics/lost-peoples.md"
+       "kind": "uesp",
+       "title": "Lore:Lilmothiit",
+       "locator": "Lore:Lilmothiit",
+       "url": "https://en.uesp.net/wiki/Lore:Lilmothiit"
+      },
+      {
+       "kind": "uesp",
+       "title": "Lore:Knahaten Flu",
+       "locator": "Lore:Knahaten Flu",
+       "url": "https://en.uesp.net/wiki/Lore:Knahaten_Flu"
       },
       {
        "kind": "dossier",
-       "title": "Blackrose dossier",
-       "locator": "story/lore/blackrose.md"
-      },
-      {
-       "kind": "reasoning",
-       "title": "Lilmothiit ruin in the Tulmek Washes"
+       "title": "Argonia in 4E 201, section 10 (the spine)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     },
@@ -4495,7 +5535,7 @@
     },
     {
      "aspect": "economy",
-     "text": "The den kept bramble-fruit presses and fox-pelt work, and it now draws delta antiquaries and fruit-pickers from Delta Ferry in late summer.",
+     "text": "The den kept bramble-fruit presses and fox-pelt work, and it now draws delta antiquaries and fruit-pickers from Delta Ferry when the brambles fruit.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4566,7 +5606,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A Delta Ferry boatman needs the thorn cut back from a buried ferry cache, and a Blackrose scholar asks for rubbings of the notched stones.",
+     "text": "A Delta Ferry boatman needs the thorn cut back from a buried ferry cache, and a Blackrose scholar wants one of the notched spirit stones carried out to her.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4593,6 +5633,41 @@
      "why": "a den door cut into a mound",
      "facing_deg": 180
     }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Brushmound map marker",
+     "count": 1
+    },
+    {
+     "kind": "combat-creature",
+     "detail": "venomous snakes in the burrow roofs",
+     "count": 3,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "plague-dead on the crown",
+     "count": 4,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "combat-boss",
+     "detail": "a plague-dead chieftain in the central burrow",
+     "count": 1,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "boss-chest",
+     "detail": "boss chest, D3 tier (level 20): the buried ferry cache in the brambles",
+     "count": 1
+    },
+    {
+     "kind": "harvest-common",
+     "detail": "bramble fruit on the mound",
+     "count": 4
+    }
    ]
   },
   {
@@ -4605,7 +5680,7 @@
    "siting": "swamp",
    "danger_band_id": "D3",
    "importance": 2,
-   "summary": "Tailhollow is a flooded den in the west washes: a Lilmothiit den, a fox-folk burrow of turf and leaf left from before the Knahaten Flu.",
+   "summary": "Tailhollow is a waterlogged den in the west washes: a Lilmothiit burrow of turf and leaf, left in the fox-folk's long withdrawal and emptied for good by the Knahaten Flu.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
@@ -4634,22 +5709,25 @@
     },
     {
      "aspect": "history",
-     "text": "Tailhollow was a fox-folk den at the western edge of the washes, abandoned when its families fled the Knahaten Flu in the 2E 560s and walked inland toward Blackrose. A hollow where the roof fell in gave it its name.",
+     "text": "Tailhollow was a fox-folk den at the western edge of the washes. Its families moved inland toward Blackrose over generations, as the Lilmothiit withdrew from the coasts, and the Knahaten Flu in the 2E 560s killed those still here. A hollow where the roof fell in gave it its name.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
-       "kind": "dossier",
-       "title": "Lost peoples",
-       "locator": "story/lore/topics/lost-peoples.md"
+       "kind": "uesp",
+       "title": "Lore:Lilmothiit",
+       "locator": "Lore:Lilmothiit",
+       "url": "https://en.uesp.net/wiki/Lore:Lilmothiit"
+      },
+      {
+       "kind": "uesp",
+       "title": "Lore:Knahaten Flu",
+       "locator": "Lore:Knahaten Flu",
+       "url": "https://en.uesp.net/wiki/Lore:Knahaten_Flu"
       },
       {
        "kind": "dossier",
-       "title": "Blackrose dossier",
-       "locator": "story/lore/blackrose.md"
-      },
-      {
-       "kind": "reasoning",
-       "title": "Lilmothiit ruin in the Tulmek Washes"
+       "title": "Argonia in 4E 201, section 10 (the spine)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     },
@@ -4742,7 +5820,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Flooded tunnels with no dry exit, snakes in the fallen roof and plague-dead in the lower burrow. A person in the hollow can be trapped by rising water.",
+     "text": "The lower tunnels lie wholly under water with no air pocket, snakes nest in the fallen roof and plague-dead wait in the lower burrow. A swimmer who goes too far into the tunnels drowns.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4786,6 +5864,41 @@
      "why": "a den door cut into a mound",
      "facing_deg": 180
     }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Tailhollow map marker",
+     "count": 1
+    },
+    {
+     "kind": "combat-creature",
+     "detail": "snakes in the fallen roof",
+     "count": 3,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "plague-dead in the lower burrow",
+     "count": 4,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "combat-boss",
+     "detail": "a plague-dead elder in the drowned lower burrow, reached by swimming",
+     "count": 1,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "boss-chest",
+     "detail": "boss chest, D3 tier (level 20): a sealed clay jar of fox-kite relics in the lower burrow",
+     "count": 1
+    },
+    {
+     "kind": "harvest-common",
+     "detail": "reed and dye plants at the edges",
+     "count": 1
+    }
    ]
   },
   {
@@ -4798,36 +5911,74 @@
    "siting": "seabed",
    "danger_band_id": "D2",
    "importance": 1,
-   "summary": "The Salt Heron is a merchant wreck off Natai on the south shore, lying in shallow water. Natai's salvagers work its cargo.",
+   "summary": "The Salt Heron is a Khajiit coaster out of Senchal, wrecked off Natai in shallow water. Natai's salvagers work her cargo.",
    "lore_page": null,
-   "statement_tier_id": "AGENT_INVENTED",
+   "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
    "notes": [
     {
      "aspect": "overview",
-     "text": "The Salt Heron is a merchant wreck lying off the south shore of the washes, a short boat ride from Natai.",
-     "tier": "AGENT_INVENTED",
+     "text": "The Salt Heron is a Khajiit coaster from Senchal lying off the south shore of the washes, a short boat ride from Natai.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "map",
        "title": "Project Tamriel: Black Marsh map",
-       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png",
-       "url": "https://en.uesp.net/wiki/File:PT3-map-Black_Marsh.png"
+       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
+      },
+      {
+       "kind": "dossier",
+       "title": "Argonia in 4E 201, section 10 (the spine)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      },
+      {
+       "kind": "uesp",
+       "title": "Lore:Black Marsh",
+       "locator": "Lore:Black Marsh",
+       "url": "https://en.uesp.net/wiki/Lore:Black_Marsh"
+      },
+      {
+       "kind": "uesp",
+       "title": "Lore:Elsweyr",
+       "locator": "Lore:Elsweyr",
+       "url": "https://en.uesp.net/wiki/Lore:Elsweyr"
       },
       {
        "kind": "reasoning",
-       "title": "shipwreck off Natai"
+       "title": "a wreck on the map off Natai; most Southern Sea seafarers are Khajiit and Senchal trades through Topal Bay, moon sugar among it (Lore:Black Marsh; spine 10.3)"
       }
      ]
     },
     {
      "aspect": "history",
-     "text": "The Salt Heron ran onto the shoals off Natai in a storm some years back and broke up where she struck.",
-     "tier": "AGENT_INVENTED",
+     "text": "The Salt Heron was running to Soulrest when she struck the shoals off Natai in a night fog and broke up where she struck. Her crew were Khajiit, as most Southern Sea crews are, and two came ashore alive.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
+       "kind": "map",
+       "title": "Project Tamriel: Black Marsh map",
+       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
+      },
+      {
+       "kind": "dossier",
+       "title": "Argonia in 4E 201, section 10 (the spine)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      },
+      {
+       "kind": "uesp",
+       "title": "Lore:Black Marsh",
+       "locator": "Lore:Black Marsh",
+       "url": "https://en.uesp.net/wiki/Lore:Black_Marsh"
+      },
+      {
+       "kind": "uesp",
+       "title": "Lore:Elsweyr",
+       "locator": "Lore:Elsweyr",
+       "url": "https://en.uesp.net/wiki/Lore:Elsweyr"
+      },
+      {
        "kind": "reasoning",
-       "title": "shipwreck off Natai"
+       "title": "a wreck on the map off Natai; most Southern Sea seafarers are Khajiit and Senchal trades through Topal Bay, moon sugar among it (Lore:Black Marsh; spine 10.3)"
       }
      ]
     },
@@ -4867,29 +6018,57 @@
     },
     {
      "aspect": "economy",
-     "text": "The Salt Heron carried a cargo of salt, cloth and lamps; Natai's divers still bring pieces of it up.",
-     "tier": "AGENT_INVENTED",
+     "text": "The Salt Heron carried Senchal cloth, brass lamps and casks of salt; Natai's divers still bring pieces of it up.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
+       "kind": "map",
+       "title": "Project Tamriel: Black Marsh map",
+       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
+      },
+      {
+       "kind": "dossier",
+       "title": "Argonia in 4E 201, section 10 (the spine)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      },
+      {
+       "kind": "uesp",
+       "title": "Lore:Black Marsh",
+       "locator": "Lore:Black Marsh",
+       "url": "https://en.uesp.net/wiki/Lore:Black_Marsh"
+      },
+      {
+       "kind": "uesp",
+       "title": "Lore:Elsweyr",
+       "locator": "Lore:Elsweyr",
+       "url": "https://en.uesp.net/wiki/Lore:Elsweyr"
+      },
+      {
        "kind": "reasoning",
-       "title": "shipwreck off Natai"
+       "title": "a wreck on the map off Natai; most Southern Sea seafarers are Khajiit and Senchal trades through Topal Bay, moon sugar among it (Lore:Black Marsh; spine 10.3)"
       }
      ]
     },
     {
      "aspect": "faith",
-     "text": "Natai holds a drowned-sailor rite each season for the Salt Heron's lost, with offerings cast into the water above her.",
-     "tier": "AGENT_INVENTED",
+     "text": "Natai's divers lay a fish on the bow before they go in, so the drowned Khajiit let them take from the hold.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
+       "kind": "uesp",
+       "title": "Lore:Sithis",
+       "locator": "Lore:Sithis",
+       "url": "https://en.uesp.net/wiki/Lore:Sithis"
+      },
+      {
        "kind": "reasoning",
-       "title": "shipwreck off Natai"
+       "title": "Argonians give the drowned to Sithis; divers working a foreign wreck appease its dead"
       }
      ]
     },
     {
      "aspect": "look",
-     "text": "A broken hull on a sand bar, ribs rising through green water.",
+     "text": "A broken hull on a sand bar, its ribs standing up through green water.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4923,12 +6102,34 @@
     },
     {
      "aspect": "hooks",
-     "text": "A locked captain's chest, a smuggler's cache and a lost logbook.",
-     "tier": "AGENT_INVENTED",
+     "text": "A locked captain's chest lies in the stern, and moon sugar is packed in a false bottom of the salt casks.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
+       "kind": "map",
+       "title": "Project Tamriel: Black Marsh map",
+       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
+      },
+      {
+       "kind": "dossier",
+       "title": "Argonia in 4E 201, section 10 (the spine)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      },
+      {
+       "kind": "uesp",
+       "title": "Lore:Black Marsh",
+       "locator": "Lore:Black Marsh",
+       "url": "https://en.uesp.net/wiki/Lore:Black_Marsh"
+      },
+      {
+       "kind": "uesp",
+       "title": "Lore:Elsweyr",
+       "locator": "Lore:Elsweyr",
+       "url": "https://en.uesp.net/wiki/Lore:Elsweyr"
+      },
+      {
        "kind": "reasoning",
-       "title": "shipwreck off Natai"
+       "title": "a wreck on the map off Natai; most Southern Sea seafarers are Khajiit and Senchal trades through Topal Bay, moon sugar among it (Lore:Black Marsh; spine 10.3)"
       }
      ]
     }
@@ -4938,6 +6139,40 @@
      "id": "seabed",
      "radius_m": 40,
      "why": "the hull on the sea floor"
+    }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Wreck of the Salt Heron map marker",
+     "count": 1
+    },
+    {
+     "kind": "combat-creature",
+     "detail": "slaughterfish and a sea-drake over the wreck",
+     "count": 4,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "combat-boss",
+     "detail": "a sea-drake that lairs in the broken hold",
+     "count": 1,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "boss-chest",
+     "detail": "boss chest, D2 tier (level 10): the captain's locked chest in the stern",
+     "count": 1
+    },
+    {
+     "kind": "treasure",
+     "detail": "treasure: moon sugar and Senchal cloth in the salt casks",
+     "count": 1
+    },
+    {
+     "kind": "harvest-common",
+     "detail": "salt and brass lamps from the hold",
+     "count": 1
     }
    ]
   },
@@ -5027,7 +6262,7 @@
     },
     {
      "aspect": "people",
-     "text": "Argonian carters, wreck-salvagers and a few Imperial-descended clerks.",
+     "text": "Argonian carters, wreck-salvagers and a few Imperial-descended families who run the inn and the yard.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5065,7 +6300,7 @@
     },
     {
      "aspect": "faith",
-     "text": "Chasepoint's Sithis shrine is a plain stone slab beside the carters' yard where drivers pour a drop of oil before a night run. Its hatchlings go inland by cart each season to the Banujha tree, and the shrine keeper keeps the road ledger of who went.",
+     "text": "Chasepoint's Sithis shrine is a plain stone slab beside the carters' yard where drivers pour a drop of oil before a night run. Its hatchlings go inland by cart once a year to the Banujha tree, and the shrine keeper remembers every egg that went.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5145,6 +6380,58 @@
      "id": "flat-pad",
      "radius_m": 60,
      "why": "the village and its yard"
+    }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Chasepoint map marker",
+     "count": 1
+    },
+    {
+     "kind": "carriage-or-boat",
+     "detail": "carter on the Percar road to Soulrest and the quarries",
+     "count": 1
+    },
+    {
+     "kind": "trader-general",
+     "detail": "salvage trader in the carters' yard",
+     "count": 1
+    },
+    {
+     "kind": "trader-innkeeper",
+     "detail": "road inn with rooms",
+     "count": 1
+    },
+    {
+     "kind": "inn-room",
+     "detail": "room at the road inn",
+     "count": 1
+    },
+    {
+     "kind": "trader-blacksmith",
+     "detail": "yard smith mending cart iron",
+     "count": 1
+    },
+    {
+     "kind": "forge",
+     "detail": "yard forge with its anvil",
+     "count": 1
+    },
+    {
+     "kind": "grindstone",
+     "detail": "grindstone at the yard forge",
+     "count": 1
+    },
+    {
+     "kind": "cooking-pot",
+     "detail": "cooking pot at the inn",
+     "count": 1
+    },
+    {
+     "kind": "trainer",
+     "detail": "Journeyman Smithing trainer, the yard smith",
+     "count": 1
     }
    ]
   },
@@ -5267,7 +6554,7 @@
     },
     {
      "aspect": "faith",
-     "text": "Acra-Tiin's Sithis shrine is a salt-white stone at the head of the landing, and the fishermen cast a fin or tail into the tide for it before a long set. The village sends its eggs the long way round the cape by boat to the Banujha tree, and a shell-ledger on the shrine wall records each journey.",
+     "text": "Acra-Tiin's Sithis shrine is a salt-white stone at the head of the landing, and the fishermen throw a fin or tail into the sea for it before a long set. The village sends its eggs the long way round the cape by boat to the Banujha tree, and presses a shell into the shrine's clay for each clutch that goes.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5305,7 +6592,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Sea-drakes work the water off the village, wreckers lurk along the shore, and storms roll in from the Sea of Mists.",
+     "text": "Sea-drakes work the water off the village, wreckers lurk along the shore, and hidden rocks off the landing tear the bottoms out of strange boats.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5352,6 +6639,44 @@
      "id": "shore-access",
      "radius_m": 60,
      "why": "boat slip"
+    }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Acra-Tiin map marker",
+     "count": 1
+    },
+    {
+     "kind": "carriage-or-boat",
+     "detail": "fishing boat across to Soulrest",
+     "count": 1
+    },
+    {
+     "kind": "trader-innkeeper",
+     "detail": "fish-and-salt seller at the landing",
+     "count": 1
+    },
+    {
+     "kind": "cooking-pot",
+     "detail": "cooking pot at the landing",
+     "count": 1
+    },
+    {
+     "kind": "fishing",
+     "detail": "sea fishing off the landing",
+     "count": 1
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "wreckers on the shore by night",
+     "count": 3,
+     "reward": "treasure"
+    },
+    {
+     "kind": "treasure",
+     "detail": "treasure, D1 tier (up to 50 gold, iron and steel): the wreckers' cache in the dunes",
+     "count": 1
     }
    ]
   },
@@ -5560,6 +6885,38 @@
      "radius_m": 60,
      "why": "log landing"
     }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Naxan map marker",
+     "count": 1
+    },
+    {
+     "kind": "trader-general",
+     "detail": "log-landing trader in fish and timber",
+     "count": 1
+    },
+    {
+     "kind": "cooking-pot",
+     "detail": "cooking pot at the log landing",
+     "count": 1
+    },
+    {
+     "kind": "fishing",
+     "detail": "fishing from the bay shore",
+     "count": 1
+    },
+    {
+     "kind": "tanning-rack",
+     "detail": "tanning rack behind the longhouse",
+     "count": 1
+    },
+    {
+     "kind": "trainer",
+     "detail": "Journeyman Two-handed trainer, a log-hauler",
+     "count": 1
+    }
    ]
   },
   {
@@ -5716,7 +7073,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Flooding fills the lower shafts, rotten props bring cave-ins, and predators and outlaws shelter in the workings.",
+     "text": "The lower shafts stand full of black water, rotten props have dropped stone across two galleries, and predators and outlaws shelter in the workings.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5761,7 +7118,47 @@
      "facing_deg": 90
     }
    ],
-   "culture_id": "umber"
+   "culture_id": "umber",
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Old Goldseam map marker",
+     "count": 1
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "outlaws from the Percar hills in the mine mouth",
+     "count": 5,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "combat-creature",
+     "detail": "skeevers and giant snakes in the galleries",
+     "count": 4,
+     "reward": "treasure"
+    },
+    {
+     "kind": "combat-boss",
+     "detail": "the outlaw chief in the winch house",
+     "count": 1,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "boss-chest",
+     "detail": "boss chest, D3 tier (level 20): the outlaw chief's chest",
+     "count": 1
+    },
+    {
+     "kind": "treasure",
+     "detail": "treasure: a buried Imperial payroll in a gallery",
+     "count": 1
+    },
+    {
+     "kind": "ore-vein",
+     "detail": "gold ore veins left in the upper gallery",
+     "count": 3
+    }
+   ]
   },
   {
    "id": "mine-m17-m106",
@@ -5873,7 +7270,7 @@
     },
     {
      "aspect": "faith",
-     "text": "A half-burned miners' tally board with a Sithis scratch hangs near the portal, still in place. Chasepoint carters make the sign as they pass.",
+     "text": "A half-burned plank where the miners scratched a Sithis mark for every shift hangs near the portal, still in place. Chasepoint carters make the sign as they pass.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5907,7 +7304,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Gas gathers in the collapsed galleries, the roof can fall without warning, and scavengers at the portal are armed.",
+     "text": "Gas gathers in the fallen galleries, loose-rock traps hang where the props have rotted, and scavengers at the portal are armed.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5924,7 +7321,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A gallery behind the collapse is sealed. The old assay records may lie inside it.",
+     "text": "A gallery behind the fallen stone is sealed. The gold the overseers stored there when the tribes came in 3E 427 is said to be inside.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5952,7 +7349,41 @@
      "facing_deg": 0
     }
    ],
-   "culture_id": "umber"
+   "culture_id": "umber",
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Blackdrift map marker",
+     "count": 1
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "armed scavengers at the portal",
+     "count": 4,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "combat-boss",
+     "detail": "the scavengers' headman",
+     "count": 1,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "boss-chest",
+     "detail": "boss chest, D3 tier (level 20): the overseers' gold behind the fallen stone",
+     "count": 1
+    },
+    {
+     "kind": "ore-vein",
+     "detail": "gold ore veins in the burned galleries",
+     "count": 2
+    },
+    {
+     "kind": "ore-vein",
+     "detail": "iron ore vein near the portal",
+     "count": 1
+    }
+   ]
   },
   {
    "id": "mine-m17-m112",
@@ -6143,7 +7574,41 @@
      "facing_deg": 180
     }
    ],
-   "culture_id": "umber"
+   "culture_id": "umber",
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Ninth Shaft map marker",
+     "count": 1
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "smugglers storing goods in the upper levels",
+     "count": 5,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "combat-boss",
+     "detail": "the smugglers' quartermaster",
+     "count": 1,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "boss-chest",
+     "detail": "boss chest, D3 tier (level 20): the smugglers' store in the lower galleries",
+     "count": 1
+    },
+    {
+     "kind": "ore-vein",
+     "detail": "iron ore veins in the dry upper levels",
+     "count": 2
+    },
+    {
+     "kind": "fence",
+     "detail": "the smugglers' quartermaster buys stolen goods once the player has his trust",
+     "count": 1
+    }
+   ]
   },
   {
    "id": "mine-m22-m103",
@@ -6289,7 +7754,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Gas collects in the pit, the burned ground can collapse underfoot, and fire-scarred undead wander the floor of the cut.",
+     "text": "Gas collects in the pit, vents in the burned floor burst into flame when stepped on, and fire-scarred undead wander the floor of the cut.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6334,7 +7799,41 @@
      "facing_deg": 270
     }
    ],
-   "culture_id": "umber"
+   "culture_id": "umber",
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Ashfall Cut map marker",
+     "count": 1
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "fire-scarred undead on the floor of the cut",
+     "count": 5,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "combat-boss",
+     "detail": "a burned overseer's corpse risen at the vent shaft",
+     "count": 1,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "boss-chest",
+     "detail": "boss chest, D3 tier (level 20): grave goods at the vent shaft",
+     "count": 1
+    },
+    {
+     "kind": "ore-vein",
+     "detail": "iron ore in the slag",
+     "count": 2
+    },
+    {
+     "kind": "harvest-rare",
+     "detail": "fire salts from the burning vents",
+     "count": 2
+    }
+   ]
   },
   {
    "id": "quarry-m14-m107",
@@ -6446,7 +7945,7 @@
     },
     {
      "aspect": "faith",
-     "text": "The crew keeps a small Sithis niche in the cutting shed and a rock chip is left on its ledge for each season without a death.",
+     "text": "The crew keeps a small Sithis niche in the cutting shed and leaves a rock chip on its ledge for each month without a death.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6524,7 +8023,40 @@
      "why": "the quarry yard"
     }
    ],
-   "culture_id": "umber"
+   "culture_id": "umber",
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Stonecut Quarry map marker",
+     "count": 1
+    },
+    {
+     "kind": "trader-general",
+     "detail": "the quarry crew sells tools and cut stone",
+     "count": 1
+    },
+    {
+     "kind": "cooking-pot",
+     "detail": "the crew's cooking pot",
+     "count": 1
+    },
+    {
+     "kind": "ore-vein",
+     "detail": "iron ore vein in the face",
+     "count": 1
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "road bandits waiting for the stone carts",
+     "count": 3,
+     "reward": "treasure"
+    },
+    {
+     "kind": "treasure",
+     "detail": "treasure, D1 tier (up to 50 gold, iron and steel): the bandits' stash by the road",
+     "count": 1
+    }
+   ]
   },
   {
    "id": "quarry-m18-m109",
@@ -6636,7 +8168,7 @@
     },
     {
      "aspect": "faith",
-     "text": "The crew keeps a Sithis shrine in a niche cut into the face itself, and the foreman marks the first block of each season with a red mark for it.",
+     "text": "The crew keeps a Sithis shrine in a niche cut into the face itself, and the foreman marks the first block from each new bench with red for it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6687,7 +8219,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A rival stone crew is sabotaging Redbank's sleds and cut blocks to take over its Soulrest licence.",
+     "text": "A rival stone crew is breaking Redbank's sleds and cut blocks at night to drive it off the red face.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6714,7 +8246,35 @@
      "why": "the quarry yard"
     }
    ],
-   "culture_id": "umber"
+   "culture_id": "umber",
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Redbank Quarry map marker",
+     "count": 1
+    },
+    {
+     "kind": "cooking-pot",
+     "detail": "the crew's cooking pot",
+     "count": 1
+    },
+    {
+     "kind": "ore-vein",
+     "detail": "corundum ore vein in the red face",
+     "count": 2
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "the rival crew's saboteurs by night",
+     "count": 3,
+     "reward": "treasure"
+    },
+    {
+     "kind": "treasure",
+     "detail": "treasure, D1 tier (up to 50 gold, iron and steel): the saboteurs' stolen tools and coin",
+     "count": 1
+    }
+   ]
   },
   {
    "id": "logging-camp-m20-m107",
@@ -6824,12 +8384,18 @@
     },
     {
      "aspect": "faith",
-     "text": "The loggers tie a small Sithis token to the felling-post for luck when a tree comes down.",
-     "tier": "AGENT_INVENTED",
+     "text": "The loggers nail a gar jaw to the felling-post as a Sithis-token, and each man touches it before the first cut of the day.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
+       "kind": "uesp",
+       "title": "Lore:Sithis",
+       "locator": "Lore:Sithis",
+       "url": "https://en.uesp.net/wiki/Lore:Sithis"
+      },
+      {
        "kind": "reasoning",
-       "title": "Cape Percar hinterland of Soulrest, umber culture"
+       "title": "Argonians worship Sithis (Lore:Sithis); falling timber is the camp's killer, so its crew asks for luck at the felling-post"
       }
      ]
     },
@@ -6869,7 +8435,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "One of the loggers has gone missing in the forest. A cutter is working outside the camp's licence.",
+     "text": "One of the loggers has gone missing in the forest. A Banujha band has cut mine-burner signs into the best red gums and warns the camp off them.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6891,7 +8457,45 @@
      "why": "the camp"
     }
    ],
-   "culture_id": "umber"
+   "culture_id": "umber",
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Redgum Camp map marker",
+     "count": 1
+    },
+    {
+     "kind": "trader-general",
+     "detail": "the camp's foreman sells firewood and tools",
+     "count": 1
+    },
+    {
+     "kind": "cooking-pot",
+     "detail": "the camp cooking pot",
+     "count": 1
+    },
+    {
+     "kind": "tanning-rack",
+     "detail": "tanning rack by the bunkhouse",
+     "count": 1
+    },
+    {
+     "kind": "free-bed",
+     "detail": "a bunk in the loggers' bunkhouse",
+     "count": 1
+    },
+    {
+     "kind": "combat-creature",
+     "detail": "swamp predators in the forest round the clearing",
+     "count": 3,
+     "reward": "treasure"
+    },
+    {
+     "kind": "treasure",
+     "detail": "treasure, D1 tier (up to 50 gold, iron and steel): a lost logger's pack in the forest",
+     "count": 1
+    }
+   ]
   },
   {
    "id": "imperial-ruin-m17-m113",
@@ -6903,45 +8507,72 @@
    "siting": "inland",
    "danger_band_id": "D2",
    "importance": 1,
-   "summary": "A ruined Imperial watchtower on the cape's south shore, left since the Empire's fall.",
+   "summary": "Mistwatch is a ruined Imperial signal tower on the cape's south shore, left at the secession and used by smugglers.",
    "lore_page": null,
-   "statement_tier_id": "AGENT_INVENTED",
+   "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
    "notes": [
     {
      "aspect": "overview",
-     "text": "Mistwatch is a broken stone tower on a rise, with a chipped Divines' niche at its base. Smugglers use it.",
-     "tier": "AGENT_INVENTED",
+     "text": "Mistwatch is a broken stone tower on a rise, with a chipped Divines' niche at its base. It signalled ships bound for Soulrest when Soulrest was the Imperial capital of the province; smugglers use it now.",
+     "tier": "EXTRAPOLATED",
      "sources": [
+      {
+       "kind": "map",
+       "title": "Project Tamriel: Black Marsh map",
+       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
+      },
       {
        "kind": "dossier",
        "title": "Soulrest dossier",
        "locator": "story/lore/soulrest.md"
       },
       {
-       "kind": "reasoning",
-       "title": "ruin on Cape Percar"
+       "kind": "dossier",
+       "title": "Argonia in 4E 201, section 10 (the spine)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       },
       {
        "kind": "uesp",
-       "title": "Lore:Mistwatch: no page (API title lookup and namespace-130 search, 2026-11-08)",
-       "locator": "Lore:Mistwatch"
+       "title": "Lore:Fourth Era",
+       "locator": "Lore:Fourth Era",
+       "url": "https://en.uesp.net/wiki/Lore:Fourth_Era"
+      },
+      {
+       "kind": "reasoning",
+       "title": "an Imperial ruin on the map on a rise of the south shore; the Imperial coast watch served Soulrest, the Third Era capital (Lore:Soulrest); posts and lights were left at the secession (spine 10.4)"
       }
      ]
     },
     {
      "aspect": "history",
-     "text": "Mistwatch was built as a coast watch on the cape's south shore, and was abandoned in the Fourth Era after the Empire fell.",
+     "text": "Mistwatch was built as a coast watch on the cape's south shore, and was left empty when the Legion withdrew at the secession.",
      "tier": "EXTRAPOLATED",
      "sources": [
+      {
+       "kind": "map",
+       "title": "Project Tamriel: Black Marsh map",
+       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
+      },
       {
        "kind": "dossier",
        "title": "Soulrest dossier",
        "locator": "story/lore/soulrest.md"
       },
       {
+       "kind": "dossier",
+       "title": "Argonia in 4E 201, section 10 (the spine)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      },
+      {
+       "kind": "uesp",
+       "title": "Lore:Fourth Era",
+       "locator": "Lore:Fourth Era",
+       "url": "https://en.uesp.net/wiki/Lore:Fourth_Era"
+      },
+      {
        "kind": "reasoning",
-       "title": "ruin on Cape Percar"
+       "title": "an Imperial ruin on the map on a rise of the south shore; the Imperial coast watch served Soulrest, the Third Era capital (Lore:Soulrest); posts and lights were left at the secession (spine 10.4)"
       }
      ]
     },
@@ -6981,7 +8612,7 @@
     },
     {
      "aspect": "economy",
-     "text": "It was a south-shore watch post and signal tower for the Imperial coast, left when the Empire fell; it now draws scavengers after worked stone and brass, and the odd smuggler.",
+     "text": "It was a south-shore watch post and signal tower for the Imperial coast, left at the secession; it now draws scavengers after worked stone and brass, and the odd smuggler.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7054,7 +8685,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A smugglers' signal lamp shows from the tower at night. An Imperial log of the old watch may be hidden in it.",
+     "text": "A smugglers' signal lamp shows from the tower at night. The old watch's brass signal mirror is still bolted to the top, and Mistfall Light's keepers want it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7081,7 +8712,42 @@
      "why": "the tower stands on a rise"
     }
    ],
-   "culture_id": "crimson-red"
+   "culture_id": "crimson-red",
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Mistwatch map marker",
+     "count": 1
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "smugglers guarding the tower",
+     "count": 4,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "combat-creature",
+     "detail": "giant mudcrabs on the rocks below the tower",
+     "count": 3,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "combat-boss",
+     "detail": "the smugglers' signal-keeper",
+     "count": 1,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "boss-chest",
+     "detail": "boss chest, D2 tier (level 10): the smugglers' chest in the tower base",
+     "count": 1
+    },
+    {
+     "kind": "shrine-blessing",
+     "detail": "the chipped Divines' niche: blessing of Kynareth",
+     "count": 1
+    }
+   ]
   },
   {
    "id": "imperial-ruin-m23-m103",
@@ -7093,16 +8759,21 @@
    "siting": "inland",
    "danger_band_id": "D3",
    "importance": 1,
-   "summary": "A ruined Imperial fort on the cape's north coast.",
+   "summary": "Wrackmoth is a ruined Imperial fort on the cape's north coast, left at the secession and never re-held.",
    "lore_page": null,
-   "statement_tier_id": "AGENT_INVENTED",
+   "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
    "notes": [
     {
      "aspect": "overview",
-     "text": "Wrackmoth is a flooded fort of stone walls grown over with creepers. It once guarded the Topal Bay road.",
-     "tier": "AGENT_INVENTED",
+     "text": "Wrackmoth is a flooded fort of stone walls grown over with creepers. It guarded the Topal Bay road for the Legion; the Archwardens keep their watch on Aphon instead and left it empty.",
+     "tier": "EXTRAPOLATED",
      "sources": [
+      {
+       "kind": "map",
+       "title": "Project Tamriel: Black Marsh map",
+       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
+      },
       {
        "kind": "dossier",
        "title": "Soulrest dossier",
@@ -7110,25 +8781,31 @@
       },
       {
        "kind": "dossier",
-       "title": "Argonia in 4E 201",
+       "title": "Argonia in 4E 201, section 10 (the spine)",
        "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       },
       {
-       "kind": "reasoning",
-       "title": "ruin on Cape Percar"
+       "kind": "uesp",
+       "title": "Lore:Fourth Era",
+       "locator": "Lore:Fourth Era",
+       "url": "https://en.uesp.net/wiki/Lore:Fourth_Era"
       },
       {
-       "kind": "uesp",
-       "title": "Lore:Wrackmoth: no page (API title lookup and namespace-130 search, 2026-11-08)",
-       "locator": "Lore:Wrackmoth"
+       "kind": "reasoning",
+       "title": "an Imperial fort on the map on the cape's north coast, on the Topal Bay road; the Archwardens re-held some -moth forts and left the rest (spine 10.4), and keep only a customs watch on Aphon in this corner (spine 10.2)"
       }
      ]
     },
     {
      "aspect": "history",
-     "text": "Wrackmoth is a Legion '-moth' fort on the north coast, abandoned after the Empire's fall.",
+     "text": "Wrackmoth is a Legion '-moth' fort on the north coast, left when the Legion marched out at the secession and never re-held.",
      "tier": "EXTRAPOLATED",
      "sources": [
+      {
+       "kind": "map",
+       "title": "Project Tamriel: Black Marsh map",
+       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
+      },
       {
        "kind": "dossier",
        "title": "Soulrest dossier",
@@ -7136,12 +8813,18 @@
       },
       {
        "kind": "dossier",
-       "title": "Argonia in 4E 201",
+       "title": "Argonia in 4E 201, section 10 (the spine)",
        "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       },
       {
+       "kind": "uesp",
+       "title": "Lore:Fourth Era",
+       "locator": "Lore:Fourth Era",
+       "url": "https://en.uesp.net/wiki/Lore:Fourth_Era"
+      },
+      {
        "kind": "reasoning",
-       "title": "ruin on Cape Percar"
+       "title": "an Imperial fort on the map on the cape's north coast, on the Topal Bay road; the Archwardens re-held some -moth forts and left the rest (spine 10.4), and keep only a customs watch on Aphon in this corner (spine 10.2)"
       }
      ]
     },
@@ -7164,7 +8847,7 @@
     },
     {
      "aspect": "people",
-     "text": "Wrackmoth has no residents. Naxan fishermen shelter in its gate on stormy nights, and scavengers camp in its yard.",
+     "text": "Wrackmoth has no residents. Naxan fishermen shelter in its gate on wet nights, and scavengers camp in its yard.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7254,7 +8937,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "An Imperial strongroom may lie under the fort. Outlaws have hidden a stash in the yard.",
+     "text": "The fort's iron-doored strongroom under the gatehouse has never been opened. Outlaws have hidden a stash in the yard.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7281,7 +8964,52 @@
      "why": "the fort stands on a rise"
     }
    ],
-   "culture_id": "crimson-red"
+   "culture_id": "crimson-red",
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Wrackmoth map marker",
+     "count": 1
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "outlaws camped in the yard",
+     "count": 6,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "combat-creature",
+     "detail": "mudcrabs and crocodiles in the flooded gate",
+     "count": 3,
+     "reward": "treasure"
+    },
+    {
+     "kind": "combat-boss",
+     "detail": "the outlaw captain in the gatehouse",
+     "count": 1,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "boss-chest",
+     "detail": "boss chest, D3 tier (level 20): the strongroom under the gatehouse",
+     "count": 1
+    },
+    {
+     "kind": "treasure",
+     "detail": "treasure: the outlaws' stash in the yard",
+     "count": 1
+    },
+    {
+     "kind": "forge",
+     "detail": "the Legion forge in the yard with its anvil",
+     "count": 1
+    },
+    {
+     "kind": "grindstone",
+     "detail": "grindstone by the Legion forge",
+     "count": 1
+    }
+   ]
   },
   {
    "id": "abandoned-village-m11-m107",
@@ -7295,27 +9023,33 @@
    "importance": 1,
    "summary": "A stilt village on the cape abandoned after the 3E 427 uprisings.",
    "lore_page": null,
-   "statement_tier_id": "AGENT_INVENTED",
+   "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
    "notes": [
     {
      "aspect": "overview",
-     "text": "Zeh-Orun is a ring of rotted halls in the trees. It housed the Old Goldseam crews and their families until the uprisings.",
-     "tier": "AGENT_INVENTED",
+     "text": "Zeh-Orun is a ring of rotted halls in the trees above Old Goldseam. It housed the mine's Argonian crews and their families until the tribes burned the concession in 3E 427.",
+     "tier": "EXTRAPOLATED",
      "sources": [
+      {
+       "kind": "uesp",
+       "title": "Lore:Soulrest",
+       "locator": "Lore:Soulrest",
+       "url": "https://en.uesp.net/wiki/Lore:Soulrest"
+      },
       {
        "kind": "dossier",
        "title": "Soulrest dossier",
        "locator": "story/lore/soulrest.md"
       },
       {
-       "kind": "reasoning",
-       "title": "ruin on Cape Percar"
+       "kind": "map",
+       "title": "Project Tamriel: Black Marsh map",
+       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
       },
       {
-       "kind": "uesp",
-       "title": "Lore:Zeh-Orun: no page (API title lookup and namespace-130 search, 2026-11-08)",
-       "locator": "Lore:Zeh-Orun"
+       "kind": "reasoning",
+       "title": "an abandoned village on the map beside the Old Goldseam mine; the tribes burned the Soulrest gold concessions in 3E 427 (Lore:Soulrest), so the crews' village emptied with the mine"
       }
      ]
     },
@@ -7444,7 +9178,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "The last tree-minder's records may lie in one of the halls. A family cache may be buried in the ring.",
+     "text": "The miners' gold, buried under a hall floor when the tribes came in 3E 427, has never been dug up. A Salaxul hunter has seen a wamasu denning under the largest hall.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7471,7 +9205,36 @@
      "why": "the village platform"
     }
    ],
-   "culture_id": "umber"
+   "culture_id": "umber",
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Zeh-Orun map marker",
+     "count": 1
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "scavengers sleeping in the dry halls",
+     "count": 4,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "combat-boss",
+     "detail": "a wamasu denning under the largest hall",
+     "count": 1,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "boss-chest",
+     "detail": "boss chest, D3 tier (level 20): the miners' gold buried under a hall floor",
+     "count": 1
+    },
+    {
+     "kind": "harvest-common",
+     "detail": "swamp fungus on the rotted halls",
+     "count": 1
+    }
+   ]
   },
   {
    "id": "outpost-m15-m112",
@@ -7654,7 +9417,41 @@
      "why": "the stilt post on the water"
     }
    ],
-   "culture_id": "steel-blue"
+   "culture_id": "steel-blue",
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Xal-Tarek map marker",
+     "count": 1
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "Banu-Jaleel watchers, hostile to Imperial-descended visitors",
+     "count": 6,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "combat-boss",
+     "detail": "the watch leader",
+     "count": 1,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "boss-chest",
+     "detail": "boss chest, D3 tier (level 20): the watch leader's chest on the platform",
+     "count": 1
+    },
+    {
+     "kind": "fishing",
+     "detail": "fishing from the platform",
+     "count": 1
+    },
+    {
+     "kind": "trainer",
+     "detail": "Expert Archery trainer, the watch leader, once the watchers are friendly",
+     "count": 1
+    }
+   ]
   },
   {
    "id": "outpost-m22-m98",
@@ -7836,7 +9633,46 @@
      "why": "river landing"
     }
    ],
-   "culture_id": "indigo"
+   "culture_id": "indigo",
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Reek-Anu map marker",
+     "count": 1
+    },
+    {
+     "kind": "trader-general",
+     "detail": "Naka-Desh river traders who deal with strangers who answer a riddle",
+     "count": 1
+    },
+    {
+     "kind": "fishing",
+     "detail": "osheeja gar from the weir",
+     "count": 1
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "Naka-Desh river guards, hostile only to those who refuse the riddle",
+     "count": 5,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "combat-boss",
+     "detail": "the station elder",
+     "count": 1,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "boss-chest",
+     "detail": "boss chest, D2 tier (level 10): the station elder's chest",
+     "count": 1
+    },
+    {
+     "kind": "trainer",
+     "detail": "Journeyman Illusion trainer, the station elder",
+     "count": 1
+    }
+   ]
   },
   {
    "id": "percar-scar",
@@ -7984,7 +9820,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Gas pools in the hollows, the burned crust collapses underfoot, and fire-undead walk the vents.",
+     "text": "Gas pools in the hollows, fire vents flare from the glassy crust where a foot falls, and fire-undead walk the vents.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8022,7 +9858,41 @@
      "why": "a broad scarred stretch"
     }
    ],
-   "culture_id": "umber"
+   "culture_id": "umber",
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Percar Scar map marker",
+     "count": 1
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "fire-undead walking the vents",
+     "count": 6,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "combat-boss",
+     "detail": "a flame atronach bound in the deepest vent since the Great Burn",
+     "count": 1,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "boss-chest",
+     "detail": "boss chest, D3 tier (level 20): the deepest vent's burned offerings",
+     "count": 1
+    },
+    {
+     "kind": "harvest-rare",
+     "detail": "fire salts at the vents",
+     "count": 4
+    },
+    {
+     "kind": "harvest-rare",
+     "detail": "sulphur-yellow fungus in the burned soil",
+     "count": 3
+    }
+   ]
   },
   {
    "id": "lighthouse-9-m114",
@@ -8127,12 +9997,18 @@
     },
     {
      "aspect": "faith",
-     "text": "A Sithis token hangs on the stairs of the tower, and the keepers touch it on their way to the lamp.",
-     "tier": "AGENT_INVENTED",
+     "text": "A Sithis token of knotted net hangs on the tower stair, and the keepers touch it on their way up to the lamp.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
+       "kind": "uesp",
+       "title": "Lore:Sithis",
+       "locator": "Lore:Sithis",
+       "url": "https://en.uesp.net/wiki/Lore:Sithis"
+      },
+      {
        "kind": "reasoning",
-       "title": "lighthouse on the Sea of Mists, Warden Marches culture"
+       "title": "Argonian keepers worship Sithis (Lore:Sithis); a coast light on shoals is a drowning-place"
       }
      ]
     },
@@ -8172,7 +10048,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "Wreckers have shown a false light on the shore. The keeper's logbook for last season has gone missing.",
+     "text": "Wreckers show a false light on the shore with a brass lamp stolen from the tower's store, and a keeper who went to find it has not come back.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8198,6 +10074,39 @@
      "radius_m": 25,
      "why": "landing"
     }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Mistfall Light map marker",
+     "count": 1
+    },
+    {
+     "kind": "free-bed",
+     "detail": "a keeper's spare bunk",
+     "count": 1
+    },
+    {
+     "kind": "cooking-pot",
+     "detail": "the keepers' cooking pot",
+     "count": 1
+    },
+    {
+     "kind": "fishing",
+     "detail": "fishing off the point",
+     "count": 1
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "wreckers with the stolen lamp on the shore",
+     "count": 3,
+     "reward": "treasure"
+    },
+    {
+     "kind": "treasure",
+     "detail": "treasure, D1 tier (up to 50 gold, iron and steel): the wreckers' takings in a shore cave",
+     "count": 1
+    }
    ]
   },
   {
@@ -8210,42 +10119,80 @@
    "siting": "seabed",
    "danger_band_id": "D2",
    "importance": 1,
-   "summary": "The Brine Gull is a wreck off the southwest of the cape, on the sea floor near Acra-Tiin's islands.",
+   "summary": "The Brine Gull is a Valenwood coaster sunk off the south-west of the cape, on the sea floor near Acra-Tiin's islands.",
    "lore_page": null,
-   "statement_tier_id": "AGENT_INVENTED",
+   "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
    "notes": [
     {
      "aspect": "overview",
-     "text": "The Brine Gull is a wreck lying on the sea floor off the southwest of the cape, near Acra-Tiin's islands.",
-     "tier": "AGENT_INVENTED",
+     "text": "The Brine Gull is a Bosmer coaster from Valenwood lying on the sea floor off the south-west of the cape, near Acra-Tiin's islands.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "map",
        "title": "Project Tamriel: Black Marsh map",
-       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png",
-       "url": "https://en.uesp.net/wiki/File:PT3-map-Black_Marsh.png"
+       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
+      },
+      {
+       "kind": "dossier",
+       "title": "Argonia in 4E 201, section 10 (the spine)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      },
+      {
+       "kind": "uesp",
+       "title": "Lore:Valenwood",
+       "locator": "Lore:Valenwood",
+       "url": "https://en.uesp.net/wiki/Lore:Valenwood"
+      },
+      {
+       "kind": "uesp",
+       "title": "Lore:Soulrest",
+       "locator": "Lore:Soulrest",
+       "url": "https://en.uesp.net/wiki/Lore:Soulrest"
       },
       {
        "kind": "reasoning",
-       "title": "shipwreck on the Sea of Mists"
+       "title": "a wreck on the map off the cape's south-west; Bosmer coasters sail the Southern Sea to Soulrest with silk and timber the Green Pact forbids Bosmer to fell (spine 10.3)"
       }
      ]
     },
     {
      "aspect": "history",
-     "text": "The Brine Gull went down in a storm off the cape and settled on the sea floor with her hull mostly whole.",
-     "tier": "AGENT_INVENTED",
+     "text": "The Brine Gull was bound for Soulrest when she struck a reef off the cape in the dark and sank with her hull mostly whole. Her Bosmer crew drowned with her.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
+       "kind": "map",
+       "title": "Project Tamriel: Black Marsh map",
+       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
+      },
+      {
+       "kind": "dossier",
+       "title": "Argonia in 4E 201, section 10 (the spine)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      },
+      {
+       "kind": "uesp",
+       "title": "Lore:Valenwood",
+       "locator": "Lore:Valenwood",
+       "url": "https://en.uesp.net/wiki/Lore:Valenwood"
+      },
+      {
+       "kind": "uesp",
+       "title": "Lore:Soulrest",
+       "locator": "Lore:Soulrest",
+       "url": "https://en.uesp.net/wiki/Lore:Soulrest"
+      },
+      {
        "kind": "reasoning",
-       "title": "shipwreck on the Sea of Mists"
+       "title": "a wreck on the map off the cape's south-west; Bosmer coasters sail the Southern Sea to Soulrest with silk and timber the Green Pact forbids Bosmer to fell (spine 10.3)"
       }
      ]
     },
     {
      "aspect": "present",
-     "text": "Soulrest salvagers visit the Brine Gull in good weather and dive her for cargo.",
+     "text": "Soulrest salvagers dive the Brine Gull on calm, clear days.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8279,23 +10226,51 @@
     },
     {
      "aspect": "economy",
-     "text": "The Brine Gull carried cloth and lamp oil, and the salvagers still bring up what the sea has spared.",
-     "tier": "AGENT_INVENTED",
+     "text": "The Brine Gull carried Valenwood silk and bundled bows, and Soulrest salvagers still bring up what the sea has spared.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
+       "kind": "map",
+       "title": "Project Tamriel: Black Marsh map",
+       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
+      },
+      {
+       "kind": "dossier",
+       "title": "Argonia in 4E 201, section 10 (the spine)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      },
+      {
+       "kind": "uesp",
+       "title": "Lore:Valenwood",
+       "locator": "Lore:Valenwood",
+       "url": "https://en.uesp.net/wiki/Lore:Valenwood"
+      },
+      {
+       "kind": "uesp",
+       "title": "Lore:Soulrest",
+       "locator": "Lore:Soulrest",
+       "url": "https://en.uesp.net/wiki/Lore:Soulrest"
+      },
+      {
        "kind": "reasoning",
-       "title": "shipwreck on the Sea of Mists"
+       "title": "a wreck on the map off the cape's south-west; Bosmer coasters sail the Southern Sea to Soulrest with silk and timber the Green Pact forbids Bosmer to fell (spine 10.3)"
       }
      ]
     },
     {
      "aspect": "faith",
-     "text": "Sailors hold a rite for the Brine Gull's drowned at the nearest harbour, and light a lamp for them.",
-     "tier": "AGENT_INVENTED",
+     "text": "Acra-Tiin's fishermen will not set nets over the Brine Gull; they say the Bosmer dead keep to their own rites and resent Argonian hands.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
+       "kind": "uesp",
+       "title": "Lore:Bosmer",
+       "locator": "Lore:Bosmer",
+       "url": "https://en.uesp.net/wiki/Lore:Bosmer"
+      },
+      {
        "kind": "reasoning",
-       "title": "shipwreck on the Sea of Mists"
+       "title": "Bosmer dead are foreign to Argonian rites; a fishing village gives a foreign wreck a wide berth"
       }
      ]
     },
@@ -8335,12 +10310,34 @@
     },
     {
      "aspect": "hooks",
-     "text": "A captain's chest may lie in the stern. A smuggler's cache is hidden in the hold.",
-     "tier": "AGENT_INVENTED",
+     "text": "A Bosmer captain's chest lies in the stern, and a Soulrest buyer pays for any silk raised dry in its oilcloth.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
+       "kind": "map",
+       "title": "Project Tamriel: Black Marsh map",
+       "locator": "newworld/sources/maps/PT3-map-Black_Marsh.png"
+      },
+      {
+       "kind": "dossier",
+       "title": "Argonia in 4E 201, section 10 (the spine)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
+      },
+      {
+       "kind": "uesp",
+       "title": "Lore:Valenwood",
+       "locator": "Lore:Valenwood",
+       "url": "https://en.uesp.net/wiki/Lore:Valenwood"
+      },
+      {
+       "kind": "uesp",
+       "title": "Lore:Soulrest",
+       "locator": "Lore:Soulrest",
+       "url": "https://en.uesp.net/wiki/Lore:Soulrest"
+      },
+      {
        "kind": "reasoning",
-       "title": "shipwreck on the Sea of Mists"
+       "title": "a wreck on the map off the cape's south-west; Bosmer coasters sail the Southern Sea to Soulrest with silk and timber the Green Pact forbids Bosmer to fell (spine 10.3)"
       }
      ]
     }
@@ -8350,6 +10347,35 @@
      "id": "seabed",
      "radius_m": 40,
      "why": "the hull on the sea floor"
+    }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Wreck of the Brine Gull map marker",
+     "count": 1
+    },
+    {
+     "kind": "combat-creature",
+     "detail": "slaughterfish over the wreck",
+     "count": 4,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "combat-boss",
+     "detail": "a sea-drake that lairs in the hold",
+     "count": 1,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "boss-chest",
+     "detail": "boss chest, D2 tier (level 10): the Bosmer captain's chest in the stern",
+     "count": 1
+    },
+    {
+     "kind": "treasure",
+     "detail": "treasure: Valenwood silk and bows in oilcloth in the hold",
+     "count": 1
     }
    ]
   }

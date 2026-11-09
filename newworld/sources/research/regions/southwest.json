@@ -82,7 +82,7 @@
     },
     {
      "aspect": "people",
-     "text": "Umber coast folk: Argonians, Khajiit coasters, Imperial-descended clerks, with Banujha watchers and a Naka-Desh river station at the edges.",
+     "text": "Umber coast folk: Argonians, Khajiit coasters and Imperial-descended families, with Banujha watchers and a Naka-Desh river station at the edges.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -184,7 +184,7 @@
     },
     {
      "aspect": "landscape",
-     "text": "Low hills up to about 45 m behind the coast, flat sandy shores, tidal creeks and mangrove edges.",
+     "text": "Low hills up to about 45 m behind the coast, flat sandy shores, salt creeks and mangrove edges.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -217,7 +217,7 @@
     },
     {
      "aspect": "climate",
-     "text": "Humid and warm; sea mist on the south coast; wet season brings flooding.",
+     "text": "Humid and warm; sea mist on the south coast; rain is frequent and the low creeks stand full.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -236,7 +236,7 @@
   },
   {
    "id": "tulmek-washes",
-   "summary": "The Tulmek Washes are the flooded lowland between Soulrest's cape and the Lilmoth delta, centred on Blackrose's lake and its three rivers. A mosaic of channels, islands and ruins, it is the hinge of the south.",
+   "summary": "The Tulmek Washes are the drowned lowland between Soulrest's cape and the Lilmoth delta, centred on Blackrose's lake and its three rivers. A mosaic of channels, islands and ruins, it is the hinge of the south.",
    "landform": "Flat flooded lowland of river channels, lakes, mud islands and small dry rises, with the Blackrose lake at its heart.",
    "elevation_floor_m": 4.0,
    "elevation_summit_m": 14.0,
@@ -395,7 +395,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Crocodilians, gar, flood, bandits and the Rose; the deep washes are dangerous.",
+     "text": "Crocodilians, gar, deep channels, bandits and the Rose; the deep washes are dangerous.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -417,7 +417,7 @@
     },
     {
      "aspect": "landscape",
-     "text": "Dead-flat floodplain with tiny rises; channels shift in the flood season.",
+     "text": "Dead-flat lowland of standing water with tiny rises; channels braid round low islands of reed and mud.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -450,7 +450,7 @@
     },
     {
      "aspect": "climate",
-     "text": "The washes are hot, humid and still; every year the rivers flood the whole lowland between the cape and the delta.",
+     "text": "The washes are hot, humid and still; rain falls most days and the water stands across the whole lowland between the cape and the delta.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -622,7 +622,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Sea-drakes, shoals, pirates and wet-season storms threaten every boat that leaves the shore.",
+     "text": "Sea-drakes, shoals, pirates and sudden fog threaten every boat that leaves the shore.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -677,7 +677,7 @@
     },
     {
      "aspect": "climate",
-     "text": "The Sea of Mists is warm and humid with mist most mornings. Storms come in the wet season.",
+     "text": "The Sea of Mists is warm and humid with mist most mornings; rain and thunderstorms are common.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
