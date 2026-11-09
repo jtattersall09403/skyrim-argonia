@@ -2842,7 +2842,7 @@
    "id": "delta-ferry",
    "name": "Delta Ferry",
    "status": "inhabited",
-   "held_by": "Delta ferry-folk under Lilmoth merchant licence",
+   "held_by": "Delta ferry-folk, kin to the Lilmoth boatmen, who keep the crossing with the merchant council's goodwill",
    "population": 4,
    "footprint_radius_m": 25,
    "siting": "riverbank",
@@ -2898,7 +2898,7 @@
     },
     {
      "aspect": "present",
-     "text": "The ferry runs under a licence from Lilmoth's merchant council, which sets its fares and its right to land at either bank.",
+     "text": "The ferry-folk are kin to Lilmoth's boatmen and keep the crossing with the merchant council's goodwill: the council's barges are let past free, and in return its water-guards keep the landing at either bank.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7839,13 +7839,13 @@
    "id": "quarry-m14-m107",
    "name": "Stonecut Quarry",
    "status": "inhabited",
-   "held_by": "A licensed quarry crew",
+   "held_by": "A quarry crew of Soulrest-quarter kin",
    "population": 0,
    "footprint_radius_m": 40,
    "siting": "inland",
    "danger_band_id": "D1",
    "importance": 1,
-   "summary": "A working quarry on the Percar road, licensed by Soulrest.",
+   "summary": "A working quarry on the Percar road, worked by a Soulrest-quarter crew for the harbour.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
@@ -7889,7 +7889,7 @@
     },
     {
      "aspect": "present",
-     "text": "A crew of five works the Percar road face under a Soulrest licence, cutting grey blocks for the harbour works and the coast road.",
+     "text": "A crew of five, kin to one Soulrest-quarter family, works the Percar road face for the merchant council, cutting grey blocks for the harbour works and the coast road.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7923,7 +7923,7 @@
     },
     {
      "aspect": "economy",
-     "text": "It sells cut stone to Soulrest's builders and road-menders and pays a fee to the merchant council for the licence. Carts leave twice a week for Chasepoint and the port.",
+     "text": "It sells cut stone to Soulrest's builders and road-menders and pays the merchant council a tithe of blocks for its protection on the road. Carts leave twice a week for Chasepoint and the port.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8062,7 +8062,7 @@
    "id": "quarry-m18-m109",
    "name": "Redbank Quarry",
    "status": "inhabited",
-   "held_by": "A licensed quarry crew",
+   "held_by": "A quarry crew of Soulrest-quarter kin",
    "population": 0,
    "footprint_radius_m": 40,
    "siting": "inland",
@@ -8112,7 +8112,7 @@
     },
     {
      "aspect": "present",
-     "text": "A crew of four works the red-stone face on the south side of the cape, under a Soulrest licence, with a short track to the shore.",
+     "text": "A crew of four works the red-stone face on the south side of the cape, for Soulrest's merchant council, with a short track to the shore.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8146,7 +8146,7 @@
     },
     {
      "aspect": "economy",
-     "text": "It sends red facing stone by barge to Soulrest's coast wall and its warehouses, and the licence fee goes to the merchant council. Redbank blocks are prized for their colour.",
+     "text": "It sends red facing stone by barge to Soulrest's coast wall and its warehouses, and a tithe of blocks goes to the merchant council for its protection of the shore track. Redbank blocks are prized for their colour.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8280,13 +8280,13 @@
    "id": "logging-camp-m20-m107",
    "name": "Redgum Camp",
    "status": "inhabited",
-   "held_by": "A timber crew under Soulrest licence",
+   "held_by": "A timber crew of Soulrest-quarter kin, cutting for the merchant council",
    "population": 5,
    "footprint_radius_m": 25,
    "siting": "inland",
    "danger_band_id": "D1",
    "importance": 1,
-   "summary": "Redgum Camp is a licensed timber camp in the Percar hills west of Chasepoint. It cuts the red gum and sends logs to Soulrest.",
+   "summary": "Redgum Camp is a timber camp in the Percar hills west of Chasepoint. It cuts the red gum and sends logs to Soulrest.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
@@ -8336,7 +8336,7 @@
     },
     {
      "aspect": "present",
-     "text": "The camp cuts under a licence from Soulrest, which sets the quota and takes the logs.",
+     "text": "The camp cuts for Soulrest, whose merchant council takes the logs and in return feeds and guards the crew.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {

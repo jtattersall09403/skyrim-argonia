@@ -11593,13 +11593,13 @@
    "id": "bell-station",
    "name": "Bell Station",
    "status": "garrisoned",
-   "held_by": "A salvage-and-watch crew licensed by Lilmoth's merchant council to dive the drowned spires and take its share",
+   "held_by": "A salvage-and-watch crew sent out by Lilmoth's merchant council to dive the drowned spires, who owe it a share of each haul in kind",
    "population": 8,
    "footprint_radius_m": 40,
    "siting": "island",
    "danger_band_id": "D2",
    "importance": 3,
-   "summary": "Bell Station is a timber platform anchored over the drowned spires of Benthic Yobesh, from which divers are lowered in brass bells. It is held by a small crew licensed by Lilmoth's merchant council to dive the spires and watch the deep.",
+   "summary": "Bell Station is a timber platform anchored over the drowned spires of Benthic Yobesh, from which divers are lowered in brass bells. It is held by a small crew of Lilmoth's delta families, who dive the spires and watch the deep for the merchant council and pay it a share of what they raise.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
@@ -11639,7 +11639,7 @@
     },
     {
      "aspect": "history",
-     "text": "Built in the generations after 4E 48, when divers working Lilmoth's ruined waterfront found the spires of the land that sank in the Dawn Era; Lilmoth's merchant council licensed salvage and set a crew at the platform.",
+     "text": "Built in the generations after 4E 48, when divers working Lilmoth's ruined waterfront found the spires of the land that sank in the Dawn Era; Lilmoth's merchant council sent a crew of delta kin to the platform to bring the salvage up for it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -11723,7 +11723,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Salvage from the spires: bronze, vakka stones, jewellery and brass; Lilmoth merchants pay for the diving licence and the steward takes the council's share of each haul.",
+     "text": "Salvage from the spires: bronze, vakka stones, jewellery and brass; Lilmoth merchants buy the finds, and the steward sets aside the council's share of each haul in kind before the crew sells the rest.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {

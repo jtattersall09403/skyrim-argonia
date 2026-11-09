@@ -8469,20 +8469,20 @@
    "id": "logging-camp-m19-m101",
    "name": "Redtimber Camp",
    "status": "inhabited",
-   "held_by": "Soulrest timber licensees",
+   "held_by": "Soulrest's timber crew, paying the Mine-Burners in kind",
    "population": 5,
    "footprint_radius_m": 25,
    "siting": "inland",
    "danger_band_id": "D2",
    "importance": 1,
-   "summary": "Redtimber Camp is a small licensed timber camp at the basin's south edge, run for Soulrest's merchant council. It cuts red mangrove and sends logs down the channel.",
+   "summary": "Redtimber Camp is a small timber camp at the basin's south edge, worked for Soulrest's merchant council. It cuts red mangrove and sends logs down the channel.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
    "notes": [
     {
      "aspect": "overview",
-     "text": "A logging camp of a few huts and a log-landing, cutting under licence from Soulrest's merchant council.",
+     "text": "A logging camp of a few huts and a log-landing, cutting for Soulrest's merchant council.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {

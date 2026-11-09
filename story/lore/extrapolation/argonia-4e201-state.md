@@ -723,7 +723,7 @@ Holdings by region (the region records' cultures, aligned to the above):
 |---|---|
 | Valley of Storms, Barsaebica | Stormhold's Vicecanons; the Warden forts at Willowmoth and the border crossing; the Sedge-Wardens (Veesa-Teeleel) guarding the Ayleid ruins. |
 | Blackwood, Nha-Enasa, Kotherra Mangroves | Gideon's council on the dry land; the Hutan-Tzel and Naka-Desh river-folk; Warden customs at Rustmoth and Silvermoth on the roads; Sul-Xan raiders in the dead towns. |
-| Topal Bay, Aphon Isle, Banujha Basin, Cape Percar, Sea of Mists | Soulrest's merchant council and its licensed camps; the Mine-Burners (Banu-Jaleel) in the basin; a Warden customs watch on Aphon; outlaw crews on the eastern shore. |
+| Topal Bay, Aphon Isle, Banujha Basin, Cape Percar, Sea of Mists | Soulrest's merchant council and its timber and quarry camps worked by kin of its quarter; the Mine-Burners (Banu-Jaleel) in the basin; a Warden customs watch on Aphon; outlaw crews on the eastern shore. |
 | Murkwood, Lake Ulaish, Aunike Ridge, Ultherus Swamp | Helstrom's Root-Folk and the interior tribes (Hutan-Tzel, Paatru, Agaceph); the Chime-Keepers of the Kothringi-named towns; Truowa's council; the Warden toll at Gysilla on the lake. |
 | Tulmek Washes | Blackrose's island core; the Blackguards' heirs at the Rose. |
 | Althii Archipelago, Benthic Yobesh, Nushara Bayou | Lilmoth's merchant council and its delta villages; the Three Waters Tribe; Warden coast forts that Lilmoth refuses. |
