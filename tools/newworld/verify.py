@@ -384,20 +384,18 @@ def run(plugin: Path, out: Path, do_dump: bool = True) -> int:
 
     @section(rep, "deploy")
     def _deploy():
-        rec = STACK / "installed-NewWorld.json"
-        if not rec.exists():
-            rep.fail("deploy", "ESM laid in the NewWorld profile", f"{rec} missing: stack.py stage has not staged NewWorld")
-            return
-        r = jload(rec)
-        inp = ESM.lower() in {p.lower() for p in r["plugins"]}
-        rep.row("deploy", "ArgoniaNewWorld.esm in the NewWorld profile's plugins", inp, inp,
-                "" if inp else "not in installed-NewWorld.json plugins: the world plugin row is not staged yet")
-        laid = r["files"].get(ESM.lower())
-        if laid:
-            sha = hashlib.sha256((plugin / ESM).read_bytes()).hexdigest()
-            rep.row("deploy", "the laid ESM is this build", laid[1][:12], laid[1] == sha, f"built {sha[:12]}")
-        else:
-            rep.fail("deploy", "the laid ESM is this build", "ArgoniaNewWorld.esm not among the laid files")
+        # Our plugins are laid from C:\argonia\ours (stack.ps1's $OursPlugins), not staged as a mod row, so the deploy is
+        # proved by stack.ps1 laying the ESM in the NewWorld profile and by the machine's copy (lod.sh send reads its
+        # hash back into verify/play-esm.sha256) being this build.
+        ps1 = (Path(__file__).resolve().parents[2] / "infra/gpu-box/stack.ps1").read_text(encoding="utf-8", errors="replace")
+        lays = "ours\\newworld\\ArgoniaNewWorld.esm" in ps1 and "$World -eq 'NewWorld'" in ps1
+        rep.row("deploy", "stack.ps1 lays ArgoniaNewWorld.esm in the NewWorld profile only", lays, lays,
+                "" if lays else "stack.ps1 has no NewWorld-only ours\\newworld\\ArgoniaNewWorld.esm entry")
+        shaf = OUT / "verify/play-esm.sha256"
+        sha = hashlib.sha256((plugin / ESM).read_bytes()).hexdigest()
+        have = shaf.read_text().strip() if shaf.exists() else ""
+        rep.row("deploy", "the play machine's ESM is this build", have[:12] or "-", have == sha,
+                f"built {sha[:12]}" if have else "no record: run `infra/gpu-box/lod.sh send`")
         pv = OUT / "verify/play-verify.txt"
         rep.row("deploy", "play machine's `stack.py verify --profile NewWorld` record", "found" if pv.exists() else "missing",
                 pv.exists() and "FAIL" not in pv.read_text(errors="replace"),

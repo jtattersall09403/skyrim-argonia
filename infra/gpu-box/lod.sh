@@ -99,8 +99,13 @@ do_send() {  # each file only when the machine's copy differs
   for f in "$esm:C:\\argonia\\ours\\newworld\\ArgoniaNewWorld.esm" "$lod:C:\\argonia\\lod\\ArgoniaBlackMarsh.lod"; do
     dst=${f#*:}; f=${f%%:*}
     have=$("$run" ps "(Get-FileHash '$dst' -Algorithm SHA256 -EA SilentlyContinue).Hash" | tr -d '\r' | tr 'A-F' 'a-f' | tail -1)
-    if [ "$have" = "$(sha256sum "$f" | cut -c1-64)" ]; then echo "send: $(basename "$f") current"; continue; fi
-    "$run" put "$f" "$(sed 's|\\|/|g' <<<"$dst")" >/dev/null; echo "send: $(basename "$f") sent"
+    if [ "$have" = "$(sha256sum "$f" | cut -c1-64)" ]; then echo "send: $(basename "$f") current"
+    else
+      "$run" put "$f" "$(sed 's|\\|/|g' <<<"$dst")" >/dev/null; echo "send: $(basename "$f") sent"
+      have=$("$run" ps "(Get-FileHash '$dst' -Algorithm SHA256 -EA SilentlyContinue).Hash" | tr -d '\r' | tr 'A-F' 'a-f' | tail -1)
+    fi
+    # the machine's copy, read back after the send: the verifier's deploy row compares it with the build
+    case "$f" in *.esm) mkdir -p "$repo/out/newworld/verify"; echo "$have" > "$repo/out/newworld/verify/play-esm.sha256" ;; esac
   done
 }
 
