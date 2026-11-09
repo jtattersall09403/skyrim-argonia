@@ -43,53 +43,37 @@
     },
     {
      "aspect": "history",
-     "text": "Barsaebic Ayleids, Kothringi and Imperial settlers each built here; the Kothringi died in 2E 560 and the Empire left after 4E 48. Gideon alone kept the paper tradition.",
-     "tier": "CANON_EXPLICIT",
+     "text": "Barsaebic Ayleids, Kothringi and Imperial settlers each built here. The Kothringi died in the Knahaten Flu, and the Imperial garrisons left at the secession; Gideon alone kept the Imperial courthouse.",
+     "tier": "CANON_DERIVED",
      "sources": [
       {
-       "kind": "dossier",
-       "title": "story/lore/regions/blackwood-and-gloommire.md",
-       "locator": "story/lore/regions/blackwood-and-gloommire.md"
+       "kind": "uesp",
+       "title": "Lore:Gideon",
+       "locator": "Lore:Gideon",
+       "url": "https://en.uesp.net/wiki/Lore:Gideon"
+      },
+      {
+       "kind": "uesp",
+       "title": "Lore:Knahaten Flu",
+       "locator": "Lore:Knahaten Flu",
+       "url": "https://en.uesp.net/wiki/Lore:Knahaten_Flu"
       },
       {
        "kind": "dossier",
-       "title": "story/lore/gideon.md",
-       "locator": "story/lore/gideon.md"
-      },
-      {
-       "kind": "reasoning",
-       "title": "UESP search of the Lore namespace for 'Kotherra Mangroves' found no page (2026-11-08): a Project Tamriel name"
-      },
-      {
-       "kind": "map",
-       "title": "PT3-map-Black_Marsh.png",
-       "locator": "cell region"
+       "title": "story/lore/extrapolation/argonia-4e201-state.md",
+       "locator": "§10 the spine"
       }
      ]
     },
     {
      "aspect": "present",
-     "text": "Gideon's council holds the dry land and the Archwardens hold Fort Silvermoth on the south road. The rest is mangrove. Roads close in monsoon.",
+     "text": "Gideon's council holds the dry land and the Archwardens hold Fort Silvermoth on the south road. The rest is mangrove, crossed only by the Blackwood Way and the delta channels.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "dossier",
-       "title": "story/lore/regions/blackwood-and-gloommire.md",
-       "locator": "story/lore/regions/blackwood-and-gloommire.md"
-      },
-      {
-       "kind": "dossier",
-       "title": "story/lore/gideon.md",
-       "locator": "story/lore/gideon.md"
-      },
-      {
-       "kind": "reasoning",
-       "title": "UESP search of the Lore namespace for 'Kotherra Mangroves' found no page (2026-11-08): a Project Tamriel name"
-      },
-      {
-       "kind": "map",
-       "title": "PT3-map-Black_Marsh.png",
-       "locator": "cell region"
+       "title": "story/lore/extrapolation/argonia-4e201-state.md",
+       "locator": "§10 the spine"
       }
      ]
     },
@@ -225,79 +209,40 @@
     },
     {
      "aspect": "landscape",
-     "text": "Tidal flats and mangrove channels with a few raised banks; the Onkobra delta feeds red clay and the estuary floods the north.",
+     "text": "Mudflats and mangrove channels with a few raised banks; the Onkobra delta lays down red clay and the estuary's low ground stands under water.",
      "tier": "CANON_DERIVED",
      "sources": [
       {
-       "kind": "dossier",
-       "title": "story/lore/regions/blackwood-and-gloommire.md",
-       "locator": "story/lore/regions/blackwood-and-gloommire.md"
-      },
-      {
-       "kind": "dossier",
-       "title": "story/lore/gideon.md",
-       "locator": "story/lore/gideon.md"
-      },
-      {
-       "kind": "reasoning",
-       "title": "UESP search of the Lore namespace for 'Kotherra Mangroves' found no page (2026-11-08): a Project Tamriel name"
-      },
-      {
-       "kind": "map",
-       "title": "PT3-map-Black_Marsh.png",
-       "locator": "cell region"
+       "kind": "uesp",
+       "title": "Lore:Gideon",
+       "locator": "Lore:Gideon",
+       "url": "https://en.uesp.net/wiki/Lore:Gideon"
       }
      ]
     },
     {
      "aspect": "ecology",
-     "text": "Mangrove, reed and fern; death hoppers, eels, crows and fleshflies in the wet season; gar in the channels.",
+     "text": "Mangrove, reed and fern; death hoppers, eels, crows and fleshflies over the mud; gar in the channels.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
-       "kind": "dossier",
-       "title": "story/lore/regions/blackwood-and-gloommire.md",
-       "locator": "story/lore/regions/blackwood-and-gloommire.md"
-      },
-      {
-       "kind": "dossier",
-       "title": "story/lore/gideon.md",
-       "locator": "story/lore/gideon.md"
-      },
-      {
-       "kind": "reasoning",
-       "title": "UESP search of the Lore namespace for 'Kotherra Mangroves' found no page (2026-11-08): a Project Tamriel name"
-      },
-      {
-       "kind": "map",
-       "title": "PT3-map-Black_Marsh.png",
-       "locator": "cell region"
+       "kind": "uesp",
+       "title": "Lore:Gideon",
+       "locator": "Lore:Gideon",
+       "url": "https://en.uesp.net/wiki/Lore:Gideon"
       }
      ]
     },
     {
      "aspect": "climate",
-     "text": "Hot and humid year round, with a monsoon that closes the Blackwood Road and floods the delta.",
+     "text": "Hot and humid, with frequent heavy rain and fog off the estuary at dawn.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
-       "kind": "dossier",
-       "title": "story/lore/regions/blackwood-and-gloommire.md",
-       "locator": "story/lore/regions/blackwood-and-gloommire.md"
-      },
-      {
-       "kind": "dossier",
-       "title": "story/lore/gideon.md",
-       "locator": "story/lore/gideon.md"
-      },
-      {
-       "kind": "reasoning",
-       "title": "UESP search of the Lore namespace for 'Kotherra Mangroves' found no page (2026-11-08): a Project Tamriel name"
-      },
-      {
-       "kind": "map",
-       "title": "PT3-map-Black_Marsh.png",
-       "locator": "cell region"
+       "kind": "uesp",
+       "title": "Lore:Gideon",
+       "locator": "Lore:Gideon",
+       "url": "https://en.uesp.net/wiki/Lore:Gideon"
       }
      ]
     }
@@ -346,27 +291,19 @@
     },
     {
      "aspect": "history",
-     "text": "Kothringi land before 2E 560, then vacant; it became the Gideon-Leyawiin trade route and a river-folk country.",
+     "text": "Kothringi land until the Knahaten Flu, then empty; it became the Gideon-Leyawiin trade route and a river-folk country.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
-       "kind": "dossier",
-       "title": "story/lore/tribes.md",
-       "locator": "story/lore/tribes.md"
+       "kind": "uesp",
+       "title": "Lore:Knahaten Flu",
+       "locator": "Lore:Knahaten Flu",
+       "url": "https://en.uesp.net/wiki/Lore:Knahaten_Flu"
       },
       {
        "kind": "dossier",
-       "title": "story/lore/regions/blackwood-and-gloommire.md",
-       "locator": "story/lore/regions/blackwood-and-gloommire.md"
-      },
-      {
-       "kind": "reasoning",
-       "title": "UESP search of the Lore namespace for 'Nha Enasa' found no page (2026-11-08): a Project Tamriel name"
-      },
-      {
-       "kind": "map",
-       "title": "PT3-map-Black_Marsh.png",
-       "locator": "cell region"
+       "title": "story/lore/extrapolation/argonia-4e201-state.md",
+       "locator": "§10 the spine"
       }
      ]
     },
@@ -580,27 +517,13 @@
     },
     {
      "aspect": "climate",
-     "text": "The country is hot and humid. Monsoon flooding shuts the roads.",
+     "text": "The country is hot and humid, with heavy rain and low cloud over the channels.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
-       "kind": "dossier",
-       "title": "story/lore/tribes.md",
-       "locator": "story/lore/tribes.md"
-      },
-      {
-       "kind": "dossier",
-       "title": "story/lore/regions/blackwood-and-gloommire.md",
-       "locator": "story/lore/regions/blackwood-and-gloommire.md"
-      },
-      {
        "kind": "reasoning",
-       "title": "UESP search of the Lore namespace for 'Nha Enasa' found no page (2026-11-08): a Project Tamriel name"
-      },
-      {
-       "kind": "map",
-       "title": "PT3-map-Black_Marsh.png",
-       "locator": "cell region"
+       "title": "inland Blackwood swamp",
+       "locator": "reasoning"
       }
      ]
     }
@@ -646,24 +569,19 @@
     },
     {
      "aspect": "history",
-     "text": "The Imperial fleet policed it until 4E 48; Red Bramman's pirates used its mangrove river in the First Era.",
+     "text": "The Imperial fleet policed the bay until the secession; Red Bramman's pirates used its mangrove river in the First Era.",
      "tier": "CANON_DERIVED",
      "sources": [
       {
        "kind": "uesp",
-       "title": "Lore:Topal Bay",
-       "locator": "Lore:Topal Bay",
-       "url": "https://en.uesp.net/wiki/Lore:Topal_Bay"
+       "title": "Lore:Soulrest",
+       "locator": "Lore:Soulrest",
+       "url": "https://en.uesp.net/wiki/Lore:Soulrest"
       },
       {
        "kind": "dossier",
-       "title": "story/lore/regions/waters.md",
-       "locator": "story/lore/regions/waters.md"
-      },
-      {
-       "kind": "dossier",
-       "title": "story/lore/soulrest.md",
-       "locator": "story/lore/soulrest.md"
+       "title": "story/lore/extrapolation/argonia-4e201-state.md",
+       "locator": "§10 the spine"
       }
      ]
     },
@@ -784,24 +702,19 @@
     },
     {
      "aspect": "dangers",
-     "text": "Pirates, storms and wrecks threaten ships on the eastern coast of the bay.",
+     "text": "Pirates, reefs and old wrecks threaten boats on the eastern coast of the bay, and slaughterfish crowd the reef water.",
      "tier": "CANON_DERIVED",
      "sources": [
       {
        "kind": "uesp",
-       "title": "Lore:Topal Bay",
-       "locator": "Lore:Topal Bay",
-       "url": "https://en.uesp.net/wiki/Lore:Topal_Bay"
+       "title": "Lore:Black Marsh",
+       "locator": "Lore:Black Marsh",
+       "url": "https://en.uesp.net/wiki/Lore:Black_Marsh"
       },
       {
        "kind": "dossier",
-       "title": "story/lore/regions/waters.md",
-       "locator": "story/lore/regions/waters.md"
-      },
-      {
-       "kind": "dossier",
-       "title": "story/lore/soulrest.md",
-       "locator": "story/lore/soulrest.md"
+       "title": "story/lore/extrapolation/argonia-4e201-state.md",
+       "locator": "§10 the spine"
       }
      ]
     },
@@ -853,24 +766,14 @@
     },
     {
      "aspect": "climate",
-     "text": "The bay is warm. Sea breezes and storm fronts pass over the water.",
+     "text": "The bay is warm, with sea breezes, sea fog and passing rain storms.",
      "tier": "CANON_DERIVED",
      "sources": [
       {
        "kind": "uesp",
-       "title": "Lore:Topal Bay",
-       "locator": "Lore:Topal Bay",
-       "url": "https://en.uesp.net/wiki/Lore:Topal_Bay"
-      },
-      {
-       "kind": "dossier",
-       "title": "story/lore/regions/waters.md",
-       "locator": "story/lore/regions/waters.md"
-      },
-      {
-       "kind": "dossier",
-       "title": "story/lore/soulrest.md",
-       "locator": "story/lore/soulrest.md"
+       "title": "Lore:Black Marsh",
+       "locator": "Lore:Black Marsh",
+       "url": "https://en.uesp.net/wiki/Lore:Black_Marsh"
       }
      ]
     }
@@ -1411,28 +1314,13 @@
     },
     {
      "aspect": "climate",
-     "text": "The basin is hot and humid, with monsoon flooding in the wet season.",
+     "text": "The basin is hot and humid, with heavy rain and steam rising off the water after it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
-       "kind": "dossier",
-       "title": "story/lore/soulrest.md",
-       "locator": "story/lore/soulrest.md"
-      },
-      {
-       "kind": "extrapolation",
-       "title": "story/lore/extrapolation/argonia-4e201-state.md",
-       "locator": "story/lore/extrapolation/argonia-4e201-state.md",
-       "section": "Soulrest"
-      },
-      {
        "kind": "reasoning",
-       "title": "UESP search of the Lore namespace for 'Banujha Basin' found no page (2026-11-08): a Project Tamriel name"
-      },
-      {
-       "kind": "map",
-       "title": "PT3-map-Black_Marsh.png",
-       "locator": "cell region"
+       "title": "a low inland basin of channels",
+       "locator": "reasoning"
       }
      ]
     }
