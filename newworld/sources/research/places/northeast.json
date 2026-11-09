@@ -5263,8 +5263,8 @@
     },
     {
      "id": "shore-access",
-     "radius_m": 50,
-     "why": "raft landings"
+     "radius_m": 180,
+     "why": "a path down to the river and the raft landings, a short walk off"
     }
    ],
    "notes": [
@@ -5426,7 +5426,7 @@
     },
     {
      "aspect": "look",
-     "text": "Stilt houses on slender posts, raft racks along the water, bright painted shutters and a reed-roofed house where the mission books are kept dry.",
+     "text": "Stilt houses on slender posts, raft racks at the landing a short walk down the path, bright painted shutters and a reed-roofed house where the mission books are kept dry.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5546,7 +5546,7 @@
    "siting": "riverbank",
    "danger_band_id": "D1",
    "importance": 2,
-   "summary": "Oxayo is a hamlet of stone and timber on a river at the mesa's north-west, between Tselan and the Sarpa lands. It is a quarry hamlet and a lookout on the Sarpa road.",
+   "summary": "Oxayo is a hamlet of stone and timber above a river at the mesa's north-west, between Tselan and the Sarpa lands. It is a quarry hamlet and a lookout on the Sarpa road.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
@@ -5558,8 +5558,8 @@
     },
     {
      "id": "shore-access",
-     "radius_m": 50,
-     "why": "it stands on a river"
+     "radius_m": 200,
+     "why": "the hamlet stands on the rise and a path leads down to the river"
     }
    ],
    "notes": [
@@ -5721,7 +5721,7 @@
     },
     {
      "aspect": "look",
-     "text": "Stone houses with reed roofs on a riverbank, a signal horn on a pole, mesa cliffs beyond.",
+     "text": "Stone houses with reed roofs on the rise above a river, a signal horn on a pole, mesa cliffs beyond.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {

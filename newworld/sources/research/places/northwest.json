@@ -389,7 +389,7 @@
     },
     {
      "aspect": "present",
-     "text": "A town of stilt houses and reed jetties on a Hist pool. The elders settle disputes themselves and refuse the Vicecanons' courts, but send men to the frontier screen for pay and trade every day with Stormhold.",
+     "text": "A town of stilt houses round a Hist pool, with reed jetties on the creek a short walk off. The elders settle disputes themselves and refuse the Vicecanons' courts, but send men to the frontier screen for pay and trade every day with Stormhold.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -474,7 +474,7 @@
     },
     {
      "aspect": "look",
-     "text": "Pale reed-thatched stilt houses on a ring of mud banks around a pool, boat-lanes between them cut through the sedge, mats drying on racks, fish racks smoking on the road side.",
+     "text": "Pale reed-thatched stilt houses on a ring of mud banks around a pool, boat-lanes cut through the sedge down to the creek, mats drying on racks, fish racks smoking on the road side.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -544,8 +544,8 @@
     },
     {
      "id": "shore-access",
-     "radius_m": 110,
-     "why": "the Hist pool and the reed-boat lanes"
+     "radius_m": 190,
+     "why": "the creek and its reed-boat lanes lie a short walk beyond the built ring"
     }
    ],
    "gives": [
@@ -2191,8 +2191,8 @@
    "terrain_needs": [
     {
      "id": "shore-access",
-     "radius_m": 25,
-     "why": "the ferry landing"
+     "radius_m": 80,
+     "why": "the ferry landing lies a short walk down from the house"
     }
    ],
    "gives": [

@@ -295,7 +295,7 @@
    "siting": "island",
    "danger_band_id": "D3",
    "importance": 3,
-   "summary": "Bala Karag is a ruined Cantemiric Velothi stronghold on a small rocky peninsula a day's walk from Thorn. The Knahaten Flu emptied it and its lower halls are flooded.",
+   "summary": "Bala Karag is a ruined Cantemiric Velothi stronghold on a small rocky island a day's walk from Thorn. The Knahaten Flu emptied it and its lower halls are flooded.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
@@ -540,7 +540,7 @@
     {
      "id": "island",
      "radius_m": 80,
-     "why": "the ruin stands on its rocky peninsula"
+     "why": "the ruin stands on its rocky island"
     },
     {
      "id": "entrance-in-slope",
@@ -8377,7 +8377,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A single house on the shingle between the farms and the sea, a day's walk from Seafalls.",
+     "text": "A single house above the shingle between the farms and the sea, a day's walk from Seafalls.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8582,8 +8582,8 @@
    "terrain_needs": [
     {
      "id": "shore-access",
-     "radius_m": 25,
-     "why": "house at the tide line"
+     "radius_m": 70,
+     "why": "the beach lies a short walk down from the house"
     }
    ],
    "gives": [
