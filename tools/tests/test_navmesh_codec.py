@@ -174,3 +174,34 @@ def test_placed_collects_infrastructure_persistent_refs(tmp_path):
     tris, tally = placed.triangles(tmp_path, f, resolver=Res())
     assert tally["collision"] == 1 and tally["no_base"] == 1 and len(tris) == 1
     assert np.allclose(tris[0][0], [10, 20, 30]) and np.allclose(tris[0][1], [110, 20, 30])
+
+
+def _seam_cell(x, y, side, cuts, z=-16.0):
+    """A cell whose open edges on `side` are the plan segments between consecutive `cuts` (world units along the seam),
+    each closed by a triangle reaching into the cell."""
+    x0, y0 = su.cell_origin(x, y)
+    on = {"N": lambda u: (u, y0 + su.CELL_UNITS), "S": lambda u: (u, y0)}[side]
+    inward = -100.0 if side == "N" else 100.0
+    verts, tris = [], []
+    for a, b in zip(cuts, cuts[1:]):
+        i = len(verts)
+        verts += [[*on(a), z], [*on(b), z], [(a + b) / 2, on(a)[1] + inward, z]]
+        tris.append([i, i + 1, i + 2])
+    return stitch.Mesh(x, y, verts, tris, [0] * len(tris))
+
+
+def test_a_seam_where_the_walkable_ground_ends_is_a_boundary_not_a_fault():
+    """Cell (41,-130)'s north seam in build 20261109T005246Z: an edge at 169056-169136 where (41,-129)'s voxels
+    across the seam are eroded beside a steep bank, so (41,-129) has nothing there; its edges share the ends."""
+    from tools.navmesh import province
+    a = _seam_cell(41, -130, "N", [168864.0, 169056.0, 169136.0, 170070.1875])
+    b_ok = _seam_cell(41, -129, "S", [168864.0, 169056.0])
+    b_ok2 = _seam_cell(41, -129, "S", [169136.0, 170070.1875])
+    b = stitch.Mesh(41, -129, b_ok.verts + b_ok2.verts, b_ok.tris + [[i + 3 for i in t] for t in b_ok2.tris], [0, 0])
+    flags = lambda m: np.zeros(len(m.tris), int)
+    s = province.seam_audit({(41, -130): province.seam_open_edges(a, flags(a)), (41, -129): province.seam_open_edges(b, flags(b))})
+    assert s["unmatched_segments"] == 0 and s["mismatched"] == 2 and s["boundary_segments"] == 1
+    # a neighbour that splits the seam differently over the same ground is a fault, seen from both sides
+    c = _seam_cell(41, -129, "S", [168864.0, 169100.0, 170070.1875])
+    s = province.seam_audit({(41, -130): province.seam_open_edges(a, flags(a)), (41, -129): province.seam_open_edges(c, flags(c))})
+    assert s["unmatched_segments"] == 5 and s["boundary_segments"] == 0

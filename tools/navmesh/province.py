@@ -2,8 +2,9 @@
 
     coverage   every navmesh cell (world.navmesh_cells) with dry ground (a LAND sample above the water level) has a
                NAVM; the cells that do not are listed
-    seams      cross-cell edge pairs: every open edge on a seam between two NAVMs whose neighbour has an open edge
-               with the same two ends (both within SEAM_DZ in height) is linked; linked = pairs, mismatched = the rest
+    seams      cross-cell edge pairs (seam_audit): every open edge on a seam between two NAVMs whose neighbour has an
+               open edge with the same two ends (both within SEAM_DZ in height) is linked; a fault is an edge that
+               overlaps the neighbour's and cannot link; one with nothing across it is a boundary, not a fault
     components the triangle graph (neighbours and edge links) over the whole province; the largest component's
                share of the walkable plan area; every other component sorted by the landmass it stands on (connected
                dry-or-shallow ground, depth within WATER_MAX_DEPTH, across the navmesh cells): an island of its own
@@ -175,44 +176,11 @@ def run(out, cells: set, ras) -> dict:
             if (x, y) not in have:
                 missing.append([x, y])
     extra = sorted([list(c) for c in have - cells])
-    # seams: open seam edges in both neighbours with matching ends
-    linked = mismatched = unmatched = 0
-    ends_of: dict = {}
-    unm_at: list = []
-    mism_at = []
     edges_by = {}
     for x, y, fk, n in stitch.read_navm(out):
         m = stitch.Mesh(x, y, n.verts.astype(np.float64).tolist(), n.tris["v"].astype(int).tolist(), [0] * len(n.tris))
-        fl = n.tris["flags"].astype(int)
-        open_ = {}
-        for side in "WESN":
-            for key, (ti, k, z0, z1) in stitch.seam_edges(m, side).items():
-                open_[(side, key)] = (bool(fl[ti] & nvnm.EDGE_LINK[k]), z0, z1)
-        # seam_edges finds edges with one use inside the cell: linked ones count too (they are open in the mesh)
-        edges_by[(x, y)] = open_
-    for (x, y), es in edges_by.items():
-        for (side, key), (lk, z0, z1) in es.items():
-            if side not in "EN":
-                continue  # each pair once, from its west or south cell
-            dx, dy = stitch.STEP[side]
-            other = edges_by.get((x + dx, y + dy))
-            if other is None:
-                continue
-            o = other.get((stitch.OPP[side], key))
-            if o is None:
-                ends = ends_of.setdefault((x + dx, y + dy, stitch.OPP[side]),
-                                          {p for (sd, kk) in other for p in kk if sd == stitch.OPP[side]})
-                if key[0] in ends or key[1] in ends:
-                    unmatched += 1
-                    if len(unm_at) < 10:
-                        unm_at.append([x, y, side, [list(map(float, k)) for k in key], [z0, z1]])  # the neighbour has an edge from one of these ends, but not this segment
-                continue
-            if lk and o[0]:
-                linked += 1
-            elif abs(z0 - o[1]) <= params.SEAM_DZ and abs(z1 - o[2]) <= params.SEAM_DZ:
-                mismatched += 1
-                if len(mism_at) < 10:
-                    mism_at.append([x, y, side])
+        edges_by[(x, y)] = seam_open_edges(m, n.tris["flags"].astype(int))
+    seams = seam_audit(edges_by)
     # components and landmasses
     lab_r, at = landmasses(ras, cells)
     comp_area = np.bincount(pv.labels, weights=pv.area) if pv.n else np.zeros(0)
@@ -267,7 +235,7 @@ def run(out, cells: set, ras) -> dict:
     return {
         "coverage": {"navmesh_cells": len(cells), "land_cells": land_cells, "navm": len(have), "land_cells_without_navm": len(missing),
                      "missing": missing[:20], "navm_outside_navmesh_cells": len(extra)},
-        "seams": {"linked_pairs": linked, "mismatched": mismatched, "unmatched_segments": unmatched, "first_unmatched": unm_at, "first_mismatched": mism_at},
+        "seams": seams,
         "components": {"count": int(len(comp_area)), "main_m2": round(float(comp_area[main]), 1) if main >= 0 else 0,
                        "main_share": round(float(comp_area[main]) / total, 4) if total else None,
                        "islands": len(islands), "islands_m2": round(sum(r["m2"] for r in islands), 1),
@@ -276,3 +244,56 @@ def run(out, cells: set, ras) -> dict:
                        "largest_cut_off": cut[:10]},
         "paths": {"pairs": len(pr), "ok": sum(1 for r in pr if r.get("ok")), "list": pr},
     }
+
+
+def seam_open_edges(m, flags) -> dict:
+    """A cell's open seam edges: (side, plan ends) -> (linked, z at the first end, z at the second)."""
+    open_ = {}
+    for side in "WESN":
+        # seam_edges finds edges with one use inside the cell: linked ones count too (they are open in the mesh)
+        for key, (ti, k, z0, z1) in stitch.seam_edges(m, side).items():
+            open_[(side, key)] = (bool(flags[ti] & nvnm.EDGE_LINK[k]), z0, z1)
+    return open_
+
+
+def seam_audit(edges_by: dict) -> dict:
+    """Every cell seam, both sides. A fault is an open seam edge that overlaps the neighbour's in plan but cannot
+    link: the same two ends left unlinked within SEAM_DZ (`mismatched`), or different ends (`unmatched_segments`,
+    the two sides split the seam differently). An open seam edge with no neighbour edge over any of its length is
+    where the walkable ground ends at the seam (the neighbour's voxels there are steep or eroded): a boundary, as a
+    cliff edge inside a cell is, counted as `boundary_segments`."""
+    linked = mismatched = unmatched = boundary = 0
+    unm_at: list = []
+    mism_at: list = []
+    by_side: dict = {}
+    for c, es in edges_by.items():
+        for (side, key) in es:
+            ax = 0 if side in "SN" else 1
+            by_side.setdefault((c, side), []).append((key[0][ax], key[1][ax], key))
+    for (x, y), es in edges_by.items():
+        for (side, key), (lk, z0, z1) in es.items():
+            dx, dy = stitch.STEP[side]
+            other = edges_by.get((x + dx, y + dy))
+            if other is None:
+                continue
+            o = other.get((stitch.OPP[side], key))
+            if o is not None:
+                if side not in "EN":
+                    continue  # a matched pair once, from its west or south cell
+                if lk and o[0]:
+                    linked += 1
+                elif abs(z0 - o[1]) <= params.SEAM_DZ and abs(z1 - o[2]) <= params.SEAM_DZ:
+                    mismatched += 1
+                    if len(mism_at) < 10:
+                        mism_at.append([x, y, side])
+                continue
+            ax = 0 if side in "SN" else 1
+            a, b = key[0][ax], key[1][ax]
+            if any(max(a, p) < min(b, q) for p, q, _ in by_side.get(((x + dx, y + dy), stitch.OPP[side]), ())):
+                unmatched += 1  # counted from both sides: each side's edge that the other does not share
+                if len(unm_at) < 10:
+                    unm_at.append([x, y, side, [list(map(float, k)) for k in key], [z0, z1]])
+            else:
+                boundary += 1
+    return {"linked_pairs": linked, "mismatched": mismatched, "unmatched_segments": unmatched,
+            "boundary_segments": boundary, "first_unmatched": unm_at, "first_mismatched": mism_at}
