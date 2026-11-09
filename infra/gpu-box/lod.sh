@@ -41,7 +41,7 @@ ps1() {  # one lod.ps1 step; the GUI steps in the desktop session, the rest over
   esac
   echo "$o"
   echo "== $step: $(( SECONDS - t0 )) s" | tee -a "$out/timings.txt"
-  grep -q "$step OK" <<<"$o" || { fetch_back; echo "lod.sh: $step failed" >&2; exit 1; }
+  grep -q "$step OK" <<<"$o" || { "$run" ps 'Stop-Process -Name DynDOLODx64, TexGenx64, xLODGenx64, LODGenx64 -Force -EA SilentlyContinue' >/dev/null || true; fetch_back; echo "lod.sh: $step failed" >&2; exit 1; }
 }
 fetch_back() {
   "$run" get 'C:/argonia/lod/logs' "$out/" >/dev/null 2>&1 || true

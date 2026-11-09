@@ -40,6 +40,9 @@ static class NewWorldMap
         ws.MapData.UsableDimensions = new P2Int(mp.GetProperty("usable")[0].GetInt32(), mp.GetProperty("usable")[1].GetInt32());
         ws.MapData.NorthwestCellCoords = P(mp.GetProperty("nw"));
         ws.MapData.SoutheastCellCoords = P(mp.GetProperty("se"));
+        var bd = mp.GetProperty("bounds");  // NAM0/NAM9: DynDOLOD's Worldspace-Bounds check reads them
+        ws.ObjectBoundsMin = new P2Float(bd[0].GetInt32(), bd[1].GetInt32());
+        ws.ObjectBoundsMax = new P2Float(bd[2].GetInt32(), bd[3].GetInt32());
         ws.WorldMapOffsetScale = 1f;  // ONAM as Tamriel's (Skyrim.esm: scale 1, offset 0,0,0); 0 is no map
         ws.WorldMapCellOffset = new P3Float(0, 0, 0);
         var top = ws.TopCell ?? throw new InvalidDataException("WRLD has no persistent cell");
@@ -81,7 +84,9 @@ static class NewWorldMap
         var md = ws.MapData!;
         var fails = new List<string>();
         if (!md.NorthwestCellCoords.Equals(P(mp.GetProperty("nw"))) || !md.SoutheastCellCoords.Equals(P(mp.GetProperty("se")))) fails.Add("MNAM box differs from map.json");
-        if (ws.WorldMapOffsetScale != 1f) fails.Add($"ONAM scale {ws.WorldMapOffsetScale}, not 1");
+        var bd = mp.GetProperty("bounds");
+        if (ws.ObjectBoundsMin.X != bd[0].GetInt32() || ws.ObjectBoundsMin.Y != bd[1].GetInt32() || ws.ObjectBoundsMax.X != bd[2].GetInt32() || ws.ObjectBoundsMax.Y != bd[3].GetInt32()) fails.Add($"bounds {ws.ObjectBoundsMin}..{ws.ObjectBoundsMax}");
+        if (ws.WorldMapOffsetScale != 1f) fails.Add($"bounds {ws.ObjectBoundsMin}..{ws.ObjectBoundsMax}; ONAM scale {ws.WorldMapOffsetScale}, not 1");
         var refs = (ws.TopCell?.Persistent ?? []).OfType<IPlacedObjectGetter>().Where(r => r.MapMarker != null).ToDictionary(r => r.EditorID ?? "", r => r);
         int disc = 0;
         foreach (var m in mk)

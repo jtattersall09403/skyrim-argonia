@@ -112,6 +112,8 @@ def build(plugin: Path) -> dict:
     lod = lod_settings(g)
     mp = {"build_id": g.build_id, "world": WORLD, "land_cells": [lx0, lx1, ly0, ly1],
           "nw": [lx0 + ix, ly1 - iy], "se": [lx1 - ix, ly0 + iy], "usable": [0, 0], "lod": list(lod),
+          # NAM0/NAM9 object bounds in cells as Mutagen reads them (Tamriel: land x-57..61 -> -57..62), x4096 on disk
+          "bounds": [g.cx0, g.cy_bottom, g.cx0 + g.cells_x, g.cy_top + 1],
           "markers": len(markers)}
     out = plugin / "map"
     (out / "LODSettings").mkdir(parents=True, exist_ok=True)

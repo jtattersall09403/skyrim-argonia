@@ -122,6 +122,7 @@ function Pick-World($proc) {
   # then check ours; the log's "LOD for <worldspace>" lines are the proof of what ran.
   foreach ($j in @(0, $i)) {
     if ($j -eq 0 -and $items[0] -notmatch 'Tamriel') { continue }
+    if ($j -eq 0 -and $Step -eq 'dyndolod') { continue }  # DynDOLOD's list starts with nothing checked (2026-11-08: a toggle checked Tamriel)
     [void][W]::SendMessage($lb, 0x0186, [IntPtr]$j, [IntPtr]::Zero)  # LB_SETCURSEL
     [void][W]::SendMessage($lb, 0x0102, [IntPtr]0x20, [IntPtr]::Zero)  # WM_CHAR ' '
     Say "toggled item $j '$($items[$j])'"
@@ -131,6 +132,7 @@ function Pick-World($proc) {
 $Known = @(
   @{ match = 'DynDOLOD DLL|Scripts.*not found|DynDOLOD Resources'; answer = 'Ignore' }  # no dynamic LOD wanted (Sky-Claw #661)
   @{ match = 'stitched'; answer = 'Ignore' }
+  @{ match = 'Worldspace-Editor-ID-Changed'; answer = 'Ignore' }  # BM&V's own worlds renamed by a later plugin; not ours
 )
 function Watch-Popups($proc, $main) {
   foreach ($t in [W]::Tops($proc.Id)) {
@@ -140,7 +142,8 @@ function Watch-Popups($proc, $main) {
     if ([W]::Cls($t) -in 'TApplication', 'TfrmMain') { continue }
     $text = (@([W]::Text($t)) + @([W]::Kids($t) | % { [W]::Text($_) })) -join ' / '
     if (-not ($text -replace '[\s/]', '')) { continue }
-    if ($text -match 'Exit TexGen|Save & Exit|Save and Exit') { continue }  # the tool's own finished dialog: the step's done-check and Click end it (round 3: texgen finished, then the watcher threw)
+    if ($text -match 'Exit TexGen|Save & Exit|Save and Exit') { continue }
+    if ($text -match '^DynDOLOD Wizard') { continue }  # DynDOLOD's own options window, a top window beside the main form  # the tool's own finished dialog: the step's done-check and Click end it (round 3: texgen finished, then the watcher threw)
     $k = $Known | ? { $text -match $_.match } | Select -First 1
     if (-not $k) { Dump $proc 'unknown pop-up'; throw "${Step}: unknown pop-up: $text" }
     $b = [W]::Kids($t) | ? { ([W]::Text($_) -replace '&', '') -eq $k.answer } | Select -First 1
@@ -353,6 +356,12 @@ switch ($Step) {
     foreach ($src in $Out.texgen, $Out.terrain, $Out.dyndolod) {
       if (Test-Path $src) { robocopy $src $Mod /E /NFL /NDL /NJH /NJS /NP | Out-Null }
     }
+    # only this world's LOD: another world's (a tool that also made Tamriel) would override that world in the profile
+    $ow = @(foreach ($o in $Out.Values) { foreach ($d in 'meshes\terrain', 'textures\terrain') {
+      Get-ChildItem "$o\$d" -Directory -EA SilentlyContinue | % Name } }) | ? { $_ -ne $World } | Sort -Unique
+    $other = Get-ChildItem $Mod -Recurse -File | ? { $r = $_.FullName.Substring($Mod.Length + 1)
+      ($r -match '^(meshes|textures)\\terrain\\([^\\]+)\\' -and $Matches[2] -in $ow) -or ($_.Name -match '^DynDOLOD_(.+?)(_Alpha)?(_[a-z]+)?\.(dds|txt|json)$' -and $Matches[1] -in $ow) }
+    if ($other) { Say "collect: $(@($other).Count) files of other worlds dropped"; $other | Remove-Item -Force }
     Get-ChildItem $Mod -Recurse -Include *.zip, *.log, *.txt -File | ? { $_.DirectoryName -eq $Mod } | Remove-Item -Force
     Lay-LodSettings
     $plugins = Get-ChildItem $Mod -File -Include *.esp, *.esm, *.esl -Recurse
