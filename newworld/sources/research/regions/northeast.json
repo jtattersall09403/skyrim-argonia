@@ -2,7 +2,7 @@
  "records": [
   {
    "id": "arnesian-jungle",
-   "summary": "The Arnesian Jungle is the humid, forested upland of the north-east, between Thorn on the coast and the mesa country to the south. It is the Stone-Sleepers' country: stone-built hamlets and a terraced city, a long inlet from the bay, Velothi ruins on the shores and a crimson-marked corner of Warden forts and camps round Thorn.",
+   "summary": "The Arnesian Jungle is the humid, forested upland of the north-east, between Thorn on the coast and the mesa country to the south. It is the Stone-Sleepers' country: stone-built hamlets and a terraced city, a long inlet from the bay, Velothi ruins on the shores and a corner of Warden forts and camps round Thorn.",
    "landform": "Low forested uplands cut by a long tidal inlet from Thorn's bay, with rises, river terraces and shores",
    "elevation_floor_m": 6.0,
    "elevation_summit_m": 60.0,
@@ -72,7 +72,7 @@
     },
     {
      "aspect": "present",
-     "text": "In 4E 201 the jungle is the Stone-Sleepers' home country, with Tsonac as capital, and Thorn at its coastal edge holds the Warden forts, camps and posts.",
+     "text": "In 4E 201 the jungle is the Stone-Sleepers' home country, with Tsonac as capital and the Warden forts, camps and posts stand round Thorn at its coastal edge.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -98,7 +98,7 @@
     },
     {
      "aspect": "people",
-     "text": "Mostly Stone-Sleeper Argonians, with Root-Folk hunters, Warden garrisons and field-owners' crews near Thorn, and Dunmer traders on the road.",
+     "text": "Mostly Stone-Sleeper Argonians, with Root-Folk hunters, Warden garrisons and field-owners' crews near Thorn and Dunmer traders on the road.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -254,7 +254,7 @@
     },
     {
      "aspect": "ecology",
-     "text": "Jungle hardwood, tree-ferns, vines and bright fungus; mudcrabs and slaughterfish along the banks and in the inlet, sabre cats, giant spiders and bears inland, grass and saltrice near Thorn.",
+     "text": "Jungle hardwood, tree-ferns, vines and bright fungus; mudcrabs and slaughterfish along the banks and in the inlet, giant snakes and giant spiders inland, grass and saltrice near Thorn.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -455,7 +455,7 @@
     },
     {
      "aspect": "faith",
-     "text": "A mix of Hist customs: the Sarpa keep their own tree beyond the edge, the Stone-Sleepers raise cairns for Tsonac's sleeping Hist, and the Agaceph read their mission books at hatchings.",
+     "text": "A mix of Hist customs: the Sarpa keep their own tree beyond the edge, the Stone-Sleepers raise cairns for Tsonac's sleeping Hist and the Agaceph read their mission books at hatchings.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -559,7 +559,7 @@
     },
     {
      "aspect": "ecology",
-     "text": "Scrub, tall grass and thorn-bush on the tops; wolves, sabre cats, hawks and giant spiders in the gorges, and the Sarpa on the western edge.",
+     "text": "Scrub, tall grass and thorn-bush on the tops; crocodiles, giant snakes, hawks and giant spiders in the gorges and the Sarpa on the western edge.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {

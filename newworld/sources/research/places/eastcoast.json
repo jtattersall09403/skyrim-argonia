@@ -39,7 +39,7 @@
     },
     {
      "aspect": "history",
-     "text": "The mounds were raised by the village's founders, a generation or two after the Knahaten Flu (2E 560-603) emptied the coast of Cantemiric Velothi, over ground the Velothi had left fallow. Until the secession the East Empire Company's boats called here for clay; in 4E 201 the landing is the same and the buyers are Argonian.",
+     "text": "The mounds were raised by the village's founders, a generation or two after the Knahaten Flu (2E 560-603) emptied the coast of Cantemiric Velothi, over ground the Velothi had left fallow. Until the secession East Empire Company boatmen called here for clay; in 4E 201 the landing is the same and the buyers are Argonian.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -137,7 +137,7 @@
     },
     {
      "aspect": "faith",
-     "text": "The village's hatching-tree is at Aroxhu, three days' walk inland, and its eggs go there. A small clay shrine on the quay holds votive pots to the dead; broken ones are left on the shore.",
+     "text": "The village's hatching-tree is at Aroxhu, three days' walk inland and its eggs go there. A small clay shrine on the quay holds votive pots to the dead; broken ones are left on the shore.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -186,7 +186,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Inside the village it is calm. On the shore road to the north, mudcrab swarms and fleshflies are the daily trouble, and outlaws from Skeith Isle sometimes land in the dark to take boats.",
+     "text": "Inside the village it is calm. On the shore road to the north, mudcrab swarms and giant snakes are the daily trouble and outlaws from Skeith Isle sometimes land in the dark to take boats.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -274,7 +274,7 @@
     },
     {
      "kind": "combat-foes",
-     "detail": "mudcrab swarms and fleshflies on the shore road to the north",
+     "detail": "mudcrab swarms and giant snakes on the shore road to the north",
      "count": 4,
      "reward": "treasure"
     },
@@ -295,7 +295,7 @@
    "siting": "island",
    "danger_band_id": "D3",
    "importance": 3,
-   "summary": "Bala Karag is a ruined Cantemiric Velothi stronghold on a small rocky peninsula a day's walk from Thorn. The Knahaten Flu emptied it and the sea has taken its lower halls.",
+   "summary": "Bala Karag is a ruined Cantemiric Velothi stronghold on a small rocky peninsula a day's walk from Thorn. The Knahaten Flu emptied it and its lower halls are flooded.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
@@ -335,7 +335,7 @@
     },
     {
      "aspect": "history",
-     "text": "Cantemiric Velothi, Dunmer dissidents who settled the eastern seaboard, held this coast until the Knahaten Flu (2E 560-603) killed them all. Nobody has lived here since. Chimeri myth says Mephala led a third of the Velothi into Black Marsh.",
+     "text": "Cantemiric Velothi, Dunmer dissidents who settled the eastern seaboard, held this coast until the Knahaten Flu (2E 560-603) killed them all. The hold has stood empty since. Chimeri myth says Mephala led a third of the Velothi into Black Marsh.",
      "tier": "CANON_DERIVED",
      "sources": [
       {
@@ -358,7 +358,7 @@
     },
     {
      "aspect": "present",
-     "text": "Empty except for the dead. Thorn's slavers, until the Red Year, and later the Warden Marches' toll men both kept away from it. The Argonians of the coast call it sick ground. The lowest hall stands knee-deep in still black water.",
+     "text": "Empty except for the dead. Thorn's slavers, until the Red Year and later the Warden Marches' toll men both kept away from it. The coast Argonians call it sick ground. The lowest hall stands knee-deep in still black water.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -483,7 +483,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Ghosts and skeletons in the halls, cliff-nesting hackwings outside, and a water-filled lowest hall where slaughterfish have been trapped.",
+     "text": "Ghosts and skeletons in the halls, cliff-nesting hackwings outside and a water-filled lowest hall where slaughterfish have been trapped.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -635,7 +635,7 @@
     },
     {
      "aspect": "history",
-     "text": "Cantemiric Velothi built along the eastern seaboard between Archon and Thorn and died in the Knahaten Flu (2E 560-603). Kornakim's position on a seaward point suggests a watch-hold over the sea lanes, though nothing says so.",
+     "text": "Cantemiric Velothi built along the eastern seaboard between Archon and Thorn and died in the Knahaten Flu (2E 560-603). Its seaward point would suit a watch-hold over the sea lanes.",
      "tier": "CANON_DERIVED",
      "sources": [
       {
@@ -692,7 +692,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Once a watch-hold that signalled the Velothi's boats. Now a landmark for blockade-runners and a source of ash-glass shards that lie on the beach below.",
+     "text": "Once a watch-hold that signalled the Velothi's boats. Now a landmark for smugglers and a source of ash-glass shards that lie on the beach below.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -753,7 +753,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Ancestor ghosts within, crabs and hackwings on the beach, and a sinkhole in the courtyard floor that drops to the sea cave beneath.",
+     "text": "Ancestor ghosts within, crabs and hackwings on the beach and a sinkhole in the courtyard floor that drops to the sea cave beneath.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -849,13 +849,13 @@
    "id": "mine-28-m65",
    "name": "Coldbrine Mine",
    "status": "inhabited",
-   "held_by": "Warden Marches families of Thorn, under Fort Thornmoth",
+   "held_by": "Thorn's field-owners, with a toll to Fort Thornmoth",
    "population": 5,
    "footprint_radius_m": 35,
    "siting": "inland",
    "danger_band_id": "D2",
    "importance": 2,
-   "summary": "Coldbrine Mine is a rock-salt working in a low bluff south-west of Thorn, held by the Warden Marches. Its salt cures the saltrice and fish that Thorn exports.",
+   "summary": "Coldbrine Mine is a rock-salt working in a low bluff south-west of Thorn, worked for Thorn's field-owners under the toll of Fort Thornmoth. Its salt cures the saltrice and fish that Thorn exports.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
@@ -1191,7 +1191,7 @@
     },
     {
      "aspect": "history",
-     "text": "Built by the Imperial Commission as a toll and way-station for the Thorn-Archon road. It stood empty from the secession until the Archwardens' detachment took it back when the frontier screen needed a customs point on the east road.",
+     "text": "Built by the Imperial Commission as a toll and way-station for the Thorn-Archon road. It stood empty from the secession until the Archwardens' detachment took it back as a customs point on the east road.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1343,7 +1343,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Fleshflies, swamp-crocodiles in the ditch, and smugglers landing by night who will fight rather than pay.",
+     "text": "Giant snakes, swamp-crocodiles in the ditch and smugglers landing by night who fight when asked to pay.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1365,7 +1365,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A warden has been letting Skeith smugglers' boats through for pay. The sergeant wants the man caught before he is the one found out.",
+     "text": "A warden has been letting Skeith smugglers' boats through for pay. The sergeant wants the man caught before the blame falls on the sergeant.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1416,7 +1416,7 @@
     },
     {
      "kind": "combat-foes",
-     "detail": "smugglers landing by night, swamp-crocodiles in the ditch and fleshflies",
+     "detail": "smugglers landing by night, swamp-crocodiles in the ditch and giant snakes",
      "count": 4,
      "reward": "treasure"
     },
@@ -1683,7 +1683,7 @@
     },
     {
      "aspect": "history",
-     "text": "The Sarpa came out to the eastern edge following the high stone of the Virtluush ruin, which gives them towers and walls to roost on, and stayed beside it.",
+     "text": "The Sarpa came out to the eastern edge to roost on the towers and walls of the Virtluush ruin, and stayed beside it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1969,7 +1969,7 @@
     },
     {
      "aspect": "history",
-     "text": "Cantemiric Velothi held it until the Knahaten Flu (2E 560-603) ended them. The river gave it a boat road to the coast, which is our reading of its siting.",
+     "text": "Cantemiric Velothi held it until the Knahaten Flu (2E 560-603) ended them. It stood on a river bend with a boat road to the coast.",
      "tier": "CANON_DERIVED",
      "sources": [
       {
@@ -2365,7 +2365,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Fleshflies and crocodiles in the river mouth. The Tsonac men turn away any trader who asks after labour.",
+     "text": "Crocodiles in the river mouth and skeevers among the stone stacks. The Tsonac men turn away any trader who asks after labour.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2443,7 +2443,7 @@
     },
     {
      "kind": "combat-foes",
-     "detail": "fleshflies and crocodiles at the river mouth",
+     "detail": "crocodiles at the river mouth and skeevers among the stone stacks",
      "count": 3,
      "reward": "treasure"
     },
@@ -2493,7 +2493,7 @@
     },
     {
      "aspect": "history",
-     "text": "Founded in the generations after 4E 48, when the Root-Folk wanted ears on the sea; its people came from the Lake Ulaish country by canoe.",
+     "text": "Founded in the generations after 4E 48, to keep watch on the sea; its people came from the Lake Ulaish country by canoe.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2610,7 +2610,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Surf, crabs and hackwings on the shore, and Skeith outlaws who beach a boat in the cove. The station's folk do not like uninvited visitors and send word of them to Helstrom.",
+     "text": "Surf, crabs and hackwings on the shore and Skeith outlaws who beach a boat in the cove. The station's folk do not like uninvited visitors and send word of them to Helstrom.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2923,7 +2923,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Drowned crew and shackled dead in the hold, slaughterfish around the hull, and a captain who keeps his strongbox. The wreck is a short swim from shore, so the breath is the only limit.",
+     "text": "Drowned crew and shackled dead in the hold, slaughterfish around the hull and a captain who keeps his strongbox. The wreck is a short swim from shore, .",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3066,7 +3066,7 @@
     },
     {
      "aspect": "history",
-     "text": "A fast sloop running untaxed goods from Skeith Isle to the Arorha shore. Within the last twenty years she ran onto the Kornakim shoals at night while a chartered Archon privateer, or a rival Skeith crew, chased her without lights.",
+     "text": "A fast sloop running untaxed goods from Skeith Isle to the Arorha shore. In recent years she ran onto the Kornakim shoals at night while a chartered Archon privateer, or a rival Skeith crew, chased her without lights.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3262,7 +3262,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "The Hollow Tide crew says the sloop was theirs and the strongbox is owed to them; Marque Landing says its privateers sank her and the strongbox is a prize. Whoever brings it up has both camps asking after it.",
+     "text": "The Hollow Tide crew says the sloop was theirs and the strongbox is owed to them; the Marque Landing captain says his privateers sank her and the strongbox is a prize. Whoever brings it up has both camps asking after it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3489,7 +3489,7 @@
     },
     {
      "aspect": "faith",
-     "text": "Skeith's crews tie a knotted cord at their camp for the Navy dead. The Argonians of the coast call the wreck a drowned Imperial's grave and do not touch the figurehead.",
+     "text": "Skeith's crews tie a knotted cord at their camp for the Navy dead. The coast Argonians call the wreck a drowned Imperial's grave and do not touch the figurehead.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3545,7 +3545,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "A long swim down to a deep hull, drowned Imperial marines on the decks and slaughterfish in the dark below the quarterdeck. A diver goes in prepared and needs air.",
+     "text": "A long swim down to a deep hull, drowned Imperial marines on the decks and slaughterfish in the dark below the quarterdeck. A diver swims a long way down through dark water.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3682,7 +3682,7 @@
     },
     {
      "aspect": "history",
-     "text": "Customs stand only at the recognised ports, so any unwatched beach near one draws smugglers. Skeith lies between Thorn, Seafalls and Archon, which makes it the obvious cache for goods that dodge both customs houses.",
+     "text": "Customs stand only at the recognised ports, so smugglers use any unwatched beach near one. Skeith lies between Thorn, Seafalls and Archon, which makes it the obvious cache for goods that dodge both customs houses.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3748,7 +3748,7 @@
     },
     {
      "aspect": "economy",
-     "text": "They move moon sugar, salt, ash-glass, Dunmer wine and untaxed saltrice and take a cut from every cargo. They are outlaws in full, unlike the chartered pirates of Marque Landing, and the two crews are rivals.",
+     "text": "They move moon sugar, salt, ash-glass, Dunmer wine and untaxed saltrice and take a cut from every cargo. They are outlaws in full, unlike the chartered pirates of Marque Landing and the two crews are rivals.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3959,7 +3959,7 @@
     },
     {
      "aspect": "history",
-     "text": "The Archon coast was riddled with pirates, and in the Blackwater War General Falco sent letters of marque to them. Our reading is that the tradition survived as a half-chartered fleet in 4E 201, the state's substitute for a navy.",
+     "text": "The Archon coast was riddled with pirates, and in the Blackwater War General Falco sent letters of marque to them. The tradition survived as a half-chartered fleet in 4E 201, the state's stand-in for a navy.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4036,7 +4036,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Prize cargoes, ransom, protection from coast boats, and the occasional commission to chase a rival. They sell to Archon quietly.",
+     "text": "Prize cargoes, ransom, protection from coast boats and the occasional commission to chase a rival. They sell to Archon quietly.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4245,7 +4245,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A bare grey-green peak of dark, sea-worn rock at the island's centre, called the Grey Tooth for its look. Its dark green-grey stone fits the terrain of the Arnesian island.",
+     "text": "A bare grey-green peak of dark, sea-worn rock at the island's centre, called the Grey Tooth for its look. Its stone is dark green-grey like the rest of the island.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4365,7 +4365,7 @@
     },
     {
      "aspect": "faith",
-     "text": "Sailors leave a pebble on the cairn for luck. The Argonians say the stone is a Hist's old bone, which is a story only.",
+     "text": "Sailors leave a pebble on the cairn for luck. The Argonians tell that the stone is a Hist's old bone.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4434,7 +4434,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "The captain of the Stormwidow is said to have buried his share under the cairn, and both camps have dug there and found only stones. A shaman's bones are said to lie in a cave on the north face.",
+     "text": "Both camps believe the captain of the Stormwidow buried his share under the cairn, and both have dug around it and found only stones. Pirates tell of a shaman's bones in a cave on the north face.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4569,7 +4569,7 @@
     },
     {
      "aspect": "present",
-     "text": "Pirates took it in the last twenty years. They hold the upper hall as their moot-room and the lower vault as a strong room; the undercroft, once the garrison's cells, is the pirates' prison.",
+     "text": "Pirates took it in recent years. They hold the upper hall as their moot-room and the lower vault as a strong room; the undercroft, once the garrison's cells, is the pirates' prison.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4731,7 +4731,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A captive in the cells knows how to reach the Resolute Crest's chest. The quartermaster knows which wardens took the pirates' money, and who.",
+     "text": "A captive in the cells knows how to reach the Resolute Crest's chest. The quartermaster knows which wardens took the pirates' money.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4795,7 +4795,7 @@
     },
     {
      "kind": "shrine-blessing",
-     "detail": "the Imperial Akatosh shrine in the chapel",
+     "detail": "the Imperial Akatosh shrine in the chapel behind the stacked crates: cures disease and gives Akatosh's blessing for eight hours",
      "count": 1
     }
    ]
@@ -4958,7 +4958,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "The captain's strongbox is still sealed in the stern, and its brass key is said to open the cache under the cairn on the Grey Tooth. Both camps search for it and neither has found it.",
+     "text": "The captain's strongbox is still sealed in the stern, and the pirates believe its brass key opens the cache under the cairn on the Grey Tooth. Both camps search for it and neither has found it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5023,7 +5023,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "The seat of the Oxhu-Teeleel confederacy, a mound-town of red clay with a Hist at its centre, forty-odd people at the size of a small city. The confederacy grows from the many tribes of the interior whose names outsiders do not know.",
+     "text": "The seat of the Oxhu-Teeleel confederacy, a mound-town of red clay with a Hist at its centre, nearly forty people, a small city by the standard of the interior. The confederacy was made from many interior tribes whose names outsiders do not know.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5077,7 +5077,7 @@
     },
     {
      "aspect": "present",
-     "text": "A busy mound-town: the council meets each new moon under the Hist, the potters' kilns burn day and night, and the Archwardens must bargain for any road or toll in Oxhu country.",
+     "text": "A busy mound-town: the council meets each new moon under the Hist, the potters' kilns burn day and night and the Archwardens must bargain for any road or toll in Oxhu country.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5160,7 +5160,7 @@
     },
     {
      "aspect": "look",
-     "text": "A hill of terraced red mounds topped with a great gnarled Hist, reed-thatched houses on each terrace, kilns with long streamers of smoke, drying racks of cloth in madder red and ochre yellow, and a clay-paved moot-ground at the foot of the tree.",
+     "text": "A hill of terraced red mounds topped with a great gnarled Hist, reed-thatched houses on each terrace, kilns with long streamers of smoke, drying racks of cloth in madder red and ochre yellow and a clay-paved moot-ground at the foot of the tree.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5240,7 +5240,7 @@
     },
     {
      "kind": "oven",
-     "detail": "the potters' kilns, fired day and night",
+     "detail": "a clay bread oven beside the potters' kilns",
      "count": 1
     },
     {
@@ -5260,7 +5260,7 @@
     },
     {
      "kind": "shrine-blessing",
-     "detail": "the Aroxhu Hist's sap blessing",
+     "detail": "the Aroxhu Hist's sap shrine: cures disease and gives Fortify Alchemy for eight hours",
      "count": 1
     },
     {
@@ -5783,7 +5783,7 @@
     },
     {
      "kind": "oven",
-     "detail": "the village clay kiln",
+     "detail": "a clay bread oven beside the village kiln",
      "count": 1
     },
     {
@@ -6026,7 +6026,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Lake crocodiles, slaughterfish in the shallows, and travellers from Yulca who arrive muddled by illusions.",
+     "text": "Lake crocodiles, slaughterfish in the shallows and travellers from Yulca who arrive muddled by illusions.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6174,7 +6174,7 @@
     },
     {
      "aspect": "history",
-     "text": "People of Inoja settled it as a late daughter-village when the mounds filled. Its place on the road makes it the stopping place for Seafalls-bound carts.",
+     "text": "People of Inoja settled it as a late daughter-village when the mounds filled. Seafalls-bound carts stop there because it lies on the road.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6555,7 +6555,7 @@
     },
     {
      "aspect": "look",
-     "text": "Reed houses on stilts on a low rise above a sandy cape, nets and fish-racks on every pole, and a breakwater of piled clay.",
+     "text": "Reed houses on stilts on a low rise above a sandy cape, nets and fish-racks on every pole and a breakwater of piled clay.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6577,7 +6577,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Crocodiles at the inlet, smuggler landings on the cape, and the ghosts of Mazurath on the headland.",
+     "text": "Crocodiles at the inlet, smuggler landings on the cape and the ghosts of Mazurath on the headland.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6599,7 +6599,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "The boat-wright is building a ship for a stranger who paid in old bronze pieces from the headland ruin. The ruin has begun to glow after dark.",
+     "text": "The boat-wright is building a ship for a stranger who paid in old bronze pieces from the headland ruin. The ruin glows after dark.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6787,7 +6787,7 @@
     },
     {
      "aspect": "economy",
-     "text": "The toll buys spear-shafts, food and mats for the post. The elders of Renhu and Khiar are paid in fish and clay.",
+     "text": "The tolls are spent on spear-shafts, food and mats for the post. The elders of Renhu and Khiar are paid in fish and clay.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6916,7 +6916,7 @@
     },
     {
      "kind": "grindstone",
-     "detail": "the spear rack's whetstone",
+     "detail": "a grindstone beside the spear rack",
      "count": 1
     },
     {
@@ -7122,7 +7122,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Rock-fall traps in the old galleries, a crocodile nest in the flooded drift, and smugglers who use the sealed lower galleries as a store.",
+     "text": "Rock-fall traps in the old galleries, a crocodile nest in the flooded drift and smugglers who use the sealed lower galleries as a store.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7401,7 +7401,7 @@
     },
     {
      "aspect": "faith",
-     "text": "They hold that the sea keeps the memories that the Hist let fall. They leave painted shells and knotted cords at the falls, keep death-dancers for burials, and nest on the shoals. Hatching and naming mean a long journey inland.",
+     "text": "They hold that the memories the Hist let fall are kept in the sea that the Hist let fall. They leave painted shells and knotted cords at the falls, keep death-dancers for burials and nest on the shoals. Hatching and naming mean a long journey inland.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7451,7 +7451,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Falls from the wet rocks and rope-bridges, slaughterfish in the sea-pool, and Skeith pirate boats in the dark.",
+     "text": "Falls from the wet rocks and rope-bridges, slaughterfish in the sea-pool and Skeith pirate boats in the dark.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7600,7 +7600,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A tall beacon house on the point south-east of the falls, guarding ships from the shoals.",
+     "text": "A tall beacon house on the point south-east of the falls, to warn ships off the shoals.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7759,7 +7759,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Falls from the gallery, slippery rocks, and Skeith pirates who take the tower in the dark.",
+     "text": "Falls from the gallery, slippery rocks and Skeith pirates who take the tower in the dark.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7882,7 +7882,7 @@
     },
     {
      "aspect": "history",
-     "text": "A Seafalls family cleared it for growing the food that the sea does not give them.",
+     "text": "A Seafalls family cleared it for growing the food they cannot fish.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8864,7 +8864,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A Gaweja fisher has taken a raft-pole the eldest valued, and the hamlet wants it back. One Maran tract on Icalca's shelf names a ruin that has not been found.",
+     "text": "A Gaweja fisher has taken a raft-pole the eldest valued, and the eldest wants it back. The eldest also speaks of a ruin in the reeds that no raft has found, and will pay in Illusion tomes to learn where it lies.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -9118,7 +9118,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Illusion-casting guards on the approach, marsh crocodiles, leeches and fleshflies.",
+     "text": "Illusion-casting guards on the approach, marsh crocodiles and giant snakes.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -9201,7 +9201,7 @@
     },
     {
      "kind": "combat-creature",
-     "detail": "marsh crocodiles and fleshflies",
+     "detail": "marsh crocodiles and giant snakes",
      "count": 1,
      "reward": "treasure"
     },
@@ -9544,7 +9544,7 @@
    "siting": "lakeshore",
    "danger_band_id": "D1",
    "importance": 4,
-   "summary": "Yulca is the Agaceph's one town, on the great lake in Okuwun-Rahei's west. It is a town of illusionists and rafters who keep the books taken from dead Maran missions.",
+   "summary": "Yulca is the Agaceph's one town, on the great lake in Okuwun-Rahei's west. It is a town of illusionists and rafters who keep books taken from dead Maran missions.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
@@ -9777,7 +9777,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "The book hall's most prized volume has been stolen, and the elders will not say why they want it back so badly. A visiting scholar wants a Maran tract translated.",
+     "text": "The founding elders' carved raft-prow, kept in the hall, has been stolen and the elders will not say why they want it back so badly. A visiting Dunmer scholar wants to buy the secret of the Agaceph's freezing spell.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -10150,7 +10150,7 @@
     },
     {
      "kind": "combat-foes",
-     "detail": "a hunters' trap line a stranger can spring, 2",
+     "detail": "Root-Folk hunters who attack strangers on the trap line, 2",
      "count": 1,
      "reward": "treasure"
     },
@@ -10210,7 +10210,7 @@
     },
     {
      "aspect": "history",
-     "text": "The Sarpa are winged and hostile to outsiders and live only in Middle Argonia; a camp on the edge of Oxhu country fits the confederacy's frequent clashes with them.",
+     "text": "The Sarpa are winged and hostile to outsiders and live only in Middle Argonia; this camp stands on the edge of Oxhu country, where the confederacy clashes with them often.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -10540,7 +10540,7 @@
     },
     {
      "aspect": "present",
-     "text": "The ruin is half-swallowed by marsh. The Oxhu and Agaceph alike avoid it.",
+     "text": "The ruin is half sunk in the marsh. The Oxhu and Agaceph alike avoid it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -10680,7 +10680,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Ancestor ghosts, skeletal guards, and crocodiles in the drowned halls.",
+     "text": "Ancestor ghosts, skeletal guards and crocodiles in the drowned halls.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -10708,7 +10708,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A sealed vault door opens only to the right family tablet, and the Oxhu tell of a tablet carried off into the marsh. A Yulca elder wants any Velothi book that survives.",
+     "text": "A sealed vault door opens only to the right family tablet, and the Oxhu tell of a tablet carried off into the marsh. A Yulca elder will pay for any carved Velothi tablet that survives.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -11268,7 +11268,7 @@
     },
     {
      "aspect": "faith",
-     "text": "The coastal hold kept the Velothi ancestor rites, with a niche and tablet for each family dead. The shrine in the lower hall served a Daedric power, and the spell-fire on the upper tier still burns.",
+     "text": "Its Velothi families kept the Velothi ancestor rites, with a niche and tablet for each family dead. The shrine in the lower hall served a Daedric power, and the spell-fire on the upper tier still burns.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -11324,7 +11324,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Ghosts, rotten floors over a drop in the upper tier, and a sea-cave the smugglers hold, reached by swimming.",
+     "text": "Ghosts, rotten floors over a drop in the upper tier and a sea-cave the smugglers hold, reached by swimming.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {

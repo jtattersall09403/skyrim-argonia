@@ -2,7 +2,7 @@
  "records": [
   {
    "id": "murkwood",
-   "summary": "Murkwood is the Hist forest at the heart of Black Marsh, the legendary dark wood that ever moves, around Helstrom. Its people are the Root-Folk, its beasts are medusas and Naga, and outsiders who enter without leave do not come out.",
+   "summary": "Murkwood is the Hist forest at the heart of Black Marsh, the legendary dark wood that ever moves, around Helstrom. Its people are the Root-Folk, its beasts are medusas and Naga and outsiders who enter without leave do not come out.",
    "landform": "Low swamp forest of root-hummocks, braided river arms and black Heart-Mud flats, with a few dry rises.",
    "elevation_floor_m": 5.0,
    "elevation_summit_m": 20.0,
@@ -17,7 +17,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Murkwood is the legendary dark forest said to move, on a river deep in the swamps of Black Marsh and home to many medusas. The Conclave of Baal at Stormhold is said to find where it stands by reading the Elder Scrolls with an ancient tablet; in 4E 201 it stands around Helstrom.",
+     "text": "Murkwood is the legendary dark forest said to move, on a river deep in the swamps of Black Marsh and home to many medusas. The Conclave of Baal at Stormhold claims to find where it stands by reading the Elder Scrolls with an ancient tablet; in 4E 201 it stands around Helstrom.",
      "tier": "CANON_EXPLICIT",
      "sources": [
       {
@@ -54,7 +54,7 @@
     },
     {
      "aspect": "present",
-     "text": "In 4E 201 the forest crowds the river arms around Helstrom, held by the Root-Folk, the Hutan-Tzel at its west edge, and several camps of Naga and Paatru. Few outsiders come.",
+     "text": "In 4E 201 the forest crowds the river arms around Helstrom, held by the Root-Folk, the Hutan-Tzel at its west edge and several camps of Naga and Paatru. Few outsiders come.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -103,7 +103,7 @@
     },
     {
      "aspect": "faith",
-     "text": "The Hist: every settlement sends its people to a village tree to hatch and bury. The Root Talk at Helstrom is the occasion on which the tribes hear the trees speak.",
+     "text": "The Hist: every settlement sends its people to a village tree to hatch and bury. The Root Talk at Helstrom is the occasion on which the tribes hear the Hist through the tree-minders.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -121,7 +121,7 @@
     },
     {
      "aspect": "look",
-     "text": "A dark wood of huge roots, hanging moss and black water; light comes green and dim, the air is thick and loud with insects, and the forest never looks the same twice.",
+     "text": "A dark wood of huge roots, hanging moss and black water; light comes green and dim, the air is thick and loud with insects and the forest never looks the same twice.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -139,7 +139,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Medusas in the deep wood, Naga ambushes on the river arms, Paatru who kill on sight, and the moving wood itself, which can swallow a path overnight.",
+     "text": "Medusas in the deep wood, Naga ambushes on the river arms, Paatru who kill on sight and the moving wood itself, which can swallow a path overnight.",
      "tier": "CANON_DERIVED",
      "sources": [
       {
@@ -215,7 +215,7 @@
   },
   {
    "id": "lake-ulaish",
-   "summary": "Lake Ulaish is the great lake south-east of Helstrom where the interior waters pool before running to Lilmoth and Blackrose. Fishing hamlets, a toll fort and a trading city share its shores, and boats are its roads.",
+   "summary": "Lake Ulaish is the great lake south-east of Helstrom where the interior waters pool before running to Lilmoth and Blackrose. Fishing hamlets, a toll fort and a trading city share its shores and boats are its roads.",
    "landform": "A broad shallow lake with silt islets, reed shores and river deltas at its north-west corner.",
    "elevation_floor_m": 3.0,
    "elevation_summit_m": 10.0,
@@ -369,7 +369,7 @@
     },
     {
      "aspect": "look",
-     "text": "A wide pale-grey lake fringed with reed, silt islets with lantern posts, stilt quays on the south-east shore, and stone-footed farmhouses on the northern deltas.",
+     "text": "A wide pale-grey lake fringed with reed, silt islets with lantern posts, stilt quays on the south-east shore and stone-footed farmhouses on the northern deltas.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -438,7 +438,7 @@
     },
     {
      "aspect": "ecology",
-     "text": "Eels, reed fish, crocodiles in the delta, water-birds in the reed beds, and rice paddies on raised banks.",
+     "text": "Eels, reed fish, crocodiles in the delta, water-birds in the reed beds and rice paddies on raised banks.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -519,7 +519,7 @@
     },
     {
      "aspect": "history",
-     "text": "Nothing is recorded. The Kothringi-named hamlets on it, Nacydes and Tydeos, are read as Kothringi places resettled by Argonians after 2E 560 because the ridge is dry.",
+     "text": "No stake tells of the ridge's past. The Kothringi-named hamlets on it, Nacydes and Tydeos, are read as Kothringi places resettled by Argonians after 2E 560 because the ridge is dry.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -573,7 +573,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Penned marsh-lizards, hides, hunting and tin chimes traded with the Paatru and with Korydon, and taken to Helstrom at the Root Talk.",
+     "text": "Penned marsh-lizards, hides, hunting and tin chimes traded with the Paatru and with Korydon and taken to Helstrom at the Root Talk.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -591,7 +591,7 @@
     },
     {
      "aspect": "faith",
-     "text": "Sithis and a quiet Dibella among the Chime-Keepers; watchfires on the peaks are a small offering to the Hist.",
+     "text": "Sithis and the Hist among the Chime-Keepers; watchfires on the peaks are a small offering to the Hist.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -627,7 +627,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Naga and Paatru raiders, ridge cats, falls on the summit paths, and cold wind at night on the open top.",
+     "text": "Naga and Paatru raiders, giant snakes, falls on the summit paths and cold wind at night on the open top.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -663,7 +663,7 @@
     },
     {
      "aspect": "ecology",
-     "text": "Grass, scrub, stunted trees and lizards; sabre cats and wild marsh-lizards; fewer insects than the forest.",
+     "text": "Grass, scrub, stunted trees and lizards; giant snakes and wild marsh-lizards; fewer insects than the forest.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -716,7 +716,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "The Ultherus Swamp, also called Utherus, is a region of Black Marsh of which little is known; the beautiful but deadly dragon's-tongue plant is especially common there. On our map it lies south of Helstrom around Korydon.",
+     "text": "The Ultherus Swamp, also called Utherus, is a region of Black Marsh of which little is known; the beautiful but deadly dragon's-tongue plant is especially common there. It lies south of Helstrom around Korydon.",
      "tier": "CANON_EXPLICIT",
      "sources": [
       {
@@ -753,7 +753,7 @@
     },
     {
      "aspect": "present",
-     "text": "In 4E 201 the swamp is crossed by boat; Korydon's Chime-Keepers harvest the dragon's-tongue, Tumnatu hunters keep to the reeds, and a Root-Folk waystation sits at its south.",
+     "text": "In 4E 201 the swamp is crossed by boat; Korydon's Chime-Keepers harvest the dragon's-tongue, Tumnatu hunters keep to the reeds and a Root-Folk waystation sits at its south.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -825,7 +825,7 @@
     },
     {
      "aspect": "faith",
-     "text": "Sithis and the Hist; Korydon adds Z'en and Dibella, kept at a chime-hung shrine.",
+     "text": "Sithis and the Hist; Korydon adds Z'en, kept at a chime-hung shrine.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -873,7 +873,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Dragon's-tongue patches that kill the careless, deep-water predators, Tumnatu parties and fog-bound channels that lose boats.",
+     "text": "Dragon's-tongue patches that kill the careless, deep-water predators, Tumnatu parties and fog-bound channels in which boats lose their way.",
      "tier": "CANON_DERIVED",
      "sources": [
       {

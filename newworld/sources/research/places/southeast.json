@@ -114,7 +114,7 @@
     },
     {
      "aspect": "people",
-     "text": "About four in five are Argonians, with a sizeable Dunmer minority from Tear a short sail away, a few Imperials and Khajiit, and a floating population of sailors. Pilots, wharfingers, ferrymen and the merchant council hold the real authority.",
+     "text": "About four in five are Argonians, with a sizeable Dunmer minority from Tear a short sail away, a few Imperials and Khajiit and a floating population of sailors. Pilots, wharfingers, ferrymen and the merchant council hold the real authority.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -216,7 +216,7 @@
     },
     {
      "aspect": "look",
-     "text": "A low harbour town of stone wharves and timber warehouses with Company brick at the waterfront, wooden stilt houses behind, and taverns whose balconies overlook the bay. Boats and swimmers fill the water; the sea smells of tar, salt and rotting weed.",
+     "text": "A low harbour town of stone wharves and timber warehouses with Company brick at the waterfront, wooden stilt houses behind and taverns whose balconies overlook the bay. Boats and swimmers fill the water; the sea smells of tar, salt and rotting weed.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -452,7 +452,7 @@
     },
     {
      "kind": "shrine-blessing",
-     "detail": "The harbour families' landward Hist tree: the Hist's blessing, cures disease",
+     "detail": "The harbour families' landward Hist tree: the Hist's blessing: cures disease and gives waterbreathing for 8 hours",
      "count": 1
     },
     {
@@ -547,7 +547,7 @@
     },
     {
      "aspect": "present",
-     "text": "Rebuilt but not restored: smaller, lower and wholly Argonian in its fabric. The merchant council sets the dock tolls and pays the guards. It is hostile to the successor state, which was the party that killed it, and the old law keeping unlicensed foreigners on the docks lapses in places and is enforced in others.",
+     "text": "Rebuilt but not restored: smaller, lower and wholly Argonian in its fabric. The merchant council sets the dock tolls and pays the guards. Its people are hostile to the successor state, whose party killed the old town and the officials who once kept unlicensed foreigners on the docks enforce that law in some places and let it lapse in others.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -615,7 +615,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Lighterage, bay trade, salvage from the drowned quarter, and saltrice from the beds of the delta villages. Pusbottom, repopulated as a slum, supplies the criminal trade of the coast.",
+     "text": "Lighterage, bay trade, salvage from the drowned quarter and saltrice from the beds of the delta villages. Pusbottom, repopulated as a slum, supplies the criminal trade of the coast.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -649,7 +649,7 @@
     },
     {
      "aspect": "faith",
-     "text": "The third Hist is walled but open, tended by two minders at once, and no faction may hold exclusive access. A sunken shrine to Xhon-Mehl the Fisher, the Ancestral Organ Lord of Lilmoth, is known to divers.",
+     "text": "The third Hist is walled but open, tended by two minders at once and no faction may hold exclusive access. A sunken shrine to Xhon-Mehl the Fisher, the Ancestral Organ Lord of Lilmoth, is known to divers.",
      "tier": "CANON_EXPLICIT",
      "sources": [
       {
@@ -707,7 +707,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "The town centre is mostly safe: guarded by the council's men, with ripper eels in the canals and cutpurses in Pusbottom. The drowned Imperial quarter and the Hist's roots are dangerous, with sea-drakes in the deep water beyond.",
+     "text": "The town centre is mostly safe: guarded by the council's men, with slaughterfish in the canals and cutpurses in Pusbottom. The drowned Imperial quarter and the Hist's roots are dangerous, with sea-drakes in the deep water beyond.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -741,7 +741,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "The drowned quarter, whose name locals will not say to strangers, and the villas that salvagers dive for. The young Hist with its two minders, and the story the town tells of the mad tree before it. Pusbottom's thieves and the docks-only law some officials still enforce. The sunken shrine of Xhon-Mehl, reached by diving as far as breath allows.",
+     "text": "The drowned quarter, whose name locals will not say to strangers and the villas that salvagers dive for. The young Hist with its two minders, and the story its people tell of the mad tree before it. Pusbottom's thieves and the docks-only law some officials still enforce. The sunken shrine of Xhon-Mehl can be reached by diving as far as breath allows.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -879,7 +879,7 @@
     },
     {
      "kind": "shrine-blessing",
-     "detail": "Sunken shrine of Xhon-Mehl the Fisher, reached by diving: blessing and cure of disease",
+     "detail": "The young third Hist's sap, given by its two tree-minders: cures disease and gives waterbreathing for 8 hours",
      "count": 1
     },
     {
@@ -899,7 +899,7 @@
     },
     {
      "kind": "combat-creature",
-     "detail": "Ripper eels and slaughterfish in the canals and the drowned quarter",
+     "detail": "Slaughterfish and slaughterfish in the canals and the drowned quarter",
      "count": 3,
      "reward": "treasure"
     },
@@ -967,7 +967,7 @@
     },
     {
      "aspect": "history",
-     "text": "The tribe's Elder Nuetepa is remembered in Archon in the Second Era. Each family tells the tribe's first settlement on the islands differently; the town grew where the bayou channels meet the open strait, and the Flu that emptied the coast of other peoples left the Argonians alive.",
+     "text": "The tribe's Elder Nuetepa is remembered in Archon from long ago. Each family tells the tribe's first settlement on the islands differently; the town grew where the bayou channels meet the open strait, and the Flu that emptied the coast of other peoples left the Argonians alive.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1037,7 +1037,7 @@
     },
     {
      "aspect": "people",
-     "text": "Three Waters Argonians: the elder, a council of raft-masters who know the channel routes, a handful of Archon and Lilmoth traders, and traders from Aroxhu.",
+     "text": "Three Waters Argonians: the elder, a council of raft-masters who know the channel routes, a handful of Archon and Lilmoth traders and traders from Aroxhu.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1072,7 +1072,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Net-fish, shellfish, saltrice, reed mats and bundles, and the back-water freight that moves between Archon and the Lilmoth delta without passing customs. The elder takes a share of every raft.",
+     "text": "Net-fish, shellfish, saltrice, reed mats and bundles and the back-water freight that moves between Archon and the Lilmoth delta without passing customs. The elder takes a share of every raft.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1107,7 +1107,7 @@
     },
     {
      "aspect": "faith",
-     "text": "Argonian Sithis and Hist devotion; the town keeps a small Hist pool tended by a tree-minder, and hatching families come in from the hamlets. Rafts are blessed at launching.",
+     "text": "Argonian Sithis and Hist devotion; a small Hist pool lies in the town, tended by a tree-minder and hatching families come in from the hamlets. Rafts are blessed at launching.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1142,7 +1142,7 @@
     },
     {
      "aspect": "look",
-     "text": "A pentagon of raft-mounted halls and reed houses around a landing, with a long communal hall for the elder's moot, drying frames of fish, and rafts lashed in rings beside the landing.",
+     "text": "A pentagon of raft-mounted halls and reed houses around a landing, with a long communal hall for the elder's moot, drying frames of fish and rafts lashed in rings beside the landing.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1177,7 +1177,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Safe in the town. The channels around it hold slaughterfish, ripper eels and the odd smuggler who has not paid the elder's share.",
+     "text": "Safe in the town. The channels around it hold slaughterfish, slaughterfish and the odd smuggler who has not paid the elder's share.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1311,7 +1311,7 @@
     },
     {
      "kind": "shrine-blessing",
-     "detail": "The town's Hist pool: the Hist's blessing, cures disease",
+     "detail": "The town's Hist pool: the Hist's blessing: cures disease and regenerates stamina for 8 hours",
      "count": 1
     },
     {
@@ -1326,7 +1326,7 @@
     },
     {
      "kind": "combat-creature",
-     "detail": "Slaughterfish and ripper eels in the channels around the town",
+     "detail": "Slaughterfish and slaughterfish in the channels around the town",
      "count": 2,
      "reward": "treasure"
     },
@@ -1422,7 +1422,7 @@
     },
     {
      "aspect": "present",
-     "text": "Eight or so raft-families run the ferry in turns, tell travellers which bank the slaughterfish keep to, and keep a lamp lit for night crossings.",
+     "text": "Eight or so raft-families run the ferry in turns, tell travellers which bank the slaughterfish keep to and keep a lamp lit for night crossings.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1790,7 +1790,7 @@
     },
     {
      "aspect": "present",
-     "text": "Six households cut, dry and bundle reed, and trap eels and crabs. The hamlet is quiet and few outsiders come.",
+     "text": "Six households cut, dry and bundle reed and trap eels and crabs. The hamlet is quiet and few outsiders come.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1926,7 +1926,7 @@
     },
     {
      "aspect": "look",
-     "text": "Low reed-thatch houses on stilts above hummocks, tall drying racks of pale reed, and eel traps hung like baskets over the water.",
+     "text": "Low reed-thatch houses on stilts above hummocks, tall drying racks of pale reed and eel traps hung like baskets over the water.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1960,7 +1960,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Slaughterfish, ripper eels and crocodilian ambushers in the reeds; no bandits.",
+     "text": "Slaughterfish, slaughterfish and crocodiles in the reeds; no bandits.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1994,7 +1994,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A cutter who found something metal in the mud of the bed; a trapper's request to clear a nest of ripper eels.",
+     "text": "A cutter who found something metal in the mud of the bed; a trapper's request to clear a nest of slaughterfish.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2057,7 +2057,7 @@
     },
     {
      "kind": "combat-creature",
-     "detail": "Ripper eels in a nest in the reed beds, slaughterfish and mud-crabs",
+     "detail": "Slaughterfish in a nest in the reed beds, slaughterfish and mud-crabs",
      "count": 3,
      "reward": "treasure"
     },
@@ -2289,7 +2289,7 @@
     },
     {
      "aspect": "look",
-     "text": "Pole houses over grey mudflats, shell middens like low white hills, nets spread to dry on frames, and salt pans.",
+     "text": "Pole houses over grey mudflats, shell middens like low white hills, nets spread to dry on frames and salt pans.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2323,7 +2323,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Mud-crabs and slaughterfish off the flats, deep water past the shell banks where breath runs out, and the occasional patrol from the fort; risky ground.",
+     "text": "Mud-crabs and slaughterfish off the flats, deep water past the shell banks where breath runs out and the occasional patrol from the fort; risky ground.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2696,7 +2696,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Slaughterfish, ripper eels and mud-crabs in the channels between the beds; risky outside the hamlet.",
+     "text": "Slaughterfish, slaughterfish and mud-crabs in the channels between the beds; risky outside the hamlet.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2798,7 +2798,7 @@
     },
     {
      "kind": "combat-creature",
-     "detail": "Slaughterfish and ripper eels in the channels",
+     "detail": "Slaughterfish and slaughterfish in the channels",
      "count": 2,
      "reward": "treasure"
     },
@@ -2966,7 +2966,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Rice, fish and reed sold on the water, and a quiet trade in cargo that never goes through Archon's quay.",
+     "text": "Rice, fish and reed sold on the water and a quiet trade in cargo that never goes through Archon's quay.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3195,7 +3195,7 @@
    "id": "oju",
    "name": "Oju",
    "status": "inhabited",
-   "held_by": "A village moot of Lilmoth-coast Argonian families, answerable to no one beyond Lilmoth's council's tariff",
+   "held_by": "A village moot of Lilmoth-coast Argonian families, who answer to no one but pay Lilmoth's council a landing toll",
    "population": 10,
    "footprint_radius_m": 60,
    "siting": "coast",
@@ -3268,7 +3268,7 @@
     },
     {
      "aspect": "present",
-     "text": "Ten or so households keep the landing, a lantern and a hostel; most of the custom comes from Lilmoth, so the village pays Lilmoth's council a toll to land there.",
+     "text": "Ten or so households keep the landing, a lantern and a hostel; most of the custom comes from Lilmoth, so its boat-owners pay Lilmoth's council a toll to land there.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3349,7 +3349,7 @@
     },
     {
      "aspect": "faith",
-     "text": "A post in the channel carved for the drowned; hatching families walk the long way to Lilmoth's tree, the second Hist.",
+     "text": "A post in the channel carved for the drowned; hatching families walk the long way to Lilmoth's tree, the third Hist.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3376,7 +3376,7 @@
     },
     {
      "aspect": "look",
-     "text": "Stilt houses and platforms linked by gangways, a hostel with a long deck, boats tied three deep, and a lantern on a mast.",
+     "text": "Stilt houses and platforms linked by gangways, a hostel with a long deck, boats tied three deep and a lantern on a mast.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3654,7 +3654,7 @@
     },
     {
      "aspect": "faith",
-     "text": "They bury and hatch at Aroxhu's Hist; the village keeps clay figures of ancestors on the mound crest.",
+     "text": "They bury and hatch at Aroxhu's Hist; the villagers keep clay figures of ancestors on the mound crest.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3681,7 +3681,7 @@
     },
     {
      "aspect": "look",
-     "text": "A ring of raised red-clay mounds with thatched halls on top, kilns and clay pits, drying racks of dyed cloth, and a landing on the inlet.",
+     "text": "A ring of raised red-clay mounds with thatched halls on top, kilns and clay pits, drying racks of dyed cloth and a landing on the inlet.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3708,7 +3708,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Slaughterfish swim in the inlet by the landing. The odd predator comes down to drink there.",
+     "text": "Slaughterfish swim in the inlet by the landing. The odd crocodile comes down to drink there.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3801,7 +3801,7 @@
     },
     {
      "kind": "combat-creature",
-     "detail": "slaughterfish by the landing and a predator at the water's edge",
+     "detail": "slaughterfish by the landing and a crocodile at the water's edge",
      "count": 2,
      "reward": "treasure"
     },
@@ -3861,7 +3861,7 @@
     },
     {
      "aspect": "history",
-     "text": "Built by the Legion as a road fort in the '-moth' manner. The Legion left at the secession, 4E 5-10, and no one has held the keep since.",
+     "text": "Built by the Legion as a road fort in the '-moth' manner. The Legion left at the secession, 4E 5-10 and no one has held the keep since.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3910,7 +3910,7 @@
     },
     {
      "aspect": "people",
-     "text": "No garrison. Aroxhu families rest in the upper floor on their road, smugglers use the cellars as a cache, and an old ex-privateer keeps a room as his home.",
+     "text": "No garrison. Aroxhu families rest in the upper floor on their road, smugglers use the cellars as a cache and an old ex-privateer keeps a room as his home.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4003,7 +4003,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "A smugglers' watch holds the cellars, mud-crocodiles lie in the ditch round the rise, and the stair-tower is broken above the first landing.",
+     "text": "A smugglers' watch holds the cellars, mud-crocodiles lie in the ditch round the rise and the stair-tower is broken above the first landing.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4110,13 +4110,13 @@
    "name": "Ruined Velothi Shrine of Nyrath-Ven",
    "place_kind_id": "velothi-ruin",
    "status": "ruined",
-   "held_by": "The dead; Velothi ghosts the Flu left behind; Archon's harbour folk and the Aroxhu avoid it",
+   "held_by": "The dead; Velothi ghosts the Flu left behind; Archon's Dunmer families tend one niche, and the harbour folk and the Aroxhu otherwise avoid it",
    "population": 0,
    "footprint_radius_m": 50,
    "siting": "inland",
    "danger_band_id": "D3",
    "importance": 3,
-   "summary": "A stepped-dome shrine of the Cantemiric Velothi, Dunmer settlers killed by the Knahaten Flu by 2E 603, on dry ground near Archon. It is a ruin with undead and old grave-goods that the people of Archon and the Aroxhu avoid.",
+   "summary": "A stepped-dome shrine of the Cantemiric Velothi, Dunmer settlers killed by the Knahaten Flu by 2E 603, on dry ground near Archon. It is a ruin with undead and old grave-goods that the Aroxhu and most of Archon avoid.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
@@ -4215,7 +4215,7 @@
     },
     {
      "aspect": "people",
-     "text": "No living residents. The people of Archon say the Velothi dead walk its lower rooms.",
+     "text": "No one lives there, though a few of Archon's Dunmer families carry offerings to the east niche. The people of Archon say the Velothi dead walk its lower rooms.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4398,7 +4398,7 @@
     },
     {
      "kind": "shrine-blessing",
-     "detail": "the ancestor niche's blessing of the grey dead: resist disease 25% for 8 hours",
+     "detail": "the east ancestor niche, kept by Archon's Dunmer families: cures disease and resist disease 25% for 8 hours",
      "count": 1
     },
     {
@@ -4440,7 +4440,7 @@
    "siting": "coast",
    "danger_band_id": "D1",
    "importance": 1,
-   "summary": "The Tidewarden is a Khajiit-crewed merchant cog that ran aground on the shore north of Archon in 4E 172 and was never refloated. It is a beachcombers' site with a few valuables left and a ghost story.",
+   "summary": "The Tidewarden is a Khajiit-crewed merchant cog that ran aground on the shore north of Archon in the years Leyawiin was held and the Blackwood Road shut, and was never refloated. It is a beachcombers' site with a few valuables left and a ghost story.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
@@ -4469,7 +4469,7 @@
     },
     {
      "aspect": "history",
-     "text": "In 4E 172 Naarifin's army held Leyawiin and the Blackwood Road was shut, so Cyrodiil's and Elsweyr's goods came by sea to Archon. The Tidewarden, out of Senchal, missed the channel and went onto the bar; the crew lived.",
+     "text": "In the years Naarifin's army held Leyawiin and the Blackwood Road was shut, so Cyrodiil's and Elsweyr's goods came by sea to Archon. The Tidewarden, out of Senchal, missed the channel and went onto the bar; the crew lived.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4659,7 +4659,7 @@
     },
     {
      "kind": "combat-creature",
-     "detail": "giant crabs on the hull and in the sand",
+     "detail": "mudcrabs on the hull and in the sand",
      "count": 4,
      "reward": "treasure"
     },
@@ -4670,7 +4670,7 @@
     },
     {
      "kind": "harvest-common",
-     "detail": "ship's timber, nails and brass fittings to strip, and sea salt",
+     "detail": "ship's timber, nails and brass fittings to strip and sea salt",
      "count": 3
     }
    ]
@@ -4746,7 +4746,7 @@
     },
     {
      "aspect": "present",
-     "text": "Twelve households net, salt fish and keep boats, and sell their catch to Lilmoth's council market.",
+     "text": "Twelve households net, salt fish and keep boats and sell their catch to Lilmoth's council market.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5197,7 +5197,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Slaughterfish and mudcrabs lurk in the paddies around the village, and the paddy banks hold a few hunting beasts.",
+     "text": "Slaughterfish and mudcrabs lurk in the paddies around the village, and the paddy banks hold a few crocodiles.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5448,7 +5448,7 @@
     },
     {
      "aspect": "faith",
-     "text": "Hatching families go to Lilmoth's tree; the fort families keep to Imperial habits and none to the Hist.",
+     "text": "Hatching families go to Lilmoth's tree; the fort families keep a few Imperial habits but go to Lilmoth's tree to hatch their young.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5650,7 +5650,7 @@
     },
     {
      "aspect": "history",
-     "text": "Built by the Legion with a '-moth' name. The Legion left at the secession, 4E 5-10, and the Archwardens have kept the fort since.",
+     "text": "Built by the Legion with a '-moth' name. The Legion left at the secession, 4E 5-10 and the Archwardens have kept the fort since.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5681,7 +5681,7 @@
     },
     {
      "aspect": "present",
-     "text": "Ten men of Archein descent keep the gate, take tolls on the road and the strait, and check cargo for the Warden customs. They hold the keys in the Archwardens' name.",
+     "text": "Ten men of Archein descent keep the gate, take tolls on the road and the strait and check cargo for the Warden customs. They hold the keys in the Archwardens' name.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5774,7 +5774,7 @@
     },
     {
      "aspect": "faith",
-     "text": "Imperial forts carry no Hist; the garrison goes to Lilmoth to hatch its young, name them and bury its dead.",
+     "text": "No Hist grows at the fort; the garrison goes to Lilmoth to hatch its young, name them and bury its dead.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5810,7 +5810,7 @@
     },
     {
      "aspect": "look",
-     "text": "A low square fort of stone and timber with a tower, a toll chain across the channel, and a moss-grown wall.",
+     "text": "A low square fort of stone and timber with a tower, a toll chain across the channel and a moss-grown wall.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5841,7 +5841,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "The garrison turns on anyone who runs the chain, smugglers land at night on the east shingle, and mud-crocodiles lie in the marsh round the island road.",
+     "text": "The garrison turns on anyone who runs the chain, smugglers land at night on the east shingle and mud-crocodiles lie in the marsh round the island road.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5970,14 +5970,14 @@
    "siting": "coast",
    "danger_band_id": "D2",
    "importance": 3,
-   "summary": "Southwatch Keep is a stone fort at the south-western tip of the southern Althii island, watching the sea road to Lilmoth. A small Archwarden garrison lights its beacon and checks ships.",
+   "summary": "Southwatch Keep is a stone fort at the south-western tip of the southern Althii island, facing the sea road to Lilmoth. A small Archwarden garrison lights its beacon and checks ships.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
    "notes": [
     {
      "aspect": "overview",
-     "text": "A coastal fort at the south-west tip of the island, standing watch over the sea road to Lilmoth.",
+     "text": "A coastal fort at the south-west tip of the island, facing the sea road to Lilmoth.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6008,7 +6008,7 @@
     },
     {
      "aspect": "history",
-     "text": "An Imperial coast fort. The Legion left at the secession, 4E 5-10, and the Archwardens took the keep over soon after.",
+     "text": "An Imperial coast fort. The Legion left at the secession, 4E 5-10 and the Archwardens took the keep over soon after.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6199,7 +6199,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Slaughterfish in the shallows below the landing, wreckers in a sea-cave on the shore, and reef rocks that tear hulls.",
+     "text": "Slaughterfish in the shallows below the landing, wreckers in a sea-cave on the shore and reef rocks that tear hulls.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6341,7 +6341,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A rice estate north of Lilmoth, built in an old planter's house and held by one Argonian family and their tenants.",
+     "text": "A rice estate north-west of Lilmoth, built in an old planter's house and held by one Argonian family and their tenants.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6516,7 +6516,7 @@
     },
     {
      "aspect": "faith",
-     "text": "Hatchlings are carried to Lilmoth's young Hist tree for naming, though the town watches that tree with open fear. On the veranda a post holds rice-wine poured out for the Breton dead, whose bones lie in the old cellar.",
+     "text": "Hatchlings are carried to Lilmoth's young Hist tree for naming, though the people of Lilmoth watch that tree with open fear. On the veranda a post holds rice-wine poured out for the Breton dead, whose bones lie in the old cellar.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6965,7 +6965,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Hired guards and dogs watch the barn, and the reed channels hide snapping turtles and slaughterfish. Thieves at night are the usual trouble, since the north road is busy.",
+     "text": "Hired guards and dogs watch the barn, and the reed channels hide mudcrabs and slaughterfish. Thieves at night are the usual trouble, since the north road is busy.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7054,7 +7054,7 @@
     },
     {
      "kind": "combat-creature",
-     "detail": "snapping turtles and slaughterfish in the reed channels",
+     "detail": "mudcrabs and slaughterfish in the reed channels",
      "count": 4,
      "reward": "treasure"
     },
@@ -7618,7 +7618,7 @@
     },
     {
      "aspect": "faith",
-     "text": "The family carries its eggs and its dead to Lilmoth's tree, a long boat journey north, and sees the Hist rarely. By the door a post hung with shells remembers sailors drowned on the southern shoals.",
+     "text": "The family carries its eggs and its dead to Lilmoth's tree, a long boat journey north and sees the Hist rarely. By the door a post hung with shells stands for sailors drowned on the southern shoals.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7680,7 +7680,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Sea-drakes hunt along the shore, and the low shore is open to anything that lands from a boat.",
+     "text": "Slaughterfish hunt the shallows along the shore, and the low shore is open to anything that lands from a boat.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7711,7 +7711,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A hawker offers odd things from wrecks on the southern shoals. A lost fowl has wandered into a den.",
+     "text": "A hawker offers odd things from wrecks on the southern shoals. A lost fowl has wandered into a hollow among the wreck timbers.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7761,13 +7761,13 @@
     },
     {
      "kind": "combat-creature",
-     "detail": "sea-drakes on the shore",
+     "detail": "slaughterfish in the shallows off the shore",
      "count": 2,
      "reward": "treasure"
     },
     {
      "kind": "treasure",
-     "detail": "salvage a sea-drake's den holds: up to 50 gold, iron and steel",
+     "detail": "salvage that a wreck in the shallows holds: up to 50 gold, iron and steel",
      "count": 1
     }
    ]
@@ -8007,7 +8007,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Predators from the marsh edge come for the guar at night, so the paddock is stockaded.",
+     "text": "Crocodiles and giant snakes from the marsh edge come for the guar at night, so the paddock is stockaded.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8088,13 +8088,13 @@
     },
     {
      "kind": "combat-creature",
-     "detail": "marsh predators at the paddock by night",
+     "detail": "crocodiles and giant snakes from the marsh edge at the paddock by night",
      "count": 3,
      "reward": "treasure"
     },
     {
      "kind": "treasure",
-     "detail": "hoard in a predator's den at the marsh edge: up to 50 gold, iron and steel",
+     "detail": "hoard in a crocodile's den at the marsh edge: up to 50 gold, iron and steel",
      "count": 1
     }
    ]
@@ -8241,7 +8241,7 @@
     },
     {
      "aspect": "economy",
-     "text": "The farm lives on fruit from its trees, fish from the pond and honey from a few hives.",
+     "text": "The family lives on fruit from its trees, fish from the pond and honey from a few hives.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8604,7 +8604,7 @@
     },
     {
      "aspect": "faith",
-     "text": "Tal-Neesh sends its newborn to Lilmoth's tree and buries at Sal-Axan's moot ground when the road is clear. A post by the door is hung with scraps of soldiers' cloth, left for travellers who died on the road.",
+     "text": "The family sends its hatchlings to Lilmoth's tree and buries its dead at Sal-Axan's moot ground when the road is clear. A post by the door is hung with scraps of soldiers' cloth, left for travellers who died on the road.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8763,7 +8763,7 @@
    "name": "Fort Sallowmoth",
    "place_kind_id": "imperial-ruin",
    "status": "ruined",
-   "held_by": "No one; smugglers, snakes and the odd squatter",
+   "held_by": "Unheld; smugglers, snakes and the odd squatter",
    "population": 0,
    "footprint_radius_m": 40,
    "siting": "inland",
@@ -8806,7 +8806,7 @@
     },
     {
      "aspect": "history",
-     "text": "Built by the Legion as a road post. The Legion left at the secession, 4E 5-10, and the Archwardens did not re-garrison it.",
+     "text": "Built by the Legion as a road post. The Legion left at the secession, 4E 5-10 and the Archwardens did not re-garrison it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8836,7 +8836,7 @@
     },
     {
      "aspect": "present",
-     "text": "Roofless; the walls stand, the cellar holds standing water, and squatters use the yard.",
+     "text": "Roofless; the walls stand, the cellar holds standing water and squatters use the yard.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8926,7 +8926,7 @@
     },
     {
      "aspect": "faith",
-     "text": "No Hist grows here, and the chapel niche in the east wall is empty of its icon of the Nine, though candle stubs show someone still lights it. The squatters call the yard unlucky and do not sleep inside.",
+     "text": "No Hist grows here, and the chapel niche in the east wall is empty of its icon of the Nine, though candle stubs show a squatter still lights it. The squatters call the yard unlucky and do not sleep inside.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -9104,7 +9104,7 @@
    "name": "Brackwater Waystation",
    "place_kind_id": "imperial-ruin",
    "status": "ruined",
-   "held_by": "No one; smugglers, snakes and the odd squatter",
+   "held_by": "Abandoned to smugglers, snakes and the odd squatter",
    "population": 0,
    "footprint_radius_m": 40,
    "siting": "coast",
@@ -9147,7 +9147,7 @@
     },
     {
      "aspect": "history",
-     "text": "Built by the Company to collect duty on coasting vessels. The Company left with the Legion at the secession, 4E 5-10, and the Archwardens kept their customs at the ports instead.",
+     "text": "Built by the Company to collect duty on coasting vessels. The Company left with the Legion at the secession, 4E 5-10 and the Archwardens kept their customs at the ports instead.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -9445,7 +9445,7 @@
    "name": "Fort Lowmoth",
    "place_kind_id": "imperial-ruin",
    "status": "ruined",
-   "held_by": "No one; smugglers, snakes and the odd squatter",
+   "held_by": "Road bandits, with snakes and the odd squatter",
    "population": 0,
    "footprint_radius_m": 40,
    "siting": "inland",
@@ -9703,7 +9703,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A bandit leader with a price on his head, wanted by the Reedmoth garrison. A strongroom behind an iron door, the one room the fire did not reach.",
+     "text": "A bandit leader with a price on his head, wanted by the Reedmoth garrison. A strongroom behind an iron door, which the fire did not reach.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -9780,7 +9780,7 @@
    "name": "Ashiit Den",
    "place_kind_id": "lilmothiit-ruin",
    "status": "ruined",
-   "held_by": "No one; the spirits of the dead and what has taken to their den",
+   "held_by": "Unheld; the spirits of the dead and what has taken to their den",
    "population": 0,
    "footprint_radius_m": 40,
    "siting": "coast",
@@ -9892,7 +9892,7 @@
     },
     {
      "aspect": "people",
-     "text": "No one lives at Ashiit, though fishermen swear they hear kits' voices on still nights. Beachcombers and a few treasure-hunters visit and do not stay.",
+     "text": "Ashiit has no inhabitants, though fishermen swear they hear kits' voices on still nights. Beachcombers and a few treasure-hunters visit and do not stay.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -10024,7 +10024,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Crabs and carrion-birds hold the beach below. Restless dead walk the midden at night, a bone-wight keeps the child's tomb, and old traps guard the grave-passages.",
+     "text": "Mudcrabs and hackwings hold the beach below. Restless dead walk the midden at night, a wraith keeps the child's tomb and old traps guard the grave-passages.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -10105,7 +10105,7 @@
     },
     {
      "kind": "combat-creature",
-     "detail": "giant mudcrabs and carrion-birds on the beach below the den",
+     "detail": "giant mudcrabs and hackwings on the beach below the den",
      "count": 5,
      "reward": "treasure"
     },
@@ -10117,7 +10117,7 @@
     },
     {
      "kind": "combat-boss",
-     "detail": "the bone-wight guarding the child's tomb, with trapped grave-passages before it",
+     "detail": "the wraith guarding the child's tomb, with trapped grave-passages before it",
      "count": 1,
      "reward": "boss-chest"
     },
@@ -10143,7 +10143,7 @@
    "name": "Kitsa Burrow",
    "place_kind_id": "lilmothiit-ruin",
    "status": "ruined",
-   "held_by": "No one; the spirits of the dead and what has taken to their den",
+   "held_by": "Smugglers in the tunnels, and the spirits of the dead",
    "population": 0,
    "footprint_radius_m": 40,
    "siting": "coast",
@@ -10255,7 +10255,7 @@
     },
     {
      "aspect": "people",
-     "text": "No one lives at Kitsa Burrow. Smugglers have cut a door into the tunnel, and they alone use it; the crews are mostly Khajiit off the Southern Sea sloops.",
+     "text": "Kitsa Burrow is uninhabited. Smugglers have cut a door into the tunnel, and they alone use it; the crews are mostly Khajiit off the Southern Sea sloops.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -10505,7 +10505,7 @@
    "name": "Reknaa-iit Mound",
    "place_kind_id": "lilmothiit-ruin",
    "status": "ruined",
-   "held_by": "No one; the spirits of the dead and what has taken to their den",
+   "held_by": "Left to the spirits of the dead and what has taken to the mound",
    "population": 0,
    "footprint_radius_m": 40,
    "siting": "inland",
@@ -10584,7 +10584,7 @@
     },
     {
      "aspect": "present",
-     "text": "Reknaa-iit stands at the centre of the southern island, the largest den-mound on the isle and half fallen in. Argonians who cross the island give its ring of fallen posts a wide berth.",
+     "text": "Reknaa-iit stands at the centre of the southern island, the largest den-mound on the isle and half fallen in. Argonians crossing the island steer well clear of its ring of fallen posts.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -10617,7 +10617,7 @@
     },
     {
      "aspect": "people",
-     "text": "No one lives on the mound and no village stands near it. Island farmers like Wattle-Pool's couple see lights there some nights and stay indoors.",
+     "text": "The mound is empty of residents and no village stands near it. Island farmers like Wattle-Pool's couple see lights there some nights and stay indoors.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -10749,7 +10749,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "The crown is hollow and the island farmers say the undead guard the chieftain's tomb. Predators and bats nest in the lower galleries.",
+     "text": "The crown is hollow and the island farmers say the undead guard the chieftain's tomb. Giant snakes and skeevers nest in the lower galleries.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -10830,7 +10830,7 @@
     },
     {
      "kind": "combat-creature",
-     "detail": "swamp predators (marsh cats) and giant bats in the lower galleries",
+     "detail": "giant snakes and skeevers in the lower galleries",
      "count": 5,
      "reward": "treasure"
     },
@@ -10842,7 +10842,7 @@
     },
     {
      "kind": "combat-boss",
-     "detail": "the chieftain's barrow-wight, guarding the burial chamber",
+     "detail": "the chieftain's wraith, guarding the burial chamber",
      "count": 1,
      "reward": "boss-chest"
     },
@@ -10858,7 +10858,7 @@
     },
     {
      "kind": "harvest-common",
-     "detail": "bat wings and swamp herbs from the lower galleries",
+     "detail": "skeever pelts and swamp herbs from the lower galleries",
      "count": 3
     }
    ]
@@ -10868,7 +10868,7 @@
    "name": "Rushiit Den",
    "place_kind_id": "lilmothiit-ruin",
    "status": "ruined",
-   "held_by": "No one; the spirits of the dead and what has taken to their den",
+   "held_by": "Left to marsh predators and the restless dead",
    "population": 0,
    "footprint_radius_m": 40,
    "siting": "inland",
@@ -10881,7 +10881,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Rushiit Den is a set of turf-and-leaf mounds whose entrance predators have gnawed wide. Crocodilians and bats hold the tunnels.",
+     "text": "Rushiit Den is a set of turf-and-leaf mounds whose entrance predators have gnawed wide. Crocodiles and skeevers hold the tunnels.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -10914,7 +10914,7 @@
     },
     {
      "aspect": "history",
-     "text": "A den emptied when the Knahaten Flu (2E 560-603) took its last people; its tunnels were taken by crocodilians and bats.",
+     "text": "A den emptied when the Knahaten Flu (2E 560-603) took its last people; its tunnels were taken by crocodiles and skeevers.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -10980,7 +10980,7 @@
     },
     {
      "aspect": "people",
-     "text": "No one lives at Rushiit. The predators have driven off even beachcombers, and a party of treasure-hunters from Archon went in some years back and did not return.",
+     "text": "Rushiit is deserted. The predators have driven off even beachcombers, and a party of treasure-hunters from Archon went in some years back and did not return.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -11112,7 +11112,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Crocodilians and bats hold the tunnels, and Argonians nearby say the dead stir beyond them. Old pit-traps lie in the mound passages.",
+     "text": "Crocodiles and skeevers hold the tunnels, and Argonians nearby say the dead stir beyond them. Old pit-traps lie in the mound passages.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -11193,7 +11193,7 @@
     },
     {
      "kind": "combat-creature",
-     "detail": "marsh crocodilians in the tunnel mouths and giant bats beyond",
+     "detail": "marsh crocodiles in the tunnel mouths and skeevers beyond",
      "count": 6,
      "reward": "treasure"
     },
@@ -11221,7 +11221,7 @@
     },
     {
      "kind": "harvest-common",
-     "detail": "crocodile teeth and hide, bat wings, bog herbs at the tunnel mouths",
+     "detail": "crocodile teeth and hide, skeever pelts, bog herbs at the tunnel mouths",
      "count": 4
     }
    ]
@@ -11231,7 +11231,7 @@
    "name": "Tailfall Mound",
    "place_kind_id": "lilmothiit-ruin",
    "status": "ruined",
-   "held_by": "No one; the spirits of the dead and what has taken to their den",
+   "held_by": "Smugglers in the lower rooms, and the spirits of the dead",
    "population": 0,
    "footprint_radius_m": 40,
    "siting": "coast",
@@ -11277,7 +11277,7 @@
     },
     {
      "aspect": "history",
-     "text": "A den of fishers, emptied when the Knahaten Flu (2E 560-603) ended, whose kits' tales survive in Argonian stories.",
+     "text": "It was a den of fishers, emptied by the Knahaten Flu (2E 560-603), and tales of its kits survive in Argonian stories.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -11343,7 +11343,7 @@
     },
     {
      "aspect": "people",
-     "text": "No one lives at Tailfall, but smugglers hide in the lower rooms and watch the strait. Reedmoth's soldiers pretend not to know.",
+     "text": "Tailfall is deserted but for smugglers, who hide in the lower rooms and watch the strait. Reedmoth's soldiers pretend not to know.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -11593,20 +11593,20 @@
    "id": "bell-station",
    "name": "Bell Station",
    "status": "garrisoned",
-   "held_by": "An Archwarden salvage-and-watch crew, licensed to dive the drowned spires and take the state's share",
+   "held_by": "A salvage-and-watch crew licensed by Lilmoth's merchant council to dive the drowned spires and take its share",
    "population": 8,
    "footprint_radius_m": 40,
    "siting": "island",
    "danger_band_id": "D2",
    "importance": 3,
-   "summary": "Bell Station is a timber platform anchored over the drowned spires of Benthic Yobesh, from which divers are lowered in brass bells. It is held by a small Archwarden crew who license salvage and watch the deep.",
+   "summary": "Bell Station is a timber platform anchored over the drowned spires of Benthic Yobesh, from which divers are lowered in brass bells. It is held by a small crew licensed by Lilmoth's merchant council to dive the spires and watch the deep.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
    "notes": [
     {
      "aspect": "overview",
-     "text": "A working platform at sea, east of Lilmoth, whose diving bells reach the drowned spires. It is the only permanent human presence in Benthic Yobesh.",
+     "text": "A working platform at sea, east of Lilmoth, whose diving bells reach the drowned spires. No other settlement stands in Benthic Yobesh.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -11639,7 +11639,7 @@
     },
     {
      "aspect": "history",
-     "text": "Built in the generations after 4E 48, when divers working Lilmoth's ruined waterfront found the spires of the land that sank in the Dawn Era; the Archwardens licensed salvage and set a crew at the platform.",
+     "text": "Built in the generations after 4E 48, when divers working Lilmoth's ruined waterfront found the spires of the land that sank in the Dawn Era; Lilmoth's merchant council licensed salvage and set a crew at the platform.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -11667,7 +11667,7 @@
     },
     {
      "aspect": "present",
-     "text": "Eight crew live on the platform: bell-tenders, divers, a winch-master and a steward who weighs every find and takes the toll on each haul.",
+     "text": "Eight crew live on the platform: bell-tenders, divers, a winch-master and a steward who weighs every find and takes the council's share of each haul.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -11723,7 +11723,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Salvage from the spires: bronze, vakka stones, jewellery and brass; Lilmoth merchants pay for the diving licence and the steward takes a toll on each haul.",
+     "text": "Salvage from the spires: bronze, vakka stones, jewellery and brass; Lilmoth merchants pay for the diving licence and the steward takes the council's share of each haul.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -11807,7 +11807,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "The platform is safe; below it the spires hold sea-drakes, and a diver's breath runs out in the deep.",
+     "text": "The platform is safe; below it the spires hold dreugh, and a diver's breath runs out in the deep.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -11902,13 +11902,13 @@
     },
     {
      "kind": "combat-creature",
-     "detail": "sea-drakes among the drowned spires",
+     "detail": "dreugh among the drowned spires",
      "count": 3,
      "reward": "treasure"
     },
     {
      "kind": "combat-boss",
-     "detail": "a great sea-drake nesting in the tallest spire",
+     "detail": "a great dreugh nesting in the tallest spire",
      "count": 1,
      "reward": "boss-chest"
     },
@@ -11928,13 +11928,13 @@
    "id": "echo-deep",
    "name": "Echo Deep",
    "status": "sunken",
-   "held_by": "No one; sea-drakes and the deep",
+   "held_by": "Dreugh and the deep",
    "population": 0,
    "footprint_radius_m": 200,
    "siting": "seabed",
    "danger_band_id": "D4",
    "importance": 3,
-   "summary": "Echo Deep is a trench in the sea floor east of Lilmoth where sounds return from the dark. Divers who go down to it report voices in the water. Sea-drakes hunt along its edge.",
+   "summary": "Echo Deep is a trench in the sea floor east of Lilmoth where sounds return from the dark. Divers who go down to it report voices in the water. Dreugh hunt along its edge.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
@@ -12088,7 +12088,7 @@
     },
     {
      "aspect": "people",
-     "text": "No one lives there. Divers speak of voices; Argonian divers say it is the old Hist singing.",
+     "text": "The trench has no inhabitants. Divers speak of voices; Argonian divers say it is the old Hist singing.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -12284,7 +12284,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Sea-drakes, drowning where a diver's breath runs out, and cold; sounds that draw divers over the edge.",
+     "text": "Dreugh, drowning where a diver's breath runs out and cold; sounds that draw divers over the edge.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -12333,7 +12333,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A diver who followed the echo down and came up silent; a sealed spire at its bottom; a sea-drake lair on the rim.",
+     "text": "A diver who followed the echo down and came up silent; a sealed spire at its bottom; a dreugh lair on the rim.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -12391,13 +12391,13 @@
    "gives": [
     {
      "kind": "combat-creature",
-     "detail": "sea-drakes hunting along the rim and in the water above the trench",
+     "detail": "dreugh hunting along the rim and in the water above the trench",
      "count": 4,
      "reward": "gold-hoard"
     },
     {
      "kind": "combat-boss",
-     "detail": "the old sea-drake, lair-mother on the rim",
+     "detail": "the old dreugh, lair-mother on the rim",
      "count": 1,
      "reward": "boss-chest"
     },
@@ -12413,7 +12413,7 @@
     },
     {
      "kind": "harvest-rare",
-     "detail": "sea-drake scales and glowing deep kelp, found only below the rim",
+     "detail": "dreugh shell and glowing deep kelp, found only below the rim",
      "count": 3
     },
     {
@@ -12427,7 +12427,7 @@
    "id": "shipwreck-25-m111",
    "name": "The Kelp Lantern",
    "status": "sunken",
-   "held_by": "No one; kelp and a slaughterfish shoal",
+   "held_by": "Left to kelp and a slaughterfish shoal",
    "population": 0,
    "footprint_radius_m": 25,
    "siting": "seabed",
@@ -12524,7 +12524,7 @@
     },
     {
      "aspect": "people",
-     "text": "Nobody lives there. Divers tell of the sphere's pilot tapping on the glass from inside.",
+     "text": "The sphere holds no living crew. Divers tell of the sphere's pilot tapping on the glass from inside.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -12624,7 +12624,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "A slaughterfish shoal circles the wreck. Inside, the sphere is a sealed shell with no air, and a diver's breath runs out fast once he squeezes through the hatch.",
+     "text": "A slaughterfish shoal circles the wreck. Inside, the sphere is a sealed shell with no air and a diver's breath runs out fast once he squeezes through the hatch.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -12758,7 +12758,7 @@
     },
     {
      "aspect": "history",
-     "text": "Argonians raised it in the Stone-Nest age, before the sea took the land: legend says the Southern Sea swallowed Murkmire and the Padomaic took most of the Hist's first domain. Its Hist chamber was sealed when the tree died.",
+     "text": "Argonians raised it in the Stone-Nest age, before the land sank: legend says the Southern Sea swallowed Murkmire and the Padomaic took most of the Hist's first domain. Its Hist chamber was sealed when the tree died.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -12930,7 +12930,7 @@
     },
     {
      "aspect": "look",
-     "text": "A broken spire furred with weed, round windows, and a stair spiralling down inside.",
+     "text": "A broken spire furred with weed, round windows and a stair spiralling down inside.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -13113,7 +13113,7 @@
     },
     {
      "aspect": "history",
-     "text": "It was a temple-tower of the Nisswo priest-kings' age, and its stone arms were carved to hold offerings to the deep. The sea took it with the land around it, and its tribe is long gone.",
+     "text": "It was a temple-tower of the Nisswo priest-kings' age, and its stone arms were carved to hold offerings to the deep. It sank with the land around it, and its tribe is long gone.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -13186,7 +13186,7 @@
     },
     {
      "aspect": "people",
-     "text": "No one lives in it. A slaughterfish school holds the hall, and divers tell of a diver still caught in one gallery.",
+     "text": "The spire is uninhabited. A slaughterfish school holds the hall, and divers tell of a diver still caught in one gallery.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -13347,7 +13347,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A drowned diver in a gallery still wears the key to a locked grate; behind the grate stands the salvage chest nobody has reached.",
+     "text": "A drowned diver in a gallery still wears the key to a locked grate; behind the grate stands the salvage chest that no diver has reached.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -13419,13 +13419,13 @@
    "name": "Zeshul-Tha Spire",
    "place_kind_id": "sunken-ruin",
    "status": "sunken",
-   "held_by": "A sea-drake and its brood",
+   "held_by": "A dreugh and its brood",
    "population": 0,
    "footprint_radius_m": 60,
    "siting": "seabed",
    "danger_band_id": "D4",
    "importance": 3,
-   "summary": "Zeshul-Tha Spire is a drowned xanmeer tower on the sea floor of Benthic Yobesh. It stands near Echo Deep and holds a sea-drake's nest and hoard.",
+   "summary": "Zeshul-Tha Spire is a drowned xanmeer tower on the sea floor of Benthic Yobesh. It stands near Echo Deep and holds a dreugh's nest and hoard.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
@@ -13505,7 +13505,7 @@
     },
     {
      "aspect": "present",
-     "text": "Dark with weed, it carries a sea-drake's nests in its upper galleries. Bell Station's divers enter rarely and never alone.",
+     "text": "Dark with weed, it carries a dreugh's nests in its upper galleries. Bell Station's divers enter rarely and never alone.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -13536,7 +13536,7 @@
     },
     {
      "aspect": "people",
-     "text": "A sea-drake and its brood live in it and defend the nests. A dead diver's kit lies at the foot of the stair.",
+     "text": "A dreugh and its brood live in it and defend the nests. A dead diver's kit lies at the foot of the stair.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -13567,7 +13567,7 @@
     },
     {
      "aspect": "economy",
-     "text": "The bronze and bone of a temple-tower lie few can reach. The sea-drake's hoard in the nest draws the bravest divers.",
+     "text": "The bronze and bone of a temple-tower lie where few can reach. The dreugh's hoard in the nest draws the bravest divers.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -13604,7 +13604,7 @@
     },
     {
      "aspect": "faith",
-     "text": "Argonian divers say it belonged to Sithis and the water-spirits and pray before going in. Many read the sea-drake as the water-spirits' answer to those who come to strip it.",
+     "text": "Argonian divers say it belonged to Sithis and the water-spirits and pray before going in. Many read the dreugh as the water-spirits' answer to those who come to strip it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -13666,7 +13666,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "The sea-drake attacks at once on sight, and a diver deep in the galleries has only the breath he took. Young sea-drakes swim in its upper rooms.",
+     "text": "The dreugh attacks at once on sight, and a diver deep in the galleries has only the breath he took. Young dreugh swim in its upper rooms.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -13697,7 +13697,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A sea-drake's hoard lies in the nests; the dead diver's kit at the foot of the stair carries a brass bell-cord token from Bell Station.",
+     "text": "A dreugh's hoard lies in the nests; the dead diver's kit at the foot of the stair carries a brass bell-cord token from Bell Station.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -13742,13 +13742,13 @@
     },
     {
      "kind": "combat-foes",
-     "detail": "Young sea-drakes in the upper rooms",
+     "detail": "Young dreugh in the upper rooms",
      "count": 3,
      "reward": "treasure"
     },
     {
      "kind": "combat-boss",
-     "detail": "The brood-mother sea-drake",
+     "detail": "The brood-mother dreugh",
      "count": 1,
      "reward": "boss-chest"
     },
@@ -13764,7 +13764,7 @@
     },
     {
      "kind": "gold-hoard",
-     "detail": "The sea-drake hoard of coin and gems, D4 tier",
+     "detail": "The dreugh hoard of coin and gems, D4 tier",
      "count": 1
     }
    ]
@@ -13891,7 +13891,7 @@
     },
     {
      "aspect": "people",
-     "text": "Dreugh scouts live in the upper rooms, watch the water, and keep carved prizes taken from divers. Bell Station's divers tell of a bell-chain cut from below.",
+     "text": "Dreugh scouts live in the upper rooms, watch the water and keep carved prizes taken from divers. Bell Station's divers tell of a bell-chain cut from below.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -14124,13 +14124,13 @@
    "name": "Okhu-Thteel Spire",
    "place_kind_id": "sunken-ruin",
    "status": "sunken",
-   "held_by": "Eels, and the dead salvager's lamp",
+   "held_by": "Slaughterfish, and the dead salvager's lamp",
    "population": 0,
    "footprint_radius_m": 60,
    "siting": "seabed",
    "danger_band_id": "D3",
    "importance": 3,
-   "summary": "Okhu-Thteel Spire is a lone drowned xanmeer tower on a sand plain, the furthest north-east of the spires, with an ancestors' shrine on its summit.",
+   "summary": "Okhu-Thteel Spire is a lone drowned xanmeer tower on a sand plain, the furthest north-east of the spires, with a Hist-sap shrine on its summit.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
@@ -14168,7 +14168,7 @@
     },
     {
      "aspect": "history",
-     "text": "Argonians raised it as a temple-tower in the Stone-Nest age, and its summit shrine to the ancestors is older than the sea over it. Divers have kept the shrine untouched since they first came here.",
+     "text": "Argonians raised it as a temple-tower in the Stone-Nest age, and its summit shrine is older than the sea over it. Divers have kept the shrine untouched since they first came here.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -14241,7 +14241,7 @@
     },
     {
      "aspect": "people",
-     "text": "Eels live at the foot of the spire. Divers who come leave offerings of shell and bronze at the summit shrine.",
+     "text": "Slaughterfish live at the foot of the spire. Divers who come leave offerings of shell and bronze at the summit shrine.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -14309,7 +14309,7 @@
     },
     {
      "aspect": "faith",
-     "text": "The shrine on the summit still receives the ancestors' offerings, and divers pray there before going in. The old faith is practised at this spire.",
+     "text": "The shrine on the summit holds a basin of Hist-sap that Bell Station's divers refill from the tree at Uluo, and they pray there before going in. The old faith is practised at this spire.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -14371,7 +14371,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Eels strike at the foot of the spire, and the dive is long: a diver who goes down the full height has used most of his breath before reaching the shrine.",
+     "text": "Slaughterfish strike at the foot of the spire, and the dive is long: a diver who goes down the full height has used most of his breath before reaching the shrine.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -14402,7 +14402,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "The dead salvager's lamp marks his grave on the sand, and his crew's kin pay for it to be re-lit; the summit shrine gives its blessing to divers who leave a worthy offering.",
+     "text": "The dead salvager's lamp marks his grave on the sand, and his crew's kin pay for it to be re-lit; a diver who leaves a worthy offering and touches the sap at the summit shrine receives its blessing.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -14447,12 +14447,12 @@
     },
     {
      "kind": "shrine-blessing",
-     "detail": "Ancestors' shrine on the summit: eight hours of waterbreathing for a diver who leaves an offering",
+     "detail": "Hist-sap shrine on the summit: cures disease and gives eight hours of waterbreathing to a diver who leaves an offering and touches the sap",
      "count": 1
     },
     {
      "kind": "combat-creature",
-     "detail": "Eels and slaughterfish at the spire foot",
+     "detail": "Slaughterfish at the spire foot",
      "count": 4,
      "reward": "treasure"
     },
@@ -14835,7 +14835,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "The outermost drowned xanmeer tower, in deep water on the edge of the deep, reached by a deep dive.",
+     "text": "It is the outermost drowned xanmeer tower, standing on the edge of the deep and reached only by a long dive.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -14970,7 +14970,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Its bronze is known but untouched, kept sealed by the ghost. Nobody has stripped it, and the hoard behind the door draws only the bold.",
+     "text": "Its bronze is known but untouched, kept sealed by the ghost. Divers have not stripped it, and the hoard behind the door draws only the bold.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {

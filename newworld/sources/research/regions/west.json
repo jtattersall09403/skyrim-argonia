@@ -67,7 +67,7 @@
     },
     {
      "aspect": "present",
-     "text": "Gideon's council holds the dry land and the Archwardens hold Fort Silvermoth on the south road. The rest is mangrove, crossed only by the Blackwood Way and the delta channels.",
+     "text": "Gideon's council holds the dry land and the Archwardens hold Fort Silvermoth on the south road. The rest is mangrove, and it is crossed only by the Blackwood Way and the delta channels.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -183,7 +183,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Death hoppers, hackwings, fleshflies and haunted Kothringi and Imperial ruins; the north is wilder than the road.",
+     "text": "Hackwings, crocodiles and haunted Kothringi and Imperial ruins; the north is wilder than the road.",
      "tier": "CANON_DERIVED",
      "sources": [
       {
@@ -222,7 +222,7 @@
     },
     {
      "aspect": "ecology",
-     "text": "Mangrove, reed and fern; death hoppers, eels, crows and fleshflies over the mud; gar in the channels.",
+     "text": "Mangrove, reed and fern; hackwings, eels and crows over the mud; gar in the channels.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -491,7 +491,7 @@
     },
     {
      "aspect": "ecology",
-     "text": "Reeds, ferns, osheeja gar and death hoppers; hackwings over the banks.",
+     "text": "Reeds, ferns, osheeja gar and mudcrabs; hackwings over the banks.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -702,7 +702,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Pirates, reefs and old wrecks threaten boats on the eastern coast of the bay, and slaughterfish crowd the reef water.",
+     "text": "Pirates, reefs and old wrecks threaten boats on the eastern coast of the bay and slaughterfish crowd the reef water.",
      "tier": "CANON_DERIVED",
      "sources": [
       {
@@ -766,7 +766,7 @@
     },
     {
      "aspect": "climate",
-     "text": "The bay is warm, with sea breezes, sea fog and passing rain storms.",
+     "text": "The bay is warm. Sea breezes, sea fog and passing rain storms come over it.",
      "tier": "CANON_DERIVED",
      "sources": [
       {
@@ -1179,7 +1179,7 @@
     },
     {
      "aspect": "faith",
-     "text": "Sithis, the nearest Hist to Soulrest, and burned-mine shrines.",
+     "text": "Sithis, the nearest Hist to Soulrest and burned-mine shrines.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1287,7 +1287,7 @@
     },
     {
      "aspect": "ecology",
-     "text": "Reeds and mangrove grow in the basin, with gar, death hoppers and fleshflies.",
+     "text": "Reeds and mangrove grow in the basin, with gar, mudcrabs and hackwings.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {

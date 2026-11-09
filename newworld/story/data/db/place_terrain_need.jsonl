@@ -26,7 +26,7 @@
 {"place_id":"badal","terrain_need_id":"shore-access","radius_m":60.0,"why":"a landing on the inlet"}
 {"place_id":"bala-karag","terrain_need_id":"entrance-in-slope","radius_m":60.0,"facing_deg":270.0,"why":"the hall entrance is cut into the rock"}
 {"place_id":"bala-karag","terrain_need_id":"island","radius_m":80.0,"why":"the ruin stands on its rocky peninsula"}
-{"place_id":"bala-karag","terrain_need_id":"shore-access","radius_m":60.0,"why":"tide causeway"}
+{"place_id":"bala-karag","terrain_need_id":"shore-access","radius_m":60.0,"why":"the causeway to the shore"}
 {"place_id":"balormaak","terrain_need_id":"entrance-in-slope","radius_m":30.0,"facing_deg":180.0,"why":"the lower halls are cut into the mesa's foot"}
 {"place_id":"bell-station","terrain_need_id":"island","radius_m":40.0,"why":"a platform on pilings in open sea"}
 {"place_id":"bell-station","terrain_need_id":"shore-access","radius_m":40.0,"why":"boat landing at the platform"}

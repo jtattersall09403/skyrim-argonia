@@ -46,7 +46,7 @@
     },
     {
      "aspect": "history",
-     "text": "Barsaebic Ayleids founded Silyanorn here after 1E 198; the Hist later conquered them, by legend. The Dunmer used the site as the foothold of their slave trade, adding stone roads, light posts and bridges, and the city invented the Vicecanon office to try slavers. It was the Pact's capital of Black Marsh in 2E, held a prison under Warden Quintus Varus in the late 3E, and was overrun but lightly damaged by Umbriel's undead in 4E 48.",
+     "text": "Barsaebic Ayleids founded Silyanorn here after 1E 198; the Hist later conquered them, by legend. The Dunmer used the site as the foothold of their slave trade, adding stone roads, light posts and bridges and the city invented the Vicecanon office to try slavers. It was the Pact's capital of Black Marsh in 2E, held a prison under Warden Quintus Varus in the late 3E and was overrun but lightly damaged by Umbriel's undead in 4E 48.",
      "tier": "CANON_EXPLICIT",
      "sources": [
       {
@@ -70,7 +70,7 @@
     },
     {
      "aspect": "present",
-     "text": "The waterfall, the ravine-severed mounds, the Hist in its pond and the Silyanorn substructure all survived 4E 48. The rest has been rebuilt in the 153 years since. The damage that remains is in the population. The Vicecanons keep the river customs and the frontier screen's offices here.",
+     "text": "The waterfall, the ravine-severed mounds, the Hist in its pond and the Silyanorn substructure all survived 4E 48. The rest has been rebuilt in the 153 years since. Only the population has not recovered. The Vicecanons keep the river customs and the frontier screen's offices here.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -87,7 +87,7 @@
     },
     {
      "aspect": "people",
-     "text": "Argonians beside the largest and oldest Dunmer minority in Argonia, descended from a colonial population, about a fifth of the city. The western quarter was where the Argonians who worked for the Dunmer lived, and the memory is still live. Outsiders are met with pragmatism: this is the city that has always had to live with them. Several Vicecanons sit at once, one for each people.",
+     "text": "Argonians beside the largest and oldest Dunmer minority in Argonia, descended from a colonial population, about a fifth of the city. The western quarter was where the Argonians who worked for the Dunmer lived, and the memory is still live. Townsfolk meet outsiders with pragmatism; they have always had to live with them. Several Vicecanons sit at once, one for each people.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -109,7 +109,7 @@
     },
     {
      "aspect": "economy",
-     "text": "River traffic to Morrowind and to Alten Corimont down the northern trunk road, the customs on that traffic, and the Stormhold Crystals dug in the tunnels below. Sedge mats, dried fish and reed goods arrive daily from Jal-Veesa and the weirs; the guild halls sit in the repurposed Ayleid compound.",
+     "text": "River traffic to Morrowind and to Alten Corimont down the northern trunk road, the customs on that traffic and the Stormhold Crystals dug in the tunnels below. Sedge mats, dried fish and reed goods arrive daily from Jal-Veesa and the weirs; the trading halls sit in the repurposed Ayleid compound.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -151,7 +151,7 @@
     },
     {
      "aspect": "look",
-     "text": "A city on a mountainside: Dunmer ornate stone, stone roads, light posts and long wooden bridges over ravines, with large Argonian mud huts on the mounds between, and a waterfall running down through the old Ayleid compound.",
+     "text": "A city on a mountainside: Dunmer ornate stone, stone roads, light posts and long wooden bridges over ravines, with large Argonian mud huts on the mounds between and a waterfall running down through the old Ayleid compound.",
      "tier": "CANON_EXPLICIT",
      "sources": [
       {
@@ -194,7 +194,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "Below the city, the Silyanorn tunnels hold crystal galleries and an Ayleid well-room that outlaws use as a hideout. The old quarrel between the Argonian west quarter and the Dunmer families flares over a stolen clutch of eggs from the square's Hist pond, and the Vicecanons' court wants the thief found before the quarters settle it themselves.",
+     "text": "Below the city, the Silyanorn tunnels hold crystal galleries and an Ayleid well-room that outlaws use as a hideout. The old quarrel between the Argonian west quarter and the Dunmer families flares over a stolen clutch of eggs from the square's Hist pond, and the Vicecanons want the thief found before the quarters settle it themselves.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -245,7 +245,7 @@
     },
     {
      "kind": "trader-blacksmith",
-     "detail": "the screen's armourer, selling chitin, iron and steel, and Stormhold Crystal-studded tools",
+     "detail": "the screen's armourer, selling chitin, iron and steel and Stormhold Crystal-studded tools",
      "count": 1
     },
     {
@@ -368,7 +368,7 @@
     },
     {
      "aspect": "history",
-     "text": "A Hist pool and sedge beds on high ground in an area ringed by Barsaebic ruins would have been settled early by Argonians; the Dunmer slave-raids of the Dres period came through this border country and are remembered here.",
+     "text": "A Hist pool and sedge beds on high ground in an area ringed by Barsaebic ruins was settled early by Argonians; the Dunmer slave-raids of the Dres period came through this border country and are remembered here.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -431,7 +431,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Reed mats, rope, boats and dried fish sold to Stormhold; weir fees from the fish traps on the creeks. The town also guards the ruins of Gemin, Nenria and Loriasel against looters, paid in kind by Stormhold's guild halls.",
+     "text": "Reed mats, rope, boats and dried fish sold to Stormhold; weir fees from the fish traps on the creeks. Its warriors also guard the ruins of Gemin, Nenria and Loriasel against looters, paid in kind by Stormhold's trading halls.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -495,7 +495,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "The town is quiet. Its own wardens patrol. Off the road, crocodiles in the weir channels, and looters and Naga brigands on the track toward the ruins.",
+     "text": "The town is quiet. Its own wardens patrol. Off the road, crocodiles in the weir channels and looters and Naga brigands on the track toward the ruins.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -591,7 +591,7 @@
     },
     {
      "kind": "shrine-blessing",
-     "detail": "the Hist pool: a blessing of waterbreathing and resist disease from the tree-minder",
+     "detail": "the Hist pool: a blessing of waterbreathing from the tree-minder",
      "count": 1
     }
    ]
@@ -674,7 +674,7 @@
     },
     {
      "aspect": "people",
-     "text": "Argonian soldiers under a captain of an ex-Archein family; the captain answers to the Vicecanons for the tolls and to the Archwardens for the screen.",
+     "text": "Argonian soldiers under a captain of an ex-Archein family; the captain answers to the Archwardens for the tolls and the screen, and keeps on terms with Stormhold's Vicecanons.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -695,7 +695,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Tolls on the road and the river, a levy on Dunmer and Argonian goods crossing to Morrowind, and a small market of traders who camp outside the walls.",
+     "text": "Tolls on the road and the river, a levy on Dunmer and Argonian goods crossing to Morrowind and a small market of traders who camp outside the walls.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -839,7 +839,7 @@
    "id": "surkina",
    "name": "Surkina",
    "status": "inhabited",
-   "held_by": "A council of farm-holders under a Vicecanon's writ",
+   "held_by": "A council of farm-holders by the Vicecanons' leave",
    "population": 10,
    "footprint_radius_m": 60,
    "siting": "inland",
@@ -878,7 +878,7 @@
     },
     {
      "aspect": "history",
-     "text": "The causeway farmsteads grew up under the Dunmer colonial period, when Stormhold needed food from raised ground, and kept their stone footings after the Dunmer left.",
+     "text": "The causeway farmsteads grew up under the Dunmer colonial period, when Stormhold needed food from raised ground and kept their stone footings through the generations since.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1124,7 +1124,7 @@
    "id": "tenmal",
    "name": "Tenmal",
    "status": "inhabited",
-   "held_by": "A council of farm-holders under a Vicecanon's writ",
+   "held_by": "A council of farm-holders by the Vicecanons' leave",
    "population": 10,
    "footprint_radius_m": 60,
    "siting": "riverbank",
@@ -1137,7 +1137,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Tenmal is a village in the Stormhold manner on the road east of the city. Its name is close to Ten-Maur-Wolk (Tenmar Wall), the road hinge that neighbours Stormhold, and it may be a village that grew along the same road.",
+     "text": "Tenmal is a village in the Stormhold manner on the road east of the city. Its name is close to Ten-Maur-Wolk (Tenmar Wall), the road hinge that neighbours Stormhold and the village grew up along the same road.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1163,7 +1163,7 @@
     },
     {
      "aspect": "history",
-     "text": "The name echoes Ten-Maur-Wolk, a Boethiah-worshipping Dunmer settlement after 1E 700 turned slave camp; if the villagers descend from that ground, they would not say so.",
+     "text": "The name echoes Ten-Maur-Wolk, a Boethiah-worshipping Dunmer settlement after 1E 700 turned slave camp; the villagers do not speak of it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1427,7 +1427,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Vandrel Farm is one of the Dunmer-descended smallholdings that ring Stormhold: the city keeps the oldest Dunmer minority in the province, descended from the colonial slave-trade years, and its families farm the raised causeway ground south of the city. The name is Dunmeri, like the family's.",
+     "text": "Vandrel Farm is one of the Dunmer-descended smallholdings that ring Stormhold: Stormhold has the oldest Dunmer minority in the province, descended from the colonial slave-trade years and its families farm the raised causeway ground south of the city. The name is Dunmeri, like the family's.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1448,7 +1448,7 @@
     },
     {
      "aspect": "history",
-     "text": "A smallholding on raised ground since the Dunmer colonial period; the family stayed when the Dunmer withdrew.",
+     "text": "A smallholding on raised ground since the Dunmer colonial period; the family has worked it through the generations since.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1856,7 +1856,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Crocodiles lie around the weir and fleshflies swarm over the drying racks in the heat, though the camp itself is safe for the wardens' families.",
+     "text": "Crocodiles lie around the weir and hackwings swarm over the drying racks in the heat, though the camp itself is safe for the wardens' families.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1939,7 +1939,7 @@
    "id": "outpost-2-m68",
    "name": "Ranvos Landing",
    "status": "inhabited",
-   "held_by": "A ferry-keeper's family under the Vicecanon's writ",
+   "held_by": "A ferry-keeper's family by the Vicecanons' leave",
    "population": 3,
    "footprint_radius_m": 25,
    "siting": "riverbank",
@@ -2162,7 +2162,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "The ferryman sells directions and warns against the camp to the south-west; a body washed up at the landing.",
+     "text": "The ferryman sells directions and warns against the camp to the south; a body washed up at the landing.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2235,7 +2235,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Causeway-Head Post stands where the northern road leaves Stormhold's mounds, north-west of Fort Willowmoth. A city that takes tolls on its causeways and its river would keep a bar at the head of the busiest one; the name says where it is.",
+     "text": "Causeway-Head Post stands where the northern road leaves Stormhold's mounds, north-west of Fort Willowmoth. Stormhold's toll-keepers take tolls on its causeways and river, and keep a bar at the head of the busiest one; it is named for where it stands.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2344,7 +2344,7 @@
     },
     {
      "aspect": "faith",
-     "text": "A grave-stake for the post's dead and a cross-marked stone from the Dunmer period.",
+     "text": "A grave-stake for the post's dead and a Dunmer ancestor-stone from the colonial period.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2883,7 +2883,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Rockfall traps in the timber-propped galleries. Chaurus nest in the old walled-off galleries deeper in.",
+     "text": "Rockfall traps in the timber-propped galleries. Giant spiders nest in the old walled-off galleries deeper in.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2959,13 +2959,13 @@
     },
     {
      "kind": "combat-creature",
-     "detail": "chaurus in the walled-off galleries",
+     "detail": "giant spiders in the walled-off galleries",
      "count": 5,
      "reward": "boss-chest"
     },
     {
      "kind": "combat-boss",
-     "detail": "a chaurus reaper in the deepest gallery",
+     "detail": "a giant spider brood-mother in the deepest gallery",
      "count": 1,
      "reward": "boss-chest"
     },
@@ -2993,7 +2993,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Nenria is a small Barsaebic Ayleid hall in the marsh south of Jal-Veesa. The Barsaebics settled this country after 1E 198 and left halls round Silyanorn and Loriasel; this one stands among them, and its name keeps the Ayleid shape.",
+     "text": "Nenria is a small Barsaebic Ayleid hall in the marsh south of Jal-Veesa. The Barsaebics settled this country after 1E 198 and left halls round Silyanorn and Loriasel; this one stands among them, and its name is of Ayleid shape.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3144,7 +3144,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "The flooded undercroft is the danger: giant snakes lie in the drowned cellar and Ayleid dead stand at the broken arch. The mound top is open ground, and the way in from the Vandrel Farm side is the dry one.",
+     "text": "The flooded undercroft is the danger: giant snakes lie in the drowned cellar and Ayleid dead stand at the broken arch. The mound top is open ground, and the way in from the Urvyn Farm side is the dry one.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3372,7 +3372,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Wildlife and the odd thief lurk in the reeds around the ruin. Fleshflies swarm over the mud in the heat.",
+     "text": "Wildlife and the odd thief lurk in the reeds around the ruin. Hackwings swarm over the mud in the heat.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3522,7 +3522,7 @@
     },
     {
      "aspect": "people",
-     "text": "Tribeless Naga, tall and beady-eyed. Their cruelty is professional.",
+     "text": "Tribeless Naga, tall and hard-eyed and they rob for a living.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3714,7 +3714,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Slough Point was an Imperial census-and-excise post with a Commission-built white bridge over a black tidal river, its guards chewed by fleshflies. It stands inside Black Marsh, beside Fort Rustmoth, close to the Blackwood border.",
+     "text": "Slough Point was an Imperial census-and-excise post with a Commission-built white bridge over a black tidal river, its guards chewed by hackwings. It stands inside Black Marsh, beside Fort Rustmoth, close to the Blackwood border.",
      "tier": "CANON_EXPLICIT",
      "sources": [
       {
@@ -3883,7 +3883,7 @@
     },
     {
      "aspect": "look",
-     "text": "A long white bridge broken in the middle over a black river; a stone customs house with weathered Imperial eagles; mud-and-timber houses on stilts and a few Cyrodiilic gables; fleshfly-chewed guards.",
+     "text": "A long white bridge broken in the middle over a black river; a stone customs house with weathered Imperial eagles; mud-and-timber houses on stilts and a few Cyrodiilic gables; hackwing-chewed guards.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3915,7 +3915,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "A guarded crossing; fleshflies in clouds, crocodiles in the river, the odd smuggler.",
+     "text": "A guarded crossing; hackwings in clouds, crocodiles in the river, the odd smuggler.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4038,7 +4038,7 @@
    "name": "Fort Rustmoth",
    "culture_id": "crimson-red",
    "status": "garrisoned",
-   "held_by": "The Archwardens' frontier screen, a garrison keeping the old Imperial fort",
+   "held_by": "An Archwarden customs garrison keeping the old Imperial fort",
    "population": 12,
    "footprint_radius_m": 70,
    "siting": "inland",
@@ -4134,7 +4134,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Tolls on the Blackwood Road, a levy on goods bound for Gideon and Leyawiin, and fines on smugglers.",
+     "text": "Tolls on the Blackwood Road, a levy on goods bound for Gideon and Leyawiin and fines on smugglers.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4190,7 +4190,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "The fort is guarded and safe inside; wildlife and fleshflies are the hazard on the Blackwood Road outside its walls.",
+     "text": "The fort is guarded and safe inside; wildlife and hackwings are the hazard on the Blackwood Road outside its walls.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4331,7 +4331,7 @@
     },
     {
      "aspect": "present",
-     "text": "A sunk, half-flooded ruin; the Conclave of Baal still sits in Stormhold and still cannot locate Murkwood without the tablet.",
+     "text": "A sunk, half-flooded ruin; the Conclave of Baal is long gone from Stormhold, and nobody can locate Murkwood without the tablet.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4348,7 +4348,7 @@
     },
     {
      "aspect": "people",
-     "text": "The vaults have no residents. The Conclave of Baal pays treasure-seekers to go down into the flooded ruin.",
+     "text": "The vaults have no residents. Treasure-seekers from Stormhold go down into the flooded ruin on their own account.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4371,7 +4371,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Once the Conclave's vault; now a source of tablet fragments and relics for scavengers and the Conclave's agents.",
+     "text": "Once the Conclave's vault; now a source of tablet fragments and relics for scavengers and Stormhold scholars.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4394,7 +4394,7 @@
     },
     {
      "aspect": "faith",
-     "text": "The Conclave's faith in learning and Molag Bal's name in their title; the Veesa-Teeleel call the ground sick.",
+     "text": "The Conclave worshipped learning and bore Molag Bal's name in its title; the Veesa-Teeleel call the ground sick.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4440,7 +4440,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Undead and swamp monsters walk the flooded halls of the sunken vaults. Rockfall traps are set in the lower halls.",
+     "text": "Undead walk the flooded halls of the sunken vaults, and crocodiles and giant snakes lurk in the water. Rockfall traps are set in the lower halls.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4463,7 +4463,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "The tablet itself; a Conclave scholar who needs someone to swim the drowned lowest hall.",
+     "text": "The tablet itself; a Stormhold scholar who needs someone to swim the drowned lowest hall.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4507,7 +4507,7 @@
     },
     {
      "kind": "combat-creature",
-     "detail": "swamp monsters in the flooded halls",
+     "detail": "crocodiles and giant snakes in the flooded halls",
      "count": 3,
      "reward": "gold-hoard"
     },
@@ -4590,7 +4590,7 @@
     },
     {
      "aspect": "present",
-     "text": "The ghost-knights were freed in 2E 582; the Enchanter's works and the keystones remain. Argonians put the amphitheatre to uses that the Ayleids never envisioned. The Veesa-Teeleel guard the ruin from looters.",
+     "text": "The ghost-knights were freed in 2E 582; the Enchanter's works and the keystones remain. The Veesa-Teeleel guard the ruin from looters.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4658,7 +4658,7 @@
     },
     {
      "aspect": "faith",
-     "text": "The Ten Ancestors; a shrine to Azura stands outside; Argonians remember the keystones as a theft of their dead.",
+     "text": "The Ten Ancestors; a Hist-shoot tended by the Veesa-Teeleel stands outside; Argonians remember the keystones as a theft of their dead.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4727,7 +4727,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A keystone that still holds a soul; the Azura shrine outside and its keeper; a looter band that went into the caverns and has not come out.",
+     "text": "A keystone that still holds a soul; the Hist-shoot outside and its keeper; a looter band that went into the caverns and has not come out.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4803,7 +4803,7 @@
     },
     {
      "kind": "shrine-blessing",
-     "detail": "the shrine of Azura outside the walls",
+     "detail": "the Veesa-Teeleel's Hist-shoot outside the walls: a blessing of resist poison, given by their ruin-wardens",
      "count": 1
     }
    ]
@@ -4818,7 +4818,7 @@
    "siting": "swamp",
    "danger_band_id": "D4",
    "importance": 4,
-   "summary": "A Barsaebic Ayleid ruin in the fetid mires, with a book-drawing magical library, built by a sorceress of Hermaeus Mora, and the tomb of a Fenlord.",
+   "summary": "A Barsaebic Ayleid ruin in the fetid mires, with a book-drawing magical library, built by a sorceress of Hermaeus Mora and the tomb of a Fenlord.",
    "lore_page": "Lore:Gandranen Ruins",
    "statement_tier_id": "CANON_EXPLICIT",
    "aliases": [],
@@ -4852,7 +4852,7 @@
     },
     {
      "aspect": "present",
-     "text": "The library still attracts volumes; its undead guards still serve the Fenlord.",
+     "text": "Volumes still turn up on its shelves; the Fenlord's undead guards still walk the tomb.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5283,7 +5283,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Mirasel is a Barsaebic Ayleid hall on a sedge island east of Loriasel, one of the small halls that ringed the Barsaebic citadel; the name keeps the Ayleid form of Loriasel itself.",
+     "text": "Mirasel is a Barsaebic Ayleid hall on a sedge island east of Loriasel, one of the small halls that ringed the Barsaebic citadel; its name is the Ayleid form of Loriasel's.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6030,7 +6030,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Ashgate Post is a Vicecanon's road post west of Loriasel on the Slough Point road. Stormhold keeps the road toward the western frontier and its toll; the gate stands where the track to the ruins leaves it.",
+     "text": "Ashgate Post is a Vicecanon's road post west of Loriasel on the Slough Point road. The Vicecanons keep the road toward the western frontier and its toll; the gate stands where the track to the ruins leaves it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6664,7 +6664,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Crocodiles and water-snakes gather under the log boom. The camp is safe; the Nenria marsh south of it is not.",
+     "text": "Crocodiles and giant snakes gather under the log boom. The camp is safe; the Nenria marsh south of it is not.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6748,7 +6748,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Urvyn Farm is a Dunmer-descended family's smallholding west of Jal-Veesa, the furthest of the Stormhold causeway farms; it stands where the northern road lifts out of the reed beds. The family name is Dunmeri, from the city's old minority.",
+     "text": "Urvyn Farm is a Dunmer-descended family's smallholding west of Jal-Veesa, the furthest of the Stormhold causeway farms; it stands where the northern road lifts out of the reed beds. The family has a Dunmeri name, from the city's old minority.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7228,7 +7228,7 @@
    "name": "Umpholo",
    "culture_id": "pale-green",
    "status": "inhabited",
-   "held_by": "A small Agaceph-descended river village; nobody rules it",
+   "held_by": "A small river village of Lukiul and Naka-Desh families; nobody rules it",
    "population": 8,
    "footprint_radius_m": 60,
    "siting": "riverbank",
@@ -7465,7 +7465,7 @@
     },
     {
      "kind": "shrine-blessing",
-     "detail": "the stripped altar of Mara, which still gives Mara's blessing",
+     "detail": "the river folk's Hist-shoot shrine beside the chapel: a blessing of waterbreathing, given by the river folk",
      "count": 1
     },
     {
@@ -7577,7 +7577,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Hutan-Aru's people hunt and guide travellers across the river branch, and sell hides and smoked fish to Umpholo and the Meliton hill-folk. They bargain hard over bridge-tolls, which every passing caravan must pay.",
+     "text": "Hutan-Aru's people hunt and guide travellers across the river branch, and sell hides and smoked fish to Umpholo and the Naka-Desh who come to Meliton. They bargain hard over bridge-tolls, which every passing caravan must pay.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7640,7 +7640,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Touching a totem draws beasts down on the offender, so strangers keep their hands off the carvings.",
+     "text": "The Hutan-Tzel say beasts come for anyone who touches a totem, so strangers keep their hands off the carvings.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7801,7 +7801,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Hutan-Veel earns its living on the far-west border road: guiding, selling meat to Nahk-Zeel Station and bargaining at the palisade gate with Cyrodilic traders. The outpost lives on a toll paid in salt.",
+     "text": "Its people earn their living on the far-west border road: guiding, selling meat to Nahk-Zeel Station and bargaining at the palisade gate with Cyrodiilic traders. The outpost lives on a toll paid in salt.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7852,7 +7852,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "A disturbed totem calls beasts, so the outpost is dangerous to anyone who meddles with its runes.",
+     "text": "The guards say beasts follow anyone who disturbs a totem, so the outpost is dangerous to anyone who meddles with its runes.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8100,7 +8100,7 @@
     },
     {
      "kind": "combat-creature",
-     "detail": "death hoppers in the thicket",
+     "detail": "giant spiders in the thicket",
      "count": 3,
      "reward": "boss-chest"
     },
@@ -8683,7 +8683,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Anutasil is a Barsaebic Ayleid hall in the western marsh, the furthest west of their halls in the province. Canon has the Barsaebics holding parts of Blackwood after 1E 198; the name keeps the Ayleid form.",
+     "text": "Anutasil is a Barsaebic Ayleid hall in the western marsh, the furthest west of their halls in the province. Canon has the Barsaebics holding parts of Blackwood after 1E 198; the name is of Ayleid form.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {

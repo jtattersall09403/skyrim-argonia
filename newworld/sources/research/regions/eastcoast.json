@@ -63,7 +63,7 @@
     },
     {
      "aspect": "present",
-     "text": "A thinly peopled coast: Arorha at its south end, small hamlets of Tsonac's stone-folk and Helstrom's Root-Folk, Warden posts toward Thorn, and three dead Velothi ruins. The coast road from Thorn to Seafalls and Archon runs through it.",
+     "text": "A thinly peopled coast: Arorha at its south end, small hamlets of Tsonac's stone-folk and Helstrom's Root-Folk, Warden posts toward Thorn and three dead Velothi ruins. The coast road from Thorn to Seafalls and Archon runs through it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -80,7 +80,7 @@
     },
     {
      "aspect": "people",
-     "text": "A mix of the clay-mound people of Arorha, the Stone-Sleepers of Tsonac at Ysan, a Root-Folk watch at Yuva-Goli, Warden Marches families at the posts, and a Sarpa camp inland.",
+     "text": "A mix of the clay-mound people of Arorha, the Stone-Sleepers of Tsonac at Ysan, a Root-Folk watch at Yuva-Goli, Warden Marches families at the posts and a Sarpa camp inland.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -107,7 +107,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Salt, stone, timber, clay and pottery, sold up and down the coast to Thorn and Archon. Tolls at the wardens' posts take a share, and smugglers' landings take another.",
+     "text": "Salt, stone, timber, clay and pottery, sold up and down the coast to Thorn and Archon. The wardens' posts take a share in tolls, and smugglers take another at the landings.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -153,7 +153,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Smuggler landings, mudcrabs, fleshflies and ghosts in the three ruins; the inland margin has Sarpa raiders.",
+     "text": "Smuggler landings, mudcrabs, giant snakes and ghosts in the three ruins; the inland margin has Sarpa raiders.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -254,7 +254,7 @@
     },
     {
      "aspect": "present",
-     "text": "Argonia has no navy. Chartered pirates do that work. Boats from Archon, Seafalls and Thorn work the shelf; the Archwardens' reach ends where the water gets deep. The wrecks of a Dunmer slaver, a smuggler's sloop, an Imperial man-of-war and a freighter lie here.",
+     "text": "Argonia has no navy. Chartered pirates do that work. Boats from Archon, Seafalls and Thorn work the shelf; the Archwardens' writ ends at the quay. The wrecks of a Dunmer slaver, a smuggler's sloop, an Imperial man-of-war and a freighter lie here.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -300,7 +300,7 @@
     },
     {
      "aspect": "faith",
-     "text": "The Spray-Folk hold that the sea keeps memories the Hist let fall; sailors leave knotted cords and painted shells on shore for the lost.",
+     "text": "The Spray-Folk hold that memories the Hist let fall are kept in the sea; sailors leave knotted cords and painted shells on shore for the lost.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -329,7 +329,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Pirates, sea-drakes, slaughterfish and drowned dead in the wrecks; deep water beyond the shelf where a swimmer's breath runs out.",
+     "text": "Pirates, dreugh, slaughterfish and drowned dead in the wrecks; deep water beyond the shelf, far from any shore.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -358,7 +358,7 @@
     },
     {
      "aspect": "ecology",
-     "text": "Kelp, fish shoals, eels, crabs and sea-drakes; sea-birds along the shore.",
+     "text": "Kelp, fish shoals, eels, crabs and dreugh; sea-birds along the shore.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -399,7 +399,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A rocky island east of the mainland, home to two outlaw camps, an old Imperial keep and a single crag. Its dark green-grey terrain may be that of the round island off Arnesia's coast.",
+     "text": "A rocky island east of the mainland, home to two outlaw camps, an old Imperial keep and a single crag. Its dark green-grey rock matches the round island off Arnesia's coast.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -500,7 +500,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Outlaws, trapped coves, cliffs and nesting hackwings; the cold surf off the shingle drowns a careless swimmer.",
+     "text": "Outlaws, trapped coves, cliffs and nesting hackwings; the surf off the shingle is rough.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -723,7 +723,7 @@
     },
     {
      "aspect": "ecology",
-     "text": "Reeds, rice, madder and ochre-stained marsh plants; crocodiles, eels, giant snakes, fleshflies and hackwings; guar on the meadows.",
+     "text": "Reeds, rice, madder and ochre-stained marsh plants; crocodiles, eels, giant snakes and hackwings; guar on the meadows.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {

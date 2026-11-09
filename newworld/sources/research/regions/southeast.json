@@ -77,7 +77,7 @@
     },
     {
      "aspect": "present",
-     "text": "The Three Waters Tribe holds the channels and its hamlets, Archon and Lilmoth trade through it, and Fort Swiftmoth beside the road has stood empty since the secession.",
+     "text": "The Three Waters Tribe holds the channels and its hamlets, Archon and Lilmoth trade through it and Fort Swiftmoth beside the road has stood empty since the secession.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -177,7 +177,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Risky away from the road: slaughterfish in every deep channel, crocodilians on the hummocks, ripper eels, smugglers and swamp disease.",
+     "text": "Risky away from the road: slaughterfish in every deep channel, crocodilians on the hummocks, smugglers and swamp disease.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -216,7 +216,7 @@
     },
     {
      "aspect": "ecology",
-     "text": "Reed, mangrove, saltrice, slaughterfish, eels, wading birds and mud-crabs.",
+     "text": "Reed, mangrove, saltrice, slaughterfish, wading birds and mud-crabs.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -278,7 +278,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A group of islands that holds Lilmoth, the estates of the rebuilt coast, and an Imperial road gone to ruin.",
+     "text": "A group of islands that holds Lilmoth, the estates of the rebuilt coast and an Imperial road gone to ruin.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -304,7 +304,7 @@
     },
     {
      "aspect": "history",
-     "text": "The Lilmothiit withdrew inland over generations and the Knahaten Flu (2E 560-603) finished their remnant. The Empire's forts, estates and road came later and were left at the secession (4E 5-10). Lilmoth was destroyed in 4E 48, and the islands were refilled in the generations after.",
+     "text": "The Lilmothiit withdrew inland over generations and the Knahaten Flu (2E 560-603) finished their remnant. The Empire's forts and road came later and were left at the secession (4E 5-10). The planters' estates had emptied in the Third Era. Lilmoth was destroyed in 4E 48, and the islands were refilled in the generations after.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -382,7 +382,7 @@
     },
     {
      "aspect": "economy",
-     "text": "The islands live on rice, fish, salvage and ferrying; Lilmoth is the market for all of it.",
+     "text": "The people of the islands live on rice, fish, salvage and ferrying; Lilmoth is the market for all of it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -438,7 +438,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Risky in the interior: bandits in the burnt forts, predators in the dens, sea-drakes at the coast.",
+     "text": "Risky in the interior: bandits in the burnt forts, predators in the dens, slaughterfish in the shallows at the coast.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -592,7 +592,7 @@
     },
     {
      "aspect": "present",
-     "text": "Bell Station's licensed divers salvage the spires; elsewhere the sea floor belongs to no one.",
+     "text": "Bell Station's licensed divers salvage the spires; elsewhere the sea floor is unclaimed.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -614,7 +614,7 @@
     },
     {
      "aspect": "people",
-     "text": "The sea floor has no residents. Divers, sea-drakes and dreugh come here.",
+     "text": "The sea floor has no residents. Divers and dreugh come here.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -636,7 +636,7 @@
     },
     {
      "aspect": "economy",
-     "text": "The spires yield salvage: drowned metal, carved stone and coral-crusted glass. Bell Station's boats decide who dives.",
+     "text": "The spires yield salvage: drowned metal, carved stone and coral-crusted glass. The steward at Bell Station decides who dives.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -692,7 +692,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Dangerous across the floor and deadly at Echo Deep and the outer spires: sea-drakes, dreugh, and deep water where a diver's breath runs out.",
+     "text": "Dangerous across the floor and deadly at Echo Deep and the outer spires: dreugh, slaughterfish and deep water where a diver's breath runs out.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -715,7 +715,7 @@
     },
     {
      "aspect": "landscape",
-     "text": "A shelf of silt about forty metres down, spires to eight metres below the surface, and a trench.",
+     "text": "A shelf of silt about forty metres down, spires to eight metres below the surface and a trench.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -737,7 +737,7 @@
     },
     {
      "aspect": "ecology",
-     "text": "Kelp, coral, slaughterfish, sea-drakes, dreugh, glowgill guar at the western edge.",
+     "text": "Kelp, coral, slaughterfish, dreugh, glowgill guar at the western edge.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {

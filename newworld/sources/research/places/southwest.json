@@ -10,7 +10,7 @@
    "siting": "coast",
    "danger_band_id": "D0",
    "importance": 5,
-   "summary": "Soulrest is Black Marsh's Third Era capital and its only city on the Topal Bay and Southern Sea corner, a port with no empire left to serve. Its government quarter is half empty, the mixed population lives off sea trade, salvage and the hidden Bramman's river, and three groups contest who rules.",
+   "summary": "Soulrest is Black Marsh's Third Era capital and its only city on the Topal Bay and Southern Sea corner, a port with no empire left to serve. Its government quarter is half empty, the mixed population lives off sea trade, salvage and the hidden Bramman's river and three groups contest who rules.",
    "lore_page": "Lore:Soulrest",
    "statement_tier_id": "CANON_DERIVED",
    "aliases": [],
@@ -57,7 +57,7 @@
     },
     {
      "aspect": "present",
-     "text": "A merchant council, the ex-Imperial civil apparatus with no sovereign, the mangrove-river interests and the interior mine-burning tribes contest the city, in the unexplained 'struggle for regional hegemony'. The government quarter is half empty and repurposed. The city has no Hist, so its Argonians hatch, name and bury inland in Banujha country.",
+     "text": "A merchant council, the ex-Imperial civil apparatus with no sovereign and the mangrove-river interests contest the city, in the unexplained 'struggle for regional hegemony', while the interior mine-burning tribes hold the hatching grounds. The government quarter is half empty and repurposed. The city has no Hist, so its Argonians hatch, name and bury inland in Banujha country.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -100,7 +100,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Southern Sea trade, salvage from wrecks off the cape, and Bramman's river, the concealed channel from Topal Bay to the Blackrose lakes. Gold and timber are no longer exported at scale; the old workings behind the city are derelict.",
+     "text": "Southern Sea trade, salvage from wrecks off the cape and Bramman's river, the concealed channel from Topal Bay to the Blackrose lakes. Gold and timber are no longer exported at scale; the old workings behind the city are derelict.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -143,7 +143,7 @@
     },
     {
      "aspect": "look",
-     "text": "A port behind its gates: stone Imperial quarter at the peninsula's neck, timber and stilt wharves below, mangrove creeks to the south, xanmeers etched with wraxu, and burn-scarred dead ground and gas vents on its landward edge.",
+     "text": "A port behind its gates: stone Imperial quarter at the peninsula's neck, timber and stilt wharves below, mangrove creeks to the south, xanmeers etched with wraxu and burn-scarred dead ground and gas vents on its landward edge.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -187,7 +187,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A faction contest for the council, a hidden mangrove landing to find, derelict Imperial mines to enter, the hatching-ground leverage that the Banujha tribes hold over the city, and control of smuggling through Bramman's river.",
+     "text": "A faction contest for the council, a hidden mangrove landing to find, derelict Imperial mines to enter, the hatching-ground leverage that the Banujha tribes hold over the city and control of smuggling through Bramman's river.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -347,7 +347,7 @@
    "siting": "island",
    "danger_band_id": "D0",
    "importance": 5,
-   "summary": "Blackrose is a lake-island city where three rivers meet, ringed by stilt districts and boardwalks over the water. It is the hinge of the south, taxing everything that moves between Murkwood, Oliis Bay, eastern Blackwood and Bramman's river. Its people are the oddest mix in the province and trust no institution.",
+   "summary": "Blackrose is a lake-island city where three rivers meet, ringed by stilt districts and boardwalks over the water. It is the hinge of the south, tolling everything that moves between Murkwood, Oliis Bay, eastern Blackwood and Bramman's river. Its people are the oddest mix in the province and trust no institution.",
    "lore_page": "Lore:Blackrose",
    "statement_tier_id": "CANON_DERIVED",
    "aliases": [],
@@ -526,7 +526,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "Lilmothiit foundations under the island core, the drowned Hist's dive, the quarrel with the Rose, Welloc's vampiric cloud and what the rebel army left behind, and a smuggler contact for Bramman's river.",
+     "text": "Lilmothiit foundations under the island core, the drowned Hist's dive, the quarrel with the Rose, Welloc's vampiric cloud and what the rebel army left behind and a smuggler contact for Bramman's river.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -646,7 +646,7 @@
     },
     {
      "kind": "shrine-blessing",
-     "detail": "the drowned Blackrose Hist, reached by diving: a blessing of the Hist (Waterbreathing and resist disease)",
+     "detail": "the drowned Blackrose Hist, reached by diving: a blessing of the Hist (Waterbreathing for eight hours)",
      "count": 1
     },
     {
@@ -660,7 +660,7 @@
    "id": "blackrose-prison",
    "name": "Blackrose Prison",
    "status": "occupied",
-   "held_by": "The Blackguards' heirs under a Naga raj-kaal; Umbriel's undead in the lower levels",
+   "held_by": "The Blackguards' heirs under a Naga raj-kaal; the risen inmates in the lower levels",
    "population": 12,
    "footprint_radius_m": 40,
    "siting": "inland",
@@ -712,7 +712,7 @@
     },
     {
      "aspect": "history",
-     "text": "Raised by Pelladil Direnni with stone atronachs for Potentate Versidue-Shaie, abandoned in the Second Empire's fall, held by the inmates' descendants, reclaimed by the Third Empire, and broken in 3E 432. When the Empire left at the secession, the inmates' heirs took it a third time.",
+     "text": "Raised by Pelladil Direnni with stone atronachs for Potentate Versidue-Shaie, abandoned in the Second Empire's fall, held by the inmates' descendants, reclaimed by the Third Empire and broken again late in the Third Era. When the Empire left at the secession, the inmates' heirs took it a third time.",
      "tier": "CANON_EXPLICIT",
      "sources": [
       {
@@ -736,7 +736,7 @@
     },
     {
      "aspect": "present",
-     "text": "Held by Blackguard families three generations deep and a Naga raj-kaal who resent the word prison. The upper walls are their stronghold. The lower levels are held by the undead.",
+     "text": "Held by Blackguard families many generations deep and a Naga raj-kaal who resent the word prison. The upper walls are their stronghold. The lower levels are held by the undead.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -838,7 +838,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Blackguard bands above, Naga and undead below, and a sanctum path left open to test challengers.",
+     "text": "Blackguard bands above, Naga and undead below and a sanctum path left open to test challengers.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -860,7 +860,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A quest to break in, to bargain with the raj-kaal, to find what Jagar Tharn's last associates left, or to learn why the Rose is not the city's.",
+     "text": "A quest to break in, to bargain with the raj-kaal, to find what Jagar Tharn's last associates left or to learn why the Rose is not the city's.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -987,7 +987,7 @@
     },
     {
      "aspect": "history",
-     "text": "A Kothringi town before 2E 560; resettled by flu-immune Argonians, who kept the name; the nativists of 4E 48 called its people half-foreign.",
+     "text": "A Kothringi town before 2E 560; resettled by flu-immune Argonians, who kept the name; nativists in the generations since called its people half-foreign.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1111,7 +1111,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "Kothringi treasure rumours, a chime-maker's commission, a dispute over a wreck, and the old foundations beneath the stone footings.",
+     "text": "Kothringi treasure rumours, a chime-maker's commission, a dispute over a wreck and the old foundations beneath the stone footings.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1251,7 +1251,7 @@
     },
     {
      "aspect": "present",
-     "text": "It answers to Soulrest's merchant council, though it hears the mine-burning tribes' complaints too.",
+     "text": "It answers to Soulrest's merchant council, though its reeve hears the mine-burning tribes' complaints too.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1272,7 +1272,7 @@
     },
     {
      "aspect": "people",
-     "text": "Argonians, a few Khajiit teamsters, and two Imperial-descended families who keep the toll house for Soulrest.",
+     "text": "Argonians, a few Khajiit teamsters and two Imperial-descended families who keep the toll house for Soulrest.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1288,7 +1288,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Tolls on the Soulrest road, carting timber and stone, and a river quay for Blackrose-bound goods.",
+     "text": "Tolls on the Soulrest road, carting timber and stone and a river quay for Blackrose-bound goods.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1310,7 +1310,7 @@
     },
     {
      "aspect": "faith",
-     "text": "Mir-Xal keeps small Sithis shrines along its main street. Its dead are carried out to the Banujha tree and are not buried in the washes.",
+     "text": "Small Sithis shrines stand along its main street. Its dead are carried out to the Banujha tree and are not buried in the washes.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1542,7 +1542,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Lujei lives on fish, eels and cut reeds from the channel shallows, and on the ferry fare and the hire of its pole-boats.",
+     "text": "Lujei lives on fish, eels and cut reeds from the channel shallows and on the ferry fare and the hire of its pole-boats.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1619,7 +1619,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A missing ferryman, a toll quarrel with the island core, a night crossing with someone's sealed chest.",
+     "text": "A missing ferryman, a toll quarrel with the island core, a night crossing with a passenger's sealed chest.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1694,7 +1694,7 @@
    "siting": "riverbank",
    "danger_band_id": "D1",
    "importance": 2,
-   "summary": "A ferry landing with a pole-raft across the Blackrose channel west of Lujei. It carries road traffic between the Soulrest side and the island.",
+   "summary": "A ferry landing with a cable raft across the Blackrose channel west of Lujei. It carries road traffic between the Soulrest side and the island.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
@@ -1788,7 +1788,7 @@
     },
     {
      "aspect": "faith",
-     "text": "A knot of eel-skin, a Sithis-token, is tied to the landing post, and the polemen touch it before a night crossing.",
+     "text": "A knot of eel-skin, a Sithis-token, is tied to the landing post and the polemen touch it before a night crossing.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1869,7 +1869,7 @@
     },
     {
      "kind": "carriage-or-boat",
-     "detail": "pole-raft across the Blackrose channel to the island core",
+     "detail": "cable raft across the Blackrose channel to the island core",
      "count": 1
     },
     {
@@ -1894,13 +1894,13 @@
    "id": "natai",
    "name": "Natai",
    "status": "inhabited",
-   "held_by": "Village elders; no outside authority",
+   "held_by": "Village elders; the island core's protection is nominal",
    "population": 10,
    "footprint_radius_m": 60,
    "siting": "coast",
    "danger_band_id": "D1",
    "importance": 2,
-   "summary": "Natai is a small village at the southern margin of the washes facing the sea, living on shellfish and salt. It watches the shipwreck beyond its shore.",
+   "summary": "Natai is a small village at the southern margin of the washes facing the sea, living on shellfish and salt. Its villagers work the shipwreck beyond its shore.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
@@ -1971,7 +1971,7 @@
     },
     {
      "aspect": "people",
-     "text": "Natai's villagers are Argonian shellfish-gatherers who also strip the wreck off their shore for anything the sea gives up.",
+     "text": "Natai's villagers are Argonian shellfish-gatherers who also strip the wreck off their shore for anything that washes loose.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2231,7 +2231,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Ka-Asei sets fish traps in the channel, builds boat hulls for the lake and delta, and pays and collects a toll on passing boats.",
+     "text": "Ka-Asei sets fish traps in the channel, builds boat hulls for the lake and delta and pays and collects a toll on passing boats.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2291,7 +2291,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Gar in the channel, bandit boats at night, and drowning under the stilts.",
+     "text": "Gar in the channel, bandit boats at night and drowning under the stilts.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2308,7 +2308,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A stolen boat, a hidden cargo under the platforms, or a fisher's feud with Amalaja.",
+     "text": "A stolen boat, a hidden cargo under the platforms or a fisher's feud with Amalaja.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2378,7 +2378,7 @@
    "id": "amalaja",
    "name": "Amalaja",
    "status": "inhabited",
-   "held_by": "The village elders, paying the island core for protection",
+   "held_by": "The village elders, paying the island core little for protection",
    "population": 9,
    "footprint_radius_m": 60,
    "siting": "coast",
@@ -2418,7 +2418,7 @@
     },
     {
      "aspect": "history",
-     "text": "Settled from Blackrose as the delta recovered after 4E 48, and has leaned toward Lilmoth in trade since.",
+     "text": "Settled from Blackrose in the generations after 4E 48, when the delta villages were cleared again and has leaned toward Lilmoth in trade since.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2652,7 +2652,7 @@
     },
     {
      "aspect": "history",
-     "text": "A delta farming village rebuilt after the 4E 48 catastrophe that emptied Murkmire.",
+     "text": "A delta farming village cleared and rebuilt in the generations after 4E 48.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2705,7 +2705,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Tei-Kur grows rice and cuts reed, sets fish traps in the channels, and sends its rice on to Delta Ferry by the ferry connection.",
+     "text": "Tei-Kur grows rice and cuts reed, sets fish traps in the channels and sends its rice on to Delta Ferry by the ferry connection.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2727,7 +2727,7 @@
     },
     {
      "aspect": "faith",
-     "text": "A newly regrown Hist at Lilmoth serves them; they carry their dead to its tender.",
+     "text": "The Hist at Lilmoth, regrown since the city was rebuilt, serves them; they carry their dead to its tender.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2882,7 +2882,7 @@
     },
     {
      "aspect": "history",
-     "text": "Rebuilt after 4E 48 when Lilmoth recovered and the Blackrose road was reopened.",
+     "text": "Rebuilt in the generations after 4E 48, when Lilmoth was rebuilt and the Blackrose road was reopened.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2947,7 +2947,7 @@
     },
     {
      "aspect": "faith",
-     "text": "The ferrymen have hung a carved gar-tooth on the landing post as a gift to Sithis, and nobody casts off without rapping it once.",
+     "text": "The ferrymen have hung a carved gar-tooth on the landing post as a gift to Sithis, and every ferryman raps it once before casting off.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3065,7 +3065,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A family rice farm on the channel bank on the road to Tei-Kur, named Reedfall for the reed beds that lean over its landing. Its paddies feed Blackrose and the travellers on the Lilmoth road.",
+     "text": "A family rice farm on the channel bank on the road to Tei-Kur, named Reedfall for the reed beds that lean over its landing. The family sells its rice to Blackrose and the travellers on the Lilmoth road.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3086,7 +3086,7 @@
     },
     {
      "aspect": "history",
-     "text": "The land was cleared from marsh after the 4E 48 catastrophe. The family has farmed the channel bank since.",
+     "text": "The land was cleared from marsh in the generations after 4E 48. The family has farmed the channel bank since.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3399,7 +3399,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Sea-drakes patrol the shallows, pirates work the Sea of Mists offshore, and the deep creeks behind the village hold slaughterfish.",
+     "text": "Sea-drakes patrol the shallows, pirates work the Sea of Mists offshore and the deep creeks behind the village hold slaughterfish.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3492,13 +3492,13 @@
    "id": "khariton",
    "name": "Khariton",
    "status": "abandoned",
-   "held_by": "Nobody; scavengers and wildlife",
+   "held_by": "Nobody; scavengers and wildlife, and a Blackguard watch post",
    "population": 0,
    "footprint_radius_m": 60,
    "siting": "swamp",
    "danger_band_id": "D3",
    "importance": 2,
-   "summary": "Khariton is a Kothringi-named town of the resettled interior, abandoned after 4E 48 and left to the washes.",
+   "summary": "Khariton is a Kothringi-named town of the resettled interior, abandoned as its channel silted and left to the washes.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
@@ -3532,7 +3532,7 @@
     },
     {
      "aspect": "history",
-     "text": "A Kothringi town before 2E 560; resettled by Argonians; emptied in the 4E 48 catastrophe.",
+     "text": "A Kothringi town before 2E 560; resettled by Argonians; left empty when the Ka-Asei channel silted and its families moved away.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3576,7 +3576,7 @@
     },
     {
      "aspect": "people",
-     "text": "Khariton is uninhabited. Brushmound hunters shelter under its few sound roofs on long hunts, and scavengers strip the last pegs from its stilt halls.",
+     "text": "Khariton is uninhabited. Delta Ferry hunters shelter under its few sound roofs on long hunts, and scavengers strip the last pegs from its stilt halls.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3719,7 +3719,7 @@
     },
     {
      "kind": "ore-vein",
-     "detail": "tin and copper scrap piles to strip, as ore",
+     "detail": "tin and copper ore veins in the dry bank behind the footings, where the chime-makers dug",
      "count": 3
     }
    ]
@@ -3965,7 +3965,7 @@
    "siting": "swamp",
    "danger_band_id": "D4",
    "importance": 3,
-   "summary": "Tarak Shan is a ruined Argonian stronghold on the water east of the washes, stormed by the Third Legion in the early Second Era.",
+   "summary": "Tarak Shan is a ruined Argonian stronghold on the water east of the washes, stormed by the Third Legion in the late Second Era.",
    "lore_page": null,
    "statement_tier_id": "CANON_DERIVED",
    "aliases": [
@@ -4398,7 +4398,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Crocodiles lie up in the flooded yard and leeches thicken the shallows. The Lujei road above is the only safe approach.",
+     "text": "Crocodiles lie up in the flooded yard and mudcrabs thicken the shallows. The Lujei road above is the only safe approach.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4463,7 +4463,7 @@
     },
     {
      "kind": "harvest-common",
-     "detail": "reed bundles and leeches in the shallows",
+     "detail": "reed bundles and mudcrabs in the shallows",
      "count": 1
     }
    ]
@@ -4478,7 +4478,7 @@
    "siting": "swamp",
    "danger_band_id": "D3",
    "importance": 1,
-   "summary": "Oru-Neel is a stilt village in the north-east farm country, emptied when its rice market at Lilmoth was destroyed in 4E 48 and its dyke went unmended.",
+   "summary": "Oru-Neel is a stilt village in the north-east farm country, emptied when its dyke failed and salt water came into the rice paddies.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
@@ -4523,7 +4523,7 @@
     },
     {
      "aspect": "history",
-     "text": "Oru-Neel grew rice for Lilmoth on the road between Tei-Kur and Reedfall. When Umbriel destroyed Lilmoth in 4E 48 its buyers were gone, nobody mended the dyke, and salt water came into the paddies; its families moved to Tei-Kur.",
+     "text": "Oru-Neel grew rice for Lilmoth on the road between Tei-Kur and Reedfall. Its dyke failed over the years, salt water came into the paddies and its families moved to Tei-Kur.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4769,7 +4769,7 @@
     },
     {
      "aspect": "history",
-     "text": "Zul-Etha carted ore and timber from the concession road to the south coast. When the tribes burned the mines in 3E 427 the carts stopped, its families moved to Mir-Xal, and the washes covered the street.",
+     "text": "Zul-Etha carted ore and timber from the concession road to the south coast. When the tribes burned the mines in 3E 427 the carts stopped, its families moved to Mir-Xal and the washes covered the street.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4873,7 +4873,7 @@
     },
     {
      "aspect": "look",
-     "text": "Three roof peaks stand out of green water, with a leaning platform and a line of stumps showing the lost lanes. The drowned posts show a straight street.",
+     "text": "Three roof peaks stand out of green water, with a leaning platform and a line of stumps showing the lost lanes. The drowned posts stand in a straight line along the old street.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5065,7 +5065,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Mudmoth once collected tolls as a road station. Now scavengers pull salvage from its tumbled stone.",
+     "text": "The Legion once took tolls at Mudmoth, its road station. Now scavengers pull salvage from its tumbled stone.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5116,7 +5116,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Outlaws sleep in the cellars, marsh predators come in from the washes, and the lower cellars stand flooded.",
+     "text": "Outlaws sleep in the cellars, marsh predators come in from the washes and the lower cellars stand flooded.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5288,7 +5288,7 @@
     },
     {
      "aspect": "people",
-     "text": "There are no Lilmothiit left to live here. The nearest living people are Lujei hunters and Natai fishermen, who avoid the mounds, and a Blackrose scholar who camps here when the rain eases.",
+     "text": "There are no Lilmothiit left to live here. The nearest living people are Lujei hunters and Natai fishermen, who avoid the mounds and a Blackrose scholar who camps here when the rain eases.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5709,7 +5709,7 @@
     },
     {
      "aspect": "history",
-     "text": "Tailhollow was a fox-folk den at the western edge of the washes. Its families moved inland toward Blackrose over generations, as the Lilmothiit withdrew from the coasts, and the Knahaten Flu in the 2E 560s killed those still here. A hollow where the roof fell in gave it its name.",
+     "text": "Tailhollow was a fox-folk den at the western edge of the washes. Its families moved inland toward Blackrose over generations, as the Lilmothiit withdrew from the coasts and the Knahaten Flu in the 2E 560s killed those still here. A hollow where the roof fell in gave it its name.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5750,7 +5750,7 @@
     },
     {
      "aspect": "people",
-     "text": "Tailhollow has no residents. Mir-Xal reed-cutters work the edges and an old Bucalos hunter keeps a blind in the hollow.",
+     "text": "Tailhollow has no residents. Mir-Xal reed-cutters work the edges and an old Mir-Xal hunter keeps a blind in the hollow.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5782,7 +5782,7 @@
     },
     {
      "aspect": "faith",
-     "text": "Faded fox-kite cloth hangs in the dry roots of a leaning tree at the den's edge, and the Bucalos hunter ties a thread to it for a safe return.",
+     "text": "Faded fox-kite cloth hangs in the dry roots of a leaning tree at the den's edge, and the Mir-Xal hunter ties a thread to it for a safe return.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5837,7 +5837,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A Mir-Xal reed-cutter has found a sealed clay jar in the hollow that he will not open, and the Bucalos hunter asks that his blind be left alone.",
+     "text": "A Mir-Xal reed-cutter has found a sealed clay jar in the hollow that he will not open, and the Mir-Xal hunter asks that his blind be left alone.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5905,7 +5905,7 @@
    "id": "shipwreck-0-m111",
    "name": "Wreck of the Salt Heron",
    "status": "sunken",
-   "held_by": "The sea; Natai salvagers",
+   "held_by": "Nobody; Natai salvagers work the wreck",
    "population": 0,
    "footprint_radius_m": 40,
    "siting": "seabed",
@@ -5951,7 +5951,7 @@
     },
     {
      "aspect": "history",
-     "text": "The Salt Heron was running to Soulrest when she struck the shoals off Natai in a night fog and broke up where she struck. Her crew were Khajiit, as most Southern Sea crews are, and two came ashore alive.",
+     "text": "The Salt Heron was running to Soulrest when she struck the shoals off Natai in a night fog and broke up where she struck. Her crew were Khajiit, as most Southern Sea crews are and two came ashore alive.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6085,7 +6085,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Sea-drakes hunt the shallows over the wreck, divers can drown in the hull, and broken timbers are sharp.",
+     "text": "Sea-drakes hunt the shallows over the wreck, divers can drown in the hull and broken timbers are sharp.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6171,7 +6171,7 @@
     },
     {
      "kind": "harvest-common",
-     "detail": "salt and brass lamps from the hold",
+     "detail": "salt from the broken casks",
      "count": 1
     }
    ]
@@ -6495,7 +6495,7 @@
     },
     {
      "aspect": "present",
-     "text": "Run by a reeve for the council, with little attention from the city.",
+     "text": "Run by a reeve for the council, with little oversight from the council.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6592,7 +6592,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Sea-drakes work the water off the village, wreckers lurk along the shore, and hidden rocks off the landing tear the bottoms out of strange boats.",
+     "text": "Sea-drakes work the water off the village, wreckers lurk along the shore and hidden rocks off the landing tear the bottoms out of strange boats.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6777,7 +6777,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Naxan lives on fish, on hauling timber from the forest to the log landing, and on coastal boats along the bay.",
+     "text": "Naxan lives on fish, on hauling timber from the forest to the log landing and on coastal boats along the bay.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6854,7 +6854,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A boat has been hijacked off Naxan's coast. A loggers' timber contract is open to anyone who can fill it.",
+     "text": "A boat has been hijacked off Naxan's coast. The loggers need a crew to raft a load of timber down to the landing before the rains.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7073,7 +7073,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "The lower shafts stand full of black water, rotten props have dropped stone across two galleries, and predators and outlaws shelter in the workings.",
+     "text": "The lower shafts stand full of black water, rotten props have dropped stone across two galleries and predators and outlaws shelter in the workings.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7090,7 +7090,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A buried payroll, a rich vein left unmined, and a rescue of trapped diggers.",
+     "text": "A buried payroll, a rich vein left unmined and a rescue of trapped diggers.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7270,7 +7270,7 @@
     },
     {
      "aspect": "faith",
-     "text": "A half-burned plank where the miners scratched a Sithis mark for every shift hangs near the portal, still in place. Chasepoint carters make the sign as they pass.",
+     "text": "A half-burned plank where the miners scratched Sithis marks hangs near the portal, still in place. Chasepoint carters make the sign as they pass.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7304,7 +7304,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Gas gathers in the fallen galleries, loose-rock traps hang where the props have rotted, and scavengers at the portal are armed.",
+     "text": "Gas gathers in the fallen galleries, loose-rock traps hang where the props have rotted and scavengers at the portal are armed.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7321,7 +7321,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A gallery behind the fallen stone is sealed. The gold the overseers stored there when the tribes came in 3E 427 is said to be inside.",
+     "text": "A gallery behind the fallen stone is sealed. The gold the overseers stored there when the tribes came in 3E 427 may lie inside.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7754,7 +7754,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Gas collects in the pit, vents in the burned floor burst into flame when stepped on, and fire-scarred undead wander the floor of the cut.",
+     "text": "Gas collects in the pit, vents in the burned floor burst into flame when stepped on and fire-scarred undead wander the floor of the cut.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7996,7 +7996,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A buyer offers a large stone contract. A find in the strata has stopped work at the face.",
+     "text": "A builder at Soulrest wants a large order of cut stone hauled quickly. A find in the strata has stopped work at the face.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8634,7 +8634,7 @@
     },
     {
      "aspect": "faith",
-     "text": "A chipped Imperial Divines' niche in the tower base holds a rain-filled bowl, and Xal-Tarek's men do not touch it.",
+     "text": "A chipped Imperial Divines' niche in the tower base holds a rain-filled bowl. The smugglers' signal-keeper comes of an Imperial-descended family and still fills it for Kynareth before each run, and Xal-Tarek's men do not touch it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8668,7 +8668,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Smugglers who use the tower guard it. Sea-birds nest in the broken top and attack climbers.",
+     "text": "Smugglers use the tower and post their own guard on it. Sea-birds nest in the broken top and attack climbers.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8744,7 +8744,7 @@
     },
     {
      "kind": "shrine-blessing",
-     "detail": "the chipped Divines' niche: blessing of Kynareth",
+     "detail": "the Divines' niche in the tower base, kept by the smugglers' Imperial-descended signal-keeper: blessing of Kynareth (stamina regeneration for eight hours)",
      "count": 1
     }
    ]
@@ -9178,7 +9178,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "The miners' gold, buried under a hall floor when the tribes came in 3E 427, has never been dug up. A Salaxul hunter has seen a wamasu denning under the largest hall.",
+     "text": "The miners buried their gold under a hall floor when the tribes came in 3E 427, and it has never been dug up. A Salaxul hunter has seen a wamasu denning under the largest hall.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -9820,7 +9820,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Gas pools in the hollows, fire vents flare from the glassy crust where a foot falls, and fire-undead walk the vents.",
+     "text": "Gas pools in the hollows, fire vents flare from the glassy crust where a foot falls and fire-undead walk the vents.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -9981,7 +9981,7 @@
     },
     {
      "aspect": "economy",
-     "text": "The keepers collect a light fee from the ships that pass and rely on it for oil and upkeep.",
+     "text": "The keepers rely on oil and fish that passing boats leave at the rock.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -10113,7 +10113,7 @@
    "id": "shipwreck-m25-m113",
    "name": "Wreck of the Brine Gull",
    "status": "sunken",
-   "held_by": "The sea",
+   "held_by": "Nobody; Soulrest salvagers work the wreck",
    "population": 0,
    "footprint_radius_m": 40,
    "siting": "seabed",

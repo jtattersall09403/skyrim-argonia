@@ -46,7 +46,7 @@
     },
     {
      "aspect": "history",
-     "text": "Barsaebic Ayleids founded it as Twyllbek; the Kothringi left a Dibella devotion in the soil; Imperial settlers built the mansion, the temple and Castle Giovesse beside it. The An-Xileel's weapon killed the Lukiul majority in 4E 48 and the undead host of Umbriel overran the town, yet Gideon's destruction was light and it stayed an active settlement.",
+     "text": "Barsaebic Ayleids founded it as Twyllbek; the Kothringi left a Dibella devotion in the soil; Imperial settlers built the mansion, the temple and Castle Giovesse beside it. The An-Xileel's weapon killed Gideon's Lukiul in 4E 48 and the undead host of Umbriel overran the town, yet Gideon's destruction was light and it stayed an active settlement.",
      "tier": "CANON_EXPLICIT",
      "sources": [
       {
@@ -64,7 +64,7 @@
     },
     {
      "aspect": "present",
-     "text": "In 4E 201 the council still sits in the Governor's Mansion and the courthouse still hears cases and keeps its records, the one Imperial habit the town never dropped. Gideon denies the successor state's claim and deals with the Archwardens only at Fort Silvermoth's toll gate. Carts on the Blackwood Road to Leyawiin leave from the east gate.",
+     "text": "In 4E 201 the council still sits in the Governor's Mansion and the courthouse still hears cases and keeps its records, an Imperial habit the town never dropped. Gideon denies the successor state's claim and deals with the Archwardens only at Fort Silvermoth's toll gate. Carts on the Blackwood Road to Leyawiin leave from the east gate.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -101,7 +101,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Hunting produce, herbs, red-clay pottery from the Onkobra delta and the Leyawiin trade keep the market busy, and the cooks serve outsiders swamp food they can stomach. River boats bring Middle Argonian goods down to the quay, and salt and iron go out to the Naka-Desh river stations.",
+     "text": "Hunting produce, herbs, red-clay pottery from the Onkobra delta and the Leyawiin trade keep the market busy. The cooks serve outsiders swamp food they can stomach. River boats bring Middle Argonian goods down to the quay, and salt and iron go out to the Naka-Desh river stations.",
      "tier": "CANON_DERIVED",
      "sources": [
       {
@@ -137,7 +137,7 @@
     },
     {
      "aspect": "look",
-     "text": "Imperial brick and timber along Blackwood Way, wet red clay underfoot, crooked alleys running off the causeway, and Ayleid white-stone stumps in the plaza and the southern gardens. Steam rises from the bathhouses and fog lies in the streets at dawn.",
+     "text": "Imperial brick and timber along Blackwood Way, wet red clay underfoot, crooked alleys running off the causeway and Ayleid white-stone stumps in the plaza and the southern gardens. Steam rises from the bathhouses and fog lies in the streets at dawn.",
      "tier": "CANON_DERIVED",
      "sources": [
       {
@@ -154,7 +154,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "The town is guarded and safe by day. The closed Ayleid sections, the Ruction Ring's cut-throats and the swamp at the gates (death hoppers, fleshflies, hackwings) are where visitors get hurt.",
+     "text": "The town is guarded and safe by day. The closed Ayleid sections, the Ruction Ring's cut-throats and the swamp at the gates (hackwings and crocodiles) are where visitors get hurt.",
      "tier": "CANON_DERIVED",
      "sources": [
       {
@@ -172,7 +172,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A Hist cutting in the Ayleid gardens that two families both claim, a cellar door in the closed Ayleid quarter that someone has forced, a Kothringi silver mask sold twice in one week, and the old quarrel with Soulrest over who ships the bay's trade.",
+     "text": "A Hist cutting in the Ayleid gardens that two families both claim, a cellar door in the closed Ayleid quarter that has been forced, a Kothringi silver mask sold twice in one week and the old quarrel with Soulrest over who ships the bay's trade.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -390,7 +390,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Guiding, scavenged stone and iron from the castle walls, eels and herbs sold at Gideon's gate. The ruin once housed a lord and a prison. It now holds nothing of value.",
+     "text": "Guiding, scavenged stone and iron from the castle walls, eels and herbs sold at Gideon's gate. The ruin once housed a lord and a prison. Little of value is left in it beyond urns and a rotted strongbox.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -474,7 +474,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "Empress Tavia's old cell behind a rusted door, a ghost that wants its name carved on a grave-stake by the north gate, and digging crews who go into the castle and do not all come out.",
+     "text": "Empress Tavia's old cell behind a rusted door, a ghost that wants its name carved on a grave-stake by the north gate and digging crews who go into the castle and do not all come out.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -642,7 +642,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Ferrying, reed-thatch, smoked eel and a trade in herbs for Gideon's dealers; caravan drivers pay for the one dry sleeping platform on the road.",
+     "text": "Ferrying, reed-thatch, smoked eel and a trade in herbs for Gideon's dealers; caravan drivers pay for the dry sleeping platform on the road.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -705,7 +705,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Fleshflies and death hoppers hunt in the reeds on both sides of the causeway, and a crocodile lies under the ferry stage. Strangers are watched, though not harmed.",
+     "text": "Hackwings hunt in the reeds on both sides of the causeway. A crocodile lies under the ferry stage. Strangers are watched, though not harmed.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -717,7 +717,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A house-raft found cut from its stake with a passenger still aboard and its rope slashed, a caravan driver who will not let anyone near one crate, or a feud between two clans over the same channel.",
+     "text": "A house-raft found cut from its stake with a passenger still aboard and its rope slashed, a caravan driver who will not let anyone near one crate or a feud between two clans over the same channel.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -778,7 +778,7 @@
     },
     {
      "kind": "combat-creature",
-     "detail": "death hoppers and fleshflies in the reeds off the causeway",
+     "detail": "hackwings in the reeds off the causeway",
      "count": 1,
      "reward": "treasure"
     },
@@ -799,7 +799,7 @@
    "siting": "coast",
    "danger_band_id": "D1",
    "importance": 2,
-   "summary": "Olvani is a coastal fishing village on the estuary west of Gideon, with a ferry landing for the sea road to Aphon Isle. It lives off eels, mullet and the toll from boats entering the estuary.",
+   "summary": "Olvani is a coastal fishing village on the estuary west of Gideon, with a ferry landing for the sea road to Aphon Isle. It lives off eels, mullet and fares from the ferry to Aphon Isle.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
@@ -827,7 +827,7 @@
     },
     {
      "aspect": "history",
-     "text": "Olvani grew up at the estuary landing where Gideon's Imperial-era trade met Topal Bay's boats. When the Imperial ships left at the secession the landing lost its trade, and the families who stayed lived by fishing and by the ferry to Aphon Isle.",
+     "text": "Olvani grew up at the estuary landing where Gideon's Imperial-era trade met Topal Bay's boats. When the Imperial ships left at the secession the landing's trade ended. The families who stayed lived by fishing and by the ferry to Aphon Isle.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -892,7 +892,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Fish, salt-fish and dried eel go up to Gideon, and the ferry to Aphon carries the Warden watch's supplies. Gideon's council takes a small toll from boats at the landing.",
+     "text": "Fish, salt-fish and dried eel go up to Gideon and the ferry to Aphon carries the Warden watch's supplies. Gideon's council takes a small toll from boats at the landing.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -972,7 +972,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A ferry that never came back from Aphon, a crate of moon sugar left under the jetty for someone who did not come, or a quarrel over a net that ends at Gideon's courthouse.",
+     "text": "A ferry that never came back from Aphon, a crate of moon sugar left under the jetty for a buyer who did not come or a quarrel over a net that ends at Gideon's courthouse.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1028,7 +1028,7 @@
     },
     {
      "kind": "shrine-blessing",
-     "detail": "a shrine of Dibella at the boat-blessing post",
+     "detail": "the shrine of Dibella that Olvani's Nibenese-descended families keep at the boat-blessing post",
      "count": 1
     }
    ]
@@ -1037,7 +1037,7 @@
    "id": "fort-silvermoth",
    "name": "Fort Silvermoth",
    "status": "garrisoned",
-   "held_by": "A garrison of the Archwardens' frontier screen drawn from old Archein families",
+   "held_by": "An Archwarden toll garrison drawn from old Archein families",
    "population": 8,
    "footprint_radius_m": 40,
    "siting": "inland",
@@ -1129,7 +1129,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Tolls, a fort farm of saltrice, and a barracks market that sells salt and iron to travellers.",
+     "text": "Tolls, a fort farm of saltrice and a barracks market that sells salt and iron to travellers.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1207,7 +1207,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Safe on the road; the fort has been attacked by Naga raiders and bay pirates, and a wrong word with the captain closes the road.",
+     "text": "Safe on the road; the fort has been attacked by Naga raiders and bay pirates. The captain closes the road to a traveller who gives a wrong word.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1233,7 +1233,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A trader who swears he paid the toll last time, a smuggler held in the stockade whom Gideon wants handed over, and a captain whose family once owned the land under Gideon's south gardens.",
+     "text": "A trader who swears he paid the toll last time, a smuggler held in the stockade whom Gideon wants handed over and a captain whose family once owned the land under Gideon's south gardens.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1312,7 +1312,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A small village of kilns and rice paddies on the coast road between Gideon and Soulrest. The red clay of the Onkobra delta makes its pots famous.",
+     "text": "A small village of kilns and rice paddies on the coast road between Gideon and Soulrest. Its pots are famous for the red clay of the Onkobra delta.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1333,7 +1333,7 @@
     },
     {
      "aspect": "history",
-     "text": "Armanias is one of the clay villages Gideon has always drawn on: it digs the Onkobra delta's red clay that Gideon's pottery is known for. It lay south of the town, off Umbriel's path in 4E 48, and has kept its kilns lit since the Imperial years.",
+     "text": "Armanias is one of the clay villages Gideon has always drawn on: it digs the Onkobra delta's red clay that Gideon's pottery is known for. It lay south of the town, off Umbriel's path in 4E 48 and has kept its kilns lit since the Imperial years.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1480,7 +1480,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A missing kiln-master, a pot with a hidden message, or a clay seam that should not be there.",
+     "text": "A missing kiln-master, a pot with a hidden message or a clay seam that should not be there.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1595,7 +1595,7 @@
     },
     {
      "aspect": "present",
-     "text": "About twenty people live here, and a market council of traders settles disputes. No Warden toll gate stands on the fork; Gideon's council is the real authority.",
+     "text": "About twenty people live here, and a market council of traders settles disputes. No Warden toll gate stands on the fork; the market council answers to Gideon's council.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1607,7 +1607,7 @@
     },
     {
      "aspect": "people",
-     "text": "Lukiul traders, Naka-Desh fishers who trade osheeja gar for salt and iron, and a few Nibenese herb dealers.",
+     "text": "Lukiul traders, Naka-Desh fishers who trade osheeja gar for salt and iron and a few Nibenese herb dealers.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1807,7 +1807,7 @@
    "siting": "swamp",
    "danger_band_id": "D3",
    "importance": 2,
-   "summary": "Calyphe is a Kothringi ruin in the Kotherra Mangroves: a Dibella shrine of leaf-carved stone half sunk in mangrove roots. No one holds it; Gideon's diggers prise out its stone and Naka-Desh hang chimes over the altar.",
+   "summary": "Calyphe is a Kothringi ruin in the Kotherra Mangroves: a Dibella shrine of leaf-carved stone half sunk in mangrove roots. It is unheld; Gideon's diggers prise out its stone and Naka-Desh hang chimes over the altar.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
@@ -1975,7 +1975,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A buried offering-vault, a chime-keeper who guards the roots, or a Gideon digger hunting a Dibella relic.",
+     "text": "A buried offering-vault, a chime-keeper who guards the roots or a Gideon digger hunting a Dibella relic.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2035,7 +2035,7 @@
     },
     {
      "kind": "shrine-blessing",
-     "detail": "the Kothringi altar of Dibella, still answering prayer",
+     "detail": "the altar of Dibella, kept with flowers and wine by Gideon's Nibenese pilgrims, who tend it as a living shrine",
      "count": 1
     },
     {
@@ -2111,7 +2111,7 @@
     },
     {
      "aspect": "present",
-     "text": "Nothing holds it. It lies within a day's walk of Gideon, so Gideon's watch and the diggers both know it, and carts on the Gideon road steer by its broken gable.",
+     "text": "Nothing holds it. It lies within a day's walk of Gideon, so Gideon's watch and the diggers both know it and carts on the Gideon road steer by its broken gable.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2164,7 +2164,7 @@
     },
     {
      "aspect": "faith",
-     "text": "The knights took Kynareth and Mara as their patrons, as many Kothringi did, and the hall's end wall carries a worn wave-and-wind carving. A Gideon soldier will leave a coin on it for luck.",
+     "text": "The knights took Kynareth and Mara as their patrons, as many Kothringi did and the hall's end wall carries a worn wave-and-wind carving. A Gideon soldier will leave a coin on it for luck.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2210,7 +2210,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Restless dead of the knights walk the barracks at night, and wild boars and bog-wolves den in the roofless nave. The tomb steps are slick and the cellar floor is rotten.",
+     "text": "Restless dead of the knights walk the barracks at night, and wild boars and wolves den in the roofless nave. The tomb steps are slick and the cellar floor is rotten.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2233,7 +2233,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A knight's silver helm missing from the one tomb still sealed, a grave someone has re-opened, or a quarrel over a silver-skinned mummy that two diggers both found.",
+     "text": "A knight's silver helm missing from the last tomb still sealed, a re-opened grave or a quarrel over a silver-skinned mummy that two diggers both found.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2288,7 +2288,7 @@
     },
     {
      "kind": "combat-creature",
-     "detail": "wild boars and bog-wolves denning in the roofless nave",
+     "detail": "wild boars and wolves denning in the roofless nave",
      "count": 1,
      "reward": "treasure"
     }
@@ -2356,7 +2356,7 @@
     },
     {
      "aspect": "present",
-     "text": "No one holds it. The Naka-Desh treat it as a place to be visited, not lived in and paddle up from the channels to renew their chimes. Diggers who rob the terraces are driven off if the river-folk catch them.",
+     "text": "It is unheld. The Naka-Desh treat it as a place to be visited, not lived in and paddle up from the channels to renew their chimes. Diggers who rob the terraces are driven off if the river-folk catch them.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2471,7 +2471,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "The dead of the terrace stir at night and the pool is deep with leeches. Naka-Desh watchers will shoot at a looter who disturbs the graves.",
+     "text": "The dead of the terrace stir at night and the pool is deep with mudcrabs. Naka-Desh watchers will shoot at a looter who disturbs the graves.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2494,7 +2494,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A burial offering a descendant wants returned, a dig that disturbed the dead, or a Naka-Desh riddle carved on the stones.",
+     "text": "A burial offering a descendant wants returned, a dig that disturbed the dead or a Naka-Desh riddle carved on the stones.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2554,7 +2554,7 @@
     },
     {
      "kind": "harvest-rare",
-     "detail": "leeches from the deep pool (an alchemy ingredient found here alone in the region)",
+     "detail": "nightshade among the grave-stones (an alchemy ingredient found here alone in the region)",
      "count": 1
     }
    ]
@@ -2667,7 +2667,7 @@
     },
     {
      "aspect": "economy",
-     "text": "A boatyard on the river trade between Gideon and the interior. Now it is a source of ship-timber and iron fittings, and the one place where the old Kothringi boat design can still be seen.",
+     "text": "A boatyard on the river trade between Gideon and the interior. Now it is a source of ship-timber and iron fittings, and a place where the old Kothringi boat design can still be seen.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2748,7 +2748,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A boat-builder's tools, a sunken boat with something aboard, or smugglers using the quay.",
+     "text": "A boat-builder's tools, a sunken boat with something aboard or smugglers using the quay.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2853,7 +2853,7 @@
     },
     {
      "aspect": "history",
-     "text": "Dorianth was the longhouse of a seafaring Kothringi family, the sort who sailed the coast and traded up the Nha Enasa channels. The leviathan-horn on its lintel was the family's mark, and no one of the family survived the Flu of 2E 560.",
+     "text": "Dorianth was the longhouse of a seafaring Kothringi family, the sort who sailed the coast and traded up the Nha Enasa channels. The leviathan-horn on its lintel was the family's mark, and none of the family survived the Flu of 2E 560.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2876,7 +2876,7 @@
     },
     {
      "aspect": "present",
-     "text": "No one holds it. Its carved lintel is the one thing that draws visitors, and Paatru and Naka-Desh both know the hall and sleep in it when the rain is heavy.",
+     "text": "It is unheld. Visitors come to see its carved lintel. Paatru and Naka-Desh both know the hall and sleep in it when the rain is heavy.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2958,7 +2958,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Bog-wolves den in the back room behind the broken roof-beam, and the Paatru will challenge strangers who use the hearth. A pressure plate in the strongroom passage still drops a spiked grate.",
+     "text": "Giant snakes nest in the back room behind the broken roof-beam, and the Paatru will challenge strangers who use the hearth. A pressure plate in the strongroom passage still drops a spiked grate.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3008,7 +3008,7 @@
     },
     {
      "kind": "combat-creature",
-     "detail": "a pack of bog-wolves in the back room",
+     "detail": "a nest of giant snakes in the back room",
      "count": 1,
      "reward": "treasure"
     },
@@ -3212,7 +3212,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "The dead are said to play the hall at night, and two of the tall columns lean over the floor with their footings cracked. Mine-Burner watchers shoot at anyone carrying off chimes.",
+     "text": "Mine-Burner watchers say the dead play the hall at night, and two of the tall columns lean over the floor with their footings cracked. Mine-Burner watchers shoot at anyone carrying off chimes.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3224,7 +3224,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A tuned set of chimes that sounds only at dusk, a Mine-Burner who guards the hall, or a Chime-Keeper claim to the stones.",
+     "text": "A tuned set of chimes that sounds only at dusk, a Mine-Burner who guards the hall or a Chime-Keeper claim to the stones.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3322,7 +3322,7 @@
     },
     {
      "aspect": "history",
-     "text": "Nine Reeds Waystation was built in the late Third Era on the road north of Gideon, a stone tower with a granary and a signal-fire platform for travellers and couriers. Its Imperial keepers left at the secession and no one replaced them.",
+     "text": "Nine Reeds Waystation was built in Imperial times on the road north of Gideon, a stone tower with a granary and a signal-fire platform for travellers and couriers. Its Imperial keepers left at the secession and the tower has had no keepers since.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3384,7 +3384,7 @@
     },
     {
      "aspect": "economy",
-     "text": "A waystation for couriers and carts, with a granary to feed them. Now it earns a living only for the bandits who rob the road below, and for scavengers after the iron nails of its door.",
+     "text": "A waystation for couriers and carts, with a granary to feed them. Now only the bandits who rob the road below and the scavengers after the iron nails of its door make a living from it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3472,7 +3472,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A Legion pay-chest said to be bricked into the granary floor, a carter held for ransom in the tower, or the bandit leader who holds the tower top.",
+     "text": "A Legion pay-chest that carters swear is bricked into the granary floor, a carter held for ransom in the tower or the bandit leader who holds the tower top.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3559,7 +3559,7 @@
     },
     {
      "aspect": "history",
-     "text": "Gideon South Watch was built in the Third Era on the mangrove edge south of Gideon, to see boats coming up through the delta. Its garrison left at the secession with the rest of the Imperial forces.",
+     "text": "Gideon South Watch was built under the Empire on the mangrove edge south of Gideon, to see boats coming up through the delta. Its garrison left at the secession with the rest of the Imperial forces.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3599,7 +3599,7 @@
     },
     {
      "aspect": "people",
-     "text": "No one lives in the tower. Smugglers meet their buyers at its foot, and Gideon's watch rows down now and then to move them on.",
+     "text": "The tower is uninhabited. Smugglers meet their buyers at its foot, and Gideon's watch rows down now and then to move them on.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3633,7 +3633,7 @@
     },
     {
      "aspect": "faith",
-     "text": "The watch kept a small Akatosh candle-niche in the tower stair for the night watch. The niche is cold now. The garrison's Imperial altar is long gone.",
+     "text": "The watch kept a small Akatosh candle-niche in the tower stair for the soldiers on night watch. The niche is cold now. The garrison's Imperial altar is long gone.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3689,7 +3689,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A hidden cellar under the tower where moon sugar comes ashore, a Gideon buyer who meets the boats here, or Gideon's watch wanting the pier cleared.",
+     "text": "A hidden cellar under the tower where moon sugar comes ashore, a Gideon buyer who meets the boats here or Gideon's watch wanting the pier cleared.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3787,7 +3787,7 @@
     },
     {
      "aspect": "history",
-     "text": "Aphon Signal Tower stands on the high ground of Aphon Isle, paired with the Belvedere so that a fire on one could be seen from the other across the bay. It was built in the Third Era, and no one has kept its lamp since the secession.",
+     "text": "Aphon Signal Tower stands on the high ground of Aphon Isle, paired with the Belvedere so that a fire on one could be seen from the other across the bay. It was built under the Empire. Its lamp has not been kept since the secession.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3827,7 +3827,7 @@
     },
     {
      "aspect": "people",
-     "text": "No one lives in the tower. A small band of sea-smugglers keeps watch from its top, and Aphon's fishers pass it without a word.",
+     "text": "The tower is uninhabited. A small band of sea-smugglers keeps watch from its top, and Aphon's fishers pass it without a word.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3895,7 +3895,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Wind and a loose parapet make the climb risky. The smugglers will not welcome visitors, and bay crabs and sea-birds crowd the rocks around its base.",
+     "text": "Wind and a loose parapet make the climb risky. The smugglers will not welcome visitors, and mudcrabs crowd the rocks around its base.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3917,7 +3917,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A smugglers' lookout who signals boats with a lantern from the top, a Khajiit crew waiting below for the signal, or the Belvedere's watch wanting the tower cleared.",
+     "text": "A smugglers' lookout who signals boats with a lantern from the top, a Khajiit crew waiting below for the signal or the Belvedere's watch wanting the tower cleared.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4155,7 +4155,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A stolen egg, a trade for skins, or a hunter asking for a guide through the reeds.",
+     "text": "A stolen egg, a trade for skins or a hunter asking for a guide through the reeds.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4345,7 +4345,7 @@
     },
     {
      "aspect": "faith",
-     "text": "They keep the Paatru faith in Sithis and the Hist of Low-Crown, and bury their dead at the camp's edge under a mound of reeds. They do not speak of the Mine-Burner hearth-gods.",
+     "text": "They keep the Paatru faith in Sithis and the Hist of Low-Crown, and bury their dead at the camp's edge under a mound of reeds. They do not speak of the Hist at Jarecai.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4384,7 +4384,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Hunters watch the camp from the reeds and Mine-Burner watchers are close. Basin crocodiles, bog-wolves and marsh snakes use the same ground.",
+     "text": "Hunters watch the camp from the reeds and Mine-Burner watchers are close. Basin crocodiles and giant snakes use the same ground.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4406,7 +4406,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A border quarrel with the Mine-Burners, a hunter's missing son, or a hide-trade.",
+     "text": "A border quarrel with the Mine-Burners, a hunter's missing son or a hide-trade.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4462,7 +4462,7 @@
     },
     {
      "kind": "combat-creature",
-     "detail": "basin crocodiles and bog-wolves on the camp's edge",
+     "detail": "basin crocodiles and giant snakes on the camp's edge",
      "count": 1,
      "reward": "treasure"
     },
@@ -4657,7 +4657,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A Kothringi relic the hunters found, a claim on the ruin, or a boat for hire.",
+     "text": "A Kothringi relic the hunters found, a claim on the ruin or a boat for hire.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4734,7 +4734,7 @@
    "siting": "riverbank",
    "danger_band_id": "D2",
    "importance": 1,
-   "summary": "Ukeel Station is a small river station in the Banujha Basin. It is a river station on the banks of the Banujha, where Naka-Desh fishers net osheeja gar and trade at the water's edge.",
+   "summary": "Ukeel Station is a small river station in the Banujha Basin. It stands on the banks of the Banujha, where Naka-Desh fishers net osheeja gar and trade at the water's edge.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
@@ -4859,7 +4859,7 @@
     },
     {
      "aspect": "faith",
-     "text": "A chime-post at the landing recalls the Kothringi and the dead of the river. The river-folk go to their tree for hatching and burial, a boat-journey of several days.",
+     "text": "The river-folk keep a chime-post at the landing for the Kothringi and the dead of the river. The river-folk go to their tree for hatching and burial, a boat-journey of several days.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4922,7 +4922,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A riddle for passage, a net-snag with a surprise, or a gar-hunter asking help.",
+     "text": "A riddle for passage, a net-snag with a surprise or a gar-hunter asking help.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4995,7 +4995,7 @@
    "siting": "riverbank",
    "danger_band_id": "D2",
    "importance": 1,
-   "summary": "Sakeepa Station is a small river station in the Nha Enasa. It is a river station on the Nha Enasa channel east of Gideon, where the river-folk trade with Gul-Tej.",
+   "summary": "Sakeepa Station is a small river station in the Nha Enasa. It stands on the Nha Enasa channel east of Gideon, where the river-folk trade with Gul-Tej.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
@@ -5046,7 +5046,7 @@
     },
     {
      "aspect": "present",
-     "text": "A few Naka-Desh keep the station through the year and ferry goods to and from Gul-Tej. They exchange news with every boat and are said to know who has gone up and down the channel.",
+     "text": "A few Naka-Desh keep the station through the year and ferry goods to and from Gul-Tej. They exchange news with every boat and know who has gone up and down the channel.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5109,7 +5109,7 @@
     },
     {
      "aspect": "faith",
-     "text": "A chime-post at the landing recalls the Kothringi, who were friends of the river-folk. For hatching and burial they travel to the Naka-Desh tree upriver.",
+     "text": "At the landing stands a chime-post hung in memory of the Kothringi, who were friends of the river-folk. For hatching and burial they travel to the Naka-Desh tree upriver.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5251,7 +5251,7 @@
    "siting": "riverbank",
    "danger_band_id": "D2",
    "importance": 1,
-   "summary": "Nahk-Zeel Station is a small river station in the Nha Enasa. It is a river station at the northern edge of Nha Enasa, close to Gul-Tej and the Paatru camps.",
+   "summary": "Nahk-Zeel Station is a small river station in the Nha Enasa. It stands at the northern edge of Nha Enasa, close to Gul-Tej and the Paatru camps.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
@@ -5376,7 +5376,7 @@
     },
     {
      "aspect": "faith",
-     "text": "A chime-post at the landing recalls the Kothringi. The nearby Paatru camps follow another Hist, and the two peoples avoid talk of it.",
+     "text": "The Naka-Desh hung the landing's chime-post for the Kothringi. The nearby Paatru camps follow another Hist, and the two peoples avoid talk of it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5422,7 +5422,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Reed snakes and crocodiles near the landing. A Paatru hunter who takes offence is dangerous, and so is the open north reach beyond the lamp.",
+     "text": "Giant snakes and crocodiles near the landing. A Paatru hunter who takes offence is dangerous, and so is the open north reach beyond the lamp.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5497,7 +5497,7 @@
     },
     {
      "kind": "combat-creature",
-     "detail": "reed snakes and crocodiles near the landing",
+     "detail": "giant snakes and crocodiles near the landing",
      "count": 1,
      "reward": "treasure"
     },
@@ -5518,7 +5518,7 @@
    "siting": "swamp",
    "danger_band_id": "D2",
    "importance": 1,
-   "summary": "Teth-Kasa Station is a small river station in the Kotherra Mangroves. It is a river station among the mangrove channels south of Gideon, the Naka-Desh's western-most post.",
+   "summary": "Teth-Kasa Station is a small river station in the Kotherra Mangroves. It stands among the mangrove channels south of Gideon and is the Naka-Desh's western-most post.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
@@ -5552,7 +5552,7 @@
     },
     {
      "aspect": "history",
-     "text": "Teth-Kasa Station is the Naka-Desh's western-most post, among the mangrove channels south of Gideon. It gives the river-folk a landing on Gideon's delta trade, and Gideon's boats buy their fish and rope there.",
+     "text": "Teth-Kasa Station is the Naka-Desh's western-most post, among the mangrove channels south of Gideon. It gives the river-folk a landing on Gideon's delta trade, and Gideon's boatmen buy their fish and rope there.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5644,7 +5644,7 @@
     },
     {
      "aspect": "faith",
-     "text": "A chime-post at the landing recalls the Kothringi dead who lie in the mangroves nearby. The river-folk make the long trip to their tree for hatching and burial.",
+     "text": "The river-folk set a chime-post at the landing for the Kothringi dead who lie in the mangroves nearby. The river-folk make the long trip to their tree for hatching and burial.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5690,7 +5690,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Mangrove crocodiles, snakes and mudcrabs lie along every channel, and the channels look so alike that strangers lose their way among them.",
+     "text": "Mangrove crocodiles, snakes and mudcrabs lie along every channel and the channels look so alike that strangers lose their way among them.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5707,7 +5707,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A boat-hand needed, a riddle for passage, or a smuggler's cache in the mangroves.",
+     "text": "A boat-hand needed, a riddle for passage or a smuggler's cache in the mangroves.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5969,7 +5969,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "An egg to protect, a Hist whisper to follow, or a hunter lost in the reeds.",
+     "text": "An egg to protect, a Hist whisper to follow or a hunter lost in the reeds.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6213,7 +6213,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Basin crocodiles, bog-wolves on the dry ground and the Mine-Burners' suspicion of outsiders. The reeds are easy to get lost in.",
+     "text": "Basin crocodiles, giant snakes on the dry ground and the Mine-Burners' suspicion of outsiders. The reeds are easy to get lost in.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6235,7 +6235,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A clutch at risk, an intruder to turn back, or a sap-run to escort.",
+     "text": "A clutch at risk, an intruder to turn back or a sap-run to escort.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6286,7 +6286,7 @@
     },
     {
      "kind": "combat-creature",
-     "detail": "basin crocodiles and bog-wolves on the dry ground",
+     "detail": "basin crocodiles and giant snakes on the dry ground",
      "count": 1,
      "reward": "treasure"
     },
@@ -6307,7 +6307,7 @@
    "siting": "swamp",
    "danger_band_id": "D3",
    "importance": 1,
-   "summary": "Zul-Meeka Station is a small Root-Folk hunting and egg-tending station in the Banujha Basin. It lies on the south-east basin's edge, near the lilmothiit den and the abandoned village.",
+   "summary": "Zul-Meeka Station is a small Root-Folk hunting and egg-tending station in the Banujha Basin. It lies on the south-east basin's edge, near the Lilmothiit den and the abandoned village.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
@@ -6482,7 +6482,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Bog-wolves and marsh snakes hunt round the post, and the smugglers at Meris-Keth shoot at anyone who comes too near.",
+     "text": "Giant snakes hunt round the post, and the smugglers at Meris-Keth shoot at anyone who comes too near.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6556,7 +6556,7 @@
     },
     {
      "kind": "combat-creature",
-     "detail": "bog-wolves and marsh snakes on the basin edge",
+     "detail": "giant snakes on the basin edge",
      "count": 1,
      "reward": "treasure"
     },
@@ -6577,7 +6577,7 @@
    "siting": "riverbank",
    "danger_band_id": "D2",
    "importance": 1,
-   "summary": "Banu-Veeth Post is a small watch post in the Banujha Basin. It is a watch post on the water at the south of the basin, covering the channel toward Soulrest.",
+   "summary": "Banu-Veeth Post is a small watch post in the Banujha Basin. It stands on the water at the south of the basin, covering the channel toward Soulrest.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
@@ -6756,7 +6756,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A toll dispute, a coastal stranger to question, or a message for Jarecai.",
+     "text": "A toll dispute, a coastal stranger to question or a message for Jarecai.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6823,7 +6823,7 @@
    "siting": "riverbank",
    "danger_band_id": "D2",
    "importance": 1,
-   "summary": "Jal-Resh Post is a small watch post in the Banujha Basin. It is a watch post on the Banujha waters between Jarecai and Kharaxos.",
+   "summary": "Jal-Resh Post is a small watch post in the Banujha Basin. It stands on the Banujha waters between Jarecai and Kharaxos.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
@@ -6984,7 +6984,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Bow-watchers cover the channel and the signal horn calls reinforcements. Ruin-diggers who ignore the warning are shot.",
+     "text": "Bow-watchers cover the channel and the watchers blow the signal horn to call reinforcements. Ruin-diggers who ignore the warning are shot.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7006,7 +7006,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A watch-leader who needs a message carried to Jarecai by word of mouth, a wrecked boat in the channel, or a stranger held for digging.",
+     "text": "A watch-leader who needs a message carried to Jarecai by word of mouth, a wrecked boat in the channel or a stranger held for digging.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7069,7 +7069,7 @@
    "siting": "riverbank",
    "danger_band_id": "D2",
    "importance": 1,
-   "summary": "Xul-Banu Post is a small watch post in the Banujha Basin. It is a watch post at the basin's north-west edge, facing Nha Enasa and Gul-Tej.",
+   "summary": "Xul-Banu Post is a small watch post in the Banujha Basin. It stands at the basin's north-west edge, facing Nha Enasa and Gul-Tej.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
@@ -7102,7 +7102,7 @@
     },
     {
      "aspect": "history",
-     "text": "Xul-Banu Post is a Mine-Burner watch post on the basin's north-west edge, where the basin's water meets the Naka-Desh channels. It has grown with the river trade from Gul-Tej, which pays it a toll.",
+     "text": "Xul-Banu Post is a Mine-Burner watch post on the basin's north-west edge, where the basin's water meets the Naka-Desh channels. It has grown with the river trade from Gul-Tej, whose boats pay it a toll.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7174,7 +7174,7 @@
     },
     {
      "aspect": "economy",
-     "text": "The post watches the Nha Enasa border and takes a small toll on caravans.",
+     "text": "The watchers keep the Nha Enasa border and take a small toll on caravans.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7196,7 +7196,7 @@
     },
     {
      "aspect": "faith",
-     "text": "The watchers were hatched under Jarecai's Hist and go back to it to lay and to bury, a two-day paddle across the basin. Rune-marks on the gate are for the basin's spirits.",
+     "text": "The watchers were hatched under Jarecai's Hist and go back to it to lay and to bury, a two-day paddle across the basin. Burn-marks on the gate honour the burned mine-mouths.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7240,7 +7240,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "The post is armed and treats strangers as suspects. Crocodiles and marsh snakes lie on both sides of the border water.",
+     "text": "The watchers are armed and treat strangers as suspects. Crocodiles and marsh snakes lie on both sides of the border water.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7262,7 +7262,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A message for Jarecai's elders, a toll quarrel with Gul-Tej's traders, or a watch party that went out and has not come back.",
+     "text": "A message for Jarecai's elders, a toll quarrel with Gul-Tej's traders or a watch party that went out and has not come back.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7325,7 +7325,7 @@
    "siting": "riverbank",
    "danger_band_id": "D2",
    "importance": 1,
-   "summary": "Deshaa Post is a small watch post in the Banujha Basin. It is a watch post at the south-west basin edge, covering the road toward Soulrest and Chasepoint.",
+   "summary": "Deshaa Post is a small watch post in the Banujha Basin. It stands at the south-west basin edge, covering the road toward Soulrest and Chasepoint.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
@@ -7420,7 +7420,7 @@
     },
     {
      "aspect": "economy",
-     "text": "The post watches the road toward Soulrest and takes a small toll on the carts that use it.",
+     "text": "The Mine-Burners watch the road toward Soulrest and take a small toll on the carts that use it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7486,7 +7486,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Watchers with bows cover the road. Bandits sometimes test the post at night, and bog-wolves cross the causeway at dusk.",
+     "text": "Watchers with bows cover the road. Bandits sometimes test the post at night, and giant snakes cross the causeway at dusk.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7560,7 +7560,7 @@
     },
     {
      "kind": "combat-creature",
-     "detail": "bog-wolves on the causeway",
+     "detail": "giant snakes on the causeway",
      "count": 1,
      "reward": "treasure"
     },
@@ -7615,7 +7615,7 @@
     },
     {
      "aspect": "history",
-     "text": "The tribes of the basin burned the Imperial mines and timber concessions in 3E 427 and never made peace with the coast. Jarecai, the basin's oldest Hist, became the town where their elders meet.",
+     "text": "The tribes of the basin burned the Imperial mines and timber concessions in 3E 427 and never made peace with the coast. The basin's oldest Hist stands at Jarecai. The town grew round it and is where their elders meet.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7639,7 +7639,7 @@
     },
     {
      "aspect": "present",
-     "text": "About 28 people live in tiered halls behind a palisade of stakes. The elders judge disputes, take a toll from Soulrest Argonians who come inland to the hatching grounds, and use the grounds as a lever on the port.",
+     "text": "About 28 people live in tiered halls behind a palisade of stakes. The elders judge disputes, take a toll from Soulrest Argonians who come inland to the hatching grounds and use the grounds as a lever on the port.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7702,7 +7702,7 @@
     },
     {
      "aspect": "faith",
-     "text": "Sithis and the nearest Hist to Soulrest, which the town guards; burning is a rite, and the burned mine-mouths are shrines.",
+     "text": "Sithis and the nearest Hist to Soulrest, which the townsfolk guard; burning is a rite, and the burned mine-mouths are shrines.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7783,7 +7783,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A Soulrest egg-tender whose clutch must reach the Jarecai Hist before it hatches, a young warrior's trial at the burned mine, or the elders' price for passage through the basin.",
+     "text": "A Soulrest egg-tender whose clutch must reach the Jarecai Hist before it hatches, a young warrior's trial at the burned mine or the elders' price for passage through the basin.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7855,8 +7855,8 @@
      "count": 1
     },
     {
-     "kind": "altar-power",
-     "detail": "the Hist at Jarecai: a drink of its sap gives Waterbreathing for a day",
+     "kind": "shrine-blessing",
+     "detail": "the Hist at Jarecai: drinking its sap cures disease and gives Waterbreathing for eight hours",
      "count": 1
     },
     {
@@ -7876,7 +7876,7 @@
    "siting": "lakeshore",
    "danger_band_id": "D1",
    "importance": 3,
-   "summary": "Kharaxos is a Mine-Burner town on the east of the Banujha Basin, its name a leftover of older maps that the tribes never changed. It trades with Kothringi-named towns of the interior.",
+   "summary": "Kharaxos is a Mine-Burner town on the east of the Banujha Basin, its name a leftover from the Kothringi who held the shore, which the tribes never changed. It trades with Kothringi-named towns of the interior.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
@@ -7910,7 +7910,7 @@
     },
     {
      "aspect": "history",
-     "text": "Kharaxos keeps a name older than the Mine-Burners, from the Kothringi who held the basin's east shore before the Knahaten Flu. The tribes who settled there after the Flu kept the name, as Argonian resettlers did across the old Kothringi country.",
+     "text": "Kharaxos bears a name older than the Mine-Burners, from the Kothringi who held the basin's east shore before the Knahaten Flu. The tribes who settled there after the Flu kept the name, as Argonian resettlers did across the old Kothringi country.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8560,7 +8560,7 @@
     },
     {
      "aspect": "economy",
-     "text": "The camp sells red mangrove timber and bark to Soulrest's merchants.",
+     "text": "The loggers sell red mangrove timber and bark to Soulrest's merchants.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8587,7 +8587,7 @@
     },
     {
      "aspect": "faith",
-     "text": "Sithis, with a Bosmer shipwright's Nine charm over the door.",
+     "text": "Sithis, with a Bosmer shipwright's Y'ffre charm over the door.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8641,7 +8641,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Crocodiles and bog-wolves prowl the stand, and the Mine-Burners come with bows when the camp's fee is late.",
+     "text": "Crocodiles and giant snakes prowl the stand, and the Mine-Burners come with bows when the camp's fee is late.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8721,7 +8721,7 @@
     },
     {
      "kind": "combat-creature",
-     "detail": "crocodiles and bog-wolves in the stand",
+     "detail": "crocodiles and giant snakes in the stand",
      "count": 1,
      "reward": "treasure"
     },
@@ -8749,7 +8749,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A Mine-Burner village of tiered timber halls on stilts around a dying Hist. Its people left, Khajiit smugglers moved in, and the dead its people never staked walk the walkways.",
+     "text": "A Mine-Burner village of tiered timber halls on stilts around a dying Hist. Its people left, Khajiit smugglers moved in and the dead its people never staked walk the walkways.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8836,7 +8836,7 @@
     },
     {
      "aspect": "people",
-     "text": "No one lives here. Six or seven Khajiit smugglers stay in the two soundest halls, and the rest of the village belongs to the dead.",
+     "text": "The village is uninhabited. Six or seven Khajiit smugglers stay in the two soundest halls, and the rest of the village belongs to the dead.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8987,7 +8987,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "Grave-stakes to carve for the unstaked dead, a clan's carved totem left behind in the headman's hall, or the smugglers' store of moon sugar under the root-hut.",
+     "text": "Grave-stakes to carve for the unstaked dead, a clan's carved totem left behind in the headman's hall or the smugglers' store of moon sugar under the root-hut.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -9374,7 +9374,7 @@
     },
     {
      "aspect": "history",
-     "text": "Built in the Third Era as a retreat; it survived 4E 48 and was taken over by the Archwardens.",
+     "text": "Built under the Empire as a retreat; the Imperial garrison left at the secession, and a Warden customs watch now keeps it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -9542,7 +9542,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A smuggler's name in the customs book that the captain wants answered for, a pilot who knows the reef channels for a price, or a parley with the Khajiit crew at Kelp-Mouth Cave.",
+     "text": "A smuggler's name in the customs book that the captain wants answered for, a pilot who knows the reef channels for a price or a parley with the Khajiit crew at Kelp-Mouth Cave.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -9743,7 +9743,7 @@
     },
     {
      "aspect": "economy",
-     "text": "The cave is a store for moon sugar in transit, which is illegal in the province, and for salvage the crew pulls from wrecks in the bay.",
+     "text": "The cave is a store for moon sugar in transit, which is illegal in the province and for salvage the crew pulls from wrecks in the bay.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -9807,7 +9807,7 @@
     },
     {
      "aspect": "look",
-     "text": "A low black cave mouth hung with kelp, a rock ledge with a rope ladder, and an inner pool lit green from below by the light through a sea-cut tunnel.",
+     "text": "A low black cave mouth hung with kelp, a rock ledge with a rope ladder and an inner pool lit green from below by the light through a sea-cut tunnel.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -9865,7 +9865,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "The crew's moon sugar waiting for a Gideon buyer, an Argonian pilot who wants out of the crew, or the Warden captain at the Belvedere wanting the cave cleared.",
+     "text": "The crew's moon sugar waiting for a Gideon buyer, an Argonian pilot who wants out of the crew or the Warden captain at the Belvedere wanting the cave cleared.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -10064,7 +10064,7 @@
     },
     {
      "aspect": "people",
-     "text": "No one lives on it. Two of Olvani's divers come out by punt, and the fishers mark the spot with a float.",
+     "text": "It is uninhabited. Two of Olvani's divers come out by punt, and the fishers mark the spot with a float.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -10239,7 +10239,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "The captain's chest still in the stern cabin, the iron Olvani's divers cannot lift, or a Gideon family's wine that never arrived.",
+     "text": "The captain's chest still in the stern cabin, the iron Olvani's divers cannot lift or a Gideon family's wine that never arrived.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -10372,7 +10372,7 @@
     },
     {
      "aspect": "present",
-     "text": "Divers from Aphon and Soulrest come out to the wreck, and the Kelp-Mouth crew search it for the captain's strongbox, which no one has found.",
+     "text": "Divers from Aphon and Soulrest come out to the wreck, and the Kelp-Mouth crew search it for the captain's strongbox, that has never been found.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -10395,7 +10395,7 @@
     },
     {
      "aspect": "people",
-     "text": "No one lives on it. Aphon fishers dive for what they can sell, and a smuggler from the bay comes now and then to search.",
+     "text": "It is uninhabited. Aphon fishers dive for what they can sell, and a smuggler from the bay comes now and then to search.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -10516,7 +10516,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "The captain's strongbox, wedged somewhere in the cleft; the rival crew who sank the sloop, still on the bay; or the Kelp-Mouth smugglers who want the cargo first.",
+     "text": "The captain's strongbox is wedged somewhere in the cleft; the rival crew who sank the sloop, still on the bay; or the Kelp-Mouth smugglers who want the cargo first.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {

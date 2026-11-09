@@ -133,7 +133,7 @@
     },
     {
      "aspect": "people",
-     "text": "About three in four are Argonian, with a large Dunmer minority of mixed families whose ancestors stood on both sides of the coffles, and a few Imperial-descended traders. The people who matter are the Vicecanons (one to three, chosen locally), the field-holding families, the saltrice gangs and the smugglers who work the quays.",
+     "text": "About three in four are Argonian, with a large Dunmer minority of mixed families whose ancestors stood on both sides of the coffles and a few Imperial-descended traders. The people who matter are the Vicecanons (one to three, chosen locally), the field-holding families, the saltrice gangs and the smugglers who work the quays.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -193,7 +193,7 @@
     },
     {
      "aspect": "faith",
-     "text": "A field-edge tree outside the walls serves the Hist; the Dunmer minority keeps the old Temple saints, among them Roris, the trader whose death began the Arnesian War. The Nine have a few shrines in the old Imperial quarter.",
+     "text": "The Argonians worship at a Hist tree on the field edge outside the walls; the Dunmer minority keeps the old Temple saints, among them Roris, the trader whose death began the Arnesian War. The Nine have a few shrines in the old Imperial quarter.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -271,7 +271,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "Two field-holding families who each say their grandmothers stood in the same saltrice field when Dres fell, a smuggling ring that moves moon sugar through Fort Thornmoth's gate, a Dunmer family hunting a runaway slave's grandchildren, and the Velothi pieces scavengers sell in the market from Kharraluhl and Ovezza.",
+     "text": "Two field-holding families who each say their grandmothers stood in the same saltrice field when Dres fell, a smuggling ring that moves moon sugar through Fort Thornmoth's gate, a Dunmer family hunting a runaway slave's grandchildren and the Velothi pieces scavengers sell in the market from Kharraluhl and Ovezza.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -399,7 +399,7 @@
     },
     {
      "kind": "shrine-blessing",
-     "detail": "the Temple shrine of Saint Roris kept by the Dunmer families; a blessing like a Divine shrine's, curing disease",
+     "detail": "the Temple shrine of Saint Roris kept by the Dunmer families; activating it cures disease and gives Resist Disease for eight hours",
      "count": 1
     },
     {
@@ -490,7 +490,7 @@
     },
     {
      "aspect": "present",
-     "text": "A dozen at most man it: a watch captain, gate guards who take the toll and a few who keep the store room and the watch boat. The captain still drills them in the Legion's way, the one habit the fort kept from Imperial days.",
+     "text": "A dozen at most man it: a watch captain, gate guards who take the toll and a few who keep the store room and the watch boat. The captain still drills them in the Legion's way, a habit the garrison kept from Imperial days.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -646,7 +646,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A captain who wants an outsider to carry a word to Thorn without passing the gate, a guard who lets a certain cart through untouched every few days, and a locked store room full of moon sugar the garrison took from smugglers and has not burned.",
+     "text": "A captain who wants an outsider to carry a word to Thorn without passing the gate, a guard who lets a certain cart through untouched every few days and a locked store room full of moon sugar the garrison took from smugglers and has not burned.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -801,7 +801,7 @@
     },
     {
      "aspect": "people",
-     "text": "Five or six: a gang boss hired by a field-holding family, a cook and sawyers from Thorn's riverside villages, Argonian and Dunmer, who go home to their own trees between fellings.",
+     "text": "Five or six: a gang boss hired by a field-holding family, a cook and sawyers from Thorn's riverside villages, Argonian and Dunmer, who go home to their own villages between fellings.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -822,7 +822,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Logs and sawn planks floated to Thorn; the camp buys food and rope from Guxal.",
+     "text": "Logs and sawn planks floated to Thorn; the loggers buy food and rope from Guxal.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -885,7 +885,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "The camp is close to Thorn's patrols. Slaughterfish swarm the water below the landing, where offcuts and scraps are thrown in, and take anyone who swims there.",
+     "text": "The camp is close to Thorn's patrols. Slaughterfish swarm the water below the landing, where offcuts and scraps are thrown in and take anyone who swims there.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1136,7 +1136,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "The road past the post is watched, and travellers are stopped at the chain. After dark sabre cats come down from the jungle to drink at the well.",
+     "text": "The road past the post is watched, and travellers are stopped at the chain. After dark giant snakes come down from the jungle to hunt round the well.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1157,7 +1157,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A Tsonac stone-carver's cart found abandoned a mile up the track with its ox killed by a cat, and a Stone-Sleeper carter who refuses the toll and blocks the chain with his load.",
+     "text": "A Tsonac stone-carver's cart found abandoned a mile up the track with its ox killed by a giant snake, and a Stone-Sleeper carter who refuses the toll and blocks the chain with his load.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1195,7 +1195,7 @@
     },
     {
      "kind": "combat-creature",
-     "detail": "a pair of sabre cats that come to the well after dark",
+     "detail": "a pair of giant snakes that come to the well after dark",
      "count": 1,
      "reward": "treasure"
     },
@@ -1262,7 +1262,7 @@
     },
     {
      "aspect": "history",
-     "text": "The Root-Folk have kept stations at the edge of the jungle since before the Empire. Archein families once took a share of its sap for the right to tap near their fields; since the secession nobody asks for it.",
+     "text": "The Root-Folk have kept stations at the edge of the jungle since before the Empire. Archein families once took a share of its sap for the right to tap near their fields; since the secession the Archein families no longer ask for it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1397,7 +1397,7 @@
     },
     {
      "aspect": "look",
-     "text": "Reed-roofed stilt houses joined by rope bridges, drying racks, dugouts on the mud, and thick jungle behind.",
+     "text": "Reed-roofed stilt houses joined by rope bridges, drying racks, dugouts on the mud and thick jungle behind.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1451,7 +1451,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A clutch of eggs in the root hollow that has not hatched, which the headwoman wants Tsonac's tree-minder to see, and a smuggler's raft hidden in the reeds whose crew bought sap with false coin.",
+     "text": "A clutch of eggs in the root hollow that has not hatched, which the headwoman wants Tsonac's tree-minder to see and a smuggler's raft hidden in the reeds whose crew bought sap with false coin.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1515,7 +1515,7 @@
     },
     {
      "kind": "combat-creature",
-     "detail": "jungle predators on the paths behind the hamlet: sabre cats and a giant spider",
+     "detail": "jungle predators on the paths behind the hamlet: giant snakes and a giant spider",
      "count": 2,
      "reward": "treasure"
     },
@@ -1623,7 +1623,7 @@
     },
     {
      "aspect": "people",
-     "text": "No one lives there. A scavenger crew out of Thorn camps among the walls when it is working the halls, and the Dunmer families of Thorn come to leave food and incense for ancestors whose names they have lost.",
+     "text": "The ruin has no living inhabitants. A scavenger crew out of Thorn camps among the walls when it is working the halls, and the Dunmer families of Thorn come to leave food and incense for ancestors whose names they have lost.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1900,7 +1900,7 @@
     },
     {
      "aspect": "people",
-     "text": "No one lives there. Guxal's hunters and Thorn's fishers pass by day and keep their boats off the quay.",
+     "text": "The ruin has no living inhabitants. Guxal's hunters and Thorn's fishers pass by day and keep their boats off the quay.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1944,7 +1944,7 @@
     },
     {
      "aspect": "faith",
-     "text": "The Velothi followed Mephala by their own tradition; Guxal's people call the ground sick and bury their eggs far from it.",
+     "text": "The Velothi followed Mephala by their own tradition; Guxal's people call the ground sick and lay their eggs far from it.",
      "tier": "CANON_DERIVED",
      "sources": [
       {
@@ -2288,7 +2288,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Tselan sits in settled country and its people keep the paths clear. Sabre cats still hunt the jungle edge round the quarry.",
+     "text": "Tselan sits in settled country and its people keep the paths clear. Giant snakes still hunt the jungle edge round the quarry.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2440,7 +2440,7 @@
     },
     {
      "aspect": "history",
-     "text": "Barsaebic Ayleids and Cantemiric Velothi once held this country; the Argonians built over their foundations after the Flu emptied it. The name echoes Tsono-Xuhil, the mad Hist of the Xit-Xaht that its neighbours put to sleep, and the grave-singers say Tsonac's tree is a sapling of that line, asleep since it was planted.",
+     "text": "Barsaebic Ayleids and Cantemiric Velothi once held this country; the Argonians built over their foundations after the Flu emptied it. The name echoes Tsono-Xuhil, the mad Hist of the Xit-Xaht that its neighbours put to sleep and the grave-singers say Tsonac's tree is a sapling of that line, asleep since it was planted.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2492,7 +2492,7 @@
     },
     {
      "aspect": "people",
-     "text": "About forty named townsfolk: masons, timber-cutters, hunters, the tree-minder who hears the Hist's dreams, its pupils, and buyers from Thorn who lodge by the quay.",
+     "text": "About forty named townsfolk: masons, timber-cutters, hunters, the tree-minder who hears the Hist's dreams, its pupils and buyers from Thorn who lodge by the quay.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2622,7 +2622,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A tree-minder who says the Hist's dreams have turned bad since a mason cut too deep under the mound, a Thorn buyer who wants an Ayleid welkynd stone cut from the foundations, and two mason families quarrelling over a seam of good stone.",
+     "text": "A tree-minder who says the Hist's dreams have turned bad since a mason cut too deep under the mound, a Thorn buyer who wants an Ayleid welkynd stone cut from the foundations and two mason families quarrelling over a seam of good stone.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2730,7 +2730,7 @@
     },
     {
      "kind": "shrine-blessing",
-     "detail": "the stone ring round the sleeping Hist: a blessing that raises armour rating, like Skyrim's shrine of Stendarr in strength",
+     "detail": "the stone ring round the sleeping Hist: activating it cures disease and gives Fortify Heavy Armor for eight hours",
      "count": 1
     }
    ]
@@ -2843,7 +2843,7 @@
     },
     {
      "aspect": "economy",
-     "text": "The hunters of Xuvagol sell pelts, feathers and smoked meat, and buy salt and arrowheads in return.",
+     "text": "The hunters of Xuvagol sell pelts, feathers and smoked meat and buy salt and arrowheads in return.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2927,7 +2927,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A trapper who saw torches moving at night among the Kaochalit ruin, where no one lives, and a great cave bear that has taken three of the camp's snares and a hunter's arm.",
+     "text": "A trapper who saw torches moving at night among the Kaochalit ruin, which has no living inhabitants and an old giant snake as thick as a man that has taken three of the camp's snares and a hunter's arm.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2970,19 +2970,19 @@
     },
     {
      "kind": "combat-creature",
-     "detail": "a cave bear in the gully below the rise",
+     "detail": "a giant snake in the gully below the rise",
      "count": 1,
      "reward": "treasure"
     },
     {
      "kind": "combat-creature",
-     "detail": "sabre cats on the jungle paths",
+     "detail": "giant spiders on the jungle paths",
      "count": 2,
      "reward": "treasure"
     },
     {
      "kind": "treasure",
-     "detail": "the bear's den: a dead hunter's bow and up to 50 gold",
+     "detail": "the snake's den: a dead hunter's bow and up to 50 gold",
      "count": 1
     }
    ]
@@ -2997,7 +2997,7 @@
    "siting": "inland",
    "danger_band_id": "D3",
    "importance": 2,
-   "summary": "Kaochalit is a ruined Cantemiric Velothi settlement on the mesa top south of Tsonac. The Knahaten Flu killed its people and the Stone-Sleepers avoid it.",
+   "summary": "Kaochalit is a ruined Cantemiric Velothi settlement on the mesa top south of Tsonac. The Knahaten Flu killed its people and the Stone-Sleepers avoid its halls.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
@@ -3084,7 +3084,7 @@
     },
     {
      "aspect": "people",
-     "text": "No one lives in the halls. A Dunmer herbalist from Thorn has lived for years in an outer tomb at the ruin's edge, gathering the fungus that grows in the dark.",
+     "text": "The halls have no living inhabitants. A Dunmer herbalist from Thorn has lived for years in an outer tomb at the ruin's edge, gathering the fungus that grows in the dark.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3265,7 +3265,7 @@
    "siting": "inland",
    "danger_band_id": "D3",
    "importance": 2,
-   "summary": "Balormaak is a ruined Cantemiric Velothi town on the eastern mesa, south of Ayiin. The Knahaten Flu emptied it and the jungle is taking it.",
+   "summary": "Balormaak is a ruined Cantemiric Velothi town on the eastern mesa, south of Ayiin. The Knahaten Flu emptied it and jungle has grown over it since.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
@@ -3352,7 +3352,7 @@
     },
     {
      "aspect": "people",
-     "text": "No one lives there. Ayiin's hunters cross it by day and turn back before dark.",
+     "text": "The ruin has no living inhabitants. Ayiin's hunters cross it by day and turn back before dark.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3462,7 +3462,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "An Ayiin child dropped her egg-charm, a carved shell on a cord, into a cellar while hiding from her brothers, and a Velothi bronze bell lies in the fallen tower that a Thorn smith will pay well for.",
+     "text": "An Ayiin child dropped her egg-charm, a carved shell on a cord, into a cellar while hiding from her brothers and a Velothi bronze bell lies in the fallen tower that a Thorn smith will pay well for.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3613,7 +3613,7 @@
     },
     {
      "aspect": "people",
-     "text": "No one lives there. A Sarpa warband sometimes shelters in its outer yard and leaves bones there.",
+     "text": "The ruin has no living inhabitants. A Sarpa warband sometimes shelters in its outer yard and leaves bones there.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3764,7 +3764,7 @@
     },
     {
      "kind": "combat-boss",
-     "detail": "the household's lord, a Velothi lich in the vault the bronze key opens",
+     "detail": "the household's lord, a Velothi wraith in the vault the bronze key opens",
      "count": 1,
      "reward": "gold-hoard"
     },
@@ -3814,7 +3814,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "The Stone-Sleepers' eastern hamlet, on a river below the mesa where the Kalaxo Cut quarry works. The road from it runs a day north to Thorn.",
+     "text": "The Stone-Sleepers' eastern hamlet stands on a river below the mesa where the Kalaxo Cut quarry works. The road from it runs a day north to Thorn.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3996,7 +3996,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Wildcats prowl the river bank at Ayiin. The odd thief works the road toward Thorn.",
+     "text": "Crocodiles prowl the river bank at Ayiin. The odd thief works the road toward Thorn.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4022,7 +4022,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A quarry cart overturned in the ford with a locked chest under it, and an elder who wants to know who has been leaving shells at Balormaak's gate, since no one in Ayiin admits to it.",
+     "text": "A quarry cart overturned in the ford with a locked chest under it, and an elder who wants to know who has been leaving shells at Balormaak's gate, since every family in Ayiin denies it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4070,7 +4070,7 @@
     },
     {
      "kind": "combat-creature",
-     "detail": "a sabre cat on the riverbank path",
+     "detail": "a crocodile on the riverbank path",
      "count": 1,
      "reward": "treasure"
     },
@@ -4132,7 +4132,7 @@
     },
     {
      "aspect": "history",
-     "text": "A natural cave hunters have known for generations; the Sarpa took it when their warband settled the mesa edge, and no one has gone in since without a fight.",
+     "text": "A natural cave hunters have known for generations; the Sarpa took it when their warband settled the mesa edge, and every visitor since has had to fight to go in.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4184,7 +4184,7 @@
     },
     {
      "aspect": "people",
-     "text": "Sarpa Argonians, a winged breed hostile to outsiders, and their young.",
+     "text": "Sarpa Argonians, a winged breed hostile to outsiders and their young.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4314,7 +4314,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A clutch of Stone-Sleeper eggs carried off from Oxayo and kept in the nest gallery, and a Sarpa elder in the back chamber who will talk instead of fight if the player comes in with no weapon drawn.",
+     "text": "A clutch of Stone-Sleeper eggs carried off from Oxayo and kept in the nest gallery, and a Sarpa elder in the back chamber who will talk instead of fight if a visitor comes in with no weapon drawn.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4799,7 +4799,7 @@
     },
     {
      "aspect": "economy",
-     "text": "The garrison of Fort Chalkmoth lives on tolls from the mesa road and on a share of the chalk that the pit sends on to Thorn.",
+     "text": "The garrison of Fort Chalkmoth lives on tolls from the mesa road and on a share of the chalk that its carters take on to Thorn.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4877,7 +4877,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Kept by the garrison; Sarpa raids come to its western approach.",
+     "text": "The garrison holds the walls and the road, and Sarpa raids come to its western approach.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5019,7 +5019,7 @@
     },
     {
      "aspect": "history",
-     "text": "Before 2E 864 a dragon burned the village's walls to the ground. The villagers heated their spear-tips in the dragonfire, took the enchantment and pierced it; Dreekius carried the head to Stros M'Kai, where it hung in the Draggin Tail Inn in Port Hunding.",
+     "text": "Long ago, in the legend the villagers tell, a dragon burned the village's walls to the ground. The villagers heated their spear-tips in the dragonfire, took the enchantment and pierced it; In the telling, Dreekius carried the head to Stros M'Kai, to hang in the Draggin Tail Inn in Port Hunding.",
      "tier": "CANON_EXPLICIT",
      "sources": [
       {
@@ -5163,7 +5163,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A spear-smith's apprentice says she can make the dragonfire spear-tips again if someone brings her fire salts, and the elders want the dragon's head brought home from Port Hunding.",
+     "text": "A spear-smith's apprentice says she can make the dragonfire spear-tips again if someone brings her fire salts, and the elders speak of the dragon's head, lost across the sea and wish it home.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5191,7 +5191,7 @@
     },
     {
      "kind": "trader-blacksmith",
-     "detail": "the spear-smiths: spears are not in Skyrim, so they sell fire-hardened iron and steel weapons and arrows",
+     "detail": "the spear-smiths: they sell fire-hardened iron and steel weapons and arrows",
      "count": 1
     },
     {
@@ -5236,7 +5236,7 @@
     },
     {
      "kind": "shrine-blessing",
-     "detail": "the village Hist with the dragon-spear beside it: a blessing of fire resistance",
+     "detail": "the village Hist with the dragon-spear beside it: activating its sap cures disease and gives Resist Fire for eight hours",
      "count": 1
     }
    ]
@@ -5400,7 +5400,7 @@
     },
     {
      "aspect": "faith",
-     "text": "They follow the Hist like other Argonians, but they also keep the books their grandparents took from the dead Maran mission at Umpholo and read them aloud at hatchings.",
+     "text": "They follow the Hist like other Argonians, but they also keep the books their forebears took from the dead Maran mission at Umpholo and read them aloud at hatchings.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5478,7 +5478,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "An Agaceph reader wants a book from the drowned lower floor of a mission chapel downriver, reached only by swimming, and a traveller stands frozen by a spell in a doorway, held there since he tried to steal a raft.",
+     "text": "An Agaceph reader wants her forebear's bronze mission lamp from the drowned lower floor of a chapel downriver, reached only by swimming and a traveller stands frozen by a spell in a doorway, held there since he tried to steal a raft.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5773,7 +5773,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "The horn blown at night when no one in Oxayo admits to blowing it, and a bundle of Sarpa feathers tied to the quarry gate, a warning the watch-elder knows from her own youth.",
+     "text": "The horn blown at night when every family in Oxayo denies blowing it, and a bundle of Sarpa feathers tied to the quarry gate, a warning the watch-elder knows from her own youth.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6033,7 +6033,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "There is rockfall inside and an old tunnel behind the north wall. The outside is risky, though the road to Oxayo is watched from Fort Chalkmoth.",
+     "text": "There is rockfall inside and an old tunnel behind the north wall. The outside is mostly safe, as the road to Oxayo is watched from Fort Chalkmoth.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6107,13 +6107,13 @@
     },
     {
      "kind": "combat-creature",
-     "detail": "frostbite spiders in the older tunnel",
+     "detail": "giant spiders in the older tunnel",
      "count": 4,
      "reward": "boss-chest"
     },
     {
      "kind": "combat-boss",
-     "detail": "a giant frostbite spider in the tunnel's end chamber",
+     "detail": "the largest giant spider in the tunnel's end chamber",
      "count": 1,
      "reward": "boss-chest"
     },
@@ -6357,7 +6357,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A carter who drove a load of lime west and came back without cart, ox or lime, telling of Sarpa, and an old chalk face that has fallen open onto a bricked Imperial storeroom.",
+     "text": "A carter who drove a load of lime west and came back without cart, ox or lime, telling of Sarpa and an old chalk face that has fallen open onto a bricked Imperial storeroom.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6509,7 +6509,7 @@
     },
     {
      "aspect": "people",
-     "text": "Four quarrymen, a foreman and a cart-driver from Ayiin, and now and then a Thorn mason who walks up to choose his blocks.",
+     "text": "Four quarrymen, a foreman and a cart-driver from Ayiin and now and then a Thorn mason who walks up to choose his blocks.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6613,7 +6613,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Rockfall inside and a long drop at the cutting edge. The outside is risky because the Ayiin road is watched.",
+     "text": "Rockfall inside and a long drop at the cutting edge. The outside is mostly safe because the Ayiin road is watched.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6682,13 +6682,13 @@
     },
     {
      "kind": "combat-creature",
-     "detail": "frostbite spiders in a natural fissure behind the north wall",
+     "detail": "giant spiders in a natural fissure behind the north wall",
      "count": 3,
      "reward": "boss-chest"
     },
     {
      "kind": "combat-boss",
-     "detail": "a giant frostbite spider in the fissure's cavern",
+     "detail": "the largest giant spider in the fissure's cavern",
      "count": 1,
      "reward": "boss-chest"
     },
@@ -6931,7 +6931,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "The elder's grandson went to Vorannuhl on a dare and came back silent, with a bronze ring no one in Yuvexa has seen before; a pair of sabre cats has started taking goats from the post's pen.",
+     "text": "The elder's grandson went to Vorannuhl on a dare and came back silent, with a bronze ring that no family in Yuvexa has seen before; a pair of giant snakes has started taking goats from the post's pen.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6979,13 +6979,13 @@
     },
     {
      "kind": "combat-creature",
-     "detail": "a pair of sabre cats on the mesa lip",
+     "detail": "a pair of giant snakes on the mesa lip",
      "count": 2,
      "reward": "treasure"
     },
     {
      "kind": "treasure",
-     "detail": "the cats' lair under the lip: bones and a dead traveller's purse, up to 50 gold",
+     "detail": "the snakes' lair under the lip: bones and a dead traveller's purse, up to 50 gold",
      "count": 1
     }
    ]
@@ -7092,7 +7092,7 @@
     },
     {
      "aspect": "people",
-     "text": "Two Root-Folk families, an elder who names the post's hatchlings, and a few youths from Helstrom who came for the hunting.",
+     "text": "Two Root-Folk families, an elder who names the post's hatchlings and a few youths from Helstrom who came for the hunting.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7222,7 +7222,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A wolf pack has denned in the gully below the post and killed a youth on his first hunt, and the pit crews at Tenmal owe Nuxhal a debt of iron for last year's hides and keep putting it off.",
+     "text": "A pair of giant snakes has denned in the gully below the post and killed a youth on his first hunt, and the pit crews at Tenmal owe Nuxhal a debt of iron for last year's hides and keep putting it off.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7265,7 +7265,7 @@
     },
     {
      "kind": "combat-creature",
-     "detail": "a wolf pack denned in the gully",
+     "detail": "a pair of giant snakes denned in the gully",
      "count": 4,
      "reward": "treasure"
     },
@@ -7352,7 +7352,7 @@
     },
     {
      "aspect": "present",
-     "text": "Five or so people live here, hunting and gathering and answer to Jal-Veesa's wardens.",
+     "text": "Five or so people live here, hunting and gathering. They answer to Jal-Veesa's wardens.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7404,7 +7404,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Reed, feathers and hides go to Ranvos Landing and Tenmal Pits, and the post gets lamp oil and salt back.",
+     "text": "Reed, feathers and hides go to Ranvos Landing and Tenmal Pits and the post gets lamp oil and salt back.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7456,7 +7456,7 @@
     },
     {
      "aspect": "look",
-     "text": "Stilt houses under a few trees, drying racks of reed and feather, and a lookout in a trunk that faces Sahlpesh Cave.",
+     "text": "Stilt houses under a few trees, drying racks of reed and feather and a lookout in a trunk that faces Sahlpesh Cave.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7508,7 +7508,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A child of the post has slipped off to Sahlpesh Cave, which the wardens forbid, to see the Sarpa nests, and the reed-cutters have found a Sarpa arrow in a sedge bed only a stone's throw from the houses.",
+     "text": "A child of the post has slipped off to Sahlpesh Cave, which the wardens forbid, to see the Sarpa nests and the reed-cutters have found a Sarpa arrow in a sedge bed only a stone's throw from the houses.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {

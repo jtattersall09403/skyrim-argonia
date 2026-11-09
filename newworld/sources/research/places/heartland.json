@@ -27,7 +27,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Helstrom is one of Black Marsh's great cities, in the reputedly inhospitable middle of the province, and many call it the immortal capital of the Argonians. It meets the Root Talk and is run by its own people, not by any distant government.",
+     "text": "Helstrom is one of Black Marsh's great cities, in the reputedly inhospitable middle of the province and many call it the immortal capital of the Argonians. It meets the Root Talk and is run by its own people, not by any distant government.",
      "tier": "CANON_EXPLICIT",
      "sources": [
       {
@@ -90,7 +90,7 @@
     },
     {
      "aspect": "people",
-     "text": "Overwhelmingly Argonian, drawn from the interior's exclusive breeds: Agaceph on tail-poled rafts, with Paatru and Naga visitors, and a very small licensed outsider presence of perhaps a few dozen. The guard is a tribal levy answerable to the assembly, not to strangers.",
+     "text": "Overwhelmingly Argonian, drawn from the interior's exclusive breeds: Agaceph on tail-poled rafts, with Paatru and Naga visitors and a very small licensed outsider presence of perhaps a few dozen. The guard is a tribal levy answerable to the assembly, not to strangers.",
      "tier": "CANON_DERIVED",
      "sources": [
       {
@@ -109,7 +109,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Helstrom does not trade outward; it receives and redistributes, because the rivers all drain to it. Rootworm and raft traffic, the Panther River fork and pilgrimage to the Root Talk feed it, and its market sells Murkwood feathers, sap, eggs and river fish.",
+     "text": "Helstrom does not trade outward; it receives and redistributes, because the rivers all drain to it. Rootworm and raft traffic, the Panther River fork and pilgrimage to the Root Talk bring it goods. Its market traders sell Murkwood feathers, sap, eggs and river fish.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -147,7 +147,7 @@
     },
     {
      "aspect": "look",
-     "text": "Stilt and root-hollow houses of reed, mud and living wood, with no stone and no outward wall, because the marsh is the wall. Black Heart-Mud pools between the roots, the air is thick and warm, and rafts and plank walks thread the districts.",
+     "text": "Stilt and root-hollow houses of reed, mud and living wood, with no stone and no outward wall, because the marsh is the wall. Black Heart-Mud pools between the roots, the air is thick and warm and rafts and plank walks thread the districts.",
      "tier": "CANON_DERIVED",
      "sources": [
       {
@@ -166,7 +166,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "The city's alleys are as dangerous as they are fine, and its guard has a bad name. The danger is social: a levy that answers to no stranger, assembly politics and a sour-spring cycle the assembly will not discuss. Past the city every approach is deep swamp.",
+     "text": "The city's alleys are as dangerous as they are fine. Its guard has a bad name. The danger is social: a levy that answers to no stranger, assembly politics and a sour-spring cycle the assembly will not discuss. Past the city every approach is deep swamp.",
      "tier": "CANON_EXPLICIT",
      "sources": [
       {
@@ -317,7 +317,7 @@
     },
     {
      "kind": "shrine-blessing",
-     "detail": "the Helstrom Hist: a blessing of the Hist (Resist Disease and Poison)",
+     "detail": "the Helstrom Hist: a blessing of the Hist (Resist Disease for eight hours)",
      "count": 1
     },
     {
@@ -343,14 +343,14 @@
    "siting": "island",
    "danger_band_id": "D0",
    "importance": 3,
-   "summary": "Korydon is the principal Chime-Keeper town of the interior, on a ring of dry ground encircled by water between Helstrom and the southern lakes. Argonians resettled it after the Kothringi died out and kept its name. It is orderly, prosperous for the marsh, and known for tin-and-copper chimes, metal-woven rope and shallow-draft boats.",
+   "summary": "Korydon is the principal Chime-Keeper town of the interior, on a ring of dry ground encircled by water between Helstrom and the southern lakes. Argonians resettled it after the Kothringi died out and kept its name. It is orderly, prosperous for the marsh and known for tin-and-copper chimes, metal-woven rope and shallow-draft boats.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
    "notes": [
     {
      "aspect": "overview",
-     "text": "Korydon is a market town of about two dozen households on a ring of dry ground surrounded by water, the chief of the Kothringi-named towns of the Ultherus country. The name is a Kothringi one, kept by the Argonians who moved in; no source describes the place itself.",
+     "text": "Korydon is a market town of about two dozen residents on a ring of dry ground surrounded by water, the chief of the Kothringi-named towns of the Ultherus country. The name is a Kothringi one, kept by the Argonians who moved in; no source describes the place itself.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -374,7 +374,7 @@
     },
     {
      "aspect": "history",
-     "text": "A Kothringi town until the Knahaten Flu (2E 560–603) emptied it. Argonians, immune to the flu, moved into the empty houses and kept the old name because it belonged to the place. Over the centuries they took up Kothringi habits that the Hist did not forbid. The nativists of 4E 48 called them half-foreign.",
+     "text": "A Kothringi town until the Knahaten Flu (2E 560–603) emptied it. Argonians, immune to the flu, moved into the empty houses and kept the old name because it belonged to the place. Over the centuries they took up Kothringi habits that the Hist did not forbid. Nativists elsewhere in Black Marsh called them half-foreign.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -434,7 +434,7 @@
     },
     {
      "aspect": "economy",
-     "text": "It makes tuned chimes, metal-woven rope and shallow-draft sail-and-paddle boats, and trades them up the channels to Helstrom, Truowa and Blackrose for tin, copper, sap and dragon's-tongue gathered in the swamp.",
+     "text": "It makes tuned chimes, metal-woven rope and shallow-draft sail-and-paddle boats and trades them up the channels to Helstrom, Truowa and Blackrose for tin, copper, sap and dragon's-tongue gathered in the swamp.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -453,7 +453,7 @@
     },
     {
      "aspect": "faith",
-     "text": "Sithis and the Hist beside a quiet regard for Z'en, the Kothringi god of toil, and Dibella, kept at a small chime-hung shrine. The town's tree-minder tends a village tree where eggs are laid.",
+     "text": "Sithis and the Hist. The chime-smiths also keep a small chime-hung shrine to Z'en, the god of toil that the Kothringi worshipped, as a habit they took over with the houses. The town's tree-minder tends a village tree where eggs are laid.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -491,7 +491,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "The town itself is safe: its elders hold watch and its ring of water keeps predators out. Beyond the channel lie Ultherus swamp with its dragon's-tongue, Tumnatu hunters and deep-water predators.",
+     "text": "The town itself is safe: its elders keep a watch and predators seldom cross its ring of water. Beyond the channel lie Ultherus swamp with its dragon's-tongue, Tumnatu hunters and deep-water predators.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -621,7 +621,7 @@
     },
     {
      "kind": "shrine-blessing",
-     "detail": "the Hist-shrine chime: a blessing of the Hist",
+     "detail": "the village tree beside the chime-hung shrine: a blessing of the Hist (Resist Disease for eight hours)",
      "count": 1
     }
    ]
@@ -667,7 +667,7 @@
     },
     {
      "aspect": "history",
-     "text": "No song names Truowa before its rise. It grew from a lake landing where interior goods met coast-bound boats; when Umbriel destroyed Lilmoth in 4E 48 and broke Gideon's rice trade, traders who would not live under the successor state came here.",
+     "text": "No song names Truowa before its rise. It grew from a lake landing where interior goods met coast-bound boats; in the generations after Umbriel destroyed Lilmoth, traders who would not live under the successor state came here.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -763,7 +763,7 @@
     },
     {
      "aspect": "look",
-     "text": "Stilt quays and warehouses on reed piles, rose-washed plaster on the merchants' houses in the Lilmoth manner, rafts and canoes at every landing, and the lake spread flat and grey-green to the west.",
+     "text": "Stilt quays and warehouses on reed piles, rose-washed plaster on the merchants' houses in the Lilmoth manner, rafts and canoes at every landing and the lake spread flat and grey-green to the west.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -926,7 +926,7 @@
     },
     {
      "kind": "shrine-blessing",
-     "detail": "the tree-minder's Hist: a blessing of the Hist",
+     "detail": "the tree-minder's Hist: a blessing of the Hist (Fortify Health for eight hours)",
      "count": 1
     }
    ]
@@ -1276,7 +1276,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Saltrice, a ferry toll across the braid, and small trade with Helstrom's outposts for sap and eggs.",
+     "text": "Saltrice, a ferry toll across the braid and small trade with Helstrom's outposts for sap and eggs.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1312,7 +1312,7 @@
     },
     {
      "aspect": "look",
-     "text": "Low stone footings with reed-and-mud walls, a causeway of laid stone out to the ferry post, flat rice paddies fenced with reed, and the lake's wide grey sheet beyond.",
+     "text": "Low stone footings with reed-and-mud walls, a causeway of laid stone out to the ferry post, flat rice paddies fenced with reed and the lake's wide grey sheet beyond.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1437,7 +1437,7 @@
    "siting": "island",
    "danger_band_id": "D2",
    "importance": 1,
-   "summary": "Luntoc is a hamlet on a low island in the south-west of Lake Ulaish. It is the last dry ground between the lake's western shore and its deep water, and the families there fish, set eel traps and guide boats through the shoals.",
+   "summary": "Luntoc is a hamlet on a low island in the south-west of Lake Ulaish. It is the last dry ground between the lake's western shore and its deep water, and the family there fishes, sets eel traps and guides boats through the shoals.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
@@ -1563,7 +1563,7 @@
     },
     {
      "aspect": "look",
-     "text": "Low reed-and-stone houses on a hump of silt, eel pots drying on poles, a lantern post at the south tip, and flat water on every side.",
+     "text": "Low reed-and-stone houses on a hump of silt, eel pots drying on poles, a lantern post at the south tip and flat water on every side.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1809,7 +1809,7 @@
     },
     {
      "aspect": "look",
-     "text": "Stone-footed reed houses along a low shore, paddies fenced with reed, a small plank quay, and the fort's lamp visible across the water at dusk.",
+     "text": "Stone-footed reed houses along a low shore, paddies fenced with reed, a small plank quay and the fort's lamp visible across the water at dusk.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1933,7 +1933,7 @@
    "siting": "island",
    "danger_band_id": "D1",
    "importance": 2,
-   "summary": "Fort Gysilla is an old Imperial stone fort on a lake island at the south of Lake Ulaish, now an Archwardens toll and watch station. Its small garrison taxes boat traffic between Truowa and the southern waters and watches the lake.",
+   "summary": "Fort Gysilla is an old Imperial stone fort on a lake island at the south of Lake Ulaish, now an Archwardens toll and watch station. Its small garrison collects the toll on boat traffic between Truowa and the southern waters and watches the lake.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
@@ -1964,7 +1964,7 @@
     },
     {
      "aspect": "history",
-     "text": "Built by the Empire as a lake post on the interior boat road. The Legion left at the secession (4E 5–10), and Archein families took the keys and kept the toll in the Archwardens' name, as at the other forts.",
+     "text": "Built by the Empire as a lake post on the interior boat road. The Legion left at the secession (4E 5–10). Archein families took the keys and kept the toll in the Archwardens' name, as at the other forts.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2023,7 +2023,7 @@
     },
     {
      "aspect": "economy",
-     "text": "A toll on lake boats and a levy on grain; the garrison buys food from Yalugo and fish from Luntoc.",
+     "text": "A toll on lake boats. The garrison buys food from Yalugo and fish from Luntoc.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2193,7 +2193,7 @@
    "siting": "swamp",
    "danger_band_id": "D2",
    "importance": 1,
-   "summary": "Myroleon is a hamlet at the southern edge of the Ultherus swamp, where the land breaks into channels toward Blackrose. A few families harvest herbs and keep a chime-post that guides boats through the maze of water.",
+   "summary": "Myroleon is a hamlet at the southern edge of the Ultherus swamp, where the land breaks into channels toward Blackrose. A few families harvest herbs and keep a chime-post that they sound to guide boats through the maze of water.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
@@ -2230,7 +2230,7 @@
     },
     {
      "aspect": "history",
-     "text": "The name is Kothringi in style, and Argonians resettled the place after 2E 560. Its chime-post is the oldest working one in the Ultherus country.",
+     "text": "The name is Kothringi in style. Argonians resettled the place after the Flu began in 2E 560. Its chime-post is the oldest working one in the Ultherus country.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2331,7 +2331,7 @@
     },
     {
      "aspect": "faith",
-     "text": "Sithis and a small Dibella chime, kept for travellers; the hamlet's eggs are laid at Korydon.",
+     "text": "Sithis and a small chime kept for travellers; the hamlet's eggs are laid at Korydon.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2518,7 +2518,7 @@
     },
     {
      "aspect": "history",
-     "text": "Nothing is recorded. The Kothringi name implies a Kothringi site resettled by Argonians; it has been small ever since.",
+     "text": "No stake tells of its founding. The place is read as a Kothringi site resettled by Argonians, and it has stayed small.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2649,7 +2649,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A wrecked boat lies in the reeds with its goods unsold; a Kothringi cairn is hidden behind the houses; someone lights the lantern from the water side at night.",
+     "text": "A wrecked boat lies in the reeds with its goods unsold; a Kothringi cairn is hidden behind the houses; the lantern is lit from the water side at night and the family has not seen who does it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2764,7 +2764,7 @@
     },
     {
      "aspect": "history",
-     "text": "A Kothringi-named place resettled by Argonians after the Knahaten Flu (2E 560–603); the ridge made it a lookout, and in 4E 48 families from the north hid here from Umbriel's path.",
+     "text": "A Kothringi-named place resettled by Argonians after the Knahaten Flu (2E 560–603); the ridge made it a lookout.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2823,7 +2823,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Penned marsh-lizards, hides, and tin chimes traded with the Paatru and taken as gifts to Helstrom at the Root Talk.",
+     "text": "Penned marsh-lizards, hides and tin chimes traded with the Paatru and taken as gifts to Helstrom at the Root Talk.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2841,7 +2841,7 @@
     },
     {
      "aspect": "faith",
-     "text": "The families here honour Sithis and Dibella, and keep a small cairn on the ridge shoulder for the old dead of the Kothringi place.",
+     "text": "The families here honour Sithis and the Hist, and keep a small cairn on the ridge shoulder for the old dead of the Kothringi place.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3123,7 +3123,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Naga hunters from the north camps, ridge cats, bad footing at night.",
+     "text": "Naga hunters from the north camps, giant snakes, bad footing at night.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3141,7 +3141,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "The watchfire went dark one night and a stranger was found beside it; a chaurus nest guards a Kothringi cache along the ridge path.",
+     "text": "The watchfire went dark one night and a stranger was found beside it; a giant spider nest guards a Kothringi cache along the ridge path.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3203,13 +3203,13 @@
     },
     {
      "kind": "combat-creature",
-     "detail": "chaurus on the ridge path",
+     "detail": "giant spiders on the ridge path",
      "count": 3,
      "reward": "boss-chest"
     },
     {
      "kind": "combat-boss",
-     "detail": "a chaurus reaper over the Kothringi cache",
+     "detail": "a giant spider over the Kothringi cache",
      "count": 1,
      "reward": "boss-chest"
     },
@@ -3361,7 +3361,7 @@
     },
     {
      "aspect": "look",
-     "text": "Four stilt huts and a drying frame of sap-skins on a firm bank, an eel-trap line across the shallows, and a canoe landing wreathed in hanging moss.",
+     "text": "Four stilt huts and a drying frame of sap-skins on a firm bank, an eel-trap line across the shallows and a canoe landing wreathed in hanging moss.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3454,13 +3454,13 @@
     },
     {
      "kind": "combat-creature",
-     "detail": "chaurus in the bank roots",
+     "detail": "giant spiders in the bank roots",
      "count": 3,
      "reward": "boss-chest"
     },
     {
      "kind": "combat-boss",
-     "detail": "a chaurus reaper",
+     "detail": "a giant spider",
      "count": 1,
      "reward": "boss-chest"
     },
@@ -3535,7 +3535,7 @@
     },
     {
      "aspect": "present",
-     "text": "Five Saxhleel hold the station where the river arms spread into the delta. They tend eggs, watch the water for strangers, and send word to Helstrom's tree-minders at each new moon.",
+     "text": "Five Saxhleel hold the station where the river arms spread into the delta. They tend eggs, watch the water for strangers and send word to Helstrom's tree-minders at each new moon.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4453,13 +4453,13 @@
     },
     {
      "kind": "combat-creature",
-     "detail": "chaurus at the last crossing",
+     "detail": "giant spiders at the last crossing",
      "count": 3,
      "reward": "boss-chest"
     },
     {
      "kind": "combat-boss",
-     "detail": "a chaurus reaper",
+     "detail": "a giant spider",
      "count": 1,
      "reward": "boss-chest"
     },
@@ -4821,7 +4821,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Fish, eggs, and a small fee for tying up, from boats on the Marzai-Truowa run.",
+     "text": "Fish, eggs and a small fee for tying up, from boats on the Marzai-Truowa run.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5018,7 +5018,7 @@
     },
     {
      "aspect": "history",
-     "text": "A waystation of the Root-Folk in forest country south of Korydon. It lets the Helstrom assembly hear of the Blackrose waters.",
+     "text": "A waystation of the Root-Folk in forest country south of Korydon. The Helstrom assembly hears of the Blackrose waters from its keepers.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5292,7 +5292,7 @@
     },
     {
      "aspect": "present",
-     "text": "Six Hutan-Tzel keep the bank, watching the river and taking a small toll from boats. They answer to the naheesh at their own tree, not to Helstrom and send a share of every toll.",
+     "text": "Six Hutan-Tzel keep the bank, watching the river and taking a small toll from boats. They answer to the naheesh at their own tree and not to Helstrom. They send a share of every toll to that naheesh.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5452,7 +5452,7 @@
     },
     {
      "kind": "shrine-blessing",
-     "detail": "the rune-carved totem: a blessing of the Hist",
+     "detail": "(delete entry)",
      "count": 1
     },
     {
@@ -5520,7 +5520,7 @@
     },
     {
      "aspect": "history",
-     "text": "The Hutan-Tzel sit between Helstrom and the Gideon country and act as go-betweens (cultures.json).",
+     "text": "The Hutan-Tzel sit between Helstrom and the Gideon country and act as go-betweens.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5579,7 +5579,7 @@
     },
     {
      "aspect": "economy",
-     "text": "A toll on river boats, guide fees, and a share of what the go-betweens carry between Helstrom's Root-Folk and the Gideon country.",
+     "text": "A toll on river boats, guide fees and a share of what the go-betweens carry between Helstrom's Root-Folk and the Gideon country.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5615,7 +5615,7 @@
     },
     {
      "aspect": "look",
-     "text": "A palisade of reed on the bank, totem posts with runes only the tribe reads, and a long canoe shed.",
+     "text": "A palisade of reed on the bank, totem posts with runes only the tribe reads and a long canoe shed.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5811,7 +5811,7 @@
     },
     {
      "aspect": "present",
-     "text": "About nine Naga hold it in 4E 201, beyond the reach of Helstrom's assembly, and prey on the north river arm.",
+     "text": "About nine Naga hold it in 4E 201, beyond the reach of Helstrom's assembly and prey on the north river arm.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5903,7 +5903,7 @@
     },
     {
      "aspect": "faith",
-     "text": "Sithis, above all. The camp keeps no village tree; its dead are laid in the dry ground north of Helstrom with a snake's fang as marker.",
+     "text": "Sithis, above all. There is no village tree at the camp; its dead are laid in the dry ground north of Helstrom with a snake's fang as marker.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6175,7 +6175,7 @@
     },
     {
      "aspect": "people",
-     "text": "About eight Naga, a few young ones, and a seer who reads bones.",
+     "text": "About eight Naga, a few young ones and a seer who reads bones.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7507,7 +7507,7 @@
     },
     {
      "kind": "combat-creature",
-     "detail": "chaurus in the dragon's-tongue beds",
+     "detail": "giant spiders in the dragon's-tongue beds",
      "count": 3,
      "reward": "treasure"
     },
@@ -7665,7 +7665,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "On the summit path of Aunike Crown there are sabre cats and Naga parties out of the northern camps.",
+     "text": "On the summit path of Aunike Crown there are giant snakes and Naga parties out of the northern camps.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7682,7 +7682,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A Kothringi cairn of beads stands on the summit, and sabre cats den below it; a stranger was found dead beside the fire-basket.",
+     "text": "A Kothringi cairn of beads stands on the summit, and giant snakes den below it; a stranger was found dead beside the fire-basket.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7718,7 +7718,7 @@
     },
     {
      "kind": "combat-creature",
-     "detail": "sabre cats denning below the summit",
+     "detail": "giant snakes denning below the summit",
      "count": 2,
      "reward": "treasure"
     },
@@ -7808,7 +7808,7 @@
     },
     {
      "aspect": "people",
-     "text": "The peak has no residents; a sentry sits in the hut when needed.",
+     "text": "The peak has no residents; a sentry from Nacydes sits in the hut at all times.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7842,7 +7842,7 @@
     },
     {
      "aspect": "faith",
-     "text": "A small chime hangs at the top of Nacydes Watch for the wind's blessing, the same kind the hamlet below hangs from its huts.",
+     "text": "A small chime hangs at the top of Nacydes Watch the same kind the hamlet below hangs from its huts.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7876,7 +7876,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "The summit of Nacydes Watch lies open to Paatru and Naga raiders, and sabre cats den in the crevices below it.",
+     "text": "The summit of Nacydes Watch lies open to Paatru and Naga raiders, and giant snakes den in the crevices below it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7893,7 +7893,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "The sentry saw a light in the Paatru camp that is not a fire; a lost scout's pack lies in a crevice beside a sabre cat den.",
+     "text": "The sentry saw a light in the Paatru camp that is not a fire; a lost scout's pack lies in a crevice beside a giant snake den.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -7934,7 +7934,7 @@
     },
     {
      "kind": "combat-creature",
-     "detail": "a sabre cat in the crevice den",
+     "detail": "a giant snake in the crevice den",
      "count": 1,
      "reward": "treasure"
     },

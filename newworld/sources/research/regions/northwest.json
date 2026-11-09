@@ -145,7 +145,7 @@
     },
     {
      "aspect": "look",
-     "text": "Stone-footed farmsteads and mounds linked by stone causeways, the river and its branches, and the grey Imperial forts.",
+     "text": "Stone-footed farmsteads and mounds linked by stone causeways, the river and its branches and the grey Imperial forts.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -203,7 +203,7 @@
     },
     {
      "aspect": "ecology",
-     "text": "Crocodiles in the ravines, fleshflies, giant snakes and wamasu in the deeper water.",
+     "text": "Crocodiles in the ravines, hackwings, giant snakes and wamasu in the deeper water.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -498,7 +498,7 @@
     },
     {
      "aspect": "ecology",
-     "text": "Lamias live in Loriasel's caverns, and giant snakes, wamasu and fleshflies range the plain.",
+     "text": "Lamias live in Loriasel's caverns, and giant snakes, wamasu and hackwings range the plain.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -718,7 +718,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Sul-Xan raiders, death hoppers and hackwings make the frontier dangerous away from the roads.",
+     "text": "Sul-Xan raiders, giant spiders and hackwings make the frontier dangerous away from the roads.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -752,7 +752,7 @@
     },
     {
      "aspect": "ecology",
-     "text": "Death hoppers, hackwings, fleshflies and marsh giants live in the hills and bogs.",
+     "text": "Giant spiders, hackwings, hackwings and crocodiles live in the hills and bogs.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -774,7 +774,7 @@
     },
     {
      "aspect": "climate",
-     "text": "The air is humid, with long rains and fog over the bogs; the frontier roads are mud where they are not causeway.",
+     "text": "The air is humid. Long rains and fog lie over the bogs; the frontier roads are mud where they are not causeway.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
