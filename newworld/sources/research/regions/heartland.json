@@ -17,7 +17,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Murkwood is the legendary dark forest that ever moves, on a river deep in the swamps of Black Marsh and home to many medusas. The Conclave of Baal at Stormhold finds where it stands by reading the Elder Scrolls with an ancient tablet; in 4E 201 it stands around Helstrom.",
+     "text": "Murkwood is the legendary dark forest said to move, on a river deep in the swamps of Black Marsh and home to many medusas. The Conclave of Baal at Stormhold is said to find where it stands by reading the Elder Scrolls with an ancient tablet; in 4E 201 it stands around Helstrom.",
      "tier": "CANON_EXPLICIT",
      "sources": [
       {
@@ -195,7 +195,7 @@
     },
     {
      "aspect": "climate",
-     "text": "Hot, wet and still; monsoon in late spring and early summer; fog in the early mornings and a perpetual warmth.",
+     "text": "Hot, wet and still, with heavy rain and morning fog the commonest weathers and clear days rare.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -254,7 +254,7 @@
     },
     {
      "aspect": "history",
-     "text": "Nothing is recorded. The lake is the interior's drain. The rivers all flow to Middle Argonia and pool here, which made it a meeting place for trade long before the Empire built a post at Gysilla.",
+     "text": "No song or stake tells of the lake before the Empire. The interior rivers pool here, which made it a meeting place for trade long before the Empire built a post at Gysilla.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -277,7 +277,7 @@
     },
     {
      "aspect": "present",
-     "text": "In 4E 201 the lake carries the boat traffic between Helstrom, Aroxhu, Truowa and the waters toward Korydon and Blackrose. An Archwardens garrison tolls it from Gysilla; Truowa's merchants and the Aroxhu mound people compete for its trade.",
+     "text": "In 4E 201 the lake carries the boat traffic between Helstrom, Aroxhu, Truowa and the waters toward Korydon and Blackrose. Archein families toll it from Fort Gysilla in the Archwardens' name; Truowa's merchants and the Aroxhu mound people compete for its trade.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -300,7 +300,7 @@
     },
     {
      "aspect": "people",
-     "text": "A mix: the Root-Folk's islet stations, stone-footed farm hamlets in the Stormhold manner, clay-mound people at Marzai, Tumnatu fishers, an Archwarden garrison and Truowa's Lilmoth-linked merchants.",
+     "text": "A mix: the Root-Folk's islet stations, stone-footed farm hamlets in the Stormhold manner, clay-mound people at Marzai, Tumnatu fishers, the Archein garrison at Gysilla and Truowa's Lilmoth-linked merchants.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -323,7 +323,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Fish, eels, saltrice, pottery, sap and a through trade in cloth, tin and salt, all taxed by tolls at Gysilla and Truowa.",
+     "text": "Fish, eels, saltrice, pottery, sap and a through trade in cloth, tin and salt, with tolls taken at Gysilla and Truowa.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -392,7 +392,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Storm squalls, deep-water predators, boat-robbers and smugglers; the Archwardens' toll and Truowa's quarrels are the social hazards.",
+     "text": "Slaughterfish in the deep water, boat-robbers and smugglers; the Gysilla toll and Truowa's quarrels are the social hazards.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -415,7 +415,7 @@
     },
     {
      "aspect": "landscape",
-     "text": "A shallow basin with flat shores, silt islets and a delta of river arms at the north-west; the south shore is firmer. The water level swings with the monsoon.",
+     "text": "A shallow basin with flat shores, silt islets and a delta of river arms at the north-west; the south shore is firmer.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -461,7 +461,7 @@
     },
     {
      "aspect": "climate",
-     "text": "Warm and humid, with afternoon squalls over the open water and monsoon floods of the shore from late spring.",
+     "text": "Warm and humid, with rain squalls over the open water and fog on the shores the commonest weathers.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -573,7 +573,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Lizard-herding, hides, hunting and tin chimes traded with the Paatru, with Helstrom's levy and with Korydon.",
+     "text": "Penned marsh-lizards, hides, hunting and tin chimes traded with the Paatru and with Korydon, and taken to Helstrom at the Root Talk.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -663,7 +663,7 @@
     },
     {
      "aspect": "ecology",
-     "text": "Grass, scrub, stunted trees and lizards; ridge cats and marsh-lizard herds; fewer insects than the forest.",
+     "text": "Grass, scrub, stunted trees and lizards; sabre cats and wild marsh-lizards; fewer insects than the forest.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -681,7 +681,7 @@
     },
     {
      "aspect": "climate",
-     "text": "Breezy and a little drier than the forest, with morning mist and monsoon rain from the north.",
+     "text": "Breezy and a little drier than the forest, with morning mist and rain the commonest weathers.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -716,7 +716,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "The Ultherus Swamp, also written Utherus, is a region of Black Marsh of which little is known; the beautiful but deadly dragon's-tongue plant is especially common there. In our map it lies south of Helstrom around Korydon.",
+     "text": "The Ultherus Swamp, also called Utherus, is a region of Black Marsh of which little is known; the beautiful but deadly dragon's-tongue plant is especially common there. On our map it lies south of Helstrom around Korydon.",
      "tier": "CANON_EXPLICIT",
      "sources": [
       {
@@ -729,7 +729,7 @@
     },
     {
      "aspect": "history",
-     "text": "No record survives of this swamp. The Kothringi-named towns here, Korydon, Myroleon and Nemeon, are taken to be old Kothringi places that Argonians resettled after the Knahaten Flu of 2E 560.",
+     "text": "No song survives of this swamp's past. Its Kothringi-named towns, Korydon, Myroleon and Nemeon, are read as old Kothringi places that Argonians resettled after the Knahaten Flu (2E 560–603).",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -928,7 +928,7 @@
     },
     {
      "aspect": "climate",
-     "text": "Hot and heavy, with monsoon from late spring to summer and a persistent warm fog on the channels.",
+     "text": "Hot and heavy, with rain and a warm fog on the channels the commonest weathers.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {

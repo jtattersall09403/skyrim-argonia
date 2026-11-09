@@ -27,7 +27,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Helstrom is one of Black Marsh's eight great cities, in the reputedly inhospitable middle of the province, and many call it the immortal capital of the Argonians. It is the formal seat of the Archwardens' successor state and the meeting place of the Root Talk, though it is run by its own people, not by any distant government.",
+     "text": "Helstrom is one of Black Marsh's great cities, in the reputedly inhospitable middle of the province, and many call it the immortal capital of the Argonians. It meets the Root Talk and is run by its own people, not by any distant government.",
      "tier": "CANON_EXPLICIT",
      "sources": [
       {
@@ -46,7 +46,7 @@
     },
     {
      "aspect": "history",
-     "text": "Helstrom was already active in the late First Era, during the Blackwater War. After the defeat at the Battle of Argonia in 1E 2811 the native armies retreated here. The Empire refused to follow. It never besieged the city. In 1E 2836 the Argonians simply stopped fighting. In the Third Era it became an incorporated city-state. Settlements were built around it by the fourth century. The Umbriel storm of 4E 48 passed it by.",
+     "text": "Helstrom was already active in the late First Era, during the Blackwater War. After the defeat at the Battle of Argonia in 1E 2811 the native armies retreated here. The Empire refused to follow and never besieged the city. In 1E 2836 the Argonians simply stopped fighting. In the Third Era it became an incorporated city-state, and villages were built around it. Umbriel's path in 4E 48 passed it by.",
      "tier": "CANON_EXPLICIT",
      "sources": [
       {
@@ -80,6 +80,11 @@
        "title": "story/lore/helstrom.md",
        "locator": "story/lore/helstrom.md",
        "section": "Notes for authoring"
+      },
+      {
+       "kind": "reasoning",
+       "title": "The Archwardens' formal seat at Helstrom is EXTRAPOLATED (state §1, §10.2); only 'capital' in the Simulacrum is canon (Lore:Kingdom of Black Marsh)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     },
@@ -180,8 +185,8 @@
     },
     {
      "aspect": "hooks",
-     "text": "A stranger can be stranded here and rescued by an Agaceph raftsman; the assembly will not time its sour spring in open session; the Root Talk draws every naheesh in the interior; and the ring of drowned Third Era villages holds the first settlers' abandoned goods.",
-     "tier": "AGENT_INVENTED",
+     "text": "A stranger stranded on the approaches is pulled out by an Agaceph raftsman; the assembly will not speak of its sour spring in open session; the Root Talk draws every naheesh in the interior; boat-robbers pick through the drowned Third Era villages on the city's edge.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "dossier",
@@ -193,6 +198,11 @@
        "kind": "reasoning",
        "title": "Helstrom's canon traits (alleys, guard, river fork, never besieged) as story seeds",
        "locator": "Helstrom's canon traits (alleys, guard, river fork, never besieged) as story seeds"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Settlement people and hooks reasoned from the place's kind, culture and neighbours on the PT map (cultures.json; state §10.2, §10.3)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     }
@@ -207,6 +217,119 @@
      "id": "shore-access",
      "radius_m": 60,
      "why": "the river landings where rafts and rootworm traffic arrive"
+    }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Helstrom city",
+     "count": 1
+    },
+    {
+     "kind": "carriage-or-boat",
+     "detail": "raft-boatman to Truowa, Korydon, Marzai and Julo",
+     "count": 1
+    },
+    {
+     "kind": "trader-general",
+     "detail": "market trader",
+     "count": 1
+    },
+    {
+     "kind": "trader-blacksmith",
+     "detail": "Root-Folk smith",
+     "count": 1
+    },
+    {
+     "kind": "trader-apothecary",
+     "detail": "sap and herb seller",
+     "count": 1
+    },
+    {
+     "kind": "trader-spells",
+     "detail": "tree-minder's healer: Restoration and Alteration tomes to Adept",
+     "count": 1
+    },
+    {
+     "kind": "trader-innkeeper",
+     "detail": "the boatmen's lodge",
+     "count": 1
+    },
+    {
+     "kind": "inn-room",
+     "detail": "the boatmen's lodge",
+     "count": 1
+    },
+    {
+     "kind": "forge",
+     "detail": "the market smithy",
+     "count": 1
+    },
+    {
+     "kind": "anvil",
+     "detail": "the market smithy",
+     "count": 1
+    },
+    {
+     "kind": "armour-workbench",
+     "detail": "the market smithy",
+     "count": 1
+    },
+    {
+     "kind": "grindstone",
+     "detail": "the market smithy",
+     "count": 1
+    },
+    {
+     "kind": "smelter",
+     "detail": "the market smithy",
+     "count": 1
+    },
+    {
+     "kind": "tanning-rack",
+     "detail": "the market smithy",
+     "count": 1
+    },
+    {
+     "kind": "alchemy-lab",
+     "detail": "the sap-seller's stall",
+     "count": 1
+    },
+    {
+     "kind": "arcane-enchanter",
+     "detail": "the tree-minders' hall",
+     "count": 1
+    },
+    {
+     "kind": "cooking-pot",
+     "detail": "the boatmen's lodge",
+     "count": 1
+    },
+    {
+     "kind": "trainer",
+     "detail": "Expert Restoration (a tree-minder)",
+     "count": 1
+    },
+    {
+     "kind": "trainer",
+     "detail": "Journeyman Alchemy (the sap-seller)",
+     "count": 1
+    },
+    {
+     "kind": "shrine-blessing",
+     "detail": "the Helstrom Hist: a blessing of the Hist (Resist Disease and Poison)",
+     "count": 1
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "boat-robbers in the drowned Third Era villages",
+     "count": 3,
+     "reward": "treasure"
+    },
+    {
+     "kind": "treasure",
+     "detail": "settlers' goods in the drowned villages, D1 tier",
+     "count": 1
     }
    ]
   },
@@ -251,7 +374,7 @@
     },
     {
      "aspect": "history",
-     "text": "A Kothringi town until the Knahaten Flu of 2E 560 emptied it. Argonians, immune to the flu, moved into the empty houses and kept the old name because it belonged to the place. Over the centuries they added Kothringi habits that the Hist did not forbid. The 4E 48 nativists called them half-foreign.",
+     "text": "A Kothringi town until the Knahaten Flu (2E 560–603) emptied it. Argonians, immune to the flu, moved into the empty houses and kept the old name because it belonged to the place. Over the centuries they took up Kothringi habits that the Hist did not forbid. The nativists of 4E 48 called them half-foreign.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -270,7 +393,7 @@
     },
     {
      "aspect": "present",
-     "text": "In 4E 201 Korydon is the most orderly town in the interior, run by a council of guild elders, cold toward the Archwardens and warm toward Gideon. Its chimes ring from every eave and mark the hours, the water level and the weather.",
+     "text": "In 4E 201 Korydon is the most orderly town in the interior, run by a council of guild elders, cold toward the Archwardens and warm toward Gideon. Its chimes ring from every eave and the elders strike the great chime at dawn and dusk.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -288,8 +411,8 @@
     },
     {
      "aspect": "people",
-     "text": "About 22 residents, nearly all Argonian with a few mixed families. Chime-smiths, rope-weavers, boat-wrights, a tin broker and the elders; a few families keep a stone cairn for the old Kothringi dead.",
-     "tier": "AGENT_INVENTED",
+     "text": "About 22 residents, nearly all Argonian with a few mixed families: chime-smiths, rope-weavers, boat-wrights, a tin trader and the elders. A few families keep a stone cairn for the old Kothringi dead whose houses they took.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "map",
@@ -301,6 +424,11 @@
        "title": "newworld/sources/research/cultures.json",
        "locator": "newworld/sources/research/cultures.json",
        "section": "oxblood"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Settlement people and hooks reasoned from the place's kind, culture and neighbours on the PT map (cultures.json; state §10.2, §10.3)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     },
@@ -381,8 +509,8 @@
     },
     {
      "aspect": "hooks",
-     "text": "A Kothringi cairn bead-trove under the oldest footings; a chime that rings with no wind; the guild elders' dispute over who may tune the Hist-shrine chime; a boatwright who needs rare Ultherus herbs.",
-     "tier": "AGENT_INVENTED",
+     "text": "A Kothringi cairn of beads lies under the oldest footings; one chime rings on a still night; the guild elders quarrel over who may tune the Hist-shrine chime; a boatwright needs rare Ultherus herbs.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "map",
@@ -394,6 +522,11 @@
        "title": "newworld/sources/research/cultures.json",
        "locator": "newworld/sources/research/cultures.json",
        "section": "oxblood"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Settlement people and hooks reasoned from the place's kind, culture and neighbours on the PT map (cultures.json; state §10.2, §10.3)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     }
@@ -408,6 +541,88 @@
      "id": "shore-access",
      "radius_m": 50,
      "why": "boat landings on the encircling channel"
+    }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Korydon town",
+     "count": 1
+    },
+    {
+     "kind": "carriage-or-boat",
+     "detail": "boatwright's boat to Helstrom, Myroleon and Orji-Hael",
+     "count": 1
+    },
+    {
+     "kind": "trader-general",
+     "detail": "the tin trader",
+     "count": 1
+    },
+    {
+     "kind": "trader-jeweller",
+     "detail": "chime-smith selling tin, silver and gems",
+     "count": 1
+    },
+    {
+     "kind": "trader-apothecary",
+     "detail": "dragon's-tongue seller",
+     "count": 1
+    },
+    {
+     "kind": "trader-innkeeper",
+     "detail": "the elders' guest-house",
+     "count": 1
+    },
+    {
+     "kind": "inn-room",
+     "detail": "the elders' guest-house",
+     "count": 1
+    },
+    {
+     "kind": "forge",
+     "detail": "the chime-smiths' forge",
+     "count": 1
+    },
+    {
+     "kind": "anvil",
+     "detail": "the chime-smiths' forge",
+     "count": 1
+    },
+    {
+     "kind": "armour-workbench",
+     "detail": "the chime-smiths' forge",
+     "count": 1
+    },
+    {
+     "kind": "grindstone",
+     "detail": "the chime-smiths' forge",
+     "count": 1
+    },
+    {
+     "kind": "smelter",
+     "detail": "the chime-smiths' forge",
+     "count": 1
+    },
+    {
+     "kind": "alchemy-lab",
+     "detail": "the herb-seller's house",
+     "count": 1
+    },
+    {
+     "kind": "cooking-pot",
+     "detail": "the guest-house",
+     "count": 1
+    },
+    {
+     "kind": "trainer",
+     "detail": "Journeyman Smithing (a chime-smith)",
+     "count": 1
+    },
+    {
+     "kind": "shrine-blessing",
+     "detail": "the Hist-shrine chime: a blessing of the Hist",
+     "count": 1
     }
    ]
   },
@@ -452,7 +667,7 @@
     },
     {
      "aspect": "history",
-     "text": "Nothing records Truowa before its rise. It grew from a lake landing where interior goods met coast-bound boats, and the 4E 48 collapse of Lilmoth and Gideon's rice trade made it a refuge for traders who would not live under the successor state.",
+     "text": "No song names Truowa before its rise. It grew from a lake landing where interior goods met coast-bound boats; when Umbriel destroyed Lilmoth in 4E 48 and broke Gideon's rice trade, traders who would not live under the successor state came here.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -470,7 +685,7 @@
     },
     {
      "aspect": "present",
-     "text": "In 4E 201 a merchant council, copying Lilmoth's, runs the city, taxes the lake traffic and keeps a harbour watch. It trades openly with the delta and the Lilmoth coast and is cool toward the nearby Archwarden fort at Gysilla.",
+     "text": "In 4E 201 a merchant council, copying Lilmoth's, runs the city, takes a toll on lake boats and keeps a harbour watch. It trades openly with the delta and the Lilmoth coast and is cool toward the Warden fort at Gysilla.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -488,8 +703,8 @@
     },
     {
      "aspect": "people",
-     "text": "About 38 residents, mostly Argonian, with a small foreign dock population of Imperial, Khajiit and Bosmer traders. Council merchants, harbour watchmen, ferrymen, rice factors and a visible tree-minder.",
-     "tier": "AGENT_INVENTED",
+     "text": "About 38 residents, mostly Argonian, with a few Imperial, Khajiit and Bosmer traders on the quay, come up the river from Lilmoth's coast. Council merchants, harbour watchmen, ferrymen, rice buyers and a tree-minder everyone knows.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "map",
@@ -501,6 +716,11 @@
        "title": "newworld/sources/research/cultures.json",
        "locator": "newworld/sources/research/cultures.json",
        "section": "rose"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Settlement people and hooks reasoned from the place's kind, culture and neighbours on the PT map (cultures.json; state §10.2, §10.3)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     },
@@ -561,7 +781,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Safe inside the harbour watch. Smuggling and tolls make quarrels; the lake outside hides storm squalls, deep-water predators and rival boatmen.",
+     "text": "Safe inside the harbour watch. Smuggling and tolls start quarrels on the quay; out on the lake there are slaughterfish in the deep water and rival boatmen.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -579,8 +799,8 @@
     },
     {
      "aspect": "hooks",
-     "text": "A cargo has gone missing from the quay and each side blames the other; the council owes the Archwardens a toll it will not pay; a Lilmoth factor wants a safe route to Helstrom.",
-     "tier": "AGENT_INVENTED",
+     "text": "A cargo of cloth has gone missing from the quay and each side blames the other; the council refuses Fort Gysilla's toll and the garrison has begun stopping Truowa boats; a Lilmoth trader wants a guard on the boat road to Helstrom.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "map",
@@ -592,6 +812,11 @@
        "title": "newworld/sources/research/cultures.json",
        "locator": "newworld/sources/research/cultures.json",
        "section": "rose"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Settlement people and hooks reasoned from the place's kind, culture and neighbours on the PT map (cultures.json; state §10.2, §10.3)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     }
@@ -606,6 +831,103 @@
      "id": "shore-access",
      "radius_m": 120,
      "why": "quays and the lake harbour"
+    }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Truowa city",
+     "count": 1
+    },
+    {
+     "kind": "carriage-or-boat",
+     "detail": "lake ferry to Helstrom, Marzai, Yalugo and Korydon",
+     "count": 1
+    },
+    {
+     "kind": "trader-general",
+     "detail": "a quay merchant",
+     "count": 1
+    },
+    {
+     "kind": "trader-blacksmith",
+     "detail": "the harbour smith",
+     "count": 1
+    },
+    {
+     "kind": "trader-clothier",
+     "detail": "a cloth trader from Lilmoth's coast",
+     "count": 1
+    },
+    {
+     "kind": "trader-apothecary",
+     "detail": "a sap and herb seller",
+     "count": 1
+    },
+    {
+     "kind": "trader-innkeeper",
+     "detail": "the quay tavern",
+     "count": 1
+    },
+    {
+     "kind": "inn-room",
+     "detail": "the quay tavern",
+     "count": 1
+    },
+    {
+     "kind": "fence",
+     "detail": "a smuggler on the quay",
+     "count": 1
+    },
+    {
+     "kind": "forge",
+     "detail": "the harbour smithy",
+     "count": 1
+    },
+    {
+     "kind": "anvil",
+     "detail": "the harbour smithy",
+     "count": 1
+    },
+    {
+     "kind": "armour-workbench",
+     "detail": "the harbour smithy",
+     "count": 1
+    },
+    {
+     "kind": "grindstone",
+     "detail": "the harbour smithy",
+     "count": 1
+    },
+    {
+     "kind": "tanning-rack",
+     "detail": "the harbour smithy",
+     "count": 1
+    },
+    {
+     "kind": "cooking-pot",
+     "detail": "the quay tavern",
+     "count": 1
+    },
+    {
+     "kind": "trainer",
+     "detail": "Expert Speech (a council merchant)",
+     "count": 1
+    },
+    {
+     "kind": "trainer",
+     "detail": "Journeyman Light Armor (the harbour watch captain)",
+     "count": 1
+    },
+    {
+     "kind": "fishing",
+     "detail": "the quay",
+     "count": 1
+    },
+    {
+     "kind": "shrine-blessing",
+     "detail": "the tree-minder's Hist: a blessing of the Hist",
+     "count": 1
     }
    ]
   },
@@ -650,7 +972,7 @@
     },
     {
      "aspect": "history",
-     "text": "Nothing is recorded. The mound-building habit and the Tumnatu camp to the west imply a village founded as a lake landing for Aroxhu's pottery trade, in the settled period after 4E 48.",
+     "text": "No stake tells of its founding. The mound-building habit and the Tumnatu camp to the west imply a village set up as a lake landing for Aroxhu's pottery trade in the generations after 4E 48.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -686,8 +1008,8 @@
     },
     {
      "aspect": "people",
-     "text": "About ten residents of the Oxhu-Teeleel people: potters, fishers, a ferryman and an elder-woman who keeps the mound's tally of floods.",
-     "tier": "AGENT_INVENTED",
+     "text": "About ten residents of the Oxhu-Teeleel people: potters, fishers, a ferryman and an elder-woman who sings the story of the mound and its families.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "map",
@@ -699,6 +1021,11 @@
        "title": "newworld/sources/research/cultures.json",
        "locator": "newworld/sources/research/cultures.json",
        "section": "rust"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Settlement people and hooks reasoned from the place's kind, culture and neighbours on the PT map (cultures.json; state §10.2, §10.3)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     },
@@ -758,7 +1085,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Quiet by day. Lake eels and flood surge, and the odd raid from a hungry Tumnatu party or a Naga band off the north road.",
+     "text": "Quiet by day. Slaughterfish in the shallows below the kilns, and now and then a raid by a hungry Tumnatu party or a Naga band off the north road.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -776,8 +1103,8 @@
     },
     {
      "aspect": "hooks",
-     "text": "The kiln-fired clay will not set since the mound flooded; a pot-dye recipe is wanted at Aroxhu; the ferryman has seen lights on the lake at night.",
-     "tier": "AGENT_INVENTED",
+     "text": "The kiln-fired clay will not set since lake water got into the kiln-pit; Aroxhu's potters want the secret of Marzai's red glaze; the ferryman has seen a lantern on the lake at night where no boat should be.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "map",
@@ -789,6 +1116,11 @@
        "title": "newworld/sources/research/cultures.json",
        "locator": "newworld/sources/research/cultures.json",
        "section": "rust"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Settlement people and hooks reasoned from the place's kind, culture and neighbours on the PT map (cultures.json; state §10.2, §10.3)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     }
@@ -803,6 +1135,44 @@
      "id": "shore-access",
      "radius_m": 40,
      "why": "canoe landing on the lake"
+    }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Marzai village",
+     "count": 1
+    },
+    {
+     "kind": "trader-general",
+     "detail": "a potter selling pots and lake fish",
+     "count": 1
+    },
+    {
+     "kind": "cooking-pot",
+     "detail": "the mound's hearth",
+     "count": 1
+    },
+    {
+     "kind": "fishing",
+     "detail": "eel and fish in the shallows",
+     "count": 1
+    },
+    {
+     "kind": "free-bed",
+     "detail": "the ferryman's hut",
+     "count": 1
+    },
+    {
+     "kind": "combat-creature",
+     "detail": "slaughterfish in the shallows below the kilns",
+     "count": 3,
+     "reward": "treasure"
+    },
+    {
+     "kind": "treasure",
+     "detail": "a sunk Tumnatu canoe's goods, D1 tier",
+     "count": 1
     }
    ]
   },
@@ -847,7 +1217,7 @@
     },
     {
      "aspect": "history",
-     "text": "Nothing is recorded. A Stormhold-style farm outpost this far inland is read as a settlement by families who left the northern river after 4E 48 and brought the habit of stone footings with them.",
+     "text": "No stake tells of its founding. A farm in the Stormhold manner this far inland is read as one set up by families who left the northern river in the generations after 4E 48 and brought stone footings with them.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -865,7 +1235,7 @@
     },
     {
      "aspect": "present",
-     "text": "In 4E 201 it holds a small saltrice patch and a ferry. It pays an annual tribute of rice to Helstrom's levy and keeps good terms with the Root-Folk outposts upstream.",
+     "text": "In 4E 201 it holds a small saltrice patch and a ferry. It sends a gift of rice to Helstrom at each Root Talk and keeps good terms with the Root-Folk stations upstream.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -883,8 +1253,8 @@
     },
     {
      "aspect": "people",
-     "text": "About six residents, Argonian farmers with one Dunmer-descended grandmother who keeps the ledgers.",
-     "tier": "AGENT_INVENTED",
+     "text": "About six residents: Argonian farmers and one grandmother of Dunmer descent, from a Stormhold border family, who settles every quarrel over the rice.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "map",
@@ -896,6 +1266,11 @@
        "title": "newworld/sources/research/cultures.json",
        "locator": "newworld/sources/research/cultures.json",
        "section": "stone-grey"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Settlement people and hooks reasoned from the place's kind, culture and neighbours on the PT map (cultures.json; state §10.2, §10.3)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     },
@@ -974,7 +1349,7 @@
     {
      "aspect": "hooks",
      "text": "The ferry-rope has been cut twice; a cairn on the nearest firm bank has been opened; a salt trader's body washed up at the paddies.",
-     "tier": "AGENT_INVENTED",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "map",
@@ -986,6 +1361,11 @@
        "title": "newworld/sources/research/cultures.json",
        "locator": "newworld/sources/research/cultures.json",
        "section": "stone-grey"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Settlement people and hooks reasoned from the place's kind, culture and neighbours on the PT map (cultures.json; state §10.2, §10.3)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     }
@@ -1000,6 +1380,50 @@
      "id": "shore-access",
      "radius_m": 30,
      "why": "the ferry landing on the braid"
+    }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Julo hamlet",
+     "count": 1
+    },
+    {
+     "kind": "carriage-or-boat",
+     "detail": "the rope ferry across the delta",
+     "count": 1
+    },
+    {
+     "kind": "harvest-common",
+     "detail": "saltrice",
+     "count": 4
+    },
+    {
+     "kind": "cooking-pot",
+     "detail": "the farm hearth",
+     "count": 1
+    },
+    {
+     "kind": "free-bed",
+     "detail": "the ferry hut",
+     "count": 1
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "grave-robbers at the opened cairn on the near bank",
+     "count": 3,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "combat-boss",
+     "detail": "the grave-robbers' leader",
+     "count": 1,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "boss-chest",
+     "detail": "boss chest, D2 tier (level 10)",
+     "count": 1
     }
    ]
   },
@@ -1044,7 +1468,7 @@
     },
     {
      "aspect": "history",
-     "text": "Nothing is recorded. The island's stone footings are read as work by incomers after 4E 48; before them the island was a bare reed bank.",
+     "text": "No stake tells of its founding. The island's stone footings are read as the work of incomers in the generations after 4E 48; before them the island was a bare reed bank.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1080,8 +1504,8 @@
     },
     {
      "aspect": "people",
-     "text": "About five residents, one extended Argonian fishing family and a boy who pilots strangers.",
-     "tier": "AGENT_INVENTED",
+     "text": "About five residents: one Argonian fishing family and a boy who pilots strangers across the shoals.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "map",
@@ -1093,6 +1517,11 @@
        "title": "newworld/sources/research/cultures.json",
        "locator": "newworld/sources/research/cultures.json",
        "section": "stone-grey"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Settlement people and hooks reasoned from the place's kind, culture and neighbours on the PT map (cultures.json; state §10.2, §10.3)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     },
@@ -1152,7 +1581,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Storm squalls on the open lake; deep-water predators near the landing; the shoal causeway drowns at high water.",
+     "text": "Slaughterfish near the landing; the shoal causeway runs under knee-deep water and a giant mudcrab lairs in its reeds.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1170,8 +1599,8 @@
     },
     {
      "aspect": "hooks",
-     "text": "A lantern signal has been answered from open water; the old boy-pilot knows a hidden passage across the lake; eel pots keep catching something that is not eel.",
-     "tier": "AGENT_INVENTED",
+     "text": "A lantern on the island has been answered from open water; the old pilot knows a hidden passage across the lake; the eel pots keep coming up crushed by something large in the reeds.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "map",
@@ -1183,6 +1612,11 @@
        "title": "newworld/sources/research/cultures.json",
        "locator": "newworld/sources/research/cultures.json",
        "section": "stone-grey"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Settlement people and hooks reasoned from the place's kind, culture and neighbours on the PT map (cultures.json; state §10.2, §10.3)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     }
@@ -1197,6 +1631,45 @@
      "id": "shore-access",
      "radius_m": 30,
      "why": "boat landing on the island's sheltered side"
+    }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Luntoc island",
+     "count": 1
+    },
+    {
+     "kind": "carriage-or-boat",
+     "detail": "the pilot boy's boat across the shoals to Yalugo and Julo",
+     "count": 1
+    },
+    {
+     "kind": "fishing",
+     "detail": "eel pots at the landing",
+     "count": 1
+    },
+    {
+     "kind": "cooking-pot",
+     "detail": "the family hearth",
+     "count": 1
+    },
+    {
+     "kind": "combat-creature",
+     "detail": "slaughterfish at the landing",
+     "count": 3,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "combat-boss",
+     "detail": "a giant mudcrab in the causeway reeds",
+     "count": 1,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "boss-chest",
+     "detail": "boss chest, D2 tier (level 10)",
+     "count": 1
     }
    ]
   },
@@ -1241,7 +1714,7 @@
     },
     {
      "aspect": "history",
-     "text": "Nothing is recorded. It is read as a farm settlement founded to feed the traders and garrison at the lake's south side after 4E 48.",
+     "text": "No stake tells of its founding. It is read as a farm set up in the generations after 4E 48 to feed the traders and the Warden garrison on the lake's south side.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1277,8 +1750,8 @@
     },
     {
      "aspect": "people",
-     "text": "About six residents, Argonian farmers and a retired garrison cook of Archein descent.",
-     "tier": "AGENT_INVENTED",
+     "text": "About six residents: Argonian farmers and a retired cook of Archein descent who once fed the Gysilla garrison.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "map",
@@ -1290,6 +1763,11 @@
        "title": "newworld/sources/research/cultures.json",
        "locator": "newworld/sources/research/cultures.json",
        "section": "stone-grey"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Settlement people and hooks reasoned from the place's kind, culture and neighbours on the PT map (cultures.json; state §10.2, §10.3)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     },
@@ -1349,7 +1827,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Safe by day. Smugglers land on the south bank at night; crocodiles in the paddies.",
+     "text": "Safe by day. Smugglers land on the south bank at night, and mudcrabs come up into the paddies.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1367,8 +1845,8 @@
     },
     {
      "aspect": "hooks",
-     "text": "The garrison's price dispute is close to a refusal by the farmers to sell; a stranger paid for a night's boat and left a sealed pouch behind; the south bank's smugglers want a dry store.",
-     "tier": "AGENT_INVENTED",
+     "text": "The farmers are close to refusing the garrison their grain; a stranger hired a boat for one night and left a pouch of uncut stones behind; smugglers landing on the south bank want a dry store.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "map",
@@ -1380,6 +1858,11 @@
        "title": "newworld/sources/research/cultures.json",
        "locator": "newworld/sources/research/cultures.json",
        "section": "stone-grey"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Settlement people and hooks reasoned from the place's kind, culture and neighbours on the PT map (cultures.json; state §10.2, §10.3)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     }
@@ -1394,6 +1877,49 @@
      "id": "shore-access",
      "radius_m": 30,
      "why": "a small quay on the south shore"
+    }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Yalugo hamlet",
+     "count": 1
+    },
+    {
+     "kind": "trader-innkeeper",
+     "detail": "farm family selling grain and smoked fish",
+     "count": 1
+    },
+    {
+     "kind": "carriage-or-boat",
+     "detail": "the spare boat to Luntoc and the Korydon waters",
+     "count": 1
+    },
+    {
+     "kind": "harvest-common",
+     "detail": "saltrice",
+     "count": 4
+    },
+    {
+     "kind": "cooking-pot",
+     "detail": "the farm hearth",
+     "count": 1
+    },
+    {
+     "kind": "free-bed",
+     "detail": "the old cook's house",
+     "count": 1
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "smugglers landing on the south bank at night",
+     "count": 3,
+     "reward": "treasure"
+    },
+    {
+     "kind": "treasure",
+     "detail": "the smugglers' cache, D1 tier",
+     "count": 1
     }
    ]
   },
@@ -1414,7 +1940,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Fort Gysilla is a small stone fort on an islet at the lake's southern end, one of the Empire's old posts now held by the successor state.",
+     "text": "Fort Gysilla is a small stone fort on an islet at the lake's southern end, one of the Empire's old posts now garrisoned by Archein families in the Archwardens' name.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1438,7 +1964,7 @@
     },
     {
      "aspect": "history",
-     "text": "Built by the Empire as a lake post on the interior boat road; the Legion left after the Imperial presence ended and Archein families took the keys and kept the toll, as they did at the other forts.",
+     "text": "Built by the Empire as a lake post on the interior boat road. The Legion left at the secession (4E 5–10), and Archein families took the keys and kept the toll in the Archwardens' name, as at the other forts.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1474,8 +2000,8 @@
     },
     {
      "aspect": "people",
-     "text": "About ten, Argonian Archein families who still keep Imperial-style ranks and paperwork, a few freed-labourer's grandchildren as boatmen and one clerk.",
-     "tier": "AGENT_INVENTED",
+     "text": "About ten: Archein families who still keep Imperial-style ranks and drill, and a few grandchildren of freed labourers who row the toll boats.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "map",
@@ -1487,6 +2013,11 @@
        "title": "newworld/sources/research/cultures.json",
        "locator": "newworld/sources/research/cultures.json",
        "section": "crimson-red"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Settlement people and hooks reasoned from the place's kind, culture and neighbours on the PT map (cultures.json; state §10.2, §10.3)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     },
@@ -1564,8 +2095,8 @@
     },
     {
      "aspect": "hooks",
-     "text": "The toll ledger shows a boat that never left; a cellar under the keep is sealed; the Truowa council would pay to see the garrison replaced.",
-     "tier": "AGENT_INVENTED",
+     "text": "A boat paid the toll at dusk and was never seen to leave the lake; a cellar under the keep has been bricked shut since the Legion left; Truowa's council would pay to see the garrison replaced.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "map",
@@ -1577,6 +2108,11 @@
        "title": "newworld/sources/research/cultures.json",
        "locator": "newworld/sources/research/cultures.json",
        "section": "crimson-red"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Settlement people and hooks reasoned from the place's kind, culture and neighbours on the PT map (cultures.json; state §10.2, §10.3)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     }
@@ -1591,6 +2127,59 @@
      "id": "shore-access",
      "radius_m": 30,
      "why": "the fort's landing and toll quay"
+    }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Fort Gysilla",
+     "count": 1
+    },
+    {
+     "kind": "trader-blacksmith",
+     "detail": "the garrison quartermaster",
+     "count": 1
+    },
+    {
+     "kind": "forge",
+     "detail": "the fort's smithy",
+     "count": 1
+    },
+    {
+     "kind": "anvil",
+     "detail": "the fort's smithy",
+     "count": 1
+    },
+    {
+     "kind": "armour-workbench",
+     "detail": "the fort's smithy",
+     "count": 1
+    },
+    {
+     "kind": "grindstone",
+     "detail": "the fort's smithy",
+     "count": 1
+    },
+    {
+     "kind": "trainer",
+     "detail": "Journeyman One-handed (the Archein captain)",
+     "count": 1
+    },
+    {
+     "kind": "free-bed",
+     "detail": "the barracks",
+     "count": 1
+    },
+    {
+     "kind": "combat-creature",
+     "detail": "skeevers in the bricked-up cellar under the keep",
+     "count": 4,
+     "reward": "treasure"
+    },
+    {
+     "kind": "treasure",
+     "detail": "Legion stores left in the cellar, D1 tier",
+     "count": 1
     }
    ]
   },
@@ -1689,8 +2278,8 @@
     },
     {
      "aspect": "people",
-     "text": "About six, Argonian herb-gatherers; one of them is the post's chime-tender.",
-     "tier": "AGENT_INVENTED",
+     "text": "About six Argonian herb-gatherers; one of them strikes the post's chime for boats in fog.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "map",
@@ -1708,6 +2297,11 @@
        "title": "Lore:Ultherus Swamp",
        "locator": "Lore:Ultherus Swamp",
        "url": "https://en.uesp.net/wiki/Lore:Ultherus_Swamp"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Settlement people and hooks reasoned from the place's kind, culture and neighbours on the PT map (cultures.json; state §10.2, §10.3)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     },
@@ -1809,8 +2403,8 @@
     },
     {
      "aspect": "hooks",
-     "text": "The chime-tender has lost count of the strikes; a boat came up from Blackrose with a corpse aboard; a rare herb grows at one hummock.",
-     "tier": "AGENT_INVENTED",
+     "text": "The chime-tender has gone silent and the boats run blind in the fog; a boat came up from Blackrose with a dead man aboard; a spriggan guards the hummock where the rarest dragon's-tongue grows.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "map",
@@ -1828,6 +2422,11 @@
        "title": "Lore:Ultherus Swamp",
        "locator": "Lore:Ultherus Swamp",
        "url": "https://en.uesp.net/wiki/Lore:Ultherus_Swamp"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Settlement people and hooks reasoned from the place's kind, culture and neighbours on the PT map (cultures.json; state §10.2, §10.3)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     }
@@ -1842,6 +2441,39 @@
      "id": "shore-access",
      "radius_m": 30,
      "why": "channel landing"
+    }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Myroleon post",
+     "count": 1
+    },
+    {
+     "kind": "harvest-rare",
+     "detail": "dragon's-tongue",
+     "count": 6
+    },
+    {
+     "kind": "trader-apothecary",
+     "detail": "herb-gatherer selling dragon's-tongue",
+     "count": 1
+    },
+    {
+     "kind": "alchemy-lab",
+     "detail": "the herb drying-hut",
+     "count": 1
+    },
+    {
+     "kind": "combat-boss",
+     "detail": "a spriggan on the rare-herb hummock",
+     "count": 1,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "boss-chest",
+     "detail": "boss chest, D2 tier (level 10)",
+     "count": 1
     }
    ]
   },
@@ -1922,8 +2554,8 @@
     },
     {
      "aspect": "people",
-     "text": "About six Argonians, a boat-wife, her sons and a hired herb-picker.",
-     "tier": "AGENT_INVENTED",
+     "text": "About six Argonians: a boat-wife, her sons and a hired herb-picker.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "map",
@@ -1935,6 +2567,11 @@
        "title": "newworld/sources/research/cultures.json",
        "locator": "newworld/sources/research/cultures.json",
        "section": "oxblood"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Settlement people and hooks reasoned from the place's kind, culture and neighbours on the PT map (cultures.json; state §10.2, §10.3)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     },
@@ -2012,8 +2649,8 @@
     },
     {
      "aspect": "hooks",
-     "text": "A wrecked boat in the reeds with unsold goods; a hidden Kothringi cairn behind the houses; the lantern has been lit from outside.",
-     "tier": "AGENT_INVENTED",
+     "text": "A wrecked boat lies in the reeds with its goods unsold; a Kothringi cairn is hidden behind the houses; someone lights the lantern from the water side at night.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "map",
@@ -2025,6 +2662,11 @@
        "title": "newworld/sources/research/cultures.json",
        "locator": "newworld/sources/research/cultures.json",
        "section": "oxblood"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Settlement people and hooks reasoned from the place's kind, culture and neighbours on the PT map (cultures.json; state §10.2, §10.3)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     }
@@ -2040,6 +2682,45 @@
      "radius_m": 30,
      "why": "the waterway landing"
     }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Nemeon hamlet",
+     "count": 1
+    },
+    {
+     "kind": "trader-general",
+     "detail": "the boat-wife",
+     "count": 1
+    },
+    {
+     "kind": "harvest-common",
+     "detail": "swamp herbs",
+     "count": 3
+    },
+    {
+     "kind": "cooking-pot",
+     "detail": "the boat-wife's hearth",
+     "count": 1
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "boat-robbers who stripped the wreck in the reeds",
+     "count": 3,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "combat-boss",
+     "detail": "the boat-robbers' leader",
+     "count": 1,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "boss-chest",
+     "detail": "boss chest, D2 tier (level 10)",
+     "count": 1
+    }
    ]
   },
   {
@@ -2052,7 +2733,7 @@
    "siting": "inland",
    "danger_band_id": "D2",
    "importance": 1,
-   "summary": "Nacydes is a hamlet on high ground on the west side of the Aunike Ridge country, the last Chime-Keeper settlement before Paatru and Naga territory. The families there herd marsh-lizards and trade metal chimes for hides.",
+   "summary": "Nacydes is a hamlet on high ground on the west side of the Aunike Ridge country, the last Chime-Keeper settlement before Paatru and Naga territory. The families keep penned marsh-lizards and trade metal chimes for hides.",
    "lore_page": null,
    "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
@@ -2083,7 +2764,7 @@
     },
     {
      "aspect": "history",
-     "text": "A Kothringi-named place resettled after 2E 560; the ridge made it a lookout, and in 4E 48 refugees from the north hid here.",
+     "text": "A Kothringi-named place resettled by Argonians after the Knahaten Flu (2E 560–603); the ridge made it a lookout, and in 4E 48 families from the north hid here from Umbriel's path.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2119,8 +2800,8 @@
     },
     {
      "aspect": "people",
-     "text": "About five Argonians, lizard-herders and a chime-maker; they speak to the Paatru camp across the ridge by bargaining.",
-     "tier": "AGENT_INVENTED",
+     "text": "About five Argonians, lizard-keepers and a chime-maker; they deal with the Paatru across the ridge only through hard bargaining.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "map",
@@ -2132,12 +2813,17 @@
        "title": "newworld/sources/research/cultures.json",
        "locator": "newworld/sources/research/cultures.json",
        "section": "oxblood"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Settlement people and hooks reasoned from the place's kind, culture and neighbours on the PT map (cultures.json; state §10.2, §10.3)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     },
     {
      "aspect": "economy",
-     "text": "Lizard-herding, hides, tin chimes traded with the Paatru and with Helstrom's levy.",
+     "text": "Penned marsh-lizards, hides, and tin chimes traded with the Paatru and taken as gifts to Helstrom at the Root Talk.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2209,8 +2895,8 @@
     },
     {
      "aspect": "hooks",
-     "text": "The Paatru camp wants a chime tuned; a Naga band is watching the pass; the old watchman saw a light on the peak.",
-     "tier": "AGENT_INVENTED",
+     "text": "The Paatru camp wants a chime tuned; a Naga band is watching the pass; the old watchman saw a light on the peak where no fire should be.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "map",
@@ -2222,6 +2908,11 @@
        "title": "newworld/sources/research/cultures.json",
        "locator": "newworld/sources/research/cultures.json",
        "section": "oxblood"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Settlement people and hooks reasoned from the place's kind, culture and neighbours on the PT map (cultures.json; state §10.2, §10.3)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     }
@@ -2231,6 +2922,50 @@
      "id": "flat-pad",
      "radius_m": 40,
      "why": "the hamlet on a ridge shoulder"
+    }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Nacydes hamlet",
+     "count": 1
+    },
+    {
+     "kind": "trader-hunter",
+     "detail": "the lizard-keepers buy hides",
+     "count": 1
+    },
+    {
+     "kind": "tanning-rack",
+     "detail": "the hide racks",
+     "count": 1
+    },
+    {
+     "kind": "forge",
+     "detail": "the chime-maker's forge",
+     "count": 1
+    },
+    {
+     "kind": "anvil",
+     "detail": "the chime-maker's forge",
+     "count": 1
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "Naga scouts watching the pass",
+     "count": 3,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "combat-boss",
+     "detail": "the Naga scout-leader",
+     "count": 1,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "boss-chest",
+     "detail": "boss chest, D2 tier (level 10)",
+     "count": 1
     }
    ]
   },
@@ -2311,8 +3046,8 @@
     },
     {
      "aspect": "people",
-     "text": "About six Argonians, chime-menders, a watchfire-keeper and young hunters.",
-     "tier": "AGENT_INVENTED",
+     "text": "About six Argonians: chime-menders, a watchfire-keeper and young hunters.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "map",
@@ -2324,6 +3059,11 @@
        "title": "newworld/sources/research/cultures.json",
        "locator": "newworld/sources/research/cultures.json",
        "section": "oxblood"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Settlement people and hooks reasoned from the place's kind, culture and neighbours on the PT map (cultures.json; state §10.2, §10.3)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     },
@@ -2401,8 +3141,8 @@
     },
     {
      "aspect": "hooks",
-     "text": "The fire went dark one night and a stranger was found beside it; the ridge path hides a Kothringi cache.",
-     "tier": "AGENT_INVENTED",
+     "text": "The watchfire went dark one night and a stranger was found beside it; a chaurus nest guards a Kothringi cache along the ridge path.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "map",
@@ -2414,6 +3154,11 @@
        "title": "newworld/sources/research/cultures.json",
        "locator": "newworld/sources/research/cultures.json",
        "section": "oxblood"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Settlement people and hooks reasoned from the place's kind, culture and neighbours on the PT map (cultures.json; state §10.2, §10.3)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     }
@@ -2423,6 +3168,55 @@
      "id": "flat-pad",
      "radius_m": 40,
      "why": "the hamlet at the ridge foot"
+    }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Tydeos hamlet",
+     "count": 1
+    },
+    {
+     "kind": "trader-hunter",
+     "detail": "young hunters buy hides and meat",
+     "count": 1
+    },
+    {
+     "kind": "tanning-rack",
+     "detail": "the hunters' racks",
+     "count": 1
+    },
+    {
+     "kind": "forge",
+     "detail": "the chime-menders' forge",
+     "count": 1
+    },
+    {
+     "kind": "anvil",
+     "detail": "the chime-menders' forge",
+     "count": 1
+    },
+    {
+     "kind": "trainer",
+     "detail": "Journeyman Archery (a hunter)",
+     "count": 1
+    },
+    {
+     "kind": "combat-creature",
+     "detail": "chaurus on the ridge path",
+     "count": 3,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "combat-boss",
+     "detail": "a chaurus reaper over the Kothringi cache",
+     "count": 1,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "boss-chest",
+     "detail": "boss chest, D2 tier (level 10)",
+     "count": 1
     }
    ]
   },
@@ -2438,13 +3232,13 @@
    "importance": 1,
    "summary": "Tseli-Oon is a small outpost on a bank of the river arm that runs north-east out of Helstrom, kept for sap-gathering. Boatmen going up the arm toward the forest tie up here for a night. Few outsiders do.",
    "lore_page": null,
-   "statement_tier_id": "AGENT_INVENTED",
+   "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
    "notes": [
     {
      "aspect": "overview",
      "text": "Five Saxhleel of the Root-Folk of Helstrom keep it, tapping sap from the trees along the bank and answering to a tree-minder in Helstrom.",
-     "tier": "AGENT_INVENTED",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "uesp",
@@ -2462,12 +3256,17 @@
        "title": "newworld/sources/research/cultures.json",
        "locator": "newworld/sources/research/cultures.json",
        "section": "forest-green"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Root-Folk station: the PT map marks an outpost in Helstrom's hinterland; Helstrom's Root-Folk hold that hinterland (state §10.2); the interior tribes never left in 4E 48 (state §10.1); Argonians tend eggs and sap under a Hist (Lore:Hist, Lore:Argonian)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     },
     {
      "aspect": "history",
-     "text": "A hunters' camp for Helstrom's market, grown into a permanent station once the tribes returned to the interior after 4E 48.",
+     "text": "A hunters' camp for Helstrom's market that grew into a station kept all year. The interior tribes never left in 4E 48, and the Root-Folk have used this bank for as long as their songs go back.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2485,7 +3284,7 @@
     },
     {
      "aspect": "present",
-     "text": "Five Saxhleel keep the station through the year, tapping sap from the trees along the bank. They report to a tree-minder in Helstrom by boat. Nothing about the station is written down.",
+     "text": "Five Saxhleel keep the station all year, tapping sap from the trees along the bank. They take the news to a tree-minder in Helstrom by boat and carry it in speech.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2504,7 +3303,7 @@
     {
      "aspect": "people",
      "text": "About five Saxhleel sap-gatherers, a young egg-tender and a boy sent to learn the trees.",
-     "tier": "AGENT_INVENTED",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "map",
@@ -2516,6 +3315,11 @@
        "title": "newworld/sources/research/cultures.json",
        "locator": "newworld/sources/research/cultures.json",
        "section": "forest-green"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Root-Folk station: the PT map marks an outpost in Helstrom's hinterland; Helstrom's Root-Folk hold that hinterland (state §10.2); the interior tribes never left in 4E 48 (state §10.1); Argonians tend eggs and sap under a Hist (Lore:Hist, Lore:Argonian)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     },
@@ -2593,8 +3397,8 @@
     },
     {
      "aspect": "hooks",
-     "text": "A sap-skin has been found slashed and replaced with a wrong one; the young tree-minder wants an egg-clutch carried to Helstrom unseen.",
-     "tier": "AGENT_INVENTED",
+     "text": "A sap-skin has been slashed and swapped for a skin of plain water; the young egg-tender wants a clutch carried to Helstrom without the Naga seeing.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "map",
@@ -2606,6 +3410,11 @@
        "title": "newworld/sources/research/cultures.json",
        "locator": "newworld/sources/research/cultures.json",
        "section": "forest-green"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Root-Folk station: the PT map marks an outpost in Helstrom's hinterland; Helstrom's Root-Folk hold that hinterland (state §10.2); the interior tribes never left in 4E 48 (state §10.1); Argonians tend eggs and sap under a Hist (Lore:Hist, Lore:Argonian)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     }
@@ -2621,6 +3430,45 @@
      "radius_m": 30,
      "why": "the landing"
     }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Tseli-Oon station",
+     "count": 1
+    },
+    {
+     "kind": "harvest-rare",
+     "detail": "Hist-sap from the bank trees",
+     "count": 3
+    },
+    {
+     "kind": "free-bed",
+     "detail": "a keeper's hut",
+     "count": 1
+    },
+    {
+     "kind": "cooking-pot",
+     "detail": "the station fire",
+     "count": 1
+    },
+    {
+     "kind": "combat-creature",
+     "detail": "chaurus in the bank roots",
+     "count": 3,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "combat-boss",
+     "detail": "a chaurus reaper",
+     "count": 1,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "boss-chest",
+     "detail": "boss chest, D3 tier (level 20)",
+     "count": 1
+    }
    ]
   },
   {
@@ -2635,13 +3483,13 @@
    "importance": 1,
    "summary": "Gaxu-Reet is a small outpost where the river arms south-east of Helstrom join and spread into the lake delta, kept for egg-tending and river watch. Boats from Helstrom to the lake's south shore pass through its landing, and few outsiders see more than the totem-post.",
    "lore_page": null,
-   "statement_tier_id": "AGENT_INVENTED",
+   "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
    "notes": [
     {
      "aspect": "overview",
      "text": "Five Saxhleel of the Root-Folk of Helstrom hold its stilt platforms over the junction and tend eggs in clay nest-pits.",
-     "tier": "AGENT_INVENTED",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "uesp",
@@ -2659,6 +3507,11 @@
        "title": "newworld/sources/research/cultures.json",
        "locator": "newworld/sources/research/cultures.json",
        "section": "forest-green"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Root-Folk station: the PT map marks an outpost in Helstrom's hinterland; Helstrom's Root-Folk hold that hinterland (state §10.2); the interior tribes never left in 4E 48 (state §10.1); Argonians tend eggs and sap under a Hist (Lore:Hist, Lore:Argonian)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     },
@@ -2682,7 +3535,7 @@
     },
     {
      "aspect": "present",
-     "text": "Five Saxhleel hold the station where the river arms spread into the delta. They tend eggs, watch the water for strangers, and send word to Helstrom's tree-minders once a month.",
+     "text": "Five Saxhleel hold the station where the river arms spread into the delta. They tend eggs, watch the water for strangers, and send word to Helstrom's tree-minders at each new moon.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2701,7 +3554,7 @@
     {
      "aspect": "people",
      "text": "About five egg-tenders and watchers; one is an old sap-speaker.",
-     "tier": "AGENT_INVENTED",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "map",
@@ -2713,6 +3566,11 @@
        "title": "newworld/sources/research/cultures.json",
        "locator": "newworld/sources/research/cultures.json",
        "section": "forest-green"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Root-Folk station: the PT map marks an outpost in Helstrom's hinterland; Helstrom's Root-Folk hold that hinterland (state §10.2); the interior tribes never left in 4E 48 (state §10.1); Argonians tend eggs and sap under a Hist (Lore:Hist, Lore:Argonian)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     },
@@ -2772,7 +3630,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Naga and Tumnatu parties pass here; the junction's currents drown the careless.",
+     "text": "Naga and Tumnatu parties pass here; slaughterfish crowd the deep water where the river arms meet.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2791,7 +3649,7 @@
     {
      "aspect": "hooks",
      "text": "A clutch is missing from the nest-pits; boats pass that did not come up the river; the old sap-speaker will name who took it for a price.",
-     "tier": "AGENT_INVENTED",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "map",
@@ -2803,6 +3661,11 @@
        "title": "newworld/sources/research/cultures.json",
        "locator": "newworld/sources/research/cultures.json",
        "section": "forest-green"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Root-Folk station: the PT map marks an outpost in Helstrom's hinterland; Helstrom's Root-Folk hold that hinterland (state §10.2); the interior tribes never left in 4E 48 (state §10.1); Argonians tend eggs and sap under a Hist (Lore:Hist, Lore:Argonian)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     }
@@ -2818,6 +3681,45 @@
      "radius_m": 30,
      "why": "the landing"
     }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Gaxu-Reet station",
+     "count": 1
+    },
+    {
+     "kind": "fishing",
+     "detail": "the junction landing",
+     "count": 1
+    },
+    {
+     "kind": "free-bed",
+     "detail": "a stilt platform",
+     "count": 1
+    },
+    {
+     "kind": "cooking-pot",
+     "detail": "the station fire",
+     "count": 1
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "an egg-thieves' boat crew",
+     "count": 3,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "combat-boss",
+     "detail": "the egg-thieves' pilot",
+     "count": 1,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "boss-chest",
+     "detail": "boss chest, D3 tier (level 20)",
+     "count": 1
+    }
    ]
   },
   {
@@ -2832,13 +3734,13 @@
    "importance": 1,
    "summary": "Hokal-Ush is a small outpost on a hummock beside a river bend east of Helstrom, kept for hunting and fellrunner-feather trading. It trades feathers to the river-boats that come east from Helstrom and has little other dealing with outsiders.",
    "lore_page": null,
-   "statement_tier_id": "AGENT_INVENTED",
+   "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
    "notes": [
     {
      "aspect": "overview",
      "text": "Four Saxhleel of the Root-Folk of Helstrom keep three stilt huts on a hummock hung with drying skins and feather bundles.",
-     "tier": "AGENT_INVENTED",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "uesp",
@@ -2856,6 +3758,11 @@
        "title": "newworld/sources/research/cultures.json",
        "locator": "newworld/sources/research/cultures.json",
        "section": "forest-green"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Root-Folk station: the PT map marks an outpost in Helstrom's hinterland; Helstrom's Root-Folk hold that hinterland (state §10.2); the interior tribes never left in 4E 48 (state §10.1); Argonians tend eggs and sap under a Hist (Lore:Hist, Lore:Argonian)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     },
@@ -2898,7 +3805,7 @@
     {
      "aspect": "people",
      "text": "About four Saxhleel hunters and a feather-trader live on the hummock east of Helstrom, sharing three stilt huts.",
-     "tier": "AGENT_INVENTED",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "map",
@@ -2910,6 +3817,11 @@
        "title": "newworld/sources/research/cultures.json",
        "locator": "newworld/sources/research/cultures.json",
        "section": "forest-green"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Root-Folk station: the PT map marks an outpost in Helstrom's hinterland; Helstrom's Root-Folk hold that hinterland (state §10.2); the interior tribes never left in 4E 48 (state §10.1); Argonians tend eggs and sap under a Hist (Lore:Hist, Lore:Argonian)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     },
@@ -2933,7 +3845,7 @@
     },
     {
      "aspect": "faith",
-     "text": "No Hist grows here; the keepers go to a village tree for hatching and burial. A feather-hung totem-post stands at the bend, and the first feather of each season is given to it.",
+     "text": "No Hist grows here; the keepers go to a village tree for hatching and burial. A feather-hung totem-post stands at the bend, and the first feather of each hunt is given to it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2988,7 +3900,7 @@
     {
      "aspect": "hooks",
      "text": "A hunter went into Murkwood wearing a feather band and has not come back; a feather-trader will pay for a missing band recovered.",
-     "tier": "AGENT_INVENTED",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "map",
@@ -3000,6 +3912,11 @@
        "title": "newworld/sources/research/cultures.json",
        "locator": "newworld/sources/research/cultures.json",
        "section": "forest-green"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Root-Folk station: the PT map marks an outpost in Helstrom's hinterland; Helstrom's Root-Folk hold that hinterland (state §10.2); the interior tribes never left in 4E 48 (state §10.1); Argonians tend eggs and sap under a Hist (Lore:Hist, Lore:Argonian)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     }
@@ -3015,6 +3932,45 @@
      "radius_m": 30,
      "why": "the landing"
     }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Hokal-Ush station",
+     "count": 1
+    },
+    {
+     "kind": "trader-hunter",
+     "detail": "the feather-trader buys hides and feathers",
+     "count": 1
+    },
+    {
+     "kind": "tanning-rack",
+     "detail": "the hunters' racks",
+     "count": 1
+    },
+    {
+     "kind": "trainer",
+     "detail": "Journeyman Archery (a Root-Folk hunter)",
+     "count": 1
+    },
+    {
+     "kind": "combat-creature",
+     "detail": "spriggans beyond the third bend",
+     "count": 2,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "combat-boss",
+     "detail": "a spriggan matron",
+     "count": 1,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "boss-chest",
+     "detail": "boss chest, D3 tier (level 20)",
+     "count": 1
+    }
    ]
   },
   {
@@ -3029,13 +3985,13 @@
    "importance": 1,
    "summary": "Ixu-Maan is a small outpost on a small rise south of Helstrom, between the river arms, kept for egg-tending and a night watch. The lamp on its rise is the last light on the city's south approach. Travellers take it as a sign to slow.",
    "lore_page": null,
-   "statement_tier_id": "AGENT_INVENTED",
+   "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
    "notes": [
     {
      "aspect": "overview",
      "text": "Five Saxhleel of the Root-Folk of Helstrom keep stilt huts round a clay nest-pit, with a signal pole on the crest.",
-     "tier": "AGENT_INVENTED",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "uesp",
@@ -3053,6 +4009,11 @@
        "title": "newworld/sources/research/cultures.json",
        "locator": "newworld/sources/research/cultures.json",
        "section": "forest-green"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Root-Folk station: the PT map marks an outpost in Helstrom's hinterland; Helstrom's Root-Folk hold that hinterland (state §10.2); the interior tribes never left in 4E 48 (state §10.1); Argonians tend eggs and sap under a Hist (Lore:Hist, Lore:Argonian)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     },
@@ -3095,7 +4056,7 @@
     {
      "aspect": "people",
      "text": "About five Saxhleel, egg-tenders and night watchers, live on the rise south of Helstrom around the clay nest-pit.",
-     "tier": "AGENT_INVENTED",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "map",
@@ -3107,6 +4068,11 @@
        "title": "newworld/sources/research/cultures.json",
        "locator": "newworld/sources/research/cultures.json",
        "section": "forest-green"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Root-Folk station: the PT map marks an outpost in Helstrom's hinterland; Helstrom's Root-Folk hold that hinterland (state §10.2); the interior tribes never left in 4E 48 (state §10.1); Argonians tend eggs and sap under a Hist (Lore:Hist, Lore:Argonian)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     },
@@ -3185,7 +4151,7 @@
     {
      "aspect": "hooks",
      "text": "A signal went up at night with no visitor in sight; an egg-tender claims the Hist spoke to her in the mud.",
-     "tier": "AGENT_INVENTED",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "map",
@@ -3197,6 +4163,11 @@
        "title": "newworld/sources/research/cultures.json",
        "locator": "newworld/sources/research/cultures.json",
        "section": "forest-green"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Root-Folk station: the PT map marks an outpost in Helstrom's hinterland; Helstrom's Root-Folk hold that hinterland (state §10.2); the interior tribes never left in 4E 48 (state §10.1); Argonians tend eggs and sap under a Hist (Lore:Hist, Lore:Argonian)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     }
@@ -3212,6 +4183,40 @@
      "radius_m": 30,
      "why": "the landing"
     }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Ixu-Maan station",
+     "count": 1
+    },
+    {
+     "kind": "free-bed",
+     "detail": "a watch hut",
+     "count": 1
+    },
+    {
+     "kind": "cooking-pot",
+     "detail": "the watch fire",
+     "count": 1
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "Salt-Tooth Naga scouting the nest-pit at night",
+     "count": 3,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "combat-boss",
+     "detail": "the Naga scout-leader",
+     "count": 1,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "boss-chest",
+     "detail": "boss chest, D3 tier (level 20)",
+     "count": 1
+    }
    ]
   },
   {
@@ -3226,13 +4231,13 @@
    "importance": 1,
    "summary": "Vesh-Aneel is a small outpost on an isolated hummock in the marsh south-west of Helstrom, kept for a hunters' camp and a waypoint on the long route to Nacydes. Hunters crossing to Nacydes rest here. It is the only dry ground for miles around.",
    "lore_page": null,
-   "statement_tier_id": "AGENT_INVENTED",
+   "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
    "notes": [
     {
      "aspect": "overview",
      "text": "Four Saxhleel of the Root-Folk of Helstrom hold two huts, a firepit and a signal post, with open reed on every side.",
-     "tier": "AGENT_INVENTED",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "uesp",
@@ -3250,6 +4255,11 @@
        "title": "newworld/sources/research/cultures.json",
        "locator": "newworld/sources/research/cultures.json",
        "section": "forest-green"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Root-Folk station: the PT map marks an outpost in Helstrom's hinterland; Helstrom's Root-Folk hold that hinterland (state §10.2); the interior tribes never left in 4E 48 (state §10.1); Argonians tend eggs and sap under a Hist (Lore:Hist, Lore:Argonian)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     },
@@ -3273,7 +4283,7 @@
     },
     {
      "aspect": "present",
-     "text": "Four Saxhleel hold the hummock, hunting in the marsh and feeding the hunters who pass to Nacydes. They send a message to a tree-minder by boat once a season.",
+     "text": "Four Saxhleel hold the hummock, hunting in the marsh and feeding the hunters who pass to Nacydes. Any hunter going on to Helstrom carries their news.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3292,7 +4302,7 @@
     {
      "aspect": "people",
      "text": "About four Saxhleel live on the lone hummock south-west of Helstrom: hunters, and a guide who takes travellers toward Nacydes.",
-     "tier": "AGENT_INVENTED",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "map",
@@ -3304,6 +4314,11 @@
        "title": "newworld/sources/research/cultures.json",
        "locator": "newworld/sources/research/cultures.json",
        "section": "forest-green"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Root-Folk station: the PT map marks an outpost in Helstrom's hinterland; Helstrom's Root-Folk hold that hinterland (state §10.2); the interior tribes never left in 4E 48 (state §10.1); Argonians tend eggs and sap under a Hist (Lore:Hist, Lore:Argonian)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     },
@@ -3382,7 +4397,7 @@
     {
      "aspect": "hooks",
      "text": "A guide lost a party at the last crossing; the post's fire was lit three nights running without a keeper.",
-     "tier": "AGENT_INVENTED",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "map",
@@ -3394,6 +4409,11 @@
        "title": "newworld/sources/research/cultures.json",
        "locator": "newworld/sources/research/cultures.json",
        "section": "forest-green"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Root-Folk station: the PT map marks an outpost in Helstrom's hinterland; Helstrom's Root-Folk hold that hinterland (state §10.2); the interior tribes never left in 4E 48 (state §10.1); Argonians tend eggs and sap under a Hist (Lore:Hist, Lore:Argonian)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     }
@@ -3409,6 +4429,45 @@
      "radius_m": 30,
      "why": "the landing"
     }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Vesh-Aneel station",
+     "count": 1
+    },
+    {
+     "kind": "follower",
+     "detail": "the station's guide, hired to Nacydes",
+     "count": 1
+    },
+    {
+     "kind": "trader-hunter",
+     "detail": "the hunters buy hides",
+     "count": 1
+    },
+    {
+     "kind": "free-bed",
+     "detail": "a hunters' hut",
+     "count": 1
+    },
+    {
+     "kind": "combat-creature",
+     "detail": "chaurus at the last crossing",
+     "count": 3,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "combat-boss",
+     "detail": "a chaurus reaper",
+     "count": 1,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "boss-chest",
+     "detail": "boss chest, D3 tier (level 20)",
+     "count": 1
+    }
    ]
   },
   {
@@ -3423,13 +4482,13 @@
    "importance": 1,
    "summary": "Uzu-Tegh is a small outpost on a low islet in the lake's northern shallows, kept for eel-trapping and a lake watch. Its eel-traps are known to every lake boatman, though few ever land on the islet.",
    "lore_page": null,
-   "statement_tier_id": "AGENT_INVENTED",
+   "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
    "notes": [
     {
      "aspect": "overview",
      "text": "Four Saxhleel of the Root-Folk of Helstrom live in two reed huts, with eel pots on poles round the islet.",
-     "tier": "AGENT_INVENTED",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "uesp",
@@ -3447,6 +4506,11 @@
        "title": "newworld/sources/research/cultures.json",
        "locator": "newworld/sources/research/cultures.json",
        "section": "forest-green"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Root-Folk station: the PT map marks an outpost in Helstrom's hinterland; Helstrom's Root-Folk hold that hinterland (state §10.2); the interior tribes never left in 4E 48 (state §10.1); Argonians tend eggs and sap under a Hist (Lore:Hist, Lore:Argonian)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     },
@@ -3470,7 +4534,7 @@
     },
     {
      "aspect": "present",
-     "text": "Four Saxhleel live on the islet, trapping eels and watching the lake's north shallows. A tree-minder in Helstrom hears their news at the autumn eel-run.",
+     "text": "Four Saxhleel live on the islet, trapping eels and watching the lake's north shallows. Their news goes to a tree-minder in Helstrom with any boat bound there.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3489,7 +4553,7 @@
     {
      "aspect": "people",
      "text": "About four Saxhleel live on the islet in the lake's northern shallows: eel-trappers, and one who keeps watch over the water.",
-     "tier": "AGENT_INVENTED",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "map",
@@ -3501,6 +4565,11 @@
        "title": "newworld/sources/research/cultures.json",
        "locator": "newworld/sources/research/cultures.json",
        "section": "forest-green"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Root-Folk station: the PT map marks an outpost in Helstrom's hinterland; Helstrom's Root-Folk hold that hinterland (state §10.2); the interior tribes never left in 4E 48 (state §10.1); Argonians tend eggs and sap under a Hist (Lore:Hist, Lore:Argonian)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     },
@@ -3524,7 +4593,7 @@
     },
     {
      "aspect": "faith",
-     "text": "The islet has no Hist, so the keepers row to a village tree on the shore for hatching and burial. A totem-post carved with an eel stands at the landing, and the first eel of the run is given to it.",
+     "text": "The islet has no Hist, so the keepers row to a village tree on the shore for hatching and burial. A totem-post carved with an eel stands at the landing, and the first eel from each new trap is given to it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3560,7 +4629,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Storm squalls and deep-water predators; Tumnatu canoes pass without leave.",
+     "text": "Slaughterfish round the islet's eel-traps; Tumnatu canoes pass without leave.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3579,7 +4648,7 @@
     {
      "aspect": "hooks",
      "text": "A canoe was found drifting with its paddles shipped. The lantern was lit although no boat had come.",
-     "tier": "AGENT_INVENTED",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "map",
@@ -3591,6 +4660,11 @@
        "title": "newworld/sources/research/cultures.json",
        "locator": "newworld/sources/research/cultures.json",
        "section": "forest-green"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Root-Folk station: the PT map marks an outpost in Helstrom's hinterland; Helstrom's Root-Folk hold that hinterland (state §10.2); the interior tribes never left in 4E 48 (state §10.1); Argonians tend eggs and sap under a Hist (Lore:Hist, Lore:Argonian)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     }
@@ -3606,6 +4680,40 @@
      "radius_m": 30,
      "why": "the landing"
     }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Uzu-Tegh station",
+     "count": 1
+    },
+    {
+     "kind": "fishing",
+     "detail": "eel traps round the islet",
+     "count": 1
+    },
+    {
+     "kind": "trader-innkeeper",
+     "detail": "the keepers sell smoked eel",
+     "count": 1
+    },
+    {
+     "kind": "combat-creature",
+     "detail": "slaughterfish round the eel traps",
+     "count": 3,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "combat-boss",
+     "detail": "the boat-robber who emptied the drifting canoe",
+     "count": 1,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "boss-chest",
+     "detail": "boss chest, D2 tier (level 10)",
+     "count": 1
+    }
    ]
   },
   {
@@ -3620,13 +4728,13 @@
    "importance": 1,
    "summary": "Neexa-Lul is a small outpost on an islet in the lake's eastern reaches, between Marzai and Truowa, kept for a lake watch and egg-tending. Boats crossing between Marzai and Truowa often use its landing to wait out the wind.",
    "lore_page": null,
-   "statement_tier_id": "AGENT_INVENTED",
+   "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
    "notes": [
     {
      "aspect": "overview",
      "text": "Four Saxhleel of the Root-Folk of Helstrom hold a reed-built platform with a lamp tower and racks of dried fish.",
-     "tier": "AGENT_INVENTED",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "uesp",
@@ -3644,6 +4752,11 @@
        "title": "newworld/sources/research/cultures.json",
        "locator": "newworld/sources/research/cultures.json",
        "section": "forest-green"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Root-Folk station: the PT map marks an outpost in Helstrom's hinterland; Helstrom's Root-Folk hold that hinterland (state §10.2); the interior tribes never left in 4E 48 (state §10.1); Argonians tend eggs and sap under a Hist (Lore:Hist, Lore:Argonian)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     },
@@ -3686,7 +4799,7 @@
     {
      "aspect": "people",
      "text": "About four Saxhleel live on the reed platform in the lake's eastern reaches: watchers, and an egg-tender.",
-     "tier": "AGENT_INVENTED",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "map",
@@ -3698,12 +4811,17 @@
        "title": "newworld/sources/research/cultures.json",
        "locator": "newworld/sources/research/cultures.json",
        "section": "forest-green"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Root-Folk station: the PT map marks an outpost in Helstrom's hinterland; Helstrom's Root-Folk hold that hinterland (state §10.2); the interior tribes never left in 4E 48 (state §10.1); Argonians tend eggs and sap under a Hist (Lore:Hist, Lore:Argonian)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     },
     {
      "aspect": "economy",
-     "text": "Fish, eggs and a small mooring fee for boats on the Marzai-Truowa run.",
+     "text": "Fish, eggs, and a small fee for tying up, from boats on the Marzai-Truowa run.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3757,7 +4875,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Squalls and storm surf; smugglers use the islet at night and the keepers pretend not to see them.",
+     "text": "Slaughterfish in the open water; smugglers use the islet at night and the keepers pretend not to see them.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -3775,8 +4893,8 @@
     },
     {
      "aspect": "hooks",
-     "text": "A cask left on the platform is marked for Truowa. It has not been claimed. The egg-tender has found new eggs in an old nest.",
-     "tier": "AGENT_INVENTED",
+     "text": "A cask left on the platform is marked with Truowa's quay-mark and nobody has come for it; the egg-tender has found new eggs in a nest abandoned for years.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "map",
@@ -3788,6 +4906,11 @@
        "title": "newworld/sources/research/cultures.json",
        "locator": "newworld/sources/research/cultures.json",
        "section": "forest-green"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Root-Folk station: the PT map marks an outpost in Helstrom's hinterland; Helstrom's Root-Folk hold that hinterland (state §10.2); the interior tribes never left in 4E 48 (state §10.1); Argonians tend eggs and sap under a Hist (Lore:Hist, Lore:Argonian)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     }
@@ -3803,6 +4926,50 @@
      "radius_m": 30,
      "why": "the landing"
     }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Neexa-Lul station",
+     "count": 1
+    },
+    {
+     "kind": "fishing",
+     "detail": "the platform's edge",
+     "count": 1
+    },
+    {
+     "kind": "cooking-pot",
+     "detail": "the drying-rack fire",
+     "count": 1
+    },
+    {
+     "kind": "free-bed",
+     "detail": "the platform hut",
+     "count": 1
+    },
+    {
+     "kind": "fence",
+     "detail": "a smuggler who lands at night",
+     "count": 1
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "smugglers who use the islet at night",
+     "count": 3,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "combat-boss",
+     "detail": "the smugglers' captain",
+     "count": 1,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "boss-chest",
+     "detail": "boss chest, D2 tier (level 10)",
+     "count": 1
+    }
    ]
   },
   {
@@ -3817,13 +4984,13 @@
    "importance": 1,
    "summary": "Orji-Hael is a small outpost south of Korydon on firm ground by the great southern water. It serves as a waystation. Boats going south toward Blackrose pause at its landing before they leave the sheltered water.",
    "lore_page": null,
-   "statement_tier_id": "AGENT_INVENTED",
+   "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
    "notes": [
     {
      "aspect": "overview",
      "text": "Five Saxhleel of the Root-Folk of Helstrom keep stilt huts round a boat-yard, with a bell at the landing.",
-     "tier": "AGENT_INVENTED",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "uesp",
@@ -3841,6 +5008,11 @@
        "title": "newworld/sources/research/cultures.json",
        "locator": "newworld/sources/research/cultures.json",
        "section": "forest-green"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Root-Folk station: the PT map marks an outpost in Helstrom's hinterland; Helstrom's Root-Folk hold that hinterland (state §10.2); the interior tribes never left in 4E 48 (state §10.1); Argonians tend eggs and sap under a Hist (Lore:Hist, Lore:Argonian)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     },
@@ -3883,7 +5055,7 @@
     {
      "aspect": "people",
      "text": "About five Saxhleel live at the waystation south of Korydon, boatmen who lodge the crews and herb-gatherers who rack their harvest.",
-     "tier": "AGENT_INVENTED",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "map",
@@ -3895,6 +5067,11 @@
        "title": "newworld/sources/research/cultures.json",
        "locator": "newworld/sources/research/cultures.json",
        "section": "forest-green"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Root-Folk station: the PT map marks an outpost in Helstrom's hinterland; Helstrom's Root-Folk hold that hinterland (state §10.2); the interior tribes never left in 4E 48 (state §10.1); Argonians tend eggs and sap under a Hist (Lore:Hist, Lore:Argonian)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     },
@@ -3973,7 +5150,7 @@
     {
      "aspect": "hooks",
      "text": "A herb-gatherer wants dragon's-tongue taken to Korydon before it spoils; a boat from Blackrose never put in.",
-     "tier": "AGENT_INVENTED",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "map",
@@ -3985,6 +5162,11 @@
        "title": "newworld/sources/research/cultures.json",
        "locator": "newworld/sources/research/cultures.json",
        "section": "forest-green"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Root-Folk station: the PT map marks an outpost in Helstrom's hinterland; Helstrom's Root-Folk hold that hinterland (state §10.2); the interior tribes never left in 4E 48 (state §10.1); Argonians tend eggs and sap under a Hist (Lore:Hist, Lore:Argonian)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     }
@@ -4000,6 +5182,50 @@
      "radius_m": 30,
      "why": "the landing"
     }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Orji-Hael waystation",
+     "count": 1
+    },
+    {
+     "kind": "carriage-or-boat",
+     "detail": "boatmen to Korydon and toward Blackrose",
+     "count": 1
+    },
+    {
+     "kind": "free-bed",
+     "detail": "the crews' lodging hut",
+     "count": 1
+    },
+    {
+     "kind": "harvest-rare",
+     "detail": "dragon's-tongue",
+     "count": 4
+    },
+    {
+     "kind": "trader-apothecary",
+     "detail": "the herb-gatherers",
+     "count": 1
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "robbers at the wreck of the Blackrose boat",
+     "count": 3,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "combat-boss",
+     "detail": "the robbers' leader",
+     "count": 1,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "boss-chest",
+     "detail": "boss chest, D3 tier (level 20)",
+     "count": 1
+    }
    ]
   },
   {
@@ -4014,13 +5240,13 @@
    "importance": 2,
    "summary": "Tzel-Haar is a small outpost on the Panther River's west bank, north-west of Helstrom, kept for a river watch and trade. It is a stopping point on the water routes through the Panther River country, known to few outsiders.",
    "lore_page": null,
-   "statement_tier_id": "AGENT_INVENTED",
+   "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
    "notes": [
     {
      "aspect": "overview",
      "text": "Six Hutan-Tzel keep a fenced bank with a reed palisade, rune-carved totems and a ferry.",
-     "tier": "AGENT_INVENTED",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "uesp",
@@ -4038,6 +5264,11 @@
        "title": "newworld/sources/research/cultures.json",
        "locator": "newworld/sources/research/cultures.json",
        "section": "magenta"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Hutan-Tzel post: the PT map marks an outpost on the Panther River side of Murkwood; the Hutan-Tzel are named among Murkwood's interior tribes (state §10.2, story/lore/tribes.md) and keep fortified river posts (cultures.json)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     },
@@ -4080,7 +5311,7 @@
     {
      "aspect": "people",
      "text": "About six Hutan-Tzel hold the fenced bank on the Panther River: watchers for the ferry and tolls, and a rune-carver who tends the totems.",
-     "tier": "AGENT_INVENTED",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "map",
@@ -4092,6 +5323,11 @@
        "title": "newworld/sources/research/cultures.json",
        "locator": "newworld/sources/research/cultures.json",
        "section": "magenta"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Hutan-Tzel post: the PT map marks an outpost on the Panther River side of Murkwood; the Hutan-Tzel are named among Murkwood's interior tribes (state §10.2, story/lore/tribes.md) and keep fortified river posts (cultures.json)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     },
@@ -4170,7 +5406,7 @@
     {
      "aspect": "hooks",
      "text": "A totem has been moved and the beasts have come; the rune-carver can read the stolen one.",
-     "tier": "AGENT_INVENTED",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "map",
@@ -4182,6 +5418,11 @@
        "title": "newworld/sources/research/cultures.json",
        "locator": "newworld/sources/research/cultures.json",
        "section": "magenta"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Hutan-Tzel post: the PT map marks an outpost on the Panther River side of Murkwood; the Hutan-Tzel are named among Murkwood's interior tribes (state §10.2, story/lore/tribes.md) and keep fortified river posts (cultures.json)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     }
@@ -4197,6 +5438,40 @@
      "radius_m": 30,
      "why": "the landing"
     }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Tzel-Haar post",
+     "count": 1
+    },
+    {
+     "kind": "carriage-or-boat",
+     "detail": "the Hutan-Tzel ferry across the Panther River",
+     "count": 1
+    },
+    {
+     "kind": "shrine-blessing",
+     "detail": "the rune-carved totem: a blessing of the Hist",
+     "count": 1
+    },
+    {
+     "kind": "combat-creature",
+     "detail": "spriggans drawn by the moved totem",
+     "count": 2,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "combat-boss",
+     "detail": "a spriggan matron",
+     "count": 1,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "boss-chest",
+     "detail": "boss chest, D3 tier (level 20)",
+     "count": 1
+    }
    ]
   },
   {
@@ -4211,13 +5486,13 @@
    "importance": 2,
    "summary": "Hutan-Ketu is a small outpost on the river west of Helstrom, at the Murkwood edge, kept for a go-between post between Helstrom and the west. It is a stopping point on the water routes through the Panther River country, known to few outsiders.",
    "lore_page": null,
-   "statement_tier_id": "AGENT_INVENTED",
+   "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
    "notes": [
     {
      "aspect": "overview",
      "text": "Six Hutan-Tzel keep a reed palisade on the bank, totem posts and a long canoe shed.",
-     "tier": "AGENT_INVENTED",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "uesp",
@@ -4235,6 +5510,11 @@
        "title": "newworld/sources/research/cultures.json",
        "locator": "newworld/sources/research/cultures.json",
        "section": "magenta"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Hutan-Tzel post: the PT map marks an outpost on the Panther River side of Murkwood; the Hutan-Tzel are named among Murkwood's interior tribes (state §10.2, story/lore/tribes.md) and keep fortified river posts (cultures.json)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     },
@@ -4258,7 +5538,7 @@
     },
     {
      "aspect": "present",
-     "text": "Six Hutan-Tzel keep the post on the Murkwood edge and carry messages between Helstrom and the west. They house the go-betweens overnight and answer to their own naheesh.",
+     "text": "Six Hutan-Tzel keep the post on the Murkwood edge and carry word by mouth between Helstrom and the west. They house the go-betweens overnight and answer to their own naheesh.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4277,7 +5557,7 @@
     {
      "aspect": "people",
      "text": "About six Hutan-Tzel hold the post at the Murkwood edge, with a messenger who carries their naheesh's words to Helstrom.",
-     "tier": "AGENT_INVENTED",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "map",
@@ -4289,12 +5569,17 @@
        "title": "newworld/sources/research/cultures.json",
        "locator": "newworld/sources/research/cultures.json",
        "section": "magenta"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Hutan-Tzel post: the PT map marks an outpost on the Panther River side of Murkwood; the Hutan-Tzel are named among Murkwood's interior tribes (state §10.2, story/lore/tribes.md) and keep fortified river posts (cultures.json)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     },
     {
      "aspect": "economy",
-     "text": "Messages, tolls and guide fees between Helstrom's Root-Folk and the Gideon country.",
+     "text": "A toll on river boats, guide fees, and a share of what the go-betweens carry between Helstrom's Root-Folk and the Gideon country.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4366,8 +5651,8 @@
     },
     {
      "aspect": "hooks",
-     "text": "A messenger came with a letter and no body; the naheesh wants a bargain brokered with the Root-Folk.",
-     "tier": "AGENT_INVENTED",
+     "text": "A go-between's canoe came back to the landing with his carved message-stick in it and no one aboard; the naheesh wants a bargain struck with the Root-Folk over the river toll.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "map",
@@ -4379,6 +5664,11 @@
        "title": "newworld/sources/research/cultures.json",
        "locator": "newworld/sources/research/cultures.json",
        "section": "magenta"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Hutan-Tzel post: the PT map marks an outpost on the Panther River side of Murkwood; the Hutan-Tzel are named among Murkwood's interior tribes (state §10.2, story/lore/tribes.md) and keep fortified river posts (cultures.json)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     }
@@ -4393,6 +5683,45 @@
      "id": "shore-access",
      "radius_m": 30,
      "why": "the landing"
+    }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Hutan-Ketu post",
+     "count": 1
+    },
+    {
+     "kind": "trader-hunter",
+     "detail": "the Hutan-Tzel buy hides",
+     "count": 1
+    },
+    {
+     "kind": "tanning-rack",
+     "detail": "the canoe shed",
+     "count": 1
+    },
+    {
+     "kind": "trainer",
+     "detail": "Journeyman Sneak (a Hutan-Tzel go-between)",
+     "count": 1
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "Naga on the Murkwood edge path",
+     "count": 3,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "combat-boss",
+     "detail": "the Naga band's leader",
+     "count": 1,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "boss-chest",
+     "detail": "boss chest, D3 tier (level 20)",
+     "count": 1
     }
    ]
   },
@@ -4414,7 +5743,7 @@
     {
      "aspect": "overview",
      "text": "Dry-Fang Camp is a Naga camp north of Helstrom. About nine tribeless Naga live in hide-covered lean-tos on a dry mound, led by a scarred old female.",
-     "tier": "AGENT_INVENTED",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "uesp",
@@ -4443,6 +5772,11 @@
        "title": "story/lore/regions/middle-argonia.md",
        "locator": "story/lore/regions/middle-argonia.md",
        "section": "The interior breeds"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Naga camp: Lore:Naga (tribeless road-robbers of the old plantation roads); Naga and Paatru camps round Murkwood (state §10.2; story/lore/helstrom.md)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     },
@@ -4477,7 +5811,7 @@
     },
     {
      "aspect": "present",
-     "text": "About nine Naga hold it in 4E 201, outside the Helstrom assembly's writ and preying on the north river arm.",
+     "text": "About nine Naga hold it in 4E 201, beyond the reach of Helstrom's assembly, and prey on the north river arm.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4507,7 +5841,7 @@
     {
      "aspect": "people",
      "text": "About nine tribeless Naga, adder-featured, seven to eight feet tall, led by a scarred old female.",
-     "tier": "AGENT_INVENTED",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "map",
@@ -4530,6 +5864,11 @@
        "title": "story/lore/regions/middle-argonia.md",
        "locator": "story/lore/regions/middle-argonia.md",
        "section": "The interior breeds"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Naga camp: Lore:Naga (tribeless road-robbers of the old plantation roads); Naga and Paatru camps round Murkwood (state §10.2; story/lore/helstrom.md)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     },
@@ -4651,8 +5990,8 @@
     },
     {
      "aspect": "hooks",
-     "text": "A prisoner is held here for ransom; a stolen sap-skin shipment is cached; the leader will bargain for a boat.",
-     "tier": "AGENT_INVENTED",
+     "text": "A Root-Folk sap-gatherer is held here for ransom; the camp hides the sap-skins stolen from Tseli-Oon; the old leader will bargain for a boat.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "map",
@@ -4675,6 +6014,11 @@
        "title": "story/lore/regions/middle-argonia.md",
        "locator": "story/lore/regions/middle-argonia.md",
        "section": "The interior breeds"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Naga camp: Lore:Naga (tribeless road-robbers of the old plantation roads); Naga and Paatru camps round Murkwood (state §10.2; story/lore/helstrom.md)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     }
@@ -4684,6 +6028,35 @@
      "id": "flat-pad",
      "radius_m": 30,
      "why": "the camp's cleared ground"
+    }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Dry-Fang Camp",
+     "count": 1
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "Naga raiders",
+     "count": 8,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "combat-boss",
+     "detail": "the scarred old female who leads them",
+     "count": 1,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "boss-chest",
+     "detail": "boss chest, D3 tier (level 20)",
+     "count": 1
+    },
+    {
+     "kind": "harvest-rare",
+     "detail": "Hist-sap in the stolen sap-skins",
+     "count": 2
     }
    ]
   },
@@ -4705,7 +6078,7 @@
     {
      "aspect": "overview",
      "text": "Hiss-Bank Camp is a Naga camp on the western river bank. About eight Naga live in lean-tos under a root arch on a trampled bank, with a seer who reads bones.",
-     "tier": "AGENT_INVENTED",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "uesp",
@@ -4734,6 +6107,11 @@
        "title": "story/lore/regions/middle-argonia.md",
        "locator": "story/lore/regions/middle-argonia.md",
        "section": "The interior breeds"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Naga camp: Lore:Naga (tribeless road-robbers of the old plantation roads); Naga and Paatru camps round Murkwood (state §10.2; story/lore/helstrom.md)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     },
@@ -4798,7 +6176,7 @@
     {
      "aspect": "people",
      "text": "About eight Naga, a few young ones, and a seer who reads bones.",
-     "tier": "AGENT_INVENTED",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "map",
@@ -4821,6 +6199,11 @@
        "title": "story/lore/regions/middle-argonia.md",
        "locator": "story/lore/regions/middle-argonia.md",
        "section": "The interior breeds"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Naga camp: Lore:Naga (tribeless road-robbers of the old plantation roads); Naga and Paatru camps round Murkwood (state §10.2; story/lore/helstrom.md)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     },
@@ -4943,7 +6326,7 @@
     {
      "aspect": "hooks",
      "text": "The Hutan-Tzel pay a bounty for the seer; a stolen totem-stone is in the camp.",
-     "tier": "AGENT_INVENTED",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "map",
@@ -4966,6 +6349,11 @@
        "title": "story/lore/regions/middle-argonia.md",
        "locator": "story/lore/regions/middle-argonia.md",
        "section": "The interior breeds"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Naga camp: Lore:Naga (tribeless road-robbers of the old plantation roads); Naga and Paatru camps round Murkwood (state §10.2; story/lore/helstrom.md)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     }
@@ -4975,6 +6363,30 @@
      "id": "flat-pad",
      "radius_m": 30,
      "why": "the camp's cleared ground"
+    }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Hiss-Bank Camp",
+     "count": 1
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "Naga raiders",
+     "count": 7,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "combat-boss",
+     "detail": "the bone-reading seer",
+     "count": 1,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "boss-chest",
+     "detail": "boss chest, D3 tier (level 20)",
+     "count": 1
     }
    ]
   },
@@ -4996,7 +6408,7 @@
     {
      "aspect": "overview",
      "text": "Salt-Tooth Camp is a Naga camp in the marsh south-west of Helstrom. Ten Naga live in hide tents on a salt-crusted mound, led by a one-eyed male with a feather armband.",
-     "tier": "AGENT_INVENTED",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "uesp",
@@ -5025,6 +6437,11 @@
        "title": "story/lore/regions/middle-argonia.md",
        "locator": "story/lore/regions/middle-argonia.md",
        "section": "The interior breeds"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Naga camp: Lore:Naga (tribeless road-robbers of the old plantation roads); Naga and Paatru camps round Murkwood (state §10.2; story/lore/helstrom.md)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     },
@@ -5089,7 +6506,7 @@
     {
      "aspect": "people",
      "text": "About ten Naga, led by a one-eyed male with a feather armband.",
-     "tier": "AGENT_INVENTED",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "map",
@@ -5112,6 +6529,11 @@
        "title": "story/lore/regions/middle-argonia.md",
        "locator": "story/lore/regions/middle-argonia.md",
        "section": "The interior breeds"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Naga camp: Lore:Naga (tribeless road-robbers of the old plantation roads); Naga and Paatru camps round Murkwood (state §10.2; story/lore/helstrom.md)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     },
@@ -5234,7 +6656,7 @@
     {
      "aspect": "hooks",
      "text": "A feather armband lies in the leader's tent; Nacydes would pay to see the band gone; the one-eyed leader seeks a boat.",
-     "tier": "AGENT_INVENTED",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "map",
@@ -5257,6 +6679,11 @@
        "title": "story/lore/regions/middle-argonia.md",
        "locator": "story/lore/regions/middle-argonia.md",
        "section": "The interior breeds"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Naga camp: Lore:Naga (tribeless road-robbers of the old plantation roads); Naga and Paatru camps round Murkwood (state §10.2; story/lore/helstrom.md)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     }
@@ -5266,6 +6693,35 @@
      "id": "flat-pad",
      "radius_m": 30,
      "why": "the camp's cleared ground"
+    }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Salt-Tooth Camp",
+     "count": 1
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "Naga raiders",
+     "count": 9,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "combat-boss",
+     "detail": "the one-eyed leader",
+     "count": 1,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "boss-chest",
+     "detail": "boss chest, D3 tier (level 20)",
+     "count": 1
+    },
+    {
+     "kind": "harvest-rare",
+     "detail": "fellrunner feathers in the leader's tent",
+     "count": 3
     }
    ]
   },
@@ -5287,7 +6743,7 @@
     {
      "aspect": "overview",
      "text": "Mud-Croak Camp is a Paatru camp on the western edge of Murkwood's reach. The Paatru are toad-like Argonians found only in Middle Argonia.",
-     "tier": "AGENT_INVENTED",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "uesp",
@@ -5315,6 +6771,11 @@
        "title": "story/lore/regions/middle-argonia.md",
        "locator": "story/lore/regions/middle-argonia.md",
        "section": "The interior breeds"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Paatru camp: Paatru are toad-like, found only in Middle Argonia, and kill outsiders on sight (story/lore/tribes.md, story/lore/helstrom.md)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     },
@@ -5377,7 +6838,7 @@
     {
      "aspect": "people",
      "text": "About twelve toad-like Paatru, led by a croaking elder; a hostile tribe.",
-     "tier": "AGENT_INVENTED",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "map",
@@ -5399,6 +6860,11 @@
        "title": "story/lore/regions/middle-argonia.md",
        "locator": "story/lore/regions/middle-argonia.md",
        "section": "The interior breeds"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Paatru camp: Paatru are toad-like, found only in Middle Argonia, and kill outsiders on sight (story/lore/tribes.md, story/lore/helstrom.md)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     },
@@ -5517,7 +6983,7 @@
     {
      "aspect": "hooks",
      "text": "The elder wants a chime tuned and will let one trusted visitor in; a hunter vanished at the mere's edge; a lost caravan's goods rest in the mud.",
-     "tier": "AGENT_INVENTED",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "map",
@@ -5539,6 +7005,11 @@
        "title": "story/lore/regions/middle-argonia.md",
        "locator": "story/lore/regions/middle-argonia.md",
        "section": "The interior breeds"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Paatru camp: Paatru are toad-like, found only in Middle Argonia, and kill outsiders on sight (story/lore/tribes.md, story/lore/helstrom.md)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     }
@@ -5548,6 +7019,40 @@
      "id": "flat-pad",
      "radius_m": 30,
      "why": "the camp's cleared ground"
+    }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Mud-Croak Camp",
+     "count": 1
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "Paatru warriors",
+     "count": 11,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "combat-boss",
+     "detail": "the croaking elder",
+     "count": 1,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "boss-chest",
+     "detail": "boss chest, D4 tier (level 35)",
+     "count": 1
+    },
+    {
+     "kind": "gold-hoard",
+     "detail": "the lost caravan's goods sunk in the mere, D4 tier (level 35)",
+     "count": 1
+    },
+    {
+     "kind": "harvest-common",
+     "detail": "mudpot herbs",
+     "count": 4
     }
    ]
   },
@@ -5569,7 +7074,7 @@
     {
      "aspect": "overview",
      "text": "Tumnatu Reed Camp lies near Marzai, in reed shelters on a low bank of the lake. The camp is the Tumnatu tribe's.",
-     "tier": "AGENT_INVENTED",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "uesp",
@@ -5586,12 +7091,17 @@
        "kind": "reasoning",
        "title": "[Tumnatu Camp] on the map at cell 9,-83",
        "locator": "[Tumnatu Camp] on the map at cell 9,-83"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Tumnatu camp: the PT map names the Tumnatu camps; a lake and swamp tribe trading with the resettled towns (cultures.json; state §10.2 interior tribes)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     },
     {
      "aspect": "history",
-     "text": "The Tumnatu are a lake tribe, and the camp is their seasonal ground on the lake's north shore. Nothing else is recorded of them.",
+     "text": "The Tumnatu are a lake tribe and this is their fishing ground on the lake's north shore, older than Marzai. Their own songs say little more to outsiders.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5608,7 +7118,7 @@
     },
     {
      "aspect": "present",
-     "text": "Eight Tumnatu hold the camp in the fishing season and keep cool peace with Marzai, trading eggs for pots.",
+     "text": "Eight Tumnatu hold the camp and keep a cool peace with Marzai, trading eggs for pots.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5626,7 +7136,7 @@
     {
      "aspect": "people",
      "text": "About eight Tumnatu: fishers, hunters and a headwoman who bargains openly.",
-     "tier": "AGENT_INVENTED",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "map",
@@ -5637,6 +7147,11 @@
        "kind": "reasoning",
        "title": "[Tumnatu Camp] on the map at cell 9,-83",
        "locator": "[Tumnatu Camp] on the map at cell 9,-83"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Tumnatu camp: the PT map names the Tumnatu camps; a lake and swamp tribe trading with the resettled towns (cultures.json; state §10.2 interior tribes)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     },
@@ -5710,8 +7225,8 @@
     },
     {
      "aspect": "hooks",
-     "text": "A net-line has been cut by someone from Marzai; the headwoman wants a go-between; a pot of strange coin was dredged up.",
-     "tier": "AGENT_INVENTED",
+     "text": "A net-line has been cut, and the camp blames Marzai; the headwoman wants a go-between who speaks for neither side; a clay pot of Imperial coin came up in a fish-trap.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "map",
@@ -5722,6 +7237,11 @@
        "kind": "reasoning",
        "title": "[Tumnatu Camp] on the map at cell 9,-83",
        "locator": "[Tumnatu Camp] on the map at cell 9,-83"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Tumnatu camp: the PT map names the Tumnatu camps; a lake and swamp tribe trading with the resettled towns (cultures.json; state §10.2 interior tribes)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     }
@@ -5731,6 +7251,39 @@
      "id": "flat-pad",
      "radius_m": 30,
      "why": "the camp's cleared ground"
+    }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Tumnatu Reed Camp",
+     "count": 1
+    },
+    {
+     "kind": "trader-general",
+     "detail": "the headwoman trades fish, eels and reed mats",
+     "count": 1
+    },
+    {
+     "kind": "fishing",
+     "detail": "the camp's net-lines",
+     "count": 1
+    },
+    {
+     "kind": "cooking-pot",
+     "detail": "the camp fire",
+     "count": 1
+    },
+    {
+     "kind": "combat-creature",
+     "detail": "slaughterfish at the cut net-line",
+     "count": 3,
+     "reward": "treasure"
+    },
+    {
+     "kind": "treasure",
+     "detail": "the clay pot of Imperial coin, D1 tier",
+     "count": 1
     }
    ]
   },
@@ -5752,7 +7305,7 @@
     {
      "aspect": "overview",
      "text": "Tumnatu Cattail Camp is a Tumnatu camp on the northern edge of Korydon's ring of water. The camp is the Tumnatu tribe's.",
-     "tier": "AGENT_INVENTED",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "uesp",
@@ -5769,12 +7322,17 @@
        "kind": "reasoning",
        "title": "[Tumnatu Camp] on the map at cell 4,-91",
        "locator": "[Tumnatu Camp] on the map at cell 4,-91"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Tumnatu camp: the PT map names the Tumnatu camps; a lake and swamp tribe trading with the resettled towns (cultures.json; state §10.2 interior tribes)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     },
     {
      "aspect": "history",
-     "text": "The Tumnatu are the only record of it. Read as a swamp-hunters' ground near the dragon's-tongue beds, older than the resettled towns.",
+     "text": "A swamp-hunters' ground near the dragon's-tongue beds, used by the Tumnatu since before Argonians resettled the Kothringi towns round it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -5809,7 +7367,7 @@
     {
      "aspect": "people",
      "text": "About eight Tumnatu: hunters, a herb-wife and a boy who knows the best channels.",
-     "tier": "AGENT_INVENTED",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "map",
@@ -5820,6 +7378,11 @@
        "kind": "reasoning",
        "title": "[Tumnatu Camp] on the map at cell 4,-91",
        "locator": "[Tumnatu Camp] on the map at cell 4,-91"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Tumnatu camp: the PT map names the Tumnatu camps; a lake and swamp tribe trading with the resettled towns (cultures.json; state §10.2 interior tribes)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     },
@@ -5894,7 +7457,7 @@
     {
      "aspect": "hooks",
      "text": "The herb-wife needs help to harvest dragon's-tongue; Korydon's elders accuse the camp of stealing a chime.",
-     "tier": "AGENT_INVENTED",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "map",
@@ -5905,6 +7468,11 @@
        "kind": "reasoning",
        "title": "[Tumnatu Camp] on the map at cell 4,-91",
        "locator": "[Tumnatu Camp] on the map at cell 4,-91"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Tumnatu camp: the PT map names the Tumnatu camps; a lake and swamp tribe trading with the resettled towns (cultures.json; state §10.2 interior tribes)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     }
@@ -5915,12 +7483,45 @@
      "radius_m": 30,
      "why": "the camp's cleared ground"
     }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Tumnatu Cattail Camp",
+     "count": 1
+    },
+    {
+     "kind": "trader-apothecary",
+     "detail": "the herb-wife",
+     "count": 1
+    },
+    {
+     "kind": "harvest-rare",
+     "detail": "dragon's-tongue",
+     "count": 5
+    },
+    {
+     "kind": "trader-hunter",
+     "detail": "the hunters buy pelts",
+     "count": 1
+    },
+    {
+     "kind": "combat-creature",
+     "detail": "chaurus in the dragon's-tongue beds",
+     "count": 3,
+     "reward": "treasure"
+    },
+    {
+     "kind": "treasure",
+     "detail": "a dead hunter's pack in the beds, D1 tier",
+     "count": 1
+    }
    ]
   },
   {
    "id": "peak-m4-m90",
    "name": "Aunike Crown",
-   "status": "seasonal",
+   "status": "abandoned",
    "held_by": "Chime-Keeper lookout parties",
    "population": 0,
    "footprint_radius_m": 30,
@@ -5929,13 +7530,13 @@
    "importance": 1,
    "summary": "Aunike Crown is the high point of the Aunike Ridge, above Tydeos, from which the marsh can be seen for hours.",
    "lore_page": null,
-   "statement_tier_id": "AGENT_INVENTED",
+   "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
    "notes": [
     {
      "aspect": "overview",
      "text": "Aunike Crown is a peak above Tydeos on the Aunike Ridge. Tydeos' watchfire-keeper climbs its bare rock summit each dusk to tend a fire-basket.",
-     "tier": "AGENT_INVENTED",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "uesp",
@@ -5952,6 +7553,11 @@
        "kind": "reasoning",
        "title": "a [Peak] landmark on the map, a high point of the Aunike Ridge",
        "locator": "a [Peak] landmark on the map, a high point of the Aunike Ridge"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Peak: the PT map marks a summit on the Aunike Ridge above a Chime-Keeper hamlet; ridge hamlets keep watch from the peaks (region aunike-ridge, state §10.2)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     },
@@ -5974,7 +7580,7 @@
     },
     {
      "aspect": "present",
-     "text": "Tydeos' watchfire-keeper climbs it each dusk; otherwise it is empty.",
+     "text": "Tydeos' watchfire-keeper climbs it each dusk and comes down at dawn; otherwise it is empty.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6059,7 +7665,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "On the summit path of Aunike Crown there are falls from the rock, ridge cats and Naga parties out of the northern camps.",
+     "text": "On the summit path of Aunike Crown there are sabre cats and Naga parties out of the northern camps.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6076,8 +7682,8 @@
     },
     {
      "aspect": "hooks",
-     "text": "The summit holds a Kothringi cairn bead-cache; a stranger was found dead beside the fire.",
-     "tier": "AGENT_INVENTED",
+     "text": "A Kothringi cairn of beads stands on the summit, and sabre cats den below it; a stranger was found dead beside the fire-basket.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "map",
@@ -6088,6 +7694,11 @@
        "kind": "reasoning",
        "title": "a [Peak] landmark on the map, a high point of the Aunike Ridge",
        "locator": "a [Peak] landmark on the map, a high point of the Aunike Ridge"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Peak: the PT map marks a summit on the Aunike Ridge above a Chime-Keeper hamlet; ridge hamlets keep watch from the peaks (region aunike-ridge, state §10.2)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     }
@@ -6098,27 +7709,45 @@
      "radius_m": 30,
      "why": "the summit rises above the marsh"
     }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Aunike Crown",
+     "count": 1
+    },
+    {
+     "kind": "combat-creature",
+     "detail": "sabre cats denning below the summit",
+     "count": 2,
+     "reward": "treasure"
+    },
+    {
+     "kind": "treasure",
+     "detail": "the Kothringi bead-cairn, D1 tier",
+     "count": 1
+    }
    ]
   },
   {
    "id": "peak-m11-m84",
    "name": "Nacydes Watch",
-   "status": "seasonal",
+   "status": "garrisoned",
    "held_by": "Chime-Keeper lookout parties",
-   "population": 0,
+   "population": 1,
    "footprint_radius_m": 30,
    "siting": "hilltop",
    "danger_band_id": "D2",
    "importance": 1,
    "summary": "Nacydes Watch is a ridge peak on the west of Aunike Ridge, above Nacydes, overlooking Paatru and Naga ground.",
    "lore_page": null,
-   "statement_tier_id": "AGENT_INVENTED",
+   "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
    "notes": [
     {
      "aspect": "overview",
-     "text": "Nacydes Watch is a peak on the west of Aunike Ridge, above Nacydes. A hut and a small chime stand on its rocky summit, where Nacydes posts a sentry when raiders move.",
-     "tier": "AGENT_INVENTED",
+     "text": "Nacydes Watch is a peak on the west of the Aunike Ridge, above Nacydes. A hut and a small chime stand on its rocky summit, where one sentry from Nacydes keeps watch.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "uesp",
@@ -6135,12 +7764,17 @@
        "kind": "reasoning",
        "title": "a [Peak] landmark on the map, a high point of the Aunike Ridge",
        "locator": "a [Peak] landmark on the map, a high point of the Aunike Ridge"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Peak: the PT map marks a summit on the Aunike Ridge above a Chime-Keeper hamlet; ridge hamlets keep watch from the peaks (region aunike-ridge, state §10.2)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     },
     {
      "aspect": "history",
-     "text": "A lookout kept by the people of Nacydes, who post a watch here when raiders move.",
+     "text": "A lookout kept by the people of Nacydes, who keep one sentry on it at all times.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6157,7 +7791,7 @@
     },
     {
      "aspect": "present",
-     "text": "Nacydes keeps a watch on the summit when the Paatru or the Naga stir.",
+     "text": "Nacydes keeps one sentry in the summit hut, who rings the chime when Paatru or Naga come near the ridge.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6242,7 +7876,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "The summit of Nacydes Watch is exposed to Paatru and Naga raiders, to falls from the rock, and to ridge cats.",
+     "text": "The summit of Nacydes Watch lies open to Paatru and Naga raiders, and sabre cats den in the crevices below it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -6259,8 +7893,8 @@
     },
     {
      "aspect": "hooks",
-     "text": "The sentry saw a light in the Paatru camp that is not a fire; a lost scout's pack lies in a crevice.",
-     "tier": "AGENT_INVENTED",
+     "text": "The sentry saw a light in the Paatru camp that is not a fire; a lost scout's pack lies in a crevice beside a sabre cat den.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "map",
@@ -6271,6 +7905,11 @@
        "kind": "reasoning",
        "title": "a [Peak] landmark on the map, a high point of the Aunike Ridge",
        "locator": "a [Peak] landmark on the map, a high point of the Aunike Ridge"
+      },
+      {
+       "kind": "reasoning",
+       "title": "Peak: the PT map marks a summit on the Aunike Ridge above a Chime-Keeper hamlet; ridge hamlets keep watch from the peaks (region aunike-ridge, state §10.2)",
+       "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
     }
@@ -6280,6 +7919,29 @@
      "id": "rise",
      "radius_m": 30,
      "why": "the summit rises above the marsh"
+    }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Nacydes Watch",
+     "count": 1
+    },
+    {
+     "kind": "free-bed",
+     "detail": "the sentry's hut",
+     "count": 1
+    },
+    {
+     "kind": "combat-creature",
+     "detail": "a sabre cat in the crevice den",
+     "count": 1,
+     "reward": "treasure"
+    },
+    {
+     "kind": "treasure",
+     "detail": "the lost scout's pack, D1 tier",
+     "count": 1
     }
    ]
   }
