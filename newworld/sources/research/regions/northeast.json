@@ -254,7 +254,7 @@
     },
     {
      "aspect": "ecology",
-     "text": "Jungle hardwood, tree-ferns, vines and bright fungus, crocodiles on the banks, jungle cats and snakes inland, grass and saltrice near Thorn.",
+     "text": "Jungle hardwood, tree-ferns, vines and bright fungus; mudcrabs and slaughterfish along the banks and in the inlet, sabre cats, giant spiders and bears inland, grass and saltrice near Thorn.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -280,7 +280,7 @@
     },
     {
      "aspect": "climate",
-     "text": "Hot and wet most of the year, with a drier cooler season when the road is easiest.",
+     "text": "Hot and wet: rain and fog are the commonest weathers, with clear spells that come and go by chance.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -455,7 +455,7 @@
     },
     {
      "aspect": "faith",
-     "text": "A mix of Hist customs; the Sarpa keep High-Flower, the Stone-Sleepers a cairn, the Agaceph read.",
+     "text": "A mix of Hist customs: the Sarpa keep their own tree beyond the edge, the Stone-Sleepers raise cairns for Tsonac's sleeping Hist, and the Agaceph read their mission books at hatchings.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -559,7 +559,7 @@
     },
     {
      "aspect": "ecology",
-     "text": "Scrub, tall grass, thorn-bush, snakes, cats, birds of prey and the Sarpa's winged hunters.",
+     "text": "Scrub, tall grass and thorn-bush on the tops; wolves, sabre cats, hawks and giant spiders in the gorges, and the Sarpa on the western edge.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {

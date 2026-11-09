@@ -133,7 +133,7 @@
     },
     {
      "aspect": "people",
-     "text": "About three in four are Argonian, with a large Dunmer minority of mixed families whose ancestors stood on both sides of the coffles, and a few Imperial-descended traders. Vicecanons (one to three, chosen locally), field-owners, toll-clerks, saltrice gangs and smugglers make up the people who matter.",
+     "text": "About three in four are Argonian, with a large Dunmer minority of mixed families whose ancestors stood on both sides of the coffles, and a few Imperial-descended traders. The people who matter are the Vicecanons (one to three, chosen locally), the field-holding families, the saltrice gangs and the smugglers who work the quays.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -219,7 +219,7 @@
     },
     {
      "aspect": "look",
-     "text": "A walled city of Ayleid-founded stone under Dunmer and Imperial rebuilding, with Argonian timber and reed quarters round it, set on flat grassland that runs to green saltrice paddies in every direction. Thorn Palace, the Mages Guild, the Conclave of Riana and the Conclave of the One are its named places.",
+     "text": "A walled city of Ayleid-founded stone under Dunmer and Imperial rebuilding, with Argonian timber and reed quarters round it, set on flat grassland that runs to green saltrice paddies in every direction. Thorn Palace, the Conclave of Riana and the Conclave of the One still stand; the old Mages Guild hall has been shut since the guild dissolved before 4E 48 and is now a saltrice store.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -271,7 +271,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A disputed saltrice field with two deeds, a smuggling ring that passes goods through Fort Thornmoth, a Dunmer family hunting a runaway slave's descendants, and the ruins at Kharraluhl and Bala Karag that scavengers sell from in the market.",
+     "text": "Two field-holding families who each say their grandmothers stood in the same saltrice field when Dres fell, a smuggling ring that moves moon sugar through Fort Thornmoth's gate, a Dunmer family hunting a runaway slave's grandchildren, and the Velothi pieces scavengers sell in the market from Kharraluhl and Ovezza.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -294,6 +294,118 @@
        "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
+    }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Thorn, the city gate",
+     "count": 1
+    },
+    {
+     "kind": "carriage-or-boat",
+     "detail": "a Dunmer boatman on the quay who sails to Archon and to the Tear road landing",
+     "count": 1
+    },
+    {
+     "kind": "trader-general",
+     "detail": "a Dunmer general trader in the market square",
+     "count": 1
+    },
+    {
+     "kind": "trader-blacksmith",
+     "detail": "an Argonian smith by the west gate selling iron, steel and Dunmer chitin",
+     "count": 1
+    },
+    {
+     "kind": "forge",
+     "detail": "the smith's forge with its anvil",
+     "count": 1
+    },
+    {
+     "kind": "anvil",
+     "detail": "the smith's anvil",
+     "count": 1
+    },
+    {
+     "kind": "grindstone",
+     "detail": "in the smith's yard",
+     "count": 1
+    },
+    {
+     "kind": "armour-workbench",
+     "detail": "in the smith's yard",
+     "count": 1
+    },
+    {
+     "kind": "smelter",
+     "detail": "beside the west gate smithy",
+     "count": 1
+    },
+    {
+     "kind": "tanning-rack",
+     "detail": "at the hide-sellers' quay",
+     "count": 1
+    },
+    {
+     "kind": "trader-apothecary",
+     "detail": "an apothecary selling saltrice, Hist-sap resin and swamp ingredients",
+     "count": 1
+    },
+    {
+     "kind": "alchemy-lab",
+     "detail": "in the apothecary's shop",
+     "count": 1
+    },
+    {
+     "kind": "trader-spells",
+     "detail": "a Dunmer enchanter in the Conclave of the One selling Illusion and Alteration tomes up to Adept, soul gems and scrolls",
+     "count": 1
+    },
+    {
+     "kind": "arcane-enchanter",
+     "detail": "in the Conclave of the One",
+     "count": 1
+    },
+    {
+     "kind": "trader-innkeeper",
+     "detail": "the dockside tavern, food and drink",
+     "count": 1
+    },
+    {
+     "kind": "inn-room",
+     "detail": "a rented room at the dockside tavern",
+     "count": 1
+    },
+    {
+     "kind": "cooking-pot",
+     "detail": "the tavern hearth",
+     "count": 1
+    },
+    {
+     "kind": "fence",
+     "detail": "a quay smuggler who buys stolen goods once the player has done a job for the ring",
+     "count": 1
+    },
+    {
+     "kind": "trainer",
+     "detail": "Speech, Expert, a Vicecanon's factor in the market",
+     "count": 1
+    },
+    {
+     "kind": "trainer",
+     "detail": "Pickpocket, Journeyman, a purse-cutter in the dockside tavern",
+     "count": 1
+    },
+    {
+     "kind": "shrine-blessing",
+     "detail": "the Temple shrine of Saint Roris kept by the Dunmer families; a blessing like a Divine shrine's, curing disease",
+     "count": 1
+    },
+    {
+     "kind": "harvest-common",
+     "detail": "saltrice in the paddies round the walls",
+     "count": 6
     }
    ]
   },
@@ -352,7 +464,7 @@
     },
     {
      "aspect": "history",
-     "text": "The Empire built it to protect Thorn and its saltrice trade; it kept Imperial garrisons until the Empire's presence in Black Marsh ended after 4E 48. Argonians took it over in the years of the secession.",
+     "text": "The Empire built it to protect Thorn and its saltrice trade, and it kept an Imperial garrison until the Legion left at the secession (4E 5-10). An ex-Archein family took the keys then and has held it in the Archwardens' name since.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -378,7 +490,7 @@
     },
     {
      "aspect": "present",
-     "text": "A dozen at most man it: toll clerks, a watch captain and bonded labourers' descendants as guards. Records are still kept in Imperial form.",
+     "text": "A dozen at most man it: a watch captain, gate guards who take the toll and a few who keep the store room and the watch boat. The captain still drills them in the Legion's way, the one habit the fort kept from Imperial days.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -404,7 +516,7 @@
     },
     {
      "aspect": "people",
-     "text": "Argonian garrison families, mostly old Archein lines under new seals, led by a captain who answers to the Archwardens and is on friendly terms with Thorn's Vicecanons. A few Dunmer drivers and merchants wait at the gate.",
+     "text": "Argonian garrison families of old Archein lines, led by a captain who answers to the Archwardens and dines with Thorn's Vicecanons. A Dunmer quartermaster keeps the store, and Dunmer drivers wait at the gate with their carts.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -534,7 +646,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A captain asking for an outsider to carry a message to Thorn without going through the gate, a toll ledger with a missing page, and a locked store room where the garrison keeps confiscated goods.",
+     "text": "A captain who wants an outsider to carry a word to Thorn without passing the gate, a guard who lets a certain cart through untouched every few days, and a locked store room full of moon sugar the garrison took from smugglers and has not burned.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -558,6 +670,43 @@
       }
      ]
     }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Fort Thornmoth",
+     "count": 1
+    },
+    {
+     "kind": "trader-blacksmith",
+     "detail": "the Dunmer quartermaster, selling iron and steel arms and Imperial-pattern armour left from the Legion",
+     "count": 1
+    },
+    {
+     "kind": "grindstone",
+     "detail": "in the yard",
+     "count": 1
+    },
+    {
+     "kind": "armour-workbench",
+     "detail": "in the yard",
+     "count": 1
+    },
+    {
+     "kind": "trainer",
+     "detail": "Block, Journeyman, the watch captain",
+     "count": 1
+    },
+    {
+     "kind": "free-bed",
+     "detail": "a bunk in the barracks once the captain trusts the player",
+     "count": 1
+    },
+    {
+     "kind": "treasure",
+     "detail": "the locked store room: confiscated moon sugar and a few smugglers' purses, up to 50 gold",
+     "count": 1
+    }
    ]
   },
   {
@@ -570,9 +719,9 @@
    "siting": "riverbank",
    "danger_band_id": "D1",
    "importance": 1,
-   "summary": "Cutbank Camp is a timber camp on the cut bank of the bay's inner shore, west of Fort Thornmoth. Its crews fell jungle timber and float it to Thorn.",
+   "summary": "Cutbank Camp is a timber camp on the steep cut bank of the bay's inner shore, west of Fort Thornmoth. Its crews fell jungle hardwood and raft it to Thorn for the field-holders who pay them.",
    "lore_page": null,
-   "statement_tier_id": "AGENT_INVENTED",
+   "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
    "terrain_needs": [
     {
@@ -589,12 +738,12 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A small timber camp on the inlet's southern shore, west of Thorn, called Cutbank Camp.",
-     "tier": "AGENT_INVENTED",
+     "text": "A timber camp on the inlet's southern shore, west of Thorn, named by its crews for the raw bank the water has cut beside the landing. It is the nearest timber to Thorn that the field-holders own outright.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
-       "title": "A logging camp on the bay shore west of Thorn"
+       "title": "Logging camp on the map west of Fort Thornmoth; Thorn's timber comes from the Arnesian jungle (Thorn economy, CANON_DERIVED); the saltrice field-holders hold land round Thorn (spine 10.2); hired crews from Thorn's riverside villages"
       },
       {
        "kind": "map",
@@ -652,12 +801,12 @@
     },
     {
      "aspect": "people",
-     "text": "Five or six: a gang boss, a cook and sawyers hired out of Thorn's riverbank villages, Argonian and Dunmer.",
-     "tier": "AGENT_INVENTED",
+     "text": "Five or six: a gang boss hired by a field-holding family, a cook and sawyers from Thorn's riverside villages, Argonian and Dunmer, who go home to their own trees between fellings.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
-       "title": "A logging camp on the bay shore west of Thorn"
+       "title": "Logging camp on the map west of Fort Thornmoth; Thorn's timber comes from the Arnesian jungle (Thorn economy, CANON_DERIVED); the saltrice field-holders hold land round Thorn (spine 10.2); hired crews from Thorn's riverside villages"
       },
       {
        "kind": "map",
@@ -694,12 +843,12 @@
     },
     {
      "aspect": "faith",
-     "text": "The crews tie a rag to the camp's biggest stump for the felled trees' Hist and spit on the ground before the first cut.",
-     "tier": "AGENT_INVENTED",
+     "text": "The Argonian sawyers press a smear of sap from each felled trunk onto the camp's oldest stump, asking the Hist pardon for the cut; the Dunmer among them laugh at it and do the same.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
-       "title": "A logging camp on the bay shore west of Thorn"
+       "title": "Logging camp on the map west of Fort Thornmoth; Thorn's timber comes from the Arnesian jungle (Thorn economy, CANON_DERIVED); the saltrice field-holders hold land round Thorn (spine 10.2); hired crews from Thorn's riverside villages"
       },
       {
        "kind": "map",
@@ -715,12 +864,12 @@
     },
     {
      "aspect": "look",
-     "text": "A bunkhouse and drying sheds on pilings, log rafts moored along a raw earth bank, stumps and sawdust everywhere.",
-     "tier": "AGENT_INVENTED",
+     "text": "A bunkhouse and plank-drying sheds on pilings above a raw earth bank, log rafts moored along the water, stumps and sawdust round a saw-pit.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
-       "title": "A logging camp on the bay shore west of Thorn"
+       "title": "Logging camp on the map west of Fort Thornmoth; Thorn's timber comes from the Arnesian jungle (Thorn economy, CANON_DERIVED); the saltrice field-holders hold land round Thorn (spine 10.2); hired crews from Thorn's riverside villages"
       },
       {
        "kind": "map",
@@ -736,12 +885,12 @@
     },
     {
      "aspect": "dangers",
-     "text": "The shore is close to Thorn's patrols, though crocodiles take swimmers at the bank.",
+     "text": "The camp is close to Thorn's patrols. Slaughterfish swarm the water below the landing, where offcuts and scraps are thrown in, and take anyone who swims there.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
-       "title": "A logging camp on the bay shore west of Thorn"
+       "title": "Logging camp on the map west of Fort Thornmoth; Thorn's timber comes from the Arnesian jungle (Thorn economy, CANON_DERIVED); the saltrice field-holders hold land round Thorn (spine 10.2); hired crews from Thorn's riverside villages"
       },
       {
        "kind": "map",
@@ -757,12 +906,12 @@
     },
     {
      "aspect": "hooks",
-     "text": "A crew boss who says a raft went missing with a client's marked logs, and a stand of timber the crews refuse to cut because of what is carved in the roots.",
-     "tier": "AGENT_INVENTED",
+     "text": "A gang boss whose best raft broke loose and lodged at the Ovezza quay among the ruin's dead, and a stand of old hardwood the Argonian sawyers will not cut because grave-stakes stand among its roots.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
-       "title": "A logging camp on the bay shore west of Thorn"
+       "title": "Logging camp on the map west of Fort Thornmoth; Thorn's timber comes from the Arnesian jungle (Thorn economy, CANON_DERIVED); the saltrice field-holders hold land round Thorn (spine 10.2); hired crews from Thorn's riverside villages"
       },
       {
        "kind": "map",
@@ -776,6 +925,44 @@
       }
      ]
     }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Cutbank Camp",
+     "count": 1
+    },
+    {
+     "kind": "free-bed",
+     "detail": "a bunk in the sawyers' bunkhouse",
+     "count": 1
+    },
+    {
+     "kind": "cooking-pot",
+     "detail": "the camp cook's fire",
+     "count": 1
+    },
+    {
+     "kind": "trader-general",
+     "detail": "the cook sells food, rope and woodcutter's axes",
+     "count": 1
+    },
+    {
+     "kind": "fishing",
+     "detail": "the water off the landing",
+     "count": 1
+    },
+    {
+     "kind": "combat-creature",
+     "detail": "slaughterfish in the water below the landing",
+     "count": 1,
+     "reward": "treasure"
+    },
+    {
+     "kind": "treasure",
+     "detail": "a drowned sawyer's pack on the bottom by the landing, reached by swimming: up to 50 gold and an iron axe",
+     "count": 1
+    }
    ]
   },
   {
@@ -788,9 +975,9 @@
    "siting": "inland",
    "danger_band_id": "D1",
    "importance": 1,
-   "summary": "Thornway Watch is a small watch-post on the track from Tsonac to Thorn, a day's walk from the fort. A few of Fort Thornmoth's garrison keep it.",
+   "summary": "Thornway Watch is a small toll post on the track from Tsonac to Thorn, a day's walk from Fort Thornmoth. A few of the fort's garrison keep it and take a toll from the stone and timber carts.",
    "lore_page": null,
-   "statement_tier_id": "AGENT_INVENTED",
+   "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
    "terrain_needs": [
     {
@@ -802,12 +989,12 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A roadside post called Thornway Watch, set where the Tsonac track meets the bay's southern shore.",
-     "tier": "AGENT_INVENTED",
+     "text": "A roadside toll post called Thornway Watch by the garrison, set where the Tsonac track meets the bay's southern shore. Every load of Stone-Sleeper stone bound for Thorn passes its chain.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
-       "title": "A roadside post between Tsonac and Thorn"
+       "title": "Unlabelled outpost on the map on the Tsonac-Thorn track a day from Fort Thornmoth; the Archwardens' '-moth' forts keep the trunk routes and live on tolls at crossings (spine 10.2); the Stone-Sleepers sell stone to Thorn along this track (culture record)"
       },
       {
        "kind": "map",
@@ -823,12 +1010,12 @@
     },
     {
      "aspect": "history",
-     "text": "Imperial forts once ran a chain of waystations along the track; this is one the Archwardens kept.",
+     "text": "The Legion kept a chain of waystations on the track to guard Thorn's western road; at the secession the Archwardens' garrison at Fort Thornmoth kept this one as a toll post and let the rest fall in.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
-       "title": "A roadside post between Tsonac and Thorn"
+       "title": "Unlabelled outpost on the map on the Tsonac-Thorn track a day from Fort Thornmoth; the Archwardens' '-moth' forts keep the trunk routes and live on tolls at crossings (spine 10.2); the Stone-Sleepers sell stone to Thorn along this track (culture record)"
       },
       {
        "kind": "map",
@@ -844,12 +1031,12 @@
     },
     {
      "aspect": "present",
-     "text": "Four men from Fort Thornmoth rotate through it, checking loads and sending word along the road.",
+     "text": "Four of Fort Thornmoth's garrison take turns at the post, lifting the chain for carts once the toll is paid and sending runners to the fort when trouble comes up the track.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
-       "title": "A roadside post between Tsonac and Thorn"
+       "title": "Unlabelled outpost on the map on the Tsonac-Thorn track a day from Fort Thornmoth; the Archwardens' '-moth' forts keep the trunk routes and live on tolls at crossings (spine 10.2); the Stone-Sleepers sell stone to Thorn along this track (culture record)"
       },
       {
        "kind": "map",
@@ -865,12 +1052,12 @@
     },
     {
      "aspect": "people",
-     "text": "Argonian guards on hire and a Dunmer messenger who also trades in dyes.",
-     "tier": "AGENT_INVENTED",
+     "text": "Argonian guards from the fort's garrison families, and a Dunmer runner who carries word to the fort and sells dye on the side.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
-       "title": "A roadside post between Tsonac and Thorn"
+       "title": "Unlabelled outpost on the map on the Tsonac-Thorn track a day from Fort Thornmoth; the Archwardens' '-moth' forts keep the trunk routes and live on tolls at crossings (spine 10.2); the Stone-Sleepers sell stone to Thorn along this track (culture record)"
       },
       {
        "kind": "map",
@@ -907,12 +1094,12 @@
     },
     {
      "aspect": "faith",
-     "text": "A tree-hollow offering box for the Hist is nailed to the post's gate.",
-     "tier": "AGENT_INVENTED",
+     "text": "A hollow in the gatepost holds small gifts of food for the Hist, left by Stone-Sleeper carters who mistrust a post with no tree.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
-       "title": "A roadside post between Tsonac and Thorn"
+       "title": "Unlabelled outpost on the map on the Tsonac-Thorn track a day from Fort Thornmoth; the Archwardens' '-moth' forts keep the trunk routes and live on tolls at crossings (spine 10.2); the Stone-Sleepers sell stone to Thorn along this track (culture record)"
       },
       {
        "kind": "map",
@@ -928,12 +1115,12 @@
     },
     {
      "aspect": "look",
-     "text": "A stilted watch house with a lantern pole and a stone-edged well, and a chain across the track.",
-     "tier": "AGENT_INVENTED",
+     "text": "A stilted watch house with a lantern pole, a stone-lined well and a heavy chain across the track between two posts.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
-       "title": "A roadside post between Tsonac and Thorn"
+       "title": "Unlabelled outpost on the map on the Tsonac-Thorn track a day from Fort Thornmoth; the Archwardens' '-moth' forts keep the trunk routes and live on tolls at crossings (spine 10.2); the Stone-Sleepers sell stone to Thorn along this track (culture record)"
       },
       {
        "kind": "map",
@@ -949,12 +1136,12 @@
     },
     {
      "aspect": "dangers",
-     "text": "The road past the post is watched. Travellers are stopped and questioned. At night jungle cats come down to drink at the well.",
+     "text": "The road past the post is watched, and travellers are stopped at the chain. After dark sabre cats come down from the jungle to drink at the well.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
-       "title": "A roadside post between Tsonac and Thorn"
+       "title": "Unlabelled outpost on the map on the Tsonac-Thorn track a day from Fort Thornmoth; the Archwardens' '-moth' forts keep the trunk routes and live on tolls at crossings (spine 10.2); the Stone-Sleepers sell stone to Thorn along this track (culture record)"
       },
       {
        "kind": "map",
@@ -970,12 +1157,12 @@
     },
     {
      "aspect": "hooks",
-     "text": "Guards who have found a Tsonac stone-carver's cart abandoned a mile off, and a message left for a courier who never arrived.",
-     "tier": "AGENT_INVENTED",
+     "text": "A Tsonac stone-carver's cart found abandoned a mile up the track with its ox killed by a cat, and a Stone-Sleeper carter who refuses the toll and blocks the chain with his load.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
-       "title": "A roadside post between Tsonac and Thorn"
+       "title": "Unlabelled outpost on the map on the Tsonac-Thorn track a day from Fort Thornmoth; the Archwardens' '-moth' forts keep the trunk routes and live on tolls at crossings (spine 10.2); the Stone-Sleepers sell stone to Thorn along this track (culture record)"
       },
       {
        "kind": "map",
@@ -988,6 +1175,34 @@
        "locator": "story/lore/extrapolation/argonia-4e201-state.md"
       }
      ]
+    }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Thornway Watch",
+     "count": 1
+    },
+    {
+     "kind": "trader-innkeeper",
+     "detail": "the guards sell water, dried fish and bread",
+     "count": 1
+    },
+    {
+     "kind": "free-bed",
+     "detail": "a bench in the watch house",
+     "count": 1
+    },
+    {
+     "kind": "combat-creature",
+     "detail": "a pair of sabre cats that come to the well after dark",
+     "count": 1,
+     "reward": "treasure"
+    },
+    {
+     "kind": "treasure",
+     "detail": "the abandoned carver's cart up the track: a locked chest with up to 50 gold and carved stone pieces",
+     "count": 1
     }
    ]
   },
@@ -1047,7 +1262,7 @@
     },
     {
      "aspect": "history",
-     "text": "The Root-Folk have kept stations at the edge of the jungle since before the Empire; the Archeins taxed it, and the Archwardens now ignore it.",
+     "text": "The Root-Folk have kept stations at the edge of the jungle since before the Empire. Archein families once took a share of its sap for the right to tap near their fields; since the secession nobody asks for it.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1236,8 +1451,8 @@
     },
     {
      "aspect": "hooks",
-     "text": "A clutch of eggs that will not hatch and a headwoman who needs a tree-minder from Tsonac, and a smuggler's raft tied up in the reeds.",
-     "tier": "AGENT_INVENTED",
+     "text": "A clutch of eggs in the root hollow that has not hatched, which the headwoman wants Tsonac's tree-minder to see, and a smuggler's raft hidden in the reeds whose crew bought sap with false coin.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
@@ -1260,6 +1475,54 @@
        "section": "forest-green"
       }
      ]
+    }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Guxal",
+     "count": 1
+    },
+    {
+     "kind": "trader-hunter",
+     "detail": "the headwoman's son buys hides and sells smoked fish",
+     "count": 1
+    },
+    {
+     "kind": "harvest-rare",
+     "detail": "Hist-sap resin tapped from the jungle trees behind the hamlet",
+     "count": 3
+    },
+    {
+     "kind": "fishing",
+     "detail": "from the dugouts on the mud",
+     "count": 1
+    },
+    {
+     "kind": "cooking-pot",
+     "detail": "the smoking fire",
+     "count": 1
+    },
+    {
+     "kind": "tanning-rack",
+     "detail": "by the drying racks",
+     "count": 1
+    },
+    {
+     "kind": "trainer",
+     "detail": "Archery, Apprentice, the headwoman",
+     "count": 1
+    },
+    {
+     "kind": "combat-creature",
+     "detail": "jungle predators on the paths behind the hamlet: sabre cats and a giant spider",
+     "count": 2,
+     "reward": "treasure"
+    },
+    {
+     "kind": "treasure",
+     "detail": "a dead hunter's cache in a root hollow on the jungle path, up to 50 gold",
+     "count": 1
     }
    ]
   },
@@ -1360,12 +1623,12 @@
     },
     {
      "aspect": "people",
-     "text": "No residents. A scavenger crew camps among the walls at times, and a handful of Dunmer pilgrims leave offerings for ancestors they do not know.",
-     "tier": "AGENT_INVENTED",
+     "text": "No one lives there. A scavenger crew out of Thorn camps among the walls when it is working the halls, and the Dunmer families of Thorn come to leave food and incense for ancestors whose names they have lost.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
-       "title": "Kharraluhl: no UESP page; the Cantemiric Velothi coast between Archon, Arnesia and Thorn"
+       "title": "Cantemiric Velothi settled the east coast and died in the Knahaten Flu, 2E 560-603 (Lore:Cantemiric Velothi, Lore:Knahaten Flu, spine 10.1); Thorn's scavenger trade; the Hist hold Flu ground sick"
       },
       {
        "kind": "map",
@@ -1473,12 +1736,12 @@
     },
     {
      "aspect": "hooks",
-     "text": "A Thorn merchant's debtor says a plague chest is stored in the lower halls, and a scavenger crew has gone silent.",
-     "tier": "AGENT_INVENTED",
+     "text": "A Thorn scavenger crew that went down the stair to the lower halls and has not come back up, and a Dunmer grandmother in Thorn who wants a carved ancestor mask from the household shrine below.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
-       "title": "Kharraluhl: no UESP page; the Cantemiric Velothi coast between Archon, Arnesia and Thorn"
+       "title": "Cantemiric Velothi settled the east coast and died in the Knahaten Flu, 2E 560-603 (Lore:Cantemiric Velothi, Lore:Knahaten Flu, spine 10.1); Thorn's scavenger trade; the Hist hold Flu ground sick"
       },
       {
        "kind": "map",
@@ -1492,6 +1755,46 @@
        "section": "Cantemiric Velothi"
       }
      ]
+    }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Kharraluhl",
+     "count": 1
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "a Thorn scavenger crew camped in the upper walls",
+     "count": 4,
+     "reward": "treasure"
+    },
+    {
+     "kind": "combat-creature",
+     "detail": "skeletons and ghosts of the Velothi flu-dead in the lower halls",
+     "count": 6,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "combat-boss",
+     "detail": "the ghost of the household's head at the shrine in the deepest hall",
+     "count": 1,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "boss-chest",
+     "detail": "boss chest at the household shrine, D3 tier (level 20: Elven, steel plate, scaled)",
+     "count": 1
+    },
+    {
+     "kind": "treasure",
+     "detail": "the scavengers' sacks of Velothi silver and pottery",
+     "count": 1
+    },
+    {
+     "kind": "harvest-rare",
+     "detail": "glowing mushrooms in the cold lower halls",
+     "count": 4
     }
    ]
   },
@@ -1597,12 +1900,12 @@
     },
     {
      "aspect": "people",
-     "text": "Empty of living folk; hunters and river-poachers pass by day.",
-     "tier": "AGENT_INVENTED",
+     "text": "No one lives there. Guxal's hunters and Thorn's fishers pass by day and keep their boats off the quay.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
-       "title": "Ovezza: no UESP page; the Cantemiric Velothi coast"
+       "title": "Cantemiric Velothi settled the east coast and died in the Knahaten Flu, 2E 560-603 (Lore:Cantemiric Velothi, Lore:Knahaten Flu, spine 10.1); Thorn's scavenger trade; the Hist hold Flu ground sick"
       },
       {
        "kind": "map",
@@ -1688,12 +1991,12 @@
     },
     {
      "aspect": "dangers",
-     "text": "The wraiths of the flu-dead drift through the ruin, and crocodiles lie at the drowned quay.",
+     "text": "Ghosts of the flu-dead walk the market square and the towers. Slaughterfish fill the water over the drowned quay, and the sunken boats lie where a swimmer must hold breath to reach them.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
-       "title": "Ovezza: no UESP page; the Cantemiric Velothi coast"
+       "title": "Cantemiric Velothi settled the east coast and died in the Knahaten Flu, 2E 560-603 (Lore:Cantemiric Velothi, Lore:Knahaten Flu, spine 10.1); Thorn's scavenger trade; the Hist hold Flu ground sick"
       },
       {
        "kind": "map",
@@ -1710,12 +2013,12 @@
     },
     {
      "aspect": "hooks",
-     "text": "A Thorn ferryman wants his father's boat found, last seen tied to the old quay. A sealed cellar door has Velothi marks.",
-     "tier": "AGENT_INVENTED",
+     "text": "A Thorn ferryman who wants his father's boat found; it sank at the old quay with the old man's harpoon still in it. Behind the market a cellar door carved with Mephala's spider stays barred from the inside.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
-       "title": "Ovezza: no UESP page; the Cantemiric Velothi coast"
+       "title": "Cantemiric Velothi settled the east coast and died in the Knahaten Flu, 2E 560-603 (Lore:Cantemiric Velothi, Lore:Knahaten Flu, spine 10.1); Thorn's scavenger trade; the Hist hold Flu ground sick"
       },
       {
        "kind": "map",
@@ -1729,6 +2032,41 @@
        "section": "Cantemiric Velothi"
       }
      ]
+    }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Ovezza",
+     "count": 1
+    },
+    {
+     "kind": "combat-creature",
+     "detail": "ghosts of the flu-dead in the towers and square",
+     "count": 5,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "combat-creature",
+     "detail": "slaughterfish over the drowned quay",
+     "count": 4,
+     "reward": "treasure"
+    },
+    {
+     "kind": "combat-boss",
+     "detail": "a Velothi wraith behind the barred cellar door",
+     "count": 1,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "boss-chest",
+     "detail": "boss chest in the barred cellar, D3 tier (level 20)",
+     "count": 1
+    },
+    {
+     "kind": "treasure",
+     "detail": "the ferryman's father's sunken boat, reached by swimming: the old harpoon and a purse",
+     "count": 1
     }
    ]
   },
@@ -1744,7 +2082,7 @@
    "importance": 2,
    "summary": "Tselan is a hamlet of stone and timber on the river west of Tsonac, one of the Stone-Sleepers' outlying hamlets. It supplies Tsonac with quarried stone and river fish.",
    "lore_page": null,
-   "statement_tier_id": "AGENT_INVENTED",
+   "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
    "terrain_needs": [
     {
@@ -1761,12 +2099,12 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A hamlet in the Stone-Sleepers' country, on a river that runs to the bay. Its culture and name are the Stone-Sleepers' own.",
-     "tier": "AGENT_INVENTED",
+     "text": "A Stone-Sleeper hamlet on a river that runs down to the bay, the westernmost of their quarry hamlets. Its people cut stone from the hill above and raft it to Tsonac.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
-       "title": "Tselan: no UESP page; Tsonac's Stone-Sleepers and their stone-building"
+       "title": "The Stone-Sleepers of Tsonac build in stone over Velothi and Ayleid foundations and quarry the jungle uplands (culture record sky-blue); the Xit-Xaht, a tribe that never stopped building in stone (Lore:Xit-Xaht, tribes.md); the map's pale-blue triangle on this river"
       },
       {
        "kind": "map",
@@ -1842,12 +2180,12 @@
     },
     {
      "aspect": "people",
-     "text": "Stone-Sleeper families, a quarry gang of four and an elder who also serves as a tree-minder's pupil.",
-     "tier": "AGENT_INVENTED",
+     "text": "Stone-Sleeper families: a quarry gang of four and an elder who learned the Hist's dreams from Tsonac's tree-minder in her youth and still walks there to hear them.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
-       "title": "Tselan: no UESP page; Tsonac's Stone-Sleepers and their stone-building"
+       "title": "The Stone-Sleepers of Tsonac build in stone over Velothi and Ayleid foundations and quarry the jungle uplands (culture record sky-blue); the Xit-Xaht, a tribe that never stopped building in stone (Lore:Xit-Xaht, tribes.md); the map's pale-blue triangle on this river"
       },
       {
        "kind": "map",
@@ -1950,12 +2288,12 @@
     },
     {
      "aspect": "dangers",
-     "text": "Tselan sits in settled country. Its people keep the paths clear. Wildcats and snakes still hunt at the margins of the jungle round the hamlet.",
+     "text": "Tselan sits in settled country and its people keep the paths clear. Sabre cats still hunt the jungle edge round the quarry.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
-       "title": "Tselan: no UESP page; Tsonac's Stone-Sleepers and their stone-building"
+       "title": "The Stone-Sleepers of Tsonac build in stone over Velothi and Ayleid foundations and quarry the jungle uplands (culture record sky-blue); the Xit-Xaht, a tribe that never stopped building in stone (Lore:Xit-Xaht, tribes.md); the map's pale-blue triangle on this river"
       },
       {
        "kind": "map",
@@ -1977,12 +2315,12 @@
     },
     {
      "aspect": "hooks",
-     "text": "A quarry gang has cut into an old foundation and found a sealed chamber, and the elder wants Tsonac's tree-minder told before anyone goes in.",
-     "tier": "AGENT_INVENTED",
+     "text": "The quarry gang has broken into a sealed Velothi chamber under the hamlet's oldest foundation, and the elder wants Tsonac's tree-minder to come before anyone goes in. One of the gang went in anyway.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
-       "title": "Tselan: no UESP page; Tsonac's Stone-Sleepers and their stone-building"
+       "title": "The Stone-Sleepers of Tsonac build in stone over Velothi and Ayleid foundations and quarry the jungle uplands (culture record sky-blue); the Xit-Xaht, a tribe that never stopped building in stone (Lore:Xit-Xaht, tribes.md); the map's pale-blue triangle on this river"
       },
       {
        "kind": "map",
@@ -2002,6 +2340,44 @@
       }
      ]
     }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Tselan",
+     "count": 1
+    },
+    {
+     "kind": "trader-general",
+     "detail": "the elder's family sells food, rope and quarry tools",
+     "count": 1
+    },
+    {
+     "kind": "ore-vein",
+     "detail": "quarried stone deposit at the hillside quarry (Hearthfire's building stone)",
+     "count": 2
+    },
+    {
+     "kind": "fishing",
+     "detail": "from the stone quay",
+     "count": 1
+    },
+    {
+     "kind": "free-bed",
+     "detail": "a bed in the elder's house",
+     "count": 1
+    },
+    {
+     "kind": "combat-creature",
+     "detail": "skeletons in the sealed Velothi chamber under the foundation",
+     "count": 3,
+     "reward": "treasure"
+    },
+    {
+     "kind": "treasure",
+     "detail": "a Velothi urn in the chamber: up to 50 gold in old coin",
+     "count": 1
+    }
    ]
   },
   {
@@ -2016,7 +2392,7 @@
    "importance": 4,
    "summary": "Tsonac is a terraced city of stone and timber at the head of the bay's inlet, built around a Hist its people say is asleep. It is the capital of the Arnesian jungle, sells stone and timber to Thorn and owes the Archwardens nothing but courtesy.",
    "lore_page": null,
-   "statement_tier_id": "AGENT_INVENTED",
+   "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
    "terrain_needs": [
     {
@@ -2038,12 +2414,12 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A small regional city and the seat of the Stone-Sleepers (Tsona-Kaleel), unusual among Argonians in building in stone. The people and their sleeping Hist follow the Xit-Xaht, a tribe that never stopped building in stone.",
-     "tier": "AGENT_INVENTED",
+     "text": "The one city of the Stone-Sleepers (Tsona-Kaleel), who, unusually among Argonians, build in stone. Like the Xit-Xaht of Shadowfen they kept the old craft; unlike them they never raided for labour, and their Hist sleeps rather than raves.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
-       "title": "Tsonac: no UESP page (searched 2026-11-08); the Xit-Xaht of canon as the model"
+       "title": "The Stone-Sleepers of Tsonac build in stone over Velothi and Ayleid foundations and quarry the jungle uplands (culture record sky-blue); the Xit-Xaht, a tribe that never stopped building in stone (Lore:Xit-Xaht, tribes.md); the map's pale-blue triangle on this river; Tsonac is the blue hexagon at the head of the inlet, the region's one city"
       },
       {
        "kind": "map",
@@ -2064,12 +2440,12 @@
     },
     {
      "aspect": "history",
-     "text": "Barsaebic Ayleids and Cantemiric Velothi once held this country; the Argonians built over their foundations. The name echoes Tsono-Xuhil, the mad Hist of Xit-Xaht that its neighbours put to sleep, though Tsonac's people are a separate tribe.",
+     "text": "Barsaebic Ayleids and Cantemiric Velothi once held this country; the Argonians built over their foundations after the Flu emptied it. The name echoes Tsono-Xuhil, the mad Hist of the Xit-Xaht that its neighbours put to sleep, and the grave-singers say Tsonac's tree is a sapling of that line, asleep since it was planted.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
-       "title": "Tsonac: no UESP page (searched 2026-11-08); the Xit-Xaht of canon as the model"
+       "title": "The Stone-Sleepers of Tsonac build in stone over Velothi and Ayleid foundations and quarry the jungle uplands (culture record sky-blue); the Xit-Xaht, a tribe that never stopped building in stone (Lore:Xit-Xaht, tribes.md); the map's pale-blue triangle on this river; Tsonac is the blue hexagon at the head of the inlet, the region's one city"
       },
       {
        "kind": "map",
@@ -2116,12 +2492,12 @@
     },
     {
      "aspect": "people",
-     "text": "About forty named townsfolk: masons, timber-cutters, hunters, a tree-minder who reads the Hist's dreams, and visiting buyers from Thorn.",
-     "tier": "AGENT_INVENTED",
+     "text": "About forty named townsfolk: masons, timber-cutters, hunters, the tree-minder who hears the Hist's dreams, its pupils, and buyers from Thorn who lodge by the quay.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
-       "title": "Tsonac: no UESP page (searched 2026-11-08); the Xit-Xaht of canon as the model"
+       "title": "The Stone-Sleepers of Tsonac build in stone over Velothi and Ayleid foundations and quarry the jungle uplands (culture record sky-blue); the Xit-Xaht, a tribe that never stopped building in stone (Lore:Xit-Xaht, tribes.md); the map's pale-blue triangle on this river; Tsonac is the blue hexagon at the head of the inlet, the region's one city"
       },
       {
        "kind": "map",
@@ -2168,12 +2544,12 @@
     },
     {
      "aspect": "faith",
-     "text": "The Hist at its centre is held by the townsfolk to be asleep. The tree-minder reads its dreams by the shape of the sap and the dreams of the town's children, and the town treats the sleeping tree as a living elder, never to be woken.",
-     "tier": "AGENT_INVENTED",
+     "text": "The Hist at the city's centre is held to be asleep. The tree-minder hears its dreams in the sap and in what the town's hatchlings dream, and the town treats the tree as a living elder that must never be woken.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
-       "title": "Tsonac: no UESP page (searched 2026-11-08); the Xit-Xaht of canon as the model"
+       "title": "The Stone-Sleepers of Tsonac build in stone over Velothi and Ayleid foundations and quarry the jungle uplands (culture record sky-blue); the Xit-Xaht, a tribe that never stopped building in stone (Lore:Xit-Xaht, tribes.md); the map's pale-blue triangle on this river; Tsonac is the blue hexagon at the head of the inlet, the region's one city"
       },
       {
        "kind": "map",
@@ -2246,12 +2622,12 @@
     },
     {
      "aspect": "hooks",
-     "text": "A tree-minder who says the Hist's dreams have turned bad, a Thorn buyer seeking an Ayleid relic cut from the foundations, and a quarrel between mason families over a seam.",
-     "tier": "AGENT_INVENTED",
+     "text": "A tree-minder who says the Hist's dreams have turned bad since a mason cut too deep under the mound, a Thorn buyer who wants an Ayleid welkynd stone cut from the foundations, and two mason families quarrelling over a seam of good stone.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
-       "title": "Tsonac: no UESP page (searched 2026-11-08); the Xit-Xaht of canon as the model"
+       "title": "The Stone-Sleepers of Tsonac build in stone over Velothi and Ayleid foundations and quarry the jungle uplands (culture record sky-blue); the Xit-Xaht, a tribe that never stopped building in stone (Lore:Xit-Xaht, tribes.md); the map's pale-blue triangle on this river; Tsonac is the blue hexagon at the head of the inlet, the region's one city"
       },
       {
        "kind": "map",
@@ -2270,6 +2646,93 @@
       }
      ]
     }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Tsonac",
+     "count": 1
+    },
+    {
+     "kind": "trader-general",
+     "detail": "a stone-carver's family shop by the quay",
+     "count": 1
+    },
+    {
+     "kind": "trader-blacksmith",
+     "detail": "a mason-smith selling tools, iron and steel arms and hide armour",
+     "count": 1
+    },
+    {
+     "kind": "forge",
+     "detail": "the mason-smith's forge",
+     "count": 1
+    },
+    {
+     "kind": "anvil",
+     "detail": "the mason-smith's anvil",
+     "count": 1
+    },
+    {
+     "kind": "grindstone",
+     "detail": "by the forge",
+     "count": 1
+    },
+    {
+     "kind": "armour-workbench",
+     "detail": "by the forge",
+     "count": 1
+    },
+    {
+     "kind": "tanning-rack",
+     "detail": "by the hunters' terrace",
+     "count": 1
+    },
+    {
+     "kind": "trader-apothecary",
+     "detail": "a sap-seller with jungle ingredients",
+     "count": 1
+    },
+    {
+     "kind": "alchemy-lab",
+     "detail": "in the sap-seller's house",
+     "count": 1
+    },
+    {
+     "kind": "trader-spells",
+     "detail": "the tree-minder's pupil, selling Alteration tomes up to Expert (the Stone-Sleepers' stone magic: Stoneflesh, Ironflesh, Ebonyflesh) and Restoration to Adept",
+     "count": 1
+    },
+    {
+     "kind": "trainer",
+     "detail": "Alteration, Expert, the tree-minder",
+     "count": 1
+    },
+    {
+     "kind": "trainer",
+     "detail": "Smithing, Journeyman, the mason-smith",
+     "count": 1
+    },
+    {
+     "kind": "trader-innkeeper",
+     "detail": "the quay lodging house",
+     "count": 1
+    },
+    {
+     "kind": "inn-room",
+     "detail": "a room at the quay lodging house",
+     "count": 1
+    },
+    {
+     "kind": "cooking-pot",
+     "detail": "the lodging house hearth",
+     "count": 1
+    },
+    {
+     "kind": "shrine-blessing",
+     "detail": "the stone ring round the sleeping Hist: a blessing that raises armour rating, like Skyrim's shrine of Stendarr in strength",
+     "count": 1
+    }
    ]
   },
   {
@@ -2282,9 +2745,9 @@
    "siting": "inland",
    "danger_band_id": "D2",
    "importance": 1,
-   "summary": "Xuvagol is a Root-Folk hunting station on a forested rise at the western end of the jungle, a day beyond Tselan. A few families hunt, gather and watch the road.",
+   "summary": "Xuvagol is a Root-Folk hunting station on a forested rise at the western end of the jungle, a day beyond Tselan. Six people hunt the jungle edge from it and trade hides at Tselan.",
    "lore_page": null,
-   "statement_tier_id": "AGENT_INVENTED",
+   "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
    "terrain_needs": [
     {
@@ -2296,12 +2759,12 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Xuvagol is an outpost named in the Root-Folk's style, a hunting station on a forested rise at the western end of the jungle.",
-     "tier": "AGENT_INVENTED",
+     "text": "Xuvagol is a Root-Folk hunting station on a forested rise at the jungle's western end, the last stilt houses before the mesa road. The name is the hunters' own.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
-       "title": "Unnamed Root-Folk outposts of the jungle"
+       "title": "Root-Folk of Helstrom keep small hunting and sap stations spread through the jungle (culture record forest-green); the map's unlabelled green triangle on a forested rise north-west of Tselan"
       },
       {
        "kind": "map",
@@ -2359,12 +2822,12 @@
     },
     {
      "aspect": "people",
-     "text": "Saxhleel hunters and their kin, led by an old trapper who knows every path to Tsonac.",
-     "tier": "AGENT_INVENTED",
+     "text": "Saxhleel hunters and their kin, led by an old trapper who knows every path to Tsonac and has buried two sons under the rise.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
-       "title": "Unnamed Root-Folk outposts of the jungle"
+       "title": "Root-Folk of Helstrom keep small hunting and sap stations spread through the jungle (culture record forest-green); the map's unlabelled green triangle on a forested rise north-west of Tselan"
       },
       {
        "kind": "map",
@@ -2464,12 +2927,12 @@
     },
     {
      "aspect": "hooks",
-     "text": "A trapper who has seen strange lights in the Sarpa country to the south, and a bear skin worth more than the camp itself.",
-     "tier": "AGENT_INVENTED",
+     "text": "A trapper who saw torches moving at night among the Kaochalit ruin, where no one lives, and a great cave bear that has taken three of the camp's snares and a hunter's arm.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
-       "title": "Unnamed Root-Folk outposts of the jungle"
+       "title": "Root-Folk of Helstrom keep small hunting and sap stations spread through the jungle (culture record forest-green); the map's unlabelled green triangle on a forested rise north-west of Tselan"
       },
       {
        "kind": "map",
@@ -2482,6 +2945,45 @@
        "locator": "story/lore/extrapolation/settlement-register.md"
       }
      ]
+    }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Xuvagol",
+     "count": 1
+    },
+    {
+     "kind": "trader-hunter",
+     "detail": "the old trapper buys hides and sells smoked meat and arrows",
+     "count": 1
+    },
+    {
+     "kind": "tanning-rack",
+     "detail": "by the pelt frames",
+     "count": 1
+    },
+    {
+     "kind": "trainer",
+     "detail": "Archery, Journeyman, the old trapper",
+     "count": 1
+    },
+    {
+     "kind": "combat-creature",
+     "detail": "a cave bear in the gully below the rise",
+     "count": 1,
+     "reward": "treasure"
+    },
+    {
+     "kind": "combat-creature",
+     "detail": "sabre cats on the jungle paths",
+     "count": 2,
+     "reward": "treasure"
+    },
+    {
+     "kind": "treasure",
+     "detail": "the bear's den: a dead hunter's bow and up to 50 gold",
+     "count": 1
     }
    ]
   },
@@ -2582,12 +3084,12 @@
     },
     {
      "aspect": "people",
-     "text": "No residents; travellers report a hermit Dunmer herbalist living in a tomb at its edge.",
-     "tier": "AGENT_INVENTED",
+     "text": "No one lives in the halls. A Dunmer herbalist from Thorn has lived for years in an outer tomb at the ruin's edge, gathering the fungus that grows in the dark.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
-       "title": "Kaochalit: no UESP page; the Cantemiric Velothi's eastern seaboard settlements"
+       "title": "Cantemiric Velothi settled the east coast and died in the Knahaten Flu, 2E 560-603 (Lore:Cantemiric Velothi, Lore:Knahaten Flu, spine 10.1); Thorn's scavenger trade; the Hist hold Flu ground sick"
       },
       {
        "kind": "map",
@@ -2692,12 +3194,12 @@
     },
     {
      "aspect": "hooks",
-     "text": "A mason from Tsonac asks for a lost trowel-seal from the cellars; the hermit herbalist wants a patient brought to her.",
-     "tier": "AGENT_INVENTED",
+     "text": "A Tsonac mason who left his grandfather's chisel in the cellars when the dead rose, and the herbalist, who asks for a sick Stone-Sleeper child to be carried to her from Oxayo.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
-       "title": "Kaochalit: no UESP page; the Cantemiric Velothi's eastern seaboard settlements"
+       "title": "Cantemiric Velothi settled the east coast and died in the Knahaten Flu, 2E 560-603 (Lore:Cantemiric Velothi, Lore:Knahaten Flu, spine 10.1); Thorn's scavenger trade; the Hist hold Flu ground sick"
       },
       {
        "kind": "map",
@@ -2711,6 +3213,45 @@
        "section": "Cantemiric Velothi"
       }
      ]
+    }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Kaochalit",
+     "count": 1
+    },
+    {
+     "kind": "trader-apothecary",
+     "detail": "the Dunmer herbalist in the outer tomb",
+     "count": 1
+    },
+    {
+     "kind": "alchemy-lab",
+     "detail": "the herbalist's bench",
+     "count": 1
+    },
+    {
+     "kind": "combat-creature",
+     "detail": "skeletons and ghosts of the flu-dead in the lower halls",
+     "count": 6,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "combat-boss",
+     "detail": "a Velothi priestess of Mephala risen in the hall under the well",
+     "count": 1,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "boss-chest",
+     "detail": "boss chest in the hall under the well, D3 tier (level 20)",
+     "count": 1
+    },
+    {
+     "kind": "harvest-rare",
+     "detail": "glowing and white cap fungus in the cellars",
+     "count": 5
     }
    ]
   },
@@ -2739,7 +3280,7 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A Cantemiric Velothi ruin of the east coast, on the eastern mesa as part of the Velothi settlement of this country.",
+     "text": "A Cantemiric Velothi ruin on the eastern mesa, one of the Velothi towns of this country, half buried under vine and silt south of Ayiin.",
      "tier": "CANON_DERIVED",
      "sources": [
       {
@@ -2811,12 +3352,12 @@
     },
     {
      "aspect": "people",
-     "text": "No residents; Ayiin's hunters pass it by day and look for strays among the ruins.",
-     "tier": "AGENT_INVENTED",
+     "text": "No one lives there. Ayiin's hunters cross it by day and turn back before dark.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
-       "title": "Balormaak: no UESP page; the Cantemiric Velothi's eastern seaboard settlements"
+       "title": "Cantemiric Velothi settled the east coast and died in the Knahaten Flu, 2E 560-603 (Lore:Cantemiric Velothi, Lore:Knahaten Flu, spine 10.1); Thorn's scavenger trade; the Hist hold Flu ground sick"
       },
       {
        "kind": "map",
@@ -2899,12 +3440,12 @@
     },
     {
      "aspect": "dangers",
-     "text": "Undead walk the cellars under the vines in Balormaak. The open cellars hold snakes and flood in the rains.",
+     "text": "Skeletons of the flu-dead walk the cellars under the vines. The open cellars hold standing water to the knee and skeevers in the silt.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
-       "title": "Balormaak: no UESP page; the Cantemiric Velothi's eastern seaboard settlements"
+       "title": "Cantemiric Velothi settled the east coast and died in the Knahaten Flu, 2E 560-603 (Lore:Cantemiric Velothi, Lore:Knahaten Flu, spine 10.1); Thorn's scavenger trade; the Hist hold Flu ground sick"
       },
       {
        "kind": "map",
@@ -2921,12 +3462,12 @@
     },
     {
      "aspect": "hooks",
-     "text": "Ayiin's hunters want a child's lost egg-charm retrieved from a cellar, and a Thorn merchant wants a Velothi ledger.",
-     "tier": "AGENT_INVENTED",
+     "text": "An Ayiin child dropped her egg-charm, a carved shell on a cord, into a cellar while hiding from her brothers, and a Velothi bronze bell lies in the fallen tower that a Thorn smith will pay well for.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
-       "title": "Balormaak: no UESP page; the Cantemiric Velothi's eastern seaboard settlements"
+       "title": "Cantemiric Velothi settled the east coast and died in the Knahaten Flu, 2E 560-603 (Lore:Cantemiric Velothi, Lore:Knahaten Flu, spine 10.1); Thorn's scavenger trade; the Hist hold Flu ground sick"
       },
       {
        "kind": "map",
@@ -2940,6 +3481,41 @@
        "section": "Cantemiric Velothi"
       }
      ]
+    }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Balormaak",
+     "count": 1
+    },
+    {
+     "kind": "combat-creature",
+     "detail": "skeletons of the flu-dead in the cellars",
+     "count": 5,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "combat-creature",
+     "detail": "skeevers in the silted cellars",
+     "count": 4,
+     "reward": "treasure"
+    },
+    {
+     "kind": "combat-boss",
+     "detail": "a skeletal Velothi captain in the bell-tower crypt",
+     "count": 1,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "boss-chest",
+     "detail": "boss chest in the bell-tower crypt, D3 tier (level 20)",
+     "count": 1
+    },
+    {
+     "kind": "treasure",
+     "detail": "old Velothi ironwork and clay goods in the cellars, up to 50 gold",
+     "count": 1
     }
    ]
   },
@@ -2955,7 +3531,7 @@
    "importance": 3,
    "summary": "Vorannuhl is a remote Cantemiric Velothi ruin deep on the mesa near the Middle Argonian edge. Its dead lie undisturbed and its halls are the deepest of the east.",
    "lore_page": null,
-   "statement_tier_id": "AGENT_INVENTED",
+   "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
    "terrain_needs": [
     {
@@ -2968,12 +3544,12 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Vorannuhl is a Cantemiric Velothi ruin named in Velothi style, part of the Velothi settlement of the country.",
-     "tier": "AGENT_INVENTED",
+     "text": "Vorannuhl is the deepest Cantemiric Velothi ruin of the east, half sunk into the mesa's south slope. The name is the one Noota Nara's hunters give it, in the Velothi style of the other ruins.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
-       "title": "Velothi-Ruin-23-M73: no UESP page; the Cantemiric Velothi's eastern seaboard settlements"
+       "title": "Cantemiric Velothi settled the east coast and died in the Knahaten Flu, 2E 560-603 (Lore:Cantemiric Velothi, Lore:Knahaten Flu, spine 10.1); Thorn's scavenger trade; the Hist hold Flu ground sick; an unnamed ruin glyph far from any road on the mesa's south edge, so never scavenged"
       },
       {
        "kind": "map",
@@ -3037,12 +3613,12 @@
     },
     {
      "aspect": "people",
-     "text": "No residents; Sarpa warbands sometimes shelter in its outer yard.",
-     "tier": "AGENT_INVENTED",
+     "text": "No one lives there. A Sarpa warband sometimes shelters in its outer yard and leaves bones there.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
-       "title": "Velothi-Ruin-23-M73: no UESP page; the Cantemiric Velothi's eastern seaboard settlements"
+       "title": "Cantemiric Velothi settled the east coast and died in the Knahaten Flu, 2E 560-603 (Lore:Cantemiric Velothi, Lore:Knahaten Flu, spine 10.1); Thorn's scavenger trade; the Hist hold Flu ground sick; an unnamed ruin glyph far from any road on the mesa's south edge, so never scavenged"
       },
       {
        "kind": "map",
@@ -3147,12 +3723,12 @@
     },
     {
      "aspect": "hooks",
-     "text": "A map held by a dead scout shows a sealed vault, and Noota Nara's hunters will pay for the Velothi bell that rings at night.",
-     "tier": "AGENT_INVENTED",
+     "text": "A Noota Nara scout went into the outer yard and was found dead with a key of Velothi bronze in his hand, and the hunters of Noota Nara will pay for the bell that hangs silent in the high tower.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
-       "title": "Velothi-Ruin-23-M73: no UESP page; the Cantemiric Velothi's eastern seaboard settlements"
+       "title": "Cantemiric Velothi settled the east coast and died in the Knahaten Flu, 2E 560-603 (Lore:Cantemiric Velothi, Lore:Knahaten Flu, spine 10.1); Thorn's scavenger trade; the Hist hold Flu ground sick; an unnamed ruin glyph far from any road on the mesa's south edge, so never scavenged"
       },
       {
        "kind": "map",
@@ -3166,6 +3742,46 @@
        "section": "Cantemiric Velothi"
       }
      ]
+    }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Vorannuhl",
+     "count": 1
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "a Sarpa warband sheltering in the outer yard",
+     "count": 4,
+     "reward": "treasure"
+    },
+    {
+     "kind": "combat-creature",
+     "detail": "the flu-dead of the household, skeletons and ghosts, in the deep halls",
+     "count": 8,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "combat-boss",
+     "detail": "the household's lord, a Velothi lich in the vault the bronze key opens",
+     "count": 1,
+     "reward": "gold-hoard"
+    },
+    {
+     "kind": "boss-chest",
+     "detail": "boss chest in the vault, D4 tier (level 35: glass, ebony)",
+     "count": 1
+    },
+    {
+     "kind": "gold-hoard",
+     "detail": "the household's hoard in the vault, D4 tier",
+     "count": 1
+    },
+    {
+     "kind": "treasure",
+     "detail": "the Sarpa's spoils in the outer yard",
+     "count": 1
     }
    ]
   },
@@ -3181,7 +3797,7 @@
    "importance": 2,
    "summary": "Ayiin is a hamlet of stone and timber on a river on the east side of the mesa, a day south of Thorn. Its families quarry and watch the road to Balormaak.",
    "lore_page": null,
-   "statement_tier_id": "AGENT_INVENTED",
+   "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
    "terrain_needs": [
     {
@@ -3198,12 +3814,12 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A hamlet in the Stone-Sleepers' eastern reach, on a river by the mesa. Its name and people are the Stone-Sleepers' own.",
-     "tier": "AGENT_INVENTED",
+     "text": "The Stone-Sleepers' eastern hamlet, on a river below the mesa where the Kalaxo Cut quarry works. The road from it runs a day north to Thorn.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
-       "title": "Ayiin: no UESP page; the Stone-Sleepers' hamlets"
+       "title": "The Stone-Sleepers of Tsonac build in stone over Velothi and Ayleid foundations and quarry the jungle uplands (culture record sky-blue); the Xit-Xaht, a tribe that never stopped building in stone (Lore:Xit-Xaht, tribes.md); the map's pale-blue triangle on this river; on a river arm below the Kalaxo Cut quarry on the mesa's east side"
       },
       {
        "kind": "map",
@@ -3276,12 +3892,12 @@
     },
     {
      "aspect": "people",
-     "text": "Stone-Sleeper families, a gang of quarrymen and an elder who counts the carts that pass to Thorn.",
-     "tier": "AGENT_INVENTED",
+     "text": "Stone-Sleeper families, a gang of quarrymen and an elder who knows every carter on the Thorn road by name and by debt.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
-       "title": "Ayiin: no UESP page; the Stone-Sleepers' hamlets"
+       "title": "The Stone-Sleepers of Tsonac build in stone over Velothi and Ayleid foundations and quarry the jungle uplands (culture record sky-blue); the Xit-Xaht, a tribe that never stopped building in stone (Lore:Xit-Xaht, tribes.md); the map's pale-blue triangle on this river; on a river arm below the Kalaxo Cut quarry on the mesa's east side"
       },
       {
        "kind": "map",
@@ -3406,12 +4022,12 @@
     },
     {
      "aspect": "hooks",
-     "text": "A quarry cart stuck in the ford with a locked chest on it, and an elder asking who has been leaving shells at Balormaak's gate.",
-     "tier": "AGENT_INVENTED",
+     "text": "A quarry cart overturned in the ford with a locked chest under it, and an elder who wants to know who has been leaving shells at Balormaak's gate, since no one in Ayiin admits to it.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
-       "title": "Ayiin: no UESP page; the Stone-Sleepers' hamlets"
+       "title": "The Stone-Sleepers of Tsonac build in stone over Velothi and Ayleid foundations and quarry the jungle uplands (culture record sky-blue); the Xit-Xaht, a tribe that never stopped building in stone (Lore:Xit-Xaht, tribes.md); the map's pale-blue triangle on this river; on a river arm below the Kalaxo Cut quarry on the mesa's east side"
       },
       {
        "kind": "map",
@@ -3429,6 +4045,39 @@
        "locator": "newworld/sources/research/cultures.json"
       }
      ]
+    }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Ayiin",
+     "count": 1
+    },
+    {
+     "kind": "trader-general",
+     "detail": "the elder's house sells food and quarry tools",
+     "count": 1
+    },
+    {
+     "kind": "fishing",
+     "detail": "from the stone jetty",
+     "count": 1
+    },
+    {
+     "kind": "free-bed",
+     "detail": "a bed in the elder's house",
+     "count": 1
+    },
+    {
+     "kind": "combat-creature",
+     "detail": "a sabre cat on the riverbank path",
+     "count": 1,
+     "reward": "treasure"
+    },
+    {
+     "kind": "treasure",
+     "detail": "the locked chest under the cart in the ford: up to 50 gold",
+     "count": 1
     }
    ]
   },
@@ -3457,12 +4106,12 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Sahlpesh Cave is a cave in the west of the mesa, named in the Argonian style. It belongs to the Sarpa, who live only in Middle Argonia.",
-     "tier": "AGENT_INVENTED",
+     "text": "Sahlpesh Cave is a wide cave in the mesa's western wall beside the Sarpa camp, the warband's larder and nest. Sahlpesh is what the Stone-Sleepers of Oxayo call it.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
-       "title": "Sahlpesh Cave: no UESP page; Sarpa as an exclusive Middle Argonia tribe"
+       "title": "The Sarpa are a winged tribe found only in Middle Argonia (tribes.md, Lore:Argonian); the mesa's western edge faces Middle Argonia; the map's cave glyph beside the Sarpa camp"
       },
       {
        "kind": "map",
@@ -3483,12 +4132,12 @@
     },
     {
      "aspect": "history",
-     "text": "A natural cave known for generations; the Sarpa claimed it as the mesa country was abandoned by Imperial prospectors.",
+     "text": "A natural cave hunters have known for generations; the Sarpa took it when their warband settled the mesa edge, and no one has gone in since without a fight.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
-       "title": "Sahlpesh Cave: no UESP page; Sarpa as an exclusive Middle Argonia tribe"
+       "title": "The Sarpa are a winged tribe found only in Middle Argonia (tribes.md, Lore:Argonian); the mesa's western edge faces Middle Argonia; the map's cave glyph beside the Sarpa camp"
       },
       {
        "kind": "map",
@@ -3639,12 +4288,12 @@
     },
     {
      "aspect": "dangers",
-     "text": "Sarpa archers and diving attackers at the mouth, and falling rock.",
+     "text": "Sarpa archers shoot from the ledges inside the mouth, and spearmen hold the narrow passage behind. A rockfall trap guards the nest gallery.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
-       "title": "Sahlpesh Cave: no UESP page; Sarpa as an exclusive Middle Argonia tribe"
+       "title": "The Sarpa are a winged tribe found only in Middle Argonia (tribes.md, Lore:Argonian); the mesa's western edge faces Middle Argonia; the map's cave glyph beside the Sarpa camp"
       },
       {
        "kind": "map",
@@ -3665,12 +4314,12 @@
     },
     {
      "aspect": "hooks",
-     "text": "A stolen clutch of eggs, a prospector's lost crate, a Sarpa elder who might trade if shown respect.",
-     "tier": "AGENT_INVENTED",
+     "text": "A clutch of Stone-Sleeper eggs carried off from Oxayo and kept in the nest gallery, and a Sarpa elder in the back chamber who will talk instead of fight if the player comes in with no weapon drawn.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
-       "title": "Sahlpesh Cave: no UESP page; Sarpa as an exclusive Middle Argonia tribe"
+       "title": "The Sarpa are a winged tribe found only in Middle Argonia (tribes.md, Lore:Argonian); the mesa's western edge faces Middle Argonia; the map's cave glyph beside the Sarpa camp"
       },
       {
        "kind": "map",
@@ -3688,6 +4337,35 @@
        "locator": "story/lore/tribes.md"
       }
      ]
+    }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Sahlpesh Cave",
+     "count": 1
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "Sarpa archers and spearmen on the ledges and in the passage",
+     "count": 6,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "combat-boss",
+     "detail": "the Sarpa war-leader in the nest gallery",
+     "count": 1,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "boss-chest",
+     "detail": "boss chest in the nest gallery, D3 tier (level 20)",
+     "count": 1
+    },
+    {
+     "kind": "treasure",
+     "detail": "travellers' goods heaped in the larder: up to 50 gold, a prospector's pick",
+     "count": 1
     }
    ]
   },
@@ -3741,12 +4419,12 @@
     },
     {
      "aspect": "history",
-     "text": "The Sarpa spread to the mesa edge as the Hist-forest's boundary shifted with the years of the secession.",
+     "text": "The Sarpa have hunted the mesa's western edge as long as Oxayo's grave-singers remember; this warband's camp has stood on the shelf for three generations of Stone-Sleepers.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
-       "title": "Hanaxi Roost: no UESP page; Sarpa tribes in Middle Argonia"
+       "title": "The Sarpa are a winged tribe found only in Middle Argonia (tribes.md, Lore:Argonian); the mesa's western edge faces Middle Argonia; the map's cave glyph beside the Sarpa camp"
       },
       {
        "kind": "map",
@@ -3897,12 +4575,12 @@
     },
     {
      "aspect": "dangers",
-     "text": "Sarpa archers, divers and spear-bearers around Hanaxi Roost attack outsiders on sight.",
+     "text": "Sarpa archers on the shelf and spear-bearers at the tents attack outsiders on sight. The shelf ends in a sheer drop to the gorge.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
-       "title": "Hanaxi Roost: no UESP page; Sarpa tribes in Middle Argonia"
+       "title": "The Sarpa are a winged tribe found only in Middle Argonia (tribes.md, Lore:Argonian); the mesa's western edge faces Middle Argonia; the map's cave glyph beside the Sarpa camp"
       },
       {
        "kind": "map",
@@ -3923,12 +4601,12 @@
     },
     {
      "aspect": "hooks",
-     "text": "A Tsonac caravan lost three guards here; a Sarpa elder will parley for a gift of fresh fish.",
-     "tier": "AGENT_INVENTED",
+     "text": "A Tsonac stone caravan lost three guards on the road below the shelf, and their bodies hang on the feather poles; a Sarpa elder who will parley for a gift of fresh fish.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
-       "title": "Hanaxi Roost: no UESP page; Sarpa tribes in Middle Argonia"
+       "title": "The Sarpa are a winged tribe found only in Middle Argonia (tribes.md, Lore:Argonian); the mesa's western edge faces Middle Argonia; the map's cave glyph beside the Sarpa camp"
       },
       {
        "kind": "map",
@@ -3946,6 +4624,45 @@
        "locator": "story/lore/tribes.md"
       }
      ]
+    }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Hanaxi Roost",
+     "count": 1
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "the Sarpa warband: archers and spear-bearers",
+     "count": 8,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "combat-boss",
+     "detail": "the warband's chief at the largest tent",
+     "count": 1,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "boss-chest",
+     "detail": "boss chest in the chief's tent, D3 tier (level 20)",
+     "count": 1
+    },
+    {
+     "kind": "treasure",
+     "detail": "the caravan guards' gear on the feather poles",
+     "count": 1
+    },
+    {
+     "kind": "tanning-rack",
+     "detail": "by the drying racks",
+     "count": 1
+    },
+    {
+     "kind": "cooking-pot",
+     "detail": "the camp fire",
+     "count": 1
     }
    ]
   },
@@ -4004,7 +4721,7 @@
     },
     {
      "aspect": "history",
-     "text": "The Empire built it to guard a chalk and limestone working; garrisons left after 4E 48 and Argonians took it over in the secession.",
+     "text": "The Empire built it to guard the chalk and limestone working beside it. The Legion left at the secession (4E 5-10), and an ex-Archein family has kept the keys in the Archwardens' name since.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4030,7 +4747,7 @@
     },
     {
      "aspect": "present",
-     "text": "A dozen at most man it; they tax the chalk carts and watch the Sarpa to the west.",
+     "text": "A dozen at most man it; they take a toll on the chalk carts that leave the mesa and keep watch on the Sarpa to the west.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4186,8 +4903,8 @@
     },
     {
      "aspect": "hooks",
-     "text": "A garrison captain wants a patrol to find a missing chalk cart, and rumour says the fort's cellar opens into an older chamber.",
-     "tier": "AGENT_INVENTED",
+     "text": "A garrison captain whose chalk cart and its driver vanished on the western road, and a cellar wall that rings hollow where the Legion's masons bricked up something older.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
@@ -4209,6 +4926,49 @@
        "locator": "story/lore/extrapolation/settlement-register.md"
       }
      ]
+    }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Fort Chalkmoth",
+     "count": 1
+    },
+    {
+     "kind": "trader-blacksmith",
+     "detail": "the Dunmer quartermaster: iron and steel arms, arrows",
+     "count": 1
+    },
+    {
+     "kind": "grindstone",
+     "detail": "in the yard",
+     "count": 1
+    },
+    {
+     "kind": "armour-workbench",
+     "detail": "in the yard",
+     "count": 1
+    },
+    {
+     "kind": "trainer",
+     "detail": "Archery, Journeyman, the wall captain who watches the Sarpa",
+     "count": 1
+    },
+    {
+     "kind": "free-bed",
+     "detail": "a bunk in the barracks",
+     "count": 1
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "Sarpa raiders on the western approach",
+     "count": 3,
+     "reward": "treasure"
+    },
+    {
+     "kind": "treasure",
+     "detail": "behind the bricked-up cellar wall: an Imperial strongbox, up to 50 gold",
+     "count": 1
     }
    ]
   },
@@ -4403,8 +5163,8 @@
     },
     {
      "aspect": "hooks",
-     "text": "A spear-smith's apprentice says she can make the dragon-fire tips again if she is brought something from the fire, and the elders want the head's story told in Port Hunding.",
-     "tier": "AGENT_INVENTED",
+     "text": "A spear-smith's apprentice says she can make the dragonfire spear-tips again if someone brings her fire salts, and the elders want the dragon's head brought home from Port Hunding.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
@@ -4421,6 +5181,63 @@
        "locator": "story/lore/extrapolation/settlement-register.md"
       }
      ]
+    }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Noota Nara",
+     "count": 1
+    },
+    {
+     "kind": "trader-blacksmith",
+     "detail": "the spear-smiths: spears are not in Skyrim, so they sell fire-hardened iron and steel weapons and arrows",
+     "count": 1
+    },
+    {
+     "kind": "forge",
+     "detail": "the spear-smiths' forge",
+     "count": 1
+    },
+    {
+     "kind": "anvil",
+     "detail": "the spear-smiths' anvil",
+     "count": 1
+    },
+    {
+     "kind": "grindstone",
+     "detail": "by the forge",
+     "count": 1
+    },
+    {
+     "kind": "trainer",
+     "detail": "Smithing, Journeyman, the master spear-smith",
+     "count": 1
+    },
+    {
+     "kind": "trader-general",
+     "detail": "the potters sell clay pots, food and goods",
+     "count": 1
+    },
+    {
+     "kind": "ore-vein",
+     "detail": "clay deposit on the riverbank (Hearthfire's clay)",
+     "count": 2
+    },
+    {
+     "kind": "fishing",
+     "detail": "from the river below the walls",
+     "count": 1
+    },
+    {
+     "kind": "cooking-pot",
+     "detail": "the potters' fire",
+     "count": 1
+    },
+    {
+     "kind": "shrine-blessing",
+     "detail": "the village Hist with the dragon-spear beside it: a blessing of fire resistance",
+     "count": 1
     }
    ]
   },
@@ -4583,7 +5400,7 @@
     },
     {
      "aspect": "faith",
-     "text": "They follow the Hist but are scholars; they keep books taken from dead missions.",
+     "text": "They follow the Hist like other Argonians, but they also keep the books their grandparents took from the dead Maran mission at Umpholo and read them aloud at hatchings.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4609,7 +5426,7 @@
     },
     {
      "aspect": "look",
-     "text": "Stilt houses on slender posts, raft racks, bright painted shutters and a shelf of salvaged books.",
+     "text": "Stilt houses on slender posts, raft racks along the water, bright painted shutters and a reed-roofed house where the mission books are kept dry.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -4661,8 +5478,8 @@
     },
     {
      "aspect": "hooks",
-     "text": "An Agaceph reader wants a book from a drowned mission, and a spell-frozen traveller stands in a doorway.",
-     "tier": "AGENT_INVENTED",
+     "text": "An Agaceph reader wants a book from the drowned lower floor of a mission chapel downriver, reached only by swimming, and a traveller stands frozen by a spell in a doorway, held there since he tried to steal a raft.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
@@ -4685,6 +5502,38 @@
       }
      ]
     }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Hirecan",
+     "count": 1
+    },
+    {
+     "kind": "trader-spells",
+     "detail": "an Agaceph illusionist selling Illusion tomes up to Expert, and scrolls",
+     "count": 1
+    },
+    {
+     "kind": "trainer",
+     "detail": "Illusion, Expert, the same illusionist",
+     "count": 1
+    },
+    {
+     "kind": "trader-bookseller",
+     "detail": "the keeper of the mission books, who also sells spell tomes",
+     "count": 1
+    },
+    {
+     "kind": "skill-book",
+     "detail": "a Restoration skill book among the mission books",
+     "count": 1
+    },
+    {
+     "kind": "fishing",
+     "detail": "from the raft racks",
+     "count": 1
+    }
    ]
   },
   {
@@ -4699,7 +5548,7 @@
    "importance": 2,
    "summary": "Oxayo is a hamlet of stone and timber on a river at the mesa's north-west, between Tselan and the Sarpa lands. It is a quarry hamlet and a lookout on the Sarpa road.",
    "lore_page": null,
-   "statement_tier_id": "AGENT_INVENTED",
+   "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
    "terrain_needs": [
     {
@@ -4716,12 +5565,12 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "A Stone-Sleeper hamlet on the river at the mesa's north-west. Its name and people are the Stone-Sleepers' own.",
-     "tier": "AGENT_INVENTED",
+     "text": "The Stone-Sleepers' hamlet nearest the Sarpa, on the river at the mesa's north-west. Its quarrymen work the Xanuc Diggings, and its horn warns the hamlets east of it when the Sarpa come.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
-       "title": "Oxayo: no UESP page; the Stone-Sleepers' hamlets"
+       "title": "The Stone-Sleepers of Tsonac build in stone over Velothi and Ayleid foundations and quarry the jungle uplands (culture record sky-blue); the Xit-Xaht, a tribe that never stopped building in stone (Lore:Xit-Xaht, tribes.md); the map's pale-blue triangle on this river; on a river at the mesa's north-west, the map's pale-blue triangle west of Kaochalit, facing the Sarpa edge"
       },
       {
        "kind": "map",
@@ -4794,12 +5643,12 @@
     },
     {
      "aspect": "people",
-     "text": "Stone-Sleeper families, quarry hands and a watch-elder with a horn.",
-     "tier": "AGENT_INVENTED",
+     "text": "Stone-Sleeper families, quarry hands and a watch-elder who keeps the signal horn and has lost an eye to a Sarpa arrow.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
-       "title": "Oxayo: no UESP page; the Stone-Sleepers' hamlets"
+       "title": "The Stone-Sleepers of Tsonac build in stone over Velothi and Ayleid foundations and quarry the jungle uplands (culture record sky-blue); the Xit-Xaht, a tribe that never stopped building in stone (Lore:Xit-Xaht, tribes.md); the map's pale-blue triangle on this river; on a river at the mesa's north-west, the map's pale-blue triangle west of Kaochalit, facing the Sarpa edge"
       },
       {
        "kind": "map",
@@ -4924,12 +5773,12 @@
     },
     {
      "aspect": "hooks",
-     "text": "A horn blown at night for no reason anyone can name, and a cache of Sarpa feathers found in the quarry.",
-     "tier": "AGENT_INVENTED",
+     "text": "The horn blown at night when no one in Oxayo admits to blowing it, and a bundle of Sarpa feathers tied to the quarry gate, a warning the watch-elder knows from her own youth.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
-       "title": "Oxayo: no UESP page; the Stone-Sleepers' hamlets"
+       "title": "The Stone-Sleepers of Tsonac build in stone over Velothi and Ayleid foundations and quarry the jungle uplands (culture record sky-blue); the Xit-Xaht, a tribe that never stopped building in stone (Lore:Xit-Xaht, tribes.md); the map's pale-blue triangle on this river; on a river at the mesa's north-west, the map's pale-blue triangle west of Kaochalit, facing the Sarpa edge"
       },
       {
        "kind": "map",
@@ -4948,21 +5797,48 @@
       }
      ]
     }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Oxayo",
+     "count": 1
+    },
+    {
+     "kind": "trader-general",
+     "detail": "the watch-elder's family sells food and tools",
+     "count": 1
+    },
+    {
+     "kind": "grindstone",
+     "detail": "where the quarry tools are mended",
+     "count": 1
+    },
+    {
+     "kind": "fishing",
+     "detail": "from the riverbank",
+     "count": 1
+    },
+    {
+     "kind": "free-bed",
+     "detail": "a bed in the watch-elder's house",
+     "count": 1
+    }
    ]
   },
   {
    "id": "mine-16-m69",
    "name": "Xanuc Diggings",
    "status": "inhabited",
-   "held_by": "Worked by the Stone-Sleepers and the Warden garrison",
+   "held_by": "The Stone-Sleepers of Oxayo",
    "population": 4,
    "footprint_radius_m": 35,
    "siting": "hilltop",
    "danger_band_id": "D2",
    "importance": 2,
-   "summary": "Xanuc Diggings is a stone-quarry mine in the mesa wall near Oxayo, worked by the Stone-Sleepers. Its galleries run under the mesa top.",
+   "summary": "Xanuc Diggings is a stone quarry and mine in the mesa wall near Oxayo, worked by Stone-Sleepers. Its galleries run under the mesa top, and the north gallery has broken into an older tunnel.",
    "lore_page": null,
-   "statement_tier_id": "AGENT_INVENTED",
+   "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
    "terrain_needs": [
     {
@@ -4975,12 +5851,12 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Xanuc Diggings is a mine in the wall of Chixathe Mesa, between Oxayo and Fort Chalkmoth.",
-     "tier": "AGENT_INVENTED",
+     "text": "Xanuc Diggings is a quarry mine in the wall of Chixathe Mesa between Oxayo and Fort Chalkmoth, and the best building stone on the mesa.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
-       "title": "Xanuc Diggings: no UESP page; mesa stone and chalk workings"
+       "title": "A mine glyph on the map in the mesa wall; the Stone-Sleepers quarry the uplands and sell stone to Thorn (culture record sky-blue); Thorn's building and the -moth forts need stone and lime; the Legion's fort at Chalkmoth guarded a mesa working (Fort Chalkmoth record)"
       },
       {
        "kind": "map",
@@ -5001,12 +5877,12 @@
     },
     {
      "aspect": "history",
-     "text": "Xanuc Diggings has cut building stone from the wall of Chixathe Mesa since Imperial times, when Oxayo's carters first hauled it out; the Archwardens kept it working afterward. It lies between Oxayo and Fort Chalkmoth.",
+     "text": "Xanuc Diggings has cut building stone from the mesa wall since Imperial times, when the Legion's masons took stone for Fort Chalkmoth; the Stone-Sleepers of Oxayo took it over when the Legion left at the secession.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
-       "title": "Xanuc Diggings: no UESP page; mesa stone and chalk workings"
+       "title": "A mine glyph on the map in the mesa wall; the Stone-Sleepers quarry the uplands and sell stone to Thorn (culture record sky-blue); Thorn's building and the -moth forts need stone and lime; the Legion's fort at Chalkmoth guarded a mesa working (Fort Chalkmoth record)"
       },
       {
        "kind": "map",
@@ -5053,12 +5929,12 @@
     },
     {
      "aspect": "people",
-     "text": "Four quarrymen, a foreman and a cart-driver, all Argonian, living in Oxayo and walking up each morning.",
-     "tier": "AGENT_INVENTED",
+     "text": "Four quarrymen, a foreman and a cart-driver, all Stone-Sleepers, who live in Oxayo and walk up each morning.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
-       "title": "Xanuc Diggings: no UESP page; mesa stone and chalk workings"
+       "title": "A mine glyph on the map in the mesa wall; the Stone-Sleepers quarry the uplands and sell stone to Thorn (culture record sky-blue); Thorn's building and the -moth forts need stone and lime; the Legion's fort at Chalkmoth guarded a mesa working (Fort Chalkmoth record)"
       },
       {
        "kind": "map",
@@ -5105,12 +5981,12 @@
     },
     {
      "aspect": "faith",
-     "text": "A cairn of cut chips marks the gallery mouth, one chip for each season the gallery has stood. The crew ask the Hist of Oxayo's tree for firm rock.",
+     "text": "A cairn of cut chips stands at the gallery mouth; every new quarryman adds one on his first day. The crew ask the sleeping Hist of Tsonac, through Oxayo's elder, for sound rock.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
-       "title": "Xanuc Diggings: no UESP page; mesa stone and chalk workings"
+       "title": "A mine glyph on the map in the mesa wall; the Stone-Sleepers quarry the uplands and sell stone to Thorn (culture record sky-blue); Thorn's building and the -moth forts need stone and lime; the Legion's fort at Chalkmoth guarded a mesa working (Fort Chalkmoth record)"
       },
       {
        "kind": "map",
@@ -5183,12 +6059,12 @@
     },
     {
      "aspect": "hooks",
-     "text": "The north gallery has broken through into an older tunnel that the crew cannot explain. The foreman wants a missing hand found.",
-     "tier": "AGENT_INVENTED",
+     "text": "The north gallery has broken through into a rough older tunnel full of webs, and the foreman's youngest hand went in after a dropped lamp and has not come out.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
-       "title": "Xanuc Diggings: no UESP page; mesa stone and chalk workings"
+       "title": "A mine glyph on the map in the mesa wall; the Stone-Sleepers quarry the uplands and sell stone to Thorn (culture record sky-blue); Thorn's building and the -moth forts need stone and lime; the Legion's fort at Chalkmoth guarded a mesa working (Fort Chalkmoth record)"
       },
       {
        "kind": "map",
@@ -5207,21 +6083,60 @@
       }
      ]
     }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Xanuc Diggings",
+     "count": 1
+    },
+    {
+     "kind": "ore-vein",
+     "detail": "quarried stone deposit at the cutting face (Hearthfire's building stone)",
+     "count": 2
+    },
+    {
+     "kind": "ore-vein",
+     "detail": "iron ore veins in the gallery walls",
+     "count": 3
+    },
+    {
+     "kind": "smelter",
+     "detail": "at the gallery mouth",
+     "count": 1
+    },
+    {
+     "kind": "combat-creature",
+     "detail": "frostbite spiders in the older tunnel",
+     "count": 4,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "combat-boss",
+     "detail": "a giant frostbite spider in the tunnel's end chamber",
+     "count": 1,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "boss-chest",
+     "detail": "boss chest in the end chamber, D2 tier (level 10: Orcish, Dwarven, Elven light)",
+     "count": 1
+    }
    ]
   },
   {
    "id": "mine-20-m70",
    "name": "Chalkmoth Pit",
    "status": "inhabited",
-   "held_by": "Worked by the Stone-Sleepers and the Warden garrison",
+   "held_by": "The families of Noota Nara, under Fort Chalkmoth's toll",
    "population": 4,
    "footprint_radius_m": 35,
    "siting": "hilltop",
    "danger_band_id": "D1",
    "importance": 2,
-   "summary": "Chalkmoth Pit is the chalk and limestone working that Fort Chalkmoth guards. It supplies lime for Thorn's mortar and saltrice pans.",
+   "summary": "Chalkmoth Pit is the chalk and limestone working that Fort Chalkmoth was built to guard. Noota Nara's families burn its stone to lime for Thorn's mortar and the saltrice pans.",
    "lore_page": null,
-   "statement_tier_id": "AGENT_INVENTED",
+   "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
    "terrain_needs": [
     {
@@ -5234,12 +6149,12 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Chalkmoth Pit is a mine on the mesa shoulder between Fort Chalkmoth and Noota Nara, named for the fort that guards it.",
-     "tier": "AGENT_INVENTED",
+     "text": "Chalkmoth Pit is a chalk pit on the mesa shoulder between Fort Chalkmoth and Noota Nara, named for the fort above it.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
-       "title": "Chalkmoth Pit: no UESP page; mesa stone and chalk workings"
+       "title": "A mine glyph on the map in the mesa wall; the Stone-Sleepers quarry the uplands and sell stone to Thorn (culture record sky-blue); Thorn's building and the -moth forts need stone and lime; the Legion's fort at Chalkmoth guarded a mesa working (Fort Chalkmoth record)"
       },
       {
        "kind": "map",
@@ -5312,12 +6227,12 @@
     },
     {
      "aspect": "people",
-     "text": "A kiln-master, four diggers and a carter, Argonian, drawn from Noota Nara and the fort's dependants.",
-     "tier": "AGENT_INVENTED",
+     "text": "A kiln-master, four diggers and a carter, all from Noota Nara, who pay the fort's toll on every cart that leaves.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
-       "title": "Chalkmoth Pit: no UESP page; mesa stone and chalk workings"
+       "title": "A mine glyph on the map in the mesa wall; the Stone-Sleepers quarry the uplands and sell stone to Thorn (culture record sky-blue); Thorn's building and the -moth forts need stone and lime; the Legion's fort at Chalkmoth guarded a mesa working (Fort Chalkmoth record)"
       },
       {
        "kind": "map",
@@ -5364,12 +6279,12 @@
     },
     {
      "aspect": "faith",
-     "text": "Lime-white handprints mark the pit's inside wall, one for each hand lost to the kilns. The crew ask the Noota Nara tree for a dry season.",
+     "text": "Lime-white handprints mark the pit's inner wall, one for each worker burned at the kilns. The crew ask Noota Nara's Hist to keep the rain off the kiln.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
-       "title": "Chalkmoth Pit: no UESP page; mesa stone and chalk workings"
+       "title": "A mine glyph on the map in the mesa wall; the Stone-Sleepers quarry the uplands and sell stone to Thorn (culture record sky-blue); Thorn's building and the -moth forts need stone and lime; the Legion's fort at Chalkmoth guarded a mesa working (Fort Chalkmoth record)"
       },
       {
        "kind": "map",
@@ -5442,12 +6357,12 @@
     },
     {
      "aspect": "hooks",
-     "text": "A kiln-master wants a lost shipment of mortar-lime traced, and an old chalk face has opened onto a sealed room.",
-     "tier": "AGENT_INVENTED",
+     "text": "A carter who drove a load of lime west and came back without cart, ox or lime, telling of Sarpa, and an old chalk face that has fallen open onto a bricked Imperial storeroom.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
-       "title": "Chalkmoth Pit: no UESP page; mesa stone and chalk workings"
+       "title": "A mine glyph on the map in the mesa wall; the Stone-Sleepers quarry the uplands and sell stone to Thorn (culture record sky-blue); Thorn's building and the -moth forts need stone and lime; the Legion's fort at Chalkmoth guarded a mesa working (Fort Chalkmoth record)"
       },
       {
        "kind": "map",
@@ -5466,21 +6381,44 @@
       }
      ]
     }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Chalkmoth Pit",
+     "count": 1
+    },
+    {
+     "kind": "ore-vein",
+     "detail": "quarried stone deposit at the chalk face (Hearthfire's building stone)",
+     "count": 2
+    },
+    {
+     "kind": "combat-creature",
+     "detail": "skeevers in the opened Imperial storeroom",
+     "count": 3,
+     "reward": "treasure"
+    },
+    {
+     "kind": "treasure",
+     "detail": "the Imperial storeroom: an old strongbox, up to 50 gold and steel tools",
+     "count": 1
+    }
    ]
   },
   {
    "id": "mine-25-m68",
    "name": "Kalaxo Cut",
    "status": "inhabited",
-   "held_by": "Worked by the Stone-Sleepers and the Warden garrison",
+   "held_by": "The Stone-Sleepers of Ayiin",
    "population": 4,
    "footprint_radius_m": 35,
    "siting": "hilltop",
    "danger_band_id": "D2",
    "importance": 2,
-   "summary": "Kalaxo Cut is a stone quarry cut into the mesa's east flank above Ayiin. Its blocks go to Thorn's builders.",
+   "summary": "Kalaxo Cut is a stone quarry cut into the mesa's east flank above Ayiin. Its blocks go by cart to Thorn's builders.",
    "lore_page": null,
-   "statement_tier_id": "AGENT_INVENTED",
+   "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
    "terrain_needs": [
     {
@@ -5493,12 +6431,12 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Kalaxo Cut is a stone quarry mine on the mesa's east flank above Ayiin.",
-     "tier": "AGENT_INVENTED",
+     "text": "Kalaxo Cut is a sheer quarry face and gallery on the mesa's east flank above Ayiin, the nearest good stone to Thorn.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
-       "title": "Kalaxo Cut: no UESP page; mesa stone and chalk workings"
+       "title": "A mine glyph on the map in the mesa wall; the Stone-Sleepers quarry the uplands and sell stone to Thorn (culture record sky-blue); Thorn's building and the -moth forts need stone and lime; the Legion's fort at Chalkmoth guarded a mesa working (Fort Chalkmoth record)"
       },
       {
        "kind": "map",
@@ -5519,12 +6457,12 @@
     },
     {
      "aspect": "history",
-     "text": "Kalaxo Cut has taken stone from the east flank of the mesa above Ayiin since Imperial times, when the Thorn builders first quarried it; the tribes of Ayiin kept it working. Its blocks go west to Thorn.",
+     "text": "Thorn's builders first quarried the east flank in Imperial times; the Stone-Sleepers of Ayiin took the cut over when they settled the river below, and work it still.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
-       "title": "Kalaxo Cut: no UESP page; mesa stone and chalk workings"
+       "title": "A mine glyph on the map in the mesa wall; the Stone-Sleepers quarry the uplands and sell stone to Thorn (culture record sky-blue); Thorn's building and the -moth forts need stone and lime; the Legion's fort at Chalkmoth guarded a mesa working (Fort Chalkmoth record)"
       },
       {
        "kind": "map",
@@ -5571,12 +6509,12 @@
     },
     {
      "aspect": "people",
-     "text": "Four quarrymen, a foreman and a cart-driver, Argonian, from Ayiin, with a Thorn clerk who comes to count the blocks.",
-     "tier": "AGENT_INVENTED",
+     "text": "Four quarrymen, a foreman and a cart-driver from Ayiin, and now and then a Thorn mason who walks up to choose his blocks.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
-       "title": "Kalaxo Cut: no UESP page; mesa stone and chalk workings"
+       "title": "A mine glyph on the map in the mesa wall; the Stone-Sleepers quarry the uplands and sell stone to Thorn (culture record sky-blue); Thorn's building and the -moth forts need stone and lime; the Legion's fort at Chalkmoth guarded a mesa working (Fort Chalkmoth record)"
       },
       {
        "kind": "map",
@@ -5623,12 +6561,12 @@
     },
     {
      "aspect": "faith",
-     "text": "A cairn at the gallery mouth is kept by the Ayiin crew, who ask the Hist of their village tree to keep the flank sound. Thorn's clerk ignores it.",
+     "text": "A cairn at the gallery mouth is kept by the Ayiin crew, who ask Tsonac's sleeping Hist to keep the flank sound. The Thorn masons step round it without a word.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
-       "title": "Kalaxo Cut: no UESP page; mesa stone and chalk workings"
+       "title": "A mine glyph on the map in the mesa wall; the Stone-Sleepers quarry the uplands and sell stone to Thorn (culture record sky-blue); Thorn's building and the -moth forts need stone and lime; the Legion's fort at Chalkmoth guarded a mesa working (Fort Chalkmoth record)"
       },
       {
        "kind": "map",
@@ -5701,12 +6639,12 @@
     },
     {
      "aspect": "hooks",
-     "text": "A block order for Thorn has gone missing on the track, and the crew say they hear tapping behind the north wall.",
-     "tier": "AGENT_INVENTED",
+     "text": "A cart of dressed blocks for Thorn lies smashed at the foot of the track with its driver gone, and the crew hear tapping behind the gallery's north wall at night.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
-       "title": "Kalaxo Cut: no UESP page; mesa stone and chalk workings"
+       "title": "A mine glyph on the map in the mesa wall; the Stone-Sleepers quarry the uplands and sell stone to Thorn (culture record sky-blue); Thorn's building and the -moth forts need stone and lime; the Legion's fort at Chalkmoth guarded a mesa working (Fort Chalkmoth record)"
       },
       {
        "kind": "map",
@@ -5725,6 +6663,40 @@
       }
      ]
     }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Kalaxo Cut",
+     "count": 1
+    },
+    {
+     "kind": "ore-vein",
+     "detail": "quarried stone deposit at the cutting face (Hearthfire's building stone)",
+     "count": 3
+    },
+    {
+     "kind": "ore-vein",
+     "detail": "iron ore veins in the gallery",
+     "count": 2
+    },
+    {
+     "kind": "combat-creature",
+     "detail": "frostbite spiders in a natural fissure behind the north wall",
+     "count": 3,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "combat-boss",
+     "detail": "a giant frostbite spider in the fissure's cavern",
+     "count": 1,
+     "reward": "boss-chest"
+    },
+    {
+     "kind": "boss-chest",
+     "detail": "boss chest in the cavern, D2 tier (level 10)",
+     "count": 1
+    }
    ]
   },
   {
@@ -5737,9 +6709,9 @@
    "siting": "inland",
    "danger_band_id": "D2",
    "importance": 1,
-   "summary": "Yuvexa is a small outpost of Root-Folk hunters on the mesa. A few families hunt and watch from the rise.",
+   "summary": "Yuvexa is a Root-Folk hunters' post on the south lip of the mesa, looking over the Balormaak and Vorannuhl ruins. Its families hunt, and guide the few who want to go to the ruins.",
    "lore_page": null,
-   "statement_tier_id": "AGENT_INVENTED",
+   "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
    "terrain_needs": [
     {
@@ -5751,12 +6723,12 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "Yuvexa is a small outpost on the mesa, built by the Root-Folk of Helstrom.",
-     "tier": "AGENT_INVENTED",
+     "text": "Yuvexa is a Root-Folk post on the mesa's south lip, its lookout trunk facing the ruins of Vorannuhl.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
-       "title": "Yuvexa: no UESP page; Argonian outposts of the mesa"
+       "title": "Root-Folk of Helstrom keep small hunting and sap stations spread through the jungle (culture record forest-green); the map's unlabelled green triangle on the mesa's south edge south of Balormaak, facing the Velothi ruins"
       },
       {
        "kind": "map",
@@ -5829,12 +6801,12 @@
     },
     {
      "aspect": "people",
-     "text": "Two Root-Folk families, one elder and a few youths, from Helstrom's hunting clans.",
-     "tier": "AGENT_INVENTED",
+     "text": "Two Root-Folk families from Helstrom's hunting clans, one elder and a few youths, one of whom guides travellers to the ruins for coin.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
-       "title": "Yuvexa: no UESP page; Argonian outposts of the mesa"
+       "title": "Root-Folk of Helstrom keep small hunting and sap stations spread through the jungle (culture record forest-green); the map's unlabelled green triangle on the mesa's south edge south of Balormaak, facing the Velothi ruins"
       },
       {
        "kind": "map",
@@ -5959,12 +6931,12 @@
     },
     {
      "aspect": "hooks",
-     "text": "A hunter has seen strange tracks near the Sarpa camp, and a trade-pouch for Ayiin was left at the gate.",
-     "tier": "AGENT_INVENTED",
+     "text": "The elder's grandson went to Vorannuhl on a dare and came back silent, with a bronze ring no one in Yuvexa has seen before; a pair of sabre cats has started taking goats from the post's pen.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
-       "title": "Yuvexa: no UESP page; Argonian outposts of the mesa"
+       "title": "Root-Folk of Helstrom keep small hunting and sap stations spread through the jungle (culture record forest-green); the map's unlabelled green triangle on the mesa's south edge south of Balormaak, facing the Velothi ruins"
       },
       {
        "kind": "map",
@@ -5983,6 +6955,39 @@
       }
      ]
     }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Yuvexa",
+     "count": 1
+    },
+    {
+     "kind": "trader-hunter",
+     "detail": "the elder buys hides and sells feathers and smoked meat",
+     "count": 1
+    },
+    {
+     "kind": "tanning-rack",
+     "detail": "by the drying racks",
+     "count": 1
+    },
+    {
+     "kind": "follower",
+     "detail": "the elder's grandson, a hunter who guides to Balormaak and Vorannuhl for hire",
+     "count": 1
+    },
+    {
+     "kind": "combat-creature",
+     "detail": "a pair of sabre cats on the mesa lip",
+     "count": 2,
+     "reward": "treasure"
+    },
+    {
+     "kind": "treasure",
+     "detail": "the cats' lair under the lip: bones and a dead traveller's purse, up to 50 gold",
+     "count": 1
+    }
    ]
   },
   {
@@ -5997,7 +7002,7 @@
    "importance": 1,
    "summary": "Nuxhal is a Root-Folk hunters' post on the western mesa, where two families hunt and look out toward the smoke of Tenmal Pits. Its hides and reeds go to Tenmal and the pit crews.",
    "lore_page": null,
-   "statement_tier_id": "AGENT_INVENTED",
+   "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
    "terrain_needs": [
     {
@@ -6009,12 +7014,12 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "This outpost has no recorded name. Its stilt houses stand under a stand of trees, with a lookout built into a trunk.",
-     "tier": "AGENT_INVENTED",
+     "text": "Nuxhal is a Root-Folk post at the mesa's north-west edge, the hunters' own name for it. Its stilt houses stand under a stand of trees, with a lookout built into a trunk.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
-       "title": "Nuxhal: no UESP page; Argonian outposts of the mesa"
+       "title": "Root-Folk of Helstrom keep small hunting and sap stations spread through the jungle (culture record forest-green); the map's unlabelled green triangle at the mesa's north-west edge, the nearest post to Tenmal Pits"
       },
       {
        "kind": "map",
@@ -6087,12 +7092,12 @@
     },
     {
      "aspect": "people",
-     "text": "Two Root-Folk families, an elder and a few youths from Helstrom.",
-     "tier": "AGENT_INVENTED",
+     "text": "Two Root-Folk families, an elder who names the post's hatchlings, and a few youths from Helstrom who came for the hunting.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
-       "title": "Nuxhal: no UESP page; Argonian outposts of the mesa"
+       "title": "Root-Folk of Helstrom keep small hunting and sap stations spread through the jungle (culture record forest-green); the map's unlabelled green triangle at the mesa's north-west edge, the nearest post to Tenmal Pits"
       },
       {
        "kind": "map",
@@ -6217,12 +7222,12 @@
     },
     {
      "aspect": "hooks",
-     "text": "A hunter has seen strange tracks near the Sarpa camp, and a trade-pouch for Tenmal Pits was left at the gate.",
-     "tier": "AGENT_INVENTED",
+     "text": "A wolf pack has denned in the gully below the post and killed a youth on his first hunt, and the pit crews at Tenmal owe Nuxhal a debt of iron for last year's hides and keep putting it off.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
-       "title": "Nuxhal: no UESP page; Argonian outposts of the mesa"
+       "title": "Root-Folk of Helstrom keep small hunting and sap stations spread through the jungle (culture record forest-green); the map's unlabelled green triangle at the mesa's north-west edge, the nearest post to Tenmal Pits"
       },
       {
        "kind": "map",
@@ -6241,6 +7246,34 @@
       }
      ]
     }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Nuxhal",
+     "count": 1
+    },
+    {
+     "kind": "trader-hunter",
+     "detail": "the elder buys hides and sells reeds and lamp oil",
+     "count": 1
+    },
+    {
+     "kind": "harvest-common",
+     "detail": "reeds and hawk feathers round the post",
+     "count": 3
+    },
+    {
+     "kind": "combat-creature",
+     "detail": "a wolf pack denned in the gully",
+     "count": 4,
+     "reward": "treasure"
+    },
+    {
+     "kind": "treasure",
+     "detail": "the den: the dead youth's bow and up to 50 gold",
+     "count": 1
+    }
    ]
   },
   {
@@ -6253,9 +7286,9 @@
    "siting": "inland",
    "danger_band_id": "D2",
    "importance": 1,
-   "summary": "Reeka-Veesa is a small outpost of the Sedge-Wardens on the mesa. A few families hunt and watch from the rise.",
+   "summary": "Reeka-Veesa is a Sedge-Warden post on the mesa's far west, on the road from Tenmal to Ranvos Landing. A few families cut reed, take feathers and keep their children away from Sahlpesh Cave.",
    "lore_page": null,
-   "statement_tier_id": "AGENT_INVENTED",
+   "statement_tier_id": "EXTRAPOLATED",
    "aliases": [],
    "terrain_needs": [
     {
@@ -6267,12 +7300,12 @@
    "notes": [
     {
      "aspect": "overview",
-     "text": "This outpost has no recorded name. Its stilt houses stand under a few trees on the mesa's west side, with drying racks of reed and feather.",
-     "tier": "AGENT_INVENTED",
+     "text": "Reeka-Veesa is the Sedge-Wardens' southernmost post, its name taken from Jal-Veesa, their town. Its stilt houses stand under a few trees on the mesa's west side, with drying racks of reed and feather.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
-       "title": "Reeka-Veesa: no UESP page; Argonian outposts of the mesa"
+       "title": "The Sedge-Wardens of Jal-Veesa cut reed and keep watch posts along the valleys and guard sick ground (culture record jade); the map's unlabelled jade-green triangle at the mesa's far west on the Tenmal - Ranvos Landing road"
       },
       {
        "kind": "map",
@@ -6345,12 +7378,12 @@
     },
     {
      "aspect": "people",
-     "text": "Sedge-Warden families from Jal-Veesa live at the post on the mesa's west side, with one elder and a few youths.",
-     "tier": "AGENT_INVENTED",
+     "text": "Sedge-Warden families from Jal-Veesa, one elder and a few youths who will go back north to marry.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
-       "title": "Reeka-Veesa: no UESP page; Argonian outposts of the mesa"
+       "title": "The Sedge-Wardens of Jal-Veesa cut reed and keep watch posts along the valleys and guard sick ground (culture record jade); the map's unlabelled jade-green triangle at the mesa's far west on the Tenmal - Ranvos Landing road"
       },
       {
        "kind": "map",
@@ -6397,12 +7430,12 @@
     },
     {
      "aspect": "faith",
-     "text": "A small shrine to the Hist at the post's edge; eggs go west to the Jal-Veesa tree, and the post's elder keeps the name-cords.",
+     "text": "A small shrine to the Hist stands at the post's edge; eggs go north to the Jal-Veesa Hist pool, and the elder knows every egg the post has sent.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
-       "title": "Reeka-Veesa: no UESP page; Argonian outposts of the mesa"
+       "title": "The Sedge-Wardens of Jal-Veesa cut reed and keep watch posts along the valleys and guard sick ground (culture record jade); the map's unlabelled jade-green triangle at the mesa's far west on the Tenmal - Ranvos Landing road"
       },
       {
        "kind": "map",
@@ -6475,12 +7508,12 @@
     },
     {
      "aspect": "hooks",
-     "text": "A child of the post has slipped into the dark cave nearby that the wardens forbid. A bundle of feathers meant for Ranvos Landing was left at the gate unclaimed.",
-     "tier": "AGENT_INVENTED",
+     "text": "A child of the post has slipped off to Sahlpesh Cave, which the wardens forbid, to see the Sarpa nests, and the reed-cutters have found a Sarpa arrow in a sedge bed only a stone's throw from the houses.",
+     "tier": "EXTRAPOLATED",
      "sources": [
       {
        "kind": "reasoning",
-       "title": "Reeka-Veesa: no UESP page; Argonian outposts of the mesa"
+       "title": "The Sedge-Wardens of Jal-Veesa cut reed and keep watch posts along the valleys and guard sick ground (culture record jade); the map's unlabelled jade-green triangle at the mesa's far west on the Tenmal - Ranvos Landing road"
       },
       {
        "kind": "map",
@@ -6498,6 +7531,39 @@
        "locator": "newworld/sources/research/cultures.json"
       }
      ]
+    }
+   ],
+   "gives": [
+    {
+     "kind": "fast-travel",
+     "detail": "Reeka-Veesa",
+     "count": 1
+    },
+    {
+     "kind": "harvest-common",
+     "detail": "sedge reed and hawk feathers",
+     "count": 4
+    },
+    {
+     "kind": "cooking-pot",
+     "detail": "the post's fire",
+     "count": 1
+    },
+    {
+     "kind": "trainer",
+     "detail": "Sneak, Apprentice, the elder, who has watched the Sarpa unseen for years",
+     "count": 1
+    },
+    {
+     "kind": "combat-creature",
+     "detail": "a giant spider nesting on the cave path",
+     "count": 1,
+     "reward": "treasure"
+    },
+    {
+     "kind": "treasure",
+     "detail": "the spider's web: a cocooned Sarpa scout's quiver and up to 50 gold",
+     "count": 1
     }
    ]
   }
