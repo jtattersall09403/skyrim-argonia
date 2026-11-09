@@ -10,7 +10,7 @@
    "cliff_share": 0.06,
    "wetness": 0.55,
    "biome": "temperate coastal grassland and salt marsh",
-   "climate": "mild, humid; sea fog in the mornings and heavy rains in the monsoon season",
+   "climate": "mild and humid; fog and rain weather records, frequent rain",
    "culture_id": null,
    "danger_band_id": "D2",
    "statement_tier_id": "EXTRAPOLATED",
@@ -107,7 +107,7 @@
     },
     {
      "aspect": "economy",
-     "text": "Salt, stone, timber, clay and pottery, sold up and down the coast to Thorn and Archon. Tolls at the wardens' posts and smugglers' landings take a share.",
+     "text": "Salt, stone, timber, clay and pottery, sold up and down the coast to Thorn and Archon. Tolls at the wardens' posts take a share, and smugglers' landings take another.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -153,7 +153,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Smuggler landings, mudcrab swarms, fleshflies and ghosts in the three ruins; the inland margin has Sarpa raiders.",
+     "text": "Smuggler landings, mudcrabs, fleshflies and ghosts in the three ruins; the inland margin has Sarpa raiders.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -165,7 +165,7 @@
     },
     {
      "aspect": "landscape",
-     "text": "A flat to gently rolling plain behind a wide bay, cut by shallow rivers that spread into mud-flats at the coast. Low clay rises carry the villages above flood; headlands of dark stone hold the ruins.",
+     "text": "A flat to gently rolling plain behind a wide bay, cut by shallow rivers that end in mud-flats at the coast. Low clay rises carry the villages; headlands of dark stone hold the ruins.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -194,7 +194,7 @@
     },
     {
      "aspect": "climate",
-     "text": "Milder than the interior with sea-fog in the early morning, humid summers and monsoon rains; the tide raises the rivers.",
+     "text": "Milder than the interior, with fog and frequent rain.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -216,7 +216,7 @@
    "cliff_share": 0.0,
    "wetness": 1.0,
    "biome": "open sea, kelp and sandbank",
-   "climate": "windy and wet; storms and sea-mist off the shelf, calm in the dry season",
+   "climate": "windy and wet; overcast, rain and fog weather records off the shelf",
    "culture_id": null,
    "danger_band_id": "D3",
    "statement_tier_id": "EXTRAPOLATED",
@@ -241,7 +241,7 @@
     },
     {
      "aspect": "history",
-     "text": "In the Dawn Era the Ehlnofey war sank most of the Hist's domain into the Padomaic, 'leaving only a small corner left standing', later Black Marsh. Topal the Pilot charted it first. Uriel Septim V's fleet crossed it against Akavir in the 270s of the Third Era.",
+     "text": "In the Dawn Era the Ehlnofey war sank most of the Hist's domain into the Padomaic, 'leaving only a small corner left standing', later Black Marsh. Topal the Pilot charted it first. Uriel Septim V's fleet sailed across it against Akavir in 3E 288.",
      "tier": "CANON_EXPLICIT",
      "sources": [
       {
@@ -266,7 +266,7 @@
     },
     {
      "aspect": "people",
-     "text": "Sea people: pilots and fishers of Seafalls and Archon, pirate crews from Marque Landing, smuggler boats from Hollow Tide Camp, Dunmer traders from Tear.",
+     "text": "Sea people: pilots and fishers of Seafalls and Archon, chartered pirate crews from Marque Landing, smuggler boats from Hollow Tide Camp, Dunmer traders from Tear.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -329,7 +329,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Pirates, storms, sea-drakes, slaughterfish and drowned dead in the wrecks; deep water beyond the shelf.",
+     "text": "Pirates, sea-drakes, slaughterfish and drowned dead in the wrecks; deep water beyond the shelf where a swimmer's breath runs out.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -370,7 +370,7 @@
     },
     {
      "aspect": "climate",
-     "text": "Stormy in the monsoon with squalls and sea-mist; calm and bright in the dry months.",
+     "text": "Overcast and rainy with sea-mist, bright on clear days.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -422,7 +422,7 @@
     },
     {
      "aspect": "history",
-     "text": "The Empire's coastal keep was built to watch the pirate trade of the Archon coast; after the secession of 4E 6 the garrison left and pirates took the island.",
+     "text": "The Empire's coastal keep was built to watch the pirate trade of the Archon coast; at the secession the garrison left and pirates took the island.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -500,7 +500,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Outlaws, trapped coves, cliffs and nesting hackwings; the tides are fast.",
+     "text": "Outlaws, trapped coves, cliffs and nesting hackwings; the cold surf off the shingle drowns a careless swimmer.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -536,7 +536,7 @@
     },
     {
      "aspect": "climate",
-     "text": "Windy, salt-laden and drier than the mainland, with sea-fog and squalls.",
+     "text": "Windy, salt-laden and drier than the mainland, with sea-fog and rain.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -557,8 +557,8 @@
    "roughness_m": 1.8,
    "cliff_share": 0.05,
    "wetness": 0.65,
-   "biome": "clay mounds, lakes and marsh with tidal creeks",
-   "climate": "hot, wet and humid, with monsoon floods that cut roads for days",
+   "biome": "clay mounds, lakes and marsh with creeks",
+   "climate": "hot, wet and humid, with frequent rain",
    "culture_id": "rust",
    "danger_band_id": "D2",
    "statement_tier_id": "EXTRAPOLATED",
@@ -592,7 +592,7 @@
     },
     {
      "aspect": "history",
-     "text": "A tribal country long before the Empire; the East Empire Company's boats worked its clay, and Cantemiric Velothi once held its coast. Since 4E 6 the clay-mound people have been the dominant power.",
+     "text": "A tribal country long before the Empire; the East Empire Company's boats worked its clay, and Cantemiric Velothi once held its coast. Since the secession the clay-mound people have been the dominant power.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -699,7 +699,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Crocodiles, giant snakes, Sarpa raiders, smuggler landings, ghosts in the Velothi ruins and the monsoon floods.",
+     "text": "Crocodiles, giant snakes, Sarpa raiders, smuggler landings and ghosts in the Velothi ruins.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -711,7 +711,7 @@
     },
     {
      "aspect": "landscape",
-     "text": "Low red clay mounds above flood plains, big lakes in the west and a maze of tidal creeks in the south-east, ending in cliffs and a falls at the coast.",
+     "text": "Low red clay mounds above flat marsh, big lakes in the west and a maze of creeks in the south-east, ending in cliffs and a falls at the coast.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -735,7 +735,7 @@
     },
     {
      "aspect": "climate",
-     "text": "Hot, humid and rainy; a monsoon with floods that cut the road crossings for days and drive people onto the mounds.",
+     "text": "Hot, humid and rainy; rain falls often and the mounds stand dry above the marsh.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
