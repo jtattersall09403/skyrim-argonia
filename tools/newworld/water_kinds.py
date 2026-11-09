@@ -20,15 +20,20 @@ The recipe:
    else its region's wet character: `blackwater-swamp` (trees over the water: forest, Hist, cypress, bog, root,
    moss, mangrove, swamp in the region's biome, landform and ecology), `green-marsh` (open reed water: reed, sedge,
    cattail, fen, rice, paddy, bayou, marsh), else `pond`.
+3c. The owner's kinds are applied (found by their points), then: a fringe (under 2 ha of stream or river whose
+   only water neighbours are marsh or swamp) takes the kind of the marsh or swamp it hangs on; round Helstrom
+   (Murkwood) only the main river courses stay river, the narrower arms green marsh; and a stream or river with no
+   continuous water surface to the sea is still water. Frame water is sea only where it joins the sea.
 4. Flow, along the channel graph. Every running pixel has its distance to its outlet along the water (Dijkstra, the
    sea first; still water is passed through for that distance, so a river leaving a lake runs on toward the sea).
    Water then runs pixel by pixel to the neighbour nearer the outlet, so it follows the channel's centreline, joins
    tributaries into the channel they meet and never reverses mid-channel; it stops where it enters still water
-   (still bodies have no flow) and starts again where a channel leaves it. A network with no way to the sea runs to
-   the map edge if it reaches it, else into the still water it touches, else out at its end nearest the sea. A
+   (still bodies have no flow) and starts again where a channel leaves it. Only an owner-set channel can lack a way
+   to the sea (the map's edge is never an outlet): it runs into the still water it touches, else out at its end
+   nearest the sea. A
    body's bearing is its flow 32 px downstream of its label point; its downstream body is the first other body that
    walk reaches. Per Skyrim cell the mean flow goes to `out/newworld/water_flow_cells.json` for the plugin's per-cell
-   type. Speed: `still`; `slow` for estuaries, rivers 150 m wide or more, and any running water in a region of
+   type. The atlas's arrows walk each channel's centreline downstream, so they curve with it. Speed: `still`; `slow` for estuaries, rivers 150 m wide or more, and any running water in a region of
    wetness 0.8 or more; `fast` for streams in rough country (region roughness 4 m or more, or summit 50 m or more);
    else `moderate`.
 5. The owner's edits, last: `newworld/sources/water_paint.json` (strokes that paint a kind and flow over an area,
@@ -401,8 +406,9 @@ def pools_and_mouths(raster, rows, dist) -> None:
     fb[:FRAME_BAND, :] = fb[-FRAME_BAND:, :] = fb[:, :FRAME_BAND] = fb[:, -FRAME_BAND:] = True
     idx = np.arange(1, len(rows) + 1)
     in_band = ndi.mean(fb, raster, idx)
-    for r, v in zip(rows, in_band):
-        if v >= 0.5 and r["set_by"] != "owner" and r["kind"] not in SEA:
+    for r, v in zip(rows, in_band):          # a channel the frame merely cuts is not sea: only frame water joined to it
+        if v >= 0.5 and r["set_by"] != "owner" and r["kind"] not in SEA and \
+                any(by_i[j]["kind"] in SEA for j in adj.get(r["raster_index"], ())):
             r["kind"], r["why"] = "shallow-coast", "water lying mostly on the map's frame: sea, never a river mouth"
     for r in rows:
         if r["set_by"] != "owner" and r["kind"] in ("lake", "pond") and \
@@ -424,6 +430,143 @@ def pools_and_mouths(raster, rows, dist) -> None:
         far = m & (ndi.distance_transform_edt(~touch) > reach)
         carve(raster, rows, r, far, "shallow-coast",
               "the coastal water beyond a river's mouth: still sea", dist)
+
+
+WET = ("green-marsh", "blackwater-swamp")
+FRINGE_M2 = 20_000                 # a fringe network is under 2 ha (measured: the largest on the 2026-11-09 map is 1.5 ha)
+HELSTROM_REGIONS = ("murkwood",)   # the Hist forest round Helstrom (region table)
+MAIN_W_M, MAIN_LEN_M = 50, 1500    # Helstrom's main courses: 50 m wide or more along 1.5 km of centreline
+
+
+def running_networks(rows, adj, ok) -> list:
+    """Connected sets of bodies (raster indices) for which ok(row) holds, joined by touching each other."""
+    by_i = {r["raster_index"]: r for r in rows}
+    todo = {i for i, r in by_i.items() if ok(r)}
+    out = []
+    while todo:
+        st, comp = [todo.pop()], []
+        while st:
+            k = st.pop()
+            comp.append(k)
+            for j in adj.get(k, ()):
+                if j in todo:
+                    todo.discard(j)
+                    st.append(j)
+        out.append(comp)
+    return out
+
+
+def absorb_fringes(raster, rows) -> int:
+    """Step 3c-i. A fringe is a little running network (under 2 ha, joined bodies of stream or river) whose only
+    water neighbours are marsh or swamp: the fiddly bits on a swamp's edge. It takes the kind of the largest marsh
+    or swamp it touches. A running network that also meets the sea, a lake, a pond or other running water is a real
+    channel and stays. Returns how many bodies changed."""
+    adj = adjacency(raster)
+    by_i = {r["raster_index"]: r for r in rows}
+    n = 0
+    for comp in running_networks(rows, adj, lambda r: r["kind"] in ("river", "stream") and r["set_by"] != "owner"):
+        cs = set(comp)
+        nb = {j for k in comp for j in adj.get(k, ()) if j not in cs}
+        area = sum(by_i[k]["area_m2"] for k in comp)
+        if not nb or area > FRINGE_M2 or any(by_i[j]["kind"] not in WET for j in nb):
+            continue
+        host = max((by_i[j] for j in nb), key=lambda x: x["area_m2"])
+        for k in comp:
+            by_i[k]["kind"] = host["kind"]
+            by_i[k]["why"] = (f"a fringe of {area / 1e4:.1f} ha of little channels on the edge of {host['id']}, "
+                              f"which is its only water: part of that {host['kind']}")
+            n += 1
+    return n
+
+
+def helstrom_rivers(raster, rows, regions, names) -> dict:
+    """Step 3c-ii, the owner's ruling for the water round Helstrom (Murkwood): only its main river courses stay
+    river, the rest of its river water is green marsh, so the region reads as main courses, the streams that feed
+    them, and squiggly marsh. Width is measured along each river's centreline (twice the distance to the bank,
+    smoothed over ~60 m, a braided reach measured whole with its islands) and given to every pixel from its nearest centreline point; a main course is river 50 m wide
+    or more along at least 1.5 km of centreline, and a narrower reach up to 1 km that joins two main
+    courses. The owner's edit on a body here keeps its name and flow; its kind
+    stays river on the main courses (its point stays inside one) and the narrower arms become marsh."""
+    from skimage.morphology import skeletonize
+    codes = [names.index(x) for x in HELSTROM_REGIONS if x in names]
+    kind_of = np.array(["land"] + [r["kind"] for r in rows])
+    riv = (kind_of[raster] == "river") & np.isin(regions, codes)
+    if not riv.any():
+        return {"river_m2_kept": 0, "river_m2_to_marsh": 0}
+    dist = ndi.distance_transform_edt(raster > 0)
+    whole = riv | (ndi.binary_closing(riv, EIGHT, iterations=8) & np.isin(regions, codes))   # a braided reach as one
+    wd = ndi.distance_transform_edt(whole)
+    sk = skeletonize(whole)
+    w = np.where(sk, 2 * wd * M_PX, 0.0)
+    num, den = ndi.uniform_filter(w, 21), ndi.uniform_filter(sk.astype(float), 21)
+    ws = np.where(sk, num / np.maximum(den, 1e-9), 0)
+    _, (iy, ix) = ndi.distance_transform_edt(~sk, return_indices=True)
+    width = ws[iy, ix]
+    main = whole & (width >= MAIN_W_M)
+    lab, n = ndi.label(main, EIGHT)
+    if n:
+        length = ndi.sum(sk & main, lab, np.arange(1, n + 1)) * M_PX
+        main &= np.concatenate([[False], length >= MAIN_LEN_M])[lab]
+    main &= riv
+    # a short narrower reach (up to 1 km of centreline) that joins two main courses (or a main course and river beyond the region) is kept, so the main
+    # courses stay one connected system
+    lab, n = ndi.label(riv & ~main, EIGHT)
+    if n:
+        other, _ = ndi.label(main | ((kind_of[raster] == "river") & ~np.isin(regions, codes)), EIGHT)
+        for j, sl in enumerate(ndi.find_objects(lab), 1):
+            sl2 = tuple(slice(max(0, a.start - 3), a.stop + 3) for a in sl)
+            pm = lab[sl2] == j
+            touch = np.unique(other[sl2][ndi.binary_dilation(pm, EIGHT, iterations=2)])
+            if (touch > 0).sum() >= 2 and float((sk[sl2] & pm).sum()) * M_PX <= 1000:
+                main[sl2] |= pm
+    narrow = riv & ~main
+    kept, moved = float(main.sum()) * M_PX ** 2, float(narrow.sum()) * M_PX ** 2
+    by_i = {r["raster_index"]: r for r in rows}
+    lab, n = ndi.label(narrow, EIGHT)
+    for j, sl in enumerate(ndi.find_objects(lab), 1):
+        part = np.zeros(raster.shape, bool)
+        part[sl] = lab[sl] == j
+        owners = np.unique(raster[part])
+        for i in owners.tolist():
+            r = by_i.get(i)
+            if r is None:
+                continue
+            why = (f"round Helstrom only the main river courses ({MAIN_W_M} m wide or more) stay river: "
+                   "a narrower arm, green marsh")
+            new = carve(raster, rows, r, part & (raster == i), "green-marsh", why, dist)
+            if new is not None:
+                new["set_by"] = "derived"
+                new.pop("name", None)
+                by_i[new["raster_index"]] = new
+            elif r["kind"] == "green-marsh":
+                r["set_by"] = "derived"
+    return {"river_m2_kept": round(kept), "river_m2_to_marsh": round(moved)}
+
+
+def no_sea_still(raster, rows, rchar) -> int:
+    """Step 3c-iii. A stream or river must be joined to the sea by one continuous water surface (still water on the
+    way counts; map gaps of ~18 m are bridged). A running body that is not, and that the owner did not set, is
+    still water: a lake from 0.5 km2, a pond where it opens 120 m across, else its region's wet character."""
+    kind_of = np.array(["land"] + [r["kind"] for r in rows])
+    comp, _ = ndi.label(bridged(raster > 0), EIGHT)
+    comp[raster == 0] = 0
+    sea_comps = np.unique(comp[np.isin(kind_of[raster], SEA)])
+    idx = np.arange(1, len(rows) + 1)
+    joined = ndi.maximum(np.isin(comp, sea_comps[sea_comps > 0]), raster, idx)
+    n = 0
+    for r, ok in zip(rows, joined):
+        if r["kind"] not in RUNNING or r["set_by"] == "owner" or ok:
+            continue
+        ch = rchar.get(r["region_id"]) or {"wet": "pond", "name": "the margin"}
+        if r["area_m2"] >= LAKE_M2:
+            r["kind"] = "lake"
+        elif r["open_m"] >= OPEN_POND_M:
+            r["kind"] = "pond"
+        else:
+            r["kind"] = ch["wet"]
+        r["why"] = f"a channel with no water surface joining it to the sea, so still: {r['kind']}"
+        n += 1
+    return n
 
 
 def braid_smooth(raster, rows, vec, sigma: float = 40.0):
@@ -562,9 +705,24 @@ def classify(png: bool = False, chunks: bool = False) -> dict:
     # step 3b: pools in channels, lagoons, the frame and river mouths
     pools_and_mouths(raster, rows, ndi.distance_transform_edt(raster > 0))
 
+    # step 3c: the owner's kinds first, then fringes, Helstrom's rivers and the sea test (see their docstrings)
+    ovp = SRC / "water_overrides.json"
+    ov_raw = json.loads(ovp.read_text()) if ovp.exists() else {}
+    ov, _ = resolve_overrides(ov_raw, rows, raster)
+    for r in rows:
+        o = ov.get(r["id"])
+        if o and o.get("water_kind_id"):
+            r["kind"], r["why"], r["set_by"] = o["water_kind_id"], "owner set the kind", "owner"
+    stats = {"fringe_bits": absorb_fringes(raster, rows)}
+    stats["helstrom"] = helstrom_rivers(raster, rows, regions, names)
+    stats["still_for_no_sea"] = no_sea_still(raster, rows, rchar)
+    ov, _ = resolve_overrides(ov_raw, rows, raster)
+
     # step 4: flow down the channel graph's distance to its outlet
     kind_of = np.array(["land"] + [r["kind"] for r in rows])
     gmap, outlet = outlet_distance(raster, kind_of)
+    flowing = np.isin(kind_of, RUNNING)[raster]
+    stats["flow_px_to_sea"] = f"{int((flowing & (outlet == 0) & np.isfinite(gmap)).sum())}/{int(flowing.sum())}"
     nxt = descent(gmap, raster > 0)
     vec = flow_vectors(nxt, raster.shape)
     braid_smooth(raster, rows, vec)
@@ -574,7 +732,7 @@ def classify(png: bool = False, chunks: bool = False) -> dict:
         r.update(flow_deg=None, downstream_id=None, speed="still", flow_note="still water")
     W = raster.shape[1]
     for r in rows:
-        if r["kind"] not in RUNNING or r["set_by"] == "owner":
+        if r["kind"] not in RUNNING or (r["id"] in ov and ov[r["id"]].get("flow_toward_deg") is not None):
             continue
         k = r["raster_index"]
         p = r["label_py"] * W + r["label_px"]
@@ -601,9 +759,7 @@ def classify(png: bool = False, chunks: bool = False) -> dict:
         r["flow_note"] = (f"down its channel, {gmap.flat[p] * M_PX / 1000:.1f} km to "
                           + ("the sea", "the still water it feeds", "the map's edge", "its end nearest the sea")[int(outlet.flat[p])])
 
-    # step 5b: per-body overrides, last
-    ovp = SRC / "water_overrides.json"
-    ov_raw = json.loads(ovp.read_text()) if ovp.exists() else {}
+    # step 5b: per-body overrides, last (ids found again by the owner's points: carving may rename a body)
     ov, unmatched = resolve_overrides(ov_raw, rows, raster)
     for r in rows:
         if r.get("paint"):
@@ -653,21 +809,23 @@ def classify(png: bool = False, chunks: bool = False) -> dict:
     return {"bodies": len(rows), "kinds": Counter(r["water_kind_id"] for r in rows),
             "flowing": sum(r["flows"] for r in rows), "speeds": Counter(r["speed"] for r in rows),
             "owner": sum(r["set_by"] == "owner" for r in rows),
-            "overrides_without_a_body": unmatched}
+            "overrides_without_a_body": unmatched, **stats}
 
 
 def resolve_overrides(ov: dict, rows: list, raster: np.ndarray) -> tuple[dict, list]:
     """Owner edits are keyed by a point inside the body (`point`: [px, py], full map pixels), so they survive a
     terrain rebuild that moves outlines and ids; the body id is the fallback. Returns ({current body id: edit},
-    the edits that found no body). Later edits on the same body merge over earlier ones."""
+    the edits that found no body). Edits on the same body merge in the order the owner made them (`at`), the
+    latest winning."""
     by_k = {r["raster_index"]: r["id"] for r in rows}
     ids = set(by_k.values())
     out, lost = {}, []
     H, W = raster.shape
-    for key, o in ov.items():
+    for key, o in sorted(ov.items(), key=lambda kv: str(kv[1].get("at", ""))):
         bid = None
-        if o.get("point"):
-            x, y = int(o["point"][0]), int(o["point"][1])
+        pt = o.get("point") or ([int(v) for v in re.findall(r"\d+", key)[:2]] if re.fullmatch(r"wb-\d+-\d+(-\d+)?", key) else None)
+        if pt:
+            x, y = int(pt[0]), int(pt[1])
             for rr in (0, 2, 4, 8, 12):
                 win = raster[max(0, y - rr):min(H, y + rr + 1), max(0, x - rr):min(W, x + rr + 1)]
                 if (win > 0).any():
@@ -679,7 +837,7 @@ def resolve_overrides(ov: dict, rows: list, raster: np.ndarray) -> tuple[dict, l
         if bid is None:
             lost.append(key)
             continue
-        out.setdefault(bid, {}).update({k: v for k, v in o.items() if k != "point"})
+        out.setdefault(bid, {}).update({k: v for k, v in o.items() if k not in ("point", "at")})
     return out, sorted(lost)
 
 
@@ -701,7 +859,7 @@ def outlet_distance(raster: np.ndarray, kind_of: np.ndarray) -> tuple[np.ndarray
         edge = np.zeros_like(inc)
         edge[0, :] = edge[-1, :] = edge[:, 0] = edge[:, -1] = True
         edge_comps = np.unique(comp[edge & inc & run])
-        at_edge = np.isin(comp, edge_comps[edge_comps > 0])
+        at_edge = np.isin(comp, edge_comps[edge_comps > 0]) & False     # the map's edge is not the sea: never an outlet
         src = (edge & run & at_edge) | ((raster > 0) & ~run & inc & ~at_edge)
         g2 = sea_distance(np.where(inc, raster, 0), src)
         g[lost] = g2[lost]
@@ -814,18 +972,40 @@ def flow_cells(raster, rows, vec, gmap) -> None:
     (f.OUT / "water_flow_cells.json").write_text(json.dumps(out))
 
 
-def arrow_samples(raster, rows, vec, gmap, step: int = 22) -> list:
-    """Flow arrows along every running channel's centreline, one per step x step px: [x, y, bearing, body index]."""
+def arrow_samples(raster, rows, vec, gmap, step: int = 22, steps: int = 26) -> list:
+    """Flow arrows that follow each channel's curve: from one centreline point per step x step px, the path walks
+    the centreline (skeleton) downstream, each step to the neighbour nearest the outlet along the water, for up to
+    `steps` px, never leaving its body. One row per arrow: [x, y, bearing at the head, body index, x0, y0, x1, y1,
+    ...] (x, y the tail; the polyline's last point is the head)."""
     from skimage.morphology import skeletonize
     run = np.isin(np.array(["land"] + [r.get("water_kind_id", r.get("kind")) for r in rows]), RUNNING)[raster]
     skel = skeletonize(run & np.isfinite(gmap))
+    H, W = raster.shape
     ys, xs = np.nonzero(skel)
     _, first = np.unique((ys // step) * 100000 + xs // step, return_index=True)
     out = []
     for y, x in zip(ys[first].tolist(), xs[first].tolist()):
-        dy, dx = float(vec[0][y, x]), float(vec[1][y, x])
-        if math.hypot(dx, dy) >= 1:
-            out.append([x, y, round((math.degrees(math.atan2(dx, -dy)) + 360) % 360), int(raster[y, x])])
+        k = int(raster[y, x])
+        pts = [(x, y)]
+        cy, cx = y, x
+        for _ in range(steps):
+            best = None
+            for dy in (-1, 0, 1):
+                for dx in (-1, 0, 1):
+                    ny, nx = cy + dy, cx + dx
+                    if (dy or dx) and 0 <= ny < H and 0 <= nx < W and skel[ny, nx] and raster[ny, nx] == k \
+                            and gmap[ny, nx] < gmap[cy, cx] and (best is None or gmap[ny, nx] < gmap[best]):
+                        best = (ny, nx)
+            if best is None:
+                break
+            cy, cx = best
+            pts.append((cx, cy))
+        if len(pts) < 8:
+            continue
+        pts = pts[::3] + ([pts[-1]] if (len(pts) - 1) % 3 else [])
+        (ax, ay), (bx, by) = pts[-2], pts[-1]
+        deg = round((math.degrees(math.atan2(bx - ax, -(by - ay))) + 360) % 360)
+        out.append([x, y, deg, k] + [c for p in pts for c in p])
     return out
 
 
@@ -843,10 +1023,10 @@ def chunk_pictures(raster, rows, vec, gmap, grid: int = 4) -> None:
     over[wm] = (0.25 * over[wm] + 0.75 * lut[raster][wm]).astype(np.uint8)
     img = Image.fromarray(over)
     d = ImageDraw.Draw(img)
-    for x, y, deg, _k in arrow_samples(raster, rows, vec, gmap):
+    for x, y, deg, _k, *pts in arrow_samples(raster, rows, vec, gmap):
         ux, uy = math.sin(math.radians(deg)), -math.cos(math.radians(deg))
-        ex, ey = x + 6 * ux, y + 6 * uy
-        d.line((x - 7 * ux, y - 7 * uy, ex, ey), fill=(230, 20, 20), width=2)
+        ex, ey = pts[-2], pts[-1]
+        d.line(pts, fill=(230, 20, 20), width=2, joint="curve")
         d.polygon([(ex + 5 * ux, ey + 5 * uy), (ex - 2 * ux - 4 * uy, ey - 2 * uy + 4 * ux),
                    (ex - 2 * ux + 4 * uy, ey - 2 * uy - 4 * ux)], fill=(230, 20, 20))
     out = f.OUT / "water_chunks"

@@ -268,7 +268,8 @@ def main() -> None:
         Image.fromarray(rgb).save(OUT / "water_index_rgb.png", optimize=True)
         arrows = json.loads((f.OUT / "water_arrows.json").read_text()) if (f.OUT / "water_arrows.json").exists() else []
         (OUT / "water_arrows.json").write_text(json.dumps(
-            [[round(x * SCALE, 1), round(y * SCALE, 1), deg, k] for x, y, deg, k in arrows], separators=(",", ":")))
+            [[round(x * SCALE, 1), round(y * SCALE, 1), deg, k] + [round(c * SCALE, 1) for c in pts]
+             for x, y, deg, k, *pts in arrows], separators=(",", ":")))
     html = html.replace("/*__DATA__*/null", json.dumps(d, separators=(",", ":")))
     (OUT / "index.html").write_text(html)
     files = sorted(p.relative_to(OUT).as_posix() for p in OUT.rglob("*") if p.is_file() and p.name != "index.html")

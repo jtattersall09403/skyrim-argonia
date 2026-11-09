@@ -475,6 +475,14 @@ function arrowAt(sx, sy, deg, len, col, w) {
   const hx = sx + dx / 2, hy = sy + dy / 2, ux = dx / len, uy = dy / len;
   ctx.beginPath(); ctx.moveTo(hx + ux * 4, hy + uy * 4); ctx.lineTo(hx - ux * 6 - uy * 5, hy - uy * 6 + ux * 5); ctx.lineTo(hx - ux * 6 + uy * 5, hy - uy * 6 - ux * 5); ctx.closePath(); ctx.fill();
 }
+function curveArrow(pts, col, w) {   // a flow arrow along a channel's curve: pts are screen [x, y, x, y, ...], head last
+  const n = pts.length; ctx.strokeStyle = col; ctx.fillStyle = col; ctx.lineWidth = w; ctx.lineJoin = ctx.lineCap = "round";
+  ctx.beginPath(); ctx.moveTo(pts[0], pts[1]);
+  for (let i = 2; i < n - 2; i += 2) ctx.quadraticCurveTo(pts[i], pts[i + 1], (pts[i] + pts[i + 2]) / 2, (pts[i + 1] + pts[i + 3]) / 2);
+  ctx.lineTo(pts[n - 2], pts[n - 1]); ctx.stroke();
+  const hx = pts[n - 2], hy = pts[n - 1], d = Math.hypot(hx - pts[n - 4], hy - pts[n - 3]) || 1, ux = (hx - pts[n - 4]) / d, uy = (hy - pts[n - 3]) / d;
+  ctx.beginPath(); ctx.moveTo(hx + ux * 4, hy + uy * 4); ctx.lineTo(hx - ux * 6 - uy * 5, hy - uy * 6 + ux * 5); ctx.lineTo(hx - ux * 6 + uy * 5, hy - uy * 6 - ux * 5); ctx.closePath(); ctx.fill();
+}
 function drawWaterArrows() {
   if (!on.water) return;
   ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
@@ -482,11 +490,13 @@ function drawWaterArrows() {
   const gap = view.s > 6 ? 1 : view.s > 3 ? 2 : view.s > 1.5 ? 4 : 8;
   const cw = wrap.clientWidth, ch = wrap.clientHeight;
   for (let n = 0; n < WARR.length; n++) {
-    const [x, y, deg0, k] = WARR[n]; if (n % gap) continue;
+    const [x, y, deg0, k] = WARR[n], line = WARR[n].slice(4); if (n % gap) continue;
     const [sx, sy] = toScreen(x, y); if (sx < -20 || sy < -20 || sx > cw + 20 || sy > ch + 20) continue;
     const e = WB[k] && W2.edits[WB[k][0]]; let deg = deg0, own = false;
     if (e) { const s = bodyState(k); if (!s.flows) continue; if (e.flow_deg != null) { deg = e.flow_deg; own = true; } }
     const len = Math.min(22, 8 + 3 * view.s);
+    if (!own && line.length >= 4) { const sp = []; for (let i = 0; i < line.length; i += 2) sp.push(...toScreen(line[i], line[i + 1]));
+      curveArrow(sp, "rgba(20,26,22,.75)", 4); curveArrow(sp, "#f6f4ec", 1.8); continue; }
     arrowAt(sx, sy, deg, len, "rgba(20,26,22,.75)", 4); arrowAt(sx, sy, deg, len, own ? "#ffd34d" : "#f6f4ec", 1.8);
   }
   for (let i = 1; i < WB.length; i++) {               // owner-drawn directions on bodies too small to carry build arrows
@@ -599,7 +609,7 @@ function showWaterHome() {
   setBody(`<button class="back" data-home>← Overview</button><h2>Water</h2>
   <p class="lead">Every body of water on the map, with the kind and flow worked out from its shape and its region's research. Change any of it here; the world build reads your edits.</p>
   ${statusLine()}
-  <p>Tap water on the map to see and change its kind, whether it flows, its speed and its name. Arrows show which way water flows; a gold arrow is one you set.</p>
+  <p>Tap water on the map to see and change its kind, whether it flows, its speed and its name. Arrows follow each channel's course and point the way its water runs toward the sea; a gold arrow is one you set.</p>
   <div class="legend">${Object.entries(WK).map(([k, nm]) => `<div class="row"><span class="sw" style="background:rgb(${WCOL[k]})"></span>${esc(nm)} <span class="mono" style="color:var(--muted)">${n[k] || 0}</span></div>`).join("")}</div>
   <p class="sub" style="color:var(--muted)">${flowing} flowing, ${WB.length - 1 - flowing} still. ${Object.keys(W2.edits).length} edited by hand.</p>
   <h3>Paint a kind over an area</h3>

@@ -10,7 +10,7 @@ How an agent pulls them (the database is reached only through the ArtifactData t
    next_cursor comes back); the same for collection = water_paint. Each document lands as
    <dir>/water_edits/<id>.json and <dir>/water_paint/<id>.json.
 2. python3 -m tools.newworld.water_overrides_pull <dir>
-   writes newworld/sources/water_overrides.json ({body id: {water_kind_id, flows, flow_toward_deg, speed, name, point}})
+   writes newworld/sources/water_overrides.json ({body id: {water_kind_id, flows, flow_toward_deg, speed, name, point, at}})
    and newworld/sources/water_paint.json ([{water_kind_id, flows, speed, radius_px, points}], oldest first).
 3. python3 -m tools.newworld.water_kinds --png, then build_db, puts them into the classification and the db.
 """
@@ -54,6 +54,8 @@ def convert(edits: dict, paint: dict) -> tuple[dict, list, list]:
             o["speed"] = e["speed"]
         if e.get("name"):
             o["name"] = str(e["name"])[:80]
+        if e.get("at"):
+            o["at"] = str(e["at"])
         if isinstance(e.get("point"), list) and len(e["point"]) == 2:
             o["point"] = [int(e["point"][0]), int(e["point"][1])]
         if o:
