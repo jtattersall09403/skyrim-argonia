@@ -71,7 +71,7 @@ LIMITS = [
     "No flowmaps: river and stream cells flow by their type's fixed vector only (no per-cell flow texture), one of "
     "four directions per cell; rivers that bend change type cell by cell.",
     "One water type per cell: a cell holding two kinds shows its dominant kind's water.",
-    "Adjacent cells of different types meet with a visible change of shallow colour at the cell edge.",
+    "Adjacent cells of different types are graded: a cell near a change of type is our own blend record (ArgoniaPlugin WaterBlend.cs).",
     "No rapids, falls or ripple FX statics yet (placement step).",
     "Region map names need REGN area polygons for the world map; regions are linked per cell (XCLR) for weather.",
 ]

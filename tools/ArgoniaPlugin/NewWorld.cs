@@ -121,10 +121,18 @@ static class NewWorld
         var cj = JsonDocument.Parse(File.ReadAllText(Path.Combine(plugDir, "cells.json"))).RootElement;
         if (cj.GetProperty("build_id").GetString() != man.BuildId) throw new InvalidDataException("cells.json is another terrain build");
         var watrKey = new Dictionary<string, FormKey>();
+        var watrRec = new Dictionary<string, IWaterGetter>();   // the record each key shows in game (the stack's winner)
         foreach (var p in cj.GetProperty("watr").EnumerateObject())
         {
             var v = p.Value;
-            if (v.TryGetProperty("link", out var l)) { var sp = l.GetString()!.Split(':'); watrKey[p.Name] = fc.Get(sp[0], sp[1]); continue; }
+            if (v.TryGetProperty("link", out var l))
+            {
+                var sp = l.GetString()!.Split(':'); watrKey[p.Name] = fc.Get(sp[0], sp[1]);
+                IWaterGetter win;
+                try { win = (IWaterGetter)fc.Find("Update.esm", sp[1]); } catch (InvalidDataException) { win = (IWaterGetter)fc.Find(sp[0], sp[1]); }
+                watrRec[p.Name] = win;
+                continue;
+            }
             var src = v.GetProperty("copy").GetString()!.Split(':');
             var key = new FormKey(modKey, fc.NextIdTake());
             var w = (Water)fc.Find(src[0], src[1]).Duplicate(key);
@@ -133,6 +141,7 @@ static class NewWorld
             w.LinearVelocity = new P3Float((float)vel[0].GetDouble(), (float)vel[1].GetDouble(), 0);
             mod.Waters.Add(w);
             watrKey[p.Name] = key;
+            watrRec[p.Name] = w;
         }
         ws.Water = new FormLinkNullable<IWaterGetter>(watrKey["sea"]);
         ws.LodWater = new FormLinkNullable<IWaterGetter>(watrKey["sea"]);
@@ -154,6 +163,17 @@ static class NewWorld
             regionKey[r.Name] = reg.FormKey;
         }
         var cellInfo = cj.GetProperty("cells");
+        // seams between water types graded over a band of cells (WaterBlend.cs)
+        var cellKind = new Dictionary<(int, int), string>();
+        foreach (var e in cellInfo.EnumerateObject())
+            if (e.Value.TryGetProperty("water", out var wv))
+            {
+                var xy = e.Name.Split(',');
+                cellKind[(int.Parse(xy[0]), int.Parse(xy[1]))] = wv.GetString()!;
+            }
+        var (cellWater, blendReport) = WaterBlend.Blend(mod, fc.NextIdTake, cellKind, watrKey, watrRec);
+        File.WriteAllText(Path.Combine(plugDir, "water_blend.json"), JsonSerializer.Serialize(blendReport));
+        Console.WriteLine("  water seams: " + string.Join(", ", blendReport.Select(kv => $"{kv.Key} {kv.Value}")));
         var refsByCell = Refs(plugDir, fc);
         uint refId = IdRefs;
         var mk = man.Marker;
@@ -200,7 +220,7 @@ static class NewWorld
                 };
                 if (cellInfo.TryGetProperty($"{cx},{cy}", out var ci))
                 {
-                    if (ci.TryGetProperty("water", out var wk)) c.Water = new FormLinkNullable<IWaterGetter>(watrKey[wk.GetString()!]);
+                    if (cellWater.TryGetValue((cx, cy), out var wfk)) c.Water = new FormLinkNullable<IWaterGetter>(wfk);
                     c.Regions = new ExtendedList<IFormLinkGetter<IRegionGetter>> { new FormLink<IRegionGetter>(regionKey[ci.GetProperty("region").GetString()!]) };
                 }
                 if (refsByCell.TryGetValue((cx, cy), out var rl))
@@ -526,7 +546,7 @@ static class NewWorld
         Console.WriteLine($"  water: WRLD default {ws.LandDefaults?.DefaultWaterHeight}, cells off {wrongWater}; {markerLine}; coc {StartCell} (unique)");
         Console.WriteLine($"  masters {string.Join(", ", masters)}; {links} links, {badLinks} into asset-only plugins");
         Console.WriteLine($"  ground: {quads} quadrants, layers per quadrant (base + alpha) {string.Join(" ", layerHist.Select((n, i) => $"{i}:{n}").Skip(1))}, bad {badLayers}; our LTEX {ours.Count} ({grassy} with grass)");
-        Console.WriteLine($"  water types by cell: {string.Join(", ", watrCells.OrderByDescending(x => x.Value).Select(x => $"{x.Key} {x.Value}"))}");
+        Console.WriteLine($"  water types by cell: {string.Join(", ", watrCells.OrderByDescending(x => x.Value).Take(12).Select(x => $"{x.Key} {x.Value}"))}");
         Console.WriteLine($"  regions: {mod.Regions.Count} REGN, cells with a region {regionCells}/{cellsAll}; climate {ws.Climate.FormKey}");
         Console.WriteLine($"  refs by region: {string.Join(", ", refsByRegion.OrderByDescending(x => x.Value).Select(x => $"{x.Key} {x.Value}"))}");
         Console.WriteLine($"  refs by base: {string.Join(", ", refsByBase.OrderByDescending(x => x.Value).Select(x => $"{x.Key} {x.Value}"))}");

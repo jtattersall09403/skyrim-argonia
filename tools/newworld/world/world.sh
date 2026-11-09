@@ -34,7 +34,7 @@ if [ "${NW_NAVMESH:-1}" = 1 ]; then "$py" -m tools.navmesh build --plugin "$out"
 dotnet build -c Release -o "$bin" tools/ArgoniaPlugin >/dev/null
 key=$("$py" -c 'import json,sys; print(json.load(open(sys.argv[1]))["key"])' "$man")
 key="$key:${NW_REF_PRODUCERS:-all}:$(cat "$out/tex/manifest.json" "$out/cells.json" $(find "$out/refs" -name '*.jsonl' | sort) | sha256sum | cut -c1-16)"
-codekey=$(cat tools/ArgoniaPlugin/NewWorld.cs tools/ArgoniaPlugin/ForeignCopy.cs tools/ArgoniaPlugin/NewWorldNavmesh.cs $(ls "$out"/navmesh/navi.json "$out"/navmesh/navm/cy*.jsonl.gz 2>/dev/null) | sha256sum | cut -c1-16)
+codekey=$(cat tools/ArgoniaPlugin/NewWorld.cs tools/ArgoniaPlugin/WaterBlend.cs tools/ArgoniaPlugin/ForeignCopy.cs tools/ArgoniaPlugin/NewWorldNavmesh.cs $(ls "$out"/navmesh/navi.json "$out"/navmesh/navm/cy*.jsonl.gz 2>/dev/null) | sha256sum | cut -c1-16)
 if [ -f "$esm" ] && [ -f "$stamp" ] && grep -q "\"key\": \"$key:$codekey\"" "$stamp"; then
   echo "esm current ($key)"
 else
