@@ -52,7 +52,8 @@ show in the console with `getpos x` and `getpos y`, or just name the place). A s
       variety, not the same tree over and over.
 - [ ] **E. Trees and rocks sit properly.** Look closely at the foot of trees, bushes and rocks on slopes: trunks go
       into the ground (no floating roots, no trunk buried halfway); rocks have no open, hollow back facing you; cliff
-      pieces face out of the hill with their open side hidden against it.
+      pieces face out of the hill with their open side hidden against it. Nothing is bright purple (a missing
+      texture); look in particular at a fern and a mangrove in the Kotherra mangroves (D), whose textures we repoint.
 - [ ] **F. Roads are clear.** Follow a road for a while (the road south from Stormhold is a good one): nothing grows or
       stands on the road itself, and its edges are dressed with the odd stone or marker as in Skyrim.
 - [ ] **G. Water types.** Visit: black swamp water in the Banujha Basin (`cow ArgoniaBlackMarsh -25 -195`); green
