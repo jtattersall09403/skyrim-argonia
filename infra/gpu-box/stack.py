@@ -1107,7 +1107,7 @@ def cmd_push(a):
         src = STACK / installed_name(profile)
         if only:  # the machine's record, with only the pushed rows' files taken from here (later rows win)
             with tempfile.TemporaryDirectory() as t:
-                run("get", "C:/argonia/MO2/installed.json", f"{t}/m.json")
+                run("get", f"C:/argonia/MO2/{installed_name(profile)}", f"{t}/m.json")  # this profile's own record
                 rec = json.loads(pathlib.Path(f"{t}/m.json").read_text(encoding="utf-8-sig"))
             local = json.loads(src.read_text())
             prof_mods = set(read_profile_mods(profile))

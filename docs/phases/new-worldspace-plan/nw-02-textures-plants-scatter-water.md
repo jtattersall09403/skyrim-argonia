@@ -113,38 +113,6 @@ then updated and posted to issue #56 as ready.
 | M | Six asset and source-place mods (Nexus 33751, 71162, 15996, 180133, 14229, 114518): dependencies rows, credits, assets laid in the NewWorld profile with plugins off: 8 rows staged (asset-only, BSAs extracted, plugins off) and hard-linked under ~/games/skyrimse/newworld-assets/<id>; Argonia profile unchanged (76 mods), NewWorld 91 mods 100,647 files. For the Grey Quarter shanty look: Gray Quarter Overhaul (30180, v2, 50 textures, no meshes: it builds from vanilla meshes) and Dawn of Skyrim DC SE (9074, v1.5, 310 files, 21 of 373 mesh texture paths unresolved, all facegen tints of an unshipped plugin) as asset rows; the 71162 patch (23 KB esp, masters Dawn of Skyrim.esp and Grey_Quarter_Overhaul.esp) as source-place reference only, read from its archive. NewWorld now 93 mods 100,974 files. Unresolved texture paths in their meshes against vanilla+AE BSAs and the new-world assets: DSoS 0/6, AHO 6/808, SolstheimExpand 26/283 (it masters ccasvsse001-almsivi.esm, not owned), New Zainab 5/169, Baan Malur 188/2,343 (mostly _resourcepack tree LOD); such meshes are never placed. Play-machine deploy rides the lead's rebuild | done |
 | K | Keyboard: dodge and sprint on Space, jump on Shift, on both cards | done (controlmap.py KEYBOARD: Space sprint+dodge, LShift jump, Run to Alt; reaches the machine on the next deploy.sh) |
 | S | Skills from feedback: one system (docs/skill-fixes.md, the rule in CLAUDE.md), the open rows moved there | done |
-| R | Rebuild after W and T: terrain 20261109T204317Z; the owner's atlas edits of the evening (Update-2026-11-09c) pulled and final over the Helstrom split; water, landcover, place, world ESM with graded water seams (max colour step 14/255), navmesh; atlas v15 published; LOD (Medium), the eight new mod folders, the keyboard map and the NewWorld lay on the play machine; walk check updated | in progress (deploy running) |
+| R | Rebuild after W and T: terrain 20261109T204317Z; the owner's atlas edits of the evening (Update-2026-11-09c) pulled and final over the Helstrom split; water, landcover, place, world ESM with graded water seams (max colour step 14/255), navmesh; atlas v15 published; LOD (Medium), the eight new mod folders, the keyboard map and the NewWorld lay on the play machine; walk check updated | done (2026-11-09): LOD Medium for ArgoniaBlackMarsh only: terrain 1,599 s (xLODGen log names no other world), texgen 298 s, DynDOLOD 1,560 s for ours alone (the first run, generating all 17 worlds, was stopped unfinished past 2,870 s); lod check levels 4/8/16/32 expected = found (5244/1440/429/126); the derived folder and the archive (s3 nw/lod/1226fd7bc37f0257.tar) hold only ArgoniaBlackMarsh plus DynDOLOD Resources' own terrain\lodgen textures; the 451 TexGen terrain\lodgen files collect drops are named by no shipped LOD mesh (0 of 1,707 .bto). NewWorld verify: 100,974 files, 0 bad, VERIFY OK; read-back 50/50; posted to #56 |
 
-**Handover: finishing round 2** (written 2026-11-09 21:55 UTC, while `nw-r2-deploy` ran; a fresh session takes it from here).
-The job `nw-r2-deploy` (`tooling/job_guard.sh run --gpu`, script `~/.argonia/chain/nw02_r2_deploy.sh`, log
-`~/.argonia/jobs/nw-r2-deploy.log`) runs these steps on argonia-play, in order:
-1. Push the eight new mod folders.
-2. Build the LOD at Medium: tools, then send (this sends the ESM and writes `out/newworld/verify/play-esm.sha256`), then
-   run (prepare, terrain, texgen, dyndolod, collect), then check, then archive.
-3. Put the keyboard map on the machine.
-4. Lay the NewWorld profile, then run `stack.ps1 verify -World NewWorld` (output in
-   `out/newworld/verify/play-verify.txt`).
-5. Lay the Argonia profile again.
-
-By 21:55 the push, the tools, the send, prepare (28 s), terrain (1,599 s) and texgen (298 s) were done.
-To finish:
-1. `tooling/job_guard.sh wait nw-r2-deploy`. Then read the log's `== ` lines and `TOTAL`. On a failure, fix the
-   cause and rerun only the steps that are left (lod.sh skips steps whose markers match this ESM).
-2. Check the LOD and the lay:
-   - `lod.sh check` lists every level as expected = found.
-   - `play-verify.txt` ends in VERIFY OK with 0 bad.
-   - The machine is back on the Argonia profile.
-3. `~/.argonia/venv/bin/python -m tools.newworld.verify`. Expect 50/50; the deploy row passes once the send has written
-   the sha.
-4. Fill in `docs/phases/new-worldspace-plan/nw-02-round2-update.md`:
-   - {VERIFY}: the PASS count.
-   - {AWS}: `aws ce get-cost-and-usage` month to date (it was $91.77 at 21:50).
-   - {C1} and {C7}: `python3 tooling/session_tokens.py --last 1` and `--last 7` totals divided by $19 (they were
-     $408 and $2,460).
-5. Post the update: `python3 tooling/owner_inbox.py --comment 56 --body-file docs/phases/new-worldspace-plan/nw-02-round2-update.md`.
-   It posts as the bot, so it is not a false owner wake; never use `gh issue comment`.
-6. Mark the R row done here. Move PROGRESS's nw-02 row to "owed: the owner's walk, issue #56". Delete
-   nw-02-round2-update.md. Commit with `tooling/lane_commit.sh`.
-7. Make sure argonia-play is stopped (it idle-stops itself; check with `infra/gpu-box/run.sh`). Stop the build VM
-   with `tooling/agent_stop.sh` only if no other session is still working on it.
-
+Fault and fix (2026-11-09): DynDOLOD opens its worldspace list as Presets\DynDOLOD_SSE_Default.ini saved it, where all 17 worlds were at 1, and Pick-World assumed an empty list, so LODGen ran for every world. lod.ps1 now writes that preset with only our world at 1 before DynDOLOD starts (Set-DynDOLOD-Worlds), no longer toggles DynDOLOD's list, clears a stopped run's partial output, and fails the step within one poll when a LODGen_SSE_<world>_log.txt for any other world appears (Assert-Only-Ours); the terrain step fails likewise when xLODGen writes another world's folder (Assert-Terrain-Ours). TexGen makes no per-world output. The same night `stack.py push --only` was found to rebuild the NewWorld record from the Argonia record (dropping the newworld-only rows: verify 256 differ, 19,145 unrecorded); it now reads each profile's own record.

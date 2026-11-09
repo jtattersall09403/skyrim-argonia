@@ -118,15 +118,46 @@ function Pick-World($proc) {
   $items = [W]::Items($lb); Say "worldspaces: $($items -join ' | ')"
   $i = [array]::FindIndex([string[]]$items, [Predicate[string]] { param($s) $s -match "\b$World\b" })
   if ($i -lt 0) { throw "${Step}: $World not in the worldspace list" }
-  # Unknown check states (owner-drawn): clear by the tools' documented default (only Tamriel, item 0, pre-checked)
-  # then check ours; the log's "LOD for <worldspace>" lines are the proof of what ran.
+  # DynDOLOD's list is set before it starts (Set-DynDOLOD-Worlds: ours ticked, every other world unticked); no toggle.
+  if ($Step -eq 'dyndolod') { Say "worldspaces: only $World ticked by the preset file"; return }
+  # xLODGen opens with only Tamriel (item 0) ticked: untick it, tick ours.
   foreach ($j in @(0, $i)) {
     if ($j -eq 0 -and $items[0] -notmatch 'Tamriel') { continue }
-    if ($j -eq 0 -and $Step -eq 'dyndolod') { continue }  # DynDOLOD's list starts with nothing checked (2026-11-08: a toggle checked Tamriel)
     [void][W]::SendMessage($lb, 0x0186, [IntPtr]$j, [IntPtr]::Zero)  # LB_SETCURSEL
     [void][W]::SendMessage($lb, 0x0102, [IntPtr]0x20, [IntPtr]::Zero)  # WM_CHAR ' '
     Say "toggled item $j '$($items[$j])'"
   }
+}
+# DynDOLOD opens its worldspace list as Presets\DynDOLOD_SSE_Default.ini saved it (one <world>=0|1 line per world after
+# NearGrid in [DynDOLOD]): written here with only $World at 1, or every world is generated.
+$DynPreset = "$Tools\dyndolod\DynDOLOD\Edit Scripts\DynDOLOD\Presets\DynDOLOD_SSE_Default.ini"
+function Set-DynDOLOD-Worlds {
+  if (-not (Test-Path $DynPreset)) { throw "${Step}: no $DynPreset to set the worldspaces in" }
+  $out = New-Object System.Collections.Generic.List[string]; $sec = ''; $worlds = $false; $ours = $false; $at = -1
+  foreach ($l in Get-Content $DynPreset) {
+    if ($l -match '^\[(.+)\]$') { $sec = $Matches[1]; $worlds = $false }
+    elseif ($sec -eq 'DynDOLOD' -and $l -match '^NearGrid=') { $worlds = $true; $at = $out.Count + 1 }
+    elseif ($sec -eq 'DynDOLOD' -and $worlds -and $l -match '^([^=]+)=[01]$') {
+      if ($Matches[1] -eq $World) { $l = "$World=1"; $ours = $true } else { $l = "$($Matches[1])=0" } }
+    $out.Add($l)
+  }
+  if ($at -lt 0) { throw "${Step}: no NearGrid line in $DynPreset" }
+  if (-not $ours) { $out.Insert($at, "$World=1") }
+  Set-Content $DynPreset $out -Encoding ASCII
+  $on = @(Get-Content $DynPreset | ? { $_ -match '^[A-Za-z0-9_]+=1$' } | ? { $l2 = $_; $out.IndexOf($l2) -ge $at })
+  Say "worldspaces in the preset at 1: $($on -join ', ')"
+}
+# Fails the step at once when DynDOLOD starts LODGen for any world but ours (its Logs\LODGen_SSE_<world>_log.txt).
+function Assert-Only-Ours($since) {
+  $bad = Get-ChildItem "$Tools\dyndolod\DynDOLOD\Logs" -Filter 'LODGen_SSE_*_log.txt' -EA SilentlyContinue | ? { $_.LastWriteTime -gt $since } |
+    % { $_.Name -replace '^LODGen_SSE_', '' -replace '(_TerrainUnderside)?_log\.txt$', '' } | ? { $_ -ne $World } | Sort -Unique
+  if ($bad) { throw "${Step}: DynDOLOD is generating other worlds: $($bad -join ', ')" }
+}
+# Fails the terrain step as soon as xLODGen writes a world folder (meshes|textures\terrain\<world>) other than ours.
+function Assert-Terrain-Ours {
+  $bad = foreach ($d in 'meshes\terrain', 'textures\terrain') { Get-ChildItem "$($Out.terrain)\$d" -Directory -EA SilentlyContinue | % Name }
+  $bad = @($bad | ? { $_ -ne $World } | Sort -Unique)
+  if ($bad) { throw "${Step}: xLODGen is generating other worlds: $($bad -join ', ')" }
 }
 # Pop-ups: a known one gets its named answer; any other stops the step.
 $Known = @(
@@ -268,7 +299,8 @@ switch ($Step) {
     Set-Check $p 'Terrain LOD' $true
     Dump $p 'before Generate'
     Click $p 'Generate'
-    Measure-Run $p { $null = Watch-Popups $p $main; (Tool-Text $p) -match 'LOD Generator: finished|LOD generation done' }
+    try { Measure-Run $p { $null = Watch-Popups $p $main; Assert-Terrain-Ours; (Tool-Text $p) -match 'LOD Generator: finished|LOD generation done' } }
+    catch { $p | Stop-Process -Force -EA SilentlyContinue; Get-Process LODGen* -EA SilentlyContinue | Stop-Process -Force -EA SilentlyContinue; throw }
     # round 5 close-8 (20:39): the done-check's pop-up watcher wrote a line, which made the check true 6 s before the
     # tool's finish line existed, and this re-read found none. The watcher's output is now discarded above, and this
     # re-read waits for the finish line (up to 10 min) instead of failing on one early read.
@@ -287,6 +319,7 @@ switch ($Step) {
     $p | Stop-Process -Force
     $n = (Get-ChildItem $Out.terrain -Recurse -File -Include *.btr, *.dds).Count; Say "terrain: $n files"
     if (-not $n) { throw 'terrain: no .btr or .dds written' }
+    Assert-Terrain-Ours
     Link-Into-Data $Out.terrain   # DynDOLOD culls object LOD below the terrain LOD
   }
   'texgen' {
@@ -309,6 +342,8 @@ switch ($Step) {
     $p = Get-Process DynDOLODx64 -EA SilentlyContinue | Select -First 1
     if ($p) { Say "attach: DynDOLOD already running (pid $($p.Id) since $($p.StartTime.ToString('HH:mm:ss'))): waiting for it"; $main = Main-Window $p }
     else {
+    Remove-Item "$($Out.dyndolod)\*" -Recurse -Force -EA SilentlyContinue   # no half-written output of a stopped run is collected
+    Set-DynDOLOD-Worlds
     $p = Start-Tool dyndolod ($Paths + " -o:`"$($Out.dyndolod)\`"")
     $main = Main-Window $p
     # The load's pop-ups (DLL/Scripts not found: Ignore; Resources) come before the wizard: watch them while waiting,
@@ -328,7 +363,10 @@ switch ($Step) {
     Dump $p 'before OK'
     Click $p 'OK'
     }
-    Measure-Run $p { $null = Watch-Popups $p $main; (Tool-Text $p) -match 'generated successfully' }
+    $t0 = (Get-Date).AddMinutes(-1)
+    try { Measure-Run $p { $null = Watch-Popups $p $main; Assert-Only-Ours $t0; (Tool-Text $p) -match 'generated successfully' } }
+    catch { $p | Stop-Process -Force -EA SilentlyContinue; Get-Process LODGen*, Texconv* -EA SilentlyContinue | Stop-Process -Force -EA SilentlyContinue; throw }
+    Assert-Only-Ours $t0
     $t1 = Get-Date  # as terrain: re-read until the finish line is there (close-8, 20:39), not once
     do { $txt = Tool-Text $p; if ($txt -match 'generated successfully') { break }; Start-Sleep 5 } while (((Get-Date) - $t1).TotalMinutes -lt 10)
     Set-Content "$Work\logs\dyndolod-messages.txt" $txt
