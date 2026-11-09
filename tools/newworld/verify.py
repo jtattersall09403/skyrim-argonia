@@ -46,6 +46,13 @@ REFS_CAP = 162           # natural refs in a cell: vanilla's forested max
 JACCARD_MAX = 0.60       # two regions' base sets: the most they may share (the place step reports 0.58, two sea regions)
 PATHS_MIN = 20           # settlement-pair paths the navmesh check must have found
 FLOW = re.compile(r"(River|Creek)WaterFlow", re.I)
+BLEND = re.compile(r"^ANW_WaterBlend_(.+)_\d{4}$")    # a graded seam cell: its own type's editor id, look mixed
+
+
+def own_type(edid: str) -> str:
+    """A cell's water type as its kind and flow: a blend record (ArgoniaPlugin WaterBlend.cs) counts as its own type."""
+    m = BLEND.match(edid or "")
+    return m.group(1) if m else edid
 MIST = re.compile(r"^FXMist", re.I)
 
 
@@ -240,7 +247,7 @@ def run(plugin: Path, out: Path, do_dump: bool = True) -> int:
             if not w:
                 continue
             x, y = map(int, key.split(","))
-            got = (cells.get((x, y)) or {}).get("water") or f"(world) {world_w}"
+            got = own_type((cells.get((x, y)) or {}).get("water") or f"(world) {world_w}")
             n += 1
             if got != want_ed[w]:
                 bad += 1

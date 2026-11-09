@@ -1,10 +1,11 @@
 // Water seams: graded water types between neighbouring cells, and the study of how Skyrim does it.
+//   waterblend flows <esm>          every blend of a flowing type keeps its flow (exit 1 if not)
 //   waterblend study <Data dir>     Tamriel's adjacent-cell water types (XCWT) in Skyrim.esm + Update.esm: which
 //                                   records neighbour each other and how far their colours and fog step at a seam.
 // The writer (NewWorld.cs) calls Blend: each water cell's type becomes a weighted mix of the types of the cells
 // round it (a 29 x 29 tent; types that differ only in flow count as one look), so where kinds change the colour, fog and reflection step across a
-// band of cells instead of at one cell edge. A mix is our own WATR record: a copy of the cell's own type (its
-// textures, flow velocity and flags) with every colour and every scalar water/fog value interpolated by the weights.
+// band of cells instead of at one cell edge. A mix is our own WATR record, ANW_WaterBlend_<own type>_NNNN: a copy of
+// the cell's own type (its textures, flow velocity and flags, so a river cell's blend still flows its way) with every colour and every scalar water/fog value interpolated by the weights.
 // Weights are quantised to 32nds so equal mixes share a record. Skyrim's own answer (waterblend study): 96% of
 // Tamriel's seams join types of one look (sea, river and flow-blend records share colours), the rest step hard.
 using System.Drawing;
@@ -125,7 +126,8 @@ static class WaterBlend
             {
                 var fk = new FormKey(mod.ModKey, nextId());
                 var w = (Water)recs[own].Duplicate(fk);
-                w.EditorID = "ANW_WaterBlend" + made.Count.ToString("D4");
+                // the name keeps the cell's own type (its kind and flow): ANW_WaterBlend_<own type's editor id>_NNNN
+                w.EditorID = $"ANW_WaterBlend_{recs[own].EditorID}_{made.Count:D4}";
                 Mix(w, q.Select(x => (recs[rep[x.look]], x.n / (double)Q)).Append((recs[own], ownN / (double)Q)).ToList());
                 mod.Waters.Add(w);
                 made[name] = m = (fk, w);
@@ -164,6 +166,21 @@ static class WaterBlend
             ["max_fog_step_before"] = Math.Round(fogBefore, 3), ["max_fog_step_after"] = Math.Round(fogAfter, 3),
         };
         return (outMap, report);
+    }
+
+    /// waterblend flows <esm>: every blend of a flowing type keeps that type's flow (LinearVelocity); exit 1 if not.
+    public static int Flows(string esm)
+    {
+        using var mod = SkyrimMod.CreateFromBinaryOverlay(esm, SkyrimRelease.SkyrimSE);
+        int flowing = 0, still = 0, lost = 0;
+        foreach (var w in mod.Waters.Where(w => w.EditorID?.StartsWith("ANW_WaterBlend_") == true))
+        {
+            if (!w.EditorID!.Contains("WaterFlow")) { still++; continue; }
+            var v = w.LinearVelocity;
+            if (v is { } p && (Math.Abs(p.X) + Math.Abs(p.Y)) > 0.01) flowing++; else lost++;
+        }
+        Console.WriteLine($"blends of flowing types with their flow {flowing}, without {lost}; blends of still types {still}");
+        return lost == 0 && flowing > 0 ? 0 : 1;
     }
 
     public static int Study(string data)
