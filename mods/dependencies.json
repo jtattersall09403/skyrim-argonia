@@ -3092,6 +3092,113 @@
    "asset_only": true
   },
   {
+   "id": "grey-quarter-overhaul",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 30180,
+    "file": 112361
+   },
+   "name": "Gray Quarter Overhaul",
+   "author": "FarrinRacer",
+   "version": "2",
+   "archive": "Gray Quarter Overhaul-30180-2-1572822914.zip",
+   "size_kb": 1997,
+   "why": "asset and source-place dependency: the Grey Quarter shanty look for shanty-town places in the new world (phase nw-02): asset-only: its meshes and textures laid loose (its BSAs extracted) in the NewWorld profile alone, its plugins never active; ArgoniaNewWorld.esm copies the records it uses as its own and never masters it (owner via lead, 2026-11-09)",
+   "required": true,
+   "profile": "newworld",
+   "sha256": "56dc6a5465bb163ed03df8bddf23cbf6556c87ab9e233e92d7fbd25b9c02a94d",
+   "licence": "none stated",
+   "permission_summary": "The player's own download is fine as a dependency; placing its meshes/textures or copied records in our generated plugin is using its contents in our mod and needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API mod 30180 file 112361 (MAIN), read 2026-11-09",
+   "plugins": [
+    "Grey_Quarter_Overhaul.esp"
+   ],
+   "masters": [
+    "Skyrim.esm",
+    "Update.esm",
+    "Dragonborn.esm"
+   ],
+   "runtime": "data only; plugins off (asset-only)",
+   "conflicts": "not swept (plugins never active)",
+   "linked_or_forked_by": "none: depended on as the player’s own download",
+   "asset_only": true
+  },
+  {
+   "id": "dawn-of-skyrim",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 9074,
+    "file": 144970
+   },
+   "name": "Dawn of Skyrim (Director's Cut) SE",
+   "author": "Vaelka",
+   "version": "1.5",
+   "archive": "Dawn of Skyrim-9074-1-5-1591832820.7z",
+   "size_kb": 50519,
+   "why": "asset and source-place dependency: the Grey Quarter shanty look for shanty-town places in the new world (phase nw-02): asset-only: its meshes and textures laid loose (its BSAs extracted) in the NewWorld profile alone, its plugins never active; ArgoniaNewWorld.esm copies the records it uses as its own and never masters it (owner via lead, 2026-11-09)",
+   "required": true,
+   "profile": "newworld",
+   "sha256": "c3efac8bc22a7d5b26e953a6ddaf8d6da6db73094eb2ceb01346f090cec36024",
+   "licence": "none stated",
+   "permission_summary": "The player's own download is fine as a dependency; placing its meshes/textures or copied records in our generated plugin is using its contents in our mod and needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API mod 9074 file 144970 (MAIN), read 2026-11-09",
+   "plugins": [
+    "Dawn of Skyrim.esp"
+   ],
+   "masters": [
+    "Skyrim.esm",
+    "Update.esm",
+    "Dragonborn.esm"
+   ],
+   "runtime": "data only; plugins off (asset-only)",
+   "conflicts": "not swept (plugins never active)",
+   "linked_or_forked_by": "none: depended on as the player’s own download",
+   "asset_only": true
+  },
+  {
+   "id": "dawn-of-grey-quarter",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 71162,
+    "file": 298037
+   },
+   "name": "Dawn of Gray Quarter Expansion Overhauled",
+   "author": "Jwat8345",
+   "version": "1",
+   "archive": "DOS - Grey Quarter Overhaul Patch esp-71162-1-1657527943.7z",
+   "size_kb": 15,
+   "why": "source-place reference only (no assets): its patch esp records how the Grey Quarter shanty placements sit together across Dawn of Skyrim and Gray Quarter Overhaul, read for shanty-town places in the new world (phase nw-02); plugin never active, never mastered (owner via lead, 2026-11-09)",
+   "required": true,
+   "profile": "newworld",
+   "sha256": "37f5e8ee42b8640728398c176f7354eb25d4ccf53d10d34833a31cd43bd8c702",
+   "licence": "none stated",
+   "permission_summary": "The player's own download is fine as a dependency; placing its meshes/textures or copied records in our generated plugin is using its contents in our mod and needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API mod 71162 file 298037 (MAIN), read 2026-11-09",
+   "plugins": [
+    "DOS - Grey Quarter Overhaul Patch.esp"
+   ],
+   "masters": [
+    "Skyrim.esm",
+    "Update.esm",
+    "Dragonborn.esm",
+    "Dawn of Skyrim.esp",
+    "Grey_Quarter_Overhaul.esp"
+   ],
+   "runtime": "data only; plugins off (asset-only)",
+   "conflicts": "not swept (plugins never active)",
+   "linked_or_forked_by": "none: depended on as the player’s own download",
+   "asset_only": true
+  },
+  {
    "id": "xlodgen",
    "source": {
     "github": "sheson/xLODGen",
