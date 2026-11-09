@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>Place Studio</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="css/studio.css">
+<script type="importmap">{"imports": {"three": "./vendor/three-0.170.0/three.module.min.js"}}</script>
+</head>
+<body>
+<header id="top">
+  <div class="choosers">
+    <label class="pick"><span class="pick-label">Place</span><select id="place-pick" aria-label="Place to edit"></select></label>
+    <span id="fingerprint" class="fp" title="The game world this view is built from"></span>
+  </div>
+  <div class="state">
+    <button id="undo" class="icon-btn" aria-label="Undo"><svg viewBox="0 0 24 24"><path d="M9 14 4 9l5-5"/><path d="M4 9h10a6 6 0 0 1 0 12h-3"/></svg><span>Undo</span></button>
+    <button id="redo" class="icon-btn" aria-label="Redo"><svg viewBox="0 0 24 24"><path d="m15 14 5-5-5-5"/><path d="M20 9H10a6 6 0 0 0 0 12h3"/></svg><span>Redo</span></button>
+    <span id="save-state" class="save-state" data-state="saved">All changes saved</span>
+    <button id="finalise-btn" class="primary">Save and finalise</button>
+  </div>
+</header>
+<div id="warn" class="warn" hidden></div>
+<main id="stage">
+  <nav id="rail" aria-label="Tools"></nav>
+  <section id="views" data-layout="side">
+    <div class="view" id="view-ours">
+      <div class="canvas-holder"></div>
+      <div class="view-bar">
+        <span class="view-title">Our place</span>
+        <nav class="crumbs" aria-label="Where you are"></nav>
+        <button class="icon-btn small fs" aria-label="Full screen"><svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
+      </div>
+      <div class="gizmo" hidden></div>
+      <svg class="sketch" aria-hidden="true"></svg>
+    </div>
+    <div class="view-link">
+      <button id="link" class="icon-btn small" aria-pressed="false" aria-label="Move both views together"><svg viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg><span>Link views</span></button>
+      <button id="swap" class="icon-btn small" aria-label="Swap the views"><svg viewBox="0 0 24 24"><path d="M7 4v16M7 4 3 8M7 4l4 4M17 20V4m0 16-4-4m4 4 4-4"/></svg><span>Swap</span></button>
+    </div>
+    <div class="view" id="view-src">
+      <div class="canvas-holder"></div>
+      <div class="view-bar">
+        <label class="pick"><span class="pick-label">Source</span><select id="source-pick" aria-label="Source place"></select></label>
+        <nav class="crumbs" aria-label="Where you are"></nav>
+        <button class="icon-btn small fs" aria-label="Full screen"><svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
+      </div>
+      <svg class="sketch" aria-hidden="true"></svg>
+    </div>
+  </section>
+  <aside id="panel" aria-live="polite" hidden>
+    <div class="panel-head"><h2 id="panel-title"></h2><button id="panel-close" class="icon-btn small" aria-label="Close panel"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+    <div id="panel-body"></div>
+  </aside>
+</main>
+<footer id="timebar" hidden>
+  <span class="time-label">Time of day</span>
+  <input id="time" type="range" min="0" max="24" step="0.25" value="9" aria-label="Time of day">
+  <output id="time-out">9:00</output>
+</footer>
+<div id="chip" class="chip" hidden></div>
+<div id="toast" class="toast" hidden></div>
+<div id="loading" class="loading"><div class="spinner"></div><p id="loading-text">Loading the place</p></div>
+<div id="intro" class="intro" hidden></div>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

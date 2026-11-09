@@ -925,5 +925,13 @@
   "used_by": "the NewWorld profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it): source-place reference only (no assets): the Grey Quarter shanty placements in the new world (ArgoniaNewWorld.esm, phase nw-02)",
   "linked_or_forked_by": "none: depended on as the player’s own download; its plugins never active, never a master",
   "notes": "author Jwat8345. The player's own download is fine as a dependency; placing its meshes/textures or copied records in our generated plugin needs the author's permission."
+ },
+ {
+  "name": "three.js 0.170.0 (build/three.module.min.js, examples/jsm GLTFLoader and BufferGeometryUtils)",
+  "source_url": "https://registry.npmjs.org/three/-/three-0.170.0.tgz",
+  "version": "0.170.0",
+  "licence": "MIT (vendor/three-0.170.0/LICENSE)",
+  "used_by": "the place studio's browser front end (tools/places/studio/web), WebGL2 drawing of places; no game asset",
+  "linked_or_forked_by": "vendored unchanged into tools/places/studio/web/vendor/three-0.170.0 (no CDN at run time: the page sits behind the owner's login)"
  }
 ]
