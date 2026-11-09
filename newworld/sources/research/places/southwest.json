@@ -7923,7 +7923,7 @@
     },
     {
      "aspect": "economy",
-     "text": "It sells cut stone to Soulrest's builders and road-menders and pays the merchant council a tithe of blocks for its protection on the road. Carts leave twice a week for Chasepoint and the port.",
+     "text": "It sells cut stone to Soulrest's builders and road-menders and gives the merchant council a share of its blocks for its protection on the road. Carts leave twice a week for Chasepoint and the port.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -8146,7 +8146,7 @@
     },
     {
      "aspect": "economy",
-     "text": "It sends red facing stone by barge to Soulrest's coast wall and its warehouses, and a tithe of blocks goes to the merchant council for its protection of the shore track. Redbank blocks are prized for their colour.",
+     "text": "It sends red facing stone by barge to Soulrest's coast wall and its warehouses, and a share of the blocks goes to the merchant council for its protection of the shore track. Redbank blocks are prized for their colour.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
