@@ -1,0 +1,7 @@
+{"id": "fixture_village.hut", "base": "Black Marsh.esm:0AA5F0", "kind": "building", "pos": [-51200.0, -604160.0, 104.0], "rot": [0.0, 0.0, 0.0], "scale": 1.0, "layer": "place", "seat": {"mode": "ground", "dz": 0.0}}
+{"id": "fixture_village.door", "base": "Skyrim.esm:04203A", "kind": "door", "pos": [-51200.0, -604580.0, 112.0], "rot": [0.0, 0.0, 0.0], "scale": 1.0, "layer": "place", "seat": {"mode": "ground", "dz": 0.0}, "door": {"to_space": "fixture_house", "to_ref": "Black Marsh.esm:156457"}}
+{"id": "fixture_village.chair", "base": "Skyrim.esm:06D90F", "kind": "furniture", "pos": [-50600.0, -604860.0, 96.0], "rot": [0.0, 0.0, 1.2], "scale": 1.0, "layer": "place", "seat": {"mode": "ground", "dz": 0.0}}
+{"id": "fixture_village.work1", "base": "Skyrim.esm:00003B", "kind": "marker", "pos": [-50700.0, -604960.0, 96.8], "rot": [0.0, 0.0, 0.0], "scale": 1.0, "layer": "place", "seat": {"mode": "ground", "dz": 0.0}}
+{"id": "fixture_village.work2", "base": "Skyrim.esm:00003B", "kind": "marker", "pos": [-51800.0, -605060.0, 112.0], "rot": [0.0, 0.0, 0.0], "scale": 1.0, "layer": "place", "seat": {"mode": "ground", "dz": 0.0}}
+{"id": "fixture_village.patrol1", "base": "Skyrim.esm:00003B", "kind": "marker", "pos": [-52100.0, -605360.0, 112.0], "rot": [0.0, 0.0, 0.0], "scale": 1.0, "layer": "place", "seat": {"mode": "ground", "dz": 0.0}}
+{"id": "fixture_village.patrol2", "base": "Skyrim.esm:00003B", "kind": "marker", "pos": [-50300.0, -605460.0, 105.2], "rot": [0.0, 0.0, 0.0], "scale": 1.0, "layer": "place", "seat": {"mode": "ground", "dz": 0.0}}

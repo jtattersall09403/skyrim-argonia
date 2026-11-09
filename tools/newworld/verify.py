@@ -408,6 +408,22 @@ def run(plugin: Path, out: Path, do_dump: bool = True) -> int:
                 pv.exists() and "FAIL" not in pv.read_text(errors="replace"),
                 "" if pv.exists() else f"{pv.relative_to(REPO)}: save the play machine's verify output there after the push")
 
+    @section(rep, "places")
+    def _places():
+        # the place layer (tools/places build/check, docs/design/place-studio.md): rows only once a layer is built
+        pl = REPO / "out/places/plugin"
+        if not (pl / "build.json").exists():
+            return
+        b = json.loads((pl / "build.json").read_text())
+        sha = hashlib.sha256((plugin / ESM).read_bytes()).hexdigest()
+        rep.row("places", "ArgoniaNWPlaces.esp is built over this world ESM", b.get("world_sha256", "")[:12], b.get("world_sha256") == sha,
+                "" if b.get("world_sha256") == sha else "rerun `python -m tools.places build`")
+        for c in sorted((REPO / "out/places/shards").glob("*/check.json")):
+            r = json.loads(c.read_text())
+            red = [k for k, v in r["results"].items() if not v["ok"]]
+            rep.row("places", f"{r['place_id']}: every place check green", f"{len(r['results']) - len(red)}/{len(r['results'])}", not red,
+                    ", ".join(red))
+
     return finish(rep, out, t0)
 
 

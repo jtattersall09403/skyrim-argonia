@@ -1,0 +1,5 @@
+{"src": "Black Marsh.esm:156457", "base": "Skyrim.esm:0EF53A"}
+{"src": "Black Marsh.esm:15645C", "removed": true}
+{"id": "fixture_village.bed1", "base": "Skyrim.esm:03B420", "kind": "furniture", "pos": [6190.0, 1180.0, 1770.0], "rot": [0, 0, 3.2], "scale": 1.0, "layer": "place", "seat": {"mode": "free", "dz": 0}}
+{"id": "fixture_village.bed2", "base": "Skyrim.esm:03B420", "kind": "furniture", "pos": [6190.0, 1000.0, 1770.0], "rot": [0, 0, 3.2], "scale": 1.0, "layer": "place", "seat": {"mode": "free", "dz": 0}}
+{"src": "Black Marsh.esm:156454", "removed": true}

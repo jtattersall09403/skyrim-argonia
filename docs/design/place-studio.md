@@ -330,12 +330,83 @@ service factions and chests, land overrides for patched cells, the cleared world
 the navmesh of every touched cell, joined to its untouched neighbours. Base records of plugins that are not
 loaded are copied in as ours (the route `tools/ArgoniaPlugin/ForeignCopy.cs` proves). Never LOD.
 
+**Override, not merge.** The place layer is an ESP that overrides the world ESM's WRLD, CELL headers, LAND and
+NAVM and adds refs; nothing is merged into the ESM, so a place build never waits on a world rebuild. Measured on
+Bethesda's own plugins (`ArgoniaPlacesBuild study`): Update.esm overrides 267 NAVM and 1,659 LAND of Skyrim.esm,
+and its NAVI holds 313 NVMI (42 of its own navmeshes, 271 of overridden ones) beside Skyrim.esm's 15,462;
+Dawnguard 407 NAVM overrides and 1,873 NVMI, HearthFires 88 and 132, Dragonborn 26 and 1,732. A NAVI override
+carries only its own and its overridden navmeshes' NVMI and the engine keeps every other plugin's; ours does the
+same. An ESP's form ids run 0x000800 to 0xFFFFFF; each place has a block of 0x8000
+(`newworld/places/formid_blocks.json`; the ids of its keys in `newworld/places/<place_id>/formids.json`, both
+committed so a save game's refs stay the same for life); copied foreign bases take 0x001000 on. Load doors,
+actors, beds, package targets and merchant chests are persistent: in the world's persistent cell (exterior) or
+their own cell (interior), as vanilla files them.
+
+**The recipe.**
+1. Plan each place into `out/places/shards/<place_id>/plan.json` (`tools/places/build.py`), keyed on its place
+   files, the world ESM's sha256 and the code; an unchanged key is not planned again. The world ESM must be of the
+   land build its navmesh inputs hold (`out/newworld/plugin/land/manifest.json`), else the build stops.
+2. Interiors: `space.json` `copy_of` names the source cell (the first of the source's plugins that holds it);
+   `room` (a source ref) or `keep_within {pos, radius}` keeps only the refs of one room of a cell the source
+   shares between houses (radius 1,200 for `room`). A row with `src` changes that copied ref (`removed: true`
+   drops it; `base`, `pos`, `rot`, `scale`, `owner`, `door` replace the source's); a row with a `src` outside the
+   kept room is not in the copy; a row without `src` is added. Source actors are never copied: people are ours.
+3. Doors: a door row's `door.to_space` and `to_ref` (our id, or a source key in a copied space) name its
+   partner; both get teleports. The arrival marker by a copied door is its source pair's; by our door whose partner
+   is a copy, the source's marker moved rigidly from the source door to ours; else 128 units in front of the door.
+4. Land: each `land.jsonl` vertex (`row` from the south, `col` from the west, `dz` in units, rounded to 8-unit
+   steps) is applied to the world's own heights; every cell whose heights or normals change gets a LAND override
+   (the world's record with new VHGT and VNML, the normals computed as the world computes them). Paths paint one
+   alpha layer per quadrant of the world's own LTEX for their `style` (`road`, `street`, `path`: dirt_road;
+   `track`: dirt_grass; `mud`, `sand`, `stone`, `skirt`), opacity 1 within the half width, feathered over 96 units.
+5. Clearance: each `clear.jsonl` row matches the world's ref of its base nearest it within 64 units, overridden
+   **Initially Disabled**. Bethesda also deletes (Update.esm: 59 deleted, 7 disabled), but a deleted master ref
+   breaks any save or link that names it and cannot come back when the owner un-clears; BM&V disables (40 refs).
+   Disabled is reversible and save-safe.
+6. People (`tools/places/people.py`): an actor base of ours per person (a copy of `base_from` at a fixed level;
+   levelled lists in its inventory, outfit or merchant chest flattened to their level-1 items), placed once and
+   persistent; packages copied from vanilla templated ones (rest: WhiterunBraithSleep21x12; work and wander:
+   SolitudeTempleMinister0x8; eat: GuardRiftenEatDayShift20x4; patrol: GuardRiftenBarracksPatrol over a chain of
+   linked XMarkerHeadings) with our schedule and place, then an unscheduled sandbox at home; the person's bed
+   owned by them; everyone in the place's crime faction (TrackCrime, vanilla's crime values), guards also in
+   IsGuardFaction. A stop names a ref (our id or a source key in its space), a position (2D is seated on the
+   ground), or only a space (its first furniture). Services by give (`give_kind_id` or `kind`): `trader-*` a
+   vendor faction of ours (hours from the work stop, the vanilla vendor list, a merchant chest in the place's
+   chest cell) and the vanilla Job faction; `trainer` a class of ours that teaches (Journeyman 50, Expert 75,
+   Master 90; skill and level from `skill`/`level` or the give's detail) with JobTrainerFaction and
+   JobTrainer<Skill>Faction; `inn-room` JobInnkeeperFaction and another bed of the inn owned by the innkeeper's
+   vendor faction. `faction_ranks` `<place>.crime` and `<place>.vendor.*` are made by the build; `<place>.town` is
+   the place's town faction.
+   **Not built yet:** renting the bed (vanilla: DialogueGeneric's RentRoomTopic and the innkeeper's RentRoomScript,
+   property Bed), travel (`carriage-or-boat`: vanilla's carriages are CarriageSystemScript properties, not records)
+   and shrine blessings (a TempleBlessingScript activator with our spell) need a script block; until then check
+   fails where a place promises them.
+7. Navmesh: the touched exterior cells (placed collision, changed land, path cells) are rebuilt by
+   `tools.navmesh` over the patched land and the place's collision in a window of three rings; the touched cells
+   and ring 1 are ours, and ring 2 must come out byte-equal to the world's own NAVM, so the join is edge for edge.
+   An interior keeps its source's navmesh trimmed to the kept room; where the source has none over the room
+   (BM&V's shared house cells), it is generated by the same Recast run over the room's collision. Door triangles
+   on both sides follow vanilla's rule (the triangle under the partner's arrival marker names the door). The NAVI
+   override carries our NVMI only.
+8. Assemble every shard into the plugin (`ArgoniaPlacesBuild write`); the world ESM is read, never written.
+
+**Deploy** (run by the lead after the owner's walk; the build never deploys). The plugin joins the NewWorld
+profile's own plugins after the world ESM: in `infra/gpu-box/stack.ps1`, on the `$World -eq 'NewWorld'` line, add
+`$OursPlugins += @{ name = 'ArgoniaNWPlaces.esp'; src = "$Root\ours\newworld\ArgoniaNWPlaces.esp" }`; send
+`out/places/plugin/ArgoniaNWPlaces.esp` to `C:\argonia\ours\newworld\` as `infra/gpu-box/lod.sh send` sends the
+ESM; then `stack.ps1 on -World NewWorld` and `stack.py verify --profile NewWorld`.
+
 `python -m tools.places check <place_id>` reads the built plugin back and fails on any of: a ref not seated as
 its `seat` says; a ref inside another's collision that the source did not have; a door without its pair or
 facing into a wall; a person without a bed, with a routine stop off the navmesh or unreachable from the one
 before; a navmesh island or an unjoined cell edge; a land patch whose built heights differ from `land.jsonl` or
 tear at a seam; a cleared plant still enabled, or a plant standing in a building, street or doorway; a service
-the place record promises with nobody giving it; a Nordic base; anything levelled.
+the place record promises with nobody giving it; a Nordic base; anything levelled. It also fails on a link that
+resolves nowhere or a plugin not mastered on the world ESM. The promises are the place's rows of
+`newworld/story/data/db/place_give.jsonl` (combat, loot and resource gives are not a place's to give). Nordic is
+a base whose model lies in Skyrim's hold-city, Nordic farm or Nordic ruin folders, or whose editor id carries
+their kit prefixes (decision 0006). Results go to `out/places/shards/<place_id>/check.json`, which the new world's
+read-back (`tools/newworld/verify.py`, area `places`) reports.
 
 ## Finalise
 
