@@ -262,4 +262,4 @@ added here the day they are made, with the date and the issue.
   a bureaucratic place, and the player's play should not revolve round ledgers and documents. Concepts built on
   records, registers, counts and papers are reworked into Argonian life (the Hist, eggs, trade by water, raiding,
   ruins, beasts, kin, memory carried in speech and carving), keeping a few where a document is natural (an outsider's
-  papers).
+  papers). The rework stays faithful to canon and to the one extrapolation spine, history and faith above all: a fact other places rely on is kept and only the way it is carried changes.
