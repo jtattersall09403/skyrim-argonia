@@ -13,7 +13,7 @@ Studio Tooling: I want to access it in a browser so I can use it from my tablet.
 * Simultaneously see and navigate the 'source place' (in this case, BM&V's Helstrom) on *its* original terrain
 * Select objects in our place, move them in 3D space, rotate them, manipulate them.
 * Select objects in the source place, see info about it, and be able to tap on our place to add one to it. Also be able to remove objects and buildings and NPCs etc from our place.
-* Be able to search (text search) through all the assets used in the source place, and choose something to add to our place, then tap where to put it and then be able to manipulate it in 3D space
+* Be able to search (semantic embeddings-based indexed vector text search) through all the assets used in the source place, and choose something to add to our place, then tap where to put it and then be able to manipulate it in 3D space. Also optionally expand out search to all assets from across all sources available to us (Tropical Skyrim + mods).
 * Undo, redo, etc, all the usual types of controls
 * See all NPC placements in our place and their routine paths and what times they will be at each spot. I want to be able to optionally edit their placements and waypoints and so on if I want to.
 * All of this be super modern and user friendly and intuitive and not messy on the screen! Applying UI and UX design best practices for this kind of tooling
