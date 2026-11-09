@@ -370,12 +370,16 @@ public static class ParHash {
     foreach ($o in $OursPlugins) { $ours[$o.name.ToLower()] = 1 }
     $pandora = @{}; foreach ($gen in 'pandora-output') { if (Test-Path "$Mo2\mods\$gen") {
       Get-ChildItem "$Mo2\mods\$gen" -Recurse -File | % { $pandora[$_.FullName.Substring("$Mo2\mods\$gen\".Length).ToLower()] = 1 } } }
+    # Files a derived folder lays over every mod (DynDOLOD Resources, LOD, TexGen; decision 0014) win by design:
+    # a recorded mod file under one is the derived folder's, so it is neither compared nor counted as unrecorded.
+    $derivedSet = @{}; foreach ($d in $Derived) { foreach ($g in @(Get-ChildItem $d -Directory -EA SilentlyContinue)) {
+      foreach ($f in [IO.Directory]::EnumerateFiles($g.FullName, '*', 'AllDirectories')) { $derivedSet[$f.Substring($g.FullName.Length + 1).ToLower()] = 1 } } }
     $bad = 0; $n = 0; $todo = New-Object System.Collections.Generic.List[object]; $hits = 0
     $out = New-Object System.Collections.Generic.List[string]
     foreach ($k in $rec.Keys) {
       if ($k.StartsWith('..\')) { $f = "\\?\$Game\" + $k.Substring(3) } else { $f = "\\?\$Data\" + $k }
       $n++
-      if ($pandora[$k]) { continue }
+      if ($pandora[$k] -or $derivedSet[$k]) { continue }
       # Files a mod rewrites while the game runs (Engine Fixes' enginefixes_snct.ini, 2026-11-06): present is enough.
       if ($k -like 'skse\plugins\*_snct.ini') { if (-not (Test-Path -LiteralPath $f)) { "missing: $k"; $bad++ }; continue }
       $fi = New-Object IO.FileInfo $f
@@ -404,7 +408,7 @@ public static class ParHash {
       $rel = $f.Substring($f.IndexOf('\Data\') + 6).ToLower()
       if ($vanilla[$rel] -or $pandora[$rel] -or $rec[$rel] -or $keepSet[$rel] -or $ours[$rel] -or $rel.StartsWith('shadercache\') -or $rel.StartsWith('mcm\settings\') -or $rel -eq 'interface\controls\pc\controlmap.txt' -or
           ($rel -match '^skse\\(plugins\\[^\\]+\.ini|[^\\]+\.log)$')) { continue }  # inis and logs the plugins write at first run
-      if (@($Derived | ? { @(Get-ChildItem "$_\*\$rel" -EA SilentlyContinue).Count }).Count) { continue }  # a derived folder's (on)
+      if ($derivedSet[$rel]) { continue }  # a derived folder's (on)
       "unrecorded: $rel"; $extra++
     }
     "$n recorded files checked, $bad bad, $extra unrecorded, $($pandora.Count) Pandora outputs, $([int]((Get-Date) - $t0).TotalSeconds) s"
