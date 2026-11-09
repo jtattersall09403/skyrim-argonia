@@ -5,6 +5,8 @@ node=22.11.0 sha256=83bf07dd343002a26211cf1fcd46a9d9534219aad42ee02847816940bf61
 rtk=1.1.0 sha256=9454ad1b9489daa57ab0a9f4ebe2faaf4dc82b8a0f26c9e5135151abd7c9378d
 spriggit-cli=0.41.0 sha256=146bf173ac145b8c00c96a9b84670388dcc8819c482151963821b160b4717b5b
 mutagen-bethesda-skyrim=0.54.4 sha256=n/a
+# the place studio's mesh reader (tools/places/assets/nifdump/build.sh compiles it from source; GPL-3, never shipped)
+nifly=40584be62399c64a3cb54fd2a68466e739932f39 sha256=n/a
 py:numpy=2.5.4 sha256=n/a
 py:numba=0.68.1 sha256=n/a
 py:pillow=13.0.0 sha256=n/a
@@ -17,6 +19,15 @@ py:pyyaml=6.0.1 sha256=n/a
 py:fonttools=4.60.1 sha256=n/a
 py:boto3=1.43.121 sha256=n/a
 py:playwright=1.55.0 sha256=n/a
+# the place studio's mesh simplifier (tools/places/assets/nifglb.py)
+py:fast-simplification=0.2.0 sha256=n/a
+# the place studio's server and search (tools/places/studio, tools/places/search); the model is bge-small-en-v1.5 (MIT),
+# int8 ONNX from Xenova/bge-small-en-v1.5, pinned by sha256 in tools/places/search/embed.py
+py:aiohttp=3.14.5 sha256=n/a
+py:brotli=1.2.1 sha256=n/a
+py:onnxruntime=1.31.1 sha256=n/a
+py:tokenizers=0.23.3 sha256=n/a
+cloudflared=2026.10.7 sha256=1f99fb518b83dec2ba8d870a7cc991d82a77e6196295a3d2754ba17ab9f91872
 # the L3 UI harness (1.2): Playwright's headless shell, `python -m playwright install --only-shell chromium` (build v1187)
 chromium-headless-shell=140.0.7339.16 sha256=n/a
 # the views' bundler (1.2), npm into ~/.argonia/npm by tools/ui_harness/build.py; sha256 of the linux-x64 binary

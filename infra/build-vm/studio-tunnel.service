@@ -1,0 +1,12 @@
+[Unit]
+Description=Argonia studio tunnel: cloudflared to studio.<domain> (infra/build-vm/studio_gate.py)
+After=network-online.target
+
+[Service]
+# The connector token stays in secrets.env; it is read at start and never written into this unit.
+ExecStart=/bin/bash -c 'export TUNNEL_TOKEN=$(sed -n "s/^CLOUDFLARE_TUNNEL_TOKEN_STUDIO=//p" %h/.argonia/secrets.env); exec %h/.local/bin/cloudflared tunnel --no-autoupdate run'
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=default.target

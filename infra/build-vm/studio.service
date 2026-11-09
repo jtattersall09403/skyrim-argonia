@@ -1,0 +1,14 @@
+[Unit]
+Description=Argonia place studio (tools/places/studio), on localhost:8765 behind the Cloudflare tunnel
+After=network-online.target
+
+[Service]
+WorkingDirectory=%h/skyrim-argonia
+Environment=PYTHONUNBUFFERED=1
+Environment=PATH=%h/.argonia/venv/bin:%h/.local/bin:/usr/local/bin:/usr/bin:/bin
+ExecStart=%h/.argonia/venv/bin/python -m tools.places studio --host 127.0.0.1 --port 8765
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target

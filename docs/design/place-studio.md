@@ -113,7 +113,9 @@ it from `seat` and the ground bundle. A ground rebuild is followed by `seat`, `b
 The studio never writes place files. It keeps an ordered list of operations; undo and redo move a cursor in it; a
 save is the list up to the cursor.
 
-`edits/<save_id>.json`: `{save_id, place_id, name, at, final: bool, base:{draft_key, ground_sha}, ops:[...]}`.
+`edits/<save_id>.json`: `{save_id, place_id, name, at, rev, final: bool, base:{draft_key, ground_sha}, ops:[...]}`.
+`rev` is raised by the server on every write. The autosave is the same shape at `out/places/autosave/<place_id>.json`
+(on disk and in the private bucket, never committed).
 An op: `{n, at, op, space, call: "fault"|"taste", note?, stroke?, ...payload with before and after}`.
 
 | op | payload |
@@ -146,20 +148,64 @@ semantics; the front end's JavaScript mirror is tested against the same files.
 ## Studio API (`/api`, JSON; the front end uses nothing else)
 
 ```
-GET  /api/places                              places with a draft; each: place_id, title, source_id, similar, stamps
+GET  /api/places                              places with a draft; each: place_id, title, source_id, similar,
+                                              stamps:{draft, ground, source}
 GET  /api/bundle/<bundle_id>/...              the bundle's files as written
-GET  /api/asset/mesh?model=<path>             GLB (converted on demand; 202 + retry-after while converting)
-GET  /api/asset/tex?path=<path>&size=<n>      WebP
-GET  /api/search?q=&scope=source|all&source_id=&kind=&limit=     ranked bases with score, thumbnail url, nordic flag
-GET  /api/place/<id>/saves                    list
+GET  /api/asset/mesh?model=<path>             GLB (converted on demand; 202 + Retry-After while converting)
+GET  /api/asset/tex?path=<path>&size=<n>      WebP (the same 202 rule)
+GET  /api/asset/thumb?model=<path>            WebP thumbnail of a mesh (the same 202 rule)
+GET  /api/search?q=&scope=source|all&source_id=&kind=&limit=
+                                              {q, scope, results:[{key, edid, name, model, type, kind, nordic,
+                                              plugin, score, thumb}]}; kind may be a comma list
+GET  /api/place/<id>/saves                    [{save_id, name, at, rev, final, ops, kept: committed|pending|
+                                              disk+bucket}], newest first, the autosave among them
 GET  /api/place/<id>/saves/<save_id>          a save
-PUT  /api/place/<id>/saves/<save_id>          write a save (interim; autosave uses save_id "autosave")
+PUT  /api/place/<id>/saves/<save_id>          write a save {name, base, ops, rev}: rev is the rev the tab last read
+                                              (0 for a new save); 200 {save_id, rev, at, kept}; 409 {error,
+                                              current:{rev, at, name}} when the save moved on since (another tab)
+                                              or is final. save_id: [a-z0-9][a-z0-9._-]*; "autosave" is the autosave
 POST /api/place/<id>/finalise {save_id}       starts the chain; 202 {run_id}
-GET  /api/place/<id>/runs/<run_id>            state, step, log tail, and the report when done
+GET  /api/place/<id>/runs/<run_id>            {run_id, save_id, state: starting|running|done|failed, step, rc,
+                                              log (tail), report (markdown, when done)}
 GET  /api/place/<id>/seat?x=&y=               ground height, water height, slope at a point (the same code as seat)
-POST /api/heartbeat                           an open tab; the server holds the machine awake while these arrive
-GET  /api/status                              ground sha, deployed sha, match, versions
+POST /api/heartbeat                           an open tab, every 60 s; {held, started, release_after_s}
+GET  /api/status                              {ground_sha, deployed_sha, match, error?, versions:{studio, repo_head,
+                                              python, aiohttp, search_model, search_rows}, awake:{job_alive}}
 ```
+
+Errors are `{error}` with a plain-English message. A part not built yet answers 503. Bundle, web and asset files
+carry ETags, honour range requests, and are sent brotli- or gzip-compressed when the browser accepts it and no
+range is asked.
+
+**The server** (`tools/places/studio`, aiohttp) calls each other part through one function
+(`tools/places/studio/links.py`): `tools.places.assets.mesh(model)`, `tex(path, size)` and `thumb(model)` return
+the converted file's path, or None once conversion has started; `tools.places.seat.ground_for(place_id).at(x, y)`;
+`tools.places.ground_check.status()` returns `{ground_sha, deployed_sha, match}`. Finalise runs under the job
+name `places-finalise-<run_id>` with `ARGONIA_RUN_ID` set; the chain writes `out/places/runs/<run_id>/state.json`
+`{state, step}` as it goes and `report.md` at the end; the server adds `run.json`.
+
+**Saves.** Writes are atomic. A named save is committed and pushed by path (`tooling/lane_commit.sh`) after each
+write, so it survives a stopped machine and a lost disk; the autosave goes to the private bucket at most once a
+minute.
+
+**Search** (`tools/places/search`): `python -m tools.places search build` embeds each catalogue base
+(`out/places/catalogue/bases.jsonl`) with bge-small-en-v1.5 (MIT; int8 ONNX on CPU, 34 MB in
+`~/.argonia/models`) into `out/places/search/`, re-embedding only keys whose text changed. The text is the base's
+name, editor id and model path split into words, its record type, and a short gloss of modders' words
+(boardwalk: wooden walkway). A query scores cosine similarity plus exact (editor id or name equal to the query)
+and prefix boosts, so a typed name always comes first. `scope=source` keeps the bases of
+`bundles/src.<source_id>/bases.jsonl`; a base's `kind` is its catalogue `kind`, else one derived from its type.
+
+**Awake.** Each heartbeat touches `~/.argonia/state/studio-heartbeat` and starts the job_guard job
+`studio-awake` if it is not alive; the job ends five minutes after the last heartbeat (and every four hours, the
+next heartbeat starting a fresh one). While it lives the idle-stop sees a job and keep-busy holds the CPU above the
+owner's alarm, which then stops the machine about 30 minutes after the last tab closes. The alarm is never touched.
+
+**Hosting.** `https://studio.<domain>` (the Moonlight gate's zone): the named tunnel `argonia-build` to
+`localhost:8765`, behind Cloudflare Access for the owner's email only; the VM opens no port.
+`infra/build-vm/studio-install.sh` installs the pinned cloudflared and the user units `argonia-studio` and
+`argonia-studio-tunnel` (started at boot, restarted on failure); `infra/build-vm/studio_gate.py apply` makes the
+tunnel, DNS and Access app and `prove` checks both sides of the gate.
 
 ## Build
 
