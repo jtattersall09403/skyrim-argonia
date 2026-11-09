@@ -321,8 +321,10 @@ def run(plugin: Path, out: Path, do_dump: bool = True) -> int:
 
     @section(rep, "navmesh")
     def _nav():
+        # margin_cells.json and scope_cells.json are in map cells (8192 units, two Skyrim cells a side)
         margin = {tuple(c) for c in jload(OUT / "margin_cells.json")}
-        need = sorted(k for k in land if k not in margin)
+        scope = {tuple(c) for c in jload(OUT / "scope_cells.json")}
+        need = sorted(k for k in land if (k[0] // 2, k[1] // 2) in scope and (k[0] // 2, k[1] // 2) not in margin)
         miss = [k for k in need if int(cells[k]["navm"] or 0) == 0]
         rep.row("navmesh", "NAVM on every non-margin land cell", f"{len(need) - len(miss)}/{len(need)}", not miss,
                 f"missing e.g. {miss[:4]}" if miss else "")
@@ -337,7 +339,11 @@ def run(plugin: Path, out: Path, do_dump: bool = True) -> int:
         rep.row("navmesh", "0 seam faults", s.get("mismatched", 0) + s.get("unmatched_segments", 0),
                 s.get("mismatched", 0) + s.get("unmatched_segments", 0) == 0)
         comp = p.get("components", {})
-        rep.row("navmesh", "connectivity: main landmass share >= 0.99", comp.get("main_share"), (comp.get("main_share") or 0) >= 0.99)
+        # islands across water cannot join the main component; the share is of the main landmass's walkable area
+        main_m2, cut_m2 = comp.get("main_m2") or 0, comp.get("cut_off_m2") or 0
+        share = round(main_m2 / (main_m2 + cut_m2), 4) if main_m2 else None
+        rep.row("navmesh", "connectivity: main landmass share >= 0.99", share, (share or 0) >= 0.99,
+                f"{comp.get('islands')} islands ({comp.get('islands_m2')} m2) apart; {comp.get('cut_off_on_a_main_landmass')} pieces cut off")
         pa = p.get("paths", {})
         rep.row("navmesh", f"settlement-pair paths ({PATHS_MIN})", f"{pa.get('ok')}/{pa.get('pairs')}",
                 (pa.get("pairs") or 0) >= PATHS_MIN and pa.get("ok") == pa.get("pairs"))

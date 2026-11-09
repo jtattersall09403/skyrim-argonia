@@ -532,14 +532,14 @@ def place_cell(cx: int, cy: int, pre: list[dict]) -> tuple[list[dict], dict]:
     classes = np.array([P.class_of[b] for b in bids])
     keep = (xs >= x0 + EDGE_M * UPM) & (xs <= x0 + CELL - EDGE_M * UPM) & (ys <= y1 - EDGE_M * UPM) & (ys >= y1 - CELL + EDGE_M * UPM)
     tally["candidates"] += len(cand)
+    xs = np.round(xs, 1); ys = np.round(ys, 1)  # as the shard holds them; every test below reads these
     keep &= W.at("habitat", xs, ys) == his
     flags = W.at("flags", xs, ys)
     keep &= (flags & 2) == 0
-    xs = np.round(xs, 1); ys = np.round(ys, 1)  # as the shard holds them
     t1, t2 = W.tri_grounds(xs, ys)
     z0 = (t1 + t2) / 2  # within the twist of the engine's ground whichever diagonal it uses
     twist = np.abs(t1 - t2) / 2 / UPM
-    depth = -z0 / UPM
+    depth = -np.minimum(t1, t2) / UPM  # the deeper diagonal: wet under either triangulation counts as wet
     kind = W.at("kind", xs, ys)
     flows = P.kind_flows[kind]
     sea = P.kind_sea[kind]
