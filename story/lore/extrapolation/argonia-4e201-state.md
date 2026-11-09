@@ -649,3 +649,117 @@ it. The horror lives in **specific named places** (Veeskhleel-Tzel, Mazzatun,
 Deepmire, the Rose, Stillrise, the drowned quarter of Lilmoth) so that it stays
 frightening when it arrives. This governs music, light, dialogue register and
 encounter design across the whole build.
+
+---
+
+## 10. The spine — one timeline and the facts every place agrees with
+
+Added 2026-11-09 for the new world's place records (`newworld/sources/research/`). **Binding on every place and
+region record**: a record that disagrees with this section is wrong, and the known disagreements are listed for
+the batch editors in `newworld/sources/research/spine-conflicts.json`. Nothing here overrides §1–§9; it fixes
+their dates and holders in one place. UESP pages are cited as `Lore:<Name>` (read through the API, 2026-11-09).
+
+### 10.1 The timeline
+
+| Date | Event | Tier, source | What places say about it |
+|---|---|---|---|
+| Dawn Era | The Hist's land sinks into the sea but for one corner. | `CANON_EXPLICIT`, Lore:Hist | Myth, told as myth. |
+| after 1E 198 | Barsaebic Ayleids settle the north and east (Silyanorn, Archon, Thorn, Loriasel). | `CANON_EXPLICIT`, Lore:Black Marsh | Ayleid ruins are 1E work, sick ground to Argonians. |
+| c. 1E 1033 | Red Bramman's pirate kingdom on Topal Bay's mangrove river. | `CANON_EXPLICIT`, Lore:Soulrest | Pirate memory of the south-west. |
+| 1E 2811–2837 | The Blackwater War, the Battle of Argonia, the Great Burn (1E 2828). | `CANON_EXPLICIT`, Lore:Black Marsh | Helstrom was never taken. |
+| 2E | Second Empire, Potentate Versidue-Shaie; Blackrose Prison raised. | `CANON_EXPLICIT`, Lore:Lilmothiit | |
+| **2E 560–603** | **The Knahaten Flu** kills the Kothringi and every non-Argonian people in the province (Cantemiric Velothi, Dunmer dissident settlements). The Lilmothiit had already withdrawn inland toward Blackrose over generations; the Flu finished the remnant. | `CANON_EXPLICIT`, Lore:Knahaten Flu, Lore:Kothringi, Lore:Lilmothiit | **No Kothringi, Velothi or Lilmothiit lives or builds after 2E 603.** Their towns stood empty or were resettled by Argonians, who kept the names. |
+| 2E 572–582 | Heita-Meen frees Thorn from House Dres; the Pact's Black Marsh, Vicecanons at Stormhold. | `CANON_EXPLICIT`, Lore:Black Marsh, Lore:Thorn | History only: no 2E state is present in 4E 201. |
+| 2E 857–896 | Tiber Septim's conquest; the Third Empire. | `CANON_EXPLICIT` | |
+| 3E 288 | Uriel Septim V sails the Padomaic against Akavir (lost at Ionith, 3E 290). | `CANON_EXPLICIT`, Lore:Akavir | The one canon reason for a Septim warship wreck off the east coast. |
+| 3E 378–399 | The Maran mission at Umpholo dies; the Imperial Simulacrum's city kings. | `CANON_EXPLICIT`, Lore:Kingdom of Black Marsh | |
+| 3E 396 | The Arnesian War; Morrowind takes Arnesia; Argonians reclaim it from 3E 432. | `CANON_EXPLICIT`, Lore:Thorn | Dres slavers on the Thorn coast are late-3E at the latest. |
+| 3E 427 | The interior tribes burn the Soulrest gold and timber concessions. | `CANON_EXPLICIT`, Lore:Soulrest | The mines are derelict ever since. |
+| **3E 433** | **The Oblivion Crisis.** Gates open in Black Marsh; the Argonians pour into the Deadlands and Dagon's lieutenants close them. The An-Xileel rise from it. | `CANON_EXPLICIT`, Lore:An-Xileel, Lore:Oblivion Crisis | A place may carry a Daedric scar from 3E 433; no invented "storms". |
+| **4E 5** | **The Red Year**: Red Mountain erupts, Vvardenfell is wrecked. | `CANON_EXPLICIT`, Lore:Red Year | |
+| **4E 5–10** | **The secession.** Black Marsh leaves the Empire; the An-Xileel drive out the Imperial forces (Lilmoth's Old Imperial Quarter looted). Around 4E 6 the An-Xileel invade southern Morrowind, are pushed back by House Redoran, and keep a strip of it. | `CANON_EXPLICIT`, Lore:Fourth Era, Lore:An-Xileel, Lore:Black Marsh | **The Legion, the Imperial fleet and the East Empire Company leave at the secession, not after 4E 48.** Short form for records: "after the secession" (or "since 4E 6" for the Morrowind strip). |
+| 4E 8 | Lilmoth's second Hist grows and cuts itself off from the others. | `CANON_EXPLICIT`, Lore:Hist | |
+| 4E 22–29 | The Thalmor take Summerset, then Valenwood; the Aldmeri Dominion re-forms. | `CANON_EXPLICIT`, Lore:Fourth Era | Explains Altmer and Maormer warships in the Southern Sea. |
+| 4E 47 | Prime Minister Hierem's secret visit to the An-Xileel at Lilmoth. A secret visit: there is no Imperial presence left to make it openly. | `CANON_EXPLICIT`, Lore:An-Xileel | |
+| **4E 48** | **Umbriel.** Summoned by the An-Xileel through Lilmoth's rogue Hist; Lilmoth destroyed, Gideon's Lukiul killed, Stormhold lightly damaged, the island path through Murkmire to Scathing Bay laid waste. | `CANON_EXPLICIT`, Lore:Umbriel, Lore:Lilmoth, Lore:Gideon, Lore:Stormhold | The catastrophe of the **Argonian** cities and the assimilated, not of the Empire, which was already gone. The interior tribes were untouched and never left. |
+| 4E 48–c. 100 | The resettlement: Lilmoth rebuilt smaller, delta and island villages cleared, the An-Xileel movement broken and its offices kept by a successor administration. | `EXTRAPOLATED`, §1, §4 | "Cleared in the generations after 4E 48" is the standard phrase for new hamlets. |
+| 4E 98–100 | The Void Nights: the moons vanish for two years. | `CANON_EXPLICIT`, Lore:Fourth Era | Available as a dated memory; not required. |
+| 4E 115 | Elsweyr becomes Anequina and Pelletine, Dominion client states. | `CANON_EXPLICIT`, Lore:Fourth Era | |
+| 4E 150 | Argonian raiders land on Solstheim and are thrown back by the Redoran. | `CANON_EXPLICIT`, Lore:Fourth Era | |
+| 4E 171–175 | The Great War. Black Marsh is not a party; Naarifin's Dominion army seizes Leyawiin in 4E 171–172, which shuts the Blackwood Road trade for those years. | `CANON_EXPLICIT`, Lore:Great War; consequence `EXTRAPOLATED` | The only Great War effect on a place here is that closure. |
+| 4E 187 | The Shadowscale school at Archon closes. | `CANON_EXPLICIT`, Lore:Archon | |
+| **4E 201** | The present. The last known living Shadowscale dies this year. | `CANON_EXPLICIT`, Lore:Shadowscale | |
+
+The **Mages Guild** dissolved before 4E 48 (Lore:Mages Guild): no guild hall stands in 4E 201; a former guild
+building is a ruin or has another use. The 3E city kings (Lore:Kingdom of Black Marsh) are history. UESP's
+Lore:Black Marsh also reports a king served by the Shadowscales "in the late 2nd century" of the Fourth Era: the
+spine reads this as the Shadowscales' own title for the empty Scalded Throne (§1), held by no one who rules
+(`EXTRAPOLATED`); no place shows a reigning king.
+
+### 10.2 Who holds what in 4E 201
+
+- **The Archwardens** (the An-Xileel successor administration, §1) `EXTRAPOLATED`: a formal seat at Helstrom that
+  Helstrom ignores; working offices at Stormhold and Archon; the frontier screen facing Morrowind; customs at the
+  recognised ports; and the old Imperial '-moth' forts on the trunk routes and the coasts, garrisoned by ex-Archein
+  families who keep the keys **in the Archwardens' name** (the Warden Marches culture). Their revenue is **tolls at
+  crossings and customs at ports**, nothing else: no head-tax, no tax-farmers, no collectors walking the villages,
+  no census. **No navy and no cutters** (§2.3): on the water the state's arm is the chartered privateer of the
+  Archon coast. Their writ ends at the water's edge, the fort's walls and the port's quay.
+- **City governments** (§4): Helstrom, an assembly of naheesh and tree-minders; Stormhold and Thorn, Vicecanons
+  (Thorn's with the saltrice field-holders); Gideon, a civic council in the Governor's Mansion; Lilmoth, Archon and
+  Soulrest, merchant councils (Soulrest's contested); Blackrose, whoever holds the island core; Alten Corimont, a
+  captain of the port. **Gideon and Lilmoth deny the successor state outright**; the others deal with it as much
+  as they must.
+- **Tribes** rule everything else, through tree-minders, naheesh and a Hist (§2.1, §3). The interior was never
+  emptied by Umbriel: its tribes did not "return", they stayed.
+- **The Empire is absent** since the secession: no Legion, no fleet, no governor, no Company. Imperial *people*
+  remain (Gideon's Nibenese families, Soulrest's administrators' heirs). **Morrowind** holds its side of the border
+  and wants no war; Argonians patrol their strip of southern Morrowind. **The Dominion** has no presence; its
+  interest is deniable and at arm's length (§5).
+
+Holdings by region (the region records' cultures, aligned to the above):
+
+| Region | Holders in 4E 201 |
+|---|---|
+| Valley of Storms, Barsaebica | Stormhold's Vicecanons; the Warden forts at Willowmoth and the border crossing; the Sedge-Wardens (Veesa-Teeleel) guarding the Ayleid ruins. |
+| Blackwood, Nha-Enasa, Kotherra Mangroves | Gideon's council on the dry land; the Hutan-Tzel and Naka-Desh river-folk; Warden customs at Rustmoth and Silvermoth on the roads; Sul-Xan raiders in the dead towns. |
+| Topal Bay, Aphon Isle, Banujha Basin, Cape Percar, Sea of Mists | Soulrest's merchant council and its licensed camps; the Mine-Burners (Banu-Jaleel) in the basin; a Warden customs watch on Aphon; outlaw crews on the eastern shore. |
+| Murkwood, Lake Ulaish, Aunike Ridge, Ultherus Swamp | Helstrom's Root-Folk and the interior tribes (Hutan-Tzel, Paatru, Agaceph); the Chime-Keepers of the Kothringi-named towns; Truowa's council; the Warden toll at Gysilla on the lake. |
+| Tulmek Washes | Blackrose's island core; the Blackguards' heirs at the Rose. |
+| Althii Archipelago, Benthic Yobesh, Nushara Bayou | Lilmoth's merchant council and its delta villages; the Three Waters Tribe; Warden coast forts that Lilmoth refuses. |
+| Arnesian Jungle, Chixathe Mesa, Hatandros Bight | Thorn's Vicecanons and field-holders; the Stone-Sleepers of Tsonac; the Warden forts Thornmoth and Chalkmoth (the south end of the frontier screen). |
+| Okuwun-Rahei, Padomaic coast, Skeith Isle | The Aroxhu clay-mound confederacy; Archon's harbour folk and council; the Spray-Folk of Seafalls; Skeith's half-chartered pirates and smugglers. |
+
+### 10.3 Trade, and why outsiders or their wrecks are here
+
+`CANON_DERIVED` from §5–§6 unless marked. Every foreign wreck or visitor carries one of these reasons, dated
+inside the timeline above.
+
+| From | Route | What and why | Wrecks or people it explains |
+|---|---|---|---|
+| **Morrowind** | The Tear road at Thorn; the Stormhold border river; the sea from Tear. | Saltrice, crystals, hides south; Dunmer goods and tools north. Before 4E 5, Dres slavers (`CANON_EXPLICIT`, Lore:Thorn). | Dunmer traders at Thorn and Stormhold; slaver wrecks dated before the Red Year. |
+| **Cyrodiil** | The Blackwood Road, Leyawiin to Gideon (closed in the monsoon and in 4E 171–172). | Herbs, hunting, Onkobra pottery out; cloth, metal, tools in. | Imperial traders at Gideon. Imperial warships and Company ships only before the secession. |
+| **Elsweyr** | By sea from Senchal through Topal Bay and the Southern Sea; Khajiit on the Leyawiin road. | Moon sugar in transit (illegal), sailors' trade; most Southern Sea seafarers are Khajiit (Lore:Black Marsh). | Khajiit crews and smugglers' sloops, any date. |
+| **Valenwood** | By sea along the Southern Sea to Soulrest (`EXTRAPOLATED`). | Bosmer seafarers; Valenwood silk out, and the cut timber the Green Pact forbids Bosmer to fell in; since 4E 29 under the Dominion, so its ships are watched. | Bosmer sailors at Soulrest; a Valenwood coaster. |
+| **Summerset** | By sea only; no trade the state admits (`EXTRAPOLATED`). | Altmer and Maormer warships patrol the Southern Sea, and pirates hide from them (Lore:Black Marsh); Thalmor agents come as scholars or buyers. | A Dominion warship or an Altmer scholar's boat, rare and unexplained. |
+| **Akavir** | None. | Uriel V's fleet, 3E 288. | The one Septim man-of-war in deep water off the east. |
+
+### 10.4 What is lost, and since when
+
+| Lost | Since | Source |
+|---|---|---|
+| Ayleid halls | the 1E (the Ayleids' fall) | `CANON_EXPLICIT`, Lore:Black Marsh |
+| Kothringi, Velothi and Dunmer-dissident towns; Lilmothiit dens | 2E 560–603, the Flu (Lilmothiit coastal dens earlier, by withdrawal) | `CANON_EXPLICIT`, Lore:Knahaten Flu, Lore:Lilmothiit |
+| Soulrest's mines and concessions | 3E 427, burned by the tribes | `CANON_EXPLICIT`, Lore:Soulrest |
+| Archein plantations | already derelict in the 3E | `CANON_DERIVED`, §4 Gideon |
+| Imperial forts, posts and lighthouses | the secession (4E 5–10); most re-held by the Archwardens, the rest empty since | `EXTRAPOLATED` from Lore:Fourth Era |
+| Old Lilmoth, Gideon's Lukiul quarters, the Murkmire villages on Umbriel's path | 4E 48 | `CANON_EXPLICIT`, Lore:Umbriel |
+| The Shadowscale school | 4E 187 | `CANON_EXPLICIT`, Lore:Archon |
+
+### 10.5 How a record uses the spine
+
+- Date every event from the table; never invent a dated event outside it. A place's own history is undated ("in
+  the generations after 4E 48", "before the Flu") unless canon dates it.
+- An abandonment of an Imperial building is "at the secession"; an Argonian loss is 4E 48 only where the place
+  lay in Murkmire, Lilmoth, Gideon or Stormhold country (§9).
+- A holder is one of the holders in 10.2; a foreigner or wreck has a reason from 10.3.

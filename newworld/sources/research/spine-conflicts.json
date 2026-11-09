@@ -1,0 +1,122 @@
+{
+ "conflicts": [
+  {
+   "topic": "When the Empire left",
+   "resolution": "The Legion, the Imperial fleet and the East Empire Company left at the secession, 4E 5-10 (Lore:Fourth Era; Lore:An-Xileel: the An-Xileel defeated the Imperial forces before 4E 48; Hierem's 4E 47 visit was secret). Replace 'after 4E 48' / 'until 4E 48' for any Imperial departure with 'at the secession'; Imperial forts were re-held by the Archwardens or left empty from then.",
+   "place_ids": [
+    "yalugo",
+    "fort-thornmoth",
+    "fort-chalkmoth",
+    "fort-willowmoth",
+    "slough-point",
+    "fort-rustmoth",
+    "fort-swiftmoth",
+    "fort-reedmoth",
+    "southwatch-keep",
+    "soulrest",
+    "imperial-ruin-2-m109",
+    "fort-silvermoth",
+    "imperial-ruin-m19-m82",
+    "imperial-ruin-m25-m85",
+    "kotherra-mangroves",
+    "topal-bay"
+   ]
+  },
+  {
+   "topic": "Secession date shorthand",
+   "resolution": "'4E 6' is the canon date of the invasion of southern Morrowind (Lore:An-Xileel), not of the province closing. Write 'at the secession' for Imperial and Company departures; keep '4E 6' only for the Morrowind strip.",
+   "place_ids": [
+    "rainbreaker-keep",
+    "vicrium",
+    "seafalls",
+    "skeith-isle",
+    "okuwun-rahei"
+   ]
+  },
+  {
+   "topic": "Oblivion Crisis in Black Marsh",
+   "resolution": "Canon 3E 433: gates opened and the Argonians poured into the Deadlands (Lore:An-Xileel). No 'Oblivion Crisis storms'; no Legion recall dated to it. Rustmoth: 'not Imperial since the secession'.",
+   "place_ids": [
+    "fort-rustmoth",
+    "kothringi-ruin-m25-m80"
+   ]
+  },
+  {
+   "topic": "Kothringi after the Flu",
+   "resolution": "No Kothringi lives or serves after 2E 603 (Lore:Knahaten Flu). Eurydike's knights served a Second-Era garrison and died in the Flu; the hall has stood empty since.",
+   "place_ids": [
+    "kothringi-ruin-m25-m80"
+   ]
+  },
+  {
+   "topic": "Lilmothiit fate",
+   "resolution": "Lilmothiit withdrew from the coasts inland toward Blackrose over generations, and the Flu finished the remnant (Lore:Lilmothiit). A den is 'left in the long withdrawal' or 'emptied by the Flu', never a Flu-time flight that implies survivors.",
+   "place_ids": [
+    "lilmothiit-ruin-1-m107",
+    "lilmothiit-ruin-10-m103",
+    "lilmothiit-ruin-m6-m104"
+   ]
+  },
+  {
+   "topic": "Reach of the successor state",
+   "resolution": "Archwardens raise revenue only by tolls at crossings and customs at ports (spine 10.2); no tax-farmers, collectors or census in the villages. Cut those; a village's quarrel with the state is over a toll or a fort.",
+   "place_ids": [
+    "hixinoag",
+    "gul-tej"
+   ]
+  },
+  {
+   "topic": "No navy",
+   "resolution": "Argonia has no navy and no warden cutters or patrol boats (state \u00a72.3). A fleeing smuggler runs from a chartered Archon privateer or a rival crew.",
+   "place_ids": [
+    "shipwreck-35-m71",
+    "shipwreck-m36-m95"
+   ]
+  },
+  {
+   "topic": "Fort holders",
+   "resolution": "Warden forts are held by ex-Archein families garrisoning them in the Archwardens' name (Warden Marches). Gysilla's history and the lake's present must say the same holder.",
+   "place_ids": [
+    "fort-gysilla",
+    "lake-ulaish"
+   ]
+  },
+  {
+   "topic": "Interior tribes after 4E 48",
+   "resolution": "Umbriel's path missed the interior (state \u00a73): its tribes never left, so nothing was 'held since the tribes returned'. Date the station from the tribe's own use, undated.",
+   "place_ids": [
+    "outpost-1-m75",
+    "outpost-m17-m97"
+   ]
+  },
+  {
+   "topic": "Helstrom's seat tier",
+   "resolution": "The state's formal seat at Helstrom is EXTRAPOLATED (state \u00a71), not CANON; only 'capital' in the Simulacrum is canon (Lore:Kingdom of Black Marsh). Retier the note.",
+   "place_ids": [
+    "helstrom"
+   ]
+  },
+  {
+   "topic": "Uriel V's Akavir fleet",
+   "resolution": "The invasion sailed in 3E 288 (Lore:Akavir), not the 3E 270s.",
+   "place_ids": [
+    "shipwreck-42-m78",
+    "padomaic-ocean"
+   ]
+  },
+  {
+   "topic": "Mages Guild in 4E 201",
+   "resolution": "The Mages Guild dissolved before 4E 48 (Lore:Mages Guild). Thorn's named places are 3E (Simulacrum); the old guild hall is empty or put to another use.",
+   "place_ids": [
+    "thorn"
+   ]
+  },
+  {
+   "topic": "The Great War",
+   "resolution": "Black Marsh was not a party to the Great War (4E 171-175); its one effect here is the Leyawiin closure. Date Ysan's founding to the settled period after 4E 48, not to the Great War.",
+   "place_ids": [
+    "ysan"
+   ]
+  }
+ ]
+}
