@@ -186,3 +186,7 @@ ul.plain { margin: 4px 0 12px; padding-left: 18px; color: var(--muted); line-hei
   #stage:has(#panel:not([hidden])) #views { margin-right: calc(min(360px, 40vw) + 16px); }
 }
 .seg { flex-wrap: wrap; }
+
+.detail-opt { display: flex; gap: 10px; align-items: flex-start; padding: 10px 0; min-height: 44px; }
+.detail-opt input { width: 22px; height: 22px; margin: 2px 0 0; }
+.detail-now { color: var(--muted, #666); font-size: 0.9em; }

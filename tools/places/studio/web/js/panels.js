@@ -499,6 +499,24 @@ export class Panels {
     if (code) out.push(`<pre class="log">${esc(code.join('\n'))}</pre>`);
     return el(`<div class="report">${out.join('') || '<p>The report is empty.</p>'}</div>`);
   }
+  // ---------- settings: detail, remembered on this device ----------
+  settings() {
+    const o = $('#settings'), G = this.app.governor; o.hidden = false;
+    const opt = (v, t, d) => `<label class="detail-opt"><input type="radio" name="detail" value="${v}"${G.mode === v ? ' checked' : ''}><span><strong>${t}</strong> ${d}</span></label>`;
+    o.innerHTML = `<div class="sheet" role="dialog" aria-label="Settings"><h2>Detail</h2>
+      <p>How much the views draw. Less detail keeps the views smooth on a slower tablet.</p>
+      ${opt('auto', 'Automatic', 'adjusts by itself to stay smooth.')}${opt('high', 'High', 'everything, as far as it goes.')}
+      ${opt('medium', 'Medium', 'plants nearer, the other view drawn less often.')}${opt('low', 'Low', 'the least, for a slow tablet.')}
+      <p class="detail-now"></p><button class="primary">Done</button></div>`;
+    o.querySelectorAll('input').forEach((i) => { i.onchange = () => { G.setMode(i.value); this.detailShown(); }; });
+    o.querySelector('button').onclick = () => { o.hidden = true; };
+    this.detailShown();
+  }
+  detailShown() {
+    const p = document.querySelector('#settings .detail-now'), G = this.app.governor; if (!p || !G) return;
+    const words = ['lowest', 'low', 'reduced', 'medium', 'high', 'highest'];
+    p.textContent = `Drawing at ${words[G.level]} detail${G.avg ? `, about ${Math.round(1000 / Math.max(G.avg, 1))} frames a second while moving` : ''}.`;
+  }
   // ---------- first run ----------
   intro() {
     const o = $('#intro'); o.hidden = false;

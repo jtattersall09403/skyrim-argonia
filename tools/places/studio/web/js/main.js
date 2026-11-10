@@ -11,6 +11,7 @@ import { Tools } from './tools.js';
 import { People } from './people.js';
 import { Panels, plainKind } from './panels.js';
 import { segDist, clock } from './geom.js';
+import { Governor } from './governor.js';
 
 const VEG = new Set(['tree', 'plant', 'groundcover']);
 const $ = (s) => document.querySelector(s);
@@ -81,7 +82,18 @@ class Studio {
     this.showSpace(this.ours, 'exterior', true);
     const looks = this.place.needs_look || [];
     $('#look-btn').hidden = !looks.length; $('#look-btn .look-n').textContent = looks.length;
+    // link every shader the scene uses now, behind the loading screen, so no link stalls a later touch
+    this.loading('Preparing the views');
+    for (const v of [this.ours.view, this.src.view]) {
+      v.updateCamera(); for (const o of v.objects || []) o.cull(v.camera);
+      // hidden meshes (stand-ins, empty instances) are shown for the link: compile skips what is not visible
+      const hid = []; v.scene.traverse((o) => { if (!o.visible) { hid.push(o); o.visible = true; } });
+      try { await v.renderer.compileAsync(v.scene, v.camera); } catch { v.renderer.compile(v.scene, v.camera); }
+      for (const o of hid) o.visible = false;
+      v.renderer.render(v.scene, v.camera); await new Promise((r) => requestAnimationFrame(r));
+    }
     this.loadMs = Math.round(performance.now() - t0);
+    this.interactiveAt = performance.now();
     this.loading(false);
     await this.panels.resumeAutosave();
     this.tools.use('select');
@@ -307,6 +319,7 @@ class Studio {
     $('#undo').onclick = () => this.log?.undo(); $('#redo').onclick = () => this.log?.redo();
     $('#finalise-btn').onclick = () => this.panels.finalise();
     $('#look-btn').onclick = () => this.panels.lookPanel();
+    $('#settings-btn').onclick = () => this.panels.settings();
     $('#link').onclick = (e) => { this.linked = !this.linked; e.currentTarget.setAttribute('aria-pressed', this.linked); if (this.linked) this.cameraMoved(this.ours.view); };
     $('#swap').onclick = () => { const v = $('#views'); v.dataset.swapped = v.dataset.swapped === 'true' ? 'false' : 'true'; };
     document.querySelectorAll('.view .fs').forEach((b) => { b.onclick = () => { const v = b.closest('.view'); v.classList.toggle('full'); b.setAttribute('aria-pressed', v.classList.contains('full')); }; });
@@ -362,8 +375,14 @@ class Studio {
   }
   toast(text, ms = 3500) { const t = $('#toast'); t.textContent = text; t.hidden = false; clearTimeout(this.toastT); this.toastT = setTimeout(() => { t.hidden = true; }, ms); }
   loop() {
+    this.governor = new Governor([this.ours.view, this.src.view], { onChange: () => this.panels?.detailShown?.() });
+    let n = 0;
     const tick = (now) => {
-      const a = this.ours.view.render(now), b = this.src.view.render(now);
+      // the view in use draws every frame it changes; the other, while the first moves, every srcEvery-th frame
+      const main = this.focused === this.src.view ? this.src.view : this.ours.view, other = main === this.ours.view ? this.src.view : this.ours.view;
+      const t0 = performance.now(), a = main.render(now);
+      const b = (!a || ++n % this.governor.srcEvery() === 0) ? other.render(now) : false;
+      this.governor.frame(now, a || b, performance.now() - t0);
       if (a || b) this.frames = (this.frames || 0) + 1;
       requestAnimationFrame(tick);
     };
@@ -371,7 +390,7 @@ class Studio {
   }
   stats() {
     return { ours: this.ours.view.frameStats(), src: this.src.view.frameStats(), loadMs: this.loadMs,
-      drawn: { world: this.ours.world?.drawn, place: this.ours.place?.drawn, src: this.src.layer?.drawn },
+      detail: this.governor.state(), drawn: { world: this.ours.world?.drawn, place: this.ours.place?.drawn, src: this.src.layer?.drawn },
       refs: { world: this.worldRefs?.length, place: this.model?.spaces.exterior?.refs.size, src: this.srcBundle?.spaces.exterior?.refs.length } };
   }
 }
@@ -417,7 +436,8 @@ function emptyDraft(id) {
     spaces: { exterior: { id: 'exterior', info: { space_id: 'exterior', type: 'exterior' }, refs: [] } }, files: {} };
 }
 function plainTexName(s) {
-  const w = String(s).split('/').pop().replace(/\.\w+$/, '').replace(/^\d+/, '').replace(/([a-z])([A-Z0-9])/g, '$1 $2').replace(/[_-]+/g, ' ').trim();
+  // land texture keys read like 'LDirt02Duplicate002': drop the L prefix, copy markers and numbers
+  const w = String(s).split('/').pop().replace(/\.\w+$/, '').replace(/^L(?=[A-Z])/, '').replace(/^L(?=(dirt|grass|mud|gravel|road|stone|sand|moss|swamp|marsh|rock|forest|field))/, '').replace(/_?duplicate\d*/ig, '').replace(/\d+/g, ' ').replace(/([a-z])([A-Z0-9])/g, '$1 $2').replace(/[_-]+/g, ' ').replace(/\s+/g, ' ').trim();
   return w ? w[0].toUpperCase() + w.slice(1).toLowerCase() : 'Path';
 }
 export function friendly(base, kind) {

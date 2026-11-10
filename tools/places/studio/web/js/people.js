@@ -13,7 +13,9 @@ export const STOP_KINDS = { home: 'At home', bed: 'Sleeping', work: 'Working', m
 export class People {
   constructor(app) {
     this.app = app; this.active = false; this.sel = null; this.armed = null; this.markers = new Map();
-    this.geo = new THREE.CapsuleGeometry(26, 110, 4, 8).rotateX(Math.PI / 2).translate(0, 0, 81);
+    // a simple standing figure turned from a profile: legs, body, shoulders, neck, head
+    const prof = [[0, 0], [22, 0], [20, 70], [26, 95], [30, 130], [12, 142], [9, 148], [17, 158], [16, 172], [9, 182], [0, 184]];
+    this.geo = new THREE.LatheGeometry(prof.map(([x, y]) => new THREE.Vector2(x, y)), 10).rotateX(Math.PI / 2);
   }
   setActive(on) { this.active = on; if (!on) { this.armed = null; } this.refresh(); }
   list() { return [...(this.app.model?.people.values() || [])]; }

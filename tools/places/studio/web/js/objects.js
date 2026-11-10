@@ -27,11 +27,20 @@ export const pickRank = (k) => PICK_RANK[k] ?? 6;
 const WRAP = { 33071: THREE.ClampToEdgeWrapping, 33648: THREE.MirroredRepeatWrapping, 10497: THREE.RepeatWrapping };
 const FLAT = (() => { const t = new THREE.DataTexture(new Uint8Array([128, 128, 255, 255]), 1, 1); t.needsUpdate = true; t.userData.flat = true; return t; })();
 const texCache = new Map(); // url -> Promise<Texture|null>
+// Detail set by the governor (governor.js): veg scales how far plants, trees, rocks and clutter are drawn,
+// density thins far vegetation (every n-th), lod scales the distance the full model is used, tex caps texture size.
+export const detail = { veg: 1, density: 1, lod: 1, tex: 4096 };
+const BM = { imageOrientation: 'none', premultiplyAlpha: 'none', colorSpaceConversion: 'none' };
 function fetchTexture(url, sampler) {
   if (!texCache.has(url)) {
     texCache.set(url, fetch(url, { credentials: 'same-origin' })
-      .then((r) => (r.ok ? r.blob() : null))
-      .then((b) => (b ? createImageBitmap(b, { imageOrientation: 'none', premultiplyAlpha: 'none', colorSpaceConversion: 'none' }) : null))
+      // the server answers a texture it lacks with 200 and X-Argonia-Missing: 1 (or 404): both are missing
+      .then((r) => (r.ok && r.headers.get('X-Argonia-Missing') !== '1' ? r.blob() : null))
+      .then((b) => (b ? createImageBitmap(b, BM) : null))
+      // textures larger than the governor's size are scaled down as they arrive (detail.tex)
+      .then((bm) => (bm && Math.max(bm.width, bm.height) > detail.tex
+        ? createImageBitmap(bm, { ...BM, resizeWidth: Math.max(1, Math.round(bm.width * detail.tex / Math.max(bm.width, bm.height))),
+          resizeHeight: Math.max(1, Math.round(bm.height * detail.tex / Math.max(bm.width, bm.height))), resizeQuality: 'medium' }) : bm))
       .then((bm) => {
         if (!bm) return null;
         const t = new THREE.Texture(bm); t.flipY = false; t.anisotropy = 2;
@@ -118,10 +127,12 @@ function boxMaterial(kind, ghost) {
   if (!boxMats.has(k)) {
     boxMats.set(k, ghost
       ? new THREE.MeshBasicMaterial({ color: '#d9534f', transparent: true, opacity: 0.28, depthWrite: false })
-      : new THREE.MeshLambertMaterial({ color: KIND_COLOUR[kind] || '#999' }));
+      // not yet loaded: a faint ghost of the bounds, never an opaque block
+      : new THREE.MeshBasicMaterial({ color: KIND_COLOUR[kind] || '#999', transparent: true, opacity: 0.07, depthWrite: false }));
   }
   return boxMats.get(k);
 }
+const THIN = new Set(['tree', 'plant', 'groundcover', 'rock', 'clutter']);
 const tmpM = new THREE.Matrix4(), tmpV = new THREE.Vector3(), boundsM = new THREE.Matrix4();
 
 // Models that have arrived wait here and are switched on a few at a time, their textures sent to the GPU first,
@@ -199,7 +210,9 @@ class Group {
     // and sheets over the land, so they stay unseen (still listed and pickable)
     if (this.fx) { this.box.visible = false; this.box.count = 0; return 0; }
     const [near, far] = RANGE[this.kind] || RANGE.default;
-    const scale = this.layer.rangeScale;
+    const thin = THIN.has(this.kind), scale = this.layer.rangeScale * (thin ? detail.veg : 1);
+    // plants, trees and rocks use their light model all the way out once it has arrived: no stand-ins
+    const nearD = (LIGHT.has(this.kind) && this.full ? far : near) * scale * (thin ? detail.lod : 1);
     let nf = 0, nb = 0, nearest = Infinity;
     for (let i = 0; i < this.refs.length; i++) {
       const m = this.matrices[i];
@@ -208,8 +221,9 @@ class Group {
       if (d > far * scale + this.radius) continue;
       sphere.center.copy(tmpV); sphere.radius = this.radius * (this.refs[i].scale ?? 1) * 1.8 + 50;
       if (!frustum.intersectsSphere(sphere)) continue;
+      if (thin && detail.density > 1 && d > near * scale * 0.5 && i % detail.density) continue;
       nearest = Math.min(nearest, d);
-      if (d < near * scale && this.full) { for (const fm of this.full) fm.setMatrixAt(nf, m); nf++; }
+      if (d < nearD && this.full) { for (const fm of this.full) fm.setMatrixAt(nf, m); nf++; }
       else { tmpM.multiplyMatrices(m, this.boxLocal); this.box.setMatrixAt(nb++, tmpM); }
     }
     // an empty instanced mesh still costs a draw setup: hide it
