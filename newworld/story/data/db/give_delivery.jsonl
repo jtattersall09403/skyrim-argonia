@@ -360,7 +360,7 @@
 {"place_id":"guxal","give_seq":7,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (treasure: a dead hunter's cache in a root hollow on the jungle path)"}
 {"place_id":"helstrom","give_seq":0,"seq":0,"by":"person","person_id":"helstrom.C2855503QH3SHVRJDJSG1E9MKM","status":"delivered","why":"Cheeval-Xu (resident) gives it (people.jsonl services)"}
 {"place_id":"helstrom","give_seq":1,"seq":0,"by":"person","person_id":"helstrom.YFMTJK20VGQ52AK51GM46YJQYR","status":"delivered","why":"Poles-Upriver (boatman) gives it (people.jsonl services)"}
-{"place_id":"helstrom","give_seq":2,"seq":0,"by":"person","person_id":"helstrom.FSF6529VRX65YHFS9SDR8JD794","status":"delivered","why":"Counts-Twice (merchant) gives it (people.jsonl services)"}
+{"place_id":"helstrom","give_seq":2,"seq":0,"by":"person","person_id":"helstrom.FSF6529VRX65YHFS9SDR8JD794","status":"delivered","why":"Weighs-Every-Coin (merchant) gives it (people.jsonl services)"}
 {"place_id":"helstrom","give_seq":3,"seq":0,"by":"person","person_id":"helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS","status":"delivered","why":"Meshu-Ka (smith) gives it (people.jsonl services)"}
 {"place_id":"helstrom","give_seq":4,"seq":0,"by":"person","person_id":"helstrom.BGDSP6P2TTV6HNACJGN6KPVVBY","status":"delivered","why":"Wujeel (apothecary) gives it (people.jsonl services)"}
 {"place_id":"helstrom","give_seq":5,"seq":0,"by":"person","person_id":"helstrom.V7CK5843EKQS34ZEHS9HJ39CHN","status":"delivered","why":"Taleeka-Ma (spell-trader) gives it (people.jsonl services)"}

@@ -1,6 +1,7 @@
 {
  "place_id": "helstrom",
  "about": "Helstrom's people as world facts (person, household, person_note tables; tools/newworld/stockdb.py). Placement (bed, work, routine) stays in newworld/places/helstrom/people.jsonl under the same ids.",
+ "guard_body": "levy",
  "households": [
   {
    "id": "helstrom.household.01ArgonianHouseinside",
@@ -908,7 +909,7 @@
   },
   {
    "id": "helstrom.FSF6529VRX65YHFS9SDR8JD794",
-   "name": "Counts-Twice",
+   "name": "Weighs-Every-Coin",
    "sex": "female",
    "race": "ArgonianRace",
    "culture_id": "forest-green",
@@ -925,7 +926,7 @@
    "notes": [
     {
      "aspect": "backstory",
-     "text": "She buys from the raft crews and the rootworm riders and sells Murkwood feathers, sap, eggs and river fish from her market stall. Outsiders named her for the way in which she counts their coin.",
+     "text": "She buys from the raft crews and the rootworm riders and sells Murkwood feathers, sap, eggs and river fish from her market stall. Outsiders named her for the way in which she weighs their coin.",
      "tier": "AGENT_INVENTED",
      "cites": [
       "place_give:helstrom/2",
@@ -1734,7 +1735,7 @@
     "role": "head"
    },
    "role": "boatman",
-   "trade": "raft-boatman to Truowa, Korydon, Marzai and Julo",
+   "trade": "raft-master at the city landing",
    "wealth": "W3",
    "level": null,
    "status": "alive",
