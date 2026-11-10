@@ -174,9 +174,6 @@ pre.log { font-size: 12px; background: var(--panel-2); padding: 8px; border-radi
 .progress[hidden] { display: none; }
 .progress b { display: block; width: 90px; height: 4px; border-radius: 2px; background: var(--panel-2); overflow: hidden; }
 .progress i { display: block; height: 100%; width: 0; background: var(--accent); transition: width .3s; }
-.look-btn { min-height: 44px; border-radius: 22px; padding: 0 14px; color: var(--warn); border: 1px solid color-mix(in srgb, var(--warn) 45%, transparent); }
-.look-btn[hidden] { display: none; }
-.look-n { font-weight: 700; }
 ul.plain { margin: 4px 0 12px; padding-left: 18px; color: var(--muted); line-height: 1.5; }
 /* one row always: the source chooser gives way, the full-screen button stays beside it */
 .view-bar .pick { min-width: 150px; flex: 0 1 auto; display: flex; align-items: center; overflow: hidden; }

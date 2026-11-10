@@ -80,8 +80,6 @@ class Studio {
     srcSel.onchange = () => this.openSource(srcSel.value);
     await this.openSource(this.place.source_id);
     this.showSpace(this.ours, 'exterior', true);
-    const looks = this.place.needs_look || [];
-    $('#look-btn').hidden = !looks.length; $('#look-btn .look-n').textContent = looks.length;
     // link every shader the scene uses now, behind the loading screen, so no link stalls a later touch
     this.loading('Preparing the views');
     for (const v of [this.ours.view, this.src.view]) {
@@ -156,11 +154,11 @@ class Studio {
     } else if (first || side.returnRig) {
       if (side.returnRig) { Object.assign(v.rig, side.returnRig); v.rig.target = side.returnRig.target.clone(); side.returnRig = null; v.changed(); }
       else {
-        const pr = refs.filter((r) => r.layer !== 'world'), core = pr.filter((r) => ['building', 'door', 'furniture', 'container'].includes(r.kind));
-        // the town's middle (the median of its buildings and doors), close enough that the real models show
+        const pr = refs.filter((r) => r.layer !== 'world');
+        // the whole town in each view, at a pitch that reads as a place; taps fly closer
         if (pr.length) {
-          const [fx, fy] = focusOf(pr, [0, 0, 0]), z = side.terrain?.heightAt?.(fx, fy) ?? (side === this.ours ? this.terrain?.heightAt(fx, fy) : null) ?? boxOf(pr)[4];
-          v.rig.pitch = 0.75; v.frame([fx - 2400, fy - 2400, fx + 2400, fy + 2400, z]);
+          const b = townBox(pr, side === this.ours ? this.ground.meta.radius_m : 0), z = side.terrain?.heightAt?.((b[0] + b[2]) / 2, (b[1] + b[3]) / 2) ?? (side === this.ours ? this.terrain?.heightAt((b[0] + b[2]) / 2, (b[1] + b[3]) / 2) : null) ?? boxOf(pr)[4];
+          v.rig.pitch = 0.9; v.frame([...b.slice(0, 4), z]);
         }
         else if (side === this.ours) {
           const pl = this.ground.meta.place, c = pl ? [pl.world_x, pl.world_y] : side.origin;
@@ -170,16 +168,6 @@ class Studio {
     }
     if (!interior) side.terrainMesh?.update(v.rig.target);
     this.crumbs(side); this.people.refresh();
-  }
-  // Fly our view to a needs_look row: outside, framed close on the door, the door selected.
-  flyTo(n) {
-    const side = this.ours;
-    if (side.space !== 'exterior') { side.trail = []; this.showSpace(side, 'exterior'); }
-    const ref = this.model.spaces.exterior?.refs.get(n.door);
-    const [x, y] = ref ? ref.pos : n.at, z = ref ? this.seated(ref).pos[2] : this.terrain?.heightAt(x, y) ?? 0;
-    side.view.rig.pitch = 0.45; side.view.frame([x - 500, y - 500, x + 500, y + 500, z]);
-    side.terrainMesh?.update(side.view.rig.target);
-    if (ref) { this.selection.clear(); this.selection.add(ref.id); this.tools.selectionChanged(); }
   }
   enter(side, door) {
     const to = door.door?.to_space; if (!to) return;
@@ -318,7 +306,6 @@ class Studio {
   wireChrome() {
     $('#undo').onclick = () => this.log?.undo(); $('#redo').onclick = () => this.log?.redo();
     $('#finalise-btn').onclick = () => this.panels.finalise();
-    $('#look-btn').onclick = () => this.panels.lookPanel();
     $('#settings-btn').onclick = () => this.panels.settings();
     $('#link').onclick = (e) => { this.linked = !this.linked; e.currentTarget.setAttribute('aria-pressed', this.linked); if (this.linked) this.cameraMoved(this.ours.view); };
     $('#swap').onclick = () => { const v = $('#views'); v.dataset.swapped = v.dataset.swapped === 'true' ? 'false' : 'true'; };
@@ -402,6 +389,16 @@ function boxOf(refs, trim = 0) {
   const q = (k) => { const a = refs.map((r) => r.pos[k]).sort((x, y) => x - y), i = Math.floor(trim * (a.length - 1)); return [a[i], a[a.length - 1 - i]]; };
   const [x0, x1] = q(0), [y0, y1] = q(1), zs = refs.map((r) => r.pos[2]);
   return [x0, y0, x1, y1, zs.reduce((s, v) => s + v, 0) / zs.length, Math.min(...zs)];
+}
+// The town's extent [x0, y0, x1, y1]: the buildings and doors (all the place's refs when it has none), the outer
+// 3% each side left out, never wider than the place's radius (metres, 70 units each) either side of its middle.
+function townBox(refs, radiusM) {
+  const core = refs.filter((r) => ['building', 'door'].includes(r.kind)), use = core.length >= 3 ? core : refs;
+  let [x0, y0, x1, y1] = boxOf(use, 0.03);
+  const cx = (x0 + x1) / 2, cy = (y0 + y1) / 2, cap = radiusM ? radiusM * 70 : Infinity;
+  const hx = Math.min((x1 - x0) / 2, cap), hy = Math.min((y1 - y0) / 2, cap);
+  const pad = 300; // the buildings' own size, past their middles
+  return [cx - hx * 1.15 - pad, cy - hy * 1.15 - pad, cx + hx * 1.15 + pad, cy + hy * 1.15 + pad];
 }
 // The draft's style words for paths (paths.jsonl `style` when it is not a land texture key).
 const STYLE_WORD = { boardwalk: { colour: '#8b6b47', label: 'Wooden boards' }, dirt: { colour: '#7a6446', label: 'Dirt' },

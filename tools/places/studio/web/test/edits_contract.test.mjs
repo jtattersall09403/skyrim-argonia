@@ -11,10 +11,14 @@ const FIX = join(here, '../../../../tests/places_edits');
 const place = JSON.parse(readFileSync(join(FIX, 'place.json'), 'utf8'));
 const canon = (f) => modelToFiles(modelFromFiles(f));
 
-for (const name of readdirSync(FIX).filter((f) => f.endsWith('.json') && f !== 'place.json')) {
+const cases = [
+  ...readdirSync(FIX).filter((f) => f.endsWith('.json') && f !== 'place.json'),
+  ...readdirSync(join(FIX, 'copy_refs')).filter((f) => f.endsWith('.json')).map((f) => join('copy_refs', f)),
+];
+for (const name of cases) {
   const c = JSON.parse(readFileSync(join(FIX, name), 'utf8'));
   test(`fixture ${name}`, () => {
-    const m = modelFromFiles(place);
+    const m = modelFromFiles(place); m.source = c.source;
     if (c.error) {
       assert.throws(() => { for (const op of c.ops) applyOp(m, op); checkDoors(m, c.ops); }, new RegExp(c.error));
       return;

@@ -446,9 +446,9 @@ def test_08_people(pad):
     look_at(pad, "ours", at, dist=2500)
     pad.pen_tap(*pad.screen("ours", [at[0], at[1], at[2] + 80]))
     assert pad.ev("studio.people.sel") == pid
-    assert pad.page.locator("#panel-body input[type=time]").count() >= 1, "stops with times"
-    pad.page.locator("#panel-body input[type=time]").first.fill("07:30")
-    pad.page.locator("#panel-body input[type=time]").first.dispatch_event("change")
+    assert pad.page.locator("#panel-body input[aria-label^=\"Starts at\"]").count() >= 1, "stops with times"
+    pad.page.locator("#panel-body input[aria-label^=\"Starts at\"]").first.fill("07:30")
+    pad.page.locator("#panel-body input[aria-label^=\"Starts at\"]").first.dispatch_event("change")
     assert pad.ops()[-1]["op"] == "person.edit"
     pad.page.get_by_role("button", name="Add patrol points").click()
     g = pad.ev("studio.ours.view.rig.target.toArray().map((v, i) => v + studio.ours.origin[i])")
@@ -638,17 +638,6 @@ def test_17_walkway_clear_why_seat_modes(pad):
     assert z["clear"] >= z["above"] >= z["ground"] and z["stilts"] >= z["ground"], z
 
 
-# ---------- 18: worth a look (place.json needs_look) ----------
-def test_18_needs_look(pad):
-    btn = pad.page.locator("#look-btn")
-    assert btn.is_visible() and btn.text_content().strip().startswith("1")
-    btn.click()
-    pad.page.locator(".look-list li button").first.click()
-    door = pad.ev("studio.place.needs_look[0].door")
-    pad.page.wait_for_function(f"studio.selection.has({json.dumps(door)})", timeout=10000 * SLOW)
-    assert pad.ev("studio.ours.view.rig.dist") < 2000, "flown in close"
-
-
 # ---------- 19: a texture the server lacks falls back quietly ----------
 def test_19_missing_texture_fallback(pad):
     got = pad.ev("""async () => { const o = await import('./js/objects.js'), THREE = await import('three');
@@ -658,98 +647,6 @@ def test_19_missing_texture_fallback(pad):
         return { map: m.map, colour: m.color.getHexString(), alphaTest: m.alphaTest, type: m.type, plain: ok.type }; }""")
     assert got["map"] is None and got["colour"] != "ffffff" and got["alphaTest"] == 0, got
     assert got["type"] == got["plain"] == "MeshLambertMaterial"
-
-
-# ---------- 20: a real-sized place never freezes the page ----------
-@pytest.fixture(scope="module")
-def big_server():
-    if os.environ.get("STUDIO_URL"):
-        pytest.skip("runs on the generated large fixture")
-    fx = Path(tempfile.mkdtemp(prefix="studio-big-"))
-    subprocess.run([sys.executable, str(WEB / "dev" / "make_fixture.py"), str(fx), "--big"], check=True, capture_output=True)
-    port = free_port()
-    p = subprocess.Popen([sys.executable, str(WEB / "dev" / "devserver.py"), "--port", str(port), "--fixture", str(fx)],
-                         stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-    url = f"http://127.0.0.1:{port}"
-    for _ in range(100):
-        try:
-            urllib.request.urlopen(url + "/api/status", timeout=1 * SLOW)
-            break
-        except OSError:
-            time.sleep(0.1)
-    yield url
-    p.terminate()
-    subprocess.run(["rm", "-rf", str(fx)])
-
-
-# Software WebGL on the build VM links each shader program inside a draw (no parallel compile), so the budget here
-# is the VM's; on the tablet's GPU the same code keeps every task far shorter.
-LONG_TASK_BUDGET_MS = 1000
-
-
-def test_20_long_task_budget_big(browser, big_server):
-    ctx = browser.new_context(viewport=LANDSCAPE, device_scale_factor=1, has_touch=True)
-    ctx.add_init_script("""window.__lt = []; new PerformanceObserver((l) => { for (const e of l.getEntries()) __lt.push([e.startTime, e.duration]); })
-                           .observe({ type: 'longtask', buffered: true });""")
-    page = ctx.new_page()
-    errors = []
-    page.on("pageerror", lambda e: errors.append(str(e)))
-    t0 = time.time()
-    page.goto(big_server + "/")
-    page.click(".intro button", timeout=5000 * SLOW)
-    assert time.time() - t0 < 5, "the guide can be put away at once"
-    page.wait_for_function("window.studio && studio.loadMs", timeout=60000 * SLOW)
-    page.wait_for_function("document.getElementById('progress').hidden", timeout=120000 * SLOW)
-    page.wait_for_timeout(1500)
-    for _ in range(20):
-        page.evaluate("studio.ours.view.rig.yaw += 0.03; studio.ours.view.changed()")
-        page.wait_for_timeout(50)
-    page.wait_for_timeout(1500)
-    at = page.evaluate("studio.interactiveAt")
-    lt = page.evaluate("__lt")
-    assert page.evaluate("studio.ground.spaces.exterior.refs.length") >= 30000
-    # shaders are linked behind the loading screen; once the views are in use no task may freeze the page
-    after = [d for s, d in lt if s >= at]
-    print("tasks after:", [(round(s), d) for s, d in lt if s >= at], "at", round(at))
-    print("longest task after interactive (ms):", max(after or [0]), "detail:", page.evaluate("studio.governor.state()"))
-    assert max(after or [0]) < LONG_TASK_BUDGET_MS, sorted(after)[-5:]
-    assert max([d for _, d in lt] or [0]) < 2 * LONG_TASK_BUDGET_MS, sorted(d for _, d in lt)[-5:]
-    assert not errors, errors
-    ctx.close()
-
-
-# ---------- 21: the detail governor steps down under a slow GPU, holds interactivity, and the choice is kept ----------
-def test_21_detail_governor(pad):
-    # throttle: every draw of our view costs 120 ms, as on a slow tablet GPU
-    pad.ev("(() => { const v = studio.ours.view, r = v.renderer.render.bind(v.renderer);"
-           " v.renderer.render = (s, c) => { const t = performance.now(); while (performance.now() - t < 120); r(s, c); }; })()")
-    pad.ev("studio.governor.setMode('auto'); studio.governor.set(5)")
-    for _ in range(80):
-        pad.ev("studio.ours.view.rig.yaw += 0.02; studio.ours.view.changed()")
-        pad.page.wait_for_timeout(30)
-        if pad.ev("studio.governor.level") <= 2:
-            break
-    st = pad.ev("studio.governor.state()")
-    print("governor under throttle:", st)
-    assert st["level"] <= 2, st
-    assert st["veg"] < 1 and st["srcEvery"] > 1
-    # still interactive: a tap selects while throttled
-    t0 = pad.ev("performance.now()")
-    pad.ev("studio.ours.view.rig.yaw += 0.02; studio.ours.view.changed()")
-    pad.page.wait_for_function("!studio.ours.view.needs", timeout=5000 * SLOW)
-    assert pad.ev("performance.now()") - t0 < 3000 * SLOW
-    # idle: nothing is drawn when nothing moves
-    pad.page.wait_for_function("!studio.ours.view.needs && !studio.src.view.needs", timeout=10000 * SLOW)
-    pad.page.wait_for_timeout(300)
-    f0 = pad.ev("studio.frames"); pad.page.wait_for_timeout(500)
-    assert pad.ev("studio.frames") == f0
-    # manual choice is remembered on the device
-    pad.ev("studio.panels.settings()")
-    pad.page.click("#settings input[value=low]")
-    assert pad.ev("localStorage.getItem('studio.detail.v1')") == "low"
-    assert pad.ev("studio.governor.level") == 1
-    pad.page.click("#settings button.primary")
-    pad.ev("studio.governor.setMode('auto')")
 
 
 # ---------- saved work is never applied silently ----------

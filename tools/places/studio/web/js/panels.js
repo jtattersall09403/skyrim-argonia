@@ -4,7 +4,7 @@ import { api } from './api.js';
 import { ICON } from './icons.js';
 import { thumb } from './thumbs.js';
 import { STOP_KINDS, isInnkeeper, patrolOf, setPatrol } from './people.js';
-import { clock } from './geom.js';
+import { clock, parseClock } from './geom.js';
 
 const $ = (s) => document.querySelector(s);
 const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -31,11 +31,6 @@ function stationOf(place, id) {
   return null;
 }
 const stationName = (k) => k.replace(/-/g, ' ').replace(/^./, (c) => c.toUpperCase());
-// A needs_look row in plain words.
-export function lookWords(n) {
-  if (/door/.test(n.why || '') || n.door) return 'A replaced door: check from outside that it faces the street and does not open into the wall.';
-  return n.why || 'Worth checking by eye.';
-}
 function seg(name, options, value, onPick) {
   const w = document.createElement('div'); w.className = 'seg'; w.setAttribute('role', 'group'); w.setAttribute('aria-label', name);
   for (const [v, label] of options) {
@@ -133,8 +128,6 @@ export class Panels {
     if (side === 'ours' && r.why) facts.push(['Why the draft added it', r.why]);
     if (side === 'ours' && r.align) facts.push(['Lined up with', `the original it replaces (${r.align.of}), turned ${Math.round(r.align.turn_deg)} degrees`]);
     if (side === 'ours' && r.door?.arrival) facts.push(['Coming out', 'you arrive outside this door, on our ground and clear of anything in the way']);
-    const look = side === 'ours' && (a.place?.needs_look || []).find((n) => n.door === r.id);
-    if (look) facts.push(['Worth a look', lookWords(look)]);
     if (r.owner) facts.push(['Belongs to', r.owner]);
     if (r.door?.to_space) facts.push(['Door leads to', side === 'ours' ? a.spaceName(a.ours, r.door.to_space) : a.spaceName(a.src, r.door.to_space)]);
     w.append(el(`<dl class="facts">${facts.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join('')}</dl>`));
@@ -220,13 +213,13 @@ export class Panels {
       P.sorted(p).forEach((s, i) => {
         const sp = P.stopPoint(s), where = sp.space === 'exterior' ? 'outside' : a.spaceName(a.ours, sp.space);
         const li = el(`<li><div class="what"><div class="row" style="margin:0">
-          <input type="time" step="900" aria-label="Starts at" value="${clock(s.start).padStart(5, '0')}" style="min-height:44px;width:7.5em">
+          <input type="text" inputmode="numeric" pattern="[0-2]?[0-9]:[0-5][0-9]" placeholder="HH:MM" aria-label="Starts at (24-hour clock)" value="${clock(s.start)}" style="min-height:44px;width:5.5em">
           <label class="field" style="flex:0">for<input type="number" min="0.25" max="24" step="0.25" value="${s.hours}" style="width:5em" aria-label="Hours"></label>
           <select aria-label="Doing">${Object.entries(s.kind in STOP_KINDS ? STOP_KINDS : { ...STOP_KINDS, [s.kind]: s.kind }).map(([k, v]) => `<option value="${k}" ${k === s.kind ? 'selected' : ''}>${v}</option>`).join('')}</select></div>
           <span class="note">${esc(where)}</span></div></li>`);
         const find = (x) => x.routine.find((r) => r.start === s.start && r.kind === s.kind);
         const [tIn, hIn] = li.querySelectorAll('input'), kIn = li.querySelector('select');
-        tIn.onchange = () => { const [hh, mm] = tIn.value.split(':').map(Number); P.edit(p.id, (x) => { find(x).start = hh + mm / 60; }); this.peoplePanel(); };
+        tIn.onchange = () => { const t = parseClock(tIn.value); if (t === null) { tIn.value = clock(s.start); return; } if (Math.abs(t - s.start) < 1e-6) return; P.edit(p.id, (x) => { const r = find(x); if (r) r.start = t; }); this.peoplePanel(); };
         hIn.onchange = () => P.edit(p.id, (x) => { find(x).hours = Number(hIn.value); });
         kIn.onchange = () => { P.edit(p.id, (x) => { find(x).kind = kIn.value; }); this.peoplePanel(); };
         const mv = el('<button class="quiet">Put on map</button>'); mv.onclick = () => P.arm('stop', { id: p.id, i });
@@ -310,20 +303,6 @@ export class Panels {
     const why = new Map(); for (const c of a.model.clear.values()) if (c.by === 'draft') { const w = CLEAR_WHY[c.why] || (c.why ? c.why : 'no reason given'); why.set(w, (why.get(w) || 0) + 1); }
     if (why.size) parts.push(el(`<ul class="plain">${[...why].sort((x, y) => y[1] - x[1]).map(([w, n]) => `<li>${n} ${esc(w)}</li>`).join('')}</ul>`));
     this.show('Plants', parts);
-  }
-  // ---------- worth a look: the draft's open questions (place.json needs_look) ----------
-  lookPanel() {
-    const a = this.app, rows = a.place?.needs_look || [], parts = [];
-    parts.push(el(`<p>The draft could not settle these from the files alone. Tap one to fly there and look.</p>`));
-    const list = el('<ol class="history look-list"></ol>');
-    rows.forEach((n, i) => {
-      const base = a.bases.get(n.base) || {}, room = a.spaceName(a.ours, n.space);
-      const li = el(`<li><span class="what">${i + 1}. ${esc(base.name || base.edid || 'Door')} into ${esc(room)} <span class="note" style="display:inline">(${esc(n.space)})</span><span class="note">${esc(lookWords(n))}</span></span></li>`);
-      const b = el(`<button class="quiet" aria-label="Fly to worth-a-look ${i + 1}">Go</button>`); b.onclick = () => a.flyTo(n);
-      li.append(b); list.append(li);
-    });
-    parts.push(list);
-    this.show('Worth a look', parts);
   }
   // ---------- paths ----------
   pathsPanel() {

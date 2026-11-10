@@ -48,6 +48,29 @@ export function modelFromFiles(files) {
   return m;
 }
 
+// A copied room's refs as copied from the source, which the place files list only when changed (m.source:
+// {space id: [rows]}, set by the caller; edits.py `apply(..., source)`).
+const SOURCE_KEYS = ['base', 'pos', 'rot', 'scale'];
+function sourceRows(m, sp) {
+  const info = m.spaces[sp]?.space, rows = m.source?.[sp];
+  if (!info?.copy_of || !rows) return null;
+  return new Map(rows.map((r) => [r.id, r]));
+}
+// The source row of a copied room's ref that has no row of its own, or null.
+function implicit(m, sp, rid) {
+  const src = sourceRows(m, sp);
+  if (!src) return null;
+  for (const r of m.spaces[sp].refs.values()) if (r.src === rid && r.id !== rid) return null;
+  const r = src.get(rid);
+  return r ? clone(r) : null;
+}
+// True when a copy ref's override row is the source ref unchanged (so the row is dropped).
+function matchesSource(m, sp, row) {
+  if (!row.src || row.id !== row.src || row.removed) return false;
+  const s = sourceRows(m, sp)?.get(row.src);
+  return !!s && same(row, s);
+}
+
 function space(m, sid) {
   if (!m.spaces[sid]) m.spaces[sid] = { refs: new Map(), space: null };
   return m.spaces[sid];
@@ -60,9 +83,11 @@ export function applyOp(m, op) {
     case 'ref.add': {
       if (op.space_copy_of && sp === 'exterior') conflict(op, 'space_copy_of names an interior, not the exterior');
       const fresh = !m.spaces[sp], s = space(m, sp);
-      if (s.refs.has(op.ref.id)) conflict(op, `ref ${op.ref.id} already exists`);
+      const had = s.refs.get(op.ref.id);
+      if (had && !had.removed) conflict(op, `ref ${op.ref.id} already exists`);
       if (op.space_copy_of && !fresh && (s.space || s.refs.size > 0)) conflict(op, `space ${sp} already exists; a copied room needs a new space id`);
-      s.refs.set(op.ref.id, clone(op.ref));
+      s.refs.delete(op.ref.id);   // a copy ref removed by an override row comes back
+      if (!matchesSource(m, sp, op.ref)) s.refs.set(op.ref.id, clone(op.ref));
       if (op.space_copy_of) {
         s.space = { space_id: sp, copy_of: op.space_copy_of, name: op.space_name || sp };
         for (const [sid, other] of Object.entries(m.spaces))
@@ -73,18 +98,34 @@ export function applyOp(m, op) {
       break;
     }
     case 'ref.remove': {
-      const s = space(m, sp), r = s.refs.get(op.id);
-      if (!r) conflict(op, `ref ${op.id} is not in ${sp}`);
-      if (!same(r, op.before)) conflict(op, `ref ${op.id} differs from the save's before`);
-      s.refs.delete(op.id);
+      const s = space(m, sp);
+      let r = s.refs.get(op.id);
+      if (r?.removed) r = undefined;
+      if (!r) {
+        const src = implicit(m, sp, op.id);
+        if (!src) conflict(op, `ref ${op.id} is not in ${sp}`);
+        for (const k of SOURCE_KEYS) if (k in op.before && !same(src[k], op.before[k])) conflict(op, `ref ${op.id} ${k} is ${JSON.stringify(src[k])}, the save expected ${JSON.stringify(op.before[k])}`);
+        s.refs.set(op.id, { id: op.id, src: op.id, removed: true });
+      } else {
+        if (!same(r, op.before)) conflict(op, `ref ${op.id} differs from the save's before`);
+        s.refs.delete(op.id);
+        if (r.src && s.space?.copy_of && sourceRows(m, sp)?.has(r.src)) s.refs.set(r.id, { id: r.id, src: r.src, removed: true });
+      }
       if (op.space_drop && s.refs.size === 0) delete m.spaces[sp];
       break;
     }
     case 'ref.move': {
-      const r = space(m, sp).refs.get(op.id);
-      if (!r) conflict(op, `ref ${op.id} is not in ${sp}`);
+      const s = space(m, sp);
+      let r = s.refs.get(op.id);
+      if (r?.removed) conflict(op, `ref ${op.id} is removed from ${sp}`);
+      if (!r) {
+        r = implicit(m, sp, op.id);
+        if (!r) conflict(op, `ref ${op.id} is not in ${sp}`);
+      }
       for (const [k, v] of Object.entries(op.before)) if (!same(r[k], v)) conflict(op, `ref ${op.id} ${k} differs from what the save expected`);
-      for (const [k, v] of Object.entries(op.after)) r[k] = clone(v);
+      const next = { ...r };
+      for (const [k, v] of Object.entries(op.after)) next[k] = clone(v);
+      if (matchesSource(m, sp, next)) s.refs.delete(op.id); else s.refs.set(op.id, next);
       break;
     }
     case 'veg.clear': {
