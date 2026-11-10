@@ -1,7 +1,7 @@
 // dump <esp> <world.esm> <out.json>: the built place layer read back for tools/places/check.py, the way xEdit would
 // show it: masters, record counts by type, every link that resolves nowhere, and the rows the checks read (refs
-// with their bases, overrides of the world's refs, LAND, actors, packages, factions, classes, levelled lists
-// reachable from ours). Navmesh is read by check.py from the plugin's bytes (tools/navmesh/esm.py).
+// with their bases and a container's contents, overrides of the world's refs, LAND, actors, packages, factions,
+// classes, levelled lists reachable from ours, each actor base's inventory, outfit items and death item). Navmesh is read by check.py from the plugin's bytes (tools/navmesh/esm.py).
 using Mutagen.Bethesda;
 using Mutagen.Bethesda.Plugins;
 using Mutagen.Bethesda.Plugins.Aspects;
@@ -41,6 +41,12 @@ static class Dump
             {
                 var d = C.Ref(r, cache);
                 d["space"] = space; d["grid"] = grid; d["persistent"] = persistent;
+                // a container's contents and respawn flag, as the game reads its base (the stock check reads them)
+                if (r is IPlacedObjectGetter po && cache.TryResolve<IContainerGetter>(po.Base.FormKey, out var cb))
+                {
+                    d["contents"] = (cb.Items ?? Array.Empty<IContainerEntryGetter>()).Select(i => new object[] { C.Key(i.Item.Item.FormKey), i.Item.Count }).ToList();
+                    d["respawns"] = cb.Flags.HasFlag(Container.Flag.Respawns);
+                }
                 if (d["base"] is string { Length: > 0 } bk && cache.TryResolve<IMajorRecordGetter>(C.Fk(bk), out var b))
                     d["keywords"] = (b as IKeywordedGetter<IKeywordGetter>)?.Keywords?.Select(k => cache.TryResolve<IKeywordGetter>(k.FormKey, out var kw) ? kw.EditorID : C.Key(k.FormKey)).ToList();
                 if (r is IPlacedNpcGetter) actors.Add(d);
@@ -83,6 +89,9 @@ static class Dump
                     ["value"] = pr is IScriptObjectPropertyGetter op ? C.Key(op.Object.FormKey) : null }).ToList(),
             }).ToList() ?? new List<Dictionary<string, object?>>(),
             ["items"] = n.Items?.Select(i => C.Key(i.Item.Item.FormKey)).ToList(), ["outfit"] = C.Key(n.DefaultOutfit.FormKey),
+            ["inventory"] = (n.Items ?? Array.Empty<IContainerEntryGetter>()).Select(i => new object[] { C.Key(i.Item.Item.FormKey), i.Item.Count }).ToList(),
+            ["outfit_items"] = cache.TryResolve<IOutfitGetter>(n.DefaultOutfit.FormKey, out var dof) ? dof.Items?.Select(i => C.Key(i.FormKey)).ToList() : null,
+            ["death_item"] = C.Key(n.DeathItem.FormKey),
         }).ToList();
         List<Dictionary<string, object?>> Scripts(IVirtualMachineAdapterGetter? v) => v?.Scripts.Select(sc => new Dictionary<string, object?>
         {

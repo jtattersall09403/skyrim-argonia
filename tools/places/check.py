@@ -7,7 +7,8 @@ the place's shard plan (which records are this place's, and its place files' row
 place (ground, refs) and the world's own navmesh beside ours. Exit 1 when any check fails; every check is a
 function of one context dict, so tools/tests can feed it a small broken fixture each.
 
-Checks: seat, overlap, doors, people, navmesh, land, clear, services, nordic, levelled, plugin (masters, links).
+Checks: seat, overlap, doors, people, navmesh, land, clear, services, nordic, levelled, plugin (masters, links),
+stock and promises (a stocked place: tools/places/stock/verify.py).
 """
 from __future__ import annotations
 
@@ -332,8 +333,9 @@ def load(place_id: str, out: Path) -> dict:
     edid = {c["fk"]: c["edid"] for c in dump["cells"]}
     for n in navs.values():
         n.space = edid.get(n.space, n.space) if n.space != "exterior" else n.space
+    from tools.places.stock import verify as stock_verify
     return {"place_id": place_id, "plan": plan, "dump": dump, "facts": facts, "navs": navs, "gives": gives_of(place_id),
-            "place_dir": B.PLACES / place_id}
+            "place_dir": B.PLACES / place_id, "stock": stock_verify.load(place_id, plan, dump, esp)}
 
 
 def gives_of(place_id: str) -> list[dict]:
@@ -1073,8 +1075,8 @@ def check_services(ctx) -> list[str]:
                 bad.append(f"promised {k} ({g.get('detail', '')}): " + tried[0])
                 continue
             ok = True
-        elif k == "fast-travel":
-            ok = any((r.get("base_edid") or "") == "MapMarker" for r in m["refs"].values())
+        elif k == "fast-travel":  # the world file's map marker of the place (a copied source marker carries no marker data)
+            ok = f"ANW_MapMarker_{ctx.get('place_id', '').replace('-', '_')}" in (ctx["dump"].get("world_markers") or {}).values()
         if not ok:
             bad.append(f"promised {k} ({g.get('detail', '')}): nobody and nothing gives it")
     return bad
@@ -1105,6 +1107,16 @@ def check_nordic(ctx) -> list[str]:
 
 def check_levelled(ctx) -> list[str]:
     return [f"levelled: {x}" for x in ctx["dump"]["levelled"]]
+
+
+def check_stock(ctx) -> list[str]:
+    from tools.places.stock import verify
+    return verify.check_stock(ctx)
+
+
+def check_promises(ctx) -> list[str]:
+    from tools.places.stock import verify
+    return verify.check_promises(ctx)
 
 
 def island_report(ctx, person: str | None = None) -> list[str]:
@@ -1152,7 +1164,7 @@ def island_report(ctx, person: str | None = None) -> list[str]:
 
 CHECKS = {"plugin": check_plugin, "seat": check_seat, "overlap": check_overlap, "doors": check_doors, "people": check_people,
           "navmesh": check_navmesh, "streets": check_streets, "land": check_land, "clear": check_clear, "services": check_services,
-          "nordic": check_nordic, "levelled": check_levelled}
+          "nordic": check_nordic, "levelled": check_levelled, "stock": check_stock, "promises": check_promises}
 
 
 def run(ctx: dict) -> dict[str, list[str]]:

@@ -10,7 +10,8 @@
 //     an item count, a charge, open by default, ignored by sandbox, its lock's key), read from the source cell by `src`;
 //   - nothing levelled (decision 0035): a placed container that holds a levelled list is a copy of ours with fixed
 //     items, a placed levelled item list is the item it gives at level 1;
-//   - people (People.cs); the NAVI override with every NVMI of ours.
+//   - people (People.cs); stock (Stock.cs); the NAVI override with every NVMI of ours; beside the plugin,
+//     <esp>.copies.json: each record of ours copied from a foreign plugin -> its source key.
 // A base or any link in a plugin that is not one of our masters is copied in as ours (ForeignCopy.cs).
 using System.Diagnostics;
 using System.Text;
@@ -299,6 +300,8 @@ static class Write
                 Boat.Build(ctx, boats);
             if (plan.TryGetProperty("shrines", out var shrines) && shrines.ValueKind == JsonValueKind.Array)
                 Shrine.Build(ctx, shrines);
+            if (plan.TryGetProperty("stock", out var stock) && stock.ValueKind == JsonValueKind.Object)
+                Stock.Build(ctx, stock);
             Console.WriteLine($"write: {pid}");
         }
 
@@ -321,6 +324,8 @@ static class Write
             mod.NavigationMeshInfoMaps.Add(NavigationMeshInfoMap.CreateFromBinary(Frame(Navi(nvmi), meta)));
         }
         WriteMod(mod, esp, world);
+        // which of our records is a copy of which foreign one: the check reads a copied item as its source record
+        C.WriteJson(esp + ".copies.json", ctx.Fc.Map.Concat(ctx.Remap).GroupBy(kv => kv.Value).ToDictionary(g => C.Key(g.Key), g => C.Key(g.First().Key)));
         Console.WriteLine($"write: {esp}: {nRefs} refs, {interiors.Count} interiors, {nClear} cleared, {nLand} LAND, {nNavm} NAVM, {cells.Count} cell overrides, {sw.Elapsed.TotalSeconds:F1} s");
         return 0;
     }

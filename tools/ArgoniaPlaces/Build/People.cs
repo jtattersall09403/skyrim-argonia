@@ -54,7 +54,9 @@ static class People
             o.EditorID = c.GetProperty("edid").GetString();
             o.VirtualMachineAdapter = null;
             o.Flags |= Container.Flag.Respawns;  // a merchant's stock restocks, as vanilla merchant chests do
-            Flatten(o.Items);
+            if (c.TryGetProperty("items", out var list) && list.ValueKind == JsonValueKind.Array)  // a stocked place: its trader row
+                o.Items = new ExtendedList<ContainerEntry>(list.EnumerateArray().Select(e => Stock.Entry(ctx, e)));
+            else Flatten(o.Items);
             ctx.Localize(o);
             mod.Containers.Add(o);
         }
@@ -161,6 +163,15 @@ static class People
                 mod.Classes.Add(cl);
                 o.Class.SetTo(cl.FormKey);
             }
+            // a stocked place: the person carries exactly their stock rows and the base's set dressing, and wears an
+            // outfit of ours (Stock.cs); their own inventory, never the template's
+            if (n.TryGetProperty("inventory", out var inv) && inv.ValueKind == JsonValueKind.Array)
+            {
+                o.Items = new ExtendedList<ContainerEntry>(inv.EnumerateArray().Select(e => Stock.Entry(ctx, e)));
+                o.Configuration.TemplateFlags &= ~NpcConfiguration.TemplateFlag.Inventory;
+            }
+            if (S(n, "outfit") is { } of) o.DefaultOutfit.SetTo(C.Fk(of));
+            if (n.TryGetProperty("clear_death_item", out var cd) && cd.ValueKind == JsonValueKind.True) o.DeathItem.Clear();
             if (o.Items != null) Flatten(o.Items);
             FixOutfit(ctx, o.DefaultOutfit, $"{o.EditorID}_Outfit", false);
             FixOutfit(ctx, o.SleepingOutfit, $"{o.EditorID}_SleepOutfit", true);

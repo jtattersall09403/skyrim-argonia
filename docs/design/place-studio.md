@@ -278,15 +278,22 @@ each person's name.
  containers:  [{ref, space, kind (container_kind), owner_person? | owner_household? | owner_faction?, lock? (lock_level),
                 security (S0..S5), effort? (E0..E4, wild ground), tier (T1..T6), gold, items: [{item, count, why}],
                 why, cites}],
- loose:       [{id (<place_id>.<ulid>, minted once), space, on? (the ref it lies on) | pos: [x, y, z], item, count,
-                owner_person? | owner_faction?, effort?, why}],
+ loose:       [{id, space, on? (the ref it lies on) | pos: [x, y, z], item, count, owner_person? | owner_faction?,
+                effort?, why}],
  possessions: [{person, items: [{item, count, worn, why}], why}],
  traders:     [{person, give_seq, gold, items: [{item, count, why}], why, cites}],
- deliveries:  [{give_seq, by: person|container|loose|ref|record, person? | ref?, status: delivered|open|dropped, why}]}
+ deliveries:  [{give_seq, by: person|container|loose|ref|record, person? | ref?, status: delivered|open|dropped, why}],
+ removed:     [{space, ref, edid, why}]}
 ```
 
 `item` is an item id, `"<plugin>:<6 hex>"` (an `item` row: run `stockdb items` after naming a new one). At most one
-owner per holder. `respawn` is never stored: an authored container never respawns, and a trader's merchant chest
+owner per holder. A `ref` names a container the way the place files do: our id outside, the source key in a copied
+room. A loose row whose `id` is a ref of the place keeps that ref where the place files stand it (no `on`, no `pos`);
+any other `id` is a new thing (`<place_id>.<ulid>`, minted once) at `pos` or on the top of the container `on`.
+`owner_faction` is a household id (that household's faction), `<place_id>.<name>` (the place's faction of that name,
+as `people.jsonl` names it: `town`, `guard`) or a faction's form key. `removed` records each significant loose ref of
+the source the stocker decided not to keep, with the reason; the build leaves out every significant loose ref with no
+row whether or not it is listed. `respawn` is never stored: an authored container never respawns, and a trader's merchant chest
 restocks every 48 hours to its list (vanilla's own timing; the list is fixed and nothing in it is levelled).
 `deliveries` holds only what stocking owns (loot, a treasure, a record edit); the loader adds the rest:
 a person whose `people.jsonl` services name the give, a station of `place.json` `stations.found`, the world file's
@@ -304,7 +311,8 @@ vanilla's level gates (`docs/research/skyrim/stocking-yields.md`). How a place's
   What lies open is T1. Each tier above the open tier needs one more step of `security`, and a container's lock is
   its best tier's `lock`.
 - A person: their wealth band W1..W5 sets the gold they carry and keep, their clothes, their jewellery and their best
-  tier (W5 reaches the place's ceiling).
+  tier (W5 reaches the place's ceiling). A guard carries the guard faction's issue whatever their band (`owner`
+  faction `issue_tier`: sound gear, T2).
 - An owner sets a container: a person or household by their band, a faction (guard, town, temple) by the place's
   band, nobody by the ground.
 - Provenance: a thing made here (the place `makes` a good whose `good_material` covers it) is common and costs its
@@ -325,35 +333,59 @@ body's few things, each person's tool or weapon, the levy's gear, jewellery and 
 gold and a list from T1 to the ceiling within the band's list value. It also writes what is taken out and what it
 leaves open. The stocker reads it, corrects it and completes it by hand into the stock source.
 
-**What the build makes of it** (`tools/places/build.py`, lane S2):
-1. A `stock_container` row: the placed ref's base becomes a container of ours holding exactly the row's items and
-   gold, never respawning. The ref gets the row's lock (XLOC at the `lock_level`, no key unless the row's items carry
-   it) and its owner: the person's actor, a household faction of ours (every member at rank 0, `<household_id>`), or
-   the named faction. A significant container of the source with no row keeps only its set dressing.
-2. A `stock_loose` row: a placed ref of the item at its spot (on the ref's top surface, or at `pos`) with the owner.
-   A significant loose ref of the source with no row is not built (a copied room's override `removed: true`).
-3. `person_item` rows: our actor base's inventory is exactly these rows (`worn` ones make an outfit of ours) plus
-   the base's own set dressing, flattened at level 1. Nothing of the base's significant inventory or outfit stays.
-4. A `trader` row: the vendor's merchant chest of ours holds exactly `trader_item` and `gold`, restocking to it.
-5. `unique_item` rows are placed as their `held_by` says, like any other row.
+**What the build makes of it** (`tools/places/stock/plan.py`, called by `build.py` after the people and before the
+navmesh; the records by `ArgoniaPlaces/Build` `Stock.cs` and `People.cs`). A place with no stock source is built as
+before. Every list is read at level 1 the way the writer flattens one (`Records.fixed`: the level-1 entries, every
+one when the list gives all, else the first).
+1. A `stock_container` row: the placed ref's base becomes a container of ours (a copy of its base, `ANP_<place>_StockNNN`)
+   holding the base's own set dressing plus exactly the row's items and gold, never respawning. The ref gets the row's
+   lock (its level, no key) or none, and its owner: the person's actor base, a household faction of ours (`<household
+   id> household`, every member at rank 0), or the named faction. A container the split calls significant with no
+   row becomes a copy holding its set dressing alone. A row that names no container of the place is a problem.
+2. A `stock_loose` row: a kept ref keeps its place with the row's owner and count; a new one is a placed ref of the item
+   at `pos`, or on the named container's top (its record bounds). A significant loose ref of the place with no row is
+   not built.
+3. `person_item` rows: our actor base carries exactly the non-worn rows plus the base's own set dressing, and wears an
+   outfit of ours (`<npc>_StockOutfit`): the worn rows, then the base outfit's set dressing in the biped slots the
+   worn rows leave free. A death item that would give a significant thing is cleared; an inventory template flag is
+   cleared so the base's own list is the one the game reads. Nothing of the base's significant inventory or outfit
+   stays. When a person's source outfit loses its only body piece (armour, or an enchanted garment), the stocker gives
+   a worn garment of set dressing in its place.
+4. A `trader` row: the vendor's merchant chest of ours holds exactly `trader_item` and `gold`, restocking to it. A
+   trader with no row keeps vanilla's chest at level 1 (a note); a row whose person has no trader service is a problem.
+5. `unique_item` rows stand in their holder's stock row, like any other item.
 6. Nothing levelled anywhere (decision 0035).
+Beside the plugin the writer leaves `<esp>.copies.json` (each record of ours copied from a plugin that is not a
+master, and its source key), so the check reads a copied item as its source record.
 
-**What the build check proves** (`tools/places/check.py`, lane S2), on the built plugin:
-1. Nothing levelled: a container, an actor's inventory, outfit or death item, a placed item.
-2. Every significant thing traces to a row. The split is run over the built place, and each significant item stands
-   in its holder's stock row or in `unique_item`. Any other significant item fails the check, by holder and item.
-3. Every promise delivered: `give_delivery` has no `open` row for the place, and each delivered row's person or ref
-   exists in the build.
-4. Quest things untouched: a ref or item a quest record names is in no stock row and stands as the quest has it (the
+**What the build check proves** (`tools/places/stock/verify.py`, run by `check` as its checks `stock` and
+`promises` on a stocked place), on the built plugin read back (`dump` gives each container ref's contents and respawn
+flag and each actor base's inventory, outfit items and death item):
+1. Nothing levelled: a container, an actor's inventory, outfit or death item, a placed item (check `levelled`).
+2. Every significant thing traces to a row. Each container ref, loose item ref, actor base and merchant chest of the
+   place is split again, and its significant things must equal its holder's stock row (counts and gold included):
+   a container with no row holds nothing significant. Any other significant item fails, by holder and item.
+3. Every row is built: a container, loose, possession or trader row whose holder or items are missing fails.
+4. Every promise delivered (`promises`): `give_delivery` has no `open` row for the place, each delivered row's person
+   or ref exists in the build, and `fast-travel` has the world file's map marker `ANW_MapMarker_<place>` (a copied
+   source marker is built without marker data, so it never makes a second one).
+5. Quest things untouched: a ref or item a quest record names is in no stock row and stands as the quest has it (the
    quest tables of nw-05; none yet).
-5. Ownership set: every container and loose thing in a peopled place has its row's owner. Only S0 things and wild
-   ground are unowned.
-6. Locks and value agree: the built lock equals the row's; a container's tier is at most its security's reach
-   (`open tier + rank of security`); its significant value is within its budget.
-7. No respawn, except a trader's merchant chest.
-8. The ledger: a T6 or unique item has its `unique_item` row, and the game-wide counts are within `scale.json`
+6. Ownership set: every row's built owner is its row's; only S0 rows and wild ground are nobody's.
+7. Locks and value agree: the built lock equals the row's; a container's tier is at most its security's reach
+   (`open tier + rank of security`); its significant value is within its budget (`value_max` of its tier times its
+   owner's share: a person's band, a household's richest member's band, a faction or nobody 1.0); no item above its
+   container's tier.
+8. No respawn, except a trader's merchant chest, which must restock.
+9. The ledger: a T6 or unique item has its `unique_item` row, and the game-wide counts are within `scale.json`
    `ledger.caps`.
-9. Never: no item of a `never_material` or Skyrim-only kit.
+10. Never: no item of a `never_material` or Skyrim-only kit.
+11. Each person within their band: carried gold at most the band's `carried` top, jewellery at most its `jewellery`,
+   no item above the band's `top_tier` (capped at the place's ceiling; a guard reaches the faction's `issue_tier`).
+   Nothing anywhere above the place's ceiling but a ledger row.
+`python -m tools.places stock report <place> [--out DIR]` prints the built place in numbers: containers authored,
+items placed, the containers' value against their budgets, people's and loose value, gold, and the ten most valuable
+things with who or what holds them.
 
 **The studio** (lane S3; `tools/places/studio/stock.py`, the panels in `web/js/contents.js`, the pure part in
 `web/js/stock.js`). It reads the database's sources, not the tables, so what it shows is the shape its ops carry:

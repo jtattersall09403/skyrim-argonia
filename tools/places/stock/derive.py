@@ -17,6 +17,7 @@ from __future__ import annotations
 
 import argparse
 import heapq
+import re
 import json
 from collections import defaultdict
 from pathlib import Path
@@ -45,6 +46,7 @@ class Picker:
         self.rec, self.scale = rec, scale
         self.never = set(scale["never"]["materials"])
         self.words = [w.lower() for w in scale["never"]["edid_words"]]
+        self.scale_mats = {m for t in scale["tiers"] for s in ("weapon", "armour") for m in t[s]}
         self.by_edid = {}
         self.items = []
         for k, r in rec.raw.items():
@@ -55,8 +57,12 @@ class Picker:
                     self.by_edid.setdefault(it["edid"], it)
 
     def ok(self, it) -> bool:
+        """Unenchanted, of no never material, of no material off the scale's tiers (a vampire's or a creature's), and
+        no creature's or quest's own piece."""
         e = (it["edid"] or "").lower()
+        mats = {k for k in it["keywords"] if "Material" in k}
         return not it["ench"] and not (set(it["keywords"]) & self.never) and not any(w in e for w in self.words) \
+            and mats <= self.scale_mats and not re.match(r"^(dlc\d)?cr[a-z]", e) \
             and "nonplayable" not in e and not e.startswith(("dun", "mq", "ms", "da", "tg", "db", "cw", "mg", "c0"))
 
     def by_keywords(self, *kws) -> dict | None:

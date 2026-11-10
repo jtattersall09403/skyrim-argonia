@@ -3,13 +3,14 @@
     python -m tools.places stock classify <place_id> [--out DIR] [--json PATH]
     python -m tools.places stock derive <place_id> [--out DIR] [--to PATH]
     python -m tools.places stock vanilla [--out PATH]
+    python -m tools.places stock report <place_id> [--out DIR] [--json PATH]
 """
 from __future__ import annotations
 
 import importlib
 import sys
 
-VERBS = ("classify", "derive", "vanilla")
+VERBS = ("classify", "derive", "vanilla", "report")
 
 
 def main(argv: list[str]) -> int:

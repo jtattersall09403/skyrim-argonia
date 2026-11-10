@@ -99,6 +99,7 @@ class Records:
                 out["damage"] = struct.unpack_from("<H", data, 8)[0]
             if rec.sig == "ARMO":
                 out["rating"] = (_i32(rec.sub("DNAM")) or 0) / 100
+                out["slots"] = _u32(rec.sub("BOD2") or rec.sub("BODT")) or 0   # biped slot flags
             if rec.sig == "SLGM":
                 out["soul"] = (rec.sub("SOUL") or b"\0")[0]
                 out["capacity"] = (rec.sub("SLCP") or b"\0")[0]
@@ -173,6 +174,7 @@ class Records:
             facts.append({"faction": f, "edid": self.edid(f) if f else None, "rank": d[4] if len(d) > 4 else 0})
         return {"key": key, "edid": rec.edid, "name": rec.name, "items": self._cnto(rec),
                 "outfit": self._ref(rec, rec.sub("DOFT")), "template": self._ref(rec, rec.sub("TPLT")),
+                "death_item": self._ref(rec, rec.sub("INAM")),
                 "level": struct.unpack_from("<h", acbs, 8)[0] if acbs and len(acbs) >= 10 else None,
                 "pc_level_mult": bool(acbs and _u32(acbs) & 0x80),
                 "class": self._ref(rec, rec.sub("CNAM")), "factions": facts}
@@ -184,6 +186,24 @@ class Records:
             return []
         d = rec.sub("INAM") or b""
         return [place_key(rec.plugin.form_key(v)) for v in struct.unpack_from(f"<{len(d) // 4}I", d) if v]
+
+    def fixed(self, key: str, _depth: int = 0) -> list[tuple[str, int]]:
+        """What the build makes of a base at level 1, the one pick the writer takes (ArgoniaPlaces People.Fixed): a
+        levelled list's level-1 entries (its lowest entry when none is level 1), every one when it gives all, else the
+        first; nested lists the same way. Not a list: the base itself."""
+        lv = self.lvli(key)
+        if lv is None:
+            return [(key, 1)]
+        if _depth > 8:
+            return []
+        entries = [e for e in lv["entries"] if e[1]]
+        low = [e for e in entries if e[0] <= 1] or sorted(entries, key=lambda e: e[0])[:1]
+        if not lv["flags"] & LVL_USE_ALL:
+            low = low[:1]
+        out: list[tuple[str, int]] = []
+        for _lvl, k, n in low:
+            out += [(x, c * max(1, n)) for x, c in self.fixed(k, _depth + 1)]
+        return out
 
     def expand(self, key: str, level: int = 1, count: float = 1.0, chance: float = 1.0,
                _depth: int = 0) -> list[tuple[str, float, float]]:

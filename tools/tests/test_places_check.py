@@ -4,12 +4,17 @@ The fixture is made here (no game data): one exterior cell with flat ground at z
 interior door, one person with an owned bed and two stops, one navmesh per space, a cleared plant, a path."""
 import base64
 import copy
+import sys
+from pathlib import Path
 
 import numpy as np
 import pytest
 
 from tools.navmesh import nvnm
 from tools.places import check as C
+
+sys.path.insert(0, str(Path(__file__).parent))
+import stock_fixture as SF  # noqa: E402
 
 W = "ArgoniaNewWorld.esm"
 P = "ArgoniaNWPlaces.esp"
@@ -129,6 +134,12 @@ def broken(name):
         d["refs"][0]["model"] = "meshes/architecture/whiterun/wrhouse01.nif"
     elif name == "levelled":
         d["levelled"].append("ANP_t_person -> Skyrim.esm:09AF07 LItemMiscVendorArmor75")
+    elif name == "stock":
+        c["stock"] = SF.stock()
+        c["stock"]["built"]["containers"][("house", "X.esm:000009")]["contents"].append((SF.DAGGER, 1))
+    elif name == "promises":
+        c["stock"] = SF.stock()
+        c["stock"]["deliveries"][0]["status"] = "open"
     return c
 
 

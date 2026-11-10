@@ -14,7 +14,8 @@ level, no levelled lists: decision 0035) placed once as a persistent actor, with
   - services, one per give of the place record (newworld/story/data/db/place_give.jsonl) the person serves:
       trader-*        a vendor faction of ours (VENV hours from the person's work stop, VEND the vanilla vendor
                       list of that trade, VENC a merchant chest of ours in the place's chest cell, whose base is the
-                      vanilla spouse/merchant chest of that trade with every levelled list flattened to fixed items)
+                      vanilla spouse/merchant chest of that trade with every levelled list flattened to fixed items;
+                      a stocked place's chest holds its trader row's list and gold instead: tools/places/stock/plan.py)
                       plus the vanilla Job faction of the trade;
       trainer         a class of ours (the base's class with Teaches and the maximum training level) plus
                       JobTrainerFaction and JobTrainer<Skill>Faction;
@@ -263,7 +264,8 @@ def plan(P: dict, S: dict, ids, facts: dict, notes: list[str]) -> dict:
             if g in TRADE:
                 job, flst, chest = TRADE[g]
                 chest_base = ids(f"cont:{who}:{g}")
-                out["containers"].append({"fk": chest_base, "edid": f"ANP_{pid}_{_edid(who)}_Chest", "from": sk(chest)})
+                out["containers"].append({"fk": chest_base, "edid": f"ANP_{pid}_{_edid(who)}_Chest", "from": sk(chest),
+                                          "who": who, "give": g})
                 if out["chest_cell"] is None:
                     out["chest_cell"] = {"fk": ids("space:chests"), "edid": f"ANP_{pid}_MerchantChests", "light": CHEST_CELL_LIGHT}
                 chest_ref = ids(f"ref:chest:{who}:{g}")

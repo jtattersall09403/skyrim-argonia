@@ -55,8 +55,8 @@ def placeholder_name(seed: str, taken: set[str]) -> str:
 
 
 def apply_identities(folk: list[dict], identities: dict[str, dict]) -> None:
-    """Each person's name from the place's identities.jsonl (tools.places.identities); a person without a row keeps
-    a placeholder, minted again if it collides with an identity's name."""
+    """Each person's name from the people source newworld/sources/people/<place>.json (tools.places.identities); a
+    person without a row keeps a placeholder, minted again if it collides with an identity's name."""
     named = {r["name"] for r in identities.values() if r.get("name")}
     taken = set(named)
     for p in folk:

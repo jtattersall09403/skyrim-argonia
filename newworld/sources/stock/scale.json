@@ -91,7 +91,7 @@
     {"id": "none", "means": "nobody's (the wild, a ruin, the dead): free to take", "sets": "the ground (danger tier, effort)"},
     {"id": "person", "means": "a person of the place", "sets": "their wealth band (W1..W5), capped at the place's ceiling"},
     {"id": "household", "means": "a household's shared store", "sets": "the richest member's band"},
-    {"id": "faction", "means": "the guard, the town, a temple, a trader's vendor faction", "sets": "the place's wealth band: a guard's store sound gear, a seat of power up to the ceiling"}
+    {"id": "faction", "means": "the guard, the town, a temple, a trader's vendor faction", "sets": "the place's wealth band: a guard's store sound gear, a seat of power up to the ceiling", "issue_tier": "T2", "issue_why": "A guard carries the guard faction's issue whatever the guard's own band: sound gear (T2), as the faction's store holds."}
   ],
 
   "provenance": {

@@ -15,6 +15,7 @@ The plan is the place made explicit, with every decision taken here and nothing 
   land        LAND overrides (VHGT and VNML) for the cells a land patch changes, and path texture layers
   clear       the world's refs matched from clear.jsonl, switched off (Initially Disabled)
   people      actor bases, placed actors, packages, factions, services (people.py's plan, below)
+  stock       what each container, person, trader and loose ref holds, from the place's stock rows (stock/plan.py)
   navmesh     the touched exterior cells and their ring regenerated with tools.navmesh over the patched land and the
               place's collision; interiors' navmesh copied (trimmed to the kept room); door triangles both sides
 Form ids are stable for life: newworld/places/<place_id>/formids.json (committed beside the place files) maps each of
@@ -234,7 +235,8 @@ def read_place(pdir: Path) -> dict:
 
 
 def place_key(pdir: Path, world_sha: str) -> str:
-    h = hashlib.sha256((world_sha + code_key()).encode())
+    from tools.places.stock import plan as stockplan
+    h = hashlib.sha256((world_sha + code_key() + stockplan.key(pdir.name)).encode())
     for p in sorted(pdir.rglob("*")):
         if p.is_file() and p.name != "formids.json" and "edits" not in p.parts:
             h.update(str(p.relative_to(pdir)).encode() + p.read_bytes())
@@ -1422,6 +1424,8 @@ def _plan_place(pid: str, pdir: Path, out: Path, no_navmesh: bool, plan_only: bo
     facts["patched"] = patched  # the land as built: people's stops outside are seated on it
     from tools.places import people as ppl
     people = ppl.plan(P, S, ids, facts, notes)
+    from tools.places.stock import plan as stockplan  # the place's stock (place-studio.md, Stock), before the navmesh reads the refs
+    stock = stockplan.plan(P, S, people, ids, problem, notes)
     # land rows: heights and path layers merged per cell
     by_cell = {(r["x"], r["y"]): r for r in land}
     for c, layers in path_layers.items():
@@ -1475,7 +1479,7 @@ def _plan_place(pid: str, pdir: Path, out: Path, no_navmesh: bool, plan_only: bo
         "refs": S["refs"], "interiors": [{k: v for k, v in I.items() if k != "fk_of_src"} for I in S["interiors"]],
         "land": sorted(by_cell.values(), key=lambda r: (r["x"], r["y"])), "clear": clear,
         "navmesh": {"masters": NAV_MASTERS, "self": PLUGIN, "navi": key_of("Skyrim.esm", NAVI_FID), "navm": nav_rows},
-        "people": people, "boats": boats, "shrines": shrines, "notes": notes,
+        "people": people, "boats": boats, "shrines": shrines, "stock": stock, "notes": notes,
         "stats": {"plan_s": round(time.time() - t0, 1), "nav": nav_info},
     }
     return plan

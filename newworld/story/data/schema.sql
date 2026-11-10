@@ -550,17 +550,18 @@ CREATE TABLE "stock_container_item" (
 -- A significant thing lying loose: on a ref of the place files (a table, a shelf) or at a position in a space.
 CREATE TABLE "stock_loose" (
   "place_id" TEXT NOT NULL REFERENCES "place"("id"),
-  "id" TEXT NOT NULL,                    -- the placed ref's id the build gives it (<place_id>.<ulid>)
+  "id" TEXT NOT NULL,                    -- a new thing's ref id (<place_id>.<ulid>), or a ref of the place kept where it stands
   "space_id" TEXT NOT NULL,
-  "on_ref_id" TEXT,                      -- the ref it lies on, or null with a position
-  "x" REAL, "y" REAL, "z" REAL,
+  "on_ref_id" TEXT,                      -- a new thing: the ref it lies on, or null with a position
+  "x" REAL, "y" REAL, "z" REAL,        -- a kept ref (id is the place's own ref): none of these; the place files place it
   "item_id" TEXT NOT NULL REFERENCES "item"("id"),
   "count" INTEGER NOT NULL CHECK ("count" >= 1),
   "owner_person_id" TEXT REFERENCES "person"("id"),
   "owner_faction" TEXT,
   "effort_level_id" TEXT REFERENCES "effort_level"("id"),
   "why" TEXT NOT NULL,
-  CHECK ("on_ref_id" IS NOT NULL OR ("x" IS NOT NULL AND "y" IS NOT NULL AND "z" IS NOT NULL)),
+  CHECK ("on_ref_id" IS NULL OR "x" IS NULL),
+  CHECK (("x" IS NULL) = ("y" IS NULL) AND ("x" IS NULL) = ("z" IS NULL)),
   PRIMARY KEY ("place_id", "id")
 );
 
