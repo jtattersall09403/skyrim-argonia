@@ -101,6 +101,32 @@
 {"edit":"we.clean.hereguardplantation","target":"02A23B:Black Marsh.esm","what":"disabled: DLC2EncBoarWild"}
 {"edit":"we.clean.hereguardplantation","target":"0AA651:Black Marsh.esm","what":"disabled: Forest Spider 0Forestspider"}
 {"edit":"we.clean.hereguardplantation","target":"0AA652:Black Marsh.esm","what":"disabled: Forest Spider 0Forestspider"}
+{"edit":"we.clean.hereguardplantation","target":"11AD83:Black Marsh North.esp","what":"disabled static: barrel (MQ01's camp beside the dock)"}
+{"edit":"we.clean.hereguardplantation","target":"11AD84:Black Marsh North.esp","what":"disabled static: barrel (MQ01's camp beside the dock)"}
+{"edit":"we.clean.hereguardplantation","target":"11AD85:Black Marsh North.esp","what":"disabled static: barrel (MQ01's camp beside the dock)"}
+{"edit":"we.clean.hereguardplantation","target":"11AD86:Black Marsh North.esp","what":"disabled static: barrel (MQ01's camp beside the dock)"}
+{"edit":"we.clean.hereguardplantation","target":"11AD87:Black Marsh North.esp","what":"disabled static: barrel (MQ01's camp beside the dock)"}
+{"edit":"we.clean.hereguardplantation","target":"11AD88:Black Marsh North.esp","what":"disabled static: barrel (MQ01's camp beside the dock)"}
+{"edit":"we.clean.hereguardplantation","target":"11AD89:Black Marsh North.esp","what":"disabled static: barrel (MQ01's camp beside the dock)"}
+{"edit":"we.clean.hereguardplantation","target":"11AD8A:Black Marsh North.esp","what":"disabled static: barrel (MQ01's camp beside the dock)"}
+{"edit":"we.clean.hereguardplantation","target":"11AD8B:Black Marsh North.esp","what":"disabled static: barrel (MQ01's camp beside the dock)"}
+{"edit":"we.clean.hereguardplantation","target":"11AD8C:Black Marsh North.esp","what":"disabled static: barrel (MQ01's camp beside the dock)"}
+{"edit":"we.clean.hereguardplantation","target":"11AD8D:Black Marsh North.esp","what":"disabled static: barrel (MQ01's camp beside the dock)"}
+{"edit":"we.clean.hereguardplantation","target":"11AD8E:Black Marsh North.esp","what":"disabled static: barrel (MQ01's camp beside the dock)"}
+{"edit":"we.clean.hereguardplantation","target":"11AD8F:Black Marsh North.esp","what":"disabled static: barrel (MQ01's camp beside the dock)"}
+{"edit":"we.clean.hereguardplantation","target":"11AD90:Black Marsh North.esp","what":"disabled static: barrel (MQ01's camp beside the dock)"}
+{"edit":"we.clean.hereguardplantation","target":"11AD91:Black Marsh North.esp","what":"disabled static: barrel (MQ01's camp beside the dock)"}
+{"edit":"we.clean.hereguardplantation","target":"11AD92:Black Marsh North.esp","what":"disabled static: barrel (MQ01's camp beside the dock)"}
+{"edit":"we.clean.hereguardplantation","target":"11AD93:Black Marsh North.esp","what":"disabled static: barrel (MQ01's camp beside the dock)"}
+{"edit":"we.clean.hereguardplantation","target":"11AD94:Black Marsh North.esp","what":"disabled static: barrel (MQ01's camp beside the dock)"}
+{"edit":"we.clean.hereguardplantation","target":"11ADC7:Black Marsh North.esp","what":"disabled static: grain sack (MQ01's camp beside the dock)"}
+{"edit":"we.clean.hereguardplantation","target":"11ADC8:Black Marsh North.esp","what":"disabled static: grain sack (MQ01's camp beside the dock)"}
+{"edit":"we.clean.hereguardplantation","target":"11ADC9:Black Marsh North.esp","what":"disabled static: grain sack (MQ01's camp beside the dock)"}
+{"edit":"we.clean.hereguardplantation","target":"14162E:Black Marsh North.esp","what":"disabled static: lamp post (MQ01's camp beside the dock)"}
+{"edit":"we.clean.hereguardplantation","target":"14162F:Black Marsh North.esp","what":"disabled static: lantern (MQ01's camp beside the dock)"}
+{"edit":"we.clean.hereguardplantation","target":"141630:Black Marsh North.esp","what":"disabled static: lantern (MQ01's camp beside the dock)"}
+{"edit":"we.clean.hereguardplantation","target":"141631:Black Marsh North.esp","what":"disabled static: lantern (MQ01's camp beside the dock)"}
+{"edit":"we.clean.hereguardplantation","target":"141632:Black Marsh North.esp","what":"disabled static: lantern (MQ01's camp beside the dock)"}
 {"edit":"we.clean.lilmoth","target":"015176:Black Marsh.esm","what":"fixed level: Albino Spider DLC2ExpSpiderAlbinoFriend"}
 {"edit":"we.clean.lilmoth","target":"015184:Black Marsh.esm","what":"disabled: Old Salty DLC2dunNorthshoreLandingCrabBoss"}
 {"edit":"we.clean.lilmoth","target":"029A7F:Black Marsh.esm","what":"fixed level: Albino Spider DLC2ExpSpiderAlbinoFriend"}

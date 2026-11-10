@@ -7,6 +7,7 @@
 {"quest_id":"quest.main.mq01","cast_ord":0,"ord":0,"at_stage":40,"fact":"fact.mq01.satchel","to":"knows"}
 {"quest_id":"quest.main.mq01","cast_ord":4,"ord":0,"at_stage":40,"fact":"fact.mq01.roots-cut","to":"knows"}
 {"quest_id":"quest.main.mq01","cast_ord":4,"ord":1,"at_stage":41,"fact":"fact.mq01.clutch-dead","to":"knows"}
+{"quest_id":"quest.main.mq01","cast_ord":4,"ord":2,"at_stage":90,"fact":"fact.mq01.cutting-withdrew","to":"knows"}
 {"quest_id":"quest.main.mq01","cast_ord":5,"ord":0,"at_stage":40,"fact":"fact.mq01.her-face","to":"knows"}
 {"quest_id":"quest.main.mq01","cast_ord":5,"ord":1,"at_stage":40,"fact":"fact.mq01.satchel","to":"knows"}
 {"quest_id":"quest.main.mq03","cast_ord":0,"ord":0,"at_stage":20,"fact":"fact.mq03.clean-cut","to":"knows"}

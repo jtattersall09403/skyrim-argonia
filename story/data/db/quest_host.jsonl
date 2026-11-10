@@ -9,11 +9,11 @@
 {"quest":"quest.local.lq30","ord":1,"settlement":"bmv.helstrom","cell":"0D7883:Black Marsh.esm","role":"end","what":"the shelter in the basin, in cell 0D7883 (-5,18, navmesh, no NPCs) east of the gate and off MQ05's way in from the landing"}
 {"quest":"quest.main.mq01","ord":0,"settlement":"bmv.lilmoth","cell":"0F9178:Black Marsh.esm","role":"start","what":"processing and character creation in the barge's hold"}
 {"quest":"quest.main.mq01","ord":1,"settlement":"bmv.lilmoth","role":"stage","what":"the march from the plank (it starts at the first navmeshed square, 1,-2) along the shore"}
-{"quest":"quest.main.mq01","ord":2,"settlement":"bmv.hereguardplantation","cell":"005911:Black Marsh.esm","role":"main","what":"the camp at the paddy edge, the cutting, the hatching shed; the attack"}
-{"quest":"quest.main.mq01","ord":3,"settlement":"bmv.hereguardplantation","cell":"005911:Black Marsh.esm","role":"end","what":"the escape by water or reed to the shore below the camp, where the night ends"}
-{"quest":"quest.main.mq03","ord":0,"settlement":"bmv.hereguardplantation","role":"start","what":"the camp's aftermath at dawn"}
+{"quest":"quest.main.mq01","ord":2,"settlement":"bmv.lilmoth","cell":"00591F:Black Marsh.esm","role":"main","what":"the gang families' camp where Lilmoth's dock meets the land: the fire, the hatching shed and the cutting, the huts on the water; the attack"}
+{"quest":"quest.main.mq01","ord":3,"settlement":"bmv.lilmoth","cell":"00591F:Black Marsh.esm","role":"end","what":"the escape by water or past the cutters to the shore just west of the camp, where the night ends"}
+{"quest":"quest.main.mq03","ord":0,"settlement":"bmv.lilmoth","cell":"00591F:Black Marsh.esm","role":"start","what":"the camp's aftermath at dawn, where Lilmoth's dock meets the land; the strangers wait on the shore just west of it"}
 {"quest":"quest.main.mq03","ord":1,"settlement":"bmv.lilmoth","cell":"0FE7F7:Black Marsh.esm","role":"main","what":"the unmarked house: the talk with the witness and Nesh-Deeka's bargain"}
-{"quest":"quest.main.mq03","ord":2,"settlement":"bmv.lilmoth","cell":"0F9178:Black Marsh.esm","role":"stage","what":"the first sap-dream, in the hold dressed with fog and empty, its door locked"}
+{"quest":"quest.main.mq03","ord":2,"settlement":"bmv.lilmoth","cell":"0F9178:Black Marsh.esm","role":"stage","what":"the first sap-dream, in the barge's hold, empty, with roots grown up through its deck and its stair door locked"}
 {"quest":"quest.main.mq04","ord":0,"settlement":"bmv.village","role":"main","what":"the village, its Hist, pools and homes"}
 {"quest":"quest.main.mq04","ord":1,"settlement":"bmv.village","role":"stage","what":"the cell's swamp camp at the end of the gum trail"}
 {"quest":"quest.main.mq05","ord":0,"settlement":"bmv.lilmoth","role":"start","what":"the Reed's house and the ship's door at Lilmoth's stop"}

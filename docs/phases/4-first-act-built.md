@@ -1,7 +1,7 @@
 # Phase 4: the first story slice, built from the proven blocks
 
 Status: [PROGRESS.md](../PROGRESS.md). The plan: [PLAN.md](../PLAN.md). Edit this file as the phase goes; it is the phase's whole brief.
-Rewritten 2026-11-08 after the owner's third walk (tmp/walk-3-feedback.md, [owner-rulings](../owner-rulings.md)). **Status 2026-11-08: built, read back and deployed; the owner's walk is owed (docs/owner-walk-checks.md sections 5 to 7).**
+Rewritten 2026-11-08 after the owner's third walk (tmp/walk-3-feedback.md, [owner-rulings](../owner-rulings.md)). **Status 2026-11-10: built, read back and deployed, and walked by the owner through walk 5; the walk-5 fixes (the engine and writing reviews in docs/phases/4-walk5-engine/) are in progress, and the owner's next walk is owed (docs/owner-walk-checks.md).**
 
 ## Already done (do not redo)
 
@@ -113,8 +113,8 @@ the quest is re-authored.
   dialogue from `story/data/quest_lines/` (dialogue-write, text-review: 10 rewrites applied, lint 0), Papyrus 7 new
   scripts compiled on the GPU box (16 of 16 .pex, 0 failed). Read-back `plugin.sh localcheck`: every stage, journal,
   objective, fragment and .pex, alias, topic gate and trigger PASS for both; round trip clean (497 yaml files). Open:
-  LQ25's MQ05 >= 40 gate is added when ARG_MQ05 is in the plugin (the check prints a NOTE until then); the record's
-  ledger rows we.lq30.trail, we.lq25.beast and we.lq25.crew still carry the pre-B1 wording (quest review, 2026-11-08).
+  whether LQ25's record keeps its MQ05 >= 40 gate (the build carries stage 0 only, walk-5 review A30: decide once and drop it
+  from the record and the comment, or build it); the ledger rows we.lq30.trail, we.lq25.beast and we.lq25.crew now read as built.
 - **TG01 and TG02 built** (2026-11-08, `tools/ArgoniaPlugin/NightReed.cs`, read-back `nightreedcheck`): 227 of 227
   checks pass on the seed's ESP through Spriggit YAML and back, with the 30 .pex compiled (30 of 30). 2 quests,
   21 lines in 14 topics, 11 people (plus 2 eels), 4 door locks and the trapdoor at Novice. Re-authored to proven
@@ -183,7 +183,7 @@ the quest is re-authored.
   keep. BC03's opening topic is gated on BC01 >= 90. Papyrus: 58 of 58 .pex, 0 failed (13 new scripts). Read-back
   `plugin.sh bccheck`: 96 PASS, 0 FAIL (BC01, BC02, BC03); `localcheck` PASS; round trip clean (812 yaml files);
   `make check` green. Open: the low and high bands are not built (one band, as BC03); positions on the landing and in
-  the keep are by navmesh height band, unwalked; the freed one's after-state greeting (review minor F5/F7) is not built.
+  the keep are by navmesh height band, unwalked; the freed one's after-state greeting is built.
 
 - **Integrated and deployed (2026-11-08, d15555cb).** Every lane merged on main and the plugin re-seeded once: 2,167
   records, round trip clean (1,730 YAML files), the records listing 0 errors (it now knows MQ01's held quests). Read-backs
@@ -240,8 +240,7 @@ the quest is re-authored.
   host whose bounds hold one of ours, whose model resolves nowhere: 395 checked (102 ours, 293 hosts), 0 failed; it found
   MQ01's shed (01strawhut, HutExterior.nif missing), now BM&V's 01shed (Shed.nif). Ahkeeh's second friend greeting and
   Sells-Dear's Dwarven Ruins directions (now naming Helstrom on the route) rewritten. Every read-back PASS; placecheck
-  120/0/0; talk_check 0. Open from review: world_edit rows we.bc02.mesh, we.bc02.name, we.door.rose-jail still describe
-  the old host; the doorway's side is unproven. The BM&V talkers by the house, Ree-Shaal (1454F2) and Sleeps-Standing
+  120/0/0; talk_check 0. Open from review: the doorway's side is unproven (the world_edit rows of the old BC02 host are gone). The BM&V talkers by the house, Ree-Shaal (1454F2) and Sleeps-Standing
   (1454F3), each have one Rumours line on the smoke, gated GetStage ARG_BC02 >= 20 and <= 90 (talk_check reads it back).
 - **Known gaps, for the owner walk or later:** what the check cannot prove: how the tilted floor of the Reed's house
   looks and whether its standing actors settle well; and how anything looks.
