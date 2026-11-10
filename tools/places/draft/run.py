@@ -23,6 +23,7 @@ import math
 import re
 from pathlib import Path
 
+from tools.places import identities
 from tools.places.draft import clear as clearmod
 from tools.places.draft import geom, interiors, io, overlap, people, seating
 from tools.places.draft import paths as paths_mod
@@ -775,6 +776,7 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
     io.write_jsonl(pdir / "land.jsonl", land)
     io.write_jsonl(pdir / "clear.jsonl", clear_rows)
     io.write_jsonl(pdir / "paths.jsonl", paths_our)
+    people.apply_identities(folk, identities.read(place_id, places))
     io.write_jsonl(pdir / "people.jsonl", folk)
     io.write_jsonl(pdir / "ledger.jsonl", sorted(ledger, key=lambda r: (r["space"], r["src"])))
     centre = fit.xf.to

@@ -189,6 +189,14 @@ people.jsonl           one person per line: {id, name, base_from, role, home, be
                        patrol stop's route is `patrol`). services: [{kind | give_kind_id, detail, skill?, level?,
                        room_bed?}]; faction_ranks: [{faction: a form key or <place_id>.<name>, rank}]. Any other
                        shape is a problem `build --plan` lists, never a crash
+identities.jsonl       the people's light identities, one row per person id of people.jsonl: {id, name, household:
+                       {id, role: head|partner|elder|sibling|grown child|cousin|lodger|levy}, trade, wealth: W1..W5,
+                       backstory (one or two sentences), cites: [a repo path | place_note:<place>/<aspect> |
+                       place_give:<place>/<seq> | culture:<id> | region:<id>]}. Written by an agent from the lore and
+                       the place record; the drafter writes each row's name onto its person (a person without a row
+                       keeps the drafter's placeholder). `python -m tools.places identities check <place>` proves it:
+                       a row per person, names unique and by the naming rules, a household under one roof with one
+                       head and the drafter's head and partner, guards in the levy, every cite existing
 ledger.jsonl           one row per source ref: {src, space, status: placed|adapted|replaced|dropped, as?, why?,
                        cluster?, patch?}; every source ref has one
 edits/<save_id>.json   a studio save (below); finalised saves stay here as the lessons' evidence

@@ -54,6 +54,21 @@ def placeholder_name(seed: str, taken: set[str]) -> str:
     raise RuntimeError("names exhausted")
 
 
+def apply_identities(folk: list[dict], identities: dict[str, dict]) -> None:
+    """Each person's name from the place's identities.jsonl (tools.places.identities); a person without a row keeps
+    a placeholder, minted again if it collides with an identity's name."""
+    named = {r["name"] for r in identities.values() if r.get("name")}
+    taken = set(named)
+    for p in folk:
+        row = identities.get(p["id"])
+        if row and row.get("name"):
+            p["name"] = row["name"]
+        elif p["name"] in taken:
+            p["name"] = placeholder_name(p["id"], taken)
+        else:
+            taken.add(p["name"])
+
+
 def _tokens(s: str) -> set[str]:
     words = re.findall(r"[a-z][a-z-]+", (s or "").lower())
     words += [p for w in words if "-" in w for p in w.split("-")]
