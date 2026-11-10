@@ -1,0 +1,15 @@
+{
+  "_about": "Allow-lists of tools/argonia_world/quest_text_check.py. rhetorical: [{key, text, why}] a spoken line allowed a '?' or a Give/Tell/Show-me opening (key = the topic key or row key; text = a phrase of the line). gives_ok: [{key, text, why}] a line allowed to open 'Here is', 'Here are', 'Take this' with no `gives`. retired: {quest id: [nouns the build cut]} searched word-bounded, case-insensitively, in that quest's lines, entries and objectives. roles: {quest id: {role phrase: person name}} a journal entry or objective naming the role must name the person in the same sentence.",
+  "rhetorical": [],
+  "gives_ok": [],
+  "retired": {
+    "quest.main.mq01": ["Hereguard", "plantation", "paddy", "shore path", "rice dike"],
+    "quest.main.mq03": ["screen", "fog", "Hereguard"],
+    "quest.bc.bc02": ["keep", "cells", "Black Rose Jail"]
+  },
+  "roles": {
+    "quest.local.lq25": {"the boat captain": "Sells-Dear"},
+    "quest.local.lq30": {"the levy warden": "Gih-Xaleel", "the warden at the gate": "Gih-Xaleel"},
+    "quest.main.mq04": {"the root-herald": "Hires-By-The-Season"}
+  }
+}
