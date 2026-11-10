@@ -86,7 +86,9 @@ spaces/<space_id>/     space_id: "exterior" or an interior cell's editor id
                         interior adds key, plugin, lighting_template, flags
   terrain.json + terrain.f32   exterior only. terrain.json: {cells:[{cell:[cx,cy], key, edid, plugin,
                         water:{height, type} | null, regions, heights_index, layers, vertex_colours}],
-                        ltex:{key:{edid, plugin, diffuse, normal, grasses:[{key, edid, model}]}}}.
+                        ltex:{key:{edid, plugin, diffuse, normal, grasses:[{key, edid, model, density, min_slope, max_slope,
+                        units_from_water, units_from_water_type, position_range, height_range, color_range,
+                        wave_period, vertex_lighting, uniform_scaling, fit_to_slope}]}}} (each GRAS record's own fields).
                         terrain.f32: per cell at heights_index, 33x33 float32 world Z, row-major south to north,
                         west to east, 128 units apart. layers: per quadrant its base {quad, layer:-1, tex}, then alpha
                         layers {quad, layer:n, tex, alpha: base64 of 17x17 opacity bytes, row-major south to north}.

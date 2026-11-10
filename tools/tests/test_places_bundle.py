@@ -21,7 +21,9 @@ def make_bundle(root, bundle_id="ground.t", esm_sha="a" * 64):
     # one cell (0,0) sloping up to the east, 1 unit per unit x; one (1,0) flat at 7 with water at 5
     h = array.array("f", [c * B.STEP for r in range(B.V) for c in range(B.V)] + [7.0] * (B.V * B.V))
     (ext / "terrain.f32").write_bytes(h.tobytes())
-    (ext / "terrain.json").write_text(json.dumps({"ltex": {}, "cells": [
+    (ext / "terrain.json").write_text(json.dumps({"ltex": {"W.esm:000A00": {"edid": "Mud", "grasses": [
+        {"key": "W.esm:000B00", "density": 40, "min_slope": 0, "max_slope": 28, "units_from_water_type": "EitherAtLeast"}]}},
+        "cells": [
         {"cell": [0, 0], "heights_index": 0, "water": None},
         {"cell": [1, 0], "heights_index": 1, "water": {"height": 5.0, "type": None}}]}))
     return d
@@ -39,6 +41,7 @@ def test_reader(tmp_path):
     assert t.height_at(-5.0, 10.0) is None
     n = t.normal_at(1000.0, 1000.0)
     assert n[0] == pytest.approx(-(0.5 ** 0.5)) and n[2] == pytest.approx(0.5 ** 0.5)
+    assert t.ltex["W.esm:000A00"]["grasses"][0]["max_slope"] == 28
     assert t.water_at(5000.0, 10.0)["height"] == 5.0 and t.water_at(10.0, 10.0) is None
     with pytest.raises(KeyError):
         b.space("nowhere")

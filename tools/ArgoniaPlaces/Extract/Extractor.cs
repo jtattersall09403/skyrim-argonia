@@ -568,7 +568,18 @@ static class Extractor
             var grasses = lt.Grasses.Select(g =>
             {
                 var (gr, _) = Resolve(L, g.FormKey);
-                return new { key = Key(g.FormKey), edid = gr?.EditorID, model = ModelOf(gr) };
+                var gg = gr as IGrassGetter;
+                return (object)new
+                {
+                    key = Key(g.FormKey), edid = gr?.EditorID, model = ModelOf(gr),
+                    density = gg?.Density, min_slope = gg?.MinSlope, max_slope = gg?.MaxSlope,
+                    units_from_water = gg?.UnitsFromWater, units_from_water_type = gg?.UnitsFromWaterType.ToString(),
+                    position_range = gg?.PositionRange, height_range = gg?.HeightRange, color_range = gg?.ColorRange,
+                    wave_period = gg?.WavePeriod,
+                    vertex_lighting = gg != null && gg.Flags.HasFlag(Grass.Flag.VertexLighting),
+                    uniform_scaling = gg != null && gg.Flags.HasFlag(Grass.Flag.UniformScaling),
+                    fit_to_slope = gg != null && gg.Flags.HasFlag(Grass.Flag.FitToSlope),
+                };
             }).ToList();
             if (grasses.Count > 0) grassBased.Add(Key(tk));
             return new
