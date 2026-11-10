@@ -5,13 +5,23 @@
       "when": [
         "ARG_MQ01",
         0,
-        40
+        20
       ],
       "prompt": "Who are you?",
       "lines": [
-        "I am Finds-The-Other-Bank. I sleep lightly and I hear every board creak in this hold. Be quiet while Ux-Xeek calls the names."
+        "I am Finds-The-Other-Bank. Sit quiet while Ux-Xeek calls the names."
+      ]
+    },
+    {
+      "when": [
+        "ARG_MQ01",
+        20,
+        30
       ],
-      "facts": []
+      "prompt": "Who are you?",
+      "lines": [
+        "I am Finds-The-Other-Bank. I go toward every way out I am given, for my daughter's sake."
+      ]
     },
     {
       "when": [
@@ -21,7 +31,8 @@
       ],
       "prompt": "Who are you?",
       "lines": [
-        "I am Finds-The-Other-Bank. Ask Llarvi Maryon about the roll. I do not know yet if what became of it is good for me."
+        "I am Finds-The-Other-Bank. I walked here to stand beside the cutting before my colour went, and its light is out.",
+        "Ask Llarvi Maryon about the roll. I do not yet know how to get out of here."
       ]
     }
   ],
@@ -34,9 +45,9 @@
       ],
       "prompt": "Who are you?",
       "lines": [
-        "Ri'Sakka. This one is Khajiit, a long way from the sands. This one patches the reed sleeping mats for the gang."
-      ],
-      "facts": []
+        "Ri'Sakka. This one is Khajiit, a long way from the sands.",
+        "This one mends the reed sleeping mats, and is counted a hand with the gang, never kin of the families."
+      ]
     },
     {
       "when": [
@@ -46,8 +57,10 @@
       ],
       "prompt": "Who are you?",
       "lines": [
-        "Ri'Sakka. This one ran when the huts burned. This one is wet and hungry."
-      ]
+        "Ri'Sakka. This one went into the water when the huts caught fire.",
+        "This one is wet and hungry, and the mats this one patched are burnt."
+      ],
+      "facts": []
     }
   ],
   "ARG_MQ01_Tsanji": [
@@ -59,9 +72,8 @@
       ],
       "prompt": "Who are you?",
       "lines": [
-        "Tsanji. This one carries the day's water. This one has seen the reeds shiver beside the path when no wind blows. Stay on the path."
-      ],
-      "facts": []
+        "Tsanji. This one carries the day's water for the families at their camp."
+      ]
     },
     {
       "when": [
@@ -71,8 +83,10 @@
       ],
       "prompt": "Who are you?",
       "lines": [
-        "Tsanji. This one carried the day's water for the gang. This one still watches the reeds beside the path."
-      ]
+        "Tsanji. This one carried the day's water for the families.",
+        "This one has nothing to carry now, and stands here with empty hands."
+      ],
+      "facts": []
     }
   ],
   "ARG_MQ01_LlarviMaryon": [
@@ -84,9 +98,8 @@
       ],
       "prompt": "Who are you?",
       "lines": [
-        "Llarvi Maryon. I oversee this camp. I sit by the fire and I watch who comes and goes. Keep your business short, outlander."
-      ],
-      "facts": []
+        "Llarvi Maryon. I work at the families' camp, and I do not talk much."
+      ]
     },
     {
       "when": [
@@ -96,8 +109,10 @@
       ],
       "prompt": "Who are you?",
       "lines": [
-        "Llarvi Maryon. The roll burned with the camp, so I cannot show what I owed. I will go back to Lilmoth and see whether the broker's men try to collect."
-      ]
+        "Llarvi Maryon. The roll burnt in the fire, outlander.",
+        "Now nobody can show what anyone owes, not the broker and not the gang."
+      ],
+      "facts": []
     }
   ],
   "ARG_MQ01_WuleenSeiMarch": [
@@ -110,7 +125,7 @@
       "speaker": "Wuleen-Sei",
       "prompt": "Where are we going?",
       "lines": [
-        "We go to the camp at the edge of the paddies on Hereguard Plantation. The broker has hired you out to work there. Keep up with the gang."
+        "To the camp at the end of this dock, where the families live. Keep up with the gang."
       ]
     }
   ],
@@ -118,15 +133,27 @@
     {
       "when": [
         "ARG_MQ01",
-        0,
+        30,
         40
       ],
       "speaker": "Finds-The-Other-Bank",
       "prompt": "Who are you?",
       "lines": [
-        "I am Finds-The-Other-Bank. My feet are sore from the boards of the hold. Walk where I walk. The mud is soft at the edge."
+        "I am Finds-The-Other-Bank. We are only going along the dock. I walk it for my daughter's sake."
+      ]
+    },
+    {
+      "when": [
+        "ARG_MQ01",
+        40,
+        1000
       ],
-      "facts": []
+      "speaker": "Finds-The-Other-Bank",
+      "prompt": "Who are you?",
+      "lines": [
+        "I am Finds-The-Other-Bank. The cutting's light is out, and I do not know how far the way out goes from here.",
+        "Llarvi Maryon can tell you about the roll."
+      ]
     }
   ],
   "ARG_MQ01_MeeTuja": [
@@ -138,7 +165,8 @@
       ],
       "prompt": "Who are you?",
       "lines": [
-        "Mee-Tuja. I carry a satchel upriver. I walk with your gang as far as the camp. I will not say whose satchel it is."
+        "I am Mee-Tuja. I carry this satchel, and I walk with the gang to the camp.",
+        "I will not say whose satchel it is."
       ]
     }
   ],
@@ -151,18 +179,44 @@
       ],
       "prompt": "Who are you?",
       "lines": [
-        "I am Sal-Sei. I keep the clutch of eggs at the roots of the Hist cutting from Nine Bends. Do not go near the eggs."
-      ]
+        "I am Sal-Sei. I keep the clutch of eggs warm and I fetch the dry reed for the nest.",
+        "Keep wet hands off the eggs, guest."
+      ],
+      "facts": []
     },
     {
       "when": [
         "ARG_MQ01",
         40,
+        90
+      ],
+      "prompt": "Who are you?",
+      "lines": [
+        "I am Sal-Sei. The woman's two cutters cut the roots that tie the Hist cutting to the eggs.",
+        "Now the eggs are grey."
+      ],
+      "facts": [
+        "fact.mq01.roots-cut",
+        "fact.mq01.clutch-dead"
+      ]
+    },
+    {
+      "when": [
+        "ARG_MQ01",
+        90,
         1000
       ],
       "prompt": "Who are you?",
       "lines": [
-        "I am Sal-Sei. I kept the clutch of eggs. The roots of the Hist cutting were cut before its light went out. The eggs are grey now."
+        "I am Sal-Sei. You came through the cutters for me. The roots were cut and the clutch is dead.",
+        "My reed-knife is yours now. I have nothing else left to give."
+      ],
+      "facts": [
+        "fact.mq01.roots-cut",
+        "fact.mq01.clutch-dead"
+      ],
+      "gives": [
+        "item.mq01.sal-reed-knife"
       ]
     }
   ],
@@ -175,7 +229,8 @@
       ],
       "prompt": "Who are you?",
       "lines": [
-        "I am Deesh-Duun. I mend the nets at the corner of the shed. I know every family in this camp by name. I want to be out of the broker's hire."
+        "I am Deesh-Duun. I mend the nets at the corner of the shed, and I know every family in this camp by name.",
+        "I would like to be out of the broker's hire."
       ],
       "facts": []
     },
@@ -183,11 +238,45 @@
       "when": [
         "ARG_MQ01",
         40,
+        42
+      ],
+      "prompt": "Who are you?",
+      "lines": [
+        "I am Deesh-Duun. The huts are burning and I am under the boards.",
+        "I cannot lift them alone."
+      ],
+      "facts": []
+    },
+    {
+      "when": [
+        "ARG_MQ01",
+        42,
+        91
+      ],
+      "prompt": "Who are you?",
+      "lines": [
+        "I am Deesh-Duun. You came into the fire for me.",
+        "I saw her face: a tall woman with a knotted cord at her wrist. She took the courier's satchel and nothing else."
+      ],
+      "facts": [
+        "fact.mq01.her-face",
+        "fact.mq01.satchel"
+      ]
+    },
+    {
+      "when": [
+        "ARG_MQ01",
+        91,
         1000
       ],
       "prompt": "Who are you?",
       "lines": [
-        "I am Deesh-Duun. A tall woman with a knotted cord at her wrist led the ones who attacked us. I saw her face. She let me live."
+        "I am Deesh-Duun. You came for me when the huts burned, and I am alive because of it.",
+        "The woman who led them wore a knotted cord at her wrist, and I saw her face. The satchel was all she took."
+      ],
+      "facts": [
+        "fact.mq01.her-face",
+        "fact.mq01.satchel"
       ]
     }
   ],
@@ -200,9 +289,8 @@
       ],
       "prompt": "Who are you?",
       "lines": [
-        "I am Nesh-Neel. I walk the yard at dusk and I check every door. Be inside your shed before the light goes."
-      ],
-      "facts": []
+        "I am Nesh-Neel. I walk the families' camp at dusk, and I check the huts on the water and the shed door."
+      ]
     }
   ],
   "ARG_MQ01_CutsTheOldKnot": [
@@ -210,12 +298,13 @@
       "when": [
         "ARG_MQ01",
         0,
-        40
+        1000
       ],
       "prompt": "Who are you?",
       "lines": [
-        "You do not need my name. Move along."
-      ]
+        "You do not need my name."
+      ],
+      "facts": []
     }
   ],
   "ARG_MQ03_SaltsTheCatch": [

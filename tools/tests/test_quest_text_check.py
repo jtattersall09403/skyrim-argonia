@@ -43,7 +43,7 @@ def test_e8():
 def test_e9():
     sexes = {"Never-Sold": "female", "Hulm-Tei": "male"}
     bad = q.e9([it("spoken", "Never-Sold waits. He keeps the book.")], sexes)
-    assert bad and not bad[0].warn
+    assert bad and all(h.warn for h in bad)
     two = q.e9([it("spoken", "Never-Sold asked Hulm-Tei. She waits.")], sexes)
     assert [h for h in two if h.warn]
     assert not q.e9([it("spoken", "Never-Sold waits. She keeps the book.")], sexes)

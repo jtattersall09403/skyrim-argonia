@@ -2,9 +2,9 @@
 PY := $(firstword $(wildcard $(HOME)/.argonia/venv/bin/python) python3)
 RUFF := $(firstword $(wildcard $(HOME)/.argonia/venv/bin/ruff) $(shell command -v ruff) python3 -m ruff)
 
-.PHONY: check guard lint unit adaptation hooks deploy plugin plugin-check plugin-seed map
+.PHONY: check guard lint unit adaptation questtext hooks deploy plugin plugin-check plugin-seed map
 
-check: guard lint unit adaptation
+check: guard lint unit adaptation questtext
 	@echo "CHECK GREEN"
 
 guard:
@@ -20,6 +20,10 @@ unit:
 # The adaptation ledger's whole-set checks (phase 2): places, edits, prerequisites, danger, capacity, lore, 0006, 0035.
 adaptation:
 	@$(PY) -m tools.argonia_world.adaptation_check
+
+# The slice quests' player-visible text, from the story data (review-writing section E): see tools/argonia_world/quest_text_check.py.
+questtext:
+	@$(PY) -m tools.argonia_world.quest_text_check check
 
 hooks:
 	@bash tooling/guards/install_hooks.sh

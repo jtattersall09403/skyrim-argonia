@@ -178,7 +178,8 @@ def load_allow(path: pathlib.Path = ALLOW) -> dict:
 
 
 def _allowed(entries: list[dict], it: Item) -> bool:
-    return any(e.get("key") in (it.key, it.key.split("#")[0]) and (not e.get("text") or e["text"] in it.text)
+    base = re.split(r"[#@]", it.key)[0]
+    return any(e.get("key") in (it.key, it.key.split("#")[0], base) and (not e.get("text") or e["text"] in it.text)
                for e in entries)
 
 
@@ -224,7 +225,11 @@ _MALE, _FEMALE = {"he", "him", "his", "himself"}, {"she", "her", "hers", "hersel
 
 
 def e9(items: list[Item], sexes: dict[str, str]) -> list[Hit]:
-    """Pronouns in the sentence naming a person of known sex, and the next, agree; with two names only a warning."""
+    """Warn on a pronoun whose sex differs from a person named in its sentence or the next.
+
+    Always a warning, never a failure: a pronoun can refer to another person or to someone named earlier, and a
+    regex cannot tell whom ("Sits-By-The-Water drinks with him" means the thief, not her). Read each warning.
+    """
     out = []
     pats = {n: re.compile(rf"\b{re.escape(n)}\b") for n in sexes}
     for it in items:
@@ -236,13 +241,12 @@ def e9(items: list[Item], sexes: dict[str, str]) -> list[Hit]:
             if not first:
                 continue
             window = " ".join(sents[i:i + 2])
-            named = {n for n, p in pats.items() if p.search(window)}
             have = {w for w in re.findall(r"[a-z]+", window.lower()) if w in _MALE | _FEMALE}
             for n in sorted(first):
                 bad = have & (_FEMALE if sexes[n] == "male" else _MALE)
                 if bad:
                     out.append(Hit("E9", it.quest, it.key, f"{n} is {sexes[n]}; text says {sorted(bad)}", window,
-                                   warn=len(named) > 1))
+                                   warn=True))
     return out
 
 
