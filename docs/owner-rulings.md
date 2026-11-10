@@ -357,3 +357,6 @@ added here the day they are made, with the date and the issue.
   quests need ground that has none).
 - 2026-11-10 (in session, night): redrafts. A whole place is never redrafted to change one part of it. What needs
   changing is changed and the rest is kept; a whole redraft only when a narrow change truly cannot be correct.
+- 2026-11-10 (in session, night): the narrow-change rule stands for all future work, and the owner's edits made
+  in the studio are applied the same way: only what the edit touches changes, and no later draft step regenerates
+  over a place the owner has edited. The rule is a line in CLAUDE.md.

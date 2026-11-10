@@ -32,6 +32,7 @@ world with minimal tweaks ([PLAN](docs/PLAN.md), [0038](docs/decisions/0038-the-
 - Story, people and quest calls cite the lore (`story/lore/`) or the extrapolation ([0032](docs/decisions/0032-every-world-call-is-grounded-in-the-lore.md)); quests and dialogue are written through the skills ([0024](docs/decisions/0024-content-is-written-from-one-source-of-truth.md)).
 - Before inventing a rule, ask how Bethesda did it and do the same ([0034](docs/decisions/0034-ask-how-bethesda-did-it-and-do-the-same.md)).
 - Every mod is a row in `mods/dependencies.json` and a credit in `mods/sourcing-register.json` at first use.
+- A place is changed narrowly: apply the step that needs changing to the committed place files and keep every other row as it is; never redraft a whole place to change one part, and never regenerate over the owner's studio edits; a whole redraft only when a narrow change cannot be correct, said why, once (owner, 2026-11-10).
 - A change to how quests are put onto the world updates [quests-on-a-world](docs/design/quests-on-a-world.md) in the same commit, written as the clean recipe, never as history.
 
 ## Agents
