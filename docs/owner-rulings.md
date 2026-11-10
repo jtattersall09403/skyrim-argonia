@@ -297,3 +297,11 @@ added here the day they are made, with the date and the issue.
   itself wrong or tests nothing the owner needs is fixed or removed, not satisfied. The lead reviews the code of
   the drafter, the builder and the studio itself, not through subagents, and keeps the skills current with what
   the review finds. A session with a goal never idles waiting on the owner.
+- 2026-11-10 (in session, later): lanes and models. The lead plans and orchestrates; work goes to lanes and
+  subagents again. Delivery lanes run on Opus 5.5 at medium effort; code-review lanes are forced to Fable 5.2 at
+  medium effort.
+- 2026-11-10 (in session, later): the studio draws exactly what will be in the game. People's routes are found on
+  the built place's own walking mesh; streets, patrols and door arrivals lie on the built walkable network; nothing
+  the game does not draw (editor markers, effect shells) is drawn; everything placed shows at any zoom; the owner
+  leaves notes for the agent in the studio, about the place or about selected things; the Atlas opens inside the
+  studio from the built page, with no copied code.
