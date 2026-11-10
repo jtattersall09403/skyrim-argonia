@@ -370,3 +370,6 @@ added here the day they are made, with the date and the issue.
   Owing is the playable sentence: the game's jail mechanism re-dressed as a season of work, no cell. Capital
   punishment is part of native law: a person who resists arrest is fought to the death by the guards. The studio
   shows a kept invisible wall as a faint box when selecting, as it shows lights.
+- 2026-11-10 (in session, night): the walk 5 feedback on the built world is delivered by a fresh orchestrator
+  session, started unattended by the nw-03 session when its own lanes have landed, from the hand-over
+  (docs/phases/new-worldspace-plan/nw-02-walk-5-handover.md).
