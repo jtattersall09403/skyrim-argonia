@@ -89,7 +89,11 @@ def committed(place_id: str, places: Path = PLACES, bundles: Path = BUNDLES) -> 
             for old in snaps.glob(f"{place_id}.*"):  # one snapshot per place is enough
                 if old != root:
                     shutil.rmtree(old, ignore_errors=True)
-        return root, tree
+        # the draft's identity leaves out edits/ (the owner's saves): saving a named copy commits a file there, and
+        # that must not make the draft look changed to an open studio tab or to the saves made on it
+        ls = git(Path(top.stdout.strip()), "ls-tree", tree, text=True)
+        rows = [ln for ln in ls.stdout.splitlines() if not ln.endswith("\tedits")]
+        return root, hashlib.sha256("\n".join(rows).encode()).hexdigest()
     pdir = places / place_id
     h = hashlib.sha256()
     for p in sorted(pdir.rglob("*")):

@@ -71,6 +71,25 @@
 <div id="intro" class="intro" hidden></div>
 <div id="start" class="intro" hidden></div>
 <div id="settings" class="intro" hidden></div>
+<script>
+// If the studio's code has not started after a few seconds, the usual cause is a sign-in that has run out (the page
+// itself came from the browser's memory, and every request behind it is turned away). Say so and offer the way out.
+setTimeout(function () {
+  if (window.__studioBooted) return;
+  var t = document.getElementById('loading-text'), l = document.getElementById('loading');
+  function offer(msg, label, go) {
+    t.textContent = msg; var b = document.createElement('button'); b.className = 'primary retry'; b.textContent = label; b.onclick = go; l.appendChild(b);
+    var s = l.querySelector('.spinner'); if (s) s.hidden = true;
+  }
+  fetch('/api/status', { redirect: 'manual', cache: 'no-store', credentials: 'same-origin' }).then(function (r) {
+    if (window.__studioBooted) return;
+    if (r.type === 'opaqueredirect' || r.status === 401 || r.status === 403) offer('Your sign-in to the studio has run out. Sign in again to carry on; nothing has been lost.', 'Sign in again', function () { location.href = location.origin + '/?signin=' + Date.now(); });
+    else offer('The studio did not start. Reload it; if that does not help, clear this site\'s stored data in the browser and sign in again.', 'Reload', function () { location.reload(); });
+  }).catch(function () {
+    if (!window.__studioBooted) offer('The studio could not be reached. Check that the build machine is running, then reload.', 'Reload', function () { location.reload(); });
+  });
+}, 8000);
+</script>
 <script type="module" src="js/main.js"></script>
 </body>
 </html>

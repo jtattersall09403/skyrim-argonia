@@ -42,6 +42,7 @@ class Studio {
   }
   // ---------- loading ----------
   async start() {
+    window.__studioBooted = true;
     report('boot', { gl: glInfo(), w: innerWidth, h: innerHeight, dpr: devicePixelRatio, mem: navigator.deviceMemory });
     this.places = await api.places();
     if (!this.places?.length) { this.loading('No place has a draft yet. Run the draft step for a place first.'); return; }

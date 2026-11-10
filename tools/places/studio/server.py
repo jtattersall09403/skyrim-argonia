@@ -86,9 +86,13 @@ async def send_file(req: web.Request, p: Path, cache: str = "no-cache") -> web.S
         z = cfg.zcache / f"{key}.{enc}"
         if not z.exists():
             await asyncio.get_running_loop().run_in_executor(None, _compress, p, z, enc)
+        # the ETag names the source file's state, so a reload of an unchanged bundle costs a 304, not megabytes
+        etag = f'"{key[:20]}-{enc}"'
+        if etag in req.headers.get("If-None-Match", ""):
+            return web.Response(status=304, headers={"ETag": etag, "Cache-Control": cache, "Vary": "Accept-Encoding"})
         headers["Content-Encoding"] = enc
         r = web.FileResponse(z, headers=headers)
-        r.headers["ETag"] = f'"{key[:20]}-{enc}"'
+        r.headers["ETag"] = etag
         return r
     return web.FileResponse(p, headers=headers)
 
