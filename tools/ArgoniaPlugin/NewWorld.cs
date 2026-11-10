@@ -6,7 +6,7 @@
 // BottomLeft, BottomRight, TopLeft, TopRight one base layer (0xFFFF); Array2d indexed [x, y], y north from the south;
 // blocks 32 x 32 cells, sub-blocks 8 x 8, floor division. VHGT offset is in 8-unit steps.
 // Placeholders the later nw-02 steps replace: the ground texture (BM&V's 01MOSS1 on every quadrant), the water type
-// (the BM&V BlackMarsh worldspace's), the climate (BM&V's BlackMarshClimate).
+// (the BM&V BlackMarsh worldspace's), the climate (ours, NewWorldAtmosphere.cs).
 using System.Diagnostics;
 using System.Text.Json;
 using Mutagen.Bethesda;
@@ -145,7 +145,7 @@ static class NewWorld
         }
         ws.Water = new FormLinkNullable<IWaterGetter>(watrKey["sea"]);
         ws.LodWater = new FormLinkNullable<IWaterGetter>(watrKey["sea"]);
-        var (climKey, regionWeather) = Weather(mod, fc, ws, cj);
+        var (climKey, regionWeather) = NewWorldAtmosphere.Build(mod, fc, plugDir);  // atmosphere.json (tools/newworld/atmosphere.py)
         ws.Climate = new FormLinkNullable<IClimateGetter>(climKey);
         var regionKey = new Dictionary<string, FormKey>();
         uint rid = IdRegions;
@@ -156,7 +156,7 @@ static class NewWorld
                 EditorID = "ANW_Region_" + r.Name.Replace("-", "_"),
                 Worldspace = new FormLinkNullable<IWorldspaceGetter>(ws.FormKey),
                 MapColor = System.Drawing.Color.FromArgb(120, 140, 90),
-                Weather = new RegionWeather { Weathers = new ExtendedList<WeatherType>(regionWeather(r.Value.GetProperty("weathers"))) },
+                Weather = new RegionWeather { Weathers = new ExtendedList<WeatherType>(regionWeather(r.Name)) },
                 Map = new RegionMap { Name = r.Value.GetProperty("name").GetString() },
             };
             mod.Regions.Add(reg);
@@ -275,51 +275,6 @@ static class NewWorld
         File.Move(tmp, outPath, true);
         Console.WriteLine($"newworld write: {outPath}: {k} cells with LAND, build {man.BuildId}, {new FileInfo(outPath).Length} bytes, {sw.Elapsed.TotalSeconds:F1} s");
         return 0;
-    }
-
-    // Our climate and weathers: BM&V's BlackMarshClimate copied as ours with a long sunrise/sunset window
-    // (05:00-12:00, 17:00-22:00) so the night fog lerps away by noon and back by night; SkyrimClear and SkyrimCloudy
-    // copied with a dense Night fog slot (near 0, far 8000, power 0.4, max 0.75): ground mist at dawn and night on
-    // fair days; ANW_AfterRainFog (a SkyrimFog copy, day far 15000) listed beside the rain so fog follows it often.
-    static (FormKey, Func<JsonElement, IEnumerable<WeatherType>>) Weather(SkyrimMod mod, ForeignCopy fc, Worldspace ws, JsonElement cj)
-    {
-        FormKey Copy(string edid, string ours, Action<Mutagen.Bethesda.Skyrim.Weather> edit)
-        {
-            var key = new FormKey(mod.ModKey, fc.NextIdTake());
-            var w = (Mutagen.Bethesda.Skyrim.Weather)fc.Find("Skyrim.esm", edid).Duplicate(key);
-            w.EditorID = ours; edit(w); mod.Weathers.Add(w); return key;
-        }
-        void NightFog(Mutagen.Bethesda.Skyrim.Weather w)
-        {
-            w.FogDistanceNightNear = 0; w.FogDistanceNightFar = 8000; w.FogDistanceNightPower = 0.4f; w.FogDistanceNightMax = 0.75f;
-        }
-        var clear = Copy("SkyrimClear", "ANW_ClearMorningMist", NightFog);
-        var cloudy = Copy("SkyrimCloudy", "ANW_CloudyMorningMist", NightFog);
-        var after = Copy("SkyrimFog", "ANW_AfterRainFog", w => w.FogDistanceDayFar = 15000);
-        var key = new Dictionary<string, FormKey>
-        {
-            ["SkyrimFog"] = fc.Find("Skyrim.esm", "SkyrimFog").FormKey, ["SkyrimOvercastRain"] = fc.Find("Skyrim.esm", "SkyrimOvercastRain").FormKey,
-            ["SkyrimStormRain"] = fc.Find("Skyrim.esm", "SkyrimStormRain").FormKey, ["SkyrimCloudy"] = cloudy, ["SkyrimClear"] = clear,
-        };
-        IEnumerable<WeatherType> Mix(JsonElement weathers)
-        {
-            foreach (var p in weathers.EnumerateObject())
-            {
-                var ch = p.Value.GetInt32();
-                if (p.Name == "SkyrimFog") { yield return Wt(key[p.Name], ch - ch / 3); yield return Wt(after, ch / 3); }
-                else yield return Wt(key[p.Name], ch);
-            }
-        }
-        static WeatherType Wt(FormKey k, int ch) => new() { Weather = new FormLink<IWeatherGetter>(k), Chance = ch };
-        var climKey = fc.Get("Black Marsh.esm", "BlackMarshClimate", forceCopy: true);
-        var clim = mod.Climates[climKey];
-        clim.EditorID = "ANW_BlackMarshClimate";
-        clim.WeatherTypes ??= new ExtendedList<WeatherType>();
-        clim.WeatherTypes.Clear();
-        clim.WeatherTypes.AddRange(Mix(JsonDocument.Parse("{\"SkyrimFog\":45,\"SkyrimOvercastRain\":20,\"SkyrimStormRain\":20,\"SkyrimCloudy\":10,\"SkyrimClear\":5}").RootElement));
-        clim.SunriseBegin = new TimeOnly(5, 0); clim.SunriseEnd = new TimeOnly(12, 0);
-        clim.SunsetBegin = new TimeOnly(17, 0); clim.SunsetEnd = new TimeOnly(22, 0);
-        return (climKey, Mix);
     }
 
     // Placed refs from every producer's shards: <plugin dir>/refs/<producer>/cy<+NNN>.jsonl (format: cells.py).

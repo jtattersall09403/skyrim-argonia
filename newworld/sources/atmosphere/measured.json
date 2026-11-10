@@ -1,0 +1,867 @@
+{
+ "about": "Measured by `python -m tools.newworld.atmosphere study` (Skyrim.esm, Update.esm, Black Marsh.esm, Black Marsh North.esp, Tropical Skyrim.esp, the build before walk 5): each reference weather list's chance-weighted colours at dawn and noon with warmth ((R-B)/mean) and colour temperature (McCamy), and the dE between Bethesda's regions. The verifier compares our records with these.",
+ "references": {
+  "old build (ANW_BlackMarshClimate)": {
+   "list": [
+    [
+     "SkyrimFog",
+     30
+    ],
+    [
+     "ANW_AfterRainFog",
+     15
+    ],
+    [
+     "SkyrimOvercastRain",
+     20
+    ],
+    [
+     "SkyrimStormRain",
+     20
+    ],
+    [
+     "ANW_CloudyMorningMist",
+     10
+    ],
+    [
+     "ANW_ClearMorningMist",
+     5
+    ]
+   ],
+   "SunlightColor.Sunrise": {
+    "rgb": [
+     195,
+     181,
+     169
+    ],
+    "warmth": 0.142,
+    "cct": 5407
+   },
+   "FogNearColor.Sunrise": {
+    "rgb": [
+     52,
+     71,
+     70
+    ],
+    "warmth": -0.288,
+    "cct": 8522
+   },
+   "FogFarColor.Sunrise": {
+    "rgb": [
+     106,
+     100,
+     93
+    ],
+    "warmth": 0.132,
+    "cct": 5533
+   },
+   "AmbientColor.Sunrise": {
+    "rgb": [
+     101,
+     115,
+     125
+    ],
+    "warmth": -0.218,
+    "cct": 8859
+   },
+   "SunlightColor.Day": {
+    "rgb": [
+     193,
+     201,
+     212
+    ],
+    "warmth": -0.096,
+    "cct": 7505
+   },
+   "FogNearColor.Day": {
+    "rgb": [
+     49,
+     89,
+     110
+    ],
+    "warmth": -0.744,
+    "cct": 18038
+   },
+   "FogFarColor.Day": {
+    "rgb": [
+     100,
+     120,
+     136
+    ],
+    "warmth": -0.303,
+    "cct": 10224
+   },
+   "AmbientColor.Day": {
+    "rgb": [
+     74,
+     85,
+     91
+    ],
+    "warmth": -0.205,
+    "cct": 8478
+   }
+  },
+  "BM&V (BlackMarshClimate)": {
+   "list": [
+    [
+     "SkyrimFog",
+     45
+    ],
+    [
+     "SkyrimOvercastRain",
+     20
+    ],
+    [
+     "SkyrimStormRain",
+     20
+    ],
+    [
+     "SkyrimCloudy",
+     10
+    ],
+    [
+     "SkyrimClear",
+     5
+    ]
+   ],
+   "SunlightColor.Sunrise": {
+    "rgb": [
+     199,
+     187,
+     176
+    ],
+    "warmth": 0.12,
+    "cct": 5557
+   },
+   "FogNearColor.Sunrise": {
+    "rgb": [
+     49,
+     67,
+     67
+    ],
+    "warmth": -0.298,
+    "cct": 8624
+   },
+   "FogFarColor.Sunrise": {
+    "rgb": [
+     103,
+     95,
+     88
+    ],
+    "warmth": 0.161,
+    "cct": 5357
+   },
+   "AmbientColor.Sunrise": {
+    "rgb": [
+     101,
+     115,
+     125
+    ],
+    "warmth": -0.218,
+    "cct": 8859
+   },
+   "SunlightColor.Day": {
+    "rgb": [
+     198,
+     207,
+     217
+    ],
+    "warmth": -0.092,
+    "cct": 7452
+   },
+   "FogNearColor.Day": {
+    "rgb": [
+     49,
+     83,
+     100
+    ],
+    "warmth": -0.657,
+    "cct": 15593
+   },
+   "FogFarColor.Day": {
+    "rgb": [
+     91,
+     111,
+     128
+    ],
+    "warmth": -0.33,
+    "cct": 10713
+   },
+   "AmbientColor.Day": {
+    "rgb": [
+     74,
+     85,
+     91
+    ],
+    "warmth": -0.205,
+    "cct": 8478
+   }
+  },
+  "Tropical Skyrim (its BM&V weathers)": {
+   "list": [
+    [
+     "SkyrimFog",
+     45
+    ],
+    [
+     "SkyrimOvercastRain",
+     20
+    ],
+    [
+     "SkyrimStormRain",
+     20
+    ],
+    [
+     "SkyrimCloudy",
+     10
+    ],
+    [
+     "SkyrimClear",
+     5
+    ]
+   ],
+   "SunlightColor.Sunrise": {
+    "rgb": [
+     192,
+     176,
+     161
+    ],
+    "warmth": 0.172,
+    "cct": 5224
+   },
+   "FogNearColor.Sunrise": {
+    "rgb": [
+     57,
+     78,
+     76
+    ],
+    "warmth": -0.271,
+    "cct": 8350
+   },
+   "FogFarColor.Sunrise": {
+    "rgb": [
+     114,
+     110,
+     105
+    ],
+    "warmth": 0.082,
+    "cct": 5864
+   },
+   "AmbientColor.Sunrise": {
+    "rgb": [
+     101,
+     115,
+     125
+    ],
+    "warmth": -0.218,
+    "cct": 8859
+   },
+   "SunlightColor.Day": {
+    "rgb": [
+     188,
+     198,
+     210
+    ],
+    "warmth": -0.111,
+    "cct": 7682
+   },
+   "FogNearColor.Day": {
+    "rgb": [
+     113,
+     129,
+     69
+    ],
+    "warmth": 0.422,
+    "cct": 4877
+   },
+   "FogFarColor.Day": {
+    "rgb": [
+     108,
+     133,
+     163
+    ],
+    "warmth": -0.413,
+    "cct": 13571
+   },
+   "AmbientColor.Day": {
+    "rgb": [
+     73,
+     85,
+     91
+    ],
+    "warmth": -0.216,
+    "cct": 8618
+   }
+  },
+  "Tropical Skyrim (its marsh, WeatherTundraMarsh)": {
+   "list": [
+    [
+     "SkyrimCloudyMA",
+     40
+    ],
+    [
+     "SkyrimClearMA",
+     20
+    ],
+    [
+     "SkyrimFogMA",
+     20
+    ],
+    [
+     "SkyrimOvercastRainMA",
+     10
+    ],
+    [
+     "SkyrimClearMA_A",
+     5
+    ],
+    [
+     "SkyrimCloudyMA_A",
+     5
+    ]
+   ],
+   "SunlightColor.Sunrise": {
+    "rgb": [
+     183,
+     160,
+     111
+    ],
+    "warmth": 0.478,
+    "cct": 4095
+   },
+   "FogNearColor.Sunrise": {
+    "rgb": [
+     66,
+     81,
+     86
+    ],
+    "warmth": -0.261,
+    "cct": 8851
+   },
+   "FogFarColor.Sunrise": {
+    "rgb": [
+     107,
+     126,
+     132
+    ],
+    "warmth": -0.207,
+    "cct": 8476
+   },
+   "AmbientColor.Sunrise": {
+    "rgb": [
+     113,
+     130,
+     140
+    ],
+    "warmth": -0.215,
+    "cct": 8757
+   },
+   "SunlightColor.Day": {
+    "rgb": [
+     174,
+     170,
+     163
+    ],
+    "warmth": 0.06,
+    "cct": 6004
+   },
+   "FogNearColor.Day": {
+    "rgb": [
+     96,
+     133,
+     116
+    ],
+    "warmth": -0.173,
+    "cct": 7346
+   },
+   "FogFarColor.Day": {
+    "rgb": [
+     82,
+     146,
+     172
+    ],
+    "warmth": -0.679,
+    "cct": 15939
+   },
+   "AmbientColor.Day": {
+    "rgb": [
+     129,
+     147,
+     158
+    ],
+    "warmth": -0.2,
+    "cct": 8603
+   }
+  },
+  "Hjaalmarch (WeatherTundraMarsh)": {
+   "list": [
+    [
+     "SkyrimCloudyMA",
+     40
+    ],
+    [
+     "SkyrimClearMA",
+     20
+    ],
+    [
+     "SkyrimFogMA",
+     20
+    ],
+    [
+     "SkyrimOvercastRainMA",
+     10
+    ],
+    [
+     "SkyrimClearMA_A",
+     5
+    ],
+    [
+     "SkyrimCloudyMA_A",
+     5
+    ]
+   ],
+   "SunlightColor.Sunrise": {
+    "rgb": [
+     195,
+     164,
+     135
+    ],
+    "warmth": 0.365,
+    "cct": 4246
+   },
+   "FogNearColor.Sunrise": {
+    "rgb": [
+     55,
+     68,
+     76
+    ],
+    "warmth": -0.309,
+    "cct": 9748
+   },
+   "FogFarColor.Sunrise": {
+    "rgb": [
+     86,
+     94,
+     103
+    ],
+    "warmth": -0.176,
+    "cct": 8342
+   },
+   "AmbientColor.Sunrise": {
+    "rgb": [
+     113,
+     130,
+     140
+    ],
+    "warmth": -0.215,
+    "cct": 8757
+   },
+   "SunlightColor.Day": {
+    "rgb": [
+     192,
+     187,
+     184
+    ],
+    "warmth": 0.038,
+    "cct": 6176
+   },
+   "FogNearColor.Day": {
+    "rgb": [
+     65,
+     125,
+     148
+    ],
+    "warmth": -0.743,
+    "cct": 16912
+   },
+   "FogFarColor.Day": {
+    "rgb": [
+     98,
+     141,
+     164
+    ],
+    "warmth": -0.495,
+    "cct": 13142
+   },
+   "AmbientColor.Day": {
+    "rgb": [
+     129,
+     147,
+     158
+    ],
+    "warmth": -0.2,
+    "cct": 8603
+   }
+  },
+  "the Rift (WeatherFallForest)": {
+   "list": [
+    [
+     "SkyrimClearFF",
+     35
+    ],
+    [
+     "SkyrimCloudyFF",
+     35
+    ],
+    [
+     "SkyrimFogFF",
+     10
+    ],
+    [
+     "SkyrimOvercastRainFF",
+     5
+    ],
+    [
+     "SkyrimStormRainFF",
+     5
+    ],
+    [
+     "SkyrimClearFF_A",
+     5
+    ],
+    [
+     "SkyrimCloudyFF_A",
+     5
+    ]
+   ],
+   "SunlightColor.Sunrise": {
+    "rgb": [
+     190,
+     154,
+     129
+    ],
+    "warmth": 0.39,
+    "cct": 4062
+   },
+   "FogNearColor.Sunrise": {
+    "rgb": [
+     43,
+     86,
+     108
+    ],
+    "warmth": -0.824,
+    "cct": 20048
+   },
+   "FogFarColor.Sunrise": {
+    "rgb": [
+     107,
+     110,
+     112
+    ],
+    "warmth": -0.049,
+    "cct": 6948
+   },
+   "AmbientColor.Sunrise": {
+    "rgb": [
+     119,
+     131,
+     148
+    ],
+    "warmth": -0.217,
+    "cct": 9177
+   },
+   "SunlightColor.Day": {
+    "rgb": [
+     196,
+     186,
+     174
+    ],
+    "warmth": 0.117,
+    "cct": 5590
+   },
+   "FogNearColor.Day": {
+    "rgb": [
+     42,
+     82,
+     111
+    ],
+    "warmth": -0.875,
+    "cct": 29191
+   },
+   "FogFarColor.Day": {
+    "rgb": [
+     127,
+     174,
+     200
+    ],
+    "warmth": -0.438,
+    "cct": 12334
+   },
+   "AmbientColor.Day": {
+    "rgb": [
+     134,
+     157,
+     177
+    ],
+    "warmth": -0.278,
+    "cct": 9966
+   }
+  },
+  "the Reach (WeatherReach)": {
+   "list": [
+    [
+     "SkyrimCloudyRE",
+     33
+    ],
+    [
+     "SkyrimFogRE",
+     32
+    ],
+    [
+     "SkyrimClearRE",
+     15
+    ],
+    [
+     "SkyrimOvercastRainRE",
+     10
+    ],
+    [
+     "SkyrimCloudyRE_A",
+     5
+    ],
+    [
+     "SkyrimClearRE_A",
+     5
+    ]
+   ],
+   "SunlightColor.Sunrise": {
+    "rgb": [
+     205,
+     168,
+     141
+    ],
+    "warmth": 0.377,
+    "cct": 4133
+   },
+   "FogNearColor.Sunrise": {
+    "rgb": [
+     55,
+     105,
+     123
+    ],
+    "warmth": -0.723,
+    "cct": 15610
+   },
+   "FogFarColor.Sunrise": {
+    "rgb": [
+     91,
+     87,
+     87
+    ],
+    "warmth": 0.042,
+    "cct": 6173
+   },
+   "AmbientColor.Sunrise": {
+    "rgb": [
+     112,
+     123,
+     128
+    ],
+    "warmth": -0.134,
+    "cct": 7776
+   },
+   "SunlightColor.Day": {
+    "rgb": [
+     191,
+     190,
+     189
+    ],
+    "warmth": 0.013,
+    "cct": 6388
+   },
+   "FogNearColor.Day": {
+    "rgb": [
+     33,
+     93,
+     114
+    ],
+    "warmth": -1.02,
+    "cct": 20956
+   },
+   "FogFarColor.Day": {
+    "rgb": [
+     100,
+     146,
+     176
+    ],
+    "warmth": -0.543,
+    "cct": 15044
+   },
+   "AmbientColor.Day": {
+    "rgb": [
+     132,
+     147,
+     159
+    ],
+    "warmth": -0.186,
+    "cct": 8509
+   }
+  },
+  "the coast (WeatherCoast)": {
+   "list": [
+    [
+     "SkyrimCloudyCO",
+     35
+    ],
+    [
+     "SkyrimClearCO",
+     25
+    ],
+    [
+     "SkyrimFogCO",
+     15
+    ],
+    [
+     "SkyrimOvercastSnow",
+     10
+    ],
+    [
+     "SkyrimStormSnow",
+     5
+    ],
+    [
+     "SkyrimCloudyCO_A",
+     5
+    ],
+    [
+     "SkyrimClearCO_A",
+     5
+    ]
+   ],
+   "SunlightColor.Sunrise": {
+    "rgb": [
+     192,
+     162,
+     138
+    ],
+    "warmth": 0.327,
+    "cct": 4380
+   },
+   "FogNearColor.Sunrise": {
+    "rgb": [
+     46,
+     91,
+     113
+    ],
+    "warmth": -0.807,
+    "cct": 19408
+   },
+   "FogFarColor.Sunrise": {
+    "rgb": [
+     102,
+     105,
+     108
+    ],
+    "warmth": -0.06,
+    "cct": 7042
+   },
+   "AmbientColor.Sunrise": {
+    "rgb": [
+     106,
+     130,
+     148
+    ],
+    "warmth": -0.324,
+    "cct": 10553
+   },
+   "SunlightColor.Day": {
+    "rgb": [
+     161,
+     171,
+     174
+    ],
+    "warmth": -0.077,
+    "cct": 7196
+   },
+   "FogNearColor.Day": {
+    "rgb": [
+     34,
+     88,
+     115
+    ],
+    "warmth": -1.021,
+    "cct": 27428
+   },
+   "FogFarColor.Day": {
+    "rgb": [
+     109,
+     146,
+     168
+    ],
+    "warmth": -0.419,
+    "cct": 12096
+   },
+   "AmbientColor.Day": {
+    "rgb": [
+     119,
+     164,
+     192
+    ],
+    "warmth": -0.463,
+    "cct": 13149
+   }
+  }
+ },
+ "bethesda_regional_delta_e": {
+  "Hjaalmarch (WeatherTundraMarsh) / the Rift (WeatherFallForest)": {
+   "FogNearColor.Sunrise": 13.3,
+   "FogNearColor.Day": 18.2,
+   "FogFarColor.Sunrise": 8.2,
+   "FogFarColor.Day": 12.4,
+   "AmbientColor.Sunrise": 4.7,
+   "AmbientColor.Day": 6.3,
+   "SunlightColor.Sunrise": 4.3,
+   "SunlightColor.Day": 5.2
+  },
+  "Hjaalmarch (WeatherTundraMarsh) / the Reach (WeatherReach)": {
+   "FogNearColor.Sunrise": 18.2,
+   "FogNearColor.Day": 12.8,
+   "FogFarColor.Sunrise": 7.6,
+   "FogFarColor.Day": 4.4,
+   "AmbientColor.Sunrise": 4.3,
+   "AmbientColor.Day": 1.3,
+   "SunlightColor.Sunrise": 3.3,
+   "SunlightColor.Day": 2.0
+  },
+  "Hjaalmarch (WeatherTundraMarsh) / the coast (WeatherCoast)": {
+   "FogNearColor.Sunrise": 14.6,
+   "FogNearColor.Day": 15.1,
+   "FogFarColor.Sunrise": 6.3,
+   "FogFarColor.Day": 2.9,
+   "AmbientColor.Sunrise": 5.0,
+   "AmbientColor.Day": 13.1,
+   "SunlightColor.Sunrise": 2.8,
+   "SunlightColor.Day": 9.4
+  },
+  "the Rift (WeatherFallForest) / the Reach (WeatherReach)": {
+   "FogNearColor.Sunrise": 8.3,
+   "FogNearColor.Day": 8.8,
+   "FogFarColor.Sunrise": 9.4,
+   "FogFarColor.Day": 10.7,
+   "AmbientColor.Sunrise": 7.7,
+   "AmbientColor.Day": 6.1,
+   "SunlightColor.Sunrise": 5.3,
+   "SunlightColor.Day": 6.9
+  },
+  "the Rift (WeatherFallForest) / the coast (WeatherCoast)": {
+   "FogNearColor.Sunrise": 2.1,
+   "FogNearColor.Day": 4.3,
+   "FogFarColor.Sunrise": 2.1,
+   "FogFarColor.Day": 10.6,
+   "AmbientColor.Sunrise": 4.3,
+   "AmbientColor.Day": 7.8,
+   "SunlightColor.Sunrise": 3.7,
+   "SunlightColor.Day": 12.9
+  },
+  "the Reach (WeatherReach) / the coast (WeatherCoast)": {
+   "FogNearColor.Sunrise": 6.4,
+   "FogNearColor.Day": 4.9,
+   "FogFarColor.Sunrise": 7.7,
+   "FogFarColor.Day": 4.9,
+   "AmbientColor.Sunrise": 8.8,
+   "AmbientColor.Day": 13.2,
+   "SunlightColor.Sunrise": 4.4,
+   "SunlightColor.Day": 9.0
+  }
+ }
+}

@@ -1000,3 +1000,32 @@ CREATE TABLE "region_flora" (
   PRIMARY KEY ("region_id", "habitat_id", "flora_base_id"),
   FOREIGN KEY ("region_id", "habitat_id") REFERENCES "region_habitat"("region_id", "habitat_id")
 );
+
+-- ---------------------------------------------------------------------------------------------------------
+-- Atmosphere: weather, light and mist classes per region (walk 5; tools/newworld/atmosphere.py from
+-- newworld/sources/atmosphere/; docs/design/atmosphere.md)
+-- ---------------------------------------------------------------------------------------------------------
+
+-- A real tropical atmosphere the class is built from, and the numbers its weathers and mist are made from.
+CREATE TABLE "atmosphere_class" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "name" TEXT NOT NULL,
+  "analogue" TEXT NOT NULL,              -- the real places it is researched from
+  "weather_family" TEXT NOT NULL CHECK ("weather_family" IN ('marsh', 'forest', 'upland', 'coast')),  -- Bethesda's regional set it copies
+  "research_section" TEXT NOT NULL,      -- docs/research/nw-02-walk5-atmosphere.md section
+  "sun_noon_k" REAL NOT NULL,            -- direct sunlight's colour temperature at noon
+  "rh_afternoon" REAL NOT NULL,          -- relative humidity of the afternoon (sets the haze distance)
+  "aerosol" REAL NOT NULL,               -- haze load against clean humid air (1)
+  "mist_density" REAL NOT NULL,          -- low mist refs per hectare as a multiple of Hjaalmarch's marsh (3.53 per ha)
+  "mist_full_vis" REAL NOT NULL          -- share of the full-opacity mist meshes (the rest half-visible)
+);
+
+-- Each region's class and latitude band (north by the Morrowind border, middle, south coast).
+CREATE TABLE "region_atmosphere" (
+  "region_id" TEXT NOT NULL PRIMARY KEY REFERENCES "region"("id"),
+  "atmosphere_class_id" TEXT NOT NULL REFERENCES "atmosphere_class"("id"),
+  "band" TEXT NOT NULL CHECK ("band" IN ('north', 'middle', 'south')),
+  "centroid_cell_y" REAL NOT NULL,       -- mean Skyrim cell row of its province cells (the band's measure)
+  "note_aspect_id" TEXT REFERENCES "note_aspect"("id"),  -- the region research it rests on
+  "why" TEXT NOT NULL
+);

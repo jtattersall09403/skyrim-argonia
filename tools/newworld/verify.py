@@ -310,6 +310,9 @@ def run(plugin: Path, out: Path, do_dump: bool = True) -> int:
         at_sea = [r for r in mist if kinds.get(f"{r['cx']},{r['cy']}") == "sea" and float(r["ground"]) < water_h]
         rep.row("mist", "mist refs in marsh and inland water", len(mist), len(mist) > 0)
         rep.row("mist", "no mist over the sea", len(at_sea), not at_sea, f"e.g. cell {at_sea[0]['cx']},{at_sea[0]['cy']}" if at_sea else "")
+        from tools.newworld.world import mist as mist_rows  # density by water kind and class, strength, height, budget
+        for req, v, ok, det in mist_rows.rows(mist, natural, intent["cells"] if intent else {}):
+            rep.row("mist", req, v, ok, det)
 
     @section(rep, "atmosphere")
     def _atmo():
@@ -325,6 +328,9 @@ def run(plugin: Path, out: Path, do_dump: bool = True) -> int:
             rep.row("atmosphere", "every REGN has a weather list", len(noweather), not noweather, f"e.g. {noweather[:3]}")
         nreg = [k for k, c in cells.items() if not c["region"]]
         rep.row("atmosphere", "every cell links a region", f"{len(cells) - len(nreg)}/{len(cells)}", not nreg)
+        from tools.newworld import atmosphere  # our weathers read back: fields, region lists, climate, distinct, warm
+        for req, v, ok, det in atmosphere.rows(plugin):
+            rep.row("atmosphere", req, v, ok, det)
 
     @section(rep, "navmesh")
     def _nav():

@@ -29,6 +29,7 @@ import numpy as np
 from PIL import Image
 
 from tools.argonia_world import db
+from tools.newworld import atmosphere
 from tools.newworld import danger
 from tools.newworld import flora
 from tools.newworld import frame as f
@@ -319,6 +320,7 @@ def build() -> db.World:
     travel.load(w)
     place_danger.assign(w)
     place_law.assign(w)
+    atmosphere.load(w)
     w.insert_many("source", sorted(sources.values(), key=lambda r: r["id"]))
     stockdb.load(w)
     w.save()

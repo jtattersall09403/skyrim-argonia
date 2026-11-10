@@ -28,6 +28,7 @@ switch (args.FirstOrDefault())
     case "nightreed": NightReedStudy.Run(args[1..]); break;
     case "mainquestcheck": return MainQuestCheck.Run(args[1], args[2], args[3..]);
     case "newworld": return NewWorld.Run(args[1..]);
+    case "atmos": return NewWorldAtmosphere.Run(args[1..]);
     case "nwmap": return NewWorldMap.Run(args[1..]);
     case "placecheck": return PlaceCheck.Run(args[1], args[2..]);
     case "questcheck": return args.Length > 1 && args[1] == "--selftest" ? QuestCheck.SelfTest() : QuestCheck.Run(args[1], args[2], args[3..]);
