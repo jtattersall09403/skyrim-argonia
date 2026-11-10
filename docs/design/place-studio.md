@@ -374,14 +374,24 @@ actors, beds, package targets and merchant chests are persistent: in the world's
 their own cell (interior), as vanilla files them.
 
 **The recipe.**
+0. `build <place_id> --plan` plans without navmesh or plugin and lists every problem (a fault of the place
+   files: file, row id, what is wrong), exiting 1 if any; a full build stops on the same list. The drafter runs it
+   in its loop (seconds once the source cells and rooms are cached).
 1. Plan each place into `out/places/shards/<place_id>/plan.json` (`tools/places/build.py`), keyed on its place
    files, the world ESM's sha256 and the code; an unchanged key is not planned again. The world ESM must be of the
    land build its navmesh inputs hold (`out/newworld/plugin/land/manifest.json`), else the build stops.
-2. Interiors: `space.json` `copy_of` names the source cell (the first of the source's plugins that holds it);
-   `room` (a source ref) or `keep_within {pos, radius}` keeps only the refs of one room of a cell the source
-   shares between houses (radius 1,200 for `room`). A row with `src` changes that copied ref (`removed: true`
-   drops it; `base`, `pos`, `rot`, `scale`, `owner`, `door` replace the source's); a row with a `src` outside the
-   kept room is not in the copy; a row without `src` is added. Source actors are never copied: people are ours.
+2. Interiors: `space.json` `copy_of` names the source cell (each of the source's plugins that holds it adds its
+   refs; read once and cached under `out/places/srccells`). `room` (one of the cell's load doors that lead out)
+   keeps only that room of a cell the source shares between houses, by the room rule: the whole cell's collision
+   (doors open) is meshed by the world's own Recast run; the room is the walkable island reached from its door;
+   every source ref belongs to the door island its position is nearest, islands of every door of the cell
+   competing, so refs behind a door that leads nowhere fall in no room. No hand numbers; cached under
+   `out/places/rooms` by the source refs' hash. Measured on BM&V's `01ArgonianHouseinside` (nine houses in one
+   cell, no source navmesh joining door to floor): nine islands of 206 to 278 triangles, 6 beds in each room,
+   every ref at least 2,093 units nearer its own room than the next. A row with `src` changes that copied ref
+   (`removed: true` drops it; `base`, `pos`, `rot`, `scale`, `owner`, `door` replace the source's); a row with a
+   `src` outside the kept room is not in the copy; a row without `src` is added. Source actors are never copied:
+   people are ours.
 3. Doors: a door row's `door.to_space` and `to_ref` (our id, or a source key in a copied space) name its
    partner; both get teleports. The arrival marker by a copied door is its source pair's; by our door whose partner
    is a copy, the source's marker moved rigidly from the source door to ours; else 128 units in front of the door.
@@ -397,16 +407,18 @@ their own cell (interior), as vanilla files them.
 6. People (`tools/places/people.py`): an actor base of ours per person (a copy of `base_from` at a fixed level;
    levelled lists in its inventory, outfit or merchant chest flattened to their level-1 items), placed once and
    persistent; packages copied from vanilla templated ones (rest: WhiterunBraithSleep21x12; work and wander:
-   SolitudeTempleMinister0x8; eat: GuardRiftenEatDayShift20x4; patrol: GuardRiftenBarracksPatrol over a chain of
-   linked XMarkerHeadings) with our schedule and place, then an unscheduled sandbox at home; the person's bed
+   SolitudeTempleMinister0x8; eat: GuardRiftenEatDayShift20x4; patrol: GuardRiftenBarracksPatrol, the vanilla way: its target
+   input is PackageTargetLinkedReference with no keyword, and the actor's own linked ref names the first of a chain
+   of linked XMarkerHeadings, closed when `patrol.loop`) with our schedule and place, then an unscheduled sandbox at home; the person's bed
    owned by them; everyone in the place's crime faction (TrackCrime, vanilla's crime values), guards also in
    IsGuardFaction. A stop names a ref (our id or a source key in its space), a position (2D is seated on the
    ground), or only a space (its first furniture). Services by give (`give_kind_id` or `kind`): `trader-*` a
    vendor faction of ours (hours from the work stop, the vanilla vendor list, a merchant chest in the place's
    chest cell) and the vanilla Job faction; `trainer` a class of ours that teaches (Journeyman 50, Expert 75,
    Master 90; skill and level from `skill`/`level` or the give's detail) with JobTrainerFaction and
-   JobTrainer<Skill>Faction; `inn-room` JobInnkeeperFaction and another bed of the inn owned by the innkeeper's
-   vendor faction. `faction_ranks` `<place>.crime` and `<place>.vendor.*` are made by the build; `<place>.town` is
+   JobTrainer<Skill>Faction; `inn-room` JobInnkeeperFaction and the rented bed (`room_bed`, else a bed of the
+   innkeeper's house, else of where they work, that no resident sleeps in) owned by the innkeeper's vendor
+   faction. `faction_ranks` `<place>.crime` and `<place>.vendor.*` are made by the build; `<place>.town` is
    the place's town faction.
    **Not built yet:** renting the bed (vanilla: DialogueGeneric's RentRoomTopic and the innkeeper's RentRoomScript,
    property Bed), travel (`carriage-or-boat`: vanilla's carriages are CarriageSystemScript properties, not records)
@@ -415,8 +427,8 @@ their own cell (interior), as vanilla files them.
 7. Navmesh: the touched exterior cells (placed collision, changed land, path cells) are rebuilt by
    `tools.navmesh` over the patched land and the place's collision in a window of three rings; the touched cells
    and ring 1 are ours, and ring 2 must come out byte-equal to the world's own NAVM, so the join is edge for edge.
-   An interior keeps its source's navmesh trimmed to the kept room; where the source has none over the room
-   (BM&V's shared house cells), it is generated by the same Recast run over the room's collision. Door triangles
+   An interior keeps its source's navmesh; a `room` copy takes its room's island from the room rule; an interior
+   whose source has none is generated by the same Recast run over its collision. Door triangles
    on both sides follow vanilla's rule (the triangle under the partner's arrival marker names the door). The NAVI
    override carries our NVMI only.
 8. Assemble every shard into the plugin (`ArgoniaPlacesBuild write`); the world ESM is read, never written.

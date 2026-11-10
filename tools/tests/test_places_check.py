@@ -128,3 +128,23 @@ def test_a_plant_on_a_path_fails_clear():
     c = ctx()
     c["facts"]["cells"][0]["refs"][1]["pos"] = [2300.0, 1400.0, 800.0]
     assert C.run(c)["clear"]
+
+
+def patrol_ctx(link_actor=True):
+    """The person's work package patrols, the vanilla way: target = the actor's linked ref, a chain of two markers."""
+    c = copy.deepcopy(ctx())
+    d = c["dump"]
+    m2 = {"fk": k(6), "base": k(0x21, "Skyrim.esm"), "base_type": "STAT", "base_edid": "XMarkerHeading", "model": None,
+          "pos": [2600.0, 1600.0, 800.0], "rot": [0, 0, 0], "scale": 1.0, "flags": 0, "space": "exterior", "bounds": None,
+          "linked": [{"ref": k(5), "keyword": ""}]}
+    d["refs"][4]["linked"] = [{"ref": k(6), "keyword": ""}]
+    d["refs"].append(m2)
+    d["packages"][1] = {"fk": k(21), "edid": "patrol", "location": None, "target": None, "target_linked": True}
+    if link_actor:
+        d["actors"][0]["linked"] = [{"ref": k(5), "keyword": ""}]
+    return c
+
+
+def test_a_patrol_by_linked_ref_passes_and_fails_without_the_actor_link():
+    assert not C.run(patrol_ctx())["people"]
+    assert any("no linked ref" in x for x in C.run(patrol_ctx(link_actor=False))["people"])

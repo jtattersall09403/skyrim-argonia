@@ -66,6 +66,10 @@ def sk(local: str) -> str:
     return f"Skyrim.esm:{local}"
 
 
+class Bad(Exception):
+    """A fault of one person's row: listed as a problem, the rest still planned."""
+
+
 def plan(P: dict, S: dict, ids, facts: dict, notes: list[str]) -> dict:
     from tools.places.build import cell_of
     pid = P["place"]["place_id"]
@@ -106,7 +110,7 @@ def plan(P: dict, S: dict, ids, facts: dict, notes: list[str]) -> dict:
             rs = [r for r in S["refs"] if r["space"] == sp]
             r = next((r for r in rs if r.get("kind") == "furniture"), rs[0] if rs else None)
             if r is None:
-                raise SystemExit(f"people.jsonl: stop in {sp}, which has no refs")
+                raise Bad(f"people.jsonl: stop in {sp}, which has no refs")
             at["ref"] = r["id"]
             return at
         if len(at["pos"]) == 2:
@@ -119,7 +123,7 @@ def plan(P: dict, S: dict, ids, facts: dict, notes: list[str]) -> dict:
         if at.get("ref"):
             r = by_id.get(at["ref"])
             if r is None:
-                raise SystemExit(f"people.jsonl: {why}: ref {at['ref']} is not in the place")
+                raise Bad(f"people.jsonl: {why}: ref {at['ref']} is not in the place")
             r["persistent"] = True
             return r["fk"]
         key = f"marker:{why}"
@@ -129,29 +133,44 @@ def plan(P: dict, S: dict, ids, facts: dict, notes: list[str]) -> dict:
                                "cell": list(cell_of(*at["pos"][:2])) if sp == "exterior" else None})
         return fk
 
-    for p in people:
+    taken_beds = set()
+    for q in people:
+        b = q.get("bed")
+        r = find_ref(b) if isinstance(b, dict) else by_id.get(b or "")
+        if r is not None:
+            taken_beds.add(r["id"])
+
+    def one(p):
         who = p["id"]
         npc_fk = ids(f"npc:{who}")
         if isinstance(p.get("bed"), dict):
             b = find_ref(p["bed"])
             p["bed"] = b["id"] if b else p["bed"]["ref"]
         packs = []
+        patrol_start = None
         for i, st in enumerate(p.get("routine", [])):
             kind = st["kind"]
             if kind not in TEMPLATE:
-                raise SystemExit(f"people.jsonl: {who}: routine kind {kind!r} (known: {sorted(TEMPLATE)})")
+                raise Bad(f"people.jsonl: {who}: routine kind {kind!r} (known: {sorted(TEMPLATE)})")
             fk = ids(f"pack:{who}:{i}")
             row = {"fk": fk, "edid": f"ANP_{pid}_{_edid(who)}_{kind}{i}", "from": TEMPLATE[kind], "kind": kind,
                    "hour": int(st["start"]), "minutes": int(round(float(st["hours"]) * 60)), "days": st.get("days")}
             if kind == "patrol":
                 pts = p.get("patrol") or []
+                loop = True
+                if isinstance(pts, dict):
+                    loop = pts.get("loop", True)
+                    pts = pts.get("points") or []
                 if len(pts) < 2:
-                    raise SystemExit(f"people.jsonl: {who}: a patrol needs two or more patrol points")
+                    raise Bad(f"people.jsonl: {who}: a patrol needs two or more patrol points")
                 chain = [place_at(pt if isinstance(pt, dict) else {"pos": pt}, f"{who}:patrol{j}") for j, pt in enumerate(pts)]
-                for a, b in zip(chain, chain[1:] + chain[:1]):
+                for a, b in zip(chain, chain[1:] + (chain[:1] if loop else [])):
                     m = next(x for x in out["markers"] + S["refs"] if x["fk"] == a)
                     m.setdefault("linked", []).append({"ref": b, "keyword": ""})
-                row["target"] = chain[0]
+                # vanilla: the Patrol template's input 0 is PackageTargetLinkedReference with no keyword, and the
+                # actor's own linked ref (no keyword) names the first marker of the chain
+                row["target_linked"] = True
+                patrol_start = chain[0]
             else:
                 at = st["at"]
                 if kind == "sleep" and p.get("bed"):
@@ -169,7 +188,7 @@ def plan(P: dict, S: dict, ids, facts: dict, notes: list[str]) -> dict:
         if p.get("bed"):
             bed = by_id.get(p["bed"])
             if bed is None:
-                raise SystemExit(f"people.jsonl: {who}: bed {p['bed']} is not in the place")
+                raise Bad(f"people.jsonl: {who}: bed {p['bed']} is not in the place")
             bed["owner"] = npc_fk
             bed["persistent"] = True
             out["owned_beds"].append({"bed": bed["fk"], "owner": npc_fk})
@@ -216,7 +235,7 @@ def plan(P: dict, S: dict, ids, facts: dict, notes: list[str]) -> dict:
                     skill = next((w for w in words if w in TRAINER_SKILL), None)
                 level = level or "Journeyman"
                 if skill not in TRAINER_SKILL:
-                    raise SystemExit(f"people.jsonl: {who}: trainer skill {skill!r} (known: {sorted(TRAINER_SKILL)})")
+                    raise Bad(f"people.jsonl: {who}: trainer skill {skill!r} (known: {sorted(TRAINER_SKILL)})")
                 cls = {"fk": ids(f"clas:{who}"), "edid": f"ANP_{pid}_{_edid(who)}_Class", "teaches": skill,
                        "max_level": TRAINER_LEVEL.get(level, int(level) if str(level).isdigit() else 50)}
                 out["classes"].append(cls)
@@ -224,12 +243,16 @@ def plan(P: dict, S: dict, ids, facts: dict, notes: list[str]) -> dict:
                 gives.append(g)
             elif g == "inn-room":
                 rb = by_id.get(sv.get("room_bed", "")) if sv.get("room_bed") else None
-                if rb is None:  # the innkeeper's own house's beds other than theirs: the room for rent
+                if rb is None:  # vanilla: a bed of the inn no resident sleeps in (the innkeeper's own house, else where they work)
                     hb = by_id.get(p.get("bed") or "")
-                    rb = next((r for r in S["refs"] if hb and r["space"] == hb["space"] and r is not hb and r.get("kind") == "furniture"
-                               and "bed" in (r.get("base_edid") or r.get("id", "")).lower()), None)
+                    inn = hb["space"] if hb else (p.get("work") or {}).get("space") or p.get("home")
+                    rb = next((r for r in S["refs"] if r["space"] == inn and r is not hb and r["id"] not in taken_beds
+                               and r.get("kind") == "furniture" and "bed" in (r.get("base_edid") or "").lower()), None)
                 if rb is None:
-                    raise SystemExit(f"people.jsonl: {who}: inn-room needs room_bed, a bed ref of the place")
+                    beds = sorted(r.get("src") or r["id"] for r in S["refs"] if r["space"] == inn and r.get("kind") == "furniture"
+                                  and "bed" in (r.get("base_edid") or "").lower())
+                    raise Bad(f"people.jsonl: {who}: inn-room has no bed to rent: set room_bed, or leave a bed of {inn} that no "
+                              f"resident sleeps in (its beds {beds} are all residents')")
                 rb["persistent"] = True
                 rb["owner_inn_of"] = who  # owned by the innkeeper's vendor faction (set below)
                 if not any(f["faction"] == JOB_INNKEEPER for f in factions):
@@ -245,13 +268,20 @@ def plan(P: dict, S: dict, ids, facts: dict, notes: list[str]) -> dict:
                 out["owned_beds"].append({"bed": r["fk"], "owner": r["owner"], "rented": True})
         spot = p.get("placed_at") or (p["routine"][0]["at"] if p.get("routine") else None)
         if spot is None:
-            raise SystemExit(f"people.jsonl: {who}: no routine stop to place them at")
+            raise Bad(f"people.jsonl: {who}: no routine stop to place them at")
         pos, space = _spot(norm_at(spot), by_id)
         out["npcs"].append({"fk": npc_fk, "edid": f"ANP_{pid}_{_edid(who)}", "name": p.get("name") or who, "from": p["base_from"],
                             "level": int(p.get("level", 10)), "factions": factions, "packages": packs,
                             "class": cls["fk"] if cls else None, "gives": gives, "role": p.get("role"), "id": who})
         out["actors"].append({"fk": ids(f"actor:{who}"), "base": npc_fk, "space": space, "pos": pos, "rot": [0.0, 0.0, 0.0],
-                              "cell": list(cell_of(*pos[:2])) if space == "exterior" else None, "person": who})
+                              "cell": list(cell_of(*pos[:2])) if space == "exterior" else None, "person": who,
+                              **({"linked": [{"ref": patrol_start, "keyword": ""}]} if patrol_start else {})})
+    from tools.places.build import problem
+    for p in people:
+        try:
+            one(p)
+        except Bad as e:
+            problem(str(e))
     return out
 
 

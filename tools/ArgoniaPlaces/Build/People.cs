@@ -112,7 +112,10 @@ static class People
                     foreach (var d in k.Data.Values.OfType<PackageDataTarget>())
                         if (d.Target is PackageTargetSpecificReference sr) sr.Reference.SetTo(at);
             }
-            if (S(p, "target") is { } tgt)
+            if (p.TryGetProperty("target_linked", out var tl) && tl.GetBoolean())  // vanilla patrols: the actor's own linked ref, no keyword
+                foreach (var d in k.Data.Values.OfType<PackageDataTarget>().Take(1))
+                    d.Target = new PackageTargetLinkedReference();
+            else if (S(p, "target") is { } tgt)
                 foreach (var d in k.Data.Values.OfType<PackageDataTarget>().Take(1))
                 {
                     var sr = new PackageTargetSpecificReference(); sr.Reference.SetTo(C.Fk(tgt));
@@ -177,6 +180,8 @@ static class People
             var o = new PlacedNpc(C.Fk(a.GetProperty("fk").GetString()!), C.Rel) { MajorRecordFlagsRaw = 0x400 };
             o.Base.SetTo(C.Fk(a.GetProperty("base").GetString()!));
             o.Placement = new Placement { Position = P(a.GetProperty("pos")), Rotation = P(a.GetProperty("rot")) };
+            if (a.TryGetProperty("linked", out var aln))
+                foreach (var l in aln.EnumerateArray()) { var lr = new LinkedReferences(); lr.Reference.SetTo(C.Fk(l.GetProperty("ref").GetString()!)); o.LinkedReferences.Add(lr); }
             var space = a.GetProperty("space").GetString()!;
             if (space == "exterior") ((Worldspace)mod.Worldspaces.First()).TopCell!.Persistent.Add(o);
             else interiors[space].Persistent.Add(o);

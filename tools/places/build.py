@@ -62,11 +62,17 @@ SOLID_KINDS = {"building", "static", "furniture", "door", "container", "rock", "
 PERSISTENT_KINDS = {"door"}
 PATH_STYLE_LTEX = {"road": "dirt_road", "street": "dirt_road", "path": "dirt_road", "track": "dirt_grass",
                    "skirt": "road_skirt", "mud": "swamp_mud", "sand": "sand", "stone": "rock"}
-ROOM_RADIUS = 1200.0  # units: a `room` of a shared source cell keeps the source refs this near its room ref
 PATH_FEATHER = 96.0  # units beyond the half width over which a path's opacity falls to 0
 NAV_RING = 3  # the navmesh window: the touched cells plus this many rings (ring 1 overridden, ring 2 must match)
 DOTNET_ENV = dict(os.environ, DOTNET_ROOT=str(Path.home() / ".dotnet"), DOTNET_NOLOGO="1", DOTNET_CLI_TELEMETRY_OPTOUT="1",
                   PATH=f"{Path.home() / '.dotnet'}:{os.environ.get('PATH', '')}")
+
+
+PROBLEMS: list[str] = []  # every fault planning finds; --plan lists them all, a build stops on any
+
+
+def problem(msg: str) -> None:
+    PROBLEMS.append(msg)
 
 
 def log(*a):
@@ -140,6 +146,8 @@ def relative_move(src_pos, src_rot, our_pos, our_rot, p, r) -> tuple[list[float]
 # ---- the tool -----------------------------------------------------------------------------------------------------
 
 def build_tool() -> None:
+    if TOOL.exists() and all(p.stat().st_mtime < TOOL.stat().st_mtime for p in TOOL_PROJ.glob("*.cs*")):
+        return  # up to date: `dotnet build` alone takes seconds
     r = subprocess.run(["dotnet", "build", str(TOOL_PROJ), "-c", "Release", "-o", str(TOOL_DIR), "-nologo", "-v", "q"],
                        env=DOTNET_ENV, capture_output=True, text=True)
     if r.returncode:
@@ -276,7 +284,8 @@ def plan_land(rows: list[dict], facts: dict) -> tuple[list[dict], dict, set]:
             gx, gy = cx * 32 + int(col), cy * 32 + int(row)  # global vertex index: x east, y north
             v = int(round(base[int(row), int(col)] + dz / 8.0))
             if target.get((gx, gy), v) != v:
-                raise SystemExit(f"land.jsonl: vertex {gx},{gy} patched to two heights")
+                problem(f"land.jsonl: vertex {gx},{gy} patched to two heights")
+                continue
             target[(gx, gy)] = v
     xs = [k[0] for k in target]
     ys = [k[1] for k in target]
@@ -308,7 +317,8 @@ def plan_land(rows: list[dict], facts: dict) -> tuple[list[dict], dict, set]:
                 continue
             c = facts["by_cell"].get((cx, cy))
             if c is None or c.get("land") is None:
-                raise SystemExit(f"land patch reaches cell {cx},{cy}, which has no LAND in the world")
+                problem(f"land patch reaches cell {cx},{cy}, which has no LAND in the world")
+                continue
             offset, d = quantize.encode(after[sl].astype(np.int64))
             out.append({"x": cx, "y": cy, "land": c["land"], "heights": {
                 "offset": offset, "deltas": base64.b64encode(d.tobytes()).decode(),
@@ -333,7 +343,8 @@ def plan_paths(paths: list[dict], facts: dict) -> dict[tuple[int, int], list[dic
         want = PATH_STYLE_LTEX.get(p.get("style") or p.get("kind") or "path", "dirt_road")
         tex = next((fk for e, fk in ltex.items() if e and e.lower().endswith(want)), None)
         if tex is None:
-            raise SystemExit(f"path {p['id']}: no world land texture for style {p.get('style')!r} (*{want})")
+            problem(f"path {p['id']}: no world land texture for style {p.get('style')!r} (*{want})")
+            continue
         pts = np.asarray(p["points"], float)
         half = float(p.get("width", 256)) / 2
         reach = half + PATH_FEATHER
@@ -374,7 +385,8 @@ def plan_clear(rows: list[dict], facts: dict) -> list[dict]:
                     if d <= bd:
                         best, bd = ref, d
         if best is None:
-            raise SystemExit(f"clear.jsonl: no world ref of {r['base']} within {CLEAR_TOL:.0f} units of {x:.0f},{y:.0f}")
+            problem(f"clear.jsonl: {r.get('id')}: no world ref of {r['base']} within {CLEAR_TOL:.0f} units of {x:.0f},{y:.0f}")
+            continue
         taken.add(best["fk"])
         out.append({"fk": best["fk"], "base": best["base"], "pos": best["pos"], "cell": list(cell_of(*best["pos"][:2]))})
     return out
@@ -387,6 +399,30 @@ def norm_ref(r: dict) -> dict:
     r.setdefault("rot", [0.0, 0.0, 0.0])
     r.setdefault("scale", 1.0)
     return r
+
+
+def source_cell(plugin: str, cell: str, tmp: Path) -> dict | None:
+    """A source plugin's interior cell as the C# reader gives it (None: not in that plugin), cached under
+    out/places/srccells by the plugin file's size and time and the reader's code (reading a large plugin takes seconds)."""
+    try:
+        st = _plugin_path(plugin).stat()
+    except SystemExit:
+        return None
+    h = hashlib.sha256(f"{plugin}|{cell}|{st.st_size}|{st.st_mtime_ns}|{sha256(TOOL_PROJ / 'Read.cs')}".encode()).hexdigest()[:20]
+    cache = OUT / "srccells" / f"{plugin}__{cell.replace(':', '_')}.{h}.json"
+    if cache.exists():
+        got = json.loads(cache.read_text())
+        return got or None
+    try:
+        tool("source", plugin, cell, str(tmp))
+        got = json.loads(tmp.read_text())
+        tmp.unlink()
+    except SystemExit:
+        got = {}
+    cache.parent.mkdir(parents=True, exist_ok=True)
+    cache.with_suffix(".tmp").write_text(json.dumps(got))
+    cache.with_suffix(".tmp").replace(cache)
+    return got or None
 
 
 def plan_spaces(P: dict, ids: Ids, tmp: Path) -> dict:
@@ -411,29 +447,28 @@ def plan_spaces(P: dict, ids: Ids, tmp: Path) -> dict:
             out = tmp / f"src_{sid}.json"
             got = []  # the cell as each of the source's plugins has it: a cell's refs may come from several
             for cand in plugin.split("|"):
-                try:
-                    tool("source", cand, cell_edid, str(out))
-                except SystemExit:
-                    continue
-                got.append((cand, json.loads(out.read_text())))
-                out.unlink()
+                cell = source_cell(cand, cell_edid, out)
+                if cell is not None:
+                    got.append((cand, cell))
             if not got:
-                raise SystemExit(f"space {sid}: no plugin of {sp['copy_of']} holds an interior cell {cell_edid}")
+                problem(f"space {sid}: no plugin of {sp['copy_of']} holds an interior cell {cell_edid}")
+                continue
             plugin, src = got[0]
             seen = {r["fk"] for r in src["refs"]}
             for _, more in got[1:]:
                 src["refs"] += [r for r in more["refs"] if r["fk"] not in seen]
                 src["navmesh"] += more["navmesh"]
-            keep = sp.get("keep_within")
-            if not keep and sp.get("room"):  # one room of a cell the source shares between houses: the refs round it
-                rr = next((r for r in src["refs"] if r["fk"] == sp["room"] and "pos" in r), None)
-                if rr is not None:
-                    keep = {"pos": rr["pos"], "radius": ROOM_RADIUS}
-                    sp["keep_within"] = keep
+            room = None
+            if sp.get("room"):  # one room of a cell the source shares between houses (the Build recipe's room rule)
+                part = room_partition(sp["copy_of"], src["refs"], tmp)
+                room = part["rooms"].get(sp["room"])
+                if room is None:
+                    problem(f"space {sid}: room {sp['room']} is not a door of {sp['copy_of']} that leads out of it "
+                            f"(its doors: {sorted(part['rooms'])})")
             for r in src["refs"]:
                 if "pos" not in r or r.get("deleted") or r.get("base_type") in ("NPC_", "LVLN"):
                     continue  # people are ours (people.jsonl), never the source's
-                if keep and math.dist(r["pos"], keep["pos"]) > keep["radius"]:
+                if room is not None and r["fk"] not in room["refs"]:
                     continue
                 src_rows.append(r)
         kept = {r["fk"] for r in src_rows}
@@ -445,6 +480,7 @@ def plan_spaces(P: dict, ids: Ids, tmp: Path) -> dict:
                 continue
             our_id = ch.get("id") or f"{sid}/{r['fk']}"
             row = {"id": our_id, "src": r["fk"], "base": ch.get("base", r["base"]), "kind": ch.get("kind", kind_of(r)),
+                   "base_edid": r.get("base_edid") if "base" not in ch else None,
                    "pos": ch.get("pos", r["pos"]), "rot": ch.get("rot", r["rot"]), "scale": ch.get("scale", r.get("scale", 1.0)),
                    "src_flags": r.get("flags", 0), "src_door": r.get("door"), "src_linked": r.get("linked"),
                    "src_enable_parent": r.get("enable_parent"), "lock": ch.get("lock", r.get("lock")),
@@ -472,7 +508,7 @@ def plan_spaces(P: dict, ids: Ids, tmp: Path) -> dict:
                 row["enable_parent"] = fk_of_src[ep]
         interiors.append({"space": sid, "fk": ids(f"space:{sid}"), "edid": f"ANP_{sid}",
                           "name": sp.get("name") or src.get("name") or sid, "copy": {"plugin": plugin, "cell": src.get("fk")} if plugin else None,
-                          "light": sp.get("light"), "owner": sp.get("owner"), "keep_within": sp.get("keep_within"),
+                          "light": sp.get("light"), "owner": sp.get("owner"), "room_mesh": room and room["mesh"],
                           "src_navmesh": [n["fk"] for n in src.get("navmesh", [])], "fk_of_src": fk_of_src})
     return {"refs": refs, "interiors": interiors, "by_id": by_our}
 
@@ -495,7 +531,8 @@ def pair_doors(S: dict) -> list[str]:
             continue
         other = by_id.get(d["to_ref"]) or by_src.get((d["to_space"], d["to_ref"]))
         if other is None:
-            raise SystemExit(f"door {r['id']}: partner {d['to_space']}/{d['to_ref']} is not in the place")
+            problem(f"door {r['id']}: partner {d['to_space']}/{d['to_ref']} is not in the place")
+            continue
         pairs.append((r, other))
     paired = set()
     for a, b in pairs:
@@ -605,6 +642,8 @@ def _plugin_path(file: str) -> Path:
 
 def interior_navmesh(I: dict, S: dict, ids: Ids) -> list[dict]:
     from tools.navmesh import esm, nvnm
+    if I.get("room_mesh"):
+        return [mesh_navm(I, ids, I["room_mesh"]["verts"], I["room_mesh"]["tris"])]
     if not I["copy"] or not I["src_navmesh"]:
         return []
     plugin = I["copy"]["plugin"]
@@ -619,13 +658,8 @@ def interior_navmesh(I: dict, S: dict, ids: Ids) -> list[dict]:
     ours = {f: ids.local(f"navm:{I['space']}:{f & 0xFFFFFF:06X}") for f in srcs}
     cell_raw = raw_fid(NAV_SELF, split_key(I["fk"])[1])
     out = []
-    keep = I.get("keep_within")
     for f, n in sorted(srcs.items()):
         tri_keep = np.ones(len(n.tris), bool)
-        if keep:
-            v = n.verts
-            cen = v[n.tris["v"]].mean(axis=1)
-            tri_keep = np.linalg.norm(cen - np.asarray(keep["pos"], np.float32), axis=1) <= keep["radius"]
         idx = -np.ones(len(n.tris), np.int64)
         idx[tri_keep] = np.arange(int(tri_keep.sum()))
         tris = n.tris[tri_keep].copy()
@@ -661,30 +695,29 @@ def interior_navmesh(I: dict, S: dict, ids: Ids) -> list[dict]:
     return out
 
 
-def generate_interior_navmesh(I: dict, S: dict, ids: Ids, work: Path) -> list[dict]:
-    """An interior's navmesh by the same Recast run as the world's (ArgoniaNav, the same params), when its source
-    has none over the kept room: the room's collision is moved into synthetic cells with a ground plane just under
-    its lowest collision (the floor its walls stand on), meshed, moved back, cut to the room's bounds (and the kept
-    radius), welded, and made one NAVM of the cell."""
-    from tools.navmesh import nvnm, params, stitch
+def recast_refs(rows: list[dict], work: Path, tag: str, ground: bool) -> tuple[list, list]:
+    """Collision of `rows` (refs of one interior) meshed by the same Recast run as the world's (ArgoniaNav, the same
+    params): moved into synthetic cells, meshed, moved back and welded. `ground`: a plane just under the lowest
+    collision (the floor a room's walls stand on), cut away outside the collision's bounds. -> (verts, tris)."""
+    from tools.navmesh import params, stitch
     from tools.navmesh.__main__ import NAV_BIN, build_tool as nav_tool, game_data
     from tools.navmesh import placed
-    rows = []
-    for r in S["refs"]:
-        if r["space"] == I["space"] and r.get("kind") not in ("marker", "light") and not r.get("disabled"):
-            f, local = split_key(r["base"])
-            rows.append({"base": f"{local:06X}:{f}", "pos": r["pos"], "rot": r["rot"], "scale": r.get("scale", 1.0), "formKey": r["fk"]})
-    tris, _ = placed.collide(rows, game_data(), {})
+    coll = []
+    for r in rows:
+        f, local = split_key(r["base"])
+        coll.append({"base": f"{local:06X}:{f}", "pos": r["pos"], "rot": r.get("rot") or [0.0, 0.0, 0.0],
+                     "scale": r.get("scale", 1.0), "formKey": r["fk"]})
+    tris, _ = placed.collide(coll, game_data(), {})
     if not len(tris):
-        return []
+        return [], []
     lo, hi = tris.reshape(-1, 3).min(axis=0), tris.reshape(-1, 3).max(axis=0)
     span = hi[:2] - lo[:2]
     ncx, ncy = int(span[0] // (CELL - 512)) + 1, int(span[1] // (CELL - 512)) + 1
-    shift = np.array([256.0 - lo[0], 256.0 - lo[1], 0.0])  # the room's south-west corner 256 units into cell (0, 0)
-    deep = float(lo[2]) - 2.0  # a ground plane just under the lowest collision: the floor the room's walls stand on
+    shift = np.array([256.0 - lo[0], 256.0 - lo[1], 0.0])  # the south-west corner 256 units into cell (0, 0)
+    deep = float(lo[2]) - 2.0 if ground else -1.0e6
     mg = params.BORDER_SAMPLES + 2  # samples of margin round the box: ArgoniaNav's window reaches past the cell
     rows_n, cols_n = ncy * 32 + 1 + 2 * mg, ncx * 32 + 1 + 2 * mg
-    d = work / f"int_{I['space']}"
+    d = work / f"int_{tag}"
     (d / "in").mkdir(parents=True, exist_ok=True)
     np.full((rows_n, cols_n), deep, np.float32).tofile(d / "in" / "height.f32")
     np.full((rows_n, cols_n), np.nan, np.float32).tofile(d / "in" / "water.f32")
@@ -692,12 +725,12 @@ def generate_interior_navmesh(I: dict, S: dict, ids: Ids, work: Path) -> list[di
     np.zeros((ncy, ncx), np.uint8).tofile(d / "in" / "skip.u8")
     (tris + shift).astype(np.float32).tofile(d / "in" / "objects.f32")
     (d / "in" / "grid.json").write_text(json.dumps({"rows": rows_n, "cols": cols_n, "x0": -mg * 128.0, "ytop": float(ncy * CELL) + mg * 128.0, "step": 128.0,
-                                                    "cells": [0, 0, ncx - 1, ncy - 1], "build_id": f"interior:{I['space']}", "water": -1e9,
+                                                    "cells": [0, 0, ncx - 1, ncy - 1], "build_id": f"interior:{tag}", "water": -1e9,
                                                     "params": params.recast(), "objects": len(tris)}, indent=1))
     nav_tool()
     r = subprocess.run([str(NAV_BIN), "cells", "--in", str(d / "in"), "--out", str(d)], env=DOTNET_ENV, capture_output=True, text=True)
     if r.returncode:
-        raise SystemExit(f"interior navmesh {I['space']}: ArgoniaNav failed\n{(r.stdout + r.stderr)[-2000:]}")
+        raise SystemExit(f"interior navmesh {tag}: ArgoniaNav failed\n{(r.stdout + r.stderr)[-2000:]}")
     verts, tri_l, index = [], [], {}
     for p in sorted((d / "raw").glob("cy*.bin")):
         for m in stitch.read_raw(p):
@@ -711,19 +744,19 @@ def generate_interior_navmesh(I: dict, S: dict, ids: Ids, work: Path) -> list[di
             for t in m.tris:
                 cx_ = sum(m.verts[t[q]][0] for q in range(3)) / 3 - shift[0]
                 cy_ = sum(m.verts[t[q]][1] for q in range(3)) / 3 - shift[1]
-                keep = I.get("keep_within")
-                if not (lo[0] + 32 < cx_ < hi[0] - 32 and lo[1] + 32 < cy_ < hi[1] - 32):
+                if ground and not (lo[0] + 32 < cx_ < hi[0] - 32 and lo[1] + 32 < cy_ < hi[1] - 32):
                     continue  # the ground plane outside the room's walls
-                if keep and math.dist((cx_, cy_), keep["pos"][:2]) > keep["radius"]:
-                    continue
                 tri_l.append([local[t[0]], local[t[1]], local[t[2]]])
     import shutil
     shutil.rmtree(d)
-    if not tri_l:
-        return []
     used = sorted({i for t in tri_l for i in t})
     remap = {o: n for n, o in enumerate(used)}
-    mesh = stitch.Mesh(0, 0, [verts[i] for i in used], [[remap[i] for i in t] for t in tri_l], [0] * len(tri_l))
+    return [[float(c) for c in verts[i]] for i in used], [[remap[i] for i in t] for t in tri_l]
+
+
+def mesh_navm(I: dict, ids: Ids, verts: list, tris: list) -> dict:
+    from tools.navmesh import nvnm, stitch
+    mesh = stitch.Mesh(0, 0, verts, tris, [0] * len(tris))
     nb = stitch.neighbours(mesh)
     tr = np.zeros(len(mesh.tris), nvnm.TRI)
     for i, t in enumerate(mesh.tris):
@@ -731,7 +764,85 @@ def generate_interior_navmesh(I: dict, S: dict, ids: Ids, work: Path) -> list[di
     cell_raw = raw_fid(NAV_SELF, split_key(I["fk"])[1])
     fid = raw_fid(NAV_SELF, ids.local(f"navm:{I['space']}:generated"))
     n = nvnm.Nvnm(0, None, cell_raw, np.asarray(mesh.verts, np.float32), tr)
-    return [{"fid": fid, "nv": n, "space": I["space"], "cell_raw": cell_raw}]
+    return {"fid": fid, "nv": n, "space": I["space"], "cell_raw": cell_raw}
+
+
+def generate_interior_navmesh(I: dict, S: dict, ids: Ids, work: Path) -> list[dict]:
+    """An interior's navmesh when its source has none: its own collision meshed (recast_refs, with a ground plane)."""
+    rows = [r for r in S["refs"] if r["space"] == I["space"] and r.get("kind") not in ("marker", "light", "door") and not r.get("disabled")]
+    verts, tris = recast_refs(rows, work, I["space"], ground=True)
+    return [mesh_navm(I, ids, verts, tris)] if tris else []
+
+
+def components(tris: list) -> np.ndarray:
+    """Each triangle's walkable island: triangles sharing an edge are one island."""
+    par = list(range(len(tris)))
+
+    def root(x):
+        while par[x] != x:
+            par[x] = par[par[x]]
+            x = par[x]
+        return x
+    edge = {}
+    for i, t in enumerate(tris):
+        for a, b in ((t[0], t[1]), (t[1], t[2]), (t[2], t[0])):
+            k = (min(a, b), max(a, b))
+            if k in edge:
+                par[root(i)] = root(edge[k])
+            else:
+                edge[k] = i
+    return np.array([root(i) for i in range(len(tris))], np.int64)
+
+
+ROOM_RULE = "1"  # bump when room_partition's rule changes: its cache is keyed by it
+
+
+def room_partition(copy_of: str, refs: list[dict], work: Path) -> dict:
+    """The rooms of a source cell several houses share (the Build recipe's room rule; no hand numbers): the whole
+    cell's collision (doors open) is meshed by our Recast run; a room is the island reached from one of the cell's
+    load doors that lead out; every source ref belongs to the door island its position is nearest (islands reached from
+    any door of the cell compete, so refs behind a door that leads nowhere stay in no room). Cached under
+    out/places/rooms by the source refs' hash. -> {"rooms": {door fk: {"refs": set, "mesh": {verts, tris}}}}."""
+    placed_rows = [r for r in refs if "pos" in r and not r.get("deleted") and r.get("base_type") not in ("NPC_", "LVLN")]
+    h = hashlib.sha256(json.dumps([[r["fk"], r["base"], r["pos"], r.get("rot"), r.get("scale"), bool(r.get("door"))]
+                                   for r in placed_rows], sort_keys=True).encode() + ROOM_RULE.encode()).hexdigest()[:20]
+    cache = OUT / "rooms" / f"{copy_of.replace('/', '__')}.{h}.json"
+    if cache.exists():
+        got = json.loads(cache.read_text())
+        return {"rooms": {k: {"refs": set(v["refs"]), "mesh": v["mesh"]} for k, v in got["rooms"].items()}}
+    solid = [r for r in placed_rows if kind_of(r) not in ("marker", "light", "door")]
+    verts, tris = recast_refs(solid, work, "rooms", ground=False)
+    V = np.asarray(verts, np.float64)
+    comp = components(tris)
+    cen = V[np.asarray(tris)].mean(axis=1)
+
+    def island(p):
+        return int(comp[np.argmin(np.linalg.norm(cen - np.asarray(p), axis=1))])
+    doors = [r for r in placed_rows if kind_of(r) == "door"]
+    seed = {r["fk"]: island(r["pos"]) for r in doors}
+    out_doors = {r["fk"] for r in doors if r.get("door")}
+    isl = sorted(set(seed.values()))
+    best = np.full(len(placed_rows), np.inf)
+    owner = np.full(len(placed_rows), -1)
+    P = np.asarray([r["pos"] for r in placed_rows], np.float64)
+    for c in isl:
+        cc = cen[comp == c]
+        d = np.array([np.linalg.norm(cc - p, axis=1).min() for p in P])
+        better = d < best
+        best[better], owner[better] = d[better], c
+    rooms = {}
+    for fk in sorted(out_doors):
+        c = seed[fk]
+        ti = np.nonzero(comp == c)[0]
+        used = sorted({int(v) for t in ti for v in tris[t]})
+        remap = {o: n for n, o in enumerate(used)}
+        rooms[fk] = {"refs": sorted(placed_rows[i]["fk"] for i in np.nonzero(owner == c)[0]),
+                     "mesh": {"verts": [verts[i] for i in used], "tris": [[remap[v] for v in tris[t]] for t in ti]}}
+    cache.parent.mkdir(parents=True, exist_ok=True)
+    tmpf = cache.with_suffix(".tmp")
+    tmpf.write_text(json.dumps({"copy_of": copy_of, "rooms": rooms}))
+    tmpf.replace(cache)
+    return {"rooms": {k: {"refs": set(v["refs"]), "mesh": v["mesh"]} for k, v in rooms.items()}}
 
 
 def exterior_navmesh(touched: set, objects, patched: dict, polylines, out: Path) -> tuple[list[dict], dict]:
@@ -887,7 +998,8 @@ def plan_place(pid: str, pdir: Path, out: Path, no_navmesh: bool) -> dict:
     for c, layers in path_layers.items():
         f = facts["by_cell"].get(c)
         if f is None or f.get("land") is None:
-            raise SystemExit(f"path reaches cell {c}, which the world has no LAND for")
+            problem(f"path reaches cell {c}, which the world has no LAND for")
+            continue
         row = by_cell.setdefault(c, {"x": c[0], "y": c[1], "land": f["land"]})
         row["layers"] = layers
     # navmesh
@@ -935,6 +1047,7 @@ def main(argv: list[str]) -> int:
     ap.add_argument("--out", default=str(OUT))
     ap.add_argument("--no-navmesh", action="store_true")
     ap.add_argument("--force", action="store_true")
+    ap.add_argument("--plan", action="store_true", help="plan only (no navmesh, no plugin): list every problem, exit 1 if any")
     a = ap.parse_args(argv)
     t0 = time.time()
     root, out = Path(a.places_dir), Path(a.out)
@@ -949,12 +1062,20 @@ def main(argv: list[str]) -> int:
         shard = out / "shards" / pid
         key = place_key(pdir, world_sha) + (":nonav" if a.no_navmesh else "")
         kp = shard / "key.txt"
-        if not a.force and kp.exists() and kp.read_text() == key and (shard / "plan.json").exists():
+        if not a.force and not a.plan and kp.exists() and kp.read_text() == key and (shard / "plan.json").exists():
             report["places"][pid] = {"rebuilt": False}
             log(f"build {pid}: unchanged")
             continue
         t1 = time.time()
-        plan = plan_place(pid, pdir, out, a.no_navmesh)
+        PROBLEMS.clear()
+        plan = plan_place(pid, pdir, out, a.no_navmesh or a.plan)
+        if PROBLEMS or a.plan:
+            for m in PROBLEMS:
+                print(f"{pid}: {m}")
+            log(f"build {pid}: planned in {time.time() - t1:.1f} s; {len(PROBLEMS)} problems")
+            if PROBLEMS:
+                return 1
+            continue
         atomic_json(shard / "plan.json", plan)
         kp.write_text(key)
         report["places"][pid] = {"rebuilt": True, "plan_s": round(time.time() - t1, 1), "notes": plan["notes"]}
@@ -962,6 +1083,8 @@ def main(argv: list[str]) -> int:
             f"{len(plan['land'])} land cells, {len(plan['clear'])} cleared, {len(plan['navmesh']['navm'])} navmeshes")
         for n in plan["notes"]:
             log(f"  note: {n}")
+    if a.plan:
+        return 0
     shards = sorted(str(p) for p in (out / "shards").glob("*/plan.json"))
     esp = out / "plugin" / PLUGIN
     esp.parent.mkdir(parents=True, exist_ok=True)
