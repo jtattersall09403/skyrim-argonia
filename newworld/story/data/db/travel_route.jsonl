@@ -32,7 +32,7 @@
 {"from_place_id":"helstrom","to_place_id":"korydon","travel_mode_id":"boat","distance_m":3659,"open_sea_m":0,"fare":40,"hours":2,"why":"South through the channels to the boatwrights' town."}
 {"from_place_id":"helstrom","to_place_id":"korydon","travel_mode_id":"rootworm","distance_m":2207,"open_sea_m":0,"fare":25,"hours":1,"why":"South under Murkwood to the village tree of the channels."}
 {"from_place_id":"helstrom","to_place_id":"stormhold","travel_mode_id":"boat","distance_m":1717,"open_sea_m":0,"fare":25,"hours":2,"why":"North up the water to Stormhold's quay, the interior's way to the north."}
-{"from_place_id":"helstrom","to_place_id":"truowa","travel_mode_id":"boat","distance_m":2284,"open_sea_m":0,"fare":30,"hours":2,"why":"Down the interior's water to the lake city; the two cities' rafts meet the lake trade."}
+{"from_place_id":"helstrom","to_place_id":"truowa","travel_mode_id":"boat","distance_m":2284,"open_sea_m":0,"fare":30,"hours":2,"why":"Down the interior's water to the lake city. Rafts from both cities carry the lake trade."}
 {"from_place_id":"inoja","to_place_id":"archon","travel_mode_id":"boat","distance_m":2292,"open_sea_m":0,"fare":30,"hours":2,"why":"Up the river to the confederacy's market town."}
 {"from_place_id":"inoja","to_place_id":"arorha","travel_mode_id":"boat","distance_m":1922,"open_sea_m":59,"fare":25,"hours":2,"why":"Down the river and along the shore to Arorha."}
 {"from_place_id":"inoja","to_place_id":"noota-nara","travel_mode_id":"boat","distance_m":857,"open_sea_m":0,"fare":15,"hours":1,"why":"Up the river to Noota-Nara's landing."}
@@ -78,7 +78,7 @@
 {"from_place_id":"thorn","to_place_id":"seafalls","travel_mode_id":"boat","distance_m":3164,"open_sea_m":1106,"fare":35,"hours":2,"why":"South along the coast to the pilots' landing."}
 {"from_place_id":"thorn","to_place_id":"tsonac","travel_mode_id":"boat","distance_m":819,"open_sea_m":0,"fare":15,"hours":1,"why":"Up the river to the quarry city."}
 {"from_place_id":"truowa","to_place_id":"blackrose","travel_mode_id":"boat","distance_m":1426,"open_sea_m":0,"fare":20,"hours":2,"why":"South from the lake to the confluence city."}
-{"from_place_id":"truowa","to_place_id":"helstrom","travel_mode_id":"boat","distance_m":2284,"open_sea_m":0,"fare":30,"hours":2,"why":"Down the interior's water to the lake city; the two cities' rafts meet the lake trade."}
+{"from_place_id":"truowa","to_place_id":"helstrom","travel_mode_id":"boat","distance_m":2284,"open_sea_m":0,"fare":30,"hours":2,"why":"Down the interior's water to the lake city. Rafts from both cities carry the lake trade."}
 {"from_place_id":"truowa","to_place_id":"korydon","travel_mode_id":"boat","distance_m":1582,"open_sea_m":0,"fare":25,"hours":2,"why":"Across the lake's south shore to the boatwrights' channels."}
 {"from_place_id":"truowa","to_place_id":"uluo","travel_mode_id":"boat","distance_m":1777,"open_sea_m":0,"fare":25,"hours":2,"why":"South-east by the back-waters to the raft town and the coast."}
 {"from_place_id":"truowa","to_place_id":"yulca","travel_mode_id":"boat","distance_m":399,"open_sea_m":0,"fare":15,"hours":1,"why":"Up the lake to Yulca's landing."}

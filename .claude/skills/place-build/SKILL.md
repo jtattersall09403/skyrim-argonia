@@ -136,6 +136,10 @@ building on a slope first takes the rise the source's own builders commonly buil
   body clear of every placed solid by true record box (on a road or a deck only by its edge), 256 units from any
   door, off the streets. A station added indoors stands on the walked-in floor clear of the room's things. Check each in the render (`stations.added`); move one with `draft.add` and `draft.roles`
   when it stands wrong. Traders work where the source's own trader of that trade worked.
+  A travel stop (`boat-stop`, `coach-stop`, `rootworm-stop`) is a person's service like a trade: the operator the
+  place's people name (a boatman, a carter, a root-tender), given the stop's give by its seq, working at the
+  landing (a boat's at the water's edge or on a deck over it, a coach's at the gate on the major road, a rootworm's
+  at the Hist's root pool). Where they go and for what fare is the travel network's, never the person's.
   A promised shrine blessing needs a thing to carry it: the source's own Hist or shrine, else the tools add a
   young Hist in the town's middle, clear of buildings and streets (`stations` `shrine`); look at it in the render.
 - **People follow Skyrim's days** (`docs/research/skyrim/town-life.md`): an innkeeper keeps the inn day and

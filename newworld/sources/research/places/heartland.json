@@ -166,7 +166,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "The city's alleys are as dangerous as they are fine. Its guard has a bad name. The danger is social: a levy that answers to no stranger, assembly politics and a sour-spring cycle the assembly will not discuss. Past the city every approach is deep swamp.",
+     "text": "The city's alleys are as dangerous as they are fine, and its guard has a bad name. The danger is social: the levy answers to no outsider, the assembly's politics run deep, and its members will not discuss the sour-spring cycle. Past the city every approach is deep swamp.",
      "tier": "CANON_EXPLICIT",
      "sources": [
       {
@@ -185,7 +185,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A stranger stranded on the approaches is pulled out by an Agaceph raftsman; the assembly will not speak of its sour spring in open session, and the Root Talk draws every naheesh in the interior.",
+     "text": "A stranger stranded on the approaches is pulled out by an Agaceph raftsman. The assembly will not speak of its sour spring in open session. Every naheesh in the interior travels to the Root Talk.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {

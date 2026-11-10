@@ -1379,10 +1379,10 @@ TRAVEL = {  # vanilla's carriage (Skyrim.esm DialogueCarriageSystem), measured: 
     "lines": {
         "boat": {"hub": "I need passage.", "hub_reply": "Where to? Say the name.",
                  "prompt": "Take me to {name} ({fare} gold).", "reply": "{name}, then. Sit low in the boat."},
-        "coach": {"hub": "I need a ride.", "hub_reply": "The cart keeps to the old road. Where to?",
+        "coach": {"hub": "I need a ride.", "hub_reply": "We keep to the old road. Where to?",
                   "prompt": "Take me to {name} ({fare} gold).", "reply": "{name}, then. Climb up and hold on."},
-        "rootworm": {"hub": "I would ride the rootworm.", "hub_reply": "The worm goes where the roots go. Which tree?",
-                     "prompt": "To the tree at {name} ({fare} gold).", "reply": "{name}. Breathe out, and do not fight it."},
+        "rootworm": {"hub": "I would ride the rootworm.", "hub_reply": "The worm follows the roots. Which tree?",
+                     "prompt": "To the tree at {name} ({fare} gold).", "reply": "{name}. Breathe out. Do not fight it."},
     },
 }
 

@@ -189,7 +189,7 @@ people.jsonl           one person per line: {id, name, base_from, role, home, be
                        A stop (`at`, `bed`, `work`, a patrol point) is {space, ref | pos, radius}: `ref` our id or a
                        source key of that space; `pos` [x,y] (outside only: seated on the built land) or [x,y,z]; neither: the
                        space's arrival point (where its load door lands one), else its first furniture. `bed` a stop or null; `kind` sleep|work|wander|sandbox|eat|patrol (a
-                       patrol stop's route is `patrol`). services: [{kind | give_kind_id, detail, skill?, level?,
+                       patrol stop's route is `patrol`). services: [{seq, kind | give_kind_id, detail, skill?, level?,
                        room_bed?}]; faction_ranks: [{faction: a form key or <place_id>.<name>, rank}]. Any other
                        shape is a problem `build --plan` lists, never a crash
                        Who each person is (name, household, trade, wealth, notes) is not placement: it lives in the
@@ -298,8 +298,9 @@ the source the stocker decided not to keep, with the reason; the build leaves ou
 row whether or not it is listed. `respawn` is never stored: an authored container never respawns, and a trader's merchant chest
 restocks every 48 hours to its list (vanilla's own timing; the list is fixed and nothing in it is levelled).
 `deliveries` holds only what stocking owns (loot, a treasure, a record edit); the loader adds the rest:
-a person whose `people.jsonl` services name the give, a station of `place.json` `stations.found`, the world file's
-map marker for `fast-travel`. Anything else stays `open`. `python3 -m tools.newworld.stockdb promises <place>` lists
+a person whose `people.jsonl` services name the give (a travel stop's operator among them), a station of
+`place.json` `stations.found`. Anything else stays `open`; a stop whose operator is known but not yet placed is an
+`open` row `by: person` naming them, so the place files' owner knows whom to give the service. `python3 -m tools.newworld.stockdb promises <place>` lists
 each promise and what delivers it, and exits 1 while any is open. A promise is dropped only by editing the place
 record, with the reason (`status: dropped`, `why` naming the edit), never to avoid the work.
 
@@ -374,8 +375,8 @@ flag and each actor base's inventory, outfit items and death item):
    a container with no row holds nothing significant. Any other significant item fails, by holder and item.
 3. Every row is built: a container, loose, possession or trader row whose holder or items are missing fails.
 4. Every promise delivered (`promises`): `give_delivery` has no `open` row for the place, each delivered row's person
-   or ref exists in the build, and `fast-travel` has the world file's map marker `ANW_MapMarker_<place>` (a copied
-   source marker is built without marker data, so it never makes a second one).
+   or ref exists in the build (a travel stop is proved by `services`: each route offered at its fare to its
+   arrival point).
 5. Quest things untouched: a ref or item a quest record names is in no stock row and stands as the quest has it (the
    quest tables of nw-05; none yet).
 6. Ownership set: every row's built owner is its row's; only S0 rows and wild ground are nobody's.
@@ -763,7 +764,7 @@ their own cell (interior), as vanilla files them.
    only a space (where one arrives in it by a load door, else its first furniture). A person whose day starts on
    patrol stands at the patrol's first point and keeps home there; every patrol stop of a day walks the one chain,
    and each marker of a chain leads on to one marker only (a patrol point that names a ref another route already
-   leads on from is a problem). Services by give (`give_kind_id` or `kind`): `trader-*` a
+   leads on from is a problem). Services by give (the place record's give at the service's `seq`; `give_kind_id` or `kind` is a copy): `trader-*` a
    vendor faction of ours (hours from the work stop, the vanilla vendor list, a merchant chest in the place's
    chest cell) and the vanilla Job faction; `trainer` a class of ours that teaches (Journeyman 50, Expert 75,
    Master 90; skill and level from `skill`/`level` or the give's detail) with JobTrainerFaction and
@@ -775,21 +776,23 @@ their own cell (interior), as vanilla files them.
    05091B and 051596, speaks with a voice of form list 03B4A5 (the base's if it is in the list, else the list's
    Male/Female Argonian or Commoner), and carries RentRoomScript (Bed = the rented bed, WI = 035D64); vanilla's
    rent offer (INFO 079B1A) then serves our innkeeper, and check evaluates that INFO's conditions on our records.
-   Boat travel (`carriage-or-boat`): one Papyrus script of ours, `papyrus/TIF_ARG_BoatTravel.psc`, serves every
-   boatman's line by its properties (`Destination` marker, `Fare`): each destination is an INFO whose script data
-   names that one script, conditioned on the boatman's faction and the player's gold; fares as vanilla's
-   carriages (20 gold to a city, 50 to anywhere smaller); a destination not built yet arrives at its map marker.
-   Built by `build.py plan_boats` and `ArgoniaPlaces/Build/Boat.cs` as vanilla's DialogueCarriageSystem is (measured:
-   a start-game-enabled quest holding the topics; each destination INFO gates on GetGold >= the fare, run on the target,
-   and CarriageCost is 20, CarriageCostSmall 50): the boatman (role `boatman`, give `carriage-or-boat`) gets a boatman
-   faction of ours from `people.py`; per place a quest of ours; per boatman a top-level topic "I need passage." (his
-   faction on the subject) whose line links one topic per destination; a destination INFO needs the faction and the
-   gold and carries `TIF_ARG_BoatTravel` (`Destination` = the destination's `ANW_MapMarker_<place>` ref in the world
-   ESM, read from it; `Fare`; `Gold001` = Skyrim.esm 00000F) with fragment `Fragment_0` on OnEnd. The destinations are
-   the names in the give's `detail` after its last "to" (place_give has no destination column), matched to
-   place.jsonl by name or map label; fare by the place's kind. check reads quests, topics, INFOs, conditions and
-   script properties back (`dump`) and fails a boatman that lacks any of it; the compiled
-   `out/gpu/papyrus/TIF_ARG_BoatTravel.pex` is warned about when absent.
+   Travel (`boat-stop`, `coach-stop`, `rootworm-stop`): a place's stops and routes are the travel network's
+   (`travel_stop`, `travel_route`; docs/design/travel-network.md); nothing about travel is read from a give's
+   `detail`. The operator of a stop is the person whose `people.jsonl` service names the stop's give (its seq);
+   `people.py` gives them a travel faction of ours per mode (`ANP_<place>_Boatman_`, `_Carter_` or `_RootTender_`
+   in its editor id). `build.py plan_travel` and `ArgoniaPlaces/Build/Boat.cs` build it as vanilla's
+   DialogueCarriageSystem is (measured: a start-game-enabled quest holding the topics; each destination INFO gates
+   on GetGold >= the fare, run on the target): per place a quest of ours; per operator a top-level topic in the
+   mode's words ("I need passage.", "I need a ride.", "I would ride the rootworm.") whose line links one topic per
+   route of the stop; a route's INFO needs the faction and the gold and carries `TIF_ARG_BoatTravel`
+   (`Destination` = the destination's arrival point, its `ANW_MapMarker_<place>` ref in the world ESM; `Fare` = the
+   route's fare; `Gold001` = Skyrim.esm 00000F) with fragment `Fragment_0` on OnEnd, which takes the fare and calls
+   Game.FastTravel (it works with map travel turned off, as vanilla's carriages do in Survival). A route whose
+   destination has no arrival point in the world ESM is not offered: the build lists it as waiting on that place
+   (`travel_waiting`) and the record keeps the promise. A stop nobody serves is a problem. check reads quests,
+   topics, INFOs, conditions and script properties back (`dump`) and fails a stop unless one operator offers every
+   route that has an arrival point, at the route's fare, to that arrival point, and unless the place has its own
+   arrival point; the compiled `out/gpu/papyrus/TIF_ARG_BoatTravel.pex` is warned about when absent.
    Shrines (`build.py plan_shrines`, `ArgoniaPlaces/Build/Shrine.cs`): each `shrine` row of `stations.added` is built
    as vanilla's temple shrines are (measured on Skyrim.esm's ten TempleBlessingScript activators): the ref keeps its id
    and form key; its base becomes an activator of ours with the old base's model and `TempleBlessingScript`
@@ -824,7 +827,7 @@ their own cell (interior), as vanilla files them.
 **Deploy** (run by the lead after the owner's walk; the build never deploys): `infra/gpu-box/places_deploy.sh`
 (`--dry-run` checks and stages only). It refuses a plugin built over another world ESM than
 `out/newworld/plugin/ArgoniaNewWorld.esm` or a place whose check read another build, prints each place's checks,
-builds the plugin's SEQ file (`ArgoniaPlugin seq`: the boatman's dialogue quest is Start Game Enabled, and the
+builds the plugin's SEQ file (`ArgoniaPlugin seq`: the travel dialogue quest is Start Game Enabled, and the
 engine starts a SEQ's quests before a new game's first frame, as `Argonia.seq` does for Argonia.esp), then sends
 the plugin to `C:\argonia\ours\newworld\`, the SEQ to `C:\argonia\ours\newworld\SEQ\` and the compiled scripts
 (`TIF_ARG_BoatTravel.pex`, compiled with the rest of `papyrus/` by `records_jobs.sh papyrus`) to

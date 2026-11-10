@@ -119,6 +119,11 @@ place-build pass, the placed people at a fixed level, the container at its tier)
 build the spot, or edit the record. Editing the record is the owner's call. When the owner rules it, change the
 record, mark the delivery row `dropped` and name the edit in its `why`; a promise is never dropped to avoid the work.
 
+A service promise (a trade, a trainer, a travel stop) is delivered by the person whose `people.jsonl` service names
+its seq. When the place's people hold the right person but the place files do not yet give them the service (a
+rootworm handler at the root landing for a `rootworm-stop`), write the delivery `open`, `by: person`, naming them,
+with a `why` that says which service at which seq and where they work, so the place files' owner gives it.
+
 ## 6. What stocking never breaks
 
 - A thing a quest names is the quest's: never moved, removed or restocked.

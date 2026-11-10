@@ -34,7 +34,13 @@ One researcher per batch of about 30 places, grouped by neighbouring regions, ea
    Threats outside it (raiders on the road, beasts in the channels beyond) belong to the ground round it or to the
    neighbouring place that holds them. A separate village or ruin near a settlement is its own place record, or
    nothing.
-6. Tier and source every note honestly: canon only where a source states it.
+6. Travel is the network's (docs/design/travel-network.md). A place promises travel only as a stop of it: a
+   `boat-stop`, `coach-stop` or `rootworm-stop` give whose detail says who serves it and where (raft-masters at
+   the city landing), with the stop and its routes in `newworld/sources/travel/network.json`; a stop only where
+   the ground carries the mode (navigable water, a major road, a Hist) and the place's trade or lore runs it. No
+   place promises map fast travel. A place that is no stop promises no travel; the network says how one reaches
+   it, or why it is remote.
+7. Tier and source every note honestly: canon only where a source states it.
 
 ## Finish
 

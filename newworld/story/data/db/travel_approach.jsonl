@@ -127,7 +127,7 @@
 {"place_id":"outpost-29-m66","stop_place_id":"thorn","travel_mode_id":"boat","foot_m":449,"way":"road","remote":0,"why":"449 m by road from the boat stop at Thorn"}
 {"place_id":"outpost-6-m65","stop_place_id":"stormhold","travel_mode_id":"boat","foot_m":1050,"way":"marsh","remote":0,"why":"1050 m across the marsh on foot from the boat stop at Stormhold"}
 {"place_id":"outpost-6-m77","stop_place_id":"julo","travel_mode_id":"boat","foot_m":694,"way":"marsh","remote":0,"why":"694 m across the marsh on foot from the boat stop at Julo"}
-{"place_id":"outpost-7-m69","stop_place_id":"stormhold","travel_mode_id":"boat","foot_m":1373,"way":"marsh","remote":1,"why":"Reeka-Veesa is a Sedge-Warden post on the far west of the mesa, a long walk from Stormhold by the Tenmal road, with no water or road a boat or cart could use; its people keep to themselves."}
+{"place_id":"outpost-7-m69","stop_place_id":"stormhold","travel_mode_id":"boat","foot_m":1373,"way":"marsh","remote":1,"why":"Reeka-Veesa is a Sedge-Warden post on the far west of the mesa, a long walk from Stormhold by the Tenmal road. No water or road there could carry a boat or a cart, and its people seldom leave the post."}
 {"place_id":"outpost-9-m85","stop_place_id":"truowa","travel_mode_id":"boat","foot_m":578,"way":"water","remote":0,"why":"578 m over the water from the boat stop at Truowa"}
 {"place_id":"outpost-m1-m61","stop_place_id":"stormhold","travel_mode_id":"boat","foot_m":242,"way":"marsh","remote":0,"why":"242 m across the marsh on foot from the boat stop at Stormhold"}
 {"place_id":"outpost-m11-m102","stop_place_id":"mir-xal","travel_mode_id":"boat","foot_m":844,"way":"marsh","remote":0,"why":"844 m across the marsh on foot from the boat stop at Mir-Xal"}
@@ -173,7 +173,7 @@
 {"place_id":"shipwreck-33-m67","stop_place_id":"thorn","travel_mode_id":"boat","foot_m":652,"way":"dive","remote":0,"why":"652 m down through the water from the boat stop at Thorn"}
 {"place_id":"shipwreck-35-m71","stop_place_id":"arorha","travel_mode_id":"boat","foot_m":938,"way":"dive","remote":0,"why":"938 m down through the water from the boat stop at Arorha"}
 {"place_id":"shipwreck-36-m82","stop_place_id":"arorha","travel_mode_id":"boat","foot_m":817,"way":"marsh","remote":0,"why":"817 m across the marsh on foot from the boat stop at Arorha"}
-{"place_id":"shipwreck-42-m78","stop_place_id":"arorha","travel_mode_id":"boat","foot_m":1347,"way":"dive","remote":1,"why":"The Resolute Crest lies in deep water off Skeith Isle, beyond any boat route: a long swim and a dive from Arorha's shore, for a player who sets out to find it."}
+{"place_id":"shipwreck-42-m78","stop_place_id":"arorha","travel_mode_id":"boat","foot_m":1347,"way":"dive","remote":1,"why":"The Resolute Crest lies in deep water off Skeith Isle, beyond any boat route. Reaching it takes a long swim and a dive from Arorha's shore."}
 {"place_id":"shipwreck-m25-m113","stop_place_id":"acra-tiin","travel_mode_id":"boat","foot_m":329,"way":"dive","remote":0,"why":"329 m down through the water from the boat stop at Acra-Tiin"}
 {"place_id":"shipwreck-m30-m91","stop_place_id":"olvani","travel_mode_id":"boat","foot_m":562,"way":"dive","remote":0,"why":"562 m down through the water from the boat stop at Olvani"}
 {"place_id":"shipwreck-m36-m95","stop_place_id":"aphon-belvedere","travel_mode_id":"boat","foot_m":400,"way":"dive","remote":0,"why":"400 m down through the water from the boat stop at Aphon Belvedere"}

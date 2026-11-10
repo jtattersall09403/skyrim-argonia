@@ -5,21 +5,21 @@
    "id": "boat-stop",
    "group": "travel",
    "name": "Boat stop",
-   "delivers": "A boatman or raft-master of the place whose dialogue takes the player on each boat route of the place's stop (newworld/sources/travel/network.json) for that route's fixed fare, landing at the destination's arrival point.",
+   "delivers": "A boatman or raft-master of the place who offers passage on each boat route of the place's stop (newworld/sources/travel/network.json) for that route's fixed fare, landing the passenger at the destination's arrival point.",
    "evidence": "Skyrim's carriage drivers and the Northern Maiden's captain: a topic per destination, the fare gated on the player's gold, Game.FastTravel to a marker (DialogueCarriageSystem; the ToSolstheim and ToSkyrim markers). Morrowind's shipmasters ran a port-to-port ring along the coast."
   },
   {
    "id": "coach-stop",
    "group": "travel",
    "name": "Coach stop",
-   "delivers": "A carter of the place whose dialogue takes the player on each coach route of the place's stop for its fixed fare, by a major road the whole way.",
+   "delivers": "A carter of the place who offers passage on each coach route of the place's stop for its fixed fare, by a major road the whole way.",
    "evidence": "Skyrim's five stable carriages (the hold cities' Stable markers), with the driver's topics and fares (CarriageCost 20, CarriageCostSmall 50); Morrowind's silt striders charged by distance."
   },
   {
    "id": "rootworm-stop",
    "group": "travel",
    "name": "Rootworm stop",
-   "delivers": "A root-tender at the place's Hist who calls the rootworm and sends the player on each rootworm route of the place's stop for the flat fare.",
+   "delivers": "A root-tender at the place's Hist who calls the rootworm and sends the passenger on each rootworm route of the place's stop for the flat fare.",
    "evidence": "Skyrim's carriage dialogue for the delivery; Morrowind's Mages Guild guides and propylons for a fixed link between a few named sites."
   },
   {
