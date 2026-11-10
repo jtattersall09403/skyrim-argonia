@@ -108,9 +108,22 @@ The work runs in this order; each part names the skill or tool that carries it.
   load door (a model with no opening animation) always teleports to its pair, and the pair back; a door with a room
   behind it never teleports. A room the player must not leave before a stage has its way out locked with no key, and
   that stage's fragment unlocks it. `plugin.sh inspect doors` lists every door we touch, with its pair, lock and model.
-- **Walking:** the world's navmeshes carry no edge links (`plugin.sh inspect navstat`), so nobody walks from one
-  navmesh to another. A group that leads the player sets off along its own navmesh, and is moved to the destination
-  by a hidden stage at a zone around it, before the player arrives.
+- **Walking:** one navmesh island per walk. Every walk a quest asks of a person (travel, follow to an end zone,
+  sandbox) lies on one winning navmesh, proved off game with `plugin.sh inspect navpath` and `plugin.sh questcheck`
+  (the world has 5 link entries in 17,591 navmeshes, none on a route a quest uses). We author no navmesh and no edge
+  links in BM&V's worlds. A quest whose people would have to cross islands is hosted where they need not, or the
+  person is moved by a stage's fragment while the player can see neither spot (an unloaded cell or another cell),
+  never in view. A spot is taken from the winning undeleted navmesh under it.
+- **A walk starts in front of the player:** a walk is gated on a hidden stage that the quest script sets once every
+  walker's 3D is loaded (a once-a-second update in game mode, bounded at 60 checks), and that stage's fragment calls
+  `GetActorRef().EvaluatePackage()` on each walker. A schedule or clock-gated package may start unseen and says so. A
+  follow starts from the person's own line.
+- **A guide never ends in nothing:** the walk ends inside the zone (or within the distance) that sets the next stage;
+  the objective marker sits on that place; if the player arrives first, the stage's fragment puts the walkers there.
+- **One person, one ref enabled at a time:** where two refs stand for one person (inside and outside a door), the
+  fragment that enables one disables the other while the player sees neither.
+- **Doors on a quest path** are openable on every path: its key or its unlock on each path.
+- **Offers:** every quest topic INFO has a last stage below the quest's first ending; nobody offers a task after its end.
 - **Moving a quest spot** within its settlement to the nearest usable ground is a record edit, not a redesign.
 - **Traders:** a trader whose stock does not fit gets a vendor faction and chest of their own with a fixed stock.
 - **Overrides** of a world, cell or placed reference are made once and shared through one lookup; anything a quest
@@ -133,10 +146,16 @@ block built, read back and given one owner check.
 | a trigger area that should also check time, detection or who is present | an unconditioned trigger area gated only by its prerequisite stage; the extra check moves to a package schedule, a line's condition, a death trigger's fail-forward, or the crime engine |
 | "do it unseen" | a detection condition on a line, or theft and pickpocket judged by the crime engine |
 | "after dark" | a time condition on a line, or a package schedule that puts the person there only at night |
-| an escort reaching a place | a follow package, and a trigger area the player enters at the destination |
+| people who lead the player somewhere | a Travel package on each alias to a marker on their own navmesh, gated on a hidden stage set when their 3D is loaded; the walk ends in the zone that sets the next stage |
+| an escort reaching a place | the kit's Follow package (a copy of a vanilla follow package, never of a template), gated on the stage the person's own line sets; a zone the player enters at the destination, on the follower's navmesh, ends it |
+| a person at a place by the clock | a schedule package on the alias to a marker on their navmesh; it may start unseen |
+| a person who must be somewhere else for the next step | a fragment's MoveTo to a marker while the player sees neither spot; never a package across navmeshes |
+| a quest that is over | the ending's fragment completes the shown objectives, disarms every zone of the quest, counts the side quest, and stops the quest last; the quest is Run Once |
+| a zone | fires when the player walks in, once its prerequisite stage is done: it is placed where the player is not standing when that stage is set, and it does not overlap the zone before it |
 | "bring N of a kind of thing" | N of one named item |
 | several things that must all happen | one hidden stage per thing, each checking the others before setting the joint stage |
 | any of several people dying | a death trigger on each alias setting one guarded stage |
+| a person whose death moves the quest | Protected on the alias and a death trigger; a person who must live is Essential and has no death trigger |
 | removing people from a scene | disable through their own enable parents; never kill in a line's fragment |
 | a fight or brawl | a fixed-level enemy and a death trigger, or a Speech or gold route |
 | a person the player must not lose | essential, with no fail-forward |
@@ -145,13 +164,23 @@ block built, read back and given one owner check.
 | a question the player answers | the question's INFO links to one choice topic per answer, in its own branch and not top level, so the answers follow it at once and come back with it |
 | where to go next | a stage per step (speak, leave, follow, arrive), each with a journal entry and an objective whose target is an alias on the person, door or marker |
 | a door the player uses to move the quest on | the door as a forced-ref alias with the vanilla set-stage alias script on activate, gated by its prerequisite stage |
+| a thing the quest needs back from the player | an alias flagged Quest Object, created in its container by the alias, cleared by the ending |
 
-- **Engine rules every quest keeps:** race guards on stages two triggers can set at once; aliases are forced
-  references, never find-matching; quest objects for things the player must not drop; a quest shows in the journal
-  only with an objective, and side quests count on the Stats page through their last fragment; quest types as Bethesda
-  uses them; save and reload mid-quest leaves state intact.
-- **Code:** one builder per line in the plugin generator, on the shared quest kit, called in a fixed order so form ids
-  never move; Papyrus fragments compiled with the game's compiler; editor ids unique; rewards fixed, never levelled.
+- **Engine rules every quest keeps:** every quest is Run Once; aliases are forced references to persistent refs, never
+  find-matching; every stage two triggers can set guards itself with a variable read and set with no call between;
+  every objective has a target alias whose ref is enabled at that stage; a quest shows in the journal only with an
+  objective; side quests count on the Stats page through their ending; every ending stops the quest and disarms its
+  zones; every stage has a setter the player can reach and every stage but an ending has a way out; quest types as
+  Bethesda uses them; save and reload mid-quest leaves state intact.
+- **Code:** one builder per line on the one quest kit (`tools/ArgoniaPlugin/QuestKit.cs`): its helpers make
+  conditions, stages and objectives from the story rows, forced aliases, topics and choices with their wording bands,
+  Travel / Follow / Schedule packages (copies of vanilla packages of type Package with the owner quest set), zones
+  (filling the quest script's `Zones` array for `DisarmZones()`), doors, objective targets, endings and `Snap` to the
+  winning undeleted navmesh; a builder never copies a helper or builds one of these by hand, and the kit refuses an
+  objective with no target and a death trigger on an Essential alias or base. A condition that needs another
+  builder's quest is added in a finish step after both exist, and the build fails if it cannot be. Builders run in a
+  fixed order so form ids never move; Papyrus fragments compiled with the game's compiler; editor ids unique; rewards
+  fixed, never levelled.
 
 ## 6. Give everyone something to say
 
@@ -187,6 +216,13 @@ anyone a quest ending leaves standing; journal and objective text written and re
 - **Models exist** (run with the placement check): every ref the plugin places, and every load-order ref whose bounds
   hold one of ours (the building a quest uses as a place), has a model that resolves in an archive or loose file of the
   load order (without case); a host whose model is missing is an empty hill in game, so the quest moves to one that has.
+- **Quest check** (`plugin.sh questcheck`), generic over every quest of ours in the built plugin; it fails the build
+  on: a package route not on one island (or on a deleted navmesh), a walk that can start unseen, a template-type
+  package on an alias, a stage with no reachable setter or (non-ending) no way out, a visible stage with no objective
+  or an objective with no target, a death trigger on an Essential alias, a quest not Run Once or an ending that does
+  not stop it and disarm its zones, overlapping consecutive zones, two refs of one person enabled at once, an opening
+  INFO with no upper stage bound, a key-locked door not opened on every ending path. It runs beside the per-quest
+  read-backs (mainquestcheck, mqcheck, bccheck, nightreedcheck, localcheck) and placecheck; 0 failures before deploy.
 - **Integration:** parallel work lands as source only; the plugin is re-seeded once on the merged tree and every
   read-back runs on that one build before deploy.
 - **Everyone talks:** every person the plugin places has a voice and at least one line (`plugin.sh inspect silent`);
