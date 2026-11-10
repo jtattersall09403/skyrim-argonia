@@ -63,6 +63,7 @@ SOLID_KINDS = {"building", "static", "furniture", "door", "container", "rock", "
 PERSISTENT_KINDS = {"door"}
 PATH_STYLE_LTEX = {"road": "dirt_road", "street": "dirt_road", "path": "dirt_road", "track": "dirt_grass",
                    "skirt": "road_skirt", "mud": "swamp_mud", "sand": "sand", "stone": "rock"}
+PLACE_MASTERS = {"Skyrim.esm", "Update.esm", "Dawnguard.esm", "HearthFires.esm", "Dragonborn.esm", "Black Marsh.esm"}  # Write.cs Masters
 PATH_FEATHER = 96.0  # units beyond the half width over which a path's opacity falls to 0
 NAV_RING = 3  # the navmesh window: the touched cells plus this many rings (ring 1 overridden, ring 2 must match)
 DOTNET_ENV = dict(os.environ, DOTNET_ROOT=str(Path.home() / ".dotnet"), DOTNET_NOLOGO="1", DOTNET_CLI_TELEMETRY_OPTOUT="1",
@@ -351,12 +352,22 @@ def plan_paths(paths: list[dict], facts: dict) -> dict[tuple[int, int], list[dic
     opacity 1 within the half width and feathered beyond it (the way Skyrim's roads are painted)."""
     ltex = {t["edid"]: t["fk"] for t in facts["ltex"]}
     layers: dict[tuple[int, int], list[dict]] = {}
+    world_keys = set(ltex.values())
     for p in paths:
-        want = PATH_STYLE_LTEX.get(p.get("style") or p.get("kind") or "path", "dirt_road")
-        tex = next((fk for e, fk in ltex.items() if e and e.lower().endswith(want)), None)
-        if tex is None:
-            problem(f"path {p['id']}: no world land texture for style {p.get('style')!r} (*{want})")
-            continue
+        style = p.get("style") or p.get("kind") or "path"
+        if ":" in str(style):
+            # a land texture named by its key (the ground the owner picked in the studio): the world's own, or one of
+            # a plugin the place layer masters (the source place's road texture)
+            if style not in world_keys and split_key(style)[0] not in PLACE_MASTERS:
+                problem(f"path {p['id']}: land texture {style} is in no plugin the place layer loads")
+                continue
+            tex = style
+        else:
+            want = PATH_STYLE_LTEX.get(style, "dirt_road")
+            tex = next((fk for e, fk in ltex.items() if e and e.lower().endswith(want)), None)
+            if tex is None:
+                problem(f"path {p['id']}: no world land texture for style {p.get('style')!r} (*{want})")
+                continue
         pts = np.asarray(p["points"], float)
         half = float(p.get("width", 256)) / 2
         reach = half + PATH_FEATHER
@@ -370,6 +381,13 @@ def plan_paths(paths: list[dict], facts: dict) -> dict[tuple[int, int], list[dic
                 for a, b in zip(pts[:-1], pts[1:]):
                     d = np.minimum(d, seg_dist(X, Y, a[0], a[1], b[0], b[1]))
                 op = np.clip(1 - (d - half) / PATH_FEATHER, 0, 1)
+                if style == "boardwalk":
+                    # a boardwalk's line is walked on its decks: only where it comes ashore is it a path on the ground
+                    c = facts.get("by_cell", {}).get((cx, cy)) or {}
+                    w = c.get("water")
+                    if c.get("deltas") and w is not None and abs(w) < 1e8:
+                        from tools.newworld.world.units import VHGT_STEP_UNITS
+                        op = np.where(cell_steps(c) * VHGT_STEP_UNITS < w - 8, 0.0, op)
                 if not (op > 0).any():
                     continue
                 for q, (y0, x0) in enumerate(((0, 0), (0, 16), (16, 0), (16, 16))):  # BL, BR, TL, TR

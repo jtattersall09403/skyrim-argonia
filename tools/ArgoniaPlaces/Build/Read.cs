@@ -154,6 +154,7 @@ static class Read
             cells.Add(new Dictionary<string, object?>
             {
                 ["x"] = g.Point.X, ["y"] = g.Point.Y, ["fk"] = C.Key(c.FormKey), ["land"] = l == null ? null : C.Key(l.FormKey),
+                ["water"] = c.WaterHeight ?? ws.LandDefaults?.DefaultWaterHeight,
                 ["offset"] = l?.VertexHeightMap?.Offset,
                 ["deltas"] = l?.VertexHeightMap is { } h ? Convert.ToBase64String(Enumerable.Range(0, 33 * 33).Select(i => unchecked((byte)h.HeightMap[i % 33, i / 33])).ToArray()) : null,
                 ["layers"] = layers,
