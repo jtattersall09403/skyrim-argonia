@@ -1,0 +1,119 @@
+{
+ "error": "does not lead back",
+ "ops": [
+  {
+   "n": 1,
+   "op": "ref.add",
+   "ref": {
+    "base": "Black Marsh.esm:0D7030",
+    "door": {
+     "to_pos": [
+      0,
+      -100,
+      0
+     ],
+     "to_ref": "fix.31",
+     "to_rot": [
+      0,
+      0,
+      0
+     ],
+     "to_space": "FixHouse02"
+    },
+    "flags": [],
+    "id": "fix.30",
+    "kind": "door",
+    "layer": "place",
+    "pos": [
+     1800,
+     2000,
+     60
+    ],
+    "rot": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1.0,
+    "seat": {
+     "dz": 0.0,
+     "mode": "ground"
+    },
+    "src": "bmv.helstrom:30"
+   },
+   "space": "exterior"
+  },
+  {
+   "n": 2,
+   "op": "ref.add",
+   "ref": {
+    "base": "Black Marsh.esm:0D7031",
+    "door": {
+     "to_pos": [
+      1800,
+      2000,
+      60
+     ],
+     "to_ref": "fix.99",
+     "to_rot": [
+      0,
+      0,
+      0
+     ],
+     "to_space": "exterior"
+    },
+    "flags": [],
+    "id": "fix.31",
+    "kind": "door",
+    "layer": "place",
+    "pos": [
+     0,
+     -100,
+     0
+    ],
+    "rot": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1.0,
+    "seat": {
+     "dz": 0.0,
+     "mode": "free"
+    },
+    "src": "bmv.helstrom:31"
+   },
+   "space": "FixHouse02",
+   "space_copy_of": "bmv.fixture/FixHouse02",
+   "space_name": "House"
+  },
+  {
+   "n": 3,
+   "op": "ref.add",
+   "ref": {
+    "base": "Black Marsh.esm:0D7032",
+    "flags": [],
+    "id": "fix.32",
+    "kind": "furniture",
+    "layer": "place",
+    "pos": [
+     50,
+     50,
+     0
+    ],
+    "rot": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1.0,
+    "seat": {
+     "dz": 0.0,
+     "mode": "free"
+    },
+    "src": "bmv.helstrom:32"
+   },
+   "space": "FixHouse02"
+  }
+ ]
+}

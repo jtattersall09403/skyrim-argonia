@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import copy
 import json
+import math
 from pathlib import Path
 
 OPS = ("ref.add", "ref.remove", "ref.move", "veg.clear", "veg.restore", "land.patch",
@@ -45,8 +46,12 @@ def same(a, b) -> bool:
     return a == b
 
 
+def _r1(v):
+    return math.floor(v * 10 + 0.5) / 10   # JavaScript's Math.round(v * 10) / 10, so both sides key alike
+
+
 def _veg_key(it):
-    return (it["base"], tuple(round(v, 1) for v in it["pos"]))
+    return (it["base"], tuple(_r1(v) for v in it["pos"]))
 
 
 def canonical(files: dict) -> dict:
@@ -89,6 +94,8 @@ def check_op(op: dict) -> None:
         _need(op, "space")
     if kind == "ref.add":
         _need(op, "ref")
+        if "space_copy_of" in op and op["space"] == "exterior":
+            raise EditError(f"op {op['n']} (ref.add): space_copy_of names an interior, not the exterior")
         for k in ("id", "base", "pos", "rot", "scale"):
             if k not in op["ref"]:
                 raise EditError(f"op {op['n']} (ref.add): the ref has no '{k}'")
@@ -156,10 +163,25 @@ def _conflict(op, msg):
 def _apply_one(files, op):
     kind = op["op"]
     if kind == "ref.add":
+        new_space = op["space"] not in files["spaces"]
         rows = _space(files, op)
         if _find(rows, op["ref"]["id"]) is not None:
             _conflict(op, f"ref {op['ref']['id']} already exists")
         rows.append(copy.deepcopy(op["ref"]))
+        sp = files["spaces"][op["space"]]
+        if op.get("space_copy_of"):
+            if not new_space and (sp["space"] or len(rows) > 1):
+                _conflict(op, f"space {op['space']} already exists; a copied room needs a new space id")
+            sp["space"] = {"space_id": op["space"], "copy_of": op["space_copy_of"],
+                           "name": op.get("space_name") or op["space"]}
+            for sid, other in files["spaces"].items():
+                for r in other["refs"]:
+                    if (r.get("door") or {}).get("to_space") == op["space"]:
+                        sp["space"].update(door_from=r["id"], parent=sid)
+        to = (op["ref"].get("door") or {}).get("to_space")
+        target = (files["spaces"].get(to) or {}).get("space")
+        if target is not None and target.get("copy_of") and not target.get("door_from"):
+            target.update(door_from=op["ref"]["id"], parent=op["space"])
     elif kind == "ref.remove":
         rows = _space(files, op)
         i = _find(rows, op["id"])
@@ -168,6 +190,8 @@ def _apply_one(files, op):
         if not same(rows[i], op["before"]):
             _conflict(op, f"ref {op['id']} differs from the save's before")
         rows.pop(i)
+        if op.get("space_drop") and not rows:
+            del files["spaces"][op["space"]]
     elif kind == "ref.move":
         rows = _space(files, op)
         i = _find(rows, op["id"])
@@ -182,7 +206,7 @@ def _apply_one(files, op):
         for it in op["items"]:
             if _veg_key(it) in have:
                 _conflict(op, f"plant {it['base']} at {it['pos']} is already cleared")
-            files["clear"].append({"base": it["base"], "pos": list(it["pos"]), "by": it.get("by", "owner")})
+            files["clear"].append(dict(copy.deepcopy(it), by=it.get("by", "owner")))
             have.add(_veg_key(it))
     elif kind == "veg.restore":
         for it in op["items"]:
@@ -235,7 +259,27 @@ def apply(place_files: dict, ops: list) -> dict:
     files = canonical(place_files)
     for op in ops:
         _apply_one(files, op)
+    _check_doors(files, ops)
     return canonical(files)
+
+
+def _check_doors(files, ops):
+    """Every door added into one of the place's own spaces is paired: its to_ref is there and leads back."""
+    for op in ops:
+        if op["op"] != "ref.add" or not (op["ref"].get("door") or {}).get("to_space"):
+            continue
+        d = op["ref"]["door"]
+        if d["to_space"] not in files["spaces"] or files["spaces"][d["to_space"]]["space"] is None:
+            continue   # leads into a room the place does not copy (the source's own, or the world's)
+        rows = files["spaces"][d["to_space"]]["refs"]
+        i = _find(rows, d.get("to_ref"))
+        back = (rows[i].get("door") or {}) if i is not None else {}
+        if i is not None and back.get("to_space") == op["space"] and back.get("to_ref") == op["ref"]["id"]:
+            continue
+        # a door copied unchanged from the source (no row in refs.jsonl) cannot be checked here
+        if i is None and not any(o["op"] == "ref.add" and o["space"] == d["to_space"] for o in ops):
+            continue
+        _conflict(op, f"door {op['ref']['id']} leads to {d['to_space']}/{d.get('to_ref')}, which does not lead back")
 
 
 def inverse(op: dict) -> dict:
@@ -245,9 +289,12 @@ def inverse(op: dict) -> dict:
     if kind == "ref.add":
         inv.update(op="ref.remove", id=op["ref"]["id"], before=op["ref"])
         del inv["ref"]
+        if op.get("space_copy_of"):
+            inv["space_drop"] = True
     elif kind == "ref.remove":
         inv.update(op="ref.add", ref=op["before"])
         del inv["id"], inv["before"]
+        inv.pop("space_drop", None)
     elif kind == "ref.move":
         inv.update(before=op["after"], after=op["before"])
     elif kind == "veg.clear":
@@ -302,7 +349,7 @@ def _jsonl(p: Path) -> list:
 
 def _write_jsonl(p: Path, rows: list) -> None:
     p.parent.mkdir(parents=True, exist_ok=True)
-    p.write_text("".join(json.dumps(r, sort_keys=True) + "\n" for r in rows))
+    p.write_text("".join(json.dumps(r, separators=(",", ":"), ensure_ascii=False) + "\n" for r in rows))
 
 
 def load_place(root: Path) -> dict:
@@ -322,11 +369,11 @@ def write_place(root: Path, files: dict) -> None:
     root = Path(root)
     files = canonical(files)
     root.mkdir(parents=True, exist_ok=True)
-    (root / "place.json").write_text(json.dumps(files["place"], indent=1, sort_keys=True) + "\n")
+    (root / "place.json").write_text(json.dumps(files["place"], indent=1, ensure_ascii=False) + "\n")
     for sid, sp in files["spaces"].items():
         _write_jsonl(root / "spaces" / sid / "refs.jsonl", sp["refs"])
         if sp.get("space") is not None:
-            (root / "spaces" / sid / "space.json").write_text(json.dumps(sp["space"], indent=1, sort_keys=True) + "\n")
+            (root / "spaces" / sid / "space.json").write_text(json.dumps(sp["space"], indent=1, ensure_ascii=False) + "\n")
     for k in ("clear", "land", "paths", "people"):
         if files[k] or (root / f"{k}.jsonl").exists():
             _write_jsonl(root / f"{k}.jsonl", files[k])

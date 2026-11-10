@@ -59,11 +59,34 @@ CONFLICTS = {
     "unknown_op": ([{"n": 1, "op": "ref.paint", "space": "exterior"}], "unknown op"),
 }
 
+DOOR_OUT = dict(ref("30", "0D7030", "door", (1800, 2000, 60)),
+                door={"to_space": "FixHouse02", "to_ref": "fix.31", "to_pos": [0, -100, 0], "to_rot": [0, 0, 0]})
+DOOR_IN = dict(ref("31", "0D7031", "door", (0, -100, 0), mode="free"),
+               door={"to_space": "exterior", "to_ref": "fix.30", "to_pos": [1800, 2000, 60], "to_rot": [0, 0, 0]})
+COPY = [
+    {"n": 1, "op": "ref.add", "space": "exterior", "ref": DOOR_OUT},
+    {"n": 2, "op": "ref.add", "space": "FixHouse02", "ref": DOOR_IN, "space_copy_of": "bmv.fixture/FixHouse02",
+     "space_name": "House"},
+    {"n": 3, "op": "ref.add", "space": "FixHouse02", "ref": ref("32", "0D7032", "furniture", (50, 50, 0), mode="free")},
+]
+DRAFT_ROW = PLACE["clear"][0]
+# Added cases (round 2): copying an enterable building with its room; a draft clearance row restored whole.
+CASES2 = {
+    "interior_copy": COPY,
+    "veg_restore_draft_row": [{"n": 1, "op": "veg.restore", "space": "exterior", "items": [DRAFT_ROW]}],
+}
+CONFLICTS2 = {
+    "interior_door_unpaired": ([COPY[0], dict(COPY[1], ref=dict(DOOR_IN, door=dict(DOOR_IN["door"], to_ref="fix.99"))), COPY[2]],
+                               "does not lead back"),
+    "interior_copy_into_existing": ([dict(COPY[1], space="FixHouse01")], "already exists"),
+}
+
 
 def main():
     (HERE / "place.json").write_text(json.dumps(PLACE, indent=1, sort_keys=True) + "\n")
     cases = {"all_ops": {"ops": OPS, "expected": apply(PLACE, OPS)}}
-    for name, (ops, err) in CONFLICTS.items():
+    cases.update({k: {"ops": v, "expected": apply(PLACE, v)} for k, v in CASES2.items()})
+    for name, (ops, err) in {**CONFLICTS, **CONFLICTS2}.items():
         try:
             apply(PLACE, ops)
             raise SystemExit(f"{name} applied")

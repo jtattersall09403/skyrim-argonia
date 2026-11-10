@@ -1,0 +1,49 @@
+{
+ "error": "already exists",
+ "ops": [
+  {
+   "n": 2,
+   "op": "ref.add",
+   "ref": {
+    "base": "Black Marsh.esm:0D7031",
+    "door": {
+     "to_pos": [
+      1800,
+      2000,
+      60
+     ],
+     "to_ref": "fix.30",
+     "to_rot": [
+      0,
+      0,
+      0
+     ],
+     "to_space": "exterior"
+    },
+    "flags": [],
+    "id": "fix.31",
+    "kind": "door",
+    "layer": "place",
+    "pos": [
+     0,
+     -100,
+     0
+    ],
+    "rot": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1.0,
+    "seat": {
+     "dz": 0.0,
+     "mode": "free"
+    },
+    "src": "bmv.helstrom:31"
+   },
+   "space": "FixHouse01",
+   "space_copy_of": "bmv.fixture/FixHouse02",
+   "space_name": "House"
+  }
+ ]
+}
