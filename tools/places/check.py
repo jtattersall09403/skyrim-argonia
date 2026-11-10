@@ -30,7 +30,8 @@ from tools.places import build as B
 SEAT_TOL = 8.0  # units: one VHGT step
 STOP_PLAN_TOL, STOP_Z_TOL = 96.0, 128.0  # a routine stop or arrival point is on navmesh within these
 DECK_TOL = 48.0  # a line's point over a deck stands on a triangle within this of the deck's own surface
-WATER = 0x200  # NVNM triangle flag: water (one swims there)
+WATER = 0x200  # NVNM triangle flag: water (the triangle lies on the bed under it)
+WADE = 64.0  # water up to the waist (half the CK's 128 agent height) is waded; deeper, one swims
 OVERLAP_SHRINK = 0.8  # a ref is inside another's collision when its origin is within this share of the other's box
 PLANT_DOOR_CLEAR = 128.0
 SOLID = {"building", "static", "furniture", "container", "door", "activator", "rock"}
@@ -197,6 +198,29 @@ class NavIndex:
         return best
 
 
+def walked(n: Nav, water=None) -> np.ndarray:
+    """Each triangle of a navmesh a street or a patrol may be laid on: dry, or water no deeper than WADE over it (a
+    ford; `water(x, y)`, the water's level; without it, no water triangle)."""
+    out = (np.asarray(n.flags, int) & WATER) == 0
+    if water is not None and n.space == "exterior" and not out.all():
+        v = np.asarray(n.verts, float).reshape(-1, 3)
+        for i in np.flatnonzero(~out):
+            c = v[np.asarray(n.tri[i], int)].mean(axis=0)
+            w = water(float(c[0]), float(c[1]))
+            out[i] = w is not None and w - c[2] <= WADE
+    return out
+
+
+def water_level(ctx: dict):
+    """The water's level over a plan point (its cell's), or None where the cell has none."""
+    water = {(c["x"], c["y"]): c.get("water") for c in ctx["facts"]["cells"]}
+
+    def w(x: float, y: float) -> float | None:
+        v = water.get(B.cell_of(x, y))
+        return float(v) if v is not None and abs(v) < 1e8 else None
+    return w
+
+
 def nav_index(ctx: dict) -> NavIndex:
     if ctx.get("_nav_index_of") is not ctx["navs"]:
         ctx["_nav_index"], ctx["_nav_index_of"] = NavIndex(ctx["navs"]), ctx["navs"]
@@ -204,10 +228,9 @@ def nav_index(ctx: dict) -> NavIndex:
 
 
 def components(navs: dict[str, Nav], door_pairs: dict[str, str]) -> dict[tuple[str, int], int]:
-    """Connected components of the walked network over every triangle: shared edges, edge links, and door triangles
-    of paired doors. A water triangle (one swims there) joins nothing: it is a component of its own, so a deck
-    reached only by swimming is an island, as Skyrim.esm's docks never are (every DockStrSol01 deck in Tamriel is on
-    the one dry network)."""
+    """Connected components over every triangle: shared edges, edge links, and door triangles of paired doors. Water
+    triangles join as any other, as Skyrim.esm's do (in Tamriel 16,729 water-dry shared edges and 1,670 water-dry
+    edge links, measured): actors wade and swim them."""
     parent: dict = {}
 
     def find(x):
@@ -225,16 +248,14 @@ def components(navs: dict[str, Nav], door_pairs: dict[str, str]) -> dict[tuple[s
     for n in navs.values():
         for i in range(len(n.tri)):
             find((n.fk, i))
-            if n.flags[i] & WATER:
-                continue
             for k in range(3):
                 e = int(n.edge[i][k])
                 if n.flags[i] & (1 << k):
                     if 0 <= e < len(n.links):
                         _, tgt, tt = n.links[e]
-                        if tgt in navs and 0 <= tt < len(navs[tgt].flags) and not navs[tgt].flags[tt] & WATER:
+                        if tgt in navs:
                             union((n.fk, i), (tgt, tt))
-                elif e >= 0 and not n.flags[e] & WATER:
+                elif e >= 0:
                     union((n.fk, i), (n.fk, e))
         for ti, door in n.doors:
             door_tris[door].append((n.fk, ti))
@@ -358,8 +379,12 @@ def ground(ctx: dict):
     return z, steps
 
 
+STAND_AREA = 1024.0  # square units: an upward surface smaller than a person's footprint (a post's or a rail's top) is not stood on
+
+
 def _up_faces(model: str, bounds) -> np.ndarray:
-    """A walkway model's upward faces (where one stands: the deck, steps' treads), in model units; its record box's
+    """A walkway model's upward faces one stands on (the deck, steps' treads: upward faces joined at their corners
+    into a surface of at least STAND_AREA, so a post's or a rail's cap is left out), in model units; its record box's
     top when its collision cannot be read."""
     from tools.places import seat
     m = str(model or "").lower()
@@ -375,7 +400,27 @@ def _up_faces(model: str, bounds) -> np.ndarray:
         t = np.asarray(t, float).reshape(-1, 3, 3)
         n = np.cross(t[:, 1] - t[:, 0], t[:, 2] - t[:, 0])
         ln = np.linalg.norm(n, axis=1)
-        _UP[m] = t[(ln > 0) & (n[:, 2] >= 0.7 * ln)]
+        up = t[(ln > 0) & (n[:, 2] >= 0.7 * ln)]
+        area = np.linalg.norm(np.cross(up[:, 1] - up[:, 0], up[:, 2] - up[:, 0]), axis=1) / 2
+        parent = list(range(len(up)))
+
+        def find(i):
+            while parent[i] != i:
+                parent[i] = parent[parent[i]]
+                i = parent[i]
+            return i
+        first: dict = {}
+        for i, tri in enumerate(up):
+            for v in tri:
+                j = first.setdefault(tuple(np.round(v).astype(int)), i)
+                a, b = find(i), find(j)
+                if a != b:
+                    parent[a] = b
+        root = [find(i) for i in range(len(up))]
+        size: dict = defaultdict(float)
+        for i, r in enumerate(root):
+            size[r] += area[i]
+        _UP[m] = up[np.array([size[r] >= STAND_AREA for r in root], bool)] if len(up) else up
     return _UP[m]
 
 
@@ -388,7 +433,7 @@ def surfaces(ctx: dict):
     stood on), or None where no deck stands; and the water's level where the ground is under it, else None."""
     z, _ = ground(ctx)
     m = mine(ctx)
-    water = {(c["x"], c["y"]): c.get("water") for c in ctx["facts"]["cells"]}
+    water = water_level(ctx)
     faces, boxes = [], []
     for fk, row in m["rows"].items():
         r = m["refs"].get(fk)
@@ -422,8 +467,8 @@ def surfaces(ctx: dict):
         return best
 
     def wet(x: float, y: float) -> float | None:
-        w, g = water.get(B.cell_of(x, y)), z(x, y)
-        return float(w) if w is not None and abs(w) < 1e8 and g is not None and g < w - 8 else None
+        w, g = water(x, y), z(x, y)
+        return w if w is not None and g is not None and g < w - 8 else None
     return z, deck, wet
 
 
@@ -700,8 +745,9 @@ def check_navmesh(ctx) -> list[str]:
 
 def check_streets(ctx) -> list[str]:
     """Every street, path and walkway (its line sampled every 64 units) and every guard's patrol point stands on the
-    town's main walked network: over a deck, on a dry triangle within DECK_TOL of the deck's own surface (never the
-    seabed under it); on land, on the triangle the stop lookup finds; over open water with no deck, nowhere."""
+    town's main network at its own level, never laid along water: over a deck, on a dry triangle within DECK_TOL of
+    the deck's own surface (never the seabed under it); on land or in a ford (water no deeper than WADE), on the
+    triangle the stop lookup finds; over deeper water with no deck, only on a dry triangle right over it."""
     from tools.places.draft import walk
     pdir = ctx.get("place_dir")
     paths = ctx["paths"] if "paths" in ctx else (B.jsonl(pdir / "paths.jsonl") if pdir else [])

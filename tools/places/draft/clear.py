@@ -145,3 +145,17 @@ def apply(world: list[dict], clearance: dict, buildings: list[dict], bases: dict
             rows.append({"base": r["base"], "pos": [round(v, 1) for v in r["pos"]], "by": "draft", "why": why,
                          "ref": r.get("id")})
     return sorted(rows, key=lambda x: (x["pos"][0], x["pos"][1], x["base"]))
+
+
+def along(world: list[dict], clearance: dict, paths: list[dict], cleared: set) -> list[dict]:
+    """The rows `apply` adds for streets alone, for world plants not yet cleared: what a street laid after the draft
+    (re-laid on the built network) clears by the same measure."""
+    rows = []
+    for r in world:
+        if r.get("kind") not in CLEARED_KINDS or r.get("id") in cleared:
+            continue
+        p = (r["pos"][0], r["pos"][1])
+        if dist_to_paths(p, paths) <= max(clearance[_cls(r["kind"])]["street"], 0.0):
+            rows.append({"base": r["base"], "pos": [round(v, 1) for v in r["pos"]], "by": "draft", "why": "street",
+                         "ref": r.get("id")})
+    return rows

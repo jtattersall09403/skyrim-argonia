@@ -591,11 +591,12 @@ its `seat` says; a ref inside another's collision that the source did not have; 
 facing into a wall; a person without a bed, with a routine stop off the navmesh or unreachable from the one
 before, or with a patrol marker off the navmesh or unreachable from the marker before it (a loop's first from its
 last); a navmesh island or an unjoined cell edge; a street, path or walkway point (each line sampled every 64
-units) or a guard's patrol point off the town's main network (over a walkway piece, on no dry triangle within 48 units
-of the deck's own surface, the upward faces of its collision under its `walk` top; over water with no deck, on no
-dry triangle right over it; on land, as a stop is found); a land patch whose built heights differ from `land.jsonl` or
-tear at a seam; a cleared plant still enabled, or a plant standing in a building, street or doorway; a service
-the place record promises with nobody giving it; a Nordic base; anything levelled (a levelled list in a person's
+units) or a guard's patrol point off the town's main network (over a walkway piece, on no dry triangle within 48
+units of the deck's own surface: the upward faces of its collision under its `walk` top that join into a surface a
+person can stand on, 1024 square units or more, so a post's or a rail's cap is not a deck; over water too deep to
+wade with no deck, on no dry triangle right over it; on land or in a ford, as a stop is found); a land patch whose
+built heights differ from `land.jsonl` or tear at a seam; a cleared plant still enabled, or a plant standing in a
+building, street or doorway; a service the place record promises with nobody giving it; a Nordic base; anything levelled (a levelled list in a person's
 inventory, outfits, death item or spells, or in a placed container; a level that follows the player; a base whose
 template chain reaches a levelled actor list or takes stats or an inventory from a template that scales). It also
 fails on a link that
@@ -603,10 +604,9 @@ resolves nowhere or a plugin not mastered on the world ESM. The promises are the
 `newworld/story/data/db/place_give.jsonl` (combat, loot and resource gives are not a place's to give). Nordic is
 the Nordic review's verdict for a base it lists, else a base whose model lies in Skyrim's hold-city, Nordic farm
 or Nordic ruin folders, or whose editor id carries their kit prefixes (decision 0006). Results go to `out/places/shards/<place_id>/check.json`, which the new world's
-read-back (`tools/newworld/verify.py`, area `places`) reports. Reachable and island are over the walked network: a
-water triangle (one swims there) joins nothing, so a pier or a ship reached only by swimming is an island, as
-Skyrim.esm's docks never are (every DockStrSol01 deck in Tamriel has dry deck triangles on the one dry network,
-measured). The geometry is one: a ref is inside another
+read-back (`tools/newworld/verify.py`, area `places`) reports. Water triangles join the network as Skyrim.esm's do (in Tamriel 16,729 water-dry shared edges and 1,670 water-dry
+edge links, measured: actors wade and swim them); a street or a patrol is never laid along water deeper than a ford
+(`WADE`, 64 units, half the agent's height). The geometry is one: a ref is inside another
 when its origin is within 0.8 of the other's record box in plan under the other's full three-axis rotation and
 within its height; a standing point (arrival, stop) is inside a body only below its top by more than 16 units.
 `draft check <place_id>` runs this same check (the build into `out/places/draft_check/`, then these functions on

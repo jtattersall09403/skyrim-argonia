@@ -76,17 +76,19 @@ ROUTE_CAP = 200_000    # triangles a re-lay's search may open
 
 class Walkable:
     """The built exterior navmesh (ours and the world's round the place) as one index: each triangle's walked
-    component and whether it is the town's main network (the largest component over doors, as `check` finds it; a
-    water triangle joins nothing, `check.components`); triangles bucketed in plan for point lookup (a point is never
-    found on a water triangle), and their neighbours for routing on the mesh. The levels one may stand at over a plan
-    point (`levels`): a walkway piece's deck, `deck(x, y)`, by the mesh's own height there within check.DECK_TOL; our
-    dry ground, `zref(x, y)`, within Z_TOL of a triangle's mean height; over water with no deck (`wet(x, y)` gives the
-    water's level), only a dry triangle above the water, right under the point. A 3-d point carries its own height. A
+    component and whether it is the town's main network (the largest component over doors, as `check` finds it);
+    triangles bucketed in plan for point lookup (a street's or a patrol's point is never found on water deeper than a
+    ford, `check.walked`), and their neighbours for routing on the mesh. The levels one may stand
+    at over a plan point (`levels`): a walkway piece's deck, `deck(x, y)`, by the mesh's own height there within
+    check.DECK_TOL; our ground, `zref(x, y)`, within Z_TOL of a triangle's mean height, where it is dry or under
+    water no deeper than check.WADE (`wet(x, y)` gives the water's level); over deeper water with no deck, only a
+    dry triangle above the water, right under the point. A 3-d point carries its own height. A
     point's triangle is the one the build's check picks (`check.NavIndex.at`: within PICK_TOL in plan and the level's
     height band, nearest in plan, then in height), so what is on the network here is there."""
 
     def __init__(self, ctx: dict, zref=None, deck=None, wet=None, comp: dict | None = None):
         from tools.places import check as C
+        water = C.water_level(ctx) if "facts" in ctx else None
         comp = comp if comp is not None else C.components(ctx["navs"], C.door_pairs(ctx))
         main = Counter(comp.values()).most_common(1)[0][0]
         self.zref, self.deck, self.wet = zref, deck, wet
@@ -99,7 +101,7 @@ class Walkable:
             tri.append(n.verts[n.tri])
             cid += [ids.setdefault(comp[(n.fk, i)], len(ids)) for i in range(len(n.tri))]
         self.T = np.concatenate(tri) if tri else np.zeros((0, 3, 3))
-        self.dry = (np.concatenate([n.flags for n in self.navs]) & C.WATER) == 0 if tri else np.zeros(0, bool)
+        self.dry = np.concatenate([C.walked(n, water) for n in self.navs]) if tri else np.zeros(0, bool)
         self.comp = np.asarray(cid, int)
         self.main = self.comp == ids.get(main, -1)
         self.cent = self.T.mean(axis=1)
@@ -124,7 +126,8 @@ class Walkable:
     def levels(self, p) -> list[tuple]:
         """Where one may stand at p, deck first: [(height, lowest, highest, by the mesh's height at p (else by the
         triangle's mean), plan reach)]; empty over open water with nothing to stand on."""
-        from tools.places.check import DECK_TOL
+        from tools.places import check as C
+        DECK_TOL = C.DECK_TOL
         x, y = float(p[0]), float(p[1])
         d = self.deck(x, y) if self.deck else None
         if len(p) > 2:
@@ -138,7 +141,11 @@ class Walkable:
             g = self.zref(x, y) if self.zref else None
             out.append((g, g - Z_TOL, g + Z_TOL, False, math.inf) if g is not None else (None, -math.inf, math.inf, False, math.inf))
         elif d is None:
-            out.append((w, w - WATER_EDGE, math.inf, True, WATER_EDGE))
+            g = self.zref(x, y) if self.zref else None
+            if g is not None and w - g <= C.WADE:     # waded: on the bed, as on the ground
+                out.append((g, g - Z_TOL, g + Z_TOL, False, math.inf))
+            else:                                     # too deep: only something dry right over it
+                out.append((w, w - WATER_EDGE, math.inf, True, WATER_EDGE))
         return out
 
     def why(self, p) -> str:
@@ -609,9 +616,10 @@ def arrivals(place_id: str, pdir: Path, W: Walkable, bases: dict, log=print) -> 
     return moved
 
 
-def streets(place_id: str, pdir: Path, W: Walkable, log=print) -> int:
+def streets(place_id: str, pdir: Path, W: Walkable, world: list[dict] | None = None, log=print) -> int:
     """Every street lies on the town's main walkable network of the built mesh: a stretch off it is re-laid along the
-    way the mesh walks (`mend`), said in the street's `laid`; then each guard's patrol is taken again from the
+    way the mesh walks (`mend`), said in the street's `laid`, and the world's plants (`world`, the ground bundle's)
+    the new line reaches are cleared by the draft's own measure; then each guard's patrol is taken again from the
     streets, every point on the network. Returns the changes (stretches re-laid and patrols changed)."""
     from tools.places.draft import people
     pj, fj = pdir / "paths.jsonl", pdir / "people.jsonl"
@@ -627,6 +635,15 @@ def streets(place_id: str, pdir: Path, W: Walkable, log=print) -> int:
             log(f"join {place_id}: street {p['id']}: {got} stretch(es) re-laid on the built walkable network")
     if n:
         io.write_jsonl(pj, paths)
+        cj, place = pdir / "clear.jsonl", json.loads((pdir / "place.json").read_text())
+        if world and place.get("clearance"):
+            from tools.places.draft import clear as clearmod
+            rows = io.read_jsonl(cj) if cj.exists() else []
+            more = clearmod.along(world, place["clearance"], [p for p in paths if "re-laid" in str(p.get("laid"))],
+                                  {r.get("ref") for r in rows})
+            if more:
+                io.write_jsonl(cj, sorted(rows + more, key=lambda x: (x["pos"][0], x["pos"][1], x["base"])))
+                log(f"join {place_id}: {len(more)} world plants cleared off the re-laid streets")
     folk = io.read_jsonl(fj) if fj.exists() else []
     guards = {io.mint(place_id, "person", "guard", str(k)): k for k in range(len(folk))}
     beats, changed = people.beats(paths), 0
@@ -678,7 +695,7 @@ def join(place_id: str, places: Path = io.PLACES, out: Path = CHECK_OUT, log=pri
         if ctx is None:
             log(f"join {place_id}: the build failed: {bad[-1:]}")
             return done
-        W = Walkable(ctx, *C.surfaces(ctx), comp=C.components(ctx["navs"], C.door_pairs(ctx)))
+        W = Walkable(ctx, *C.surfaces(ctx))
         # people moved to a reached bed change nothing the mesh is built from: no build round of their own
         moved = rehome(place_id, W, bases, src, pdir, log)
         isl = islands(ctx, W)
@@ -712,7 +729,8 @@ def join(place_id: str, places: Path = io.PLACES, out: Path = CHECK_OUT, log=pri
                 continue   # the joined islands are the network once built
             log(f"join {place_id}: no island ({', '.join(sorted(isl))}) has a clear walkable way to the network")
             moved += cut(place_id, sorted(isl), rows, pdir, log)
-        got = arrivals(place_id, pdir, W, bases, log) + streets(place_id, pdir, W, log)
+        world = [r for r in (grd.exterior.refs if grd.exterior else []) if r.get("layer", "world") == "world"]
+        got = arrivals(place_id, pdir, W, bases, log) + streets(place_id, pdir, W, world, log)
         done += got + moved
         if got or moved:
             settle()

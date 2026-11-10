@@ -209,18 +209,20 @@ def _link(a, ai, b, bi):
         n.flags[i] |= 1
 
 
-def test_a_water_triangle_carries_no_walker():
+def test_water_triangles_join_the_network_as_skyrims_do():
     shore, sea, deck = _Nav("shore", [(0, 0)]), _water("sea", [(1, 0)], -150.0), _Nav("deck", [(2, 0)], 250.0)
     _link(shore, 0, sea, 0)
     _link(sea, 1, deck, 0)
     comp = C.components({"shore": shore, "sea": sea, "deck": deck}, {})
-    assert comp[("shore", 0)] != comp[("deck", 0)]            # reached only by swimming: an island
-    assert comp[("sea", 0)] != comp[("sea", 1)]
+    assert comp[("shore", 0)] == comp[("sea", 0)] == comp[("deck", 0)]
+    assert not C.walked(sea, lambda x, y: 0.0).any()           # too deep to lay a street on
+    sea.verts[:, 2] = -40.0
+    assert C.walked(sea, lambda x, y: 0.0).all()               # a ford
 
 
 def test_a_walkway_point_stands_on_the_deck_not_the_seabed_under_it(monkeypatch):
     sea = _water("sea", [(x, 0) for x in range(10)], -150.0)
-    land = _Nav("land", [(x, 1) for x in range(10)], 0.0)
+    land = _Nav("land", [(x, y) for x in range(10) for y in (1, 2)], 0.0)
 
     def deck(x, y):
         if 700 <= x <= 900 and 100 <= y <= 300:
@@ -238,7 +240,7 @@ def test_a_walkway_point_stands_on_the_deck_not_the_seabed_under_it(monkeypatch)
     assert W.on((800, 150))                                               # on land under a bridge
     assert not W.on((450, 50)) and "deck at z 250" in W.why((450, 50))   # over the deck: only the seabed under it
     assert not W.on((150, 50)) and "open water" in W.why((150, 50))      # beside the deck, in the water
-    navs = {"deck": _Nav("deck", [(3, 0), (4, 0), (5, 0)], 245.0), "sea": sea}
+    navs = {"deck": _Nav("deck", [(3, 0), (4, 0), (5, 0)], 245.0)}
     W = walk.Walkable({"navs": navs}, ground, deck, wet, comp=C.components(navs, {}))
     assert W.on((450, 30))                                                # the deck's own triangles, within DECK_TOL
 
