@@ -1,0 +1,27 @@
+FormKey: 000E3A:Argonia.esp
+EditorID: ARG_MQ01_Tsanji
+Configuration:
+  Flags:
+  - Female
+  - AutoCalcStats
+  - Protected
+  Level:
+    MutagenObjectType: NpcLevel
+    Level: 4
+  TemplateFlags:
+  - Traits
+  - SpellList
+  - ModelAnimation
+  - Inventory
+  - AttackData
+  - Keywords
+Voice: 013AED:Skyrim.esm
+Template: 01B1DA:Skyrim.esm
+Race: 013745:Skyrim.esm
+AIData:
+  Confidence: Average
+  Responsibility: NoCrime
+Class: 01325B:Skyrim.esm
+Name:
+  TargetLanguage: English
+  Value: Tsanji

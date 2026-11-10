@@ -1,8 +1,0 @@
-FormKey: 000DC0:Argonia.esp
-EditorID: ARG_MQ04_VillageTopic
-Name:
-  TargetLanguage: English
-  Value: the tree
-Branch: 000DBF:Argonia.esp
-Quest: 000D8C:Argonia.esp
-SubtypeName: CUST

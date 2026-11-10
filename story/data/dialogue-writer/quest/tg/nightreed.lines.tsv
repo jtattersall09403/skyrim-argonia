@@ -120,3 +120,9 @@ ARG_TG01_TopicTest_0@high.2	He carries the necklace on his round of the dock, so
 ARG_TG01_TopicTest_0@low.0	The Chapter wants to see how you work. I do not know you yet, so I say it short.
 ARG_TG01_TopicTest_0@low.1	Keeps-What-Floats took a necklace of blue jaspers from another thief who was asleep. Bring it back. Do not harm him.
 ARG_TG01_TopicTest_0@low.2	He carries it on his round of the dock. Follow him. Sits-By-The-Water drinks with him.
+ARG_TG01_TopicBed_fallback	I do not give a friend's bed away for a few soft words. Come back with Speech 25, or buy me a drink for 10 gold. Then I will tell you.
+ARG_TG01_TopicGiveBack_fallback	You do not talk like the owner. Come back with Speech 35 or 60 gold. Then the necklace is yours.
+ARG_TG02_TopicClaimCharm_fallback	That tells me nothing. Come back with Speech 30 or put 20 gold in my hand. Then I will tell you which things are mine.
+ARG_TG02_TopicSellFigurine_fallback	You cannot know that it is older than my clutch. Come back with Speech 30 and I will pay you 50 gold for it.
+ARG_TG02_TopicSellCharm_fallback	I will not pay for a charm on that word. Persuade me with Speech 30. Then I will give you 50 gold.
+ARG_TG02_TopicSellBeads_fallback	You do not know what these are. Come back with Speech 30. Then I will pay 50 gold and ask no more.

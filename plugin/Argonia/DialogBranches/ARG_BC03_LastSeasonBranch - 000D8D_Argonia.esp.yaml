@@ -1,0 +1,7 @@
+FormKey: 000D8D:Argonia.esp
+EditorID: ARG_BC03_LastSeasonBranch
+Quest: 000D85:Argonia.esp
+Category: Player
+Flags:
+- TopLevel
+StartingTopic: 000D8E:Argonia.esp

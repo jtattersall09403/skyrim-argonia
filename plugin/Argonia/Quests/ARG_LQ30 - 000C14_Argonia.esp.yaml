@@ -27,6 +27,11 @@ VirtualMachineAdapter:
       Name: Youth
       Object: 000C14:Argonia.esp
       Alias: 1
+    - MutagenObjectType: ScriptObjectListProperty
+      Name: Zones
+      Objects:
+      - Name: ''
+        Object: 000C1D:Argonia.esp
   FileName: ARG_QF_LQ30
   Fragments:
   - Stage: 30
@@ -82,6 +87,7 @@ Name:
   Value: The Gates of Helstrom
 Flags:
 - StartGameEnabled
+- RunOnce
 Priority: 50
 Type: SideQuest
 Stages:
@@ -94,13 +100,13 @@ Stages:
   - Flags: []
     Entry:
       TargetLanguage: English
-      Value: A woman, Haj-Wan, waits inside Helstrom's basin gate, beside the levy warden, for her kin Sei-Wan, who walked out alone into the basin. He went east through the shallows. I'm to find him.
+      Value: A woman, Haj-Wan, waits inside Helstrom's basin gate, beside the levy warden Gih-Xaleel, for her kin Sei-Wan, who walked out alone into the basin. He went east through the shallows. I'm to find him.
 - Index: 40
   LogEntries:
   - Flags: []
     Entry:
       TargetLanguage: English
-      Value: The viper that kept Sei-Wan pinned among the roots in the basin is dead. I can go back west to Helstrom's basin gate without a word to him and let him walk home alone, or talk to him and bring him back myself.
+      Value: The viper that kept Sei-Wan pinned among the roots in the basin is dead. I'm to go back west to Helstrom's basin gate, either without a word to him, letting him walk home alone, or after talking to him, bringing him back myself.
 - Index: 91
   LogEntries:
   - Flags:
@@ -126,11 +132,16 @@ Objectives:
 - Index: 30
   DisplayText:
     TargetLanguage: English
-    Value: Kill the viper that keeps Sei-Wan pinned among the roots in the shallows east of Helstrom's basin gate.
+    Value: Find Sei-Wan in the shallows east of Helstrom's basin gate.
+  Targets:
+  - AliasID: 1
 - Index: 40
   DisplayText:
     TargetLanguage: English
     Value: Go back to the basin gate without a word to Sei-Wan, or talk him into coming home.
+  Targets:
+  - AliasID: 1
+  - AliasID: 4
 Aliases:
 - Name: Kin
   Flags: []
@@ -149,3 +160,7 @@ Aliases:
   Name: Warden
   Flags: []
   ForcedReference: 08D5E9:Black Marsh North.esp
+- ID: 4
+  Name: GateZone
+  Flags: []
+  ForcedReference: 000C1D:Argonia.esp

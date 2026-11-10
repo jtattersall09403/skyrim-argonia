@@ -1,8 +1,0 @@
-FormKey: 000D35:Argonia.esp
-EditorID: ARG_BC02_ComeSpeaker
-Name:
-  TargetLanguage: English
-  Value: Come with me. I will get you out.
-Branch: 000D34:Argonia.esp
-Quest: 000D0A:Argonia.esp
-SubtypeName: CUST

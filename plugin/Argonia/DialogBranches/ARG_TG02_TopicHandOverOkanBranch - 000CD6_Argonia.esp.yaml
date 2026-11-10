@@ -1,0 +1,7 @@
+FormKey: 000CD6:Argonia.esp
+EditorID: ARG_TG02_TopicHandOverOkanBranch
+Quest: 000C58:Argonia.esp
+Category: Player
+Flags:
+- TopLevel
+StartingTopic: 000CD7:Argonia.esp

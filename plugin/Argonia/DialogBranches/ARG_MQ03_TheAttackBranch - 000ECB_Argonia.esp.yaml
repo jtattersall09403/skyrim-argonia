@@ -1,0 +1,7 @@
+FormKey: 000ECB:Argonia.esp
+EditorID: ARG_MQ03_TheAttackBranch
+Quest: 000E2E:Argonia.esp
+Category: Player
+Flags:
+- TopLevel
+StartingTopic: 000ECC:Argonia.esp

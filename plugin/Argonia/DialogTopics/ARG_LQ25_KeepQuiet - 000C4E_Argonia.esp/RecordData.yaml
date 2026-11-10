@@ -1,0 +1,8 @@
+FormKey: 000C4E:Argonia.esp
+EditorID: ARG_LQ25_KeepQuiet
+Name:
+  TargetLanguage: English
+  Value: I know about the offal under your plank walk.
+Branch: 000C4D:Argonia.esp
+Quest: 000C38:Argonia.esp
+SubtypeName: CUST

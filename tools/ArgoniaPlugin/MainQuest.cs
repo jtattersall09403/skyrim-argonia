@@ -292,8 +292,11 @@ static class MainQuest
             foreach (var r in roll.Responses) r.LinkTo.Add(answer.ToLink<IDialogTopicGetter>());
         }
         kit.Record("MQ01", lines, "topic.mq01-the-hire", null, Who(buys), ("after-answer", null, [.. Before40(), Glob(answered, 1)]), ("before-answer", null, [at10.DeepCopy()]));
-        kit.Record("MQ01", lines, "topic.mq01-the-water", null, Who(ux, uxM), ("main", null, Before40()));
         kit.Record("MQ01", lines, "topic.mq01-the-march", null, Who(dives, divesM), ("main", null, Before40()));
+        // The strike's shout (stage 40): Dives-Without-A-Rope, at the fire with the gang, says where Sal-Sei ran and where Deesh-Duun
+        // is; Fragment_40 has her Say it (a line heard without talking, a Misc quest topic).
+        var strike = kit.Shout("MQ01", lines, "topic.mq01-strike", IsId(divesM));
+        q.VirtualMachineAdapter!.Scripts.Single(x => x.Name == "ARG_QF_MQ01").Properties.Add(Obj("StrikeShout", strike.FormKey));
 
         // World edits: exterior persistent refs in the worldspace's persistent cell.
         world.TopCell!.Persistent.AddRange([brokerParent, marchParent, buysRef, courierRef, wuleenMRef, uxMRef, divesMRef, findsMRef,

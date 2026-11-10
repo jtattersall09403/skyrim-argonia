@@ -1,0 +1,30 @@
+FormKey: 000EF9:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Newcomer. A beast in the shallows took one of the landing crew, and no raft has gone out since. I count nothing off the rafts until one does. Okan-Zish of that crew is by the stone tower at the landing, and he wants it dealt with.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 08D5EA:Black Marsh North.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 000C38:Argonia.esp
+- MutagenObjectType: ConditionFloat
+  CompareOperator: GreaterThanOrEqualTo
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 000DBE:Argonia.esp
+  ComparisonValue: 40
+Prompt:
+  TargetLanguage: English
+  Value: Latest rumours

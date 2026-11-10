@@ -6,7 +6,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: No, friend, I will not stop you. The custom of Helstrom's Agaceph forbids our own to follow a walk-out. It does not bind an outsider.
+    Value: No, friend, I will not stop you.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 2
@@ -14,7 +14,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: But hear me, for I would not see you lost. Anyone who walks into the basin round Helstrom may die there. A warning is posted at the gate.
+    Value: I would not see you lost, so hear what I know. I have kept this gate through many floods and I have watched the reed roots at low water. Go slowly and watch where you put each foot.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 3
@@ -22,7 +22,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: What lies in the reed roots bites. The bite kills. The levy will send none of its own after you. If we followed every youth out, no walk-out would be his own.
+    Value: My duty ends at the gate. I will send none of the levy after you. I will be glad to see you come back.
   ScriptNotes: ''
   Edits: ''
 Conditions:

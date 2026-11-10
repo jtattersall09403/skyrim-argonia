@@ -1,0 +1,7 @@
+FormKey: 000E00:Argonia.esp
+EditorID: ARG_MQ04_CutBranch
+Quest: 000DBD:Argonia.esp
+Category: Player
+Flags:
+- TopLevel
+StartingTopic: 000E01:Argonia.esp

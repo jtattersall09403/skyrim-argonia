@@ -1,0 +1,24 @@
+FormKey: 000D2E:Argonia.esp
+Flags:
+  Flags:
+  - Random
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Rows-For-Another went down the channel with you, and she cannot go back. I could not have taken her.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 000CFE:Argonia.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 000CFF:Argonia.esp
+  ComparisonValue: 91

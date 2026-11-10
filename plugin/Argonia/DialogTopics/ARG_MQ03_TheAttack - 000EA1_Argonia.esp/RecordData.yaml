@@ -1,8 +1,0 @@
-FormKey: 000EA1:Argonia.esp
-EditorID: ARG_MQ03_TheAttack
-Name:
-  TargetLanguage: English
-  Value: I will tell you what I saw at the camp.
-Branch: 000EA0:Argonia.esp
-Quest: 000E01:Argonia.esp
-SubtypeName: CUST

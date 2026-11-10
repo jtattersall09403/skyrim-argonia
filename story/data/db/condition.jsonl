@@ -2814,8 +2814,6 @@
 {"id":"quest_fail_forward:quest.local.lp19|0|0:when.0","parent_id":"quest_fail_forward:quest.local.lp19|0|0:when","ord":0,"term":"npcAlive"}
 {"id":"quest_fail_forward:quest.local.lq15|0|0:when","term":"not"}
 {"id":"quest_fail_forward:quest.local.lq15|0|0:when.0","parent_id":"quest_fail_forward:quest.local.lq15|0|0:when","ord":0,"term":"npcAlive"}
-{"id":"quest_fail_forward:quest.local.lq25|1|0:when","term":"not"}
-{"id":"quest_fail_forward:quest.local.lq25|1|0:when.0","parent_id":"quest_fail_forward:quest.local.lq25|1|0:when","ord":0,"term":"npcAlive"}
 {"id":"quest_fail_forward:quest.local.lq29|0|0:when","term":"any"}
 {"id":"quest_fail_forward:quest.local.lq29|0|0:when.0","parent_id":"quest_fail_forward:quest.local.lq29|0|0:when","ord":0,"term":"not"}
 {"id":"quest_fail_forward:quest.local.lq29|0|0:when.0.0","parent_id":"quest_fail_forward:quest.local.lq29|0|0:when.0","ord":0,"term":"npcAlive"}

@@ -6,7 +6,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Ah, my friend, you came back. Sit by the fire. The next fish will not be long.
+    Value: The next fish will not be long, so sit by the fire.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 2
@@ -14,7 +14,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Back again. Come near the fire and tell me what you need.
+    Value: Come near the fire and tell me what you need.
   ScriptNotes: ''
   Edits: ''
 Conditions:

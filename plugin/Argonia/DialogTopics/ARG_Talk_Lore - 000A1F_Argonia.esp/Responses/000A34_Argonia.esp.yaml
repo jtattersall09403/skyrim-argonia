@@ -6,7 +6,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Black Marsh? The Dres raided Thorn for slaves long ago, outlander. It made them the first of the great Dunmer families in the trade. I am what that trade left behind, if you want it said plainly.
+    Value: Black Marsh? Ask Doveth Aralen about the Dres, outlander. I know their history and my own part in it, and you will get it more gently from Doveth than from me.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 2
@@ -14,7 +14,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: An Owing can be sold, outlander. The one who is owed sells it on, and the debtor's work goes with it. Those who buy are merchants in flesh, whatever they call themselves.
+    Value: Ask Keeps-The-Lock how an Owing is sold, outlander. Mine has been sold twice, and Keeps-The-Lock bought part of one. I think of Keeps-The-Lock as a merchant in flesh.
   ScriptNotes: ''
   Edits: ''
 Conditions:

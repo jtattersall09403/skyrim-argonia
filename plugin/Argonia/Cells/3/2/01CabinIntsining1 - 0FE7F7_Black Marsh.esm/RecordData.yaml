@@ -46,29 +46,29 @@ Music: 01BA72:Skyrim.esm
 ImageSpace: 0CE16C:Skyrim.esm
 Persistent:
 - MutagenObjectType: PlacedNpc
-  FormKey: 000E89:Argonia.esp
+  FormKey: 000EB1:Argonia.esp
   MajorRecordFlagsRaw: 1024
   EditorID: ARG_NeshDeekaRef
   SkyrimMajorRecordFlags:
   - 0x400
-  Base: 000E6F:Argonia.esp
+  Base: 000E97:Argonia.esp
   Placement:
     Position: 1620, 1250, 7441
   MajorFlags:
   - Persistent
 - MutagenObjectType: PlacedNpc
-  FormKey: 000E8A:Argonia.esp
+  FormKey: 000EB2:Argonia.esp
   MajorRecordFlagsRaw: 1024
   EditorID: ARG_MQ03_SaltsTheCatchRef
   SkyrimMajorRecordFlags:
   - 0x400
-  Base: 000E70:Argonia.esp
+  Base: 000E98:Argonia.esp
   Placement:
     Position: 1850, 800, 7631
   MajorFlags:
   - Persistent
 - MutagenObjectType: PlacedObject
-  FormKey: 000E8B:Argonia.esp
+  FormKey: 000EB3:Argonia.esp
   MajorRecordFlagsRaw: 1024
   EditorID: ARG_MQ03_HouseMarker
   SkyrimMajorRecordFlags:
@@ -77,7 +77,7 @@ Persistent:
   Placement:
     Position: 1750, 950, 7567
 - MutagenObjectType: PlacedObject
-  FormKey: 000E8C:Argonia.esp
+  FormKey: 000EB4:Argonia.esp
   MajorRecordFlagsRaw: 1024
   EditorID: ARG_MQ03_MatMarker
   SkyrimMajorRecordFlags:
@@ -86,7 +86,7 @@ Persistent:
   Placement:
     Position: 1550, 1150, 7483
 - MutagenObjectType: PlacedObject
-  FormKey: 000E8D:Argonia.esp
+  FormKey: 000EB5:Argonia.esp
   MajorRecordFlagsRaw: 1024
   EditorID: ARG_MQ03_Mat1
   SkyrimMajorRecordFlags:
@@ -95,7 +95,7 @@ Persistent:
   Placement:
     Position: 1540, 1180, 7460
 - MutagenObjectType: PlacedObject
-  FormKey: 000E8E:Argonia.esp
+  FormKey: 000EB6:Argonia.esp
   MajorRecordFlagsRaw: 1024
   EditorID: ARG_MQ03_Mat2
   SkyrimMajorRecordFlags:

@@ -1,0 +1,213 @@
+FormKey: 000C57:Argonia.esp
+EditorID: ARG_TG01
+VirtualMachineAdapter:
+  Scripts:
+  - Name: ARG_QF_TG01
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: AchievementsQuest
+      Object: 0FC85D:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Chapter
+      Object: 000C59:Argonia.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Gold001
+      Object: 00000F:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Lockpick
+      Object: 00000A:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Necklace
+      Object: 000C65:Argonia.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: NextQuest
+      Object: 000C58:Argonia.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: RoundParent
+      Object: 000C6A:Argonia.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Thief
+      Object: 000C57:Argonia.esp
+      Alias: 2
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Tilts
+      Object: 000C57:Argonia.esp
+      Alias: 0
+    - MutagenObjectType: ScriptObjectListProperty
+      Name: Zones
+      Objects:
+      - Name: ''
+        Object: 000C7A:Argonia.esp
+  FileName: ARG_QF_TG01
+  Fragments:
+  - Stage: 20
+    ScriptName: ARG_QF_TG01
+    FragmentName: Fragment_20
+  - Stage: 30
+    ScriptName: ARG_QF_TG01
+    FragmentName: Fragment_30
+  - Stage: 40
+    ScriptName: ARG_QF_TG01
+    FragmentName: Fragment_40
+  - Stage: 41
+    ScriptName: ARG_QF_TG01
+    FragmentName: Fragment_41
+  - Stage: 90
+    ScriptName: ARG_QF_TG01
+    FragmentName: Fragment_90
+  - Stage: 91
+    ScriptName: ARG_QF_TG01
+    FragmentName: Fragment_91
+  Aliases:
+  - Property:
+      Name: ''
+      Object: 000C57:Argonia.esp
+      Alias: 2
+    Scripts:
+    - Name: defaultSetStageOnDeathRefAlias
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: myQST
+        Object: 000C57:Argonia.esp
+      - MutagenObjectType: ScriptIntProperty
+        Name: preReqStage
+        Data: 20
+      - MutagenObjectType: ScriptIntProperty
+        Name: StageToSet
+        Data: 30
+  - Property:
+      Name: ''
+      Object: 000C57:Argonia.esp
+      Alias: 3
+    Scripts:
+    - Name: defaultSetStageOnDeathRefAlias
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: myQST
+        Object: 000C57:Argonia.esp
+      - MutagenObjectType: ScriptIntProperty
+        Name: preReqStage
+        Data: 20
+      - MutagenObjectType: ScriptIntProperty
+        Name: StageToSet
+        Data: 30
+Name:
+  TargetLanguage: English
+  Value: A Dry Hand in a Wet City
+Flags:
+- StartGameEnabled
+- RunOnce
+Priority: 50
+Type: SideQuest
+Stages:
+- Flags:
+  - StartUpStage
+  LogEntries:
+  - Flags: []
+- Index: 20
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: "Tilts-The-Jug, in the house on Soulrest's dock, wants to see how I work: a dock thief, Keeps-What-Floats, took a necklace of blue jaspers from another thief, and it must come back with no harm done. I'm to follow Keeps-What-Floats on the dock until he goes to bed, or ask Sits-By-The-Water, who drinks with him, where he sleeps."
+- Index: 30
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: Keeps-What-Floats keeps the necklace of blue jaspers on him on the dock by day, at the bench by the water in the evening, and on his bedroll at night. I'm to get it back to Tilts-The-Jug inside Soulrest's house without hurting him, by lifting it by day or while he sleeps, or by talking him out of it.
+- Index: 40
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: I brought the necklace of blue jaspers back to Tilts-The-Jug at Soulrest, and Keeps-What-Floats came to no harm. Tilts-The-Jug paid me and gave me three lockpicks. I'm to take the coast ship from Soulrest's dock to Lilmoth, open the locked trapdoor just north of Pusbottom and go down to the Chapter.
+- Index: 41
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: I brought the necklace of blue jaspers back to Tilts-The-Jug at Soulrest, but Keeps-What-Floats is dead. Tilts-The-Jug paid me nothing, said the Chapter wanted the necklace without a body, and gave me three lockpicks. I'm to take the coast ship from Soulrest's dock to Lilmoth, open the locked trapdoor north of Pusbottom and go down to the Chapter.
+- Index: 90
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+    Entry:
+      TargetLanguage: English
+      Value: I got the necklace of blue jaspers back from Keeps-What-Floats at Soulrest without hurting him, and Tilts-The-Jug paid me. I opened the trapdoor north of Pusbottom with my own hand and went down to the Chapter, and Bent-Spine took me in as a Lookout.
+- Index: 91
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+    Entry:
+      TargetLanguage: English
+      Value: I got the necklace of blue jaspers back at Soulrest, but Keeps-What-Floats died for it, and Tilts-The-Jug paid me nothing. I opened the trapdoor north of Pusbottom with my own hand and went down to the Chapter, and Bent-Spine took me in as a Lookout.
+Objectives:
+- Index: 20
+  DisplayText:
+    TargetLanguage: English
+    Value: Follow Keeps-What-Floats on Soulrest's dock to his bed, or ask Sits-By-The-Water where he sleeps.
+  Targets:
+  - AliasID: 2
+  - AliasID: 3
+- Index: 30
+  DisplayText:
+    TargetLanguage: English
+    Value: Take the Blue Jasper Necklace from Keeps-What-Floats without harming him.
+  Targets:
+  - AliasID: 2
+- Index: 31
+  DisplayText:
+    TargetLanguage: English
+    Value: Bring the necklace to Tilts-The-Jug inside Soulrest's house.
+  Targets:
+  - {}
+- Index: 40
+  DisplayText:
+    TargetLanguage: English
+    Value: Pick the lock of the trapdoor north of Pusbottom in Lilmoth and speak to whoever waits below.
+  Targets:
+  - AliasID: 6
+- Index: 41
+  DisplayText:
+    TargetLanguage: English
+    Value: Pick the lock of the trapdoor north of Pusbottom in Lilmoth and speak to whoever waits below.
+  Targets:
+  - AliasID: 6
+Aliases:
+- Name: Tilts
+  Flags: []
+  ForcedReference: 000C6C:Argonia.esp
+- ID: 1
+  Name: STabi
+  Flags: []
+  ForcedReference: 000C6D:Argonia.esp
+- ID: 2
+  Name: Thief
+  Flags:
+  - AllowDisabled
+  ForcedReference: 000C6E:Argonia.esp
+  PackageData:
+  - 000C7F:Argonia.esp
+  - 000C80:Argonia.esp
+  - 000C81:Argonia.esp
+- ID: 3
+  Name: Friend
+  Flags:
+  - AllowDisabled
+  ForcedReference: 000C6F:Argonia.esp
+  PackageData:
+  - 000C82:Argonia.esp
+- ID: 4
+  Name: BentSpine
+  Flags:
+  - AllowDisabled
+  ForcedReference: 000C70:Argonia.esp
+- ID: 5
+  Name: BedZone
+  Flags: []
+  ForcedReference: 000C7A:Argonia.esp
+- ID: 6
+  Name: Trapdoor
+  Flags: []
+  ForcedReference: 16BF7F:Black Marsh North.esp

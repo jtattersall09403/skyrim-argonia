@@ -1,0 +1,7 @@
+FormKey: 000EF1:Argonia.esp
+EditorID: ARG_MQ05_WordBranch
+Quest: 000DBE:Argonia.esp
+Category: Player
+Flags:
+- TopLevel
+StartingTopic: 000EF2:Argonia.esp

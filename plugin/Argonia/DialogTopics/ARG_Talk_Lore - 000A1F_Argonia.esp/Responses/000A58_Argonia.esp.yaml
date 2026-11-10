@@ -6,7 +6,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: I will not deny that an Owing grows. Spoilage, breakage, sickness and the cost of the debtor's own food are all added to the account.
+    Value: Ask Mils Ganthis about the charges on an Owing, party. I check every sum I write twice.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 2
@@ -14,7 +14,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: But I say the Owing is ours, party. It came from tribal arbitration, and it ends, which no prison does.
+    Value: Decimus Pell is the one to ask about the Owing, party. I say it is fair because it ends.
   ScriptNotes: ''
   Edits: ''
 Conditions:

@@ -1948,7 +1948,6 @@
 {"condition_id":"quest_fail_forward:quest.local.lp14|1|0:when.0","ord":0,"value":"npc.pirate-freeholds.upriver-hist-village.npc-opening-upriver-elder"}
 {"condition_id":"quest_fail_forward:quest.local.lp19|0|0:when.0","ord":0,"value":"npc.pirate-freeholds.upriver-hist-village.npc-opening-upriver-elder"}
 {"condition_id":"quest_fail_forward:quest.local.lq15|0|0:when.0","ord":0,"value":"npc.imperial-fringe.the-broke-column.n1"}
-{"condition_id":"quest_fail_forward:quest.local.lq25|1|0:when.0","ord":0,"value":"npc.hist-heartland.helstrom.boat-captain"}
 {"condition_id":"quest_fail_forward:quest.local.lq29|0|0:when.0.0","ord":0,"value":"npc.mercantile-coast.chasepoint.station-keeper"}
 {"condition_id":"quest_fail_forward:quest.local.lq29|0|0:when.1.0","ord":0,"value":"npc.mercantile-coast.chasepoint.n1-2"}
 {"condition_id":"quest_fail_forward:quest.local.lq30|0|0:when.0","ord":0,"value":"npc.hist-heartland.helstrom.lq30-youth"}

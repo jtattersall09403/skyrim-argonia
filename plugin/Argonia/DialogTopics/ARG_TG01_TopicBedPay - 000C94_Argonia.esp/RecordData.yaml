@@ -1,0 +1,8 @@
+FormKey: 000C94:Argonia.esp
+EditorID: ARG_TG01_TopicBedPay
+Name:
+  TargetLanguage: English
+  Value: Let me buy you a drink. (10 gold)
+Branch: 000C93:Argonia.esp
+Quest: 000C57:Argonia.esp
+SubtypeName: CUST

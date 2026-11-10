@@ -1,8 +1,0 @@
-FormKey: 000CF5:Argonia.esp
-EditorID: ARG_BC01_TheBook
-Name:
-  TargetLanguage: English
-  Value: Tell me about the estate's debt book.
-Branch: 000CF4:Argonia.esp
-Quest: 000CDD:Argonia.esp
-SubtypeName: CUST

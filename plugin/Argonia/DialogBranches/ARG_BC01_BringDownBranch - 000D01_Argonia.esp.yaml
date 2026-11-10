@@ -1,7 +1,0 @@
-FormKey: 000D01:Argonia.esp
-EditorID: ARG_BC01_BringDownBranch
-Quest: 000CDD:Argonia.esp
-Category: Player
-Flags:
-- TopLevel
-StartingTopic: 000D02:Argonia.esp

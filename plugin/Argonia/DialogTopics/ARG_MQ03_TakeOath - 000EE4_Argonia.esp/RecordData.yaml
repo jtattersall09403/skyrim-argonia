@@ -1,0 +1,8 @@
+FormKey: 000EE4:Argonia.esp
+EditorID: ARG_MQ03_TakeOath
+Name:
+  TargetLanguage: English
+  Value: I will serve the Reed.
+Branch: 000EE3:Argonia.esp
+Quest: 000E2E:Argonia.esp
+SubtypeName: CUST

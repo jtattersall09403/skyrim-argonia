@@ -1,0 +1,8 @@
+FormKey: 000EE9:Argonia.esp
+EditorID: ARG_MQ03_RefuseOath
+Name:
+  TargetLanguage: English
+  Value: Not yet.
+Branch: 000EE8:Argonia.esp
+Quest: 000E2E:Argonia.esp
+SubtypeName: CUST

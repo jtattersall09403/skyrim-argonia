@@ -1,0 +1,8 @@
+FormKey: 000E88:Argonia.esp
+EditorID: ARG_MQ01_AnswerName
+Name:
+  TargetLanguage: English
+  Value: Put down the name I carry.
+Branch: 000E85:Argonia.esp
+Quest: 000E2D:Argonia.esp
+SubtypeName: CUST

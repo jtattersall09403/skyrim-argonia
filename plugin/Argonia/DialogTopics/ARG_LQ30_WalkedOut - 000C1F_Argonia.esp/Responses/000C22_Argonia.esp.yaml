@@ -15,7 +15,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: I wait for Sei-Wan, my kin. He walked out into the basin alone four hours ago, to prove himself to Helstrom's Agaceph, the tribe that rules this city and that we belong to.
+    Value: I wait for Sei-Wan, my kin. He walked out into the basin alone and has not come back. He went to prove himself to Helstrom's Agaceph, the tribe that rules this city and that we belong to.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 2
@@ -31,7 +31,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: He went east from the gate, through the shallows. Vipers live in the roots there. Anyone who walks into the basin may die there. A warning is posted at the gate.
+    Value: He went east from the gate, through the shallows. Vipers live in the roots there. Ask the warden at the gate about the basin before you go.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 4

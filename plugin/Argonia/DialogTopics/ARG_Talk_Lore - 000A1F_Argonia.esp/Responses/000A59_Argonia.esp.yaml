@@ -6,7 +6,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Heita-Meen was a slave of Thorn. Heita-Meen killed Councillor Glathis Dres and took the Archein guard by duel. The freeing of our people began here, and I mean to finish it.
+    Value: Ask Fendyl Omoren about Heita-Meen, outlander. I know the story, and I mean to finish it.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 2
@@ -14,7 +14,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Thorn has many Dunmer living in it, outlander. Many families have grandparents on both sides of the slave coffles. Mine is one of them.
+    Value: Ask Nalvos Brenur about the families of Thorn, outlander. Mine is a mixed one, and I will say no more of it.
   ScriptNotes: ''
   Edits: ''
 Conditions:

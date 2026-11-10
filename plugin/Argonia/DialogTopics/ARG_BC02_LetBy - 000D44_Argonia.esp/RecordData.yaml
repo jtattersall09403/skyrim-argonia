@@ -1,8 +1,0 @@
-FormKey: 000D44:Argonia.esp
-EditorID: ARG_BC02_LetBy
-Name:
-  TargetLanguage: English
-  Value: Let this one go by.
-Branch: 000D43:Argonia.esp
-Quest: 000D0A:Argonia.esp
-SubtypeName: CUST

@@ -1,8 +1,0 @@
-FormKey: 000EDB:Argonia.esp
-EditorID: ARG_Talk_QuestWhoareyou
-Name:
-  TargetLanguage: English
-  Value: Who are you?
-Branch: 000EDA:Argonia.esp
-Quest: 000833:Argonia.esp
-SubtypeName: CUST

@@ -38,6 +38,7 @@ ReferenceAlias Property Cutter1 Auto
 ReferenceAlias Property Cutter2 Auto
 Weapon Property ReedKnife Auto
 Quest Property NextQuest Auto
+Topic Property StrikeShout Auto ; Dives-Without-A-Rope's shout at the strike (stage 40): where Sal-Sei ran, where Deesh-Duun is
 ObjectReference Property FireMark Auto
 ObjectReference Property HoldDoor Auto
 ObjectReference[] Property Zones Auto ; every trigger zone of this quest (QuestKit fills it); disarmed by the ending
@@ -167,6 +168,7 @@ Function Fragment_40() ; the strike: E-enable, the courier killed, E-move (the t
 	AtFire(DivesMarch, 100.0, -120.0)
 	AtFire(FindsMarch, -100.0, -120.0)
 	AtFire(Courier, 0.0, 160.0)
+	DivesMarch.GetActorRef().Say(StrikeShout)
 	CampAttacked.Enable()
 	CellParent.Enable()
 	CampOrderly.Disable()

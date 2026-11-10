@@ -1,0 +1,8 @@
+FormKey: 000CD7:Argonia.esp
+EditorID: ARG_TG02_TopicHandOverOkan
+Name:
+  TargetLanguage: English
+  Value: Take all three pledges.
+Branch: 000CD6:Argonia.esp
+Quest: 000C58:Argonia.esp
+SubtypeName: CUST

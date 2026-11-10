@@ -1,0 +1,24 @@
+FormKey: 000EF4:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Careful hands are sometimes of use to Tilts-The-Jug, child. Inside the house on Soulrest's dock, I am told. I always look at a stranger's hands first. Let me see yours.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 05D7CB:Black Marsh.esm
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 000C57:Argonia.esp
+Prompt:
+  TargetLanguage: English
+  Value: Latest rumours

@@ -1,0 +1,7 @@
+FormKey: 000CE0:Argonia.esp
+EditorID: ARG_TG02_TopicSellFigurineBranch
+Quest: 000C58:Argonia.esp
+Category: Player
+Flags:
+- TopLevel
+StartingTopic: 000CE1:Argonia.esp

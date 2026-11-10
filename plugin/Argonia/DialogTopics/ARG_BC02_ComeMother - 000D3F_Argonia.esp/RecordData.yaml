@@ -1,8 +1,0 @@
-FormKey: 000D3F:Argonia.esp
-EditorID: ARG_BC02_ComeMother
-Name:
-  TargetLanguage: English
-  Value: Come with me. I will get you out.
-Branch: 000D3E:Argonia.esp
-Quest: 000D0A:Argonia.esp
-SubtypeName: CUST

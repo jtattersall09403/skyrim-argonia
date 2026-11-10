@@ -1,0 +1,20 @@
+FormKey: 000F21:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I am a lookout. I watch the stair and the water. If you have business here, talk to Bent-Spine, not to me.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 000C5F:Argonia.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Who are you?

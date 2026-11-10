@@ -1,0 +1,8 @@
+FormKey: 000ED4:Argonia.esp
+EditorID: ARG_MQ03_TheNight
+Name:
+  TargetLanguage: English
+  Value: What did you see that night?
+Branch: 000ED3:Argonia.esp
+Quest: 000E2E:Argonia.esp
+SubtypeName: CUST

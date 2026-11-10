@@ -55,8 +55,8 @@ The opening act (MQ01 with the new-game flow and the opening scene, our Helgen, 
 opening; MQ03, MQ04, MQ05) and the chosen lines (BC01 to BC03 Chainbreakers, TG01 and TG02 Night-Reed, locals LQ25
 and LQ30): 11 quests, records in the story data (`quest.main.mq01` ...), the clean-up and world edits in
 `world_edit` and `world_edit_target`. Built from Phase 3's blocks only: every stage, trigger, condition and effect
-is a copy of a proven block's shape (`docs/design/blocks.md`; the stage tables from
-`python3 -m tools.argonia_world.slice_ledger.stage_blocks`); anything not a block goes back to Phase 2's method or
+is a copy of a proven block's shape (`docs/design/blocks.md`; `plugin.sh questcheck` reads each built
+stage back against them); anything not a block goes back to Phase 2's method or
 the quest is re-authored.
 
 - **Code layout:** one C# file per quest (or per line) in `tools/ArgoniaPlugin/`, called from `Generate.cs` after

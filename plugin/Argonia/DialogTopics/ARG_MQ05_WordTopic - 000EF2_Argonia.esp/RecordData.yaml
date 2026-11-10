@@ -1,0 +1,8 @@
+FormKey: 000EF2:Argonia.esp
+EditorID: ARG_MQ05_WordTopic
+Name:
+  TargetLanguage: English
+  Value: I saw the cut root at Low-Reed Village.
+Branch: 000EF1:Argonia.esp
+Quest: 000DBE:Argonia.esp
+SubtypeName: CUST

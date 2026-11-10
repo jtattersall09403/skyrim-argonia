@@ -1,0 +1,30 @@
+FormKey: 000EF3:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Heavy-Rope leads a crew on Soulrest's dock. The crew want their season ended early, traveller. The broker who hires them out will not hear of it. I only watch from the landing, so go and ask Heavy-Rope yourself.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 05D7C8:Black Marsh.esm
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 000D85:Argonia.esp
+- MutagenObjectType: ConditionFloat
+  CompareOperator: GreaterThanOrEqualTo
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 000CFF:Argonia.esp
+  ComparisonValue: 90
+Prompt:
+  TargetLanguage: English
+  Value: Latest rumours

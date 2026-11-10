@@ -1,0 +1,24 @@
+FormKey: 000CF3:Argonia.esp
+Flags:
+  Flags:
+  - Random
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: The box's three things went to one of us on the bank. If it was not me, I will not forget it.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 000C73:Argonia.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 000C58:Argonia.esp
+  ComparisonValue: 90

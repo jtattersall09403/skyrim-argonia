@@ -1,0 +1,7 @@
+FormKey: 000D5F:Argonia.esp
+EditorID: ARG_BC02_ComeKillerBranch
+Quest: 000D30:Argonia.esp
+Category: Player
+Flags:
+- TopLevel
+StartingTopic: 000D60:Argonia.esp

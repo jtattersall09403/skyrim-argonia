@@ -123,8 +123,9 @@ static class Chainbreakers
             (null, [StageIs(q, CompareOperator.EqualTo, 10), Hour(CompareOperator.GreaterThanOrEqualTo, 5), Hour(CompareOperator.LessThan, 21)], "day"),
             (null, watched, "day"));
         kit.RecordV("BC01", lines, "topic.bc01-bring-down", isPatron, (90, [StageIs(q, CompareOperator.EqualTo, 10), Has(book.FormKey, 1)], null));
-        // After the ending: Rows-For-Another (out by the channel, 91; or her page torn out, 90) and Never-Sold (90, 91).
-        kit.AfterHellos("ARG_BC01_AfterHello", "bc01", (debtorRef.FormKey, "rows-for-another", [91]), (patronRef.FormKey, "never-sold", []));
+        // After the ending: Rows-For-Another greets only after 90 (her page torn out; after 91 she has gone down the channel and is not met
+        // again) and Never-Sold after 90 and 91.
+        kit.AfterHellos("ARG_BC01_AfterHello", "bc01", (debtorRef.FormKey, "rows-for-another", []), (patronRef.FormKey, "never-sold", []));
         // Objective targets, from the record's target column: the landing (the chest) and the debtor (10), the channel's end (40).
         kit.TargetsFromRecord(id, new()
         {

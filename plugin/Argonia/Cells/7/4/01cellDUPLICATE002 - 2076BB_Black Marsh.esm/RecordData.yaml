@@ -38,7 +38,7 @@ Lighting:
 WaterHeight: 0
 Persistent:
 - MutagenObjectType: PlacedObject
-  FormKey: 000DE1:Argonia.esp
+  FormKey: 000E10:Argonia.esp
   MajorRecordFlagsRaw: 1024
   EditorID: ARG_MQ05_Seat
   SkyrimMajorRecordFlags:
@@ -47,7 +47,7 @@ Persistent:
   Placement:
     Position: 354, 2419, -402
 - MutagenObjectType: PlacedObject
-  FormKey: 000DE2:Argonia.esp
+  FormKey: 000E11:Argonia.esp
   MajorRecordFlagsRaw: 1024
   EditorID: ARG_MQ05_Broom
   SkyrimMajorRecordFlags:

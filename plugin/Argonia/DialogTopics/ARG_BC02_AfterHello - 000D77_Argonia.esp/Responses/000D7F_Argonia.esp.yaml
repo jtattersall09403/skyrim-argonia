@@ -1,0 +1,24 @@
+FormKey: 000D7F:Argonia.esp
+Flags:
+  Flags:
+  - Random
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: You brought me out of the stone house. I killed. I do not deny it, but I am out of the smoke.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 000D3F:Argonia.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 000D30:Argonia.esp
+  ComparisonValue: 92

@@ -1,0 +1,7 @@
+FormKey: 000EE8:Argonia.esp
+EditorID: ARG_MQ03_RefuseOathBranch
+Quest: 000E2E:Argonia.esp
+Category: Player
+Flags:
+- TopLevel
+StartingTopic: 000EE9:Argonia.esp

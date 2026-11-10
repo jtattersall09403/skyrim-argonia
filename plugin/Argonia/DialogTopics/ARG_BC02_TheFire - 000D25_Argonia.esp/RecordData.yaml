@@ -1,8 +1,0 @@
-FormKey: 000D25:Argonia.esp
-EditorID: ARG_BC02_TheFire
-Name:
-  TargetLanguage: English
-  Value: What is burning at Blackrose's east edge?
-Branch: 000D24:Argonia.esp
-Quest: 000D0A:Argonia.esp
-SubtypeName: CUST

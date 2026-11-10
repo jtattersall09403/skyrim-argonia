@@ -1,8 +1,0 @@
-FormKey: 000CFA:Argonia.esp
-EditorID: ARG_BC01_CutLoose
-Name:
-  TargetLanguage: English
-  Value: Will you leave with me?
-Branch: 000CF9:Argonia.esp
-Quest: 000CDD:Argonia.esp
-SubtypeName: CUST

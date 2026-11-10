@@ -1,0 +1,7 @@
+FormKey: 000EE3:Argonia.esp
+EditorID: ARG_MQ03_TakeOathBranch
+Quest: 000E2E:Argonia.esp
+Category: Player
+Flags:
+- TopLevel
+StartingTopic: 000EE4:Argonia.esp

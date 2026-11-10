@@ -1,0 +1,24 @@
+FormKey: 000EFC:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: If you want something to do, Never-Sold needs a hand. The money is ready to buy a woman out of her Owing on the estate north of Blackrose. Ask at the Chainbreakers' house in the north district.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 0C7264:Black Marsh.esm
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 000CFF:Argonia.esp
+Prompt:
+  TargetLanguage: English
+  Value: Latest rumours

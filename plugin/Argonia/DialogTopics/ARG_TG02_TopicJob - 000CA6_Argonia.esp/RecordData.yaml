@@ -1,8 +1,0 @@
-FormKey: 000CA6:Argonia.esp
-EditorID: ARG_TG02_TopicJob
-Name:
-  TargetLanguage: English
-  Value: You said you have work.
-Branch: 000CA5:Argonia.esp
-Quest: 000C50:Argonia.esp
-SubtypeName: CUST

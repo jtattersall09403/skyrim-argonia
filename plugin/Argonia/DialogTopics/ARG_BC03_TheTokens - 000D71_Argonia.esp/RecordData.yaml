@@ -1,8 +1,0 @@
-FormKey: 000D71:Argonia.esp
-EditorID: ARG_BC03_TheTokens
-Name:
-  TargetLanguage: English
-  Value: Your crew is right. What now?
-Branch: 000D70:Argonia.esp
-Quest: 000D5B:Argonia.esp
-SubtypeName: CUST

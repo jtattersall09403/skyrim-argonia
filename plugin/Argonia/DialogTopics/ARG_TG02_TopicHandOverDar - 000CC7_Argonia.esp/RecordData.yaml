@@ -1,8 +1,0 @@
-FormKey: 000CC7:Argonia.esp
-EditorID: ARG_TG02_TopicHandOverDar
-Name:
-  TargetLanguage: English
-  Value: Take all three pledges.
-Branch: 000CC6:Argonia.esp
-Quest: 000C50:Argonia.esp
-SubtypeName: CUST

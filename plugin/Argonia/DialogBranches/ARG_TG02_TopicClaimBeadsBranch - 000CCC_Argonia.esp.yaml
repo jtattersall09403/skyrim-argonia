@@ -1,0 +1,7 @@
+FormKey: 000CCC:Argonia.esp
+EditorID: ARG_TG02_TopicClaimBeadsBranch
+Quest: 000C58:Argonia.esp
+Category: Player
+Flags:
+- TopLevel
+StartingTopic: 000CCD:Argonia.esp

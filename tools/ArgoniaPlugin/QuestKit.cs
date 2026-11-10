@@ -661,6 +661,18 @@ sealed class QuestKit(SkyrimMod mod, List<ISkyrimModGetter> mods, Quest? q = nul
     /// The store keys a builder asked for and the writing lane has not written (each owed one INFO).
     public static readonly List<string> MissingKeys = [];
     static readonly Dictionary<string, Dictionary<string, string>> LineStores = [];
+    /// A line heard without talking (Say from a stage fragment): a quest topic of the Misc category with one INFO, gated on the
+    /// speaker, spoken by `Say(topic)` on the speaker's alias; its subtitle shows with General Subtitles on. The written line is
+    /// the record's `topic` (quest_lines json, variant main).
+    public DialogTopic Shout(string code, JsonElement lines, string topic, params ConditionFloat[] speaker)
+    {
+        var t0 = lines.GetProperty(topic);
+        var t = mod.DialogTopics.AddNew(TopicId(code, topic));
+        t.Quest.SetTo(Q.FormKey); t.Priority = 50;
+        t.Category = DialogTopic.CategoryEnum.Misc; t.Subtype = DialogTopic.SubtypeEnum.Custom; t.SubtypeName = new RecordType("CUST");
+        t.Responses.Add(Info(JsonSaid(t0, "main").Lines, null, speaker));
+        return t;
+    }
     /// An after-quest greeting: one Random INFO per written line, gated on the person's ref and on the quest's ending
     /// stages (any of them). The topic belongs to ARG_Talk, the dialogue quest that always runs: a stopped quest's own
     /// topics are never offered, and GetStage still reads a stopped quest's last stage.

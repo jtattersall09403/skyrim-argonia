@@ -137,7 +137,8 @@ static class ChainbreakersCheck
     public static void AfterOf(ISkyrimModGetter ours, IQuestGetter q, string topic, string code, (FormKey who, string writer, int[] plain)[] people, Action<string, bool, string> ok)
     {
         var t = ours.DialogTopics.FirstOrDefault(x => x.EditorID == topic);
-        ok($"{topic}: a Hello topic of {q.EditorID}", t != null && t.Subtype == DialogTopic.SubtypeEnum.Hello && t.Quest.FormKey == q.FormKey, "");
+        var talk = ours.Quests.FirstOrDefault(x => x.EditorID == "ARG_Talk"); // the dialogue quest that always runs (a stopped quest's own topics are never offered)
+        ok($"{topic}: a Hello topic of ARG_Talk", t != null && t.Subtype == DialogTopic.SubtypeEnum.Hello && talk != null && t.Quest.FormKey == talk.FormKey, "");
         if (t == null) return;
         var have = q.Stages.Select(x => (int)x.Index);
         foreach (var (who, writer, plain) in people)

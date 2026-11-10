@@ -6,7 +6,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: You came back. I am glad of it. Rest a moment. I will see to the work later.
+    Value: Rest a moment. I am glad of the sight of you. I will see to the work later.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 2
@@ -14,7 +14,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Well met again. Come, stand a while with me. There is no one to hurry you here.
+    Value: Stand with me a while, if you have the time. There is no one to hurry you here.
   ScriptNotes: ''
   Edits: ''
 Conditions:

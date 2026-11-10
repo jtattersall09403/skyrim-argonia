@@ -1,0 +1,38 @@
+FormKey: 000D4F:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Listen well. The heirs' outer post, an old stone house on the shore at Blackrose's east edge, is burning. How it started is not known. Three are bound inside. I want them brought out with their names kept. Says-It-Plain is held for speaking against the heirs. Hides-In-Reeds is held for a killing. Keeps-The-Old-Count, Rows-For-Another's mother, is working off what the heirs reckon she owes. Third-Born Tsaxi stands outside the west wall and keeps the way in.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 000CFD:Argonia.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  CompareOperator: GreaterThanOrEqualTo
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 000D30:Argonia.esp
+  ComparisonValue: 20
+- MutagenObjectType: ConditionFloat
+  CompareOperator: LessThan
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 000D30:Argonia.esp
+  ComparisonValue: 91
+- MutagenObjectType: ConditionFloat
+  CompareOperator: GreaterThanOrEqualTo
+  Data:
+    MutagenObjectType: GetRelationshipRankConditionData
+    TargetNpc: 000014:Skyrim.esm
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Is there more to do?

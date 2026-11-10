@@ -194,7 +194,6 @@ static class MainQuestCheck
         Check("MQ01 Answer sets Answered and stage 20; stage 20 unlocks the hold door (.pex)", Pex("ARG_QF_MQ01", "Answer", "SetStage", "Fragment_20", "Lock") && Pex("ARG_QF_MQ01", "Fragment_32", "StartMarch", "EvaluatePackage"));
         Info("ARG_MQ01_TheHire", 0, "the broker after the answer, until the strike", c => StageCond(c, m1, CompareOperator.LessThan, 40) && GlobCond(c, "ARG_MQ01_Answered", 1), null);
         Info("ARG_MQ01_TheHire", 1, "the broker before it", c => StageCond(c, m1, CompareOperator.EqualTo, 10), null);
-        Info("ARG_MQ01_TheWater", 0, "the water from 10 until the strike", c => StageCond(c, m1, CompareOperator.GreaterThanOrEqualTo, 10) && StageCond(c, m1, CompareOperator.LessThan, 40), null);
         Info("ARG_MQ01_TheMarch", 0, "the march from 10 until the strike", c => StageCond(c, m1, CompareOperator.GreaterThanOrEqualTo, 10) && StageCond(c, m1, CompareOperator.LessThan, 40), null);
         foreach (var a in new[] { MainQuest.A1Courier, MainQuest.A1WuleenMarch, MainQuest.A1UxMarch, MainQuest.A1DivesMarch, MainQuest.A1FindsMarch })
         {

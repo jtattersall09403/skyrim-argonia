@@ -6,7 +6,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Heita-Meen was a slave of Thorn. Heita-Meen killed Councillor Glathis Dres and took the Archein guard by duel. The freeing of the Argonians began here. I know every word of it, outlander.
+    Value: Heita-Meen? Fendyl Omoren is the one to ask, outlander. I know that story by heart, and I will tell it once I know whose side you are on.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 2
@@ -14,7 +14,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: When the Dres left, their holdings passed to whoever was standing in them. Who holds title is still argued, and I know who stood there.
+    Value: Ask Jeelus-Vax about the title, outlander, though I think of Jeelus-Vax as a collar with a spear. The rising means to settle that title on those who work it.
   ScriptNotes: ''
   Edits: ''
 Conditions:

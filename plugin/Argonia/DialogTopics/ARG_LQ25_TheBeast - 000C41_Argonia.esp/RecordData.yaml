@@ -1,0 +1,8 @@
+FormKey: 000C41:Argonia.esp
+EditorID: ARG_LQ25_TheBeast
+Name:
+  TargetLanguage: English
+  Value: Why is the crew not out on the river?
+Branch: 000C40:Argonia.esp
+Quest: 000C38:Argonia.esp
+SubtypeName: CUST

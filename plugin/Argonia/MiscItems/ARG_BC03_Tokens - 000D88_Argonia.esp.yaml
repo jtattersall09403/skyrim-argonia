@@ -1,0 +1,8 @@
+FormKey: 000D88:Argonia.esp
+EditorID: ARG_BC03_Tokens
+Name:
+  TargetLanguage: English
+  Value: Carved Tokens
+Model:
+  File: Meshes/Clutter/Gemstones/Sapphire.nif
+Weight: 0.1

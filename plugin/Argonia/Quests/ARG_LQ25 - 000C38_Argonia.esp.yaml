@@ -1,0 +1,127 @@
+FormKey: 000C38:Argonia.esp
+EditorID: ARG_LQ25
+VirtualMachineAdapter:
+  Scripts:
+  - Name: ARG_QF_LQ25
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: AchievementsQuest
+      Object: 0FC85D:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: BaitBucket
+      Object: 000C3C:Argonia.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Captain
+      Object: 000C38:Argonia.esp
+      Alias: 2
+    - MutagenObjectType: ScriptObjectProperty
+      Name: CrocParent
+      Object: 000C3D:Argonia.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Gold001
+      Object: 00000F:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Steerer
+      Object: 000C38:Argonia.esp
+      Alias: 1
+  FileName: ARG_QF_LQ25
+  Fragments:
+  - Stage: 20
+    ScriptName: ARG_QF_LQ25
+    FragmentName: Fragment_20
+  - Stage: 40
+    ScriptName: ARG_QF_LQ25
+    FragmentName: Fragment_40
+  - Stage: 91
+    ScriptName: ARG_QF_LQ25
+    FragmentName: Fragment_91
+  - Stage: 92
+    ScriptName: ARG_QF_LQ25
+    FragmentName: Fragment_92
+  Aliases:
+  - Property:
+      Name: ''
+      Object: 000C38:Argonia.esp
+      Alias: 3
+    Scripts:
+    - Name: defaultSetStageOnDeathRefAlias
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: myQST
+        Object: 000C38:Argonia.esp
+      - MutagenObjectType: ScriptIntProperty
+        Name: preReqStage
+        Data: 20
+      - MutagenObjectType: ScriptIntProperty
+        Name: StageToSet
+        Data: 40
+Name:
+  TargetLanguage: English
+  Value: The River Monster
+Flags:
+- StartGameEnabled
+- RunOnce
+Priority: 50
+Type: SideQuest
+Stages:
+- Flags:
+  - StartUpStage
+  LogEntries:
+  - Flags: []
+- Index: 20
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: A rafter at Helstrom's landing, Okan-Zish, wants the beast under the crew's plank walk killed. I'm to find its lair in the shallows under the walk and kill it, or shoot or burn it from the planks.
+- Index: 40
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: "The beast is dead. In its lair in the shallows under the plank walk lies the landing crew's bait bucket: the crew's offal drew the beast. I'm to take the bucket to Sells-Dear, the boat captain, at Helstrom's north edge west of the levy's gate, or put it to Wuleen-Taza and take the crew's price to keep quiet."
+- Index: 91
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+    Entry:
+      TargetLanguage: English
+      Value: I showed Sells-Dear the crew's bait bucket. She paid me for what I showed her, and the crew have lost their trade on the river to her.
+- Index: 92
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+    Entry:
+      TargetLanguage: English
+      Value: Wuleen-Taza paid me to keep the bait to myself. The crew keep their trade, and Sells-Dear still thinks the beast drove off her customers.
+Objectives:
+- Index: 20
+  DisplayText:
+    TargetLanguage: English
+    Value: Kill the crocodile under the landing's plank walk.
+  Targets:
+  - AliasID: 3
+- Index: 40
+  DisplayText:
+    TargetLanguage: English
+    Value: Show the crew's bait bucket to Sells-Dear, or take Wuleen-Taza's price at the landing to keep quiet.
+  Targets:
+  - AliasID: 2
+  - AliasID: 1
+Aliases:
+- Name: Poler
+  Flags: []
+  ForcedReference: 08D5EE:Black Marsh North.esp
+- ID: 1
+  Name: Steerer
+  Flags: []
+  ForcedReference: 08D5EF:Black Marsh North.esp
+- ID: 2
+  Name: Captain
+  Flags: []
+  ForcedReference: 08D5F1:Black Marsh North.esp
+- ID: 3
+  Name: Crocodile
+  Flags:
+  - AllowDisabled
+  ForcedReference: 000C3E:Argonia.esp

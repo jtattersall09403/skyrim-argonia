@@ -1,0 +1,7 @@
+FormKey: 000C93:Argonia.esp
+EditorID: ARG_TG01_TopicBedPayBranch
+Quest: 000C57:Argonia.esp
+Category: Player
+Flags:
+- TopLevel
+StartingTopic: 000C94:Argonia.esp

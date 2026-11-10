@@ -1,0 +1,30 @@
+FormKey: 000EF6:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: The crew that Heavy-Rope leads works Soulrest's dock, outlander. They want their season ended early. The broker who hires out their labour refuses. I was a trader once, and I know a broker's terms win over a man's wishes. Ask for Heavy-Rope there.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 0616E8:Black Marsh North.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 000D85:Argonia.esp
+- MutagenObjectType: ConditionFloat
+  CompareOperator: GreaterThanOrEqualTo
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 000CFF:Argonia.esp
+  ComparisonValue: 90
+Prompt:
+  TargetLanguage: English
+  Value: Latest rumours

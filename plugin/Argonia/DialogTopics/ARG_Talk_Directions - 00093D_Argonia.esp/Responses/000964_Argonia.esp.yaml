@@ -6,7 +6,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Helstrom? Climb south-west about forty paces to the waterfall on your left. Then walk south-west about three hundred paces to the bridge on your left. Follow the shore south-west about eighty paces to the old stone columns on your left. Then follow the shore south about a hundred and ten paces. Helstrom is there.
+    Value: 'Helstrom? Climb south-west about forty paces to the waterfall on your left. Then south-west about three hundred paces to the bridge on your left. Then the shore: south-west about eighty paces, past the old stone columns, keeping them on your left. After that, south along the shore about a hundred and ten paces. Helstrom is there.'
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 2

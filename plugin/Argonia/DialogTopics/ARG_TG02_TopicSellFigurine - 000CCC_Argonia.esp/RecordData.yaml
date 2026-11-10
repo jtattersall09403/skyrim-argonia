@@ -1,8 +1,0 @@
-FormKey: 000CCC:Argonia.esp
-EditorID: ARG_TG02_TopicSellFigurine
-Name:
-  TargetLanguage: English
-  Value: This figurine is older than any clutch of yours.
-Branch: 000CCB:Argonia.esp
-Quest: 000C50:Argonia.esp
-SubtypeName: CUST

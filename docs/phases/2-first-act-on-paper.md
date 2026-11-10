@@ -66,8 +66,8 @@ rewordings, and those were applied without another review (`story/design/quests/
 - **The main line outline:** [main-line-outline](../../story/design/quests/main-line-outline.md), the spirit and
   shape of the whole main quest (Acts II on as outline), with Act I's flags and joins.
 - **The block set:** [blocks.md](../design/blocks.md), now with C-detected (sneak that must go unseen, on the
-  `detectedBy` term) and the `sceneEnded` predicate mapped to TR-scene; the Act I and slice stage tables are generated
-  from the records (`python3 -m tools.argonia_world.slice_ledger.stage_blocks`) and every stage maps to the set.
+  `detectedBy` term) and the `sceneEnded` predicate mapped to TR-scene; every Act I and slice stage maps to the set, and
+  `plugin.sh questcheck` reads each built stage back against it.
 - **The checker rules:** `tools/argonia_world/adaptation_check.py`, run in `make check`: the ledger checks, the skill
   routes rule (a route must be able to fail; Pickpocket, a Speech 25 with a gold or food alternative, and choice or
   scene stages count as the loop ruled), the wiring rules (reachable, acquire_prereq, present_before_start,

@@ -1,8 +1,0 @@
-FormKey: 000C7C:Argonia.esp
-EditorID: ARG_TG01_TopicDoor
-Name:
-  TargetLanguage: English
-  Value: Is there quiet work at Soulrest?
-Branch: 000C7B:Argonia.esp
-Quest: 000C4F:Argonia.esp
-SubtypeName: CUST

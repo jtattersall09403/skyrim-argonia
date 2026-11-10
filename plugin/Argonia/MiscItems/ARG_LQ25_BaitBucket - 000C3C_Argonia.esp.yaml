@@ -1,0 +1,8 @@
+FormKey: 000C3C:Argonia.esp
+EditorID: ARG_LQ25_BaitBucket
+Name:
+  TargetLanguage: English
+  Value: Bait Bucket
+Model:
+  File: Meshes/Clutter/Bucket01.NIF
+Weight: 2

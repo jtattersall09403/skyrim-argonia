@@ -6,7 +6,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: I wait for Sei-Wan, my kin. He walked out into the basin alone four hours ago.
+    Value: I wait for Sei-Wan, my kin. He walked out into the basin alone and has not come back.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 2
@@ -46,7 +46,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Anyone who walks into the basin may die there. A warning is posted at the gate.
+    Value: Ask the warden at the gate about the basin before you go.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 7

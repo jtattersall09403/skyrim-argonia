@@ -1,8 +1,0 @@
-FormKey: 000D02:Argonia.esp
-EditorID: ARG_BC01_BringDown
-Name:
-  TargetLanguage: English
-  Value: I have the estate's debt book.
-Branch: 000D01:Argonia.esp
-Quest: 000CDD:Argonia.esp
-SubtypeName: CUST

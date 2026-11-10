@@ -96,19 +96,6 @@
    }
   ]
  },
- "topic.mq01-the-water": {
-  "speaker": "npc.pirate-freeholds.opening-work-barge.npc-opening-roll-reader",
-  "infos": [
-   {
-    "variant": "main",
-    "prompt": "Who are you?",
-    "lines": [
-     "I am Ux-Xeek, port hand of this barge. I call the names in the hold every day, in order. I have never lost one."
-    ],
-    "facts": []
-   }
-  ]
- },
  "topic.mq01-the-march": {
   "speaker": "npc.pirate-freeholds.opening-work-camp.n1-2",
   "infos": [
@@ -123,6 +110,19 @@
      "fact.mq01.washed-out",
      "fact.mq01.gang-hist"
     ]
+   }
+  ]
+ },
+ "topic.mq01-strike": {
+  "speaker": "npc.pirate-freeholds.opening-work-camp.n1-2",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "The strike falls at the fire.",
+    "lines": [
+     "Sal-Sei ran for the hatching shed, at the north-east end of the camp! The huts on the water to the west are burning. Deesh-Duun is in them."
+    ],
+    "facts": []
    }
   ]
  }

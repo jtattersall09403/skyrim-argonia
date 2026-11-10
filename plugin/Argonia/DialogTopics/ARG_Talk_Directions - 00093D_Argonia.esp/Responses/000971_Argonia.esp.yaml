@@ -6,7 +6,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Thorn? Take the path south-west for seventy paces or so, until the dead tree stands on your right. Then go south for sixty paces. That is Thorn, party.
+    Value: Thorn? Follow the path south-west for seventy paces or so; the dead tree will be on your right. From there, south for sixty paces. That is Thorn, party.
   ScriptNotes: ''
   Edits: ''
 Conditions:

@@ -1,0 +1,235 @@
+FormKey: 00591F:Black Marsh.esm
+EditorID: Dock1
+Flags:
+- HasWater
+Grid:
+  Point: 1, -2
+  Flags: -1536086528
+WaterHeight: 3.4028235E+38
+Temporary:
+- MutagenObjectType: PlacedObject
+  FormKey: 11AD83:Black Marsh North.esp
+  MajorRecordFlagsRaw: 2048
+  SkyrimMajorRecordFlags:
+  - InitiallyDisabled
+  Base: 1C40D1:Black Marsh.esm
+  Placement:
+    Position: 4865.9785, -4699.4336, 37.701492
+- MutagenObjectType: PlacedObject
+  FormKey: 11AD84:Black Marsh North.esp
+  MajorRecordFlagsRaw: 2048
+  SkyrimMajorRecordFlags:
+  - InitiallyDisabled
+  Base: 0A53BB:Black Marsh.esm
+  Placement:
+    Position: 4925.217, -4662.7017, 34.907467
+- MutagenObjectType: PlacedObject
+  FormKey: 11AD85:Black Marsh North.esp
+  MajorRecordFlagsRaw: 2048
+  SkyrimMajorRecordFlags:
+  - InitiallyDisabled
+  Base: 1C40D1:Black Marsh.esm
+  Placement:
+    Position: 4873.292, -4600.436, 42.472534
+- MutagenObjectType: PlacedObject
+  FormKey: 11AD86:Black Marsh North.esp
+  MajorRecordFlagsRaw: 2048
+  SkyrimMajorRecordFlags:
+  - InitiallyDisabled
+  Base: 1C40D1:Black Marsh.esm
+  Placement:
+    Position: 4953.8145, -4803.7563, 38.507614
+    Rotation: 0, 0, 3.2
+- MutagenObjectType: PlacedObject
+  FormKey: 11AD87:Black Marsh North.esp
+  MajorRecordFlagsRaw: 2048
+  SkyrimMajorRecordFlags:
+  - InitiallyDisabled
+  Base: 1C40D1:Black Marsh.esm
+  Placement:
+    Position: 4820.7056, -4893.4536, 30.53607
+    Rotation: 0, 0, 3.2
+- MutagenObjectType: PlacedObject
+  FormKey: 11AD88:Black Marsh North.esp
+  MajorRecordFlagsRaw: 2048
+  SkyrimMajorRecordFlags:
+  - InitiallyDisabled
+  Base: 1C40D1:Black Marsh.esm
+  Placement:
+    Position: 4965.992, -4739.434, 40.55967
+- MutagenObjectType: PlacedObject
+  FormKey: 11AD89:Black Marsh North.esp
+  MajorRecordFlagsRaw: 2048
+  SkyrimMajorRecordFlags:
+  - InitiallyDisabled
+  Base: 16B74B:Black Marsh.esm
+  Placement:
+    Position: 4790.972, -4769.0103, 22.48004
+    Rotation: 0, 0, 3.2
+- MutagenObjectType: PlacedObject
+  FormKey: 11AD8A:Black Marsh North.esp
+  MajorRecordFlagsRaw: 2048
+  SkyrimMajorRecordFlags:
+  - InitiallyDisabled
+  Base: 1C40D1:Black Marsh.esm
+  Placement:
+    Position: 4736.28, -4749.281, 43.284378
+    Rotation: 0, 0, 3.2
+- MutagenObjectType: PlacedObject
+  FormKey: 11AD8B:Black Marsh North.esp
+  MajorRecordFlagsRaw: 2048
+  SkyrimMajorRecordFlags:
+  - InitiallyDisabled
+  Base: 1C40D1:Black Marsh.esm
+  Placement:
+    Position: 4742.055, -4694.4185, 42.14062
+- MutagenObjectType: PlacedObject
+  FormKey: 11AD8C:Black Marsh North.esp
+  MajorRecordFlagsRaw: 2048
+  SkyrimMajorRecordFlags:
+  - InitiallyDisabled
+  Base: 1C40D1:Black Marsh.esm
+  Placement:
+    Position: 4844.161, -4784.4, 30.53607
+    Rotation: 0, 0, 3.2
+- MutagenObjectType: PlacedObject
+  FormKey: 11AD8D:Black Marsh North.esp
+  MajorRecordFlagsRaw: 2048
+  SkyrimMajorRecordFlags:
+  - InitiallyDisabled
+  Base: 0A53BB:Black Marsh.esm
+  Placement:
+    Position: 4885.552, -4851.1567, 23.565893
+    Rotation: 0, 0, 3.2
+- MutagenObjectType: PlacedObject
+  FormKey: 11AD8E:Black Marsh North.esp
+  MajorRecordFlagsRaw: 2048
+  SkyrimMajorRecordFlags:
+  - InitiallyDisabled
+  Base: 0A53BB:Black Marsh.esm
+  Placement:
+    Position: 4811.027, -4646.447, 4.159733
+- MutagenObjectType: PlacedObject
+  FormKey: 11AD8F:Black Marsh North.esp
+  MajorRecordFlagsRaw: 2048
+  SkyrimMajorRecordFlags:
+  - InitiallyDisabled
+  Base: 16B74B:Black Marsh.esm
+  Placement:
+    Position: 4796.0513, -4706.6763, 3.196476
+- MutagenObjectType: PlacedObject
+  FormKey: 11AD90:Black Marsh North.esp
+  MajorRecordFlagsRaw: 2048
+  SkyrimMajorRecordFlags:
+  - InitiallyDisabled
+  Base: 0A53BB:Black Marsh.esm
+  Placement:
+    Position: 4772.506, -4828.264, 23.443296
+    Rotation: 0, 0, 3.2
+- MutagenObjectType: PlacedObject
+  FormKey: 11AD91:Black Marsh North.esp
+  MajorRecordFlagsRaw: 2048
+  SkyrimMajorRecordFlags:
+  - InitiallyDisabled
+  Base: 16B74B:Black Marsh.esm
+  Placement:
+    Position: 4904.019, -4791.902, 34.184013
+    Rotation: 0, 0, 3.2
+- MutagenObjectType: PlacedObject
+  FormKey: 11AD92:Black Marsh North.esp
+  MajorRecordFlagsRaw: 2048
+  SkyrimMajorRecordFlags:
+  - InitiallyDisabled
+  Base: 1C40C6:Black Marsh.esm
+  Placement:
+    Position: 4832.7217, -4842.489, 22.738096
+    Rotation: 0, 0, 3.2
+- MutagenObjectType: PlacedObject
+  FormKey: 11AD93:Black Marsh North.esp
+  MajorRecordFlagsRaw: 2048
+  SkyrimMajorRecordFlags:
+  - InitiallyDisabled
+  Base: 1C40C6:Black Marsh.esm
+  Placement:
+    Position: 4864.2734, -4652.015, 42.067856
+- MutagenObjectType: PlacedObject
+  FormKey: 11AD94:Black Marsh North.esp
+  MajorRecordFlagsRaw: 2048
+  SkyrimMajorRecordFlags:
+  - InitiallyDisabled
+  Base: 16B74B:Black Marsh.esm
+  Placement:
+    Position: 4913.4497, -4717.954, 36.98953
+- MutagenObjectType: PlacedObject
+  FormKey: 11ADC7:Black Marsh North.esp
+  MajorRecordFlagsRaw: 2048
+  SkyrimMajorRecordFlags:
+  - InitiallyDisabled
+  Base: 1C405A:Black Marsh.esm
+  Scale: 3
+  Placement:
+    Position: 5592.679, -5010.9946, 53.14917
+- MutagenObjectType: PlacedObject
+  FormKey: 11ADC8:Black Marsh North.esp
+  MajorRecordFlagsRaw: 2048
+  SkyrimMajorRecordFlags:
+  - InitiallyDisabled
+  Base: 1C405A:Black Marsh.esm
+  Scale: 3
+  Placement:
+    Position: 5524.251, -4967.126, 53.14917
+- MutagenObjectType: PlacedObject
+  FormKey: 11ADC9:Black Marsh North.esp
+  MajorRecordFlagsRaw: 2048
+  SkyrimMajorRecordFlags:
+  - InitiallyDisabled
+  Base: 1C405A:Black Marsh.esm
+  Scale: 3
+  Placement:
+    Position: 5576.0396, -4937.0884, 53.14917
+- MutagenObjectType: PlacedObject
+  FormKey: 14162E:Black Marsh North.esp
+  MajorRecordFlagsRaw: 2048
+  SkyrimMajorRecordFlags:
+  - InitiallyDisabled
+  Base: 1097E7:Skyrim.esm
+  Placement:
+    Position: 5148.254, -5005.2007, 61.43251
+    Rotation: 0, 0, 4.683194
+- MutagenObjectType: PlacedObject
+  FormKey: 14162F:Black Marsh North.esp
+  MajorRecordFlagsRaw: 2048
+  SkyrimMajorRecordFlags:
+  - InitiallyDisabled
+  Base: 0D0E40:Skyrim.esm
+  Placement:
+    Position: 5241.373, -4987.475, 292.50354
+    Rotation: 0, 0, 5.0831933
+- MutagenObjectType: PlacedObject
+  FormKey: 141630:Black Marsh North.esp
+  MajorRecordFlagsRaw: 2048
+  SkyrimMajorRecordFlags:
+  - InitiallyDisabled
+  Base: 0B9FAD:Skyrim.esm
+  Placement:
+    Position: 5234.056, -5003.4688, 254.1093
+    Rotation: 0, 0, 4.683196
+- MutagenObjectType: PlacedObject
+  FormKey: 141631:Black Marsh North.esp
+  MajorRecordFlagsRaw: 2048
+  SkyrimMajorRecordFlags:
+  - InitiallyDisabled
+  Base: 09151C:Skyrim.esm
+  Scale: 1.6
+  Placement:
+    Position: 5234.2197, -4998.8853, 249.86284
+    Rotation: 0, 0, 4.683196
+- MutagenObjectType: PlacedObject
+  FormKey: 141632:Black Marsh North.esp
+  MajorRecordFlagsRaw: 2048
+  SkyrimMajorRecordFlags:
+  - InitiallyDisabled
+  Base: 0D0E40:Skyrim.esm
+  Placement:
+    Position: 5211.771, -4996.402, 292.50354
+    Rotation: 0, 0, 5.0831933

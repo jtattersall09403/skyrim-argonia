@@ -1,8 +1,0 @@
-FormKey: 000EF0:Argonia.esp
-EditorID: ARG_Talk_QuestWherearewegoing
-Name:
-  TargetLanguage: English
-  Value: Where are we going?
-Branch: 000EEF:Argonia.esp
-Quest: 000833:Argonia.esp
-SubtypeName: CUST

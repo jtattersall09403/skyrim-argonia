@@ -1,0 +1,24 @@
+FormKey: 000C36:Argonia.esp
+Flags:
+  Flags:
+  - Random
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: You talked Sei-Wan home. He lives, and he will not count the walk-out as his own. I am glad of the first and sorry for the second.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 000C19:Argonia.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 000C14:Argonia.esp
+  ComparisonValue: 92

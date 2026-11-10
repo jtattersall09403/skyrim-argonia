@@ -6,7 +6,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Thorn burned once, traveller. A Naga named Avumar struck a bargain with a Dremora, and the city burned for it. I believe it, and I fear it will come again.
+    Value: Ask Ukka-Meesh about Avumar, traveller. He tells the story right. I believe it. I fear the burning will come again.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 2
@@ -14,7 +14,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: They say Avumar made a bargain with a Dremora, and Thorn was razed. It is no tale to me. Do not speak of it loudly.
+    Value: I do not tell the tale of Avumar myself, traveller. Ukka-Meesh tells it better, and it is not a tale for loud voices. Sparks carry.
   ScriptNotes: ''
   Edits: ''
 Conditions:

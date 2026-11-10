@@ -1,0 +1,17 @@
+FormKey: 000E96:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Sal-Sei ran for the hatching shed, at the north-east end of the camp! The huts on the water to the west are burning. Deesh-Duun is in them.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 000E36:Argonia.esp
+  ComparisonValue: 1
