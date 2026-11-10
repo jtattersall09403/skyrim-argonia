@@ -507,11 +507,31 @@ async def web_file(req: web.Request) -> web.StreamResponse:
     return await send_file(req, p) if p else web.Response(status=404, text="not found")
 
 
+def access(req: web.Request, status: int) -> None:
+    """One line per request for the page and its scripts in out/places/studio-access.log (not the bundles, assets
+    or heartbeats): which device asked for what and what it got, so a page that will not start on one device can
+    be traced here."""
+    if req.path.startswith(("/api/asset/", "/api/bundle/", "/api/heartbeat", "/api/clientlog", "/vendor/")):
+        return
+    log = req.app["cfg"].out / "studio-access.log"
+    try:
+        if log.exists() and log.stat().st_size > 2_000_000:
+            log.write_text("")
+        with open(log, "a") as f:
+            f.write(f"{time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())} {status} {req.method} {req.path_qs[:200]} "
+                    f"| {req.headers.get('User-Agent', '')[:160]}\n")
+    except OSError:
+        pass
+
+
 @web.middleware
 async def errors(req: web.Request, handler):
     try:
-        return await handler(req)
+        r = await handler(req)
+        access(req, r.status)
+        return r
     except web.HTTPException as e:
+        access(req, e.status)
         if req.path.startswith("/api/"):
             return jerr(e.status, e.reason)
         raise
