@@ -91,14 +91,26 @@ static class NightReedCheck
             (0, false, 0, []), (20, true, 0, ["SetObjectiveDisplayed", "Enable", "AddItem"]), (30, true, 0, ["SetObjectiveCompleted"]),
             (40, true, 0, ["RemoveItem", "AddItem", "SetRelationshipRank"]), (41, true, 0, ["RemoveItem", "AddItem", "SetRelationshipRank"]),
             (90, true, QuestLogEntry.Flag.CompleteQuest, ["SetFactionRank", "SetStage", "IncSideQuests", "Stop"]),
-            (91, true, QuestLogEntry.Flag.CompleteQuest, ["SetFactionRank", "SetStage", "IncSideQuests", "Stop"])], [20, 30, 31, 40]);
+            (91, true, QuestLogEntry.Flag.CompleteQuest, ["SetFactionRank", "SetStage", "IncSideQuests", "Stop"])], [20, 30, 31, 40, 41]);
         var neck = F("ARG_TG01_JasperNecklace"); var gold = FormKey.Factory("00000F:Skyrim.esm");
         // 0 -> 20: Tilts-The-Jug's opening line at stage 0.
+        Check("TG01 Tilts' prompt (A16)", infos.Where(x => x.t.EditorID == "ARG_TG01_TopicTest").All(x => x.t.Name?.String == "I hear you have a use for careful hands." && x.i.Prompt?.String == x.t.Name?.String));
+        Check("TG01 trapdoor is a forced alias, target of 40 and 41", t1.Aliases.Any(a => a.ID == NightReed.T1Trapdoor && a.ForcedReference.FormKey == NightReed.Trapdoor)
+            && new ushort[] { 40, 41 }.All(i => t1.Objectives.Single(o => o.Index == i).Targets.Any(t => t.AliasID == (int)NightReed.T1Trapdoor)));
+        foreach (var q in new[] { t1, t2 })
+        {
+            Check($"{q.EditorID} every objective has a compass target", q.Objectives.All(o => o.Targets.Count > 0));
+            Check($"{q.EditorID} every objective text ends with a full stop", q.Objectives.All(o => o.DisplayText?.String?.EndsWith('.') == true));
+            Check($"{q.EditorID} stages, journal and objectives are the record's rows", QuestKit.Stages(q.EditorID == "ARG_TG01" ? "quest.tg.tg01" : "quest.tg.tg02").All(r => r.ending == (q.Stages.Single(x => x.Index == r.id).LogEntries[0].Flags is { } f && (f.HasFlag(QuestLogEntry.Flag.CompleteQuest) || f.HasFlag(QuestLogEntry.Flag.FailQuest)))
+                && (q.Stages.Single(x => x.Index == r.id).LogEntries[0].Entry?.String ?? "") == (QuestKit.Hidden(q.EditorID == "ARG_TG01" ? "quest.tg.tg01" : "quest.tg.tg02").Contains(r.id) ? "" : r.journal)));
+        }
         Check("TG01 0->20 Tilts' line at stage 0 sets 20", Line("ARG_TG01_TopicTest", t1, c => Speaker(c, "ARG_TG_Tilts") && StageCond(c, t1, CompareOperator.EqualTo, 0), "SetStage"));
         Check("TG01 S'Tabi's line before 20, no fragment", Line("ARG_TG01_TopicDoor", t1, c => Speaker(c, "ARG_TG_STabi") && StageCond(c, t1, CompareOperator.LessThan, 20), null));
         // 20 -> 30: the friend on Speech 25 or 10 gold; the bed zone; either death.
         Check("TG01 20->30 friend, Speech 25", Line("ARG_TG01_TopicBed", t1, c => Speaker(c, "ARG_TG_SitsByTheWater") && StageCond(c, t1, CompareOperator.EqualTo, 20) && SpeechAtLeast(c, 25), "SetStage"));
-        Check("TG01 20->30 friend, 10 gold", Line("ARG_TG01_TopicBed", t1, c => Speaker(c, "ARG_TG_SitsByTheWater") && StageCond(c, t1, CompareOperator.EqualTo, 20) && ItemAtLeast(c, gold, 10), "PayFriend") && Pex("ARG_QF_TG01", "PayFriend", "RemoveItem"));
+        Check("TG01 Bed: the persuade route's prompt, the pay route's own topic and prompt", infos.Any(x => x.t.EditorID == "ARG_TG01_TopicBed" && x.t.Name?.String == "(Persuade) Where does Keeps-What-Floats sleep?")
+            && infos.Any(x => x.t.EditorID == "ARG_TG01_TopicBedPay" && x.t.Name?.String == "Let me buy you a drink. (10 gold)"));
+        Check("TG01 20->30 friend, 10 gold", Line("ARG_TG01_TopicBedPay", t1, c => Speaker(c, "ARG_TG_SitsByTheWater") && StageCond(c, t1, CompareOperator.EqualTo, 20) && ItemAtLeast(c, gold, 10), "PayFriend") && Pex("ARG_QF_TG01", "PayFriend", "RemoveItem"));
         var zone = F("ARG_TG01_ZoneBed");
         Check("TG01 20->30 bed zone: prereq 20, stage 30, forced alias", placed[zone] is IPlacedObjectGetter z && z.VirtualMachineAdapter!.Scripts.Any(s => s.Name == "defaultSetStageTrigScript"
             && s.Properties.OfType<IScriptIntPropertyGetter>().Any(p => p.Name == "prereqStageOPT" && p.Data == 20) && s.Properties.OfType<IScriptIntPropertyGetter>().Any(p => p.Name == "stage" && p.Data == 30)
@@ -108,7 +120,7 @@ static class NightReedCheck
                 && s.Properties.OfType<IScriptIntPropertyGetter>().Any(p => p.Name == "preReqStage" && p.Data == 20) && s.Properties.OfType<IScriptIntPropertyGetter>().Any(p => p.Name == "StageToSet" && p.Data == 30))));
         // 30: the necklace off the thief (Speech 35 or 60 gold, he has it); 30 -> 40/41 at Tilts with the necklace, thief alive or dead.
         Check("TG01 30 thief gives it up on Speech 35", Line("ARG_TG01_TopicGiveBack", t1, c => Speaker(c, "ARG_TG_KeepsWhatFloats") && StageCond(c, t1, CompareOperator.EqualTo, 30) && SpeechAtLeast(c, 35) && ItemAtLeast(c, neck, 1, false), "NecklaceFrom"));
-        Check("TG01 30 thief sells it for 60", Line("ARG_TG01_TopicGiveBack", t1, c => Speaker(c, "ARG_TG_KeepsWhatFloats") && StageCond(c, t1, CompareOperator.EqualTo, 30) && ItemAtLeast(c, gold, 60) && ItemAtLeast(c, neck, 1, false), "NecklaceFrom"));
+        Check("TG01 30 thief sells it for 60", Line("ARG_TG01_TopicGiveBackPay", t1, c => Speaker(c, "ARG_TG_KeepsWhatFloats") && StageCond(c, t1, CompareOperator.EqualTo, 30) && ItemAtLeast(c, gold, 60) && ItemAtLeast(c, neck, 1, false), "NecklaceFrom"));
         Check("TG01 30->40 return, thief alive", Line("ARG_TG01_TopicReturn", t1, c => Speaker(c, "ARG_TG_Tilts") && StageCond(c, t1, CompareOperator.EqualTo, 30) && ItemAtLeast(c, neck, 1) && DeadIs(c, NightReed.T1Thief, 0), "SetStage"));
         Check("TG01 30->41 return, thief dead", Line("ARG_TG01_TopicReturn", t1, c => Speaker(c, "ARG_TG_Tilts") && StageCond(c, t1, CompareOperator.EqualTo, 30) && ItemAtLeast(c, neck, 1) && DeadIs(c, NightReed.T1Thief, 1), "SetStage"));
         Check("TG01 40->90 Bent-Spine's welcome", Line("ARG_TG01_TopicWelcome", t1, c => Speaker(c, "ARG_TG_BentSpine") && StageCond(c, t1, CompareOperator.EqualTo, 40), "SetStage"));
@@ -123,11 +135,11 @@ static class NightReedCheck
             (0, false, 0, []), (20, true, 0, ["Enable", "SetObjectiveDisplayed"]), (21, false, 0, ["ClaimHeard"]), (22, false, 0, ["ClaimHeard"]), (23, false, 0, ["ClaimHeard"]),
             (40, true, 0, ["SetObjectiveDisplayed"]), (43, false, 0, ["SaleMade"]), (44, false, 0, ["SaleMade"]), (45, false, 0, ["SaleMade"]),
             (90, true, QuestLogEntry.Flag.CompleteQuest, ["IncSideQuests", "Stop"]), (91, true, QuestLogEntry.Flag.CompleteQuest, ["SetRelationshipRank", "IncSideQuests", "Stop"]),
-            (92, true, QuestLogEntry.Flag.FailQuest, ["SetRelationshipRank", "Stop"])], [20, 41, 42]);
+            (92, true, QuestLogEntry.Flag.FailQuest, ["SetRelationshipRank", "Stop"])], [20, 40, 41]);
         Check("TG02 20 Bent-Spine's job line at 20", Line("ARG_TG02_TopicJob", t2, c => Speaker(c, "ARG_TG_BentSpine") && StageCond(c, t2, CompareOperator.EqualTo, 20), null));
         Check("TG02 20->21 Neeta-Haj's claim", Line("ARG_TG02_TopicClaimFigurine", t2, c => Speaker(c, "ARG_TG_NeetaHaj") && StageCond(c, t2, CompareOperator.EqualTo, 20), "SetStage"));
         Check("TG02 20->22 Okan-Tei's claim, Speech 30", Line("ARG_TG02_TopicClaimCharm", t2, c => Speaker(c, "ARG_TG_OkanTei") && StageCond(c, t2, CompareOperator.EqualTo, 20) && SpeechAtLeast(c, 30), "SetStage"));
-        Check("TG02 20->22 Okan-Tei's claim, 20 gold", Line("ARG_TG02_TopicClaimCharm", t2, c => Speaker(c, "ARG_TG_OkanTei") && StageCond(c, t2, CompareOperator.EqualTo, 20) && ItemAtLeast(c, gold, 20), "PayOkan"));
+        Check("TG02 20->22 Okan-Tei's claim, 20 gold", Line("ARG_TG02_TopicClaimCharmPay", t2, c => Speaker(c, "ARG_TG_OkanTei") && StageCond(c, t2, CompareOperator.EqualTo, 20) && ItemAtLeast(c, gold, 20), "PayOkan"));
         Check("TG02 20->23 Dar-Zeel's claim", Line("ARG_TG02_TopicClaimBeads", t2, c => Speaker(c, "ARG_TG_DarZeel") && StageCond(c, t2, CompareOperator.EqualTo, 20), "SetStage"));
         Check("TG02 21/22/23->40 guarded check in .pex", Pex("ARG_QF_TG02", "ClaimHeard", "GetStageDone", "claimsTaken"));
         var fig = F("ARG_TG02_BoneFigurine"); var charm = F("ARG_TG02_NeesakCharm"); var beads = F("ARG_TG02_GlassBeads");
@@ -142,8 +154,18 @@ static class NightReedCheck
                 && s.Properties.OfType<IScriptIntPropertyGetter>().Any(p => p.Name == "preReqStage" && p.Data == 20) && s.Properties.OfType<IScriptIntPropertyGetter>().Any(p => p.Name == "StageToSet" && p.Data == 92))));
         Check("TG01 90/91 start TG02 (NextQuest = ARG_TG02)", t1.VirtualMachineAdapter!.Scripts[0].Properties.OfType<IScriptObjectPropertyGetter>().Any(p => p.Name == "NextQuest" && p.Object.FormKey == t2.FormKey));
         var box = F("ARG_TG02_LockboxRef");
-        Check("TG02 lockbox: Apprentice lock, three things, under water", placed[box] is IPlacedObjectGetter b && b.Lock?.Level == LockLevel.Apprentice && b.Placement!.Position.Z < -300
-            && mine.Containers.Single(c => c.EditorID == "ARG_TG02_Lockbox").Items!.Select(i => i.Item.Item.FormKey).ToHashSet().SetEquals([fig, charm, beads]));
+        Check("TG02 lockbox: Apprentice lock, under water, nothing in its base inventory", placed[box] is IPlacedObjectGetter b && b.Lock?.Level == LockLevel.Apprentice && b.Placement!.Position.Z < -300
+            && (mine.Containers.Single(c => c.EditorID == "ARG_TG02_Lockbox").Items?.Count ?? 0) == 0);
+        Check("TG02 the figurine, charm and beads are Quest Object aliases created in the lockbox alias (B10)", new[] { (NightReed.T2Figurine, fig), (NightReed.T2Charm, charm), (NightReed.T2Beads, beads) }.All(p =>
+            t2.Aliases.Any(a => a.ID == p.Item1 && (a.Flags ?? 0).HasFlag(QuestAlias.Flag.QuestObject) && a.CreateReferenceToObject?.AliasID == (short)NightReed.T2Box
+                && a.CreateReferenceToObject.Create == CreateReferenceToObject.CreateEnum.In && a.CreateReferenceToObject.Object.FormKey == p.Item2)));
+        Check("TG02 hidden stages 21-23 and 43-45 have no journal text", new[] { 21, 22, 23, 43, 44, 45 }.All(h => string.IsNullOrEmpty(t2.Stages.Single(x => x.Index == h).LogEntries[0].Entry?.String)));
+        foreach (var (topic, route) in new[] { ("ARG_TG01_TopicBed", "(Persuade)"), ("ARG_TG01_TopicGiveBack", "(Persuade)"), ("ARG_TG02_TopicClaimCharm", "(Persuade)"), ("ARG_TG02_TopicSellFigurine", "(Persuade)"),
+            ("ARG_TG02_TopicSellCharm", "(Persuade)"), ("ARG_TG02_TopicSellBeads", "(Persuade)"), ("ARG_TG01_TopicBedPay", "(10 gold)"), ("ARG_TG01_TopicGiveBackPay", "(60 gold)"), ("ARG_TG02_TopicClaimCharmPay", "(20 gold)") })
+            Check($"{topic}: the route is in the prompt ({route})", infos.Where(x => x.t.EditorID == topic).All(x => (x.t.Name?.String ?? "").Contains(route)) && infos.Any(x => x.t.EditorID == topic));
+        foreach (var key in new[] { "ARG_TG01_TopicBed", "ARG_TG01_TopicGiveBack", "ARG_TG02_TopicClaimCharm", "ARG_TG02_TopicSellFigurine", "ARG_TG02_TopicSellCharm", "ARG_TG02_TopicSellBeads" })
+            if (!NightReed.Written.ContainsKey(key + "_fallback")) Console.WriteLine($"  OWED text key {key}_fallback: its refusal INFO is not built");
+            else Check($"{key}: a refusal INFO speaking {key}_fallback", infos.Any(x => x.i.Responses.Any(r => r.Text.String == NightReed.Written[key + "_fallback"])));
 
         // The wording bands: each written line's "<key>@high.n" / "<key>@low.n" (NightReed.Band), found by its default's line.
         foreach (var (qq, code) in new[] { (t1, "ARG_TG01_"), (t2, "ARG_TG02_") })

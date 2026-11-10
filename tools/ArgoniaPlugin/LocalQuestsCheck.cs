@@ -81,8 +81,8 @@ static class LocalQuestsCheck
              new("ARG_LQ30_TheBasin", LocalQuests.Warden.ToString(), 30, null), new("ARG_LQ30_ComeBack", Base("ARG_LQ30_SeiWan"), 40, 92)],
             [("Kin", Ref("ARG_LQ30_HajWanRef")), ("Youth", Ref("ARG_LQ30_SeiWanRef")), ("Viper", Ref("ARG_LQ30_ViperRef")), ("Warden", LocalQuests.Warden.ToString())]);
         var seiWan = FormKey.Factory(Ref("ARG_LQ30_SeiWanRef"));
-        ChainbreakersCheck.AfterOf(ours, ours.Quests.First(x => x.EditorID == "ARG_LQ30"), "ARG_LQ30_AfterHello",
-            [(seiWan, LocalQuests.After("lq30", "sei-wan", "after91"), [91]), (seiWan, LocalQuests.After("lq30", "sei-wan", "after92"), [92])], Ok);
+        ChainbreakersCheck.AfterOf(ours, ours.Quests.First(x => x.EditorID == "ARG_LQ30"), "ARG_LQ30_AfterHello", "lq30",
+            [(seiWan, "sei-wan", []), (FormKey.Factory(Ref("ARG_LQ30_HajWanRef")), "lq30-kin", [])], Ok);
         var zone = ours.EnumerateMajorRecords<IPlacedObjectGetter>().First(r => r.EditorID == "ARG_LQ30_GateZone");
         int Z(string n) => zone.VirtualMachineAdapter!.Scripts[0].Properties.OfType<IScriptIntPropertyGetter>().First(p => p.Name == n).Data;
         Ok("  TR-zone at the gate: 40 -> 91, unconditioned", Z("prereqStageOPT") == 40 && Z("stage") == 91 && (zone.MajorRecordFlagsRaw & 0x400) != 0);
@@ -90,13 +90,19 @@ static class LocalQuestsCheck
             new[] { "ARG_LQ30_SeiWanRef", "ARG_LQ30_ViperRef" }.All(e => ours.EnumerateMajorRecords<IPlacedNpcGetter>().First(r => r.EditorID == e).EnableParent?.Reference.FormKey.ToString() == Ref("ARG_LQ30_ViperParent"))
             && (placed[FormKey.Factory(Ref("ARG_LQ30_ViperParent"))].rec.MajorRecordFlagsRaw & 0x800) != 0);
 
-        Check("ARG_LQ25", "quest.local.lq25", [20, 40, 91, 92, 93], [91, 92, 93],
-            [new(LocalQuests.L25Croc, 20, 40), new(LocalQuests.L25Captain, 40, 93)],
+        Check("ARG_LQ25", "quest.local.lq25", [20, 40, 91, 92], [91, 92],
+            [new(LocalQuests.L25Croc, 20, 40)],
             [new("ARG_LQ25_TheBeast", Base("ARG_LQ25_OkanZish"), 0, 20), new("ARG_LQ25_TheBeast", Base("ARG_LQ25_OkanZish"), 20, null),
              new("ARG_LQ25_TellCaptain", LocalQuests.Captain.ToString(), 40, 91, true), new("ARG_LQ25_KeepQuiet", Base("ARG_LQ25_WuleenTaza"), 40, 92)],
             [("Poler", LocalQuests.Poler.ToString()), ("Steerer", LocalQuests.Steerer.ToString()), ("Captain", LocalQuests.Captain.ToString()), ("Crocodile", Ref("ARG_LQ25_CrocodileRef"))]);
-        var mq05 = ours.Quests.FirstOrDefault(x => x.EditorID == "ARG_MQ05");
-        Console.WriteLine(mq05 == null ? "  NOTE MQ05 >= 40 gate on the opening topic: ARG_MQ05 not in this plugin yet (the MQ05 lane builds it)" : "  MQ05 present");
+        var mq05 = ours.Quests.First(x => x.EditorID == "ARG_MQ05");
+        var lq25 = ours.Quests.First(x => x.EditorID == "ARG_LQ25");
+        var beast = ours.DialogTopics.First(t => t.EditorID == "ARG_LQ25_TheBeast").Responses.Where(r => r.Conditions.OfType<IConditionFloatGetter>().Any(c => c.Data is IGetStageConditionDataGetter g
+            && g.Quest.Link.FormKey == lq25.FormKey && c.CompareOperator == CompareOperator.EqualTo && c.ComparisonValue == 0)).ToList();
+        Ok("  the opening topic's every stage-0 INFO is gated on MQ05 >= 40 (B3)", beast.Count > 0 && beast.All(r => r.Conditions.OfType<IConditionFloatGetter>().Any(c => c.Data is IGetStageConditionDataGetter g
+            && g.Quest.Link.FormKey == mq05.FormKey && c.CompareOperator == CompareOperator.GreaterThanOrEqualTo && c.ComparisonValue == 40)), $"{beast.Count} INFOs");
+        Ok("  no stage 93, no death trigger on the captain (vanilla Essential)", lq25.Stages.All(s => s.Index != 93) && lq25.VirtualMachineAdapter!.Aliases.All(a => a.Property.Alias != LocalQuests.L25Captain));
+        ChainbreakersCheck.AfterOf(ours, lq25, "ARG_LQ25_AfterHello", "lq25", [(LocalQuests.Captain, "boat-captain", []), (LocalQuests.Steerer, "lq25-crew-steerer", [])], Ok);
         foreach (var (r, b) in new[] { (LocalQuests.Poler, "ARG_LQ25_OkanZish"), (LocalQuests.Steerer, "ARG_LQ25_WuleenTaza") })
             Ok($"  {r} placed as {b}", ((IPlacedNpcGetter)placed[r].rec).Base.FormKey.ToString() == Base(b));
         Console.WriteLine(fails == 0 ? "LOCAL QUESTS READ-BACK: PASS" : $"LOCAL QUESTS READ-BACK: {fails} FAIL");

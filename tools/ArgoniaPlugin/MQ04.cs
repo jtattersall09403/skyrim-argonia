@@ -19,7 +19,7 @@ static class MQ04
     // (0C7102, cell 22,-4), the north village's is 0C7101 (22,-3), the camp's dry rise 07449F (039793, 22,-2).
     public static readonly FormKey Raised = K("0C7102:Black Marsh North.esp"), Edge = Raised, North = K("0C7101:Black Marsh North.esp"), Rise = K("07449F:Black Marsh.esm");
     // Alias ids.
-    public const uint AHerald = 0, AMinder = 1, AEgg = 2, AJars = 3, AZone30 = 4, AZone91 = 5, ACell1 = 6, ACell2 = 7;
+    public const uint AHerald = 0, AMinder = 1, AEgg = 2, AJars = 3, AZone30 = 4, AZone91 = 5, ACell1 = 6, ACell2 = 7, AMark = 8;
     public static readonly int[] FragmentStages = [10, 20, 30, 40, 45, 91];
 
     public static void Add(SkyrimMod mod, List<ISkyrimModGetter> mods, Quest q, Quest next)
@@ -119,10 +119,12 @@ static class MQ04
         k.Topic("Boat", Label("topic.mq04-the-boat"),
             k.Banded("topic.mq04-the-boat", Egg, "speech", "TIF_ARG_MQ04_40", IsId(egg.FormKey), k.StageIs(30), Speech(25)),
             k.Banded("topic.mq04-the-boat", Egg, "default", null, IsId(egg.FormKey), k.StageIs(30)));
-        // The cut (review F1): at 30 only while the player holds the pot, and it sets 40; at 40 and after, freely.
+        // The cut (review F1): at 30 only while the player holds the pot, and it sets 40; at 40 and after (until the ending), freely,
+        // asked again ("Tell me about the cut root again.", the INFO's own prompt).
         k.Topic("Cut", Label("topic.mq04-the-cut"),
             k.Banded("topic.mq04-the-cut", Minder, "item", "TIF_ARG_MQ04_40", IsId(minder.FormKey), k.StageIs(30), Has(gumPot.FormKey, 1)),
-            k.Banded("topic.mq04-the-cut", Minder, "default", null, IsId(minder.FormKey), k.StageIs(40, CompareOperator.GreaterThanOrEqualTo)));
+            Prompted("Tell me about the cut root again.",
+                k.Banded("topic.mq04-the-cut", Minder, "default", null, IsId(minder.FormKey), k.StageIs(40, CompareOperator.GreaterThanOrEqualTo), k.StageIs(91, CompareOperator.LessThan))));
 
         // The quest: Main Quest (the act's line), not Start Game Enabled; stages and objectives from the record.
         k.Header("The Tree That Turned Its Face", 60, Quest.TypeEnum.MainQuest, Quest.Flag.RunOnce);
@@ -135,12 +137,20 @@ static class MQ04
         k.Forced(AZone91, "ZoneRoot91", zone91);
         k.Forced(ACell1, "HidesHisWake", cell1Ref, QuestAlias.Flag.AllowDisabled | QuestAlias.Flag.Optional);
         k.Forced(ACell2, "CountsTheJars", cell2Ref, QuestAlias.Flag.AllowDisabled | QuestAlias.Flag.Optional);
+        k.Forced(AMark, "CutRootMark", mark);
         q.VirtualMachineAdapter!.Scripts.Add(Script("ARG_QF_MQ04",
             k.Alias("RootHerald", AHerald), k.Alias("PaysLate", AMinder), Obj("CampParent", camp.FormKey), Obj("WithdrawnParent", withdrawn.FormKey),
             Obj("ReconciledParent", reconciled.FormKey), Obj("ReturnParent", returnParent.FormKey), Obj("SapJars", jars.FormKey), Obj("Reconciled", reconciledFlag.FormKey),
             Obj("Adopted", adoptedFlag.FormKey), Obj("Standing", standing.FormKey), Obj("LowReedVillage", village.FormKey), Obj("NextQuest", next.FormKey)));
         q.VirtualMachineAdapter.Aliases.Add(DeathSets(k, AHerald, 10, 20));   // fail-forward: the root-herald dead
         q.VirtualMachineAdapter.Aliases.Add(AcquireSets(k, AJars, 40, 45));   // the jars taken
+        // Objective targets, from the record's target column: the herald (10), the cut root (20, 45), Pays-Late and the egg-tender
+        // (30), the jars (40).
+        k.TargetsFromRecord(Id, new()
+        {
+            ["npc.mercantile-coast.low-reed-village.root-herald"] = [AHerald], ["thing.mq04.village"] = [AMark], ["thing.mq04.sap-jars"] = [AJars],
+            ["npc.mercantile-coast.low-reed-village.chime-tuner"] = [AMinder], ["npc.mercantile-coast.low-reed-village.egg-tender"] = [AEgg],
+        });
 
         // World edits: everything persistent in the worldspace's persistent cell; the village named (W-name).
         world.TopCell!.Persistent.AddRange([camp, withdrawn, reconciled, mark, returnParent, histDark, histLight, fire, tent, boat, jarsRef, zone30, zone91]);

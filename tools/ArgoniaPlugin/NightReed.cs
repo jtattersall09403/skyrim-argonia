@@ -24,8 +24,8 @@ static class NightReed
     public static readonly FormKey Trapdoor = K("16BF7F:Black Marsh North.esp");
     // we.tg01.doors: Soulrest's room has three door pairs; two are locked with no key on both sides.
     public static readonly string[] LockedDoors = ["11ACD3:Black Marsh North.esp", "120E95:Black Marsh.esm", "11ACA1:Black Marsh North.esp", "11ABF3:Black Marsh North.esp"];
-    public const uint T1Tilts = 0, T1STabi = 1, T1Thief = 2, T1Friend = 3, T1Bent = 4, T1Zone = 5;
-    public const uint T2Bent = 0, T2Neeta = 1, T2Okan = 2, T2Dar = 3, T2Box = 4;
+    public const uint T1Tilts = 0, T1STabi = 1, T1Thief = 2, T1Friend = 3, T1Bent = 4, T1Zone = 5, T1Trapdoor = 6;
+    public const uint T2Bent = 0, T2Neeta = 1, T2Okan = 2, T2Dar = 3, T2Box = 4, T2Figurine = 5, T2Charm = 6, T2Beads = 7;
     // The lockbox and fallen house on the channel floor (land measured at build), the eels between them and the bank.
     public static readonly (float X, float Y) BoxXY = (22400, 1024), HouseXY = (22784, 1408);
     public static readonly (float X, float Y)[] EelXY = [(22560, 1200), (22300, 1350)];
@@ -54,7 +54,7 @@ static class NightReed
         var friend = k.Base("ARG_TG_SitsByTheWater", "Sits-By-The-Water", "0B2E12:Skyrim.esm", 5, NpcConfiguration.Flag.Unique | NpcConfiguration.Flag.Protected, Ai.Own, female: true);
         var bent = k.Base("ARG_TG_BentSpine", "Bent-Spine", "02A1E6:Black Marsh.esm", 15, NpcConfiguration.Flag.Unique | NpcConfiguration.Flag.Essential, Ai.Own, female: false);
         var look1 = k.Base("ARG_TG_ChapterLookout1", "Night-Reed Lookout", "00FF4D:Black Marsh.esm", 8, NpcConfiguration.Flag.Unique | 0, Ai.Own, female: false);
-        var look2 = k.Base("ARG_TG_ChapterLookout2", "Night-Reed Lookout", "02A1EE:Black Marsh.esm", 8, NpcConfiguration.Flag.Unique | 0, Ai.Own, female: true);
+        var look2 = k.Base("ARG_TG_ChapterLookout2", "Night-Reed Watcher", "02A1EE:Black Marsh.esm", 8, NpcConfiguration.Flag.Unique | 0, Ai.Own, female: true);
         var neeta = k.Base("ARG_TG_NeetaHaj", "Neeta-Haj", "160E6A:Black Marsh.esm", 5, NpcConfiguration.Flag.Unique | NpcConfiguration.Flag.Protected, Ai.Own, female: true);
         var okan = k.Base("ARG_TG_OkanTei", "Okan-Tei", "045E50:Black Marsh.esm", 5, NpcConfiguration.Flag.Unique | NpcConfiguration.Flag.Protected, Ai.Own, female: false);
         var dar = k.Base("ARG_TG_DarZeel", "Dar-Zeel", "1DE49D:Black Marsh.esm", 5, NpcConfiguration.Flag.Unique | NpcConfiguration.Flag.Protected, Ai.Own, female: false);
@@ -91,9 +91,7 @@ static class NightReed
         // the necklace goes on him at stage 20 (his inventory stays his template's, so he is dressed)
         var box = Survey.Winners<IContainerGetter>(mods)[K("09424C:Skyrim.esm")].rec.Duplicate(mod.GetNextFormKey());
         box.EditorID = "ARG_TG02_Lockbox"; box.Name = "Merchant's Lockbox";
-        box.Items = [];
-        foreach (var it in new IItemGetter[] { figurine, charm, beads })
-            box.Items.Add(new ContainerEntry { Item = new ContainerItem { Item = new FormLink<IItemGetter>(it.FormKey), Count = 1 } });
+        box.Items = []; // empty: the three pledges are created in it by TG02's aliases (Quest Objects)
         box.Flags &= ~Container.Flag.Respawns;
         mod.Containers.Add(box);
 
@@ -176,6 +174,7 @@ static class NightReed
             else world.TopCell.Persistent.Add(r);
         }
         Console.WriteLine($"night-reed: TG01 {t1.FormKey}, TG02 {t2.FormKey}, {Lines.Count} lines");
+        foreach (var key in QuestKit.MissingKeys) Console.WriteLine($"MISSING TEXT KEY {key} (its refusal INFO is not built)");
     }
 
     public static readonly List<Line> Lines = [];
@@ -196,29 +195,12 @@ static class NightReed
     {
         var q = k.Q;
         // Start Game Enabled with an empty start-up stage 0; Tilts-The-Jug's opening topic, gated on stage 0, sets 20
-        // (re-authored from a dialogue start: the proven shape).
-        q.Name = "A Dry Hand in a Wet City"; q.Priority = 50; q.Type = Quest.TypeEnum.SideQuest; q.Flags = Quest.Flag.StartGameEnabled;
-        q.VirtualMachineAdapter = new QuestAdapter
-        {
-            FileName = "ARG_QF_TG01",
-            Scripts = { Script("ARG_QF_TG01", Alias("Tilts", q, T1Tilts), Alias("Thief", q, T1Thief), Obj("RoundParent", parent.FormKey),
-                Obj("Necklace", necklace.FormKey), Obj("Gold001", Gold), Obj("Lockpick", Lockpick), Obj("Chapter", chapter.FormKey),
-                Obj("NextQuest", next.FormKey), Obj("AchievementsQuest", Achievements)) },
-        };
-        k.SetStages([
-            (0, null, 0),
-            (20, "Tilts-The-Jug, inside the house on Soulrest's dock, keeps the Chapter's desk at Soulrest and wants to see how I work. Keeps-What-Floats, a dock thief, took a necklace of polished blue jaspers from another thief, and it must come back with no harm done to him. I'm to follow him on the dock until he goes to his bed for the night, or get out of Sits-By-The-Water, who drinks with him, where he sleeps.", 0),
-            (30, "Keeps-What-Floats, who took the necklace of blue jaspers, keeps it on him on the dock by day, at the bench by the water in the evening, and on his bedroll north-west of the house at night. I'm to get the necklace back without hurting him, by lifting it off him by day or while he sleeps, or by talking him out of it, and bring it to Tilts-The-Jug inside Soulrest's house.", 0),
-            (40, "I brought the necklace of blue jaspers back to Tilts-The-Jug at Soulrest, and Keeps-What-Floats came to no harm. She paid me and gave me three lockpicks. The Chapter's way down is a locked trapdoor just north of Pusbottom in Lilmoth. I'm to take the coast ship from Soulrest's dock to Lilmoth, open the trapdoor, go down to the Chapter and speak to whoever waits below.", 0),
-            (41, "I brought the necklace of blue jaspers back to Tilts-The-Jug at Soulrest, but Keeps-What-Floats is dead. She paid me nothing, and said the Chapter wanted the necklace without a body, but she gave me three lockpicks and sent me on. The Chapter's way down is a locked trapdoor just north of Pusbottom in Lilmoth. I'm to take the coast ship from Soulrest's dock to Lilmoth, open the trapdoor, go down to the Chapter and speak to whoever waits below.", 0),
-            (90, "I got the necklace of blue jaspers back from Keeps-What-Floats at Soulrest without hurting him, and Tilts-The-Jug paid me. I opened the trapdoor north of Pusbottom with my own hand and went down to the Chapter, and Bent-Spine took me in as a Lookout.", QuestLogEntry.Flag.CompleteQuest),
-            (91, "I got the necklace of blue jaspers back at Soulrest, but Keeps-What-Floats died for it, and Tilts-The-Jug paid me nothing. I opened the trapdoor north of Pusbottom with my own hand and went down to the Chapter, and Bent-Spine took me in as a Lookout.", QuestLogEntry.Flag.CompleteQuest),
-        ], [
-            (20, "Follow Keeps-What-Floats on Soulrest's dock to his bed, or get it out of his drinking friend"),
-            (30, "Get the Blue Jasper Necklace from Keeps-What-Floats without harming him"),
-            (31, "Bring the necklace to Tilts-The-Jug inside Soulrest's house"),
-            (40, "Pick the lock of the trapdoor north of Pusbottom in Lilmoth and speak to whoever waits below"),
-        ], "ARG_QF_TG01");
+        // (re-authored from a dialogue start: the proven shape). Stages, journal and objectives are the record's rows.
+        k.Header("A Dry Hand in a Wet City", 50, Quest.TypeEnum.SideQuest, Quest.Flag.StartGameEnabled);
+        k.FromRecord("quest.tg.tg01", "ARG_QF_TG01");
+        q.VirtualMachineAdapter!.Scripts.Add(Script("ARG_QF_TG01", Alias("Tilts", q, T1Tilts), Alias("Thief", q, T1Thief), Obj("RoundParent", parent.FormKey),
+            Obj("Necklace", necklace.FormKey), Obj("Gold001", Gold), Obj("Lockpick", Lockpick), Obj("Chapter", chapter.FormKey),
+            Obj("NextQuest", next.FormKey), Obj("AchievementsQuest", Achievements)));
         k.Forced(T1Tilts, "Tilts", tiltsRef.FormKey);
         k.Forced(T1STabi, "STabi", stabiRef.FormKey);
         var th = k.Forced(T1Thief, "Thief", thiefRef.FormKey, QuestAlias.Flag.AllowDisabled);
@@ -226,6 +208,7 @@ static class NightReed
         k.Forced(T1Friend, "Friend", friendRef.FormKey, QuestAlias.Flag.AllowDisabled).PackageData.Add(friendPack.ToLink());
         k.Forced(T1Bent, "BentSpine", bentRef.FormKey, QuestAlias.Flag.AllowDisabled);
         k.Forced(T1Zone, "BedZone", zone.FormKey);
+        k.Forced(T1Trapdoor, "Trapdoor", Trapdoor);
         // TR-death: either the thief or his friend dead before the follow moves the quest on to 30 (two aliases, one stage).
         q.VirtualMachineAdapter.Aliases.Add(DeathSets(k, T1Thief, 20, 30));
         q.VirtualMachineAdapter.Aliases.Add(DeathSets(k, T1Friend, 20, 30));
@@ -233,13 +216,19 @@ static class NightReed
         const string Q = "(GetOwningQuest() as ARG_QF_TG01)";
         k.Store(WrittenPath, "ARG_TG01_TopicDoor", "Is there quiet work at Soulrest?",
             ("Quiet work is not sold on this dock, friend. But Tilts-The-Jug, inside the house behind me, sometimes has a use for a careful pair of hands.", null, [IsId(stabi), k.StageIs(20, CompareOperator.LessThan)]));
-        k.Store(WrittenPath, "ARG_TG01_TopicTest", "S'Tabi sent me about the Chapter.",
+        k.Store(WrittenPath, "ARG_TG01_TopicTest", "I hear you have a use for careful hands.",
             ("Then let us see how you work. Keeps-What-Floats, a dock thief, took a necklace of blue jaspers from another thief while he slept. I want it back, and I want him unharmed. Watch his round; he keeps it on him.", "GetOwningQuest().SetStage(20)", [IsId(tilts), k.StageIs(0)]));
-        k.Store(WrittenPath, "ARG_TG01_TopicBed", "Where does Keeps-What-Floats sleep?",
-            ("He drinks here with me till the lamps are low, then sleeps on a bedroll north-west of the house. If anyone shouts at him, he runs.", "GetOwningQuest().SetStage(30)", [IsId(friend), k.StageIs(20), Speech(25)]),
+        // Each way of asking is its own topic with the route in its prompt (Skyrim's way): the line keys are the writing lane's
+        // "<topic>_<n>", and a refusal INFO per check ("<topic>_fallback") names what the speaker wants.
+        k.Store(WrittenPath, "ARG_TG01_TopicBed", "(Persuade) Where does Keeps-What-Floats sleep?", "ARG_TG01_TopicBed", 0,
+            [IsId(friend), k.StageIs(20), Speech(CompareOperator.LessThan, 25)],
+            ("He drinks here with me till the lamps are low, then sleeps on a bedroll north-west of the house. If anyone shouts at him, he runs.", "GetOwningQuest().SetStage(30)", [IsId(friend), k.StageIs(20), Speech(25)]));
+        k.Store(WrittenPath, "ARG_TG01_TopicBedPay", "Let me buy you a drink. (10 gold)", "ARG_TG01_TopicBed", 1, null,
             ("Buy me a drink and I'll tell you. Ten gold. ... He sleeps on a bedroll north-west of the house, and he runs from any shout.", $"{Q}.PayFriend()", [IsId(friend), k.StageIs(20), Has(Gold, 10)]));
-        k.Store(WrittenPath, "ARG_TG01_TopicGiveBack", "Give me the jasper necklace.",
-            ("You talk like someone who knows who it belongs to. Take it, then. I never could sell it.", $"{Q}.NecklaceFrom(akSpeakerRef, 0)", [IsId(thief), k.StageIs(30), Speech(35), HasOn(necklace.FormKey)]),
+        k.Store(WrittenPath, "ARG_TG01_TopicGiveBack", "(Persuade) Give me the jasper necklace.", "ARG_TG01_TopicGiveBack", 0,
+            [IsId(thief), k.StageIs(30), Speech(CompareOperator.LessThan, 35), HasOn(necklace.FormKey)],
+            ("You talk like someone who knows who it belongs to. Take it, then. I never could sell it.", $"{Q}.NecklaceFrom(akSpeakerRef, 0)", [IsId(thief), k.StageIs(30), Speech(35), HasOn(necklace.FormKey)]));
+        k.Store(WrittenPath, "ARG_TG01_TopicGiveBackPay", "Give me the jasper necklace. (60 gold)", "ARG_TG01_TopicGiveBack", 1, null,
             ("Sixty gold, and it is yours. I have a buyer, I swear.", $"{Q}.NecklaceFrom(akSpeakerRef, 60)", [IsId(thief), k.StageIs(30), Has(Gold, 60), HasOn(necklace.FormKey)]));
         k.Store(WrittenPath, "ARG_TG01_TopicReturn", "I have the necklace.",
             ("And he is still breathing. Good hands. Here is your pay, and three picks. The Chapter's door is a trapdoor just north of Pusbottom in Lilmoth. Take the coast ship, open it yourself, and speak to whoever waits below.", "GetOwningQuest().SetStage(40)", [IsId(tilts), k.StageIs(30), Has(necklace.FormKey, 1), Dead(T1Thief, false)]),
@@ -247,6 +236,15 @@ static class NightReed
         k.Store(WrittenPath, "ARG_TG01_TopicWelcome", "Tilts-The-Jug sent me down.",
             ("You opened the trapdoor with your own hand. Then you are a Lookout of the Night-Reed Chapter. Stay; I have work.", "GetOwningQuest().SetStage(90)", [IsId(bent), k.StageIs(40)]),
             ("You opened the trapdoor with your own hand, though I hear the dock thief is dead. You are a Lookout of the Night-Reed Chapter all the same. Stay; I have work.", "GetOwningQuest().SetStage(91)", [IsId(bent), k.StageIs(41)]));
+        // After the ending (90 or 91): Tilts-The-Jug's and the thief's greetings.
+        k.AfterHellos("ARG_TG01_AfterHello", "tg", (tiltsRef.FormKey, "tilts-the-jug", []), (thiefRef.FormKey, "keeps-what-floats", []));
+        // Objective targets, from the record's target column: the thief and his friend (20), the thief (30), Tilts-The-Jug (31),
+        // the trapdoor (40, 41).
+        k.TargetsFromRecord("quest.tg.tg01", new()
+        {
+            ["npc.mercantile-coast.soulrest.tg01-thief"] = [T1Thief], ["npc.mercantile-coast.soulrest.tg01-friend"] = [T1Friend],
+            ["npc.mercantile-coast.soulrest.keeper-harbour-den"] = [T1Tilts], ["thing.tg01.trapdoor"] = [T1Trapdoor],
+        });
         k.Finish();
     }
 
@@ -254,37 +252,28 @@ static class NightReed
         PlacedNpc bentRef, PlacedNpc neetaRef, PlacedNpc okanRef, PlacedNpc darRef, PlacedObject boxRef, PlacedObject parent)
     {
         var q = k.Q;
-        // TR-chain: started by TG01's 90 or 91 with SetStage(20); an empty start-up stage 0.
-        q.Name = "The Drowned Lockbox"; q.Priority = 50; q.Type = Quest.TypeEnum.SideQuest; q.Flags = 0;
-        q.VirtualMachineAdapter = new QuestAdapter
-        {
-            FileName = "ARG_QF_TG02",
-            Scripts = { Script("ARG_QF_TG02", Alias("BentSpine", q, T2Bent), Alias("Neeta", q, T2Neeta), Alias("Okan", q, T2Okan), Alias("Dar", q, T2Dar),
-                Obj("ClientsParent", parent.FormKey), Obj("Figurine", figurine.FormKey), Obj("Charm", charm.FormKey), Obj("Beads", beads.FormKey),
-                Obj("Gold001", Gold), Obj("AchievementsQuest", Achievements)) },
-        };
-        // Re-authored: "all three claims heard" is three hidden stages (21, 22, 23), each fragment checking the other two
-        // (the race-guard shape); "each sold back" likewise (43, 44, 45 to 91); any client's death before the end is the
-        // failed ending 92 (TR-death, three aliases on one stage), replacing the 20-to-40 fail-forward.
-        k.SetStages([
-            (0, null, 0),
-            (20, "I'm in the Night-Reed Chapter now, under Pusbottom in Lilmoth. Bent-Spine, the Chapter's fence, wants the lockbox of a merchant whose stilt house fell into the deep water just north of Pusbottom, by the Chapter's trapdoor; it lies locked on the floor beside the house, and ripper eels hunt the water. Three clients on the bank want it. I'm to talk to each of them, Neeta-Haj, Okan-Tei and Dar-Zeel, and get out of each what they claim the box holds for them.", 0),
-            (21, null, 0), (22, null, 0), (23, null, 0),
-            (40, "Neeta-Haj says the bone figurine in the lockbox was carved for her clutch, Okan-Tei that the charm was only pledged and never sold, and Dar-Zeel that the beads are old family work. The box lies locked on the floor of the deep water north of Pusbottom beside the fallen stilt house, and ripper eels hunt the water. I'm to swim down to it, slip past the eels, pick its lock and take the figurine, the charm and the beads, then settle it on the bank, by handing all three things to one client or by selling each client the thing they claimed.", 0),
-            (43, null, 0), (44, null, 0), (45, null, 0),
-            (90, "I brought up the lockbox's figurine, charm and beads from the deep water north of Pusbottom, past the ripper eels, and gave all three to one of the clients on the bank, who paid me for them. The other two will not forget it.", QuestLogEntry.Flag.CompleteQuest),
-            (91, "I brought up the lockbox's figurine, charm and beads from the deep water north of Pusbottom, past the ripper eels, and sold each client the thing they claimed. Neeta-Haj, Okan-Tei and Dar-Zeel paid, and none of them will greet me kindly again.", QuestLogEntry.Flag.CompleteQuest),
-            (92, "With one of Neeta-Haj, Okan-Tei or Dar-Zeel dead before I had settled with them, the lockbox's pledges cannot be settled, and the job for Bent-Spine has come to nothing.", QuestLogEntry.Flag.FailQuest),
-        ], [
-            (20, "Get each of the three clients on the bank north of Pusbottom to say what they claim from the box"),
-            (41, "Dive to the lockbox beside the fallen house, pick its lock and take the three things in it"),
-            (42, "On the bank, give the three things to one client, or sell each client the thing they claimed"),
-        ], "ARG_QF_TG02");
+        // TR-chain: started by TG01's 90 or 91 with SetStage(20); an empty start-up stage 0. Stages, journal and objectives are the
+        // record's rows: "all three claims heard" is three hidden stages (21, 22, 23), each fragment checking the other two (the
+        // race-guard shape); "each sold back" likewise (43, 44, 45 to 91); any client's death before the end is the failed
+        // ending 92 (TR-death, three aliases on one stage).
+        k.Header("The Drowned Lockbox", 50, Quest.TypeEnum.SideQuest, 0);
+        k.FromRecord("quest.tg.tg02", "ARG_QF_TG02");
+        q.VirtualMachineAdapter!.Scripts.Add(Script("ARG_QF_TG02", Alias("BentSpine", q, T2Bent), Alias("Neeta", q, T2Neeta), Alias("Okan", q, T2Okan), Alias("Dar", q, T2Dar),
+            Obj("ClientsParent", parent.FormKey), Obj("Figurine", figurine.FormKey), Obj("Charm", charm.FormKey), Obj("Beads", beads.FormKey),
+            Obj("Gold001", Gold), Obj("AchievementsQuest", Achievements)));
         k.Forced(T2Bent, "BentSpine", bentRef.FormKey, QuestAlias.Flag.AllowDisabled);
         k.Forced(T2Neeta, "Neeta", neetaRef.FormKey, QuestAlias.Flag.AllowDisabled);
         k.Forced(T2Okan, "Okan", okanRef.FormKey, QuestAlias.Flag.AllowDisabled);
         k.Forced(T2Dar, "Dar", darRef.FormKey, QuestAlias.Flag.AllowDisabled);
         k.Forced(T2Box, "Lockbox", boxRef.FormKey, QuestAlias.Flag.AllowDisabled);
+        // The three pledges are Quest Objects created in the lockbox by their own aliases (BC03's tokens shape, Bethesda's quest-item
+        // shape): the box's base holds nothing, a trader cannot buy them and the player cannot drop them; they go with the quest.
+        foreach (var (id, name, item) in new (uint, string, FormKey)[] { (T2Figurine, "Figurine", figurine.FormKey), (T2Charm, "Charm", charm.FormKey), (T2Beads, "Beads", beads.FormKey) })
+            q.Aliases.Add(new QuestAlias
+            {
+                ID = id, Type = QuestAlias.TypeEnum.Reference, Name = name, Flags = QuestAlias.Flag.QuestObject,
+                CreateReferenceToObject = new CreateReferenceToObject { Object = new FormLink<ISkyrimMajorRecordGetter>(item), AliasID = (short)T2Box, Create = CreateReferenceToObject.CreateEnum.In, Level = Level.Easy },
+            });
         foreach (var a in new[] { T2Neeta, T2Okan, T2Dar }) q.VirtualMachineAdapter.Aliases.Add(DeathSets(k, a, 20, 92));
 
         const string Q = "(GetOwningQuest() as ARG_QF_TG02)";
@@ -292,20 +281,33 @@ static class NightReed
             ("A merchant's stilt house fell into the deep water close to here, by our trapdoor. His lockbox lies beside it on the floor, locked, and ripper eels hunt that water. Three of his clients wait on the bank. Bring the box up before they find a diver. What becomes of what is in it, I leave to you.", null, [IsId(bent), k.StageIs(20)]));
         k.Store(WrittenPath, "ARG_TG02_TopicClaimFigurine", "What do you claim from the lockbox?",
             ("The bone figurine. It was carved for my clutch, and it should come back to me.", "GetOwningQuest().SetStage(21)", [IsId(neeta), k.StageIs(20)]));
-        k.Store(WrittenPath, "ARG_TG02_TopicClaimCharm", "What do you claim from the lockbox?",
-            ("The Neesak charm. I only pledged it to him. It was never sold.", "GetOwningQuest().SetStage(22)", [IsId(okan), k.StageIs(20), Speech(30)]),
+        k.Store(WrittenPath, "ARG_TG02_TopicClaimCharm", "(Persuade) What do you claim from the lockbox?", "ARG_TG02_TopicClaimCharm", 0,
+            [IsId(okan), k.StageIs(20), Speech(CompareOperator.LessThan, 30)],
+            ("The Neesak charm. I only pledged it to him. It was never sold.", "GetOwningQuest().SetStage(22)", [IsId(okan), k.StageIs(20), Speech(30)]));
+        k.Store(WrittenPath, "ARG_TG02_TopicClaimCharmPay", "What do you claim from the lockbox? (20 gold)", "ARG_TG02_TopicClaimCharm", 1, null,
             ("Twenty gold loosens the tongue. The charm is mine. I only pledged it; it was never sold.", $"{Q}.PayOkan()", [IsId(okan), k.StageIs(20), Has(Gold, 20)]));
         k.Store(WrittenPath, "ARG_TG02_TopicClaimBeads", "What do you claim from the lockbox?",
             ("The beads. Old family work, handed down. They are worth nothing to anyone but us.", "GetOwningQuest().SetStage(23)", [IsId(dar), k.StageIs(20)]));
         foreach (var (n, id) in new[] { (neeta, "Neeta"), (okan, "Okan"), (dar, "Dar") })
             k.Store(WrittenPath, $"ARG_TG02_TopicHandOver{id}", "Take all three pledges.",
                 ("All three? Then here is eighty gold, and I will not ask where you found them.", $"{Q}.HandOver(akSpeakerRef)", [IsId(n), k.StageIs(40), Has(figurine.FormKey, 1), Has(charm.FormKey, 1), Has(beads.FormKey, 1)]));
-        k.Store(WrittenPath, "ARG_TG02_TopicSellFigurine", "This figurine is older than any clutch of yours.",
+        // Each sale's check (Speech 30, the thing in hand) has a refusal for the player who falls short, when the writing lane has one.
+        k.Store(WrittenPath, "ARG_TG02_TopicSellFigurine", "(Persuade) This figurine is older than any clutch of yours.", "ARG_TG02_TopicSellFigurine", 0,
+            [IsId(neeta), k.StageIs(40), Has(figurine.FormKey, 1), Speech(CompareOperator.LessThan, 30)],
             ("Worn smooth, yes. Fifty gold, then, and we say no more of clutches.", $"{Q}.SellBack(akSpeakerRef, 43)", [IsId(neeta), k.StageIs(40), Has(figurine.FormKey, 1), Speech(30)]));
-        k.Store(WrittenPath, "ARG_TG02_TopicSellCharm", "No one remounts a charm that was only pledged.",
+        k.Store(WrittenPath, "ARG_TG02_TopicSellCharm", "(Persuade) No one remounts a charm that was only pledged.", "ARG_TG02_TopicSellCharm", 0,
+            [IsId(okan), k.StageIs(40), Has(charm.FormKey, 1), Speech(CompareOperator.LessThan, 30)],
             ("A new silver mount. He bought it outright, then. Fifty gold, and it comes home.", $"{Q}.SellBack(akSpeakerRef, 44)", [IsId(okan), k.StageIs(40), Has(charm.FormKey, 1), Speech(30)]));
-        k.Store(WrittenPath, "ARG_TG02_TopicSellBeads", "These beads are Kothringi glass from the old cairns.",
+        k.Store(WrittenPath, "ARG_TG02_TopicSellBeads", "(Persuade) These beads are Kothringi glass from the old cairns.", "ARG_TG02_TopicSellBeads", 0,
+            [IsId(dar), k.StageIs(40), Has(beads.FormKey, 1), Speech(CompareOperator.LessThan, 30)],
             ("Keep your voice down. Fifty gold, and you never saw them.", $"{Q}.SellBack(akSpeakerRef, 45)", [IsId(dar), k.StageIs(40), Has(beads.FormKey, 1), Speech(30)]));
+        // After the ending (90, 91 or 92): each client's greeting.
+        k.AfterHellos("ARG_TG02_AfterHello", "tg", (neetaRef.FormKey, "neeta-haj", []), (okanRef.FormKey, "okan-tei", []), (darRef.FormKey, "dar-zeel", []));
+        // Objective targets, from the record's target column: the three clients (20, 41) and the lockbox beside the fallen house (40).
+        k.TargetsFromRecord("quest.tg.tg02", new()
+        {
+            ["thing.tg02.clients"] = [T2Neeta, T2Okan, T2Dar], ["thing.tg02.house"] = [T2Box],
+        });
         k.Finish();
     }
 

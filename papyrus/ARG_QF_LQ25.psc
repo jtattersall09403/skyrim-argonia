@@ -58,16 +58,3 @@ Function Fragment_92() ; the crew's price: E-item (40 gold), E-regard
 	Stop()
 EndFunction
 ;END FRAGMENT
-
-;BEGIN FRAGMENT Fragment_93
-Function Fragment_93() ; the captain dead
-	If ended
-		Return
-	EndIf
-	ended = True
-	CrocParent.Disable() ; the ending's disableRef ref.lq25.beast
-	SetObjectiveCompleted(40)
-	AchievementsQuest.IncSideQuests()
-	Stop()
-EndFunction
-;END FRAGMENT

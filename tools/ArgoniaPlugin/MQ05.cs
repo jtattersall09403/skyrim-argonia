@@ -39,8 +39,6 @@ static class MQ05
         var kaskaAt = k.Snap(Grove, -29700, 79100);
         var eiAt = k.Snap(Grove, -29300, 78400);
         var histAt = k.Snap(Grove, -30000, 79350);
-        var kaskaPost = k.Marker("KaskaPost", kaskaAt);
-        var eiPost = k.Marker("EiTujaPost", eiAt);
         var hist = k.Ref("YoungHist", K("11FE7A:Black Marsh.esm"), histAt, scale: 0.4f);
         var zone = k.Zone("ZoneGrove", new P3Float(-29500, 78800, kaskaAt.Z + 100), 20, 40, new P3Float(600, 600, 250));
         var kaskaRef = k.Actor("KaskaMeenRef", kaska, kaskaAt);
@@ -78,19 +76,20 @@ static class MQ05
         var broom = k.Ref("Broom", K("06717F:Skyrim.esm"), new P3Float(MathF.Round(far.X) + 80, MathF.Round(far.Y), MathF.Round(far.Z) + 30));
         hall.Persistent.AddRange([seat, broom]);
 
-        // E-global (the endings' flags), E-package (each at their post).
+        // E-global (the endings' flags). The two stand where they were placed (the grove is their post): no package.
         var minders = k.Global("MindersHold");
         var nisswo = k.Global("NisswoRead");
-        var kaskaPkg = k.Travel("KaskaGoPost", kaskaPost, 64);
-        var eiPkg = k.Travel("EiTujaGoPost", eiPost, 64);
 
-        // TR-topic. Nesh-Deeka is the MQ01/MQ03 lane's person: her lines gate on her placed ref (GetIsReference).
+        // TR-topic. Nesh-Deeka is the MQ01/MQ03 lane's person: her lines gate on her placed ref (GetIsReference). Every repeat
+        // line ends with the quest (< 91); the warden's does not play while LQ30 holds him at its stage 30 (his own topic there).
+        var lq30 = mod.Quests.First(x => x.EditorID == "ARG_LQ30");
         k.Topic("Basin", Label("topic.mq05-the-basin"),
-            k.Banded("topic.mq05-the-basin", Warden, "default", null, IsRef(WardenRef), k.StageIs(20, CompareOperator.GreaterThanOrEqualTo)));
+            k.Banded("topic.mq05-the-basin", Warden, "default", null, IsRef(WardenRef), k.StageIs(20, CompareOperator.GreaterThanOrEqualTo), k.StageIs(91, CompareOperator.LessThan),
+                StageIs(lq30, CompareOperator.NotEqualTo, 30)));
         k.Topic("Quarrel", Label("topic.mq05-the-quarrel"),
-            k.Banded("topic.mq05-the-quarrel", EiTuja, "default", null, IsId(ei.FormKey), k.StageIs(40, CompareOperator.GreaterThanOrEqualTo)));
+            k.Banded("topic.mq05-the-quarrel", EiTuja, "default", null, IsId(ei.FormKey), k.StageIs(40, CompareOperator.GreaterThanOrEqualTo), k.StageIs(91, CompareOperator.LessThan)));
         k.Topic("Watch", Label("topic.mq05-the-watch"),
-            k.Banded("topic.mq05-the-watch", Kaska, "default", null, IsId(kaska.FormKey), k.StageIs(40, CompareOperator.GreaterThanOrEqualTo)));
+            k.Banded("topic.mq05-the-watch", Kaska, "default", null, IsId(kaska.FormKey), k.StageIs(40, CompareOperator.GreaterThanOrEqualTo), k.StageIs(91, CompareOperator.LessThan)));
         k.Topic("TellMinder", Label("topic.mq05-tell-minder"),
             k.Banded("topic.mq05-tell-minder", Kaska, "default", "TIF_ARG_MQ05_91", IsId(kaska.FormKey), k.StageIs(40)));
         k.Topic("TellNisswo", Label("topic.mq05-tell-nisswo"),
@@ -98,15 +97,16 @@ static class MQ05
 
         k.Header("The Word Carried Inland", 60, Quest.TypeEnum.MainQuest, Quest.Flag.RunOnce);
         k.FromRecord(Id, "ARG_QF_MQ05", fragments: FragmentStages);
-        k.Forced(AKaska, "KaskaMeen", kaskaRef).PackageData.Add(kaskaPkg.ToLink());
-        k.Forced(AEiTuja, "EiTuja", eiRef).PackageData.Add(eiPkg.ToLink());
+        k.Forced(AKaska, "KaskaMeen", kaskaRef, QuestAlias.Flag.Protected);
+        k.Forced(AEiTuja, "EiTuja", eiRef, QuestAlias.Flag.Protected);
         k.Forced(AZone, "ZoneGrove", zone);
         q.VirtualMachineAdapter!.Scripts.Add(Script("ARG_QF_MQ05", k.Alias("KaskaMeen", AKaska), k.Alias("EiTuja", AEiTuja),
             Obj("WayParent", way.FormKey), Obj("MindersHold", minders.FormKey), Obj("NisswoRead", nisswo.FormKey)));
-        q.VirtualMachineAdapter.Aliases.Add(DeathSets(k, AKaska, 40, 92)); // fail-forward: Kaska-Meen dead
+        // fail-forward (both tellers Protected, so neither dies unless the player kills): each one's death ends the quest on the other's word
+        q.VirtualMachineAdapter.Aliases.Add(DeathSets(k, AKaska, 10, 92));
+        q.VirtualMachineAdapter.Aliases.Add(DeathSets(k, AEiTuja, 10, 91));
 
-        world.TopCell!.Persistent.AddRange([kaskaPost, eiPost, hist, zone, way, kaskaRef, eiRef, wasp1, wasp2]);
-        k.Finish();
+        world.TopCell!.Persistent.AddRange([hist, zone, way, kaskaRef, eiRef, wasp1, wasp2]);
     }
 
     static QuestKit? Kit; static Quest? Q;
@@ -114,14 +114,20 @@ static class MQ05
     public static void AddNesh(SkyrimMod mod)
     {
         var k = Kit!; var q = Q!;
-        var neshRef = mod.EnumerateMajorRecords<IPlacedNpcGetter>().FirstOrDefault(r => r.EditorID == NeshRefId);
-        if (neshRef != null)
-            k.Topic("Word", Label("topic.mq05-the-word"),
-                k.Banded("topic.mq05-the-word", Nesh, "speech", "TIF_ARG_MQ05_20", IsRef(neshRef.FormKey), k.StageIs(10), Speech(25)),
-                k.Banded("topic.mq05-the-word", Nesh, "item", "TIF_ARG_MQ05_20Gold", [Obj("Gold001", Gold)], IsRef(neshRef.FormKey), k.StageIs(10), Has(Gold, 40)),
-                k.Banded("topic.mq05-the-word", Nesh, "default", null, IsRef(neshRef.FormKey), k.StageIs(10)));
-        else Console.WriteLine($"MQ05: WARN no {NeshRefId} in the plugin (the MQ01/MQ03 lane's); stage 10's topic and fail-forward left out");
-        if (neshRef != null) k.Forced(ANesh, "NeshDeeka", neshRef, QuestAlias.Flag.Optional);
-        if (neshRef != null) q.VirtualMachineAdapter!.Aliases.Add(DeathSets(k, ANesh, 10, 20)); // fail-forward: Nesh-Deeka dead
+        var neshRef = mod.EnumerateMajorRecords<IPlacedNpcGetter>().FirstOrDefault(r => r.EditorID == NeshRefId)
+            ?? throw new InvalidOperationException($"MQ05: no {NeshRefId} in the plugin (MainQuest places it, MQ01/MQ03's lane)");
+        // The word: one INFO at stage 10, no skill or gold check, the speech gate's lines (the record's other gates are not built).
+        k.Topic("Word", Label("topic.mq05-the-word"),
+            k.Info(Lines("topic.mq05-the-word", Nesh, "speech"), "TIF_ARG_MQ05_20", IsRef(neshRef.FormKey), k.StageIs(10)));
+        k.Forced(ANesh, "NeshDeeka", neshRef, QuestAlias.Flag.Optional);
+        q.VirtualMachineAdapter!.Aliases.Add(DeathSets(k, ANesh, 10, 20)); // fail-forward: Nesh-Deeka dead
+        // Objective targets, from the record's target column: Nesh-Deeka (10), the grove, where Kaska-Meen stands (20), the two
+        // tellers (40).
+        k.TargetsFromRecord(Id, new()
+        {
+            ["npc.nesh-deeka"] = [ANesh], ["thing.mq05.grove"] = [AKaska],
+            ["npc.hist-heartland.helstrom.grove-s-senior-tree"] = [AKaska], ["npc.hist-heartland.helstrom.nisswo-interpreter-debating-house"] = [AEiTuja],
+        });
+        k.Finish();
     }
 }

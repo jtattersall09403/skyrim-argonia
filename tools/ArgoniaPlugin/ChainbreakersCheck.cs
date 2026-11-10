@@ -132,24 +132,35 @@ static class ChainbreakersCheck
         .Select(c => c.Data.GetType().Name + ((IConditionFloatGetter)c).CompareOperator + ((IConditionFloatGetter)c).ComparisonValue))
         + "|" + r.VirtualMachineAdapter?.ScriptFragments?.OnEnd?.ScriptName;
 
-    // An after-quest Hello: per person, one INFO per written line, gated on the ref and on the endings (OR'd, each EqualTo).
-    public static void AfterOf(ISkyrimModGetter ours, IQuestGetter q, string topic, (FormKey who, List<string> said, int[] endings)[] people, Action<string, bool, string> ok)
+    // An after-quest Hello topic: per person, one INFO per written line of each variant (QuestKit.AfterSets), gated on the person's
+    // ref and the variant's endings (OR'd, each EqualTo).
+    public static void AfterOf(ISkyrimModGetter ours, IQuestGetter q, string topic, string code, (FormKey who, string writer, int[] plain)[] people, Action<string, bool, string> ok)
     {
         var t = ours.DialogTopics.FirstOrDefault(x => x.EditorID == topic);
         ok($"{topic}: a Hello topic of {q.EditorID}", t != null && t.Subtype == DialogTopic.SubtypeEnum.Hello && t.Quest.FormKey == q.FormKey, "");
         if (t == null) return;
-        foreach (var (who, said, endings) in people)
-        {
-            var mine = t.Responses.Where(r => r.Conditions.Any(c => c.Data is IGetIsReferenceConditionDataGetter g && g.Target.Link.FormKey == who)
-                && r.Conditions.Any(c => c.Data is IGetStageConditionDataGetter && endings.Contains((int)((IConditionFloatGetter)c).ComparisonValue))).ToList();
-            var text = mine.Select(r => r.Responses.Single().Text.String).ToList();
-            var gates = mine.All(r => r.Conditions.Where(c => c.Data is IGetStageConditionDataGetter g && g.Quest.Link.FormKey == q.FormKey)
-                .Select(c => (int)((IConditionFloatGetter)c).ComparisonValue).Order().SequenceEqual(endings.Order())
-                && r.Conditions.Where(c => c.Data is IGetStageConditionDataGetter).All(c => ((IConditionFloatGetter)c).CompareOperator == CompareOperator.EqualTo)
-                && r.Conditions.Count(c => c.Flags.HasFlag(Condition.Flag.OR)) == endings.Length - 1);
-            ok($"{topic}: {who} after {string.Join("/", endings)}", said.Count >= 2 && text.Order().SequenceEqual(said.Order()) && gates, $"{mine.Count} lines, gates {gates}");
-        }
+        var have = q.Stages.Select(x => (int)x.Index);
+        foreach (var (who, writer, plain) in people)
+            foreach (var (said, endings) in QuestKit.AfterSets(code, writer, plain, have))
+            {
+                var mine = t.Responses.Where(r => r.Conditions.Any(c => c.Data is IGetIsReferenceConditionDataGetter g && g.Target.Link.FormKey == who)
+                    && r.Conditions.Where(c => c.Data is IGetStageConditionDataGetter).Select(c => (int)((IConditionFloatGetter)c).ComparisonValue).Order().SequenceEqual(endings.Order())).ToList();
+                var text = mine.Select(r => r.Responses.Single().Text.String).ToList();
+                var gates = mine.All(r => r.Conditions.Where(c => c.Data is IGetStageConditionDataGetter g && g.Quest.Link.FormKey == q.FormKey)
+                    .All(c => ((IConditionFloatGetter)c).CompareOperator == CompareOperator.EqualTo)
+                    && r.Conditions.Count(c => c.Flags.HasFlag(Condition.Flag.OR)) == endings.Length - 1);
+                ok($"{topic}: {writer} after {string.Join("/", endings)}", said.Count >= 1 && text.Order().SequenceEqual(said.Order()) && gates, $"{mine.Count} lines, gates {gates}");
+            }
         Console.WriteLine($"  AFTER {q.EditorID}: {t.Responses.Count} after-quest INFOs");
+    }
+
+    // An alias package is a Package (never a PackageTemplate) on a template, owned by its quest, gated on the quest's stage.
+    static void FollowOf(ISkyrimModGetter ours, IQuestGetter q, string alias, string pack, int stage)
+    {
+        var p = ours.Packages.First(x => x.EditorID == pack);
+        Ok($"alias {alias}: {pack} is a Package on a template, owned by the quest, {stage}", p.Type == Package.Types.Package && !p.PackageTemplate.IsNull && p.OwnerQuest.FormKey == q.FormKey
+            && p.Data.Values.OfType<IPackageDataTargetGetter>().Any(t => t.Target is IPackageTargetSpecificReferenceGetter r && r.Reference.FormKey == QuestKit.PlayerRef),
+            $"type {p.Type}, template {p.PackageTemplate.FormKey}");
     }
 
     public static int Run(string esp, string pexDir, string[] paths)
@@ -188,8 +199,8 @@ static class ChainbreakersCheck
         {
             var a = q.Aliases.First(x => x.Name == name);
             var r = placed[a.ForcedReference.FormKey].rec;
-            var essential = name == "Chest" || (a.Flags ?? 0).HasFlag(QuestAlias.Flag.Essential);
-            Ok($"alias {name}", (r.MajorRecordFlagsRaw & 0x400) != 0 && essential, $"forced {a.ForcedReference.FormKey}, persistent, essential {essential}");
+            var protectedOrEssential = name == "Chest" || (a.Flags ?? 0).HasFlag(QuestAlias.Flag.Protected) || (a.Flags ?? 0).HasFlag(QuestAlias.Flag.Essential);
+            Ok($"alias {name}", (r.MajorRecordFlagsRaw & 0x400) != 0 && protectedOrEssential, $"forced {a.ForcedReference.FormKey}, persistent, protected {protectedOrEssential}");
         }
         var chestAlias = q.Aliases.First(x => x.Name == "Chest");
         var chest = (IPlacedObjectGetter)placed[chestAlias.ForcedReference.FormKey].rec;
@@ -248,26 +259,36 @@ static class ChainbreakersCheck
         var bc01q = ours.Quests.First(x => x.EditorID == "ARG_BC01");
         var opens = ours.DialogTopics.First(x => x.EditorID == "ARG_BC03_LastSeason").Responses;
         Ok("BC03 opens once BC01 is at 90 or more", opens.SelectMany(r => r.Conditions).Any(c => c.Data is IGetStageConditionDataGetter g && g.Quest.Link.FormKey == bc01q.FormKey && ((IConditionFloatGetter)c).ComparisonValue == 90));
+        AfterOf(ours, q, "ARG_BC03_AfterHello", "bc03", [(ours.EnumerateMajorRecords<IPlacedGetter>().First(r => r.EditorID == "ARG_BC03_HeavyRopeRef").FormKey, "heavy-rope", []),
+            (ours.EnumerateMajorRecords<IPlacedGetter>().First(r => r.EditorID == "ARG_BC03_UssaRekhRef").FormKey, "ussa-rekh", [])], Ok);
         Ok("BC03 90 adds 10 to ARG_ChainbreakersStanding", Pex(script, "ChainbreakersStanding") && Pex(script, "Mod"));
 
         Generic(ours, placed, Pex, "ARG_BC01", "quest.bc.bc01", "bc01", [10, 40, 90, 91, 94], [90, 91, 94],
-            ["Patron", "Debtor", "Steward", "Chest"], [("ARG_BC01_ChannelEndZone", 40, 91)],
-            [("Patron", "ARG_BC01_PatronAtLanding", 10), ("Debtor", "ARG_BC01_DebtorFollow", 40)]);
+            ["Patron", "Debtor", "Steward", "Chest", "ChannelEndZone"], [("ARG_BC01_ChannelEndZone", 40, 91)],
+            [("Debtor", "ARG_BC01_DebtorFollow", 40)]);
+        FollowOf(ours, ours.Quests.First(x => x.EditorID == "ARG_BC01"), "Debtor", "ARG_BC01_DebtorFollow", 40);
+        Ok("BC01: Never-Sold has no package (she stays in her house)", ours.Quests.First(x => x.EditorID == "ARG_BC01").Aliases.First(a => a.Name == "Patron").PackageData.Count == 0
+            && !ours.Packages.Any(x => x.EditorID == "ARG_BC01_PatronAtLanding"));
         FormKey RefOf(string e) => ours.EnumerateMajorRecords<IPlacedGetter>().First(r => r.EditorID == e).FormKey;
-        AfterOf(ours, ours.Quests.First(x => x.EditorID == "ARG_BC01"), "ARG_BC01_AfterHello", [(RefOf("ARG_BC01_RowsForAnotherRef"), LocalQuests.After("bc01", "rows-for-another"), [90, 91])], Ok);
+        AfterOf(ours, ours.Quests.First(x => x.EditorID == "ARG_BC01"), "ARG_BC01_AfterHello", "bc01",
+            [(RefOf("ARG_BC01_RowsForAnotherRef"), "rows-for-another", [91]), (RefOf("ARG_BC_NeverSoldRef"), "never-sold", [])], Ok);
         var cuts = ours.DialogTopics.First(x => x.EditorID == "ARG_BC01_CutLoose").Responses;
+        Ok("BC01 cut-loose: a day INFO (5:00 to 21:00) and a watched INFO (the steward or an estate man detects the player), both exclusive of the night pass",
+            cuts.Count(c => c.Conditions.Count(x => x.Data is IGetCurrentTimeConditionDataGetter) == 2 && c.Conditions.Count(x => x.Data is IGetDetectedConditionDataGetter) == 0 && c.Conditions.OfType<IConditionFloatGetter>().Any(x => x.Data is IGetCurrentTimeConditionDataGetter && x.ComparisonValue == 21 && x.CompareOperator == CompareOperator.LessThan)) >= 1
+            && cuts.Count(c => c.Conditions.OfType<IConditionFloatGetter>().Count(x => x.Data is IGetDetectedConditionDataGetter && x.ComparisonValue == 1) == 3) >= 1);
         Ok("BC01 cut-loose: night (C-time) and unseen by three (C-detected)", cuts.Any(cut => cut.Conditions.Count(c => c.Data is IGetCurrentTimeConditionDataGetter) == 2 && cut.Conditions.Count(c => c.Data is IGetDetectedConditionDataGetter) == 3 && cut.VirtualMachineAdapter != null),
             string.Join(" | ", cuts.Select(r => string.Join(",", r.Conditions.Select(c => c.Data.GetType().Name.Replace("ConditionData", "").Replace("BinaryOverlay", ""))))));
         Ok("BC01 bring-down gated on the debt book (C-item)", ours.DialogTopics.First(x => x.EditorID == "ARG_BC01_BringDown").Responses[0].Conditions.Any(c => c.Data is IGetItemCountConditionDataGetter));
         Ok("BC01 10 puts the book in the chest; 90 moves her to Blackrose", Pex("ARG_QF_BC01", "AddItem") && Pex("ARG_QF_BC01", "MoveTo") && Pex("ARG_QF_BC01", "ChainbreakersStanding"));
 
         Generic(ours, placed, Pex, "ARG_BC02", "quest.bc.bc02", "bc02", [20, 30, 31, 32, 33, 91, 92, 93, 94], [91, 92, 93, 94],
-            ["Patron", "GateKeeper", "Speaker", "Killer", "Mother"],
+            ["Patron", "GateKeeper", "Speaker", "Killer", "Mother", "ExitZone"],
             [("ARG_BC02_InZone", 20, 30), ("ARG_BC02_OutSpeakerZone", 31, 91), ("ARG_BC02_OutKillerZone", 32, 92), ("ARG_BC02_OutMotherZone", 33, 93)],
             [("Speaker", "ARG_BC02_SpeakerFollow", 31), ("Killer", "ARG_BC02_KillerFollow", 32), ("Mother", "ARG_BC02_MotherFollow", 33)]);
         string[] writer = ["says-it-plain", "hides-in-reeds", "keeps-the-old-count"]; string[] held = ["Speaker", "Killer", "Mother"];
-        AfterOf(ours, ours.Quests.First(x => x.EditorID == "ARG_BC02"), "ARG_BC02_AfterHello",
-            [.. Enumerable.Range(0, 3).Select(i => (RefOf($"ARG_BC02_{held[i]}Ref"), LocalQuests.After("bc02", writer[i]), new[] { 91 + i }))], Ok);
+        foreach (var (k, i) in held.Select((k, i) => (k, i))) FollowOf(ours, ours.Quests.First(x => x.EditorID == "ARG_BC02"), k, $"ARG_BC02_{k}Follow", 31 + i);
+        AfterOf(ours, ours.Quests.First(x => x.EditorID == "ARG_BC02"), "ARG_BC02_AfterHello", "bc02",
+            [(RefOf("ARG_BC_NeverSoldRef"), "never-sold", []), .. Enumerable.Range(0, 3).Select(i => (RefOf($"ARG_BC02_{held[i]}Ref"), writer[i], new[] { 91 + i }))], Ok);
         var fires = ours.DialogTopics.First(x => x.EditorID == "ARG_BC02_TheFire").Responses;
         Ok("BC02 opens once BC01 is at 90 or more", fires.SelectMany(r => r.Conditions).Any(c => c.Data is IGetStageConditionDataGetter g && g.Quest.Link.FormKey == bc01q.FormKey && ((IConditionFloatGetter)c).ComparisonValue == 90));
         Ok("BC02 gate and let-by at Speech 25", new[] { "ARG_BC02_TheGate", "ARG_BC02_LetBy" }.All(t => ours.DialogTopics.First(x => x.EditorID == t).Responses.Any(r => r.Conditions.Any(c => c.Data is IGetActorValueConditionDataGetter && ((IConditionFloatGetter)c).ComparisonValue == 25))));

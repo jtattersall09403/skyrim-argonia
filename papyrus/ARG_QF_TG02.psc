@@ -89,8 +89,8 @@ EndFunction
 ;BEGIN FRAGMENT Fragment_40
 Function Fragment_40()
 	SetObjectiveCompleted(20)
+	SetObjectiveDisplayed(40)
 	SetObjectiveDisplayed(41)
-	SetObjectiveDisplayed(42)
 EndFunction
 ;END FRAGMENT
 
@@ -118,8 +118,8 @@ Function Fragment_90()
 		Return
 	EndIf
 	ended = True
+	SetObjectiveCompleted(40)
 	SetObjectiveCompleted(41)
-	SetObjectiveCompleted(42)
 	AchievementsQuest.IncSideQuests()
 	Stop()
 EndFunction
@@ -131,8 +131,8 @@ Function Fragment_91() ; E-regard: Bent-Spine thinks better of the player
 		Return
 	EndIf
 	ended = True
+	SetObjectiveCompleted(40)
 	SetObjectiveCompleted(41)
-	SetObjectiveCompleted(42)
 	BentSpine.GetActorRef().SetRelationshipRank(Game.GetPlayer(), 1)
 	AchievementsQuest.IncSideQuests()
 	Stop()

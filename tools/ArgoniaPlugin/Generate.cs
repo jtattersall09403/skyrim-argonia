@@ -189,6 +189,7 @@ static class Generate
         // barge hold; ARG_Opening keeps its forms (ids never move) and never starts: nothing starts it and its script is gone.
         MainQuest.Add(mod, mods);
         MQ05.AddNesh(mod); // MQ05's Nesh-Deeka topic and alias need her ref, placed by MainQuest
+        LocalQuests.Finish(mod); // LQ25's MQ05 >= 40 gate, once ARG_MQ05 exists
         MainQuest.WritePsc("papyrus/generated");
         mq101.VirtualMachineAdapter!.Scripts[0].Properties.AddRange([
             new ScriptObjectProperty { Name = "StartQuest", Object = MainQuest.Mq01.ToLink() },

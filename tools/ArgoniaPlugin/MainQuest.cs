@@ -445,6 +445,8 @@ static class MainQuest
         kit.Record("MQ03", lines, "topic.mq03-refuse-oath", null, [IsId(nesh)], ("main", "GetOwningQuest().SetStage(40)", [at20.DeepCopy(), Glob(attackTold, 1)]));
 
         world.TopCell!.Persistent.AddRange([jarParent, reedParent, sapRef, trapRef, .. picks, officerRef, strangerRef, door]);
+        // Nesh-Deeka's greeting after the oath (90) or the refusal (91).
+        kit.AfterHellos("ARG_MQ03_AfterHello", "mq03", (neshRef.FormKey, "nesh-deeka", []));
         // Objective targets, from the record's target column: the sap (10 and the phial), the fish-trap's tag, the officer,
         // Nesh-Deeka, Ties, the hold's door.
         kit.TargetsFromRecord("quest.main.mq03", new()

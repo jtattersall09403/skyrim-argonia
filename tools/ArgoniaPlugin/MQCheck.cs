@@ -75,12 +75,35 @@ static class MQCheck
                 if (why.Count > 0) fails++;
             }
             // The wording bands: each gate's variants_high / variants_low (QuestKit.BandLines), found by its default's lines.
-            var gates = QuestKit.Gates($"topic.{edid[4..].ToLower()}-");
+            // MQ05's word is one INFO (the speech gate's lines); the record's item and default gates of it are not built
+            var gates = QuestKit.Gates($"topic.{edid[4..].ToLower()}-").Where(g => !(g.topic == "topic.mq05-the-word" && g.gate != "speech")).ToList();
             ChainbreakersCheck.BandsBy(mine, q, (said, band) => gates.Where(g => QuestKit.Lines(g.topic, g.speaker, g.gate).SequenceEqual(said))
                 .Select(g => QuestKit.BandLines(g.topic, g.speaker, g.gate, band)).FirstOrDefault(),
                 gates.Sum(g => (QuestKit.BandLines(g.topic, g.speaker, g.gate, "low").Count > 0 ? 1 : 0) + (QuestKit.BandLines(g.topic, g.speaker, g.gate, "high").Count > 0 ? 1 : 0)),
                 (w, ok, d) => { Console.WriteLine($"{(ok ? "PASS" : "FAIL")} {w}{(ok ? "" : "; " + d)}"); if (!ok) fails++; });
         }
+        void Shape(string what, bool ok) { Console.WriteLine($"{(ok ? "PASS" : "FAIL")} {what}"); if (!ok) fails++; }
+        var q4 = mine.Quests.Single(x => x.EditorID == "ARG_MQ04"); var q5 = mine.Quests.Single(x => x.EditorID == "ARG_MQ05"); var lq30 = mine.Quests.Single(x => x.EditorID == "ARG_LQ30");
+        bool Stage(IDialogResponsesGetter i, IQuestGetter q, CompareOperator op, int v) => i.Conditions.OfType<IConditionFloatGetter>().Any(c => c.Data is IGetStageConditionDataGetter g && g.Quest.Link.FormKey == q.FormKey && c.CompareOperator == op && c.ComparisonValue == v);
+        IEnumerable<IDialogResponsesGetter> Infos(string topic) => mine.DialogTopics.Single(t => t.EditorID == topic).Responses;
+        foreach (var q in new[] { q4, q5 })
+        {
+            Shape($"{q.EditorID} every objective has a compass target", q.Objectives.All(o => o.Targets.Count > 0));
+            Shape($"{q.EditorID} Run Once", q.Flags.HasFlag(Quest.Flag.RunOnce));
+        }
+        Shape("MQ04 the cut root (CutRootMark) is a forced alias and the target of 20 and 45", q4.Aliases.Any(a => a.Name == "CutRootMark" && !a.ForcedReference.IsNull)
+            && new ushort[] { 20, 45 }.All(i => q4.Objectives.Single(o => o.Index == i).Targets.Any(t => t.AliasID == MQ04.AMark)));
+        Shape("MQ04 Cut: the repeat INFO (>= 40) ends before 91 and asks 'Tell me about the cut root again.'", Infos("ARG_MQ04_CutTopic").Where(i => Stage(i, q4, CompareOperator.GreaterThanOrEqualTo, 40))
+            .All(i => Stage(i, q4, CompareOperator.LessThan, 91) && i.Prompt?.String == "Tell me about the cut root again."));
+        Shape("MQ05 no KaskaGoPost, EiTujaGoPost or their markers", !mine.Packages.Any(p => p.EditorID is "ARG_MQ05_KaskaGoPost" or "ARG_MQ05_EiTujaGoPost") && !mine.EnumerateMajorRecords<IPlacedObjectGetter>().Any(r => r.EditorID is "ARG_MQ05_KaskaPost" or "ARG_MQ05_EiTujaPost"));
+        var word = Infos("ARG_MQ05_WordTopic").ToList();
+        Shape("MQ05 Word: one INFO at stage 10 setting 20, no skill, gold or item check", word.Count == 1 && Stage(word[0], q5, CompareOperator.EqualTo, 10) && word[0].VirtualMachineAdapter?.ScriptFragments?.OnEnd?.ScriptName == "TIF_ARG_MQ05_20"
+            && !word[0].Conditions.Any(c => c.Data is IGetActorValueConditionDataGetter or IGetItemCountConditionDataGetter) && word[0].Responses.Count == 5);
+        Shape("MQ05 Quarrel and Watch end before 91; Basin ends before 91 and not while LQ30 is at 30", new[] { "ARG_MQ05_QuarrelTopic", "ARG_MQ05_WatchTopic" }.All(t => Infos(t).All(i => Stage(i, q5, CompareOperator.LessThan, 91)))
+            && Infos("ARG_MQ05_BasinTopic").All(i => Stage(i, q5, CompareOperator.LessThan, 91) && Stage(i, lq30, CompareOperator.NotEqualTo, 30)));
+        Shape("MQ05 Kaska-Meen and Ei-Tuja aliases Protected; deaths 10 -> 92 and 10 -> 91", new[] { MQ05.AKaska, MQ05.AEiTuja }.All(a => q5.Aliases.Single(x => x.ID == a).Flags?.HasFlag(QuestAlias.Flag.Protected) == true)
+            && new[] { (MQ05.AKaska, 92), (MQ05.AEiTuja, 91) }.All(d => q5.VirtualMachineAdapter!.Aliases.Any(x => x.Property.Alias == d.Item1 && x.Scripts.Any(sc => sc.Name == "defaultSetStageOnDeathRefAlias"
+                && sc.Properties.OfType<IScriptIntPropertyGetter>().Any(p => p.Name == "preReqStage" && p.Data == 10) && sc.Properties.OfType<IScriptIntPropertyGetter>().Any(p => p.Name == "StageToSet" && p.Data == d.Item2)))));
         Console.WriteLine(fails == 0 ? "mqcheck: all stages pass" : $"mqcheck: {fails} stage(s) fail");
         return fails == 0 ? 0 : 1;
     }

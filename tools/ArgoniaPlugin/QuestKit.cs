@@ -55,6 +55,9 @@ sealed class QuestKit(SkyrimMod mod, List<ISkyrimModGetter> mods, Quest? q = nul
     public static List<(int id, string journal, bool ending)> Stages(string quest) =>
         Rows("quest_stage").Where(r => Str(r, "quest_id") == quest)
             .Select(r => (int.Parse(r.GetProperty("id").ToString()), Str(r, "journal_text") ?? "", Str(r, "ending") != null)).OrderBy(s => s.Item1).ToList();
+    /// The record's failing endings (quest_stage ending = failed): a Fail Quest log entry instead of Complete Quest.
+    public static HashSet<int> Failed(string quest) =>
+        [.. Rows("quest_stage").Where(r => Str(r, "quest_id") == quest && Str(r, "ending") == "failed").Select(r => int.Parse(r.GetProperty("id").ToString()))];
     /// The record's hidden stages (quest_stage rows with hidden = 1 and no text): set by script, never in the journal.
     public static HashSet<int> Hidden(string quest) =>
         [.. Rows("quest_stage").Where(r => Str(r, "quest_id") == quest && r.TryGetProperty("hidden", out var h) && h.ValueKind == JsonValueKind.Number && h.GetInt32() == 1)
@@ -130,6 +133,9 @@ sealed class QuestKit(SkyrimMod mod, List<ISkyrimModGetter> mods, Quest? q = nul
     public static readonly (string band, CompareOperator op, float v)[] Bands = [("high", CompareOperator.GreaterThanOrEqualTo, 1), ("low", CompareOperator.LessThan, 0)];
     /// C-detected: the reference does not detect the player.
     public static ConditionFloat Unseen(IFormKeyGetter by) { var d = new GetDetectedConditionData { RunOnType = Condition.RunOnType.Reference }; d.Reference.SetTo(by.FormKey); d.TargetNpc.Link.SetTo(PlayerRef); return C(d, CompareOperator.EqualTo, 0); }
+
+    /// C-detected: the reference detects the player (an estate man's watch); `or` chains it with the next.
+    public static ConditionFloat Seen(IFormKeyGetter by, bool or = false) { var d = new GetDetectedConditionData { RunOnType = Condition.RunOnType.Reference }; d.Reference.SetTo(by.FormKey); d.TargetNpc.Link.SetTo(PlayerRef); return C(d, CompareOperator.EqualTo, 1, or); }
 
     // ---- scripts
     public static ScriptEntry Script(string name, params ScriptProperty[] ps) { var e = new ScriptEntry { Name = name }; e.Properties.AddRange(ps); return e; }
@@ -394,7 +400,7 @@ sealed class QuestKit(SkyrimMod mod, List<ISkyrimModGetter> mods, Quest? q = nul
         }
     }
     /// The last call of a builder's quest: Run Once; the quest script's `Zones` array bound to exactly the zones the kit made
-    /// for the quest (the endings disarm them); a warning for each objective without a target; and a refusal of two zones
+    /// for the quest (the endings disarm them); a refusal of an objective without a target; and a refusal of two zones
     /// that overlap when one's stage is the other's prerequisite (a walk through one would set the next at once).
     public void Finish()
     {
@@ -413,7 +419,8 @@ sealed class QuestKit(SkyrimMod mod, List<ISkyrimModGetter> mods, Quest? q = nul
             if (MathF.Abs(pa.X - pb.X) < a.half.X + b.half.X && MathF.Abs(pa.Y - pb.Y) < a.half.Y + b.half.Y && MathF.Abs(pa.Z - pb.Z) < a.half.Z + b.half.Z)
                 throw new InvalidOperationException($"{Q.EditorID}: zone {a.z.EditorID} (sets {a.stage}) overlaps {b.z.EditorID} (needs {b.prereq}): one step would set the next");
         }
-        foreach (var o in Q.Objectives.Where(o => o.Targets.Count == 0)) Console.WriteLine($"WARN no target: {Q.EditorID} {o.Index}");
+        var bare = Q.Objectives.Where(o => o.Targets.Count == 0).Select(o => o.Index).ToList();
+        if (bare.Count > 0) throw new InvalidOperationException($"{Q.EditorID}: objective(s) {string.Join(", ", bare)} have no compass target (quest_objective.target, TargetsFromRecord)");
     }
 
     /// The quest's header: Main Quest (the act's line) or Side Quest, and its flags.
@@ -439,11 +446,12 @@ sealed class QuestKit(SkyrimMod mod, List<ISkyrimModGetter> mods, Quest? q = nul
     {
         var rec = Stages(quest).ToDictionary(s => s.id);
         var hid = hidden ?? [.. Hidden(quest)]; // the record's hidden stages unless the builder names others
+        var failed = Failed(quest);
         var list = new List<(int, string?, QuestLogEntry.Flag)> { (0, null, 0) };
         foreach (var s in (stages ?? [.. rec.Keys]).Union(hid).OrderBy(s => s))
         {
             var ending = ends != null ? ends.Contains(s) : rec.TryGetValue(s, out var r) && r.ending;
-            list.Add((s, hid.Contains(s) ? null : rec[s].journal, ending ? QuestLogEntry.Flag.CompleteQuest : 0));
+            list.Add((s, hid.Contains(s) ? null : rec[s].journal, ending ? (failed.Contains(s) ? QuestLogEntry.Flag.FailQuest : QuestLogEntry.Flag.CompleteQuest) : 0));
         }
         var objectives = new List<(ushort, string)>();
         foreach (var g in Objectives(quest).GroupBy(o => o.stage))
@@ -455,7 +463,7 @@ sealed class QuestKit(SkyrimMod mod, List<ISkyrimModGetter> mods, Quest? q = nul
     }
     /// The compass targets of the record's objectives (quest_objective.target, a comma list: either/or objectives point at each
     /// of them): `aliases` maps each target id of the data to the quest alias ids that stand for it. A target id with no alias
-    /// is printed as a WARN and left out; an empty column is the builder's own Target call.
+    /// fails the build; an empty column is the builder's own Target call.
     public void TargetsFromRecord(string quest, Dictionary<string, uint[]> aliases)
     {
         foreach (var g in Rows("quest_objective").Where(r => Str(r, "quest_id") == quest)
@@ -467,7 +475,7 @@ sealed class QuestKit(SkyrimMod mod, List<ISkyrimModGetter> mods, Quest? q = nul
             foreach (var o in g)
             {
                 foreach (var id in (Str(o, "target") ?? "").Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries))
-                    if (aliases.TryGetValue(id, out var a)) Target(i, a); else Console.WriteLine($"WARN no alias for target {id}: {Q.EditorID} objective {i}");
+                    Target(i, aliases.TryGetValue(id, out var a) ? a : throw new InvalidOperationException($"{Q.EditorID} objective {i}: the record's target {id} has no alias"));
                 i++;
             }
         }
@@ -555,9 +563,11 @@ sealed class QuestKit(SkyrimMod mod, List<ISkyrimModGetter> mods, Quest? q = nul
     public DialogTopic Topic(string id, string prompt, params DialogResponses[] infos)
     {
         var t = Open(prefix + id + "Branch", prefix + id + "Topic", prompt, null);
-        foreach (var i in infos) { i.Prompt = prompt; t.Responses.Add(i); }
+        foreach (var i in infos) { i.Prompt ??= prompt; t.Responses.Add(i); }
         return t;
     }
+    /// The INFOs with their own prompt (Skyrim's INFO prompt overrides the topic's), for one gate of a topic that is asked another way.
+    public static DialogResponses[] Prompted(string prompt, params DialogResponses[] infos) { foreach (var i in infos) i.Prompt = prompt; return infos; }
     /// A topic of banded gates (Banded): each gate's band INFOs and its default.
     public DialogTopic Topic(string id, string prompt, params DialogResponses[][] gates) => Topic(id, prompt, [.. gates.SelectMany(g => g)]);
 
@@ -629,13 +639,27 @@ sealed class QuestKit(SkyrimMod mod, List<ISkyrimModGetter> mods, Quest? q = nul
     }
     /// TR-topic from a line store (NightReed's TSV): one top-level player topic, one gate per (intent, Papyrus body of its
     /// fragment TIF_<id>_<n>, conditions); the gate's written line is the store's "<id>_<n>", every gate must have one.
-    public DialogTopic Store(string path, string id, string prompt, params (string text, string? body, ConditionFloat[] conds)[] infos)
+    public DialogTopic Store(string path, string id, string prompt, params (string text, string? body, ConditionFloat[] conds)[] infos) =>
+        Store(path, id, prompt, id, 0, null, infos);
+    /// The same for one route of a gated topic (Skyrim's way: a topic per way of asking, the route in the prompt): the gate's
+    /// written line is the store's "<key>_<from + n>". A `fallback` (the conditions of the player who fails the route's check) adds
+    /// an INFO speaking the store's "<key>_fallback" lines, what is needed in the speaker's words; none is built while the store
+    /// has no such key (the key is listed in `MissingKeys`).
+    public DialogTopic Store(string path, string id, string prompt, string key, int from, ConditionFloat[]? fallback, params (string text, string? body, ConditionFloat[] conds)[] infos)
     {
         var store = LineStores.TryGetValue(path, out var w) ? w : LineStores[path] = Written(path);
-        return Build(id, id, prompt, [.. infos.Select(i => new Gt(null, i.body == null ? null : "TIF_{id}_{n}", i.body, i.conds))],
-            (n, _) => new Said(null, [store.TryGetValue($"{id}_{n}", out var line) ? line : throw new InvalidDataException($"no written line {id}_{n} in {path}")],
-                b => StoreBand(store, $"{id}_{n}", b) is { Count: > 0 } l ? l : null), [], null);
+        var gates = infos.Select(i => new Gt(null, i.body == null ? null : "TIF_{id}_{n}", i.body, i.conds)).ToList();
+        var fb = fallback != null && store.ContainsKey(key + "_fallback");
+        if (fallback != null && !fb) MissingKeys.Add(key + "_fallback");
+        if (fb) gates.Add(new Gt(null, null, null, fallback!));
+        return Build(id, id, prompt, [.. gates],
+            (n, _) => fb && n == infos.Length
+                ? new Said(null, [store[key + "_fallback"]], b => StoreBand(store, key + "_fallback", b) is { Count: > 0 } l ? l : null)
+                : new Said(null, [store.TryGetValue($"{key}_{from + n}", out var line) ? line : throw new InvalidDataException($"no written line {key}_{from + n} in {path}")],
+                    b => StoreBand(store, $"{key}_{from + n}", b) is { Count: > 0 } l ? l : null), [], null);
     }
+    /// The store keys a builder asked for and the writing lane has not written (each owed one INFO).
+    public static readonly List<string> MissingKeys = [];
     static readonly Dictionary<string, Dictionary<string, string>> LineStores = [];
     /// An after-quest greeting (a Hello topic of the quest): one Random INFO per written line, gated on the person's ref
     /// and on the quest's ending stages (any of them).
@@ -658,6 +682,35 @@ sealed class QuestKit(SkyrimMod mod, List<ISkyrimModGetter> mods, Quest? q = nul
             }
             t.Responses.Add(info);
         }
+    }
+
+    /// The after-quest greetings a person's written file (story/data/dialogue-writer/quest/<code>/<who>.after.tsv) holds, each variant
+    /// with the endings it is gated on: "after" on `plain` (the endings that leave the person in the state those lines describe),
+    /// "after<N>" on stage N. A variant naming a stage the quest does not have is not returned (`skipped` says why).
+    public static List<(List<string> said, int[] endings)> AfterSets(string code, string writer, int[] plain, IEnumerable<int> stages, List<string>? skipped = null)
+    {
+        var have = stages.ToHashSet();
+        var sets = new List<(List<string>, int[])>();
+        var variants = File.ReadLines(Path.Combine("story", "data", "dialogue-writer", "quest", code, writer + ".after.tsv")).Skip(1)
+            .Select(l => l.Split('\t')).Where(p => p.Length >= 5).Select(p => p[1]).Distinct().ToList();
+        foreach (var v in variants)
+        {
+            int[] endings = v == "after" ? plain : int.TryParse(v[5..], out var n) ? [n] : throw new InvalidDataException($"{code}/{writer}: variant {v}");
+            var missing = endings.Where(e => !have.Contains(e)).ToList();
+            if (endings.Length == 0 || missing.Count > 0) { skipped?.Add($"{code}/{writer} {v}: {(endings.Length == 0 ? "no plain endings given" : "the quest has no stage " + string.Join(",", missing))}"); continue; }
+            sets.Add((After(code, writer, v), endings));
+        }
+        return sets;
+    }
+    /// The after-quest greetings of people (AfterSets): a Hello INFO set per variant, gated on the person's ref and its ending.
+    public void AfterHellos(string id, string code, params (FormKey who, string writer, int[] plain)[] people)
+    {
+        var list = new List<(FormKey, List<string>, int[])>();
+        var skipped = new List<string>();
+        foreach (var (who, writer, plain) in people)
+            foreach (var (said, endings) in AfterSets(code, writer, plain, Q.Stages.Select(x => (int)x.Index), skipped)) list.Add((who, said, endings));
+        foreach (var sk in skipped) Console.WriteLine($"SKIP {Q.EditorID} after-quest {sk}");
+        Hello(id, [.. list]);
     }
 
     // ---- cells: our override of an exterior cell's or interior cell's record, merged with one already in the mod

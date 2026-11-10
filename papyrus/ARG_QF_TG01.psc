@@ -80,7 +80,7 @@ Function Fragment_41() ; E-item (taken, three picks, no pay), E-regard
 	Tilts.GetActorRef().SetRelationshipRank(player, -1)
 	SetObjectiveCompleted(30)
 	SetObjectiveCompleted(31)
-	SetObjectiveDisplayed(40)
+	SetObjectiveDisplayed(41) ; the record's second way down (the dock thief dead)
 EndFunction
 ;END FRAGMENT
 
@@ -106,7 +106,7 @@ Function Fragment_91()
 	EndIf
 	ended = True
 	Game.GetPlayer().SetFactionRank(Chapter, 0)
-	SetObjectiveCompleted(40)
+	SetObjectiveCompleted(41)
 	NextQuest.SetStage(20)
 	DisarmZones()
 	AchievementsQuest.IncSideQuests()

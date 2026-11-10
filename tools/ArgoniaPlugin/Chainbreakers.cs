@@ -24,8 +24,8 @@ static class Chainbreakers
         Journal = FormKey.Factory("10B2CD:Skyrim.esm"), Smoke = FormKey.Factory("0D5E82:Skyrim.esm");
     const string Female = "02A1EE:Black Marsh.esm", Male = "00FF4D:Black Marsh.esm";
     public const uint B3Ussa = 0, B3Rope = 1, B3Chest = 2, B3Tokens = 3;
-    public const uint B1Patron = 0, B1Debtor = 1, B1Steward = 2, B1Chest = 3;
-    public const uint B2Patron = 0, B2Keeper = 1, B2Speaker = 2, B2Killer = 3, B2Mother = 4;
+    public const uint B1Patron = 0, B1Debtor = 1, B1Steward = 2, B1Chest = 3, B1Zone = 4;
+    public const uint B2Patron = 0, B2Keeper = 1, B2Speaker = 2, B2Killer = 3, B2Mother = 4, B2Zone = 5;
     // The post's floor: the navmesh triangles nearest these points, all well inside the house's footprint (16 x 20 m round
     // its origin 140731,-63604; bmv_shell: 16 inner triangles, joined to the street); the gate 1100 west, towards the town.
     // Never-Sold's spot in HouseInt's small house (SmallHouseINT 156421): between the shelf (156424) and the hearth
@@ -60,9 +60,9 @@ static class Chainbreakers
         Bc03(mod, mods, world);
     }
 
-    // BC01: Never-Sold's estate topic in her house (0 -> 10, the debt book's parent enabled); she walks to the landing by
-    // her alias's sandbox package; the book given to her there (10 -> 90), or Rows-For-Another's channel topic after dark
-    // (10 -> 40), whose alias then follows the player to the channel-end zone (40 -> 91). Both women are essential.
+    // BC01: Never-Sold's estate topic in her house (0 -> 10, the debt book in the chest); she stays in her house for the whole
+    // quest; the book given to her there (10 -> 90), or Rows-For-Another's channel topic after dark (10 -> 40), whose alias then
+    // follows the player to the channel-end zone (40 -> 91). Never-Sold is Essential, Rows-For-Another Protected.
     static void Bc01(SkyrimMod mod, List<ISkyrimModGetter> mods, Worldspace world, PlacedNpc patronRef)
     {
         const string id = "quest.bc.bc01";
@@ -83,7 +83,6 @@ static class Chainbreakers
         var stewardAt = kit.Snap(Landing, 129000, -46640);
         var debtorAt = kit.Snap(Landing, 128880, -46230);
         var men = new[] { kit.Snap(Landing, 129110, -46950), kit.Snap(Landing, 128810, -45910) };
-        var waitAt = kit.Snap(Landing, 128900, -46500);
         var endAt = kit.Snap(Landing, 130900, -45250);
         var homeAt = kit.Snap(HouseExt, 134450, -56350);
         var chest = kit.Marker("ARG_BC01_ChestRef", chestAt);
@@ -92,17 +91,16 @@ static class Chainbreakers
         var debtorRef = kit.Actor("ARG_BC01_RowsForAnotherRef", debtor, debtorAt);
         var stewardRef = kit.Actor("ARG_BC01_HulmTeiRef", steward, stewardAt);
         var menRefs = men.Select((p, i) => kit.Actor($"ARG_BC01_EstateMan{i + 1}Ref", man, p)).ToList();
-        var wait = kit.Marker("ARG_BC01_LandingMarker", waitAt);
         var home = kit.Marker("ARG_BC01_BlackroseMarker", homeAt);
         var zone = kit.Zone("ARG_BC01_ChannelEndZone", new P3Float(endAt.X, endAt.Y, endAt.Z + 100), 40, 91, new P3Float(500, 500, 400));
-        world.TopCell!.Persistent.AddRange([chest,debtorRef, stewardRef, .. menRefs, wait, home, zone]);
+        world.TopCell!.Persistent.AddRange([chest, debtorRef, stewardRef, .. menRefs, home, zone]);
 
-        kit.Forced(B1Patron, "Patron", patronRef.FormKey, QuestAlias.Flag.Essential).PackageData.Add(
-            kit.Schedule("ARG_BC01_PatronAtLanding", "GledaSandboxEditorLocation512", wait, 400, -1, 0, StageIs(q, CompareOperator.GreaterThanOrEqualTo, 10)).ToLink());
+        kit.Forced(B1Patron, "Patron", patronRef.FormKey, QuestAlias.Flag.Essential);
         kit.Forced(B1Debtor, "Debtor", debtorRef.FormKey, QuestAlias.Flag.Protected).PackageData.Add(
-            kit.Schedule("ARG_BC01_DebtorFollow", "FollowPlayer", null, 0, -1, 0, StageIs(q, CompareOperator.EqualTo, 40)).ToLink());
+            kit.Follow("ARG_BC01_DebtorFollow", StageIs(q, CompareOperator.EqualTo, 40)).ToLink());
         kit.Forced(B1Steward, "Steward", stewardRef.FormKey, QuestAlias.Flag.Protected);
         kit.Forced(B1Chest, "Chest", chest.FormKey);
+        kit.Forced(B1Zone, "ChannelEndZone", zone);
         // The book goes into the chest by stage 10's fragment (E-item: Chest.AddItem), so it is absent before 10.
         q.VirtualMachineAdapter!.Scripts.Add(Script("ARG_QF_BC01", Alias("Patron", q, B1Patron), Alias("Debtor", q, B1Debtor), Alias("Chest", q, B1Chest),
                 Obj("DebtBook", book.FormKey), Obj("BlackroseMarker", home.FormKey), Obj("ChannelEndZone", zone.FormKey),
@@ -113,17 +111,25 @@ static class Chainbreakers
         var lines = QuestLines("bc01");
         var isPatron = IsId(patronRef.Base.FormKey); var isDebtor = IsId(debtor.FormKey); var isSteward = IsId(steward.FormKey);
         kit.RecordV("BC01", lines, "topic.bc01-the-estate", isPatron, (10, [StageIs(q, CompareOperator.EqualTo, 0)], null),
-            (null, [StageIs(q, CompareOperator.GreaterThanOrEqualTo, 10)], null));
+            (null, [StageIs(q, CompareOperator.GreaterThanOrEqualTo, 10), StageIs(q, CompareOperator.LessThan, 90)], null));
         kit.RecordV("BC01", lines, "topic.bc01-the-book", isSteward, (null, [StageIs(q, CompareOperator.EqualTo, 10)], null));
-        // C-time and C-detected (review F1): night is 21:00 to 5:00 (GetCurrentTime >= 21 OR < 5), and neither the steward
-        // nor an estate man detects the player; otherwise the second info (first match wins): not in daylight, not watched.
+        // C-time and C-detected (review F1): night is 21:00 to 5:00 (GetCurrentTime >= 21 OR < 5), and neither the steward nor an
+        // estate man detects the player; otherwise one of two INFOs, each exclusive of that one: by day (5:00 to 21:00), or watched
+        // (the steward or an estate man detects the player).
+        ConditionFloat[] watched = [StageIs(q, CompareOperator.EqualTo, 10), Seen(stewardRef, true), .. menRefs.SkipLast(1).Select(m => Seen(m, true)), Seen(menRefs[^1])];
         kit.RecordV("BC01", lines, "topic.bc01-cut-loose", isDebtor,
             (40, [StageIs(q, CompareOperator.EqualTo, 10), Or(Hour(CompareOperator.GreaterThanOrEqualTo, 21)), Hour(CompareOperator.LessThan, 5),
                 Unseen(stewardRef), .. menRefs.Select(m => Unseen(m))], null),
-            (null, [StageIs(q, CompareOperator.EqualTo, 10)], "day"));
+            (null, [StageIs(q, CompareOperator.EqualTo, 10), Hour(CompareOperator.GreaterThanOrEqualTo, 5), Hour(CompareOperator.LessThan, 21)], "day"),
+            (null, watched, "day"));
         kit.RecordV("BC01", lines, "topic.bc01-bring-down", isPatron, (90, [StageIs(q, CompareOperator.EqualTo, 10), Has(book.FormKey, 1)], null));
-        // Rows-For-Another free of the book after either ending (90 the book brought down, 91 out by the channel).
-        kit.Hello("ARG_BC01_AfterHello", (debtorRef.FormKey, After("bc01", "rows-for-another"), [90, 91]));
+        // After the ending: Rows-For-Another (out by the channel, 91; or her page torn out, 90) and Never-Sold (90, 91).
+        kit.AfterHellos("ARG_BC01_AfterHello", "bc01", (debtorRef.FormKey, "rows-for-another", [91]), (patronRef.FormKey, "never-sold", []));
+        // Objective targets, from the record's target column: the landing (the chest) and the debtor (10), the channel's end (40).
+        kit.TargetsFromRecord(id, new()
+        {
+            ["thing.bc01.landing"] = [B1Chest], ["npc.imperial-penal-south.blackrose.estate-debtor"] = [B1Debtor], ["thing.bc01.zones"] = [B1Zone],
+        });
         kit.Finish();
     }
 
@@ -181,7 +187,8 @@ static class Chainbreakers
         kit.Forced(B2Keeper, "GateKeeper", keeperRef.FormKey, QuestAlias.Flag.Protected);
         for (var i = 0; i < 3; i++)
             kit.Forced(alias[i], key[i], heldRefs[i].FormKey, QuestAlias.Flag.Protected | QuestAlias.Flag.AllowDisabled).PackageData.Add(
-                kit.Schedule($"ARG_BC02_{key[i]}Follow", "FollowPlayer", null, 0, -1, 0, StageIs(q, CompareOperator.EqualTo, 31 + i)).ToLink());
+                kit.Follow($"ARG_BC02_{key[i]}Follow", StageIs(q, CompareOperator.EqualTo, 31 + i)).ToLink());
+        kit.Forced(B2Zone, "ExitZone", outZones[0]); // the three exit zones stand on one spot: one compass target
         q.VirtualMachineAdapter!.Scripts.Add(Script("ARG_QF_BC02", Obj("SmokeParent", smokeParent.FormKey), Obj("SpeakerParent", parents[0].FormKey),
                 Obj("KillerParent", parents[1].FormKey), Obj("MotherParent", parents[2].FormKey),
                 Obj("ChainbreakersStanding", standing!.FormKey), Obj("AchievementsQuest", Achievements)));
@@ -192,7 +199,7 @@ static class Chainbreakers
         var lines = QuestLines("bc02");
         kit.RecordV("BC02", lines, "topic.bc02-the-fire", IsId(patronRef.Base.FormKey),
             (20, [StageIs(q, CompareOperator.EqualTo, 0), StageIs(bc01, CompareOperator.GreaterThanOrEqualTo, 90)], null),
-            (null, [StageIs(q, CompareOperator.GreaterThanOrEqualTo, 20)], null));
+            (null, [StageIs(q, CompareOperator.GreaterThanOrEqualTo, 20), StageIs(q, CompareOperator.LessThan, 91)], null));
         kit.RecordV("BC02", lines, "topic.bc02-the-gate", IsId(keeper.FormKey),
             (30, [StageIs(q, CompareOperator.EqualTo, 20), Speech(CompareOperator.GreaterThanOrEqualTo, 25)], null),
             (null, [StageIs(q, CompareOperator.EqualTo, 20), Speech(CompareOperator.LessThan, 25)], "fail"));
@@ -204,9 +211,15 @@ static class Chainbreakers
             (92, [StageIs(q, CompareOperator.EqualTo, 32), Speech(CompareOperator.GreaterThanOrEqualTo, 25)], null),
             (93, [StageIs(q, CompareOperator.EqualTo, 33), Speech(CompareOperator.GreaterThanOrEqualTo, 25)], null),
             (null, [StageIs(q, CompareOperator.GreaterThanOrEqualTo, 31), StageIs(q, CompareOperator.LessThanOrEqualTo, 33), Speech(CompareOperator.LessThan, 25)], "fail"));
-        // The one brought out of the smoke greets the player after their own ending (91, 92 or 93).
+        // Never-Sold's greeting by the ending (91 to 94), and the one brought out of the smoke after their own ending (91, 92 or 93).
         string[] writer = ["says-it-plain", "hides-in-reeds", "keeps-the-old-count"];
-        kit.Hello("ARG_BC02_AfterHello", [.. Enumerable.Range(0, 3).Select(i => (heldRefs[i].FormKey, After("bc02", writer[i]), new[] { 91 + i }))]);
+        kit.AfterHellos("ARG_BC02_AfterHello", "bc02", [(patronRef.FormKey, "never-sold", []), .. Enumerable.Range(0, 3).Select(i => (heldRefs[i].FormKey, writer[i], new[] { 91 + i }))]);
+        // Objective targets, from the record's target column: the gate-keeper (20), the three held (30), the exit zones (31 to 33).
+        kit.TargetsFromRecord(id, new()
+        {
+            ["npc.imperial-penal-south.blackrose.post-gatekeeper"] = [B2Keeper], ["npc.imperial-penal-south.blackrose.held-speaker"] = [B2Speaker],
+            ["npc.imperial-penal-south.blackrose.held-killer"] = [B2Killer], ["npc.imperial-penal-south.blackrose.held-mother"] = [B2Mother], ["thing.bc02.zones"] = [B2Zone],
+        });
         kit.Finish();
     }
 
@@ -258,8 +271,8 @@ static class Chainbreakers
         ConditionFloat Heard() { var d = new GetGlobalValueConditionData(); d.Global.Link.SetTo(heard.FormKey); return C(d, CompareOperator.EqualTo, 1); }
         var lines = QuestLines("bc03");
         var isRope = IsId(rope.FormKey); var isUssa = IsId(ussa.FormKey);
-        kit.RecordV("BC03", lines, "topic.bc03-last-season", isRope, (10, open, null), (null, [StageIs(q, CompareOperator.GreaterThanOrEqualTo, 10)], null));
-        kit.RecordV("BC03", lines, "topic.bc03-the-season", isUssa, (null, [StageIs(q, CompareOperator.GreaterThanOrEqualTo, 10)], null));
+        kit.RecordV("BC03", lines, "topic.bc03-last-season", isRope, (10, open, null), (null, [StageIs(q, CompareOperator.GreaterThanOrEqualTo, 10), StageIs(q, CompareOperator.LessThan, 90)], null));
+        kit.RecordV("BC03", lines, "topic.bc03-the-season", isUssa, (null, [StageIs(q, CompareOperator.GreaterThanOrEqualTo, 10), StageIs(q, CompareOperator.LessThan, 90)], null));
         // F4: hearing the season opens the sides; each of its infos' (every band's) fragment sets ARG_BC03_SeasonHeard (E-global).
         foreach (var season in mod.DialogTopics.First(t => t.EditorID == "ARG_BC03_TheSeason").Responses)
         season.VirtualMachineAdapter = new DialogResponsesAdapter
@@ -274,6 +287,13 @@ static class Chainbreakers
             (91, [StageIs(q, CompareOperator.EqualTo, 30), Speech(CompareOperator.GreaterThanOrEqualTo, 30)], null),
             (null, [StageIs(q, CompareOperator.EqualTo, 30), Speech(CompareOperator.LessThan, 30)], "fail"));
         kit.RecordV("BC03", lines, "topic.bc03-yield-pay", isRope, (92, [StageIs(q, CompareOperator.EqualTo, 30), Has(Gold, 50)], null));
+        // After the ending (90, 91, 92): both men's greetings.
+        kit.AfterHellos("ARG_BC03_AfterHello", "bc03", (ropeRef.FormKey, "heavy-rope", []), (ussaRef.FormKey, "ussa-rekh", []));
+        // Objective targets, from the record's target column: both men (10), the chest (20), the crew boss (30).
+        kit.TargetsFromRecord(id, new()
+        {
+            ["thing.bc03.people"] = [B3Ussa, B3Rope], ["thing.bc03.cabin"] = [B3Chest], ["npc.mercantile-coast.soulrest.crew-boss"] = [B3Rope],
+        });
         kit.Finish();
     }
 

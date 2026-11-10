@@ -17,7 +17,7 @@ static class LocalQuests
     // The ref BM&V placed at Helstrom's gate (the levy warden; MQ05 cites him too).
     public static readonly FormKey Warden = K("08D5E9:Black Marsh North.esp");
     public static readonly FormKey Poler = K("08D5EE:Black Marsh North.esp"), Steerer = K("08D5EF:Black Marsh North.esp"), Captain = K("08D5F1:Black Marsh North.esp");
-    public const uint L30Kin = 0, L30Youth = 1, L30Viper = 2, L30Warden = 3;
+    public const uint L30Kin = 0, L30Youth = 1, L30Viper = 2, L30Warden = 3, L30Zone = 4;
     public const uint L25Poler = 0, L25Steerer = 1, L25Captain = 2, L25Croc = 3;
     public static readonly List<ModKey> Masters = [];
 
@@ -35,6 +35,18 @@ static class LocalQuests
         var world = new QuestKit(mod, mods).World(BlackMarsh2);
         Lq30(mod, mods, world);
         Lq25(mod, mods, world);
+    }
+
+    /// After MQ05 is in the plugin: Okan-Zish's opening topic (every INFO of ARG_LQ25_TheBeast gated on LQ25's stage 0) opens only
+    /// once MQ05 is at 40.
+    public static void Finish(SkyrimMod mod)
+    {
+        var mq05 = mod.Quests.FirstOrDefault(x => x.EditorID == "ARG_MQ05") ?? throw new InvalidOperationException("LQ25: ARG_MQ05 is not in the plugin; its opening topic's MQ05 >= 40 gate cannot be built");
+        var lq25 = mod.Quests.First(x => x.EditorID == "ARG_LQ25");
+        var opening = mod.DialogTopics.First(t => t.EditorID == "ARG_LQ25_TheBeast").Responses
+            .Where(r => r.Conditions.OfType<IConditionFloatGetter>().Any(c => c.Data is IGetStageConditionDataGetter g && g.Quest.Link.FormKey == lq25.FormKey && c.CompareOperator == CompareOperator.EqualTo && c.ComparisonValue == 0)).ToList();
+        if (opening.Count == 0) throw new InvalidOperationException("LQ25: no INFO of ARG_LQ25_TheBeast is gated on stage 0");
+        foreach (var r in opening) r.Conditions.Add(StageIs(mq05, CompareOperator.GreaterThanOrEqualTo, 40));
     }
 
     // LQ30 The Gates of Helstrom: Haj-Wan's topic (0 -> 30), the viper's death (30 -> 40), the gate zone (40 -> 91) or
@@ -68,6 +80,7 @@ static class LocalQuests
         kit.Forced(L30Youth, "Youth", youthRef.FormKey, QuestAlias.Flag.Protected);
         kit.Forced(L30Viper, "Viper", viperRef.FormKey, QuestAlias.Flag.AllowDisabled);
         kit.Forced(L30Warden, "Warden", Warden);
+        kit.Forced(L30Zone, "GateZone", zone);
         q.VirtualMachineAdapter!.Scripts.Add(Script("ARG_QF_LQ30", Alias("Kin", q, L30Kin), Alias("Youth", q, L30Youth), Obj("ViperParent", viperParent.FormKey),
             Obj("GateMarker", mark.FormKey), Obj("GateZone", zone.FormKey), Obj("Gold001", Gold), Obj("AchievementsQuest", Achievements)));
         q.VirtualMachineAdapter.Aliases.Add(DeathSets(kit, L30Viper, 30, 40));
@@ -79,8 +92,13 @@ static class LocalQuests
         kit.RecordV("LQ30", lines, "topic.lq30-the-basin", IsRef(Warden), (null, [StageIs(q, CompareOperator.EqualTo, 30)], null));
         kit.RecordV("LQ30", lines, "topic.lq30-come-back", IsId(youth.FormKey), (92, [StageIs(q, CompareOperator.EqualTo, 40)], null));
         // Sei-Wan at the gate after the quest (the record's after-90 state): his greeting by ending, 91 or 92.
-        kit.Hello("ARG_LQ30_AfterHello", (youthRef.FormKey, After("lq30", "sei-wan", "after91"), [91]),
-            (youthRef.FormKey, After("lq30", "sei-wan", "after92"), [92]));
+        // and Haj-Wan's, by the ending (91, 92, 93).
+        kit.AfterHellos("ARG_LQ30_AfterHello", "lq30", (youthRef.FormKey, "sei-wan", []), (kinRef.FormKey, "lq30-kin", []));
+        // Objective targets, from the record's target column: Sei-Wan (30, 40) and the gate zone (40).
+        kit.TargetsFromRecord(id, new()
+        {
+            ["npc.hist-heartland.helstrom.lq30-youth"] = [L30Youth], ["thing.lq30.zones"] = [L30Zone],
+        });
         kit.Finish();
     }
 
@@ -92,7 +110,8 @@ static class LocalQuests
         var q = mod.Quests.AddNew("ARG_LQ25");
         var kit = new QuestKit(mod, mods, q);
         kit.Header("The River Monster", 50, Quest.TypeEnum.SideQuest, Quest.Flag.StartGameEnabled);
-        kit.FromRecord(id, "ARG_QF_LQ25", [20, 40, 91, 92, 93], ends: [91, 92, 93]);
+        // stage 93 (the captain dead) is not built: Sells-Dear's base is vanilla Essential, nothing can set it
+        kit.FromRecord(id, "ARG_QF_LQ25", [20, 40, 91, 92], ends: [91, 92]);
         var poler = kit.Base("ARG_LQ25_OkanZish", "Okan-Zish", "00FF4D:Black Marsh.esm", 5, NpcConfiguration.Flag.Protected | NpcConfiguration.Flag.Unique);
         var steerer = kit.Base("ARG_LQ25_WuleenTaza", "Wuleen-Taza", "02A1EE:Black Marsh.esm", 5, NpcConfiguration.Flag.Protected | NpcConfiguration.Flag.Unique);
         var croc = kit.Base("ARG_LQ25_Crocodile", "Crocodile", "0BCB00:Black Marsh.esm", 4, 0); // band 1, fixed
@@ -121,15 +140,19 @@ static class LocalQuests
         q.VirtualMachineAdapter.Aliases.Add(DeathSets(kit, L25Croc, 20, 40));
         // the captain is vanilla's Essential base: he cannot die, so no death trigger (the kit refuses one)
 
-        // C-stage on MQ05 (ARG_MQ05, the MQ05 lane's quest): gated when it is built in this plugin.
-        var mq05 = mod.Quests.FirstOrDefault(x => x.EditorID == "ARG_MQ05");
-        if (mq05 == null) Console.WriteLine("LQ25: ARG_MQ05 not in the plugin; the opening topic's MQ05 >= 40 gate is left out until it is");
-        ConditionFloat[] open = mq05 == null ? [StageIs(q, CompareOperator.EqualTo, 0)] : [StageIs(q, CompareOperator.EqualTo, 0), StageIs(mq05, CompareOperator.GreaterThanOrEqualTo, 40)];
+        // The opening topic's MQ05 >= 40 gate is added by Finish(mod) once ARG_MQ05 exists.
         var hasBucket = new GetItemCountConditionData { RunOnType = Condition.RunOnType.Reference }; hasBucket.Reference.SetTo(PlayerRef); hasBucket.ItemOrList.Link.SetTo(bucket.FormKey);
         var lines = QuestLines("lq25");
-        kit.RecordV("LQ25", lines, "topic.lq25-the-beast", IsId(poler.FormKey), (20, open, null), (null, [StageIs(q, CompareOperator.EqualTo, 20)], null));
+        kit.RecordV("LQ25", lines, "topic.lq25-the-beast", IsId(poler.FormKey), (20, [StageIs(q, CompareOperator.EqualTo, 0)], null), (null, [StageIs(q, CompareOperator.EqualTo, 20)], null));
         kit.RecordV("LQ25", lines, "topic.lq25-tell-captain", IsRef(Captain), (91, [StageIs(q, CompareOperator.EqualTo, 40), C(hasBucket, CompareOperator.GreaterThanOrEqualTo, 1)], null));
         kit.RecordV("LQ25", lines, "topic.lq25-keep-quiet", IsId(steerer.FormKey), (92, [StageIs(q, CompareOperator.EqualTo, 40)], null));
+        // Sells-Dear's and Wuleen-Taza's greetings by the ending (91, 92; the record's 93 is not built).
+        kit.AfterHellos("ARG_LQ25_AfterHello", "lq25", (Captain, "boat-captain", []), (Steerer, "lq25-crew-steerer", []));
+        // Objective targets, from the record's target column: the crocodile (20), Sells-Dear and Wuleen-Taza (40).
+        kit.TargetsFromRecord(id, new()
+        {
+            ["thing.lq25.beast"] = [L25Croc], ["npc.hist-heartland.helstrom.boat-captain"] = [L25Captain], ["npc.hist-heartland.helstrom.lq25-crew-steerer"] = [L25Steerer],
+        });
         kit.Finish();
     }
 }
