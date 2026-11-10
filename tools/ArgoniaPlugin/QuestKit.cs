@@ -661,12 +661,14 @@ sealed class QuestKit(SkyrimMod mod, List<ISkyrimModGetter> mods, Quest? q = nul
     /// The store keys a builder asked for and the writing lane has not written (each owed one INFO).
     public static readonly List<string> MissingKeys = [];
     static readonly Dictionary<string, Dictionary<string, string>> LineStores = [];
-    /// An after-quest greeting (a Hello topic of the quest): one Random INFO per written line, gated on the person's ref
-    /// and on the quest's ending stages (any of them).
+    /// An after-quest greeting: one Random INFO per written line, gated on the person's ref and on the quest's ending
+    /// stages (any of them). The topic belongs to ARG_Talk, the dialogue quest that always runs: a stopped quest's own
+    /// topics are never offered, and GetStage still reads a stopped quest's last stage.
     public void Hello(string id, params (FormKey who, List<string> said, int[] endings)[] people)
     {
+        var talk = mod.Quests.FirstOrDefault(x => x.EditorID == "ARG_Talk") ?? throw new InvalidOperationException("Hello: ARG_Talk is not allocated yet");
         var t = mod.DialogTopics.AddNew(id);
-        t.Quest.SetTo(Q.FormKey); t.Priority = 50;
+        t.Quest.SetTo(talk.FormKey); t.Priority = 50;
         t.Category = DialogTopic.CategoryEnum.Misc; t.Subtype = DialogTopic.SubtypeEnum.Hello; t.SubtypeName = new RecordType("HELO");
         foreach (var (who, said, endings) in people)
         foreach (var l in said)
