@@ -376,6 +376,12 @@ async def finalise(req: web.Request) -> web.Response:
         return jerr(400, "finalise needs the save_id of a named save")
     if not req.app["saves"].read(pid, sid):
         return jerr(404, "no such save")
+    # the save's own commit lands first: the chain commits the same file, and two commits of it at once collide
+    rel = str(req.app["saves"].path(pid, sid).relative_to(ROOT)) if req.app["cfg"].commit else None
+    for _ in range(120):
+        if not rel or not req.app["pending"].get(rel):
+            break
+        await asyncio.sleep(0.5)
     run_id = await asyncio.get_running_loop().run_in_executor(None, links.run_start, pid, sid)
     return jok({"run_id": run_id}, status=202)
 
