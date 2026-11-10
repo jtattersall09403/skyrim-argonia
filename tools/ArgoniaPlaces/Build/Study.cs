@@ -38,6 +38,49 @@ static class Study
         }
         return 0;
     }
+    /// crime <Data dir>: the guards' arrest dialogue (the evidence for a native law's Owing and its resist): every topic of
+    /// the quest DialogueCrimeGuards with its INFOs (prompt, first line, the topics a choice leads to, conditions, fragment
+    /// script), and the game settings whose names speak of surrender, yield or arrest.
+    public static int Crime(string data)
+    {
+        var mods = new[] { "Skyrim.esm", "Update.esm" }.Select(f => SkyrimMod.CreateFromBinaryOverlay(Path.Combine(data, f), SkyrimRelease.SkyrimSE)).ToList();
+        var cache = mods.ToImmutableLinkCache();
+        var sky = mods[0];
+        string Name(FormKey k) => cache.TryResolve<IMajorRecordGetter>(k, out var r) ? $"{r.EditorID ?? ""}[{k.ID:X6}]" : $"?{k.ID:X6}";
+        string Txt(Func<string?> f) { try { return f() ?? ""; } catch { return "?"; } }
+        var q = sky.Quests.First(x => x.EditorID == "DialogueCrimeGuards");
+        Console.WriteLine($"quest {q.EditorID} {q.FormKey.ID:X6} scripts [{string.Join(",", q.VirtualMachineAdapter?.Scripts.Select(s => s.Name) ?? [])}]");
+        foreach (var t in sky.DialogTopics.Where(t => t.Quest.FormKey == q.FormKey))
+        {
+            Console.WriteLine($"topic {t.EditorID} {t.FormKey.ID:X6} '{Txt(() => t.Name?.String)}' sub {t.Subtype} cat {t.Category} branch {Name(t.Branch.FormKey)}");
+            foreach (var i in t.Responses)
+            {
+                var vm = i.VirtualMachineAdapter as IDialogResponsesAdapterGetter;
+                Console.WriteLine($"  info {i.FormKey.ID:X6} prompt '{Txt(() => i.Prompt?.String)}' says '{Txt(() => i.Responses.FirstOrDefault()?.Text.String)}' flags {i.Flags?.Flags} "
+                    + $"links [{string.Join(", ", i.LinkTo.Select(l => Name(l.FormKey)))}] frag {vm?.ScriptFragments?.FileName} start {vm?.ScriptFragments?.OnBegin?.ScriptName}.{vm?.ScriptFragments?.OnBegin?.FragmentName} end {vm?.ScriptFragments?.OnEnd?.ScriptName}.{vm?.ScriptFragments?.OnEnd?.FragmentName} "
+                    + $"scripts [{string.Join(",", vm?.Scripts.Select(s => s.Name) ?? [])}]");
+                foreach (var c in i.Conditions)
+                {
+                    var d = c.Data;
+                    var arg = string.Join(",", d.GetType().GetProperties().Where(p => p.Name is not ("RunOnType" or "Reference" or "Unknown3" or "UseAliases" or "UsePackageData" or "Function")).Select(p => p.GetValue(d)).OfType<IFormLinkContainerGetter>().SelectMany(x => x.EnumerateFormLinks()).Select(l => Name(l.FormKey)));
+                    var v = c is IConditionFloatGetter cf ? cf.ComparisonValue.ToString() : c is IConditionGlobalGetter cg ? Name(cg.ComparisonValue.FormKey) : "?";
+                    Console.WriteLine($"    {d.GetType().Name.Replace("BinaryOverlay", "").Replace("ConditionData", "")}({arg}) {d.RunOnType} {c.CompareOperator} {v} {c.Flags}");
+                }
+            }
+        }
+        // a yield and its acceptance: every topic of those subtypes, its quest, and its INFOs' conditions
+        foreach (var t in sky.DialogTopics.Where(t => t.Subtype is DialogTopic.SubtypeEnum.Yield or DialogTopic.SubtypeEnum.AcceptYield))
+        {
+            Console.WriteLine($"yield topic {t.EditorID} {t.FormKey.ID:X6} sub {t.Subtype} quest {Name(t.Quest.FormKey)} infos {t.Responses.Count}");
+            foreach (var i in t.Responses.Take(6))
+                Console.WriteLine($"  info {i.FormKey.ID:X6} [{string.Join("; ", i.Conditions.Select(c => $"{c.Data.GetType().Name.Replace("BinaryOverlay", "").Replace("ConditionData", "")}({string.Join(",", c.Data.GetType().GetProperties().Select(p => p.GetValue(c.Data)).OfType<IFormLinkContainerGetter>().SelectMany(x => x.EnumerateFormLinks()).Select(l => Name(l.FormKey)))}) {c.CompareOperator} {(c as IConditionFloatGetter)?.ComparisonValue}"))}]");
+        }
+        foreach (var g in mods.SelectMany(m => m.GameSettings).Where(g => System.Text.RegularExpressions.Regex.IsMatch(g.EditorID ?? "", "Surrender|Yield|Arrest|Jail|Prison", System.Text.RegularExpressions.RegexOptions.IgnoreCase)))
+            Console.WriteLine($"gmst {g.EditorID} = {g switch { IGameSettingFloatGetter f => f.Data?.ToString(), IGameSettingIntGetter n => n.Data?.ToString(), IGameSettingBoolGetter b => b.Data?.ToString(), IGameSettingStringGetter s => Txt(() => s.Data?.String), _ => "?" }}");
+        foreach (var g in sky.Globals.Where(g => (g.EditorID ?? "").StartsWith("Crime")))
+            Console.WriteLine($"global {g.EditorID} = {(g as IGlobalFloatGetter)?.Data ?? (g as IGlobalShortGetter)?.Data ?? (g as IGlobalIntGetter)?.Data}");
+        return 0;
+    }
     /// jail <Data dir> <faction edid...>: how Skyrim.esm gives a hold's crime faction its jail (the evidence for a place's
     /// jail): the faction's crime fields and values; each marker and container ref it names (base, cell, position,
     /// flags, owner, linked refs, the base's contents and respawn flag); the jail cell's beds, doors and owner; and the

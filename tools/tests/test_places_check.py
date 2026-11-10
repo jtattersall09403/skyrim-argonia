@@ -162,6 +162,66 @@ def test_a_broken_jail_fails(what):
     assert C.check_jail(c), what
 
 
+def with_owing(c):
+    """The fixture's town keeping native law: the crime faction names the return spot's prison marker (JAIL, WAIT)
+    and the stolen goods chest under the ground (STOL); the return and work markers lead to each other outside; the
+    worker's mat by the work spot; the Owing's line first in vanilla's go-to-jail topic."""
+    from tools.places.people import GO_TO_JAIL, OWING_PROMPT
+    d, p = c["dump"], c["plan"]
+    crime = k(30)
+    owing = {"topic": GO_TO_JAIL, "info": k(0x80), "prompt": OWING_PROMPT}
+    jail = {"exterior": k(60), "wait": k(60), "marker": k(61), "stolen": k(62), "bed": k(64), "space": "exterior", "owing": owing}
+    p["people"]["crime_faction"] = {"fk": crime, "edid": "ANP_t_CrimeFaction", "law": "native", "jail": jail}
+    pos = {60: [2050.0, 1520.0, 800.0], 61: [2000.0, 1500.0, 800.0], 62: [2050.0, 1520.0, -1248.0], 64: [2000.0, 1650.0, 800.0]}
+    p["refs"] += [{"fk": k(n), "id": f"t.owing{n}", "kind": kind, "space": "exterior", "pos": pos[n], "rot": [0, 0, 0],
+                   "seat": {"mode": "free"}} for n, kind in ((60, "marker"), (61, "marker"), (62, "container"), (64, "furniture"))]
+    base = {"base": "Skyrim.esm:000004", "base_type": "DOOR", "base_edid": "PrisonMarker", "model": None, "rot": [0, 0, 0],
+            "scale": 1.0, "flags": 0x400, "persistent": True, "bounds": None, "space": "exterior"}
+    d["refs"] += [{**base, "fk": k(60), "pos": pos[60], "door": {"to_ref": k(61), "to_pos": pos[61], "to_rot": [0, 0, 0]}},
+                  {**base, "fk": k(61), "pos": pos[61], "door": {"to_ref": k(60), "to_pos": pos[60], "to_rot": [0, 0, 0]}},
+                  {"fk": k(62), "base": "Skyrim.esm:0267E7", "base_type": "CONT", "pos": pos[62], "rot": [0, 0, 0], "scale": 1.0,
+                   "flags": 0x400, "space": "exterior", "owner": crime, "contents": [], "respawns": False, "bounds": None},
+                  {"fk": k(64), "base": "Skyrim.esm:036ED3", "base_type": "FURN", "pos": pos[64], "rot": [0, 0, 0], "scale": 1.0,
+                   "flags": 0x400, "space": "exterior", "bounds": None}]
+    f = next(x for x in d["factions"] if x["fk"] == crime)
+    f.update({"jail": k(60), "wait": k(60), "stolen": k(62), "inventory": "", "arrest": True,
+              "flag_names": "TrackCrime, CrimeGoldUseDefaults, CanBeOwner"})
+    info = {"fk": k(0x80), "prompt": OWING_PROMPT, "previous": "", "text": ["..."], "link_to": [],
+            "conditions": [{"fn": "GetInFaction", "run_on": "Subject", "op": "EqualTo", "value": 1.0, "faction": crime}],
+            "scripts": [{"name": "TIF__00020F99", "props": []}], "fragment": {"file": "TIF__00020F99", "on_end": "Fragment_0"}}
+    d.setdefault("topics", []).append({"fk": GO_TO_JAIL, "edid": "DGCrimeGoToJail", "infos": [info]})
+    return c
+
+
+def test_native_laws_owing_as_built_passes():
+    res = C.run(with_owing(ctx()))
+    assert not res["jail"], res["jail"]
+
+
+@pytest.mark.parametrize("what", ["missing", "inventory", "reach", "line", "late", "anyone", "fragment", "mat"])
+def test_a_broken_owing_fails(what):
+    c = with_owing(ctx())
+    d = c["dump"]
+    info = d["topics"][-1]["infos"][0]
+    if what == "missing":
+        c["plan"]["people"]["crime_faction"]["jail"] = None
+    elif what == "inventory":
+        next(x for x in d["factions"] if x["fk"] == k(30))["inventory"] = k(62)
+    elif what == "reach":
+        next(x for x in d["refs"] if x["fk"] == k(62))["pos"] = [2050.0, 1520.0, 760.0]
+    elif what == "line":
+        d["topics"][-1]["infos"] = []
+    elif what == "late":
+        info["previous"] = "Skyrim.esm:0267E1"
+    elif what == "anyone":
+        info["conditions"] = []
+    elif what == "fragment":
+        info["fragment"] = {"file": "TIF__000267E1"}
+    elif what == "mat":
+        next(x for x in d["refs"] if x["fk"] == k(64))["pos"] = [2600.0, 1500.0, 800.0]
+    assert C.check_jail(c), what
+
+
 def with_primitives(c, built=True, why="a trigger of the source's quest"):
     """A collision marker outside built with its source's box; a trigger in the copied house dropped with its reason."""
     box = {"type": "Box", "bounds": [100.0, 8.0, 200.0], "color": [255, 255, 0], "unknown": 0.0}

@@ -189,16 +189,21 @@ The tools lay the network by these rules.
   travel network's (`docs/design/travel-network.md`), never the person's.
 - **A promised shrine blessing needs a thing to carry it**: the source's own Hist or shrine, else the tools add a
   young Hist in the town's middle, clear of buildings and streets (`stations` `shrine`); look at it in the render.
-- **Only a foreign law jails.** The Argonian sentence is not a cell but the Owing, and the province punishes with no
-  prisons (`story/lore/topics/labour-and-bondage.md`, `prisons.md`). A place gets a jail only when its record's
-  holder (`held_by`, before "in", "with" or "alongside") names a foreign power keeping its law (the Empire, a Dunmer
-  Great House, the Thalmor; never an "ex-", "former" or "old" one); a native place's crime row says "native law:
-  the Owing, no cell", its faction fines only, and its guards speak no arrest lines (no "go to jail" with no jail).
-  Where the law jails, the jail is the copied room holding the jail kit (bars, jail walls, jail doors), never a
+- **The sentence follows the place's law** (`place_law` in the database, the one source of the fact;
+  `docs/design/law.md`). A place where no one keeps law has no sentence and its guards speak no arrest lines.
+  A foreign law jails: the jail is the copied room holding the jail kit (bars, jail walls, jail doors), never a
   room known by its name alone; the tools put the prisoner in a bed by a door that locks, else a bed behind the
   bars, else behind the bars where they enclose most (adding a bedroll there), stand the jail marker beside that
   bed, the release point at the arrival outside the jail's town door, and the two evidence chests by the way in,
-  owned by the crime faction and empty (`draft jail`). Look at the cell in the render.
+  owned by the crime faction and empty. Look at the cell in the render. A native law has no cell: its sentence is
+  the Owing, the engine's jail served outside. The tools stand the work spot where the place's labour is done (the
+  landing where the boatman works, else the work stop most of its people share) on the deck or walkway built there,
+  with a bedroll beside it (lying down on it serves the sentence); the return spot on the street nearest it, at
+  least 384 units off; and the stolen goods chest out of reach under the ground. The return spot's prison marker is
+  the faction's JAIL and WAIT, and its teleport leads to the work spot's and back. The guards are in the arrest
+  dialogue, so pay, the Owing and resist are all offered; the Owing's line is ours, first in vanilla's "go to jail"
+  topic and said only by the place's guards, running vanilla's own fragment that keeps the player's belongings
+  (`draft jail`). Look at both spots in the render.
 - **A source's primitives keep their work.** A collision marker's box (an invisible wall or floor the source's
   builders placed) is kept when it belongs to a piece we keep: its box touches or holds a kept building, static,
   furniture, door, activator or container (a wall on a balcony, a plug in a doorway, a cap on a roof). It
@@ -238,8 +243,8 @@ The tools lay the network by these rules.
    nothing floating or buried along its true outline beyond how it sat in the source, every door's arrival clear
    and on dry ground or a deck over the water, every replaced door facing its arrival, every light within 16
    units of its place by its fixture, every added forge lit, nothing Nordic
-   added and nothing levelled placed, no world plant left standing in what we placed, a jail as section 5 has it
-   where the town has a jail room, every source primitive built or dropped with its reason, and the files in the
+   added and nothing levelled placed, no world plant left standing in what we placed, the sentence as section 5 has it
+   (a jail where the law jails and the town has a jail room, the Owing where the law is native), every source primitive built or dropped with its reason, and the files in the
    contract's order. It then builds the draft and runs every check of the build on it (section 8), so a draft that
    passes here passes there. Its `measures` line gives the patched cells and points and the streets' length: keep
    the patches as near nothing as you can.
@@ -267,7 +272,7 @@ and removed per file; a stage that would write outside what it owns changes noth
 | `people` | the people source or the place's promises changed | names in `people.jsonl`, and each person's services as the record promises them (kind, detail, the network's destinations) |
 | `lights` | stations were added, a room's lights changed | the lights of added stations; each room's lights on the source's own bases; `place.json` `lights` |
 | `stations` | the record promises a station the files lack | the added station, its worker's stop, `place.json` `stations` |
-| `jail` | the place's holder, the jail room, its door or its arrival changed | the jail's prison markers, bedroll and evidence chests; `place.json`'s crime row `jail` and `law` |
+| `jail` | the place's law, the jail room, its door or its arrival, the landing or the streets changed | the jail's or the Owing's prison markers, bedroll and chests; `place.json`'s crime row `law`, `law_why`, `jail` and `owing` |
 | `primitives` | the source bundle, the kept pieces or the primitive classes changed | each exterior row's `primitive`, and a kept collision box's place, turn, seat and cluster by its piece; a dropped box's or trigger's row and its ledger row |
 
 1. Make the change that calls for it (`place.json` `draft`, the people source, a rule of the tools).
@@ -285,7 +290,8 @@ and removed per file; a stage that would write outside what it owns changes noth
 2. `python3 -m tools.places check <place_id>` reads the built plugin back. All seventeen checks are green: `plugin`,
    `seat`, `overlap`, `doors`, `people`, `navmesh`, `streets`, `land`, `clear`, `services`, `nordic`, `rooms`,
    `levelled`, `jail`, `primitives`, `stock`, `promises`. A place that fines only passes `jail` with a
-   note saying why (its law, or no jail room). Each failure's full list is in
+   note saying why (no one keeps law there, or a foreign law with no jail room); a native place passes only with
+   its Owing whole. Each failure's full list is in
    `out/places/shards/<place_id>/check_failures/<check>.txt`. `check <place_id> --reach [person]` says what is cut
    off from what.
 3. A failure is mended at its cause by the stage or the skill that owns it (a street by `streets`, a promise by `place-stock`). The place is never bent to pass a check, and a check is never loosened to pass a place.

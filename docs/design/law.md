@@ -4,7 +4,7 @@ Whose law holds at each place, and what the player meets when caught breaking it
 cell: its sentence is the Owing, and whoever resists arrest is fought to the death. Places kept by an office
 inherited from the Empire keep the Imperial cells. The owner ruled this on 2026-11-10 (`docs/owner-rulings.md`). The
 lore is in `story/lore/topics/labour-and-bondage.md` §6 and `prisons.md`. This note is the brief for the lane that
-builds it; nothing here is in the place builder yet.
+builds it; the place builder builds it (`draft jail`, Build step 6 of `place-studio.md`).
 
 ## Sources and tables
 
@@ -52,9 +52,11 @@ once with the screen dark while the player works it off, and the player is then 
 place and wakes there the next morning. It uses the crime faction's own jail data, so the bounty, the days owed,
 the stolen goods and the release are the engine's:
 
-- The send is the crime faction's send-to-jail call made without a cell. Papyrus `Faction.SendPlayerToJail` takes
-  `abRemoveInventory` and `abRealJail`; with `abRealJail` false the player serves the time without being put in a
-  cell. The building lane confirms the call against the Creation Kit wiki before building on it.
+- The send is vanilla's real jail call, sent to a jail marker that stands outside. Measured on the arrest
+  dialogue's compiled fragments: vanilla's "go to jail" runs the guard's crime faction's
+  `SendPlayerToJail(true, true)`, and Winterhold's own line `SendPlayerToJail(false, true)`, which keeps the player's
+  belongings; no vanilla line sends with `abRealJail` false, so the Owing does not rely on it. The Owing's line is an
+  INFO of ours in vanilla's "go to jail" topic that carries Winterhold's fragment: no script of ours.
 - **What it needs from a place**: a **work spot** (a marker where the sentence is shown being served: a channel
   being dredged, a boardwalk under repair, a field, a kiln) and a **return spot** (the faction's exterior jail
   marker: where the player stands when it ends, in the open near the elder's house or the landing). It also needs
@@ -66,10 +68,14 @@ the stolen goods and the release are the engine's:
   spent practising; the owner may prefer to keep progress). Vanilla's taking and returning of the player's
   inventory is skipped (`abRemoveInventory` false).
 - **Resisting at a native place**: the guards take no yield. In vanilla the guards re-offer the arrest when a resisting
-  player sheathes their weapon; at a native place they do not, and the fight runs to its end.
+  player sheathes their weapon; at a native place they do not, and the fight runs to its end. Measured: vanilla's
+  resist lines run only the guard's `SetPlayerResistingArrest()`; the Yield and AcceptYield dialogue subtypes are an
+  NPC's surrender, not the player's; no game setting of Skyrim.esm or Update.esm names a surrender, yield or arrest.
+  The guards' taking of a yield is the engine's, tied to the crime faction arresting at all, which pay and the Owing
+  need. Refusing it needs a fragment of ours on the native resist line; it is not built yet.
 - **Crime factions**: no central authority keeps native law (the lore: the state holds no power beyond the water's edge), so
   each native place has its own bounty. A foreign post shares its jail place's crime faction, as vanilla's
   holds share one jail.
 
-The place builder reads each place's law from `place_law`, the one source of this fact. Helstrom keeps native law,
-so its draft has no cell (`tools/places/draft/jail.py` already writes its crime row as native law, the Owing).
+The place builder reads each place's law from `place_law`, the one source of this fact. Helstrom keeps native law:
+its work spot is the landing where the boatman works, its return spot the walkway beside it.

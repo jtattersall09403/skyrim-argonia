@@ -6745,7 +6745,15 @@
    "kind": "crime",
    "name": "Helstrom",
    "jail": null,
-   "law": "native law: the Owing, no cell (held by The Helstrom assembly of interior naheesh and tree-minders; a tribal levy keeps the guard)"
+   "law": "native",
+   "law_why": "Argonian law, no cell: The Helstrom assembly of interior naheesh and tree-minders; a tribal levy keeps the guard",
+   "owing": {
+    "work": "helstrom.VDTYP8WWAPBNMXCV42TNCD9RH3",
+    "return": "helstrom.BYXZHPG5183FNGNKDYG6AVWK2K",
+    "bed": "helstrom.TWYXWCW61V4M4D3ANE1F7G33ZB",
+    "stolen": "helstrom.NASFDWHF8PNP1N4HJPGXM2Z0C6",
+    "work_at": "the landing, where the boatman works: loading and hauling"
+   }
   },
   {
    "id": "helstrom.guard",

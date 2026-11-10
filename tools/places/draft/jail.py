@@ -1,12 +1,6 @@
-"""`draft jail <place_id>`: the crime faction's jail, as Skyrim.esm gives a hold's crime faction one, where the
-place keeps a foreign law that jails.
-
-Who holds the place decides (decision 0032; story/lore/topics/labour-and-bondage.md section 2,
-story/lore/topics/prisons.md): the Argonian sentence is not a cell but an obligation of work (the Owing), and the
-province now punishes with no prisons and no courts; its prisons were foreign foundations. So a place gets a jail
-only when its record's holder (`place.held_by`, the clause before "in", "with" or "alongside") names a foreign power
-keeping its own law (the Empire and its offices, a Dunmer Great House, the Thalmor), never one it names as "ex-",
-"former" or "old"; a native place has none, and its crime row's `law` says why ("native law: the Owing, no cell").
+"""`draft jail <place_id>`: the crime faction's sentence, by the place's law (`place_law` in the database, the one
+source of the fact: tools/newworld/place_law.py, docs/design/law.md): a foreign law's jail, as Skyrim.esm gives a
+hold's crime faction one; a native law's Owing, the same jail mechanism with no cell; nothing where no one keeps law.
 
 Measured on Skyrim.esm (`ArgoniaPlacesBuild jail`, CrimeFactionRift, CrimeFactionWhiterun, CrimeFactionFalkreath,
 CrimeFactionWinterhold): the faction's JAIL is a persistent PrisonMarker (Skyrim.esm 000004, a door-type marker)
@@ -15,9 +9,13 @@ prisoner's bed, 166 to 174 units from it, by a door that locks) and back; WAIT i
 Falkreath, Winterhold); STOL and PLCN are an EvidenceChestStolenGoods (0267E7) and an EvidenceChestPlayerInventory
 (108D36) in the jail's room, persistent, empty, not respawning, owned by the crime faction (Falkreath, Whiterun's
 PLCN); JOUT is BeggarOutfit (028B60). The guards' arrest lines are vanilla's DialogueCrimeGuards quest, which speaks
-to any actor that IsGuard and is in GuardDialogueFaction (people.py gives guards both).
+to any actor that IsGuard and is in GuardDialogueFaction (people.py gives guards both). Its lines
+(`ArgoniaPlacesBuild crime`, their compiled fragments read): pay runs the guard's crime faction's
+PlayerPayCrimeGold(true, true); "go to jail" runs SendPlayerToJail(true, true), and for CrimeFactionWinterhold its own
+line SendPlayerToJail(false, true), the player keeping their belongings; resist runs the guard's
+SetPlayerResistingArrest(). No vanilla line sends the player with abRealJail false.
 
-The rule, from the place's own things, where the law jails:
+Foreign law, from the place's own things:
   - the jail: a copied interior whose room holds the jail kit (bars, a jail wall, a jail door: bases whose editor id
     says jail or prison); a room's or a cell's name alone never makes it one. None: the faction fines only.
   - the cell the player is put in: a bed of the room by a door that locks (a jail door, or any inner door with a
@@ -31,7 +29,19 @@ The rule, from the place's own things, where the law jails:
     town's walkable network), facing away from the door.
   - the evidence chests: in the jail's room, stepped in from where one arrives, clear of its things, owned
     `<place>.crime` (the faction), empty and never respawning (vanilla's bases hold nothing).
-The stage writes the rows of what it adds (each with its `why`) and place.json's crime row `jail`.
+Native law, the Owing (the player chooses it from the guard's arrest lines; the engine's jail does the rest: the
+time passed by the bounty, the stolen goods taken, the release), outside, with no cell and no bars:
+  - the work spot: where the place's labour is done: the landing, where the boat-stop's operator works, else the
+    work stop most of its people share; standing on the piece built there (a deck, a walkway), else the ground.
+    The jail marker stands there, with a bedroll of ours (Bedroll01) beside it, MARKER_OFF away and clear of the
+    place's things: lying down on it serves the sentence, as a prisoner's bed does.
+  - the return spot: the faction's exterior marker (JAIL and WAIT): the point of the place's streets nearest the
+    work spot that stands RETURN_MIN from it at least, on the piece built there, else the ground; its teleport leads
+    to the work spot's marker and back.
+  - the stolen goods chest (STOL): out of reach, CHEST_DEPTH under the return spot, owned by the faction, empty and
+    never respawning. No player-inventory chest and no jail outfit: the Owing takes nothing of the player's.
+The stage writes the rows of what it adds (each with its `why`) and place.json's crime row: `law`, `law_why`, and
+`jail` (foreign) or `owing` (native).
 """
 from __future__ import annotations
 
@@ -42,6 +52,10 @@ import numpy as np
 
 from tools.places.draft import interiors, io, overlap
 
+RETURN_MIN = 384.0      # the return spot stands this far from the work spot at least
+CHEST_DEPTH = 2048.0    # the Owing's stolen goods chest stands this far under the return spot
+STAND_REACH = 640.0     # a piece reaching down to the ground or the water whose top stands within this above it may be stood on
+OWING_WHY = "the {place} crime faction's Owing ({what}): native law's sentence, no cell (draft jail)"
 JAIL_WORD = re.compile(r"jail|prison|gaol", re.I)
 PRISON_MARKER = "Skyrim.esm:000004"
 STOLEN_CHEST = "Skyrim.esm:0267E7"      # EvidenceChestStolenGoods
@@ -53,21 +67,17 @@ MARKER_OFF = (128.0, 192.0)   # the jail marker this far from the bed (vanilla: 
 GRID = 64.0
 BAR_CLEAR = 48.0        # a point behind bars stands this far from them at least
 WHY = "the {place} crime faction's jail ({what}): vanilla's hold jail (draft jail)"
-FOREIGN = re.compile(r"(?<![-\w])(?<!ex-)(?:Imperial|Empire|Legion|Penitus|Thalmor|Aldmeri|Dominion|Hlaalu|Redoran|Telvanni|"
-                     r"Indoril|Dres)\b")
-QUALIFIED = re.compile(r"\b(?:ex|former|old)[- ]+(?:\w+[- ])?(?:Imperial|Empire|Legion|Thalmor|Hlaalu|Redoran|Telvanni|Indoril|Dres)", re.I)
-NATIVE = "native law: the Owing, no cell"
 
 
-def law(record: dict) -> tuple[bool, str]:
-    """(whether the place keeps a foreign law that jails, the reason in plain words) from its record's holder."""
-    held = str(record.get("held_by") or "")
-    holder = re.split(r"\b(?:in|with|alongside)\b|;", held, maxsplit=1)[0]
-    clean = QUALIFIED.sub("", holder)
-    m = FOREIGN.search(clean)
-    if m:
-        return True, f"foreign law: held by {holder.strip()} ({m.group(0)} law jails)"
-    return False, f"{NATIVE} (held by {held or 'nobody named'})"
+def law(place_id: str) -> tuple[str, str]:
+    """(law: native, foreign or none; its reason) from the database's `place_law`."""
+    from tools.argonia_world import db
+    w = db.open("newworld")
+    row = next((r for r in w.rows("place_law") if (r["place_id"] if isinstance(r, dict) else r.place_id) == place_id), None)
+    if row is None:
+        raise ValueError(f"{place_id}: no place_law row in the database: run `python3 -m tools.newworld.build_db`")
+    row = row if isinstance(row, dict) else dict(vars(row))
+    return row["law_id"], row["why"]
 
 
 def segs_cross(a, b, c, d) -> bool:
@@ -226,12 +236,13 @@ def apply(st, log=print) -> None:
     mine = {r["id"] for sp in spaces.values() for r in sp["refs"] if str(r.get("why") or "").endswith("(draft jail)")}
     for sp in spaces.values():  # this stage's own rows are made again from the rule
         sp["refs"] = [r for r in sp["refs"] if r["id"] not in mine]
-    from tools.places.draft.run import place_record
-    jails, why = law(place_record(pid)[0])
-    crime["law"] = why
-    if not jails:
-        crime["jail"] = None
-        log(f"draft jail {pid}: {why}: the crime faction fines only")
+    kind, why = law(pid)
+    crime.update({"law": kind, "law_why": why, "jail": None, "owing": None})
+    if kind == "native":
+        owing(st, crime, log)
+        return
+    if kind != "foreign":
+        log(f"draft jail {pid}: {why}: no sentence")
         return
     found = find_jail(spaces, st.src, st.bases)
     if found is None:
@@ -273,3 +284,131 @@ def apply(st, log=print) -> None:
                      "marker": in_id, "exterior": ext_id, "stolen": rows_in[-2]["id"], "inventory": rows_in[-1]["id"]}
     log(f"draft jail {pid}: {sid} ({known}); cell: {got['how']}; marker at {[round(v) for v in got['marker']]}, "
         f"release at {[round(v) for v in release]}")
+
+
+# --- the Owing (native law) ---
+WALKABLE = {"building", "static", "furniture"}
+
+
+def stand(x: float, y: float, things: list[dict], bases: dict, ground) -> tuple[float, dict | None]:
+    """Where one stands at (x, y): on the top of a piece built there that reaches down to the ground or the water and
+    stands no more than STAND_REACH above it (a deck on its piles, a walkway), the highest; else on the ground (or the
+    water's surface, where it is higher). Returns (the height, the piece stood on or None)."""
+    g = ground.height(x, y)
+    if g is None:
+        raise ValueError(f"{x:.0f}, {y:.0f} is off the ground the place reaches")
+    w = ground.water(x, y)
+    low = max(g, w) if w is not None else g
+    tops = []
+    for t in things:
+        if t.get("kind") not in WALKABLE or math.dist(t["pos"][:2], (x, y)) > 2048 or not overlap.inside([x, y, 0.0], t, bases, z=False):
+            continue
+        b = overlap.box(t, bases)
+        top, bottom = t["pos"][2] + b[1][2], t["pos"][2] + b[0][2]
+        if bottom <= low + 64.0 and low < top <= low + STAND_REACH:
+            tops.append((top, t["id"], t))
+    if not tops:
+        return round(low, 2), None
+    top, _, piece = max(tops, key=lambda v: (v[0], v[1]))
+    return round(top, 2), piece
+
+
+def stand_z(x: float, y: float, things: list[dict], bases: dict, ground) -> float:
+    return stand(x, y, things, bases, ground)[0]
+
+
+def seat_on(pos: list[float], things: list[dict], bases: dict, ground) -> dict:
+    """A row's seat where it stands: `on` the piece under it (it rests on the deck), else free."""
+    z, piece = stand(pos[0], pos[1], things, bases, ground)
+    return {"mode": "on", "on": piece["id"], "dz": round(z - piece["pos"][2], 2)} if piece and abs(z - pos[2]) < 0.01 else {"mode": "free"}
+
+
+def work_spot(people: list[dict]) -> tuple[tuple[float, float], str]:
+    """Where the place's labour is done: the landing (the boat-stop operator's work stop), else the exterior work
+    stop most of its people share."""
+    for p in sorted(people, key=lambda p: p["id"]):
+        w = p.get("work") or {}
+        if any(s.get("kind") == "boat-stop" for s in p.get("services") or []) and w.get("space", "exterior") == "exterior" and w.get("pos"):
+            return (float(w["pos"][0]), float(w["pos"][1])), "the landing, where the boatman works: loading and hauling"
+    count: dict[tuple, int] = {}
+    for p in people:
+        w = p.get("work") or {}
+        if w.get("space", "exterior") == "exterior" and w.get("pos"):
+            k = (round(float(w["pos"][0]), 1), round(float(w["pos"][1]), 1))
+            count[k] = count.get(k, 0) + 1
+    if not count:
+        raise ValueError("no one of the place works outside: the Owing has no work spot")
+    k, n = max(sorted(count.items()), key=lambda kv: kv[1])
+    return k, f"the work stop {n} of the place's people share"
+
+
+def street_points(paths: list[dict], step: float = 64.0):
+    """Every point along the place's streets, `step` apart."""
+    for p in paths:
+        pts = p.get("points") or []
+        for a, b in zip(pts, pts[1:]):
+            d = math.dist(a[:2], b[:2])
+            for i in range(max(1, int(d // step))):
+                t = i * step / d if d else 0.0
+                yield (a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t)
+        if pts:
+            yield tuple(pts[-1][:2])
+
+
+def plan_owing(place_id: str, things: list[dict], people: list[dict], paths: list[dict], bases: dict, ground) -> dict:
+    """The Owing's spots: {work: [x, y, z], work_how, back: [x, y, z], bed: [x, y, z], chest: [x, y, z]}."""
+    (wx, wy), how = work_spot(people)
+    work = [round(wx, 2), round(wy, 2), stand_z(wx, wy, things, bases, ground)]
+    cand = sorted((math.dist(p, (wx, wy)), p) for p in street_points(paths) if math.dist(p, (wx, wy)) >= RETURN_MIN)
+    if not cand:
+        raise ValueError(f"{place_id}: no street stands {RETURN_MIN:.0f} units from the work spot: lay the streets first")
+    bx, by = cand[0][1]
+    back = [round(bx, 2), round(by, 2), stand_z(bx, by, things, bases, ground)]
+    bed = None
+    for r_ in MARKER_OFF:
+        for j in range(16):
+            a = j * math.pi / 8
+            x, y = wx + r_ * math.cos(a), wy + r_ * math.sin(a)
+            try:
+                z = stand_z(x, y, things, bases, ground)
+            except ValueError:
+                continue
+            if abs(z - work[2]) <= 16.0 and _clear([x, y, z], things, bases):
+                bed = [round(x, 2), round(y, 2), z]
+                break
+        if bed:
+            break
+    if bed is None:
+        raise ValueError(f"{place_id}: no floor beside the Owing's work spot clear of the place's things for its bedroll")
+    return {"work": work, "work_how": how, "back": back, "bed": bed,
+            "chest": [back[0], back[1], round(back[2] - CHEST_DEPTH, 2)]}
+
+
+def owing(st, crime: dict, log=print) -> None:
+    """The Owing's rows outside and the crime row's `owing`."""
+    pid = st.place_id
+    ext = st.files["spaces"]["exterior"]["refs"]
+    for b in (STOLEN_CHEST, PRISON_MARKER, BEDROLL):
+        st.bases.setdefault(b, {"key": b, "edid": "", "bounds": None})
+    got = plan_owing(pid, [r for r in ext if not r.get("removed")], st.files["people"], st.files.get("paths") or [], st.bases, st.G)
+    back_id, work_id = io.mint(pid, "owing", "return"), io.mint(pid, "owing", "work")
+    bed_id, chest_id = io.mint(pid, "owing", "bed"), io.mint(pid, "owing", STOLEN_CHEST)
+    face = round(math.atan2(got["back"][0] - got["work"][0], got["back"][1] - got["work"][1]) % (2 * math.pi), 5)
+    things = [r for r in ext if not r.get("removed")]
+    row = lambda i, base, kind, pos, what, **kw: {"id": i, "base": base, "kind": kind, "pos": pos, "rot": [0.0, 0.0, kw.pop("rz", 0.0)],  # noqa: E731
+                                                   "scale": 1.0, "layer": "place", "flags": ["persistent"], "src": None,
+                                                   "seat": seat_on(pos, things, st.bases, st.G) if kind != "container" else {"mode": "free"},
+                                                   **kw, "why": OWING_WHY.format(place=pid, what=what)}
+    ext += [
+        row(back_id, PRISON_MARKER, "marker", got["back"], "the return spot: where the player stands when the sentence ends",
+            rz=face, door={"to_space": "exterior", "to_ref": work_id, "to_pos": got["work"], "to_rot": [0.0, 0.0, 0.0]}),
+        row(work_id, PRISON_MARKER, "marker", got["work"], f"the work spot: {got['work_how']}",
+            door={"to_space": "exterior", "to_ref": back_id, "to_pos": got["back"], "to_rot": [0.0, 0.0, face]}),
+        row(bed_id, BEDROLL, "furniture", got["bed"], "the worker's mat: lying down on it serves the sentence"),
+        row(chest_id, STOLEN_CHEST, "container", got["chest"], "the stolen goods chest, out of reach", owner=f"{pid}.crime"),
+    ]
+    from tools.places.seat import seat_all
+    seat_all(ext, st.G)   # each row rests on its deck as the seating stage has it
+    crime["owing"] = {"work": work_id, "return": back_id, "bed": bed_id, "stolen": chest_id, "work_at": got["work_how"]}
+    log(f"draft jail {pid}: the Owing: work at {[round(v) for v in got['work']]} ({got['work_how']}), "
+        f"return at {[round(v) for v in got['back']]}")

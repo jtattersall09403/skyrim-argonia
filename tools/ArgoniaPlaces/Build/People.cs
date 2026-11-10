@@ -26,6 +26,33 @@ static class People
         return (T)ctx.Fc.Plugin(fk.ModKey.FileName).EnumerateMajorRecords<T>().First(x => x.FormKey == fk);
     }
 
+    /// Native law's Owing in the guards' arrest dialogue: an INFO of ours in vanilla's "go to jail" topic
+    /// (DGCrimeGoToJail), first in it and said only by a guard of this crime faction, whose prompt names the Owing and
+    /// which runs vanilla's own compiled fragment of the line it stands for (Winterhold's: the guard's crime faction's
+    /// SendPlayerToJail(false, true), the player keeping their belongings). Records only: no script of ours.
+    static void OwingLine(Write.Ctx ctx, FormKey crime, JsonElement ow)
+    {
+        var mod = ctx.Mod;
+        var topicKey = C.Fk(S(ow, "topic")!);
+        if (!mod.DialogTopics.TryGetValue(topicKey, out var topic))
+        {
+            topic = Cache.Resolve<IDialogTopicGetter>(topicKey).DeepCopy();
+            topic.Responses.Clear();   // the override carries our INFOs alone; vanilla's stay vanilla's
+            mod.DialogTopics.Add(topic);
+        }
+        var line = Cache.Resolve<IDialogResponsesGetter>(C.Fk(S(ow, "line")!));
+        var info = new DialogResponses(C.Fk(S(ow, "info")!), C.Rel)
+        {
+            Flags = new DialogResponseFlags(), Prompt = new TranslatedString(Language.English, S(ow, "prompt")),
+            VirtualMachineAdapter = (line.VirtualMachineAdapter as IDialogResponsesAdapterGetter)?.DeepCopy(),
+        };
+        info.Responses.Add(new DialogResponse { Text = new TranslatedString(Language.English, S(ow, "reply")), ResponseNumber = 1, Emotion = Emotion.Neutral });
+        var inFaction = new GetInFactionConditionData();
+        inFaction.Faction.Link.SetTo(crime);
+        info.Conditions.Add(new ConditionFloat { CompareOperator = CompareOperator.EqualTo, ComparisonValue = 1, Data = inFaction });
+        topic.Responses.Insert(0, info);
+    }
+
     public static void Build(Write.Ctx ctx, string pid, JsonElement people, Dictionary<string, PlacedObject> refs, Dictionary<string, Cell> interiors)
     {
         var mod = ctx.Mod;
@@ -38,16 +65,18 @@ static class People
             Flags = Faction.FactionFlag.TrackCrime | Faction.FactionFlag.CrimeGoldUseDefaults | Faction.FactionFlag.CanBeOwner,
             CrimeValues = new CrimeValues { Arrest = true, AttackOnSight = true, Murder = 1000, Assault = 40, Trespass = 5, Pickpocket = 25, StealMult = 0.5f, Escape = 100, Werewolf = 1000 },
         };
-        // a place with a jail: the arrest sends the player there (the plan's `jail`, tools/places/people.py): JAIL the exterior
-        // prison marker (its teleport leads to the one in the jail's cell), WAIT the same marker, STOL and PLCN the two
-        // evidence chests, JOUT the jail outfit; a place without one fines only
+        // a place with a sentence (the plan's `jail`, tools/places/people.py): JAIL the exterior prison marker (its teleport
+        // leads to the one where the sentence is served: the jail's cell, or the Owing's work spot), WAIT the same
+        // marker, STOL the stolen goods chest; a jail also PLCN the player's inventory chest and JOUT the jail outfit;
+        // a place with neither fines only
         if (cf.TryGetProperty("jail", out var jail) && jail.ValueKind == JsonValueKind.Object)
         {
             crime.ExteriorJailMarker.SetTo(C.Fk(jail.GetProperty("exterior").GetString()!));
             crime.FollowerWaitMarker.SetTo(C.Fk(jail.GetProperty("wait").GetString()!));
             crime.StolenGoodsContainer.SetTo(C.Fk(jail.GetProperty("stolen").GetString()!));
-            crime.PlayerInventoryContainer.SetTo(C.Fk(jail.GetProperty("inventory").GetString()!));
+            if (S(jail, "inventory") is { } inv) crime.PlayerInventoryContainer.SetTo(C.Fk(inv));
             if (S(jail, "outfit") is { } jo) crime.JailOutfit.SetTo(C.Fk(jo));
+            if (jail.TryGetProperty("owing", out var ow) && ow.ValueKind == JsonValueKind.Object) OwingLine(ctx, crime.FormKey, ow);
         }
         mod.Factions.Add(crime);
 

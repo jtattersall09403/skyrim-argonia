@@ -10,12 +10,13 @@ level, no levelled lists: decision 0035) placed once as a persistent actor, with
     unscheduled sandbox at home, the fallback;
   - the bed: a FURN bed ref of the place, owned by the person (XOWN on the bed), as vanilla residents' beds;
   - the town's crime faction (our CrimeFaction<place>: vanilla's hold flags and crime values; the actor's CRIF and a
-    rank in it) and, for guards, IsGuardFaction, and where the place has a jail GuardDialogueFaction (vanilla's
-    DialogueCrimeGuards quest speaks the arrest lines, among them "go to jail", to an actor that IsGuard and is in
-    GuardDialogueFaction; a jail-less faction's guards are not, as Skyrim's Orc and Skaal ones); where it has one (place.json's
-    crime faction row `jail`, written by `draft jail`, tools/places/draft/jail.py) the faction names its exterior
-    prison marker (JAIL, and WAIT), its two evidence chests (STOL, PLCN) and the jail outfit (JOUT), and the refs
-    owned `<place>.crime` are owned by it;
+    rank in it) and, for guards, IsGuardFaction, and where the place has a sentence (a jail, or native law's Owing)
+    GuardDialogueFaction (vanilla's DialogueCrimeGuards quest speaks the arrest lines, pay, resist and "go to jail", to
+    an actor that IsGuard and is in GuardDialogueFaction; a faction with no sentence has guards who are not, as
+    Skyrim's Orc and Skaal ones); place.json's crime faction row (written by `draft jail`, tools/places/draft/jail.py)
+    gives it: a jail names its exterior prison marker (JAIL, and WAIT), its two evidence chests (STOL, PLCN) and the
+    jail outfit (JOUT); the Owing names its return spot's prison marker (JAIL, and WAIT) and its stolen goods chest
+    (STOL), with the Owing's line in the arrest dialogue (People.cs); the refs owned `<place>.crime` are owned by it;
   - services, one per give of the place record (newworld/story/data/db/place_give.jsonl) the person serves:
       trader-*        a vendor faction of ours (VENV hours from the person's work stop, VEND the vanilla vendor
                       list of that trade, VENC a merchant chest of ours in the place's chest cell, whose base is the
@@ -108,11 +109,14 @@ def plan(P: dict, S: dict, ids, facts: dict, notes: list[str]) -> dict:
         return by_id.get(at.get("ref")) or by_src.get((at.get("space", "exterior"), at.get("ref")))
 
     jail = jail_plan(P, by_id, pid)
+    if jail and jail.get("owing"):
+        jail["owing"]["info"] = ids("info:owing")   # the Owing's line, an INFO of ours in vanilla's "go to jail" topic
     if jail:
         out["crime_faction"]["jail"] = jail
     crime_row = next((f for f in (P["place"].get("factions") or []) if f.get("kind") == "crime"), None) or {}
-    if crime_row.get("law"):
-        out["crime_faction"]["law"] = crime_row["law"]
+    for k in ("law", "law_why"):
+        if crime_row.get(k):
+            out["crime_faction"][k] = crime_row[k]
     for r in S["refs"]:  # a ref the place owns by the crime faction (the jail's evidence chests)
         if r.get("owner") == f"{pid}.crime":
             r["owner"] = out["crime_faction"]["fk"]
@@ -280,8 +284,8 @@ def plan(P: dict, S: dict, ids, facts: dict, notes: list[str]) -> dict:
                 raise Bad(f"people.jsonl: {who}: faction {f!r} is neither a form key nor a faction of {pid}")
             factions.append({"faction": f, "rank": int(fr.get("rank", 0))})
         if p.get("role") == "guard":
-            # vanilla's arrest lines (fine, resist, go to jail) only where there is a jail to go to: a jail-less
-            # faction's guards are not in GuardDialogueFaction, as Skyrim's Orc strongholds and the Skaal village
+            # vanilla's arrest lines (pay, resist, go to jail) only where there is a sentence to serve (a jail, or the
+            # Owing): a faction with none has guards not in GuardDialogueFaction, as Skyrim's Orc strongholds and the Skaal village
             factions += [{"faction": IS_GUARD, "rank": 0}] + ([{"faction": GUARD_DIALOGUE, "rank": 0}] if jail else [])
         cls = None
         gives = []
@@ -394,24 +398,40 @@ def plan(P: dict, S: dict, ids, facts: dict, notes: list[str]) -> dict:
     return out
 
 
+OWING_PROMPT = "I'll work off the Owing."                       # the player's line, in place of "go to jail"
+OWING_REPLY = "Then your hands belong to the town until the debt is paid."  # the guard's answer (no voice: a subtitle)
+OWING_LINE = "Skyrim.esm:020F99"   # vanilla's "go to jail" line whose fragment keeps the player's belongings (Winterhold)
+GO_TO_JAIL = "Skyrim.esm:0267DD"   # DGCrimeGoToJail, the arrest dialogue's "go to jail" topic
+
+
 def jail_plan(P: dict, by_id: dict, pid: str) -> dict | None:
-    """The crime faction's jail fields from place.json's crime row `jail` (`draft jail` writes it): JAIL and WAIT the
-    exterior prison marker, STOL and PLCN the evidence chests, JOUT vanilla's jail outfit; None for a place that fines
-    only (no jail interior). A row it names that is not in the place is a problem, and the faction then fines only."""
+    """The crime faction's sentence from place.json's crime row (`draft jail` writes it). A jail: JAIL and WAIT the
+    exterior prison marker, STOL and PLCN the evidence chests, JOUT vanilla's jail outfit. The Owing: JAIL and WAIT
+    the return spot's prison marker, STOL its stolen goods chest, and its line in the arrest dialogue (`owing`).
+    None for a place with neither. A row it names that is not in the place is a problem, and the faction then has
+    no sentence."""
     from tools.places.build import problem
-    row = next((f for f in (P["place"].get("factions") or []) if f.get("kind") == "crime"), None)
-    jail = (row or {}).get("jail")
-    if not jail:
+    row = next((f for f in (P["place"].get("factions") or []) if f.get("kind") == "crime"), None) or {}
+    jail, ow = row.get("jail"), row.get("owing")
+    if not jail and not ow:
         return None
-    got = {k: by_id.get(jail.get(k) or "") for k in ("exterior", "marker", "stolen", "inventory")}
+    names = ({k: jail.get(k) for k in ("exterior", "marker", "stolen", "inventory")} if jail else
+             {"exterior": ow.get("return"), "marker": ow.get("work"), "stolen": ow.get("stolen"), "bed": ow.get("bed")})
+    got = {k: by_id.get(v or "") for k, v in names.items()}
     gone = sorted(k for k, v in got.items() if v is None)
     if gone:
-        problem(f"place.json: {pid}.crime jail names {', '.join(f'{k} {jail.get(k)}' for k in gone)}, not in the place: run `draft jail {pid}`")
+        problem(f"place.json: {pid}.crime {'jail' if jail else 'owing'} names {', '.join(f'{k} {names[k]}' for k in gone)}, "
+                f"not in the place: run `draft jail {pid}`")
         return None
     for r in got.values():
         r["persistent"] = True  # markers and the chests a faction names are persistent, as vanilla's
+    if jail:
+        return {"exterior": got["exterior"]["fk"], "wait": got["exterior"]["fk"], "stolen": got["stolen"]["fk"],
+                "inventory": got["inventory"]["fk"], "marker": got["marker"]["fk"], "space": jail.get("space"), "outfit": JAIL_OUTFIT}
     return {"exterior": got["exterior"]["fk"], "wait": got["exterior"]["fk"], "stolen": got["stolen"]["fk"],
-            "inventory": got["inventory"]["fk"], "marker": got["marker"]["fk"], "space": jail.get("space"), "outfit": JAIL_OUTFIT}
+            "marker": got["marker"]["fk"], "bed": got["bed"]["fk"], "space": "exterior",
+            "owing": {"topic": GO_TO_JAIL, "line": OWING_LINE, "prompt": OWING_PROMPT, "reply": OWING_REPLY,
+                      "info": None}}
 
 
 def _spot(at: dict, by_id: dict) -> tuple[list[float], str]:

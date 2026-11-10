@@ -12,14 +12,16 @@ import places_fixture as F  # noqa: E402
 
 from tools.places import check as C  # noqa: E402
 from tools.places import draft as D  # noqa: E402
-from tools.places.draft import interiors, lights, run, stages  # noqa: E402
+from tools.places.draft import interiors, jail, lights, run, stages  # noqa: E402
 
 
 @pytest.fixture()
 def fx(tmp_path, monkeypatch):
     root = F.build(tmp_path)
     monkeypatch.setattr(run, "place_record", lambda place_id: (F.RECORD, F.GIVES))
+    monkeypatch.setattr(jail, "law", lambda place_id: ("native", "Argonian law, no cell: the fixture's elders"))
     run.draft("fx", root / "bundles", root / "places", record=(F.RECORD, F.GIVES))
+    stages.run("jail", "fx", root / "places", root / "bundles", log=lambda *_: None)   # as a whole draft ends
     stages.Standing("fx", root / "places", root / "bundles").write()     # the files as a join leaves them: canonical
     return root
 

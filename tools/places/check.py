@@ -1284,10 +1284,16 @@ NOTES: list[str] = []  # what a passing check says plainly; main prints them
 
 
 def check_jail(ctx) -> list[str]:
-    """The crime faction's jail as vanilla's hold factions have it: JAIL and WAIT our exterior prison marker, STOL and
-    PLCN our two evidence chests, each a ref of our plugin; the jail marker on its room's navmesh, the release point
-    on the town's main network; the chests in the jail, empty, never respawning, owned by the faction; every guard in
-    IsGuardFaction and GuardDialogueFaction. A place with no jail interior fines only, which is said, not failed."""
+    """The crime faction's sentence by the place's law. A jail as vanilla's hold factions have it: JAIL and WAIT our
+    exterior prison marker, STOL and PLCN our two evidence chests, each a ref of our plugin; the jail marker on its
+    room's navmesh, the release point on the town's main network; the chests in the jail, empty, never respawning,
+    owned by the faction. Native law's Owing: JAIL and WAIT the return spot's prison marker, whose teleport leads to
+    the work spot's and back, both on the town's main network; the worker's mat beside the work spot; STOL the stolen
+    goods chest, out of reach under the ground, empty, never respawning, owned by the faction; no PLCN; the Owing's
+    line first in vanilla's "go to jail" topic, said only by this faction's guards, running vanilla's fragment that
+    keeps the player's belongings. Either way every guard is in IsGuardFaction and GuardDialogueFaction. A place with
+    no sentence fines only, which is said, not failed, unless its law is native (the Owing is then missing)."""
+    from tools.places.people import GO_TO_JAIL, OWING_LINE, OWING_PROMPT
     ppl = ctx["plan"].get("people") or {}
     cf = ppl.get("crime_faction") or {}
     pid = ctx.get("place_id") or ctx["plan"].get("place_id")
@@ -1296,23 +1302,30 @@ def check_jail(ctx) -> list[str]:
     jail = cf.get("jail")
     m = mine(ctx)
     if not jail:
-        NOTES.append(f"jail: {pid} has no jail ({cf.get('law') or 'no jail room'}): its crime faction fines only")
-        # with no jail, vanilla's "go to jail" line must never be offered: no guard speaks the arrest lines
-        return [f"{n['id']}: a guard in GuardDialogueFaction, whose arrest lines offer a jail {pid} does not have"
+        if cf.get("law") == "native":
+            return [f"{pid}: native law with no Owing: run `draft jail {pid}`"]
+        NOTES.append(f"jail: {pid} has no sentence ({cf.get('law_why') or cf.get('law') or 'no jail room'}): its crime faction fines only")
+        # with no sentence, vanilla's "go to jail" line must never be offered: no guard speaks the arrest lines
+        return [f"{n['id']}: a guard in GuardDialogueFaction, whose arrest lines offer a sentence {pid} does not have"
                 for n in ppl.get("npcs", []) if n.get("role") == "guard" and m["npcs"].get(n["fk"]) is not None
                 and GUARD_FACTIONS[1] in (m["npcs"][n["fk"]].get("faction_keys") or [])]
+    owing = jail.get("owing")
     bad = []
-    # the jail's space as the read-back names it: its cell's editor id
-    space = next((I.get("edid") for I in ctx["plan"].get("interiors") or [] if I.get("space") == jail.get("space")), None) or jail.get("space")
+    # the space where the sentence is served as the read-back names it: the jail's cell's editor id, or outside
+    space = "exterior" if owing else (next((I.get("edid") for I in ctx["plan"].get("interiors") or []
+                                             if I.get("space") == jail.get("space")), None) or jail.get("space"))
     fac = next((f for f in ctx["dump"].get("factions") or [] if f["fk"] == cf["fk"]), None)
     if fac is None:
         return [f"crime faction {cf['fk']} is not in the plugin"]
-    for k in ("jail", "wait", "stolen", "inventory"):
+    fields = ("jail", "wait", "stolen") + (() if owing else ("inventory",))
+    for k in fields:
         want = jail["exterior" if k in ("jail", "wait") else k]
         if fac.get(k) != want:
             bad.append(f"crime faction {cf['edid']}: {k} is {fac.get(k) or 'unset'}, not {want}")
         if want not in m["refs"]:
             bad.append(f"crime faction {cf['edid']}: its {k} {want} is not a ref of ours in the plugin")
+    if owing and fac.get("inventory"):
+        bad.append(f"crime faction {cf['edid']}: the Owing takes nothing of the player's, yet PLCN is {fac['inventory']}")
     for fl in JAIL_FLAGS:
         if fl not in str(fac.get("flag_names") or ""):
             bad.append(f"crime faction {cf['edid']}: no {fl} flag (vanilla's hold factions have it)")
@@ -1325,8 +1338,13 @@ def check_jail(ctx) -> list[str]:
         sizes[c] += 1
     main = max(sizes, key=sizes.get) if sizes else None
     ext, inner = m["refs"].get(jail["exterior"]), m["refs"].get(jail["marker"])
+    where = "the work spot's marker" if owing else "jail marker"
     if inner is None or inner.get("space") != space:
-        bad.append(f"jail marker {jail['marker']}: not a ref of ours in {space}")
+        bad.append(f"{where} {jail['marker']}: not a ref of ours in {space}")
+    elif owing:
+        nd = idx.at("exterior", inner["pos"])
+        if nd is None or comp.get(nd) != main:
+            bad.append(f"the Owing's work spot at {[round(v) for v in inner['pos']]} is off the town's main network")
     elif idx.at(inner["space"], inner["pos"]) is None:
         bad.append(f"jail marker at {[round(v) for v in inner['pos']]} in {inner['space']} is off its room's navmesh")
     if ext is not None and ext.get("door") and inner is not None:
@@ -1334,20 +1352,45 @@ def check_jail(ctx) -> list[str]:
         nd = idx.at("exterior", land)
         if nd is None or comp.get(nd) != main:
             bad.append(f"release point at {[round(v) for v in land]} is off the town's main network")
+        if (ext.get("door") or {}).get("to_ref") != jail["marker"] or (inner.get("door") or {}).get("to_ref") != jail["exterior"]:
+            bad.append(f"exterior marker {jail['exterior']} and {where} {jail['marker']} do not lead to each other")
     elif ext is not None:
-        bad.append(f"exterior jail marker {jail['exterior']}: no teleport to the jail marker")
-    for k in ("stolen", "inventory"):
+        bad.append(f"exterior jail marker {jail['exterior']}: no teleport to the {where}")
+    if owing and inner is not None:
+        bed = m["refs"].get(jail.get("bed") or "")
+        if bed is None:
+            bad.append(f"the Owing's mat {jail.get('bed')}: not a ref of ours in the plugin")
+        elif math.dist(bed["pos"], inner["pos"]) > 256:
+            bad.append(f"the Owing's mat stands {math.dist(bed['pos'], inner['pos']):.0f} units from the work spot")
+    for k in ("stolen",) + (() if owing else ("inventory",)):
         c = m["refs"].get(jail[k])
         if c is None:
             continue
-        if c.get("space") != space:
+        if not owing and c.get("space") != space:
             bad.append(f"evidence chest {k}: in {c.get('space')}, not the jail {space}")
+        if owing and inner is not None and not c["pos"][2] < inner["pos"][2] - 1024:
+            bad.append(f"the Owing's stolen goods chest at {[round(v) for v in c['pos']]} is within reach")
         if c.get("contents"):
             bad.append(f"evidence chest {k}: holds {len(c['contents'])} things (it starts empty)")
         if c.get("respawns"):
             bad.append(f"evidence chest {k}: respawns")
         if c.get("owner") != cf["fk"]:
             bad.append(f"evidence chest {k}: owned by {c.get('owner') or 'nobody'}, not the crime faction {cf['fk']}")
+    if owing:
+        topic = next((t for t in ctx["dump"].get("topics") or [] if t["fk"] == GO_TO_JAIL), None)
+        info = next((i for i in (topic or {}).get("infos") or [] if i["fk"] == owing.get("info")), None)
+        if info is None:
+            bad.append(f"the Owing's line {owing.get('info')} is not in vanilla's go-to-jail topic {GO_TO_JAIL}")
+        else:
+            if info.get("prompt") != OWING_PROMPT:
+                bad.append(f"the Owing's line reads {info.get('prompt')!r}, not {OWING_PROMPT!r}")
+            if info.get("previous"):
+                bad.append(f"the Owing's line follows {info['previous']}: it must come first, before vanilla's unconditioned line")
+            if not any(c.get("fn") == "GetInFaction" and c.get("faction") == cf["fk"] and c.get("value") == 1 for c in info.get("conditions") or []):
+                bad.append(f"the Owing's line is not limited to the guards of {cf['edid']}")
+            want = "TIF__" + OWING_LINE.split(":")[1].rjust(8, "0")
+            if ((info.get("fragment") or {}).get("file") or "").upper() != want.upper():
+                bad.append(f"the Owing's line runs {(info.get('fragment') or {}).get('file')}, not vanilla's {want} (the sentence that keeps the player's belongings)")
     for n in ppl.get("npcs", []):
         got = m["npcs"].get(n["fk"])
         if n.get("role") == "guard" and got is not None:

@@ -60,29 +60,47 @@ def test_the_jail_is_the_room_holding_the_jail_kit_never_a_name_alone():
     assert sid == "01Hall" and "jail kit" in how
 
 
-@pytest.mark.parametrize("held,jails", [
-    ("The Helstrom assembly of interior naheesh and tree-minders; a tribal levy keeps the guard", False),
-    ("A merchant council, the ex-Imperial civil office and river interests", False),
-    ("A harbour authority and merchant council in the East Empire Company's old buildings", False),
-    ("An Imperial garrison under a legate", True),
-    ("House Hlaalu factors and their guards", True)])
-def test_only_a_foreign_law_jails_the_argonian_sentence_is_the_owing(held, jails):
-    got, why = jail.law({"held_by": held})
-    assert got is jails and (why.startswith("foreign law") if jails else why.startswith(jail.NATIVE))
+class Ground:
+    """Land at -15 under water at 0."""
+    def height(self, x, y):
+        return -15.0
+
+    def water(self, x, y):
+        return 0.0
+
+
+def test_the_owing_works_at_the_landing_and_returns_the_player_to_the_street_beside_it():
+    dock = {"key": "S:dock", "edid": "DockStrSol01", "bounds": [[-167, -256, -438], [161, 256, 69]]}
+    things = [{"id": "t.dock", "base": "S:dock", "kind": "building", "pos": [0.0, 0.0, 253.0], "rot": [0, 0, 0]},
+              {"id": "t.walk", "base": "S:dock", "kind": "building", "pos": [0.0, 512.0, 253.0], "rot": [0, 0, 0]}]
+    people_ = [{"id": "t.res", "work": {"space": "exterior", "pos": [900.0, 900.0]}, "services": []},
+               {"id": "t.boat", "work": {"space": "exterior", "pos": [0.0, 0.0]}, "services": [{"kind": "boat-stop"}]}]
+    paths = [{"id": "t.p", "points": [[0.0, 300.0], [0.0, 700.0]]}]
+    got = jail.plan_owing("t", things, people_, paths, {"S:dock": dock}, Ground())
+    assert got["work"] == [0.0, 0.0, 322.0] and "landing" in got["work_how"]   # on the dock's deck, not in the water
+    assert got["back"] == [0.0, 428.0, 322.0]               # the nearest street point (64 apart) RETURN_MIN off at least
+    assert math.dist(got["bed"][:2], [0.0, 0.0]) in jail.MARKER_OFF and got["bed"][2] == 322.0
+    assert got["chest"] == [0.0, 428.0, 322.0 - jail.CHEST_DEPTH]
+    del people_[1]["services"][0]                                               # no landing: the busiest work stop
+    assert jail.work_spot(people_ + [{"id": "t.r2", "work": {"pos": [900.0, 900.0]}}])[0] == (900.0, 900.0)
 
 
 def test_the_faction_names_its_jail_rows_and_a_missing_row_is_a_problem():
-    rows = {i: {"id": i, "fk": f"P.esp:{n:06X}"} for n, i in enumerate(("t.ext", "t.in", "t.stol", "t.plcn"), 1)}
+    rows = {i: {"id": i, "fk": f"P.esp:{n:06X}"} for n, i in enumerate(("t.ext", "t.in", "t.stol", "t.plcn", "t.bed"), 1)}
     P = {"place": {"factions": [{"id": "t.crime", "kind": "crime", "jail": {
         "exterior": "t.ext", "marker": "t.in", "stolen": "t.stol", "inventory": "t.plcn", "space": "jail"}}]}}
     got = people.jail_plan(P, rows, "t")
     assert got["exterior"] == got["wait"] == "P.esp:000001" and got["stolen"] == "P.esp:000003"
-    assert got["outfit"] == people.JAIL_OUTFIT and all(r.get("persistent") for r in rows.values())
+    assert got["outfit"] == people.JAIL_OUTFIT and all(rows[i].get("persistent") for i in ("t.ext", "t.in", "t.stol", "t.plcn"))
     B.PROBLEMS.clear()
     del rows["t.plcn"]
     assert people.jail_plan(P, rows, "t") is None and B.PROBLEMS
     B.PROBLEMS.clear()
     assert people.jail_plan({"place": {"factions": [{"kind": "crime", "jail": None}]}}, rows, "t") is None
+    ow = {"place": {"factions": [{"kind": "crime", "jail": None, "owing": {"return": "t.ext", "work": "t.in", "stolen": "t.stol", "bed": "t.bed"}}]}}
+    got = people.jail_plan(ow, rows, "t")
+    assert got["exterior"] == got["wait"] == "P.esp:000001" and got["marker"] == "P.esp:000002" and "inventory" not in got
+    assert got["owing"]["topic"] == people.GO_TO_JAIL and got["owing"]["prompt"] == people.OWING_PROMPT
 
 
 def test_classes_of_primitives():

@@ -118,6 +118,7 @@ static class Dump
                 return new Dictionary<string, object?>
                 {
                     ["fk"] = C.Key(i.FormKey), ["prompt"] = i.Prompt?.String, ["text"] = i.Responses.Select(r => r.Text.String).ToList(),
+                    ["previous"] = C.Key(i.PreviousDialog.FormKey),
                     ["link_to"] = i.LinkTo.Select(l => C.Key(l.FormKey)).ToList(),
                     ["conditions"] = i.Conditions.Select(c =>
                     {
