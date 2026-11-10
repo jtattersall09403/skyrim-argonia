@@ -129,6 +129,13 @@ opponents).
   [labour-and-bondage.md](labour-and-bondage.md) — **the Owing**. Warden Varus's
   "Tunnel Rats", who dug for crystals "in return for limited freedom", are the
   canon precedent it is built on.
+- **No native Argonian place keeps a jail** (`OWNER_STATED`, 2026-11-10): its
+  sentence is the Owing, and a person who resists arrest is fought to the death
+  ([labour-and-bondage.md](labour-and-bondage.md) §6). **Cells remain only
+  under foreign law** (`EXTRAPOLATED`): the old Imperial forts the Archwardens
+  hold, and Gideon, Archon and Soulrest, which are still governed from
+  Imperial buildings. The prisons themselves are ruins or outlaw holds, and no
+  warden sends prisoners there.
 - The Rose's siting logic (**the swamp itself is the wall**) is exactly our
   fixed-danger model, stated by canon. Reuse it as the justification for why our
   D4–D5 interior needs no fences.

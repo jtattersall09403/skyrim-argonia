@@ -188,6 +188,49 @@ nobody.
   civilian scale*, visible from Act I. The player understands the Accord before it
   is explained because they have already met its small version.
 
+---
+
+## 6. Native law in 4E 201: no cell, the Owing, and death for resisting
+
+How a native Argonian place deals with a lawbreaker, the player included. The
+owner ruled the first three points on 2026-11-10 (`docs/owner-rulings.md`).
+
+- **A native Argonian place has no jail.** `OWNER_STATED` It follows from §1 and
+  §2: a people who spent thirteen centuries as the Empire's prisoners keep no
+  cells of their own, and a sentence that stores a person in stone is the practice
+  that post-Duskfall believers renounced (`CANON_DERIVED`, from *shunatei*).
+- **The sentence is the Owing.** `OWNER_STATED` A person caught breaking the law
+  pays what the harm is worth, or works it off: a season of labour for the
+  household or the place they wronged, then set free with the matter closed. The
+  four drifts of §2 do not apply to a stranger's short sentence; they belong to
+  long Owings that are sold on and grow.
+- **Whoever resists arrest is fought to the death.** `OWNER_STATED` The guards
+  take no surrender from someone who has drawn on them. The Owing was the
+  surrender, offered once; resisting arrest refuses it.
+- **Why the guards do not stop at a beating** `EXTRAPOLATED`: native law has
+  only two answers, payment and work. A person who refuses both and fights has
+  put themselves outside the law, and there is no cell to hold them while
+  tempers cool. The fight ends the matter as a finished Owing does, and
+  its people do not speak of it afterwards.
+- **What else the lore makes a capital matter** `CANON_EXPLICIT`: canon
+  records one capital rule, and it belongs to the Shadowscales, not to a village. A Shadowscale who breaks the order's tenets,
+  above all by killing a fellow Shadowscale, is executed by an unaffiliated
+  assassin sent by the "Argonian Royal Court" (Lore:Shadowscales;
+  [sithis-nisswo-shadowscales.md](sithis-nisswo-shadowscales.md)). The school
+  closed in 4E 187, so in 4E 201 almost every Shadowscale it covered is gone.
+- **Harsh sentences the lore records short of death** `CANON_EXPLICIT`: at
+  Stormhold the Vicecanon Heita-Meen tried Dres slavers, hung them in cages on
+  the Ayleid arches for a year and then exiled them (Lore:Stormhold); a
+  blasphemer is bound to an urn and denied return to the Hist
+  ([sithis-nisswo-shadowscales.md](sithis-nisswo-shadowscales.md)). Neither is a cell sentence. Canon gives no written code of laws.
+  None is invented here.
+- **Where cells remain** `EXTRAPOLATED`: in places kept by an office inherited
+  from the Empire. These are the old Imperial forts and posts the Archwardens
+  hold, and the cities governed from Imperial buildings still standing:
+  Gideon's Governor's Mansion and courthouse, Archon's East Empire Company
+  halls, Soulrest's ex-Imperial civil office. They follow the Empire's habit
+  and keep its cells (`docs/design/law.md` lists every place).
+
 `AGENT_INVENTED` flags: the *name* "the Owing", the counting in nushmeekos, and
 the four drifts are ours. The components — penal labour for privileges, owed
 labour as currency, surviving Archein brokerage, arbitration without courts,
