@@ -424,6 +424,12 @@ def plan_clear(rows: list[dict], facts: dict) -> list[dict]:
 
 # ---- refs, interiors, doors -----------------------------------------------------------------------------------------
 
+def is_disabled(r: dict) -> bool:
+    """A place row is built Initially Disabled when its flags say so (the ref shape's `initially_disabled`)."""
+    fl = r.get("flags")
+    return bool(r.get("disabled")) or (isinstance(fl, list) and "initially_disabled" in fl)
+
+
 def norm_ref(r: dict) -> dict:
     r = dict(r)
     r.setdefault("rot", [0.0, 0.0, 0.0])
@@ -464,7 +470,8 @@ def plan_spaces(P: dict, ids: Ids, tmp: Path) -> dict:
                 if r.get("removed"):
                     continue
                 row = {**r, "fk": ids(f"ref:{r['id']}"), "space": "exterior", "cell": list(cell_of(*r["pos"][:2])),
-                       "persistent": "persistent" in (r.get("flags") or []) or bool(r.get("persistent"))}
+                       "persistent": "persistent" in (r.get("flags") or []) or bool(r.get("persistent")),
+                       "disabled": is_disabled(r)}
                 row.pop("flags", None)
                 refs.append(row)
                 by_our[r["id"]] = row
@@ -473,6 +480,7 @@ def plan_spaces(P: dict, ids: Ids, tmp: Path) -> dict:
         plugin, cell_edid = resolve_copy(sp["copy_of"]) if sp.get("copy_of") else (None, None)
         src_rows = []
         src = {}
+        src_plugins: list[str] = []
         if plugin:
             out = tmp / f"src_{sid}.json"
             got = []  # the cell as each of the source's plugins has it: a cell's refs may come from several
@@ -484,6 +492,7 @@ def plan_spaces(P: dict, ids: Ids, tmp: Path) -> dict:
                 problem(f"space {sid}: no plugin of {sp['copy_of']} holds an interior cell {cell_edid}")
                 continue
             plugin, src = got[0]
+            src_plugins = [cand for cand, _ in got]
             seen = {r["fk"] for r in src["refs"]}
             for _, more in got[1:]:
                 src["refs"] += [r for r in more["refs"] if r["fk"] not in seen]
@@ -517,7 +526,8 @@ def plan_spaces(P: dict, ids: Ids, tmp: Path) -> dict:
                    "pos": ch.get("pos", r["pos"]), "rot": ch.get("rot", r["rot"]), "scale": ch.get("scale", r.get("scale", 1.0)),
                    "src_flags": r.get("flags", 0), "src_door": r.get("door"), "src_linked": r.get("linked"),
                    "src_enable_parent": r.get("enable_parent"), "lock": ch.get("lock", r.get("lock")),
-                   "owner": ch.get("owner"), "door": ch.get("door"), "seat": ch.get("seat"), "persistent": bool(r.get("persistent"))}
+                   "owner": ch.get("owner"), "door": ch.get("door"), "seat": ch.get("seat"), "persistent": bool(r.get("persistent")),
+                   "disabled": is_disabled(ch) if "flags" in ch or "disabled" in ch else bool(int(r.get("flags") or 0) & 0x800)}
             row.update({"fk": ids(f"ref:{our_id}"), "space": sid})
             refs.append(row)
             by_our[our_id] = row
@@ -527,7 +537,7 @@ def plan_spaces(P: dict, ids: Ids, tmp: Path) -> dict:
                 continue
             if r.get("src") and plugin:
                 continue  # a row of a source ref outside the kept room: not in this copy
-            row = {**r, "fk": ids(f"ref:{r['id']}"), "space": sid}
+            row = {**r, "fk": ids(f"ref:{r['id']}"), "space": sid, "disabled": is_disabled(r)}
             refs.append(row)
             by_our[r["id"]] = row
         # source links within the copy follow the copy; links out of it are dropped
@@ -542,7 +552,8 @@ def plan_spaces(P: dict, ids: Ids, tmp: Path) -> dict:
         interiors.append({"space": sid, "fk": ids(f"space:{sid}"), "edid": f"ANP_{sid}",
                           "name": sp.get("name") or src.get("name") or sid, "copy": {"plugin": plugin, "cell": src.get("fk")} if plugin else None,
                           "light": sp.get("light"), "owner": sp.get("owner"), "room_mesh": room and room["mesh"],
-                          "src_navmesh": [n["fk"] for n in src.get("navmesh", [])], "fk_of_src": fk_of_src})
+                          "src_navmesh": list(dict.fromkeys(n["fk"] for n in src.get("navmesh", []))),
+                          "src_plugins": src_plugins, "fk_of_src": fk_of_src})
     # links our place files write by our ids (exterior rows, added rows) become form keys; one to nothing is a problem
     import re
     is_key = re.compile(r".+:[0-9A-Fa-f]{6}$").match
@@ -648,23 +659,28 @@ def nav_fid(key: str) -> int:
     raise SystemExit(f"navmesh: {key} is in no master of the navmesh contract ({NAV_MASTERS})")
 
 
+def tri_near(n, p) -> tuple[int, float]:
+    """The triangle nearest p in plan and height together, and how far it is: a roof or deck over the spot never wins
+    over the ground a step away beside it (a door's arrival under an overhang stands on the ground, not on the
+    overhang's top). (-1, inf) for a mesh with no triangles."""
+    t = np.asarray(n.tris["v"], np.int64)
+    if not len(t):
+        return -1, float("inf")
+    v = np.asarray(n.verts, np.float64)
+    a, b, c = v[t[:, 0]], v[t[:, 1]], v[t[:, 2]]
+    px, py, pz = float(p[0]), float(p[1]), float(p[2])
+    d1 = (px - b[:, 0]) * (a[:, 1] - b[:, 1]) - (a[:, 0] - b[:, 0]) * (py - b[:, 1])
+    d2 = (px - c[:, 0]) * (b[:, 1] - c[:, 1]) - (b[:, 0] - c[:, 0]) * (py - c[:, 1])
+    d3 = (px - a[:, 0]) * (c[:, 1] - a[:, 1]) - (c[:, 0] - a[:, 0]) * (py - a[:, 1])
+    inside = ~(((d1 < 0) | (d2 < 0) | (d3 < 0)) & ((d1 > 0) | (d2 > 0) | (d3 > 0)))
+    cen = (a + b + c) / 3
+    d = np.where(inside, 0.0, np.hypot(cen[:, 0] - px, cen[:, 1] - py)) + np.abs(cen[:, 2] - pz)
+    i = int(np.argmin(d))
+    return i, float(d[i])
+
+
 def tri_under(n, p) -> int:
-    """The triangle nearest p in plan and height together: a roof or deck over the spot never wins over the ground a
-    step away beside it (a door's arrival under an overhang stands on the ground, not on the overhang's top)."""
-    v = n.verts
-    best, bd = -1, float("inf")
-    for i, t in enumerate(n.tris["v"]):
-        a, b, c = v[t[0]], v[t[1]], v[t[2]]
-        d1 = (p[0] - b[0]) * (a[1] - b[1]) - (a[0] - b[0]) * (p[1] - b[1])
-        d2 = (p[0] - c[0]) * (b[1] - c[1]) - (b[0] - c[0]) * (p[1] - c[1])
-        d3 = (p[0] - a[0]) * (c[1] - a[1]) - (c[0] - a[0]) * (p[1] - a[1])
-        inside = not ((d1 < 0 or d2 < 0 or d3 < 0) and (d1 > 0 or d2 > 0 or d3 > 0))
-        zc = (a[2] + b[2] + c[2]) / 3
-        cen = ((a[0] + b[0] + c[0]) / 3, (a[1] + b[1] + c[1]) / 3)
-        d = (0 if inside else math.hypot(cen[0] - p[0], cen[1] - p[1])) + abs(zc - p[2])
-        if d < bd:
-            best, bd = i, d
-    return best
+    return tri_near(n, p)[0]
 
 
 def add_door_tri(n, door_raw: int, at) -> int:
@@ -708,58 +724,124 @@ def _plugin_path(file: str) -> Path:
     raise SystemExit(f"{file} not in {data} nor the staged mods")
 
 
+_SRC_NAVM: dict[str, dict[str, bytes | None]] = {}  # plugin file -> navmesh form key -> its NVNM bytes (None: not in it)
+_SRC_NAMES: dict[str, list[str]] = {}  # plugin file -> its masters then itself (a raw form id's index into these)
+
+
+def source_names(plugin: str) -> list[str]:
+    from tools.navmesh import esm
+    if plugin not in _SRC_NAMES:
+        _SRC_NAMES[plugin] = esm.masters(_plugin_path(plugin)) + [plugin]
+    return _SRC_NAMES[plugin]
+
+
+def raw_key(names: list[str], raw: int) -> str:
+    """A raw form id of a plugin as a form key: its top byte indexes the plugin's masters, anything past them is its own."""
+    return key_of(names[min(raw >> 24, len(names) - 1)], raw & 0xFFFFFF)
+
+
+def source_navms(plugin: str, want: set[str]) -> dict[str, bytes | None]:
+    """The interior navmeshes `want` (form keys) as `plugin` holds them: one read of the plugin for every key not
+    asked of it before, so a run that asks for all its interiors' keys at once reads each plugin once."""
+    from tools.navmesh import esm
+    got = _SRC_NAVM.setdefault(plugin, {})
+    miss = set(want) - got.keys()
+    if miss:
+        names = source_names(plugin)
+        got.update(dict.fromkeys(miss))
+        for rec in esm.records(_plugin_path(plugin), {b"NAVM"}, {b"CELL"}):
+            k = raw_key(names, rec.fid)
+            if k in miss:
+                got[k] = next((p for s, p in esm.subrecords(rec.data) if s == b"NVNM"), None)
+    return got
+
+
+def source_interior_navmesh(I: dict) -> dict[str, dict]:
+    """The source cell's own navmeshes by form key, each read from the plugin of the source whose version wins (the
+    one no other holder masters): {tris, verts, cover, links: [(type, target navmesh key, triangle)]}. A link into
+    another navmesh of the cell is kept; one out of the cell is opened. Door triangles are cleared (ours are set from
+    our door pairs)."""
+    from tools.navmesh import nvnm
+    want = list(dict.fromkeys(I["src_navmesh"]))
+    srcs: dict[str, tuple] = {}
+    for pl in I.get("src_plugins") or [I["copy"]["plugin"]]:
+        try:
+            names = source_names(pl)
+        except SystemExit:
+            continue
+        for key, payload in source_navms(pl, set(want)).items():
+            if payload is None or key not in want:
+                continue
+            if key not in srcs or srcs[key][2] in names[:-1]:  # a plugin mastered on the holder so far overrides it
+                srcs[key] = (nvnm.decode(payload), names, pl)
+    srcs = {key: v for key, v in srcs.items() if len(v[0].tris)}
+    out = {}
+    for key in sorted(srcs):
+        n, names, _ = srcs[key]
+        tris = n.tris.copy()
+        links = []
+        for k in range(3):
+            for i in np.flatnonzero(tris["flags"] & nvnm.EDGE_LINK[k]):
+                e = int(tris["e"][i][k])
+                ln = n.links[e] if 0 <= e < len(n.links) else None
+                target = raw_key(names, int(ln["navm"])) if ln is not None else None
+                if target in srcs and 0 <= int(ln["tri"]) < len(srcs[target][0].tris):
+                    links.append((int(ln["type"]), target, int(ln["tri"])))
+                    tris["e"][i][k] = len(links) - 1
+                else:
+                    tris["flags"][i] &= ~nvnm.EDGE_LINK[k] & 0xFFFF
+                    tris["e"][i][k] = -1
+        tris["flags"] &= ~nvnm.DOOR & 0xFFFF
+        out[key] = {"tris": tris, "verts": n.verts.copy(), "cover": n.cover.copy(), "links": links}
+    return out
+
+
+def nav_islands(meshes: dict[str, dict]) -> int:
+    """How many walkable islands a cell's navmeshes make: triangles joined by a shared edge or an edge link are one."""
+    from tools.navmesh import nvnm
+    par: dict = {}
+
+    def root(x):
+        while par.setdefault(x, x) != x:
+            par[x] = par[par[x]]
+            x = par[x]
+        return x
+    for key, m in meshes.items():
+        t = m["tris"]
+        for i in range(len(t)):
+            root((key, i))
+            for k in range(3):
+                e = int(t["e"][i][k])
+                if t["flags"][i] & nvnm.EDGE_LINK[k]:
+                    _, target, tri = m["links"][e]
+                    par[root((key, i))] = root((target, tri))
+                elif 0 <= e < len(t):
+                    par[root((key, i))] = root((key, e))
+    return len({root(x) for x in list(par)})
+
+
 def interior_navmesh(I: dict, S: dict, ids: Ids) -> list[dict]:
-    from tools.navmesh import esm, nvnm
-    if I.get("room_mesh"):
-        return [mesh_navm(I, ids, I["room_mesh"]["verts"], I["room_mesh"]["tris"])]
-    if not I["copy"] or not I["src_navmesh"]:
+    """An interior's navmesh: its room's island (a `room` copy); else the source cell's own navmeshes when they make
+    one walkable island (a source cell meshed in pieces that do not join is meshed again from its collision by the
+    caller: `src_islands` on the interior says how many it had)."""
+    from tools.navmesh import nvnm
+    rm = I.get("room_mesh")
+    if rm and rm["tris"]:
+        return [mesh_navm(I, ids, rm["verts"], rm["tris"])]
+    if rm or not I["copy"] or not I["src_navmesh"]:
         return []
-    plugin = I["copy"]["plugin"]
-    path = _plugin_path(plugin)
-    own = len(esm.masters(path))
-    want = {raw_fid(own, split_key(k)[1]) for k in I["src_navmesh"]}
-    srcs = {}
-    for rec in esm.records(path, {b"NAVM"}, {b"CELL"}):
-        if rec.fid in want:
-            nv = next(p for s, p in esm.subrecords(rec.data) if s == b"NVNM")
-            srcs[rec.fid] = nvnm.decode(nv)
-    ours = {f: ids.local(f"navm:{I['space']}:{f & 0xFFFFFF:06X}") for f in srcs}
+    meshes = source_interior_navmesh(I)
+    I["src_islands"] = nav_islands(meshes)
+    if I["src_islands"] != 1:
+        return []
+    ours = {key: ids.local(f"navm:{I['space']}:{split_key(key)[1]:06X}") for key in meshes}
     cell_raw = raw_fid(NAV_SELF, split_key(I["fk"])[1])
     out = []
-    for f, n in sorted(srcs.items()):
-        tri_keep = np.ones(len(n.tris), bool)
-        idx = -np.ones(len(n.tris), np.int64)
-        idx[tri_keep] = np.arange(int(tri_keep.sum()))
-        tris = n.tris[tri_keep].copy()
-        links_keep = []
-        for t in tris:
-            for k in range(3):
-                e = int(t["e"][k])
-                if t["flags"] & nvnm.EDGE_LINK[k]:
-                    ln = n.links[e]
-                    # a link into another navmesh of the copy is kept when that navmesh is copied; else dropped
-                    target = int(ln["navm"])
-                    if target in ours:
-                        links_keep.append((raw_fid(NAV_SELF, ours[target]), int(ln["tri"]), int(ln["type"])))
-                        t["e"][k] = len(links_keep) - 1
-                    else:
-                        t["flags"] &= ~nvnm.EDGE_LINK[k]
-                        t["e"][k] = -1
-                else:
-                    t["e"][k] = idx[e] if e >= 0 else -1
-            t["flags"] &= ~nvnm.DOOR
-        # vertices: keep only the used ones
-        used = np.unique(tris["v"].reshape(-1)) if len(tris) else np.zeros(0, int)
-        vmap = -np.ones(len(n.verts), np.int64)
-        vmap[used] = np.arange(len(used))
-        for t in tris:
-            t["v"] = [vmap[x] for x in t["v"]]
-        if not len(tris):
-            continue  # nothing of this navmesh lies in the kept room
-        m = nvnm.Nvnm(0, None, cell_raw, n.verts[used].copy(), tris,
-                      np.array([(ty, nf, tr) for nf, tr, ty in links_keep], nvnm.LINK) if links_keep else np.zeros(0, nvnm.LINK))
-        m.cover = np.zeros(0, "<i2")
-        out.append({"fid": raw_fid(NAV_SELF, ours[f]), "nv": m, "space": I["space"], "cell_raw": cell_raw})
+    for key, m in meshes.items():
+        links = [(ty, raw_fid(NAV_SELF, ours[target]), tri) for ty, target, tri in m["links"]]
+        nv = nvnm.Nvnm(0, None, cell_raw, m["verts"], m["tris"], np.array(links, nvnm.LINK) if links else np.zeros(0, nvnm.LINK))
+        nv.cover = m["cover"]
+        out.append({"fid": raw_fid(NAV_SELF, ours[key]), "nv": nv, "space": I["space"], "cell_raw": cell_raw})
     return out
 
 
@@ -824,6 +906,9 @@ def recast_refs(rows: list[dict], work: Path, tag: str, ground: bool) -> tuple[l
 
 def mesh_navm(I: dict, ids: Ids, verts: list, tris: list) -> dict:
     from tools.navmesh import nvnm, stitch
+    if len(tris) > 0x7FFF or len(verts) > 0xFFFF:  # NVNM counts triangles in 16 signed bits and vertices in 16
+        problem(f"space {I['space']}: its generated navmesh has {len(tris)} triangles and {len(verts)} vertices, more than "
+                f"one navmesh record holds (32767 and 65535)")
     mesh = stitch.Mesh(0, 0, verts, tris, [0] * len(tris))
     nb = stitch.neighbours(mesh)
     tr = np.zeros(len(mesh.tris), nvnm.TRI)
@@ -926,7 +1011,6 @@ def exterior_navmesh(touched: set, objects, patched: dict, polylines, out: Path)
     touched cells and their first ring are ours (their seams are re-split at the changed neighbour), the second
     ring must come out byte-equal to the world's own NAVM (the join is then edge for edge)."""
     from tools.navmesh import __main__ as nav, nvnm, stitch, world
-    stitch.STACKED = True  # decks and steps on a cell line: seams split and linked by height too (the world's off)
     land = world.Land.load(WORLD_DIR)
     xs = [c[0] for c in touched]
     ys = [c[1] for c in touched]
@@ -950,7 +1034,12 @@ def exterior_navmesh(touched: set, objects, patched: dict, polylines, out: Path)
     reach = NAV_RING
     while True:
         box = (min(xs) - reach, min(ys) - reach, max(xs) + reach, max(ys) + reach)
-        res = nav.build(out, box, WORLD_DIR, run_check=False, objects=objects, heights=heights, polylines=polylines, land=land)
+        was = stitch.STACKED
+        stitch.STACKED = True  # decks and steps on a cell line: seams split and linked by height too (the world's off)
+        try:
+            res = nav.build(out, box, WORLD_DIR, run_check=False, objects=objects, heights=heights, polylines=polylines, land=land)
+        finally:
+            stitch.STACKED = was
         built, world_rows = {}, {}
         for p in sorted((out / "navm").glob("cy*.jsonl.gz")):
             for ln in gzip.open(p, "rt"):
@@ -975,6 +1064,9 @@ def exterior_navmesh(touched: set, objects, patched: dict, polylines, out: Path)
     ring1 = R[0] | R[1]
     seam = {"reach": reach, "trusted_cells": sum(1 for c in inner if c in built or c in world_rows),
             "differ": [list(c) for c in differ(inner)], "last_ring_differ": [list(c) for c in differ(last)]}
+    if seam["last_ring_differ"]:
+        problem(f"navmesh: {reach} rings out from the place its cells still come out unlike the world's "
+                f"({seam['last_ring_differ'][:6]}): the place's navmesh cannot be joined to the world's edge for edge")
     ship = ring1 | {tuple(c) for c in seam["differ"]}
     mine = []
     navi = json.loads((out / "navi.json").read_text())
@@ -988,6 +1080,8 @@ def exterior_navmesh(touched: set, objects, patched: dict, polylines, out: Path)
     for c in sorted(ship):
         e = built.get(c)
         if e is None:
+            if c in world_rows:  # the world's mesh stays in the game, linked to neighbours that no longer answer it
+                problem(f"navmesh: cell {c[0]},{c[1]} has walkable ground in the world and none once the place stands on it")
             continue
         rec = base64.b64decode(e["navm"])
         nv = nvnm.decode(next(p for s, p in subrecords(rec[24:]) if s == b"NVNM"))
@@ -1024,7 +1118,28 @@ def unlink_one_way(navs: list[dict]) -> int:
         n["nv"].tris["e"][i][k] = -1
         n["nv"].tris["flags"][i] &= ~nvnm.EDGE_LINK[k] & 0xFFFF
         n["joined"] = True
+    for n in {id(n): n for n, _, _ in drop}.values():
+        prune_links(n["nv"])
     return len(drop)
+
+
+def prune_links(nv) -> int:
+    """Drop every edge link no triangle edge names (an opened link's row), renumbering the rest: the NVNM's link table
+    and the NVMI's list of linked navmeshes, read from it, then say only what is joined. Returns how many went."""
+    from tools.navmesh import nvnm
+    if not len(nv.tris) or not len(nv.links):
+        return 0
+    linked = [(nv.tris["flags"] & nvnm.EDGE_LINK[k]) != 0 for k in range(3)]
+    used = np.unique(np.concatenate([nv.tris["e"][linked[k], k] for k in range(3)]).astype(np.int64))
+    used = used[(used >= 0) & (used < len(nv.links))]
+    gone = len(nv.links) - len(used)
+    if gone:
+        remap = -np.ones(len(nv.links), np.int64)
+        remap[used] = np.arange(len(used))
+        for k in range(3):
+            nv.tris["e"][linked[k], k] = remap[nv.tris["e"][linked[k], k]]
+        nv.links = nv.links[used].copy()
+    return gone
 
 
 def join_seams(navs: list[dict], tol_z: float = 32.0) -> int:
@@ -1034,16 +1149,17 @@ def join_seams(navs: list[dict], tol_z: float = 32.0) -> int:
     by_cell = {tuple(n["cell"]): n for n in navs if n["space"] == "exterior"}
 
     def open_edges(n, line_axis, line_v):
-        nv, out = n["nv"], {}
-        for i, t in enumerate(nv.tris):
-            for k in range(3):
-                if t["e"][k] != -1 or t["flags"] & nvnm.EDGE_LINK[k]:
-                    continue
-                a, b = nv.verts[t["v"][k]], nv.verts[t["v"][(k + 1) % 3]]
-                if abs(a[line_axis] - line_v) < 1 and abs(b[line_axis] - line_v) < 1:
-                    key = tuple(sorted((round(float(a[1 - line_axis])), round(float(b[1 - line_axis])))))
-                    out.setdefault(key, []).append((i, k, (float(a[2]) + float(b[2])) / 2))
-        return out
+        """The mesh's open edges lying on one cell line: (the edge's span along the line, triangle, edge, mean height)."""
+        nv, out = n["nv"], []
+        v = np.asarray(nv.verts, np.float64)
+        for k in range(3):
+            a, b = v[nv.tris["v"][:, k]], v[nv.tris["v"][:, (k + 1) % 3]]
+            on = (nv.tris["e"][:, k] == -1) & ((nv.tris["flags"] & nvnm.EDGE_LINK[k]) == 0) \
+                & (np.abs(a[:, line_axis] - line_v) < 1) & (np.abs(b[:, line_axis] - line_v) < 1)
+            for i in np.flatnonzero(on):
+                key = tuple(sorted((round(float(a[i, 1 - line_axis])), round(float(b[i, 1 - line_axis])))))
+                out.append((key, int(i), k, (float(a[i, 2]) + float(b[i, 2])) / 2))
+        return sorted(out)
 
     def link(n, i, k, fid, ti):
         nv = n["nv"]
@@ -1059,8 +1175,7 @@ def join_seams(navs: list[dict], tol_z: float = 32.0) -> int:
             if o is None:
                 continue
             v = (cx + 1) * CELL if axis == 0 else (cy + 1) * CELL
-            mine_e = [(key, i, k, z) for key, es in open_edges(n, axis, v).items() for i, k, z in es]
-            theirs = [(key, j, q, z) for key, es in open_edges(o, axis, v).items() for j, q, z in es]
+            mine_e, theirs = open_edges(n, axis, v), open_edges(o, axis, v)
             # pair by the longest shared stretch of seam at a like height (the two sides may split the seam differently)
             pairs = []
             for ka, i, k, za in mine_e:
@@ -1085,23 +1200,31 @@ def finish_navmesh(navs: list[dict], S: dict, world_fid: int) -> tuple[list[dict
     from tools.navmesh import nvnm
     doors_of: dict[int, list[int]] = {}
     by_space: dict[str, list[dict]] = {}
+    by_cell: dict[tuple, dict] = {}
     for n in navs:
         by_space.setdefault(n["space"], []).append(n)
+        if n["space"] == "exterior":
+            by_cell[tuple(n["cell"])] = n
+    by_fk = {r["fk"]: r for r in S["refs"]}
     notes = []
     for r in S["refs"]:
         t = r.get("teleport")
         if not t:
             continue
-        partner = next(x for x in S["refs"] if x["fk"] == t["to"])
-        at = partner["teleport"]["pos"]  # one arrives by r through the partner: the partner's marker stands by r
-        cand = by_space.get(r["space"], [])
-        if r["space"] == "exterior":
+        at = by_fk[t["to"]]["teleport"]["pos"]  # one arrives by r through the partner: the partner's marker stands by r
+        if r["space"] == "exterior":  # the arrival's own cell first, then the cells round it (an arrival by a cell line)
             cx, cy = cell_of(at[0], at[1])
-            cand = [n for n in cand if tuple(n["cell"]) == (cx, cy)]
-        if not cand:
+            cand = [by_cell[c] for c in [(cx, cy)] + [(cx + dx, cy + dy) for dx in (-1, 0, 1) for dy in (-1, 0, 1) if dx or dy]
+                    if c in by_cell]
+        else:
+            cand = by_space.get(r["space"], [])
+        # the mesh that holds the triangle nearest the arrival: an interior may have several, a cell line may run by
+        near = [(tri_near(n["nv"], at)[1], i) for i, n in enumerate(cand)]
+        near = [x for x in near if x[0] < float("inf")]
+        if not near:
             notes.append(f"door {r['id']}: no navmesh under its arrival point")
             continue
-        n = cand[0]
+        n = cand[min(near)[1]]
         if add_door_tri(n["nv"], nav_fid(r["fk"]), at) >= 0:
             doors_of.setdefault(n["fid"], []).append(nav_fid(r["fk"]))
     out = []
@@ -1112,7 +1235,7 @@ def finish_navmesh(navs: list[dict], S: dict, world_fid: int) -> tuple[list[dict
         doors = doors_of.get(n["fid"], [])
         if n["space"] == "exterior":
             mi = n["nvmi"]
-            if doors or n.get("joined"):  # rebuild the NVMI with the doors and joins: same layout as the stitch's
+            if mi is None or doors or n.get("joined"):  # rebuild the NVMI with the doors and joins: same layout as the stitch's
                 edge = sorted({int(x) for x in nv.links["navm"]})
                 pref = float(np.mean((nv.tris["flags"] & nvnm.PREFERRED) > 0)) if len(nv.tris) else 0.0
                 mi = nvnm.nvmi(n["fid"], centre, edge, doors, world_fid, tuple(n["cell"]), preferred=pref)
@@ -1296,6 +1419,7 @@ def _plan_place(pid: str, pdir: Path, out: Path, no_navmesh: bool, plan_only: bo
     land, patched, land_changed = plan_land(P["land"], facts)
     path_layers = plan_paths(P["paths"], facts)
     clear = plan_clear(P["clear"], facts)
+    facts["patched"] = patched  # the land as built: people's stops outside are seated on it
     from tools.places import people as ppl
     people = ppl.plan(P, S, ids, facts, notes)
     # land rows: heights and path layers merged per cell
@@ -1319,11 +1443,23 @@ def _plan_place(pid: str, pdir: Path, out: Path, no_navmesh: bool, plan_only: bo
             ext, nav_info = exterior_navmesh(touched, objects, patched, polylines, out / "navmesh" / pid)
             nav_info["collision"] = tally
             navs += ext
+        copied = [I for I in S["interiors"] if I["copy"] and not I.get("room_mesh")]
+        for pl in dict.fromkeys(pl for I in copied for pl in I["src_plugins"]):  # each source plugin is read once
+            try:
+                source_navms(pl, {k for I in copied if pl in I["src_plugins"] for k in I["src_navmesh"]})
+            except SystemExit:
+                pass
         for I in S["interiors"]:
             got = interior_navmesh(I, S, ids)
             if not got:
                 got = generate_interior_navmesh(I, S, ids, tmp)
-                notes.append(f"interior {I['space']}: the source has no navmesh over the kept room; generated ({sum(len(n['nv'].tris) for n in got)} triangles)")
+                if got:
+                    why = (f"the source's navmesh is in {I['src_islands']} pieces that do not join" if I.get("src_islands", 0) > 1
+                           else "the source has no navmesh over the kept room")
+                    notes.append(f"interior {I['space']}: {why}; generated ({sum(len(n['nv'].tris) for n in got)} triangles)")
+                else:
+                    problem(f"space {I['space']}: no navmesh (the source has none and its collision gives no floor): "
+                            f"nobody can walk in it")
             navs += got
     world_raw = nav_fid(facts["worldspace"])
     nav_rows, n2 = finish_navmesh(navs, S, world_raw)

@@ -91,16 +91,30 @@ def plan(P: dict, S: dict, ids, facts: dict, notes: list[str]) -> dict:
 
     def find_ref(at: dict):
         """A ref of the place named by our id, or by its source key within a copied space."""
-        return by_id.get(at["ref"]) or by_src.get((at.get("space", "exterior"), at["ref"]))
+        return by_id.get(at.get("ref")) or by_src.get((at.get("space", "exterior"), at.get("ref")))
+
+    steps: dict = {}  # cell -> its built heights in steps: the world's, with the place's land patches over them
 
     def ground_z(x, y):
+        """The built land's height under a point, between the cell's vertices as check reads it back."""
         from tools.places.build import CELL, QUAD, cell_steps
         cx, cy = cell_of(x, y)
-        c = facts["by_cell"].get((cx, cy))
-        if not c or not c.get("deltas"):
-            return 0.0
-        st = cell_steps(c)
-        return float(st[min(int((y - cy * CELL) / QUAD), 32), min(int((x - cx * CELL) / QUAD), 32)]) * 8.0
+        if (cx, cy) not in steps:
+            c = facts["by_cell"].get((cx, cy))
+            st = None
+            if c and c.get("deltas"):
+                st = cell_steps(c).astype(float)
+                for (gx, gy), v in (facts.get("patched") or {}).items():
+                    if 0 <= gx - cx * 32 <= 32 and 0 <= gy - cy * 32 <= 32:
+                        st[gy - cy * 32, gx - cx * 32] = v
+            steps[(cx, cy)] = st
+        st = steps[(cx, cy)]
+        if st is None:
+            raise Bad(f"people.jsonl: a stop at {x:.0f}, {y:.0f} is off the land the place reaches: give it a height ([x, y, z])")
+        fx, fy = (x - cx * CELL) / QUAD, (y - cy * CELL) / QUAD
+        i, j = min(int(fx), 31), min(int(fy), 31)
+        u, v = fx - i, fy - j
+        return float(st[j, i] * (1 - u) * (1 - v) + st[j, i + 1] * u * (1 - v) + st[j + 1, i] * (1 - u) * v + st[j + 1, i + 1] * u * v) * 8.0
 
     def norm_at(at: dict) -> dict:
         at = dict(at)
@@ -125,6 +139,9 @@ def plan(P: dict, S: dict, ids, facts: dict, notes: list[str]) -> dict:
             at["ref"] = r["id"]
             return at
         if len(at["pos"]) == 2:
+            if at.get("space", "exterior") != "exterior":
+                raise Bad(f"people.jsonl: a stop in {at['space']} at {at['pos']} has no height: a room has no ground to "
+                          f"seat it on; give [x, y, z] or name a ref")
             at["pos"] = [at["pos"][0], at["pos"][1], ground_z(*at["pos"])]
         return at
 
@@ -142,13 +159,24 @@ def plan(P: dict, S: dict, ids, facts: dict, notes: list[str]) -> dict:
         sp = at.get("space", "exterior")
         out["markers"].append({"fk": fk, "base": XMARKER_HEADING, "space": sp, "pos": at["pos"], "rot": [0.0, 0.0, 0.0],
                                "cell": list(cell_of(*at["pos"][:2])) if sp == "exterior" else None})
+        by_fk[fk] = out["markers"][-1]
         return fk
 
+    def first_stop(p: dict):
+        """Where a person is first: their first routine stop with a place, else their patrol's first point."""
+        at = next((st["at"] for st in p.get("routine") or [] if st.get("at")), None)
+        if at is None:
+            pts = p.get("patrol") or []
+            pts = (pts.get("points") or []) if isinstance(pts, dict) else pts
+            at = (pts[0] if isinstance(pts[0], dict) else {"pos": pts[0]}) if pts else None
+        return at
+
     made = {}
+    by_fk = {r["fk"]: r for r in S["refs"]}  # with the markers made here: what a patrol's chain links
     taken_beds = set()
     for q in people:
-        b = q.get("bed")
-        r = find_ref(b) if isinstance(b, dict) else by_id.get(b or "")
+        b = q.get("bed") if isinstance(q, dict) else None
+        r = find_ref(b) if isinstance(b, dict) else by_id.get(b) if isinstance(b, str) else None
         if r is not None:
             taken_beds.add(r["id"])
 
@@ -167,7 +195,9 @@ def plan(P: dict, S: dict, ids, facts: dict, notes: list[str]) -> dict:
             fk = ids(f"pack:{who}:{i}")
             row = {"fk": fk, "edid": f"ANP_{pid}_{_edid(who)}_{kind}{i}", "from": TEMPLATE[kind], "kind": kind,
                    "hour": int(st["start"]), "minutes": int(round(float(st["hours"]) * 60)), "days": st.get("days")}
-            if kind == "patrol":
+            if kind == "patrol" and patrol_start is not None:
+                row["target_linked"] = True  # a second patrol stop of the day walks the same chain
+            elif kind == "patrol":
                 pts = p.get("patrol") or []
                 loop = True
                 if isinstance(pts, dict):
@@ -177,7 +207,11 @@ def plan(P: dict, S: dict, ids, facts: dict, notes: list[str]) -> dict:
                     raise Bad(f"people.jsonl: {who}: a patrol needs two or more patrol points")
                 chain = [place_at(pt if isinstance(pt, dict) else {"pos": pt}, f"{who}:patrol{j}") for j, pt in enumerate(pts)]
                 for a, b in zip(chain, chain[1:] + (chain[:1] if loop else [])):
-                    m = next(x for x in out["markers"] + S["refs"] if x["fk"] == a)
+                    m = by_fk[a]
+                    if any(not ln.get("keyword") for ln in m.get("linked") or []):
+                        # the game walks a patrol by each marker's one linked ref without a keyword: a second is never taken
+                        raise Bad(f"people.jsonl: {who}: patrol point {chain.index(a)} names a ref that already leads on "
+                                  f"(a route crossing itself, or another route's point): give that point a pos of its own")
                     m.setdefault("linked", []).append({"ref": b, "keyword": ""})
                 # vanilla: the Patrol template's input 0 is PackageTargetLinkedReference with no keyword, and the
                 # actor's own linked ref (no keyword) names the first marker of the chain
@@ -191,7 +225,7 @@ def plan(P: dict, S: dict, ids, facts: dict, notes: list[str]) -> dict:
                                    "radius": int(at.get("radius", SLEEP_RADIUS if kind == "sleep" else DEFAULT_RADIUS))}
             out["packages"].append(row)
             packs.append(fk)
-        home = p.get("home_at") or (p["routine"][0]["at"] if p.get("routine") and p["routine"][0].get("at") else None)
+        home = p.get("home_at") or first_stop(p)
         if home:
             fk = ids(f"pack:{who}:home")
             out["packages"].append({"fk": fk, "edid": f"ANP_{pid}_{_edid(who)}_home", "from": TEMPLATE["sandbox"], "kind": "sandbox",
@@ -302,10 +336,12 @@ def plan(P: dict, S: dict, ids, facts: dict, notes: list[str]) -> dict:
                 vf = next((f for f in out["factions"] if f["fk"] in {x["faction"] for x in factions} and f.get("vendor")), None)
                 r["owner"] = vf["fk"] if vf else out["crime_faction"]["fk"]
                 out["owned_beds"].append({"bed": r["fk"], "owner": r["owner"], "rented": True})
-        spot = p.get("placed_at") or (p["routine"][0]["at"] if p.get("routine") else None)
+        spot = p.get("placed_at") or first_stop(p)
         if spot is None:
             raise Bad(f"people.jsonl: {who}: no routine stop to place them at")
         pos, space = _spot(norm_at(spot), by_id)
+        seen_f: set = set()  # one rank per faction: a service's faction the row also lists is the same membership
+        factions = [f for f in factions if not (f["faction"] in seen_f or seen_f.add(f["faction"]))]
         out["npcs"].append({"fk": npc_fk, "edid": f"ANP_{pid}_{_edid(who)}", "name": p.get("name") or who, "from": p["base_from"],
                             "level": int(p.get("level", 10)), "factions": factions, "packages": packs,
                             "class": cls["fk"] if cls else None, "gives": gives, "role": p.get("role"), "id": who,

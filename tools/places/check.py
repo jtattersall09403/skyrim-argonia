@@ -91,6 +91,14 @@ def point_seg(p, a, b) -> float:
     return float(B.seg_dist(p[0], p[1], a[0], a[1], b[0], b[1]))
 
 
+def _seg_d(px: float, py: float, a: np.ndarray, b: np.ndarray) -> np.ndarray:
+    """A point's distance in plan to each segment a[i]..b[i]."""
+    dx, dy = b[:, 0] - a[:, 0], b[:, 1] - a[:, 1]
+    L = dx * dx + dy * dy
+    t = np.clip(((px - a[:, 0]) * dx + (py - a[:, 1]) * dy) / np.where(L > 0, L, 1.0), 0.0, 1.0)
+    return np.hypot(px - (a[:, 0] + t * dx), py - (a[:, 1] + t * dy))
+
+
 class Nav:
     """One navmesh decoded: verts, triangles, internal neighbours, edge links and door triangles."""
 
@@ -103,20 +111,94 @@ class Nav:
         self.links = [(int(ln["type"]), key_of_raw(int(ln["navm"])), int(ln["tri"])) for ln in nv.links]
         self.doors = [(int(d["tri"]), key_of_raw(int(d["door"]))) for d in nv.doors]
 
+    def _geom(self):
+        """The triangles' corners, mean heights and plan bounds, as arrays (made at the first lookup)."""
+        g = self.__dict__.get("_g")
+        if g is None:
+            v = np.asarray(self.verts, float).reshape(-1, 3)
+            t = np.asarray(self.tri, int).reshape(-1, 3)
+            a, b, c = v[t[:, 0]], v[t[:, 1]], v[t[:, 2]]
+            box = (v[:, :2].min(axis=0), v[:, :2].max(axis=0)) if len(t) else (np.zeros(2), np.zeros(2))
+            g = self._g = (a, b, c, (a[:, 2] + b[:, 2] + c[:, 2]) / 3, box)
+        return g
+
+    def near(self, p, plan_tol=STOP_PLAN_TOL, z_tol=STOP_Z_TOL) -> tuple[int, float]:
+        """The triangle a standing point is on, and how well: within plan_tol of it in plan and z_tol of its mean height,
+        the one under the point (else the nearest in plan) at the nearest height. (-1, inf) when none is."""
+        a, b, c, zc, (lo, hi) = self._geom()
+        px, py = float(p[0]), float(p[1])
+        if not len(zc) or px < lo[0] - plan_tol or py < lo[1] - plan_tol or px > hi[0] + plan_tol or py > hi[1] + plan_tol:
+            return -1, float("inf")
+        dz = np.abs(zc - float(p[2]))
+        idx = np.flatnonzero(dz <= z_tol)
+        if not len(idx):
+            return -1, float("inf")
+        a, b, c, dz = a[idx], b[idx], c[idx], dz[idx]
+        d1 = (px - b[:, 0]) * (a[:, 1] - b[:, 1]) - (a[:, 0] - b[:, 0]) * (py - b[:, 1])
+        d2 = (px - c[:, 0]) * (b[:, 1] - c[:, 1]) - (b[:, 0] - c[:, 0]) * (py - c[:, 1])
+        d3 = (px - a[:, 0]) * (c[:, 1] - a[:, 1]) - (c[:, 0] - a[:, 0]) * (py - a[:, 1])
+        inside = ~(((d1 < 0) | (d2 < 0) | (d3 < 0)) & ((d1 > 0) | (d2 > 0) | (d3 > 0)))
+        dp = np.minimum(np.minimum(_seg_d(px, py, a, b), _seg_d(px, py, b, c)), _seg_d(px, py, c, a))
+        dp = np.where(inside, 0.0, dp)
+        score = np.where(dp <= plan_tol, dp + dz * 0.01, np.inf)
+        i = int(np.argmin(score))
+        return (int(idx[i]), float(score[i])) if np.isfinite(score[i]) else (-1, float("inf"))
+
     def tri_at(self, p, plan_tol=STOP_PLAN_TOL, z_tol=STOP_Z_TOL) -> int:
-        v = self.verts
-        best, bd = -1, float("inf")
-        for i, t in enumerate(self.tri):
-            a, b, c = v[t[0]], v[t[1]], v[t[2]]
-            d1 = (p[0] - b[0]) * (a[1] - b[1]) - (a[0] - b[0]) * (p[1] - b[1])
-            d2 = (p[0] - c[0]) * (b[1] - c[1]) - (b[0] - c[0]) * (p[1] - c[1])
-            d3 = (p[0] - a[0]) * (c[1] - a[1]) - (c[0] - a[0]) * (p[1] - a[1])
-            inside = not ((d1 < 0 or d2 < 0 or d3 < 0) and (d1 > 0 or d2 > 0 or d3 > 0))
-            dp = 0.0 if inside else min(point_seg(p, a, b), point_seg(p, b, c), point_seg(p, c, a))
-            dz = abs((a[2] + b[2] + c[2]) / 3 - p[2])
-            if dp <= plan_tol and dz <= z_tol and dp + dz * 0.01 < bd:
-                best, bd = i, dp + dz * 0.01
+        return self.near(p, plan_tol, z_tol)[0]
+
+    def seam_edges(self) -> dict:
+        """Every triangle edge lying on a cell line, by (the axis the line fixes, the line's cell index): rows of
+        [lo, hi along the line, the two ends' place along it and height]. Made at the first asking."""
+        got = self.__dict__.get("_seams")
+        if got is None:
+            a, b, c, _, _ = self._geom()
+            got = self._seams = {}
+            for p, q in ((a, b), (b, c), (c, a)):
+                for ax in (0, 1):
+                    line = np.round(p[:, ax] / B.CELL)
+                    on = (np.abs(p[:, ax] - line * B.CELL) < 1) & (np.abs(q[:, ax] - line * B.CELL) < 1)
+                    for i in np.flatnonzero(on):
+                        u, w = float(p[i, 1 - ax]), float(q[i, 1 - ax])
+                        got.setdefault((ax, int(line[i])), []).append((min(u, w), max(u, w), u, float(p[i, 2]), w, float(q[i, 2])))
+            for k in got:
+                got[k] = np.asarray(got[k], float)
+        return got
+
+
+class NavIndex:
+    """Every navmesh by where it is, so a point is looked up in the meshes that can hold it: an exterior mesh by its
+    cell, an interior's by its space."""
+
+    def __init__(self, navs: dict):
+        self.by_cell: dict = defaultdict(list)
+        self.by_space: dict = defaultdict(list)
+        for n in navs.values():
+            if n.space == "exterior" and n.cell is not None:
+                self.by_cell[tuple(n.cell)].append(n)
+            else:
+                self.by_space[n.space].append(n)
+
+    def around(self, space: str, p, tol: float = STOP_PLAN_TOL) -> list:
+        if space != "exterior":
+            return self.by_space.get(space, [])
+        cells = {B.cell_of(p[0] + dx, p[1] + dy) for dx in (-tol, tol) for dy in (-tol, tol)}
+        return [n for c in sorted(cells) for n in self.by_cell.get(c, ())] + self.by_space.get("exterior", [])
+
+    def at(self, space: str, p, plan_tol=STOP_PLAN_TOL, z_tol=STOP_Z_TOL):
+        """(navmesh key, triangle) a standing point of `space` is on: the best of every mesh round it; None when off."""
+        best, bs = None, float("inf")
+        for n in self.around(space, p, plan_tol):
+            t, sc = n.near(p, plan_tol, z_tol)
+            if t >= 0 and sc < bs:
+                best, bs = (n.fk, t), sc
         return best
+
+
+def nav_index(ctx: dict) -> NavIndex:
+    if ctx.get("_nav_index_of") is not ctx["navs"]:
+        ctx["_nav_index"], ctx["_nav_index_of"] = NavIndex(ctx["navs"]), ctx["navs"]
+    return ctx["_nav_index"]
 
 
 def components(navs: dict[str, Nav], door_pairs: dict[str, str]) -> dict[tuple[str, int], int]:
@@ -369,6 +451,15 @@ def door_pairs(ctx) -> dict[str, str]:
 def check_doors(ctx) -> list[str]:
     m = mine(ctx)
     refs = {**{r["fk"]: r for r in ctx["dump"]["refs"]}}
+    idx = nav_index(ctx)
+    solids: dict = defaultdict(list)  # per space: the bodies an arrival can stand in, each with its reach in plan
+    for o in ctx["dump"]["refs"]:
+        row = m["rows"].get(o["fk"])
+        # an interior's shell holds the room: its buildings and statics are not bodies to stand in
+        if row and o.get("bounds") and row.get("kind") in (SOLID if o["space"] == "exterior" else SOLID - {"building", "static"}):
+            bb = o["bounds"]
+            reach = math.sqrt(sum(max(abs(bb[i]), abs(bb[i + 3])) ** 2 for i in range(3))) * float(o.get("scale") or 1.0)
+            solids[o["space"]].append((o, row, reach))
     bad = []
     for r in m["refs"].values():
         d = r.get("door")
@@ -386,15 +477,13 @@ def check_doors(ctx) -> list[str]:
         space = r["space"]
         on_id = (m["rows"].get(r["fk"], {}).get("seat") or {}).get("on")
         stands_on = next((x["fk"] for x in m["rows"].values() if x.get("id") == on_id), None) if on_id else None
-        navs = [n for n in ctx["navs"].values() if n.space == space or (space == "exterior" and n.space == "exterior")]
-        if not any(n.tri_at(at) >= 0 for n in navs):
+        if idx.at(space, at) is None:
             bad.append(f"door {rid}: its arrival point {[round(v) for v in at]} is on no navmesh (facing a wall?)")
-        for o in ctx["dump"]["refs"]:
-            kinds = SOLID if space == "exterior" else SOLID - {"building", "static"}  # an interior's shell holds the room
-            if o["fk"] == stands_on:
+        for o, row, reach in solids.get(space, ()):
+            if o["fk"] == stands_on or o["fk"] == r["fk"]:
                 continue  # the thing the door stands on (its own building) holds the door, not the arrival
-            if o["space"] == space and o["fk"] != r["fk"] and m["rows"].get(o["fk"], {}).get("kind") in kinds and stands_inside({**o, "walk": m["rows"][o["fk"]].get("walk")}, at):
-                bad.append(f"door {rid}: its arrival point is inside {m['rows'].get(o['fk'], {}).get('id', o['fk'])}")
+            if math.dist(at[:2], o["pos"][:2]) <= reach and stands_inside({**o, "walk": row.get("walk")}, at):
+                bad.append(f"door {rid}: its arrival point is inside {row.get('id', o['fk'])}")
     return bad
 
 
@@ -404,6 +493,7 @@ def check_people(ctx) -> list[str]:
     allrefs = {r["fk"]: r for r in ctx["dump"]["refs"]}
     pk = {p["fk"]: p for p in ctx["dump"]["packages"]}
     comp = components(ctx["navs"], door_pairs(ctx))
+    node = nav_index(ctx).at
     bad = []
 
     def where(fk):
@@ -411,14 +501,6 @@ def check_people(ctx) -> list[str]:
         if r is None:
             return None
         return r["space"], r["pos"]
-
-    def node(space, pos):
-        for n in ctx["navs"].values():
-            if n.space == space:
-                t = n.tri_at(pos)
-                if t >= 0:
-                    return (n.fk, t)
-        return None
 
     for n in ppl.get("npcs", []):
         got = m["npcs"].get(n["fk"])
@@ -442,16 +524,33 @@ def check_people(ctx) -> list[str]:
                 if tgt is None:
                     bad.append(f"{who}: {p['edid']} patrols its linked ref, but the actor has no linked ref without a keyword")
                     continue
-                seen, cur = set(), tgt
-                while cur and cur not in seen:  # the chain of markers must be ours and resolve
-                    seen.add(cur)
+                chain, cur = [], tgt
+                while cur and cur not in chain:  # the chain of markers must be ours and resolve
                     r = allrefs.get(cur)
                     if r is None:
                         bad.append(f"{who}: {p['edid']} patrol chain reaches {cur}, which is not a ref of ours")
                         break
+                    chain.append(cur)
                     cur = next((ln["ref"] for ln in r.get("linked") or [] if not ln.get("keyword")), None)
-                if len(seen) < 2:
+                if len(chain) < 2:
                     bad.append(f"{who}: {p['edid']} patrol chain has fewer than two markers")
+                # every marker stands on the walking mesh, on the island of the marker before it (a loop's first
+                # after its last): the game walks marker to marker, and stops at one it cannot path to
+                on = [node(*where(k)) for k in chain]
+                for j, k in enumerate(chain):
+                    if on[j] is None:
+                        sp, at = where(k)
+                        bad.append(f"{who}: {p['edid']} patrol marker {j + 1} of {len(chain)} at {[round(v) for v in at]} in {sp} "
+                                   f"is off the navmesh")
+                legs = list(zip(range(len(chain)), range(1, len(chain)))) + ([(len(chain) - 1, chain.index(cur))] if cur in chain else [])
+                for i, j in legs:
+                    if on[i] is not None and on[j] is not None and comp.get(on[i]) != comp.get(on[j]):
+                        bad.append(f"{who}: {p['edid']} patrol marker {j + 1} of {len(chain)} is not reachable from marker {i + 1}")
+                if chain and on[0] is not None:
+                    if prev is not None and comp.get(prev) != comp.get(on[0]):
+                        bad.append(f"{who}: {p['edid']} is not reachable from the stop before")
+                    prev = on[0]
+                continue
             w = where(tgt) if tgt else None
             if w is None:
                 bad.append(f"{who}: {p['edid']} has no place of ours")
@@ -476,7 +575,11 @@ def check_navmesh(ctx) -> list[str]:
             for k in range(3):
                 if not n.flags[i] & (1 << k):
                     continue
-                _, tgt, tt = n.links[int(n.edge[i][k])]
+                e = int(n.edge[i][k])
+                if not 0 <= e < len(n.links):
+                    bad.append(f"{n.fk}: tri {i} names edge link {e}, which the mesh does not have ({len(n.links)} links)")
+                    continue
+                _, tgt, tt = n.links[e]
                 o = navs.get(tgt)
                 if o is None:
                     bad.append(f"{n.fk}: tri {i} links into {tgt}, which is not loaded")
@@ -484,9 +587,11 @@ def check_navmesh(ctx) -> list[str]:
                 if not 0 <= tt < len(o.tri):
                     bad.append(f"{n.fk}: tri {i} links {tgt} tri {tt}, which {tgt} does not have ({len(o.tri)} triangles)")
                     continue
-                if not any(o.flags[tt] & (1 << q) and o.links[int(o.edge[tt][q])][1] == n.fk and o.links[int(o.edge[tt][q])][2] == i for q in range(3)):
+                if not any(o.flags[tt] & (1 << q) and 0 <= int(o.edge[tt][q]) < len(o.links) and o.links[int(o.edge[tt][q])][1] == n.fk
+                           and o.links[int(o.edge[tt][q])][2] == i for q in range(3)):
                     bad.append(f"{n.fk}: tri {i} links {tgt} tri {tt}, which does not link back (unjoined edge)")
     # open edges of ours on a seam with a neighbour's navmesh across: unjoined
+    idx = nav_index(ctx)
     for n in mine_navs.values():
         if n.space != "exterior" or n.cell is None:
             continue
@@ -498,7 +603,7 @@ def check_navmesh(ctx) -> list[str]:
                 a, b = n.verts[n.tri[i][k]], n.verts[n.tri[i][(k + 1) % 3]]
                 on = (abs(a[0] - x0) < 1 and abs(b[0] - x0) < 1) or (abs(a[0] - x0 - B.CELL) < 1 and abs(b[0] - x0 - B.CELL) < 1) or \
                      (abs(a[1] - y0) < 1 and abs(b[1] - y0) < 1) or (abs(a[1] - y0 - B.CELL) < 1 and abs(b[1] - y0 - B.CELL) < 1)
-                if on and _across(navs, n, (a + b) / 2, a, b):
+                if on and _across(idx, n, (a + b) / 2, a, b):
                     bad.append(f"{n.fk}: open seam edge at {[round(v) for v in (a + b) / 2]} with navmesh across it (unjoined)")
     # islands that hold a door or a routine stop of the place
     comp = components(navs, door_pairs(ctx))
@@ -517,7 +622,7 @@ def check_navmesh(ctx) -> list[str]:
     return bad
 
 
-def _across(navs, n, mid, a=None, b=None) -> bool:
+def _across(idx: NavIndex, n, mid, a=None, b=None) -> bool:
     """A neighbour's navmesh meets this open seam edge: one of its own edges lies on the same cell line over a
     stretch of ours at a like height (the world's seam audit, tools/navmesh/province.seam_audit: a neighbour that
     only touches the line at a corner, or none, is where walkable ground ends at the seam, a boundary)."""
@@ -525,29 +630,22 @@ def _across(navs, n, mid, a=None, b=None) -> bool:
     if a is None:
         a = b = mid
     ax = 0 if abs(a[0] - b[0]) < 1 else 1  # the axis the cell line fixes
-    lo, hi = sorted((a[1 - ax], b[1 - ax]))
-    for o in navs.values():
-        if o is n or o.space != "exterior" or o.cell is None or o.cell == n.cell:
-            continue
-        if abs(o.cell[0] - n.cell[0]) + abs(o.cell[1] - n.cell[1]) != 1:
-            continue
-        v = o.verts
-        for t in o.tri:
-            for k in range(3):
-                p, q = v[t[k]], v[t[(k + 1) % 3]]
-                if abs(p[ax] - a[ax]) >= 1 or abs(q[ax] - a[ax]) >= 1:
-                    continue
-                plo, phi = sorted((p[1 - ax], q[1 - ax]))
-                s0, s1 = max(lo, plo), min(hi, phi)
-                if s1 - s0 < 1:
-                    continue
-                m = (s0 + s1) / 2
+    line = (ax, int(round(a[ax] / B.CELL)))
+    lo, hi = sorted((float(a[1 - ax]), float(b[1 - ax])))
 
-                def zat(e0, e1):
-                    d = e1[1 - ax] - e0[1 - ax]
-                    return e0[2] + (m - e0[1 - ax]) / d * (e1[2] - e0[2]) if abs(d) > 1e-6 else (e0[2] + e1[2]) / 2
-                if abs(zat(a, b) - zat(p, q)) <= params.SEAM_DZ:
-                    return True
+    def zat(u0, z0, u1, z1, m):
+        d = u1 - u0
+        return np.where(np.abs(d) > 1e-6, z0 + (m - u0) / np.where(np.abs(d) > 1e-6, d, 1.0) * (z1 - z0), (z0 + z1) / 2)
+    for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+        for o in idx.by_cell.get((n.cell[0] + dx, n.cell[1] + dy), ()):
+            E = o.seam_edges().get(line)
+            if o is n or E is None:
+                continue
+            s0, s1 = np.maximum(lo, E[:, 0]), np.minimum(hi, E[:, 1])
+            m = (s0 + s1) / 2
+            ours = zat(float(a[1 - ax]), float(a[2]), float(b[1 - ax]), float(b[2]), m)
+            if ((s1 - s0 >= 1) & (np.abs(ours - zat(E[:, 2], E[:, 3], E[:, 4], E[:, 5], m)) <= params.SEAM_DZ)).any():
+                return True
     return False
 
 
@@ -560,6 +658,9 @@ def check_land(ctx) -> list[str]:
     world = {(c["x"], c["y"]): B.cell_steps(c) for c in ctx["facts"]["cells"] if c.get("deltas")}
     for r in rows:
         cx, cy = r["cell"]
+        if (cx, cy) not in world or (cx, cy) not in steps:
+            bad.append(f"land {cx},{cy}: land.jsonl patches a cell the world has no land for")
+            continue
         for row, col, dz in r["verts"]:
             want = round(world[(cx, cy)][int(row), int(col)] + dz / 8.0)
             got = steps[(cx, cy)][int(row), int(col)]
@@ -590,6 +691,25 @@ def check_clear(ctx) -> list[str]:
     buildings = [r for r in m["refs"].values() if m["rows"].get(r["fk"], {}).get("kind") in ("building", "static") and r["space"] == "exterior"]
     doors = [r for r in m["refs"].values() if r.get("door") and r["space"] == "exterior"]
     paths = ctx.get("paths") if "paths" in ctx else (B.jsonl(ctx["place_dir"] / "paths.jsonl") if ctx.get("place_dir") else [])
+    G = 1024.0  # a grid over the place: each plant is tested against what reaches its square only
+    near_b, near_d, near_p = defaultdict(list), defaultdict(list), defaultdict(list)
+
+    def squares(x0, y0, x1, y1):
+        return ((i, j) for i in range(math.floor(x0 / G), math.floor(x1 / G) + 1) for j in range(math.floor(y0 / G), math.floor(y1 / G) + 1))
+    for b in buildings:
+        bb = b.get("bounds")
+        if bb:
+            rad = math.sqrt(sum(max(abs(bb[i]), abs(bb[i + 3])) ** 2 for i in range(3))) * float(b.get("scale") or 1.0)
+            for sq in squares(b["pos"][0] - rad, b["pos"][1] - rad, b["pos"][0] + rad, b["pos"][1] + rad):
+                near_b[sq].append(b)
+    for d in doors:
+        for sq in squares(d["pos"][0] - PLANT_DOOR_CLEAR, d["pos"][1] - PLANT_DOOR_CLEAR, d["pos"][0] + PLANT_DOOR_CLEAR, d["pos"][1] + PLANT_DOOR_CLEAR):
+            near_d[sq].append(d)
+    for pa in paths:
+        half = float(pa.get("width", 256)) / 2
+        for a, b in zip(pa["points"][:-1], pa["points"][1:]):
+            for sq in squares(min(a[0], b[0]) - half, min(a[1], b[1]) - half, max(a[0], b[0]) + half, max(a[1], b[1]) + half):
+                near_p[sq].append((pa["id"], half, a, b))
     for cell in ctx["facts"]["cells"]:
         for w in cell.get("refs", []):
             if w["fk"] in cleared or int(w.get("flags", 0)) & 0x800 or not (w.get("base_type") in PLANT_TYPES or w.get("plant") is True):  # a plant by its kind, never by default
@@ -598,16 +718,14 @@ def check_clear(ctx) -> list[str]:
             if p is None:
                 continue
             why = None
-            if any(obb_contains(b, p, 1.0) for b in buildings):
+            sq = (math.floor(p[0] / G), math.floor(p[1] / G))
+            if any(obb_contains(b, p, 1.0) for b in near_b.get(sq, ())):
                 why = "in a building"
-            elif any(math.dist(p[:2], d["pos"][:2]) < PLANT_DOOR_CLEAR for d in doors):
+            elif any(math.dist(p[:2], d["pos"][:2]) < PLANT_DOOR_CLEAR for d in near_d.get(sq, ())):
                 why = "in a doorway"
             else:
-                for pa in paths:
-                    pts = pa["points"]
-                    if any(point_seg(p, a, b) < float(pa.get("width", 256)) / 2 for a, b in zip(pts[:-1], pts[1:])):
-                        why = f"on path {pa['id']}"
-                        break
+                on = next((pid for pid, half, a, b in near_p.get(sq, ()) if point_seg(p, a, b) < half), None)
+                why = f"on path {on}" if on is not None else None
             if why:
                 bad.append(f"world plant {w['fk']} ({w['base']}) stands {why}")
     return bad
@@ -873,8 +991,7 @@ def island_report(ctx, person: str | None = None) -> list[str]:
             r = allrefs.get(p.get("location") or p.get("target"))
             if r is None:
                 continue
-            nd = next(((nv.fk, t) for nv in ctx["navs"].values() if nv.space == r["space"]
-                       for t in [nv.tri_at(r["pos"])] if t >= 0), None)
+            nd = nav_index(ctx).at(r["space"], r["pos"])
             c = comp.get(nd)
             info[c]["stops"] += 1
             info[c]["people"].add(n["id"])

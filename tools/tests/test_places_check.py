@@ -315,6 +315,29 @@ def test_a_seam_with_a_step_or_only_a_corner_across_is_a_boundary():
     assert not any("open seam edge" in f for f in C.check_navmesh(seam_pair(4096, 800)))  # touches the line at a corner
 
 
+def test_a_patrol_marker_off_the_mesh_or_on_another_island_fails_people():
+    c = patrol_ctx()
+    c["dump"]["refs"][-1]["pos"] = [3900.0, 3900.0, 800.0]  # the second marker: 400 units past the mesh's edge
+    assert any("patrol marker 2 of 2" in x and "off the navmesh" in x for x in C.run(c)["people"])
+    c = patrol_ctx()
+    c["navs"][k(0x601, W)] = nav(k(0x601, W), "exterior", (1, 0), 4200, 1000, 5000, 3500, 800)  # ground no edge joins
+    c["dump"]["refs"][-1]["pos"] = [4500.0, 1600.0, 800.0]
+    res = C.run(c)["people"]
+    assert any("patrol marker 2 of 2 is not reachable from marker 1" in x for x in res)
+    assert any("patrol marker 1 of 2 is not reachable from marker 2" in x for x in res)  # the loop's way back
+
+
+def test_a_point_is_looked_up_on_the_nearest_surface_of_the_meshes_round_it():
+    deck = nav(k(0x602, W), "exterior", (0, 0), 1000, 1000, 3500, 3500, 1000)
+    ground = nav(k(0x600, W), "exterior", (0, 0), 1000, 1000, 3500, 3500, 800)
+    idx = C.NavIndex({deck.fk: deck, ground.fk: ground})
+    assert idx.at("exterior", [2000.0, 2000.0, 990.0])[0] == deck.fk
+    assert idx.at("exterior", [2000.0, 2000.0, 805.0])[0] == ground.fk
+    assert idx.at("exterior", [3560.0, 2000.0, 800.0]) == (ground.fk, 0)  # 60 units off the edge: the triangle beside it
+    assert idx.at("exterior", [3700.0, 2000.0, 800.0]) is None and idx.at("exterior", [2000.0, 2000.0, 1200.0]) is None
+    assert idx.at("house", [2000.0, 2000.0, 800.0]) is None
+
+
 def test_the_nordic_review_outranks_the_rule_and_a_bare_light_passes():
     c = ctx()
     d = c["dump"]["refs"][0]
