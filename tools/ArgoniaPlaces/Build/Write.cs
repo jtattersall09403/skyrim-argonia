@@ -379,6 +379,9 @@ static class Write
                 if (!sl.Key.IsNull) ol.Key.SetTo(ctx.Link(C.Key(sl.Key.FormKey)));
             }
         }
+        // the same when the row itself says it (a bundle ref's `radius` and `count`): the row over the source
+        if (r.TryGetProperty("radius", out var rad) && rad.ValueKind == JsonValueKind.Number) o.Radius = rad.GetSingle();
+        if (r.TryGetProperty("count", out var cnt) && cnt.ValueKind == JsonValueKind.Number) o.ItemCount = cnt.GetInt32();
         if (r.TryGetProperty("linked", out var ln) && ln.ValueKind == JsonValueKind.Array)
             foreach (var l in ln.EnumerateArray())
             {

@@ -478,7 +478,8 @@ their own cell (interior), as vanilla files them.
    (`removed: true` drops it; `base`, `pos`, `rot`, `scale`, `owner`, `door` replace the source's); a row with a
    `src` outside the kept room is not in the copy; a row without `src` is added. A copied ref whose base is still
    the source's keeps what the source ref itself says of it: a light's radius and light data, an item count, a
-   charge, open by default, ignored by sandbox, its lock's key. Source actors are never copied: people are ours.
+   charge, open by default, ignored by sandbox, its lock's key. Any row's own `radius` and `count` (the ref
+   shape's) are built as given, in a room or outside. Source actors are never copied: people are ours.
 3. Doors: a door pair is one row on each side (the exterior door, and the copy's override of the source door it
    leads to) whose `door.to_space` and `to_ref` (our id, or a source key in a copied space) name each other; one row
    naming its partner is enough, and both get teleports. One using door x lands at x's `door.to_pos` and `to_rot`
