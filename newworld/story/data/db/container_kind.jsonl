@@ -1,0 +1,18 @@
+{"id":"barrel","always_significant":false,"words":"barrel | keg"}
+{"id":"basket","always_significant":false,"words":"basket"}
+{"id":"boss-chest","always_significant":true,"words":"boss"}
+{"id":"chest","always_significant":true,"words":"chest | coffer | trunk"}
+{"id":"coin-purse","always_significant":false,"words":"coinpurse | coin purse"}
+{"id":"corpse","always_significant":true,"words":"corpse | remains | skeleton | deadbody | dead body | \\bdead"}
+{"id":"crate","always_significant":false,"words":"crate | box"}
+{"id":"cupboard","always_significant":false,"words":"cupboard | cabinet | hutch"}
+{"id":"dresser","always_significant":false,"words":"dresser | drawer"}
+{"id":"end-table","always_significant":false,"words":"endtable | end table | nightstand | night stand"}
+{"id":"merchant-chest","always_significant":true,"words":"merchant"}
+{"id":"other","always_significant":false,"words":"(none of the above)"}
+{"id":"sack","always_significant":false,"words":"sack | \\bbag"}
+{"id":"safe","always_significant":true,"words":"\\bsafe"}
+{"id":"satchel","always_significant":false,"words":"satchel | knapsack | backpack"}
+{"id":"strongbox","always_significant":true,"words":"strongbox | strong box | lockbox | lock box"}
+{"id":"urn","always_significant":false,"words":"urn | pot\\b | jar"}
+{"id":"wardrobe","always_significant":false,"words":"wardrobe"}

@@ -1,0 +1,50 @@
+{
+ "about": "Lookups of the people tables (tools/newworld/stockdb.py). Add a row here before a person uses it.",
+ "race": [
+  {"id": "ArgonianRace", "form_key": "013740:Skyrim.esm", "name": "Argonian"},
+  {"id": "BretonRace", "form_key": "013741:Skyrim.esm", "name": "Breton"},
+  {"id": "DarkElfRace", "form_key": "013742:Skyrim.esm", "name": "Dark Elf"},
+  {"id": "HighElfRace", "form_key": "013743:Skyrim.esm", "name": "High Elf"},
+  {"id": "ImperialRace", "form_key": "013744:Skyrim.esm", "name": "Imperial"},
+  {"id": "KhajiitRace", "form_key": "013745:Skyrim.esm", "name": "Khajiit"},
+  {"id": "NordRace", "form_key": "013746:Skyrim.esm", "name": "Nord"},
+  {"id": "OrcRace", "form_key": "013747:Skyrim.esm", "name": "Orc"},
+  {"id": "RedguardRace", "form_key": "013748:Skyrim.esm", "name": "Redguard"},
+  {"id": "WoodElfRace", "form_key": "013749:Skyrim.esm", "name": "Wood Elf"}
+ ],
+ "person_role": [
+  {"id": "resident", "about": "Lives and works in the place; no service the place promises."},
+  {"id": "guard", "about": "Keeps the peace: a member of the place's guard (in Black Marsh, often a tribal levy)."},
+  {"id": "merchant", "about": "Sells general goods (trader-general)."},
+  {"id": "smith", "about": "Works the forge and sells arms and armour (trader-blacksmith)."},
+  {"id": "apothecary", "about": "Sells ingredients and potions (trader-apothecary)."},
+  {"id": "spell-trader", "about": "Sells spell tomes and magic goods (trader-spells)."},
+  {"id": "innkeeper", "about": "Keeps the inn, sells food and drink, rents a bed."},
+  {"id": "boatman", "about": "Carries travellers by boat for a fare (carriage-or-boat)."},
+  {"id": "trainer", "about": "Teaches a skill for gold."},
+  {"id": "leader", "about": "Holds the place or speaks for it."},
+  {"id": "priest", "about": "Keeps a shrine or temple."}
+ ],
+ "household_role": [
+  {"id": "head", "about": "Heads the household; one per household."},
+  {"id": "partner", "about": "The head's partner."},
+  {"id": "grown child", "about": "A grown child of the head or partner."},
+  {"id": "child", "about": "A child of the household."},
+  {"id": "elder", "about": "A parent or elder of the head or partner."},
+  {"id": "sibling", "about": "A sibling of the head or partner."},
+  {"id": "cousin", "about": "Further kin living under the roof."},
+  {"id": "kin", "about": "Kin of unstated degree."},
+  {"id": "lodger", "about": "Lives under the roof without being kin."},
+  {"id": "levy", "about": "A guard of the levy quartered with the household."}
+ ],
+ "relation_kind": [
+  {"id": "parent-of", "symmetric": false, "about": "The first is a parent of the second."},
+  {"id": "partner-of", "symmetric": true, "about": "Partners."},
+  {"id": "sibling-of", "symmetric": true, "about": "Siblings."},
+  {"id": "kin-of", "symmetric": true, "about": "Kin of another degree."},
+  {"id": "friend-of", "symmetric": true, "about": "Friends."},
+  {"id": "rival-of", "symmetric": true, "about": "Rivals or enemies."},
+  {"id": "works-for", "symmetric": false, "about": "The first works for the second."},
+  {"id": "owes", "symmetric": false, "about": "The first owes the second a debt or a favour."}
+ ]
+}

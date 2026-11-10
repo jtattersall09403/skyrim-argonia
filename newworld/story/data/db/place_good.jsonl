@@ -1,0 +1,7 @@
+{"place_id":"helstrom","good_id":"eggs","relation":"makes","why":"Its market traders sell eggs.","statement_tier_id":"EXTRAPOLATED"}
+{"place_id":"helstrom","good_id":"feathers","relation":"makes","why":"Its market traders sell Murkwood feathers.","statement_tier_id":"EXTRAPOLATED"}
+{"place_id":"helstrom","good_id":"hide-and-leather","relation":"makes","why":"The market smithy has a tanning rack.","statement_tier_id":"EXTRAPOLATED"}
+{"place_id":"helstrom","good_id":"ironwork","relation":"makes","why":"The Root-Folk smith works the market smithy's forge.","statement_tier_id":"EXTRAPOLATED"}
+{"place_id":"helstrom","good_id":"river-fish","relation":"makes","why":"Its market traders sell river fish.","statement_tier_id":"EXTRAPOLATED"}
+{"place_id":"helstrom","good_id":"river-goods","relation":"trades","why":"Helstrom does not trade outward: it receives and redistributes what the rivers bring it.","statement_tier_id":"EXTRAPOLATED"}
+{"place_id":"helstrom","good_id":"sap","relation":"makes","why":"Its market traders sell sap; a sap and herb seller keeps a stall.","statement_tier_id":"EXTRAPOLATED"}

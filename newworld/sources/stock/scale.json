@@ -25,7 +25,7 @@
     {"id": "T6", "rank": 6, "label": "Exceptional", "ref_level": 46, "below": "T5", "enchant_grade": 6, "lock": "Requires key", "gold": [1500, 5000], "value_max": 100000,
      "weapon": ["WeapMaterialDaedric", "DLC1WeapMaterialDragonbone"], "armour": ["ArmorMaterialDaedric", "ArmorMaterialDragonscale", "ArmorMaterialDragonplate"],
      "soul_gem": "SoulGemBlack", "potion_grade": 6, "gem": ["GemDiamondFlawless"], "jewellery": ["JewelryNecklaceGoldDiamond"],
-     "about": "Uniques and the best gear: authored by story only and counted in the world ledger (newworld/places/exceptional.jsonl); never derived. Vanilla gates: dragonplate 40, daedric and dragonscale 46 to 48; enchantment grade 6 at 43."}
+     "about": "Uniques and the best gear: authored by story only and counted in the world ledger (newworld/sources/stock/unique.json); never derived. Vanilla gates: dragonplate 40, daedric and dragonscale 46 to 48; enchantment grade 6 at 43."}
   ],
 
   "danger_tier": {"D0": "T1", "D1": "T1", "D2": "T2", "D3": "T3", "D4": "T4", "D5": "T5"},
@@ -120,7 +120,7 @@
   },
 
   "ledger": {
-    "file": "newworld/places/exceptional.jsonl",
+    "file": "newworld/sources/stock/unique.json",
     "caps": {"unique": 40, "T6": 60},
     "why": "The exceptional is authored by story and counted game-wide (owner, 2026-11-10): Skyrim has about 40 hand-placed uniques of note (the dragon priest masks and the uniques on altars and bodies) beside its levelled best gear; we hold to that order of count, so each is a find."
   },

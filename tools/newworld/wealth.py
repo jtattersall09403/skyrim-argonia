@@ -129,7 +129,7 @@ def load(w) -> None:
     sc = scale()
     for t in sc["tiers"]:
         w.insert("stock_tier", id=t["id"], rank=t["rank"], label=t["label"], ref_level=t["ref_level"],
-                 enchant_grade=t["enchant_grade"], lock=t["lock"], gold_lo=t["gold"][0], gold_hi=t["gold"][1],
+                 enchant_grade=t["enchant_grade"], lock_level_id=t["lock"], gold_lo=t["gold"][0], gold_hi=t["gold"][1],
                  value_max=t["value_max"], about=t["about"])
     for b in sc["place_wealth_bands"]:
         w.insert("place_wealth_band", id=b["id"], rank=b["rank"], label=b["label"], min_score=b["min_score"],

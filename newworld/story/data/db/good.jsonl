@@ -1,0 +1,7 @@
+{"id":"eggs","name":"Eggs","kind":"food","about":"Bird and reptile eggs gathered for food."}
+{"id":"feathers","name":"Feathers","kind":"material","about":"Wading-bird and fellrunner feathers, dressed for fletching and finery."}
+{"id":"hide-and-leather","name":"Hide and leather","kind":"material","about":"Hides tanned into leather, and the light armour made of them."}
+{"id":"ironwork","name":"Iron and steel work","kind":"craft","about":"Weapons, armour and tools forged from iron and steel by a smith."}
+{"id":"river-fish","name":"River fish","kind":"food","about":"Fish netted and speared from the rivers."}
+{"id":"river-goods","name":"River goods","kind":"craft","about":"Whatever the rafts and rootworms bring down the rivers to be redistributed: the interior's crafts and the coast's imports."}
+{"id":"sap","name":"Sap","kind":"material","about":"Tree sap tapped and sold for medicine and alchemy (not the Hist's own)."}

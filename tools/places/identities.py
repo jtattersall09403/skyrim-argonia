@@ -1,10 +1,13 @@
 """Light identities of a place's people (nw-03, Stocking: light identities come first): a name, a household, a
-trade, a wealth band and a line or two of backstory per person, in newworld/places/<place>/identities.jsonl, one row
-per person id of the place's people.jsonl. The drafter writes each row's name onto its person.
+trade, a wealth band and a line or two of backstory per person. They are world facts, kept in the new world's
+database source `newworld/sources/people/<place>.json` (tables person, household, person_note; loaded by
+tools/newworld/stockdb.py), one person per person id of the place's people.jsonl, which keeps only placement. The
+drafter writes each person's name onto its placement row.
 
     python -m tools.places identities check helstrom
 
-A row: {id, name, household: {id, role}, trade, wealth: W1..W5, backstory, cites: [...]}. The check proves:
+read() gives each person as {id, name, household: {id, role}, trade, wealth: W1..W5, backstory, cites: [...]}
+(the backstory note and its cites). The check proves:
 every person has one row and every row a person; names unique in the place, never another place's talker's, and by
 35-cast.md section 54 and 86-never-reuse-names.md (no never-reuse or canon name, nothing Nordic, at most a third
 Verb-the-Noun, an image once); a household is one roof (its members share a home in people.jsonl, it has one head,
@@ -27,12 +30,28 @@ FIXED_ROLES = ("head", "partner")     # the drafter's household places an identi
 SENTENCE = re.compile(r"[.!?](?:\s+|$)")
 
 
+def source(place_id: str, places: Path = PLACES) -> Path:
+    """The people source file of a place: newworld/sources/people/<place>.json beside newworld/places."""
+    return places.parent / "sources" / "people" / f"{place_id}.json"
+
+
+def person_rows(place_id: str, places: Path = PLACES) -> list[dict]:
+    """Every person row of the place's people source, as identities (duplicates kept, for the check)."""
+    p = source(place_id, places)
+    if not p.exists():
+        return []
+    out = []
+    for r in json.loads(p.read_text(encoding="utf-8")).get("people", []):
+        note = next((n for n in r.get("notes", []) if n.get("aspect") == "backstory"), {})
+        out.append({"id": r.get("id"), "name": r.get("name"), "household": r.get("household"), "trade": r.get("trade"),
+                    "wealth": r.get("wealth"), "role": r.get("role"), "backstory": note.get("text"),
+                    "cites": note.get("cites") or []})
+    return out
+
+
 def read(place_id: str, places: Path = PLACES) -> dict[str, dict]:
     """The place's identities by person id; {} when it has none yet."""
-    p = places / place_id / "identities.jsonl"
-    if not p.exists():
-        return {}
-    return {r["id"]: r for r in (json.loads(ln) for ln in p.read_text(encoding="utf-8").splitlines() if ln.strip())}
+    return {r["id"]: r for r in person_rows(place_id, places)}
 
 
 def db_resolver() -> Callable[[str], bool]:
@@ -67,9 +86,13 @@ def check(place_id: str, places: Path = PLACES, resolve: Callable[[str], bool] |
     banned, taken = names if names is not None else name_rules()
     pdir = places / place_id
     people = {p["id"]: p for p in (json.loads(ln) for ln in (pdir / "people.jsonl").read_text().splitlines() if ln)}
-    lines = [ln for ln in (pdir / "identities.jsonl").read_text(encoding="utf-8").splitlines() if ln.strip()]
-    rows = [json.loads(ln) for ln in lines]
+    rows_ = person_rows(place_id, places)
     bad: list[str] = []
+    if not rows_:
+        return [f"{place_id}: no people source at {source(place_id, places)}"]
+    bad += [f"{r['id']}: role {r['role']!r} but people.jsonl has {people[r['id']].get('role')!r}"
+            for r in rows_ if r["id"] in people and r.get("role") != people[r["id"]].get("role")]
+    rows = rows_
     seen: dict[str, int] = defaultdict(int)
     for r in rows:
         seen[r.get("id")] += 1

@@ -1,0 +1,17 @@
+{
+ "about": "Goods: what places make, trade and need (good, good_material; a place's own rows are in stock/places/<place_id>.json `goods`). good_material names the material keywords or item kinds a maker of the good makes, so a thing made of them is local there (provenance).",
+ "goods": [
+  {"id": "ironwork", "name": "Iron and steel work", "kind": "craft", "about": "Weapons, armour and tools forged from iron and steel by a smith.",
+   "materials": ["WeapMaterialIron", "WeapMaterialSteel", "ArmorMaterialIron", "ArmorMaterialIronBanded", "ArmorMaterialSteel", "ingot-or-ore", "tool"]},
+  {"id": "hide-and-leather", "name": "Hide and leather", "kind": "material", "about": "Hides tanned into leather, and the light armour made of them.",
+   "materials": ["ArmorMaterialHide", "ArmorMaterialLeather", "ArmorMaterialStudded", "hide"]},
+  {"id": "feathers", "name": "Feathers", "kind": "material", "about": "Wading-bird and fellrunner feathers, dressed for fletching and finery.",
+   "materials": ["animal-part", "ammunition"]},
+  {"id": "sap", "name": "Sap", "kind": "material", "about": "Tree sap tapped and sold for medicine and alchemy (not the Hist's own).",
+   "materials": ["ingredient", "potion"]},
+  {"id": "eggs", "name": "Eggs", "kind": "food", "about": "Bird and reptile eggs gathered for food.", "materials": ["food"]},
+  {"id": "river-fish", "name": "River fish", "kind": "food", "about": "Fish netted and speared from the rivers.", "materials": ["food"]},
+  {"id": "river-goods", "name": "River goods", "kind": "craft", "about": "Whatever the rafts and rootworms bring down the rivers to be redistributed: the interior's crafts and the coast's imports.",
+   "materials": ["clutter", "clothing"]}
+ ]
+}

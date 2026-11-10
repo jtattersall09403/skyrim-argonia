@@ -1,0 +1,8 @@
+{"id":"friend-of","symmetric":true,"about":"Friends."}
+{"id":"kin-of","symmetric":true,"about":"Kin of another degree."}
+{"id":"owes","symmetric":false,"about":"The first owes the second a debt or a favour."}
+{"id":"parent-of","symmetric":false,"about":"The first is a parent of the second."}
+{"id":"partner-of","symmetric":true,"about":"Partners."}
+{"id":"rival-of","symmetric":true,"about":"Rivals or enemies."}
+{"id":"sibling-of","symmetric":true,"about":"Siblings."}
+{"id":"works-for","symmetric":false,"about":"The first works for the second."}

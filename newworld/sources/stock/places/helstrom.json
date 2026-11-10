@@ -1,0 +1,18 @@
+{
+ "place_id": "helstrom",
+ "about": "Helstrom's goods and stock (tools/newworld/stockdb.py; contract docs/design/place-studio.md, Stock). The containers, loose things, people's possessions and traders' lists are written by the place-stock skill (lane S2).",
+ "goods": [
+  {"good": "feathers", "relation": "makes", "why": "Its market traders sell Murkwood feathers.", "tier": "EXTRAPOLATED", "cites": ["place_note:helstrom/economy"]},
+  {"good": "sap", "relation": "makes", "why": "Its market traders sell sap; a sap and herb seller keeps a stall.", "tier": "EXTRAPOLATED", "cites": ["place_note:helstrom/economy", "place_give:helstrom/4"]},
+  {"good": "eggs", "relation": "makes", "why": "Its market traders sell eggs.", "tier": "EXTRAPOLATED", "cites": ["place_note:helstrom/economy"]},
+  {"good": "river-fish", "relation": "makes", "why": "Its market traders sell river fish.", "tier": "EXTRAPOLATED", "cites": ["place_note:helstrom/economy"]},
+  {"good": "ironwork", "relation": "makes", "why": "The Root-Folk smith works the market smithy's forge.", "tier": "EXTRAPOLATED", "cites": ["place_give:helstrom/3", "place_give:helstrom/8"]},
+  {"good": "hide-and-leather", "relation": "makes", "why": "The market smithy has a tanning rack.", "tier": "EXTRAPOLATED", "cites": ["place_give:helstrom/13"]},
+  {"good": "river-goods", "relation": "trades", "why": "Helstrom does not trade outward: it receives and redistributes what the rivers bring it.", "tier": "EXTRAPOLATED", "cites": ["place_note:helstrom/economy"]}
+ ],
+ "containers": [],
+ "loose": [],
+ "possessions": [],
+ "traders": [],
+ "deliveries": []
+}

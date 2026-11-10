@@ -1,0 +1,10 @@
+{"id":"child","about":"A child of the household."}
+{"id":"cousin","about":"Further kin living under the roof."}
+{"id":"elder","about":"A parent or elder of the head or partner."}
+{"id":"grown child","about":"A grown child of the head or partner."}
+{"id":"head","about":"Heads the household; one per household."}
+{"id":"kin","about":"Kin of unstated degree."}
+{"id":"levy","about":"A guard of the levy quartered with the household."}
+{"id":"lodger","about":"Lives under the roof without being kin."}
+{"id":"partner","about":"The head's partner."}
+{"id":"sibling","about":"A sibling of the head or partner."}

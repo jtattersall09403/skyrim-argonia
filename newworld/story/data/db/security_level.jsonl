@@ -1,0 +1,6 @@
+{"id":"S0","rank":0,"label":"Open","means":"loose in a public space, or an unlocked container anyone may use (no owner, or the town)"}
+{"id":"S1","rank":1,"label":"Private","means":"owned and unlocked, inside a home or behind a counter: taking it is stealing"}
+{"id":"S2","rank":2,"label":"Locked","means":"a Novice or Apprentice lock"}
+{"id":"S3","rank":3,"label":"Well locked","means":"an Adept lock, or hidden (under a floor, behind a panel)"}
+{"id":"S4","rank":4,"label":"Strong","means":"an Expert lock, in a guarded or private upper room"}
+{"id":"S5","rank":5,"label":"Vault","means":"a Master lock or a key-only lock, guarded"}

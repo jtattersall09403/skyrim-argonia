@@ -1,0 +1,23 @@
+{"id":"ammunition","always_significant":true,"about":"Arrows or bolts."}
+{"id":"animal-part","always_significant":false,"about":"An animal part."}
+{"id":"armour","always_significant":true,"about":"Armour or a shield."}
+{"id":"book","always_significant":false,"about":"A book; significant when worth 50 or more."}
+{"id":"clothing","always_significant":false,"about":"Clothes; significant when worth 50 or more."}
+{"id":"clutter","always_significant":false,"about":"Clutter: crockery, candlesticks, odds and ends."}
+{"id":"food","always_significant":false,"about":"Food and drink."}
+{"id":"gem","always_significant":true,"about":"A gem."}
+{"id":"gold","always_significant":true,"about":"Coin."}
+{"id":"hide","always_significant":false,"about":"A hide or pelt."}
+{"id":"ingot-or-ore","always_significant":false,"about":"Ore or an ingot."}
+{"id":"ingredient","always_significant":false,"about":"An alchemy ingredient; significant when worth 50 or more."}
+{"id":"jewellery","always_significant":true,"about":"A ring, necklace or circlet."}
+{"id":"key","always_significant":true,"about":"A key."}
+{"id":"light","always_significant":false,"about":"A carried light."}
+{"id":"poison","always_significant":true,"about":"A poison."}
+{"id":"potion","always_significant":true,"about":"A potion."}
+{"id":"scroll","always_significant":true,"about":"A scroll."}
+{"id":"skill-book","always_significant":true,"about":"A book that raises a skill."}
+{"id":"soul-gem","always_significant":true,"about":"A soul gem."}
+{"id":"spell-tome","always_significant":true,"about":"A book that teaches a spell."}
+{"id":"tool","always_significant":false,"about":"A tool."}
+{"id":"weapon","always_significant":true,"about":"A weapon."}

@@ -1,3 +1,4 @@
+{"id":"backstory","applies_to":"person","about":"Who they are in a line or two: their trade, their household, how they came to it."}
 {"id":"climate","applies_to":"region","about":"Weather and seasons."}
 {"id":"dangers","applies_to":"both","about":"What threatens it and what threatens a visitor there."}
 {"id":"ecology","applies_to":"region","about":"Plants and animals, and how they vary within the region."}
@@ -9,4 +10,7 @@
 {"id":"look","applies_to":"both","about":"How it looks: building, materials, layout, plants, light, sound, smell."}
 {"id":"overview","applies_to":"both","about":"What it is and why it matters, for a reader who knows nothing."}
 {"id":"people","applies_to":"both","about":"Its people: race, tribe, faction, numbers, notable roles."}
+{"id":"personality","applies_to":"person","about":"How they meet the world: temper, manner, what they care about."}
 {"id":"present","applies_to":"both","about":"What it is like in 4E 201: who lives there, who holds it, how it is doing."}
+{"id":"relationships","applies_to":"person","about":"Their ties beyond the household tables: debts, grudges, loves."}
+{"id":"secrets","applies_to":"person","about":"What they hide, and from whom."}

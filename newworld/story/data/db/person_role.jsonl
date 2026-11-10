@@ -1,0 +1,11 @@
+{"id":"apothecary","about":"Sells ingredients and potions (trader-apothecary)."}
+{"id":"boatman","about":"Carries travellers by boat for a fare (carriage-or-boat)."}
+{"id":"guard","about":"Keeps the peace: a member of the place's guard (in Black Marsh, often a tribal levy)."}
+{"id":"innkeeper","about":"Keeps the inn, sells food and drink, rents a bed."}
+{"id":"leader","about":"Holds the place or speaks for it."}
+{"id":"merchant","about":"Sells general goods (trader-general)."}
+{"id":"priest","about":"Keeps a shrine or temple."}
+{"id":"resident","about":"Lives and works in the place; no service the place promises."}
+{"id":"smith","about":"Works the forge and sells arms and armour (trader-blacksmith)."}
+{"id":"spell-trader","about":"Sells spell tomes and magic goods (trader-spells)."}
+{"id":"trainer","about":"Teaches a skill for gold."}
