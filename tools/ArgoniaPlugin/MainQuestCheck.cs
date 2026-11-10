@@ -85,7 +85,7 @@ static class MainQuestCheck
             var bound = vm.Scripts.Single(x => x.Name == script).Properties.OfType<IScriptObjectListPropertyGetter>().SingleOrDefault(pr => pr.Name == "Zones")?.Objects.Select(o => o.Object.FormKey).ToHashSet() ?? [];
             Check($"{code} Zones property is exactly the quest's {zoneKeys.Count} zones", zoneKeys.Count > 0 && bound.SetEquals(zoneKeys));
             Check($"{code} every objective has a target", q.Objectives.All(o => o.Targets.Count > 0));
-            var journal = Rows("quest_stage").Where(r => r.GetProperty("quest_id").GetString() == recId).ToDictionary(r => r.GetProperty("id").GetInt32(), r => r.GetProperty("journal_text").GetString()!);
+            var journal = Rows("quest_stage").Where(r => r.GetProperty("quest_id").GetString() == recId && r.TryGetProperty("journal_text", out var jt) && jt.ValueKind == JsonValueKind.String).ToDictionary(r => r.GetProperty("id").GetInt32(), r => r.GetProperty("journal_text").GetString()!);
             var st0 = q.Stages.SingleOrDefault(s => s.Index == 0);
             Check($"{code} stage 0 start-up, empty", st0 != null && st0.Flags.HasFlag(QuestStage.Flag.StartUpStage) && string.IsNullOrEmpty(st0.LogEntries.FirstOrDefault()?.Entry?.String));
             foreach (var s in journal.Keys.Concat(hidden))
@@ -117,6 +117,13 @@ static class MainQuestCheck
                 var person = tp.Value.GetProperty("speaker").GetString()!;
                 Check($"{code} {tp.Name} speaker is the record's", recTopics.Count == 0 || recTopics.GetValueOrDefault(tp.Name) == person);
                 var t = mine.DialogTopics.SingleOrDefault(x => x.EditorID == topicId);
+                if (t != null && t.Category != DialogTopic.CategoryEnum.Topic)
+                {   // a line said by a fragment (QuestKit.Shout: a Misc topic of the quest, no prompt), not a player topic
+                    var said = tp.Value.GetProperty("infos").EnumerateArray().Select(v => v.GetProperty("lines").EnumerateArray().Select(l => l.GetString()!).ToArray()).ToList();
+                    Check($"{code} {tp.Name}: a said line of the quest, its lines in order", t.Quest.FormKey == q.FormKey
+                        && said.All(tx => t.Responses.Any(i => i.Responses.Select(r => r.Text.String).SequenceEqual(tx))));
+                    continue;
+                }
                 // a top-level topic starts its own branch; a choice (TR-choice) sits in its question's branch, linked from it
                 bool choice = t != null && mine.DialogTopics.Any(o => o.Branch.FormKey == t.Branch.FormKey && o.Responses.Any(r => r.LinkTo.Any(l => l.FormKey == t.FormKey)));
                 Check($"{code} topic {topicId} built, {(choice ? "a choice linked from its question's branch" : "top-level player branch")} of the quest", t != null && t.Quest.FormKey == q.FormKey
