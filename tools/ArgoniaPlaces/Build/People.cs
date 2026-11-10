@@ -13,7 +13,7 @@ using Noggog;
 static class People
 {
     static ILinkCache? cache;
-    static ILinkCache Cache => cache ??= C.Cache(Write.Masters);
+    public static ILinkCache Cache => cache ??= C.Cache(Write.Masters);
 
     static P3Float P(JsonElement e) => new((float)e[0].GetDouble(), (float)e[1].GetDouble(), (float)e[2].GetDouble());
     static string? S(JsonElement e, string k) => e.TryGetProperty(k, out var v) && v.ValueKind == JsonValueKind.String ? v.GetString() : null;
@@ -35,7 +35,7 @@ static class People
             EditorID = cf.GetProperty("edid").GetString(),
             Name = new TranslatedString(Language.English, cf.GetProperty("name").GetString()),
             Flags = Faction.FactionFlag.TrackCrime,
-            CrimeValues = new CrimeValues { Arrest = true, AttackOnSight = true, Murder = 1000, Assault = 40, Trespass = 5, Pickpocket = 25, StealMult = 1f, Escape = 100, Werewolf = 1000 },
+            CrimeValues = new CrimeValues { Arrest = true, AttackOnSight = true, Murder = 1000, Assault = 40, Trespass = 5, Pickpocket = 25, StealMult = 0.5f, Escape = 100, Werewolf = 1000 },
         };
         mod.Factions.Add(crime);
 
@@ -54,7 +54,7 @@ static class People
             o.EditorID = c.GetProperty("edid").GetString();
             o.VirtualMachineAdapter = null;
             o.Flags |= Container.Flag.Respawns;  // a merchant's stock restocks, as vanilla merchant chests do
-            Flatten(ctx, o.Items);
+            Flatten(o.Items);
             ctx.Localize(o);
             mod.Containers.Add(o);
         }
@@ -132,6 +132,8 @@ static class People
         foreach (var n in people.GetProperty("npcs").EnumerateArray())
         {
             var src = Resolve<INpcGetter>(ctx, n.GetProperty("from").GetString()!);
+            // a base templated straight on a levelled list cannot be built; one that scales further up its template chain is
+            // built and listed by the read-back (Dump.cs), so `check` names it
             if (!src.Template.IsNull && Cache.TryResolve<ILeveledNpcGetter>(src.Template.FormKey, out _))
                 throw new InvalidDataException($"{n.GetProperty("id")}: base_from {C.Key(src.FormKey)} is templated on a levelled list (decision 0035)");
             var o = (Npc)src.Duplicate(C.Fk(n.GetProperty("fk").GetString()!));
@@ -159,20 +161,25 @@ static class People
                 mod.Classes.Add(cl);
                 o.Class.SetTo(cl.FormKey);
             }
-            if (o.Items != null) Flatten(ctx, o.Items);
-            if (!o.DefaultOutfit.IsNull && Cache.TryResolve<IOutfitGetter>(o.DefaultOutfit.FormKey, out var outfit)
-                && outfit.Items?.Any(i => Cache.TryResolve<ILeveledItemGetter>(i.FormKey, out var li) && Levelled(li)) == true)
+            if (o.Items != null) Flatten(o.Items);
+            FixOutfit(ctx, o.DefaultOutfit, $"{o.EditorID}_Outfit", false);
+            FixOutfit(ctx, o.SleepingOutfit, $"{o.EditorID}_SleepOutfit", true);
+            // what the body holds when it dies is a levelled list by its type: one of ours, every entry at level 1
+            if (!o.DeathItem.IsNull && Cache.TryResolve<ILeveledItemGetter>(o.DeathItem.FormKey, out var di) && Levelled(di, Cache))
             {
-                var ot = (Outfit)outfit.Duplicate(new FormKey(mod.ModKey, ctx.Fc.NextIdTake()));
-                ot.EditorID = $"{o.EditorID}_Outfit";
-                var items = new ExtendedList<IFormLinkGetter<IOutfitTargetGetter>>();
-                foreach (var i in outfit.Items!)
-                    if (Cache.TryResolve<ILeveledItemGetter>(i.FormKey, out var li)) foreach (var f in Fixed(li)) items.Add(new FormLink<IOutfitTargetGetter>(f));
-                    else items.Add(i);
-                ot.Items = items;
-                mod.Outfits.Add(ot);
-                o.DefaultOutfit.SetTo(ot.FormKey);
+                var own = new LeveledItem(ctx.TakeFixed(), C.Rel) { EditorID = $"{o.EditorID}_DeathItem", Flags = LeveledItem.Flag.UseAll, Entries = new() };
+                foreach (var (k, c) in Fixed(di))
+                    own.Entries.Add(new LeveledItemEntry { Data = new LeveledItemEntryData { Level = 1, Count = (short)c, Reference = new FormLink<IItemGetter>(k) } });
+                mod.LeveledItems.Add(own);
+                o.DeathItem.SetTo(own.FormKey);
             }
+            // a levelled spell list among the actor's spells: the spells it gives at level 1
+            for (var i = (o.ActorEffect?.Count ?? 0) - 1; i >= 0; i--)
+                if (Cache.TryResolve<ILeveledSpellGetter>(o.ActorEffect![i].FormKey, out var ls) && Levelled(ls))
+                {
+                    o.ActorEffect.RemoveAt(i);
+                    o.ActorEffect.InsertRange(i, Fixed(ls).Select(k => (IFormLinkGetter<ISpellRecordGetter>)new FormLink<ISpellRecordGetter>(k)));
+                }
             ctx.Localize(o);
             mod.Npcs.Add(o);
         }
@@ -204,14 +211,70 @@ static class People
         throw new InvalidDataException($"{src.EditorID}: no voice {want} in {C.Key(list)}");
     }
 
-    /// An LVLI is levelled against the player when any entry needs a level above 1 to drop.
-    public static bool Levelled(ILeveledItemGetter li) => li.Entries?.Any(e => (e.Data?.Level ?? 1) > 1) == true;
-
-    /// The fixed items an LVLI stands for: every level-1 entry when it gives all, else its first level-1 entry;
-    /// nested lists the same way.
-    public static List<FormKey> Fixed(ILeveledItemGetter li, int depth = 0)
+    /// An outfit that holds a levelled list (its own entries or a nested list's): a copy of ours with the fixed items.
+    static void FixOutfit(Write.Ctx ctx, IFormLinkNullable<IOutfitGetter> link, string edid, bool fixedRun)
     {
-        var res = new List<FormKey>();
+        if (link.IsNull || !Cache.TryResolve<IOutfitGetter>(link.FormKey, out var outfit)
+            || outfit.Items?.Any(i => Cache.TryResolve<ILeveledItemGetter>(i.FormKey, out var li) && Levelled(li, Cache)) != true) return;
+        var ot = (Outfit)outfit.Duplicate(fixedRun ? ctx.TakeFixed() : new FormKey(ctx.Mod.ModKey, ctx.Fc.NextIdTake()));
+        ot.EditorID = edid;
+        var items = new ExtendedList<IFormLinkGetter<IOutfitTargetGetter>>();
+        foreach (var i in outfit.Items!)
+            if (Cache.TryResolve<ILeveledItemGetter>(i.FormKey, out var li)) foreach (var (f, _) in Fixed(li)) items.Add(new FormLink<IOutfitTargetGetter>(f));
+            else items.Add(i);
+        ot.Items = items;
+        ctx.Mod.Outfits.Add(ot);
+        link.SetTo(ot.FormKey);
+    }
+
+    /// An LVLI is levelled against the player when any entry, its own or a nested list's, needs a level above 1 to drop.
+    public static bool Levelled(ILeveledItemGetter li, ILinkCache cache, int depth = 0) =>
+        li.Entries?.Any(e => (e.Data?.Level ?? 1) > 1
+            || depth < 8 && e.Data is { } d && cache.TryResolve<ILeveledItemGetter>(d.Reference.FormKey, out var inner) && Levelled(inner, cache, depth + 1)) == true;
+
+    /// The same for a levelled spell list.
+    public static bool Levelled(ILeveledSpellGetter ls, ILinkCache? cache = null, int depth = 0) =>
+        ls.Entries?.Any(e => (e.Data?.Level ?? 1) > 1
+            || depth < 8 && e.Data is { } d && (cache ?? Cache).TryResolve<ILeveledSpellGetter>(d.Reference.FormKey, out var inner) && Levelled(inner, cache, depth + 1)) == true;
+
+    /// True when an actor base's inventory or either outfit holds a levelled list.
+    public static bool LevelledInventory(INpcGetter n, ILinkCache cache)
+    {
+        bool Item(FormKey k) => cache.TryResolve<ILeveledItemGetter>(k, out var li) && Levelled(li, cache);
+        bool Outfit(FormKey k) => !k.IsNull && cache.TryResolve<IOutfitGetter>(k, out var o) && o.Items?.Any(i => Item(i.FormKey)) == true;
+        return n.Items?.Any(i => Item(i.Item.Item.FormKey)) == true || Outfit(n.DefaultOutfit.FormKey) || Outfit(n.SleepingOutfit.FormKey);
+    }
+
+    /// Why an actor base is levelled through its template chain (decision 0035), or null: a levelled actor list on the
+    /// chain, or stats or an inventory taken from a template that scales (the engine reads those from the template the
+    /// flags name, whatever our own record says).
+    public static string? LevelledByTemplate(INpcGetter n, ILinkCache cache)
+    {
+        bool stats = true, inv = true;
+        var cur = n;
+        for (var depth = 0; depth < 16 && !cur.Template.IsNull; depth++)
+        {
+            if (cache.TryResolve<ILeveledNpcGetter>(cur.Template.FormKey, out var list))
+                return $"is templated on the levelled list {list.EditorID ?? C.Key(list.FormKey)}" + (cur == n ? "" : $" (through {cur.EditorID})");
+            var tf = cur.Configuration.TemplateFlags;
+            if (tf == 0 || !cache.TryResolve<INpcGetter>(cur.Template.FormKey, out var t)) return null;
+            stats &= tf.HasFlag(NpcConfiguration.TemplateFlag.Stats);
+            inv &= tf.HasFlag(NpcConfiguration.TemplateFlag.Inventory);
+            var passes = t.Template.IsNull ? 0 : t.Configuration.TemplateFlags;
+            if (stats && !passes.HasFlag(NpcConfiguration.TemplateFlag.Stats) && t.Configuration.Level is IPcLevelMultGetter)
+                return $"takes its stats from the template {t.EditorID}, which scales with the player's level";
+            if (inv && !passes.HasFlag(NpcConfiguration.TemplateFlag.Inventory) && LevelledInventory(t, cache))
+                return $"takes its inventory from the template {t.EditorID}, which holds a levelled list";
+            cur = t;
+        }
+        return null;
+    }
+
+    /// The fixed items an LVLI stands for, each with how many: every level-1 entry when it gives all, else its first
+    /// level-1 entry (its lowest entry when none is level 1); nested lists the same way.
+    public static List<(FormKey Item, int Count)> Fixed(ILeveledItemGetter li, int depth = 0)
+    {
+        var res = new List<(FormKey, int)>();
         if (depth > 8 || li.Entries == null) return res;
         var low = li.Entries.Where(e => (e.Data?.Level ?? 1) <= 1 && e.Data != null).ToList();
         if (low.Count == 0) low = li.Entries.Where(e => e.Data != null).OrderBy(e => e.Data!.Level).Take(1).ToList();
@@ -219,13 +282,35 @@ static class People
         foreach (var e in low)
         {
             var k = e.Data!.Reference.FormKey;
-            if (Cache.TryResolve<ILeveledItemGetter>(k, out var inner)) res.AddRange(Fixed(inner, depth + 1));
+            var n = Math.Max(1, (int)e.Data.Count);
+            if (Cache.TryResolve<ILeveledItemGetter>(k, out var inner)) res.AddRange(Fixed(inner, depth + 1).Select(x => (x.Item, x.Count * n)));
+            else res.Add((k, n));
+        }
+        return res;
+    }
+
+    /// The fixed spells a levelled spell list stands for, by the same rule.
+    static List<FormKey> Fixed(ILeveledSpellGetter ls, int depth = 0)
+    {
+        var res = new List<FormKey>();
+        if (depth > 8 || ls.Entries == null) return res;
+        var low = ls.Entries.Where(e => (e.Data?.Level ?? 1) <= 1 && e.Data != null).ToList();
+        if (low.Count == 0) low = ls.Entries.Where(e => e.Data != null).OrderBy(e => e.Data!.Level).Take(1).ToList();
+        if (!ls.Flags.HasFlag(LeveledSpell.Flag.UseAllSpells)) low = low.Take(1).ToList();
+        foreach (var e in low)
+        {
+            var k = e.Data!.Reference.FormKey;
+            if (Cache.TryResolve<ILeveledSpellGetter>(k, out var inner)) res.AddRange(Fixed(inner, depth + 1));
             else res.Add(k);
         }
         return res;
     }
 
-    static void Flatten(Write.Ctx ctx, ExtendedList<ContainerEntry>? items)
+    /// True when a container's items hold a levelled list.
+    public static bool HoldsLevelled(IReadOnlyList<IContainerEntryGetter>? items) =>
+        items?.Any(i => Cache.TryResolve<ILeveledItemGetter>(i.Item.Item.FormKey, out var li) && Levelled(li, Cache)) == true;
+
+    public static void Flatten(ExtendedList<ContainerEntry>? items)
     {
         if (items == null) return;
         var outList = new List<ContainerEntry>();
@@ -233,8 +318,8 @@ static class People
         {
             var k = e.Item.Item.FormKey;
             if (Cache.TryResolve<ILeveledItemGetter>(k, out var li))
-                foreach (var f in Fixed(li))
-                    outList.Add(new ContainerEntry { Item = new ContainerItem { Item = new FormLink<IItemGetter>(f), Count = e.Item.Count } });
+                foreach (var (f, n) in Fixed(li))
+                    outList.Add(new ContainerEntry { Item = new ContainerItem { Item = new FormLink<IItemGetter>(f), Count = e.Item.Count * n } });
             else outList.Add(e);
         }
         items.Clear();

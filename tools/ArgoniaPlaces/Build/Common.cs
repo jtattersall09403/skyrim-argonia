@@ -21,8 +21,9 @@ static class C
         if (File.Exists(file)) return file;
         var p = Path.Combine(Data, file);
         if (File.Exists(p)) return p;
+        // the staged mods in name order: the same file every run when two mods carry a plugin of one name
         var mods = Path.Combine(Environment.GetEnvironmentVariable("HOME")!, ".argonia/stack/MO2/mods");
-        return (Directory.Exists(mods) ? Directory.EnumerateDirectories(mods).Select(d => Path.Combine(d, file)).FirstOrDefault(File.Exists) : null)
+        return (Directory.Exists(mods) ? Directory.EnumerateDirectories(mods).Order(StringComparer.Ordinal).Select(d => Path.Combine(d, file)).FirstOrDefault(File.Exists) : null)
             ?? throw new FileNotFoundException($"{file} not in {Data} nor the staged mods");
     }
 
@@ -114,7 +115,12 @@ static class C
                 if (!o.Owner.IsNull) d["owner"] = Key(o.Owner.FormKey);
                 if (o.LinkedReferences.Count > 0) d["linked"] = o.LinkedReferences.Select(l => new Dictionary<string, object?> { ["ref"] = Key(l.Reference.FormKey), ["keyword"] = Key(l.KeywordOrReference.FormKey) }).ToList();
                 if (o.EnableParent is { } ep) d["enable_parent"] = Key(ep.Reference.FormKey);
-                if (o.Lock is { } lk) d["lock"] = (int)lk.Level;
+                if (o.Lock is { } lk) { d["lock"] = (int)lk.Level; if (!lk.Key.IsNull) d["lock_key"] = Key(lk.Key.FormKey); }
+                if (o.Radius is { } rad) d["radius"] = rad;
+                if (o.LightData is { } ld) d["light_data"] = new[] { ld.FovOffset, ld.FadeOffset };
+                if (o.ItemCount is { } cnt) d["count"] = cnt;
+                if (o.IsOpenByDefault) d["open_by_default"] = true;
+                if (o.IsIgnoredBySandbox) d["ignored_by_sandbox"] = true;
                 if (o.LocationRefTypes is { Count: > 0 } lrt) d["loc_ref_types"] = lrt.Select(x => Key(x.FormKey)).ToList();
                 break;
             case IPlacedNpcGetter n:
@@ -139,6 +145,12 @@ static class C
     {
         Directory.CreateDirectory(Path.GetDirectoryName(Path.GetFullPath(path))!);
         File.WriteAllText(path, JsonSerializer.Serialize(o, Js));
+    }
+
+    /// A plugin's interior cells (its CELL group only: never a walk over its worldspaces).
+    public static IEnumerable<ICellGetter> Interiors(ISkyrimModGetter m)
+    {
+        foreach (var b in m.Cells.Records) foreach (var sb in b.SubBlocks) foreach (var c in sb.Cells) yield return c;
     }
 
     public static IEnumerable<ICellGetter> Cells(IWorldspaceGetter ws)

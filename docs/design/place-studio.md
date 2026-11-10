@@ -441,7 +441,10 @@ record type, model path words, source mod, size in metres). `ltex.jsonl` beside 
 It holds each place's refs, interiors with paired doors, people with their packages, guards, the crime faction,
 service factions and chests, land overrides for patched cells, the cleared world refs, the path textures, and
 the navmesh of every touched cell, joined to its untouched neighbours. Base records of plugins that are not
-loaded are copied in as ours (the route `tools/ArgoniaPlugin/ForeignCopy.cs` proves). Never LOD.
+loaded are copied in as ours (the route `tools/ArgoniaPlugin/ForeignCopy.cs` proves). Nothing placed is levelled
+(decision 0035): a container whose base holds a levelled list stands on a copy of ours with the fixed items (as a
+merchant chest is made; these copies take ids from 0x00FFFF down), and a placed levelled item list is the item it
+gives at level 1. Never LOD.
 
 **Override, not merge.** The place layer is an ESP that overrides the world ESM's WRLD, CELL headers, LAND and
 NAVM and adds refs; nothing is merged into the ESM, so a place build never waits on a world rebuild. Measured on
@@ -472,8 +475,9 @@ their own cell (interior), as vanilla files them.
    cell, no source navmesh joining door to floor): nine islands of 206 to 278 triangles, 6 beds in each room,
    every ref at least 2,093 units nearer its own room than the next. A row with `src` changes that copied ref
    (`removed: true` drops it; `base`, `pos`, `rot`, `scale`, `owner`, `door` replace the source's); a row with a
-   `src` outside the kept room is not in the copy; a row without `src` is added. Source actors are never copied:
-   people are ours.
+   `src` outside the kept room is not in the copy; a row without `src` is added. A copied ref whose base is still
+   the source's keeps what the source ref itself says of it: a light's radius and light data, an item count, a
+   charge, open by default, ignored by sandbox, its lock's key. Source actors are never copied: people are ours.
 3. Doors: a door pair is one row on each side (the exterior door, and the copy's override of the source door it
    leads to) whose `door.to_space` and `to_ref` (our id, or a source key in a copied space) name each other; one row
    naming its partner is enough, and both get teleports. One using door x lands at x's `door.to_pos` and `to_rot`
@@ -491,7 +495,8 @@ their own cell (interior), as vanilla files them.
    breaks any save or link that names it and cannot come back when the owner un-clears; BM&V disables (40 refs).
    Disabled is reversible and save-safe.
 6. People (`tools/places/people.py`): an actor base of ours per person (a copy of `base_from` at a fixed level;
-   levelled lists in its inventory, outfit or merchant chest flattened to their level-1 items), placed once and
+   levelled lists in its inventory, outfits, death item, spells or merchant chest flattened to their level-1
+   items), placed once and
    persistent; packages copied from vanilla templated ones (rest: WhiterunBraithSleep21x12; work and wander:
    SolitudeTempleMinister0x8; eat: GuardRiftenEatDayShift20x4; patrol: GuardRiftenBarracksPatrol, the vanilla way: its target
    input is PackageTargetLinkedReference with no keyword, and the actor's own linked ref names the first of a chain
@@ -576,7 +581,10 @@ facing into a wall; a person without a bed, with a routine stop off the navmesh 
 before, or with a patrol marker off the navmesh or unreachable from the marker before it (a loop's first from its
 last); a navmesh island or an unjoined cell edge; a land patch whose built heights differ from `land.jsonl` or
 tear at a seam; a cleared plant still enabled, or a plant standing in a building, street or doorway; a service
-the place record promises with nobody giving it; a Nordic base; anything levelled. It also fails on a link that
+the place record promises with nobody giving it; a Nordic base; anything levelled (a levelled list in a person's
+inventory, outfits, death item or spells, or in a placed container; a level that follows the player; a base whose
+template chain reaches a levelled actor list or takes stats or an inventory from a template that scales). It also
+fails on a link that
 resolves nowhere or a plugin not mastered on the world ESM. The promises are the place's rows of
 `newworld/story/data/db/place_give.jsonl` (combat, loot and resource gives are not a place's to give). Nordic is
 the Nordic review's verdict for a base it lists, else a base whose model lies in Skyrim's hold-city, Nordic farm

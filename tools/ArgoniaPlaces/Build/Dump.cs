@@ -1,10 +1,10 @@
 // dump <esp> <world.esm> <out.json>: the built place layer read back for tools/places/check.py, the way xEdit would
-using Mutagen.Bethesda.Plugins.Aspects;
 // show it: masters, record counts by type, every link that resolves nowhere, and the rows the checks read (refs
 // with their bases, overrides of the world's refs, LAND, actors, packages, factions, classes, levelled lists
 // reachable from ours). Navmesh is read by check.py from the plugin's bytes (tools/navmesh/esm.py).
 using Mutagen.Bethesda;
 using Mutagen.Bethesda.Plugins;
+using Mutagen.Bethesda.Plugins.Aspects;
 using Mutagen.Bethesda.Plugins.Cache;
 using Mutagen.Bethesda.Plugins.Records;
 using Mutagen.Bethesda.Skyrim;
@@ -41,7 +41,7 @@ static class Dump
             {
                 var d = C.Ref(r, cache);
                 d["space"] = space; d["grid"] = grid; d["persistent"] = persistent;
-                if (cache.TryResolve<IMajorRecordGetter>(C.Fk((string)d["base"]!), out var b))
+                if (d["base"] is string { Length: > 0 } bk && cache.TryResolve<IMajorRecordGetter>(C.Fk(bk), out var b))
                     d["keywords"] = (b as IKeywordedGetter<IKeywordGetter>)?.Keywords?.Select(k => cache.TryResolve<IKeywordGetter>(k.FormKey, out var kw) ? kw.EditorID : C.Key(k.FormKey)).ToList();
                 if (r is IPlacedNpcGetter) actors.Add(d);
                 else if (r.FormKey.ModKey == me) refs.Add(d);
@@ -64,7 +64,7 @@ static class Dump
             if (ws.TopCell is { } tc) Walk(tc, "exterior", null);
             foreach (var c in C.Cells(ws)) Walk(c, "exterior", c.Grid is { } g ? new[] { g.Point.X, g.Point.Y } : null);
         }
-        foreach (var c in mod.EnumerateMajorRecords<ICellGetter>().Where(c => c.Grid == null && c.FormKey.ModKey == me)) Walk(c, c.EditorID ?? C.Key(c.FormKey), null);
+        foreach (var c in C.Interiors(mod).Where(c => c.FormKey.ModKey == me)) Walk(c, c.EditorID ?? C.Key(c.FormKey), null);
 
         var npcs = mod.Npcs.Select(n => new Dictionary<string, object?>
         {
@@ -154,22 +154,42 @@ static class Dump
             ["chest"] = C.Key(f.MerchantContainer.FormKey), ["list"] = C.Key(f.VendorBuySellList.FormKey), ["crime"] = f.Flags.HasFlag(Faction.FactionFlag.TrackCrime),
         }).ToList();
         var classes = mod.Classes.Select(c => new Dictionary<string, object?> { ["fk"] = C.Key(c.FormKey), ["edid"] = c.EditorID, ["teaches"] = c.Teaches?.ToString(), ["max_level"] = c.MaxTrainingLevel }).ToList();
-        // levelled lists reachable from our NPCs, containers and outfits
+        // anything levelled against the player that our records reach (decision 0035): levelled lists in an inventory, an
+        // outfit, a death item, a spell list or a placed container; a level that follows the player; a template that scales
         var levelled = new List<string>();
         void Item(string from, FormKey k)
         {
-            if (cache.TryResolve<ILeveledItemGetter>(k, out var li) && People.Levelled(li)) levelled.Add($"{from} -> {C.Key(k)} {li.EditorID}");
+            if (cache.TryResolve<ILeveledItemGetter>(k, out var li) && People.Levelled(li, cache)) levelled.Add($"{from} -> {C.Key(k)} {li.EditorID}");
+        }
+        void Outfit(string from, FormKey k)
+        {
+            if (cache.TryResolve<IOutfitGetter>(k, out var o)) foreach (var i in o.Items ?? Array.Empty<IFormLinkGetter<IOutfitTargetGetter>>()) Item(from, i.FormKey);
         }
         foreach (var n in mod.Npcs)
         {
             foreach (var i in n.Items ?? Array.Empty<IContainerEntryGetter>()) Item(n.EditorID ?? "", i.Item.Item.FormKey);
-            if (cache.TryResolve<IOutfitGetter>(n.DefaultOutfit.FormKey, out var o)) foreach (var i in o.Items ?? Array.Empty<IFormLinkGetter<IOutfitTargetGetter>>()) Item(n.EditorID + " outfit", i.FormKey);
+            Outfit(n.EditorID + " outfit", n.DefaultOutfit.FormKey);
+            Outfit(n.EditorID + " sleep outfit", n.SleepingOutfit.FormKey);
+            Item(n.EditorID + " death item", n.DeathItem.FormKey);
+            foreach (var sp in n.ActorEffect ?? Array.Empty<IFormLinkGetter<ISpellRecordGetter>>())
+                if (cache.TryResolve<ILeveledSpellGetter>(sp.FormKey, out var ls) && People.Levelled(ls, cache)) levelled.Add($"{n.EditorID} spells -> {C.Key(sp.FormKey)} {ls.EditorID}");
             if (n.Configuration.Level is IPcLevelMultGetter) levelled.Add($"{n.EditorID}: PC level mult");
-            if (cache.TryResolve<ILeveledNpcGetter>(n.Template.FormKey, out _)) levelled.Add($"{n.EditorID}: templated on a LVLN");
+            if (People.LevelledByTemplate(n, cache) is { } why) levelled.Add($"{n.EditorID}: {why}");
         }
         foreach (var c in mod.Containers) foreach (var i in c.Items ?? Array.Empty<IContainerEntryGetter>()) Item(c.EditorID ?? "", i.Item.Item.FormKey);
         foreach (var a in actors.Cast<Dictionary<string, object?>>()) if (cache.TryResolve<ILeveledNpcGetter>(C.Fk((string)a["base"]!), out _)) levelled.Add($"actor {a["fk"]} is a LVLN");
-        foreach (var r in refs.Cast<Dictionary<string, object?>>()) if (cache.TryResolve<ILeveledItemGetter>(C.Fk((string)r["base"]!), out var li) && People.Levelled(li)) levelled.Add($"ref {r["fk"]} -> {li.EditorID}");
+        // placed things: a levelled item list as a base, and a master's container that holds one (one line per base)
+        var held = new Dictionary<string, (int n, string first)>();
+        foreach (var r in refs.Cast<Dictionary<string, object?>>())
+        {
+            if (r["base"] is not string { Length: > 0 } bk) continue;
+            if (cache.TryResolve<ILeveledItemGetter>(C.Fk(bk), out var li) && People.Levelled(li, cache)) levelled.Add($"ref {r["fk"]} -> {li.EditorID}");
+            else if (cache.TryResolve<IContainerGetter>(C.Fk(bk), out var co)
+                && co.Items?.Any(i => cache.TryResolve<ILeveledItemGetter>(i.Item.Item.FormKey, out var x) && People.Levelled(x, cache)) == true)
+                held[bk] = (held.GetValueOrDefault(bk).n + 1, held.GetValueOrDefault(bk).first ?? (string)r["fk"]!);
+        }
+        foreach (var (bk, (n, first)) in held.OrderBy(kv => kv.Key, StringComparer.Ordinal))
+            levelled.Add($"container {bk} {(cache.TryResolve<IContainerGetter>(C.Fk(bk), out var co) ? co.EditorID : "")} holds a levelled list: {n} placed (first {first})");
 
         // vanilla's innkeeper rent: the voices of form list 03B4A5 and the conditions of the rent offer INFO 079B1A
         var rentVoices = cache.TryResolve<IFormListGetter>(C.Fk("Skyrim.esm:03B4A5"), out var rvl) ? rvl.Items.Select(i => C.Key(i.FormKey)).ToList() : new List<string>();

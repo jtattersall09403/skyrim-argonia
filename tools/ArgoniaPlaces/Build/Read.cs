@@ -48,7 +48,7 @@ static class Read
     {
         var m = C.Open(plugin);
         var cache = CacheWith(plugin);
-        var c = m.EnumerateMajorRecords<ICellGetter>().FirstOrDefault(x => (edid.Contains(':') ? C.Key(x.FormKey) == edid : x.EditorID == edid) && x.Grid == null)
+        var c = C.Interiors(m).FirstOrDefault(x => edid.Contains(':') ? C.Key(x.FormKey) == edid : x.EditorID == edid)
             ?? throw new InvalidDataException($"no interior cell {edid} in {plugin}");
         C.WriteJson(outPath, CellRow(c, cache));
         return 0;
@@ -60,8 +60,8 @@ static class Read
         var cache = CacheWith(plugin);
         var ws = m.Worldspaces.First(w => w.EditorID == wsEdid);
         var where = new Dictionary<FormKey, string>();
-        foreach (var c in m.EnumerateMajorRecords<ICellGetter>())
-            if (c.Grid == null) foreach (var r in c.Persistent.Concat(c.Temporary)) where[r.FormKey] = c.EditorID ?? C.Key(c.FormKey);
+        foreach (var c in C.Interiors(m))
+            foreach (var r in c.Persistent.Concat(c.Temporary)) where[r.FormKey] = c.EditorID ?? C.Key(c.FormKey);
         var rows = new List<object>();
         IEnumerable<ICellGetter> all = ws.TopCell is { } tc ? C.Cells(ws).Prepend(tc) : C.Cells(ws);
         foreach (var c in all)

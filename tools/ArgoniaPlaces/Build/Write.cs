@@ -6,6 +6,10 @@
 //     NAVM (the plan's bytes);
 //   - interiors: new cells whose header is the source cell's (links out of our masters copied by ForeignCopy, its
 //     location and encounter zone dropped), holding our refs and navmesh;
+//   - a ref of a copied interior keeps what its source ref itself says of its base (a light's radius and light data,
+//     an item count, a charge, open by default, ignored by sandbox, its lock's key), read from the source cell by `src`;
+//   - nothing levelled (decision 0035): a placed container that holds a levelled list is a copy of ours with fixed
+//     items, a placed levelled item list is the item it gives at level 1;
 //   - people (People.cs); the NAVI override with every NVMI of ours.
 // A base or any link in a plugin that is not one of our masters is copied in as ours (ForeignCopy.cs).
 using System.Diagnostics;
@@ -25,6 +29,7 @@ static class Write
 {
     public static readonly string[] Masters = { "Skyrim.esm", "Update.esm", "Dawnguard.esm", "HearthFires.esm", "Dragonborn.esm", "Black Marsh.esm" };
     public const uint CopyFirst = 0x001000;  // ForeignCopy's range: below every place block (0x10000 on)
+    public const uint FixedLast = 0x00FFFF;  // records made to hold nothing levelled: from the top of that range down
 
     public static ParsingMeta Meta(IEnumerable<string> masters, string self)
     {
@@ -48,6 +53,39 @@ static class Write
         public required ISkyrimModGetter World;
         public HashSet<ModKey> Allowed = new();
         public Dictionary<FormKey, FormKey> Remap = new();
+        /// The refs of the source cells the interiors copy, by their own key (a plan row's `src`).
+        public Dictionary<FormKey, IPlacedObjectGetter> Source = new();
+        readonly Dictionary<FormKey, FormKey> fixedBase = new();
+        uint fixedNext = FixedLast;
+        /// An id for a record made to hold nothing levelled: its own run, so the copied bases' ids do not move.
+        public FormKey TakeFixed()
+        {
+            if (fixedNext <= Fc.NextId) throw new InvalidDataException("the copy range below the place blocks is full");
+            return new FormKey(Mod.ModKey, fixedNext--);
+        }
+        /// A ref's base with nothing levelled in it (decision 0035): a container that holds a levelled list as a copy of
+        /// ours with the fixed items (as a merchant chest is made), a levelled item list as the item it gives at level 1.
+        public FormKey Base(string key)
+        {
+            var fk = Link(key);
+            if (fixedBase.TryGetValue(fk, out var done)) return done;
+            var res = fk;
+            if (fk.ModKey == Mod.ModKey)
+            {
+                if (Fc.Copies.TryGetValue(fk, out var rec) && rec is Container own && People.HoldsLevelled(own.Items)) People.Flatten(own.Items);
+            }
+            else if (People.Cache.TryResolve<IContainerGetter>(fk, out var co) && People.HoldsLevelled(co.Items))
+            {
+                var o = (Container)co.Duplicate(TakeFixed());
+                o.EditorID = $"ANP_Fixed_{co.EditorID ?? fk.IDString()}";
+                People.Flatten(o.Items);
+                Mod.Containers.Add(o);
+                res = o.FormKey;
+            }
+            else if (People.Cache.TryResolve<ILeveledItemGetter>(fk, out var li) && People.Levelled(li, People.Cache) && People.Fixed(li) is { Count: > 0 } items)
+                res = items[0].Item;
+            return fixedBase[fk] = res;
+        }
         /// A key of a base or link: ours or a master's as it is; any other plugin's copied in as ours.
         public FormKey Link(string key)
         {
@@ -104,6 +142,10 @@ static class Write
         var nvmi = new List<byte[]>();
         int nRefs = 0, nClear = 0, nLand = 0, nNavm = 0;
         var refByKey = new Dictionary<string, PlacedObject>();
+        var cleared = new HashSet<FormKey>();
+        var sourceCells = new HashSet<(ModKey, FormKey)>();
+        var worldRefs = new Dictionary<(int, int), Dictionary<FormKey, (IPlacedGetter rec, bool persistent)>>();
+        Dictionary<FormKey, IPlacedGetter>? topRefs = null;
 
         foreach (var doc in plans)
         {
@@ -116,7 +158,24 @@ static class Write
                 Cell cell;
                 if (I.TryGetProperty("copy", out var cp) && cp.ValueKind == JsonValueKind.Object)
                 {
-                    var src = C.Open(cp.GetProperty("plugin").GetString()!).EnumerateMajorRecords<ICellGetter>().First(x => x.FormKey == C.Fk(cp.GetProperty("cell").GetString()!));
+                    var from = C.Fk(cp.GetProperty("cell").GetString()!);
+                    var src = C.Interiors(C.Open(cp.GetProperty("plugin").GetString()!)).FirstOrDefault(x => x.FormKey == from)
+                        ?? throw new InvalidDataException($"interior {I.GetProperty("space")}: no cell {C.Key(from)} in {cp.GetProperty("plugin")}");
+                    // the source refs of this cell: the cell's own plugin, then each plugin that holds the cell (the plan's
+                    // `src_plugins`) or whose refs the copy brings
+                    var space = I.GetProperty("space").GetString();
+                    var holders = plan.GetProperty("refs").EnumerateArray().Where(r => S(r, "space") == space && S(r, "src") is { } k && TryKey(k, out _))
+                        .Select(r => { TryKey(S(r, "src")!, out var k); return k.ModKey; });
+                    if (I.TryGetProperty("src_plugins", out var sps) && sps.ValueKind == JsonValueKind.Array)
+                        holders = sps.EnumerateArray().Select(e => ModKey.FromFileName(Path.GetFileName(e.GetString()!))).Concat(holders);
+                    foreach (var holder in holders.Prepend(ModKey.FromFileName(Path.GetFileName(cp.GetProperty("plugin").GetString()!))).Distinct().ToList())
+                    {
+                        if (!sourceCells.Add((holder, from))) continue;
+                        ISkyrimModGetter hm;
+                        try { hm = C.Open(holder.FileName); } catch (FileNotFoundException) { continue; }
+                        foreach (var q in C.Interiors(hm).Where(x => x.FormKey == from).SelectMany(x => x.Persistent.Concat(x.Temporary)).OfType<IPlacedObjectGetter>())
+                            ctx.Source[q.FormKey] = q;
+                    }
                     cell = (Cell)src.Duplicate(fk, noChildren);
                     cell.Location.Clear(); cell.EncounterZone.Clear(); cell.Owner.Clear(); cell.Regions = null;
                     ctx.Localize(cell);
@@ -148,23 +207,30 @@ static class Write
                 }
                 nRefs++;
             }
-            // cleared world refs: the world's ref, Initially Disabled
+            // cleared world refs: the world's ref, Initially Disabled (each once, whatever the plans repeat)
             foreach (var r in plan.GetProperty("clear").EnumerateArray())
             {
                 var fk = C.Fk(r.GetProperty("fk").GetString()!);
                 var c = r.GetProperty("cell");
                 var (x, y) = (c[0].GetInt32(), c[1].GetInt32());
-                var wc = worldCells[(x, y)];
-                var src = wc.Temporary.FirstOrDefault(q => q.FormKey == fk);
-                if (src != null)
+                if (!cleared.Add(fk)) continue;
+                if (!worldCells.TryGetValue((x, y), out var wc)) throw new InvalidDataException($"cleared ref {C.Key(fk)}: cell {x},{y} is not in the world (or not in the plan's cells)");
+                if (!worldRefs.TryGetValue((x, y), out var inCell))
                 {
-                    var copy = (IPlaced)src.DeepCopy();
+                    worldRefs[(x, y)] = inCell = new();
+                    foreach (var q in wc.Temporary) inCell[q.FormKey] = (q, false);
+                    foreach (var q in wc.Persistent) inCell[q.FormKey] = (q, true);
+                }
+                if (inCell.TryGetValue(fk, out var hit))
+                {
+                    var copy = (IPlaced)hit.rec.DeepCopy();
                     copy.MajorRecordFlagsRaw |= 0x800;
-                    Ext(x, y).Temporary.Add(copy);
+                    if (hit.persistent) Ext(x, y).Persistent.Add(copy); else Ext(x, y).Temporary.Add(copy);
                 }
                 else
                 {
-                    var p = ws.TopCell!.Persistent.FirstOrDefault(q => q.FormKey == fk) ?? throw new InvalidDataException($"cleared ref {C.Key(fk)} not in cell {x},{y}");
+                    topRefs ??= ws.TopCell!.Persistent.ToDictionary(q => q.FormKey);
+                    if (!topRefs.TryGetValue(fk, out var p)) throw new InvalidDataException($"cleared ref {C.Key(fk)} not in cell {x},{y}");
                     var copy = (IPlaced)p.DeepCopy();
                     copy.MajorRecordFlagsRaw |= 0x800;
                     wso.TopCell.Persistent.Add(copy);
@@ -176,7 +242,7 @@ static class Write
             {
                 int x = L.GetProperty("x").GetInt32(), y = L.GetProperty("y").GetInt32();
                 var cell = Ext(x, y);
-                var land = worldCells[(x, y)].Landscape!.DeepCopy();
+                var land = (worldCells[(x, y)].Landscape ?? throw new InvalidDataException($"cell {x},{y}: the world has no LAND to patch")).DeepCopy();
                 if (L.TryGetProperty("heights", out var h) && h.ValueKind == JsonValueKind.Object)
                 {
                     var d = Convert.FromBase64String(h.GetProperty("deltas").GetString()!);
@@ -273,7 +339,8 @@ static class Write
     static PlacedObject MakeRef(Ctx ctx, JsonElement r)
     {
         var o = new PlacedObject(C.Fk(r.GetProperty("fk").GetString()!), C.Rel);
-        o.Base.SetTo(ctx.Link(r.GetProperty("base").GetString()!));
+        var baseKey = r.GetProperty("base").GetString()!;
+        o.Base.SetTo(ctx.Base(baseKey));
         o.Placement = new Placement { Position = P(r.GetProperty("pos")), Rotation = P(r.GetProperty("rot")) };
         var sc = r.TryGetProperty("scale", out var s) && s.ValueKind == JsonValueKind.Number ? s.GetSingle() : 1f;
         if (Math.Abs(sc - 1f) > 1e-6) o.Scale = sc;
@@ -288,8 +355,30 @@ static class Write
             o.TeleportDestination.Door.SetTo(C.Fk(t.GetProperty("to").GetString()!));
         }
         if (S(r, "owner") is { } owner) o.Owner.SetTo(ctx.Link(owner));
-        if (r.TryGetProperty("lock", out var lk) && lk.ValueKind == JsonValueKind.Number)
-            o.Lock = new LockData { Level = (LockLevel)lk.GetInt32() };
+        // a lock: its level as a number (the read-back's shape) or {level: number | name, key} (a bundle ref's shape)
+        if (r.TryGetProperty("lock", out var lk))
+        {
+            var lv = lk.ValueKind == JsonValueKind.Object && lk.TryGetProperty("level", out var l2) ? l2 : lk;
+            if (lv.ValueKind == JsonValueKind.Number) o.Lock = new LockData { Level = (LockLevel)lv.GetInt32() };
+            else if (lv.ValueKind == JsonValueKind.String)
+                o.Lock = new LockData { Level = Enum.TryParse<LockLevel>(lv.GetString(), true, out var named) ? named : throw new InvalidDataException($"ref {r.GetProperty("fk")}: lock level {lv} is not a level") };
+            if (o.Lock != null && lk.ValueKind == JsonValueKind.Object && S(lk, "key") is { Length: > 0 } key) o.Lock.Key.SetTo(ctx.Link(key));
+        }
+        // what the source ref itself says of its base, when the base is still the source's
+        if (S(r, "src") is { } sk && TryKey(sk, out var sfk) && ctx.Source.TryGetValue(sfk, out var src) && C.Key(src.Base.FormKey) == baseKey)
+        {
+            o.Radius = src.Radius;
+            o.LightData = src.LightData?.DeepCopy();
+            o.ItemCount = src.ItemCount;
+            o.Charge = src.Charge;
+            o.IsOpenByDefault = src.IsOpenByDefault;
+            o.IsIgnoredBySandbox = src.IsIgnoredBySandbox;
+            if (o.Lock is { } ol && src.Lock is { } sl && sl.Level == ol.Level && ol.Key.IsNull)
+            {
+                ol.Flags = sl.Flags;
+                if (!sl.Key.IsNull) ol.Key.SetTo(ctx.Link(C.Key(sl.Key.FormKey)));
+            }
+        }
         if (r.TryGetProperty("linked", out var ln) && ln.ValueKind == JsonValueKind.Array)
             foreach (var l in ln.EnumerateArray())
             {
@@ -304,6 +393,16 @@ static class Write
             if (S(r, "enable_parent_flags") is { Length: > 0 } epf) o.EnableParent.Flags = Enum.Parse<EnableParent.Flag>(epf);
         }
         return o;
+    }
+
+    static bool TryKey(string key, out FormKey fk)
+    {
+        fk = FormKey.Null;
+        var i = key.LastIndexOf(':');
+        if (i <= 0 || !ModKey.TryFromFileName(key[..i], out var mk)
+            || !uint.TryParse(key[(i + 1)..], System.Globalization.NumberStyles.HexNumber, null, out var id)) return false;
+        fk = new FormKey(mk, id);
+        return true;
     }
 
     static byte[] Navi(List<byte[]> nvmi)
