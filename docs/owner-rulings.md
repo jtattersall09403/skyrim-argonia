@@ -312,3 +312,6 @@ added here the day they are made, with the date and the issue.
   security, effort, provenance; cities are safe ground with costly things hard to steal). Every promise of the
   place record is delivered, or the record is edited case by case with a reason, never as a way out. Contents are
   editable in the studio, optionally. The full text is in the nw-03 phase file.
+- 2026-11-10 (in session, later): light identities (name, household, trade, wealth, a line or two of backstory; no
+  dialogue) are brought forward into nw-03 for Helstrom's people, before stocking; nw-05 may recast anyone. The
+  stocking lane is delivered now.
