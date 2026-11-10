@@ -171,6 +171,16 @@ STYLE_ORDER = ["Black Marsh.esm", "Black Marsh North.esp", "King of the Murkmire
                "Here There Be Monsters - Curse of Cipactli.esp", "Here There Be Monsters.esp", "Dragonborn.esm",
                "Skyrim.esm"]
 _stations: dict | None = None
+_STYLE_DEFAULT = list(STYLE_ORDER)
+
+
+def style_order(order: list | None = None) -> None:
+    """The plugins whose pieces a place's added things are taken from, first to last: the place's own
+    (`draft.style_order`: a Dunmer place names its own mods first) or the marsh's. Skyrim.esm is always last."""
+    global STYLE_ORDER, _stations
+    want = ([p for p in order if p != "Skyrim.esm"] + ["Skyrim.esm"]) if order else list(_STYLE_DEFAULT)
+    if want != STYLE_ORDER:
+        STYLE_ORDER, _stations = want, None
 
 
 # the keyword the game keys a crafting station on (the build's own map, tools/places/check.py CRAFT_KEYWORD)

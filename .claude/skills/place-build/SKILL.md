@@ -54,18 +54,30 @@ building on a slope first takes the rise the source's own builders commonly buil
 2. In `place.json` `fit.clusters`, a cluster with a high `cost_after` sits badly. In `ledger.jsonl`, pieces dropped
    for want of water or land, and doors above all, say the anchor or the turn is wrong: move them and redraft
    rather than accept the losses.
-3. Streets (orange in the render) come from the source's painted roads, walkways and preferred navmesh, laid on
-   our ground round buildings and water at no steeper climb than the source's streets made. A link to a door on
-   the water is a walkway (brown). A street that will not route without crossing our water is carried on bridges
-   of the source's own walkway pieces, one piece per piece length along the route, each slid along it clear of
-   any solid there, its deck a hand's breadth over the water (a walkway's deck is the top of its collision at its
-centre, read per piece, never its record's top, which is the rail); look at each one. After the draft the tools
-build the place and join each door whose walkable ground is an island to the town by level walkway pieces laid
-from the island to the nearest point of the network at its height. A door whose island no level join reaches and
-whose room nobody lives or works in (a ship's hatch with no way aboard in the source) is left out with its room,
-with the reason in the ledger. A guard whose camp bed the town's network does not reach (a tent shut in by
-blocks) sleeps in a home's free bed instead; with none free, the last resident gives up theirs. A camp
-   (beds in the open) is a stop like a door: a street reaches its edge.
+3. Streets (orange in the render) and walkways (brown) join every door, the landing and every camp into one
+   network. Where the source drew a street (a painted road, walkway pieces, its navmesh's preferred paths) ours
+   keeps to that line. Where it drew none, the link between two doors is the easiest going on our ground, never a
+   ruled line: it winds with the ground underfoot, goes round the trees and rocks in its way, keeps to the middle
+   of a gap between buildings, and shares a stretch with a path already laid. No street climbs steeper than the
+   source's streets did.
+   Every link is routed on our ground with our decks counting as ground, a link to a door on the water included,
+   so a boardwalk's line runs along its decks and a ship's hatch is reached over its own ship. The landing's shore
+   end is where the landing's own pieces meet our dry ground, never a bank it does not touch. Open water is
+   crossed only where nothing else joins the two ends, and then where it is narrowest, on bridges of the source's
+   own walkway pieces: one piece per piece length along the route, each slid along it clear of any solid there,
+   its deck a hand's breadth over the water (a walkway's deck is the top of its collision at its centre, read per
+   piece, never its record's top, which is the rail).
+   Look at every street close up, not only in the whole-town render. A straight run longer than a few houses, a
+   line beside a deck and not on it, a bridge that ends on an empty bank, or many bridge pieces where the source
+   had none each say the anchor, the turn or a cluster's spot is wrong: put that right and redraft; never accept
+   the line.
+   After the draft the tools build the place and join each door whose walkable ground is an island to the town by
+   level walkway pieces laid from the island to the nearest point of the network at its height. A door whose
+   island no level join reaches and whose room nobody lives or works in (a ship's hatch with no way aboard in the
+   source) is left out with its room and the links that led to it, with the reason in the ledger. A guard whose
+   camp bed the town's network does not reach (a tent shut in by blocks) sleeps in a home's free bed instead; with
+   none free, the last resident gives up theirs. A camp (beds in the open) is a stop like a door: a street
+   reaches its edge.
 
 ## 4. Settle what the cost cannot
 
@@ -92,8 +104,9 @@ blocks) sleeps in a home's free bed instead; with none free, the last resident g
   missing crafting station by the person who works it, the way Skyrim's towns do (the smith's yard outside the
   smithy; the alchemy lab with the apothecary; the enchanter with the spell trader; the cooking pot at the inn).
   A station's base is one whose record carries the station's crafting keyword (what the game keys on), from the
-  plugins whose style the place already uses; where no non-Nordic base carries it, the vanilla working base, said
-  in its `why`. One piece doing two stations' work counts for both (Skyrim's forge is its anvil). The smith's yard
+  plugins whose style the place uses: the marsh's own mods unless the place is of another people, in which case
+  name its mods, first choice first, in `draft.style_order`. Where no non-Nordic base carries the keyword, the
+  vanilla working base, said in its `why`. One piece doing two stations' work counts for both (Skyrim's forge is its anvil). The smith's yard
   is laid as Riverwood's (the forge, the grindstone beside it, the workbench and tanning rack across the yard, each
   facing it): the forge on the nearest clear ground to its worker with room for the yard, the rest in that layout
   or the nearest clear ground round the forge within the worker's reach. Clear means: dry under its outline, its

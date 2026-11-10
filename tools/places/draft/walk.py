@@ -172,9 +172,18 @@ def cut(place_id: str, door_ids: list[str], rows: list[dict], pdir: Path, log=pr
         shutil.rmtree(sdir)
         log(f"join {place_id}: left out room {sid} and its door {did}: no way to it")
     if gone:
-        io.write_jsonl(pdir / "spaces" / "exterior" / "refs.jsonl", [r for r in rows if r["id"] not in gone])
         dropped = {r["space"] for r in ledger if r["src"] == "*"}
         srcs = {r["src"] for r in ledger if r["src"] != "*"}
+        # the links that led to a door left out go with it, and the walkway pieces laid to carry them
+        pj, carried = pdir / "paths.jsonl", ()
+        if pj.exists():
+            paths = io.read_jsonl(pj)
+            dead = [p for p in paths if p.get("from") in srcs or p.get("to") in srcs]
+            if dead:
+                carried = tuple(f"carries street {p['id'].rsplit('.', 1)[-1]} " for p in dead)
+                io.write_jsonl(pj, [p for p in paths if p not in dead])
+        io.write_jsonl(pdir / "spaces" / "exterior" / "refs.jsonl",
+                       [r for r in rows if r["id"] not in gone and not str(r.get("why", "")).startswith(carried or ("\0",))])
         old = [r for r in io.read_jsonl(pdir / "ledger.jsonl") if r.get("space") not in dropped
                and not (r.get("space") == "exterior" and r.get("src") in srcs)]
         io.write_jsonl(pdir / "ledger.jsonl", old + ledger)

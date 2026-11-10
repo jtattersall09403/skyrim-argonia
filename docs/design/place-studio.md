@@ -171,8 +171,13 @@ clear.jsonl            world plants and scatter switched off: {base, pos, by: dr
                        ref at build by base and nearest position, so a world rebuild re-applies it
 land.jsonl             land patches: {cell, verts:[[row,col,dz]...], textures?, why}; the last resort, only to ease
                        the ground under a building: |dz| <= place.json fit.patch_max (1.5 m), never across the waterline
-paths.jsonl            streets and paths: {id, kind: path|street, points:[[x,y]...], width, style}; style is a land
-                       texture key (the source place's own road texture) or the draft's style word (dirt, boardwalk)
+paths.jsonl            streets, paths and walkways: {id, kind: path|street|walkway, points:[[x,y]...], width, style,
+                       from?, to?, laid?}; style is a land texture key (the source place's own road texture) or the
+                       draft's style word (dirt, boardwalk). The points are the line as walked: routed on our ground
+                       and decks and eased into a curve, so a walkway's line runs along its decks; `from` and `to`
+                       name the doors (source ids), `landing` or `camp.<cluster>` a drafted link joins. The studio
+                       draws a person's way between two stops outside by the same rules (round buildings, never
+                       through open water, along these lines where one leads the right way)
 people.jsonl           one person per line: {id, name, base_from, role, home, bed, work, services, faction_ranks,
                        routine:[{start, hours, kind, at, days?}], patrol?: {points:[[x,y] | stop...], loop}}.
                        A stop (`at`, `bed`, `work`, a patrol point) is {space, ref | pos, radius}: `ref` our id or a

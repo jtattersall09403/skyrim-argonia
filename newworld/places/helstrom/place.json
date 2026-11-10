@@ -6970,10 +6970,10 @@
   "adapted": 1003,
   "replaced": 95,
   "dropped": 1920,
-  "exterior_refs": 3029,
+  "exterior_refs": 3003,
   "clusters": 255,
   "land_patches": 0,
-  "plants_cleared": 579,
+  "plants_cleared": 557,
   "paths": 14,
   "interiors": 13,
   "people": {
@@ -6988,12 +6988,7 @@
   },
   "beds": 55
  },
- "draft_key": [
-  1,
-  0,
-  2,
-  192.0
- ],
+ "draft_key": "c88753c18307363b",
  "saves_applied": [
   "end-to-end-proof"
  ]

@@ -9,6 +9,8 @@ The agent's own calls (skill place-build) are inputs, read from place.json's `dr
   drop             {source ref id: reason}: a source ref left out by judgement
   roles            {role: {space | pos:[x,y]}}: where a service person works, when the default is wrong
   keep_patches     false to forbid land patches (the check then lists what needs one)
+  style_order      [plugin file...]: whose pieces the things this place adds are taken from first (default: the
+                   marsh's own mods); a place of another people names its own mods
   add              [{base, pos:[x, y], rot_z?, kind?, dz?, why}]: something the record promises that the source
                    lacks (a forge, a shrine), placed on our land and seated on the ground
 Everything else in the place files is written here, deterministically.
@@ -29,7 +31,7 @@ from tools.places.draft.cluster import VEG, decompose
 from tools.places.draft.fit import Scorer, global_fit, local_fit, patch_for, patch_verts, relief_norm
 from tools.places.draft.fit import _pivot as fit_pivot
 from tools.places.draft.paths import PATH_WIDTH, STREET_WIDTH, NavGraph, network, simplify
-from tools.places.seat import Ground, foot_box, model_bounds, foot_points, foot_relief, seat_all, seat_z
+from tools.places.seat import Ground, model_bounds, foot_points, foot_relief, seat_all, seat_z
 
 UNITS_PER_M = 70.0
 STREET_SLOPE_MIN, STREET_SLOPE_MAX = 15.0, 35.0   # degrees: our streets climb no steeper than the source's did
@@ -98,6 +100,7 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
     pj = pdir / "place.json"
     place = json.loads(pj.read_text())
     dec = place.get("draft") or {}
+    io.style_order(dec.get("style_order"))
     src = io.load(f"src.{place['source_id']}", bundles)
     grd = io.load(f"ground.{place_id}", bundles)
     rec, gives = record if record is not None else place_record(place_id)
@@ -268,9 +271,9 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
                 for r in rows:
                     r["pos"][0] -= dx
                     r["pos"][1] -= dy
-                key = (bad_doors, hits, n, d)
-                if best is None or key < best[0]:
-                    best = (key, dx, dy)
+                score = (bad_doors, hits, n, d)
+                if best is None or score < best[0]:
+                    best = (score, dx, dy)
                 if d == 0.0:
                     break
             if best[0][:3] == (0, 0, 0):
@@ -423,11 +426,24 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
                 land_src = p
                 break
         nodes_src["landing"] = land_src
-        q = to_ours(first["id"], land_src)
-        # on our side too, the shore end stands on dry ground
-        q = next(((q[0] + r * math.cos(t), q[1] + r * math.sin(t)) for r in [0.0] + NUDGE_STEPS * 2
-                  for t in (k * math.pi / 8 for k in range(16)) if not G.wet(q[0] + r * math.cos(t), q[1] + r * math.sin(t), 16)), q)
-        nodes_our["landing"] = q
+        # on our side the shore end is where the landing's own pieces meet our dry ground: the dry spot nearest any of
+        # them (of two as near, the one nearer the town), never a bank the landing does not reach
+        q, best = to_ours(first["id"], land_src), None
+        for row in our:
+            if row.get("cluster") != landing.id or row.get("kind") not in ("building", "static"):
+                continue
+            for ring in [0.0] + [float(v) for v in range(64, 1025, 64)]:
+                if best is not None and ring > best[0]:
+                    break
+                spots = [(row["pos"][0] + ring * math.cos(t), row["pos"][1] + ring * math.sin(t))
+                         for t in (k * math.pi / 8 for k in range(16 if ring else 1))]
+                dry = [sp for sp in spots if G.has(*sp) and not G.wet(sp[0], sp[1], 16)]
+                if dry:
+                    sp = min(dry, key=lambda sp: (geom.dist(sp, anchor), sp))
+                    cand = (ring, geom.dist(sp, anchor), sp)
+                    best = cand if best is None or cand < best else best
+                    break
+        nodes_our["landing"] = best[2] if best else q
 
     # a camp (beds in the open: the guards' tents) is a stop of its sleepers' day like a door: a street reaches its
     # edge, the first point out of its tents from its bed nearest the town
@@ -470,6 +486,7 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
     # where our streets may not go: water with no walkway of ours over it, inside a building
     walk_our = [r for r in our if r.get("src") in {w["id"] for w in walk_src}]
     blocked_cells: set = set()
+    blocked_by: dict = {}     # cell -> ids of the buildings standing in it (a link is free of the one its end is in)
     for r in our:
         f = geom.foot(r, bases)
         if r.get("kind") == "building" and f and r not in walk_our and not geom.underfoot(r, bases, G):
@@ -478,11 +495,17 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
                 for j in range(round((r["pos"][1] - rad - 80) / 128), round((r["pos"][1] + rad + 80) / 128) + 1):
                     if geom.contains_xy(r, bases, i * 128.0, j * 128.0, 80):
                         blocked_cells.add((i, j))
+                        blocked_by.setdefault((i, j), set()).add(r["id"])
     walk_cells: set = set()
     for r in walk_our:
-        x0, y0, x1, y1 = foot_box(geom.foot(r, bases) or [64.0, 64.0])
-        for x, y in foot_points(r["pos"][0], r["pos"][1], r["rot"][2], [x0 - 64, y0 - 64, x1 + 64, y1 + 64], 7):
-            walk_cells.add((round(x / 128), round(y / 128)))
+        # the cells whose middle is on the deck (and the one its origin is in): a cell only brushed by the deck's edge
+        # is open water, and a link routed through it would run beside the deck, not on it
+        walk_cells.add((round(r["pos"][0] / 128), round(r["pos"][1] / 128)))
+        rad = geom.reach(r, bases)
+        for i in range(round((r["pos"][0] - rad) / 128), round((r["pos"][0] + rad) / 128) + 1):
+            for j in range(round((r["pos"][1] - rad) / 128), round((r["pos"][1] + rad) / 128) + 1):
+                if geom.contains_xy(r, bases, i * 128.0, j * 128.0, 32):
+                    walk_cells.add((i, j))
 
     def blocked(x, y) -> bool:
         k = (round(x / 128), round(y / 128))
@@ -574,38 +597,87 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
                 out.append(row)
         return out
 
-    # a door that opens onto the water (on a ship or a pier) is reached over the source's own walkways from the
-    # landing, not by a street: its link is laid as the source's line and marked a walkway; where our water parts
-    # what the source's walkways joined (a wet stretch no placed solid stands over), walkway pieces carry it
+    # Every link is routed on our ground, our decks counting as ground: over land and the place's own walkways
+    # wherever they lead, crossing open water only where nothing else joins the two ends, and then where it is
+    # narrowest (walkway pieces carry it there). The routed line is eased into a curve, so a street bends with the
+    # land and a boardwalk's line follows its decks. A link with an end on the water (a door on a ship or a pier)
+    # or mostly over water is a walkway.
+    def walked(x, y):
+        """The height one walks at: the ground, or the water's surface (a deck's level) over water."""
+        h, w = G.height(x, y), G.water(x, y)
+        return h if w is None or h is None or h >= w else w
+
+    def open_water(x, y) -> bool:
+        return G.wet(x, y, 8) and (round(x / 128), round(y / 128)) not in walk_cells
+
+    # a path goes round the trees and rocks that stand in its way, as a walked path does (and fewer are cleared for
+    # it): the cell a trunk stands in costs dear, the cells beside it somewhat
+    crowd: dict = {}
+    for r in (grd.exterior.refs if grd.exterior else []):
+        if r.get("kind") in ("tree", "rock") and r.get("layer", "world") == "world":
+            ci, cj = round(r["pos"][0] / 128), round(r["pos"][1] / 128)
+            for di in (-1, 0, 1):
+                for dj in (-1, 0, 1):
+                    crowd[(ci + di, cj + dj)] = crowd.get((ci + di, cj + dj), 0.0) + (1.0 if not di and not dj else 0.4)
+
+    by_wall = {(i + di, j + dj) for (i, j) in blocked_cells for di in (-1, 0, 1) for dj in (-1, 0, 1)} - blocked_cells
+    trodden: set = set()      # cells of the links already laid: later links take them, so paths share a stretch
+
+    def dear(x, y, crossing=False) -> float:
+        """A step's cost on our ground: the going underfoot, trees and rocks in the way, a wall close beside, less
+        where a path already runs; open water dear when a crossing is allowed."""
+        k = (round(x / 128), round(y / 128))
+        d = 1.0 + GOING_DEAR * paths_mod.going(x, y) + TREE_DEAR * crowd.get(k, 0.0) + (WALL_DEAR if k in by_wall else 0.0)
+        if k in trodden:
+            d *= TRODDEN
+        return d * paths_mod.WATER_DEAR if crossing and open_water(x, y) else d
+
+    def own(*pts) -> set:
+        """The buildings a link's ends stand in (a ship's hatch is on its ship's deck): the link walks those, and no
+        other building."""
+        ids: set = set()
+        for q in pts:
+            ids |= blocked_by.get((round(q[0] / 128), round(q[1] / 128)), set())
+        return ids
+
     afloat = {n for n, p in nodes_our.items() if n != "landing" and G.wet(p[0], p[1], 16)}
     paths_src, paths_our = [], []
     for k, (a, b, pts) in enumerate(edges):
-        if a in afloat or b in afloat:
-            line = [nodes_our[a]] + [fit.warp(*p) for p in simplify(pts, 32)[1:-1]] + [nodes_our[b]]
-            paths_src.append({"points": [list(p) for p in pts], "width": PATH_WIDTH})
-            paths_our.append({"id": f"{place_id}.path.{k + 1:02d}", "kind": "walkway",
-                              "points": [[round(p[0], 1), round(p[1], 1)] for p in line], "width": PATH_WIDTH,
-                              "style": "boardwalk", "from": a, "to": b, "laid": "the source's walkway, mapped"})
-            bridges.extend(bridge_over(line, k))
-            continue
         street = sum(nav.pref[nav.nearest(p)] for p in pts[1:-1]) * 2 >= max(1, len(pts) - 2) if nav else True
         width = paths_mod.width_from_paint(pts, paint_grid, STREET_WIDTH if street else PATH_WIDTH)
         guide = [nodes_our[a]] + [fit.warp(*p) for p in simplify(pts, 32)[1:-1]] + [nodes_our[b]]
-        routed = paths_mod.astar(G, nodes_our[a], nodes_our[b], blocked, max_slope, guide)
+        hug = 0.5 if len(guide) > 2 else 0.0    # the source's own street is kept to; a bare straight line is not
+        mine = own(nodes_our[a], nodes_our[b])
+
+        def walled(x, y, mine=mine) -> bool:
+            return bool(blocked_by.get((round(x / 128), round(y / 128)), set()) - mine)
+
+        def shut(x, y, walled=walled) -> bool:
+            return walled(x, y) or open_water(x, y)
+        routed = paths_mod.astar(G, nodes_our[a], nodes_our[b], shut, max_slope, guide, level=walked,
+                                 dear=dear, bank=lambda x, y: G.wet(x, y, 8), hug=hug)
+        keep_off = shut
         if routed is None:
-            # our water parts what the source's land joined: cross it, and carry the street on the source's own
-            # walkway pieces (a bridge the place needs that the source lacks, in the source's style)
-            routed = paths_mod.astar(G, nodes_our[a], nodes_our[b], lambda x, y: (round(x / 128), round(y / 128))
-                                     in blocked_cells, max_slope, guide)
-            if routed:
-                bridges.extend(bridge_over(routed, k))
-        laid = simplify([(round(p[0], 1), round(p[1], 1)) for p in (routed or guide)], 24)
+            # our water parts what the source joined: cross it where it is narrowest, and carry the link there on the
+            # source's own walkway pieces (a bridge the place needs that the source lacks, in the source's style)
+            routed = paths_mod.astar(G, nodes_our[a], nodes_our[b], walled, max_slope, guide, level=walked,
+                                     dear=lambda x, y: dear(x, y, True),
+                                     bank=lambda x, y: G.wet(x, y, 8), hug=hug)
+            keep_off = walled
+        line = paths_mod.smooth(routed, shut) if routed else guide   # eased, never off a deck or the land into water
+        if routed and keep_off is walled:
+            bridges.extend(bridge_over(line, k))
+        for q in line:
+            trodden.add((round(q[0] / 128), round(q[1] / 128)))
+        laid = simplify([(round(p[0], 1), round(p[1], 1)) for p in line], 8)
         wet = sum(1 for p in laid if G.wet(*p)) > len(laid) / 2
-        paths_src.append({"points": [list(p) for p in pts], "width": width})
-        paths_our.append({"id": f"{place_id}.path.{k + 1:02d}", "kind": "street" if street else "path",
-                          "points": [list(p) for p in laid], "width": width,
-                          "style": "boardwalk" if wet else "dirt", "from": a, "to": b,
-                          "laid": "routed on our ground" if routed else "the source's line, mapped"})
+        deck = wet or a in afloat or b in afloat
+        paths_src.append({"points": [list(p) for p in pts], "width": PATH_WIDTH if deck else width})
+        paths_our.append({"id": f"{place_id}.path.{k + 1:02d}",
+                          "kind": "walkway" if deck else "street" if street else "path",
+                          "points": [list(p) for p in laid], "width": PATH_WIDTH if deck else width,
+                          "style": "boardwalk" if deck else "dirt", "from": a, "to": b,
+                          "laid": "routed on our ground and decks" if routed else "the source's line, mapped"})
 
     for r in our:   # one stands on a walkway's deck (its mesh's top surface), not on its rails
         w = geom.walk(bases.get(r["base"]) or {})
@@ -794,6 +866,10 @@ def add_shrine(place_id, gives, our, bases, stations, centre, paths_our, G) -> N
 # yard behind it, each turned to face the yard where its user stands.
 YARD = {"grindstone": (3.0, -179.0, 296.0), "armour-workbench": (-354.0, 91.0, 162.0),
         "tanning-rack": (-204.0, -103.0, 251.0)}
+GOING_DEAR = 1.2         # how much dearer the hardest going underfoot is than the easiest
+WALL_DEAR = 0.8          # a step in a cell right beside a wall: a path keeps to the middle of a gap
+TRODDEN = 0.55           # a step where a path already runs costs this much of a fresh one: links share a stretch
+TREE_DEAR = 1.5          # how much dearer a street's step is in a cell a world tree or rock stands in
 DECK_OVER = 16.0         # a laid bridge's deck stands this far over the water under it
 DECK_LIFT = 24.0         # the most a bridge deck is lifted over a drowned thing under it
 FLOOR = re.compile(r"road|dock|boardwalk|walkway|pier|jetty", re.I)

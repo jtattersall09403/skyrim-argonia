@@ -233,10 +233,62 @@ def width_from_paint(route: list, paint_grid: set, default: float) -> float:
 
 # --- laying a street on our ground -----------------------------------------------------------------------------
 
-def astar(g, a, b, blocked, max_slope: float, guide: list, step: float = 128.0, pad: float = 1536.0):
+WATER_DEAR = 8.0      # open water costs this many times dry ground when a street has to cross it: it crosses where
+#                       the water is narrowest and keeps to land and decks everywhere else
+
+
+def going(x: float, y: float, wave: float = 640.0) -> float:
+    """How easy the ground is to walk, 0 (easy) to 1 (hard): a smooth field with no straight lines in it, the same
+    for the same spot every time. Ground is never even; a walked path takes the easier going and so winds a little,
+    where a search over even ground would rule a line."""
+    def lattice(i: int, j: int) -> float:
+        h = (i * 374761393 + j * 668265263) & 0xFFFFFFFF
+        h = ((h ^ (h >> 13)) * 1274126177) & 0xFFFFFFFF
+        return ((h ^ (h >> 16)) & 0xFFFF) / 65535.0
+    out = 0.0
+    for scale, weight in ((wave, 0.65), (wave / 2.3, 0.35)):
+        u, v = x / scale, y / scale
+        i, j = math.floor(u), math.floor(v)
+        fu, fv = u - i, v - j
+        fu, fv = fu * fu * (3 - 2 * fu), fv * fv * (3 - 2 * fv)
+        a = lattice(i, j) * (1 - fu) + lattice(i + 1, j) * fu
+        b = lattice(i, j + 1) * (1 - fu) + lattice(i + 1, j + 1) * fu
+        out += weight * (a * (1 - fv) + b * fv)
+    return out
+
+
+def smooth(pts: list, blocked, spacing: float = 64.0, passes: int = 6) -> list:
+    """A routed line as a path one would walk: resampled every `spacing` units and eased (each point drawn to the
+    mean of its neighbours two either side, the ends held), a point staying where it was when easing would carry it
+    into `blocked`. The grid's stair steps and hard corners become curves that still keep to the route."""
+    if len(pts) < 3:
+        return [tuple(p[:2]) for p in pts]
+    out = [tuple(pts[0][:2])]
+    for a, b in zip(pts, pts[1:]):
+        n = max(1, int(geom.dist(a, b) // spacing))
+        for k in range(1, n + 1):
+            out.append((a[0] + (b[0] - a[0]) * k / n, a[1] + (b[1] - a[1]) * k / n))
+    for _ in range(passes):
+        nxt = [out[0]]
+        for i in range(1, len(out) - 1):
+            w = out[max(0, i - 2):i + 3]
+            q = (sum(p[0] for p in w) / len(w), sum(p[1] for p in w) / len(w))
+            nxt.append(out[i] if blocked(*q) else q)
+        nxt.append(out[-1])
+        out = nxt
+    return out
+
+
+def astar(g, a, b, blocked, max_slope: float, guide: list, step: float = 128.0, pad: float = 1536.0,
+          dear=None, level=None, bank=None, hug: float = 0.5):
     """A street from a to b on our ground: 8-neighbour search on a `step` grid round the guide line; a step is dearer
     the steeper it climbs and the further it strays from the guide; `blocked(x, y)` cells (water without a
-    walkway, building footprints) and climbs steeper than max_slope degrees are never taken."""
+    walkway, building footprints) and climbs steeper than max_slope degrees are never taken. `dear(x, y)` multiplies
+    a step's cost (open water, when a crossing is allowed); `level(x, y)` is the height walked at (a deck or the
+    water's surface over water), the ground's when not given. `bank(x, y)` marks cells where a step may rise as it
+    likes (where a deck meets its bank: the step between the water's surface and the shore). `hug` is how hard the
+    route keeps to the guide: 0 when the guide is only the straight line between the ends (the source drew no street
+    there), so the route is the easiest going, not a ruled line."""
     xs = [p[0] for p in guide] + [a[0], b[0]]
     ys = [p[1] for p in guide] + [a[1], b[1]]
     x0, x1, y0, y1 = min(xs) - pad, max(xs) + pad, min(ys) - pad, max(ys) + pad
@@ -251,7 +303,7 @@ def astar(g, a, b, blocked, max_slope: float, guide: list, step: float = 128.0, 
 
     def h(i, j):
         if (i, j) not in hcache:
-            hcache[(i, j)] = g.height(i * step, j * step)
+            hcache[(i, j)] = (level or g.height)(i * step, j * step)
         return hcache[(i, j)]
     openq = [(0.0, start)]
     cost = {start: 0.0}
@@ -278,9 +330,12 @@ def astar(g, a, b, blocked, max_slope: float, guide: list, step: float = 128.0, 
                     continue
                 d = step * math.hypot(di, dj)
                 rise = abs(hb - ha) / d
+                if bank and (bank(px, py) or bank(cur[0] * step, cur[1] * step)):
+                    rise = 0.0
                 if rise > tan_max and not near_end:
                     continue
-                c = cost[cur] + d * (1 + 4 * (rise / max(tan_max, 1e-3)) ** 2) + 0.5 * d * stray(nx, ny) / 256.0
+                c = cost[cur] + d * (1 + 4 * (rise / max(tan_max, 1e-3)) ** 2) * (dear(px, py) if dear else 1.0) \
+                    + (hug * d * stray(nx, ny) / 256.0 if hug else 0.0)
                 if c < cost.get((nx, ny), math.inf):
                     cost[(nx, ny)] = c
                     prev[(nx, ny)] = cur
