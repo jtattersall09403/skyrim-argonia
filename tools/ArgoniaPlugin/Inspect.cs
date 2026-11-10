@@ -72,6 +72,27 @@ static class Inspect
                     Console.WriteLine($"XTEL {key} in {m.ModKey}: pos={r.Placement?.Position} rot={r.Placement?.Rotation} -> {r.TeleportDestination?.Door.FormKey} at {r.TeleportDestination?.Position} rot {r.TeleportDestination?.Rotation}");
             return;
         }
+        if (what == "aliaspack")  // per plugin: the packages its quests' aliases carry, by owner quest, template kind and where the base's own packages are
+        {
+            var packs = Survey.Winners<IPackageGetter>(mods);
+            foreach (var m in mods)
+            {
+                int n = 0, own = 0, none = 0, other = 0, tpl = 0;
+                foreach (var q in m.Quests)
+                    foreach (var al in q.Aliases)
+                        foreach (var l in al.PackageData)
+                        {
+                            if (!packs.TryGetValue(l.FormKey, out var p)) continue;
+                            n++;
+                            if (p.rec.OwnerQuest.IsNull) none++; else if (p.rec.OwnerQuest.FormKey == q.FormKey) own++; else other++;
+                            if (p.rec.Type == Package.Types.PackageTemplate) tpl++;
+                            if (m.ModKey == mods[^1].ModKey && (p.rec.OwnerQuest.FormKey != q.FormKey || p.rec.Type == Package.Types.PackageTemplate))
+                                Console.WriteLine($"ALIASPACK {q.EditorID} alias {al.Name}: {p.rec.EditorID} owner={(p.rec.OwnerQuest.IsNull ? "none" : p.rec.OwnerQuest.FormKey.ToString())} type={p.rec.Type}");
+                        }
+                if (n > 0) Console.WriteLine($"ALIASPACK {m.ModKey}: {n} alias packages; owner is the alias's quest {own}, another quest {other}, none {none}; template-type {tpl}");
+            }
+            return;
+        }
         if (what == "navstat")  // per plugin: winning navmeshes, and how many carry edge links to another navmesh
         {
             foreach (var g in Survey.Winners<INavigationMeshGetter>(mods).GroupBy(w => w.Key.ModKey))
