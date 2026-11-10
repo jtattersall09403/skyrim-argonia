@@ -258,59 +258,77 @@ def test_a_broken_shrine_fails_services(what):
 
 
 def boat_ctx(what=None):
-    """The good fixture plus a boatman of ours in a boatman faction, with one line to Truowa (a city, 20 gold)."""
+    """The good fixture plus a boat stop: a boatman of ours in a boatman faction, the network's one route from the
+    place to Truowa (20 gold), and his line to Truowa's arrival point."""
     c = copy.deepcopy(ctx())
+    c["place_id"] = "t"
     d = c["dump"]
     boat_f = k(0x70)
     d["factions"].append({"fk": boat_f, "edid": "ANP_t_Boatman_boater", "vendor": False})
     d["npcs"][0]["faction_keys"].append(boat_f)
     d["npcs"][0]["factions"].append("ANP_t_Boatman_boater")
-    marker = k(0x67, W)
-    d["world_markers"] = {marker: "ANW_MapMarker_truowa"}
+    marker, julo = k(0x67, W), k(0x68, W)
+    d["world_markers"] = {marker: "ANW_MapMarker_truowa", julo: "ANW_MapMarker_julo", k(0x69, W): f"ANW_MapMarker_{c['place_id']}"}
     props = [{"name": "Destination", "value": marker}, {"name": "Fare", "value": 20}, {"name": "Gold001", "value": "Skyrim.esm:00000F"}]
     info = {"fk": k(0x72), "prompt": "Take me to Truowa (20 gold).", "text": ["Truowa, then."], "link_to": [],
             "conditions": [{"fn": "GetInFaction", "run_on": "Subject", "op": "EqualTo", "value": 1.0, "faction": boat_f},
                            {"fn": "GetGold", "run_on": "Target", "op": "GreaterThanOrEqualTo", "value": 20.0}],
             "scripts": [{"name": "TIF_ARG_BoatTravel", "props": props}], "fragment": {"file": "TIF_ARG_BoatTravel", "on_end": "Fragment_0"}}
     d["topics"] = [{"fk": k(0x71), "edid": "ANP_t_Boat_Truowa", "name": info["prompt"], "quest": k(0x73), "branch": k(0x74), "infos": [info]}]
-    c["places"] = [{"id": "truowa", "name": "Truowa", "place_kind_id": "city"}, {"id": "korydon", "name": "Korydon", "place_kind_id": "town"}]
-    c["gives"].append({"give_kind_id": "carriage-or-boat", "detail": "raft-boatman to Truowa"})
+    c["routes"] = {"boat": [{"to_place_id": "truowa", "fare": 20}]}
+    c["gives"].append({"give_kind_id": "boat-stop", "detail": "raft-masters at the landing"})
     if what == "no_destination":
-        c["gives"][-1]["detail"] = "raft-boatman to Truowa and Korydon"
+        c["routes"]["boat"].append({"to_place_id": "julo", "fare": 25})
     elif what == "no_script":
         info["scripts"] = []
-    elif what == "fare_0":
-        props[1]["value"] = 0
-        info["conditions"][1]["value"] = 0.0
+    elif what == "wrong_fare":
+        props[1]["value"] = 25
+        info["conditions"][1]["value"] = 25.0
     elif what == "no_gold_condition":
         info["conditions"].pop()
     elif what == "no_faction_condition":
         info["conditions"].pop(0)
     elif what == "wrong_marker":
-        d["world_markers"][marker] = "ANW_MapMarker_julo"
+        props[0]["value"] = julo
     elif what == "no_fragment":
         info["fragment"] = None
     elif what == "no_boatman":
         d["npcs"][0]["faction_keys"].remove(boat_f)
+    elif what == "no_route":
+        c["routes"] = {}
+    elif what == "no_arrival_here":
+        del d["world_markers"][k(0x69, W)]
+    elif what == "waiting":   # a route to a place the world gives no arrival point yet: not offered, not a failure
+        c["routes"]["boat"].append({"to_place_id": "nowhere", "fare": 30})
     return c
 
 
-def test_a_boatman_with_a_line_per_destination_passes_services():
+def test_a_boat_stop_with_a_line_per_route_passes_services():
     assert not C.run(boat_ctx())["services"]
 
 
-@pytest.mark.parametrize("what", ["no_destination", "no_script", "fare_0", "no_gold_condition", "no_faction_condition", "wrong_marker",
-                                  "no_fragment", "no_boatman"])
-def test_a_broken_boatman_fails_services(what):
+def test_a_route_to_a_place_with_no_arrival_point_waits_and_passes():
+    C.WARNINGS.clear()
+    assert not C.run(boat_ctx("waiting"))["services"]
+    assert any("nowhere waits on that place" in x for x in C.WARNINGS)
+
+
+@pytest.mark.parametrize("what", ["no_destination", "no_script", "wrong_fare", "no_gold_condition", "no_faction_condition",
+                                  "wrong_marker", "no_fragment", "no_boatman", "no_route", "no_arrival_here"])
+def test_a_broken_boat_stop_fails_services(what):
     got = C.run(boat_ctx(what))["services"]
-    assert any("carriage-or-boat" in x for x in got), (what, got)
+    assert any("boat-stop" in x for x in got), (what, got)
 
 
-def test_boat_destinations_are_read_from_the_give_detail():
-    from tools.places import build as B
-    assert B.boat_destinations("raft-boatman to Truowa, Korydon, Marzai and Julo") == ["Truowa", "Korydon", "Marzai", "Julo"]
-    assert B.boat_destinations("fishing boat across to Soulrest") == ["Soulrest"]
-    assert B.boat_destinations("a raft") == []
+def test_the_network_is_whole_and_its_fares_fixed():
+    """The built network: no fast-travel promise, every route between stops of its mode at its fare, one network."""
+    from tools.argonia_world import db
+    from tools.newworld import travel
+    w = db.open("newworld")
+    assert travel.problems(w) == []
+    boat = {"fare_base": 10, "fare_per_km": 8, "fare_step": 5, "fare_min": 10, "fare_max": 60}
+    assert [travel.fare(boat, d) for d in (0, 1200, 2300, 3700, 9000)] == [10, 20, 30, 40, 60]
+
 
 
 def seam_pair(other_y0, other_z):

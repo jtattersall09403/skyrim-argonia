@@ -725,6 +725,88 @@ CREATE TABLE "water_body" (
 );
 
 -- ---------------------------------------------------------------------------------------------------------
+-- Travel: the boat, coach and rootworm network (newworld/sources/travel/network.json; tools/newworld/travel.py;
+-- docs/design/travel-network.md). No place promises map fast travel; a stop is a place's promise on the network.
+-- ---------------------------------------------------------------------------------------------------------
+
+-- A way of travelling: what it needs of the ground, who runs it, its fixed fare rule and pace (decision 0035).
+CREATE TABLE "travel_mode" (
+  "id" TEXT NOT NULL PRIMARY KEY,        -- boat, coach, rootworm
+  "name" TEXT NOT NULL,
+  "give_kind_id" TEXT NOT NULL UNIQUE REFERENCES "give_kind"("id"),   -- the place record's give for a stop of it
+  "needs" TEXT NOT NULL,                 -- what the ground must offer from stop to stop
+  "road_class_id" TEXT REFERENCES "road_class"("id"),                 -- a coach's road, the whole way
+  "operated_by" TEXT NOT NULL,
+  "fare_base" INTEGER NOT NULL,          -- fare = base + per_km x km, rounded to step, held in [min, max]
+  "fare_per_km" REAL NOT NULL,
+  "fare_step" INTEGER NOT NULL,
+  "fare_min" INTEGER NOT NULL,
+  "fare_max" INTEGER NOT NULL,
+  "speed_kmh" REAL NOT NULL,             -- hours = board_h + km / speed, whole, at least 1
+  "board_h" REAL NOT NULL,
+  "evidence" TEXT NOT NULL,              -- how Bethesda did it
+  "why" TEXT NOT NULL                    -- the lore it stands on
+);
+
+-- The water a boat mode runs on: a water kind, and the narrowest of it that carries a boat.
+CREATE TABLE "travel_mode_water" (
+  "travel_mode_id" TEXT NOT NULL REFERENCES "travel_mode"("id"),
+  "water_kind_id" TEXT NOT NULL REFERENCES "water_kind"("id"),
+  "min_width_m" REAL,                    -- null: any width
+  PRIMARY KEY ("travel_mode_id", "water_kind_id")
+);
+
+-- Who runs a stop: the operator's kind, its craft and how much open sea it crosses.
+CREATE TABLE "travel_operator" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "travel_mode_id" TEXT NOT NULL REFERENCES "travel_mode"("id"),
+  "name" TEXT NOT NULL,
+  "craft" TEXT NOT NULL,
+  "open_sea_max_m" REAL,                 -- the most open sea (ocean, bay) one passage may cross; null: any
+  "who" TEXT NOT NULL,
+  "why" TEXT NOT NULL
+);
+
+-- A stop: a place's promise of a mode (its place_give of the mode's kind), its operator and its part in the network.
+CREATE TABLE "travel_stop" (
+  "place_id" TEXT NOT NULL REFERENCES "place"("id"),
+  "travel_mode_id" TEXT NOT NULL REFERENCES "travel_mode"("id"),
+  "give_seq" INTEGER NOT NULL,
+  "travel_operator_id" TEXT NOT NULL REFERENCES "travel_operator"("id"),
+  "rank" TEXT NOT NULL CHECK ("rank" IN ('hub', 'spoke')),
+  "why" TEXT NOT NULL,
+  PRIMARY KEY ("place_id", "travel_mode_id"),
+  FOREIGN KEY ("place_id", "give_seq") REFERENCES "place_give"("place_id", "seq")
+);
+
+-- A route from one stop to another of the same mode (authored as a pair, built both ways), measured on the ground.
+CREATE TABLE "travel_route" (
+  "from_place_id" TEXT NOT NULL,
+  "to_place_id" TEXT NOT NULL,
+  "travel_mode_id" TEXT NOT NULL REFERENCES "travel_mode"("id"),
+  "distance_m" INTEGER NOT NULL,         -- boat: along the water; coach: along the road; rootworm: straight
+  "open_sea_m" INTEGER NOT NULL,         -- of it, over ocean or bay
+  "fare" INTEGER NOT NULL CHECK ("fare" > 0),   -- the mode's rule over the distance
+  "hours" INTEGER NOT NULL,
+  "why" TEXT NOT NULL,
+  PRIMARY KEY ("from_place_id", "to_place_id", "travel_mode_id"),
+  FOREIGN KEY ("from_place_id", "travel_mode_id") REFERENCES "travel_stop"("place_id", "travel_mode_id"),
+  FOREIGN KEY ("to_place_id", "travel_mode_id") REFERENCES "travel_stop"("place_id", "travel_mode_id")
+);
+
+-- How one reaches a place that is no stop: from the nearest stop, and how (derived), or why it is remote (authored).
+CREATE TABLE "travel_approach" (
+  "place_id" TEXT NOT NULL PRIMARY KEY REFERENCES "place"("id"),
+  "stop_place_id" TEXT NOT NULL,
+  "travel_mode_id" TEXT NOT NULL,
+  "foot_m" INTEGER NOT NULL,             -- by road when a road joins them, else straight
+  "way" TEXT NOT NULL CHECK ("way" IN ('road', 'marsh', 'water', 'dive')),
+  "remote" INTEGER NOT NULL CHECK ("remote" IN (0, 1)),   -- 1: off the network on purpose, `why` says so
+  "why" TEXT NOT NULL,
+  FOREIGN KEY ("stop_place_id", "travel_mode_id") REFERENCES "travel_stop"("place_id", "travel_mode_id")
+);
+
+-- ---------------------------------------------------------------------------------------------------------
 -- Terrain (step 4): the built rasters are outputs, rebuilt by tools/newworld/terrain.py; this records each build.
 -- ---------------------------------------------------------------------------------------------------------
 

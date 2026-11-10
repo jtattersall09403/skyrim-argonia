@@ -27,6 +27,7 @@ from pathlib import Path
 import numpy as np
 
 from tools.places import build as B
+from tools.places.people import TRAVEL_STOP
 
 SEAT_TOL = 8.0  # units: one VHGT step
 STOP_PLAN_TOL, STOP_Z_TOL = 96.0, 128.0  # a routine stop or arrival point is on navmesh within these
@@ -986,62 +987,60 @@ BOAT_PEX = B.ROOT / "out" / "gpu" / "papyrus" / "TIF_ARG_BoatTravel.pex"
 WARNINGS: list[str] = []  # what a check notes without failing; main prints them
 
 
-def boat_problems(ctx: dict, m: dict, facts: dict, npcs: list[dict], detail: str) -> list[str]:
-    """What a place's boatman lacks to take the player where the give promises (empty: nothing). A placed person of ours
-    in a boatman faction of ours; for every promised destination an INFO on that faction (subject in it, the player holding
-    the fare in gold) whose script is TIF_ARG_BoatTravel with Destination a map marker of that place in the world ESM,
-    Fare a fixed whole number above 0 matching the gold condition, Gold001 set, and the fragment Fragment_0."""
+def travel_problems(ctx: dict, m: dict, facts: dict, npcs: list[dict], mode: str) -> list[str]:
+    """What a place's stop of one mode lacks to take the player on each of its routes (empty: nothing). A placed person
+    of ours in that mode's travel faction of ours; for every route of the stop (travel_route) whose destination has an
+    arrival point (its map marker in the world ESM), an INFO on that faction (subject in it, the player holding the
+    fare in gold) running TIF_ARG_BoatTravel with Destination that marker, Fare the route's fare, Gold001 set and the
+    fragment Fragment_0. A route whose destination has no arrival point yet is not offered: it waits on that place."""
+    from tools.places.people import TRAVEL_TAG
     dump = ctx["dump"]
     markers = dump.get("world_markers") or {}
-    places = ctx.get("places") or B.jsonl(B.DB / "place.jsonl")
-    by_name = {}
-    for r in places:
-        for key in (r.get("name"), r.get("map_label")):
-            if key:
-                by_name.setdefault(key.casefold(), r)
-    names = B.boat_destinations(detail)
-    if not names:
-        return [f"the give names no destination ({detail!r})"]
-    boat = [(n, [f for f in n["faction_keys"] if "Boatman" in (facts.get(f, {}).get("edid") or "") and f.startswith(B.PLUGIN + ":")]) for n in npcs]
-    boat = [(n, fs) for n, fs in boat if fs]
-    if not boat:
-        return ["no person of ours in a boatman faction of ours"]
+    by_edid = {v: k for k, v in markers.items()}
+    routes = ctx.get("routes", B.travel_routes(ctx.get("place_id", ""))).get(mode, [])
+    if not routes:
+        return [f"the network gives this {mode} stop no route"]
+    tag = f"_{TRAVEL_TAG[mode]}_"
+    ops = [(n, [f for f in n["faction_keys"] if tag in (facts.get(f, {}).get("edid") or "") and f.startswith(B.PLUGIN + ":")]) for n in npcs]
+    ops = [(n, fs) for n, fs in ops if fs]
+    if not ops:
+        return [f"no person of ours in a {TRAVEL_TAG[mode].lower()} faction of ours"]
     infos = [i for t in dump.get("topics") or [] for i in t.get("infos") or []]
     tried = []
-    for n, fs in boat:
+    for n, fs in ops:
         bad = []
-        for name in names:
-            row = by_name.get(name.casefold())
-            if row is None:
-                bad.append(f"{name}: no place of that name in the database")
+        for r in routes:
+            dest = r["to_place_id"]
+            want = "ANW_MapMarker_" + dest.replace("-", "_")
+            if want not in by_edid:
+                WARNINGS.append(f"travel: {mode} to {dest} waits on that place (no {want} in the world ESM)")
                 continue
-            want = "ANW_MapMarker_" + row["id"].replace("-", "_")
             mine_ = [i for i in infos if any(c.get("fn") == "GetInFaction" and c.get("faction") in fs and c.get("run_on") == "Subject"
                                              and c.get("op") == "EqualTo" and c.get("value") == 1 for c in i.get("conditions") or [])
                      and any(sc["name"] == BOAT_SCRIPT for sc in i.get("scripts") or [])]
-            hit = [i for i in mine_ if markers.get(next((p["value"] for sc in i["scripts"] for p in sc["props"] if p["name"] == "Destination"), None)) == want]
+            hit = [i for i in mine_ if next((p["value"] for sc in i["scripts"] for p in sc["props"] if p["name"] == "Destination"), None) == by_edid[want]]
             if not hit:
-                bad.append(f"{name}: no INFO of this boatman running {BOAT_SCRIPT} to {want}"
-                           + ("" if mine_ else f" (he has no {BOAT_SCRIPT} line at all)"))
+                bad.append(f"{dest}: no INFO of this operator running {BOAT_SCRIPT} to {want}"
+                           + ("" if mine_ else f" (no {BOAT_SCRIPT} line at all)"))
                 continue
             i = hit[0]
             props = {p["name"]: p["value"] for sc in i["scripts"] for p in sc["props"]}
             fare = props.get("Fare")
-            if not (isinstance(fare, int) and fare > 0):
-                bad.append(f"{name}: Fare {fare!r} is not a fixed amount above 0")
+            if fare != r["fare"]:
+                bad.append(f"{dest}: Fare {fare!r} is not the route's {r['fare']}")
                 continue
             if props.get("Gold001") != BOAT_GOLD:
-                bad.append(f"{name}: Gold001 is {props.get('Gold001')!r} (want {BOAT_GOLD})")
+                bad.append(f"{dest}: Gold001 is {props.get('Gold001')!r} (want {BOAT_GOLD})")
             if not any(c.get("fn") == "GetGold" and c.get("run_on") == "Target" and c.get("op") == "GreaterThanOrEqualTo" and c.get("value") == fare
                        or c.get("fn") == "GetItemCount" and c.get("item") == BOAT_GOLD and c.get("op") == "GreaterThanOrEqualTo" and c.get("value") == fare
                        for c in i.get("conditions") or []):
-                bad.append(f"{name}: no condition that the player holds {fare} gold")
+                bad.append(f"{dest}: no condition that the player holds {fare} gold")
             fr = i.get("fragment") or {}
             if fr.get("file") != BOAT_SCRIPT or fr.get("on_end") != "Fragment_0":
-                bad.append(f"{name}: fragment {fr} is not {BOAT_SCRIPT} OnEnd Fragment_0")
+                bad.append(f"{dest}: fragment {fr} is not {BOAT_SCRIPT} OnEnd Fragment_0")
         if not bad:
             if not BOAT_PEX.exists():
-                WARNINGS.append(f"{BOAT_PEX} is not compiled: the boat lines do nothing in game until it is")
+                WARNINGS.append(f"{BOAT_PEX} is not compiled: the travel lines do nothing in game until it is")
             return []
         tried.append("; ".join(bad))
     return tried[:1]
@@ -1077,14 +1076,16 @@ def check_services(ctx) -> list[str]:
                 bad.append(f"promised {k} ({g.get('detail', '')}): " + tried[0])
                 continue
             ok = True
-        elif k == "carriage-or-boat":
-            tried = boat_problems(ctx, m, facts, npcs, g.get("detail", ""))
+        elif k in TRAVEL_STOP:
+            mode = TRAVEL_STOP[k]
+            own = "ANW_MapMarker_" + ctx.get("place_id", "").replace("-", "_")
+            tried = travel_problems(ctx, m, facts, npcs, mode)
+            if own not in (ctx["dump"].get("world_markers") or {}).values():
+                tried = [f"no arrival point here ({own} is not in the world ESM): passages to this place land nowhere"] + tried
             if tried:
                 bad.append(f"promised {k} ({g.get('detail', '')}): " + tried[0])
                 continue
             ok = True
-        elif k == "fast-travel":  # the world file's map marker of the place (a copied source marker carries no marker data)
-            ok = f"ANW_MapMarker_{ctx.get('place_id', '').replace('-', '_')}" in (ctx["dump"].get("world_markers") or {}).values()
         if not ok:
             bad.append(f"promised {k} ({g.get('detail', '')}): nobody and nothing gives it")
     return bad

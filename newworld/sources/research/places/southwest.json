@@ -221,13 +221,13 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Soulrest map marker at the landward gate",
+     "kind": "boat-stop",
+     "detail": "a harbour boatman at the quay",
      "count": 1
     },
     {
-     "kind": "carriage-or-boat",
-     "detail": "harbour boatman to Blackrose by Bramman's river, to Chasepoint and to Naxan",
+     "kind": "coach-stop",
+     "detail": "a carter at the landward gate on the road north to Gideon",
      "count": 1
     },
     {
@@ -560,13 +560,8 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Blackrose map marker on the island core's landing",
-     "count": 1
-    },
-    {
-     "kind": "carriage-or-boat",
-     "detail": "canoe-men to Lujei, Ka-Asei, Toklea and down Bramman's river to Soulrest",
+     "kind": "boat-stop",
+     "detail": "canoe-men at the landing of the island core",
      "count": 1
     },
     {
@@ -894,11 +889,6 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "the Rose map marker at the causeway gate",
-     "count": 1
-    },
-    {
      "kind": "combat-foes",
      "detail": "Blackguard heirs on the walls, outlaw archers and swordsmen",
      "count": 10,
@@ -1139,11 +1129,6 @@
     }
    ],
    "gives": [
-    {
-     "kind": "fast-travel",
-     "detail": "Toklea map marker",
-     "count": 1
-    },
     {
      "kind": "trader-general",
      "detail": "chime-maker and general trader on the stone footing",
@@ -1389,13 +1374,8 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Mir-Xal map marker",
-     "count": 1
-    },
-    {
-     "kind": "carriage-or-boat",
-     "detail": "road carter to Soulrest and Salaxul",
+     "kind": "boat-stop",
+     "detail": "a boatman at the river quay",
      "count": 1
     },
     {
@@ -1653,11 +1633,6 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Lujei map marker",
-     "count": 1
-    },
-    {
      "kind": "trader-innkeeper",
      "detail": "ferry families' cookhouse selling fish and eel",
      "count": 1
@@ -1863,13 +1838,8 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Lujei Ferry map marker",
-     "count": 1
-    },
-    {
-     "kind": "carriage-or-boat",
-     "detail": "cable raft across the Blackrose channel to the island core",
+     "kind": "boat-stop",
+     "detail": "the cable raft across the Blackrose channel",
      "count": 1
     },
     {
@@ -2097,11 +2067,6 @@
     }
    ],
    "gives": [
-    {
-     "kind": "fast-travel",
-     "detail": "Natai map marker",
-     "count": 1
-    },
     {
      "kind": "trader-general",
      "detail": "salt-pan family trading salt, shellfish and Salt Heron salvage",
@@ -2342,11 +2307,6 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Ka-Asei map marker",
-     "count": 1
-    },
-    {
      "kind": "trader-general",
      "detail": "boatwright's family selling rope, tools and fish",
      "count": 1
@@ -2582,11 +2542,6 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Amalaja map marker",
-     "count": 1
-    },
-    {
      "kind": "trader-innkeeper",
      "detail": "fish-and-rice seller on the dune",
      "count": 1
@@ -2800,11 +2755,6 @@
     }
    ],
    "gives": [
-    {
-     "kind": "fast-travel",
-     "detail": "Tei-Kur map marker",
-     "count": 1
-    },
     {
      "kind": "trader-innkeeper",
      "detail": "rice-and-fish seller at the granary",
@@ -3022,13 +2972,8 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Delta Ferry map marker",
-     "count": 1
-    },
-    {
-     "kind": "carriage-or-boat",
-     "detail": "raft across the delta channel toward Lilmoth",
+     "kind": "boat-stop",
+     "detail": "the delta raft on the Lilmoth road",
      "count": 1
     },
     {
@@ -3224,11 +3169,6 @@
    ],
    "culture_id": "rose",
    "gives": [
-    {
-     "kind": "fast-travel",
-     "detail": "Reedfall Farm map marker",
-     "count": 1
-    },
     {
      "kind": "harvest-common",
      "detail": "rice from the paddies and reeds on the bank",
@@ -3451,13 +3391,8 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Salaxul map marker",
-     "count": 1
-    },
-    {
-     "kind": "carriage-or-boat",
-     "detail": "coastal boat along the south shore to Natai and Acra-Tiin",
+     "kind": "boat-stop",
+     "detail": "a coastal boat at the jetty",
      "count": 1
     },
     {
@@ -3684,11 +3619,6 @@
    ],
    "culture_id": "oxblood",
    "gives": [
-    {
-     "kind": "fast-travel",
-     "detail": "Khariton map marker",
-     "count": 1
-    },
     {
      "kind": "combat-creature",
      "detail": "crocodiles and gar in the drowned lanes",
@@ -3920,11 +3850,6 @@
    ],
    "culture_id": "oxblood",
    "gives": [
-    {
-     "kind": "fast-travel",
-     "detail": "Bucalos map marker",
-     "count": 1
-    },
     {
      "kind": "combat-creature",
      "detail": "crocodiles and giant snakes under the empty stilts",
@@ -4184,11 +4109,6 @@
    "culture_id": "olive",
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Tarak Shan map marker",
-     "count": 1
-    },
-    {
      "kind": "combat-creature",
      "detail": "feather-serpents (winged serpents) in the halls",
      "count": 4,
@@ -4440,11 +4360,6 @@
    "culture_id": "olive",
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Sheh-Ara map marker",
-     "count": 1
-    },
-    {
      "kind": "combat-creature",
      "detail": "crocodiles in the flooded yard",
      "count": 3,
@@ -4692,11 +4607,6 @@
    "culture_id": "olive",
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Oru-Neel map marker",
-     "count": 1
-    },
-    {
      "kind": "combat-creature",
      "detail": "giant snakes nesting under the rotten platform",
      "count": 4,
@@ -4932,11 +4842,6 @@
    "culture_id": "olive",
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Zul-Etha map marker",
-     "count": 1
-    },
-    {
      "kind": "combat-creature",
      "detail": "crocodiles among the roof peaks",
      "count": 4,
@@ -5169,11 +5074,6 @@
    "culture_id": "crimson-red",
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Mudmoth map marker",
-     "count": 1
-    },
-    {
      "kind": "combat-foes",
      "detail": "outlaws sleeping in the cellars",
      "count": 5,
@@ -5405,11 +5305,6 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Kit Mounds map marker",
-     "count": 1
-    },
-    {
      "kind": "combat-creature",
      "detail": "giant snakes in the burrow roofs",
      "count": 3,
@@ -5636,11 +5531,6 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Brushmound map marker",
-     "count": 1
-    },
-    {
      "kind": "combat-creature",
      "detail": "venomous snakes in the burrow roofs",
      "count": 3,
@@ -5866,11 +5756,6 @@
     }
    ],
    "gives": [
-    {
-     "kind": "fast-travel",
-     "detail": "Tailhollow map marker",
-     "count": 1
-    },
     {
      "kind": "combat-creature",
      "detail": "snakes in the fallen roof",
@@ -6143,11 +6028,6 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Wreck of the Salt Heron map marker",
-     "count": 1
-    },
-    {
      "kind": "combat-creature",
      "detail": "slaughterfish and a sea-drake over the wreck",
      "count": 4,
@@ -6383,16 +6263,6 @@
     }
    ],
    "gives": [
-    {
-     "kind": "fast-travel",
-     "detail": "Chasepoint map marker",
-     "count": 1
-    },
-    {
-     "kind": "carriage-or-boat",
-     "detail": "carter on the Percar road to Soulrest and the quarries",
-     "count": 1
-    },
     {
      "kind": "trader-general",
      "detail": "salvage trader in the carters' yard",
@@ -6643,13 +6513,8 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Acra-Tiin map marker",
-     "count": 1
-    },
-    {
-     "kind": "carriage-or-boat",
-     "detail": "fishing boat across to Soulrest",
+     "kind": "boat-stop",
+     "detail": "a fishing boat across the bay to Soulrest",
      "count": 1
     },
     {
@@ -6888,11 +6753,6 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Naxan map marker",
-     "count": 1
-    },
-    {
      "kind": "trader-general",
      "detail": "log-landing trader in fish and timber",
      "count": 1
@@ -7121,11 +6981,6 @@
    "culture_id": "umber",
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Old Goldseam map marker",
-     "count": 1
-    },
-    {
      "kind": "combat-foes",
      "detail": "outlaws from the Percar hills in the mine mouth",
      "count": 5,
@@ -7352,11 +7207,6 @@
    "culture_id": "umber",
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Blackdrift map marker",
-     "count": 1
-    },
-    {
      "kind": "combat-foes",
      "detail": "armed scavengers at the portal",
      "count": 4,
@@ -7576,11 +7426,6 @@
    ],
    "culture_id": "umber",
    "gives": [
-    {
-     "kind": "fast-travel",
-     "detail": "Ninth Shaft map marker",
-     "count": 1
-    },
     {
      "kind": "combat-foes",
      "detail": "smugglers storing goods in the upper levels",
@@ -7802,11 +7647,6 @@
    "culture_id": "umber",
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Ashfall Cut map marker",
-     "count": 1
-    },
-    {
      "kind": "combat-foes",
      "detail": "fire-scarred undead on the floor of the cut",
      "count": 5,
@@ -8026,11 +7866,6 @@
    "culture_id": "umber",
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Stonecut Quarry map marker",
-     "count": 1
-    },
-    {
      "kind": "trader-general",
      "detail": "the quarry crew sells tools and cut stone",
      "count": 1
@@ -8249,11 +8084,6 @@
    "culture_id": "umber",
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Redbank Quarry map marker",
-     "count": 1
-    },
-    {
      "kind": "cooking-pot",
      "detail": "the crew's cooking pot",
      "count": 1
@@ -8459,11 +8289,6 @@
    ],
    "culture_id": "umber",
    "gives": [
-    {
-     "kind": "fast-travel",
-     "detail": "Redgum Camp map marker",
-     "count": 1
-    },
     {
      "kind": "trader-general",
      "detail": "the camp's foreman sells firewood and tools",
@@ -8715,11 +8540,6 @@
    "culture_id": "crimson-red",
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Mistwatch map marker",
-     "count": 1
-    },
-    {
      "kind": "combat-foes",
      "detail": "smugglers guarding the tower",
      "count": 4,
@@ -8967,11 +8787,6 @@
    "culture_id": "crimson-red",
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Wrackmoth map marker",
-     "count": 1
-    },
-    {
      "kind": "combat-foes",
      "detail": "outlaws camped in the yard",
      "count": 6,
@@ -9208,11 +9023,6 @@
    "culture_id": "umber",
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Zeh-Orun map marker",
-     "count": 1
-    },
-    {
      "kind": "combat-foes",
      "detail": "scavengers sleeping in the dry halls",
      "count": 4,
@@ -9419,11 +9229,6 @@
    ],
    "culture_id": "steel-blue",
    "gives": [
-    {
-     "kind": "fast-travel",
-     "detail": "Xal-Tarek map marker",
-     "count": 1
-    },
     {
      "kind": "combat-foes",
      "detail": "Banu-Jaleel watchers, hostile to Imperial-descended visitors",
@@ -9635,11 +9440,6 @@
    ],
    "culture_id": "indigo",
    "gives": [
-    {
-     "kind": "fast-travel",
-     "detail": "Reek-Anu map marker",
-     "count": 1
-    },
     {
      "kind": "trader-general",
      "detail": "Naka-Desh river traders who deal with strangers who answer a riddle",
@@ -9861,11 +9661,6 @@
    "culture_id": "umber",
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Percar Scar map marker",
-     "count": 1
-    },
-    {
      "kind": "combat-foes",
      "detail": "fire-undead walking the vents",
      "count": 6,
@@ -10076,11 +9871,6 @@
     }
    ],
    "gives": [
-    {
-     "kind": "fast-travel",
-     "detail": "Mistfall Light map marker",
-     "count": 1
-    },
     {
      "kind": "free-bed",
      "detail": "a keeper's spare bunk",
@@ -10350,11 +10140,6 @@
     }
    ],
    "gives": [
-    {
-     "kind": "fast-travel",
-     "detail": "Wreck of the Brine Gull map marker",
-     "count": 1
-    },
     {
      "kind": "combat-creature",
      "detail": "slaughterfish over the wreck",

@@ -135,7 +135,7 @@ def derive(p: Place) -> dict:
                      "WHERE pg.relation = 'makes'"):
         makers[g["keyword"]].add(g["place_id"])
     gates = {r["place_id"] for r in w.query("SELECT g.place_id FROM place_give g JOIN place p ON p.id = g.place_id "
-                                            "WHERE g.give_kind_id = 'carriage-or-boat' AND p.siting IN ('coast', 'island')")}
+                                            "WHERE g.give_kind_id = 'boat-stop' AND p.siting IN ('coast', 'island')")}
     steps = sc["provenance"]["steps"]
 
     def provenance(it: dict, kind: str) -> tuple[dict, str]:

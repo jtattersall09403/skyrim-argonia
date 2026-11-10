@@ -22,9 +22,12 @@ level, no levelled lists: decision 0035) placed once as a persistent actor, with
       inn-room        the innkeeper's JobInnkeeperFaction and the rented bed: a bed ref of the place in
                       `room_bed`, owned by the innkeeper's vendor faction until rented (vanilla: the room's bed is
                       owned by the inn, and DialogueGeneric's rent-room line gives it to the player for a day);
-      carriage-or-boat  (role boatman) a boatman faction of ours the travel lines are conditioned on; the quest, topics
-                      and lines are build.py's `plan_boats` (place-studio.md, Build: boats); shrine-blessing is
-                      build.py's `plan_shrines` (place-studio.md, Build: shrines).
+      boat-stop, coach-stop, rootworm-stop  the stop's operator: a travel faction of ours per mode, which the travel
+                      lines are conditioned on; the quest, topics and lines are build.py's `plan_travel` from the
+                      network's routes (place-studio.md, Build: travel); shrine-blessing is build.py's
+                      `plan_shrines` (place-studio.md, Build: shrines).
+    A service's kind is the place record's give at its seq (place_give.jsonl): the record is the truth, the row's
+    `kind` a copy for the reader.
 """
 from __future__ import annotations
 
@@ -65,6 +68,8 @@ JOB_RENT_ROOM = "Skyrim.esm:09CC97"  # JobRentRoomFaction: rank -1 on a renting 
 RENT_VOICES = "Skyrim.esm:03B4A5"  # the form list of voice types vanilla's rent offer is spoken in
 RENT_WI = "Skyrim.esm:035D64"  # RentRoomScript's WI property, as on every vanilla innkeeper
 PERSON_SERVES = set(TRADE) | {"trainer", "inn-room"}  # gives a person provides (the rest are refs or not built)
+TRAVEL_STOP = {"boat-stop": "boat", "coach-stop": "coach", "rootworm-stop": "rootworm"}  # give -> travel mode
+TRAVEL_TAG = {"boat": "Boatman", "coach": "Carter", "rootworm": "RootTender"}  # the operator faction's editor id word
 DEFAULT_RADIUS = 512
 SLEEP_RADIUS = 256
 
@@ -78,11 +83,12 @@ class Bad(Exception):
 
 
 def plan(P: dict, S: dict, ids, facts: dict, notes: list[str]) -> dict:
-    from tools.places.build import cell_of
+    from tools.places.build import DB, cell_of, jsonl
     pid = P["place"]["place_id"]
     people = P["people"]
     if not people:
         return {}
+    give_kind = {g["seq"]: g["give_kind_id"] for g in jsonl(DB / "place_give.jsonl") if g["place_id"] == pid}
     by_id = S["by_id"]
     out = {"crime_faction": {"fk": ids("fact:crime"), "edid": f"ANP_{pid}_CrimeFaction", "name": f"{pid} crime"},
            "factions": [], "classes": [], "containers": [], "npcs": [], "packages": [], "actors": [], "markers": [],
@@ -258,9 +264,9 @@ def plan(P: dict, S: dict, ids, facts: dict, notes: list[str]) -> dict:
             factions.append({"faction": IS_GUARD, "rank": 0})
         cls = None
         gives = []
-        scripts, voice_list, boat_faction = [], None, None
+        scripts, voice_list, travel = [], None, {}
         for sv in p.get("services", []):
-            g = sv.get("give_kind_id") or sv["kind"]
+            g = give_kind.get(sv.get("seq"), sv.get("give_kind_id") or sv["kind"])
             if g in TRADE:
                 job, flst, chest = TRADE[g]
                 chest_base = ids(f"cont:{who}:{g}")
@@ -325,10 +331,13 @@ def plan(P: dict, S: dict, ids, facts: dict, notes: list[str]) -> dict:
                 # (Argonian for an Argonian race, else Commoner)
                 voice_list = RENT_VOICES
                 gives.append(g)
-            elif g == "carriage-or-boat" and p.get("role") == "boatman":
-                boat_faction = ids(f"fact:boat:{who}")
-                out["factions"].append({"fk": boat_faction, "edid": f"ANP_{pid}_Boatman_{_edid(who)}", "name": f"{p.get('name') or who} (boatman)"})
-                factions.append({"faction": boat_faction, "rank": 0})
+            elif g in TRAVEL_STOP:
+                mode = TRAVEL_STOP[g]
+                fk = ids(f"fact:{mode}:{who}")
+                out["factions"].append({"fk": fk, "edid": f"ANP_{pid}_{TRAVEL_TAG[mode]}_{_edid(who)}",
+                                        "name": f"{p.get('name') or who} ({TRAVEL_TAG[mode].lower()})"})
+                factions.append({"faction": fk, "rank": 0})
+                travel[mode] = fk
                 gives.append(g)
             else:
                 notes.append(f"{who}: service {g} is not a person's to give here (built by refs, or not built yet)")
@@ -348,7 +357,7 @@ def plan(P: dict, S: dict, ids, facts: dict, notes: list[str]) -> dict:
                             "level": int(p.get("level", 10)), "factions": factions, "packages": packs,
                             "class": cls["fk"] if cls else None, "gives": gives, "role": p.get("role"), "id": who,
                             **({"scripts": scripts} if scripts else {}), **({"voice_list": voice_list} if voice_list else {}),
-                            **({"boat_faction": boat_faction} if boat_faction else {})})
+                            **({"travel": travel} if travel else {})})
         out["actors"].append({"fk": ids(f"actor:{who}"), "base": npc_fk, "space": space, "pos": pos, "rot": [0.0, 0.0, 0.0],
                               "cell": list(cell_of(*pos[:2])) if space == "exterior" else None, "person": who,
                               **({"linked": [{"ref": patrol_start, "keyword": ""}]} if patrol_start else {})})

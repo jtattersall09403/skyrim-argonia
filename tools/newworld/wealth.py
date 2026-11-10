@@ -95,7 +95,7 @@ def derive(w) -> list[dict]:
         rd = roads.get(p.id, {"roads": 0, "major": False})
         tr = min(rd["roads"] * rules["road_each"], rules["road_cap"]) + (rules["major_road"] if rd["major"] else 0)
         ks = [g.give_kind_id for g in gives[p.id]]
-        boat = rules["boat"] if "carriage-or-boat" in ks else 0
+        boat = rules["boat"] if "boat-stop" in ks else 0
         traders = min(sum(k.startswith("trader-") or k == "fence" for k in ks) * rules["trader_each"], rules["trader_cap"])
         parts.append((tr + boat + traders, f"trade {tr + boat + traders} ({rd['roads']} roads"
                       f"{', major' if rd['major'] else ''}{', boatman' if boat else ''}, {traders // max(rules['trader_each'], 1)} traders)"))

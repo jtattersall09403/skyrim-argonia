@@ -51,8 +51,8 @@ NPCS = [
      "class": "Soldier", "factions": [{"faction": "GuardFaction", "rank": 0}]},
 ]
 GIVES = [
-    {"place_id": "fx", "seq": 0, "give_kind_id": "fast-travel", "detail": "the town"},
-    {"place_id": "fx", "seq": 1, "give_kind_id": "carriage-or-boat", "detail": "raft-boatman"},
+    {"place_id": "fx", "seq": 0, "give_kind_id": "fishing", "detail": "river fish"},
+    {"place_id": "fx", "seq": 1, "give_kind_id": "boat-stop", "detail": "raft-masters at the landing"},
     {"place_id": "fx", "seq": 2, "give_kind_id": "trader-general", "detail": "market trader"},
     {"place_id": "fx", "seq": 3, "give_kind_id": "trader-innkeeper", "detail": "the lodge"},
     {"place_id": "fx", "seq": 4, "give_kind_id": "inn-room", "detail": "the lodge"},

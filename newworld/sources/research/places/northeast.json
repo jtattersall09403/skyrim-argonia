@@ -298,13 +298,8 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Thorn, the city gate",
-     "count": 1
-    },
-    {
-     "kind": "carriage-or-boat",
-     "detail": "a Dunmer boatman on the quay who sails to Archon and to the Tear road landing",
+     "kind": "boat-stop",
+     "detail": "a Dunmer boatman on the quay",
      "count": 1
     },
     {
@@ -673,11 +668,6 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Fort Thornmoth",
-     "count": 1
-    },
-    {
      "kind": "trader-blacksmith",
      "detail": "the Dunmer quartermaster, selling iron and steel arms and Imperial-pattern armour left from the Legion",
      "count": 1
@@ -928,11 +918,6 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Cutbank Camp",
-     "count": 1
-    },
-    {
      "kind": "free-bed",
      "detail": "a bunk in the sawyers' bunkhouse",
      "count": 1
@@ -1178,11 +1163,6 @@
     }
    ],
    "gives": [
-    {
-     "kind": "fast-travel",
-     "detail": "Thornway Watch",
-     "count": 1
-    },
     {
      "kind": "trader-innkeeper",
      "detail": "the guards sell water, dried fish and bread",
@@ -1479,11 +1459,6 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Guxal",
-     "count": 1
-    },
-    {
      "kind": "trader-hunter",
      "detail": "the headwoman's son buys hides and sells smoked fish",
      "count": 1
@@ -1759,11 +1734,6 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Kharraluhl",
-     "count": 1
-    },
-    {
      "kind": "combat-foes",
      "detail": "a Thorn scavenger crew camped in the upper walls",
      "count": 4,
@@ -2035,11 +2005,6 @@
     }
    ],
    "gives": [
-    {
-     "kind": "fast-travel",
-     "detail": "Ovezza",
-     "count": 1
-    },
     {
      "kind": "combat-creature",
      "detail": "ghosts of the flu-dead in the towers and square",
@@ -2343,11 +2308,6 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Tselan",
-     "count": 1
-    },
-    {
      "kind": "trader-general",
      "detail": "the elder's family sells food, rope and quarry tools",
      "count": 1
@@ -2649,8 +2609,8 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Tsonac",
+     "kind": "boat-stop",
+     "detail": "a raft at the river quay",
      "count": 1
     },
     {
@@ -2949,11 +2909,6 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Xuvagol",
-     "count": 1
-    },
-    {
      "kind": "trader-hunter",
      "detail": "the old trapper buys hides and sells smoked meat and arrows",
      "count": 1
@@ -3216,11 +3171,6 @@
     }
    ],
    "gives": [
-    {
-     "kind": "fast-travel",
-     "detail": "Kaochalit",
-     "count": 1
-    },
     {
      "kind": "trader-apothecary",
      "detail": "the Dunmer herbalist in the outer tomb",
@@ -3485,11 +3435,6 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Balormaak",
-     "count": 1
-    },
-    {
      "kind": "combat-creature",
      "detail": "skeletons of the flu-dead in the cellars",
      "count": 5,
@@ -3745,11 +3690,6 @@
     }
    ],
    "gives": [
-    {
-     "kind": "fast-travel",
-     "detail": "Vorannuhl",
-     "count": 1
-    },
     {
      "kind": "combat-foes",
      "detail": "a Sarpa warband sheltering in the outer yard",
@@ -4049,11 +3989,6 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Ayiin",
-     "count": 1
-    },
-    {
      "kind": "trader-general",
      "detail": "the elder's house sells food and quarry tools",
      "count": 1
@@ -4341,11 +4276,6 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Sahlpesh Cave",
-     "count": 1
-    },
-    {
      "kind": "combat-foes",
      "detail": "Sarpa archers and spearmen on the ledges and in the passage",
      "count": 6,
@@ -4627,11 +4557,6 @@
     }
    ],
    "gives": [
-    {
-     "kind": "fast-travel",
-     "detail": "Hanaxi Roost",
-     "count": 1
-    },
     {
      "kind": "combat-foes",
      "detail": "the Sarpa warband: archers and spear-bearers",
@@ -4930,11 +4855,6 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Fort Chalkmoth",
-     "count": 1
-    },
-    {
      "kind": "trader-blacksmith",
      "detail": "the Dunmer quartermaster: iron and steel arms, arrows",
      "count": 1
@@ -5185,8 +5105,8 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Noota Nara",
+     "kind": "boat-stop",
+     "detail": "a raft at the village landing",
      "count": 1
     },
     {
@@ -5505,11 +5425,6 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Hirecan",
-     "count": 1
-    },
-    {
      "kind": "trader-spells",
      "detail": "an Agaceph illusionist selling Illusion tomes up to Expert, and scrolls",
      "count": 1
@@ -5800,11 +5715,6 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Oxayo",
-     "count": 1
-    },
-    {
      "kind": "trader-general",
      "detail": "the watch-elder's family sells food and tools",
      "count": 1
@@ -6085,11 +5995,6 @@
     }
    ],
    "gives": [
-    {
-     "kind": "fast-travel",
-     "detail": "Xanuc Diggings",
-     "count": 1
-    },
     {
      "kind": "ore-vein",
      "detail": "quarried stone deposit at the cutting face (Hearthfire's building stone)",
@@ -6384,11 +6289,6 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Chalkmoth Pit",
-     "count": 1
-    },
-    {
      "kind": "ore-vein",
      "detail": "quarried stone deposit at the chalk face (Hearthfire's building stone)",
      "count": 2
@@ -6665,11 +6565,6 @@
     }
    ],
    "gives": [
-    {
-     "kind": "fast-travel",
-     "detail": "Kalaxo Cut",
-     "count": 1
-    },
     {
      "kind": "ore-vein",
      "detail": "quarried stone deposit at the cutting face (Hearthfire's building stone)",
@@ -6958,11 +6853,6 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Yuvexa",
-     "count": 1
-    },
-    {
      "kind": "trader-hunter",
      "detail": "the elder buys hides and sells feathers and smoked meat",
      "count": 1
@@ -7249,11 +7139,6 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Nuxhal",
-     "count": 1
-    },
-    {
      "kind": "trader-hunter",
      "detail": "the elder buys hides and sells reeds and lamp oil",
      "count": 1
@@ -7534,11 +7419,6 @@
     }
    ],
    "gives": [
-    {
-     "kind": "fast-travel",
-     "detail": "Reeka-Veesa",
-     "count": 1
-    },
     {
      "kind": "harvest-common",
      "detail": "sedge reed and hawk feathers",

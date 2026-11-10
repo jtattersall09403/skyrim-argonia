@@ -30,7 +30,6 @@ import hashlib
 import json
 import math
 import os
-import re
 import subprocess
 import sys
 import time
@@ -237,6 +236,8 @@ def read_place(pdir: Path) -> dict:
 def place_key(pdir: Path, world_sha: str) -> str:
     from tools.places.stock import plan as stockplan
     h = hashlib.sha256((world_sha + code_key() + stockplan.key(pdir.name)).encode())
+    h.update(json.dumps([[s for s in jsonl(DB / "travel_stop.jsonl") if s["place_id"] == pdir.name],
+                         travel_routes(pdir.name)], sort_keys=True).encode())  # the network's part in the place
     for p in sorted(pdir.rglob("*")):
         if p.is_file() and p.name != "formids.json" and "edits" not in p.parts:
             h.update(str(p.relative_to(pdir)).encode() + p.read_bytes())
@@ -1368,76 +1369,88 @@ def plan_shrines(P: dict, S: dict, ids: Ids) -> list[dict]:
     return out
 
 
-# ---- boats ------------------------------------------------------------------------------------------------------
+# ---- travel -----------------------------------------------------------------------------------------------------
 
-BOAT = {  # vanilla's carriage (Skyrim.esm DialogueCarriageSystem), measured: a start-game-enabled quest holding the
-    # topics; each destination's INFO gates on the player's gold against a global (CarriageCost 20 for the cities,
-    # CarriageCostSmall 50 for Dawnstar, Morthal, Winterhold, Falkreath) and runs a fragment that takes the fare and
-    # fast-travels. One compiled script (papyrus/TIF_ARG_BoatTravel.psc) serves every line; its properties are set per INFO.
-    "script": "TIF_ARG_BoatTravel", "gold": "Skyrim.esm:00000F",
-    "fare_city": 20, "fare_small": 50,
-    "quest_name": "Boat passage", "hub": "I need passage.", "hub_reply": "Where to? Say the name.",
-    "reply": "{name}, then. Sit low in the boat.",
+TRAVEL = {  # vanilla's carriage (Skyrim.esm DialogueCarriageSystem), measured: a start-game-enabled quest holding the
+    # topics; each destination's INFO gates on the player's gold and runs a fragment that takes the fare and
+    # fast-travels (Game.FastTravel, which works with map travel off, as the carriages do in Survival). One compiled
+    # script (papyrus/TIF_ARG_BoatTravel.psc) serves every line of every mode; its properties are set per INFO.
+    "script": "TIF_ARG_BoatTravel", "gold": "Skyrim.esm:00000F", "quest_name": "Passage",
+    "lines": {
+        "boat": {"hub": "I need passage.", "hub_reply": "Where to? Say the name.",
+                 "prompt": "Take me to {name} ({fare} gold).", "reply": "{name}, then. Sit low in the boat."},
+        "coach": {"hub": "I need a ride.", "hub_reply": "The cart keeps to the old road. Where to?",
+                  "prompt": "Take me to {name} ({fare} gold).", "reply": "{name}, then. Climb up and hold on."},
+        "rootworm": {"hub": "I would ride the rootworm.", "hub_reply": "The worm goes where the roots go. Which tree?",
+                     "prompt": "To the tree at {name} ({fare} gold).", "reply": "{name}. Breathe out, and do not fight it."},
+    },
 }
 
 
-def boat_destinations(detail: str) -> list[str]:
-    """The names a boatman's give promises: the give's `detail` is the only source (place_give has no destination column),
-    e.g. "raft-boatman to Truowa, Korydon, Marzai and Julo": what follows the last " to ", split at commas and "and"."""
-    tail = re.split(r"\bto\b", detail or "")[-1] if re.search(r"\bto\b", detail or "") else ""
-    return [n.strip() for n in re.split(r",|\band\b", tail) if n.strip()]
+def arrival(dest: str, markers: dict) -> str | None:
+    """Where a passage to a place lands: the place's map marker in the world ESM (every settlement has one, on its
+    ground); None when the world gives none, and the route then waits on that place."""
+    return markers.get("ANW_MapMarker_" + dest.replace("-", "_"))
 
 
-def plan_boats(P: dict, people: dict, ids: Ids, facts: dict) -> list[dict]:
-    """A boatman's passage, as vanilla's carriages do it: per place a quest of ours (start-game-enabled); per boatman a
-    top-level topic "I need passage." (his boatman faction on the subject) whose line links one topic per destination;
-    each destination's INFO needs the faction and the player's gold, and runs TIF_ARG_BoatTravel with the destination's
-    map marker in ArgoniaNewWorld.esm (a place not built yet is still reached: the marker is the world's), the fixed fare
-    and Gold001. Fare: 20 for a city, 50 for any smaller place (vanilla's CarriageCost / CarriageCostSmall)."""
-    from tools.places import people as ppl
-    boatmen = [n for n in (people or {}).get("npcs", []) if n.get("boat_faction")]
-    if not boatmen:
-        return []
+def travel_routes(pid: str) -> dict[str, list[dict]]:
+    """The place's routes by mode, from the network (travel_route), nearest first."""
+    out: dict[str, list[dict]] = {}
+    for r in sorted(jsonl(DB / "travel_route.jsonl"), key=lambda r: (r["travel_mode_id"], r["distance_m"])):
+        if r["from_place_id"] == pid:
+            out.setdefault(r["travel_mode_id"], []).append(r)
+    return out
+
+
+def plan_travel(P: dict, people: dict, ids: Ids, facts: dict) -> tuple[list[dict], list[str]]:
+    """The place's travel service, as vanilla's carriages do it: per place a quest of ours (start-game-enabled); per
+    operator of a stop (the person whose people.jsonl service is the stop's give) a top-level topic, whose line links
+    one topic per route of the stop's mode; each destination's INFO needs the operator's travel faction and the
+    route's fare in gold, and runs TIF_ARG_BoatTravel with the destination's arrival point and the fare. A route whose
+    destination has no arrival point yet is not offered: it is returned as waiting on that place (the record keeps
+    the promise). A stop with nobody serving it is a problem."""
     pid = P["place"]["place_id"]
-    places = jsonl(DB / "place.jsonl")
-    by_name = {}
-    for r in places:
-        for k in (r.get("name"), r.get("map_label")):
-            if k:
-                by_name.setdefault(k.casefold(), r)
-    detail_of = {g["detail"] for g in jsonl(DB / "place_give.jsonl") if g["place_id"] == pid and g["give_kind_id"] == "carriage-or-boat"}
+    routes = travel_routes(pid)
+    stops = [s for s in jsonl(DB / "travel_stop.jsonl") if s["place_id"] == pid]
+    if not stops:
+        return [], []
+    from tools.places import people as ppl
+    names = {r["id"]: r["name"] for r in jsonl(DB / "place.jsonl")}
     markers = facts.get("map_markers") or {}
-    line = {"fk": ids("quest:boat"), "edid": f"ANP_{pid}_BoatTravel", "name": BOAT["quest_name"]}
-    out = {"place_id": pid, "script": BOAT["script"], "gold": BOAT["gold"], "quest": line, "boatmen": []}
-    for n in boatmen:
-        who = n["id"]
-        sv = next((s for s in next((q for q in P["people"] if q["id"] == who), {}).get("services", [])
-                   if (s.get("give_kind_id") or s.get("kind")) == "carriage-or-boat"), {})
-        names = boat_destinations(sv.get("detail") or "") or [d for x in sorted(detail_of) for d in boat_destinations(x)]
-        if not names:
-            problem(f"people.jsonl: {who}: a boatman whose give names no destination (the detail reads 'raft-boatman to A, B and C')")
-        e = ppl._edid(who)
-        hub = {"topic": ids(f"dial:boat:{who}"), "info": ids(f"info:boat:{who}"), "edid": f"ANP_{pid}_Boat_{e}_Hub",
-               "prompt": BOAT["hub"], "reply": BOAT["hub_reply"]}
-        dests = []
-        for name in names:
-            r = by_name.get(name.casefold())
-            if r is None:
-                problem(f"people.jsonl: {who}: destination {name!r} is no place of the database")
-                continue
-            did = r["id"]
-            mk = markers.get("ANW_MapMarker_" + did.replace("-", "_"))
-            if mk is None:
-                problem(f"people.jsonl: {who}: destination {name!r} ({did}) has no map marker in {WORLD}")
-                continue
-            fare = BOAT["fare_city"] if r["place_kind_id"] == "city" else BOAT["fare_small"]
-            tag = ppl._edid(did)
-            dests.append({"place": did, "name": r["name"], "kind": r["place_kind_id"], "marker": mk, "fare": fare,
-                          "topic": ids(f"dial:boat:{who}:{did}"), "info": ids(f"info:boat:{who}:{did}"), "edid": f"ANP_{pid}_Boat_{e}_{tag}",
-                          "prompt": f"Take me to {r['name']} ({fare} gold).", "reply": BOAT["reply"].format(name=r["name"])})
-        out["boatmen"].append({"who": who, "npc": n["fk"], "faction": n["boat_faction"], "branch": ids(f"brnc:boat:{who}"),
-                               "branch_edid": f"ANP_{pid}_Boat_{e}_Branch", "hub": hub, "dests": dests})
-    return [out]
+    line = {"fk": ids("quest:boat"), "edid": f"ANP_{pid}_Travel", "name": TRAVEL["quest_name"]}
+    out = {"place_id": pid, "script": TRAVEL["script"], "gold": TRAVEL["gold"], "quest": line, "boatmen": []}
+    waiting: list[str] = []
+    npcs = (people or {}).get("npcs", [])
+    for s in stops:
+        mode = s["travel_mode_id"]
+        ops = [n for n in npcs if mode in (n.get("travel") or {})]
+        if not ops:
+            problem(f"travel: the {mode} stop (give {s['give_seq']}) has nobody serving it: people.jsonl lists no "
+                    f"service at seq {s['give_seq']}")
+            continue
+        words = TRAVEL["lines"][mode]
+        for n in ops:
+            who = n["id"]
+            e = ppl._edid(who)
+            key = f"{mode}:{who}" if mode != "boat" else who   # a boatman's keys stand from before the other modes
+            hub = {"topic": ids(f"dial:boat:{key}"), "info": ids(f"info:boat:{key}"), "edid": f"ANP_{pid}_{mode.title()}_{e}_Hub",
+                   "prompt": words["hub"], "reply": words["hub_reply"]}
+            dests = []
+            for r in routes.get(mode, []):
+                did = r["to_place_id"]
+                mk = arrival(did, markers)
+                if mk is None:
+                    waiting.append(f"{mode} to {names[did]} ({did}): waits on that place (no arrival point in {WORLD})")
+                    continue
+                dests.append({"place": did, "name": names[did], "marker": mk, "fare": r["fare"],
+                              "topic": ids(f"dial:boat:{key}:{did}"), "info": ids(f"info:boat:{key}:{did}"),
+                              "edid": f"ANP_{pid}_{mode.title()}_{e}_{ppl._edid(did)}",
+                              "prompt": words["prompt"].format(name=names[did], fare=r["fare"]),
+                              "reply": words["reply"].format(name=names[did])})
+            out["boatmen"].append({"who": who, "mode": mode, "npc": n["fk"], "faction": n["travel"][mode],
+                                   "branch": ids(f"brnc:boat:{key}"), "branch_edid": f"ANP_{pid}_{mode.title()}_{e}_Branch",
+                                   "hub": hub, "dests": dests})
+    return ([out] if out["boatmen"] else []), sorted(set(waiting))
 
 
 def _plan_place(pid: str, pdir: Path, out: Path, no_navmesh: bool, plan_only: bool, tmp: Path) -> dict:
@@ -1514,7 +1527,8 @@ def _plan_place(pid: str, pdir: Path, out: Path, no_navmesh: bool, plan_only: bo
     world_raw = nav_fid(facts["worldspace"])
     nav_rows, n2 = finish_navmesh(navs, S, world_raw)
     notes += n2
-    boats = plan_boats(P, people, ids, facts)
+    boats, waiting = plan_travel(P, people, ids, facts)
+    notes += [f"travel: {x}" for x in waiting]
     shrines = plan_shrines(P, S, ids)  # after the navmesh: it swaps the shrine refs' bases, which the navmesh reads
     if not plan_only:
         ids.save()  # a plan-only run never writes form ids: it may run beside a build
@@ -1525,7 +1539,7 @@ def _plan_place(pid: str, pdir: Path, out: Path, no_navmesh: bool, plan_only: bo
         "refs": S["refs"], "interiors": [{k: v for k, v in I.items() if k != "fk_of_src"} for I in S["interiors"]],
         "land": sorted(by_cell.values(), key=lambda r: (r["x"], r["y"])), "clear": clear,
         "navmesh": {"masters": NAV_MASTERS, "self": PLUGIN, "navi": key_of("Skyrim.esm", NAVI_FID), "navm": nav_rows},
-        "people": people, "boats": boats, "shrines": shrines, "stock": stock, "notes": notes,
+        "people": people, "boats": boats, "travel_waiting": waiting, "shrines": shrines, "stock": stock, "notes": notes,
         "stats": {"plan_s": round(time.time() - t0, 1), "nav": nav_info},
     }
     return plan

@@ -2445,7 +2445,15 @@
    ]
   }
  ],
- "deliveries": [],
+ "deliveries": [
+  {
+   "give_seq": 0,
+   "by": "person",
+   "person": "helstrom.C2855503QH3SHVRJDJSG1E9MKM",
+   "status": "open",
+   "why": "open: Cheeval-Xu, the rootworm handler at the root landing, is the stop's root-tender; the place files' people.jsonl must list the rootworm-stop service (seq 0) on him, with his work stop at the root landing under the city tree, for the build to give him the rootworm lines (travel_route: Gideon, Aroxhu, Jal-Veesa, Korydon, 25 gold each)"
+  }
+ ],
  "removed": [
   {
    "space": "01ArgonianHouseinside",

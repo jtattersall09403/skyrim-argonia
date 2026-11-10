@@ -2,18 +2,25 @@
  "about": "What a place gives the player (docs/research/new-world-place-gives.md). A place record's gives list points here by id.",
  "kinds": [
   {
-   "id": "fast-travel",
+   "id": "boat-stop",
    "group": "travel",
-   "name": "Fast-travel map marker",
-   "delivers": "A map marker (REFR XMRK) the player discovers on arrival and can fast travel to from the world map.",
-   "evidence": "471 map markers in Skyrim+DLC: Cave 81, NordicRuins 40, Fort 33, Shack 20, Landmark 19, DwemerRuin 16, Mine 12, Shipwreck 12, Settlement 12, Town 11; every location the player can enter or clear has one."
+   "name": "Boat stop",
+   "delivers": "A boatman or raft-master of the place whose dialogue takes the player on each boat route of the place's stop (newworld/sources/travel/network.json) for that route's fixed fare, landing at the destination's arrival point.",
+   "evidence": "Skyrim's carriage drivers and the Northern Maiden's captain: a topic per destination, the fare gated on the player's gold, Game.FastTravel to a marker (DialogueCarriageSystem; the ToSolstheim and ToSkyrim markers). Morrowind's shipmasters ran a port-to-port ring along the coast."
   },
   {
-   "id": "carriage-or-boat",
+   "id": "coach-stop",
    "group": "travel",
-   "name": "Paid carriage or boat",
-   "delivers": "A driver or boatman whose dialogue moves the player to a fixed list of destinations for gold (Skyrim's carriages and the Northern Maiden).",
-   "evidence": "Skyrim's 5 Stable markers (the hold-city carriages) and the ToSolstheim/ToSkyrim markers."
+   "name": "Coach stop",
+   "delivers": "A carter of the place whose dialogue takes the player on each coach route of the place's stop for its fixed fare, by a major road the whole way.",
+   "evidence": "Skyrim's five stable carriages (the hold cities' Stable markers), with the driver's topics and fares (CarriageCost 20, CarriageCostSmall 50); Morrowind's silt striders charged by distance."
+  },
+  {
+   "id": "rootworm-stop",
+   "group": "travel",
+   "name": "Rootworm stop",
+   "delivers": "A root-tender at the place's Hist who calls the rootworm and sends the player on each rootworm route of the place's stop for the flat fare.",
+   "evidence": "Skyrim's carriage dialogue for the delivery; Morrowind's Mages Guild guides and propylons for a fixed link between a few named sites."
   },
   {
    "id": "trader-general",

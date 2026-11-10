@@ -322,8 +322,6 @@ def check_promises(ctx) -> list[str]:
                     bad.append(f"{what}: delivered by {d['person']}, who is not in the build")
                 if d["by"] in ("ref", "container", "loose") and d["ref"] not in refs_built:
                     bad.append(f"{what}: delivered by {d['ref']}, which is not in the build")
-                if d["kind"] == "fast-travel" and f"ANW_MapMarker_{X['pid'].replace('-', '_')}" not in X["world_markers"]:
-                    bad.append(f"{what}: the world file has no map marker ANW_MapMarker_{X['pid'].replace('-', '_')}")
     return bad
 
 
