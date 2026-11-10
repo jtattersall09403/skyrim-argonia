@@ -338,3 +338,11 @@ added here the day they are made, with the date and the issue.
   approach optimised, and the skills and building blocks improved until a future agent implementing a new quest
   gets it right first time; Phases 4 and 4a are what was aimed at. Passed in walk 5: checks 8.1, 8.2, 9.1, 9.3 to
   9.7; 8.3 (backstab) not yet checked.
+- 2026-11-10 (in session, evening): Nordic pieces. "don't worry so much about the nordic elements, e.g. the
+  sconces. as long as our source places are the mods + tropical skyrim we should be OK." A piece a source place
+  itself uses, from its own mods or Tropical Skyrim, is accepted as it comes; it is not reviewed by look or
+  replaced. (The lead's reading: decision 0006 still governs what we add from elsewhere.)
+- 2026-11-10 (in session, evening): the studio. A day and night view that approximates the game's lighting in
+  both states, without shadows, so the owner can judge whether a place is lit enough and add or remove lights and
+  see the effect. Notes are part of editing: the owner changes one thing or several and leaves one note for the
+  agent about them, smoothly, without a separate step.

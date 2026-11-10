@@ -140,10 +140,17 @@ text above as follows.
   - The owner leaves notes for the agent in the studio, about the place or about selected things; agents read
     them at session start and answer them.
   - The studio starts reliably on the tablet and says plainly what is wrong when it cannot.
+  - Day and night: each view switches between the two and shows a close approximation of the game's lighting in
+    each, without shadows, every placed light lighting its surroundings, so the owner can judge whether the place
+    is lit enough, add or remove a light and see the effect.
+  - Notes are part of editing: the owner changes one thing or several and leaves one note for the agent about
+    them in the same motion; the note reaches the agent with exactly the changes it covers.
 - **Lighting (owner, 2026-11-10).** Every man-made light of the place is covered on purpose, not only inherited:
   torches, lanterns, braziers, candles, fires, their lights and flames kept with their fixtures, night and day
   switching, each room's own lighting, lights for what the draft adds where Skyrim's towns would light it, and
   the torches people carry.
+- **Nordic pieces (owner, 2026-11-10).** A piece the source place itself uses, from its own mods or Tropical
+  Skyrim, is accepted as it comes: it is not judged by look or replaced.
 - **Nothing levelled, people included.** A person is never built on a levelled base or one templated on a
   levelled character; a container never holds a levelled list.
 - **The review (owner, 2026-11-10).** All the code of this phase is reviewed in full (drafter, builder, C# tools,
