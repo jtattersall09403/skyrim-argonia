@@ -315,3 +315,8 @@ added here the day they are made, with the date and the issue.
 - 2026-11-10 (in session, later): light identities (name, household, trade, wealth, a line or two of backstory; no
   dialogue) are brought forward into nw-03 for Helstrom's people, before stocking; nw-05 may recast anyone. The
   stocking lane is delivered now.
+- 2026-11-10 (in session, evening): the owner's own text ranks above agent text. A note or reason the owner writes
+  in the studio is stored at an owner statement tier above anything an agent wrote, and an agent's later pass
+  never overwrites it. World facts of people, economy and stock live in the database in third normal form from
+  the start, populated more fully later (nw-05). The landing's walkability lane moves to Fable 5.2 at medium
+  effort. The skills are brought up to date with every outstanding improvement.
