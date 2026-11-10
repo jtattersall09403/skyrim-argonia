@@ -120,3 +120,19 @@ Fault and fix (2026-11-09): DynDOLOD opens its worldspace list as Presets\DynDOL
 Fault and fix (2026-11-10): the owner's first New World card showed the desktop, not the game: switching profiles lays about 66,000 files (2.5 min) before Skyrim starts, and the "Starting Skyrim..." cover closed after 90 s, so the stream showed the desktop and the owner left before the game window came (Sunshine log: client disconnected 09:12:40, game terminated 09:12:47; no crash, no crash log). splash.ps1 now stays until Skyrim's window appears, its stack.ps1 has gone without a game, or 10 minutes; proved from the Argonia profile: cover still up at 100 s, main menu at 124 s, `coc ArgoniaNWStart` loads into the new world.
 
 Loading bar (2026-11-10, owner): `stack.ps1 on`/`off` list what they will lay and remove first and write `stack-state\progress.txt` ("files|done|total", at most four times a second, write then rename); splash.ps1 draws a bar with "Step 1 of 2: switching to <world>'s files: N of M", then a full bar with "Step 2 of 2: starting Skyrim..." (only "Starting Skyrim..." when nothing needed laying), on all three cards; proved switching Argonia to New World (67,060 files).
+
+## Round 3: the owner's walk 5 feedback of 2026-11-10 (the built world)
+
+The feedback, in the owner's words, and what the built place Helstrom depends on are in
+[nw-02-walk-5-handover.md](nw-02-walk-5-handover.md). Five delivery lanes in their own worktrees, each reviewed
+before it lands; then one integrated rebuild (terrain, water, landcover, ground paint, plants, the world file,
+navmesh, the read-back), Helstrom brought level by its narrow stages, the LOD on the play machine, and the walk check.
+
+| Lane | What | Status |
+|---|---|---|
+| R | Relief: each region its own landforms, measured more distinct; backdrop land beyond the border W, N, NW and open sea E, S, SW; Helstrom's ground unchanged | in progress |
+| W | Water: why every kind looked the same in game, kinds distinct in colour, clarity and motion, flow down the channel graph; land against the water plane near the player | in progress |
+| G | Ground: road painting (one rule with the place build and the studio), swathes of one ground cover broken up, ground and grass sets by region with Tropical Skyrim's | in progress |
+| A | Atmosphere: warm, humid, by region and latitude (research, then weather, image space, climate and region records); more and stronger low mist | in progress |
+| L | Far view: LOD water edges and flicker, trees and rocks with no LOD, the map's water, squares and pan limits; teleport commands; the crash report | in progress |
+| I | Integrated rebuild, Helstrom level, LOD build and lay, read-back, owner check | todo |
