@@ -18,6 +18,7 @@ import shutil
 import subprocess
 import sys
 import tarfile
+import time
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -169,6 +170,7 @@ def build(place_id: str, places: Path = PLACES, bundles: Path = BUNDLES, force: 
     out = bundles / f".draft.{place_id}.{os.getpid()}.tmp"
     shutil.rmtree(out, ignore_errors=True)
     spaces, counts = [], {}
+    used: dict[str, int] = {}
     for sdir in sorted(p for p in (pdir / "spaces").iterdir() if p.is_dir()):
         sid, rows = sdir.name, jsonl(sdir / "refs.jsonl")
         info = json.loads((sdir / "space.json").read_text(encoding="utf-8")) if (sdir / "space.json").exists() else {}
@@ -182,13 +184,11 @@ def build(place_id: str, places: Path = PLACES, bundles: Path = BUNDLES, force: 
         write_jsonl(out / "spaces" / sid / "refs.jsonl", rows)
         spaces.append(sid)
         counts[sid] = len(rows)
-    # every base a ref uses: the source bundle first (then the ground's), else the catalogue; none: reported
-    bases = {r["key"]: r for f in (ground / "bases.jsonl", src / "bases.jsonl") for r in jsonl(f)}
-    used: dict[str, int] = {}
-    for sid in spaces:
-        for r in jsonl(out / "spaces" / sid / "refs.jsonl"):
+        for r in rows:
             if r.get("base"):
                 used[r["base"]] = used.get(r["base"], 0) + 1
+    # every base a ref uses: the source bundle first (then the ground's), else the catalogue; none: reported
+    bases = {r["key"]: r for f in (ground / "bases.jsonl", src / "bases.jsonl") for r in jsonl(f)}
     cat, missing = None, []
     for bk, n in sorted(used.items()):
         if bk not in bases:
@@ -211,10 +211,10 @@ def build(place_id: str, places: Path = PLACES, bundles: Path = BUNDLES, force: 
             "stamp": {"key": k, "draft_key": place.get("draft_key"), "inputs": stamp_in, "tool": TOOL, "missing_bases": missing,
                       "at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")}}
     (out / "bundle.json").write_text(json.dumps(meta, indent=1, ensure_ascii=False))
-    # draft.<id> is a symlink to a finished folder, swapped in one atomic rename: no request sees a half bundle
+    # draft.<id> is a symlink to a finished folder, swapped in one atomic rename: no request sees a half bundle.
+    # Each build has a folder of its own, so a forced rebuild of the same key never empties the one being served
     final = bundles / f"draft.{place_id}"
-    ver = bundles / f".draft.{place_id}.{k[:16]}"
-    shutil.rmtree(ver, ignore_errors=True)
+    ver = bundles / f".draft.{place_id}.{k[:16]}.{time.time_ns():x}"
     out.rename(ver)
     link = bundles / f".draft.{place_id}.{os.getpid()}.link"
     link.unlink(missing_ok=True)
@@ -223,8 +223,12 @@ def build(place_id: str, places: Path = PLACES, bundles: Path = BUNDLES, force: 
         shutil.rmtree(final)
     os.replace(link, final)
     for old in bundles.glob(f".draft.{place_id}.*"):
-        if old != ver and not old.name.endswith((".tmp", ".link")):
+        if old == ver:
+            continue
+        if not old.name.endswith((".tmp", ".link")):
             shutil.rmtree(old, ignore_errors=True)
+        elif time.time() - old.lstat().st_mtime > 3600:  # left by a build that died: no live build takes an hour
+            shutil.rmtree(old, ignore_errors=True) if old.is_dir() and not old.is_symlink() else old.unlink(missing_ok=True)
     return {"bundle_id": f"draft.{place_id}", "key": k, "rebuilt": True, "refs": counts, "missing_bases": missing}
 
 

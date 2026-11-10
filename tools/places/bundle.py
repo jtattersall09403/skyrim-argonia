@@ -17,6 +17,7 @@ import json
 import math
 import os
 import shutil
+import threading
 from functools import cached_property
 from pathlib import Path
 
@@ -90,7 +91,8 @@ def sha256_file(path: str | os.PathLike) -> str:
     cache = {k: v for k, v in cache.items() if not k.startswith(f"{p}|")}
     cache[key] = h.hexdigest()
     _SHA_CACHE.parent.mkdir(parents=True, exist_ok=True)
-    tmp = _SHA_CACHE.with_suffix(".tmp")
+    # a file of this writer's own: two processes (or threads) hashing at once both land, the later one whole
+    tmp = _SHA_CACHE.with_suffix(f".{os.getpid()}.{threading.get_ident()}.tmp")
     tmp.write_text(json.dumps(cache, indent=0))
     tmp.replace(_SHA_CACHE)
     return cache[key]
@@ -125,17 +127,25 @@ class Terrain:
         self.ltex = t.get("ltex", {})
         self.cells = {tuple(c["cell"]): c for c in t["cells"]}
         self._f32 = None
+        self._cell: dict[tuple[int, int], array.array | None] = {}
 
     def heights(self, cx: int, cy: int):
-        """The cell's 1089 heights as an array('f'), row-major south to north, west to east; None without land."""
+        """The cell's 1089 heights as an array('f'), row-major south to north, west to east; None without land.
+        Cut out of the file once per cell (height_at asks for every point it is given); read it, never write it."""
+        try:
+            return self._cell[(cx, cy)]
+        except KeyError:
+            pass
         c = self.cells.get((cx, cy))
-        if c is None or c.get("heights_index") is None:
-            return None
-        if self._f32 is None:
-            self._f32 = array.array("f")
-            self._f32.frombytes((self.dir / "terrain.f32").read_bytes())
-        i = c["heights_index"] * V * V
-        return self._f32[i:i + V * V]
+        h = None
+        if c is not None and c.get("heights_index") is not None:
+            if self._f32 is None:
+                self._f32 = array.array("f")
+                self._f32.frombytes((self.dir / "terrain.f32").read_bytes())
+            i = c["heights_index"] * V * V
+            h = self._f32[i:i + V * V]
+        self._cell[(cx, cy)] = h
+        return h
 
     def height_at(self, x: float, y: float) -> float | None:
         """Land height at a world point, bilinear between the four vertices round it (the engine's quads split into

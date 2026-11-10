@@ -9,6 +9,7 @@ A new source is a row in sources.jsonl, never a code change.
 from __future__ import annotations
 
 import argparse
+import fcntl
 import hashlib
 import json
 import os
@@ -95,12 +96,15 @@ def build_tool() -> Path:
     env = dict(os.environ, DOTNET_ROOT=str(Path.home() / ".dotnet"), DOTNET_CLI_TELEMETRY_OPTOUT="1", DOTNET_NOLOGO="1",
                PATH=f"{Path.home() / '.dotnet'}:{os.environ.get('PATH', '')}")
     newest = max(p.stat().st_mtime for p in [*PROJECT.glob("*.cs"), PROJECT / "Extract.csproj"])
-    if not dll.exists() or dll.stat().st_mtime < newest:
-        r = subprocess.run(["dotnet", "build", "-c", "Release", "-o", str(BIN), str(PROJECT)], env=env,
-                           capture_output=True, text=True)
-        if r.returncode != 0:
-            sys.stderr.write(r.stdout[-4000:] + r.stderr[-2000:])
-            raise RuntimeError("the extractor did not build")
+    BIN.mkdir(parents=True, exist_ok=True)
+    with open(BIN / ".build.lock", "w") as lk:  # two extracts at once: one builds, the other waits and finds it built
+        fcntl.flock(lk, fcntl.LOCK_EX)
+        if not dll.exists() or dll.stat().st_mtime < newest:
+            r = subprocess.run(["dotnet", "build", "-c", "Release", "-o", str(BIN), str(PROJECT)], env=env,
+                               capture_output=True, text=True)
+            if r.returncode != 0:
+                sys.stderr.write(r.stdout[-4000:] + r.stderr[-2000:])
+                raise RuntimeError("the extractor did not build")
     return dll
 
 
@@ -120,6 +124,8 @@ def source_job(row: dict) -> dict:
 
 
 def ground_job(place: dict, radius_m: float | None) -> dict:
+    if not all(isinstance(place.get(k), (int, float)) for k in ("world_x", "world_y")):
+        raise KeyError(f"place {place['id']!r} has no world_x, world_y in {PLACES.relative_to(REPO)}: it is not on the map yet")
     if radius_m is None:
         radius_m = GROUND_REACH_M + source_half_extent_m(place["id"]) + 50.0
     return {

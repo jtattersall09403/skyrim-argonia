@@ -209,6 +209,21 @@ def test_draft_bundle_resolves_and_rebuilds_when_stale(tmp_path, monkeypatch):
     assert db.stale("fxd", places, bundles) and db.build("fxd", places, bundles)["rebuilt"]
 
 
+def test_forced_draft_rebuild_never_empties_the_served_bundle(tmp_path, monkeypatch):
+    import os
+    from tools.places import draft_bundle as db
+    fake_rooms(monkeypatch)
+    places, bundles = _draft_fixture(tmp_path)
+    db.build("fxd", places, bundles)
+    live = (bundles / "draft.fxd").resolve()
+    whole, swap = [], os.replace
+    monkeypatch.setattr(db.os, "replace", lambda a, b: (whole.append((live / "bundle.json").exists()), swap(a, b))[1])
+    assert db.build("fxd", places, bundles, force=True)["rebuilt"]  # the same key, built again
+    now = (bundles / "draft.fxd").resolve()
+    assert whole == [True] and now != live and not live.exists() and (now / "bundle.json").exists()
+    assert [p.name for p in bundles.glob(".draft.fxd.*")] == [now.name]
+
+
 def test_places_rebuilds_draft_and_carries_fit(tmp_path, monkeypatch):
     fake_rooms(monkeypatch)
     places, bundles = _draft_fixture(tmp_path)

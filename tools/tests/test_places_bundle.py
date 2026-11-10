@@ -39,6 +39,7 @@ def test_reader(tmp_path):
     assert t.height_at(100.0, 50.0) == pytest.approx(100.0)
     assert t.height_at(5000.0, 10.0) == pytest.approx(7.0)
     assert t.height_at(-5.0, 10.0) is None
+    assert t.heights(1, 0) is t.heights(1, 0) and t.heights(9, 9) is None  # a cell is cut out of the file once
     n = t.normal_at(1000.0, 1000.0)
     assert n[0] == pytest.approx(-(0.5 ** 0.5)) and n[2] == pytest.approx(0.5 ** 0.5)
     assert t.ltex["W.esm:000A00"]["grasses"][0]["max_slope"] == 28
@@ -61,6 +62,30 @@ def test_sha_cache(tmp_path, monkeypatch):
     assert B.sha256_file(f) == "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad"
     assert B.sha256_file(f) == B.sha256_file(f)
     assert B.stamp_key({"a": "1"}, "t", {"p": 1}) != B.stamp_key({"a": "2"}, "t", {"p": 1})
+
+
+def test_sha_cache_written_by_many_at_once(tmp_path, monkeypatch):
+    """Every writer has its own temporary file, so none finds it already renamed away by another."""
+    import threading
+    monkeypatch.setattr(B, "_SHA_CACHE", tmp_path / "c.json")
+    files = []
+    for i in range(8):
+        f = tmp_path / f"f{i}"; f.write_bytes(bytes([i]) * 10)
+        files.append(f)
+    errors = []
+
+    def work(f):
+        try:
+            for _ in range(40):
+                f.touch()  # a new mtime: hashed and written to the cache again
+                B.sha256_file(f)
+        except Exception as e:  # noqa: BLE001
+            errors.append(e)
+    ts = [threading.Thread(target=work, args=(f,)) for f in files]
+    [t.start() for t in ts]
+    [t.join() for t in ts]
+    assert errors == [] and not list(tmp_path.glob("*.tmp"))
+    assert len(B.sha256_file(files[0])) == 64
 
 
 @pytest.fixture

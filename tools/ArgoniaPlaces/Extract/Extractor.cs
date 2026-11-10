@@ -36,12 +36,22 @@ static class Extractor
     {
         var L = new Loaded();
         var byName = new Dictionary<string, ISkyrimModGetter>(StringComparer.OrdinalIgnoreCase);
+        var listings = new Dictionary<string, Dictionary<string, string>>();
         string Find(string file)
         {
             foreach (var d in job.Search)
             {
                 var p = Path.Combine(d, file);
                 if (File.Exists(p)) return p;
+            }
+            foreach (var d in job.Search)  // a master named in another case than its file (the game's own lookup ignores case)
+            {
+                if (!listings.TryGetValue(d, out var names))
+                {
+                    listings[d] = names = new(StringComparer.OrdinalIgnoreCase);
+                    if (Directory.Exists(d)) foreach (var f in Directory.EnumerateFiles(d).Order(StringComparer.Ordinal)) names.TryAdd(Path.GetFileName(f), f);
+                }
+                if (names.TryGetValue(file, out var hit)) return hit;
             }
             throw new FileNotFoundException($"plugin {file} is in none of the search directories");
         }
@@ -63,13 +73,20 @@ static class Extractor
             L.World = new FormKey(ModKey.FromFileName(parts[0]), Convert.ToUInt32(parts[1], 16));
         }
         else if (job.Worldspace != "")
-            L.World = L.Mods.SelectMany(m => m.mod.Worldspaces).First(w => string.Equals(w.EditorID, job.Worldspace, StringComparison.OrdinalIgnoreCase)).FormKey;
+            L.World = (L.Mods.SelectMany(m => m.mod.Worldspaces).FirstOrDefault(w => string.Equals(w.EditorID, job.Worldspace, StringComparison.OrdinalIgnoreCase))
+                ?? throw new InvalidOperationException($"no worldspace {job.Worldspace} in {string.Join(", ", L.Mods.Select(m => m.mod.ModKey.FileName))}")).FormKey;
         if (!L.World.IsNull) L.Cache.TryResolve<IWorldspaceGetter>(L.World, out L.WorldRec);
         return L;
     }
 
     // Localized plugins' strings are never read (decision 0003): names come only from plugins that carry them inline.
-    static readonly string NoStr = Directory.CreateTempSubdirectory("argonia-nostrings").FullName;
+    static readonly string NoStr = MakeNoStr();
+    static string MakeNoStr()
+    {
+        var d = Directory.CreateTempSubdirectory("argonia-nostrings").FullName;
+        AppDomain.CurrentDomain.ProcessExit += (_, _) => { try { Directory.Delete(d, true); } catch (IOException) { } };
+        return d;
+    }
     static readonly Mutagen.Bethesda.Plugins.Binary.Parameters.BinaryReadParameters NoStrings = new()
     {
         StringsParam = new Mutagen.Bethesda.Strings.StringsReadParameters { StringsFolderOverride = NoStr, BsaFolderOverride = NoStr },
@@ -103,7 +120,9 @@ static class Extractor
                 var from = mod.ModKey.FileName.String;
                 if (w.TopCell is { } top)  // persistent refs live in the world's persistent cell; placed by position
                     foreach (var r in top.Persistent.Concat(top.Temporary))
-                        if (Pos(r) is { } p && want(GridOf(p.X, p.Y))) AddRef(sp, r, from, GridOf(p.X, p.Y));
+                        // a later plugin's version wins wherever it stands: deleted, or moved out of the extent, the ref is not here
+                        if (!r.IsDeleted && Pos(r) is { } p && want(GridOf(p.X, p.Y))) AddRef(sp, r, from, GridOf(p.X, p.Y));
+                        else sp.Refs.Remove(r.FormKey);
                 foreach (var b in w.SubCells) foreach (var sb in b.Items) foreach (var c in sb.Items)
                 {
                     if (c.Grid is not { } g) continue;
@@ -112,7 +131,7 @@ static class Extractor
                     ex.Cells[gp] = (c, from);
                     if (c.Landscape is { } land) ex.Land[gp] = land;
                     foreach (var r in c.Persistent.Concat(c.Temporary)) AddRef(sp, r, from, gp);
-                    foreach (var n in c.NavigationMeshes) sp.Navs[n.FormKey] = (n, gp);
+                    foreach (var n in c.NavigationMeshes) AddNav(sp, n, gp);
                 }
             }
     }
@@ -122,7 +141,8 @@ static class Extractor
     {
         FormKey lk;
         if (loc.Contains(':')) { var p = loc.Split(':'); lk = new FormKey(ModKey.FromFileName(p[0]), Convert.ToUInt32(p[1], 16)); }
-        else lk = L.Mods.SelectMany(m => m.mod.Locations).First(x => string.Equals(x.EditorID, loc, StringComparison.OrdinalIgnoreCase)).FormKey;
+        else lk = (L.Mods.SelectMany(m => m.mod.Locations).FirstOrDefault(x => string.Equals(x.EditorID, loc, StringComparison.OrdinalIgnoreCase))
+            ?? throw new InvalidOperationException($"no location {loc} in the loaded plugins")).FormKey;
         var win = new Dictionary<(int, int), FormKey>();
         foreach (var (mod, _) in L.Mods)
             foreach (var w in mod.Worldspaces.Where(w => w.FormKey == L.World))
@@ -137,6 +157,12 @@ static class Extractor
     {
         if (r.IsDeleted) sp.Refs.Remove(r.FormKey);
         else sp.Refs[r.FormKey] = (r, from, cell);
+    }
+
+    static void AddNav(Space sp, INavigationMeshGetter n, (int, int)? cell)
+    {
+        if (n.IsDeleted) sp.Navs.Remove(n.FormKey);
+        else sp.Navs[n.FormKey] = (n, cell);
     }
 
     sealed class InteriorIndex
@@ -166,12 +192,12 @@ static class Extractor
         foreach (var (c, f) in copies)
         {
             foreach (var r in c.Persistent.Concat(c.Temporary)) AddRef(sp, r, f, null);
-            foreach (var n in c.NavigationMeshes) sp.Navs[n.FormKey] = (n, null);
+            foreach (var n in c.NavigationMeshes) AddNav(sp, n, null);
         }
         return sp;
     }
 
-    static string SpaceId(ICellGetter c) => c.EditorID is { Length: > 0 } e ? e : Key(c.FormKey).Replace(':', '_');
+    static string SpaceId(ICellGetter c) => c.EditorID is { Length: > 0 } e && e.IndexOfAny(new[] { '/', '\\' }) < 0 ? e : Key(c.FormKey).Replace(':', '_');
 
     static IEnumerable<(FormKey door, FormKey target)> Doors(Space sp) =>
         sp.Refs.Values.Select(v => v.rec).OfType<IPlacedObjectGetter>()
@@ -206,6 +232,7 @@ static class Extractor
         {
             var ix = IndexInteriors(L);
             var seen = new HashSet<FormKey>();
+            var ids = new HashSet<string>(StringComparer.OrdinalIgnoreCase) { ext.Id };
             var queue = new Queue<Space>(); queue.Enqueue(ext);
             while (queue.Count > 0)
             {
@@ -221,6 +248,7 @@ static class Extractor
                         outside.Add(new { space = isp.Id, reached_from = sp.Id, exits = exits.Select(e => Key(e.target)).ToList() });
                         continue;
                     }
+                    if (!ids.Add(isp.Id)) { isp.Id = Key(ck).Replace(':', '_'); ids.Add(isp.Id); }  // a second cell of one editor id
                     spaces.Add(isp); queue.Enqueue(isp);
                 }
             }
@@ -353,7 +381,7 @@ static class Extractor
     // Nordic (decision 0006): a base is Nordic when its model path or editor id names a Nordic culture, hold town or
     // Nordic dungeon kit, whatever plugin carries it; or when it is one of Skyrim's own masters' architecture pieces
     // (Skyrim's towns are Nordic) outside the non-Nordic kits (Dwemer, Dunmer, Imperial, Ayleid, Falmer).
-    static readonly Regex NordicTok = new(@"nord|draugr|dragonclaw|dragonpriest|sovngarde|skaal|barrow|whiterun|windhelm|riften|solitude|markarth|falkreath|winterhold|dawnstar|morthal|riverwood|rorikstead|ivarstead|helgen|dragonsreach|highhrothgar|throat ?of ?the ?world|jarl|stormcloak|farmhouse|skyrimhouse|wrcastle|wrhouse|whhouse|solhouse|rifhouse|mrkhouse", RegexOptions.IgnoreCase);
+    static readonly Regex NordicTok = new(@"nord|draugr|dragonclaw|dragonpriest|sovngarde|skaal|(?<!wheel)barrow|whiterun|windhelm|riften|solitude|markarth|falkreath|winterhold|dawnstar|morthal|riverwood|rorikstead|ivarstead|helgen|dragonsreach|highhrothgar|throat ?of ?the ?world|jarl|stormcloak|farmhouse|skyrimhouse|wrcastle|wrhouse|whhouse|solhouse|rifhouse|mrkhouse", RegexOptions.IgnoreCase);
     static readonly Regex NotNordicKit = new(@"dwemer|dwarven|dunmer|ravenrock|telvanni|imperial|impcastle|ayleid|falmer|daedric|redguard|argonian|khajiit", RegexOptions.IgnoreCase);
     public static bool Nordic(FormKey fk, string? model, string? edid)
     {
@@ -370,12 +398,13 @@ static class Extractor
         public readonly HashSet<FormKey> Bases = new(), Npcs = new();
         public readonly Dictionary<string, object> Counts = new() { ["refs"] = 0 };
         readonly Dictionary<string, int> kinds = new(), perSpace = new();
+        Dictionary<FormKey, string>? spaceOf;  // every ref of the run -> its space: built once
         public Writer(Loaded l, Job j) { L = l; job = j; Counts["refs_by_kind"] = kinds; Counts["refs_by_space"] = perSpace; }
 
         public float[]? Anchor(Space ext)
         {
-            var ps = ext.Refs.Values.Select(v => Pos(v.rec)).Where(p => p != null).Select(p => p!.Value).ToList();
             if (job.Areas.Count > 0) return new[] { job.Areas[0].x, job.Areas[0].y, 0f };
+            var ps = ext.Refs.Values.Select(v => Pos(v.rec)).Where(p => p != null).Select(p => p!.Value).ToList();
             if (ps.Count == 0) return null;
             return new[] { ps.Average(p => p.X), ps.Average(p => p.Y), ps.Average(p => p.Z) }.Select(f => (float)f).ToArray();
         }
@@ -384,8 +413,11 @@ static class Extractor
         {
             var dir = Path.Combine(job.Out, "spaces", sp.Id);
             Directory.CreateDirectory(dir);
-            var spaceOf = new Dictionary<FormKey, string>();
-            foreach (var s in all) foreach (var k in s.Refs.Keys) spaceOf[k] = s.Id;
+            if (spaceOf == null)
+            {
+                spaceOf = new();
+                foreach (var s in all) foreach (var k in s.Refs.Keys) spaceOf[k] = s.Id;
+            }
             int n = 0, doors = 0;
             using (var o = new StreamWriter(Path.Combine(dir, "refs.jsonl")))
                 foreach (var (fk, (r, from, cell)) in sp.Refs.OrderBy(k => k.Key.ModKey.FileName.String).ThenBy(k => k.Key.ID))
@@ -449,13 +481,13 @@ static class Extractor
             if ((raw & 0x8000) != 0) flags.Add("visible_when_distant");
             if ((raw & 0x10000) != 0) flags.Add("high_priority_lod");
             if ((raw & 0x40000000) != 0) flags.Add("no_respawn");
-            if ((raw & 0x20000000) != 0) flags.Add("multibound");
+            if ((raw & unchecked((int)0x80000000)) != 0) flags.Add("multibound");
             var row = new Dictionary<string, object?>
             {
                 ["id"] = Key(fk), ["edid"] = r.EditorID, ["base"] = KeyN(bk), ["kind"] = kind,
                 ["pos"] = new[] { pl.Position.X, pl.Position.Y, pl.Position.Z },
                 ["rot"] = new[] { pl.Rotation.X, pl.Rotation.Y, pl.Rotation.Z },
-                ["scale"] = (r.GetType().GetProperty("Scale")?.GetValue(r) as float?) ?? 1f,
+                ["scale"] = r switch { IPlacedObjectGetter p => p.Scale, IPlacedNpcGetter p => p.Scale, _ => r.GetType().GetProperty("Scale")?.GetValue(r) as float? } ?? 1f,
                 ["layer"] = job.Layer, ["flags"] = flags, ["src"] = from,
             };
             if (cell is { } c) row["cell"] = new[] { c.Item1, c.Item2 };
