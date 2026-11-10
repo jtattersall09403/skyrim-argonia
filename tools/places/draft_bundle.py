@@ -12,7 +12,6 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
-import math
 import os
 import shutil
 import sys
@@ -22,9 +21,11 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 PLACES = ROOT / "newworld" / "places"
 BUNDLES = ROOT / "out" / "places" / "bundles"
-ROOM_RADIUS = 1200.0  # the build's `room` rule: the source refs this near the room ref (Build, step 2)
+# A bundle ref's kind as the record type the build's room rule reads (tools.places.build.kind_of, inverted)
+BASE_TYPE = {"static": "STAT", "door": "DOOR", "furniture": "FURN", "container": "CONT", "light": "LIGH",
+             "activator": "ACTI", "plant": "FLOR", "tree": "TREE", "marker": "IDLM", "actor": "NPC_"}
 FILES = ("people", "paths", "clear", "land")
-TOOL = "tools/places/draft_bundle.py v1"
+TOOL = "tools/places/draft_bundle.py v2"
 
 
 def jsonl(p: Path) -> list[dict]:
@@ -69,18 +70,21 @@ def stale(place_id: str, places: Path = PLACES, bundles: Path = BUNDLES) -> bool
 
 
 def copy_space(info: dict, rows: list[dict], src: Path) -> list[dict]:
-    """An interior: the source cell's refs (no actors; one room only when `room` or `keep_within` says), with our
+    """An interior: the source cell's refs (no actors; one room only when `room` names it, by the build's room_partition), with our
     rows over them: a row with `src` changes that ref (or drops it when `removed`), ignored when its src is outside
     the kept room; a row without `src` is added."""
     copied_from = info["copy_of"].split("/", 1)[1]
     srows = [r for r in jsonl(src / "spaces" / copied_from / "refs.jsonl") if r.get("kind") != "actor"]
-    keep = info.get("keep_within")
-    if not keep and info.get("room"):
-        rr = next((r for r in srows if r.get("id") == info["room"] and r.get("pos")), None)
-        if rr:
-            keep = {"pos": rr["pos"], "radius": ROOM_RADIUS}
-    if keep:
-        srows = [r for r in srows if r.get("pos") and math.dist(r["pos"], keep["pos"]) <= keep["radius"]]
+    if info.get("room"):  # one room of a shared cell: exactly the room the build makes (Build, the room rule)
+        from tools.places.build import room_partition
+        rows_b = [{"fk": r["id"], "base": r["base"], "pos": r["pos"], "rot": r.get("rot"), "scale": r.get("scale"),
+                   "door": r.get("door"), "base_type": BASE_TYPE.get(r.get("kind"), "MISC")}
+                  for r in srows if r.get("pos")]
+        work = BUNDLES.parent / "work" / "draft_bundle"
+        work.mkdir(parents=True, exist_ok=True)
+        room = room_partition(info["copy_of"], rows_b, work)["rooms"].get(info["room"])
+        keep = room["refs"] if room else set()
+        srows = [r for r in srows if r["id"] in keep]
     out = {r["id"]: dict(r, layer="place", src=r["id"], seat={"mode": "free"}) for r in srows}
     for r in rows:
         s = r.get("src")

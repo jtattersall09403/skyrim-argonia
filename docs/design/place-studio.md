@@ -62,8 +62,8 @@ A bundle is one place as data, in `out/places/bundles/<bundle_id>/`; `bundle_id`
 `ground.<place_id>` or `draft.<place_id>` (the place files resolved for viewing). The studio shows any bundle.
 
 The draft bundle is written by `python -m tools.places draft_bundle <place_id>` (`tools/places/draft_bundle.py`):
-the exterior's refs as written; each interior the source cell's refs without actors, cut to the kept room by the
-Build rule (`room` or `keep_within`), with our rows over them; people, paths, clear and land files as written;
+the exterior's refs as written; each interior the source cell's refs without actors, cut to the room the build keeps
+(`tools.places.build.room_partition`, the one copy of the room rule), with our rows over them; people, paths, clear and land files as written;
 bases from the ground and source bundles; actor bases from the source. Its `stamp.key` is a sha256 over the place
 files (saves excepted) and the source and ground bundles' `bundle.json`. The studio rebuilds it whenever that key
 is stale, on `GET /api/places` and on a request for the draft's `bundle.json`, so a redraft, a re-seat or a

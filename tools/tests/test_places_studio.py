@@ -179,14 +179,28 @@ def _draft_fixture(t: Path):
     return places, bundles
 
 
-def test_draft_bundle_resolves_and_rebuilds_when_stale(tmp_path):
+def fake_rooms(monkeypatch):
+    """The build's room rule (tools.places.build.room_partition) stood in: room 000001 holds refs 1 to 3."""
+    import tools.places.build as build
+    calls = []
+
+    def part(copy_of, refs, work):
+        calls.append((copy_of, sorted(r["fk"] for r in refs)))
+        return {"rooms": {"Fx.esm:000001": {"refs": {"Fx.esm:000001", "Fx.esm:000002", "Fx.esm:000003"}, "mesh": {}}}}
+    monkeypatch.setattr(build, "room_partition", part)
+    return calls
+
+
+def test_draft_bundle_resolves_and_rebuilds_when_stale(tmp_path, monkeypatch):
     from tools.places import draft_bundle as db
+    calls = fake_rooms(monkeypatch)
     places, bundles = _draft_fixture(tmp_path)
     r = db.build("fxd", places, bundles)
     assert r["rebuilt"] and not db.build("fxd", places, bundles)["rebuilt"]
     d = bundles / "draft.fxd"
     hall = {x["id"]: x for x in db.jsonl(d / "spaces" / "Hall.2" / "refs.jsonl")}
     assert set(hall) == {"Fx.esm:000001", "fxd.m", "fxd.new"}  # room kept, change applied, removed and outside dropped
+    assert calls[0][0] == "fx.village/Hall" and "Fx.esm:000006" not in calls[0][1]  # the build's rule, no actors
     assert hall["fxd.m"]["pos"] == [600, 0, 0] and hall["fxd.m"]["base"] == "Fx.esm:000800"
     sp = json.loads((d / "spaces" / "Hall.2" / "space.json").read_text())
     assert sp["type"] == "interior" and sp["future_field"] == 1
@@ -196,6 +210,7 @@ def test_draft_bundle_resolves_and_rebuilds_when_stale(tmp_path):
 
 
 def test_places_rebuilds_draft_and_carries_fit(tmp_path, monkeypatch):
+    fake_rooms(monkeypatch)
     places, bundles = _draft_fixture(tmp_path)
     monkeypatch.setenv("PLACES_OUT", str(tmp_path))
     monkeypatch.setenv("PLACES_DIR", str(places))
