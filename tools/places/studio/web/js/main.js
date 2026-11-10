@@ -1,6 +1,6 @@
 // Place Studio: the owner's editor for one of our places beside the source place it was seeded from.
 import * as THREE from 'three';
-import { api } from './api.js';
+import { api, API_BASE } from './api.js';
 import { loadBundle, seatZ } from './bundle.js';
 import { EditLog, modelFromFiles, describe, vegKey } from './edits.js';
 import { View } from './view.js';
@@ -15,13 +15,24 @@ import { segDist, clock } from './geom.js';
 import { Governor } from './governor.js';
 
 const VEG = new Set(['tree', 'plant', 'groundcover']);
+// The page tells the server what it is doing and what went wrong (out/places/studio-client.log), so a fault on the
+// tablet can be read from the build machine.
+const T0 = performance.now();
+export function report(stage, extra = {}) {
+  try {
+    const body = JSON.stringify({ stage, t: Math.round(performance.now() - T0), ...extra });
+    if (!navigator.sendBeacon?.(`${API_BASE}/clientlog`, body)) fetch(`${API_BASE}/clientlog`, { method: 'POST', body, credentials: 'same-origin', keepalive: true }).catch(() => {});
+  } catch { /* never in the way */ }
+}
+addEventListener('error', (e) => report('error', { message: String(e.message || e.error || e).slice(0, 500), at: `${(e.filename || '').split('/').pop()}:${e.lineno || 0}` }));
+addEventListener('unhandledrejection', (e) => report('rejection', { message: String(e.reason?.stack || e.reason).slice(0, 700) }));
 const $ = (s) => document.querySelector(s);
 const store = { get(k) { try { return localStorage.getItem(k); } catch { return null; } },
   set(k, v) { try { localStorage.setItem(k, v); } catch { /* private window */ } } };
 
 class Studio {
   constructor() {
-    this.penSeen = false; this.selection = new Set(); this.srcSel = []; this.showCleared = false; this.time = 9;
+    this._seat = new WeakMap(); this._vk = new WeakMap(); this.penSeen = false; this.selection = new Set(); this.srcSel = []; this.showCleared = false; this.time = 9;
     this.ours = { view: new View($('#view-ours'), { name: 'Our place', app: this }), space: 'exterior', side: 'ours' };
     this.src = { view: new View($('#view-src'), { name: 'Source place', app: this }), space: 'exterior', side: 'src' };
     this.ours.view.side = this.ours; this.src.view.side = this.src;
@@ -31,6 +42,7 @@ class Studio {
   }
   // ---------- loading ----------
   async start() {
+    report('boot', { gl: glInfo(), w: innerWidth, h: innerHeight, dpr: devicePixelRatio, mem: navigator.deviceMemory });
     this.places = await api.places();
     if (!this.places?.length) { this.loading('No place has a draft yet. Run the draft step for a place first.'); return; }
     const sel = $('#place-pick'); sel.innerHTML = '';
@@ -51,7 +63,7 @@ class Studio {
         try { this.places = await api.places(); } catch { /* the retry below reports it */ }
         return this.openPlaceSafe(id, false);
       }
-      console.error(e);
+      console.error(e); report('load-failed', { message: String(e?.stack || e).slice(0, 700) });
       this.loadFailed(e?.message || String(e), () => this.openPlaceSafe(id));
     }
   }
@@ -70,6 +82,10 @@ class Studio {
     el.querySelector('i').style.width = `${(100 * n) / of}%`;
   }
   loading(text) {
+    report('loading', { text: text === false ? 'done' : text });
+    // a step that takes far longer than it should offers a way out instead of a spinner for ever
+    clearTimeout(this.slowT);
+    if (text !== false) this.slowT = setTimeout(() => { report('slow', { text }); this.loadFailed(`"${text}" is taking far longer than it should`, () => location.reload()); }, 120000);
     const l = $('#loading'); l.querySelector('button.retry')?.setAttribute('hidden', ''); l.querySelector('.spinner')?.removeAttribute('hidden');
     if (text === false) { l.hidden = true; return; } l.hidden = false; $('#loading-text').textContent = text;
   }
@@ -90,7 +106,7 @@ class Studio {
     if (this.terrain) this.terrain.override = this.model.land;
     this.log = new EditLog(this.model);
     this.log.on((kind, ops) => this.afterEdit(kind, ops));
-    this.worldRefs = (ground.spaces.exterior?.refs || []).filter((r) => r.layer !== 'place');
+    this.worldRefs = (ground.spaces.exterior?.refs || []).filter((r) => r.layer !== 'place'); this._wbk = null;
     const origin = ground.meta.anchor ? ground.meta.anchor.map(Math.round) : [0, 0, 0];
     this.ours.origin = origin;
     this.ours.world = new ObjectLayer(origin, this.bases); this.ours.place = new ObjectLayer(origin, this.bases);
@@ -233,12 +249,25 @@ class Studio {
   }
   placeRefsById() { return this.model.spaces[this.ours.space]?.refs || new Map(); }
   // A placed ref as drawn: seated on the land as it is now.
+  // The answer is kept with the pose, seat rule and nearby land it came from, so a redraw only re-seats what moved
+  // or stands on land that changed (a thing seated on another thing is always worked out afresh).
   seated(ref) {
     if (this.ours.space !== 'exterior' || !ref.seat) return ref;
-    const z = seatZ(this.terrain, ref, this.placeRefsById());
-    return z === ref.pos[2] ? ref : { ...ref, pos: [ref.pos[0], ref.pos[1], z] };
+    const s = ref.seat, t = this.terrain, on = s.mode === 'on';
+    let c = on ? null : this._seat.get(ref);
+    const ver = t && !on ? t.verNear(ref.pos[0], ref.pos[1]) : 0;
+    if (c && c.x === ref.pos[0] && c.y === ref.pos[1] && c.z === ref.pos[2] && c.rz === (ref.rot?.[2] || 0) && c.seat === s && c.dz === s.dz && c.ver === ver) return c.out;
+    const z = seatZ(t, ref, this.placeRefsById());
+    const out = z === ref.pos[2] ? ref : { ...ref, pos: [ref.pos[0], ref.pos[1], z] };
+    if (!on) this._seat.set(ref, { x: ref.pos[0], y: ref.pos[1], z: ref.pos[2], rz: ref.rot?.[2] || 0, seat: s, dz: s.dz, ver, out });
+    return out;
   }
-  isCleared(r) { return this.model.clear.has(vegKey(r)); }
+  vegKeyOf(r) { let k = this._vk.get(r); if (!k) this._vk.set(r, (k = vegKey(r))); return k; }
+  worldByKey(k) {
+    if (!this._wbk) { this._wbk = new Map(); for (const r of this.worldRefs) if (VEG.has(r.kind) || r.kind === 'rock' || r.kind === 'clutter') this._wbk.set(this.vegKeyOf(r), r); }
+    return this._wbk.get(k);
+  }
+  isCleared(r) { return this.model.clear.has(this.vegKeyOf(r)); }
   underPath(r) {
     for (const p of this.model.paths.values()) {
       const w = p.width / 2 + 40, bb = pathBox(p);
@@ -264,8 +293,9 @@ class Studio {
     store.set('studio.grass.v1', on ? 'on' : 'off');
     for (const s of [this.ours, this.src]) s.grass?.setOn(on);
   }
-  refreshSide(side, { world = true } = {}) {
-    side.grass?.invalidate();
+  // world: the world's plants too (after clearing, restoring or a path); grass: regrow it (not during a drag's preview)
+  refreshSide(side, { world = true, grass = true } = {}) {
+    if (grass) side.grass?.invalidate();
     if (side === this.ours) {
       if (side.space === 'exterior' && world) {
         const list = [];
@@ -286,8 +316,8 @@ class Studio {
   afterEdit(kind, ops) {
     const touched = new Set(ops.map((o) => o.op.split('.')[0]));
     if (touched.has('land') || touched.has('path')) { this.ours.grass?.invalidate(); }
-    if (touched.has('land')) { this.ours.terrainMesh?.refreshCells(new Set(ops.filter((o) => o.op === 'land.patch').map((o) => o.cell.join(',')))); this.ours.terrainMesh?.tint?.(); }
-    if (touched.has('path')) this.ours.terrainMesh?.rebakeAll();
+    if (touched.has('land')) { const keys = new Set(ops.filter((o) => o.op === 'land.patch').map((o) => o.cell.join(','))); this.ours.terrainMesh?.refreshCells(keys); this.ours.terrainMesh?.tintCells(keys); }
+    if (touched.has('path')) this.ours.terrainMesh?.rebakeAll(pathsBox(ops));
     if (touched.has('veg') || touched.has('path')) this.refreshSide(this.ours);
     else this.refreshSide(this.ours, { world: false });
     if (touched.has('person') || touched.has('ref')) this.people.refresh();
@@ -345,7 +375,7 @@ class Studio {
     Object.assign(this.model, m); if (this.terrain) this.terrain.override = this.model.land;
     this.log.model = this.model; const err = this.log.load(save.ops || []);
     if (err) { console.error(err); this.toast(`Opened ${this.log.ops.length} of ${save.ops.length} changes. The next one no longer fits the draft: ${err.message}`, 8000); }
-    this.ours.terrainMesh?.refreshCells(this.ours.terrainMesh.cells.keys()); this.ours.terrainMesh?.rebakeAll(); this.ours.terrainMesh?.tint?.();
+    this.terrain?.bump(null); this.ours.terrainMesh?.refreshCells(this.ours.terrainMesh.cells.keys()); this.ours.terrainMesh?.rebakeAll(); this.ours.terrainMesh?.tint?.();
     this.ours.trail = []; this.showSpace(this.ours, 'exterior');
     this.refreshSide(this.ours); this.panels.historyChanged(); this.updateUndo();
   }
@@ -355,6 +385,14 @@ class Studio {
     $('#finalise-btn').onclick = () => this.panels.finalise();
     $('#settings-btn').onclick = () => this.panels.settings();
     $('#link').onclick = (e) => { this.linked = !this.linked; e.currentTarget.setAttribute('aria-pressed', this.linked); if (this.linked) this.cameraMoved(this.ours.view); };
+    // the source place can be put away to make room, and asked back; remembered on this device
+    const srcShown = (on) => {
+      $('#views').dataset.src = on ? 'shown' : 'hidden'; $('#show-src').hidden = on; store.set('studio.src.v1', on ? 'shown' : 'hidden');
+      $('#view-src').classList.remove('full'); if (!on && this.focused === this.src.view) this.focused = this.ours.view;
+      for (const v of [this.ours.view, this.src.view]) { v.resize(); v.redraw(); }
+    };
+    $('#hide-src').onclick = () => srcShown(false); $('#show-src').onclick = () => srcShown(true);
+    if (store.get('studio.src.v1') === 'hidden') srcShown(false);
     $('#swap').onclick = () => { const v = $('#views'); v.dataset.swapped = v.dataset.swapped === 'true' ? 'false' : 'true'; };
     document.querySelectorAll('.view .fs').forEach((b) => { b.onclick = () => { const v = b.closest('.view'); v.classList.toggle('full'); b.setAttribute('aria-pressed', v.classList.contains('full')); }; });
     $('#time').oninput = (e) => this.setTime(Number(e.target.value));
@@ -449,6 +487,15 @@ function townBox(refs, radiusM) {
 // The draft's style words for paths (paths.jsonl `style` when it is not a land texture key).
 const STYLE_WORD = { boardwalk: { colour: '#8b6b47', label: 'Wooden boards' }, dirt: { colour: '#7a6446', label: 'Dirt' },
   mud: { colour: '#5f4d38', label: 'Mud' }, gravel: { colour: '#8d8678', label: 'Gravel' }, stone: { colour: '#80796d', label: 'Stone' } };
+// The ground a set of path ops touches (each path as it was and as it is), for redrawing only those cells.
+function pathsBox(ops) {
+  const b = [Infinity, Infinity, -Infinity, -Infinity];
+  for (const o of ops) for (const p of [o.path, o.before]) {
+    if (!p?.points) continue; const w = (p.width || 256) * 0.7;
+    for (const [x, y] of p.points) { b[0] = Math.min(b[0], x - w); b[1] = Math.min(b[1], y - w); b[2] = Math.max(b[2], x + w); b[3] = Math.max(b[3], y + w); }
+  }
+  return b[0] === Infinity ? null : b;
+}
 const PATH_BOX = new WeakMap();
 const pathBox = (p) => { let b = PATH_BOX.get(p); if (!b) PATH_BOX.set(p, (b = boxOfPoints(p.points))); return b; };
 function boxOfPoints(pts) {
@@ -473,6 +520,13 @@ function normaliseFit(f) {
   }
   const c = Array.isArray(f.clusters) ? f.clusters[0] : Array.isArray(f) ? f[0] : f;
   return c && 'dx' in c ? { dx: c.dx || 0, dy: c.dy || 0, dz: c.dz || 0, rot: c.rot || 0, scale: c.scale || 1 } : null;
+}
+function glInfo() {
+  try {
+    const r = studio.ours.view.renderer, gl = r.getContext(), dbg = gl.getExtension('WEBGL_debug_renderer_info');
+    return { gpu: dbg ? gl.getParameter(dbg.UNMASKED_RENDERER_WEBGL) : gl.getParameter(gl.RENDERER), webgl2: r.capabilities.isWebGL2, maxTex: r.capabilities.maxTextureSize,
+      parallel: !!r.extensions.has('KHR_parallel_shader_compile') };
+  } catch (e) { return { error: String(e) }; }
 }
 function emptyDraft(id) {
   return { id: `draft.${id}`, meta: { spaces: ['exterior'], stamp: null }, bases: new Map(), npcs: new Map(),

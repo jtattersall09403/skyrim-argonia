@@ -9,6 +9,7 @@ import hashlib
 import json
 import mimetypes
 import os
+import time
 import platform
 import re
 import subprocess
@@ -422,6 +423,20 @@ async def heartbeat(req: web.Request) -> web.Response:
     return jok(r)
 
 
+async def client_log(req: web.Request) -> web.Response:
+    """What the studio page reports about itself (load stages, errors, the device's graphics): one line each in
+    out/places/studio-client.log, so a fault on the owner's tablet can be read here."""
+    body = (await req.read())[:4000].decode("utf-8", "replace")
+    line = json.dumps({"at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()), "ua": req.headers.get("User-Agent", "")[:200],
+                       "body": body}, ensure_ascii=False)
+    log = req.app["cfg"].out / "studio-client.log"
+    if log.exists() and log.stat().st_size > 2_000_000:
+        log.write_text("")
+    with open(log, "a") as f:
+        f.write(line + "\n")
+    return web.Response(status=204)
+
+
 def git_sha() -> str:
     r = subprocess.run(["git", "rev-parse", "--short=12", "HEAD"], cwd=ROOT, capture_output=True, text=True)
     return r.stdout.strip()
@@ -507,6 +522,7 @@ def make_app(cfg: Config | None = None) -> web.Application:
     r.add_get("/api/place/{place_id}/runs/{run_id}", run_get)
     r.add_get("/api/place/{place_id}/seat", seat)
     r.add_post("/api/heartbeat", heartbeat)
+    r.add_post("/api/clientlog", client_log)
     r.add_get("/api/status", status)
     r.add_get("/", web_file)
     r.add_get("/{path:(?!api/).+}", web_file)

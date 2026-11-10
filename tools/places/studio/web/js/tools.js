@@ -81,6 +81,11 @@ export class Tools {
     if (this.placing) return this.placeTool;
     return { select: this.selectTool, search: this.selectTool, land: this.landTool, plants: this.vegTool, paths: this.pathTool, people: a.people.tool }[this.current] || this.selectTool;
   }
+  // Previews under the pen are drawn once per animation frame, however many pen events arrive in it.
+  soon(name, fn) {
+    this._soon = this._soon || new Map(); const had = this._soon.has(name); this._soon.set(name, fn);
+    if (!had) requestAnimationFrame(() => { const f = this._soon.get(name); this._soon.delete(name); f(); });
+  }
   key(e) {
     if (e.key === 'Delete' || e.key === 'Backspace') this.remove();
     if (e.key === 'Escape') { this.stopPlacing(); this.app.selection.clear(); this.selectionChanged(); }
@@ -254,7 +259,7 @@ export class Tools {
       const f = Math.max(0.1, Math.min(10, Math.exp(((e.clientX - d.x0) - (e.clientY - d.y0)) * 0.004)));
       for (const r of d.refs) r.scale = rnd((d.before.get(r.id).scale || 1) * f, 1000);
     }
-    a.refreshSide(a.ours, { world: false });
+    this.soon('drag', () => a.refreshSide(a.ours, { world: false, grass: false }));
   }
   reseat(r) {
     if (this.app.ours.space !== 'exterior') return;
@@ -383,7 +388,12 @@ export class Tools {
     for (const it of interiors.values()) {
       for (const op of it.ops) {
         const back = it.outside.get(op.srcId); delete op.srcId;
-        if (back && op.ref.door) op.ref.door = { ...op.ref.door, to_space: a.ours.space, to_ref: back.id, to_pos: [...back.pos], to_rot: [...back.rot] };
+        if (back && op.ref.door) {
+          // the way out lands where the source's own way out lands, carried across with the building (else at its door)
+          const sp = op.ref.door.to_pos; let to = [...back.pos], tr = [...back.rot];
+          if (sp && fromExt) { const [ax, ay] = place(sp); to = [ax, ay, toExt ? rnd(a.terrain?.heightAt(ax, ay) ?? back.pos[2]) : back.pos[2]]; tr = rot ? fitRot(fit, op.ref.door.to_rot || [0, 0, 0]) : [...(op.ref.door.to_rot || [0, 0, 0])]; }
+          op.ref.door = { ...op.ref.door, to_space: a.ours.space, to_ref: back.id, to_pos: to, to_rot: tr };
+        }
         ops.push(op);
       }
     }
@@ -445,8 +455,8 @@ export class Tools {
         cm.set(idx, rnd(nz - T.base(s.cell, s.row, s.col))); T.override.set(ck, cm); changedCells.add(ck);
       }
     }
-    a.ours.terrainMesh.refreshCells(changedCells); a.ours.terrainMesh.tint();
-    a.refreshSide(a.ours, { world: false }); a.panels.landCount?.(st.before.size, st.before.size >= MAX);
+    a.ours.terrainMesh.refreshCells(changedCells); a.ours.terrainMesh.tintCells(changedCells);
+    this.soon('land', () => { a.refreshSide(a.ours, { world: false, grass: false }); a.panels.landCount?.(st.before.size, st.before.size >= MAX); });
   }
   landEnd(cancel) {
     const a = this.app, T = a.terrain, st = this.stroke; this.stroke = null; if (!st) return;
@@ -461,7 +471,8 @@ export class Tools {
     const L = this.land, tool = { kind: L.kind, radius: L.radius, strength: L.strength };
     if (L.kind === 'level') tool.height = st.level;
     const ops = [...byCell.values()].map((c) => ({ op: 'land.patch', cell: c.cell, verts: c.verts, tool }));
-    if (ops.length) a.push(ops, 'exterior'); else { a.ours.terrainMesh.refreshCells(byCell.keys()); a.ours.terrainMesh.tint(); a.refreshSide(a.ours, { world: false }); }
+    const touched = new Set([...st.before.values()].map((b) => b.cell.join(',')));
+    if (ops.length) { a.ours.terrainMesh.refreshCells(touched); a.push(ops, 'exterior'); } else { a.ours.terrainMesh.refreshCells(touched); a.ours.terrainMesh.tintCells(touched); a.refreshSide(a.ours, { world: false }); }
   }
   // ---------- plants ----------
   get vegTool() {
@@ -481,7 +492,7 @@ export class Tools {
     const h = hits.find((x) => (restore ? a.isCleared(x.ref) : !a.isCleared(x.ref)));
     if (!h) { a.toast(restore ? 'Turn on "Show cleared plants" and tap a ghost to bring it back.' : 'No plant there.'); return; }
     // a restore carries the whole cleared row (by, why, ref) so its undo puts it back exactly
-    const item = restore ? { ...a.model.clear.get(vegKey(h.ref)) } : { base: h.ref.base, pos: h.ref.pos };
+    const item = restore ? { ...a.model.clear.get(a.vegKeyOf(h.ref)) } : { base: h.ref.base, pos: h.ref.pos };
     a.push({ op: restore ? 'veg.restore' : 'veg.clear', items: [item] }, 'exterior');
   }
   vegDab(e) {
@@ -490,12 +501,22 @@ export class Tools {
     for (const r of a.worldRefs) {
       if (!VEG.has(r.kind)) continue;
       const d2 = (r.pos[0] - g[0]) ** 2 + (r.pos[1] - g[1]) ** 2; if (d2 > R2) continue;
-      const k = vegKey(r); if (this.vstroke.has(k)) continue;
-      if (restore ? a.isCleared(r) : !a.isCleared(r)) this.vstroke.set(k, restore ? { ...a.model.clear.get(k) } : { base: r.base, pos: r.pos });
+      const k = a.vegKeyOf(r); if (this.vstroke.has(k)) continue;
+      if (restore ? a.isCleared(r) : !a.isCleared(r)) { this.vstroke.set(k, restore ? { ...a.model.clear.get(k) } : { base: r.base, pos: r.pos }); this.vfresh = true; }
     }
+    if (!this.vfresh) return;
     // preview: hide (or show) what the brush has touched so far
-    a.ours.world.setRefs(a.ours.world.refs.filter((x) => restore || !this.vstroke.has(vegKey(x.ref)))
-      .concat(restore ? [...this.vstroke.values()].map((it) => ({ ref: a.worldRefs.find((r) => vegKey(r) === vegKey(it)) })).filter((x) => x.ref) : []));
+    this.soon('veg', () => {
+      if (!this.vstroke) return; this.vfresh = false;
+      const W = a.ours.world, list = [];
+      for (const x of W.refs) {
+        const hit = this.vstroke.has(a.vegKeyOf(x.ref));
+        if (!restore) { if (!hit) list.push(x); } else list.push(hit && x.ghost ? { ref: x.ref } : x);
+      }
+      // restoring with the cleared plants not shown: they come back into view as the brush passes
+      if (restore) for (const k of this.vstroke.keys()) { const r = a.worldByKey(k); if (r && !W.byId.has(r.id)) list.push({ ref: r }); }
+      W.setRefs(list);
+    });
   }
   vegEnd() {
     const a = this.app, items = [...(this.vstroke?.values() || [])]; this.vstroke = null;
@@ -537,7 +558,7 @@ export class Tools {
       const z = a.terrain.heightAt(pt[0], pt[1]) ?? 0, s = v.toScreen([pt[0], pt[1], z]);
       const c = this.svg(v, 'circle', { cx: s.x, cy: s.y, r: 18, class: 'brush' }); c.style.pointerEvents = 'auto'; c.style.touchAction = 'none';
       c.addEventListener('pointerdown', (ev) => { ev.stopPropagation(); c.setPointerCapture(ev.pointerId); this.pdrag = { i, before: clone(p) }; });
-      c.addEventListener('pointermove', (ev) => { if (!this.pdrag) return; const g = v.info(ev).ground(); if (!g) return; p.points[i] = [rnd(g[0], 10), rnd(g[1], 10)]; c.setAttribute('cx', ev.clientX - v.canvas.getBoundingClientRect().left); c.setAttribute('cy', ev.clientY - v.canvas.getBoundingClientRect().top); a.ours.terrainMesh.rebakeAll(); v.redraw(); });
+      c.addEventListener('pointermove', (ev) => { if (!this.pdrag) return; const g = v.info(ev).ground(); if (!g) return; p.points[i] = [rnd(g[0], 10), rnd(g[1], 10)]; c.setAttribute('cx', ev.clientX - v.canvas.getBoundingClientRect().left); c.setAttribute('cy', ev.clientY - v.canvas.getBoundingClientRect().top); this.soon('path', () => { const w = p.width, xs = [...p.points, ...this.pdrag?.before.points || []]; a.ours.terrainMesh.rebakeAll([Math.min(...xs.map((q) => q[0])) - w, Math.min(...xs.map((q) => q[1])) - w, Math.max(...xs.map((q) => q[0])) + w, Math.max(...xs.map((q) => q[1])) + w]); v.redraw(); }); });
       c.addEventListener('pointerup', () => { const d = this.pdrag; this.pdrag = null; if (!d) return; const after = clone(p); Object.assign(p, d.before); a.push({ op: 'path.edit', path: after, before: d.before }, 'exterior'); this.drawPathHandles(); });
     });
     void sk;

@@ -62,7 +62,7 @@ export class View {
   }
   resize() {
     const r = this.el.getBoundingClientRect(); if (!r.width || !r.height) return;
-    this.camera.aspect = r.width / r.height; this.camera.updateProjectionMatrix(); this.redraw();
+    this.w = r.width; this.h = r.height; this.camera.aspect = r.width / r.height; this.camera.updateProjectionMatrix(); this.redraw();
   }
   // Hidden under the other view shown full screen.
   hidden() { const full = this.el.parentElement?.querySelector('.view.full'); return !this.el.offsetWidth || (full && full !== this.el); }
@@ -197,7 +197,6 @@ export class View {
   }
   toScreen(gp) { // game point -> css px in this view
     const v = new THREE.Vector3(gp[0] - this.origin[0], gp[1] - this.origin[1], gp[2] - this.origin[2]).project(this.camera);
-    const r = this.canvas.getBoundingClientRect();
-    return { x: (v.x + 1) / 2 * r.width, y: (1 - v.y) / 2 * r.height, behind: v.z > 1 };
+    return { x: (v.x + 1) / 2 * this.w, y: (1 - v.y) / 2 * this.h, behind: v.z > 1 };
   }
 }

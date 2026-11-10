@@ -48,8 +48,17 @@ export class Terrain {
     this.list = list || json.cells.map((c) => normaliseCell(c, n));
     this.cells = new Map(this.list.map((c) => [c.cell.join(','), c]));
     this.override = null; // Map "cx,cy" -> Map(idx -> dz): the edit model's land patches
+    this.vers = new Map(); this.verAll = 0; // bumped when a cell's heights change (edits): seating caches key on it
   }
   cellAt(x, y) { return [Math.floor(x / this.size), Math.floor(y / this.size)]; }
+  bump(key) { if (key == null) { this.verAll++; this.vers.clear(); } else this.vers.set(key, (this.vers.get(key) || 0) + 1); }
+  // A number that changes when the land within a cell of (x, y) changes.
+  verNear(x, y) {
+    if (!this.vers.size) return this.verAll;
+    const cx = Math.floor(x / this.size), cy = Math.floor(y / this.size); let v = this.verAll;
+    for (let i = -1; i <= 1; i++) for (let j = -1; j <= 1; j++) v = v * 31 + (this.vers.get(`${cx + i},${cy + j}`) || 0);
+    return v;
+  }
   base(cell, row, col) {
     const c = this.cells.get(cell.join(','));
     return c ? this.f32[c.heights + row * this.grid + col] : 0;

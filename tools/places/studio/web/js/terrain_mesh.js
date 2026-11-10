@@ -161,7 +161,8 @@ export class TerrainMesh {
     e.geo.attributes.position.needsUpdate = true; e.geo.computeBoundingSphere();
     this.shadeWater(e);
   }
-  refreshCells(keys) { for (const k of keys) { const e = this.cells.get(k); if (e) this.updateHeights(e); } }
+  refreshCells(keys) { for (const k of keys) { this.t.bump?.(k); const e = this.cells.get(k); if (e) this.updateHeights(e); } }
+  tintCells(keys) { for (const k of keys) { const e = this.cells.get(k); if (e) this.tintCell(e); } this.onChange(); }
   // Cells near the camera's target get every height point and the full texture splat; far ones go light.
   update(target) {
     const near = [];
@@ -235,9 +236,11 @@ export class TerrainMesh {
     }
     e.tex.needsUpdate = true;
   }
-  rebakeAll() {
-    for (const e of this.cells.values()) this.splatPaths(e);
-    for (const e of this.baked) this.bake(e);
+  // Paths drawn again on the land: everywhere, or only in the cells a box [x0, y0, x1, y1] (game units) touches.
+  rebakeAll(box = null) {
+    const s = this.t.size, hit = (e) => !box || !(box[2] < e.c.cell[0] * s || box[0] > (e.c.cell[0] + 1) * s || box[3] < e.c.cell[1] * s || box[1] > (e.c.cell[1] + 1) * s);
+    for (const e of this.cells.values()) if (hit(e)) this.splatPaths(e);
+    for (const e of this.baked) if (hit(e)) this.bake(e);
     this.onChange();
   }
   // Far cells show paths in their vertex colours.
