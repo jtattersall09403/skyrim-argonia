@@ -112,12 +112,30 @@ def bundle_stamp(cfg: Config, bundle_id: str) -> dict | None:
     return json.loads(bj.read_text(encoding="utf-8")).get("stamp")
 
 
+async def fresh_draft(app: web.Application, pid: str) -> str | None:
+    """Rebuild draft.<pid> when its key is stale (off the event loop; concurrent callers wait on one build).
+    Returns an error message, or None."""
+    from tools.places import draft_bundle
+    cfg: Config = app["cfg"]
+    if not (cfg.places / pid / "spaces").exists():
+        return None
+    loop = asyncio.get_running_loop()
+    async with app["draft_locks"].setdefault(pid, asyncio.Lock()):
+        try:
+            await loop.run_in_executor(None, draft_bundle.build, pid, cfg.places, cfg.out / "bundles")
+        except Exception as e:  # a half-written redraft: show the last good bundle and say why
+            print(f"draft bundle {pid}: {e!r}", flush=True)
+            return f"the draft bundle could not be rebuilt: {e}"
+    return None
+
+
 async def places(req: web.Request) -> web.Response:
     cfg: Config = req.app["cfg"]
     titles = place_titles()
     out = []
     for pj in sorted(cfg.places.glob("*/place.json")):
         pid = pj.parent.name
+        draft_error = await fresh_draft(req.app, pid)
         draft = bundle_stamp(cfg, f"draft.{pid}")
         if draft is None and not (pj.parent / "spaces").exists():
             continue
@@ -125,7 +143,9 @@ async def places(req: web.Request) -> web.Response:
         out.append({"place_id": pid, "title": titles.get(pid) or pl.get("title") or pid,
                     "source_id": pl.get("source_id"), "similar": pl.get("similar") or [],
                     "stamps": {"draft": draft, "ground": bundle_stamp(cfg, f"ground.{pid}"),
-                               "source": bundle_stamp(cfg, f"src.{pl.get('source_id')}")}})
+                               "source": bundle_stamp(cfg, f"src.{pl.get('source_id')}")},
+                    "fit": pl.get("fit"), **({"needs_look": pl["needs_look"]} if "needs_look" in pl else {}),
+                    **({"draft_error": draft_error} if draft_error else {})})
     return jok(out)
 
 
@@ -134,6 +154,8 @@ async def bundle_file(req: web.Request) -> web.StreamResponse:
     bid = req.match_info["bundle_id"]
     if not RUN_ID.match(bid):
         return jerr(400, "bad bundle id")
+    if bid.startswith("draft.") and req.match_info["path"] == "bundle.json":
+        await fresh_draft(req.app, bid[len("draft."):])
     p = inside(cfg.out / "bundles" / bid, req.match_info["path"])
     return await send_file(req, p) if p else jerr(404, "no such bundle file")
 
@@ -441,6 +463,7 @@ def make_app(cfg: Config | None = None) -> web.Application:
     cfg = cfg or Config()
     app = web.Application(middlewares=[errors], client_max_size=64 * 1024 * 1024)
     app["cfg"], app["saves"] = cfg, Saves(cfg.places, cfg.out)
+    app["draft_locks"] = {}
     app["locks"], app["pending"], app["bucket_q"] = {}, {}, {}
     app["commit_q"] = asyncio.Queue()
     app["sha"] = git_sha()

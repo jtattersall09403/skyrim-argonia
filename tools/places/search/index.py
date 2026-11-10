@@ -58,10 +58,14 @@ def base_kind(b: dict) -> str:
 
 
 def base_text(b: dict) -> str:
+    """What is embedded: the catalogue's plain-English descriptor (`text`) with a gloss of modders' words; a base
+    without one (a bundle's bases) gets the same built from its own fields."""
     model = (b.get("model") or "").rsplit(".", 1)[0]
     found = set(words(b.get("edid"))) | set(words(b.get("name"))) | set(words(model.split("/")[-1]))
-    gloss = sorted({g for w in found for k, g in GLOSS.items() if k in w})
-    parts = [", ".join(gloss), b.get("name") or "", " ".join(words(b.get("edid"))), TYPE_WORDS.get(b.get("type", ""), ""),
+    gloss = ", ".join(sorted({g for w in found for k, g in GLOSS.items() if k in w}))
+    if b.get("text"):
+        return ". ".join(p for p in (gloss, b["text"]) if p)
+    parts = [gloss, b.get("name") or "", " ".join(words(b.get("edid"))), TYPE_WORDS.get(b.get("type", ""), ""),
              " ".join(words(model.replace("/", " "))), " ".join(words(" ".join(b.get("keywords") or [])))]
     return ". ".join(p for p in parts if p)
 

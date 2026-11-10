@@ -147,3 +147,69 @@ def test_load_burst(env):
         assert all(r.status == 200 for r in res)
         assert time.perf_counter() - t < 10
     run(env, body)
+
+
+def _draft_fixture(t: Path):
+    """A source with a shared interior of two rooms, and a place copying one room with a change, a removal and an
+    addition; returns (places, bundles)."""
+    bundles, places = t / "bundles", t / "places"
+    src, ground = bundles / "src.fx.village", bundles / "ground.fxd"
+    ref = lambda i, x, kind="static": {"id": f"Fx.esm:{i:06X}", "base": "Fx.esm:000800", "kind": kind,  # noqa: E731
+                                       "pos": [x, 0, 0], "rot": [0, 0, 0], "scale": 1.0, "layer": "place"}
+    rows = [ref(1, 0), ref(2, 500), ref(3, 900), ref(4, 5000), ref(5, 5100), ref(6, 100, "actor")]
+    for b, meta in ((src, {"bundle_id": "src.fx.village", "stamp": {"inputs": {"a": "1"}}}),
+                    (ground, {"bundle_id": "ground.fxd", "anchor": [0, 0, 0], "stamp": {"inputs": {"g": "1"}}})):
+        b.mkdir(parents=True)
+        (b / "bundle.json").write_text(json.dumps(meta))
+        (b / "bases.jsonl").write_text(json.dumps({"key": "Fx.esm:000800", "edid": "FxThing"}) + "\n")
+    (src / "spaces" / "Hall").mkdir(parents=True)
+    (src / "spaces" / "Hall" / "refs.jsonl").write_text("".join(json.dumps(r) + "\n" for r in rows))
+    p = places / "fxd"
+    (p / "spaces" / "exterior").mkdir(parents=True)
+    (p / "spaces" / "Hall.2").mkdir(parents=True)
+    (p / "place.json").write_text(json.dumps({"place_id": "fxd", "source_id": "fx.village", "fit": {"dx": 1},
+                                              "needs_look": [{"what": "door facing"}]}))
+    (p / "spaces" / "exterior" / "refs.jsonl").write_text(json.dumps(ref(9, 1) | {"id": "fxd.a"}) + "\n")
+    (p / "spaces" / "Hall.2" / "space.json").write_text(json.dumps({"copy_of": "fx.village/Hall", "room": "Fx.esm:000001",
+                                                                   "future_field": 1}))
+    (p / "spaces" / "Hall.2" / "refs.jsonl").write_text("".join(json.dumps(r) + "\n" for r in [
+        {"id": "fxd.m", "src": "Fx.esm:000002", "pos": [600, 0, 0]}, {"id": "fxd.r", "src": "Fx.esm:000003", "removed": True},
+        {"id": "fxd.out", "src": "Fx.esm:000004", "pos": [1, 1, 1]}, ref(10, 50) | {"id": "fxd.new"}]))
+    (p / "people.jsonl").write_text(json.dumps({"id": "fxd.p1", "routine": []}) + "\n")
+    return places, bundles
+
+
+def test_draft_bundle_resolves_and_rebuilds_when_stale(tmp_path):
+    from tools.places import draft_bundle as db
+    places, bundles = _draft_fixture(tmp_path)
+    r = db.build("fxd", places, bundles)
+    assert r["rebuilt"] and not db.build("fxd", places, bundles)["rebuilt"]
+    d = bundles / "draft.fxd"
+    hall = {x["id"]: x for x in db.jsonl(d / "spaces" / "Hall.2" / "refs.jsonl")}
+    assert set(hall) == {"Fx.esm:000001", "fxd.m", "fxd.new"}  # room kept, change applied, removed and outside dropped
+    assert hall["fxd.m"]["pos"] == [600, 0, 0] and hall["fxd.m"]["base"] == "Fx.esm:000800"
+    sp = json.loads((d / "spaces" / "Hall.2" / "space.json").read_text())
+    assert sp["type"] == "interior" and sp["future_field"] == 1
+    assert len(db.jsonl(d / "people.jsonl")) == 1 and json.loads((d / "bundle.json").read_text())["kind"] == "draft"
+    (places / "fxd" / "people.jsonl").write_text("")
+    assert db.stale("fxd", places, bundles) and db.build("fxd", places, bundles)["rebuilt"]
+
+
+def test_places_rebuilds_draft_and_carries_fit(tmp_path, monkeypatch):
+    places, bundles = _draft_fixture(tmp_path)
+    monkeypatch.setenv("PLACES_OUT", str(tmp_path))
+    monkeypatch.setenv("PLACES_DIR", str(places))
+    for k in ("STUDIO_COMMIT", "STUDIO_BUCKET_SYNC", "STUDIO_AWAKE"):
+        monkeypatch.setenv(k, "0")
+    monkeypatch.setenv("STUDIO_ZCACHE", str(tmp_path / "z"))
+
+    async def body(c):
+        rows = await asyncio.gather(*[c.get("/api/places") for _ in range(5)])
+        js = await rows[0].json()
+        assert js[0]["fit"] == {"dx": 1} and js[0]["needs_look"] == [{"what": "door facing"}]
+        k1 = js[0]["stamps"]["draft"]["key"]
+        (places / "fxd" / "paths.jsonl").write_text(json.dumps({"id": "p"}) + "\n")
+        bj = await (await c.get("/api/bundle/draft.fxd/bundle.json")).json()
+        assert bj["stamp"]["key"] != k1
+        assert (await c.get("/api/bundle/draft.fxd/paths.jsonl")).status == 200
+    run(None, body)
