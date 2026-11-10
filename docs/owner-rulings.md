@@ -323,3 +323,8 @@ added here the day they are made, with the date and the issue.
 - 2026-11-10 (in session, evening): travel. Fast travel from the map will be removed in time (not yet), so no
   place promises it. The place records' fast-travel promises are rewritten as promises about the travel network
   (boat, coach, rootworm), authored sensibly place by place, and delivered by the place build as a service.
+- 2026-11-10 (in session, evening): Helstrom's stock and record. (1) The drowned Third Era villages and their
+  boat-robbers come out of Helstrom's record. A city has no hostile occupants unless it has dungeon-like interiors
+  (a dangerous cellar, a sewer); no extra place, such as a whole village, sits inside a city's own extent. (2) The
+  levy wears BM&V's Argonian guard armour. (3) The smith carries and sells Argonian sword and armour: Helstrom is
+  the capital city and has good things. (4) The owner's statement tier ranks top, above canon.
