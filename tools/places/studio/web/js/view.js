@@ -1,6 +1,7 @@
 // One 3D view: a renderer, an orbit camera driven by touch, pen and mouse, the land, the things on it, and
 // the pointer routed to the active tool. Z is up throughout, as in the game.
 import * as THREE from 'three';
+import { drainReady } from './objects.js';
 
 THREE.Object3D.DEFAULT_UP.set(0, 0, 1);
 const TAP_MS = 350, TAP_PX = 10;
@@ -60,12 +61,13 @@ export class View {
   render(now) {
     if (!this.needs || !this.el.offsetWidth) return false;
     const t0 = performance.now();
+    const waiting = drainReady(this.renderer, this.objects || [], this.scene, this.camera);
     if (now - this.lastCull > 120 || this.objects?.some((o) => o._dirty)) {
       for (const o of this.objects || []) o.cull(this.camera); this.lastCull = now;
       this.needs = true;
     }
     this.renderer.render(this.scene, this.camera);
-    this.needs = !!this.objects?.some((o) => o._dirty);
+    this.needs = waiting > 0 || !!this.objects?.some((o) => o._dirty);
     const dt = performance.now() - t0; this.frameTimes.push(dt); if (this.frameTimes.length > 240) this.frameTimes.shift();
     return true;
   }

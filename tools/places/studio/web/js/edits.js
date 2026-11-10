@@ -37,7 +37,7 @@ export function modelFromFiles(files) {
     const rows = Array.isArray(sp) ? sp : sp.refs || [];
     m.spaces[sid] = { refs: new Map(rows.map((r) => [r.id, clone(r)])), space: Array.isArray(sp) ? null : clone(sp.space ?? null) };
   }
-  for (const c of files.clear || []) m.clear.set(vegKey(c), { base: c.base, pos: [...c.pos], by: c.by || 'draft' });
+  for (const c of files.clear || []) m.clear.set(vegKey(c), { ...clone(c), by: c.by || 'draft' });
   for (const p of files.land || []) {
     const k = p.cell.join(','), cm = m.land.get(k) || new Map();
     for (const [row, col, dz] of p.verts) cm.set(row * GRID + col, dz);
@@ -58,16 +58,27 @@ export function applyOp(m, op) {
   const sp = op.space || 'exterior';
   switch (op.op) {
     case 'ref.add': {
-      const s = space(m, sp); if (s.refs.has(op.ref.id)) conflict(op, `ref ${op.ref.id} already exists`);
+      if (op.space_copy_of && sp === 'exterior') conflict(op, 'space_copy_of names an interior, not the exterior');
+      const fresh = !m.spaces[sp], s = space(m, sp);
+      if (s.refs.has(op.ref.id)) conflict(op, `ref ${op.ref.id} already exists`);
+      if (op.space_copy_of && !fresh && (s.space || s.refs.size > 0)) conflict(op, `space ${sp} already exists; a copied room needs a new space id`);
       s.refs.set(op.ref.id, clone(op.ref));
-      if (op.space_copy_of && !s.space) s.space = { copy_of: op.space_copy_of, ...(op.space_name ? { name: op.space_name } : {}) };
+      if (op.space_copy_of) {
+        s.space = { space_id: sp, copy_of: op.space_copy_of, name: op.space_name || sp };
+        for (const [sid, other] of Object.entries(m.spaces))
+          for (const r of other.refs.values()) if (r.door?.to_space === sp) Object.assign(s.space, { door_from: r.id, parent: sid });
+      }
+      const target = m.spaces[op.ref.door?.to_space]?.space;
+      if (target?.copy_of && !target.door_from) Object.assign(target, { door_from: op.ref.id, parent: sp });
       break;
     }
     case 'ref.remove': {
       const s = space(m, sp), r = s.refs.get(op.id);
       if (!r) conflict(op, `ref ${op.id} is not in ${sp}`);
       if (!same(r, op.before)) conflict(op, `ref ${op.id} differs from the save's before`);
-      s.refs.delete(op.id); break;
+      s.refs.delete(op.id);
+      if (op.space_drop && s.refs.size === 0) delete m.spaces[sp];
+      break;
     }
     case 'ref.move': {
       const r = space(m, sp).refs.get(op.id);
@@ -78,7 +89,7 @@ export function applyOp(m, op) {
     }
     case 'veg.clear': {
       for (const it of op.items) if (m.clear.has(vegKey(it))) conflict(op, `plant ${it.base} at ${it.pos} is already cleared`);
-      for (const it of op.items) m.clear.set(vegKey(it), { base: it.base, pos: [...it.pos], by: it.by || 'owner' });
+      for (const it of op.items) m.clear.set(vegKey(it), { ...clone(it), by: it.by || 'owner' });
       break;
     }
     case 'veg.restore': {
@@ -106,12 +117,24 @@ export function applyOp(m, op) {
   }
 }
 
+// After a save's ops: every door added into one of the place's own spaces is paired (edits.py _check_doors).
+export function checkDoors(m, ops) {
+  for (const op of ops) {
+    const d = op.op === 'ref.add' && op.ref.door;
+    if (!d?.to_space || !m.spaces[d.to_space]?.space) continue;
+    const back = m.spaces[d.to_space].refs.get(d.to_ref);
+    if (back && back.door?.to_space === (op.space || 'exterior') && back.door?.to_ref === op.ref.id) continue;
+    if (!back && !ops.some((o) => o.op === 'ref.add' && o.space === d.to_space)) continue;
+    conflict(op, `door ${op.ref.id} leads to ${d.to_space}/${d.to_ref}, which does not lead back`);
+  }
+}
+
 // The op that undoes op (edits.py `inverse`).
 export function inverse(op) {
   const inv = clone(op);
   switch (op.op) {
-    case 'ref.add': inv.op = 'ref.remove'; inv.id = op.ref.id; inv.before = clone(op.ref); delete inv.ref; delete inv.space_copy_of; delete inv.space_name; break;
-    case 'ref.remove': inv.op = 'ref.add'; inv.ref = clone(op.before); delete inv.id; delete inv.before; break;
+    case 'ref.add': inv.op = 'ref.remove'; inv.id = op.ref.id; inv.before = clone(op.ref); delete inv.ref; if (op.space_copy_of) inv.space_drop = true; break;
+    case 'ref.remove': inv.op = 'ref.add'; inv.ref = clone(op.before); delete inv.id; delete inv.before; delete inv.space_drop; break;
     case 'ref.move': inv.before = clone(op.after); inv.after = clone(op.before); break;
     case 'veg.clear': inv.op = 'veg.restore'; break;
     case 'veg.restore': inv.op = 'veg.clear'; break;

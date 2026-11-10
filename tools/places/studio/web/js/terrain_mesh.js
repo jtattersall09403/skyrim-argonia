@@ -38,7 +38,9 @@ function fillTiled(ctx, img, x, y, w, h, fallback) {
   const tw = w / TILES, th = h / TILES;
   for (let i = 0; i < TILES; i++) for (let j = 0; j < TILES; j++) ctx.drawImage(img, x + i * tw, y + j * th, tw, th);
 }
-const hex = (h) => { const c = new THREE.Color(h); return [c.r, c.g, c.b]; };
+const HEX = new Map();
+const hex = (h) => { let v = HEX.get(h); if (!v) { const c = new THREE.Color(h); v = [c.r, c.g, c.b]; HEX.set(h, v); } return v; };
+const nextFrame = () => new Promise((r) => requestAnimationFrame(() => r()));
 const WATER = ['#3d6f78', '#4a6a5a', '#385f70', '#506b55', '#2f5f73'];
 function waterColour(type) { let h = 0; for (const ch of String(type)) h = (h * 31 + ch.charCodeAt(0)) >>> 0; return WATER[h % WATER.length]; }
 
@@ -52,9 +54,26 @@ export class TerrainMesh {
     for (let r = 0; r < g - 1; r += 2) for (let c = 0; c < g - 1; c += 2) { const i = r * g + c; this.coarse.push(i, i + 2, i + 2 * g, i + 2, i + 2 * g + 2, i + 2 * g); }
     this.farMat = new THREE.MeshLambertMaterial({ vertexColors: true });
   }
-  async build() {
+  // Cells nearest focus first, a few milliseconds a frame; resolves once the first `first` cells are drawn and
+  // carries on in the background (onChange after each slice, onProgress(done, total)).
+  async build({ focus = [0, 0], first = 80, onProgress = () => {} } = {}) {
+    const t = this.t, fx = focus[0] + this.origin[0], fy = focus[1] + this.origin[1];
+    const order = t.list.map((c) => [Math.hypot((c.cell[0] + 0.5) * t.size - fx, (c.cell[1] + 0.5) * t.size - fy), c])
+      .sort((a, b) => a[0] - b[0]).map(([, c]) => c);
+    let i = 0;
+    const slice = (ms) => { const t0 = performance.now(); while (i < order.length && performance.now() - t0 < ms) this.buildCell(order[i++]); onProgress(i, order.length); };
+    while (i < Math.min(first, order.length)) { slice(12); await nextFrame(); }
+    this.built = (async () => { while (i < order.length) { slice(8); this.onChange(); await nextFrame(); } this.onChange(); })();
+    return this;
+  }
+  waterMat(colour) {
+    this._waterMats = this._waterMats || new Map();
+    if (!this._waterMats.has(colour)) this._waterMats.set(colour, new THREE.MeshLambertMaterial({ color: colour, transparent: true, opacity: 0.6, depthWrite: false }));
+    return this._waterMats.get(colour);
+  }
+  buildCell(c) {
     const t = this.t, g = t.grid;
-    for (const c of t.list) {
+    {
       const geo = new THREE.BufferGeometry();
       const pos = new Float32Array(g * g * 3), uv = new Float32Array(g * g * 2);
       for (let r = 0; r < g; r++) for (let col = 0; col < g; col++) {
@@ -72,15 +91,14 @@ export class TerrainMesh {
       const e = { c, mesh, geo, lod: 'far', centre: [(c.cell[0] + 0.5) * t.size - this.origin[0], (c.cell[1] + 0.5) * t.size - this.origin[1]] };
       this.cells.set(c.cell.join(','), e);
       this.splatColours(e); this.updateHeights(e);
+      if (this.pathsSet) this.splatPaths(e); else this.tintCell(e);
       if (c.water) {
-        const w = new THREE.Mesh(new THREE.PlaneGeometry(t.size, t.size), new THREE.MeshLambertMaterial({
-          color: c.water.colour || waterColour(c.water.type), transparent: true, opacity: 0.6, depthWrite: false }));
+        this._waterGeo = this._waterGeo || new THREE.PlaneGeometry(t.size, t.size);
+        const w = new THREE.Mesh(this._waterGeo, this.waterMat(c.water.colour || waterColour(c.water.type)));
         w.position.set(e.centre[0], e.centre[1], c.water.height - this.origin[2]);
         w.renderOrder = 2; w.userData.water = c.water; this.water.add(w);
       }
     }
-    this.tint();
-    return this;
   }
   // Far away: each vertex the blend of its quadrant's texture average colours, times the land's vertex colours.
   splatColours(e) {
@@ -139,7 +157,7 @@ export class TerrainMesh {
     e.mesh.material = this.farMat; e.geo.setIndex(this.coarse); e.lod = 'far';
     e.tex?.dispose(); e.mat?.dispose(); e.canvas = null; e.tex = null; e.mat = null; this.baked.delete(e); this.tintCell(e);
   }
-  setPathStyles(styles) { this.pathStyles = styles; this.rebakeAll(); }
+  setPathStyles(styles) { this.pathStyles = styles; this.pathsSet = true; this.rebakeAll(); }
   // Texture layers, then paths over the land as the game will dress them.
   bake(e) {
     if (!e.canvas) return;
@@ -188,14 +206,19 @@ export class TerrainMesh {
   splatPaths(e) {
     if (!e.baseColour) return;
     const g = this.t.grid, col = e.geo.attributes.color.array; col.set(e.baseColour);
-    const x0 = e.c.cell[0] * this.t.size, y0 = e.c.cell[1] * this.t.size;
+    const st0 = this.t.step, x0 = e.c.cell[0] * this.t.size, y0 = e.c.cell[1] * this.t.size, x1 = x0 + this.t.size, y1 = y0 + this.t.size;
     for (const p of this.paths()) {
-      const st = this.pathStyles[p.style] || {}, rgb = hex(st.colour || (this.lt ? this.lt.avg(st.tex, this.t.ltex) : '#6e5a41'));
-      for (let r = 0; r < g; r++) for (let c = 0; c < g; c++) {
-        const x = x0 + c * this.t.step, y = y0 + r * this.t.step;
-        let near = false;
-        for (let i = 1; i < p.points.length && !near; i++) near = segD(x, y, p.points[i - 1], p.points[i]) < p.width / 2;
-        if (near) col.set(rgb, (r * g + c) * 3);
+      const hw = p.width / 2;
+      let rgb = null;
+      // only the grid points inside each segment's box, and only segments that reach this cell
+      for (let i = 1; i < p.points.length; i++) {
+        const a = p.points[i - 1], b = p.points[i];
+        const sx0 = Math.min(a[0], b[0]) - hw, sx1 = Math.max(a[0], b[0]) + hw, sy0 = Math.min(a[1], b[1]) - hw, sy1 = Math.max(a[1], b[1]) + hw;
+        if (sx1 < x0 || sx0 > x1 || sy1 < y0 || sy0 > y1) continue;
+        if (!rgb) { const st = this.pathStyles[p.style] || {}; rgb = hex(st.colour || (this.lt ? this.lt.avg(st.tex, this.t.ltex) : '#6e5a41')); }
+        const c0 = Math.max(0, Math.ceil((sx0 - x0) / st0)), c1 = Math.min(g - 1, Math.floor((sx1 - x0) / st0));
+        const r0 = Math.max(0, Math.ceil((sy0 - y0) / st0)), r1 = Math.min(g - 1, Math.floor((sy1 - y0) / st0));
+        for (let r = r0; r <= r1; r++) for (let c = c0; c <= c1; c++) if (segD(x0 + c * st0, y0 + r * st0, a, b) < hw) col.set(rgb, (r * g + c) * 3);
       }
     }
     e.farColour = Float32Array.from(col); this.tintCell(e);

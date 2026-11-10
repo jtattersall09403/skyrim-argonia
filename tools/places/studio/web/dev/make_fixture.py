@@ -242,11 +242,14 @@ def write_bundle(root, bid, kind, title, anchor, cells, ext_refs, int_refs, base
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("out", nargs="?", default=str(Path(__file__).parent / "fixture-out"))
-    out = Path(ap.parse_args().out)
+    ap.add_argument("--big", action="store_true", help="ground at real-data scale: 31 x 31 cells, 37,000 world refs")
+    args = ap.parse_args()
+    out = Path(args.out)
     rng = random.Random(7)
     root = out / "bundles"
 
-    gcells = [[0, 0], [1, 0], [0, 1], [1, 1]]
+    side = 31 if args.big else 2
+    gcells = [[x, y] for y in range(side) for x in range(side)]
     scells = [[10, 10], [11, 10], [10, 11], [11, 11]]
     sb = Bases()
     srefs, back, snpcs = source_refs(sb, rng, scells, "src", 6, 2)
@@ -264,10 +267,11 @@ def main():
     for cx, cy in gcells_t:
         heights_all += heights(cx, cy, 1.0, "y")
     n = 0
+    mult = 120 if args.big else 1
     for kind, cnt, nm in kinds:
         base = gb.get(nm, kind)
-        for _ in range(cnt):
-            x, y = rng.random() * 2 * CELL, rng.random() * 2 * CELL
+        for _ in range(cnt * mult):
+            x, y = rng.random() * side * CELL, rng.random() * side * CELL
             grefs.append(ref(f"g{n}", base, kind, [x, y, h_at(heights_all, gcells, x, y)], [0, 0, rng.random() * 6.28],
                              0.8 + rng.random() * 0.5, layer="world"))
             n += 1
@@ -315,6 +319,7 @@ def main():
                     nr["door"]["to_pos"] = nd["pos"]
             dint[sid].append(nr)
     dnpcs = list(snpcs)
+    door0 = next(r for r in drefs if r.get("door"))
     dd = root / "draft.fixplace"
     write_bundle(root, "draft.fixplace", "draft", "Fixture place draft", [0, 0, 0], gcells, drefs, dint, sb,
                  (1.0, "y", "river"), dnpcs, {"stamp": {"key": hashlib.sha256(b"draft" + gsha.encode()).hexdigest()[:16],
@@ -342,8 +347,11 @@ def main():
     ]
     jlines(dd / "people.jsonl", people)
     jlines(dd / "paths.jsonl", [{"id": "fixplace.path1", "kind": "street",
-                                 "points": [[2000, 2000], [3000, 2600], [4200, 3000], [5200, 4200]], "width": 200, "style": "fix_path"}])
-    jlines(dd / "clear.jsonl", [{"base": gb.rows["Fix_Fern"]["key"], "pos": [grefs[200]["pos"][0], grefs[200]["pos"][1], 0], "by": "draft"}])
+                                 "points": [[2000, 2000], [3000, 2600], [4200, 3000], [5200, 4200]], "width": 200, "style": "fix_path"},
+                                {"id": "fixplace.walk1", "kind": "walkway", "points": [[2400, 4600], [3400, 4800]], "width": 160,
+                                 "style": "boardwalk"}])
+    jlines(dd / "clear.jsonl", [{"base": gb.rows["Fix_Fern"]["key"], "pos": [grefs[200]["pos"][0], grefs[200]["pos"][1], 0], "by": "draft",
+                                 "why": "street", "ref": grefs[200]["id"]}])
     jlines(dd / "land.jsonl", [{"cell": [0, 0], "verts": [[16, 16, 60.0], [16, 17, 40.0]], "textures": None, "why": "level the smithy"}])
 
     # hamlet: tiny source
@@ -356,7 +364,9 @@ def main():
                  (3.0, None, "lake"))
 
     jwrite(out / "place.json", {"place_id": "fixplace", "title": "Fixture place", "source_id": "fix.village",
-                                "similar": ["fix.hamlet"], "fit": fit})
+                                "similar": ["fix.hamlet"], "fit": fit,
+                                "needs_look": [{"door": door0["id"], "src": door0["src"], "base": door0["base"], "space": door0["door"]["to_space"],
+                                                "at": door0["pos"][:2], "why": "replacement door: which face is its front cannot be read"}]})
     print(f"fixture written to {out}")
 
 

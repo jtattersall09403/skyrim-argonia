@@ -36,8 +36,15 @@ class Studio {
     const want = new URLSearchParams(location.search).get('place') || this.places[0].place_id;
     sel.value = want; sel.onchange = () => this.openPlace(sel.value);
     this.heartbeat(); this.statusCheck();
-    await this.openPlace(want);
+    // the guide shows while the place loads, and can be put away at once
     if (!store.get('studio.intro.v1')) this.panels.intro();
+    await this.openPlace(want);
+  }
+  // A calm line under the views while the rest of the place streams in; gone when it is all there.
+  progress(what, n, of) {
+    const el = $('#progress'); if (!el) return;
+    el.hidden = n >= of; el.querySelector('span').textContent = `${what}: ${Math.round((100 * n) / of)}%`;
+    el.querySelector('i').style.width = `${(100 * n) / of}%`;
   }
   loading(text) { const l = $('#loading'); if (text === false) { l.hidden = true; return; } l.hidden = false; $('#loading-text').textContent = text; }
   async openPlace(id) {
@@ -45,7 +52,7 @@ class Studio {
     this.place = this.places.find((p) => p.place_id === id); this.placeFit = normaliseFit(this.place.fit);
     this.loading(`Loading ${this.place.title || id}: the ground`);
     this.landTex = this.landTex || await new LandTex().init();
-    const [ground, draft] = await Promise.all([loadBundle(`ground.${id}`), loadBundle(`draft.${id}`, { extras: true, optional: true })]);
+    const [ground, draft] = await Promise.all([loadBundle(`ground.${id}`), loadBundle(`draft.${id}`, { extras: true, optional: true, terrain: false })]);
     this.ground = ground; this.draft = draft || emptyDraft(id);
     if (!draft) this.toast('This place has no draft yet: you see our ground with nothing placed on it.', 6000);
     this.bases = new Map([...ground.bases, ...this.draft.bases]); this.npcs = new Map([...ground.npcs, ...this.draft.npcs]);
@@ -61,7 +68,9 @@ class Studio {
     this.ours.origin = origin;
     this.ours.world = new ObjectLayer(origin, this.bases); this.ours.place = new ObjectLayer(origin, this.bases);
     this.loading('Drawing the land');
-    this.ours.terrainMesh = this.terrain ? await new TerrainMesh(this.terrain, origin, { paths: () => [...this.model.paths.values()], landTex: this.landTex }).build() : null;
+    const focus = focusOf([...(this.model.spaces.exterior?.refs.values() || [])], origin, this.ground.meta.place);
+    this.ours.terrainMesh = this.terrain ? await new TerrainMesh(this.terrain, origin, { paths: () => [...this.model.paths.values()], landTex: this.landTex })
+      .build({ focus, onProgress: (n, of) => this.progress('Drawing the land', n, of) }) : null;
     if (this.ours.terrainMesh) this.ours.terrainMesh.onChange = () => this.ours.view.redraw();
     // sources: the allocated one first, then the similar places
     const srcSel = $('#source-pick'); srcSel.innerHTML = '';
@@ -70,6 +79,8 @@ class Studio {
     srcSel.onchange = () => this.openSource(srcSel.value);
     await this.openSource(this.place.source_id);
     this.showSpace(this.ours, 'exterior', true);
+    const looks = this.place.needs_look || [];
+    $('#look-btn').hidden = !looks.length; $('#look-btn .look-n').textContent = looks.length;
     this.loadMs = Math.round(performance.now() - t0);
     this.loading(false);
     await this.panels.resumeAutosave();
@@ -84,7 +95,8 @@ class Studio {
     const s = this.src, terr = this.srcBundle.spaces.exterior?.terrain;
     s.origin = this.srcBundle.meta.anchor ? this.srcBundle.meta.anchor.map(Math.round) : [0, 0, 0];
     s.terrain = terr; s.layer = new ObjectLayer(s.origin, this.srcBases);
-    s.terrainMesh = terr ? await new TerrainMesh(terr, s.origin, { landTex: this.landTex }).build() : null;
+    s.terrainMesh = terr ? await new TerrainMesh(terr, s.origin, { landTex: this.landTex })
+      .build({ focus: focusOf(this.srcBundle.spaces.exterior?.refs || [], s.origin) }) : null;
     if (s.terrainMesh) s.terrainMesh.onChange = () => s.view.redraw();
     this.pathStyles = this.derivePathStyles();
     this.ours.terrainMesh?.setPathStyles(this.pathStyles); this.ours.terrainMesh?.update(this.ours.view.rig.target); s.terrainMesh?.update(s.view.rig.target);
@@ -103,7 +115,11 @@ class Studio {
       Object.assign(this.ltexAll || (this.ltexAll = {}), terr.ltex);
     }
     if (!Object.keys(out).length) out.path = { tex: null, colour: '#7a6446', label: 'Dirt path' };
-    for (const p of this.model.paths.values()) if (!out[p.style]) out[p.style] = { tex: this.terrain?.ltex[p.style] ? p.style : null, colour: '#7a6446', label: plainTexName(this.terrain?.ltex[p.style]?.edid || p.style) };
+    for (const p of this.model.paths.values()) {
+      if (out[p.style]) continue;
+      const word = STYLE_WORD[p.style];
+      out[p.style] = { tex: this.terrain?.ltex[p.style] ? p.style : null, colour: word?.colour || '#7a6446', label: word?.label || plainTexName(this.terrain?.ltex[p.style]?.edid || p.style) };
+    }
     return out;
   }
   // Without a fit in place.json, the source's anchor lands on ours.
@@ -129,7 +145,11 @@ class Studio {
       if (side.returnRig) { Object.assign(v.rig, side.returnRig); v.rig.target = side.returnRig.target.clone(); side.returnRig = null; v.changed(); }
       else {
         const pr = refs.filter((r) => r.layer !== 'world'), core = pr.filter((r) => ['building', 'door', 'furniture', 'container'].includes(r.kind));
-        if (pr.length) v.frame(boxOf(core.length ? core : pr, 0.1));
+        // the town's middle (the median of its buildings and doors), close enough that the real models show
+        if (pr.length) {
+          const [fx, fy] = focusOf(pr, [0, 0, 0]), z = side.terrain?.heightAt?.(fx, fy) ?? (side === this.ours ? this.terrain?.heightAt(fx, fy) : null) ?? boxOf(pr)[4];
+          v.rig.pitch = 0.75; v.frame([fx - 2400, fy - 2400, fx + 2400, fy + 2400, z]);
+        }
         else if (side === this.ours) {
           const pl = this.ground.meta.place, c = pl ? [pl.world_x, pl.world_y] : side.origin;
           v.frame([c[0] - 6000, c[1] - 6000, c[0] + 6000, c[1] + 6000, this.terrain?.heightAt(c[0], c[1]) ?? 0]);
@@ -138,6 +158,16 @@ class Studio {
     }
     if (!interior) side.terrainMesh?.update(v.rig.target);
     this.crumbs(side); this.people.refresh();
+  }
+  // Fly our view to a needs_look row: outside, framed close on the door, the door selected.
+  flyTo(n) {
+    const side = this.ours;
+    if (side.space !== 'exterior') { side.trail = []; this.showSpace(side, 'exterior'); }
+    const ref = this.model.spaces.exterior?.refs.get(n.door);
+    const [x, y] = ref ? ref.pos : n.at, z = ref ? this.seated(ref).pos[2] : this.terrain?.heightAt(x, y) ?? 0;
+    side.view.rig.pitch = 0.45; side.view.frame([x - 500, y - 500, x + 500, y + 500, z]);
+    side.terrainMesh?.update(side.view.rig.target);
+    if (ref) { this.selection.clear(); this.selection.add(ref.id); this.tools.selectionChanged(); }
   }
   enter(side, door) {
     const to = door.door?.to_space; if (!to) return;
@@ -183,7 +213,8 @@ class Studio {
   isCleared(r) { return this.model.clear.has(vegKey(r)); }
   underPath(r) {
     for (const p of this.model.paths.values()) {
-      const w = p.width / 2 + 40;
+      const w = p.width / 2 + 40, bb = pathBox(p);
+      if (r.pos[0] < bb[0] - w || r.pos[0] > bb[2] + w || r.pos[1] < bb[1] - w || r.pos[1] > bb[3] + w) continue;
       for (let i = 1; i < p.points.length; i++) if (segDist(r.pos, p.points[i - 1], p.points[i]) < w) return true;
     }
     return false;
@@ -275,6 +306,7 @@ class Studio {
   wireChrome() {
     $('#undo').onclick = () => this.log?.undo(); $('#redo').onclick = () => this.log?.redo();
     $('#finalise-btn').onclick = () => this.panels.finalise();
+    $('#look-btn').onclick = () => this.panels.lookPanel();
     $('#link').onclick = (e) => { this.linked = !this.linked; e.currentTarget.setAttribute('aria-pressed', this.linked); if (this.linked) this.cameraMoved(this.ours.view); };
     $('#swap').onclick = () => { const v = $('#views'); v.dataset.swapped = v.dataset.swapped === 'true' ? 'false' : 'true'; };
     document.querySelectorAll('.view .fs').forEach((b) => { b.onclick = () => { const v = b.closest('.view'); v.classList.toggle('full'); b.setAttribute('aria-pressed', v.classList.contains('full')); }; });
@@ -351,6 +383,24 @@ function boxOf(refs, trim = 0) {
   const q = (k) => { const a = refs.map((r) => r.pos[k]).sort((x, y) => x - y), i = Math.floor(trim * (a.length - 1)); return [a[i], a[a.length - 1 - i]]; };
   const [x0, x1] = q(0), [y0, y1] = q(1), zs = refs.map((r) => r.pos[2]);
   return [x0, y0, x1, y1, zs.reduce((s, v) => s + v, 0) / zs.length, Math.min(...zs)];
+}
+// The draft's style words for paths (paths.jsonl `style` when it is not a land texture key).
+const STYLE_WORD = { boardwalk: { colour: '#8b6b47', label: 'Wooden boards' }, dirt: { colour: '#7a6446', label: 'Dirt' },
+  mud: { colour: '#5f4d38', label: 'Mud' }, gravel: { colour: '#8d8678', label: 'Gravel' }, stone: { colour: '#80796d', label: 'Stone' } };
+const PATH_BOX = new WeakMap();
+const pathBox = (p) => { let b = PATH_BOX.get(p); if (!b) PATH_BOX.set(p, (b = boxOfPoints(p.points))); return b; };
+function boxOfPoints(pts) {
+  const b = [Infinity, Infinity, -Infinity, -Infinity];
+  for (const [x, y] of pts) { b[0] = Math.min(b[0], x); b[1] = Math.min(b[1], y); b[2] = Math.max(b[2], x); b[3] = Math.max(b[3], y); }
+  return b;
+}
+// Where the land is drawn first: the middle (median) of the place's own buildings and doors, in view coordinates.
+function focusOf(refs, origin, pl) {
+  const core = refs.filter((r) => r.layer !== 'world' && ['building', 'door', 'furniture'].includes(r.kind));
+  const use = core.length ? core : refs.filter((r) => r.layer !== 'world');
+  if (!use.length) return pl ? [pl.world_x - origin[0], pl.world_y - origin[1]] : [0, 0];
+  const med = (a) => a.sort((x, y) => x - y)[a.length >> 1];
+  return [med(use.map((r) => r.pos[0])) - origin[0], med(use.map((r) => r.pos[1])) - origin[1]];
 }
 // place.json's fit: one transform, or per cluster (the first is the place's main frame).
 function normaliseFit(f) {

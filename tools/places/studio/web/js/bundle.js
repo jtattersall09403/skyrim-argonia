@@ -1,7 +1,18 @@
 // A bundle loaded from /api/bundle/<id>/: bases, actor bases, spaces with refs and (exteriors) terrain.
-import { getJSON, getJsonl, getBuffer } from './api.js';
+import { getJSON, getJsonl, API_BASE } from './api.js';
+import { normaliseCell } from './terrain_cells.js';
 
-export async function loadBundle(id, { extras = false, optional = false, onProgress = () => {} } = {}) {
+let worker = null, seq = 0; const waiting = new Map();
+function terrainOffThread(path) {
+  if (!worker) {
+    worker = new Worker(new URL('./terrain_worker.js', import.meta.url), { type: 'module' });
+    worker.onmessage = ({ data }) => { const w = waiting.get(data.id); waiting.delete(data.id); w(data); };
+  }
+  const id = ++seq, abs = (p) => new URL(API_BASE + p, location.href).href;
+  return new Promise((res) => { waiting.set(id, res); worker.postMessage({ id, jsonUrl: abs(path + 'terrain.json'), f32Url: abs(path + 'terrain.f32') }); });
+}
+
+export async function loadBundle(id, { extras = false, optional = false, terrain = true, onProgress = () => {} } = {}) {
   const at = `/bundle/${id}/`;
   const meta = await getJSON(at + 'bundle.json', { optional });
   if (!meta) return null;
@@ -13,9 +24,10 @@ export async function loadBundle(id, { extras = false, optional = false, onProgr
     const p = `${at}spaces/${encodeURIComponent(sid)}/`;
     const [space, refs] = await Promise.all([getJSON(p + 'space.json', { optional: true }), getJsonl(p + 'refs.jsonl', { optional: true })]);
     const s = { id: sid, info: space || { space_id: sid, type: sid === 'exterior' ? 'exterior' : 'interior' }, refs };
-    if (s.info.type === 'exterior') {
-      const [tj, tf] = await Promise.all([getJSON(p + 'terrain.json', { optional: true }), getBuffer(p + 'terrain.f32', { optional: true })]);
-      if (tj && tf) s.terrain = new Terrain(tj, new Float32Array(tf));
+    if (s.info.type === 'exterior' && terrain) {
+      const t = await terrainOffThread(p);
+      if (t.error) throw new Error(`terrain of ${id}: ${t.error}`);
+      if (!t.none) s.terrain = new Terrain(t.json, new Float32Array(t.f32), t.list);
     }
     b.spaces[sid] = s;
   }
@@ -29,11 +41,11 @@ export async function loadBundle(id, { extras = false, optional = false, onProgr
 
 // Heights of an exterior on the game's grid: cells of 33x33 points, 128 units apart.
 export class Terrain {
-  constructor(json, f32) {
+  constructor(json, f32, list = null) {
     this.json = json; this.f32 = f32; this.size = json.cell_size || 4096; this.grid = json.grid || 33;
     this.step = this.size / (this.grid - 1); this.ltex = json.ltex || {};
     const n = this.grid * this.grid;
-    this.list = json.cells.map((c) => normaliseCell(c, n));
+    this.list = list || json.cells.map((c) => normaliseCell(c, n));
     this.cells = new Map(this.list.map((c) => [c.cell.join(','), c]));
     this.override = null; // Map "cx,cy" -> Map(idx -> dz): the edit model's land patches
   }
@@ -95,23 +107,25 @@ export class Terrain {
 }
 
 // Where a ref sits for its seat rule, from the loaded ground and its patches: tools/places/seat.py `seat_z`.
-function footPoints(x, y, rz, foot) {
+// foot is [x0, y0, x1, y1] in the ref's own frame (or the older [hx, hy], centred), sampled 5 x 5.
+function footPoints(x, y, rz, foot, n = 5) {
   if (!foot) return [[x, y]];
-  const [hx, hy] = foot, c = Math.cos(rz), s = Math.sin(rz), pts = [];
-  for (let i = 0; i < 3; i++) for (let j = 0; j < 3; j++) {
-    const u = -hx + hx * i, v = -hy + hy * j; // Skyrim's yaw turns clockwise seen from above
+  const [x0, y0, x1, y1] = foot.length === 2 ? [-foot[0], -foot[1], foot[0], foot[1]] : foot;
+  const c = Math.cos(rz), s = Math.sin(rz), pts = [];
+  for (let i = 0; i < n; i++) for (let j = 0; j < n; j++) {
+    const u = x0 + ((x1 - x0) * i) / (n - 1), v = y0 + ((y1 - y0) * j) / (n - 1); // Skyrim's yaw turns clockwise seen from above
     pts.push([x + u * c + v * s, y - u * s + v * c]);
   }
   return pts;
 }
-function footGround(t, x, y, rz, foot, stilts) {
-  let lo = null;
+function footGround(t, x, y, rz, foot, stilts, high = false) {
+  let out = null;
   for (const [px, py] of footPoints(x, y, rz, foot)) {
     let h = t.heightAt(px, py); if (h == null) continue;
     if (stilts) { const w = t.waterAt(px, py); if (w != null) h = Math.max(h, w); }
-    lo = lo == null ? h : Math.min(lo, h);
+    out = out == null ? h : high ? Math.max(out, h) : Math.min(out, h);
   }
-  return lo;
+  return out;
 }
 export function seatZ(terrain, ref, refsById) {
   const s = ref.seat, mode = s?.mode || 'free';
@@ -120,6 +134,7 @@ export function seatZ(terrain, ref, refsById) {
   let base = null;
   if (mode === 'ground') base = footGround(terrain, x, y, rz, s.foot, false);
   else if (mode === 'stilts') base = footGround(terrain, x, y, rz, s.foot, true);
+  else if (mode === 'clear') base = footGround(terrain, x, y, rz, s.foot, false, true);
   else if (mode === 'above') base = terrain.heightAt(x, y);
   else if (mode === 'water') base = terrain.waterAt(x, y) ?? terrain.heightAt(x, y);
   else if (mode === 'on') { const sup = refsById?.get(s.on); if (!sup) return ref.pos[2]; base = sup.pos[2]; }
@@ -127,20 +142,3 @@ export function seatZ(terrain, ref, refsById) {
   return Math.round((base + (s.dz || 0)) * 1000) / 1000;
 }
 
-const QUAD = { BottomLeft: 0, BottomRight: 1, TopLeft: 2, TopRight: 3 };
-function b64(s) { const bin = atob(s), out = new Uint8Array(bin.length); for (let i = 0; i < bin.length; i++) out[i] = bin.charCodeAt(i); return out; }
-// One cell as the drawing code wants it: heights offset, water (none at the game's "no water" height),
-// four quadrants (SW, SE, NW, NE) each a base land texture and alpha layers of 17x17 opacities, vertex colours.
-function normaliseCell(c, n) {
-  const water = c.water && c.water.height < 1e30 ? c.water : null;
-  const out = { cell: c.cell, heights: c.heights_index != null ? c.heights_index * n : c.heights, water, quadrants: [0, 1, 2, 3].map(() => ({ base: null, layers: [] })), vcol: null };
-  for (const l of c.layers || []) {
-    const q = out.quadrants[QUAD[l.quad] ?? l.quad];
-    if (!q) continue;
-    if (l.layer === -1) q.base = l.tex;
-    else q.layers.push({ tex: l.tex, layer: l.layer, alpha: typeof l.alpha === 'string' ? Float32Array.from(b64(l.alpha), (v) => v / 255) : l.alpha });
-  }
-  for (const q of out.quadrants) q.layers.sort((x, y) => x.layer - y.layer);
-  if (c.vertex_colours) out.vcol = b64(c.vertex_colours);
-  return out;
-}

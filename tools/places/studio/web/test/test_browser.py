@@ -490,7 +490,7 @@ def test_12_paths(pad):
     g = pad.ev("studio.seated([...studio.model.spaces.exterior.refs.values()].find((r) => r.kind === 'building')).pos")
     look_at(pad, "ours", g, dist=5000)
     x, y = pad.screen("ours", g)
-    pts = [(x - 200 + i * 20, y + 30 * ((i % 4) - 1.5) / 4) for i in range(21)]
+    pts = [(x - 120 + i * 12, y + 30 * ((i % 4) - 1.5) / 4) for i in range(21)]
     pad.pen_drag(pts, steps=2)
     op = pad.ev("studio.log.applied().at(-1)")
     assert op["op"] == "path.add" and len(op["path"]["points"]) >= 2
@@ -516,6 +516,7 @@ def test_13_15_saves_finalise_heartbeat(pad, browser, server):
     n = len(pad.ops())
     # another session: the autosave is picked up after the machine was off
     other = open_pad(browser, server, PORTRAIT)
+    other.page.wait_for_function(f"studio.log.applied().length === {n}", timeout=15000)
     assert other.ev("studio.log.applied().length") == n, (other.errors, other.ev("document.getElementById('toast').textContent"))
     assert other.ev("document.getElementById('views').dataset.layout") == "stack"
     other.page.click(".intro button") if other.ev("!document.getElementById('intro').hidden") else None
@@ -554,3 +555,86 @@ def test_16_dark_portrait(browser, server):
     p.page.click("#rail [data-tool=search]")
     p.shot("16-dark-portrait-search")
     p.page.context.close()
+
+
+# ---------- 17: the redrafted place files' fields ----------
+def test_17_walkway_clear_why_seat_modes(pad):
+    pad.page.click("#rail button:has-text('Paths')")
+    assert "Walkway, Wooden boards" in pad.ev("document.getElementById('panel-body').textContent")
+    assert pad.page.locator("#panel-body .seg[aria-label=Kind] button").all_text_contents() == ["Path", "Street", "Walkway"]
+    pad.page.click("#rail button:has-text('Plants')")
+    assert "1 on a street or path" in pad.ev("document.getElementById('panel-body').textContent")
+    z = pad.ev("""() => { const t = studio.terrain, x = 4000, y = 4000, f = [-300, -300, 300, 300];
+        const mk = (mode) => studio.seated({ id: 'probe', base: 'x', pos: [x, y, 0], rot: [0, 0, 0.4], seat: { mode, dz: 0, foot: f } }).pos[2];
+        return { ground: mk('ground'), clear: mk('clear'), above: mk('above'), stilts: mk('stilts') }; }""")
+    assert z["clear"] >= z["above"] >= z["ground"] and z["stilts"] >= z["ground"], z
+
+
+# ---------- 18: worth a look (place.json needs_look) ----------
+def test_18_needs_look(pad):
+    btn = pad.page.locator("#look-btn")
+    assert btn.is_visible() and btn.text_content().strip().startswith("1")
+    btn.click()
+    pad.page.locator(".look-list li button").first.click()
+    door = pad.ev("studio.place.needs_look[0].door")
+    pad.page.wait_for_function(f"studio.selection.has({json.dumps(door)})", timeout=10000)
+    assert pad.ev("studio.ours.view.rig.dist") < 2000, "flown in close"
+
+
+# ---------- 19: a texture the server lacks falls back quietly ----------
+def test_19_missing_texture_fallback(pad):
+    got = pad.ev("""async () => { const o = await import('./js/objects.js'), THREE = await import('three');
+        const map = new THREE.Texture(); map.userData.missing = 'textures/none.dds';
+        const m = o.plainMaterial(new THREE.MeshStandardMaterial({ map, transparent: true }), 'plant');
+        const ok = o.plainMaterial(new THREE.MeshStandardMaterial({ color: '#ffffff' }), 'rock');
+        return { map: m.map, colour: m.color.getHexString(), alphaTest: m.alphaTest, type: m.type, plain: ok.type }; }""")
+    assert got["map"] is None and got["colour"] != "ffffff" and got["alphaTest"] == 0, got
+    assert got["type"] == got["plain"] == "MeshLambertMaterial"
+
+
+# ---------- 20: a real-sized place never freezes the page ----------
+@pytest.fixture(scope="module")
+def big_server():
+    if os.environ.get("STUDIO_URL"):
+        pytest.skip("runs on the generated large fixture")
+    fx = Path(tempfile.mkdtemp(prefix="studio-big-"))
+    subprocess.run([sys.executable, str(WEB / "dev" / "make_fixture.py"), str(fx), "--big"], check=True, capture_output=True)
+    port = free_port()
+    p = subprocess.Popen([sys.executable, str(WEB / "dev" / "devserver.py"), "--port", str(port), "--fixture", str(fx)],
+                         stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    url = f"http://127.0.0.1:{port}"
+    for _ in range(100):
+        try:
+            urllib.request.urlopen(url + "/api/status", timeout=1)
+            break
+        except OSError:
+            time.sleep(0.1)
+    yield url
+    p.terminate()
+    subprocess.run(["rm", "-rf", str(fx)])
+
+
+# Software WebGL on the build VM links each shader program inside a draw (no parallel compile), so the budget here
+# is the VM's; on the tablet's GPU the same code keeps every task far shorter.
+LONG_TASK_BUDGET_MS = 1000
+
+
+def test_20_long_task_budget_big(browser, big_server):
+    ctx = browser.new_context(viewport=LANDSCAPE, device_scale_factor=1, has_touch=True)
+    ctx.add_init_script("""window.__lt = []; new PerformanceObserver((l) => { for (const e of l.getEntries()) __lt.push(e.duration); })
+                           .observe({ type: 'longtask', buffered: true });""")
+    page = ctx.new_page()
+    errors = []
+    page.on("pageerror", lambda e: errors.append(str(e)))
+    t0 = time.time()
+    page.goto(big_server + "/")
+    page.click(".intro button", timeout=5000)
+    assert time.time() - t0 < 5, "the guide can be put away at once"
+    page.wait_for_function("window.studio && studio.loadMs", timeout=60000)
+    page.wait_for_function("document.getElementById('progress').hidden", timeout=120000)
+    page.wait_for_timeout(1500)
+    lt = page.evaluate("__lt")
+    assert page.evaluate("studio.ground.spaces.exterior.refs.length") >= 30000
+    assert max(lt or [0]) < LONG_TASK_BUDGET_MS, sorted(lt)[-5:]
+    assert not errors, errors
+    ctx.close()

@@ -60,7 +60,7 @@ select { min-height: 44px; border-radius: 10px; border: 1px solid var(--line); b
 #views:has(.view.full) .view-link { display: none; }
 .view.focus::after { content: ""; position: absolute; inset: 0; border: 2px solid var(--accent); pointer-events: none; opacity: .5; }
 .canvas-holder, .canvas-holder canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; touch-action: none; }
-.view-bar { position: absolute; left: 10px; right: 10px; top: 10px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; pointer-events: none; }
+.view-bar { position: absolute; left: 10px; right: 10px; top: 10px; display: flex; flex-wrap: nowrap; align-items: center; gap: 8px; pointer-events: none; }
 .view-bar > * { pointer-events: auto; }
 .view-title { background: var(--panel); padding: 10px 14px; border-radius: 12px; font-weight: 600; box-shadow: var(--shadow); }
 .view-bar .pick { background: var(--panel); padding: 2px 4px 2px 12px; border-radius: 12px; box-shadow: var(--shadow); }
@@ -143,7 +143,7 @@ ol.history li .note { display: block; font-size: 13px; color: var(--muted); }
 @keyframes spin { to { transform: rotate(1turn); } }
 @media (prefers-reduced-motion: reduce) { .spinner { animation: none; } #panel { transition: none; } }
 
-.intro { position: fixed; inset: 0; background: color-mix(in srgb, var(--bg) 70%, transparent); backdrop-filter: blur(4px); display: grid; place-items: center; z-index: 40; padding: 16px; }
+.intro { position: fixed; inset: 0; background: color-mix(in srgb, var(--bg) 70%, transparent); backdrop-filter: blur(4px); display: grid; place-items: center; z-index: 60; padding: 16px; }
 .intro .sheet { background: var(--panel); border-radius: 20px; box-shadow: var(--shadow); padding: 24px 28px; max-width: 620px; }
 .intro h2 { margin: 0 0 12px; font-size: 22px; }
 .intro ul { list-style: none; padding: 0; margin: 0 0 18px; display: grid; gap: 12px; }
@@ -165,3 +165,24 @@ pre.log { font-size: 12px; background: var(--panel-2); padding: 8px; border-radi
 @media (orientation: landscape) {
   body:has(#panel:not([hidden])) #view-src .view-bar, body:has(#panel:not([hidden])) .view.full .view-bar { right: calc(min(360px, 40vw) + 16px); }
 }
+
+/* the rest of the place streaming in: a quiet line at the foot of the views */
+.progress { position: fixed; left: 50%; bottom: 14px; transform: translateX(-50%); z-index: 8; display: flex; align-items: center; gap: 10px;
+  background: var(--panel); color: var(--muted); border-radius: 18px; padding: 6px 14px; box-shadow: var(--shadow); font-size: 13px; pointer-events: none; }
+.progress[hidden] { display: none; }
+.progress b { display: block; width: 90px; height: 4px; border-radius: 2px; background: var(--panel-2); overflow: hidden; }
+.progress i { display: block; height: 100%; width: 0; background: var(--accent); transition: width .3s; }
+.look-btn { min-height: 44px; border-radius: 22px; padding: 0 14px; color: var(--warn); border: 1px solid color-mix(in srgb, var(--warn) 45%, transparent); }
+.look-btn[hidden] { display: none; }
+.look-n { font-weight: 700; }
+ul.plain { margin: 4px 0 12px; padding-left: 18px; color: var(--muted); line-height: 1.5; }
+/* one row always: the source chooser gives way, the full-screen button stays beside it */
+.view-bar .pick { min-width: 150px; flex: 0 1 auto; display: flex; align-items: center; overflow: hidden; }
+.view-bar .pick select { flex: 1; }
+.view-bar .pick select { min-width: 0; max-width: 100%; text-overflow: ellipsis; }
+.view-bar .fs { flex: none; }
+/* an open panel takes its own room beside the views instead of covering the source */
+@media (min-width: 900px) and (orientation: landscape) {
+  #stage:has(#panel:not([hidden])) #views { margin-right: calc(min(360px, 40vw) + 16px); }
+}
+.seg { flex-wrap: wrap; }

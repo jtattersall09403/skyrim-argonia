@@ -476,7 +476,8 @@ export class Tools {
     const hits = a.ours.world.pick(e.ray, { kinds: VEG, includeGhosts: true }).filter((h) => h.ghost === restore || (!restore && !h.ghost));
     const h = hits.find((x) => (restore ? a.isCleared(x.ref) : !a.isCleared(x.ref)));
     if (!h) { a.toast(restore ? 'Turn on "Show cleared plants" and tap a ghost to bring it back.' : 'No plant there.'); return; }
-    const item = { base: h.ref.base, pos: h.ref.pos };
+    // a restore carries the whole cleared row (by, why, ref) so its undo puts it back exactly
+    const item = restore ? { ...a.model.clear.get(vegKey(h.ref)) } : { base: h.ref.base, pos: h.ref.pos };
     a.push({ op: restore ? 'veg.restore' : 'veg.clear', items: [item] }, 'exterior');
   }
   vegDab(e) {
@@ -486,7 +487,7 @@ export class Tools {
       if (!VEG.has(r.kind)) continue;
       const d2 = (r.pos[0] - g[0]) ** 2 + (r.pos[1] - g[1]) ** 2; if (d2 > R2) continue;
       const k = vegKey(r); if (this.vstroke.has(k)) continue;
-      if (restore ? a.isCleared(r) : !a.isCleared(r)) this.vstroke.set(k, { base: r.base, pos: r.pos });
+      if (restore ? a.isCleared(r) : !a.isCleared(r)) this.vstroke.set(k, restore ? { ...a.model.clear.get(k) } : { base: r.base, pos: r.pos });
     }
     // preview: hide (or show) what the brush has touched so far
     a.ours.world.setRefs(a.ours.world.refs.filter((x) => restore || !this.vstroke.has(vegKey(x.ref)))

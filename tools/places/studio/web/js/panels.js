@@ -3,7 +3,7 @@
 import { api } from './api.js';
 import { ICON } from './icons.js';
 import { thumb } from './thumbs.js';
-import { STOP_KINDS } from './people.js';
+import { STOP_KINDS, isInnkeeper } from './people.js';
 import { clock } from './geom.js';
 
 const $ = (s) => document.querySelector(s);
@@ -12,11 +12,29 @@ const KIND_WORD = { building: 'Building', static: 'Fixed piece', clutter: 'Small
   rock: 'Rock', furniture: 'Furniture', door: 'Door', container: 'Chest or container', light: 'Light', activator: 'Thing to use', marker: 'Marker',
   actor: 'Person', water: 'Water', other: 'Other' };
 export const plainKind = (k) => KIND_WORD[k] || 'Thing';
-const SEAT_WORD = { ground: 'Sits on the ground', above: 'Stands above the ground', water: 'Sits in the water', on: 'Sits on another thing', free: 'Placed by hand at a fixed height' };
+const SEAT_WORD = { ground: 'Sits on the ground', above: 'Stands above the ground', water: 'Sits in the water', on: 'Sits on another thing',
+  stilts: 'Stands on posts over land or water', clear: 'Raised clear of the ground', free: 'Placed by hand at a fixed height' };
+export const PATH_KIND = { path: 'Path', street: 'Street', walkway: 'Walkway' };
+// Why the draft cleared a plant (clear.jsonl `why`), in plain words.
+const CLEAR_WHY = { building: 'under or beside a building', door: 'in front of a door', street: 'on a street or path', path: 'on a street or path',
+  walkway: 'under a walkway', station: 'at a crafting station' };
 function seatWords(s) {
   if (!s) return 'Placed at a fixed height';
   const base = SEAT_WORD[s.mode] || s.mode, dz = Math.round(s.dz || 0);
   return dz && s.mode !== 'free' ? `${base}, ${Math.abs(dz)} units ${dz > 0 ? 'higher' : 'lower'}` : base;
+}
+// The crafting station a ref is, from place.json `stations.found` and `added`.
+function stationOf(place, id) {
+  const st = place?.stations; if (!st) return null;
+  for (const [name, ids] of Object.entries(st.found || {})) if ((ids || []).includes(id)) return stationName(name);
+  for (const x of st.added || []) if (x.id === id) return `${stationName(x.station)}, added by the draft`;
+  return null;
+}
+const stationName = (k) => k.replace(/-/g, ' ').replace(/^./, (c) => c.toUpperCase());
+// A needs_look row in plain words.
+export function lookWords(n) {
+  if (/door/.test(n.why || '') || n.door) return 'A replaced door: check from outside that it faces the street and does not open into the wall.';
+  return n.why || 'Worth checking by eye.';
 }
 function seg(name, options, value, onPick) {
   const w = document.createElement('div'); w.className = 'seg'; w.setAttribute('role', 'group'); w.setAttribute('aria-label', name);
@@ -110,6 +128,13 @@ export class Panels {
     const facts = [['Made from', `${base.edid || ''} (${r.base})`]];
     if (side === 'ours') facts.push(['Copied from', r.src ? `${a.sourceId} thing ${r.src}` : 'Added here, not copied']);
     if (side === 'ours') facts.push(['How it sits', seatWords(r.seat)]);
+    const station = side === 'ours' && stationOf(a.place, r.id);
+    if (station) facts.push(['Crafting station', station]);
+    if (side === 'ours' && r.why) facts.push(['Why the draft added it', r.why]);
+    if (side === 'ours' && r.align) facts.push(['Lined up with', `the original it replaces (${r.align.of}), turned ${Math.round(r.align.turn_deg)} degrees`]);
+    if (side === 'ours' && r.door?.arrival) facts.push(['Coming out', 'you arrive outside this door, on our ground and clear of anything in the way']);
+    const look = side === 'ours' && (a.place?.needs_look || []).find((n) => n.door === r.id);
+    if (look) facts.push(['Worth a look', lookWords(look)]);
     if (r.owner) facts.push(['Belongs to', r.owner]);
     if (r.door?.to_space) facts.push(['Door leads to', side === 'ours' ? a.spaceName(a.ours, r.door.to_space) : a.spaceName(a.src, r.door.to_space)]);
     w.append(el(`<dl class="facts">${facts.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join('')}</dl>`));
@@ -189,6 +214,7 @@ export class Panels {
       const svc = Object.entries(p.services || {}).filter(([, v]) => v).map(([k]) => k);
       if (svc.length) parts.push(el(`<p>Gives: ${esc(svc.join(', '))}</p>`));
       for (const msg of P.problems(p)) parts.push(el(`<p class="tag nordic">${esc(msg)}</p>`));
+      if (isInnkeeper(p) && !p.bed) parts.push(el('<p class="note">Keeps no bed and works all day, as Skyrim\'s innkeepers do.</p>'));
       parts.push(el('<h3>Their day</h3>'));
       const list = el('<ol class="history"></ol>');
       P.sorted(p).forEach((s, i) => {
@@ -281,7 +307,23 @@ export class Panels {
     parts.push(toggle('Show cleared plants', a.showCleared, (v) => { a.showCleared = v; a.refreshSide(a.ours); }));
     const by = { draft: 0, owner: 0 }; for (const c of a.model.clear.values()) by[c.by === 'draft' ? 'draft' : 'owner']++;
     parts.push(el(`<p>${by.draft} cleared by the draft, ${by.owner} cleared by you. Plants on paths are cleared with the path.</p>`));
+    const why = new Map(); for (const c of a.model.clear.values()) if (c.by === 'draft') { const w = CLEAR_WHY[c.why] || (c.why ? c.why : 'no reason given'); why.set(w, (why.get(w) || 0) + 1); }
+    if (why.size) parts.push(el(`<ul class="plain">${[...why].sort((x, y) => y[1] - x[1]).map(([w, n]) => `<li>${n} ${esc(w)}</li>`).join('')}</ul>`));
     this.show('Plants', parts);
+  }
+  // ---------- worth a look: the draft's open questions (place.json needs_look) ----------
+  lookPanel() {
+    const a = this.app, rows = a.place?.needs_look || [], parts = [];
+    parts.push(el(`<p>The draft could not settle these from the files alone. Tap one to fly there and look.</p>`));
+    const list = el('<ol class="history look-list"></ol>');
+    rows.forEach((n, i) => {
+      const base = a.bases.get(n.base) || {}, room = a.spaceName(a.ours, n.space);
+      const li = el(`<li><span class="what">${i + 1}. ${esc(base.name || base.edid || 'Door')} into ${esc(room)} <span class="note" style="display:inline">(${esc(n.space)})</span><span class="note">${esc(lookWords(n))}</span></span></li>`);
+      const b = el(`<button class="quiet" aria-label="Fly to worth-a-look ${i + 1}">Go</button>`); b.onclick = () => a.flyTo(n);
+      li.append(b); list.append(li);
+    });
+    parts.push(list);
+    this.show('Worth a look', parts);
   }
   // ---------- paths ----------
   pathsPanel() {
@@ -292,7 +334,7 @@ export class Panels {
     const sel = P.sel && a.model.paths.get(P.sel);
     const cur = sel || P;
     parts.push(el('<h3>Look</h3>'));
-    parts.push(seg('Kind', [['path', 'Path'], ['street', 'Street']], cur.kind, (v) => { if (sel) a.tools.editPath({ kind: v }); else P.kind = v; }));
+    parts.push(seg('Kind', Object.entries(PATH_KIND), cur.kind, (v) => { if (sel) a.tools.editPath({ kind: v }); else P.kind = v; }));
     parts.push(seg('Width', [[160, 'Narrow'], [256, 'Medium'], [400, 'Wide']], cur.width, (v) => { if (sel) a.tools.editPath({ width: v }); else P.width = v; }));
     parts.push(seg('Ground', styles.map(([k, s]) => [k, s.label]), cur.style, (v) => { if (sel) a.tools.editPath({ style: v }); else P.style = v; }));
     if (P.mode === 'draw') parts.push(el(`<p>Draw the path with the pen. It is smoothed into a clean line, laid with the ground you picked, and plants on it are cleared.${sel ? ' The look above changes the path you drew last.' : ''}</p>`));
@@ -304,7 +346,7 @@ export class Panels {
     const list = el('<ol class="history"></ol>');
     for (const p of a.model.paths.values()) {
       const len = Math.round(p.points.slice(1).reduce((s, q, i) => s + Math.hypot(q[0] - p.points[i][0], q[1] - p.points[i][1]), 0));
-      const li = el(`<li><span class="what">${p.kind === 'street' ? 'Street' : 'Path'}, ${esc(a.pathStyles[p.style]?.label || p.style)}<span class="note">${len} units long, ${p.width} wide</span></span></li>`);
+      const li = el(`<li><span class="what">${PATH_KIND[p.kind] || 'Path'}, ${esc(a.pathStyles[p.style]?.label || p.style)}<span class="note">${len} units long, ${p.width} wide</span></span></li>`);
       const b = el(`<button class="quiet" aria-pressed="${p.id === P.sel}">Choose</button>`); b.onclick = () => { P.sel = p.id; P.mode = 'edit'; this.pathsPanel(); a.tools.drawPathHandles(); };
       li.append(b); list.append(li);
     }
@@ -394,6 +436,8 @@ export class Panels {
   async resumeAutosave() {
     const a = this.app;
     try {
+      const list = await api.saves(a.place.place_id);
+      if (!(list || []).some((x) => (x.save_id || x.id || x) === 'autosave')) return;
       const s = await api.save(a.place.place_id, 'autosave');
       if (s) a.revs.autosave = s.rev || 0;
       if (s?.ops?.length && !s.final) { await a.loadSave(s); a.toast(`Picked up where you left off: ${s.ops.length} changes from ${new Date(s.at).toLocaleString()}.`, 5000); }

@@ -135,7 +135,7 @@ class State:
                    "stamps": {"draft": self.stamp(f"draft.{pid}", dk) if self.bundle_json(f"draft.{pid}") else p.get("draft_key"),
                               "ground": self.stamp(f"ground.{pid}", (p.get("ground") or {}).get("stamp")),
                               "source": self.stamp(f"src.{p['source_id']}", (p.get("source") or {}).get("stamp"))},
-                   "fit": p.get("fit")}
+                   "fit": p.get("fit"), "needs_look": p.get("needs_look") or []}
             out.append(ent)
         return out
 
@@ -347,7 +347,7 @@ class H(BaseHTTPRequestHandler):
     def saves_get(self, pid, sid):
         base = self.st.save_path(pid, "x").parent
         if sid is None:
-            rows = [json.loads(f.read_text()) for f in base.glob("*.json")] if base.exists() else []
+            rows = [dict(json.loads(f.read_text()), save_id=f.stem) for f in base.glob("*.json")] if base.exists() else []
             rows.sort(key=lambda r: r["at"], reverse=True)
             return self.send(200, rows)
         f = self.st.save_path(pid, re.sub(r"[^\w.-]", "_", sid))

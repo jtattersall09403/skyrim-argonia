@@ -14,6 +14,7 @@
   <div class="choosers">
     <label class="pick"><span class="pick-label">Place</span><select id="place-pick" aria-label="Place to edit"></select></label>
     <span id="fingerprint" class="fp" title="The game world this view is built from"></span>
+    <button id="look-btn" class="quiet look-btn" hidden><span class="look-n"></span> worth a look</button>
   </div>
   <div class="state">
     <button id="undo" class="icon-btn" aria-label="Undo"><svg viewBox="0 0 24 24"><path d="M9 14 4 9l5-5"/><path d="M4 9h10a6 6 0 0 1 0 12h-3"/></svg><span>Undo</span></button>
@@ -63,6 +64,7 @@
 <div id="chip" class="chip" hidden></div>
 <div id="toast" class="toast" hidden></div>
 <div id="loading" class="loading"><div class="spinner"></div><p id="loading-text">Loading the place</p></div>
+<div id="progress" class="progress" hidden><span></span><b><i></i></b></div>
 <div id="intro" class="intro" hidden></div>
 <script type="module" src="js/main.js"></script>
 </body>

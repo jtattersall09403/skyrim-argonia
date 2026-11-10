@@ -21,8 +21,59 @@ const PICK_RANK = { actor: 0, door: 1, furniture: 2, container: 2, clutter: 3, l
   building: 4, static: 5, rock: 6, tree: 7, plant: 8, groundcover: 9, water: 10, other: 6 };
 export const pickRank = (k) => PICK_RANK[k] ?? 6;
 
-const loader = new GLTFLoader();
-const meshCache = new Map(); // model -> Promise<[{geometry, material}]>
+// Textures inside a model are fetched here, not by the loader: a texture the server lacks (a missing normal map,
+// or one the mod itself never shipped) falls back quietly instead of failing in the console. Normal maps are
+// never fetched: the studio draws every model with one light, plain material (few shader programs, cheap pixels).
+const WRAP = { 33071: THREE.ClampToEdgeWrapping, 33648: THREE.MirroredRepeatWrapping, 10497: THREE.RepeatWrapping };
+const FLAT = (() => { const t = new THREE.DataTexture(new Uint8Array([128, 128, 255, 255]), 1, 1); t.needsUpdate = true; t.userData.flat = true; return t; })();
+const texCache = new Map(); // url -> Promise<Texture|null>
+function fetchTexture(url, sampler) {
+  if (!texCache.has(url)) {
+    texCache.set(url, fetch(url, { credentials: 'same-origin' })
+      .then((r) => (r.ok ? r.blob() : null))
+      .then((b) => (b ? createImageBitmap(b, { imageOrientation: 'none', premultiplyAlpha: 'none', colorSpaceConversion: 'none' }) : null))
+      .then((bm) => {
+        if (!bm) return null;
+        const t = new THREE.Texture(bm); t.flipY = false; t.anisotropy = 2;
+        t.wrapS = WRAP[sampler?.wrapS] ?? THREE.RepeatWrapping; t.wrapT = WRAP[sampler?.wrapT] ?? THREE.RepeatWrapping;
+        t.needsUpdate = true; return t;
+      })
+      .catch(() => null));
+  }
+  return texCache.get(url);
+}
+class QuietTextures {
+  constructor(parser) { this.parser = parser; this.name = 'studio_quiet_textures'; }
+  loadTexture(i) {
+    const json = this.parser.json, def = json.textures[i], img = json.images?.[def.source];
+    if (!img?.uri || img.uri.startsWith('data:')) return null;
+    const normalOnly = !(json.materials || []).some((m) => m.pbrMetallicRoughness?.baseColorTexture?.index === i || m.emissiveTexture?.index === i);
+    if (normalOnly) return Promise.resolve(FLAT);
+    return fetchTexture(img.uri, json.samplers?.[def.sampler]).then((t) => {
+      if (t) return t;
+      const m = new THREE.Texture(); m.userData.missing = img.uri; return m;
+    });
+  }
+}
+const loader = new GLTFLoader().register((parser) => new QuietTextures(parser));
+
+// One plain material per look, shared: the diffuse (or, when the texture is missing, a quiet colour of the
+// thing's kind from the land's palette), cut-out alpha for leaves and lily pads (blending does not sort inside
+// an instanced mesh, and draws a blended pad's empty rim as a pale ring), both faces where the model wants them.
+const matCache = new Map();
+export function plainMaterial(m, kind) {
+  const missing = m.map?.userData.missing, map = m.map && !missing && m.map.image ? m.map : null;
+  const cut = m.alphaTest > 0 || m.transparent;
+  const colour = map ? m.color.getHexString() : (KIND_COLOUR[kind] || '#8a8270').replace('#', '');
+  const key = `${map?.uuid || '-'}|${colour}|${cut}|${m.side}|${m.vertexColors}`;
+  if (!matCache.has(key)) {
+    matCache.set(key, new THREE.MeshLambertMaterial({ map, color: `#${colour}`, side: m.side, vertexColors: m.vertexColors,
+      alphaTest: cut && map ? Math.max(0.35, m.alphaTest || 0.5) : 0, name: m.name }));
+    if (missing) console.info(`studio: texture missing on the server, drawn plain: ${missing}`);
+  }
+  return matCache.get(key);
+}
+
 let inFlight = 0; const queue = [];
 function pump() {
   while (inFlight < 4 && queue.length) {
@@ -31,7 +82,8 @@ function pump() {
     job.run().finally(() => { inFlight--; pump(); });
   }
 }
-export function loadModel(model, pri = 0, level = 0) {
+const meshCache = new Map(); // model -> Promise<[{geometry, material}]>
+export function loadModel(model, pri = 0, level = 0, kind = 'other') {
   const key = `${model}|${level}`;
   if (!meshCache.has(key)) {
     meshCache.set(key, new Promise((resolve) => {
@@ -44,11 +96,11 @@ export function loadModel(model, pri = 0, level = 0) {
           gltf.scene.traverse((o) => {
             if (!o.isMesh) return;
             const g = o.geometry.clone(); g.applyMatrix4(o.matrixWorld);
-            const m = o.material; if (m.map) { m.map.anisotropy = 2; }
-            parts.push({ geometry: g, material: m });
+            for (const k of Object.keys(g.attributes)) if (!['position', 'normal', 'uv', 'color'].includes(k)) g.deleteAttribute(k);
+            parts.push({ geometry: g, material: plainMaterial(o.material, kind) });
           });
           resolve(parts);
-        } catch (e) { console.warn(e.message); resolve(null); }
+        } catch (e) { console.info(`studio: ${e.message}`); resolve(null); }
       } });
       pump();
     }));
@@ -72,11 +124,49 @@ function boxMaterial(kind, ghost) {
 }
 const tmpM = new THREE.Matrix4(), tmpV = new THREE.Vector3(), boundsM = new THREE.Matrix4();
 
+// Models that have arrived wait here and are switched on a few at a time, their textures sent to the GPU first,
+// so a burst of arrivals never stalls a frame (view.js calls drainReady before each draw).
+const ready = { jobs: [], push(fn, parts, layer) { this.jobs.push({ fn, parts, layer }); } };
+const sent = new WeakMap(); // renderer -> WeakSet of textures and materials already on its GPU
+// Shader programs are linked off the main thread (compileAsync, parallel compile) before a model is switched
+// on: a link done inside a draw stalls the page for a second or more on a slow GPU.
+const PAR = new WeakMap();
+const parallel = (r) => { if (!PAR.has(r)) PAR.set(r, !!r.extensions.has('KHR_parallel_shader_compile')); return PAR.get(r); };
+export function drainReady(renderer, layers = [], scene = null, camera = null, budgetMs = 8) {
+  const t0 = performance.now(), mine = sent.get(renderer) || new WeakSet(); sent.set(renderer, mine);
+  let left = 0, newLook = false;
+  for (let i = 0; i < ready.jobs.length; i++) {
+    const j = ready.jobs[i];
+    if (!layers.includes(j.layer)) continue;
+    left++;
+    const fresh = j.parts.filter((p) => !mine.has(p.material));
+    if (fresh.length && scene && camera) {
+      // without parallel compile (software GL) the link happens at the first draw: one new look per frame
+      if (!parallel(renderer)) {
+        if (newLook) continue;
+        newLook = true; for (const p of fresh) mine.add(p.material);
+      } else {
+      if (!j.compiling) {
+        const probe = new THREE.Group();
+        for (const p of fresh) { const m = new THREE.InstancedMesh(p.geometry, p.material, 1); m.frustumCulled = false; probe.add(m); }
+        j.compiling = renderer.compileAsync(probe, camera, scene).catch(() => {}).then(() => { for (const p of fresh) mine.add(p.material); j.compiling = null; });
+      }
+      continue;
+      }
+    }
+    if (performance.now() - t0 > budgetMs) continue;
+    for (const p of j.parts) { const m = p.material.map; if (m && !mine.has(m)) { renderer.initTexture(m); mine.add(m); } }
+    j.fn(); ready.jobs.splice(i--, 1); left--;
+  }
+  return left;
+}
+
 // One base's instances.
 class Group {
   constructor(layer, base, kind, ghost) {
     this.layer = layer; this.base = base; this.kind = kind; this.ghost = ghost; this.refs = [];
     this.full = null; this.cap = 0; this.box = null; this.wantModel = false; this.matrices = [];
+    this.fx = /^effects[\\/]/i.test(base?.model || '');
     // effects and markers carry the record's "everything" bounds; draw them as a small box
     let b = base?.bounds || [[-32, -32, 0], [32, 32, 64]];
     if (b[1].some((v, i) => v - b[0][i] > 20000)) b = [[-32, -32, 0], [32, 32, 64]];
@@ -105,6 +195,9 @@ class Group {
   }
   // Fill instance buffers from what the camera can see.
   cull(cam, frustum, sphere) {
+    // effects (mist, waterfall sheets, glows) are shader tricks of the game's: drawn here they are pale rings
+    // and sheets over the land, so they stay unseen (still listed and pickable)
+    if (this.fx) { this.box.visible = false; this.box.count = 0; return 0; }
     const [near, far] = RANGE[this.kind] || RANGE.default;
     const scale = this.layer.rangeScale;
     let nf = 0, nb = 0, nearest = Infinity;
@@ -119,13 +212,14 @@ class Group {
       if (d < near * scale && this.full) { for (const fm of this.full) fm.setMatrixAt(nf, m); nf++; }
       else { tmpM.multiplyMatrices(m, this.boxLocal); this.box.setMatrixAt(nb++, tmpM); }
     }
-    this.box.count = nb; this.box.instanceMatrix.needsUpdate = true;
-    if (this.full) for (const fm of this.full) { fm.count = nf; fm.instanceMatrix.needsUpdate = true; }
+    // an empty instanced mesh still costs a draw setup: hide it
+    this.box.count = nb; this.box.visible = nb > 0; if (nb) this.box.instanceMatrix.needsUpdate = true;
+    if (this.full) for (const fm of this.full) { fm.count = nf; fm.visible = nf > 0; if (nf) fm.instanceMatrix.needsUpdate = true; }
     if (!this.fullParts && !this.wantModel && nearest < near * scale * 1.3 && this.base?.model) {
       this.wantModel = true;
-      loadModel(this.base.model, nearest, LIGHT.has(this.kind) ? 1 : 0).then((parts) => {
+      loadModel(this.base.model, nearest, LIGHT.has(this.kind) ? 1 : 0, this.kind).then((parts) => {
         if (!parts || !parts.length) return;
-        this.fullParts = parts; this.makeFull(); this.layer.dirty(); this.layer.onModel?.(this);
+        ready.push(() => { this.fullParts = parts; this.makeFull(); this.layer.dirty(); this.layer.onModel?.(this); }, parts, this.layer);
       });
     }
     return nf + nb;

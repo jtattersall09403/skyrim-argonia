@@ -188,7 +188,10 @@ export class People {
       if (!sp.p) out.push(`${clock(s.start)}: this stop has no spot.`);
       else if (sp.space !== 'exterior' && !this.doorTo('exterior', sp.space)) out.push(`${clock(s.start)}: no door leads from outside into ${sp.space}.`);
     }
-    if (!(p.routine || []).some((s) => s.kind === 'bed')) out.push('This person has no time in bed.');
+    // an innkeeper keeps no bed and works the whole day, as Skyrim's do
+    if (!isInnkeeper(p) && !(p.routine || []).some((s) => s.kind === 'bed')) out.push('This person has no time in bed.');
     return out;
   }
 }
+
+export const isInnkeeper = (p) => /innkeeper/i.test(p.role || '');

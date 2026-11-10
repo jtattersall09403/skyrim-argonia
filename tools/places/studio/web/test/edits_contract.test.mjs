@@ -4,7 +4,7 @@ import assert from 'node:assert/strict';
 import { readFileSync, readdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
-import { modelFromFiles, modelToFiles, applyOp, inverse, EditLog, same } from '../js/edits.js';
+import { modelFromFiles, modelToFiles, applyOp, inverse, checkDoors, EditLog, same } from '../js/edits.js';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const FIX = join(here, '../../../../tests/places_edits');
@@ -16,10 +16,11 @@ for (const name of readdirSync(FIX).filter((f) => f.endsWith('.json') && f !== '
   test(`fixture ${name}`, () => {
     const m = modelFromFiles(place);
     if (c.error) {
-      assert.throws(() => { for (const op of c.ops) applyOp(m, op); }, new RegExp(c.error));
+      assert.throws(() => { for (const op of c.ops) applyOp(m, op); checkDoors(m, c.ops); }, new RegExp(c.error));
       return;
     }
     for (const op of c.ops) applyOp(m, op);
+    checkDoors(m, c.ops);
     const got = modelToFiles(m), want = canon(c.expected);
     assert.ok(same(got, want), `files differ:\n${JSON.stringify(got)}\n${JSON.stringify(want)}`);
     // every op has an inverse: the save then its inverse gives back the files

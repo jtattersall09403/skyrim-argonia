@@ -1,5 +1,6 @@
 // The Studio API (docs/design/place-studio.md): the only thing the front end talks to.
-const BASE = (window.STUDIO_API || '') + '/api';
+const BASE = (globalThis.STUDIO_API || '') + '/api';
+export const API_BASE = BASE;
 
 async function req(path, opts = {}) {
   const r = await fetch(BASE + path, { credentials: 'same-origin', ...opts });

@@ -31,7 +31,7 @@ export function thumb(base, onReady) {
   m.position.copy(box.getCenter(new THREE.Vector3()));
   const placeholder = shoot([m], box); m.geometry.dispose();
   cache.set(base.key, placeholder);
-  if (base.model) loadModel(base.model, 0).then((parts) => {
+  if (base.model) loadModel(base.model, 0, 0, base.kind).then((parts) => {
     if (!parts?.length) return;
     const meshes = parts.map((p) => new THREE.Mesh(p.geometry, p.material)), bb = new THREE.Box3();
     for (const mm of meshes) { mm.geometry.computeBoundingBox(); bb.union(mm.geometry.boundingBox); }
