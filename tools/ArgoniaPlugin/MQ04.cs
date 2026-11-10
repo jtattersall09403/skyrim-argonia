@@ -103,10 +103,10 @@ static class MQ04
         var reconciledFlag = k.Global("Reconciled");
         var adoptedFlag = k.Global("Adopted");
         var standing = k.Global("LowReedStanding");
-        var village = Faction(mod, "ARG_MQ04_LowReedVillage", "Low-Reed Village");
+        var village = k.Faction("LowReedVillage", "Low-Reed Village", false, "Low-Reed Village");
 
         // E-package: Pays-Late at the cut root after dark (C-time on the package), from stage 10 until the ending.
-        var night = k.Travel("PaysLateNight", mark, Hour(CompareOperator.GreaterThanOrEqualTo, 20, or: true), Hour(CompareOperator.LessThan, 6),
+        var night = k.Travel("PaysLateNight", mark, 64, true, Hour(CompareOperator.GreaterThanOrEqualTo, 20, or: true), Hour(CompareOperator.LessThan, 6),
             k.StageIs(10, CompareOperator.GreaterThanOrEqualTo), k.StageIs(91, CompareOperator.LessThan));
 
         // TR-topic: the record's topics, each INFO gated on its speaker's base (GetIsID), the stage and its check.
@@ -124,9 +124,8 @@ static class MQ04
             k.Banded("topic.mq04-the-cut", Minder, "default", null, IsId(minder.FormKey), k.StageIs(40, CompareOperator.GreaterThanOrEqualTo)));
 
         // The quest: Main Quest (the act's line), not Start Game Enabled; stages and objectives from the record.
-        q.Name = "The Tree That Turned Its Face"; q.Priority = 60; q.Type = Quest.TypeEnum.MainQuest; q.Flags = Quest.Flag.RunOnce;
-        k.StagesFromRecord(Id, "ARG_QF_MQ04", FragmentStages);
-        k.ObjectivesFromRecord(Id);
+        k.Header("The Tree That Turned Its Face", 60, Quest.TypeEnum.MainQuest, Quest.Flag.RunOnce);
+        k.FromRecord(Id, "ARG_QF_MQ04", fragments: FragmentStages);
         k.Forced(AHerald, "RootHerald", heraldRef);
         k.Forced(AMinder, "PaysLate", minderRef).PackageData.Add(night.ToLink());
         k.Forced(AEgg, "EggTender", eggRef);
