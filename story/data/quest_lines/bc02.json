@@ -77,7 +77,7 @@
   "speaker": "third-born-tsaxi",
   "prompt": "Let this one go by.",
   "lines": [
-   "Go by. The heirs lost nothing worth entering the stone house to fetch. The way out will bear one trip. You have used it. Whoever is left inside dies in the fire."
+   "Go by. The heirs lost nothing worth entering the stone house to fetch. I will not stop you now."
   ],
   "fail": [
    "No. I keep the way. This one does not go by. Your words do not move me yet. Find better words."
@@ -86,7 +86,7 @@
    "Go by. The heirs lost nothing worth entering the stone house to fetch."
   ],
   "lines@high": [
-   "You came out with one, so I will not stop you. Go by. The heirs lost nothing worth entering the stone house to fetch. The way out will bear one trip. You have used it. Whoever is left inside dies in the fire. Go while you can."
+   "You came out with one, so I will not stop you. Go by. The heirs lost nothing worth entering the stone house to fetch. Go while you can."
   ],
   "fail@low": [
    "No. This one does not go by. Your words do not move me yet."

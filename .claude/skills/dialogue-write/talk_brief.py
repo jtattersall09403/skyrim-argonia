@@ -7,7 +7,9 @@ loaded back.
 
 Reads, through the world database: the census row (`bmv_talker`: race, sex, class, factions, cell, spot), the
 authored `talker` row (name, trade, spot, backstory, lore, personality), the person's `talker_topic` rows and the `talk_fact`
-rows they name, the `talk_topic` catalogue, and the race's voice card. Nothing is hand-made; a missing row stops it.
+rows they name, the `talk_topic` catalogue, and the race's voice card; and who else the player hears in the same
+settlement and the quest stages there, with the facts each owns (tools/argonia_world/echoes.py). Nothing is
+hand-made; a missing row stops it.
 
 LINES.tsv: one reply per line, `<topic id>\\t<text>`; a topic's second line is the reply's next response (the
 person goes on speaking). `load` replaces the person's talk_line rows and marks the talker written.
@@ -18,7 +20,7 @@ import sys
 
 HERE = pathlib.Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE.parents[2]))
-from tools.argonia_world import db  # noqa: E402
+from tools.argonia_world import db, echoes  # noqa: E402
 
 RACE = {"ArgonianRace": "Argonian", "DarkElfRace": "Dunmer", "ImperialRace": "Imperial", "KhajiitRace": "Khajiit",
         "NordRace": "Nord", "BretonRace": "Breton", "HighElfRace": "Altmer", "WoodElfRace": "Bosmer",
@@ -87,8 +89,13 @@ def brief(w, who: str, out: pathlib.Path) -> int:
             if f is None:
                 print(f"{who}: fact {fid} missing; no brief written")
                 return 1
-            L.append(f"- `{fid}`: {f.claim}")
+            if f.source.startswith(echoes.POINTER):
+                L.append(f"- `{fid}`: another person here tells this; point to them by name and name the subject in a "
+                         f"few words, never tell it: {f.claim}")
+            else:
+                L.append(f"- `{fid}`: {f.claim}")
         L.append("")
+    L += echoes.brief_section(echoes.speech(w), t.known_as, echoes.claims(w), {tt.topic for tt in tts})
     L += ["## Output", "", "A TSV file, one reply per line: `<topic id>` TAB `<text>`. Every topic above once or "
           "twice; nothing else."]
     out.write_text("\n".join(L) + "\n")

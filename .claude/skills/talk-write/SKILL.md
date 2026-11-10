@@ -53,15 +53,26 @@ Design: `docs/design/talk.md` (the tables, the topic catalogue). The four rules 
 5. **Talkers.** One author pass for the settlement (so opinions agree): `talker` rows (name by rule 4, trade,
    spot, two-to-three-sentence backstory citing lore, the seven personality columns) and `talker_topic` rows:
    `talk.self`, both greetings, three to five place or trade topics drawn from facts near the person's own spot;
-   each person has one fact no one else has; a widely known thing is known by two or three at most.
-6. **Data check.** `python3 -m tools.argonia_world.talk_check --lines-only --settlement S`: facts and names 0.
-7. **Briefs.** `python3 .claude/skills/dialogue-write/talk_brief.py brief --talker REF --out BRIEF.md` per person.
-8. **Lines.** `export ARGONIA_PRIVATE=/home/ubuntu/argonia-private` (the Morrowind corpus, for corpus-find; dotnet
+   each fact has one holder in the settlement, the person whose work or story it belongs to. A fact's `claim` gives
+   its parts (who, where, what, wants), never a finished sentence a writer would copy; a quest rumour two or three
+   people tell is one fact each retells in their own words.
+6. **One holder.** `python3 -m tools.argonia_world.echoes assign --settlement S` prints, and `--write` applies:
+   a fact several people cite stays with one (`--owner FACT=REF`, else the first by ref) and each other person
+   cites a pointer fact instead ("Ask <holder> about it", source `echo: owner <ref> holds <fact>`), so their reply
+   names the holder and the subject and tells nothing more. A quest rumour named in
+   `../dialogue-write/echoes.yaml` stays with every teller.
+7. **Data check.** `python3 -m tools.argonia_world.talk_check --lines-only --settlement S`: facts and names 0.
+8. **Briefs.** `python3 .claude/skills/dialogue-write/talk_brief.py brief --talker REF --out BRIEF.md` per person.
+   Each brief ends with **Already said near you**: the settlement's other people (and the quest speakers of any
+   quest stage there) on the topics this person answers, with the facts each holds.
+9. **Lines.** `export ARGONIA_PRIVATE=/home/ubuntu/argonia-private` (the Morrowind corpus, for corpus-find; dotnet
    is ~/.dotnet, plugin.sh sets PATH). One `dialogue-writer` agent per person, in parallel (at most 20 at once), each given its brief and an output path
    (TSV `<topic>\t<text>`), lint run with `--race`. Then `talk_brief.py load LINES.tsv --talker REF`.
-9. **Reader.** One `reader` pass over all the settlement's lines (style guide, bans, personification B01 by name:
-   no thing, place or institution doing a person's act); fix and reload.
-10. **Build.** `tools/ArgoniaPlugin/plugin.sh seed`, `plugin.sh check`, then `python3 -m
+10. **Echoes.** `python3 -m tools.argonia_world.echoes check --window S`: 0 clusters (no two people of the
+    settlement share a fact, a seven-word run or a greeting's opening); reword the later person's line and reload.
+11. **Reader.** One `reader` pass over all the settlement's lines (style guide, bans, personification B01 by name:
+    no thing, place or institution doing a person's act, and neighbours who sound alike); fix and reload.
+12. **Build.** `tools/ArgoniaPlugin/plugin.sh seed`, `plugin.sh check`, then `python3 -m
     tools.argonia_world.talk_check` (lines, facts, names, the ESP read-back) to 0 problems; set the talkers
     `built`; commit the story data (never `plugin/Argonia/`; the integrator re-seeds).
 

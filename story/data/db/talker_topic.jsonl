@@ -43,7 +43,7 @@
 {"talker":"01512E:Black Marsh.esm","topic":"talk.greet-stranger","facts":""}
 {"talker":"01512E:Black Marsh.esm","topic":"talk.harvest","facts":"fact.lilmoth.01512e.harvest.lichen"}
 {"talker":"01512E:Black Marsh.esm","topic":"talk.here","facts":"fact.lilmoth.01512e.here.huts"}
-{"talker":"01512E:Black Marsh.esm","topic":"talk.lore","facts":"fact.lilmoth.lore.owing-sold, fact.lilmoth.lore.washed-out"}
+{"talker":"01512E:Black Marsh.esm","topic":"talk.lore","facts":"fact.lilmoth.lore.owing-sold.ask-01512e, fact.lilmoth.lore.washed-out"}
 {"talker":"01512E:Black Marsh.esm","topic":"talk.self","facts":""}
 {"talker":"015193:Black Marsh.esm","topic":"talk.greet-friend","facts":""}
 {"talker":"015193:Black Marsh.esm","topic":"talk.greet-stranger","facts":""}
@@ -85,7 +85,7 @@
 {"talker":"01CCE2:Black Marsh North.esp","topic":"talk.greet-friend","facts":""}
 {"talker":"01CCE2:Black Marsh North.esp","topic":"talk.greet-stranger","facts":""}
 {"talker":"01CCE2:Black Marsh North.esp","topic":"talk.here","facts":"fact.thorn.01cce2.here.cooking-fire"}
-{"talker":"01CCE2:Black Marsh North.esp","topic":"talk.lore","facts":"fact.thorn.01ccde.lore.ledger, fact.thorn.01cce2.lore.coffles"}
+{"talker":"01CCE2:Black Marsh North.esp","topic":"talk.lore","facts":"fact.thorn.01ccde.lore.ledger.ask-01cce2, fact.thorn.01cce2.lore.coffles"}
 {"talker":"01CCE2:Black Marsh North.esp","topic":"talk.self","facts":""}
 {"talker":"01CCE2:Black Marsh North.esp","topic":"talk.someone","facts":"fact.thorn.01cce2.someone.doveth"}
 {"talker":"01CCE5:Black Marsh North.esp","topic":"talk.directions","facts":"fact.thorn.01cce5.directions.cage-door"}
@@ -98,7 +98,7 @@
 {"talker":"01CCE9:Black Marsh North.esp","topic":"talk.greet-friend","facts":""}
 {"talker":"01CCE9:Black Marsh North.esp","topic":"talk.greet-stranger","facts":""}
 {"talker":"01CCE9:Black Marsh North.esp","topic":"talk.here","facts":"fact.thorn.01cce9.here.cage-door"}
-{"talker":"01CCE9:Black Marsh North.esp","topic":"talk.lore","facts":"fact.thorn.01ccd9.lore.magic"}
+{"talker":"01CCE9:Black Marsh North.esp","topic":"talk.lore","facts":"fact.thorn.01ccd9.lore.magic.ask-01cce9"}
 {"talker":"01CCE9:Black Marsh North.esp","topic":"talk.secret","facts":"fact.thorn.01cce9.secret.cage"}
 {"talker":"01CCE9:Black Marsh North.esp","topic":"talk.self","facts":""}
 {"talker":"01CCE9:Black Marsh North.esp","topic":"talk.someone","facts":"fact.thorn.01cce9.someone.rufio"}
@@ -127,7 +127,7 @@
 {"talker":"01CCF2:Black Marsh North.esp","topic":"talk.greet-friend","facts":""}
 {"talker":"01CCF2:Black Marsh North.esp","topic":"talk.greet-stranger","facts":""}
 {"talker":"01CCF2:Black Marsh North.esp","topic":"talk.here","facts":"fact.thorn.01ccf2.here.signpost"}
-{"talker":"01CCF2:Black Marsh North.esp","topic":"talk.lore","facts":"fact.thorn.01ccd9.lore.dres"}
+{"talker":"01CCF2:Black Marsh North.esp","topic":"talk.lore","facts":"fact.thorn.01ccd9.lore.dres.ask-01ccf2"}
 {"talker":"01CCF2:Black Marsh North.esp","topic":"talk.self","facts":""}
 {"talker":"01CCF2:Black Marsh North.esp","topic":"talk.someone","facts":"fact.thorn.01ccf2.someone.bites"}
 {"talker":"01CCF4:Black Marsh North.esp","topic":"talk.advice","facts":"fact.thorn.01ccf4.advice.south"}
@@ -143,13 +143,13 @@
 {"talker":"01CCF6:Black Marsh North.esp","topic":"talk.greet-friend","facts":""}
 {"talker":"01CCF6:Black Marsh North.esp","topic":"talk.greet-stranger","facts":""}
 {"talker":"01CCF6:Black Marsh North.esp","topic":"talk.here","facts":"fact.thorn.01ccf6.here.cooking-fire"}
-{"talker":"01CCF6:Black Marsh North.esp","topic":"talk.lore","facts":"fact.thorn.01ccea.lore.avumar"}
+{"talker":"01CCF6:Black Marsh North.esp","topic":"talk.lore","facts":"fact.thorn.01ccea.lore.avumar.ask-01ccf6"}
 {"talker":"01CCF6:Black Marsh North.esp","topic":"talk.self","facts":""}
 {"talker":"01CCF6:Black Marsh North.esp","topic":"talk.someone","facts":"fact.thorn.01ccf6.someone.quill"}
 {"talker":"01CCFA:Black Marsh North.esp","topic":"talk.greet-friend","facts":""}
 {"talker":"01CCFA:Black Marsh North.esp","topic":"talk.greet-stranger","facts":""}
 {"talker":"01CCFA:Black Marsh North.esp","topic":"talk.here","facts":"fact.thorn.01ccfa.here.signpost"}
-{"talker":"01CCFA:Black Marsh North.esp","topic":"talk.lore","facts":"fact.thorn.01ccf0.lore.tear"}
+{"talker":"01CCFA:Black Marsh North.esp","topic":"talk.lore","facts":"fact.thorn.01ccf0.lore.tear.ask-01ccfa"}
 {"talker":"01CCFA:Black Marsh North.esp","topic":"talk.secret","facts":"fact.thorn.01ccfa.secret.water"}
 {"talker":"01CCFA:Black Marsh North.esp","topic":"talk.self","facts":""}
 {"talker":"01CCFA:Black Marsh North.esp","topic":"talk.someone","facts":"fact.thorn.01ccfa.someone.ilvesa"}
@@ -171,13 +171,13 @@
 {"talker":"01CD01:Black Marsh North.esp","topic":"talk.greet-friend","facts":""}
 {"talker":"01CD01:Black Marsh North.esp","topic":"talk.greet-stranger","facts":""}
 {"talker":"01CD01:Black Marsh North.esp","topic":"talk.here","facts":"fact.thorn.01cd01.here.house"}
-{"talker":"01CD01:Black Marsh North.esp","topic":"talk.lore","facts":"fact.thorn.01ccf0.lore.tear"}
+{"talker":"01CD01:Black Marsh North.esp","topic":"talk.lore","facts":"fact.thorn.01ccf0.lore.tear.ask-01cd01"}
 {"talker":"01CD01:Black Marsh North.esp","topic":"talk.self","facts":""}
 {"talker":"01CD01:Black Marsh North.esp","topic":"talk.someone","facts":"fact.thorn.01cd01.someone.ma"}
 {"talker":"01CD04:Black Marsh North.esp","topic":"talk.greet-friend","facts":""}
 {"talker":"01CD04:Black Marsh North.esp","topic":"talk.greet-stranger","facts":""}
 {"talker":"01CD04:Black Marsh North.esp","topic":"talk.here","facts":"fact.thorn.01cd04.here.house"}
-{"talker":"01CD04:Black Marsh North.esp","topic":"talk.lore","facts":"fact.thorn.01ccd9.lore.dres, fact.thorn.01ccfc.lore.transfer"}
+{"talker":"01CD04:Black Marsh North.esp","topic":"talk.lore","facts":"fact.thorn.01ccd9.lore.dres.ask-01cd04, fact.thorn.01ccfc.lore.transfer.ask-01cd04"}
 {"talker":"01CD04:Black Marsh North.esp","topic":"talk.secret","facts":"fact.thorn.01cd04.secret.brother"}
 {"talker":"01CD04:Black Marsh North.esp","topic":"talk.self","facts":""}
 {"talker":"01CD04:Black Marsh North.esp","topic":"talk.someone","facts":"fact.thorn.01cd04.someone.wazei"}
@@ -185,7 +185,7 @@
 {"talker":"01CD0A:Black Marsh North.esp","topic":"talk.greet-friend","facts":""}
 {"talker":"01CD0A:Black Marsh North.esp","topic":"talk.greet-stranger","facts":""}
 {"talker":"01CD0A:Black Marsh North.esp","topic":"talk.here","facts":"fact.thorn.01cd0a.here.signpost"}
-{"talker":"01CD0A:Black Marsh North.esp","topic":"talk.lore","facts":"fact.thorn.01cd0a.lore.heita, fact.thorn.01cce0.lore.extend"}
+{"talker":"01CD0A:Black Marsh North.esp","topic":"talk.lore","facts":"fact.thorn.01cd0a.lore.heita, fact.thorn.01cce0.lore.extend.ask-01cd0a"}
 {"talker":"01CD0A:Black Marsh North.esp","topic":"talk.self","facts":""}
 {"talker":"01CD0A:Black Marsh North.esp","topic":"talk.someone","facts":"fact.thorn.01cd0a.someone.ukka"}
 {"talker":"01CD0A:Black Marsh North.esp","topic":"talk.trade","facts":"fact.thorn.01cd0a.trade.work"}
@@ -233,7 +233,7 @@
 {"talker":"02A205:Black Marsh.esm","topic":"talk.greet-friend","facts":""}
 {"talker":"02A205:Black Marsh.esm","topic":"talk.greet-stranger","facts":""}
 {"talker":"02A205:Black Marsh.esm","topic":"talk.harvest","facts":"fact.lilmoth.02a205.harvest.herbs"}
-{"talker":"02A205:Black Marsh.esm","topic":"talk.lore","facts":"fact.lilmoth.lore.council"}
+{"talker":"02A205:Black Marsh.esm","topic":"talk.lore","facts":"fact.lilmoth.lore.council.ask-02a205"}
 {"talker":"02A205:Black Marsh.esm","topic":"talk.self","facts":""}
 {"talker":"02A205:Black Marsh.esm","topic":"talk.someone","facts":"fact.lilmoth.02a205.someone.books"}
 {"talker":"02A206:Black Marsh.esm","topic":"talk.danger","facts":"fact.lilmoth.02a206.danger.graves, fact.lilmoth.02a206.danger.croc"}
@@ -265,14 +265,14 @@
 {"talker":"037DFE:Black Marsh North.esp","topic":"talk.greet-friend","facts":""}
 {"talker":"037DFE:Black Marsh North.esp","topic":"talk.greet-stranger","facts":""}
 {"talker":"037DFE:Black Marsh North.esp","topic":"talk.here","facts":"fact.thorn.037dfe.here.signpost"}
-{"talker":"037DFE:Black Marsh North.esp","topic":"talk.lore","facts":"fact.thorn.01ccfe.lore.ayleid"}
+{"talker":"037DFE:Black Marsh North.esp","topic":"talk.lore","facts":"fact.thorn.01ccfe.lore.ayleid.ask-037dfe"}
 {"talker":"037DFE:Black Marsh North.esp","topic":"talk.self","facts":""}
 {"talker":"037DFE:Black Marsh North.esp","topic":"talk.someone","facts":"fact.thorn.037dfe.someone.ukka"}
 {"talker":"037DFE:Black Marsh North.esp","topic":"talk.trade","facts":"fact.thorn.037dfe.trade.work"}
 {"talker":"037E00:Black Marsh North.esp","topic":"talk.greet-friend","facts":""}
 {"talker":"037E00:Black Marsh North.esp","topic":"talk.greet-stranger","facts":""}
 {"talker":"037E00:Black Marsh North.esp","topic":"talk.here","facts":"fact.thorn.037e00.here.house"}
-{"talker":"037E00:Black Marsh North.esp","topic":"talk.lore","facts":"fact.thorn.01cce2.lore.coffles"}
+{"talker":"037E00:Black Marsh North.esp","topic":"talk.lore","facts":"fact.thorn.01cce2.lore.coffles.ask-037e00"}
 {"talker":"037E00:Black Marsh North.esp","topic":"talk.self","facts":""}
 {"talker":"037E00:Black Marsh North.esp","topic":"talk.someone","facts":"fact.thorn.037e00.someone.severan"}
 {"talker":"037E00:Black Marsh North.esp","topic":"talk.trade","facts":"fact.thorn.037e00.trade.work"}
@@ -280,7 +280,7 @@
 {"talker":"037E04:Black Marsh North.esp","topic":"talk.greet-friend","facts":""}
 {"talker":"037E04:Black Marsh North.esp","topic":"talk.greet-stranger","facts":""}
 {"talker":"037E04:Black Marsh North.esp","topic":"talk.here","facts":"fact.thorn.037e04.here.house"}
-{"talker":"037E04:Black Marsh North.esp","topic":"talk.lore","facts":"fact.thorn.01cd0a.lore.heita, fact.thorn.01cce5.lore.title"}
+{"talker":"037E04:Black Marsh North.esp","topic":"talk.lore","facts":"fact.thorn.01cd0a.lore.heita.ask-037e04, fact.thorn.01cce5.lore.title.ask-037e04"}
 {"talker":"037E04:Black Marsh North.esp","topic":"talk.self","facts":""}
 {"talker":"037E04:Black Marsh North.esp","topic":"talk.someone","facts":"fact.thorn.037e04.someone.tallies"}
 {"talker":"037E04:Black Marsh North.esp","topic":"talk.trade","facts":"fact.thorn.037e04.trade.work"}
@@ -298,7 +298,7 @@
 {"talker":"03E415:Black Marsh North.esp","topic":"talk.self","facts":""}
 {"talker":"03E418:Black Marsh North.esp","topic":"talk.greet-friend","facts":""}
 {"talker":"03E418:Black Marsh North.esp","topic":"talk.greet-stranger","facts":""}
-{"talker":"03E418:Black Marsh North.esp","topic":"talk.lore","facts":"fact.lilmoth.lore.foreigners, fact.lilmoth.lore.owing"}
+{"talker":"03E418:Black Marsh North.esp","topic":"talk.lore","facts":"fact.lilmoth.lore.foreigners, fact.lilmoth.lore.owing.ask-03e418"}
 {"talker":"03E418:Black Marsh North.esp","topic":"talk.self","facts":""}
 {"talker":"03E418:Black Marsh North.esp","topic":"talk.services","facts":"fact.lilmoth.03e418.services.stock"}
 {"talker":"03E418:Black Marsh North.esp","topic":"talk.someone","facts":"fact.lilmoth.03e418.someone.linen"}
@@ -389,7 +389,7 @@
 {"talker":"084A90:Black Marsh.esm","topic":"talk.greet-friend","facts":""}
 {"talker":"084A90:Black Marsh.esm","topic":"talk.greet-stranger","facts":""}
 {"talker":"084A90:Black Marsh.esm","topic":"talk.here","facts":"fact.village.084a90.here.hut, fact.village.084a90.here.boat"}
-{"talker":"084A90:Black Marsh.esm","topic":"talk.lore","facts":"fact.village.lore.herald"}
+{"talker":"084A90:Black Marsh.esm","topic":"talk.lore","facts":"fact.village.lore.herald.ask-084a90"}
 {"talker":"084A90:Black Marsh.esm","topic":"talk.self","facts":""}
 {"talker":"084A90:Black Marsh.esm","topic":"talk.someone","facts":"fact.village.084a90.someone.neighbours"}
 {"talker":"084A90:Black Marsh.esm","topic":"talk.trade","facts":"fact.village.084a90.trade.tree"}
@@ -423,7 +423,7 @@
 {"talker":"08D5E8:Black Marsh North.esp","topic":"talk.greet-friend","facts":""}
 {"talker":"08D5E8:Black Marsh North.esp","topic":"talk.greet-stranger","facts":""}
 {"talker":"08D5E8:Black Marsh North.esp","topic":"talk.here","facts":"fact.helstrom.08d5e8.here.ruin, fact.helstrom.08d5e8.here.houses"}
-{"talker":"08D5E8:Black Marsh North.esp","topic":"talk.lore","facts":"fact.helstrom.lore.capital"}
+{"talker":"08D5E8:Black Marsh North.esp","topic":"talk.lore","facts":"fact.helstrom.lore.capital.ask-08d5e8"}
 {"talker":"08D5E8:Black Marsh North.esp","topic":"talk.rumours","facts":"fact.helstrom.rumours.quest-lq30"}
 {"talker":"08D5E8:Black Marsh North.esp","topic":"talk.self","facts":""}
 {"talker":"08D5E8:Black Marsh North.esp","topic":"talk.someone","facts":"fact.helstrom.08d5e8.someone.warden"}
@@ -465,7 +465,7 @@
 {"talker":"08D5EE:Black Marsh North.esp","topic":"talk.greet-friend","facts":""}
 {"talker":"08D5EE:Black Marsh North.esp","topic":"talk.greet-stranger","facts":""}
 {"talker":"08D5EE:Black Marsh North.esp","topic":"talk.here","facts":"fact.dock5.08d5ee.here.door, fact.dock5.08d5ee.here.houses"}
-{"talker":"08D5EE:Black Marsh North.esp","topic":"talk.lore","facts":"fact.dock5.lore.raft, fact.dock5.lore.never"}
+{"talker":"08D5EE:Black Marsh North.esp","topic":"talk.lore","facts":"fact.dock5.lore.raft, fact.dock5.lore.never.ask-08d5ee"}
 {"talker":"08D5EE:Black Marsh North.esp","topic":"talk.self","facts":""}
 {"talker":"08D5EE:Black Marsh North.esp","topic":"talk.someone","facts":"fact.dock5.08d5ee.someone.wuleen"}
 {"talker":"08D5EF:Black Marsh North.esp","topic":"talk.advice","facts":"fact.dock5.08d5ef.advice.bench"}
@@ -473,15 +473,15 @@
 {"talker":"08D5EF:Black Marsh North.esp","topic":"talk.greet-friend","facts":""}
 {"talker":"08D5EF:Black Marsh North.esp","topic":"talk.greet-stranger","facts":""}
 {"talker":"08D5EF:Black Marsh North.esp","topic":"talk.here","facts":"fact.dock5.08d5ef.here.bridge"}
-{"talker":"08D5EF:Black Marsh North.esp","topic":"talk.lore","facts":"fact.dock5.lore.raft"}
+{"talker":"08D5EF:Black Marsh North.esp","topic":"talk.lore","facts":"fact.dock5.lore.raft.ask-08d5ef"}
 {"talker":"08D5EF:Black Marsh North.esp","topic":"talk.self","facts":""}
 {"talker":"08D5EF:Black Marsh North.esp","topic":"talk.someone","facts":"fact.dock5.08d5ef.someone.okan"}
-{"talker":"08D5EF:Black Marsh North.esp","topic":"talk.trade","facts":"fact.dock5.lore.coin"}
+{"talker":"08D5EF:Black Marsh North.esp","topic":"talk.trade","facts":"fact.dock5.lore.coin.ask-08d5ef"}
 {"talker":"08D5F0:Black Marsh North.esp","topic":"talk.directions","facts":"fact.helstrom.08d5f0.dir.dock"}
 {"talker":"08D5F0:Black Marsh North.esp","topic":"talk.greet-friend","facts":""}
 {"talker":"08D5F0:Black Marsh North.esp","topic":"talk.greet-stranger","facts":""}
 {"talker":"08D5F0:Black Marsh North.esp","topic":"talk.here","facts":"fact.helstrom.08d5f0.here.home, fact.helstrom.08d5f0.here.tower"}
-{"talker":"08D5F0:Black Marsh North.esp","topic":"talk.rumours","facts":"fact.helstrom.lore.rival"}
+{"talker":"08D5F0:Black Marsh North.esp","topic":"talk.rumours","facts":"fact.helstrom.lore.rival.ask-08d5f0"}
 {"talker":"08D5F0:Black Marsh North.esp","topic":"talk.self","facts":""}
 {"talker":"08D5F0:Black Marsh North.esp","topic":"talk.someone","facts":"fact.helstrom.08d5f0.someone.captain"}
 {"talker":"08D5F0:Black Marsh North.esp","topic":"talk.trade","facts":"fact.helstrom.08d5f0.trade.dock"}
@@ -496,7 +496,7 @@
 {"talker":"0934BA:Black Marsh North.esp","topic":"talk.greet-friend","facts":""}
 {"talker":"0934BA:Black Marsh North.esp","topic":"talk.greet-stranger","facts":""}
 {"talker":"0934BA:Black Marsh North.esp","topic":"talk.here","facts":"fact.thorn.0934ba.here.big-ship"}
-{"talker":"0934BA:Black Marsh North.esp","topic":"talk.lore","facts":"fact.thorn.01ccf4.lore.blindeye"}
+{"talker":"0934BA:Black Marsh North.esp","topic":"talk.lore","facts":"fact.thorn.01ccf4.lore.blindeye.ask-0934ba"}
 {"talker":"0934BA:Black Marsh North.esp","topic":"talk.secret","facts":"fact.thorn.0934ba.secret.hold"}
 {"talker":"0934BA:Black Marsh North.esp","topic":"talk.self","facts":""}
 {"talker":"0934BA:Black Marsh North.esp","topic":"talk.someone","facts":"fact.thorn.0934ba.someone.decimus"}
@@ -518,7 +518,7 @@
 {"talker":"0934BD:Black Marsh North.esp","topic":"talk.greet-friend","facts":""}
 {"talker":"0934BD:Black Marsh North.esp","topic":"talk.greet-stranger","facts":""}
 {"talker":"0934BD:Black Marsh North.esp","topic":"talk.here","facts":"fact.thorn.0934bd.here.dock"}
-{"talker":"0934BD:Black Marsh North.esp","topic":"talk.lore","facts":"fact.thorn.0934bc.lore.empire"}
+{"talker":"0934BD:Black Marsh North.esp","topic":"talk.lore","facts":"fact.thorn.0934bc.lore.empire.ask-0934bd"}
 {"talker":"0934BD:Black Marsh North.esp","topic":"talk.self","facts":""}
 {"talker":"0934BD:Black Marsh North.esp","topic":"talk.someone","facts":"fact.thorn.0934bd.someone.aulus"}
 {"talker":"0934BD:Black Marsh North.esp","topic":"talk.trade","facts":"fact.thorn.0934bd.trade.work"}
@@ -526,7 +526,7 @@
 {"talker":"0934BE:Black Marsh North.esp","topic":"talk.greet-friend","facts":""}
 {"talker":"0934BE:Black Marsh North.esp","topic":"talk.greet-stranger","facts":""}
 {"talker":"0934BE:Black Marsh North.esp","topic":"talk.here","facts":"fact.thorn.0934be.here.dock"}
-{"talker":"0934BE:Black Marsh North.esp","topic":"talk.lore","facts":"fact.thorn.0934bc.lore.empire"}
+{"talker":"0934BE:Black Marsh North.esp","topic":"talk.lore","facts":"fact.thorn.0934bc.lore.empire.ask-0934be"}
 {"talker":"0934BE:Black Marsh North.esp","topic":"talk.self","facts":""}
 {"talker":"0934BE:Black Marsh North.esp","topic":"talk.someone","facts":"fact.thorn.0934be.someone.holds"}
 {"talker":"0934BE:Black Marsh North.esp","topic":"talk.trade","facts":"fact.thorn.0934be.trade.work"}
@@ -534,20 +534,20 @@
 {"talker":"0934BF:Black Marsh North.esp","topic":"talk.greet-friend","facts":""}
 {"talker":"0934BF:Black Marsh North.esp","topic":"talk.greet-stranger","facts":""}
 {"talker":"0934BF:Black Marsh North.esp","topic":"talk.here","facts":"fact.thorn.0934bf.here.hut"}
-{"talker":"0934BF:Black Marsh North.esp","topic":"talk.lore","facts":"fact.thorn.01ccf4.lore.blindeye"}
+{"talker":"0934BF:Black Marsh North.esp","topic":"talk.lore","facts":"fact.thorn.01ccf4.lore.blindeye.ask-0934bf"}
 {"talker":"0934BF:Black Marsh North.esp","topic":"talk.self","facts":""}
 {"talker":"0934BF:Black Marsh North.esp","topic":"talk.someone","facts":"fact.thorn.0934bf.someone.sheel"}
 {"talker":"0934C0:Black Marsh North.esp","topic":"talk.greet-friend","facts":""}
 {"talker":"0934C0:Black Marsh North.esp","topic":"talk.greet-stranger","facts":""}
 {"talker":"0934C0:Black Marsh North.esp","topic":"talk.here","facts":"fact.thorn.0934c0.here.signpost"}
-{"talker":"0934C0:Black Marsh North.esp","topic":"talk.lore","facts":"fact.thorn.01ccee.lore.archein"}
+{"talker":"0934C0:Black Marsh North.esp","topic":"talk.lore","facts":"fact.thorn.01ccee.lore.archein.ask-0934c0"}
 {"talker":"0934C0:Black Marsh North.esp","topic":"talk.self","facts":""}
 {"talker":"0934C0:Black Marsh North.esp","topic":"talk.someone","facts":"fact.thorn.0934c0.someone.gaius"}
 {"talker":"0934C0:Black Marsh North.esp","topic":"talk.trade","facts":"fact.thorn.0934c0.trade.work"}
 {"talker":"0934C1:Black Marsh North.esp","topic":"talk.greet-friend","facts":""}
 {"talker":"0934C1:Black Marsh North.esp","topic":"talk.greet-stranger","facts":""}
 {"talker":"0934C1:Black Marsh North.esp","topic":"talk.here","facts":"fact.thorn.0934c1.here.signpost"}
-{"talker":"0934C1:Black Marsh North.esp","topic":"talk.lore","facts":"fact.thorn.0934bb.lore.ours"}
+{"talker":"0934C1:Black Marsh North.esp","topic":"talk.lore","facts":"fact.thorn.0934bb.lore.ours.ask-0934c1"}
 {"talker":"0934C1:Black Marsh North.esp","topic":"talk.self","facts":""}
 {"talker":"0934C1:Black Marsh North.esp","topic":"talk.someone","facts":"fact.thorn.0934c1.someone.wazei"}
 {"talker":"0934C1:Black Marsh North.esp","topic":"talk.trade","facts":"fact.thorn.0934c1.trade.work"}
@@ -555,14 +555,14 @@
 {"talker":"0934C2:Black Marsh North.esp","topic":"talk.greet-friend","facts":""}
 {"talker":"0934C2:Black Marsh North.esp","topic":"talk.greet-stranger","facts":""}
 {"talker":"0934C2:Black Marsh North.esp","topic":"talk.here","facts":"fact.thorn.0934c2.here.house"}
-{"talker":"0934C2:Black Marsh North.esp","topic":"talk.lore","facts":"fact.thorn.01cce5.lore.title"}
+{"talker":"0934C2:Black Marsh North.esp","topic":"talk.lore","facts":"fact.thorn.01cce5.lore.title.ask-0934c2"}
 {"talker":"0934C2:Black Marsh North.esp","topic":"talk.self","facts":""}
 {"talker":"0934C2:Black Marsh North.esp","topic":"talk.someone","facts":"fact.thorn.0934c2.someone.nalvos"}
 {"talker":"0934C3:Black Marsh North.esp","topic":"talk.directions","facts":"fact.thorn.0934c3.directions.thorn"}
 {"talker":"0934C3:Black Marsh North.esp","topic":"talk.greet-friend","facts":""}
 {"talker":"0934C3:Black Marsh North.esp","topic":"talk.greet-stranger","facts":""}
 {"talker":"0934C3:Black Marsh North.esp","topic":"talk.here","facts":"fact.thorn.0934c3.here.hut"}
-{"talker":"0934C3:Black Marsh North.esp","topic":"talk.lore","facts":"fact.thorn.01ccde.lore.ledger"}
+{"talker":"0934C3:Black Marsh North.esp","topic":"talk.lore","facts":"fact.thorn.01ccde.lore.ledger.ask-0934c3"}
 {"talker":"0934C3:Black Marsh North.esp","topic":"talk.self","facts":""}
 {"talker":"0934C3:Black Marsh North.esp","topic":"talk.someone","facts":"fact.thorn.0934c3.someone.doveth"}
 {"talker":"0934C3:Black Marsh North.esp","topic":"talk.trade","facts":"fact.thorn.0934c3.trade.work"}
@@ -570,14 +570,14 @@
 {"talker":"0934C4:Black Marsh North.esp","topic":"talk.greet-friend","facts":""}
 {"talker":"0934C4:Black Marsh North.esp","topic":"talk.greet-stranger","facts":""}
 {"talker":"0934C4:Black Marsh North.esp","topic":"talk.here","facts":"fact.thorn.0934c4.here.house"}
-{"talker":"0934C4:Black Marsh North.esp","topic":"talk.lore","facts":"fact.thorn.01cce0.lore.extend, fact.thorn.0934bb.lore.ours"}
+{"talker":"0934C4:Black Marsh North.esp","topic":"talk.lore","facts":"fact.thorn.01cce0.lore.extend.ask-0934c4, fact.thorn.0934bb.lore.ours.ask-0934c4"}
 {"talker":"0934C4:Black Marsh North.esp","topic":"talk.self","facts":""}
 {"talker":"0934C4:Black Marsh North.esp","topic":"talk.someone","facts":"fact.thorn.0934c4.someone.breaks"}
 {"talker":"0934C4:Black Marsh North.esp","topic":"talk.trade","facts":"fact.thorn.0934c4.trade.work"}
 {"talker":"0934C5:Black Marsh North.esp","topic":"talk.greet-friend","facts":""}
 {"talker":"0934C5:Black Marsh North.esp","topic":"talk.greet-stranger","facts":""}
 {"talker":"0934C5:Black Marsh North.esp","topic":"talk.here","facts":"fact.thorn.0934c5.here.house"}
-{"talker":"0934C5:Black Marsh North.esp","topic":"talk.lore","facts":"fact.thorn.01cd0a.lore.heita, fact.thorn.01ccde.lore.mixed"}
+{"talker":"0934C5:Black Marsh North.esp","topic":"talk.lore","facts":"fact.thorn.01cd0a.lore.heita.ask-0934c5, fact.thorn.01ccde.lore.mixed.ask-0934c5"}
 {"talker":"0934C5:Black Marsh North.esp","topic":"talk.self","facts":""}
 {"talker":"0934C5:Black Marsh North.esp","topic":"talk.someone","facts":"fact.thorn.0934c5.someone.owes"}
 {"talker":"0934C5:Black Marsh North.esp","topic":"talk.trade","facts":"fact.thorn.0934c5.trade.work"}
@@ -642,29 +642,29 @@
 {"talker":"0C725A:Black Marsh.esm","topic":"talk.greet-friend","facts":""}
 {"talker":"0C725A:Black Marsh.esm","topic":"talk.greet-stranger","facts":""}
 {"talker":"0C725A:Black Marsh.esm","topic":"talk.here","facts":"fact.blackrose.0c725a.here.0, fact.blackrose.0c725a.here.1"}
-{"talker":"0C725A:Black Marsh.esm","topic":"talk.lore","facts":"fact.blackrose.lore.envoy"}
-{"talker":"0C725A:Black Marsh.esm","topic":"talk.rumours","facts":"fact.blackrose.rumours.haven"}
+{"talker":"0C725A:Black Marsh.esm","topic":"talk.lore","facts":"fact.blackrose.lore.envoy.ask-0c725a"}
+{"talker":"0C725A:Black Marsh.esm","topic":"talk.rumours","facts":"fact.blackrose.rumours.haven.ask-0c725a"}
 {"talker":"0C725A:Black Marsh.esm","topic":"talk.self","facts":""}
 {"talker":"0C725A:Black Marsh.esm","topic":"talk.someone","facts":"fact.blackrose.0c725a.someone.0c7264"}
 {"talker":"0C725B:Black Marsh.esm","topic":"talk.directions","facts":"fact.blackrose.0c725b.dir.0b6a52"}
 {"talker":"0C725B:Black Marsh.esm","topic":"talk.greet-friend","facts":""}
 {"talker":"0C725B:Black Marsh.esm","topic":"talk.greet-stranger","facts":""}
 {"talker":"0C725B:Black Marsh.esm","topic":"talk.here","facts":"fact.blackrose.0c725b.here.0"}
-{"talker":"0C725B:Black Marsh.esm","topic":"talk.lore","facts":"fact.blackrose.lore.tolls"}
+{"talker":"0C725B:Black Marsh.esm","topic":"talk.lore","facts":"fact.blackrose.lore.tolls.ask-0c725b"}
 {"talker":"0C725B:Black Marsh.esm","topic":"talk.self","facts":""}
 {"talker":"0C725B:Black Marsh.esm","topic":"talk.someone","facts":"fact.blackrose.0c725b.someone.0c7258"}
 {"talker":"0C725D:Black Marsh.esm","topic":"talk.directions","facts":"fact.blackrose.0c725d.dir.1454dc"}
 {"talker":"0C725D:Black Marsh.esm","topic":"talk.greet-friend","facts":""}
 {"talker":"0C725D:Black Marsh.esm","topic":"talk.greet-stranger","facts":""}
 {"talker":"0C725D:Black Marsh.esm","topic":"talk.here","facts":"fact.blackrose.0c725d.here.0, fact.blackrose.0c725d.here.1"}
-{"talker":"0C725D:Black Marsh.esm","topic":"talk.lore","facts":"fact.blackrose.lore.roselegit"}
+{"talker":"0C725D:Black Marsh.esm","topic":"talk.lore","facts":"fact.blackrose.lore.roselegit.ask-0c725d"}
 {"talker":"0C725D:Black Marsh.esm","topic":"talk.self","facts":""}
 {"talker":"0C725D:Black Marsh.esm","topic":"talk.someone","facts":"fact.blackrose.0c725d.someone.141561"}
 {"talker":"0C725E:Black Marsh.esm","topic":"talk.directions","facts":"fact.blackrose.0c725e.dir.082198"}
 {"talker":"0C725E:Black Marsh.esm","topic":"talk.greet-friend","facts":""}
 {"talker":"0C725E:Black Marsh.esm","topic":"talk.greet-stranger","facts":""}
 {"talker":"0C725E:Black Marsh.esm","topic":"talk.here","facts":"fact.blackrose.0c725e.here.0"}
-{"talker":"0C725E:Black Marsh.esm","topic":"talk.lore","facts":"fact.blackrose.lore.ruins"}
+{"talker":"0C725E:Black Marsh.esm","topic":"talk.lore","facts":"fact.blackrose.lore.ruins.ask-0c725e"}
 {"talker":"0C725E:Black Marsh.esm","topic":"talk.self","facts":""}
 {"talker":"0C725E:Black Marsh.esm","topic":"talk.someone","facts":"fact.blackrose.0c725e.someone.0c7263"}
 {"talker":"0C725F:Black Marsh.esm","topic":"talk.directions","facts":"fact.blackrose.0c725f.dir.1454dc"}
@@ -698,7 +698,7 @@
 {"talker":"0C7266:Black Marsh.esm","topic":"talk.greet-friend","facts":""}
 {"talker":"0C7266:Black Marsh.esm","topic":"talk.greet-stranger","facts":""}
 {"talker":"0C7266:Black Marsh.esm","topic":"talk.here","facts":"fact.blackrose.0c7266.here.0, fact.blackrose.0c7266.here.1"}
-{"talker":"0C7266:Black Marsh.esm","topic":"talk.lore","facts":"fact.blackrose.lore.swallows"}
+{"talker":"0C7266:Black Marsh.esm","topic":"talk.lore","facts":"fact.blackrose.lore.swallows.ask-0c7266"}
 {"talker":"0C7266:Black Marsh.esm","topic":"talk.self","facts":""}
 {"talker":"0C7266:Black Marsh.esm","topic":"talk.someone","facts":"fact.blackrose.0c7266.someone.1454e3"}
 {"talker":"0C7267:Black Marsh.esm","topic":"talk.directions","facts":"fact.blackrose.0c7267.dir.0b6a52"}
@@ -712,21 +712,21 @@
 {"talker":"0C7268:Black Marsh.esm","topic":"talk.greet-friend","facts":""}
 {"talker":"0C7268:Black Marsh.esm","topic":"talk.greet-stranger","facts":""}
 {"talker":"0C7268:Black Marsh.esm","topic":"talk.here","facts":"fact.blackrose.0c7268.here.0, fact.blackrose.0c7268.here.1"}
-{"talker":"0C7268:Black Marsh.esm","topic":"talk.lore","facts":"fact.blackrose.lore.refugees"}
+{"talker":"0C7268:Black Marsh.esm","topic":"talk.lore","facts":"fact.blackrose.lore.refugees.ask-0c7268"}
 {"talker":"0C7268:Black Marsh.esm","topic":"talk.self","facts":""}
 {"talker":"0C7268:Black Marsh.esm","topic":"talk.someone","facts":"fact.blackrose.0c7268.someone.0c7266"}
 {"talker":"0C7269:Black Marsh.esm","topic":"talk.directions","facts":"fact.blackrose.0c7269.dir.082198"}
 {"talker":"0C7269:Black Marsh.esm","topic":"talk.greet-friend","facts":""}
 {"talker":"0C7269:Black Marsh.esm","topic":"talk.greet-stranger","facts":""}
 {"talker":"0C7269:Black Marsh.esm","topic":"talk.here","facts":"fact.blackrose.0c7269.here.0, fact.blackrose.0c7269.here.1"}
-{"talker":"0C7269:Black Marsh.esm","topic":"talk.lore","facts":"fact.blackrose.lore.rosefamilies"}
+{"talker":"0C7269:Black Marsh.esm","topic":"talk.lore","facts":"fact.blackrose.lore.rosefamilies.ask-0c7269"}
 {"talker":"0C7269:Black Marsh.esm","topic":"talk.self","facts":""}
 {"talker":"0C7269:Black Marsh.esm","topic":"talk.someone","facts":"fact.blackrose.0c7269.someone.1454e3"}
 {"talker":"0C729E:Black Marsh.esm","topic":"talk.directions","facts":"fact.blackrose.0c729e.dir.0b6a52"}
 {"talker":"0C729E:Black Marsh.esm","topic":"talk.greet-friend","facts":""}
 {"talker":"0C729E:Black Marsh.esm","topic":"talk.greet-stranger","facts":""}
 {"talker":"0C729E:Black Marsh.esm","topic":"talk.here","facts":"fact.blackrose.0c729e.here.0"}
-{"talker":"0C729E:Black Marsh.esm","topic":"talk.lore","facts":"fact.blackrose.lore.envoy"}
+{"talker":"0C729E:Black Marsh.esm","topic":"talk.lore","facts":"fact.blackrose.lore.envoy.ask-0c729e"}
 {"talker":"0C729E:Black Marsh.esm","topic":"talk.self","facts":""}
 {"talker":"0C729E:Black Marsh.esm","topic":"talk.someone","facts":"fact.blackrose.0c729e.someone.0c725e"}
 {"talker":"0C72A3:Black Marsh.esm","topic":"talk.directions","facts":"fact.blackrose.0c72a3.dir.1454dc"}
@@ -747,7 +747,7 @@
 {"talker":"0C72A6:Black Marsh.esm","topic":"talk.greet-friend","facts":""}
 {"talker":"0C72A6:Black Marsh.esm","topic":"talk.greet-stranger","facts":""}
 {"talker":"0C72A6:Black Marsh.esm","topic":"talk.here","facts":"fact.blackrose.0c72a6.here.0"}
-{"talker":"0C72A6:Black Marsh.esm","topic":"talk.lore","facts":"fact.blackrose.lore.lilmothiit"}
+{"talker":"0C72A6:Black Marsh.esm","topic":"talk.lore","facts":"fact.blackrose.lore.lilmothiit.ask-0c72a6"}
 {"talker":"0C72A6:Black Marsh.esm","topic":"talk.self","facts":""}
 {"talker":"0C72A6:Black Marsh.esm","topic":"talk.someone","facts":"fact.blackrose.0c72a6.someone.0c72a7"}
 {"talker":"0C72A7:Black Marsh.esm","topic":"talk.directions","facts":"fact.blackrose.0c72a7.dir.0b6a52"}
@@ -766,42 +766,42 @@
 {"talker":"130773:Black Marsh.esm","topic":"talk.greet-friend","facts":""}
 {"talker":"130773:Black Marsh.esm","topic":"talk.greet-stranger","facts":""}
 {"talker":"130773:Black Marsh.esm","topic":"talk.here","facts":"fact.blackrose.130773.here.0, fact.blackrose.130773.here.1"}
-{"talker":"130773:Black Marsh.esm","topic":"talk.lore","facts":"fact.blackrose.lore.rebellion"}
+{"talker":"130773:Black Marsh.esm","topic":"talk.lore","facts":"fact.blackrose.lore.rebellion.ask-130773"}
 {"talker":"130773:Black Marsh.esm","topic":"talk.self","facts":""}
 {"talker":"130773:Black Marsh.esm","topic":"talk.someone","facts":"fact.blackrose.130773.someone.130789"}
 {"talker":"130780:Black Marsh.esm","topic":"talk.directions","facts":"fact.blackrose.130780.dir.1454dc"}
 {"talker":"130780:Black Marsh.esm","topic":"talk.greet-friend","facts":""}
 {"talker":"130780:Black Marsh.esm","topic":"talk.greet-stranger","facts":""}
 {"talker":"130780:Black Marsh.esm","topic":"talk.here","facts":"fact.blackrose.130780.here.0"}
-{"talker":"130780:Black Marsh.esm","topic":"talk.lore","facts":"fact.blackrose.lore.lilmoth"}
+{"talker":"130780:Black Marsh.esm","topic":"talk.lore","facts":"fact.blackrose.lore.lilmoth.ask-130780"}
 {"talker":"130780:Black Marsh.esm","topic":"talk.self","facts":""}
 {"talker":"130780:Black Marsh.esm","topic":"talk.someone","facts":"fact.blackrose.130780.someone.130773"}
 {"talker":"130789:Black Marsh.esm","topic":"talk.directions","facts":"fact.blackrose.130789.dir.082198"}
 {"talker":"130789:Black Marsh.esm","topic":"talk.greet-friend","facts":""}
 {"talker":"130789:Black Marsh.esm","topic":"talk.greet-stranger","facts":""}
 {"talker":"130789:Black Marsh.esm","topic":"talk.here","facts":"fact.blackrose.130789.here.0, fact.blackrose.130789.here.1"}
-{"talker":"130789:Black Marsh.esm","topic":"talk.lore","facts":"fact.blackrose.lore.rosefamilies"}
+{"talker":"130789:Black Marsh.esm","topic":"talk.lore","facts":"fact.blackrose.lore.rosefamilies.ask-130789"}
 {"talker":"130789:Black Marsh.esm","topic":"talk.self","facts":""}
 {"talker":"130789:Black Marsh.esm","topic":"talk.someone","facts":"fact.blackrose.130789.someone.0c7255"}
 {"talker":"141539:Black Marsh North.esp","topic":"talk.directions","facts":"fact.blackrose.141539.dir.1454dc"}
 {"talker":"141539:Black Marsh North.esp","topic":"talk.greet-friend","facts":""}
 {"talker":"141539:Black Marsh North.esp","topic":"talk.greet-stranger","facts":""}
 {"talker":"141539:Black Marsh North.esp","topic":"talk.here","facts":"fact.blackrose.141539.here.0, fact.blackrose.141539.here.1"}
-{"talker":"141539:Black Marsh North.esp","topic":"talk.lore","facts":"fact.blackrose.lore.rebellion"}
+{"talker":"141539:Black Marsh North.esp","topic":"talk.lore","facts":"fact.blackrose.lore.rebellion.ask-141539"}
 {"talker":"141539:Black Marsh North.esp","topic":"talk.self","facts":""}
 {"talker":"141539:Black Marsh North.esp","topic":"talk.someone","facts":"fact.blackrose.141539.someone.14153a"}
 {"talker":"14153A:Black Marsh North.esp","topic":"talk.directions","facts":"fact.blackrose.14153a.dir.082198"}
 {"talker":"14153A:Black Marsh North.esp","topic":"talk.greet-friend","facts":""}
 {"talker":"14153A:Black Marsh North.esp","topic":"talk.greet-stranger","facts":""}
 {"talker":"14153A:Black Marsh North.esp","topic":"talk.here","facts":"fact.blackrose.14153a.here.0, fact.blackrose.14153a.here.1"}
-{"talker":"14153A:Black Marsh North.esp","topic":"talk.lore","facts":"fact.blackrose.lore.ruins"}
+{"talker":"14153A:Black Marsh North.esp","topic":"talk.lore","facts":"fact.blackrose.lore.ruins.ask-14153a"}
 {"talker":"14153A:Black Marsh North.esp","topic":"talk.self","facts":""}
 {"talker":"14153A:Black Marsh North.esp","topic":"talk.someone","facts":"fact.blackrose.14153a.someone.141539"}
 {"talker":"141561:Black Marsh North.esp","topic":"talk.directions","facts":"fact.blackrose.141561.dir.1454dc"}
 {"talker":"141561:Black Marsh North.esp","topic":"talk.greet-friend","facts":""}
 {"talker":"141561:Black Marsh North.esp","topic":"talk.greet-stranger","facts":""}
 {"talker":"141561:Black Marsh North.esp","topic":"talk.here","facts":"fact.blackrose.141561.here.0"}
-{"talker":"141561:Black Marsh North.esp","topic":"talk.lore","facts":"fact.blackrose.lore.tolls"}
+{"talker":"141561:Black Marsh North.esp","topic":"talk.lore","facts":"fact.blackrose.lore.tolls.ask-141561"}
 {"talker":"141561:Black Marsh North.esp","topic":"talk.rumours","facts":"fact.blackrose.rumours.quest-bc01"}
 {"talker":"141561:Black Marsh North.esp","topic":"talk.self","facts":""}
 {"talker":"141561:Black Marsh North.esp","topic":"talk.someone","facts":"fact.blackrose.141561.someone.0c7260"}
@@ -809,28 +809,30 @@
 {"talker":"1454E3:Black Marsh.esm","topic":"talk.greet-friend","facts":""}
 {"talker":"1454E3:Black Marsh.esm","topic":"talk.greet-stranger","facts":""}
 {"talker":"1454E3:Black Marsh.esm","topic":"talk.here","facts":"fact.blackrose.1454e3.here.0, fact.blackrose.1454e3.here.1"}
-{"talker":"1454E3:Black Marsh.esm","topic":"talk.lore","facts":"fact.blackrose.lore.lilmoth"}
+{"talker":"1454E3:Black Marsh.esm","topic":"talk.lore","facts":"fact.blackrose.lore.lilmoth.ask-1454e3"}
 {"talker":"1454E3:Black Marsh.esm","topic":"talk.self","facts":""}
 {"talker":"1454E3:Black Marsh.esm","topic":"talk.someone","facts":"fact.blackrose.1454e3.someone.0c7267"}
 {"talker":"1454F2:Black Marsh.esm","topic":"talk.directions","facts":"fact.blackrose.1454f2.dir.1454dc"}
 {"talker":"1454F2:Black Marsh.esm","topic":"talk.greet-friend","facts":""}
 {"talker":"1454F2:Black Marsh.esm","topic":"talk.greet-stranger","facts":""}
 {"talker":"1454F2:Black Marsh.esm","topic":"talk.here","facts":"fact.blackrose.1454f2.here.0, fact.blackrose.1454f2.here.1"}
-{"talker":"1454F2:Black Marsh.esm","topic":"talk.lore","facts":"fact.blackrose.lore.lilmothiit"}
+{"talker":"1454F2:Black Marsh.esm","topic":"talk.lore","facts":"fact.blackrose.lore.lilmothiit.ask-1454f2"}
+{"talker":"1454F2:Black Marsh.esm","topic":"talk.rumours","facts":"fact.blackrose.1454f2.rumours.bc02-fire"}
 {"talker":"1454F2:Black Marsh.esm","topic":"talk.self","facts":""}
 {"talker":"1454F2:Black Marsh.esm","topic":"talk.someone","facts":"fact.blackrose.1454f2.someone.1454f3"}
 {"talker":"1454F3:Black Marsh.esm","topic":"talk.directions","facts":"fact.blackrose.1454f3.dir.1454dc"}
 {"talker":"1454F3:Black Marsh.esm","topic":"talk.greet-friend","facts":""}
 {"talker":"1454F3:Black Marsh.esm","topic":"talk.greet-stranger","facts":""}
 {"talker":"1454F3:Black Marsh.esm","topic":"talk.here","facts":"fact.blackrose.1454f3.here.0, fact.blackrose.1454f3.here.1"}
-{"talker":"1454F3:Black Marsh.esm","topic":"talk.lore","facts":"fact.blackrose.lore.bramman"}
+{"talker":"1454F3:Black Marsh.esm","topic":"talk.lore","facts":"fact.blackrose.lore.bramman.ask-1454f3"}
+{"talker":"1454F3:Black Marsh.esm","topic":"talk.rumours","facts":"fact.blackrose.1454f3.rumours.bc02-fire"}
 {"talker":"1454F3:Black Marsh.esm","topic":"talk.self","facts":""}
 {"talker":"1454F3:Black Marsh.esm","topic":"talk.someone","facts":"fact.blackrose.1454f3.someone.1454f2"}
 {"talker":"1454F4:Black Marsh.esm","topic":"talk.directions","facts":"fact.blackrose.1454f4.dir.1454dc"}
 {"talker":"1454F4:Black Marsh.esm","topic":"talk.greet-friend","facts":""}
 {"talker":"1454F4:Black Marsh.esm","topic":"talk.greet-stranger","facts":""}
 {"talker":"1454F4:Black Marsh.esm","topic":"talk.here","facts":"fact.blackrose.1454f4.here.0, fact.blackrose.1454f4.here.1"}
-{"talker":"1454F4:Black Marsh.esm","topic":"talk.lore","facts":"fact.blackrose.lore.swallows"}
+{"talker":"1454F4:Black Marsh.esm","topic":"talk.lore","facts":"fact.blackrose.lore.swallows.ask-1454f4"}
 {"talker":"1454F4:Black Marsh.esm","topic":"talk.self","facts":""}
 {"talker":"1454F4:Black Marsh.esm","topic":"talk.someone","facts":"fact.blackrose.1454f4.someone.1454f5"}
 {"talker":"1454F5:Black Marsh.esm","topic":"talk.directions","facts":"fact.blackrose.1454f5.dir.1454dc"}
@@ -843,17 +845,15 @@
 {"talker":"1454FC:Black Marsh.esm","topic":"talk.greet-friend","facts":""}
 {"talker":"1454FC:Black Marsh.esm","topic":"talk.greet-stranger","facts":""}
 {"talker":"1454FC:Black Marsh.esm","topic":"talk.here","facts":"fact.blackrose.1454fc.here.0, fact.blackrose.1454fc.here.1"}
-{"talker":"1454FC:Black Marsh.esm","topic":"talk.lore","facts":"fact.blackrose.lore.bramman"}
-{"talker":"1454FC:Black Marsh.esm","topic":"talk.rumours","facts":"fact.blackrose.rumours.haven"}
+{"talker":"1454FC:Black Marsh.esm","topic":"talk.lore","facts":"fact.blackrose.lore.bramman.ask-1454fc"}
+{"talker":"1454FC:Black Marsh.esm","topic":"talk.rumours","facts":"fact.blackrose.rumours.haven.ask-1454fc"}
 {"talker":"1454FC:Black Marsh.esm","topic":"talk.self","facts":""}
 {"talker":"1454FC:Black Marsh.esm","topic":"talk.someone","facts":"fact.blackrose.1454fc.someone.0c7250"}
-{"talker":"166BC1:Black Marsh North.esp","topic":"talk.advice","facts":"fact.helstrom.lore.alleys"}
+{"talker":"166BC1:Black Marsh North.esp","topic":"talk.advice","facts":"fact.helstrom.lore.alleys.ask-166bc1"}
 {"talker":"166BC1:Black Marsh North.esp","topic":"talk.greet-friend","facts":""}
 {"talker":"166BC1:Black Marsh North.esp","topic":"talk.greet-stranger","facts":""}
 {"talker":"166BC1:Black Marsh North.esp","topic":"talk.here","facts":"fact.helstrom.166bc1.here.door"}
 {"talker":"166BC1:Black Marsh North.esp","topic":"talk.lore","facts":"fact.helstrom.lore.guard"}
-{"talker":"166BC1:Black Marsh North.esp","topic":"talk.rumours","facts":"fact.helstrom.lore.rival"}
+{"talker":"166BC1:Black Marsh North.esp","topic":"talk.rumours","facts":"fact.helstrom.lore.rival.ask-166bc1"}
 {"talker":"166BC1:Black Marsh North.esp","topic":"talk.self","facts":""}
 {"talker":"166BC1:Black Marsh North.esp","topic":"talk.someone","facts":"fact.helstrom.166bc1.someone.warden"}
-{"talker":"1454F2:Black Marsh.esm","topic":"talk.rumours","facts":"fact.blackrose.1454f2.rumours.bc02-fire"}
-{"talker":"1454F3:Black Marsh.esm","topic":"talk.rumours","facts":"fact.blackrose.1454f3.rumours.bc02-fire"}

@@ -158,8 +158,12 @@ Every lore source read goes in `recordSources.lore` (`"<path> §<section>"`). Ev
 2. Revise the record for every finding, or answer it there; set `recordStatus: reviewed`.
 3. `python3 -m tools.argonia_world.quest_record import QUEST.yaml` (`--dry-run` to check) writes the record; it
    refuses the whole record on any unknown field, wrong type, dangling key or unknown lookup value. Then
-   `python3 .claude/skills/quest-write/brief.py <quest id> OUT_DIR` builds one brief per person and a journal
-   brief; it writes nothing while any reference, vocabulary term, stage field, `shapeData` section, catalogue use
+   `python3 .claude/skills/quest-write/brief.py <quest id> OUT_DIR` builds one brief per person, one per quest
+   person (their reply in `story/data/quest_lines/quest_people.json`) and a journal brief. Each brief knows who
+   else the player hears at the same stage in the same place (the record's topics by their stages and each stage's
+   place, the quest people by their stage window, the settlement's talkers): a fact several topics there use is
+   said by the first topic in record order and pointed to by the rest, so list topics in the order the player
+   meets them and put each fact first on the person whose role it is. It writes nothing while any reference, vocabulary term, stage field, `shapeData` section, catalogue use
    or ending is missing, or a stage needs someone alive who is neither essential nor protected and has no
    fail-forward.
 4. `dialogue-write` (the `dialogue-writer` agent) per brief. A fact request comes back here; add the fact and

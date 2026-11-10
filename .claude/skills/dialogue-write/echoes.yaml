@@ -1,0 +1,23 @@
+# Deliberate echoes: a fact or a clause two speakers of one window may both say (tools/argonia_world/echoes.py).
+# Each entry names the fact id (or a clause, matched inside the shared run), every speaker by name, and why.
+# A quest rumour is told by two or three talkers so the player meets the hook (Talk.cs builds one INFO per talker who
+# cites it, gated on the quest not yet started); the wording still differs from person to person.
+
+- fact: fact.blackrose.rumours.quest-bc01
+  speakers: [Mends-The-Hulls, Pays-In-Reeds, Talks-To-Water]
+  why: BC01's hook, told by three of Black Rose's dock people so the player meets it.
+- fact: fact.dock2.rumours.quest-bc03
+  speakers: [Feldril Nethri, Seeks-The-Channel]
+  why: BC03's hook at Soulrest, told by two.
+- fact: fact.dock2.rumours.quest-tg01
+  speakers: [Plaits-The-Reed, Xeeh-Nah]
+  why: TG01's hook at Soulrest, told by two.
+- fact: fact.dock5.rumours.quest-lq25
+  speakers: [Azum-Kai, Counts-Every-Crate]
+  why: LQ25's hook at Helstrom's dock, told by two.
+- fact: fact.helstrom.rumours.quest-lq30
+  speakers: [Bejeen-Ul, Hauls-Wet-Rope]
+  why: LQ30's hook in Helstrom, told by two.
+- clause: gang walks the shore path
+  speakers: [Wuleen-Sei]
+  why: MQ01's three answers to the name question are one choice; the player hears one of them, each ending with the same way out.

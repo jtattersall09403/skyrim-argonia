@@ -1,5 +1,5 @@
 {
-  "_about": "Everyone a slice quest places who has no quest topic of their own (owner walk 4, 2026-11-08: everyone in the places the slice quests touch has dialogue). One reply each to the prompt, built into ARG_Talk (QuestPeople in Talk.cs) gated GetIsID to the base; 'when' gates it on a quest's stage (lo inclusive, hi exclusive).",
+  "_about": "Everyone a slice quest places who has no quest topic of their own (owner walk 4, 2026-11-08: everyone in the places the slice quests touch has dialogue). One reply each to the prompt, built into ARG_Talk (QuestPeople in Talk.cs) gated GetIsID to the base; 'when' gates it on a quest's stage (lo inclusive, hi exclusive). Read by the echo check (tools/argonia_world/echoes.py), not the build: 'facts' lists the quest fact ids a reply states; 'speaker' names the person when a second base stands in for them elsewhere.",
   "ARG_MQ01_FindsTheOtherBank": [
     {
       "when": [
@@ -9,8 +9,9 @@
       ],
       "prompt": "Who are you?",
       "lines": [
-        "I am Finds-The-Other-Bank. I owe months on the broker's roll, like the rest of this gang. Be quiet while Ux-Xeek reads the roll."
-      ]
+        "I am Finds-The-Other-Bank. I sleep lightly and I hear every board creak in this hold. Be quiet while Ux-Xeek calls the names."
+      ],
+      "facts": []
     },
     {
       "when": [
@@ -20,7 +21,7 @@
       ],
       "prompt": "Who are you?",
       "lines": [
-        "I am Finds-The-Other-Bank. The roll burned in the fire, so I cannot show what I owe now. I do not know yet if that is good for me."
+        "I am Finds-The-Other-Bank. Ask Llarvi Maryon about the roll. I do not know yet if what became of it is good for me."
       ]
     }
   ],
@@ -33,8 +34,9 @@
       ],
       "prompt": "Who are you?",
       "lines": [
-        "Ri'Sakka. This one owes months to the broker on the pier. The overseer adds more months for every meal. This one eats only when it must."
-      ]
+        "Ri'Sakka. This one is Khajiit, a long way from the sands. This one patches the reed sleeping mats for the gang."
+      ],
+      "facts": []
     },
     {
       "when": [
@@ -44,7 +46,7 @@
       ],
       "prompt": "Who are you?",
       "lines": [
-        "Ri'Sakka. This one ran when the huts burned. The roll is ash now. This one is wet and hungry."
+        "Ri'Sakka. This one ran when the huts burned. This one is wet and hungry."
       ]
     }
   ],
@@ -57,8 +59,9 @@
       ],
       "prompt": "Who are you?",
       "lines": [
-        "Tsanji. This one works off the broker's months, like you. Stay close to the gang. Do not wander off the path."
-      ]
+        "Tsanji. This one carries the day's water. This one has seen the reeds shiver beside the path when no wind blows. Stay on the path."
+      ],
+      "facts": []
     },
     {
       "when": [
@@ -68,7 +71,7 @@
       ],
       "prompt": "Who are you?",
       "lines": [
-        "Tsanji. This one saw a tall woman with a knotted cord at her wrist. She led the ones who set the fire."
+        "Tsanji. This one carried the day's water for the gang. This one still watches the reeds beside the path."
       ]
     }
   ],
@@ -81,8 +84,9 @@
       ],
       "prompt": "Who are you?",
       "lines": [
-        "Llarvi Maryon. I owe months to the broker, the same as you, outlander. The overseer feeds us and puts the bread on the roll."
-      ]
+        "Llarvi Maryon. I oversee this camp. I sit by the fire and I watch who comes and goes. Keep your business short, outlander."
+      ],
+      "facts": []
     },
     {
       "when": [
@@ -103,6 +107,7 @@
         0,
         40
       ],
+      "speaker": "Wuleen-Sei",
       "prompt": "Where are we going?",
       "lines": [
         "We go to the camp at the edge of the paddies on Hereguard Plantation. The broker has hired you out to work there. Keep up with the gang."
@@ -116,10 +121,12 @@
         0,
         40
       ],
+      "speaker": "Finds-The-Other-Bank",
       "prompt": "Who are you?",
       "lines": [
-        "I am Finds-The-Other-Bank. We walk to the camp on Hereguard Plantation now. Stay with the gang on the path."
-      ]
+        "I am Finds-The-Other-Bank. My feet are sore from the boards of the hold. Walk where I walk. The mud is soft at the edge."
+      ],
+      "facts": []
     }
   ],
   "ARG_MQ01_MeeTuja": [
@@ -168,8 +175,9 @@
       ],
       "prompt": "Who are you?",
       "lines": [
-        "I am Deesh-Duun. I owe months on the roll, like you. I want to be off the roll and out of the broker's hire."
-      ]
+        "I am Deesh-Duun. I mend the nets at the corner of the shed. I know every family in this camp by name. I want to be out of the broker's hire."
+      ],
+      "facts": []
     },
     {
       "when": [
@@ -192,8 +200,9 @@
       ],
       "prompt": "Who are you?",
       "lines": [
-        "I am Nesh-Neel. My family works off its months here, like the rest of the gang. Sit by the fire when Ux-Xeek reads the roll."
-      ]
+        "I am Nesh-Neel. I walk the yard at dusk and I check every door. Be inside your shed before the light goes."
+      ],
+      "facts": []
     }
   ],
   "ARG_MQ01_CutsTheOldKnot": [
@@ -205,7 +214,7 @@
       ],
       "prompt": "Who are you?",
       "lines": [
-        "You do not need my name. Go and sit by your fire."
+        "You do not need my name. Move along."
       ]
     }
   ],
@@ -231,7 +240,7 @@
       ],
       "prompt": "Who are you?",
       "lines": [
-        "You do not know me. If you were at the Hereguard camp, a person in Lilmoth wants to hear about it. I will say no more."
+        "You do not know me. If you were at the Hereguard camp, someone wants to hear about it. I will say no more."
       ]
     }
   ],

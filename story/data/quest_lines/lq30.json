@@ -5,14 +5,13 @@
   "lines": [
    "I wait for Sei-Wan, my kin. He walked out into the basin alone four hours ago, to prove himself to Helstrom's Agaceph, the tribe that rules this city and that we belong to.",
    "The custom of the Agaceph forbids our own to follow a walk-out. The levy will not go, and I may not. It does not apply to an outsider.",
-   "He went east from the gate, through the shallows. Vipers live in the roots there. Anyone who walks into the basin may die there. A warning is posted at the gate.",
+   "He went east from the gate, through the shallows. Vipers live in the roots there. Ask the warden at the gate about the basin before you go.",
    "If you go, bring him home alive. If he can walk home himself, let the walk-out be his own."
   ],
   "facts": [
    "fact.lq30.walked-out",
    "fact.lq30.custom",
-   "fact.lq30.trail",
-   "fact.mq05.basin-lethal"
+   "fact.lq30.trail"
   ],
   "lines@low": [
    "I wait for Sei-Wan, my kin. He walked out into the basin alone four hours ago.",
@@ -20,7 +19,7 @@
    "The custom of the Agaceph forbids our own to follow a walk-out. The levy will not go, and I may not.",
    "It does not apply to an outsider. I do not know you, so I say only what you need.",
    "He went east from the gate, through the shallows. Vipers live in the roots there.",
-   "Anyone who walks into the basin may die there. A warning is posted at the gate.",
+   "Ask the warden at the gate about the basin before you go.",
    "If you go, bring him home alive. If he can walk home himself, let the walk-out be his own."
   ],
   "lines@high": [
@@ -29,7 +28,7 @@
    "The custom of the Agaceph forbids our own to follow a walk-out. The levy will not go, and I may not.",
    "It does not apply to an outsider, and I trust you with this. I would not say it to just anyone.",
    "He went east from the gate, through the shallows. Vipers live in the roots there.",
-   "Be careful. Anyone who walks into the basin may die there. A warning is posted at the gate.",
+   "Be careful. Ask the warden at the gate about the basin before you go.",
    "If you go, please bring him home alive. If he can walk home himself, let the walk-out be his own."
   ]
  },
@@ -37,23 +36,20 @@
   "speaker": "npc.hist-heartland.helstrom.levy-warden-01",
   "prompt": "Will you stop me going out into the basin?",
   "lines": [
-   "No. The custom of Helstrom's Agaceph forbids our own to follow a walk-out. It does not apply to an outsider, so I will not stop you.",
-   "But know this. Anyone who walks into the basin round Helstrom may die there. A warning is posted at the gate. What lies in the reed roots bites. The bite kills.",
-   "The levy will send none of its own after you. If we followed every youth out, no walk-out would be his own."
+   "No. You have heard the custom. An outsider is not the levy's to hold back, so I will not stop you.",
+   "I have kept this gate through many floods. I know the reed roots at low water. Watch where you put each foot.",
+   "My duty ends at the gate. I will send none of the levy after you."
   ],
-  "facts": [
-   "fact.lq30.custom",
-   "fact.mq05.basin-lethal"
-  ],
+  "facts": [],
   "lines@low": [
-   "No. The custom of Helstrom's Agaceph forbids our own to follow a walk-out. It does not bind an outsider, so I will not stop you.",
-   "Know this. Anyone who walks into the basin round Helstrom may die there. The warning is posted at the gate.",
-   "What lies in the reed roots bites. The bite kills. The levy sends none after you. If we followed every youth out, no walk-out would be his own."
+   "No. You have heard the custom. I will not stop an outsider.",
+   "I know the reed roots at low water. Watch your feet.",
+   "My duty ends at the gate. I send none of the levy after you."
   ],
   "lines@high": [
-   "No, friend, I will not stop you. The custom of Helstrom's Agaceph forbids our own to follow a walk-out. It does not bind an outsider.",
-   "But hear me, for I would not see you lost. Anyone who walks into the basin round Helstrom may die there. A warning is posted at the gate.",
-   "What lies in the reed roots bites. The bite kills. The levy will send none of its own after you. If we followed every youth out, no walk-out would be his own."
+   "No, friend, I will not stop you. You have heard the custom. An outsider is not the levy's to hold back.",
+   "I would not see you lost, so hear what I know. I have kept this gate through many floods and I have watched the reed roots at low water. Go slowly and watch where you put each foot.",
+   "My duty ends at the gate. I will send none of the levy after you. I will be glad to see you come back."
   ]
  },
  "topic.lq30-come-back": {

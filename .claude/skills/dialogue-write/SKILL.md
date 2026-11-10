@@ -6,15 +6,17 @@ description: Write Morrowind-style topic dialogue for one Argonia NPC of any rac
 # Writing dialogue for one person
 
 The goal: lines that read as if they were Morrowind's, about our people
-and places in Black Marsh & Valenwood's (BM&V's) world; the lines become Creation Kit dialogue records on top of BM&V. Every rule here came from an owner correction; add new bans to `bans.yaml`, new voice evidence
-to `voices.md`.
+and places in Black Marsh & Valenwood's (BM&V's) world; the lines become Creation Kit dialogue records on top of BM&V. New bans go in `bans.yaml`, new voice evidence in
+`voices.md`, deliberate echoes in `echoes.yaml`.
 
 ## 1. The brief
 
 The writer works only from a brief built from a record, never from a hand-written summary:
 
 - **Quest topics and journal text:** `../quest-write/brief.py <quest id> OUT_DIR` builds one brief per person,
-  and one journal brief, from the quest record's rows.
+  one per quest person with no topic of their own (their "Who are you?" reply in `quest_people.json`) and one
+  journal brief, from the quest record's rows.
+- **Settlement talk:** `talk_brief.py brief --talker REF --out BRIEF.md` (the talk-write skill).
 - **Place topics** (the person's topics in the place record: the place, its work, people, danger,
   directions, rumours, their role): `python3 .claude/skills/dialogue-write/place_brief.py --person <npc id>
   --out BRIEF.md`. It reads only the story data (`story/data`, through `tools/argonia_world/db.py`): the person's `npc` row, the `stance` rows
@@ -30,6 +32,18 @@ grants, and what the player already knows.
 The imported written lines (`dialogue_line` rows) are reference only and never models (decision 0024 §7); the
 facts (`fact`), topics (`topic`), glossary (`glossary_term`) and culture sheets are the source. Read them only
 through the database (`python3 -m tools.argonia_world.db query "SELECT ..."`).
+
+**One teller per fact in one place and stretch of play.** The player hears everyone in a window one after another:
+a quest stage at its place (every quest topic live at that stage, every quest person whose stage window covers it,
+the talkers of that settlement) or a settlement (all its talkers). `tools/argonia_world/echoes.py` builds the
+windows from the data, and every brief generator gives each fact of a window to one owner: the speaker of the first
+topic that states it, in the order the player meets them (the quest record's topic order; quest people; talkers).
+The brief's **Already said near you** lists who else speaks in the person's windows, what they answer and which
+facts they own; a fact this person shares with an owner is listed under **Facts you leave to their owner** (in a
+quest brief, under the topic as "Said by its owner near you"; in a talk brief, a pointer fact "Ask <owner> about
+it"). The writer says what only this person would say (their work, their stake, what they saw) and, where the player
+needs the fact, points to the owner in a few words ("ask Wuleen-Sei about the months"), never tells it and never
+reuses a neighbour's wording. Every person still answers every topic.
 
 **Lines set up the action.** A quest brief lists what the player does at each topic's stages (the skill
 uses); the lines give what the player needs to do it: who, where, when, what danger, what they will need
@@ -82,4 +96,10 @@ and quote against the corpus before using it. Never paste Morrowind lines into t
    any hit, 0 when clean; a `warn` hit such as B10 never fails the run); fix every hit or note why it stands, and
    justify each B10 warning against `story/design/province-vibe.md` §9 or reword it; then check each `review`
    ban by id.
-5. Return the lines with the fact ids each states, and any fact requests.
+5. Once the lines are in their file (quest_lines JSON, quest_people.json with each reply's `facts`, or loaded talk
+   lines), run `python3 -m tools.argonia_world.echoes check` (exit 1 on any cluster): two different speakers of one
+   window stating one fact id or sharing a run of seven words (four of them more than glue, numbers and compass
+   points); one speaker saying such a run in two topics; two greetings opening with the same words. Reword the later
+   line; a person's greeting opens in their own way, never a formula the settlement shares. A deliberate echo (a quest rumour two talkers tell so the
+   player meets the hook) is named in `echoes.yaml` with its speakers and why.
+6. Return the lines with the fact ids each states, and any fact requests.

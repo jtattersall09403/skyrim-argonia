@@ -29,13 +29,13 @@
   "speaker": "never-sold",
   "prompt": "I have the estate's debt book.",
   "lines": [
-   "That is the book. I will read her page. Every line is true: her food, the boat's upkeep, her sick days. I do not argue it. I tear out her page and give it to her. Then I leave four months in coin in the steward's chest. That was the first price."
+   "That is the book. I will read her page. I do not argue the entries. I tear out her page and give it to her. Then I leave four months in coin in the steward's chest. That was the first price."
   ],
   "lines@low": [
    "That is the book. Stand back. I will do this myself, and I will not argue it with you."
   ],
   "lines@high": [
-   "You have done what I could not. Give me the book. I will read her page. Every line is true: her food, the boat's upkeep, her sick days. I do not argue it. I tear out her page and give it to her. Then I leave four months in coin in the steward's chest. That was the first price. It is paid. Rows-For-Another is free because of you."
+   "You have done what I could not. Give me the book. I will read her page. I do not argue the entries. I tear out her page and give it to her. Then I leave four months in coin in the steward's chest. That was the first price. It is paid. Rows-For-Another is free because of you."
   ]
  },
  "topic.bc01-cut-loose": {

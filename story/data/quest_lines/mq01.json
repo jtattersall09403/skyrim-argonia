@@ -6,7 +6,7 @@
     "variant": "main",
     "prompt": "Why am I here?",
     "lines": [
-     "Listen. Everyone on the broker's gang owes months. Months are the work we owe. I add more months to the roll for food.",
+     "Listen. Everyone on the broker's gang owes months. Months are the work we owe. I add more months to the roll for every meal.",
      "I have read your line, and it has no name on it. What name do I call?"
     ],
     "facts": [
@@ -71,25 +71,23 @@
     "variant": "after-answer",
     "prompt": "Whose gang is this?",
     "lines": [
-     "I will say it plainly. Every hand in this gang owes months of work. I hold those months. I hire the gang out to Hereguard Plantation, where the shore path meets the reeds. I add months for food to the roll as well.",
-     "Your line on the roll has no name on it. That line is mine to fill or to leave. Wuleen-Sei asks the names for me.",
-     "I heard the answer you gave the overseer, Wuleen-Sei. It was enough for her, and it is written. Walk with the gang."
+     "I will say it plainly. I hold the months this gang works. I hire the gang out to Hereguard Plantation. I leave the counting to Wuleen-Sei.",
+     "Your line on the roll is mine to fill or to leave. Wuleen-Sei asks the names for me.",
+     "I heard the answer you gave the overseer, Wuleen-Sei. It was enough for her, and it is written. Go on with Wuleen-Sei."
     ],
     "facts": [
-     "fact.mq01.broker-holds",
-     "fact.mq01.owing-roll"
+     "fact.mq01.broker-holds"
     ]
    },
    {
     "variant": "before-answer",
     "prompt": "Whose gang is this?",
     "lines": [
-     "I will say it plainly. Every hand in this gang owes months of work. I hold those months. I hire the gang out to Hereguard Plantation, where the shore path meets the reeds. I add months for food to the roll as well.",
-     "Your line on the roll has no name on it. That line is mine to fill or to leave. Wuleen-Sei asks the names for me. Give her your answer in the hold."
+     "I will say it plainly. I hold the months this gang works. I hire the gang out to Hereguard Plantation. I leave the counting to Wuleen-Sei.",
+     "Your line on the roll is mine to fill or to leave. Wuleen-Sei asks the names for me. Give her your answer in the hold."
     ],
     "facts": [
-     "fact.mq01.broker-holds",
-     "fact.mq01.owing-roll"
+     "fact.mq01.broker-holds"
     ]
    }
   ]
@@ -102,11 +100,9 @@
     "prompt": "Is that water for me?",
     "lines": [
      "Here is the day's water. Drink what you need and pass the cup to the next hand. I call the names in the hold every day, in order. I have never lost one.",
-     "Every hand in this gang owes months of work. Months for food are added to the roll as well, so every meal is counted against the hand who eats it."
+     "Ask me for water whenever you are dry. Wuleen-Sei keeps the count of what you eat."
     ],
-    "facts": [
-     "fact.mq01.owing-roll"
-    ]
+    "facts": []
    }
   ]
  },
@@ -119,7 +115,7 @@
     "lines": [
      "Two of us in this gang have been kept from the Hist so long that our colour and markings have thinned. Mine is going.",
      "The gang families keep a cutting of the Hist from Nine Bends at the camp. Their egg clutch lies at its roots. I cannot stand beside my own Hist, so I want to stand beside the cutting before my colour is gone.",
-     "The camp is where the shore path meets the reeds. You will see the huts, the fire and the hatching shed. The shed stands beside the cutting at the far end."
+     "The camp is the end of the gang's walk. You will see the huts, the fire and the hatching shed there. The shed stands beside the cutting at the far end."
     ],
     "facts": [
      "fact.mq01.washed-out",
