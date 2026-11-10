@@ -10,7 +10,7 @@ import { segDist } from './geom.js';
 const VEG = new Set(['tree', 'plant', 'groundcover']);
 const RAIL = [
   ['select', 'Select'], ['search', 'Add'], ['people', 'People'], ['land', 'Land'], ['plants', 'Plants'], ['paths', 'Paths'],
-  null, ['history', 'History'], ['saves', 'Saves'], ['help', 'Help'],
+  null, ['history', 'History'], ['saves', 'Saves'], ['notes', 'Notes'], ['help', 'Help'],
 ];
 const rnd = (v, k = 100) => Math.round(v * k) / k;
 const clone = (o) => JSON.parse(JSON.stringify(o));
@@ -65,7 +65,7 @@ export class Tools {
   use(name) {
     const a = this.app;
     if (name === 'help') { a.panels.intro(); return; }
-    if (['history', 'saves'].includes(name)) { a.panels.open(name); this.markRail(name); return; }
+    if (['history', 'saves', 'notes'].includes(name)) { a.panels.open(name); this.markRail(name); return; }
     this.current = name; this.markRail(name); this.clearSketch(a.ours.view); this.clearSketch(a.src.view);
     document.getElementById('timebar').hidden = name !== 'people';
     a.people.setActive(name === 'people');

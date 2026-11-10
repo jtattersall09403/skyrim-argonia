@@ -58,6 +58,7 @@ class State:
     def __init__(self, bundles, places, web, mismatch, saves, real):
         self.bdir, self.pdir, self.web, self.mismatch = Path(bundles), Path(places), Path(web), mismatch
         self.saves, self.real = Path(saves), real
+        self.notes = {}
         self.assets = assets_module() if real else None
         self.lock = threading.Lock()
         self.seen_models, self.heartbeats, self.hb_started, self.runs = set(), 0, None, {}
@@ -308,6 +309,9 @@ class H(BaseHTTPRequestHandler):
                                    "awake": {"job_alive": st.hb_started is not None}})
         if p == "/api/_heartbeats":
             return self.send(200, {"count": st.heartbeats})
+        m = re.fullmatch(r"/api/place/([^/]+)/notes", p)
+        if m:
+            return self.send(200, st.notes.get(m[1], []))
         m = re.fullmatch(r"/api/place/([^/]+)/(saves|seat|runs)(?:/([^/]+))?", p)
         if m:
             pid, what, arg = m.groups()
@@ -393,6 +397,19 @@ class H(BaseHTTPRequestHandler):
                 self.st.hb_started = self.st.hb_started or now()
                 started = self.st.hb_started
             return self.send(200, {"held": True, "started": started, "release_after_s": 300})
+        m = re.fullmatch(r"/api/place/([^/]+)/notes", p)
+        if m:
+            b = json.loads(self.body() or b"{}")
+            with self.st.lock:
+                rows = self.st.notes.setdefault(m[1], [])
+                if b.get("id"):
+                    note = next(r for r in rows if r["id"] == b["id"])
+                    note["done"] = bool(b.get("done", True))
+                else:
+                    note = {"id": f"n{len(rows) + 1}", "at": now(), "text": b.get("text", ""), "things": b.get("things", []),
+                            "view": b.get("view"), "done": False}
+                    rows.append(note)
+            return self.send(200, note)
         m = re.fullmatch(r"/api/place/([^/]+)/finalise", p)
         if m:
             try:

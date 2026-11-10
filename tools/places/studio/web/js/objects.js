@@ -234,8 +234,9 @@ class Group {
     // effects (mist, waterfall sheets, glows) are shader tricks of the game's: drawn here they are pale rings
     // and sheets over the land, so they stay unseen (still listed and pickable)
     if (this.fx || this.unseen) { this.box.visible = false; this.box.count = 0; return 0; }
-    // the place's own built things (layer.always) are drawn whole at any distance: zoomed right out, everything built shows
-    const always = !!this.layer.always;
+    // everything placed (layer.always) is drawn whole at any distance: zoomed right out, every building, plant, tree
+    // and rock shows. Only the grass tufts placed one by one stay near the eye (smaller than a pixel from afar)
+    const always = !!this.layer.always && this.kind !== 'groundcover';
     const [near, far] = RANGE[this.kind] || RANGE.default;
     // anything big (a building, dock, bridge, ship, big rock or tree: bounds over a few metres) is never thinned or
     // cut by distance, at any detail level; only small clutter and plants thin out (the frustum still applies)

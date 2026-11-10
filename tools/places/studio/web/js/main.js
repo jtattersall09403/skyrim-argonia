@@ -112,7 +112,7 @@ class Studio {
     const origin = ground.meta.anchor ? ground.meta.anchor.map(Math.round) : [0, 0, 0];
     this.ours.origin = origin;
     this.ours.world = new ObjectLayer(origin, this.bases); this.ours.place = new ObjectLayer(origin, this.bases);
-    this.ours.place.always = true;   // everything built is drawn whole at any zoom
+    this.ours.place.always = true; this.ours.world.always = true;   // everything placed is drawn whole at any zoom
     this.ours.grass = this.makeGrass(this.ours, origin, () => this.terrain, () => [...this.worldRefs, ...(this.model.spaces.exterior?.refs.values() || [])]);
     this.ours.grass.view = this.ours.view;
     this.loading('Drawing the land');

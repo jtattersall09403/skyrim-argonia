@@ -68,7 +68,7 @@ export class Panels {
   open(name) {
     this.name = name;
     const f = { select: () => this.selectPanel(), search: () => this.searchPanel(), people: () => this.peoplePanel(), land: () => this.landPanel(),
-      plants: () => this.plantsPanel(), paths: () => this.pathsPanel(), history: () => this.historyPanel(), saves: () => this.savesPanel() }[name];
+      plants: () => this.plantsPanel(), paths: () => this.pathsPanel(), history: () => this.historyPanel(), saves: () => this.savesPanel(), notes: () => this.notesPanel() }[name];
     if (f) f();
   }
   // ---------- selection ----------
@@ -99,6 +99,9 @@ export class Panels {
       acts.append(btn('Sit on the ground', () => T.snapToGround()), btn('Duplicate', () => T.duplicate()));
       const rm = el('<button class="danger">Remove from our place</button>'); rm.onclick = () => T.remove(); acts.append(rm);
       parts.push(acts);
+      const nb = el(`<button class="quiet">Leave a note about ${refs.length === 1 ? 'this' : 'these'} for the agent</button>`);
+      nb.onclick = () => { this.name = 'notes'; T.markRail('notes'); this.notesPanel(true); };
+      parts.push(nb);
     }
     parts.push(el('<h3>How selecting works</h3>'));
     const r = el('<div class="row"></div>');
@@ -386,6 +389,51 @@ export class Panels {
     this.show('History', parts);
   }
   // ---------- saves ----------
+  // ---------- notes for the agent ----------
+  // What the owner wants changed, in words: about the place, or about the things selected. Kept with the place
+  // (edits/notes.jsonl) where the next agent reads them; an agent's reply shows under the note.
+  async notesPanel(aboutSelection = false) {
+    const a = this.app, pid = a.place.place_id, parts = [], sel = this.T.selRefs();
+    const nameOf = (r) => { const b = a.bases.get(r.base) || {}; return b.name || b.edid || 'Unnamed'; };
+    const text = el('<textarea class="text note-text" rows="4" placeholder="What should change? Say it as you would to a person." aria-label="Your note"></textarea>');
+    text.value = this.noteDraft || ''; text.oninput = () => { this.noteDraft = text.value; };
+    parts.push(el('<p>Leave a note for the agent that works on this place. It reads every note before it next touches the place, and answers here.</p>'), text);
+    let about = null;
+    if (sel.length) {
+      const words = sel.length === 1 ? `About the selected thing: ${nameOf(sel[0])}` : `About the ${sel.length} things selected`;
+      about = toggle(words, aboutSelection || this.noteAbout !== false, (v) => { this.noteAbout = v; });
+      parts.push(about);
+    } else parts.push(el('<p class="tag">About the place as a whole. To make a note about particular things, select them first.</p>'));
+    const send = el('<button class="primary">Leave the note</button>');
+    send.onclick = async () => {
+      const words = text.value.trim(); if (!words) { a.toast('Write the note first.'); return; }
+      const with_ = about && about.getAttribute('aria-pressed') === 'true' ? sel : [];
+      const v = a.ours.view.rig.target, o = a.ours.origin;
+      send.disabled = true;
+      try {
+        await api.note(pid, { text: words, view: { space: a.ours.space, at: [v.x + o[0], v.y + o[1], v.z + o[2]] },
+          things: with_.map((r) => ({ id: r.id, space: a.ours.space, base: r.base, name: nameOf(r), kind: r.kind, pos: r.pos, src: r.src })) });
+        this.noteDraft = ''; a.toast('Note left for the agent.');
+      } catch (e) { a.toast(`The note was not kept: ${e.message}. It is still in the box; try again.`, 7000); }
+      if (this.name === 'notes') this.notesPanel();
+    };
+    parts.push(send, el('<h3>Notes so far</h3>'));
+    let list = [];
+    try { list = await api.notes(pid) || []; } catch (e) { parts.push(el(`<p>The notes could not be listed: ${esc(e.message)}</p>`)); }
+    if (!list.length) parts.push(el('<p class="tag">None yet.</p>'));
+    const ol = el('<ol class="history notes"></ol>');
+    for (const n of [...list].reverse()) {
+      const things = n.things?.length ? (n.things.length === 1 ? `About ${n.things[0].name || 'one thing'}` : `About ${n.things.length} things`) : 'About the place';
+      const li = el(`<li class="${n.done ? 'future' : ''}"><span class="what">${esc(n.text)}<span class="note">${esc(things)} · ${esc(new Date(n.at).toLocaleString())} · ${n.done ? 'answered' : 'waiting for the agent'}</span>${n.reply ? `<span class="note reply">Agent: ${esc(n.reply)}</span>` : ''}</span></li>`);
+      const ids = (n.things || []).filter((t) => t.space === a.ours.space && a.placeRefsById().has(t.id)).map((t) => t.id);
+      if (ids.length) { const b = el('<button class="quiet">Select</button>'); b.onclick = () => { this.T.use('select'); a.selection = new Set(ids); this.T.selectionChanged(); }; li.append(b); }
+      const d = el(`<button class="quiet">${n.done ? 'Reopen' : 'Done'}</button>`);
+      d.onclick = async () => { try { await api.note(pid, { id: n.id, done: !n.done }); } catch (e) { a.toast(`Not changed: ${e.message}`); } if (this.name === 'notes') this.notesPanel(); };
+      li.append(d); ol.append(li);
+    }
+    parts.push(ol);
+    if (this.name === 'notes') this.show('Notes for the agent', parts);
+  }
   async savesPanel() {
     const a = this.app, parts = [];
     const name = el('<input class="text" type="text" placeholder="Name this save, e.g. Market moved" aria-label="Save name">');

@@ -13,6 +13,7 @@ world with minimal tweaks ([PLAN](docs/PLAN.md), [0038](docs/decisions/0038-the-
 - Read [PLAN](docs/PLAN.md), [PROGRESS](docs/PROGRESS.md) and the current phase's file in `docs/phases/`; that file is the work and is edited as it goes.
 - Read the owner inbox (`tooling/owner_inbox.py --list`); an owner reply is acknowledged before anything else.
 - Read [skill-fixes](docs/skill-fixes.md): lessons owed to the skills once the owner verifies a fix.
+- Read the owner's studio notes (`python -m tools.places notes`); each is answered with a change and closed with `notes done`.
 
 ## Never
 

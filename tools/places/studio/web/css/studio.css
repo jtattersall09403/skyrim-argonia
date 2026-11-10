@@ -139,6 +139,10 @@ dl.facts dd { margin: 0; overflow-wrap: anywhere; line-height: 1.4; }
 ol.history { list-style: none; padding: 0; margin: 0; }
 ol.history li { display: flex; align-items: center; gap: 8px; padding: 4px 0; border-bottom: 1px solid var(--line); }
 ol.history li.future { opacity: .45; }
+ol.history.notes li { align-items: flex-start; }
+ol.history.notes .what { white-space: pre-wrap; overflow-wrap: anywhere; min-width: 0; }
+ol.history.notes .reply { color: var(--ink); margin-top: 4px; }
+textarea.note-text { width: 100%; box-sizing: border-box; min-height: 110px; border-radius: 10px; border: 1px solid var(--line); background: var(--panel-2); padding: 10px 12px; color: var(--ink); font: inherit; resize: vertical; margin-bottom: 8px; }
 ol.history li .what { flex: 1; font-size: 15px; }
 ol.history li .note { display: block; font-size: 13px; color: var(--muted); }
 .call { min-height: 40px; min-width: 64px; padding: 0 10px; border-radius: 20px; font-size: 13px; font-weight: 600; border: 2px solid var(--fault); color: var(--fault); background: transparent; }

@@ -311,6 +311,14 @@ GET  /api/place/<id>/runs/<run_id>            {run_id, save_id, state: starting|
                                               log (tail), report (markdown, when done)} plus every
                                               field of finalise.read_run (steps, log_tail, report_md)
 GET  /api/place/<id>/seat?x=&y=               ground height, water height, slope at a point (the same code as seat)
+GET  /api/place/<id>/notes                    the owner's notes for the agent, oldest first: [{id, at, text, things:
+                                              [{id, space, base, name, kind, pos, src}], view: {space, at}, done,
+                                              done_at, reply}]
+POST /api/place/<id>/notes                    {text, things, view} adds a note; {id, done} closes or reopens one.
+                                              Kept in the place's edits/notes.jsonl (outside the draft's and the
+                                              build's identity) and committed by path. An agent lists the open
+                                              notes with `python -m tools.places notes`, makes the change, and
+                                              closes each with `notes done <place> <id> --reply "..."`
 POST /api/heartbeat                           an open tab, every 60 s; {held, started, release_after_s}
 GET  /api/status                              {ground_sha, deployed_sha, match, error?, versions:{studio, repo_head,
                                               python, aiohttp, search_model, search_rows}, awake:{job_alive}}

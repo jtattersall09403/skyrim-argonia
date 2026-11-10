@@ -19,6 +19,7 @@ import warnings
 
 from aiohttp import web
 
+from tools.places import notes
 from tools.places.studio import awake, links
 from tools.places.studio.saves import AUTOSAVE, PLACE_ID, SAVE_ID, Conflict, Saves, atomic_write
 
@@ -330,6 +331,34 @@ async def save_put(req: web.Request) -> web.Response:
     return jok({"save_id": sid, "rev": save["rev"], "at": save["at"], "kept": kept})
 
 
+async def notes_get(req: web.Request) -> web.Response:
+    """The owner's notes on a place (tools/places/notes.py), oldest first."""
+    try:
+        return jok(notes.read(req.match_info["place_id"], req.app["cfg"].places))
+    except ValueError as e:
+        return jerr(400, str(e))
+
+
+async def notes_post(req: web.Request) -> web.Response:
+    """Add a note ({text, things, view, save}), or close or reopen one ({id, done})."""
+    pid, cfg = req.match_info["place_id"], req.app["cfg"]
+    try:
+        body = await req.json()
+        if not isinstance(body, dict):
+            raise ValueError("body must be a note")
+        async with req.app["locks"].setdefault(pid, asyncio.Lock()):
+            note = (notes.done(pid, str(body["id"]), places=cfg.places, undo=not body.get("done", True)) if body.get("id")
+                    else notes.add(pid, body, cfg.places))
+    except ValueError as e:
+        return jerr(400, str(e))
+    p = notes.path(pid, cfg.places)
+    if cfg.commit and p.is_relative_to(ROOT):
+        rel = str(p.relative_to(ROOT))
+        req.app["pending"][rel] = True
+        await req.app["commit_q"].put((rel, f"places: the owner's studio note {pid}/{note['id']}"))
+    return jok(note)
+
+
 async def commit_worker(app: web.Application) -> None:
     """Commit and push each named save by path, one at a time; a failure is logged and retried on the next save."""
     q: asyncio.Queue = app["commit_q"]
@@ -529,6 +558,8 @@ def make_app(cfg: Config | None = None) -> web.Application:
     r.add_get("/api/place/{place_id}/saves/{save_id}", save_get)
     r.add_put("/api/place/{place_id}/saves/{save_id}", save_put)
     r.add_post("/api/place/{place_id}/finalise", finalise)
+    r.add_get("/api/place/{place_id}/notes", notes_get)
+    r.add_post("/api/place/{place_id}/notes", notes_post)
     r.add_get("/api/place/{place_id}/runs/{run_id}", run_get)
     r.add_get("/api/place/{place_id}/seat", seat)
     r.add_post("/api/heartbeat", heartbeat)

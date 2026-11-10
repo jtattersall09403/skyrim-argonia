@@ -647,6 +647,29 @@ def test_19_missing_texture_fallback(pad):
 
 
 # ---------- saved work is never applied silently ----------
+def test_20_notes_for_the_agent(pad, server):
+    """A note about the place, and one about a selected thing, reach the server with what they are about."""
+    pid = pad.ev("studio.place.place_id")
+    pad.ev("studio.selection.clear(); studio.tools.selectionChanged(); studio.tools.use('notes')")
+    pad.page.wait_for_selector("textarea.note-text")
+    pad.page.fill("textarea.note-text", "More reeds along the bank")
+    pad.page.get_by_role("button", name="Leave the note").click()
+    pad.page.wait_for_function("document.querySelector('ol.notes li')", timeout=10000 * SLOW)
+    rid = pad.ev("[...studio.model.spaces.exterior.refs.values()].find((r) => r.kind === 'building').id")
+    pad.ev("(id) => { studio.tools.use('select'); studio.selection = new Set([id]); studio.tools.selectionChanged(); }", rid)
+    pad.page.get_by_role("button", name="Leave a note about this for the agent").click()
+    pad.page.wait_for_selector("textarea.note-text")
+    pad.page.fill("textarea.note-text", "Turn this to face the water")
+    pad.page.get_by_role("button", name="Leave the note").click()
+    pad.page.wait_for_function("document.querySelectorAll('ol.notes li').length === 2", timeout=10000 * SLOW)
+    notes = json.load(urllib.request.urlopen(f"{server}/api/place/{pid}/notes"))
+    assert [n["text"] for n in notes] == ["More reeds along the bank", "Turn this to face the water"]
+    assert notes[0]["things"] == [] and [t["id"] for t in notes[1]["things"]] == [rid] and len(notes[1]["view"]["at"]) == 3
+    pad.shot("20-notes")
+    pad.ev("studio.selection.clear(); studio.tools.selectionChanged(); studio.panels.close()")
+    assert not pad.errors, pad.errors
+
+
 def test_22_start_choice(pad, browser, server):
     pid = pad.pid
     saves = json.load(urllib.request.urlopen(f"{server}/api/place/{pid}/saves"))
