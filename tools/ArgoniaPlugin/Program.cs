@@ -30,6 +30,7 @@ switch (args.FirstOrDefault())
     case "newworld": return NewWorld.Run(args[1..]);
     case "nwmap": return NewWorldMap.Run(args[1..]);
     case "placecheck": return PlaceCheck.Run(args[1], args[2..]);
+    case "questcheck": return args.Length > 1 && args[1] == "--selftest" ? QuestCheck.SelfTest() : QuestCheck.Run(args[1], args[2], args[3..]);
     case "nightreedcheck": return NightReedCheck.Run(args[1], args[2], args[3..]);
     default: Console.Error.WriteLine("ArgoniaPlugin seed <out.esp> <plugins...> | blocktest <esp> <pexdir> <plugins...> | list <esp> <md> | survey <plugins...> | study|quests|cell|find ..."); return 2;
 }
