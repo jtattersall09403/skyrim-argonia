@@ -345,11 +345,12 @@ are read with `read_run` (Finalise, below); `rc` is the job_guard job `finalise.
 
 **What the views draw** (the front end, `tools/places/studio/web`): exactly what the game will show. Every placed
 thing is drawn whole at any zoom, its placed ground cover too. Geometry the game never shows is left out: effects
-(`effects\` models, the game's shader tricks), things with no model (markers, triggers, sounds) and any part of a
+(models under `effects\` or named `fx*`, records named `FX*`: the game's shader tricks, wherever a mod keeps
+them, as Dragonborn's Apocrypha mist in `dlc02\dungeons`), things with no model (markers, triggers, sounds) and any part of a
 model under a node named `EditorMarker` (the Creation Kit's own marker shapes, as on mist, fog and trap gas). Grass
 is grown as the game grows it, from each land texture's grass list (`grass.js`, rules in `grass_rules.js`): a ring
 round where the view looks, out to the view's distance (at most 16,000 units), every spot near the eye and, beyond
-3,000 units, a spot kept with chance (3000 / d)^2 and drawn up to twice the size, so the ground keeps its cover for at
+4,500 units, a spot kept with chance (4500 / d)^2 and drawn up to twice the size, so the ground keeps its cover for at
 most 6,000 blades; none once the view stands back past 30,000 units, and none from a model the converter could not
 read. Drawn paths are painted as the build paints them (`path_paint.js`, numbers tested against `build.py`): one
 more alpha layer of the style's land texture (a style word picks the land texture whose editor id ends with the

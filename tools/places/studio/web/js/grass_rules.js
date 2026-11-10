@@ -31,7 +31,7 @@ export function heightScale(g, u) {
 // kept with chance p = (GRASS_NEAR / d)^2 (the ground a pixel covers grows with the square of the distance, so the
 // blades per pixel stay about level) and its blades are drawn 1/sqrt(p) larger, up to twice, so the ground keeps
 // its cover. No grass is grown once the view stands back further than GRASS_FAR (a blade is under a pixel there).
-export const GRASS_NEAR = 3000, GRASS_FAR = 30000;
+export const GRASS_NEAR = 4500, GRASS_FAR = 30000;
 export function grassKeep(d) {
   if (d <= GRASS_NEAR) return { p: 1, scale: 1 };
   const p = (GRASS_NEAR / d) ** 2;

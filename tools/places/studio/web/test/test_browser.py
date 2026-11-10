@@ -685,6 +685,18 @@ def test_21_compass(pad):
     pad.shot("21-compass")
 
 
+def test_21_effects_never_drawn(pad):
+    # the game's effect meshes are never drawn, wherever the mod keeps them (Bethesda names them fx*)
+    cases = pad.ev("""import('./js/objects.js').then((m) => [
+        { model: 'dlc02/dungeons/apocrypha/clutter/fxapomistlowswirls01.nif' }, { model: 'effects/fxfog01.nif' },
+        { model: 'clutter/x.nif', edid: 'FXMistLow01' }, { model: 'clutter/common/candlelanternwithcandle01.nif', edid: 'CandleLantern01' },
+        { model: 'landscape/trees/foxtree01.nif' }].map(m.isEffect))""")
+    assert cases == [True, True, True, False, False], cases
+    shown = pad.ev("""[studio.ours.world, studio.ours.place, studio.src.layer].flatMap((l) => [...l.groups.values()])
+        .filter((g) => g.fx && (g.full || []).some((m) => m.visible && m.count)).length""")
+    assert shown == 0
+
+
 def test_21_selected_shows_where(pad):
     pad.page.click("#rail [data-tool=select]")
     b = first_ref(pad, "building")

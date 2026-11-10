@@ -194,12 +194,16 @@ export function drainReady(renderer, layers = [], scene = null, camera = null, b
   return left;
 }
 
+// An effect (mist, fog, gas, glow): under effects\, or a model or record Bethesda names fx*.
+export const isEffect = (base) => /^effects[\\/]/i.test(base?.model || '') || /(^|[\\/])fx[^\\/]*\.nif$/i.test(base?.model || '') || /^fx/i.test(base?.edid || '');
 // One base's instances.
 class Group {
   constructor(layer, base, kind, ghost) {
     this.layer = layer; this.base = base; this.kind = kind; this.ghost = ghost; this.refs = [];
     this.full = null; this.cap = 0; this.box = null; this.wantModel = false; this.matrices = [];
-    this.fx = /^effects[\\/]/i.test(base?.model || '');
+    // effects: the game's effect meshes, wherever a mod keeps them (Bethesda names them fx*: Dragonborn's Apocrypha
+    // mist lives in dlc02\dungeons, not effects\)
+    this.fx = isEffect(base);
     // a thing with no model (a marker, a trigger volume, a sound) has nothing to show: it is neither drawn nor picked
     this.unseen = !base?.model && !ghost;
     // effects and markers carry the record's "everything" bounds; draw them as a small box

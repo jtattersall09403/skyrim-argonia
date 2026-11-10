@@ -16,3 +16,13 @@ test('the bundle writes the water type by name and the height range as one numbe
   assert.equal(heightScale({ height_range: 0.35 }, 0), 0.65); assert.equal(heightScale({ height_range: 0.35 }, 1), 1.35);
   assert.equal(heightScale({ height_range: [0.8, 1.2] }, 0.5), 1);
 });
+test('grass thins with distance instead of stopping: full near, fewer and larger far, the ring widening with the view', async () => {
+  const { grassKeep, ringRadius, GRASS_NEAR, GRASS_FAR } = await import('../js/grass_rules.js');
+  assert.deepEqual(grassKeep(GRASS_NEAR), { p: 1, scale: 1 });
+  const at = (d) => grassKeep(d);
+  assert.ok(at(9000).p > 0 && at(9000).p < 1 && at(18000).p < at(9000).p, 'kept, but fewer, further out');
+  assert.ok(Math.abs(at(9000).p * at(9000).scale ** 2 - 1) < 1e-9, 'cover kept to twice the near range');
+  assert.equal(at(40000).scale, 2);
+  assert.ok(GRASS_FAR >= 20000, 'a town viewed from 200 m still has grass');
+  assert.equal(ringRadius(1000), 3600); assert.equal(ringRadius(9000), 10800); assert.equal(ringRadius(80000), 16000);
+});
