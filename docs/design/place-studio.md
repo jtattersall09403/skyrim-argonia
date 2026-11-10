@@ -174,7 +174,9 @@ land.jsonl             land patches: {cell, verts:[[row,col,dz]...], textures?, 
 paths.jsonl            streets, paths and walkways: {id, kind: path|street|walkway, points:[[x,y]...], width, style,
                        from?, to?, laid?}; style is a land texture key (the source place's own road texture) or the
                        draft's style word (dirt, boardwalk). The points are the line as walked: routed on our ground
-                       and decks and eased into a curve, so a walkway's line runs along its decks; `from` and `to`
+                       and decks and eased into a curve, so a walkway's line runs along its decks, and every point of
+                       the line on the built place's main walkable network (the drafter re-lays a stretch off it
+                       along the built navmesh; `laid` then says so); a guard's patrol points lie on it too; `from` and `to`
                        name the doors (source ids), `landing` or `camp.<cluster>` a drafted link joins. The studio
                        draws a person's way between two stops outside by the same rules (round buildings, never
                        through open water, along these lines where one leads the right way)

@@ -78,6 +78,13 @@ building on a slope first takes the rise the source's own builders commonly buil
    camp bed the town's network does not reach (a tent shut in by blocks) sleeps in a home's free bed instead; with
    none free, the last resident gives up theirs. A camp (beds in the open) is a stop like a door: a street
    reaches its edge.
+   Streets and patrols lie on the built walkable network. Once the doors are joined, every street, path and
+   walkway is tested along its whole line against the town's main network of the built navmesh (ours and the
+   world's own round the place); a stretch off it (where a big static's true collision cuts the mesh, or only a
+   small island stands) is re-laid along the way the mesh itself walks between the stretch's last and next points on
+   the network, eased into a curve that never leaves it, and the street's `laid` says so. Guards' patrols are then
+   taken from those streets, each point on the network (a patrol keeps at least two). `draft check` lists any street
+   or patrol point still off it.
 
 ## 4. Settle what the cost cannot
 

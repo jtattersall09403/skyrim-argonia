@@ -1,5 +1,5 @@
 """Walking heights, door facing and the island clean-up: seat.top_at, geom.front / run.face_out, check.stands_inside on
-a walkway's deck, walk.cut and walk.rehome."""
+a walkway's deck, walk.cut and walk.rehome, and streets and patrols on the built walkable network (walk.Walkable, walk.mend)."""
 import json
 import math
 
@@ -75,11 +75,69 @@ def test_cut_keeps_a_room_someone_lives_in(tmp_path):
 
 
 class _Nav:
-    def __init__(self, fk, centres):
-        self.fk, self.space, self.centres = fk, "exterior", centres
+    """A flat mesh of 100-unit squares (two triangles each) at the given (column, row) cells, neighbours over shared
+    edges, as the build's navmesh is read."""
 
-    def tri_at(self, p):
-        return next((i for i, c in enumerate(self.centres) if math.dist(c, p[:2]) < 10), -1)
+    def __init__(self, fk, cells, z=0.0):
+        self.fk, self.space, self.links, self.doors = fk, "exterior", [], []
+        verts, vid, tris = [], {}, []
+
+        def v(x, y):
+            if (x, y) not in vid:
+                vid[(x, y)] = len(verts)
+                verts.append([x * 100.0, y * 100.0, z])
+            return vid[(x, y)]
+        for cx, cy in cells:
+            a, b, c, d = v(cx, cy), v(cx + 1, cy), v(cx + 1, cy + 1), v(cx, cy + 1)
+            tris += [[a, b, c], [a, c, d]]
+        self.verts, self.tri = np.asarray(verts, float), np.asarray(tris, int)
+        edge_of = {}
+        for i, t in enumerate(tris):
+            for k in range(3):
+                edge_of.setdefault(frozenset((t[k], t[(k + 1) % 3])), []).append(i)
+        self.edge = np.full((len(tris), 3), -1, int)
+        for i, t in enumerate(tris):
+            for k in range(3):
+                self.edge[i][k] = next((o for o in edge_of[frozenset((t[k], t[(k + 1) % 3]))] if o != i), -1)
+        self.flags = np.zeros(len(tris), int)
+
+
+def _town():
+    """A street's ground 10 squares long and 3 wide with a hole cut across its lower two rows (a big static's
+    collision), and a small island apart."""
+    cells = [(x, y) for x in range(10) for y in range(3) if not (4 <= x < 6 and y < 2)]
+    return {"navs": {"main": _Nav("main", cells), "isl": _Nav("isl", [(20, 0)])}}
+
+
+def test_walkable_finds_the_main_network_and_not_holes_or_islands():
+    ctx = _town()
+    W = walk.Walkable(ctx, comp=C.components(ctx["navs"], {}))
+    assert W.on((50, 50)) and W.on((500, 250))
+    assert not W.on((500, 50))                 # in the hole
+    assert not W.on((2050, 50))                # on the island
+    assert not W.on((50, 50, 900))             # a point far above the mesh is another level
+
+
+def test_mend_relays_a_stretch_off_the_network_along_the_mesh_and_patrols_follow():
+    ctx = _town()
+    W = walk.Walkable(ctx, comp=C.components(ctx["navs"], {}))
+    street = {"id": "s", "points": [[50.0, 50.0], [950.0, 50.0]]}
+    assert walk.off_network([street], [], W)[0]
+    assert walk.mend(street, W) == 1
+    assert walk.off_network([street], [], W)[0] == []
+    assert street["points"][0] == [50.0, 50.0] and street["points"][-1] == [950.0, 50.0]
+    assert max(q[1] for q in street["points"]) >= 200 - walk.ON_TOL      # it goes round by the top row
+    from tools.places.draft import people
+    beat = people.beats([{"points": [[50, 50], [500, 50], [950, 50]]}])
+    assert people.patrol(beat, 0, W.on) == [[50, 50], [950, 50]]    # the point in the hole is left out
+    assert people.patrol(people.beats([street]), 0, W.on)[0] == [50.0, 50.0]
+
+
+def test_mend_leaves_a_street_with_no_way_on_the_mesh():
+    ctx = _town()
+    W = walk.Walkable(ctx, comp=C.components(ctx["navs"], {}))
+    street = {"id": "s", "points": [[50.0, 50.0], [2050.0, 50.0]]}
+    assert walk.mend(street, W) is None and street["points"] == [[50.0, 50.0], [2050.0, 50.0]]
 
 
 class _Src:
@@ -94,18 +152,16 @@ def test_rehome_moves_a_sleeper_off_the_network_into_a_home_bed(tmp_path, monkey
     (p / "spaces" / "home" / "space.json").write_text(json.dumps({"space_id": "home", "parent": "exterior",
                                                                     "copy_of": "s/home"}))
     walk.io.write_jsonl(p / "spaces" / "exterior" / "refs.jsonl",
-                        [{"id": "camp", "pos": [500, 0, 0]}, {"id": "near", "pos": [0, 0, 0]}])
+                        [{"id": "camp", "pos": [550, 50, 0]}, {"id": "near", "pos": [50, 50, 0]}])
     bed = {"space": "exterior", "ref": "camp", "radius": 128}
     walk.io.write_jsonl(p / "people.jsonl", [
         {"id": "g", "role": "guard", "bed": bed, "home": "exterior", "routine": [{"kind": "sleep", "at": dict(bed)}]},
         {"id": "r", "role": "resident", "bed": {"space": "home", "ref": "B"}, "home": "home"}])
-    navs = {"main": _Nav("main", [(0, 0), (50, 0)]), "isl": _Nav("isl", [(500, 0)])}
-    comp = {("main", 0): "M", ("main", 1): "M", ("isl", 0): "I"}
-    monkeypatch.setattr(C, "components", lambda *_: comp)
-    monkeypatch.setattr(C, "door_pairs", lambda *_: {})
+    navs = {"main": _Nav("main", [(0, 0), (1, 0), (0, 1), (1, 1)]), "isl": _Nav("isl", [(5, 0)])}
     from tools.places.draft import interiors
     monkeypatch.setattr(interiors, "beds_in", lambda refs, *a: [{"ref": "B", "sleeps": 1}])
-    n = walk.rehome("p", {"navs": navs}, {}, _Src([]), p, log=lambda *_: None)
+    W = walk.Walkable({"navs": navs}, comp=C.components(navs, {}))
+    n = walk.rehome("p", W, {}, _Src([]), p, log=lambda *_: None)
     assert n == 1
     ppl = {q["id"]: q for q in walk.io.read_jsonl(p / "people.jsonl")}
     assert set(ppl) == {"g"}                                   # the resident gave up the only bed

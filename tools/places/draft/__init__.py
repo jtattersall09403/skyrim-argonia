@@ -23,13 +23,8 @@ def main(argv: list[str]) -> int:
         return 2
     counts = draft(ids[0], force=force)
     from tools.places.draft import walk
-    from tools.places.seat import main as seat_main
-    counts["joins"] = walk.join(ids[0])
-    if counts["joins"]:
-        seat_main([ids[0]])
-        from tools.places import edits   # the place files in canonical order, as every writer leaves them
-        from tools.places.draft import io
-        edits.write_place(io.PLACES / ids[0], edits.load_place(io.PLACES / ids[0]))
+    # joins, rehomed sleepers, streets and patrols laid on the built network; it leaves the files seated and canonical
+    counts["network"] = walk.join(ids[0])
     import json
     print(json.dumps(counts, indent=1))
     return 0

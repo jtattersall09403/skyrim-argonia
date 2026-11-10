@@ -77,11 +77,12 @@ def foot_hits(a: dict, b: dict, bases: dict, pad: float = 0.0) -> bool:
 
 
 class Grid:
-    """Solids bucketed by cell for the origin-in-box test."""
+    """Solids bucketed by cell for the origin-in-box test. A solid that moves is taken out and put back (`move`)."""
 
     def __init__(self, refs: list[dict], bases: dict):
         self.bases = bases
         self.cells: dict[tuple[int, int], list[dict]] = defaultdict(list)
+        self.keys: dict[int, list[tuple[int, int]]] = {}
         for b in refs:
             self.add(b)
 
@@ -90,20 +91,34 @@ class Grid:
         if rad <= 0:
             return
         x, y = b["pos"][0], b["pos"][1]
-        for i in range(math.floor((x - rad) / CELL), math.floor((x + rad) / CELL) + 1):
-            for j in range(math.floor((y - rad) / CELL), math.floor((y + rad) / CELL) + 1):
-                self.cells[(i, j)].append(b)
+        keys = [(i, j) for i in range(math.floor((x - rad) / CELL), math.floor((x + rad) / CELL) + 1)
+                for j in range(math.floor((y - rad) / CELL), math.floor((y + rad) / CELL) + 1)]
+        for k in keys:
+            self.cells[k].append(b)
+        self.keys[id(b)] = keys
+
+    def remove(self, b: dict) -> None:
+        for k in self.keys.pop(id(b), ()):
+            self.cells[k] = [o for o in self.cells[k] if o is not b]
+
+    def move(self, b: dict) -> None:
+        """Re-bucket b after its position changed."""
+        if id(b) in self.keys:
+            self.remove(b)
+            self.add(b)
 
     def near(self, p) -> list[dict]:
         return self.cells.get((math.floor(p[0] / CELL), math.floor(p[1] / CELL)), [])
 
-    def hits(self, rows: list[dict], z: bool = True) -> int:
-        """How many of rows stand in a solid of the grid, or have one standing in them."""
+    def hits(self, rows: list[dict], z: bool = True, skip=()) -> int:
+        """How many of rows stand in a solid of the grid, or have one standing in them; the solids in `skip` (the
+        rows' own originals) left out."""
+        out = {id(b) for b in skip}
         n = 0
         for a in rows:
-            if any(inside(a["pos"], b, self.bases, z) for b in self.near(a["pos"])):
+            if any(inside(a["pos"], b, self.bases, z) for b in self.near(a["pos"]) if id(b) not in out):
                 n += 1
-        others = {id(b): b for a in rows for b in self.near(a["pos"])}
+        others = {id(b): b for a in rows for b in self.near(a["pos"]) if id(b) not in out}
         for b in others.values():
             if any(inside(b["pos"], a, self.bases, z) for a in rows):
                 n += 1

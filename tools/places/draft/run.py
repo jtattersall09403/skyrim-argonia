@@ -252,11 +252,12 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
     by_cluster: dict[str, list[dict]] = {}
     for row in our:
         by_cluster.setdefault(row.get("cluster"), []).append(row)
+    # one grid of every solid, each test leaving out the pieces being moved, re-bucketed when they move
+    solid_grid = overlap.Grid([r for r in our if r.get("kind") in overlap.SOLID], bases)
     for cid, rows in sorted(by_cluster.items(), key=lambda kv: str(kv[0])):
         if not any(r.get("kind") == "door" and wrong(r) for r in rows):
             continue
         # ... and never into another cluster's piece (separate's rule, kept after it)
-        others = overlap.Grid([r for r in our if r.get("cluster") != cid and r.get("kind") in overlap.SOLID], bases)
         solids = [r for r in rows if r.get("kind") in overlap.SOLID]
         best = None
         for d in [0.0] + CLUSTER_NUDGE:
@@ -267,7 +268,7 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
                     r["pos"][1] += dy
                 bad_doors = sum(1 for r in rows if r.get("kind") == "door" and wrong(r))
                 n = sum(1 for r in rows if wrong(r))
-                hits = others.hits(solids, z=False) if bad_doors == 0 else 0
+                hits = solid_grid.hits(solids, z=False, skip=rows) if bad_doors == 0 else 0
                 for r in rows:
                     r["pos"][0] -= dx
                     r["pos"][1] -= dy
@@ -281,6 +282,7 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
         _, dx, dy = best
         for r in rows:
             r["pos"][0], r["pos"][1] = round(r["pos"][0] + dx, 2), round(r["pos"][1] + dy, 2)
+            solid_grid.move(r)
             lr = lrow_of[r["id"]]
             if lr["status"] == "placed" and (dx or dy):
                 lr["status"] = "adapted"
@@ -293,14 +295,13 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
         x, y = row["pos"][0], row["pos"][1]
         if G.wet(x, y, 16) == want:
             continue
-        others = overlap.Grid([o for o in our if o is not row and o.get("kind") in overlap.SOLID], bases) \
-            if row.get("kind") in overlap.SOLID else None
+        solid = row.get("kind") in overlap.SOLID
 
         def clear_at(sx, sy):   # never nudged into another thing (nor another into it)
-            if others is None:
+            if not solid:
                 return True
             moved = {**row, "pos": [sx, sy, row["pos"][2]]}
-            return others.hits([moved], z=False) == 0
+            return solid_grid.hits([moved], z=False, skip=[row]) == 0
         spot = next(((x + d * math.cos(a), y + d * math.sin(a)) for d in NUDGE_STEPS
                      for a in (k * math.pi / 4 for k in range(8)) if G.wet(x + d * math.cos(a), y + d * math.sin(a), 16) == want
                      and G.has(x + d * math.cos(a), y + d * math.sin(a))
@@ -308,6 +309,7 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
         lr = lrow_of[row["id"]]
         if spot:
             row["pos"][0], row["pos"][1] = round(spot[0], 2), round(spot[1], 2)
+            solid_grid.move(row)
             lr["status"] = "adapted" if lr["status"] == "placed" else lr["status"]
             lr["nudge"] = round(geom.dist((x, y), spot), 1)
         else:
@@ -1226,15 +1228,13 @@ def draft_people(place_id, rec, gives, src, bases, our, spaces, clusters, fit, o
     # guards: patrol the streets in two shifts
     # each guard walks streets end to end and back, never cutting across: the day and night guard of a pair share
     # a beat (Whiterun's patrol chains run along its streets, town-life.md)
-    beats = [[[round(q[0], 1), round(q[1], 1)] for q in p["points"]] for p in
-             sorted(paths_our, key=lambda p: -sum(geom.dist(a, b) for a, b in zip(p["points"], p["points"][1:])))]
+    beats = people.beats(paths_our)
     n_guards = people.guard_count(sum(1 for c in clusters if c.kind == "building"))
     for k in range(n_guards):
         shift = "day" if k % 2 == 0 else "night"
         bed = bed_for(["exterior"] + barracks + [h for h in halls if h != inn_space] + houses)
         pid = io.mint(place_id, "person", "guard", str(k))
-        beat = beats[(k // 2) % len(beats)] if beats else []
-        pts = beat + beat[-2:0:-1]
+        pts = people.patrol(beats, k)
         work = {"space": "exterior", "pos": pts[0] if pts else town["pos"], "radius": 256}
         bed_at = {"space": bed["space"], "ref": bed["ref"], "radius": 128} if bed else town
         folk.append({"id": pid, "name": people.placeholder_name(pid, taken_names), "base_from": pick_base("guard"),

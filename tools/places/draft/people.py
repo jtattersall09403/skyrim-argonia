@@ -138,3 +138,24 @@ def guard_count(buildings: int) -> int:
     """Two guards a shift for a village, more for a town (town-life.md)."""
     per_shift = max(1, min(4, math.ceil(buildings / 6)))
     return 2 * per_shift
+
+
+def beats(paths: list[dict]) -> list[list[list[float]]]:
+    """The streets as guards' beats, longest first: each guard walks one end to end and back, never cutting across,
+    and the day and night guard of a pair share it (Whiterun's patrol chains run along its streets, town-life.md)."""
+    def length(p):
+        return sum(math.dist(a[:2], b[:2]) for a, b in zip(p["points"], p["points"][1:]))
+    return [[[round(q[0], 1), round(q[1], 1)] for q in p["points"]] for p in sorted(paths, key=lambda p: -length(p))]
+
+
+def patrol(beats_: list, k: int, on=None) -> list[list[float]]:
+    """Guard k's patrol points: its pair's beat out and back, only the points `on` holds (the walkable network);
+    a beat left with fewer than two gives way to the next."""
+    if not beats_:
+        return []
+    for j in range(len(beats_)):
+        beat = beats_[(k // 2 + j) % len(beats_)]
+        pts = [q for q in beat + beat[-2:0:-1] if on is None or on(q)]
+        if len(pts) >= 2:
+            return pts
+    return []
