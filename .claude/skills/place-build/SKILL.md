@@ -61,7 +61,9 @@ building on a slope first takes the rise the source's own builders commonly buil
    of a gap between buildings, and shares a stretch with a path already laid. No street climbs steeper than the
    source's streets did.
    Every link is routed on our ground with our decks counting as ground, a link to a door on the water included,
-   so a boardwalk's line runs along its decks and a ship's hatch is reached over its own ship. The landing's shore
+   so a boardwalk's line runs along its decks (over the water a step of the route stands where the deck is, its
+   middle on the deck or on the deck's long middle line, never beside it) and a ship's hatch is reached over its
+   own ship. The landing's shore
    end is where the landing's own pieces meet our dry ground, never a bank it does not touch. Open water is
    crossed only where nothing else joins the two ends, and then where it is narrowest, on bridges of the source's
    own walkway pieces: one piece per piece length along the route, each slid along it clear of any solid there,
@@ -72,7 +74,9 @@ building on a slope first takes the rise the source's own builders commonly buil
    had none each say the anchor, the turn or a cluster's spot is wrong: put that right and redraft; never accept
    the line.
    After the draft the tools build the place and join each door whose walkable ground is an island to the town by
-   level walkway pieces laid from the island to the nearest point of the network at its height. A door whose
+   level walkway pieces laid from the island to the nearest point of the network at its height. The network is
+   what one walks: water triangles carry nobody, so a pier or a ship reached only by swimming is an island and is
+   joined to the bank, as every dock in Skyrim is. A door whose
    island no level join reaches and whose room nobody lives or works in (a ship's hatch with no way aboard in the
    source) is left out with its room and the links that led to it, with the reason in the ledger. A guard whose
    camp bed the town's network does not reach (a tent shut in by blocks) sleeps in a home's free bed instead; with
@@ -83,11 +87,13 @@ building on a slope first takes the rise the source's own builders commonly buil
    outside every placed thing's body, at the mesh's height there.
    Streets and patrols lie on the built walkable network. Once the doors are joined, every street, path and
    walkway is tested along its whole line against the town's main network of the built navmesh (ours and the
-   world's own round the place); a stretch off it (where a big static's true collision cuts the mesh, or only a
+   world's own round the place): over a walkway piece a point stands on the deck's own triangles, within 48 units
+   of the deck's surface, never on the seabed under it; over water with no deck, only on a dry triangle right
+   under it; on land, on the ground's. A stretch off it (where a big static's true collision cuts the mesh, or only a
    small island stands) is re-laid along the way the mesh itself walks between the stretch's last and next points on
    the network, eased into a curve that never leaves it, and the street's `laid` says so. Guards' patrols are then
-   taken from those streets, each point on the network (a patrol keeps at least two). `draft check` lists any street
-   or patrol point still off it.
+   taken from those streets, each point on the network (a patrol keeps at least two). `draft check` and the
+   build's `check` (its `streets` check) list any street or patrol point still off it.
 
 ## 4. Settle what the cost cannot
 

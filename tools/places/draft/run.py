@@ -500,14 +500,15 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
                         blocked_by.setdefault((i, j), set()).add(r["id"])
     walk_cells: set = set()
     for r in walk_our:
-        # the cells whose middle is on the deck (and the one its origin is in): a cell only brushed by the deck's edge
-        # is open water, and a link routed through it would run beside the deck, not on it
-        walk_cells.add((round(r["pos"][0] / 128), round(r["pos"][1] / 128)))
+        # the cells whose middle is on the deck, and those its long middle line runs through (a deck narrower than a
+        # cell): a cell only brushed by the deck's edge is open water, and a link routed through it would run beside
+        # the deck, not on it
         rad = geom.reach(r, bases)
         for i in range(round((r["pos"][0] - rad) / 128), round((r["pos"][0] + rad) / 128) + 1):
             for j in range(round((r["pos"][1] - rad) / 128), round((r["pos"][1] + rad) / 128) + 1):
-                if geom.contains_xy(r, bases, i * 128.0, j * 128.0, 32):
+                if geom.contains_xy(r, bases, i * 128.0, j * 128.0):
                     walk_cells.add((i, j))
+        walk_cells.update((round(x / 128), round(y / 128)) for x, y in geom.middle_line(r, bases, 64.0))
 
     def blocked(x, y) -> bool:
         k = (round(x / 128), round(y / 128))

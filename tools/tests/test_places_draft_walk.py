@@ -193,3 +193,59 @@ def test_a_base_taking_its_stats_from_a_template_we_cannot_see_is_levelled():
     assert not people.usable(merchant, {})
     assert people.usable(merchant, {"Skyrim.esm:03DECB": {"edid": "ArgTrader", "race_edid": "ArgonianRace"}})
     assert people.usable({**merchant, "template_flags": ""}, {})
+
+
+def _water(fk, cells, z):
+    n = _Nav(fk, cells, z)
+    n.flags |= C.WATER
+    return n
+
+
+def _link(a, ai, b, bi):
+    """An edge link both ways between triangle ai of a (its edge 0) and triangle bi of b."""
+    for n, i, o, j in ((a, ai, b, bi), (b, bi, a, ai)):
+        n.links.append((0, o.fk, j))
+        n.edge[i][0] = len(n.links) - 1
+        n.flags[i] |= 1
+
+
+def test_a_water_triangle_carries_no_walker():
+    shore, sea, deck = _Nav("shore", [(0, 0)]), _water("sea", [(1, 0)], -150.0), _Nav("deck", [(2, 0)], 250.0)
+    _link(shore, 0, sea, 0)
+    _link(sea, 1, deck, 0)
+    comp = C.components({"shore": shore, "sea": sea, "deck": deck}, {})
+    assert comp[("shore", 0)] != comp[("deck", 0)]            # reached only by swimming: an island
+    assert comp[("sea", 0)] != comp[("sea", 1)]
+
+
+def test_a_walkway_point_stands_on_the_deck_not_the_seabed_under_it(monkeypatch):
+    sea = _water("sea", [(x, 0) for x in range(10)], -150.0)
+    land = _Nav("land", [(x, 1) for x in range(10)], 0.0)
+
+    def deck(x, y):
+        if 700 <= x <= 900 and 100 <= y <= 300:
+            return 1300.0          # a bridge high over the street
+        return 250.0 if 300 <= x <= 600 and 0 <= y <= 100 else None
+
+    def wet(x, y):
+        return 0.0 if y < 100 else None
+
+    def ground(x, y):
+        return -150.0 if y < 100 else 0.0
+    navs = {"land": land, "sea": sea}
+    W = walk.Walkable({"navs": navs}, ground, deck, wet, comp=C.components(navs, {}))
+    assert W.on((50, 150))                                                # on land
+    assert W.on((800, 150))                                               # on land under a bridge
+    assert not W.on((450, 50)) and "deck at z 250" in W.why((450, 50))   # over the deck: only the seabed under it
+    assert not W.on((150, 50)) and "open water" in W.why((150, 50))      # beside the deck, in the water
+    navs = {"deck": _Nav("deck", [(3, 0), (4, 0), (5, 0)], 245.0), "sea": sea}
+    W = walk.Walkable({"navs": navs}, ground, deck, wet, comp=C.components(navs, {}))
+    assert W.on((450, 30))                                                # the deck's own triangles, within DECK_TOL
+
+
+def test_middle_line_runs_along_the_longer_side(monkeypatch):
+    monkeypatch.setattr(geom, "model_bounds", lambda base: base["bounds"])
+    bases = {"b": {"model": "dock.nif", "bounds": [[-160, -250, -400], [160, 250, 70]]}}
+    pts = geom.middle_line({"base": "b", "pos": [1000.0, 0.0, 0.0], "rot": [0, 0, 0]}, bases, 100.0)
+    assert len(pts) == 6 and all(abs(x - 1000.0) < 1e-6 for x, _ in pts)
+    assert min(y for _, y in pts) == -250.0 and max(y for _, y in pts) == 250.0

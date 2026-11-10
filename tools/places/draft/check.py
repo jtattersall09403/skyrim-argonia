@@ -3,8 +3,9 @@
 Fails on: a source ref not accounted for (placed, adapted, replaced, or dropped with a reason); a ref not seated as
 its rule says (floating or buried); a building on ground steeper than the source's own with no patch; a door no
 path reaches; a promised service with nobody giving it; fewer beds than people; anything in water that the source
-had on land, or the reverse; a Nordic or levelled base placed; a person whose bed or routine points at nothing; a
-street point or a guard's patrol point off the built place's main walkable network.
+had on land, or the reverse; a Nordic or levelled base placed; a person whose bed or routine points at nothing;
+and every check of the build (`tools/places/check.py`, its streets on the main walked network among them) on the
+draft built.
 """
 from __future__ import annotations
 
@@ -374,23 +375,6 @@ def round_trip(place_id: str, places: Path = io.PLACES) -> list[str]:
                 and (not (pdir / f.relative_to(td)).exists() or (pdir / f.relative_to(td)).read_bytes() != f.read_bytes())]
 
 
-def on_network(place_id: str, ctx: dict, places: Path = io.PLACES) -> list[str]:
-    """Every street point (its line sampled every walk.STEP units) and every guard's patrol point stands on the
-    town's main walkable network of the built navmesh (the world's own mesh round the place included)."""
-    from tools.places.draft import walk
-    pdir = places / place_id
-    G = Ground.load(io.load(f"ground.{place_id}").path)
-    G.apply_patches(io.read_jsonl(pdir / "land.jsonl"))
-    W = walk.Walkable(ctx, walk.standing(G))
-    paths, folk = io.read_jsonl(pdir / "paths.jsonl"), io.read_jsonl(pdir / "people.jsonl")
-    st, pa = walk.off_network(paths, folk, W)
-    summary["network"] = {"street_points": sum(len(walk.samples(p["points"])) for p in paths), "street_off": len(st),
-                          "patrol_points": sum(len((p.get("patrol") or {}).get("points") or []) for p in folk),
-                          "patrol_off": len(pa)}
-    return ([f"street {s} point {[round(v) for v in q]} is off the built walkable network" for s, q in st]
-            + [f"{who}: patrol point {[round(v) for v in q]} is off the built walkable network" for who, q in pa])
-
-
 def build_check(place_id: str, places: Path = io.PLACES) -> list[str]:
     """The build's own checks on this draft: the place built as `draft.walk.network` builds it (cached by the place
     files' key), then every check of `tools/places/check.py` on that plugin. The same code as `check <place_id>` on
@@ -401,7 +385,7 @@ def build_check(place_id: str, places: Path = io.PLACES) -> list[str]:
     if ctx is None:
         return bad
     res = C.run(ctx)
-    res["network"] = on_network(place_id, ctx, places)
+    summary["network"] = ctx.get("streets")
     summary["build_check"] = {k: len(v) for k, v in res.items()}
     full = walk.CHECK_OUT / "shards" / place_id / "check_failures"
     full.mkdir(parents=True, exist_ok=True)

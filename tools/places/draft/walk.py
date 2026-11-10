@@ -66,6 +66,7 @@ def islands(ctx: dict, W: "Walkable") -> dict:
 
 
 ON_TOL = 48.0          # plan units: a point within this of its triangle stands on it
+WATER_EDGE = 8.0       # over water with no deck: a dry triangle this near in plan, no lower than this under the water
 PICK_TOL, Z_TOL = 96.0, 128.0   # the build's own lookup of a stop's triangle (check.STOP_PLAN_TOL, STOP_Z_TOL)
 BUCKET = 512.0
 STEP = 64.0            # units between the samples of a street tested against the network (paths.smooth's spacing)
@@ -74,18 +75,21 @@ ROUTE_CAP = 200_000    # triangles a re-lay's search may open
 
 
 class Walkable:
-    """The built exterior navmesh (ours and the world's round the place) as one index: each triangle's walkable
-    component and whether it is the town's main network (the largest component over doors, as `check` finds it);
-    triangles bucketed in plan for point lookup, and their neighbours for routing on the mesh. `zref(x, y)` gives a
-    plan point's height (our ground, as the build stands a marker given in plan); a 3-d point carries its own. A
-    point's triangle is the one the build's check picks (`check.NavIndex.at`: within PICK_TOL in plan and Z_TOL of
-    the triangle's mean height, nearest in plan, then in height), so what is on the network here is there."""
+    """The built exterior navmesh (ours and the world's round the place) as one index: each triangle's walked
+    component and whether it is the town's main network (the largest component over doors, as `check` finds it; a
+    water triangle joins nothing, `check.components`); triangles bucketed in plan for point lookup (a point is never
+    found on a water triangle), and their neighbours for routing on the mesh. The levels one may stand at over a plan
+    point (`levels`): a walkway piece's deck, `deck(x, y)`, by the mesh's own height there within check.DECK_TOL; our
+    dry ground, `zref(x, y)`, within Z_TOL of a triangle's mean height; over water with no deck (`wet(x, y)` gives the
+    water's level), only a dry triangle above the water, right under the point. A 3-d point carries its own height. A
+    point's triangle is the one the build's check picks (`check.NavIndex.at`: within PICK_TOL in plan and the level's
+    height band, nearest in plan, then in height), so what is on the network here is there."""
 
-    def __init__(self, ctx: dict, zref=None, comp: dict | None = None):
+    def __init__(self, ctx: dict, zref=None, deck=None, wet=None, comp: dict | None = None):
         from tools.places import check as C
         comp = comp if comp is not None else C.components(ctx["navs"], C.door_pairs(ctx))
         main = Counter(comp.values()).most_common(1)[0][0]
-        self.zref = zref
+        self.zref, self.deck, self.wet = zref, deck, wet
         self.navs = [n for n in ctx["navs"].values() if n.space == "exterior" and len(n.tri)]
         self.off, tri, ids, o = {}, [], {}, 0
         cid = []
@@ -95,6 +99,7 @@ class Walkable:
             tri.append(n.verts[n.tri])
             cid += [ids.setdefault(comp[(n.fk, i)], len(ids)) for i in range(len(n.tri))]
         self.T = np.concatenate(tri) if tri else np.zeros((0, 3, 3))
+        self.dry = (np.concatenate([n.flags for n in self.navs]) & C.WATER) == 0 if tri else np.zeros(0, bool)
         self.comp = np.asarray(cid, int)
         self.main = self.comp == ids.get(main, -1)
         self.cent = self.T.mean(axis=1)
@@ -116,18 +121,42 @@ class Walkable:
         self.bucket = {int(k): idx[s:e] for k, s, e in zip(u, start, ends)}
         self._nbr = None
 
-    def _height(self, p) -> float | None:
+    def levels(self, p) -> list[tuple]:
+        """Where one may stand at p, deck first: [(height, lowest, highest, by the mesh's height at p (else by the
+        triangle's mean), plan reach)]; empty over open water with nothing to stand on."""
+        from tools.places.check import DECK_TOL
+        x, y = float(p[0]), float(p[1])
+        d = self.deck(x, y) if self.deck else None
         if len(p) > 2:
-            return float(p[2])
-        return self.zref(float(p[0]), float(p[1])) if self.zref else None
+            z = float(p[2])
+            if d is not None and abs(d - z) <= DECK_TOL:
+                return [(z, z - DECK_TOL, z + DECK_TOL, True, math.inf)]
+            return [(z, z - Z_TOL, z + Z_TOL, False, math.inf)]
+        out = [(d, d - DECK_TOL, d + DECK_TOL, True, math.inf)] if d is not None else []
+        w = self.wet(x, y) if self.wet else None
+        if w is None:
+            g = self.zref(x, y) if self.zref else None
+            out.append((g, g - Z_TOL, g + Z_TOL, False, math.inf) if g is not None else (None, -math.inf, math.inf, False, math.inf))
+        elif d is None:
+            out.append((w, w - WATER_EDGE, math.inf, True, WATER_EDGE))
+        return out
 
-    def near(self, p, tol: float = PICK_TOL) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
-        """(triangle indices, plan distance, height at p) of the triangles within `tol` of p in plan and within Z_TOL
-        of its height by their mean."""
+    def why(self, p) -> str:
+        """Why p is off the network, in words, for a check's line."""
+        lv = self.levels(p)
+        if lv and lv[0][3] and lv[0][4] == math.inf and len(p) < 3:
+            return f" (no dry triangle of the town's network within {lv[0][2] - lv[0][0]:.0f} of the deck at z {lv[0][0]:.0f})"
+        if lv and lv[-1][2] == math.inf:
+            return " (over open water: no deck and no dry triangle over it)"
+        return ""
+
+    def _cands(self, p, tol: float):
+        """(triangle indices, plan distance, the mesh's height at p) of the dry triangles within `tol` of p in plan."""
         i, j = math.floor(p[0] / BUCKET), math.floor(p[1] / BUCKET)
         c = self.bucket.get((i << 32) + j)
         if c is None:
             return np.zeros(0, int), np.zeros(0), np.zeros(0)
+        c = c[self.dry[c]]
         t = self.T[c]
         a, b, cc = t[:, 0, :2], t[:, 1, :2], t[:, 2, :2]
         q = np.asarray(p[:2], float)
@@ -151,20 +180,39 @@ class Walkable:
                      / np.where(flat, nrm[:, 2], 1.0), self.cent[c, 2])
         z = np.clip(z, t[:, :, 2].min(axis=1), t[:, :, 2].max(axis=1))
         keep = dp <= tol
-        h = self._height(p)
-        if h is not None:
-            keep &= np.abs(self.cent[c, 2] - h) <= Z_TOL
+        return c[keep], dp[keep], z[keep]
+
+    def _at(self, c, dp, z, lv, tol):
+        """The candidates a level takes: (indices into c, their score)."""
+        h, lo, hi, plane, reach = lv
+        m = (z if plane else self.cent[c, 2])
+        k = np.flatnonzero((m >= lo) & (m <= hi) & (dp <= min(tol, reach)))
+        return k, dp[k] + (np.abs(m[k] - h) * 0.01 if h is not None else 0.0)
+
+    def near(self, p, tol: float = PICK_TOL) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
+        """(triangle indices, plan distance, the mesh's height at p) of the dry triangles within `tol` of p in plan at
+        a level one may stand at there."""
+        c, dp, z = self._cands(p, tol)
+        keep = np.zeros(len(c), bool)
+        for lv in self.levels(p):
+            keep[self._at(c, dp, z, lv, tol)[0]] = True
         return c[keep], dp[keep], z[keep]
 
     def pick(self, p) -> tuple[int, float]:
-        """(triangle, plan distance) the build's check finds p on, else (-1, inf)."""
-        c, dp, _ = self.near(p, PICK_TOL)
-        if not len(c):
-            return -1, float("inf")
-        h = self._height(p)
-        score = dp + (np.abs(self.cent[c, 2] - h) * 0.01 if h is not None else 0.0)
-        k = int(np.argmin(score))
-        return int(c[k]), float(dp[k])
+        """(triangle, plan distance) the build's check finds p on, else (-1, inf): at the first level (deck first)
+        whose nearest triangle is of the main network, else the first level's nearest."""
+        c, dp, z = self._cands(p, PICK_TOL)
+        first = None
+        for lv in self.levels(p):
+            k, score = self._at(c, dp, z, lv, PICK_TOL)
+            if not len(k):
+                continue
+            best = k[int(np.argmin(score))]
+            got = (int(c[best]), float(dp[best]))
+            if self.main[got[0]] and got[1] <= min(ON_TOL, lv[4]):
+                return got
+            first = first or got
+        return first or (-1, float("inf"))
 
     def on(self, p, tol: float = ON_TOL) -> bool:
         """Whether p stands on the town's main network: the triangle it is found on is of it, within `tol` in plan."""
@@ -183,14 +231,14 @@ class Walkable:
         return None
 
     def tri(self, p) -> int:
-        """The main-network triangle under p nearest its height, else -1."""
-        c, dp, z = self.near(p, ON_TOL)
-        m = self.main[c]
-        if not m.any():
-            return -1
-        h = self._height(p)
-        score = dp[m] + (np.abs(z[m] - h) * 0.01 if h is not None else 0.0)
-        return int(c[m][np.argmin(score)])
+        """The main-network triangle under p nearest its first level's height, else -1."""
+        c, dp, z = self._cands(p, ON_TOL)
+        for lv in self.levels(p):
+            k, score = self._at(c, dp, z, lv, ON_TOL)
+            m = self.main[c[k]]
+            if m.any():
+                return int(c[k][m][np.argmin(score[m])])
+        return -1
 
     def neighbours(self) -> list[list[int]]:
         """Each triangle's neighbours over shared edges and edge links between meshes."""
@@ -255,11 +303,6 @@ class Walkable:
             pulled.append(pts[j])
             i = j
         return paths_mod.smooth(pulled, lambda x, y: not self.on((x, y)))
-
-
-def standing(G):
-    """A plan point's height on our ground (patched land included), as the build stands a marker given in plan."""
-    return G.height
 
 
 def samples(pts: list, step: float = STEP) -> list[tuple[int, tuple]]:
@@ -635,7 +678,7 @@ def join(place_id: str, places: Path = io.PLACES, out: Path = CHECK_OUT, log=pri
         if ctx is None:
             log(f"join {place_id}: the build failed: {bad[-1:]}")
             return done
-        W = Walkable(ctx, standing(G), C.components(ctx["navs"], C.door_pairs(ctx)))
+        W = Walkable(ctx, *C.surfaces(ctx), comp=C.components(ctx["navs"], C.door_pairs(ctx)))
         # people moved to a reached bed change nothing the mesh is built from: no build round of their own
         moved = rehome(place_id, W, bases, src, pdir, log)
         isl = islands(ctx, W)

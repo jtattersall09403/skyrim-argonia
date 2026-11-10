@@ -66,6 +66,27 @@ def contains_xy(sup: dict, bases: dict, x: float, y: float, pad: float = 0.0) ->
     return b[0][0] - pad <= u <= b[1][0] + pad and b[0][1] - pad <= v <= b[1][1] + pad
 
 
+def middle_line(ref: dict, bases: dict, step: float) -> list[tuple[float, float]]:
+    """Points every `step` along a piece's long middle line (the middle of its box along its longer side), world
+    plan; the origin alone for a piece with no bounds."""
+    b = bounds(ref, bases)
+    if not b:
+        return [tuple(ref["pos"][:2])]
+    (x0, y0), (x1, y1) = b[0][:2], b[1][:2]
+    along_x = x1 - x0 >= y1 - y0
+    lo, hi = (x0, x1) if along_x else (y0, y1)
+    mid = (y0 + y1) / 2 if along_x else (x0 + x1) / 2
+    rz = ref.get("rot", [0, 0, 0])[2]
+    c, s = math.cos(rz), math.sin(rz)
+    n = max(1, math.ceil((hi - lo) / step))
+    out = []
+    for k in range(n + 1):
+        w = lo + (hi - lo) * k / n
+        u, v = (w, mid) if along_x else (mid, w)
+        out.append((ref["pos"][0] + u * c + v * s, ref["pos"][1] - u * s + v * c))
+    return out
+
+
 SOLID_KINDS = {"building", "static", "furniture", "container", "door", "activator", "rock"}
 ARRIVAL_SHRINK = 0.8   # the builder's read-back test: a point inside this share of a thing's box in plan
 

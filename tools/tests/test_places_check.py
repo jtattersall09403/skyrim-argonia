@@ -117,6 +117,8 @@ def broken(name):
         n.flags[1] |= 1
         n.links = [(0, k(0x600, W), 0)]
         n.edge[1][0] = 0
+    elif name == "streets":
+        c["paths"][0]["points"][1] = [3900.0, 1200.0]     # past the navmesh's edge
     elif name == "land":
         c["land_rows"] = [{"cell": [0, 0], "verts": [[5, 5, 64.0]]}]
     elif name == "clear":

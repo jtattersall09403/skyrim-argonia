@@ -175,8 +175,9 @@ paths.jsonl            streets, paths and walkways: {id, kind: path|street|walkw
                        from?, to?, laid?}; style is a land texture key (the source place's own road texture) or the
                        draft's style word (dirt, boardwalk). The points are the line as walked: routed on our ground
                        and decks and eased into a curve, so a walkway's line runs along its decks, and every point of
-                       the line on the built place's main walkable network (the drafter re-lays a stretch off it
-                       along the built navmesh; `laid` then says so); a guard's patrol points lie on it too; `from` and `to`
+                       the line on the built place's main walkable network, at its own level (over a walkway piece
+                       the deck's own triangles; the drafter re-lays a stretch off it along the built navmesh; `laid`
+                       then says so); a guard's patrol points lie on it too; `from` and `to`
                        name the doors (source ids), `landing` or `camp.<cluster>` a drafted link joins. The studio
                        draws a person's way between two stops outside by the same rules (round buildings, never
                        through open water, along these lines where one leads the right way)
@@ -581,7 +582,10 @@ among the NewWorld profile's own plugins (after the world ESM) and the place SEQ
 its `seat` says; a ref inside another's collision that the source did not have; a door without its pair or
 facing into a wall; a person without a bed, with a routine stop off the navmesh or unreachable from the one
 before, or with a patrol marker off the navmesh or unreachable from the marker before it (a loop's first from its
-last); a navmesh island or an unjoined cell edge; a land patch whose built heights differ from `land.jsonl` or
+last); a navmesh island or an unjoined cell edge; a street, path or walkway point (each line sampled every 64
+units) or a guard's patrol point off the town's main network (over a walkway piece, on no dry triangle within 48 units
+of the deck's own surface, the upward faces of its collision under its `walk` top; over water with no deck, on no
+dry triangle right over it; on land, as a stop is found); a land patch whose built heights differ from `land.jsonl` or
 tear at a seam; a cleared plant still enabled, or a plant standing in a building, street or doorway; a service
 the place record promises with nobody giving it; a Nordic base; anything levelled (a levelled list in a person's
 inventory, outfits, death item or spells, or in a placed container; a level that follows the player; a base whose
@@ -591,7 +595,10 @@ resolves nowhere or a plugin not mastered on the world ESM. The promises are the
 `newworld/story/data/db/place_give.jsonl` (combat, loot and resource gives are not a place's to give). Nordic is
 the Nordic review's verdict for a base it lists, else a base whose model lies in Skyrim's hold-city, Nordic farm
 or Nordic ruin folders, or whose editor id carries their kit prefixes (decision 0006). Results go to `out/places/shards/<place_id>/check.json`, which the new world's
-read-back (`tools/newworld/verify.py`, area `places`) reports. The geometry is one: a ref is inside another
+read-back (`tools/newworld/verify.py`, area `places`) reports. Reachable and island are over the walked network: a
+water triangle (one swims there) joins nothing, so a pier or a ship reached only by swimming is an island, as
+Skyrim.esm's docks never are (every DockStrSol01 deck in Tamriel has dry deck triangles on the one dry network,
+measured). The geometry is one: a ref is inside another
 when its origin is within 0.8 of the other's record box in plan under the other's full three-axis rotation and
 within its height; a standing point (arrival, stop) is inside a body only below its top by more than 16 units.
 `draft check <place_id>` runs this same check (the build into `out/places/draft_check/`, then these functions on
