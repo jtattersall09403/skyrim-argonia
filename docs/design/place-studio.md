@@ -754,8 +754,9 @@ their own cell (interior), as vanilla files them.
    Resist Disease effect with a duration; the copy keeps its keyword and DispelWithKeywords, so blessings replace
    each other), then vanilla's Cure Disease. The message is ours.
 7. Navmesh: the touched exterior cells (placed collision, changed land, path cells) are rebuilt by
-   `tools.navmesh` over the patched land and the place's collision (a ref flagged `initially_disabled` is built
-   Initially Disabled and is no collision) in a window that grows from three rings until
+   `tools.navmesh` over the patched land and the place's collision (each base read from its plugin where the game
+   loads it, the game's Data or the laid stack's mod, so a mod's ship or pier is solid; a ref flagged
+   `initially_disabled` is built Initially Disabled and is no collision) in a window that grows from three rings until
    its last ring inside the cut comes out byte-equal to the world's own NAVM; the touched cells, ring 1 and every
    cell inside that came out different are ours, so every link out lands on a mesh the world already holds; a
    window still unlike the world six rings out, or a cell whose walkable ground is gone altogether, is a problem. The
@@ -794,7 +795,8 @@ last); a navmesh island or an unjoined cell edge; a street, path or walkway poin
 units) or a guard's patrol point off the town's main network (over a walkway piece, on no dry triangle within 48
 units of the deck's own surface: the upward faces of its collision under its `walk` top that join into a surface a
 person can stand on, 1024 square units or more, so a post's or a rail's cap is not a deck; over water too deep to
-wade with no deck, on no dry triangle right over it; on land or in a ford, as a stop is found); a land patch whose
+wade with no deck, on no dry triangle right over it; on land or in a ford, as a stop is found; or a line's point
+reached from the one before by a drop or climb steeper than 45 degrees plus a 32-unit step, as off a deck's edge); a land patch whose
 built heights differ from `land.jsonl` or tear at a seam; a cleared plant still enabled, or a plant standing in a
 building, street or doorway; a service the place record promises with nobody giving it; a Nordic base; anything levelled (a levelled list in a person's
 inventory, outfits, death item or spells, or in a placed container; a level that follows the player; a base whose

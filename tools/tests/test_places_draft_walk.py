@@ -251,3 +251,42 @@ def test_middle_line_runs_along_the_longer_side(monkeypatch):
     pts = geom.middle_line({"base": "b", "pos": [1000.0, 0.0, 0.0], "rot": [0, 0, 0]}, bases, 100.0)
     assert len(pts) == 6 and all(abs(x - 1000.0) < 1e-6 for x, _ in pts)
     assert min(y for _, y in pts) == -250.0 and max(y for _, y in pts) == 250.0
+
+
+def test_a_deck_reached_only_by_swimming_is_its_own_island_when_wading_is_asked():
+    shore, sea, deck = _Nav("shore", [(0, 0)]), _water("sea", [(1, 0)], -150.0), _Nav("deck", [(2, 0)], 250.0)
+    _link(shore, 0, sea, 0)
+    _link(sea, 1, deck, 0)
+    navs = {"shore": shore, "sea": sea, "deck": deck}
+    comp = C.components(navs, {}, lambda x, y: 0.0)
+    assert comp[("shore", 0)] != comp[("deck", 0)]
+    sea.verts[:, 2] = -40.0                                    # a ford: waded, it joins
+    comp = C.components(navs, {}, lambda x, y: 0.0)
+    assert comp[("shore", 0)] == comp[("deck", 0)]
+
+
+def test_a_flight_is_placed_with_its_top_at_the_deck_edge_running_down_towards_the_bank():
+    fl = {"axis": 0, "v": 0.0, "us": [-240.0, 0.0, 240.0], "zs": [128.0, 0.0, -112.0]}
+    for d in ((1.0, 0.0), (0.0, 1.0), (-0.6, 0.8)):
+        pos, rot = walk.place_flight(fl, (1000.0, 2000.0, 253.0), d)
+        assert math.isclose(pos[2], 253.0 - walk.STEP_UNDER - 128.0)
+        rz = rot[2]
+        c, s = math.cos(rz), math.sin(rz)
+        for u in (-240.0, 240.0):     # local (u, 0) in the world, as geom.contains_xy reads a ref's frame
+            x, y = pos[0] + u * c, pos[1] - u * s
+            t = (x - 1000.0) * d[0] + (y - 2000.0) * d[1]
+            assert math.isclose(t, u + 240.0, abs_tol=0.05)     # the top end at the deck edge, the run along d
+
+
+def test_a_plugin_is_found_where_the_game_loads_it(tmp_path):
+    from tools.navmesh import meshes
+    data, stack = tmp_path / "Data", tmp_path / "MO2"
+    (data).mkdir()
+    (stack / "profiles" / meshes.PROFILE).mkdir(parents=True)
+    (stack / "mods" / "bmv").mkdir(parents=True)
+    (stack / "mods" / "bmv" / "North.esp").write_bytes(b"x")
+    (stack / "profiles" / meshes.PROFILE / "modlist.txt").write_text("+bmv\n")
+    (data / "Base.esm").write_bytes(b"x")
+    assert meshes.plugin_file("Base.esm", data, stack) == data / "Base.esm"
+    assert meshes.plugin_file("North.esp", data, stack) == stack / "mods" / "bmv" / "North.esp"
+    assert meshes.plugin_file("Gone.esp", data, stack) is None

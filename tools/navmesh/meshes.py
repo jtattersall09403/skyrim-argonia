@@ -17,6 +17,19 @@ STACK = Path(os.environ.get("ARGONIA_STACK") or Path.home() / ".argonia" / "stac
 PROFILE = "Argonia"
 
 
+def plugin_file(name: str, data: Path, stack: Path = STACK) -> Path | None:
+    """Where the game loads a plugin from: the game's Data, else the laid stack's mod that carries it (the profile's
+    mod order, highest first), as MO2 lays it into Data."""
+    if (data / name).exists():
+        return data / name
+    ml = stack / "profiles" / PROFILE / "modlist.txt"
+    if ml.exists():
+        for ln in ml.read_text(encoding="utf-8", errors="replace").splitlines():
+            if ln.startswith("+") and (stack / "mods" / ln[1:].strip() / name).is_file():
+                return stack / "mods" / ln[1:].strip() / name
+    return None
+
+
 class Resolver:
     def __init__(self, data: Path, stack: Path = STACK):
         self.data = data

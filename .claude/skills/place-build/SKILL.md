@@ -80,6 +80,11 @@ building on a slope first takes the rise the source's own builders commonly buil
    camp bed the town's network does not reach (a tent shut in by blocks) sleeps in a home's free bed instead; with
    none free, the last resident gives up theirs. A camp (beds in the open) is a stop like a door: a street
    reaches its edge.
+   A deck the town reaches only by swimming (a pier standing above its bank, a ship beside it) is brought down to
+   the bank by the source's own steps: one flight of the place's steps piece that covers the drop, its top tread a
+   step under the deck's edge, running down to where its treads meet the town's dry ground, clear of every solid
+   but the deck it leaves; level walkway pieces join only where the heights agree. The build then links deck,
+   steps and bank on dry triangles; look at each flight in the render.
    Every door's arrival outside stands on the built walkable network at its own level (the deck or the ground the
    door lands one on): an arrival off it is moved to the nearest point of it, on the same side of its door and
    outside every placed thing's body, at the mesh's height there.
@@ -87,12 +92,15 @@ building on a slope first takes the rise the source's own builders commonly buil
    walkway is tested along its whole line against the town's main network of the built navmesh (ours and the
    world's own round the place): over a walkway piece a point stands on the deck's own triangles, within 48 units
    of the deck's surface, never on the seabed under it; over water too deep to wade with no deck, only on a dry
-   triangle right under it; on land or in a ford, on the ground's. A stretch off it (where a big static's true
-   collision cuts the mesh, or only a small island stands) is re-laid along the way the mesh itself walks between
-   the stretch's last and next points on the network, eased into a curve that never leaves it, and the street's
-   `laid` says so; the world's plants the new line reaches are cleared by the draft's own measure. Guards' patrols are then
-   taken from those streets, each point on the network (a patrol keeps at least two). `draft check` and the
-   build's `check` (its `streets` check) list any street or patrol point still off it.
+   triangle right under it; on land or in a ford, on the ground's; and each point is reached from the one before
+   without a drop or a climb steeper than a walked slope (never a step off a deck's edge onto the ground under it).
+   A stretch off it (where a big static's true collision cuts the mesh, or only a small island stands) is re-laid
+   along the way the mesh itself walks between the stretch's last and next points on the network, never through
+   water deeper than a ford, eased into a curve that never leaves it, and the street's `laid` says so; the world's
+   plants the new line reaches are cleared by the draft's own measure. Guards' patrols are then taken from those
+   streets, each point on the network (a patrol keeps at least two). One pass lays every line on the network: a
+   second build finds nothing to re-lay. `draft check` and the build's `check` (its `streets` check) list any street
+   or patrol point still off it.
 
 ## 4. Settle what the cost cannot
 

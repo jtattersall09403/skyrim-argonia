@@ -228,10 +228,11 @@ def nav_index(ctx: dict) -> NavIndex:
     return ctx["_nav_index"]
 
 
-def components(navs: dict[str, Nav], door_pairs: dict[str, str]) -> dict[tuple[str, int], int]:
+def components(navs: dict[str, Nav], door_pairs: dict[str, str], wade=None) -> dict[tuple[str, int], int]:
     """Connected components over every triangle: shared edges, edge links, and door triangles of paired doors. Water
     triangles join as any other, as Skyrim.esm's do (in Tamriel 16,729 water-dry shared edges and 1,670 water-dry
-    edge links, measured): actors wade and swim them."""
+    edge links, measured): actors wade and swim them. `wade` (the water's level over a plan point): what joins without
+    swimming (water deeper than a ford, `walked`, joins nothing), the drafter's test that a deck reaches its bank."""
     parent: dict = {}
 
     def find(x):
@@ -246,17 +247,23 @@ def components(navs: dict[str, Nav], door_pairs: dict[str, str]) -> dict[tuple[s
             parent[ra] = rb
 
     door_tris: dict[str, list] = defaultdict(list)
+    swum = {fk: ~walked(n, wade) for fk, n in navs.items()} if wade is not None else None
+
+    def wet(n, i):
+        return swum is not None and 0 <= i < len(swum[n.fk]) and bool(swum[n.fk][i])
     for n in navs.values():
         for i in range(len(n.tri)):
             find((n.fk, i))
+            if wet(n, i):
+                continue
             for k in range(3):
                 e = int(n.edge[i][k])
                 if n.flags[i] & (1 << k):
                     if 0 <= e < len(n.links):
                         _, tgt, tt = n.links[e]
-                        if tgt in navs:
+                        if tgt in navs and not wet(navs[tgt], tt):
                             union((n.fk, i), (tgt, tt))
-                elif e >= 0:
+                elif e >= 0 and not wet(n, e):
                     union((n.fk, i), (n.fk, e))
         for ti, door in n.doors:
             door_tris[door].append((n.fk, ti))
@@ -749,7 +756,8 @@ def check_streets(ctx) -> list[str]:
     """Every street, path and walkway (its line sampled every 64 units) and every guard's patrol point stands on the
     town's main network at its own level, never laid along water: over a deck, on a dry triangle within DECK_TOL of
     the deck's own surface (never the seabed under it); on land or in a ford (water no deeper than WADE), on the
-    triangle the stop lookup finds; over deeper water with no deck, only on a dry triangle right over it."""
+    triangle the stop lookup finds; over deeper water with no deck, only on a dry triangle right over it; and a line's
+    point reached from the one before without a drop or climb steeper than a walked slope (`walk.Walkable.line_ok`)."""
     from tools.places.draft import walk
     pdir = ctx.get("place_dir")
     paths = ctx["paths"] if "paths" in ctx else (B.jsonl(pdir / "paths.jsonl") if pdir else [])

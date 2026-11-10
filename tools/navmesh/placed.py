@@ -32,15 +32,17 @@ SOLID = {b"STAT", b"ACTI", b"DOOR", b"CONT", b"FURN", b"MSTT", b"TREE", b"FLOR"}
 
 
 def bases(data: Path, keys: set[str]) -> dict[str, tuple[str, tuple[int, ...] | None]]:
-    """FormKey -> (MODL, OBND or None) for the keys found in their own plugin as a solid type."""
+    """FormKey -> (MODL, OBND or None) for the keys found in their own plugin as a solid type, the plugin read where the
+    game loads it (meshes.plugin_file: Data, else the laid stack's mod)."""
     out: dict[str, tuple[str, tuple[int, ...] | None]] = {}
     by_plugin: dict[str, set[int]] = {}
     for k in keys:
         local, plugin = k.split(":", 1)
         by_plugin.setdefault(plugin, set()).add(int(local, 16))
+    from tools.navmesh.meshes import plugin_file
     for plugin, ids in sorted(by_plugin.items()):
-        path = data / plugin
-        if not path.exists():
+        path = plugin_file(plugin, data)
+        if path is None:
             continue
         own = len(esm.masters(path)) << 24
         want = {own | i for i in ids}
