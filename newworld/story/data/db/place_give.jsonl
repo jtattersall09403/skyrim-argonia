@@ -424,8 +424,6 @@
 {"place_id":"helstrom","seq":17,"give_kind_id":"trainer","detail":"Expert Restoration (a tree-minder)","count":1}
 {"place_id":"helstrom","seq":18,"give_kind_id":"trainer","detail":"Journeyman Alchemy (the sap-seller)","count":1}
 {"place_id":"helstrom","seq":19,"give_kind_id":"shrine-blessing","detail":"the Helstrom Hist: a blessing of the Hist (Resist Disease for eight hours)","count":1}
-{"place_id":"helstrom","seq":20,"give_kind_id":"combat-foes","detail":"boat-robbers in the drowned Third Era villages","count":3,"reward_kind_id":"treasure"}
-{"place_id":"helstrom","seq":21,"give_kind_id":"treasure","detail":"settlers' goods in the drowned villages, D1 tier","count":1}
 {"place_id":"hirecan","seq":0,"give_kind_id":"fast-travel","detail":"Hirecan","count":1}
 {"place_id":"hirecan","seq":1,"give_kind_id":"trader-spells","detail":"an Agaceph illusionist selling Illusion tomes up to Expert, and scrolls","count":1}
 {"place_id":"hirecan","seq":2,"give_kind_id":"trainer","detail":"Illusion, Expert, the same illusionist","count":1}
@@ -716,8 +714,8 @@
 {"place_id":"lilmoth","seq":19,"give_kind_id":"harvest-rare","detail":"Luminous drifting shines of the drowned quarter: an alchemy ingredient","count":2}
 {"place_id":"lilmoth","seq":20,"give_kind_id":"fishing","detail":"Fish, clams and crabs in the canals and the bay","count":1}
 {"place_id":"lilmoth","seq":21,"give_kind_id":"player-home","detail":"A stilt house on the upper walkways for sale to a trusted buyer","count":1}
-{"place_id":"lilmoth","seq":22,"give_kind_id":"combat-creature","detail":"Slaughterfish and slaughterfish in the canals and the drowned quarter","count":3,"reward_kind_id":"treasure"}
-{"place_id":"lilmoth","seq":23,"give_kind_id":"combat-foes","detail":"Pusbottom cutpurses and smugglers","count":2,"reward_kind_id":"treasure"}
+{"place_id":"lilmoth","seq":22,"give_kind_id":"combat-creature","detail":"Slaughterfish in the canals and the drowned quarter","count":3,"reward_kind_id":"treasure"}
+{"place_id":"lilmoth","seq":23,"give_kind_id":"combat-foes","detail":"Smugglers holed up in the drowned Imperial cellars under Pusbottom, reached by a hatch from the walkways","count":2,"reward_kind_id":"treasure"}
 {"place_id":"lilmoth","seq":24,"give_kind_id":"treasure","detail":"Salvage from the drowned Imperial villas: small coin, iron and steel, up to 50 gold a chest","count":3}
 {"place_id":"lilmothiit-ruin-1-m107","seq":0,"give_kind_id":"fast-travel","detail":"Kit Mounds map marker","count":1}
 {"place_id":"lilmothiit-ruin-1-m107","seq":1,"give_kind_id":"combat-creature","detail":"giant snakes in the burrow roofs","count":3,"reward_kind_id":"boss-chest"}

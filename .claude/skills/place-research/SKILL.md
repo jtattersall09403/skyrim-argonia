@@ -28,7 +28,13 @@ One researcher per batch of about 30 places, grouped by neighbouring regions, ea
    place alone, drawn from what is particular to it; no sentence is shared with another place, with only the
    names changed. The overview adds what the summary does not. An unnamed place gets a name in its culture's
    style, unique in the province. Importance: 5 shapes the province, 4 major, 3 regional, 2 local, 1 local colour.
-5. Tier and source every note honestly: canon only where a source states it.
+5. Keep a settlement to itself. Its extent holds its own people and buildings, never hostile occupants and never
+   another place (a village, a camp, a ruin) folded inside it. Danger inside a city or town lives in a dungeon-like
+   interior of it: a cellar, a sewer, a vault, a drowned under-layer, as Riften keeps its thieves in the Ratway.
+   Threats outside it (raiders on the road, beasts in the channels beyond) belong to the ground round it or to the
+   neighbouring place that holds them. A separate village or ruin near a settlement is its own place record, or
+   nothing.
+6. Tier and source every note honestly: canon only where a source states it.
 
 ## Finish
 

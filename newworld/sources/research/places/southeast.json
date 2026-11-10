@@ -707,7 +707,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "The town centre is mostly safe: guarded by the council's men, with slaughterfish in the canals and cutpurses in Pusbottom. The drowned Imperial quarter and the Hist's roots are dangerous, with sea-drakes in the deep water beyond.",
+     "text": "The streets and walkways are safe, guarded by the council's men, though slaughterfish swim the canals. Smugglers hold the drowned Imperial cellars under Pusbottom. The drowned Imperial quarter and the Hist's roots are dangerous, with sea-drakes in the deep water beyond.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -899,13 +899,13 @@
     },
     {
      "kind": "combat-creature",
-     "detail": "Slaughterfish and slaughterfish in the canals and the drowned quarter",
+     "detail": "Slaughterfish in the canals and the drowned quarter",
      "count": 3,
      "reward": "treasure"
     },
     {
      "kind": "combat-foes",
-     "detail": "Pusbottom cutpurses and smugglers",
+     "detail": "Smugglers holed up in the drowned Imperial cellars under Pusbottom, reached by a hatch from the walkways",
      "count": 2,
      "reward": "treasure"
     },

@@ -66,7 +66,7 @@
     },
     {
      "aspect": "present",
-     "text": "In 4E 201 Helstrom is intact and the least Imperialised city in the province. The state's formal seat is lodged here and largely ignored. The assembly of naheesh and tree-minders decides by consensus. A half-swallowed ring of Third Era villages lies on its approaches.",
+     "text": "In 4E 201 Helstrom is intact and the least Imperialised city in the province. The state's formal seat is lodged here and largely ignored. The assembly of naheesh and tree-minders decides by consensus.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -185,7 +185,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A stranger stranded on the approaches is pulled out by an Agaceph raftsman; the assembly will not speak of its sour spring in open session; the Root Talk draws every naheesh in the interior; boat-robbers pick through the drowned Third Era villages on the city's edge.",
+     "text": "A stranger stranded on the approaches is pulled out by an Agaceph raftsman; the assembly will not speak of its sour spring in open session, and the Root Talk draws every naheesh in the interior.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -318,17 +318,6 @@
     {
      "kind": "shrine-blessing",
      "detail": "the Helstrom Hist: a blessing of the Hist (Resist Disease for eight hours)",
-     "count": 1
-    },
-    {
-     "kind": "combat-foes",
-     "detail": "boat-robbers in the drowned Third Era villages",
-     "count": 3,
-     "reward": "treasure"
-    },
-    {
-     "kind": "treasure",
-     "detail": "settlers' goods in the drowned villages, D1 tier",
      "count": 1
     }
    ]

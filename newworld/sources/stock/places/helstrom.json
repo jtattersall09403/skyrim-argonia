@@ -2397,20 +2397,7 @@
    ]
   }
  ],
- "deliveries": [
-  {
-   "give_seq": 20,
-   "by": "record",
-   "status": "open",
-   "why": "open: the drowned Third Era villages are not in Helstrom's drafted extent (radius 525 m: no ruined stilt house, boat-robber or treasure among its refs) nor a place of their own in the database; to deliver it, a place-build pass must draft them (a ring of half-sunken stilt houses on the city's approaches) as a place of their own or as Helstrom's edge, with three placed boat-robbers at a fixed D1 level and a settlers' chest at T1; or the owner edits the record (place_give helstrom/20 and /21)"
-  },
-  {
-   "give_seq": 21,
-   "by": "record",
-   "status": "open",
-   "why": "open: the drowned Third Era villages are not in Helstrom's drafted extent (radius 525 m: no ruined stilt house, boat-robber or treasure among its refs) nor a place of their own in the database; to deliver it, a place-build pass must draft them (a ring of half-sunken stilt houses on the city's approaches) as a place of their own or as Helstrom's edge, with three placed boat-robbers at a fixed D1 level and a settlers' chest at T1; or the owner edits the record (place_give helstrom/20 and /21)"
-  }
- ],
+ "deliveries": [],
  "removed": [
   {
    "space": "01ArgonianHouseinside",
