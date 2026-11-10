@@ -510,6 +510,33 @@ def plan_spaces(P: dict, ids: Ids, tmp: Path) -> dict:
                           "name": sp.get("name") or src.get("name") or sid, "copy": {"plugin": plugin, "cell": src.get("fk")} if plugin else None,
                           "light": sp.get("light"), "owner": sp.get("owner"), "room_mesh": room and room["mesh"],
                           "src_navmesh": [n["fk"] for n in src.get("navmesh", [])], "fk_of_src": fk_of_src})
+    # links our place files write by our ids (exterior rows, added rows) become form keys; one to nothing is a problem
+    import re
+    is_key = re.compile(r".+:[0-9A-Fa-f]{6}$").match
+    for row in refs:
+        for ln in row.get("linked") or []:
+            if not is_key(str(ln.get("ref"))):
+                tgt = by_our.get(ln.get("ref"))
+                if tgt is None:
+                    problem(f"refs.jsonl: {row['id']}: linked ref {ln.get('ref')} is not in the place")
+                    ln["drop"] = True
+                else:
+                    ln["ref"] = tgt["fk"]
+            if not ln.get("keyword"):
+                ln["keyword"] = ""
+        if row.get("linked"):
+            row["linked"] = [ln for ln in row["linked"] if not ln.get("drop")]
+        ep = row.get("enable_parent")
+        if isinstance(ep, dict):  # {ref, flags} as the source writes it
+            row["enable_parent_flags"] = ep.get("flags")
+            ep = row["enable_parent"] = ep.get("ref")
+        if ep and not is_key(str(ep)):
+            tgt = by_our.get(ep)
+            if tgt is None:
+                problem(f"refs.jsonl: {row['id']}: enable parent {ep} is not in the place")
+                row.pop("enable_parent")
+            else:
+                row["enable_parent"] = tgt["fk"]
     return {"refs": refs, "interiors": interiors, "by_id": by_our}
 
 
@@ -794,7 +821,7 @@ def components(tris: list) -> np.ndarray:
     return np.array([root(i) for i in range(len(tris))], np.int64)
 
 
-ROOM_RULE = "1"  # bump when room_partition's rule changes: its cache is keyed by it
+ROOM_RULE = "2"  # bump when room_partition's rule changes: its cache is keyed by it
 
 
 def room_partition(copy_of: str, refs: list[dict], work: Path) -> dict:
@@ -803,14 +830,22 @@ def room_partition(copy_of: str, refs: list[dict], work: Path) -> dict:
     load doors that lead out; every source ref belongs to the door island its position is nearest (islands reached from
     any door of the cell compete, so refs behind a door that leads nowhere stay in no room). Cached under
     out/places/rooms by the source refs' hash. -> {"rooms": {door fk: {"refs": set, "mesh": {verts, tris}}}}."""
-    placed_rows = [r for r in refs if "pos" in r and not r.get("deleted") and r.get("base_type") not in ("NPC_", "LVLN")]
-    h = hashlib.sha256(json.dumps([[r["fk"], r["base"], r["pos"], r.get("rot"), r.get("scale"), bool(r.get("door"))]
-                                   for r in placed_rows], sort_keys=True).encode() + ROOM_RULE.encode()).hexdigest()[:20]
+    placed_rows = []
+    for r in refs:  # the C# reader's rows (fk, base_type) or a bundle's (id, kind): one shape
+        if "pos" not in r or r.get("deleted") or r.get("base_type") in ("NPC_", "LVLN") or r.get("kind") in ("actor", "npc"):
+            continue
+        d = r.get("door") or None
+        placed_rows.append({"fk": r.get("fk") or r["id"], "base": r["base"], "pos": r["pos"], "rot": r.get("rot"),
+                            "scale": r.get("scale", 1.0), "kind": kind_of(r) if "base_type" in r else r.get("kind"),
+                            "out": bool(d) and (d.get("to_space") is not None if "to_space" in d else True)})
+    src, cell = copy_of.split("/", 1)
+    stamp = OUT / "bundles" / f"src.{src}" / "bundle.json"  # one key per source cell, whoever asks (drafter, studio, build)
+    h = hashlib.sha256(f"{copy_of}|{sha256(stamp) if stamp.exists() else json.dumps([[r['fk'], r['pos']] for r in placed_rows])}|{ROOM_RULE}".encode()).hexdigest()[:20]
     cache = OUT / "rooms" / f"{copy_of.replace('/', '__')}.{h}.json"
     if cache.exists():
         got = json.loads(cache.read_text())
         return {"rooms": {k: {"refs": set(v["refs"]), "mesh": v["mesh"]} for k, v in got["rooms"].items()}}
-    solid = [r for r in placed_rows if kind_of(r) not in ("marker", "light", "door")]
+    solid = [r for r in placed_rows if r["kind"] not in ("marker", "light", "door")]
     verts, tris = recast_refs(solid, work, "rooms", ground=False)
     V = np.asarray(verts, np.float64)
     comp = components(tris)
@@ -818,9 +853,9 @@ def room_partition(copy_of: str, refs: list[dict], work: Path) -> dict:
 
     def island(p):
         return int(comp[np.argmin(np.linalg.norm(cen - np.asarray(p), axis=1))])
-    doors = [r for r in placed_rows if kind_of(r) == "door"]
+    doors = [r for r in placed_rows if r["kind"] == "door"]
     seed = {r["fk"]: island(r["pos"]) for r in doors}
-    out_doors = {r["fk"] for r in doors if r.get("door")}
+    out_doors = {r["fk"] for r in doors if r["out"]}
     isl = sorted(set(seed.values()))
     best = np.full(len(placed_rows), np.inf)
     owner = np.full(len(placed_rows), -1)
@@ -962,11 +997,20 @@ def collision_objects(refs: list[dict]):
 
 # ---- one place --------------------------------------------------------------------------------------------------------
 
-def plan_place(pid: str, pdir: Path, out: Path, no_navmesh: bool) -> dict:
+def plan_place(pid: str, pdir: Path, out: Path, no_navmesh: bool, plan_only: bool = False) -> dict:
+    import shutil
+    import tempfile
+    (out / "tmp").mkdir(parents=True, exist_ok=True)
+    tmp = Path(tempfile.mkdtemp(prefix=f"{pid}.", dir=out / "tmp"))  # this run's own: runs side by side never collide
+    try:
+        return _plan_place(pid, pdir, out, no_navmesh, plan_only, tmp)
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
+
+
+def _plan_place(pid: str, pdir: Path, out: Path, no_navmesh: bool, plan_only: bool, tmp: Path) -> dict:
     t0 = time.time()
     P = read_place(pdir)
-    tmp = out / "tmp" / pid
-    tmp.mkdir(parents=True, exist_ok=True)
     ids = Ids(pdir.parent, pid)
     notes: list[str] = []
     S = plan_spaces(P, ids, tmp)
@@ -1017,13 +1061,14 @@ def plan_place(pid: str, pdir: Path, out: Path, no_navmesh: bool) -> dict:
         for I in S["interiors"]:
             got = interior_navmesh(I, S, ids)
             if not got:
-                got = generate_interior_navmesh(I, S, ids, out / "tmp" / pid)
+                got = generate_interior_navmesh(I, S, ids, tmp)
                 notes.append(f"interior {I['space']}: the source has no navmesh over the kept room; generated ({sum(len(n['nv'].tris) for n in got)} triangles)")
             navs += got
     world_raw = nav_fid(facts["worldspace"])
     nav_rows, n2 = finish_navmesh(navs, S, world_raw)
     notes += n2
-    ids.save()
+    if not plan_only:
+        ids.save()  # a plan-only run never writes form ids: it may run beside a build
     plan = {
         "place_id": pid, "world": {"worldspace": facts["worldspace"], "top_cell": facts["top_cell"], "esm": WORLD},
         "cells": sorted([{"x": c[0], "y": c[1], "cell": facts["by_cell"][c]["fk"]} for c in ask if c in facts["by_cell"]],
@@ -1034,9 +1079,6 @@ def plan_place(pid: str, pdir: Path, out: Path, no_navmesh: bool) -> dict:
         "people": people, "notes": notes,
         "stats": {"plan_s": round(time.time() - t0, 1), "nav": nav_info},
     }
-    for f in tmp.iterdir():
-        f.unlink()
-    tmp.rmdir()
     return plan
 
 
@@ -1047,6 +1089,7 @@ def main(argv: list[str]) -> int:
     ap.add_argument("--out", default=str(OUT))
     ap.add_argument("--no-navmesh", action="store_true")
     ap.add_argument("--force", action="store_true")
+    ap.add_argument("--keep-going", action="store_true", help="build despite problems (they are still listed): to see what else fails")
     ap.add_argument("--plan", action="store_true", help="plan only (no navmesh, no plugin): list every problem, exit 1 if any")
     a = ap.parse_args(argv)
     t0 = time.time()
@@ -1068,14 +1111,15 @@ def main(argv: list[str]) -> int:
             continue
         t1 = time.time()
         PROBLEMS.clear()
-        plan = plan_place(pid, pdir, out, a.no_navmesh or a.plan)
+        plan = plan_place(pid, pdir, out, a.no_navmesh or a.plan, plan_only=a.plan)
         if PROBLEMS or a.plan:
             for m in PROBLEMS:
                 print(f"{pid}: {m}")
             log(f"build {pid}: planned in {time.time() - t1:.1f} s; {len(PROBLEMS)} problems")
-            if PROBLEMS:
+            if PROBLEMS and not a.keep_going:
                 return 1
-            continue
+            if a.plan:
+                continue
         atomic_json(shard / "plan.json", plan)
         kp.write_text(key)
         report["places"][pid] = {"rebuilt": True, "plan_s": round(time.time() - t1, 1), "notes": plan["notes"]}

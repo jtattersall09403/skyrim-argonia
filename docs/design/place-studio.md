@@ -161,7 +161,13 @@ land.jsonl             land patches: {cell, verts:[[row,col,dz]...], textures?, 
 paths.jsonl            streets and paths: {id, kind: path|street, points:[[x,y]...], width, style}; style is a land
                        texture key (the source place's own road texture) or the draft's style word (dirt, boardwalk)
 people.jsonl           one person per line: {id, name, base_from, role, home, bed, work, services, faction_ranks,
-                       routine:[{start, hours, kind, at:{space, ref | pos, radius}, days?}], patrol?}
+                       routine:[{start, hours, kind, at, days?}], patrol?: {points:[[x,y] | stop...], loop}}.
+                       A stop (`at`, `bed`, `work`, a patrol point) is {space, ref | pos, radius}: `ref` our id or a
+                       source key of that space; `pos` [x,y] (seated on the ground) or [x,y,z]; neither: the
+                       space's first furniture. `bed` a stop or null; `kind` sleep|work|wander|sandbox|eat|patrol (a
+                       patrol stop's route is `patrol`). services: [{kind | give_kind_id, detail, skill?, level?,
+                       room_bed?}]; faction_ranks: [{faction: a form key or <place_id>.<name>, rank}]. Any other
+                       shape is a problem `build --plan` lists, never a crash
 ledger.jsonl           one row per source ref: {src, space, status: placed|adapted|replaced|dropped, as?, why?,
                        cluster?, patch?}; every source ref has one
 edits/<save_id>.json   a studio save (below); finalised saves stay here as the lessons' evidence

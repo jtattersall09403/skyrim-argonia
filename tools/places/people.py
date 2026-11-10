@@ -133,6 +133,7 @@ def plan(P: dict, S: dict, ids, facts: dict, notes: list[str]) -> dict:
                                "cell": list(cell_of(*at["pos"][:2])) if sp == "exterior" else None})
         return fk
 
+    made = {}
     taken_beds = set()
     for q in people:
         b = q.get("bed")
@@ -197,11 +198,15 @@ def plan(P: dict, S: dict, ids, facts: dict, notes: list[str]) -> dict:
             f = fr["faction"]
             if f == f"{pid}.crime" or f.startswith(f"{pid}.vendor"):
                 continue  # the crime faction is every person's; vendor factions come from the services
-            if f == f"{pid}.town":
-                if "town" not in out:
-                    out["town"] = {"fk": ids("fact:town"), "edid": f"ANP_{pid}_TownFaction", "name": f"{pid} town"}
-                    out["factions"].append({**out["town"]})
-                f = out["town"]["fk"]
+            if f.startswith(f"{pid}."):  # a faction of the place (town, guard, ...): one of ours per name
+                name = f.split(".", 1)[1]
+                if name not in made:
+                    made[name] = {"fk": ids("fact:town" if name == "town" else f"fact:{name}"),
+                                  "edid": f"ANP_{pid}_{_edid(name).title()}Faction", "name": f"{pid} {name}"}
+                    out["factions"].append({**made[name]})
+                f = made[name]["fk"]
+            elif ":" not in f:
+                raise Bad(f"people.jsonl: {who}: faction {f!r} is neither a form key nor a faction of {pid}")
             factions.append({"faction": f, "rank": int(fr.get("rank", 0))})
         if p.get("role") == "guard":
             factions.append({"faction": IS_GUARD, "rank": 0})
@@ -243,6 +248,11 @@ def plan(P: dict, S: dict, ids, facts: dict, notes: list[str]) -> dict:
                 gives.append(g)
             elif g == "inn-room":
                 rb = by_id.get(sv.get("room_bed", "")) if sv.get("room_bed") else None
+                rent = (P["place"].get("stations") or {}).get("rent_bed")
+                if rb is None and rent:  # place.json stations.rent_bed: the inn's bed kept for renting
+                    rb = find_ref(rent) if isinstance(rent, dict) else by_id.get(rent)
+                    if rb is None:
+                        raise Bad(f"place.json: stations.rent_bed {rent} is not in the place")
                 if rb is None:  # vanilla: a bed of the inn no resident sleeps in (the innkeeper's own house, else where they work)
                     hb = by_id.get(p.get("bed") or "")
                     inn = hb["space"] if hb else (p.get("work") or {}).get("space") or p.get("home")
@@ -282,6 +292,9 @@ def plan(P: dict, S: dict, ids, facts: dict, notes: list[str]) -> dict:
             one(p)
         except Bad as e:
             problem(str(e))
+        except (KeyError, TypeError, ValueError, IndexError, AttributeError) as e:  # a row of a shape not read: never a crash
+            problem(f"people.jsonl: {p.get('id') if isinstance(p, dict) else p}: a row the builder cannot read "
+                    f"({type(e).__name__}: {e}); the person row's shape is in place-studio.md, Place files")
     return out
 
 

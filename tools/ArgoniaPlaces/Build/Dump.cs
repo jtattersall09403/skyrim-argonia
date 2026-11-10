@@ -21,11 +21,13 @@ static class Dump
         var counts = new SortedDictionary<string, int>();
         void Count(string k) => counts[k] = counts.GetValueOrDefault(k) + 1;
         var unresolved = new List<string>();
+        var PlayerRef = new FormKey(ModKey.FromFileName("Skyrim.esm"), 0x14);
         foreach (var r in mod.EnumerateMajorRecords())
         {
             Count(r.GetType().Name.Replace("BinaryOverlay", "") + (r.FormKey.ModKey == me ? "" : " (override)"));
             foreach (var l in r.EnumerateFormLinks())
-                if (!l.FormKey.IsNull && !cache.TryResolve(l.FormKey, l.Type, out _))
+                // PlayerRef (Skyrim.esm:000014) is made by the engine, not a record: vanilla enable parents name it
+                if (!l.FormKey.IsNull && l.FormKey != PlayerRef && !cache.TryResolve(l.FormKey, l.Type, out _))
                     if (unresolved.Count < 200) unresolved.Add($"{C.Key(r.FormKey)} -> {C.Key(l.FormKey)} <{l.Type.Name}>");
         }
         var refs = new List<object>();

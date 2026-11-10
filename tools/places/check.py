@@ -415,6 +415,9 @@ def check_navmesh(ctx) -> list[str]:
                 if o is None:
                     bad.append(f"{n.fk}: tri {i} links into {tgt}, which is not loaded")
                     continue
+                if not 0 <= tt < len(o.tri):
+                    bad.append(f"{n.fk}: tri {i} links {tgt} tri {tt}, which {tgt} does not have ({len(o.tri)} triangles)")
+                    continue
                 if not any(o.flags[tt] & (1 << q) and o.links[int(o.edge[tt][q])][1] == n.fk and o.links[int(o.edge[tt][q])][2] == i for q in range(3)):
                     bad.append(f"{n.fk}: tri {i} links {tgt} tri {tt}, which does not link back (unjoined edge)")
     # open edges of ours on a seam with a neighbour's navmesh across: unjoined

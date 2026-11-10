@@ -294,7 +294,11 @@ static class Write
                 if (S(l, "keyword") is { Length: > 0 } kw) lr.KeywordOrReference.SetTo(ctx.Link(kw));
                 o.LinkedReferences.Add(lr);
             }
-        if (S(r, "enable_parent") is { } ep) { o.EnableParent = new EnableParent(); o.EnableParent.Reference.SetTo(ctx.Link(ep)); }
+        if (S(r, "enable_parent") is { } ep)
+        {
+            o.EnableParent = new EnableParent(); o.EnableParent.Reference.SetTo(ctx.Link(ep));
+            if (S(r, "enable_parent_flags") is { Length: > 0 } epf) o.EnableParent.Flags = Enum.Parse<EnableParent.Flag>(epf);
+        }
         return o;
     }
 
