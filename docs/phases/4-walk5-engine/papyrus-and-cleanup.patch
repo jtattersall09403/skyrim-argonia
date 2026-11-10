@@ -1,0 +1,609 @@
+diff --git a/papyrus/ARG_QF_BC01.psc b/papyrus/ARG_QF_BC01.psc
+index 4d3af336..cc04ef81 100644
+--- a/papyrus/ARG_QF_BC01.psc
++++ b/papyrus/ARG_QF_BC01.psc
+@@ -1,6 +1,17 @@
+ Scriptname ARG_QF_BC01 extends Quest Hidden
+ {BC01 Four Months for a Boat (quest.bc.bc01): stage fragments from Phase 3's proven shapes.}
+ 
++ObjectReference[] Property Zones Auto ; every trigger zone of this quest (QuestKit fills it); disarmed by the ending
++
++; Every zone of the quest off (the ending), so none can set a stage of the stopped quest.
++Function DisarmZones()
++	Int i = 0
++	While i < Zones.Length
++		Zones[i].Disable()
++		i += 1
++	EndWhile
++EndFunction
++
+ ReferenceAlias Property Patron Auto
+ ReferenceAlias Property Debtor Auto
+ ReferenceAlias Property Chest Auto
+@@ -15,7 +26,7 @@ AchievementsScript Property AchievementsQuest Auto ; Skyrim.esm AchievementsQues
+ Bool ended = False
+ 
+ ;BEGIN FRAGMENT Fragment_10
+-Function Fragment_10() ; the book into the steward's chest (E-item); Never-Sold's sandbox at the landing runs from here
++Function Fragment_10() ; the book into the steward's chest (E-item)
+ 	If Chest.GetRef().GetItemCount(DebtBook) == 0
+ 		Chest.GetRef().AddItem(DebtBook, 1)
+ 	EndIf
+@@ -42,6 +53,7 @@ Function Fragment_90() ; her page torn out, the first price left in the chest, s
+ 	Debtor.GetRef().MoveTo(BlackroseMarker)
+ 	ChainbreakersStanding.Mod(10)
+ 	SetObjectiveCompleted(10)
++	DisarmZones()
+ 	AchievementsQuest.IncSideQuests()
+ 	Stop()
+ EndFunction
+@@ -56,6 +68,7 @@ Function Fragment_91() ; she is gone down the channel
+ 	Debtor.GetRef().Disable(True)
+ 	ChainbreakersStanding.Mod(10)
+ 	SetObjectiveCompleted(40)
++	DisarmZones()
+ 	AchievementsQuest.IncSideQuests()
+ 	Stop()
+ EndFunction
+@@ -68,6 +81,7 @@ Function Fragment_94()
+ 	EndIf
+ 	ended = True
+ 	SetObjectiveCompleted(10)
++	DisarmZones()
+ 	AchievementsQuest.IncSideQuests()
+ 	Stop()
+ EndFunction
+diff --git a/papyrus/ARG_QF_BC02.psc b/papyrus/ARG_QF_BC02.psc
+index 42369f86..929189d8 100644
+--- a/papyrus/ARG_QF_BC02.psc
++++ b/papyrus/ARG_QF_BC02.psc
+@@ -1,6 +1,17 @@
+ Scriptname ARG_QF_BC02 extends Quest Hidden
+ {BC02 One Out of the Smoke (quest.bc.bc02): stage fragments from Phase 3's proven shapes.}
+ 
++ObjectReference[] Property Zones Auto ; every trigger zone of this quest (QuestKit fills it); disarmed by the ending
++
++; Every zone of the quest off (the ending), so none can set a stage of the stopped quest.
++Function DisarmZones()
++	Int i = 0
++	While i < Zones.Length
++		Zones[i].Disable()
++		i += 1
++	EndWhile
++EndFunction
++
+ ObjectReference Property SmokeParent Auto
+ ObjectReference Property SpeakerParent Auto
+ ObjectReference Property KillerParent Auto
+@@ -70,6 +81,7 @@ EndFunction
+ 
+ Function End(Int objective)
+ 	SmokeParent.Disable()
++	DisarmZones()
+ 	SetObjectiveCompleted(objective)
+ 	AchievementsQuest.IncSideQuests()
+ 	Stop()
+diff --git a/papyrus/ARG_QF_LQ30.psc b/papyrus/ARG_QF_LQ30.psc
+index 31d5f1cd..b8588dc5 100644
+--- a/papyrus/ARG_QF_LQ30.psc
++++ b/papyrus/ARG_QF_LQ30.psc
+@@ -1,6 +1,17 @@
+ Scriptname ARG_QF_LQ30 extends Quest Hidden
+ {LQ30 The Gates of Helstrom (quest.local.lq30): stage fragments from Phase 3's proven shapes.}
+ 
++ObjectReference[] Property Zones Auto ; every trigger zone of this quest (QuestKit fills it); disarmed by the ending
++
++; Every zone of the quest off (the ending), so none can set a stage of the stopped quest.
++Function DisarmZones()
++	Int i = 0
++	While i < Zones.Length
++		Zones[i].Disable()
++		i += 1
++	EndWhile
++EndFunction
++
+ ReferenceAlias Property Kin Auto
+ ReferenceAlias Property Youth Auto
+ ObjectReference Property ViperParent Auto
+@@ -34,6 +45,7 @@ Function Fragment_91() ; back at the gate without a word: E-move
+ 	ended = True
+ 	Youth.GetRef().MoveTo(GateMarker)
+ 	SetObjectiveCompleted(40)
++	DisarmZones()
+ 	AchievementsQuest.IncSideQuests()
+ 	Stop()
+ EndFunction
+@@ -46,12 +58,12 @@ Function Fragment_92() ; talked home: E-move, E-item (60 gold), E-regard
+ 	EndIf
+ 	ended = True
+ 	Actor player = Game.GetPlayer()
+-	GateZone.Disable()
+ 	Youth.GetRef().MoveTo(GateMarker)
+ 	player.AddItem(Gold001, 60)
+ 	Kin.GetActorRef().SetRelationshipRank(player, 1)
+ 	Youth.GetActorRef().SetRelationshipRank(player, -1)
+ 	SetObjectiveCompleted(40)
++	DisarmZones()
+ 	AchievementsQuest.IncSideQuests()
+ 	Stop()
+ EndFunction
+@@ -63,10 +75,10 @@ Function Fragment_93() ; Sei-Wan dead: E-enable (the viper off)
+ 		Return
+ 	EndIf
+ 	ended = True
+-	GateZone.Disable()
+ 	ViperParent.Disable()
+ 	SetObjectiveCompleted(30)
+ 	SetObjectiveCompleted(40)
++	DisarmZones()
+ 	AchievementsQuest.IncSideQuests()
+ 	Stop()
+ EndFunction
+diff --git a/papyrus/ARG_QF_MQ01.psc b/papyrus/ARG_QF_MQ01.psc
+index 2df4ef24..427e6d5c 100644
+--- a/papyrus/ARG_QF_MQ01.psc
++++ b/papyrus/ARG_QF_MQ01.psc
+@@ -40,11 +40,14 @@ Weapon Property ReedKnife Auto
+ Quest Property NextQuest Auto
+ ObjectReference Property FireMark Auto
+ ObjectReference Property HoldDoor Auto
++ObjectReference[] Property Zones Auto ; every trigger zone of this quest (QuestKit fills it); disarmed by the ending
+ 
+ ; The race guards (blocks.md): the choice (41, 42, 93) and the ending (90, 91, 93) each run once; check and set with no
+ ; call between them.
+ Bool choiceTaken = False
+ Bool endTaken = False
++Bool started = False ; character creation runs once, even if the quest were ever started again
++Int marchWaits = 0
+ 
+ Event OnInit()
+ 	; an update runs only in game mode, so the race menu opens once the hold around the marker is loaded
+@@ -52,9 +55,17 @@ Event OnInit()
+ EndEvent
+ 
+ Event OnUpdate()
+-	If !IsRunning() || GetStageDone(10)
++	If !IsRunning()
+ 		Return
+ 	EndIf
++	If GetStageDone(30) && !GetStageDone(32)
++		StartMarch()
++		Return
++	EndIf
++	If started || GetStageDone(10)
++		Return
++	EndIf
++	started = True
+ 	Actor player = Game.GetPlayer()
+ 	Game.ForceThirdPerson()
+ 	player.UnequipAll()
+@@ -70,6 +81,34 @@ Event OnUpdate()
+ 	SetStage(10)
+ EndEvent
+ 
++; The walk starts in front of the player (E-package, start rule): stage 32 is set once the five walkers' 3D is loaded
++; (the player has come out on the pier), checked once a second in game mode; after 60 checks it is set regardless.
++Function StartMarch()
++	marchWaits += 1
++	If marchWaits >= 60 || (WuleenMarch.GetRef().Is3DLoaded() && UxMarch.GetRef().Is3DLoaded() && DivesMarch.GetRef().Is3DLoaded() && FindsMarch.GetRef().Is3DLoaded() && Courier.GetRef().Is3DLoaded())
++		SetStage(32)
++	Else
++		RegisterForSingleUpdate(1.0)
++	EndIf
++EndFunction
++
++; A walker the player overtook is put at the fire before the strike (it happens where the player stands).
++Function AtFire(ReferenceAlias walker, Float dx, Float dy)
++	ObjectReference r = walker.GetRef()
++	If r.GetDistance(FireMark) > 400.0
++		r.MoveTo(FireMark, dx, dy)
++	EndIf
++EndFunction
++
++; Every zone of the quest off (the ending), so none can set a stage of the stopped quest.
++Function DisarmZones()
++	Int i = 0
++	While i < Zones.Length
++		Zones[i].Disable()
++		i += 1
++	EndWhile
++EndFunction
++
+ ; Wuleen-Sei has read the roll (the answers are offered after it).
+ Function ReadRoll()
+ 	RollRead.SetValue(1)
+@@ -81,15 +120,6 @@ Function Answer()
+ 	SetStage(20)
+ EndFunction
+ 
+-; The gang's packages read the stage.
+-Function March()
+-	WuleenMarch.TryToEvaluatePackage()
+-	UxMarch.TryToEvaluatePackage()
+-	DivesMarch.TryToEvaluatePackage()
+-	FindsMarch.TryToEvaluatePackage()
+-	Courier.TryToEvaluatePackage()
+-EndFunction
+-
+ ;BEGIN FRAGMENT Fragment_20
+ Function Fragment_20() ; the answer: the stair door unlocked, E-stage
+ 	HoldDoor.Lock(False)
+@@ -99,34 +129,44 @@ EndFunction
+ ;END FRAGMENT
+ 
+ ;BEGIN FRAGMENT Fragment_30
+-Function Fragment_30() ; out of the hold (the door, TR-activate): the gang sets off along the dock, E-package
++Function Fragment_30() ; out of the hold (the door, TR-activate): the march copies on, the hold's people off (one of each
++	; person); the walk waits for the player on the pier (StartMarch)
++	MarchParent.Enable()
++	HoldParent.Disable()
++	CrewParent.Disable()
+ 	SetObjectiveCompleted(20)
+ 	SetObjectiveDisplayed(30)
+-	March()
++	marchWaits = 0
++	RegisterForSingleUpdate(1.0)
+ EndFunction
+ ;END FRAGMENT
+ 
+-;BEGIN FRAGMENT Fragment_35
+-Function Fragment_35() ; the camp's edge (hidden): the gang at the fire before the player, E-move
+-	WuleenMarch.GetRef().MoveTo(FireMark, 120.0, 60.0)
+-	UxMarch.GetRef().MoveTo(FireMark, -120.0, 60.0)
+-	DivesMarch.GetRef().MoveTo(FireMark, 100.0, -120.0)
+-	FindsMarch.GetRef().MoveTo(FireMark, -100.0, -120.0)
+-	Courier.GetRef().MoveTo(FireMark, 0.0, 160.0)
+-	March()
++;BEGIN FRAGMENT Fragment_32
++Function Fragment_32() ; hidden: the walkers loaded with the player; the march package (gated 32 to 40) starts, E-package
++	HoldParent.Disable()
++	CrewParent.Disable()
++	WuleenMarch.GetActorRef().EvaluatePackage()
++	UxMarch.GetActorRef().EvaluatePackage()
++	DivesMarch.GetActorRef().EvaluatePackage()
++	FindsMarch.GetActorRef().EvaluatePackage()
++	Courier.GetActorRef().EvaluatePackage()
+ EndFunction
+ ;END FRAGMENT
+ 
+ ;BEGIN FRAGMENT Fragment_10
+-Function Fragment_10() ; E-enable (the camp, the march), E-stage
++Function Fragment_10() ; E-enable (the camp), E-stage
+ 	CampOrderly.Enable()
+-	MarchParent.Enable()
+ 	SetObjectiveDisplayed(10)
+ EndFunction
+ ;END FRAGMENT
+ 
+ ;BEGIN FRAGMENT Fragment_40
+ Function Fragment_40() ; the strike: E-enable, the courier killed, E-move (the two witnesses), E-package (the leader goes)
++	AtFire(WuleenMarch, 120.0, 60.0)
++	AtFire(UxMarch, -120.0, 60.0)
++	AtFire(DivesMarch, 100.0, -120.0)
++	AtFire(FindsMarch, -100.0, -120.0)
++	AtFire(Courier, 0.0, 160.0)
+ 	CampAttacked.Enable()
+ 	CellParent.Enable()
+ 	CampOrderly.Disable()
+@@ -136,7 +176,7 @@ Function Fragment_40() ; the strike: E-enable, the courier killed, E-move (the t
+ 	c.Kill(Leader.GetActorRef())
+ 	SalSei.GetRef().MoveTo(ShedMark)
+ 	DeeshDuun.GetRef().MoveTo(HutsMark)
+-	Leader.TryToEvaluatePackage()
++	Leader.GetActorRef().EvaluatePackage()
+ 	SetObjectiveCompleted(30)
+ 	SetObjectiveDisplayed(40)
+ EndFunction
+@@ -150,9 +190,9 @@ Function Choose(ReferenceAlias lost, ObjectReference otherZone, ReferenceAlias s
+ 	lost.Clear()
+ 	a.Kill()
+ 	Leader.GetRef().Disable()
+-	Cutter1.TryToEvaluatePackage()
+-	Cutter2.TryToEvaluatePackage()
+-	saved.TryToEvaluatePackage()
++	Cutter1.GetActorRef().EvaluatePackage()
++	Cutter2.GetActorRef().EvaluatePackage()
++	saved.GetActorRef().EvaluatePackage()
+ 	SetObjectiveCompleted(40)
+ 	SetObjectiveDisplayed(objective)
+ EndFunction
+@@ -193,6 +233,7 @@ Function Ending(ReferenceAlias saved, Int objective)
+ 		saved.GetRef().MoveTo(ShoreMark)
+ 	EndIf
+ 	SetObjectiveCompleted(objective)
++	DisarmZones()
+ 	NextQuest.SetStage(10)
+ 	Stop()
+ EndFunction
+diff --git a/papyrus/ARG_QF_MQ03.psc b/papyrus/ARG_QF_MQ03.psc
+index fa0390e9..7273d1b5 100644
+--- a/papyrus/ARG_QF_MQ03.psc
++++ b/papyrus/ARG_QF_MQ03.psc
+@@ -22,8 +22,12 @@ GlobalVariable Property NightTold Auto
+ GlobalVariable Property HistHearing Auto
+ ReferenceAlias Property Ties Auto
+ Quest[] Property Deferred Auto ; BM&V's greeting quest and Valenwood's start quests, held back until this quest ends
++ObjectReference Property HouseDoor Auto ; the Reed's house's outer door (locked to its key until the player is inside)
++ObjectReference[] Property Zones Auto ; every trigger zone of this quest (QuestKit fills it); disarmed by the ending
+ Quest Property NextQuest Auto ; ARG_MQ04 when it is in the plugin, else None
+ 
++Bool houseTaken = False
++Bool dreamStarted = False
+ Bool dreamTaken = False
+ Bool endTaken = False
+ 
+@@ -57,15 +61,21 @@ EndFunction
+ ;BEGIN FRAGMENT Fragment_11
+ Function Fragment_11() ; the taste (TR-activate); a phial with Alchemy 25 (C-skill, E-item)
+ 	Actor player = Game.GetPlayer()
++	SetObjectiveCompleted(10) ; the taste is the step; the phial is the optional part of it
+ 	If player.GetActorValue("Alchemy") >= 25 && player.GetItemCount(Phial) == 0
+ 		player.AddItem(Phial, 1)
+-		SetObjectiveCompleted(10)
+ 	EndIf
+ EndFunction
+ ;END FRAGMENT
+ 
+ ;BEGIN FRAGMENT Fragment_20
+ Function Fragment_20() ; E-move (the player and Ties to the house), E-global (the Hist step), E-enable
++	Bool first = !houseTaken
++	houseTaken = True
++	If !first
++		Return
++	EndIf
++	HouseDoor.Lock(False) ; the house stays open from here, on every path (the sworn ending's key is a token)
+ 	Game.GetPlayer().MoveTo(HouseMark)
+ 	Ties.GetRef().MoveTo(MatMark)
+ 	If HistHearing.GetValue() < 1
+@@ -83,6 +93,11 @@ EndFunction
+ 
+ ;BEGIN FRAGMENT Fragment_40
+ Function Fragment_40() ; the dream: E-enable, the hold door locked, E-move
++	Bool first = !dreamStarted
++	dreamStarted = True
++	If !first
++		Return
++	EndIf
+ 	DreamParent.Enable()
+ 	HoldDoor.Lock()
+ 	Game.GetPlayer().MoveTo(DreamMark)
+@@ -123,8 +138,19 @@ Function Ending()
+ 		NextQuest.SetStage(10)
+ 	EndIf
+ 	SetObjectiveCompleted(40)
++	HouseDoor.Lock(False)
++	DisarmZones()
+ 	Stop()
+ EndFunction
++; Every zone of the quest off (the ending), so none can set a stage of the stopped quest.
++Function DisarmZones()
++	Int i = 0
++	While i < Zones.Length
++		Zones[i].Disable()
++		i += 1
++	EndWhile
++EndFunction
++
+ 
+ ;BEGIN FRAGMENT Fragment_90
+ Function Fragment_90() ; e-sworn: E-faction, E-item (gold, the house key)
+diff --git a/papyrus/ARG_QF_MQ04.psc b/papyrus/ARG_QF_MQ04.psc
+index 32c81b00..784447d4 100644
+--- a/papyrus/ARG_QF_MQ04.psc
++++ b/papyrus/ARG_QF_MQ04.psc
+@@ -1,6 +1,18 @@
+ Scriptname ARG_QF_MQ04 extends Quest Hidden
+ {MQ04 The Tree That Turned Its Face (tools/ArgoniaPlugin/MQ04.cs): stage fragments, each a proven block shape.}
+ 
++ObjectReference[] Property Zones Auto ; every trigger zone of this quest (QuestKit fills it); disarmed by the ending
++
++; Every zone of the quest off (the ending), so none can set a stage of the stopped quest.
++Function DisarmZones()
++	Int i = 0
++	While i < Zones.Length
++		Zones[i].Disable()
++		i += 1
++	EndWhile
++EndFunction
++
++
+ ReferenceAlias Property RootHerald Auto
+ ReferenceAlias Property PaysLate Auto
+ ObjectReference Property CampParent Auto
+@@ -62,6 +74,8 @@ Function Fragment_91() ; ending e-minder: E-item, E-global, E-enable, E-faction,
+ 	WithdrawnParent.Disable()
+ 	CampParent.Disable()
+ 	player.SetFactionRank(LowReedVillage, 0)
++	DisarmZones()
+ 	NextQuest.SetStage(10)
++	Stop()
+ EndFunction
+ ;END FRAGMENT
+diff --git a/papyrus/ARG_QF_MQ05.psc b/papyrus/ARG_QF_MQ05.psc
+index 36a936ce..2ba42a49 100644
+--- a/papyrus/ARG_QF_MQ05.psc
++++ b/papyrus/ARG_QF_MQ05.psc
+@@ -1,6 +1,21 @@
+ Scriptname ARG_QF_MQ05 extends Quest Hidden
+ {MQ05 Helstrom Behind Its Marsh (tools/ArgoniaPlugin/MQ05.cs): stage fragments, each a proven block shape.}
+ 
++ObjectReference[] Property Zones Auto ; every trigger zone of this quest (QuestKit fills it); disarmed by the ending
++
++; The race guard (blocks.md): one ending only; the check and the set have no call between them.
++Bool ended = False
++
++; Every zone of the quest off (the ending), so none can set a stage of the stopped quest.
++Function DisarmZones()
++	Int i = 0
++	While i < Zones.Length
++		Zones[i].Disable()
++		i += 1
++	EndWhile
++EndFunction
++
++
+ ReferenceAlias Property KaskaMeen Auto
+ ReferenceAlias Property EiTuja Auto
+ ObjectReference Property WayParent Auto
+@@ -30,14 +45,26 @@ EndFunction
+ 
+ ;BEGIN FRAGMENT Fragment_91
+ Function Fragment_91() ; ending: told the tree-minder (E-global)
++	If ended
++		Return
++	EndIf
++	ended = True
+ 	SetObjectiveCompleted(40)
+ 	MindersHold.SetValue(1)
++	DisarmZones()
++	Stop()
+ EndFunction
+ ;END FRAGMENT
+ 
+ ;BEGIN FRAGMENT Fragment_92
+ Function Fragment_92() ; ending: told the Nisswo (E-global)
++	If ended
++		Return
++	EndIf
++	ended = True
+ 	SetObjectiveCompleted(40)
+ 	NisswoRead.SetValue(1)
++	DisarmZones()
++	Stop()
+ EndFunction
+ ;END FRAGMENT
+diff --git a/papyrus/ARG_QF_TG01.psc b/papyrus/ARG_QF_TG01.psc
+index 817dc541..e0fc1ff5 100644
+--- a/papyrus/ARG_QF_TG01.psc
++++ b/papyrus/ARG_QF_TG01.psc
+@@ -1,6 +1,20 @@
+ Scriptname ARG_QF_TG01 extends Quest Hidden
+ {TG01 A Dry Hand in a Wet City (quest.tg.tg01): the stage fragments and the helpers its lines call. Shapes from Phase 3's blocks.}
+ 
++ObjectReference[] Property Zones Auto ; every trigger zone of this quest (QuestKit fills it); disarmed by the ending
++
++; Every zone of the quest off (the ending), so none can set a stage of the stopped quest.
++Function DisarmZones()
++	Int i = 0
++	While i < Zones.Length
++		Zones[i].Disable()
++		i += 1
++	EndWhile
++EndFunction
++
++; The race guard (blocks.md): one ending only; the check and the set have no call between them.
++Bool ended = False
++
+ ReferenceAlias Property Tilts Auto
+ ReferenceAlias Property Thief Auto
+ ObjectReference Property RoundParent Auto
+@@ -72,9 +86,14 @@ EndFunction
+ 
+ ;BEGIN FRAGMENT Fragment_90
+ Function Fragment_90() ; E-faction, TR-chain (TG02 at 20), the side quest's end
++	If ended
++		Return
++	EndIf
++	ended = True
+ 	Game.GetPlayer().SetFactionRank(Chapter, 0)
+ 	SetObjectiveCompleted(40)
+ 	NextQuest.SetStage(20)
++	DisarmZones()
+ 	AchievementsQuest.IncSideQuests()
+ 	Stop()
+ EndFunction
+@@ -82,9 +101,14 @@ EndFunction
+ 
+ ;BEGIN FRAGMENT Fragment_91
+ Function Fragment_91()
++	If ended
++		Return
++	EndIf
++	ended = True
+ 	Game.GetPlayer().SetFactionRank(Chapter, 0)
+ 	SetObjectiveCompleted(40)
+ 	NextQuest.SetStage(20)
++	DisarmZones()
+ 	AchievementsQuest.IncSideQuests()
+ 	Stop()
+ EndFunction
+diff --git a/papyrus/ARG_QF_TG02.psc b/papyrus/ARG_QF_TG02.psc
+index cd05b268..cea31f20 100644
+--- a/papyrus/ARG_QF_TG02.psc
++++ b/papyrus/ARG_QF_TG02.psc
+@@ -46,6 +46,7 @@ EndFunction
+ 
+ ; Three stages for one outcome: the check and the set have no call between them, so they are atomic (blocks.md).
+ Bool claimsTaken = False
++Bool ended = False ; one ending only (90, 91 or 92)
+ Bool salesTaken = False
+ Function ClaimHeard()
+ 	If !claimsTaken && GetStageDone(21) && GetStageDone(22) && GetStageDone(23)
+@@ -113,6 +114,10 @@ EndFunction
+ 
+ ;BEGIN FRAGMENT Fragment_90
+ Function Fragment_90()
++	If ended
++		Return
++	EndIf
++	ended = True
+ 	SetObjectiveCompleted(41)
+ 	SetObjectiveCompleted(42)
+ 	AchievementsQuest.IncSideQuests()
+@@ -122,6 +127,10 @@ EndFunction
+ 
+ ;BEGIN FRAGMENT Fragment_91
+ Function Fragment_91() ; E-regard: Bent-Spine thinks better of the player
++	If ended
++		Return
++	EndIf
++	ended = True
+ 	SetObjectiveCompleted(41)
+ 	SetObjectiveCompleted(42)
+ 	BentSpine.GetActorRef().SetRelationshipRank(Game.GetPlayer(), 1)
+@@ -132,6 +141,10 @@ EndFunction
+ 
+ ;BEGIN FRAGMENT Fragment_92
+ Function Fragment_92() ; the failed ending: the stage's Fail Quest log entry, then Stop()
++	If ended
++		Return
++	EndIf
++	ended = True
+ 	BentSpine.GetActorRef().SetRelationshipRank(Game.GetPlayer(), -1)
+ 	Stop()
+ EndFunction
+diff --git a/tools/ArgoniaPlugin/CleanUp.cs b/tools/ArgoniaPlugin/CleanUp.cs
+index 67ac4062..d794f53d 100644
+--- a/tools/ArgoniaPlugin/CleanUp.cs
++++ b/tools/ArgoniaPlugin/CleanUp.cs
+@@ -44,7 +44,8 @@ static class CleanUp
+                 if (mine == null)
+                 {
+                     mine = (IPlaced)src.DeepCopy();
+-                    var cellKey = K(cellOf[target]);
++                    // bmv_placement lists people; a static's cell is read from the load order's last copy of it
++                    var cellKey = cellOf.TryGetValue(target, out var ck) ? K(ck) : CellOf(mods, key);
+                     if (exterior.Contains(cellKey))
+                     {
+                         if ((mine.MajorRecordFlagsRaw & 0x400) != 0) world.TopCell!.Persistent.Add(mine);
+@@ -83,6 +84,20 @@ static class CleanUp
+ 
+     static IPlaced? Existing(SkyrimMod mod, FormKey key) => Overrides.Placed(mod, key);
+ 
++    // The cell holding a placement in the last plugin that places it (exterior cells of every worldspace, then interiors).
++    static FormKey CellOf(List<ISkyrimModGetter> mods, FormKey key)
++    {
++        for (var i = mods.Count - 1; i >= 0; i--)
++        {
++            foreach (var w in mods[i].Worldspaces)
++                foreach (var c in w.SubCells.SelectMany(b => b.Items).SelectMany(s => s.Items))
++                    if (c.Persistent.Concat(c.Temporary).Any(r => r.FormKey == key)) return c.FormKey;
++            foreach (var c in mods[i].Cells.Records.SelectMany(b => b.SubBlocks).SelectMany(s => s.Cells))
++                if (c.Persistent.Concat(c.Temporary).Any(r => r.FormKey == key)) return c.FormKey;
++        }
++        throw new InvalidOperationException($"clean-up: no cell places {key}");
++    }
++
+     // The cells of a worldspace across the load order (an exterior cell's override goes in its worldspace's blocks).
+     public static HashSet<FormKey> ExteriorCells(List<ISkyrimModGetter> mods, FormKey ws) =>
+         mods.SelectMany(m => m.Worldspaces.Where(w => w.FormKey == ws)).SelectMany(w => w.SubCells).SelectMany(b => b.Items).SelectMany(s => s.Items)
