@@ -43,6 +43,11 @@ NAVM_FIRST = 0x600000
 WATER, ROAD = 1, 2  # ArgoniaNav's area ids (63 is ground)
 EPS = 0.5  # units: a vertex this close to an open edge in plan lies on it
 MIN_PLAN_AREA = EPS * EPS / 2  # units^2: a split never makes a triangle smaller than this in plan
+# Stacked surfaces at a seam (a deck or step over ground on the cell line): split and link seam edges by height as
+# well as plan, so a neighbour's point is never snapped to a vertex of another surface at the same plan spot and two
+# edges with the same plan ends at different heights are both linked. Off for the world's build (its bytes stay as
+# deployed); the place layer (tools/places/build.py) turns it on for its navmesh window.
+STACKED = False
 
 
 def fid(local: int) -> int:
@@ -248,6 +253,10 @@ def seam_points(m: Mesh, side: str) -> list[tuple[float, float, float]]:
 def split_seams(m: Mesh, neighbour_points: dict[str, list]) -> int:
     """Insert the neighbours' seam vertices into this mesh's seam edges (heights interpolated along the edge)."""
     index = {tuple(v[:2]): i for i, v in enumerate(m.verts)}
+    stacked = defaultdict(list)  # STACKED: plan spot -> every vertex there (any surface)
+    if STACKED:
+        for i, v in enumerate(m.verts):
+            stacked[(v[0], v[1])].append(i)
 
     def pts(mm, a, b):
         side = seam_of(mm, a, b)
@@ -260,9 +269,20 @@ def split_seams(m: Mesh, neighbour_points: dict[str, list]) -> int:
             if s is None:
                 continue
             key = (p[0], p[1])
+            z = va[2] + s * (vb[2] - va[2])
+            if STACKED:
+                if abs(p[2] - z) > params.SEAM_DZ:
+                    continue  # the neighbour's point is on another surface
+                at = [i for i in stacked[key] if abs(mm.verts[i][2] - z) <= params.SEAM_DZ]
+                if not at:
+                    at = [len(mm.verts)]
+                    stacked[key].append(at[0])
+                    mm.verts.append([p[0], p[1], z])
+                out.append((s, at[0]))
+                continue
             if key not in index:
                 index[key] = len(mm.verts)
-                mm.verts.append([p[0], p[1], va[2] + s * (vb[2] - va[2])])
+                mm.verts.append([p[0], p[1], z])
             out.append((s, index[key]))
         return out
     return split_open_edges(m, pts)
@@ -290,8 +310,39 @@ def seam_edges(m: Mesh, side: str) -> dict[tuple, tuple[int, int, float, float]]
     return out
 
 
+def stacked_seam_edges(m: Mesh, side: str) -> dict[tuple, list[tuple[int, int, float, float]]]:
+    """seam_edges keeping every surface: plan ends -> [(tri, slot, z at key[0], z at key[1])]."""
+    out = defaultdict(list)
+    for (u, w), uses in edges(m).items():
+        if len(uses) == 1 and seam_of(m, u, w) == side:
+            ti, k = uses[0]
+            pu, pw = tuple(m.verts[u][:2]), tuple(m.verts[w][:2])
+            (p, zp), (q, zq) = sorted([(pu, m.verts[u][2]), (pw, m.verts[w][2])])
+            out[(p, q)].append((ti, k, zp, zq))
+    return out
+
+
 def link_seam(a: Mesh, b: Mesh, side: str) -> int:
     """Portal links across a's `side` seam and b's opposite one, both ways."""
+    if STACKED:  # every surface: pair each edge with the closest in height across, each edge once
+        ea, eb = stacked_seam_edges(a, side), stacked_seam_edges(b, OPP[side])
+        n = 0
+        for key in sorted(ea.keys() & eb.keys()):
+            pairs = sorted((abs(za0 - zb0) + abs(za1 - zb1), i, j)
+                           for i, (_, _, za0, za1) in enumerate(ea[key]) for j, (_, _, zb0, zb1) in enumerate(eb[key])
+                           if abs(za0 - zb0) <= params.SEAM_DZ and abs(za1 - zb1) <= params.SEAM_DZ)
+            ua, ub = set(), set()
+            for _, i, j in pairs:
+                if i in ua or j in ub:
+                    continue
+                ua.add(i)
+                ub.add(j)
+                ta, ka = ea[key][i][:2]
+                tb, kb = eb[key][j][:2]
+                a.links[(ta, ka)] = ((b.x, b.y), tb)
+                b.links[(tb, kb)] = ((a.x, a.y), ta)
+                n += 1
+        return n
     ea, eb = seam_edges(a, side), seam_edges(b, OPP[side])
     n = 0
     for key in sorted(ea.keys() & eb.keys()):
@@ -361,7 +412,7 @@ RING = [(dx, dy) for dx in (-1, 0, 1) for dy in (-1, 0, 1) if dx or dy]
 
 
 def _salt(grid: Grid, world_local: int) -> bytes:
-    h = hashlib.sha256(f"{STITCH_VERSION}|{grid}|{world_local}|{MASTERS}|{SELF_FILE}".encode())
+    h = hashlib.sha256(f"{STITCH_VERSION}|{grid}|{world_local}|{MASTERS}|{SELF_FILE}".encode() + (b"|stacked" if STACKED else b""))
     for name in ("stitch.py", "nvnm.py", "params.py", "esm.py"):
         h.update((Path(__file__).parent / name).read_bytes())
     return h.digest()

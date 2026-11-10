@@ -896,7 +896,8 @@ def exterior_navmesh(touched: set, objects, patched: dict, polylines, out: Path)
     """tools.navmesh over the window (touched cells + NAV_RING rings) with the place's land and collision; the
     touched cells and their first ring are ours (their seams are re-split at the changed neighbour), the second
     ring must come out byte-equal to the world's own NAVM (the join is then edge for edge)."""
-    from tools.navmesh import __main__ as nav, nvnm, world
+    from tools.navmesh import __main__ as nav, nvnm, stitch, world
+    stitch.STACKED = True  # decks and steps on a cell line: seams split and linked by height too (the world's off)
     land = world.Land.load(WORLD_DIR)
     xs = [c[0] for c in touched]
     ys = [c[1] for c in touched]

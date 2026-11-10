@@ -205,3 +205,27 @@ def test_a_seam_where_the_walkable_ground_ends_is_a_boundary_not_a_fault():
     c = _seam_cell(41, -129, "S", [168864.0, 169100.0, 170070.1875])
     s = province.seam_audit({(41, -130): province.seam_open_edges(a, flags(a)), (41, -129): province.seam_open_edges(c, flags(c))})
     assert s["unmatched_segments"] == 5 and s["boundary_segments"] == 0
+
+
+def stacked(cx, flip=False):
+    """A ground strip and a deck 300 above it, both reaching the cell's east seam (or, flipped, the west one)."""
+    g, d = strip(0, 0, [0, 4096]), strip(0, 0, [0, 2048, 4096])
+    n = len(g.verts)
+    m = stitch.Mesh(0, 0, g.verts + [[v[0], v[1], v[2] + 300.0] for v in d.verts],
+                    g.tris + [[a + n, b + n, c + n] for a, b, c in d.tris], g.area + d.area)
+    return mirrored(m, cx) if flip else m
+
+
+def test_stacked_surfaces_at_a_seam_split_and_link_by_height(monkeypatch):
+    for on, want in ((False, None), (True, 3)):
+        monkeypatch.setattr(stitch, "STACKED", on)
+        a, b = stacked(0), stacked(1, flip=True)
+        pa, pb = stitch.seam_points(a, "E"), stitch.seam_points(b, "W")
+        stitch.split_seams(a, {"E": pb})
+        stitch.split_seams(b, {"W": pa})
+        zs = {round(a.verts[v][2]) for t in a.tris for v in t}
+        n = stitch.link_seam(a, b, "E")
+        if on:  # the ground's edge was split on the ground and the deck's on the deck: every seam edge linked
+            assert n == want and all(any(abs(z - s) < 1 for s in (10, 310)) for z in zs)
+        else:  # the world's rule as deployed: a plan spot shared by both surfaces snaps the ground to the deck
+            assert n < 3

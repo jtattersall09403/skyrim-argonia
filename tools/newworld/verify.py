@@ -418,10 +418,18 @@ def run(plugin: Path, out: Path, do_dump: bool = True) -> int:
         sha = hashlib.sha256((plugin / ESM).read_bytes()).hexdigest()
         rep.row("places", "ArgoniaNWPlaces.esp is built over this world ESM", b.get("world_sha256", "")[:12], b.get("world_sha256") == sha,
                 "" if b.get("world_sha256") == sha else "rerun `python -m tools.places build`")
-        for c in sorted((REPO / "out/places/shards").glob("*/check.json")):
+        for pid in sorted(b.get("places") or {}):
+            c = REPO / "out/places/shards" / pid / "check.json"
+            if not c.exists():
+                rep.fail("places", f"{pid}: every place check green", f"never checked: run `python -m tools.places check {pid}`")
+                continue
             r = json.loads(c.read_text())
-            red = [k for k, v in r["results"].items() if not v["ok"]]
-            rep.row("places", f"{r['place_id']}: every place check green", f"{len(r['results']) - len(red)}/{len(r['results'])}", not red,
+            if r.get("esp_sha256") != b.get("esp_sha256"):
+                rep.row("places", f"{pid}: every place check green", "stale", False,
+                        f"the check read another build of the plugin: rerun `python -m tools.places check {pid}`")
+                continue
+            red = [f"{k} {v['n']}" for k, v in sorted(r["results"].items()) if not v["ok"]]
+            rep.row("places", f"{pid}: every place check green", f"{len(r['results']) - len(red)}/{len(r['results'])}", not red,
                     ", ".join(red))
 
     return finish(rep, out, t0)

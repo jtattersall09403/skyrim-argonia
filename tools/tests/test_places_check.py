@@ -294,3 +294,36 @@ def test_boat_destinations_are_read_from_the_give_detail():
     assert B.boat_destinations("raft-boatman to Truowa, Korydon, Marzai and Julo") == ["Truowa", "Korydon", "Marzai", "Julo"]
     assert B.boat_destinations("fishing boat across to Soulrest") == ["Soulrest"]
     assert B.boat_destinations("a raft") == []
+
+
+def seam_pair(other_y0, other_z):
+    """Our cell (0,0) reaching its east line, and the world's cell (1,0) beside it from other_y0 up."""
+    c = ctx()
+    c["navs"] = {k(0x601): nav(k(0x601), "exterior", (0, 0), 0, 0, 4096, 4096, 800)}
+    w = nav(k(0x602, W), "exterior", (1, 0), 4096, other_y0, 8192, 4096, other_z)
+    w.world = True
+    c["navs"][k(0x602, W)] = w
+    return c
+
+
+def test_an_open_seam_edge_with_ground_across_fails_navmesh():
+    assert any("open seam edge" in f for f in C.check_navmesh(seam_pair(0, 820)))
+
+
+def test_a_seam_with_a_step_or_only_a_corner_across_is_a_boundary():
+    assert not any("open seam edge" in f for f in C.check_navmesh(seam_pair(0, 1200)))  # a step: no walk across
+    assert not any("open seam edge" in f for f in C.check_navmesh(seam_pair(4096, 800)))  # touches the line at a corner
+
+
+def test_the_nordic_review_outranks_the_rule_and_a_bare_light_passes():
+    c = ctx()
+    d = c["dump"]["refs"][0]
+    d.update(model="meshes/architecture/windhelm/whgroundpiece.nif", base_type="STAT")
+    c["plan"]["refs"][0]["base"] = "X.esm:000AAA"
+    c["nordic_review"] = {"X.esm:000AAA": {"verdict": "neutral"}}
+    assert not C.check_nordic(c)
+    c["nordic_review"] = {"X.esm:000AAA": {"verdict": "nordic"}}
+    assert C.check_nordic(c)
+    d.update(model=None, base_type="LIGH", base_edid="WRFireLightNS")
+    c["nordic_review"] = {}
+    assert not C.check_nordic(c)

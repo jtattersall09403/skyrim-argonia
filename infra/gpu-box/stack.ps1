@@ -27,6 +27,8 @@ $Installed = if ($World -eq 'Argonia') { "$Mo2\installed.json" } else { "$Mo2\in
 # our own plugins this profile lays last, in order (Argonia.esp; the new world's master after it)
 $OursPlugins = @(@{ name = 'Argonia.esp'; src = "$Root\ours\Argonia.esp" })
 if ($World -eq 'NewWorld') { $OursPlugins += @{ name = 'ArgoniaNewWorld.esm'; src = "$Root\ours\newworld\ArgoniaNewWorld.esm" } }
+# the place layer (places_deploy.sh): Helstrom and the other built places, an ESP over the world ESM, last
+if ($World -eq 'NewWorld') { $OursPlugins += @{ name = 'ArgoniaNWPlaces.esp'; src = "$Root\ours\newworld\ArgoniaNWPlaces.esp" } }
 # derived folders laid over every mod (decision 0014): ours\derived\<name> in both worlds; ours\derived-NewWorld\<name>
 # (the new world's LOD, infra/gpu-box/lod.sh) in the NewWorld profile only
 $Derived = @("$Root\ours\derived") + @(if ($World -eq 'NewWorld') { "$Root\ours\derived-NewWorld" })
@@ -204,6 +206,7 @@ switch ($Cmd) {
       $lines | Set-Content "$Prefs\Plugins.txt" -Encoding ASCII } }
     if (Test-Path "$Root\ours\Argonia.ini") { Copy-Item "$Root\ours\Argonia.ini" "$Data\Argonia.ini" -Force }
     $seq = @(Get-ChildItem "$Root\ours\SEQ\*.seq" -EA SilentlyContinue)   # its SEQ (Seq.cs): start-game quests a new game starts first
+    if ($World -eq 'NewWorld') { $seq += @(Get-ChildItem "$Root\ours\newworld\SEQ\*.seq" -EA SilentlyContinue) }  # the place layer's
     if ($seq) { New-Item -ItemType Directory -Force "$Data\SEQ" | Out-Null; $seq | Copy-Item -Destination "$Data\SEQ" -Force }
     $pex = @(Get-ChildItem "$Root\ours\scripts\*.pex" -EA SilentlyContinue)
     if ($pex) { New-Item -ItemType Directory -Force "$Data\Scripts" | Out-Null; $pex | Copy-Item -Destination "$Data\Scripts" -Force }

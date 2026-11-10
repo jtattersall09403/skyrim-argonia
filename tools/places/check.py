@@ -14,6 +14,7 @@ from __future__ import annotations
 import argparse
 import base64
 import gzip
+import hashlib
 import json
 import math
 import re
@@ -460,7 +461,7 @@ def check_navmesh(ctx) -> list[str]:
                 a, b = n.verts[n.tri[i][k]], n.verts[n.tri[i][(k + 1) % 3]]
                 on = (abs(a[0] - x0) < 1 and abs(b[0] - x0) < 1) or (abs(a[0] - x0 - B.CELL) < 1 and abs(b[0] - x0 - B.CELL) < 1) or \
                      (abs(a[1] - y0) < 1 and abs(b[1] - y0) < 1) or (abs(a[1] - y0 - B.CELL) < 1 and abs(b[1] - y0 - B.CELL) < 1)
-                if on and _across(navs, n, (a + b) / 2):
+                if on and _across(navs, n, (a + b) / 2, a, b):
                     bad.append(f"{n.fk}: open seam edge at {[round(v) for v in (a + b) / 2]} with navmesh across it (unjoined)")
     # islands that hold a door or a routine stop of the place
     comp = components(navs, door_pairs(ctx))
@@ -479,14 +480,37 @@ def check_navmesh(ctx) -> list[str]:
     return bad
 
 
-def _across(navs, n, mid) -> bool:
+def _across(navs, n, mid, a=None, b=None) -> bool:
+    """A neighbour's navmesh meets this open seam edge: one of its own edges lies on the same cell line over a
+    stretch of ours at a like height (the world's seam audit, tools/navmesh/province.seam_audit: a neighbour that
+    only touches the line at a corner, or none, is where walkable ground ends at the seam, a boundary)."""
+    from tools.navmesh import params
+    if a is None:
+        a = b = mid
+    ax = 0 if abs(a[0] - b[0]) < 1 else 1  # the axis the cell line fixes
+    lo, hi = sorted((a[1 - ax], b[1 - ax]))
     for o in navs.values():
         if o is n or o.space != "exterior" or o.cell is None or o.cell == n.cell:
             continue
         if abs(o.cell[0] - n.cell[0]) + abs(o.cell[1] - n.cell[1]) != 1:
             continue
-        if o.tri_at(mid, plan_tol=2.0, z_tol=64.0) >= 0:
-            return True
+        v = o.verts
+        for t in o.tri:
+            for k in range(3):
+                p, q = v[t[k]], v[t[(k + 1) % 3]]
+                if abs(p[ax] - a[ax]) >= 1 or abs(q[ax] - a[ax]) >= 1:
+                    continue
+                plo, phi = sorted((p[1 - ax], q[1 - ax]))
+                s0, s1 = max(lo, plo), min(hi, phi)
+                if s1 - s0 < 1:
+                    continue
+                m = (s0 + s1) / 2
+
+                def zat(e0, e1):
+                    d = e1[1 - ax] - e0[1 - ax]
+                    return e0[2] + (m - e0[1 - ax]) / d * (e1[2] - e0[2]) if abs(d) > 1e-6 else (e0[2] + e1[2]) / 2
+                if abs(zat(a, b) - zat(p, q)) <= params.SEAM_DZ:
+                    return True
     return False
 
 
@@ -765,10 +789,20 @@ def is_nordic(model: str | None, edid: str | None) -> bool:
 
 
 def check_nordic(ctx) -> list[str]:
+    """Every ref of ours (exterior and interior copies alike): the Nordic review's looked-at verdict on its base
+    (newworld/places/nordic_review.jsonl) outranks the folder and editor-id rule."""
+    from tools.places.draft.io import nordic_review
+    review = ctx.get("nordic_review")
+    review = nordic_review() if review is None else review
     m = mine(ctx)
     bad = []
     for r in m["refs"].values():
-        if r.get("base_type") in ("STAT", "MSTT", "DOOR", "FURN", "CONT", "ACTI", "LIGH", "TREE", "FLOR", "MISC") and is_nordic(r.get("model"), r.get("base_edid")):
+        if r.get("base_type") not in ("STAT", "MSTT", "DOOR", "FURN", "CONT", "ACTI", "LIGH", "TREE", "FLOR", "MISC"):
+            continue
+        if r.get("base_type") == "LIGH" and not r.get("model"):
+            continue  # a light with no model shows nothing: no look to judge
+        v = review.get(m["rows"].get(r["fk"], {}).get("base"))
+        if v["verdict"] == "nordic" if v else is_nordic(r.get("model"), r.get("base_edid")):
             bad.append(f"{m['rows'].get(r['fk'], {}).get('id', r['fk'])}: Nordic base {r.get('base_edid')} ({r.get('model')})")
     return bad
 
@@ -798,7 +832,9 @@ def main(argv: list[str]) -> int:
     ctx["place_dir"] = Path(a.places_dir) / a.place_id
     res = run(ctx)
     counts = ctx["dump"]["counts"]
+    esp_sha = hashlib.sha256((Path(a.out) / "plugin" / B.PLUGIN).read_bytes()).hexdigest()  # which build was checked
     report = {"place_id": a.place_id, "check_s": round(time.time() - t0, 1), "masters": ctx["dump"]["masters"], "counts": counts,
+              "esp_sha256": esp_sha,
               "results": {k: {"ok": not v, "failures": v[:50], "n": len(v)} for k, v in res.items()}}
     shard = Path(a.out) / "shards" / a.place_id
     (shard / "check.json").write_text(json.dumps(report, indent=1, sort_keys=True) + "\n")
