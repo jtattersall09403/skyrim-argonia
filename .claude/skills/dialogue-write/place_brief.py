@@ -16,7 +16,7 @@ import sys
 
 HERE = pathlib.Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE.parents[2]))
-from tools.argonia_world import db, records  # noqa: E402
+from tools.argonia_world import db, echoes, records  # noqa: E402
 VOICES = HERE / "voices.md"
 CLASS_KEYS = {  # topic class -> the culture-sheet opinion classes it draws on
     "local": ["place", "people", "work"], "role": ["work", "trade"], "rumour": ["rumour"],
@@ -126,11 +126,20 @@ def main() -> int:
             if st["deviation_lean"] is not None or st["deviation_reason"] is not None:
                 L.append(f"  - This person differs: lean {st['deviation_lean']}: {st['deviation_reason']}")
         if t.topic_class == "rumour":
-            L += [f"- Rumour ({s['level']}): {r}" for s in chain for r in s["entries"].get("rumour", [])]
-            L += [f"- Grievance ({s['level']}): {g}" for s in chain for g in s["entries"].get("grievance", [])]
+            # The culture's rumours and grievances are shared out among the place's people in turn (one teller each),
+            # so neighbours do not tell the same one.
+            me_i, n = [p["id"] for p in people].index(a.person), len(people)
+            L += [f"- Rumour ({s['level']}): {r}" for s in chain
+                  for i, r in enumerate(s["entries"].get("rumour", [])) if i % n == me_i]
+            L += [f"- Grievance ({s['level']}): {g}" for s in chain
+                  for i, g in enumerate(s["entries"].get("grievance", [])) if i % n == me_i]
         if t.topic_class == "quest":
             L.append(f"- Quest topic of {t.keys_quest}: written from that quest's brief (quest-write/brief.py), not here.")
         L.append("")
+    L += ["## Facts the others here carry (theirs to tell; point to them, never restate)"]
+    L += [f"- {p['name']}: `{f['id']}`: {f['claim']}" for p in people if p["id"] != a.person
+          for f in facts if (f["carrier_built_uid"] or f["carrier_queued_ref"]) == p["id"]] or ["- none"]
+    L += [""] + echoes.brief_section(echoes.speech(w), me["name"], echoes.claims(w))
     out = pathlib.Path(a.out)
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text("\n".join(L) + "\n")

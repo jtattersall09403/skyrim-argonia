@@ -159,13 +159,19 @@ Every person who can be talked to gets a name, a short backstory, a personality 
 `talk-write`: facts from the loaded world (the world wins over a lore line it contradicts), directions as routes of two
 to four landmarked steps (a longer way gives its first three, then "from there, ask again"; never the speaker's own
 place as a step), a cool first greeting and warmth only with regard, names by the naming rules, a trader's
-services matching their stock, and rumours that point to a quest only while it can start.
+services matching their stock, and rumours that point to a quest only while it can start. A settlement's people do
+not repeat each other: each fact has one holder there, and anyone else who would know it points to that holder.
 
 ## 7. Write the quest dialogue
 
 Per speaker from the record with `dialogue-write` (matched lines from the reference corpus as the model; the speaker's
 brief generated from the data, holding only that speaker's sourced facts, their part in each stage and the skill
-checks they answer), one `text-review` pass by another agent, then loaded. A line that sets a stage or checks a skill
+checks they answer), one `text-review` pass by another agent, then loaded. Each brief also knows who else the player
+hears in the same place during the same stage (the quest's topics by stage and place, its quest people by stage
+window, the settlement's talkers): a fact they share is said once, by the first speaker the player meets whose role
+it is, and the others point to that person and say their own thing. The echo check fails any line set where two
+speakers of one place and stage state the same fact or the same long clause, outside a named list of deliberate
+echoes (a quest rumour several people tell). A line that sets a stage or checks a skill
 says so plainly in the words the player reads (what was agreed, what is needed). Cool, middle and warm bands are
 separated by the engine's relationship rank; race forms of address only where the brief asks; a short greeting for
 anyone a quest ending leaves standing; journal and objective text written and reviewed the same way.

@@ -3,13 +3,13 @@
   "speaker": "npc.mercantile-coast.soulrest.crew-boss",
   "prompt": "What is wrong with your crew?",
   "lines": [
-   "Our crew asked to end its last season early. Ussa-Rekh, the broker, refused us. He bought out our Owings for thirty years. Owings are debts of labour. He freed us. Now he hires us out. Ask him yourself. He sits on the long dock with his chest beside him."
+   "Our crew asked to end its last season early. Ussa-Rekh, the broker, refused us. Ask him yourself. He sits on the long dock with his chest beside him."
   ],
   "lines@low": [
    "We asked to end our last season early. Ussa-Rekh, the broker, said no. Ask him. He sits on the long dock with his chest beside him."
   ],
   "lines@high": [
-   "Listen. Our crew asked to end its last season early. Ussa-Rekh, the broker, refused us. He bought out our Owings for thirty years. Owings are debts of labour. He freed us. Now he hires us out. Ask him yourself. He keeps his chest beside him on the long dock. Hear his side."
+   "Listen. Our crew asked to end its last season early. Ussa-Rekh, the broker, refused us. Ask him yourself. He keeps his chest beside him on the long dock. Hear his side."
   ]
  },
  "topic.bc03-the-tokens": {
@@ -29,26 +29,26 @@
   "speaker": "npc.mercantile-coast.soulrest.crew-boss",
   "prompt": "I have your crew's tokens.",
   "lines": [
-   "You have them. Give them to me. We will break them before Ussa-Rekh. He promised that then we are done with him."
+   "You have them. Give them to me. We will break them before Ussa-Rekh."
   ],
   "lines@low": [
    "Those are ours. Give them to me."
   ],
   "lines@high": [
-   "You have them. Give them to me. Every one of us will break his own before Ussa-Rekh. He promised that a crew who do so are done with him."
+   "You have them. Give them to me. Every one of us will break his own before Ussa-Rekh."
   ]
  },
  "topic.bc03-brawl": {
   "speaker": "npc.mercantile-coast.soulrest.crew-boss",
   "prompt": "Accept the refusal. Work the season.",
   "lines": [
-   "His no, from your mouth? We asked to end our last season early and were refused. I will not take that from you. Give me a reason worth hearing or keep clear."
+   "His no, from your mouth? I will not take that from you. Give me a reason worth hearing or keep clear."
   ],
   "lines@low": [
    "Enough! I will not take his word from you."
   ],
   "lines@high": [
-   "I think you mean well. But you cannot tell my crew to work on. We asked to end our last season early and were refused. Give me a reason worth hearing, or something for my crew's lost days."
+   "I think you mean well. But you cannot tell my crew to work on. Give me a reason worth hearing, or something for my crew's lost days."
   ]
  },
  "topic.bc03-yield-talk": {
@@ -90,13 +90,13 @@
   "speaker": "npc.imperial-penal-south.blackrose-prison.chainbreaker-envoy-camped-causeway",
   "prompt": "Tell me about the dock crews.",
   "lines": [
-   "For thirty years I bought out Owings, the debts that bind a person to labour. I freed those crews. Now I hire them out. They work the season as agreed. Heavy-Rope's crew asked to end their last season early. I refused them. Heavy-Rope, on this dock, can tell you of the refusal and the tokens."
+   "For thirty years I bought out Owings, the debts that bind a person to labour. I freed those crews. Now I hire them out. They work the season as agreed. Heavy-Rope, on this dock, can tell you what the crew asked of me, and of the tokens."
   ],
   "lines@low": [
-   "I hire out crews. That is all I say to one I do not know. Earn my regard. Then I will say more. Heavy-Rope, on this dock, can tell you of the refusal."
+   "I hire out crews. That is all I say to one I do not know. Earn my regard. Then I will say more. Heavy-Rope, on this dock, can tell you what the crew asked of me."
   ],
   "lines@high": [
-   "For thirty years I bought out Owings, the debts that bind a person to labour. I freed these crews. Now I hire them out. The season is worked as agreed. Heavy-Rope's crew asked to end their last season early. I refused them. I hold to what was agreed. Heavy-Rope, on this dock, can tell you of the refusal and the tokens."
+   "For thirty years I bought out Owings, the debts that bind a person to labour. I freed these crews. Now I hire them out. The season is worked as agreed. I hold to what was agreed. Heavy-Rope, on this dock, can tell you what the crew asked of me, and of the tokens."
   ]
  }
 }

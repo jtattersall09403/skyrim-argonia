@@ -116,8 +116,9 @@ Proposed next, same rule: **Where to sleep** (beds and inns by ref), **Who buys 
 **Assignment.** Every talker has `talk.self`. Place topics (directions, harvest, loot, danger, rumours, someone,
 here, lore) are drawn from the settlement's facts; each talker gets three to five, the facts measured from **their
 own spot** (directions and distances differ per person), so neighbours overlap but never repeat word for word. The
-mix varies too: not everyone gives directions or knows the plants, and a widely known thing (a corpse, a wreck) is
-known by two or three people at most.
+mix varies too: not everyone gives directions or knows the plants, and each fact has one holder in the settlement;
+anyone else who would know it (a corpse, a wreck, a piece of lore) points to the holder (`echoes assign`), save a quest
+rumour, which two or three tell in their own words.
 Trade topics follow class and faction: a vendor gets services, a thief loot and secrets, a mage lore, a child only
 self, someone and harvest. Hostile and corpse rows get none.
 

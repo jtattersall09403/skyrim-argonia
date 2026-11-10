@@ -6,17 +6,17 @@
     "variant": "ready",
     "prompt": "I am ready to go.",
     "lines": [
-     "A friend of the courier's sent us. You have tasted the sap. You are hurt.",
-     "We take the hurt to a house in Lilmoth by boat. That includes you."
+     "You have tasted the sap. You are hurt.",
+     "Step aboard. We go when you are ready. Ask me who sent us if you want to know."
     ],
     "facts": [],
     "lines@low": [
-     "A friend of the courier's sent us. You tasted the sap. You are hurt.",
-     "We take the hurt to a house in Lilmoth by boat. That means you."
+     "You tasted the sap. You are hurt.",
+     "Step aboard. We go when you are ready. Ask who sent us if you want to know."
     ],
     "lines@high": [
-     "A friend of the courier's sent us. You have tasted the sap and you are hurt. I am sorry for it.",
-     "We take the hurt to a house in Lilmoth by boat. You are one of them. You are welcome aboard."
+     "You have tasted the sap and you are hurt. I am sorry for it.",
+     "You are welcome aboard. Step on. We go when you are ready. Ask me who sent us if you wish to know."
     ]
    },
    {
@@ -59,12 +59,11 @@
      "You are carrying a phial. Give it to me. I want to look at it.",
      "Tell me about the jars once more. How many ring-marks did you see?",
      "The Reed has word of a cell. It cuts a Hist's roots and draws its sap into jars. Your camp is the first work of it that the Reed has seen.",
-     "The roll burnt in the camp's fire. No hand can show what you owe, or that you were ever on it.",
+     "When you have told it all, ask me who I am. It matters to what you owe.",
      "The courier's satchel was mine to see carried. I say no more of it."
     ],
     "facts": [
      "fact.mq03.sap-cell",
-     "fact.mq03.no-claim",
      "fact.mq03.satchel-hers"
     ],
     "lines@low": [
@@ -74,7 +73,7 @@
      "The jars again. How many ring-marks did you see?",
      "The Reed has word of a cell. It cuts a Hist's roots and draws its sap into jars.",
      "Your camp is the first work of it that the Reed has seen.",
-     "The roll burnt in the camp's fire. No hand can show what you owe, or that you were ever on it.",
+     "When you have told it all, ask me who I am.",
      "The courier's satchel was mine to see carried. I say no more of it."
     ],
     "lines@high": [
@@ -84,7 +83,7 @@
      "Tell me about the jars once more. How many ring-marks did you see?",
      "The Reed has word of a cell. It cuts a Hist's roots and draws its sap into jars. I tell you this because I trust you.",
      "Your camp is the first work of it that the Reed has seen.",
-     "The roll burnt in the camp's fire. No hand can show what you owe, or that you were ever on it. I am glad of that for your sake.",
+     "When you have told it all, ask me who I am. It matters to what you owe. I think you will be glad of it.",
      "The courier's satchel was mine to see carried. I say no more of it. I am sorry I cannot."
     ]
    },
@@ -97,12 +96,11 @@
      "You took nothing from the shed. Then I have only your word. I will take it.",
      "Tell me about the jars once more. How many ring-marks did you see?",
      "The Reed has word of a cell. It cuts a Hist's roots and draws its sap into jars. Your camp is the first work of it that the Reed has seen.",
-     "The roll burnt in the camp's fire. No hand can show what you owe, or that you were ever on it.",
+     "When you have told it all, ask me who I am. It matters to what you owe.",
      "The courier's satchel was mine to see carried. I say no more of it."
     ],
     "facts": [
      "fact.mq03.sap-cell",
-     "fact.mq03.no-claim",
      "fact.mq03.satchel-hers"
     ],
     "lines@low": [
@@ -112,7 +110,7 @@
      "The jars again. How many ring-marks did you see?",
      "The Reed has word of a cell. It cuts a Hist's roots and draws its sap into jars.",
      "Your camp is the first work of it that the Reed has seen.",
-     "The roll burnt in the camp's fire. No hand can show what you owe, or that you were ever on it.",
+     "When you have told it all, ask me who I am.",
      "The courier's satchel was mine to see carried. I say no more of it."
     ],
     "lines@high": [
@@ -122,7 +120,7 @@
      "Tell me about the jars once more. How many ring-marks did you see?",
      "The Reed has word of a cell. It cuts a Hist's roots and draws its sap into jars. I tell you this because I trust you.",
      "Your camp is the first work of it that the Reed has seen.",
-     "The roll burnt in the camp's fire. No hand can show what you owe, or that you were ever on it. I am glad of that for your sake.",
+     "When you have told it all, ask me who I am. It matters to what you owe. I think you will be glad of it.",
      "The courier's satchel was mine to see carried. I say no more of it. I am sorry I cannot."
     ]
    }
@@ -247,18 +245,18 @@
     "variant": "main",
     "prompt": "I will serve the Reed.",
     "lines": [
-     "Then you serve the Reed. The protection, the door in Lilmoth and the stipend are yours now. I have your word."
+     "Then you serve the Reed. What I offered is yours now. I have your word."
     ],
     "facts": [
      "fact.mq03.reed-offer"
     ],
     "lines@low": [
-     "Then you serve the Reed. The protection, the door in Lilmoth and the stipend are yours now.",
+     "Then you serve the Reed. What I offered is yours now.",
      "I have your word."
     ],
     "lines@high": [
      "Then you serve the Reed. I am glad of it, friend.",
-     "The protection, the door in Lilmoth and the stipend are yours now. I have your word. I trust it."
+     "What I offered is yours now. I have your word. I trust it."
     ]
    }
   ]
@@ -270,17 +268,17 @@
     "variant": "main",
     "prompt": "Not yet.",
     "lines": [
-     "Then you do not take the Reed's protection, the door in Lilmoth or the stipend. That is your choice. The Reed will still send for you, and it will pay for the work."
+     "Then you do not take what I offered. That is your choice. The Reed will still send for you, and it will pay for the work."
     ],
     "facts": [
      "fact.mq03.reed-offer"
     ],
     "lines@low": [
-     "Then you do not take the Reed's protection, the door in Lilmoth or the stipend. That is your choice.",
+     "Then you do not take what I offered. That is your choice.",
      "The Reed will still send for you, and it will pay for the work."
     ],
     "lines@high": [
-     "Then you do not take the Reed's protection, the door in Lilmoth or the stipend. That is your choice. I do not hold it against you.",
+     "Then you do not take what I offered. That is your choice. I do not hold it against you.",
      "The Reed will still send for you, and it will pay for the work."
     ]
    }

@@ -20,7 +20,7 @@ import yaml
 
 HERE = pathlib.Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE.parents[2]))
-from tools.argonia_world import adaptation_check, db, quest_record, records  # noqa: E402
+from tools.argonia_world import adaptation_check, db, echoes, quest_record, records  # noqa: E402
 VOICES = HERE.parent / "dialogue-write" / "voices.md"
 WEAPONS = ["long-blade", "short-blade", "axe", "blunt-weapon", "spear", "marksman", "hand-to-hand"]
 STAGE_FIELDS = ["id", "place", "journal"]   # onEnter, objectives, successors: no rows is an empty list
@@ -91,6 +91,10 @@ def main() -> int:
     for c in q["cast"]:
         c.setdefault("knowledge", {})
     npcs, claims, stance, sheets, topic_rows = load_world(w, q, a.place_facts)
+    # Who else the player hears in each stage's place: this record's topics, the quest people and the talkers there.
+    said = echoes.speech(w, q)
+    owner = echoes.owners(said)
+    all_claims = echoes.claims(w)
     preds, verbs = records.vocabulary(w)
     routing = yaml.safe_load((HERE / "shapes.yaml").read_text())
     cat = yaml.safe_load((HERE / "skill-uses.yaml").read_text())
@@ -274,7 +278,14 @@ def main() -> int:
             first = t["stages"][0]
             L += [f"### {t['label']} (`{t['id']}`; stages {t['stages']}; "
                   f"{'essential: no refusal band' if t['essential'] else 'not essential'})",
-                  f"- Intent: {t['intent']}", "- May state:"] + [f"  - `{f}`: {claims[f]}" for f in t.get("uses", [])]
+                  f"- Intent: {t['intent']}"]
+            here = next(s_.windows for s_ in said if s_.key == t["id"] and s_.source.startswith("record"))
+            others = {f: o for f in t.get("uses", []) for x in sorted(here)
+                      if (o := owner.get((x, f))) is not None and o.speaker != echoes.ident(p["name"])}
+            L += ["- May state:"] + [f"  - `{f}`: {claims[f]}" for f in t.get("uses", []) if f not in others]
+            if others:
+                L += ["- Said by its owner near you (point to them in a few words; never restate it):"]
+                L += [f"  - `{f}`: {o.name} says it ({claims[f]})" for f, o in others.items()]
             if t.get("hides"):
                 L += ["- Hides (until the intent says otherwise):"] + [f"  - `{f}`: {claims[f]}" for f in t["hides"]]
             if t.get("grants"):
@@ -290,10 +301,24 @@ def main() -> int:
             L += [f"- The player already knows at stage {first} (anything else is explained when first named):"]
             L += [f"  - `{f}`: {claims[f]}" for f in knows_at(first)]
             L.append("")
+        L += echoes.brief_section(said, p["name"], all_claims)
         name = re.sub(r"[^a-z0-9]+", "-", p["name"].lower()).strip("-")
         path = out / f"{q['code'].lower()}-{name}.md"
         path.write_text("\n".join(L) + "\n")
         print(f"wrote {path} ({len(my_topics)} topics)")
+
+    # The quest's people with no topic of their own (quest_people.json): one reply each, said near the cast.
+    for s_ in [x for x in said if x.source == "quest_people.json" and x.key.startswith(f"ARG_{q['code']}_")]:
+        P = [f"# Quest person brief: {s_.name} ({q['code']} {q['title']}), \"{s_.topic}\"", "",
+             "One reply of one to three sentences: who this person is, their own work and stake in this stretch of the "
+             "quest, in their own voice (voices.md for their race). They add no fact the record does not hold; a fact "
+             "another speaker owns is pointed to by name, never told. List the fact ids the reply states in its "
+             "entry's `facts`.", "",
+             f"- Heard in: {', '.join(sorted(s_.windows))}", ""]
+        P += echoes.brief_section(said, s_.name, all_claims)
+        path = out / f"{q['code'].lower()}-people-{echoes.ident(s_.name)}-{len(s_.windows)}.md"
+        path.write_text("\n".join(P) + "\n")
+        print(f"wrote {path} (quest person)")
 
     J = [f"# Journal brief: {q['code']} {q['title']}", "",
          "Write each entry in the style guide's journal register (story/design/text/style-guide.md § journal):",
