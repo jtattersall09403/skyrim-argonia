@@ -1,0 +1,55 @@
+{
+ "save_id": "real-edit-proof",
+ "place_id": "helstrom",
+ "name": "Proof run: one object moved and moved back",
+ "rev": 1,
+ "base": {},
+ "ops": [
+  {
+   "n": 1,
+   "op": "ref.move",
+   "space": "exterior",
+   "call": "fault",
+   "id": "helstrom.07BQFGKJV7D3ZC70NEH5QY6GE5",
+   "before": {
+    "pos": [
+     -48722.04,
+     -615446.77,
+     154.78
+    ]
+   },
+   "after": {
+    "pos": [
+     -48658.04,
+     -615446.77,
+     154.78
+    ]
+   },
+   "note": "proof run: moved"
+  },
+  {
+   "n": 2,
+   "op": "ref.move",
+   "space": "exterior",
+   "call": "fault",
+   "id": "helstrom.07BQFGKJV7D3ZC70NEH5QY6GE5",
+   "before": {
+    "pos": [
+     -48658.04,
+     -615446.77,
+     154.78
+    ]
+   },
+   "after": {
+    "pos": [
+     -48722.04,
+     -615446.77,
+     154.78
+    ]
+   },
+   "note": "proof run: moved back"
+  }
+ ],
+ "at": "2026-11-10T11:52:19Z",
+ "final": false
+}
