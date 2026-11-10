@@ -50,3 +50,7 @@ paid work, applies the levers, and only then asks the owner (raise the cap for t
   those hours, and a job that can run on the play machine while the owner is not playing may run there.
 - The play machine is no longer reclaimed (0039), but every job on it, and every agent's work, stays interrupt-proof
   ([0037](0037-work-is-interrupt-proof.md)).
+
+## Amended 2026-11-10
+
+The owner raised the monthly AWS limit from $100 to $150 (in session, 2026-11-10). Everything else stands.

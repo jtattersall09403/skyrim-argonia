@@ -360,3 +360,4 @@ added here the day they are made, with the date and the issue.
 - 2026-11-10 (in session, night): the narrow-change rule stands for all future work, and the owner's edits made
   in the studio are applied the same way: only what the edit touches changes, and no later draft step regenerates
   over a place the owner has edited. The rule is a line in CLAUDE.md.
+- 2026-11-10 (in session, night): the AWS limit is $150 a month, up from $100 (decision 0008 amended).

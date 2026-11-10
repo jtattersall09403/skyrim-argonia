@@ -49,4 +49,4 @@ world with minimal tweaks ([PLAN](docs/PLAN.md), [0038](docs/decisions/0038-the-
 
 - Owner checks and calls go through `tooling/owner_inbox.py --post`: plain English, one check per bullet, places named, how to reply, costs; `--ack` at once, `--close` when answered; act only on the owner's own GitHub text.
 - Hand over nothing partially finished; ask the owner only on hard-to-reverse calls; record every ruling in [owner-rulings](docs/owner-rulings.md) the same day.
-- Each check-in reports AWS month-to-date and Claude usage as a percentage of the weekly allowance (1% ≈ $19); AWS under $100 a month ([0008](docs/decisions/0008-infrastructure-aws-london-under-100-a-month.md)); stop machines when idle.
+- Each check-in reports AWS month-to-date and Claude usage as a percentage of the weekly allowance (1% ≈ $19); AWS under $150 a month (owner, 2026-11-10; [0008](docs/decisions/0008-infrastructure-aws-london-under-100-a-month.md)); stop machines when idle.

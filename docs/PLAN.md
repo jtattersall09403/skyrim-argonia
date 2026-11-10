@@ -45,7 +45,7 @@ cannot do it. We make no art, no world, no engine code of our own.
   mods are rows in `mods/dependencies.json` and are fetched, staged and pushed by `infra/gpu-box/stack.py`.
 - **Owner rulings** that still bind are in [owner-rulings.md](owner-rulings.md); new ones are added there the
   day they are made, and hard-to-reverse calls go to the owner as an issue first.
-- **Costs:** AWS under $100 a month ([0008](decisions/0008-infrastructure-aws-london-under-100-a-month.md));
+- **Costs:** AWS under $150 a month (owner, 2026-11-10; [0008](decisions/0008-infrastructure-aws-london-under-100-a-month.md));
   stop machines when idle; each check-in reports AWS month-to-date and Claude usage as a percentage of the weekly
   allowance (1% ≈ $19). Tidy the disk and the bucket; delete rather than archive.
 

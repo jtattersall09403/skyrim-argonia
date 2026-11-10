@@ -1,6 +1,6 @@
 # Infrastructure
 
-What runs where, and how to rebuild it. Decision [0008](../docs/decisions/0008-infrastructure-aws-london-under-100-a-month.md) holds the budget (AWS under $100 a month). Update this file in place when anything changes.
+What runs where, and how to rebuild it. Decision [0008](../docs/decisions/0008-infrastructure-aws-london-under-100-a-month.md) holds the budget (AWS under $150 a month since the owner raised it on 2026-11-10). Update this file in place when anything changes.
 
 ## Machines
 
