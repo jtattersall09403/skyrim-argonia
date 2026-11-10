@@ -54,11 +54,16 @@ building on a slope first takes the rise the source's own builders commonly buil
 
 ## 4. Settle what the cost cannot
 
-- **Nordic bases** (decision 0006): `ledger.jsonl` lists each dropped one. For each base, find a piece of like
+- **Nordic bases are judged by look** (decision 0006). The folder flag only sorts; the verdict is the Nordic
+  review, `newworld/places/nordic_review.jsonl` (contract: Bundles). For every flagged base the source uses that
+  the review lacks, look at its thumbnail (`tools.places.assets.thumb(model)`): a carved Nordic door, a Solitude
+  planter or a Nord sword is `nordic`; leaves, moss, plain posts, planks and docks are `neutral`. Write its row,
+  with the standard replacement for a Nordic one; the tools then replace it in the exterior and in every interior
+  copy, or drop it with a ledger reason. `ledger.jsonl` lists each dropped one. For a Nordic base with no `replace`, find a piece of like
   size and use from a non-Nordic source we deploy (`python -m tools.places search query "<what it is>"`, or the
   catalogue `out/places/catalogue/bases.jsonl`), and set `draft.replace` `{old: new}`, or
   `{old: {base, turn_deg}}`. The tools line a replaced door or directional piece up with the original's plane
-  from both meshes (the turn and the shift, `align` on the ref) and `draft check` proves it, with every door's arrival point on our ground, clear of
+  from both meshes (the turn and the shift, `align` on the ref) and `draft check` proves it, with every door's arrival point where one stands (our ground, a low road or deck one steps onto, or the thing a door stands on), outside every placed thing's body by the build's own test, clear of
   collision and in front of its plane. Which face of a new door mesh is its front cannot be read from geometry:
   the tools list each such door in `place.json` `needs_look`; carry that list to the owner check. A door that leads
   indoors is always replaced, never dropped. Drop decorative pieces with no equal.
@@ -69,6 +74,8 @@ building on a slope first takes the rise the source's own builders commonly buil
   apothecary; the enchanter with the spell trader; the cooking pot at the inn), from the plugins whose style the
   place already uses. Check each in the render (`stations.added`); move one with `draft.add` and `draft.roles`
   when it stands wrong. Traders work where the source's own trader of that trade worked.
+  A promised shrine blessing needs a thing to carry it: the source's own Hist or shrine, else the tools add a
+  young Hist in the town's middle, clear of buildings and streets (`stations` `shrine`); look at it in the render.
 - **People follow Skyrim's days** (`docs/research/skyrim/town-life.md`): an innkeeper keeps the inn day and
   night and owns no bed; guards keep two 12-hour shifts on the streets. Never bend a day to satisfy a check;
   if a check disagrees with how Skyrim does it, the check is wrong.
@@ -77,7 +84,7 @@ building on a slope first takes the rise the source's own builders commonly buil
   person works; residents fill the homes' remaining beds.
 - **Who sleeps where, the vanilla way.** An inn that rents a room keeps one of its beds unowned: that is the
   rented bed (`stations.rent_bed`). Guards sleep in a barracks or their camp's own beds (tents and bedrolls
-  outdoors), never in the inn's rooms or a family's home. Each house holds one household: a family, headed by
+  outdoors), one guard to a bed, never in the inn's rooms or a family's home. Each house holds one household: a family, headed by
   the working person who lives there, then a partner, then their kin; never strangers thrown together.
 - Nothing levelled is ever placed (decision 0035); the tools drop it and list it.
 

@@ -66,6 +66,50 @@ def contains_xy(sup: dict, bases: dict, x: float, y: float, pad: float = 0.0) ->
     return b[0][0] - pad <= u <= b[1][0] + pad and b[0][1] - pad <= v <= b[1][1] + pad
 
 
+SOLID_KINDS = {"building", "static", "furniture", "container", "door", "activator", "rock"}
+ARRIVAL_SHRINK = 0.8   # the builder's read-back test: a point inside this share of a thing's box in plan
+
+
+def stands_in(sup: dict, bases: dict, p, shrink: float = ARRIVAL_SHRINK) -> bool:
+    """Whether a standing point p [x, y, z] is inside a placed thing's body: within `shrink` of its box in plan, by
+    its true mesh extent and by its record bounds alike (the build checks the record's), and below its top (one
+    standing on a thing is not in it)."""
+    base = bases.get(sup.get("base")) or {}
+    if not solid(base):
+        return False
+    s = float(sup.get("scale") or 1.0)
+    rz = sup.get("rot", [0, 0, 0])[2]
+    dx, dy = p[0] - sup["pos"][0], p[1] - sup["pos"][1]
+    c, sn = math.cos(rz), math.sin(rz)
+    u, v = dx * c - dy * sn, dx * sn + dy * c
+    for b in (model_bounds(base), base.get("bounds")):
+        if not b:
+            continue
+        lo, hi = [x * s for x in b[0]], [x * s for x in b[1]]
+        cu, cv = (lo[0] + hi[0]) / 2, (lo[1] + hi[1]) / 2
+        hu, hv = (hi[0] - lo[0]) / 2 * shrink, (hi[1] - lo[1]) / 2 * shrink
+        z0, z1 = sup["pos"][2] + lo[2], sup["pos"][2] + hi[2]
+        if abs(u - cu) <= hu and abs(v - cv) <= hv and z0 - 1 <= p[2] < z1 - 16:
+            return True
+    return False
+
+
+STEP = 64.0   # the most one steps up onto a floor, a road or a deck from the ground
+
+
+def stand_height(x: float, y: float, ground: float, refs: list[dict], bases: dict) -> float:
+    """Where one stands at (x, y): the ground, or the top of a low walkable thing over it (a road piece, a
+    platform) one steps onto."""
+    h = ground
+    for r in refs:
+        b = bounds(r, bases)
+        if b and contains_xy(r, bases, x, y):
+            top = r["pos"][2] + b[1][2]
+            if h < top <= ground + STEP:
+                h = top
+    return h
+
+
 class Xf:
     """A 2D rigid transform of the source frame onto ours: rotate by `rot` (clockwise yaw, radians) about the
     source pivot, then move the pivot to `to`."""

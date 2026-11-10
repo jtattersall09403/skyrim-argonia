@@ -169,3 +169,39 @@ def test_patches_never_fill_water(fx):
     root, _ = fx
     land = [json.loads(line) for line in (root / "places/fx/land.jsonl").read_text().splitlines()]
     assert all(abs(v[2]) <= 105 for p in land for v in p["verts"])
+
+
+def test_nordic_review_outranks_the_folder_rule(tmp_path):
+    from tools.places.draft import io as dio
+    p = tmp_path / "review.jsonl"
+    p.write_text('{"base": "A:1", "verdict": "neutral", "why": "leaves"}\n'
+                 '{"base": "A:2", "verdict": "nordic", "why": "planter", "replace": {"base": "K:9"}}\n')
+    rv = dio.nordic_review(p)
+    assert not dio.is_nordic("A:1", {"nordic": True}, rv)
+    assert dio.is_nordic("A:2", {"nordic": False}, rv)
+    assert dio.is_nordic("A:3", {"nordic": True}, rv)        # unreviewed: the folder rule stands
+    rep = dio.nordic_replace({"replace": {"A:5": "K:5"}}, {}, rv)
+    assert rep == {"A:2": {"base": "K:9"}, "A:5": {"base": "K:5"}}
+
+
+def test_arrival_inside_a_body_but_not_on_top_of_it():
+    from tools.places.draft import geom
+    bases = {"B:1": {"key": "B:1", "bounds": [[-100, -100, 0], [100, 100, 300]], "model": "x/house.nif"}}
+    house = {"base": "B:1", "kind": "building", "pos": [0, 0, 0], "rot": [0, 0, 0], "scale": 1}
+    assert geom.stands_in(house, bases, (10, 10, 0))
+    assert not geom.stands_in(house, bases, (95, 0, 0))       # outside the 0.8 share in plan
+    assert not geom.stands_in(house, bases, (10, 10, 300))     # standing on its top
+    road = {"base": "R:1", "kind": "static", "pos": [0, 0, 0], "rot": [0, 0, 0], "scale": 1}
+    bases["R:1"] = {"key": "R:1", "bounds": [[-200, -200, -40], [200, 200, 20]], "model": "x/road.nif"}
+    assert geom.stand_height(0, 0, 0.0, [road], bases) == 20     # one steps onto a low road
+
+
+def test_plant_inside_a_placed_thing_is_cleared():
+    from tools.places.draft import clear
+    bases = {"B:1": {"key": "B:1", "bounds": [[-100, -100, 0], [100, 100, 300]], "model": "x/rock.nif"}}
+    rock = {"id": "r", "base": "B:1", "kind": "rock", "pos": [0, 0, 0], "rot": [0, 0, 0], "scale": 1}
+    inside = {"id": "p1", "base": "T:1", "kind": "tree", "pos": [90, 0, 10]}
+    outside = {"id": "p2", "base": "T:1", "kind": "tree", "pos": [150, 0, 10]}
+    assert clear.inside_placed(inside, [rock], bases)
+    assert clear.stray([inside, outside], set(), [rock], bases, []) == ["world plant p1 (T:1) stands in r"]
+    assert clear.stray([inside], {"p1"}, [rock], bases, []) == []

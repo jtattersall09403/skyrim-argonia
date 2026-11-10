@@ -117,6 +117,15 @@ Whiterun, Windhelm, Riften, Solitude, Markarth, farmhouse and the like) and not 
 Imperial, Ayleid, Falmer), whatever plugin carries it, or when it is architecture from Skyrim's own masters outside
 those kits.
 
+The folder rule is a first sort, not a look: a pile of leaves from Riften's folder is not a Nordic element. The
+verdict, once a base has been looked at, is `newworld/places/nordic_review.jsonl`, one row per base: `{base (key),
+edid, model, verdict: "nordic"|"neutral", why (one line: what it looks like), replace?: {base, turn_deg?}}` (the
+standard non-Nordic piece that stands in for it). A reviewed verdict outranks the folder rule everywhere: the
+drafter (`io.place_bases`), `draft check` and the build's read-back check all read it, and an unreviewed base keeps
+the folder rule. The draft replaces a Nordic base by its `replace` (a place's own `draft.replace` over it), in the
+exterior and inside every interior copy alike, or drops it with a ledger reason. The table grows as sources are
+drafted: look at each newly flagged base's thumbnail and add its row.
+
 An actor base: `{key, edid, name, short_name, race, race_edid, sex, flags, level, template, template_flags, class,
 class_edid, factions:[{faction,edid,rank}], crime_faction, voice, outfit, sleep_outfit, ai, keywords,
 services:{vendor:{faction, buy_sell_list, container, values, location}, trainer:{skill,max}, innkeeper, guard},
@@ -453,8 +462,8 @@ tear at a seam; a cleared plant still enabled, or a plant standing in a building
 the place record promises with nobody giving it; a Nordic base; anything levelled. It also fails on a link that
 resolves nowhere or a plugin not mastered on the world ESM. The promises are the place's rows of
 `newworld/story/data/db/place_give.jsonl` (combat, loot and resource gives are not a place's to give). Nordic is
-a base whose model lies in Skyrim's hold-city, Nordic farm or Nordic ruin folders, or whose editor id carries
-their kit prefixes (decision 0006). Results go to `out/places/shards/<place_id>/check.json`, which the new world's
+the Nordic review's verdict for a base it lists, else a base whose model lies in Skyrim's hold-city, Nordic farm
+or Nordic ruin folders, or whose editor id carries their kit prefixes (decision 0006). Results go to `out/places/shards/<place_id>/check.json`, which the new world's
 read-back (`tools/newworld/verify.py`, area `places`) reports.
 
 ## Finalise

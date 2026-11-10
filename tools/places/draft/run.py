@@ -94,7 +94,7 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
 
     # --- refs ---
     ledger: list[dict] = []
-    replace = {k: (v if isinstance(v, dict) else {"base": v}) for k, v in (dec.get("replace") or {}).items()}
+    replace = io.nordic_replace(dec, bases)
     drop = dec.get("drop") or {}
     our: list[dict] = []
     our_id: dict[str, str] = {}
@@ -306,7 +306,7 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
     # --- interiors ---
     ext_doors = [by_src[r["src"]] for r in our if r.get("door") and r["door"].get("to_space") in src.spaces
                  and r["door"]["to_space"] != "exterior"]
-    spaces = interiors.plan(place_id, src, ext_doors, our_id)
+    spaces = interiors.plan(place_id, src, ext_doors, our_id, bases, replace, ledger)
     our_by_id = {r["id"]: r for r in our}
     for sid, sp in spaces.items():
         if sp["parent"] == "exterior":
@@ -486,11 +486,24 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
         back = next((r for r in sp["overrides"] if r["id"] == sp["door_back"]), None)
         if p is None or back is None:
             continue
-        # one arrives on dry ground clear of any other building: step out along the way out, then round it
+        # one arrives on dry ground clear of every placed thing's body (geom.stands_in, the build's own test): step
+        # out along the way out, then round it. A door standing on a thing (a ship's hatch) lands one on that thing.
+        sup = our_by_id.get(ext_door["seat"].get("on")) if ext_door["seat"].get("mode") == "on" else None
+        near = [r for r in our if r.get("kind") in geom.SOLID_KINDS and r is not ext_door and r is not sup
+                and math.dist(r["pos"][:2], ext_door["pos"][:2]) < 4096]
+
+        def stand_z(q):
+            if sup is not None and geom.contains_xy(sup, bases, q[0], q[1]):
+                return ext_door["pos"][2]
+            g = G.height(*q)
+            return None if g is None else geom.stand_height(q[0], q[1], g, near, bases)
+
         def clear(q):
-            return G.has(*q) and (not G.wet(q[0], q[1], 16) or G.wet(ext_door["pos"][0], ext_door["pos"][1], 16)) \
-                and not any(r.get("kind") == "building" and geom.contains_xy(r, bases, q[0], q[1], -32)
-                            and not geom.contains_xy(r, bases, ext_door["pos"][0], ext_door["pos"][1], 64) for r in our)
+            if not G.has(*q) or (G.wet(q[0], q[1], 16) and not G.wet(ext_door["pos"][0], ext_door["pos"][1], 16)
+                                 and stand_z(q) != ext_door["pos"][2]):
+                return False
+            z = stand_z(q)
+            return z is not None and not any(geom.stands_in(r, bases, (q[0], q[1], z)) for r in near)
         if not clear(p):
             d0 = math.dist(p, ext_door["pos"][:2]) or 1.0
             ux, uy = (p[0] - ext_door["pos"][0]) / d0, (p[1] - ext_door["pos"][1]) / d0
@@ -499,7 +512,7 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
                       for t in (k * math.pi / 8 for k in range(16))]
             p = next((q for q in cands if clear(q)), p)
             nodes_our[ext_door["src"]] = p
-        h = G.height(*p)
+        h = stand_z(p)
         out_yaw = math.atan2(p[0] - ext_door["pos"][0], p[1] - ext_door["pos"][1]) % (2 * math.pi)
         arrival = [round(p[0], 2), round(p[1], 2), round(h if h is not None else ext_door["pos"][2], 2)]
         back["door"] = {**back["door"], "to_pos": arrival, "to_rot": [0.0, 0.0, round(out_yaw, 5)]}
@@ -521,7 +534,7 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
     src_veg = [r for r in ext if r.get("kind") in clearmod.CLEARED_KINDS]
     clearance = clearmod.measure(src_veg, src_buildings, bases, paths_src, list(nodes_src.values()))
     our_buildings = [r for r in our if r.get("kind") == "building"]
-    footprints = [r for r in our if geom.foot(r, bases) and r.get("kind") not in VEG]
+    footprints = [r for r in our if geom.foot(r, bases) and (r.get("kind") not in VEG or r.get("kind") in geom.SOLID_KINDS)]
     world = [r for r in (grd.exterior.refs if grd.exterior else []) if r.get("layer", "world") == "world"]
     clear_rows = clearmod.apply(world, clearance, our_buildings, bases, paths_our, list(nodes_our.values()), footprints)
 
@@ -587,6 +600,57 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
     return counts
 
 
+SHRINE_GIVE = "shrine-blessing"
+SHRINE_EDID = re.compile(r"hist|shrine|altar", re.I)
+SHRINE_BASE = "King of the Murkmire.esp:0D72B8"   # HistTree04: a young Hist, some 6 m tall
+
+
+def add_shrine(place_id, gives, our, bases, stations, centre, paths_our, G) -> None:
+    """A promised shrine blessing needs a thing to carry it: the source's own Hist or shrine when it placed one,
+    else a young Hist added where a town's shrine stands (its square, the town's middle), clear of buildings and
+    streets. Recorded in stations (found or added) as `shrine`."""
+    if not any(g["give_kind_id"] == SHRINE_GIVE for g in gives):
+        return
+    stations["needed"] = sorted(set(stations["needed"]) | {"shrine"})
+    have = sorted(r["id"] for r in our if r.get("layer") == "place" and r.get("kind") != "door"
+                  and SHRINE_EDID.search(str((bases.get(r["base"]) or {}).get("edid", ""))))
+    stations["found"]["shrine"] = have
+    if have:
+        return
+    bases.update(io.catalogue_bases({SHRINE_BASE} - set(bases)))
+    b = bases.get(SHRINE_BASE)
+    if not b:
+        stations["missing"].append("shrine")
+        return
+    probe = {"base": SHRINE_BASE, "kind": "static", "pos": [0, 0, 0], "rot": [0, 0, 0]}
+    rad = geom.radius(probe, bases)
+    solids = [r for r in our if r.get("kind") in geom.SOLID_KINDS]
+    for ring in [0.0] + [128.0 * k for k in range(1, 24)]:
+        for j in range(1 if ring == 0 else 16):
+            t = j * math.pi / 8
+            q = (centre[0] + ring * math.sin(t), centre[1] + ring * math.cos(t))
+            if not G.has(*q) or G.wet(q[0], q[1], 16):
+                continue
+            if paths_our and paths_mod.dist_to_paths(q, paths_our) < rad:
+                continue
+            if any(math.dist(q, r["pos"][:2]) < rad + geom.radius(r, bases) for r in solids):
+                continue
+            row = {"id": io.mint(place_id, "station", "shrine"), "base": SHRINE_BASE, "kind": "static",
+                   "pos": [round(q[0], 2), round(q[1], 2), 0.0], "rot": [0.0, 0.0, 0.0], "scale": 1.0,
+                   "layer": "place", "flags": [], "src": None, "seat": {"mode": "ground", "dz": 0.0},
+                   "why": "shrine: the record promises a Hist blessing; the source has no Hist, so a young one "
+                          "stands in the town's middle"}
+            f = geom.foot(row, bases)
+            if f:
+                row["seat"]["foot"] = f
+            our.append(row)
+            stations["added"].append({"station": "shrine", "id": row["id"], "base": SHRINE_BASE,
+                                      "space": "exterior", "by": None})
+            stations["found"]["shrine"] = [row["id"]]
+            return
+    stations["missing"].append("shrine")
+
+
 def draft_people(place_id, rec, gives, src, bases, our, spaces, clusters, fit, of, nodes_our, paths_our, dec, ledger, G):
     roles_override = dec.get("roles") or {}
     # beds of each copy
@@ -604,9 +668,8 @@ def draft_people(place_id, rec, gives, src, bases, our, spaces, clusters, fit, o
     # sleep in a barracks or their camp, never in an inn's rooms or a family's home
     camp = sorted(r["id"] for r in our if r.get("kind") == "furniture" and interiors.is_bed(bases.get(r["base"]) or {}))
     for rid in camp:
-        b_ = bases.get(next(r["base"] for r in our if r["id"] == rid)) or {}
-        for k in range(interiors.sleeps(b_)):
-            slots.setdefault("exterior", []).append({"space": "exterior", "ref": rid, "slot": k})
+        # one guard to a bed, even a double: a bed has one owner, and a guard owns his own
+        slots.setdefault("exterior", []).append({"space": "exterior", "ref": rid, "slot": 0})
     barracks = sorted(sid for sid in halls if re.search(r"barrack|guard", f"{sid} {spaces[sid].get('name') or ''}", re.I))
     free = {sid: list(v) for sid, v in slots.items()}
 
@@ -806,10 +869,19 @@ def draft_people(place_id, rec, gives, src, bases, our, spaces, clusters, fit, o
             beds = interiors.beds_in(src_refs, bases, sp["room"], sp["copy_of"])
             anchor_ids = {b_["ref"] for b_ in beds} or {sp.get("room")}
             pts = [r["pos"] for r in src_refs if r["id"] in anchor_ids] or [src_refs[0]["pos"]]
-            cx_ = sum(p[0] for p in pts) / len(pts) + 128 * (k + 1)
-            cy_ = sum(p[1] for p in pts) / len(pts)
+            mx, my = sum(p[0] for p in pts) / len(pts), sum(p[1] for p in pts) / len(pts)
+            into = next((r_.get("door") or {} for r_ in our + [o for v in spaces.values() for o in v["overrides"]]
+                         if r_["id"] == sp["door_from"]), {}).get("to_pos")
+            if into:
+                # on the floor one walks in on (the source's own arrival inside), stepped into the room towards its
+                # beds: a point the room's navmesh holds, never a guess at a floor height
+                d_ = math.dist(into[:2], (mx, my)) or 1.0
+                step = min(192.0 + 64.0 * k, d_ * 0.5)
+                cx_, cy_, cz_ = into[0] + (mx - into[0]) / d_ * step, into[1] + (my - into[1]) / d_ * step, into[2]
+            else:
+                cx_, cy_, cz_ = mx + 128 * (k + 1), my, min(p[2] for p in pts)
             row = {"id": io.mint(place_id, "station", st), "base": b["key"], "kind": "furniture",
-                   "pos": [round(cx_, 2), round(cy_, 2), round(min(p[2] for p in pts), 2)], "rot": [0.0, 0.0, 0.0],
+                   "pos": [round(cx_, 2), round(cy_, 2), round(cz_, 2)], "rot": [0.0, 0.0, 0.0],
                    "scale": 1.0, "layer": "place", "flags": [], "src": None, "seat": {"mode": "free"},
                    "why": f"{st}: promised by the place record ({owner['role']}'s work), lacking in the source"}
             sp["overrides"].append(row)
@@ -821,6 +893,7 @@ def draft_people(place_id, rec, gives, src, bases, our, spaces, clusters, fit, o
         found[st].append(row["id"])
     stations["added"] = added
     stations["missing"] = [s_ for s_ in stations_need if not found[s_]]
+    add_shrine(place_id, gives, our, bases, stations, centre, paths_our, G)
 
     # guards: patrol the streets in two shifts
     # each guard walks streets end to end and back, never cutting across: the day and night guard of a pair share

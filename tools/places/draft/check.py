@@ -227,6 +227,10 @@ def check(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, g
         bad.append(f"promised station {s_} is missing")
     ref_by = {r["id"]: r for r in refs}
     for a in st.get("added") or []:
+        if a["station"] == "shrine":     # a shrine is used by the passer-by, not worked
+            if a["id"] not in ref_by:
+                bad.append(f"shrine {a['id']} is not placed")
+            continue
         w = next((p["work"] for p in folk if p["id"] == a["by"]), None)
         if w is None:
             bad.append(f"station {a['station']} has nobody to work it")
@@ -290,7 +294,6 @@ def check(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, g
             bad.append(f"{r['id']} ({r['kind']}) buried {-min(go):.0f} into our ground (source {-min(gs):.0f})")
 
     # 13. every door opens the way out: its arrival on our ground, clear of collision, its plane across the way out
-    blds = [r for r in refs if r.get("kind") == "building" and r["seat"].get("foot")]
     for d in doors:
         a = (d["door"] or {}).get("arrival")
         if not a:
@@ -300,9 +303,11 @@ def check(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, g
             bad.append(f"door {d['id']} arrival is off our ground")
         elif G.wet(a[0], a[1], 16) and not G.wet(d["pos"][0], d["pos"][1], 16):
             bad.append(f"door {d['id']} arrival is in the water")
-        if any(geom.contains_xy(r, bases, a[0], a[1], -32) and not geom.contains_xy(r, bases, d["pos"][0], d["pos"][1], 64)
-               for r in blds):
-            bad.append(f"door {d['id']} arrival is inside a building")
+        sup = d["seat"].get("on") if d["seat"].get("mode") == "on" else None
+        for r in refs:
+            if r.get("kind") in geom.SOLID_KINDS and r is not d and r["id"] != sup \
+                    and math.dist(r["pos"][:2], a[:2]) < 4096 and geom.stands_in(r, bases, a):
+                bad.append(f"door {d['id']} arrival is inside {r['id']} ({r['kind']})")
         pl = geom.plane(bases.get(d["base"]) or {})
         if pl and math.dist(a[:2], d["pos"][:2]) > 16:
             n_ = geom.turn((1.0, 0.0) if pl["axis"] == 0 else (0.0, 1.0), d["rot"][2])
@@ -318,6 +323,37 @@ def check(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, g
             bad.append(f"{r['id']} places a Nordic base {r['base']}")
         if str(b.get("type")) in LEVELLED:
             bad.append(f"{r['id']} places a levelled base {r['base']}")
+    bad += nordic_in_copies(pdir, src, bases)
+
+    # 14. no world plant left standing in what we placed or on a street (the build's clear check)
+    from tools.places.draft import clear as clearmod
+    world = [r for r in (grd.exterior.refs if grd.exterior else []) if r.get("layer", "world") == "world"]
+    cleared = {c.get("ref") for c in io.read_jsonl(pdir / "clear.jsonl")}
+    placed = [r for r in refs if r.get("kind") in geom.SOLID_KINDS]
+    bad += clearmod.stray(world, cleared, placed, bases, paths)
+    return bad
+
+
+def nordic_in_copies(pdir: Path, src, bases: dict) -> list[str]:
+    """An interior copy brings its source room whole: every ref it keeps unchanged, and every override, must be of a
+    base the Nordic review (or, unreviewed, the folder rule) passes."""
+    bad = []
+    for sj in sorted((pdir / "spaces").glob("*/space.json")):
+        sp = json.loads(sj.read_text())
+        if sp.get("space_id") == "exterior" or not sp.get("copy_of"):
+            continue
+        rows = {r["src"]: r for r in io.read_jsonl(sj.parent / "refs.jsonl") if r.get("src")}
+        keep = interiors.kept(sp["copy_of"], sp.get("room"))
+        src_sp = src.spaces.get(sp["copy_of"].split("/", 1)[1])
+        for r in (src_sp.refs if src_sp else []):
+            if r.get("kind") == "actor" or (keep is not None and r["id"] not in keep):
+                continue
+            row = rows.get(r["id"], r)
+            if not row.get("removed") and (bases.get(row.get("base")) or {}).get("nordic"):
+                bad.append(f"{sp['space_id']}/{r['id']} keeps a Nordic base {row['base']}")
+        for row in io.read_jsonl(sj.parent / "refs.jsonl"):
+            if not row.get("src") and (bases.get(row.get("base")) or {}).get("nordic"):
+                bad.append(f"{sp['space_id']}/{row['id']} adds a Nordic base {row['base']}")
     return bad
 
 

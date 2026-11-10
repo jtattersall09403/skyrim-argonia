@@ -68,6 +68,35 @@ def measure(veg: list[dict], buildings: list[dict], bases: dict, paths: list[dic
     return out
 
 
+def inside_placed(plant: dict, placed: list[dict], bases: dict) -> bool:
+    """A plant whose root is inside a placed thing's whole box (true mesh extent or record bounds, as the build
+    checks) below its top."""
+    return any(geom.stands_in(b, bases, plant["pos"], 1.0) for b in placed)
+
+
+def stray(world: list[dict], cleared: set, placed: list[dict], bases: dict, paths: list[dict]) -> list[str]:
+    """What the build's read-back would find: a plant left standing inside a placed thing or on a street."""
+    bad = []
+    grid: dict[tuple[int, int], list] = {}
+    for b in placed:
+        rad = geom.radius(b, bases)
+        for gx in range(int((b["pos"][0] - rad) // 1024), int((b["pos"][0] + rad) // 1024) + 1):
+            for gy in range(int((b["pos"][1] - rad) // 1024), int((b["pos"][1] + rad) // 1024) + 1):
+                grid.setdefault((gx, gy), []).append(b)
+    near_paths = paths
+    for r in world:
+        if r.get("kind") not in CLEARED_KINDS or r.get("id") in cleared:
+            continue
+        near = grid.get((int(r["pos"][0] // 1024), int(r["pos"][1] // 1024)), [])
+        if not near and not near_paths:
+            continue
+        if inside_placed(r, near, bases):
+            bad.append(f"world plant {r.get('id')} ({r['base']}) stands in {next(b['id'] for b in near if inside_placed(r, [b], bases))}")
+        elif paths and dist_to_paths(r["pos"][:2], paths) <= 0.0:
+            bad.append(f"world plant {r.get('id')} ({r['base']}) stands on a street")
+    return bad
+
+
 def apply(world: list[dict], clearance: dict, buildings: list[dict], bases: dict, paths: list[dict],
           doors: list, footprints: list[dict]) -> list[dict]:
     reach = max(max(c[k] for k in ("building", "street", "door")) for c in clearance.values()) + 2048.0
@@ -104,7 +133,7 @@ def apply(world: list[dict], clearance: dict, buildings: list[dict], bases: dict
         c = clearance[_cls(r["kind"])]
         d = distances(p, near_b, bases, near_p, near_d)
         why = None
-        if any(rect_dist(f, bases, *p) == 0 for f in near_f):
+        if any(rect_dist(f, bases, *p) == 0 for f in near_f) or inside_placed(r, near_b + near_f, bases):
             why = "inside a placed footprint"
         elif d["door"] < max(c["door"], DOORWAY):
             why = "doorway"

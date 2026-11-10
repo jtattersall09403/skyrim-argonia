@@ -6,16 +6,22 @@ room rule (tools.places.build.room_partition: the walkable island reached from i
 island nearest it), so the drafter's beds and stops are exactly what the build keeps. An interior reached only from
 another interior is copied once per copy of its parent. A copy brings everything of the source space but its actors
 (our people come from people.jsonl), or of a shared cell only its own room; its refs file holds only our changes: its own way out re-pointed at our door, the
-other rooms' ways out inside the kept room removed, and inner doors at our copies.
+other rooms' ways out inside the kept room removed, inner doors at our copies, and every Nordic piece (by the
+Nordic review, decision 0006) replaced as the exterior's are, its plane matched for a directional piece, or removed
+with a ledger reason.
 """
 from __future__ import annotations
 
 import functools
+import math
 import re
 import tempfile
 from pathlib import Path
 
+from tools.places.draft import geom
 from tools.places.draft.io import Bundle, mint
+
+DIRECTIONAL = {"door", "building", "static", "furniture", "activator"}
 
 BED = re.compile(r"bed(?!side)|bedroll|hammock|sleep", re.I)
 DOUBLE = re.compile(r"double|dbl", re.I)
@@ -76,7 +82,26 @@ def beds_in(space_refs: list[dict], bases: dict, room: str | None = None, copy_o
     return sorted(out, key=lambda b: b["ref"])
 
 
-def plan(place_id: str, src: Bundle, ext_doors: list[dict], our_door_id: dict[str, str]) -> dict:
+def swap(r: dict, bases: dict, rep: dict) -> dict:
+    """A ref's replacement set where the original stood: its plane matched to the original's for a directional piece
+    (geom.align), else turned by the replacement's own turn."""
+    al = geom.align(bases.get(r["base"]) or {}, bases.get(rep["base"]) or {}, rep.get("turn_deg")) \
+        if r.get("kind") in DIRECTIONAL else None
+    rot = list(r.get("rot") or [0, 0, 0])
+    yaw = rot[2]
+    rot[2] = round((yaw + math.radians(al["turn_deg"] if al else float(rep.get("turn_deg", 0)))) % (2 * math.pi), 5)
+    pos = list(r["pos"])
+    out = {"base": rep["base"], "rot": rot}
+    if al:
+        sx, sy = geom.turn(al["shift_local"], yaw)
+        pos = [round(pos[0] + sx, 2), round(pos[1] + sy, 2), pos[2]]
+        out["align"] = {"turn_deg": al["turn_deg"], "shift": [round(sx, 1), round(sy, 1)], "of": r["base"]}
+    out["pos"] = pos
+    return out
+
+
+def plan(place_id: str, src: Bundle, ext_doors: list[dict], our_door_id: dict[str, str], bases: dict | None = None,
+         replace: dict | None = None, ledger: list | None = None) -> dict:
     """{our_space_id: {space_id, copy_of, src_space, door_from, door_back, room, parent, name, overrides}}.
 
     ext_doors: the source's exterior door refs we placed; our_door_id: source ref id -> our ref id (exterior).
@@ -106,9 +131,24 @@ def plan(place_id: str, src: Bundle, ext_doors: list[dict], our_door_id: dict[st
         keep = kept(sp["copy_of"], sp["room"])
         for r in sorted(refs, key=lambda r: r["id"]):
             t2 = door_target(r)
+            nordic = bool(bases and r.get("kind") != "actor" and (bases.get(r.get("base")) or {}).get("nordic"))
+            rep = (replace or {}).get(r.get("base")) if nordic else None
             if not t2:
+                if nordic and keep is not None and r["id"] not in keep:
+                    continue      # another room's piece: not in this copy
+                if rep:
+                    sp["overrides"].append({**r, **swap(r, bases, rep), "id": mint(place_id, sid, r["id"]),
+                                            "src": r["id"], "seat": {"mode": "free"}})
+                elif nordic:
+                    sp["overrides"].append({"id": mint(place_id, sid, r["id"]), "src": r["id"], "removed": True})
+                if nordic and ledger is not None:
+                    ledger.append({"src": r["id"], "space": t, "copy": sid, "status": "replaced" if rep else "dropped",
+                                   **({"base": rep["base"]} if rep else
+                                      {"why": "Nordic base (decision 0006); nothing Argonian stands in for it"})})
                 continue
             row = {**r, "id": mint(place_id, sid, r["id"]), "src": r["id"], "seat": {"mode": "free"}}
+            if rep:
+                row.update(swap(r, bases, rep))
             if r is back_row:
                 row["door"] = {**r["door"], "to_space": parent, "to_ref": our_from}
             elif t2 == "exterior" and sp["room"]:
@@ -118,7 +158,7 @@ def plan(place_id: str, src: Bundle, ext_doors: list[dict], our_door_id: dict[st
                 row = {"id": row["id"], "src": r["id"], "removed": True}
             elif t2 in src.spaces and t2 != "exterior" and t2 not in chain:
                 queue.append((t2, row["id"], r["id"], sid, chain + (t2,)))
-            else:
+            elif not rep:
                 continue
             sp["overrides"].append(row)
     # inner doors point at the copies made of their targets

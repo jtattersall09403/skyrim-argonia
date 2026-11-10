@@ -79,6 +79,19 @@ def mint(place_id: str, *parts: str) -> str:
 
 
 CATALOGUE = ROOT / "out" / "places" / "catalogue" / "bases.jsonl"
+NORDIC_REVIEW = ROOT / "newworld" / "places" / "nordic_review.jsonl"
+
+
+def nordic_review(path: Path = NORDIC_REVIEW) -> dict[str, dict]:
+    """The looked-at verdict on bases whose model folder is Skyrim's Nordic kits (decision 0006): {base key: {base,
+    edid, model, verdict: nordic|neutral, why, replace?: {base, turn_deg?}}}. A verdict outranks the folder rule."""
+    return {r["base"]: r for r in read_jsonl(path)} if path.exists() else {}
+
+
+def is_nordic(key: str, base: dict, review: dict[str, dict]) -> bool:
+    """Nordic by the review where a base was looked at, else by the extractor's folder rule (the cautious default)."""
+    v = review.get(key)
+    return v["verdict"] == "nordic" if v else bool(base.get("nordic"))
 
 
 def catalogue_bases(keys: set[str], path: Path = CATALOGUE) -> dict[str, dict]:
@@ -107,8 +120,19 @@ def place_bases(src: "Bundle", grd: "Bundle", place: dict) -> dict[str, dict]:
         want.add(v["base"] if isinstance(v, dict) else v)
     want |= {a["base"] for a in decisions.get("add") or []}
     want |= {a["base"] for a in (place.get("stations") or {}).get("added") or []}
+    review = nordic_review()
+    want |= {v["replace"]["base"] for k, v in review.items() if k in bases and v.get("replace")}
     bases.update(catalogue_bases(want - set(bases)))
-    return bases
+    return {k: ({**b, "nordic": is_nordic(k, b, review)} if k in review else b) for k, b in bases.items()}
+
+
+def nordic_replace(dec: dict, bases: dict, review: dict[str, dict] | None = None) -> dict[str, dict]:
+    """{source base: {base, turn_deg?}}: the review's standard replacement for each Nordic base, then the place's own
+    `draft.replace` over it (a place may also swap a neutral base by taste)."""
+    review = nordic_review() if review is None else review
+    out = {k: dict(v["replace"]) for k, v in review.items() if v["verdict"] == "nordic" and v.get("replace")}
+    out.update({k: (v if isinstance(v, dict) else {"base": v}) for k, v in (dec.get("replace") or {}).items()})
+    return out
 
 
 STATION_EDID = {

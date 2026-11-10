@@ -7227,6 +7227,7 @@
    "cooking-pot",
    "forge",
    "grindstone",
+   "shrine",
    "smelter",
    "tanning-rack"
   ],
@@ -7258,6 +7259,9 @@
    ],
    "tanning-rack": [
     "helstrom.WY5Z0Z38ZC52P6PFFY7EBQ29JJ"
+   ],
+   "shrine": [
+    "helstrom.W8H2ZE5XRXHVJN6080NV1ASNXE"
    ]
   },
   "missing": [],
@@ -7324,6 +7328,13 @@
     "base": "King of the Murkmire.esp:0AAE85",
     "space": "exterior",
     "by": "helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS"
+   },
+   {
+    "station": "shrine",
+    "id": "helstrom.W8H2ZE5XRXHVJN6080NV1ASNXE",
+    "base": "King of the Murkmire.esp:0D72B8",
+    "space": "exterior",
+    "by": null
    }
   ],
   "rent_bed": {
@@ -7342,15 +7353,15 @@
  },
  "radius_m": 525,
  "counts": {
-  "source_refs": 4918,
+  "source_refs": 4964,
   "placed": 1946,
-  "adapted": 927,
-  "replaced": 148,
-  "dropped": 1897,
-  "exterior_refs": 3021,
+  "adapted": 929,
+  "replaced": 181,
+  "dropped": 1908,
+  "exterior_refs": 3024,
   "clusters": 272,
   "land_patches": 0,
-  "plants_cleared": 548,
+  "plants_cleared": 570,
   "paths": 13,
   "interiors": 13,
   "people": {
@@ -7359,7 +7370,7 @@
    "guard": 8,
    "innkeeper": 1,
    "merchant": 1,
-   "resident": 49,
+   "resident": 48,
    "smith": 1,
    "spell-trader": 1
   },
@@ -7443,8 +7454,8 @@
    "base": "Here There Be Monsters - Curse of Cipactli.esp:029DC6",
    "space": "01ArgonianHouseinside.7",
    "at": [
-    -26596.08,
-    -624805.13
+    -26895.42,
+    -625012.95
    ],
    "why": "replacement door: its plane is matched to the original's and one arrives on the original's outer side, but which face of the new mesh is its front cannot be read from the geometry; look that the door does not open inward"
   },

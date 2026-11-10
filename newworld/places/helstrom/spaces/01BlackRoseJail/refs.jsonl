@@ -1,2 +1,19 @@
+{"id":"helstrom.6RMDVXGB0T5EQGXQZE3CRYA5EN","edid":null,"base":"Here There Be Monsters - Curse of Cipactli.esp:029DC6","kind":"door","pos":[1526.86,-6014.73,7166.883],"rot":[0,0,4.71239],"scale":1,"layer":"place","flags":[],"src":"Dawnguard.esm:00F59A","align":{"turn_deg":90.0,"shift":[125.3,-1.0],"of":"Skyrim.esm:03C308"},"seat":{"mode":"free"}}
+{"id":"helstrom.8B90SS15JPC3NTHWSTPKCE6W3A","edid":null,"base":"King of the Murkmire.esp:0259E4","kind":"furniture","pos":[-1248.0,-152.1,6816],"rot":[0,0,3.14159],"scale":1,"layer":"place","flags":[],"src":"Dawnguard.esm:00724F","align":{"turn_deg":0.0,"shift":[0.0,7.9],"of":"Skyrim.esm:1075FE"},"seat":{"mode":"free"}}
+{"id":"helstrom.8G4MEKC79ZZ6VQZBZNQGQYE3D6","src":"Dawnguard.esm:00F54B","removed":true}
+{"id":"helstrom.8PCD2XTB0BPME9BQ4S0H227NCV","src":"Dawnguard.esm:00F548","removed":true}
+{"id":"helstrom.BJ3KFEDGAM6RAZK861VCFZY0N6","src":"Dawnguard.esm:00F50B","removed":true}
+{"id":"helstrom.CFHMGGF8V1RMTXGECMASCCA5HF","edid":null,"base":"King of the Murkmire.esp:015679","kind":"building","pos":[2301.25,439.39,6519.5234],"rot":[0,0,0.0],"scale":1,"layer":"place","flags":[],"src":"Dawnguard.esm:000851","align":{"turn_deg":90.0,"shift":[0.1,77.1],"of":"Skyrim.esm:0C0C6E"},"seat":{"mode":"free"}}
+{"id":"helstrom.ECG4MSHYM406JCWK71XN7RJCA7","src":"Dawnguard.esm:00F549","removed":true}
+{"id":"helstrom.EJFPP7JCE0E59KDG23602CQVG5","src":"Dawnguard.esm:00F50D","removed":true}
+{"id":"helstrom.KHG860SYZ99MHHDHAWGKSZCTZT","edid":null,"base":"Here There Be Monsters - Curse of Cipactli.esp:029DC6","kind":"door","pos":[-1265.0,-2077.3,6656],"rot":[0,0,0.0],"scale":1,"layer":"place","flags":[],"src":"Dawnguard.esm:007267","align":{"turn_deg":90.0,"shift":[-1.0,-125.3],"of":"Skyrim.esm:03C308"},"seat":{"mode":"free"}}
 {"id":"helstrom.MT324MXKNWQTPDSJGTX1NYA46B","edid":null,"base":"Black Marsh.esm:1EEB72","kind":"door","pos":[10229.821,-2526.5596,7537.135],"rot":[0,0,5.0831895],"scale":1.8,"layer":"place","flags":["persistent"],"src":"Black Marsh.esm:1F5AE4","door":{"to_space":"exterior","to_ref":"helstrom.BEYD4B38BPBT4FQSB7KS4W1SW4","to_pos":[-54785.54,-584256.41,144.0],"to_rot":[0.0,0.0,2.35619],"flags":"0"},"seat":{"mode":"free"}}
-{"id":"helstrom.PPBSD8NSK1CS8SC67JGHX7N490","base":"Skyrim.esm:0BAD0D","kind":"furniture","pos":[2582.35,-4839.9,6542.4],"rot":[0.0,0.0,0.0],"scale":1.0,"layer":"place","flags":[],"src":null,"seat":{"mode":"free"},"why":"arcane-enchanter: promised by the place record (spell-trader's work), lacking in the source"}
+{"id":"helstrom.PACBXJ7N63ZYVRV4EWYD2WSCQB","src":"Dawnguard.esm:00F50C","removed":true}
+{"id":"helstrom.PPBSD8NSK1CS8SC67JGHX7N490","base":"Skyrim.esm:0BAD0D","kind":"furniture","pos":[10175.67,-2624.57,7537.14],"rot":[0.0,0.0,0.0],"scale":1.0,"layer":"place","flags":[],"src":null,"seat":{"mode":"free"},"why":"arcane-enchanter: promised by the place record (spell-trader's work), lacking in the source"}
+{"id":"helstrom.Q86QDQ88CSJ8ZCF9PT00VXP6PH","src":"Dawnguard.esm:00F547","removed":true}
+{"id":"helstrom.QKK3AKG61SCYC701ZC41WRTNQ8","src":"Dawnguard.esm:00F50F","removed":true}
+{"id":"helstrom.SHCQ322SRP6MFQ0P7SGK6BZYNR","edid":null,"base":"King of the Murkmire.esp:015679","kind":"building","pos":[2301.25,439.39,7030.3423],"rot":[0,0,0.0],"scale":1,"layer":"place","flags":[],"src":"Dawnguard.esm:0008B2","align":{"turn_deg":90.0,"shift":[0.1,77.1],"of":"Skyrim.esm:0C0C6E"},"seat":{"mode":"free"}}
+{"id":"helstrom.TA58Y3C81ZE5NMQTHXSMFPN3C8","src":"Dawnguard.esm:00F546","removed":true}
+{"id":"helstrom.TFE9W5K4HPR430MY3VGBEJWYXV","src":"Dawnguard.esm:00F54A","removed":true}
+{"id":"helstrom.TVGFRYXYWVH1ZP4HWEZ4HQ20S2","src":"Dawnguard.esm:00F545","removed":true}
+{"id":"helstrom.V8WP19TXMTHRS758MXMN3T1T8S","src":"Dawnguard.esm:00F50E","removed":true}

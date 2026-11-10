@@ -1,5 +1,49 @@
 {"src":"*","space":"01ArgonianHouseinside","status":"placed","as":["01ArgonianHouseinside","01ArgonianHouseinside.2","01ArgonianHouseinside.3","01ArgonianHouseinside.4","01ArgonianHouseinside.5","01ArgonianHouseinside.6","01ArgonianHouseinside.7","01ArgonianHouseinside.8","01ArgonianHouseinside.9"],"count":1557}
+{"src":"Black Marsh.esm:1DE5CE","space":"01ArgonianHouseinside","copy":"01ArgonianHouseinside","status":"replaced","base":"King of the Murkmire.esp:04B5EC"}
+{"src":"Black Marsh.esm:1DE5CF","space":"01ArgonianHouseinside","copy":"01ArgonianHouseinside","status":"replaced","base":"King of the Murkmire.esp:04B5EC"}
+{"src":"Black Marsh.esm:1DE5D0","space":"01ArgonianHouseinside","copy":"01ArgonianHouseinside","status":"replaced","base":"King of the Murkmire.esp:4B080F"}
+{"src":"Black Marsh.esm:1DE66B","space":"01ArgonianHouseinside","copy":"01ArgonianHouseinside.3","status":"replaced","base":"King of the Murkmire.esp:4B080F"}
+{"src":"Black Marsh.esm:1DE692","space":"01ArgonianHouseinside","copy":"01ArgonianHouseinside.3","status":"replaced","base":"King of the Murkmire.esp:04B5EC"}
+{"src":"Black Marsh.esm:1DE6D4","space":"01ArgonianHouseinside","copy":"01ArgonianHouseinside.3","status":"replaced","base":"King of the Murkmire.esp:04B5EC"}
+{"src":"Black Marsh.esm:1DE70F","space":"01ArgonianHouseinside","copy":"01ArgonianHouseinside.2","status":"replaced","base":"King of the Murkmire.esp:4B080F"}
+{"src":"Black Marsh.esm:1DE736","space":"01ArgonianHouseinside","copy":"01ArgonianHouseinside.2","status":"replaced","base":"King of the Murkmire.esp:04B5EC"}
+{"src":"Black Marsh.esm:1DE778","space":"01ArgonianHouseinside","copy":"01ArgonianHouseinside.2","status":"replaced","base":"King of the Murkmire.esp:04B5EC"}
+{"src":"Black Marsh.esm:1DE7B3","space":"01ArgonianHouseinside","copy":"01ArgonianHouseinside.5","status":"replaced","base":"King of the Murkmire.esp:4B080F"}
+{"src":"Black Marsh.esm:1DE7DA","space":"01ArgonianHouseinside","copy":"01ArgonianHouseinside.5","status":"replaced","base":"King of the Murkmire.esp:04B5EC"}
+{"src":"Black Marsh.esm:1DE81C","space":"01ArgonianHouseinside","copy":"01ArgonianHouseinside.5","status":"replaced","base":"King of the Murkmire.esp:04B5EC"}
+{"src":"Black Marsh.esm:1DE857","space":"01ArgonianHouseinside","copy":"01ArgonianHouseinside.4","status":"replaced","base":"King of the Murkmire.esp:4B080F"}
+{"src":"Black Marsh.esm:1DE87E","space":"01ArgonianHouseinside","copy":"01ArgonianHouseinside.4","status":"replaced","base":"King of the Murkmire.esp:04B5EC"}
+{"src":"Black Marsh.esm:1DE8C0","space":"01ArgonianHouseinside","copy":"01ArgonianHouseinside.4","status":"replaced","base":"King of the Murkmire.esp:04B5EC"}
+{"src":"Black Marsh.esm:1DE8FB","space":"01ArgonianHouseinside","copy":"01ArgonianHouseinside.9","status":"replaced","base":"King of the Murkmire.esp:4B080F"}
+{"src":"Black Marsh.esm:1DE922","space":"01ArgonianHouseinside","copy":"01ArgonianHouseinside.9","status":"replaced","base":"King of the Murkmire.esp:04B5EC"}
+{"src":"Black Marsh.esm:1DE964","space":"01ArgonianHouseinside","copy":"01ArgonianHouseinside.9","status":"replaced","base":"King of the Murkmire.esp:04B5EC"}
+{"src":"Black Marsh.esm:1E42BD","space":"01ArgonianHouseinside","copy":"01ArgonianHouseinside.6","status":"replaced","base":"King of the Murkmire.esp:04B5EC"}
+{"src":"Black Marsh.esm:1E42F5","space":"01ArgonianHouseinside","copy":"01ArgonianHouseinside.7","status":"replaced","base":"King of the Murkmire.esp:4B080F"}
+{"src":"Black Marsh.esm:1E433E","space":"01ArgonianHouseinside","copy":"01ArgonianHouseinside.7","status":"replaced","base":"King of the Murkmire.esp:04B5EC"}
+{"src":"Black Marsh.esm:1E4363","space":"01ArgonianHouseinside","copy":"01ArgonianHouseinside.8","status":"replaced","base":"King of the Murkmire.esp:04B5EC"}
+{"src":"Black Marsh.esm:1E438B","space":"01ArgonianHouseinside","copy":"01ArgonianHouseinside.7","status":"replaced","base":"King of the Murkmire.esp:04B5EC"}
+{"src":"Black Marsh.esm:1E43A0","space":"01ArgonianHouseinside","copy":"01ArgonianHouseinside.6","status":"replaced","base":"King of the Murkmire.esp:4B080F"}
+{"src":"Black Marsh.esm:1E43AE","space":"01ArgonianHouseinside","copy":"01ArgonianHouseinside.8","status":"replaced","base":"King of the Murkmire.esp:04B5EC"}
+{"src":"Black Marsh.esm:1E4450","space":"01ArgonianHouseinside","copy":"01ArgonianHouseinside.8","status":"replaced","base":"King of the Murkmire.esp:4B080F"}
+{"src":"Black Marsh.esm:1E4494","space":"01ArgonianHouseinside","copy":"01ArgonianHouseinside.6","status":"replaced","base":"King of the Murkmire.esp:04B5EC"}
 {"src":"*","space":"01BlackRoseJail","status":"placed","as":["01BlackRoseJail"],"count":750}
+{"src":"Dawnguard.esm:000851","space":"01BlackRoseJail","copy":"01BlackRoseJail","status":"replaced","base":"King of the Murkmire.esp:015679"}
+{"src":"Dawnguard.esm:0008B2","space":"01BlackRoseJail","copy":"01BlackRoseJail","status":"replaced","base":"King of the Murkmire.esp:015679"}
+{"src":"Dawnguard.esm:00724F","space":"01BlackRoseJail","copy":"01BlackRoseJail","status":"replaced","base":"King of the Murkmire.esp:0259E4"}
+{"src":"Dawnguard.esm:007267","space":"01BlackRoseJail","copy":"01BlackRoseJail","status":"replaced","base":"Here There Be Monsters - Curse of Cipactli.esp:029DC6"}
+{"src":"Dawnguard.esm:00F50B","space":"01BlackRoseJail","copy":"01BlackRoseJail","status":"dropped","why":"Nordic base (decision 0006); nothing Argonian stands in for it"}
+{"src":"Dawnguard.esm:00F50C","space":"01BlackRoseJail","copy":"01BlackRoseJail","status":"dropped","why":"Nordic base (decision 0006); nothing Argonian stands in for it"}
+{"src":"Dawnguard.esm:00F50D","space":"01BlackRoseJail","copy":"01BlackRoseJail","status":"dropped","why":"Nordic base (decision 0006); nothing Argonian stands in for it"}
+{"src":"Dawnguard.esm:00F50E","space":"01BlackRoseJail","copy":"01BlackRoseJail","status":"dropped","why":"Nordic base (decision 0006); nothing Argonian stands in for it"}
+{"src":"Dawnguard.esm:00F50F","space":"01BlackRoseJail","copy":"01BlackRoseJail","status":"dropped","why":"Nordic base (decision 0006); nothing Argonian stands in for it"}
+{"src":"Dawnguard.esm:00F545","space":"01BlackRoseJail","copy":"01BlackRoseJail","status":"dropped","why":"Nordic base (decision 0006); nothing Argonian stands in for it"}
+{"src":"Dawnguard.esm:00F546","space":"01BlackRoseJail","copy":"01BlackRoseJail","status":"dropped","why":"Nordic base (decision 0006); nothing Argonian stands in for it"}
+{"src":"Dawnguard.esm:00F547","space":"01BlackRoseJail","copy":"01BlackRoseJail","status":"dropped","why":"Nordic base (decision 0006); nothing Argonian stands in for it"}
+{"src":"Dawnguard.esm:00F548","space":"01BlackRoseJail","copy":"01BlackRoseJail","status":"dropped","why":"Nordic base (decision 0006); nothing Argonian stands in for it"}
+{"src":"Dawnguard.esm:00F549","space":"01BlackRoseJail","copy":"01BlackRoseJail","status":"dropped","why":"Nordic base (decision 0006); nothing Argonian stands in for it"}
+{"src":"Dawnguard.esm:00F54A","space":"01BlackRoseJail","copy":"01BlackRoseJail","status":"dropped","why":"Nordic base (decision 0006); nothing Argonian stands in for it"}
+{"src":"Dawnguard.esm:00F54B","space":"01BlackRoseJail","copy":"01BlackRoseJail","status":"dropped","why":"Nordic base (decision 0006); nothing Argonian stands in for it"}
+{"src":"Dawnguard.esm:00F59A","space":"01BlackRoseJail","copy":"01BlackRoseJail","status":"replaced","base":"Here There Be Monsters - Curse of Cipactli.esp:029DC6"}
 {"src":"*","space":"01Exit2","status":"placed","as":["01Exit2"],"count":8}
 {"src":"*","space":"01Ship","status":"placed","as":["01Ship"],"count":1579}
 {"src":"Black Marsh North.esp:03E40E","space":"01Ship","status":"dropped","why":"people come from the place record's promises, the guards and the beds"}
@@ -9,6 +53,8 @@
 {"src":"Black Marsh North.esp:166BBE","space":"01cellDUPLICATE002","status":"replaced","as":["helstrom.FSF6529VRX65YHFS9SDR8JD794"]}
 {"src":"Black Marsh North.esp:166BBF","space":"01cellDUPLICATE002","status":"replaced","as":["helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS"]}
 {"src":"Black Marsh North.esp:166BC1","space":"01cellDUPLICATE002","status":"replaced","as":["helstrom.4GBW9ZEQ76A1V9ZGQ97EVH2G8Y","helstrom.87WTH0EW4WJ6AQ9CTRC7GXAZTS"]}
+{"src":"Black Marsh.esm:207708","space":"01cellDUPLICATE002","copy":"01cellDUPLICATE002","status":"dropped","why":"Nordic base (decision 0006); nothing Argonian stands in for it"}
+{"src":"Black Marsh.esm:207716","space":"01cellDUPLICATE002","copy":"01cellDUPLICATE002","status":"replaced","base":"King of the Murkmire.esp:198D14"}
 {"src":"Black Marsh North.esp:04F22E","space":"exterior","status":"adapted","as":"helstrom.A6X8VK0VZM4YEEAXZD8VC46XK5","cluster":"landing"}
 {"src":"Black Marsh North.esp:04F22F","space":"exterior","status":"adapted","as":"helstrom.8GXDM3P8M3NCZKG52NB6XJCPMQ","cluster":"landing"}
 {"src":"Black Marsh North.esp:04F235","space":"exterior","status":"replaced","as":"helstrom.D4FE07AGDGZPCEASBZDP4PM24M","cluster":"landing","base":"Dragonborn.esm:038A35"}
@@ -472,8 +518,8 @@
 {"src":"Black Marsh North.esp:08D5EC","space":"exterior","status":"replaced","as":["helstrom.4GBW9ZEQ76A1V9ZGQ97EVH2G8Y","helstrom.87WTH0EW4WJ6AQ9CTRC7GXAZTS"]}
 {"src":"Black Marsh North.esp:08D5ED","space":"exterior","status":"replaced","as":["helstrom.V7CK5843EKQS34ZEHS9HJ39CHN","helstrom.KXGAGQM60ANV7DVJBNTY46FYAN"]}
 {"src":"Black Marsh North.esp:08D5EE","space":"exterior","status":"replaced","as":["helstrom.AZBB3MKKD7RXK477V5P4Q20373","helstrom.27HEYZ8JQ16G29JJ49V6PW551Z","helstrom.93DEY86JNKQHJMDD6XG2CEMEY6","helstrom.AADTD3DNC5VXN4R7TWAZXV034D","helstrom.YSHZKND0ZHEMN9K5FBC2KPK18B","helstrom.2XGAS6151RPSP9V039WAPCAVWE","helstrom.2XC26VFV49CVC6MMG24SW81Z5N","helstrom.C72K61PGJ6NNZ53Z8RWKR1SMY7","helstrom.NJMSPRDE0S07463DPEQBAYTKY4","helstrom.K3KEW6JNDH6HQTS3EANF71X664","helstrom.GSD19Y7FZNH25ASYFXRF61NYYT","helstrom.9GXR0J529K0PP7Z1K6YXQ4G7WA","helstrom.ZR7FV9KK7WPC43BHFMS2J0BY2D","helstrom.70XB8VD8S4A3J2CHESHXF26B2C","helstrom.2SN1HV4PXJWQD4A9FS08RQ2TWC","helstrom.P6H0C0W4XJXXW7DSNE4GWYNMYE"]}
-{"src":"Black Marsh North.esp:08D5EF","space":"exterior","status":"replaced","as":["helstrom.82Z8NX6PFJJAFJTXPT9AFW5F4G","helstrom.6P3T5QK6SCB0ACS5W0BK2BKA5B","helstrom.TQRTJ0F942RQNR31D17MBB4J60","helstrom.705TBPJ2KY2PCAM2NN1H0HVHXT","helstrom.C27961WTY6QXSFMPVKFY3T2FPH","helstrom.P47W625FPEBNNT468NCZNW8Q41","helstrom.Y6V2AJA47H4FJE53P96NXCNTEK","helstrom.QX0K55RYNW76K37N2DWEGSDHEP","helstrom.C2855503QH3SHVRJDJSG1E9MKM","helstrom.GB97J7STHRZRTTP72ZHG4RN4BE","helstrom.HV5320ZME61ST3NG6ANDRGJSAS","helstrom.XG4SJG30BVXAPMN71DQ2GEZY6A","helstrom.TA28STYJ3XNYJ9FPVMQEYJVQQ4","helstrom.HNKX48AJYF89Q7WGNA02D1YV62","helstrom.VP6HTF3EAYM7XEM7WECSPEG8FN","helstrom.BW3NCY7HAY3B814SESJG6NG0ZW","helstrom.V5Y1EKPHX5PAP9G9GECDA0AHFT"]}
-{"src":"Black Marsh North.esp:08D5F0","space":"exterior","status":"replaced","as":["helstrom.82Z8NX6PFJJAFJTXPT9AFW5F4G","helstrom.6P3T5QK6SCB0ACS5W0BK2BKA5B","helstrom.TQRTJ0F942RQNR31D17MBB4J60","helstrom.705TBPJ2KY2PCAM2NN1H0HVHXT","helstrom.C27961WTY6QXSFMPVKFY3T2FPH","helstrom.P47W625FPEBNNT468NCZNW8Q41","helstrom.Y6V2AJA47H4FJE53P96NXCNTEK","helstrom.QX0K55RYNW76K37N2DWEGSDHEP","helstrom.C2855503QH3SHVRJDJSG1E9MKM","helstrom.GB97J7STHRZRTTP72ZHG4RN4BE","helstrom.HV5320ZME61ST3NG6ANDRGJSAS","helstrom.XG4SJG30BVXAPMN71DQ2GEZY6A","helstrom.TA28STYJ3XNYJ9FPVMQEYJVQQ4","helstrom.HNKX48AJYF89Q7WGNA02D1YV62","helstrom.VP6HTF3EAYM7XEM7WECSPEG8FN","helstrom.BW3NCY7HAY3B814SESJG6NG0ZW","helstrom.V5Y1EKPHX5PAP9G9GECDA0AHFT"]}
+{"src":"Black Marsh North.esp:08D5EF","space":"exterior","status":"replaced","as":["helstrom.82Z8NX6PFJJAFJTXPT9AFW5F4G","helstrom.6P3T5QK6SCB0ACS5W0BK2BKA5B","helstrom.TQRTJ0F942RQNR31D17MBB4J60","helstrom.705TBPJ2KY2PCAM2NN1H0HVHXT","helstrom.C27961WTY6QXSFMPVKFY3T2FPH","helstrom.P47W625FPEBNNT468NCZNW8Q41","helstrom.Y6V2AJA47H4FJE53P96NXCNTEK","helstrom.QX0K55RYNW76K37N2DWEGSDHEP","helstrom.C2855503QH3SHVRJDJSG1E9MKM","helstrom.GB97J7STHRZRTTP72ZHG4RN4BE","helstrom.HV5320ZME61ST3NG6ANDRGJSAS","helstrom.XG4SJG30BVXAPMN71DQ2GEZY6A","helstrom.TA28STYJ3XNYJ9FPVMQEYJVQQ4","helstrom.HNKX48AJYF89Q7WGNA02D1YV62","helstrom.VP6HTF3EAYM7XEM7WECSPEG8FN","helstrom.BW3NCY7HAY3B814SESJG6NG0ZW"]}
+{"src":"Black Marsh North.esp:08D5F0","space":"exterior","status":"replaced","as":["helstrom.82Z8NX6PFJJAFJTXPT9AFW5F4G","helstrom.6P3T5QK6SCB0ACS5W0BK2BKA5B","helstrom.TQRTJ0F942RQNR31D17MBB4J60","helstrom.705TBPJ2KY2PCAM2NN1H0HVHXT","helstrom.C27961WTY6QXSFMPVKFY3T2FPH","helstrom.P47W625FPEBNNT468NCZNW8Q41","helstrom.Y6V2AJA47H4FJE53P96NXCNTEK","helstrom.QX0K55RYNW76K37N2DWEGSDHEP","helstrom.C2855503QH3SHVRJDJSG1E9MKM","helstrom.GB97J7STHRZRTTP72ZHG4RN4BE","helstrom.HV5320ZME61ST3NG6ANDRGJSAS","helstrom.XG4SJG30BVXAPMN71DQ2GEZY6A","helstrom.TA28STYJ3XNYJ9FPVMQEYJVQQ4","helstrom.HNKX48AJYF89Q7WGNA02D1YV62","helstrom.VP6HTF3EAYM7XEM7WECSPEG8FN","helstrom.BW3NCY7HAY3B814SESJG6NG0ZW"]}
 {"src":"Black Marsh North.esp:08D5F1","space":"exterior","status":"replaced","as":["helstrom.YFMTJK20VGQ52AK51GM46YJQYR"]}
 {"src":"Black Marsh North.esp:08D5F7","space":"exterior","status":"replaced","as":"helstrom.JM1WZ0HQHCDJHVJRRX5JRJS7DH","cluster":"b07","base":"King of the Murkmire.esp:0259D2"}
 {"src":"Black Marsh North.esp:08D5F8","space":"exterior","status":"replaced","as":"helstrom.8J7VRXQGC2S9SX1T72SAH74P1Q","cluster":"b19","base":"King of the Murkmire.esp:0259D2"}
@@ -527,7 +573,7 @@
 {"src":"Black Marsh.esm:1C4132","space":"exterior","status":"replaced","as":"helstrom.K4SFH8Q92134KNPE1A3VP2JF4H","cluster":"landing","base":"Dragonborn.esm:038A2D"}
 {"src":"Black Marsh.esm:1C4133","space":"exterior","status":"replaced","as":"helstrom.A4FF01MMJD57AA29WZW83EJAR4","cluster":"landing","base":"Dragonborn.esm:038A35"}
 {"src":"Black Marsh.esm:1C4134","space":"exterior","status":"replaced","as":"helstrom.Q5F62DKGRA0CE57P6N20F3RTWR","cluster":"landing","base":"Dragonborn.esm:038A35"}
-{"src":"Black Marsh.esm:1C4135","space":"exterior","status":"dropped","why":"Nordic base (decision 0006); no replacement chosen"}
+{"src":"Black Marsh.esm:1C4135","space":"exterior","status":"adapted","as":"helstrom.3F5RD08CPMM11RXBXFZ7V5WZRP","cluster":"landing"}
 {"src":"Black Marsh.esm:1C413D","space":"exterior","status":"adapted","as":"helstrom.CT7TVKQNVCT9ZE8NDVHJEHE8TH","cluster":"landing"}
 {"src":"Black Marsh.esm:1C4145","space":"exterior","status":"adapted","as":"helstrom.G9C64JMTFG7F0DA0YQG7HRKERK","cluster":"b38"}
 {"src":"Black Marsh.esm:1C4146","space":"exterior","status":"adapted","as":"helstrom.B49ME9RZZJCKVT2MF0TK7PC1VN","cluster":"b38"}
@@ -2875,7 +2921,7 @@
 {"src":"Black Marsh.esm:1E985C","space":"exterior","status":"adapted","as":"helstrom.RZV8RHR5TW539ZQKBQHM1JTB3Q","cluster":"b38"}
 {"src":"Black Marsh.esm:1E985D","space":"exterior","status":"adapted","as":"helstrom.HH8KCHD8QAFS509MJYP0HH07A0","cluster":"b38"}
 {"src":"Black Marsh.esm:1E985E","space":"exterior","status":"adapted","as":"helstrom.CGBP4VPH02HYHE27Y9ACG6TZG3","cluster":"b38"}
-{"src":"Black Marsh.esm:1E985F","space":"exterior","status":"dropped","why":"Nordic base (decision 0006); no replacement chosen"}
+{"src":"Black Marsh.esm:1E985F","space":"exterior","status":"adapted","as":"helstrom.Z9TS9QE8ND4AYXA447DGDNJGPH","cluster":"b38","nudge":320.0}
 {"src":"Black Marsh.esm:1E9861","space":"exterior","status":"adapted","as":"helstrom.VCWAWP59A0EG814X2S59SC8FZ8","cluster":"b38","nudge":128.0}
 {"src":"Black Marsh.esm:1E9862","space":"exterior","status":"adapted","as":"helstrom.D2QR0ZKG0E4GP8J3RCZW7YBHHE","cluster":"b38","nudge":384.0}
 {"src":"Black Marsh.esm:1E9866","space":"exterior","status":"adapted","as":"helstrom.WZWQFPV4QA0KQ83E0X89T6RQNZ","cluster":"b38"}
@@ -2888,7 +2934,7 @@
 {"src":"Black Marsh.esm:1E986D","space":"exterior","status":"adapted","as":"helstrom.ZPXT13ETAQ1WH5PH5R4M6H6FJ3","cluster":"b38"}
 {"src":"Black Marsh.esm:1E986E","space":"exterior","status":"adapted","as":"helstrom.6FWXJP7NY7P8RAR9TWQ4YJ6GJ3","cluster":"b38"}
 {"src":"Black Marsh.esm:1E9870","space":"exterior","status":"adapted","as":"helstrom.AH1HMT5E356GD3DD8C4RWR8ENS","cluster":"b38"}
-{"src":"Black Marsh.esm:1E9871","space":"exterior","status":"adapted","as":"helstrom.44JXJYCHEAFBRTG4YP8QSRBMTS","cluster":"b38","nudge":192.0}
+{"src":"Black Marsh.esm:1E9871","space":"exterior","status":"adapted","as":"helstrom.44JXJYCHEAFBRTG4YP8QSRBMTS","cluster":"b38"}
 {"src":"Black Marsh.esm:1E9876","space":"exterior","status":"adapted","as":"helstrom.0KGEFA827WATCQ3MCQNY0123F8","cluster":"b38"}
 {"src":"Black Marsh.esm:1E987A","space":"exterior","status":"adapted","as":"helstrom.GFAG1C5Q43PACH8BJ9N2V165K8","cluster":"b38"}
 {"src":"Black Marsh.esm:1E987C","space":"exterior","status":"adapted","as":"helstrom.E2RCD60P78S7P8HNZ8FD8BFW1E","cluster":"b38"}
