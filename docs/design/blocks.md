@@ -126,10 +126,9 @@ works, adding a stage adds one edge of proven kinds through the proven joint, so
 | A finished quest set going again | a zone left enabled with its prerequisite done calls SetStage on the stopped quest, which starts it | Rule of E-stage: Run Once, and the ending disables the quest's zones |
 | Save and reload mid-quest | a fragment running at the save is cut short; a trigger box that fired once may fire again; a scene in progress restarts | Rule of E-stage: fragments are short and idempotent (enable what should be enabled, never toggle); triggers carry the stage prerequisite so a refire does nothing; scenes are written to restart from their beginning. The composite is saved and reloaded at every stage. |
 
-## Every stage of every act quest, mapped
+## How record terms map to blocks
 
-Every stage of every act quest maps to the blocks above. Columns: the trigger that enters the next stage, the
-conditions that gate it, the effects the stage fires, and the world edits it stands on. Record terms map to blocks so:
+Every stage of a quest record maps to the blocks above. Record terms map to blocks so:
 `topicHeardFrom` is TR-topic; `inZone` and `inSettlement` are TR-zone; `hasItem` as a trigger is TR-acquire, as a gate
 C-item; `npcAlive` failing is TR-death; `counterAtLeast` and `placeCleared` are TR-death's counter; `questStage` and
 `stageEverReached` are C-stage; `timeOfDay` is C-time; a record `flag` is C-stage or C-global; `npcAtMark` is
@@ -141,59 +140,4 @@ in the vocabulary map to Skyrim actor values for C-skill (speechcraft and mercan
 Lockpicking, sneak to Sneak or Pickpocket, marksman to Archery, the blades and spear to One-Handed or Two-Handed); swim,
 dive and climb are movement (FreeClimb, water), never a check.
 
-Generated from the records by `python3 -m tools.argonia_world.slice_ledger.stage_blocks` (2026-11-06, after review round 8); re-run it when a record changes (it writes this table from the story database, the one source). Trigger in is what enters the stage (its predecessors' successor and fail-forward conditions); an `npcAlive` failing is TR-death, and `objectiveComplete` is the stage's own objectives done. The world edits each quest stands on map to the world-edit blocks so: `npc_add` is W-npc with W-fixed, `ref_place` W-ref, `creature_remove`/`npc_remove` W-ref removal, `record_change` and `npc_change` W-override, `name_place` W-name, `navmesh_add` W-navmesh.
-
-<!-- stage_blocks:begin (generated; do not edit) -->
-| Quest stage | Trigger in | Conditions | Effects |
-|---|---|---|---|
-| MQ01 10 | the new-game start (ARG_Opening) | - | E-enable, E-scene, E-stage |
-| MQ01 40 | TR-scene | - | E-enable, E-scene, E-stage |
-| MQ01 41 | TR-zone | C-stage | E-enable, E-stage |
-| MQ01 42 | TR-zone | C-stage | E-enable, E-stage |
-| MQ01 90 | TR-zone | C-stage | E-enable, E-global, E-item, E-move, E-stage, TR-chain |
-| MQ01 91 | TR-zone | C-stage | E-enable, E-global, E-move, E-stage, TR-chain |
-| MQ01 93 | TR-zone | C-stage | E-enable, E-stage, TR-chain |
-| MQ03 10 | TR-chain (the previous quest ends) | - | E-enable, E-stage |
-| MQ03 20 | TR-acquire, TR-death, TR-topic | C-alive, C-item | E-enable, E-global, E-move, E-stage |
-| MQ03 40 | TR-death, TR-topic | C-alive | E-enable, E-move, E-scene, E-stage |
-| MQ03 90 | TR-scene | C-stage | E-enable, E-faction, E-global, E-item, E-move, E-stage, TR-chain |
-| MQ03 91 | TR-scene | - | E-enable, E-global, E-move, E-stage, TR-chain |
-| MQ04 10 | TR-chain (the previous quest ends) | - | E-enable, E-stage |
-| MQ04 20 | TR-acquire, TR-death, TR-topic | C-alive, C-item, C-skill | E-stage |
-| MQ04 30 | TR-zone | - | E-stage |
-| MQ04 40 | TR-death, TR-topic, TR-zone | C-alive, C-detected, C-skill, C-time | E-stage |
-| MQ04 91 | TR-acquire, TR-zone | C-item | E-enable, E-faction, E-global, E-item, E-stage, TR-chain |
-| MQ05 10 | TR-chain (the previous quest ends) | - | E-stage |
-| MQ05 20 | TR-death, TR-topic | C-alive, C-item, C-skill | E-enable, E-stage |
-| MQ05 40 | TR-zone | - | E-stage |
-| MQ05 91 | TR-topic | - | E-enable, E-global, E-regard, E-stage, TR-chain |
-| MQ05 92 | TR-death, TR-topic | C-alive | E-enable, E-global, E-regard, E-stage, TR-chain |
-
-- MQ01 stands on 13 ledgered world edits: `we.clean.hereguardplantation`, `we.clean.lilmoth`, `we.mq01.barge-crew`, `we.mq01.broker`, `we.mq01.camp`, `we.mq01.cell`, `we.mq01.families`, `we.mq01.gang`, `we.mq01.hold-location`, `we.mq01.march`, `we.mq01.no-valenwood`, `we.mq01.no-welcome`, `we.mq01.start`.
-- MQ03 stands on 12 ledgered world edits: `we.clean.hereguardplantation`, `we.clean.lilmoth`, `we.mq01.broker`, `we.mq01.camp`, `we.mq01.hold-location`, `we.mq03.door`, `we.mq03.dream`, `we.mq03.house`, `we.mq03.hurt`, `we.mq03.jar-marks`, `we.mq03.reed`, `we.mq03.rooms`.
-- MQ04 stands on 7 ledgered world edits: `we.clean.village`, `we.mq04.cell`, `we.mq04.items`, `we.mq04.leeches`, `we.mq04.name`, `we.mq04.people`, `we.mq04.village`.
-- MQ05 stands on 10 ledgered world edits: `we.clean.dock5`, `we.clean.helstrom`, `we.clean.lilmoth`, `we.clean.thorn1`, `we.mq05.grove`, `we.mq05.hall-name`, `we.mq05.people`, `we.mq05.ship-door`, `we.mq05.throne`, `we.mq05.way`.
-<!-- stage_blocks:end -->
-
-Every stage maps; no stage needs a block outside the set, and no block needs SKSE. The set is seven triggers, seven
-conditions, nine effects and four world edits. The composite quest that proves the joints (Phase 3's first build)
-needs one stage per trigger, each gated by one condition of each kind across the set and firing one effect of each
-kind, plus the five guard cases above.
-
-## The rest of the slice, mapped (phase 2, the first story slice)
-
-The slice's other quests (adaptation §5) are written to the ledger, not yet as stage records; each is mapped here
-from its premise and edits, and every mechanic falls inside the set above plus the two world-edit blocks added for
-the slice (W-navmesh, W-name). No new trigger, condition or effect is needed.
-
-| Quest | Triggers | Conditions | Effects | World edits |
-|---|---|---|---|---|
-| TG01 the keepsake | TR-topic (the desk, the trader), TR-zone (the thief's round), TR-acquire (the keepsake) | C-time (the round by day), C-skill (talk, pickpocket), C-alive (no harm) | E-stage, E-item, E-faction (the Chapter) | W-npc, W-ref (bedroll, drinking spot), W-override (two door pairs locked), W-name (Pusbottom) |
-| TG02 the lockbox | TR-topic (the three clients), TR-acquire (the lockbox underwater) | C-item | E-stage, E-item, E-global (whose lie is kept) | W-npc, W-ref (sunk house) |
-| BC01 the hearing | TR-topic (Never-Sold, the hearing), TR-activate (cut the boat loose) | C-item or gold (buy out), C-stage | E-stage, E-scene (the hearing), E-item, E-global (month taken on) | W-npc, W-ref (landing, book, toll post), W-name (the house) |
-| BC02 the fire | TR-zone (into the smoke), TR-topic (whom first), TR-death (fail-forward) | C-alive, C-time (a timer as a scene: TR-scene) | E-stage, E-enable (smoke, burning, burnt), E-package (the heirs follow), E-item (the book) | W-npc, W-ref (cells, sealed door, stockade), W-override (door pair), W-navmesh, W-name |
-| BC03 the refusal | TR-topic | C-stage | E-stage, E-regard (the side not taken) | W-npc, W-ref (barge, shelf) |
-| LQ25 the river-beast | TR-topic (the poler, the choice), TR-zone or TR-acquire (the bait), TR-death (the beast) | C-item, C-alive | E-enable (the beast's parent), E-stage, E-item (gold), E-regard | W-fixed (the beast), W-ref (the bait), the crew named by forced-ref aliases |
-| LQ30 the walk-out | TR-zone (the gate, the shelter), TR-topic (the kin, the youth), TR-death (the beast) | C-alive, C-stage | E-enable (the beast's parent), E-stage, E-package (the youth walks home), E-item (gold), E-regard | W-npc, W-fixed, W-ref (trail, shelter in 0D7883) |
-| The clean-ups (every place) | - | - | - | W-ref (each placement initially disabled), W-fixed (each templated actor kept) |
-
+`python3 -m tools.argonia_world.quest_record export quest.main.<id>` prints a quest's current stages, triggers, conditions and effects; map each to the blocks by the terms above.

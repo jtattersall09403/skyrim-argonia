@@ -171,6 +171,10 @@ block built, read back and given one owner check.
 | where to go next | a stage per step (speak, leave, follow, arrive), each with a journal entry and an objective whose target is an alias on the person, door or marker |
 | a door the player uses to move the quest on | the door as a forced-ref alias with the vanilla set-stage alias script on activate, gated by its prerequisite stage |
 | a thing the quest needs back from the player | an alias flagged Quest Object, created in its container by the alias, cleared by the ending |
+| a check the player can fail | its own topic with the check or cost in the prompt, and a fallback line naming what is needed; INFOs of one topic are exclusive by condition |
+| a line said again later | the same INFO with a first and a last stage; the last is before the first ending |
+| after the ending | a Hello topic gated on the ending stage for each person left standing |
+| a task handed out or reported | an unconditioned line; never a skill or gold check |
 
 - **Engine rules every quest keeps:** every quest is Run Once; aliases are forced references to persistent refs, never
   find-matching; every stage two triggers can set guards itself with a variable read and set with no call between;
@@ -235,7 +239,11 @@ objectives are imperatives with a target.
 - **Integration:** parallel work lands as source only; the plugin is re-seeded once on the merged tree and every
   read-back runs on that one build before deploy.
 - **Everyone talks:** every person the plugin places has a voice and at least one line (`plugin.sh inspect silent`);
-  the slice quests' own people with no quest topic answer "Who are you?" from `quest_lines/quest_people.json`.
+  the slice quests' own people with no quest topic answer "Who are you?" from their line rows, true of where they stand at that stage.
+- **Every door works:** every door a quest sends the player through is usable on every path: a locked door has its key
+  or its unlock on each path, in both directions, and a door that looks usable is usable.
+- **A new game starts whole:** quest state the build adds exists from the first frame of a new game (start-game quests
+  in the SEQ file), and is checked on a new game, never only after a load.
 - **Deploy** the plugin, its ini, its SEQ file (`SEQ/Argonia.seq`: every start-game quest of ours, which the engine
   starts before a new game's first frame; without it their dialogue is missing until a save is loaded) and the compiled
   scripts to the play machine; stage-time mod changes with the stack.
