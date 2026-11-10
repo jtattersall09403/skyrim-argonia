@@ -69,6 +69,34 @@ def item_class(it: dict, r: dict | None = None) -> tuple[str, bool, str]:
     return kind, False, f"{kind} worth {value}"
 
 
+def source_plugins(place_id: str) -> list[str]:
+    """The place's mods: the plugins of its source (newworld/places/<id>/place.json `source_id`, sources.jsonl)."""
+    pj = REPO / "newworld" / "places" / place_id / "place.json"
+    sid = json.loads(pj.read_text()).get("source_id") if pj.exists() else None
+    for ln in (REPO / "newworld" / "places" / "sources.jsonl").read_text().splitlines():
+        row = json.loads(ln) if ln.strip() else {}
+        if sid and row.get("source_id") == sid:
+            return list(row.get("plugins", [])) + list(row.get("extra_refs_plugins", []))
+    return []
+
+
+def guard_issue(culture_id: str | None, ceiling: str, plugins: list[str], sc: dict | None = None) -> dict:
+    """What a place's guards are issued (scale.json `guard_issue`): {tier, set, torch, why}. Their own culture's guard
+    set where the place's mods provide one and the place's ceiling reaches its tier (`set` the scale's row), else the
+    plain issue at the faction's issue tier (`set` None)."""
+    sc = sc or scale()
+    gi = sc["guard_issue"]
+    rank = {t["id"]: t["rank"] for t in sc["tiers"]}
+    plain = next(o for o in sc["owner"] if o["id"] == "faction")["issue_tier"]
+    have = {p.lower() for p in plugins}
+    for s in gi["sets"]:
+        if culture_id in s["cultures"] and s["plugin"].lower() in have and rank[s["tier"]] <= rank[ceiling]:
+            return {"tier": s["tier"] if rank[s["tier"]] > rank[plain] else plain, "set": s, "torch": gi["torch"],
+                    "why": f"its own culture's guard set, {s['label']} ({s['tier']}): the place's mods provide it and "
+                           f"its ceiling ({ceiling}) reaches it"}
+    return {"tier": plain, "set": None, "torch": gi["torch"], "why": f"the plain issue ({plain})"}
+
+
 def item_tier(it: dict, sc: dict | None = None) -> tuple[str | None, str]:
     """(tier, how) of one item on the scale, wherever a tier is computed (the item catalogue, the check, the studio):
     1. the scale's explicit lists win: a tier that names the item itself (its soul gem, gems, jewellery) — a soul

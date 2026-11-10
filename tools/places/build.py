@@ -256,11 +256,31 @@ def resolve_copy(copy_of: str) -> tuple[str, str]:
     row = sources().get(src)
     if not row:
         raise SystemExit(f"copy_of {copy_of}: source {src} is not in newworld/places/sources.jsonl")
-    sj = OUT / "bundles" / f"src.{src}" / "spaces" / cell / "space.json"
+    bdir = OUT / "bundles" / f"src.{src}"
+    sj = bdir / "spaces" / cell / "space.json"
+    own = row["plugins"] + row.get("extra_refs_plugins", [])
     if sj.exists():  # the extractor's own record of where the cell is (its key, in whichever plugin of the source)
         b = json.loads(sj.read_text())
-        return "|".join(dict.fromkeys([b["plugin"]] + row["plugins"] + row.get("extra_refs_plugins", []))), b["key"]
-    return "|".join(row["plugins"] + row.get("extra_refs_plugins", [])), cell
+        bj = bdir / "bundle.json"
+        order = (json.loads(bj.read_text()).get("plugins") if bj.exists() else None) or own
+        return "|".join(cell_holders(list(dict.fromkeys(order + [b["plugin"]] + own)), b["key"])), b["key"]
+    return "|".join(own), cell
+
+
+def cell_holders(order: list[str], key: str) -> list[str]:
+    """The plugins of a source's load order (the extractor's: masters first) that can hold the record `key`: the plugin
+    it originates in and every plugin mastering that one, in load order, so the last that holds it wins (a cell BM&V
+    overrides from Dawnguard.esm is Dawnguard's refs with BM&V's changes over them, never BM&V's alone)."""
+    origin = key.split(":", 1)[0].lower()
+    out = []
+    for p in order:
+        try:
+            masters = {m.lower() for m in source_names(p)[:-1]}
+        except SystemExit:
+            continue  # a plugin not on this machine holds nothing we can read
+        if p.lower() == origin or origin in masters:
+            out.append(p)
+    return out
 
 
 # ---- world facts ----------------------------------------------------------------------------------------------------
@@ -463,14 +483,33 @@ def source_cell(plugin: str, cell: str, tmp: Path) -> dict | None:
     return got or None
 
 
+def source_light_fields(source_id: str | None) -> dict[str, dict]:
+    """The source bundle's exterior refs' own light fields (a light's `light_data`, a window's `emittance`), by source
+    ref key with its base: an exterior row whose base is still the source's carries them into the build as a copied
+    interior ref does (the writer reads a row's own fields)."""
+    if not source_id:
+        return {}
+    d = OUT / "bundles" / f"src.{source_id}" / "spaces" / "exterior"
+    rows = jsonl(d / "refs.jsonl") if (d / "refs.jsonl").exists() else []
+    if not rows and (d / "refs.jsonl.gz").exists():
+        import gzip
+        rows = [json.loads(ln) for ln in gzip.open(d / "refs.jsonl.gz", "rt") if ln.strip()]
+    return {r["id"]: {"base": r.get("base"), **{k: r[k] for k in ("light_data", "emittance") if r.get(k) is not None}}
+            for r in rows if r.get("light_data") is not None or r.get("emittance") is not None}
+
+
 def plan_spaces(P: dict, ids: Ids, tmp: Path) -> dict:
     """Every space's refs as rows of ours; interiors with their copied header and navmesh source."""
     refs, interiors, by_our = [], [], {}
     for sid, S in P["spaces"].items():
         if sid == "exterior":
+            light_of = source_light_fields(P["place"].get("source_id"))
             for r in map(norm_ref, S["refs"]):
                 if r.get("removed"):
                     continue
+                got = light_of.get(r.get("src"))
+                if got and got["base"] == r.get("base"):  # the source ref's own light fields while its base is the source's
+                    r = {**{k: v for k, v in got.items() if k != "base"}, **r}
                 row = {**r, "fk": ids(f"ref:{r['id']}"), "space": "exterior", "cell": list(cell_of(*r["pos"][:2])),
                        "persistent": "persistent" in (r.get("flags") or []) or bool(r.get("persistent")),
                        "disabled": is_disabled(r)}
@@ -485,7 +524,9 @@ def plan_spaces(P: dict, ids: Ids, tmp: Path) -> dict:
         src_plugins: list[str] = []
         if plugin:
             out = tmp / f"src_{sid}.json"
-            got = []  # the cell as each of the source's plugins has it: a cell's refs may come from several
+            # the cell as the game shows it with the source's load order: each holder's version in load order, the
+            # last holder's version of a ref (or navmesh, or the header) winning, a ref its winner deletes gone
+            got = []
             for cand in plugin.split("|"):
                 cell = source_cell(cand, cell_edid, out)
                 if cell is not None:
@@ -493,12 +534,16 @@ def plan_spaces(P: dict, ids: Ids, tmp: Path) -> dict:
             if not got:
                 problem(f"space {sid}: no plugin of {sp['copy_of']} holds an interior cell {cell_edid}")
                 continue
-            plugin, src = got[0]
+            plugin, src = got[-1]
+            src = dict(src)
             src_plugins = [cand for cand, _ in got]
-            seen = {r["fk"] for r in src["refs"]}
-            for _, more in got[1:]:
-                src["refs"] += [r for r in more["refs"] if r["fk"] not in seen]
-                src["navmesh"] += more["navmesh"]
+            win_refs: dict[str, dict] = {}
+            win_navs: dict[str, dict] = {}
+            for _, held in got:
+                win_refs.update((r["fk"], r) for r in held["refs"])
+                win_navs.update((n["fk"], n) for n in held["navmesh"])
+            src["refs"] = list(win_refs.values())
+            src["navmesh"] = list(win_navs.values())
             room = None
             if sp.get("room"):  # one room of a cell the source shares between houses (the Build recipe's room rule)
                 part = room_partition(sp["copy_of"], src["refs"], tmp)
@@ -553,6 +598,7 @@ def plan_spaces(P: dict, ids: Ids, tmp: Path) -> dict:
                 row["enable_parent"] = fk_of_src[ep]
         interiors.append({"space": sid, "fk": ids(f"space:{sid}"), "edid": f"ANP_{sid}",
                           "name": sp.get("name") or src.get("name") or sid, "copy": {"plugin": plugin, "cell": src.get("fk")} if plugin else None,
+                          "copy_of": sp.get("copy_of"), "room": sp.get("room"),
                           "light": sp.get("light"), "owner": sp.get("owner"), "room_mesh": room and room["mesh"],
                           "src_navmesh": list(dict.fromkeys(n["fk"] for n in src.get("navmesh", []))),
                           "src_plugins": src_plugins, "fk_of_src": fk_of_src})

@@ -21,7 +21,7 @@ import math
 import re
 import struct
 import time
-from collections import defaultdict
+from collections import Counter, defaultdict
 from pathlib import Path
 
 import numpy as np
@@ -1113,6 +1113,66 @@ def check_nordic(ctx) -> list[str]:
     return bad
 
 
+def copied_room_expected(I: dict, place_dir: Path, plan: dict, refs: list[dict] | None = None) -> tuple[dict[str, str], str] | None:
+    """The source refs a copied room must be built with, by key -> bundle kind: the bundle's cell (the load order's
+    winner of every ref, people aside; `refs` gives its rows instead), the kept room where the space copies one room
+    (the Build recipe's room rule), less what the place's own rows remove and the loose things the stock takes out.
+    None: no bundle to compare."""
+    copy_of = I.get("copy_of")
+    if not I.get("copy") or not copy_of or "/" not in copy_of:
+        return None
+    src_id, cell = copy_of.split("/", 1)
+    if refs is None:
+        rp = B.OUT / "bundles" / f"src.{src_id}" / "spaces" / cell / "refs.jsonl"
+        if not rp.exists():
+            return None
+        refs = B.jsonl(rp)
+    refs = [r for r in refs if r.get("kind") not in ("actor", "npc") and "pos" in r]
+    want = {r["id"]: r.get("kind") for r in refs}
+    if I.get("room"):
+        tmp = B.OUT / "tmp" / f"rooms_{I['space']}"
+        tmp.mkdir(parents=True, exist_ok=True)
+        kept = B.room_partition(copy_of, refs, tmp)["rooms"].get(I["room"], {}).get("refs", set())
+        want = {k: v for k, v in want.items() if k in kept}
+    rows = B.jsonl(place_dir / "spaces" / I["space"] / "refs.jsonl")
+    for r in rows:
+        if r.get("removed") and r.get("src"):
+            want.pop(r["src"], None)
+    for t in (plan.get("stock") or {}).get("taken_out", []):
+        if want.get(t.get("holder")) not in (None, "container"):
+            want.pop(t["holder"], None)
+    return want, copy_of
+
+
+def check_rooms(ctx) -> list[str]:
+    """Every copied room is built whole: its built refs and lights are the source cell's kept room as the bundle holds
+    it (every plugin of the source's load order, the winner per ref), one line per room that is not, naming what is
+    missing."""
+    m, plan = mine(ctx), ctx["plan"]
+    built: dict[str, dict[str, dict]] = {}
+    for fk, r in m["refs"].items():
+        row = m["rows"].get(fk) or {}
+        if row.get("space") not in (None, "exterior") and row.get("src"):
+            built.setdefault(row["space"], {})[row["src"]] = r
+    bad = []
+    for I in plan.get("interiors", []):
+        got = copied_room_expected(I, Path(ctx.get("place_dir") or B.PLACES / ctx.get("place_id", "")), plan,
+                                   (ctx.get("room_refs") or {}).get(I.get("copy_of")))
+        if got is None:
+            continue
+        want, copy_of = got
+        have = built.get(I["space"], {})
+        lights_want = sum(1 for k in want.values() if k == "light")
+        lights_have = sum(1 for k, r in have.items() if k in want and r.get("base_type") == "LIGH")
+        missing = sorted(set(want) - set(have))
+        if missing or lights_have != lights_want:
+            by_plugin = Counter(k.split(":", 1)[0] for k in missing)
+            bad.append(f"room {I['space']} ({copy_of}): built {len(set(have) & set(want))} refs, {lights_have} lights of the "
+                       f"source's kept room's {len(want)} refs, {lights_want} lights; missing {len(missing)} "
+                       f"({dict(by_plugin)}; {missing[:5]})")
+    return bad
+
+
 def check_levelled(ctx) -> list[str]:
     return [f"levelled: {x}" for x in ctx["dump"]["levelled"]]
 
@@ -1172,7 +1232,7 @@ def island_report(ctx, person: str | None = None) -> list[str]:
 
 CHECKS = {"plugin": check_plugin, "seat": check_seat, "overlap": check_overlap, "doors": check_doors, "people": check_people,
           "navmesh": check_navmesh, "streets": check_streets, "land": check_land, "clear": check_clear, "services": check_services,
-          "nordic": check_nordic, "levelled": check_levelled, "stock": check_stock, "promises": check_promises}
+          "nordic": check_nordic, "rooms": check_rooms, "levelled": check_levelled, "stock": check_stock, "promises": check_promises}
 
 
 def run(ctx: dict) -> dict[str, list[str]]:

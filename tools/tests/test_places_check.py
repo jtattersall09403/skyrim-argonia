@@ -132,6 +132,10 @@ def broken(name):
         c["gives"].append({"give_kind_id": "trainer", "detail": "Expert Alchemy"})
     elif name == "nordic":
         d["refs"][0]["model"] = "meshes/architecture/whiterun/wrhouse01.nif"
+    elif name == "rooms":  # the house copies a source room whose lantern light was not built
+        p["interiors"] = [{"space": "house", "copy": {"plugin": "X.esm"}, "copy_of": "x/house"}]
+        c["room_refs"] = {"x/house": [{"id": "X.esm:000001", "kind": "door", "pos": [100.0, 0.0, 0.0]},
+                                      {"id": "X.esm:000002", "kind": "light", "pos": [0.0, 0.0, 200.0]}]}
     elif name == "levelled":
         d["levelled"].append("ANP_t_person -> Skyrim.esm:09AF07 LItemMiscVendorArmor75")
     elif name == "stock":

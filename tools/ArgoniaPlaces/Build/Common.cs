@@ -117,7 +117,12 @@ static class C
                 if (o.EnableParent is { } ep) d["enable_parent"] = Key(ep.Reference.FormKey);
                 if (o.Lock is { } lk) { d["lock"] = (int)lk.Level; if (!lk.Key.IsNull) d["lock_key"] = Key(lk.Key.FormKey); }
                 if (o.Radius is { } rad) d["radius"] = rad;
-                if (o.LightData is { } ld) d["light_data"] = new[] { ld.FovOffset, ld.FadeOffset };
+                if (o.LightData is { } ld) d["light_data"] = new Dictionary<string, object?>
+                {
+                    ["fov"] = ld.FovOffset, ["fade"] = ld.FadeOffset, ["end_cap"] = ld.EndDistanceCap,
+                    ["shadow_bias"] = ld.ShadowDepthBias,
+                };
+                if (!o.Emittance.IsNull) d["emittance"] = Key(o.Emittance.FormKey);
                 if (o.ItemCount is { } cnt) d["count"] = cnt;
                 if (o.IsOpenByDefault) d["open_by_default"] = true;
                 if (o.IsIgnoredBySandbox) d["ignored_by_sandbox"] = true;

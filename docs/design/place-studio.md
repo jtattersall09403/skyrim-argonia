@@ -106,8 +106,10 @@ compressed over HTTP.
 
 A ref: `{id, edid?, base, kind, pos:[x,y,z], rot:[rx,ry,rz], scale, layer, flags:[...], door:{to_space,to_ref,to_pos,
 to_rot,flags}?, owner:{owner,rank}?, linked:[{ref,keyword}]?, enable_parent:{ref,flags}?, lock:{level,key,flags}?,
-src?, cell?, map_marker?, primitive?, radius?, loc_ref_types?, count?, patrol?, persistent_location?,
-merchant_container?}`. In a bundle `src` is the plugin whose version of the ref wins and `cell` the exterior cell;
+src?, cell?, map_marker?, primitive?, radius?, light_data:{fov,fade,end_cap,shadow_bias}?, emittance?,
+loc_ref_types?, count?, patrol?, persistent_location?, merchant_container?}`. `light_data` is a light ref's own
+offsets to its base (XLIG) and `emittance` the region or light whose colour a ref glows with (XEMI: a window that
+follows the time of day). In a bundle `src` is the plugin whose version of the ref wins and `cell` the exterior cell;
 flags are `persistent, initially_disabled, visible_when_distant, high_priority_lod, multibound, no_respawn,
 open_by_default, ignored_by_sandbox`.
 `kind` is one of `building, static, clutter, tree, plant, groundcover, rock, furniture, door, container, light,
@@ -311,8 +313,13 @@ vanilla's level gates (`docs/research/skyrim/stocking-yields.md`). How a place's
   What lies open is T1. Each tier above the open tier needs one more step of `security`, and a container's lock is
   its best tier's `lock`.
 - A person: their wealth band W1..W5 sets the gold they carry and keep, their clothes, their jewellery and their best
-  tier (W5 reaches the place's ceiling). A guard carries the guard faction's issue whatever their band (`owner`
-  faction `issue_tier`: sound gear, T2).
+  tier (W5 reaches the place's ceiling). A guard carries the guard faction's issue whatever their band
+  (`guard_issue`): their own culture's guard set where the place's mods provide one (the set's plugin is one of the
+  source's plugins) and the place's ceiling reaches the set's tier (BM&V's Argonian guard armour, T3, for a
+  Black Marsh place of ceiling T3 or more), with the set's weapon where the source's guards carried one; else the
+  plain issue at the `owner` faction's `issue_tier` (sound gear, T2). Every guard also carries one plain torch
+  (`guard_issue.torch`, Skyrim.esm 01D4EC, never a levelled list), as Skyrim's guards do; the guard packages
+  (copies of vanilla guard packages, their flags unchanged) let them carry it lit at night.
 - An owner sets a container: a person or household by their band, a faction (guard, town, temple) by the place's
   band, nobody by the ground.
 - Provenance: a thing made here (the place `makes` a good whose `good_material` covers it) is common and costs its
@@ -381,7 +388,8 @@ flag and each actor base's inventory, outfit items and death item):
    `ledger.caps`.
 10. Never: no item of a `never_material` or Skyrim-only kit.
 11. Each person within their band: carried gold at most the band's `carried` top, jewellery at most its `jewellery`,
-   no item above the band's `top_tier` (capped at the place's ceiling; a guard reaches the faction's `issue_tier`).
+   no item above the band's `top_tier` (capped at the place's ceiling; a guard reaches the tier of the place's
+   guard issue, `guard_issue`).
    Nothing anywhere above the place's ceiling but a ledger row.
 `python -m tools.places stock report <place> [--out DIR]` prints the built place in numbers: containers authored,
 items placed, the containers' value against their budgets, people's and loose value, gold, and the ten most valuable
@@ -684,8 +692,13 @@ their own cell (interior), as vanilla files them.
 1. Plan each place into `out/places/shards/<place_id>/plan.json` (`tools/places/build.py`), keyed on its place
    files, the world ESM's sha256 and the code; an unchanged key is not planned again. The world ESM must be of the
    land build its navmesh inputs hold (`out/newworld/plugin/land/manifest.json`), else the build stops.
-2. Interiors: `space.json` `copy_of` names the source cell (each of the source's plugins that holds it adds its
-   refs; read once and cached under `out/places/srccells`). `room` (one of the cell's load doors that lead out)
+2. Interiors: `space.json` `copy_of` names the source cell, copied as the game shows it with the source's load order
+   (the bundle's `plugins`, masters first): every plugin that can hold the cell (the one it originates in and each
+   plugin mastering that one) is read, in load order, and the last holder's version of each ref, navmesh and the
+   header wins; a ref its winner deletes is gone. A cell BM&V overrides from Dawnguard.esm is Dawnguard's refs with
+   BM&V's changes over them, never BM&V's alone. Each holder is read once and cached under `out/places/srccells`;
+   the plan's `src_plugins` lists the holders in load order and the writer reads the source refs the same way.
+   `room` (one of the cell's load doors that lead out)
    keeps only that room of a cell the source shares between houses, by the room rule: the whole cell's collision
    (doors open) is meshed by the world's own Recast run; the room is the walkable island reached from its door;
    every source ref belongs to the door island its position is nearest, islands of every door of the cell
@@ -695,9 +708,13 @@ their own cell (interior), as vanilla files them.
    every ref at least 2,093 units nearer its own room than the next. A row with `src` changes that copied ref
    (`removed: true` drops it; `base`, `pos`, `rot`, `scale`, `owner`, `door` replace the source's); a row with a
    `src` outside the kept room is not in the copy; a row without `src` is added. A copied ref whose base is still
-   the source's keeps what the source ref itself says of it: a light's radius and light data, an item count, a
-   charge, open by default, ignored by sandbox, its lock's key. Any row's own `radius` and `count` (the ref
-   shape's) are built as given, in a room or outside. Source actors are never copied: people are ours.
+   the source's keeps what the source ref itself says of it: a light's radius and light data, its emittance, an item
+   count, a charge, open by default, ignored by sandbox, its lock's key. An exterior row whose base is still the
+   source's takes its source ref's `light_data` and `emittance` from the source bundle. Any row's own `radius`,
+   `light_data`, `emittance` and `count` (the ref shape's) are built as given, in a room or outside. An emittance
+   is built only where its target is in our load order: a master's region or light as it is, another plugin's light
+   copied in as ours; any other is left off and named in the write's notes. Source actors are never copied: people
+   are ours.
 3. Doors: a door pair is one row on each side (the exterior door, and the copy's override of the source door it
    leads to) whose `door.to_space` and `to_ref` (our id, or a source key in a copied space) name each other; one row
    naming its partner is enough, and both get teleports. One using door x lands at x's `door.to_pos` and `to_rot`
@@ -807,7 +824,10 @@ person can stand on, 1024 square units or more, so a post's or a rail's cap is n
 wade with no deck, on no dry triangle right over it; on land or in a ford, as a stop is found; or a line's point
 reached from the one before by a drop or climb steeper than 45 degrees plus a 32-unit step, as off a deck's edge); a land patch whose
 built heights differ from `land.jsonl` or tear at a seam; a cleared plant still enabled, or a plant standing in a
-building, street or doorway; a service the place record promises with nobody giving it; a Nordic base; anything levelled (a levelled list in a person's
+building, street or doorway; a service the place record promises with nobody giving it; a Nordic base; a copied
+room built short of its source (check `rooms`: per room, its built refs and lights against the bundle's cell, the
+kept room where a `room` is copied, less the rows the place removes and the loose things the stock takes out, naming
+what is missing by plugin); anything levelled (a levelled list in a person's
 inventory, outfits, death item or spells, or in a placed container; a level that follows the player; a base whose
 template chain reaches a levelled actor list or takes stats or an inventory from a template that scales). It also
 fails on a link that

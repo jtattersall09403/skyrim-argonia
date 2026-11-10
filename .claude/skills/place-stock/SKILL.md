@@ -56,7 +56,12 @@ Write `newworld/sources/stock/places/<place>.json` from the draft and the facts.
 
 **People's possessions** follow from who they are: role, household, wealth band, fixed level and backstory.
 - The baseline is the archetype of role × band × culture: the band's carried gold and clothes, a tool or weapon
-  of the trade, and jewellery from W3 up. Guards carry the guard's issue, at the tier the guard's faction keeps.
+  of the trade, and jewellery from W3 up.
+- Guards carry the guard's issue (scale.json `guard_issue`, which the derive applies). Where the place's mods
+  provide its own culture's guard set and the place's ceiling reaches the set's tier, the guards wear that set
+  (in Black Marsh, BM&V's Argonian guard armour, T3), with the set's weapon if the source's guards carried one.
+  Otherwise they wear the plain issue (T2). Every guard also carries one plain torch for the night watch. Each
+  reason says why the place earns the set, such as a capital or a city of standing.
 - Differences come from the facts: a net-maker carries a knife and twine, a feather-dresser a fine blade, a
   household's elder the family's old ring. Draw them from the person's trade, household and backstory.
 - A notable person is written by hand: the leader, the richest household, anyone the record's hooks name.
