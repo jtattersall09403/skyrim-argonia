@@ -352,3 +352,6 @@ added here the day they are made, with the date and the issue.
   kept but it happens at the place the player reaches straight after stepping off the dock: no long march to
   Hereguard Plantation, so a new player cannot wander off before the opening completes. (3) The walking limit of
   BM&V's ground (its navmeshes are not joined to each other) is fixed anyway where the slice's routes need it.
+- 2026-11-10 (in session): navmesh in BM&V is the agent's call, not a question for the owner: choose the most
+  sensible approach that enables the quest system generally (joining existing navmesh, or adding it where the
+  quests need ground that has none).
