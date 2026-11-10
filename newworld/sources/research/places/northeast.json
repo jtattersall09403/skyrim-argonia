@@ -694,7 +694,7 @@
     },
     {
      "kind": "treasure",
-     "detail": "the locked store room: confiscated moon sugar and a few smugglers' purses, up to 50 gold",
+     "detail": "the locked store room: confiscated moon sugar and a few smugglers' purses",
      "count": 1
     }
    ]
@@ -707,7 +707,7 @@
    "population": 5,
    "footprint_radius_m": 25,
    "siting": "riverbank",
-   "danger_band_id": "D1",
+   "danger_band_id": "D3",
    "importance": 1,
    "summary": "Cutbank Camp is a timber camp on the steep cut bank of the bay's inner shore, west of Fort Thornmoth. Its crews fell jungle hardwood and raft it to Thorn for the field-holders who pay them.",
    "lore_page": null,
@@ -945,7 +945,7 @@
     },
     {
      "kind": "treasure",
-     "detail": "a drowned sawyer's pack on the bottom by the landing, reached by swimming: up to 50 gold and an iron axe",
+     "detail": "a drowned sawyer's pack on the bottom by the landing, reached by swimming, with an iron axe",
      "count": 1
     }
    ]
@@ -958,7 +958,7 @@
    "population": 4,
    "footprint_radius_m": 25,
    "siting": "inland",
-   "danger_band_id": "D1",
+   "danger_band_id": "D3",
    "importance": 1,
    "summary": "Thornway Watch is a small toll post on the track from Tsonac to Thorn, a day's walk from Fort Thornmoth. A few of the fort's garrison keep it and take a toll from the stone and timber carts.",
    "lore_page": null,
@@ -1181,7 +1181,7 @@
     },
     {
      "kind": "treasure",
-     "detail": "the abandoned carver's cart up the track: a locked chest with up to 50 gold and carved stone pieces",
+     "detail": "the abandoned carver's cart up the track: a locked chest and carved stone pieces",
      "count": 1
     }
    ]
@@ -1496,7 +1496,7 @@
     },
     {
      "kind": "treasure",
-     "detail": "a dead hunter's cache in a root hollow on the jungle path, up to 50 gold",
+     "detail": "a dead hunter's cache in a root hollow on the jungle path",
      "count": 1
     }
    ]
@@ -1753,7 +1753,7 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "boss chest at the household shrine, D3 tier (level 20: Elven, steel plate, scaled)",
+     "detail": "boss chest at the household shrine",
      "count": 1
     },
     {
@@ -2025,7 +2025,7 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "boss chest in the barred cellar, D3 tier (level 20)",
+     "detail": "boss chest in the barred cellar",
      "count": 1
     },
     {
@@ -2043,7 +2043,7 @@
    "population": 8,
    "footprint_radius_m": 40,
    "siting": "riverbank",
-   "danger_band_id": "D1",
+   "danger_band_id": "D3",
    "importance": 2,
    "summary": "Tselan is a hamlet of stone and timber on the river west of Tsonac, one of the Stone-Sleepers' outlying hamlets. It supplies Tsonac with quarried stone and river fish.",
    "lore_page": null,
@@ -2335,7 +2335,7 @@
     },
     {
      "kind": "treasure",
-     "detail": "a Velothi urn in the chamber: up to 50 gold in old coin",
+     "detail": "a Velothi urn of old coin in the chamber",
      "count": 1
     }
    ]
@@ -2937,7 +2937,7 @@
     },
     {
      "kind": "treasure",
-     "detail": "the snake's den: a dead hunter's bow and up to 50 gold",
+     "detail": "the snake's den: a dead hunter's bow",
      "count": 1
     }
    ]
@@ -2950,7 +2950,7 @@
    "population": 0,
    "footprint_radius_m": 70,
    "siting": "inland",
-   "danger_band_id": "D3",
+   "danger_band_id": "D5",
    "importance": 2,
    "summary": "Kaochalit is a ruined Cantemiric Velothi settlement on the mesa top south of Tsonac. The Knahaten Flu killed its people and the Stone-Sleepers avoid its halls.",
    "lore_page": null,
@@ -3195,7 +3195,7 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "boss chest in the hall under the well, D3 tier (level 20)",
+     "detail": "boss chest in the hall under the well",
      "count": 1
     },
     {
@@ -3454,12 +3454,12 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "boss chest in the bell-tower crypt, D3 tier (level 20)",
+     "detail": "boss chest in the bell-tower crypt",
      "count": 1
     },
     {
      "kind": "treasure",
-     "detail": "old Velothi ironwork and clay goods in the cellars, up to 50 gold",
+     "detail": "old Velothi ironwork and clay goods in the cellars",
      "count": 1
     }
    ]
@@ -3710,12 +3710,12 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "boss chest in the vault, D4 tier (level 35: glass, ebony)",
+     "detail": "boss chest in the vault",
      "count": 1
     },
     {
      "kind": "gold-hoard",
-     "detail": "the household's hoard in the vault, D4 tier",
+     "detail": "the household's hoard in the vault",
      "count": 1
     },
     {
@@ -3733,7 +3733,7 @@
    "population": 8,
    "footprint_radius_m": 40,
    "siting": "riverbank",
-   "danger_band_id": "D1",
+   "danger_band_id": "D3",
    "importance": 2,
    "summary": "Ayiin is a hamlet of stone and timber on a river on the east side of the mesa, a day south of Thorn. Its families quarry and watch the road to Balormaak.",
    "lore_page": null,
@@ -4011,7 +4011,7 @@
     },
     {
      "kind": "treasure",
-     "detail": "the locked chest under the cart in the ford: up to 50 gold",
+     "detail": "the locked chest under the cart in the ford",
      "count": 1
     }
    ]
@@ -4024,7 +4024,7 @@
    "population": 6,
    "footprint_radius_m": 30,
    "siting": "inland",
-   "danger_band_id": "D3",
+   "danger_band_id": "D5",
    "importance": 2,
    "summary": "Sahlpesh Cave is a cave in the mesa's foot beside the Sarpa camp, used by the Sarpa as a roost and larder. It lies on the edge of the Middle Argonian interior.",
    "lore_page": null,
@@ -4289,12 +4289,12 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "boss chest in the nest gallery, D3 tier (level 20)",
+     "detail": "boss chest in the nest gallery",
      "count": 1
     },
     {
      "kind": "treasure",
-     "detail": "travellers' goods heaped in the larder: up to 50 gold, a prospector's pick",
+     "detail": "travellers' goods heaped in the larder: a prospector's pick",
      "count": 1
     }
    ]
@@ -4307,7 +4307,7 @@
    "population": 10,
    "footprint_radius_m": 35,
    "siting": "inland",
-   "danger_band_id": "D3",
+   "danger_band_id": "D5",
    "importance": 2,
    "summary": "Hanaxi Roost is a camp of the winged Sarpa on the western mesa edge, facing Middle Argonia. The Sarpa kill strangers on sight.",
    "lore_page": null,
@@ -4571,7 +4571,7 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "boss chest in the chief's tent, D3 tier (level 20)",
+     "detail": "boss chest in the chief's tent",
      "count": 1
     },
     {
@@ -4599,7 +4599,7 @@
    "population": 10,
    "footprint_radius_m": 60,
    "siting": "hilltop",
-   "danger_band_id": "D1",
+   "danger_band_id": "D4",
    "importance": 3,
    "summary": "Fort Chalkmoth is a stone fort on the mesa top above Noota Nara, held by a small garrison of the Archwardens. It guards the chalk pit and the road across the mesa.",
    "lore_page": null,
@@ -4887,7 +4887,7 @@
     },
     {
      "kind": "treasure",
-     "detail": "behind the bricked-up cellar wall: an Imperial strongbox, up to 50 gold",
+     "detail": "behind the bricked-up cellar wall: an Imperial strongbox",
      "count": 1
     }
    ]
@@ -4900,7 +4900,7 @@
    "population": 12,
    "footprint_radius_m": 60,
    "siting": "riverbank",
-   "danger_band_id": "D1",
+   "danger_band_id": "D4",
    "importance": 3,
    "summary": "Noota Nara is a village below Fort Chalkmoth where, in legend, the villagers once heated spear-tips in a dragon's own fire and killed it. Its walls have been rebuilt. The villagers still resent the loss of the dragon's head.",
    "lore_page": "Lore:Noota Nara",
@@ -5169,7 +5169,7 @@
    "population": 8,
    "footprint_radius_m": 40,
    "siting": "riverbank",
-   "danger_band_id": "D2",
+   "danger_band_id": "D4",
    "importance": 2,
    "summary": "Hirecan is a small hamlet of the needle-faced Agaceph, on a river in the south of the mesa. They are travellers and readers, wary of strangers.",
    "lore_page": null,
@@ -5459,7 +5459,7 @@
    "population": 8,
    "footprint_radius_m": 40,
    "siting": "riverbank",
-   "danger_band_id": "D1",
+   "danger_band_id": "D3",
    "importance": 2,
    "summary": "Oxayo is a hamlet of stone and timber above a river at the mesa's north-west, between Tselan and the Sarpa lands. It is a quarry hamlet and a lookout on the Sarpa road.",
    "lore_page": null,
@@ -5744,7 +5744,7 @@
    "population": 4,
    "footprint_radius_m": 35,
    "siting": "hilltop",
-   "danger_band_id": "D2",
+   "danger_band_id": "D4",
    "importance": 2,
    "summary": "Xanuc Diggings is a stone quarry and mine in the mesa wall near Oxayo, worked by Stone-Sleepers. Its galleries run under the mesa top, and the north gallery has broken into an older tunnel.",
    "lore_page": null,
@@ -6024,7 +6024,7 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "boss chest in the end chamber, D2 tier (level 10: Orcish, Dwarven, Elven light)",
+     "detail": "boss chest in the end chamber",
      "count": 1
     }
    ]
@@ -6037,7 +6037,7 @@
    "population": 4,
    "footprint_radius_m": 35,
    "siting": "hilltop",
-   "danger_band_id": "D1",
+   "danger_band_id": "D4",
    "importance": 2,
    "summary": "Chalkmoth Pit is the chalk and limestone working that Fort Chalkmoth was built to guard. Noota Nara's families burn its stone to lime for Thorn's mortar and the saltrice pans.",
    "lore_page": null,
@@ -6301,7 +6301,7 @@
     },
     {
      "kind": "treasure",
-     "detail": "the Imperial storeroom: an old strongbox, up to 50 gold and steel tools",
+     "detail": "the Imperial storeroom: an old strongbox and steel tools",
      "count": 1
     }
    ]
@@ -6589,7 +6589,7 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "boss chest in the cavern, D2 tier (level 10)",
+     "detail": "boss chest in the cavern",
      "count": 1
     }
    ]
@@ -6875,7 +6875,7 @@
     },
     {
      "kind": "treasure",
-     "detail": "the snakes' lair under the lip: bones and a dead traveller's purse, up to 50 gold",
+     "detail": "the snakes' lair under the lip: bones and a dead traveller's purse",
      "count": 1
     }
    ]
@@ -7156,7 +7156,7 @@
     },
     {
      "kind": "treasure",
-     "detail": "the den: the dead youth's bow and up to 50 gold",
+     "detail": "the den: the dead youth's bow",
      "count": 1
     }
    ]
@@ -7169,7 +7169,7 @@
    "population": 5,
    "footprint_radius_m": 40,
    "siting": "inland",
-   "danger_band_id": "D2",
+   "danger_band_id": "D4",
    "importance": 1,
    "summary": "Reeka-Veesa is a Sedge-Warden post on the mesa's far west, on the road from Tenmal to Ranvos Landing. A few families cut reed, take feathers and keep their children away from Sahlpesh Cave.",
    "lore_page": null,
@@ -7442,7 +7442,7 @@
     },
     {
      "kind": "treasure",
-     "detail": "the spider's web: a cocooned Sarpa scout's quiver and up to 50 gold",
+     "detail": "the spider's web: a cocooned Sarpa scout's quiver",
      "count": 1
     }
    ]

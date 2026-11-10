@@ -13,7 +13,9 @@ and reasons only.
 
 ## Inputs
 
-- The place's facts: `db.open("newworld")`. You need `place` (kind, status, danger, importance, culture, siting),
+- The place's facts: `db.open("newworld")`. You need `place` (kind, status, importance, culture, siting),
+  `place_danger` (its disposition, strength inside and reward band, each with its reason:
+  `python3 -m tools.newworld.place_danger show <place>`),
   `place_note` (above all `economy`, `hooks`, `people`, `present`), `place_give` (its promises), `place_wealth` (band,
   ceiling, open tier, reason), `place_good`, `person` and `household` (its people), and the roads.
 - The scale, `newworld/sources/stock/scale.json`: tiers and their materials, gold, locks and value limits; the
@@ -27,9 +29,10 @@ and reasons only.
 
 1. Every person has an identity: `python -m tools.places identities check <place>` shows 0 problems. A place without
    people (a ruin, a wreck) skips this.
-2. Read `place_wealth` for the place (`python3 -m tools.newworld.wealth show <place>`). If its band reads wrong for
-   what the lore says the place is, say so to the owner with the reason. The owner overrules it with an `owner`
-   block in `place_wealth.json`; you never edit the derived part by hand.
+2. Read `place_wealth` for the place (`python3 -m tools.newworld.wealth show <place>`) and its `place_danger`. If a
+   band reads wrong for what the lore says the place is, say so to the owner with the reason. The owner overrules
+   wealth with an `owner` block in `place_wealth.json` and danger in `newworld/sources/danger/owner.json`; you never
+   edit a derived value by hand.
 3. Fill the place's `goods` in its stock source from its economy note: what it makes, trades and needs, each with
    the words of the note that say so. Provenance is computed from these rows.
 
@@ -60,7 +63,7 @@ Write `newworld/sources/stock/places/<place>.json` from the draft and the facts.
 - Guards carry the guard's issue (scale.json `guard_issue`, which the derive applies). Where the place's mods
   provide its own culture's guard set and the place's ceiling reaches the set's tier, the guards wear that set
   (in Black Marsh, BM&V's Argonian guard armour, T3), with the set's weapon if the source's guards carried one.
-  Otherwise they wear the plain issue (T2). Every guard also carries one plain torch for the night watch. Each
+  Otherwise they wear the plain issue (T2). Every guard also carries one plain torch to light the way after dark. Each
   reason says why the place earns the set, such as a capital or a city of standing.
 - Differences come from the facts: a net-maker carries a knife and twine, a feather-dresser a fine blade, a
   household's elder the family's old ring. Draw them from the person's trade, household and backstory.
@@ -77,8 +80,9 @@ Write `newworld/sources/stock/places/<place>.json` from the draft and the facts.
   step of security. The lock is the lock of the best tier inside.
 - The owner is a person, a household or a faction, so that taking it is stealing. Only bodies, the wild and the
   ruined are nobody's.
-- On wild ground the band sets the tier: the way holds the tier below and the hardest spot the band's own. The
-  boss's chest holds the band's tier and twice its gold.
+- On wild ground the tier follows the place's reward band: the way in is stocked one tier below it, and the
+  hardest spot at the band's own tier. The boss's chest holds the band's tier and twice its gold. A loot promise's detail says where and
+  what kind of store it is, never its tier.
 - Each container stays within its budget: its tier's `value_max` times its owner's share.
 
 **Loose things** follow from what the place is and its record: an offering at a shrine, a lost pack in the reeds,

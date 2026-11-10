@@ -6,6 +6,7 @@ import { fitRot } from './xform.js';
 import { seatZ } from './bundle.js';
 import { vegKey } from './edits.js';
 import { segDist } from './geom.js';
+import { lightsOf, localOf, poseFor } from './lights.js';
 
 const VEG = new Set(['tree', 'plant', 'groundcover']);
 const RAIL = [
@@ -72,7 +73,15 @@ export class Tools {
     if (name !== 'search' && this.placing?.from === 'search') this.stopPlacing();
     if (name === 'select' && !a.selection.size) a.panels.close(); else a.panels.open(name);
     this.markRail(name); // the select panel opens when something is selected
+    this.lightsShown();
     for (const v of [a.ours.view, a.src.view]) v.resize();
+  }
+  // Lights (bulbs with their rings) are drawn and picked while selecting or adding, or always with the Lights toggle.
+  lightsOn() { return !!this.opts.lights || ['select', 'search'].includes(this.current); }
+  lightsShown() {
+    const a = this.app, on = this.lightsOn();
+    for (const l of [a.ours.place, a.ours.world, a.src.layer]) l?.setShowLights(on);
+    for (const v of [a.ours.view, a.src.view]) v?.redraw?.();
   }
   markRail(name) { document.querySelectorAll('#rail button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.tool === name))); }
   forView(view) {
@@ -186,7 +195,10 @@ export class Tools {
   }
   drawSelection() {
     const a = this.app; if (!a.model) return;
-    this.drawOutline(a.ours, [...a.selection].map((id) => a.placeRefsById().get(id)).filter(Boolean).map((r) => a.seated(r)), this.outline);
+    const sel = this.selRefs();
+    this.drawOutline(a.ours, sel.map((r) => a.seated(r)), this.outline);
+    // a selected light, and the lights of a selected fixture, show their radius rings
+    a.ours.place?.setRingIds([...sel.filter((r) => r.kind === 'light'), ...this.followers(sel).map((f) => f.light)].map((r) => r.id));
     this.placeGizmo(); a.panels?.refreshWhere?.();
   }
   drawOutline(side, refs, line) {
@@ -213,6 +225,37 @@ export class Tools {
     });
   }
   selRefs() { const m = this.app.placeRefsById(); return [...this.app.selection].map((id) => m.get(id)).filter(Boolean); }
+  // ---------- lights travel with their fixtures ----------
+  baseOf(r) { return this.app.bases.get(r.base) || this.app.srcBases?.get(r.base); }
+  // The lights that belong to the fixtures among refs (not themselves selected), each with where it sits in its
+  // fixture's frame: they follow every move, turn and resize of the fixture, in the same undo step.
+  followers(refs) {
+    const a = this.app, ids = new Set(refs.map((r) => r.id)), pos = (r) => a.seated(r).pos;
+    const others = [...a.placeRefsById().values()].filter((r) => !ids.has(r.id) && !r.removed);
+    return lightsOf(refs, others, (r) => this.baseOf(r), pos).map(([light, fix]) => ({ light, fix, local: localOf(light, fix, pos),
+      before: clone({ pos: light.pos, rot: light.rot, scale: light.scale ?? 1, seat: light.seat }) }));
+  }
+  // Each follower placed for its fixture's pose now (its height through its own seat, so the build seats it there).
+  carry(fol) {
+    const a = this.app, ext = a.ours.space === 'exterior';
+    for (const f of fol) {
+      const [p, rot] = poseFor(f.local, f.fix, f.light, (r) => a.seated(r).pos), r = f.light;
+      r.pos = [rnd(p[0]), rnd(p[1]), r.pos[2]]; r.rot = [rot[0], rot[1], rnd(norm(rot[2]), 10000)];
+      if (ext && r.seat && r.seat.mode !== 'free') {
+        r.seat = { ...r.seat }; const cur = seatZ(a.terrain, r, a.placeRefsById());
+        r.seat.dz = rnd((r.seat.dz || 0) + p[2] - cur); r.pos[2] = rnd(p[2]);
+      } else r.pos[2] = rnd(p[2]);
+    }
+  }
+  followerOps(fol) {
+    const ops = [];
+    for (const f of fol) {
+      const after = clone({ pos: f.light.pos, rot: f.light.rot, scale: f.light.scale ?? 1, seat: f.light.seat });
+      Object.assign(f.light, clone(f.before));
+      if (JSON.stringify(after) !== JSON.stringify(f.before)) ops.push({ op: 'ref.move', id: f.light.id, before: f.before, after });
+    }
+    return ops;
+  }
   centre(refs) { const n = refs.length || 1; return [0, 1, 2].map((i) => refs.reduce((s, r) => s + this.app.seated(r).pos[i], 0) / n); }
   placeGizmo() {
     const g = this.gizmo, refs = this.selRefs(), v = this.app.ours.view;
@@ -230,7 +273,7 @@ export class Tools {
     const refs = this.selRefs(); if (!refs.length || this.placing) return;
     const v = this.app.ours.view, info = v.info(e);
     this.drag = { kind, refs, before: new Map(refs.map((r) => [r.id, clone({ pos: r.pos, rot: r.rot, scale: r.scale ?? 1, seat: r.seat })])),
-      x0: e.clientX, y0: e.clientY, g0: info.ground(), c: this.centre(refs) };
+      x0: e.clientX, y0: e.clientY, g0: info.ground(), c: this.centre(refs), fol: this.followers(refs) };
     const sc = v.toScreen(this.drag.c), rect = v.canvas.getBoundingClientRect();
     this.drag.sx = sc.x + rect.left; this.drag.sy = sc.y + rect.top; this.drag.a0 = Math.atan2(e.clientY - this.drag.sy, e.clientX - this.drag.sx);
   }
@@ -259,6 +302,7 @@ export class Tools {
       const f = Math.max(0.1, Math.min(10, Math.exp(((e.clientX - d.x0) - (e.clientY - d.y0)) * 0.004)));
       for (const r of d.refs) r.scale = rnd((d.before.get(r.id).scale || 1) * f, 1000);
     }
+    this.carry(d.fol);
     this.soon('drag', () => a.refreshSide(a.ours, { world: false, grass: false }));
   }
   reseat(r) {
@@ -277,9 +321,27 @@ export class Tools {
       Object.assign(r, clone(before));
       if (JSON.stringify(after) !== JSON.stringify(before)) ops.push({ op: 'ref.move', id: r.id, before, after });
     }
+    // the fixtures' lights follow their final poses, in the same undo step
+    for (const r of d.refs) { const k = ops.find((o) => o.id === r.id); if (k) Object.assign(r, clone(k.after)); }
+    this.carry(d.fol); ops.push(...this.followerOps(d.fol));
+    for (const r of d.refs) Object.assign(r, clone(d.before.get(r.id)));
     this.app.push(ops);
   }
-  gizmoCancel() { const d = this.drag; this.drag = null; if (!d) return; for (const r of d.refs) Object.assign(r, clone(d.before.get(r.id))); this.app.refreshSide(this.app.ours, { world: false }); }
+  gizmoCancel() {
+    const d = this.drag; this.drag = null; if (!d) return;
+    for (const r of d.refs) Object.assign(r, clone(d.before.get(r.id)));
+    for (const f of d.fol || []) Object.assign(f.light, clone(f.before));
+    this.app.refreshSide(this.app.ours, { world: false });
+  }
+  // Ops that move refs, and the lights of the fixtures among them with them (one undo step).
+  withFollowers(refs, ops) {
+    const fol = this.followers(refs); if (!fol.length) return ops;
+    const before = new Map(refs.map((r) => [r.id, clone({ pos: r.pos, rot: r.rot, scale: r.scale ?? 1, seat: r.seat })]));
+    for (const o of ops) { const r = refs.find((x) => x.id === o.id); if (r) Object.assign(r, clone(o.after)); }
+    this.carry(fol); const extra = this.followerOps(fol);
+    for (const r of refs) Object.assign(r, before.get(r.id));
+    return [...ops, ...extra];
+  }
   cameraMoved(view) {
     if (view === this.app.ours.view) this.placeGizmo();
     this.clearSketch(view);
@@ -296,7 +358,7 @@ export class Tools {
       if (after.seat && after.seat.mode !== 'free' && this.app.ours.space === 'exterior') after.pos[2] = rnd(seatZ(this.app.terrain, { ...r, ...after }, this.app.placeRefsById()));
       ops.push({ op: 'ref.move', id: r.id, before, after });
     }
-    this.app.push(ops);
+    this.app.push(this.withFollowers(this.selRefs(), ops));
   }
   snapToGround() {
     const ops = [];
@@ -305,19 +367,21 @@ export class Tools {
       after.seat = { mode: 'ground', dz: 0 }; after.pos[2] = rnd(seatZ(this.app.terrain, { ...r, seat: after.seat }, null));
       ops.push({ op: 'ref.move', id: r.id, before, after });
     }
-    this.app.push(ops);
+    this.app.push(this.withFollowers(this.selRefs(), ops));
   }
   duplicate() {
-    const a = this.app, refs = this.selRefs(), ops = [], ids = [];
+    const a = this.app, ops = [], ids = [], sel = this.selRefs();
+    const refs = [...sel, ...this.followers(sel).map((f) => f.light)];  // a fixture's copy comes with its light
     for (const r of refs) {
       const n = clone(r); n.id = mintId(a.place.place_id); n.pos[0] = rnd(n.pos[0] + 150); n.pos[1] = rnd(n.pos[1] + 150);
       if (n.door) delete n.door; // a copied door does not lead anywhere until it is paired
-      ops.push({ op: 'ref.add', ref: n }); ids.push(n.id);
+      ops.push({ op: 'ref.add', ref: n }); if (sel.includes(r)) ids.push(n.id);
     }
     a.push(ops); a.selection = new Set(ids); this.selectionChanged();
   }
   remove() {
-    const a = this.app, refs = this.selRefs(); if (!refs.length) return;
+    const a = this.app, sel = this.selRefs(); if (!sel.length) return;
+    const refs = [...sel, ...this.followers(sel).map((f) => f.light)];  // a fixture goes with its light
     a.push(refs.map((r) => ({ op: 'ref.remove', id: r.id, before: clone(r) })));
     a.selection.clear(); this.selectionChanged();
   }

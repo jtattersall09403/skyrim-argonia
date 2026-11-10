@@ -1,0 +1,4 @@
+{"id":"abandoned","rank":4,"label":"Abandoned","about":"The place is uninhabited. Whatever has moved in (beasts, the dead) attacks, or it lies empty."}
+{"id":"friendly","rank":1,"label":"Friendly","about":"Its people live there and welcome a peaceable visitor."}
+{"id":"hostile","rank":3,"label":"Hostile","about":"Held by people who attack on sight: outlaws, raiders, a warband."}
+{"id":"wary","rank":2,"label":"Wary","about":"Its people live there and fight only a visitor who provokes them: who trespasses, comes armed or refuses their terms."}

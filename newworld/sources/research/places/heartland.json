@@ -923,7 +923,7 @@
    "population": 10,
    "footprint_radius_m": 60,
    "siting": "lakeshore",
-   "danger_band_id": "D1",
+   "danger_band_id": "D4",
    "importance": 2,
    "summary": "Marzai is a clay-mound village on the north-east shore of Lake Ulaish, the western outlier of the Aroxhu mound country. A few households fish the lake, fire pottery and ferry goods toward Aroxhu and Truowa.",
    "lore_page": null,
@@ -1150,7 +1150,7 @@
     },
     {
      "kind": "treasure",
-     "detail": "a sunk Tumnatu canoe's goods, D1 tier",
+     "detail": "a sunk Tumnatu canoe's goods",
      "count": 1
     }
    ]
@@ -1163,7 +1163,7 @@
    "population": 6,
    "footprint_radius_m": 40,
    "siting": "riverbank",
-   "danger_band_id": "D2",
+   "danger_band_id": "D4",
    "importance": 1,
    "summary": "Julo is a hamlet of stone-footed farmhouses at the mouth of the river braid where it enters the north-west corner of Lake Ulaish. A few families farm saltrice and run a ferry across the braid.",
    "lore_page": null,
@@ -1380,23 +1380,6 @@
     {
      "kind": "free-bed",
      "detail": "the ferry hut",
-     "count": 1
-    },
-    {
-     "kind": "combat-foes",
-     "detail": "grave-robbers at the opened cairn on the near bank",
-     "count": 3,
-     "reward": "boss-chest"
-    },
-    {
-     "kind": "combat-boss",
-     "detail": "the grave-robbers' leader",
-     "count": 1,
-     "reward": "boss-chest"
-    },
-    {
-     "kind": "boss-chest",
-     "detail": "boss chest, D2 tier (level 10)",
      "count": 1
     }
    ]
@@ -1625,14 +1608,14 @@
      "reward": "boss-chest"
     },
     {
-     "kind": "combat-boss",
+     "kind": "combat-creature",
      "detail": "a giant mudcrab in the causeway reeds",
      "count": 1,
      "reward": "boss-chest"
     },
     {
      "kind": "boss-chest",
-     "detail": "boss chest, D2 tier (level 10)",
+     "detail": "boss chest",
      "count": 1
     }
    ]
@@ -1645,7 +1628,7 @@
    "population": 6,
    "footprint_radius_m": 40,
    "siting": "lakeshore",
-   "danger_band_id": "D1",
+   "danger_band_id": "D3",
    "importance": 1,
    "summary": "Yalugo is a hamlet on the south shore of Lake Ulaish, on the boat road between Truowa and the Korydon waters. Its stone-footed farms supply rice and fish to Fort Gysilla's garrison and to passing traders.",
    "lore_page": null,
@@ -1863,17 +1846,6 @@
      "kind": "free-bed",
      "detail": "the old cook's house",
      "count": 1
-    },
-    {
-     "kind": "combat-foes",
-     "detail": "smugglers landing on the south bank at night",
-     "count": 3,
-     "reward": "treasure"
-    },
-    {
-     "kind": "treasure",
-     "detail": "the smugglers' cache, D1 tier",
-     "count": 1
     }
    ]
   },
@@ -1885,7 +1857,7 @@
    "population": 10,
    "footprint_radius_m": 40,
    "siting": "island",
-   "danger_band_id": "D1",
+   "danger_band_id": "D3",
    "importance": 2,
    "summary": "Fort Gysilla is an old Imperial stone fort on a lake island at the south of Lake Ulaish, now an Archwardens toll and watch station. Its small garrison collects the toll on boat traffic between Truowa and the southern waters and watches the lake.",
    "lore_page": null,
@@ -2127,7 +2099,7 @@
     },
     {
      "kind": "treasure",
-     "detail": "Legion stores left in the cellar, D1 tier",
+     "detail": "Legion stores left in the cellar",
      "count": 1
     }
    ]
@@ -2409,14 +2381,14 @@
      "count": 1
     },
     {
-     "kind": "combat-boss",
+     "kind": "combat-creature",
      "detail": "a spriggan on the rare-herb hummock",
      "count": 1,
      "reward": "boss-chest"
     },
     {
      "kind": "boss-chest",
-     "detail": "boss chest, D2 tier (level 10)",
+     "detail": "boss chest",
      "count": 1
     }
    ]
@@ -2429,7 +2401,7 @@
    "population": 6,
    "footprint_radius_m": 40,
    "siting": "swamp",
-   "danger_band_id": "D2",
+   "danger_band_id": "D4",
    "importance": 1,
    "summary": "Nemeon is a hamlet on a small waterway between the lake and Korydon, a staging stop for boats and herb-gatherers. It is quiet and poor. It keeps an old Kothringi name.",
    "lore_page": null,
@@ -2642,23 +2614,6 @@
      "kind": "cooking-pot",
      "detail": "the boat-wife's hearth",
      "count": 1
-    },
-    {
-     "kind": "combat-foes",
-     "detail": "boat-robbers who stripped the wreck in the reeds",
-     "count": 3,
-     "reward": "boss-chest"
-    },
-    {
-     "kind": "combat-boss",
-     "detail": "the boat-robbers' leader",
-     "count": 1,
-     "reward": "boss-chest"
-    },
-    {
-     "kind": "boss-chest",
-     "detail": "boss chest, D2 tier (level 10)",
-     "count": 1
     }
    ]
   },
@@ -2670,7 +2625,7 @@
    "population": 5,
    "footprint_radius_m": 40,
    "siting": "inland",
-   "danger_band_id": "D2",
+   "danger_band_id": "D4",
    "importance": 1,
    "summary": "Nacydes is a hamlet on high ground on the west side of the Aunike Ridge country, the last Chime-Keeper settlement before Paatru and Naga territory. The families keep penned marsh-lizards and trade metal chimes for hides.",
    "lore_page": null,
@@ -2883,23 +2838,6 @@
      "kind": "anvil",
      "detail": "the chime-maker's forge",
      "count": 1
-    },
-    {
-     "kind": "combat-foes",
-     "detail": "Naga scouts watching the pass",
-     "count": 3,
-     "reward": "boss-chest"
-    },
-    {
-     "kind": "combat-boss",
-     "detail": "the Naga scout-leader",
-     "count": 1,
-     "reward": "boss-chest"
-    },
-    {
-     "kind": "boss-chest",
-     "detail": "boss chest, D2 tier (level 10)",
-     "count": 1
     }
    ]
   },
@@ -2911,7 +2849,7 @@
    "population": 6,
    "footprint_radius_m": 40,
    "siting": "inland",
-   "danger_band_id": "D2",
+   "danger_band_id": "D4",
    "importance": 1,
    "summary": "Tydeos is a hamlet on firm ground at the foot of the Aunike Ridge's southern peak. The families keep chimes, lizard-pens and a path across the ridge to the western waters.",
    "lore_page": null,
@@ -3137,14 +3075,14 @@
      "reward": "boss-chest"
     },
     {
-     "kind": "combat-boss",
+     "kind": "combat-creature",
      "detail": "a giant spider over the Kothringi cache",
      "count": 1,
      "reward": "boss-chest"
     },
     {
      "kind": "boss-chest",
-     "detail": "boss chest, D2 tier (level 10)",
+     "detail": "boss chest",
      "count": 1
     }
    ]
@@ -3157,7 +3095,7 @@
    "population": 5,
    "footprint_radius_m": 40,
    "siting": "riverbank",
-   "danger_band_id": "D3",
+   "danger_band_id": "D5",
    "importance": 1,
    "summary": "Tseli-Oon is a small outpost on a bank of the river arm that runs north-east out of Helstrom, kept for sap-gathering. Boatmen going up the arm toward the forest tie up here for a night. Few outsiders do.",
    "lore_page": null,
@@ -3383,14 +3321,14 @@
      "reward": "boss-chest"
     },
     {
-     "kind": "combat-boss",
+     "kind": "combat-creature",
      "detail": "a giant spider",
      "count": 1,
      "reward": "boss-chest"
     },
     {
      "kind": "boss-chest",
-     "detail": "boss chest, D3 tier (level 20)",
+     "detail": "boss chest",
      "count": 1
     }
    ]
@@ -3403,7 +3341,7 @@
    "population": 5,
    "footprint_radius_m": 40,
    "siting": "riverbank",
-   "danger_band_id": "D3",
+   "danger_band_id": "D5",
    "importance": 1,
    "summary": "Gaxu-Reet is a small outpost where the river arms south-east of Helstrom join and spread into the lake delta, kept for egg-tending and river watch. Boats from Helstrom to the lake's south shore pass through its landing, and few outsiders see more than the totem-post.",
    "lore_page": null,
@@ -3621,23 +3559,6 @@
      "kind": "cooking-pot",
      "detail": "the station fire",
      "count": 1
-    },
-    {
-     "kind": "combat-foes",
-     "detail": "an egg-thieves' boat crew",
-     "count": 3,
-     "reward": "boss-chest"
-    },
-    {
-     "kind": "combat-boss",
-     "detail": "the egg-thieves' pilot",
-     "count": 1,
-     "reward": "boss-chest"
-    },
-    {
-     "kind": "boss-chest",
-     "detail": "boss chest, D3 tier (level 20)",
-     "count": 1
     }
    ]
   },
@@ -3649,7 +3570,7 @@
    "population": 4,
    "footprint_radius_m": 40,
    "siting": "swamp",
-   "danger_band_id": "D3",
+   "danger_band_id": "D5",
    "importance": 1,
    "summary": "Hokal-Ush is a small outpost on a hummock beside a river bend east of Helstrom, kept for hunting and fellrunner-feather trading. It trades feathers to the river-boats that come east from Helstrom and has little other dealing with outsiders.",
    "lore_page": null,
@@ -3875,14 +3796,14 @@
      "reward": "boss-chest"
     },
     {
-     "kind": "combat-boss",
+     "kind": "combat-creature",
      "detail": "a spriggan matron",
      "count": 1,
      "reward": "boss-chest"
     },
     {
      "kind": "boss-chest",
-     "detail": "boss chest, D3 tier (level 20)",
+     "detail": "boss chest",
      "count": 1
     }
    ]
@@ -3895,7 +3816,7 @@
    "population": 5,
    "footprint_radius_m": 40,
    "siting": "swamp",
-   "danger_band_id": "D3",
+   "danger_band_id": "D5",
    "importance": 1,
    "summary": "Ixu-Maan is a small outpost on a small rise south of Helstrom, between the river arms, kept for egg-tending and a night watch. The lamp on its rise is the last light on the city's south approach. Travellers take it as a sign to slow.",
    "lore_page": null,
@@ -4108,23 +4029,6 @@
      "kind": "cooking-pot",
      "detail": "the watch fire",
      "count": 1
-    },
-    {
-     "kind": "combat-foes",
-     "detail": "Salt-Tooth Naga scouting the nest-pit at night",
-     "count": 3,
-     "reward": "boss-chest"
-    },
-    {
-     "kind": "combat-boss",
-     "detail": "the Naga scout-leader",
-     "count": 1,
-     "reward": "boss-chest"
-    },
-    {
-     "kind": "boss-chest",
-     "detail": "boss chest, D3 tier (level 20)",
-     "count": 1
     }
    ]
   },
@@ -4136,7 +4040,7 @@
    "population": 4,
    "footprint_radius_m": 40,
    "siting": "swamp",
-   "danger_band_id": "D3",
+   "danger_band_id": "D5",
    "importance": 1,
    "summary": "Vesh-Aneel is a small outpost on an isolated hummock in the marsh south-west of Helstrom, kept for a hunters' camp and a waypoint on the long route to Nacydes. Hunters crossing to Nacydes rest here. It is the only dry ground for miles around.",
    "lore_page": null,
@@ -4362,14 +4266,14 @@
      "reward": "boss-chest"
     },
     {
-     "kind": "combat-boss",
+     "kind": "combat-creature",
      "detail": "a giant spider",
      "count": 1,
      "reward": "boss-chest"
     },
     {
      "kind": "boss-chest",
-     "detail": "boss chest, D3 tier (level 20)",
+     "detail": "boss chest",
      "count": 1
     }
    ]
@@ -4382,7 +4286,7 @@
    "population": 4,
    "footprint_radius_m": 40,
    "siting": "island",
-   "danger_band_id": "D2",
+   "danger_band_id": "D4",
    "importance": 1,
    "summary": "Uzu-Tegh is a small outpost on a low islet in the lake's northern shallows, kept for eel-trapping and a lake watch. Its eel-traps are known to every lake boatman, though few ever land on the islet.",
    "lore_page": null,
@@ -4603,14 +4507,8 @@
      "reward": "boss-chest"
     },
     {
-     "kind": "combat-boss",
-     "detail": "the boat-robber who emptied the drifting canoe",
-     "count": 1,
-     "reward": "boss-chest"
-    },
-    {
      "kind": "boss-chest",
-     "detail": "boss chest, D2 tier (level 10)",
+     "detail": "boss chest",
      "count": 1
     }
    ]
@@ -4623,7 +4521,7 @@
    "population": 4,
    "footprint_radius_m": 40,
    "siting": "island",
-   "danger_band_id": "D2",
+   "danger_band_id": "D4",
    "importance": 1,
    "summary": "Neexa-Lul is a small outpost on an islet in the lake's eastern reaches, between Marzai and Truowa, kept for a lake watch and egg-tending. Boats crossing between Marzai and Truowa often use its landing to wait out the wind.",
    "lore_page": null,
@@ -4845,23 +4743,6 @@
     {
      "kind": "fence",
      "detail": "a smuggler who lands at night",
-     "count": 1
-    },
-    {
-     "kind": "combat-foes",
-     "detail": "smugglers who use the islet at night",
-     "count": 3,
-     "reward": "boss-chest"
-    },
-    {
-     "kind": "combat-boss",
-     "detail": "the smugglers' captain",
-     "count": 1,
-     "reward": "boss-chest"
-    },
-    {
-     "kind": "boss-chest",
-     "detail": "boss chest, D2 tier (level 10)",
      "count": 1
     }
    ]
@@ -5092,23 +4973,6 @@
      "kind": "trader-apothecary",
      "detail": "the herb-gatherers",
      "count": 1
-    },
-    {
-     "kind": "combat-foes",
-     "detail": "robbers at the wreck of the Blackrose boat",
-     "count": 3,
-     "reward": "boss-chest"
-    },
-    {
-     "kind": "combat-boss",
-     "detail": "the robbers' leader",
-     "count": 1,
-     "reward": "boss-chest"
-    },
-    {
-     "kind": "boss-chest",
-     "detail": "boss chest, D3 tier (level 20)",
-     "count": 1
     }
    ]
   },
@@ -5336,14 +5200,14 @@
      "reward": "boss-chest"
     },
     {
-     "kind": "combat-boss",
+     "kind": "combat-creature",
      "detail": "a spriggan matron",
      "count": 1,
      "reward": "boss-chest"
     },
     {
      "kind": "boss-chest",
-     "detail": "boss chest, D3 tier (level 20)",
+     "detail": "boss chest",
      "count": 1
     }
    ]
@@ -5356,7 +5220,7 @@
    "population": 6,
    "footprint_radius_m": 40,
    "siting": "riverbank",
-   "danger_band_id": "D3",
+   "danger_band_id": "D5",
    "importance": 2,
    "summary": "Hutan-Ketu is a small outpost on the river west of Helstrom, at the Murkwood edge, kept for a go-between post between Helstrom and the west. It is a stopping point on the water routes through the Panther River country, known to few outsiders.",
    "lore_page": null,
@@ -5574,23 +5438,6 @@
      "kind": "trainer",
      "detail": "Journeyman Sneak (a Hutan-Tzel go-between)",
      "count": 1
-    },
-    {
-     "kind": "combat-foes",
-     "detail": "Naga on the Murkwood edge path",
-     "count": 3,
-     "reward": "boss-chest"
-    },
-    {
-     "kind": "combat-boss",
-     "detail": "the Naga band's leader",
-     "count": 1,
-     "reward": "boss-chest"
-    },
-    {
-     "kind": "boss-chest",
-     "detail": "boss chest, D3 tier (level 20)",
-     "count": 1
     }
    ]
   },
@@ -5602,7 +5449,7 @@
    "population": 9,
    "footprint_radius_m": 30,
    "siting": "swamp",
-   "danger_band_id": "D3",
+   "danger_band_id": "D5",
    "importance": 1,
    "summary": "Dry-Fang Camp is a Naga camp on dry ground north of Helstrom.",
    "lore_page": null,
@@ -5914,7 +5761,7 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "boss chest, D3 tier (level 20)",
+     "detail": "boss chest",
      "count": 1
     },
     {
@@ -6244,7 +6091,7 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "boss chest, D3 tier (level 20)",
+     "detail": "boss chest",
      "count": 1
     }
    ]
@@ -6257,7 +6104,7 @@
    "population": 10,
    "footprint_radius_m": 30,
    "siting": "swamp",
-   "danger_band_id": "D3",
+   "danger_band_id": "D5",
    "importance": 1,
    "summary": "Salt-Tooth Camp is a Naga camp in the marsh south-west of Helstrom.",
    "lore_page": null,
@@ -6569,7 +6416,7 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "boss chest, D3 tier (level 20)",
+     "detail": "boss chest",
      "count": 1
     },
     {
@@ -6890,12 +6737,12 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "boss chest, D4 tier (level 35)",
+     "detail": "boss chest",
      "count": 1
     },
     {
      "kind": "gold-hoard",
-     "detail": "the lost caravan's goods sunk in the mere, D4 tier (level 35)",
+     "detail": "the lost caravan's goods sunk in the mere",
      "count": 1
     },
     {
@@ -6913,7 +6760,7 @@
    "population": 8,
    "footprint_radius_m": 30,
    "siting": "swamp",
-   "danger_band_id": "D2",
+   "danger_band_id": "D4",
    "importance": 1,
    "summary": "Tumnatu Reed Camp is a Tumnatu camp on the lake's north shore.",
    "lore_page": null,
@@ -7126,7 +6973,7 @@
     },
     {
      "kind": "treasure",
-     "detail": "the clay pot of Imperial coin, D1 tier",
+     "detail": "the clay pot of Imperial coin",
      "count": 1
     }
    ]
@@ -7352,7 +7199,7 @@
     },
     {
      "kind": "treasure",
-     "detail": "a dead hunter's pack in the beds, D1 tier",
+     "detail": "a dead hunter's pack in the beds",
      "count": 1
     }
    ]
@@ -7365,7 +7212,7 @@
    "population": 0,
    "footprint_radius_m": 30,
    "siting": "hilltop",
-   "danger_band_id": "D2",
+   "danger_band_id": "D4",
    "importance": 1,
    "summary": "Aunike Crown is the high point of the Aunike Ridge, above Tydeos, from which the marsh can be seen for hours.",
    "lore_page": null,
@@ -7558,7 +7405,7 @@
     },
     {
      "kind": "treasure",
-     "detail": "the Kothringi bead-cairn, D1 tier",
+     "detail": "the Kothringi bead-cairn",
      "count": 1
     }
    ]
@@ -7571,7 +7418,7 @@
    "population": 1,
    "footprint_radius_m": 30,
    "siting": "hilltop",
-   "danger_band_id": "D2",
+   "danger_band_id": "D4",
    "importance": 1,
    "summary": "Nacydes Watch is a ridge peak on the west of Aunike Ridge, above Nacydes, overlooking Paatru and Naga ground.",
    "lore_page": null,
@@ -7769,7 +7616,7 @@
     },
     {
      "kind": "treasure",
-     "detail": "the lost scout's pack, D1 tier",
+     "detail": "the lost scout's pack",
      "count": 1
     }
    ]

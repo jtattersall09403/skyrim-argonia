@@ -542,7 +542,7 @@
     },
     {
      "aspect": "present",
-     "text": "Rebuilt but not restored: smaller, lower and wholly Argonian in its fabric. The merchant council sets the dock tolls and pays the guards. Its people are hostile to the successor state, whose party killed the old town and the officials who once kept unlicensed foreigners on the docks enforce that law in some places and let it lapse in others.",
+     "text": "Rebuilt but not restored: smaller, lower and wholly Argonian in its fabric. The merchant council sets the dock tolls and pays the guards. Its people hate the successor state, whose party killed the old town. The dock officials still enforce the old law against unlicensed foreigners in some quarters and let it lapse in others.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -897,11 +897,12 @@
      "kind": "combat-foes",
      "detail": "Smugglers holed up in the drowned Imperial cellars under Pusbottom, reached by a hatch from the walkways",
      "count": 2,
-     "reward": "treasure"
+     "reward": "treasure",
+     "setting": "interior"
     },
     {
      "kind": "treasure",
-     "detail": "Salvage from the drowned Imperial villas: small coin, iron and steel, up to 50 gold a chest",
+     "detail": "Salvage from the drowned Imperial villas",
      "count": 3
     }
    ]
@@ -1167,7 +1168,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Safe in the town. The channels around it hold slaughterfish, slaughterfish and the odd smuggler who has not paid the elder's share.",
+     "text": "Safe in the town. Slaughterfish swim the channels round it. Smugglers who have not paid the elder's share also work the outer channels.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -1311,13 +1312,13 @@
     },
     {
      "kind": "combat-creature",
-     "detail": "Slaughterfish and slaughterfish in the channels around the town",
+     "detail": "Slaughterfish in the channels round the town",
      "count": 2,
      "reward": "treasure"
     },
     {
      "kind": "treasure",
-     "detail": "A smuggler's stashed cargo in the reed edge: up to 50 gold in coin and goods",
+     "detail": "A smuggler's stashed cargo in the reed edge",
      "count": 2
     }
    ]
@@ -1330,7 +1331,7 @@
    "population": 8,
    "footprint_radius_m": 40,
    "siting": "riverbank",
-   "danger_band_id": "D1",
+   "danger_band_id": "D3",
    "importance": 2,
    "summary": "Inoio is a Three Waters hamlet where the east road crosses a bayou channel by raft ferry. It is the only crossing for days and tolls nothing, because the elder wants the traffic to talk.",
    "lore_page": null,
@@ -1940,7 +1941,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Slaughterfish, slaughterfish and crocodiles in the reeds; no bandits.",
+     "text": "Slaughterfish and crocodiles in the reeds; no bandits.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2037,13 +2038,13 @@
     },
     {
      "kind": "combat-creature",
-     "detail": "Slaughterfish in a nest in the reed beds, slaughterfish and mud-crabs",
+     "detail": "Slaughterfish nesting in the reed beds, and mud-crabs",
      "count": 3,
      "reward": "treasure"
     },
     {
      "kind": "treasure",
-     "detail": "Something metal in the mud of the bed: a corroded strongbox, up to 50 gold in coin and iron",
+     "detail": "Something metal in the mud of the bed: a corroded strongbox",
      "count": 1
     }
    ]
@@ -2416,7 +2417,7 @@
     },
     {
      "kind": "treasure",
-     "detail": "Velothi beads and coin in the old midden: up to 50 gold in goods",
+     "detail": "Velothi beads and coin in the old midden",
      "count": 1
     }
    ]
@@ -2676,7 +2677,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "Slaughterfish, slaughterfish and mud-crabs in the channels between the beds; risky outside the hamlet.",
+     "text": "Slaughterfish and mud-crabs in the channels between the beds; risky outside the hamlet.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -2778,13 +2779,13 @@
     },
     {
      "kind": "combat-creature",
-     "detail": "Slaughterfish and slaughterfish in the channels",
+     "detail": "Slaughterfish in the channels",
      "count": 2,
      "reward": "treasure"
     },
     {
      "kind": "treasure",
-     "detail": "A hidden grain-raft cache: up to 50 gold in coin and goods",
+     "detail": "A hidden grain-raft cache",
      "count": 1
     }
    ]
@@ -3152,17 +3153,6 @@
      "kind": "fishing",
      "detail": "estuary fishing from the plank landing",
      "count": 1
-    },
-    {
-     "kind": "combat-foes",
-     "detail": "drunk sailors and smugglers at the night quay",
-     "count": 3,
-     "reward": "treasure"
-    },
-    {
-     "kind": "treasure",
-     "detail": "a smuggler's cache of up to 50 gold, iron and steel under the landing",
-     "count": 1
     }
    ]
   },
@@ -3174,7 +3164,7 @@
    "population": 10,
    "footprint_radius_m": 60,
    "siting": "coast",
-   "danger_band_id": "D1",
+   "danger_band_id": "D3",
    "importance": 2,
    "summary": "Oju is a stilt village on the strait between Archon's coast and the Althii islands. It is a landing and ferry stop for cargo moving between Archon and Lilmoth.",
    "lore_page": null,
@@ -3467,7 +3457,7 @@
     },
     {
      "kind": "treasure",
-     "detail": "a drifting boat's cargo box, up to 50 gold, iron and steel",
+     "detail": "a drifting boat's cargo box",
      "count": 1
     }
    ]
@@ -3480,7 +3470,7 @@
    "population": 12,
    "footprint_radius_m": 60,
    "siting": "lakeshore",
-   "danger_band_id": "D1",
+   "danger_band_id": "D3",
    "importance": 2,
    "summary": "Badal is a clay-mound village on the shore of an inlet at the north of the bayou, on the road to the mound country. Its potters and dyers send pots and pigment down the rivers to Archon.",
    "lore_page": null,
@@ -3777,7 +3767,7 @@
     },
     {
      "kind": "treasure",
-     "detail": "a hidden pot of coin and tools in the clay pit, up to 50 gold, iron and steel",
+     "detail": "a hidden pot of coin and tools in the clay pit",
      "count": 1
     }
    ]
@@ -3791,7 +3781,7 @@
    "population": 3,
    "footprint_radius_m": 60,
    "siting": "inland",
-   "danger_band_id": "D2",
+   "danger_band_id": "D4",
    "importance": 3,
    "summary": "Fort Swiftmoth is a stone keep on firm ground inland from Archon, empty since the Legion left at the secession and never re-garrisoned by the Archwardens. Smugglers keep goods in its cellars, and Aroxhu families rest in its dry upper floor.",
    "lore_page": null,
@@ -4050,12 +4040,12 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "boss chest in the locked strongroom cellar, D2 tier (Orcish and Elven light)",
+     "detail": "boss chest in the locked strongroom cellar",
      "count": 1
     },
     {
      "kind": "treasure",
-     "detail": "the cache: iron and steel arms, up to 50 gold in goods",
+     "detail": "the cache",
      "count": 2
     },
     {
@@ -4375,12 +4365,12 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "boss chest in the inner dome, D3 tier (elven, steel plate, scaled)",
+     "detail": "boss chest in the inner dome",
      "count": 1
     },
     {
      "kind": "treasure",
-     "detail": "grave-goods in the niches, ash-bowls and old coin, up to 50 gold",
+     "detail": "grave-goods in the niches, ash-bowls and old coin",
      "count": 3
     },
     {
@@ -4620,7 +4610,7 @@
     },
     {
      "kind": "treasure",
-     "detail": "the captain's strongbox and cargo left in the hold: up to 50 gold, iron and steel",
+     "detail": "the captain's strongbox and cargo left in the hold",
      "count": 2
     },
     {
@@ -4923,12 +4913,6 @@
      "count": 2
     },
     {
-     "kind": "combat-foes",
-     "detail": "cutpurses on the Lilmoth road",
-     "count": 2,
-     "reward": "treasure"
-    },
-    {
      "kind": "combat-creature",
      "detail": "a sea-drake beyond the reef",
      "count": 1,
@@ -4936,7 +4920,7 @@
     },
     {
      "kind": "treasure",
-     "detail": "a cutpurses' stash, up to 50 gold, iron and steel",
+     "detail": "a cutpurses' stash",
      "count": 1
     }
    ]
@@ -4949,7 +4933,7 @@
    "population": 10,
    "footprint_radius_m": 60,
    "siting": "coast",
-   "danger_band_id": "D1",
+   "danger_band_id": "D3",
    "importance": 2,
    "summary": "Nundi is a rice and fish village on the south coast of the northern Althii island, on the road between Uluo and the east. It is where the Lilmoth delta's farms meet the Three Waters tribe's trade.",
    "lore_page": null,
@@ -5241,7 +5225,7 @@
     },
     {
      "kind": "treasure",
-     "detail": "grave goods turned up with the old bones, up to 50 gold, iron and steel",
+     "detail": "grave goods turned up with the old bones",
      "count": 1
     }
    ]
@@ -5531,17 +5515,6 @@
     {
      "kind": "fishing",
      "detail": "north-shore fishing",
-     "count": 1
-    },
-    {
-     "kind": "combat-foes",
-     "detail": "deserters from Fort Reedmoth in the reeds",
-     "count": 3,
-     "reward": "treasure"
-    },
-    {
-     "kind": "treasure",
-     "detail": "a deserter's hoard, up to 50 gold, iron and steel",
      "count": 1
     }
    ]
@@ -5889,7 +5862,7 @@
     },
     {
      "kind": "treasure",
-     "detail": "smugglers' landing goods, iron and steel, up to 50 gold",
+     "detail": "smugglers' landing goods",
      "count": 2
     }
    ]
@@ -6238,12 +6211,12 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "boss chest in the wreckers' sea-cave, D2 tier",
+     "detail": "boss chest in the wreckers' sea-cave",
      "count": 1
     },
     {
      "kind": "treasure",
-     "detail": "salvage from wrecked hulls, iron and steel, up to 50 gold",
+     "detail": "salvage from wrecked hulls",
      "count": 2
     }
    ]
@@ -6622,7 +6595,7 @@
     },
     {
      "kind": "treasure",
-     "detail": "the planters' strongbox in the walled cellar: up to 50 gold, iron and steel",
+     "detail": "the planters' strongbox in the walled cellar",
      "count": 1
     }
    ]
@@ -6636,7 +6609,7 @@
    "population": 6,
    "footprint_radius_m": 40,
    "siting": "inland",
-   "danger_band_id": "D1",
+   "danger_band_id": "D3",
    "importance": 1,
    "summary": "Silt-Orrel is a small rice and reed estate on the road north of Lilmoth, set in the shell of an Archein planter's house. An Argonian family took the empty house after 4E 48 and hires out its boats to Lilmoth's harbour.",
    "lore_page": null,
@@ -6986,7 +6959,7 @@
     },
     {
      "kind": "treasure",
-     "detail": "salvage chest from the drowned quarter in the cellar: up to 50 gold, iron and steel",
+     "detail": "salvage chest from the drowned quarter in the cellar",
      "count": 1
     }
    ]
@@ -7355,7 +7328,7 @@
     },
     {
      "kind": "treasure",
-     "detail": "smugglers' cache by the landing: up to 50 gold, iron and steel",
+     "detail": "smugglers' cache by the landing",
      "count": 1
     }
    ]
@@ -7682,7 +7655,7 @@
     },
     {
      "kind": "treasure",
-     "detail": "salvage that a wreck in the shallows holds: up to 50 gold, iron and steel",
+     "detail": "salvage from a wreck in the shallows",
      "count": 1
     }
    ]
@@ -8009,7 +7982,7 @@
     },
     {
      "kind": "treasure",
-     "detail": "hoard in a crocodile's den at the marsh edge: up to 50 gold, iron and steel",
+     "detail": "hoard in a crocodile's den at the marsh edge",
      "count": 1
     }
    ]
@@ -8341,7 +8314,7 @@
     },
     {
      "kind": "treasure",
-     "detail": "drowned fisher's box in the pool shallows: up to 50 gold, iron and steel",
+     "detail": "drowned fisher's box in the pool shallows",
      "count": 1
     }
    ]
@@ -8668,7 +8641,7 @@
     },
     {
      "kind": "treasure",
-     "detail": "bandits' stash in the barn: up to 50 gold, iron and steel",
+     "detail": "bandits' stash in the barn",
      "count": 1
     }
    ]
@@ -8682,7 +8655,7 @@
    "population": 0,
    "footprint_radius_m": 40,
    "siting": "inland",
-   "danger_band_id": "D2",
+   "danger_band_id": "D4",
    "importance": 2,
    "summary": "A ruined Imperial fort on the road between Karketa and Lilmoth, empty since the Legion left at the secession.",
    "lore_page": null,
@@ -8994,12 +8967,12 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "boss chest in the locked armoury cage, D2 tier (Imperial officer's sword among the arms)",
+     "detail": "boss chest in the locked armoury cage",
      "count": 1
     },
     {
      "kind": "treasure",
-     "detail": "salvage in the yard and barracks, iron and steel, up to 50 gold",
+     "detail": "salvage in the yard and barracks",
      "count": 2
     },
     {
@@ -9330,12 +9303,12 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "boss chest at the back of the sea-cave, D2 tier (the cache)",
+     "detail": "boss chest at the back of the sea-cave",
      "count": 1
     },
     {
      "kind": "treasure",
-     "detail": "the bonded strongbox and scavenged lamp brass, up to 50 gold",
+     "detail": "the bonded strongbox and scavenged lamp brass",
      "count": 2
     },
     {
@@ -9660,12 +9633,12 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "boss chest in the strongroom behind the iron door, D3 tier (elven, steel plate, scaled)",
+     "detail": "boss chest in the strongroom behind the iron door",
      "count": 1
     },
     {
      "kind": "treasure",
-     "detail": "bandit loot from the road, iron and steel, up to 50 gold",
+     "detail": "bandit loot from the road",
      "count": 2
     },
     {
@@ -10018,12 +9991,12 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "the child's tomb chest at the D3 band: Elven and steel plate, scaled armour",
+     "detail": "the child's tomb chest",
      "count": 1
     },
     {
      "kind": "treasure",
-     "detail": "shell-lined grave-goods: shell jewellery, a few coins, iron and steel",
+     "detail": "shell-lined grave-goods: shell jewellery, a few coins",
      "count": 3
     },
     {
@@ -10364,18 +10337,18 @@
     },
     {
      "kind": "combat-boss",
-     "detail": "the smuggler captain in the inner burrow, at the D2 band",
+     "detail": "the smuggler captain in the inner burrow",
      "count": 1,
      "reward": "boss-chest"
     },
     {
      "kind": "boss-chest",
-     "detail": "the captain's strongbox at the D2 band: Orcish, Dwarven and light Elven gear",
+     "detail": "the captain's strongbox",
      "count": 1
     },
     {
      "kind": "treasure",
-     "detail": "crates of stolen goods and moon sugar: coins, iron and steel",
+     "detail": "crates of stolen goods and moon sugar: coins",
      "count": 2
     },
     {
@@ -10733,12 +10706,12 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "the chieftain's burial hoard at the D3 band: Elven and steel plate, scaled armour",
+     "detail": "the chieftain's burial hoard",
      "count": 1
     },
     {
      "kind": "treasure",
-     "detail": "grave-goods of the household: jewellery, coins, iron and steel",
+     "detail": "grave-goods of the household: jewellery, coins",
      "count": 3
     },
     {
@@ -11091,12 +11064,12 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "the nest-chamber chest at the D3 band: Elven and steel plate, scaled armour",
+     "detail": "the nest-chamber chest",
      "count": 1
     },
     {
      "kind": "treasure",
-     "detail": "the lost party's packs and a golden ring: coins, iron and steel",
+     "detail": "the lost party's packs and a golden ring: coins",
      "count": 3
     },
     {
@@ -11443,18 +11416,18 @@
     },
     {
      "kind": "combat-boss",
-     "detail": "the smugglers' headman in the lower hall, at the D2 band",
+     "detail": "the smugglers' headman in the lower hall",
      "count": 1,
      "reward": "boss-chest"
     },
     {
      "kind": "boss-chest",
-     "detail": "the headman's strongbox at the D2 band: Orcish, Dwarven and light Elven gear",
+     "detail": "the headman's strongbox",
      "count": 1
     },
     {
      "kind": "treasure",
-     "detail": "tomb-room grave-goods and smuggled cargo: coins, iron and steel",
+     "detail": "tomb-room grave-goods and smuggled cargo: coins",
      "count": 3
     },
     {
@@ -11789,12 +11762,12 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "sunken salvage chest, D2 tier (level 10: Orcish, Dwarven, Elven light)",
+     "detail": "sunken salvage chest",
      "count": 1
     },
     {
      "kind": "treasure",
-     "detail": "salvage crates in the spires, up to 50 gold, iron and steel",
+     "detail": "salvage crates in the spires",
      "count": 1
     }
    ]
@@ -12278,7 +12251,7 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "the lair chest at the D4 band: glass and ebony",
+     "detail": "the lair chest",
      "count": 1
     },
     {
@@ -12564,12 +12537,12 @@
     },
     {
      "kind": "treasure",
-     "detail": "Brass-fitting salvage and a few coins in the hull, D3 tier",
+     "detail": "Brass-fitting salvage and a few coins in the hull",
      "count": 2
     },
     {
      "kind": "boss-chest",
-     "detail": "Chest behind the locked brass hatch, D3 tier (level 20 gear)",
+     "detail": "Chest behind the locked brass hatch",
      "count": 1
     },
     {
@@ -12914,12 +12887,12 @@
     },
     {
      "kind": "treasure",
-     "detail": "Bronze, vakka stone and bone left in the lower galleries, D3 tier",
+     "detail": "Bronze, vakka stone and bone left in the lower galleries",
      "count": 3
     },
     {
      "kind": "boss-chest",
-     "detail": "Chest behind the mudcrab, D3 tier (level 20 gear)",
+     "detail": "Chest behind the mudcrab",
      "count": 1
     },
     {
@@ -13264,12 +13237,12 @@
     },
     {
      "kind": "treasure",
-     "detail": "Bronze and bone salvage in half-cleared rooms, D3 tier",
+     "detail": "Bronze and bone salvage in half-cleared rooms",
      "count": 3
     },
     {
      "kind": "boss-chest",
-     "detail": "Salvage chest behind the locked grate, D3 tier (level 20 gear)",
+     "detail": "Salvage chest behind the locked grate",
      "count": 1
     }
    ]
@@ -13609,17 +13582,17 @@
     },
     {
      "kind": "treasure",
-     "detail": "Bronze and bone in the leaning galleries, D4 tier",
+     "detail": "Bronze and bone in the leaning galleries",
      "count": 3
     },
     {
      "kind": "boss-chest",
-     "detail": "Chest in the nest, D4 tier (level 35 gear: glass, ebony)",
+     "detail": "Chest in the nest",
      "count": 1
     },
     {
      "kind": "gold-hoard",
-     "detail": "The dreugh hoard of coin and gems, D4 tier",
+     "detail": "The dreugh hoard of coin and gems",
      "count": 1
     }
    ]
@@ -13959,12 +13932,12 @@
     },
     {
      "kind": "treasure",
-     "detail": "Bronze and bone in the dreugh-held rooms, D3 tier",
+     "detail": "Bronze and bone in the dreugh-held rooms",
      "count": 3
     },
     {
      "kind": "boss-chest",
-     "detail": "Boss chest in the crown, D3 tier (level 20 gear)",
+     "detail": "Boss chest in the crown",
      "count": 1
     }
    ]
@@ -14303,7 +14276,7 @@
     },
     {
      "kind": "treasure",
-     "detail": "Salvager's cache and bone and bronze on the sand plain, D3 tier",
+     "detail": "Salvager's cache and bone and bronze on the sand plain",
      "count": 3
     },
     {
@@ -14642,12 +14615,12 @@
     },
     {
      "kind": "treasure",
-     "detail": "Remaining salvage in the upper floors, D3 tier",
+     "detail": "Remaining salvage in the upper floors",
      "count": 2
     },
     {
      "kind": "boss-chest",
-     "detail": "The failed crew's trapped cache, D3 tier (level 20 gear)",
+     "detail": "The failed crew's trapped cache",
      "count": 1
     },
     {
@@ -14992,17 +14965,17 @@
     },
     {
      "kind": "treasure",
-     "detail": "Bronze and bone in the outer galleries, D4 tier",
+     "detail": "Bronze and bone in the outer galleries",
      "count": 2
     },
     {
      "kind": "boss-chest",
-     "detail": "Chest in the Hist chamber behind the sealed door, D4 tier (level 35 gear)",
+     "detail": "Chest in the Hist chamber behind the sealed door",
      "count": 1
     },
     {
      "kind": "gold-hoard",
-     "detail": "The temple hoard of coin and gems, D4 tier",
+     "detail": "The temple hoard of coin and gems",
      "count": 1
     }
    ]

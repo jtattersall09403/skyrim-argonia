@@ -513,22 +513,24 @@
      "kind": "combat-foes",
      "detail": "ghosts and restless dead in Castle Giovesse's halls and cells",
      "count": 1,
-     "reward": "treasure"
+     "reward": "treasure",
+     "setting": "interior"
     },
     {
      "kind": "combat-boss",
      "detail": "the ghost of the castle's last gaoler, in the cell block",
      "count": 1,
-     "reward": "boss-chest"
+     "reward": "boss-chest",
+     "setting": "interior"
     },
     {
      "kind": "boss-chest",
-     "detail": "the gaoler's chest in Tavia's old cell; boss chest at level 10 (Orcish, Dwarven, Elven light)",
+     "detail": "the gaoler's chest in Tavia's old cell",
      "count": 1
     },
     {
      "kind": "treasure",
-     "detail": "urns and a rotted strongbox in the castle halls (up to 50 gold, iron and steel)",
+     "detail": "urns and a rotted strongbox in the castle halls",
      "count": 3
     },
     {
@@ -774,7 +776,7 @@
     },
     {
      "kind": "treasure",
-     "detail": "a drowned trader's satchel in the reeds (up to 50 gold, iron and steel)",
+     "detail": "a drowned trader's satchel in the reeds",
      "count": 1
     }
    ]
@@ -1283,7 +1285,7 @@
    "population": 11,
    "footprint_radius_m": 60,
    "siting": "inland",
-   "danger_band_id": "D1",
+   "danger_band_id": "D3",
    "importance": 2,
    "summary": "Armanias is a village on the coast road south of Gideon, known for red-clay pottery fired in kilns on the dry ground. It sells to Gideon and to Soulrest-bound caravans.",
    "lore_page": null,
@@ -1995,12 +1997,12 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "an offering chest under the altar slab; boss chest at level 20 (Elven, steel plate, scaled)",
+     "detail": "an offering chest under the altar slab",
      "count": 1
     },
     {
      "kind": "treasure",
-     "detail": "gold and silver votives in the root-mud (up to 50 gold, iron and steel)",
+     "detail": "gold and silver votives in the root-mud",
      "count": 3
     },
     {
@@ -2243,12 +2245,12 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "the knight-captain's tomb chest; boss chest at level 20 (Elven, steel plate, scaled)",
+     "detail": "the knight-captain's tomb chest",
      "count": 1
     },
     {
      "kind": "treasure",
-     "detail": "burial urns in the knights' tombs (up to 50 gold, iron and steel)",
+     "detail": "burial urns in the knights' tombs",
      "count": 3
     },
     {
@@ -2504,12 +2506,12 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "the great tomb's burial chest; boss chest at level 20 (Elven, steel plate, scaled)",
+     "detail": "the great tomb's burial chest",
      "count": 1
     },
     {
      "kind": "treasure",
-     "detail": "burial offerings under the stones (up to 50 gold, iron and steel)",
+     "detail": "burial offerings under the stones",
      "count": 3
     },
     {
@@ -2759,12 +2761,12 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "an iron-bound boat chest in the lower shed, reached by swimming; boss chest at level 20 (Elven, steel plate, scaled)",
+     "detail": "an iron-bound boat chest in the lower shed, reached by swimming",
      "count": 1
     },
     {
      "kind": "treasure",
-     "detail": "iron fittings and a sailor's purse in the boat-house (up to 50 gold, iron and steel)",
+     "detail": "iron fittings and a sailor's purse in the boat-house",
      "count": 2
     }
    ]
@@ -2970,12 +2972,12 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "the family strongroom's chest; boss chest at level 20 (Elven, steel plate, scaled)",
+     "detail": "the family strongroom's chest",
      "count": 1
     },
     {
      "kind": "treasure",
-     "detail": "goods in rotted crates in the hall (up to 50 gold, iron and steel)",
+     "detail": "goods in rotted crates in the hall",
      "count": 2
     },
     {
@@ -2993,7 +2995,7 @@
    "population": 0,
    "footprint_radius_m": 50,
    "siting": "inland",
-   "danger_band_id": "D3",
+   "danger_band_id": "D5",
    "importance": 2,
    "summary": "Kyrenos is a Kothringi ruin in the Banujha Basin: a long music-hall whose columns once held rows of chimes. Mine-Burner watchers guard its last chimes, and its dead walk the colonnade.",
    "lore_page": null,
@@ -3219,12 +3221,12 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "the chime-master's chest in the crypt below the stage; boss chest at level 20 (Elven, steel plate, scaled)",
+     "detail": "the chime-master's chest in the crypt below the stage",
      "count": 1
     },
     {
      "kind": "treasure",
-     "detail": "bronze chime-fittings and coins among the leaves (up to 50 gold, iron and steel)",
+     "detail": "bronze chime-fittings and coins among the leaves",
      "count": 2
     }
    ]
@@ -3237,7 +3239,7 @@
    "population": 0,
    "footprint_radius_m": 40,
    "siting": "inland",
-   "danger_band_id": "D2",
+   "danger_band_id": "D4",
    "importance": 2,
    "summary": "Nine Reeds Waystation is an Imperial ruin in the Nha Enasa, a stone tower with a granary and a signal fire on the road north of Gideon.",
    "lore_page": null,
@@ -3451,12 +3453,12 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "the bandits' chest in the upper room; boss chest at level 10 (Orcish, Dwarven, Elven light)",
+     "detail": "the bandits' chest in the upper room",
      "count": 1
     },
     {
      "kind": "treasure",
-     "detail": "sacks and purses in the granary (up to 50 gold, iron and steel)",
+     "detail": "sacks and purses in the granary",
      "count": 2
     }
    ]
@@ -3668,12 +3670,12 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "the smugglers' cache in the hidden cellar; boss chest at level 10 (Orcish, Dwarven, Elven light)",
+     "detail": "the smugglers' cache in the hidden cellar",
      "count": 1
     },
     {
      "kind": "treasure",
-     "detail": "moon-sugar sacks and purses on the pier (up to 50 gold, iron and steel)",
+     "detail": "moon-sugar sacks and purses on the pier",
      "count": 2
     },
     {
@@ -3891,12 +3893,12 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "the cache in the tower base; boss chest at level 10 (Orcish, Dwarven, Elven light)",
+     "detail": "the cache in the tower base",
      "count": 1
     },
     {
      "kind": "treasure",
-     "detail": "smugglers' satchels on the stair (up to 50 gold, iron and steel)",
+     "detail": "smugglers' satchels on the stair",
      "count": 2
     },
     {
@@ -4142,7 +4144,7 @@
     },
     {
      "kind": "treasure",
-     "detail": "a hunter's cache of hides and coin on a reed platform (up to 50 gold, iron and steel)",
+     "detail": "a hunter's cache of hides and coin on a reed platform",
      "count": 1
     }
    ]
@@ -4388,7 +4390,7 @@
     },
     {
      "kind": "treasure",
-     "detail": "a hide bundle and purse at the boundary stone (up to 50 gold, iron and steel)",
+     "detail": "a hide bundle and purse at the boundary stone",
      "count": 1
     }
    ]
@@ -4634,7 +4636,7 @@
     },
     {
      "kind": "treasure",
-     "detail": "burial urns in the inner rooms (up to 50 gold, iron and steel)",
+     "detail": "burial urns in the inner rooms",
      "count": 2
     }
    ]
@@ -4647,7 +4649,7 @@
    "population": 5,
    "footprint_radius_m": 40,
    "siting": "riverbank",
-   "danger_band_id": "D2",
+   "danger_band_id": "D4",
    "importance": 1,
    "summary": "Ukeel Station is a small river station in the Banujha Basin. It stands on the banks of the Banujha, where Naka-Desh fishers net osheeja gar and trade at the water's edge.",
    "lore_page": null,
@@ -4890,7 +4892,7 @@
     },
     {
      "kind": "treasure",
-     "detail": "a sunken net-chest off the landing (up to 50 gold, iron and steel)",
+     "detail": "a sunken net-chest off the landing",
      "count": 1
     }
    ]
@@ -5136,7 +5138,7 @@
     },
     {
      "kind": "treasure",
-     "detail": "a boatman's lost purse under the landing (up to 50 gold, iron and steel)",
+     "detail": "a boatman's lost purse under the landing",
      "count": 1
     }
    ]
@@ -5398,7 +5400,7 @@
     },
     {
      "kind": "treasure",
-     "detail": "a hide bundle lost in the reeds (up to 50 gold, iron and steel)",
+     "detail": "a hide bundle lost in the reeds",
      "count": 1
     }
    ]
@@ -5655,7 +5657,7 @@
     },
     {
      "kind": "treasure",
-     "detail": "a drifted crate wedged in the mangrove roots (up to 50 gold, iron and steel)",
+     "detail": "a drifted crate wedged in the mangrove roots",
      "count": 1
     }
    ]
@@ -5911,7 +5913,7 @@
     },
     {
      "kind": "treasure",
-     "detail": "a sap-gatherer's lost pack in the reeds (up to 50 gold, iron and steel)",
+     "detail": "a sap-gatherer's lost pack in the reeds",
      "count": 1
     }
    ]
@@ -6172,7 +6174,7 @@
     },
     {
      "kind": "treasure",
-     "detail": "an egg-hut offering bowl of coins (up to 50 gold, iron and steel)",
+     "detail": "an egg-hut offering bowl of coins",
      "count": 1
     }
    ]
@@ -6437,7 +6439,7 @@
     },
     {
      "kind": "treasure",
-     "detail": "a hunter's cache in a hollow stump (up to 50 gold, iron and steel)",
+     "detail": "a hunter's cache in a hollow stump",
      "count": 1
     }
    ]
@@ -6450,7 +6452,7 @@
    "population": 6,
    "footprint_radius_m": 40,
    "siting": "riverbank",
-   "danger_band_id": "D2",
+   "danger_band_id": "D4",
    "importance": 1,
    "summary": "Banu-Veeth Post is a small watch post in the Banujha Basin. It stands on the water at the south of the basin, covering the channel toward Soulrest.",
    "lore_page": null,
@@ -6678,7 +6680,7 @@
     },
     {
      "kind": "treasure",
-     "detail": "a smuggler's sunken crate by the chain (up to 50 gold, iron and steel)",
+     "detail": "a smuggler's sunken crate by the chain",
      "count": 1
     }
    ]
@@ -6691,7 +6693,7 @@
    "population": 6,
    "footprint_radius_m": 40,
    "siting": "riverbank",
-   "danger_band_id": "D2",
+   "danger_band_id": "D4",
    "importance": 1,
    "summary": "Jal-Resh Post is a small watch post in the Banujha Basin. It stands on the Banujha waters between Jarecai and Kharaxos.",
    "lore_page": null,
@@ -6919,7 +6921,7 @@
     },
     {
      "kind": "treasure",
-     "detail": "a digger's dropped satchel on the bank (up to 50 gold, iron and steel)",
+     "detail": "a digger's dropped satchel on the bank",
      "count": 1
     }
    ]
@@ -6932,7 +6934,7 @@
    "population": 6,
    "footprint_radius_m": 40,
    "siting": "riverbank",
-   "danger_band_id": "D2",
+   "danger_band_id": "D4",
    "importance": 1,
    "summary": "Xul-Banu Post is a small watch post in the Banujha Basin. It stands at the basin's north-west edge, facing Nha Enasa and Gul-Tej.",
    "lore_page": null,
@@ -7170,7 +7172,7 @@
     },
     {
      "kind": "treasure",
-     "detail": "a smuggler's cache under the post (up to 50 gold, iron and steel)",
+     "detail": "a smuggler's cache under the post",
      "count": 1
     }
    ]
@@ -7408,12 +7410,6 @@
      "count": 1
     },
     {
-     "kind": "combat-foes",
-     "detail": "road bandits who test the post at night",
-     "count": 1,
-     "reward": "treasure"
-    },
-    {
      "kind": "combat-creature",
      "detail": "giant snakes on the causeway",
      "count": 1,
@@ -7421,7 +7417,7 @@
     },
     {
      "kind": "treasure",
-     "detail": "bandits' purses (up to 50 gold, iron and steel)",
+     "detail": "bandits' purses",
      "count": 1
     }
    ]
@@ -8035,7 +8031,7 @@
    "population": 8,
    "footprint_radius_m": 60,
    "siting": "island",
-   "danger_band_id": "D1",
+   "danger_band_id": "D4",
    "importance": 2,
    "summary": "Oeneas is a hamlet of the Chime-Keepers on the water of the basin's eastern reaches. Its tin chimes carry across the water at dusk.",
    "lore_page": null,
@@ -8567,7 +8563,7 @@
     },
     {
      "kind": "treasure",
-     "detail": "a chest in the foreman's hut (up to 50 gold, iron and steel)",
+     "detail": "a chest in the foreman's hut",
      "count": 1
     }
    ]
@@ -8580,7 +8576,7 @@
    "population": 0,
    "footprint_radius_m": 60,
    "siting": "swamp",
-   "danger_band_id": "D3",
+   "danger_band_id": "D5",
    "importance": 2,
    "summary": "Meris-Keth is an abandoned stilt village in the south-east Banujha Basin, left when its Hist sickened and its families carried their eggs to Jarecai's tree. Khajiit smugglers now use its halls, and its unstaked dead walk.",
    "lore_page": null,
@@ -8883,12 +8879,12 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "the smugglers' store under the root-hut; boss chest at level 20 (Elven, steel plate, scaled)",
+     "detail": "the smugglers' store under the root-hut",
      "count": 1
     },
     {
      "kind": "treasure",
-     "detail": "clan chests in the empty halls (up to 50 gold, iron and steel)",
+     "detail": "clan chests in the empty halls",
      "count": 3
     },
     {
@@ -8906,7 +8902,7 @@
    "population": 0,
    "footprint_radius_m": 40,
    "siting": "inland",
-   "danger_band_id": "D3",
+   "danger_band_id": "D5",
    "importance": 2,
    "summary": "Ra'tal Den is a ruined turf-and-leaf dome of the Lilmothiit, the fox-folk who held the southern coast.",
    "lore_page": null,
@@ -9151,12 +9147,12 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "a buried Lilmothiit kit-cache under the hearth; boss chest at level 20 (Elven, steel plate, scaled)",
+     "detail": "a buried Lilmothiit kit-cache under the hearth",
      "count": 1
     },
     {
      "kind": "treasure",
-     "detail": "bone-charms and fox-kite scraps in the passages (up to 50 gold, iron and steel)",
+     "detail": "bone-charms and fox-kite scraps in the passages",
      "count": 2
     }
    ]
@@ -9741,12 +9737,12 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "the captain's sea chest in the flooded inner chamber, reached by swimming; boss chest at level 20 (Elven, steel plate, scaled)",
+     "detail": "the captain's sea chest in the flooded inner chamber, reached by swimming",
      "count": 1
     },
     {
      "kind": "treasure",
-     "detail": "moon-sugar crates and crew satchels (up to 50 gold, iron and steel)",
+     "detail": "moon-sugar crates and crew satchels",
      "count": 3
     },
     {
@@ -10109,12 +10105,12 @@
     },
     {
      "kind": "treasure",
-     "detail": "Cyrodiilic wine casks and iron ingots in the hold (up to 50 gold, iron and steel)",
+     "detail": "Cyrodiilic wine casks and iron ingots in the hold",
      "count": 3
     },
     {
      "kind": "boss-chest",
-     "detail": "the captain's chest in the stern cabin; boss chest at level 10 (Orcish, Dwarven, Elven light)",
+     "detail": "the captain's chest in the stern cabin",
      "count": 1
     },
     {
@@ -10369,12 +10365,12 @@
     },
     {
      "kind": "treasure",
-     "detail": "oilcloth bundles of Valenwood silk and moon sugar in the hold (up to 50 gold, iron and steel)",
+     "detail": "oilcloth bundles of Valenwood silk and moon sugar in the hold",
      "count": 2
     },
     {
      "kind": "boss-chest",
-     "detail": "the captain's strongbox wedged in the cleft below the hull; boss chest at level 10 (Orcish, Dwarven, Elven light)",
+     "detail": "the captain's strongbox wedged in the cleft below the hull",
      "count": 1
     }
    ]

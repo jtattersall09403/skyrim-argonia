@@ -719,6 +719,78 @@ def test_21_selected_shows_where(pad):
     pad.ev("studio.log.undo()")
 
 
+def test_21_lights_seen_and_handled(pad):
+    # a light has no model of its own: while selecting it is a small bulb of its colour, picked like anything else
+    pad.page.click("#rail [data-tool=select]")
+    light = pad.ev("studio.model.spaces.exterior.refs.get('fixplace.l0')")
+    lantern = pad.ev("studio.model.spaces.exterior.refs.get('fixplace.lantern0')")
+    lp = pad.ev("(id) => studio.seated(studio.model.spaces.exterior.refs.get(id)).pos", light["id"])
+    pad.ev("studio.selection.clear(); studio.tools.selectionChanged()")
+    look_at(pad, "ours", lp, dist=1800, pitch=1.15)
+    pad.page.wait_for_function("studio.ours.place.nBulb >= 2 && studio.ours.place.nRing >= 1", timeout=5000 * SLOW)
+    pad.shot("21-lights-overview")
+    look_at(pad, "ours", lp, dist=700, pitch=1.3)
+    pad.page.wait_for_function("studio.ours.place.nBulb >= 1 && studio.ours.place.bulbs.visible", timeout=5000 * SLOW)
+    pad.ev("studio.selection.clear(); studio.tools.selectionChanged()")
+    pad.pen_tap(*pad.screen("ours", lp))
+    assert pad.ev("[...studio.selection]") == [light["id"]], pad.ev("[...studio.selection]")
+    body = pad.ev("document.getElementById('panel-body').textContent")
+    assert "reaches 600 units" in body and "casts no shadows" in body and "Fix Lantern" in body, body
+    assert pad.ev("studio.ours.place.ringIds.has('fixplace.l0')") and pad.ev("studio.ours.place.nRing") >= 1
+    pad.page.wait_for_timeout(200)
+    pad.shot("21-light-selected")
+    # moving the lantern takes its light with it, in one undo step
+    pad.ev("(id) => { studio.selection = new Set([id]); studio.tools.selectionChanged(); }", lantern["id"])
+    assert "one light goes with it" in pad.ev("document.getElementById('panel-body').textContent")
+    n0 = len(pad.ops())
+    pad.page.get_by_role("button", name="East", exact=True).click()
+    ops = pad.ops()[n0:]
+    assert sorted(o["id"] for o in ops) == sorted([lantern["id"], light["id"]]) and ops[0]["stroke"] == ops[1]["stroke"], ops
+    moved = pad.ev("studio.model.spaces.exterior.refs.get('fixplace.l0').pos")
+    assert abs(moved[0] - light["pos"][0] - 32) < 0.6 and abs(moved[1] - light["pos"][1]) < 0.6, (moved, light["pos"])
+    # a turn carries it round the lantern
+    pad.page.get_by_role("button", name="Turn right", exact=True).click()
+    last2 = pad.ev("studio.log.applied().slice(-2).map((o) => o.id)")
+    assert sorted(last2) == sorted([lantern["id"], light["id"]])
+    pad.ev("studio.log.undo()")
+    pad.ev("studio.log.undo()")
+    assert pad.ev("studio.model.spaces.exterior.refs.get('fixplace.l0').pos") == light["pos"]
+    # removing the lantern removes its light; a light alone can be removed by itself
+    pad.ev("(id) => { studio.selection = new Set([id]); studio.tools.selectionChanged(); }", lantern["id"])
+    n0 = len(pad.ops())
+    pad.page.get_by_role("button", name="Remove from our place").click()
+    assert sorted(o["id"] for o in pad.ops()[n0:]) == sorted([lantern["id"], light["id"]]) and all(o["op"] == "ref.remove" for o in pad.ops()[n0:])
+    pad.ev("studio.log.undo()")
+    pad.ev("(id) => { studio.selection = new Set([id]); studio.tools.selectionChanged(); }", light["id"])
+    n0 = len(pad.ops())
+    pad.page.get_by_role("button", name="Remove from our place").click()
+    assert [o["id"] for o in pad.ops()[n0:]] == [light["id"]]
+    pad.ev("studio.log.undo()")
+    # other tools hide the lights unless the Lights toggle is on
+    pad.page.click("#rail [data-tool=land]")
+    assert not pad.ev("studio.ours.place.showLights")
+    pad.page.wait_for_function("studio.ours.place.nBulb === 0 && !studio.ours.place.bulbs.visible", timeout=5000 * SLOW)
+    pad.ev("studio.tools.opts.lights = true; studio.tools.lightsShown()")
+    pad.page.wait_for_function("studio.ours.place.nBulb >= 1", timeout=5000 * SLOW)
+    pad.ev("studio.tools.opts.lights = false; studio.tools.lightsShown()")
+    pad.page.click("#rail [data-tool=select]")
+    # inside: the room's lamp is a bulb too, and belongs to its lantern
+    door = pad.ev("[...studio.model.spaces.exterior.refs.values()].find((r) => r.door?.to_space && studio.model.spaces[r.door.to_space])")
+    pad.ev("(d) => studio.enter(studio.ours, d)", door)
+    lamp = pad.ev("[...studio.model.spaces[studio.ours.space].refs.values()].find((r) => r.kind === 'light')")
+    pad.ev("(id) => { studio.selection = new Set([id]); studio.tools.selectionChanged(); }", lamp["id"])
+    body = pad.ev("document.getElementById('panel-body').textContent")
+    assert "casts shadows" in body and "Fix Lantern" in body, body
+    look_at(pad, "ours", lamp["pos"], dist=600, pitch=1.0)
+    pad.page.wait_for_function("studio.ours.place.nBulb >= 1", timeout=5000 * SLOW)
+    pad.shot("21-light-inside")
+    pad.page.locator("#view-ours .crumbs button").first.click()
+    pad.ev("studio.selection.clear(); studio.tools.selectionChanged()")
+    # back outside, the view restored to where it stood (the next tests start from it)
+    pad.page.wait_for_function("studio.ours.space === 'exterior' && !studio.ours.returnRig", timeout=30000 * SLOW)
+    pad.page.wait_for_timeout(500)
+
+
 def test_21_grass_at_viewing_distance(pad):
     # the land texture's grass grows close up and from where one looks at a town (no cut-off at a short range)
     assert pad.ev("studio.ours.grass.on")

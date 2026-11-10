@@ -268,14 +268,14 @@
      "count": 1
     },
     {
-     "kind": "combat-foes",
+     "kind": "combat-creature",
      "detail": "mudcrab swarms and giant snakes on the shore road to the north",
      "count": 4,
      "reward": "treasure"
     },
     {
      "kind": "treasure",
-     "detail": "smugglers' dropped goods in a shore cache, D1 tier (up to 50 gold, iron and steel)",
+     "detail": "smugglers' dropped goods in a shore cache",
      "count": 1
     }
    ]
@@ -570,7 +570,7 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "lowest-hall boss chest, D3 tier (level 20: elven, steel plate, scaled)",
+     "detail": "lowest-hall boss chest",
      "count": 1
     },
     {
@@ -820,7 +820,7 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "sea-cave boss chest, D3 tier (level 20)",
+     "detail": "sea-cave boss chest",
      "count": 1
     },
     {
@@ -1117,7 +1117,7 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "stoppered-gallery chest, D2 tier (level 10: orcish, dwarven, elven light)",
+     "detail": "stoppered-gallery chest",
      "count": 1
     }
    ]
@@ -1390,14 +1390,14 @@
      "count": 1
     },
     {
-     "kind": "combat-foes",
-     "detail": "smugglers landing by night, swamp-crocodiles in the ditch and giant snakes",
+     "kind": "combat-creature",
+     "detail": "swamp-crocodiles in the ditch and giant snakes",
      "count": 4,
      "reward": "treasure"
     },
     {
      "kind": "treasure",
-     "detail": "smugglers' dropped cargo by the shore, D1 tier (up to 50 gold, iron and steel)",
+     "detail": "smugglers' dropped cargo by the shore",
      "count": 1
     }
    ]
@@ -1594,7 +1594,7 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "captain's strongbox with Company coin, D2 tier (level 10)",
+     "detail": "captain's strongbox with Company coin",
      "count": 1
     },
     {
@@ -1879,7 +1879,7 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "the roost's hoard chest of ash-glass, D3 tier (level 20)",
+     "detail": "the roost's hoard chest of ash-glass",
      "count": 1
     }
    ]
@@ -2159,7 +2159,7 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "lower-hall vault, D3 tier (level 20)",
+     "detail": "lower-hall vault",
      "count": 1
     },
     {
@@ -2392,14 +2392,14 @@
      "count": 1
     },
     {
-     "kind": "combat-foes",
+     "kind": "combat-creature",
      "detail": "crocodiles at the river mouth and skeevers among the stone stacks",
      "count": 3,
      "reward": "treasure"
     },
     {
      "kind": "treasure",
-     "detail": "smugglers' stashed goods under the jetty, D1 tier (up to 50 gold, iron and steel)",
+     "detail": "smugglers' stashed goods under the jetty",
      "count": 1
     }
    ]
@@ -2632,20 +2632,14 @@
      "count": 1
     },
     {
-     "kind": "combat-foes",
+     "kind": "combat-creature",
      "detail": "crabs and hackwings on the shore",
      "count": 4,
      "reward": "boss-chest"
     },
     {
-     "kind": "combat-boss",
-     "detail": "the Skeith outlaw captain whose boat sits in the cove",
-     "count": 1,
-     "reward": "boss-chest"
-    },
-    {
      "kind": "boss-chest",
-     "detail": "cove chest, D2 tier (level 10)",
+     "detail": "cove chest",
      "count": 1
     }
    ]
@@ -2658,7 +2652,7 @@
    "population": 0,
    "footprint_radius_m": 45,
    "siting": "seabed",
-   "danger_band_id": "D2",
+   "danger_band_id": "D4",
    "importance": 1,
    "summary": "Wreck of the Silt Bride is a Dunmer slaver brig lost off the coast of Thorn in the late Third Era, before the Red Year. Shackles still hang in her hold and the drowned crew and captives still walk it.",
    "lore_page": null,
@@ -2951,7 +2945,7 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "captain's strongbox, D2 tier (orcish, dwarven, light elven)",
+     "detail": "captain's strongbox",
      "count": 1
     }
    ]
@@ -2964,7 +2958,7 @@
    "population": 0,
    "footprint_radius_m": 45,
    "siting": "seabed",
-   "danger_band_id": "D2",
+   "danger_band_id": "D4",
    "importance": 1,
    "summary": "Wreck of the Brindle Gull is a smuggler's sloop that went down on the Kornakim shoals running from a rival crew, with her strongbox still locked in the deckhouse.",
    "lore_page": null,
@@ -3257,7 +3251,7 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "locked strongbox of Skeith coin, D2 tier",
+     "detail": "locked strongbox of Skeith coin",
      "count": 1
     }
    ]
@@ -3563,7 +3557,7 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "Akaviri tribute chest, D3 tier (elven, steel plate, scaled)",
+     "detail": "Akaviri tribute chest",
      "count": 1
     }
    ]
@@ -3820,7 +3814,7 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "smugglers' cache in the bluff cave, D3 tier",
+     "detail": "smugglers' cache in the bluff cave",
      "count": 1
     },
     {
@@ -4128,7 +4122,7 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "captain's sea chest, D3 tier",
+     "detail": "captain's sea chest",
      "count": 1
     },
     {
@@ -4398,7 +4392,7 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "buried cache under the cairn, D2 tier (orcish, dwarven, light elven)",
+     "detail": "buried cache under the cairn",
      "count": 1
     },
     {
@@ -4700,7 +4694,7 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "strong-room chest of prize cargo, D3 tier (elven, steel plate, scaled)",
+     "detail": "strong-room chest of prize cargo",
      "count": 1
     },
     {
@@ -4906,7 +4900,7 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "captain's sealed strongbox, D2 tier (orcish, dwarven, light elven)",
+     "detail": "captain's sealed strongbox",
      "count": 1
     }
    ]
@@ -5452,7 +5446,7 @@
    "population": 10,
    "footprint_radius_m": 60,
    "siting": "riverbank",
-   "danger_band_id": "D1",
+   "danger_band_id": "D3",
    "importance": 3,
    "summary": "Joxhi is a village of clay-diggers on a river bend north of Inoja. Its pits give the deepest red clay of the Aroxhu country, and the village stands on its own spoil.",
    "lore_page": null,
@@ -5703,14 +5697,8 @@
      "reward": "treasure"
     },
     {
-     "kind": "combat-foes",
-     "detail": "Sarpa raiders in the pit scrub",
-     "count": 3,
-     "reward": "treasure"
-    },
-    {
      "kind": "treasure",
-     "detail": "a digger's cache under the buried hall's door, up to 50 gold with iron and steel",
+     "detail": "a digger's cache under the buried hall's door",
      "count": 1
     }
    ]
@@ -5723,7 +5711,7 @@
    "population": 11,
    "footprint_radius_m": 60,
    "siting": "lakeshore",
-   "danger_band_id": "D1",
+   "danger_band_id": "D3",
    "importance": 3,
    "summary": "Gaweja is a lakeside clay-mound village on the road between Yulca and Badal. It fishes, grows rice on its mound slopes and trades fish to the Agaceph.",
    "lore_page": null,
@@ -6020,7 +6008,7 @@
     },
     {
      "kind": "treasure",
-     "detail": "a fisher's lockbox on the point, up to 50 gold with iron and steel",
+     "detail": "a fisher's lockbox on the point",
      "count": 1
     }
    ]
@@ -6033,7 +6021,7 @@
    "population": 12,
    "footprint_radius_m": 60,
    "siting": "coast",
-   "danger_band_id": "D1",
+   "danger_band_id": "D3",
    "importance": 3,
    "summary": "Renhu is a coastal clay-mound village on an inlet east of Xibcan. Its people farm the mounds, net fish in the estuary and lodge travellers on the Seafalls road.",
    "lore_page": null,
@@ -6278,12 +6266,6 @@
      "count": 4
     },
     {
-     "kind": "combat-foes",
-     "detail": "Skeith smugglers landing on the inlet",
-     "count": 3,
-     "reward": "treasure"
-    },
-    {
      "kind": "combat-creature",
      "detail": "coastal crocodiles and mudcrabs",
      "count": 3,
@@ -6291,7 +6273,7 @@
     },
     {
      "kind": "treasure",
-     "detail": "a smugglers' cache on the bluff under the signal light, up to 50 gold with iron and steel",
+     "detail": "a smugglers' cache on the bluff under the signal light",
      "count": 1
     }
    ]
@@ -6549,12 +6531,6 @@
      "count": 1
     },
     {
-     "kind": "combat-foes",
-     "detail": "Skeith smugglers on the cape",
-     "count": 3,
-     "reward": "treasure"
-    },
-    {
      "kind": "combat-creature",
      "detail": "crocodiles at the inlet",
      "count": 2,
@@ -6562,7 +6538,7 @@
     },
     {
      "kind": "treasure",
-     "detail": "a smugglers' bundle behind the breakwater, up to 50 gold with iron and steel",
+     "detail": "a smugglers' bundle behind the breakwater",
      "count": 1
     }
    ]
@@ -6575,7 +6551,7 @@
    "population": 5,
    "footprint_radius_m": 35,
    "siting": "inland",
-   "danger_band_id": "D1",
+   "danger_band_id": "D3",
    "importance": 2,
    "summary": "Redclay Watch is a mound-top spear-post on the road between Renhu and Seafalls. The confederacy keeps it to take tolls from outside goods and stop coast robbers.",
    "lore_page": null,
@@ -6812,17 +6788,6 @@
     {
      "kind": "follower",
      "detail": "the watch-leader of Khiar, a spear fighter who knows the road",
-     "count": 1
-    },
-    {
-     "kind": "combat-foes",
-     "detail": "smuggler bands on the road",
-     "count": 4,
-     "reward": "treasure"
-    },
-    {
-     "kind": "treasure",
-     "detail": "a confiscated cache under the hut floor, up to 50 gold with iron and steel",
      "count": 1
     }
    ]
@@ -7099,12 +7064,12 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "boss chest, D2 tier, level 10 (Orcish, Dwarven, Elven light)",
+     "detail": "boss chest",
      "count": 1
     },
     {
      "kind": "treasure",
-     "detail": "the Company's last strongbox and ore-cart cache, up to 50 gold with iron and steel",
+     "detail": "the Company's last strongbox and ore-cart cache",
      "count": 1
     }
    ]
@@ -7446,14 +7411,8 @@
      "reward": "treasure"
     },
     {
-     "kind": "combat-foes",
-     "detail": "Skeith pirates raiding the landing",
-     "count": 3,
-     "reward": "treasure"
-    },
-    {
      "kind": "treasure",
-     "detail": "a wreck-salvage store on the shoals, up to 50 gold with iron and steel",
+     "detail": "a wreck-salvage store on the shoals",
      "count": 1
     }
    ]
@@ -7708,7 +7667,7 @@
     },
     {
      "kind": "treasure",
-     "detail": "the keeper's salvage chest, up to 50 gold with iron and steel",
+     "detail": "the keeper's salvage chest",
      "count": 1
     }
    ]
@@ -7721,7 +7680,7 @@
    "population": 3,
    "footprint_radius_m": 25,
    "siting": "inland",
-   "danger_band_id": "D1",
+   "danger_band_id": "D3",
    "importance": 1,
    "summary": "Brineflat Farm is a salt-and-sedge farm on the flats behind Seafalls, kept by one Spray-Folk family.",
    "lore_page": null,
@@ -7969,7 +7928,7 @@
     },
     {
      "kind": "treasure",
-     "detail": "the smuggler's cache in the pans, up to 50 gold with iron and steel",
+     "detail": "the smuggler's cache in the pans",
      "count": 1
     }
    ]
@@ -8230,7 +8189,7 @@
     },
     {
      "kind": "treasure",
-     "detail": "the thieves' hidden bundle, up to 50 gold with iron and steel",
+     "detail": "the thieves' hidden bundle",
      "count": 1
     }
    ]
@@ -8496,7 +8455,7 @@
     },
     {
      "kind": "treasure",
-     "detail": "a smugglers' dropped satchel, up to 50 gold, iron and steel",
+     "detail": "a smugglers' dropped satchel",
      "count": 1
     }
    ]
@@ -8509,7 +8468,7 @@
    "population": 8,
    "footprint_radius_m": 40,
    "siting": "lakeshore",
-   "danger_band_id": "D2",
+   "danger_band_id": "D4",
    "importance": 2,
    "summary": "Icalca is a hamlet of Agaceph raft-folk on the western lake. They are illusionists who sell tomes and spells, and who freeze intruders before they decide what to do with them.",
    "lore_page": null,
@@ -8805,14 +8764,8 @@
      "reward": "treasure"
     },
     {
-     "kind": "combat-foes",
-     "detail": "bandits trying the landings, 3 to 4",
-     "count": 1,
-     "reward": "treasure"
-    },
-    {
      "kind": "treasure",
-     "detail": "a bandit's cache by the reed screens, up to 50 gold, iron and steel",
+     "detail": "a bandit's cache by the reed screens",
      "count": 1
     }
    ]
@@ -9084,11 +9037,12 @@
      "kind": "combat-foes",
      "detail": "illusion-casting guards for any intruder, 2",
      "count": 1,
-     "reward": "treasure"
+     "reward": "treasure",
+     "setting": "provoked"
     },
     {
      "kind": "treasure",
-     "detail": "a locked coffer under the eldest's raft, up to 50 gold, iron and steel",
+     "detail": "a locked coffer under the eldest's raft",
      "count": 1
     }
    ]
@@ -9397,14 +9351,8 @@
      "reward": "treasure"
     },
     {
-     "kind": "combat-foes",
-     "detail": "Skeith raiders who try the landings, 3 to 4",
-     "count": 1,
-     "reward": "treasure"
-    },
-    {
      "kind": "treasure",
-     "detail": "a raiders' dropped satchel, up to 50 gold, iron and steel",
+     "detail": "a raiders' dropped satchel",
      "count": 1
     }
    ]
@@ -9748,14 +9696,8 @@
      "reward": "treasure"
     },
     {
-     "kind": "combat-foes",
-     "detail": "pirates of a raft working the far shore, 3 to 4",
-     "count": 1,
-     "reward": "treasure"
-    },
-    {
      "kind": "treasure",
-     "detail": "the pirate raft's stash, up to 50 gold, iron and steel",
+     "detail": "the pirate raft's stash",
      "count": 1
     }
    ]
@@ -10022,11 +9964,12 @@
      "kind": "combat-foes",
      "detail": "Root-Folk hunters who attack strangers on the trap line, 2",
      "count": 1,
-     "reward": "treasure"
+     "reward": "treasure",
+     "setting": "provoked"
     },
     {
      "kind": "treasure",
-     "detail": "a hunter's stash behind the egg-racks, up to 50 gold, iron and steel",
+     "detail": "a hunter's stash behind the egg-racks",
      "count": 1
     }
    ]
@@ -10317,7 +10260,7 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "boss chest, D3 tier (level 20: Elven, steel plate, scaled)",
+     "detail": "boss chest",
      "count": 1
     },
     {
@@ -10634,7 +10577,7 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "boss chest, D3 tier (level 20: Elven, steel plate, scaled)",
+     "detail": "boss chest",
      "count": 1
     },
     {
@@ -10951,7 +10894,7 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "boss chest, D3 tier (level 20: Elven, steel plate, scaled)",
+     "detail": "boss chest",
      "count": 1
     },
     {
@@ -11262,7 +11205,7 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "boss chest, D3 tier (level 20: Elven, steel plate, scaled)",
+     "detail": "boss chest",
      "count": 1
     },
     {

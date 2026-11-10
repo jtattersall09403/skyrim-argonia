@@ -36,7 +36,7 @@ names. Rebuild after writing: `/home/ubuntu/.argonia/venv/bin/python -m tools.ne
  "population": 0,
  "footprint_radius_m": 0,
  "siting": "riverbank | coast | island | lakeshore | inland | hilltop | swamp | seabed",
- "danger_band_id": "D0..D5 (the place itself, inside and at the door)",
+ "danger_band_id": "D0..D5 (the strength of what lives inside: docs/design/danger.md)",
  "importance": "5 shapes the province, 4 major, 3 regional, 2 local, 1 local colour",
  "summary": "<two or three sentences>",
  "lore_page": "Lore:<Name> or null",
@@ -48,7 +48,7 @@ names. Rebuild after writing: `/home/ubuntu/.argonia/venv/bin/python -m tools.ne
  "terrain_needs": [{"id": "flat-pad", "radius_m": 200, "why": "the city's built area"}],
  "gives": [{"kind": "trainer", "detail": "Expert Alteration trainer", "count": 1},
            {"kind": "combat-boss", "detail": "the smugglers' captain", "count": 1, "reward": "boss-chest"},
-           {"kind": "boss-chest", "detail": "boss chest, D3 tier", "count": 1}]}
+           {"kind": "boss-chest", "detail": "the captain's chest in the stern cabin", "count": 1}]}
 ```
 
 Every place carries every field above (aliases and terrain needs may be empty lists), and one note for each of
@@ -80,18 +80,25 @@ list several kinds, and several of one kind.
 - A combat give (`combat-foes`, `combat-boss`, `combat-creature`) needs a `reward`. The reward is the id of a loot
   give that the same place also lists: `boss-chest`, `treasure`, `gold-hoard` or `unique-item`. A boss needs a
   boss-chest, a gold-hoard or a unique-item.
-- The build rejects an unknown kind, an empty detail and a combat give without its reward.
+- A combat give at a settlement (city, town, village, hamlet, outpost) names its `setting`: `interior` (it lives in
+  a dungeon-like interior of the place) or `provoked` (the place's own people, who fight only when provoked). A
+  creature fight in its waters needs none; a fight outside it is the ground's, not the settlement's.
+- A loot give's detail says where and what kind of store it is ("the captain's chest in the stern cabin"), never
+  its tier.
+- The build rejects an unknown kind, an empty detail, a combat give without its reward and a setting on any other
+  give.
 
-The reward's tier is the place's danger band, never the player's level (docs/research/new-world-place-gives.md):
+The reward's tier is the place's reward band (the higher of the way in and what lives inside; docs/design/danger.md),
+never the player's level; the scale (`newworld/sources/stock/scale.json`, `danger_tier`) turns a band into a tier:
 
-| Band | Combat | Reward |
+| Band | Combat | Reward tier |
 |---|---|---|
-| D0 | none | none |
-| D1 | foes, creatures | treasure (up to 50 gold, iron and steel) |
-| D2 | + a boss | boss-chest at level 10 (Orcish, Dwarven, Elven light) |
-| D3 | as D2 | boss-chest at level 20 (Elven, steel plate, scaled) |
-| D4 | as D2 | boss-chest + gold-hoard at level 35 (glass, ebony) |
-| D5 | as D2 | boss-chest + unique-item at level 50 (Daedric, dragon) |
+| D0 | none, or in an interior | T1 Common |
+| D1 | foes, creatures | T1 Common (iron, steel, hide) |
+| D2 | + a boss | T2 Sound (steel, imperial, orcish weapons) |
+| D3 | as D2 | T3 Fine (dwarven, elven, scaled) |
+| D4 | as D2; a gold-hoard fits | T4 Rare (glass weapons, ebony armour) |
+| D5 | as D2; a unique-item fits | T5 Precious (ebony weapons, glass armour) |
 
 ## Deliverable in Skyrim
 

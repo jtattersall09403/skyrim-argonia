@@ -28,12 +28,20 @@ One researcher per batch of about 30 places, grouped by neighbouring regions, ea
    place alone, drawn from what is particular to it; no sentence is shared with another place, with only the
    names changed. The overview adds what the summary does not. An unnamed place gets a name in its culture's
    style, unique in the province. Importance: 5 shapes the province, 4 major, 3 regional, 2 local, 1 local colour.
-5. Keep a settlement to itself. Its extent holds its own people and buildings, never hostile occupants and never
-   another place (a village, a camp, a ruin) folded inside it. Danger inside a city or town lives in a dungeon-like
+5. Give a settlement no hostile occupants and no other place (a village, a camp, a ruin) folded inside it: its
+   extent contains only its own people and buildings. Danger inside a city or town lives in a dungeon-like
    interior of it: a cellar, a sewer, a vault, a drowned under-layer, as Riften keeps its thieves in the Ratway.
    Threats outside it (raiders on the road, beasts in the channels beyond) belong to the ground round it or to the
    neighbouring place that holds them. A separate village or ruin near a settlement is its own place record, or
-   nothing.
+   nothing. A settlement's own fight names where it lives (`setting`: `interior`, or `provoked` for its own people
+   who fight only when provoked); wildlife in its waters is a creature fight and needs none. An outpost or camp
+   whose people attack on sight is a hostile place, not a settlement with foes.
+5a. Set the danger as fixed geography (docs/design/danger.md). `danger_band_id` is the strength of what lives
+   inside: for a lived place, the band of the country round it (people of lethal land are formidable), never
+   calmer because the place is settled; for a ruin, camp or lair, at least that band and one worse for a boss or
+   foes in a dungeon, cave or wreck; a city or town D0. `build_db` derives the disposition, the way in and the
+   reward band from the record and the ground. A loot give's detail says where and what kind of store it is,
+   never its tier: the tier is the reward band's.
 6. Travel is the network's (docs/design/travel-network.md). A place promises travel only as a stop of it: a
    `boat-stop`, `coach-stop` or `rootworm-stop` give whose detail says who serves it and where (raft-masters at
    the city landing), with the stop and its routes in `newworld/sources/travel/network.json`; a stop only where
