@@ -136,7 +136,10 @@ building on a slope first takes the rise the source's own builders commonly buil
   outdoors), one guard to a bed, never in the inn's rooms; a family's home only when the camp bed cannot be
   walked to (see the joins above). Each house holds one household: a family, headed by
   the working person who lives there, then a partner, then their kin; never strangers thrown together.
-- Nothing levelled is ever placed (decision 0035); the tools drop it and list it.
+- Nothing levelled is ever placed (decision 0035); the tools drop it and list it. A person's base is never a
+  levelled character nor one that takes anything from a template (stats, inventory, spells) unless that template is
+  itself a fitting base of the source: the next fitting base of the same people and role is taken, and `draft check`
+  fails a person built on such a base.
 
 ## 5. Check and iterate
 

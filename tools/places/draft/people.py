@@ -99,13 +99,21 @@ def role_score(npc: dict, role: str, races: dict | None = None) -> float:
     return s
 
 
-def usable(npc: dict) -> bool:
-    """No levelled actor and no Nordic one."""
+def usable(npc: dict, npcs: dict | None = None, _seen: frozenset = frozenset()) -> bool:
+    """No levelled actor and no Nordic one. A base that takes anything from a template (stats, inventory, spells)
+    is levelled unless the template is a base of `npcs` that is itself usable: a template outside them is taken
+    for what Skyrim's are, a levelled actor list (LvlBanditMelee1H)."""
     t = str(npc.get("type") or npc.get("record") or "NPC_")
     race = str(npc.get("race_edid") or npc.get("race") or "")
     blob = f"{npc.get('edid', '')} " + " ".join(str(f.get("edid", "")) for f in npc.get("factions") or [])
-    return (t not in ("LVLN", "LeveledNpc") and not npc.get("nordic") and not re.search(r"\bnord", race, re.I)
-            and not re.search(r"corpse|bandit|dremora|draugr", blob, re.I))
+    if (t in ("LVLN", "LeveledNpc") or npc.get("nordic") or re.search(r"\bnord", race, re.I)
+            or re.search(r"corpse|bandit|dremora|draugr", blob, re.I)):
+        return False
+    tpl = npc.get("template")
+    if tpl and npc.get("template_flags"):
+        up = (npcs or {}).get(tpl)
+        return up is not None and tpl not in _seen and usable(up, npcs, _seen | {tpl})
+    return True
 
 
 def routine(role: str, bed: dict, work: dict, eat: dict, wander: dict, shift: str = "day") -> list[dict]:

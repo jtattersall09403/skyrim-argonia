@@ -183,7 +183,7 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
         row = {"id": io.mint(place_id, "exterior", rid), "base": rep["base"] if rep else r["base"], "kind": r.get("kind"),
                "pos": [round(x, 2), round(y, 2), r["pos"][2]], "rot": rot, "scale": r.get("scale", 1.0),
                "layer": "place", "flags": r.get("flags") or [], "src": rid, "seat": seat, "cluster": cid}
-        for k in ("owner", "lock", "door", "linked", "enable_parent", "primitive", "map_marker", "edid"):
+        for k in ("owner", "lock", "door", "linked", "enable_parent", "primitive", "map_marker", "edid", "radius", "count"):
             if r.get(k) is not None:
                 row[k] = r[k]
         if al:
@@ -1014,7 +1014,7 @@ def draft_people(place_id, rec, gives, src, bases, our, spaces, clusters, fit, o
     used_bases: dict[str, int] = {}
 
     def pick_base(role: str) -> str | None:
-        cands = sorted({r["base"] for _, r in actors if people.usable(src.npcs[r["base"]])})
+        cands = sorted({r["base"] for _, r in actors if people.usable(src.npcs[r["base"]], src.npcs)})
         if not cands:
             return None
         best = max(cands, key=lambda k: (people.role_score(src.npcs[k], role), -used_bases.get(k, 0), k))
@@ -1041,7 +1041,7 @@ def draft_people(place_id, rec, gives, src, bases, our, spaces, clusters, fit, o
                 {"id": f"{place_id}.guard", "kind": "guard", "crime": crime},
                 {"id": f"{place_id}.town", "kind": "town", "crime": crime}]
     # the inn: the hall with the most beds that no source trader keeps as a shop
-    shops = {sp_id for sp_id, r in actors if people.usable(src.npcs[r["base"]]) and any(
+    shops = {sp_id for sp_id, r in actors if people.usable(src.npcs[r["base"]], src.npcs) and any(
         people.role_score(src.npcs[r["base"]], ro) >= 2 for ro in ("merchant", "smith", "apothecary", "spell-trader"))}
     inn_space = next((h for h in halls if spaces[h]["src_space"] not in shops and h not in barracks),
                      halls[0] if halls else None)
@@ -1066,7 +1066,7 @@ def draft_people(place_id, rec, gives, src, bases, our, spaces, clusters, fit, o
         # where the source's own person of this trade worked (Bethesda places a trader in their shop)
         for sp_id, r in actors:
             n_ = src.npcs[r["base"]]
-            if people.usable(n_) and people.role_score(n_, role) >= 2 and sp_id != "exterior" and copies_of.get(sp_id):
+            if people.usable(n_, src.npcs) and people.role_score(n_, role) >= 2 and sp_id != "exterior" and copies_of.get(sp_id):
                 sid = copies_of[sp_id][0]
                 if role in people.OUTDOOR_WORK:
                     # a smith works the yard outside the shop's door

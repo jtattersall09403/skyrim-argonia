@@ -65,8 +65,8 @@ def islands(ctx: dict, W: "Walkable") -> dict:
     return out
 
 
-ON_TOL = 48.0          # plan units: a point within this of a triangle stands on it
-Z_BELOW, Z_ABOVE = 128.0, 512.0   # a triangle this far under or over the point's height is another level (a roof, a cellar)
+ON_TOL = 48.0          # plan units: a point within this of its triangle stands on it
+PICK_TOL, Z_TOL = 96.0, 128.0   # the build's own lookup of a stop's triangle (check.STOP_PLAN_TOL, STOP_Z_TOL)
 BUCKET = 512.0
 STEP = 64.0            # units between the samples of a street tested against the network (paths.smooth's spacing)
 SNAP = 384.0           # an end off the network (a doorway) is taken to the nearest network point this near
@@ -77,8 +77,9 @@ class Walkable:
     """The built exterior navmesh (ours and the world's round the place) as one index: each triangle's walkable
     component and whether it is the town's main network (the largest component over doors, as `check` finds it);
     triangles bucketed in plan for point lookup, and their neighbours for routing on the mesh. `zref(x, y)` gives a
-    plan point's height (our ground, as the build stands a marker given in plan; over water the mesh's own water
-    triangles lie on the bed, and the decks above it are within Z_ABOVE); a 3-d point carries its own."""
+    plan point's height (our ground, as the build stands a marker given in plan); a 3-d point carries its own. A
+    point's triangle is the one the build's check picks (`check.NavIndex.at`: within PICK_TOL in plan and Z_TOL of
+    the triangle's mean height, nearest in plan, then in height), so what is on the network here is there."""
 
     def __init__(self, ctx: dict, zref=None, comp: dict | None = None):
         from tools.places import check as C
@@ -97,8 +98,8 @@ class Walkable:
         self.comp = np.asarray(cid, int)
         self.main = self.comp == ids.get(main, -1)
         self.cent = self.T.mean(axis=1)
-        lo = np.floor((self.T[:, :, :2].min(axis=1) - ON_TOL) / BUCKET).astype(int)
-        hi = np.floor((self.T[:, :, :2].max(axis=1) + ON_TOL) / BUCKET).astype(int)
+        lo = np.floor((self.T[:, :, :2].min(axis=1) - PICK_TOL) / BUCKET).astype(int)
+        hi = np.floor((self.T[:, :, :2].max(axis=1) + PICK_TOL) / BUCKET).astype(int)
         span = hi - lo
         keys, idx = [], []
         for di in range(int(span[:, 0].max(initial=0)) + 1):
@@ -120,9 +121,9 @@ class Walkable:
             return float(p[2])
         return self.zref(float(p[0]), float(p[1])) if self.zref else None
 
-    def near(self, p, tol: float = ON_TOL) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
-        """(triangle indices, plan distance, height at p) of the triangles within `tol` of p in plan and at its
-        level."""
+    def near(self, p, tol: float = PICK_TOL) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
+        """(triangle indices, plan distance, height at p) of the triangles within `tol` of p in plan and within Z_TOL
+        of its height by their mean."""
         i, j = math.floor(p[0] / BUCKET), math.floor(p[1] / BUCKET)
         c = self.bucket.get((i << 32) + j)
         if c is None:
@@ -152,13 +153,23 @@ class Walkable:
         keep = dp <= tol
         h = self._height(p)
         if h is not None:
-            keep &= (z >= h - Z_BELOW) & (z <= h + Z_ABOVE)
+            keep &= np.abs(self.cent[c, 2] - h) <= Z_TOL
         return c[keep], dp[keep], z[keep]
 
+    def pick(self, p) -> tuple[int, float]:
+        """(triangle, plan distance) the build's check finds p on, else (-1, inf)."""
+        c, dp, _ = self.near(p, PICK_TOL)
+        if not len(c):
+            return -1, float("inf")
+        h = self._height(p)
+        score = dp + (np.abs(self.cent[c, 2] - h) * 0.01 if h is not None else 0.0)
+        k = int(np.argmin(score))
+        return int(c[k]), float(dp[k])
+
     def on(self, p, tol: float = ON_TOL) -> bool:
-        """Whether p stands on the town's main network."""
-        c, _, _ = self.near(p, tol)
-        return bool(self.main[c].any())
+        """Whether p stands on the town's main network: the triangle it is found on is of it, within `tol` in plan."""
+        t, d = self.pick(p)
+        return t >= 0 and bool(self.main[t]) and d <= tol
 
     def snap(self, p, reach: float = SNAP):
         """The nearest point of the main network to p within `reach` in plan (p itself when it is on it), else None."""
@@ -173,7 +184,7 @@ class Walkable:
 
     def tri(self, p) -> int:
         """The main-network triangle under p nearest its height, else -1."""
-        c, dp, z = self.near(p)
+        c, dp, z = self.near(p, ON_TOL)
         m = self.main[c]
         if not m.any():
             return -1

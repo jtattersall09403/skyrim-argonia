@@ -185,3 +185,11 @@ def test_arrivals_puts_a_door_arrival_off_the_mesh_on_it_in_front_of_its_door(tm
     assert W.on(a) and a[1] > -150.0
     assert walk.io.read_jsonl(p / "spaces" / "hold" / "refs.jsonl")[0]["door"]["to_pos"] == a
     assert walk.arrivals("p", p, W, {}, log=lambda *_: None) == 0
+
+
+def test_a_base_taking_its_stats_from_a_template_we_cannot_see_is_levelled():
+    from tools.places.draft import people
+    merchant = {"edid": "ArgMerchant", "race_edid": "ArgonianRace", "template": "Skyrim.esm:03DECB", "template_flags": "Stats"}
+    assert not people.usable(merchant, {})
+    assert people.usable(merchant, {"Skyrim.esm:03DECB": {"edid": "ArgTrader", "race_edid": "ArgonianRace"}})
+    assert people.usable({**merchant, "template_flags": ""}, {})

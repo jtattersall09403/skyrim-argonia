@@ -180,7 +180,7 @@ def check(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, g
             bad.append(f"guard {p['id']} has no patrol")
         if not p.get("base_from"):
             bad.append(f"{p['id']} ({p['role']}) has no actor base")
-        elif p["base_from"] in src.npcs and not people.usable(src.npcs[p["base_from"]]):
+        elif p["base_from"] in src.npcs and not people.usable(src.npcs[p["base_from"]], src.npcs):
             bad.append(f"{p['id']} built on a Nordic or levelled actor {p['base_from']}")
 
     # 8. land patches: small, bounded, never across the waterline
