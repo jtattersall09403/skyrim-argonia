@@ -80,6 +80,19 @@ def limit(steps: np.ndarray) -> np.ndarray:
     return np.minimum(np.maximum(steps, lo), hi)
 
 
+def off_plane(steps: np.ndarray, h_units: np.ndarray, water_units: float, step_units: float) -> int:
+    """In place: no vertex on the water plane. A vertex that rounds onto it goes one step to its own side (land
+    up, bed down), so land and water never share a depth (they would fight for the pixels, worst from the air).
+    Skyrim.esm leaves 5.8% of its near-shore vertices on the plane; the new world's shore sits at 0.12 m
+    (terrain_shape.SHORE_M), so this only guards the rounding. Returns how many vertices moved."""
+    w = water_units / step_units
+    if w != int(w):
+        return 0  # a water level between steps: no vertex can sit on it
+    on = steps == int(w)
+    steps[on] = int(w) + np.where(np.asarray(h_units)[on] >= water_units, 1, -1)
+    return int(on.sum())
+
+
 def overflow_pairs(steps: np.ndarray) -> int:
     """4-neighbour pairs whose step does not fit a signed byte."""
     return int((np.abs(np.diff(steps, axis=1)) > L).sum() + (np.abs(np.diff(steps, axis=0)) > L).sum())

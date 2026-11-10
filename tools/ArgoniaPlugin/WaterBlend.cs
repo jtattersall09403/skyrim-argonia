@@ -1,13 +1,18 @@
-// Water seams: graded water types between neighbouring cells, and the study of how Skyrim does it.
+// Water types and their seams: our WATR per kind and heading, and graded records across a change of kind only.
 //   waterblend flows <esm>          every blend of a flowing type keeps its flow (exit 1 if not)
 //   waterblend study <Data dir>     Tamriel's adjacent-cell water types (XCWT) in Skyrim.esm + Update.esm: which
 //                                   records neighbour each other and how far their colours and fog step at a seam.
-// The writer (NewWorld.cs) calls Blend: each water cell's type becomes a weighted mix of the types of the cells
-// round it (a 29 x 29 tent; types that differ only in flow count as one look), so where kinds change the colour, fog and reflection step across a
-// band of cells instead of at one cell edge. A mix is our own WATR record, ANW_WaterBlend_<own type>_NNNN: a copy of
-// the cell's own type (its textures, flow velocity and flags, so a river cell's blend still flows its way) with every colour and every scalar water/fog value interpolated by the weights.
-// Weights are quantised to 32nds so equal mixes share a record. Skyrim's own answer (waterblend study): 96% of
-// Tamriel's seams join types of one look (sea, river and flow-blend records share colours), the rest step hard.
+// Records (called by NewWorld.cs) builds each type cells.json names (tools/newworld/world/water_types.py): a copy of
+// a vanilla record with the values set, running types with their noise rotated to drift toward the cell's heading
+// and the current set to it. Blend grades seams: each cell shows the look field (every water cell's kind, land cells
+// taking their nearest water's) under a (2 R + 1)^2 tent round it, so a seam is graded over 2 R + 1 cells and no cell
+// edge steps more than 1 / (R + 1) of the two kinds' difference (a tent is Lipschitz: no junction of several kinds
+// adds up to a step); a cell whose tent holds only its own kind keeps its kind's own record. The old 29-cell tent
+// averaged most of the province into one look (walk 5: "all looked the same"); R = 5 grades over 11 cells (640 m).
+// A blend is our own WATR, ANW_WaterBlend_<own type>_NNNN: a copy of the cell's own type with its colours, opacity,
+// fog, reflection and specular values mixed by the weights (quantised to 32nds, so equal mixes share a record); its
+// motion stays its own (textures, wind directions and speeds, the current), so a river's blend still runs its way
+// at its speed and a still type's stays still.
 using System.Drawing;
 using System.Reflection;
 using System.Text.Json;
@@ -19,19 +24,83 @@ using Noggog;
 
 static class WaterBlend
 {
-    const int R = 14;                         // band half-width in cells: a seam is graded over 2 R + 1 cells
+    public const int R = 5;                   // tent half-width, cells: a seam graded over 11 cells
     const int Q = 32;                         // weights in 32nds
     static readonly Dictionary<string, double> scale = new();   // each fog value's largest size among the types
 
     // the interpolated members: every colour, the opacity and every scalar value (fog, specular, reflection,
-    // displacement, noise scales), not the wind directions (angles) and not the flow velocity (the cell's own)
+    // displacement, noise scales), not the motion: wind directions and speeds and the current stay the cell's own
     static readonly PropertyInfo[] Cols = typeof(IWaterGetter).GetProperties().Where(p => p.PropertyType == typeof(Color)).ToArray();
     static readonly PropertyInfo[] Nums = typeof(IWaterGetter).GetProperties()
-        .Where(p => (p.PropertyType == typeof(float) || p.PropertyType == typeof(byte)) && !p.Name.Contains("WindDirection")).ToArray();
+        .Where(p => (p.PropertyType == typeof(float) || p.PropertyType == typeof(byte)) && !p.Name.Contains("WindDirection") && !p.Name.Contains("WindSpeed")).ToArray();
+
+    /// cells.json "watr": key -> {"copy": "Plugin:EditorID", "edid", "set": {member: value}, "heading"?, "speed"?}
+    public static (Dictionary<string, FormKey> key, Dictionary<string, IWaterGetter> rec) Records(ISkyrimMod mod, ForeignCopy fc, JsonElement watr)
+    {
+        var keys = new Dictionary<string, FormKey>();
+        var recs = new Dictionary<string, IWaterGetter>();
+        foreach (var p in watr.EnumerateObject())
+        {
+            var v = p.Value;
+            var src = v.GetProperty("copy").GetString()!.Split(':');
+            var w = (Water)fc.Find(src[0], src[1]).Duplicate(new FormKey(mod.ModKey, fc.NextIdTake()));
+            w.EditorID = v.GetProperty("edid").GetString();
+            if (v.TryGetProperty("set", out var set))
+                foreach (var f in set.EnumerateObject()) Set(w, f.Name, f.Value);
+            if (v.TryGetProperty("heading", out var h) && h.ValueKind == JsonValueKind.Number)
+                Head(w, h.GetDouble(), v.GetProperty("speed").GetDouble());
+            mod.Waters.Add(w);
+            keys[p.Name] = w.FormKey;
+            recs[p.Name] = w;
+        }
+        return (keys, recs);
+    }
+
+    /// one member of a WATR from JSON: a colour [r, g, b], a vector [x, y, z], or a number
+    public static void Set(Water w, string name, JsonElement val)
+    {
+        var p = typeof(Water).GetProperty(name) ?? throw new InvalidDataException($"WATR has no member {name}");
+        var t = Nullable.GetUnderlyingType(p.PropertyType) ?? p.PropertyType;
+        object o = t == typeof(Color) ? Color.FromArgb(0, val[0].GetInt32(), val[1].GetInt32(), val[2].GetInt32())
+            : t == typeof(P3Float) ? new P3Float(val[0].GetSingle(), val[1].GetSingle(), val[2].GetSingle())
+            : t == typeof(byte) ? (object)(byte)val.GetInt32()
+            : t == typeof(float) ? (object)val.GetSingle()
+            : throw new InvalidDataException($"WATR member {name} is {t.Name}");
+        p.SetValue(w, o);
+    }
+
+    /// running water toward a compass heading: all three noise layers turned together so their drift
+    /// (NoiseHeading) points along it, and the current set to it at the given speed
+    public static void Head(Water w, double heading, double speed)
+    {
+        var turn = heading - NoiseHeading(w);
+        float R(float d) => (float)(((d + turn) % 360 + 360) % 360);
+        w.NoiseLayerOneWindDirection = R(w.NoiseLayerOneWindDirection);
+        w.NoiseLayerTwoWindDirection = R(w.NoiseLayerTwoWindDirection);
+        w.NoiseLayerThreeWindDirection = R(w.NoiseLayerThreeWindDirection);
+        var r = heading * Math.PI / 180;
+        w.LinearVelocity = new P3Float((float)(speed * Math.Sin(r)), (float)(speed * Math.Cos(r)), 0);
+    }
+
+    /// the heading the surface noise drifts toward (compass degrees, 0 north, 90 east): a layer's wind direction is
+    /// where its ripples come from (Skyrim.esm's RiverWaterFlowNE 233/267/252 with current heading 62, NW 141/106/177
+    /// with 316), so it drifts toward that + 180; the layers weighted by amplitude x speed
+    public static double NoiseHeading(IWaterGetter w)
+    {
+        double sx = 0, sy = 0;
+        foreach (var (d, a, sp) in new[] { (w.NoiseLayerOneWindDirection, w.NoiseLayerOneAmplitudeScale, w.NoiseLayerOneWindSpeed),
+                                           (w.NoiseLayerTwoWindDirection, w.NoiseLayerTwoAmplitudeScale, w.NoiseLayerTwoWindSpeed),
+                                           (w.NoiseLayerThreeWindDirection, w.NoiseLayerThreeAmplitudeScale, w.NoiseLayerThreeWindSpeed) })
+        {
+            var r = (d + 180) * Math.PI / 180;
+            sx += a * sp * Math.Sin(r); sy += a * sp * Math.Cos(r);
+        }
+        return (Math.Atan2(sx, sy) * 180 / Math.PI + 360) % 360;
+    }
 
     public static double Delta(IWaterGetter a, IWaterGetter b)
-    {   // the largest step of any colour channel, 0..255
-        double d = 0;
+    {   // the largest step of any colour channel (0..255) or of the opacity (0..100)
+        double d = Math.Abs(a.Opacity - b.Opacity);
         foreach (var p in Cols)
         {
             var (ca, cb) = ((Color)p.GetValue(a)!, (Color)p.GetValue(b)!);
@@ -73,6 +142,7 @@ static class WaterBlend
     static string Look(IWaterGetter w) => string.Join(",", Cols.Select(p => ((Color)p.GetValue(w)!).ToArgb().ToString())
         .Concat(Nums.Select(p => Convert.ToDouble(p.GetValue(w)).ToString("R"))));
 
+
     /// cells: (cx, cy) -> water type key; recs: key -> the record shown; returns (cx, cy) -> the FormKey to write, and a report.
     public static (Dictionary<(int, int), FormKey> cellWater, Dictionary<string, object> report) Blend(
         ISkyrimMod mod, Func<uint> nextId, Dictionary<(int, int), string> cells, Dictionary<string, FormKey> keyOf,
@@ -85,7 +155,7 @@ static class WaterBlend
         foreach (var p in Nums.Where(p => p.Name.Contains("Fog")))
             scale[p.Name] = recs.Values.Max(w => Math.Abs(Convert.ToDouble(p.GetValue(w))));
         // every cell of the water cells' box takes the look of its nearest water cell (land between two waters too),
-        // so a band is graded across a spit of land as well as along open water
+        // so a seam is graded across a spit of land as well as along open water
         var field = new Dictionary<(int, int), string>();
         var front = new Queue<(int, int)>();
         foreach (var (c, k) in cells) { field[c] = lookOf[k]; front.Enqueue(c); }
@@ -104,8 +174,10 @@ static class WaterBlend
         var outMap = new Dictionary<(int, int), FormKey>();
         var made = new Dictionary<string, (FormKey fk, IWaterGetter w)>();
         var eff = new Dictionary<(int, int), IWaterGetter>();
+        int pure = 0;
         foreach (var ((cx, cy), own) in cells)
         {
+            // the look field under a (2R + 1)^2 tent round the cell: a cell whose tent holds only its own look keeps its record
             var wsum = new Dictionary<string, double>();
             double tot = 0;
             for (var dy = -R; dy <= R; dy++)
@@ -119,8 +191,8 @@ static class WaterBlend
             var q = wsum.Where(kv => kv.Key != ownLook).Select(kv => (look: kv.Key, n: (int)Math.Round(Q * kv.Value / tot)))
                         .Where(x => x.n > 0).OrderBy(x => rep[x.look], StringComparer.Ordinal).ToList();
             while (q.Sum(x => x.n) > Q) { var i = q.FindIndex(x => x.n == q.Max(y => y.n)); q[i] = (q[i].look, q[i].n - 1); }
-            var ownN = Q - q.Sum(x => x.n);     // may be 0: the cell keeps only its own flow and textures
-            if (q.Count == 0) { outMap[(cx, cy)] = keyOf[own]; eff[(cx, cy)] = recs[own]; continue; }
+            var ownN = Q - q.Sum(x => x.n);     // may be 0: the cell keeps only its own motion and textures
+            if (q.Count == 0) { outMap[(cx, cy)] = keyOf[own]; eff[(cx, cy)] = recs[own]; pure++; continue; }
             var name = own + "|" + string.Join("+", q.Select(x => $"{rep[x.look]}:{x.n}"));
             if (!made.TryGetValue(name, out var m))
             {
@@ -139,6 +211,7 @@ static class WaterBlend
         var steps = new List<double>();       // the colour step at every edge (side or corner) between two water cells
         var stepsBefore = new List<double>();
         (int, int) at = default; double after = -1;
+        var worst = new List<string>();
         foreach (var ((cx, cy), own) in cells)
             foreach (var (dx, dy) in new[] { (1, 0), (0, 1), (1, 1), (1, -1) })
                 if (cells.TryGetValue((cx + dx, cy + dy), out var nb))
@@ -148,6 +221,7 @@ static class WaterBlend
                     fogBefore = Math.Max(fogBefore, FogDelta(recs[own], recs[nb]));
                     var a = Delta(eff[(cx, cy)], eff[(cx + dx, cy + dy)]);
                     steps.Add(a);
+                    if (a > 30 && worst.Count < 12) worst.Add($"{cx},{cy} {own} ({(outMap[(cx, cy)] == keyOf[own] ? "pure" : eff[(cx, cy)].EditorID)}) | {cx + dx},{cy + dy} {nb} ({(outMap[(cx + dx, cy + dy)] == keyOf[nb] ? "pure" : eff[(cx + dx, cy + dy)].EditorID)}): {a:F0}");
                     if (a > after) { after = a; at = (cx, cy); }
                     fogAfter = Math.Max(fogAfter, FogDelta(eff[(cx, cy)], eff[(cx + dx, cy + dy)]));
                 }
@@ -157,12 +231,12 @@ static class WaterBlend
         double Pct(List<double> l, double q) => l.Count == 0 ? 0 : l[Math.Min(l.Count - 1, (int)(q * l.Count))];
         var report = new Dictionary<string, object>
         {
-            ["looks"] = rep.Count, ["blend_records"] = made.Count, ["water_cells"] = cells.Count, ["band_cells"] = 2 * R + 1,
+            ["looks"] = rep.Count, ["blend_records"] = made.Count, ["water_cells"] = cells.Count, ["pure_cells"] = pure, ["band_cells"] = 2 * R + 1,
             ["max_colour_step_before"] = before, ["max_colour_step_after"] = after, ["max_at_cell"] = new[] { at.Item1, at.Item2 },
             ["edges"] = steps.Count, ["edges_changing_before"] = changedBefore.Count, ["edges_changing_after"] = changed.Count,
             ["step_p50_p99_before"] = new[] { Pct(changedBefore, .5), Pct(changedBefore, .99) },
             ["step_p50_p99_after"] = new[] { Pct(changed, .5), Pct(changed, .99) },
-            ["edges_over_12_after"] = changed.Count(x => x > 12),
+            ["edges_over_12_after"] = changed.Count(x => x > 12), ["steps_over_30"] = worst,
             ["max_fog_step_before"] = Math.Round(fogBefore, 3), ["max_fog_step_after"] = Math.Round(fogAfter, 3),
         };
         return (outMap, report);

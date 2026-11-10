@@ -10,7 +10,8 @@ switch (args.FirstOrDefault())
     case "seed": Surface.Paths = args[2..]; Generate.Run(args[1], args[2..]); break;
     case "cell": CellStudy.Run(args[1], args[2]); break;
     case "waterblend": return args[1] == "flows" ? WaterBlend.Flows(args[2]) : WaterBlend.Study(args[2]);
-    case "survey": Survey.Run(args[1..]); break;
+    case "waterstudy": return WaterStudy.Run(args[1..]);
+    case "survey":Survey.Run(args[1..]); break;
     case "gives": GiveStudy.Run(args[1..]); break;
     case "seat": Seat.Run(args[1..]); break;
     case "cleancheck": return CleanUp.Check(args[1], args[2..]);

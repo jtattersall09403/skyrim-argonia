@@ -262,6 +262,9 @@ def run(plugin: Path, out: Path, do_dump: bool = True) -> int:
                 nflow > 0 and not wrong, f"e.g. {wrong[:4]}" if wrong else ("no flowing WATR in the ESM" if not nflow else ""))
         hw = [k for k, c in cells.items() if c["water_h"] not in ("", str(water_h), f"{water_h}", "0")]
         rep.row("water", f"one water level ({water_h}) everywhere", len(hw), not hw, f"e.g. {hw[:4]}")
+        from tools.newworld.world import water_check  # kinds as seen, flow, seams, land against the plane
+        water_check.rows(rep, water_check.esm_check(BIN / "ArgoniaPlugin.dll", plugin, DATA, OUT / "water_flow_cells.json", out),
+                         water_check.shore(plugin))
 
     @section(rep, "refs")
     def _refs():

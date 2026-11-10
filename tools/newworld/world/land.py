@@ -148,10 +148,12 @@ def build(terrain: Path, out: Path) -> dict:
     else:
         log(f"limit: {g.build_id} {g.width} x {g.height}")
         steps = np.rint(np.asarray(h, np.float64) / su.VHGT_STEP_UNITS).astype(np.int64)
+        off_plane = quantize.off_plane(steps, h, g.water, su.VHGT_STEP_UNITS)
         before = quantize.overflow_pairs(steps)
         lim64 = quantize.limit(steps)
         moved = np.abs(lim64 - steps)
         stats = {"overflow_pairs_before": before, "overflow_pairs_after": quantize.overflow_pairs(lim64),
+                 "off_plane_moved": off_plane, "on_plane_after": int((lim64 * su.VHGT_STEP_UNITS == g.water).sum()),
                  "limited_vertices": int((moved > 0).sum()),
                  "max_limit_move_units": int(moved.max()) * su.VHGT_STEP_UNITS,
                  "min_height_units": float(np.min(h)), "max_height_units": float(np.max(h))}

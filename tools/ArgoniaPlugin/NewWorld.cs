@@ -120,29 +120,7 @@ static class NewWorld
         var plugDir = Path.GetDirectoryName(man.Dir)!;
         var cj = JsonDocument.Parse(File.ReadAllText(Path.Combine(plugDir, "cells.json"))).RootElement;
         if (cj.GetProperty("build_id").GetString() != man.BuildId) throw new InvalidDataException("cells.json is another terrain build");
-        var watrKey = new Dictionary<string, FormKey>();
-        var watrRec = new Dictionary<string, IWaterGetter>();   // the record each key shows in game (the stack's winner)
-        foreach (var p in cj.GetProperty("watr").EnumerateObject())
-        {
-            var v = p.Value;
-            if (v.TryGetProperty("link", out var l))
-            {
-                var sp = l.GetString()!.Split(':'); watrKey[p.Name] = fc.Get(sp[0], sp[1]);
-                IWaterGetter win;
-                try { win = (IWaterGetter)fc.Find("Update.esm", sp[1]); } catch (InvalidDataException) { win = (IWaterGetter)fc.Find(sp[0], sp[1]); }
-                watrRec[p.Name] = win;
-                continue;
-            }
-            var src = v.GetProperty("copy").GetString()!.Split(':');
-            var key = new FormKey(modKey, fc.NextIdTake());
-            var w = (Water)fc.Find(src[0], src[1]).Duplicate(key);
-            w.EditorID = v.GetProperty("edid").GetString();
-            var vel = v.GetProperty("velocity");
-            w.LinearVelocity = new P3Float((float)vel[0].GetDouble(), (float)vel[1].GetDouble(), 0);
-            mod.Waters.Add(w);
-            watrKey[p.Name] = key;
-            watrRec[p.Name] = w;
-        }
+        var (watrKey, watrRec) = WaterBlend.Records(mod, fc, cj.GetProperty("watr"));   // our WATR per kind and heading
         ws.Water = new FormLinkNullable<IWaterGetter>(watrKey["sea"]);
         ws.LodWater = new FormLinkNullable<IWaterGetter>(watrKey["sea"]);
         var (climKey, regionWeather) = NewWorldAtmosphere.Build(mod, fc, plugDir);  // atmosphere.json (tools/newworld/atmosphere.py)

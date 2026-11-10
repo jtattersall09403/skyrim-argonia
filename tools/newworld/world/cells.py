@@ -12,11 +12,11 @@ one JSON object per line: {"base": "<plugin>:<editor id>", "x", "y", "z" (world 
 linking the base when it is in an allowed master and copying it as our own record otherwise (ForeignCopy.cs).
 
 Water (research/nw-02-ground-water-rules.md section 3.4; one level 0, so the type is chosen per cell, XCWT): the
-cell's type is its dominant water body's kind (by water samples). Sea, bay and lake: the world water `DefaultWater`
-(Update.esm's, the stack's winner); green marsh `DefaultMarshWater`; black swamp `MurkyWater` (BM&V's own world
-water); estuary Update.esm's `DefaultWaterFlowBlend` (blends a river into the sea; the sea's colours); pond `DefaultCreekWater` (clear);
-rivers `RiverWaterFlowNE/NW/SE` by the body's flow direction and our mirrored copy for SW; streams
-`CreekWaterFlowSE/SW` and our mirrored NE/NW copies. Records our own are `{"copy": source, "velocity": [x, y]}`.
+cell's type is its dominant water body's kind (by water samples): sea (sea, bay and lake; the world's own water),
+black swamp, green marsh, pond, and river, stream and estuary by the channel graph's heading in the cell
+(water_flow_cells.json) snapped to 16 headings; a river or stream that does not flow in the cell takes the region's
+still water. Every type is a WATR of our own (tools/newworld/world/water_types.py: the vanilla base, the values set,
+the heading and the current's speed), built by ArgoniaPlugin WaterBlend.Records.
 
 """
 from __future__ import annotations
@@ -31,44 +31,19 @@ import numpy as np
 
 from tools.newworld import frame as f
 from tools.newworld import landcover as lc
+from tools.newworld.world import water_types as wt
 
 REPO = Path(__file__).resolve().parents[3]
 LC = REPO / "out/newworld/landcover"
 SAMPLE = 128.0
-VEL = {"NE": (2.54, 1.35), "NW": (-1.96, 2.0), "SE": (1.8, -2.2), "SW": (-1.8, -2.2)}
-CREEK = {"SE": (0.70, -0.72), "SW": (-0.98, -0.70), "NE": (0.70, 0.72), "NW": (-0.98, 0.70)}
-WATR = {
-    "sea": {"link": "Skyrim.esm:DefaultWater"},
-    "green-marsh": {"link": "Skyrim.esm:DefaultMarshWater"},
-    "blackwater-swamp": {"link": "Skyrim.esm:MurkyWater"},
-    "estuary": {"link": "Update.esm:DefaultWaterFlowBlend"},
-    "pond": {"link": "Skyrim.esm:DefaultCreekWater"},
-    "river-NE": {"link": "Skyrim.esm:RiverWaterFlowNE"}, "river-NW": {"link": "Skyrim.esm:RiverWaterFlowNW"},
-    "river-SE": {"link": "Skyrim.esm:RiverWaterFlowSE"},
-    "river-SW": {"copy": "Skyrim.esm:RiverWaterFlowSE", "edid": "ANW_RiverWaterFlowSW", "velocity": VEL["SW"]},
-    "stream-SE": {"link": "Skyrim.esm:CreekWaterFlowSE"}, "stream-SW": {"link": "Skyrim.esm:CreekWaterFlowSW"},
-    "stream-NE": {"copy": "Skyrim.esm:CreekWaterFlowSE", "edid": "ANW_CreekWaterFlowNE", "velocity": CREEK["NE"]},
-    "stream-NW": {"copy": "Skyrim.esm:CreekWaterFlowSW", "edid": "ANW_CreekWaterFlowNW", "velocity": CREEK["NW"]},
-}
-KIND_WATR = {"ocean": "sea", "shallow-coast": "sea", "bay": "sea", "lake": "sea", "green-marsh": "green-marsh",
-             "blackwater-swamp": "blackwater-swamp", "estuary": "estuary", "pond": "pond"}
 LIMITS = [
-    "No flowmaps: river and stream cells flow by their type's fixed vector only (no per-cell flow texture), one of "
-    "four directions per cell; rivers that bend change type cell by cell.",
-    "One water type per cell: a cell holding two kinds shows its dominant kind's water.",
-    "Adjacent cells of different types are graded: a cell near a change of type is our own blend record (ArgoniaPlugin WaterBlend.cs).",
-    "No rapids, falls or ripple FX statics yet (placement step).",
+    *wt.LIMITS,
     "Region map names need REGN area polygons for the world map; regions are linked per cell (XCLR) for weather.",
 ]
 
 
 def log(*a):
     print(*a, file=sys.stderr, flush=True)
-
-
-def octant(deg: float) -> str:
-    d = deg % 360
-    return "NE" if d < 90 else "SE" if d < 180 else "SW" if d < 270 else "NW"
 
 
 def build(out: Path) -> dict:
@@ -99,12 +74,7 @@ def build(out: Path) -> dict:
             if w.any():
                 kc = Counter(K[:, sc][w].tolist()).most_common(1)[0][0]
                 kname = kinds[kc] if kc < len(kinds) else "ocean"
-                if kname in ("river", "stream") and (cx, cy) in flow:  # flowing here: the cell's mean flow direction
-                    key = f"{kname}-{octant(flow[(cx, cy)])}"
-                elif kname in ("river", "stream"):  # a channel that does not flow in this cell: the region's still water
-                    key = KIND_WATR[still.get(regions[rc], {}).get("wet", "pond")]
-                else:
-                    key = KIND_WATR.get(kname, "sea")
+                key = wt.key_for(kname, flow.get((cx, cy)), still.get(regions[rc], {}).get("wet", "pond"))
                 rec["water"] = key
                 counts[key] += 1
             cells[f"{cx},{cy}"] = rec
@@ -112,7 +82,7 @@ def build(out: Path) -> dict:
     for r in lc.jsonl("region"):
         wv = float(r.get("wetness") or 0.5)
         region_rows[r["id"]] = {"name": r["name"], "map_label": r.get("map_label"), "wetness": wv}
-    res = {"build_id": man["build_id"], "cells": cells, "watr": WATR, "regions": region_rows, "limits": LIMITS,
+    res = {"build_id": man["build_id"], "cells": cells, "watr": wt.records(counts), "regions": region_rows, "limits": LIMITS,
            "water_cells": dict(counts)}
     (out / "cells.json").write_text(json.dumps(res))
     log(f"cells: water types {dict(counts)}")
