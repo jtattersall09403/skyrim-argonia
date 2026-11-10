@@ -1,7 +1,7 @@
 # What vanilla towns yield, and what the soulslike collection changes (decision 0034)
 
-Measured 2026-11-10 for the stocking scale (`newworld/sources/stock/scale.json`). The scale is ours: these numbers check
-it and are not its source. Script: `python -m tools.places stock vanilla` (`tools/places/stock/vanilla.py`), reading
+Measured 2026-11-10 for the stocking scale (`newworld/sources/stock/scale.json`). The scale is ours: we check it against these numbers,
+which are not its source. Script: `python -m tools.places stock vanilla` (`tools/places/stock/vanilla.py`), reading
 Skyrim.esm with Update.esm (and the DLC masters for item records) through `tools/argonia_world/esm.py`. The split is
 the stocking split's own rule (`tools/places/stock/split.py`): gold, *significant* (weapons, armour, jewellery, gems,
 soul gems, potions, poisons, scrolls, keys, skill and spell books, anything enchanted or worth 50 or more) and *set
@@ -49,7 +49,7 @@ significant value rises a fifth and its gold barely moves: vanilla levels the ge
 | Safe | 10 | 4 (2 Adept, 2 Expert) | 53 / 103 / 303 | 266 / 471 / 945 |
 | Boss chest (in town) | 3 | 2 Master | 39 / 66 / 145 | 288 / 432 / 958 |
 
-What this tells the scale: town containers are almost all set dressing (barrels, sacks, dressers and cupboards hold
+What the table shows: town containers are almost all set dressing (barrels, sacks, dressers and cupboards hold
 food and clutter). Value sits in few places and is locked in proportion: chests are mostly open and nearly empty,
 every strongbox is locked, and safes hold the most behind the hardest locks.
 
@@ -75,7 +75,7 @@ significant value people carry is their weapon and armour, which vanilla levels 
 
 ## 4. The level gates (the scale's tiers are checked against these)
 
-The level at which vanilla's lists first hand out each material. The figure is the median over the 921
+The level at which each material first appears in vanilla's lists. The figure is the median over the 921
 top-level lists that hold it; a few special lists give anything at level 1, so the minimum would mislead.
 
 | Level | Weapons | Armour |
@@ -124,7 +124,7 @@ Measured:
 - **Poise** (Chocolate Poise, `SKSE/Plugins/ChocolatePoise.ini` and `.json`, read): an actor's poise is a base
   times 10 plus half the weight of their armour. A hit's poise damage is set per weapon class (dagger 2, sword 9,
   greatsword 16, war axe 11, battleaxe 20, mace 13, warhammer 24, bow 8, crossbow 14, pike 11, halberd 14, rapier 6)
-  plus half the weapon's weight. Bashes count double. Gear weight therefore buys poise, so heavier materials also
+  plus half the weapon's weight. Bashes count double. Heavier gear gives more poise, so heavier materials also
   stagger more and are staggered less.
 - **Execution and parry** (`RimExecutionHitSA.esp`, `EREP_patchSA.esp`) add perks and spells for parry, riposte and
   execution damage (RimExeDamage, ExeDamageWeak and the like). They change how often a hit lands hard, not a
@@ -136,7 +136,7 @@ windows sit in compiled code and its settings); the perk entry points' actual mu
 
 What it means for the scale: the vanilla material ladder stands as the measure of strength, because the collection
 leaves damage and armour values alone. Combat is gated by stamina and poise, so a fight turns on skill and weight more
-than on a few points of damage. A one-tier step per danger band is therefore felt and is enough, and enchantment
+than on a few points of damage. A one-tier step per danger band is therefore felt and is enough. Enchantment
 grades stay at the tier's grade, never above. Heavier gear's poise is a reason the carried-in heavy materials (steel
 plate, orcish, ebony) stay behind locks.
 
@@ -148,15 +148,15 @@ these read wrong for loot:
 
 | Place | Now | Proposed | Why |
 |---|---|---|---|
-| tribal-camp-m7-m80 | D3 | D4 | It stands in a D5 cell. Reaching it crosses the worst ground in the province, and a D3 boss chest underpays that. |
+| tribal-camp-m7-m80 | D3 | D4 | It stands in a D5 cell. Reaching it crosses the worst ground in the province, and a D3 boss chest is too poor a reward for that. |
 | peak-m11-m84 | D2; treasure "D1 tier" | D3; treasure "D3 tier" | It stands in a D4 cell. The climb crosses D4 ground, so a D1 pack is no reward. |
 | peak-m4-m90 | D2; treasure "D1 tier" | D3; treasure "D3 tier" | As above (D4 cell). |
 | tribal-camp-9-m83 | D2; treasure "D1 tier" | D3; treasure "D3 tier" | It stands in a D4 cell. |
-| tribal-camp-4-m91 | D2; treasure "D1 tier" | D2; treasure "D2 tier" | The record's band and its treasure disagree; the treasure follows the band. |
+| tribal-camp-4-m91 | D2; treasure "D1 tier" | D2; treasure "D2 tier" | The record's band and its treasure disagree; the treasure's tier is set to the band. |
 
 Also observed, with no edit proposed:
 - No place carries D5, though 153 cells are D5. T5 is reached only by a rich city's vaults (P5) and T6 only by the
-  ledger. Whether nw-05 puts places into the heartland is the owner's call.
+  ledger. Whether the nw-05 phase places anything in the heartland is the owner's call.
 - Nine inhabited outposts carry D3 with a boss chest for a lair beside them (outpost-1-m75, outpost-1-m81,
   outpost-2-m96, outpost-6-m77, outpost-m13-m79, outpost-m2-m79, outpost-m3-m83, outpost-m7-m77,
   outpost-m15-m112). Under the two channels the lair's chest is T3 and the residents' things follow their wealth

@@ -255,10 +255,10 @@ regions are. Placement lives in the place files. Each fact has one home:
 | Where a person sleeps, works and walks; the refs, rooms, stations | the place files (`people.jsonl`, `spaces/`, `place.json`) | none: the build reads them |
 
 `python3 -m tools.newworld.build_db` loads everything. `python3 -m tools.newworld.stockdb load` rewrites these tables
-alone from their sources (a whole build needs the map's extraction). `newworld/story/data/schema.sql` describes every
-column. A person id and a ref id are the place files' own (`<place_id>.<ulid>`, or a copied room's source key), so a
+alone from their sources (a whole build needs the map's extraction). Every column is described in
+`newworld/story/data/schema.sql`. A person id and a ref id are the place files' own (`<place_id>.<ulid>`, or a copied room's source key), so a
 row in the database and a row in the place files name the same thing. A person's `role` is held in both: the
-people source owns it, and `people.jsonl` carries the drafter's copy, which `identities check` proves equal.
+people source is its home. `people.jsonl` holds the drafter's copy, and `identities check` confirms the two are equal.
 
 **The people source** `newworld/sources/people/<place_id>.json`: `{place_id, households: [{id, home_space, name}],
 people: [{id, name, sex, race (RACE editor id), culture_id, household: {id, role}, role, trade, wealth: W1..W5, level
@@ -267,7 +267,7 @@ secrets|relationships, text, tier, cites: [...]}], relations: [{to, kind}], fact
 is a repo path or a database row: `place_note:<place>/<aspect>`, `place_give:<place>/<seq>`, `culture:<id>`,
 `region:<id>`; each becomes a `source` row (`cite-...`). `python -m tools.places identities check <place>` proves a
 person per placed person, names unique and by the naming rules, one household per roof with one head, guards in the
-levy, every cite existing, and roles equal to `people.jsonl`'s. `tools.places.identities.read` gives the drafter
+levy, every cite existing and roles equal to `people.jsonl`'s. `tools.places.identities.read` gives the drafter
 each person's name.
 
 **The stock source** `newworld/sources/stock/places/<place_id>.json`:
@@ -287,7 +287,7 @@ each person's name.
 
 `item` is an item id, `"<plugin>:<6 hex>"` (an `item` row: run `stockdb items` after naming a new one). At most one
 owner per holder. `respawn` is never stored: an authored container never respawns, and a trader's merchant chest
-restocks every 48 hours to exactly its list (vanilla's own timing; the list is fixed and nothing in it is levelled).
+restocks every 48 hours to its list (vanilla's own timing; the list is fixed and nothing in it is levelled).
 `deliveries` holds only what stocking owns (loot, a treasure, a record edit); the loader adds the rest:
 a person whose `people.jsonl` services name the give, a station of `place.json` `stations.found`, the world file's
 map marker for `fast-travel`. Anything else stays `open`. `python3 -m tools.newworld.stockdb promises <place>` lists
@@ -295,7 +295,7 @@ each promise and what delivers it, and exits 1 while any is open. A promise is d
 record, with the reason (`status: dropped`, `why` naming the edit), never to avoid the work.
 
 **The scale** (`scale.json`, with its reasons): one fixed ladder T1 Common .. T5 Precious, and T6 Exceptional, which
-only the ledger holds. Each tier names its weapon and armour materials, enchantment grade, soul gem, gems, jewellery,
+is entered only in the ledger. Each tier lists its weapon and armour materials, enchantment grade, soul gem, gems, jewellery,
 potion grade, gold range, lock and the most its container may hold (`value_max`). The tiers are checked against
 vanilla's level gates (`docs/research/skyrim/stocking-yields.md`). How a place's band is set:
 - Wild ground: the danger band sets the tier (`danger_tier`: D1 T1 .. D5 T5). The hardest spot holds the band's
@@ -323,7 +323,7 @@ person's levelled contents are read at level 1, as the build flattens them.
 on every row: a store per household (its best-kept container) by the head's band and the household's size, a
 body's few things, each person's tool or weapon, the levy's gear, jewellery and carried gold by band, each trader's
 gold and a list from T1 to the ceiling within the band's list value. It also writes what is taken out and what it
-leaves open. The skill reads it, corrects it and completes it by hand into the stock source.
+leaves open. The stocker reads it, corrects it and completes it by hand into the stock source.
 
 **What the build makes of it** (`tools/places/build.py`, lane S2):
 1. A `stock_container` row: the placed ref's base becomes a container of ours holding exactly the row's items and
@@ -341,7 +341,7 @@ leaves open. The skill reads it, corrects it and completes it by hand into the s
 **What the build check proves** (`tools/places/check.py`, lane S2), on the built plugin:
 1. Nothing levelled: a container, an actor's inventory, outfit or death item, a placed item.
 2. Every significant thing traces to a row. The split is run over the built place, and each significant item stands
-   in its holder's stock row or in `unique_item`. Anything else fails, by holder and item.
+   in its holder's stock row or in `unique_item`. Any other significant item fails the check, by holder and item.
 3. Every promise delivered: `give_delivery` has no `open` row for the place, and each delivered row's person or ref
    exists in the build.
 4. Quest things untouched: a ref or item a quest record names is in no stock row and stands as the quest has it (the
@@ -366,7 +366,7 @@ op, so it has an inverse and conflicts are found the same way. Item search is `/
 
 **Finalise** applies these ops to the source files, never to the tables: `identity.edit` to the people source,
 `stock.*` to the place's stock source, through the same `edits.apply` as the place files. Then `stockdb items` and
-`stockdb load` run, and the sources and tables are committed by path with the place. The build that follows reads
+`stockdb load` run. The sources and tables are committed by path with the place. The build that follows reads
 the database.
 
 ## Edits
