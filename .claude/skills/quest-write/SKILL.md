@@ -41,8 +41,8 @@ this skill carries is `docs/design/quests-on-a-world.md` (parts 3 to 5) and the 
    region packet, faction line, reversal or resolution set. Check secondary shapes and the same place too.
 3. **On a collision:** differentiate (reversal, claimants, resolution or verb), merge it into the other quest, or
    drop it for something coverage.md shows is missing.
-4. **Declare `touches`** (shared people, places, flags, items, variables, read or write) and keep tier direction
-   (40-factions §30b): a quest does not write what a higher tier owns.
+4. **Declare `touches`** (shared people, places, flags, items, variables, read or write) and keep tier direction:
+   a quest does not write what a higher tier owns.
 5. **Shape budget:** no primary shape over about 20% of a line (or packet), and not in consecutive M or L quests; a
    departure goes in `budgetExceptions` with a one-line reason.
 6. **Cover the board:** each packet brings a shape new to its region or one from coverage.md's gaps, and at least
@@ -61,10 +61,22 @@ this skill carries is `docs/design/quests-on-a-world.md` (parts 3 to 5) and the 
    Conjuration, Restoration, Alchemy, Sneak, Lockpicking, Pickpocket, Speech, Mysticism); climbing and swimming are
    movement, not skills, and nothing climbs a tree. A stage is won by a route that can fail (a check of 25 or more,
    a lock level, a theft the crime engine can see, a fight that can be lost); a pure choice stage and an ending are
-   exempt. Every main quest has two ways through on different skills; a faction quest leans on its faction's.
+   exempt, and so is a stage whose only act is hearing the task or reporting back. Every main quest has two ways through on different skills; a faction quest leans on its faction's.
    A failed check may simply stay closed until the player returns stronger. A fail-forward is written only where
    failure should matter; a person the quest must not lose is essential and needs none.
-4. **Plain next steps:** each stage's journal or objective says what to do and where.
+3b. **The critical path is never closed to a new character.** A line that hands out the next task, or takes a
+    report (a hand-over from an ally), has no check on it, and a check that can fail is never the only way forward.
+    Where a stage on the only way forward has a check, a second route needs no skill level and no gold, is open at
+    the place the player then stands, and the refusal line names it. Before hand-on, walk the quest as a new
+    character (every skill at its racial start, no gold): every stage must have a way on.
+4. **One step, one stage.** Each thing the player must do next (speak to someone, leave a room, follow, reach a
+   place, fetch, choose, return) is its own stage with a journal entry, one objective and the objective's target:
+   the person, door, container or marker to go to (`objectives[].target`, an id from `cast`, `things` or the
+   place's refs); every visible objective names a target. The entry tells this step only: what just happened in one
+   or two sentences, then "I'm to ..." with the place by a name the player can see. It never tells a later step
+   (the journal says the next step, not the whole chain), and never tells an event the build does not show the
+   player. Objectives are imperatives with a full stop and no "I" or "you" ("Speak to Wuleen-Sei in the barge's
+   hold."). A requirement the player must meet is in the objective with its number ("(Alchemy 25)").
 5. **Grounded:** every person, role, institution, custom and object comes from the lore, the extrapolation, the
    census or the story data, cited as written. Where none gives it, leave it vague or add it to the extrapolation
    with its gap-register row first. Never invent an institution or a law to make a plot work.
@@ -74,9 +86,13 @@ this skill carries is `docs/design/quests-on-a-world.md` (parts 3 to 5) and the 
 Every stage is written only in the proven block shapes (`docs/design/blocks.md`; the rewrite table in
 `docs/design/quests-on-a-world.md` part 5), so the record builds as written:
 - **Starts** by the giver's opening line or another quest's stage, never on entering a cell or area.
+- **An opening, or any sequence the player must finish,** happens where the player already is and keeps them in it:
+  no long unescorted walk, and a new player cannot wander off before it completes.
 - **Trigger areas** are gated only by their prerequisite stage; a time, detection or presence check goes on a
   line's condition, a package schedule, a death trigger's fail-forward or the crime engine.
-- **Escorts** are a follow package plus a trigger area at the destination.
+- **Escorts** are a follow package plus a trigger area at the destination. A person the player is told to follow
+  sets off only once the player can see them, and walks only on one navmesh island (the world's navmeshes are not
+  joined); a longer way is a hidden stage that moves them to the destination before the player arrives.
 - **Items** are one named item (N of it), never a kind of thing.
 - **"All of"** is one hidden stage per part, each checking the others before setting the joint stage.
 - **Removing people** is disabling them through their enable parents, never killing them in a fragment.
@@ -89,6 +105,11 @@ Places, people and things:
 - Each is a real reference in the loaded world (form key) or a world edit in the ledger, linked to the quest.
 - A spot for people lies on the winning navmesh with a real floor; a thing rests on a read surface; every model the
   quest uses (and the building it calls a place) exists in the load order.
+- The player can get to every person and place a stage names, by every path that reaches that stage: a locked door
+  on the way has its key or its unlock on each path, both directions.
+- Everything the record says is at a place (a jar, a sign, a screen, a trail of bent reeds) is a `things` row the
+  build places, or it is not said. When a host, prop or scene is cut or moved, search the quest's rows and lines for
+  its nouns and change every hit in the same commit.
 - A spot that fails is moved to the nearest usable ground in the same settlement by editing its row; the quest is
   not redesigned for it.
 
@@ -124,11 +145,26 @@ Also binding: 00-overview §4 (cost tiers, register, wonder budget, deliverabili
 9. **Stages** in the imported shape (`place`, `journal`, `onEnter`, `objectives`, `successors`, `failForward`,
    `ending`) in the §4 shapes, with conditions and actions only from the vocabulary (`condition_term` rows;
    `../../../story/design/quests/85-condition-vocabulary.md` explains each; a missing term is added as a row first),
-   plus `actions` or `approaches`, `learns`, `directions` and `journalText` (style guide § journal,
+   plus `actions` or `approaches`, `learns`, `directions`, `hidden` where the build needs a stage the player never
+   reads, and `journalText` (style guide § journal,
    `../../../story/design/text/style-guide.md`).
 10. **Endings**: two or more with real costs, as actions, and where the player sees them.
-11. **Topics**: `topic.` ids of `topic` rows or marked `new`; per person and stage, the intent, the facts it may
-    state and hide, the links it grants.
+11. **Topics**: `topic.` ids; per person and stage window (first and last stage, the last before the first ending
+    unless it is an after-quest greeting, so a giver stops offering a quest once it has ended), the prompt, the
+    intent, the facts it may state and hide, what it sets.
+    - The prompt is a sentence the player would say, using only names and facts the player has at that stage; never
+      a bare label ("the boat" is a label; "Did you see who came to the tree?" is a prompt). The opening prompt of a
+      quest names nothing the giver has yet to tell.
+    - A route that costs gold or checks a skill is its own topic with the cost in the prompt ("(Persuade) ...",
+      "... (10 gold)") and a fallback line that names what is needed.
+    - A line whose fragment sets a stage or a flag the journal then relies on never refuses: every wording of that
+      line agrees to what the fragment does.
+    - A question the speaker asks is a choice: one answer topic per reply. Otherwise the speaker tells.
+    - Every cast member the build places has at least a "Who are you?" line per stage window in which the player
+      can reach them, true of where they stand then.
+    - Everyone an ending leaves standing has a greeting for that ending.
+    - Within one place and stage window a fact is given to one speaker; the others get a different fact.
+    - Warm and cool wordings are written only for lines spoken after a fragment has changed that speaker's regard.
 
 ## 6b. Check the record against the lore and the vibe
 

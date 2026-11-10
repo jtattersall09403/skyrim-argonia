@@ -1,10 +1,9 @@
 # Talk: every BM&V person has something to say
 
-Owner, 2026-11-07: "I want to be able to talk to everyone", with a light backstory per person, their own topics,
-and every fact in them real and true. This file is the design the talk pipeline runs from. Status: Lilmoth's 30 built
-(Phase 3 block W-talk; personality, names and the bookseller's stock after the owner's walk of 2026-11-07); the rest of BM&V is [Phase 4a](../phases/4a-talk-to-everyone.md).
+Everyone in BM&V can be talked to, with a light backstory per person, their own topics, and every fact in them real
+and true. This file is the design the talk pipeline runs from; the recipe is the skill `talk-write`.
 
-## Why "E to talk" opens nothing (measured 2026-11-07)
+## Why "E to talk" opens nothing
 
 `python3 -m tools.argonia_world.talk_census measure` reads the load order (Skyrim.esm to Valenwood.esp):
 
@@ -47,12 +46,11 @@ loads the lines; `plugin.sh seed` then `plugin.sh check` builds, and `python3 -m
 reads the ESP back: each talker's topics gated to their ref, each renamed ref placing its own base with the name,
 each restocked vendor's chest.
 
-## Personality (owner walk 2026-11-07)
+## Personality
 
-The first twelve had a backstory and their trade only, and every one was given the same directions, the same leeks
-and the same three dead Dunmer: the owner found them "all much the same". So a talker row also carries seven short
-personality columns, and the brief passes them to the writer under **Personality**, with the instruction that every
-reply carries them and that two people given one topic must not sound alike:
+A backstory and a trade are not enough: people given the same facts sound the same. So a talker row also carries
+seven short personality columns, and the brief passes them to the writer under **Personality**, with the instruction
+that every reply carries them and that two people given one topic must not sound alike:
 
 | Column | What it holds | Example (Lilmoth) |
 |---|---|---|
@@ -77,7 +75,7 @@ A placed ref's base is shared, so a name needs a base of its own. A talker whose
 name gets `ARG_Talker_<ref>` (Talk.cs): templated on the old base with W-npc's look flags (Traits, Factions, Spell
 List, AI Data, AI Packages, Model/Animation, Inventory, Script, Def Pack List, Attack Data, Keywords), so face,
 race, voice, outfit and behaviour stay BM&V's. **Use Traits carries the face:** the engine draws a templated NPC
-with its template's FaceGen, as `ARG_BT_Keeper` (templated on `00FF4D`) showed on the dock in the owner's walk.
+with its template's FaceGen, (`ARG_BT_Keeper`, templated on `00FF4D`, shows it on the dock).
 **Use Base Data is off**, so the name is ours; **Use Stats is off**, so the level is the old base's fixed level, or 5
 where the old base levels with the player (decision 0035). The placed ref is overridden (in its cell, or the
 worldspace's persistent cell for a persistent ref) to place the new base. Names are Argonian (Jel or translated),
@@ -109,16 +107,24 @@ factions with the vendor faction swapped. Her `talk.services` facts list the sam
 | `talk.secret` | Little secret | personal | a hidden ref, locked container or out-of-the-way spot |
 | `talk.lore` | Black Marsh | place | story/lore (decision 0032) |
 
-Proposed next, same rule: **Where to sleep** (beds and inns by ref), **Who buys what** (vendor factions' buy lists),
-**Trainers** (trainer data), **Getting across the water** (boats and doors by ref), **The weather and the marsh**
-(region weather records). Quest rumours wait for Phase 4's quests: a rumour names only a quest that can start.
+More topics follow the same rule: **Where to sleep** (beds and inns by ref), **Who buys what** (vendor factions' buy
+lists), **Trainers** (trainer data), **Getting across the water** (boats and doors by ref), **The weather and the
+marsh** (region weather records). A rumour names only a quest that can start.
+
+**Who is covered.** Everyone the player can walk up to in the settlement: the census's people, and every person a
+quest places there. A quest's person gets their lines from the quest record (quest-write, Topics); the talk loop
+checks that none is left without one (`plugin.sh inspect silent` reads 0) and that a census person who is also in a
+quest's cast says nothing in their own topics that the quest's lines contradict at any stage.
 
 **Assignment.** Every talker has `talk.self`. Place topics (directions, harvest, loot, danger, rumours, someone,
 here, lore) are drawn from the settlement's facts; each talker gets three to five, the facts measured from **their
 own spot** (directions and distances differ per person), so neighbours overlap but never repeat word for word. The
 mix varies too: not everyone gives directions or knows the plants, and each fact has one holder in the settlement;
 anyone else who would know it (a corpse, a wreck, a piece of lore) points to the holder (`echoes assign`), save a quest
-rumour, which two or three tell in their own words.
+rumour. A rumour fact is fields (giver, place, want), not a sentence: at most two people in a settlement carry it,
+each retells it from where they stand in their own words with no sentence shared, and it is gated to the stages in
+which the quest can start. No opening or closing phrase is used by more than two people in a settlement (the friend
+greeting most of all), and a trade or company is named in a self-description by two people at most.
 Trade topics follow class and faction: a vendor gets services, a thief loot and secrets, a mage lore, a child only
 self, someone and harvest. Hostile and corpse rows get none.
 
@@ -131,17 +137,9 @@ the world: anything the player could check is a `talk_fact` with a source.
 
 - A fact is written only from a record in the load order (form key and position) or a lore line; the source is
   kept in `talk_fact.source` and the writer states no other fact (the dialogue-write skill's rule).
-- Recipe v2 (owner walk 3, 2026-11-08): directions are `talk_route` routes with landmarks, address follows
+- Directions are `talk_route` routes with landmarks, address follows
   standing (two greetings gated on GetRelationshipRank), a lore line never makes a physical claim the world does
   not show, names follow §54. The rules and the loop are the skill `.claude/skills/talk-write`; `talk_check`
   enforces them.
 - A fact that our own plugin changes (Lilmoth's five Naga, disabled by ARG_BlockTest and later `we.clean.lilmoth`)
   is not stated until the change is permanent.
-
-## Cost (measured on Lilmoth's 30, 2026-11-08)
-
-The author pass (one Opus agent: census rows, ref scan, lore, 30 people's rows and 134 facts): about 160,000
-tokens, nine minutes. Thirty Sonnet writers without corpus-find children: 25,000 to 30,000 tokens each, under a
-minute each, in parallel (about 830,000 in all). One reader pass over the 166 lines: 57,000. About $0.45 a person
-all in. The other 573 talkable people: about **$260, about 14% of a week's allowance**, spread over Phase 4a. Build:
-`plugin.sh seed` and `check` under 3 minutes each.

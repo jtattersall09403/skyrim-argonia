@@ -1,12 +1,16 @@
 ---
 name: talk-write
-description: Give every BM&V person in one settlement a name, a light backstory, a personality, true topics and written lines (Phase 4a's recipe v2). Use per settlement, before its build.
+description: Give every BM&V person in one settlement a name, a light backstory, a personality, true topics and written lines. Use per settlement, before its build.
 ---
 
 # Talk for one settlement
 
-Design: `docs/design/talk.md` (the tables, the topic catalogue). The four rules below are the owner's (walk 3,
-2026-11-08); `talk_check` enforces each. `S` is the settlement id (`bmv.lilmoth`).
+Design: `docs/design/talk.md` (the tables, the topic catalogue). `talk_check` enforces each rule. `S` is the settlement id (`bmv.lilmoth`).
+
+**Who is covered.** Everyone the player can walk up to in the settlement: the census's people, and every person a
+quest places there. A quest's person gets their lines from the quest record (quest-write, Topics); this loop checks
+that none is left without one (`plugin.sh inspect silent` reads 0) and that a census person who is also in a
+quest's cast says nothing in their own topics that the quest's lines contradict at any stage.
 
 ## The rules
 
@@ -26,12 +30,18 @@ Design: `docs/design/talk.md` (the tables, the topic catalogue). The four rules 
    (Jel for the marsh-born, translated for city and outward-facing work, nickname for the notorious, chosen,
    foreign); at most a third of a settlement Verb-the-Noun; an image (water, reed, root, stone, shadow, sky,
    boat, blade, eye, hand) once a settlement; no canon or lore name unless BM&V's base carries it; nothing Nordic.
+5. **Rumours are retold, never copied.** A rumour fact holds who, where and what is wanted as fields (giver, place,
+   want), never a sentence. At most two people in a settlement carry one rumour; each says it from where they stand
+   and what they would know of it, in their own words, and no sentence of it is shared. A rumour is gated to the
+   stages in which the quest can start.
+6. **No shared formula.** No opening or closing phrase is used by more than two people in a settlement (the friend
+   greeting most of all); a trade or company is named in a self-description by two people at most.
 
 ## The loop
 
 1. **Rows.** `python3 -m tools.argonia_world.db query "SELECT * FROM bmv_talker WHERE settlement='S' AND status IN
-   ('silent','service')"`. Drop clean-up targets that are Nord, Thalmor, Imperial officials or undead (Phase 4
-   part B's rule; a kept talker leaves the clean-up); mark the hostile-in-game ones hostile.
+   ('silent','service')"`. Drop clean-up targets that are Nord, Thalmor, Imperial officials or undead (a kept
+   talker leaves the clean-up list); mark the hostile-in-game ones hostile.
 2. **Ref scan.** `python3 -m tools.argonia_world.talk_route cache` once (out/talk_route/); landmarks and refs near
    each speaker come from the same cache (`talk_route.World().refs`, each with `lm`). Place, danger, loot,
    harvest and someone facts: one row each, `source` the form key and position.
@@ -54,8 +64,7 @@ Design: `docs/design/talk.md` (the tables, the topic catalogue). The four rules 
    spot, two-to-three-sentence backstory citing lore, the seven personality columns) and `talker_topic` rows:
    `talk.self`, both greetings, three to five place or trade topics drawn from facts near the person's own spot;
    each fact has one holder in the settlement, the person whose work or story it belongs to. A fact's `claim` gives
-   its parts (who, where, what, wants), never a finished sentence a writer would copy; a quest rumour two or three
-   people tell is one fact each retells in their own words.
+   its parts (who, where, what, wants), never a finished sentence a writer would copy; a quest rumour (two people at most) is one fact each retells in their own words.
 6. **One holder.** `python3 -m tools.argonia_world.echoes assign --settlement S` prints, and `--write` applies:
    a fact several people cite stays with one (`--owner FACT=REF`, else the first by ref) and each other person
    cites a pointer fact instead ("Ask <holder> about it", source `echo: owner <ref> holds <fact>`), so their reply
@@ -69,11 +78,10 @@ Design: `docs/design/talk.md` (the tables, the topic catalogue). The four rules 
    is ~/.dotnet, plugin.sh sets PATH). One `dialogue-writer` agent per person, in parallel (at most 20 at once), each given its brief and an output path
    (TSV `<topic>\t<text>`), lint run with `--race`. Then `talk_brief.py load LINES.tsv --talker REF`.
 10. **Echoes.** `python3 -m tools.argonia_world.echoes check --window S`: 0 clusters (no two people of the
-    settlement share a fact, a seven-word run or a greeting's opening); reword the later person's line and reload.
+    settlement share a fact, a seven-word run or a greeting's opening) and the shared-phrase check (`talk_check`
+    repeats); reword the later person's line and reload.
 11. **Reader.** One `reader` pass over all the settlement's lines (style guide, bans, personification B01 by name:
     no thing, place or institution doing a person's act, and neighbours who sound alike); fix and reload.
 12. **Build.** `tools/ArgoniaPlugin/plugin.sh seed`, `plugin.sh check`, then `python3 -m
     tools.argonia_world.talk_check` (lines, facts, names, the ESP read-back) to 0 problems; set the talkers
     `built`; commit the story data (never `plugin/Argonia/`; the integrator re-seeds).
-
-Cost on Lilmoth's 30: see `docs/design/talk.md` § Cost.
