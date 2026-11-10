@@ -830,9 +830,7 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
         "clearance": clearance,
         "factions": factions,
         "stations": stations,
-        "lights": {"added": [{"id": r["id"], "base": r["base"], "on": r["seat"]["on"]} for r in lit],
-                   "twins": [{"space": sid, "src": o["src"], "base": o["base"], "of": o["twin_of"]}
-                             for sid, sp in sorted(spaces.items()) for o in sp["overrides"] if o.get("twin_of")]},
+        "lights": {"added": [{"id": r["id"], "base": r["base"], "on": r["seat"]["on"]} for r in lit]},
         "ground": {"bundle": f"ground.{place_id}", "sha": G.sha, "stamp": grd.stamp()},
         "source": {"bundle": f"src.{place['source_id']}", "stamp": src.stamp()},
         "radius_m": radius_m,

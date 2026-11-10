@@ -4,7 +4,7 @@ Fails on: a source ref not accounted for (placed, adapted, replaced, or dropped 
 its rule says (floating or buried); a building on ground steeper than the source's own with no patch; a door no
 path reaches; a promised service with nobody giving it; fewer beds than people; anything in water that the source
 had on land, or the reverse; a Nordic base added from outside the source place or a levelled base placed; a light off its fixture, an added forge
-unlit, a room over the shadow limit; a person whose bed or routine points at nothing;
+unlit; a person whose bed or routine points at nothing;
 and every check of the build (`tools/places/check.py`, its streets on the main walked network among them) on the
 draft built.
 """
@@ -346,7 +346,7 @@ def check(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, g
 
 def light_checks(pdir: Path, place: dict, src, bases: dict, refs: list[dict]) -> list[str]:
     """Every light with its fixture (within lights.OFFSET_TOL of its source offset from it); every added station that
-    Skyrim lights carrying its light; no copied room over the engine's shadow limit."""
+    Skyrim lights carrying its light."""
     from tools.places.draft import lights
     ext = [r for r in src.exterior.refs]
     by_src = {r["id"]: r for r in ext}
@@ -357,21 +357,6 @@ def light_checks(pdir: Path, place: dict, src, bases: dict, refs: list[dict]) ->
     for r in lights.station_lights(place["place_id"], refs, place.get("stations")):
         if r["id"] not in have:
             bad.append(f"added station {r['seat']['on']} lacks its light ({r['why']})")
-    lb = lights.light_bases()
-    n_cast = 0
-    for sj in sorted((pdir / "spaces").glob("*/space.json")):
-        sp = json.loads(sj.read_text())
-        src_sp = src.spaces.get(sp["copy_of"].split("/", 1)[1]) if sp.get("copy_of") else None
-        if src_sp is None:
-            continue
-        room = interiors.built_room(src_sp.refs, interiors.kept(sp["copy_of"], sp.get("room")),
-                                    io.read_jsonl(sj.parent / "refs.jsonl"))
-        cast = sum(1 for r in room if r.get("kind") == "light" and lights.casts(lb.get(r.get("base"))))
-        n_cast = max(n_cast, cast)
-        if cast > lights.SHADOW_MAX:
-            bad.append(f"room {sp['space_id']}: {cast} shadow-casting lights, over the {lights.SHADOW_MAX} the engine "
-                       f"draws at once")
-    summary["shadow_casters_most_in_a_room"] = n_cast
     return bad
 
 

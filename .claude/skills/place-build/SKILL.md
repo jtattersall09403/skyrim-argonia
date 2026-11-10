@@ -165,12 +165,8 @@ The tools lay the network by these rules.
   bridges and steps we lay carry no light unless the source lit its own walkways: count the source's walkway pieces
   with a light within 256 units and light ours at that rate, rounded: where 1 source piece in 63 is lit, ten laid
   pieces carry no light. The torch a guard carries is stock (the skill `place-stock`).
-- **No room holds more than four shadow-casting lights**, the number the engine draws at once. In a copied room
-  over that, the four of the largest radius, then nearest the room's middle, keep their shadows; each other
-  switches to its no-shadow twin base as Skyrim names them (`<name>NS`, or the name without `Shadow`, or `NS` on
-  the name before its `_` suffix), written as a row of the room with `twin_of`. A caster with no twin in the load
-  order cannot switch, so it is one of the four that keep their shadows; `draft check` fails a room that still
-  exceeds four.
+- **A copied room keeps the source's own lights**, shadow casters among them, each on the base the source placed.
+  There is no cap on shadow-casting lights in a room: the player's renderer settings decide how many it draws.
 - **Leftovers**: `draft.drop` `{source ref id: reason}` for anything the source placed that our place must not have.
 - **What the record promises and the source lacks is added in the source's own style.** The tools add each
   missing crafting station by the person who works it, the way Skyrim's towns do (the smith's yard outside the
@@ -241,7 +237,7 @@ The tools lay the network by these rules.
    guards out of the inn, every resident in one household under one roof, replaced pieces in the original's plane,
    nothing floating or buried along its true outline beyond how it sat in the source, every door's arrival clear
    and on dry ground or a deck over the water, every replaced door facing its arrival, every light within 16
-   units of its place by its fixture, every added forge lit, no room over four shadow casters, nothing Nordic
+   units of its place by its fixture, every added forge lit, nothing Nordic
    added and nothing levelled placed, no world plant left standing in what we placed, a jail as section 5 has it
    where the town has a jail room, every source primitive built or dropped with its reason, and the files in the
    contract's order. It then builds the draft and runs every check of the build on it (section 8), so a draft that
@@ -269,7 +265,7 @@ and removed per file; a stage that would write outside what it owns changes noth
 | `clearance` | buildings, doors or streets moved | `clear.jsonl`: which of the world's plants go |
 | `streets` (also `join`) | pieces, doors or the join's rules changed | flights, joins, arrivals, work stops, streets, patrols |
 | `people` | the people source or the place's promises changed | names in `people.jsonl`, and each person's services as the record promises them (kind, detail, the network's destinations) |
-| `lights` | stations were added, a room's lights changed | the lights of added stations; each room's `twin_of` rows; `place.json` `lights` |
+| `lights` | stations were added, a room's lights changed | the lights of added stations; each room's lights on the source's own bases; `place.json` `lights` |
 | `stations` | the record promises a station the files lack | the added station, its worker's stop, `place.json` `stations` |
 | `jail` | the place's holder, the jail room, its door or its arrival changed | the jail's prison markers, bedroll and evidence chests; `place.json`'s crime row `jail` and `law` |
 | `primitives` | the source bundle, the kept pieces or the primitive classes changed | each exterior row's `primitive`, and a kept collision box's place, turn, seat and cluster by its piece; a dropped box's or trigger's row and its ledger row |
@@ -286,9 +282,9 @@ and removed per file; a stage that would write outside what it owns changes noth
 1. `python3 -m tools.places build <place_id>` builds the place layer plugin with the place's navmesh, from the
    place files and the database. It is a long job: run it under `tooling/job_guard.sh`. `build <place_id> --plan`
    plans only and lists every problem.
-2. `python3 -m tools.places check <place_id>` reads the built plugin back. All eighteen checks are green: `plugin`,
+2. `python3 -m tools.places check <place_id>` reads the built plugin back. All seventeen checks are green: `plugin`,
    `seat`, `overlap`, `doors`, `people`, `navmesh`, `streets`, `land`, `clear`, `services`, `nordic`, `rooms`,
-   `shadows`, `levelled`, `jail`, `primitives`, `stock`, `promises`. A place that fines only passes `jail` with a
+   `levelled`, `jail`, `primitives`, `stock`, `promises`. A place that fines only passes `jail` with a
    note saying why (its law, or no jail room). Each failure's full list is in
    `out/places/shards/<place_id>/check_failures/<check>.txt`. `check <place_id> --reach [person]` says what is cut
    off from what.

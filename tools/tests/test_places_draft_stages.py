@@ -129,44 +129,18 @@ def test_an_added_forge_carries_its_fire_light_and_a_smelter_none():
     assert [(r["base"], r["seat"]["on"], r["pos"]) for r in got] == [(lights.FORGE_LIGHT, "p.forge", [84.0, 267.0, 94.0])]
 
 
-LB = {"S:1": {"key": "S:1", "edid": "DBFireLight01", "plugin": "S", "light": {"radius": 256, "colour": "a", "flags": "Dynamic, ShadowOmnidirectional"}},
-      "S:2": {"key": "S:2", "edid": "DBFireLight01NS", "plugin": "S", "light": {"radius": 256, "colour": "b", "flags": "Dynamic"}},
-      "S:3": {"key": "S:3", "edid": "CandleLight01_Flicker", "plugin": "S", "light": {"radius": 256, "colour": "c", "flags": "ShadowOmnidirectional"}},
-      "S:4": {"key": "S:4", "edid": "CandleLight01NS", "plugin": "S", "light": {"radius": 256, "colour": "c", "flags": "Flicker"}},
-      "S:5": {"key": "S:5", "edid": "InnCandleShadow", "plugin": "S", "light": {"radius": 300, "colour": "d", "flags": "ShadowSpotlight"}},
-      "S:6": {"key": "S:6", "edid": "InnCandle", "plugin": "S", "light": {"radius": 300, "colour": "d", "flags": ""}},
-      "S:7": {"key": "S:7", "edid": "OddShadowCaster", "plugin": "S", "light": {"radius": 77, "colour": "z", "flags": "ShadowHemisphere"}}}
-
-
-def test_a_shadow_casters_twin_is_found_as_skyrim_names_them():
-    assert [lights.twin(k, LB) for k in ("S:1", "S:3", "S:5", "S:7", "S:2")] == ["S:2", "S:4", "S:6", None, None]
-
-
-def room(n, base="S:1"):
-    walls = [{"id": "w0", "kind": "static", "pos": [0, 0, 0]}, {"id": "w1", "kind": "static", "pos": [1000, 0, 0]}]
-    return walls + [{"id": f"l{i}", "kind": "light", "base": base, "pos": [100.0 * i, 0, 0]} for i in range(n)]
-
-
-def test_a_room_keeps_four_shadow_casters_by_rule():
-    assert lights.shadow_plan(room(4), LB) == ({}, [])
-    r = room(7)
-    r[2 + 6]["radius"] = 900.0                                   # the largest radius keeps its shadow
-    switch, bad = lights.shadow_plan(r, LB)
-    assert bad == [] and set(switch.values()) == {"S:2"}
-    assert sorted({f"l{i}" for i in range(7)} - set(switch)) == ["l3", "l4", "l5", "l6"]   # l6, then nearest x=500
-    switch, bad = lights.shadow_plan(room(6, "S:7"), LB)         # no twin in the load order: said, not hidden
-    assert switch == {} and len(bad) == 2
-
-
-def test_a_copied_room_over_the_limit_gets_twin_rows():
-    src = room(6)
-    ov = interiors.shadow_twins("p", "house", src, None, [{"id": "x", "src": "w0", "removed": True}], LB)
-    twins = [o for o in ov if o.get("twin_of")]
-    assert len(twins) == 2 and all(o["base"] == "S:2" and o["twin_of"] == "S:1" and o["seat"] == {"mode": "free"} for o in twins)
-    again = interiors.shadow_twins("p", "house", src, None, ov, LB)
-    assert again == ov                                            # run again on its own output: the same rows
-    built = interiors.built_room(src, None, ov)
-    assert sum(1 for r in built if lights.casts(LB.get(r.get("base")))) == 4 and all(r["id"] != "w0" for r in built)
+def test_a_copied_rooms_lights_go_back_to_the_sources_own_bases():
+    src = [{"id": "w0", "kind": "static", "pos": [0, 0, 0]},
+           {"id": "l0", "kind": "light", "base": "S:1", "pos": [0.0, 0, 0], "rot": [0, 0, 0], "src": "X.esm"},
+           {"id": "l1", "kind": "light", "base": "S:1", "pos": [100.0, 0, 0], "rot": [0, 0, 0], "src": "X.esm"}]
+    ov = [{"id": "x", "src": "w0", "removed": True},
+          {**src[1], "id": "p.l0", "src": "l0", "seat": {"mode": "free"}, "base": "S:2", "twin_of": "S:1"},
+          {**src[2], "id": "p.l1", "src": "l1", "seat": {"mode": "free"}, "base": "S:2", "twin_of": "S:1",
+           "pos": [150.0, 0, 0]}]
+    rows, back, gone = interiors.own_lights(src, ov)
+    assert (back, gone) == (1, 1)                                 # the plain twin row goes; the moved one keeps its move
+    assert rows == [ov[0], {**src[2], "id": "p.l1", "src": "l1", "seat": {"mode": "free"}, "pos": [150.0, 0, 0]}]
+    assert interiors.own_lights(src, rows) == (rows, 0, 0)       # run again on its own output: the same rows
 
 
 # --- the build's checks ---
@@ -180,12 +154,6 @@ def test_a_source_places_own_piece_is_not_judged_nordic_and_an_added_one_is():
     assert not C.check_nordic(c)
     c["source_bases"] = set()
     assert C.check_nordic(c)
-
-
-def test_a_room_with_five_shadow_casters_fails_shadows():
-    import test_places_check as T
-    assert C.check_shadows(T.broken("shadows"))
-    assert not C.check_shadows({**T.ctx(), "light_bases": LB})
 
 
 def test_people_re_reads_a_service_from_the_record_and_changes_that_row_alone(fx):

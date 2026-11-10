@@ -1,5 +1,4 @@
-"""A place's light: every light with its fixture, what we add lit as Skyrim lights it, rooms within the engine's
-shadow limit.
+"""A place's light: every light with its fixture, what we add lit as Skyrim lights it, each room's own lights.
 
 - A light belongs to its fixture. A light has no body, so nothing ties it to the lantern, sconce, window or fire it
   was placed for but nearness: the nearest fixture within BIND units in the source is its fixture (`fixtures`). It
@@ -8,9 +7,9 @@ shadow limit.
 - What we add is lit as Skyrim lights it (measured on Skyrim.esm's exteriors): a forge carries LightForgeFire01 (15 of
   24 placed forges, median offset FORGE_OFFSET in the forge's own frame); a smelter (0 of 21) and an alchemy lab (3 of
   16) carry none (`station_lights`).
-- No room holds more than SHADOW_MAX shadow-casting lights (the engine draws four at once): the casters that keep
-  their shadows are the ones of the largest radius, then nearest the room's middle; every other switches to its
-  no-shadow twin base, found the way Skyrim names them (`twin`, `shadow_plan`).
+- A copied room keeps the source's own lights as they are, shadow casters among them: there is no cap on
+  shadow-casting lights in a room (the player's renderer settings decide how many it draws). A light of a room is
+  never switched to another base for its shadows.
 """
 from __future__ import annotations
 
@@ -23,7 +22,6 @@ FIXTURE = re.compile(r"lantern|sconce|candle|torch|brazier|fire|window|light|lam
 NOT_FIXTURE = {"light", "actor", "water", "marker", "tree", "plant", "groundcover", "rock"}
 BIND = 128.0          # a light within this of a fixture in the source is that fixture's
 OFFSET_TOL = 16.0     # how far a light may stand off its source offset from its fixture
-SHADOW_MAX = 4        # shadow-casting lights the engine draws at once
 FORGE_LIGHT = "Skyrim.esm:0B15EE"         # LightForgeFire01
 FORGE_OFFSET = (-16.0, 167.0, 84.0)       # its median place in the forge's own frame, 15 vanilla forges
 STATION_LIGHT = {"forge": (FORGE_LIGHT, FORGE_OFFSET)}
@@ -132,7 +130,7 @@ def station_lights(place_id: str, rows: list[dict], stations: dict) -> list[dict
     return [{k: v for k, v in r.items() if v is not None or k == "src"} for r in out]
 
 
-# --- shadows ---
+# --- the load order's lights ---
 _lights: dict | None = None
 
 
@@ -149,48 +147,3 @@ def light_bases(path=None) -> dict[str, dict]:
 
 def casts(base: dict | None) -> bool:
     return "Shadow" in str(((base or {}).get("light") or {}).get("flags") or "")
-
-
-def twin(key: str, lights: dict[str, dict]) -> str | None:
-    """A shadow-casting light's no-shadow twin, the way Skyrim names them: `<name>NS`, the name without `Shadow`, the
-    family's `NS` (BleakFallsCandleLight01_Flicker -> BleakFallsCandleLight01NS); else the no-shadow light of the
-    same plugin, radius and colour. None when the load order holds no twin."""
-    b = lights.get(key)
-    if b is None or not casts(b):
-        return None
-    name = b.get("edid") or ""
-    by_name = {v.get("edid"): k for k, v in lights.items() if not casts(v)}
-    stem = name.split("_", 1)[0]
-    for cand in (name + "NS", name.replace("Shadow", ""), stem + "NS", stem.replace("Shadow", "")):
-        if cand != name and cand in by_name:
-            return by_name[cand]
-    same = sorted(k for k, v in lights.items() if not casts(v) and not v.get("model")
-                  and v.get("plugin") == b.get("plugin") and (v.get("light") or {}).get("radius") == b["light"].get("radius")
-                  and (v.get("light") or {}).get("colour") == b["light"].get("colour"))
-    return same[0] if same else None
-
-
-def shadow_plan(room: list[dict], lights: dict[str, dict]) -> tuple[dict[str, str], list[str]]:
-    """For one room's refs as built (each with id, base, pos, kind, radius?): ({light id: twin base} for the casters
-    that give up their shadows, [problems]). The SHADOW_MAX that keep them: a caster with no twin first (it cannot
-    switch), then the largest radius, then the nearest the room's middle."""
-    cast = [r for r in room if r.get("kind") == "light" and casts(lights.get(r.get("base")))]
-    if len(cast) <= SHADOW_MAX:
-        return {}, []
-    body = [r["pos"] for r in room if r.get("kind") != "light"] or [r["pos"] for r in room]
-    lo = [min(p[i] for p in body) for i in range(3)]
-    hi = [max(p[i] for p in body) for i in range(3)]
-    mid = [(a + b) / 2 for a, b in zip(lo, hi)]
-
-    def rank(r):
-        rad = float(r.get("radius") or lights[r["base"]]["light"].get("radius") or 0.0)
-        return (twin(r["base"], lights) is not None, -rad, round(math.dist(r["pos"], mid), 1), r["id"])
-    order = sorted(cast, key=rank)
-    out, bad = {}, []
-    for r in order[SHADOW_MAX:]:
-        t = twin(r["base"], lights)
-        if t is None:
-            bad.append(f"light {r['id']} casts shadows and its base {r['base']} has no no-shadow twin")
-        else:
-            out[r["id"]] = t
-    return out, bad

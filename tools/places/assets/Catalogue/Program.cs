@@ -41,7 +41,7 @@ var kinds = new (string code, Func<ISkyrimModGetter, IEnumerable<IMajorRecordGet
 };
 var nameErrors = 0;
 // every light base, with or without a model (a bare light has none), the last plugin's version winning: what a
-// place's own lights are chosen from (a shadow caster's no-shadow twin, a forge's fire light)
+// place's own lights are chosen from (a forge's fire light)
 var lights = new Dictionary<string, Dictionary<string, object?>>();
 foreach (var m in mods)
     foreach (var li in m.Lights)

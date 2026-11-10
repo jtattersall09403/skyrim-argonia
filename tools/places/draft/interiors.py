@@ -124,24 +124,27 @@ def built_room(src_refs: list[dict], keep: frozenset | None, overrides: list[dic
     return out
 
 
-def shadow_twins(place_id: str, sid: str, src_refs: list[dict], keep: frozenset | None, overrides: list[dict],
-                 light_bases: dict | None = None) -> list[dict]:
-    """The room's override rows with its shadow casters beyond the engine's limit switched to their no-shadow twin
-    base (lights.shadow_plan): one row per switched light, the source ref as it is but for its base."""
-    from tools.places.draft import lights
-    lb = lights.light_bases() if light_bases is None else light_bases
-    ov = [o for o in overrides if not o.get("twin_of")]     # the plan is made afresh from the source's own lights
-    switch, _ = lights.shadow_plan(built_room(src_refs, keep, ov), lb)
-    by_src = {o.get("src"): o for o in ov}
-    for r in src_refs:
-        if r["id"] not in switch:
+def own_lights(src_refs: list[dict], overrides: list[dict]) -> tuple[list[dict], int, int]:
+    """The room's override rows with every light on the source's own base: a row that put a light on another base for
+    its shadows (`twin_of`) goes back to that base, and is dropped when it then says nothing the source ref does not.
+    Returns (rows, restored, dropped)."""
+    by_id = {r["id"]: r for r in src_refs}
+    out, restored, dropped = [], 0, 0
+    for o in overrides:
+        if not o.get("twin_of"):
+            out.append(o)
             continue
-        row = by_src.get(r["id"])
-        if row is None:
-            row = {**r, "id": mint(place_id, sid, r["id"]), "src": r["id"], "seat": {"mode": "free"}}
-            ov.append(row)
-        row["twin_of"], row["base"] = r["base"], switch[r["id"]]
-    return ov
+        row = {k: v for k, v in o.items() if k != "twin_of"}
+        row["base"] = o["twin_of"]
+        r = by_id.get(o.get("src"))
+        plain = r is not None and {k: v for k, v in row.items() if k not in ("id", "src", "seat")} == \
+            {k: v for k, v in r.items() if k not in ("id", "src")} and row.get("seat") == {"mode": "free"}
+        if plain:
+            dropped += 1
+        else:
+            out.append(row)
+            restored += 1
+    return out, restored, dropped
 
 
 def plan(place_id: str, src: Bundle, ext_doors: list[dict], our_door_id: dict[str, str], bases: dict | None = None,
@@ -198,9 +201,6 @@ def plan(place_id: str, src: Bundle, ext_doors: list[dict], our_door_id: dict[st
             elif not rep:
                 continue
             sp["overrides"].append(row)
-    for sid, sp in spaces.items():
-        sp["overrides"] = shadow_twins(place_id, sid, src.spaces[sp["src_space"]].refs,
-                                       kept(sp["copy_of"], sp["room"]), sp["overrides"])
     # inner doors point at the copies made of their targets
     for sid, sp in spaces.items():
         for row in sp["overrides"]:

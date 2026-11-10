@@ -14,7 +14,7 @@ owns changes nothing and fails.
   streets    the build's network: flights, joins, arrivals, streets and patrols (`draft join`)
   people     each person's services as the record promises them (kind, detail, the network's destinations),
              promises a resident keeps, and names, from the people source
-  lights     the lights of what we added (a forge's fire) and each copied room within the shadow limit
+  lights     the lights of what we added (a forge's fire); each copied room's lights on the source's own bases
   stations   each promised crafting station the standing files lack, by the person who works it
   jail       the crime faction's jail: the jail room, the cell the player is put in, the prison markers both sides,
              the evidence chests (tools/places/draft/jail.py)
@@ -236,7 +236,7 @@ def pieces(st: Standing, log=print) -> None:
         keep = []
         for row in sp["refs"]:
             r = by_id.get(row.get("src"))
-            if r is None or row.get("twin_of"):
+            if r is None:
                 keep.append(row)
                 continue
             rep = replace.get(r["base"])
@@ -337,24 +337,15 @@ def lights_stage(st: Standing, log=print) -> None:
         else:
             st.ext.append(r)
             log(f"draft lights {st.place_id}: {r['why']} at {[round(v) for v in r['pos']]}")
-    twins = []
     for sid, sp in sorted(st.files["spaces"].items()):
         info = sp.get("space") or {}
-        if sid == "exterior" or not info.get("copy_of"):
-            continue
-        src_sp = st.src.spaces.get(info["copy_of"].split("/", 1)[1])
+        src_sp = st.src.spaces.get(info["copy_of"].split("/", 1)[1]) if sid != "exterior" and info.get("copy_of") else None
         if src_sp is None:
             continue
-        keep = interiors.kept(info["copy_of"], info.get("room"))
-        before = sum(1 for r in interiors.built_room(src_sp.refs, keep, [o for o in sp["refs"] if not o.get("twin_of")])
-                     if lights.casts(lights.light_bases().get(r.get("base"))))
-        sp["refs"] = interiors.shadow_twins(st.place_id, sid, src_sp.refs, keep, sp["refs"])
-        mine = [o for o in sp["refs"] if o.get("twin_of")]
-        twins += [{"space": sid, "src": o["src"], "base": o["base"], "of": o["twin_of"]} for o in mine]
-        if before > lights.SHADOW_MAX:
-            log(f"draft lights {st.place_id}: room {sid}: {before} shadow casters, {before - len(mine)} keep their shadows")
-    st.place["lights"] = {"added": [{"id": r["id"], "base": r["base"], "on": r["seat"]["on"]} for r in want],
-                          "twins": twins}
+        sp["refs"], back, gone = interiors.own_lights(src_sp.refs, sp["refs"])
+        if back or gone:
+            log(f"draft lights {st.place_id}: room {sid}: {back + gone} lights back on the source's own base")
+    st.place["lights"] = {"added": [{"id": r["id"], "base": r["base"], "on": r["seat"]["on"]} for r in want]}
     st.bases.update({k: b for k, b in lights.light_bases().items() if k in {r["base"] for r in want}})
     seat_all(st.ext, st.G)
 

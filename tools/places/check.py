@@ -7,7 +7,7 @@ the place's shard plan (which records are this place's, and its place files' row
 place (ground, refs) and the world's own navmesh beside ours. Exit 1 when any check fails; every check is a
 function of one context dict, so tools/tests can feed it a small broken fixture each.
 
-Checks: seat, overlap, doors, people, navmesh, land, clear, services, nordic, rooms, shadows, levelled, plugin (masters, links),
+Checks: seat, overlap, doors, people, navmesh, land, clear, services, nordic, rooms, levelled, plugin (masters, links),
 jail, primitives, stock and promises (a stocked place: tools/places/stock/verify.py).
 """
 from __future__ import annotations
@@ -1221,22 +1221,6 @@ def check_rooms(ctx) -> list[str]:
     return bad
 
 
-def check_shadows(ctx) -> list[str]:
-    """No room holds more shadow-casting lights than the engine draws at once (lights.SHADOW_MAX): one line per room
-    that does. A light casts shadows by its base's flags (the catalogue's lights; `light_bases` in a test's context)."""
-    from tools.places.draft import lights
-    lb = ctx.get("light_bases")
-    lb = lights.light_bases() if lb is None else lb
-    m = mine(ctx)
-    per: dict[str, int] = defaultdict(int)
-    for fk, r in m["refs"].items():
-        row = m["rows"].get(fk) or {}
-        if row.get("space") not in (None, "exterior") and r.get("base_type") == "LIGH" and lights.casts(lb.get(row.get("base"))):
-            per[row["space"]] += 1
-    return [f"room {sp}: {n} shadow-casting lights, over the {lights.SHADOW_MAX} the engine draws at once"
-            for sp, n in sorted(per.items()) if n > lights.SHADOW_MAX]
-
-
 def check_levelled(ctx) -> list[str]:
     return [f"levelled: {x}" for x in ctx["dump"]["levelled"]]
 
@@ -1458,7 +1442,7 @@ def check_primitives(ctx) -> list[str]:
 
 CHECKS = {"plugin": check_plugin, "seat": check_seat, "overlap": check_overlap, "doors": check_doors, "people": check_people,
           "navmesh": check_navmesh, "streets": check_streets, "land": check_land, "clear": check_clear, "services": check_services,
-          "nordic": check_nordic, "rooms": check_rooms, "shadows": check_shadows, "levelled": check_levelled, "jail": check_jail,
+          "nordic": check_nordic, "rooms": check_rooms, "levelled": check_levelled, "jail": check_jail,
           "primitives": check_primitives, "stock": check_stock, "promises": check_promises}
 
 
