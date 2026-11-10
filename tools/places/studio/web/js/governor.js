@@ -6,7 +6,7 @@ import { detail } from './objects.js';
 
 // highest detail last; each step changes one more thing than the one above it
 export const LEVELS = [
-  { veg: 0.2, density: 4, lod: 0.4, tex: 256, ratio: 0.6, srcEvery: 12 },
+  { veg: 0.2, density: 3, lod: 0.4, tex: 256, ratio: 0.6, srcEvery: 12 },
   { veg: 0.3, density: 3, lod: 0.5, tex: 512, ratio: 0.75, srcEvery: 6 },
   { veg: 0.4, density: 2, lod: 0.6, tex: 1024, ratio: 1, srcEvery: 3 },
   { veg: 0.5, density: 2, lod: 1, tex: 2048, ratio: 1.25, srcEvery: 1 },
@@ -21,7 +21,7 @@ export class Governor {
     this.views = views; this.budget = 1000 / targetFps; this.onChange = onChange;
     let m = 'auto'; try { m = localStorage.getItem(KEY) || 'auto'; } catch { /* private window */ }
     this.mode = m in MANUAL || m === 'auto' ? m : 'auto';
-    this.level = this.mode === 'auto' ? 4 : MANUAL[this.mode];
+    this.level = this.mode === 'auto' ? LEVELS.length - 1 : MANUAL[this.mode];
     this.avg = 0; this.lastDrawn = 0; this.lastStep = 0; this.goodSince = 0; this.history = [];
     this.apply();
   }

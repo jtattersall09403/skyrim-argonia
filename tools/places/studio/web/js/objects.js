@@ -14,7 +14,7 @@ export const KIND_COLOUR = {
 // Nearer than the first: the model (the light version for plants, trees and rocks); out to the second: a stand-in
 // of the bounds (a cone for trees); beyond: not drawn.
 const RANGE = {
-  groundcover: [4000, 4000], plant: [8000, 12000], tree: [12000, 60000], rock: [12000, 30000], clutter: [8000, 10000],
+  groundcover: [4000, 4000], plant: [8000, 140000], tree: [12000, 140000], rock: [12000, 140000], clutter: [8000, 30000],
   light: [6000, 8000], marker: [6000, 8000], default: [40000, 80000],
 };
 const PICK_RANK = { actor: 0, door: 1, furniture: 2, container: 2, clutter: 3, light: 3, activator: 3, marker: 3,
@@ -132,6 +132,7 @@ function boxMaterial(kind, ghost) {
   }
   return boxMats.get(k);
 }
+const BIG = 420; // bounds (game units, 70 to the metre) past which a thing is never distance-culled: 6 m
 const THIN = new Set(['tree', 'plant', 'groundcover', 'rock', 'clutter']);
 const tmpM = new THREE.Matrix4(), tmpV = new THREE.Vector3(), boundsM = new THREE.Matrix4();
 
@@ -210,18 +211,25 @@ class Group {
     // and sheets over the land, so they stay unseen (still listed and pickable)
     if (this.fx) { this.box.visible = false; this.box.count = 0; return 0; }
     const [near, far] = RANGE[this.kind] || RANGE.default;
-    const thin = THIN.has(this.kind), scale = this.layer.rangeScale * (thin ? detail.veg : 1);
+    // anything big (a building, dock, bridge, ship, big rock or tree: bounds over a few metres) is never thinned or
+    // cut by distance, at any detail level; only small clutter and plants thin out (the frustum still applies)
+    const big = this.radius * 2 * Math.max(...this.refs.map((r) => r.scale ?? 1), 1) > BIG;
+    // detail only changes how near the full model starts and how many small plants are skipped; plants and trees
+    // are drawn out past the whole place (the far range) at every level, and trees are never skipped
+    const thin = THIN.has(this.kind) && !big, scale = big ? 1 : this.layer.rangeScale * (thin ? detail.veg : 1);
+    const farD = far * (big ? 1 : this.layer.rangeScale);
     // plants, trees and rocks use their light model all the way out once it has arrived: no stand-ins
-    const nearD = (LIGHT.has(this.kind) && this.full ? far : near) * scale * (thin ? detail.lod : 1);
+    const nearD = LIGHT.has(this.kind) && this.full ? farD : near * scale * (thin ? detail.lod : 1);
+    const skips = thin && detail.density > 1 && this.kind !== 'tree' && this.kind !== 'rock';
     let nf = 0, nb = 0, nearest = Infinity;
     for (let i = 0; i < this.refs.length; i++) {
       const m = this.matrices[i];
       tmpV.setFromMatrixPosition(m);
       const d = tmpV.distanceTo(cam.position);
-      if (d > far * scale + this.radius) continue;
+      if (!big && d > farD + this.radius) continue;
       sphere.center.copy(tmpV); sphere.radius = this.radius * (this.refs[i].scale ?? 1) * 1.8 + 50;
       if (!frustum.intersectsSphere(sphere)) continue;
-      if (thin && detail.density > 1 && d > near * scale * 0.5 && i % detail.density) continue;
+      if (skips && d > near * scale * 0.5 && i % detail.density) continue;
       nearest = Math.min(nearest, d);
       if (d < nearD && this.full) { for (const fm of this.full) fm.setMatrixAt(nf, m); nf++; }
       else { tmpM.multiplyMatrices(m, this.boxLocal); this.box.setMatrixAt(nb++, tmpM); }
@@ -229,7 +237,7 @@ class Group {
     // an empty instanced mesh still costs a draw setup: hide it
     this.box.count = nb; this.box.visible = nb > 0; if (nb) this.box.instanceMatrix.needsUpdate = true;
     if (this.full) for (const fm of this.full) { fm.count = nf; fm.visible = nf > 0; if (nf) fm.instanceMatrix.needsUpdate = true; }
-    if (!this.fullParts && !this.wantModel && nearest < near * scale * 1.3 && this.base?.model) {
+    if (!this.fullParts && !this.wantModel && nearest < Math.max(near * scale * 1.3, LIGHT.has(this.kind) ? farD : 0) && this.base?.model) {
       this.wantModel = true;
       loadModel(this.base.model, nearest, LIGHT.has(this.kind) ? 1 : 0, this.kind).then((parts) => {
         if (!parts || !parts.length) return;

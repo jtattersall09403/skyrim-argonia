@@ -547,8 +547,10 @@ export class Panels {
       <p>How much the views draw. Less detail keeps the views smooth on a slower tablet.</p>
       ${opt('auto', 'Automatic', 'adjusts by itself to stay smooth.')}${opt('high', 'High', 'everything, as far as it goes.')}
       ${opt('medium', 'Medium', 'plants nearer, the other view drawn less often.')}${opt('low', 'Low', 'the least, for a slow tablet.')}
+      <label class="detail-opt"><input type="checkbox" name="grass"${this.app.grassOn() ? ' checked' : ''}><span><strong>Grass</strong> grown from the ground's textures near where you look.</span></label>
       <p class="detail-now"></p><button class="primary">Done</button></div>`;
-    o.querySelectorAll('input').forEach((i) => { i.onchange = () => { G.setMode(i.value); this.detailShown(); }; });
+    o.querySelector('input[name=grass]').onchange = (e) => this.app.setGrass(e.target.checked);
+    o.querySelectorAll('input[name=detail]').forEach((i) => { i.onchange = () => { G.setMode(i.value); this.detailShown(); }; });
     o.querySelector('button').onclick = () => { o.hidden = true; };
     this.detailShown();
   }

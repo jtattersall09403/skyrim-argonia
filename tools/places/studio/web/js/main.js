@@ -6,6 +6,7 @@ import { EditLog, modelFromFiles, describe, vegKey } from './edits.js';
 import { View } from './view.js';
 import { TerrainMesh, LandTex } from './terrain_mesh.js';
 import { ObjectLayer } from './objects.js';
+import { GrassLayer } from './grass.js';
 import { fitPoint, unfitPoint } from './xform.js';
 import { Tools } from './tools.js';
 import { People } from './people.js';
@@ -35,11 +36,32 @@ class Studio {
     const sel = $('#place-pick'); sel.innerHTML = '';
     for (const p of this.places) sel.add(new Option(p.title || p.place_id, p.place_id));
     const want = new URLSearchParams(location.search).get('place') || this.places[0].place_id;
-    sel.value = want; sel.onchange = () => this.openPlace(sel.value);
+    sel.value = want; sel.onchange = () => this.openPlaceSafe(sel.value);
     this.heartbeat(); this.statusCheck();
     // the guide shows while the place loads, and can be put away at once
     if (!store.get('studio.intro.v1')) this.panels.intro();
-    await this.openPlace(want);
+    await this.openPlaceSafe(want);
+  }
+  // Opening a place never hangs: a failed or malformed fetch shows a plain message and a Retry button; a place whose
+  // draft changed under the tab (its key moved while loading) is read again once, from the places list.
+  async openPlaceSafe(id, again = true) {
+    try { await this.openPlace(id, again); }
+    catch (e) {
+      if (e?.draftMoved && again) {
+        try { this.places = await api.places(); } catch { /* the retry below reports it */ }
+        return this.openPlaceSafe(id, false);
+      }
+      console.error(e);
+      this.loadFailed(e?.message || String(e), () => this.openPlaceSafe(id));
+    }
+  }
+  loadFailed(message, retry) {
+    const l = $('#loading'); l.hidden = false;
+    $('#loading-text').textContent = `The place could not be loaded (${message}). Nothing has been lost.`;
+    l.querySelector('.spinner')?.setAttribute('hidden', '');
+    let b = l.querySelector('button.retry');
+    if (!b) { b = document.createElement('button'); b.className = 'retry primary'; b.textContent = 'Retry'; l.append(b); }
+    b.hidden = false; b.onclick = () => { b.hidden = true; l.querySelector('.spinner')?.removeAttribute('hidden'); retry(); };
   }
   // A calm line under the views while the rest of the place streams in; gone when it is all there.
   progress(what, n, of) {
@@ -47,13 +69,18 @@ class Studio {
     el.hidden = n >= of; el.querySelector('span').textContent = `${what}: ${Math.round((100 * n) / of)}%`;
     el.querySelector('i').style.width = `${(100 * n) / of}%`;
   }
-  loading(text) { const l = $('#loading'); if (text === false) { l.hidden = true; return; } l.hidden = false; $('#loading-text').textContent = text; }
-  async openPlace(id) {
+  loading(text) {
+    const l = $('#loading'); l.querySelector('button.retry')?.setAttribute('hidden', ''); l.querySelector('.spinner')?.removeAttribute('hidden');
+    if (text === false) { l.hidden = true; return; } l.hidden = false; $('#loading-text').textContent = text;
+  }
+  async openPlace(id, checkKey = true) {
     const t0 = performance.now();
     this.place = this.places.find((p) => p.place_id === id); this.placeFit = normaliseFit(this.place.fit);
     this.loading(`Loading ${this.place.title || id}: the ground`);
     this.landTex = this.landTex || await new LandTex().init();
     const [ground, draft] = await Promise.all([loadBundle(`ground.${id}`), loadBundle(`draft.${id}`, { extras: true, optional: true, terrain: false })]);
+    const moved = draft?.meta?.stamp?.key && this.place.stamps?.draft_key && draft.meta.stamp.key !== this.place.stamps.draft_key;
+    if (moved && checkKey) throw Object.assign(new Error('the draft changed while loading'), { draftMoved: true });
     this.ground = ground; this.draft = draft || emptyDraft(id);
     if (!draft) this.toast('This place has no draft yet: you see our ground with nothing placed on it.', 6000);
     this.bases = new Map([...ground.bases, ...this.draft.bases]); this.npcs = new Map([...ground.npcs, ...this.draft.npcs]);
@@ -68,6 +95,8 @@ class Studio {
     const origin = ground.meta.anchor ? ground.meta.anchor.map(Math.round) : [0, 0, 0];
     this.ours.origin = origin;
     this.ours.world = new ObjectLayer(origin, this.bases); this.ours.place = new ObjectLayer(origin, this.bases);
+    this.ours.grass = this.makeGrass(this.ours, origin, () => this.terrain, () => [...this.worldRefs, ...(this.model.spaces.exterior?.refs.values() || [])]);
+    this.ours.grass.view = this.ours.view;
     this.loading('Drawing the land');
     const focus = focusOf([...(this.model.spaces.exterior?.refs.values() || [])], origin, this.ground.meta.place);
     this.ours.terrainMesh = this.terrain ? await new TerrainMesh(this.terrain, origin, { paths: () => [...this.model.paths.values()], landTex: this.landTex })
@@ -105,6 +134,7 @@ class Studio {
     const s = this.src, terr = this.srcBundle.spaces.exterior?.terrain;
     s.origin = this.srcBundle.meta.anchor ? this.srcBundle.meta.anchor.map(Math.round) : [0, 0, 0];
     s.terrain = terr; s.layer = new ObjectLayer(s.origin, this.srcBases);
+    s.grass = this.makeGrass(s, s.origin, () => s.terrain, () => this.srcBundle.spaces.exterior?.refs || []); s.grass.view = s.view;
     s.terrainMesh = terr ? await new TerrainMesh(terr, s.origin, { landTex: this.landTex })
       .build({ focus: focusOf(this.srcBundle.spaces.exterior?.refs || [], s.origin) }) : null;
     if (s.terrainMesh) s.terrainMesh.onChange = () => s.view.redraw();
@@ -144,6 +174,7 @@ class Studio {
     const interior = sid !== 'exterior';
     v.terrainData = interior ? null : (side === this.ours ? this.terrain : side.terrain);
     const layers = side === this.ours ? [this.ours.world, this.ours.place] : [side.layer];
+    if (!interior && side.grass) layers.push(side.grass);
     v.setContent({ origin: side.origin, terrain: interior ? null : side.terrainMesh, objects: layers, interior });
     v.overlay.clear();
     this.refreshSide(side);
@@ -219,7 +250,25 @@ class Studio {
     }
     return false;
   }
+  // Grass for one view: footprints are the buildings' bounds, paths the ones the owner drew (ours).
+  makeGrass(side, origin, terrain, refs) {
+    const g = new GrassLayer(origin, {
+      terrain, blocked: (x, y) => side === this.ours && this.underPath({ pos: [x, y] }),
+      buildings: () => refs().filter((r) => r.kind === 'building').map((r) => {
+        const b = (this.bases.get(r.base) || this.srcBases?.get(r.base))?.bounds;
+        const s = b ? Math.hypot(b[1][0] - b[0][0], b[1][1] - b[0][1]) / 2 : 200;
+        return { pos: r.pos, r: s * (r.scale ?? 1) * 0.8 };
+      }),
+    });
+    g.on = this.grassOn(); return g;
+  }
+  grassOn() { return store.get('studio.grass.v1') !== 'off'; }
+  setGrass(on) {
+    store.set('studio.grass.v1', on ? 'on' : 'off');
+    for (const s of [this.ours, this.src]) s.grass?.setOn(on);
+  }
   refreshSide(side, { world = true } = {}) {
+    side.grass?.invalidate();
     if (side === this.ours) {
       if (side.space === 'exterior' && world) {
         const list = [];
@@ -239,6 +288,7 @@ class Studio {
   push(ops, space) { return this.log.push(ops, space ?? this.ours.space); }
   afterEdit(kind, ops) {
     const touched = new Set(ops.map((o) => o.op.split('.')[0]));
+    if (touched.has('land') || touched.has('path')) { this.ours.grass?.invalidate(); }
     if (touched.has('land')) { this.ours.terrainMesh?.refreshCells(new Set(ops.filter((o) => o.op === 'land.patch').map((o) => o.cell.join(',')))); this.ours.terrainMesh?.tint?.(); }
     if (touched.has('path')) this.ours.terrainMesh?.rebakeAll();
     if (touched.has('veg') || touched.has('path')) this.refreshSide(this.ours);
@@ -443,4 +493,5 @@ export function friendly(base, kind) {
 }
 const studio = new Studio();
 window.studio = studio; window.THREE = THREE;
-studio.start().catch((e) => { console.error(e); studio.loading(`The studio could not load: ${e.message}. Reload the page to try again.`); });
+const boot = () => studio.start().catch((e) => { console.error(e); studio.loadFailed(e.message, boot); });
+boot();
