@@ -29,6 +29,8 @@ STEPS = ("record", "build", "learn", "report")
 BUILD_VERBS = ("seat", "build", "check")
 BUDGET_USD = 30.0   # the owner was told 1 to 2% of the weekly allowance per finalise (1% is about $19)
 MAX_TURNS = 60
+VENV_PY = Path.home() / ".argonia/venv/bin/python"
+PY = str(VENV_PY) if VENV_PY.exists() else sys.executable   # the project's interpreter, as the Makefile picks it
 
 
 def now() -> str:
@@ -46,6 +48,7 @@ class Run:
         self.save_path = self.place / "edits" / f"{save_id}.json"
         self.skill = (Path(skill) if skill else self.repo / ".claude/skills/place-build/SKILL.md").resolve()
         self.fixes = self.repo / "docs/skill-fixes.md"
+        self.draft_skill = self.dir / "place-build.SKILL.md"   # the agent's rewrite, put in place by finalise
         self.dir.mkdir(parents=True, exist_ok=True)
 
     # ---- state ----
@@ -145,7 +148,7 @@ def step_build(run: Run, skip: bool) -> dict:
             results[verb] = {"rc": None, "status": "skipped" if skip else "not available yet", "tail": ""}
             run.log(f"build: {verb} {results[verb]['status']}")
             continue
-        cmd = [sys.executable, "-m", "tools.places", verb, run.place_id]
+        cmd = [PY, "-m", "tools.places", verb, run.place_id]
         run.log("build: " + shlex.join(cmd))
         r = subprocess.run(cmd, cwd=run.repo, capture_output=True, text=True)   # the repo's own tools and files
         out = (r.stdout + r.stderr).strip().splitlines()
@@ -167,14 +170,15 @@ def agent_prompt(run: Run) -> str:
     places = run.repo / "newworld/places"
     return f"""Follow the skill place-lessons ({CODE_REPO / '.claude/skills/place-lessons/SKILL.md'}) on this finalised
 save. Inputs:
-- the save: {run.save_path}
+- the save's fault edits, one per line: {run.dir / 'faults.jsonl'} (the whole save, taste included: {run.save_path})
 - the place files before the save and after it, as one JSON each: {run.dir / 'before.json'}, {run.dir / 'after.json'}
+  (large: search them for the ids and positions you need rather than reading them whole)
 - the build and check results: {run.dir / 'build.done'}
 - every place's place.json (for taste preferences across places): {places}/*/place.json
-- the place-build skill to rewrite: {run.skill}
+- the place-build skill: {run.skill}
 - the skill-fixes list for tool changes owed: {run.fixes}
-Write the lessons file to {run.dir / 'lessons.json'}. Edit nothing else but the place-build skill and the skill-fixes
-list."""
+Write the whole rewritten place-build skill to {run.draft_skill} (only when the recipe changes; finalise puts it in
+place), and the lessons file to {run.dir / 'lessons.json'}. Edit nothing else but the skill-fixes list."""
 
 
 def agent_cmd(run: Run, budget: float, turns: int) -> list[str]:
@@ -211,7 +215,12 @@ def step_learn(run: Run, budget: float, turns: int) -> dict:
         restore_from_head(run.skill)
         restore_from_head(run.fixes) if run.fixes.exists() else None
     started.write_text(now())
+    with open(run.dir / "faults.jsonl", "w") as fh:
+        for op in save["ops"]:
+            if op.get("call", "fault") == "fault":
+                fh.write(json.dumps(op, separators=(",", ":")) + "\n")
     (run.dir / "lessons.json").unlink(missing_ok=True)
+    run.draft_skill.unlink(missing_ok=True)
     cmd = agent_cmd(run, budget, turns)
     run.log("learn: the lessons agent started (budget $%.2f, %d turns)" % (budget, turns))
     env = {k: v for k, v in os.environ.items() if not k.startswith("CLAUDE_CODE_")}
@@ -242,9 +251,11 @@ def step_learn(run: Run, budget: float, turns: int) -> dict:
                else "it finished without writing its lessons")
         return {"status": "did not run", "why": why, "cost_usd": cost, "turns": turns_used}
     lessons = json.loads(lessons_p.read_text())
-    titles = "; ".join(lz.get("lesson", "")[:90] for lz in lessons.get("lessons", []) if lz.get("where") == "recipe")
+    if run.draft_skill.exists() and run.draft_skill.read_text().strip():
+        run.skill.write_text(run.draft_skill.read_text())
+    titles = "; ".join(lz.get("lesson", "")[:90] for lz in lessons.get("lessons", []))
     paths = [run.skill] + ([run.fixes] if run.fixes.exists() else [])
-    sha = commit_skill(run, f"place-build: lessons from {run.place_id} (save {run.save_id}): {titles or 'no recipe change'}",
+    sha = commit_skill(run, f"place-build: lessons from {run.place_id} (save {run.save_id}): {titles or 'nothing general'}",
                        paths)
     return {"status": "ok", "commit": sha, "cost_usd": cost, "turns": turns_used}
 
@@ -297,8 +308,16 @@ def step_report(run: Run) -> dict:
                        "problems below need fixing before the place goes into the game."
                        if verb == "check" else
                        "the place could not be built, so nothing was checked. Your edits are kept.")
-            L.append(f"- {word}: failed. This means {meaning}")
-            L += ["", "  What the checker said:", ""] + ["      " + x for x in v.get("tail", "").splitlines()[-12:]]
+            tail = v.get("tail", "")
+            if "Traceback" in tail:
+                last = tail.strip().splitlines()[-1] if tail.strip() else ""
+                L.append(f"- {word}: failed, because the tool itself broke: a fault in our code, not in your edits. "
+                         "Your edits are kept; an agent needs to fix the tool and run this step again. "
+                         f"(The tool's last words, for that agent: `{last[:200]}`)")
+            else:
+                L.append(f"- {word}: failed. This means {meaning}")
+                L += ["", f"  What the {'checker' if verb == 'check' else 'tool'} said:", ""]
+                L += ["      " + x for x in tail.splitlines()[-12:]]
     L.append("")
     L += ["## What the builder has learned", ""]
     if lrn.get("status") == "ok" and lessons:
@@ -401,7 +420,7 @@ def start(place_id: str, save_id: str, repo: Path = CODE_REPO) -> str:
     """Launch the chain under tooling/job_guard.sh (the machine stays awake until it ends); returns run_id."""
     run_id = f"{place_id}.{save_id}"
     subprocess.Popen([str(repo / "tooling/job_guard.sh"), "run", f"finalise.{run_id}", "--",
-                      sys.executable, "-m", "tools.places", "finalise", place_id, save_id],
+                      PY, "-m", "tools.places", "finalise", place_id, save_id],
                      cwd=repo, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, start_new_session=True)
     return run_id
 

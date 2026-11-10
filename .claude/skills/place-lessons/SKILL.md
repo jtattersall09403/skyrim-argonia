@@ -61,6 +61,8 @@ thing right first time. The prompt names every input and the only files you may 
 - Keep the skill from growing. Where your lesson makes an existing sentence redundant, remove it. A run usually
   changes a few sentences; a run that adds more than it removes needs every added line to carry a rule.
 - Keep the skill's own shape, headings and voice. Change nothing a lesson does not touch.
+- Write the whole rewritten skill to the path the prompt names; the finalise chain puts it in place. When no
+  lesson belongs in the recipe, write nothing there.
 
 ## Check your rewrite
 

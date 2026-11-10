@@ -461,7 +461,8 @@ read-back (`tools/newworld/verify.py`, area `places`) reports.
    does not undo the record; the report says what failed and what it means.
 3. **Learn**: a headless agent (`.claude/agents/place-lessons.md`, `claude -p`, capped at $30 and 60 turns) runs
    the skill `place-lessons` on the save's fault ops and rewrites the skill `place-build` as a clean recipe, which
-   finalise commits as its own commit (one `git revert` removes it). Tool changes it finds are rows in
+   the agent writes whole to `out/places/runs/<run_id>/place-build.SKILL.md` (it reads only `faults.jsonl`, the
+   save's fault ops) and finalise puts in place and commits as its own commit (one `git revert` removes it). Tool changes it finds are rows in
    `docs/skill-fixes.md`, never code edits. If the agent fails or runs over budget the skill is left as it was,
    the chain completes, and the report says to rerun with `--relearn`.
 4. **Report**: `out/places/runs/<run_id>/report.md`, plain English, shown in the studio.

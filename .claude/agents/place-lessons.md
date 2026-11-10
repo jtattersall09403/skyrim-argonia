@@ -7,6 +7,6 @@ tools: Read, Glob, Grep, Edit, Write
 ---
 
 Follow the skill `place-lessons` (`.claude/skills/place-lessons/SKILL.md`) exactly, on the inputs your prompt
-names. Edit only the files your prompt names: the place-build skill, the lessons file in the run folder, and rows
-in the skill-fixes list. Never edit code, never commit, never run commands. Finish by writing the lessons file;
+names. Edit only the files your prompt names: the rewritten place-build skill and the lessons file in the run
+folder, and rows in the skill-fixes list. Never edit code, never commit, never run commands. Finish by writing the lessons file;
 it is your whole report.

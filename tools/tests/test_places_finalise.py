@@ -22,7 +22,7 @@ if "FAIL" in skill.read_text():
     skill.write_text("half written")
     print(json.dumps({"is_error": True, "subtype": "error_max_budget_usd", "total_cost_usd": 3.1}))
     sys.exit(1)
-skill.write_text(skill.read_text().replace("by its centre point", "by its whole footprint"))
+(run / "place-build.SKILL.md").write_text(skill.read_text().replace("by its centre point", "by its whole footprint"))
 (run / "lessons.json").write_text(json.dumps({"lessons": [{"where": "recipe", "ops": [1],
     "lesson": "Fit a building by its whole footprint.", "why": "The recipe fitted it by its centre point.",
     "change": "It now fits the footprint."}], "one_offs": [{"ops": [10], "what": "A chair moved in a house."}],
