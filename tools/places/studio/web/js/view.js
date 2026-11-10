@@ -84,6 +84,7 @@ export class View {
     this.camera.near = Math.max(5, r.dist / 400); this.camera.far = Math.max(120000, r.dist * 2 + 60000); this.camera.updateProjectionMatrix();
     if (this.scene.fog) { this.scene.fog.near = Math.max(20000, r.dist * 2.5); this.scene.fog.far = this.scene.fog.near * 4; }
     this.camera.lookAt(r.target); this.camera.updateMatrixWorld();
+    this.camera.userData.focus = r.target;  // where the view looks: what is near it shows its detail (a light's ring)
     if (this.tiltIn && document.activeElement !== this.tiltIn) this.tiltIn.value = Math.round(r.pitch * 100);
     if (this.rose) { const h = this.heading(); this.rose.style.transform = `rotate(${-h}deg)`; this.compass.dataset.heading = Math.round(h) % 360; }
   }

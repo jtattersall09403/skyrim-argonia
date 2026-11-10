@@ -158,6 +158,7 @@ class Studio {
     const s = this.src, terr = this.srcBundle.spaces.exterior?.terrain;
     s.origin = this.srcBundle.meta.anchor ? this.srcBundle.meta.anchor.map(Math.round) : [0, 0, 0];
     s.terrain = terr; s.layer = new ObjectLayer(s.origin, this.srcBases); s.layer.always = true;
+    this.tools?.lightsShown?.();
     s.grass = this.makeGrass(s, s.origin, () => s.terrain, () => this.srcBundle.spaces.exterior?.refs || []); s.grass.view = s.view;
     s.terrainMesh = terr ? await new TerrainMesh(terr, s.origin, { landTex: this.landTex })
       .build({ focus: focusOf(this.srcBundle.spaces.exterior?.refs || [], s.origin) }) : null;

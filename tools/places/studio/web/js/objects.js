@@ -194,6 +194,21 @@ export function drainReady(renderer, layers = [], scene = null, camera = null, b
   return left;
 }
 
+// A light with no model of its own (the game's light records are invisible): drawn as a small bulb of its own colour
+// when lights are shown (the Select tool, or the Lights toggle), with a faint ring at its radius when it is selected
+// or near the camera; picked like anything else while shown.
+export const isBulb = (base, kind) => kind === 'light' && !base?.model;
+export const BULB = 10;           // the bulb's radius, game units
+export const RING_NEAR = 1500;    // a light this near the camera shows its radius ring
+export const lightRadius = (ref, base) => ref.radius || base?.light?.radius || 0;
+export const lightColour = (base) => {
+  const c = base?.light?.colour || [255, 220, 150];
+  return new THREE.Color(c[0] / 255, c[1] / 255, c[2] / 255);
+};
+// a bulb keeps a few pixels across however far the camera stands (BULB units near, a hundredth of the distance far)
+const bulbScale = (d) => Math.max(1, (d * 0.01) / BULB);
+const bulbGeo = new THREE.SphereGeometry(BULB, 10, 8);
+const ringGeo = new THREE.RingGeometry(0.985, 1, 64);
 // An effect (mist, fog, gas, glow): under effects\, or a model or record Bethesda names fx*.
 export const isEffect = (base) => /^effects[\\/]/i.test(base?.model || '') || /(^|[\\/])fx[^\\/]*\.nif$/i.test(base?.model || '') || /^fx/i.test(base?.edid || '');
 // One base's instances.
@@ -204,10 +219,13 @@ class Group {
     // effects: the game's effect meshes, wherever a mod keeps them (Bethesda names them fx*: Dragonborn's Apocrypha
     // mist lives in dlc02\dungeons, not effects\)
     this.fx = isEffect(base);
-    // a thing with no model (a marker, a trigger volume, a sound) has nothing to show: it is neither drawn nor picked
-    this.unseen = !base?.model && !ghost;
-    // effects and markers carry the record's "everything" bounds; draw them as a small box
-    let b = base?.bounds || [[-32, -32, 0], [32, 32, 64]];
+    // a light with no model is a bulb (shown with the lights); any other thing with no model (a marker, a trigger
+    // volume, a sound) has nothing to show: it is neither drawn nor picked
+    this.bulb = isBulb(base, kind) && !ghost;
+    this.unseen = !base?.model && !ghost && !this.bulb;
+    if (this.bulb) this.colour = lightColour(base);
+    // effects and markers carry the record's "everything" bounds; draw them as a small box (a bulb: its sphere)
+    let b = this.bulb ? [[-BULB, -BULB, -BULB], [BULB, BULB, BULB]] : base?.bounds || [[-32, -32, 0], [32, 32, 64]];
     if (b[1].some((v, i) => v - b[0][i] > 20000)) b = [[-32, -32, 0], [32, 32, 64]];
     this.bmin = b[0]; this.bsize = [0, 1, 2].map((i) => Math.max(1, b[1][i] - b[0][i]));
     this.radius = Math.hypot(...this.bsize) / 2;
@@ -242,6 +260,7 @@ class Group {
     // effects (mist, waterfall sheets, glows) are shader tricks of the game's: drawn here they are pale rings
     // and sheets over the land, so they stay unseen (still listed and pickable)
     if (this.fx || this.unseen) { this.box.visible = false; this.box.count = 0; return 0; }
+    if (this.bulb) { this.box.visible = false; this.box.count = 0; return this.layer.showLights ? this.layer.addBulbs(this, cam, frustum, sphere) : 0; }
     // everything placed (layer.always) is drawn whole at any distance: zoomed right out, every building, plant, tree
     // and rock shows, the ground cover placed one by one too; the grown grass (grass.js) thins itself by distance
     const always = !!this.layer.always;
@@ -292,6 +311,42 @@ export class ObjectLayer {
   constructor(origin, bases) {
     this.origin = origin; this.bases = bases; this.root = new THREE.Group(); this.groups = new Map();
     this.rangeScale = 1; this.refs = []; this.byId = new Map(); this._dirty = true; this.onDirty = () => {};
+    // lights without a model: every bulb of the layer in one instanced mesh, every near or selected ring in another
+    this.showLights = false; this.ringIds = new Set(); this.bulbs = null; this.rings = null; this.nBulb = 0; this.nRing = 0;
+  }
+  setShowLights(on) { if (this.showLights !== !!on) { this.showLights = !!on; this.dirty(); } }
+  setRingIds(ids) { this.ringIds = new Set(ids); this.dirty(); }
+  lightMeshes(n) {
+    if (this.bulbs && this.bulbs.instanceMatrix.count >= n) return;
+    const cap = Math.max(32, Math.ceil(n * 1.5));
+    for (const m of [this.bulbs, this.rings]) if (m) { this.root.remove(m); m.dispose(); }
+    this.bulbs = new THREE.InstancedMesh(bulbGeo, new THREE.MeshBasicMaterial({ color: '#ffffff' }), cap);
+    this.rings = new THREE.InstancedMesh(ringGeo, new THREE.MeshBasicMaterial({ color: '#ffffff', transparent: true, opacity: 0.35,
+      side: THREE.DoubleSide, depthWrite: false }), cap);
+    for (const m of [this.bulbs, this.rings]) { m.count = 0; m.frustumCulled = false; m.userData.lights = true; this.root.add(m); }
+    this.bulbs.renderOrder = 2; this.rings.renderOrder = 3;
+  }
+  // The bulbs of one light group the camera can see, and the rings of those near it or selected.
+  addBulbs(g, cam, frustum, sphere) {
+    this.lightMeshes(this.nBulb + g.refs.length);
+    const [, far] = RANGE.light, focus = cam.userData.focus || cam.position; let n = 0;
+    for (let i = 0; i < g.refs.length; i++) {
+      const m = g.matrices[i]; tmpV.setFromMatrixPosition(m);
+      const d = tmpV.distanceTo(cam.position);
+      const ring = this.ringIds.has(g.refs[i].id) || tmpV.distanceTo(focus) < RING_NEAR;
+      if (d > far * this.rangeScale && !ring) continue;
+      sphere.center.copy(tmpV); sphere.radius = BULB * 2;
+      if (!frustum.intersectsSphere(sphere) && !ring) continue;
+      const s = bulbScale(d);
+      tmpM.makeScale(s, s, s).setPosition(tmpV.x, tmpV.y, tmpV.z);
+      this.bulbs.setMatrixAt(this.nBulb, tmpM); this.bulbs.setColorAt(this.nBulb++, g.colour); n++;
+      const r = lightRadius(g.refs[i], g.base);
+      if (ring && r > 0) {
+        tmpM.makeScale(r, r, 1).setPosition(tmpV.x, tmpV.y, tmpV.z);
+        this.rings.setMatrixAt(this.nRing, tmpM); this.rings.setColorAt(this.nRing++, g.colour);
+      }
+    }
+    return n;
   }
   dirty() { this._dirty = true; this.onDirty(); }
   // refs: [{ref, ghost?}] for the current space.
@@ -315,20 +370,31 @@ export class ObjectLayer {
   cull(camera) {
     const frustum = new THREE.Frustum().setFromProjectionMatrix(new THREE.Matrix4().multiplyMatrices(camera.projectionMatrix, camera.matrixWorldInverse));
     const sphere = new THREE.Sphere(); let n = 0;
+    this.nBulb = 0; this.nRing = 0;
     for (const g of this.groups.values()) n += g.cull(camera, frustum, sphere);
+    for (const [m, k] of [[this.bulbs, this.nBulb], [this.rings, this.nRing]]) {
+      if (!m) continue;
+      m.count = k; m.visible = k > 0;
+      if (k) { sendInstances(m, k); if (m.instanceColor) m.instanceColor.needsUpdate = true; }
+    }
     this._dirty = false; this.drawn = n; return n;
   }
   // Everything the ray passes through, best pick first: kind rank, then distance.
   pick(ray, { kinds, includeGhosts = false } = {}) {
     const hits = [], inv = new THREE.Matrix4(), lr = new THREE.Ray(), box = new THREE.Box3(), p = new THREE.Vector3();
     for (const g of this.groups.values()) {
-      if (g.unseen || g.fx) continue;
+      if (g.unseen || g.fx || (g.bulb && !this.showLights)) continue;
       if (g.ghost && !includeGhosts) continue;
       if (kinds && !kinds.has(g.kind)) continue;
       box.min.set(...g.bmin); box.max.set(g.bmin[0] + g.bsize[0], g.bmin[1] + g.bsize[1], g.bmin[2] + g.bsize[2]);
       for (let i = 0; i < g.refs.length; i++) {
         const m = g.matrices[i];
         tmpV.setFromMatrixPosition(m);
+        if (g.bulb) {  // a bulb is picked by the sphere drawn: its size for the distance, a little generous
+          const d = tmpV.distanceTo(ray.origin), r = BULB * bulbScale(d) * 1.5;
+          if (ray.distanceSqToPoint(tmpV) <= r * r) hits.push({ ref: g.refs[i], kind: g.kind, ghost: g.ghost, dist: d, point: tmpV.clone() });
+          continue;
+        }
         if (ray.distanceSqToPoint(tmpV) > (g.radius * (g.refs[i].scale ?? 1) * 2 + 40) ** 2) continue;
         inv.copy(m).invert(); lr.copy(ray).applyMatrix4(inv);
         if (lr.intersectBox(box, p)) {

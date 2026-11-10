@@ -595,7 +595,7 @@ are read with `read_run` (Finalise, below); `rc` is the job_guard job `finalise.
 **What the views draw** (the front end, `tools/places/studio/web`): exactly what the game will show. Every placed
 thing is drawn whole at any zoom, its placed ground cover too. Geometry the game never shows is left out: effects
 (models under `effects\` or named `fx*`, records named `FX*`: the game's shader tricks, wherever a mod keeps
-them, as Dragonborn's Apocrypha mist in `dlc02\dungeons`), things with no model (markers, triggers, sounds) and any part of a
+them, as Dragonborn's Apocrypha mist in `dlc02\dungeons`), things with no model (markers, triggers, sounds; a light is drawn as a bulb, below) and any part of a
 model under a node named `EditorMarker` (the Creation Kit's own marker shapes, as on mist, fog and trap gas). Grass
 is grown as the game grows it, from each land texture's grass list (`grass.js`, rules in `grass_rules.js`): a ring
 round where the view looks, out to the view's distance (at most 16,000 units), every spot near the eye and, beyond
@@ -608,6 +608,17 @@ lit like the ground; a boardwalk only ashore. Each view has a compass at its low
 screen; a tap turns the view to face north), and the Selected panel gives the position in game units, the cell
 (floor of position / 4096, outside) and the turn in degrees, or the middle of several things, kept current as they
 move.
+
+**Lights** (`objects.js`, `lights.js`). A light record has no model in the game, so the views draw each light as a
+small bulb of its own colour (a few pixels across at any distance), every bulb of a layer in one instanced mesh, with
+a faint ring at its radius for a selected light, the lights of a selected fixture, and any light within 1,500 units
+of where the view looks (a second instanced mesh). Bulbs are drawn and picked while the Select or Add tool is in use, or with the Selected panel's toggle
+"Lights: always show them", so other tools' views stay uncluttered. A light belongs to the nearest fixture within 128
+units: a thing whose record names a lantern, sconce, candle, torch, brazier, fire, chandelier, lamp, window, glow,
+ember or hearth. The Selected panel gives a light's radius, colour (with a swatch), whether it casts shadows and the
+fixture it belongs to, and a fixture's lights. Moving, turning, resizing, seating, duplicating or removing a fixture
+takes its lights with it in the same undo step, each keeping its place in the fixture's frame and its height through
+its own seat. A light selected by itself moves or goes alone.
 
 **The world map.** The top bar's World map button opens the Atlas (the page `python3 -m tools.newworld.map_page`
 builds into `out/newworld/map/`) over the studio in a frame, loaded the first time it is opened, at

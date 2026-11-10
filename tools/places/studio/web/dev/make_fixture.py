@@ -161,8 +161,10 @@ def interiors(bases, rng, prefix, door_back_to):
         for j in range(4):
             refs.append(ref(f"{p}.c{j}", bases.get(f"Fix_Cup{j % 2}", "clutter"), "clutter",
                             [-100 + rng.randint(-40, 40), 100 + rng.randint(-40, 40), 80], [0, 0, rng.random() * 6]))
-        refs.append(ref(f"{p}.l", bases.get("Fix_Lamp", "light", light={"radius": 512, "colour": [255, 200, 120]}), "light",
-                        [0, 0, 250], [0, 0, 0]))
+        refs.append(ref(f"{p}.l", bases.get("Fix_Lamp", "light", model=None,
+                                            light={"radius": 512, "colour": [255, 200, 120], "flags": "ShadowOmnidirectional"}),
+                        "light", [0, 0, 250], [0, 0, 0]))
+        refs.append(ref(f"{p}.lantern", bases.get("Fix_Lantern", "clutter", size=(24, 24, 40)), "clutter", [0, 0, 230], [0, 0, 0]))
         out[sid] = refs
     return out
 
@@ -204,7 +206,8 @@ def source_refs(bases, rng, cells, pfx, nbuild, nenter):
         refs.append(ref(f"{pfx}.c{i}", bases.get(f"Fix_Crate{i % 3}", "clutter"), "clutter",
                         [x0 + 1500 + rng.random() * 2500, y0 + 1500 + rng.random() * 2500, 380], [0, 0, rng.random() * 6.28]))
     for i in range(8):
-        refs.append(ref(f"{pfx}.l{i}", bases.get("Fix_Torch", "light", light={"radius": 600, "colour": [255, 180, 90]}), "light",
+        # lights have no model of their own, as in the game
+        refs.append(ref(f"{pfx}.l{i}", bases.get("Fix_Torch", "light", model=None, light={"radius": 600, "colour": [255, 180, 90], "flags": "None"}), "light",
                         [x0 + 1500 + rng.random() * 2500, y0 + 1500 + rng.random() * 2500, 480], [0, 0, 0]))
     npcs = []
     for i in range(2):
@@ -214,6 +217,10 @@ def source_refs(bases, rng, cells, pfx, nbuild, nenter):
                      "voice": "FixVoice", "outfit": "FixOutfit", "services": {}, "packages": []})
         ab = bases.get(f"Fix_Actor{i}", "actor")
         refs.append(ref(f"{pfx}.a{i}", ab, "actor", [x0 + 2500 + i * 300, y0 + 2000, 380], [0, 0, 0], npc=nb))
+    # a lantern holding the first torch's light
+    t0 = next(r for r in refs if r["id"] == f"{pfx}.l0")
+    refs.append(ref(f"{pfx}.lantern0", bases.get("Fix_Lantern", "clutter", size=(24, 24, 40)), "clutter",
+                    [t0["pos"][0] + 30, t0["pos"][1], t0["pos"][2] - 20], [0, 0, 0]))
     return refs, back, npcs
 
 

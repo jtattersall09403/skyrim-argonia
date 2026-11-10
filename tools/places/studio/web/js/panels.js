@@ -9,6 +9,7 @@ import { whereOf, whereRows } from './where.js';
 import { Contents } from './contents.js';
 import { identityOf } from './stock.js';
 import { groupsOf, touched } from './note_groups.js';
+import { FIXTURE_REACH, fixtureOf, lightFacts, lightsOf } from './lights.js';
 
 const $ = (s) => document.querySelector(s);
 const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -114,7 +115,9 @@ export class Panels {
       toggle('Tap adds to selection', T.opts.adds, (v) => { T.opts.adds = v; }));
     const r2 = el('<div class="row"></div>');
     r2.append(toggle('Keep on the ground when moving', T.opts.snapGround, (v) => { T.opts.snapGround = v; }), toggle('Turn in 15° steps', T.opts.snapRot, (v) => { T.opts.snapRot = v; }));
-    parts.push(r, r2);
+    const r3 = el('<div class="row"></div>');
+    r3.append(toggle('Lights: always show them', !!T.opts.lights, (v) => { T.opts.lights = v; T.lightsShown(); }));
+    parts.push(r, r2, r3);
     this.show(refs.length ? 'Selected' : 'Select', parts);
   }
   refCard(r, bases, side) {
@@ -139,7 +142,10 @@ export class Panels {
     if (side === 'ours' && r.door?.arrival) facts.push(['Coming out', 'you arrive outside this door, on our ground and clear of anything in the way']);
     if (r.owner) facts.push(['Belongs to', r.owner]);
     if (r.door?.to_space) facts.push(['Door leads to', side === 'ours' ? a.spaceName(a.ours, r.door.to_space) : a.spaceName(a.src, r.door.to_space)]);
+    const lit = this.lightFacts(r, base, side);
+    facts.push(...lit.facts);
     w.append(this.whereEl([r], side));
+    if (lit.swatch) w.append(lit.swatch);
     w.append(el(`<dl class="facts">${facts.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join('')}</dl>`));
     const held = side === 'ours' && this.contents.refSection(r, base);
     if (held) w.append(held);
@@ -148,6 +154,28 @@ export class Panels {
       b.onclick = () => a.enter(side === 'ours' ? a.ours : a.src, r); w.append(b);
     }
     return w;
+  }
+  // A light's radius, colour, shadows and the fixture it belongs to; a fixture's lights.
+  lightFacts(r, base, side) {
+    const a = this.app, facts = [];
+    const refs = side === 'ours' ? [...a.placeRefsById().values()] : a.refsOf(a.src);
+    const baseOf = (x) => a.bases.get(x.base) || a.srcBases?.get(x.base), pos = (x) => (side === 'ours' ? a.seated(x).pos : x.pos);
+    const name = (x) => { const b = baseOf(x) || {}; return b.name || b.edid || x.base; };
+    let swatch = null;
+    if ((r.kind || base.kind) === 'light') {
+      const f = lightFacts(r, base);
+      facts.push(['Light', `reaches ${Math.round(f.radius)} units (${(f.radius / 70).toFixed(1)} m)`]);
+      if (f.colour) facts.push(['Colour', `red ${f.colour[0]}, green ${f.colour[1]}, blue ${f.colour[2]}`]);
+      facts.push(['Shadows', f.shadow ? 'casts shadows (costly: few per room)' : 'casts no shadows']);
+      const fx = fixtureOf(r, refs, baseOf, pos);
+      facts.push(['Belongs to', fx ? `${name(fx)}, ${Math.round(Math.hypot(...pos(fx).map((v, i) => v - pos(r)[i])))} units away: moves and goes with it`
+        : `no lantern, sconce, candle, torch, fire or window within ${FIXTURE_REACH} units: it stands alone`]);
+      if (f.hex) swatch = el(`<p class="light-swatch"><span class="swatch" style="background:${f.hex}"></span> the light's colour</p>`);
+    } else if (side === 'ours') {
+      const mine = lightsOf([r], refs.filter((x) => x.id !== r.id), baseOf, pos).map(([l]) => l);
+      if (mine.length) facts.push(['Its light', `${mine.length === 1 ? 'one light goes' : `${mine.length} lights go`} with it when it moves or is removed`]);
+    }
+    return { facts, swatch };
   }
   // Where the selection stands in the game (position, cell outside, turn): drawn as a fact list and kept current
   // by refreshWhere as the things move.
