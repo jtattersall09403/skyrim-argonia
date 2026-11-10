@@ -40,6 +40,16 @@ New-Item -ItemType Directory -Force $State, $Prefs | Out-Null
 $Keep = @('SKSE\Plugins\CommunityShaders\SettingsUser.json', 'SKSE\Plugins\CommunityShaders\SettingsDefault.json',
           'SKSE\Plugins\CommunityShaders_ImGui.ini')
 
+# Progress of a profile switch for the splash (splash.ps1): "phase|done|total" in $State\progress.txt, replaced
+# whole (write then rename), at most four times a second; phase 'files' while files are laid or removed, 'done' after.
+$script:ProgT = [DateTime]::MinValue
+function Set-Progress($Phase, $Done, $Total, [switch]$Force) {
+  if (-not $Force -and ([DateTime]::UtcNow - $script:ProgT).TotalMilliseconds -lt 250) { return }
+  $script:ProgT = [DateTime]::UtcNow
+  $f = "$State\progress.txt"; $t = "$f.tmp"
+  [IO.File]::WriteAllText($t, "$Phase|$Done|$Total")
+  if (Test-Path $f) { [IO.File]::Replace($t, $f, [NullString]::Value) } else { [IO.File]::Move($t, $f) }
+}
 function Get-Mode { if (Test-Path "$State\mode-on") { 'on' } else { 'off' } }
 function Wait-Steam {
   # Steam restarts itself to apply an update about 5–6 min after a boot (bootstrap_log "Checking for available
@@ -160,17 +170,23 @@ switch ($Cmd) {
     foreach ($d in @($Derived | % { Get-ChildItem $_ -Directory -EA SilentlyContinue })) {
       foreach ($f in [IO.Directory]::EnumerateFiles($d.FullName, '*', 'AllDirectories')) { $want[$f.Substring($d.FullName.Length).ToLower()] = $f } }
     $vanilla = @{}; Get-Content "$Root\infra\vanilla-data-files.txt" | % { $vanilla[$_.ToLower()] = 1 }
-    $removed = 0
-    foreach ($f in @([IO.Directory]::EnumerateFiles("\\?\$Data", '*', 'AllDirectories'))) {
+    # what goes and what is laid are listed first, so the splash can count them (a file that goes is never wanted)
+    $gone = @(foreach ($f in @([IO.Directory]::EnumerateFiles("\\?\$Data", '*', 'AllDirectories'))) {
       $rel = $f.Substring($f.IndexOf('\Data\') + 5).ToLower()   # with its leading \, as $want's keys
-      if ($want.ContainsKey($rel) -or $vanilla[$rel.Substring(1)] -or $rel.StartsWith('\shadercache\')) { continue }
-      [IO.File]::SetAttributes($f, 'Normal'); [IO.File]::Delete($f); $removed++
+      if (-not ($want.ContainsKey($rel) -or $vanilla[$rel.Substring(1)] -or $rel.StartsWith('\shadercache\'))) { $f } })
+    $lay = @(foreach ($rel in $want.Keys) {
+      $f = $want[$rel]; $a = [IO.FileInfo]::new("\\?\$f"); $b = [IO.FileInfo]::new("\\?\$Data" + $f.Substring($f.Length - $rel.Length))
+      if (-not ($b.Exists -and $b.Length -eq $a.Length -and $b.LastWriteTimeUtc -eq $a.LastWriteTimeUtc)) { $rel } })
+    $total = $gone.Count + $lay.Count; $done = 0
+    if ($total) { Set-Progress files 0 $total -Force }
+    $removed = 0
+    foreach ($f in $gone) {
+      [IO.File]::SetAttributes($f, 'Normal'); [IO.File]::Delete($f); $removed++; $done++; Set-Progress files $done $total
     }
-    $n = 0; $kept = 0
-    foreach ($rel in $want.Keys) {
+    $n = 0; $kept = $want.Count - $lay.Count
+    foreach ($rel in $lay) {
       $f = $want[$rel]; $dst = "\\?\$Data" + $f.Substring($f.Length - $rel.Length)  # the mod's or derived folder's own case
-      $a = [IO.FileInfo]::new("\\?\$f"); $b = [IO.FileInfo]::new($dst)
-      if ($b.Exists -and $b.Length -eq $a.Length -and $b.LastWriteTimeUtc -eq $a.LastWriteTimeUtc) { $kept++; continue }
+      $b = [IO.FileInfo]::new($dst); $done++; Set-Progress files $done $total
       [void][IO.Directory]::CreateDirectory([IO.Path]::GetDirectoryName($dst))
       if ($b.Exists) { [IO.File]::SetAttributes($dst, 'Normal'); [IO.File]::Delete($dst) }
       if (-not [HL]::CreateHardLink($dst, "\\?\$f", [IntPtr]::Zero)) { throw "link failed: $f" }
@@ -222,12 +238,15 @@ switch ($Cmd) {
     foreach ($k in $Keep) { if (Test-Path "$Data\$k") {
       New-Item -ItemType Directory -Force (Split-Path "$State\keep\$k") | Out-Null; Copy-Item "$Data\$k" "$State\keep\$k" -Force } }
     $vanilla = @{}; Get-Content "$Root\infra\vanilla-data-files.txt" | % { $vanilla[$_.ToLower()] = 1 }
-    $removed = 0
+    $removed = 0; $done = 0
     # The \\?\ form reaches paths that ordinary Windows paths cannot (names ending in a dot or space); .NET's
     # enumeration, not cmd's dir, whose OEM code page mangled non-ASCII names so they were never removed (2026-10-29).
-    foreach ($f in @([IO.Directory]::EnumerateFiles("\\?\$Data", '*', 'AllDirectories'))) {
+    $gone = @(foreach ($f in @([IO.Directory]::EnumerateFiles("\\?\$Data", '*', 'AllDirectories'))) {
       $rel = $f.Substring($f.IndexOf('\Data\') + 6).ToLower()
-      if ($vanilla[$rel] -or $rel.StartsWith('shadercache\')) { continue }
+      if (-not ($vanilla[$rel] -or $rel.StartsWith('shadercache\'))) { $f } })
+    if ($gone.Count) { Set-Progress files 0 $gone.Count -Force }
+    foreach ($f in $gone) {
+      $rel = $f.Substring($f.IndexOf('\Data\') + 6).ToLower(); $done++; Set-Progress files $done $gone.Count
       try { [IO.File]::SetAttributes($f, 'Normal'); [IO.File]::Delete($f); $removed++ } catch { "not removed: $rel ($($_.Exception.Message))" }
     }
     Get-ChildItem $Data -Recurse -Directory | Sort { $_.FullName.Length } -Descending |
@@ -425,8 +444,9 @@ public static class ParHash {
       break
     }
     Set-GameWindow
-    Start-Process powershell.exe -WindowStyle Hidden -ArgumentList '-ExecutionPolicy', 'Bypass', '-File', "$Root\infra\splash.ps1", '-Parent', $PID
-    if ($Cmd -eq 'play-vanilla') { & $PSCommandPath off; Wait-Steam | Out-Null; Start-Process "$Game\SkyrimSE.exe" -WorkingDirectory $Game }
+    Remove-Item "$State\progress.txt" -Force -EA SilentlyContinue
+    Start-Process powershell.exe -WindowStyle Hidden -ArgumentList '-ExecutionPolicy', 'Bypass', '-File', "$Root\infra\splash.ps1", '-Parent', $PID, '-World', $(switch ($Cmd) { 'play-newworld' { 'NewWorld' } 'play-vanilla' { 'vanilla' } default { 'Argonia' } })
+    if ($Cmd -eq 'play-vanilla') { & $PSCommandPath off; Set-Progress done 0 0 -Force; Wait-Steam | Out-Null; Start-Process "$Game\SkyrimSE.exe" -WorkingDirectory $Game }
     else {
       & $PSCommandPath on -World $(if ($Cmd -eq 'play-newworld') { 'NewWorld' } else { 'Argonia' })
       # our own plugin, its ini and scripts are laid by `on` itself (above), so Data is checkable before a launch
@@ -434,6 +454,7 @@ public static class ParHash {
       $cs = "$Data\SKSE\Plugins\CommunityShaders.dll"
       if ($Shaders -eq 'off' -and (Test-Path $cs)) { Remove-Item -LiteralPath $cs -Force; 'community shaders: off (DLL set aside)' }
       elseif ($Shaders) { "community shaders: $(if (Test-Path $cs) { 'on' } else { 'on asked, DLL not in the profile' })" }
+      Set-Progress done 0 0 -Force
       Wait-Steam | Out-Null
       Start-Process "$Game\skse64_loader.exe" -WorkingDirectory $Game
     }
