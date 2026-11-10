@@ -94,7 +94,10 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
 
     # --- refs ---
     ledger: list[dict] = []
-    replace = io.nordic_replace(dec, bases)
+    refused: list[str] = []
+    replace = io.nordic_replace(dec, bases, refused=refused)
+    for m in refused:
+        print(f"draft {place_id}: {m}")
     drop = dec.get("drop") or {}
     # no cluster's piece in another's: the smaller cluster steps clear
     fit.separated = overlap.separate(sc, fit, clusters, by_src, bases,
@@ -129,8 +132,7 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
         cx = fit.per[cid]
         seat = seating.infer(r, [by_src[i] for i in cl_by[cid].members], bases, S, False)
         x, y = cx.pt(r["pos"][0], r["pos"][1])
-        rot = list(r.get("rot") or [0, 0, 0])
-        rot[2] = round(cx.yaw(rot[2]), 5)
+        rot = cx.rot3(r.get("rot"))
         rep = replace.get(r["base"])
         al = None
         if rep:
@@ -535,7 +537,8 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
         return out
 
     # a door that opens onto the water (on a ship or a pier) is reached over the source's own walkways from the
-    # landing, not by a street: its link is laid as the source's line and marked a walkway
+    # landing, not by a street: its link is laid as the source's line and marked a walkway; where our water parts
+    # what the source's walkways joined (a wet stretch no placed solid stands over), walkway pieces carry it
     afloat = {n for n, p in nodes_our.items() if n != "landing" and G.wet(p[0], p[1], 16)}
     paths_src, paths_our = [], []
     for k, (a, b, pts) in enumerate(edges):
@@ -545,6 +548,7 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
             paths_our.append({"id": f"{place_id}.path.{k + 1:02d}", "kind": "walkway",
                               "points": [[round(p[0], 1), round(p[1], 1)] for p in line], "width": PATH_WIDTH,
                               "style": "boardwalk", "from": a, "to": b, "laid": "the source's walkway, mapped"})
+            bridges.extend(bridge_over(line, k))
             continue
         street = sum(nav.pref[nav.nearest(p)] for p in pts[1:-1]) * 2 >= max(1, len(pts) - 2) if nav else True
         width = paths_mod.width_from_paint(pts, paint_grid, STREET_WIDTH if street else PATH_WIDTH)
@@ -579,7 +583,7 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
         # one arrives on dry ground clear of every placed thing's body (geom.stands_in, the build's own test): step
         # out along the way out, then round it. A door standing on a thing (a ship's hatch) lands one on that thing.
         sup = our_by_id.get(ext_door["seat"].get("on")) if ext_door["seat"].get("mode") == "on" else None
-        near = [r for r in our if r.get("kind") in geom.SOLID_KINDS and r is not ext_door and r is not sup
+        near = [r for r in our + bridges if r.get("kind") in geom.SOLID_KINDS and r is not ext_door and r is not sup
                 and math.dist(r["pos"][:2], ext_door["pos"][:2]) < 4096]
 
         def stand_z(q):

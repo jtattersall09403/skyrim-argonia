@@ -11,7 +11,7 @@ import json
 import math
 from pathlib import Path
 
-from tools.places.draft import geom, interiors, io, overlap, people, reach
+from tools.places.draft import geom, interiors, io, people
 from tools.places.draft import paths as paths_mod
 from tools.places.draft.geom import LEVELLED
 from tools.places.draft.fit import relief_allowed
@@ -110,45 +110,6 @@ def check(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, g
         sid = d["door"]["to_space"]
         if not (pdir / "spaces" / sid / "space.json").exists():
             bad.append(f"door {d['id']} leads to {sid}, which is not drafted")
-
-    # 5b. nothing stands inside another where the source did not have it so (the build's overlap rule)
-    hits = overlap.pairs(refs, bases)
-    summary["overlaps"] = len(hits)
-    for a, b in hits:
-        bad.append(f"{a['id']} ({a['kind']}{', added' if not a.get('src') else ''}) stands inside {b['id']} "
-                   f"({b['kind']}{', added' if not b.get('src') else ''})")
-
-    # 5b'. inside a room: what the draft added stands in none of the room's things (its shell and walls hold it)
-    for sdir in sorted((pdir / "spaces").iterdir()):
-        sj = sdir / "space.json"
-        if sdir.name == "exterior" or not sj.exists() or not (sdir / "refs.jsonl").exists():
-            continue
-        ov = io.read_jsonl(sdir / "refs.jsonl")
-        sjd = json.loads(sj.read_text())
-        copy_of = sjd["copy_of"].split("/", 1)[1]
-        by_s = {o.get("src"): o for o in ov if o.get("src")}
-        keep = interiors.kept(sjd["copy_of"], sjd.get("room"))
-        room = [by_s.get(r["id"], r) for r in src.spaces[copy_of].refs if keep is None or r["id"] in keep]
-        things = [t for t in room if t.get("kind") in overlap.SOLID - {"building", "static"}]
-        for a in (o for o in ov if not o.get("src") and o.get("kind") in overlap.SOLID):
-            for t in things:
-                if overlap.inside(a["pos"], t, bases) or overlap.inside(t["pos"], a, bases):
-                    bad.append(f"{a['id']} (added, {sdir.name}) and {t['id']} stand in each other")
-
-    # 5c. every person's day walkable: each stop reached from the one before, on walkable ground or furniture
-    spaces = {}
-    for sdir in sorted((pdir / "spaces").iterdir()):
-        if sdir.name != "exterior" and (sdir / "space.json").exists():
-            ov = io.read_jsonl(sdir / "refs.jsonl") if (sdir / "refs.jsonl").exists() else []
-            spaces[sdir.name] = {**json.loads((sdir / "space.json").read_text()),
-                                 "overrides": [{"id": i} for o in ov for i in (o["id"], o.get("src")) if i],
-                                 "doors": [o for o in ov if o.get("door")]}
-    arrivals = reach.arrival_faults(refs, spaces, bases, paths, G)
-    cut = {x.split()[1] for x in arrivals if x.startswith("door ")} | {
-        spaces[x.split()[1]].get("door_from") for x in arrivals if x.startswith("room ")}
-    unreached = reach.check(folk, refs, spaces, bases, paths, G, lambda d: d in reached and d not in cut)
-    summary["unreachable_stops"] = len(unreached)
-    bad += arrivals + unreached
 
     # 6. services, beds, people
     given = {(g["seq"]) for p in folk for g in p.get("services") or []}
@@ -346,11 +307,6 @@ def check(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, g
             bad.append(f"door {d['id']} arrival is off our ground")
         elif G.wet(a[0], a[1], 16) and not G.wet(d["pos"][0], d["pos"][1], 16):
             bad.append(f"door {d['id']} arrival is in the water")
-        sup = d["seat"].get("on") if d["seat"].get("mode") == "on" else None
-        for r in refs:
-            if r.get("kind") in geom.SOLID_KINDS and r is not d and r["id"] != sup \
-                    and math.dist(r["pos"][:2], a[:2]) < 4096 and geom.stands_in(r, bases, a):
-                bad.append(f"door {d['id']} arrival is inside {r['id']} ({r['kind']})")
         pl = geom.plane(bases.get(d["base"]) or {})
         if pl and math.dist(a[:2], d["pos"][:2]) > 16:
             n_ = geom.turn((1.0, 0.0) if pl["axis"] == 0 else (0.0, 1.0), d["rot"][2])
@@ -412,26 +368,29 @@ def round_trip(place_id: str, places: Path = io.PLACES) -> list[str]:
                 and (not (pdir / f.relative_to(td)).exists() or (pdir / f.relative_to(td)).read_bytes() != f.read_bytes())]
 
 
-def build_plan(place_id: str) -> list[str]:
-    """The build's own validation of the place files (`build <place_id> --plan`), when the build has it."""
-    import subprocess
-    import sys
-    b = io.ROOT / "tools" / "places" / "build.py"
-    if not b.exists() or "--plan" not in b.read_text():
-        return []
-    p = subprocess.run([sys.executable, "-m", "tools.places", "build", place_id, "--plan"], cwd=io.ROOT,
-                       capture_output=True, text=True)
-    if p.returncode == 0:
-        return []
-    lines = [x.strip() for x in (p.stdout + p.stderr).splitlines() if x.strip()]
-    return [f"build plan: {x}" for x in lines[-40:]] or [f"build plan failed ({p.returncode})"]
+def build_check(place_id: str, places: Path = io.PLACES) -> list[str]:
+    """The build's own checks on this draft: the place built as `draft.walk.network` builds it (cached by the place
+    files' key), then every check of `tools/places/check.py` on that plugin. The same code as `check <place_id>` on
+    the real build, so a draft that passes here passes there."""
+    from tools.places import check as C
+    from tools.places.draft import walk
+    ctx, bad = walk.network(place_id, places)
+    if ctx is None:
+        return bad
+    res = C.run(ctx)
+    summary["build_check"] = {k: len(v) for k, v in res.items()}
+    full = walk.CHECK_OUT / "shards" / place_id / "check_failures"
+    full.mkdir(parents=True, exist_ok=True)
+    for k, v in res.items():
+        (full / f"{k}.txt").write_text("".join(f"{f}\n" for f in v))
+    return bad + [f"check {k}: {f}" for k, v in res.items() for f in v]
 
 
 def main(argv: list[str]) -> int:
     if len(argv) != 1:
         print("usage: python -m tools.places draft check <place_id>")
         return 2
-    bad = check(argv[0]) + round_trip(argv[0]) + build_plan(argv[0])
+    bad = check(argv[0]) + round_trip(argv[0]) + build_check(argv[0])
     for b in bad[:200]:
         print("FAIL", b)
     if len(bad) > 200:

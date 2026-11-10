@@ -126,12 +126,37 @@ def place_bases(src: "Bundle", grd: "Bundle", place: dict) -> dict[str, dict]:
     return {k: ({**b, "nordic": is_nordic(k, b, review)} if k in review else b) for k, b in bases.items()}
 
 
-def nordic_replace(dec: dict, bases: dict, review: dict[str, dict] | None = None) -> dict[str, dict]:
+WALKED = re.compile(r"dock|step|stair|bridge|walkway|plank|pier|ramp|boardwalk", re.I)
+WALK_TOP_TOL = 32.0  # units: a walked piece's replacement keeps its walking top within this
+
+
+def keeps_function(old: dict, new: dict) -> bool:
+    """A replacement keeps what its original does: a piece people walk on (docks, steps, bridges, walkways, by editor
+    id or model) is replaced only by one whose walking top stands where the original's did (steps stay steps)."""
+    if not WALKED.search(f"{old.get('edid') or ''} {old.get('model') or ''}"):
+        return True
+    a, b = old.get("bounds"), new.get("bounds")
+    return bool(a and b and abs(a[1][2] - b[1][2]) <= WALK_TOP_TOL and abs(a[0][2] - b[0][2]) <= 4 * WALK_TOP_TOL)
+
+
+def nordic_replace(dec: dict, bases: dict, review: dict[str, dict] | None = None,
+                   refused: list | None = None) -> dict[str, dict]:
     """{source base: {base, turn_deg?}}: the review's standard replacement for each Nordic base, then the place's own
-    `draft.replace` over it (a place may also swap a neutral base by taste)."""
+    `draft.replace` over it. A replacement is never applied to a base the review calls neutral, nor one that does not
+    keep the original's function (`keeps_function`); each refused one is listed in `refused`."""
     review = nordic_review() if review is None else review
     out = {k: dict(v["replace"]) for k, v in review.items() if v["verdict"] == "nordic" and v.get("replace")}
     out.update({k: (v if isinstance(v, dict) else {"base": v}) for k, v in (dec.get("replace") or {}).items()})
+    for k in list(out):
+        why = None
+        if (review.get(k) or {}).get("verdict") == "neutral":
+            why = "the Nordic review calls it neutral"
+        elif k in bases and out[k]["base"] in bases and not keeps_function(bases[k], bases[out[k]["base"]]):
+            why = "the replacement does not keep its walking top"
+        if why:
+            del out[k]
+            if refused is not None:
+                refused.append(f"replace {k} -> refused: {why}")
     return out
 
 

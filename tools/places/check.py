@@ -54,15 +54,36 @@ NOT_A_PLACE_SERVICE = {"combat-foes", "combat-boss", "combat-creature", "treasur
 
 # ---- geometry -------------------------------------------------------------------------------------------------------
 
-def obb_contains(ref: dict, p, shrink: float = 1.0) -> bool:
+def obb_contains(ref: dict, p, shrink: float = 1.0, pad: float = 0.0, z: bool = True) -> bool:
+    """Whether point p stands inside ref's record box (bounds [x0, y0, z0, x1, y1, z1]) under its full three-axis
+    rotation and scale: shrunk in plan by `shrink`, widened in plan by `pad` units; the full height (origins sit on
+    the floor), or any height when z is False. The one overlap geometry: the drafter's `overlap.inside` calls it."""
     b = ref.get("bounds")
     if not b:
         return False
-    R = B.rotation(*ref["rot"]) * float(ref.get("scale") or 1.0)
-    local = np.linalg.solve(R, np.asarray(p, float) - np.asarray(ref["pos"], float))
+    s = float(ref.get("scale") or 1.0)
+    R = B.rotation(*(ref.get("rot") or [0, 0, 0]))
+    q = list(p) + [ref["pos"][2]] * (3 - len(p))
+    local = R.T @ (np.asarray(q[:3], float) - np.asarray(ref["pos"], float)) / s
     lo, hi = np.array(b[:3], float), np.array(b[3:], float)
-    c, h = (lo + hi) / 2, (hi - lo) / 2 * np.array([shrink, shrink, 1.0])  # shrunk in plan; the full height (origins sit on the floor)
-    return bool(np.all(np.abs(local - c) <= h + np.array([0.0, 0.0, 1.0])))
+    c, h = (lo + hi) / 2, (hi - lo) / 2 * np.array([shrink, shrink, 1.0]) + np.array([pad, pad, 0.0]) / s
+    ok = np.abs(local - c) <= h + np.array([0.0, 0.0, 1.0])
+    return bool(ok[0] and ok[1] and (ok[2] or not z or len(p) < 3))
+
+
+ON_TOP = 16.0  # units: a point this near a thing's top stands on it, not in it
+
+
+def stands_inside(ref: dict, p, shrink: float = OVERLAP_SHRINK) -> bool:
+    """Whether a standing point (an arrival, a stop) is inside ref's body: within `shrink` of its box in plan and
+    below its top by more than ON_TOP (one standing on a deck or a roof is on it, not in it). The drafter's
+    `geom.stands_in` calls this."""
+    b = ref.get("bounds")
+    if not b or not obb_contains(ref, p, shrink, 0.0, False):
+        return False
+    s = float(ref.get("scale") or 1.0)
+    local = B.rotation(*(ref.get("rot") or [0, 0, 0])).T @ (np.asarray(p[:3], float) - np.asarray(ref["pos"], float)) / s
+    return bool(b[2] - 1.0 <= local[2] < b[5] - ON_TOP / s)
 
 
 def point_seg(p, a, b) -> float:
@@ -295,24 +316,39 @@ def check_seat(ctx) -> list[str]:
     return bad
 
 
+def overlap_pairs(things: list[dict], pad: float = 0.0, z: bool = True) -> list[tuple[dict, dict]]:
+    """Every (a, b) of solids in one space where a's origin stands inside b's box and the source did not have them so.
+    Each thing: {id, kind, space, pos, rot, scale, bounds, src?, cluster?, seat?}. The one overlap rule: `check` runs it
+    on the plugin's read-back, the drafter on its rows (bounds from its bundle) while fitting and in `draft check`."""
+    grid: dict = defaultdict(list)
+    solid = [t for t in things if t.get("kind") in SOLID]
+    for b in solid:
+        bb = b.get("bounds")
+        if not bb:
+            continue
+        rad = math.sqrt(sum(max(abs(bb[i]), abs(bb[i + 3])) ** 2 for i in range(3))) * float(b.get("scale") or 1.0) + pad
+        x, y = b["pos"][0], b["pos"][1]
+        for i in range(math.floor((x - rad) / 1024), math.floor((x + rad) / 1024) + 1):
+            for j in range(math.floor((y - rad) / 1024), math.floor((y + rad) / 1024) + 1):
+                grid[(b["space"], i, j)].append(b)
+    out = []
+    for a in solid:
+        for b in grid.get((a["space"], math.floor(a["pos"][0] / 1024), math.floor(a["pos"][1] / 1024)), ()):
+            if a is b or a.get("id") == b.get("id"):
+                continue
+            if a["space"] != "exterior" and b.get("kind") in ("building", "static"):
+                continue  # an interior's shell and walls hold the room
+            if obb_contains(b, a["pos"], OVERLAP_SHRINK, pad, z) and not _source_had(a, b):
+                out.append((a, b))
+    return out
+
+
 def check_overlap(ctx) -> list[str]:
     m = mine(ctx)
     rows = m["rows"]
-    refs = [r for r in m["refs"].values() if rows.get(r["fk"], {}).get("kind") in SOLID]
-    bad = []
-    by_space = defaultdict(list)
-    for r in refs:
-        by_space[r["space"]].append(r)
-    for sp, rs in by_space.items():
-        for a in rs:
-            for b in rs:
-                if a is b or not b.get("bounds"):
-                    continue
-                if sp != "exterior" and rows.get(b["fk"], {}).get("kind") in ("building", "static"):
-                    continue  # an interior's shell and walls hold the room
-                if obb_contains(b, a["pos"], OVERLAP_SHRINK) and not _source_had(rows.get(a["fk"], {}), rows.get(b["fk"], {})):
-                    bad.append(f"{rows[a['fk']]['id']} stands inside {rows[b['fk']]['id']}")
-    return bad
+    things = [{**rows[r["fk"]], "space": r["space"], "pos": r["pos"], "rot": r["rot"], "scale": r.get("scale"),
+               "bounds": r.get("bounds")} for r in m["refs"].values() if r["fk"] in rows]
+    return [f"{a['id']} stands inside {b['id']}" for a, b in overlap_pairs(things)]
 
 
 def _source_had(a: dict, b: dict) -> bool:
@@ -356,7 +392,7 @@ def check_doors(ctx) -> list[str]:
             kinds = SOLID if space == "exterior" else SOLID - {"building", "static"}  # an interior's shell holds the room
             if o["fk"] == stands_on:
                 continue  # the thing the door stands on (its own building) holds the door, not the arrival
-            if o["space"] == space and o["fk"] != r["fk"] and m["rows"].get(o["fk"], {}).get("kind") in kinds and obb_contains(o, at, OVERLAP_SHRINK):
+            if o["space"] == space and o["fk"] != r["fk"] and m["rows"].get(o["fk"], {}).get("kind") in kinds and stands_inside(o, at):
                 bad.append(f"door {rid}: its arrival point is inside {m['rows'].get(o['fk'], {}).get('id', o['fk'])}")
     return bad
 
@@ -811,6 +847,50 @@ def check_levelled(ctx) -> list[str]:
     return [f"levelled: {x}" for x in ctx["dump"]["levelled"]]
 
 
+def island_report(ctx, person: str | None = None) -> list[str]:
+    """The walkable islands of the built place (navmesh triangles joined by edges, edge links and paired doors): per
+    island its triangles, doors, routine stops and people, the main one first; with `person`, each leg of that
+    person's day and the islands its two stops are on. The studio and the lessons agent read the same lines."""
+    comp = components(ctx["navs"], door_pairs(ctx))
+    sizes = defaultdict(int)
+    for c in comp.values():
+        sizes[c] += 1
+    m = mine(ctx)
+    info = defaultdict(lambda: {"doors": set(), "stops": 0, "people": set(), "spaces": set()})
+    for n in ctx["navs"].values():
+        for ti, d in n.doors:
+            if d in m["rows"]:
+                info[comp[(n.fk, ti)]]["doors"].add(m["rows"][d]["id"].split(".")[-1][:6])
+    allrefs = {r["fk"]: r for r in ctx["dump"]["refs"]}
+    pk = {p["fk"]: p for p in ctx["dump"]["packages"]}
+    legs = []
+    for n in (ctx["plan"].get("people") or {}).get("npcs", []):
+        got = m["npcs"].get(n["fk"])
+        prev = None
+        for k in (got or {}).get("packages", []):
+            p = pk.get(k) or {}
+            r = allrefs.get(p.get("location") or p.get("target"))
+            if r is None:
+                continue
+            nd = next(((nv.fk, t) for nv in ctx["navs"].values() if nv.space == r["space"]
+                       for t in [nv.tri_at(r["pos"])] if t >= 0), None)
+            c = comp.get(nd)
+            info[c]["stops"] += 1
+            info[c]["people"].add(n["id"])
+            info[c]["spaces"].add(r["space"])
+            if person and n["id"].endswith(person):
+                legs.append(f"  {p.get('edid')}: {r['space']} {[round(v) for v in r['pos']]} on island "
+                            f"{sizes.get(c, 0)} tris{' (not reachable from the stop before)' if prev is not None and prev != c else ''}")
+            prev = c
+    main = max(sizes, key=sizes.get) if sizes else None
+    out = []
+    for c in sorted(info, key=lambda c: (c != main, -sizes.get(c, 0))):
+        i = info[c]
+        out.append(f"island {sizes.get(c, 0)} tris{' (main)' if c == main else ''}: doors {sorted(i['doors'])}, "
+                   f"{i['stops']} stops of {len(i['people'])} people, spaces {sorted(i['spaces'])}")
+    return out + legs
+
+
 CHECKS = {"plugin": check_plugin, "seat": check_seat, "overlap": check_overlap, "doors": check_doors, "people": check_people,
           "navmesh": check_navmesh, "land": check_land, "clear": check_clear, "services": check_services,
           "nordic": check_nordic, "levelled": check_levelled}
@@ -826,9 +906,14 @@ def main(argv: list[str]) -> int:
     ap.add_argument("--out", default=str(B.OUT))
     ap.add_argument("--places-dir", default=str(B.PLACES))
     ap.add_argument("--json", action="store_true")
+    ap.add_argument("--reach", nargs="?", const="", default=None, metavar="PERSON",
+                    help="only the island report (and one person's legs): what is cut off from what")
     a = ap.parse_args(argv)
     t0 = time.time()
     ctx = load(a.place_id, Path(a.out))
+    if a.reach is not None:
+        print("\n".join(island_report(ctx, a.reach or None)))
+        return 0
     ctx["place_dir"] = Path(a.places_dir) / a.place_id
     res = run(ctx)
     counts = ctx["dump"]["counts"]

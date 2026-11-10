@@ -1,7 +1,7 @@
-"""The draft's overlap rule (the build's), the fit's separation pass and routine reachability."""
+"""The draft's overlap rule (the build's own functions) and the fit's separation pass."""
 import math
 
-from tools.places.draft import geom, overlap, reach
+from tools.places.draft import geom, overlap
 from tools.places.seat import Ground
 
 BOX = {"bounds": [[-100, -100, 0], [100, 100, 100]], "model": "x/box.nif"}
@@ -72,37 +72,25 @@ def test_separate_moves_the_smaller_cluster_clear():
     assert fit.per["A"].pt(0, 0) == (0, 0)
 
 
-def test_reach_stop_walled_in_and_open():
-    G = flat(0.0)
-    street = [{"id": "p", "points": [[-1500, 0], [-1000, 0]], "width": 256}]
-    ring = [ref(f"w{k}", 300 * math.sin(k * math.pi / 8), 300 * math.cos(k * math.pi / 8), kind="building")
-            for k in range(16)]
-    person = {"id": "x", "role": "resident", "routine": [{"at": {"space": "exterior", "pos": [0, 0]}},
-                                                          {"at": {"space": "exterior", "pos": [-1200, 0]}}]}
-    assert reach.check([person], [], {}, BASES, street, G, lambda d: True) == []
-    walled = reach.check([person], ring, {}, BASES, street, G, lambda d: True)
-    assert len(walled) == 1 and "no walk" in walled[0]
+def test_inside_turns_with_full_rotation():
+    """A piece flipped about X (rot[0] = pi) has its box below its origin: the build's geometry, not the yaw alone."""
+    flipped = ref("f", 0, 0, z=100.0)
+    flipped["rot"] = [math.pi, 0, 0]
+    assert overlap.inside([0, 0, 50], flipped, BASES)          # inside the flipped box, under the origin
+    assert not overlap.inside([0, 0, 150], flipped, BASES)     # where the unflipped box would be
 
 
-def test_reach_room_behind_an_unreached_door():
-    G = flat(0.0)
-    person = {"id": "x", "role": "resident", "routine": [{"at": {"space": "room", "radius": 1024}}]}
-    spaces = {"room": {"door_from": "d", "parent": "exterior", "copy_of": None, "room": None}}
-    assert reach.check([person], [], spaces, BASES, [], G, lambda d: True) == []
-    bad = reach.check([person], [], spaces, BASES, [], G, lambda d: False)
-    assert len(bad) == 1 and "reached by no street" in bad[0]
+def test_standing_on_a_top_is_not_inside():
+    deck = ref("d", 0, 0)
+    assert geom.stands_in(deck, BASES, (0, 0, 50))
+    assert not geom.stands_in(deck, BASES, (0, 0, 100))        # on its top
 
 
-def test_arrival_needs_a_door_pair_and_ground():
-    G = flat(0.0)
-    street = [{"id": "p", "points": [[0, -400], [0, 400]], "width": 256}]
-    door = ref("d", 100, 0, kind="door", base="small",
-               door={"to_space": "room", "to_ref": "i", "arrival": [150, 0, 0]})
-    inner = {"id": "i", "door": {"to_space": "exterior", "to_ref": "d"}}
-    spaces = {"room": {"door_from": "d", "parent": "exterior", "doors": [inner]}}
-    assert reach.arrival_faults([door], spaces, BASES, street, G) == []
-    spaces["room"]["doors"] = []
-    assert "no door pair" in reach.arrival_faults([door], spaces, BASES, street, G)[0]
-    spaces["room"]["doors"] = [inner]
-    door["door"]["arrival"] = [150, 0, 400]          # high on something no walkway carries
-    assert "on no walkway" in reach.arrival_faults([door], spaces, BASES, street, G)[0]
+def test_fit_turns_tilted_refs_about_the_world_axis():
+    from tools.places import xform
+    xf = geom.Xf((0, 0), (0, 0), 0.7)
+    r = [3.01, -0.03, 0.64]
+    p = [100.0, 50.0, 30.0]
+    a = xform.apply(xform.matrix([0, 0, 0], r), p)
+    b = xform.apply(xform.matrix([0, 0, 0], xf.rot3(r)), p)
+    assert math.dist(xf.pt(a[0], a[1]), b[:2]) < 0.01 and abs(a[2] - b[2]) < 0.01

@@ -180,8 +180,23 @@ def test_nordic_review_outranks_the_folder_rule(tmp_path):
     assert not dio.is_nordic("A:1", {"nordic": True}, rv)
     assert dio.is_nordic("A:2", {"nordic": False}, rv)
     assert dio.is_nordic("A:3", {"nordic": True}, rv)        # unreviewed: the folder rule stands
-    rep = dio.nordic_replace({"replace": {"A:5": "K:5"}}, {}, rv)
-    assert rep == {"A:2": {"base": "K:9"}, "A:5": {"base": "K:5"}}
+    refused = []
+    rep = dio.nordic_replace({"replace": {"A:5": "K:5", "A:1": "K:1"}}, {}, rv, refused)
+    assert rep == {"A:2": {"base": "K:9"}, "A:5": {"base": "K:5"}}   # never over a neutral verdict
+    assert refused == ["replace A:1 -> refused: the Nordic review calls it neutral"]
+
+
+def test_a_replacement_keeps_the_walking_top():
+    from tools.places.draft import io as dio
+    steps = {"edid": "DockStepsDown02", "bounds": [[-258, -150, -508], [257, 157, 190]]}
+    flat = {"edid": "DLC2RRDockStr02", "bounds": [[-158, -269, -440], [153, 287, 74]]}
+    steps2 = {"edid": "OtherSteps", "bounds": [[-200, -150, -480], [200, 150, 180]]}
+    bases = {"A:7": steps, "K:7": flat, "K:8": steps2}
+    refused = []
+    assert dio.nordic_replace({"replace": {"A:7": "K:7"}}, bases, {}, refused) == {}
+    assert refused and "walking top" in refused[0]
+    assert dio.nordic_replace({"replace": {"A:7": "K:8"}}, bases, {}) == {"A:7": {"base": "K:8"}}
+    assert dio.keeps_function({"edid": "Lamp", "bounds": [[0, 0, 0], [1, 1, 300]]}, {"bounds": [[0, 0, 0], [1, 1, 10]]})
 
 
 def test_arrival_inside_a_body_but_not_on_top_of_it():

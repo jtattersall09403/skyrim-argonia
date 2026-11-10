@@ -1,14 +1,16 @@
-"""Overlap: one placed thing standing inside another, by the build's own rule (tools/places/check.py
-`check_overlap`): a solid's origin within OVERLAP_SHRINK of another solid's record box, unless the source had the pair
-in that pose (both copied and in one exterior cluster, or one seated on the other). The draft resolves every overlap it
-makes before writing, and `draft check` runs the build's test itself on the place files."""
+"""Overlap: one placed thing standing inside another, by the build's own rule and geometry (tools/places/check.py
+`overlap_pairs` and `obb_contains`: a solid's origin within OVERLAP_SHRINK of another solid's record box under its
+full three-axis rotation, unless the source had the pair in that pose). This module only feeds the drafter's rows
+(bounds from its bundle) to those functions and moves clusters apart; it has no geometry of its own for the test."""
 from __future__ import annotations
 
 import math
 from collections import defaultdict
 
-SOLID = {"building", "static", "furniture", "container", "door", "activator", "rock"}
-SHRINK = 0.8       # the build's OVERLAP_SHRINK
+from tools.places import check as C
+
+SOLID = C.SOLID
+SHRINK = C.OVERLAP_SHRINK
 CELL = 1024.0
 
 
@@ -21,59 +23,33 @@ def box(ref: dict, bases: dict) -> list | None:
     return [[v * s for v in b[0]], [v * s for v in b[1]]]
 
 
+def thing(ref: dict, bases: dict) -> dict:
+    """A row as the build's check sees it: its base's record bounds beside its pose."""
+    b = (bases.get(ref.get("base")) or {}).get("bounds")
+    return {**ref, "space": ref.get("space", "exterior"), "rot": ref.get("rot") or [0, 0, 0],
+            "bounds": list(b[0]) + list(b[1]) if b else None}
+
+
 def inside(p, ref: dict, bases: dict, z: bool = True, pad: float = 0.0) -> bool:
-    """Whether point p stands inside ref's record box (shrunk in plan as the build shrinks it; the full height when
-    z is tested). `pad` widens the box in plan (a margin for the drafter's own placements)."""
-    b = box(ref, bases)
-    if not b:
-        return False
-    rz = (ref.get("rot") or [0, 0, 0])[2]
-    dx, dy = p[0] - ref["pos"][0], p[1] - ref["pos"][1]
-    c, s = math.cos(rz), math.sin(rz)
-    u, v = dx * c - dy * s, dx * s + dy * c
-    cu, cv = (b[0][0] + b[1][0]) / 2, (b[0][1] + b[1][1]) / 2
-    hu, hv = (b[1][0] - b[0][0]) / 2 * SHRINK + pad, (b[1][1] - b[0][1]) / 2 * SHRINK + pad
-    if abs(u - cu) > hu or abs(v - cv) > hv:
-        return False
-    if not z or len(p) < 3:
-        return True
-    return ref["pos"][2] + b[0][2] <= p[2] <= ref["pos"][2] + b[1][2] + 1.0
+    """Whether point p stands inside ref's record box, by the build's `obb_contains`. `pad` widens it in plan."""
+    return C.obb_contains(thing(ref, bases), p, SHRINK, pad, z)
 
 
 def _reach(ref: dict, bases: dict) -> float:
     b = box(ref, bases)
     if not b:
         return 0.0
-    return math.hypot(max(abs(b[0][0]), abs(b[1][0])), max(abs(b[0][1]), abs(b[1][1])))
+    return math.sqrt(sum(max(abs(b[0][i]), abs(b[1][i])) ** 2 for i in range(3)))
 
 
-def source_had(a: dict, b: dict) -> bool:
-    """The build's exemption: seated one on the other, or both copied in one exterior cluster (moved as one)."""
-    if (a.get("seat") or {}).get("on") == b.get("id") or (b.get("seat") or {}).get("on") == a.get("id"):
-        return True
-    return bool(a.get("src") and b.get("src") and a.get("cluster") is not None and a.get("cluster") == b.get("cluster"))
+source_had = C._source_had
 
 
-def pairs(refs: list[dict], bases: dict, z: bool = True, exempt=source_had, pad: float = 0.0) -> list[tuple[dict, dict]]:
-    """Every (a, b): a's origin inside b's box, not exempt. Bucketed by cell so a town's thousands stay quick."""
-    solid = [r for r in refs if r.get("kind") in SOLID]
-    grid: dict[tuple[int, int], list[dict]] = defaultdict(list)
-    for b in solid:
-        rad = _reach(b, bases) + pad
-        if rad <= 0:
-            continue
-        x, y = b["pos"][0], b["pos"][1]
-        for i in range(math.floor((x - rad) / CELL), math.floor((x + rad) / CELL) + 1):
-            for j in range(math.floor((y - rad) / CELL), math.floor((y + rad) / CELL) + 1):
-                grid[(i, j)].append(b)
-    out = []
-    for a in solid:
-        for b in grid.get((math.floor(a["pos"][0] / CELL), math.floor(a["pos"][1] / CELL)), ()):
-            if a is b or a.get("id") == b.get("id"):
-                continue
-            if inside(a["pos"], b, bases, z, pad) and not exempt(a, b):
-                out.append((a, b))
-    return out
+def pairs(refs: list[dict], bases: dict, z: bool = True, pad: float = 0.0) -> list[tuple[dict, dict]]:
+    """Every (a, b) the build's check would report: a's origin inside b's box, the source not having them so."""
+    things = [thing(r, bases) for r in refs]
+    back = {id(t): r for t, r in zip(things, refs)}
+    return [(back[id(a)], back[id(b)]) for a, b in C.overlap_pairs(things, pad, z)]
 
 
 def foot_hits(a: dict, b: dict, bases: dict, pad: float = 0.0) -> bool:
@@ -151,8 +127,7 @@ def separate(sc, fit, clusters, by_src: dict, bases: dict, base_of, rounds: int 
             if not r or r.get("kind") not in SOLID:
                 continue
             x, y = xf.pt(r["pos"][0], r["pos"][1])
-            rot = list(r.get("rot") or [0, 0, 0])
-            rot[2] = xf.yaw(rot[2])
+            rot = xf.rot3(r.get("rot"))
             out.append({"id": rid, "base": base_of(r), "kind": r["kind"], "pos": [x, y, r["pos"][2]], "rot": rot,
                         "scale": r.get("scale") or 1.0, "cluster": c.id, "src": rid})
         return out
@@ -164,7 +139,7 @@ def separate(sc, fit, clusters, by_src: dict, bases: dict, base_of, rounds: int 
     tried: set = set()
     for _ in range(rounds):
         allp = [p for c in clusters for p in placed(c, fit.per[c.id])]
-        clash = pairs(allp, bases, z=False, exempt=lambda a, b: a["cluster"] == b["cluster"])
+        clash = pairs(allp, bases, z=False)
         if not clash:
             break
         progress = False
@@ -204,7 +179,7 @@ def separate(sc, fit, clusters, by_src: dict, bases: dict, base_of, rounds: int 
     # a clash no cluster step clears: the smaller piece of the pair gives way (left out, with the reason)
     allp = [p for c in clusters for p in placed(c, fit.per[c.id])]
     gone: set = set()
-    for a, b in pairs(allp, bases, z=False, exempt=lambda a, b: a["cluster"] == b["cluster"]):
+    for a, b in pairs(allp, bases, z=False):
         if a["id"] in gone or b["id"] in gone:
             continue
         area = {r["id"]: ((bx[1][0] - bx[0][0]) * (bx[1][1] - bx[0][1]) if (bx := box(r, bases)) else 0.0)

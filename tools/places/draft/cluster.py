@@ -1,6 +1,7 @@
 """Decompose a source place's exterior into clusters: each building with its yard, the landing, the streets.
 
-A cluster moves as one piece in the fit. Membership comes from links first (linked refs, enable parents and door
+A cluster moves as one piece in the fit. Pieces of one body (solids standing in each other in the source, by the
+build's geometry) always share a cluster. Membership comes from links (linked refs, enable parents and door
 pairs follow the ref they belong to), then from space: a thing belongs to the nearest building whose footprint it
 stands within `YARD` of; things over the source's water join the landing; everything else forms street clusters by
 single linkage. Plants and rocks never seed a cluster: inside a yard or a street they are the source's own planting
@@ -104,6 +105,22 @@ def decompose(refs: list[dict], bases: dict, g: Ground) -> tuple[list[Cluster], 
             group[i] = group[group[i]]
             i = group[i]
         return i
+    # one body: solids standing in each other in the source (a dome over its entrance, windows set in it, by the
+    # build's own geometry and full rotation) move as one; seeds of one body are one building
+    from tools.places.draft import overlap
+    body = {r["id"]: r["id"] for r in refs if r.get("kind") in overlap.SOLID}
+
+    def broot(i):
+        while body[i] != i:
+            body[i] = body[body[i]]
+            i = body[i]
+        return i
+    for a, b in overlap.pairs([r for r in refs if r["id"] in body and not over_water(r)], bases):
+        body[broot(a["id"])] = broot(b["id"])
+    for a_i, a in enumerate(seeds):
+        for b in seeds[a_i + 1:]:
+            if broot(a["id"]) == broot(b["id"]):
+                group[root(b["id"])] = root(a["id"])
     for a_i, a in enumerate(seeds):
         ra = geom.radius(a, bases)
         for b in seeds[a_i + 1:]:
@@ -169,6 +186,18 @@ def decompose(refs: list[dict], bases: dict, g: Ground) -> tuple[list[Cluster], 
         clusters[cid] = Cluster(cid, "street", [])
         for i in comp:
             of[i] = cid
+    # every piece of one body in the cluster of its building (else of its biggest piece)
+    bodies: dict[str, list[str]] = {}
+    for i in body:
+        if i in of:
+            bodies.setdefault(broot(i), []).append(i)
+    for members in bodies.values():
+        head = next((i for i in sorted(members) if i in seed_ids), None) or \
+            max(sorted(members), key=lambda i: geom.radius(by_id[i], bases))
+        for i in members:
+            if of[i] != of[head] and of[i] in clusters and i in clusters[of[i]].members:
+                clusters[of[i]].members.remove(i)
+            of[i] = of[head]
     # 5. plants: the source's own planting inside a yard or a street; wild otherwise
     wild: dict[str, str] = {}
     placed_pts = [(pos[i], c) for i, c in of.items()]
@@ -191,7 +220,7 @@ def decompose(refs: list[dict], bases: dict, g: Ground) -> tuple[list[Cluster], 
     for c in clusters.values():
         c.members.sort()
         pts = [pos[i] for i in c.members]
-        if c.kind not in ("building",):
+        if c.kind not in ("building",) and pts:
             c.centre = (sum(p[0] for p in pts) / len(pts), sum(p[1] for p in pts) / len(pts))
         for i in c.members:
             r = by_id[i]

@@ -174,7 +174,7 @@ people.jsonl           one person per line: {id, name, base_from, role, home, be
                        routine:[{start, hours, kind, at, days?}], patrol?: {points:[[x,y] | stop...], loop}}.
                        A stop (`at`, `bed`, `work`, a patrol point) is {space, ref | pos, radius}: `ref` our id or a
                        source key of that space; `pos` [x,y] (seated on the ground) or [x,y,z]; neither: the
-                       space's first furniture. `bed` a stop or null; `kind` sleep|work|wander|sandbox|eat|patrol (a
+                       space's arrival point (where its load door lands one), else its first furniture. `bed` a stop or null; `kind` sleep|work|wander|sandbox|eat|patrol (a
                        patrol stop's route is `patrol`). services: [{kind | give_kind_id, detail, skill?, level?,
                        room_bed?}]; faction_ranks: [{faction: a form key or <place_id>.<name>, rank}]. Any other
                        shape is a problem `build --plan` lists, never a crash
@@ -252,6 +252,15 @@ An op: `{n, at, op, space, call: "fault"|"taste", note?, stroke?, ...payload wit
   independent ops give the same files in any order. Floats match within 0.001.
 - An op whose `before` (or the row it names) does not match the files is a conflict: the save is not applied and
   the error names the op. Every op has an inverse; a save then its inverse gives back the files.
+- A copied room's refs that `refs.jsonl` does not list exist as copied, under their source id (the draft bundle's
+  reading of the source cell and the build's room rule, `tools/places/draft_bundle.py: copy_space`). A `ref.move`
+  or `ref.remove` on one checks `before` (`base`, `pos`, `rot`, `scale`) against that source row and writes an
+  override row with `id` and `src` both the source id: the whole source row with `after` over it, or
+  `{id, src, removed: true}`. An override moved back to its source pose is dropped; a `ref.add` of a removed
+  override's id drops the marker (and adds nothing when the row is the source's own). Removing a listed row that
+  has a `src` in the copied room leaves `{id, src, removed: true}`, so the source ref does not return. A ref in
+  neither the files nor the copied room is a conflict. These cases are `tools/tests/places_edits/copy_refs/`, with
+  the copied room's rows given as `source: {space_id: [row...]}`.
 - `place.json` lists `saves_applied`; a save already listed is rejected. Applying a save also appends each `taste`
   op to `place.json` `preferences` as `{save, n, op, what, note}`.
 
@@ -410,9 +419,13 @@ their own cell (interior), as vanilla files them.
    (`removed: true` drops it; `base`, `pos`, `rot`, `scale`, `owner`, `door` replace the source's); a row with a
    `src` outside the kept room is not in the copy; a row without `src` is added. Source actors are never copied:
    people are ours.
-3. Doors: a door row's `door.to_space` and `to_ref` (our id, or a source key in a copied space) name its
-   partner; both get teleports. The arrival marker by a copied door is its source pair's; by our door whose partner
-   is a copy, the source's marker moved rigidly from the source door to ours; else 128 units in front of the door.
+3. Doors: a door pair is one row on each side (the exterior door, and the copy's override of the source door it
+   leads to) whose `door.to_space` and `to_ref` (our id, or a source key in a copied space) name each other; one row
+   naming its partner is enough, and both get teleports. One using door x lands at x's `door.to_pos` and `to_rot`
+   (a point in the partner's space beside the partner) when the place files give it; else at the source pair's
+   marker (a copied door), the source's marker moved rigidly from the source door to ours (our door whose partner
+   is a copy), or 128 units in front of the partner. A source load door of a copy with no partner row is built as
+   a plain door.
 4. Land: each `land.jsonl` vertex (`row` from the south, `col` from the west, `dz` in units, rounded to 8-unit
    steps) is applied to the world's own heights; every cell whose heights or normals change gets a LAND override
    (the world's record with new VHGT and VNML, the normals computed as the world computes them). Paths paint one
@@ -430,7 +443,7 @@ their own cell (interior), as vanilla files them.
    of linked XMarkerHeadings, closed when `patrol.loop`) with our schedule and place, then an unscheduled sandbox at home; the person's bed
    owned by them; everyone in the place's crime faction (TrackCrime, vanilla's crime values), guards also in
    IsGuardFaction. A stop names a ref (our id or a source key in its space), a position (2D is seated on the
-   ground), or only a space (its first furniture). Services by give (`give_kind_id` or `kind`): `trader-*` a
+   ground), or only a space (where one arrives in it by a load door, else its first furniture). Services by give (`give_kind_id` or `kind`): `trader-*` a
    vendor faction of ours (hours from the work stop, the vanilla vendor list, a merchant chest in the place's
    chest cell) and the vanilla Job faction; `trainer` a class of ours that teaches (Journeyman 50, Expert 75,
    Master 90; skill and level from `skill`/`level` or the give's detail) with JobTrainerFaction and
@@ -501,7 +514,11 @@ resolves nowhere or a plugin not mastered on the world ESM. The promises are the
 `newworld/story/data/db/place_give.jsonl` (combat, loot and resource gives are not a place's to give). Nordic is
 the Nordic review's verdict for a base it lists, else a base whose model lies in Skyrim's hold-city, Nordic farm
 or Nordic ruin folders, or whose editor id carries their kit prefixes (decision 0006). Results go to `out/places/shards/<place_id>/check.json`, which the new world's
-read-back (`tools/newworld/verify.py`, area `places`) reports.
+read-back (`tools/newworld/verify.py`, area `places`) reports. The geometry is one: a ref is inside another
+when its origin is within 0.8 of the other's record box in plan under the other's full three-axis rotation and
+within its height; a standing point (arrival, stop) is inside a body only below its top by more than 16 units.
+`draft check <place_id>` runs this same check (the build into `out/places/draft_check/`, then these functions on
+that plugin), so a draft that passes it passes `check` on the build.
 
 ## Finalise
 

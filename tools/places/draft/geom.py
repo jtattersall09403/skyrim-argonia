@@ -71,27 +71,14 @@ ARRIVAL_SHRINK = 0.8   # the builder's read-back test: a point inside this share
 
 
 def stands_in(sup: dict, bases: dict, p, shrink: float = ARRIVAL_SHRINK) -> bool:
-    """Whether a standing point p [x, y, z] is inside a placed thing's body: within `shrink` of its box in plan, by
-    its true mesh extent and by its record bounds alike (the build checks the record's), and below its top (one
-    standing on a thing is not in it)."""
+    """Whether a standing point p [x, y, z] is inside a placed thing's body, by the build's own test
+    (tools/places/check.py `stands_inside`: full rotation, record bounds, one standing on its top is not in it)."""
     base = bases.get(sup.get("base")) or {}
     if not solid(base):
         return False
-    s = float(sup.get("scale") or 1.0)
-    rz = sup.get("rot", [0, 0, 0])[2]
-    dx, dy = p[0] - sup["pos"][0], p[1] - sup["pos"][1]
-    c, sn = math.cos(rz), math.sin(rz)
-    u, v = dx * c - dy * sn, dx * sn + dy * c
-    for b in (model_bounds(base), base.get("bounds")):
-        if not b:
-            continue
-        lo, hi = [x * s for x in b[0]], [x * s for x in b[1]]
-        cu, cv = (lo[0] + hi[0]) / 2, (lo[1] + hi[1]) / 2
-        hu, hv = (hi[0] - lo[0]) / 2 * shrink, (hi[1] - lo[1]) / 2 * shrink
-        z0, z1 = sup["pos"][2] + lo[2], sup["pos"][2] + hi[2]
-        if abs(u - cu) <= hu and abs(v - cv) <= hv and z0 - 1 <= p[2] < z1 - 16:
-            return True
-    return False
+    from tools.places.check import stands_inside
+    from tools.places.draft.overlap import thing
+    return stands_inside(thing(sup, bases), p, shrink)
 
 
 STEP = 64.0   # the most one steps up onto a floor, a road or a deck from the ground
@@ -124,6 +111,17 @@ class Xf:
 
     def yaw(self, rz: float) -> float:
         return (rz + self.rot) % (2 * math.pi)
+
+    def rot3(self, rot) -> list[float]:
+        """A ref's three angles carried by this transform: the turn about the world's Z composed onto its own rotation
+        through tools/places/xform.py (adding to the Z angle alone turns a tilted piece about its own tilted axis)."""
+        rot = [float(v) for v in (rot or [0, 0, 0])]
+        if abs(rot[0]) < 1e-9 and abs(rot[1]) < 1e-9:
+            return [rot[0], rot[1], round(self.yaw(rot[2]), 5)]
+        from tools.places import xform
+        m = xform._mul(xform.rotation([0.0, 0.0, self.rot]), xform.rotation(rot))
+        _, r, _ = xform.decompose([[*m[i], 0.0] for i in range(3)] + [[0.0, 0.0, 0.0, 1.0]])
+        return [round(v % (2 * math.pi), 5) for v in r]
 
     def then(self, dx: float, dy: float, drot: float, about) -> "Xf":
         """This transform followed by a turn of drot about `about` (in our frame) and a shift (dx, dy)."""

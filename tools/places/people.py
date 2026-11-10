@@ -111,9 +111,14 @@ def plan(P: dict, S: dict, ids, facts: dict, notes: list[str]) -> dict:
         if at.get("ref"):  # a source ref the copy did not keep: the space's first furniture stands in, noted
             notes.append(f"people.jsonl: stop ref {at['ref']} in {at.get('space')} is not in the place; its space's first furniture is used")
             at.pop("ref")
-        if at.get("pos") is None:  # a stop that names only a space: its first furniture, else its first ref
+        if at.get("pos") is None:  # a stop that names only a space: where one arrives in it, else its first furniture
             sp = at.get("space", "exterior")
             rs = [r for r in S["refs"] if r["space"] == sp]
+            fk_in = {r["fk"] for r in rs}
+            land = sorted((r for r in S["refs"] if (r.get("teleport") or {}).get("to") in fk_in), key=lambda r: r["id"])
+            if land:
+                at["pos"] = [float(v) for v in land[0]["teleport"]["pos"]]
+                return at
             r = next((r for r in rs if r.get("kind") == "furniture"), rs[0] if rs else None)
             if r is None:
                 raise Bad(f"people.jsonl: stop in {sp}, which has no refs")

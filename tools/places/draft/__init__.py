@@ -22,6 +22,11 @@ def main(argv: list[str]) -> int:
         print("usage: python -m tools.places draft [check|render] <place_id> [--force]", file=sys.stderr)
         return 2
     counts = draft(ids[0], force=force)
+    from tools.places.draft import walk
+    from tools.places.seat import main as seat_main
+    counts["joins"] = walk.join(ids[0])
+    if counts["joins"]:
+        seat_main([ids[0]])
     import json
     print(json.dumps(counts, indent=1))
     return 0

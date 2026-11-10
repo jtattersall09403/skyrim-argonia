@@ -53,6 +53,14 @@ def kept(copy_of: str | None, room: str | None) -> frozenset | None:
     return rooms_of(copy_of).get(room, frozenset())
 
 
+def shared(refs: list[dict], src: Bundle) -> bool:
+    """Whether a source cell must be cut to the room behind its way out: it packs several ways out (rooms of several
+    houses), or it has a load door whose partner's cell the source bundle does not hold (a deck or a room reached only
+    through a cell we do not copy: nobody could walk to it in the copy)."""
+    load = [r for r in refs if r.get("door") and (r["door"].get("to_ref") or r["door"].get("to_space"))]
+    return sum(1 for r in load if door_target(r) == "exterior") > 1 or any(door_target(r) not in src.spaces for r in load)
+
+
 def door_target(r: dict) -> str | None:
     return (r.get("door") or {}).get("to_space")
 
@@ -125,7 +133,7 @@ def plan(place_id: str, src: Bundle, ext_doors: list[dict], our_door_id: dict[st
         back_row = back[0] if back else None
         sp = {"space_id": sid, "copy_of": f"{source_id}/{t}", "src_space": t, "door_from": our_from,
               "door_back": mint(place_id, sid, back_row["id"]) if back_row else None,
-              "room": back_row["id"] if back_row and sum(1 for r in refs if door_target(r) == "exterior") > 1 else None,
+              "room": back_row["id"] if back_row and shared(refs, src) else None,
               "parent": parent, "name": src.spaces[t].meta.get("name"), "overrides": []}
         spaces[sid] = sp
         keep = kept(sp["copy_of"], sp["room"])
