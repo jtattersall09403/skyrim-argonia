@@ -203,11 +203,16 @@ The tools lay the network by these rules.
   the faction's JAIL and WAIT, and its teleport leads to the work spot's and back. The guards are in the arrest
   dialogue, so pay, the Owing and resist are all offered; the Owing's line is ours, first in vanilla's "go to jail"
   topic and said only by the place's guards, running vanilla's own fragment that keeps the player's belongings
-  (`draft jail`). Look at both spots in the render.
+  (`draft jail`). Resisting a native place's guards is fought to the death: the builder puts a resist line of ours
+  first in vanilla's resist topic for the place's guards, whose fragment (`TIF_ARG_NoSurrender`) makes the place's
+  guard faction the player's enemy, so no surrender is taken; this needs the place's guards to share one guard
+  faction of the place (`<place>.guard` in `people.jsonl`). A foreign law keeps vanilla's resist and its yield.
+  Look at both spots in the render.
 - **A source's primitives keep their work.** A collision marker's box (an invisible wall or floor the source's
   builders placed) is kept when it belongs to a piece we keep: its box touches or holds a kept building, static,
   furniture, door, activator or container (a wall on a balcony, a plug in a doorway, a cap on a roof). It
-  then travels with that piece at its source offset, seated on it, as a light with its fixture, and the navmesh is
+  then travels with that piece at its source offset, seated on it, as a light with its fixture (in the studio too:
+  moving, turning, resizing, copying or removing the piece takes its walls along), and the navmesh is
   built round it as the solid it is. A box that met only the source's ground (its trees and rocks included) is
   dropped with that reason: our ground is not the source's. Where our own ground needs a wall (a hole the fit left,
   a ledge people would fall from), that is drafted with its own reason, never inherited. A room or portal marker,
@@ -291,7 +296,7 @@ and removed per file; a stage that would write outside what it owns changes noth
    `seat`, `overlap`, `doors`, `people`, `navmesh`, `streets`, `land`, `clear`, `services`, `nordic`, `rooms`,
    `levelled`, `jail`, `primitives`, `stock`, `promises`. A place that fines only passes `jail` with a
    note saying why (no one keeps law there, or a foreign law with no jail room); a native place passes only with
-   its Owing whole. Each failure's full list is in
+   its Owing and its resist line whole. Each failure's full list is in
    `out/places/shards/<place_id>/check_failures/<check>.txt`. `check <place_id> --reach [person]` says what is cut
    off from what.
 3. A failure is mended at its cause by the stage or the skill that owns it (a street by `streets`, a promise by `place-stock`). The place is never bent to pass a check, and a check is never loosened to pass a place.

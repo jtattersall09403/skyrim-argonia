@@ -190,6 +190,15 @@ def with_owing(c):
             "conditions": [{"fn": "GetInFaction", "run_on": "Subject", "op": "EqualTo", "value": 1.0, "faction": crime}],
             "scripts": [{"name": "TIF__00020F99", "props": []}], "fragment": {"file": "TIF__00020F99", "on_end": "Fragment_0"}}
     d.setdefault("topics", []).append({"fk": GO_TO_JAIL, "edid": "DGCrimeGoToJail", "infos": [info]})
+    # the resist line: the guards take no surrender
+    from tools.places.people import RESIST_SCRIPT, RESIST_TOPIC
+    guards = k(31)
+    jail["resist"] = {"topic": RESIST_TOPIC, "info": k(0x81), "script": RESIST_SCRIPT, "guards": guards}
+    rinfo = {"fk": k(0x81), "prompt": "", "previous": "", "text": ["..."], "link_to": [],
+             "conditions": [{"fn": "GetInFaction", "run_on": "Subject", "op": "EqualTo", "value": 1.0, "faction": crime}],
+             "scripts": [{"name": RESIST_SCRIPT, "props": [{"name": "Guards", "value": guards}]}],
+             "fragment": {"file": RESIST_SCRIPT, "on_begin": "Fragment_0", "on_end": None}}
+    d["topics"].append({"fk": RESIST_TOPIC, "edid": "DGCrimeResistArrest", "infos": [rinfo]})
     return c
 
 
@@ -202,7 +211,7 @@ def test_native_laws_owing_as_built_passes():
 def test_a_broken_owing_fails(what):
     c = with_owing(ctx())
     d = c["dump"]
-    info = d["topics"][-1]["infos"][0]
+    info = d["topics"][-2]["infos"][0]
     if what == "missing":
         c["plan"]["people"]["crime_faction"]["jail"] = None
     elif what == "inventory":
@@ -210,7 +219,7 @@ def test_a_broken_owing_fails(what):
     elif what == "reach":
         next(x for x in d["refs"] if x["fk"] == k(62))["pos"] = [2050.0, 1520.0, 760.0]
     elif what == "line":
-        d["topics"][-1]["infos"] = []
+        d["topics"][-2]["infos"] = []
     elif what == "late":
         info["previous"] = "Skyrim.esm:0267E1"
     elif what == "anyone":
@@ -220,6 +229,32 @@ def test_a_broken_owing_fails(what):
     elif what == "mat":
         next(x for x in d["refs"] if x["fk"] == k(64))["pos"] = [2600.0, 1500.0, 800.0]
     assert C.check_jail(c), what
+
+
+@pytest.mark.parametrize("what", ["missing", "late", "anyone", "fragment", "guards"])
+def test_a_native_resist_that_takes_a_surrender_fails(what):
+    c = with_owing(ctx())
+    rinfo = c["dump"]["topics"][-1]["infos"][0]
+    if what == "missing":
+        c["dump"]["topics"][-1]["infos"] = []
+    elif what == "late":
+        rinfo["previous"] = "Skyrim.esm:0267E2"
+    elif what == "anyone":
+        rinfo["conditions"] = []
+    elif what == "fragment":
+        rinfo["fragment"] = {"file": "TIF__000267E2", "on_begin": "Fragment_0"}
+    elif what == "guards":
+        rinfo["scripts"][0]["props"] = []
+    probs = C.check_jail(c)
+    assert any("resist" in p for p in probs), (what, probs)
+
+
+def test_a_foreign_law_keeps_vanillas_yield():
+    """A foreign law's faction carries no resist line of ours: one there fails."""
+    c = with_owing(ctx())
+    assert C.resist_problems(c, c["plan"]["people"]["crime_faction"], {}, native=False) != []
+    c["dump"]["topics"][-1]["infos"] = []
+    assert C.resist_problems(c, c["plan"]["people"]["crime_faction"], {}, native=False) == []
 
 
 def with_primitives(c, built=True, why="a trigger of the source's quest"):

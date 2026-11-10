@@ -16,7 +16,8 @@ level, no levelled lists: decision 0035) placed once as a persistent actor, with
     Skyrim's Orc and Skaal ones); place.json's crime faction row (written by `draft jail`, tools/places/draft/jail.py)
     gives it: a jail names its exterior prison marker (JAIL, and WAIT), its two evidence chests (STOL, PLCN) and the
     jail outfit (JOUT); the Owing names its return spot's prison marker (JAIL, and WAIT) and its stolen goods chest
-    (STOL), with the Owing's line in the arrest dialogue (People.cs); the refs owned `<place>.crime` are owned by it;
+    (STOL), with the Owing's line and the resist line that takes no surrender in the arrest dialogue (People.cs);
+    the refs owned `<place>.crime` are owned by it;
   - services, one per give of the place record (newworld/story/data/db/place_give.jsonl) the person serves:
       trader-*        a vendor faction of ours (VENV hours from the person's work stop, VEND the vanilla vendor
                       list of that trade, VENC a merchant chest of ours in the place's chest cell, whose base is the
@@ -395,6 +396,16 @@ def plan(P: dict, S: dict, ids, facts: dict, notes: list[str]) -> dict:
         except (KeyError, TypeError, ValueError, IndexError, AttributeError) as e:  # a row of a shape not read: never a crash
             problem(f"people.jsonl: {p.get('id') if isinstance(p, dict) else p}: a row the builder cannot read "
                     f"({type(e).__name__}: {e}); the person row's shape is in place-studio.md, Place files")
+    if jail and jail.get("owing"):
+        # native law's resist: the guards take no surrender (an INFO of ours first in vanilla's resist topic, said only
+        # by this faction's guards, running TIF_ARG_NoSurrender with the place's guard faction)
+        guards = made.get("guard")
+        if guards is None:
+            problem(f"people.jsonl: {pid}: native law's guards share no guard faction of the place ({pid}.guard), which "
+                    f"the resist line makes the player's enemy")
+        else:
+            jail["resist"] = {"topic": RESIST_TOPIC, "info": ids("info:resist"), "reply": RESIST_REPLY,
+                              "script": RESIST_SCRIPT, "guards": guards["fk"]}
     return out
 
 
@@ -402,6 +413,9 @@ OWING_PROMPT = "I'll work off the Owing."                       # the player's l
 OWING_REPLY = "Then your hands belong to the town until the debt is paid."  # the guard's answer (no voice: a subtitle)
 OWING_LINE = "Skyrim.esm:020F99"   # vanilla's "go to jail" line whose fragment keeps the player's belongings (Winterhold)
 GO_TO_JAIL = "Skyrim.esm:0267DD"   # DGCrimeGoToJail, the arrest dialogue's "go to jail" topic
+RESIST_TOPIC = "Skyrim.esm:0267DC"  # DGCrimeResistArrest, the arrest dialogue's resist topic
+RESIST_SCRIPT = "TIF_ARG_NoSurrender"  # papyrus/: SetPlayerResistingArrest() and the guard faction made the player's enemy
+RESIST_REPLY = "You refused the Owing. There is no second offer."  # the guard's answer (no voice: a subtitle)
 
 
 def jail_plan(P: dict, by_id: dict, pid: str) -> dict | None:

@@ -7,6 +7,7 @@ import { seatZ } from './bundle.js';
 import { vegKey } from './edits.js';
 import { segDist } from './geom.js';
 import { lightsOf, localOf, poseFor } from './lights.js';
+import { scaledPrim, wallsOf } from './prims.js';
 
 const VEG = new Set(['tree', 'plant', 'groundcover']);
 const RAIL = [
@@ -199,7 +200,7 @@ export class Tools {
     const sel = this.selRefs();
     this.drawOutline(a.ours, sel.map((r) => a.seated(r)), this.outline);
     // a selected light, and the lights of a selected fixture, show their radius rings
-    a.ours.place?.setRingIds([...sel.filter((r) => r.kind === 'light'), ...this.followers(sel).map((f) => f.light)].map((r) => r.id));
+    a.ours.place?.setRingIds([...sel.filter((r) => r.kind === 'light'), ...this.followers(sel).filter((f) => !f.wall).map((f) => f.ref)].map((r) => r.id));
     this.placeGizmo(); a.panels?.refreshWhere?.();
   }
   drawOutline(side, refs, line) {
@@ -226,34 +227,39 @@ export class Tools {
     });
   }
   selRefs() { const m = this.app.placeRefsById(); return [...this.app.selection].map((id) => m.get(id)).filter(Boolean); }
-  // ---------- lights travel with their fixtures ----------
+  // ---------- lights travel with their fixtures, invisible walls with their pieces ----------
   baseOf(r) { return this.app.bases.get(r.base) || this.app.srcBases?.get(r.base); }
-  // The lights that belong to the fixtures among refs (not themselves selected), each with where it sits in its
-  // fixture's frame: they follow every move, turn and resize of the fixture, in the same undo step.
+  // The lights that belong to the fixtures among refs, and the invisible walls seated on the pieces among them (not
+  // themselves selected), each with where it sits in its owner's frame: they follow every move, turn and resize of
+  // it, in the same undo step; a wall also grows or shrinks with its piece.
   followers(refs) {
     const a = this.app, ids = new Set(refs.map((r) => r.id)), pos = (r) => a.seated(r).pos;
     const others = [...a.placeRefsById().values()].filter((r) => !ids.has(r.id) && !r.removed);
-    return lightsOf(refs, others, (r) => this.baseOf(r), pos).map(([light, fix]) => ({ light, fix, local: localOf(light, fix, pos),
-      before: clone({ pos: light.pos, rot: light.rot, scale: light.scale ?? 1, seat: light.seat }) }));
+    const pose = (r) => clone({ pos: r.pos, rot: r.rot, scale: r.scale ?? 1, seat: r.seat });
+    const lights = lightsOf(refs, others, (r) => this.baseOf(r), pos).map(([ref, fix]) => ({ ref, fix, local: localOf(ref, fix, pos), before: pose(ref) }));
+    const walls = wallsOf(refs, others).map(([ref, fix]) => ({ ref, fix, wall: true, s0: fix.scale ?? 1, local: localOf(ref, fix, pos),
+      before: { ...pose(ref), primitive: clone(ref.primitive) } }));
+    return [...lights, ...walls];
   }
-  // Each follower placed for its fixture's pose now (its height through its own seat, so the build seats it there).
+  // Each follower placed for its owner's pose now (its height through its own seat, so the build seats it there).
   carry(fol) {
     const a = this.app, ext = a.ours.space === 'exterior';
     for (const f of fol) {
-      const [p, rot] = poseFor(f.local, f.fix, f.light, (r) => a.seated(r).pos), r = f.light;
+      const [p, rot] = poseFor(f.local, f.fix, f.ref, (r) => a.seated(r).pos), r = f.ref;
       r.pos = [rnd(p[0]), rnd(p[1]), r.pos[2]]; r.rot = [rot[0], rot[1], rnd(norm(rot[2]), 10000)];
       if (ext && r.seat && r.seat.mode !== 'free') {
         r.seat = { ...r.seat }; const cur = seatZ(a.terrain, r, a.placeRefsById());
         r.seat.dz = rnd((r.seat.dz || 0) + p[2] - cur); r.pos[2] = rnd(p[2]);
       } else r.pos[2] = rnd(p[2]);
+      if (f.wall) { const k = (f.fix.scale ?? 1) / f.s0; r.primitive = k === 1 ? clone(f.before.primitive) : scaledPrim(f.before.primitive, k); }
     }
   }
   followerOps(fol) {
     const ops = [];
     for (const f of fol) {
-      const after = clone({ pos: f.light.pos, rot: f.light.rot, scale: f.light.scale ?? 1, seat: f.light.seat });
-      Object.assign(f.light, clone(f.before));
-      if (JSON.stringify(after) !== JSON.stringify(f.before)) ops.push({ op: 'ref.move', id: f.light.id, before: f.before, after });
+      const after = clone({ pos: f.ref.pos, rot: f.ref.rot, scale: f.ref.scale ?? 1, seat: f.ref.seat, ...(f.wall ? { primitive: f.ref.primitive } : {}) });
+      Object.assign(f.ref, clone(f.before));
+      if (JSON.stringify(after) !== JSON.stringify(f.before)) ops.push({ op: 'ref.move', id: f.ref.id, before: f.before, after });
     }
     return ops;
   }
@@ -322,7 +328,7 @@ export class Tools {
       Object.assign(r, clone(before));
       if (JSON.stringify(after) !== JSON.stringify(before)) ops.push({ op: 'ref.move', id: r.id, before, after });
     }
-    // the fixtures' lights follow their final poses, in the same undo step
+    // the fixtures' lights and the pieces' walls follow their final poses, in the same undo step
     for (const r of d.refs) { const k = ops.find((o) => o.id === r.id); if (k) Object.assign(r, clone(k.after)); }
     this.carry(d.fol); ops.push(...this.followerOps(d.fol));
     for (const r of d.refs) Object.assign(r, clone(d.before.get(r.id)));
@@ -331,10 +337,10 @@ export class Tools {
   gizmoCancel() {
     const d = this.drag; this.drag = null; if (!d) return;
     for (const r of d.refs) Object.assign(r, clone(d.before.get(r.id)));
-    for (const f of d.fol || []) Object.assign(f.light, clone(f.before));
+    for (const f of d.fol || []) Object.assign(f.ref, clone(f.before));
     this.app.refreshSide(this.app.ours, { world: false });
   }
-  // Ops that move refs, and the lights of the fixtures among them with them (one undo step).
+  // Ops that move refs, and the lights and invisible walls that follow them with them (one undo step).
   withFollowers(refs, ops) {
     const fol = this.followers(refs); if (!fol.length) return ops;
     const before = new Map(refs.map((r) => [r.id, clone({ pos: r.pos, rot: r.rot, scale: r.scale ?? 1, seat: r.seat })]));
@@ -372,9 +378,11 @@ export class Tools {
   }
   duplicate() {
     const a = this.app, ops = [], ids = [], sel = this.selRefs();
-    const refs = [...sel, ...this.followers(sel).map((f) => f.light)];  // a fixture's copy comes with its light
+    const refs = [...sel, ...this.followers(sel).map((f) => f.ref)];  // a fixture's copy comes with its light, a piece's with its walls
+    const fresh = new Map(refs.map((r) => [r.id, mintId(a.place.place_id)]));
     for (const r of refs) {
-      const n = clone(r); n.id = mintId(a.place.place_id); n.pos[0] = rnd(n.pos[0] + 150); n.pos[1] = rnd(n.pos[1] + 150);
+      const n = clone(r); n.id = fresh.get(r.id); n.pos[0] = rnd(n.pos[0] + 150); n.pos[1] = rnd(n.pos[1] + 150);
+      if (n.seat?.mode === 'on' && fresh.has(n.seat.on)) n.seat.on = fresh.get(n.seat.on);  // seated on the copy
       if (n.door) delete n.door; // a copied door does not lead anywhere until it is paired
       ops.push({ op: 'ref.add', ref: n }); if (sel.includes(r)) ids.push(n.id);
     }
@@ -382,7 +390,7 @@ export class Tools {
   }
   remove() {
     const a = this.app, sel = this.selRefs(); if (!sel.length) return;
-    const refs = [...sel, ...this.followers(sel).map((f) => f.light)];  // a fixture goes with its light
+    const refs = [...sel, ...this.followers(sel).map((f) => f.ref)];  // a fixture goes with its light, a piece with its walls
     a.push(refs.map((r) => ({ op: 'ref.remove', id: r.id, before: clone(r) })));
     a.selection.clear(); this.selectionChanged();
   }

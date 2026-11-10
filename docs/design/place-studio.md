@@ -639,8 +639,13 @@ half extents round the ref's origin, turned with the ref) with its edges outline
 sphere, every one of a layer in one instanced mesh filled when the layer changes (nothing is worked out per frame),
 and picked by its box. The Selected panel says what it is (a collision marker's box: "an invisible wall: people and
 the player cannot pass"; anything else: an invisible volume the game uses, nothing solid), the piece it belongs to
-(the piece its seat stands `on`) and its size in units and metres. It moves, turns and is removed as anything else
-is, and the panel's size fields (long, wide, high in units; a sphere's radius) change its extents as one `ref.move`
+(the piece its seat stands `on`) and its size in units and metres. It follows that piece as a light follows its
+fixture: moving, turning, resizing, seating, duplicating or removing the piece takes its invisible walls with it in
+the same undo step, each keeping its place in the piece's frame and its height through its own seat, a resize
+growing its box by the same factor, a copy seated on the piece's copy. The tie is the wall's seat `on` the piece,
+as the drafter's `primitives` stage writes it; a box seated on nothing goes alone. The Selected panel of a piece
+says what comes with it: how many invisible walls and lights. A wall selected by itself moves, turns and is removed
+alone, and the panel's size fields (long, wide, high in units; a sphere's radius) change its extents as one `ref.move`
 of its `primitive`. The plain view never shows it.
 
 **Day and night** (`js/lighting.js`). Each view's bar has a Day and a Night switch; with the People tool on, the
@@ -835,7 +840,14 @@ their own cell (interior), as vanilla files them.
    STOL an EvidenceChestStolenGoods under the ground; no PLCN and no JOUT. Its line is an INFO of ours first in
    DGCrimeGoToJail (no previous INFO), conditioned on GetInFaction(the place's crime faction) on the speaker, its
    prompt "I'll work off the Owing." and its reply a subtitle, carrying the script fragment of vanilla's 020F99
-   (records only). A ref owned `<place>.crime` is owned by the crime faction. A place with neither fines only.
+   (records only). Its resist line, so the guards take no surrender, is an INFO of ours first in DGCrimeResistArrest
+   (0267DC), conditioned the same, Goodbye as vanilla's resist lines, its reply a subtitle, running our
+   `TIF_ARG_NoSurrender` (papyrus/) at its start with `Guards` the place's guard faction: the guard's
+   SetPlayerResistingArrest(), then that faction's SetPlayerEnemy(true), so its guards fight on as enemies and take
+   no yield; the townsfolk, in the crime faction only, are not made enemies. No record can do it: the engine takes a
+   yield from any guard of a faction that arrests, and no faction flag, crime value, combat style, actor value or
+   game setting refuses one (the Yield and AcceptYield subtypes are an actor's own surrender). A foreign law's faction
+   has no resist line of ours: vanilla's yield stands. A ref owned `<place>.crime` is owned by the crime faction. A place with neither fines only.
    `draft jail` (tools/places/draft/jail.py) chooses the jail's room (the copied room holding the jail kit: bars, jail
    walls, jail doors; never a name alone), the cell, the Owing's spots and where each thing stands. the cell and where each thing stands. A stop names a ref (our id or a source key in its space), a position (2D, outside only, is
    seated on the built land: the world's heights with the place's land patches, between the cell's vertices), or
@@ -943,7 +955,10 @@ refs, the jail marker off its room's navmesh, the release point off the town's m
 the jail; for the Owing, JAIL, WAIT and STOL not set to our refs or PLCN set, the work or return spot off the town's
 main network, the two markers not leading to each other, the bedroll more than 256 units from the work spot, the
 chest within reach, the Owing's line missing from DGCrimeGoToJail, not first, not limited to the faction's guards,
-not reading its prompt or not running 020F99's fragment; for both, an evidence chest not empty, respawning or not
+not reading its prompt or not running 020F99's fragment, the resist line missing from DGCrimeResistArrest, not
+first, not limited to the faction's guards, not running TIF_ARG_NoSurrender at its start or its Guards not the
+place's guard faction (an uncompiled TIF_ARG_NoSurrender.pex is a warning); for a jail, a resist line of ours for
+the faction; for both, an evidence chest not empty, respawning or not
 the faction's, a guard not in IsGuardFaction and GuardDialogueFaction; a place with neither passes with a note saying
 why, unless its law is native, and fails a guard of it in GuardDialogueFaction, whose lines would offer a sentence
 it lacks); a copied ref whose source has a primitive neither built with it identical

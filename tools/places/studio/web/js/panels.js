@@ -10,7 +10,7 @@ import { Contents } from './contents.js';
 import { identityOf } from './stock.js';
 import { groupsOf, touched } from './note_groups.js';
 import { FIXTURE_REACH, fixtureOf, lightFacts, lightsOf } from './lights.js';
-import { hasPrim, halfExtents, primFacts, resized } from './prims.js';
+import { comesWith, hasPrim, halfExtents, primFacts, resized, wallsOf } from './prims.js';
 
 const $ = (s) => document.querySelector(s);
 const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -195,8 +195,9 @@ export class Panels {
         : `no lantern, sconce, candle, torch, fire or window within ${FIXTURE_REACH} units: it stands alone`]);
       if (f.hex) swatch = el(`<p class="light-swatch"><span class="swatch" style="background:${f.hex}"></span> the light's colour</p>`);
     } else if (side === 'ours') {
-      const mine = lightsOf([r], refs.filter((x) => x.id !== r.id), baseOf, pos).map(([l]) => l);
-      if (mine.length) facts.push(['Its light', `${mine.length === 1 ? 'one light goes' : `${mine.length} lights go`} with it when it moves or is removed`]);
+      const others = refs.filter((x) => x.id !== r.id && !x.removed);
+      const said = comesWith(wallsOf([r], others).length, lightsOf([r], others, baseOf, pos).length);
+      if (said) facts.push(['Comes with it', said]);
     }
     return { facts, swatch };
   }

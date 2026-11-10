@@ -53,6 +53,40 @@ static class People
         topic.Responses.Insert(0, info);
     }
 
+    /// Native law's resist: an INFO of ours first in vanilla's resist topic (DGCrimeResistArrest), said only by a guard
+    /// of this crime faction, Goodbye as vanilla's resist lines, running TIF_ARG_NoSurrender at its start (as vanilla's
+    /// run theirs) with Guards the place's guard faction: the guard's SetPlayerResistingArrest(), and that faction made
+    /// the player's enemy, so the guards take no surrender.
+    static void ResistLine(Write.Ctx ctx, FormKey crime, JsonElement rs)
+    {
+        var mod = ctx.Mod;
+        var topicKey = C.Fk(S(rs, "topic")!);
+        if (!mod.DialogTopics.TryGetValue(topicKey, out var topic))
+        {
+            topic = Cache.Resolve<IDialogTopicGetter>(topicKey).DeepCopy();
+            topic.Responses.Clear();   // the override carries our INFOs alone; vanilla's stay vanilla's
+            mod.DialogTopics.Add(topic);
+        }
+        var script = S(rs, "script")!;
+        var props = JsonSerializer.SerializeToElement(new[] { new Dictionary<string, object> { ["name"] = script, ["props"] = new object[]
+        {
+            new { name = "Guards", type = "object", value = S(rs, "guards")! },
+        } } });
+        var vm = C.Vmad(props);
+        var ad = new DialogResponsesAdapter { Version = vm.Version, ObjectFormat = vm.ObjectFormat };
+        ad.Scripts.AddRange(vm.Scripts);
+        ad.ScriptFragments = new ScriptFragments { FileName = script, OnBegin = new ScriptFragment { ScriptName = script, FragmentName = "Fragment_0" } };
+        var info = new DialogResponses(C.Fk(S(rs, "info")!), C.Rel)
+        {
+            Flags = new DialogResponseFlags { Flags = DialogResponses.Flag.Goodbye }, VirtualMachineAdapter = ad,
+        };
+        info.Responses.Add(new DialogResponse { Text = new TranslatedString(Language.English, S(rs, "reply")), ResponseNumber = 1, Emotion = Emotion.Anger, EmotionValue = 50 });
+        var inFaction = new GetInFactionConditionData();
+        inFaction.Faction.Link.SetTo(crime);
+        info.Conditions.Add(new ConditionFloat { CompareOperator = CompareOperator.EqualTo, ComparisonValue = 1, Data = inFaction });
+        topic.Responses.Insert(0, info);
+    }
+
     public static void Build(Write.Ctx ctx, string pid, JsonElement people, Dictionary<string, PlacedObject> refs, Dictionary<string, Cell> interiors)
     {
         var mod = ctx.Mod;
@@ -77,6 +111,7 @@ static class People
             if (S(jail, "inventory") is { } inv) crime.PlayerInventoryContainer.SetTo(C.Fk(inv));
             if (S(jail, "outfit") is { } jo) crime.JailOutfit.SetTo(C.Fk(jo));
             if (jail.TryGetProperty("owing", out var ow) && ow.ValueKind == JsonValueKind.Object) OwingLine(ctx, crime.FormKey, ow);
+            if (jail.TryGetProperty("resist", out var rs) && rs.ValueKind == JsonValueKind.Object) ResistLine(ctx, crime.FormKey, rs);
         }
         mod.Factions.Add(crime);
 

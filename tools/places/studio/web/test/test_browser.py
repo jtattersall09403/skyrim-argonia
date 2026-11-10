@@ -278,7 +278,9 @@ def test_02_performance_and_lazy_models(pad):
 # ---------- 3: select, cycle, lasso, gizmo, nudge, duplicate, remove, info ----------
 def test_03_select_and_manipulate(pad):
     pad.page.click("#rail [data-tool=select]")
-    b = first_ref(pad, "building")
+    # a building with nothing that follows it (no invisible wall on it): each change is its one op
+    b = pad.ev("(() => { const rs = [...studio.model.spaces.exterior.refs.values()]; "
+               "return rs.find((r) => r.kind === 'building' && !rs.some((w) => w.seat?.on === r.id)); })()")
     seated = pad.ev("(id) => studio.seated(studio.model.spaces.exterior.refs.get(id)).pos", b["id"])
     look_at(pad, "ours", seated)
     x, y = pad.screen("ours", [seated[0], seated[1], seated[2] + 150])
@@ -829,6 +831,46 @@ def test_21_invisible_walls(pad):
     pad.page.get_by_role("button", name="Remove from our place").click()
     assert [(o["op"], o["id"]) for o in pad.ops()[n0:]] == [("ref.remove", wall["id"])]
     pad.ev("studio.log.undo()")
+    # it belongs to its building: moving, turning, resizing, copying or removing the building takes it along, in one
+    # undo step, keeping its offset from the building
+    hall = pad.ev("studio.model.spaces.exterior.refs.get('fixplace.b0')")
+    pad.ev("(id) => { studio.selection = new Set([id]); studio.tools.selectionChanged(); }", hall["id"])
+    assert "one invisible wall goes with it" in pad.ev("document.getElementById('panel-body').textContent")
+    n0 = len(pad.ops())
+    pad.page.get_by_role("button", name="East", exact=True).click()
+    ops = pad.ops()[n0:]
+    assert sorted(o["id"] for o in ops) == sorted([hall["id"], wall["id"]]) and ops[0]["stroke"] == ops[1]["stroke"], ops
+    hp = pad.ev("studio.model.spaces.exterior.refs.get('fixplace.b0').pos")
+    moved = pad.ev("studio.model.spaces.exterior.refs.get('fixplace.wall0').pos")
+    assert abs((moved[0] - wall["pos"][0]) - (hp[0] - hall["pos"][0])) < 0.6 and abs(moved[1] - wall["pos"][1]) < 0.6, (moved, wall["pos"], hp)
+    pad.ev("studio.log.undo()")
+    assert pad.ev("studio.model.spaces.exterior.refs.get('fixplace.wall0').pos") == wall["pos"]
+    assert pad.ev("studio.model.spaces.exterior.refs.get('fixplace.b0').pos") == hall["pos"]
+    # a turn carries it round the building, turned the same
+    pad.page.get_by_role("button", name="Turn right", exact=True).click()
+    w1 = pad.ev("studio.model.spaces.exterior.refs.get('fixplace.wall0')")
+    h1 = pad.ev("studio.model.spaces.exterior.refs.get('fixplace.b0')")
+    assert abs((w1["rot"][2] - wall["rot"][2]) - (h1["rot"][2] - hall["rot"][2])) < 1e-3, (w1["rot"], h1["rot"])
+    d0 = ((wall["pos"][0] - hall["pos"][0]) ** 2 + (wall["pos"][1] - hall["pos"][1]) ** 2) ** 0.5
+    d1 = ((w1["pos"][0] - h1["pos"][0]) ** 2 + (w1["pos"][1] - h1["pos"][1]) ** 2) ** 0.5
+    assert abs(d0 - d1) < 1, (d0, d1)
+    pad.ev("studio.log.undo()")
+    # a copy of the building comes with a copy of its wall, seated on the copy
+    n0 = len(pad.ops())
+    pad.ev("studio.tools.duplicate()")
+    adds = pad.ev("(n) => studio.log.applied().slice(n).filter((o) => o.op === 'ref.add').map((o) => o.ref)", n0)
+    assert len(adds) == 2, adds
+    hall2 = next(r for r in adds if not r.get("primitive"))
+    wall2 = next(r for r in adds if r.get("primitive"))
+    assert wall2["seat"]["on"] == hall2["id"], wall2["seat"]
+    pad.ev("studio.log.undo()")
+    # removed with it
+    pad.ev("(id) => { studio.selection = new Set([id]); studio.tools.selectionChanged(); }", hall["id"])
+    n0 = len(pad.ops())
+    pad.page.get_by_role("button", name="Remove from our place").click()
+    assert sorted((o["op"], o["id"]) for o in pad.ops()[n0:]) == sorted([("ref.remove", hall["id"]), ("ref.remove", wall["id"])])
+    pad.ev("studio.log.undo()")
+    assert not pad.ev("studio.model.spaces.exterior.refs.get('fixplace.wall0').removed")
     # the plain view never shows it (nor picks it: picking skips helpers while they are hidden)
     pad.ev("studio.selection.clear(); studio.tools.selectionChanged()")
     pad.page.click("#rail [data-tool=land]")

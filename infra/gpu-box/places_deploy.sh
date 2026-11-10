@@ -2,20 +2,20 @@
 # The place layer onto the game machine's NewWorld profile (docs/design/place-studio.md, Build): the plugin
 # out/places/plugin/ArgoniaNWPlaces.esp (over ArgoniaNewWorld.esm, which lod.sh send lays), its SEQ file (the boatman's
 # dialogue quest is Start Game Enabled: the engine starts the quests a SEQ lists before a new game's first frame, as
-# Argonia.seq does for Argonia.esp) and the compiled scripts it names (TIF_ARG_BoatTravel.pex, compiled with the rest
+# Argonia.seq does for Argonia.esp) and the compiled scripts it names (TIF_ARG_BoatTravel.pex, TIF_ARG_NoSurrender.pex, compiled with the rest
 # of papyrus/ by records_jobs.sh papyrus into out/gpu/papyrus), then stack.ps1 -World NewWorld on.
 #   places_deploy.sh [--dry-run]   --dry-run: check and stage only (the SEQ built, every file named), nothing sent
 # Refuses a plugin built over another world ESM than out/newworld/plugin's, or a place whose check read another
 # build (PLACES_FORCE=1 overrides). Rerunnable: every file is replaced, nothing else is touched.
 #   C:\argonia\ours\newworld\ArgoniaNWPlaces.esp   stack.ps1's NewWorld ours plugins (after ArgoniaNewWorld.esm)
 #   C:\argonia\ours\newworld\SEQ\ArgoniaNWPlaces.seq  laid into Data\SEQ in the NewWorld profile only
-#   C:\argonia\ours\scripts\TIF_ARG_BoatTravel.pex  laid into Data\Scripts (deploy.sh sends all of out/gpu/papyrus too)
+#   C:\argonia\ours\scripts\TIF_ARG_*.pex  laid into Data\Scripts (deploy.sh sends all of out/gpu/papyrus too)
 set -euo pipefail
 here=$(cd "$(dirname "$0")" && pwd); repo=$(cd "$here/../.." && pwd); cd "$repo"
 dry=0
 for a in "$@"; do case "$a" in --dry-run) dry=1 ;; *) sed -n '2,13p' "$0"; exit 2 ;; esac; done
 esp=out/places/plugin/ArgoniaNWPlaces.esp; esm=out/newworld/plugin/ArgoniaNewWorld.esm
-seq=out/places/plugin/SEQ/ArgoniaNWPlaces.seq; pex=(out/gpu/papyrus/TIF_ARG_BoatTravel.pex)
+seq=out/places/plugin/SEQ/ArgoniaNWPlaces.seq; pex=(out/gpu/papyrus/TIF_ARG_BoatTravel.pex out/gpu/papyrus/TIF_ARG_NoSurrender.pex)
 [ -f "$esp" ] || { echo "no $esp: run python -m tools.places build" >&2; exit 1; }
 for p in "${pex[@]}"; do [ -f "$p" ] || { echo "no $p: run infra/gpu-box/records_jobs.sh papyrus" >&2; exit 1; }; done
 python3 - "$esm" "$esp" <<'PY' || [ -n "${PLACES_FORCE:-}" ]

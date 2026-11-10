@@ -68,11 +68,16 @@ the stolen goods and the release are the engine's:
   spent practising; the owner may prefer to keep progress). Vanilla's taking and returning of the player's
   inventory is skipped (`abRemoveInventory` false).
 - **Resisting at a native place**: the guards take no yield. In vanilla the guards re-offer the arrest when a resisting
-  player sheathes their weapon; at a native place they do not, and the fight runs to its end. Measured: vanilla's
-  resist lines run only the guard's `SetPlayerResistingArrest()`; the Yield and AcceptYield dialogue subtypes are an
-  NPC's surrender, not the player's; no game setting of Skyrim.esm or Update.esm names a surrender, yield or arrest.
-  The guards' taking of a yield is the engine's, tied to the crime faction arresting at all, which pay and the Owing
-  need. Refusing it needs a fragment of ours on the native resist line; it is not built yet.
+  player sheathes their weapon; at a native place they do not, and the fight runs to its end. The resist line is an
+  INFO of ours first in vanilla's resist topic (DGCrimeResistArrest), said only by the place's guards, which runs
+  our one fragment `TIF_ARG_NoSurrender` (papyrus/): the guard's `SetPlayerResistingArrest()`, as vanilla's resist
+  lines run, then the place's guard faction made the player's enemy (`Faction.SetPlayerEnemy`, as vanilla's civil
+  war makes a side's soldiers the player's enemies). An enemy fights on and takes no yield; the townsfolk, in the
+  crime faction but not the guard faction, are not made enemies, and the guards stay enemies after the fight.
+  Why a script: the guards' taking of a yield is the engine's, tied to the crime faction arresting at all, which pay
+  and the Owing need. Measured on Skyrim.esm and Update.esm: no faction flag, crime value, combat style flag, actor
+  value or game setting names a surrender or yield; the Yield and AcceptYield dialogue subtypes are an actor's own
+  surrender (the Dark Brotherhood's, DialogueGeneric's), not the player's.
 - **Crime factions**: no central authority keeps native law (the lore: the state holds no power beyond the water's edge), so
   each native place has its own bounty. A foreign post shares its jail place's crime faction, as vanilla's
   holds share one jail.

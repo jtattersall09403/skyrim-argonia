@@ -134,7 +134,7 @@ static class Dump
                     }).ToList(),
                     ["scripts"] = ad?.Scripts.Select(sc => new Dictionary<string, object?> { ["name"] = sc.Name,
                         ["props"] = sc.Properties.Select(pr => new Dictionary<string, object?> { ["name"] = pr.Name, ["value"] = Val(pr) }).ToList() }).ToList(),
-                    ["fragment"] = ad?.ScriptFragments is { } sf ? new Dictionary<string, object?> { ["file"] = sf.FileName, ["on_end"] = sf.OnEnd?.FragmentName } : null,
+                    ["fragment"] = ad?.ScriptFragments is { } sf ? new Dictionary<string, object?> { ["file"] = sf.FileName, ["on_begin"] = sf.OnBegin?.FragmentName, ["on_end"] = sf.OnEnd?.FragmentName } : null,
                 };
             }).ToList(),
         }).ToList();

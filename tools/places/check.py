@@ -1001,6 +1001,7 @@ def shrine_problems(ctx: dict, m: dict) -> list[str]:
 
 BOAT_SCRIPT, BOAT_GOLD = "TIF_ARG_BoatTravel", "Skyrim.esm:00000F"
 BOAT_PEX = B.ROOT / "out" / "gpu" / "papyrus" / "TIF_ARG_BoatTravel.pex"
+RESIST_PEX = B.ROOT / "out" / "gpu" / "papyrus" / "TIF_ARG_NoSurrender.pex"
 WARNINGS: list[str] = []  # what a check notes without failing; main prints them
 
 
@@ -1283,6 +1284,37 @@ GUARD_FACTIONS = ("Skyrim.esm:086EEE", "Skyrim.esm:02BE3B")  # IsGuardFaction, G
 NOTES: list[str] = []  # what a passing check says plainly; main prints them
 
 
+def resist_problems(ctx, cf: dict, jail: dict, native: bool) -> list[str]:
+    """Native law: the resist line first in vanilla's resist topic, said only by this faction's guards, Goodbye,
+    running TIF_ARG_NoSurrender at its start with Guards the place's guard faction (the guards then take no
+    surrender). Foreign law: no line of ours there for this faction, so vanilla's resist and its yield stand."""
+    from tools.places.people import RESIST_SCRIPT, RESIST_TOPIC
+    topic = next((t for t in ctx["dump"].get("topics") or [] if t["fk"] == RESIST_TOPIC), None)
+    ours = [i for i in (topic or {}).get("infos") or []
+            if any(c.get("fn") == "GetInFaction" and c.get("faction") == cf["fk"] for c in i.get("conditions") or [])]
+    if not native:
+        return [f"{i['fk']}: a resist line of ours for {cf['edid']}, whose law is foreign: vanilla's yield must stand" for i in ours]
+    rs = jail.get("resist") or {}
+    info = next((i for i in ours if i["fk"] == rs.get("info")), None)
+    if info is None:
+        return [f"the native resist line {rs.get('info') or '(none planned)'} is not in vanilla's resist topic {RESIST_TOPIC} "
+                f"for the guards of {cf['edid']}: the guards would take a surrender"]
+    bad = []
+    if info.get("previous"):
+        bad.append(f"the native resist line follows {info['previous']}: it must come first, before vanilla's unconditioned line")
+    frag = info.get("fragment") or {}
+    if (frag.get("file") or "") != RESIST_SCRIPT or frag.get("on_begin") != "Fragment_0":
+        bad.append(f"the native resist line runs {frag.get('file')}.{frag.get('on_begin')}, not {RESIST_SCRIPT}.Fragment_0 at its start")
+    sc = next((s for s in info.get("scripts") or [] if s.get("name") == RESIST_SCRIPT), None)
+    guards = next((p.get("value") for p in (sc or {}).get("props") or [] if p.get("name") == "Guards"), None)
+    if not guards or guards != rs.get("guards"):
+        bad.append(f"the native resist line's Guards is {guards or 'unset'}, not the place's guard faction {rs.get('guards')}")
+    if not RESIST_PEX.exists():
+        WARNINGS.append(f"{RESIST_PEX} is not compiled: the native resist line does nothing in game until it is "
+                        f"(infra/gpu-box/records_jobs.sh papyrus)")
+    return bad
+
+
 def check_jail(ctx) -> list[str]:
     """The crime faction's sentence by the place's law. A jail as vanilla's hold factions have it: JAIL and WAIT our
     exterior prison marker, STOL and PLCN our two evidence chests, each a ref of our plugin; the jail marker on its
@@ -1291,7 +1323,8 @@ def check_jail(ctx) -> list[str]:
     the work spot's and back, both on the town's main network; the worker's mat beside the work spot; STOL the stolen
     goods chest, out of reach under the ground, empty, never respawning, owned by the faction; no PLCN; the Owing's
     line first in vanilla's "go to jail" topic, said only by this faction's guards, running vanilla's fragment that
-    keeps the player's belongings. Either way every guard is in IsGuardFaction and GuardDialogueFaction. A place with
+    keeps the player's belongings; and the resist line that takes no surrender (`resist_problems`), which a foreign
+    law's faction never has. Either way every guard is in IsGuardFaction and GuardDialogueFaction. A place with
     no sentence fines only, which is said, not failed, unless its law is native (the Owing is then missing)."""
     from tools.places.people import GO_TO_JAIL, OWING_LINE, OWING_PROMPT
     ppl = ctx["plan"].get("people") or {}
@@ -1391,6 +1424,7 @@ def check_jail(ctx) -> list[str]:
             want = "TIF__" + OWING_LINE.split(":")[1].rjust(8, "0")
             if ((info.get("fragment") or {}).get("file") or "").upper() != want.upper():
                 bad.append(f"the Owing's line runs {(info.get('fragment') or {}).get('file')}, not vanilla's {want} (the sentence that keeps the player's belongings)")
+    bad += resist_problems(ctx, cf, jail, bool(owing))
     for n in ppl.get("npcs", []):
         got = m["npcs"].get(n["fk"])
         if n.get("role") == "guard" and got is not None:

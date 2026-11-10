@@ -28,3 +28,25 @@ export function resized(prim, size) {
   if (/^Sphere$/i.test(prim.type || '')) return { ...prim, bounds: [r(size[0]), ...prim.bounds.slice(1)] };
   return { ...prim, bounds: size.map((v) => r(v / 2)) };
 }
+// A piece's invisible walls: the refs with a primitive seated `on` it (the tie the drafter's primitives stage
+// records). They follow every move, turn, resize, copy and removal of the piece, as a light follows its fixture;
+// one selected by itself moves or goes alone. Returns [[wall, piece]] for the pieces among `pieces`.
+export function wallsOf(pieces, refs) {
+  const by = new Map(pieces.map((p) => [p.id, p])), out = [];
+  for (const w of refs) {
+    const on = w.seat?.mode === 'on' && by.get(w.seat.on);
+    if (on && on !== w && !w.removed && hasPrim(w)) out.push([w, on]);
+  }
+  return out;
+}
+// The primitive grown or shrunk by `k` with its piece (its half extents times k).
+export function scaledPrim(prim, k) {
+  return { ...prim, bounds: prim.bounds.map((v) => Math.round(Number(v) * k * 100) / 100) };
+}
+// What comes with a piece when it moves, turns, is resized, copied or removed: its invisible walls and lights.
+export function comesWith(nWalls, nLights) {
+  const n = (k, one, many) => (k === 1 ? `one ${one}` : `${k} ${many}`);
+  const parts = [nWalls && n(nWalls, 'invisible wall', 'invisible walls'), nLights && n(nLights, 'light', 'lights')].filter(Boolean);
+  if (!parts.length) return null;
+  return `${parts.join(' and ')} ${nWalls + nLights === 1 ? 'goes' : 'go'} with it when it moves, turns, is resized, copied or removed`;
+}
