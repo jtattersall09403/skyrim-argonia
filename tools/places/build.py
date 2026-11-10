@@ -621,7 +621,8 @@ def nav_fid(key: str) -> int:
 
 
 def tri_under(n, p) -> int:
-    """The triangle whose plan contains p (nearest centroid in plan and height when none contains it)."""
+    """The triangle nearest p in plan and height together: a roof or deck over the spot never wins over the ground a
+    step away beside it (a door's arrival under an overhang stands on the ground, not on the overhang's top)."""
     v = n.verts
     best, bd = -1, float("inf")
     for i, t in enumerate(n.tris["v"]):
@@ -632,7 +633,7 @@ def tri_under(n, p) -> int:
         inside = not ((d1 < 0 or d2 < 0 or d3 < 0) and (d1 > 0 or d2 > 0 or d3 > 0))
         zc = (a[2] + b[2] + c[2]) / 3
         cen = ((a[0] + b[0] + c[0]) / 3, (a[1] + b[1] + c[1]) / 3)
-        d = (0 if inside else math.hypot(cen[0] - p[0], cen[1] - p[1])) + abs(zc - p[2]) * (0.01 if inside else 1)
+        d = (0 if inside else math.hypot(cen[0] - p[0], cen[1] - p[1])) + abs(zc - p[2])
         if d < bd:
             best, bd = i, d
     return best

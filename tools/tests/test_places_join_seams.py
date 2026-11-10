@@ -40,3 +40,12 @@ def test_a_one_way_link_is_opened_then_joined_both_ways():
     assert B.unlink_one_way([a, b]) == 1
     assert B.join_seams([a, b]) == 1
     assert a["nv"].links[a["nv"].tris[0]["e"][1]]["tri"] == 1
+
+
+def test_a_door_triangle_is_the_ground_beside_not_the_roof_over_the_arrival():
+    verts = np.array([[0, 0, 100], [80, 0, 100], [0, 80, 100], [100, 100, 500], [300, 100, 500], [100, 300, 500]], np.float32)
+    tris = np.zeros(2, nvnm.TRI)
+    tris[0] = ((0, 1, 2), (-1, -1, -1), nvnm.FOUND, 0)  # ground, the arrival a step beside it
+    tris[1] = ((3, 4, 5), (-1, -1, -1), nvnm.FOUND, 0)  # an overhang's top, over the arrival in plan
+    n = nvnm.Nvnm(1, (0, 0), None, verts, tris)
+    assert B.tri_under(n, (120, 120, 104)) == 0
