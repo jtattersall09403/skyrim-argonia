@@ -14,7 +14,6 @@ from __future__ import annotations
 
 import argparse
 import datetime as dt
-import importlib.util
 import json
 import os
 import shlex
@@ -135,20 +134,20 @@ def step_record(run: Run) -> dict:
 
 # ---------- 2. build ----------
 
-def verb_available(verb: str) -> bool:
-    return importlib.util.find_spec(f"tools.places.{verb}") is not None
+def verb_available(repo: Path, verb: str) -> bool:
+    return (repo / "tools/places" / f"{verb}.py").exists() or (repo / "tools/places" / verb / "__init__.py").exists()
 
 
 def step_build(run: Run, skip: bool) -> dict:
     results = {}
     for verb in BUILD_VERBS:
-        if skip or not verb_available(verb):
+        if skip or not verb_available(run.repo, verb):
             results[verb] = {"rc": None, "status": "skipped" if skip else "not available yet", "tail": ""}
             run.log(f"build: {verb} {results[verb]['status']}")
             continue
         cmd = [sys.executable, "-m", "tools.places", verb, run.place_id]
         run.log("build: " + shlex.join(cmd))
-        r = subprocess.run(cmd, cwd=CODE_REPO, capture_output=True, text=True)
+        r = subprocess.run(cmd, cwd=run.repo, capture_output=True, text=True)   # the repo's own tools and files
         out = (r.stdout + r.stderr).strip().splitlines()
         with open(run.dir / "run.log", "a") as f:
             f.write("\n".join(out) + "\n")
