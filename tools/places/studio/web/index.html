@@ -7,6 +7,24 @@
 <title>Place Studio</title>
 <link rel="icon" href="data:,">
 <link rel="stylesheet" href="css/studio.css">
+<script>
+// Before anything else: tell the server what this page does and what fails (out/places/studio-client.log), so a
+// fault on one device can be read on the build machine even when the studio's own code never starts.
+window.__errs = [];
+function __say(stage, extra) {
+  try {
+    var body = JSON.stringify(Object.assign({ stage: stage, t: Math.round(performance.now()) }, extra || {}));
+    fetch('/api/clientlog', { method: 'POST', keepalive: true, credentials: 'same-origin', body: body }).catch(function () {});
+  } catch (e) { /* never in the way */ }
+}
+window.addEventListener('error', function (e) {
+  var src = e.target && (e.target.src || e.target.href);
+  var m = (e.message || (src ? 'could not load ' + src : 'error')) + (e.filename ? ' @' + e.filename.split('/').pop() + ':' + (e.lineno || 0) : '');
+  window.__errs.push(m); __say('early-error', { message: String(m).slice(0, 500) });
+}, true);
+window.addEventListener('unhandledrejection', function (e) { var m = String((e.reason && (e.reason.stack || e.reason.message)) || e.reason).slice(0, 500); window.__errs.push(m); __say('early-rejection', { message: m }); });
+__say('page', { w: innerWidth, h: innerHeight, dpr: window.devicePixelRatio });
+</script>
 <script type="importmap">{"imports": {"three": "./vendor/three-0.170.0/three.module.min.js"}}</script>
 </head>
 <body>
@@ -36,6 +54,7 @@
         <span class="bar-gap"></span>
         <button id="show-src" class="bar-btn" hidden aria-label="Show the source place"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg><span>Source</span></button>
       </div>
+      <label class="tilt" title="Tilt the view"><span>Tilt</span><input type="range" min="8" max="152" value="75" aria-label="Tilt the view of our place"></label>
       <div class="gizmo" hidden></div>
       <svg class="sketch" aria-hidden="true"></svg>
     </div>
@@ -51,6 +70,7 @@
         <button class="icon-btn small fs" aria-label="Full screen"><svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
         <button id="hide-src" class="bar-btn" aria-label="Hide the source place"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg><span>Hide</span></button>
       </div>
+      <label class="tilt" title="Tilt the view"><span>Tilt</span><input type="range" min="8" max="152" value="75" aria-label="Tilt the view of the source place"></label>
       <svg class="sketch" aria-hidden="true"></svg>
     </div>
   </section>
@@ -84,11 +104,11 @@ setTimeout(function () {
   fetch('/api/status', { redirect: 'manual', cache: 'no-store', credentials: 'same-origin' }).then(function (r) {
     if (window.__studioBooted) return;
     if (r.type === 'opaqueredirect' || r.status === 401 || r.status === 403) offer('Your sign-in to the studio has run out. Sign in again to carry on; nothing has been lost.', 'Sign in again', function () { location.href = location.origin + '/?signin=' + Date.now(); });
-    else offer('The studio did not start. Reload it; if that does not help, clear this site\'s stored data in the browser and sign in again.', 'Reload', function () { location.reload(); });
+    else { __say('did-not-start', { errors: window.__errs.slice(0, 5) }); offer('The studio has not started yet' + (window.__errs.length ? ' (' + window.__errs[0] + ')' : '') + '. It may only be slow: wait a moment, or reload.', 'Reload', function () { location.reload(); }); }
   }).catch(function () {
     if (!window.__studioBooted) offer('The studio could not be reached. Check that the build machine is running, then reload.', 'Reload', function () { location.reload(); });
   });
-}, 8000);
+}, 20000);
 </script>
 <script type="module" src="js/main.js"></script>
 </body>

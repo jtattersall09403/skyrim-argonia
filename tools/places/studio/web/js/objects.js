@@ -166,7 +166,7 @@ export function drainReady(renderer, layers = [], scene = null, camera = null, b
   let left = 0, newLook = false;
   for (let i = 0; i < ready.jobs.length; i++) {
     const j = ready.jobs[i];
-    if (!layers.includes(j.layer)) continue;
+    if (layers && !layers.includes(j.layer)) continue;
     left++;
     const fresh = j.parts.filter((p) => !mine.has(p.material));
     if (fresh.length && scene && camera) {
@@ -196,6 +196,8 @@ class Group {
     this.layer = layer; this.base = base; this.kind = kind; this.ghost = ghost; this.refs = [];
     this.full = null; this.cap = 0; this.box = null; this.wantModel = false; this.matrices = [];
     this.fx = /^effects[\\/]/i.test(base?.model || '');
+    // a thing with no model (a marker, a trigger volume, a sound) has nothing to show: it is neither drawn nor picked
+    this.unseen = !base?.model && !ghost;
     // effects and markers carry the record's "everything" bounds; draw them as a small box
     let b = base?.bounds || [[-32, -32, 0], [32, 32, 64]];
     if (b[1].some((v, i) => v - b[0][i] > 20000)) b = [[-32, -32, 0], [32, 32, 64]];
@@ -231,7 +233,9 @@ class Group {
   cull(cam, frustum, sphere) {
     // effects (mist, waterfall sheets, glows) are shader tricks of the game's: drawn here they are pale rings
     // and sheets over the land, so they stay unseen (still listed and pickable)
-    if (this.fx) { this.box.visible = false; this.box.count = 0; return 0; }
+    if (this.fx || this.unseen) { this.box.visible = false; this.box.count = 0; return 0; }
+    // the place's own built things (layer.always) are drawn whole at any distance: zoomed right out, everything built shows
+    const always = !!this.layer.always;
     const [near, far] = RANGE[this.kind] || RANGE.default;
     // anything big (a building, dock, bridge, ship, big rock or tree: bounds over a few metres) is never thinned or
     // cut by distance, at any detail level; only small clutter and plants thin out (the frustum still applies)
@@ -248,22 +252,24 @@ class Group {
       const m = this.matrices[i];
       tmpV.setFromMatrixPosition(m);
       const d = tmpV.distanceTo(cam.position);
-      if (!big && d > farD + this.radius) continue;
+      if (!big && !always && d > farD + this.radius) continue;
       sphere.center.copy(tmpV); sphere.radius = this.radius * (this.refs[i].scale ?? 1) * 1.8 + 50;
       if (!frustum.intersectsSphere(sphere)) continue;
       if (skips && d > near * scale * 0.5 && i % detail.density) continue;
       nearest = Math.min(nearest, d);
-      if (d < nearD && this.full) this.full[0].setMatrixAt(nf++, m);
-      else { tmpM.multiplyMatrices(m, this.boxLocal); this.box.setMatrixAt(nb++, tmpM); }
+      if ((always || d < nearD) && this.full) this.full[0].setMatrixAt(nf++, m);
+      // no stand-in boxes: a model not yet here, or too far for its kind, shows nothing (cleared plants keep their ghost)
+      else if (this.ghost) { tmpM.multiplyMatrices(m, this.boxLocal); this.box.setMatrixAt(nb++, tmpM); }
     }
     // an empty instanced mesh still costs a draw setup: hide it
     this.box.count = nb; this.box.visible = nb > 0; if (nb) sendInstances(this.box, nb);
     if (this.full) { for (const fm of this.full) { fm.count = nf; fm.visible = nf > 0; } if (nf) sendInstances(this.full[0], nf); }
-    if (!this.fullParts && !this.wantModel && nearest < Math.max(near * scale * 1.3, LIGHT.has(this.kind) ? farD : 0) && this.base?.model) {
+    if (!this.fullParts && !this.wantModel && nearest < (always ? Infinity : Math.max(near * scale * 1.3, LIGHT.has(this.kind) ? farD : 0)) && this.base?.model) {
       this.wantModel = true;
       loadModel(this.base.model, nearest, LIGHT.has(this.kind) ? 1 : 0, this.kind).then((parts) => {
         if (!parts || !parts.length) return;
         ready.push(() => { this.fullParts = parts; this.makeFull(); this.layer.dirty(); this.layer.onModel?.(this); }, parts, this.layer);
+        this.layer.onDirty();   // a view at rest draws again, so a model that arrives is switched on without waiting for a touch
       });
     }
     return nf + nb;
@@ -307,6 +313,7 @@ export class ObjectLayer {
   pick(ray, { kinds, includeGhosts = false } = {}) {
     const hits = [], inv = new THREE.Matrix4(), lr = new THREE.Ray(), box = new THREE.Box3(), p = new THREE.Vector3();
     for (const g of this.groups.values()) {
+      if (g.unseen || g.fx) continue;
       if (g.ghost && !includeGhosts) continue;
       if (kinds && !kinds.has(g.kind)) continue;
       box.min.set(...g.bmin); box.max.set(g.bmin[0] + g.bsize[0], g.bmin[1] + g.bsize[1], g.bmin[2] + g.bsize[2]);

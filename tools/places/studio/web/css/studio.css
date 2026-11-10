@@ -65,6 +65,9 @@ select { min-height: 44px; border-radius: 10px; border: 1px solid var(--line); b
 /* the source place put away to the right: our place takes the whole stage until it is asked back */
 #views[data-src="hidden"] #view-src, #views[data-src="hidden"] .view-link { display: none; }
 .bar-gap { flex: 1; }
+/* tilt: a slider at each view's right edge (top of the slider looks from above, bottom along the ground) */
+.tilt { position: absolute; right: 10px; bottom: 16px; display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 8px 4px 10px; border-radius: 14px; background: var(--panel); box-shadow: var(--shadow); font-size: 12px; font-weight: 600; z-index: 2; }
+.tilt input { writing-mode: vertical-lr; direction: rtl; block-size: 44px; inline-size: 150px; min-width: 44px; touch-action: none; }
 /* with the side panel open the views are narrow: the source chooser keeps its room and Hide is its arrow alone */
 .view-bar .pick select { min-width: 8.5em; }
 #stage:has(#panel:not([hidden])) #hide-src span { display: none; }
@@ -99,7 +102,7 @@ select { min-height: 44px; border-radius: 10px; border: 1px solid var(--line); b
 .gizmo .h.move { background: var(--accent); color: var(--accent-ink); }
 .gizmo .ring { position: absolute; border: 2px dashed var(--accent); border-radius: 50%; pointer-events: none; opacity: .7; }
 
-#panel { position: absolute; top: 8px; right: 8px; bottom: 8px; z-index: 6; width: min(360px, 40vw); background: var(--panel); border: 1px solid var(--line); border-radius: var(--r); display: flex; flex-direction: column; box-shadow: var(--shadow); overflow: hidden;
+#panel { position: absolute; top: 8px; right: 8px; bottom: 8px; z-index: 6; width: clamp(300px, 40vw, 380px); background: var(--panel); border: 1px solid var(--line); border-radius: var(--r); display: flex; flex-direction: column; box-shadow: var(--shadow); overflow: hidden;
   transition: transform .18s ease-out; }
 #panel[hidden] { display: none; }
 .panel-head { display: flex; align-items: center; justify-content: space-between; padding: 6px 8px 6px 16px; border-bottom: 1px solid var(--line); }
@@ -115,9 +118,13 @@ input[type=range] { width: 100%; min-height: 44px; accent-color: var(--accent); 
 .seg { display: inline-flex; background: var(--panel-2); border-radius: 12px; padding: 3px; gap: 2px; }
 .seg button { min-height: 44px; padding: 0 12px; font-size: 14px; }
 .seg button[aria-pressed="true"] { background: var(--panel); box-shadow: 0 1px 4px rgba(0,0,0,.15); color: var(--accent); font-weight: 600; }
-dl.facts { display: grid; grid-template-columns: max-content 1fr; gap: 6px 12px; margin: 8px 0; font-size: 15px; }
-dl.facts dt { color: var(--muted); }
-dl.facts dd { margin: 0; overflow-wrap: anywhere; }
+/* each fact's label over its value: a narrow panel never squeezes the value into a sliver beside a long label */
+dl.facts { margin: 8px 0; font-size: 15px; }
+dl.facts dt { color: var(--muted); font-size: 13px; margin-top: 8px; }
+dl.facts dd { margin: 0; overflow-wrap: anywhere; line-height: 1.4; }
+.card-head { display: flex; gap: 12px; align-items: center; }
+.card-head img { flex: 0 0 88px; width: 88px; height: 88px; border-radius: 12px; background: var(--panel-2); object-fit: contain; }
+.card-head p { margin: 0; min-width: 0; overflow-wrap: anywhere; }
 .tag { display: inline-block; font-size: 12px; padding: 2px 8px; border-radius: 8px; background: var(--panel-2); color: var(--muted); }
 .tag.nordic { background: var(--fault); color: #fff; }
 .tag.enter { background: var(--accent); color: var(--accent-ink); }

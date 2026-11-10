@@ -220,6 +220,8 @@ def test_16_first_run_and_design(pad):
 
 # ---------- 1: two views, layout, full screen, link, fingerprint ----------
 def test_01_two_views(pad):
+    # built things show as their models arrive (no stand-in boxes)
+    pad.page.wait_for_function("studio.stats().drawn.place > 0 && studio.stats().drawn.src > 0", timeout=120000 * SLOW)
     st = pad.ev("studio.stats()")
     assert st["refs"]["world"] > 0 and st["refs"]["src"] > 0
     # the real ground keeps none of its own things inside the place: from the town, at the lowest detail software GL

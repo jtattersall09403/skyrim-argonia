@@ -112,10 +112,9 @@ export class Panels {
   refCard(r, bases, side) {
     const a = this.app, base = bases.get(r.base) || a.srcBases?.get(r.base) || {};
     const kind = r.kind || base.kind, w = el('<div></div>');
-    const img = el(`<img class="thumb" alt="" width="120" height="120" style="width:120px;border-radius:12px;background:var(--panel-2);float:right;margin-left:10px">`);
-    img.src = thumb({ ...base, key: base.key || r.base, kind }, (u) => { img.src = u; });
-    w.append(img);
-    w.append(el(`<p><strong>${esc(base.name || base.edid || 'Unnamed')}</strong><br>${esc(plainKind(kind))}</p>`));
+    const head = el(`<div class="card-head"><img class="thumb" alt="" width="88" height="88"><p><strong>${esc(base.name || base.edid || 'Unnamed')}</strong><br>${esc(plainKind(kind))}</p></div>`);
+    head.querySelector('img').src = thumb({ ...base, key: base.key || r.base, kind });
+    w.append(head);
     const tags = el('<p></p>');
     if (base.nordic) tags.append(el('<span class="tag nordic">Nordic piece: not for Black Marsh</span>'));
     const enter = r.door?.to_space ? r : null;

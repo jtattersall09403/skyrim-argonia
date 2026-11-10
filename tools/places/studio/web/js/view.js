@@ -84,10 +84,13 @@ export class View {
     this.camera.near = Math.max(5, r.dist / 400); this.camera.far = Math.max(120000, r.dist * 2 + 60000); this.camera.updateProjectionMatrix();
     if (this.scene.fog) { this.scene.fog.near = Math.max(20000, r.dist * 2.5); this.scene.fog.far = this.scene.fog.near * 4; }
     this.camera.lookAt(r.target); this.camera.updateMatrixWorld();
+    if (this.tiltIn && document.activeElement !== this.tiltIn) this.tiltIn.value = Math.round(r.pitch * 100);
   }
   render(now) {
     if (!this.needs || shared.lost || this.hidden()) return false;
-    const waiting = drainReady(this.renderer, this.objects || [], this.scene, this.camera);
+    // models that have arrived are switched on whichever view draws: the views share one renderer, so the view
+    // not in use does not wait its turn for its models
+    const waiting = drainReady(this.renderer, null, this.scene, this.camera);
     if (now - this.lastCull > 120 || this.objects?.some((o) => o._dirty)) {
       for (const o of this.objects || []) o.cull(this.camera); this.lastCull = now;
     }
@@ -102,7 +105,10 @@ export class View {
     c.addEventListener('pointermove', (e) => this.move(e));
     c.addEventListener('pointerup', (e) => this.up(e));
     c.addEventListener('pointercancel', (e) => this.up(e, true));
-    c.addEventListener('wheel', (e) => { e.preventDefault(); this.zoom(Math.exp(e.deltaY * 0.0012)); }, { passive: false });
+    // the wheel (two fingers on a trackpad) zooms; with Shift held it tilts
+    c.addEventListener('wheel', (e) => { e.preventDefault(); if (e.shiftKey) this.tilt(this.rig.pitch + (e.deltaY || e.deltaX) * 0.003); else this.zoom(Math.exp(e.deltaY * 0.0012)); }, { passive: false });
+    this.tiltIn = this.el.querySelector('.tilt input');
+    if (this.tiltIn) this.tiltIn.oninput = () => this.tilt(Number(this.tiltIn.value) / 100);
     c.addEventListener('contextmenu', (e) => e.preventDefault());
   }
   info(e) {
@@ -114,7 +120,9 @@ export class View {
   }
   role(e) {
     if (e.pointerType === 'pen') this.app.penSeen = true;
-    if (e.pointerType === 'mouse') return e.button === 0 ? 'tool' : (e.button === 2 || e.shiftKey ? 'pan' : 'orbit');
+    // a mouse or trackpad: the main button works the tool, the other button tilts and turns, the wheel button (or
+    // either with Shift) slides the view
+    if (e.pointerType === 'mouse') return e.button === 0 && !e.shiftKey ? 'tool' : (e.button === 1 || e.shiftKey ? 'pan' : 'orbit');
     if (e.pointerType === 'touch' && this.app.penSeen) return 'nav';
     if (e.pointerType === 'touch') return 'touch';
     return 'tool';
@@ -164,6 +172,8 @@ export class View {
     // with a pen about, a finger tap only selects (a resting palm never edits)
     if (isTap && (p.role === 'tool' || p.role === 'touch' || (p.role === 'nav' && tool?.fingerTap))) tool?.tap?.(this.info(e));
   }
+  // how steeply the view looks down: 0.08 (along the ground) to 1.52 (from straight above)
+  tilt(p) { this.rig.pitch = Math.max(0.08, Math.min(1.52, p)); this.changed(); }
   orbit(dx, dy) {
     this.rig.yaw -= dx * 0.006; this.rig.pitch = Math.max(0.08, Math.min(1.52, this.rig.pitch + dy * 0.005)); this.changed();
   }

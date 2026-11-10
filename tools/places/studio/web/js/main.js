@@ -112,6 +112,7 @@ class Studio {
     const origin = ground.meta.anchor ? ground.meta.anchor.map(Math.round) : [0, 0, 0];
     this.ours.origin = origin;
     this.ours.world = new ObjectLayer(origin, this.bases); this.ours.place = new ObjectLayer(origin, this.bases);
+    this.ours.place.always = true;   // everything built is drawn whole at any zoom
     this.ours.grass = this.makeGrass(this.ours, origin, () => this.terrain, () => [...this.worldRefs, ...(this.model.spaces.exterior?.refs.values() || [])]);
     this.ours.grass.view = this.ours.view;
     this.loading('Drawing the land');
@@ -148,7 +149,7 @@ class Studio {
     this.srcBases = this.srcBundle.bases; this.sourceId = sid;
     const s = this.src, terr = this.srcBundle.spaces.exterior?.terrain;
     s.origin = this.srcBundle.meta.anchor ? this.srcBundle.meta.anchor.map(Math.round) : [0, 0, 0];
-    s.terrain = terr; s.layer = new ObjectLayer(s.origin, this.srcBases);
+    s.terrain = terr; s.layer = new ObjectLayer(s.origin, this.srcBases); s.layer.always = true;
     s.grass = this.makeGrass(s, s.origin, () => s.terrain, () => this.srcBundle.spaces.exterior?.refs || []); s.grass.view = s.view;
     s.terrainMesh = terr ? await new TerrainMesh(terr, s.origin, { landTex: this.landTex })
       .build({ focus: focusOf(this.srcBundle.spaces.exterior?.refs || [], s.origin) }) : null;
@@ -417,7 +418,8 @@ class Studio {
     });
     // no page zoom, pull to refresh, double-tap zoom or long-press menus
     for (const ev of ['gesturestart', 'gesturechange', 'dblclick']) document.addEventListener(ev, (e) => e.preventDefault(), { passive: false });
-    document.addEventListener('touchmove', (e) => { if (!e.target.closest('#panel-body')) e.preventDefault(); }, { passive: false });
+    // (a slider is still dragged with a finger: the tilt sliders and the time of day)
+    document.addEventListener('touchmove', (e) => { if (!e.target.closest('#panel-body, input[type=range], .sheet')) e.preventDefault(); }, { passive: false });
     document.addEventListener('contextmenu', (e) => { if (!e.target.closest('input, textarea')) e.preventDefault(); });
     const mq = matchMedia('(prefers-color-scheme: dark)');
     const theme = () => { const dark = document.documentElement.dataset.theme ? document.documentElement.dataset.theme === 'dark' : mq.matches; this.ours.view.setTheme(dark); this.src.view.setTheme(dark); };
