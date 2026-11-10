@@ -108,12 +108,13 @@ def check_op(op: dict) -> None:
     elif kind in ("veg.clear", "veg.restore"):
         _need(op, "items")
         for it in op["items"]:
-            if "base" not in it or len(it.get("pos", [])) != 3:
+            if not isinstance(it, dict) or "base" not in it or not isinstance(it.get("pos"), list) or len(it["pos"]) != 3:
                 raise EditError(f"op {op['n']} ({kind}): each item needs base and a three-number pos")
     elif kind == "land.patch":
         _need(op, "cell", "verts")
         for v in op["verts"]:
-            if len(v) != 4 or not all(0 <= int(x) <= 32 for x in v[:2]):
+            num = isinstance(v, list) and len(v) == 4 and all(isinstance(x, (int, float)) and not isinstance(x, bool) for x in v)
+            if not num or not all(x == int(x) and 0 <= x <= 32 for x in v[:2]):
                 raise EditError(f"op {op['n']} (land.patch): each vert is [row, col, before_dz, after_dz], row and col 0..32")
     elif kind.startswith(("path.", "person.")):
         _need(op, kind.split(".")[0])

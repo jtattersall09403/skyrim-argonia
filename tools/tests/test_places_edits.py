@@ -208,3 +208,16 @@ def test_write_place_removes_a_dropped_space(tmp_path):
     del files["spaces"]["room"]
     edits.write_place(tmp_path, files)
     assert not (tmp_path / "spaces" / "room").exists() and (tmp_path / "spaces" / "exterior").exists()
+
+
+def test_a_malformed_op_is_an_edit_error():
+    import pytest
+
+    from tools.places import edits
+    for op in ({"n": 1, "op": "land.patch", "space": "exterior", "cell": [0, 0], "verts": [["a", 1, 0, 1]]},
+               {"n": 1, "op": "land.patch", "space": "exterior", "cell": [0, 0], "verts": [[1.5, 1, 0, 1]]},
+               {"n": 1, "op": "land.patch", "space": "exterior", "cell": [0, 0], "verts": [[1, 2, None, 1]]},
+               {"n": 1, "op": "veg.clear", "space": "exterior", "items": ["x"]},
+               {"n": 1, "op": "veg.clear", "space": "exterior", "items": [{"base": "b", "pos": 3}]}):
+        with pytest.raises(edits.EditError):
+            edits.check_op(op)

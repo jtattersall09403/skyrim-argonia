@@ -92,6 +92,7 @@ class Index:
         self.embedder = None
         self._source_keys: dict[str, tuple[float, set]] = {}
         self._mtime = None
+        self._state: tuple = ([], self.vec, [], [], [])
         self.load()
 
     @classmethod
@@ -105,23 +106,30 @@ class Index:
         return ix
 
     def load(self) -> None:
+        """Read the index from disk. Everything a query reads is one tuple (`_state`), swapped in whole, so a query
+        on another thread sees the old index or the new one, never rows of one against vectors of the other."""
         rp, vp = self.dir / "rows.jsonl", self.dir / "vectors.npy"
+        rows, vec, mtime = self.rows, self.vec, self._mtime
         if rp.exists() and vp.exists():
-            self.rows = list(read_jsonl(rp))
-            self.vec = np.load(vp).astype(np.float32)
-            self._mtime = vp.stat().st_mtime
-        self._prep()
+            mtime = vp.stat().st_mtime
+            rows = list(read_jsonl(rp))
+            vec = np.load(vp).astype(np.float32)
+            if len(rows) != len(vec):   # caught between the two files of an update: keep what is loaded
+                return
+        edid = [squash(r.get("edid")) for r in rows]
+        name = [squash(r.get("name")) for r in rows]
+        wordset = [set(words(r.get("edid"))) | set(words(r.get("name"))) |
+                   set(words((r.get("model") or "").replace("/", " "))) for r in rows]
+        self._state = (rows, vec, edid, name, wordset)
+        self.rows, self.vec, self.edid, self.name, self.wordset = self._state
+        self._mtime = mtime
 
     def reload_if_changed(self) -> None:
         vp = self.dir / "vectors.npy"
         if vp.exists() and vp.stat().st_mtime != self._mtime:
-            self.load()
-
-    def _prep(self) -> None:
-        self.edid = [squash(r.get("edid")) for r in self.rows]
-        self.name = [squash(r.get("name")) for r in self.rows]
-        self.wordset = [set(words(r.get("edid"))) | set(words(r.get("name"))) |
-                        set(words((r.get("model") or "").replace("/", " "))) for r in self.rows]
+            with self._lock:
+                if vp.stat().st_mtime != self._mtime:
+                    self.load()
 
     def embed(self, texts: list[str]) -> np.ndarray:
         if self.embedder is None:
@@ -172,30 +180,29 @@ class Index:
     def query(self, q: str, scope: str = "all", source_id: str | None = None, kind: str | None = None,
               limit: int = 40) -> list[dict]:
         q = (q or "").strip()
-        n = len(self.rows)
+        rows, vec, edids, names, wordsets = self._state
+        n = len(rows)
         if not n:
             return []
         mask = np.ones(n, bool)
         if scope == "source":
             keys = self.source_keys(source_id or "")
-            mask &= np.fromiter((r["key"] in keys for r in self.rows), bool, n)
+            mask &= np.fromiter((r["key"] in keys for r in rows), bool, n)
         if kind:
             kinds = set(kind.split(","))
-            mask &= np.fromiter((r.get("kind") in kinds for r in self.rows), bool, n)
+            mask &= np.fromiter((r.get("kind") in kinds for r in rows), bool, n)
         if not q:
             score = np.zeros(n, np.float32)
         else:
-            score = self.vec @ self.embed([q])[0]
+            score = vec @ self.embed([q])[0]
             sq, qw = squash(q), set(words(q))
-            for i in range(n):
-                if not mask[i]:
-                    continue
-                e, nm = self.edid[i], self.name[i]
+            for i in np.flatnonzero(mask):
+                e, nm = edids[i], names[i]
                 if sq and (sq == e or sq == nm):
                     score[i] += 2.0
                 elif sq and (e.startswith(sq) or nm.startswith(sq)):
                     score[i] += 1.0
-                elif qw and qw <= self.wordset[i]:
+                elif qw and qw <= wordsets[i]:
                     score[i] += 0.15
         score = np.where(mask, score, -np.inf)
         k = min(limit, int(mask.sum()))
@@ -203,5 +210,5 @@ class Index:
             return []
         top = np.argpartition(-score, k - 1)[:k]
         top = top[np.argsort(-score[top])]
-        return [{k2: v for k2, v in self.rows[i].items() if k2 != "h"} | {"score": round(float(score[i]), 4)}
+        return [{k2: v for k2, v in rows[i].items() if k2 != "h"} | {"score": round(float(score[i]), 4)}
                 for i in top]

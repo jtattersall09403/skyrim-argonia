@@ -19,6 +19,7 @@ from __future__ import annotations
 
 import json
 import math
+import os
 import sys
 from array import array
 from pathlib import Path
@@ -175,12 +176,20 @@ def model_bounds(base: dict) -> list | None:
         except Exception:
             b = None
         _fp[m] = b
-        try:
-            FOOTPRINTS.parent.mkdir(parents=True, exist_ok=True)
-            FOOTPRINTS.write_text(json.dumps(_fp, sort_keys=True))
-        except OSError:
-            pass
+        _put_cache(FOOTPRINTS, _fp)
     return _fp[m] or base.get("bounds")
+
+
+def _put_cache(p: Path, table: dict) -> None:
+    """Write a per-model cache in one rename (the draft, the build and the studio read it while another writes: a
+    half-written file read as empty would be written back empty)."""
+    try:
+        p.parent.mkdir(parents=True, exist_ok=True)
+        tmp = p.with_name(f".{p.name}.{os.getpid()}.tmp")
+        tmp.write_text(json.dumps(table, sort_keys=True))
+        os.replace(tmp, p)
+    except OSError:
+        pass
 
 
 WALK_TOPS = ROOT / "out" / "places" / "walk_tops.json"
@@ -238,11 +247,7 @@ def walk_top(base: dict) -> float:
         except Exception:
             t = None
         _wt[m] = t
-        try:
-            WALK_TOPS.parent.mkdir(parents=True, exist_ok=True)
-            WALK_TOPS.write_text(json.dumps(_wt, sort_keys=True))
-        except OSError:
-            pass
+        _put_cache(WALK_TOPS, _wt)
     return float(_wt[m]) if _wt[m] is not None else float(bb[1][2])
 
 
