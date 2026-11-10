@@ -38,7 +38,7 @@ Grid: 40 px per Morrowind cell (8192 units); the edge labels print the absolute 
 | 3b Region research: 24 regions, 11 aspects and relief numbers | done |
 | 3c Danger bands, every cell (danger.py): D0 85 cells, D1 1035, D2 822, D3 887, D4 411, D5 108 (Murkwood's heart) | done |
 | 4 Terrain (terrain*.py): heightmap 5377 x 3841 at 128 units, water level 0, map water and land exact, roads, pads, 49 entrances, islands and seabed built in, 2319 water bodies with flow, one estuary a river mouth (owner edits in water_overrides.json); measurements in research/terrain-measurements.md | done |
-| 5 Interactive map (map_page.py), published: https://claude.ai/artifact/HytwbVPXzurvxNZWfvzo6g | done |
+| 5 Interactive map (map_page.py), published: https://claude.ai/artifact/SwMRMPndRrXfEKtTuodNsb | done |
 
 Skills made in this phase (README: a skill for anything done more than once): `place-research` (researching
 places and regions of the new world). Its review step is the existing `text-review` skill.

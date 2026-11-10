@@ -1,6 +1,6 @@
 """The owner's water edits, from the atlas's shared database into the build's source files.
 
-The atlas (https://claude.ai/artifact/HytwbVPXzurvxNZWfvzo6g, built by tools/newworld/map_page.py) keeps two
+The atlas (https://claude.ai/artifact/SwMRMPndRrXfEKtTuodNsb, built by tools/newworld/map_page.py) keeps two
 collections: `water_edits` (one document per body id: kind, flows, flow_deg, speed, name, and point, a map pixel inside the body
 that finds it again after a terrain rebuild changes ids) and `water_paint` (one
 document per painted stroke: kind, flows, radius_px, pts as a flat [x, y, ...] list in map pixels).
@@ -76,6 +76,15 @@ def convert(edits: dict, paint: dict) -> tuple[dict, list, list]:
 def main(dirpath: str) -> None:
     d = Path(dirpath)
     ov, strokes, problems = convert(load(d, "water_edits"), load(d, "water_paint"))
+    # the files are the record, the atlas's store only what was edited there since: an atlas published afresh
+    # starts with an empty store, so what the files already hold is kept and the pulled edits are laid over it
+    # (an edit is taken back by deleting its entry from the file)
+    op, pp = SRC / "water_overrides.json", SRC / "water_paint.json"
+    had = json.loads(op.read_text()) if op.exists() else {}
+    ov = {**had, **{k: {**had.get(k, {}), **v} for k, v in ov.items()}}
+    old = json.loads(pp.read_text()) if pp.exists() else []
+    seen = {st.get("id") for st in strokes}
+    strokes = [st for st in old if st.get("id") not in seen] + strokes
     (SRC / "water_overrides.json").write_text(json.dumps(ov, indent=1, sort_keys=True) + "\n")
     (SRC / "water_paint.json").write_text(json.dumps(strokes, indent=1) + "\n")
     print(f"{len(ov)} body edits, {len(strokes)} painted strokes", *problems, sep="\n")

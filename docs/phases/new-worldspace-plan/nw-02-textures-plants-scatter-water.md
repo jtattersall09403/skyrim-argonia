@@ -5,7 +5,7 @@ Goal: at the end of this phase, have a walkable worldspace that we can load in-e
 I don't mind how I get to it at this stage, e.g. could be an additional loaded worldspace in our current BM&V game that I can teleport to with a console command. Whatever you think will be easiest and cause least hassle.
 
 # Quick fixes to the map from phase 01 first
-Map: https://claude.ai/artifact/HytwbVPXzurvxNZWfvzo6g
+Map: https://claude.ai/artifact/SwMRMPndRrXfEKtTuodNsb
 
 * There are a few bits of the road network that are recorded in our data as major road that should be minor roads/paths (that's how they are shown on the original source map). I am guessing these were image reader misreads. Look at an image of our road network on our terrain map yourself: you should be able to see that there are some patches of major road in the middle of a span of minor road/path; and some bits of major road that only come at the end of a stretch of minor road (e.g. connecting up a minor place to the minor road network). You should be able to measure these and correct them in our roads and paths data.
 * There are also one or two small gaps in the major road network that are errors, e.g. just north of Guj-Tei. FIx these too.
