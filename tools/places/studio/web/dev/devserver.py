@@ -135,7 +135,7 @@ class State:
                    "stamps": {"draft": self.stamp(f"draft.{pid}", dk) if self.bundle_json(f"draft.{pid}") else p.get("draft_key"),
                               "ground": self.stamp(f"ground.{pid}", (p.get("ground") or {}).get("stamp")),
                               "source": self.stamp(f"src.{p['source_id']}", (p.get("source") or {}).get("stamp"))},
-                   "fit": p.get("fit"), "needs_look": p.get("needs_look") or []}
+                   "fit": p.get("fit")}
             out.append(ent)
         return out
 

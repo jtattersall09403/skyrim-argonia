@@ -45,3 +45,26 @@ test('undo and redo through the log give the same files', () => {
   log.setCall([2], 'taste', 'I like it there');
   assert.equal(log.ops[1].call, 'taste'); assert.equal(log.ops[1].note, 'I like it there');
 });
+
+// The studio's model holds a copied room's refs resolved (the draft bundle's rows: source rows with ours over
+// them, so every piece of furniture is a row and none is "unlisted"). Moving or removing one there must give
+// the room finalise writes, read back through the bundle's rule (draft_bundle.copy_space).
+test('a copied room edited as resolved rows equals the files finalise writes, resolved', () => {
+  const resolve = (rows, source) => {
+    const out = new Map(source.map((r) => [r.id, r]));
+    for (const r of rows) {
+      if (r.src) { if (!out.has(r.src)) continue; if (r.removed) { out.delete(r.src); continue; } const o = { ...out.get(r.src), ...r }; out.delete(r.src); out.set(r.id, o); }
+      else if (!r.removed) out.set(r.id, r);
+    }
+    return [...out.values()].sort((a, b) => (a.id < b.id ? -1 : 1));
+  };
+  for (const name of ['copy_move.json', 'copy_remove.json']) {
+    const c = JSON.parse(readFileSync(join(FIX, 'copy_refs', name), 'utf8')), sid = c.ops[0].space;
+    const listed = modelFromFiles(place); listed.source = c.source;
+    for (const op of c.ops) applyOp(listed, op);
+    const want = resolve(modelToFiles(listed).spaces[sid].refs, c.source[sid]);
+    const studio = modelFromFiles({ ...place, spaces: { ...place.spaces, [sid]: { refs: c.source[sid], space: { copy_of: 'bmv.fixture/' + sid } } } });
+    for (const op of c.ops) applyOp(studio, op);
+    assert.ok(same(modelToFiles(studio).spaces[sid].refs, want), `${name}: studio rows differ from finalise's room`);
+  }
+});

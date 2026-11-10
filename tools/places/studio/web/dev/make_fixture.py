@@ -319,7 +319,6 @@ def main():
                     nr["door"]["to_pos"] = nd["pos"]
             dint[sid].append(nr)
     dnpcs = list(snpcs)
-    door0 = next(r for r in drefs if r.get("door"))
     dd = root / "draft.fixplace"
     write_bundle(root, "draft.fixplace", "draft", "Fixture place draft", [0, 0, 0], gcells, drefs, dint, sb,
                  (1.0, "y", "river"), dnpcs, {"stamp": {"key": hashlib.sha256(b"draft" + gsha.encode()).hexdigest()[:16],
@@ -364,9 +363,7 @@ def main():
                  (3.0, None, "lake"))
 
     jwrite(out / "place.json", {"place_id": "fixplace", "title": "Fixture place", "source_id": "fix.village",
-                                "similar": ["fix.hamlet"], "fit": fit,
-                                "needs_look": [{"door": door0["id"], "src": door0["src"], "base": door0["base"], "space": door0["door"]["to_space"],
-                                                "at": door0["pos"][:2], "why": "replacement door: which face is its front cannot be read"}]})
+                                "similar": ["fix.hamlet"], "fit": fit})
     print(f"fixture written to {out}")
 
 
