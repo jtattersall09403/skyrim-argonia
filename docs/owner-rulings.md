@@ -305,3 +305,10 @@ added here the day they are made, with the date and the issue.
   the game does not draw (editor markers, effect shells) is drawn; everything placed shows at any zoom; the owner
   leaves notes for the agent in the studio, about the place or about selected things; the Atlas opens inside the
   studio from the built page, with no copied code.
+- 2026-11-10 (in session, later): stocking is part of nw-03 (building Helstrom "in its entirety"), as its own
+  skill `place-stock`. Set dressing stays as the source has it; anything more significant is authored on purpose
+  from who owns it, what and where the container is, and the place's record; no random loot, nothing levelled.
+  Value, level and strength are derived on one fixed scale (danger of the ground, the place's facts, the owner,
+  security, effort, provenance; cities are safe ground with costly things hard to steal). Every promise of the
+  place record is delivered, or the record is edited case by case with a reason, never as a way out. Contents are
+  editable in the studio, optionally. The full text is in the nw-03 phase file.
