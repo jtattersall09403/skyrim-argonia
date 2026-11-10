@@ -778,3 +778,107 @@ def test_22_start_choice(pad, browser, server):
     p.page.get_by_role("button", name="Start from the builder's draft").click()
     assert p.ev("studio.log.applied().length") == 0
     p.page.context.close()
+
+
+# ---------- 23: what things hold and who people are ----------
+def test_23_contents_and_identities(browser, server):
+    """A container's things with their reasons; a thing added, counted, removed and undone; a thing above the place's
+    ceiling refused with its reason; a thing laid out; a person's identity, carried things and wares edited; the
+    content ops in a named save."""
+    if REAL:
+        pytest.skip("drives the fixture's stock (the real place's is authored by lane S2)")
+    p = open_pad(browser, server, LANDSCAPE)
+    if p.ev("!document.getElementById('intro').hidden"):
+        p.page.click("#intro button")
+    body = lambda: p.ev("document.getElementById('panel-body').innerText")  # noqa: E731
+    last = lambda: p.ev("studio.log.applied().at(-1)")  # noqa: E731
+    chest = p.ev("studio.model.stock.containers[0]")
+    door = p.ev("(s) => [...studio.model.spaces.exterior.refs.values()].find((r) => r.door?.to_space === s)", chest["space"])
+    p.ev("(d) => studio.enter(studio.ours, d)", door)
+    p.ev("(id) => { studio.tools.use('select'); studio.selection = new Set([id]); studio.tools.selectionChanged(); }", chest["ref"])
+    text = body()
+    assert "What it holds" in text and "1 × Iron Sword" in text and "Why: The smith's spare blade" in text, text
+    assert "Novice" in text and "Belongs to" in text and "Ada Fixwright's household" in text
+    assert "T1 Common" in text and "25 gold" in text
+    top = "(t) => [...document.querySelectorAll('#panel-body h3')].find((h) => h.textContent === t).scrollIntoView({ block: 'start' })"
+    p.ev(top, "What it holds")
+    p.shot("23-container-contents")
+    # add a thing from the search, one more of it, remove it, and undo back to where it was
+    n0 = len(p.ops())
+    p.page.fill("#panel-body input[aria-label='Find a thing to add']", "war axe")
+    p.page.get_by_role("button", name="Add Iron War Axe").click()
+    op = last()
+    assert op["op"] == "stock.container.set" and op["before"]["ref"] == chest["ref"]
+    assert [i["item"] for i in op["container"]["items"]][-1] == "Fix.esm:00B008"
+    assert op["container"]["items"][-1]["why"] == "The owner added it in the studio."
+    assert "1 × Iron War Axe" in body() and "Why: The owner added it in the studio." in body()
+    p.page.get_by_role("button", name="One more Iron War Axe").click()
+    assert last()["container"]["items"][-1]["count"] == 2 and "2 × Iron War Axe" in body()
+    p.page.get_by_role("button", name="Remove Iron War Axe").click()
+    assert "Iron War Axe" not in body()
+    assert [o["op"] for o in p.ops()[n0:]] == ["stock.container.set"] * 3
+    p.ev("studio.log.undo()")
+    assert "2 × Iron War Axe" in body(), "undo brings it back"
+    p.ev("studio.log.undo(); studio.log.undo()")
+    assert p.ev("(r) => studio.model.stock.containers.find((c) => c.ref === r).items.length", chest["ref"]) == len(chest["items"])
+    assert len(p.ops()) == n0
+    # a thing above the place's ceiling is listed with its reason and refused
+    p.page.fill("#panel-body input[aria-label='Find a thing to add']", "glass")
+    refused = p.page.locator("#panel-body li.refused", has_text="Glass Sword")
+    refused.wait_for(timeout=10000)
+    assert "above this place's ceiling T2 Sound" in refused.inner_text()
+    p.page.get_by_role("button", name="Add Glass Sword").click()
+    assert len(p.ops()) == n0, "a refused thing is never added"
+    assert "Not allowed" in p.ev("document.getElementById('toast').textContent")
+    p.shot("23-refused-with-reason")
+    p.page.select_option("#panel-body select[aria-label=Lock]", "Apprentice")
+    assert last()["container"]["lock"] == "Apprentice" and "lock Novice → Apprentice" in p.ev("studio.describe(studio.log.applied().at(-1))")
+    # a thing laid out on the table shows its reason
+    table = p.ev("studio.model.stock.loose[0].on")
+    p.ev("(id) => { studio.selection = new Set([id]); studio.tools.selectionChanged(); }", table)
+    assert "Laid out on it" in body() and "Her one good ring" in body()
+    # a person: identity, what they carry, what they sell
+    p.ev("studio.people.select('fixplace.p1')")
+    text = body()
+    assert "Who they are" in text and "as head" in text and "W3 Modest" in text and "the village forge" in p.ev(
+        "document.querySelector('#panel-body input[aria-label=Trade]').value")
+    assert "What they carry" in text and "Why: A smith's hammer." in text
+    assert "What they sell" in text and "3 × Iron Sword" in text
+    p.page.select_option("#panel-body select[aria-label=Wealth]", "W4")
+    assert last()["op"] == "identity.edit" and last()["person"]["wealth"] == "W4" and last()["before"]["wealth"] == "W3"
+    p.page.fill("#panel-body textarea[aria-label=Backstory]", "She came down the river with nothing but a hammer.")
+    p.page.locator("#panel-body textarea[aria-label=Backstory]").dispatch_event("change")
+    assert last()["person"]["notes"][0]["text"].startswith("She came down the river")
+    p.page.fill("#panel-body input[aria-label=Trade]", "the forge and the boats' iron")
+    p.page.locator("#panel-body input[aria-label=Trade]").dispatch_event("change")
+    assert last()["person"]["trade"] == "the forge and the boats' iron"
+    name = p.page.locator("#panel-body label.field:has-text('Name') input").first
+    name.fill("Ada Hot-Hand")
+    name.dispatch_event("change")
+    pair = p.ops()[-2:]
+    assert [o["op"] for o in pair] == ["identity.edit", "person.edit"] and pair[0]["stroke"] == pair[1]["stroke"], pair
+    assert p.ev("studio.model.identities.people.find((x) => x.id === 'fixplace.p1').name") == "Ada Hot-Hand"
+    p.page.locator("#panel-body input[aria-label=\"Trader's gold\"]").fill("450")
+    p.page.locator("#panel-body input[aria-label=\"Trader's gold\"]").dispatch_event("change")
+    assert last()["op"] == "stock.trader.set" and last()["trader"]["gold"] == 450
+    p.page.fill("#panel-body input[aria-label='Find a thing to add'] >> nth=0", "potion")
+    p.page.get_by_role("button", name="Add Potion of Minor Healing").first.click()
+    assert last()["op"] == "stock.possessions.set" and last()["possessions"]["items"][-1]["item"] == "Fix.esm:00B006"
+    p.ev(top, "Who they are")
+    p.shot("23-person-identity")
+    p.ev(top, "What they carry")
+    p.shot("23-person-carries-and-sells")
+    # the history says it in words, and the ops are in a named save like any other edit
+    p.page.click("#rail [data-tool=history]")
+    hist = body()
+    assert "Ada Hot-Hand: wealth W3 → W4" not in hist and "Ada Fixwright: wealth W3 → W4" in hist, hist
+    p.page.click("#rail [data-tool=saves]")
+    p.page.fill("#panel-body input[type=text]", "Stock test")
+    p.page.get_by_role("button", name="Save a copy").click()
+    p.page.wait_for_function("document.getElementById('panel-body').textContent.includes('Stock test')", timeout=10000)
+    save = json.load(urllib.request.urlopen(f"{server}/api/place/{p.ev('studio.place.place_id')}/saves/stock-test"))
+    kinds = [o["op"] for o in save["ops"]]
+    assert {"stock.container.set", "identity.edit", "person.edit", "stock.trader.set", "stock.possessions.set"} <= set(kinds), kinds
+    assert all(o["call"] in ("fault", "taste") for o in save["ops"])
+    assert not p.errors, p.errors
+    p.page.context.close()

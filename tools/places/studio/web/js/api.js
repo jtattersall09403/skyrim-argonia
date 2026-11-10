@@ -52,6 +52,11 @@ export const api = {
   // the built place's walking mesh (tools/places/navexport.py); null when the place has not been built
   nav: (id) => getJSON(`/place/${id}/nav`, { optional: true }),
   notes: (id) => getJSON(`/place/${id}/notes`),
+  // who the place's people are and what it holds (the database's sources), with the items' facts and the scale;
+  // null when the server has none for the place
+  stock: (id) => getJSON(`/place/${id}/stock`, { optional: true }),
+  // items by name for adding to a holder: each says whether this place may hold it, and why not
+  items: (id, q) => getJSON(`/place/${id}/items?` + new URLSearchParams(q)),
   // add a note ({text, things, view, save}) or close or reopen one ({id, done})
   note: (id, body) => getJSON(`/place/${id}/notes`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) }),
   heartbeat: () => fetch(BASE + '/heartbeat', { method: 'POST', credentials: 'same-origin', keepalive: true }).catch(() => {}),

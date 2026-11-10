@@ -6,6 +6,8 @@ import { thumb } from './thumbs.js';
 import { STOP_KINDS, isInnkeeper, patrolOf, setPatrol } from './people.js';
 import { clock, parseClock } from './geom.js';
 import { whereOf, whereRows } from './where.js';
+import { Contents } from './contents.js';
+import { identityOf } from './stock.js';
 
 const $ = (s) => document.querySelector(s);
 const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -56,7 +58,7 @@ function slider(label, min, max, step, value, fmt, fn) {
 
 export class Panels {
   constructor(app) {
-    this.app = app; this.name = null; this.search = { q: '', scope: 'source', kind: '', results: [] };
+    this.app = app; this.name = null; this.search = { q: '', scope: 'source', kind: '', results: [] }; this.contents = new Contents(this);
     $('#panel-close').onclick = () => this.close();
   }
   get T() { return this.app.tools; }
@@ -138,6 +140,8 @@ export class Panels {
     if (r.door?.to_space) facts.push(['Door leads to', side === 'ours' ? a.spaceName(a.ours, r.door.to_space) : a.spaceName(a.src, r.door.to_space)]);
     w.append(this.whereEl([r], side));
     w.append(el(`<dl class="facts">${facts.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join('')}</dl>`));
+    const held = side === 'ours' && this.contents.refSection(r, base);
+    if (held) w.append(held);
     if (r.door?.to_space) {
       const b = el('<button class="primary">Go inside</button>');
       b.onclick = () => a.enter(side === 'ours' ? a.ours : a.src, r); w.append(b);
@@ -220,7 +224,7 @@ export class Panels {
     const p = P.sel && a.model.people.get(P.sel);
     if (p) {
       const name = el(`<label class="field">Name<input type="text" value="${esc(p.name)}"></label>`);
-      name.querySelector('input').onchange = (e) => P.edit(p.id, (x) => { x.name = e.target.value; });
+      name.querySelector('input').onchange = (e) => this.contents.rename(p, e.target.value);
       const role = el(`<label class="field">What they do<input type="text" value="${esc(p.role)}"></label>`);
       role.querySelector('input').onchange = (e) => P.edit(p.id, (x) => { x.role = e.target.value; });
       parts.push(name, role);
@@ -228,6 +232,7 @@ export class Panels {
       if (svc.length) parts.push(el(`<p>Gives: ${esc(svc.join(', '))}</p>`));
       for (const msg of P.problems(p)) parts.push(el(`<p class="tag nordic">${esc(msg)}</p>`));
       if (isInnkeeper(p) && !p.bed) parts.push(el('<p class="note">Keeps no bed and works all day, as Skyrim\'s innkeepers do.</p>'));
+      parts.push(this.contents.personSection(p));
       parts.push(el('<h3>Their day</h3>'));
       const list = el('<ol class="history"></ol>');
       P.sorted(p).forEach((s, i) => {
@@ -271,7 +276,8 @@ export class Panels {
     parts.push(el('<p>Drag the time of day below and people move to where they will be. Tap a person to see their day.</p>'));
     const list = el('<ol class="history"></ol>');
     for (const q of P.list()) {
-      const li = el(`<li><span class="call-dot" style="background:${P.colour(q)}"></span><span class="what">${esc(q.name)}<span class="note">${esc(q.role || '')}</span></span></li>`);
+      const trade = identityOf(a.model.identities, q.id)?.trade;
+      const li = el(`<li><span class="call-dot" style="background:${P.colour(q)}"></span><span class="what">${esc(q.name)}<span class="note">${esc([q.role, trade].filter(Boolean).join(' · '))}</span></span></li>`);
       const b = el('<button class="quiet">Show</button>'); b.onclick = () => P.select(q.id); li.append(b); list.append(li);
     }
     parts.push(list);

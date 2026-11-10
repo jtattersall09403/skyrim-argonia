@@ -46,6 +46,33 @@ test('undo and redo through the log give the same files', () => {
   assert.equal(log.ops[1].call, 'taste'); assert.equal(log.ops[1].note, 'I like it there');
 });
 
+// The content ops (identity.edit, stock.*) on a people and a stock source: the same files as edits.py.
+const STOCK = join(FIX, 'stock'), stockBase = JSON.parse(readFileSync(join(STOCK, 'base.json'), 'utf8'));
+for (const name of readdirSync(STOCK).filter((f) => f.endsWith('.json') && f !== 'base.json')) {
+  const c = JSON.parse(readFileSync(join(STOCK, name), 'utf8'));
+  test(`content fixture ${name}`, () => {
+    const m = modelFromFiles({ ...place, ...stockBase });
+    if (c.error) { assert.throws(() => { for (const op of c.ops) applyOp(m, op); }, new RegExp(c.error)); return; }
+    for (const op of c.ops) applyOp(m, op);
+    const got = modelToFiles(m), want = modelToFiles(modelFromFiles({ ...place, ...c.expected }));
+    assert.ok(same(got.identities, want.identities) && same(got.stock, want.stock), `sources differ:\n${JSON.stringify(got.stock)}\n${JSON.stringify(want.stock)}`);
+    for (const op of [...c.ops].reverse()) applyOp(m, inverse(op));
+    assert.ok(same(modelToFiles(m), canon({ ...place, ...stockBase })), 'inverse did not restore the sources');
+  });
+}
+
+test('content ops undo and redo through the log, and need their source', () => {
+  const c = JSON.parse(readFileSync(join(STOCK, 'content_all.json'), 'utf8'));
+  const m = modelFromFiles({ ...place, ...stockBase }), log = new EditLog(m), start = modelToFiles(m);
+  for (const op of c.ops) log.push({ ...op, n: undefined });
+  const after = modelToFiles(m);
+  while (log.canUndo()) log.undo();
+  assert.ok(same(modelToFiles(m), start));
+  while (log.canRedo()) log.redo();
+  assert.ok(same(modelToFiles(m), after));
+  assert.throws(() => applyOp(modelFromFiles(place), c.ops[0]), /no people source/);
+});
+
 // The studio's model holds a copied room's refs resolved (the draft bundle's rows: source rows with ours over
 // them, so every piece of furniture is a row and none is "unlisted"). Moving or removing one there must give
 // the room finalise writes, read back through the bundle's rule (draft_bundle.copy_space).

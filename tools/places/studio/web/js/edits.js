@@ -1,6 +1,7 @@
 // The edit list: the contract's ops (docs/design/place-studio.md, Edits), applied to and reverted from the place
 // model. Pure JavaScript, no DOM: node runs it against the shared fixtures (test/edits_fixtures). It mirrors
 // tools/places/edits.py: apply(model, ops) gives the same place files.
+import { describeContent } from './stock.js';
 
 export const GRID = 33;
 const TOL = 1e-3;
@@ -25,14 +26,65 @@ export function same(a, b) {
 }
 
 // model: {spaces:{id:{refs:Map, space}}, clear:Map key->{base,pos,by}, land:Map "cx,cy"->Map(row*33+col -> dz),
-// landRows:Map "cx,cy"->{why, textures}, paths:Map, people:Map, place}
+// landRows:Map "cx,cy"->{why, textures}, paths:Map, people:Map, place, identities, stock}
+// identities and stock are the place's people source and stock source as the server sends them (or null): the
+// content ops (identity.edit, stock.*) change them as edits.py does.
 export function emptyModel() {
-  return { spaces: {}, clear: new Map(), land: new Map(), landRows: new Map(), paths: new Map(), people: new Map(), place: {} };
+  return { spaces: {}, clear: new Map(), land: new Map(), landRows: new Map(), paths: new Map(), people: new Map(), place: {}, identities: null, stock: null };
 }
 
-// Place files ({spaces:{id:{refs:[...], space}} or {id:[refs]}, clear, land, paths, people, place}) as a model.
+// ---------- content ops: who people are and what things hold (edits.py CONTENT) ----------
+export const CONTENT_OPS = ['identity.edit', 'stock.container.set', 'stock.container.remove', 'stock.loose.add', 'stock.loose.remove',
+  'stock.loose.edit', 'stock.possessions.set', 'stock.trader.set', 'stock.delivery.set'];
+// op family -> [payload key, source, list, the fields that name a row (none: a delivery is found by its whole row)]
+const CONTENT = { identity: ['person', 'identities', 'people', ['id']], 'stock.container': ['container', 'stock', 'containers', ['space', 'ref']],
+  'stock.loose': ['loose', 'stock', 'loose', ['id']], 'stock.possessions': ['possessions', 'stock', 'possessions', ['person']],
+  'stock.trader': ['trader', 'stock', 'traders', ['person']], 'stock.delivery': ['delivery', 'stock', 'deliveries', []] };
+const SOURCE_ORDER = { identities: { households: ['id'], people: ['id'] },
+  stock: { containers: ['space', 'ref'], loose: ['id'], possessions: ['person'], traders: ['person'], deliveries: ['give_seq', 'by', 'person', 'ref', 'status', 'why'] } };
+const family = (kind) => kind.slice(0, kind.lastIndexOf('.'));
+const verbOf = (kind) => kind.slice(kind.lastIndexOf('.') + 1);
+// Python's sort of (0, number) | (1, text) tuples
+function orderBy(fields) {
+  const key = (r, f) => (typeof r[f] === 'number' ? [0, r[f]] : [1, r[f] == null ? '' : String(r[f])]);
+  return (a, b) => {
+    for (const f of fields) {
+      const [x, y] = [key(a, f), key(b, f)];
+      if (x[0] !== y[0]) return x[0] - y[0];
+      if (x[1] < y[1]) return -1; if (x[1] > y[1]) return 1;
+    }
+    return 0;
+  };
+}
+export function canonicalSource(kind, doc) {
+  const out = clone(doc);
+  for (const [k, fields] of Object.entries(SOURCE_ORDER[kind])) if (Array.isArray(out[k])) out[k].sort(orderBy(fields));
+  return out;
+}
+function applyContent(m, op) {
+  const [field, docKey, table, keys] = CONTENT[family(op.op)], verb = verbOf(op.op);
+  const doc = m[docKey];
+  if (!doc) conflict(op, `the place has no ${docKey === 'identities' ? 'people' : 'stock'} source`);
+  const rows = doc[table] || (doc[table] = []);
+  let row, before;
+  if (verb === 'remove') { row = null; before = op[field]; } else { row = op[field]; before = verb === 'add' ? null : op.before ?? null; }
+  const find = (r) => rows.findIndex((x) => (keys.length ? keys.every((k) => x[k] === r[k]) : same(x, r)));
+  const named = row ?? before, what = `${field} ${(keys.length ? keys : ['give_seq']).map((k) => named[k]).join('/')}`;
+  if (before == null) {
+    if (find(row) >= 0) conflict(op, `${what} already exists`);
+    rows.push(clone(row)); return;
+  }
+  const i = find(before);
+  if (i < 0) conflict(op, `${what} does not exist`);
+  if (!same(rows[i], before)) conflict(op, `${what} differs from the save's before`);
+  if (row == null) rows.splice(i, 1); else rows[i] = clone(row);
+}
+
+// Place files ({spaces:{id:{refs:[...], space}} or {id:[refs]}, clear, land, paths, people, place, identities?,
+// stock?}) as a model.
 export function modelFromFiles(files) {
   const m = emptyModel(); m.place = clone(files.place || {});
+  m.identities = files.identities ? clone(files.identities) : null; m.stock = files.stock ? clone(files.stock) : null;
   for (const [sid, sp] of Object.entries(files.spaces || {})) {
     const rows = Array.isArray(sp) ? sp : sp.refs || [];
     m.spaces[sid] = { refs: new Map(rows.map((r) => [r.id, clone(r)])), space: Array.isArray(sp) ? null : clone(sp.space ?? null) };
@@ -154,6 +206,9 @@ export function applyOp(m, op) {
       if (verb === 'remove') rows.delete(row.id); else rows.set(row.id, clone(row));
       break;
     }
+    case 'identity.edit': case 'stock.container.set': case 'stock.container.remove': case 'stock.loose.add': case 'stock.loose.remove':
+    case 'stock.loose.edit': case 'stock.possessions.set': case 'stock.trader.set': case 'stock.delivery.set':
+      applyContent(m, op); break;
     default: throw new EditConflict(`op ${op.n}: unknown op '${op.op}'`);
   }
 }
@@ -180,6 +235,15 @@ export function inverse(op) {
     case 'veg.clear': inv.op = 'veg.restore'; break;
     case 'veg.restore': inv.op = 'veg.clear'; break;
     case 'land.patch': inv.verts = op.verts.map(([r, c, b, a]) => [r, c, a, b]); break;
+    case 'identity.edit': case 'stock.container.set': case 'stock.container.remove': case 'stock.loose.add': case 'stock.loose.remove':
+    case 'stock.loose.edit': case 'stock.possessions.set': case 'stock.trader.set': case 'stock.delivery.set': {
+      const field = CONTENT[family(op.op)][0], base = family(op.op), verb = verbOf(op.op);
+      if (verb === 'add') inv.op = `${base}.remove`;
+      else if (verb === 'remove') { inv.op = base === 'stock.container' ? `${base}.set` : `${base}.add`; delete inv.before; }
+      else if (op.op === 'stock.container.set' && op.before == null) { inv.op = 'stock.container.remove'; delete inv.before; }
+      else { inv[field] = clone(op.before ?? null); inv.before = clone(op[field]); }
+      break;
+    }
     default: {
       const [table, verb] = op.op.split('.');
       if (verb === 'add') { inv.op = `${table}.remove`; inv.before = clone(op[table]); }
@@ -209,7 +273,10 @@ export function modelToFiles(m) {
   land.sort((a, b) => a.cell[0] - b.cell[0] || a.cell[1] - b.cell[1]);
   const vk = (c) => [c.base, ...c.pos.map(r1)];
   const clear = [...m.clear.values()].sort((a, b) => { const x = vk(a), y = vk(b); for (let i = 0; i < x.length; i++) { if (x[i] < y[i]) return -1; if (x[i] > y[i]) return 1; } return 0; });
-  return sortKeys({ place: m.place, spaces, clear, land, paths: [...m.paths.values()].sort(byId), people: [...m.people.values()].sort(byId) });
+  const out = { place: m.place, spaces, clear, land, paths: [...m.paths.values()].sort(byId), people: [...m.people.values()].sort(byId) };
+  if (m.identities) out.identities = canonicalSource('identities', m.identities);
+  if (m.stock) out.stock = canonicalSource('stock', m.stock);
+  return sortKeys(out);
 }
 
 // The session's history: ops, a cursor (ops before it are applied), calls (fault|taste) and notes.
@@ -288,6 +355,6 @@ export function describe(op, nameOf = (k) => k) {
     case 'person.add': return `Added ${op.person.name || 'a person'}`;
     case 'person.edit': return `Changed ${op.person.name || 'a person'}`;
     case 'person.remove': return `Removed ${op.person.name || 'a person'}`;
-    default: return op.op;
+    default: return CONTENT_OPS.includes(op.op) ? describeContent(op, nameOf) : op.op;
   }
 }

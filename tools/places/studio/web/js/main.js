@@ -96,7 +96,10 @@ class Studio {
     this.place = this.places.find((p) => p.place_id === id); this.placeFit = normaliseFit(this.place.fit);
     this.loading(`Loading ${this.place.title || id}: the ground`);
     this.landTex = this.landTex || await new LandTex().init();
+    // who the place's people are and what it holds: a small JSON beside the bundles, needed before a save's ops apply
+    const stock = api.stock(id).catch((e) => { report('stock-failed', { message: String(e?.message || e) }); return null; });
     const [ground, draft] = await Promise.all([loadBundle(`ground.${id}`), loadBundle(`draft.${id}`, { extras: true, optional: true, terrain: false })]);
+    this.setStock(await stock);
     const moved = draft?.meta?.stamp?.key && this.place.stamps?.draft?.key && draft.meta.stamp.key !== this.place.stamps.draft.key;
     if (moved && checkKey) throw Object.assign(new Error('the draft changed while loading'), { draftMoved: true });
     this.ground = ground; this.draft = draft || emptyDraft(id);
@@ -104,7 +107,7 @@ class Studio {
     this.bases = new Map([...ground.bases, ...this.draft.bases]); this.npcs = new Map([...ground.npcs, ...this.draft.npcs]);
     this.terrain = ground.spaces.exterior?.terrain;
     const spaces = {}; for (const [sid, s] of Object.entries(this.draft.spaces)) spaces[sid] = s.refs;
-    this.model = modelFromFiles({ spaces, ...this.draft.files });
+    this.model = modelFromFiles({ spaces, ...this.draft.files, ...this.stockFiles() });
     this.spaceInfo = Object.fromEntries(Object.entries(this.draft.spaces).map(([k, v]) => [k, v.info]));
     if (this.terrain) this.terrain.override = this.model.land;
     this.people.invalidateRoutes(); this.people.setNav(null);
@@ -319,6 +322,13 @@ class Studio {
     } else side.layer.setRefs(this.refsOf(side).map((r) => ({ ref: r })));
     side.view.redraw();
   }
+  // The place's people and stock sources as the server read them (GET stock), the draft's for contents: the content
+  // ops apply to these, as the place's ops apply to the draft's files.
+  setStock(d) {
+    this.stockData = d || null;
+    this.stockItems = new Map(Object.entries(d?.items || {}));
+  }
+  stockFiles() { return this.stockData ? { identities: this.stockData.identities, stock: this.stockData.stock } : {}; }
   // ---------- edits ----------
   push(ops, space) { return this.log.push(ops, space ?? this.ours.space); }
   afterEdit(kind, ops) {
@@ -330,6 +340,8 @@ class Studio {
     else this.refreshSide(this.ours, { world: false });
     if (touched.has('ref') || touched.has('path') || touched.has('land')) this.people.invalidateRoutes();
     if (touched.has('person') || touched.has('ref')) this.people.refresh();
+    // what a person is or carries: the People panel shows it (the Selected panel is drawn again below)
+    if ((touched.has('identity') || touched.has('stock')) && this.panels.name === 'people') this.panels.peoplePanel();
     if (kind !== 'call') this.markUnsaved();
     this.panels.historyChanged(); this.updateUndo();
     if (kind === 'push') this.panels.chip(ops);
@@ -340,6 +352,10 @@ class Studio {
   }
   updateUndo() { $('#undo').disabled = !this.log?.canUndo(); $('#redo').disabled = !this.log?.canRedo(); }
   nameOf(keyOrId) {
+    const who = this.model.people.get(keyOrId) || (this.model.identities?.people || []).find((p) => p.id === keyOrId);
+    if (who) return who.name;
+    const item = this.stockItems?.get(keyOrId);
+    if (item) return item.name || item.edid || keyOrId;
     const r = this.placeRefsById().get(keyOrId) || this.findRef(keyOrId);
     const key = r ? r.base : keyOrId, b = this.bases.get(key) || this.srcBases?.get(key);
     return b ? friendly(b, r?.kind) : (keyOrId || 'something');
@@ -388,7 +404,7 @@ class Studio {
     if (save.save_id) this.revs[save.save_id] = save.rev || 0;
     // back to the draft, then the save's ops in order
     const spaces = {}; for (const [sid, s] of Object.entries(this.draft.spaces)) spaces[sid] = s.refs;
-    const m = modelFromFiles({ spaces, ...this.draft.files });
+    const m = modelFromFiles({ spaces, ...this.draft.files, ...this.stockFiles() });
     Object.assign(this.model, m); if (this.terrain) this.terrain.override = this.model.land;
     this.log.model = this.model; this.people.invalidateRoutes(); const err = this.log.load(save.ops || []);
     if (err) { console.error(err); this.toast(`Opened ${this.log.ops.length} of ${save.ops.length} changes. The next one no longer fits the draft: ${err.message}`, 8000); }
