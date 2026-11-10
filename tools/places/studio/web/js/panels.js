@@ -18,10 +18,12 @@ export const PATH_KIND = { path: 'Path', street: 'Street', walkway: 'Walkway' };
 // Why the draft cleared a plant (clear.jsonl `why`), in plain words.
 const CLEAR_WHY = { building: 'under or beside a building', door: 'in front of a door', street: 'on a street or path', path: 'on a street or path',
   walkway: 'under a walkway', station: 'at a crafting station' };
+// Lengths in metres for the owner (the game's unit is 1/70 of a metre).
+const metres = (u) => `${(u / 70).toFixed(Math.abs(u) < 700 ? 1 : 0)} m`;
 function seatWords(s) {
   if (!s) return 'Placed at a fixed height';
   const base = SEAT_WORD[s.mode] || s.mode, dz = Math.round(s.dz || 0);
-  return dz && s.mode !== 'free' ? `${base}, ${Math.abs(dz)} units ${dz > 0 ? 'higher' : 'lower'}` : base;
+  return dz && s.mode !== 'free' ? `${base}, ${metres(Math.abs(dz))} ${dz > 0 ? 'higher' : 'lower'}` : base;
 }
 // The crafting station a ref is, from place.json `stations.found` and `added`.
 function stationOf(place, id) {
@@ -275,7 +277,7 @@ export class Panels {
       const b = el('<button class="quiet">Pick height: tap the land</button>'); b.onclick = () => { L.picking = true; this.app.toast('Tap the land at the height you want.'); };
       r.append(b); parts.push(r);
     }
-    parts.push(slider('Brush size', 128, 1024, 64, L.radius, (v) => `${v} units`, (v) => { L.radius = v; }));
+    parts.push(slider('Brush size', 128, 1024, 64, L.radius, (v) => `${metres(v)}`, (v) => { L.radius = v; }));
     parts.push(slider('Strength', 0.1, 1, 0.05, L.strength, (v) => `${Math.round(v * 100)}%`, (v) => { L.strength = v; }));
     parts.push(el('<p id="land-count" class="tag">Height points changed in this stroke: 0</p>'));
     const tm = this.app.ours.terrainMesh;
@@ -296,7 +298,7 @@ export class Panels {
     const V = this.T.veg, a = this.app, parts = [];
     parts.push(el('<p>Clear plants with the brush, or tap one plant. Bring back puts back exactly what the world had there.</p>'));
     parts.push(seg('Plants tool', [['clear', 'Clear'], ['restore', 'Bring back']], V.mode, (v) => { V.mode = v; if (v === 'restore' && !a.showCleared) { a.showCleared = true; a.refreshSide(a.ours); this.plantsPanel(); } }));
-    parts.push(slider('Brush size', 128, 2048, 64, V.radius, (v) => `${v} units`, (v) => { V.radius = v; }));
+    parts.push(slider('Brush size', 128, 2048, 64, V.radius, (v) => metres(v), (v) => { V.radius = v; }));
     parts.push(toggle('Show cleared plants', a.showCleared, (v) => { a.showCleared = v; a.refreshSide(a.ours); }));
     const by = { draft: 0, owner: 0 }; for (const c of a.model.clear.values()) by[c.by === 'draft' ? 'draft' : 'owner']++;
     parts.push(el(`<p>${by.draft} cleared by the draft, ${by.owner} cleared by you. Plants on paths are cleared with the path.</p>`));
@@ -325,7 +327,7 @@ export class Panels {
     const list = el('<ol class="history"></ol>');
     for (const p of a.model.paths.values()) {
       const len = Math.round(p.points.slice(1).reduce((s, q, i) => s + Math.hypot(q[0] - p.points[i][0], q[1] - p.points[i][1]), 0));
-      const li = el(`<li><span class="what">${PATH_KIND[p.kind] || 'Path'}, ${esc(a.pathStyles[p.style]?.label || p.style)}<span class="note">${len} units long, ${p.width} wide</span></span></li>`);
+      const li = el(`<li><span class="what">${PATH_KIND[p.kind] || 'Path'}, ${esc(a.pathStyles[p.style]?.label || p.style)}<span class="note">${metres(len)} long, ${metres(p.width)} wide</span></span></li>`);
       const b = el(`<button class="quiet" aria-pressed="${p.id === P.sel}">Choose</button>`); b.onclick = () => { P.sel = p.id; P.mode = 'edit'; this.pathsPanel(); a.tools.drawPathHandles(); };
       li.append(b); list.append(li);
     }

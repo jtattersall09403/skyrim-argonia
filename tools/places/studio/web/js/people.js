@@ -18,24 +18,33 @@ export function setPatrol(x, pts) {
 
 export class People {
   constructor(app) {
-    this.app = app; this.active = false; this.sel = null; this.armed = null; this.markers = new Map();
+    this.app = app; this.active = false; this.sel = null; this.armed = null; this.markers = new Map(); this._bySrc = new Map(); this._first = new Map();
     // a simple standing figure turned from a profile: legs, body, shoulders, neck, head
     const prof = [[0, 0], [22, 0], [20, 70], [26, 95], [30, 130], [12, 142], [9, 148], [17, 158], [16, 172], [9, 182], [0, 184]];
     this.geo = new THREE.LatheGeometry(prof.map(([x, y]) => new THREE.Vector2(x, y)), 10).rotateX(Math.PI / 2);
   }
   setActive(on) { this.active = on; if (!on) { this.armed = null; } this.refresh(); }
   list() { return [...(this.app.model?.people.values() || [])]; }
-  colour(p) { const i = this.list().indexOf(p); return COLOURS[(i < 0 ? 0 : i) % COLOURS.length]; }
+  colour(p) { let h = 0; for (const ch of String(p.id)) h = (h * 31 + ch.charCodeAt(0)) >>> 0; return COLOURS[h % COLOURS.length]; }
   // ---------- where a stop is, seen from a space ----------
   // a stop's ref is our id or a source key of that space
   refPos(space, id) {
     const refs = this.app.model.spaces[space]?.refs; if (!refs) return null;
-    const r = refs.get(id) || [...refs.values()].find((x) => x.src === id); return r?.pos || null;
+    return (refs.get(id) || this.bySrc(space, refs).get(id))?.pos || null;
+  }
+  // each space's refs by the source ref they came from, and its first furniture: worked out once per change of the
+  // place (refresh clears them), not once per stop per person per camera move
+  bySrc(space, refs) {
+    let m = this._bySrc.get(space);
+    if (!m) { m = new Map(); for (const r of refs.values()) if (r.src && !m.has(r.src)) m.set(r.src, r); this._bySrc.set(space, m); }
+    return m;
   }
   // a stop with neither ref nor pos stands at its space's first furniture
   firstFurniture(space) {
-    const refs = [...(this.app.model.spaces[space]?.refs.values() || [])];
-    return (refs.find((r) => r.kind === 'furniture') || (space !== 'exterior' && refs.find((r) => r.kind !== 'door')))?.pos || null;
+    if (this._first.has(space)) return this._first.get(space);
+    let furn = null, other = null;
+    for (const r of this.app.model.spaces[space]?.refs.values() || []) { if (r.kind === 'furniture') { furn = r; break; } if (!other && r.kind !== 'door') other = r; }
+    const p = (furn || (space !== 'exterior' && other) || null)?.pos || null; this._first.set(space, p); return p;
   }
   ground(p) {
     if (!p) return null;
@@ -100,6 +109,7 @@ export class People {
   }
   refresh() {
     const a = this.app; if (!a.model) return;
+    this._bySrc.clear(); this._first.clear();
     const v = a.ours.view, S = a.ours.space, seen = new Set();
     for (const p of this.list()) {
       seen.add(p.id);
@@ -119,7 +129,8 @@ export class People {
     for (const [id, m] of this.markers) if (!seen.has(id)) { m.removeFromParent(); this.markers.delete(id); }
     v.redraw(); this.drawRoutes();
   }
-  cameraMoved(view) { if (view === this.app.ours.view) this.drawRoutes(); }
+  // labels and routes follow the camera once per animation frame
+  cameraMoved(view) { if (view === this.app.ours.view && !this._routesDue) { this._routesDue = true; requestAnimationFrame(() => { this._routesDue = false; this.drawRoutes(); }); } }
   drawRoutes() {
     const a = this.app, v = a.ours.view, svg = this.layer(v); svg.innerHTML = '';
     const S = a.ours.space, scr = (p) => { const z = S === 'exterior' && a.terrain ? (a.terrain.heightAt(p[0], p[1]) ?? p[2]) : p[2]; return v.toScreen([p[0], p[1], z + 10]); };
