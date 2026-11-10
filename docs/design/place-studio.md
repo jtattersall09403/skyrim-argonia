@@ -198,13 +198,16 @@ ledger.jsonl           one row per source ref: {src, space, status: placed|adapt
 edits/<save_id>.json   a studio save (below); finalised saves stay here as the lessons' evidence
 ```
 
-Seat rule `seat:{mode, dz, on?, foot?}` (one function, `tools/places/seat.py`): `ground` z = lowest ground under
+Seat rule `seat:{mode, dz, on?, carrier?, foot?}` (one function, `tools/places/seat.py`): `ground` z = lowest ground under
 the footprint + dz; `clear` z = highest ground under the footprint + dz (a raised thing whose underside cleared the
 ground everywhere); `above` z = ground at the origin + dz; `water` z = water surface + dz; `stilts` z = lowest of
 max(ground, water) under the footprint + dz; `on` z = the ref `on`'s z + dz; `free` z kept (interiors). `foot` is
 the true footprint `[x0, y0, x1, y1]` in the ref's own frame (not centred on the origin), from the model's own
 geometry (`seat.model_bounds`, cached in `out/places/footprints.json`); every footprint test calls it. dz is
-measured in the source the same way.
+measured in the source the same way. A ref rests on what its seat names: the ref it stands `on` (a barrel on a
+deck, a flight of steps hung on its pier, a walkway piece on the one it continues) and its `carrier` (the ship
+whose gangway a laid walkway piece is; the seat's mode is then `free`). A flight of steps is seated `on` the deck
+piece it leaves, its top tread at the deck's height.
 
 `place.json` also holds: `draft` (the agent's calls: `anchor`, `rot_deg`, `search`, `replace`, `drop`, `add`,
 `roles`, `keep_patches`; skill `place-build`), `fit` (global and per-cluster transforms, `clusters_info`,
@@ -797,15 +800,20 @@ among the NewWorld profile's own plugins (after the world ESM) and the place SEQ
 `stack.py verify --profile NewWorld`.
 
 `python -m tools.places check <place_id>` reads the built plugin back and fails on any of: a ref not seated as
-its `seat` says; a ref inside another's collision that the source did not have; a door without its pair or
+its `seat` says; a ref inside another's collision that neither rests on the other (`seat.on`, `seat.carrier`: the
+one carrier rule, `check.rests`, which the drafter lays joins and flights by) nor stood so in the source; a door without its pair or
 facing into a wall; a person without a bed, with a routine stop off the navmesh or unreachable from the one
 before, or with a patrol marker off the navmesh or unreachable from the marker before it (a loop's first from its
 last); a navmesh island or an unjoined cell edge; a street, path or walkway point (each line sampled every 64
-units) or a guard's patrol point off the town's main network (over a walkway piece, on no dry triangle within 48
-units of the deck's own surface: the upward faces of its collision under its `walk` top that join into a surface a
-person can stand on, 1024 square units or more, so a post's or a rail's cap is not a deck; over water too deep to
-wade with no deck, on no dry triangle right over it; on land or in a ford, as a stop is found; or a line's point
-reached from the one before by a drop or climb steeper than 45 degrees plus a 32-unit step, as off a deck's edge); a land patch whose
+units) or a guard's patrol point off the town's main network. A point stands on a dry triangle of it within 48
+units in plan at a level one may stand at there: a walkway piece's own surface (within 48 units of it: the upward
+faces of its collision under its `walk` top that join into a surface a person can stand on, 1024 square units or
+more, so a post's or a rail's cap is not a deck; a gap in those faces narrower than 48 units, as between a
+flight's treads, is a seam of the same surface), the ground or a ford, or, over water too deep to wade with no
+deck, a dry triangle right over it. A line's point is taken at the level one reaches it by from the point before
+(the nearest in height of those it may stand on), and is off the network when that takes a drop or a climb steeper
+than 45 degrees plus a 32-unit step, as off a deck's edge; a line's first point, and a patrol point, is found as a
+stop is, the deck first; a land patch whose
 built heights differ from `land.jsonl` or tear at a seam; a cleared plant still enabled, or a plant standing in a
 building, street or doorway; a service the place record promises with nobody giving it; a Nordic base; anything levelled (a levelled list in a person's
 inventory, outfits, death item or spells, or in a placed container; a level that follows the player; a base whose
@@ -821,7 +829,8 @@ edge links, measured: actors wade and swim them); a street or a patrol is never 
 when its origin is within 0.8 of the other's record box in plan under the other's full three-axis rotation and
 within its height; a standing point (arrival, stop) is inside a body only below its top by more than 16 units.
 `draft check <place_id>` runs this same check (the build into `out/places/draft_check/`, then these functions on
-that plugin), so a draft that passes it passes `check` on the build.
+that plugin), so a draft that passes it passes `check` on the build; it also mends every street again on that
+built mesh and fails if a stretch is re-laid (the streets are settled).
 
 ## Finalise
 

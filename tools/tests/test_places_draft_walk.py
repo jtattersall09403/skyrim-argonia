@@ -1,5 +1,6 @@
 """Walking heights, door facing and the island clean-up: seat.top_at, geom.front / run.face_out, check.stands_inside on
-a walkway's deck, walk.cut and walk.rehome, and streets and patrols on the built walkable network (walk.Walkable, walk.mend)."""
+a walkway's deck, walk.cut and walk.rehome, streets and patrols on the built walkable network (walk.Walkable, walk.mend),
+and decks joined by steps (walk.hang, walk.flush_steps, the one carrier rule)."""
 import json
 import math
 
@@ -265,17 +266,91 @@ def test_a_deck_reached_only_by_swimming_is_its_own_island_when_wading_is_asked(
     assert comp[("shore", 0)] == comp[("deck", 0)]
 
 
-def test_a_flight_is_placed_with_its_top_at_the_deck_edge_running_down_towards_the_bank():
-    fl = {"axis": 0, "v": 0.0, "us": [-240.0, 0.0, 240.0], "zs": [128.0, 0.0, -112.0]}
+FLIGHT = {"axis": 0, "v": 0.0, "top": -256.0, "foot": 256.0, "us": [-240.0, 0.0, 240.0], "zs": [128.0, 0.0, -112.0]}
+PIER = {"id": "pier", "base": "dock", "kind": "building", "pos": [1000.0, 2000.0, 250.0], "rot": [0.0, 0.0, 0.0],
+        "scale": 1.0, "seat": {"mode": "stilts", "dz": 250.0}}
+
+
+def test_a_flight_hangs_on_its_deck_top_end_at_the_edge_top_tread_at_the_decks_height():
     for d in ((1.0, 0.0), (0.0, 1.0), (-0.6, 0.8)):
-        pos, rot = walk.place_flight(fl, (1000.0, 2000.0, 253.0), d)
-        assert math.isclose(pos[2], 253.0 - walk.STEP_UNDER - 128.0)
+        pos, rot, seat = walk.hang(FLIGHT, PIER, 253.0, (1000.0, 2000.0), d)
+        assert math.isclose(pos[2], 253.0 - 128.0)                 # as Skyrim.esm's dock steps: no step under the deck
+        assert seat == {"mode": "on", "on": "pier", "dz": round(pos[2] - 250.0, 2)}
         rz = rot[2]
         c, s = math.cos(rz), math.sin(rz)
-        for u in (-240.0, 240.0):     # local (u, 0) in the world, as geom.contains_xy reads a ref's frame
+        for u in (-256.0, 256.0):     # local (u, 0) in the world, as geom.contains_xy reads a ref's frame
             x, y = pos[0] + u * c, pos[1] - u * s
             t = (x - 1000.0) * d[0] + (y - 2000.0) * d[1]
-            assert math.isclose(t, u + 240.0, abs_tol=0.05)     # the top end at the deck edge, the run along d
+            assert math.isclose(t, u + 256.0, abs_tol=0.05)     # the top end at the deck edge, the run along d
+
+
+def _docks(monkeypatch):
+    monkeypatch.setattr(walk, "flight", lambda base: FLIGHT if base.get("model") == "docksteps.nif" else None)
+    monkeypatch.setattr(walk, "deck_rect", lambda base: (3.0, (-160.0, -256.0, 160.0, 256.0))
+                        if base.get("model") == "dock.nif" else None)
+    return {"dock": {"model": "dock.nif", "bounds": [[-160, -256, -400], [160, 256, 70]]},
+            "steps": {"model": "docksteps.nif", "bounds": [[-256, -150, -500], [256, 150, 190]]},
+            "ship": {"model": "ship.nif", "bounds": [[-400, -1000, -400], [600, 800, 1500]]}}
+
+
+def test_the_sources_steps_that_abut_a_deck_off_its_height_are_hung_flush_on_it(monkeypatch):
+    bases = _docks(monkeypatch)
+    # the top end (local -256) against the pier's east edge (x 1160), the top tread 31 under the deck (253)
+    low = {"id": "low", "base": "steps", "kind": "building", "pos": [1160.0 + 256.0 + 3.0, 2000.0, 94.0],
+           "rot": [0.0, 0.0, 0.0], "scale": 1.0, "seat": {"mode": "stilts", "dz": 94.0, "foot": [1, 2, 3, 4]}}
+    far = {**low, "id": "far", "pos": [3000.0, 2000.0, 94.0], "seat": {"mode": "stilts", "dz": 94.0}}
+    deep = {**low, "id": "deep", "pos": [low["pos"][0], 2000.0, 20.0], "seat": {"mode": "stilts", "dz": 20.0}}
+    rows = [dict(PIER), low, far, deep]
+    assert walk.flush_steps(rows, bases, log=lambda *_: None) == 1
+    assert low["pos"][2] == 125.0 and low["seat"] == {"foot": [1, 2, 3, 4], "mode": "on", "on": "pier", "dz": -125.0}
+    assert far["seat"]["mode"] == "stilts" and deep["pos"][2] == 20.0     # no deck there; too far under to be its flight
+    assert walk.flush_steps(rows, bases, log=lambda *_: None) == 0         # settled
+
+
+def test_one_carrier_rule_for_the_drafter_and_the_build(monkeypatch):
+    from tools.places.draft import overlap
+    bases = _docks(monkeypatch)
+    ship = {"id": "ship", "base": "ship", "kind": "building", "pos": [0.0, 0.0, 0.0], "rot": [0, 0, 0], "scale": 1.0,
+            "seat": {"mode": "stilts"}}
+    plank = {"id": "plank", "base": "dock", "kind": "building", "pos": [100.0, 0.0, 200.0], "rot": [0, 0, 0],
+             "scale": 1.0, "seat": {"mode": "free"}}
+    assert overlap.hits(plank, [ship], bases) == [ship]                    # a piece inside a ship
+    for seat in ({"mode": "free", "carrier": "ship"}, {"mode": "on", "on": "ship", "dz": 200.0}):
+        gang = {**plank, "seat": seat}
+        assert overlap.hits(gang, [ship], bases) == []                     # the drafter lets its gangway rest on it
+        things = [overlap.thing(r, bases) for r in (ship, gang)]
+        assert C.rests(things[0], things[1]) and C.overlap_pairs(things) == []   # and so does the build's check
+    assert C.overlap_pairs([overlap.thing(r, bases) for r in (ship, plank)])
+
+
+def _deck_over_land():
+    """Ground ten squares long with a deck 250 over squares 3 to 5, joined to the ground at its west end (a flight)."""
+    land, deck = _Nav("land", [(x, 0) for x in range(10)], 0.0), _Nav("deck", [(3, 0), (4, 0), (5, 0)], 250.0)
+    _link(land, 4, deck, 0)
+    navs = {"land": land, "deck": deck}
+    return walk.Walkable({"navs": navs}, lambda x, y: 0.0, lambda x, y: 250.0 if 300 <= x <= 600 else None,
+                         lambda x, y: None, comp=C.components(navs, {}))
+
+
+def test_a_line_is_walked_at_the_level_it_comes_by_never_stepping_off_a_decks_edge():
+    W = _deck_over_land()
+    under = W.walked([(x + 50.0, 50.0) for x in range(0, 1000, 100)])
+    assert all(w is not None and w[1] == 0.0 for w in under)             # along the ground, under the deck too
+    off = W.walked([(450.0, 50.0), (550.0, 50.0), (650.0, 50.0)])
+    assert off[0][1] == 250.0 and off[1][1] == 250.0 and off[2] is None   # found on the deck; no step off its end
+    assert W.walked([(450.0, 50.0)], 0.0)[0][1] == 0.0                     # a height given is the level taken
+    assert W.reaches((50.0, 50.0), (950.0, 50.0), 0.0, 0.0) and not W.reaches((50.0, 50.0), (450.0, 50.0), 0.0, 250.0)
+
+
+def test_mend_takes_stretches_close_together_as_one_and_is_settled_after_one_pass():
+    ctx = {"navs": {"main": _Nav("main", [(x, y) for x in range(30) for y in range(3)
+                                           if not (y < 2 and (4 <= x < 6 or 10 <= x < 12))])}}
+    W = walk.Walkable(ctx, comp=C.components(ctx["navs"], {}))
+    street = {"id": "s", "points": [[50.0, 50.0], [2950.0, 50.0]]}
+    assert walk.mend(street, W) == 1                                       # two holes 400 apart: one stretch
+    assert walk.off_network([street], [], W)[0] == []
+    again = {"id": "s", "points": [list(q) for q in street["points"]]}
+    assert walk.mend(again, W) == 0 and again["points"] == street["points"]
 
 
 def test_a_plugin_is_found_where_the_game_loads_it(tmp_path):

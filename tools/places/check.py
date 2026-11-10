@@ -388,6 +388,7 @@ def ground(ctx: dict):
     return z, steps
 
 
+DECK_SEAM = [(24.0, 0.0), (-24.0, 0.0), (0.0, 24.0), (0.0, -24.0)]  # a gap in a deck's faces narrower than this span is a seam
 STAND_AREA = 1024.0  # square units: an upward surface smaller than a person's footprint (a post's or a rail's top) is not stood on
 
 
@@ -459,6 +460,13 @@ def surfaces(ctx: dict):
         boxes.append((w[:, :, :2].min(axis=(0, 1)), w[:, :, :2].max(axis=(0, 1))))
 
     def deck(x: float, y: float) -> float | None:
+        h = deck_at(x, y)
+        if h is None:   # a seam between two treads or two boards is still the deck: the surface just round the point
+            near = [v for v in (deck_at(x + dx, y + dy) for dx, dy in DECK_SEAM) if v is not None]
+            h = max(near) if len(near) >= 2 else None
+        return h
+
+    def deck_at(x: float, y: float) -> float | None:
         best = None
         for (lo, hi), T in zip(boxes, faces):
             if not (lo[0] <= x <= hi[0] and lo[1] <= y <= hi[1]):
@@ -564,10 +572,19 @@ def check_overlap(ctx) -> list[str]:
     return [f"{a['id']} stands inside {b['id']}" for a, b in overlap_pairs(things)]
 
 
+def rests(a: dict, b: dict) -> bool:
+    """One of the pair rests on the other: its seat names the other as what it stands `on` (a barrel on a deck, a
+    flight of steps hung on its pier, a walkway piece on the one it continues) or as its `carrier` (the ship whose
+    gangway it is). The one carrier rule, the drafter's and the build's."""
+    sa, sb = a.get("seat") or {}, b.get("seat") or {}
+    return b.get("id") in (sa.get("on"), sa.get("carrier")) or a.get("id") in (sb.get("on"), sb.get("carrier"))
+
+
 def _source_had(a: dict, b: dict) -> bool:
-    """The source had this pair in this relative pose: both copied, and either inside one copied interior (it keeps its
-    frame) or in one exterior cluster (the fit moves a cluster as one rigid piece); or a door stands on its own building."""
-    if (a.get("seat") or {}).get("on") == b.get("id") or (b.get("seat") or {}).get("on") == a.get("id"):
+    """The pair may stand in each other: one rests on the other (`rests`), or the source had them in this relative
+    pose: both copied, and either inside one copied interior (it keeps its frame) or in one exterior cluster (the fit
+    moves a cluster as one rigid piece)."""
+    if rests(a, b):
         return True
     if not (a.get("src") and b.get("src") and a["space"] == b["space"]):
         return False

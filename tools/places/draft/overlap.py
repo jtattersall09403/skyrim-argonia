@@ -45,6 +45,21 @@ def _reach(ref: dict, bases: dict) -> float:
 source_had = C._source_had
 
 
+def hits(row: dict, near: list[dict], bases: dict) -> list[dict]:
+    """The solids of `near` that `row` stands inside or that stand inside it, by the build's own rule (`check`'s
+    overlap test and its exemptions: what rests on its carrier, what the source had so)."""
+    a = thing(row, bases)
+    reach = _reach(row, bases)
+    out = []
+    for o in near:
+        if o is row or o["id"] == row["id"] or math.dist(o["pos"][:2], row["pos"][:2]) > reach + _reach(o, bases):
+            continue
+        b = thing(o, bases)
+        if (C.obb_contains(b, a["pos"], SHRINK) or C.obb_contains(a, b["pos"], SHRINK)) and not C._source_had(a, b):
+            out.append(o)
+    return out
+
+
 def pairs(refs: list[dict], bases: dict, z: bool = True, pad: float = 0.0) -> list[tuple[dict, dict]]:
     """Every (a, b) the build's check would report: a's origin inside b's box, the source not having them so."""
     things = [thing(r, bases) for r in refs]

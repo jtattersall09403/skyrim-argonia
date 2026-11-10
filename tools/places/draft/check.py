@@ -391,7 +391,23 @@ def build_check(place_id: str, places: Path = io.PLACES) -> list[str]:
     full.mkdir(parents=True, exist_ok=True)
     for k, v in res.items():
         (full / f"{k}.txt").write_text("".join(f"{f}\n" for f in v))
-    return bad + [f"check {k}: {f}" for k, v in res.items() for f in v]
+    return bad + [f"check {k}: {f}" for k, v in res.items() for f in v] + unsettled(ctx, places / place_id)
+
+
+def unsettled(ctx: dict, pdir: Path) -> list[str]:
+    """The streets are settled on the built mesh: mending them again (`walk.mend`, the join's own pass) re-lays
+    nothing."""
+    from tools.places import check as C
+    from tools.places.draft import walk
+    W = walk.Walkable(ctx, *C.surfaces(ctx))
+    bad = []
+    for p in io.read_jsonl(pdir / "paths.jsonl") if (pdir / "paths.jsonl").exists() else []:
+        n = walk.mend(dict(p, points=[list(q) for q in p["points"]]), W)
+        if n is None or n:
+            bad.append(f"street {p['id']} is not settled on the built mesh: a second mend "
+                       f"{'finds no way for a stretch' if n is None else f're-lays {n} stretch(es)'}")
+    summary["second_mend"] = len(bad)
+    return bad
 
 
 def main(argv: list[str]) -> int:

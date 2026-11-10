@@ -42,7 +42,7 @@ CLUSTER_NUDGE = [float(v) for v in range(64, 2049, 64)]
 NUDGE_STEPS = [64.0, 128.0, 192.0, 256.0, 320.0, 384.0]
 PATCH_KINDS = {"building", "static", "furniture", "container", "door", "activator"}
 TOOL_FILES = ["run.py", "cluster.py", "fit.py", "seating.py", "paths.py", "clear.py", "interiors.py", "people.py",
-              "geom.py", "io.py"]
+              "geom.py", "io.py", "walk.py", "overlap.py"]
 
 
 def tool_key() -> str:
@@ -370,6 +370,9 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
                     c["why"].append(label)
     land = [{"cell": list(cell), "verts": [[k[0], k[1], v] for k, v in sorted(c["verts"].items()) if abs(v) >= 1],
              "why": "; ".join(c["why"]), "by": "draft"} for cell, c in sorted(sums.items())]
+    # a flight of the source's steps that abuts a deck a little off its height hangs flush on it (one walked surface)
+    from tools.places.draft import walk
+    walk.flush_steps(our, bases)
     seat_all(our, G)
 
     # --- interiors ---

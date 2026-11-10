@@ -74,6 +74,9 @@ BUCKET = 512.0
 STEP = 64.0            # units between the samples of a street tested against the network (paths.smooth's spacing)
 SNAP = 384.0           # an end off the network (a doorway) is taken to the nearest network point this near
 ROUTE_CAP = 200_000    # triangles a re-lay's search may open
+MEND_LEAD = 8          # samples of the line on the network re-laid with a stretch off it, either side
+MEND_GAP = 2048.0      # a stretch on the network shorter than this between two off it is re-laid with them (a line
+#                        off the network either side of a short stretch is seldom at the right level in between)
 
 
 class Walkable:
@@ -227,18 +230,46 @@ class Walkable:
             first = first or got
         return first or (-1, float("inf"), None)
 
-    def line_ok(self, pts: list) -> list[bool]:
-        """For each of a line's points in order: on the main network, and reached from the point before without a
-        drop or a climb steeper than a slope one walks (no step off a deck's edge onto the ground under it)."""
+    def stands(self, p) -> tuple[np.ndarray, np.ndarray]:
+        """(triangles, the mesh's height at p on each) of the main network's triangles p may stand on: within ON_TOL
+        in plan, at any of its levels (a deck's, the ground's under it)."""
+        c, dp, z = self._cands(p, ON_TOL)
+        keep = np.zeros(len(c), bool)
+        for lv in self.levels(p):
+            keep[self._at(c, dp, z, lv, ON_TOL)[0]] = True
+        keep &= self.main[c]
+        return c[keep], z[keep]
+
+    def walked(self, pts: list, z0: float | None = None) -> list[tuple[int, float] | None]:
+        """A line's points walked in order: for each, (the triangle it stands on, the mesh's height there), or None
+        where the line leaves the main network. A point is taken at the level one reaches it by from the point
+        before, the nearest in height of those it may stand on (`stands`), never by a drop or a climb steeper than a
+        walked slope (a step off a deck's edge onto the ground under it); the first point (or the next after a
+        break) at `z0` when given, else as a stop is found (`found`: the deck first)."""
         out, prev = [], None
         for q in pts:
-            t, d, z = self.found(q)
-            ok = t >= 0 and bool(self.main[t]) and d <= ON_TOL
-            if ok and prev is not None and abs(z - prev[1]) > RISE * math.dist(q[:2], prev[0][:2]) + CLIMB:
-                ok = False
-            out.append(ok)
-            prev = (q, z) if ok else None
+            c, z = self.stands(q)
+            got = None
+            if len(c) and prev is not None:
+                dz = np.abs(z - prev[1])
+                k = int(np.argmin(dz))
+                if dz[k] <= RISE * math.dist(q[:2], prev[0][:2]) + CLIMB:
+                    got = (int(c[k]), float(z[k]))
+            elif len(c) and z0 is not None:
+                k = int(np.argmin(np.abs(z - z0)))
+                got = (int(c[k]), float(z[k])) if abs(z[k] - z0) <= CLIMB else None
+            elif len(c):
+                t, d, zt = self.found(q)
+                k = int(np.argmin(np.abs(z - zt))) if t >= 0 and self.main[t] and d <= ON_TOL else int(np.argmax(z))
+                got = (int(c[k]), float(z[k]))
+            out.append(got)
+            prev, z0 = ((q, got[1]) if got else None), None
         return out
+
+    def line_ok(self, pts: list, z0: float | None = None) -> list[bool]:
+        """For each of a line's points in order: whether it stands on the main network as the line is walked
+        (`walked`)."""
+        return [w is not None for w in self.walked(pts, z0)]
 
     def on(self, p, tol: float = ON_TOL) -> bool:
         """Whether p stands on the town's main network: the triangle it is found on is of it, within `tol` in plan."""
@@ -255,16 +286,6 @@ class Walkable:
                 if self.on(q, tol=8.0):
                     return q
         return None
-
-    def tri(self, p) -> int:
-        """The main-network triangle under p nearest its first level's height, else -1."""
-        c, dp, z = self._cands(p, ON_TOL)
-        for lv in self.levels(p):
-            k, score = self._at(c, dp, z, lv, ON_TOL)
-            m = self.main[c[k]]
-            if m.any():
-                return int(c[k][m][np.argmin(score[m])])
-        return -1
 
     def neighbours(self) -> list[list[int]]:
         """Each triangle's neighbours over shared edges and edge links between meshes."""
@@ -286,18 +307,31 @@ class Walkable:
             self._nbr = nb
         return self._nbr
 
-    def clear(self, a, b) -> bool:
-        """Whether the straight line a -> b stands on the main network all along, walked (`line_ok`)."""
+    def reaches(self, a, b, za: float, zb: float) -> bool:
+        """Whether the straight line a -> b, walked from a at height za (`walked`), stays on the main network all
+        along and comes to b at height zb."""
         n = max(1, math.ceil(math.dist(a[:2], b[:2]) / (STEP / 2)))
-        return all(self.line_ok([(a[0] + (b[0] - a[0]) * k / n, a[1] + (b[1] - a[1]) * k / n) for k in range(n + 1)]))
+        w = self.walked([(a[0] + (b[0] - a[0]) * k / n, a[1] + (b[1] - a[1]) * k / n) for k in range(n + 1)], za)
+        return all(x is not None for x in w) and abs(w[-1][1] - zb) <= CLIMB
 
-    def route(self, a, b) -> list | None:
-        """The way the mesh walks from a to b (each on the main network): a search over the triangles, pulled
-        straight where the line stays on the network, then eased with paths.smooth without leaving it."""
+    def _portal(self, u: int, v: int) -> tuple[float, float, float]:
+        """The middle of the edge two neighbouring triangles share (the middle between their centres when their
+        corners do not meet, across an edge link)."""
+        A, B = self.T[u], self.T[v]
+        same = [p for p in A if (np.abs(B - p).max(axis=1) < 1.0).any()]
+        m = (same[0] + same[1]) / 2 if len(same) >= 2 else (self.cent[u] + self.cent[v]) / 2
+        return float(m[0]), float(m[1]), float(m[2])
+
+    def route(self, a, b, za: float | None = None, zb: float | None = None) -> list | None:
+        """The way the mesh walks from a to b (each on the main network, at heights za and zb when given): a search
+        over the triangles; the line through the middles of the edges it crosses (so every point of it is on the
+        mesh, at the level walked), pulled straight wherever the straight line walks the same way (`reaches`), then
+        eased with paths.smooth when the eased line still does. Plan points, a and b included."""
         import heapq
-        s, g = self.tri(a), self.tri(b)
-        if s < 0 or g < 0:
+        wa, wb = self.walked([a], za)[0], self.walked([b], zb)[0]
+        if wa is None or wb is None:
             return None
+        (s, za), (g, zb) = wa, wb
         nb, C = self.neighbours(), self.cent
         dist, prev, heap, opened = {s: 0.0}, {}, [(0.0, s)], 0
         while heap:
@@ -316,19 +350,23 @@ class Walkable:
                     heapq.heappush(heap, (d + float(np.linalg.norm(C[v, :2] - C[g, :2])), v))
         if g not in dist:
             return None
-        chain, u = [], g
+        chain, u = [g], g
         while u != s:
-            chain.append(u)
             u = prev[u]
-        pts = [tuple(a[:2])] + [tuple(C[t, :2]) for t in reversed(chain[1:])] + [tuple(b[:2])]
+            chain.append(u)
+        chain.reverse()
+        pts = [(a[0], a[1], za)] + [self._portal(u, v) for u, v in zip(chain, chain[1:])] + [(b[0], b[1], zb)]
         pulled, i = [pts[0]], 0
         while i < len(pts) - 1:
             j = len(pts) - 1
-            while j > i + 1 and not self.clear(pts[i], pts[j]):
+            while j > i + 1 and not self.reaches(pts[i], pts[j], pts[i][2], pts[j][2]):
                 j -= 1
             pulled.append(pts[j])
             i = j
-        return paths_mod.smooth(pulled, lambda x, y: not self.on((x, y)))
+        line = [q[:2] for q in pulled]
+        eased = paths_mod.smooth(line, lambda x, y: not self.on((x, y)))
+        w = self.walked([q for _, q in samples(eased)], za)
+        return eased if all(x is not None for x in w) and abs(w[-1][1] - zb) <= CLIMB else line
 
 
 def samples(pts: list, step: float = STEP) -> list[tuple[int, tuple]]:
@@ -355,18 +393,27 @@ def off_network(paths: list[dict], folk: list[dict], W: Walkable) -> tuple[list[
 
 def mend(path: dict, W: Walkable, passes: int = 3) -> int | None:
     """Re-lay each stretch of a street off the main network along the way the mesh walks between the stretch's last
-    and next points on it (an end off it, at a doorway, is first taken to the nearest network point), again over the
-    new line until it holds (a gap finer than the sampling shows only on the new line). The stretches re-laid, or
-    None when one has no way on the mesh (the street is then left as it was)."""
+    and next points on it (an end off it, at a doorway, is first taken to the nearest network point; stretches less
+    than MEND_GAP apart are one), and again over
+    the new line while that leaves fewer points off (a gap finer than the sampling shows only on the new line). The
+    stretches re-laid, or None when one has no way on the mesh (the street is then left as it was)."""
     before, total = list(path["points"]), 0
+
+    def off() -> int:
+        return W.line_ok([q for _, q in samples(path["points"])]).count(False)
+    best = (off(), before)
     for _ in range(passes):
+        if not best[0]:
+            break
         n = _mend(path, W)
         if n is None:
             path["points"] = before
             return None
-        if n == 0:
-            return total
-        total += n
+        left = off()
+        if left >= best[0]:
+            break
+        best, total = (left, list(path["points"])), total + n
+    path["points"] = best[1]
     return total
 
 
@@ -375,28 +422,33 @@ def _mend(path: dict, W: Walkable) -> int | None:
     if len(pts) < 2:
         return 0
     S = samples(pts)
-    ok = W.line_ok([q for _, q in S])
-    if all(ok):
+    at = W.walked([q for _, q in S])
+    if all(x is not None for x in at):
         return 0
     for e in (0, len(S) - 1):
-        if not ok[e]:
+        if at[e] is None:
             q = W.snap(S[e][1])
             if q is None:
                 return None
-            S[e], ok[e] = (S[e][0], q), True
+            S[e], at[e] = (S[e][0], q), W.walked([q])[0]
             pts[0 if e == 0 else -1] = q
-    out, cursor, k, n = [], 0, 0, 0
-    while k < len(S):
-        if ok[k]:
-            k += 1
-            continue
-        a = k - 1
-        b = next(j for j in range(k, len(S)) if ok[j])
-        way = W.route(S[a][1], S[b][1])
+    runs: list[list[int]] = []     # [first, last] sample of each stretch off the network
+    for k, x in enumerate(at):
+        if x is None:
+            if runs and k - runs[-1][1] <= MEND_GAP / STEP:
+                runs[-1][1] = k     # a short stretch on it between two off it is re-laid with them
+            else:
+                runs.append([k, k])
+    out, cursor = [], 0
+    for k0, k1 in runs:
+        # from a little before to a little after, so the new line meets the old one in its stride
+        a, b = max(0, k0 - 1 - MEND_LEAD), min(len(S) - 1, k1 + 1 + MEND_LEAD)
+        way = W.route(S[a][1], S[b][1], at[a][1], at[b][1])
         if way is None:
             return None
         out += pts[cursor:S[a][0] + 1] + [S[a][1]] + list(way[1:-1]) + [S[b][1]]
-        cursor, k, n = S[b][0] + 1, b + 1, n + 1
+        cursor = S[b][0] + 1
+    n = len(runs)
     out += pts[cursor:]
     clean = [out[0]]
     for q in out[1:]:
@@ -447,8 +499,8 @@ def piece_length(bases: dict, base: str) -> float:
 def lay(place_id: str, door_id: str, a, b, base: str, rows: list[dict], bases: dict, G,
         carrier: str | None = None) -> list[dict]:
     """Walkway pieces end to end from a to b ([x, y, z] each), their decks (the top surface of the mesh, geom.walk) on
-    the line between the two heights. A piece may rest on the `carrier`, the thing the door stands on (a ship's
-    deck: the join is its gangway)."""
+    the line between the two heights. A piece rests on the `carrier`, the thing the door stands on (a ship's deck:
+    the join is its gangway), and says so in its seat, so the build's overlap rule lets it (`check.rests`)."""
     from tools.places.draft import geom
     top = geom.walk(bases[base]) or 0.0
     length = piece_length(bases, base)
@@ -464,10 +516,9 @@ def lay(place_id: str, door_id: str, a, b, base: str, rows: list[dict], bases: d
         cand = {"id": io.mint(place_id, "join", door_id, str(j)), "base": base, "kind": "building",
                 "pos": [round(x, 2), round(y, 2), round(deck - top, 2)], "rot": [0.0, 0.0, round(yaw, 5)], "scale": 1.0,
                 "layer": "place", "flags": [], "src": None, "walk": top,
-                "seat": {"mode": "free"},
+                "seat": {"mode": "free", **({"carrier": carrier} if carrier else {})},
                 "why": f"joins door {door_id}'s walkable island to the town's network"}
-        hit = [o for o in near if o["id"] != carrier
-               and (overlap.inside(o["pos"], cand, bases) or overlap.inside(cand["pos"], o, bases))]
+        hit = overlap.hits(cand, near, bases)
         ways = [o for o in hit if paths_mod.WALKWAY.search(str((bases.get(o["base"]) or {}).get("model", "")))]
         if len(hit) > 1 or (hit and not ways):
             continue  # a door, a house or two pieces stand there: the join leaves that piece out
@@ -724,24 +775,20 @@ def join(place_id: str, places: Path = io.PLACES, out: Path = CHECK_OUT, log=pri
         W = Walkable(ctx, *surf)
         # people moved to a reached bed change nothing the mesh is built from: no build round of their own
         moved = rehome(place_id, W, bases, src, pdir, log)
-        # a deck the town reaches only by swimming (a pier above its bank, a ship beside its pier): the source's own
-        # steps join it where the heights differ; level pieces (below) only where they agree
+        # a deck that carries a door or a street and that the town reaches only by swimming (a pier above its
+        # bank): one flight of the source's own steps brings it down; level pieces (below) only where heights agree
         Wd = Walkable(ctx, *surf, comp=C.components(ctx["navs"], C.door_pairs(ctx), C.water_level(ctx)))
         rows = io.read_jsonl(pdir / "spaces" / "exterior" / "refs.jsonl")
-        by_id, have, new = {r["id"]: r for r in rows}, {r["id"] for r in rows}, []
-        for key, (c, pts) in sorted(deck_islands(ctx, Wd, surf[1], surf[2]).items()):
-            carriers = {((by_id.get(key) or {}).get("seat") or {}).get("on")} - {None}
-            got = []
-            for sbase in steps_bases(rows, bases, G):   # the first of the source's own steps that fits the drop
-                got = [r for r in stairs(place_id, key, dry(pts, G), Wd, rows + new, bases, sbase, G, carriers)
-                       if r["id"] not in have]
-                if got:
-                    break
+        paths = io.read_jsonl(pdir / "paths.jsonl") if (pdir / "paths.jsonl").exists() else []
+        have, new = {r["id"] for r in rows}, []
+        for key, (c, want) in sorted(deck_islands(ctx, Wd, paths).items()):
+            got = [r for r in stairs(place_id, key, c, Wd, rows + new, bases, steps_bases(rows, bases, G), G, want)
+                   if r["id"] not in have]
             if got:
                 new += got
                 have |= {r["id"] for r in got}
                 log(f"join {place_id}: {key}: its deck joined to the town by a flight of {got[0]['base']} at "
-                    f"{[round(v) for v in got[0]['pos']]}")
+                    f"{[round(v) for v in got[0]['pos']]}, hung on {got[0]['seat']['on']}")
             else:
                 log(f"join {place_id}: {key}: its deck reaches the town only by swimming and no flight of steps fits")
         if new:
@@ -792,18 +839,23 @@ def join(place_id: str, places: Path = io.PLACES, out: Path = CHECK_OUT, log=pri
     return done
 
 
-STEP_UNDER = 16.0      # a flight's top tread stands this far under the deck it leaves (within the navmesh's climb)
-STEPS_TRIES = 400      # deck-to-bank pairs tried per island, best fitting first
+STEP_FLUSH = 64.0      # a flight whose top tread stands no further than this off its deck's height is hung flush on it
+STEP_ABUT = 32.0       # plan units between a flight's top end and the deck edge it leaves that still abut
+TREAD_MEET = 16.0      # a tread within this over the ground has met it (half the navmesh's climb)
+BURY = 64.0            # flights are told apart by how much of their run the bank buries, in steps of this
+STEPS = re.compile(r"step|stair", re.I)
+
+
+def is_steps(r: dict, bases: dict) -> bool:
+    return r.get("kind") == "building" and bool(STEPS.search(str((bases.get(r["base"]) or {}).get("model", ""))))
 
 
 def steps_bases(rows: list[dict], bases: dict, G) -> list[str]:
     """The source's own steps pieces, the ones that bring a deck down to the water or a bank first: the place's steps
     and stair pieces standing over the water, commonest first, then the rest of its steps and stairs."""
-    def steps(r):
-        return r.get("kind") == "building" and r.get("walk") is not None and re.search(
-            r"step|stair", str((bases.get(r["base"]) or {}).get("model", "")), re.I)
     out: list[str] = []
-    for pick in ([r for r in rows if steps(r) and G.wet(r["pos"][0], r["pos"][1])], [r for r in rows if steps(r)]):
+    for pick in ([r for r in rows if is_steps(r, bases) and G.wet(r["pos"][0], r["pos"][1])],
+                 [r for r in rows if is_steps(r, bases)]):
         got = Counter(r["base"] for r in pick)
         out += [b for b in sorted(got, key=lambda b: (-got[b], b)) if b not in out]
     return out
@@ -811,7 +863,8 @@ def steps_bases(rows: list[dict], bases: dict, G) -> list[str]:
 
 def flight(base: dict) -> dict | None:
     """A steps piece's walked profile along its run (the longer side of its box), read from its collision's treads:
-    {axis, v (the middle across), us, zs (tread height every 16 units along it, top end first)}."""
+    {axis, v (the middle across), top, foot (the run's two ends), us, zs (tread height every 16 units along it, top
+    end first)}."""
     from tools.places import check as C
     from tools.places.seat import top_at
     bb = base.get("bounds")
@@ -827,109 +880,182 @@ def flight(base: dict) -> dict | None:
         z = top_at(up, *((u, v) if axis == 0 else (v, u)))
         if z is not None:
             prof.append((float(u), z))
-    if len(prof) < 2:
+    if len(prof) < 2 or prof[0][1] == prof[-1][1]:
         return None
+    ends = [float(bb[0][axis]), float(bb[1][axis])]
     if prof[0][1] < prof[-1][1]:
         prof.reverse()
-    return {"axis": axis, "v": v, "us": [u for u, _ in prof], "zs": [z for _, z in prof]}
+        ends.reverse()
+    return {"axis": axis, "v": v, "top": ends[0], "foot": ends[1], "us": [u for u, _ in prof], "zs": [z for _, z in prof]}
 
 
-def place_flight(fl: dict, a, d, scale: float = 1.0) -> tuple[list[float], list[float]]:
-    """A flight's origin and rotation so its top end stands at plan point a, STEP_UNDER under a[2], running down along
-    the unit plan direction d."""
-    u0, z0 = fl["us"][0], fl["zs"][0]
-    s = 1.0 if fl["us"][-1] > u0 else -1.0
-    ax = (d[0] * s, d[1] * s)                      # the local run axis (+u) in the world
+def to_world(r: dict, lx: float, ly: float) -> tuple[float, float]:
+    """A point of a placed thing's own plan frame in the world (its yaw and scale; local +x is (cos rz, -sin rz))."""
+    rz, s = (r.get("rot") or [0, 0, 0])[2], float(r.get("scale") or 1.0)
+    c, sn = math.cos(rz), math.sin(rz)
+    return r["pos"][0] + (lx * c + ly * sn) * s, r["pos"][1] + (-lx * sn + ly * c) * s
+
+
+def to_local(r: dict, x: float, y: float) -> tuple[float, float]:
+    rz, s = (r.get("rot") or [0, 0, 0])[2], float(r.get("scale") or 1.0)
+    c, sn = math.cos(rz), math.sin(rz)
+    dx, dy = x - r["pos"][0], y - r["pos"][1]
+    return (dx * c - dy * sn) / s, (dx * sn + dy * c) / s
+
+
+_RECT: dict = {}
+
+
+def deck_rect(base: dict) -> tuple[float, tuple[float, float, float, float]] | None:
+    """A level walkway piece's deck in its own frame: (its height over the origin, (x0, y0, x1, y1) of the upward
+    faces of its collision at that height); None for a piece with no level deck (a flight of steps, a ramp)."""
+    from tools.places import check as C
+    from tools.places.draft import geom
+    m = str(base.get("model") or "").lower()
+    if m not in _RECT:
+        got, w, bb = None, geom.walk(base), base.get("bounds")
+        if w is not None and bb and not STEPS.search(m):
+            up = C._up_faces(m, [*bb[0], *bb[1]])
+            up = up[np.abs(up[:, :, 2] - w).max(axis=1) <= C.ON_TOP] if len(up) else up
+            if len(up):
+                lo, hi = up[:, :, :2].min(axis=(0, 1)), up[:, :, :2].max(axis=(0, 1))
+                got = (float(w), (float(lo[0]), float(lo[1]), float(hi[0]), float(hi[1])))
+        _RECT[m] = got
+    return _RECT[m]
+
+
+def decks(rows: list[dict], bases: dict) -> list[tuple[dict, float, tuple]]:
+    """The place's level deck pieces: [(row, its deck's height in the world, its deck's box in its own frame)]."""
+    out = []
+    for r in rows:
+        d = deck_rect(bases.get(r["base"]) or {}) if r.get("kind") == "building" else None
+        if d is not None:
+            out.append((r, r["pos"][2] + d[0] * float(r.get("scale") or 1.0), d[1]))
+    return out
+
+
+def hang(fl: dict, d: dict, deck_z: float, a, o, scale: float = 1.0) -> tuple[list[float], list[float], dict]:
+    """A flight hung on deck piece d the way Skyrim.esm's dock steps hang on their decks (DockStepsDown01 and 02:
+    square to the deck, the top end against its edge, the top tread at the deck's height): its origin, rotation and
+    seat, its top end's middle at plan point a, running down along the unit plan direction o."""
+    s = 1.0 if fl["foot"] > fl["top"] else -1.0
+    ax = (o[0] * s, o[1] * s)                      # the local run axis (+u) in the world
     if fl["axis"] == 1:                            # local +y along ax: local +x is ax turned a quarter clockwise
         ax = (ax[1], -ax[0])
     rz = math.atan2(-ax[1], ax[0]) % (2 * math.pi)   # local +x is (cos rz, -sin rz) in the world
     c, sn = math.cos(rz), math.sin(rz)
-    lu, lv = (u0, fl["v"]) if fl["axis"] == 0 else (fl["v"], u0)
-    ox = a[0] - (lu * c + lv * sn) * scale
-    oy = a[1] - (-lu * sn + lv * c) * scale
-    return ([round(float(ox), 2), round(float(oy), 2), round(float(a[2] - STEP_UNDER - z0 * scale), 2)],
-            [0.0, 0.0, round(float(rz), 5)])
+    lu, lv = (fl["top"], fl["v"]) if fl["axis"] == 0 else (fl["v"], fl["top"])
+    z = deck_z - fl["zs"][0] * scale
+    pos = [round(float(a[0] - (lu * c + lv * sn) * scale), 2), round(float(a[1] - (-lu * sn + lv * c) * scale), 2),
+           round(float(z), 2)]
+    return pos, [0.0, 0.0, round(float(rz), 5)], {"mode": "on", "on": d["id"], "dz": round(float(z - d["pos"][2]), 2)}
 
 
-def stairs(place_id: str, key: str, isl: np.ndarray, Wd: "Walkable", rows: list[dict], bases: dict, base: str,
-           G, carriers: set = frozenset()) -> list[dict]:
-    """One flight of the steps piece between an island's deck and the town's dry network where their heights differ
-    by more than a step: its top end at the higher one's edge, a step under it, running down to where its treads meet
-    the lower one (the ground, or a deck: a ship's), the ground never above a tread on the way, its body clear of
-    every solid but walkways and the island's `carriers` (the ship a door stands on). [] when no flight fits."""
-    from scipy.spatial import cKDTree
-    fl = flight(bases[base])
-    if fl is None:
-        return []
-    drop = fl["zs"][0] - fl["zs"][-1]
-    net = Wd.cent[Wd.main]
-    net = net[[G.water(float(p[0]), float(p[1])) is None or p[2] >= G.water(float(p[0]), float(p[1])) for p in net]]
-    if not len(net) or not len(isl):
-        return []
-    tree = cKDTree(net[:, :2])
-    run = abs(fl["us"][-1] - fl["us"][0])
+def flush_steps(rows: list[dict], bases: dict, log=print) -> int:
+    """A flight of the source's own steps whose top end abuts a deck's edge hangs on that deck: where the source set
+    its top tread a little off the deck's height (within STEP_FLUSH; a step the navmesh does not climb), it is
+    seated flush, `on` the deck piece, so deck and flight are one walked surface. Returns the flights reseated."""
+    dk, n = decks(rows, bases), 0
+    for r in rows:
+        fl = flight(bases.get(r["base"]) or {}) if is_steps(r, bases) else None
+        if fl is None:
+            continue
+        s = float(r.get("scale") or 1.0)
+        top = to_world(r, *((fl["top"], fl["v"]) if fl["axis"] == 0 else (fl["v"], fl["top"])))
+        tz = r["pos"][2] + fl["zs"][0] * s
+        best = None
+        for d, dz, (x0, y0, x1, y1) in dk:
+            if d is r or abs(dz - tz) > STEP_FLUSH:
+                continue
+            lx, ly = to_local(d, *top)
+            gap = math.hypot(max(x0 - lx, 0.0, lx - x1), max(y0 - ly, 0.0, ly - y1)) * float(d.get("scale") or 1.0)
+            ox, oy = to_local(d, r["pos"][0], r["pos"][1])
+            if gap <= STEP_ABUT and not (x0 <= ox <= x1 and y0 <= oy <= y1) and (best is None or gap < best[0]):
+                best = (gap, d, dz)
+        if best is None:
+            continue
+        _, d, dz = best
+        z = round(dz - fl["zs"][0] * s, 2)
+        seat = {**{k: v for k, v in (r.get("seat") or {}).items() if k == "foot"}, "mode": "on", "on": d["id"],
+                "dz": round(z - d["pos"][2], 2)}
+        if seat != r.get("seat"):
+            log(f"steps {r['id']}: hung on deck {d['id']}, its top tread at the deck's height (it stood "
+                f"{tz - dz:+.0f} off it)")
+            r["seat"], r["pos"], n = seat, [r["pos"][0], r["pos"][1], z], n + 1
+    return n
+
+
+def stairs(place_id: str, key: str, c: int, Wd: "Walkable", rows: list[dict], bases: dict, sbases: list[str],
+           G, want: list, every: bool = False) -> list[dict]:
+    """One flight of the source's own steps from an island's deck down to the town's dry network, hung the way
+    Skyrim.esm hangs dock steps (`hang`): off a free edge of one of the island's deck pieces, square to it, running
+    down until its treads meet our ground where the town's network walks (the bank may bury the rest of its run, as
+    a flight set into a slope; never a tread under the ground before that), its body clear of every solid by the
+    build's overlap rule. Of the flights that fit, the one the bank buries least, then the nearest to where the
+    island's streets and doors are (`want`); `every`: all that fit, best first. [] when none fits."""
     cand = []
-    for a in isl:
-        for j in tree.query_ball_point(a[:2], run + 64):
-            hi, lo = (a, net[j]) if a[2] >= net[j][2] else (net[j], a)
-            h = hi[2] - STEP_UNDER - lo[2]
-            if 48 <= h <= drop:
-                need = next(abs(u - fl["us"][0]) for u, z in zip(fl["us"], fl["zs"]) if fl["zs"][0] - z >= h - 1)
-                cand.append((abs(math.dist(a[:2], net[j][:2]) - need), tuple(hi), tuple(lo)))
-    near = [r for r in rows if r.get("kind") in overlap.SOLID and r["id"] not in carriers]
-    for _, hi, lo in sorted(cand)[:STEPS_TRIES]:
-        L = math.dist(hi[:2], lo[:2])
-        if L < 1:
+    near = [r for r in rows if r.get("kind") in overlap.SOLID]
+    for d, dz, (x0, y0, x1, y1) in decks(rows, bases):
+        t = Wd.found((d["pos"][0], d["pos"][1], dz))[0]
+        if t < 0 or int(Wd.comp[t]) != c:
             continue
-        d = ((lo[0] - hi[0]) / L, (lo[1] - hi[1]) / L)
-        pos, rot = place_flight(fl, hi, d)
-        row = {"id": io.mint(place_id, "steps", key), "base": base, "kind": "building", "pos": pos, "rot": rot,
-               "scale": 1.0, "layer": "place", "flags": [], "src": None, "walk": geom_walk(bases[base]),
-               "seat": {"mode": "free"}, "why": f"brings {key}'s deck down to the town's network"}
-        # the treads: over the ground until they meet the lower surface, then on it at its height
-        ok, landed = True, False
-        want = Wd.found(lo)[0]
-        for u, z in zip(fl["us"], fl["zs"]):
-            t = abs(u - fl["us"][0])
-            x, y = hi[0] + d[0] * t, hi[1] + d[1] * t
-            g, tz = G.height(x, y), pos[2] + z
-            if g is None or g > tz + 8:
-                ok = False      # the ground stands over a tread: the flight would run into a bank
-                break
-            if tz - lo[2] <= 32:
-                got = Wd.found((x, y, lo[2]))[0]
-                landed = got >= 0 and want >= 0 and Wd.comp[got] == Wd.comp[want]
-                break
-        if not ok or not landed:
-            continue
-        hit = [o for o in near if math.dist(o["pos"][:2], pos[:2]) < 2048
-               and (overlap.inside(o["pos"], row, bases) or overlap.inside(row["pos"], o, bases))]
-        if any(not paths_mod.WALKWAY.search(str((bases.get(o["base"]) or {}).get("model", ""))) for o in hit):
-            continue
-        return [row]
-    return []
+        for e, (mx, my, ox, oy) in enumerate((((x0 + x1) / 2, y1, 0, 1), ((x0 + x1) / 2, y0, 0, -1),
+                                             (x1, (y0 + y1) / 2, 1, 0), (x0, (y0 + y1) / 2, -1, 0))):
+            a = to_world(d, mx, my)
+            far = to_world(d, mx + ox, my + oy)
+            o = (far[0] - a[0], far[1] - a[1])
+            L = math.hypot(*o)
+            o = (o[0] / L, o[1] / L)
+            h = Wd.deck(a[0] + o[0] * 2 * STEP_ABUT, a[1] + o[1] * 2 * STEP_ABUT) if Wd.deck else None
+            if h is not None and abs(h - dz) <= TREAD_MEET:
+                continue   # the deck goes on there: no edge to leave it by
+            for sbase in sbases:
+                fl = flight(bases[sbase])
+                if fl is None:
+                    continue
+                pos, rot, seat = hang(fl, d, dz, a, o)
+                landed = buried = None
+                for u, z in zip(fl["us"], fl["zs"]):
+                    run = abs(u - fl["top"])
+                    x, y = a[0] + o[0] * run, a[1] + o[1] * run
+                    g, tz = G.height(x, y), pos[2] + z
+                    if g is None or g > tz + 8:
+                        break      # the ground stands over a tread: the flight would run into a bank
+                    if tz - g <= TREAD_MEET:
+                        landed, buried = (x, y, g), abs(fl["foot"] - u)
+                        break
+                if landed is None:
+                    continue
+                t = Wd.found(landed)[0]
+                if t < 0 or not Wd.main[t]:
+                    continue       # it comes down in water too deep to wade, or on ground the town does not reach
+                row = {"id": io.mint(place_id, "steps", d["id"], str(e)), "base": sbase, "kind": "building",
+                       "pos": pos, "rot": rot, "scale": 1.0, "layer": "place", "flags": [], "src": None,
+                       "walk": geom_walk(bases[sbase]), "seat": seat,
+                       "why": f"brings {key}'s deck down to the town's network"}
+                if overlap.hits(row, near, bases):
+                    continue
+                to = min((math.dist(landed[:2], q[:2]) for q in want), default=0.0)
+                cand.append((round(buried / BURY), round(to), row["id"], row))
+    cand.sort(key=lambda t: t[:3])
+    return [t[3] for t in (cand if every else cand[:1])]
 
 
-def deck_islands(ctx: dict, Wd: "Walkable", deck, wet) -> dict:
-    """{key: (component, its triangle centres)} for each island of `Wd` (built on what joins without swimming) that
-    holds a door of ours, or a walkway deck of ours (`deck(x, y)`, check.surfaces) standing mostly over the water
-    (`wet(x, y)`): a pier or a ship the town reaches only by swimming. The key is the door's id, else the deck's first triangle."""
+def deck_islands(ctx: dict, Wd: "Walkable", paths: list[dict]) -> dict:
+    """{key: (component, where its doors and streets are)} for each island of `Wd` (built on what joins without
+    swimming) that carries a door of ours or a street on a deck of ours: a pier or a ship the town reaches only by
+    swimming. The key is the door's id, else the street's."""
+    from tools.places import check as C
     out: dict = {}
-    for door_id, (c, pts) in islands(ctx, Wd).items():
-        out.setdefault(c, (door_id, pts))
-    for t in np.flatnonzero(~Wd.main & Wd.dry):
-        c = int(Wd.comp[t])
-        if c in out:
-            continue
-        x, y, z = Wd.cent[t]
-        h = deck(float(x), float(y))
-        if h is not None and abs(h - z) <= 48 and int((Wd.comp == c).sum()) >= 8:
-            pts = Wd.cent[Wd.comp == c]
-            if 2 * sum(wet(float(q[0]), float(q[1])) is not None for q in pts) >= len(pts):
-                out[c] = (f"deck.{round(float(x))}.{round(float(y))}", pts)
-            else:
-                out[c] = None
-    return {v[0]: (c, v[1]) for c, v in out.items() if v is not None}
+    for door_id, (c, pts) in sorted(islands(ctx, Wd).items()):
+        out.setdefault(c, (door_id, []))[1].append(tuple(pts.mean(axis=0)[:2]))
+    for p in paths:
+        for _, q in samples(p["points"]):
+            t = Wd.found(q)[0]
+            h = Wd.deck(q[0], q[1]) if Wd.deck else None
+            if t >= 0 and not Wd.main[t] and h is not None and abs(h - Wd.cent[t, 2]) <= C.DECK_TOL:
+                out.setdefault(int(Wd.comp[t]), (p["id"], []))[1].append(q)
+    return {key: (c, pts) for c, (key, pts) in out.items()}
 
 
 def geom_walk(base: dict) -> float | None:

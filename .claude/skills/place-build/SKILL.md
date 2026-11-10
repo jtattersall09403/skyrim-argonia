@@ -73,34 +73,47 @@ building on a slope first takes the rise the source's own builders commonly buil
    line beside a deck and not on it, a bridge that ends on an empty bank, or many bridge pieces where the source
    had none each say the anchor, the turn or a cluster's spot is wrong: put that right and redraft; never accept
    the line.
-   After the draft the tools build the place and join each door whose walkable ground is an island to the town by
-   level walkway pieces laid from the island to the nearest point of the network at its height. A door whose
-   island no level join reaches and whose room nobody lives or works in (a ship's hatch with no way aboard in the
-   source) is left out with its room and the links that led to it, with the reason in the ledger. A guard whose
-   camp bed the town's network does not reach (a tent shut in by blocks) sleeps in a home's free bed instead; with
-   none free, the last resident gives up theirs. A camp (beds in the open) is a stop like a door: a street
-   reaches its edge.
-   A deck the town reaches only by swimming (a pier standing above its bank, a ship beside it) is brought down to
-   the bank by the source's own steps: one flight of the place's steps piece that covers the drop, its top tread a
-   step under the deck's edge, running down to where its treads meet the town's dry ground, clear of every solid
-   but the deck it leaves; level walkway pieces join only where the heights agree. The build then links deck,
-   steps and bank on dry triangles; look at each flight in the render.
+   Steps hang on their deck the way Skyrim's dock steps do (measured on Skyrim.esm's DockStepsDown01 and 02):
+   square to the deck, the top end against its edge, the top tread at the deck's own height, the piece seated `on`
+   the deck piece. A flight of the source's that abuts a deck a little off its height (within 64 units; a step
+   the navmesh does not climb) is seated so in the draft, and deck and flight are one walked surface: a ship the
+   source moored beside its pier with steps between them is joined by those steps.
+   After the draft the tools build the place and read its navmesh. A deck that carries a door or a street and
+   that the town reaches only by swimming (a pier or quay the source met at its bank's height, standing above
+   ours) gets one flight of the source's own steps, hung as above off a free edge of one of its deck pieces and
+   running down until its treads meet our ground where the town's network walks. The bank may bury the rest of
+   the run, as steps set into a slope; no tread stands under the ground before that, and the flight's body is
+   clear of every solid by the build's overlap rule. Of the flights that fit, the one the bank buries least is
+   laid, then the one nearest the deck's streets and doors. A deck nothing of the town uses (a rowing boat, a
+   bridge deck high overhead) gets none. Look at each flight in the render.
+   A door whose walkable ground is still an island is joined to the town by level walkway pieces laid from the
+   island to the nearest point of the network at its height (never across a height the navmesh does not climb:
+   that is a flight's work). A piece laid for a door that stands on a thing (a ship's hatch) rests on that thing
+   as its gangway and names it as its `carrier`; a piece that continues a walkway stands `on` it. The build's
+   overlap check lets a piece rest on what its seat names, by the same rule the drafter lays it with. A door whose
+   island no join reaches and whose room nobody lives or works in is left out with its room and the links that led
+   to it, with the reason in the ledger. A guard whose camp bed the town's network does not reach (a tent shut in
+   by blocks) sleeps in a home's free bed instead; with none free, the last resident gives up theirs. A camp (beds
+   in the open) is a stop like a door: a street reaches its edge.
    Every door's arrival outside stands on the built walkable network at its own level (the deck or the ground the
    door lands one on): an arrival off it is moved to the nearest point of it, on the same side of its door and
    outside every placed thing's body, at the mesh's height there.
    Streets and patrols lie on the built walkable network. Once the doors are joined, every street, path and
-   walkway is tested along its whole line against the town's main network of the built navmesh (ours and the
-   world's own round the place): over a walkway piece a point stands on the deck's own triangles, within 48 units
-   of the deck's surface, never on the seabed under it; over water too deep to wade with no deck, only on a dry
-   triangle right under it; on land or in a ford, on the ground's; and each point is reached from the one before
-   without a drop or a climb steeper than a walked slope (never a step off a deck's edge onto the ground under it).
-   A stretch off it (where a big static's true collision cuts the mesh, or only a small island stands) is re-laid
-   along the way the mesh itself walks between the stretch's last and next points on the network, never through
-   water deeper than a ford, eased into a curve that never leaves it, and the street's `laid` says so; the world's
-   plants the new line reaches are cleared by the draft's own measure. Guards' patrols are then taken from those
-   streets, each point on the network (a patrol keeps at least two). One pass lays every line on the network: a
-   second build finds nothing to re-lay. `draft check` and the build's `check` (its `streets` check) list any street
-   or patrol point still off it.
+   walkway is walked along its whole line (a point every 64 units) on the town's main network of the built navmesh
+   (ours and the world's own round the place). A point stands on a dry triangle at a level one may stand at there:
+   a deck's or a flight's own surface (within 48 units of it), the ground or a ford, or, over water too deep to
+   wade with no deck, a dry triangle right over it; never the seabed. Each point is taken at the level one reaches
+   it by from the point before, never by a drop or a climb steeper than a walked slope (a step off a deck's edge
+   onto the ground under it), so a line under a pier stays on the ground and a line down a flight stays on the
+   flight. A stretch off the network (where a big static's true collision cuts the mesh, where a deck stands above
+   its bank) is re-laid along the way the mesh itself walks from a little before it to a little after, never
+   through water deeper than a ford: through the middles of the triangle edges it crosses, pulled straight and
+   eased only where the line still walks the same way. Stretches close together are re-laid as one. The street's
+   `laid` says so, and the world's plants the new line reaches are cleared by the draft's own measure. Guards'
+   patrols are then taken from those streets, each point on the network (a patrol keeps at least two). One pass
+   settles every line: `draft check` mends each street again on the built mesh and fails if anything is re-laid.
+   `draft check` and the build's `check` (its `streets` check) list any street or patrol point still off the
+   network.
 
 ## 4. Settle what the cost cannot
 
