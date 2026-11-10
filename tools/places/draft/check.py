@@ -368,10 +368,11 @@ def round_trip(place_id: str, places: Path = io.PLACES) -> list[str]:
     import tempfile
     from tools.places import edits
     pdir = places / place_id
-    with tempfile.TemporaryDirectory() as td:
-        edits.write_place(Path(td), edits.load_place(pdir))
+    with tempfile.TemporaryDirectory() as tmp:
+        td = Path(tmp) / "places" / place_id     # the writer keeps a place's sources beside its places folder
+        edits.write_place(td, edits.load_place(pdir))
         return [f"{f.relative_to(td)} is not in the canonical order and text (load then write changes it)"
-                for f in sorted(Path(td).rglob("*")) if f.is_file()
+                for f in sorted(td.rglob("*")) if f.is_file()
                 and (not (pdir / f.relative_to(td)).exists() or (pdir / f.relative_to(td)).read_bytes() != f.read_bytes())]
 
 

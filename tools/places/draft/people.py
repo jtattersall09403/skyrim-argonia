@@ -81,7 +81,7 @@ def service_people(gives: list[dict]) -> list[dict]:
     people: list[dict] = []
     for g in sorted(gives, key=lambda r: r["seq"]):
         role = PERSON_GIVES.get(g["give_kind_id"])
-        if role is None:
+        if role is None or role == "resident":   # what a resident gives makes no person of its own (`give_to_residents`)
             continue
         tok = _tokens(g.get("detail", ""))
         mate = None
@@ -101,6 +101,34 @@ def service_people(gives: list[dict]) -> list[dict]:
     for p in people:
         p.pop("tokens")
     return people
+
+
+def give_to_residents(folk: list[dict], gives: list[dict], identities: dict[str, dict], hist: str | None = None) -> list[str]:
+    """A promise a townsman keeps beside his own life (a rootworm stop's handler, a follower: role `resident` in
+    PERSON_GIVES) is given to one of the residents, never to a person made for it: the resident whose trade in the
+    people source says the most of the promise's kind and detail, else the first resident who gives nothing yet. A
+    stop's handler works at it through the service hours: a rootworm stop is at the place's Hist (`hist`, the shrine
+    tree's ref: the worms run in its roots), where there is one. Returns the people given a promise."""
+    out = []
+    for g in sorted(gives, key=lambda r: r["seq"]):
+        if PERSON_GIVES.get(g["give_kind_id"]) != "resident" or any(
+                s.get("seq") == g["seq"] for p in folk for s in p.get("services") or []):
+            continue
+        tok = _tokens(g["give_kind_id"] + " " + (g.get("detail") or ""))
+        res = [p for p in folk if p.get("role") == "resident"]
+        if not res:
+            continue
+        said = [len(tok & _tokens((identities.get(p["id"]) or {}).get("trade") or "")) for p in res]
+        p = res[said.index(max(said))] if max(said) else next((q for q in res if not q.get("services")), res[0])
+        p["services"] = (p.get("services") or []) + [{"seq": g["seq"], "kind": g["give_kind_id"], "detail": g.get("detail")}]
+        if g["give_kind_id"].endswith("-stop"):
+            day = {st["kind"]: st["at"] for st in p.get("routine") or []}
+            if hist:
+                p["work"] = {"space": "exterior", "ref": hist, "radius": 384}
+            if day.get("sleep") and day.get("eat"):
+                p["routine"] = routine("handler", day["sleep"], p["work"], day["eat"], day.get("wander") or p["work"])
+        out.append(p["id"])
+    return out
 
 
 def role_score(npc: dict, role: str, races: dict | None = None) -> float:

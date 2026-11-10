@@ -870,6 +870,9 @@ edge links, measured: actors wade and swim them); a street or a patrol is never 
 (`WADE`, 64 units, half the agent's height). The geometry is one: a ref is inside another
 when its origin is within 0.8 of the other's record box in plan under the other's full three-axis rotation and
 within its height; a standing point (arrival, stop) is inside a body only below its top by more than 16 units.
+`python -m tools.places draft join <place_id>` runs the draft's last step alone on the place files as they stand
+(the source's steps hung on their decks, residents' promises, names from the people source, then the built
+network: flights, joins, arrivals, work stops, streets and patrols), writing only the rows its rules change.
 `draft check <place_id>` runs this same check (the build into `out/places/draft_check/`, then these functions on
 that plugin), so a draft that passes it passes `check` on the build; it also mends every street again on that
 built mesh and fails if a stretch is re-laid (the streets are settled).

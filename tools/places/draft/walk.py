@@ -628,12 +628,14 @@ def rehome(place_id: str, W: "Walkable", bases: dict, src, pdir: Path, log=print
 
 
 ARRIVAL_LEVEL = 64.0    # units: a door's arrival stands on mesh within this of its own height (the deck it lands on)
+ARRIVAL_ON = 16.0       # an arrival further than this over or under the mesh is put at the mesh's height (the detail mesh's error)
 ARRIVAL_REACH = 288.0   # how far from where it was an arrival is moved to stand on the mesh
 
 
 def arrivals(place_id: str, pdir: Path, W: Walkable, bases: dict, log=print) -> int:
     """Every door's arrival outside stands on the town's main walkable network of the built mesh, at its own level
-    (on the deck or the ground it lands one on): one that does not is moved to the nearest point that does, on the
+    (on the deck or the ground it lands one on): one over or under the mesh there (on steps since raised) is put at
+    the mesh's height; one off it is moved to the nearest point that is on it, on the
     same side of its door, outside every placed thing's body, at the mesh's height there. The partner door's `to_pos`
     and the door's `arrival` move together. Returns the arrivals moved."""
     from tools.places.draft import geom
@@ -651,14 +653,15 @@ def arrivals(place_id: str, pdir: Path, W: Walkable, bases: dict, log=print) -> 
         sid = (d.get("door") or {}).get("to_space")
         if d.get("kind") != "door" or not a or not sid or len(a) < 3:
             continue
-        if level(a, a[2]) is not None:
+        at = level(a, a[2])
+        if at is not None and abs(at - a[2]) <= ARRIVAL_ON:
             continue
         sup = by_id.get((d.get("seat") or {}).get("on"))
         near = [r for r in rows if r.get("kind") in geom.SOLID_KINDS and r is not d and r is not sup
                 and math.dist(r["pos"][:2], a[:2]) < 2048]
         side = (a[0] - d["pos"][0], a[1] - d["pos"][1])
-        got = None
-        for r_ in np.arange(8.0, ARRIVAL_REACH + 1, 8.0):
+        got = [a[0], a[1], round(at, 2)] if at is not None else None   # where it is, at the mesh's own height
+        for r_ in np.arange(8.0, ARRIVAL_REACH + 1, 8.0) if got is None else ():
             for k in range(32):
                 q = (a[0] + r_ * math.cos(k * math.pi / 16), a[1] + r_ * math.sin(k * math.pi / 16))
                 if (q[0] - d["pos"][0]) * side[0] + (q[1] - d["pos"][1]) * side[1] <= 0:
@@ -690,6 +693,36 @@ def arrivals(place_id: str, pdir: Path, W: Walkable, bases: dict, log=print) -> 
         for sid, inner in inner_dirty.items():
             io.write_jsonl(pdir / "spaces" / sid / "refs.jsonl", inner)
     return moved
+
+
+def stops(place_id: str, pdir: Path, W: Walkable, log=print) -> int:
+    """A person's work stop outdoors named by a thing (the Hist a handler tends) whose spot the town's network does
+    not reach, as the build looks a stop up, becomes the nearest point of the network beside it. Returns the stops
+    moved."""
+    from tools.places import check as C
+    fj = pdir / "people.jsonl"
+    folk = io.read_jsonl(fj) if fj.exists() else []
+    rows = {r["id"]: r for r in io.read_jsonl(pdir / "spaces" / "exterior" / "refs.jsonl")}
+    n = 0
+    for p in folk:
+        w = p.get("work") or {}
+        r = rows.get(w.get("ref")) if w.get("space") == "exterior" else None
+        if r is None or W.on(r["pos"], tol=C.STOP_PLAN_TOL):
+            continue
+        q = W.snap(r["pos"][:2])
+        if q is None:
+            log(f"join {place_id}: {p['id']}: the work stop at {w['ref']} is off the walkable network, with no point "
+                f"of it within {SNAP:.0f} units")
+            continue
+        new = {"space": "exterior", "pos": [round(float(q[0]), 1), round(float(q[1]), 1)], "radius": w.get("radius", 384)}
+        for st in p.get("routine") or []:
+            if st.get("at") == w:
+                st["at"] = new
+        p["work"], n = new, n + 1
+        log(f"join {place_id}: {p['id']}: works beside {w['ref']}, at the nearest point of the walkable network")
+    if n:
+        io.write_jsonl(fj, folk)
+    return n
 
 
 def streets(place_id: str, pdir: Path, W: Walkable, world: list[dict] | None = None, log=print) -> int:
@@ -742,8 +775,37 @@ def streets(place_id: str, pdir: Path, W: Walkable, world: list[dict] | None = N
     return n + changed
 
 
+def finish(place_id: str, places: Path, bases: dict, log=print) -> int:
+    """What the draft settles on the place files before the build, each a rule that leaves a file it already holds
+    for as it was: the source's steps hung flush on their decks (`flush_steps`), the promises a resident keeps given
+    to a resident (`people.give_to_residents`), and each person's name from the people source
+    (`people.apply_identities`). Returns the rows changed."""
+    from tools.places import identities
+    from tools.places.draft import people
+    from tools.places.draft.run import place_record
+    pdir = places / place_id
+    ext, fj = pdir / "spaces" / "exterior" / "refs.jsonl", pdir / "people.jsonl"
+    rows = io.read_jsonl(ext)
+    n = flush_steps(rows, bases, log)
+    if n:
+        io.write_jsonl(ext, rows)
+    folk = io.read_jsonl(fj) if fj.exists() else []
+    before = json.dumps(folk, sort_keys=True)
+    place = json.loads((pdir / "place.json").read_text())
+    who = identities.read(place_id, places)
+    hist = next(iter(((place.get("stations") or {}).get("found") or {}).get("shrine") or []), None)
+    for pid in people.give_to_residents(folk, place_record(place_id)[1], who, hist):
+        log(f"join {place_id}: {pid} keeps a promise of the place beside their own life")
+    people.apply_identities(folk, who)
+    if json.dumps(folk, sort_keys=True) != before:
+        was = {p["id"]: json.dumps(p, sort_keys=True) for p in json.loads(before)}
+        n += sum(1 for p in folk if was.get(p["id"]) != json.dumps(p, sort_keys=True))
+        io.write_jsonl(fj, folk)
+    return n
+
+
 def join(place_id: str, places: Path = io.PLACES, out: Path = CHECK_OUT, log=print) -> int:
-    """Build the place and read its walkable network; in each build round move the sleepers it does not reach
+    """Settle the place files (`finish`), build the place and read its walkable network; in each build round move the sleepers it does not reach
     (`rehome`), join every door's island to it by level walkway pieces, and once no island is left (or none can be
     joined) lay every street and patrol on it (`streets`); a round that changed what the mesh is built from (pieces,
     streets) builds again. Returns the changes made."""
@@ -756,7 +818,7 @@ def join(place_id: str, places: Path = io.PLACES, out: Path = CHECK_OUT, log=pri
     from tools.places.seat import Ground
     G = Ground.load(grd.path)
     G.apply_patches(io.read_jsonl(pdir / "land.jsonl") if (pdir / "land.jsonl").exists() else [])
-    done = 0
+    done = finish(place_id, places, bases, log)
 
     def settle():
         """The place files as they ship: reseated and in canonical order, so the build each round makes is the one
@@ -829,7 +891,7 @@ def join(place_id: str, places: Path = io.PLACES, out: Path = CHECK_OUT, log=pri
             log(f"join {place_id}: no island ({', '.join(sorted(isl))}) has a clear walkable way to the network")
             moved += cut(place_id, sorted(isl), rows, pdir, log)
         world = [r for r in (grd.exterior.refs if grd.exterior else []) if r.get("layer", "world") == "world"]
-        got = arrivals(place_id, pdir, W, bases, log) + streets(place_id, pdir, W, world, log)
+        got = arrivals(place_id, pdir, W, bases, log) + stops(place_id, pdir, W, log) + streets(place_id, pdir, W, world, log)
         done += got + moved
         if got or moved:
             settle()

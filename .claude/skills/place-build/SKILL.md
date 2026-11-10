@@ -96,8 +96,10 @@ building on a slope first takes the rise the source's own builders commonly buil
    by blocks) sleeps in a home's free bed instead; with none free, the last resident gives up theirs. A camp (beds
    in the open) is a stop like a door: a street reaches its edge.
    Every door's arrival outside stands on the built walkable network at its own level (the deck or the ground the
-   door lands one on): an arrival off it is moved to the nearest point of it, on the same side of its door and
-   outside every placed thing's body, at the mesh's height there.
+   door lands one on): an arrival more than 16 units over or under the mesh is put at the mesh's height where it
+   is; one off the network is moved to the nearest point of it, on the same side of its door and outside every
+   placed thing's body, at the mesh's height there. A person's outdoor work stop named by a thing the network
+   does not reach (a Hist's trunk) becomes the nearest point of the network beside it.
    Streets and patrols lie on the built walkable network. Once the doors are joined, every street, path and
    walkway is walked along its whole line (a point every 64 units) on the town's main network of the built navmesh
    (ours and the world's own round the place). A point stands on a dry triangle at a level one may stand at there:
@@ -160,7 +162,11 @@ building on a slope first takes the rise the source's own builders commonly buil
   if a check disagrees with how Skyrim does it, the check is wrong.
 - **Beds decide the people.** A house copied from a cell several houses share keeps only its own room, by the
   builder's room rule (the drafter calls it, so the beds counted are the beds built). Every promised service
-  person works; residents fill the homes' remaining beds.
+  person works; residents fill the homes' remaining beds. A promise a townsman keeps beside his own life (a
+  rootworm stop's handler, a follower) makes no person of its own: it is given to the resident whose trade in the
+  people source (`newworld/sources/people/<place_id>.json`) says the most of it, else to the first resident who
+  gives nothing yet. A stop's handler works at it through the service hours; a rootworm stop is at the place's
+  Hist, whose roots the worms run in.
 - **Who sleeps where, the vanilla way.** An inn that rents a room keeps one of its beds unowned: that is the
   rented bed (`stations.rent_bed`). Guards sleep in a barracks or their camp's own beds (tents and bedrolls
   outdoors), one guard to a bed, never in the inn's rooms; a family's home only when the camp bed cannot be
@@ -187,6 +193,10 @@ building on a slope first takes the rise the source's own builders commonly buil
    `build <place_id> --plan` when it exists. Its `measures` line gives
    the patched cells and points and the streets' length: keep the patches as near nothing as the land allows.
 2. Render again and look: does it read as the same town sitting naturally on our land? If not, go back to 2.
+   Change only what needs changing: when the fit, the clusters, the interiors and the clearance stand and only
+   the network, the people's names or a resident's promise must follow a change (the people source, the place's
+   promises, a rule of the join), run `python -m tools.places draft join <place_id>`, the draft's last step alone
+   on the place files as they stand, never the whole draft again.
 3. `python -m tools.places seat <place_id>` must report 0 refs moved.
 
 ## 6. Record

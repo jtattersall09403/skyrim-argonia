@@ -779,7 +779,9 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
     io.write_jsonl(pdir / "land.jsonl", land)
     io.write_jsonl(pdir / "clear.jsonl", clear_rows)
     io.write_jsonl(pdir / "paths.jsonl", paths_our)
-    people.apply_identities(folk, identities.read(place_id, places))
+    who = identities.read(place_id, places)
+    people.give_to_residents(folk, gives, who, next(iter((stations.get("found") or {}).get("shrine") or []), None))
+    people.apply_identities(folk, who)
     io.write_jsonl(pdir / "people.jsonl", folk)
     io.write_jsonl(pdir / "ledger.jsonl", sorted(ledger, key=lambda r: (r["space"], r["src"])))
     centre = fit.xf.to

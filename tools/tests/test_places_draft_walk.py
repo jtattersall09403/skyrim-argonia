@@ -353,6 +353,89 @@ def test_mend_takes_stretches_close_together_as_one_and_is_settled_after_one_pas
     assert walk.mend(again, W) == 0 and again["points"] == street["points"]
 
 
+def _folk():
+    bed, town = {"space": "home", "ref": "B", "radius": 128}, {"space": "exterior", "radius": 4096}
+    from tools.places.draft import people
+    day = people.routine("resident", bed, town, {"space": "home", "radius": 1024}, town)
+    return [{"id": f"p{k}", "name": f"N{k}", "role": "resident", "bed": bed, "work": town, "services": [],
+             "routine": [dict(st) for st in day]} for k in range(3)] + [
+        {"id": "boat", "name": "B", "role": "boatman", "services": [{"seq": 1, "kind": "boat-stop"}]}]
+
+
+def test_a_promise_a_resident_keeps_goes_to_the_resident_whose_trade_says_it_and_makes_no_person():
+    from tools.places.draft import people
+    gives = [{"seq": 0, "give_kind_id": "rootworm-stop", "detail": "the root landing, where a handler calls the rootworm"},
+             {"seq": 1, "give_kind_id": "boat-stop", "detail": "raft-masters"},
+             {"seq": 2, "give_kind_id": "trader-general", "detail": "market trader"}]
+    assert [p["role"] for p in people.service_people(gives)] == ["boatman", "merchant"]   # the others keep their numbers
+    who = {"p1": {"name": "Cheeval-Xu", "trade": "rootworm handler at the root landing"}, "p0": {"trade": "fisher"}}
+    runs = []
+    for _ in range(2):      # the same inputs give the same rows
+        folk = _folk()
+        assert people.give_to_residents(folk, gives, who, "hist") == ["p1"]
+        people.apply_identities(folk, who)
+        assert people.give_to_residents(folk, gives, who, "hist") == []           # settled: nothing given twice
+        runs.append(json.dumps(folk, sort_keys=True))
+    assert runs[0] == runs[1]
+    p1 = folk[1]
+    assert p1["name"] == "Cheeval-Xu" and p1["services"][0]["kind"] == "rootworm-stop" and p1["role"] == "resident"
+    assert p1["work"] == {"space": "exterior", "ref": "hist", "radius": 384}
+    assert [st["kind"] for st in p1["routine"]] == ["sleep", "eat", "work", "eat", "wander"]
+    assert folk[0]["services"] == [] and folk[2]["services"] == []
+    folk = _folk()
+    assert people.give_to_residents(folk, gives, {}, None) == ["p0"]             # nobody named: the first resident
+
+
+def test_a_work_stop_at_a_thing_the_network_does_not_reach_moves_beside_it(tmp_path):
+    ctx = _town()
+    W = walk.Walkable(ctx, comp=C.components(ctx["navs"], {}))
+    p = tmp_path / "p"
+    (p / "spaces" / "exterior").mkdir(parents=True)
+    walk.io.write_jsonl(p / "spaces" / "exterior" / "refs.jsonl",
+                        [{"id": "hist", "pos": [500.0, -150.0, 0.0]}, {"id": "forge", "pos": [150.0, 50.0, 0.0]}])
+    at = {"space": "exterior", "ref": "hist", "radius": 384}
+    walk.io.write_jsonl(p / "people.jsonl", [
+        {"id": "h", "work": dict(at), "routine": [{"kind": "work", "at": dict(at)}]},
+        {"id": "s", "work": {"space": "exterior", "ref": "forge", "radius": 384}}])
+    assert walk.stops("p", p, W, log=lambda *_: None) == 1
+    h, s = walk.io.read_jsonl(p / "people.jsonl")
+    assert "ref" not in h["work"] and W.on(h["work"]["pos"]) and h["routine"][0]["at"] == h["work"]
+    assert s["work"]["ref"] == "forge"                                           # a stop the network reaches is kept
+    assert walk.stops("p", p, W, log=lambda *_: None) == 0
+
+
+def test_an_arrival_under_the_mesh_is_put_at_its_height_where_it_is(tmp_path):
+    navs = {"main": _Nav("main", [(x, y) for x in range(4) for y in range(4)], 40.0)}
+    W = walk.Walkable({"navs": navs}, comp=C.components(navs, {}))
+    p = tmp_path / "p"
+    (p / "spaces" / "exterior").mkdir(parents=True)
+    (p / "spaces" / "hold").mkdir()
+    door = {"id": "d", "kind": "door", "pos": [150.0, -100.0, 0.0], "base": "x", "seat": {"mode": "ground"},
+            "door": {"to_space": "hold", "to_ref": "b", "arrival": [150.0, 150.0, 9.0]}}
+    walk.io.write_jsonl(p / "spaces" / "exterior" / "refs.jsonl", [door])
+    walk.io.write_jsonl(p / "spaces" / "hold" / "refs.jsonl",
+                        [{"id": "b", "kind": "door", "door": {"to_ref": "d", "to_pos": [150.0, 150.0, 9.0]}}])
+    assert walk.arrivals("p", p, W, {}, log=lambda *_: None) == 1
+    assert walk.io.read_jsonl(p / "spaces" / "exterior" / "refs.jsonl")[0]["door"]["arrival"] == [150.0, 150.0, 40.0]
+    assert walk.arrivals("p", p, W, {}, log=lambda *_: None) == 0
+
+
+def test_the_flights_and_the_mend_give_the_same_rows_from_the_same_inputs(monkeypatch):
+    bases = _docks(monkeypatch)
+    out = []
+    for _ in range(2):
+        low = {"id": "low", "base": "steps", "kind": "building", "pos": [1419.0, 2000.0, 94.0], "rot": [0.0, 0.0, 0.0],
+               "scale": 1.0, "seat": {"mode": "stilts", "dz": 94.0}}
+        rows = [dict(PIER), low]
+        walk.flush_steps(rows, bases, log=lambda *_: None)
+        ctx = _town()
+        W = walk.Walkable(ctx, comp=C.components(ctx["navs"], {}))
+        street = {"id": "s", "points": [[50.0, 50.0], [950.0, 50.0]]}
+        walk.mend(street, W)
+        out.append(json.dumps([rows, street], sort_keys=True))
+    assert out[0] == out[1]
+
+
 def test_a_plugin_is_found_where_the_game_loads_it(tmp_path):
     from tools.navmesh import meshes
     data, stack = tmp_path / "Data", tmp_path / "MO2"
