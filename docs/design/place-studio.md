@@ -306,8 +306,9 @@ GET  /api/place/<id>/saves                    [{save_id, name, at, rev, final, o
 GET  /api/place/<id>/saves/<save_id>          a save
 PUT  /api/place/<id>/saves/<save_id>          write a save {name, base, ops, rev}: rev is the rev the tab last read
                                               (0 for a new save); 200 {save_id, rev, at, kept}; 409 {error,
-                                              current:{rev, at, name}} when the save moved on since (another tab)
-                                              or is final. save_id: [a-z0-9][a-z0-9._-]*; "autosave" is the autosave
+                                              current:{rev, at, name}} when the save moved on since (another tab),
+                                              is final, or is being finalised (from the POST below until its chain
+                                              ends; a chain that failed leaves it open to change). save_id: [a-z0-9][a-z0-9._-]*; "autosave" is the autosave
 POST /api/place/<id>/finalise {save_id}       starts the chain; 202 {run_id}
 GET  /api/place/<id>/runs/<run_id>            {run_id, save_id, state: starting|running|done|failed, step, rc,
                                               log (tail), report (markdown, when done)} plus every
@@ -316,7 +317,9 @@ GET  /api/place/<id>/seat?x=&y=               ground height, water height, slope
 GET  /api/place/<id>/nav                      the built place's walking mesh (tools/places/navexport.py): the built
                                               plugin's navmesh, outside (with the world's round it) and per room.
                                               The studio finds people's routes on it (navroute.js), so a drawn
-                                              route is the way taken in the game; 404 before the first build
+                                              route is the way taken in the game: every point lies on the mesh,
+                                              and a stop that stands off it (a chair by a wall) is joined to the
+                                              mesh's nearest point; 404 before the first build
 GET  /api/place/<id>/notes                    the owner's notes for the agent, oldest first: [{id, at, text, things:
                                               [{id, space, base, name, kind, pos, src}], view: {space, at}, done,
                                               done_at, reply}]
@@ -364,7 +367,11 @@ when it has not been built, which the button then says. Nothing of the Atlas is 
 
 **Saves.** Writes are atomic. A named save is committed and pushed by path (`tooling/lane_commit.sh`) after each
 write, so it survives a stopped machine and a lost disk; the autosave goes to the private bucket at most once a
-minute.
+minute. Saves and notes are committed one at a time; a commit that fails (another commit in the tree at that
+moment, the network) is tried again after a wait, six times in all, and the finalise chain does the same with its
+own commits, so the server and the chain never fail each other. Notes are changed under a lock on the place's
+`edits/` folder, so the server and an agent's `notes done` never lose each other's change. Request bodies are
+capped by kind: a save 64 MB, a note 512 KB, a finalise 4 KB; the page's log line keeps its first 4,000 bytes.
 
 **Search** (`tools/places/search`): `python -m tools.places search build` embeds each catalogue base
 (`out/places/catalogue/bases.jsonl`) with bge-small-en-v1.5 (MIT; int8 ONNX on CPU, 34 MB in
@@ -401,14 +408,16 @@ a normal map), so a texture shared by many meshes is fetched once; the front end
 the light version: a mesh over 1,500 triangles simplified to the larger of 1,500 and a quarter. The GLB's
 `extras.argonia` holds `{level, tris, tris_full, shapes, textures, bounds, placeholder?, why?}`. A mesh that
 cannot be read is a magenta half-transparent box of the base's bounds with `placeholder: true` and the reason;
-nothing is dropped.
+nothing is dropped. When the fault is not the mesh's (the reader not built, out of time on a busy machine, the
+disk) the box also has `retry: true`, is served `no-store` and is not kept: the next request converts again.
 
 **Textures.** DDS (BC1 to BC7, uncompressed) to lossy WebP, halved to the largest power of two not over the
 requested size (64 to 2048); alpha kept on diffuse textures, dropped on normal maps and land textures.
 
 **Cache.** `out/places/assets/{mesh,tex,thumb}/`, each file keyed by the sha256 of its source bytes and the
-converter's version; atomic writes, one conversion per key at a time; least recently used files deleted above
-`ARGONIA_ASSET_CAP_MB` (default 4096). `python -m tools.places assets warm <bundle_id>...` converts everything the
+converter's version (the hash is worked out once per source file as it stands, so a request for something already
+converted reads no source); atomic writes, one conversion per key at a time; least recently used files deleted
+above `ARGONIA_ASSET_CAP_MB` (default 4096), the land set never. `python -m tools.places assets warm <bundle_id>...` converts everything the
 bundles use in parallel and writes `out/places/assets/reports/warm-<ids>.json` (placeholders and missing
 textures, each with its reason and users; counts, bytes, seconds).
 

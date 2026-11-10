@@ -9,6 +9,8 @@ nb: [n01, n12, n20, ...] (the triangle across each edge, -1 for none; cell seams
 world's round them; a room is its own. Positions are whole game units."""
 import argparse
 import json
+import os
+import threading
 from collections import defaultdict
 from pathlib import Path
 
@@ -59,21 +61,33 @@ def export(place_id: str, out: Path) -> Path:
     build = json.loads((out / "plugin" / "build.json").read_text())
     dst = out / "nav" / f"{place_id}.json"
     dst.parent.mkdir(parents=True, exist_ok=True)
-    tmp = dst.with_suffix(".tmp")
+    tmp = dst.with_name(f".{dst.name}.{os.getpid()}.{threading.get_ident()}.tmp")
     tmp.write_text(json.dumps({"esp_sha256": build.get("esp_sha256"), "spaces": spaces}, separators=(",", ":")))
     tmp.replace(dst)
     return dst
 
 
+_failed: dict[tuple[str, str], float] = {}   # (out, place) -> the build time whose export failed
+
+
 def current(place_id: str, out: Path) -> Path | None:
-    """The export for the plugin as it stands (made again when the plugin was rebuilt); None when the place is not built."""
+    """The export for the plugin as it stands (made again when the plugin was rebuilt); None when the place is not
+    built, or when this build's export failed (said once on stdout, and not tried again until the build changes)."""
     bj, plan = out / "plugin" / "build.json", out / "shards" / place_id / "plan.json"
     if not (bj.exists() and plan.exists() and (out / "plugin" / B.PLUGIN).exists()):
         return None
     dst = out / "nav" / f"{place_id}.json"
-    if dst.exists() and dst.stat().st_mtime >= max(bj.stat().st_mtime, plan.stat().st_mtime):
+    built = max(bj.stat().st_mtime, plan.stat().st_mtime)
+    if dst.exists() and dst.stat().st_mtime >= built:
         return dst
-    return export(place_id, out)
+    if _failed.get((str(out), place_id)) == built:
+        return None
+    try:
+        return export(place_id, out)
+    except Exception as e:  # noqa: BLE001  the studio then draws routes on our ground; the reason is on the log
+        print(f"navexport {place_id}: {type(e).__name__}: {e}"[:400], flush=True)
+        _failed[(str(out), place_id)] = built
+        return None
 
 
 def main(argv: list[str]) -> int:

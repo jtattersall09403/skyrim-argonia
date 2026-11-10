@@ -7,6 +7,7 @@ import asyncio
 import gzip
 import hashlib
 import json
+import math
 import mimetypes
 import os
 import time
@@ -28,6 +29,7 @@ WEB = Path(__file__).resolve().parent / "web"
 NO_COMPRESS = {".webp", ".png", ".jpg", ".jpeg", ".gz", ".br", ".zip", ".woff2", ".mp4"}
 RUN_ID = re.compile(r"^[a-z0-9][a-z0-9._-]{0,127}$")
 warnings.filterwarnings("ignore", category=web.NotAppKeyWarning)
+NOTE_BYTES = 512 * 1024   # a note: 4,000 characters of words and up to 200 things
 BUCKET = os.environ.get("STUDIO_BUCKET", "s3://argonia-private-050977237313/places/autosave")
 
 
@@ -51,6 +53,23 @@ def jok(data, status: int = 200, **kw) -> web.Response:
     r = web.json_response(data, status=status, dumps=lambda o: json.dumps(o, ensure_ascii=False), **kw)
     r.headers["Cache-Control"] = "no-store"
     return r
+
+
+async def body_capped(req: web.Request, limit: int) -> bytes:
+    """The request's body, refused with 413 once it runs past limit (the app's own cap is sized for a save)."""
+    buf = bytearray()
+    async for chunk in req.content.iter_chunked(65536):
+        buf += chunk
+        if len(buf) > limit:
+            raise web.HTTPRequestEntityTooLarge(max_size=limit, actual_size=len(buf))
+    return bytes(buf)
+
+
+async def json_capped(req: web.Request, limit: int):
+    try:
+        return json.loads(await body_capped(req, limit))
+    except ValueError:
+        raise web.HTTPBadRequest(reason="body is not JSON") from None
 
 
 def inside(base: Path, rel: str) -> Path | None:
@@ -169,6 +188,11 @@ async def bundle_file(req: web.Request) -> web.StreamResponse:
 
 # ---- assets and search -----------------------------------------------------------------------------------------
 
+def assets_retry() -> str:
+    from tools.places import assets
+    return assets.RETRY
+
+
 async def asset(req: web.Request, kind: str, args: tuple, cache: str = "public, max-age=86400"):
     """Lane A converts synchronously (a cold mesh is under a second), off the event loop."""
     try:
@@ -177,6 +201,8 @@ async def asset(req: web.Request, kind: str, args: tuple, cache: str = "public, 
         return jerr(404, str(e))
     if p is None or not p.exists():
         return jerr(404, f"no such {kind}")
+    if f".{assets_retry()}." in p.name:   # a stand-in for a conversion that will be tried again: never kept
+        cache = "no-store"
     return await send_file(req, p, cache=cache)
 
 
@@ -216,6 +242,9 @@ async def asset_tex(req: web.Request):
     try:
         f = await asyncio.get_running_loop().run_in_executor(None, links.asset, "tex", p, size)
     except FileNotFoundError:
+        f = None
+    except Exception as e:  # a texture the converter cannot read is logged here and drawn as the stand-in
+        print(f"texture {p}: {type(e).__name__}: {e}"[:300], flush=True)
         f = None
     if f is None or not f.exists():  # the profile lacks it: a neutral stand-in, marked, so the console stays clean
         return web.Response(body=missing_tex(), content_type="image/webp",
@@ -311,6 +340,9 @@ async def save_put(req: web.Request) -> web.Response:
         return jerr(400, "body must be a save object")
     locks = req.app["locks"]
     async with locks.setdefault(pid, asyncio.Lock()):
+        if finalising(req.app, pid, sid):
+            return jerr(409, "this save is being finalised, so it can no longer change; save under a new name",
+                        current={"final": True})
         try:
             save = req.app["saves"].write(pid, sid, body)
         except Conflict as c:
@@ -332,11 +364,13 @@ async def save_put(req: web.Request) -> web.Response:
 
 
 async def nav_get(req: web.Request) -> web.StreamResponse:
-    """The built place's walking mesh (tools/places/navexport.py), exported again when the plugin was rebuilt."""
+    """The built place's walking mesh (tools/places/navexport.py), exported again when the plugin was rebuilt (one
+    export at a time for a place: tabs that ask together wait on the same one)."""
     pid = req.match_info["place_id"]
     if not PLACE_ID.match(pid):
         return jerr(400, "bad place id")
-    p = await asyncio.get_running_loop().run_in_executor(None, navexport.current, pid, req.app["cfg"].out)
+    async with req.app["nav_locks"].setdefault(pid, asyncio.Lock()):
+        p = await asyncio.get_running_loop().run_in_executor(None, navexport.current, pid, req.app["cfg"].out)
     return await send_file(req, p) if p else jerr(404, "this place has not been built")
 
 
@@ -351,14 +385,14 @@ async def notes_get(req: web.Request) -> web.Response:
 async def notes_post(req: web.Request) -> web.Response:
     """Add a note ({text, things, view, save}), or close or reopen one ({id, done})."""
     pid, cfg = req.match_info["place_id"], req.app["cfg"]
+    body = await json_capped(req, NOTE_BYTES)
     try:
-        body = await req.json()
         if not isinstance(body, dict):
             raise ValueError("body must be a note")
         async with req.app["locks"].setdefault(pid, asyncio.Lock()):
             note = (notes.done(pid, str(body["id"]), places=cfg.places, undo=not body.get("done", True)) if body.get("id")
                     else notes.add(pid, body, cfg.places))
-    except ValueError as e:
+    except (ValueError, TypeError) as e:
         return jerr(400, str(e))
     p = notes.path(pid, cfg.places)
     if cfg.commit and p.is_relative_to(ROOT):
@@ -368,9 +402,16 @@ async def notes_post(req: web.Request) -> web.Response:
     return jok(note)
 
 
+COMMIT_TRIES, COMMIT_WAIT_S = 6, 5.0
+
+
 async def commit_worker(app: web.Application) -> None:
-    """Commit and push each named save by path, one at a time; a failure is logged and retried on the next save."""
+    """Commit and push each named save and the notes by path, one at a time. A commit that fails (the finalise
+    chain or an agent committing in the same tree at that moment, the network) is tried again after a wait, a few
+    times, then left for the next write of that file; a file another commit already carried is done."""
     q: asyncio.Queue = app["commit_q"]
+    tries: dict[str, int] = {}
+    loop = asyncio.get_running_loop()
     while True:
         rel, msg = await q.get()
         latest = {rel: msg}
@@ -383,8 +424,14 @@ async def commit_worker(app: web.Application) -> None:
                 stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.STDOUT)
             out, _ = await proc.communicate()
             print(f"commit {path}: rc={proc.returncode} {out.decode(errors='replace')[-300:]}", flush=True)
-            if proc.returncode == 0:
+            if proc.returncode == 0 or b"nothing to commit" in out:
                 app["pending"].pop(path, None)
+                tries.pop(path, None)
+            elif tries.get(path, 0) + 1 < COMMIT_TRIES:
+                tries[path] = tries.get(path, 0) + 1
+                loop.call_later(COMMIT_WAIT_S * tries[path], q.put_nowait, (path, m))
+            else:
+                tries.pop(path, None)
 
 
 async def bucket_worker(app: web.Application) -> None:
@@ -403,17 +450,35 @@ async def bucket_worker(app: web.Application) -> None:
 
 # ---- finalise and runs -----------------------------------------------------------------------------------------
 
+def finalising(app: web.Application, pid: str, sid: str) -> bool:
+    """True from the moment a save's finalise is accepted until its chain ends: the chain reads the save and writes
+    it back final, so a write in between would be lost. A chain that failed leaves the save open to change again."""
+    t = app["finalising"].get((pid, sid))
+    if t is None:
+        return False
+    job = app["cfg"].jobs / f"finalise.{pid}.{sid}"
+
+    def since(suffix: str) -> bool:   # the job's file of this run (an earlier run of the same save leaves older ones)
+        try:
+            return Path(f"{job}.{suffix}").stat().st_mtime >= t
+        except OSError:
+            return False
+    over = since("rc") or (time.time() - t > 120 and not since("pid"))   # ended, or never started
+    if over:
+        del app["finalising"][(pid, sid)]
+    return not over
+
+
 async def finalise(req: web.Request) -> web.Response:
     pid = req.match_info["place_id"]
-    try:
-        body = await req.json()
-    except ValueError:
-        return jerr(400, "body is not JSON")
-    sid = (body or {}).get("save_id", "")
-    if not PLACE_ID.match(pid) or not SAVE_ID.match(sid or "") or sid == AUTOSAVE:
+    body = await json_capped(req, 4096)
+    sid = body.get("save_id", "") if isinstance(body, dict) else ""
+    if not isinstance(sid, str) or not PLACE_ID.match(pid) or not SAVE_ID.match(sid) or sid == AUTOSAVE:
         return jerr(400, "finalise needs the save_id of a named save")
     if not req.app["saves"].read(pid, sid):
         return jerr(404, "no such save")
+    async with req.app["locks"].setdefault(pid, asyncio.Lock()):   # after any write of the save now in hand
+        req.app["finalising"][(pid, sid)] = time.time()
     # the save's own commit lands first: the chain commits the same file, and two commits of it at once collide
     rel = str(req.app["saves"].path(pid, sid).relative_to(ROOT)) if req.app["cfg"].commit else None
     for _ in range(120):
@@ -452,9 +517,13 @@ async def run_get(req: web.Request) -> web.Response:
 async def seat(req: web.Request) -> web.Response:
     cfg: Config = req.app["cfg"]
     pid = req.match_info["place_id"]
+    if not PLACE_ID.match(pid):
+        return jerr(400, "bad place id")
     try:
         x, y = float(req.query["x"]), float(req.query["y"])
     except (KeyError, ValueError):
+        return jerr(400, "x= and y= are required numbers")
+    if not (math.isfinite(x) and math.isfinite(y)):
         return jerr(400, "x= and y= are required numbers")
     try:
         r = await asyncio.get_running_loop().run_in_executor(None, links.seat_at, pid, x, y, cfg.out / "bundles",
@@ -474,7 +543,11 @@ async def heartbeat(req: web.Request) -> web.Response:
 async def client_log(req: web.Request) -> web.Response:
     """What the studio page reports about itself (load stages, errors, the device's graphics): one line each in
     out/places/studio-client.log, so a fault on the owner's tablet can be read here."""
-    body = (await req.read())[:4000].decode("utf-8", "replace")
+    try:   # the first 4,000 bytes; the rest is never read
+        head = await req.content.readexactly(4000)
+    except asyncio.IncompleteReadError as e:
+        head = e.partial
+    body = head.decode("utf-8", "replace")
     line = json.dumps({"at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()), "ua": req.headers.get("User-Agent", "")[:200],
                        "body": body}, ensure_ascii=False)
     log = req.app["cfg"].out / "studio-client.log"
@@ -578,7 +651,7 @@ def make_app(cfg: Config | None = None) -> web.Application:
     cfg = cfg or Config()
     app = web.Application(middlewares=[errors], client_max_size=64 * 1024 * 1024)
     app["cfg"], app["saves"] = cfg, Saves(cfg.places, cfg.out)
-    app["draft_locks"] = {}
+    app["draft_locks"], app["nav_locks"], app["finalising"] = {}, {}, {}
     app["locks"], app["pending"], app["bucket_q"] = {}, {}, {}
     app["commit_q"] = asyncio.Queue()
     app["sha"] = git_sha()

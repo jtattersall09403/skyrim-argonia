@@ -275,3 +275,79 @@ def test_draft_bundle_shows_the_committed_place_only(tmp_path, monkeypatch):
     subprocess.run(g + ["commit", "-qam", "c2"], check=True)
     r = db.build("fxd", places, bundles)
     assert r["rebuilt"] and r["key"] != k1 and db.jsonl(bundles / "draft.fxd" / "people.jsonl") == []
+
+
+def test_small_bodies_bad_ids_and_a_save_being_finalised(env, monkeypatch):
+    from tools.places.studio import links
+    monkeypatch.setattr(links, "run_start", lambda pid, sid: f"{pid}.{sid}")
+
+    async def body(c):
+        assert (await c.get("/api/place/..%2Fx/seat?x=1&y=2")).status in (400, 404)
+        assert (await c.get("/api/place/fxplace/seat?x=nan&y=2")).status == 400
+        r = await c.post("/api/place/fxplace/notes", json={"text": "reeds", "things": [{"id": "a", "pos": [1, None, 2]}]})
+        assert r.status == 200 and (await r.json())["things"] == [{"id": "a"}]
+        assert (await c.post("/api/place/fxplace/notes", json={"text": "x" * 600_000})).status == 413
+        assert (await c.post("/api/place/fxplace/notes", data=b"not json")).status == 400
+        assert (await c.post("/api/place/fxplace/finalise", json=["s"])).status == 400
+        assert (await c.post("/api/clientlog", data=b"x" * 100_000)).status == 204
+        assert len((env / "out" / "studio-client.log").read_text().splitlines()[-1]) < 5000
+        # from the moment finalise is accepted the save cannot change; a chain that ended leaves it as the chain left it
+        ops = [{"n": 1, "at": "t", "op": "ref.remove", "space": "exterior", "id": "r1", "before": {}}]
+        assert (await c.put("/api/place/fxplace/saves/to-finalise", json={"ops": ops, "rev": 0})).status == 200
+        assert (await c.post("/api/place/fxplace/finalise", json={"save_id": "to-finalise"})).status == 202
+        r = await c.put("/api/place/fxplace/saves/to-finalise", json={"ops": [], "rev": 1})
+        assert r.status == 409 and "finalised" in (await r.json())["error"]
+        (env / "jobs").mkdir(exist_ok=True)
+        (env / "jobs" / "finalise.fxplace.to-finalise.rc").write_text("1")   # the chain failed: the save is not final
+        assert (await c.put("/api/place/fxplace/saves/to-finalise", json={"ops": [], "rev": 1})).status == 200
+    run(env, body)
+
+
+def test_a_texture_that_cannot_be_read_is_the_stand_in(env, monkeypatch):
+    from tools.places.studio import links
+
+    def broken(kind, *a):
+        raise OSError("cannot identify image file")
+    monkeypatch.setattr(links, "asset", broken)
+
+    async def body(c):
+        r = await c.get("/api/asset/tex", params={"path": "textures/broken.dds"})
+        assert r.status == 200 and r.headers["X-Argonia-Missing"] == "1"
+    run(env, body)
+
+
+def test_a_failed_commit_is_tried_again(env, monkeypatch, tmp_path):
+    """The save's commit collides with another in the tree: the worker tries again and the save stops pending."""
+    from tools.places.studio import server
+    fake = tmp_path / "tooling" / "lane_commit.sh"
+    fake.parent.mkdir()
+    fake.write_text('#!/bin/sh\nn=$(cat "$0.n" 2>/dev/null || echo 0); echo $((n + 1)) > "$0.n"\n'
+                    '[ "$n" -ge 1 ] || { echo "index.lock: File exists"; exit 1; }\necho committed\n')
+    fake.chmod(0o755)
+    monkeypatch.setattr(server, "ROOT", tmp_path)
+    monkeypatch.setattr(server, "COMMIT_WAIT_S", 0.05)
+
+    async def body(c):
+        app = c.server.app
+        app["pending"]["a/b.json"] = True
+        await app["commit_q"].put(("a/b.json", "msg"))
+        for _ in range(200):
+            if not app["pending"]:
+                break
+            await asyncio.sleep(0.05)
+        assert not app["pending"] and (tmp_path / "tooling" / "lane_commit.sh.n").read_text().strip() == "2"
+    run(env, body)
+
+
+def test_a_nav_export_that_fails_is_tried_once_per_build(tmp_path, monkeypatch):
+    from tools.places import build, navexport
+    (tmp_path / "plugin").mkdir()
+    (tmp_path / "shards" / "p").mkdir(parents=True)
+    for f in (tmp_path / "plugin" / "build.json", tmp_path / "plugin" / build.PLUGIN, tmp_path / "shards" / "p" / "plan.json"):
+        f.write_text("{}")
+    calls = []
+    monkeypatch.setattr(navexport, "export", lambda pid, out: calls.append(pid) or (_ for _ in ()).throw(KeyError("cells")))
+    assert navexport.current("p", tmp_path) is None and navexport.current("p", tmp_path) is None and calls == ["p"]
+    import os
+    os.utime(tmp_path / "plugin" / "build.json", (time.time() + 5, time.time() + 5))   # a new build
+    assert navexport.current("p", tmp_path) is None and calls == ["p", "p"]

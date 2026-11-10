@@ -20,6 +20,7 @@ import shlex
 import signal
 import subprocess
 import sys
+import time
 from pathlib import Path
 
 from tools.places import edits
@@ -29,6 +30,7 @@ STEPS = ("record", "build", "learn", "report")
 BUILD_VERBS = ("seat", "build", "check")
 BUDGET_USD = 30.0   # the owner was told 1 to 2% of the weekly allowance per finalise (1% is about $19)
 MAX_TURNS = 60
+COMMIT_TRIES, COMMIT_WAIT_S = 4, 3.0   # the studio server commits saves and notes in this tree while the chain runs
 VENV_PY = Path.home() / ".argonia/venv/bin/python"
 PY = str(VENV_PY) if VENV_PY.exists() else sys.executable   # the project's interpreter, as the Makefile picks it
 
@@ -96,11 +98,17 @@ class Run:
         if lane.exists() and os.environ.get("FINALISE_PLAIN_COMMIT") != "1":
             # the owner's edits may put a file back as it once was or take a room's files away: both are deliberate
             # here, so the guard against a stale tree undoing recent work is told so
-            r = subprocess.run([str(lane), "-m", msg, "--", *rel], cwd=self.repo, capture_output=True, text=True,
-                               env=dict(os.environ, LANE_ALLOW_REVERT="1"))
-            self.log(r.stdout.strip() + r.stderr.strip())
-            if r.returncode:
-                raise RuntimeError(f"lane_commit failed: {r.stderr.strip() or r.stdout.strip()}")
+            # another commit in the tree at the same moment (the studio server's, of a note or a save) takes git's
+            # lock or carries these very files: wait and look again rather than fail the chain
+            for attempt in range(COMMIT_TRIES):
+                r = subprocess.run([str(lane), "-m", msg, "--", *rel], cwd=self.repo, capture_output=True, text=True,
+                                   env=dict(os.environ, LANE_ALLOW_REVERT="1"))
+                self.log(r.stdout.strip() + r.stderr.strip())
+                if r.returncode == 0 or not self.git("status", "--porcelain", "--", *rel):
+                    break
+                if attempt + 1 == COMMIT_TRIES:
+                    raise RuntimeError(f"lane_commit failed: {r.stderr.strip() or r.stdout.strip()}")
+                time.sleep(COMMIT_WAIT_S * (attempt + 1))
         else:
             self.git("add", "--", *rel)
             self.git("commit", "-q", "-m", msg + "\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>",
@@ -131,7 +139,9 @@ def step_record(run: Run) -> dict:
     crash_point("record")
     if not save.get("final"):
         save["final"] = True
-        run.save_path.write_text(json.dumps(save, indent=1) + "\n")
+        tmp = run.save_path.with_name(f".{run.save_path.name}.tmp")   # whole or not at all, as the studio wrote it
+        tmp.write_text(json.dumps(save, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
+        tmp.replace(run.save_path)
     sha = run.commit(f"{run.place_id}: the owner's edits recorded (save {run.save_id}, finalised)", [run.place])
     calls = [op.get("call", "fault") for op in save["ops"]]
     return {"status": "ok", "commit": sha or run.git("rev-parse", "HEAD"), "ops": len(calls),
@@ -207,6 +217,28 @@ def restore_from_head(path: Path) -> None:
         path.write_text(text)
 
 
+def _kept(run: Run) -> list[tuple[Path, Path]]:
+    return [(run.skill, run.dir / "skill.before"), (run.fixes, run.dir / "fixes.before")]
+
+
+def keep_texts(run: Run) -> None:
+    """Keep the skill and the fixes list as they stand before the lessons agent runs."""
+    for src, kept in _kept(run):
+        kept.unlink(missing_ok=True)
+        if src.exists():
+            kept.write_text(src.read_text())
+
+
+def put_back(run: Run) -> None:
+    """Put the skill and the fixes list back as they stood before the lessons agent ran (a run that did not
+    finish): as kept, so rows another agent added to the fixes list and has not committed yet stay."""
+    for src, kept in _kept(run):
+        if kept.exists():
+            src.write_text(kept.read_text())
+        elif src.exists():
+            restore_from_head(src)
+
+
 def step_learn(run: Run, budget: float, turns: int) -> dict:
     save = json.loads(run.save_path.read_text())
     if not any(op.get("call", "fault") == "fault" for op in save["ops"]):
@@ -215,8 +247,9 @@ def step_learn(run: Run, budget: float, turns: int) -> dict:
         return {"status": "did not run", "why": f"the place-build skill is not at {run.skill}"}
     started = run.dir / "learn.started"
     if started.exists():          # a killed run may have left a half-written skill
-        restore_from_head(run.skill)
-        restore_from_head(run.fixes) if run.fixes.exists() else None
+        put_back(run)
+    else:
+        keep_texts(run)
     started.write_text(now())
     with open(run.dir / "faults.jsonl", "w") as fh:
         for op in save["ops"]:
@@ -245,9 +278,7 @@ def step_learn(run: Run, budget: float, turns: int) -> dict:
     lessons_p = run.dir / "lessons.json"
     failed = rc != 0 or meta.get("is_error") or not lessons_p.exists()
     if failed:
-        restore_from_head(run.skill)
-        if run.fixes.exists():
-            restore_from_head(run.fixes)
+        put_back(run)
         why = ("it went over its budget" if "budget" in str(meta.get("subtype", "")) + err
                else "it ran out of turns" if "max_turns" in str(meta.get("subtype", ""))
                else "it stopped with an error" if rc != 0 or meta.get("is_error")
