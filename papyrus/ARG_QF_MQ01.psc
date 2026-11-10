@@ -40,11 +40,14 @@ Weapon Property ReedKnife Auto
 Quest Property NextQuest Auto
 ObjectReference Property FireMark Auto
 ObjectReference Property HoldDoor Auto
+ObjectReference[] Property Zones Auto ; every trigger zone of this quest (QuestKit fills it); disarmed by the ending
 
 ; The race guards (blocks.md): the choice (41, 42, 93) and the ending (90, 91, 93) each run once; check and set with no
 ; call between them.
 Bool choiceTaken = False
 Bool endTaken = False
+Bool started = False ; character creation runs once, even if the quest were ever started again
+Int marchWaits = 0
 
 Event OnInit()
 	; an update runs only in game mode, so the race menu opens once the hold around the marker is loaded
@@ -52,9 +55,17 @@ Event OnInit()
 EndEvent
 
 Event OnUpdate()
-	If !IsRunning() || GetStageDone(10)
+	If !IsRunning()
 		Return
 	EndIf
+	If GetStageDone(30) && !GetStageDone(32)
+		StartMarch()
+		Return
+	EndIf
+	If started || GetStageDone(10)
+		Return
+	EndIf
+	started = True
 	Actor player = Game.GetPlayer()
 	Game.ForceThirdPerson()
 	player.UnequipAll()
@@ -70,6 +81,34 @@ Event OnUpdate()
 	SetStage(10)
 EndEvent
 
+; The walk starts in front of the player (E-package, start rule): stage 32 is set once the five walkers' 3D is loaded
+; (the player has come out on the pier), checked once a second in game mode; after 60 checks it is set regardless.
+Function StartMarch()
+	marchWaits += 1
+	If marchWaits >= 60 || (WuleenMarch.GetRef().Is3DLoaded() && UxMarch.GetRef().Is3DLoaded() && DivesMarch.GetRef().Is3DLoaded() && FindsMarch.GetRef().Is3DLoaded() && Courier.GetRef().Is3DLoaded())
+		SetStage(32)
+	Else
+		RegisterForSingleUpdate(1.0)
+	EndIf
+EndFunction
+
+; A walker the player overtook is put at the fire before the strike (it happens where the player stands).
+Function AtFire(ReferenceAlias walker, Float dx, Float dy)
+	ObjectReference r = walker.GetRef()
+	If r.GetDistance(FireMark) > 400.0
+		r.MoveTo(FireMark, dx, dy)
+	EndIf
+EndFunction
+
+; Every zone of the quest off (the ending), so none can set a stage of the stopped quest.
+Function DisarmZones()
+	Int i = 0
+	While i < Zones.Length
+		Zones[i].Disable()
+		i += 1
+	EndWhile
+EndFunction
+
 ; Wuleen-Sei has read the roll (the answers are offered after it).
 Function ReadRoll()
 	RollRead.SetValue(1)
@@ -81,15 +120,6 @@ Function Answer()
 	SetStage(20)
 EndFunction
 
-; The gang's packages read the stage.
-Function March()
-	WuleenMarch.TryToEvaluatePackage()
-	UxMarch.TryToEvaluatePackage()
-	DivesMarch.TryToEvaluatePackage()
-	FindsMarch.TryToEvaluatePackage()
-	Courier.TryToEvaluatePackage()
-EndFunction
-
 ;BEGIN FRAGMENT Fragment_20
 Function Fragment_20() ; the answer: the stair door unlocked, E-stage
 	HoldDoor.Lock(False)
@@ -99,34 +129,44 @@ EndFunction
 ;END FRAGMENT
 
 ;BEGIN FRAGMENT Fragment_30
-Function Fragment_30() ; out of the hold (the door, TR-activate): the gang sets off along the dock, E-package
+Function Fragment_30() ; out of the hold (the door, TR-activate): the march copies on, the hold's people off (one of each
+	; person); the walk waits for the player on the pier (StartMarch)
+	MarchParent.Enable()
+	HoldParent.Disable()
+	CrewParent.Disable()
 	SetObjectiveCompleted(20)
 	SetObjectiveDisplayed(30)
-	March()
+	marchWaits = 0
+	RegisterForSingleUpdate(1.0)
 EndFunction
 ;END FRAGMENT
 
-;BEGIN FRAGMENT Fragment_35
-Function Fragment_35() ; the camp's edge (hidden): the gang at the fire before the player, E-move
-	WuleenMarch.GetRef().MoveTo(FireMark, 120.0, 60.0)
-	UxMarch.GetRef().MoveTo(FireMark, -120.0, 60.0)
-	DivesMarch.GetRef().MoveTo(FireMark, 100.0, -120.0)
-	FindsMarch.GetRef().MoveTo(FireMark, -100.0, -120.0)
-	Courier.GetRef().MoveTo(FireMark, 0.0, 160.0)
-	March()
+;BEGIN FRAGMENT Fragment_32
+Function Fragment_32() ; hidden: the walkers loaded with the player; the march package (gated 32 to 40) starts, E-package
+	HoldParent.Disable()
+	CrewParent.Disable()
+	WuleenMarch.GetActorRef().EvaluatePackage()
+	UxMarch.GetActorRef().EvaluatePackage()
+	DivesMarch.GetActorRef().EvaluatePackage()
+	FindsMarch.GetActorRef().EvaluatePackage()
+	Courier.GetActorRef().EvaluatePackage()
 EndFunction
 ;END FRAGMENT
 
 ;BEGIN FRAGMENT Fragment_10
-Function Fragment_10() ; E-enable (the camp, the march), E-stage
+Function Fragment_10() ; E-enable (the camp), E-stage
 	CampOrderly.Enable()
-	MarchParent.Enable()
 	SetObjectiveDisplayed(10)
 EndFunction
 ;END FRAGMENT
 
 ;BEGIN FRAGMENT Fragment_40
 Function Fragment_40() ; the strike: E-enable, the courier killed, E-move (the two witnesses), E-package (the leader goes)
+	AtFire(WuleenMarch, 120.0, 60.0)
+	AtFire(UxMarch, -120.0, 60.0)
+	AtFire(DivesMarch, 100.0, -120.0)
+	AtFire(FindsMarch, -100.0, -120.0)
+	AtFire(Courier, 0.0, 160.0)
 	CampAttacked.Enable()
 	CellParent.Enable()
 	CampOrderly.Disable()
@@ -136,13 +176,13 @@ Function Fragment_40() ; the strike: E-enable, the courier killed, E-move (the t
 	c.Kill(Leader.GetActorRef())
 	SalSei.GetRef().MoveTo(ShedMark)
 	DeeshDuun.GetRef().MoveTo(HutsMark)
-	Leader.TryToEvaluatePackage()
+	Leader.GetActorRef().EvaluatePackage()
 	SetObjectiveCompleted(30)
 	SetObjectiveDisplayed(40)
 EndFunction
 ;END FRAGMENT
 
-; The one not reached dies in the fire; the leader is gone; the cutters walk to the water's edge.
+; The one not reached dies in the fire; the leader is gone; the cutters stay at the shed until the ending disables them (CellParent).
 Function Choose(ReferenceAlias lost, ObjectReference otherZone, ReferenceAlias saved, Int objective)
 	Shore93Parent.Disable()
 	otherZone.Disable()
@@ -150,9 +190,7 @@ Function Choose(ReferenceAlias lost, ObjectReference otherZone, ReferenceAlias s
 	lost.Clear()
 	a.Kill()
 	Leader.GetRef().Disable()
-	Cutter1.TryToEvaluatePackage()
-	Cutter2.TryToEvaluatePackage()
-	saved.TryToEvaluatePackage()
+	saved.GetActorRef().EvaluatePackage()
 	SetObjectiveCompleted(40)
 	SetObjectiveDisplayed(objective)
 EndFunction
@@ -193,6 +231,7 @@ Function Ending(ReferenceAlias saved, Int objective)
 		saved.GetRef().MoveTo(ShoreMark)
 	EndIf
 	SetObjectiveCompleted(objective)
+	DisarmZones()
 	NextQuest.SetStage(10)
 	Stop()
 EndFunction

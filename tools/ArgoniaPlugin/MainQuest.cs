@@ -8,38 +8,40 @@ using Noggog;
 using static QuestKit;
 
 // The opening act's first two main quests (Phase 4 part C): MQ01 "No Name on the Work Roll" (the new game: the barge hold
-// at Lilmoth's dock, the march, the camp at Hereguard Plantation's paddy edge and the strike) and MQ03 "A Dead Prisoner's
+// at Lilmoth's dock, the march, the camp on the shore beside the dock and the strike) and MQ03 "A Dead Prisoner's
 // Use" (the camp at dawn, the Reed's house in Lilmoth, the dream in the empty hold), from quest.main.mq01 and
 // quest.main.mq03. Journal and objective text from the story data rows; the lines from story/data/quest_lines/mq01.json
 // and mq03.json. Every stage, trigger, condition and effect is a proven block's shape (docs/design/blocks.md); where the
 // record names a shape with no proven block, the re-authoring is named where it is built (and in Phase 4's Measured):
-// the three scenes (opening, strike, dream) have no written lines, so the march ends at a fire zone (10 -> 40), the strike
+// the three scenes (opening, strike, dream) have no written lines, so the march ends at a fire zone (32 -> 40), the strike
 // is stage 40's fragment, and the dream ends at a door zone (40 -> 45 -> 90/91 on the oath global).
 // MQ101's override starts ARG_MQ01 (Generate); ARG_Opening keeps its forms and never starts. Called after NightReed.
 static class MainQuest
 {
     static readonly FormKey World = K("23D689:Black Marsh.esm"), Lockpick = K("00000A:Skyrim.esm");
-    // Hosts (measured 2026-11-08 with `ArgoniaPlugin nightreed`): the barge hold and its navmesh (main deck z 7010); Lilmoth's
-    // Dock1 (1,-2) navmesh, the plank's foot at 5350,-7800; the camp cell (-1,0) navmesh at the paddy edge, deep water west
-    // of x -4400 (land -336 at -4608,1024; -1336 at -5120,1024); the Reed's house (BM&V's sinking cabin: no navmesh where
-    // the rooms are, a floor tilted 0.4 rad, top z = 7409 + (1301 - y) * 0.4228, read from its floor pieces).
+    // Hosts (measured with `plugin.sh inspect navpath` / `navnear`): the barge hold and its navmesh (main deck z 7010);
+    // Lilmoth's Dock1 (1,-2) navmesh 079823, the plank's foot at 5350,-7800 and, on the one mesh, the whole camp (the owner's
+    // ruling: the camp stands beside the dock, so the march and every route of the strike lie on one island); the Reed's
+    // house (BM&V's sinking cabin: no navmesh where the rooms are, a floor tilted 0.4 rad, top z = 7409 + (1301 - y) * 0.4228,
+    // read from its floor pieces).
     public static readonly FormKey HoldCell = K("0F9178:Black Marsh.esm"), HoldNav = K("0F9179:Black Marsh.esm"),
-        DockNav = K("079823:Black Marsh.esm"), CampNav = K("07990E:Black Marsh.esm"), HouseCell = K("0FE7F7:Black Marsh.esm"),
+        DockNav = K("079823:Black Marsh.esm"), HouseCell = K("0FE7F7:Black Marsh.esm"),
         HoldDoor = K("0F92EC:Black Marsh.esm"), HoldDoorFar = K("0F9399:Black Marsh.esm"), PierDoor = K("005AB4:Black Marsh.esm"), HouseDoorOut = K("0FE95A:Black Marsh.esm"), DaintySload = K("07B91A:Skyrim.esm"),
         Welcome = K("03B21E:Black Marsh.esm");
     public static readonly string[] Valenwood = ["0BCC51:Valenwood.esp", "0F0F3E:Valenwood.esp"];
     public static float HouseFloor(float y) => MathF.Round(7409 + (1301 - y) * 0.4228f);
-    // The camp's spots (x, y): the fire, the shed and the cutting at the far (north-east) end, the huts over the deep water
-    // to the west under the plank boards, the shore below (south), the water's edge where the cell came in (north-west).
-    public static readonly (float X, float Y) Fire = (-3750, 1300), Shed = (-3450, 1800), Cutting = (-3300, 1900), Huts1 = (-4500, 1450),
-        Huts2 = (-4550, 1050), Planks = (-4350, 1250), Trap = (-4600, 1150), Shore = (-4050, 650), WaterEdge = (-4080, 2000);
+    // The camp's spots (x, y): the fire, the shed and the cutting at the far (east) end, the huts over the water to the south
+    // west under the plank boards (Deesh-Duun's marker on the island at the huts' end), the shore end (the endings) to the
+    // west, the water's edge where the leader goes.
+    public static readonly (float X, float Y) Fire = (5900, -4700), Shed = (6150, -4450), Cutting = (6100, -4300), Huts1 = (4900, -5800),
+        Huts2 = (4750, -5900), HutsEnd = (4850, -5600), Planks = (4900, -5450), Trap = (4850, -5650), Shore = (4350, -4450), WaterEdge = (4500, -5150);
 
     // MQ01 alias ids.
     public const uint A1WuleenHold = 0, A1UxHold = 1, A1Buys = 2, A1Courier = 3, A1WuleenMarch = 4, A1UxMarch = 5, A1DivesMarch = 6,
         A1FindsMarch = 7, A1Sal = 8, A1Deesh = 9, A1Leader = 10, A1Cutter1 = 11, A1Cutter2 = 12, A1Ties = 13, A1ZoneFire = 14,
-        A1ZoneShed = 15, A1ZoneHuts = 16, A1Shore90 = 17, A1Shore91 = 18, A1Shore93 = 19, A1HoldDoor = 20, A1FireMark = 21, A1ZoneCamp = 22;
+        A1ZoneShed = 15, A1ZoneHuts = 16, A1Shore90 = 17, A1Shore91 = 18, A1Shore93 = 19, A1HoldDoor = 20, A1FireMark = 21, A1ShoreMark = 22;
     // MQ03 alias ids.
-    public const uint A3Officer = 0, A3Stranger = 1, A3Sap = 2, A3Nesh = 3, A3Salts = 4, A3Ties = 5, A3DoorZone = 6, A3Trap = 7;
+    public const uint A3Officer = 0, A3Stranger = 1, A3Sap = 2, A3Nesh = 3, A3Salts = 4, A3Ties = 5, A3DoorZone = 6, A3Trap = 7, A3HoldDoor = 8;
 
     public static Quest Mq01 = null!, Mq03 = null!;
     public static PlacedObject StartMarker = null!;
@@ -93,7 +95,8 @@ static class MainQuest
         var deesh = kit.Base("ARG_MQ01_DeeshDuun", "Deesh-Duun", "02A1EE:Black Marsh.esm", 5, U, Ai.Own);
         var ties = kit.Base("ARG_MQ01_TiesTheLoosePlank", "Ties-The-Loose-Plank", "02A1E6:Black Marsh.esm", 5, E | U, Ai.Own);
         var leader = kit.Base("ARG_MQ01_CutsTheOldKnot", "Cuts-the-Old-Knot", "160E6A:Black Marsh.esm", 20, U, Ai.Own);
-        var cutter = kit.Base("ARG_MQ01_RootCutter", "Root-Cutter", "00FF4D:Black Marsh.esm", 3, 0, Ai.Own, Aggression.Aggressive);
+        // unaggressive: no combat at the strike, so BM&V's talkers Hard-Scale and Rakhee-Tul to the north are neither attacked nor drawn in
+        var cutter = kit.Base("ARG_MQ01_RootCutter", "Root-Cutter", "00FF4D:Black Marsh.esm", 3, 0, Ai.Own);
         var root = kit.Faction("ARG_UnboundRoot", "Unbound Root", true);
         foreach (var n in new[] { leader, cutter }) n.Factions.Add(new RankPlacement { Faction = root.ToLink<IFactionGetter>(), Rank = 0 });
         foreach (var (rec, ids) in new (string, string[])[] {
@@ -158,35 +161,35 @@ static class MainQuest
         var divesMRef = kit.Actor("ARG_MQ01_DivesWithoutARopeMarchRef", divesM, kit.Snap(DockNav, 5400, -7880), marchParent);
         var findsMRef = kit.Actor("ARG_MQ01_FindsTheOtherBankMarchRef", findsM, kit.Snap(DockNav, 5250, -7900), marchParent);
 
-        // The camp (we.mq01.camp, .families, .cell), on BM&V's own navmesh 07990E; the dressing from BM&V's and vanilla
+        // The camp (we.mq01.camp, .families, .cell), on the dock's navmesh 079823; the dressing from BM&V's and vanilla
         // statics under three enable parents (orderly, attacked, aftermath; "standing" things are the opposite of aftermath).
-        var fireAt = kit.Snap(CampNav, Fire.X, Fire.Y);
+        var fireAt = kit.Snap(DockNav, Fire.X, Fire.Y);
         var orderly = kit.Marker("ARG_MQ01_CampOrderly", new P3Float(fireAt.X, fireAt.Y, fireAt.Z - 300), null, 0xC00);
         var attacked = kit.Marker("ARG_MQ01_CampAttacked", new P3Float(fireAt.X + 20, fireAt.Y, fireAt.Z - 300), null, 0xC00);
         var aftermath = kit.Marker("ARG_MQ01_CampAftermath", new P3Float(fireAt.X + 40, fireAt.Y, fireAt.Z - 300), null, 0xC00);
         var cellParent = kit.Marker("ARG_MQ01_CellParent", new P3Float(fireAt.X + 60, fireAt.Y, fireAt.Z - 300), null, 0xC00);
         var survivors = kit.Marker("ARG_MQ01_SurvivorsParent", new P3Float(fireAt.X + 80, fireAt.Y, fireAt.Z - 300), null, 0xC00);
         var shore93Parent = kit.Marker("ARG_MQ01_Shore93Parent", new P3Float(fireAt.X + 100, fireAt.Y, fireAt.Z - 300), null, 0x400);
-        var fireMark = kit.Marker("ARG_MQ01_FireMarker", kit.Snap(CampNav, Fire.X + 100, Fire.Y - 50));
-        var shedMark = kit.Marker("ARG_MQ01_ShedMarker", kit.Snap(CampNav, Shed.X, Shed.Y - 150));
-        var hutsMark = kit.Marker("ARG_MQ01_HutsMarker", new P3Float(Huts1.X, Huts1.Y, 10)); // in the huts over the deep water (no navmesh: entered from the water)
-        var shoreMark = kit.Marker("ARG_MQ01_ShoreMarker", kit.Snap(CampNav, Shore.X, Shore.Y));
-        var waterMark = kit.Marker("ARG_MQ01_WaterEdgeMarker", kit.Snap(CampNav, WaterEdge.X, WaterEdge.Y));
-        var salRef = kit.Actor("ARG_MQ01_SalSeiRef", sal, kit.Snap(CampNav, Fire.X + 60, Fire.Y + 150));
-        var deeshRef = kit.Actor("ARG_MQ01_DeeshDuunRef", deesh, kit.Snap(CampNav, Fire.X - 60, Fire.Y - 150));
-        var neshNeelRef = kit.Actor("ARG_MQ01_NeshNeelRef", neshNeel, kit.Snap(CampNav, Fire.X + 150, Fire.Y + 100), orderly);
-        var leaderRef = kit.Actor("ARG_MQ01_CutsTheOldKnotRef", leader, kit.Snap(CampNav, Fire.X - 150, Fire.Y + 120), cellParent);
-        var cutter1Ref = kit.Actor("ARG_MQ01_RootCutter1Ref", cutter, kit.Snap(CampNav, Shed.X + 50, Shed.Y - 200), cellParent);
-        var cutter2Ref = kit.Actor("ARG_MQ01_RootCutter2Ref", cutter, kit.Snap(CampNav, Shed.X - 80, Shed.Y - 220), cellParent);
-        var tiesRef = kit.Actor("ARG_MQ01_TiesTheLoosePlankRef", ties, kit.Snap(CampNav, Shore.X + 120, Shore.Y + 60));
+        var fireMark = kit.Marker("ARG_MQ01_FireMarker", kit.Snap(DockNav, Fire.X + 100, Fire.Y - 50));
+        var shedMark = kit.Marker("ARG_MQ01_ShedMarker", kit.Snap(DockNav, Shed.X, Shed.Y));
+        var hutsMark = kit.Marker("ARG_MQ01_HutsMarker", kit.Snap(DockNav, HutsEnd.X, HutsEnd.Y)); // on the island at the huts' end, so Deesh-Duun's follow starts on one mesh
+        var shoreMark = kit.Marker("ARG_MQ01_ShoreMarker", kit.Snap(DockNav, Shore.X, Shore.Y));
+        var waterMark = kit.Marker("ARG_MQ01_WaterEdgeMarker", kit.Snap(DockNav, WaterEdge.X, WaterEdge.Y));
+        var salRef = kit.Actor("ARG_MQ01_SalSeiRef", sal, kit.Snap(DockNav, Fire.X + 60, Fire.Y + 150));
+        var deeshRef = kit.Actor("ARG_MQ01_DeeshDuunRef", deesh, kit.Snap(DockNav, Fire.X - 60, Fire.Y - 150));
+        var neshNeelRef = kit.Actor("ARG_MQ01_NeshNeelRef", neshNeel, kit.Snap(DockNav, Fire.X + 150, Fire.Y + 100), orderly);
+        var leaderRef = kit.Actor("ARG_MQ01_CutsTheOldKnotRef", leader, kit.Snap(DockNav, Fire.X - 150, Fire.Y + 120), cellParent);
+        var cutter1Ref = kit.Actor("ARG_MQ01_RootCutter1Ref", cutter, kit.Snap(DockNav, Shed.X + 50, Shed.Y - 200), cellParent);
+        var cutter2Ref = kit.Actor("ARG_MQ01_RootCutter2Ref", cutter, kit.Snap(DockNav, Shed.X - 80, Shed.Y - 220), cellParent);
+        var tiesRef = kit.Actor("ARG_MQ01_TiesTheLoosePlankRef", ties, kit.Snap(DockNav, Shore.X + 120, Shore.Y + 60));
         tiesRef.MajorRecordFlagsRaw = 0xC00; // off until MQ01's endings (his own ref, outside the survivors parent)
         var survivorRefs = new[] { (risakka, 80f, -60f), (tsanji, -100f, 90f), (llarvi, 200f, 120f) }
-            .Select(g => kit.Actor($"ARG_MQ01_{g.Item1.EditorID![9..]}ShoreRef", g.Item1, kit.Snap(CampNav, Shore.X + g.Item2, Shore.Y + g.Item3), survivors)).ToList();
+            .Select(g => kit.Actor($"ARG_MQ01_{g.Item1.EditorID![9..]}ShoreRef", g.Item1, kit.Snap(DockNav, Shore.X + g.Item2, Shore.Y + g.Item3), survivors)).ToList();
         P3Float OnLand((float X, float Y) p, float dz = 0) => new(p.X, p.Y, MathF.Round(kit.Land(World, p.X, p.Y) + dz));
         var dressing = new List<PlacedObject>
         {
             kit.Marker("ARG_MQ01_Campfire", new P3Float(fireAt.X, fireAt.Y, fireAt.Z), K("035F49:Skyrim.esm"), 0x400, aftermath, opposite: true), // Campfire01Burning
-            kit.Marker("ARG_MQ01_Shed", OnLand(Shed), K("0A013F:Black Marsh.esm"), 0x400),                       // 01shed, the hatching shed (uxith); 01strawhut's HutExterior.nif is in no archive
+            kit.Marker("ARG_MQ01_Shed", OnLand((Shed.X + 60, Shed.Y + 60)), K("0A013F:Black Marsh.esm"), 0x400),                       // 01shed, the hatching shed (uxith); 01strawhut's HutExterior.nif is in no archive
             kit.Marker("ARG_MQ01_Cutting", OnLand(Cutting), K("1B32E5:Black Marsh.esm"), 0x400),                // 01swamptreecoolmoss, scaled down below
             kit.Marker("ARG_MQ01_Hut1", new P3Float(Huts1.X, Huts1.Y, 0), K("0AA5F0:Black Marsh.esm"), 0x400, aftermath, opposite: true), // 001Hut2
             kit.Marker("ARG_MQ01_Hut2", new P3Float(Huts2.X, Huts2.Y, 0), K("0AA5F2:Black Marsh.esm"), 0x400, aftermath, opposite: true), // 001hut3
@@ -196,53 +199,48 @@ static class MainQuest
             kit.Marker("ARG_MQ01_HutFire2", new P3Float(Huts2.X, Huts2.Y, 120), K("035F49:Skyrim.esm"), 0x400, attacked),
         };
         foreach (var (dx, dy) in new[] { (-40f, 0f), (30f, 30f), (10f, -40f) })
-            dressing.Add(kit.Marker($"ARG_MQ01_Egg{dressing.Count}", OnLand((Shed.X + dx, Shed.Y + dy), 5), K("17BF06:Black Marsh.esm"), 0x400)); // 01egg, the clutch
+            dressing.Add(kit.Marker($"ARG_MQ01_Egg{dressing.Count}", OnLand((Shed.X + 60 + dx, Shed.Y + 60 + dy), 5), K("17BF06:Black Marsh.esm"), 0x400)); // 01egg, the clutch
         dressing.Single(d => d.EditorID == "ARG_MQ01_Cutting").Scale = 0.15f;
         dressing.Single(d => d.EditorID == "ARG_MQ01_Planks").Placement!.Rotation = new P3Float(0, 0, MathF.PI / 2);
-        // Zones: the camp's edge (30 -> 35, hidden: the gang is put at the fire before the player arrives), the fire (the
-        // march's end, 35 -> 40), the shed (40 -> 41), the huts' water (40 -> 42), the shore's three boxes. The camp box
-        // holds the fire box, so any way in crosses it first.
-        var campZone = kit.Zone("ARG_MQ01_ZoneCamp", new P3Float(fireAt.X, fireAt.Y, fireAt.Z + 100), 30, 35, new P3Float(2500, 2500, 1500));
-        var fireZone = kit.Zone("ARG_MQ01_ZoneFire", new P3Float(fireAt.X, fireAt.Y, fireAt.Z + 100), 35, 40, new P3Float(300, 300, 200));
-        var shedZone = kit.Zone("ARG_MQ01_ZoneShed", new P3Float(Shed.X, Shed.Y - 100, kit.Land(World, Shed.X, Shed.Y) + 100), 40, 41, new P3Float(250, 250, 200));
-        var hutsZone = kit.Zone("ARG_MQ01_ZoneHuts", new P3Float(Huts1.X, Huts1.Y - 150, -100), 40, 42, new P3Float(300, 350, 250));
+        // Zones: the fire (the march's end, 32 -> 40), the shed (40 -> 41), the huts' water (40 -> 42), the shore's three boxes
+        // (41 -> 90, 42 -> 91, 40 -> 93). No two consecutive zones overlap (the kit refuses it).
+        var fireZone = kit.Zone("ARG_MQ01_ZoneFire", new P3Float(fireAt.X, fireAt.Y, fireAt.Z + 100), 32, 40, new P3Float(200, 200, 200));
+        var shedZone = kit.Zone("ARG_MQ01_ZoneShed", new P3Float(6250, -4300, kit.Land(World, 6250, -4300) + 100), 40, 41, new P3Float(175, 175, 200));
+        var hutsZone = kit.Zone("ARG_MQ01_ZoneHuts", new P3Float(4850, -5700, -100), 40, 42, new P3Float(300, 300, 250));
         var shoreAt = new P3Float(shoreMark.Placement!.Position.X, shoreMark.Placement.Position.Y, shoreMark.Placement.Position.Z + 100);
-        var shore90 = kit.Zone("ARG_MQ01_ZoneShore90", shoreAt, 41, 90, new P3Float(350, 350, 250));
-        var shore91 = kit.Zone("ARG_MQ01_ZoneShore91", shoreAt, 42, 91, new P3Float(350, 350, 250));
-        var shore93 = kit.Zone("ARG_MQ01_ZoneShore93", shoreAt, 40, 93, new P3Float(350, 350, 250), shore93Parent);
+        var shore90 = kit.Zone("ARG_MQ01_ZoneShore90", shoreAt, 41, 90, new P3Float(300, 300, 250));
+        var shore91 = kit.Zone("ARG_MQ01_ZoneShore91", shoreAt, 42, 91, new P3Float(300, 300, 250));
+        var shore93 = kit.Zone("ARG_MQ01_ZoneShore93", shoreAt, 40, 93, new P3Float(300, 300, 250), shore93Parent);
 
         // Packages on the aliases (E-package). BM&V's navmeshes carry no edge links (0 of 17,589 in Black Marsh.esm and
-        // Black Marsh North.esp; `plugin.sh inspect navstat`), so no one walks from one navmesh to another: the gang sets off
-        // along Dock1's own navmesh to its landward end (30 to 34) and is moved to the fire at the camp's edge zone (35,
-        // E-move), where it waits (35 to 39). The leader to the water's edge from 40, the cutters from 41 (they go and are
-        // disabled at the ending); the saved one follows the player on 41 or 42.
-        var dockEnd = kit.Marker("ARG_MQ01_DockEndMarker", kit.Snap(DockNav, 5340, -5000));
-        var march = kit.Travel("ARG_MQ01_MarchOff", dockEnd, 200, false, StageIs(q, CompareOperator.GreaterThanOrEqualTo, 30), StageIs(q, CompareOperator.LessThan, 35));
-        var atFire = kit.Travel("ARG_MQ01_WaitAtFire", fireMark, 300, false, StageIs(q, CompareOperator.GreaterThanOrEqualTo, 35), StageIs(q, CompareOperator.LessThan, 40));
-        var leave = kit.Travel("ARG_MQ01_LeaderLeaves", waterMark, 128, false, StageIs(q, CompareOperator.GreaterThanOrEqualTo, 40));
-        var cutLeave = kit.Travel("ARG_MQ01_CuttersLeave", waterMark, 200, false, StageIs(q, CompareOperator.GreaterThanOrEqualTo, 41));
-        var salFollow = kit.Follow("ARG_MQ01_SalSeiFollows", false, StageIs(q, CompareOperator.EqualTo, 41));
-        var deeshFollow = kit.Follow("ARG_MQ01_DeeshDuunFollows", false, StageIs(q, CompareOperator.EqualTo, 42));
+        // Black Marsh North.esp; `plugin.sh inspect navstat`), so no one walks from one navmesh to another: the camp stands on
+        // the dock's own mesh, and the gang walks from the plank's foot to the fire along it once the player has come out on
+        // the pier (stage 32, set when the five walkers are loaded). The leader to the water's edge from 40, the cutters stay at the shed
+        // until the ending disables them; the saved one follows the player on 41 or 42.
+        var march = kit.Travel("ARG_MQ01_MarchOff", fireMark, 200, StageIs(q, CompareOperator.GreaterThanOrEqualTo, 32), StageIs(q, CompareOperator.LessThan, 40));
+        var leave = kit.Travel("ARG_MQ01_LeaderLeaves", waterMark, 128, StageIs(q, CompareOperator.GreaterThanOrEqualTo, 40));
+        var salFollow = kit.Follow("ARG_MQ01_SalSeiFollows", StageIs(q, CompareOperator.EqualTo, 41));
+        var deeshFollow = kit.Follow("ARG_MQ01_DeeshDuunFollows", StageIs(q, CompareOperator.EqualTo, 42));
 
         kit.Header("No Name on the Work Roll", 60, Quest.TypeEnum.MainQuest, 0);
-        kit.FromRecord("quest.main.mq01", "ARG_QF_MQ01", hidden: [35], ends: [90, 91, 93]);
+        kit.FromRecord("quest.main.mq01", "ARG_QF_MQ01", ends: [90, 91, 93]);
         const QuestAlias.Flag AD = QuestAlias.Flag.AllowDisabled;
         kit.Forced(A1WuleenHold, "WuleenSei", wuleenRef.FormKey, AD | QuestAlias.Flag.Essential);
         kit.Forced(A1UxHold, "UxXeek", uxRef.FormKey, AD);
         kit.Forced(A1Buys, "BuysTheMonths", buysRef.FormKey, AD);
         var courierA = kit.Forced(A1Courier, "Courier", courierRef.FormKey, QuestAlias.Flag.Essential);
-        courierA.PackageData.Add(march.ToLink()); courierA.PackageData.Add(atFire.ToLink());
+        courierA.PackageData.Add(march.ToLink());
         foreach (var (id, name, r, f) in new[] { (A1WuleenMarch, "WuleenSeiMarch", wuleenMRef, AD | QuestAlias.Flag.Essential), (A1UxMarch, "UxXeekMarch", uxMRef, AD),
                      (A1DivesMarch, "DivesMarch", divesMRef, AD), (A1FindsMarch, "FindsMarch", findsMRef, AD) })
         {
             var a = kit.Forced(id, name, r.FormKey, f);
-            a.PackageData.Add(march.ToLink()); a.PackageData.Add(atFire.ToLink());
+            a.PackageData.Add(march.ToLink());
         }
         kit.Forced(A1Sal, "SalSei", salRef.FormKey, QuestAlias.Flag.Essential).PackageData.Add(salFollow.ToLink());
         kit.Forced(A1Deesh, "DeeshDuun", deeshRef.FormKey, QuestAlias.Flag.Essential).PackageData.Add(deeshFollow.ToLink());
         kit.Forced(A1Leader, "CutsTheOldKnot", leaderRef.FormKey, AD | QuestAlias.Flag.Protected).PackageData.Add(leave.ToLink());
-        kit.Forced(A1Cutter1, "RootCutter1", cutter1Ref.FormKey, AD).PackageData.Add(cutLeave.ToLink());
-        kit.Forced(A1Cutter2, "RootCutter2", cutter2Ref.FormKey, AD).PackageData.Add(cutLeave.ToLink());
+        kit.Forced(A1Cutter1, "RootCutter1", cutter1Ref.FormKey, AD); // stays at the shed until the ending disables it
+        kit.Forced(A1Cutter2, "RootCutter2", cutter2Ref.FormKey, AD);
         kit.Forced(A1Ties, "TiesTheLoosePlank", tiesRef.FormKey, AD);
         kit.Forced(A1ZoneFire, "ZoneFire", fireZone.FormKey);
         kit.Forced(A1ZoneShed, "ZoneShed", shedZone.FormKey, AD);
@@ -253,11 +251,16 @@ static class MainQuest
         // TR-activate on the hold's stair door (BlockTest's door shape): opening it once the answer is given sets 30.
         kit.Forced(A1HoldDoor, "HoldDoor", HoldDoor);
         kit.Forced(A1FireMark, "FireMarker", fireMark.FormKey);
-        kit.Forced(A1ZoneCamp, "ZoneCamp", campZone.FormKey);
+        kit.Forced(A1ShoreMark, "ShoreMarker", shoreMark.FormKey);
         q.VirtualMachineAdapter!.Aliases.Add(ActivateSets(kit, A1HoldDoor, 20, 30));
-        // Objective targets (the compass marker): Wuleen-Sei at 10, the stair door at 20, the camp's fire at 30.
-        foreach (var (o, a) in new[] { (10, A1WuleenHold), (20, A1HoldDoor), (30, A1FireMark) })
-            q.Objectives.Single(ob => ob.Index == o).Targets.Add(new QuestObjectiveTarget { AliasID = (int)a });
+        // Objective targets (the compass marker), from the record's target column: Wuleen-Sei at 10, the stair door at 20, the
+        // camp's fire at 30, the two at the strike (Sal-Sei, Deesh-Duun) at 40, the shore end at 41 and 42.
+        kit.TargetsFromRecord("quest.main.mq01", new()
+        {
+            ["npc.pirate-freeholds.opening-work-barge.npc-opening-overseer"] = [A1WuleenHold], ["ref.mq01.hold-door"] = [A1HoldDoor], ["ref.mq01.fire"] = [A1FireMark],
+            ["npc.pirate-freeholds.opening-work-camp.npc-opening-clutch-keeper"] = [A1Sal], ["npc.pirate-freeholds.opening-work-camp.npc-opening-witness"] = [A1Deesh],
+            ["mark.mq01.shore"] = [A1ShoreMark],
+        });
         q.VirtualMachineAdapter!.Scripts.Add(Script("ARG_QF_MQ01",
             Obj("StartMarker", StartMarker.FormKey), Obj("Tunic", K("03C9FE:Skyrim.esm")), Obj("Footwraps", K("03CA00:Skyrim.esm")),
             Obj("RollRead", rollRead.FormKey), Obj("Answered", answered.FormKey), Obj("SavedSal", savedSal.FormKey), Obj("SavedDeesh", savedDeesh.FormKey),
@@ -296,7 +299,7 @@ static class MainQuest
         world.TopCell!.Persistent.AddRange([brokerParent, marchParent, buysRef, courierRef, wuleenMRef, uxMRef, divesMRef, findsMRef,
             orderly, attacked, aftermath, cellParent, survivors, shore93Parent, fireMark, shedMark, hutsMark, shoreMark, waterMark,
             salRef, deeshRef, neshNeelRef, leaderRef, cutter1Ref, cutter2Ref, tiesRef, .. survivorRefs, .. dressing,
-            fireZone, shedZone, hutsZone, shore90, shore91, shore93, dockEnd, campZone]);
+            fireZone, shedZone, hutsZone, shore90, shore91, shore93]);
         // we.mq01.no-valenwood, we.mq01.no-welcome: Valenwood.esp's start-game quests and BM&V's greeting quest off at
         // the start; MQ03's ending starts them (Valenwood's two deferred there too: no first-entry trigger is a block).
         foreach (var k in Valenwood.Append(Welcome.ToString()))
@@ -307,6 +310,7 @@ static class MainQuest
             copy.Flags &= ~Quest.Flag.StartGameEnabled;
             if (!mod.Quests.Any(z => z.FormKey == key)) mod.Quests.Add(copy);
         }
+        kit.Finish();
         return new Mq01Parts(tiesRef, survivors, brokerParent, aftermath);
     }
 
@@ -350,16 +354,17 @@ static class MainQuest
         var declined = kit.Global("ARG_MQ03_ReedDeclined"); // flag.mq03.reed-declined
         var hist = mod.Globals.FirstOrDefault(g => g.EditorID == "ARG_HistHearing") as Global ?? kit.Global("ARG_HistHearing"); // grantHistStep (E-global)
 
-        // The camp at dawn: the jar-marks parent (sap, trap, picks) and the Reed's strangers on the shore.
+        // The camp at dawn, at MQ01's camp: the jar-marks parent (sap at the shed, the sunk fish-trap under the plank boards, the
+        // picks by the fire) and the Reed's strangers at the shore end, all on the dock's navmesh.
         var jarParent = kit.Marker("ARG_MQ03_JarParent", new P3Float(Shed.X, Shed.Y, kit.Land(World, Shed.X, Shed.Y) - 300), null, 0xC00);
         var reedParent = kit.Marker("ARG_MQ03_ReedParent", new P3Float(Shore.X, Shore.Y, kit.Land(World, Shore.X, Shore.Y) - 300), null, 0xC00);
         var sapRef = kit.Marker("ARG_MQ03_SpilledSapRef", new P3Float(Shed.X + 20, Shed.Y - 60, MathF.Round(kit.Land(World, Shed.X + 20, Shed.Y - 60) + 2)), sap.FormKey, 0x400, jarParent);
         var trapRef = kit.Marker("ARG_MQ03_FishTrapRef", new P3Float(Trap.X, Trap.Y, MathF.Round(kit.Land(World, Trap.X, Trap.Y) + 10)), trap.FormKey, 0x400, jarParent);
         trapRef.Lock = new LockData { Level = LockLevel.Novice };
-        var fireAt = kit.Snap(CampNav, Fire.X + 120, Fire.Y + 60);
+        var fireAt = kit.Snap(DockNav, Fire.X + 120, Fire.Y + 60);
         var picks = Enumerable.Range(0, 5).Select(i => kit.Marker($"ARG_MQ03_Lockpick{i + 1}", new P3Float(fireAt.X + 15 * i, fireAt.Y, MathF.Round(kit.Land(World, fireAt.X + 15 * i, fireAt.Y) + 30)), Lockpick, 0x400, jarParent)).ToList();
-        var officerRef = kit.Actor("ARG_MQ03_NeverWritesTwiceRef", officer, kit.Snap(CampNav, Shore.X + 100, Shore.Y - 50), reedParent);
-        var strangerRef = kit.Actor("ARG_MQ03_ReedStrangerRef", stranger, kit.Snap(CampNav, Shore.X + 160, Shore.Y - 10), reedParent);
+        var officerRef = kit.Actor("ARG_MQ03_NeverWritesTwiceRef", officer, kit.Snap(DockNav, Shore.X + 100, Shore.Y - 50), reedParent);
+        var strangerRef = kit.Actor("ARG_MQ03_ReedStrangerRef", stranger, kit.Snap(DockNav, Shore.X + 160, Shore.Y - 10), reedParent);
 
         // The house (we.mq03.house, .rooms): Nesh-Deeka and the mats in the back room, Salts-The-Catch at the outer door; on
         // the tilted floor (no navmesh where the rooms are: the actors are placed 10 units over the floor and settle).
@@ -390,7 +395,7 @@ static class MainQuest
         door.Lock.Key.SetTo(key.FormKey);
 
         kit.Header("A Dead Prisoner's Use", 60, Quest.TypeEnum.MainQuest, 0);
-        kit.FromRecord("quest.main.mq03", "ARG_QF_MQ03", hidden: [11, 45], ends: [90, 91]);
+        kit.FromRecord("quest.main.mq03", "ARG_QF_MQ03", ends: [90, 91]);
         const QuestAlias.Flag AD = QuestAlias.Flag.AllowDisabled;
         kit.Forced(A3Officer, "NeverWritesTwice", officerRef.FormKey, AD | QuestAlias.Flag.Essential);
         kit.Forced(A3Stranger, "Stranger", strangerRef.FormKey, AD | QuestAlias.Flag.Essential);
@@ -400,11 +405,11 @@ static class MainQuest
         kit.Forced(A3Ties, "TiesTheLoosePlank", m1.Ties.FormKey, AD);
         kit.Forced(A3DoorZone, "ZoneDoor", doorZone.FormKey);
         kit.Forced(A3Trap, "FishTrap", trapRef.FormKey, AD);
+        kit.Forced(A3HoldDoor, "HoldDoor", HoldDoor);
         var vm = q.VirtualMachineAdapter!;
-        // TR-activate: the taste (the alias set-stage script on activate, prereq 10) sets the hidden stage 11; TR-death: the
-        // officer's death moves 10 to 20, Nesh-Deeka's 20 to 40 (the record's fail-forwards).
+        // TR-activate: the taste (the alias set-stage script on activate, prereq 10) sets the hidden stage 11; TR-death:
+        // Nesh-Deeka's moves 20 to 40 (the record's fail-forward); the officer is Essential and cannot die.
         vm.Aliases.Add(ActivateSets(kit, A3Sap, 10, 11));
-        vm.Aliases.Add(DeathSets(kit, A3Officer, 10, 20));
         vm.Aliases.Add(DeathSets(kit, A3Nesh, 20, 40));
         vm.Scripts.Add(Script("ARG_QF_MQ03",
             Obj("JarParent", jarParent.FormKey), Obj("ReedParent", reedParent.FormKey), Obj("SurvivorsParent", m1.Survivors.FormKey),
@@ -412,7 +417,7 @@ static class MainQuest
             Obj("MatMark", matMark.FormKey), Obj("DreamMark", dreamMark.FormKey), Obj("HoldDoor", HoldDoor), Obj("HouseKey", key.FormKey),
             Obj("Phial", phial.FormKey), Obj("Gold001", Gold), Obj("VeiledReed", reed.FormKey), Obj("ReedSworn", sworn.FormKey),
             Obj("ReedDeclined", declined.FormKey), Obj("AttackTold", attackTold.FormKey), Obj("NightTold", nightTold.FormKey),
-            Obj("HistHearing", hist.FormKey), Alias("Ties", q, A3Ties),
+            Obj("HistHearing", hist.FormKey), Obj("HouseDoor", HouseDoorOut), Alias("Ties", q, A3Ties),
             new ScriptObjectListProperty { Name = "Deferred", Objects = Valenwood.Append(Welcome.ToString()).Where(k => mod.Quests.Any(z => z.FormKey == K(k)))
                 .Select(k => new ScriptObjectProperty { Object = new FormLink<ISkyrimMajorRecordGetter>(K(k)) }).ToExtendedList() }));
 
@@ -421,9 +426,13 @@ static class MainQuest
         const string Q = "(GetOwningQuest() as ARG_QF_MQ03)";
         var before20 = StageIs(q, CompareOperator.LessThan, 20);
         var at20 = StageIs(q, CompareOperator.EqualTo, 20);
+        // "where" is two INFOs, each exclusive of "ready" (a speaker's INFOs are tried in order, so all must not pass at once):
+        // the player has not tasted the sap, or holds neither the phial nor the tag.
+        var from10 = StageIs(q, CompareOperator.GreaterThanOrEqualTo, 10);
         kit.Record("MQ03", lines, "topic.mq03-the-boat", null, [IsId(officer)],
             ("ready", "GetOwningQuest().SetStage(20)", [before20.DeepCopy(), Done(q, 11), Or(Has(phial.FormKey, 1)), Has(tag.FormKey, 1)]),
-            ("where", null, [before20.DeepCopy(), StageIs(q, CompareOperator.GreaterThanOrEqualTo, 10)]));
+            ("where", null, [before20.DeepCopy(), from10.DeepCopy(), Not(Done(q, 11))]),
+            ("where", null, [before20.DeepCopy(), from10.DeepCopy(), Not(Has(phial.FormKey, 1)), Not(Has(tag.FormKey, 1))]));
         kit.Record("MQ03", lines, "topic.mq03-the-attack", null, [IsId(nesh)],
             ("phial-carried", $"{Q}.TellAttack(akSpeakerRef, True)", [at20.DeepCopy(), Has(phial.FormKey, 1)]),
             ("phial-none", $"{Q}.TellAttack(akSpeakerRef, False)", [at20.DeepCopy()]));
@@ -432,10 +441,18 @@ static class MainQuest
             ("words", $"{Q}.TellNight()", [at20.DeepCopy(), Speech(25)]),
             ("low", null, [at20.DeepCopy(), Speech(CompareOperator.LessThan, 25)]));
         kit.Record("MQ03", lines, "topic.mq03-the-offer", null, [IsId(nesh)], ("main", null, [at20.DeepCopy()]));
-        kit.Record("MQ03", lines, "topic.mq03-take-oath", null, [IsId(nesh)], ("main", $"{Q}.TakeOath()", [at20.DeepCopy(), Glob(attackTold, 1), Glob(nightTold, 1)]));
-        kit.Record("MQ03", lines, "topic.mq03-refuse-oath", null, [IsId(nesh)], ("main", "GetOwningQuest().SetStage(40)", [at20.DeepCopy(), Glob(attackTold, 1), Glob(nightTold, 1)]));
+        kit.Record("MQ03", lines, "topic.mq03-take-oath", null, [IsId(nesh)], ("main", $"{Q}.TakeOath()", [at20.DeepCopy(), Glob(attackTold, 1)]));
+        kit.Record("MQ03", lines, "topic.mq03-refuse-oath", null, [IsId(nesh)], ("main", "GetOwningQuest().SetStage(40)", [at20.DeepCopy(), Glob(attackTold, 1)]));
 
         world.TopCell!.Persistent.AddRange([jarParent, reedParent, sapRef, trapRef, .. picks, officerRef, strangerRef, door]);
+        // Objective targets, from the record's target column: the sap (10 and the phial), the fish-trap's tag, the officer,
+        // Nesh-Deeka, Ties, the hold's door.
+        kit.TargetsFromRecord("quest.main.mq03", new()
+        {
+            ["thing.mq03.jar-marks"] = [A3Sap], ["thing.mq03.courier-token"] = [A3Trap], ["npc.dunmer-north.stormhold.reed-officer"] = [A3Officer],
+            ["npc.nesh-deeka"] = [A3Nesh], ["npc.pirate-freeholds.opening-work-camp.n1"] = [A3Ties], ["thing.mq03.dream"] = [A3HoldDoor],
+        });
+        kit.Finish();
     }
 
     // After every quest is allocated (Generate's end): MQ03's endings start ARG_MQ04 at 10 when it is in the plugin.

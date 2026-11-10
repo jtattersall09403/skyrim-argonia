@@ -1,6 +1,17 @@
 Scriptname ARG_QF_BC02 extends Quest Hidden
 {BC02 One Out of the Smoke (quest.bc.bc02): stage fragments from Phase 3's proven shapes.}
 
+ObjectReference[] Property Zones Auto ; every trigger zone of this quest (QuestKit fills it); disarmed by the ending
+
+; Every zone of the quest off (the ending), so none can set a stage of the stopped quest.
+Function DisarmZones()
+	Int i = 0
+	While i < Zones.Length
+		Zones[i].Disable()
+		i += 1
+	EndWhile
+EndFunction
+
 ObjectReference Property SmokeParent Auto
 ObjectReference Property SpeakerParent Auto
 ObjectReference Property KillerParent Auto
@@ -70,6 +81,7 @@ EndFunction
 
 Function End(Int objective)
 	SmokeParent.Disable()
+	DisarmZones()
 	SetObjectiveCompleted(objective)
 	AchievementsQuest.IncSideQuests()
 	Stop()

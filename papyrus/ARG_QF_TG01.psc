@@ -1,6 +1,20 @@
 Scriptname ARG_QF_TG01 extends Quest Hidden
 {TG01 A Dry Hand in a Wet City (quest.tg.tg01): the stage fragments and the helpers its lines call. Shapes from Phase 3's blocks.}
 
+ObjectReference[] Property Zones Auto ; every trigger zone of this quest (QuestKit fills it); disarmed by the ending
+
+; Every zone of the quest off (the ending), so none can set a stage of the stopped quest.
+Function DisarmZones()
+	Int i = 0
+	While i < Zones.Length
+		Zones[i].Disable()
+		i += 1
+	EndWhile
+EndFunction
+
+; The race guard (blocks.md): one ending only; the check and the set have no call between them.
+Bool ended = False
+
 ReferenceAlias Property Tilts Auto
 ReferenceAlias Property Thief Auto
 ObjectReference Property RoundParent Auto
@@ -72,9 +86,14 @@ EndFunction
 
 ;BEGIN FRAGMENT Fragment_90
 Function Fragment_90() ; E-faction, TR-chain (TG02 at 20), the side quest's end
+	If ended
+		Return
+	EndIf
+	ended = True
 	Game.GetPlayer().SetFactionRank(Chapter, 0)
 	SetObjectiveCompleted(40)
 	NextQuest.SetStage(20)
+	DisarmZones()
 	AchievementsQuest.IncSideQuests()
 	Stop()
 EndFunction
@@ -82,9 +101,14 @@ EndFunction
 
 ;BEGIN FRAGMENT Fragment_91
 Function Fragment_91()
+	If ended
+		Return
+	EndIf
+	ended = True
 	Game.GetPlayer().SetFactionRank(Chapter, 0)
 	SetObjectiveCompleted(40)
 	NextQuest.SetStage(20)
+	DisarmZones()
 	AchievementsQuest.IncSideQuests()
 	Stop()
 EndFunction

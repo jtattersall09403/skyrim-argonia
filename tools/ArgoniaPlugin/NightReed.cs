@@ -153,10 +153,10 @@ static class NightReed
 
         // Packages: the thief's round on his alias (E-package by alias list), copies of vanilla's Gleda sandbox and sleep
         // with their schedules; the friend at the bench always.
-        var dayPack = k.Schedule("ARG_TG01_ThiefDay", "GledaSandboxEditorLocation512", dayMarker, 600, 6, 12 * 60, false);
-        var drinkPack = k.Schedule("ARG_TG01_ThiefEvening", "GledaSandboxEditorLocation512", drinkMarker, 250, 18, 5 * 60, false);
-        var sleepPack = k.Schedule("ARG_TG01_ThiefSleep", "GledaSleepEditorLoc24x8", sleepMarker, 300, 23, 7 * 60, false);
-        var friendPack = k.Schedule("ARG_TG01_FriendBench", "GledaSandboxEditorLocation512", drinkMarker, 250, -1, 0, false);
+        var dayPack = k.Schedule("ARG_TG01_ThiefDay", "GledaSandboxEditorLocation512", dayMarker, 600, 6, 12 * 60);
+        var drinkPack = k.Schedule("ARG_TG01_ThiefEvening", "GledaSandboxEditorLocation512", drinkMarker, 250, 18, 5 * 60);
+        var sleepPack = k.Schedule("ARG_TG01_ThiefSleep", "GledaSleepEditorLoc24x8", sleepMarker, 300, 23, 7 * 60);
+        var friendPack = k.Schedule("ARG_TG01_FriendBench", "GledaSandboxEditorLocation512", drinkMarker, 250, -1, 0);
 
         // The quest records, their topics and lines.
         Build1(k, t2, chapter, tilts, stabi, thief, friend, bent, necklace, tiltsRef, stabiRef, thiefRef, friendRef, bentRef, zone, p1, dayPack, drinkPack, sleepPack, friendPack);
@@ -247,6 +247,7 @@ static class NightReed
         k.Store(WrittenPath, "ARG_TG01_TopicWelcome", "Tilts-The-Jug sent me down.",
             ("You opened the trapdoor with your own hand. Then you are a Lookout of the Night-Reed Chapter. Stay; I have work.", "GetOwningQuest().SetStage(90)", [IsId(bent), k.StageIs(40)]),
             ("You opened the trapdoor with your own hand, though I hear the dock thief is dead. You are a Lookout of the Night-Reed Chapter all the same. Stay; I have work.", "GetOwningQuest().SetStage(91)", [IsId(bent), k.StageIs(41)]));
+        k.Finish();
     }
 
     static void Build2(QuestKit k, Faction chapter, Npc bent, Npc neeta, Npc okan, Npc dar, MiscItem figurine, Armor charm, Armor beads,
@@ -305,6 +306,7 @@ static class NightReed
             ("A new silver mount. He bought it outright, then. Fifty gold, and it comes home.", $"{Q}.SellBack(akSpeakerRef, 44)", [IsId(okan), k.StageIs(40), Has(charm.FormKey, 1), Speech(30)]));
         k.Store(WrittenPath, "ARG_TG02_TopicSellBeads", "These beads are Kothringi glass from the old cairns.",
             ("Keep your voice down. Fifty gold, and you never saw them.", $"{Q}.SellBack(akSpeakerRef, 45)", [IsId(dar), k.StageIs(40), Has(beads.FormKey, 1), Speech(30)]));
+        k.Finish();
     }
 
     // Writes the TIF fragment scripts the topics above use (the kit's, generated).

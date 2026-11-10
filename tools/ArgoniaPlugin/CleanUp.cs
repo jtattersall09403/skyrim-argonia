@@ -20,7 +20,7 @@ static class CleanUp
     public static IEnumerable<(string edit, string target, bool disable)> Targets() =>
         File.ReadLines(Path.Combine(Db, "world_edit_target.jsonl")).Where(l => l.Trim().Length > 0).Select(l => JsonDocument.Parse(l).RootElement)
             .Where(r => Edits.Contains(r.GetProperty("edit").GetString()))
-            .Select(r => (r.GetProperty("edit").GetString()!, r.GetProperty("target").GetString()!, r.GetProperty("what").GetString()!.StartsWith("disabled:")))
+            .Select(r => (r.GetProperty("edit").GetString()!, r.GetProperty("target").GetString()!, r.GetProperty("what").GetString()!.StartsWith("disabled")))
             .OrderBy(t => t.Item1).ThenBy(t => t.Item2);
 
     public static void Add(SkyrimMod mod, List<ISkyrimModGetter> mods)
@@ -44,7 +44,8 @@ static class CleanUp
                 if (mine == null)
                 {
                     mine = (IPlaced)src.DeepCopy();
-                    var cellKey = K(cellOf[target]);
+                    // bmv_placement lists people; a static's cell is read from the load order's last copy of it
+                    var cellKey = cellOf.TryGetValue(target, out var ck) ? K(ck) : CellOf(mods, key);
                     if (exterior.Contains(cellKey))
                     {
                         if ((mine.MajorRecordFlagsRaw & 0x400) != 0) world.TopCell!.Persistent.Add(mine);
@@ -82,6 +83,20 @@ static class CleanUp
     }
 
     static IPlaced? Existing(SkyrimMod mod, FormKey key) => Overrides.Placed(mod, key);
+
+    // The cell holding a placement in the last plugin that places it (exterior cells of every worldspace, then interiors).
+    static FormKey CellOf(List<ISkyrimModGetter> mods, FormKey key)
+    {
+        for (var i = mods.Count - 1; i >= 0; i--)
+        {
+            foreach (var w in mods[i].Worldspaces)
+                foreach (var c in w.SubCells.SelectMany(b => b.Items).SelectMany(s => s.Items))
+                    if (c.Persistent.Concat(c.Temporary).Any(r => r.FormKey == key)) return c.FormKey;
+            foreach (var c in mods[i].Cells.Records.SelectMany(b => b.SubBlocks).SelectMany(s => s.Cells))
+                if (c.Persistent.Concat(c.Temporary).Any(r => r.FormKey == key)) return c.FormKey;
+        }
+        throw new InvalidOperationException($"clean-up: no cell places {key}");
+    }
 
     // The cells of a worldspace across the load order (an exterior cell's override goes in its worldspace's blocks).
     public static HashSet<FormKey> ExteriorCells(List<ISkyrimModGetter> mods, FormKey ws) =>

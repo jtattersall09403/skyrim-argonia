@@ -46,6 +46,7 @@ EndFunction
 
 ; Three stages for one outcome: the check and the set have no call between them, so they are atomic (blocks.md).
 Bool claimsTaken = False
+Bool ended = False ; one ending only (90, 91 or 92)
 Bool salesTaken = False
 Function ClaimHeard()
 	If !claimsTaken && GetStageDone(21) && GetStageDone(22) && GetStageDone(23)
@@ -113,6 +114,10 @@ EndFunction
 
 ;BEGIN FRAGMENT Fragment_90
 Function Fragment_90()
+	If ended
+		Return
+	EndIf
+	ended = True
 	SetObjectiveCompleted(41)
 	SetObjectiveCompleted(42)
 	AchievementsQuest.IncSideQuests()
@@ -122,6 +127,10 @@ EndFunction
 
 ;BEGIN FRAGMENT Fragment_91
 Function Fragment_91() ; E-regard: Bent-Spine thinks better of the player
+	If ended
+		Return
+	EndIf
+	ended = True
 	SetObjectiveCompleted(41)
 	SetObjectiveCompleted(42)
 	BentSpine.GetActorRef().SetRelationshipRank(Game.GetPlayer(), 1)
@@ -132,6 +141,10 @@ EndFunction
 
 ;BEGIN FRAGMENT Fragment_92
 Function Fragment_92() ; the failed ending: the stage's Fail Quest log entry, then Stop()
+	If ended
+		Return
+	EndIf
+	ended = True
 	BentSpine.GetActorRef().SetRelationshipRank(Game.GetPlayer(), -1)
 	Stop()
 EndFunction

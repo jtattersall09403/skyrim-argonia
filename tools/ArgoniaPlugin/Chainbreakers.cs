@@ -98,16 +98,16 @@ static class Chainbreakers
         world.TopCell!.Persistent.AddRange([chest,debtorRef, stewardRef, .. menRefs, wait, home, zone]);
 
         kit.Forced(B1Patron, "Patron", patronRef.FormKey, QuestAlias.Flag.Essential).PackageData.Add(
-            kit.Schedule("ARG_BC01_PatronAtLanding", "GledaSandboxEditorLocation512", wait, 400, -1, 0, true, StageIs(q, CompareOperator.GreaterThanOrEqualTo, 10)).ToLink());
-        kit.Forced(B1Debtor, "Debtor", debtorRef.FormKey, QuestAlias.Flag.Essential).PackageData.Add(
-            kit.Schedule("ARG_BC01_DebtorFollow", "FollowPlayer", null, 0, -1, 0, true, StageIs(q, CompareOperator.EqualTo, 40)).ToLink());
+            kit.Schedule("ARG_BC01_PatronAtLanding", "GledaSandboxEditorLocation512", wait, 400, -1, 0, StageIs(q, CompareOperator.GreaterThanOrEqualTo, 10)).ToLink());
+        kit.Forced(B1Debtor, "Debtor", debtorRef.FormKey, QuestAlias.Flag.Protected).PackageData.Add(
+            kit.Schedule("ARG_BC01_DebtorFollow", "FollowPlayer", null, 0, -1, 0, StageIs(q, CompareOperator.EqualTo, 40)).ToLink());
         kit.Forced(B1Steward, "Steward", stewardRef.FormKey, QuestAlias.Flag.Protected);
         kit.Forced(B1Chest, "Chest", chest.FormKey);
         // The book goes into the chest by stage 10's fragment (E-item: Chest.AddItem), so it is absent before 10.
         q.VirtualMachineAdapter!.Scripts.Add(Script("ARG_QF_BC01", Alias("Patron", q, B1Patron), Alias("Debtor", q, B1Debtor), Alias("Chest", q, B1Chest),
                 Obj("DebtBook", book.FormKey), Obj("BlackroseMarker", home.FormKey), Obj("ChannelEndZone", zone.FormKey),
                 Obj("Gold001", Gold), Obj("ChainbreakersStanding", standing!.FormKey), Obj("AchievementsQuest", Achievements)));
-        q.VirtualMachineAdapter.Aliases.Add(DeathSets(kit, B1Patron, 10, 94));
+        // Never-Sold is Essential and cannot die (no death trigger); the debtor is Protected so her death sets 94
         q.VirtualMachineAdapter.Aliases.Add(DeathSets(kit, B1Debtor, 10, 94));
 
         var lines = QuestLines("bc01");
@@ -124,6 +124,7 @@ static class Chainbreakers
         kit.RecordV("BC01", lines, "topic.bc01-bring-down", isPatron, (90, [StageIs(q, CompareOperator.EqualTo, 10), Has(book.FormKey, 1)], null));
         // Rows-For-Another free of the book after either ending (90 the book brought down, 91 out by the channel).
         kit.Hello("ARG_BC01_AfterHello", (debtorRef.FormKey, After("bc01", "rows-for-another"), [90, 91]));
+        kit.Finish();
     }
 
     // BC02 (after BC01 at 90 or 91): Never-Sold's fire topic (0 -> 20: smoke and the three held enabled); Tsaxi's gate
@@ -177,16 +178,16 @@ static class Chainbreakers
         world.TopCell!.Persistent.AddRange([smokeParent, .. smoke, .. parents, .. heldRefs, keeperRef, keeper2Ref, inZone, .. outZones]);
 
         kit.Forced(B2Patron, "Patron", patronRef.FormKey, QuestAlias.Flag.Essential);
-        kit.Forced(B2Keeper, "GateKeeper", keeperRef.FormKey, QuestAlias.Flag.Essential);
+        kit.Forced(B2Keeper, "GateKeeper", keeperRef.FormKey, QuestAlias.Flag.Protected);
         for (var i = 0; i < 3; i++)
             kit.Forced(alias[i], key[i], heldRefs[i].FormKey, QuestAlias.Flag.Protected | QuestAlias.Flag.AllowDisabled).PackageData.Add(
-                kit.Schedule($"ARG_BC02_{key[i]}Follow", "FollowPlayer", null, 0, -1, 0, true, StageIs(q, CompareOperator.EqualTo, 31 + i)).ToLink());
+                kit.Schedule($"ARG_BC02_{key[i]}Follow", "FollowPlayer", null, 0, -1, 0, StageIs(q, CompareOperator.EqualTo, 31 + i)).ToLink());
         q.VirtualMachineAdapter!.Scripts.Add(Script("ARG_QF_BC02", Obj("SmokeParent", smokeParent.FormKey), Obj("SpeakerParent", parents[0].FormKey),
                 Obj("KillerParent", parents[1].FormKey), Obj("MotherParent", parents[2].FormKey),
                 Obj("ChainbreakersStanding", standing!.FormKey), Obj("AchievementsQuest", Achievements)));
         for (var i = 0; i < 3; i++) q.VirtualMachineAdapter.Aliases.Add(DeathSets(kit, alias[i], 30, 94));
         q.VirtualMachineAdapter.Aliases.Add(DeathSets(kit, B2Keeper, 20, 94));
-        q.VirtualMachineAdapter.Aliases.Add(DeathSets(kit, B2Patron, 20, 94));
+        // Never-Sold is Essential and cannot die (no death trigger); Tsaxi is Protected so her death sets 94
 
         var lines = QuestLines("bc02");
         kit.RecordV("BC02", lines, "topic.bc02-the-fire", IsId(patronRef.Base.FormKey),
@@ -206,6 +207,7 @@ static class Chainbreakers
         // The one brought out of the smoke greets the player after their own ending (91, 92 or 93).
         string[] writer = ["says-it-plain", "hides-in-reeds", "keeps-the-old-count"];
         kit.Hello("ARG_BC02_AfterHello", [.. Enumerable.Range(0, 3).Select(i => (heldRefs[i].FormKey, After("bc02", writer[i]), new[] { 91 + i }))]);
+        kit.Finish();
     }
 
     // BC03: Heavy-Rope's last-season topic (0 -> 10, once BC01 is at 90 or more); Ussa-Rekh's season topic opens the sides;
@@ -238,8 +240,8 @@ static class Chainbreakers
         chest.Owner.SetTo(ussa.FormKey);
         world.TopCell!.Persistent.AddRange([ussaRef, ropeRef, chest]);
 
-        kit.Forced(B3Ussa, "Broker", ussaRef.FormKey, QuestAlias.Flag.Essential);
-        kit.Forced(B3Rope, "CrewBoss", ropeRef.FormKey, QuestAlias.Flag.Essential);
+        kit.Forced(B3Ussa, "Broker", ussaRef.FormKey, QuestAlias.Flag.Protected);
+        kit.Forced(B3Rope, "CrewBoss", ropeRef.FormKey, QuestAlias.Flag.Protected);
         kit.Forced(B3Chest, "Chest", chest.FormKey);
         // F1: the tokens a Quest Object from stage 0, created in the chest by the alias (Bethesda's quest-item shape).
         q.Aliases.Add(new QuestAlias
@@ -272,6 +274,7 @@ static class Chainbreakers
             (91, [StageIs(q, CompareOperator.EqualTo, 30), Speech(CompareOperator.GreaterThanOrEqualTo, 30)], null),
             (null, [StageIs(q, CompareOperator.EqualTo, 30), Speech(CompareOperator.LessThan, 30)], "fail"));
         kit.RecordV("BC03", lines, "topic.bc03-yield-pay", isRope, (92, [StageIs(q, CompareOperator.EqualTo, 30), Has(Gold, 50)], null));
+        kit.Finish();
     }
 
     // The steward's book (item.bc01.debt-book, clue k2): every line true (fact.bc01.book-true, fact.bc01.boat-owing).

@@ -81,6 +81,7 @@ static class LocalQuests
         // Sei-Wan at the gate after the quest (the record's after-90 state): his greeting by ending, 91 or 92.
         kit.Hello("ARG_LQ30_AfterHello", (youthRef.FormKey, After("lq30", "sei-wan", "after91"), [91]),
             (youthRef.FormKey, After("lq30", "sei-wan", "after92"), [92]));
+        kit.Finish();
     }
 
     // LQ25 The River Monster: Okan-Zish's topic once MQ05 is at 40 (0 -> 20), the crocodile's death (20 -> 40), the
@@ -118,7 +119,7 @@ static class LocalQuests
         q.VirtualMachineAdapter!.Scripts.Add(Script("ARG_QF_LQ25", Alias("Steerer", q, L25Steerer), Alias("Captain", q, L25Captain), Obj("CrocParent", crocParent.FormKey),
             Obj("BaitBucket", bucket.FormKey), Obj("Gold001", Gold), Obj("AchievementsQuest", Achievements)));
         q.VirtualMachineAdapter.Aliases.Add(DeathSets(kit, L25Croc, 20, 40));
-        q.VirtualMachineAdapter.Aliases.Add(DeathSets(kit, L25Captain, 40, 93));
+        // the captain is vanilla's Essential base: he cannot die, so no death trigger (the kit refuses one)
 
         // C-stage on MQ05 (ARG_MQ05, the MQ05 lane's quest): gated when it is built in this plugin.
         var mq05 = mod.Quests.FirstOrDefault(x => x.EditorID == "ARG_MQ05");
@@ -129,5 +130,6 @@ static class LocalQuests
         kit.RecordV("LQ25", lines, "topic.lq25-the-beast", IsId(poler.FormKey), (20, open, null), (null, [StageIs(q, CompareOperator.EqualTo, 20)], null));
         kit.RecordV("LQ25", lines, "topic.lq25-tell-captain", IsRef(Captain), (91, [StageIs(q, CompareOperator.EqualTo, 40), C(hasBucket, CompareOperator.GreaterThanOrEqualTo, 1)], null));
         kit.RecordV("LQ25", lines, "topic.lq25-keep-quiet", IsId(steerer.FormKey), (92, [StageIs(q, CompareOperator.EqualTo, 40)], null));
+        kit.Finish();
     }
 }

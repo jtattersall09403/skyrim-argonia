@@ -22,8 +22,12 @@ GlobalVariable Property NightTold Auto
 GlobalVariable Property HistHearing Auto
 ReferenceAlias Property Ties Auto
 Quest[] Property Deferred Auto ; BM&V's greeting quest and Valenwood's start quests, held back until this quest ends
+ObjectReference Property HouseDoor Auto ; the Reed's house's outer door (locked to its key until the player is inside)
+ObjectReference[] Property Zones Auto ; every trigger zone of this quest (QuestKit fills it); disarmed by the ending
 Quest Property NextQuest Auto ; ARG_MQ04 when it is in the plugin, else None
 
+Bool houseTaken = False
+Bool dreamStarted = False
 Bool dreamTaken = False
 Bool endTaken = False
 
@@ -57,15 +61,21 @@ EndFunction
 ;BEGIN FRAGMENT Fragment_11
 Function Fragment_11() ; the taste (TR-activate); a phial with Alchemy 25 (C-skill, E-item)
 	Actor player = Game.GetPlayer()
+	SetObjectiveCompleted(10) ; the taste is the step; the phial is the optional part of it
 	If player.GetActorValue("Alchemy") >= 25 && player.GetItemCount(Phial) == 0
 		player.AddItem(Phial, 1)
-		SetObjectiveCompleted(10)
 	EndIf
 EndFunction
 ;END FRAGMENT
 
 ;BEGIN FRAGMENT Fragment_20
 Function Fragment_20() ; E-move (the player and Ties to the house), E-global (the Hist step), E-enable
+	Bool first = !houseTaken
+	houseTaken = True
+	If !first
+		Return
+	EndIf
+	HouseDoor.Lock(False) ; the house stays open from here, on every path (the sworn ending's key is a token)
 	Game.GetPlayer().MoveTo(HouseMark)
 	Ties.GetRef().MoveTo(MatMark)
 	If HistHearing.GetValue() < 1
@@ -83,6 +93,11 @@ EndFunction
 
 ;BEGIN FRAGMENT Fragment_40
 Function Fragment_40() ; the dream: E-enable, the hold door locked, E-move
+	Bool first = !dreamStarted
+	dreamStarted = True
+	If !first
+		Return
+	EndIf
 	DreamParent.Enable()
 	HoldDoor.Lock()
 	Game.GetPlayer().MoveTo(DreamMark)
@@ -123,8 +138,19 @@ Function Ending()
 		NextQuest.SetStage(10)
 	EndIf
 	SetObjectiveCompleted(40)
+	HouseDoor.Lock(False)
+	DisarmZones()
 	Stop()
 EndFunction
+; Every zone of the quest off (the ending), so none can set a stage of the stopped quest.
+Function DisarmZones()
+	Int i = 0
+	While i < Zones.Length
+		Zones[i].Disable()
+		i += 1
+	EndWhile
+EndFunction
+
 
 ;BEGIN FRAGMENT Fragment_90
 Function Fragment_90() ; e-sworn: E-faction, E-item (gold, the house key)

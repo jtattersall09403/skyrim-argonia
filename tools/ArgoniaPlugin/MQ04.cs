@@ -14,9 +14,10 @@ static class MQ04
     const string Herald = "npc.mercantile-coast.low-reed-village.root-herald", Minder = "npc.mercantile-coast.low-reed-village.chime-tuner",
         Egg = "npc.mercantile-coast.low-reed-village.egg-tender";
     public static readonly FormKey World = K("23D689:Black Marsh.esm"), VillageCell = K("03978F:Black Marsh.esm");
-    // Navmeshes: the village's raised ground (06EF98), its water edge (06EFDD), the north village (06EED1, 039791) and
-    // the camp's dry rise (07449F, 039793), read from Black Marsh.esm's cells.
-    public static readonly FormKey Raised = K("06EF98:Black Marsh.esm"), Edge = K("06EFDD:Black Marsh.esm"), North = K("06EED1:Black Marsh.esm"), Rise = K("07449F:Black Marsh.esm");
+    // Navmeshes, each the one that wins the load order (Black Marsh North.esp deleted Black Marsh.esm's village meshes and
+    // replaced them; `plugin.sh inspect navnear:<x>:<y>:100`): the village's raised ground and its water edge are one mesh
+    // (0C7102, cell 22,-4), the north village's is 0C7101 (22,-3), the camp's dry rise 07449F (039793, 22,-2).
+    public static readonly FormKey Raised = K("0C7102:Black Marsh North.esp"), Edge = Raised, North = K("0C7101:Black Marsh North.esp"), Rise = K("07449F:Black Marsh.esm");
     // Alias ids.
     public const uint AHerald = 0, AMinder = 1, AEgg = 2, AJars = 3, AZone30 = 4, AZone91 = 5, ACell1 = 6, ACell2 = 7;
     public static readonly int[] FragmentStages = [10, 20, 30, 40, 45, 91];
@@ -106,7 +107,7 @@ static class MQ04
         var village = k.Faction("LowReedVillage", "Low-Reed Village", false, "Low-Reed Village");
 
         // E-package: Pays-Late at the cut root after dark (C-time on the package), from stage 10 until the ending.
-        var night = k.Travel("PaysLateNight", mark, 64, true, Hour(CompareOperator.GreaterThanOrEqualTo, 20, or: true), Hour(CompareOperator.LessThan, 6),
+        var night = k.Travel("PaysLateNight", mark, 64, Hour(CompareOperator.GreaterThanOrEqualTo, 20, or: true), Hour(CompareOperator.LessThan, 6),
             k.StageIs(10, CompareOperator.GreaterThanOrEqualTo), k.StageIs(91, CompareOperator.LessThan));
 
         // TR-topic: the record's topics, each INFO gated on its speaker's base (GetIsID), the stage and its check.
@@ -160,5 +161,6 @@ static class MQ04
         var saltWorld = k.World(barrelWorld);
         saltWorld.TopCell!.Persistent.Add(k.Ref("SaltPile1", salt, new P3Float(barrelAt.X - 10, barrelAt.Y, MathF.Round(top + 3))));
         saltWorld.TopCell.Persistent.Add(k.Ref("SaltPile2", salt, new P3Float(barrelAt.X + 10, barrelAt.Y + 5, MathF.Round(top + 3))));
+        k.Finish();
     }
 }

@@ -13,7 +13,7 @@ using Noggog;
 //   base       Base (Ai.Template: looks and AI from the template; Ai.Own: looks only, our own AI data)
 //   packages   Travel, Follow, Schedule
 //   conditions C, OnPlayer, StageIs, Done, Glob, Or, Not, Speech, Has, HasOn, IsId, IsRef, Hour, Dead, Rank, Unseen
-//   scripts    Script, Obj, Alias, Int, AliasScript, Forced, DeathSets, AcquireSets, ActivateSets, OnDeath
+//   scripts    Script, Obj, Alias, Int, AliasScript, Forced, DeathSets, AcquireSets, ActivateSets, OnDeath, Target, Finish
 //   quest      Header, FromRecord, SetStages, StagesFromRecord, ObjectivesFromRecord
 //   dialogue   Gate, Banded, Topic, Record, RecordV, Store, Hello, Info; readers Rows, Lines, BandLines, Gates, Label,
 //              QuestLines, After, Written, StoreBand; WritePsc
@@ -23,6 +23,7 @@ sealed class QuestKit(SkyrimMod mod, List<ISkyrimModGetter> mods, Quest? q = nul
     public static FormLink<ISkyrimMajorRecordGetter> L(FormKey k) => new(k);
     public static readonly FormKey XMarker = K("00003B:Skyrim.esm"), PlayerRef = K("000014:Skyrim.esm"), Gold = K("00000F:Skyrim.esm"),
         TrigBase = K("099312:Skyrim.esm");
+    public SkyrimMod Mod => mod;
     public Quest Q => q ?? throw new InvalidOperationException("this kit has no quest");
 
     // ---- what the load order holds, read once for every kit
@@ -31,9 +32,9 @@ sealed class QuestKit(SkyrimMod mod, List<ISkyrimModGetter> mods, Quest? q = nul
         public readonly List<ISkyrimModGetter> Mods = mods;
         public readonly Dictionary<FormKey, (IPlacedGetter rec, ModKey from)> Placed = Survey.Winners<IPlacedGetter>(mods);
         public readonly Dictionary<FormKey, (INpcGetter rec, ModKey from)> Npcs = Survey.Winners<INpcGetter>(mods);
-        // The last navmesh of each id that carries its data (an override without data does not replace the geometry).
+        // The winning navmesh of each id: the last plugin in the load order that has it (one that deleted it carries no data).
         public readonly Dictionary<FormKey, (INavigationMeshGetter rec, ModKey from)> Nav = mods.SelectMany(m => m.EnumerateMajorRecords<INavigationMeshGetter>()
-            .Where(r => r.Data != null).Select(r => (r, m.ModKey))).GroupBy(e => e.r.FormKey).ToDictionary(g => g.Key, g => g.Last());
+            .Select(r => (r, m.ModKey))).GroupBy(e => e.r.FormKey).ToDictionary(g => g.Key, g => g.Last());
         public IPlacedObjectGetter? Trig;
     }
     static Data? loaded;
@@ -42,6 +43,8 @@ sealed class QuestKit(SkyrimMod mod, List<ISkyrimModGetter> mods, Quest? q = nul
     public Dictionary<FormKey, (INpcGetter rec, ModKey from)> Npcs => D.Npcs;
     // The triangles every kit has taken, so no two places stand on one triangle.
     static readonly HashSet<(FormKey, int)> used = [];
+    // The base of each placed actor a kit made or re-based, so a check can read the base of a ref the load order does not hold.
+    static readonly Dictionary<FormKey, FormKey> madeBase = [];
 
     // ---- story data (story/data/db, the one source)
     static readonly string Db = Path.Combine("story", "data", "db");
@@ -52,6 +55,10 @@ sealed class QuestKit(SkyrimMod mod, List<ISkyrimModGetter> mods, Quest? q = nul
     public static List<(int id, string journal, bool ending)> Stages(string quest) =>
         Rows("quest_stage").Where(r => Str(r, "quest_id") == quest)
             .Select(r => (int.Parse(r.GetProperty("id").ToString()), Str(r, "journal_text") ?? "", Str(r, "ending") != null)).OrderBy(s => s.Item1).ToList();
+    /// The record's hidden stages (quest_stage rows with hidden = 1 and no text): set by script, never in the journal.
+    public static HashSet<int> Hidden(string quest) =>
+        [.. Rows("quest_stage").Where(r => Str(r, "quest_id") == quest && r.TryGetProperty("hidden", out var h) && h.ValueKind == JsonValueKind.Number && h.GetInt32() == 1)
+            .Select(r => int.Parse(r.GetProperty("id").ToString()))];
     public static List<(int stage, string id, string text)> Objectives(string quest)
     {
         var byOrd = Rows("quest_stage").Where(r => Str(r, "quest_id") == quest)
@@ -166,7 +173,9 @@ sealed class QuestKit(SkyrimMod mod, List<ISkyrimModGetter> mods, Quest? q = nul
     // carries data; the used set is shared by every kit, so no two places in the plugin stand on one triangle.
     IEnumerable<(FormKey mesh, int i, P3Float p)> Triangles(FormKey mesh)
     {
-        var d = D.Nav[mesh].rec.Data!; var v = d.Vertices;
+        var (rec, from) = D.Nav.TryGetValue(mesh, out var w) ? w : throw new InvalidOperationException($"navmesh {mesh} is in no plugin of the load order");
+        var d = rec.Data ?? throw new InvalidOperationException($"navmesh {mesh}: the winner, {from.FileName}, carries no data (deleted); name the navmesh that replaced it (plugin.sh inspect navnear)");
+        var v = d.Vertices;
         return Enumerable.Range(0, d.Triangles.Count).Where(i => !used.Contains((mesh, i))).Select(i =>
         {
             var t = d.Triangles[i].Vertices; var a = v[t.X]; var b = v[t.Y]; var c = v[t.Z];
@@ -188,14 +197,14 @@ sealed class QuestKit(SkyrimMod mod, List<ISkyrimModGetter> mods, Quest? q = nul
     {
         var meshes = mods.SelectMany(m => m.EnumerateMajorRecords<ICellGetter>().Where(c => c.FormKey == K(cell)))
             .SelectMany(c => c.NavigationMeshes.Select(n => n.FormKey)).Distinct();
-        return Take(meshes.SelectMany(Triangles), p => (p.X - x) * (p.X - x) + (p.Y - y) * (p.Y - y));
+        return Take(meshes.Where(m => D.Nav.TryGetValue(m, out var w) && w.rec.Data != null).SelectMany(Triangles), p => (p.X - x) * (p.X - x) + (p.Y - y) * (p.Y - y));
     }
     /// The land's height under a spot of a worldspace.
     public float Land(FormKey world, float x, float y) => Surface.Land(mods, world, x, y) ?? throw new InvalidOperationException($"no land at {x},{y}");
     /// The navmeshes of a cell (exterior or interior), from the load order's winners.
     public List<FormKey> Meshes(FormKey cell) => D.Nav.Where(kv => kv.Value.rec.Data?.Parent is { } p
         && p.GetType().GetProperties().Any(pr => pr.GetValue(p) is IFormLinkGetter l && l.FormKey == cell)).Select(kv => kv.Key).ToList();
-    public INavigationMeshGetter Mesh(FormKey k) => D.Nav[k].rec;
+    public INavigationMeshGetter Mesh(FormKey k) => D.Nav[k].rec.Data != null ? D.Nav[k].rec : throw new InvalidOperationException($"navmesh {k}: the winner carries no data (deleted)");
     public P3Float Pos(FormKey key) => Placed[key].rec.Placement!.Position;
 
     static void Parent(IPlaced r, PlacedObject parent, bool opposite = false)
@@ -227,11 +236,15 @@ sealed class QuestKit(SkyrimMod mod, List<ISkyrimModGetter> mods, Quest? q = nul
         var r = new PlacedNpc(mod.GetNextFormKey(), SkyrimRelease.SkyrimSE)
         { EditorID = prefix + id, MajorRecordFlagsRaw = flags, Placement = new Placement { Position = p } };
         r.Base.SetTo(b.FormKey);
+        madeBase[r.FormKey] = b.FormKey;
         if (parent != null) Parent(r, parent);
         return r;
     }
+    // The zones this kit made for its quest (Finish binds them to the quest script and refuses overlapping consecutive ones).
+    readonly List<(PlacedObject z, int prereq, int stage, P3Float half)> zones = [];
     /// TR-zone: the vanilla set-stage box (defaultSetStageTrigScript, a prerequisite stage), 2 * half in each axis
-    /// (300 x 300 x 200 when none is given), optionally under an enable parent.
+    /// (300 x 300 x 200 when none is given), optionally under an enable parent. Recorded for the quest: Finish gives the
+    /// quest script every zone in its `Zones` array, which the endings disarm.
     public PlacedObject Zone(string id, P3Float p, int prereq, int stage, P3Float? half = null, PlacedObject? parent = null)
     {
         var trig = D.Trig ??= mods[0].EnumerateMajorRecords<IPlacedObjectGetter>().First(r => r.Base.FormKey == TrigBase && r.Primitive != null);
@@ -244,6 +257,7 @@ sealed class QuestKit(SkyrimMod mod, List<ISkyrimModGetter> mods, Quest? q = nul
         z.Primitive.Bounds = half ?? new P3Float(300, 300, 200);
         z.Base.SetTo(TrigBase);
         if (parent != null) Parent(z, parent);
+        zones.Add((z, prereq, stage, z.Primitive.Bounds));
         return z;
     }
     /// W-override: our copy of a winning placed door or container, persistent, locked (to a key when given).
@@ -272,7 +286,7 @@ sealed class QuestKit(SkyrimMod mod, List<ISkyrimModGetter> mods, Quest? q = nul
         if (existing == null && newBase == null && (src.MajorRecordFlagsRaw & 0x400) != 0) return;
         var r = existing ?? (PlacedNpc)src.DeepCopy();
         r.MajorRecordFlagsRaw |= 0x400;
-        if (newBase != null) r.Base.SetTo(newBase.FormKey);
+        if (newBase != null) { r.Base.SetTo(newBase.FormKey); madeBase[r.FormKey] = newBase.FormKey; }
         if (existing == null) world.TopCell!.Persistent.Add(r);
     }
     /// A quest item (MISC) with an existing model (never made art).
@@ -298,7 +312,6 @@ sealed class QuestKit(SkyrimMod mod, List<ISkyrimModGetter> mods, Quest? q = nul
 
     // ---- packages
     Package Duplicate(string from) => mods[0].Packages.First(p => p.EditorID == from).Duplicate(mod.GetNextFormKey());
-    void Owner(Package p, bool owner) { if (owner) p.OwnerQuest.SetTo(Q.FormKey); else p.OwnerQuest.Clear(); }
     static void Locate(Package p, PlacedObject at, int radius)
     {
         foreach (var d in p.Data.Values.OfType<PackageDataLocation>().Take(1))
@@ -308,20 +321,20 @@ sealed class QuestKit(SkyrimMod mod, List<ISkyrimModGetter> mods, Quest? q = nul
         }
     }
     /// E-package: the proven Travel package (a copy of vanilla DA06YamarzStage70PostForcegreet) to a marker, gated. The quest
-    /// owns it when `owner` is set.
-    public Package Travel(string id, PlacedObject to, int radius, bool owner, params ConditionFloat[] conds)
+    /// owns every package the kit makes.
+    public Package Travel(string id, PlacedObject to, int radius, params ConditionFloat[] conds)
     {
         var p = Duplicate("DA06YamarzStage70PostForcegreet");
-        p.EditorID = prefix + id; Owner(p, owner); p.Conditions.Clear(); p.Conditions.AddRange(conds);
+        p.EditorID = prefix + id; p.OwnerQuest.SetTo(Q.FormKey); p.Conditions.Clear(); p.Conditions.AddRange(conds);
         Locate(p, to, radius);
         mod.Packages.Add(p);
         return p;
     }
     /// E-package: follow the player (a copy of vanilla WERoad02Follow), gated.
-    public Package Follow(string id, bool owner, params ConditionFloat[] conds)
+    public Package Follow(string id, params ConditionFloat[] conds)
     {
         var p = Duplicate("WERoad02Follow");
-        p.EditorID = prefix + id; Owner(p, owner); p.Conditions.Clear(); p.Conditions.AddRange(conds);
+        p.EditorID = prefix + id; p.OwnerQuest.SetTo(Q.FormKey); p.Conditions.Clear(); p.Conditions.AddRange(conds);
         var t = p.Data.Values.OfType<PackageDataTarget>().First();
         var target = new PackageTargetSpecificReference(); target.Reference.SetTo(PlayerRef);
         t.Target = target;
@@ -330,10 +343,10 @@ sealed class QuestKit(SkyrimMod mod, List<ISkyrimModGetter> mods, Quest? q = nul
     }
     /// E-package: a copy of a named vanilla package on a schedule (hour -1: always), its location (when it has one and `at`
     /// is given) set to a marker, gated.
-    public Package Schedule(string id, string from, PlacedObject? at, int radius, sbyte hour, int minutes, bool owner, params ConditionFloat[] conds)
+    public Package Schedule(string id, string from, PlacedObject? at, int radius, sbyte hour, int minutes, params ConditionFloat[] conds)
     {
         var p = Duplicate(from);
-        p.EditorID = prefix + id; Owner(p, owner); p.Conditions.Clear(); p.Conditions.AddRange(conds);
+        p.EditorID = prefix + id; p.OwnerQuest.SetTo(Q.FormKey); p.Conditions.Clear(); p.Conditions.AddRange(conds);
         p.ScheduleHour = hour; p.ScheduleDurationInMinutes = minutes;
         if (at != null) Locate(p, at, radius);
         mod.Packages.Add(p);
@@ -352,15 +365,60 @@ sealed class QuestKit(SkyrimMod mod, List<ISkyrimModGetter> mods, Quest? q = nul
     public QuestFragmentAlias AliasScript(uint id, ScriptEntry s) { var f = new QuestFragmentAlias { Property = Alias("", id) }; f.Scripts.Add(s); return f; }
     public static ScriptEntry OnDeath(Quest q, int prereq, int set) =>
         Script("defaultSetStageOnDeathRefAlias", Obj("myQST", q.FormKey), Int("preReqStage", prereq), Int("StageToSet", set));
-    public static QuestFragmentAlias DeathSets(QuestKit k, uint id, int prereq, int stage) => k.AliasScript(id, OnDeath(k.Q, prereq, stage));
+    /// TR-death: the alias's death sets a stage. An Essential person cannot die, so an alias flagged Essential, or whose
+    /// forced ref has an Essential base, is refused.
+    public static QuestFragmentAlias DeathSets(QuestKit k, uint id, int prereq, int stage)
+    {
+        var a = k.Q.Aliases.Single(x => x.ID == id);
+        if (a.Flags is { } af && af.HasFlag(QuestAlias.Flag.Essential)) throw new InvalidOperationException($"{k.Q.EditorID}: alias {id} ({a.Name}) is Essential and cannot die; no death trigger");
+        var r = a.ForcedReference.FormKey;
+        var b = madeBase.TryGetValue(r, out var mb) ? mb : k.Placed.TryGetValue(r, out var p) && p.rec is IPlacedNpcGetter pn ? pn.Base.FormKey : default;
+        var flags = k.Mod.Npcs.FirstOrDefault(n => n.FormKey == b)?.Configuration.Flags ?? (k.Npcs.TryGetValue(b, out var n0) ? n0.rec.Configuration.Flags : 0);
+        if (b != default && flags.HasFlag(NpcConfiguration.Flag.Essential)) throw new InvalidOperationException($"{k.Q.EditorID}: alias {id} ({a.Name}) holds an Essential base ({b}); no death trigger");
+        return k.AliasScript(id, OnDeath(k.Q, prereq, stage));
+    }
     public static QuestFragmentAlias AcquireSets(QuestKit k, uint id, int prereq, int stage) =>
         k.AliasScript(id, Script("defaultSetStageOnPlayerAcquire", Obj("myQST", k.Q.FormKey), Int("preReqStage", prereq), Int("StageToSet", stage)));
     /// TR-activate: the alias's ref, once activated, sets a stage (defaultSetStageAliasScript, TriggerType 0).
     public static QuestFragmentAlias ActivateSets(QuestKit k, uint id, int prereq, int stage) =>
         k.AliasScript(id, Script("defaultSetStageAliasScript", Int("stage", stage), Int("prereqStageOPT", prereq), Int("TriggerType", 0)));
 
+    /// An objective's compass targets: the aliases it points at (the objective's index, the quest's alias ids).
+    public void Target(int objective, params uint[] aliasIds)
+    {
+        var o = Q.Objectives.SingleOrDefault(x => x.Index == objective) ?? throw new InvalidOperationException($"{Q.EditorID}: no objective {objective} to target");
+        foreach (var id in aliasIds)
+        {
+            if (!Q.Aliases.Any(x => x.ID == id)) throw new InvalidOperationException($"{Q.EditorID}: objective {objective} targets alias {id}, which the quest does not have");
+            o.Targets.Add(new QuestObjectiveTarget { AliasID = (int)id });
+        }
+    }
+    /// The last call of a builder's quest: Run Once; the quest script's `Zones` array bound to exactly the zones the kit made
+    /// for the quest (the endings disarm them); a warning for each objective without a target; and a refusal of two zones
+    /// that overlap when one's stage is the other's prerequisite (a walk through one would set the next at once).
+    public void Finish()
+    {
+        Q.Flags |= Quest.Flag.RunOnce;
+        if (zones.Count > 0)
+        {
+            var script = Q.VirtualMachineAdapter?.Scripts.SingleOrDefault(x => x.Name == Q.VirtualMachineAdapter.FileName)
+                ?? throw new InvalidOperationException($"{Q.EditorID}: no quest script to hold its Zones");
+            script.Properties.RemoveAll(p => p.Name == "Zones");
+            script.Properties.Add(new ScriptObjectListProperty { Name = "Zones", Objects = zones.Select(z => (ScriptObjectProperty)new ScriptObjectProperty { Object = L(z.z.FormKey) }).ToExtendedList() });
+        }
+        foreach (var a in zones) foreach (var b in zones)
+        {
+            if (a.z == b.z || a.stage != b.prereq) continue;
+            var pa = a.z.Placement!.Position; var pb = b.z.Placement!.Position;
+            if (MathF.Abs(pa.X - pb.X) < a.half.X + b.half.X && MathF.Abs(pa.Y - pb.Y) < a.half.Y + b.half.Y && MathF.Abs(pa.Z - pb.Z) < a.half.Z + b.half.Z)
+                throw new InvalidOperationException($"{Q.EditorID}: zone {a.z.EditorID} (sets {a.stage}) overlaps {b.z.EditorID} (needs {b.prereq}): one step would set the next");
+        }
+        foreach (var o in Q.Objectives.Where(o => o.Targets.Count == 0)) Console.WriteLine($"WARN no target: {Q.EditorID} {o.Index}");
+    }
+
     /// The quest's header: Main Quest (the act's line) or Side Quest, and its flags.
-    public void Header(string name, byte priority, Quest.TypeEnum type, Quest.Flag flags) { Q.Name = name; Q.Priority = priority; Q.Type = type; Q.Flags = flags; }
+    /// Every quest the kit sets up is Run Once (plus the flags the builder asks, Start Game Enabled).
+    public void Header(string name, byte priority, Quest.TypeEnum type, Quest.Flag flags) { Q.Name = name; Q.Priority = priority; Q.Type = type; Q.Flags = flags | Quest.Flag.RunOnce; }
     /// E-stage: the stages with their log entries (a null entry is a hidden stage), the stage 0 start-up, the objectives, and
     /// a script fragment for each stage in `fragments` (default: every stage but 0).
     public void SetStages((int s, string? log, QuestLogEntry.Flag flag)[] stages, (ushort i, string text)[] objectives, string script, IEnumerable<int>? fragments = null)
@@ -380,12 +438,12 @@ sealed class QuestKit(SkyrimMod mod, List<ISkyrimModGetter> mods, Quest? q = nul
     public void FromRecord(string quest, string script, int[]? stages = null, int[]? hidden = null, int[]? ends = null, IEnumerable<int>? fragments = null)
     {
         var rec = Stages(quest).ToDictionary(s => s.id);
-        int[] none = [];
+        var hid = hidden ?? [.. Hidden(quest)]; // the record's hidden stages unless the builder names others
         var list = new List<(int, string?, QuestLogEntry.Flag)> { (0, null, 0) };
-        foreach (var s in (stages ?? [.. rec.Keys]).Concat(hidden ?? none).OrderBy(s => s))
+        foreach (var s in (stages ?? [.. rec.Keys]).Union(hid).OrderBy(s => s))
         {
             var ending = ends != null ? ends.Contains(s) : rec.TryGetValue(s, out var r) && r.ending;
-            list.Add((s, (hidden ?? none).Contains(s) ? null : rec[s].journal, ending ? QuestLogEntry.Flag.CompleteQuest : 0));
+            list.Add((s, hid.Contains(s) ? null : rec[s].journal, ending ? QuestLogEntry.Flag.CompleteQuest : 0));
         }
         var objectives = new List<(ushort, string)>();
         foreach (var g in Objectives(quest).GroupBy(o => o.stage))
@@ -395,12 +453,32 @@ sealed class QuestKit(SkyrimMod mod, List<ISkyrimModGetter> mods, Quest? q = nul
         }
         SetStages([.. list], [.. objectives], script, fragments);
     }
+    /// The compass targets of the record's objectives (quest_objective.target, a comma list: either/or objectives point at each
+    /// of them): `aliases` maps each target id of the data to the quest alias ids that stand for it. A target id with no alias
+    /// is printed as a WARN and left out; an empty column is the builder's own Target call.
+    public void TargetsFromRecord(string quest, Dictionary<string, uint[]> aliases)
+    {
+        foreach (var g in Rows("quest_objective").Where(r => Str(r, "quest_id") == quest)
+                     .OrderBy(r => r.GetProperty("stages_ord").GetInt32()).ThenBy(r => r.GetProperty("ord").GetInt32()).GroupBy(r => r.GetProperty("stages_ord").GetInt32()))
+        {
+            var stage = Stages(quest).Select(x => x.id).ToList();
+            var byOrd = Rows("quest_stage").Where(r => Str(r, "quest_id") == quest).ToDictionary(r => r.GetProperty("ord").GetInt32(), r => int.Parse(r.GetProperty("id").ToString()));
+            var i = byOrd[g.Key];
+            foreach (var o in g)
+            {
+                foreach (var id in (Str(o, "target") ?? "").Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries))
+                    if (aliases.TryGetValue(id, out var a)) Target(i, a); else Console.WriteLine($"WARN no alias for target {id}: {Q.EditorID} objective {i}");
+                i++;
+            }
+        }
+    }
     /// E-stage: the record's stages with their journal text, the completing ones flagged; an empty start-up stage 0.
     public void StagesFromRecord(string quest, string fragScript, IEnumerable<int> fragmentStages)
     {
         Q.Stages.Add(new QuestStage { Index = 0, Flags = QuestStage.Flag.StartUpStage, LogEntries = { new QuestLogEntry { Flags = 0 } } });
+        var hid = Hidden(quest);
         foreach (var (id, journal, ending) in Stages(quest))
-            Q.Stages.Add(new QuestStage { Index = (ushort)id, LogEntries = { new QuestLogEntry { Flags = ending ? QuestLogEntry.Flag.CompleteQuest : 0, Entry = journal } } });
+            Q.Stages.Add(new QuestStage { Index = (ushort)id, LogEntries = { new QuestLogEntry { Flags = ending ? QuestLogEntry.Flag.CompleteQuest : 0, Entry = hid.Contains(id) ? null : journal } } });
         Q.VirtualMachineAdapter ??= new QuestAdapter();
         Q.VirtualMachineAdapter.FileName = fragScript;
         foreach (var s in fragmentStages)
@@ -442,23 +520,22 @@ sealed class QuestKit(SkyrimMod mod, List<ISkyrimModGetter> mods, Quest? q = nul
     public sealed record Said(string? Prompt, List<string> Lines, Func<string, List<string>?> Band);
     /// One gate of a topic with its wording bands: the warm band on GetRelationshipRank with the player >= 1, the cool < 0, and
     /// the default with the complement, so they are exclusive by condition; each band INFO carries the same gates and the same
-    /// fragment (no new script). Returned in topic order, the bands then the default. The INFO form ids are allocated bands
-    /// first (`bandsFirst`) or the default first.
-    public List<DialogResponses> Gate(Said said, string? tif, ScriptProperty[] props, ConditionFloat[] conds, bool bandsFirst)
+    /// fragment (no new script). Returned in topic order, the bands then the default; the INFO form ids are allocated in
+    /// that order.
+    public List<DialogResponses> Gate(Said said, string? tif, ScriptProperty[] props, ConditionFloat[] conds)
     {
         var present = Bands.Select(b => (b.band, b.op, b.v, text: said.Band(b.band))).Where(b => b.text != null).ToList();
         var rest = conds.ToList();
         foreach (var b in present) rest.Add(Rank(b.band == "high" ? CompareOperator.LessThan : CompareOperator.GreaterThanOrEqualTo, b.band == "high" ? 1 : 0));
-        DialogResponses? def = bandsFirst ? null : Make(said.Lines, tif, props, [.. rest], said.Prompt);
         var infos = new List<DialogResponses>();
         foreach (var b in present)
             infos.Add(Make(b.text!, tif, [.. props.Select(p => (ScriptProperty)p.DeepCopy())], [.. conds.Select(c => c.DeepCopy()), Rank(b.op, b.v)], said.Prompt));
-        infos.Add(def ?? Make(said.Lines, tif, props, [.. rest], said.Prompt));
+        infos.Add(Make(said.Lines, tif, props, [.. rest], said.Prompt));
         return infos;
     }
     /// A gate of the db rows (dialogue_line) with its wording bands, bands first.
     public DialogResponses[] Banded(string topic, string speaker, string gate, string? tif, ScriptProperty[] props, params ConditionFloat[] conds) =>
-        [.. Gate(new Said(null, Lines(topic, speaker, gate), b => BandLines(topic, speaker, gate, b) is { Count: > 0 } l ? l : null), tif, props, conds, true)];
+        [.. Gate(new Said(null, Lines(topic, speaker, gate), b => BandLines(topic, speaker, gate, b) is { Count: > 0 } l ? l : null), tif, props, conds)];
     public DialogResponses[] Banded(string topic, string speaker, string gate, string? tif, params ConditionFloat[] conds) => Banded(topic, speaker, gate, tif, [], conds);
 
     DialogTopic Open(string branchId, string topicId, string prompt, DialogBranch? under)
@@ -502,7 +579,7 @@ sealed class QuestKit(SkyrimMod mod, List<ISkyrimModGetter> mods, Quest? q = nul
                 $"Scriptname {script} extends TopicInfo Hidden\n{{{note}}}\n\n;BEGIN FRAGMENT Fragment_0\nFunction Fragment_0(ObjectReference akSpeakerRef)\n\t{body}\nEndFunction\n;END FRAGMENT\n");
     }
 
-    DialogTopic Build(string id, string key, string prompt, Gt[] gates, Func<int, Gt, Said> said, bool bandsFirst, ConditionFloat[] speaker, DialogBranch? under)
+    DialogTopic Build(string id, string key, string prompt, Gt[] gates, Func<int, Gt, Said> said, ConditionFloat[] speaker, DialogBranch? under)
     {
         var t = Open(id + "Branch", id, prompt, under);
         var n = 0;
@@ -511,7 +588,7 @@ sealed class QuestKit(SkyrimMod mod, List<ISkyrimModGetter> mods, Quest? q = nul
             var s = said(n, g);
             var tif = g.Tif?.Replace("{id}", id).Replace("{n}", n.ToString());
             if (tif != null && g.Body != null) tifs.Add((tif, g.Body, TifNote));
-            t.Responses.AddRange(Gate(s with { Prompt = s.Prompt ?? prompt }, tif, [], [.. speaker.Select(c => c.DeepCopy()), .. g.Conds], bandsFirst));
+            t.Responses.AddRange(Gate(s with { Prompt = s.Prompt ?? prompt }, tif, [], [.. speaker.Select(c => c.DeepCopy()), .. g.Conds]));
             OnLine?.Invoke(new LineInfo(id, key, n, g.Variant, s.Prompt ?? prompt, [.. s.Lines], tif, g.Body));
             n++;
         }
@@ -534,12 +611,12 @@ sealed class QuestKit(SkyrimMod mod, List<ISkyrimModGetter> mods, Quest? q = nul
     /// TR-topic from a quest_lines record topic (MainQuest's): one top-level player topic, one gate per (variant, Papyrus body
     /// of its fragment TIF_<topic id>_<n>, conditions), each gated on the speaker. The topic joins `under`'s branch when given
     /// (a choice: offered only by an INFO's Link To, Skyrim's question-and-answer pairs). The topic and its branch are
-    /// allocated first, then each gate's default INFO and then its bands.
+    /// allocated first, then each gate's bands and then its default INFO.
     public DialogTopic Record(string code, JsonElement lines, string topic, DialogBranch? under, ConditionFloat[] speaker, params (string variant, string? body, ConditionFloat[] conds)[] infos)
     {
         var t0 = lines.GetProperty(topic);
         return Build(TopicId(code, topic), topic, JsonPrompt(t0), [.. infos.Select(i => new Gt(i.variant, i.body == null ? null : "TIF_{id}_{n}", i.body, i.conds))],
-            (_, g) => JsonSaid(t0, g.Variant), false, speaker, under);
+            (_, g) => JsonSaid(t0, g.Variant), speaker, under);
     }
     /// TR-topic from a quest_lines record topic (LocalQuests'): one top-level player topic, one gate per (stage it sets, conditions,
     /// variant), each gated on the speaker; a gate that sets a stage runs the hand-written TIF_ARG_<code>_<stage>. A variant
@@ -548,7 +625,7 @@ sealed class QuestKit(SkyrimMod mod, List<ISkyrimModGetter> mods, Quest? q = nul
     {
         var t0 = lines.GetProperty(topic);
         return Build(TopicId(code, topic), topic, JsonPrompt(t0), [.. infos.Select(i => new Gt(i.variant, i.sets is int s ? $"TIF_ARG_{code}_{s}" : null, null, i.conds))],
-            (_, g) => JsonSaid(t0, g.Variant), true, [speaker], null);
+            (_, g) => JsonSaid(t0, g.Variant), [speaker], null);
     }
     /// TR-topic from a line store (NightReed's TSV): one top-level player topic, one gate per (intent, Papyrus body of its
     /// fragment TIF_<id>_<n>, conditions); the gate's written line is the store's "<id>_<n>", every gate must have one.
@@ -557,7 +634,7 @@ sealed class QuestKit(SkyrimMod mod, List<ISkyrimModGetter> mods, Quest? q = nul
         var store = LineStores.TryGetValue(path, out var w) ? w : LineStores[path] = Written(path);
         return Build(id, id, prompt, [.. infos.Select(i => new Gt(null, i.body == null ? null : "TIF_{id}_{n}", i.body, i.conds))],
             (n, _) => new Said(null, [store.TryGetValue($"{id}_{n}", out var line) ? line : throw new InvalidDataException($"no written line {id}_{n} in {path}")],
-                b => StoreBand(store, $"{id}_{n}", b) is { Count: > 0 } l ? l : null), false, [], null);
+                b => StoreBand(store, $"{id}_{n}", b) is { Count: > 0 } l ? l : null), [], null);
     }
     static readonly Dictionary<string, Dictionary<string, string>> LineStores = [];
     /// An after-quest greeting (a Hello topic of the quest): one Random INFO per written line, gated on the person's ref

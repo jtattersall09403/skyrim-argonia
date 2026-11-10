@@ -74,12 +74,17 @@ static class MainQuestCheck
         var recTopics = new Dictionary<string, string>();
         foreach (var r in Rows("quest_topic")) if (r.TryGetProperty("id", out var id) && r.TryGetProperty("person", out var p) && p.ValueKind == JsonValueKind.String) recTopics[id.GetString()!] = p.GetString()!;
 
-        void QuestCheck(string code, string recId, string edid, string script, int[] hidden, int[] ends, Dictionary<int, string[]> calls)
+        void QuestCheck(string code, string recId, string edid, string script, int[] hidden, int[] ends, Dictionary<int, string[]> calls, int extraBands = 0)
         {
             Console.WriteLine($"{code} {recId}");
             var q = mine.Quests.Single(x => x.EditorID == edid);
             var vm = q.VirtualMachineAdapter!;
-            Check($"{code} Main Quest, not start-enabled", q.Type == Quest.TypeEnum.MainQuest && !q.Flags.HasFlag(Quest.Flag.StartGameEnabled));
+            Check($"{code} Main Quest, Run Once, not start-enabled", q.Type == Quest.TypeEnum.MainQuest && q.Flags.HasFlag(Quest.Flag.RunOnce) && !q.Flags.HasFlag(Quest.Flag.StartGameEnabled));
+            var zoneKeys = mine.EnumerateMajorRecords<IPlacedObjectGetter>().Where(z => z.VirtualMachineAdapter?.Scripts.Any(sc => sc.Name == "defaultSetStageTrigScript"
+                && sc.Properties.OfType<IScriptObjectPropertyGetter>().Any(pr => pr.Name == "myQuest" && pr.Object.FormKey == q.FormKey)) == true).Select(z => z.FormKey).ToHashSet();
+            var bound = vm.Scripts.Single(x => x.Name == script).Properties.OfType<IScriptObjectListPropertyGetter>().SingleOrDefault(pr => pr.Name == "Zones")?.Objects.Select(o => o.Object.FormKey).ToHashSet() ?? [];
+            Check($"{code} Zones property is exactly the quest's {zoneKeys.Count} zones", zoneKeys.Count > 0 && bound.SetEquals(zoneKeys));
+            Check($"{code} every objective has a target", q.Objectives.All(o => o.Targets.Count > 0));
             var journal = Rows("quest_stage").Where(r => r.GetProperty("quest_id").GetString() == recId).ToDictionary(r => r.GetProperty("id").GetInt32(), r => r.GetProperty("journal_text").GetString()!);
             var st0 = q.Stages.SingleOrDefault(s => s.Index == 0);
             Check($"{code} stage 0 start-up, empty", st0 != null && st0.Flags.HasFlag(QuestStage.Flag.StartUpStage) && string.IsNullOrEmpty(st0.LogEntries.FirstOrDefault()?.Entry?.String));
@@ -130,7 +135,7 @@ static class MainQuestCheck
             var infosJ = lines.EnumerateObject().SelectMany(tp => tp.Value.GetProperty("infos").EnumerateArray()).ToList();
             static List<string> Strs(JsonElement e) => [.. e.EnumerateArray().Select(l => l.GetString()!)];
             ChainbreakersCheck.BandsBy(mine, q, (said, band) => infosJ.Where(v => Strs(v.GetProperty("lines")).SequenceEqual(said) && v.TryGetProperty($"lines@{band}", out _))
-                .Select(v => Strs(v.GetProperty($"lines@{band}"))).FirstOrDefault(), infosJ.Sum(v => v.EnumerateObject().Count(p => p.Name.StartsWith("lines@"))), (w, ok, _) => Check(w, ok));
+                .Select(v => Strs(v.GetProperty($"lines@{band}"))).FirstOrDefault(), infosJ.Sum(v => v.EnumerateObject().Count(p => p.Name.StartsWith("lines@"))) + extraBands, (w, ok, _) => Check(w, ok));
         }
         IQuestGetter Q(string e) => mine.Quests.Single(x => x.EditorID == e);
         // An info of a topic, by its order, with a gate predicate and its fragment's call in the .pex (null: no fragment).
@@ -158,10 +163,12 @@ static class MainQuestCheck
 
         // ---- MQ01 ----
         var m1 = Q("ARG_MQ01"); var m3 = Q("ARG_MQ03");
-        QuestCheck("MQ01", "quest.main.mq01", "ARG_MQ01", "ARG_QF_MQ01", [35], [90, 91, 93], new()
+        // (the stage 30, 32 and 40 calls are those of the march: the walkers' 3D loaded, then the package evaluated; they read the new .pex)
+        QuestCheck("MQ01", "quest.main.mq01", "ARG_MQ01", "ARG_QF_MQ01", [32], [90, 91, 93], new()
         {
-            [10] = ["Enable", "SetObjectiveDisplayed"], [20] = ["Lock", "SetObjectiveCompleted", "SetObjectiveDisplayed"], [30] = ["March", "SetObjectiveDisplayed"], [35] = ["MoveTo", "March"], [40] = ["Enable", "Disable", "Kill", "MoveTo", "Clear"], [41] = ["Choose", "choiceTaken", "GetStageDone"],
-            [42] = ["Choose", "choiceTaken", "GetStageDone"], [90] = ["Ending", "endTaken", "AddItem", "SetValue"], [91] = ["Ending", "endTaken", "SetValue"], [93] = ["Ending", "Kill"],
+            [10] = ["Enable", "SetObjectiveDisplayed"], [20] = ["Lock", "SetObjectiveCompleted", "SetObjectiveDisplayed"], [30] = ["Enable", "Disable", "RegisterForSingleUpdate", "SetObjectiveDisplayed"], [32] = ["EvaluatePackage"],
+            [40] = ["Enable", "Disable", "Kill", "MoveTo", "Clear", "AtFire"], [41] = ["Choose", "choiceTaken", "GetStageDone"],
+            [42] = ["Choose", "choiceTaken", "GetStageDone"], [90] = ["Ending", "endTaken", "AddItem", "SetValue", "DisarmZones"], [91] = ["Ending", "endTaken", "SetValue"], [93] = ["Ending", "Kill"],
         });
         Check("MQ01 chargen and stage 10 in the quest script (.pex)", Pex("ARG_QF_MQ01", "ShowRaceMenu", "OnUpdate", "IsRunning") && Pex("ARG_QF_MQ01", "Ending", "Stop", "NextQuest"));
         var mq101 = mine.Quests.SingleOrDefault(x => x.FormKey == FormKey.Factory("03372B:Skyrim.esm"));
@@ -172,7 +179,8 @@ static class MainQuestCheck
         var opening = mine.Quests.SingleOrDefault(x => x.EditorID == "ARG_Opening");
         Check("ARG_Opening kept, never starts (not start-enabled, no script, nothing names it)", opening != null && !opening.Flags.HasFlag(Quest.Flag.StartGameEnabled) && opening.VirtualMachineAdapter == null
             && !mine.EnumerateMajorRecords().Where(r => r.FormKey != opening.FormKey).SelectMany(r => r.EnumerateFormLinks()).Any(l => l.FormKey == opening.FormKey));
-        Zone("ARG_MQ01_ZoneCamp", "ARG_MQ01", 30, 35); Zone("ARG_MQ01_ZoneFire", "ARG_MQ01", 35, 40); Zone("ARG_MQ01_ZoneShed", "ARG_MQ01", 40, 41); Zone("ARG_MQ01_ZoneHuts", "ARG_MQ01", 40, 42);
+        Check("MQ01 has no camp zone, wait-at-fire package or dock-end marker, and no stage 35", F("ARG_MQ01_ZoneCamp").IsNull && F("ARG_MQ01_WaitAtFire").IsNull && F("ARG_MQ01_DockEndMarker").IsNull && m1.Stages.All(x => x.Index != 35));
+        Zone("ARG_MQ01_ZoneFire", "ARG_MQ01", 32, 40); Zone("ARG_MQ01_ZoneShed", "ARG_MQ01", 40, 41); Zone("ARG_MQ01_ZoneHuts", "ARG_MQ01", 40, 42);
         Zone("ARG_MQ01_ZoneShore90", "ARG_MQ01", 41, 90); Zone("ARG_MQ01_ZoneShore91", "ARG_MQ01", 42, 91); Zone("ARG_MQ01_ZoneShore93", "ARG_MQ01", 40, 93, "ARG_MQ01_Shore93Parent");
         Info("ARG_MQ01_TheRoll", 0, "Wuleen-Sei at 10 reads the roll", c => StageCond(c, m1, CompareOperator.EqualTo, 10), "ReadRoll");
         var rollT = mine.DialogTopics.Single(x => x.EditorID == "ARG_MQ01_TheRoll");
@@ -183,15 +191,14 @@ static class MainQuestCheck
             Check($"{t} a choice the roll's INFO links to, in its branch (not top level)", at.Branch.FormKey == rollT.Branch.FormKey
                 && rollT.Responses.All(r => r.LinkTo.Any(l => l.FormKey == at.FormKey)));
         }
-        Check("MQ01 Answer sets Answered and stage 20; stage 20 unlocks the hold door (.pex)", Pex("ARG_QF_MQ01", "Answer", "SetStage", "Fragment_20", "Lock") && Pex("ARG_QF_MQ01", "Fragment_35", "MoveTo", "March"));
+        Check("MQ01 Answer sets Answered and stage 20; stage 20 unlocks the hold door (.pex)", Pex("ARG_QF_MQ01", "Answer", "SetStage", "Fragment_20", "Lock") && Pex("ARG_QF_MQ01", "Fragment_32", "StartMarch", "EvaluatePackage"));
         Info("ARG_MQ01_TheHire", 0, "the broker after the answer, until the strike", c => StageCond(c, m1, CompareOperator.LessThan, 40) && GlobCond(c, "ARG_MQ01_Answered", 1), null);
         Info("ARG_MQ01_TheHire", 1, "the broker before it", c => StageCond(c, m1, CompareOperator.EqualTo, 10), null);
         Info("ARG_MQ01_TheWater", 0, "the water from 10 until the strike", c => StageCond(c, m1, CompareOperator.GreaterThanOrEqualTo, 10) && StageCond(c, m1, CompareOperator.LessThan, 40), null);
         Info("ARG_MQ01_TheMarch", 0, "the march from 10 until the strike", c => StageCond(c, m1, CompareOperator.GreaterThanOrEqualTo, 10) && StageCond(c, m1, CompareOperator.LessThan, 40), null);
         foreach (var a in new[] { MainQuest.A1Courier, MainQuest.A1WuleenMarch, MainQuest.A1UxMarch, MainQuest.A1DivesMarch, MainQuest.A1FindsMarch })
         {
-            Pkg("ARG_MQ01", a, "ARG_MQ01_MarchOff", c => StageCond(c, m1, CompareOperator.GreaterThanOrEqualTo, 30) && StageCond(c, m1, CompareOperator.LessThan, 35));
-            Pkg("ARG_MQ01", a, "ARG_MQ01_WaitAtFire", c => StageCond(c, m1, CompareOperator.GreaterThanOrEqualTo, 35) && StageCond(c, m1, CompareOperator.LessThan, 40));
+            Pkg("ARG_MQ01", a, "ARG_MQ01_MarchOff", c => StageCond(c, m1, CompareOperator.GreaterThanOrEqualTo, 32) && StageCond(c, m1, CompareOperator.LessThan, 40));
         }
         // The hold's doors (we.mq01.hold-door): the stair door the way out, paired both ways with the pier door, locked with
         // no key until 20, opening it at 20 sets 30 (TR-activate); the far door opens onto its room.
@@ -204,18 +211,17 @@ static class MainQuestCheck
         Check("hold door alias: defaultSetStageAliasScript on activate, prereq 20, sets 30", m1.VirtualMachineAdapter!.Aliases.Any(a => a.Property.Alias == MainQuest.A1HoldDoor
             && a.Scripts.Any(s => s.Name == "defaultSetStageAliasScript" && s.Properties.OfType<IScriptIntPropertyGetter>().Any(p => p.Name == "stage" && p.Data == 30)
             && s.Properties.OfType<IScriptIntPropertyGetter>().Any(p => p.Name == "prereqStageOPT" && p.Data == 20) && s.Properties.OfType<IScriptIntPropertyGetter>().Any(p => p.Name == "TriggerType" && p.Data == 0))));
-        foreach (var (o, a) in new[] { (10, MainQuest.A1WuleenHold), (20, MainQuest.A1HoldDoor), (30, MainQuest.A1FireMark) })
+        foreach (var (o, a) in new[] { (10, MainQuest.A1WuleenHold), (20, MainQuest.A1HoldDoor), (30, MainQuest.A1FireMark), (40, MainQuest.A1Sal), (40, MainQuest.A1Deesh), (41, MainQuest.A1ShoreMark), (42, MainQuest.A1ShoreMark) })
             Check($"MQ01 objective {o} targets alias {a}", m1.Objectives.SingleOrDefault(x => x.Index == o)?.Targets.Any(t => t.AliasID == a) == true);
         Pkg("ARG_MQ01", MainQuest.A1Leader, "ARG_MQ01_LeaderLeaves", c => StageCond(c, m1, CompareOperator.GreaterThanOrEqualTo, 40));
-        Pkg("ARG_MQ01", MainQuest.A1Cutter1, "ARG_MQ01_CuttersLeave", c => StageCond(c, m1, CompareOperator.GreaterThanOrEqualTo, 41));
-        Pkg("ARG_MQ01", MainQuest.A1Cutter2, "ARG_MQ01_CuttersLeave", c => StageCond(c, m1, CompareOperator.GreaterThanOrEqualTo, 41));
+        Check("MQ01 the cutters carry no package (they stay at the shed until the ending disables them)", F("ARG_MQ01_CuttersLeave").IsNull && new[] { MainQuest.A1Cutter1, MainQuest.A1Cutter2 }.All(a => m1.Aliases.Single(x => x.ID == a).PackageData.Count == 0));
         Pkg("ARG_MQ01", MainQuest.A1Sal, "ARG_MQ01_SalSeiFollows", c => StageCond(c, m1, CompareOperator.EqualTo, 41));
         Pkg("ARG_MQ01", MainQuest.A1Deesh, "ARG_MQ01_DeeshDuunFollows", c => StageCond(c, m1, CompareOperator.EqualTo, 42));
         foreach (var (a, f) in new[] { (MainQuest.A1WuleenHold, QuestAlias.Flag.Essential), (MainQuest.A1WuleenMarch, QuestAlias.Flag.Essential), (MainQuest.A1Courier, QuestAlias.Flag.Essential),
                      (MainQuest.A1Sal, QuestAlias.Flag.Essential), (MainQuest.A1Deesh, QuestAlias.Flag.Essential), (MainQuest.A1Leader, QuestAlias.Flag.Protected) })
             Check($"MQ01 alias {a} {f} (the record's build notes)", m1.Aliases.Single(x => x.ID == a).Flags?.HasFlag(f) == true);
         Check("Ties-The-Loose-Plank essential (MQ01's start to MQ03's end)", mine.Npcs.Single(n => n.EditorID == "ARG_MQ01_TiesTheLoosePlank").Configuration.Flags.HasFlag(NpcConfiguration.Flag.Essential));
-        Check("the cutters aggressive, in the Unbound Root", mine.Npcs.Single(n => n.EditorID == "ARG_MQ01_RootCutter") is var cu && cu.AIData?.Aggression == Aggression.Aggressive && cu.Factions.Any(f => f.Faction.FormKey == F("ARG_UnboundRoot")));
+        Check("the cutters unaggressive (no combat at the strike), in the Unbound Root", mine.Npcs.Single(n => n.EditorID == "ARG_MQ01_RootCutter") is var cu && cu.AIData?.Aggression == Aggression.Unaggressive && cu.Factions.Any(f => f.Faction.FormKey == F("ARG_UnboundRoot")));
         Check("hold cell: 'Dainty Sload' location cleared", mine.Cells.Records.SelectMany(b => b.SubBlocks).SelectMany(s => s.Cells).Any(c => c.FormKey == MainQuest.HoldCell && c.Location.FormKey.IsNull));
         foreach (var k in MainQuest.Valenwood.Append(MainQuest.Welcome.ToString()))
             Check($"{k} held back: not start-enabled, started by MQ03's endings", mine.Quests.SingleOrDefault(x => x.FormKey == FormKey.Factory(k)) is { } w && !w.Flags.HasFlag(Quest.Flag.StartGameEnabled)
@@ -225,9 +231,9 @@ static class MainQuestCheck
         // ---- MQ03 ----
         QuestCheck("MQ03", "quest.main.mq03", "ARG_MQ03", "ARG_QF_MQ03", [11, 45], [90, 91], new()
         {
-            [10] = ["Enable", "SetObjectiveDisplayed"], [11] = ["Alchemy", "AddItem"], [20] = ["MoveTo", "HistHearing", "Disable"], [40] = ["MoveTo", "Lock", "Enable"],
-            [45] = ["dreamTaken", "ReedSworn"], [90] = ["SetFactionRank", "AddItem", "Ending", "endTaken"], [91] = ["ReedDeclined", "Ending", "endTaken"],
-        });
+            [10] = ["Enable", "SetObjectiveDisplayed"], [11] = ["Alchemy", "AddItem", "SetObjectiveCompleted"], [20] = ["MoveTo", "HistHearing", "Disable", "houseTaken", "Lock"], [40] = ["MoveTo", "Lock", "Enable", "dreamStarted"],
+            [45] = ["dreamTaken", "ReedSworn"], [90] = ["SetFactionRank", "AddItem", "Ending", "endTaken", "DisarmZones"], [91] = ["ReedDeclined", "Ending", "endTaken"],
+        }, extraBands: 2);
         Check("MQ03 endings: Deferred starts, MQ04 at 10 when present, Stop (.pex)", Pex("ARG_QF_MQ03", "Deferred", "NextQuest", "Stop", "Unlock") || Pex("ARG_QF_MQ03", "Deferred", "NextQuest", "Stop", "Lock"));
         var mq04 = mine.Quests.SingleOrDefault(x => x.EditorID == "ARG_MQ04");
         Check($"MQ03 NextQuest is ARG_MQ04 ({(mq04 == null ? "absent: no property" : "present")})", m3.VirtualMachineAdapter!.Scripts.Single(s => s.Name == "ARG_QF_MQ03").Properties.OfType<IScriptObjectPropertyGetter>()
@@ -237,18 +243,25 @@ static class MainQuestCheck
         bool AliasScript(uint a, string script, int pre, int set, string preName, string setName) => mvm.Aliases.Any(x => x.Property.Alias == a && x.Scripts.Any(s => s.Name == script
             && s.Properties.OfType<IScriptIntPropertyGetter>().Any(p => p.Name == preName && p.Data == pre) && s.Properties.OfType<IScriptIntPropertyGetter>().Any(p => p.Name == setName && p.Data == set)));
         Check("MQ03 10->11 the taste (TR-activate on the sap's alias)", AliasScript(MainQuest.A3Sap, "defaultSetStageAliasScript", 10, 11, "prereqStageOPT", "stage"));
-        Check("MQ03 10->20 the officer's death", AliasScript(MainQuest.A3Officer, "defaultSetStageOnDeathRefAlias", 10, 20, "preReqStage", "StageToSet"));
+        Check("MQ03 the officer (Essential) has no death trigger", !mvm.Aliases.Any(x => x.Property.Alias == MainQuest.A3Officer));
+        Check("MQ03 HouseDoor is the Reed's house door", mvm.Scripts.Single(x => x.Name == "ARG_QF_MQ03").Properties.OfType<IScriptObjectPropertyGetter>().Any(p => p.Name == "HouseDoor" && p.Object.FormKey == MainQuest.HouseDoorOut));
+        foreach (var (o, a) in new[] { (10, MainQuest.A3Sap), (11, MainQuest.A3Trap), (12, MainQuest.A3Officer), (20, MainQuest.A3Nesh), (21, MainQuest.A3Ties), (22, MainQuest.A3Nesh), (40, MainQuest.A3HoldDoor) })
+            Check($"MQ03 objective {o} targets alias {a}", m3.Objectives.SingleOrDefault(x => x.Index == o)?.Targets.Any(t => t.AliasID == a) == true);
         Check("MQ03 20->40 Nesh-Deeka's death", AliasScript(MainQuest.A3Nesh, "defaultSetStageOnDeathRefAlias", 20, 40, "preReqStage", "StageToSet"));
         Info("ARG_MQ03_TheBoat", 0, "ready: before 20, tasted, phial or tag", c => StageCond(c, m3, CompareOperator.LessThan, 20) && DoneCond(c, m3, 11) && ItemCond(c, "ARG_MQ03_SapPhial") && ItemCond(c, "ARG_MQ03_CourierTag"), "SetStage");
-        Info("ARG_MQ03_TheBoat", 1, "where things lie, from 10", c => StageCond(c, m3, CompareOperator.LessThan, 20) && StageCond(c, m3, CompareOperator.GreaterThanOrEqualTo, 10), null);
+        Info("ARG_MQ03_TheBoat", 1, "where things lie, from 10, before the sap is tasted (exclusive of ready)", c => StageCond(c, m3, CompareOperator.LessThan, 20) && StageCond(c, m3, CompareOperator.GreaterThanOrEqualTo, 10)
+            && Cf(c).Any(x => x.Data is IGetStageDoneConditionDataGetter g && g.Quest.Link.FormKey == m3.FormKey && g.Stage == 11 && x.ComparisonValue == 0), null);
+        Info("ARG_MQ03_TheBoat", 2, "where things lie, from 10, with neither phial nor tag (exclusive of ready)", c => StageCond(c, m3, CompareOperator.LessThan, 20) && StageCond(c, m3, CompareOperator.GreaterThanOrEqualTo, 10)
+            && Cf(c).Any(x => x.Data is IGetItemCountConditionDataGetter d && d.ItemOrList.Link.FormKey == F("ARG_MQ03_SapPhial") && x.ComparisonValue == 0)
+            && Cf(c).Any(x => x.Data is IGetItemCountConditionDataGetter d && d.ItemOrList.Link.FormKey == F("ARG_MQ03_CourierTag") && x.ComparisonValue == 0), null);
         Info("ARG_MQ03_TheAttack", 0, "with the phial, takes it", c => StageCond(c, m3, CompareOperator.EqualTo, 20) && ItemCond(c, "ARG_MQ03_SapPhial"), "TellAttack");
         Info("ARG_MQ03_TheAttack", 1, "without", c => StageCond(c, m3, CompareOperator.EqualTo, 20), "TellAttack");
         Info("ARG_MQ03_TheNight", 0, "shown the tag", c => StageCond(c, m3, CompareOperator.EqualTo, 20) && ItemCond(c, "ARG_MQ03_CourierTag"), "TellNight");
         Info("ARG_MQ03_TheNight", 1, "Speech 25", c => StageCond(c, m3, CompareOperator.EqualTo, 20) && SpeechCond(c, CompareOperator.GreaterThanOrEqualTo), "TellNight");
         Info("ARG_MQ03_TheNight", 2, "refuses below Speech 25", c => StageCond(c, m3, CompareOperator.EqualTo, 20) && SpeechCond(c, CompareOperator.LessThan), null);
         Info("ARG_MQ03_TheOffer", 0, "the offer at 20", c => StageCond(c, m3, CompareOperator.EqualTo, 20), null);
-        Info("ARG_MQ03_TakeOath", 0, "once both told: sworn, 40", c => StageCond(c, m3, CompareOperator.EqualTo, 20) && GlobCond(c, "ARG_MQ03_AttackTold", 1) && GlobCond(c, "ARG_MQ03_NightTold", 1), "TakeOath");
-        Info("ARG_MQ03_RefuseOath", 0, "once both told: 40", c => StageCond(c, m3, CompareOperator.EqualTo, 20) && GlobCond(c, "ARG_MQ03_AttackTold", 1) && GlobCond(c, "ARG_MQ03_NightTold", 1), "SetStage");
+        Info("ARG_MQ03_TakeOath", 0, "once the attack is told: sworn, 40 (the night need not be: a new character cannot pass Ties's gate)", c => StageCond(c, m3, CompareOperator.EqualTo, 20) && GlobCond(c, "ARG_MQ03_AttackTold", 1) && !GlobCond(c, "ARG_MQ03_NightTold", 1), "TakeOath");
+        Info("ARG_MQ03_RefuseOath", 0, "once the attack is told: 40", c => StageCond(c, m3, CompareOperator.EqualTo, 20) && GlobCond(c, "ARG_MQ03_AttackTold", 1) && !GlobCond(c, "ARG_MQ03_NightTold", 1), "SetStage");
         Check("MQ03 TakeOath sets the sworn global and 40 (.pex)", Pex("ARG_QF_MQ03", "TakeOath", "ReedSworn", "SetStage"));
         Check("MQ03 aliases: the strangers essential until 20", new[] { MainQuest.A3Officer, MainQuest.A3Stranger }.All(a => m3.Aliases.Single(x => x.ID == a).Flags?.HasFlag(QuestAlias.Flag.Essential) == true));
         Check("ARG_NeshDeekaRef is Nesh-Deeka, in the house", placed.TryGetValue(F("ARG_NeshDeekaRef"), out var nr) && nr is IPlacedNpcGetter nn && nn.Base.FormKey == F("ARG_MQ03_NeshDeeka")
@@ -266,14 +279,14 @@ static class MainQuestCheck
             ("ARG_MQ01_BuysTheMonthsRef", MainQuest.DockNav, "ARG_MQ01_BrokerParent"), ("ARG_MQ01_MeeTujaRef", MainQuest.DockNav, null),
             ("ARG_MQ01_WuleenSeiMarchRef", MainQuest.DockNav, "ARG_MQ01_MarchParent"), ("ARG_MQ01_UxXeekMarchRef", MainQuest.DockNav, "ARG_MQ01_MarchParent"),
             ("ARG_MQ01_DivesWithoutARopeMarchRef", MainQuest.DockNav, "ARG_MQ01_MarchParent"), ("ARG_MQ01_FindsTheOtherBankMarchRef", MainQuest.DockNav, "ARG_MQ01_MarchParent"),
-            ("ARG_MQ01_SalSeiRef", MainQuest.CampNav, null), ("ARG_MQ01_DeeshDuunRef", MainQuest.CampNav, null), ("ARG_MQ01_NeshNeelRef", MainQuest.CampNav, "ARG_MQ01_CampOrderly"),
-            ("ARG_MQ01_CutsTheOldKnotRef", MainQuest.CampNav, "ARG_MQ01_CellParent"), ("ARG_MQ01_RootCutter1Ref", MainQuest.CampNav, "ARG_MQ01_CellParent"), ("ARG_MQ01_RootCutter2Ref", MainQuest.CampNav, "ARG_MQ01_CellParent"),
-            ("ARG_MQ01_TiesTheLoosePlankRef", MainQuest.CampNav, null), ("ARG_MQ01_RiSakkaShoreRef", MainQuest.CampNav, "ARG_MQ01_SurvivorsParent"),
-            ("ARG_MQ01_TsanjiShoreRef", MainQuest.CampNav, "ARG_MQ01_SurvivorsParent"), ("ARG_MQ01_LlarviMaryonShoreRef", MainQuest.CampNav, "ARG_MQ01_SurvivorsParent"),
-            ("ARG_MQ01_FireMarker", MainQuest.CampNav, null), ("ARG_MQ01_ShedMarker", MainQuest.CampNav, null), ("ARG_MQ01_ShoreMarker", MainQuest.CampNav, null), ("ARG_MQ01_WaterEdgeMarker", MainQuest.CampNav, null),
-            ("ARG_MQ01_HutsMarker", null, null), ("ARG_MQ01_Campfire", null, "ARG_MQ01_CampAftermath"), ("ARG_MQ01_Hut1", null, "ARG_MQ01_CampAftermath"), ("ARG_MQ01_HutBurnt", null, "ARG_MQ01_CampAftermath"),
+            ("ARG_MQ01_SalSeiRef", MainQuest.DockNav, null), ("ARG_MQ01_DeeshDuunRef", MainQuest.DockNav, null), ("ARG_MQ01_NeshNeelRef", MainQuest.DockNav, "ARG_MQ01_CampOrderly"),
+            ("ARG_MQ01_CutsTheOldKnotRef", MainQuest.DockNav, "ARG_MQ01_CellParent"), ("ARG_MQ01_RootCutter1Ref", MainQuest.DockNav, "ARG_MQ01_CellParent"), ("ARG_MQ01_RootCutter2Ref", MainQuest.DockNav, "ARG_MQ01_CellParent"),
+            ("ARG_MQ01_TiesTheLoosePlankRef", MainQuest.DockNav, null), ("ARG_MQ01_RiSakkaShoreRef", MainQuest.DockNav, "ARG_MQ01_SurvivorsParent"),
+            ("ARG_MQ01_TsanjiShoreRef", MainQuest.DockNav, "ARG_MQ01_SurvivorsParent"), ("ARG_MQ01_LlarviMaryonShoreRef", MainQuest.DockNav, "ARG_MQ01_SurvivorsParent"),
+            ("ARG_MQ01_FireMarker", MainQuest.DockNav, null), ("ARG_MQ01_ShedMarker", MainQuest.DockNav, null), ("ARG_MQ01_ShoreMarker", MainQuest.DockNav, null), ("ARG_MQ01_WaterEdgeMarker", MainQuest.DockNav, null),
+            ("ARG_MQ01_HutsMarker", MainQuest.DockNav, null), ("ARG_MQ01_Campfire", null, "ARG_MQ01_CampAftermath"), ("ARG_MQ01_Hut1", null, "ARG_MQ01_CampAftermath"), ("ARG_MQ01_HutBurnt", null, "ARG_MQ01_CampAftermath"),
             ("ARG_MQ01_HutFire1", null, "ARG_MQ01_CampAttacked"),
-            ("ARG_MQ03_NeverWritesTwiceRef", MainQuest.CampNav, "ARG_MQ03_ReedParent"), ("ARG_MQ03_ReedStrangerRef", MainQuest.CampNav, "ARG_MQ03_ReedParent"),
+            ("ARG_MQ03_NeverWritesTwiceRef", MainQuest.DockNav, "ARG_MQ03_ReedParent"), ("ARG_MQ03_ReedStrangerRef", MainQuest.DockNav, "ARG_MQ03_ReedParent"),
             ("ARG_MQ03_SpilledSapRef", null, "ARG_MQ03_JarParent"), ("ARG_MQ03_FishTrapRef", null, "ARG_MQ03_JarParent"), ("ARG_MQ03_Lockpick1", null, "ARG_MQ03_JarParent"),
             ("ARG_NeshDeekaRef", null, null), ("ARG_MQ03_SaltsTheCatchRef", null, null), ("ARG_MQ03_HouseMarker", null, null), ("ARG_MQ03_MatMarker", null, null),
             ("ARG_MQ03_DreamMarker", MainQuest.HoldNav, null), ("ARG_MQ03_DreamRoot1", null, "ARG_MQ03_DreamParent") })

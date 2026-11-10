@@ -81,8 +81,8 @@ static class MQ05
         // E-global (the endings' flags), E-package (each at their post).
         var minders = k.Global("MindersHold");
         var nisswo = k.Global("NisswoRead");
-        var kaskaPkg = k.Travel("KaskaGoPost", kaskaPost, 64, true);
-        var eiPkg = k.Travel("EiTujaGoPost", eiPost, 64, true);
+        var kaskaPkg = k.Travel("KaskaGoPost", kaskaPost, 64);
+        var eiPkg = k.Travel("EiTujaGoPost", eiPost, 64);
 
         // TR-topic. Nesh-Deeka is the MQ01/MQ03 lane's person: her lines gate on her placed ref (GetIsReference).
         k.Topic("Basin", Label("topic.mq05-the-basin"),
@@ -106,6 +106,7 @@ static class MQ05
         q.VirtualMachineAdapter.Aliases.Add(DeathSets(k, AKaska, 40, 92)); // fail-forward: Kaska-Meen dead
 
         world.TopCell!.Persistent.AddRange([kaskaPost, eiPost, hist, zone, way, kaskaRef, eiRef, wasp1, wasp2]);
+        k.Finish();
     }
 
     static QuestKit? Kit; static Quest? Q;

@@ -1,6 +1,18 @@
 Scriptname ARG_QF_MQ04 extends Quest Hidden
 {MQ04 The Tree That Turned Its Face (tools/ArgoniaPlugin/MQ04.cs): stage fragments, each a proven block shape.}
 
+ObjectReference[] Property Zones Auto ; every trigger zone of this quest (QuestKit fills it); disarmed by the ending
+
+; Every zone of the quest off (the ending), so none can set a stage of the stopped quest.
+Function DisarmZones()
+	Int i = 0
+	While i < Zones.Length
+		Zones[i].Disable()
+		i += 1
+	EndWhile
+EndFunction
+
+
 ReferenceAlias Property RootHerald Auto
 ReferenceAlias Property PaysLate Auto
 ObjectReference Property CampParent Auto
@@ -62,6 +74,8 @@ Function Fragment_91() ; ending e-minder: E-item, E-global, E-enable, E-faction,
 	WithdrawnParent.Disable()
 	CampParent.Disable()
 	player.SetFactionRank(LowReedVillage, 0)
+	DisarmZones()
 	NextQuest.SetStage(10)
+	Stop()
 EndFunction
 ;END FRAGMENT

@@ -1,6 +1,17 @@
 Scriptname ARG_QF_BC01 extends Quest Hidden
 {BC01 Four Months for a Boat (quest.bc.bc01): stage fragments from Phase 3's proven shapes.}
 
+ObjectReference[] Property Zones Auto ; every trigger zone of this quest (QuestKit fills it); disarmed by the ending
+
+; Every zone of the quest off (the ending), so none can set a stage of the stopped quest.
+Function DisarmZones()
+	Int i = 0
+	While i < Zones.Length
+		Zones[i].Disable()
+		i += 1
+	EndWhile
+EndFunction
+
 ReferenceAlias Property Patron Auto
 ReferenceAlias Property Debtor Auto
 ReferenceAlias Property Chest Auto
@@ -15,7 +26,7 @@ AchievementsScript Property AchievementsQuest Auto ; Skyrim.esm AchievementsQues
 Bool ended = False
 
 ;BEGIN FRAGMENT Fragment_10
-Function Fragment_10() ; the book into the steward's chest (E-item); Never-Sold's sandbox at the landing runs from here
+Function Fragment_10() ; the book into the steward's chest (E-item)
 	If Chest.GetRef().GetItemCount(DebtBook) == 0
 		Chest.GetRef().AddItem(DebtBook, 1)
 	EndIf
@@ -42,6 +53,7 @@ Function Fragment_90() ; her page torn out, the first price left in the chest, s
 	Debtor.GetRef().MoveTo(BlackroseMarker)
 	ChainbreakersStanding.Mod(10)
 	SetObjectiveCompleted(10)
+	DisarmZones()
 	AchievementsQuest.IncSideQuests()
 	Stop()
 EndFunction
@@ -56,6 +68,7 @@ Function Fragment_91() ; she is gone down the channel
 	Debtor.GetRef().Disable(True)
 	ChainbreakersStanding.Mod(10)
 	SetObjectiveCompleted(40)
+	DisarmZones()
 	AchievementsQuest.IncSideQuests()
 	Stop()
 EndFunction
@@ -68,6 +81,7 @@ Function Fragment_94()
 	EndIf
 	ended = True
 	SetObjectiveCompleted(10)
+	DisarmZones()
 	AchievementsQuest.IncSideQuests()
 	Stop()
 EndFunction
