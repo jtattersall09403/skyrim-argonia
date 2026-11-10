@@ -137,7 +137,9 @@ static class People
             var o = (Npc)src.Duplicate(C.Fk(n.GetProperty("fk").GetString()!));
             o.EditorID = n.GetProperty("edid").GetString();
             o.Name = new TranslatedString(Language.English, n.GetProperty("name").GetString());
-            o.VirtualMachineAdapter = null;
+            o.VirtualMachineAdapter = n.TryGetProperty("scripts", out var scs) && scs.GetArrayLength() > 0 ? C.Vmad(scs) : null;
+            if (S(n, "voice") is { } vk) o.Voice.SetTo(C.Fk(vk));
+            else if (S(n, "voice_list") is { } vl) o.Voice.SetTo(RentVoice(src, C.Fk(vl)));
             o.Configuration.Flags |= NpcConfiguration.Flag.Unique;
             o.Configuration.Level = new NpcLevel { Level = (short)n.GetProperty("level").GetInt32() };
             o.Packages.Clear();
@@ -186,6 +188,20 @@ static class People
             if (space == "exterior") ((Worldspace)mod.Worldspaces.First()).TopCell!.Persistent.Add(o);
             else interiors[space].Persistent.Add(o);
         }
+    }
+
+    /// A voice type that is a member of the form list: the base's own when it is in the list, else the list's voice of the
+    /// base's sex, an Argonian one for an Argonian base, else the Commoner one (the list holds Male/Female Commoner and Argonian).
+    static FormKey RentVoice(INpcGetter src, FormKey list)
+    {
+        var members = Cache.Resolve<IFormListGetter>(list).Items.Select(i => i.FormKey).ToList();
+        if (members.Contains(src.Voice.FormKey)) return src.Voice.FormKey;
+        var female = src.Configuration.Flags.HasFlag(NpcConfiguration.Flag.Female);
+        var argonian = Cache.TryResolve<IRaceGetter>(src.Race.FormKey, out var race) && (race.EditorID ?? "").StartsWith("Argonian");
+        var want = (female ? "Female" : "Male") + (argonian ? "Argonian" : "Commoner");
+        foreach (var m in members)
+            if (Cache.TryResolve<IVoiceTypeGetter>(m, out var v) && v.EditorID == want) return m;
+        throw new InvalidDataException($"{src.EditorID}: no voice {want} in {C.Key(list)}");
     }
 
     /// An LVLI is levelled against the player when any entry needs a level above 1 to drop.

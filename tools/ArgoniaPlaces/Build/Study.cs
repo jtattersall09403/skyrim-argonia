@@ -8,6 +8,36 @@ using Mutagen.Bethesda.Skyrim;
 
 static class Study
 {
+    /// carriage <Skyrim.esm path>: the topics and INFOs of the quest DialogueCarriageSystem (name, conditions, fragment script),
+    /// the evidence for a boatman's travel lines.
+    public static int Carriage(string esm)
+    {
+        using var m = SkyrimMod.CreateFromBinaryOverlay(esm, SkyrimRelease.SkyrimSE, Survey.NoStrings);
+        foreach (var g in m.Globals.Where(g => g.EditorID?.StartsWith("CarriageCost") == true || g.FormKey.ID == 0x050765)) Console.WriteLine($"global {g.EditorID} {g.FormKey.ID:X6} {(g as IGlobalFloatGetter)?.Data ?? (g as IGlobalShortGetter)?.Data}");
+        var q = m.Quests.First(x => x.EditorID == "DialogueCarriageSystem");
+        Console.WriteLine($"quest {q.EditorID} {q.FormKey} flags {q.Flags} scripts {string.Join(",", q.VirtualMachineAdapter?.Scripts.Select(s => s.Name) ?? [])}");
+        foreach (var t in m.DialogTopics.Where(t => t.Quest.FormKey == q.FormKey))
+        {
+            Console.WriteLine($"topic {t.EditorID} '{t.Name?.String}' branch {t.Branch.FormKey} cat {t.Category} sub {t.Subtype} prio {t.Priority}");
+            foreach (var i in t.Responses)
+            {
+                Console.WriteLine($"  info {i.FormKey.ID:X6} '{i.Prompt?.String}' resp '{string.Join(" / ", i.Responses.Select(r => r.Text.String))}' frag {(i.VirtualMachineAdapter as IDialogResponsesAdapterGetter)?.ScriptFragments?.FileName}");
+                foreach (var c in i.Conditions)
+                {
+                    var d = c.Data;
+                    var v = c is IConditionFloatGetter cf ? cf.ComparisonValue.ToString() : c is IConditionGlobalGetter cg ? "GLOB " + cg.ComparisonValue.FormKey : "?";
+                    var arg = d switch
+                    {
+                        IGetInFactionConditionDataGetter gf => gf.Faction.Link.FormKey.ToString(),
+                        IGetItemCountConditionDataGetter gi => gi.ItemOrList.Link.FormKey.ToString(),
+                        _ => "",
+                    };
+                    Console.WriteLine($"    {d.GetType().Name.Replace("BinaryOverlay", "")} {arg} {d.RunOnType} {c.CompareOperator} {v} flags {c.Flags}");
+                }
+            }
+        }
+        return 0;
+    }
     public static int Run(string[] a)
     {
         var data = a[0];

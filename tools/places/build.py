@@ -29,6 +29,7 @@ import hashlib
 import json
 import math
 import os
+import re
 import subprocess
 import sys
 import time
@@ -146,12 +147,23 @@ def relative_move(src_pos, src_rot, our_pos, our_rot, p, r) -> tuple[list[float]
 # ---- the tool -----------------------------------------------------------------------------------------------------
 
 def build_tool() -> None:
+    """Build the C# tool once; concurrent runs (a draft check's --plan beside a build) wait on one lock, so none
+    reads a half-written tool or sees the other's `dotnet build` fail."""
+    import fcntl
+    TOOL_DIR.mkdir(parents=True, exist_ok=True)
+    with open(TOOL_DIR / ".build.lock", "w") as lk:
+        fcntl.flock(lk, fcntl.LOCK_EX)
+        _build_tool()
+
+
+def _build_tool() -> None:
     if TOOL.exists() and all(p.stat().st_mtime < TOOL.stat().st_mtime for p in TOOL_PROJ.glob("*.cs*")):
         return  # up to date: `dotnet build` alone takes seconds
     r = subprocess.run(["dotnet", "build", str(TOOL_PROJ), "-c", "Release", "-o", str(TOOL_DIR), "-nologo", "-v", "q"],
                        env=DOTNET_ENV, capture_output=True, text=True)
     if r.returncode:
-        raise SystemExit(f"build: the C# tool did not build\n{(r.stdout + r.stderr)[-3000:]}")
+        errs = [ln for ln in (r.stdout + r.stderr).splitlines() if "error" in ln.lower()]
+        raise SystemExit("build: the C# tool did not build\n" + "\n".join(errs[-40:] or [(r.stdout + r.stderr)[-3000:]]))
 
 
 def tool(*args: str) -> None:
@@ -888,36 +900,53 @@ def exterior_navmesh(touched: set, objects, patched: dict, polylines, out: Path)
     land = world.Land.load(WORLD_DIR)
     xs = [c[0] for c in touched]
     ys = [c[1] for c in touched]
-    box = (min(xs) - NAV_RING, min(ys) - NAV_RING, max(xs) + NAV_RING, max(ys) + NAV_RING)
     heights = None
     if patched:
         g = land.grid
         heights = np.array(land.heights(), np.float32)
         for (gx, gy), v in patched.items():
             heights[g.cy_top * 32 + 32 - gy, gx - g.cx0 * 32] = v * 8.0
-    res = nav.build(out, box, WORLD_DIR, run_check=False, objects=objects, heights=heights, polylines=polylines, land=land)
-    ring1 = {(x + dx, y + dy) for x, y in touched for dx in (-1, 0, 1) for dy in (-1, 0, 1)}
-    ring2 = {(x + dx, y + dy) for x, y in ring1 for dx in (-1, 0, 1) for dy in (-1, 0, 1)} - ring1
-    mine, built = [], {}
-    for p in sorted((out / "navm").glob("cy*.jsonl.gz")):
-        for ln in gzip.open(p, "rt"):
-            e = json.loads(ln)
-            built[(e["x"], e["y"])] = e
-    world_rows = {}
-    for p in sorted((WORLD_NAV / "navm").glob("cy*.jsonl.gz")):
-        cy = int(p.name[2:6])
-        if box[1] <= cy <= box[3]:
+
+    def rings(n):
+        out_, cur = [set(touched)], set(touched)
+        for _ in range(n):
+            nxt = {(x + dx, y + dy) for x, y in cur for dx in (-1, 0, 1) for dy in (-1, 0, 1)}
+            out_.append(nxt - cur)
+            cur = nxt
+        return out_
+
+    # grow the window until its last trusted ring (the one inside the cut edge) matches the world's own NAVM:
+    # we ship ring 1 and every cell inside that came out different, so every link out lands on an unchanged mesh
+    reach = NAV_RING
+    while True:
+        box = (min(xs) - reach, min(ys) - reach, max(xs) + reach, max(ys) + reach)
+        res = nav.build(out, box, WORLD_DIR, run_check=False, objects=objects, heights=heights, polylines=polylines, land=land)
+        built, world_rows = {}, {}
+        for p in sorted((out / "navm").glob("cy*.jsonl.gz")):
             for ln in gzip.open(p, "rt"):
                 e = json.loads(ln)
-                world_rows[(e["x"], e["y"])] = e
-    seam = {"ring2_cells": 0, "ring2_equal": 0, "ring2_differ": []}
-    for c in sorted(ring2):
-        if c in built or c in world_rows:
-            seam["ring2_cells"] += 1
-            if built.get(c, {}).get("navm") == world_rows.get(c, {}).get("navm"):
-                seam["ring2_equal"] += 1
-            else:
-                seam["ring2_differ"].append(list(c))
+                built[(e["x"], e["y"])] = e
+        for p in sorted((WORLD_NAV / "navm").glob("cy*.jsonl.gz")):
+            cy = int(p.name[2:6])
+            if box[1] <= cy <= box[3]:
+                for ln in gzip.open(p, "rt"):
+                    e = json.loads(ln)
+                    world_rows[(e["x"], e["y"])] = e
+        R = rings(reach)
+
+        def differ(cells):
+            return [c for c in sorted(cells) if (c in built or c in world_rows)
+                    and built.get(c, {}).get("navm") != world_rows.get(c, {}).get("navm")]
+        inner = set().union(*R[2:reach])          # rings 2 .. reach-1: built far enough from the cut to be trusted
+        last = R[reach - 1]
+        if not differ(last) or reach >= NAV_RING + 3:
+            break
+        reach += 1
+    ring1 = R[0] | R[1]
+    seam = {"reach": reach, "trusted_cells": sum(1 for c in inner if c in built or c in world_rows),
+            "differ": [list(c) for c in differ(inner)], "last_ring_differ": [list(c) for c in differ(last)]}
+    ship = ring1 | {tuple(c) for c in seam["differ"]}
+    mine = []
     navi = json.loads((out / "navi.json").read_text())
     nvmis = {}
     from tools.navmesh.esm import subrecords
@@ -926,7 +955,7 @@ def exterior_navmesh(touched: set, objects, patched: dict, polylines, out: Path)
     for s, p in subrecords(rec[24:]):
         if s == b"NVMI":
             nvmis[struct.unpack_from("<I", p, 0)[0]] = p
-    for c in sorted(ring1):
+    for c in sorted(ship):
         e = built.get(c)
         if e is None:
             continue
@@ -934,7 +963,91 @@ def exterior_navmesh(touched: set, objects, patched: dict, polylines, out: Path)
         nv = nvnm.decode(next(p for s, p in subrecords(rec[24:]) if s == b"NVNM"))
         fid = struct.unpack_from("<I", rec, 12)[0]
         mine.append({"fid": fid, "nv": nv, "space": "exterior", "cell": list(c), "nvmi": nvmis.get(fid)})
+    seam["one_way_unlinked"] = unlink_one_way(mine)
+    seam["joined_edges"] = join_seams(mine)
     return mine, {"box": list(box), "times": res.get("times"), "seam": seam}
+
+
+def unlink_one_way(navs: list[dict]) -> int:
+    """Open every edge link between two shipped meshes that the other side does not answer (the stitch can leave a
+    few); join_seams then pairs those edges again edge for edge. Returns how many links were opened."""
+    from tools.navmesh import nvnm
+    by_fid = {n["fid"] & 0xFFFFFF: n for n in navs if n["space"] == "exterior"}
+
+    def answers(o, tt, fid, i):
+        t = o["nv"].tris[tt]
+        return any(t["flags"] & nvnm.EDGE_LINK[q] and int(o["nv"].links[t["e"][q]]["navm"]) & 0xFFFFFF == fid
+                   and int(o["nv"].links[t["e"][q]]["tri"]) == i for q in range(3))
+    drop = []
+    for f, n in by_fid.items():
+        nv = n["nv"]
+        for i, t in enumerate(nv.tris):
+            for k in range(3):
+                if not t["flags"] & nvnm.EDGE_LINK[k]:
+                    continue
+                L = nv.links[t["e"][k]]
+                o = by_fid.get(int(L["navm"]) & 0xFFFFFF)
+                tt = int(L["tri"])
+                if o is not None and (not 0 <= tt < len(o["nv"].tris) or not answers(o, tt, f, i)):
+                    drop.append((n, i, k))
+    for n, i, k in drop:
+        n["nv"].tris["e"][i][k] = -1
+        n["nv"].tris["flags"][i] &= ~nvnm.EDGE_LINK[k] & 0xFFFF
+        n["joined"] = True
+    return len(drop)
+
+
+def join_seams(navs: list[dict], tol_z: float = 32.0) -> int:
+    """Join, edge for edge, every open edge on the seam between two shipped cells to the matching open edge across it
+    (same two end points in plan, heights within tol_z): a portal link both ways. Returns how many pairs joined."""
+    from tools.navmesh import nvnm
+    by_cell = {tuple(n["cell"]): n for n in navs if n["space"] == "exterior"}
+
+    def open_edges(n, line_axis, line_v):
+        nv, out = n["nv"], {}
+        for i, t in enumerate(nv.tris):
+            for k in range(3):
+                if t["e"][k] != -1 or t["flags"] & nvnm.EDGE_LINK[k]:
+                    continue
+                a, b = nv.verts[t["v"][k]], nv.verts[t["v"][(k + 1) % 3]]
+                if abs(a[line_axis] - line_v) < 1 and abs(b[line_axis] - line_v) < 1:
+                    key = tuple(sorted((round(float(a[1 - line_axis])), round(float(b[1 - line_axis])))))
+                    out.setdefault(key, []).append((i, k, (float(a[2]) + float(b[2])) / 2))
+        return out
+
+    def link(n, i, k, fid, ti):
+        nv = n["nv"]
+        nv.links = np.append(nv.links, np.array([(nvnm.PORTAL, fid, ti)], nvnm.LINK))
+        nv.tris["e"][i][k] = len(nv.links) - 1
+        nv.tris["flags"][i] |= nvnm.EDGE_LINK[k]
+        n["joined"] = True
+
+    joined = 0
+    for (cx, cy), n in sorted(by_cell.items()):
+        for axis, o_cell in ((0, (cx + 1, cy)), (1, (cx, cy + 1))):
+            o = by_cell.get(o_cell)
+            if o is None:
+                continue
+            v = (cx + 1) * CELL if axis == 0 else (cy + 1) * CELL
+            mine_e = [(key, i, k, z) for key, es in open_edges(n, axis, v).items() for i, k, z in es]
+            theirs = [(key, j, q, z) for key, es in open_edges(o, axis, v).items() for j, q, z in es]
+            # pair by the longest shared stretch of seam at a like height (the two sides may split the seam differently)
+            pairs = []
+            for ka, i, k, za in mine_e:
+                for kb, j, q, zb in theirs:
+                    ov = min(ka[1], kb[1]) - max(ka[0], kb[0])
+                    if ov > 0 and abs(za - zb) <= tol_z and ov >= 0.5 * min(ka[1] - ka[0], kb[1] - kb[0]):
+                        pairs.append((-ov, i, k, j, q))
+            used_a, used_b = set(), set()
+            for _, i, k, j, q in sorted(pairs):
+                if (i, k) in used_a or (j, q) in used_b:
+                    continue
+                used_a.add((i, k))
+                used_b.add((j, q))
+                link(n, i, k, o["fid"], j)
+                link(o, j, q, n["fid"], i)
+                joined += 1
+    return joined
 
 
 def finish_navmesh(navs: list[dict], S: dict, world_fid: int) -> tuple[list[dict], list[str]]:
@@ -969,7 +1082,7 @@ def finish_navmesh(navs: list[dict], S: dict, world_fid: int) -> tuple[list[dict
         doors = doors_of.get(n["fid"], [])
         if n["space"] == "exterior":
             mi = n["nvmi"]
-            if doors:  # rebuild the NVMI with the doors: same layout as the stitch's
+            if doors or n.get("joined"):  # rebuild the NVMI with the doors and joins: same layout as the stitch's
                 edge = sorted({int(x) for x in nv.links["navm"]})
                 pref = float(np.mean((nv.tris["flags"] & nvnm.PREFERRED) > 0)) if len(nv.tris) else 0.0
                 mi = nvnm.nvmi(n["fid"], centre, edge, doors, world_fid, tuple(n["cell"]), preferred=pref)
@@ -1006,6 +1119,124 @@ def plan_place(pid: str, pdir: Path, out: Path, no_navmesh: bool, plan_only: boo
         return _plan_place(pid, pdir, out, no_navmesh, plan_only, tmp)
     finally:
         shutil.rmtree(tmp, ignore_errors=True)
+
+
+# ---- shrines ----------------------------------------------------------------------------------------------------
+
+SHRINE = {  # the vanilla blessing, measured on Skyrim.esm's TempleBlessingScript shrines
+    "spell_from": "Skyrim.esm:0FB999",      # AltarStendarrSpell: Self, Fire and Forget, a fortify effect for 28800 s, then Cure Disease 25
+    "mgef_from": "Skyrim.esm:0FB991",       # FortifyBlockFFSelf: Fire and Forget, Self, 28800 s; its keyword + DispelWithKeywords make blessings replace each other
+    "swap_effect": "Skyrim.esm:0FB991",     # the spell's fortify effect, replaced by ours
+    "remove_msg": "Skyrim.esm:10E4F9",      # AltarRemoveMsg, shared by every vanilla shrine
+    "magnitude": 10, "duration": 28800,     # vanilla: 25 for Health, Magicka, Stamina; 10 for every other blessed value
+    "activator": "Hist", "spell": "Blessing of the Hist", "message": "You are blessed by the Hist.",
+    "effect_text": "Resist <mag>% of disease for <dur> seconds.",
+}
+
+
+def plan_shrines(P: dict, S: dict, ids: Ids) -> list[dict]:
+    """Each `shrine` row of place.json stations.added becomes the vanilla temple shrine: the ref keeps its id and form
+    key, its base becomes an activator of ours with the old base's model and TempleBlessingScript, whose blessing is a
+    spell of ours (Resist Disease, fixed magnitude, eight hours), a message of ours and vanilla's remove message."""
+    from tools.places import people as ppl
+    out = []
+    for row in ((P["place"].get("stations") or {}).get("added") or []):
+        if row.get("station") != "shrine":
+            continue
+        ref = S["by_id"].get(row.get("id"))
+        if ref is None:
+            problem(f"place.json: stations.added shrine {row.get('id')} is not a ref of the place")
+            continue
+        n = ppl._edid(ref["id"])
+        pid = ids.path.parent.name
+        acti, spel, mesg, mgef = (ids(f"{k}:shrine:{ref['id']}") for k in ("acti", "spel", "mesg", "mgef"))
+        out.append({
+            "ref": ref["fk"], "ref_id": ref["id"],
+            "activator": {"fk": acti, "edid": f"ANP_{pid}_Shrine_{n}", "name": SHRINE["activator"], "model_from": ref["base"],
+                          "scripts": [{"name": "TempleBlessingScript", "props": [
+                              {"name": "TempleBlessing", "type": "object", "value": spel},
+                              {"name": "BlessingMessage", "type": "object", "value": mesg},
+                              {"name": "AltarRemoveMsg", "type": "object", "value": SHRINE["remove_msg"]}]}]},
+            "mgef": {"fk": mgef, "edid": f"ANP_{pid}_ResistDiseaseFFSelf", "from": SHRINE["mgef_from"], "actor_value": "ResistDisease",
+                     "name": "Resist Disease", "description": SHRINE["effect_text"]},
+            "spell": {"fk": spel, "edid": f"ANP_{pid}_Blessing_{n}", "name": SHRINE["spell"], "from": SHRINE["spell_from"],
+                      "swap_effect": SHRINE["swap_effect"], "mgef": mgef, "magnitude": SHRINE["magnitude"], "duration": SHRINE["duration"]},
+            "message": {"fk": mesg, "edid": f"ANP_{pid}_BlessingMsg_{n}", "text": SHRINE["message"]},
+        })
+        ref["base"] = acti  # last: the navmesh and the clearance read the old base's model
+    return out
+
+
+# ---- boats ------------------------------------------------------------------------------------------------------
+
+BOAT = {  # vanilla's carriage (Skyrim.esm DialogueCarriageSystem), measured: a start-game-enabled quest holding the
+    # topics; each destination's INFO gates on the player's gold against a global (CarriageCost 20 for the cities,
+    # CarriageCostSmall 50 for Dawnstar, Morthal, Winterhold, Falkreath) and runs a fragment that takes the fare and
+    # fast-travels. One compiled script (papyrus/TIF_ARG_BoatTravel.psc) serves every line; its properties are set per INFO.
+    "script": "TIF_ARG_BoatTravel", "gold": "Skyrim.esm:00000F",
+    "fare_city": 20, "fare_small": 50,
+    "quest_name": "Boat passage", "hub": "I need passage.", "hub_reply": "Where to? Say the name.",
+    "reply": "{name}, then. Sit low in the boat.",
+}
+
+
+def boat_destinations(detail: str) -> list[str]:
+    """The names a boatman's give promises: the give's `detail` is the only source (place_give has no destination column),
+    e.g. "raft-boatman to Truowa, Korydon, Marzai and Julo": what follows the last " to ", split at commas and "and"."""
+    tail = re.split(r"\bto\b", detail or "")[-1] if re.search(r"\bto\b", detail or "") else ""
+    return [n.strip() for n in re.split(r",|\band\b", tail) if n.strip()]
+
+
+def plan_boats(P: dict, people: dict, ids: Ids, facts: dict) -> list[dict]:
+    """A boatman's passage, as vanilla's carriages do it: per place a quest of ours (start-game-enabled); per boatman a
+    top-level topic "I need passage." (his boatman faction on the subject) whose line links one topic per destination;
+    each destination's INFO needs the faction and the player's gold, and runs TIF_ARG_BoatTravel with the destination's
+    map marker in ArgoniaNewWorld.esm (a place not built yet is still reached: the marker is the world's), the fixed fare
+    and Gold001. Fare: 20 for a city, 50 for any smaller place (vanilla's CarriageCost / CarriageCostSmall)."""
+    from tools.places import people as ppl
+    boatmen = [n for n in (people or {}).get("npcs", []) if n.get("boat_faction")]
+    if not boatmen:
+        return []
+    pid = P["place"]["place_id"]
+    places = jsonl(DB / "place.jsonl")
+    by_name = {}
+    for r in places:
+        for k in (r.get("name"), r.get("map_label")):
+            if k:
+                by_name.setdefault(k.casefold(), r)
+    detail_of = {g["detail"] for g in jsonl(DB / "place_give.jsonl") if g["place_id"] == pid and g["give_kind_id"] == "carriage-or-boat"}
+    markers = facts.get("map_markers") or {}
+    line = {"fk": ids("quest:boat"), "edid": f"ANP_{pid}_BoatTravel", "name": BOAT["quest_name"]}
+    out = {"place_id": pid, "script": BOAT["script"], "gold": BOAT["gold"], "quest": line, "boatmen": []}
+    for n in boatmen:
+        who = n["id"]
+        sv = next((s for s in next((q for q in P["people"] if q["id"] == who), {}).get("services", [])
+                   if (s.get("give_kind_id") or s.get("kind")) == "carriage-or-boat"), {})
+        names = boat_destinations(sv.get("detail") or "") or [d for x in sorted(detail_of) for d in boat_destinations(x)]
+        if not names:
+            problem(f"people.jsonl: {who}: a boatman whose give names no destination (the detail reads 'raft-boatman to A, B and C')")
+        e = ppl._edid(who)
+        hub = {"topic": ids(f"dial:boat:{who}"), "info": ids(f"info:boat:{who}"), "edid": f"ANP_{pid}_Boat_{e}_Hub",
+               "prompt": BOAT["hub"], "reply": BOAT["hub_reply"]}
+        dests = []
+        for name in names:
+            r = by_name.get(name.casefold())
+            if r is None:
+                problem(f"people.jsonl: {who}: destination {name!r} is no place of the database")
+                continue
+            did = r["id"]
+            mk = markers.get("ANW_MapMarker_" + did.replace("-", "_"))
+            if mk is None:
+                problem(f"people.jsonl: {who}: destination {name!r} ({did}) has no map marker in {WORLD}")
+                continue
+            fare = BOAT["fare_city"] if r["place_kind_id"] == "city" else BOAT["fare_small"]
+            tag = ppl._edid(did)
+            dests.append({"place": did, "name": r["name"], "kind": r["place_kind_id"], "marker": mk, "fare": fare,
+                          "topic": ids(f"dial:boat:{who}:{did}"), "info": ids(f"info:boat:{who}:{did}"), "edid": f"ANP_{pid}_Boat_{e}_{tag}",
+                          "prompt": f"Take me to {r['name']} ({fare} gold).", "reply": BOAT["reply"].format(name=r["name"])})
+        out["boatmen"].append({"who": who, "npc": n["fk"], "faction": n["boat_faction"], "branch": ids(f"brnc:boat:{who}"),
+                               "branch_edid": f"ANP_{pid}_Boat_{e}_Branch", "hub": hub, "dests": dests})
+    return [out]
 
 
 def _plan_place(pid: str, pdir: Path, out: Path, no_navmesh: bool, plan_only: bool, tmp: Path) -> dict:
@@ -1067,6 +1298,8 @@ def _plan_place(pid: str, pdir: Path, out: Path, no_navmesh: bool, plan_only: bo
     world_raw = nav_fid(facts["worldspace"])
     nav_rows, n2 = finish_navmesh(navs, S, world_raw)
     notes += n2
+    boats = plan_boats(P, people, ids, facts)
+    shrines = plan_shrines(P, S, ids)  # after the navmesh: it swaps the shrine refs' bases, which the navmesh reads
     if not plan_only:
         ids.save()  # a plan-only run never writes form ids: it may run beside a build
     plan = {
@@ -1076,7 +1309,7 @@ def _plan_place(pid: str, pdir: Path, out: Path, no_navmesh: bool, plan_only: bo
         "refs": S["refs"], "interiors": [{k: v for k, v in I.items() if k != "fk_of_src"} for I in S["interiors"]],
         "land": sorted(by_cell.values(), key=lambda r: (r["x"], r["y"])), "clear": clear,
         "navmesh": {"masters": NAV_MASTERS, "self": PLUGIN, "navi": key_of("Skyrim.esm", NAVI_FID), "navm": nav_rows},
-        "people": people, "notes": notes,
+        "people": people, "boats": boats, "shrines": shrines, "notes": notes,
         "stats": {"plan_s": round(time.time() - t0, 1), "nav": nav_info},
     }
     return plan

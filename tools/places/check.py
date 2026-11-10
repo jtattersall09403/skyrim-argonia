@@ -193,12 +193,13 @@ def load(place_id: str, out: Path) -> dict:
     facts = B.world_facts(cells, tmp)
     tmp.rmdir()
     xs, ys = [c[0] for c in cells] or [0], [c[1] for c in cells] or [0]
-    world_rows = world_nav_rows((min(xs), min(ys), max(xs), max(ys)))
+    r = B.NAV_RING + 4  # every world mesh a shipped one can link into
+    world_rows = world_nav_rows((min(xs) - r, min(ys) - r, max(xs) + r, max(ys) + r))
     navs = load_navs(esp, world_rows)
     edid = {c["fk"]: c["edid"] for c in dump["cells"]}
     for n in navs.values():
         n.space = edid.get(n.space, n.space) if n.space != "exterior" else n.space
-    return {"plan": plan, "dump": dump, "facts": facts, "navs": navs, "gives": gives_of(place_id),
+    return {"place_id": place_id, "plan": plan, "dump": dump, "facts": facts, "navs": navs, "gives": gives_of(place_id),
             "place_dir": B.PLACES / place_id}
 
 
@@ -255,23 +256,41 @@ def check_plugin(ctx) -> list[str]:
     return bad
 
 
+def built_ground(ctx):
+    """lane D's seat.Ground (the one seating function's view of land and water) over the BUILT land heights."""
+    from tools.places import seat as S
+    pid = ctx.get("place_id")
+    g = S.ground_for(pid) if pid and (S.BUNDLES / f"ground.{pid}").exists() else S.Ground({}, {})  # water: the ground bundle
+    _, steps = ground(ctx)
+    for (cx, cy), st in steps.items():
+        g.cells[(cx, cy)] = [float(v) * 8.0 for v in np.asarray(st, np.float64).reshape(-1)]
+    return g
+
+
 def check_seat(ctx) -> list[str]:
-    z, _ = ground(ctx)
-    bad = []
+    """Every exterior ref's BUILT z is what seat.seat_z gives at its BUILT x, y, yaw on the built land."""
+    from tools.places import seat as S
+    g = built_ground(ctx)
+    m = mine(ctx)
+    built = []
     for r in ctx["plan"]["refs"]:
-        s = r.get("seat") or {}
-        if r["space"] != "exterior" or s.get("mode") != "ground":
+        if r["space"] != "exterior":
             continue
-        got = mine(ctx)["refs"].get(r["fk"])
+        got = m["refs"].get(r["fk"])
         if got is None:
-            bad.append(f"{r['id']}: not in the plugin")
+            if (r.get("seat") or {}).get("mode", "free") != "free":
+                ctx.setdefault("_seat_missing", []).append(f"{r['id']}: not in the plugin")
             continue
-        g = z(got["pos"][0], got["pos"][1])
-        if g is None:
-            continue
-        want = g + float(s.get("dz", 0.0))
-        if abs(got["pos"][2] - want) > SEAT_TOL:
-            bad.append(f"{r['id']}: z {got['pos'][2]:.0f}, seat ground+{s.get('dz', 0)} wants {want:.0f}")
+        built.append({"id": r["id"], "seat": r.get("seat") or {"mode": "free"}, "pos": list(got["pos"]),
+                      "rot": list(r.get("rot") or [0, 0, 0])})
+    want = {x["id"]: x["pos"][2] for x in built}
+    trial = [dict(x, pos=list(x["pos"])) for x in built]
+    S.seat_all(trial, g)
+    bad = list(ctx.pop("_seat_missing", []))
+    for x in trial:
+        if abs(x["pos"][2] - want[x["id"]]) > SEAT_TOL:
+            s = x["seat"]
+            bad.append(f"{x['id']}: built z {want[x['id']]:.0f}, seat {s.get('mode')}+{s.get('dz', 0)} gives {x['pos'][2]:.0f}")
     return bad
 
 
@@ -296,8 +315,13 @@ def check_overlap(ctx) -> list[str]:
 
 
 def _source_had(a: dict, b: dict) -> bool:
-    """Both copied from the source with their relative placement kept (a copied interior keeps its frame)."""
-    return bool(a.get("src") and b.get("src") and a["space"] == b["space"] and a["space"] != "exterior")
+    """The source had this pair in this relative pose: both copied, and either inside one copied interior (it keeps its
+    frame) or in one exterior cluster (the fit moves a cluster as one rigid piece); or a door stands on its own building."""
+    if (a.get("seat") or {}).get("on") == b.get("id") or (b.get("seat") or {}).get("on") == a.get("id"):
+        return True
+    if not (a.get("src") and b.get("src") and a["space"] == b["space"]):
+        return False
+    return a["space"] != "exterior" or (a.get("cluster") is not None and a.get("cluster") == b.get("cluster"))
 
 
 def door_pairs(ctx) -> dict[str, str]:
@@ -322,11 +346,15 @@ def check_doors(ctx) -> list[str]:
         # the marker by this door (where one lands using the partner): on navmesh, out of every wall
         at = p["door"]["to_pos"]
         space = r["space"]
+        on_id = (m["rows"].get(r["fk"], {}).get("seat") or {}).get("on")
+        stands_on = next((x["fk"] for x in m["rows"].values() if x.get("id") == on_id), None) if on_id else None
         navs = [n for n in ctx["navs"].values() if n.space == space or (space == "exterior" and n.space == "exterior")]
         if not any(n.tri_at(at) >= 0 for n in navs):
             bad.append(f"door {rid}: its arrival point {[round(v) for v in at]} is on no navmesh (facing a wall?)")
         for o in ctx["dump"]["refs"]:
             kinds = SOLID if space == "exterior" else SOLID - {"building", "static"}  # an interior's shell holds the room
+            if o["fk"] == stands_on:
+                continue  # the thing the door stands on (its own building) holds the door, not the arrival
             if o["space"] == space and o["fk"] != r["fk"] and m["rows"].get(o["fk"], {}).get("kind") in kinds and obb_contains(o, at, OVERLAP_SHRINK):
                 bad.append(f"door {rid}: its arrival point is inside {m['rows'].get(o['fk'], {}).get('id', o['fk'])}")
     return bad
@@ -361,7 +389,7 @@ def check_people(ctx) -> list[str]:
             bad.append(f"{who}: no actor base in the plugin")
             continue
         beds = [r for r in m["refs"].values() if r.get("owner") == n["fk"] and r.get("base_type") == "FURN"]
-        if not beds:
+        if not beds and n.get("role") != "innkeeper":  # vanilla's innkeepers keep the inn all day (one 24-hour package)
             bad.append(f"{who}: no bed owned")
         prev = None
         for k in got["packages"]:
@@ -503,7 +531,7 @@ def check_clear(ctx) -> list[str]:
     paths = ctx.get("paths") if "paths" in ctx else (B.jsonl(ctx["place_dir"] / "paths.jsonl") if ctx.get("place_dir") else [])
     for cell in ctx["facts"]["cells"]:
         for w in cell.get("refs", []):
-            if w["fk"] in cleared or int(w.get("flags", 0)) & 0x800 or w.get("base_type", "TREE") not in PLANT_TYPES and not w.get("plant", True):
+            if w["fk"] in cleared or int(w.get("flags", 0)) & 0x800 or not (w.get("base_type") in PLANT_TYPES or w.get("plant") is True):  # a plant by its kind, never by default
                 continue
             p = w.get("pos")
             if p is None:
@@ -524,6 +552,171 @@ def check_clear(ctx) -> list[str]:
     return bad
 
 
+RENT_ROOM_FACTION, RENT_WI = "Skyrim.esm:09CC97", "Skyrim.esm:035D64"
+RENT_INN_RANKS = {RENT_ROOM_FACTION: -1, "Skyrim.esm:05091B": 0, "Skyrim.esm:051596": 0}  # an innkeeper's factions, as Dagur's
+_CMP = {"EqualTo": lambda a, b: a == b, "NotEqualTo": lambda a, b: a != b, "GreaterThan": lambda a, b: a > b,
+        "GreaterThanOrEqualTo": lambda a, b: a >= b, "LessThan": lambda a, b: a < b, "LessThanOrEqualTo": lambda a, b: a <= b}
+
+
+def rent_offer_verdicts(npc: dict, offer: list[dict]) -> list[tuple[str, str]]:
+    """Each condition of vanilla's rent offer INFO (Skyrim.esm:079B1A, read into dump["rent_offer"]) against this
+    actor base's records: (the condition in words, "ok" | "FAIL" | "runtime: why" | "not evaluated: why"). Conditions on
+    the actor are decided from the base's factions, ranks and ids; what only the running game knows (the player's gold,
+    an actor value) is named, never guessed."""
+    ranks = {f["faction"]: f["rank"] for f in npc.get("faction_ranks") or []}
+    out = []
+    for c in offer:
+        fn, op, want = c.get("fn", "?"), c.get("op", "EqualTo"), c.get("value")
+        text = f"{fn} {c.get('faction') or c.get('actor_value') or c.get('item') or c.get('object') or ''} {op} {want} ({c.get('run_on')})"
+        if c.get("run_on") != "Subject":
+            out.append((text, f"runtime: {c.get('run_on')} is the player or a reference, not this actor's records"))
+        elif fn == "GetInFaction" and isinstance(want, (int, float)):
+            out.append((text, "ok" if _CMP[op](1 if c["faction"] in ranks else 0, want) else "FAIL"))
+        elif fn == "GetFactionRank" and isinstance(want, (int, float)):
+            out.append((text, "ok" if _CMP[op](ranks.get(c["faction"], -1), want) else "FAIL"))
+        elif fn == "GetIsID" and isinstance(want, (int, float)):
+            out.append((text, "ok" if _CMP[op](1 if c["object"] in (npc["fk"], npc.get("template")) else 0, want) else "FAIL"))
+        elif fn == "GetActorValue":
+            out.append((text, "runtime: an actor value is set by scripts; a new base starts at its source's value"))
+        else:
+            out.append((text, f"not evaluated: {fn} is not one the check knows"))
+    return out
+
+
+def inn_room_problems(npc: dict, m: dict, facts: dict, dump: dict) -> list[str]:
+    """What one innkeeper lacks to rent a room the vanilla way (empty: nothing)."""
+    bad = []
+    ranks = {f["faction"]: f["rank"] for f in npc.get("faction_ranks") or []}
+    for fa, want in RENT_INN_RANKS.items():
+        if ranks.get(fa) != want:
+            bad.append(f"{fa} at rank {want} (has {ranks.get(fa)})")
+    if npc.get("voice") not in (dump.get("rent_voices") or []):
+        bad.append(f"a voice of form list Skyrim.esm:03B4A5 (has {npc.get('voice')})")
+    script = next((s for s in npc.get("scripts") or [] if s["name"] == "RentRoomScript"), None)
+    props = {p["name"]: p.get("value") for p in (script or {}).get("props", [])}
+    if script is None:
+        bad.append("RentRoomScript")
+    else:
+        bed = m["refs"].get(props.get("Bed"))
+        if not (bed and bed.get("base_type") == "FURN" and bed.get("owner") in facts and facts[bed["owner"]].get("vendor")
+                and bed["owner"] in npc.get("faction_keys", [])):
+            bad.append(f"RentRoomScript Bed {props.get('Bed')} a FURN ref of ours owned by this innkeeper's vendor faction")
+        if props.get("WI") != RENT_WI:
+            bad.append(f"RentRoomScript WI {RENT_WI} (has {props.get('WI')})")
+    bad += [f"rent offer 079B1A: {t}" for t, v in rent_offer_verdicts(npc, dump.get("rent_offer") or []) if v == "FAIL"]
+    return bad
+
+
+SHRINE_SCRIPT = "TempleBlessingScript"
+SHRINE_SECONDS = 28800  # eight hours, as vanilla's blessings
+
+
+def shrine_problems(ctx: dict, m: dict) -> list[str]:
+    """What the place's Hist shrine lacks to bless the vanilla way (empty: nothing). A ref of ours whose base is an
+    activator of ours carrying TempleBlessingScript with TempleBlessing a spell of ours (Resist Disease for eight hours at one
+    fixed magnitude), BlessingMessage a message of ours with text, and AltarRemoveMsg set."""
+    dump = ctx["dump"]
+    acts = {a["fk"]: a for a in dump.get("activators") or []}
+    spells = {s["fk"]: s for s in dump.get("spells") or []}
+    msgs = {x["fk"]: x for x in dump.get("messages") or []}
+    shrines = [r for r in m["refs"].values() if r.get("base") in acts]
+    if not shrines:
+        return ["no shrine ref: the draft must add one where the source town's shrine or Hist stands"]
+    tried = []
+    for r in shrines:
+        bad = []
+        sc = next((x for x in acts[r["base"]].get("scripts") or [] if x["name"] == SHRINE_SCRIPT), None)
+        props = {p["name"]: p.get("value") for p in (sc or {}).get("props", [])}
+        if sc is None:
+            bad.append(f"base {acts[r['base']].get('edid')} has no {SHRINE_SCRIPT}")
+        else:
+            sp = spells.get(props.get("TempleBlessing") or "")
+            if sp is None:
+                bad.append(f"TempleBlessing {props.get('TempleBlessing')} is not a spell of ours")
+            else:
+                eff = [e for e in sp["effects"] if e.get("actor_value") == "ResistDisease"]
+                if not eff:
+                    bad.append(f"{sp.get('edid')} has no Resist Disease effect")
+                elif not all(e.get("duration") == SHRINE_SECONDS and (e.get("magnitude") or 0) > 0 for e in eff):
+                    bad.append(f"{sp.get('edid')}: Resist Disease must last {SHRINE_SECONDS} s at a fixed magnitude above 0 "
+                               f"(has {[(e.get('magnitude'), e.get('duration')) for e in eff]})")
+            msg = msgs.get(props.get("BlessingMessage") or "")
+            if msg is None or not (msg.get("text") or "").strip():
+                bad.append(f"BlessingMessage {props.get('BlessingMessage')} is not a message of ours with text")
+            if not props.get("AltarRemoveMsg"):
+                bad.append("AltarRemoveMsg is not set")
+        if not bad:
+            return []
+        tried.append(f"{m['rows'].get(r['fk'], {}).get('id', r['fk'])}: " + "; ".join(bad))
+    return ["the shrine lacks " + " | ".join(tried)]
+
+
+BOAT_SCRIPT, BOAT_GOLD = "TIF_ARG_BoatTravel", "Skyrim.esm:00000F"
+BOAT_PEX = B.ROOT / "out" / "gpu" / "papyrus" / "TIF_ARG_BoatTravel.pex"
+WARNINGS: list[str] = []  # what a check notes without failing; main prints them
+
+
+def boat_problems(ctx: dict, m: dict, facts: dict, npcs: list[dict], detail: str) -> list[str]:
+    """What a place's boatman lacks to take the player where the give promises (empty: nothing). A placed person of ours
+    in a boatman faction of ours; for every promised destination an INFO on that faction (subject in it, the player holding
+    the fare in gold) whose script is TIF_ARG_BoatTravel with Destination a map marker of that place in the world ESM,
+    Fare a fixed whole number above 0 matching the gold condition, Gold001 set, and the fragment Fragment_0."""
+    dump = ctx["dump"]
+    markers = dump.get("world_markers") or {}
+    places = ctx.get("places") or B.jsonl(B.DB / "place.jsonl")
+    by_name = {}
+    for r in places:
+        for key in (r.get("name"), r.get("map_label")):
+            if key:
+                by_name.setdefault(key.casefold(), r)
+    names = B.boat_destinations(detail)
+    if not names:
+        return [f"the give names no destination ({detail!r})"]
+    boat = [(n, [f for f in n["faction_keys"] if "Boatman" in (facts.get(f, {}).get("edid") or "") and f.startswith(B.PLUGIN + ":")]) for n in npcs]
+    boat = [(n, fs) for n, fs in boat if fs]
+    if not boat:
+        return ["no person of ours in a boatman faction of ours"]
+    infos = [i for t in dump.get("topics") or [] for i in t.get("infos") or []]
+    tried = []
+    for n, fs in boat:
+        bad = []
+        for name in names:
+            row = by_name.get(name.casefold())
+            if row is None:
+                bad.append(f"{name}: no place of that name in the database")
+                continue
+            want = "ANW_MapMarker_" + row["id"].replace("-", "_")
+            mine_ = [i for i in infos if any(c.get("fn") == "GetInFaction" and c.get("faction") in fs and c.get("run_on") == "Subject"
+                                             and c.get("op") == "EqualTo" and c.get("value") == 1 for c in i.get("conditions") or [])
+                     and any(sc["name"] == BOAT_SCRIPT for sc in i.get("scripts") or [])]
+            hit = [i for i in mine_ if markers.get(next((p["value"] for sc in i["scripts"] for p in sc["props"] if p["name"] == "Destination"), None)) == want]
+            if not hit:
+                bad.append(f"{name}: no INFO of this boatman running {BOAT_SCRIPT} to {want}"
+                           + ("" if mine_ else f" (he has no {BOAT_SCRIPT} line at all)"))
+                continue
+            i = hit[0]
+            props = {p["name"]: p["value"] for sc in i["scripts"] for p in sc["props"]}
+            fare = props.get("Fare")
+            if not (isinstance(fare, int) and fare > 0):
+                bad.append(f"{name}: Fare {fare!r} is not a fixed amount above 0")
+                continue
+            if props.get("Gold001") != BOAT_GOLD:
+                bad.append(f"{name}: Gold001 is {props.get('Gold001')!r} (want {BOAT_GOLD})")
+            if not any(c.get("fn") == "GetGold" and c.get("run_on") == "Target" and c.get("op") == "GreaterThanOrEqualTo" and c.get("value") == fare
+                       or c.get("fn") == "GetItemCount" and c.get("item") == BOAT_GOLD and c.get("op") == "GreaterThanOrEqualTo" and c.get("value") == fare
+                       for c in i.get("conditions") or []):
+                bad.append(f"{name}: no condition that the player holds {fare} gold")
+            fr = i.get("fragment") or {}
+            if fr.get("file") != BOAT_SCRIPT or fr.get("on_end") != "Fragment_0":
+                bad.append(f"{name}: fragment {fr} is not {BOAT_SCRIPT} OnEnd Fragment_0")
+        if not bad:
+            if not BOAT_PEX.exists():
+                WARNINGS.append(f"{BOAT_PEX} is not compiled: the boat lines do nothing in game until it is")
+            return []
+        tried.append("; ".join(bad))
+    return tried[:1]
+
+
 def check_services(ctx) -> list[str]:
     bad = []
     m = mine(ctx)
@@ -541,10 +734,25 @@ def check_services(ctx) -> list[str]:
         elif k == "trainer":
             ok = any("JobTrainerFaction" in n["factions"] and classes.get(n["class"], {}).get("teaches") for n in npcs)
         elif k == "inn-room":
-            ok = any("JobInnkeeperFaction" in n["factions"] for n in npcs) and any(
-                r.get("base_type") == "FURN" and r.get("owner") in facts and facts[r["owner"]].get("vendor") for r in m["refs"].values())
+            tried = [inn_room_problems(n, m, facts, ctx["dump"]) for n in npcs if "JobInnkeeperFaction" in n["factions"]]
+            ok = any(not t for t in tried)
+            if not ok:
+                bad.append(f"promised {k} ({g.get('detail', '')}): " + ("no innkeeper (JobInnkeeperFaction)" if not tried else "the innkeeper lacks " + "; ".join(tried[0])))
+                continue
         elif k in CRAFT_KEYWORD:
             ok = any(CRAFT_KEYWORD[k] in (r.get("keywords") or []) for r in m["refs"].values())
+        elif k == "shrine-blessing":
+            tried = shrine_problems(ctx, m)
+            if tried:
+                bad.append(f"promised {k} ({g.get('detail', '')}): " + tried[0])
+                continue
+            ok = True
+        elif k == "carriage-or-boat":
+            tried = boat_problems(ctx, m, facts, npcs, g.get("detail", ""))
+            if tried:
+                bad.append(f"promised {k} ({g.get('detail', '')}): " + tried[0])
+                continue
+            ok = True
         elif k == "fast-travel":
             ok = any((r.get("base_edid") or "") == "MapMarker" for r in m["refs"].values())
         if not ok:
@@ -592,10 +800,18 @@ def main(argv: list[str]) -> int:
     counts = ctx["dump"]["counts"]
     report = {"place_id": a.place_id, "check_s": round(time.time() - t0, 1), "masters": ctx["dump"]["masters"], "counts": counts,
               "results": {k: {"ok": not v, "failures": v[:50], "n": len(v)} for k, v in res.items()}}
-    (Path(a.out) / "shards" / a.place_id / "check.json").write_text(json.dumps(report, indent=1, sort_keys=True) + "\n")
+    shard = Path(a.out) / "shards" / a.place_id
+    (shard / "check.json").write_text(json.dumps(report, indent=1, sort_keys=True) + "\n")
+    # the full lists, never cut, one file per check, so nothing is hidden
+    full = shard / "check_failures"
+    full.mkdir(parents=True, exist_ok=True)
+    for k, v in res.items():
+        (full / f"{k}.txt").write_text("".join(f"{f}\n" for f in v))
     if a.json:
         print(json.dumps(report, sort_keys=True))
     else:
+        for w in WARNINGS:
+            print(f"warn {w}")
         for k, v in res.items():
             print(f"{'ok  ' if not v else 'FAIL'} {k}" + ("" if not v else f" ({len(v)})"))
             for f in v[:20]:

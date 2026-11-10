@@ -74,8 +74,72 @@ static class Dump
             ["packages"] = n.Packages.Select(p => C.Key(p.FormKey)).ToList(),
             ["factions"] = n.Factions.Select(f => cache.TryResolve<IFactionGetter>(f.Faction.FormKey, out var fa) ? fa.EditorID : C.Key(f.Faction.FormKey)).ToList(),
             ["faction_keys"] = n.Factions.Select(f => C.Key(f.Faction.FormKey)).ToList(),
+            ["faction_ranks"] = n.Factions.Select(f => new Dictionary<string, object?> { ["faction"] = C.Key(f.Faction.FormKey), ["rank"] = (int)f.Rank }).ToList(),
+            ["voice"] = C.Key(n.Voice.FormKey),
+            ["scripts"] = n.VirtualMachineAdapter?.Scripts.Select(sc => new Dictionary<string, object?>
+            {
+                ["name"] = sc.Name,
+                ["props"] = sc.Properties.Select(pr => new Dictionary<string, object?> { ["name"] = pr.Name, ["type"] = pr.GetType().Name.Replace("BinaryOverlay", "").Replace("Script", "").Replace("Property", "").ToLowerInvariant(),
+                    ["value"] = pr is IScriptObjectPropertyGetter op ? C.Key(op.Object.FormKey) : null }).ToList(),
+            }).ToList() ?? new List<Dictionary<string, object?>>(),
             ["items"] = n.Items?.Select(i => C.Key(i.Item.Item.FormKey)).ToList(), ["outfit"] = C.Key(n.DefaultOutfit.FormKey),
         }).ToList();
+        List<Dictionary<string, object?>> Scripts(IVirtualMachineAdapterGetter? v) => v?.Scripts.Select(sc => new Dictionary<string, object?>
+        {
+            ["name"] = sc.Name,
+            ["props"] = sc.Properties.Select(pr => new Dictionary<string, object?> { ["name"] = pr.Name, ["type"] = pr.GetType().Name.Replace("BinaryOverlay", "").Replace("Script", "").Replace("Property", "").ToLowerInvariant(),
+                ["value"] = pr is IScriptObjectPropertyGetter op ? C.Key(op.Object.FormKey) : null }).ToList(),
+        }).ToList() ?? new List<Dictionary<string, object?>>();
+        var activators = mod.Activators.Select(a => new Dictionary<string, object?>
+        {
+            ["fk"] = C.Key(a.FormKey), ["edid"] = a.EditorID, ["name"] = a.Name?.String, ["model"] = a.Model?.File.DataRelativePath.Path.ToLowerInvariant(), ["scripts"] = Scripts(a.VirtualMachineAdapter),
+        }).ToList();
+        // quests, topics and their INFOs, the travel lines' read-back: conditions, links, script properties (object keys, ints) and the fragment
+        object? Val(IScriptPropertyGetter pr) => pr switch { IScriptObjectPropertyGetter op => C.Key(op.Object.FormKey), IScriptIntPropertyGetter ip => ip.Data, _ => null };
+        var quests = mod.Quests.Select(qq => new Dictionary<string, object?>
+        {
+            ["fk"] = C.Key(qq.FormKey), ["edid"] = qq.EditorID, ["name"] = qq.Name?.String, ["start_game_enabled"] = qq.Flags.HasFlag(Quest.Flag.StartGameEnabled),
+        }).ToList();
+        var topics = mod.DialogTopics.Select(t => new Dictionary<string, object?>
+        {
+            ["fk"] = C.Key(t.FormKey), ["edid"] = t.EditorID, ["name"] = t.Name?.String, ["quest"] = C.Key(t.Quest.FormKey), ["branch"] = C.Key(t.Branch.FormKey),
+            ["infos"] = t.Responses.Select(i =>
+            {
+                var ad = i.VirtualMachineAdapter as IDialogResponsesAdapterGetter;
+                return new Dictionary<string, object?>
+                {
+                    ["fk"] = C.Key(i.FormKey), ["prompt"] = i.Prompt?.String, ["text"] = i.Responses.Select(r => r.Text.String).ToList(),
+                    ["link_to"] = i.LinkTo.Select(l => C.Key(l.FormKey)).ToList(),
+                    ["conditions"] = i.Conditions.Select(c =>
+                    {
+                        var cd = c.Data;
+                        var row = new Dictionary<string, object?> { ["fn"] = cd.GetType().Name.Replace("BinaryOverlay", "").Replace("ConditionData", ""), ["run_on"] = cd.RunOnType.ToString(),
+                            ["op"] = c.CompareOperator.ToString(), ["value"] = c is IConditionFloatGetter cf ? cf.ComparisonValue : null };
+                        switch (cd)
+                        {
+                            case IGetInFactionConditionDataGetter gf: row["faction"] = C.Key(gf.Faction.Link.FormKey); break;
+                            case IGetItemCountConditionDataGetter gi: row["item"] = C.Key(gi.ItemOrList.Link.FormKey); break;
+                        }
+                        return row;
+                    }).ToList(),
+                    ["scripts"] = ad?.Scripts.Select(sc => new Dictionary<string, object?> { ["name"] = sc.Name,
+                        ["props"] = sc.Properties.Select(pr => new Dictionary<string, object?> { ["name"] = pr.Name, ["value"] = Val(pr) }).ToList() }).ToList(),
+                    ["fragment"] = ad?.ScriptFragments is { } sf ? new Dictionary<string, object?> { ["file"] = sf.FileName, ["on_end"] = sf.OnEnd?.FragmentName } : null,
+                };
+            }).ToList(),
+        }).ToList();
+        var worldMarkers = Read.MapMarkers(world.Worldspaces.Single()).ToDictionary(kv => kv.Value, kv => kv.Key); // form key -> editor id
+        var spells = mod.Spells.Select(sp => new Dictionary<string, object?>
+        {
+            ["fk"] = C.Key(sp.FormKey), ["edid"] = sp.EditorID, ["name"] = sp.Name?.String, ["type"] = sp.Type.ToString(), ["cast"] = sp.CastType.ToString(), ["target"] = sp.TargetType.ToString(),
+            ["effects"] = sp.Effects.Select(e =>
+            {
+                var has = cache.TryResolve<IMagicEffectGetter>(e.BaseEffect.FormKey, out var me);
+                return new Dictionary<string, object?> { ["mgef"] = C.Key(e.BaseEffect.FormKey), ["mgef_edid"] = has ? me!.EditorID : null,
+                    ["actor_value"] = has ? me!.Archetype.ActorValue.ToString() : null, ["magnitude"] = e.Data?.Magnitude, ["duration"] = e.Data?.Duration, ["area"] = e.Data?.Area };
+            }).ToList(),
+        }).ToList();
+        var messages = mod.Messages.Select(ms => new Dictionary<string, object?> { ["fk"] = C.Key(ms.FormKey), ["edid"] = ms.EditorID, ["text"] = ms.Description.String }).ToList();
         var packages = mod.Packages.Select(p => new Dictionary<string, object?>
         {
             ["fk"] = C.Key(p.FormKey), ["edid"] = p.EditorID, ["template"] = C.Key(p.PackageTemplate.FormKey), ["hour"] = p.ScheduleHour, ["minutes"] = p.ScheduleDurationInMinutes,
@@ -107,12 +171,34 @@ static class Dump
         foreach (var a in actors.Cast<Dictionary<string, object?>>()) if (cache.TryResolve<ILeveledNpcGetter>(C.Fk((string)a["base"]!), out _)) levelled.Add($"actor {a["fk"]} is a LVLN");
         foreach (var r in refs.Cast<Dictionary<string, object?>>()) if (cache.TryResolve<ILeveledItemGetter>(C.Fk((string)r["base"]!), out var li) && People.Levelled(li)) levelled.Add($"ref {r["fk"]} -> {li.EditorID}");
 
+        // vanilla's innkeeper rent: the voices of form list 03B4A5 and the conditions of the rent offer INFO 079B1A
+        var rentVoices = cache.TryResolve<IFormListGetter>(C.Fk("Skyrim.esm:03B4A5"), out var rvl) ? rvl.Items.Select(i => C.Key(i.FormKey)).ToList() : new List<string>();
+        var rentOffer = new List<Dictionary<string, object?>>();
+        if (cache.TryResolve<IDialogResponsesGetter>(C.Fk("Skyrim.esm:079B1A"), out var offer))
+            foreach (var c in offer.Conditions)
+            {
+                var cd = c.Data;
+                var row = new Dictionary<string, object?> { ["fn"] = cd.GetType().Name.Replace("BinaryOverlay", "").Replace("ConditionData", ""), ["run_on"] = cd.RunOnType.ToString(),
+                    ["op"] = c.CompareOperator.ToString(), ["or"] = c.Flags.HasFlag(Condition.Flag.OR) };
+                row["value"] = c is IConditionFloatGetter cf ? (object)cf.ComparisonValue : c is IConditionGlobalGetter cg ? C.Key(cg.ComparisonValue.FormKey) : null;
+                switch (cd)
+                {
+                    case IGetInFactionConditionDataGetter gf: row["faction"] = C.Key(gf.Faction.Link.FormKey); break;
+                    case IGetFactionRankConditionDataGetter gr: row["faction"] = C.Key(gr.Faction.Link.FormKey); break;
+                    case IGetActorValueConditionDataGetter ga: row["actor_value"] = ga.ActorValue.ToString(); break;
+                    case IGetItemCountConditionDataGetter gi: row["item"] = C.Key(gi.ItemOrList.Link.FormKey); break;
+                    case IGetIsIDConditionDataGetter gid: row["object"] = C.Key(gid.Object.Link.FormKey); break;
+                }
+                rentOffer.Add(row);
+            }
         C.WriteJson(outPath, new Dictionary<string, object?>
         {
+            ["rent_voices"] = rentVoices, ["rent_offer"] = rentOffer,
             ["esp"] = esp, ["masters"] = mod.ModHeader.MasterReferences.Select(m => m.Master.FileName.String).ToList(),
             ["flags"] = (int)mod.ModHeader.Flags, ["counts"] = counts, ["unresolved"] = unresolved,
             ["refs"] = refs, ["overrides"] = overrides, ["land"] = land, ["actors"] = actors, ["cells"] = cellsOut,
             ["npcs"] = npcs, ["packages"] = packages, ["factions"] = factions, ["classes"] = classes, ["levelled"] = levelled,
+            ["activators"] = activators, ["quests"] = quests, ["topics"] = topics, ["world_markers"] = worldMarkers, ["spells"] = spells, ["messages"] = messages,
         });
         Console.WriteLine($"dump: {esp}: {string.Join(", ", counts.Select(kv => $"{kv.Key} {kv.Value}"))}; unresolved {unresolved.Count}");
         return 0;

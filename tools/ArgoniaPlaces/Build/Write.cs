@@ -229,6 +229,10 @@ static class Write
             // people
             if (plan.TryGetProperty("people", out var people) && people.ValueKind == JsonValueKind.Object)
                 People.Build(ctx, pid, people, refByKey, interiors);
+            if (plan.TryGetProperty("boats", out var boats) && boats.ValueKind == JsonValueKind.Array)
+                Boat.Build(ctx, boats);
+            if (plan.TryGetProperty("shrines", out var shrines) && shrines.ValueKind == JsonValueKind.Array)
+                Shrine.Build(ctx, shrines);
             Console.WriteLine($"write: {pid}");
         }
 

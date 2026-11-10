@@ -130,6 +130,11 @@ static class Read
         _ => "",
     };
 
+    /// The world's map markers (nwmap, ArgoniaNewWorld.esm's persistent cell): editor id -> form key, so a travel line can name one.
+    public static Dictionary<string, string> MapMarkers(IWorldspaceGetter ws) =>
+        (ws.TopCell?.Persistent ?? []).OfType<IPlacedObjectGetter>().Where(r => r.MapMarker != null && r.EditorID != null)
+            .ToDictionary(r => r.EditorID!, r => C.Key(r.FormKey));
+
     public static int World(string esm, string reqPath, string outPath)
     {
         var m = C.Open(esm);
@@ -161,7 +166,7 @@ static class Read
         {
             ["worldspace"] = C.Key(ws.FormKey), ["world_edid"] = ws.EditorID, ["top_cell"] = ws.TopCell == null ? null : C.Key(ws.TopCell.FormKey),
             ["description"] = m.ModHeader.Description, ["masters"] = m.ModHeader.MasterReferences.Select(x => x.Master.FileName.String).ToList(),
-            ["ltex"] = ltex, ["cells"] = cells,
+            ["ltex"] = ltex, ["cells"] = cells, ["map_markers"] = MapMarkers(ws),
         });
         return 0;
     }

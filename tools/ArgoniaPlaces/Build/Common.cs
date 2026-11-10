@@ -43,6 +43,36 @@ static class C
         return new FormKey(ModKey.FromFileName(key[..i]), Convert.ToUInt32(key[(i + 1)..], 16));
     }
 
+    /// A VMAD from plan rows [{"name": "Script", "props": [{"name": "P", "type": "object|int|float|bool|string", "value": ...}]}]:
+    /// vanilla's shape (version 5, object format 2, local script, edited properties, no alias). Object values are form keys.
+    public static VirtualMachineAdapter Vmad(JsonElement scripts)
+    {
+        var vm = new VirtualMachineAdapter { Version = 5, ObjectFormat = 2 };
+        foreach (var sc in scripts.EnumerateArray())
+        {
+            var e = new ScriptEntry { Name = sc.GetProperty("name").GetString()!, Flags = ScriptEntry.Flag.Local };
+            if (sc.TryGetProperty("props", out var props))
+                foreach (var p in props.EnumerateArray())
+                {
+                    var name = p.GetProperty("name").GetString()!;
+                    var v = p.GetProperty("value");
+                    ScriptProperty sp = p.GetProperty("type").GetString() switch
+                    {
+                        "object" => new ScriptObjectProperty { Object = new FormLink<ISkyrimMajorRecordGetter>(Fk(v.GetString()!)), Alias = -1 },
+                        "int" => new ScriptIntProperty { Data = v.GetInt32() },
+                        "float" => new ScriptFloatProperty { Data = (float)v.GetDouble() },
+                        "bool" => new ScriptBoolProperty { Data = v.GetBoolean() },
+                        "string" => new ScriptStringProperty { Data = v.GetString()! },
+                        var t => throw new InvalidDataException($"script {e.Name}.{name}: property type {t} (object, int, float, bool, string)"),
+                    };
+                    sp.Name = name; sp.Flags = ScriptProperty.Flag.Edited;
+                    e.Properties.Add(sp);
+                }
+            vm.Scripts.Add(e);
+        }
+        return vm;
+    }
+
     public static string Sig(IMajorRecordGetter? r) => r switch
     {
         null => "",

@@ -17,3 +17,4 @@ the `.pex` files are build outputs and are sent by `infra/gpu-box/deploy.sh`.
 | `generated/TIF_ARG_TG0*.psc` | their lines' end fragments, written by the seed from NightReed.cs (one call each) |
 | `ARG_QF_MQ01.psc`, `ARG_QF_MQ03.psc` | the opening act's MQ01 (character creation, then the hold, the march, the strike, the choice) and MQ03 (the dawn camp, the Reed's house, the dream), `tools/ArgoniaPlugin/MainQuest.cs`; MQ101 now starts `ARG_MQ01` |
 | `generated/TIF_ARG_MQ0*.psc` | their lines' end fragments, written by the seed from MainQuest.cs |
+| `TIF_ARG_BoatTravel.psc` | every boatman's travel line in the place layer (`tools/ArgoniaPlaces/Build`): one script for every boatman and destination, set by the line's properties (`Destination` marker, `Fare`); takes the fare and fast-travels, as vanilla's carriage does |

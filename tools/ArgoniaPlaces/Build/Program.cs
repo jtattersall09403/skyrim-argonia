@@ -5,6 +5,7 @@
 //   study <Data dir> <plugin...>         override evidence (Study.cs)
 return (args.FirstOrDefault()) switch
 {
+    "carriage" => Study.Carriage(args[1]),
     "study" => Study.Run(args[1..]),
     "source" => Read.Source(args[1], args[2], args[3]),
     "doors" => Read.Doors(args[1], args[2], args[3]),

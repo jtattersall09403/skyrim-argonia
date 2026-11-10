@@ -21,7 +21,9 @@ level, no levelled lists: decision 0035) placed once as a persistent actor, with
       inn-room        the innkeeper's JobInnkeeperFaction and the rented bed: a bed ref of the place in
                       `room_bed`, owned by the innkeeper's vendor faction until rented (vanilla: the room's bed is
                       owned by the inn, and DialogueGeneric's rent-room line gives it to the player for a day);
-      carriage-or-boat and shrine-blessing are not built by people.py (see place-studio.md, Build: not yet built).
+      carriage-or-boat  (role boatman) a boatman faction of ours the travel lines are conditioned on; the quest, topics
+                      and lines are build.py's `plan_boats` (place-studio.md, Build: boats); shrine-blessing is
+                      build.py's `plan_shrines` (place-studio.md, Build: shrines).
 """
 from __future__ import annotations
 
@@ -57,6 +59,10 @@ TRADE = {  # give -> (Job faction, vendor list FLST, merchant chest CONT copied)
     "fence": ("0806AA", "06CB48", "0C644F"),
 }
 JOB_INNKEEPER = "Skyrim.esm:05091B"
+JOB_MERCHANT = "Skyrim.esm:051596"  # JobMerchantFaction
+JOB_RENT_ROOM = "Skyrim.esm:09CC97"  # JobRentRoomFaction: rank -1 on a renting innkeeper
+RENT_VOICES = "Skyrim.esm:03B4A5"  # the form list of voice types vanilla's rent offer is spoken in
+RENT_WI = "Skyrim.esm:035D64"  # RentRoomScript's WI property, as on every vanilla innkeeper
 PERSON_SERVES = set(TRADE) | {"trainer", "inn-room"}  # gives a person provides (the rest are refs or not built)
 DEFAULT_RADIUS = 512
 SLEEP_RADIUS = 256
@@ -212,6 +218,7 @@ def plan(P: dict, S: dict, ids, facts: dict, notes: list[str]) -> dict:
             factions.append({"faction": IS_GUARD, "rank": 0})
         cls = None
         gives = []
+        scripts, voice_list, boat_faction = [], None, None
         for sv in p.get("services", []):
             g = sv.get("give_kind_id") or sv["kind"]
             if g in TRADE:
@@ -265,8 +272,22 @@ def plan(P: dict, S: dict, ids, facts: dict, notes: list[str]) -> dict:
                               f"resident sleeps in (its beds {beds} are all residents')")
                 rb["persistent"] = True
                 rb["owner_inn_of"] = who  # owned by the innkeeper's vendor faction (set below)
-                if not any(f["faction"] == JOB_INNKEEPER for f in factions):
-                    factions.append({"faction": JOB_INNKEEPER, "rank": 0})
+                # the vanilla innkeeper (Dagur, Faida): JobRentRoomFaction at rank -1, the Innkeeper and Merchant job
+                # factions, RentRoomScript(Bed = the room's bed ref, WI = WIRentRoom...) and a voice of form list 03B4A5
+                # (RentVoices: Male/Female Commoner and Argonian). The offer INFO 079B1A reads the faction.
+                for fa, rank in ((JOB_RENT_ROOM, -1), (JOB_INNKEEPER, 0), (JOB_MERCHANT, 0)):
+                    if not any(f["faction"] == fa for f in factions):
+                        factions.append({"faction": fa, "rank": rank})
+                scripts.append({"name": "RentRoomScript", "props": [{"name": "Bed", "type": "object", "value": rb["fk"]},
+                                                                    {"name": "WI", "type": "object", "value": RENT_WI}]})
+                # People.cs picks: the base's own voice when it is in the list, else the list's voice of its sex
+                # (Argonian for an Argonian race, else Commoner)
+                voice_list = RENT_VOICES
+                gives.append(g)
+            elif g == "carriage-or-boat" and p.get("role") == "boatman":
+                boat_faction = ids(f"fact:boat:{who}")
+                out["factions"].append({"fk": boat_faction, "edid": f"ANP_{pid}_Boatman_{_edid(who)}", "name": f"{p.get('name') or who} (boatman)"})
+                factions.append({"faction": boat_faction, "rank": 0})
                 gives.append(g)
             else:
                 notes.append(f"{who}: service {g} is not a person's to give here (built by refs, or not built yet)")
@@ -282,7 +303,9 @@ def plan(P: dict, S: dict, ids, facts: dict, notes: list[str]) -> dict:
         pos, space = _spot(norm_at(spot), by_id)
         out["npcs"].append({"fk": npc_fk, "edid": f"ANP_{pid}_{_edid(who)}", "name": p.get("name") or who, "from": p["base_from"],
                             "level": int(p.get("level", 10)), "factions": factions, "packages": packs,
-                            "class": cls["fk"] if cls else None, "gives": gives, "role": p.get("role"), "id": who})
+                            "class": cls["fk"] if cls else None, "gives": gives, "role": p.get("role"), "id": who,
+                            **({"scripts": scripts} if scripts else {}), **({"voice_list": voice_list} if voice_list else {}),
+                            **({"boat_faction": boat_faction} if boat_faction else {})})
         out["actors"].append({"fk": ids(f"actor:{who}"), "base": npc_fk, "space": space, "pos": pos, "rot": [0.0, 0.0, 0.0],
                               "cell": list(cell_of(*pos[:2])) if space == "exterior" else None, "person": who,
                               **({"linked": [{"ref": patrol_start, "keyword": ""}]} if patrol_start else {})})
