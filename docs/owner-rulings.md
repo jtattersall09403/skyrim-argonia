@@ -346,3 +346,9 @@ added here the day they are made, with the date and the issue.
   both states, without shadows, so the owner can judge whether a place is lit enough and add or remove lights and
   see the effect. Notes are part of editing: the owner changes one thing or several and leaves one note for the
   agent about them, smoothly, without a separate step.
+- 2026-11-10 (in session, walk 5 follow-up): (1) confirmed in game: the gang was already standing at the dock's
+  landward end when the owner came out of the hold, and nothing happened there; the gang starts its walk only once
+  the player is outside, so the player can follow. (2) The opening is re-authored and rebuilt so its spirit is
+  kept but it happens at the place the player reaches straight after stepping off the dock: no long march to
+  Hereguard Plantation, so a new player cannot wander off before the opening completes. (3) The walking limit of
+  BM&V's ground (its navmeshes are not joined to each other) is fixed anyway where the slice's routes need it.
