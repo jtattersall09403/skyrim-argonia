@@ -802,7 +802,8 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
     io.write_jsonl(pdir / "clear.jsonl", clear_rows)
     io.write_jsonl(pdir / "paths.jsonl", paths_our)
     who = identities.read(place_id, places)
-    people.give_to_residents(folk, gives, who, next(iter((stations.get("found") or {}).get("shrine") or []), None))
+    people.give_to_residents(folk, gives, who, next(iter((stations.get("found") or {}).get("shrine") or []), None),
+                             people.routes_of(place_id))
     people.apply_identities(folk, who)
     io.write_jsonl(pdir / "people.jsonl", folk)
     io.write_jsonl(pdir / "ledger.jsonl", sorted(ledger, key=lambda r: (r["space"], r["src"])))
@@ -1129,6 +1130,10 @@ def draft_people(place_id, rec, gives, src, bases, our, spaces, clusters, fit, o
         if role == "boatman" and "landing" in nodes_our:
             p = nodes_our["landing"]
             return {"space": "exterior", "pos": [round(p[0], 1), round(p[1], 1)], "radius": 384}
+        if role == "carter":
+            p = people.road_end(paths_our, centre, lambda q: not G.wet(q[0], q[1], 16))
+            if p:
+                return {"space": "exterior", "pos": p, "radius": 384}
         # where the source's own person of this trade worked (Bethesda places a trader in their shop)
         for sp_id, r in actors:
             n_ = src.npcs[r["base"]]
@@ -1183,7 +1188,7 @@ def draft_people(place_id, rec, gives, src, bases, our, spaces, clusters, fit, o
         members[home] = k + 1
         return {"household": {"id": f"{place_id}.household.{home}", "relation": ("head", "partner")[k] if k < 2 else "kin"}}
 
-    services = people.service_people(gives)
+    services = people.service_people(gives, people.routes_of(place_id))
     free_houses = list(houses)
     for n, sp in enumerate(services):
         role = sp["role"]

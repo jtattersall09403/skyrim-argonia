@@ -27,9 +27,10 @@ place is at the top of the skill `place-build`.
 - The lore (decision 0032): `story/lore/` (its `README.md` routes you), the place's culture and region rows, and
   the extrapolation in `story/lore/extrapolation/`.
 - The naming rules: `story/design/quests/35-cast.md` section 54 and `story/design/quests/86-never-reuse-names.md`.
-- Every name already given: the `name` of every person in `newworld/sources/people/*.json`.
-- The lookups, `newworld/sources/people/lookups.json`: the ids a row may use for `race`, `role`, a household role
-  and a relation. A row uses an id only after the lookup has it.
+- Every name already given: the `name` of every person in `newworld/sources/people/*.json`, of every person of
+  the story's roster (`db.open()`, table `npc`, kind `person`) and of every BM&V talker (table `talker`).
+- The lookups, `newworld/sources/people/lookups.json`: the ids a row may use for `race`, `role`, a household role,
+  a relation and the place's guard body. A row uses an id only after the lookup has it.
 
 ## 1. Lay out the households
 
@@ -53,7 +54,9 @@ Copy `role` from `people.jsonl` unchanged. The `trade` is what the person does, 
 - **A service person**: the trade is the promise they deliver, in the words of its `place_give` detail, with every
   further promise they keep (a trainer who is also the apothecary: "sap and herb seller; teaches alchemy").
 - **A guard**: the place's guard body and the watch, from `shift`: "the city levy, night watch". The leader's
-  trade says they lead. In Black Marsh the guard body is the levy, and the check reads that word in the trade.
+  trade says they lead. The guard body is the place's own name for its watch, read from the record's `held_by` and
+  `people` note ("a tribal levy keeps the guard" is `levy`). Write it once as the source's `guard_body`, one of the
+  lookups' `guard_body` ids; every guard's trade names it.
 - **A resident who keeps a promise** (a rootworm stop's handler, a follower): the drafter gives such a promise to
   the resident whose trade says the most of the promise's kind and detail. Choose who keeps it by writing their
   trade in the promise's words ("rootworm handler at the root landing").
@@ -81,7 +84,7 @@ Read the band's `about` in the scale and choose the one that describes the perso
 
 ## 4. Name each person
 
-1. Read every name in `newworld/sources/people/*.json` first. A name is used once in the whole new world.
+1. Read every name already given (Inputs) first. A name is used once in the whole new world.
 2. Choose the form by who carries it (35-cast section 54):
    - Jel, untranslated, for the marsh-born and anyone whose life faces inward: one word or two joined by a
      hyphen, built from the sounds of the Jel names in the lore and equal to none of them.
@@ -92,8 +95,9 @@ Read the band's `about` in the scale and choose the one that describes the perso
    - For a person of another people, a name by their own province's conventions.
 3. An image (water, reed, root, stone, shadow, sky, boat, blade, eye, hand) appears in one name of the place at
    most.
-4. No canon name, no name the lore files carry, no name on the never-reuse list, no name of a talker of BM&V (Black Marsh & Valenwood, the world mod the story plays in), and
-   nothing Nordic (decision 0006).
+4. No canon name, no name the lore files carry, no name on the never-reuse list, no name another place or the
+   story's roster gives, no name of a talker of BM&V (Black Marsh & Valenwood, the world mod the story plays in),
+   and nothing Nordic (decision 0006).
 
 ## 5. Write each backstory
 
@@ -111,6 +115,7 @@ One note per person with `aspect: backstory`: one or two sentences, plain, in th
 
 ## 6. Complete each row
 
+The source holds `{place_id, about, guard_body, households, people}`; each person's row is
 `{id, name, sex, race, culture_id, household: {id, role}, role, trade, wealth, level: null, status: "alive",
 tier: "AGENT_INVENTED", notes: [...], relations: [...]}`. `sex` and `race` are the built-on actor's. `culture_id` is
 the place's culture unless the backstory makes the person an outsider. `level` stays null.
@@ -122,14 +127,15 @@ remove it. Build the rest of the person round it.
 
 1. `python3 -m tools.newworld.stockdb load` loads the source into the database. A load error is mended in the source, never in the table.
 2. `python3 -m tools.places identities check <place_id>` shows 0 problems. It proves a row for every placed person
-   and a person for every row, roles equal to `people.jsonl`'s, names unique in the place and by the naming
-   rules, one roof and one head for each household, the drafter's head and partner kept, guards in the levy, one
-   or two sentences of backstory and every cite existing. It does not read other places' people: the check of names against every other place (section 4, step 1) is yours.
+   and a person for every row, roles equal to `people.jsonl`'s, names unique in the new world (every other place's
+   people source, the story's roster, BM&V's talkers) and by the naming rules, one roof and one head for each
+   household, the drafter's head and partner kept, every guard's trade naming the place's guard body, one or two
+   sentences of backstory and every cite existing.
 3. Text review (the skill `text-review`) of the people source by someone other than the writer: one reader pass
    against the style guide, the rewrites applied, then the linter with `--race argonian` at 0 hard hits. Run the
    check again afterwards.
-4. `python3 -m tools.places draft people <place_id>` writes each name onto the person's placement row and gives
-   each resident's promise to its keeper. Read its counts, then run `python3 -m tools.places draft check <place_id>`.
+4. `python3 -m tools.places draft people <place_id>` writes each name onto the person's placement row, re-reads
+   each person's services from the record's promises and gives each resident's promise to its keeper. Read its counts, then run `python3 -m tools.places draft check <place_id>`.
 5. Commit the people source, the tables the load rewrote (`newworld/story/data/db/`) and `people.jsonl` by path (`tooling/lane_commit.sh`), with the place's
    counts in the message. The place is ready for the skill `place-stock`.
 

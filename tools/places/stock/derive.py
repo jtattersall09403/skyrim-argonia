@@ -31,6 +31,7 @@ from tools.places.stock.place import Place
 
 ARMOUR_SLOTS = ("ArmorCuirass", "ArmorBoots", "ArmorGauntlets", "ArmorHelmet")
 ROLE_WEAPON = {"guard": "WeapTypeSword", "smith": "WeapTypeWarhammer", "boatman": "WeapTypeDagger",
+               "carter": "WeapTypeDagger",
                "resident": "WeapTypeDagger", "merchant": "WeapTypeDagger", "apothecary": "WeapTypeDagger",
                "spell-trader": "WeapTypeDagger", "innkeeper": "WeapTypeDagger"}
 TRADER_LISTS = {  # what a trader kind sells: (slot or kind, types) at each tier from T1 to the place's best

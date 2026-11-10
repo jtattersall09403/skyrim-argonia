@@ -1,5 +1,6 @@
 {"id":"apothecary","about":"Sells ingredients and potions (trader-apothecary)."}
-{"id":"boatman","about":"Carries travellers by boat for a fare (carriage-or-boat)."}
+{"id":"boatman","about":"Operates a boat stop: a raft-master or sea-coaster who carries travellers from the landing for a fare (boat-stop)."}
+{"id":"carter","about":"Operates a coach stop: carries travellers by lizard-drawn cart on the major roads for a fare (coach-stop)."}
 {"id":"guard","about":"Keeps the peace: a member of the place's guard (in Black Marsh, often a tribal levy)."}
 {"id":"innkeeper","about":"Keeps the inn, sells food and drink, rents a bed."}
 {"id":"leader","about":"Holds the place or speaks for it."}

@@ -186,3 +186,23 @@ def test_a_room_with_five_shadow_casters_fails_shadows():
     import test_places_check as T
     assert C.check_shadows(T.broken("shadows"))
     assert not C.check_shadows({**T.ctx(), "light_bases": LB})
+
+
+def test_people_re_reads_a_service_from_the_record_and_changes_that_row_alone(fx):
+    """A service left from an older record (a dead kind, old words) is re-read from the record's promise at its seq
+    by the people stage: that person's row changes and nothing else; the services check sees the stale row."""
+    from tools.places.draft import people
+    p = fx / "places/fx/people.jsonl"
+    folk = rows(p)
+    boat = next(r for r in folk if any(s["seq"] == 1 for s in r.get("services") or []))
+    good = [dict(s) for s in boat["services"]]
+    boat["services"] = [{"seq": 1, "kind": "carriage-or-boat", "detail": "raft-boatman to Truowa and Julo"}]
+    p.write_text("".join(json.dumps(r, separators=(",", ":")) + "\n" for r in folk))
+    stale = C.service_rows({"folk": rows(p), "gives": F.GIVES, "routes": {}})
+    assert any("carriage-or-boat" in b for b in stale) and any("raft-boatman" in b for b in stale), stale
+    counts = stages.run("people", "fx", fx / "places", fx / "bundles", log=lambda *_: None)
+    assert counts == {"people.jsonl": {"changed": 1, "added": 0, "removed": 0}}, counts
+    again = next(r for r in rows(p) if r["id"] == boat["id"])
+    assert again["services"] == good and good[0]["kind"] == "boat-stop" and good[0]["destinations"] == []
+    assert C.service_rows({"folk": rows(p), "gives": F.GIVES, "routes": {}}) == []
+    assert people.refresh_services(rows(p), F.GIVES, {}) == []      # settled: nothing more to change

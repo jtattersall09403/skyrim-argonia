@@ -8,11 +8,13 @@ drafter writes each person's name onto its placement row.
 
 read() gives each person as {id, name, household: {id, role}, trade, wealth: W1..W5, backstory, cites: [...]}
 (the backstory note and its cites). The check proves:
-every person has one row and every row a person; names unique in the place, never another place's talker's, and by
-35-cast.md section 54 and 86-never-reuse-names.md (no never-reuse or canon name, nothing Nordic, at most a third
-Verb-the-Noun, an image once); a household is one roof (its members share a home in people.jsonl, it has one head,
-and a person the drafter put in a house's household keeps that household id and its head or partner place); a guard
-belongs to the levy; one or two sentences of backstory; every cite exists (a repo path, or place_note:<place>/<aspect>,
+every person has one row and every row a person; names unique in the place and in the new world (never a person's of
+another place's people source, a person's of the story's roster, or a BM&V talker's), and by 35-cast.md section 54
+and 86-never-reuse-names.md (no never-reuse or canon name, nothing Nordic, at most a third Verb-the-Noun, an image
+once); a household is one roof (its members share a home in people.jsonl, it has one head, and a person the drafter
+put in a house's household keeps that household id and its head or partner place); a guard belongs to the place's
+own guard body (the people source's `guard_body`, one of the lookups' guard_body ids, chosen from the record's
+`held_by`: "levy" where a tribal levy keeps the guard) and says so in the trade; one or two sentences of backstory; every cite exists (a repo path, or place_note:<place>/<aspect>,
 place_give:<place>/<seq>, culture:<id>, region:<id> in the new world's database)."""
 from __future__ import annotations
 
@@ -71,19 +73,53 @@ def db_resolver() -> Callable[[str], bool]:
     return ok
 
 
-def name_rules() -> tuple[set[str], set[str]]:
-    """(banned, taken): the never-reuse and canon names, and every talker's name already given elsewhere."""
+def names_given(place_id: str, places: Path = PLACES) -> dict[str, str]:
+    """Every name the new world's other people sources give, lower-cased, to whose it is."""
+    out: dict[str, str] = {}
+    for p in sorted(source(place_id, places).parent.glob("*.json")):
+        doc = json.loads(p.read_text(encoding="utf-8"))
+        if p.name == "lookups.json" or doc.get("place_id", p.stem) == place_id:
+            continue
+        for r in doc.get("people", []):
+            if r.get("name"):
+                out.setdefault(r["name"].lower(), f"the name of {r.get('id')} ({doc.get('place_id', p.stem)})")
+    return out
+
+
+def name_rules(place_id: str, places: Path = PLACES) -> tuple[set[str], dict[str, str]]:
+    """(banned, taken): the never-reuse and canon names; and every name already given, to whose it is: the people
+    of every other place's people source, the people of the story's roster (npc, kind person) and BM&V's talkers."""
     from tools.argonia_world import db, talk_check
     banned = talk_check.never_reuse() | talk_check.CANON | talk_check.lore_names()
-    taken = {t.known_as.lower() for t in db.open().rows("talker") if t.known_as}
+    w = db.open()
+    taken = {t.known_as.lower(): "a talker's name" for t in w.rows("talker") if t.known_as}
+    for n in w.rows("npc"):
+        if n.kind == "person" and n.name:
+            taken.setdefault(n.name.lower(), f"the name of the story's {n.id}")
+    for k, v in names_given(place_id, places).items():
+        taken.setdefault(k, v)
     return banned, taken
 
 
+def guard_bodies(places: Path = PLACES) -> set[str]:
+    """The guard bodies a place may name (lookups.json, guard_body)."""
+    p = places.parent / "sources" / "people" / "lookups.json"
+    return {r["id"] for r in json.loads(p.read_text(encoding="utf-8")).get("guard_body", [])} if p.exists() else set()
+
+
+def guard_body(place_id: str, places: Path = PLACES) -> str | None:
+    """The place's own name for its watch: the people source's `guard_body`."""
+    p = source(place_id, places)
+    return json.loads(p.read_text(encoding="utf-8")).get("guard_body") if p.exists() else None
+
+
 def check(place_id: str, places: Path = PLACES, resolve: Callable[[str], bool] | None = None,
-          names: tuple[set[str], set[str]] | None = None) -> list[str]:
+          names: tuple[set[str], set[str] | dict[str, str]] | None = None) -> list[str]:
     from tools.argonia_world.talk_check import IMAGES, NORDIC, VERB_NOUN
     resolve = resolve or db_resolver()
-    banned, taken = names if names is not None else name_rules()
+    banned, taken = names if names is not None else name_rules(place_id, places)
+    if not isinstance(taken, dict):
+        taken = {n: "a talker's name" for n in taken}
     pdir = places / place_id
     people = {p["id"]: p for p in (json.loads(ln) for ln in (pdir / "people.jsonl").read_text().splitlines() if ln)}
     rows_ = person_rows(place_id, places)
@@ -93,6 +129,10 @@ def check(place_id: str, places: Path = PLACES, resolve: Callable[[str], bool] |
     bad += [f"{r['id']}: role {r['role']!r} but people.jsonl has {people[r['id']].get('role')!r}"
             for r in rows_ if r["id"] in people and r.get("role") != people[r["id"]].get("role")]
     rows = rows_
+    watch = guard_body(place_id, places)
+    if any(p.get("role") == "guard" for p in people.values()) and watch not in guard_bodies(places):
+        bad.append(f"{place_id}: the people source's guard_body {watch!r} is not one of the lookups' guard_body ids")
+        watch = None
     seen: dict[str, int] = defaultdict(int)
     for r in rows:
         seen[r.get("id")] += 1
@@ -116,7 +156,7 @@ def check(place_id: str, places: Path = PLACES, resolve: Callable[[str], bool] |
             if name.lower() in banned:
                 bad.append(f"{pid}: {name!r} is a canon or never-reuse name")
             if name.lower() in taken:
-                bad.append(f"{pid}: {name!r} is already a talker's name")
+                bad.append(f"{pid}: {name!r} is already {taken[name.lower()]}")
             if NORDIC.search(name):
                 bad.append(f"{pid}: {name!r} has a Nordic element")
             for img, rx in IMAGES.items():
@@ -141,8 +181,8 @@ def check(place_id: str, places: Path = PLACES, resolve: Callable[[str], bool] |
             bad.append(f"{pid}: wealth {r.get('wealth')!r} not one of W1..W5")
         if not (r.get("trade") or "").strip():
             bad.append(f"{pid}: no trade")
-        elif p.get("role") == "guard" and "levy" not in r["trade"].lower():
-            bad.append(f"{pid}: a guard whose trade is not the levy")
+        elif p.get("role") == "guard" and watch and not re.search(rf"\b{re.escape(watch)}\b", r["trade"], re.I):
+            bad.append(f"{pid}: a guard whose trade does not name the place's {watch}")
         n = len(SENTENCE.findall((r.get("backstory") or "").strip()))
         if not 1 <= n <= 2:
             bad.append(f"{pid}: backstory of {n} sentences (one or two)")

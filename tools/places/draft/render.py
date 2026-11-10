@@ -19,7 +19,7 @@ PX = 1000
 KIND_COLOUR = {"building": (150, 95, 60), "static": (120, 120, 120), "clutter": (230, 200, 90), "light": (255, 240, 0),
                "furniture": (170, 120, 200), "door": (255, 255, 255), "container": (200, 140, 40),
                "tree": (20, 110, 30), "plant": (60, 160, 60), "rock": (90, 90, 90), "marker": (120, 140, 200)}
-ROLE_COLOUR = {"guard": (220, 30, 30), "resident": (255, 255, 255), "boatman": (0, 200, 255)}
+ROLE_COLOUR = {"guard": (220, 30, 30), "resident": (255, 255, 255), "boatman": (0, 200, 255), "carter": (200, 150, 0)}
 
 
 def _canvas(g: Ground, centre, half: float):

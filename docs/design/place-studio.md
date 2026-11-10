@@ -20,6 +20,7 @@ world ESM ─────extract──▶ ground bundle ──┼─draft──�
 | Assets | `tools/places/assets` | Mesh and texture conversion for the browser, on demand, cached; the asset catalogue |
 | Search | `tools/places/search` | Embedding index over the catalogue |
 | Draft | `tools/places/draft`, skill `place-build` | Source bundle + our ground → place files |
+| People | `tools/places/identities.py`, skill `place-people` | Who each placed person is: the people source (Stock, below) |
 | Stock | `tools/places/stock`, `tools/newworld/stockdb.py`, skill `place-stock` | The split, the derive; people, goods and contents as database sources (Stock, below) |
 | Build | `tools/ArgoniaPlaces/Build` (C#, Mutagen), `python -m tools.places build` | Place files and the database's stock → `out/places/plugin/ArgoniaNWPlaces.esp`, navmesh, checks |
 | Studio | `tools/places/studio` (server, Python), `tools/places/studio/web` (front end) | The owner's editor |
@@ -180,8 +181,11 @@ people.jsonl           one person per line: {id, name, base_from, role, home, be
                        A stop (`at`, `bed`, `work`, a patrol point) is {space, ref | pos, radius}: `ref` our id or a
                        source key of that space; `pos` [x,y] (outside only: seated on the built land) or [x,y,z]; neither: the
                        space's arrival point (where its load door lands one), else its first furniture. `bed` a stop or null; `kind` sleep|work|wander|sandbox|eat|patrol (a
-                       patrol stop's route is `patrol`). services: [{seq, kind | give_kind_id, detail, skill?, level?,
-                       room_bed?}]; faction_ranks: [{faction: a form key or <place_id>.<name>, rank}]. Any other
+                       patrol stop's route is `patrol`). services: [{seq, kind | give_kind_id, detail, destinations?,
+                       skill?, level?, room_bed?}]: kind and detail the record's give at seq, destinations (a travel
+                       stop) the network's places by that mode, nearest first; `draft people` re-reads them and the
+                       `services` check compares them; a travel stop's operator is the mode's role (boatman for a
+                       boat stop, carter for a coach stop, a resident for a rootworm stop); faction_ranks: [{faction: a form key or <place_id>.<name>, rank}]. Any other
                        shape is a problem `build --plan` lists, never a crash
                        Who each person is (name, household, trade, wealth, notes) is not placement: it lives in the
                        database's people source under the same id (Stock, below); the drafter writes each person's
@@ -233,8 +237,11 @@ it from `seat` and the ground bundle. A ground rebuild is followed by `seat`, `b
 
 Building a place includes what is in it (nw-03, Stocking). Nothing is random and nothing is levelled (decision 0035).
 Set dressing (food, crockery, cheap clutter, furniture) stays as the source has it. Everything significant is
-authored, each thing with its reason; what the source held of that kind is taken out. The skill is `place-stock`,
-run after `place-build`.
+authored, each thing with its reason; what the source held of that kind is taken out. The order of work on a place
+is the one the skill `place-build` states at its top: research (`place-research`), the draft (`place-build`), who
+each person is (`place-people`), what the place holds (`place-stock`), build and check (`place-build`), the owner's
+studio edits, and finalise (`place-lessons`). Stocking runs after `place-people` has given every placed person an
+identity.
 
 **Where each fact lives.** World facts live in the new world's database, built from source files the way places and
 regions are. Placement lives in the place files. Each fact has one home:
@@ -261,9 +268,12 @@ people: [{id, name, sex, race (RACE editor id), culture_id, household: {id, role
 (fixed, or null until set), status: alive|dead|missing, tier (statement tier), notes: [{aspect: backstory|personality|
 secrets|relationships, text, tier, cites: [...]}], relations: [{to, kind}], factions: [{faction, rank}]}]}`. A cite
 is a repo path or a database row: `place_note:<place>/<aspect>`, `place_give:<place>/<seq>`, `culture:<id>`,
-`region:<id>`; each becomes a `source` row (`cite-...`). `python -m tools.places identities check <place>` proves a
-person per placed person, names unique and by the naming rules, one household per roof with one head, guards in the
-levy, every cite existing and roles equal to `people.jsonl`'s. `tools.places.identities.read` gives the drafter
+`region:<id>`; each becomes a `source` row (`cite-...`). `guard_body` is the place's own name for its watch, one of
+the lookups' `guard_body` ids, chosen from the record's `held_by` ("levy" where a tribal levy keeps the guard).
+`python -m tools.places identities check <place>` proves a person per placed person, names unique in the new world
+(never a name another place's people source, the story's roster or a BM&V talker gives) and by the naming rules, one
+household per roof with one head, every guard's trade naming the place's guard body, every cite existing and roles
+equal to `people.jsonl`'s. `tools.places.identities.read` gives the drafter
 each person's name.
 
 **The stock source** `newworld/sources/stock/places/<place_id>.json`:
@@ -923,8 +933,10 @@ built mesh and fails if a stretch is re-laid (the streets are settled).
    the agent writes whole to `out/places/runs/<run_id>/place-build.SKILL.md` (it reads only `faults.jsonl`, the
    save's fault ops, each with its note's words as `note`, and `notes.json`, each of the owner's notes with
    exactly the ops it covers said in plain words) and finalise puts in place and commits as its own commit (one `git revert` removes it). Fault
-   content ops (`identity.edit`, `stock.*`) are lessons for the skill `place-stock`: the prompt names them, and a
-   rewrite the agent writes to `place-stock.SKILL.md` in the run folder is put in place in the same commit. Tool changes it finds are rows in
+   content ops are lessons for their own recipes: `identity.edit` for the skill `place-people`, `stock.*` for the
+   skill `place-stock`. The prompt names each with its count, and a rewrite the agent writes to
+   `place-people.SKILL.md` or `place-stock.SKILL.md` in the run folder is put in place in the same commit; each is
+   kept before the agent runs and put back with `place-build` when the agent does not finish. Tool changes it finds are rows in
    `docs/skill-fixes.md`, never code edits. If the agent fails or runs over budget the skill is left as it was,
    the chain completes, and the report says to rerun with `--relearn`.
 4. **Report**: `out/places/runs/<run_id>/report.md`, plain English, shown in the studio.

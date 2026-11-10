@@ -247,7 +247,7 @@ and removed per file; a stage that would write outside what it owns changes noth
 | `seating` | a seat rule changed | the seat and height of exterior rows |
 | `clearance` | buildings, doors or streets moved | `clear.jsonl`: which of the world's plants go |
 | `streets` (also `join`) | pieces, doors or the join's rules changed | flights, joins, arrivals, work stops, streets, patrols |
-| `people` | the people source or the place's promises changed | names and promises in `people.jsonl` |
+| `people` | the people source or the place's promises changed | names in `people.jsonl`, and each person's services as the record promises them (kind, detail, the network's destinations) |
 | `lights` | stations were added, a room's lights changed | the lights of added stations; each room's `twin_of` rows; `place.json` `lights` |
 | `stations` | the record promises a station the files lack | the added station, its worker's stop, `place.json` `stations` |
 

@@ -1063,8 +1063,23 @@ def travel_problems(ctx: dict, m: dict, facts: dict, npcs: list[dict], mode: str
     return tried[:1]
 
 
+def service_rows(ctx) -> list[str]:
+    """Each placed person's services against the record's promises (draft/people.service_problems): the person
+    file is the drafter's copy of the promise and is read as the truth by the stock and the studio."""
+    from tools.places.draft import people as draft_people
+    folk = ctx.get("folk")
+    if folk is None:
+        pf = Path(ctx["place_dir"]) / "people.jsonl" if ctx.get("place_dir") else None
+        folk = B.jsonl(pf) if pf and pf.exists() else []
+    if not folk:
+        return []
+    routes = ctx.get("routes", B.travel_routes(ctx.get("place_id", "")))
+    dests = {mode: [r["to_place_id"] for r in rs] for mode, rs in routes.items()}
+    return draft_people.service_problems(folk, ctx["gives"], dests)
+
+
 def check_services(ctx) -> list[str]:
-    bad = []
+    bad = service_rows(ctx)
     m = mine(ctx)
     facts = {f["fk"]: f for f in ctx["dump"]["factions"]}
     classes = {c["fk"]: c for c in ctx["dump"]["classes"]}

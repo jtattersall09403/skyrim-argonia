@@ -12,7 +12,8 @@ owns changes nothing and fails.
   seating    each source piece's seat rule as measured in the source (a light `on` its fixture), then its height
   clearance  the world's plants cleared by the source's own measure round the standing buildings, doors and streets
   streets    the build's network: flights, joins, arrivals, streets and patrols (`draft join`)
-  people     promises a resident keeps, and names, from the people source
+  people     each person's services as the record promises them (kind, detail, the network's destinations),
+             promises a resident keeps, and names, from the people source
   lights     the lights of what we added (a forge's fire) and each copied room within the shadow limit
   stations   each promised crafting station the standing files lack, by the person who works it
 """
@@ -38,7 +39,7 @@ OWNS: dict[str, dict[str, tuple]] = {
     "streets": {"spaces/*/refs.jsonl": (ANY, True), "spaces/*/space.json": (ANY, True), "paths.jsonl": (ANY, True),
                 "people.jsonl": (ANY, True), "clear.jsonl": (ANY, True), "ledger.jsonl": (ANY, True),
                 "place.json": (ANY, True)},
-    "people": {"people.jsonl": ({"name", "gives", "work", "routine", "household", "identity"}, False)},
+    "people": {"people.jsonl": ({"name", "services", "work", "routine", "household", "identity"}, False)},
     "lights": {"spaces/*/refs.jsonl": (ANY, True), "place.json": ({"lights"}, False)},
     "stations": {"spaces/*/refs.jsonl": (ANY, True), "people.jsonl": ({"work", "routine"}, False),
                  "place.json": ({"stations"}, False)},
@@ -306,7 +307,12 @@ def people_stage(st: Standing, log=print) -> None:
     from tools.places.draft.run import place_record
     who = identities.read(st.place_id, st.pdir.parent)
     hist = next(iter(((st.place.get("stations") or {}).get("found") or {}).get("shrine") or []), None)
-    people.give_to_residents(st.files["people"], place_record(st.place_id)[1], who, hist)
+    gives = place_record(st.place_id)[1]
+    routes = people.routes_of(st.place_id)
+    changed = people.refresh_services(st.files["people"], gives, routes)
+    if changed:
+        log(f"draft people {st.place_id}: services re-read from the record for {', '.join(changed)}")
+    people.give_to_residents(st.files["people"], gives, who, hist, routes)
     people.apply_identities(st.files["people"], who)
 
 

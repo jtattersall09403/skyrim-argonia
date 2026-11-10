@@ -23,6 +23,7 @@ if "FAIL" in skill.read_text():
     print(json.dumps({"is_error": True, "subtype": "error_max_budget_usd", "total_cost_usd": 3.1}))
     sys.exit(1)
 (run / "place-build.SKILL.md").write_text(skill.read_text().replace("by its centre point", "by its whole footprint"))
+(run / "place-people.SKILL.md").write_text("# Place people\n\nName each person from the place's own culture.\n")
 (run / "lessons.json").write_text(json.dumps({"lessons": [{"where": "recipe", "ops": [1],
     "lesson": "Fit a building by its whole footprint.", "why": "The recipe fitted it by its centre point.",
     "change": "It now fits the footprint."}], "one_offs": [{"ops": [10], "what": "A chair moved in a house."}],
@@ -155,6 +156,9 @@ def test_content_edits_reach_the_sources_and_the_tables(repo, tmp_path, crash):
     (src / "people/fixture.json").write_text(json.dumps(base["identities"], indent=1) + "\n")
     (src / "stock/places/fixture.json").write_text(edits.dump_stock(base["stock"]))
     (src / "stock/items.json").write_text(json.dumps({"items": [{"id": "Skyrim.esm:013989"}]}))
+    people_skill = r / ".claude/skills/place-people/SKILL.md"
+    people_skill.parent.mkdir(parents=True)
+    people_skill.write_text("# Place people\n")
     save = r / "newworld/places/fixture/edits/s1.json"
     s = json.loads(save.read_text())
     content = json.loads((FIX / "stock/content_all.json").read_text())["ops"][:2]
@@ -181,22 +185,32 @@ def test_content_edits_reach_the_sources_and_the_tables(repo, tmp_path, crash):
     assert calls[-2:] == ["items", "load"], calls   # the hammer was not measured yet
     assert st["steps"]["record"]["stock"]["status"] == "ok" and st["steps"]["record"]["content"] == 2
     assert "world database was reloaded" in st["report_md"]
+    assert "own culture" in people_skill.read_text(), "the identity lesson's recipe put in place"
     assert not subprocess.run(["git", "-C", str(r), "status", "--porcelain"], capture_output=True, text=True).stdout.strip(
         ).replace("?? out/", ""), "sources and tables committed"
 
 
 def test_content_faults_are_passed_to_the_lessons_agent(tmp_path):
-    from tools.places.finalise import Run, agent_prompt
-    skill = tmp_path / ".claude/skills/place-stock/SKILL.md"
-    skill.parent.mkdir(parents=True)
-    skill.write_text("# Place stock\n")
+    """An identity fault is a lesson for place-people, a stock fault for place-stock: each recipe is named with its
+    own count, its own rewrite path, and is kept, put back and installed by the chain like place-build."""
+    from tools.places.finalise import Run, agent_cmd, agent_prompt, content_skills, _kept
+    for name in ("place-stock", "place-people"):
+        skill = tmp_path / f".claude/skills/{name}/SKILL.md"
+        skill.parent.mkdir(parents=True)
+        skill.write_text(f"# {name}\n")
     run = Run(tmp_path, "fixture", "s1")
-    ops = json.loads((FIX / "stock/content_all.json").read_text())["ops"]
-    (run.dir / "faults.jsonl").write_text("".join(json.dumps(op) + "\n" for op in ops[:3]))
+    ops = [{"n": 1, "op": "identity.edit"}, {"n": 2, "op": "identity.edit"}, {"n": 3, "op": "stock.loose.add"},
+           {"n": 4, "op": "ref.move"}]
+    (run.dir / "faults.jsonl").write_text("".join(json.dumps(op) + "\n" for op in ops))
     text = agent_prompt(run)
-    assert "3 of the fault edits" in text and str(skill) in text and "place-stock.SKILL.md" in text
+    people, stock = text.index("2 of the fault edits"), text.index("1 of the fault edits")
+    assert "place-people.SKILL.md" in text[people:stock] and "place-stock.SKILL.md" in text[stock:]
+    assert '"skill": "place-people"' in text and '"skill": "place-stock"' in text
+    assert {str(run.people_skill), str(run.stock_skill)} <= {str(k) for k, _ in _kept(run)}
+    assert str(run.people_skill.parent) in agent_cmd(run, 1.0, 1)
+    assert [n for n, *_ in content_skills(run)] == ["place-people", "place-stock"]
     (run.dir / "faults.jsonl").write_text(json.dumps({"n": 1, "op": "ref.move"}) + "\n")
-    assert "place-stock" not in agent_prompt(run)
+    assert "place-stock" not in agent_prompt(run) and "place-people" not in agent_prompt(run)
 
 
 def test_grouped_notes_reach_the_lessons_step(repo):

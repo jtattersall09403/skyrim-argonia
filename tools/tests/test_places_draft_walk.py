@@ -448,3 +448,24 @@ def test_a_plugin_is_found_where_the_game_loads_it(tmp_path):
     assert meshes.plugin_file("Base.esm", data, stack) == data / "Base.esm"
     assert meshes.plugin_file("North.esp", data, stack) == stack / "mods" / "bmv" / "North.esp"
     assert meshes.plugin_file("Gone.esp", data, stack) is None
+
+
+def test_each_travel_stop_has_its_own_operator_with_the_networks_destinations():
+    """A boat stop's operator is a boatman at the landing, a coach stop's a carter where the road leaves the town
+    (docs/design/travel-network.md); each operator's service carries the network's destinations, and a carter
+    is chosen from a source actor that shows a carriage, never from a boatman's."""
+    from tools.places.draft import people
+    gives = [{"seq": 1, "give_kind_id": "boat-stop", "detail": "raft-masters"},
+             {"seq": 2, "give_kind_id": "coach-stop", "detail": "the carters' yard"}]
+    routes = {"boat": ["julo", "gul-tej"], "coach": ["stormhold"]}
+    ops = people.service_people(gives, routes)
+    assert [(p["role"], p["gives"][0]["destinations"]) for p in ops] == [("boatman", ["julo", "gul-tej"]),
+                                                                       ("carter", ["stormhold"])]
+    driver, sailor = {"edid": "CarriageDriver", "class": "Citizen"}, {"edid": "BoatCaptain", "class": "Citizen"}
+    assert people.role_score(driver, "carter") > people.role_score(sailor, "carter")
+    assert people.role_score(sailor, "boatman") > people.role_score(driver, "boatman")
+    paths = [{"points": [[0, 0, 0], [500, 0, 0]]}, {"points": [[0, 0, 0], [0, 2000, 0]]}]
+    assert people.road_end(paths, (0, 0)) == [0.0, 2000.0]
+    assert people.road_end(paths, (0, 0), dry=lambda q: q[1] < 1000) == [500.0, 0.0]
+    folk = [{"id": "c", "role": "boatman", "services": [people.service_row(gives[1], routes)]}]
+    assert any("not its operator 'carter'" in b for b in people.service_problems(folk, gives, routes))

@@ -5,16 +5,24 @@ the service set-up follow Skyrim's own towns (docs/research/skyrim/town-life.md)
 from __future__ import annotations
 
 import hashlib
+import json
 import math
 import re
+from pathlib import Path
+
+ROUTES = Path(__file__).resolve().parents[3] / "newworld" / "story" / "data" / "db" / "travel_route.jsonl"
 
 PERSON_GIVES = {
     "trader-general": "merchant", "trader-blacksmith": "smith", "trader-apothecary": "apothecary",
     "trader-spells": "spell-trader", "trader-innkeeper": "innkeeper", "inn-room": "innkeeper",
     "trader-bookseller": "merchant", "trader-clothier": "merchant", "trader-fletcher": "smith",
     "trader-jeweller": "merchant", "trader-hunter": "merchant", "fence": "fence",
-    "boat-stop": "boatman", "coach-stop": "boatman", "rootworm-stop": "resident", "trainer": "trainer", "follower": "resident",
+    # a travel stop's operator (docs/design/travel-network.md): a boat stop's raft-master or sea-coaster is a
+    # boatman who works the landing, a coach stop's carter waits where the road leaves the town; a rootworm stop's
+    # root-tender is a townsman who calls the worm at the Hist beside his own life
+    "boat-stop": "boatman", "coach-stop": "carter", "rootworm-stop": "resident", "trainer": "trainer", "follower": "resident",
 }
+TRAVEL_MODE = {"boat-stop": "boat", "coach-stop": "coach", "rootworm-stop": "rootworm"}   # give -> travel mode
 STATIONS = {"forge", "anvil", "armour-workbench", "grindstone", "smelter", "tanning-rack", "alchemy-lab",
             "arcane-enchanter", "cooking-pot", "oven", "staff-enchanter"}
 STATION_MATCH = {
@@ -26,7 +34,8 @@ STATION_MATCH = {
 ROLE_MATCH = {
     "merchant": r"merchant|vendor|general|trader", "smith": r"blacksmith|smith|weapon|armou?r", "apothecary": r"apothecary|alchem",
     "spell-trader": r"spell|mage|healer|priest|wizard", "innkeeper": r"innkeeper|inn\b|tavern|bartender",
-    "boatman": r"boat|ferry|carriage|captain|sailor|ship", "guard": r"guard|soldier", "fence": r"fence|thie",
+    "boatman": r"boat|ferry|raft|captain|sailor|ship", "carter": r"carriage|carter|driver|stable|wagon|\bcart\b",
+    "guard": r"guard|soldier", "fence": r"fence|thie",
     "resident": r"citizen|villager|farmer|resident|townsperson|commoner",
 }
 INDOOR = {"innkeeper", "spell-trader"}
@@ -76,7 +85,75 @@ def _tokens(s: str) -> set[str]:
         "with", "from", "their", "tomes", "adept", "expert", "journeyman", "master", "seller", "trader", "the"}
 
 
-def service_people(gives: list[dict]) -> list[dict]:
+def routes_of(place_id: str, path: Path = ROUTES) -> dict[str, list[str]]:
+    """The travel network's destinations from a place by mode, nearest first (travel_route)."""
+    rows = [json.loads(ln) for ln in path.read_text(encoding="utf-8").splitlines() if ln.strip()] if path.exists() else []
+    out: dict[str, list[str]] = {}
+    for r in sorted(rows, key=lambda r: (r["travel_mode_id"], r["distance_m"])):   # as build.travel_routes
+        if r["from_place_id"] == place_id:
+            out.setdefault(r["travel_mode_id"], []).append(r["to_place_id"])
+    return out
+
+
+def service_row(g: dict, routes: dict[str, list[str]] | None = None) -> dict:
+    """A person's service as the place record promises it: the give's seq, kind and detail, and for a travel stop
+    the network's destinations from the place by that mode."""
+    row = {"seq": g["seq"], "kind": g["give_kind_id"], "detail": g.get("detail")}
+    mode = TRAVEL_MODE.get(g["give_kind_id"])
+    if mode and routes is not None:
+        row["destinations"] = list(routes.get(mode, []))
+    return row
+
+
+def refresh_services(folk: list[dict], gives: list[dict], routes: dict[str, list[str]]) -> list[str]:
+    """Each person's services re-read from the place record's promises at their seq (kind, detail, destinations); a
+    service whose seq the record no longer holds is dropped. Returns the ids of the people whose services changed."""
+    by_seq = {g["seq"]: g for g in gives}
+    out = []
+    for p in folk:
+        was = p.get("services")
+        if not was:
+            continue
+        now = [service_row(by_seq[s["seq"]], routes) for s in was if s.get("seq") in by_seq]
+        if now != was:
+            p["services"] = now
+            out.append(p["id"])
+    return out
+
+
+def service_problems(folk: list[dict], gives: list[dict], routes: dict[str, list[str]] | None = None) -> list[str]:
+    """Where a person's service is not the record's promise: a seq the record lacks, a kind or detail other than the
+    give's, destinations other than the network's, a travel stop's operator in another role than the mode's."""
+    by_seq = {g["seq"]: g for g in gives if "seq" in g}
+    bad = []
+    for p in folk:
+        for s in p.get("services") or []:
+            g = by_seq.get(s.get("seq"))
+            if g is None:
+                bad.append(f"{p['id']}: service at seq {s.get('seq')} but the record promises nothing there")
+                continue
+            want = service_row(g, routes)
+            for k in ("kind", "detail", "destinations"):
+                if k in want and s.get(k) != want[k]:
+                    bad.append(f"{p['id']}: service {g['seq']} {k} {s.get(k)!r} but the record promises {want[k]!r}")
+            role = PERSON_GIVES.get(g["give_kind_id"])
+            if g["give_kind_id"] in TRAVEL_MODE and p.get("role") != role:
+                bad.append(f"{p['id']}: operates the {g['give_kind_id']} as {p.get('role')!r}, not its operator {role!r}")
+    return bad
+
+
+def road_end(paths: list[dict], centre, dry=None) -> list[float] | None:
+    """Where a carter waits: the end of the place's streets farthest from its centre (the road out of town), on dry
+    ground, as Skyrim's carriages wait outside the town by the road."""
+    ends = [q for p in paths for q in (p["points"][0], p["points"][-1]) if p.get("points")]
+    ends = [q for q in ends if dry is None or dry(q)]
+    if not ends:
+        return None
+    q = max(ends, key=lambda q: (math.dist(q[:2], centre[:2]), q[0], q[1]))
+    return [round(q[0], 1), round(q[1], 1)]
+
+
+def service_people(gives: list[dict], routes: dict[str, list[str]] | None = None) -> list[dict]:
     """Group the place record's promises into the people who give them (one person may give several)."""
     people: list[dict] = []
     for g in sorted(gives, key=lambda r: r["seq"]):
@@ -95,7 +172,7 @@ def service_people(gives: list[dict]) -> list[dict]:
             if role == "trainer":
                 mate["role"] = "trainer"
             people.append(mate)
-        mate["gives"].append({"seq": g["seq"], "kind": g["give_kind_id"], "detail": g.get("detail")})
+        mate["gives"].append(service_row(g, routes))
         mate["details"].append(g.get("detail"))
         mate["tokens"] |= tok
     for p in people:
@@ -103,7 +180,8 @@ def service_people(gives: list[dict]) -> list[dict]:
     return people
 
 
-def give_to_residents(folk: list[dict], gives: list[dict], identities: dict[str, dict], hist: str | None = None) -> list[str]:
+def give_to_residents(folk: list[dict], gives: list[dict], identities: dict[str, dict], hist: str | None = None,
+                      routes: dict[str, list[str]] | None = None) -> list[str]:
     """A promise a townsman keeps beside his own life (a rootworm stop's handler, a follower: role `resident` in
     PERSON_GIVES) is given to one of the residents, never to a person made for it: the resident whose trade in the
     people source says the most of the promise's kind and detail, else the first resident who gives nothing yet. A
@@ -120,7 +198,7 @@ def give_to_residents(folk: list[dict], gives: list[dict], identities: dict[str,
             continue
         said = [len(tok & _tokens((identities.get(p["id"]) or {}).get("trade") or "")) for p in res]
         p = res[said.index(max(said))] if max(said) else next((q for q in res if not q.get("services")), res[0])
-        p["services"] = (p.get("services") or []) + [{"seq": g["seq"], "kind": g["give_kind_id"], "detail": g.get("detail")}]
+        p["services"] = (p.get("services") or []) + [service_row(g, routes)]
         if g["give_kind_id"].endswith("-stop"):
             day = {st["kind"]: st["at"] for st in p.get("routine") or []}
             if hist:

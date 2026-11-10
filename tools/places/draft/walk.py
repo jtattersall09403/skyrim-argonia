@@ -794,7 +794,8 @@ def finish(place_id: str, places: Path, bases: dict, log=print) -> int:
     place = json.loads((pdir / "place.json").read_text())
     who = identities.read(place_id, places)
     hist = next(iter(((place.get("stations") or {}).get("found") or {}).get("shrine") or []), None)
-    for pid in people.give_to_residents(folk, place_record(place_id)[1], who, hist):
+    for pid in people.give_to_residents(folk, place_record(place_id)[1], who, hist,
+                                         people.routes_of(place_id)):
         log(f"join {place_id}: {pid} keeps a promise of the place beside their own life")
     people.apply_identities(folk, who)
     if json.dumps(folk, sort_keys=True) != before:

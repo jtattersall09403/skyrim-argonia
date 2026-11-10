@@ -1,6 +1,6 @@
 ---
 name: place-lessons
-description: Turn the owner's finalised studio edits of one place into better place recipes. Reads the save's fault edits and the owner's notes with the changes they cover, finds the patterns behind them, and rewrites place-build (and place-stock for edits to what a place holds) so the next place gets each class right first time; taste edits stay that place's preferences. Run headless by the finalise chain, one run per finalised save.
+description: Turn the owner's finalised studio edits of one place into better place recipes. Reads the save's fault edits and the owner's notes with the changes they cover, finds the patterns behind them, and rewrites place-build (place-people for edits to who a person is, place-stock for edits to what a place holds) so the next place gets each class right first time; taste edits stay that place's preferences. Run headless by the finalise chain, one run per finalised save.
 ---
 
 # Place lessons
@@ -9,7 +9,8 @@ The owner edits an agent's draft of a place in the studio and finalises the save
 (the builder got it wrong) or `taste` (a preference). Your job is to find what the fault edits say about the
 recipe that produced them, and change the recipe so a fresh agent working on any place gets that whole class of
 thing right first time. The recipe for where things stand, the streets, the lights and people's placement is
-`place-build`; the recipe for what a container, a person or a trader holds is `place-stock`. The prompt names every input and the files you may edit; beside them you may add rows to the skill-fixes list.
+`place-build`; the recipe for who a person is (name, household, trade, wealth, backstory) is `place-people`; the
+recipe for what a container, a person or a trader holds is `place-stock`. The prompt names every input and the files you may edit; beside them you may add rows to the skill-fixes list.
 
 The place itself is already right: the owner's edit is in its files. You change recipes for the next place. You
 never change this place, and no lesson asks for it to be drafted again.
@@ -28,13 +29,15 @@ never change this place, and no lesson asks for it to be drafted again.
   positions you need.
 - The build and check results, when there are any.
 - Every place's `place.json`, for the preferences recorded at other places.
-- The current `place-build` skill, and the `place-stock` skill when the prompt names content edits.
+- The current `place-build` skill, and the `place-people` or `place-stock` skill when the prompt names content
+  edits for it.
 - The skill-fixes list (`docs/skill-fixes.md`), for changes owed that you may not make yourself.
 
 ## Method
 
 1. **Read the recipe first.** Read `place-build` whole, so you know what a builder following it would do. When
-   the prompt names content edits (`identity.edit`, `stock.*`), read `place-stock` whole as well.
+   the prompt names content edits, read each recipe it names for them whole as well: `place-people` for
+   `identity.edit`, `place-stock` for `stock.*`.
 2. **Take only the faults.** Set aside every `taste` op. Number the fault ops you will reason about. Read the
    owner's notes next: a note names the cause the owner sees in its edits, in the owner's words.
 3. **Reconstruct each fault.** For each fault op, say what the builder placed and what the owner did instead,
@@ -61,9 +64,8 @@ never change this place, and no lesson asks for it to be drafted again.
    - A **tool's fixed rule** (a number or a computation in `tools/places/draft`, `seat` or `stock`): do not edit
      code. Add one row to the skill-fixes list for the skill that describes the tool, naming the tool, the rule
      and the fault, with "lessons run" as who reported it, and list it in the lessons file as a tool change owed.
-   - **Who a person is** (a name, a household, a trade, a wealth band, a backstory: `identity.edit`): that recipe
-     is `place-people`, which this run does not rewrite. Add one row to the skill-fixes list for `place-people`
-     with the general lesson, and list it in the lessons file as `"where": "tool"`.
+   - **Who a person is** (a name, a household, a trade, a wealth band, a backstory: `identity.edit`): the text
+     of `place-people`. Rewrite it the same way, and mark the lesson `"skill": "place-people"`.
 8. **One-off faults** (no pattern, no general cause): they are already fixed in this place by the owner's edit.
    List them; do not touch the recipe for them.
 9. **Taste.** Taste ops never become rules. They are already recorded as this place's preferences. Look across
