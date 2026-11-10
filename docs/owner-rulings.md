@@ -328,3 +328,13 @@ added here the day they are made, with the date and the issue.
   (a dangerous cellar, a sewer); no extra place, such as a whole village, sits inside a city's own extent. (2) The
   levy wears BM&V's Argonian guard armour. (3) The smith carries and sells Argonian sword and armour: Helstrom is
   the capital city and has good things. (4) The owner's statement tier ranks top, above canon.
+- 2026-11-10 (walk 5, `tmp/walk-5-feedback-2026-11-10.md`, quests in BM&V): (1) the opening is good up to leaving
+  the hold, and the skills are to be updated from it; the gang never starts moving after that: root cause and fix,
+  and the same fix everywhere the same building blocks are used or affected in the first act's quests. (2) Too
+  many people early on repeat each other (everyone in the hold, and Buys-The-Months, on months added for food): the
+  dialogue writer skill must be context aware, so that several conversations in one space are written first time
+  without repeating each other, the opening act's flow above all. (3) A Fable 5.2 agent at medium effort reviews
+  everything about how the opening act and the slice's factions and quests are implemented; bugs are fixed, the
+  approach optimised, and the skills and building blocks improved until a future agent implementing a new quest
+  gets it right first time; Phases 4 and 4a are what was aimed at. Passed in walk 5: checks 8.1, 8.2, 9.1, 9.3 to
+  9.7; 8.3 (backstab) not yet checked.

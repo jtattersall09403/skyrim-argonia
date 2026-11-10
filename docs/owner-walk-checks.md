@@ -170,10 +170,10 @@ sinks or stands in a wall.
 Walk 3's backstep and HUD never reached the game: a second job, run minutes later from an older copy of our settings,
 put the old ones back. That can no longer happen (the install now refuses an out-of-date copy). **Start a new game.**
 
-- [ ] **8.1 Standing backstep, Skyrim's own.** Stand still, hold no direction, tap dodge (Alt; pad B): one hop back of
+- [x] **8.1 Standing backstep, Skyrim's own.** Stand still, hold no direction, tap dodge (Alt; pad B): one hop back of
       about 3 metres in a single movement, the hop Skyrim's own characters use, with no second push. Holding a
       direction and tapping dodge still rolls that way.
-- [ ] **8.2 HUD from TrueHUD's Combined preset**, with your tweaks (Dynamic, width 150, max 500, anchor X 0.045,
+- [x] **8.2 HUD from TrueHUD's Combined preset**, with your tweaks (Dynamic, width 150, max 500, anchor X 0.045,
       Y 0.105). New game: health, magicka and stamina are one combined block at the top left; take a hit or sprint and
       it shows, then fades when full; Skyrim's own three bars never show.
 - [ ] **8.3 Backstab, one press.** Console `player.placeatme 3decb` (a vanilla bandit, a test target only), walk up
@@ -185,25 +185,25 @@ put the old ones back. That can no longer happen (the install now refuses an out
 
 **Start a new game** for all of these (several fixes only take on a new game).
 
-- [ ] **9.1 Everyone talks again.** On Lilmoth's dock, talk to three of the people who were silent on walk 4 (anyone
+- [x] **9.1 Everyone talks again.** On Lilmoth's dock, talk to three of the people who were silent on walk 4 (anyone
       near the pier, for example Deep-In-His-Cups on the shore track south-west of the dock). Each has topics. The cause
       was a missing file the game reads to start our quests on a new game; it is now sent with the plugin.
-- [ ] **9.2 The opening's steps.** In the barge hold the journal says to speak to Wuleen-Sei, with a marker on her.
+- [ ] (superseded by 10.1; passed on 2026-11-10 up to leaving the hold, then the gang never moved) **9.2 The opening's steps.** In the barge hold the journal says to speak to Wuleen-Sei, with a marker on her.
       "Why am I here?" ends with her question, and the three answers follow at once. Before you answer, the door at the
       top of the stairs is locked; after you answer, the journal moves on to "Leave the barge's hold by the door at the
       top of the stairs" (marker on the door). Open it: you come out on the pier, the journal says to follow the gang
       (marker on the camp's fire), and the gang walks off along the dock. On the shore path they go ahead of you and
       are waiting at the fire when you reach the camp.
-- [ ] **9.3 The hold's doors.** The stair door takes you to the pier, and the pier door brings you back to the top of
+- [x] **9.3 The hold's doors.** The stair door takes you to the pier, and the pier door brings you back to the top of
       the stairs. The other door (down in the hold and up the far stairs) now opens onto its room and does not move you.
-- [ ] **9.4 Everyone in the opening has something to say.** In the hold, ask Ri'Sakka, Tsanji, Llarvi Maryon and
+- [x] **9.4 Everyone in the opening has something to say.** In the hold, ask Ri'Sakka, Tsanji, Llarvi Maryon and
       Finds-The-Other-Bank "Who are you?"; on the pier, Mee-Tuja the courier; at the camp, Sal-Sei and Deesh-Duun.
       The block test's Dock Walker answers too (`startquest ARG_BlockTest`, `setstage ARG_BlockTest 50`, then ask him).
-- [ ] **9.5 Buys-The-Months on the pier** no longer asks you for something you cannot give: he tells you Wuleen-Sei
+- [x] **9.5 Buys-The-Months on the pier** no longer asks you for something you cannot give: he tells you Wuleen-Sei
       asks the names, and after you have answered her, that it is written.
-- [ ] **9.6 Heights.** Mee-Tuja on the pier, and Ties-The-Loose-Plank on the shore after the fire, stand as tall as the
+- [x] **9.6 Heights.** Mee-Tuja on the pier, and Ties-The-Loose-Plank on the shore after the fire, stand as tall as the
       others (they were about twelve feet).
-- [ ] **9.7 No things that act like people.** Every line we have was swept for objects, places and documents doing a
+- [x] **9.7 No things that act like people.** Every line we have was swept for objects, places and documents doing a
       person's act (it was "the roll adds more months", "the hold heard you"). Ask Wuleen-Sei "Why am I here?": she now
       says she adds the months to the roll herself, and that everyone in the hold heard you. Say if any line you meet
       still makes a thing do what only a person does.
