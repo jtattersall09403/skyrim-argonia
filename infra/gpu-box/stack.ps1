@@ -425,7 +425,7 @@ public static class ParHash {
       break
     }
     Set-GameWindow
-    Start-Process powershell.exe -WindowStyle Hidden -ArgumentList '-ExecutionPolicy', 'Bypass', '-File', "$Root\infra\splash.ps1"
+    Start-Process powershell.exe -WindowStyle Hidden -ArgumentList '-ExecutionPolicy', 'Bypass', '-File', "$Root\infra\splash.ps1", '-Parent', $PID
     if ($Cmd -eq 'play-vanilla') { & $PSCommandPath off; Wait-Steam | Out-Null; Start-Process "$Game\SkyrimSE.exe" -WorkingDirectory $Game }
     else {
       & $PSCommandPath on -World $(if ($Cmd -eq 'play-newworld') { 'NewWorld' } else { 'Argonia' })
