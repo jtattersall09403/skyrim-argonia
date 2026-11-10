@@ -4,6 +4,7 @@ import * as THREE from 'three';
 import { GLTFLoader } from '../vendor/three-0.170.0/addons/loaders/GLTFLoader.js';
 import { getMesh } from './api.js';
 import { refMatrix } from './xform.js';
+import { colourOf } from './lights.js';
 
 export const KIND_COLOUR = {
   building: '#a08f78', static: '#9a9488', clutter: '#c4a46a', tree: '#4f6b3a', plant: '#6f9a4a', groundcover: '#86a35a',
@@ -202,7 +203,7 @@ export const BULB = 10;           // the bulb's radius, game units
 export const RING_NEAR = 1500;    // a light this near the camera shows its radius ring
 export const lightRadius = (ref, base) => ref.radius || base?.light?.radius || 0;
 export const lightColour = (base) => {
-  const c = base?.light?.colour || [255, 220, 150];
+  const c = colourOf(base?.light?.colour) || [255, 220, 150];
   return new THREE.Color(c[0] / 255, c[1] / 255, c[2] / 255);
 };
 // a bulb keeps a few pixels across however far the camera stands (BULB units near, a hundredth of the distance far)

@@ -83,8 +83,16 @@ npcs.jsonl             every actor base the bundle places (below)
 spaces/<space_id>/     space_id: "exterior" or an interior cell's editor id
   space.json           {space_id, type: exterior|interior, name, cells, water:{default_height, type}, light, owner,
                         refs, doors}; an exterior adds groundcover:{placed_refs, generated_from_land_textures, note}
-                        (Skyrim grows grass from the land textures' grass lists; it is not placed as refs); an
-                        interior adds key, plugin, lighting_template, flags
+                        (Skyrim grows grass from the land textures' grass lists; it is not placed as refs) and
+                        sky:{climate, edid, SunriseBegin, SunriseEnd, SunsetBegin, SunsetEnd, weathers:[{key, edid,
+                        plugin, chance, SkyUpperColor, SkyLowerColor, HorizonColor, FogNearColor, FogFarColor,
+                        AmbientColor, SunlightColor, SunColor, EffectLightingColor (each {Sunrise, Day, Sunset,
+                        Night}), DirectionalAmbientLightingColors ({Sunrise, Day, Sunset, Night} of the six
+                        directional ambient colours), FogDistanceDay|NightNear|Far|Power|Max, Flags}]} (the
+                        worldspace's climate and the lighting fields of each of its weathers, for the night views);
+                        an interior adds key, plugin, lighting_template, lighting_template_light (the template's
+                        lighting: the fields `light.Inherits` names come from it), flags. A colour the extractor
+                        writes from a record is its three bytes in base64
   terrain.json + terrain.f32   exterior only. terrain.json: {cells:[{cell:[cx,cy], key, edid, plugin,
                         water:{height, type} | null, regions, heights_index, layers, vertex_colours}],
                         ltex:{key:{edid, plugin, diffuse, normal, grasses:[{key, edid, model, density, min_slope, max_slope,
@@ -117,7 +125,7 @@ activator, marker, actor, water, other` and is decided once, in the extractor, f
 model. `layer` is `world` (the generated world's own refs: plants, rocks, scatter) or `place`.
 
 A base: `{key, edid, type, kind, name, model, bounds:[min,max], plugin, keywords:[...], nordic: bool, door:{},
-furniture:{markers}, light:{radius,colour}, container:{}, tree:{}, flora:{}, water?}`. `model` is the path under
+furniture:{markers}, light:{radius, colour, flags, fov, fade, falloff}, container:{}, tree:{}, flora:{}, water?}`. `model` is the path under
 `meshes/`, lower case; `plugin` is the plugin whose version of the base wins. `nordic` (decision 0006) is true when
 the model path or editor id names a Nordic culture, hold town or Nordic dungeon kit (nord, draugr, barrow,
 Whiterun, Windhelm, Riften, Solitude, Markarth, farmhouse and the like) and not a non-Nordic kit (Dwemer, Dunmer,
@@ -619,6 +627,25 @@ ember or hearth. The Selected panel gives a light's radius, colour (with a swatc
 fixture it belongs to, and a fixture's lights. Moving, turning, resizing, seating, duplicating or removing a fixture
 takes its lights with it in the same undo step, each keeping its place in the fixture's frame and its height through
 its own seat. A light selected by itself moves or goes alone.
+
+**Day and night** (`js/lighting.js`). Each view's bar has a Day and a Night switch; with the People tool on, the
+time of day drives both (night from the end of the climate's sunset to the start of its sunrise), and a view's switch
+moves the time. By day the studio's own light, as it always was. By night the game's: outside, the climate's weather
+(the likeliest, or the one chosen under Detail) at night: the six directional ambient colours as a hemisphere that
+gives a level face the side colours exactly, the sunlight colour as moonlight, the upper sky colour as the sky, and
+fog from its night distances, power and maximum, measured from where the view looks; inside, the cell's own
+lighting (ambient, directional colour and rotation, fog), each field the cell inherits taken from its lighting
+template; a room the game keeps the same at any hour. A bundle without this data shows a plain night and says so.
+Every placed light (its base's radius, colour and fade, the ref's own radius and fade offset; a negative light is
+left out) lights its surroundings with Skyrim's falloff, 1 - (d / r)^2 in the game's gamma space. The six lights
+nearest where the view looks are real unshadowed point lights (six in every view at all times, by day at nothing, so
+no shader is rebuilt); every other light is a pool: one instanced draw of additive discs into a light map seen from
+above (1,024 texels a side, three times the view's distance across, drawn again when a light changes or the view
+moves a quarter of the map away), the disc where the light's sphere meets the ground under it, weighted by the
+ground's angle to the light (never under a third, so walls keep some), which every lit surface adds in by its
+position, times its own colour. Each light glows where it hangs. What is approximate, as the studio's help says: no
+shadows; no ENB or Community Shaders effects; windows do not glow; the game's eye adjusting to the dark is not
+copied; a pool lights everything at its spot whatever its height.
 
 **The world map.** The top bar's World map button opens the Atlas (the page `python3 -m tools.newworld.map_page`
 builds into `out/newworld/map/`) over the studio in a frame, loaded the first time it is opened, at

@@ -236,6 +236,10 @@ ul.plain { margin: 4px 0 12px; padding-left: 18px; color: var(--muted); line-hei
 .view-bar .pick select { flex: 1; }
 .view-bar .pick select { min-width: 0; max-width: 100%; text-overflow: ellipsis; }
 .view-bar .fs { flex: none; }
+/* day and night: two small buttons beside full screen in each view's bar */
+.daynight { display: inline-flex; flex: none; gap: 2px; padding: 0; border-radius: 12px; background: var(--panel); box-shadow: var(--shadow); }
+.daynight button { min-width: 44px; padding: 0; justify-content: center; }
+.daynight button[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); }
 /* an open panel takes its own room beside the views instead of covering the source */
 @media (min-width: 900px) and (orientation: landscape) {
   #stage:has(#panel:not([hidden])) #views { margin-right: calc(min(360px, 40vw) + 16px); }

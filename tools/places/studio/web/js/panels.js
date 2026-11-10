@@ -694,11 +694,21 @@ export class Panels {
       ${opt('auto', 'Automatic', 'adjusts by itself to stay smooth.')}${opt('high', 'High', 'everything, as far as it goes.')}
       ${opt('medium', 'Medium', 'plants nearer, the other view drawn less often.')}${opt('low', 'Low', 'the least, for a slow tablet.')}
       <label class="detail-opt"><input type="checkbox" name="grass"${this.app.grassOn() ? ' checked' : ''}><span><strong>Grass</strong> grown from the ground's textures near where you look.</span></label>
-      <p class="detail-now"></p><button class="primary">Done</button></div>`;
+      <p class="detail-now"></p>${this.weatherChoice()}<button class="primary">Done</button></div>`;
+    o.querySelector('select[name=weather]')?.addEventListener('change', (e) => this.app.setWeather(e.target.value));
     o.querySelector('input[name=grass]').onchange = (e) => this.app.setGrass(e.target.checked);
     o.querySelectorAll('input[name=detail]').forEach((i) => { i.onchange = () => { G.setMode(i.value); this.detailShown(); }; });
     o.querySelector('button').onclick = () => { o.hidden = true; };
     this.detailShown();
+  }
+  // The night views are lit by one of the climate's weathers: the likeliest unless another is chosen.
+  weatherChoice() {
+    const sky = this.app.ground?.spaces.exterior?.info?.sky, ws = sky?.weathers || [];
+    if (!ws.length) return '<h2>Night</h2><p>This place\'s ground has no weather from the game yet, so the night views show a plain night.</p>';
+    const pick = this.app.weatherKey(), top = [...ws].sort((a, b) => (b.chance || 0) - (a.chance || 0))[0];
+    const words = (w) => esc(`${(w.edid || w.key).replace(/^(Skyrim|ANW_)/, '').replace(/([a-z])([A-Z])/g, '$1 $2')} (${w.chance ?? '?'}% of nights)`);
+    return `<h2>Night</h2><p>Outside, the night views are lit as the game lights this world on a night of one of its weathers.</p>
+      <label class="field">Weather<select name="weather">${ws.map((w) => `<option value="${esc(w.key)}"${(pick ? w.key === pick : w === top) ? ' selected' : ''}>${words(w)}</option>`).join('')}</select></label>`;
   }
   detailShown() {
     const p = document.querySelector('#settings .detail-now'), G = this.app.governor; if (!p || !G) return;
@@ -712,7 +722,8 @@ export class Panels {
       <li>${ICON.move}<span><strong>Look around with your fingers.</strong> One finger turns the view, two fingers drag, pinch and twist.</span></li>
       <li>${ICON.select}<span><strong>Work with the pen.</strong> Tap to select, draw round things to select several, draw paths and land. Your palm and fingers never change anything while the pen is in use.</span></li>
       <li>${ICON.search}<span><strong>Copy from the source.</strong> Tap something in the source place on the right, then tap our place where it should go.</span></li>
-      <li>${ICON.history}<span><strong>Every change is a fault</strong> unless you mark it a taste call in the bar under the views. Say what was wrong in that bar too: one note for all the changes since your last note. Undo and redo are at the top.</span></li></ul>
+      <li>${ICON.history}<span><strong>Every change is a fault</strong> unless you mark it a taste call in the bar under the views. Say what was wrong in that bar too: one note for all the changes since your last note. Undo and redo are at the top.</span></li>
+      <li>${ICON.history}<span><strong>Day and night.</strong> The sun and moon in each view's bar switch between the studio's daylight and the game's night: outside, the sky, ambient light, moonlight and fog of this world's weather at night; inside, the room's own lighting, which the game keeps the same at any hour. Every light lights what is round it with its own colour and reach, so you can see whether a place is lit enough. It is close to the game, not the same: there are no shadows, no ENB or Community Shaders effects, windows do not glow, and the game's eye adjusting to the dark is not copied. With the People tool on, the time of day sets both views.</span></li></ul>
       <button class="primary">Start</button></div>`;
     o.querySelector('button').onclick = () => { o.hidden = true; try { localStorage.setItem('studio.intro.v1', '1'); } catch { /* fine */ } };
   }

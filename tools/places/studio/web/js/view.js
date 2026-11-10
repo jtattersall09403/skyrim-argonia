@@ -46,8 +46,11 @@ export class View {
     this.setTheme(false);
   }
   setTheme(dark) {
+    this.dark = dark;
     this.scene.background = new THREE.Color(dark ? '#1d2528' : '#cfdbe0');
-    this.scene.fog = new THREE.Fog(this.scene.background, 30000, 90000); this.redraw();
+    this.scene.fog = new THREE.Fog(this.scene.background, 30000, 90000);
+    if (this.camera) this.updateCamera();
+    this.lighting?.applyBackground(); this.redraw();   // by night the game's sky and fog (lighting.js)
   }
   // What this view shows: origin (subtracted from all game positions), terrain, objects.
   setContent({ origin, terrain = null, objects = [], interior = false }) {
@@ -70,6 +73,7 @@ export class View {
   draw() {
     const r = this.el.getBoundingClientRect(), b = shared.canvas.getBoundingClientRect();
     const x = r.left - b.left, y = b.bottom - r.bottom;
+    this.lighting?.beforeDraw();
     this.renderer.setViewport(x, y, r.width, r.height); this.renderer.setScissor(x, y, r.width, r.height);
     this.renderer.render(this.scene, this.camera);
   }
@@ -83,6 +87,7 @@ export class View {
     this.camera.position.set(r.target.x + r.dist * cp * Math.cos(r.yaw), r.target.y + r.dist * cp * Math.sin(r.yaw), r.target.z + r.dist * Math.sin(r.pitch));
     this.camera.near = Math.max(5, r.dist / 400); this.camera.far = Math.max(120000, r.dist * 2 + 60000); this.camera.updateProjectionMatrix();
     if (this.scene.fog) { this.scene.fog.near = Math.max(20000, r.dist * 2.5); this.scene.fog.far = this.scene.fog.near * 4; }
+    this.lighting?.cameraMoved();
     this.camera.lookAt(r.target); this.camera.updateMatrixWorld();
     this.camera.userData.focus = r.target;  // where the view looks: what is near it shows its detail (a light's ring)
     if (this.tiltIn && document.activeElement !== this.tiltIn) this.tiltIn.value = Math.round(r.pitch * 100);

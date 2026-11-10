@@ -130,10 +130,23 @@ def h_at(flat, cells, x, y):
     return (g(r0, c0) * (1 - tx) + g(r0, c0 + 1) * tx) * (1 - ty) + (g(r0 + 1, c0) * (1 - tx) + g(r0 + 1, c0 + 1) * tx) * ty
 
 
+# The lighting a bundle carries for the night views, in the extractor's shapes (made-up colours, not the game's).
+FIX_NIGHT = {"Sunrise": [120, 100, 90], "Day": [200, 200, 210], "Sunset": [120, 90, 80], "Night": [40, 48, 64]}
+FIX_SKY = {"climate": "Fix.esm:000900", "edid": "FixClimate", "SunriseBegin": "05:30", "SunriseEnd": "08:00", "SunsetBegin": "18:00",
+           "SunsetEnd": "20:30", "weathers": [
+               {"key": "Fix.esm:000901", "edid": "FixClear", "chance": 70, "SkyUpperColor": FIX_NIGHT, "FogNearColor": FIX_NIGHT,
+                "FogFarColor": FIX_NIGHT, "AmbientColor": FIX_NIGHT, "SunlightColor": {**FIX_NIGHT, "Night": [30, 34, 50]},
+                "DirectionalAmbientLightingColors": {"Night": {f"Directional{k}": [36, 40, 52] for k in ("XPlus", "XMinus", "YPlus", "YMinus", "ZPlus", "ZMinus")}},
+                "FogDistanceNightNear": 0, "FogDistanceNightFar": 40000, "FogDistanceNightPower": 1, "FogDistanceNightMax": 0.8},
+               {"key": "Fix.esm:000902", "edid": "FixFog", "chance": 30, "SkyUpperColor": FIX_NIGHT, "AmbientColor": FIX_NIGHT}]}
+FIX_ROOM = {"AmbientColor": [50, 45, 40], "DirectionalColor": [0, 0, 0], "FogNearColor": [10, 10, 10], "FogFarColor": [10, 10, 10],
+            "FogNear": 0, "FogFar": 6000, "FogPower": 1, "FogMax": 0.6, "DirectionalFade": 1, "Inherits": ""}
+
+
 def space_json(sid, typ, cells, name=None):
     return {"space_id": sid, "type": typ, "name": name or sid, "cells": cells,
             "water": {"default_height": 120.0, "type": "river"} if typ == "exterior" else {},
-            "light": {"ambient": [90, 90, 90]} if typ == "interior" else {}, "owner": None}
+            "light": FIX_ROOM if typ == "interior" else {}, "owner": None, **({"sky": FIX_SKY} if typ == "exterior" else {})}
 
 
 def bundle_json(bid, kind, title, anchor, cells, spaces, extra=None):

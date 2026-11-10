@@ -68,7 +68,7 @@ export class Tools {
     if (name === 'help') { a.panels.intro(); return; }
     if (['history', 'saves', 'notes'].includes(name)) { a.panels.open(name); this.markRail(name); return; }
     this.current = name; this.markRail(name); this.clearSketch(a.ours.view); this.clearSketch(a.src.view);
-    document.getElementById('timebar').hidden = name !== 'people';
+    document.getElementById('timebar').hidden = name !== 'people'; a.timeLight?.();
     a.people.setActive(name === 'people');
     if (name !== 'search' && this.placing?.from === 'search') this.stopPlacing();
     if (name === 'select' && !a.selection.size) a.panels.close(); else a.panels.open(name);

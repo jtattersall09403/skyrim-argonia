@@ -1046,3 +1046,90 @@ def test_24_note_bar(pad, server):
     pad.shot("24-history-notes")
     pad.ev("studio.selection.clear(); studio.tools.selectionChanged(); studio.panels.close()")
     assert not pad.errors, pad.errors
+
+
+# ---------- 25: day and night ----------
+# The mean brightness (0..255) of a square of a view's canvas round a game point.
+BRIGHT = """([side, pos, half]) => { const v = studio[side].view, c = v.renderer.domElement, r = v.canvas.getBoundingClientRect(),
+  b = c.getBoundingClientRect(), s = v.toScreen(pos), k = c.width / b.width;
+  const x = Math.round((r.left - b.left + s.x - half) * k), y = Math.round((r.top - b.top + s.y - half) * k), w = Math.round(2 * half * k);
+  const t = document.createElement('canvas'); t.width = t.height = w; const g = t.getContext('2d'); g.drawImage(c, x, y, w, w, 0, 0, w, w);
+  const d = g.getImageData(0, 0, w, w).data; let sum = 0; for (let i = 0; i < d.length; i += 4) sum += (d[i] + d[i + 1] + d[i + 2]) / 3;
+  return sum / (d.length / 4); }"""
+
+
+def test_25_day_and_night(pad):
+    """Night is lit by the game's data and differs from day; a light added lights its spot at once, as a real light
+    and as a pool; taking it away darkens the spot again; a room is lit by its own lighting; the time of day drives
+    both views while the People tool is on."""
+    pad.ev("studio.panels.close(); studio.tools.use('select'); studio.selection.clear(); studio.tools.selectionChanged()")
+    lamp = pad.ev("[...studio.model.spaces.exterior.refs.values()].find((r) => r.kind === 'light')")
+    assert lamp, "the place has a light"
+    x, y = lamp["pos"][0] + 300, lamp["pos"][1] + 300
+    spot = [x, y, pad.ev("([x, y]) => studio.terrain.heightAt(x, y)", [x, y])]
+    # what stands on the ground is put away while the spot is measured, so nothing stands over it
+    pad.ev("studio.ours.world.root.visible = false; studio.ours.place.root.visible = false")
+    look_at(pad, "ours", spot, dist=1800, pitch=1.45)
+    pad.page.wait_for_timeout(400)
+    day = pad.ev(BRIGHT, ["ours", spot, 60])
+    sky_day = pad.ev("studio.ours.view.scene.background.getHexString()")
+    pad.shot("25-day")
+    pad.page.click("#view-ours .daynight [data-mode=night]")
+    pad.page.wait_for_timeout(500)
+    st = pad.ev("studio.ours.view.lighting.state()")
+    assert st["mode"] == "night" and not st["plain"] and st["weather"] == "FixClear", st
+    assert st["lights"] >= 1 and st["real"] >= 1 and st["lights"] == st["real"] + st["pools"], st
+    assert pad.ev("studio.ours.view.scene.background.getHexString()") != sky_day, "the night sky is the weather's"
+    assert pad.ev("document.querySelector('#view-ours .daynight [data-mode=night]').getAttribute('aria-pressed')") == "true"
+    assert pad.ev("studio.src.view.lighting.state().mode") == "day", "each view has its own switch"
+    unlit = pad.ev(BRIGHT, ["ours", spot, 60])
+    assert abs(unlit - day) > 3, (unlit, day)
+    # a light added over the spot lights it at once, as a real light
+    n0 = st["lights"]
+    pad.ev("""([base, p]) => studio.push({ op: 'ref.add', ref: { id: 'test.lamp', base, kind: 'light', pos: p, rot: [0, 0, 0], scale: 1,
+             seat: { mode: 'free' } } })""", [lamp["base"], [spot[0], spot[1], spot[2] + 150]])
+    pad.page.wait_for_timeout(400)
+    st = pad.ev("studio.ours.view.lighting.state()")
+    assert st["lights"] == n0 + 1 and pad.ev("studio.ours.view.lighting.nearest.length") >= 1, st
+    lit = pad.ev(BRIGHT, ["ours", spot, 60])
+    assert lit > unlit + 5, (lit, unlit)
+    pad.shot("25-night")
+    # and as a pool: every light that is not one of the few real ones still lights its spot
+    pad.ev("studio.ours.view.lighting.maxReal = 0; studio.ours.view.lighting.invalidate()")
+    pad.page.wait_for_timeout(400)
+    st = pad.ev("studio.ours.view.lighting.state()")
+    assert st["real"] == 0 and st["pools"] >= 1, st
+    pooled = pad.ev(BRIGHT, ["ours", spot, 60])
+    assert pooled > unlit + 5, (pooled, unlit)
+    pad.shot("25-night-pools")
+    pad.ev("studio.ours.view.lighting.maxReal = 6; studio.ours.view.lighting.invalidate()")
+    # taking the light away darkens its spot at once; undo brings it back
+    pad.ev("() => studio.push({ op: 'ref.remove', id: 'test.lamp', before: JSON.parse(JSON.stringify(studio.model.spaces.exterior.refs.get('test.lamp'))) })")
+    pad.page.wait_for_timeout(400)
+    assert pad.ev("studio.ours.view.lighting.state().lights") == n0
+    dark = pad.ev(BRIGHT, ["ours", spot, 60])
+    assert dark < lit - 5, (dark, lit)
+    pad.page.click("#undo")
+    pad.page.wait_for_timeout(300)
+    assert pad.ev("studio.ours.view.lighting.state().lights") == n0 + 1
+    assert pad.ev(BRIGHT, ["ours", spot, 60]) > dark + 5, "the light is back"
+    pad.page.click("#undo")   # and the test's light goes
+    # a room by night: its own lighting
+    room = pad.ev("Object.keys(studio.model.spaces).find((s) => s !== 'exterior')")
+    if room:
+        pad.ev("(s) => studio.showSpace(studio.ours, s)", room)
+        pad.page.wait_for_timeout(300)
+        rs = pad.ev("studio.ours.view.lighting.state()")
+        assert rs["mode"] == "night" and not rs["plain"], rs
+        pad.shot("25-room-night")
+        pad.ev("studio.showSpace(studio.ours, 'exterior')")
+    # the time of day drives both views while the People tool is on
+    pad.ev("studio.tools.use('people')")
+    pad.ev("studio.setTime(12)")
+    assert pad.ev("[studio.ours.view.lighting.mode, studio.src.view.lighting.mode]") == ["day", "day"]
+    pad.ev("studio.setTime(22.5)")
+    assert pad.ev("[studio.ours.view.lighting.mode, studio.src.view.lighting.mode]") == ["night", "night"]
+    pad.page.click("#view-src .daynight [data-mode=day]")
+    assert pad.ev("studio.time") == 12 and pad.ev("studio.ours.view.lighting.mode") == "day"
+    pad.ev("studio.tools.use('select'); studio.ours.world.root.visible = true; studio.ours.place.root.visible = true; studio.ours.view.redraw()")
+    assert not pad.errors, pad.errors

@@ -16,6 +16,8 @@ import { Panels, plainKind } from './panels.js';
 import { segDist, clock } from './geom.js';
 import { Governor } from './governor.js';
 import { NoteBar } from './notes_bar.js';
+import { ViewLighting, lightOf, nightOutside, lightInside, isNight } from './lighting.js';
+import { getJSON } from './api.js';
 
 const VEG = new Set(['tree', 'plant', 'groundcover']);
 // The page tells the server what it is doing and what went wrong (out/places/studio-client.log), so a fault on the
@@ -39,6 +41,7 @@ class Studio {
     this.ours = { view: new View($('#view-ours'), { name: 'Our place', app: this }), space: 'exterior', side: 'ours' };
     this.src = { view: new View($('#view-src'), { name: 'Source place', app: this }), space: 'exterior', side: 'src' };
     this.ours.view.side = this.ours; this.src.view.side = this.src;
+    for (const s of [this.ours, this.src]) s.view.lighting = new ViewLighting(s.view, () => this.lightSource(s));
     this.tools = new Tools(this); this.people = new People(this); this.panels = new Panels(this); this.noteBar = new NoteBar(this);
     this.linked = false; this.dirtySave = false; this.revs = {}; this.loop();
     this.wireChrome();
@@ -322,7 +325,49 @@ class Studio {
       side.place.setRefs([...(this.model.spaces[side.space]?.refs.values() || [])].map((r) => ({ ref: this.seated(r) })));
       this.tools.drawSelection();
     } else side.layer.setRefs(this.refsOf(side).map((r) => ({ ref: r })));
+    side.view.lighting?.invalidate();   // a light added, moved or taken away lights the night view at once
     side.view.redraw();
+  }
+  // ---------- day and night (lighting.js) ----------
+  // What a view's night is lit by: its placed lights (seated as drawn), the game's night for the space it shows, and
+  // the ground under a point (the pools of the lights not drawn as real lights fall on it).
+  lightSource(side) {
+    const ours = side === this.ours, sid = side.space, interior = sid !== 'exterior';
+    if (ours ? !this.model : !this.srcBundle) return null;
+    const bases = ours ? this.bases : this.srcBases, lights = [];
+    for (const r of this.refsOf(side)) {
+      if (r.kind !== 'light') continue;
+      const l = lightOf(r, bases?.get(r.base) || this.srcBases?.get(r.base));
+      if (l) lights.push({ ...l, pos: ours ? this.seated(r).pos : r.pos, id: r.id });
+    }
+    const sky = (ours ? this.ground?.spaces.exterior?.info : this.srcBundle?.spaces.exterior?.info)?.sky;
+    const night = interior ? lightInside(this.roomInfo(side, sid)) : nightOutside(sky, this.weatherKey());
+    const terr = interior ? null : ours ? this.terrain : side.terrain;
+    return { lights, night, ground: interior ? () => side.view.floorZ ?? null : (x, y) => terr?.heightAt(x, y) ?? null };
+  }
+  // A room's lighting: the source cell a copied room comes from (read once from that source's bundle).
+  roomInfo(side, sid) {
+    if (side === this.src) return this.srcBundle?.spaces[sid]?.info;
+    const info = this.spaceInfo?.[sid];
+    if (!info?.copy_of || info.light) return info;
+    const [srcId, cell] = [info.copy_of.slice(0, info.copy_of.lastIndexOf('/')), info.copy_of.slice(info.copy_of.lastIndexOf('/') + 1)];
+    if (this.srcBundle?.id === `src.${srcId}` && this.srcBundle.spaces[cell]) return this.srcBundle.spaces[cell].info;
+    this._rooms = this._rooms || new Map();
+    const k = `${srcId}/${cell}`;
+    if (!this._rooms.has(k)) {
+      this._rooms.set(k, null);
+      getJSON(`/bundle/src.${srcId}/spaces/${encodeURIComponent(cell)}/space.json`, { optional: true })
+        .then((d) => { this._rooms.set(k, d); side.view.lighting?.invalidate(); }).catch(() => {});
+    }
+    return this._rooms.get(k);
+  }
+  weatherKey() { return store.get('studio.weather.v1') || null; }
+  setWeather(key) { store.set('studio.weather.v1', key || ''); for (const s of [this.ours, this.src]) s.view.lighting?.invalidate(); }
+  // The time of day drives both views while the People tool is on; otherwise each view's own switch.
+  timeLight() {
+    if ($('#timebar').hidden) return;
+    const sky = this.ground?.spaces.exterior?.info?.sky, mode = isNight(this.time, sky) ? 'night' : 'day';
+    for (const s of [this.ours, this.src]) s.view.lighting?.setMode(mode);
   }
   // The place's people and stock sources as the server read them (GET stock), the draft's for contents: the content
   // ops apply to these, as the place's ops apply to the draft's files.
@@ -433,6 +478,16 @@ class Studio {
     $('#swap').onclick = () => { const v = $('#views'); v.dataset.swapped = v.dataset.swapped === 'true' ? 'false' : 'true'; };
     document.querySelectorAll('.view .fs').forEach((b) => { b.onclick = () => { const v = b.closest('.view'); v.classList.toggle('full'); b.setAttribute('aria-pressed', v.classList.contains('full')); }; });
     $('#time').oninput = (e) => this.setTime(Number(e.target.value));
+    // each view's day and night switch; with the People tool on it moves the time of day, which both views follow
+    for (const s of [this.ours, this.src]) {
+      const sw = s.view.el.querySelector('.daynight'), L = s.view.lighting;
+      const show = (m) => sw.querySelectorAll('button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.mode === m)));
+      L.onMode = (m) => { show(m); s.view.el.dataset.light = m; if (m === 'night' && L.state().plain) this.toast('This view has no weather or room lighting from the game yet, so it shows a plain night.', 6000); };
+      sw.querySelectorAll('button').forEach((b) => { b.onclick = () => {
+        if (!$('#timebar').hidden) { const sky = this.ground?.spaces.exterior?.info?.sky; if (isNight(this.time, sky) !== (b.dataset.mode === 'night')) this.setTime(b.dataset.mode === 'night' ? 23 : 12); }
+        else L.setMode(b.dataset.mode);
+      }; });
+    }
     const orient = () => { $('#views').dataset.layout = innerHeight > innerWidth ? 'stack' : 'side'; };
     addEventListener('resize', orient); orient();
     addEventListener('keydown', (e) => {
@@ -451,7 +506,7 @@ class Studio {
     mq.addEventListener('change', theme); theme(); this.applyTheme = theme;
     addEventListener('beforeunload', (e) => { if (this.dirtySave) { this.autosave(); e.preventDefault(); } });
   }
-  setTime(t) { this.time = t; $('#time').value = t; $('#time-out').textContent = clock(t); this.people.refresh(); }
+  setTime(t) { this.time = t; $('#time').value = t; $('#time-out').textContent = clock(t); this.people.refresh(); this.timeLight(); }
   heartbeat() {
     const beat = () => { if (document.visibilityState === 'visible') api.heartbeat(); };
     beat(); this.hbT = setInterval(beat, 60000);

@@ -56,10 +56,18 @@ export function poseFor(local, fix, light, posOf = (r) => r.pos) {
   return [[fp[0] + x, fp[1] + y, fp[2] + local.z * s], [light.rot?.[0] || 0, light.rot?.[1] || 0, local.rz + a]];
 }
 
+// A light's colour as [r, g, b]: the bundles write it as three numbers, or (the extractor's byte arrays) as those
+// three bytes in base64.
+export function colourOf(v) {
+  if (Array.isArray(v)) return v.slice(0, 3).map(Number);
+  if (typeof v === 'string' && v.length >= 4) { try { const s = atob(v); return [0, 1, 2].map((i) => s.charCodeAt(i) || 0); } catch { return null; } }
+  return null;
+}
+
 // What the Selected panel says of a light: radius, colour, shadow casting.
 export function lightFacts(ref, base) {
   const l = base?.light || {};
-  const c = l.colour || null, flags = String(l.flags || '');
+  const c = colourOf(l.colour), flags = String(l.flags || '');
   return { radius: ref.radius || l.radius || 0, colour: c, hex: c ? '#' + c.map((v) => v.toString(16).padStart(2, '0')).join('') : null,
     shadow: /shadow/i.test(flags), flags };
 }

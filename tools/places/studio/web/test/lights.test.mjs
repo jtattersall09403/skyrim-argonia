@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { fixtureOf, isFixture, lightFacts, lightsOf, localOf, poseFor } from '../js/lights.js';
+import { colourOf, fixtureOf, isFixture, lightFacts, lightsOf, localOf, poseFor } from '../js/lights.js';
 
 const bases = new Map([
   ['lantern', { edid: 'CandleLanternwithCandle01', model: 'clutter/common/candlelanternwithcandle01.nif' }],
@@ -35,4 +35,7 @@ assert.deepEqual(p2, [200, 0, 100]);
 const f = lightFacts(L, baseOf(L));
 assert.equal(f.radius, 400); assert.equal(f.hex, '#ffc878'); assert.ok(f.shadow);
 assert.equal(lightFacts({ ...L, radius: 650 }, baseOf(L)).radius, 650);
+// a colour the extractor writes as its three bytes in base64 reads the same
+assert.deepEqual(colourOf('t2ke'), [183, 105, 30]);
+assert.equal(lightFacts(L, { light: { colour: 't2ke', radius: 256 } }).hex, '#b7691e');
 console.log('lights ok');

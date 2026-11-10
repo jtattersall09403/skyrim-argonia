@@ -459,6 +459,8 @@ static class Extractor
                 space["cells"] = new[] { Key(ic.FormKey) };
                 space["water"] = ic.Flags.HasFlag(Cell.Flag.HasWater) ? new { default_height = ic.WaterHeight, type = KeyN(ic.Water.FormKey) } : null;
                 space["light"] = Dump(ic.Lighting); space["lighting_template"] = KeyN(ic.LightingTemplate.FormKey);
+                // the fields the cell inherits (light.Inherits) come from its lighting template: the studio's night view
+                space["lighting_template_light"] = LightingTemplate(ic.LightingTemplate.FormKey);
                 space["owner"] = KeyN(ic.Owner.FormKey); space["flags"] = ic.Flags.ToString();
             }
             else if (ex != null)
@@ -466,10 +468,39 @@ static class Extractor
                 space["name"] = L.WorldRec?.Name?.String;
                 space["cells"] = ex.Cells.Keys.OrderBy(c => c.Item2).ThenBy(c => c.Item1).Select(c => new[] { c.Item1, c.Item2 }).ToList();
                 space["water"] = new { default_height = L.WorldRec?.LandDefaults?.DefaultWaterHeight, type = KeyN(L.WorldRec?.Water.FormKey ?? FormKey.Null) };
+                space["sky"] = Sky();
                 if (job.Terrain) space["terrain"] = WriteTerrain(dir, ex, space);
             }
             File.WriteAllText(Path.Combine(dir, "space.json"), JsonSerializer.Serialize(space, new JsonSerializerOptions { WriteIndented = true }));
         }
+
+        // The worldspace's climate and the colours of each of its weathers by time of day (sunrise, day, sunset,
+        // night): what the studio's day and night views light an exterior with. Only the lighting fields are kept.
+        Dictionary<string, object?>? Sky()
+        {
+            if (L.WorldRec is not { } w || Resolve(L, w.Climate.FormKey).rec is not { } clim) return null;
+            var weathers = new List<object?>();
+            foreach (var wt in (Prop(clim, "WeatherTypes") ?? Prop(clim, "Weathers")) as IEnumerable ?? Array.Empty<object>())
+            {
+                if (wt is null) continue;
+                var link = Prop(wt, "Weather") as IFormLinkGetter;
+                var (wr, from) = link is null ? (null, "") : Resolve(L, link.FormKey);
+                if (wr is null) continue;
+                var row = new Dictionary<string, object?> { ["key"] = Key(wr.FormKey), ["edid"] = wr.EditorID, ["plugin"] = from, ["chance"] = Prop(wt, "Chance") };
+                foreach (var f in WeatherLightFields) row[f] = Dump(Prop(wr, f));
+                weathers.Add(row);
+            }
+            var sky = new Dictionary<string, object?> { ["climate"] = Key(clim.FormKey), ["edid"] = clim.EditorID, ["weathers"] = weathers };
+            foreach (var f in new[] { "SunriseBegin", "SunriseEnd", "SunsetBegin", "SunsetEnd" }) sky[f] = Prop(clim, f)?.ToString();
+            return sky;
+        }
+        static readonly string[] WeatherLightFields = {
+            "SkyUpperColor", "SkyLowerColor", "HorizonColor", "FogNearColor", "FogFarColor", "AmbientColor", "SunlightColor",
+            "SunColor", "EffectLightingColor", "DirectionalAmbientLightingColors", "FogDistanceDayNear", "FogDistanceDayFar",
+            "FogDistanceNightNear", "FogDistanceNightFar", "FogDistanceDayPower", "FogDistanceNightPower", "FogDistanceDayMax",
+            "FogDistanceNightMax", "Flags" };
+        object? LightingTemplate(FormKey fk) => Resolve(L, fk).rec is { } t ? Dump(Prop(t, "Data") ?? t) : null;
+        static object? Prop(object o, string name) { try { return o.GetType().GetProperty(name)?.GetValue(o); } catch { return null; } }
 
         Dictionary<string, object?>? RefRow(FormKey fk, IMajorRecordGetter r, string from, (int, int)? cell, Dictionary<FormKey, string> spaceOf)
         {
@@ -655,7 +686,7 @@ static class Extractor
                 {
                     case IDoorGetter d: row["door"] = new { flags = d.Flags.ToString() }; break;
                     case IFurnitureGetter fu: row["furniture"] = new { markers = Dump(fu.Markers), flags = fu.Flags?.ToString(), keyword = KeyN(fu.InteractionKeyword.FormKey) }; break;
-                    case ILightGetter li: row["light"] = new { radius = li.Radius, colour = new[] { li.Color.R, li.Color.G, li.Color.B }, flags = li.Flags.ToString(), fov = li.FOV }; break;
+                    case ILightGetter li: row["light"] = new { radius = li.Radius, colour = new[] { li.Color.R, li.Color.G, li.Color.B }, flags = li.Flags.ToString(), fov = li.FOV, fade = li.FadeValue, falloff = li.FalloffExponent }; break;
                     case IContainerGetter co: row["container"] = new { flags = co.Flags.ToString(), items = co.Items?.Count ?? 0 }; break;
                     case ITreeGetter tr: row["tree"] = new { ingredient = KeyN(tr.Ingredient.FormKey) }; break;
                     case IFloraGetter fl: row["flora"] = new { ingredient = KeyN(fl.Ingredient.FormKey) }; break;
