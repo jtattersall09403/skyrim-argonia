@@ -38,3 +38,27 @@ def test_notes_take_odd_input_and_many_writers(tmp_path):
     ids = [r["id"] for r in notes.read("x", tmp_path)]
     assert len(ids) == 13 and sorted(ids, key=lambda i: int(i[1:])) == [f"n{i}" for i in range(1, 14)]
     assert not list((tmp_path / "x" / "edits").glob(".*"))
+
+
+def test_notes_list_shows_the_notes_on_changes(tmp_path):
+    """`notes` shows each note on changes in an unfinalised save with exactly its changes, once across saves."""
+    import json
+    ops = [{"n": 1, "op": "ref.move", "space": "exterior", "call": "fault", "id": "r1", "note_group": "g1",
+            "before": {"pos": [0, 0, 0]}, "after": {"pos": [700, 0, 0]}},
+           {"n": 2, "op": "ref.move", "space": "exterior", "call": "fault", "id": "r2", "note_group": "g1",
+            "before": {"pos": [0, 0, 0]}, "after": {"pos": [0, 140, 0]}},
+           {"n": 3, "op": "ref.move", "space": "exterior", "call": "fault", "id": "r3",
+            "before": {"pos": [0, 0, 0]}, "after": {"pos": [0, 0, 70]}}]
+    save = {"save_id": "a", "place_id": "x", "ops": ops, "notes": [{"id": "g1", "text": "off the boardwalk", "at": "t"}]}
+    (tmp_path / "x" / "edits").mkdir(parents=True)
+    (tmp_path / "x" / "edits" / "a.json").write_text(json.dumps(save))
+    auto = tmp_path / "auto"
+    auto.mkdir()
+    (auto / "x.json").write_text(json.dumps(save | {"save_id": "autosave"}))
+    text = notes.change_notes("x", places=tmp_path, autosaves=auto)
+    assert text.count('"off the boardwalk"') == 1 and "about 2 changes" in text
+    assert "10.0 m east" in text and "2.0 m north" in text and "r3" not in text
+    (tmp_path / "x" / "edits" / "a.json").write_text(json.dumps(save | {"final": True}))
+    (auto / "x.json").unlink()
+    assert notes.change_notes("x", places=tmp_path, autosaves=auto) == ""
+    assert '"off the boardwalk"' in notes.change_notes("x", True, places=tmp_path, autosaves=auto)

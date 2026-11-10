@@ -22,6 +22,13 @@ static class Extractor
     public static string Key(FormKey fk) => $"{fk.ModKey.FileName}:{fk.ID:X6}";
     static string? KeyN(FormKey fk) => fk.IsNull ? null : Key(fk);
 
+    /// A ref's own light data (XLIG), one shape with the build tool's reader (Common.cs) and writer (Write.cs).
+    static Dictionary<string, object?> LightDataRow(ILightDataGetter ld) => new()
+    {
+        ["fov"] = ld.FovOffset, ["fade"] = ld.FadeOffset, ["end_cap"] = ld.EndDistanceCap,
+        ["shadow_bias"] = ld.ShadowDepthBias,
+    };
+
     // ---- loading ------------------------------------------------------------------------------------------------
 
     sealed class Loaded
@@ -509,6 +516,8 @@ static class Extractor
                 if (po.MapMarker is { } mm) row["map_marker"] = Dump(mm);
                 if (po.Primitive is { } prim) row["primitive"] = Dump(prim);
                 if (po.Radius is { } rad) row["radius"] = rad;
+                if (po.LightData is { } ld) row["light_data"] = LightDataRow(ld);
+                if (!po.Emittance.IsNull) row["emittance"] = Key(po.Emittance.FormKey);
                 if (po.LocationRefTypes is { Count: > 0 } lr) row["loc_ref_types"] = lr.Select(x => KeyN(x.FormKey)).ToList();
                 if (po.ItemCount is { } ic) row["count"] = ic;
             }

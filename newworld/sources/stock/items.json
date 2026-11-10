@@ -407,6 +407,21 @@
    "never": false
   },
   {
+   "id": "Skyrim.esm:01D4EC",
+   "form_key": "01D4EC:Skyrim.esm",
+   "plugin": "Skyrim.esm",
+   "edid": "Torch01",
+   "name": null,
+   "record": "LIGH",
+   "item_kind_id": "light",
+   "value": 2,
+   "material": null,
+   "stock_tier_id": "T1",
+   "enchanted": false,
+   "significant": false,
+   "never": false
+  },
+  {
    "id": "Skyrim.esm:0209A6",
    "form_key": "0209A6:Skyrim.esm",
    "plugin": "Skyrim.esm",

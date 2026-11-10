@@ -8,7 +8,11 @@ the things selected when the note was written. One JSON line per note in newworl
 
 A note: {id, at, text, things: [{id, space, base, name, kind, pos, src}], view: {space, at: [x, y, z]}, save,
 done, done_at, reply}. An agent answers a note by changing what it asks for and closing it with `done`; the reply
-shows beside the note in the studio."""
+shows beside the note in the studio.
+
+The owner's notes on changes live in the saves with the changes they cover (tools/places/change_notes.py); the
+listing shows them too, for each save not yet finalised (every save with --all), each note with its changes. They
+are answered by finalising the save: its lessons step reads them."""
 import argparse
 import fcntl
 import json
@@ -20,6 +24,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 PLACES = ROOT / "newworld" / "places"
+AUTOSAVES = ROOT / "out" / "places" / "autosave"
 PLACE_ID = re.compile(r"^[a-z0-9][a-z0-9._-]{0,95}$")
 NOTE_ID = re.compile(r"n(\d+)")
 MAX_TEXT, MAX_THINGS = 4000, 200
@@ -128,6 +133,33 @@ def show(place_id: str, n: dict) -> str:
     return "\n".join(out)
 
 
+def change_notes(place_id: str, everything: bool = False, places: Path = PLACES, autosaves: Path = AUTOSAVES) -> str:
+    """The notes on changes in the place's saves (the autosave and named saves; finalised ones only with
+    `everything`), each with its changes; a note in several saves (a named copy of the autosave) is shown once."""
+    from tools.places import change_notes as cn
+    files = sorted((places / place_id / "edits").glob("*.json")) + [autosaves / f"{place_id}.json"]
+    try:
+        from tools.places.edits import load_place
+        place_files = load_place(places / place_id)
+    except (OSError, ValueError, KeyError):
+        place_files = None
+    seen, out = set(), []
+    for p in files:
+        try:
+            save = json.loads(p.read_text(encoding="utf-8")) if p.exists() else None
+        except (OSError, ValueError):
+            continue
+        if not isinstance(save, dict) or not isinstance(save.get("ops"), list) or (save.get("final") and not everything):
+            continue
+        said = [s for s in cn.present(save, place_id, place_files)
+                if (key := (s["text"], tuple(o["n"] for c in s["changes"] for o in c["ops"]))) not in seen and not seen.add(key)]
+        if said:
+            where = "the unsaved work (autosave)" if p.parent == autosaves else f"save {save.get('save_id', p.stem)}"
+            state = "finalised" if save.get("final") else "not finalised yet"
+            out.append(f"{place_id}, notes on changes in {where} ({state}):\n" + cn.show(said, "  "))
+    return "\n".join(out)
+
+
 def main(argv: list[str]) -> int:
     if argv and argv[0] == "done":
         ap = argparse.ArgumentParser(prog="python -m tools.places notes done")
@@ -141,13 +173,17 @@ def main(argv: list[str]) -> int:
     ap.add_argument("place_id", nargs="?")
     ap.add_argument("--all", action="store_true", help="answered notes too")
     a = ap.parse_args(argv)
-    ids = [a.place_id] if a.place_id else sorted(d.name for d in PLACES.iterdir() if (d / "edits" / "notes.jsonl").exists())
+    ids = [a.place_id] if a.place_id else sorted(d.name for d in PLACES.iterdir() if (d / "edits").is_dir())
     shown = 0
     for pid in ids:
         for n in read(pid):
             if a.all or not n.get("done"):
                 print(show(pid, n))
                 shown += 1
+        text = change_notes(pid, a.all)
+        if text:
+            print(text)
+            shown += 1
     if not shown:
         print("no open notes" if not a.all else "no notes")
     return 0

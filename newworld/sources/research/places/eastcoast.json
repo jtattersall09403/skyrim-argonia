@@ -248,13 +248,8 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "map marker for the village on Hatandros Bight",
-     "count": 1
-    },
-    {
-     "kind": "carriage-or-boat",
-     "detail": "flat-boat passage north to Thorn and south to Archon",
+     "kind": "boat-stop",
+     "detail": "a flat-boat at the quay",
      "count": 1
     },
     {
@@ -556,11 +551,6 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "map marker for the ruined hold on the rock",
-     "count": 1
-    },
-    {
      "kind": "combat-foes",
      "detail": "Velothi ancestor ghosts and skeletons in the upper halls",
      "count": 6,
@@ -810,11 +800,6 @@
     }
    ],
    "gives": [
-    {
-     "kind": "fast-travel",
-     "detail": "map marker for the headland ruin",
-     "count": 1
-    },
     {
      "kind": "combat-foes",
      "detail": "Velothi household ghosts at their posts in the inner hall",
@@ -1109,11 +1094,6 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "map marker for the salt mine",
-     "count": 1
-    },
-    {
      "kind": "harvest-common",
      "detail": "Salt Pile harvest in the working face",
      "count": 6
@@ -1400,11 +1380,6 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "map marker for the road post",
-     "count": 1
-    },
-    {
      "kind": "free-bed",
      "detail": "wardens' bunks in the blockhouse",
      "count": 1
@@ -1599,11 +1574,6 @@
     }
    ],
    "gives": [
-    {
-     "kind": "fast-travel",
-     "detail": "map marker for the wreck",
-     "count": 1
-    },
     {
      "kind": "combat-foes",
      "detail": "drowned crew in the hold",
@@ -1892,11 +1862,6 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "map marker for the roost",
-     "count": 1
-    },
-    {
      "kind": "trader-general",
      "detail": "Sarpa trade: feathers and eggs for salt, dye and clay beads; 750 gold",
      "count": 1
@@ -2175,11 +2140,6 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "map marker for the river-fort ruin",
-     "count": 1
-    },
-    {
      "kind": "combat-foes",
      "detail": "ancestor ghosts and skeletal guards in the lower halls",
      "count": 6,
@@ -2422,16 +2382,6 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "map marker for the landing",
-     "count": 1
-    },
-    {
-     "kind": "carriage-or-boat",
-     "detail": "boat passage to Thorn",
-     "count": 1
-    },
-    {
      "kind": "trader-general",
      "detail": "stone, lime, salt, rope and cloth; 750 gold",
      "count": 1
@@ -2666,11 +2616,6 @@
     }
    ],
    "gives": [
-    {
-     "kind": "fast-travel",
-     "detail": "map marker for the station",
-     "count": 1
-    },
     {
      "kind": "trader-general",
      "detail": "kelp, salt, sea-bird eggs and dye; 750 gold",
@@ -2987,11 +2932,6 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "map marker for the wreck on the Thorn shelf",
-     "count": 1
-    },
-    {
      "kind": "combat-foes",
      "detail": "drowned slaver crew and shackled dead in the hold",
      "count": 5,
@@ -3297,11 +3237,6 @@
     }
    ],
    "gives": [
-    {
-     "kind": "fast-travel",
-     "detail": "map marker for the wreck on the Kornakim shoals",
-     "count": 1
-    },
     {
      "kind": "combat-foes",
      "detail": "drowned sloop crew",
@@ -3609,11 +3544,6 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "map marker for the wreck east of Skeith Isle",
-     "count": 1
-    },
-    {
      "kind": "combat-foes",
      "detail": "drowned Septim marines on the decks",
      "count": 6,
@@ -3870,11 +3800,6 @@
     }
    ],
    "gives": [
-    {
-     "kind": "fast-travel",
-     "detail": "map marker for the camp",
-     "count": 1
-    },
     {
      "kind": "combat-foes",
      "detail": "smuggler lookouts and boat crew",
@@ -4184,11 +4109,6 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "map marker for the landing",
-     "count": 1
-    },
-    {
      "kind": "combat-foes",
      "detail": "pirate crews on the hulks and jetty",
      "count": 8,
@@ -4464,11 +4384,6 @@
     }
    ],
    "gives": [
-    {
-     "kind": "fast-travel",
-     "detail": "map marker for the summit",
-     "count": 1
-    },
     {
      "kind": "combat-foes",
      "detail": "pirate lookouts on the south path and summit",
@@ -4772,11 +4687,6 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "map marker for the keep",
-     "count": 1
-    },
-    {
      "kind": "combat-foes",
      "detail": "pirate crew in the hall, stair and jetty",
      "count": 8,
@@ -4982,11 +4892,6 @@
     }
    ],
    "gives": [
-    {
-     "kind": "fast-travel",
-     "detail": "map marker for the beached wreck",
-     "count": 1
-    },
     {
      "kind": "combat-foes",
      "detail": "scavengers from both camps",
@@ -5224,8 +5129,8 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "map marker for the town",
+     "kind": "rootworm-stop",
+     "detail": "the root pool under the great Hist on the mound",
      "count": 1
     },
     {
@@ -5508,13 +5413,8 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "map marker for the town",
-     "count": 1
-    },
-    {
-     "kind": "carriage-or-boat",
-     "detail": "the rope ferry and a river barge to Aroxhu, Arorha and Archon",
+     "kind": "boat-stop",
+     "detail": "the river barge at the market ground",
      "count": 1
     },
     {
@@ -6093,11 +5993,6 @@
    ],
    "gives": [
     {
-     "kind": "carriage-or-boat",
-     "detail": "Agaceph reed-raft passage to Yulca and Badal",
-     "count": 1
-    },
-    {
      "kind": "trader-innkeeper",
      "detail": "eel-paste, rice and dried fish",
      "count": 1
@@ -6634,11 +6529,6 @@
    ],
    "gives": [
     {
-     "kind": "carriage-or-boat",
-     "detail": "the boat-wright's rowing passage to Seafalls",
-     "count": 1
-    },
-    {
      "kind": "trader-general",
      "detail": "salted fish, rope, boat-timber and shell goods",
      "count": 1
@@ -6910,11 +6800,6 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "the Redclay Watch marker",
-     "count": 1
-    },
-    {
      "kind": "grindstone",
      "detail": "a grindstone beside the spear rack",
      "count": 1
@@ -7179,11 +7064,6 @@
     }
    ],
    "gives": [
-    {
-     "kind": "fast-travel",
-     "detail": "the Vicrium mine marker",
-     "count": 1
-    },
     {
      "kind": "ore-vein",
      "detail": "iron ore seams in the upper galleries",
@@ -7525,13 +7405,8 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "the Seafalls marker",
-     "count": 1
-    },
-    {
-     "kind": "carriage-or-boat",
-     "detail": "a pilot's boat to Archon and the Thorn road landing",
+     "kind": "boat-stop",
+     "detail": "a pilot's boat at the landing",
      "count": 1
     },
     {
@@ -9817,13 +9692,8 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Yulca map marker",
-     "count": 1
-    },
-    {
-     "kind": "carriage-or-boat",
-     "detail": "raft ferry to Gaweja, Aroxhu, Xibcan and Icalca",
+     "kind": "boat-stop",
+     "detail": "the raft ferry at the lake landing",
      "count": 1
     },
     {
@@ -10459,11 +10329,6 @@
      "kind": "harvest-common",
      "detail": "hawk and swamp-bird feathers on the bank",
      "count": 1
-    },
-    {
-     "kind": "fast-travel",
-     "detail": "Seth-Alaxh Roost map marker",
-     "count": 1
     }
    ]
   },
@@ -10749,11 +10614,6 @@
     }
    ],
    "gives": [
-    {
-     "kind": "fast-travel",
-     "detail": "Anvadas map marker",
-     "count": 1
-    },
     {
      "kind": "combat-foes",
      "detail": "skeletal guards and ancestor ghosts, 6",
@@ -11072,11 +10932,6 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Sethiral map marker",
-     "count": 1
-    },
-    {
      "kind": "combat-foes",
      "detail": "ancestor ghosts and skeletal guards, 6",
      "count": 1,
@@ -11393,11 +11248,6 @@
     }
    ],
    "gives": [
-    {
-     "kind": "fast-travel",
-     "detail": "Mazurath map marker",
-     "count": 1
-    },
     {
      "kind": "combat-foes",
      "detail": "ancestor ghosts and the smuggling crew, 6",

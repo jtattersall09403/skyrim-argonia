@@ -135,7 +135,7 @@ def derive(p: Place) -> dict:
                      "WHERE pg.relation = 'makes'"):
         makers[g["keyword"]].add(g["place_id"])
     gates = {r["place_id"] for r in w.query("SELECT g.place_id FROM place_give g JOIN place p ON p.id = g.place_id "
-                                            "WHERE g.give_kind_id = 'carriage-or-boat' AND p.siting IN ('coast', 'island')")}
+                                            "WHERE g.give_kind_id = 'boat-stop' AND p.siting IN ('coast', 'island')")}
     steps = sc["provenance"]["steps"]
 
     def provenance(it: dict, kind: str) -> tuple[dict, str]:
@@ -234,26 +234,43 @@ def derive(p: Place) -> dict:
                 "why": f"a {kind} in a shared space of {place.name}: the town's, ordinary ({t}), the least gold",
                 "cites": [cite_wealth]})
 
-    # possessions: by role and wealth band, the tier the band reaches in this place
+    # possessions: by role and wealth band, the tier the band reaches in this place; a guard's gear is the issue
+    issue = split.guard_issue(place.culture_id, ceiling, p.plugins() or split.source_plugins(pid), sc)
+    issue_plain = next(o for o in sc["owner"] if o["id"] == "faction")["issue_tier"]
     for r in sorted(persons.values(), key=lambda x: x.id):
         b = wb[r.person_wealth_band_id]
-        t = person_tier(b["id"]) if r.person_role_id != "guard" else tier_cap(tier_of[max(1, min(b["rank"], 3))])
+        guard = r.person_role_id == "guard"
+        t = person_tier(b["id"]) if not guard else tier_cap(tier_of[max(1, min(b["rank"], 3))])
         items = []
         wt = ROLE_WEAPON.get(r.person_role_id, "WeapTypeDagger")
         tw = t if wt != "WeapTypeDagger" else "T1"
-        weap = next((pick.by_keywords(m, wt) for m in tiers[tw]["weapon"] if pick.by_keywords(m, wt)), None)
+        if guard:  # the guard's issue (scale `guard_issue`): the weapon of its set, else the plain issue's sword
+            tw = issue_plain
+        weap = None if guard and issue["set"] and issue["set"].get("weapon") else \
+            next((pick.by_keywords(m, wt) for m in tiers[tw]["weapon"] if pick.by_keywords(m, wt)), None)
+        if guard and issue["set"] and issue["set"].get("weapon"):
+            items.append({"item": issue["set"]["weapon"], "count": 1, "worn": True,
+                          "why": f"the levy's issue: the weapon of {issue['why']}"})
         if weap:
             step, prov = provenance(weap, "weapon")
             items.append({"item": weap["key"], "count": 1, "worn": True,
                           "why": f"{r.trade}: a {wt[8:].lower()} of {tw} ({prov})"})
-        if r.person_role_id == "guard":
-            mats = [m for m in tiers[t]["armour"] if pick.by_keywords(m, "ArmorLight", "ArmorCuirass")] or tiers[t]["armour"]
+        if guard and issue["set"]:
+            for k in issue["set"]["items"]:
+                items.append({"item": k, "count": 1, "worn": True,
+                              "why": f"the levy's issue: {place.name}'s guards wear {issue['why']}"})
+        elif guard:
+            ti = issue_plain
+            mats = [m for m in tiers[ti]["armour"] if pick.by_keywords(m, "ArmorLight", "ArmorCuirass")] or tiers[ti]["armour"]
             for slot in ARMOUR_SLOTS:
                 a = next((pick.by_keywords(m, slot) for m in mats if pick.by_keywords(m, slot)), None)
                 if a:
                     step, prov = provenance(a, "armour")
                     items.append({"item": a["key"], "count": 1, "worn": True,
-                                  "why": f"the levy's {slot[5:].lower()} at {t}, light for the marsh ({prov})"})
+                                  "why": f"the levy's {slot[5:].lower()} at {ti}, light for the marsh ({prov})"})
+        if guard:
+            items.append({"item": issue["torch"], "count": 1, "worn": False,
+                          "why": "the levy's torch: " + sc["guard_issue"]["torch_why"]})
         if b["rank"] >= 3 and tiers[t]["jewellery"]:
             j = pick.edid(tiers[min(t, "T2", key=rank.get)]["jewellery"][0]) if b["rank"] == 3 else \
                 pick.edid(tiers[t]["jewellery"][-1 if b["rank"] == 5 else 0])

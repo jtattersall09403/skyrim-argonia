@@ -32,6 +32,7 @@ from tools.newworld import danger
 from tools.newworld import flora
 from tools.newworld import frame as f
 from tools.newworld import stockdb
+from tools.newworld import travel
 from tools.newworld.regions import REGIONS
 
 SRC = f.ROOT / "sources"
@@ -312,6 +313,7 @@ def build() -> db.World:
     danger.assign(w)
     terrain_and_water(w)
     flora.build(w)
+    travel.load(w)
     w.insert_many("source", sorted(sources.values(), key=lambda r: r["id"]))
     stockdb.load(w)
     w.save()

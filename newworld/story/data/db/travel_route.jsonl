@@ -1,0 +1,90 @@
+{"from_place_id":"acra-tiin","to_place_id":"soulrest","travel_mode_id":"boat","distance_m":595,"open_sea_m":398,"fare":15,"hours":1,"why":"Across the bay to the fishing village."}
+{"from_place_id":"aphon-belvedere","to_place_id":"olvani","travel_mode_id":"boat","distance_m":955,"open_sea_m":761,"fare":20,"hours":1,"why":"The ferry across the strait to Aphon Isle."}
+{"from_place_id":"archon","to_place_id":"arorha","travel_mode_id":"boat","distance_m":2311,"open_sea_m":59,"fare":30,"hours":2,"why":"North along the coast to Arorha's quay."}
+{"from_place_id":"archon","to_place_id":"inoja","travel_mode_id":"boat","distance_m":2292,"open_sea_m":0,"fare":30,"hours":2,"why":"Up the river to the confederacy's market town."}
+{"from_place_id":"archon","to_place_id":"lilmoth","travel_mode_id":"boat","distance_m":1774,"open_sea_m":0,"fare":25,"hours":2,"why":"The coast run between the south-east's two great ports."}
+{"from_place_id":"archon","to_place_id":"seafalls","travel_mode_id":"boat","distance_m":693,"open_sea_m":0,"fare":15,"hours":1,"why":"North along the shoals to the pilots' landing."}
+{"from_place_id":"archon","to_place_id":"thorn","travel_mode_id":"boat","distance_m":4148,"open_sea_m":1410,"fare":45,"hours":3,"why":"North up the coast, across the open bight, to Thorn's quay."}
+{"from_place_id":"archon","to_place_id":"uluo","travel_mode_id":"boat","distance_m":2134,"open_sea_m":0,"fare":25,"hours":2,"why":"The back-water freight run to the great port."}
+{"from_place_id":"arorha","to_place_id":"archon","travel_mode_id":"boat","distance_m":2311,"open_sea_m":59,"fare":30,"hours":2,"why":"North along the coast to Arorha's quay."}
+{"from_place_id":"arorha","to_place_id":"inoja","travel_mode_id":"boat","distance_m":1922,"open_sea_m":59,"fare":25,"hours":2,"why":"Down the river and along the shore to Arorha."}
+{"from_place_id":"aroxhu","to_place_id":"helstrom","travel_mode_id":"rootworm","distance_m":2313,"open_sea_m":0,"fare":25,"hours":1,"why":"The interior's roots run east to the great Hist of the Oxhu-Teeleel."}
+{"from_place_id":"bell-station","to_place_id":"lilmoth","travel_mode_id":"boat","distance_m":1287,"open_sea_m":0,"fare":20,"hours":2,"why":"Out to the salvage station on its island."}
+{"from_place_id":"blackrose","to_place_id":"kharaxos","travel_mode_id":"boat","distance_m":1165,"open_sea_m":0,"fare":20,"hours":1,"why":"West across the basin to the river market."}
+{"from_place_id":"blackrose","to_place_id":"korydon","travel_mode_id":"boat","distance_m":677,"open_sea_m":0,"fare":15,"hours":1,"why":"Up the channels to the town that builds Blackrose's boats."}
+{"from_place_id":"blackrose","to_place_id":"lujei-ferry","travel_mode_id":"boat","distance_m":626,"open_sea_m":0,"fare":15,"hours":1,"why":"The cable raft's short crossing to the island core."}
+{"from_place_id":"blackrose","to_place_id":"mir-xal","travel_mode_id":"boat","distance_m":1850,"open_sea_m":0,"fare":25,"hours":2,"why":"Down to Mir-Xal's quay, where Blackrose-bound goods are loaded."}
+{"from_place_id":"blackrose","to_place_id":"soulrest","travel_mode_id":"boat","distance_m":4652,"open_sea_m":398,"fare":45,"hours":3,"why":"Down Bramman's mangrove river to the sea port (argonia-4e201-state.md, Southern water)."}
+{"from_place_id":"blackrose","to_place_id":"truowa","travel_mode_id":"boat","distance_m":1426,"open_sea_m":0,"fare":20,"hours":2,"why":"South from the lake to the confluence city."}
+{"from_place_id":"delta-ferry","to_place_id":"lilmoth","travel_mode_id":"boat","distance_m":1714,"open_sea_m":0,"fare":25,"hours":2,"why":"Up the delta channel on the Lilmoth road."}
+{"from_place_id":"gideon","to_place_id":"gul-tej","travel_mode_id":"coach","distance_m":1633,"open_sea_m":0,"fare":20,"hours":2,"why":"The old road east to the market town on the fork."}
+{"from_place_id":"gideon","to_place_id":"helstrom","travel_mode_id":"rootworm","distance_m":2751,"open_sea_m":0,"fare":25,"hours":1,"why":"The rootworm line west to its canon stop at Gideon (Lore:Rootworm)."}
+{"from_place_id":"gideon","to_place_id":"slough-point","travel_mode_id":"coach","distance_m":3321,"open_sea_m":0,"fare":30,"hours":2,"why":"The western road north to its end at the broken bridge, toward the Blackwood."}
+{"from_place_id":"gideon","to_place_id":"soulrest","travel_mode_id":"boat","distance_m":2265,"open_sea_m":2060,"fare":30,"hours":2,"why":"North up the west coast to Gideon's quay, the bay's trade both ways."}
+{"from_place_id":"gideon","to_place_id":"soulrest","travel_mode_id":"coach","distance_m":4116,"open_sea_m":0,"fare":35,"hours":2,"why":"The old Imperial road south across the plain to the other western port."}
+{"from_place_id":"gul-tej","to_place_id":"gideon","travel_mode_id":"coach","distance_m":1633,"open_sea_m":0,"fare":20,"hours":2,"why":"The old road east to the market town on the fork."}
+{"from_place_id":"gul-tej","to_place_id":"helstrom","travel_mode_id":"boat","distance_m":1668,"open_sea_m":0,"fare":25,"hours":2,"why":"West along the Panther River to the Onkobra line."}
+{"from_place_id":"helstrom","to_place_id":"aroxhu","travel_mode_id":"rootworm","distance_m":2313,"open_sea_m":0,"fare":25,"hours":1,"why":"The interior's roots run east to the great Hist of the Oxhu-Teeleel."}
+{"from_place_id":"helstrom","to_place_id":"gideon","travel_mode_id":"rootworm","distance_m":2751,"open_sea_m":0,"fare":25,"hours":1,"why":"The rootworm line west to its canon stop at Gideon (Lore:Rootworm)."}
+{"from_place_id":"helstrom","to_place_id":"gul-tej","travel_mode_id":"boat","distance_m":1668,"open_sea_m":0,"fare":25,"hours":2,"why":"West along the Panther River to the Onkobra line."}
+{"from_place_id":"helstrom","to_place_id":"jal-veesa","travel_mode_id":"rootworm","distance_m":1485,"open_sea_m":0,"fare":25,"hours":1,"why":"North under the Barsaebic marsh to the Hist pool of the Veesa-Teeleel."}
+{"from_place_id":"helstrom","to_place_id":"julo","travel_mode_id":"boat","distance_m":1198,"open_sea_m":0,"fare":20,"hours":1,"why":"Down to the delta crossing where Helstrom's rafts put in."}
+{"from_place_id":"helstrom","to_place_id":"korydon","travel_mode_id":"boat","distance_m":3659,"open_sea_m":0,"fare":40,"hours":2,"why":"South through the channels to the boatwrights' town."}
+{"from_place_id":"helstrom","to_place_id":"korydon","travel_mode_id":"rootworm","distance_m":2207,"open_sea_m":0,"fare":25,"hours":1,"why":"South under Murkwood to the village tree of the channels."}
+{"from_place_id":"helstrom","to_place_id":"stormhold","travel_mode_id":"boat","distance_m":1717,"open_sea_m":0,"fare":25,"hours":2,"why":"North up the water to Stormhold's quay, the interior's way to the north."}
+{"from_place_id":"helstrom","to_place_id":"truowa","travel_mode_id":"boat","distance_m":2284,"open_sea_m":0,"fare":30,"hours":2,"why":"Down the interior's water to the lake city. Rafts from both cities carry the lake trade."}
+{"from_place_id":"inoja","to_place_id":"archon","travel_mode_id":"boat","distance_m":2292,"open_sea_m":0,"fare":30,"hours":2,"why":"Up the river to the confederacy's market town."}
+{"from_place_id":"inoja","to_place_id":"arorha","travel_mode_id":"boat","distance_m":1922,"open_sea_m":59,"fare":25,"hours":2,"why":"Down the river and along the shore to Arorha."}
+{"from_place_id":"inoja","to_place_id":"noota-nara","travel_mode_id":"boat","distance_m":857,"open_sea_m":0,"fare":15,"hours":1,"why":"Up the river to Noota-Nara's landing."}
+{"from_place_id":"jal-veesa","to_place_id":"helstrom","travel_mode_id":"rootworm","distance_m":1485,"open_sea_m":0,"fare":25,"hours":1,"why":"North under the Barsaebic marsh to the Hist pool of the Veesa-Teeleel."}
+{"from_place_id":"jarecai","to_place_id":"kharaxos","travel_mode_id":"boat","distance_m":2272,"open_sea_m":0,"fare":30,"hours":2,"why":"West across the basin to the lake landing."}
+{"from_place_id":"jarecai","to_place_id":"soulrest","travel_mode_id":"boat","distance_m":4749,"open_sea_m":398,"fare":50,"hours":3,"why":"Inland by the river to the nearest Hist to Soulrest."}
+{"from_place_id":"julo","to_place_id":"helstrom","travel_mode_id":"boat","distance_m":1198,"open_sea_m":0,"fare":20,"hours":1,"why":"Down to the delta crossing where Helstrom's rafts put in."}
+{"from_place_id":"kharaxos","to_place_id":"blackrose","travel_mode_id":"boat","distance_m":1165,"open_sea_m":0,"fare":20,"hours":1,"why":"West across the basin to the river market."}
+{"from_place_id":"kharaxos","to_place_id":"jarecai","travel_mode_id":"boat","distance_m":2272,"open_sea_m":0,"fare":30,"hours":2,"why":"West across the basin to the lake landing."}
+{"from_place_id":"kharaxos","to_place_id":"korydon","travel_mode_id":"boat","distance_m":1988,"open_sea_m":0,"fare":25,"hours":2,"why":"East through the channels to the boatwrights' town."}
+{"from_place_id":"korydon","to_place_id":"blackrose","travel_mode_id":"boat","distance_m":677,"open_sea_m":0,"fare":15,"hours":1,"why":"Up the channels to the town that builds Blackrose's boats."}
+{"from_place_id":"korydon","to_place_id":"helstrom","travel_mode_id":"boat","distance_m":3659,"open_sea_m":0,"fare":40,"hours":2,"why":"South through the channels to the boatwrights' town."}
+{"from_place_id":"korydon","to_place_id":"helstrom","travel_mode_id":"rootworm","distance_m":2207,"open_sea_m":0,"fare":25,"hours":1,"why":"South under Murkwood to the village tree of the channels."}
+{"from_place_id":"korydon","to_place_id":"kharaxos","travel_mode_id":"boat","distance_m":1988,"open_sea_m":0,"fare":25,"hours":2,"why":"East through the channels to the boatwrights' town."}
+{"from_place_id":"korydon","to_place_id":"truowa","travel_mode_id":"boat","distance_m":1582,"open_sea_m":0,"fare":25,"hours":2,"why":"Across the lake's south shore to the boatwrights' channels."}
+{"from_place_id":"lilmoth","to_place_id":"archon","travel_mode_id":"boat","distance_m":1774,"open_sea_m":0,"fare":25,"hours":2,"why":"The coast run between the south-east's two great ports."}
+{"from_place_id":"lilmoth","to_place_id":"bell-station","travel_mode_id":"boat","distance_m":1287,"open_sea_m":0,"fare":20,"hours":2,"why":"Out to the salvage station on its island."}
+{"from_place_id":"lilmoth","to_place_id":"delta-ferry","travel_mode_id":"boat","distance_m":1714,"open_sea_m":0,"fare":25,"hours":2,"why":"Up the delta channel on the Lilmoth road."}
+{"from_place_id":"lilmoth","to_place_id":"nundi","travel_mode_id":"boat","distance_m":659,"open_sea_m":0,"fare":15,"hours":1,"why":"The short crossing of the strait."}
+{"from_place_id":"lilmoth","to_place_id":"salaxul","travel_mode_id":"boat","distance_m":2623,"open_sea_m":0,"fare":30,"hours":2,"why":"West along the south shore to Salaxul's jetty."}
+{"from_place_id":"lilmoth","to_place_id":"soulrest","travel_mode_id":"boat","distance_m":5069,"open_sea_m":398,"fare":50,"hours":3,"why":"West along the south coast between the two seaports."}
+{"from_place_id":"lilmoth","to_place_id":"uluo","travel_mode_id":"boat","distance_m":1257,"open_sea_m":0,"fare":20,"hours":2,"why":"Across the delta to Lilmoth's harbour."}
+{"from_place_id":"lujei-ferry","to_place_id":"blackrose","travel_mode_id":"boat","distance_m":626,"open_sea_m":0,"fare":15,"hours":1,"why":"The cable raft's short crossing to the island core."}
+{"from_place_id":"mir-xal","to_place_id":"blackrose","travel_mode_id":"boat","distance_m":1850,"open_sea_m":0,"fare":25,"hours":2,"why":"Down to Mir-Xal's quay, where Blackrose-bound goods are loaded."}
+{"from_place_id":"noota-nara","to_place_id":"inoja","travel_mode_id":"boat","distance_m":857,"open_sea_m":0,"fare":15,"hours":1,"why":"Up the river to Noota-Nara's landing."}
+{"from_place_id":"nundi","to_place_id":"lilmoth","travel_mode_id":"boat","distance_m":659,"open_sea_m":0,"fare":15,"hours":1,"why":"The short crossing of the strait."}
+{"from_place_id":"olvani","to_place_id":"aphon-belvedere","travel_mode_id":"boat","distance_m":955,"open_sea_m":761,"fare":20,"hours":1,"why":"The ferry across the strait to Aphon Isle."}
+{"from_place_id":"salaxul","to_place_id":"lilmoth","travel_mode_id":"boat","distance_m":2623,"open_sea_m":0,"fare":30,"hours":2,"why":"West along the south shore to Salaxul's jetty."}
+{"from_place_id":"salaxul","to_place_id":"soulrest","travel_mode_id":"boat","distance_m":2659,"open_sea_m":398,"fare":30,"hours":2,"why":"East along the south shore to Salaxul."}
+{"from_place_id":"seafalls","to_place_id":"archon","travel_mode_id":"boat","distance_m":693,"open_sea_m":0,"fare":15,"hours":1,"why":"North along the shoals to the pilots' landing."}
+{"from_place_id":"seafalls","to_place_id":"thorn","travel_mode_id":"boat","distance_m":3164,"open_sea_m":1106,"fare":35,"hours":2,"why":"South along the coast to the pilots' landing."}
+{"from_place_id":"shalaia","to_place_id":"uluo","travel_mode_id":"boat","distance_m":1193,"open_sea_m":0,"fare":20,"hours":1,"why":"North through the bayou to the shellfish flats."}
+{"from_place_id":"slough-point","to_place_id":"gideon","travel_mode_id":"coach","distance_m":3321,"open_sea_m":0,"fare":30,"hours":2,"why":"The western road north to its end at the broken bridge, toward the Blackwood."}
+{"from_place_id":"soulrest","to_place_id":"acra-tiin","travel_mode_id":"boat","distance_m":595,"open_sea_m":398,"fare":15,"hours":1,"why":"Across the bay to the fishing village."}
+{"from_place_id":"soulrest","to_place_id":"blackrose","travel_mode_id":"boat","distance_m":4652,"open_sea_m":398,"fare":45,"hours":3,"why":"Down Bramman's mangrove river to the sea port (argonia-4e201-state.md, Southern water)."}
+{"from_place_id":"soulrest","to_place_id":"gideon","travel_mode_id":"boat","distance_m":2265,"open_sea_m":2060,"fare":30,"hours":2,"why":"North up the west coast to Gideon's quay, the bay's trade both ways."}
+{"from_place_id":"soulrest","to_place_id":"gideon","travel_mode_id":"coach","distance_m":4116,"open_sea_m":0,"fare":35,"hours":2,"why":"The old Imperial road south across the plain to the other western port."}
+{"from_place_id":"soulrest","to_place_id":"jarecai","travel_mode_id":"boat","distance_m":4749,"open_sea_m":398,"fare":50,"hours":3,"why":"Inland by the river to the nearest Hist to Soulrest."}
+{"from_place_id":"soulrest","to_place_id":"lilmoth","travel_mode_id":"boat","distance_m":5069,"open_sea_m":398,"fare":50,"hours":3,"why":"West along the south coast between the two seaports."}
+{"from_place_id":"soulrest","to_place_id":"salaxul","travel_mode_id":"boat","distance_m":2659,"open_sea_m":398,"fare":30,"hours":2,"why":"East along the south shore to Salaxul."}
+{"from_place_id":"stormhold","to_place_id":"helstrom","travel_mode_id":"boat","distance_m":1717,"open_sea_m":0,"fare":25,"hours":2,"why":"North up the water to Stormhold's quay, the interior's way to the north."}
+{"from_place_id":"thorn","to_place_id":"archon","travel_mode_id":"boat","distance_m":4148,"open_sea_m":1410,"fare":45,"hours":3,"why":"North up the coast, across the open bight, to Thorn's quay."}
+{"from_place_id":"thorn","to_place_id":"seafalls","travel_mode_id":"boat","distance_m":3164,"open_sea_m":1106,"fare":35,"hours":2,"why":"South along the coast to the pilots' landing."}
+{"from_place_id":"thorn","to_place_id":"tsonac","travel_mode_id":"boat","distance_m":819,"open_sea_m":0,"fare":15,"hours":1,"why":"Up the river to the quarry city."}
+{"from_place_id":"truowa","to_place_id":"blackrose","travel_mode_id":"boat","distance_m":1426,"open_sea_m":0,"fare":20,"hours":2,"why":"South from the lake to the confluence city."}
+{"from_place_id":"truowa","to_place_id":"helstrom","travel_mode_id":"boat","distance_m":2284,"open_sea_m":0,"fare":30,"hours":2,"why":"Down the interior's water to the lake city. Rafts from both cities carry the lake trade."}
+{"from_place_id":"truowa","to_place_id":"korydon","travel_mode_id":"boat","distance_m":1582,"open_sea_m":0,"fare":25,"hours":2,"why":"Across the lake's south shore to the boatwrights' channels."}
+{"from_place_id":"truowa","to_place_id":"uluo","travel_mode_id":"boat","distance_m":1777,"open_sea_m":0,"fare":25,"hours":2,"why":"South-east by the back-waters to the raft town and the coast."}
+{"from_place_id":"truowa","to_place_id":"yulca","travel_mode_id":"boat","distance_m":399,"open_sea_m":0,"fare":15,"hours":1,"why":"Up the lake to Yulca's landing."}
+{"from_place_id":"tsonac","to_place_id":"thorn","travel_mode_id":"boat","distance_m":819,"open_sea_m":0,"fare":15,"hours":1,"why":"Up the river to the quarry city."}
+{"from_place_id":"uluo","to_place_id":"archon","travel_mode_id":"boat","distance_m":2134,"open_sea_m":0,"fare":25,"hours":2,"why":"The back-water freight run to the great port."}
+{"from_place_id":"uluo","to_place_id":"lilmoth","travel_mode_id":"boat","distance_m":1257,"open_sea_m":0,"fare":20,"hours":2,"why":"Across the delta to Lilmoth's harbour."}
+{"from_place_id":"uluo","to_place_id":"shalaia","travel_mode_id":"boat","distance_m":1193,"open_sea_m":0,"fare":20,"hours":1,"why":"North through the bayou to the shellfish flats."}
+{"from_place_id":"uluo","to_place_id":"truowa","travel_mode_id":"boat","distance_m":1777,"open_sea_m":0,"fare":25,"hours":2,"why":"South-east by the back-waters to the raft town and the coast."}
+{"from_place_id":"yulca","to_place_id":"truowa","travel_mode_id":"boat","distance_m":399,"open_sea_m":0,"fare":15,"hours":1,"why":"Up the lake to Yulca's landing."}

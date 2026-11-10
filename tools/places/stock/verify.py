@@ -103,7 +103,8 @@ def load(place_id: str, plan: dict, dump: dict, esp: Path) -> dict | None:
         "tier_rank": {t["id"]: t["rank"] for t in sc["tiers"]}, "value_max": {t["id"]: t["value_max"] for t in sc["tiers"]},
         "open": pw.open_tier_id, "ceiling": pw.ceiling_tier_id, "locks": dict(st.locks),
         "sec_rank": {s_["id"]: i for i, s_ in enumerate(sc["security"])}, "share": sc["budget"]["owner_share"],
-        "bands": bands, "issue_tier": next(o for o in sc["owner"] if o["id"] == "faction")["issue_tier"],
+        "bands": bands, "issue_tier": split.guard_issue(getattr(w.get("place", place_id), "culture_id", None),
+                                                        pw.ceiling_tier_id, split.source_plugins(place_id), sc)["tier"],
         "caps": sc["ledger"]["caps"],
         "containers": [{"ref": r.ref_id, "space": r.space_id, "owner_person": r.owner_person_id,
                         "owner_household": r.owner_household_id, "owner_faction": r.owner_faction, "lock": r.lock_level_id,
@@ -321,8 +322,6 @@ def check_promises(ctx) -> list[str]:
                     bad.append(f"{what}: delivered by {d['person']}, who is not in the build")
                 if d["by"] in ("ref", "container", "loose") and d["ref"] not in refs_built:
                     bad.append(f"{what}: delivered by {d['ref']}, which is not in the build")
-                if d["kind"] == "fast-travel" and f"ANW_MapMarker_{X['pid'].replace('-', '_')}" not in X["world_markers"]:
-                    bad.append(f"{what}: the world file has no map marker ANW_MapMarker_{X['pid'].replace('-', '_')}")
     return bad
 
 

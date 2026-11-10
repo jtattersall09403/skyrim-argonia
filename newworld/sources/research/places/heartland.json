@@ -166,7 +166,7 @@
     },
     {
      "aspect": "dangers",
-     "text": "The city's alleys are as dangerous as they are fine. Its guard has a bad name. The danger is social: a levy that answers to no stranger, assembly politics and a sour-spring cycle the assembly will not discuss. Past the city every approach is deep swamp.",
+     "text": "The city's alleys are as dangerous as they are fine, and its guard has a bad name. The danger is social: the levy answers to no outsider, the assembly's politics run deep, and its members will not discuss the sour-spring cycle. Past the city every approach is deep swamp.",
      "tier": "CANON_EXPLICIT",
      "sources": [
       {
@@ -185,7 +185,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "A stranger stranded on the approaches is pulled out by an Agaceph raftsman; the assembly will not speak of its sour spring in open session, and the Root Talk draws every naheesh in the interior.",
+     "text": "A stranger stranded on the approaches is pulled out by an Agaceph raftsman. The assembly will not speak of its sour spring in open session. Every naheesh in the interior travels to the Root Talk.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -221,13 +221,13 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Helstrom city",
+     "kind": "rootworm-stop",
+     "detail": "the root landing under the city tree, where a handler calls the rootworm",
      "count": 1
     },
     {
-     "kind": "carriage-or-boat",
-     "detail": "raft-boatman to Truowa, Korydon, Marzai and Julo",
+     "kind": "boat-stop",
+     "detail": "raft-masters at the city landing",
      "count": 1
     },
     {
@@ -534,13 +534,13 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Korydon town",
+     "kind": "rootworm-stop",
+     "detail": "the root pool at the village tree",
      "count": 1
     },
     {
-     "kind": "carriage-or-boat",
-     "detail": "boatwright's boat to Helstrom, Myroleon and Orji-Hael",
+     "kind": "boat-stop",
+     "detail": "the boatwright's boat at the channel landing",
      "count": 1
     },
     {
@@ -824,13 +824,8 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Truowa city",
-     "count": 1
-    },
-    {
-     "kind": "carriage-or-boat",
-     "detail": "lake ferry to Helstrom, Marzai, Yalugo and Korydon",
+     "kind": "boat-stop",
+     "detail": "the lake ferry at the deep-water quay",
      "count": 1
     },
     {
@@ -1128,11 +1123,6 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Marzai village",
-     "count": 1
-    },
-    {
      "kind": "trader-general",
      "detail": "a potter selling pots and lake fish",
      "count": 1
@@ -1373,13 +1363,8 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Julo hamlet",
-     "count": 1
-    },
-    {
-     "kind": "carriage-or-boat",
-     "detail": "the rope ferry across the delta",
+     "kind": "boat-stop",
+     "detail": "the ferryman's raft at the delta crossing",
      "count": 1
     },
     {
@@ -1624,16 +1609,6 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Luntoc island",
-     "count": 1
-    },
-    {
-     "kind": "carriage-or-boat",
-     "detail": "the pilot boy's boat across the shoals to Yalugo and Julo",
-     "count": 1
-    },
-    {
      "kind": "fishing",
      "detail": "eel pots at the landing",
      "count": 1
@@ -1870,18 +1845,8 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Yalugo hamlet",
-     "count": 1
-    },
-    {
      "kind": "trader-innkeeper",
      "detail": "farm family selling grain and smoked fish",
-     "count": 1
-    },
-    {
-     "kind": "carriage-or-boat",
-     "detail": "the spare boat to Luntoc and the Korydon waters",
      "count": 1
     },
     {
@@ -2119,11 +2084,6 @@
     }
    ],
    "gives": [
-    {
-     "kind": "fast-travel",
-     "detail": "Fort Gysilla",
-     "count": 1
-    },
     {
      "kind": "trader-blacksmith",
      "detail": "the garrison quartermaster",
@@ -2434,11 +2394,6 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Myroleon post",
-     "count": 1
-    },
-    {
      "kind": "harvest-rare",
      "detail": "dragon's-tongue",
      "count": 6
@@ -2673,11 +2628,6 @@
     }
    ],
    "gives": [
-    {
-     "kind": "fast-travel",
-     "detail": "Nemeon hamlet",
-     "count": 1
-    },
     {
      "kind": "trader-general",
      "detail": "the boat-wife",
@@ -2914,11 +2864,6 @@
     }
    ],
    "gives": [
-    {
-     "kind": "fast-travel",
-     "detail": "Nacydes hamlet",
-     "count": 1
-    },
     {
      "kind": "trader-hunter",
      "detail": "the lizard-keepers buy hides",
@@ -3160,11 +3105,6 @@
     }
    ],
    "gives": [
-    {
-     "kind": "fast-travel",
-     "detail": "Tydeos hamlet",
-     "count": 1
-    },
     {
      "kind": "trader-hunter",
      "detail": "young hunters buy hides and meat",
@@ -3422,11 +3362,6 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Tseli-Oon station",
-     "count": 1
-    },
-    {
      "kind": "harvest-rare",
      "detail": "Hist-sap from the bank trees",
      "count": 3
@@ -3672,11 +3607,6 @@
     }
    ],
    "gives": [
-    {
-     "kind": "fast-travel",
-     "detail": "Gaxu-Reet station",
-     "count": 1
-    },
     {
      "kind": "fishing",
      "detail": "the junction landing",
@@ -3924,11 +3854,6 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Hokal-Ush station",
-     "count": 1
-    },
-    {
      "kind": "trader-hunter",
      "detail": "the feather-trader buys hides and feathers",
      "count": 1
@@ -4175,11 +4100,6 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Ixu-Maan station",
-     "count": 1
-    },
-    {
      "kind": "free-bed",
      "detail": "a watch hut",
      "count": 1
@@ -4420,11 +4340,6 @@
     }
    ],
    "gives": [
-    {
-     "kind": "fast-travel",
-     "detail": "Vesh-Aneel station",
-     "count": 1
-    },
     {
      "kind": "follower",
      "detail": "the station's guide, hired to Nacydes",
@@ -4672,11 +4587,6 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Uzu-Tegh station",
-     "count": 1
-    },
-    {
      "kind": "fishing",
      "detail": "eel traps round the islet",
      "count": 1
@@ -4917,11 +4827,6 @@
     }
    ],
    "gives": [
-    {
-     "kind": "fast-travel",
-     "detail": "Neexa-Lul station",
-     "count": 1
-    },
     {
      "kind": "fishing",
      "detail": "the platform's edge",
@@ -5174,16 +5079,6 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Orji-Hael waystation",
-     "count": 1
-    },
-    {
-     "kind": "carriage-or-boat",
-     "detail": "boatmen to Korydon and toward Blackrose",
-     "count": 1
-    },
-    {
      "kind": "free-bed",
      "detail": "the crews' lodging hut",
      "count": 1
@@ -5430,16 +5325,6 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Tzel-Haar post",
-     "count": 1
-    },
-    {
-     "kind": "carriage-or-boat",
-     "detail": "the Hutan-Tzel ferry across the Panther River",
-     "count": 1
-    },
-    {
      "kind": "shrine-blessing",
      "detail": "(delete entry)",
      "count": 1
@@ -5675,11 +5560,6 @@
     }
    ],
    "gives": [
-    {
-     "kind": "fast-travel",
-     "detail": "Hutan-Ketu post",
-     "count": 1
-    },
     {
      "kind": "trader-hunter",
      "detail": "the Hutan-Tzel buy hides",
@@ -6021,11 +5901,6 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Dry-Fang Camp",
-     "count": 1
-    },
-    {
      "kind": "combat-foes",
      "detail": "Naga raiders",
      "count": 8,
@@ -6356,11 +6231,6 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Hiss-Bank Camp",
-     "count": 1
-    },
-    {
      "kind": "combat-foes",
      "detail": "Naga raiders",
      "count": 7,
@@ -6686,11 +6556,6 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Salt-Tooth Camp",
-     "count": 1
-    },
-    {
      "kind": "combat-foes",
      "detail": "Naga raiders",
      "count": 9,
@@ -7012,11 +6877,6 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Mud-Croak Camp",
-     "count": 1
-    },
-    {
      "kind": "combat-foes",
      "detail": "Paatru warriors",
      "count": 11,
@@ -7244,11 +7104,6 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Tumnatu Reed Camp",
-     "count": 1
-    },
-    {
      "kind": "trader-general",
      "detail": "the headwoman trades fish, eels and reed mats",
      "count": 1
@@ -7475,11 +7330,6 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Tumnatu Cattail Camp",
-     "count": 1
-    },
-    {
      "kind": "trader-apothecary",
      "detail": "the herb-wife",
      "count": 1
@@ -7701,11 +7551,6 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Aunike Crown",
-     "count": 1
-    },
-    {
      "kind": "combat-creature",
      "detail": "giant snakes denning below the summit",
      "count": 2,
@@ -7911,11 +7756,6 @@
     }
    ],
    "gives": [
-    {
-     "kind": "fast-travel",
-     "detail": "Nacydes Watch",
-     "count": 1
-    },
     {
      "kind": "free-bed",
      "detail": "the sentry's hut",

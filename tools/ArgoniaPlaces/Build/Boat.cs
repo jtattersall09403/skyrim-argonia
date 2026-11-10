@@ -1,6 +1,6 @@
-// Boats: a boatman's passage as vanilla's carriages do it (tools/places/build.py plan_boats says how and why): a quest of
-// ours, per boatman a top-level topic whose line links one topic per destination, each destination's INFO gated on the
-// boatman's faction and the player's gold and running the one compiled fragment script TIF_ARG_BoatTravel.
+// Travel: a stop operator's passage (boat, coach, rootworm) as vanilla's carriages do it (tools/places/build.py plan_travel says how and why): a quest of
+// ours, per operator a top-level topic whose line links one topic per destination, each destination's INFO gated on the
+// operator's faction and the player's gold and running the one compiled fragment script TIF_ARG_BoatTravel.
 using System.Text.Json;
 using Mutagen.Bethesda;
 using Mutagen.Bethesda.Plugins;

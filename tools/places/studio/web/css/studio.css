@@ -153,6 +153,14 @@ ol.history.notes .reply { color: var(--ink); margin-top: 4px; }
 textarea.note-text { width: 100%; box-sizing: border-box; min-height: 110px; border-radius: 10px; border: 1px solid var(--line); background: var(--panel-2); padding: 10px 12px; color: var(--ink); font: inherit; resize: vertical; margin-bottom: 8px; }
 ol.history li .what { flex: 1; font-size: 15px; }
 ol.history li .note { display: block; font-size: 13px; color: var(--muted); }
+ol.history li .note.said { color: var(--ink); font-style: italic; }
+ol.history li .note.said::before { content: "Note: "; font-style: normal; color: var(--muted); }
+ol.history.changes-noted li { align-items: flex-start; }
+ol.history li .note.said { padding: 6px 0; }
+/* a note with its changes: the words take the panel's whole width, its buttons on a row beneath */
+ol.change-notes li { display: block; padding: 8px 0; }
+ol.change-notes li .call-dot { display: inline-block; margin-right: 6px; }
+ol.change-notes li .row { margin: 6px 0 0; }
 /* a holder's things: each thing's words take the panel's whole width, its buttons on a row beneath (never squeezed) */
 ol.stocklist li { display: block; padding: 8px 0; }
 ol.stocklist li .what { display: block; overflow-wrap: anywhere; line-height: 1.4; }
@@ -168,9 +176,16 @@ ol.stocklist li.refused .what { opacity: .8; }
 .call-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--fault); flex: none; }
 .call-dot[data-call="taste"] { background: var(--taste); }
 
-.chip { position: fixed; left: 50%; bottom: 76px; transform: translateX(-50%); background: var(--panel); box-shadow: var(--shadow); border-radius: 26px; padding: 4px 6px 4px 16px; display: flex; align-items: center; gap: 8px; z-index: 20; max-width: calc(100vw - 32px); }
-.chip .what { font-size: 15px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.chip input { min-height: 40px; border-radius: 20px; border: 1px solid var(--line); background: var(--panel-2); padding: 0 12px; width: 14em; }
+/* the note bar: a slim strip under the views, in the page's flow (it never covers the panel or a view's controls) */
+.notebar { display: flex; align-items: center; gap: 8px; padding: 4px 10px; background: var(--panel); border-top: 1px solid var(--line); }
+.notebar .nb-count { font-size: 14px; padding: 0 12px; white-space: nowrap; flex: none; max-width: 40%; overflow: hidden; text-overflow: ellipsis; }
+.notebar[data-count="0"] .nb-count { color: var(--muted); background: transparent; }
+.notebar .nb-step { display: inline-flex; gap: 2px; background: var(--panel-2); border-radius: 12px; flex: none; }
+.notebar .nb-step button { min-width: 44px; min-height: 44px; font-size: 20px; font-weight: 600; }
+.notebar .nb-text { flex: 1; min-width: 6em; min-height: 44px; border-radius: 22px; border: 1px solid var(--line); background: var(--panel-2); padding: 0 16px; color: var(--ink); }
+.notebar .nb-go { flex: none; min-width: 72px; }
+.notebar .call { flex: none; min-height: 44px; }
+@media (max-width: 860px) { .notebar { flex-wrap: wrap; } .notebar .nb-count { max-width: none; flex: 1; } .notebar .nb-text { flex-basis: 100%; order: 5; } }
 .toast { position: fixed; left: 50%; top: 72px; transform: translateX(-50%); background: var(--ink); color: var(--bg); padding: 10px 18px; border-radius: 12px; z-index: 30; font-size: 15px; }
 
 #timebar { display: flex; align-items: center; gap: 12px; padding: 4px 16px; background: var(--panel); border-top: 1px solid var(--line); }

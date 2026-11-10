@@ -165,13 +165,10 @@ def test_each_broken_stock_fails(name):
     assert verify.check_stock({"stock": X, "plan": {"refs": []}}), name
 
 
-def test_an_open_promise_or_a_missing_map_marker_fails():
+def test_an_open_promise_fails():
     X = SF.stock()
     X["deliveries"].append({"give_seq": 2, "kind": "treasure", "detail": "x", "status": "open", "by": "record",
                             "person": None, "ref": None, "why": "nothing delivers it"})
-    assert verify.check_promises({"stock": X})
-    X = SF.stock()
-    X["world_markers"] = set()
     assert verify.check_promises({"stock": X})
 
 

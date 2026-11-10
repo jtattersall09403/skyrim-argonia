@@ -30,7 +30,6 @@ import hashlib
 import json
 import math
 import os
-import re
 import subprocess
 import sys
 import time
@@ -237,6 +236,8 @@ def read_place(pdir: Path) -> dict:
 def place_key(pdir: Path, world_sha: str) -> str:
     from tools.places.stock import plan as stockplan
     h = hashlib.sha256((world_sha + code_key() + stockplan.key(pdir.name)).encode())
+    h.update(json.dumps([[s for s in jsonl(DB / "travel_stop.jsonl") if s["place_id"] == pdir.name],
+                         travel_routes(pdir.name)], sort_keys=True).encode())  # the network's part in the place
     for p in sorted(pdir.rglob("*")):
         if p.is_file() and p.name != "formids.json" and "edits" not in p.parts:
             h.update(str(p.relative_to(pdir)).encode() + p.read_bytes())
@@ -256,11 +257,31 @@ def resolve_copy(copy_of: str) -> tuple[str, str]:
     row = sources().get(src)
     if not row:
         raise SystemExit(f"copy_of {copy_of}: source {src} is not in newworld/places/sources.jsonl")
-    sj = OUT / "bundles" / f"src.{src}" / "spaces" / cell / "space.json"
+    bdir = OUT / "bundles" / f"src.{src}"
+    sj = bdir / "spaces" / cell / "space.json"
+    own = row["plugins"] + row.get("extra_refs_plugins", [])
     if sj.exists():  # the extractor's own record of where the cell is (its key, in whichever plugin of the source)
         b = json.loads(sj.read_text())
-        return "|".join(dict.fromkeys([b["plugin"]] + row["plugins"] + row.get("extra_refs_plugins", []))), b["key"]
-    return "|".join(row["plugins"] + row.get("extra_refs_plugins", [])), cell
+        bj = bdir / "bundle.json"
+        order = (json.loads(bj.read_text()).get("plugins") if bj.exists() else None) or own
+        return "|".join(cell_holders(list(dict.fromkeys(order + [b["plugin"]] + own)), b["key"])), b["key"]
+    return "|".join(own), cell
+
+
+def cell_holders(order: list[str], key: str) -> list[str]:
+    """The plugins of a source's load order (the extractor's: masters first) that can hold the record `key`: the plugin
+    it originates in and every plugin mastering that one, in load order, so the last that holds it wins (a cell BM&V
+    overrides from Dawnguard.esm is Dawnguard's refs with BM&V's changes over them, never BM&V's alone)."""
+    origin = key.split(":", 1)[0].lower()
+    out = []
+    for p in order:
+        try:
+            masters = {m.lower() for m in source_names(p)[:-1]}
+        except SystemExit:
+            continue  # a plugin not on this machine holds nothing we can read
+        if p.lower() == origin or origin in masters:
+            out.append(p)
+    return out
 
 
 # ---- world facts ----------------------------------------------------------------------------------------------------
@@ -463,14 +484,33 @@ def source_cell(plugin: str, cell: str, tmp: Path) -> dict | None:
     return got or None
 
 
+def source_light_fields(source_id: str | None) -> dict[str, dict]:
+    """The source bundle's exterior refs' own light fields (a light's `light_data`, a window's `emittance`), by source
+    ref key with its base: an exterior row whose base is still the source's carries them into the build as a copied
+    interior ref does (the writer reads a row's own fields)."""
+    if not source_id:
+        return {}
+    d = OUT / "bundles" / f"src.{source_id}" / "spaces" / "exterior"
+    rows = jsonl(d / "refs.jsonl") if (d / "refs.jsonl").exists() else []
+    if not rows and (d / "refs.jsonl.gz").exists():
+        import gzip
+        rows = [json.loads(ln) for ln in gzip.open(d / "refs.jsonl.gz", "rt") if ln.strip()]
+    return {r["id"]: {"base": r.get("base"), **{k: r[k] for k in ("light_data", "emittance") if r.get(k) is not None}}
+            for r in rows if r.get("light_data") is not None or r.get("emittance") is not None}
+
+
 def plan_spaces(P: dict, ids: Ids, tmp: Path) -> dict:
     """Every space's refs as rows of ours; interiors with their copied header and navmesh source."""
     refs, interiors, by_our = [], [], {}
     for sid, S in P["spaces"].items():
         if sid == "exterior":
+            light_of = source_light_fields(P["place"].get("source_id"))
             for r in map(norm_ref, S["refs"]):
                 if r.get("removed"):
                     continue
+                got = light_of.get(r.get("src"))
+                if got and got["base"] == r.get("base"):  # the source ref's own light fields while its base is the source's
+                    r = {**{k: v for k, v in got.items() if k != "base"}, **r}
                 row = {**r, "fk": ids(f"ref:{r['id']}"), "space": "exterior", "cell": list(cell_of(*r["pos"][:2])),
                        "persistent": "persistent" in (r.get("flags") or []) or bool(r.get("persistent")),
                        "disabled": is_disabled(r)}
@@ -485,7 +525,9 @@ def plan_spaces(P: dict, ids: Ids, tmp: Path) -> dict:
         src_plugins: list[str] = []
         if plugin:
             out = tmp / f"src_{sid}.json"
-            got = []  # the cell as each of the source's plugins has it: a cell's refs may come from several
+            # the cell as the game shows it with the source's load order: each holder's version in load order, the
+            # last holder's version of a ref (or navmesh, or the header) winning, a ref its winner deletes gone
+            got = []
             for cand in plugin.split("|"):
                 cell = source_cell(cand, cell_edid, out)
                 if cell is not None:
@@ -493,12 +535,16 @@ def plan_spaces(P: dict, ids: Ids, tmp: Path) -> dict:
             if not got:
                 problem(f"space {sid}: no plugin of {sp['copy_of']} holds an interior cell {cell_edid}")
                 continue
-            plugin, src = got[0]
+            plugin, src = got[-1]
+            src = dict(src)
             src_plugins = [cand for cand, _ in got]
-            seen = {r["fk"] for r in src["refs"]}
-            for _, more in got[1:]:
-                src["refs"] += [r for r in more["refs"] if r["fk"] not in seen]
-                src["navmesh"] += more["navmesh"]
+            win_refs: dict[str, dict] = {}
+            win_navs: dict[str, dict] = {}
+            for _, held in got:
+                win_refs.update((r["fk"], r) for r in held["refs"])
+                win_navs.update((n["fk"], n) for n in held["navmesh"])
+            src["refs"] = list(win_refs.values())
+            src["navmesh"] = list(win_navs.values())
             room = None
             if sp.get("room"):  # one room of a cell the source shares between houses (the Build recipe's room rule)
                 part = room_partition(sp["copy_of"], src["refs"], tmp)
@@ -553,6 +599,7 @@ def plan_spaces(P: dict, ids: Ids, tmp: Path) -> dict:
                 row["enable_parent"] = fk_of_src[ep]
         interiors.append({"space": sid, "fk": ids(f"space:{sid}"), "edid": f"ANP_{sid}",
                           "name": sp.get("name") or src.get("name") or sid, "copy": {"plugin": plugin, "cell": src.get("fk")} if plugin else None,
+                          "copy_of": sp.get("copy_of"), "room": sp.get("room"),
                           "light": sp.get("light"), "owner": sp.get("owner"), "room_mesh": room and room["mesh"],
                           "src_navmesh": list(dict.fromkeys(n["fk"] for n in src.get("navmesh", []))),
                           "src_plugins": src_plugins, "fk_of_src": fk_of_src})
@@ -1322,76 +1369,88 @@ def plan_shrines(P: dict, S: dict, ids: Ids) -> list[dict]:
     return out
 
 
-# ---- boats ------------------------------------------------------------------------------------------------------
+# ---- travel -----------------------------------------------------------------------------------------------------
 
-BOAT = {  # vanilla's carriage (Skyrim.esm DialogueCarriageSystem), measured: a start-game-enabled quest holding the
-    # topics; each destination's INFO gates on the player's gold against a global (CarriageCost 20 for the cities,
-    # CarriageCostSmall 50 for Dawnstar, Morthal, Winterhold, Falkreath) and runs a fragment that takes the fare and
-    # fast-travels. One compiled script (papyrus/TIF_ARG_BoatTravel.psc) serves every line; its properties are set per INFO.
-    "script": "TIF_ARG_BoatTravel", "gold": "Skyrim.esm:00000F",
-    "fare_city": 20, "fare_small": 50,
-    "quest_name": "Boat passage", "hub": "I need passage.", "hub_reply": "Where to? Say the name.",
-    "reply": "{name}, then. Sit low in the boat.",
+TRAVEL = {  # vanilla's carriage (Skyrim.esm DialogueCarriageSystem), measured: a start-game-enabled quest holding the
+    # topics; each destination's INFO gates on the player's gold and runs a fragment that takes the fare and
+    # fast-travels (Game.FastTravel, which works with map travel off, as the carriages do in Survival). One compiled
+    # script (papyrus/TIF_ARG_BoatTravel.psc) serves every line of every mode; its properties are set per INFO.
+    "script": "TIF_ARG_BoatTravel", "gold": "Skyrim.esm:00000F", "quest_name": "Passage",
+    "lines": {
+        "boat": {"hub": "I need passage.", "hub_reply": "Where to? Say the name.",
+                 "prompt": "Take me to {name} ({fare} gold).", "reply": "{name}, then. Sit low in the boat."},
+        "coach": {"hub": "I need a ride.", "hub_reply": "We keep to the old road. Where to?",
+                  "prompt": "Take me to {name} ({fare} gold).", "reply": "{name}, then. Climb up and hold on."},
+        "rootworm": {"hub": "I would ride the rootworm.", "hub_reply": "The worm follows the roots. Which tree?",
+                     "prompt": "To the tree at {name} ({fare} gold).", "reply": "{name}. Breathe out. Do not fight it."},
+    },
 }
 
 
-def boat_destinations(detail: str) -> list[str]:
-    """The names a boatman's give promises: the give's `detail` is the only source (place_give has no destination column),
-    e.g. "raft-boatman to Truowa, Korydon, Marzai and Julo": what follows the last " to ", split at commas and "and"."""
-    tail = re.split(r"\bto\b", detail or "")[-1] if re.search(r"\bto\b", detail or "") else ""
-    return [n.strip() for n in re.split(r",|\band\b", tail) if n.strip()]
+def arrival(dest: str, markers: dict) -> str | None:
+    """Where a passage to a place lands: the place's map marker in the world ESM (every settlement has one, on its
+    ground); None when the world gives none, and the route then waits on that place."""
+    return markers.get("ANW_MapMarker_" + dest.replace("-", "_"))
 
 
-def plan_boats(P: dict, people: dict, ids: Ids, facts: dict) -> list[dict]:
-    """A boatman's passage, as vanilla's carriages do it: per place a quest of ours (start-game-enabled); per boatman a
-    top-level topic "I need passage." (his boatman faction on the subject) whose line links one topic per destination;
-    each destination's INFO needs the faction and the player's gold, and runs TIF_ARG_BoatTravel with the destination's
-    map marker in ArgoniaNewWorld.esm (a place not built yet is still reached: the marker is the world's), the fixed fare
-    and Gold001. Fare: 20 for a city, 50 for any smaller place (vanilla's CarriageCost / CarriageCostSmall)."""
-    from tools.places import people as ppl
-    boatmen = [n for n in (people or {}).get("npcs", []) if n.get("boat_faction")]
-    if not boatmen:
-        return []
+def travel_routes(pid: str) -> dict[str, list[dict]]:
+    """The place's routes by mode, from the network (travel_route), nearest first."""
+    out: dict[str, list[dict]] = {}
+    for r in sorted(jsonl(DB / "travel_route.jsonl"), key=lambda r: (r["travel_mode_id"], r["distance_m"])):
+        if r["from_place_id"] == pid:
+            out.setdefault(r["travel_mode_id"], []).append(r)
+    return out
+
+
+def plan_travel(P: dict, people: dict, ids: Ids, facts: dict) -> tuple[list[dict], list[str]]:
+    """The place's travel service, as vanilla's carriages do it: per place a quest of ours (start-game-enabled); per
+    operator of a stop (the person whose people.jsonl service is the stop's give) a top-level topic, whose line links
+    one topic per route of the stop's mode; each destination's INFO needs the operator's travel faction and the
+    route's fare in gold, and runs TIF_ARG_BoatTravel with the destination's arrival point and the fare. A route whose
+    destination has no arrival point yet is not offered: it is returned as waiting on that place (the record keeps
+    the promise). A stop with nobody serving it is a problem."""
     pid = P["place"]["place_id"]
-    places = jsonl(DB / "place.jsonl")
-    by_name = {}
-    for r in places:
-        for k in (r.get("name"), r.get("map_label")):
-            if k:
-                by_name.setdefault(k.casefold(), r)
-    detail_of = {g["detail"] for g in jsonl(DB / "place_give.jsonl") if g["place_id"] == pid and g["give_kind_id"] == "carriage-or-boat"}
+    routes = travel_routes(pid)
+    stops = [s for s in jsonl(DB / "travel_stop.jsonl") if s["place_id"] == pid]
+    if not stops:
+        return [], []
+    from tools.places import people as ppl
+    names = {r["id"]: r["name"] for r in jsonl(DB / "place.jsonl")}
     markers = facts.get("map_markers") or {}
-    line = {"fk": ids("quest:boat"), "edid": f"ANP_{pid}_BoatTravel", "name": BOAT["quest_name"]}
-    out = {"place_id": pid, "script": BOAT["script"], "gold": BOAT["gold"], "quest": line, "boatmen": []}
-    for n in boatmen:
-        who = n["id"]
-        sv = next((s for s in next((q for q in P["people"] if q["id"] == who), {}).get("services", [])
-                   if (s.get("give_kind_id") or s.get("kind")) == "carriage-or-boat"), {})
-        names = boat_destinations(sv.get("detail") or "") or [d for x in sorted(detail_of) for d in boat_destinations(x)]
-        if not names:
-            problem(f"people.jsonl: {who}: a boatman whose give names no destination (the detail reads 'raft-boatman to A, B and C')")
-        e = ppl._edid(who)
-        hub = {"topic": ids(f"dial:boat:{who}"), "info": ids(f"info:boat:{who}"), "edid": f"ANP_{pid}_Boat_{e}_Hub",
-               "prompt": BOAT["hub"], "reply": BOAT["hub_reply"]}
-        dests = []
-        for name in names:
-            r = by_name.get(name.casefold())
-            if r is None:
-                problem(f"people.jsonl: {who}: destination {name!r} is no place of the database")
-                continue
-            did = r["id"]
-            mk = markers.get("ANW_MapMarker_" + did.replace("-", "_"))
-            if mk is None:
-                problem(f"people.jsonl: {who}: destination {name!r} ({did}) has no map marker in {WORLD}")
-                continue
-            fare = BOAT["fare_city"] if r["place_kind_id"] == "city" else BOAT["fare_small"]
-            tag = ppl._edid(did)
-            dests.append({"place": did, "name": r["name"], "kind": r["place_kind_id"], "marker": mk, "fare": fare,
-                          "topic": ids(f"dial:boat:{who}:{did}"), "info": ids(f"info:boat:{who}:{did}"), "edid": f"ANP_{pid}_Boat_{e}_{tag}",
-                          "prompt": f"Take me to {r['name']} ({fare} gold).", "reply": BOAT["reply"].format(name=r["name"])})
-        out["boatmen"].append({"who": who, "npc": n["fk"], "faction": n["boat_faction"], "branch": ids(f"brnc:boat:{who}"),
-                               "branch_edid": f"ANP_{pid}_Boat_{e}_Branch", "hub": hub, "dests": dests})
-    return [out]
+    line = {"fk": ids("quest:boat"), "edid": f"ANP_{pid}_Travel", "name": TRAVEL["quest_name"]}
+    out = {"place_id": pid, "script": TRAVEL["script"], "gold": TRAVEL["gold"], "quest": line, "boatmen": []}
+    waiting: list[str] = []
+    npcs = (people or {}).get("npcs", [])
+    for s in stops:
+        mode = s["travel_mode_id"]
+        ops = [n for n in npcs if mode in (n.get("travel") or {})]
+        if not ops:
+            problem(f"travel: the {mode} stop (give {s['give_seq']}) has nobody serving it: people.jsonl lists no "
+                    f"service at seq {s['give_seq']}")
+            continue
+        words = TRAVEL["lines"][mode]
+        for n in ops:
+            who = n["id"]
+            e = ppl._edid(who)
+            key = f"{mode}:{who}" if mode != "boat" else who   # a boatman's keys stand from before the other modes
+            hub = {"topic": ids(f"dial:boat:{key}"), "info": ids(f"info:boat:{key}"), "edid": f"ANP_{pid}_{mode.title()}_{e}_Hub",
+                   "prompt": words["hub"], "reply": words["hub_reply"]}
+            dests = []
+            for r in routes.get(mode, []):
+                did = r["to_place_id"]
+                mk = arrival(did, markers)
+                if mk is None:
+                    waiting.append(f"{mode} to {names[did]} ({did}): waits on that place (no arrival point in {WORLD})")
+                    continue
+                dests.append({"place": did, "name": names[did], "marker": mk, "fare": r["fare"],
+                              "topic": ids(f"dial:boat:{key}:{did}"), "info": ids(f"info:boat:{key}:{did}"),
+                              "edid": f"ANP_{pid}_{mode.title()}_{e}_{ppl._edid(did)}",
+                              "prompt": words["prompt"].format(name=names[did], fare=r["fare"]),
+                              "reply": words["reply"].format(name=names[did])})
+            out["boatmen"].append({"who": who, "mode": mode, "npc": n["fk"], "faction": n["travel"][mode],
+                                   "branch": ids(f"brnc:boat:{key}"), "branch_edid": f"ANP_{pid}_{mode.title()}_{e}_Branch",
+                                   "hub": hub, "dests": dests})
+    return ([out] if out["boatmen"] else []), sorted(set(waiting))
 
 
 def _plan_place(pid: str, pdir: Path, out: Path, no_navmesh: bool, plan_only: bool, tmp: Path) -> dict:
@@ -1468,7 +1527,8 @@ def _plan_place(pid: str, pdir: Path, out: Path, no_navmesh: bool, plan_only: bo
     world_raw = nav_fid(facts["worldspace"])
     nav_rows, n2 = finish_navmesh(navs, S, world_raw)
     notes += n2
-    boats = plan_boats(P, people, ids, facts)
+    boats, waiting = plan_travel(P, people, ids, facts)
+    notes += [f"travel: {x}" for x in waiting]
     shrines = plan_shrines(P, S, ids)  # after the navmesh: it swaps the shrine refs' bases, which the navmesh reads
     if not plan_only:
         ids.save()  # a plan-only run never writes form ids: it may run beside a build
@@ -1479,7 +1539,7 @@ def _plan_place(pid: str, pdir: Path, out: Path, no_navmesh: bool, plan_only: bo
         "refs": S["refs"], "interiors": [{k: v for k, v in I.items() if k != "fk_of_src"} for I in S["interiors"]],
         "land": sorted(by_cell.values(), key=lambda r: (r["x"], r["y"])), "clear": clear,
         "navmesh": {"masters": NAV_MASTERS, "self": PLUGIN, "navi": key_of("Skyrim.esm", NAVI_FID), "navm": nav_rows},
-        "people": people, "boats": boats, "shrines": shrines, "stock": stock, "notes": notes,
+        "people": people, "boats": boats, "travel_waiting": waiting, "shrines": shrines, "stock": stock, "notes": notes,
         "stats": {"plan_s": round(time.time() - t0, 1), "nav": nav_info},
     }
     return plan

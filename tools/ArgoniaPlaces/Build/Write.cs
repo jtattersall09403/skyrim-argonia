@@ -95,6 +95,24 @@ static class Write
             if (!Remap.TryGetValue(fk, out var ours)) Remap[fk] = ours = Fc.Get(fk, fk.ModKey.FileName);
             return ours;
         }
+        /// What the write could not carry as asked, printed with the write's summary.
+        public List<string> Notes = new();
+        /// A ref's emittance (XEMI: a region's or a light's colour it glows with) where its target is in our load order:
+        /// a master's region or light as it is, another plugin's light copied in as ours; anything else is reported.
+        public void Emit(PlacedObject o, string key)
+        {
+            var fk = C.Fk(key);
+            if (fk.ModKey == Mod.ModKey || Allowed.Contains(fk.ModKey))
+            {
+                if (fk.ModKey == Mod.ModKey || People.Cache.TryResolve<IEmittanceGetter>(fk, out _)) o.Emittance.SetTo(fk);
+                else Notes.Add($"ref {C.Key(o.FormKey)}: emittance {key} is no region or light of our masters; left without it");
+                return;
+            }
+            ISkyrimModGetter? m = null;
+            try { m = Fc.Plugin(fk.ModKey.FileName); } catch (Exception e) when (e is FileNotFoundException or InvalidDataException) { }
+            if (m != null && m.Lights.RecordCache.TryGetValue(fk, out _)) o.Emittance.SetTo(Link(key));
+            else Notes.Add($"ref {C.Key(o.FormKey)}: emittance {key} is a region of {fk.ModKey.FileName}, not in our load order; left without it");
+        }
         /// Every link of a record into a plugin that is not a master: copied in and remapped.
         public void Localize(IMajorRecord r)
         {
@@ -162,14 +180,16 @@ static class Write
                     var from = C.Fk(cp.GetProperty("cell").GetString()!);
                     var src = C.Interiors(C.Open(cp.GetProperty("plugin").GetString()!)).FirstOrDefault(x => x.FormKey == from)
                         ?? throw new InvalidDataException($"interior {I.GetProperty("space")}: no cell {C.Key(from)} in {cp.GetProperty("plugin")}");
-                    // the source refs of this cell: the cell's own plugin, then each plugin that holds the cell (the plan's
-                    // `src_plugins`) or whose refs the copy brings
+                    // the source refs of this cell as the game shows them: any other plugin whose refs the copy brings, then
+                    // each plugin that holds the cell in the source's load order (the plan's `src_plugins`, else the copy's
+                    // plugin), a later holder's version of a ref replacing an earlier one's (the load order's winner)
                     var space = I.GetProperty("space").GetString();
                     var holders = plan.GetProperty("refs").EnumerateArray().Where(r => S(r, "space") == space && S(r, "src") is { } k && TryKey(k, out _))
                         .Select(r => { TryKey(S(r, "src")!, out var k); return k.ModKey; });
-                    if (I.TryGetProperty("src_plugins", out var sps) && sps.ValueKind == JsonValueKind.Array)
-                        holders = sps.EnumerateArray().Select(e => ModKey.FromFileName(Path.GetFileName(e.GetString()!))).Concat(holders);
-                    foreach (var holder in holders.Prepend(ModKey.FromFileName(Path.GetFileName(cp.GetProperty("plugin").GetString()!))).Distinct().ToList())
+                    var order = I.TryGetProperty("src_plugins", out var sps) && sps.ValueKind == JsonValueKind.Array && sps.GetArrayLength() > 0
+                        ? sps.EnumerateArray().Select(e => ModKey.FromFileName(Path.GetFileName(e.GetString()!))).ToList()
+                        : new List<ModKey> { ModKey.FromFileName(Path.GetFileName(cp.GetProperty("plugin").GetString()!)) };
+                    foreach (var holder in holders.Where(h => !order.Contains(h)).Distinct().Concat(order).ToList())
                     {
                         if (!sourceCells.Add((holder, from))) continue;
                         ISkyrimModGetter hm;
@@ -327,6 +347,7 @@ static class Write
         // which of our records is a copy of which foreign one: the check reads a copied item as its source record
         C.WriteJson(esp + ".copies.json", ctx.Fc.Map.Concat(ctx.Remap).GroupBy(kv => kv.Value).ToDictionary(g => C.Key(g.Key), g => C.Key(g.First().Key)));
         Console.WriteLine($"write: {esp}: {nRefs} refs, {interiors.Count} interiors, {nClear} cleared, {nLand} LAND, {nNavm} NAVM, {cells.Count} cell overrides, {sw.Elapsed.TotalSeconds:F1} s");
+        foreach (var n in ctx.Notes) Console.WriteLine($"write: note: {n}");
         return 0;
     }
 
@@ -374,6 +395,7 @@ static class Write
         {
             o.Radius = src.Radius;
             o.LightData = src.LightData?.DeepCopy();
+            if (!src.Emittance.IsNull) ctx.Emit(o, C.Key(src.Emittance.FormKey));
             o.ItemCount = src.ItemCount;
             o.Charge = src.Charge;
             o.IsOpenByDefault = src.IsOpenByDefault;
@@ -384,8 +406,15 @@ static class Write
                 if (!sl.Key.IsNull) ol.Key.SetTo(ctx.Link(C.Key(sl.Key.FormKey)));
             }
         }
-        // the same when the row itself says it (a bundle ref's `radius` and `count`): the row over the source
+        // the same when the row itself says it (a bundle ref's `radius`, `light_data`, `emittance` and `count`): the row
+        // over the source
         if (r.TryGetProperty("radius", out var rad) && rad.ValueKind == JsonValueKind.Number) o.Radius = rad.GetSingle();
+        if (r.TryGetProperty("light_data", out var ldr) && ldr.ValueKind == JsonValueKind.Object)
+        {
+            float F(string k) => ldr.TryGetProperty(k, out var v) && v.ValueKind == JsonValueKind.Number ? v.GetSingle() : 0f;
+            o.LightData = new LightData { FovOffset = F("fov"), FadeOffset = F("fade"), EndDistanceCap = F("end_cap"), ShadowDepthBias = F("shadow_bias") };
+        }
+        if (S(r, "emittance") is { Length: > 0 } emk) ctx.Emit(o, emk);
         if (r.TryGetProperty("count", out var cnt) && cnt.ValueKind == JsonValueKind.Number) o.ItemCount = cnt.GetInt32();
         if (r.TryGetProperty("linked", out var ln) && ln.ValueKind == JsonValueKind.Array)
             foreach (var l in ln.EnumerateArray())

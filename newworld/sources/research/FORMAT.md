@@ -73,6 +73,10 @@ list several kinds, and several of one kind.
 - `detail` is specific: name the skill and tier of a trainer, the schools a spell vendor sells, the ore of a vein,
   the plant of a harvest and the foes of a fight.
 - `count` is how many, 1 or more.
+- A travel give (`boat-stop`, `coach-stop`, `rootworm-stop`) is a stop of the travel network: its detail says who
+  serves it and where; the stop and its routes are in `newworld/sources/travel/network.json`, and the build rejects
+  a stop give the network does not hold, or a stop with no give (docs/design/travel-network.md). No place promises
+  map fast travel.
 - A combat give (`combat-foes`, `combat-boss`, `combat-creature`) needs a `reward`. The reward is the id of a loot
   give that the same place also lists: `boss-chest`, `treasure`, `gold-hoard` or `unique-item`. A boss needs a
   boss-chest, a gold-hoard or a unique-item.

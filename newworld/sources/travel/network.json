@@ -1,0 +1,694 @@
+{
+ "about": "The travel network of the new world (docs/design/travel-network.md; owner, 2026-11-10: no place promises map fast travel; the boat, coach and rootworm network is promised and delivered). Built by tools/newworld/travel.py: distances are measured on the database's water and roads, fares and hours follow each mode's fixed rule (never levelled, decision 0035). A stop is a give of the mode's kind in the place record; this file names its operator and its part in the network.",
+ "walk_max_m": 1200,
+ "networks": 1,
+ "modes": [
+  {
+   "id": "boat",
+   "name": "Boat",
+   "give_kind_id": "boat-stop",
+   "needs": "Navigable water from landing to landing: the sea, bays, estuaries, rivers, lakes, streams at least 8 m wide and marsh channels as wide (a raft or canoe of the small-draft kind, poled or paddled). Open sea needs a sea-going operator at both ends.",
+   "water": [
+    {
+     "kind": "ocean"
+    },
+    {
+     "kind": "bay"
+    },
+    {
+     "kind": "shallow-coast"
+    },
+    {
+     "kind": "estuary"
+    },
+    {
+     "kind": "river"
+    },
+    {
+     "kind": "lake"
+    },
+    {
+     "kind": "stream",
+     "min_width_m": 8
+    },
+    {
+     "kind": "green-marsh",
+     "min_width_m": 8
+    },
+    {
+     "kind": "blackwater-swamp",
+     "min_width_m": 8
+    }
+   ],
+   "road_class_id": null,
+   "operated_by": "Raft-masters and canoe-men on the inland water; harbour boatmen and lighter-men in the ports, on small-draft coasters of Dunmer and Imperial build.",
+   "fare_base": 10,
+   "fare_per_km": 8,
+   "fare_step": 5,
+   "fare_min": 10,
+   "fare_max": 60,
+   "speed_kmh": 2.5,
+   "board_h": 1,
+   "evidence": "Skyrim's carriages and the Dragonborn boat: a driver or boatman's topic per destination, a fixed fare gated on the player's gold, Game.FastTravel to the destination's marker (Skyrim.esm DialogueCarriageSystem, CarriageCost 20, CarriageCostSmall 50; the Northern Maiden, 250 to Solstheim). Morrowind's shipmasters: a port-to-port ring along the coast with fares by distance ('I can transport you ... for a modest fee', morrowind-full.json).",
+   "why": "Small-draft boats are 'the most common and the fastest form of transportation, both of people and goods, inside Argonia' (Lore:Sea Transportation); personal rafts are the default vehicle (The Argonian Account, Bk 4); the province's network 'exists, and most of it is water' (story/lore/extrapolation/argonia-4e201-state.md, Routes)."
+  },
+  {
+   "id": "coach",
+   "name": "Coach",
+   "give_kind_id": "coach-stop",
+   "needs": "A major road the whole way (road class major: the cart road); minor tracks and footpaths do not carry a cart.",
+   "water": [],
+   "road_class_id": "major",
+   "operated_by": "Carters with lizard-drawn carts on the old Imperial roads of the west and north.",
+   "fare_base": 10,
+   "fare_per_km": 6,
+   "fare_step": 5,
+   "fare_min": 10,
+   "fare_max": 50,
+   "speed_kmh": 3.0,
+   "board_h": 1,
+   "evidence": "Skyrim's carriages: a driver at the stable takes the fare and fast-travels the player (DialogueCarriageSystem); vanilla's flat 20 and 50 are replaced here by a fare by road length, as Morrowind's silt striders charge by distance.",
+   "why": "Imperial roads survive in pieces: the Blackwood Road to Gideon, the stone roads of Stormhold, the roads of the Gideon plain (story/lore/extrapolation/argonia-4e201-state.md, Routes). Horses bog down in the marsh, so the Hist shaped lizards into the forms of horses; Bright-Throats breed horse-lizards (story/lore/topics/fauna-hazards.md)."
+  },
+  {
+   "id": "rootworm",
+   "name": "Rootworm",
+   "give_kind_id": "rootworm-stop",
+   "needs": "A Hist tree with a root pool at both ends: the rootworm runs through tunnels formed by the roots of the Hist trees and surfaces at a spire of bubbles from an underground stream.",
+   "water": [],
+   "road_class_id": null,
+   "operated_by": "A root-tender at each Hist who calls the worm to the root pool and sees the traveller swallowed.",
+   "fare_base": 25,
+   "fare_per_km": 0,
+   "fare_step": 5,
+   "fare_min": 25,
+   "fare_max": 25,
+   "speed_kmh": 6.0,
+   "board_h": 1,
+   "evidence": "Skyrim's flat carriage fare (CarriageCost) for a route with no road to measure; Morrowind's Mages Guild guides and propylon chambers for a fixed link between a few named halls.",
+   "why": "The Underground Express: rootworms swallow travellers whole and carry them at speed through tunnels formed by the roots of Hist trees; Gideon is a canon stop, marked by red clay (Lore:Rootworm; story/lore/regions/middle-argonia.md; story/lore/gideon.md). Helstrom is reached early by rootworm (story/lore/extrapolation/argonia-4e201-state.md)."
+  }
+ ],
+ "operators": [
+  {
+   "id": "sea-coaster",
+   "travel_mode_id": "boat",
+   "name": "Harbour boatman",
+   "craft": "a small-draft coaster or lighter with a sail",
+   "open_sea_max_m": null,
+   "who": "Argonian and Dunmer sailors in the ports, on boats of Dunmer and Imperial build",
+   "why": "Argonians rarely build big ships but crew other races' ships, commonly Dunmer or Imperial; Archon, Lilmoth and Soulrest are the major seaports, Alten Corimont, Stormhold and Thorn the minor (Lore:Sea Transportation; story/lore/topics/material-culture.md)."
+  },
+  {
+   "id": "raft-master",
+   "travel_mode_id": "boat",
+   "name": "Raft-master",
+   "craft": "a poled raft or a paddled canoe",
+   "open_sea_max_m": 500,
+   "who": "Argonian raft-men and canoe-men of the inland water and the sheltered coast",
+   "why": "Personal rafts are the default vehicle; the Agaceph pole a one-person raft with the tail; outsiders travel behind a hired Argonian guide who chooses where to go and when (The Argonian Account, Bk 4; Lore:Lost Tales of the Famed Explorer; story/lore/topics/material-culture.md)."
+  },
+  {
+   "id": "carter",
+   "travel_mode_id": "coach",
+   "name": "Carter",
+   "craft": "a covered cart drawn by a horse-lizard",
+   "open_sea_max_m": 0,
+   "who": "Carters of the western plain and the northern valleys, Imperial-descended, Lukiul or Dunmer",
+   "why": "Gideon keeps Cyrodiilic habits and the Blackwood Road; Stormhold has Dunmer stone roads; lizard-steeds replace horses that bog down (story/lore/extrapolation/argonia-4e201-state.md; story/lore/topics/fauna-hazards.md)."
+  },
+  {
+   "id": "root-tender",
+   "travel_mode_id": "rootworm",
+   "name": "Root-tender",
+   "craft": "a rootworm called to the root pool",
+   "open_sea_max_m": 0,
+   "who": "A tree-minder or rootworm handler of the Hist",
+   "why": "Argonians ride the rootworms routinely; only the Hist's own people know its roots (story/lore/regions/middle-argonia.md)."
+  }
+ ],
+ "stops": [
+  {
+   "place": "helstrom",
+   "mode": "rootworm",
+   "operator": "root-tender",
+   "rank": "hub",
+   "why": "Helstrom's city tree is the heart of the interior's roots. In the lore the capital is reached by rootworm, and its trade is rootworm and raft traffic (argonia-4e201-state.md; Helstrom record, economy)."
+  },
+  {
+   "place": "gideon",
+   "mode": "rootworm",
+   "operator": "root-tender",
+   "rank": "spoke",
+   "why": "Gideon is the canon stop of the rootworm line, known by its red clay (Lore:Rootworm; gideon.md). The worm surfaces at the cutting planted in the Hist garden (Gideon record, faith)."
+  },
+  {
+   "place": "aroxhu",
+   "mode": "rootworm",
+   "operator": "root-tender",
+   "rank": "spoke",
+   "why": "A great Hist crowns the mound-town. It is the tree to which the eastern villages send their eggs (Aroxhu, Gaweja, Joxhi, Khiar and Renhu records)."
+  },
+  {
+   "place": "jal-veesa",
+   "mode": "rootworm",
+   "operator": "root-tender",
+   "rank": "spoke",
+   "why": "A Hist stands in a pool at the town's heart, tended by a tree-minder. The northern posts bring their hatchlings to it (Jal-Veesa and Outpost 7 records)."
+  },
+  {
+   "place": "korydon",
+   "mode": "rootworm",
+   "operator": "root-tender",
+   "rank": "spoke",
+   "why": "The town's tree-minder tends the tree of the channels between Helstrom and Blackrose, where eggs are laid (Korydon and Nemeon records)."
+  },
+  {
+   "place": "gideon",
+   "mode": "coach",
+   "operator": "carter",
+   "rank": "hub",
+   "why": "Gideon's people keep Cyrodiilic habits. The old roads of the plain run from its gate to Gul-Tej, Slough-Point and Soulrest (map, major roads; argonia-4e201-state.md, Gideon)."
+  },
+  {
+   "place": "gul-tej",
+   "mode": "coach",
+   "operator": "carter",
+   "rank": "spoke",
+   "why": "The market town on the fork has a caravan yard on the road to Gideon (Gul-Tej record, economy)."
+  },
+  {
+   "place": "soulrest",
+   "mode": "coach",
+   "operator": "carter",
+   "rank": "spoke",
+   "why": "Soulrest's landward gate opens on the old road north to Gideon. The two ports compete overland as well as by sea (map, major roads; Gideon record, hooks)."
+  },
+  {
+   "place": "slough-point",
+   "mode": "coach",
+   "operator": "carter",
+   "rank": "spoke",
+   "why": "The western road ends here at the broken bridge. The villagers earn their living from the road trade to Gideon (map, major roads; Slough-Point record, economy)."
+  },
+  {
+   "place": "helstrom",
+   "mode": "boat",
+   "operator": "raft-master",
+   "rank": "hub",
+   "why": "The rivers of the interior drain to Helstrom. Raft-men on the Panther River fork bring the city its goods (argonia-4e201-state.md; Helstrom record, economy)."
+  },
+  {
+   "place": "truowa",
+   "mode": "boat",
+   "operator": "raft-master",
+   "rank": "hub",
+   "why": "The deep-water quay of Lake Ulaish is at Truowa, where the council tolls the lake's boats. Rice, fish and clay come down the lake and goods go back up (Truowa record, economy)."
+  },
+  {
+   "place": "blackrose",
+   "mode": "boat",
+   "operator": "raft-master",
+   "rank": "hub",
+   "why": "Blackrose sits at the three-river confluence. Its canoe-men carry the lake's commerce, and Bramman's river runs on to Soulrest (Blackrose and Soulrest records; argonia-4e201-state.md, Southern water)."
+  },
+  {
+   "place": "uluo",
+   "mode": "boat",
+   "operator": "raft-master",
+   "rank": "hub",
+   "why": "Uluo's raft-masters move the back-water freight between Archon and the Lilmoth delta. The elder takes a share of every raft (Uluo record, economy)."
+  },
+  {
+   "place": "archon",
+   "mode": "boat",
+   "operator": "sea-coaster",
+   "rank": "hub",
+   "why": "Archon is a major seaport for the south-east's legal trade. Lighters bring the bayou's rice and fish (Lore:Sea Transportation; Archon record, economy)."
+  },
+  {
+   "place": "lilmoth",
+   "mode": "boat",
+   "operator": "sea-coaster",
+   "rank": "hub",
+   "why": "Lilmoth is a major seaport and the market of the delta villages. Large ships anchor out, and lighter-men carry the goods in (Lore:Sea Transportation; Lilmoth record)."
+  },
+  {
+   "place": "soulrest",
+   "mode": "boat",
+   "operator": "sea-coaster",
+   "rank": "hub",
+   "why": "Soulrest is a major seaport of the Southern Sea trade, with Bramman's river running inland to the Blackrose lakes (Lore:Sea Transportation; Soulrest record, economy)."
+  },
+  {
+   "place": "thorn",
+   "mode": "boat",
+   "operator": "sea-coaster",
+   "rank": "hub",
+   "why": "Thorn is a minor port, the north-east's harbour for saltrice and the Tear road trade (Lore:Sea Transportation; Thorn record, economy)."
+  },
+  {
+   "place": "stormhold",
+   "mode": "boat",
+   "operator": "sea-coaster",
+   "rank": "spoke",
+   "why": "Stormhold is a minor port, and river traffic is its trade. Its quay is the northern end of the water that runs south to Helstrom (Lore:Sea Transportation; Stormhold record, economy)."
+  },
+  {
+   "place": "gideon",
+   "mode": "boat",
+   "operator": "sea-coaster",
+   "rank": "spoke",
+   "why": "Salt and iron are shipped out from Gideon's quay, and Gideon's council quarrels with Soulrest over who ships the bay's trade (Gideon record)."
+  },
+  {
+   "place": "seafalls",
+   "mode": "boat",
+   "operator": "sea-coaster",
+   "rank": "spoke",
+   "why": "Seafalls' pilots know the shoals. The village is the transfer point between Thorn and Archon (Seafalls record, economy)."
+  },
+  {
+   "place": "olvani",
+   "mode": "boat",
+   "operator": "sea-coaster",
+   "rank": "spoke",
+   "why": "Olvani's ferrymen take the Aphon watch's supplies across the strait (Olvani record, economy)."
+  },
+  {
+   "place": "aphon-belvedere",
+   "mode": "boat",
+   "operator": "sea-coaster",
+   "rank": "spoke",
+   "why": "The watch on Aphon Isle keeps a boat for its supplies. There is no other way off the isle (Aphon Belvedere record, economy)."
+  },
+  {
+   "place": "korydon",
+   "mode": "boat",
+   "operator": "raft-master",
+   "rank": "spoke",
+   "why": "Korydon's boatwrights build shallow-draft boats and trade up the channels to Helstrom, Truowa and Blackrose (Korydon record, economy)."
+  },
+  {
+   "place": "gul-tej",
+   "mode": "boat",
+   "operator": "raft-master",
+   "rank": "spoke",
+   "why": "Gul-Tej's river boats work the Onkobra line, whose water joins the Panther River's east to Helstrom (Gul-Tej record; argonia-4e201-state.md, the Onkobra line)."
+  },
+  {
+   "place": "julo",
+   "mode": "boat",
+   "operator": "raft-master",
+   "rank": "spoke",
+   "why": "Julo's ferrymen work the crossing of the braid below Helstrom and trade with Helstrom's outposts (Julo record, economy)."
+  },
+  {
+   "place": "yulca",
+   "mode": "boat",
+   "operator": "raft-master",
+   "rank": "spoke",
+   "why": "Yulca's raft ferry works the lake toward Truowa (Yulca record)."
+  },
+  {
+   "place": "kharaxos",
+   "mode": "boat",
+   "operator": "raft-master",
+   "rank": "spoke",
+   "why": "Kharaxos has a river market on the basin's eastern shore, and its people trade with Jarecai (Kharaxos and Jarecai records)."
+  },
+  {
+   "place": "jarecai",
+   "mode": "boat",
+   "operator": "raft-master",
+   "rank": "spoke",
+   "why": "The people of Jarecai guard the nearest Hist to Soulrest. Every Soulrest Argonian who comes inland to hatch, name or bury pays them a toll (Jarecai record)."
+  },
+  {
+   "place": "mir-xal",
+   "mode": "boat",
+   "operator": "raft-master",
+   "rank": "spoke",
+   "why": "Mir-Xal has a river quay where Blackrose-bound goods are loaded (Mir-Xal record, economy)."
+  },
+  {
+   "place": "salaxul",
+   "mode": "boat",
+   "operator": "raft-master",
+   "rank": "spoke",
+   "why": "Boatmen pay landing fees at Salaxul's jetty as they work along the south shore (Salaxul record, economy)."
+  },
+  {
+   "place": "inoja",
+   "mode": "boat",
+   "operator": "raft-master",
+   "rank": "spoke",
+   "why": "The confederacy's river ferry is at Inoja, where outsiders deal with the Oxhu-Teeleel (Inoja record)."
+  },
+  {
+   "place": "arorha",
+   "mode": "boat",
+   "operator": "raft-master",
+   "rank": "spoke",
+   "why": "Arorha's potters send clay and pots out by boat and bring Thorn's saltrice back (Arorha record, economy)."
+  },
+  {
+   "place": "noota-nara",
+   "mode": "boat",
+   "operator": "raft-master",
+   "rank": "spoke",
+   "why": "Noota-Nara sits on the river above Inoja. Its villagers trade their pots and fish down the river (map; Noota-Nara record, economy)."
+  },
+  {
+   "place": "tsonac",
+   "mode": "boat",
+   "operator": "raft-master",
+   "rank": "spoke",
+   "why": "Stone, hardwood and hides from Tsonac go down its river to be sold at Thorn (Tsonac record, economy)."
+  },
+  {
+   "place": "shalaia",
+   "mode": "boat",
+   "operator": "raft-master",
+   "rank": "spoke",
+   "why": "Shalaia's raft crews carry shellfish and salt out and bring rice and tools back (Shalaia record, economy)."
+  },
+  {
+   "place": "lujei-ferry",
+   "mode": "boat",
+   "operator": "raft-master",
+   "rank": "spoke",
+   "why": "The ferry crew carries people and carts across the channel to the island core for a fare (Lujei Ferry record, economy)."
+  },
+  {
+   "place": "delta-ferry",
+   "mode": "boat",
+   "operator": "raft-master",
+   "rank": "spoke",
+   "why": "The raftman takes fares from travellers on the Lilmoth road (Delta Ferry record, economy)."
+  },
+  {
+   "place": "nundi",
+   "mode": "boat",
+   "operator": "raft-master",
+   "rank": "spoke",
+   "why": "Nundi's people live on rice, fish and the ferry across the strait to the southern island (Nundi record, economy)."
+  },
+  {
+   "place": "acra-tiin",
+   "mode": "boat",
+   "operator": "raft-master",
+   "rank": "spoke",
+   "why": "The fishers of Acra-Tiin send fish and salt across the water to the Soulrest port in small boats (Acra-Tiin record, economy)."
+  },
+  {
+   "place": "bell-station",
+   "mode": "boat",
+   "operator": "raft-master",
+   "rank": "spoke",
+   "why": "The salvage crew sell their finds to Lilmoth's merchants, and there is no other way off the island (Bell Station record, economy)."
+  }
+ ],
+ "routes": [
+  {
+   "a": "helstrom",
+   "b": "gideon",
+   "mode": "rootworm",
+   "why": "The rootworm line west to its canon stop at Gideon (Lore:Rootworm)."
+  },
+  {
+   "a": "helstrom",
+   "b": "aroxhu",
+   "mode": "rootworm",
+   "why": "The interior's roots run east to the great Hist of the Oxhu-Teeleel."
+  },
+  {
+   "a": "helstrom",
+   "b": "jal-veesa",
+   "mode": "rootworm",
+   "why": "North under the Barsaebic marsh to the Hist pool of the Veesa-Teeleel."
+  },
+  {
+   "a": "helstrom",
+   "b": "korydon",
+   "mode": "rootworm",
+   "why": "South under Murkwood to the village tree of the channels."
+  },
+  {
+   "a": "gideon",
+   "b": "gul-tej",
+   "mode": "coach",
+   "why": "The old road east to the market town on the fork."
+  },
+  {
+   "a": "gideon",
+   "b": "soulrest",
+   "mode": "coach",
+   "why": "The old Imperial road south across the plain to the other western port."
+  },
+  {
+   "a": "gideon",
+   "b": "slough-point",
+   "mode": "coach",
+   "why": "The western road north to its end at the broken bridge, toward the Blackwood."
+  },
+  {
+   "a": "helstrom",
+   "b": "truowa",
+   "mode": "boat",
+   "why": "Down the interior's water to the lake city. Rafts from both cities carry the lake trade."
+  },
+  {
+   "a": "helstrom",
+   "b": "korydon",
+   "mode": "boat",
+   "why": "South through the channels to the boatwrights' town."
+  },
+  {
+   "a": "helstrom",
+   "b": "gul-tej",
+   "mode": "boat",
+   "why": "West along the Panther River to the Onkobra line."
+  },
+  {
+   "a": "helstrom",
+   "b": "stormhold",
+   "mode": "boat",
+   "why": "North up the water to Stormhold's quay, the interior's way to the north."
+  },
+  {
+   "a": "helstrom",
+   "b": "julo",
+   "mode": "boat",
+   "why": "Down to the delta crossing where Helstrom's rafts put in."
+  },
+  {
+   "a": "truowa",
+   "b": "korydon",
+   "mode": "boat",
+   "why": "Across the lake's south shore to the boatwrights' channels."
+  },
+  {
+   "a": "truowa",
+   "b": "blackrose",
+   "mode": "boat",
+   "why": "South from the lake to the confluence city."
+  },
+  {
+   "a": "truowa",
+   "b": "uluo",
+   "mode": "boat",
+   "why": "South-east by the back-waters to the raft town and the coast."
+  },
+  {
+   "a": "truowa",
+   "b": "yulca",
+   "mode": "boat",
+   "why": "Up the lake to Yulca's landing."
+  },
+  {
+   "a": "blackrose",
+   "b": "korydon",
+   "mode": "boat",
+   "why": "Up the channels to the town that builds Blackrose's boats."
+  },
+  {
+   "a": "blackrose",
+   "b": "kharaxos",
+   "mode": "boat",
+   "why": "West across the basin to the river market."
+  },
+  {
+   "a": "blackrose",
+   "b": "mir-xal",
+   "mode": "boat",
+   "why": "Down to Mir-Xal's quay, where Blackrose-bound goods are loaded."
+  },
+  {
+   "a": "blackrose",
+   "b": "lujei-ferry",
+   "mode": "boat",
+   "why": "The cable raft's short crossing to the island core."
+  },
+  {
+   "a": "blackrose",
+   "b": "soulrest",
+   "mode": "boat",
+   "why": "Down Bramman's mangrove river to the sea port (argonia-4e201-state.md, Southern water)."
+  },
+  {
+   "a": "uluo",
+   "b": "archon",
+   "mode": "boat",
+   "why": "The back-water freight run to the great port."
+  },
+  {
+   "a": "uluo",
+   "b": "lilmoth",
+   "mode": "boat",
+   "why": "Across the delta to Lilmoth's harbour."
+  },
+  {
+   "a": "uluo",
+   "b": "shalaia",
+   "mode": "boat",
+   "why": "North through the bayou to the shellfish flats."
+  },
+  {
+   "a": "archon",
+   "b": "lilmoth",
+   "mode": "boat",
+   "why": "The coast run between the south-east's two great ports."
+  },
+  {
+   "a": "archon",
+   "b": "thorn",
+   "mode": "boat",
+   "why": "North up the coast, across the open bight, to Thorn's quay."
+  },
+  {
+   "a": "archon",
+   "b": "seafalls",
+   "mode": "boat",
+   "why": "North along the shoals to the pilots' landing."
+  },
+  {
+   "a": "archon",
+   "b": "inoja",
+   "mode": "boat",
+   "why": "Up the river to the confederacy's market town."
+  },
+  {
+   "a": "archon",
+   "b": "arorha",
+   "mode": "boat",
+   "why": "North along the coast to Arorha's quay."
+  },
+  {
+   "a": "lilmoth",
+   "b": "soulrest",
+   "mode": "boat",
+   "why": "West along the south coast between the two seaports."
+  },
+  {
+   "a": "lilmoth",
+   "b": "nundi",
+   "mode": "boat",
+   "why": "The short crossing of the strait."
+  },
+  {
+   "a": "lilmoth",
+   "b": "bell-station",
+   "mode": "boat",
+   "why": "Out to the salvage station on its island."
+  },
+  {
+   "a": "lilmoth",
+   "b": "delta-ferry",
+   "mode": "boat",
+   "why": "Up the delta channel on the Lilmoth road."
+  },
+  {
+   "a": "lilmoth",
+   "b": "salaxul",
+   "mode": "boat",
+   "why": "West along the south shore to Salaxul's jetty."
+  },
+  {
+   "a": "soulrest",
+   "b": "gideon",
+   "mode": "boat",
+   "why": "North up the west coast to Gideon's quay, the bay's trade both ways."
+  },
+  {
+   "a": "soulrest",
+   "b": "jarecai",
+   "mode": "boat",
+   "why": "Inland by the river to the nearest Hist to Soulrest."
+  },
+  {
+   "a": "soulrest",
+   "b": "salaxul",
+   "mode": "boat",
+   "why": "East along the south shore to Salaxul."
+  },
+  {
+   "a": "soulrest",
+   "b": "acra-tiin",
+   "mode": "boat",
+   "why": "Across the bay to the fishing village."
+  },
+  {
+   "a": "thorn",
+   "b": "seafalls",
+   "mode": "boat",
+   "why": "South along the coast to the pilots' landing."
+  },
+  {
+   "a": "thorn",
+   "b": "tsonac",
+   "mode": "boat",
+   "why": "Up the river to the quarry city."
+  },
+  {
+   "a": "inoja",
+   "b": "arorha",
+   "mode": "boat",
+   "why": "Down the river and along the shore to Arorha."
+  },
+  {
+   "a": "inoja",
+   "b": "noota-nara",
+   "mode": "boat",
+   "why": "Up the river to Noota-Nara's landing."
+  },
+  {
+   "a": "kharaxos",
+   "b": "jarecai",
+   "mode": "boat",
+   "why": "West across the basin to the lake landing."
+  },
+  {
+   "a": "kharaxos",
+   "b": "korydon",
+   "mode": "boat",
+   "why": "East through the channels to the boatwrights' town."
+  },
+  {
+   "a": "olvani",
+   "b": "aphon-belvedere",
+   "mode": "boat",
+   "why": "The ferry across the strait to Aphon Isle."
+  }
+ ],
+ "remote": [
+  {
+   "place": "outpost-7-m69",
+   "why": "Reeka-Veesa is a Sedge-Warden post on the far west of the mesa, a long walk from Stormhold by the Tenmal road. No water or road there could carry a boat or a cart, and its people seldom leave the post."
+  },
+  {
+   "place": "shipwreck-42-m78",
+   "why": "The Resolute Crest lies in deep water off Skeith Isle, beyond any boat route. Reaching it takes a long swim and a dive from Arorha's shore."
+  }
+ ]
+}

@@ -572,28 +572,34 @@
    "person": "helstrom.1WMHR9CC0ASZH8S4KYVNRGTYW0",
    "items": [
     {
-     "item": "Skyrim.esm:03619E",
+     "item": "Black Marsh North.esp:037DF0",
      "count": 1,
-     "why": "the levy's issue: a leather cuirass, sound gear (T2) of the city's own tanning (hide and leather is made here)",
+     "why": "the levy's issue: BM&V's Argonian guard cuirass (T3), the set Helstrom's own guards wear in the source. Helstrom is the capital of Black Marsh and a Prosperous city (P4, ceiling T4): its levy is issued its own culture's guard set, not the plain leather (scale guard_issue)",
      "worn": true
     },
     {
-     "item": "Skyrim.esm:013920",
+     "item": "Black Marsh North.esp:037DF3",
      "count": 1,
-     "why": "the levy's issue: leather boots (T2, made here)",
+     "why": "the levy's issue: the Argonian guard boots of the same set (T3; Helstrom, the capital, issues the set)",
      "worn": true
     },
     {
-     "item": "Skyrim.esm:013921",
+     "item": "Black Marsh North.esp:037DF7",
      "count": 1,
-     "why": "the levy's issue: leather bracers (T2, made here)",
+     "why": "the levy's issue: the Argonian guard gauntlets of the same set (T3; Helstrom, the capital, issues the set)",
      "worn": true
     },
     {
      "item": "Skyrim.esm:013989",
      "count": 1,
-     "why": "the levy's issue: a steel sword from the market smithy (T2, ironwork made here)",
+     "why": "the levy's issue: a steel sword from the market smithy (T2, ironwork made here); the source's guards carried Ebony and Daedric blades, which go, and the Argonian set has no sword of its own",
      "worn": true
+    },
+    {
+     "item": "Skyrim.esm:01D4EC",
+     "count": 1,
+     "why": "the levy's torch: one plain torch, as Skyrim's guards carry, to light the night watch's way; never a levelled list",
+     "worn": false
     },
     {
      "item": "Skyrim.esm:03EADD",
@@ -704,28 +710,34 @@
    "person": "helstrom.4GBW9ZEQ76A1V9ZGQ97EVH2G8Y",
    "items": [
     {
-     "item": "Skyrim.esm:03619E",
+     "item": "Black Marsh North.esp:037DF0",
      "count": 1,
-     "why": "the levy's issue: a leather cuirass, sound gear (T2) of the city's own tanning (hide and leather is made here)",
+     "why": "the levy's issue: BM&V's Argonian guard cuirass (T3), the set Helstrom's own guards wear in the source. Helstrom is the capital of Black Marsh and a Prosperous city (P4, ceiling T4): its levy is issued its own culture's guard set, not the plain leather (scale guard_issue)",
      "worn": true
     },
     {
-     "item": "Skyrim.esm:013920",
+     "item": "Black Marsh North.esp:037DF3",
      "count": 1,
-     "why": "the levy's issue: leather boots (T2, made here)",
+     "why": "the levy's issue: the Argonian guard boots of the same set (T3; Helstrom, the capital, issues the set)",
      "worn": true
     },
     {
-     "item": "Skyrim.esm:013921",
+     "item": "Black Marsh North.esp:037DF7",
      "count": 1,
-     "why": "the levy's issue: leather bracers (T2, made here)",
+     "why": "the levy's issue: the Argonian guard gauntlets of the same set (T3; Helstrom, the capital, issues the set)",
      "worn": true
     },
     {
      "item": "Skyrim.esm:013989",
      "count": 1,
-     "why": "the levy's issue: a steel sword from the market smithy (T2, ironwork made here)",
+     "why": "the levy's issue: a steel sword from the market smithy (T2, ironwork made here); the source's guards carried Ebony and Daedric blades, which go, and the Argonian set has no sword of its own",
      "worn": true
+    },
+    {
+     "item": "Skyrim.esm:01D4EC",
+     "count": 1,
+     "why": "the levy's torch: one plain torch, as Skyrim's guards carry, to light the night watch's way; never a levelled list",
+     "worn": false
     },
     {
      "item": "Skyrim.esm:03EADD",
@@ -746,28 +758,34 @@
    "person": "helstrom.6E8A5X2P02B4VC5QE4D7CPY62V",
    "items": [
     {
-     "item": "Skyrim.esm:03619E",
+     "item": "Black Marsh North.esp:037DF0",
      "count": 1,
-     "why": "the levy's issue: a leather cuirass, sound gear (T2) of the city's own tanning (hide and leather is made here)",
+     "why": "the levy's issue: BM&V's Argonian guard cuirass (T3), the set Helstrom's own guards wear in the source. Helstrom is the capital of Black Marsh and a Prosperous city (P4, ceiling T4): its levy is issued its own culture's guard set, not the plain leather (scale guard_issue)",
      "worn": true
     },
     {
-     "item": "Skyrim.esm:013920",
+     "item": "Black Marsh North.esp:037DF3",
      "count": 1,
-     "why": "the levy's issue: leather boots (T2, made here)",
+     "why": "the levy's issue: the Argonian guard boots of the same set (T3; Helstrom, the capital, issues the set)",
      "worn": true
     },
     {
-     "item": "Skyrim.esm:013921",
+     "item": "Black Marsh North.esp:037DF7",
      "count": 1,
-     "why": "the levy's issue: leather bracers (T2, made here)",
+     "why": "the levy's issue: the Argonian guard gauntlets of the same set (T3; Helstrom, the capital, issues the set)",
      "worn": true
     },
     {
      "item": "Skyrim.esm:013989",
      "count": 1,
-     "why": "the levy's issue: a steel sword from the market smithy (T2, ironwork made here)",
+     "why": "the levy's issue: a steel sword from the market smithy (T2, ironwork made here); the source's guards carried Ebony and Daedric blades, which go, and the Argonian set has no sword of its own",
      "worn": true
+    },
+    {
+     "item": "Skyrim.esm:01D4EC",
+     "count": 1,
+     "why": "the levy's torch: one plain torch, as Skyrim's guards carry, to light the night watch's way; never a levelled list",
+     "worn": false
     },
     {
      "item": "Skyrim.esm:03EADD",
@@ -788,28 +806,34 @@
    "person": "helstrom.6K5TAAAS7NZWRCPFSWQ7K7H912",
    "items": [
     {
-     "item": "Skyrim.esm:03619E",
+     "item": "Black Marsh North.esp:037DF0",
      "count": 1,
-     "why": "the levy's issue: a leather cuirass, sound gear (T2) of the city's own tanning (hide and leather is made here)",
+     "why": "the levy's issue: BM&V's Argonian guard cuirass (T3), the set Helstrom's own guards wear in the source. Helstrom is the capital of Black Marsh and a Prosperous city (P4, ceiling T4): its levy is issued its own culture's guard set, not the plain leather (scale guard_issue)",
      "worn": true
     },
     {
-     "item": "Skyrim.esm:013920",
+     "item": "Black Marsh North.esp:037DF3",
      "count": 1,
-     "why": "the levy's issue: leather boots (T2, made here)",
+     "why": "the levy's issue: the Argonian guard boots of the same set (T3; Helstrom, the capital, issues the set)",
      "worn": true
     },
     {
-     "item": "Skyrim.esm:013921",
+     "item": "Black Marsh North.esp:037DF7",
      "count": 1,
-     "why": "the levy's issue: leather bracers (T2, made here)",
+     "why": "the levy's issue: the Argonian guard gauntlets of the same set (T3; Helstrom, the capital, issues the set)",
      "worn": true
     },
     {
      "item": "Skyrim.esm:013989",
      "count": 1,
-     "why": "the levy's issue: a steel sword from the market smithy (T2, ironwork made here)",
+     "why": "the levy's issue: a steel sword from the market smithy (T2, ironwork made here); the source's guards carried Ebony and Daedric blades, which go, and the Argonian set has no sword of its own",
      "worn": true
+    },
+    {
+     "item": "Skyrim.esm:01D4EC",
+     "count": 1,
+     "why": "the levy's torch: one plain torch, as Skyrim's guards carry, to light the night watch's way; never a levelled list",
+     "worn": false
     },
     {
      "item": "Skyrim.esm:03EADD",
@@ -938,28 +962,34 @@
    "person": "helstrom.87WTH0EW4WJ6AQ9CTRC7GXAZTS",
    "items": [
     {
-     "item": "Skyrim.esm:03619E",
+     "item": "Black Marsh North.esp:037DF0",
      "count": 1,
-     "why": "the levy's issue: a leather cuirass, sound gear (T2) of the city's own tanning (hide and leather is made here)",
+     "why": "the levy's issue: BM&V's Argonian guard cuirass (T3), the set Helstrom's own guards wear in the source. Helstrom is the capital of Black Marsh and a Prosperous city (P4, ceiling T4): its levy is issued its own culture's guard set, not the plain leather (scale guard_issue)",
      "worn": true
     },
     {
-     "item": "Skyrim.esm:013920",
+     "item": "Black Marsh North.esp:037DF3",
      "count": 1,
-     "why": "the levy's issue: leather boots (T2, made here)",
+     "why": "the levy's issue: the Argonian guard boots of the same set (T3; Helstrom, the capital, issues the set)",
      "worn": true
     },
     {
-     "item": "Skyrim.esm:013921",
+     "item": "Black Marsh North.esp:037DF7",
      "count": 1,
-     "why": "the levy's issue: leather bracers (T2, made here)",
+     "why": "the levy's issue: the Argonian guard gauntlets of the same set (T3; Helstrom, the capital, issues the set)",
      "worn": true
     },
     {
      "item": "Skyrim.esm:013989",
      "count": 1,
-     "why": "the levy's issue: a steel sword from the market smithy (T2, ironwork made here)",
+     "why": "the levy's issue: a steel sword from the market smithy (T2, ironwork made here); the source's guards carried Ebony and Daedric blades, which go, and the Argonian set has no sword of its own",
      "worn": true
+    },
+    {
+     "item": "Skyrim.esm:01D4EC",
+     "count": 1,
+     "why": "the levy's torch: one plain torch, as Skyrim's guards carry, to light the night watch's way; never a levelled list",
+     "worn": false
     },
     {
      "item": "Skyrim.esm:03EADD",
@@ -1304,28 +1334,34 @@
    "person": "helstrom.H2SJRZ04Y8B7N1Q9D4SC7R8Z02",
    "items": [
     {
-     "item": "Skyrim.esm:03619E",
+     "item": "Black Marsh North.esp:037DF0",
      "count": 1,
-     "why": "the levy's issue: a leather cuirass, sound gear (T2) of the city's own tanning (hide and leather is made here)",
+     "why": "the levy's issue: BM&V's Argonian guard cuirass (T3), the set Helstrom's own guards wear in the source. Helstrom is the capital of Black Marsh and a Prosperous city (P4, ceiling T4): its levy is issued its own culture's guard set, not the plain leather (scale guard_issue)",
      "worn": true
     },
     {
-     "item": "Skyrim.esm:013920",
+     "item": "Black Marsh North.esp:037DF3",
      "count": 1,
-     "why": "the levy's issue: leather boots (T2, made here)",
+     "why": "the levy's issue: the Argonian guard boots of the same set (T3; Helstrom, the capital, issues the set)",
      "worn": true
     },
     {
-     "item": "Skyrim.esm:013921",
+     "item": "Black Marsh North.esp:037DF7",
      "count": 1,
-     "why": "the levy's issue: leather bracers (T2, made here)",
+     "why": "the levy's issue: the Argonian guard gauntlets of the same set (T3; Helstrom, the capital, issues the set)",
      "worn": true
     },
     {
      "item": "Skyrim.esm:013989",
      "count": 1,
-     "why": "the levy's issue: a steel sword from the market smithy (T2, ironwork made here)",
+     "why": "the levy's issue: a steel sword from the market smithy (T2, ironwork made here); the source's guards carried Ebony and Daedric blades, which go, and the Argonian set has no sword of its own",
      "worn": true
+    },
+    {
+     "item": "Skyrim.esm:01D4EC",
+     "count": 1,
+     "why": "the levy's torch: one plain torch, as Skyrim's guards carry, to light the night watch's way; never a levelled list",
+     "worn": false
     },
     {
      "item": "Skyrim.esm:03EADD",
@@ -1508,28 +1544,34 @@
    "person": "helstrom.K4PGMQRCH4TMQD9YTKRX4889CV",
    "items": [
     {
-     "item": "Skyrim.esm:03619E",
+     "item": "Black Marsh North.esp:037DF0",
      "count": 1,
-     "why": "the levy's issue: a leather cuirass, sound gear (T2) of the city's own tanning (hide and leather is made here)",
+     "why": "the levy's issue: BM&V's Argonian guard cuirass (T3), the set Helstrom's own guards wear in the source. Helstrom is the capital of Black Marsh and a Prosperous city (P4, ceiling T4): its levy is issued its own culture's guard set, not the plain leather (scale guard_issue)",
      "worn": true
     },
     {
-     "item": "Skyrim.esm:013920",
+     "item": "Black Marsh North.esp:037DF3",
      "count": 1,
-     "why": "the levy's issue: leather boots (T2, made here)",
+     "why": "the levy's issue: the Argonian guard boots of the same set (T3; Helstrom, the capital, issues the set)",
      "worn": true
     },
     {
-     "item": "Skyrim.esm:013921",
+     "item": "Black Marsh North.esp:037DF7",
      "count": 1,
-     "why": "the levy's issue: leather bracers (T2, made here)",
+     "why": "the levy's issue: the Argonian guard gauntlets of the same set (T3; Helstrom, the capital, issues the set)",
      "worn": true
     },
     {
      "item": "Skyrim.esm:013989",
      "count": 1,
-     "why": "the levy's issue: a steel sword from the market smithy (T2, ironwork made here)",
+     "why": "the levy's issue: a steel sword from the market smithy (T2, ironwork made here); the source's guards carried Ebony and Daedric blades, which go, and the Argonian set has no sword of its own",
      "worn": true
+    },
+    {
+     "item": "Skyrim.esm:01D4EC",
+     "count": 1,
+     "why": "the levy's torch: one plain torch, as Skyrim's guards carry, to light the night watch's way; never a levelled list",
+     "worn": false
     },
     {
      "item": "Skyrim.esm:03EADD",
@@ -1550,28 +1592,34 @@
    "person": "helstrom.KXGAGQM60ANV7DVJBNTY46FYAN",
    "items": [
     {
-     "item": "Skyrim.esm:03619E",
+     "item": "Black Marsh North.esp:037DF0",
      "count": 1,
-     "why": "the levy's issue: a leather cuirass, sound gear (T2) of the city's own tanning (hide and leather is made here)",
+     "why": "the levy's issue: BM&V's Argonian guard cuirass (T3), the set Helstrom's own guards wear in the source. Helstrom is the capital of Black Marsh and a Prosperous city (P4, ceiling T4): its levy is issued its own culture's guard set, not the plain leather (scale guard_issue)",
      "worn": true
     },
     {
-     "item": "Skyrim.esm:013920",
+     "item": "Black Marsh North.esp:037DF3",
      "count": 1,
-     "why": "the levy's issue: leather boots (T2, made here)",
+     "why": "the levy's issue: the Argonian guard boots of the same set (T3; Helstrom, the capital, issues the set)",
      "worn": true
     },
     {
-     "item": "Skyrim.esm:013921",
+     "item": "Black Marsh North.esp:037DF7",
      "count": 1,
-     "why": "the levy's issue: leather bracers (T2, made here)",
+     "why": "the levy's issue: the Argonian guard gauntlets of the same set (T3; Helstrom, the capital, issues the set)",
      "worn": true
     },
     {
      "item": "Skyrim.esm:013989",
      "count": 1,
-     "why": "the levy's issue: a steel sword from the market smithy (T2, ironwork made here)",
+     "why": "the levy's issue: a steel sword from the market smithy (T2, ironwork made here); the source's guards carried Ebony and Daedric blades, which go, and the Argonian set has no sword of its own",
      "worn": true
+    },
+    {
+     "item": "Skyrim.esm:01D4EC",
+     "count": 1,
+     "why": "the levy's torch: one plain torch, as Skyrim's guards carry, to light the night watch's way; never a levelled list",
+     "worn": false
     },
     {
      "item": "Skyrim.esm:03EADD",
@@ -2397,7 +2445,15 @@
    ]
   }
  ],
- "deliveries": [],
+ "deliveries": [
+  {
+   "give_seq": 0,
+   "by": "person",
+   "person": "helstrom.C2855503QH3SHVRJDJSG1E9MKM",
+   "status": "open",
+   "why": "open: Cheeval-Xu, the rootworm handler at the root landing, is the stop's root-tender; the place files' people.jsonl must list the rootworm-stop service (seq 0) on him, with his work stop at the root landing under the city tree, for the build to give him the rootworm lines (travel_route: Gideon, Aroxhu, Jal-Veesa, Korydon, 25 gold each)"
+  }
+ ],
  "removed": [
   {
    "space": "01ArgonianHouseinside",

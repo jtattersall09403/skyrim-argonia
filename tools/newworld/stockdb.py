@@ -204,9 +204,6 @@ def _deliveries(w, pid: str) -> None:
             for ref in stations.get(GIVE_STATION.get(g.give_kind_id, g.give_kind_id), [])[:1]:
                 rows.append({"by": "ref", "person_id": None, "ref_id": ref, "status": "delivered",
                              "why": f"the place's {GIVE_STATION.get(g.give_kind_id, g.give_kind_id)} (place.json stations)"})
-        if not rows and g.give_kind_id == "fast-travel" and pj.exists():
-            rows.append({"by": "record", "person_id": None, "ref_id": None, "status": "delivered",
-                         "why": "the world file's map marker for the place (ANW_MapMarker_<place>)"})
         if not rows:
             rows.append({"by": "record", "person_id": None, "ref_id": None, "status": "open",
                          "why": f"nothing delivers it yet ({g.give_kind_id}: {g.detail})"})

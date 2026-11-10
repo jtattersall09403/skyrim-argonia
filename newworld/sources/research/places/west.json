@@ -203,13 +203,13 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "map marker: Gideon, the Blackwood Way gate",
+     "kind": "rootworm-stop",
+     "detail": "the rootworm's red-clay stop by the Hist garden",
      "count": 1
     },
     {
-     "kind": "carriage-or-boat",
-     "detail": "a carter at the east gate who drives to Hixinoag, Gul-Tej and Fort Silvermoth for gold",
+     "kind": "boat-stop",
+     "detail": "a boatman at the quay",
      "count": 1
     },
     {
@@ -285,6 +285,11 @@
     {
      "kind": "cooking-pot",
      "detail": "the inn's hearth",
+     "count": 1
+    },
+    {
+     "kind": "coach-stop",
+     "detail": "carters at the east gate, with lizard-drawn carts on the old roads",
      "count": 1
     }
    ]
@@ -504,11 +509,6 @@
     }
    ],
    "gives": [
-    {
-     "kind": "fast-travel",
-     "detail": "map marker: Giovesse and the gate of Castle Giovesse",
-     "count": 1
-    },
     {
      "kind": "combat-foes",
      "detail": "ghosts and restless dead in Castle Giovesse's halls and cells",
@@ -741,16 +741,6 @@
     }
    ],
    "gives": [
-    {
-     "kind": "fast-travel",
-     "detail": "map marker: Hixinoag's causeway",
-     "count": 1
-    },
-    {
-     "kind": "carriage-or-boat",
-     "detail": "the raft ferry across to the Gul-Tej road",
-     "count": 1
-    },
     {
      "kind": "trader-innkeeper",
      "detail": "the rest-house keeper: smoked eel, root beer and bread",
@@ -1002,13 +992,8 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "map marker: Olvani landing",
-     "count": 1
-    },
-    {
-     "kind": "carriage-or-boat",
-     "detail": "the ferry to Aphon Isle (Aphon Belvedere and the signal tower) for gold",
+     "kind": "boat-stop",
+     "detail": "the ferry to Aphon Isle",
      "count": 1
     },
     {
@@ -1264,11 +1249,6 @@
    "place_kind_id": "fort",
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "map marker: Fort Silvermoth",
-     "count": 1
-    },
-    {
      "kind": "trader-blacksmith",
      "detail": "the barracks quartermaster: salt, iron, arrows and steel weapons",
      "count": 1
@@ -1509,11 +1489,6 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "map marker: Armanias kilns",
-     "count": 1
-    },
-    {
      "kind": "trader-general",
      "detail": "the potter's stall: clay pots, food and tools",
      "count": 1
@@ -1746,8 +1721,8 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "map marker: Gul-Tej market",
+     "kind": "boat-stop",
+     "detail": "river boats at the market landing",
      "count": 1
     },
     {
@@ -1781,8 +1756,8 @@
      "count": 1
     },
     {
-     "kind": "carriage-or-boat",
-     "detail": "river boats down the Onkobra line to Gideon and Sakeepa Station",
+     "kind": "coach-stop",
+     "detail": "a carter at the caravan yard on the Gideon road",
      "count": 1
     },
     {
@@ -2006,11 +1981,6 @@
     }
    ],
    "gives": [
-    {
-     "kind": "fast-travel",
-     "detail": "map marker: Calyphe",
-     "count": 1
-    },
     {
      "kind": "combat-foes",
      "detail": "Kothringi dead and ghost lights in the root-choked shrine",
@@ -2259,11 +2229,6 @@
     }
    ],
    "gives": [
-    {
-     "kind": "fast-travel",
-     "detail": "map marker: Eurydike hall",
-     "count": 1
-    },
     {
      "kind": "combat-foes",
      "detail": "the knights' restless dead in the barracks",
@@ -2526,11 +2491,6 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "map marker: Mnemosa burial terrace",
-     "count": 1
-    },
-    {
      "kind": "combat-foes",
      "detail": "the terrace's Kothringi dead, who rise at night",
      "count": 1,
@@ -2780,11 +2740,6 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "map marker: Pelaxis quay",
-     "count": 1
-    },
-    {
      "kind": "combat-creature",
      "detail": "crocodiles under the quay and slaughterfish off the slip",
      "count": 1,
@@ -3001,11 +2956,6 @@
     }
    ],
    "gives": [
-    {
-     "kind": "fast-travel",
-     "detail": "map marker: Dorianth hall",
-     "count": 1
-    },
     {
      "kind": "combat-creature",
      "detail": "a nest of giant snakes in the back room",
@@ -3256,11 +3206,6 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "map marker: Kyrenos music-hall",
-     "count": 1
-    },
-    {
      "kind": "combat-foes",
      "detail": "Kothringi dead who walk the colonnade at night",
      "count": 1,
@@ -3493,11 +3438,6 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "map marker: Nine Reeds Waystation",
-     "count": 1
-    },
-    {
      "kind": "combat-foes",
      "detail": "road bandits with archers on the tower top",
      "count": 1,
@@ -3714,11 +3654,6 @@
     }
    ],
    "gives": [
-    {
-     "kind": "fast-travel",
-     "detail": "map marker: Gideon South Watch",
-     "count": 1
-    },
     {
      "kind": "combat-foes",
      "detail": "delta smugglers with crossbows on the pier",
@@ -3942,11 +3877,6 @@
     }
    ],
    "gives": [
-    {
-     "kind": "fast-travel",
-     "detail": "map marker: Aphon Signal Tower",
-     "count": 1
-    },
     {
      "kind": "combat-foes",
      "detail": "sea-smugglers keeping the lookout",
@@ -4184,11 +4114,6 @@
     }
    ],
    "gives": [
-    {
-     "kind": "fast-travel",
-     "detail": "map marker: Ixha-Neeth Camp",
-     "count": 1
-    },
     {
      "kind": "trader-hunter",
      "detail": "a Paatru hunter who buys hides and raw meat",
@@ -4436,11 +4361,6 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "map marker: Veshu-Taal Camp",
-     "count": 1
-    },
-    {
      "kind": "trader-hunter",
      "detail": "a Paatru hunter who buys hides and meat",
      "count": 1
@@ -4686,11 +4606,6 @@
     }
    ],
    "gives": [
-    {
-     "kind": "fast-travel",
-     "detail": "map marker: Nul-Sakeesh Camp",
-     "count": 1
-    },
     {
      "kind": "trader-hunter",
      "detail": "a Paatru hide-seller who buys pelts",
@@ -4953,11 +4868,6 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "map marker: Ukeel Station",
-     "count": 1
-    },
-    {
      "kind": "fishing",
      "detail": "osheeja gar from the landing",
      "count": 1
@@ -5208,16 +5118,6 @@
     }
    ],
    "gives": [
-    {
-     "kind": "fast-travel",
-     "detail": "map marker: Sakeepa Station",
-     "count": 1
-    },
-    {
-     "kind": "carriage-or-boat",
-     "detail": "the station ferry to Gul-Tej and Gideon",
-     "count": 1
-    },
     {
      "kind": "fishing",
      "detail": "gar in the channel bend",
@@ -5476,11 +5376,6 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "map marker: Nahk-Zeel Station",
-     "count": 1
-    },
-    {
      "kind": "trader-hunter",
      "detail": "a Naka-Desh trader who buys Paatru hides",
      "count": 1
@@ -5738,11 +5633,6 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "map marker: Teth-Kasa Station",
-     "count": 1
-    },
-    {
      "kind": "fishing",
      "detail": "gar in the mangrove channels",
      "count": 1
@@ -5998,11 +5888,6 @@
     }
    ],
    "gives": [
-    {
-     "kind": "fast-travel",
-     "detail": "map marker: Sarth-Hul Station",
-     "count": 1
-    },
     {
      "kind": "harvest-rare",
      "detail": "Hist-sapling resin (sold as a rare alchemy ingredient) at the sapling's foot",
@@ -6264,11 +6149,6 @@
     }
    ],
    "gives": [
-    {
-     "kind": "fast-travel",
-     "detail": "map marker: Olaxa Station",
-     "count": 1
-    },
     {
      "kind": "fishing",
      "detail": "fish dried on the station rack",
@@ -6535,11 +6415,6 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "map marker: Zul-Meeka Station",
-     "count": 1
-    },
-    {
      "kind": "trainer",
      "detail": "Journeyman Sneak trainer, the station lookout",
      "count": 1
@@ -6786,11 +6661,6 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "map marker: Banu-Veeth Post",
-     "count": 1
-    },
-    {
      "kind": "trainer",
      "detail": "Journeyman Marksman trainer, the post's watch-leader",
      "count": 1
@@ -7031,11 +6901,6 @@
     }
    ],
    "gives": [
-    {
-     "kind": "fast-travel",
-     "detail": "map marker: Jal-Resh Post",
-     "count": 1
-    },
     {
      "kind": "fishing",
      "detail": "gar and mudfish",
@@ -7288,11 +7153,6 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "map marker: Xul-Banu Post",
-     "count": 1
-    },
-    {
      "kind": "trainer",
      "detail": "Journeyman Light Armor trainer, the watch-leader",
      "count": 1
@@ -7537,11 +7397,6 @@
     }
    ],
    "gives": [
-    {
-     "kind": "fast-travel",
-     "detail": "map marker: Deshaa Post",
-     "count": 1
-    },
     {
      "kind": "trainer",
      "detail": "Journeyman One-handed trainer, the watch-leader",
@@ -7820,8 +7675,8 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "map marker: Jarecai",
+     "kind": "boat-stop",
+     "detail": "a raft-master at the lake landing",
      "count": 1
     },
     {
@@ -8136,8 +7991,8 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "map marker: Kharaxos",
+     "kind": "boat-stop",
+     "detail": "a boatman at the river market",
      "count": 1
     },
     {
@@ -8434,11 +8289,6 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "map marker: Oeneas",
-     "count": 1
-    },
-    {
      "kind": "trader-jeweller",
      "detail": "the chime-smith: tin and copper chimes, ingots and rings",
      "count": 1
@@ -8446,11 +8296,6 @@
     {
      "kind": "forge",
      "detail": "the chime-smith's forge and anvil",
-     "count": 1
-    },
-    {
-     "kind": "carriage-or-boat",
-     "detail": "a shallow-draft boat to Kharaxos and Jarecai",
      "count": 1
     },
     {
@@ -8694,11 +8539,6 @@
    ],
    "place_kind_id": "logging-camp",
    "gives": [
-    {
-     "kind": "fast-travel",
-     "detail": "map marker: Redtimber Camp",
-     "count": 1
-    },
     {
      "kind": "trader-general",
      "detail": "the foreman, who sells firewood, food and tools",
@@ -9024,11 +8864,6 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "map marker: Meris-Keth",
-     "count": 1
-    },
-    {
      "kind": "combat-foes",
      "detail": "Khajiit moon-sugar smugglers in the dry halls",
      "count": 1,
@@ -9303,11 +9138,6 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "map marker: Ra'tal Den",
-     "count": 1
-    },
-    {
      "kind": "combat-creature",
      "detail": "mudcrabs in the dome and crocodiles in the pools",
      "count": 1,
@@ -9573,12 +9403,7 @@
    "place_kind_id": "belvedere",
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "map marker: Aphon Belvedere",
-     "count": 1
-    },
-    {
-     "kind": "carriage-or-boat",
+     "kind": "boat-stop",
      "detail": "the watch's supply boat to Olvani",
      "count": 1
     },
@@ -9902,11 +9727,6 @@
     }
    ],
    "gives": [
-    {
-     "kind": "fast-travel",
-     "detail": "map marker: Kelp-Mouth Cave",
-     "count": 1
-    },
     {
      "kind": "combat-foes",
      "detail": "a Khajiit smuggling crew",
@@ -10282,11 +10102,6 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "map marker: the Grey Heron wreck",
-     "count": 1
-    },
-    {
      "kind": "combat-creature",
      "detail": "slaughterfish in the hold",
      "count": 1,
@@ -10547,11 +10362,6 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "map marker: the Sallow Anne wreck",
-     "count": 1
-    },
-    {
      "kind": "combat-creature",
      "detail": "slaughterfish in the rock cleft",
      "count": 1,
@@ -10805,16 +10615,6 @@
    ],
    "place_kind_id": "fort",
    "gives": [
-    {
-     "kind": "fast-travel",
-     "detail": "map marker: Fort Shellmoth",
-     "count": 1
-    },
-    {
-     "kind": "carriage-or-boat",
-     "detail": "the garrison ferry across to Soulrest's quay",
-     "count": 1
-    },
     {
      "kind": "trader-blacksmith",
      "detail": "the garrison quartermaster: arrows, steel weapons and armour",

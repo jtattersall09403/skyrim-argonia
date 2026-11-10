@@ -136,7 +136,7 @@ class Pad:
                          return [r.left + s.x, r.top + s.y]; }""", [side, pos])
 
     def ops(self):
-        return self.ev("studio.log.applied().map((o) => ({ n: o.n, op: o.op, call: o.call, note: o.note, space: o.space, stroke: o.stroke, id: o.id || o.ref?.id || o.path?.id || o.person?.id, src: o.ref?.src, base: o.ref?.base, space_copy_of: o.space_copy_of }))")
+        return self.ev("studio.log.applied().map((o) => ({ n: o.n, op: o.op, call: o.call, note: o.note || studio.log.notes.get(o.note_group)?.text, note_group: o.note_group, space: o.space, stroke: o.stroke, id: o.id || o.ref?.id || o.path?.id || o.person?.id, src: o.ref?.src, base: o.ref?.base, space_copy_of: o.space_copy_of }))")
 
     def shot(self, name):
         self.page.screenshot(path=str(SHOTS / f"{name}.png"))
@@ -399,16 +399,18 @@ def test_06_07_history_and_calls(pad):
     assert len(pad.ops()) == m
     pad.page.click("#redo")
     assert len(pad.ops()) == n
-    # the chip after an edit marks it a taste call, with a note
+    # the note bar under the views: the last change alone marked a taste call, with a note
     pad.page.click("#rail [data-tool=select]")
     pad.ev("studio.selection = new Set([studio.log.applied().at(-1).ref.id]); studio.tools.selectionChanged()")
     pad.page.get_by_role("button", name="East", exact=True).click()
-    assert pad.ev("!document.getElementById('chip').hidden")
-    pad.page.click("#chip .call")
-    pad.page.fill("#chip input", "I prefer it by the water")
-    pad.page.press("#chip input", "Enter")
-    last = pad.ops()[-1]
+    while int(pad.ev("document.getElementById('notebar').dataset.count")) > 1:
+        pad.page.click("#notebar .nb-less")
+    pad.page.click("#notebar .call")
+    pad.page.fill("#notebar .nb-text", "I prefer it by the water")
+    pad.page.press("#notebar .nb-text", "Enter")
+    last, before = pad.ops()[-1], pad.ops()[-2]
     assert last["call"] == "taste" and last["note"] == "I prefer it by the water"
+    assert before["note"] is None and before["call"] == "fault", "the changes left out of the note stay unnoted"
     pad.page.click("#rail [data-tool=history]")
     rows = pad.page.locator("ol.history li")
     assert rows.count() >= 5
@@ -654,14 +656,14 @@ def test_20_notes_for_the_agent(pad, server):
     pad.page.wait_for_selector("textarea.note-text")
     pad.page.fill("textarea.note-text", "More reeds along the bank")
     pad.page.get_by_role("button", name="Leave the note").click()
-    pad.page.wait_for_function("document.querySelector('ol.notes li')", timeout=10000 * SLOW)
+    pad.page.wait_for_function("document.querySelector('ol.free-notes li')", timeout=10000 * SLOW)
     rid = pad.ev("[...studio.model.spaces.exterior.refs.values()].find((r) => r.kind === 'building').id")
     pad.ev("(id) => { studio.tools.use('select'); studio.selection = new Set([id]); studio.tools.selectionChanged(); }", rid)
     pad.page.get_by_role("button", name="Leave a note about this for the agent").click()
     pad.page.wait_for_selector("textarea.note-text")
     pad.page.fill("textarea.note-text", "Turn this to face the water")
     pad.page.get_by_role("button", name="Leave the note").click()
-    pad.page.wait_for_function("document.querySelectorAll('ol.notes li').length === 2", timeout=10000 * SLOW)
+    pad.page.wait_for_function("document.querySelectorAll('ol.free-notes li').length === 2", timeout=10000 * SLOW)
     notes = json.load(urllib.request.urlopen(f"{server}/api/place/{pid}/notes"))
     assert [n["text"] for n in notes] == ["More reeds along the bank", "Turn this to face the water"]
     assert notes[0]["things"] == [] and [t["id"] for t in notes[1]["things"]] == [rid] and len(notes[1]["view"]["at"]) == 3
@@ -882,3 +884,93 @@ def test_23_contents_and_identities(browser, server):
     assert all(o["call"] in ("fault", "taste") for o in save["ops"])
     assert not p.errors, p.errors
     p.page.context.close()
+
+
+# ---------- 24: one note for the changes since the last note ----------
+def test_24_note_bar(pad, server):
+    """Three edits, one note in the bar under the views: the note covers exactly those three, the count starts again,
+    undo and redo keep the note with what is applied, a save holds the note once and loads back the same, and the
+    History panel gives picked changes one note, edits it and takes it away."""
+    bar = "document.getElementById('notebar')"
+    pad.ev("studio.panels.close()")
+    assert pad.ev(f"!{bar}.hidden")
+    # the bar is in the page's flow: below the views, never over the panel or a view's controls
+    pad.page.click("#rail [data-tool=history]")
+    over = pad.ev(f"""(() => {{ const b = {bar}.getBoundingClientRect(), p = document.getElementById('panel').getBoundingClientRect(),
+                      t = document.querySelector('#view-ours .tilt').getBoundingClientRect();
+                      return [b.top >= p.bottom - 1, b.top >= t.bottom - 1, b.bottom <= innerHeight + 1, b.height]; }})()""")
+    assert over[:3] == [True, True, True] and over[3] <= 120, over
+    pad.ev("studio.panels.close()")
+    p0 = pad.ev("studio.noteBar.pending().length")
+    rid = pad.ev("[...studio.model.spaces.exterior.refs.values()].find((r) => r.kind === 'building').id")
+    pad.ev("(id) => { studio.tools.use('select'); studio.selection = new Set([id]); studio.tools.selectionChanged(); }", rid)
+    for label in ["East", "North", "Turn right"]:
+        pad.page.get_by_role("button", name=label, exact=True).click()
+    assert int(pad.ev(f"{bar}.dataset.count")) == p0 + 3
+    assert f"{p0 + 3} changes since your last note" in pad.ev(f"{bar}.querySelector('.nb-count').textContent")
+    for _ in range(p0):
+        pad.page.click("#notebar .nb-less")
+    assert "The last 3 changes" in pad.ev(f"{bar}.querySelector('.nb-count').textContent") or p0 == 0
+    pad.page.fill("#notebar .nb-text", "stalls must never block a walkway")
+    pad.page.click("#notebar .nb-go")
+    ops = pad.ops()
+    three = ops[-3:]
+    assert len({o["note_group"] for o in three}) == 1 and three[0]["note_group"], three
+    assert all(o["note"] == "stalls must never block a walkway" for o in three)
+    assert p0 == 0 or ops[-4]["note_group"] != three[0]["note_group"], "only the counted changes"
+    assert pad.ev(f"{bar}.dataset.count") == "0" and pad.ev(f"{bar}.querySelector('.nb-text').value") == ""
+    assert pad.ev("studio.log.notesFor().filter((n) => n.text === 'stalls must never block a walkway').length") == 1
+    pad.shot("24-note-bar")
+    # the Notes panel: the note with its changes; Select picks the thing they moved
+    pad.ev("studio.tools.use('notes')")
+    pad.page.wait_for_selector("ol.change-notes li")
+    assert "About 3 changes" in pad.ev("document.querySelector('ol.change-notes li').textContent")
+    pad.shot("24-notes-panel")
+    pad.ev("studio.selection.clear(); studio.tools.selectionChanged()")
+    pad.ev("studio.tools.use('notes')")
+    pad.page.wait_for_selector("ol.change-notes li")
+    pad.page.locator("ol.change-notes li").first.get_by_role("button", name="Select").click()
+    assert pad.ev("[...studio.selection]") == [rid]
+    # undo keeps it consistent: the note covers what is applied, and the bar counts nothing new
+    pad.page.click("#undo")
+    gid = three[0]["note_group"]
+    groups = "(g) => import('./js/note_groups.js').then((m) => m.groupsOf(studio.log.applied(), studio.log.notes).filter((x) => x.id === g).map((x) => x.ops.length))"
+    assert pad.page.evaluate(groups, gid) == [2]
+    assert pad.ev(f"{bar}.dataset.count") == "0"
+    pad.page.click("#redo")
+    assert pad.page.evaluate(groups, gid) == [3]
+    # the save holds the note once, and loads back with each note on its changes
+    pad.page.click("#rail [data-tool=saves]")
+    pad.page.fill("#panel-body input[type=text]", "Notes test")
+    pad.page.get_by_role("button", name="Save a copy").click()
+    pad.page.wait_for_function("document.getElementById('panel-body').textContent.includes('Notes test')", timeout=10000 * SLOW)
+    save = json.load(urllib.request.urlopen(f"{server}/api/place/{pad.ev('studio.place.place_id')}/saves/notes-test"))
+    assert [n["text"] for n in save["notes"]].count("stalls must never block a walkway") == 1
+    assert [o["n"] for o in save["ops"] if o.get("note_group") == gid] == [o["n"] for o in three]
+    assert {o.get("note_group") for o in save["ops"]} - {None} <= {n["id"] for n in save["notes"]}
+    before = json.dumps(pad.ops(), sort_keys=True)
+    pad.ev("(s) => studio.loadSave(s)", save)
+    assert json.dumps(pad.ops(), sort_keys=True) == before
+    # History: two changes picked and given one note; the note edited; then taken away
+    pad.page.click("#rail [data-tool=history]")
+    picks = pad.page.locator("ol.history li button[aria-label='Choose this change']")
+    k = picks.count()
+    picks.nth(k - 1).click()
+    picks.nth(k - 2).click()
+    pad.page.fill("input[aria-label='One note for the chosen changes']", "turned the wrong way")
+    pad.page.get_by_role("button", name="Note the chosen").click()
+    ops = pad.ops()
+    assert ops[-1]["note"] == ops[-2]["note"] == "turned the wrong way" and ops[-3]["note"] == "stalls must never block a walkway"
+    pad.page.locator("ol.history .said", has_text="turned the wrong way").first.click()
+    assert pad.ev("document.querySelector(\"input[aria-label='One note for the chosen changes']\").value") == "turned the wrong way"
+    pad.page.fill("input[aria-label='One note for the chosen changes']", "turned to face the wall")
+    pad.page.get_by_role("button", name="Note the chosen").click()
+    ops = pad.ops()
+    assert ops[-1]["note"] == ops[-2]["note"] == "turned to face the wall" and ops[-1]["note_group"] == ops[-2]["note_group"]
+    pad.page.locator("ol.history .said", has_text="turned to face the wall").first.click()
+    pad.page.get_by_role("button", name="Take their note away").click()
+    ops = pad.ops()
+    assert ops[-1]["note"] is None and ops[-2]["note"] is None and ops[-3]["note"] == "stalls must never block a walkway"
+    pad.shot("24-history-notes")
+    pad.ev("studio.selection.clear(); studio.tools.selectionChanged(); studio.panels.close()")
+    assert not pad.errors, pad.errors

@@ -331,14 +331,9 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Archon harbour map marker, the south-east hub of the coast trade",
+     "kind": "boat-stop",
+     "detail": "harbour boatmen at the wharves",
      "count": 1
-    },
-    {
-     "kind": "carriage-or-boat",
-     "detail": "Wharf ferrymen sail the player for gold to Lilmoth, Soulrest and Uluo; a sailor takes passengers to Tear",
-     "count": 2
     },
     {
      "kind": "trader-general",
@@ -741,7 +736,7 @@
     },
     {
      "aspect": "hooks",
-     "text": "The drowned quarter, whose name locals will not say to strangers and the villas that salvagers dive for. The young Hist with its two minders, and the story its people tell of the mad tree before it. Pusbottom's thieves and the docks-only law some officials still enforce. The sunken shrine of Xhon-Mehl can be reached by diving as far as breath allows.",
+     "text": "The drowned quarter, whose name locals will not say to strangers, and the villas that salvagers dive to reach. The young Hist with its two minders, and the story its people tell of the mad tree before it. Pusbottom's thieves, and the docks-only law that some officials still enforce. The sunken shrine of Xhon-Mehl, which a diver reaches only as far as breath allows.",
      "tier": "EXTRAPOLATED",
      "sources": [
       {
@@ -788,14 +783,9 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Lilmoth map marker, the south-coast harbour",
+     "kind": "boat-stop",
+     "detail": "lighter-men at the harbour",
      "count": 1
-    },
-    {
-     "kind": "carriage-or-boat",
-     "detail": "Lighter-men sail the player for gold to Archon, Soulrest and Uluo",
-     "count": 2
     },
     {
      "kind": "trader-general",
@@ -1260,14 +1250,9 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Uluo map marker, the Three Waters seat",
+     "kind": "boat-stop",
+     "detail": "raft-masters at the town's raft landing",
      "count": 1
-    },
-    {
-     "kind": "carriage-or-boat",
-     "detail": "Raft-masters carry the player for gold to Archon, Inoio and Tapauo",
-     "count": 2
     },
     {
      "kind": "trader-general",
@@ -1672,11 +1657,6 @@
     }
    ],
    "gives": [
-    {
-     "kind": "carriage-or-boat",
-     "detail": "The raft ferry across the wide channel on the road north from Archon, for a fare",
-     "count": 1
-    },
     {
      "kind": "trader-general",
      "detail": "Spare poles, rope and lamp oil from the ferry families",
@@ -2409,8 +2389,8 @@
      "count": 1
     },
     {
-     "kind": "carriage-or-boat",
-     "detail": "Shellfish rafts carry the player for gold to Truowa's waters and Uluo",
+     "kind": "boat-stop",
+     "detail": "a shellfish raft at the flats",
      "count": 1
     },
     {
@@ -3154,11 +3134,6 @@
    ],
    "gives": [
     {
-     "kind": "carriage-or-boat",
-     "detail": "raft-master's boat hire into the Nushara Bayou and across to Archon's quay",
-     "count": 1
-    },
-    {
      "kind": "trader-general",
      "detail": "reed, rice and fish sold from the landing; small stock, 750 gold at start",
      "count": 1
@@ -3464,11 +3439,6 @@
     }
    ],
    "gives": [
-    {
-     "kind": "carriage-or-boat",
-     "detail": "ferry to Archon, Lilmoth and the Althii islands",
-     "count": 1
-    },
     {
      "kind": "trader-innkeeper",
      "detail": "hostel kitchen: fish, rice, ale",
@@ -4061,11 +4031,6 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Fort Swiftmoth map marker, the road fort inland from Archon",
-     "count": 1
-    },
-    {
      "kind": "combat-foes",
      "detail": "smugglers' watch in the cellars, bandits' arms and bows",
      "count": 4,
@@ -4392,11 +4357,6 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Velothi Shrine of Nyrath-Ven map marker, the ruin near Archon",
-     "count": 1
-    },
-    {
      "kind": "shrine-blessing",
      "detail": "the east ancestor niche, kept by Archon's Dunmer families: cures disease and resist disease 25% for 8 hours",
      "count": 1
@@ -4652,11 +4612,6 @@
     }
    ],
    "gives": [
-    {
-     "kind": "fast-travel",
-     "detail": "Map marker for the wreck on the beach",
-     "count": 1
-    },
     {
      "kind": "combat-creature",
      "detail": "mudcrabs on the hull and in the sand",
@@ -4947,11 +4902,6 @@
     }
    ],
    "gives": [
-    {
-     "kind": "carriage-or-boat",
-     "detail": "the headwoman's ferry to the northern island",
-     "count": 1
-    },
     {
      "kind": "trader-general",
      "detail": "fish, sea salt and boat gear",
@@ -5264,8 +5214,8 @@
    ],
    "gives": [
     {
-     "kind": "carriage-or-boat",
-     "detail": "ferry across the strait to the southern island",
+     "kind": "boat-stop",
+     "detail": "the strait ferry",
      "count": 1
     },
     {
@@ -5568,11 +5518,6 @@
     }
    ],
    "gives": [
-    {
-     "kind": "carriage-or-boat",
-     "detail": "boat hire for the Archon crossing",
-     "count": 1
-    },
     {
      "kind": "trader-general",
      "detail": "fish, rice and shell sold to the fort and travellers",
@@ -5915,16 +5860,6 @@
     }
    ],
    "gives": [
-    {
-     "kind": "fast-travel",
-     "detail": "Fort Reedmoth map marker, the Althii island fort",
-     "count": 1
-    },
-    {
-     "kind": "carriage-or-boat",
-     "detail": "the boatman at the landing, paid crossing to Archon's coast",
-     "count": 1
-    },
     {
      "kind": "trader-general",
      "detail": "the quartermaster: rice, fish, rope, torches and mixed goods, restocked every 48 hours",
@@ -6273,16 +6208,6 @@
     }
    ],
    "gives": [
-    {
-     "kind": "fast-travel",
-     "detail": "Southwatch Keep map marker, the island's south-west tip",
-     "count": 1
-    },
-    {
-     "kind": "carriage-or-boat",
-     "detail": "the landing boatman, paid passage to Lilmoth",
-     "count": 1
-    },
     {
      "kind": "trader-general",
      "detail": "the gate stores: fish, rope, lamp oil and mixed goods, restocked every 48 hours",
@@ -7043,11 +6968,6 @@
    ],
    "gives": [
     {
-     "kind": "carriage-or-boat",
-     "detail": "family boat hired to Lilmoth's harbour",
-     "count": 1
-    },
-    {
      "kind": "harvest-common",
      "detail": "rice and reed at the paddies and channels",
      "count": 6
@@ -7411,11 +7331,6 @@
     }
    ],
    "gives": [
-    {
-     "kind": "carriage-or-boat",
-     "detail": "rice lighter takes passengers to Lilmoth or Archon",
-     "count": 1
-    },
     {
      "kind": "trader-innkeeper",
      "detail": "steward sells cooked rice and palm wine at the landing",
@@ -9060,11 +8975,6 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Fort Sallowmoth map marker, the road fort between Karketa and Lilmoth",
-     "count": 1
-    },
-    {
      "kind": "combat-foes",
      "detail": "squatters and smugglers in the yard",
      "count": 4,
@@ -9401,11 +9311,6 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Brackwater Waystation map marker, the south-shore ruin east of Lilmoth",
-     "count": 1
-    },
-    {
      "kind": "combat-foes",
      "detail": "smugglers guarding the cache in the sea-cave",
      "count": 4,
@@ -9741,11 +9646,6 @@
     }
    ],
    "gives": [
-    {
-     "kind": "fast-travel",
-     "detail": "Fort Lowmoth map marker, the burnt fort on the island road",
-     "count": 1
-    },
     {
      "kind": "combat-foes",
      "detail": "road bandits in the burnt shell",
@@ -10098,11 +9998,6 @@
     }
    ],
    "gives": [
-    {
-     "kind": "fast-travel",
-     "detail": "Map marker for Ashiit Den, discovered on arrival at the midden",
-     "count": 1
-    },
     {
      "kind": "combat-creature",
      "detail": "giant mudcrabs and hackwings on the beach below the den",
@@ -10462,11 +10357,6 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Map marker for Kitsa Burrow at the dune tip",
-     "count": 1
-    },
-    {
      "kind": "combat-foes",
      "detail": "smugglers (Khajiit and Dunmer sloop crews with swords and bows) at the cut door and in the tunnels",
      "count": 4,
@@ -10823,11 +10713,6 @@
     }
    ],
    "gives": [
-    {
-     "kind": "fast-travel",
-     "detail": "Map marker for Reknaa-iit Mound, discovered at the ring of posts",
-     "count": 1
-    },
     {
      "kind": "combat-creature",
      "detail": "giant snakes and skeevers in the lower galleries",
@@ -11187,11 +11072,6 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Map marker for Rushiit Den at the gnawed entrance",
-     "count": 1
-    },
-    {
      "kind": "combat-creature",
      "detail": "marsh crocodiles in the tunnel mouths and skeevers beyond",
      "count": 6,
@@ -11550,11 +11430,6 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Map marker for Tailfall Mound on the shore path from Fort Reedmoth",
-     "count": 1
-    },
-    {
      "kind": "combat-foes",
      "detail": "smugglers (sloop crews with swords and bows) in the lower hall",
      "count": 4,
@@ -11876,8 +11751,8 @@
    ],
    "gives": [
     {
-     "kind": "carriage-or-boat",
-     "detail": "supply boat to Lilmoth",
+     "kind": "boat-stop",
+     "detail": "the station's boat to Lilmoth",
      "count": 1
     },
     {
@@ -12682,11 +12557,6 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Map marker for the wreck, found by diving to it",
-     "count": 1
-    },
-    {
      "kind": "combat-creature",
      "detail": "Slaughterfish shoal over the wreck",
      "count": 4,
@@ -13030,11 +12900,6 @@
     }
    ],
    "gives": [
-    {
-     "kind": "fast-travel",
-     "detail": "Map marker at the spire foot",
-     "count": 1
-    },
     {
      "kind": "combat-creature",
      "detail": "Slaughterfish at the lower windows",
@@ -13386,11 +13251,6 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Map marker at the spire foot",
-     "count": 1
-    },
-    {
      "kind": "combat-creature",
      "detail": "Slaughterfish school in the flooded hall",
      "count": 6,
@@ -13735,11 +13595,6 @@
     }
    ],
    "gives": [
-    {
-     "kind": "fast-travel",
-     "detail": "Map marker at the spire foot",
-     "count": 1
-    },
     {
      "kind": "combat-foes",
      "detail": "Young dreugh in the upper rooms",
@@ -14091,11 +13946,6 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Map marker at the spire foot",
-     "count": 1
-    },
-    {
      "kind": "combat-foes",
      "detail": "Dreugh scouts in the upper rooms",
      "count": 4,
@@ -14441,11 +14291,6 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Map marker on the sand plain",
-     "count": 1
-    },
-    {
      "kind": "shrine-blessing",
      "detail": "Hist-sap shrine on the summit: cures disease and gives eight hours of waterbreathing to a diver who leaves an offering and touches the sap",
      "count": 1
@@ -14790,11 +14635,6 @@
    ],
    "gives": [
     {
-     "kind": "fast-travel",
-     "detail": "Map marker at the platform foot",
-     "count": 1
-    },
-    {
      "kind": "combat-creature",
      "detail": "Slaughterfish in the lower gallery",
      "count": 3,
@@ -15138,11 +14978,6 @@
     }
    ],
    "gives": [
-    {
-     "kind": "fast-travel",
-     "detail": "Map marker at the spire foot",
-     "count": 1
-    },
     {
      "kind": "combat-foes",
      "detail": "Drowned priests' attendants in the outer galleries",

@@ -94,6 +94,18 @@
     {"id": "faction", "means": "the guard, the town, a temple, a trader's vendor faction", "sets": "the place's wealth band: a guard's store sound gear, a seat of power up to the ceiling", "issue_tier": "T2", "issue_why": "A guard carries the guard faction's issue whatever the guard's own band: sound gear (T2), as the faction's store holds."}
   ],
 
+  "guard_issue": {
+    "rule": "A place's guards wear their own culture's guard set where the place's mods provide one (the set's plugin is one of the place's source plugins) and the place's ceiling reaches the set's tier; the guard's tier is then the set's. Otherwise they wear the plain issue at the faction's issue tier. The set's weapon goes with it where the source's guards carried one; else the plain issue's sword. Every guard also carries the torch.",
+    "torch": "Skyrim.esm:01D4EC",
+    "torch_why": "Every guard carries one plain torch, as Skyrim's guards do through their gear lists: the night watch lights its way after dark. The torch itself, never a levelled list (decision 0035).",
+    "sets": [
+      {"id": "argonian", "label": "BM&V's Argonian guard armour", "plugin": "Black Marsh North.esp", "outfit": "Black Marsh North.esp:037DF8",
+       "items": ["Black Marsh North.esp:037DF0", "Black Marsh North.esp:037DF3", "Black Marsh North.esp:037DF7"], "weapon": null, "tier": "T3",
+       "cultures": ["crimson-red", "forest-green", "gold", "indigo", "jade", "lime", "magenta", "olive", "oxblood", "pale-green", "pearl", "plum", "rose", "rust", "sky-blue", "steel-blue", "stone-grey", "umber"],
+       "why": "The guard armour BM&V gives the Argonian soldiers of its own cities (outfit BMArgSet: cuirass, boots, gauntlets; light, of the mod's Elven material, so T3). Every culture of Black Marsh is Argonian. The source's guards carry Ebony and Daedric swords, which are no part of a set, so the plain issue's sword stays."}
+    ]
+  },
+
   "provenance": {
     "local": "made here: the place's own trade (a smith of iron and steel, a tanner's hide and leather, the economy note's goods, its harvest and ore gives) or its culture's make",
     "steps": [

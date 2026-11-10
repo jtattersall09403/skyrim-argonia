@@ -106,8 +106,10 @@ compressed over HTTP.
 
 A ref: `{id, edid?, base, kind, pos:[x,y,z], rot:[rx,ry,rz], scale, layer, flags:[...], door:{to_space,to_ref,to_pos,
 to_rot,flags}?, owner:{owner,rank}?, linked:[{ref,keyword}]?, enable_parent:{ref,flags}?, lock:{level,key,flags}?,
-src?, cell?, map_marker?, primitive?, radius?, loc_ref_types?, count?, patrol?, persistent_location?,
-merchant_container?}`. In a bundle `src` is the plugin whose version of the ref wins and `cell` the exterior cell;
+src?, cell?, map_marker?, primitive?, radius?, light_data:{fov,fade,end_cap,shadow_bias}?, emittance?,
+loc_ref_types?, count?, patrol?, persistent_location?, merchant_container?}`. `light_data` is a light ref's own
+offsets to its base (XLIG) and `emittance` the region or light whose colour a ref glows with (XEMI: a window that
+follows the time of day). In a bundle `src` is the plugin whose version of the ref wins and `cell` the exterior cell;
 flags are `persistent, initially_disabled, visible_when_distant, high_priority_lod, multibound, no_respawn,
 open_by_default, ignored_by_sandbox`.
 `kind` is one of `building, static, clutter, tree, plant, groundcover, rock, furniture, door, container, light,
@@ -187,7 +189,7 @@ people.jsonl           one person per line: {id, name, base_from, role, home, be
                        A stop (`at`, `bed`, `work`, a patrol point) is {space, ref | pos, radius}: `ref` our id or a
                        source key of that space; `pos` [x,y] (outside only: seated on the built land) or [x,y,z]; neither: the
                        space's arrival point (where its load door lands one), else its first furniture. `bed` a stop or null; `kind` sleep|work|wander|sandbox|eat|patrol (a
-                       patrol stop's route is `patrol`). services: [{kind | give_kind_id, detail, skill?, level?,
+                       patrol stop's route is `patrol`). services: [{seq, kind | give_kind_id, detail, skill?, level?,
                        room_bed?}]; faction_ranks: [{faction: a form key or <place_id>.<name>, rank}]. Any other
                        shape is a problem `build --plan` lists, never a crash
                        Who each person is (name, household, trade, wealth, notes) is not placement: it lives in the
@@ -299,8 +301,9 @@ the source the stocker decided not to keep, with the reason; the build leaves ou
 row whether or not it is listed. `respawn` is never stored: an authored container never respawns, and a trader's merchant chest
 restocks every 48 hours to its list (vanilla's own timing; the list is fixed and nothing in it is levelled).
 `deliveries` holds only what stocking owns (loot, a treasure, a record edit); the loader adds the rest:
-a person whose `people.jsonl` services name the give, a station of `place.json` `stations.found`, the world file's
-map marker for `fast-travel`. Anything else stays `open`. `python3 -m tools.newworld.stockdb promises <place>` lists
+a person whose `people.jsonl` services name the give (a travel stop's operator among them), a station of
+`place.json` `stations.found`. Anything else stays `open`; a stop whose operator is known but not yet placed is an
+`open` row `by: person` naming them, so the place files' owner knows whom to give the service. `python3 -m tools.newworld.stockdb promises <place>` lists
 each promise and what delivers it, and exits 1 while any is open. A promise is dropped only by editing the place
 record, with the reason (`status: dropped`, `why` naming the edit), never to avoid the work.
 
@@ -314,8 +317,13 @@ vanilla's level gates (`docs/research/skyrim/stocking-yields.md`). How a place's
   What lies open is T1. Each tier above the open tier needs one more step of `security`, and a container's lock is
   its best tier's `lock`.
 - A person: their wealth band W1..W5 sets the gold they carry and keep, their clothes, their jewellery and their best
-  tier (W5 reaches the place's ceiling). A guard carries the guard faction's issue whatever their band (`owner`
-  faction `issue_tier`: sound gear, T2).
+  tier (W5 reaches the place's ceiling). A guard carries the guard faction's issue whatever their band
+  (`guard_issue`): their own culture's guard set where the place's mods provide one (the set's plugin is one of the
+  source's plugins) and the place's ceiling reaches the set's tier (BM&V's Argonian guard armour, T3, for a
+  Black Marsh place of ceiling T3 or more), with the set's weapon where the source's guards carried one; else the
+  plain issue at the `owner` faction's `issue_tier` (sound gear, T2). Every guard also carries one plain torch
+  (`guard_issue.torch`, Skyrim.esm 01D4EC, never a levelled list), as Skyrim's guards do; the guard packages
+  (copies of vanilla guard packages, their flags unchanged) let them carry it lit at night.
 - An owner sets a container: a person or household by their band, a faction (guard, town, temple) by the place's
   band, nobody by the ground.
 - Provenance: a thing made here (the place `makes` a good whose `good_material` covers it) is common and costs its
@@ -370,8 +378,8 @@ flag and each actor base's inventory, outfit items and death item):
    a container with no row holds nothing significant. Any other significant item fails, by holder and item.
 3. Every row is built: a container, loose, possession or trader row whose holder or items are missing fails.
 4. Every promise delivered (`promises`): `give_delivery` has no `open` row for the place, each delivered row's person
-   or ref exists in the build, and `fast-travel` has the world file's map marker `ANW_MapMarker_<place>` (a copied
-   source marker is built without marker data, so it never makes a second one).
+   or ref exists in the build (a travel stop is proved by `services`: each route offered at its fare to its
+   arrival point).
 5. Quest things untouched: a ref or item a quest record names is in no stock row and stands as the quest has it (the
    quest tables of nw-05; none yet).
 6. Ownership set: every row's built owner is its row's; only S0 rows and wild ground are nobody's.
@@ -384,7 +392,8 @@ flag and each actor base's inventory, outfit items and death item):
    `ledger.caps`.
 10. Never: no item of a `never_material` or Skyrim-only kit.
 11. Each person within their band: carried gold at most the band's `carried` top, jewellery at most its `jewellery`,
-   no item above the band's `top_tier` (capped at the place's ceiling; a guard reaches the faction's `issue_tier`).
+   no item above the band's `top_tier` (capped at the place's ceiling; a guard reaches the tier of the place's
+   guard issue, `guard_issue`).
    Nothing anywhere above the place's ceiling but a ledger row.
 `python -m tools.places stock report <place> [--out DIR]` prints the built place in numbers: containers authored,
 items placed, the containers' value against their budgets, people's and loose value, gold, and the ten most valuable
@@ -442,10 +451,11 @@ derive` keeps every such row of the stock source as it stands and lists the diff
 The studio never writes place files. It keeps an ordered list of operations; undo and redo move a cursor in it; a
 save is the list up to the cursor.
 
-`edits/<save_id>.json`: `{save_id, place_id, name, at, rev, final: bool, base:{draft_key, ground_sha}, ops:[...]}`.
+`edits/<save_id>.json`: `{save_id, place_id, name, at, rev, final: bool, base:{draft_key, ground_sha}, ops:[...],
+notes:[{id, text, at}]}`.
 `rev` is raised by the server on every write. The autosave is the same shape at `out/places/autosave/<place_id>.json`
 (on disk and in the private bucket, never committed).
-An op: `{n, at, op, space, call: "fault"|"taste", note?, stroke?, ...payload with before and after}`.
+An op: `{n, at, op, space, call: "fault"|"taste", note_group?, stroke?, ...payload with before and after}`.
 
 | op | payload |
 |---|---|
@@ -493,6 +503,23 @@ An op: `{n, at, op, space, call: "fault"|"taste", note?, stroke?, ...payload wit
   the copied room's rows given as `source: {space_id: [row...]}`.
 - `place.json` lists `saves_applied`; a save already listed is rejected. Applying a save also appends each `taste`
   op to `place.json` `preferences` as `{save, n, op, what, note}`.
+
+**Notes on changes.** The owner's words for the agent travel with the changes they are about. A note is
+`{id, text, at}` in the save's `notes`, listed once; every op it covers carries its `id` in `note_group`, and an op
+naming a note the save does not list is a schema error (`check_save`). A change is one op, or the ops of one
+`stroke`; a note covers whole changes. An older save's per-op `note` reads as a note on that op and on the ops
+beside it with the same words (`tools/places/change_notes.py: groups`, `js/note_groups.js: groupsOf`). In the
+studio the note bar sits under the views in the page's flow, never over the panel or a view's controls: it counts
+the changes since the last note (the applied changes after the last noted one), a stepper trims the count to the
+last few, a Fault/Taste switch sets their call, and one ordinary text field (typed, handwritten or spoken) takes
+the note; confirming gives those changes one new note and the count starts again. Changes never noted stay
+unnoted. History picks any changes and gives them one note; tapping a change's note picks its changes and offers
+its words to edit or take away. The Notes panel lists the notes on the applied changes ("about 3 changes"), and
+Select picks the things they touched. Undo and redo leave each op's `note_group` as it is, so a note covers what is
+applied and comes back with its changes; a save writes the notes its applied ops name. A taste op's preference row
+takes its note's words. The agent reads each note with exactly the changes it covers, each said as what changed,
+from what to what, and where (`change_notes.present`): finalise's lessons step (`notes.json`) and
+`python -m tools.places notes`, which lists them for every save not yet finalised.
 
 `call` defaults to `fault`. Applying a save to the place files is one function (`tools/places/edits.py: apply`,
 `apply_save` for a whole save), used by load (in memory) and by finalise (to disk). The fixtures in
@@ -545,7 +572,8 @@ POST /api/place/<id>/notes                    {text, things, view} adds a note; 
                                               Kept in the place's edits/notes.jsonl (outside the draft's and the
                                               build's identity) and committed by path. An agent lists the open
                                               notes with `python -m tools.places notes`, makes the change, and
-                                              closes each with `notes done <place> <id> --reply "..."`
+                                              closes each with `notes done <place> <id> --reply "..."`. Notes on
+                                              changes are in the saves (Edits: notes on changes)
 GET  /api/place/<id>/stock                    who the place's people are and what it holds, from the database's
                                               sources (Stock: the studio)
 GET  /api/place/<id>/items?q=&kind=&limit=    item search for a holder: each result allowed or refused, with why
@@ -687,8 +715,13 @@ their own cell (interior), as vanilla files them.
 1. Plan each place into `out/places/shards/<place_id>/plan.json` (`tools/places/build.py`), keyed on its place
    files, the world ESM's sha256 and the code; an unchanged key is not planned again. The world ESM must be of the
    land build its navmesh inputs hold (`out/newworld/plugin/land/manifest.json`), else the build stops.
-2. Interiors: `space.json` `copy_of` names the source cell (each of the source's plugins that holds it adds its
-   refs; read once and cached under `out/places/srccells`). `room` (one of the cell's load doors that lead out)
+2. Interiors: `space.json` `copy_of` names the source cell, copied as the game shows it with the source's load order
+   (the bundle's `plugins`, masters first): every plugin that can hold the cell (the one it originates in and each
+   plugin mastering that one) is read, in load order, and the last holder's version of each ref, navmesh and the
+   header wins; a ref its winner deletes is gone. A cell BM&V overrides from Dawnguard.esm is Dawnguard's refs with
+   BM&V's changes over them, never BM&V's alone. Each holder is read once and cached under `out/places/srccells`;
+   the plan's `src_plugins` lists the holders in load order and the writer reads the source refs the same way.
+   `room` (one of the cell's load doors that lead out)
    keeps only that room of a cell the source shares between houses, by the room rule: the whole cell's collision
    (doors open) is meshed by the world's own Recast run; the room is the walkable island reached from its door;
    every source ref belongs to the door island its position is nearest, islands of every door of the cell
@@ -698,9 +731,13 @@ their own cell (interior), as vanilla files them.
    every ref at least 2,093 units nearer its own room than the next. A row with `src` changes that copied ref
    (`removed: true` drops it; `base`, `pos`, `rot`, `scale`, `owner`, `door` replace the source's); a row with a
    `src` outside the kept room is not in the copy; a row without `src` is added. A copied ref whose base is still
-   the source's keeps what the source ref itself says of it: a light's radius and light data, an item count, a
-   charge, open by default, ignored by sandbox, its lock's key. Any row's own `radius` and `count` (the ref
-   shape's) are built as given, in a room or outside. Source actors are never copied: people are ours.
+   the source's keeps what the source ref itself says of it: a light's radius and light data, its emittance, an item
+   count, a charge, open by default, ignored by sandbox, its lock's key. An exterior row whose base is still the
+   source's takes its source ref's `light_data` and `emittance` from the source bundle. Any row's own `radius`,
+   `light_data`, `emittance` and `count` (the ref shape's) are built as given, in a room or outside. An emittance
+   is built only where its target is in our load order: a master's region or light as it is, another plugin's light
+   copied in as ours; any other is left off and named in the write's notes. Source actors are never copied: people
+   are ours.
 3. Doors: a door pair is one row on each side (the exterior door, and the copy's override of the source door it
    leads to) whose `door.to_space` and `to_ref` (our id, or a source key in a copied space) name each other; one row
    naming its partner is enough, and both get teleports. One using door x lands at x's `door.to_pos` and `to_rot`
@@ -730,7 +767,7 @@ their own cell (interior), as vanilla files them.
    only a space (where one arrives in it by a load door, else its first furniture). A person whose day starts on
    patrol stands at the patrol's first point and keeps home there; every patrol stop of a day walks the one chain,
    and each marker of a chain leads on to one marker only (a patrol point that names a ref another route already
-   leads on from is a problem). Services by give (`give_kind_id` or `kind`): `trader-*` a
+   leads on from is a problem). Services by give (the place record's give at the service's `seq`; `give_kind_id` or `kind` is a copy): `trader-*` a
    vendor faction of ours (hours from the work stop, the vanilla vendor list, a merchant chest in the place's
    chest cell) and the vanilla Job faction; `trainer` a class of ours that teaches (Journeyman 50, Expert 75,
    Master 90; skill and level from `skill`/`level` or the give's detail) with JobTrainerFaction and
@@ -742,21 +779,23 @@ their own cell (interior), as vanilla files them.
    05091B and 051596, speaks with a voice of form list 03B4A5 (the base's if it is in the list, else the list's
    Male/Female Argonian or Commoner), and carries RentRoomScript (Bed = the rented bed, WI = 035D64); vanilla's
    rent offer (INFO 079B1A) then serves our innkeeper, and check evaluates that INFO's conditions on our records.
-   Boat travel (`carriage-or-boat`): one Papyrus script of ours, `papyrus/TIF_ARG_BoatTravel.psc`, serves every
-   boatman's line by its properties (`Destination` marker, `Fare`): each destination is an INFO whose script data
-   names that one script, conditioned on the boatman's faction and the player's gold; fares as vanilla's
-   carriages (20 gold to a city, 50 to anywhere smaller); a destination not built yet arrives at its map marker.
-   Built by `build.py plan_boats` and `ArgoniaPlaces/Build/Boat.cs` as vanilla's DialogueCarriageSystem is (measured:
-   a start-game-enabled quest holding the topics; each destination INFO gates on GetGold >= the fare, run on the target,
-   and CarriageCost is 20, CarriageCostSmall 50): the boatman (role `boatman`, give `carriage-or-boat`) gets a boatman
-   faction of ours from `people.py`; per place a quest of ours; per boatman a top-level topic "I need passage." (his
-   faction on the subject) whose line links one topic per destination; a destination INFO needs the faction and the
-   gold and carries `TIF_ARG_BoatTravel` (`Destination` = the destination's `ANW_MapMarker_<place>` ref in the world
-   ESM, read from it; `Fare`; `Gold001` = Skyrim.esm 00000F) with fragment `Fragment_0` on OnEnd. The destinations are
-   the names in the give's `detail` after its last "to" (place_give has no destination column), matched to
-   place.jsonl by name or map label; fare by the place's kind. check reads quests, topics, INFOs, conditions and
-   script properties back (`dump`) and fails a boatman that lacks any of it; the compiled
-   `out/gpu/papyrus/TIF_ARG_BoatTravel.pex` is warned about when absent.
+   Travel (`boat-stop`, `coach-stop`, `rootworm-stop`): a place's stops and routes are the travel network's
+   (`travel_stop`, `travel_route`; docs/design/travel-network.md); nothing about travel is read from a give's
+   `detail`. The operator of a stop is the person whose `people.jsonl` service names the stop's give (its seq);
+   `people.py` gives them a travel faction of ours per mode (`ANP_<place>_Boatman_`, `_Carter_` or `_RootTender_`
+   in its editor id). `build.py plan_travel` and `ArgoniaPlaces/Build/Boat.cs` build it as vanilla's
+   DialogueCarriageSystem is (measured: a start-game-enabled quest holding the topics; each destination INFO gates
+   on GetGold >= the fare, run on the target): per place a quest of ours; per operator a top-level topic in the
+   mode's words ("I need passage.", "I need a ride.", "I would ride the rootworm.") whose line links one topic per
+   route of the stop; a route's INFO needs the faction and the gold and carries `TIF_ARG_BoatTravel`
+   (`Destination` = the destination's arrival point, its `ANW_MapMarker_<place>` ref in the world ESM; `Fare` = the
+   route's fare; `Gold001` = Skyrim.esm 00000F) with fragment `Fragment_0` on OnEnd, which takes the fare and calls
+   Game.FastTravel (it works with map travel turned off, as vanilla's carriages do in Survival). A route whose
+   destination has no arrival point in the world ESM is not offered: the build lists it as waiting on that place
+   (`travel_waiting`) and the record keeps the promise. A stop nobody serves is a problem. check reads quests,
+   topics, INFOs, conditions and script properties back (`dump`) and fails a stop unless one operator offers every
+   route that has an arrival point, at the route's fare, to that arrival point, and unless the place has its own
+   arrival point; the compiled `out/gpu/papyrus/TIF_ARG_BoatTravel.pex` is warned about when absent.
    Shrines (`build.py plan_shrines`, `ArgoniaPlaces/Build/Shrine.cs`): each `shrine` row of `stations.added` is built
    as vanilla's temple shrines are (measured on Skyrim.esm's ten TempleBlessingScript activators): the ref keeps its id
    and form key; its base becomes an activator of ours with the old base's model and `TempleBlessingScript`
@@ -791,7 +830,7 @@ their own cell (interior), as vanilla files them.
 **Deploy** (run by the lead after the owner's walk; the build never deploys): `infra/gpu-box/places_deploy.sh`
 (`--dry-run` checks and stages only). It refuses a plugin built over another world ESM than
 `out/newworld/plugin/ArgoniaNewWorld.esm` or a place whose check read another build, prints each place's checks,
-builds the plugin's SEQ file (`ArgoniaPlugin seq`: the boatman's dialogue quest is Start Game Enabled, and the
+builds the plugin's SEQ file (`ArgoniaPlugin seq`: the travel dialogue quest is Start Game Enabled, and the
 engine starts a SEQ's quests before a new game's first frame, as `Argonia.seq` does for Argonia.esp), then sends
 the plugin to `C:\argonia\ours\newworld\`, the SEQ to `C:\argonia\ours\newworld\SEQ\` and the compiled scripts
 (`TIF_ARG_BoatTravel.pex`, compiled with the rest of `papyrus/` by `records_jobs.sh papyrus`) to
@@ -815,7 +854,10 @@ deck, a dry triangle right over it. A line's point is taken at the level one rea
 than 45 degrees plus a 32-unit step, as off a deck's edge; a line's first point, and a patrol point, is found as a
 stop is, the deck first; a land patch whose
 built heights differ from `land.jsonl` or tear at a seam; a cleared plant still enabled, or a plant standing in a
-building, street or doorway; a service the place record promises with nobody giving it; a Nordic base; anything levelled (a levelled list in a person's
+building, street or doorway; a service the place record promises with nobody giving it; a Nordic base; a copied
+room built short of its source (check `rooms`: per room, its built refs and lights against the bundle's cell, the
+kept room where a `room` is copied, less the rows the place removes and the loose things the stock takes out, naming
+what is missing by plugin); anything levelled (a levelled list in a person's
 inventory, outfits, death item or spells, or in a placed container; a level that follows the player; a base whose
 template chain reaches a levelled actor list or takes stats or an inventory from a template that scales). It also
 fails on a link that
@@ -845,7 +887,8 @@ built mesh and fails if a stretch is re-laid (the streets are settled).
 3. **Learn**: a headless agent (`.claude/agents/place-lessons.md`, `claude -p`, capped at $30 and 60 turns) runs
    the skill `place-lessons` on the save's fault ops and rewrites the skill `place-build` as a clean recipe, which
    the agent writes whole to `out/places/runs/<run_id>/place-build.SKILL.md` (it reads only `faults.jsonl`, the
-   save's fault ops) and finalise puts in place and commits as its own commit (one `git revert` removes it). Fault
+   save's fault ops, each with its note's words as `note`, and `notes.json`, each of the owner's notes with
+   exactly the ops it covers said in plain words) and finalise puts in place and commits as its own commit (one `git revert` removes it). Fault
    content ops (`identity.edit`, `stock.*`) are lessons for the skill `place-stock`: the prompt names them, and a
    rewrite the agent writes to `place-stock.SKILL.md` in the run folder is put in place in the same commit. Tool changes it finds are rows in
    `docs/skill-fixes.md`, never code edits. If the agent fails or runs over budget the skill is left as it was,

@@ -1,0 +1,9 @@
+{"travel_mode_id":"boat","water_kind_id":"bay"}
+{"travel_mode_id":"boat","water_kind_id":"blackwater-swamp","min_width_m":8.0}
+{"travel_mode_id":"boat","water_kind_id":"estuary"}
+{"travel_mode_id":"boat","water_kind_id":"green-marsh","min_width_m":8.0}
+{"travel_mode_id":"boat","water_kind_id":"lake"}
+{"travel_mode_id":"boat","water_kind_id":"ocean"}
+{"travel_mode_id":"boat","water_kind_id":"river"}
+{"travel_mode_id":"boat","water_kind_id":"shallow-coast"}
+{"travel_mode_id":"boat","water_kind_id":"stream","min_width_m":8.0}

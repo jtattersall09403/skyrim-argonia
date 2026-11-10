@@ -13,7 +13,7 @@ PERSON_GIVES = {
     "trader-spells": "spell-trader", "trader-innkeeper": "innkeeper", "inn-room": "innkeeper",
     "trader-bookseller": "merchant", "trader-clothier": "merchant", "trader-fletcher": "smith",
     "trader-jeweller": "merchant", "trader-hunter": "merchant", "fence": "fence",
-    "carriage-or-boat": "boatman", "trainer": "trainer", "follower": "resident",
+    "boat-stop": "boatman", "coach-stop": "boatman", "rootworm-stop": "resident", "trainer": "trainer", "follower": "resident",
 }
 STATIONS = {"forge", "anvil", "armour-workbench", "grindstone", "smelter", "tanning-rack", "alchemy-lab",
             "arcane-enchanter", "cooking-pot", "oven", "staff-enchanter"}
