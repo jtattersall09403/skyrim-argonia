@@ -6957,11 +6957,11 @@
  "ground": {
   "bundle": "ground.helstrom",
   "sha": "c9d4a1acdd905460bd6316dafe4371f7d69156f1bcc459f727e1323e0c63d700",
-  "stamp": "a90ea98770aa4ecd"
+  "stamp": "5450d013b0bdaa01"
  },
  "source": {
   "bundle": "src.bmv.helstrom",
-  "stamp": "d0edf177390fb5ca"
+  "stamp": "bd5ed305eccd7064"
  },
  "radius_m": 525,
  "counts": {
@@ -6988,7 +6988,7 @@
   },
   "beds": 55
  },
- "draft_key": "c88753c18307363b",
+ "draft_key": "6fb8d25862ca4fe7",
  "saves_applied": [
   "end-to-end-proof",
   "real-edit-proof"
