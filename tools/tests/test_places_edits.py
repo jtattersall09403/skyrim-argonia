@@ -221,3 +221,100 @@ def test_a_malformed_op_is_an_edit_error():
                {"n": 1, "op": "veg.clear", "space": "exterior", "items": [{"base": "b", "pos": 3}]}):
         with pytest.raises(edits.EditError):
             edits.check_op(op)
+
+
+STOCK = FIX / "stock"   # the content ops (identity.edit, stock.*) on a people and a stock source (base.json)
+STOCK_BASE = json.loads((STOCK / "base.json").read_text())
+
+
+def stock_files():
+    return copy.deepcopy(PLACE) | copy.deepcopy(STOCK_BASE)
+
+
+@pytest.mark.parametrize("case", sorted(p.stem for p in STOCK.glob("*.json") if p.stem != "base"))
+def test_content_fixture(case):
+    from tools.places.edits import canonical_source
+    c = json.loads((STOCK / f"{case}.json").read_text())
+    files = stock_files()
+    if "error" in c:
+        with pytest.raises(EditError) as e:
+            apply(files, c["ops"])
+        assert re.search(c["error"], str(e.value))
+        return
+    out = apply(files, c["ops"])
+    for k in ("identities", "stock"):
+        assert out[k] == canonical_source(k, c["expected"][k])
+    assert {k: v for k, v in out.items() if k not in ("identities", "stock")} == canonical(PLACE), "place files untouched"
+    assert apply(out, invert(c["ops"])) == canonical(files), "every content op has an inverse"
+
+
+def test_content_ops_need_their_source():
+    c = json.loads((STOCK / "content_all.json").read_text())
+    with pytest.raises(EditConflict, match="no people source"):
+        apply(PLACE, c["ops"][:1])
+    with pytest.raises(EditConflict, match="no stock source"):
+        apply(PLACE, c["ops"][1:2])
+
+
+@pytest.mark.parametrize("op", [
+    {"n": 1, "op": "identity.edit", "person": {"id": "a"}},                                    # no before
+    {"n": 1, "op": "identity.edit", "person": {"id": "a"}, "before": {"id": "b"}},              # another person
+    {"n": 1, "op": "stock.container.set", "container": {"ref": "r"}},                            # no space
+    {"n": 1, "op": "stock.container.set", "container": None},
+    {"n": 1, "op": "stock.possessions.set", "possessions": None, "before": None},
+    {"n": 1, "op": "stock.trader.set", "trader": {"person": "a"}},                               # no before
+    {"n": 1, "op": "stock.delivery.set", "delivery": {"by": "person"}},                          # no give_seq
+    {"n": 1, "op": "stock.loose.edit", "loose": {"id": "a"}, "before": "x"}])
+def test_content_op_schema(op):
+    from tools.places import edits
+    with pytest.raises(EditError):
+        edits.check_op(op)
+
+
+def test_content_save_writes_sources_and_taste_preferences(tmp_path):
+    """apply_save then write_place: the place's people and stock sources are written beside the places folder, a
+    taste content op is a preference naming what it changed, and an unchanged source is never rewritten."""
+    from tools.places import edits
+    root = tmp_path / "newworld" / "places" / "fixture"
+    src = tmp_path / "newworld" / "sources"
+    write_place(root, PLACE)
+    (src / "people").mkdir(parents=True)
+    (src / "stock" / "places").mkdir(parents=True)
+    (src / "people" / "fixture.json").write_text(json.dumps(STOCK_BASE["identities"], indent=1) + "\n")
+    stock_text = edits.dump_stock(STOCK_BASE["stock"])
+    (src / "stock" / "places" / "fixture.json").write_text(stock_text)
+    files = load_place(root)
+    assert files["identities"] == edits.canonical_source("identities", STOCK_BASE["identities"])
+    assert files["stock"] == edits.canonical_source("stock", STOCK_BASE["stock"])
+    ops = json.loads((STOCK / "content_all.json").read_text())["ops"][:2]
+    ops[1]["call"] = "taste"
+    out = apply_save(files, {"save_id": "s1", "place_id": "fixture", "ops": ops})
+    write_place(root, out)
+    assert json.loads((src / "people" / "fixture.json").read_text())["people"][0]["name"] == "Ada Hot-Hand"
+    text = (src / "stock" / "places" / "fixture.json").read_text()
+    assert text != stock_text and '\n  {"ref": "fixture.chest1"' in text, "one row per line, as the source is kept"
+    assert out["place"]["preferences"][-1]["what"] == "House/fixture.chest1"
+    again = load_place(root)
+    assert again["identities"] == out["identities"] and again["stock"] == out["stock"]
+    # a save with no content op leaves both sources exactly as their author wrote them
+    (src / "people" / "fixture.json").write_text(json.dumps(out["identities"], indent=2))
+    layout = (src / "people" / "fixture.json").read_text()
+    write_place(root, load_place(root))
+    assert (src / "people" / "fixture.json").read_text() == layout
+
+
+@pytest.mark.skipif(not (HELSTROM.parent.parent / "sources/people/helstrom.json").exists(), reason="no people source")
+def test_real_helstrom_identity_and_stock_ops():
+    files = load_place(HELSTROM)
+    assert files.get("identities") and files.get("stock") is not None
+    p0 = files["identities"]["people"][0]
+    p1 = copy.deepcopy(p0) | {"name": p0["name"] + " Test", "wealth": "W4"}
+    c = {"ref": "helstrom.TESTCHEST", "space": "exterior", "kind": "chest", "security": "S1", "tier": "T1", "gold": 5,
+         "items": [], "why": "a test", "cites": []}
+    had = next((x for x in files["stock"].get("possessions", []) if x["person"] == p0["id"]), None)
+    ops = [{"n": 1, "op": "identity.edit", "person": p1, "before": p0},
+           {"n": 2, "op": "stock.container.set", "container": c},
+           {"n": 3, "op": "stock.possessions.set", "possessions": {"person": p0["id"], "items": [], "why": "t"},
+            "before": had}]
+    out = apply(files, ops)
+    assert apply(out, invert(ops)) == canonical(files)

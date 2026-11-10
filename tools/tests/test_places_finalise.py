@@ -122,3 +122,78 @@ def test_conflicting_save_stops_at_record(repo):
     st = read_run(r / "out/places/runs/fixture.s1")
     assert st["state"] == "failed" and "not applied" in st["report_md"]
     assert "saves_applied" not in json.loads((r / "newworld/places/fixture/place.json").read_text())
+
+
+FAKE_STOCKDB = r'''
+import json, sys
+from pathlib import Path
+verb, repo = sys.argv[1], Path(sys.argv[2])
+with open(repo / "out" / "stockdb-calls.txt", "a") as f:
+    f.write(verb + "\n")
+if verb == "items":
+    p = repo / "newworld/sources/stock/items.json"
+    d = json.loads(p.read_text())
+    d["items"].append({"id": "Skyrim.esm:01397E", "edid": "WarHammer"})
+    p.write_text(json.dumps(d))
+if verb == "load":
+    people = json.loads((repo / "newworld/sources/people/fixture.json").read_text())["people"]
+    db = repo / "newworld/story/data/db"
+    db.mkdir(parents=True, exist_ok=True)
+    (db / "person.jsonl").write_text("".join(json.dumps({"id": p["id"], "name": p["name"]}) + "\n" for p in people))
+'''
+
+
+@pytest.mark.parametrize("crash", [None, "record"])
+def test_content_edits_reach_the_sources_and_the_tables(repo, tmp_path, crash):
+    """A save with identity and stock edits: finalise writes the people and stock sources, measures the new item,
+    reloads the tables and commits all of it by path; killed inside record, a rerun does the same once."""
+    r, agent = repo
+    base = json.loads((FIX / "stock/base.json").read_text())
+    src = r / "newworld/sources"
+    (src / "people").mkdir(parents=True)
+    (src / "stock/places").mkdir(parents=True)
+    (src / "people/fixture.json").write_text(json.dumps(base["identities"], indent=1) + "\n")
+    (src / "stock/places/fixture.json").write_text(edits.dump_stock(base["stock"]))
+    (src / "stock/items.json").write_text(json.dumps({"items": [{"id": "Skyrim.esm:013989"}]}))
+    save = r / "newworld/places/fixture/edits/s1.json"
+    s = json.loads(save.read_text())
+    content = json.loads((FIX / "stock/content_all.json").read_text())["ops"][:2]
+    s["ops"] += [dict(op, n=len(s["ops"]) + i + 1) for i, op in enumerate(content)]
+    save.write_text(json.dumps(s))
+    (r / "out").mkdir(exist_ok=True)
+    subprocess.run(["git", "-C", str(r), "add", "."], check=True)
+    subprocess.run(["git", "-C", str(r), "commit", "-qm", "sources"], check=True)
+    fake = tmp_path / "stockdb.py"
+    fake.write_text(FAKE_STOCKDB)
+    os.environ["FINALISE_STOCK_CMD"] = f"{sys.executable} {fake}"
+    try:
+        if crash:
+            assert run_chain(r, agent, crash=crash).returncode == -9
+        p = run_chain(r, agent)
+    finally:
+        os.environ.pop("FINALISE_STOCK_CMD")
+    assert p.returncode == 0, p.stderr
+    st = check_done(r)
+    assert json.loads((src / "people/fixture.json").read_text())["people"][0]["name"] == "Ada Hot-Hand"
+    assert "Apprentice" in (src / "stock/places/fixture.json").read_text()
+    assert "Ada Hot-Hand" in (r / "newworld/story/data/db/person.jsonl").read_text()
+    calls = (r / "out/stockdb-calls.txt").read_text().split()
+    assert calls[-2:] == ["items", "load"], calls   # the hammer was not measured yet
+    assert st["steps"]["record"]["stock"]["status"] == "ok" and st["steps"]["record"]["content"] == 2
+    assert "world database was reloaded" in st["report_md"]
+    assert not subprocess.run(["git", "-C", str(r), "status", "--porcelain"], capture_output=True, text=True).stdout.strip(
+        ).replace("?? out/", ""), "sources and tables committed"
+
+
+def test_content_faults_are_passed_to_the_lessons_agent(tmp_path):
+    from tools.places.finalise import Run, agent_prompt
+    skill = tmp_path / ".claude/skills/place-stock/SKILL.md"
+    skill.parent.mkdir(parents=True)
+    skill.write_text("# Place stock\n")
+    run = Run(tmp_path, "fixture", "s1")
+    ops = json.loads((FIX / "stock/content_all.json").read_text())["ops"]
+    (run.dir / "faults.jsonl").write_text("".join(json.dumps(op) + "\n" for op in ops[:3]))
+    text = agent_prompt(run)
+    assert "3 of the fault edits" in text and str(skill) in text and "place-stock.SKILL.md" in text
+    (run.dir / "faults.jsonl").write_text(json.dumps({"n": 1, "op": "ref.move"}) + "\n")
+    assert "place-stock" not in agent_prompt(run)

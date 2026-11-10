@@ -355,19 +355,43 @@ leaves open. The stocker reads it, corrects it and completes it by hand into the
    `ledger.caps`.
 9. Never: no item of a `never_material` or Skyrim-only kit.
 
-**The studio** (lane S3): `GET /api/place/<id>/stock` returns `{facts: place_wealth's row, people: [person rows with
-notes], households, containers, loose, possessions, traders, deliveries, items: {id: {edid, name, kind, value,
-tier, significant}}}` from the database. Names come from the asset catalogue. Selecting a container, a person or a
-loose thing shows its contents with each reason and the facts it cites, and offers the edit ops above
-(`identity.edit`, `stock.container.set`/`remove`, `stock.loose.add`/`remove`/`edit`, `stock.possessions.set`,
-`stock.trader.set`, `stock.delivery.set`). An op carries the whole row after and `before`, like a path or person
-op, so it has an inverse and conflicts are found the same way. Item search is `/api/search` with
-`kind=weapon,armour,...` over the catalogue.
+**The studio** (lane S3; `tools/places/studio/stock.py`, the panels in `web/js/contents.js`, the pure part in
+`web/js/stock.js`). It reads the database's sources, not the tables, so what it shows is the shape its ops carry:
+- `GET /api/place/<id>/stock` returns `{place_id, facts, identities, stock, items, scale, lookups}`: `facts` the
+  place's wealth as the database loads it (the owner's overrule first: `band`, `band_label`, `open_tier`,
+  `ceiling_tier`, `why`, `by`); `identities` the people source whole; `stock` the stock source whole; `items`
+  `{id: {edid, name, kind, record, value, tier, significant, never, measured, why_tier}}` for every item the stock
+  names; `scale` the tiers, wealth bands, security, lock levels, effort and container kinds; `lookups` race, roles
+  and relation kinds. An item `stockdb items` measured has its value and tier; one it has not (added in the studio)
+  has its tier from its material keyword or the scale's tier lists, its value unknown until finalise measures it.
+  Names come from the asset catalogue (`out/places/catalogue/bases.jsonl`, its item records).
+- `GET /api/place/<id>/items?q=&kind=&limit=` (at most 60) finds items by name or editor id, best first. Each result
+  is an item's facts plus `allowed` and `why`: an item on the never list or above the place's ceiling tier is
+  listed with the reason it is refused, never hidden.
 
-**Finalise** applies these ops to the source files, never to the tables: `identity.edit` to the people source,
-`stock.*` to the place's stock source, through the same `edits.apply` as the place files. Then `stockdb items` and
-`stockdb load` run. The sources and tables are committed by path with the place. The build that follows reads
-the database.
+Selecting a container shows its kind, owner, lock, security, best tier, gold and reason, and each thing in it (count,
+name, kind, value, tier, reason); a container with no stock row says whether it is set dressing or significant but
+not stocked, and can be stocked. A thing laid out (`stock.loose`, its `id` or the ref it lies `on`) shows its
+reason. A person (People panel) shows their household and role in it, race, wealth band with its meaning, trade and
+backstory, what they carry and, for a trader, the gold and wares. Each can be changed: add a thing found by the item
+search (with an optional reason; the default is "The owner added it in the studio."), one more, one fewer, remove,
+the lock, the gold, the name, trade, wealth band and backstory. A new name changes the identity and `people.jsonl`'s
+row together (one `identity.edit` and one `person.edit`, undone together). Nothing prompts the owner to do any of it.
+
+The ops (Edits, below) carry the whole row after and `before`, like a path or person op, so each has an inverse and
+conflicts are found the same way: `identity.edit` a people-source person; `stock.container.set` a container row
+(no `before`: added) and `.remove`; `stock.loose.add`/`.remove`/`.edit`; `stock.possessions.set`,
+`stock.trader.set` and `stock.delivery.set` a row or null with its `before` or null (null after: removed; null
+before: added). A row is named by `id` (people, loose), `space` and `ref` (containers), `person` (possessions,
+traders), or its whole self (deliveries).
+
+**Finalise** applies these ops to the source files, never to the tables, through the same `edits.apply` as the place
+files: `edits.load_place` reads the place's people and stock sources beside the place files (`newworld/sources`,
+under `identities` and `stock`), and `write_place` writes back only a source whose rows changed: the people source
+as indented JSON, the stock source one row per line, as they are kept. The record step commits the sources by path
+with the place; when the save holds a content op it then runs `stockdb items` (only when an op names an item
+`items.json` lacks) and `stockdb load`, and commits `items.json` and the tables by path. A failure there stops the
+chain at record; a rerun finds the save recorded and reloads again. The build that follows reads the database.
 
 ## Edits
 
@@ -389,11 +413,11 @@ An op: `{n, at, op, space, call: "fault"|"taste", note?, stroke?, ...payload wit
 | `path.add` / `path.remove` / `path.edit` | `path`, `before?` |
 | `person.add` / `person.remove` / `person.edit` | `person`, `before?` (placement, routine stops, patrol points) |
 | `identity.edit` | `person` (the people source's row: name, sex, race, household, role, trade, wealth, level, notes), `before` |
-| `stock.container.set` / `stock.container.remove` | `container` (the stock source's whole container row with its items), `before?` |
-| `stock.loose.add` / `stock.loose.remove` / `stock.loose.edit` | `loose` (whole row), `before?` |
-| `stock.possessions.set` | `possessions` ({person, items, why}), `before` |
-| `stock.trader.set` | `trader` ({person, give_seq, gold, items, why, cites}), `before` |
-| `stock.delivery.set` | `delivery` ({give_seq, by, person?, ref?, status, why}), `before?` |
+| `stock.container.set` / `stock.container.remove` | `container` (the stock source's whole container row with its items); `.set` with `before` replaces it, without adds it |
+| `stock.loose.add` / `stock.loose.remove` / `stock.loose.edit` | `loose` (whole row), `before` on `.edit` |
+| `stock.possessions.set` | `possessions` ({person, items, why} or null: removed), `before` (null: added) |
+| `stock.trader.set` | `trader` ({person, give_seq, gold, items, why, cites} or null), `before` (or null) |
+| `stock.delivery.set` | `delivery` ({give_seq, by, person?, ref?, status, why} or null), `before?` (found by the whole row) |
 
 - `land.patch` heights are the patch's `dz` at that vertex, as `land.jsonl` holds it (0 is the world's own ground).
 - `path.add` and `person.add` carry the new row; `.remove` carries the removed row; `.edit` carries the row after
@@ -407,8 +431,11 @@ An op: `{n, at, op, space, call: "fault"|"taste", note?, stroke?, ...payload wit
   `ref.remove` with `space_drop: true`, which deletes the room when its last ref goes.
 - Doors are paired: after a save is applied, every door it added that leads into one of the place's own rooms
   must find its `to_ref` there, leading back to it; otherwise the save is a conflict.
-- Rows are kept in one order (refs, paths and people by id, land by cell, clearance by base and position), so
-  independent ops give the same files in any order. Floats match within 0.001.
+- Rows are kept in one order (refs, paths and people by id, land by cell, clearance by base and position; in the
+  people source households and people by id; in the stock source containers by space and ref, loose by id,
+  possessions and traders by person, deliveries by give, by, person, ref), so independent ops give the same files in
+  any order. Floats match within 0.001. The content ops' cases are `tools/tests/places_edits/stock/` (a `base.json`
+  people and stock source, then per case `ops` with `expected` sources or an `error`).
 - An op whose `before` (or the row it names) does not match the files is a conflict: the save is not applied and
   the error names the op. Every op has an inverse; a save then its inverse gives back the files.
 - A copied room's refs that `refs.jsonl` does not list exist as copied, under their source id (the draft bundle's
@@ -475,6 +502,9 @@ POST /api/place/<id>/notes                    {text, things, view} adds a note; 
                                               build's identity) and committed by path. An agent lists the open
                                               notes with `python -m tools.places notes`, makes the change, and
                                               closes each with `notes done <place> <id> --reply "..."`
+GET  /api/place/<id>/stock                    who the place's people are and what it holds, from the database's
+                                              sources (Stock: the studio)
+GET  /api/place/<id>/items?q=&kind=&limit=    item search for a holder: each result allowed or refused, with why
 POST /api/heartbeat                           an open tab, every 60 s; {held, started, release_after_s}
 GET  /api/status                              {ground_sha, deployed_sha, match, error?, versions:{studio, repo_head,
                                               python, aiohttp, search_model, search_rows}, awake:{job_alive}}
@@ -754,14 +784,18 @@ that plugin), so a draft that passes it passes `check` on the build.
 
 `POST finalise` runs `python -m tools.places finalise <place_id> <save_id>` under `tooling/job_guard.sh`:
 
-1. **Record**: apply the save to the place files (`apply_save`, which also writes its taste ops to `place.json`
-   `preferences`), mark the save final, commit the place by path.
+1. **Record**: apply the save to the place files and the place's people and stock sources (`apply_save`, which
+   also writes its taste ops to `place.json` `preferences`), mark the save final, commit the place and the sources
+   by path; with content ops, reload the stock tables and commit them (Stock: Finalise). The applied files are kept
+   as `after.json` before they are written, so a run stopped while writing writes the same files again.
 2. **Build**: seat, build, check (a verb not yet built is reported as not available). A failed build or check
    does not undo the record; the report says what failed and what it means.
 3. **Learn**: a headless agent (`.claude/agents/place-lessons.md`, `claude -p`, capped at $30 and 60 turns) runs
    the skill `place-lessons` on the save's fault ops and rewrites the skill `place-build` as a clean recipe, which
    the agent writes whole to `out/places/runs/<run_id>/place-build.SKILL.md` (it reads only `faults.jsonl`, the
-   save's fault ops) and finalise puts in place and commits as its own commit (one `git revert` removes it). Tool changes it finds are rows in
+   save's fault ops) and finalise puts in place and commits as its own commit (one `git revert` removes it). Fault
+   content ops (`identity.edit`, `stock.*`) are lessons for the skill `place-stock`: the prompt names them, and a
+   rewrite the agent writes to `place-stock.SKILL.md` in the run folder is put in place in the same commit. Tool changes it finds are rows in
    `docs/skill-fixes.md`, never code edits. If the agent fails or runs over budget the skill is left as it was,
    the chain completes, and the report says to rerun with `--relearn`.
 4. **Report**: `out/places/runs/<run_id>/report.md`, plain English, shown in the studio.

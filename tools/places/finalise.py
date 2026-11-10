@@ -51,6 +51,9 @@ class Run:
         self.skill = (Path(skill) if skill else self.repo / ".claude/skills/place-build/SKILL.md").resolve()
         self.fixes = self.repo / "docs/skill-fixes.md"
         self.draft_skill = self.dir / "place-build.SKILL.md"   # the agent's rewrite, put in place by finalise
+        # content edits (who people are, what things hold) teach the stocking recipe, not the building one
+        self.stock_skill = self.repo / ".claude/skills/place-stock/SKILL.md"
+        self.draft_stock_skill = self.dir / "place-stock.SKILL.md"
         self.dir.mkdir(parents=True, exist_ok=True)
 
     # ---- state ----
@@ -128,13 +131,19 @@ def step_record(run: Run) -> dict:
     save = json.loads(run.save_path.read_text())
     edits.check_save(save, run.place_id)
     files = edits.load_place(run.place)
+    after = run.dir / "after.json"
     if save["save_id"] in files["place"].get("saves_applied", []):
         run.log("record: the save is already in the place files (a resumed run)")
+    elif after.exists():   # a run stopped while writing: the same files again, never the save over half of them
+        edits.write_place(run.place, json.loads(after.read_text()))
+        run.log("record: the applied save written again (a resumed run)")
     else:
         (run.dir / "before.json").write_text(json.dumps(files, sort_keys=True))
         out = edits.apply_save(files, save, edits.bundle_source(run.repo / "out/places/bundles"))
+        tmp = run.dir / "after.json.tmp"
+        tmp.write_text(json.dumps(out))
+        tmp.replace(after)
         edits.write_place(run.place, out)
-        (run.dir / "after.json").write_text(json.dumps(out, sort_keys=True))
         run.log(f"record: {len(save['ops'])} edits applied to {run.place.relative_to(run.repo)}")
     crash_point("record")
     if not save.get("final"):
@@ -142,10 +151,53 @@ def step_record(run: Run) -> dict:
         tmp = run.save_path.with_name(f".{run.save_path.name}.tmp")   # whole or not at all, as the studio wrote it
         tmp.write_text(json.dumps(save, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
         tmp.replace(run.save_path)
-    sha = run.commit(f"{run.place_id}: the owner's edits recorded (save {run.save_id}, finalised)", [run.place])
+    sources = [p for p in edits.source_paths(run.place, files).values() if p.exists() and p.resolve().is_relative_to(run.repo)]
+    sha = run.commit(f"{run.place_id}: the owner's edits recorded (save {run.save_id}, finalised)", [run.place, *sources])
     calls = [op.get("call", "fault") for op in save["ops"]]
-    return {"status": "ok", "commit": sha or run.git("rev-parse", "HEAD"), "ops": len(calls),
-            "faults": calls.count("fault"), "taste": calls.count("taste")}
+    content = [op for op in save["ops"] if op["op"] in edits.CONTENT_OPS]
+    res = {"status": "ok", "commit": sha or run.git("rev-parse", "HEAD"), "ops": len(calls),
+           "faults": calls.count("fault"), "taste": calls.count("taste"), "content": len(content)}
+    if content:
+        res["stock"] = reload_stock(run, content)
+    return res
+
+
+def stockdb_cmd(run: Run, verb: str) -> list[str] | None:
+    """`python -m tools.newworld.stockdb <verb>` in the repo (FINALISE_STOCK_CMD stands in for it in a test)."""
+    override = os.environ.get("FINALISE_STOCK_CMD")
+    if override:
+        return shlex.split(override) + [verb, str(run.repo)]
+    if not (run.repo / "tools/newworld/stockdb.py").exists():
+        return None
+    return [PY, "-m", "tools.newworld.stockdb", verb]
+
+
+def reload_stock(run: Run, content: list[dict]) -> dict:
+    """The owner's content edits are in the people and stock sources: measure any item no source named before
+    (`stockdb items`), reload the tables from the sources (`stockdb load`), and commit both by path. A failure stops
+    the chain here; a rerun finds the save recorded and reloads again."""
+    items_p = run.repo / "newworld/sources/stock/items.json"
+    known = {i["id"] for i in json.loads(items_p.read_text()).get("items", [])} if items_p.exists() else set()
+    named = {it["item"] for op in content for k in ("container", "loose", "possessions", "trader", "before")
+             for row in [op.get(k)] if isinstance(row, dict)
+             for it in (row.get("items") or ([{"item": row["item"]}] if row.get("item") else []))}
+    verbs = (["items"] if named - known else []) + ["load"]
+    if stockdb_cmd(run, "load") is None:
+        run.log("record: the stock tables were not reloaded (tools/newworld/stockdb.py is not in this repository)")
+        return {"status": "not available yet", "new_items": sorted(named - known)}
+    for verb in verbs:
+        cmd = stockdb_cmd(run, verb)
+        run.log("record: " + shlex.join(cmd))
+        r = subprocess.run(cmd, cwd=run.repo, capture_output=True, text=True)
+        out = (r.stdout + r.stderr).strip()
+        with open(run.dir / "run.log", "a") as f:
+            f.write(out[-4000:] + "\n")
+        if r.returncode:
+            raise RuntimeError(f"stockdb {verb} failed (rc {r.returncode}): {out.splitlines()[-1] if out else ''}")
+    paths = [p for p in (items_p, run.repo / "newworld/story/data/db") if p.exists()]
+    sha = run.commit(f"{run.place_id}: the stock tables reloaded after the owner's content edits (save {run.save_id})",
+                     paths)
+    return {"status": "ok", "ran": verbs, "new_items": sorted(named - known), "commit": sha}
 
 
 # ---------- 2. build ----------
@@ -191,14 +243,32 @@ save. Inputs:
 - the place-build skill: {run.skill}
 - the skill-fixes list for tool changes owed: {run.fixes}
 Write the whole rewritten place-build skill to {run.draft_skill} (only when the recipe changes; finalise puts it in
-place), and the lessons file to {run.dir / 'lessons.json'}. Edit nothing else but the skill-fixes list."""
+place), and the lessons file to {run.dir / 'lessons.json'}. Edit nothing else but the skill-fixes list.{stock_note(run)}"""
+
+
+def stock_note(run: Run) -> str:
+    """The content edits' part of the prompt: a fault in who a person is or what a thing holds (identity.edit,
+    stock.*) is a lesson for the place-stock skill, passed through to the same agent."""
+    if not run.stock_skill.exists() or not (run.dir / "faults.jsonl").exists():
+        return ""
+    ops = [json.loads(x) for x in (run.dir / "faults.jsonl").read_text().splitlines() if x.strip()]
+    n = sum(op["op"] in edits.CONTENT_OPS for op in ops)
+    if not n:
+        return ""
+    return f"""
+{n} of the fault edits change who a person is or what a thing holds (ops identity.edit and stock.*: the place's
+people source and stock source, before and after under "identities" and "stock" in the two JSON files). Those are
+lessons for the place-stock skill ({run.stock_skill}), not place-build: when its recipe changes, write the whole
+rewritten place-stock skill to {run.draft_stock_skill} (finalise puts it in place) and give those lessons
+"skill": "place-stock" in the lessons file."""
 
 
 def agent_cmd(run: Run, budget: float, turns: int) -> list[str]:
     override = os.environ.get("FINALISE_AGENT_CMD")
     if override:
         return shlex.split(override) + [str(run.dir), str(run.skill)]
-    dirs = sorted({str(run.dir), str(run.repo), str(run.skill.parent), str(run.fixes.parent)})
+    dirs = sorted({str(run.dir), str(run.repo), str(run.skill.parent), str(run.fixes.parent),
+                   str(run.stock_skill.parent)})
     return ["claude", "-p", agent_prompt(run), "--agent", "place-lessons", "--output-format", "json",
             "--max-budget-usd", f"{budget:.2f}", "--max-turns", str(turns), "--permission-mode", "acceptEdits",
             "--allowedTools", "Read,Glob,Grep,Edit,Write", "--no-session-persistence",
@@ -218,7 +288,8 @@ def restore_from_head(path: Path) -> None:
 
 
 def _kept(run: Run) -> list[tuple[Path, Path]]:
-    return [(run.skill, run.dir / "skill.before"), (run.fixes, run.dir / "fixes.before")]
+    return [(run.skill, run.dir / "skill.before"), (run.fixes, run.dir / "fixes.before"),
+            (run.stock_skill, run.dir / "stock-skill.before")]
 
 
 def keep_texts(run: Run) -> None:
@@ -257,6 +328,7 @@ def step_learn(run: Run, budget: float, turns: int) -> dict:
                 fh.write(json.dumps(op, separators=(",", ":")) + "\n")
     (run.dir / "lessons.json").unlink(missing_ok=True)
     run.draft_skill.unlink(missing_ok=True)
+    run.draft_stock_skill.unlink(missing_ok=True)
     cmd = agent_cmd(run, budget, turns)
     run.log("learn: the lessons agent started (budget $%.2f, %d turns)" % (budget, turns))
     env = {k: v for k, v in os.environ.items() if not k.startswith("CLAUDE_CODE_")}
@@ -287,8 +359,11 @@ def step_learn(run: Run, budget: float, turns: int) -> dict:
     lessons = json.loads(lessons_p.read_text())
     if run.draft_skill.exists() and run.draft_skill.read_text().strip():
         run.skill.write_text(run.draft_skill.read_text())
+    stock = run.stock_skill.exists() and run.draft_stock_skill.exists() and run.draft_stock_skill.read_text().strip()
+    if stock:
+        run.stock_skill.write_text(run.draft_stock_skill.read_text())
     titles = "; ".join(lz.get("lesson", "")[:90] for lz in lessons.get("lessons", []))
-    paths = [run.skill] + ([run.fixes] if run.fixes.exists() else [])
+    paths = [run.skill] + ([run.stock_skill] if stock else []) + ([run.fixes] if run.fixes.exists() else [])
     sha = commit_skill(run, f"place-build: lessons from {run.place_id} (save {run.save_id}): {titles or 'nothing general'}",
                        paths)
     return {"status": "ok", "commit": sha, "cost_usd": cost, "turns": turns_used}
@@ -327,6 +402,12 @@ def step_report(run: Run) -> dict:
           f"All {rec.get('ops', 0)} of your edits from the save \"{title}\" are now part of the place. "
           f"You marked {rec.get('faults', 0)} as the builder's mistakes and {rec.get('taste', 0)} as your own "
           "preference. From now on the build uses your version, not the builder's first draft.", ""]
+    if rec.get("content"):
+        st = rec.get("stock") or {}
+        L += [f"{rec['content']} of them changed who people are or what things hold. They are written into the "
+              "place's people and stock lists" + (", and the world database was reloaded from them." if st.get("status") == "ok"
+                                                  else "; the world database is reloaded from them at the next full "
+                                                       "database build (the reload tool is not in this copy)."), ""]
     L += ["## The build", ""]
     for verb, v in bld.get("verbs", {}).items():
         word = VERB_WORDS.get(verb, verb)
@@ -401,7 +482,12 @@ def step_report(run: Run) -> dict:
 
 def describe(p: dict) -> str:
     return {"ref.move": "an object moved", "ref.remove": "an object removed", "ref.add": "an object added",
-            "veg.clear": "plants cleared", "veg.restore": "plants put back", "land.patch": "the ground reshaped"
+            "veg.clear": "plants cleared", "veg.restore": "plants put back", "land.patch": "the ground reshaped",
+            "identity.edit": "who a person is changed", "stock.container.set": "what a container holds changed",
+            "stock.container.remove": "a container's stock taken away", "stock.possessions.set": "what a person carries changed",
+            "stock.trader.set": "what a trader sells changed", "stock.loose.add": "a thing laid out",
+            "stock.loose.remove": "a thing taken away", "stock.loose.edit": "a thing laid out changed",
+            "stock.delivery.set": "how a promise is kept changed"
             }.get(p["op"], p["op"].replace(".", " ")) + f" ({p.get('what')})"
 
 

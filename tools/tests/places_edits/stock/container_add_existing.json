@@ -1,0 +1,29 @@
+{
+ "ops": [
+  {
+   "op": "stock.container.set",
+   "container": {
+    "ref": "fixture.chest1",
+    "space": "House",
+    "kind": "chest",
+    "owner_household": "fixture.household.h1",
+    "lock": "Novice",
+    "security": "S2",
+    "tier": "T2",
+    "gold": 30,
+    "items": [
+     {
+      "item": "Skyrim.esm:013989",
+      "count": 1,
+      "why": "the smith's spare blade"
+     }
+    ],
+    "why": "the household's store",
+    "cites": []
+   },
+   "n": 1,
+   "call": "fault"
+  }
+ ],
+ "error": "already exists"
+}

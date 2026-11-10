@@ -59,6 +59,9 @@ class State:
         self.bdir, self.pdir, self.web, self.mismatch = Path(bundles), Path(places), Path(web), mismatch
         self.saves, self.real = Path(saves), real
         self.notes = {}
+        # the database's sources and the asset catalogue's item rows (Stock): the fixture's copies, or the repo's
+        self.sources = REPO / "newworld" / "sources" if real else self.pdir / "sources"
+        self.catalogue = (self.bdir.parent if real else self.pdir) / "catalogue" / "bases.jsonl"
         self.assets = assets_module() if real else None
         self.lock = threading.Lock()
         self.seen_models, self.heartbeats, self.hb_started, self.runs = set(), 0, None, {}
@@ -319,6 +322,14 @@ class H(BaseHTTPRequestHandler):
         m = re.fullmatch(r"/api/place/([^/]+)/notes", p)
         if m:
             return self.send(200, st.notes.get(m[1], []))
+        m = re.fullmatch(r"/api/place/([^/]+)/(stock|items)", p)
+        if m:   # the studio server's own code (tools/places/studio/stock.py) over the fixture's sources
+            sys.path.insert(0, str(REPO))
+            from tools.places.studio import stock
+            src, cat = stock.Sources(st.sources), stock.Catalogue.open(st.catalogue)
+            if m[2] == "stock":
+                return self.send(200, stock.payload(m[1], src, cat))
+            return self.send(200, stock.search(m[1], q.get("q", ""), q.get("kind"), max(1, min(60, int(q.get("limit") or 30))), src, cat))
         m = re.fullmatch(r"/api/place/([^/]+)/(saves|seat|runs)(?:/([^/]+))?", p)
         if m:
             pid, what, arg = m.groups()

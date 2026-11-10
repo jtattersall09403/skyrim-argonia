@@ -43,6 +43,7 @@ class Config:
         self.awake = os.environ.get("STUDIO_AWAKE", "1") == "1"
         self.jobs = Path(os.environ.get("JOBS_DIR", Path.home() / ".argonia" / "jobs"))
         self.zcache = Path(os.environ.get("STUDIO_ZCACHE", Path.home() / ".argonia" / "cache" / "studio-z"))
+        self.sources = Path(os.environ.get("NEWWORLD_SOURCES", ROOT / "newworld" / "sources"))
 
 
 def jerr(status: int, msg: str, **extra) -> web.Response:
@@ -290,6 +291,41 @@ async def search(req: web.Request) -> web.Response:
     for h in hits:
         h["thumb"] = f"/api/asset/thumb?model={quote(h['model'])}" if h.get("model") else None
     return jok({"q": q.get("q", ""), "scope": scope, "results": hits})
+
+
+# ---- what a place holds and who its people are (Stock) -------------------------------------------------------------
+
+def _stock_args(req: web.Request):
+    from tools.places.studio import stock
+    cfg: Config = req.app["cfg"]
+    return stock, stock.Sources(cfg.sources), cfg.out / "catalogue" / "bases.jsonl"
+
+
+async def stock_get(req: web.Request) -> web.Response:
+    """The place's identities and stock from the database's sources, with the items' facts and the scale."""
+    pid = req.match_info["place_id"]
+    if not PLACE_ID.match(pid):
+        return jerr(400, "bad place id")
+    stock, src, cat = _stock_args(req)
+    out = await asyncio.get_running_loop().run_in_executor(
+        None, lambda: stock.payload(pid, src, stock.Catalogue.open(cat)))
+    return jok(out)
+
+
+async def items_get(req: web.Request) -> web.Response:
+    """Item search for adding to a holder: each result says whether this place may hold it, and why not."""
+    pid = req.match_info["place_id"]
+    if not PLACE_ID.match(pid):
+        return jerr(400, "bad place id")
+    try:
+        limit = max(1, min(60, int(req.query.get("limit", "30"))))
+    except ValueError:
+        return jerr(400, "limit must be a number")
+    stock, src, cat = _stock_args(req)
+    q, kind = req.query.get("q", ""), req.query.get("kind") or None
+    out = await asyncio.get_running_loop().run_in_executor(
+        None, lambda: stock.search(pid, q, kind, limit, src, stock.Catalogue.open(cat)))
+    return jok(out)
 
 
 # ---- saves ---------------------------------------------------------------------------------------------------------
@@ -670,6 +706,8 @@ def make_app(cfg: Config | None = None) -> web.Application:
     r.add_post("/api/place/{place_id}/finalise", finalise)
     r.add_get("/api/place/{place_id}/nav", nav_get)
     r.add_get("/api/place/{place_id}/notes", notes_get)
+    r.add_get("/api/place/{place_id}/stock", stock_get)
+    r.add_get("/api/place/{place_id}/items", items_get)
     r.add_post("/api/place/{place_id}/notes", notes_post)
     r.add_get("/api/place/{place_id}/runs/{run_id}", run_get)
     r.add_get("/api/place/{place_id}/seat", seat)

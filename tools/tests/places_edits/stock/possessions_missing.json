@@ -1,0 +1,34 @@
+{
+ "ops": [
+  {
+   "op": "stock.possessions.set",
+   "possessions": {
+    "person": "fixture.p2",
+    "items": [
+     {
+      "item": "Skyrim.esm:013989",
+      "count": 1,
+      "worn": true,
+      "why": "his levy blade"
+     }
+    ],
+    "why": "the levy's gear"
+   },
+   "before": {
+    "person": "fixture.p2",
+    "items": [
+     {
+      "item": "Skyrim.esm:013989",
+      "count": 1,
+      "worn": true,
+      "why": "his levy blade"
+     }
+    ],
+    "why": "the levy's gear"
+   },
+   "n": 1,
+   "call": "fault"
+  }
+ ],
+ "error": "does not exist"
+}

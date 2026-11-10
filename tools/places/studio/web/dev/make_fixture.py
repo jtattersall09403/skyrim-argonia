@@ -368,7 +368,77 @@ def main():
 
     jwrite(out / "place.json", {"place_id": "fixplace", "title": "Fixture place", "source_id": "fix.village",
                                 "similar": ["fix.hamlet"], "fit": fit})
+    write_stock(out, dint)
     print(f"fixture written to {out}")
+
+
+# The items the fixture's stock names or the studio's item search finds: (key, edid, name, record, keywords, measured
+# value or None). The place's ceiling is T2, so the glass sword (T4) and the Nordic axe (never) are refused.
+ITEMS = [("Fix.esm:00B001", "IronSword", "Iron Sword", "WEAP", ["WeapMaterialIron", "WeapTypeSword"], 25),
+         ("Fix.esm:00B002", "SteelDagger", "Steel Dagger", "WEAP", ["WeapMaterialSteel", "WeapTypeDagger"], None),
+         ("Fix.esm:00B003", "GlassSword", "Glass Sword", "WEAP", ["WeapMaterialGlass", "WeapTypeSword"], None),
+         ("Fix.esm:00B004", "DLC2NordicWarAxe", "Nordic War Axe", "WEAP", ["DLC2WeaponMaterialNordic"], None),
+         ("Fix.esm:00B005", "JewelryRingGold", "Gold Ring", "ARMO", ["ArmorJewelry", "ClothingRing"], 75),
+         ("Fix.esm:00B006", "RestoreHealth01", "Potion of Minor Healing", "ALCH", [], 17),
+         ("Fix.esm:00B007", "ArmorLeatherCuirass", "Leather Armor", "ARMO", ["ArmorMaterialLeather", "ArmorLight"], None),
+         ("Fix.esm:00B008", "IronWarAxe", "Iron War Axe", "WEAP", ["WeapMaterialIron", "WeapTypeWarAxe"], 30),
+         ("Fix.esm:00B009", "Hammer01", "Hammer", "MISC", ["VendorItemTool"], 3)]
+KIND = {"WEAP": "weapon", "ARMO": "armour", "ALCH": "potion", "MISC": "tool"}
+
+
+def write_stock(out, dint):
+    """The database's sources for the fixture place, in newworld/sources' layout: who its two people are, what its
+    chest, table, people and trader hold, the scale (the repo's own), its wealth, the measured items and the item
+    rows of the asset catalogue."""
+    repo = Path(__file__).resolve().parents[5]
+    src = out / "sources"
+    for rel in ("stock/scale.json", "people/lookups.json"):
+        (src / rel).parent.mkdir(parents=True, exist_ok=True)
+        (src / rel).write_text((repo / "newworld/sources" / rel).read_text())
+    chest = {sid: next(r["id"] for r in rs if r["id"].endswith(".chest")) for sid, rs in dint.items()}
+    table = next(r["id"] for r in dint["FixHouse01"] if r["id"].endswith(".table"))
+    jwrite(src / "stock/place_wealth.json", {"about": "fixture", "places": [
+        {"id": "fixplace", "name": "Fixture place", "danger_band_id": "D1", "danger_tier": "T1", "wealth_score": 40,
+         "band": "P2", "open_tier": "T1", "ceiling_tier": "T2", "why": "a working village: P2 Modest, ceiling T2", "owner": None}]})
+    jwrite(src / "stock/items.json", {"about": "fixture", "items": [
+        {"id": k, "form_key": f"{k.split(':')[1]}:Fix.esm", "plugin": "Fix.esm", "edid": e, "name": None, "record": t,
+         "item_kind_id": "jewellery" if "ArmorJewelry" in kw else KIND[t], "value": v, "material": next((x for x in kw if "Material" in x), None),
+         "stock_tier_id": "T2" if e == "JewelryRingGold" else "T1", "enchanted": False, "significant": True, "never": False}
+        for k, e, n, t, kw, v in ITEMS if v is not None]})
+    jlines(out / "catalogue/bases.jsonl", [{"key": k, "edid": e, "type": t, "name": n, "model": f"fix/{e.lower()}.nif",
+                                            "plugin": "Fix.esm", "keywords": kw, "kind": "clutter"} for k, e, n, t, kw, v in ITEMS])
+    note = lambda text: {"aspect": "backstory", "text": text, "tier": "AGENT_INVENTED", "cites": ["place_note:fixplace/people"]}  # noqa: E731
+    jwrite(src / "people/fixplace.json", {"place_id": "fixplace", "about": "The fixture's people.",
+        "households": [{"id": "fixplace.household.FixHouse01", "home_space": "FixHouse01", "name": None},
+                       {"id": "fixplace.household.FixHouse02", "home_space": "FixHouse02", "name": None}],
+        "people": [
+            {"id": "fixplace.p1", "name": "Ada Fixwright", "sex": "female", "race": "ArgonianRace", "culture_id": "forest-green",
+             "household": {"id": "fixplace.household.FixHouse01", "role": "head"}, "role": "smith", "trade": "the village forge",
+             "wealth": "W3", "level": None, "status": "alive", "tier": "AGENT_INVENTED",
+             "notes": [note("She works the forge by the river and mends the boats' iron.")], "relations": []},
+            {"id": "fixplace.p2", "name": "Bram Fixguard", "sex": "male", "race": "ArgonianRace", "culture_id": "forest-green",
+             "household": {"id": "fixplace.household.FixHouse02", "role": "head"}, "role": "guard", "trade": "the village watch",
+             "wealth": "W2", "level": None, "status": "alive", "tier": "AGENT_INVENTED",
+             "notes": [note("He walks the street at dawn and keeps the gate at night.")], "relations": []}]})
+    stock = {"place_id": "fixplace", "about": "The fixture's stock.", "goods": [],
+             "containers": [{"ref": chest["FixHouse01"], "space": "FixHouse01", "kind": "chest",
+                             "owner_household": "fixplace.household.FixHouse01", "lock": "Novice", "security": "S2", "tier": "T1",
+                             "gold": 20, "items": [{"item": "Fix.esm:00B001", "count": 1, "why": "The smith's spare blade, made at her own forge."},
+                                                   {"item": "Fix.esm:00B006", "count": 2, "why": "A household keeps a little healing by."}],
+                             "why": "The household's store: the head is W3, so a Novice lock and a few coins.", "cites": []}],
+             "loose": [{"id": "fixplace.loose.ring", "space": "FixHouse01", "on": table, "item": "Fix.esm:00B005", "count": 1,
+                        "owner_person": "fixplace.p1", "why": "Her one good ring, taken off at the forge."}],
+             "possessions": [{"person": "fixplace.p1", "items": [{"item": "Fix.esm:00B009", "count": 1, "worn": False, "why": "A smith's hammer."}],
+                              "why": "The tools of her trade."},
+                             {"person": "fixplace.p2", "items": [{"item": "Fix.esm:00B008", "count": 1, "worn": True, "why": "The watch's axe."}],
+                              "why": "The watch's gear."}],
+             "traders": [{"person": "fixplace.p1", "give_seq": 3, "gold": 400,
+                          "items": [{"item": "Fix.esm:00B001", "count": 3, "why": "She makes them."},
+                                    {"item": "Fix.esm:00B002", "count": 2, "why": "Small work between commissions."}],
+                          "why": "The village smith's wares, T1 to the ceiling.", "cites": []}],
+             "deliveries": []}
+    (src / "stock/places").mkdir(parents=True, exist_ok=True)
+    (src / "stock/places/fixplace.json").write_text(json.dumps(stock, indent=1) + "\n")
 
 
 if __name__ == "__main__":

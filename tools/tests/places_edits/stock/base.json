@@ -1,0 +1,138 @@
+{
+ "identities": {
+  "place_id": "fixture",
+  "about": "fixture people",
+  "households": [
+   {
+    "id": "fixture.household.h1",
+    "home_space": "House",
+    "name": null
+   }
+  ],
+  "people": [
+   {
+    "id": "fixture.p2",
+    "name": "Bram",
+    "sex": "male",
+    "race": "ArgonianRace",
+    "culture_id": "forest-green",
+    "household": {
+     "id": "fixture.household.h1",
+     "role": "spouse"
+    },
+    "role": "guard",
+    "trade": "the levy",
+    "wealth": "W2",
+    "level": null,
+    "status": "alive",
+    "tier": "AGENT_INVENTED",
+    "notes": [],
+    "relations": []
+   },
+   {
+    "id": "fixture.p1",
+    "name": "Ada",
+    "sex": "female",
+    "race": "ArgonianRace",
+    "culture_id": "forest-green",
+    "household": {
+     "id": "fixture.household.h1",
+     "role": "head"
+    },
+    "role": "smith",
+    "trade": "the forge",
+    "wealth": "W3",
+    "level": null,
+    "status": "alive",
+    "tier": "AGENT_INVENTED",
+    "notes": [
+     {
+      "aspect": "backstory",
+      "text": "She works the forge.",
+      "tier": "AGENT_INVENTED",
+      "cites": [
+       "place_note:fixture/people"
+      ]
+     }
+    ],
+    "relations": []
+   }
+  ]
+ },
+ "stock": {
+  "place_id": "fixture",
+  "about": "fixture stock",
+  "goods": [],
+  "containers": [
+   {
+    "ref": "fixture.chest1",
+    "space": "House",
+    "kind": "chest",
+    "owner_household": "fixture.household.h1",
+    "lock": "Novice",
+    "security": "S2",
+    "tier": "T2",
+    "gold": 30,
+    "items": [
+     {
+      "item": "Skyrim.esm:013989",
+      "count": 1,
+      "why": "the smith's spare blade"
+     }
+    ],
+    "why": "the household's store",
+    "cites": []
+   }
+  ],
+  "loose": [
+   {
+    "id": "fixture.loose1",
+    "space": "House",
+    "on": "fixture.table1",
+    "item": "Skyrim.esm:02E4E2",
+    "count": 1,
+    "owner_person": "fixture.p1",
+    "why": "a soul gem for the enchanter"
+   }
+  ],
+  "possessions": [
+   {
+    "person": "fixture.p1",
+    "items": [
+     {
+      "item": "Skyrim.esm:01397E",
+      "count": 1,
+      "worn": false,
+      "why": "her hammer"
+     }
+    ],
+    "why": "a smith's tools"
+   }
+  ],
+  "traders": [
+   {
+    "person": "fixture.p1",
+    "give_seq": 3,
+    "gold": 500,
+    "items": [
+     {
+      "item": "Skyrim.esm:013989",
+      "count": 2,
+      "why": "she makes them"
+     }
+    ],
+    "why": "the smithy",
+    "cites": []
+   }
+  ],
+  "deliveries": [
+   {
+    "give_seq": 9,
+    "by": "container",
+    "ref": "fixture.chest1",
+    "status": "delivered",
+    "why": "the chest holds the loot"
+   }
+  ]
+ }
+}

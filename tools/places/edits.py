@@ -8,7 +8,11 @@ order (by id, or by cell, or by base and position), so independent ops give the 
 Place files in memory:
     {"place": {...place.json...},
      "spaces": {space_id: {"refs": [row...], "space": {...} | None}},
-     "clear": [...], "land": [...], "paths": [...], "people": [...]}
+     "clear": [...], "land": [...], "paths": [...], "people": [...],
+     "identities": the people source (newworld/sources/people/<place_id>.json) | None,
+     "stock": the stock source (newworld/sources/stock/places/<place_id>.json) | None}
+The last two are the database's sources for who the place's people are and what the place holds (Stock). The
+content ops (`identity.edit`, `stock.*`) apply to them, and `write_place` writes them back only when they changed.
 """
 from __future__ import annotations
 
@@ -17,8 +21,22 @@ import json
 import math
 from pathlib import Path
 
+CONTENT_OPS = ("identity.edit", "stock.container.set", "stock.container.remove", "stock.loose.add", "stock.loose.remove",
+               "stock.loose.edit", "stock.possessions.set", "stock.trader.set", "stock.delivery.set")
 OPS = ("ref.add", "ref.remove", "ref.move", "veg.clear", "veg.restore", "land.patch",
-       "path.add", "path.remove", "path.edit", "person.add", "person.remove", "person.edit")
+       "path.add", "path.remove", "path.edit", "person.add", "person.remove", "person.edit") + CONTENT_OPS
+# A content op's row: the op's payload key, the source it lives in, its list there, the fields that name it (a
+# delivery has none: it is found by its whole row)
+CONTENT = {"identity": ("person", "identities", "people", ("id",)),
+           "stock.container": ("container", "stock", "containers", ("space", "ref")),
+           "stock.loose": ("loose", "stock", "loose", ("id",)),
+           "stock.possessions": ("possessions", "stock", "possessions", ("person",)),
+           "stock.trader": ("trader", "stock", "traders", ("person",)),
+           "stock.delivery": ("delivery", "stock", "deliveries", ())}
+# the order a source's rows are kept in, so independent ops give the same source in any order
+SOURCE_ORDER = {"identities": {"households": ("id",), "people": ("id",)},
+                "stock": {"containers": ("space", "ref"), "loose": ("id",), "possessions": ("person",),
+                          "traders": ("person",), "deliveries": ("give_seq", "by", "person", "ref", "status", "why")}}
 CALLS = ("fault", "taste")
 MOVE_FIELDS = ("pos", "rot", "scale", "seat")
 TOL = 1e-3  # game units and radians; a before that differs by less than this matches
@@ -70,7 +88,23 @@ def canonical(files: dict) -> dict:
         row["verts"].sort()
     out["paths"].sort(key=lambda r: r["id"])
     out["people"].sort(key=lambda r: r["id"])
+    for k in SOURCE_ORDER:   # the people and stock sources, when the files carry them
+        if out.get(k) is not None:
+            out[k] = canonical_source(k, out[k])
     return out
+
+
+def _order(fields):
+    return lambda r: tuple((0, r[f]) if isinstance(r.get(f), (int, float)) else (1, str(r.get(f) or "")) for f in fields)
+
+
+def canonical_source(kind: str, doc: dict) -> dict:
+    """A people or stock source with its rows in their kept order."""
+    doc = copy.deepcopy(doc)
+    for k, fields in SOURCE_ORDER[kind].items():
+        if isinstance(doc.get(k), list):
+            doc[k].sort(key=_order(fields))
+    return doc
 
 
 # ---------- validation ----------
@@ -116,12 +150,44 @@ def check_op(op: dict) -> None:
             num = isinstance(v, list) and len(v) == 4 and all(isinstance(x, (int, float)) and not isinstance(x, bool) for x in v)
             if not num or not all(x == int(x) and 0 <= x <= 32 for x in v[:2]):
                 raise EditError(f"op {op['n']} (land.patch): each vert is [row, col, before_dz, after_dz], row and col 0..32")
+    elif kind in CONTENT_OPS:
+        _check_content(op)
     elif kind.startswith(("path.", "person.")):
         _need(op, kind.split(".")[0])
         if "id" not in op[kind.split(".")[0]]:
             raise EditError(f"op {op['n']} ({kind}): the row has no id")
         if kind.endswith(".edit"):
             _need(op, "before")
+
+
+def _content(kind: str):
+    return CONTENT[kind.rsplit(".", 1)[0]]
+
+
+def _check_content(op: dict) -> None:
+    """The row and its before: identity.edit and stock.loose.edit carry both; `.add` and `.remove` the row; a
+    container's `.set` the row and before only when it replaces one; a possessions', trader's or delivery's `.set`
+    either may be null (an added or a removed row), never both."""
+    kind = op["op"]
+    field, _, _, keys = _content(kind)
+    verb = kind.rsplit(".", 1)[1]
+    _need(op, field)
+    nullable = kind in ("stock.possessions.set", "stock.trader.set", "stock.delivery.set")
+    if verb == "edit" or kind in ("stock.possessions.set", "stock.trader.set"):
+        _need(op, "before")
+    row, before = op[field], op.get("before")
+    if (row is None and not nullable) or (row is None and before is None):
+        raise EditError(f"op {op['n']} ({kind}): '{field}' must be a row")
+    for r in (row, before):
+        if r is None:
+            continue
+        if not isinstance(r, dict):
+            raise EditError(f"op {op['n']} ({kind}): '{field}' and before are rows (objects)")
+        for k in keys or ("give_seq",):
+            if k not in r:
+                raise EditError(f"op {op['n']} ({kind}): the row has no '{k}'")
+    if keys and row is not None and before is not None and any(row.get(k) != before.get(k) for k in keys):
+        raise EditError(f"op {op['n']} ({kind}): the row and its before name different {'/'.join(keys)}")
 
 
 def check_save(save: dict, place_id: str | None = None) -> None:
@@ -283,6 +349,8 @@ def _apply_one(files, op):
         row["verts"] = [[r, c, dz] for (r, c), dz in sorted(cur.items())]
         if not row["verts"] and not row.get("textures"):
             files["land"].remove(row)
+    elif kind in CONTENT_OPS:
+        _apply_content(files, op)
     else:
         table, verb = kind.split(".")
         rows = files["paths" if table == "path" else "people"]
@@ -302,6 +370,43 @@ def _apply_one(files, op):
                 rows.pop(i)
             else:
                 rows[i] = copy.deepcopy(row)
+
+
+def _apply_content(files, op):
+    """identity.edit and stock.*: a row of the people or stock source replaced, added or removed. A row with no
+    before is added (a conflict when one of its name is there); every before must equal the source's row."""
+    kind = op["op"]
+    field, doc_key, table, keys = _content(kind)
+    verb = kind.rsplit(".", 1)[1]
+    doc = files.get(doc_key)
+    if doc is None:
+        _conflict(op, f"the place has no {'people' if doc_key == 'identities' else 'stock'} source")
+    rows = doc.setdefault(table, [])
+    if verb == "remove":
+        row, before = None, op[field]
+    else:
+        row, before = op[field], (None if verb == "add" else op.get("before"))
+
+    def find(r):
+        if not keys:
+            return next((i for i, x in enumerate(rows) if same(x, r)), None)
+        return next((i for i, x in enumerate(rows) if all(x.get(k) == r.get(k) for k in keys)), None)
+    named = row if row is not None else before
+    what = f"{field} {'/'.join(str(named.get(k)) for k in keys or ('give_seq',))}"
+    if before is None:
+        if find(row) is not None:
+            _conflict(op, f"{what} already exists")
+        rows.append(copy.deepcopy(row))
+        return
+    i = find(before)
+    if i is None:
+        _conflict(op, f"{what} does not exist")
+    if not same(rows[i], before):
+        _conflict(op, f"{what} differs from the save's before")
+    if row is None:
+        rows.pop(i)
+    else:
+        rows[i] = copy.deepcopy(row)
 
 
 def apply(place_files: dict, ops: list, source=None) -> dict:
@@ -385,6 +490,19 @@ def inverse(op: dict) -> dict:
         inv["op"] = "veg.clear"
     elif kind == "land.patch":
         inv["verts"] = [[r, c, a, b] for r, c, b, a in op["verts"]]
+    elif kind in CONTENT_OPS:
+        field = _content(kind)[0]
+        base, verb = kind.rsplit(".", 1)
+        if verb == "add":
+            inv["op"] = f"{base}.remove"
+        elif verb == "remove":
+            inv["op"] = f"{base}.set" if base == "stock.container" else f"{base}.add"
+            inv.pop("before", None)
+        elif kind == "stock.container.set" and op.get("before") is None:
+            inv["op"] = "stock.container.remove"
+            inv.pop("before", None)
+        else:
+            inv.update({field: op.get("before"), "before": op[field]})
     else:
         table, verb = kind.split(".")
         if verb == "add":
@@ -417,7 +535,11 @@ def apply_save(place_files: dict, save: dict, source=None) -> dict:
 
 def preference(op: dict, save_id: str) -> dict:
     """A taste op as that place's preference row in place.json."""
-    what = op.get("id") or (op.get("ref") or op.get("path") or op.get("person") or {}).get("id") or op.get("cell")
+    row = next((op[k] or op.get("before") for k in ("container", "loose", "possessions", "trader", "delivery")
+                if k in op), None) or {}
+    what = (op.get("id") or (op.get("ref") or op.get("path") or op.get("person") or {}).get("id") or op.get("cell")
+            or (f"{row.get('space')}/{row['ref']}" if "container" in op else None)
+            or row.get("id") or row.get("person") or (f"give {row['give_seq']}" if "give_seq" in row else None))
     return {"save": save_id, "n": op["n"], "op": op["op"], "what": what, "note": op.get("note", "")}
 
 
@@ -434,10 +556,37 @@ def _write_jsonl(p: Path, rows: list) -> None:
     p.write_text("".join(json.dumps(r, separators=(",", ":"), ensure_ascii=False) + "\n" for r in rows))
 
 
-def load_place(root: Path) -> dict:
+SOURCE_FILES = {"identities": "people/{pid}.json", "stock": "stock/places/{pid}.json"}
+
+
+def source_paths(root: Path, files: dict, sources: Path | None = None) -> dict:
+    """The place's people and stock sources: under `sources`, by default the newworld/sources folder beside the
+    places folder (newworld/places/<id> -> newworld/sources)."""
+    pid = (files.get("place") or {}).get("place_id") or Path(root).name
+    base = Path(sources) if sources else Path(root).resolve().parent.parent / "sources"
+    return {k: base / rel.format(pid=pid) for k, rel in SOURCE_FILES.items()}
+
+
+def dump_stock(doc: dict) -> str:
+    """The stock source as it is kept: one row per line under each list."""
+    out = []
+    for k, v in doc.items():
+        if isinstance(v, list) and v and all(isinstance(r, dict) for r in v):
+            body = ",\n".join("  " + json.dumps(r, ensure_ascii=False) for r in v)
+            out.append(f" {json.dumps(k)}: [\n{body}\n ]")
+        else:
+            out.append(f" {json.dumps(k)}: {json.dumps(v, ensure_ascii=False)}")
+    return "{\n" + ",\n".join(out) + "\n}\n"
+
+
+def load_place(root: Path, sources: Path | None = None) -> dict:
+    """The place files, with the place's people and stock sources when they exist."""
     root = Path(root)
     files = {"place": json.loads((root / "place.json").read_text()) if (root / "place.json").exists() else {},
              "spaces": {}}
+    for k, p in source_paths(root, files, sources).items():
+        if p.exists():
+            files[k] = json.loads(p.read_text(encoding="utf-8"))
     for sp in sorted((root / "spaces").glob("*")) if (root / "spaces").exists() else []:
         sj = sp / "space.json"
         files["spaces"][sp.name] = {"refs": _jsonl(sp / "refs.jsonl"),
@@ -447,9 +596,30 @@ def load_place(root: Path) -> dict:
     return canonical(files)
 
 
-def write_place(root: Path, files: dict) -> None:
+def write_sources(root: Path, files: dict, sources: Path | None = None) -> list[Path]:
+    """Write the people and stock sources whose rows changed (an unchanged source is never rewritten, so its order
+    and layout stay as its author left them); returns the paths written."""
+    written = []
+    for k, p in source_paths(root, files, sources).items():
+        doc = files.get(k)
+        if doc is None:
+            continue
+        old = json.loads(p.read_text(encoding="utf-8")) if p.exists() else None
+        if old is not None and same(canonical_source(k, old), canonical_source(k, doc)):
+            continue
+        p.parent.mkdir(parents=True, exist_ok=True)
+        text = dump_stock(doc) if k == "stock" else json.dumps(doc, indent=1, ensure_ascii=False) + "\n"
+        tmp = p.with_name(f".{p.name}.tmp")
+        tmp.write_text(text, encoding="utf-8")
+        tmp.replace(p)
+        written.append(p)
+    return written
+
+
+def write_place(root: Path, files: dict, sources: Path | None = None) -> None:
     root = Path(root)
     files = canonical(files)
+    write_sources(root, files, sources)
     root.mkdir(parents=True, exist_ok=True)
     (root / "place.json").write_text(json.dumps(files["place"], indent=1, ensure_ascii=False) + "\n")
     # a space the files no longer have (a copied room taken out again) leaves no folder behind

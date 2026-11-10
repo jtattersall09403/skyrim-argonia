@@ -1,0 +1,66 @@
+{
+ "ops": [
+  {
+   "op": "identity.edit",
+   "person": {
+    "id": "fixture.p1",
+    "name": "Ada Hot-Hand",
+    "sex": "female",
+    "race": "ArgonianRace",
+    "culture_id": "forest-green",
+    "household": {
+     "id": "fixture.household.h1",
+     "role": "head"
+    },
+    "role": "smith",
+    "trade": "the forge and the bellows",
+    "wealth": "W4",
+    "level": null,
+    "status": "alive",
+    "tier": "AGENT_INVENTED",
+    "notes": [
+     {
+      "aspect": "backstory",
+      "text": "She works the forge by the river.",
+      "tier": "AGENT_INVENTED",
+      "cites": [
+       "place_note:fixture/people"
+      ]
+     }
+    ],
+    "relations": []
+   },
+   "before": {
+    "id": "fixture.p1",
+    "name": "Ada Hot-Hand",
+    "sex": "female",
+    "race": "ArgonianRace",
+    "culture_id": "forest-green",
+    "household": {
+     "id": "fixture.household.h1",
+     "role": "head"
+    },
+    "role": "smith",
+    "trade": "the forge and the bellows",
+    "wealth": "W4",
+    "level": null,
+    "status": "alive",
+    "tier": "AGENT_INVENTED",
+    "notes": [
+     {
+      "aspect": "backstory",
+      "text": "She works the forge by the river.",
+      "tier": "AGENT_INVENTED",
+      "cites": [
+       "place_note:fixture/people"
+      ]
+     }
+    ],
+    "relations": []
+   },
+   "n": 1,
+   "call": "fault"
+  }
+ ],
+ "error": "differs from the save's before"
+}
