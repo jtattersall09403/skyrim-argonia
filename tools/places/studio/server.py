@@ -145,7 +145,7 @@ async def places(req: web.Request) -> web.Response:
                     "source_id": pl.get("source_id"), "similar": pl.get("similar") or [],
                     "stamps": {"draft": draft, "ground": bundle_stamp(cfg, f"ground.{pid}"),
                                "source": bundle_stamp(cfg, f"src.{pl.get('source_id')}")},
-                    "fit": pl.get("fit"), **({"needs_look": pl["needs_look"]} if "needs_look" in pl else {}),
+                    "fit": pl.get("fit"),
                     **({"draft_error": draft_error} if draft_error else {})})
     return jok(out)
 

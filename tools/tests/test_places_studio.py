@@ -221,7 +221,7 @@ def test_places_rebuilds_draft_and_carries_fit(tmp_path, monkeypatch):
     async def body(c):
         rows = await asyncio.gather(*[c.get("/api/places") for _ in range(5)])
         js = await rows[0].json()
-        assert js[0]["fit"] == {"dx": 1} and js[0]["needs_look"] == [{"what": "door facing"}]
+        assert js[0]["fit"] == {"dx": 1} and "needs_look" not in js[0]
         k1 = js[0]["stamps"]["draft"]["key"]
         (places / "fxd" / "paths.jsonl").write_text(json.dumps({"id": "p"}) + "\n")
         bj = await (await c.get("/api/bundle/draft.fxd/bundle.json")).json()
@@ -256,3 +256,22 @@ def test_missing_texture_is_a_marked_stand_in(env, monkeypatch):
         assert r.status == 200 and r.headers["X-Argonia-Missing"] == "1" and r.content_type == "image/webp"
         assert (await r.read())[:4] == b"RIFF"
     run(env, body)
+
+
+def test_draft_bundle_shows_the_committed_place_only(tmp_path, monkeypatch):
+    import subprocess
+    from tools.places import draft_bundle as db
+    fake_rooms(monkeypatch)
+    places, bundles = _draft_fixture(tmp_path)
+    g = ["git", "-C", str(places), "-c", "user.name=t", "-c", "user.email=t@t"]
+    subprocess.run(g + ["init", "-q"], check=True)
+    subprocess.run(g + ["add", "."], check=True)
+    subprocess.run(g + ["commit", "-qm", "c1"], check=True)
+    k1 = db.build("fxd", places, bundles)["key"]
+    (places / "fxd" / "people.jsonl").write_text("half-written {")  # a redraft in the working tree
+    assert db.build("fxd", places, bundles)["rebuilt"] is False and db.current_key("fxd", bundles) == k1
+    assert len(db.jsonl(bundles / "draft.fxd" / "people.jsonl")) == 1 and (bundles / "draft.fxd").is_symlink()
+    (places / "fxd" / "people.jsonl").write_text("")
+    subprocess.run(g + ["commit", "-qam", "c2"], check=True)
+    r = db.build("fxd", places, bundles)
+    assert r["rebuilt"] and r["key"] != k1 and db.jsonl(bundles / "draft.fxd" / "people.jsonl") == []

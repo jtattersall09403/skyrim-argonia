@@ -11,10 +11,13 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import io
 import json
 import os
 import shutil
+import subprocess
 import sys
+import tarfile
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -25,7 +28,7 @@ BUNDLES = ROOT / "out" / "places" / "bundles"
 BASE_TYPE = {"static": "STAT", "door": "DOOR", "furniture": "FURN", "container": "CONT", "light": "LIGH",
              "activator": "ACTI", "plant": "FLOR", "tree": "TREE", "marker": "IDLM", "actor": "NPC_"}
 FILES = ("people", "paths", "clear", "land")
-TOOL = "tools/places/draft_bundle.py v3"
+TOOL = "tools/places/draft_bundle.py v4"
 CATALOGUE = ROOT / "out" / "places" / "catalogue" / "bases.jsonl"
 _catalogue: dict = {}
 
@@ -54,15 +57,53 @@ def place_json(place_id: str, places: Path) -> dict:
     return json.loads((places / place_id / "place.json").read_text(encoding="utf-8"))
 
 
-def key(place_id: str, places: Path = PLACES, bundles: Path = BUNDLES) -> str:
-    """sha256 over every place file (saves excepted) and the source and ground bundles' bundle.json."""
+def git(cwd: Path, *args, **kw) -> subprocess.CompletedProcess:
+    return subprocess.run(["git", "-C", str(cwd), *args], capture_output=True, timeout=120, **kw)
+
+
+def committed(place_id: str, places: Path = PLACES, bundles: Path = BUNDLES) -> tuple[Path, str]:
+    """The place files as committed: (a places root holding <place_id>/, its id). Inside a git work tree that is
+    a snapshot of HEAD:<places>/<place_id> under out/places/snapshots/, keyed by the path's tree sha, so a redraft
+    in the working tree is never seen until it is committed. Outside git (tests), the folder itself and a hash of
+    its files."""
+    top = git(places, "rev-parse", "--show-toplevel", text=True)
+    if top.returncode == 0:
+        rel = (places / place_id).resolve().relative_to(Path(top.stdout.strip()).resolve()).as_posix()
+        t = git(places, "rev-parse", f"HEAD:{rel}", text=True)
+        if t.returncode != 0:
+            raise FileNotFoundError(f"{rel} is not committed")
+        tree = t.stdout.strip()
+        snaps = bundles.parent / "snapshots"
+        root = snaps / f"{place_id}.{tree[:16]}"
+        if not (root / place_id / "place.json").exists():  # a failed or empty snapshot is redone
+            tmp = snaps / f".{place_id}.{tree[:16]}.{os.getpid()}.tmp"
+            shutil.rmtree(tmp, ignore_errors=True)
+            (tmp / place_id).mkdir(parents=True)
+            arc = git(Path(top.stdout.strip()), "archive", "--format=tar", tree)  # from the top: a subdir limits it
+            if arc.returncode != 0:
+                raise RuntimeError(arc.stderr.decode()[-300:])
+            with tarfile.open(fileobj=io.BytesIO(arc.stdout)) as tf:
+                tf.extractall(tmp / place_id, filter="data")
+            shutil.rmtree(root, ignore_errors=True)
+            tmp.rename(root)
+            for old in snaps.glob(f"{place_id}.*"):  # one snapshot per place is enough
+                if old != root:
+                    shutil.rmtree(old, ignore_errors=True)
+        return root, tree
     pdir = places / place_id
-    h = hashlib.sha256(TOOL.encode())
+    h = hashlib.sha256()
     for p in sorted(pdir.rglob("*")):
         if p.is_file() and "edits" not in p.relative_to(pdir).parts:
             h.update(str(p.relative_to(pdir)).encode())
             h.update(p.read_bytes())
-    src_id = place_json(place_id, places).get("source_id")
+    return places, h.hexdigest()
+
+
+def key(place_id: str, places: Path = PLACES, bundles: Path = BUNDLES) -> str:
+    """sha256 over the committed place's tree id and the source and ground bundles' bundle.json."""
+    root, tree = committed(place_id, places, bundles)
+    h = hashlib.sha256(TOOL.encode() + tree.encode())
+    src_id = place_json(place_id, root).get("source_id")
     for b in (f"src.{src_id}", f"ground.{place_id}"):
         bj = bundles / b / "bundle.json"
         h.update(b.encode() + (bj.read_bytes() if bj.exists() else b"-"))
@@ -117,6 +158,7 @@ def build(place_id: str, places: Path = PLACES, bundles: Path = BUNDLES, force: 
     k = key(place_id, places, bundles)
     if not force and current_key(place_id, bundles) == k:
         return {"bundle_id": f"draft.{place_id}", "key": k, "rebuilt": False}
+    places, _ = committed(place_id, places, bundles)
     pdir = places / place_id
     place = place_json(place_id, places)
     src, ground = bundles / f"src.{place['source_id']}", bundles / f"ground.{place_id}"
@@ -165,12 +207,20 @@ def build(place_id: str, places: Path = PLACES, bundles: Path = BUNDLES, force: 
             "stamp": {"key": k, "draft_key": place.get("draft_key"), "inputs": stamp_in, "tool": TOOL, "missing_bases": missing,
                       "at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")}}
     (out / "bundle.json").write_text(json.dumps(meta, indent=1, ensure_ascii=False))
+    # draft.<id> is a symlink to a finished folder, swapped in one atomic rename: no request sees a half bundle
     final = bundles / f"draft.{place_id}"
-    old = bundles / f".draft.{place_id}.{os.getpid()}.old"
-    if final.exists():
-        final.rename(old)
-    out.rename(final)
-    shutil.rmtree(old, ignore_errors=True)
+    ver = bundles / f".draft.{place_id}.{k[:16]}"
+    shutil.rmtree(ver, ignore_errors=True)
+    out.rename(ver)
+    link = bundles / f".draft.{place_id}.{os.getpid()}.link"
+    link.unlink(missing_ok=True)
+    link.symlink_to(ver.name)
+    if final.exists() and not final.is_symlink():
+        shutil.rmtree(final)
+    os.replace(link, final)
+    for old in bundles.glob(f".draft.{place_id}.*"):
+        if old != ver and not old.name.endswith((".tmp", ".link")):
+            shutil.rmtree(old, ignore_errors=True)
     return {"bundle_id": f"draft.{place_id}", "key": k, "rebuilt": True, "refs": counts, "missing_bases": missing}
 
 
