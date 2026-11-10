@@ -23,14 +23,11 @@ static class MQ05
     public const uint AKaska = 0, AEiTuja = 1, AZone = 2, ANesh = 3;
     public static readonly int[] FragmentStages = [10, 20, 40, 91, 92];
 
-    // BlackMarsh2's override (private here so the LQ25/LQ30 lane's own stays separate; coordinator, 2026-11-08).
-    static Worldspace World(SkyrimMod mod, List<ISkyrimModGetter> mods) => Overrides.World(mod, mods, World2);
-
     public static void Add(SkyrimMod mod, List<ISkyrimModGetter> mods, Quest q)
     {
         var k = new QuestKit(mod, mods, q, "ARG_MQ05_");
         Kit = k; Q = q;
-        var world = World(mod, mods);
+        var world = k.World(World2);
 
         // W-npc: Kaska-Meen and Ei-Tuja (band 0), templated on BM&V's villagers.
         var kaska = k.Base("ARG_MQ05_KaskaMeen", "Kaska-Meen", "02A1EE:Black Marsh.esm", 3);
@@ -45,7 +42,7 @@ static class MQ05
         var kaskaPost = k.Marker("KaskaPost", kaskaAt);
         var eiPost = k.Marker("EiTujaPost", eiAt);
         var hist = k.Ref("YoungHist", K("11FE7A:Black Marsh.esm"), histAt, scale: 0.4f);
-        var zone = k.Zone("ZoneGrove", new P3Float(-29500, 78800, kaskaAt.Z + 100), 20, 40, 600, 600, 250);
+        var zone = k.Zone("ZoneGrove", new P3Float(-29500, 78800, kaskaAt.Z + 100), 20, 40, new P3Float(600, 600, 250));
         var kaskaRef = k.Actor("KaskaMeenRef", kaska, kaskaAt);
         var eiRef = k.Actor("EiTujaRef", ei, eiAt);
 
@@ -84,8 +81,8 @@ static class MQ05
         // E-global (the endings' flags), E-package (each at their post).
         var minders = k.Global("MindersHold");
         var nisswo = k.Global("NisswoRead");
-        var kaskaPkg = k.Travel("KaskaGoPost", kaskaPost);
-        var eiPkg = k.Travel("EiTujaGoPost", eiPost);
+        var kaskaPkg = k.Travel("KaskaGoPost", kaskaPost, 64, true);
+        var eiPkg = k.Travel("EiTujaGoPost", eiPost, 64, true);
 
         // TR-topic. Nesh-Deeka is the MQ01/MQ03 lane's person: her lines gate on her placed ref (GetIsReference).
         k.Topic("Basin", Label("topic.mq05-the-basin"),
@@ -99,9 +96,8 @@ static class MQ05
         k.Topic("TellNisswo", Label("topic.mq05-tell-nisswo"),
             k.Banded("topic.mq05-tell-nisswo", EiTuja, "default", "TIF_ARG_MQ05_92", IsId(ei.FormKey), k.StageIs(40)));
 
-        q.Name = "The Word Carried Inland"; q.Priority = 60; q.Type = Quest.TypeEnum.MainQuest; q.Flags = Quest.Flag.RunOnce;
-        k.StagesFromRecord(Id, "ARG_QF_MQ05", FragmentStages);
-        k.ObjectivesFromRecord(Id);
+        k.Header("The Word Carried Inland", 60, Quest.TypeEnum.MainQuest, Quest.Flag.RunOnce);
+        k.FromRecord(Id, "ARG_QF_MQ05", fragments: FragmentStages);
         k.Forced(AKaska, "KaskaMeen", kaskaRef).PackageData.Add(kaskaPkg.ToLink());
         k.Forced(AEiTuja, "EiTuja", eiRef).PackageData.Add(eiPkg.ToLink());
         k.Forced(AZone, "ZoneGrove", zone);
