@@ -323,7 +323,9 @@ potion grade, gold range, lock and the most its container may hold (`value_max`)
 vanilla's level gates (`docs/research/skyrim/stocking-yields.md`). How a place's band is set:
 - Wild ground: the place's reward band (`place_danger`, docs/design/danger.md) sets the tier (`danger_tier`: D0
   and D1 T1 .. D5 T5). The hardest spot holds the band's tier and the way to it the tier below (`effort`).
-- A peopled place: its wealth (`place_wealth`) sets a ceiling (P1 T1 .. P5 T5, never below its reward band's tier).
+- A peopled place: its wealth (`place_wealth`) sets a ceiling (P1 T1 .. P5 T5). A friendly or wary place holds its
+  people's own goods, so its wealth alone sets it, as a city's does; a hostile lived place's ceiling is never below
+  its reward band's tier (`scale.json` `ceiling_why`).
   What lies open is T1. Each tier above the open tier needs one more step of `security`, and a container's lock is
   its best tier's `lock`.
 - A person: their wealth band W1..W5 sets the gold they carry and keep, their clothes, their jewellery and their best

@@ -1,0 +1,3 @@
+{"id":"foreign","label":"Foreign law","about":"The law of an office inherited from the Empire, which keeps the Imperial cells: a caught player pays the fine, goes to the cell, or resists (vanilla Skyrim's arrest)."}
+{"id":"native","label":"Native law","about":"Argonian law, with no cell: a caught player pays, takes the Owing (a season of work, then set free at a named spot of the place), or resists and is fought to the death (docs/design/law.md)."}
+{"id":"none","label":"No law","about":"No one keeps law here: a hostile or abandoned place, or one with no people. Its fight is its answer."}

@@ -43,17 +43,21 @@ One researcher per batch of about 30 places, grouped by neighbouring regions, ea
 7. Give a settlement no hostile occupants and no other place (a village, a camp, a ruin) folded inside it: its
    extent contains only its own people and buildings. Danger inside a city or town lives in a dungeon-like
    interior of it: a cellar, a sewer, a vault, a drowned under-layer, as Riften keeps its thieves in the Ratway.
-   Threats outside it (raiders on the road, beasts in the channels beyond) belong to the ground round it or to the
-   neighbouring place that holds them. A separate village or ruin near a settlement is its own place record, or
-   nothing. A settlement's own fight names where it lives (`setting`: `interior`, or `provoked` for its own people
-   who fight only when provoked); wildlife in its waters is a creature fight and needs none. An outpost or camp
+   A fight just outside it (raiders at its landing, robbers on its road) is an encounter near it: the combat give
+   names `setting: nearby`, the `spot` in the record's own words, and a `bearing_deg` and `distance_m` from the
+   place's centre that put it beyond its footprint (the footprint plus about 80 m, toward the water, road, pass or
+   neighbour the spot names), and its reward give is marked `nearby` too. A separate village or ruin near a
+   settlement is its own place record, or nothing. A settlement's own fight names where it lives (`setting`:
+   `interior`, or `provoked` for its own people who fight only when provoked); wildlife in its waters is a
+   creature fight and needs none. An outpost or camp
    whose people attack on sight is a hostile place, not a settlement with foes.
 8. Set the danger as fixed geography (`docs/design/danger.md`). A place has four danger facts: its ground, its
    disposition, the strength inside and its reward band. You write one field, `danger_band_id`, the strength of
    what lives inside: for a lived place, the band of the country round it (people of lethal land are formidable),
    never calmer because the place is settled; for a ruin, camp or lair, at least that band and one worse for a
    boss or foes in a dungeon, cave or wreck; a city or town D0, the safe band. `build_db` derives the ground, the disposition,
-   the way in and the reward band from the record and the ground, each with its reason
+   the way in, the reward band and each nearby encounter's band (at least the ground where it stands, one worse
+   for a boss) from the record and the ground, each with its reason
    (`python3 -m tools.newworld.place_danger show <place>`). A loot give's detail says where and what kind of store
    it is, never its tier: the tier is the reward band's.
 9. Travel is the network's (`docs/design/travel-network.md`, which holds how a network is authored). A place

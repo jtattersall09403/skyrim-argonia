@@ -2640,7 +2640,18 @@
     {
      "kind": "boss-chest",
      "detail": "cove chest",
-     "count": 1
+     "count": 1,
+     "setting": "nearby"
+    },
+    {
+     "kind": "combat-boss",
+     "detail": "the Skeith outlaw captain whose boat sits in the cove",
+     "count": 1,
+     "reward": "boss-chest",
+     "setting": "nearby",
+     "spot": "the cove beyond the hamlet where the outlaws beach their boat",
+     "bearing_deg": 125,
+     "distance_m": 120
     }
    ]
   },
@@ -5699,7 +5710,18 @@
     {
      "kind": "treasure",
      "detail": "a digger's cache under the buried hall's door",
-     "count": 1
+     "count": 1,
+     "setting": "nearby"
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "Sarpa raiders in the pit scrub",
+     "count": 3,
+     "reward": "treasure",
+     "setting": "nearby",
+     "spot": "the pit scrub west of the village",
+     "bearing_deg": 270,
+     "distance_m": 140
     }
    ]
   },
@@ -6274,7 +6296,18 @@
     {
      "kind": "treasure",
      "detail": "a smugglers' cache on the bluff under the signal light",
-     "count": 1
+     "count": 1,
+     "setting": "nearby"
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "Skeith smugglers landing on the inlet",
+     "count": 3,
+     "reward": "treasure",
+     "setting": "nearby",
+     "spot": "the inlet shore below the village",
+     "bearing_deg": 41,
+     "distance_m": 140
     }
    ]
   },
@@ -6539,7 +6572,18 @@
     {
      "kind": "treasure",
      "detail": "a smugglers' bundle behind the breakwater",
-     "count": 1
+     "count": 1,
+     "setting": "nearby"
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "Skeith smugglers on the cape",
+     "count": 3,
+     "reward": "treasure",
+     "setting": "nearby",
+     "spot": "the cape beyond the breakwater",
+     "bearing_deg": 234,
+     "distance_m": 140
     }
    ]
   },
@@ -6789,6 +6833,22 @@
      "kind": "follower",
      "detail": "the watch-leader of Khiar, a spear fighter who knows the road",
      "count": 1
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "smuggler bands on the road",
+     "count": 4,
+     "reward": "treasure",
+     "setting": "nearby",
+     "spot": "the Renhu-Seafalls road beyond the bar",
+     "bearing_deg": 47,
+     "distance_m": 115
+    },
+    {
+     "kind": "treasure",
+     "detail": "the smugglers' cache by the road",
+     "count": 1,
+     "setting": "nearby"
     }
    ]
   },
@@ -7413,7 +7473,18 @@
     {
      "kind": "treasure",
      "detail": "a wreck-salvage store on the shoals",
-     "count": 1
+     "count": 1,
+     "setting": "nearby"
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "Skeith pirates raiding the landing",
+     "count": 3,
+     "reward": "treasure",
+     "setting": "nearby",
+     "spot": "the landing on the shoals below the rocks",
+     "bearing_deg": 145,
+     "distance_m": 140
     }
    ]
   },
@@ -8766,7 +8837,18 @@
     {
      "kind": "treasure",
      "detail": "a bandit's cache by the reed screens",
-     "count": 1
+     "count": 1,
+     "setting": "nearby"
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "bandits trying the landings, 3 to 4",
+     "count": 1,
+     "reward": "treasure",
+     "setting": "nearby",
+     "spot": "the lake landings beyond the reed screens",
+     "bearing_deg": 101,
+     "distance_m": 120
     }
    ]
   },
@@ -9353,7 +9435,18 @@
     {
      "kind": "treasure",
      "detail": "a raiders' dropped satchel",
-     "count": 1
+     "count": 1,
+     "setting": "nearby"
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "Skeith raiders who try the landings, 3 to 4",
+     "count": 1,
+     "reward": "treasure",
+     "setting": "nearby",
+     "spot": "the river landings below the hamlet",
+     "bearing_deg": 275,
+     "distance_m": 120
     }
    ]
   },
@@ -9698,7 +9791,18 @@
     {
      "kind": "treasure",
      "detail": "the pirate raft's stash",
-     "count": 1
+     "count": 1,
+     "setting": "nearby"
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "pirates of a raft working the far shore, 3 to 4",
+     "count": 1,
+     "reward": "treasure",
+     "setting": "nearby",
+     "spot": "the lake shore south of the town where the pirate raft puts in",
+     "bearing_deg": 180,
+     "distance_m": 190
     }
    ]
   },

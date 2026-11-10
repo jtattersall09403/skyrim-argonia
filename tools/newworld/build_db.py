@@ -33,6 +33,7 @@ from tools.newworld import danger
 from tools.newworld import flora
 from tools.newworld import frame as f
 from tools.newworld import place_danger
+from tools.newworld import place_law
 from tools.newworld import stockdb
 from tools.newworld import travel
 from tools.newworld.regions import REGIONS
@@ -173,7 +174,7 @@ def build() -> db.World:
     w = db.open(root, cache=False)
 
     for table in ("statement_tier", "settlement_tier", "place_kind", "symbol", "road_class", "danger_band",
-                  "terrain_need", "note_aspect", "water_kind", "disposition"):
+                  "terrain_need", "note_aspect", "water_kind", "disposition", "law"):
         w.insert_many(table, key[table])
     give_kinds = load_give_kinds()
     w.insert_many("give_kind", give_kinds)
@@ -317,6 +318,7 @@ def build() -> db.World:
     flora.build(w)
     travel.load(w)
     place_danger.assign(w)
+    place_law.assign(w)
     w.insert_many("source", sorted(sources.values(), key=lambda r: r["id"]))
     stockdb.load(w)
     w.save()
@@ -324,7 +326,8 @@ def build() -> db.World:
 
 
 GIVE_KINDS = RESEARCH / "give_kinds.json"
-SETTINGS = ("interior", "provoked")     # where a settlement's own fight lives (place-research, keep a settlement to itself)
+SETTINGS = ("interior", "provoked", "nearby")   # where a settlement's fight lives (place-research, keep a settlement to itself)
+SPOT = ("spot", "bearing_deg", "distance_m")    # where a nearby fight stands, outside the settlement's extent
 REWARD_FOR = {"combat-foes": ("boss-chest", "treasure", "gold-hoard", "unique-item"),
               "combat-boss": ("boss-chest", "gold-hoard", "unique-item"),
               "combat-creature": ("boss-chest", "treasure", "gold-hoard", "unique-item")}
@@ -362,10 +365,19 @@ def place_gives(pid: str, r: dict, kinds: dict[str, dict]) -> list[dict]:
         if count < 1:
             raise ValueError(f"{pid}: give {i} ({kind}): count must be at least 1")
         setting = g.get("setting")
-        if setting is not None and (kinds[kind]["group"] != "combat" or setting not in SETTINGS):
-            raise ValueError(f"{pid}: give {i} ({kind}): setting {setting!r} is for a combat give, one of {SETTINGS}")
+        group = kinds[kind]["group"]
+        if setting is not None and setting not in SETTINGS:
+            raise ValueError(f"{pid}: give {i} ({kind}): setting {setting!r} is not one of {SETTINGS}")
+        if setting is not None and group != "combat" and not (setting == "nearby" and group == "loot"):
+            raise ValueError(f"{pid}: give {i} ({kind}): only a combat give, or the loot of a nearby fight, names a setting")
+        spot = {k: g.get(k) for k in SPOT}
+        wants = setting == "nearby" and group == "combat"
+        if wants and not all(spot.values()):
+            raise ValueError(f"{pid}: give {i} ({kind}): a nearby fight names its spot, bearing_deg and distance_m")
+        if not wants and any(v is not None for v in spot.values()):
+            raise ValueError(f"{pid}: give {i} ({kind}): only a nearby fight names a spot")
         rows.append({"place_id": pid, "seq": i, "give_kind_id": kind, "detail": g["detail"].strip(), "count": count,
-                     "reward_kind_id": reward, "setting": setting})
+                     "reward_kind_id": reward, "setting": setting, **spot})
     return rows
 
 

@@ -273,6 +273,23 @@ CREATE TABLE "place_danger" (
   "by" TEXT NOT NULL CHECK ("by" IN ('derived', 'owner'))
 );
 
+-- Whose law a place keeps (tools/newworld/place_law.py; docs/design/law.md).
+CREATE TABLE "law" (
+  "id" TEXT NOT NULL PRIMARY KEY,        -- native, foreign, none
+  "label" TEXT NOT NULL,
+  "about" TEXT NOT NULL
+);
+
+-- A place's law, derived with its reason from who holds it and its disposition; a foreign-law place names the
+-- place whose cell holds a sentence (its own fort, keep or city, or the nearest such place of the same law).
+CREATE TABLE "place_law" (
+  "place_id" TEXT NOT NULL PRIMARY KEY REFERENCES "place"("id"),
+  "law_id" TEXT NOT NULL REFERENCES "law"("id"),
+  "jail_place_id" TEXT REFERENCES "place"("id"),   -- foreign law only
+  "why" TEXT NOT NULL,
+  CHECK (("law_id" = 'foreign') = ("jail_place_id" IS NOT NULL))
+);
+
 -- What the place needs of the terrain, so the land is built for it in one pass.
 CREATE TABLE "place_terrain_need" (
   "place_id" TEXT NOT NULL REFERENCES "place"("id"),
@@ -291,9 +308,30 @@ CREATE TABLE "place_give" (
   "detail" TEXT NOT NULL,                -- specific: 'Expert Alteration trainer', 'iron and corundum veins'
   "count" INTEGER NOT NULL CHECK ("count" >= 1),
   "reward_kind_id" TEXT REFERENCES "give_kind"("id"),   -- combat only: the loot give at this place that pays for it
-  "setting" TEXT CHECK ("setting" IN ('interior', 'provoked')),  -- a settlement's own fight: in a dungeon-like
-                                         -- interior of it, or its own people only when provoked; null elsewhere
+  "setting" TEXT CHECK ("setting" IN ('interior', 'provoked', 'nearby')),  -- a settlement's fight: in a
+                                         -- dungeon-like interior of it, its own people only when provoked, or an
+                                         -- encounter near it, outside its extent (and that fight's reward); null elsewhere
+  "spot" TEXT,                           -- a nearby fight: where it stands, named from the record
+  "bearing_deg" REAL,                    -- a nearby fight: from the place's centre, 0 north, clockwise
+  "distance_m" REAL,                     -- a nearby fight: from the place's centre, beyond its footprint
+  CHECK (("spot" IS NOT NULL) = ("bearing_deg" IS NOT NULL) AND ("spot" IS NOT NULL) = ("distance_m" IS NOT NULL)),
   PRIMARY KEY ("place_id", "seq")
+);
+
+-- Each encounter near a settlement (a place_give with setting 'nearby'), derived with its reasons
+-- (tools/newworld/place_danger.py; docs/design/danger.md): the cell it stands in, its strength and its reward band.
+CREATE TABLE "place_encounter" (
+  "place_id" TEXT NOT NULL,
+  "give_seq" INTEGER NOT NULL,
+  "cell_x" INTEGER NOT NULL,
+  "cell_y" INTEGER NOT NULL,
+  "strength_band_id" TEXT NOT NULL REFERENCES "danger_band"("id"),   -- at least the ground where it stands
+  "strength_why" TEXT NOT NULL,
+  "reward_band_id" TEXT NOT NULL REFERENCES "danger_band"("id"),     -- the higher of the way in and the fight
+  "reward_why" TEXT NOT NULL,
+  PRIMARY KEY ("place_id", "give_seq"),
+  FOREIGN KEY ("place_id", "give_seq") REFERENCES "place_give"("place_id", "seq"),
+  FOREIGN KEY ("cell_x", "cell_y") REFERENCES "cell"("x", "y")
 );
 
 -- ---------------------------------------------------------------------------------------------------------

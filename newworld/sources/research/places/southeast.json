@@ -3153,6 +3153,22 @@
      "kind": "fishing",
      "detail": "estuary fishing from the plank landing",
      "count": 1
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "drunk sailors and smugglers at the night quay",
+     "count": 3,
+     "reward": "treasure",
+     "setting": "nearby",
+     "spot": "the night quay's far end, below the landing on the channel",
+     "bearing_deg": 224,
+     "distance_m": 120
+    },
+    {
+     "kind": "treasure",
+     "detail": "a smuggler's cache under the landing",
+     "count": 1,
+     "setting": "nearby"
     }
    ]
   },
@@ -4921,7 +4937,18 @@
     {
      "kind": "treasure",
      "detail": "a cutpurses' stash",
-     "count": 1
+     "count": 1,
+     "setting": "nearby"
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "cutpurses on the Lilmoth road",
+     "count": 2,
+     "reward": "treasure",
+     "setting": "nearby",
+     "spot": "the Lilmoth road outside the village",
+     "bearing_deg": 102,
+     "distance_m": 140
     }
    ]
   },
@@ -5516,6 +5543,22 @@
      "kind": "fishing",
      "detail": "north-shore fishing",
      "count": 1
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "deserters from Fort Reedmoth in the reeds",
+     "count": 3,
+     "reward": "treasure",
+     "setting": "nearby",
+     "spot": "the reeds along the north shore",
+     "bearing_deg": 342,
+     "distance_m": 140
+    },
+    {
+     "kind": "treasure",
+     "detail": "a deserter's hoard",
+     "count": 1,
+     "setting": "nearby"
     }
    ]
   },

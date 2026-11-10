@@ -7418,7 +7418,18 @@
     {
      "kind": "treasure",
      "detail": "bandits' purses",
-     "count": 1
+     "count": 1,
+     "setting": "nearby"
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "road bandits who test the post at night",
+     "count": 1,
+     "reward": "treasure",
+     "setting": "nearby",
+     "spot": "the road beyond Deshaa Post",
+     "bearing_deg": 309,
+     "distance_m": 120
     }
    ]
   },

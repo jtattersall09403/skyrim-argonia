@@ -24,6 +24,8 @@
 {"place_id":"acra-tiin","seq":1,"give_kind_id":"trader-innkeeper","detail":"fish-and-salt seller at the landing","count":1}
 {"place_id":"acra-tiin","seq":2,"give_kind_id":"cooking-pot","detail":"cooking pot at the landing","count":1}
 {"place_id":"acra-tiin","seq":3,"give_kind_id":"fishing","detail":"sea fishing off the landing","count":1}
+{"place_id":"acra-tiin","seq":4,"give_kind_id":"combat-foes","detail":"wreckers on the shore by night","count":3,"reward_kind_id":"treasure","setting":"nearby","spot":"the shore and the dunes beyond the village","bearing_deg":184.0,"distance_m":140.0}
+{"place_id":"acra-tiin","seq":5,"give_kind_id":"treasure","detail":"the wreckers' cache in the dunes","count":1,"setting":"nearby"}
 {"place_id":"agia-nero","seq":0,"give_kind_id":"combat-foes","detail":"smugglers in the broken walls","count":4,"reward_kind_id":"boss-chest"}
 {"place_id":"agia-nero","seq":1,"give_kind_id":"combat-boss","detail":"the smugglers' chief","count":1,"reward_kind_id":"boss-chest"}
 {"place_id":"agia-nero","seq":2,"give_kind_id":"boss-chest","detail":"the cache under the tower","count":1}
@@ -402,7 +404,8 @@
 {"place_id":"icalca","seq":2,"give_kind_id":"trainer","detail":"Illusion, Journeyman","count":1}
 {"place_id":"icalca","seq":3,"give_kind_id":"fishing","detail":"lake fish and eels","count":1}
 {"place_id":"icalca","seq":4,"give_kind_id":"combat-creature","detail":"lake crocodiles in the shallows","count":1,"reward_kind_id":"treasure"}
-{"place_id":"icalca","seq":5,"give_kind_id":"treasure","detail":"a bandit's cache by the reed screens","count":1}
+{"place_id":"icalca","seq":5,"give_kind_id":"treasure","detail":"a bandit's cache by the reed screens","count":1,"setting":"nearby"}
+{"place_id":"icalca","seq":6,"give_kind_id":"combat-foes","detail":"bandits trying the landings, 3 to 4","count":1,"reward_kind_id":"treasure","setting":"nearby","spot":"the lake landings beyond the reed screens","bearing_deg":101.0,"distance_m":120.0}
 {"place_id":"imperial-ruin-14-m109","seq":0,"give_kind_id":"combat-foes","detail":"squatters and smugglers in the yard","count":4,"reward_kind_id":"boss-chest"}
 {"place_id":"imperial-ruin-14-m109","seq":1,"give_kind_id":"combat-boss","detail":"the squatters' lookout leader on the north wall","count":1,"reward_kind_id":"boss-chest"}
 {"place_id":"imperial-ruin-14-m109","seq":2,"give_kind_id":"combat-creature","detail":"snakes in the wall-gaps and the water-filled cellar","count":3,"reward_kind_id":"treasure"}
@@ -492,14 +495,20 @@
 {"place_id":"joxhi","seq":2,"give_kind_id":"harvest-common","detail":"river reeds and marsh herbs along the bend","count":4}
 {"place_id":"joxhi","seq":3,"give_kind_id":"free-bed","detail":"the guest mound, shared with the diggers","count":1}
 {"place_id":"joxhi","seq":4,"give_kind_id":"combat-creature","detail":"crocodiles at the river mouth","count":2,"reward_kind_id":"treasure"}
-{"place_id":"joxhi","seq":5,"give_kind_id":"treasure","detail":"a digger's cache under the buried hall's door","count":1}
+{"place_id":"joxhi","seq":5,"give_kind_id":"treasure","detail":"a digger's cache under the buried hall's door","count":1,"setting":"nearby"}
+{"place_id":"joxhi","seq":6,"give_kind_id":"combat-foes","detail":"Sarpa raiders in the pit scrub","count":3,"reward_kind_id":"treasure","setting":"nearby","spot":"the pit scrub west of the village","bearing_deg":270.0,"distance_m":140.0}
 {"place_id":"julo","seq":0,"give_kind_id":"boat-stop","detail":"the ferryman's raft at the delta crossing","count":1}
 {"place_id":"julo","seq":1,"give_kind_id":"harvest-common","detail":"saltrice","count":4}
 {"place_id":"julo","seq":2,"give_kind_id":"cooking-pot","detail":"the farm hearth","count":1}
 {"place_id":"julo","seq":3,"give_kind_id":"free-bed","detail":"the ferry hut","count":1}
+{"place_id":"julo","seq":4,"give_kind_id":"combat-foes","detail":"grave-robbers at the opened cairn on the near bank","count":3,"reward_kind_id":"boss-chest","setting":"nearby","spot":"the opened cairn on the near bank","bearing_deg":330.0,"distance_m":120.0}
+{"place_id":"julo","seq":5,"give_kind_id":"combat-boss","detail":"the grave-robbers' leader","count":1,"reward_kind_id":"boss-chest","setting":"nearby","spot":"the opened cairn on the near bank","bearing_deg":330.0,"distance_m":120.0}
+{"place_id":"julo","seq":6,"give_kind_id":"boss-chest","detail":"boss chest","count":1,"setting":"nearby"}
 {"place_id":"ka-asei","seq":0,"give_kind_id":"trader-general","detail":"boatwright's family selling rope, tools and fish","count":1}
 {"place_id":"ka-asei","seq":1,"give_kind_id":"cooking-pot","detail":"cooking pot on the longhouse platform","count":1}
 {"place_id":"ka-asei","seq":2,"give_kind_id":"fishing","detail":"fish traps in the channel mouth","count":1}
+{"place_id":"ka-asei","seq":3,"give_kind_id":"combat-foes","detail":"night bandit boats at the channel mouth","count":3,"reward_kind_id":"treasure","setting":"nearby","spot":"the channel mouth beyond the stilts","bearing_deg":74.0,"distance_m":140.0}
+{"place_id":"ka-asei","seq":4,"give_kind_id":"treasure","detail":"the bandits' boat strongbox","count":1,"setting":"nearby"}
 {"place_id":"kaochalit","seq":0,"give_kind_id":"trader-apothecary","detail":"the Dunmer herbalist in the outer tomb","count":1}
 {"place_id":"kaochalit","seq":1,"give_kind_id":"alchemy-lab","detail":"the herbalist's bench","count":1}
 {"place_id":"kaochalit","seq":2,"give_kind_id":"combat-creature","detail":"skeletons and ghosts of the flu-dead in the lower halls","count":6,"reward_kind_id":"boss-chest"}
@@ -511,7 +520,8 @@
 {"place_id":"karketa","seq":2,"give_kind_id":"fishing","detail":"reef-edge fishing from the jetty","count":1}
 {"place_id":"karketa","seq":3,"give_kind_id":"harvest-common","detail":"sea salt from the salt pans","count":2}
 {"place_id":"karketa","seq":4,"give_kind_id":"combat-creature","detail":"a sea-drake beyond the reef","count":1,"reward_kind_id":"treasure"}
-{"place_id":"karketa","seq":5,"give_kind_id":"treasure","detail":"a cutpurses' stash","count":1}
+{"place_id":"karketa","seq":5,"give_kind_id":"treasure","detail":"a cutpurses' stash","count":1,"setting":"nearby"}
+{"place_id":"karketa","seq":6,"give_kind_id":"combat-foes","detail":"cutpurses on the Lilmoth road","count":2,"reward_kind_id":"treasure","setting":"nearby","spot":"the Lilmoth road outside the village","bearing_deg":102.0,"distance_m":140.0}
 {"place_id":"kharaxos","seq":0,"give_kind_id":"boat-stop","detail":"a boatman at the river market","count":1}
 {"place_id":"kharaxos","seq":1,"give_kind_id":"trader-blacksmith","detail":"a metal-trader selling salvaged mine iron and corundum","count":1}
 {"place_id":"kharaxos","seq":2,"give_kind_id":"smelter","detail":"in the river market","count":1}
@@ -536,7 +546,8 @@
 {"place_id":"khiar","seq":2,"give_kind_id":"harvest-common","detail":"kelp and shore shellfish","count":4}
 {"place_id":"khiar","seq":3,"give_kind_id":"free-bed","detail":"a mat in the boat-wright's loft","count":1}
 {"place_id":"khiar","seq":4,"give_kind_id":"combat-creature","detail":"crocodiles at the inlet","count":2,"reward_kind_id":"treasure"}
-{"place_id":"khiar","seq":5,"give_kind_id":"treasure","detail":"a smugglers' bundle behind the breakwater","count":1}
+{"place_id":"khiar","seq":5,"give_kind_id":"treasure","detail":"a smugglers' bundle behind the breakwater","count":1,"setting":"nearby"}
+{"place_id":"khiar","seq":6,"give_kind_id":"combat-foes","detail":"Skeith smugglers on the cape","count":3,"reward_kind_id":"treasure","setting":"nearby","spot":"the cape beyond the breakwater","bearing_deg":234.0,"distance_m":140.0}
 {"place_id":"kornakim","seq":0,"give_kind_id":"combat-foes","detail":"Velothi household ghosts at their posts in the inner hall","count":5,"reward_kind_id":"boss-chest"}
 {"place_id":"kornakim","seq":1,"give_kind_id":"combat-creature","detail":"mudcrabs and hackwings on the beach","count":3,"reward_kind_id":"boss-chest"}
 {"place_id":"kornakim","seq":2,"give_kind_id":"combat-boss","detail":"the watch-captain's ghost on the tower stair","count":1,"reward_kind_id":"boss-chest"}
@@ -787,6 +798,9 @@
 {"place_id":"nacydes","seq":1,"give_kind_id":"tanning-rack","detail":"the hide racks","count":1}
 {"place_id":"nacydes","seq":2,"give_kind_id":"forge","detail":"the chime-maker's forge","count":1}
 {"place_id":"nacydes","seq":3,"give_kind_id":"anvil","detail":"the chime-maker's forge","count":1}
+{"place_id":"nacydes","seq":4,"give_kind_id":"combat-foes","detail":"Naga scouts watching the pass","count":3,"reward_kind_id":"boss-chest","setting":"nearby","spot":"the pass over the ridge toward the watch peak","bearing_deg":294.0,"distance_m":120.0}
+{"place_id":"nacydes","seq":5,"give_kind_id":"combat-boss","detail":"the Naga scout-leader","count":1,"reward_kind_id":"boss-chest","setting":"nearby","spot":"the pass over the ridge toward the watch peak","bearing_deg":294.0,"distance_m":120.0}
+{"place_id":"nacydes","seq":6,"give_kind_id":"boss-chest","detail":"boss chest","count":1,"setting":"nearby"}
 {"place_id":"natai","seq":0,"give_kind_id":"trader-general","detail":"salt-pan family trading salt, shellfish and Salt Heron salvage","count":1}
 {"place_id":"natai","seq":1,"give_kind_id":"cooking-pot","detail":"cooking pot by the drying racks","count":1}
 {"place_id":"natai","seq":2,"give_kind_id":"free-bed","detail":"a salvager's spare bed in the longhouse","count":1}
@@ -801,6 +815,9 @@
 {"place_id":"nemeon","seq":0,"give_kind_id":"trader-general","detail":"the boat-wife","count":1}
 {"place_id":"nemeon","seq":1,"give_kind_id":"harvest-common","detail":"swamp herbs","count":3}
 {"place_id":"nemeon","seq":2,"give_kind_id":"cooking-pot","detail":"the boat-wife's hearth","count":1}
+{"place_id":"nemeon","seq":3,"give_kind_id":"combat-foes","detail":"boat-robbers who stripped the wreck in the reeds","count":3,"reward_kind_id":"boss-chest","setting":"nearby","spot":"the wreck in the reeds along the waterway","bearing_deg":141.0,"distance_m":120.0}
+{"place_id":"nemeon","seq":4,"give_kind_id":"combat-boss","detail":"the boat-robbers' leader","count":1,"reward_kind_id":"boss-chest","setting":"nearby","spot":"the wreck in the reeds along the waterway","bearing_deg":141.0,"distance_m":120.0}
+{"place_id":"nemeon","seq":5,"give_kind_id":"boss-chest","detail":"boss chest","count":1,"setting":"nearby"}
 {"place_id":"nenria","seq":0,"give_kind_id":"combat-creature","detail":"giant snakes in the drowned cellar","count":2,"reward_kind_id":"boss-chest"}
 {"place_id":"nenria","seq":1,"give_kind_id":"combat-foes","detail":"Ayleid skeletons and a ghost at the arch","count":4,"reward_kind_id":"boss-chest"}
 {"place_id":"nenria","seq":2,"give_kind_id":"combat-boss","detail":"a ghost-knight of the hall","count":1,"reward_kind_id":"boss-chest"}
@@ -865,6 +882,9 @@
 {"place_id":"outpost-1-m81","seq":0,"give_kind_id":"fishing","detail":"the junction landing","count":1}
 {"place_id":"outpost-1-m81","seq":1,"give_kind_id":"free-bed","detail":"a stilt platform","count":1}
 {"place_id":"outpost-1-m81","seq":2,"give_kind_id":"cooking-pot","detail":"the station fire","count":1}
+{"place_id":"outpost-1-m81","seq":3,"give_kind_id":"combat-foes","detail":"an egg-thieves' boat crew","count":3,"reward_kind_id":"boss-chest","setting":"nearby","spot":"the river junction below the platforms where the boat ties up","bearing_deg":202.0,"distance_m":120.0}
+{"place_id":"outpost-1-m81","seq":4,"give_kind_id":"combat-boss","detail":"the egg-thieves' pilot","count":1,"reward_kind_id":"boss-chest","setting":"nearby","spot":"the river junction below the platforms where the boat ties up","bearing_deg":202.0,"distance_m":120.0}
+{"place_id":"outpost-1-m81","seq":5,"give_kind_id":"boss-chest","detail":"boss chest","count":1,"setting":"nearby"}
 {"place_id":"outpost-12-m63","seq":0,"give_kind_id":"trader-hunter","detail":"the old trapper buys hides and sells smoked meat and arrows","count":1}
 {"place_id":"outpost-12-m63","seq":1,"give_kind_id":"tanning-rack","detail":"by the pelt frames","count":1}
 {"place_id":"outpost-12-m63","seq":2,"give_kind_id":"trainer","detail":"Archery, Journeyman, the old trapper","count":1}
@@ -875,11 +895,17 @@
 {"place_id":"outpost-14-m85","seq":1,"give_kind_id":"cooking-pot","detail":"the drying-rack fire","count":1}
 {"place_id":"outpost-14-m85","seq":2,"give_kind_id":"free-bed","detail":"the platform hut","count":1}
 {"place_id":"outpost-14-m85","seq":3,"give_kind_id":"fence","detail":"a smuggler who lands at night","count":1}
+{"place_id":"outpost-14-m85","seq":4,"give_kind_id":"combat-foes","detail":"smugglers who use the islet at night","count":3,"reward_kind_id":"boss-chest","setting":"nearby","spot":"the far landing of the islet where the smugglers tie up at night","bearing_deg":234.0,"distance_m":120.0}
+{"place_id":"outpost-14-m85","seq":5,"give_kind_id":"combat-boss","detail":"the smugglers' captain","count":1,"reward_kind_id":"boss-chest","setting":"nearby","spot":"the far landing of the islet where the smugglers tie up at night","bearing_deg":234.0,"distance_m":120.0}
+{"place_id":"outpost-14-m85","seq":6,"give_kind_id":"boss-chest","detail":"boss chest","count":1,"setting":"nearby"}
 {"place_id":"outpost-2-m68","seq":0,"give_kind_id":"trader-innkeeper","detail":"the roadhouse: smoked meat and saltrice","count":1}
 {"place_id":"outpost-2-m68","seq":1,"give_kind_id":"inn-room","detail":"a room in the roadhouse","count":1}
 {"place_id":"outpost-2-m96","seq":0,"give_kind_id":"free-bed","detail":"the crews' lodging hut","count":1}
 {"place_id":"outpost-2-m96","seq":1,"give_kind_id":"harvest-rare","detail":"dragon's-tongue","count":4}
 {"place_id":"outpost-2-m96","seq":2,"give_kind_id":"trader-apothecary","detail":"the herb-gatherers","count":1}
+{"place_id":"outpost-2-m96","seq":3,"give_kind_id":"combat-foes","detail":"robbers at the wreck of the Blackrose boat","count":3,"reward_kind_id":"boss-chest","setting":"nearby","spot":"the wreck of the Blackrose boat on the open water","bearing_deg":50.0,"distance_m":120.0}
+{"place_id":"outpost-2-m96","seq":4,"give_kind_id":"combat-boss","detail":"the robbers' leader","count":1,"reward_kind_id":"boss-chest","setting":"nearby","spot":"the wreck of the Blackrose boat on the open water","bearing_deg":50.0,"distance_m":120.0}
+{"place_id":"outpost-2-m96","seq":5,"give_kind_id":"boss-chest","detail":"boss chest","count":1,"setting":"nearby"}
 {"place_id":"outpost-22-m77","seq":0,"give_kind_id":"trader-hunter","detail":"hides, skins and raw meat from the lodge","count":1}
 {"place_id":"outpost-22-m77","seq":1,"give_kind_id":"tanning-rack","detail":"the lodge rack","count":1}
 {"place_id":"outpost-22-m77","seq":2,"give_kind_id":"cooking-pot","detail":"the lodge fire","count":1}
@@ -900,6 +926,8 @@
 {"place_id":"outpost-28-m86","seq":0,"give_kind_id":"grindstone","detail":"a grindstone beside the spear rack","count":1}
 {"place_id":"outpost-28-m86","seq":1,"give_kind_id":"free-bed","detail":"spear-watch mats in the hut","count":1}
 {"place_id":"outpost-28-m86","seq":2,"give_kind_id":"follower","detail":"the watch-leader of Khiar, a spear fighter who knows the road","count":1}
+{"place_id":"outpost-28-m86","seq":3,"give_kind_id":"combat-foes","detail":"smuggler bands on the road","count":4,"reward_kind_id":"treasure","setting":"nearby","spot":"the Renhu-Seafalls road beyond the bar","bearing_deg":47.0,"distance_m":115.0}
+{"place_id":"outpost-28-m86","seq":4,"give_kind_id":"treasure","detail":"the smugglers' cache by the road","count":1,"setting":"nearby"}
 {"place_id":"outpost-29-m66","seq":0,"give_kind_id":"free-bed","detail":"wardens' bunks in the blockhouse","count":1}
 {"place_id":"outpost-29-m66","seq":1,"give_kind_id":"cooking-pot","detail":"garrison cook-fire","count":1}
 {"place_id":"outpost-29-m66","seq":2,"give_kind_id":"combat-creature","detail":"swamp-crocodiles in the ditch and giant snakes","count":4,"reward_kind_id":"treasure"}
@@ -922,7 +950,8 @@
 {"place_id":"outpost-9-m85","seq":0,"give_kind_id":"fishing","detail":"eel traps round the islet","count":1}
 {"place_id":"outpost-9-m85","seq":1,"give_kind_id":"trader-innkeeper","detail":"the keepers sell smoked eel","count":1}
 {"place_id":"outpost-9-m85","seq":2,"give_kind_id":"combat-creature","detail":"slaughterfish round the eel traps","count":3,"reward_kind_id":"boss-chest"}
-{"place_id":"outpost-9-m85","seq":3,"give_kind_id":"boss-chest","detail":"boss chest","count":1}
+{"place_id":"outpost-9-m85","seq":3,"give_kind_id":"boss-chest","detail":"boss chest","count":1,"setting":"nearby"}
+{"place_id":"outpost-9-m85","seq":4,"give_kind_id":"combat-boss","detail":"the boat-robber who emptied the drifting canoe","count":1,"reward_kind_id":"boss-chest","setting":"nearby","spot":"the drifting canoe off the islet","bearing_deg":209.0,"distance_m":120.0}
 {"place_id":"outpost-m1-m61","seq":0,"give_kind_id":"trader-general","detail":"a stall of lamp oil, rope and travel food","count":1}
 {"place_id":"outpost-m11-m102","seq":0,"give_kind_id":"trainer","detail":"Journeyman Marksman trainer, the post's watch-leader","count":1}
 {"place_id":"outpost-m11-m102","seq":1,"give_kind_id":"fishing","detail":"gar in the channel","count":1}
@@ -977,9 +1006,13 @@
 {"place_id":"outpost-m19-m103","seq":0,"give_kind_id":"trainer","detail":"Journeyman One-handed trainer, the watch-leader","count":1}
 {"place_id":"outpost-m19-m103","seq":1,"give_kind_id":"cooking-pot","detail":"the watch fire","count":1}
 {"place_id":"outpost-m19-m103","seq":2,"give_kind_id":"combat-creature","detail":"giant snakes on the causeway","count":1,"reward_kind_id":"treasure"}
-{"place_id":"outpost-m19-m103","seq":3,"give_kind_id":"treasure","detail":"bandits' purses","count":1}
+{"place_id":"outpost-m19-m103","seq":3,"give_kind_id":"treasure","detail":"bandits' purses","count":1,"setting":"nearby"}
+{"place_id":"outpost-m19-m103","seq":4,"give_kind_id":"combat-foes","detail":"road bandits who test the post at night","count":1,"reward_kind_id":"treasure","setting":"nearby","spot":"the road beyond Deshaa Post","bearing_deg":309.0,"distance_m":120.0}
 {"place_id":"outpost-m2-m79","seq":0,"give_kind_id":"free-bed","detail":"a watch hut","count":1}
 {"place_id":"outpost-m2-m79","seq":1,"give_kind_id":"cooking-pot","detail":"the watch fire","count":1}
+{"place_id":"outpost-m2-m79","seq":2,"give_kind_id":"combat-foes","detail":"Salt-Tooth Naga scouting the nest-pit at night","count":3,"reward_kind_id":"boss-chest","setting":"nearby","spot":"the swamp edge south-west of the nest-pit, on the way from the Naga camp","bearing_deg":260.0,"distance_m":120.0}
+{"place_id":"outpost-m2-m79","seq":3,"give_kind_id":"combat-boss","detail":"the Naga scout-leader","count":1,"reward_kind_id":"boss-chest","setting":"nearby","spot":"the swamp edge south-west of the nest-pit, on the way from the Naga camp","bearing_deg":260.0,"distance_m":120.0}
+{"place_id":"outpost-m2-m79","seq":4,"give_kind_id":"boss-chest","detail":"boss chest","count":1,"setting":"nearby"}
 {"place_id":"outpost-m20-m77","seq":0,"give_kind_id":"trader-hunter","detail":"a Naka-Desh trader who buys Paatru hides","count":1}
 {"place_id":"outpost-m20-m77","seq":1,"give_kind_id":"fishing","detail":"gar at the landing","count":1}
 {"place_id":"outpost-m20-m77","seq":2,"give_kind_id":"tanning-rack","detail":"on the landing","count":1}
@@ -1021,6 +1054,9 @@
 {"place_id":"outpost-m7-m77","seq":0,"give_kind_id":"trader-hunter","detail":"the Hutan-Tzel buy hides","count":1}
 {"place_id":"outpost-m7-m77","seq":1,"give_kind_id":"tanning-rack","detail":"the canoe shed","count":1}
 {"place_id":"outpost-m7-m77","seq":2,"give_kind_id":"trainer","detail":"Journeyman Sneak (a Hutan-Tzel go-between)","count":1}
+{"place_id":"outpost-m7-m77","seq":3,"give_kind_id":"combat-foes","detail":"Naga on the Murkwood edge path","count":3,"reward_kind_id":"boss-chest","setting":"nearby","spot":"the Murkwood edge path south of the palisade","bearing_deg":180.0,"distance_m":120.0}
+{"place_id":"outpost-m7-m77","seq":4,"give_kind_id":"combat-boss","detail":"the Naga band's leader","count":1,"reward_kind_id":"boss-chest","setting":"nearby","spot":"the Murkwood edge path south of the palisade","bearing_deg":180.0,"distance_m":120.0}
+{"place_id":"outpost-m7-m77","seq":5,"give_kind_id":"boss-chest","detail":"boss chest","count":1,"setting":"nearby"}
 {"place_id":"outpost-m9-m99","seq":0,"give_kind_id":"trainer","detail":"Journeyman Sneak trainer, the station lookout","count":1}
 {"place_id":"outpost-m9-m99","seq":1,"give_kind_id":"cooking-pot","detail":"the post's fire","count":1}
 {"place_id":"outpost-m9-m99","seq":2,"give_kind_id":"harvest-common","detail":"marsh-bird eggs and reed roots","count":1}
@@ -1067,10 +1103,13 @@
 {"place_id":"renhu","seq":2,"give_kind_id":"fishing","detail":"estuary fish, eels and clams","count":1}
 {"place_id":"renhu","seq":3,"give_kind_id":"harvest-common","detail":"shore reeds and inlet shellfish","count":4}
 {"place_id":"renhu","seq":4,"give_kind_id":"combat-creature","detail":"coastal crocodiles and mudcrabs","count":3,"reward_kind_id":"treasure"}
-{"place_id":"renhu","seq":5,"give_kind_id":"treasure","detail":"a smugglers' cache on the bluff under the signal light","count":1}
+{"place_id":"renhu","seq":5,"give_kind_id":"treasure","detail":"a smugglers' cache on the bluff under the signal light","count":1,"setting":"nearby"}
+{"place_id":"renhu","seq":6,"give_kind_id":"combat-foes","detail":"Skeith smugglers landing on the inlet","count":3,"reward_kind_id":"treasure","setting":"nearby","spot":"the inlet shore below the village","bearing_deg":41.0,"distance_m":140.0}
 {"place_id":"sal-axan","seq":0,"give_kind_id":"trader-general","detail":"fish, rice and shell sold to the fort and travellers","count":1}
 {"place_id":"sal-axan","seq":1,"give_kind_id":"trader-innkeeper","detail":"a village table with fish stew and ale","count":1}
 {"place_id":"sal-axan","seq":2,"give_kind_id":"fishing","detail":"north-shore fishing","count":1}
+{"place_id":"sal-axan","seq":3,"give_kind_id":"combat-foes","detail":"deserters from Fort Reedmoth in the reeds","count":3,"reward_kind_id":"treasure","setting":"nearby","spot":"the reeds along the north shore","bearing_deg":342.0,"distance_m":140.0}
+{"place_id":"sal-axan","seq":4,"give_kind_id":"treasure","detail":"a deserter's hoard","count":1,"setting":"nearby"}
 {"place_id":"salaxul","seq":0,"give_kind_id":"boat-stop","detail":"a coastal boat at the jetty","count":1}
 {"place_id":"salaxul","seq":1,"give_kind_id":"trader-general","detail":"landing trader in salt, shellfish and coastal freight","count":1}
 {"place_id":"salaxul","seq":2,"give_kind_id":"cooking-pot","detail":"cooking pot at the landing","count":1}
@@ -1085,7 +1124,8 @@
 {"place_id":"seafalls","seq":5,"give_kind_id":"harvest-rare","detail":"pearls from the shoals","count":2}
 {"place_id":"seafalls","seq":6,"give_kind_id":"cooking-pot","detail":"the portage-men's pot at the falls","count":1}
 {"place_id":"seafalls","seq":7,"give_kind_id":"combat-creature","detail":"slaughterfish in the sea-pool","count":3,"reward_kind_id":"treasure"}
-{"place_id":"seafalls","seq":8,"give_kind_id":"treasure","detail":"a wreck-salvage store on the shoals","count":1}
+{"place_id":"seafalls","seq":8,"give_kind_id":"treasure","detail":"a wreck-salvage store on the shoals","count":1,"setting":"nearby"}
+{"place_id":"seafalls","seq":9,"give_kind_id":"combat-foes","detail":"Skeith pirates raiding the landing","count":3,"reward_kind_id":"treasure","setting":"nearby","spot":"the landing on the shoals below the rocks","bearing_deg":145.0,"distance_m":140.0}
 {"place_id":"seafalls-lighthouse","seq":0,"give_kind_id":"free-bed","detail":"the keeper's hut","count":1}
 {"place_id":"seafalls-lighthouse","seq":1,"give_kind_id":"harvest-common","detail":"shoal shellfish and driftwood on the point","count":3}
 {"place_id":"seafalls-lighthouse","seq":2,"give_kind_id":"combat-foes","detail":"Skeith pirates who hold the gallery","count":3,"reward_kind_id":"treasure"}
@@ -1468,6 +1508,8 @@
 {"place_id":"xi-inou","seq":1,"give_kind_id":"trader-innkeeper","detail":"the pilot's widow's lantern house: food, drink and a bed rented by the night","count":1}
 {"place_id":"xi-inou","seq":2,"give_kind_id":"inn-room","detail":"a bunk above the lantern house","count":1}
 {"place_id":"xi-inou","seq":3,"give_kind_id":"fishing","detail":"estuary fishing from the plank landing","count":1}
+{"place_id":"xi-inou","seq":4,"give_kind_id":"combat-foes","detail":"drunk sailors and smugglers at the night quay","count":3,"reward_kind_id":"treasure","setting":"nearby","spot":"the night quay's far end, below the landing on the channel","bearing_deg":224.0,"distance_m":120.0}
+{"place_id":"xi-inou","seq":5,"give_kind_id":"treasure","detail":"a smuggler's cache under the landing","count":1,"setting":"nearby"}
 {"place_id":"xibcan","seq":0,"give_kind_id":"trader-bookseller","detail":"a small shelf of Maran books and tomes","count":1}
 {"place_id":"xibcan","seq":1,"give_kind_id":"trader-spells","detail":"Illusion tomes to Novice, scrolls","count":1}
 {"place_id":"xibcan","seq":2,"give_kind_id":"skill-book","detail":"one Illusion skill book on the shelf","count":1}
@@ -1480,12 +1522,15 @@
 {"place_id":"yalugo","seq":1,"give_kind_id":"harvest-common","detail":"saltrice","count":4}
 {"place_id":"yalugo","seq":2,"give_kind_id":"cooking-pot","detail":"the farm hearth","count":1}
 {"place_id":"yalugo","seq":3,"give_kind_id":"free-bed","detail":"the old cook's house","count":1}
+{"place_id":"yalugo","seq":4,"give_kind_id":"combat-foes","detail":"smugglers landing on the south bank at night","count":3,"reward_kind_id":"treasure","setting":"nearby","spot":"the south bank where the smugglers land","bearing_deg":180.0,"distance_m":120.0}
+{"place_id":"yalugo","seq":5,"give_kind_id":"treasure","detail":"the smugglers' cache","count":1,"setting":"nearby"}
 {"place_id":"yina","seq":0,"give_kind_id":"trader-spells","detail":"Illusion tomes to Novice, scrolls","count":1}
 {"place_id":"yina","seq":1,"give_kind_id":"trader-general","detail":"ash-glass shards, lake fish, rope","count":1}
 {"place_id":"yina","seq":2,"give_kind_id":"fishing","detail":"river fish","count":1}
 {"place_id":"yina","seq":3,"give_kind_id":"free-bed","detail":"a pallet in a stilt-house, offered to a guest","count":1}
 {"place_id":"yina","seq":4,"give_kind_id":"combat-creature","detail":"river crocodiles at the landings","count":1,"reward_kind_id":"treasure"}
-{"place_id":"yina","seq":5,"give_kind_id":"treasure","detail":"a raiders' dropped satchel","count":1}
+{"place_id":"yina","seq":5,"give_kind_id":"treasure","detail":"a raiders' dropped satchel","count":1,"setting":"nearby"}
+{"place_id":"yina","seq":6,"give_kind_id":"combat-foes","detail":"Skeith raiders who try the landings, 3 to 4","count":1,"reward_kind_id":"treasure","setting":"nearby","spot":"the river landings below the hamlet","bearing_deg":275.0,"distance_m":120.0}
 {"place_id":"ysan","seq":0,"give_kind_id":"trader-general","detail":"stone, lime, salt, rope and cloth; 750 gold","count":1}
 {"place_id":"ysan","seq":1,"give_kind_id":"cooking-pot","detail":"landing cook-fire","count":1}
 {"place_id":"ysan","seq":2,"give_kind_id":"combat-creature","detail":"crocodiles at the river mouth and skeevers among the stone stacks","count":3,"reward_kind_id":"treasure"}
@@ -1501,9 +1546,11 @@
 {"place_id":"yulca","seq":8,"give_kind_id":"inn-room","detail":"the guest raft","count":1}
 {"place_id":"yulca","seq":9,"give_kind_id":"fishing","detail":"lake fish and eels","count":1}
 {"place_id":"yulca","seq":10,"give_kind_id":"combat-creature","detail":"lake crocodiles","count":1,"reward_kind_id":"treasure"}
-{"place_id":"yulca","seq":11,"give_kind_id":"treasure","detail":"the pirate raft's stash","count":1}
+{"place_id":"yulca","seq":11,"give_kind_id":"treasure","detail":"the pirate raft's stash","count":1,"setting":"nearby"}
+{"place_id":"yulca","seq":12,"give_kind_id":"combat-foes","detail":"pirates of a raft working the far shore, 3 to 4","count":1,"reward_kind_id":"treasure","setting":"nearby","spot":"the lake shore south of the town where the pirate raft puts in","bearing_deg":180.0,"distance_m":190.0}
 {"place_id":"yuva-goli","seq":0,"give_kind_id":"trader-general","detail":"kelp, salt, sea-bird eggs and dye; 750 gold","count":1}
 {"place_id":"yuva-goli","seq":1,"give_kind_id":"harvest-common","detail":"salt piles and bird eggs on the shore","count":4}
 {"place_id":"yuva-goli","seq":2,"give_kind_id":"fishing","detail":"canoe landing fishing spot","count":1}
 {"place_id":"yuva-goli","seq":3,"give_kind_id":"combat-creature","detail":"crabs and hackwings on the shore","count":4,"reward_kind_id":"boss-chest"}
-{"place_id":"yuva-goli","seq":4,"give_kind_id":"boss-chest","detail":"cove chest","count":1}
+{"place_id":"yuva-goli","seq":4,"give_kind_id":"boss-chest","detail":"cove chest","count":1,"setting":"nearby"}
+{"place_id":"yuva-goli","seq":5,"give_kind_id":"combat-boss","detail":"the Skeith outlaw captain whose boat sits in the cove","count":1,"reward_kind_id":"boss-chest","setting":"nearby","spot":"the cove beyond the hamlet where the outlaws beach their boat","bearing_deg":125.0,"distance_m":120.0}

@@ -1,0 +1,258 @@
+{"place_id":"abandoned-village-2-m104","law_id":"none","why":"no one keeps law: abandoned, abandoned"}
+{"place_id":"abandoned-village-9-m97","law_id":"none","why":"no one keeps law: abandoned, abandoned"}
+{"place_id":"abandoned-village-m10-m100","law_id":"none","why":"no one keeps law: hostile, abandoned"}
+{"place_id":"abandoned-village-m11-m107","law_id":"none","why":"no one keeps law: hostile, abandoned"}
+{"place_id":"abandoned-village-m4-m109","law_id":"none","why":"no one keeps law: abandoned, abandoned"}
+{"place_id":"acra-tiin","law_id":"native","why":"Argonian law, no cell: Soulrest merchant council through a village reeve"}
+{"place_id":"agia-nero","law_id":"none","why":"no one keeps law: hostile, ruined"}
+{"place_id":"amalaja","law_id":"native","why":"Argonian law, no cell: The village elders, paying the island core little for protection"}
+{"place_id":"aphon-belvedere","law_id":"foreign","jail_place_id":"fort-silvermoth","why":"kept by an office inherited from the Empire ('Archwarden'): A small Archwardens' customs watch of Archein-descended families; the cell at Fort Silvermoth, the same keeper's nearest fort"}
+{"place_id":"archon","law_id":"foreign","jail_place_id":"archon","why":"kept by an office inherited from the Empire ('East Empire Company'): A harbour authority and merchant council in the East Empire Company's old buildings, with the successor state's customs officers alongside; its own cell (city)"}
+{"place_id":"armanias","law_id":"native","why":"Argonian law, no cell: A Lukiul village of potters and rice-growers under Gideon's council"}
+{"place_id":"arorha","law_id":"native","why":"Argonian law, no cell: Arorha village elders, answering to the Aroxhu council"}
+{"place_id":"aroxhu","law_id":"native","why":"Argonian law, no cell: The council of village elders of the Oxhu-Teeleel, meeting under the Aroxhu Hist"}
+{"place_id":"ayiin","law_id":"native","why":"Argonian law, no cell: The Stone-Sleepers of Tsonac"}
+{"place_id":"ayleid-ruin-m15-m69","law_id":"none","why":"no one keeps law: abandoned, ruined"}
+{"place_id":"ayleid-ruin-m18-m71","law_id":"none","why":"no one keeps law: abandoned, ruined"}
+{"place_id":"ayleid-ruin-m8-m65","law_id":"none","why":"no one keeps law: abandoned, ruined"}
+{"place_id":"badal","law_id":"native","why":"Argonian law, no cell: A council of village elders answering to the mound confederacy of Aroxhu"}
+{"place_id":"bala-karag","law_id":"none","why":"no one keeps law: abandoned, ruined"}
+{"place_id":"balormaak","law_id":"none","why":"no one keeps law: abandoned, ruined"}
+{"place_id":"bell-station","law_id":"native","why":"Argonian law, no cell: A salvage-and-watch crew sent out by Lilmoth's merchant council to dive the drowned spires, who owe it a share of each haul in kind"}
+{"place_id":"blackrose","law_id":"native","why":"Argonian law, no cell: The island core: a narrow, defensive, self-perpetuating government whose legitimacy is possession"}
+{"place_id":"blackrose-prison","law_id":"none","why":"no one keeps law: hostile, occupied"}
+{"place_id":"bucalos","law_id":"none","why":"no one keeps law: hostile, abandoned"}
+{"place_id":"cave-11-m71","law_id":"none","why":"no one keeps law: hostile, occupied"}
+{"place_id":"cave-m32-m92","law_id":"none","why":"no one keeps law: hostile, abandoned"}
+{"place_id":"chasepoint","law_id":"native","why":"Argonian law, no cell: Soulrest merchant council through a village reeve"}
+{"place_id":"delta-ferry","law_id":"native","why":"Argonian law, no cell: Delta ferry-folk, kin to the Lilmoth boatmen, who keep the crossing with the merchant council's goodwill"}
+{"place_id":"echo-deep","law_id":"none","why":"no one keeps law: abandoned, sunken"}
+{"place_id":"estate-15-m110","law_id":"native","why":"Argonian law, no cell: A Lilmoth family that took over the empty planter house, worked by tenant kin"}
+{"place_id":"estate-16-m108","law_id":"native","why":"Argonian law, no cell: An Argonian family of Lilmoth that settled the empty planter house, worked by tenant kin"}
+{"place_id":"estate-23-m106","law_id":"native","why":"Argonian law, no cell: An Argonian family that settled the empty planter house, with tenant kin"}
+{"place_id":"farm-14-m112","law_id":"native","why":"Argonian law, no cell: A single farm family in the Lilmoth coast's orbit"}
+{"place_id":"farm-15-m111","law_id":"native","why":"Argonian law, no cell: A single farm family in the Lilmoth coast's orbit"}
+{"place_id":"farm-18-m110","law_id":"native","why":"Argonian law, no cell: A single farm family in the Lilmoth coast's orbit"}
+{"place_id":"farm-22-m104","law_id":"native","why":"Argonian law, no cell: A single farm family in the Lilmoth coast's orbit"}
+{"place_id":"farm-28-m87","law_id":"native","why":"Argonian law, no cell: A Seafalls family"}
+{"place_id":"farm-28-m89","law_id":"native","why":"Argonian law, no cell: A Seafalls family"}
+{"place_id":"farm-6-m97","law_id":"native","why":"Argonian law, no cell: A rice-farming family"}
+{"place_id":"farm-m1-m64","law_id":"native","why":"Argonian law, no cell: The Vandrel family, tenants of Stormhold's farm-holders"}
+{"place_id":"farm-m6-m64","law_id":"native","why":"Argonian law, no cell: The Urvyn family"}
+{"place_id":"fort-chalkmoth","law_id":"foreign","jail_place_id":"fort-chalkmoth","why":"kept by an office inherited from the Empire ('Archwarden'): The Archwardens' garrison, ex-Archein families; its own cell (fort)"}
+{"place_id":"fort-gysilla","law_id":"foreign","jail_place_id":"fort-gysilla","why":"kept by an office inherited from the Empire ('Archwarden'): An Archwardens garrison of old Archein families; its own cell (fort)"}
+{"place_id":"fort-reedmoth","law_id":"foreign","jail_place_id":"fort-reedmoth","why":"kept by an office inherited from the Empire ('Archwarden'): A small garrison of the Archwardens, the An-Xileel successor administration, drawn from old Archein families; its own cell (fort)"}
+{"place_id":"fort-rustmoth","law_id":"foreign","jail_place_id":"fort-rustmoth","why":"kept by an office inherited from the Empire ('Archwarden'): An Archwarden customs garrison keeping the old Imperial fort; its own cell (keep)"}
+{"place_id":"fort-shellmoth","law_id":"foreign","jail_place_id":"fort-shellmoth","why":"kept by an office inherited from the Empire ('Archwarden'): A small garrison of the Archwardens, Archein-descended; its own cell (fort)"}
+{"place_id":"fort-silvermoth","law_id":"foreign","jail_place_id":"fort-silvermoth","why":"kept by an office inherited from the Empire ('Archwarden'): An Archwarden toll garrison drawn from old Archein families; its own cell (fort)"}
+{"place_id":"fort-swiftmoth","law_id":"none","why":"no one keeps law: hostile, abandoned"}
+{"place_id":"fort-thornmoth","law_id":"foreign","jail_place_id":"fort-thornmoth","why":"kept by an office inherited from the Empire ('Archwarden'): The Archwardens' garrison, staffed by ex-Archein families; its own cell (fort)"}
+{"place_id":"fort-willowmoth","law_id":"foreign","jail_place_id":"fort-willowmoth","why":"kept by an office inherited from the Empire ('Archwarden'): The Archwardens' frontier screen (an Argonian garrison keeping the old Imperial fort); its own cell (fort)"}
+{"place_id":"gandranen","law_id":"none","why":"no one keeps law: abandoned, ruined"}
+{"place_id":"gaweja","law_id":"native","why":"Argonian law, no cell: Gaweja elders, under the Aroxhu council"}
+{"place_id":"gemin","law_id":"none","why":"no one keeps law: abandoned, ruined"}
+{"place_id":"gideon","law_id":"foreign","jail_place_id":"gideon","why":"kept by an office inherited from the Empire ('Governor's Mansion'): The Gideon civic council in the old Governor's Mansion, over a Lukiul Argonian majority with Nibenese-descended families; its own cell (city)"}
+{"place_id":"giovesse","law_id":"native","why":"Argonian law, no cell: Gideon's poorer families and ghost-hunters, who squat below the ruined Castle Giovesse"}
+{"place_id":"gul-tej","law_id":"native","why":"Argonian law, no cell: A council of Lukiul and Naka-Desh trader families"}
+{"place_id":"guxal","law_id":"native","why":"Argonian law, no cell: The Root-Folk of Helstrom, a sap-gathering clan"}
+{"place_id":"helstrom","law_id":"native","why":"Argonian law, no cell: The Helstrom assembly of interior naheesh and tree-minders; a tribal levy keeps the guard"}
+{"place_id":"hirecan","law_id":"native","why":"Argonian law, no cell: The Agaceph"}
+{"place_id":"hixinoag","law_id":"native","why":"Argonian law, no cell: A drifting community of Lukiul and Naka-Desh families under a headwoman"}
+{"place_id":"homestead-29-m88","law_id":"native","why":"Argonian law, no cell: A lone Spray-Folk household"}
+{"place_id":"icalca","law_id":"native","why":"Argonian law, no cell: The Agaceph of Icalca, a raft-folk"}
+{"place_id":"imperial-ruin-14-m109","law_id":"none","why":"no one keeps law: hostile, ruined"}
+{"place_id":"imperial-ruin-18-m112","law_id":"none","why":"no one keeps law: hostile, ruined"}
+{"place_id":"imperial-ruin-2-m109","law_id":"none","why":"no one keeps law: hostile, ruined"}
+{"place_id":"imperial-ruin-22-m105","law_id":"none","why":"no one keeps law: hostile, ruined"}
+{"place_id":"imperial-ruin-m17-m113","law_id":"none","why":"no one keeps law: hostile, abandoned"}
+{"place_id":"imperial-ruin-m19-m74","law_id":"none","why":"no one keeps law: abandoned, ruined"}
+{"place_id":"imperial-ruin-m19-m82","law_id":"none","why":"no one keeps law: hostile, ruined"}
+{"place_id":"imperial-ruin-m23-m103","law_id":"none","why":"no one keeps law: hostile, abandoned"}
+{"place_id":"imperial-ruin-m25-m85","law_id":"none","why":"no one keeps law: hostile, ruined"}
+{"place_id":"imperial-ruin-m34-m96","law_id":"none","why":"no one keeps law: hostile, ruined"}
+{"place_id":"imperial-ruin-m7-m61","law_id":"none","why":"no one keeps law: hostile, ruined"}
+{"place_id":"inoio","law_id":"native","why":"Argonian law, no cell: A Three Waters raft-master family under the elder of Uluo"}
+{"place_id":"inoja","law_id":"native","why":"Argonian law, no cell: Inoja elders, under the Aroxhu council"}
+{"place_id":"jal-veesa","law_id":"native","why":"Argonian law, no cell: The Veesa-Teeleel elders; their own, not the Vicecanons"}
+{"place_id":"jarecai","law_id":"native","why":"Argonian law, no cell: The Mine-Burner tribes' council of elders"}
+{"place_id":"joxhi","law_id":"native","why":"Argonian law, no cell: Joxhi elders, under the Aroxhu council"}
+{"place_id":"julo","law_id":"native","why":"Argonian law, no cell: A family of causeway farmers in the Stormhold manner"}
+{"place_id":"ka-asei","law_id":"native","why":"Argonian law, no cell: The village elders, paying the island core for protection"}
+{"place_id":"kaochalit","law_id":"none","why":"no one keeps law: abandoned, ruined"}
+{"place_id":"karketa","law_id":"native","why":"Argonian law, no cell: A village moot answering to Lilmoth's council"}
+{"place_id":"kharaxos","law_id":"native","why":"Argonian law, no cell: Mine-Burner elders, under Jarecai"}
+{"place_id":"khariton","law_id":"none","why":"no one keeps law: hostile, abandoned"}
+{"place_id":"kharraluhl","law_id":"none","why":"no one keeps law: hostile, ruined"}
+{"place_id":"khiar","law_id":"native","why":"Argonian law, no cell: Khiar elders, under the Aroxhu council"}
+{"place_id":"kornakim","law_id":"none","why":"no one keeps law: abandoned, ruined"}
+{"place_id":"korydon","law_id":"native","why":"Argonian law, no cell: A council of craft-guild elders of the Chime-Keepers"}
+{"place_id":"kothringi-ruin-m12-m93","law_id":"none","why":"no one keeps law: abandoned, ruined"}
+{"place_id":"kothringi-ruin-m14-m71","law_id":"none","why":"no one keeps law: hostile, ruined"}
+{"place_id":"kothringi-ruin-m17-m86","law_id":"none","why":"no one keeps law: abandoned, ruined"}
+{"place_id":"kothringi-ruin-m19-m79","law_id":"none","why":"no one keeps law: abandoned, ruined"}
+{"place_id":"kothringi-ruin-m21-m84","law_id":"none","why":"no one keeps law: abandoned, ruined"}
+{"place_id":"kothringi-ruin-m23-m76","law_id":"none","why":"no one keeps law: hostile, ruined"}
+{"place_id":"kothringi-ruin-m24-m89","law_id":"none","why":"no one keeps law: abandoned, ruined"}
+{"place_id":"kothringi-ruin-m25-m80","law_id":"none","why":"no one keeps law: abandoned, ruined"}
+{"place_id":"lighthouse-9-m114","law_id":"foreign","jail_place_id":"southwatch-keep","why":"kept by an office inherited from the Empire ('Archwarden'): An Archwarden light-keeper family; the cell at Southwatch Keep, the same keeper's nearest fort"}
+{"place_id":"lilmoth","law_id":"native","why":"Argonian law, no cell: A reconstituted merchant council; no ruler"}
+{"place_id":"lilmothiit-ruin-1-m107","law_id":"none","why":"no one keeps law: abandoned, ruined"}
+{"place_id":"lilmothiit-ruin-10-m103","law_id":"none","why":"no one keeps law: abandoned, ruined"}
+{"place_id":"lilmothiit-ruin-12-m110","law_id":"none","why":"no one keeps law: abandoned, ruined"}
+{"place_id":"lilmothiit-ruin-14-m113","law_id":"none","why":"no one keeps law: hostile, ruined"}
+{"place_id":"lilmothiit-ruin-19-m110","law_id":"none","why":"no one keeps law: abandoned, ruined"}
+{"place_id":"lilmothiit-ruin-20-m105","law_id":"none","why":"no one keeps law: abandoned, ruined"}
+{"place_id":"lilmothiit-ruin-23-m103","law_id":"none","why":"no one keeps law: hostile, ruined"}
+{"place_id":"lilmothiit-ruin-m6-m104","law_id":"none","why":"no one keeps law: abandoned, ruined"}
+{"place_id":"lilmothiit-ruin-m6-m97","law_id":"none","why":"no one keeps law: abandoned, ruined"}
+{"place_id":"logging-camp-25-m63","law_id":"native","why":"Argonian law, no cell: Field-owners of Thorn, worked by hired Argonian crews"}
+{"place_id":"logging-camp-m19-m101","law_id":"native","why":"Argonian law, no cell: Soulrest's timber crew, paying the Mine-Burners in kind"}
+{"place_id":"logging-camp-m20-m107","law_id":"native","why":"Argonian law, no cell: A timber crew of Soulrest-quarter kin, cutting for the merchant council"}
+{"place_id":"loriasel","law_id":"none","why":"no one keeps law: abandoned, ruined"}
+{"place_id":"lujei","law_id":"native","why":"Argonian law, no cell: The village elders, paying the island core for protection"}
+{"place_id":"lujei-ferry","law_id":"native","why":"Argonian law, no cell: Lujei village ferry crew"}
+{"place_id":"luntoc","law_id":"native","why":"Argonian law, no cell: A fishing family and its kin"}
+{"place_id":"marzai","law_id":"native","why":"Argonian law, no cell: The elders of the Clay-Mound People"}
+{"place_id":"mine-16-m69","law_id":"native","why":"Argonian law, no cell: The Stone-Sleepers of Oxayo"}
+{"place_id":"mine-20-m70","law_id":"native","why":"Argonian law, no cell: The families of Noota Nara, under Fort Chalkmoth's toll"}
+{"place_id":"mine-25-m68","law_id":"native","why":"Argonian law, no cell: The Stone-Sleepers of Ayiin"}
+{"place_id":"mine-28-m65","law_id":"native","why":"Argonian law, no cell: Thorn's field-owners, with a toll to Fort Thornmoth"}
+{"place_id":"mine-5-m64","law_id":"native","why":"Argonian law, no cell: A pit-boss and a handful of delvers, by the Vicecanons' leave"}
+{"place_id":"mine-m12-m107","law_id":"none","why":"no one keeps law: hostile, abandoned"}
+{"place_id":"mine-m17-m106","law_id":"none","why":"no one keeps law: hostile, abandoned"}
+{"place_id":"mine-m17-m112","law_id":"none","why":"no one keeps law: hostile, ruined"}
+{"place_id":"mine-m22-m103","law_id":"none","why":"no one keeps law: abandoned, abandoned"}
+{"place_id":"mir-xal","law_id":"native","why":"Argonian law, no cell: A reeve of the Soulrest merchant council"}
+{"place_id":"myroleon","law_id":"native","why":"Argonian law, no cell: A family of chime-keepers"}
+{"place_id":"nacydes","law_id":"native","why":"Argonian law, no cell: A family of Chime-Keepers"}
+{"place_id":"natai","law_id":"native","why":"Argonian law, no cell: Village elders; the island core's protection is nominal"}
+{"place_id":"naxan","law_id":"native","why":"Argonian law, no cell: Soulrest merchant council through a village reeve"}
+{"place_id":"nemeon","law_id":"native","why":"Argonian law, no cell: Chime-Keeper households"}
+{"place_id":"nenria","law_id":"none","why":"no one keeps law: abandoned, ruined"}
+{"place_id":"noota-nara","law_id":"native","why":"Argonian law, no cell: A council of village elders; the Clay-Mound families"}
+{"place_id":"nundi","law_id":"native","why":"Argonian law, no cell: A village moot of Lilmoth-coast families"}
+{"place_id":"oeneas","law_id":"native","why":"Argonian law, no cell: Chime-Keepers, Argonian resettlers of the Kothringi towns"}
+{"place_id":"oju","law_id":"native","why":"Argonian law, no cell: A village moot of Lilmoth-coast Argonian families, who answer to no one but pay Lilmoth's council a landing toll"}
+{"place_id":"olvani","law_id":"native","why":"Argonian law, no cell: A fishing community of Lukiul families, answering to Gideon's harbour officer"}
+{"place_id":"outlaw-camp-36-m80","law_id":"none","why":"no one keeps law: hostile, inhabited"}
+{"place_id":"outlaw-camp-38-m77","law_id":"none","why":"no one keeps law: hostile, inhabited"}
+{"place_id":"outpost-1-m67","law_id":"native","why":"Argonian law, no cell: Veesa-Teeleel weir-wardens"}
+{"place_id":"outpost-1-m75","law_id":"native","why":"Argonian law, no cell: Root-Folk tree-minder of the nearest village tree"}
+{"place_id":"outpost-1-m81","law_id":"native","why":"Argonian law, no cell: Root-Folk tree-minder of the nearest village tree"}
+{"place_id":"outpost-12-m63","law_id":"native","why":"Argonian law, no cell: The Root-Folk of Helstrom, a hunting clan"}
+{"place_id":"outpost-14-m85","law_id":"native","why":"Argonian law, no cell: Root-Folk tree-minder of the nearest village tree"}
+{"place_id":"outpost-2-m68","law_id":"native","why":"Argonian law, no cell: A ferry-keeper's family by the Vicecanons' leave"}
+{"place_id":"outpost-2-m96","law_id":"native","why":"Argonian law, no cell: Root-Folk tree-minder of the nearest village tree"}
+{"place_id":"outpost-22-m77","law_id":"native","why":"Argonian law, no cell: Root-Folk of Helstrom, an egg-tending station"}
+{"place_id":"outpost-23-m64","law_id":"foreign","jail_place_id":"fort-thornmoth","why":"kept by an office inherited from the Empire ('Archwarden'): The Archwardens' garrison, from Fort Thornmoth; the cell at Fort Thornmoth, the same keeper's nearest fort"}
+{"place_id":"outpost-25-m71","law_id":"native","why":"Argonian law, no cell: The Root-Folk of Helstrom"}
+{"place_id":"outpost-28-m86","law_id":"native","why":"Argonian law, no cell: Aroxhu confederacy spear-watch"}
+{"place_id":"outpost-29-m66","law_id":"foreign","jail_place_id":"fort-thornmoth","why":"kept by an office inherited from the Empire ('Archwarden'): Archwardens, detachment from Fort Thornmoth; the cell at Fort Thornmoth, the same keeper's nearest fort"}
+{"place_id":"outpost-6-m65","law_id":"native","why":"Argonian law, no cell: The Root-Folk of Helstrom"}
+{"place_id":"outpost-6-m77","law_id":"native","why":"Argonian law, no cell: Root-Folk tree-minder of the nearest village tree"}
+{"place_id":"outpost-7-m69","law_id":"native","why":"Argonian law, no cell: The Sedge-Wardens of Jal-Veesa"}
+{"place_id":"outpost-9-m85","law_id":"native","why":"Argonian law, no cell: Root-Folk tree-minder of the nearest village tree"}
+{"place_id":"outpost-m1-m61","law_id":"native","why":"Argonian law, no cell: A Vicecanon's reeve and two guards"}
+{"place_id":"outpost-m11-m102","law_id":"native","why":"Argonian law, no cell: Mine-Burner tribes of the Banujha"}
+{"place_id":"outpost-m11-m63","law_id":"native","why":"Argonian law, no cell: Veesa-Teeleel weir-wardens"}
+{"place_id":"outpost-m13-m65","law_id":"native","why":"Argonian law, no cell: A Vicecanon's reeve and two guards"}
+{"place_id":"outpost-m13-m79","law_id":"native","why":"Argonian law, no cell: Hutan-Tzel naheesh"}
+{"place_id":"outpost-m13-m96","law_id":"native","why":"Argonian law, no cell: Mine-Burner tribes of the Banujha"}
+{"place_id":"outpost-m14-m89","law_id":"native","why":"Argonian law, no cell: Naka-Desh river-folk"}
+{"place_id":"outpost-m15-m112","law_id":"native","why":"Argonian law, no cell: Banujha mine-burner watchers"}
+{"place_id":"outpost-m15-m73","law_id":"native","why":"Argonian law, no cell: The Hutan-Tzel under an elder styled naheesh"}
+{"place_id":"outpost-m16-m68","law_id":"native","why":"Argonian law, no cell: Root-Folk sap-gatherers from the interior"}
+{"place_id":"outpost-m16-m87","law_id":"native","why":"Argonian law, no cell: Mine-Burner tribes of the Banujha"}
+{"place_id":"outpost-m17-m97","law_id":"native","why":"Argonian law, no cell: Root-Folk of Helstrom"}
+{"place_id":"outpost-m18-m84","law_id":"native","why":"Argonian law, no cell: Naka-Desh river-folk"}
+{"place_id":"outpost-m19-m103","law_id":"native","why":"Argonian law, no cell: Mine-Burner tribes of the Banujha"}
+{"place_id":"outpost-m2-m79","law_id":"native","why":"Argonian law, no cell: Root-Folk tree-minder of the nearest village tree"}
+{"place_id":"outpost-m20-m77","law_id":"native","why":"Argonian law, no cell: Naka-Desh river-folk"}
+{"place_id":"outpost-m21-m74","law_id":"native","why":"Argonian law, no cell: The Hutan-Tzel under an elder styled naheesh"}
+{"place_id":"outpost-m22-m98","law_id":"native","why":"Argonian law, no cell: Naka-Desh river-folk"}
+{"place_id":"outpost-m23-m80","law_id":"native","why":"Argonian law, no cell: Root-Folk of Helstrom"}
+{"place_id":"outpost-m25-m90","law_id":"native","why":"Argonian law, no cell: Naka-Desh river-folk"}
+{"place_id":"outpost-m3-m60","law_id":"native","why":"Argonian law, no cell: Veesa-Teeleel reed-cutters on rotation"}
+{"place_id":"outpost-m3-m83","law_id":"native","why":"Argonian law, no cell: Root-Folk tree-minder of the nearest village tree"}
+{"place_id":"outpost-m6-m66","law_id":"native","why":"Argonian law, no cell: Veesa-Teeleel weir-wardens"}
+{"place_id":"outpost-m7-m77","law_id":"native","why":"Argonian law, no cell: Hutan-Tzel naheesh"}
+{"place_id":"outpost-m9-m99","law_id":"native","why":"Argonian law, no cell: Root-Folk of Helstrom"}
+{"place_id":"ovezza","law_id":"none","why":"no one keeps law: abandoned, ruined"}
+{"place_id":"oxayo","law_id":"native","why":"Argonian law, no cell: The Stone-Sleepers of Tsonac"}
+{"place_id":"peak-39-m79","law_id":"none","why":"no one keeps law: hostile, abandoned"}
+{"place_id":"peak-m11-m84","law_id":"native","why":"Argonian law, no cell: Chime-Keeper lookout parties"}
+{"place_id":"peak-m4-m90","law_id":"none","why":"no one keeps law: abandoned, abandoned"}
+{"place_id":"percar-scar","law_id":"none","why":"no one keeps law: abandoned, ruined"}
+{"place_id":"quarry-m14-m107","law_id":"none","why":"no one keeps law: friendly, inhabited"}
+{"place_id":"quarry-m18-m109","law_id":"none","why":"no one keeps law: friendly, inhabited"}
+{"place_id":"rainbreaker-keep","law_id":"none","why":"no one keeps law: hostile, occupied"}
+{"place_id":"renhu","law_id":"native","why":"Argonian law, no cell: Renhu elders, under the Aroxhu council"}
+{"place_id":"sal-axan","law_id":"native","why":"Argonian law, no cell: A village moot of Lilmoth-coast families, in the fort's shadow"}
+{"place_id":"salaxul","law_id":"native","why":"Argonian law, no cell: Soulrest merchant council reeve"}
+{"place_id":"seafalls","law_id":"native","why":"Argonian law, no cell: The Spray-Folk of Seafalls, under their pilot-elder"}
+{"place_id":"seafalls-lighthouse","law_id":"native","why":"Argonian law, no cell: The Spray-Folk of Seafalls, a keeper family"}
+{"place_id":"shalaia","law_id":"native","why":"Argonian law, no cell: A Three Waters raft-master family under the elder of Uluo"}
+{"place_id":"shipwreck-0-m111","law_id":"none","why":"no one keeps law: abandoned, sunken"}
+{"place_id":"shipwreck-25-m111","law_id":"none","why":"no one keeps law: abandoned, sunken"}
+{"place_id":"shipwreck-25-m95","law_id":"none","why":"no one keeps law: abandoned, ruined"}
+{"place_id":"shipwreck-32-m62","law_id":"none","why":"no one keeps law: abandoned, sunken"}
+{"place_id":"shipwreck-33-m67","law_id":"none","why":"no one keeps law: abandoned, sunken"}
+{"place_id":"shipwreck-35-m71","law_id":"none","why":"no one keeps law: abandoned, sunken"}
+{"place_id":"shipwreck-36-m82","law_id":"none","why":"no one keeps law: hostile, ruined"}
+{"place_id":"shipwreck-42-m78","law_id":"none","why":"no one keeps law: abandoned, sunken"}
+{"place_id":"shipwreck-m25-m113","law_id":"none","why":"no one keeps law: abandoned, sunken"}
+{"place_id":"shipwreck-m30-m91","law_id":"none","why":"no one keeps law: abandoned, sunken"}
+{"place_id":"shipwreck-m36-m95","law_id":"none","why":"no one keeps law: abandoned, sunken"}
+{"place_id":"siluo","law_id":"native","why":"Argonian law, no cell: A Three Waters raft-master family under the elder of Uluo"}
+{"place_id":"slough-point","law_id":"native","why":"Argonian law, no cell: A council of Lukiul and Nibenese-descended families; Fort Rustmoth's garrison keeps the toll"}
+{"place_id":"soulrest","law_id":"foreign","jail_place_id":"soulrest","why":"kept by an office inherited from the Empire ('ex-Imperial'): A merchant council, the ex-Imperial civil office and river interests, in an unresolved contest; the Banujha tribes hold the hatching grounds; its own cell (city)"}
+{"place_id":"southwatch-keep","law_id":"foreign","jail_place_id":"southwatch-keep","why":"kept by an office inherited from the Empire ('Archwarden'): A small garrison of the Archwardens, the An-Xileel successor administration, drawn from old Archein families; its own cell (fort)"}
+{"place_id":"stormhold","law_id":"native","why":"Argonian law, no cell: The Vicecanons of Stormhold (the office the city invented); the Hist tree in the town square"}
+{"place_id":"sunken-ruin-23-m112","law_id":"none","why":"no one keeps law: abandoned, sunken"}
+{"place_id":"sunken-ruin-24-m109","law_id":"none","why":"no one keeps law: abandoned, sunken"}
+{"place_id":"sunken-ruin-27-m111","law_id":"none","why":"no one keeps law: abandoned, sunken"}
+{"place_id":"sunken-ruin-28-m103","law_id":"none","why":"no one keeps law: abandoned, sunken"}
+{"place_id":"sunken-ruin-30-m101","law_id":"none","why":"no one keeps law: abandoned, sunken"}
+{"place_id":"sunken-ruin-30-m108","law_id":"none","why":"no one keeps law: abandoned, sunken"}
+{"place_id":"sunken-ruin-31-m110","law_id":"none","why":"no one keeps law: abandoned, sunken"}
+{"place_id":"surkina","law_id":"native","why":"Argonian law, no cell: A council of farm-holders by the Vicecanons' leave"}
+{"place_id":"tapauo","law_id":"native","why":"Argonian law, no cell: A Three Waters raft-master family under the elder of Uluo"}
+{"place_id":"tarak-shan","law_id":"none","why":"no one keeps law: abandoned, abandoned"}
+{"place_id":"tei-kur","law_id":"native","why":"Argonian law, no cell: A reed-lord council of the delta villages"}
+{"place_id":"tenmal","law_id":"native","why":"Argonian law, no cell: A council of farm-holders by the Vicecanons' leave"}
+{"place_id":"thorn","law_id":"native","why":"Argonian law, no cell: Vicecanons and the saltrice field-owners"}
+{"place_id":"toklea","law_id":"native","why":"Argonian law, no cell: A council of craft-masters; no Archwarden garrison"}
+{"place_id":"tribal-camp-12-m71","law_id":"none","why":"no one keeps law: hostile, occupied"}
+{"place_id":"tribal-camp-19-m79","law_id":"none","why":"no one keeps law: hostile, inhabited"}
+{"place_id":"tribal-camp-28-m76","law_id":"native","why":"Argonian law, no cell: The Sarpa of the Zeeraxun roost"}
+{"place_id":"tribal-camp-4-m91","law_id":"native","why":"Argonian law, no cell: The Tumnatu hunters"}
+{"place_id":"tribal-camp-9-m83","law_id":"native","why":"Argonian law, no cell: The Tumnatu hunters"}
+{"place_id":"tribal-camp-m12-m74","law_id":"none","why":"no one keeps law: hostile, inhabited"}
+{"place_id":"tribal-camp-m13-m77","law_id":"none","why":"no one keeps law: hostile, inhabited"}
+{"place_id":"tribal-camp-m16-m82","law_id":"native","why":"Argonian law, no cell: A Paatru hunting party of the Middle Argonian forest"}
+{"place_id":"tribal-camp-m18-m91","law_id":"native","why":"Argonian law, no cell: A Paatru hunting party of the Middle Argonian forest"}
+{"place_id":"tribal-camp-m2-m68","law_id":"none","why":"no one keeps law: hostile, inhabited"}
+{"place_id":"tribal-camp-m2-m71","law_id":"none","why":"no one keeps law: hostile, inhabited"}
+{"place_id":"tribal-camp-m22-m83","law_id":"native","why":"Argonian law, no cell: A Paatru hunting party of the Middle Argonian forest"}
+{"place_id":"tribal-camp-m7-m80","law_id":"none","why":"no one keeps law: hostile, inhabited"}
+{"place_id":"tribal-camp-m9-m70","law_id":"none","why":"no one keeps law: hostile, inhabited"}
+{"place_id":"truowa","law_id":"native","why":"Argonian law, no cell: A merchant council allied to Lilmoth's"}
+{"place_id":"tselan","law_id":"native","why":"Argonian law, no cell: The Stone-Sleepers of Tsonac"}
+{"place_id":"tsonac","law_id":"native","why":"Argonian law, no cell: The Stone-Sleepers of Tsonac, ruled by a council of elders and a tree-minder"}
+{"place_id":"tydeos","law_id":"native","why":"Argonian law, no cell: A family of Chime-Keepers"}
+{"place_id":"uluo","law_id":"native","why":"Argonian law, no cell: The elder of the Three Waters Tribe and the tribe's council of raft-masters"}
+{"place_id":"umpholo","law_id":"native","why":"Argonian law, no cell: A small river village of Lukiul and Naka-Desh families; nobody rules it"}
+{"place_id":"velothi-ruin-23-m73","law_id":"none","why":"no one keeps law: hostile, ruined"}
+{"place_id":"velothi-ruin-23-m97","law_id":"none","why":"no one keeps law: abandoned, ruined"}
+{"place_id":"velothi-ruin-24-m84","law_id":"none","why":"no one keeps law: abandoned, ruined"}
+{"place_id":"velothi-ruin-28-m82","law_id":"none","why":"no one keeps law: abandoned, ruined"}
+{"place_id":"velothi-ruin-28-m92","law_id":"none","why":"no one keeps law: hostile, ruined"}
+{"place_id":"vicrium","law_id":"native","why":"Argonian law, no cell: Seafalls families and Aroxhu clay-miners, jointly"}
+{"place_id":"virtluush","law_id":"none","why":"no one keeps law: hostile, ruined"}
+{"place_id":"xi-inou","law_id":"native","why":"Argonian law, no cell: A Three Waters raft-master family under the elder of Uluo"}
+{"place_id":"xibcan","law_id":"native","why":"Argonian law, no cell: The Agaceph of Xibcan"}
+{"place_id":"yalugo","law_id":"native","why":"Argonian law, no cell: Two farm families of the Stormhold manner"}
+{"place_id":"yina","law_id":"native","why":"Argonian law, no cell: The Agaceph of Yina"}
+{"place_id":"ysan","law_id":"native","why":"Argonian law, no cell: Stone-Sleepers of Tsonac, a landing held for Tsonac"}
+{"place_id":"yulca","law_id":"native","why":"Argonian law, no cell: The Agaceph of Yulca, a council of readers"}
+{"place_id":"yuva-goli","law_id":"native","why":"Argonian law, no cell: Root-Folk of Helstrom, tide-station"}

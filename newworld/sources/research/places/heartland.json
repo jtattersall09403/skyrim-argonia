@@ -1381,6 +1381,32 @@
      "kind": "free-bed",
      "detail": "the ferry hut",
      "count": 1
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "grave-robbers at the opened cairn on the near bank",
+     "count": 3,
+     "reward": "boss-chest",
+     "setting": "nearby",
+     "spot": "the opened cairn on the near bank",
+     "bearing_deg": 330,
+     "distance_m": 120
+    },
+    {
+     "kind": "combat-boss",
+     "detail": "the grave-robbers' leader",
+     "count": 1,
+     "reward": "boss-chest",
+     "setting": "nearby",
+     "spot": "the opened cairn on the near bank",
+     "bearing_deg": 330,
+     "distance_m": 120
+    },
+    {
+     "kind": "boss-chest",
+     "detail": "boss chest",
+     "count": 1,
+     "setting": "nearby"
     }
    ]
   },
@@ -1846,6 +1872,22 @@
      "kind": "free-bed",
      "detail": "the old cook's house",
      "count": 1
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "smugglers landing on the south bank at night",
+     "count": 3,
+     "reward": "treasure",
+     "setting": "nearby",
+     "spot": "the south bank where the smugglers land",
+     "bearing_deg": 180,
+     "distance_m": 120
+    },
+    {
+     "kind": "treasure",
+     "detail": "the smugglers' cache",
+     "count": 1,
+     "setting": "nearby"
     }
    ]
   },
@@ -2614,6 +2656,32 @@
      "kind": "cooking-pot",
      "detail": "the boat-wife's hearth",
      "count": 1
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "boat-robbers who stripped the wreck in the reeds",
+     "count": 3,
+     "reward": "boss-chest",
+     "setting": "nearby",
+     "spot": "the wreck in the reeds along the waterway",
+     "bearing_deg": 141,
+     "distance_m": 120
+    },
+    {
+     "kind": "combat-boss",
+     "detail": "the boat-robbers' leader",
+     "count": 1,
+     "reward": "boss-chest",
+     "setting": "nearby",
+     "spot": "the wreck in the reeds along the waterway",
+     "bearing_deg": 141,
+     "distance_m": 120
+    },
+    {
+     "kind": "boss-chest",
+     "detail": "boss chest",
+     "count": 1,
+     "setting": "nearby"
     }
    ]
   },
@@ -2838,6 +2906,32 @@
      "kind": "anvil",
      "detail": "the chime-maker's forge",
      "count": 1
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "Naga scouts watching the pass",
+     "count": 3,
+     "reward": "boss-chest",
+     "setting": "nearby",
+     "spot": "the pass over the ridge toward the watch peak",
+     "bearing_deg": 294,
+     "distance_m": 120
+    },
+    {
+     "kind": "combat-boss",
+     "detail": "the Naga scout-leader",
+     "count": 1,
+     "reward": "boss-chest",
+     "setting": "nearby",
+     "spot": "the pass over the ridge toward the watch peak",
+     "bearing_deg": 294,
+     "distance_m": 120
+    },
+    {
+     "kind": "boss-chest",
+     "detail": "boss chest",
+     "count": 1,
+     "setting": "nearby"
     }
    ]
   },
@@ -3559,6 +3653,32 @@
      "kind": "cooking-pot",
      "detail": "the station fire",
      "count": 1
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "an egg-thieves' boat crew",
+     "count": 3,
+     "reward": "boss-chest",
+     "setting": "nearby",
+     "spot": "the river junction below the platforms where the boat ties up",
+     "bearing_deg": 202,
+     "distance_m": 120
+    },
+    {
+     "kind": "combat-boss",
+     "detail": "the egg-thieves' pilot",
+     "count": 1,
+     "reward": "boss-chest",
+     "setting": "nearby",
+     "spot": "the river junction below the platforms where the boat ties up",
+     "bearing_deg": 202,
+     "distance_m": 120
+    },
+    {
+     "kind": "boss-chest",
+     "detail": "boss chest",
+     "count": 1,
+     "setting": "nearby"
     }
    ]
   },
@@ -4029,6 +4149,32 @@
      "kind": "cooking-pot",
      "detail": "the watch fire",
      "count": 1
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "Salt-Tooth Naga scouting the nest-pit at night",
+     "count": 3,
+     "reward": "boss-chest",
+     "setting": "nearby",
+     "spot": "the swamp edge south-west of the nest-pit, on the way from the Naga camp",
+     "bearing_deg": 260,
+     "distance_m": 120
+    },
+    {
+     "kind": "combat-boss",
+     "detail": "the Naga scout-leader",
+     "count": 1,
+     "reward": "boss-chest",
+     "setting": "nearby",
+     "spot": "the swamp edge south-west of the nest-pit, on the way from the Naga camp",
+     "bearing_deg": 260,
+     "distance_m": 120
+    },
+    {
+     "kind": "boss-chest",
+     "detail": "boss chest",
+     "count": 1,
+     "setting": "nearby"
     }
    ]
   },
@@ -4509,7 +4655,18 @@
     {
      "kind": "boss-chest",
      "detail": "boss chest",
-     "count": 1
+     "count": 1,
+     "setting": "nearby"
+    },
+    {
+     "kind": "combat-boss",
+     "detail": "the boat-robber who emptied the drifting canoe",
+     "count": 1,
+     "reward": "boss-chest",
+     "setting": "nearby",
+     "spot": "the drifting canoe off the islet",
+     "bearing_deg": 209,
+     "distance_m": 120
     }
    ]
   },
@@ -4744,6 +4901,32 @@
      "kind": "fence",
      "detail": "a smuggler who lands at night",
      "count": 1
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "smugglers who use the islet at night",
+     "count": 3,
+     "reward": "boss-chest",
+     "setting": "nearby",
+     "spot": "the far landing of the islet where the smugglers tie up at night",
+     "bearing_deg": 234,
+     "distance_m": 120
+    },
+    {
+     "kind": "combat-boss",
+     "detail": "the smugglers' captain",
+     "count": 1,
+     "reward": "boss-chest",
+     "setting": "nearby",
+     "spot": "the far landing of the islet where the smugglers tie up at night",
+     "bearing_deg": 234,
+     "distance_m": 120
+    },
+    {
+     "kind": "boss-chest",
+     "detail": "boss chest",
+     "count": 1,
+     "setting": "nearby"
     }
    ]
   },
@@ -4973,6 +5156,32 @@
      "kind": "trader-apothecary",
      "detail": "the herb-gatherers",
      "count": 1
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "robbers at the wreck of the Blackrose boat",
+     "count": 3,
+     "reward": "boss-chest",
+     "setting": "nearby",
+     "spot": "the wreck of the Blackrose boat on the open water",
+     "bearing_deg": 50,
+     "distance_m": 120
+    },
+    {
+     "kind": "combat-boss",
+     "detail": "the robbers' leader",
+     "count": 1,
+     "reward": "boss-chest",
+     "setting": "nearby",
+     "spot": "the wreck of the Blackrose boat on the open water",
+     "bearing_deg": 50,
+     "distance_m": 120
+    },
+    {
+     "kind": "boss-chest",
+     "detail": "boss chest",
+     "count": 1,
+     "setting": "nearby"
     }
    ]
   },
@@ -5438,6 +5647,32 @@
      "kind": "trainer",
      "detail": "Journeyman Sneak (a Hutan-Tzel go-between)",
      "count": 1
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "Naga on the Murkwood edge path",
+     "count": 3,
+     "reward": "boss-chest",
+     "setting": "nearby",
+     "spot": "the Murkwood edge path south of the palisade",
+     "bearing_deg": 180,
+     "distance_m": 120
+    },
+    {
+     "kind": "combat-boss",
+     "detail": "the Naga band's leader",
+     "count": 1,
+     "reward": "boss-chest",
+     "setting": "nearby",
+     "spot": "the Murkwood edge path south of the palisade",
+     "bearing_deg": 180,
+     "distance_m": 120
+    },
+    {
+     "kind": "boss-chest",
+     "detail": "boss chest",
+     "count": 1,
+     "setting": "nearby"
     }
    ]
   },

@@ -24,6 +24,8 @@
 {"place_id":"acra-tiin","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trader-innkeeper: fish-and-salt seller at the landing)"}
 {"place_id":"acra-tiin","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (cooking-pot: cooking pot at the landing)"}
 {"place_id":"acra-tiin","give_seq":3,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (fishing: sea fishing off the landing)"}
+{"place_id":"acra-tiin","give_seq":4,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-foes: wreckers on the shore by night)"}
+{"place_id":"acra-tiin","give_seq":5,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (treasure: the wreckers' cache in the dunes)"}
 {"place_id":"agia-nero","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-foes: smugglers in the broken walls)"}
 {"place_id":"agia-nero","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-boss: the smugglers' chief)"}
 {"place_id":"agia-nero","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (boss-chest: the cache under the tower)"}
@@ -403,6 +405,7 @@
 {"place_id":"icalca","give_seq":3,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (fishing: lake fish and eels)"}
 {"place_id":"icalca","give_seq":4,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-creature: lake crocodiles in the shallows)"}
 {"place_id":"icalca","give_seq":5,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (treasure: a bandit's cache by the reed screens)"}
+{"place_id":"icalca","give_seq":6,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-foes: bandits trying the landings, 3 to 4)"}
 {"place_id":"imperial-ruin-14-m109","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-foes: squatters and smugglers in the yard)"}
 {"place_id":"imperial-ruin-14-m109","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-boss: the squatters' lookout leader on the north wall)"}
 {"place_id":"imperial-ruin-14-m109","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-creature: snakes in the wall-gaps and the water-filled cellar)"}
@@ -493,13 +496,19 @@
 {"place_id":"joxhi","give_seq":3,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (free-bed: the guest mound, shared with the diggers)"}
 {"place_id":"joxhi","give_seq":4,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-creature: crocodiles at the river mouth)"}
 {"place_id":"joxhi","give_seq":5,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (treasure: a digger's cache under the buried hall's door)"}
+{"place_id":"joxhi","give_seq":6,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-foes: Sarpa raiders in the pit scrub)"}
 {"place_id":"julo","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (boat-stop: the ferryman's raft at the delta crossing)"}
 {"place_id":"julo","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (harvest-common: saltrice)"}
 {"place_id":"julo","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (cooking-pot: the farm hearth)"}
 {"place_id":"julo","give_seq":3,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (free-bed: the ferry hut)"}
+{"place_id":"julo","give_seq":4,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-foes: grave-robbers at the opened cairn on the near bank)"}
+{"place_id":"julo","give_seq":5,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-boss: the grave-robbers' leader)"}
+{"place_id":"julo","give_seq":6,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (boss-chest: boss chest)"}
 {"place_id":"ka-asei","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trader-general: boatwright's family selling rope, tools and fish)"}
 {"place_id":"ka-asei","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (cooking-pot: cooking pot on the longhouse platform)"}
 {"place_id":"ka-asei","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (fishing: fish traps in the channel mouth)"}
+{"place_id":"ka-asei","give_seq":3,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-foes: night bandit boats at the channel mouth)"}
+{"place_id":"ka-asei","give_seq":4,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (treasure: the bandits' boat strongbox)"}
 {"place_id":"kaochalit","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trader-apothecary: the Dunmer herbalist in the outer tomb)"}
 {"place_id":"kaochalit","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (alchemy-lab: the herbalist's bench)"}
 {"place_id":"kaochalit","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-creature: skeletons and ghosts of the flu-dead in the lower halls)"}
@@ -512,6 +521,7 @@
 {"place_id":"karketa","give_seq":3,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (harvest-common: sea salt from the salt pans)"}
 {"place_id":"karketa","give_seq":4,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-creature: a sea-drake beyond the reef)"}
 {"place_id":"karketa","give_seq":5,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (treasure: a cutpurses' stash)"}
+{"place_id":"karketa","give_seq":6,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-foes: cutpurses on the Lilmoth road)"}
 {"place_id":"kharaxos","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (boat-stop: a boatman at the river market)"}
 {"place_id":"kharaxos","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trader-blacksmith: a metal-trader selling salvaged mine iron and corundum)"}
 {"place_id":"kharaxos","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (smelter: in the river market)"}
@@ -537,6 +547,7 @@
 {"place_id":"khiar","give_seq":3,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (free-bed: a mat in the boat-wright's loft)"}
 {"place_id":"khiar","give_seq":4,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-creature: crocodiles at the inlet)"}
 {"place_id":"khiar","give_seq":5,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (treasure: a smugglers' bundle behind the breakwater)"}
+{"place_id":"khiar","give_seq":6,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-foes: Skeith smugglers on the cape)"}
 {"place_id":"kornakim","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-foes: Velothi household ghosts at their posts in the inner hall)"}
 {"place_id":"kornakim","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-creature: mudcrabs and hackwings on the beach)"}
 {"place_id":"kornakim","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-boss: the watch-captain's ghost on the tower stair)"}
@@ -787,6 +798,9 @@
 {"place_id":"nacydes","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (tanning-rack: the hide racks)"}
 {"place_id":"nacydes","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (forge: the chime-maker's forge)"}
 {"place_id":"nacydes","give_seq":3,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (anvil: the chime-maker's forge)"}
+{"place_id":"nacydes","give_seq":4,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-foes: Naga scouts watching the pass)"}
+{"place_id":"nacydes","give_seq":5,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-boss: the Naga scout-leader)"}
+{"place_id":"nacydes","give_seq":6,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (boss-chest: boss chest)"}
 {"place_id":"natai","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trader-general: salt-pan family trading salt, shellfish and Salt Heron salvage)"}
 {"place_id":"natai","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (cooking-pot: cooking pot by the drying racks)"}
 {"place_id":"natai","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (free-bed: a salvager's spare bed in the longhouse)"}
@@ -801,6 +815,9 @@
 {"place_id":"nemeon","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trader-general: the boat-wife)"}
 {"place_id":"nemeon","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (harvest-common: swamp herbs)"}
 {"place_id":"nemeon","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (cooking-pot: the boat-wife's hearth)"}
+{"place_id":"nemeon","give_seq":3,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-foes: boat-robbers who stripped the wreck in the reeds)"}
+{"place_id":"nemeon","give_seq":4,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-boss: the boat-robbers' leader)"}
+{"place_id":"nemeon","give_seq":5,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (boss-chest: boss chest)"}
 {"place_id":"nenria","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-creature: giant snakes in the drowned cellar)"}
 {"place_id":"nenria","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-foes: Ayleid skeletons and a ghost at the arch)"}
 {"place_id":"nenria","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-boss: a ghost-knight of the hall)"}
@@ -865,6 +882,9 @@
 {"place_id":"outpost-1-m81","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (fishing: the junction landing)"}
 {"place_id":"outpost-1-m81","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (free-bed: a stilt platform)"}
 {"place_id":"outpost-1-m81","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (cooking-pot: the station fire)"}
+{"place_id":"outpost-1-m81","give_seq":3,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-foes: an egg-thieves' boat crew)"}
+{"place_id":"outpost-1-m81","give_seq":4,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-boss: the egg-thieves' pilot)"}
+{"place_id":"outpost-1-m81","give_seq":5,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (boss-chest: boss chest)"}
 {"place_id":"outpost-12-m63","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trader-hunter: the old trapper buys hides and sells smoked meat and arrows)"}
 {"place_id":"outpost-12-m63","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (tanning-rack: by the pelt frames)"}
 {"place_id":"outpost-12-m63","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trainer: Archery, Journeyman, the old trapper)"}
@@ -875,11 +895,17 @@
 {"place_id":"outpost-14-m85","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (cooking-pot: the drying-rack fire)"}
 {"place_id":"outpost-14-m85","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (free-bed: the platform hut)"}
 {"place_id":"outpost-14-m85","give_seq":3,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (fence: a smuggler who lands at night)"}
+{"place_id":"outpost-14-m85","give_seq":4,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-foes: smugglers who use the islet at night)"}
+{"place_id":"outpost-14-m85","give_seq":5,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-boss: the smugglers' captain)"}
+{"place_id":"outpost-14-m85","give_seq":6,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (boss-chest: boss chest)"}
 {"place_id":"outpost-2-m68","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trader-innkeeper: the roadhouse: smoked meat and saltrice)"}
 {"place_id":"outpost-2-m68","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (inn-room: a room in the roadhouse)"}
 {"place_id":"outpost-2-m96","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (free-bed: the crews' lodging hut)"}
 {"place_id":"outpost-2-m96","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (harvest-rare: dragon's-tongue)"}
 {"place_id":"outpost-2-m96","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trader-apothecary: the herb-gatherers)"}
+{"place_id":"outpost-2-m96","give_seq":3,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-foes: robbers at the wreck of the Blackrose boat)"}
+{"place_id":"outpost-2-m96","give_seq":4,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-boss: the robbers' leader)"}
+{"place_id":"outpost-2-m96","give_seq":5,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (boss-chest: boss chest)"}
 {"place_id":"outpost-22-m77","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trader-hunter: hides, skins and raw meat from the lodge)"}
 {"place_id":"outpost-22-m77","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (tanning-rack: the lodge rack)"}
 {"place_id":"outpost-22-m77","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (cooking-pot: the lodge fire)"}
@@ -900,6 +926,8 @@
 {"place_id":"outpost-28-m86","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (grindstone: a grindstone beside the spear rack)"}
 {"place_id":"outpost-28-m86","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (free-bed: spear-watch mats in the hut)"}
 {"place_id":"outpost-28-m86","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (follower: the watch-leader of Khiar, a spear fighter who knows the road)"}
+{"place_id":"outpost-28-m86","give_seq":3,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-foes: smuggler bands on the road)"}
+{"place_id":"outpost-28-m86","give_seq":4,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (treasure: the smugglers' cache by the road)"}
 {"place_id":"outpost-29-m66","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (free-bed: wardens' bunks in the blockhouse)"}
 {"place_id":"outpost-29-m66","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (cooking-pot: garrison cook-fire)"}
 {"place_id":"outpost-29-m66","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-creature: swamp-crocodiles in the ditch and giant snakes)"}
@@ -923,6 +951,7 @@
 {"place_id":"outpost-9-m85","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trader-innkeeper: the keepers sell smoked eel)"}
 {"place_id":"outpost-9-m85","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-creature: slaughterfish round the eel traps)"}
 {"place_id":"outpost-9-m85","give_seq":3,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (boss-chest: boss chest)"}
+{"place_id":"outpost-9-m85","give_seq":4,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-boss: the boat-robber who emptied the drifting canoe)"}
 {"place_id":"outpost-m1-m61","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trader-general: a stall of lamp oil, rope and travel food)"}
 {"place_id":"outpost-m11-m102","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trainer: Journeyman Marksman trainer, the post's watch-leader)"}
 {"place_id":"outpost-m11-m102","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (fishing: gar in the channel)"}
@@ -978,8 +1007,12 @@
 {"place_id":"outpost-m19-m103","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (cooking-pot: the watch fire)"}
 {"place_id":"outpost-m19-m103","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-creature: giant snakes on the causeway)"}
 {"place_id":"outpost-m19-m103","give_seq":3,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (treasure: bandits' purses)"}
+{"place_id":"outpost-m19-m103","give_seq":4,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-foes: road bandits who test the post at night)"}
 {"place_id":"outpost-m2-m79","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (free-bed: a watch hut)"}
 {"place_id":"outpost-m2-m79","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (cooking-pot: the watch fire)"}
+{"place_id":"outpost-m2-m79","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-foes: Salt-Tooth Naga scouting the nest-pit at night)"}
+{"place_id":"outpost-m2-m79","give_seq":3,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-boss: the Naga scout-leader)"}
+{"place_id":"outpost-m2-m79","give_seq":4,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (boss-chest: boss chest)"}
 {"place_id":"outpost-m20-m77","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trader-hunter: a Naka-Desh trader who buys Paatru hides)"}
 {"place_id":"outpost-m20-m77","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (fishing: gar at the landing)"}
 {"place_id":"outpost-m20-m77","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (tanning-rack: on the landing)"}
@@ -1021,6 +1054,9 @@
 {"place_id":"outpost-m7-m77","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trader-hunter: the Hutan-Tzel buy hides)"}
 {"place_id":"outpost-m7-m77","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (tanning-rack: the canoe shed)"}
 {"place_id":"outpost-m7-m77","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trainer: Journeyman Sneak (a Hutan-Tzel go-between))"}
+{"place_id":"outpost-m7-m77","give_seq":3,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-foes: Naga on the Murkwood edge path)"}
+{"place_id":"outpost-m7-m77","give_seq":4,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-boss: the Naga band's leader)"}
+{"place_id":"outpost-m7-m77","give_seq":5,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (boss-chest: boss chest)"}
 {"place_id":"outpost-m9-m99","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trainer: Journeyman Sneak trainer, the station lookout)"}
 {"place_id":"outpost-m9-m99","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (cooking-pot: the post's fire)"}
 {"place_id":"outpost-m9-m99","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (harvest-common: marsh-bird eggs and reed roots)"}
@@ -1068,9 +1104,12 @@
 {"place_id":"renhu","give_seq":3,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (harvest-common: shore reeds and inlet shellfish)"}
 {"place_id":"renhu","give_seq":4,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-creature: coastal crocodiles and mudcrabs)"}
 {"place_id":"renhu","give_seq":5,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (treasure: a smugglers' cache on the bluff under the signal light)"}
+{"place_id":"renhu","give_seq":6,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-foes: Skeith smugglers landing on the inlet)"}
 {"place_id":"sal-axan","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trader-general: fish, rice and shell sold to the fort and travellers)"}
 {"place_id":"sal-axan","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trader-innkeeper: a village table with fish stew and ale)"}
 {"place_id":"sal-axan","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (fishing: north-shore fishing)"}
+{"place_id":"sal-axan","give_seq":3,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-foes: deserters from Fort Reedmoth in the reeds)"}
+{"place_id":"sal-axan","give_seq":4,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (treasure: a deserter's hoard)"}
 {"place_id":"salaxul","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (boat-stop: a coastal boat at the jetty)"}
 {"place_id":"salaxul","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trader-general: landing trader in salt, shellfish and coastal freight)"}
 {"place_id":"salaxul","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (cooking-pot: cooking pot at the landing)"}
@@ -1086,6 +1125,7 @@
 {"place_id":"seafalls","give_seq":6,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (cooking-pot: the portage-men's pot at the falls)"}
 {"place_id":"seafalls","give_seq":7,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-creature: slaughterfish in the sea-pool)"}
 {"place_id":"seafalls","give_seq":8,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (treasure: a wreck-salvage store on the shoals)"}
+{"place_id":"seafalls","give_seq":9,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-foes: Skeith pirates raiding the landing)"}
 {"place_id":"seafalls-lighthouse","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (free-bed: the keeper's hut)"}
 {"place_id":"seafalls-lighthouse","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (harvest-common: shoal shellfish and driftwood on the point)"}
 {"place_id":"seafalls-lighthouse","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-foes: Skeith pirates who hold the gallery)"}
@@ -1468,6 +1508,8 @@
 {"place_id":"xi-inou","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trader-innkeeper: the pilot's widow's lantern house: food, drink and a bed rented by the night)"}
 {"place_id":"xi-inou","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (inn-room: a bunk above the lantern house)"}
 {"place_id":"xi-inou","give_seq":3,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (fishing: estuary fishing from the plank landing)"}
+{"place_id":"xi-inou","give_seq":4,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-foes: drunk sailors and smugglers at the night quay)"}
+{"place_id":"xi-inou","give_seq":5,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (treasure: a smuggler's cache under the landing)"}
 {"place_id":"xibcan","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trader-bookseller: a small shelf of Maran books and tomes)"}
 {"place_id":"xibcan","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trader-spells: Illusion tomes to Novice, scrolls)"}
 {"place_id":"xibcan","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (skill-book: one Illusion skill book on the shelf)"}
@@ -1480,12 +1522,15 @@
 {"place_id":"yalugo","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (harvest-common: saltrice)"}
 {"place_id":"yalugo","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (cooking-pot: the farm hearth)"}
 {"place_id":"yalugo","give_seq":3,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (free-bed: the old cook's house)"}
+{"place_id":"yalugo","give_seq":4,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-foes: smugglers landing on the south bank at night)"}
+{"place_id":"yalugo","give_seq":5,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (treasure: the smugglers' cache)"}
 {"place_id":"yina","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trader-spells: Illusion tomes to Novice, scrolls)"}
 {"place_id":"yina","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trader-general: ash-glass shards, lake fish, rope)"}
 {"place_id":"yina","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (fishing: river fish)"}
 {"place_id":"yina","give_seq":3,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (free-bed: a pallet in a stilt-house, offered to a guest)"}
 {"place_id":"yina","give_seq":4,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-creature: river crocodiles at the landings)"}
 {"place_id":"yina","give_seq":5,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (treasure: a raiders' dropped satchel)"}
+{"place_id":"yina","give_seq":6,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-foes: Skeith raiders who try the landings, 3 to 4)"}
 {"place_id":"ysan","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trader-general: stone, lime, salt, rope and cloth; 750 gold)"}
 {"place_id":"ysan","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (cooking-pot: landing cook-fire)"}
 {"place_id":"ysan","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-creature: crocodiles at the river mouth and skeevers among the stone stacks)"}
@@ -1502,8 +1547,10 @@
 {"place_id":"yulca","give_seq":9,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (fishing: lake fish and eels)"}
 {"place_id":"yulca","give_seq":10,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-creature: lake crocodiles)"}
 {"place_id":"yulca","give_seq":11,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (treasure: the pirate raft's stash)"}
+{"place_id":"yulca","give_seq":12,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-foes: pirates of a raft working the far shore, 3 to 4)"}
 {"place_id":"yuva-goli","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trader-general: kelp, salt, sea-bird eggs and dye; 750 gold)"}
 {"place_id":"yuva-goli","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (harvest-common: salt piles and bird eggs on the shore)"}
 {"place_id":"yuva-goli","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (fishing: canoe landing fishing spot)"}
 {"place_id":"yuva-goli","give_seq":3,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-creature: crabs and hackwings on the shore)"}
 {"place_id":"yuva-goli","give_seq":4,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (boss-chest: cove chest)"}
+{"place_id":"yuva-goli","give_seq":5,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-boss: the Skeith outlaw captain whose boat sits in the cove)"}

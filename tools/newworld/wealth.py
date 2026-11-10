@@ -4,7 +4,9 @@ contract docs/design/place-studio.md "Stock").
 A place's wealth is derived from its facts, never from danger alone: its settlement tier or kind, importance,
 population, trade position (roads at it, a major road, a boat stop, its traders) and a mechanical read of its
 economy note. Its danger enters as its reward band (tools/newworld/place_danger.py): the band's tier is the best
-the way in and the fight inside hold, and a lived place's ceiling is the higher of that and its wealth's. The figure, its band (P1..P5) and the reason are kept in `newworld/sources/stock/place_wealth.json`,
+the way in and the fight inside hold. Whose goods they are sets the ceiling (scale.json `ceiling_why`): a friendly
+or wary place's ceiling is its wealth band's, as a city's is, whatever the land round it; a hostile lived place's is
+the higher of its reward tier and its wealth's; an unpeopled place's is its reward tier. The figure, its band (P1..P5) and the reason are kept in `newworld/sources/stock/place_wealth.json`,
 one row per place; a row's `owner` block overrules the derived band for that place and is never touched by a
 rederive. build_db reads the file into the tables `place_wealth` (with the scale's lookups `stock_tier`,
 `place_wealth_band`, `person_wealth_band`).
@@ -27,6 +29,15 @@ STOCK = f.ROOT / "sources" / "stock"
 SCALE = STOCK / "scale.json"
 WEALTH = STOCK / "place_wealth.json"
 LIVED = {"inhabited", "garrisoned", "occupied"}
+OWN_GOODS = {"friendly", "wary"}       # dispositions whose goods are the people's own: the ceiling is the wealth's
+
+
+def ceiling_of(disposition: str, danger_tier: str, wealth_tier: str, rank: dict) -> tuple[str, str]:
+    """A lived place's ceiling and its reason (scale.json `ceiling_why`)."""
+    if disposition in OWN_GOODS:
+        return wealth_tier, f"{disposition}: its people's own goods, its wealth's {wealth_tier}"
+    top = max(danger_tier, wealth_tier, key=lambda t: rank[t])
+    return top, f"{disposition}: the higher of wealth {wealth_tier} and reward tier {danger_tier}"
 
 
 def scale() -> dict:
@@ -74,12 +85,13 @@ def derive(w) -> list[dict]:
     notes = {r["place_id"]: r["text"] for r in w.query("SELECT place_id, text FROM place_note WHERE aspect_id='economy'")}
     sym_tier = {s.id: s.settlement_tier_id for s in w.rows("symbol")}
     rows = []
-    reward = {r.place_id: r.reward_band_id for r in w.rows("place_danger")}
+    danger = {r.place_id: r for r in w.rows("place_danger")}
+    rank = {t: v["rank"] for t, v in tiers.items()}
     for p in w.rows("place"):
-        rb = reward[p.id]
+        rb, disp = danger[p.id].reward_band_id, danger[p.id].disposition_id
         dt = danger_tier[rb]
         lived = (p.status in LIVED) and (p.population or 0) > 0
-        row = {"id": p.id, "name": p.name, "reward_band_id": rb, "danger_tier": dt}
+        row = {"id": p.id, "name": p.name, "disposition_id": disp, "reward_band_id": rb, "danger_tier": dt}
         if not lived:
             row.update(wealth_score=None, band=None, open_tier=tiers[dt]["below"], ceiling_tier=dt,
                        why=f"{p.status or 'unpeopled'}: no residents' wealth; the reward band {rb} "
@@ -106,10 +118,10 @@ def derive(w) -> list[dict]:
         parts.append((ep, f"economy {ep:+d} ({' '.join(words) or 'no telling words'})"))
         score = max(0, sum(x for x, _ in parts))
         band = next(b for b in reversed(bands) if score >= b["min_score"])
-        ceiling = max(dt, band["ceiling_tier"], key=lambda t: tiers[t]["rank"])
-        row.update(wealth_score=score, band=band["id"], open_tier="T1", ceiling_tier=ceiling,
+        top, cwhy = ceiling_of(disp, dt, band["ceiling_tier"], rank)
+        row.update(wealth_score=score, band=band["id"], open_tier="T1", ceiling_tier=top,
                    why=f"score {score} = " + " + ".join(s for _, s in parts) + f" -> {band['id']} {band['label']}; "
-                       f"ceiling {ceiling} (wealth {band['ceiling_tier']}, reward band {rb} {dt})")
+                       f"ceiling {top} ({cwhy}; reward band {rb} {dt})")
         rows.append(row)
     return rows
 
@@ -153,8 +165,8 @@ def load(w) -> None:
         band = o.get("band", r["band"])
         if o.get("ceiling_tier"):
             ceiling = o["ceiling_tier"]
-        elif "band" in o:                    # an overruled band moves the ceiling with it, never below the ground's
-            ceiling = max(r["danger_tier"], band_ceiling.get(band, "T1"), key=rank.get)
+        elif "band" in o:                    # an overruled band moves the ceiling with it, by the same rule
+            ceiling = ceiling_of(r["disposition_id"], r["danger_tier"], band_ceiling.get(band, "T1"), rank)[0]
         else:
             ceiling = r["ceiling_tier"]
         w.insert("place_wealth", place_id=pid, wealth_score=r["wealth_score"], place_wealth_band_id=band,

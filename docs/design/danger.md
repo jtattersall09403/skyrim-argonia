@@ -8,6 +8,7 @@ database. Danger is fixed geography. The player grows into a band, but no band g
 
 - `tools/newworld/danger.py` sets each cell's bands (`cell.natural_band_id`, `cell.danger_band_id`, `danger_why`).
 - `tools/newworld/place_danger.py` sets each place's facts (`place_danger`: disposition, strength, reach, reward,
+  each with its reason) and each encounter near a settlement (`place_encounter`: its cell, strength and reward,
   each with its reason). `build_db` runs both after the roads and the travel network are in.
 - `newworld/sources/danger/owner.json` holds the owner's overrules, `{place_id: {disposition?, strength?, reward?,
   why}}`. `build_db` keeps them and marks the row `by: owner`.
@@ -40,23 +41,44 @@ database. Danger is fixed geography. The player grows into a band, but no band g
 4. **Reward**: the higher of the way in and the strength inside. The way in is the worst ground on the calmest way
    from the network: a travel stop or a road, the place's own cell included (a bottleneck path over the cells).
 
-A place is stocked from its reward band: the band's tier (`scale.json` `danger_tier`, D0 and D1 T1 up to D5 T5) is the best a
-place's ground and fight hold, and a lived place's ceiling is the higher of that and its wealth's
+A place is stocked from its reward band: the band's tier (`scale.json` `danger_tier`, D0 and D1 T1 up to D5 T5) is the best tier
+that a place's ground and fight can give. Whose goods they are sets a lived place's ceiling (`scale.json` `ceiling_why`): a
+friendly or wary place holds its people's own goods, so its ceiling is its wealth's, as a city's is, whatever the
+land round it is like. A lone tree-minder's post in lethal country holds the goods that a tree-minder owns, but its
+people stay as strong as the country. A hostile lived place's ceiling is the higher of its reward tier and its wealth's
 (`tools/newworld/wealth.py`; `place_wealth.json` is re-derived whenever a band changes).
 
 ## A settlement holds no hostile occupants
 
 A settlement holds no hostile occupants. Its own fight lives in a dungeon-like interior of it (a cellar, a sewer,
 a vault, as Riften keeps its thieves in the Ratway) or is a fight of its own people, who fight only when provoked;
-either names its `setting`. Wildlife in its waters (Riften's canal) is a creature fight and needs none. Raiders on the road and
-beasts in the country beyond belong to the ground round it, and an outpost whose people attack on sight is a
-hostile place, not a settlement with foes.
+either names its `setting`. Wildlife in its waters (Riften's canal) is a creature fight and needs none. An outpost
+whose people attack on sight is a hostile place, not a settlement with foes.
+
+## Encounters near a settlement
+
+A fight the player meets on the way in, just outside a settlement (smugglers at its landing, robbers on its road,
+raiders at the cairn on the near bank), is an encounter near it, as Skyrim puts bandits on the road below a
+village. It is a give of the settlement with `setting: nearby`, its `spot` in the record's words, and a bearing and
+distance from the place's centre that put it beyond the footprint (the footprint and about 80 m, toward the water,
+road, pass or neighbour that the spot names). Its reward give is marked `nearby` and sits with the fight, owned by no
+one. The settlement's own facts are derived without it: no hostile occupants live inside the place, and its disposition and strength
+are its people's.
+
+1. **Where it stands**: the cell its bearing and distance fall in.
+2. **Strength**: at least that cell's ground, one worse when the fight is a boss (at most D5).
+3. **Reward**: the higher of the settlement's way in and the fight. Its chest is stocked at the highest reward band
+   of the nearby fights that name it, never at the settlement's ceiling.
+
+An encounter is a give, not a place of its own: the spot belongs to the settlement's approach, the builder places
+it from the bearing and distance, and the place list does not include it.
 
 ## Checks
 
 `python3 -m tools.newworld.place_danger check` tests that every cell's ground is its natural band, lowered only by
 the rules under Ground; every hostile or abandoned place with a fight is at least its natural band; a settlement's own fight has its
-setting, and a provoked fight belongs to a wary place; the reward is never below the strength or the way in; and
+setting, and a provoked fight belongs to a wary place; an encounter stands near a settlement, beyond its footprint,
+is at least the ground it stands on, and has its reward with it; the reward is never below the strength or the way in; and
 every value has its reason. `make check` runs it (tools/tests/test_newworld_danger.py) and also tests that
 `place_wealth.json` matches a fresh derive. `counts` prints places by each fact, `show <place>` one place's facts
 and reasons, and `reconcile` the places whose researched band is two or more from the rules (each is decided from its record and the lore, and the
@@ -66,4 +88,5 @@ record or the rule fixed).
 
 `python3 -m tools.newworld.map_page` colours each cell by its ground on the Danger layer, rings each place by its
 disposition (hostile a solid red ring with spikes, wary amber dashes, abandoned grey dots) and lists the four facts
-with their reasons in its card.
+with their reasons in its card, with each encounter near it (its spot, strength and reward) and its law
+(`docs/design/law.md`).

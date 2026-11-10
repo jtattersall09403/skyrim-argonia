@@ -31,6 +31,15 @@ def test_gives_become_rows_in_order_with_their_reward():
         (0, "trainer", 1, None), (1, "ore-vein", 3, None), (2, "combat-boss", 1, "boss-chest"), (3, "boss-chest", 1, None)]
 
 
+def test_a_nearby_fight_names_where_it_stands():
+    r = {"gives": [{"kind": "combat-foes", "detail": "smugglers", "count": 3, "reward": "treasure",
+                    "setting": "nearby", "spot": "the landing", "bearing_deg": 90, "distance_m": 120},
+                   {"kind": "treasure", "detail": "the smugglers' cache", "setting": "nearby"}]}
+    rows = place_gives("p", r, KINDS)
+    assert [(x["setting"], x["spot"], x["bearing_deg"]) for x in rows] == [
+        ("nearby", "the landing", 90), ("nearby", None, None)]
+
+
 @pytest.mark.parametrize("gives, msg", [
     ([{"kind": "teleporter", "detail": "x"}], "unknown kind"),
     ([{"kind": "forge", "detail": " "}], "no detail"),
@@ -40,6 +49,13 @@ def test_gives_become_rows_in_order_with_their_reward():
     ([{"kind": "combat-foes", "detail": "bandits", "reward": "boss-chest"}], "not among"),
     ([{"kind": "forge", "detail": "a forge", "reward": "boss-chest"}], "only a combat give"),
     ([{"kind": "forge", "detail": "a forge", "count": 0}], "at least 1"),
+    ([{"kind": "forge", "detail": "a forge", "setting": "nearby"}], "names a setting"),
+    ([{"kind": "combat-foes", "detail": "bandits", "reward": "treasure", "setting": "outside"},
+      {"kind": "treasure", "detail": "x"}], "not one of"),
+    ([{"kind": "combat-foes", "detail": "bandits", "reward": "treasure", "setting": "nearby"},
+      {"kind": "treasure", "detail": "x", "setting": "nearby"}], "names its spot"),
+    ([{"kind": "combat-foes", "detail": "bandits", "reward": "treasure", "setting": "interior", "spot": "the road",
+       "bearing_deg": 90, "distance_m": 120}, {"kind": "treasure", "detail": "x"}], "only a nearby fight"),
 ])
 def test_bad_gives_are_rejected(gives, msg):
     with pytest.raises(ValueError, match=msg):

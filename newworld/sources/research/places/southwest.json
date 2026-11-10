@@ -2320,6 +2320,22 @@
      "kind": "fishing",
      "detail": "fish traps in the channel mouth",
      "count": 1
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "night bandit boats at the channel mouth",
+     "count": 3,
+     "reward": "treasure",
+     "setting": "nearby",
+     "spot": "the channel mouth beyond the stilts",
+     "bearing_deg": 74,
+     "distance_m": 140
+    },
+    {
+     "kind": "treasure",
+     "detail": "the bandits' boat strongbox",
+     "count": 1,
+     "setting": "nearby"
     }
    ]
   },
@@ -6520,6 +6536,22 @@
      "kind": "fishing",
      "detail": "sea fishing off the landing",
      "count": 1
+    },
+    {
+     "kind": "combat-foes",
+     "detail": "wreckers on the shore by night",
+     "count": 3,
+     "reward": "treasure",
+     "setting": "nearby",
+     "spot": "the shore and the dunes beyond the village",
+     "bearing_deg": 184,
+     "distance_m": 140
+    },
+    {
+     "kind": "treasure",
+     "detail": "the wreckers' cache in the dunes",
+     "count": 1,
+     "setting": "nearby"
     }
    ]
   },

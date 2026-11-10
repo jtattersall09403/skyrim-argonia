@@ -93,6 +93,11 @@
   {"id": "hostile", "rank": 3, "label": "Hostile", "about": "Held by people who attack on sight: outlaws, raiders, a warband."},
   {"id": "abandoned", "rank": 4, "label": "Abandoned", "about": "The place is uninhabited. Whatever has moved in (beasts, the dead) attacks, or it lies empty."}
  ],
+ "law": [
+  {"id": "native", "label": "Native law", "about": "Argonian law, with no cell: a caught player pays, takes the Owing (a season of work, then set free at a named spot of the place), or resists and is fought to the death (docs/design/law.md)."},
+  {"id": "foreign", "label": "Foreign law", "about": "The law of an office inherited from the Empire, which keeps the Imperial cells: a caught player pays the fine, goes to the cell, or resists (vanilla Skyrim's arrest)."},
+  {"id": "none", "label": "No law", "about": "No one keeps law here: a hostile or abandoned place, or one with no people. Its fight is its answer."}
+ ],
  "terrain_need": [
   {"id": "flat-pad", "about": "Level ground under the built area, blended into the land around it."},
   {"id": "entrance-in-slope", "about": "A rise or bank the entrance is cut into, facing open ground."},

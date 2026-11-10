@@ -81,12 +81,18 @@ list several kinds, and several of one kind.
   give that the same place also lists: `boss-chest`, `treasure`, `gold-hoard` or `unique-item`. A boss needs a
   boss-chest, a gold-hoard or a unique-item.
 - A combat give at a settlement (city, town, village, hamlet, outpost) names its `setting`: `interior` (it lives in
-  a dungeon-like interior of the place) or `provoked` (the place's own people, who fight only when provoked). A
-  creature fight in its waters needs none; a fight outside it is the ground's, not the settlement's.
+  a dungeon-like interior of the place), `provoked` (the place's own people, who fight only when provoked) or
+  `nearby` (an encounter just outside it, on the way in). A creature fight in its waters needs none.
+- A `nearby` fight names where it stands: `spot` (in the record's words: "the opened cairn on the near bank"),
+  `bearing_deg` (0 north, clockwise) and `distance_m` from the place's centre, beyond `footprint_radius_m`. Its
+  reward give carries `setting: nearby` too and lies with it. Example:
+  `{"kind": "combat-foes", "detail": "smugglers landing on the south bank at night", "count": 3, "reward":
+  "treasure", "setting": "nearby", "spot": "the south bank where the smugglers land", "bearing_deg": 180,
+  "distance_m": 120}, {"kind": "treasure", "detail": "the smugglers' cache", "count": 1, "setting": "nearby"}`.
 - A loot give's detail says where and what kind of store it is ("the captain's chest in the stern cabin"), never
   its tier.
-- The build rejects an unknown kind, an empty detail, a combat give without its reward and a setting on any other
-  give.
+- The build rejects an unknown kind, an empty detail, a combat give without its reward, a setting on any other
+  give (but a nearby fight's reward), a nearby fight without its spot, and a spot on any other give.
 
 The reward's tier is the place's reward band (the higher of the way in and what lives inside; docs/design/danger.md),
 never the player's level; the scale (`newworld/sources/stock/scale.json`, `danger_tier`) turns a band into a tier:

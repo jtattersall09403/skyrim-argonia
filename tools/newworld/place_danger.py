@@ -12,6 +12,10 @@ nothing here is levelled to the player (decision 0035).
 - Reach: the worst ground on the calmest way in from the network: a travel stop or a road (a bottleneck path over
   the cells' ground bands, the place's own cell included).
 - Reward: the higher of reach and strength. Stocking's tiers come from it (tools/newworld/wealth.py).
+- Encounters: a fight near a settlement (a give with setting `nearby`, outside its extent at a bearing and distance)
+  stands in the cell its spot falls in; it is at least that cell's ground, one worse for a boss (at most D5), and
+  its reward band is the higher of the place's way in and the fight (table place_encounter). The settlement's own
+  facts ignore it: no hostile occupants inside.
 The owner overrules any of it per place in `newworld/sources/danger/owner.json` ({place_id: {disposition?,
 strength?, reward?, why}}); the reward follows an overruled strength unless it is overruled itself.
 
@@ -25,6 +29,7 @@ from __future__ import annotations
 import dataclasses
 import heapq
 import json
+import math
 import re
 import sys
 from collections import Counter
@@ -62,7 +67,7 @@ def _people(detail: str) -> bool:
 
 
 def disposition(p, kind, gives, notes) -> tuple[str, str]:
-    fights = [g for g in gives if g.give_kind_id in COMBAT]
+    fights = [g for g in gives if g.give_kind_id in COMBAT and g.setting != "nearby"]
     if any(g.setting == "provoked" for g in fights):
         g = next(g for g in fights if g.setting == "provoked")
         return "wary", f"its own people fight only when provoked: {g.detail}"
@@ -91,6 +96,7 @@ def disposition(p, kind, gives, notes) -> tuple[str, str]:
 
 
 def strength(p, kind, disp, gives, nat: str, nat_why: str) -> tuple[str, str]:
+    gives = [g for g in gives if g.setting != "nearby"]          # an encounter near it is not inside it
     if p.place_kind_id in SAFE:
         inner = [g.detail for g in gives if g.give_kind_id in COMBAT and g.setting == "interior"]
         return "D0", "a city or town is safe inside, whatever surrounds it" + \
@@ -179,17 +185,52 @@ def derive(w) -> list[dict]:
     return rows
 
 
+def spot_cell(p, g) -> tuple[int, int]:
+    """The cell a nearby fight stands in: its bearing and distance from the place's centre."""
+    d = g.distance_m * f.UNITS_PER_METRE
+    x = p.world_x + math.sin(math.radians(g.bearing_deg)) * d
+    y = p.world_y + math.cos(math.radians(g.bearing_deg)) * d
+    return math.floor(x / f.CELL_UNITS), math.floor(y / f.CELL_UNITS)
+
+
+def encounters(w, danger_rows: list[dict]) -> list[dict]:
+    """Each fight near a settlement: at least the ground where it stands, one worse for a boss (at most D5); its
+    reward is the higher of the place's way in and the fight."""
+    cells = {(c.x, c.y): c for c in w.rows("cell")}
+    places = {p.id: p for p in w.rows("place")}
+    reach_of = {r["place_id"]: r["reach_band_id"] for r in danger_rows}
+    rows = []
+    for g in w.rows("place_give"):
+        if g.setting != "nearby" or g.give_kind_id not in COMBAT:
+            continue
+        p = places[g.place_id]
+        c = cells.get(spot_cell(p, g)) or cells[(p.cell_x, p.cell_y)]
+        b, why = c.danger_band_id, f"{g.spot}: the ground where it stands, cell ({c.x}, {c.y}), is {c.danger_band_id}"
+        if g.give_kind_id == "combat-boss":
+            b = BAND[min(5, RANK[b] + 1)]
+            why += ", one worse for a boss" + (": D5 is the worst band" if c.danger_band_id == "D5" else f": {b}")
+        rb = reach_of[p.id]
+        rw = max(rb, b, key=RANK.get)
+        rows.append({"place_id": p.id, "give_seq": g.seq, "cell_x": c.x, "cell_y": c.y, "strength_band_id": b,
+                     "strength_why": why, "reward_band_id": rw,
+                     "reward_why": f"the harder of the way in to {p.name} ({rb}) and the fight ({b})"})
+    return rows
+
+
 def assign(w) -> None:
     unknown = set(owner()) - {p.id for p in w.rows("place")}
     if unknown:
         raise ValueError(f"{OWNER} names unknown places: {sorted(unknown)}")
-    w.insert_many("place_danger", derive(w))
+    rows = derive(w)
+    w.insert_many("place_danger", rows)
+    w.insert_many("place_encounter", encounters(w, rows))
 
 
 def problems(w) -> list[str]:
     """The invariants: every cell's ground is its natural band less only the rules; every hostile or abandoned
-    place with a fight is at least its natural band; a settlement's own fight is in an interior or provoked (and
-    then the place is wary); reward is never below strength or reach; every derived value has its reason."""
+    place with a fight is at least its natural band; a settlement's own fight is in an interior, provoked (and
+    then the place is wary) or an encounter near it (outside its footprint, at least the ground where it stands,
+    its reward with it); reward is never below strength or reach; every derived value has its reason."""
     bad = []
     cells = {(c.x, c.y): c for c in w.rows("cell") if not c.margin}
     regions = {r.id: r for r in w.rows("region")}
@@ -216,11 +257,34 @@ def problems(w) -> list[str]:
                 RANK[r.strength_band_id] < RANK[c.natural_band_id]:
             bad.append(f"{p.id}: {r.disposition_id} at {r.strength_band_id}, calmer than its natural "
                        f"{c.natural_band_id}")
+        enc = {e.give_seq: e for e in w.rows("place_encounter", place_id=p.id)}
+        near = [g for g in fights if g.setting == "nearby"]
+        if near and fam[p.place_kind_id] != "settlement":
+            bad.append(f"{p.id}: a nearby fight at a {p.place_kind_id}: an encounter stands near a settlement")
+        loot = {g.give_kind_id: g for g in gs if g.give_kind_id not in COMBAT and g.setting == "nearby"}
+        for g in near:
+            e = enc.get(g.seq)
+            if e is None:
+                bad.append(f"{p.id}: give {g.seq} '{g.detail}': no place_encounter row")
+                continue
+            if g.distance_m <= (p.footprint_radius_m or 0):
+                bad.append(f"{p.id}: give {g.seq} '{g.detail}': {g.distance_m} m is inside its footprint")
+            if RANK[e.strength_band_id] < RANK[cells[(e.cell_x, e.cell_y)].danger_band_id]:
+                bad.append(f"{p.id}: give {g.seq}: encounter {e.strength_band_id} calmer than the ground it stands on")
+            if RANK[e.reward_band_id] < max(RANK[e.strength_band_id], RANK[r.reach_band_id]):
+                bad.append(f"{p.id}: give {g.seq}: encounter reward {e.reward_band_id} below its fight or the way in")
+            if g.reward_kind_id not in loot:
+                bad.append(f"{p.id}: give {g.seq}: its reward {g.reward_kind_id} is not with it (setting nearby)")
+            if not (e.strength_why.strip() and e.reward_why.strip()):
+                bad.append(f"{p.id}: give {g.seq}: an encounter value without its reason")
+        for kind, g in loot.items():
+            if not any(n.reward_kind_id == kind for n in near):
+                bad.append(f"{p.id}: give {g.seq} ({kind}) is nearby but rewards no nearby fight")
         if fam[p.place_kind_id] == "settlement" and r.disposition_id != "hostile":
             for g in fights:
                 if g.give_kind_id != "combat-creature" and g.setting is None:
                     bad.append(f"{p.id}: give {g.seq} ({g.give_kind_id}) '{g.detail}': a settlement's fight is "
-                               f"in an interior or provoked")
+                               f"in an interior, provoked or an encounter near it")
         if any(g.setting == "provoked" for g in fights) and r.disposition_id != "wary":
             bad.append(f"{p.id}: a provoked fight at a {r.disposition_id} place")
         if RANK[r.reward_band_id] < max(RANK[r.strength_band_id], RANK[r.reach_band_id]) and r.by == "derived":
@@ -263,6 +327,7 @@ def counts(w) -> dict:
         "places by reach": cnt(r.reach_band_id for r in rows),
         "places by reward": cnt(r.reward_band_id for r in rows),
         "places by disposition": cnt(r.disposition_id for r in rows),
+        "encounters by reward": cnt(e.reward_band_id for e in w.rows("place_encounter")),
     }
 
 
@@ -272,8 +337,10 @@ def main(argv: list[str]) -> int:
         r = w.get("place_danger", argv[1])
         p = w.get("place", argv[1])
         c = w.get("cell", p.cell_x, p.cell_y)
+        enc = [dataclasses.asdict(e) for e in w.rows("place_encounter", place_id=p.id)]
         print(json.dumps({"ground": c.danger_band_id, "natural": c.natural_band_id, "ground_why": c.danger_why,
-                          "researched": p.danger_band_id, **dataclasses.asdict(r)}, indent=1, ensure_ascii=False))
+                          "researched": p.danger_band_id, **dataclasses.asdict(r), "encounters": enc}, indent=1,
+                         ensure_ascii=False))
         return 0
     if argv[:1] == ["counts"]:
         for k, v in counts(w).items():

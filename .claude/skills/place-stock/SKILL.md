@@ -84,6 +84,9 @@ Write `newworld/sources/stock/places/<place>.json` from the draft and the facts.
 - On wild ground the tier follows the place's reward band: the way in is stocked one tier below it, and the
   hardest spot at the band's own tier. The boss's chest holds the band's tier and twice its gold. A loot promise
   names the store and where it is; its tier is always the reward band's (`docs/design/danger.md`).
+- An encounter near a settlement (a fight with `setting: nearby`) keeps its reward with it, outside the settlement
+  and nobody's: the loot give marked `nearby` is stocked at the highest reward band of the nearby fights that name
+  it (`place_encounter`, in `place_danger show <place>`), never at the settlement's ceiling.
 - Each container stays within its budget: its tier's `value_max` times its owner's share.
 
 **Loose things** follow from what the place is and its record: an offering at a shrine, a lost pack in the reeds,

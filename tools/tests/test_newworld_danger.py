@@ -27,6 +27,18 @@ def test_place_wealth_is_derived_from_the_current_reward_bands(world):
     assert stale == [], f"rerun python3 -m tools.newworld.wealth derive: {stale[:5]}"
 
 
+@pytest.mark.parametrize("disp, danger_tier, wealth_tier, want", [
+    ("friendly", "T5", "T1", "T1"),      # a tree-minder's post in lethal country holds a tree-minder's goods
+    ("wary", "T4", "T2", "T2"),
+    ("friendly", "T1", "T4", "T4"),      # a city: its wealth, whatever its safe ground
+    ("hostile", "T4", "T1", "T4"),       # an occupied place: what the fight guards
+])
+def test_a_lived_places_ceiling_is_whose_goods_they_are(disp, danger_tier, wealth_tier, want):
+    rank = {f"T{i}": i for i in range(1, 6)}
+    top, why = wealth.ceiling_of(disp, danger_tier, wealth_tier, rank)
+    assert top == want and why
+
+
 def test_reach_is_the_worst_band_on_the_calmest_way(world):
     class W:
         def rows(self, t, **k):
@@ -53,3 +65,20 @@ def test_strength_follows_the_rules(kind, disp, gives, research, want):
     p = NS(place_kind_id=kind, danger_band_id=research)
     b, why = pd.strength(p, NS(interior=kinds[kind]), disp, gives, "D4", "deep")
     assert b == want and why
+
+
+def test_an_encounter_stands_where_its_bearing_and_distance_put_it():
+    p = NS(world_x=f.CELL_UNITS * 0.5, world_y=f.CELL_UNITS * 0.5)
+    north = NS(bearing_deg=0, distance_m=f.CELL_UNITS / f.UNITS_PER_METRE)        # one cell's width north
+    east = NS(bearing_deg=90, distance_m=f.CELL_UNITS / f.UNITS_PER_METRE)
+    assert pd.spot_cell(p, north) == (0, 1)
+    assert pd.spot_cell(p, east) == (1, 0)
+
+
+def test_every_encounter_is_at_least_the_ground_it_stands_on(world):
+    cells = {(c.x, c.y): c.danger_band_id for c in world.rows("cell")}
+    rows = world.rows("place_encounter")
+    assert rows, "the restored encounters (issue #60, ruling A) are in the database"
+    for e in rows:
+        assert pd.RANK[e.strength_band_id] >= pd.RANK[cells[(e.cell_x, e.cell_y)]]
+        assert pd.RANK[e.reward_band_id] >= pd.RANK[e.strength_band_id]
