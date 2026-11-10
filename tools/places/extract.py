@@ -19,7 +19,7 @@ import sys
 import time
 from pathlib import Path
 
-from tools.places.bundle import BUNDLES, REPO, publish, sha256_file, stamp_key, write_json
+from tools.places.bundle import BUNDLES, REPO, publish, settle, sha256_file, stamp_key, write_json
 
 SOURCES = REPO / "newworld" / "places" / "sources.jsonl"
 PLACES = REPO / "newworld" / "story" / "data" / "db" / "place.jsonl"
@@ -152,6 +152,7 @@ def source_half_extent_m(place_id: str) -> float:
 
 def run(job: dict, force: bool = False) -> Path:
     final = BUNDLES / job["bundle_id"]
+    settle(final)
     dirs = search_dirs()
     tool = tool_hash()
     params = {k: v for k, v in job.items() if k not in ("out", "search")}

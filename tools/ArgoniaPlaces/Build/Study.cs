@@ -54,9 +54,9 @@ static class Study
                 if (c.FormKey.ModKey != me) cellOver++;
                 foreach (var n in c.NavigationMeshes) { if (n.FormKey.ModKey != me) navmOver++; else navmNew++; }
                 if (c.Landscape is { } l && l.FormKey.ModKey != me) landOver++;
-                foreach (var r in c.Temporary.Concat(c.Persistent))
+                foreach (var (r, persistent) in c.Temporary.Select(x => (x, false)).Concat(c.Persistent.Select(x => (x, true))))
                 {
-                    if (r.FormKey.ModKey == me) { refNew++; if (c.Persistent.Contains(r)) refNewPersist++; continue; }
+                    if (r.FormKey.ModKey == me) { refNew++; if (persistent) refNewPersist++; continue; }
                     refOver++;
                     if (r.IsDeleted) refDel++;
                     else if ((r.MajorRecordFlagsRaw & 0x800) != 0) { refDis++; if (r is IPlacedObjectGetter p && p.Placement?.Position.Z < -29000) refLow++; }

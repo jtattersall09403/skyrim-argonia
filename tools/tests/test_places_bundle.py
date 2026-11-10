@@ -54,6 +54,14 @@ def test_publish_replaces_whole(tmp_path):
     tmp.mkdir(); (tmp / "new").write_text("2")
     B.publish(tmp, final)
     assert (final / "new").exists() and not (final / "old").exists() and not tmp.exists()
+    # a publish cut between its two renames left the bundle set aside: it stands again, and the next publish lands
+    final.rename(tmp_path / "b.old")
+    B.settle(final)
+    assert (final / "new").exists() and not (tmp_path / "b.old").exists()
+    final.rename(tmp_path / "b.old")
+    tmp.mkdir(); (tmp / "newer").write_text("3")
+    B.publish(tmp, final)
+    assert (final / "newer").exists() and not (final / "new").exists() and not (tmp_path / "b.old").exists()
 
 
 def test_sha_cache(tmp_path, monkeypatch):

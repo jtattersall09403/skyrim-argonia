@@ -104,11 +104,22 @@ def stamp_key(inputs: dict[str, str], tool: str, params) -> str:
     return hashlib.sha256(blob.encode()).hexdigest()
 
 
-def publish(tmp: Path, final: Path) -> None:
-    """Replace a bundle directory with a fully written one in one rename (an interrupted run leaves the old one)."""
+def settle(final: Path) -> None:
+    """Put right what a publish cut short left: the old bundle set aside with no new one in its place stands again."""
     old = final.with_name(final.name + ".old")
     if old.exists():
-        shutil.rmtree(old)
+        if final.exists():
+            shutil.rmtree(old)
+        else:
+            old.rename(final)
+
+
+def publish(tmp: Path, final: Path) -> None:
+    """Replace a bundle directory with a fully written one: the old one is set aside, the new one renamed in, the old
+    one deleted. A run cut between the two renames leaves the old one set aside; `settle` (run first here and by
+    extract) puts it back."""
+    old = final.with_name(final.name + ".old")
+    settle(final)
     if final.exists():
         final.rename(old)
     tmp.rename(final)
