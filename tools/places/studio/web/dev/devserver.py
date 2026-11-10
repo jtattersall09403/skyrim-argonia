@@ -348,6 +348,7 @@ class H(BaseHTTPRequestHandler):
         base = self.st.save_path(pid, "x").parent
         if sid is None:
             rows = [dict(json.loads(f.read_text()), save_id=f.stem) for f in base.glob("*.json")] if base.exists() else []
+            rows = [{k: (len(v) if k == "ops" else v) for k, v in r.items() if k != "base"} for r in rows]  # as the server lists them
             rows.sort(key=lambda r: r["at"], reverse=True)
             return self.send(200, rows)
         f = self.st.save_path(pid, re.sub(r"[^\w.-]", "_", sid))

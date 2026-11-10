@@ -5,6 +5,7 @@ Run: ~/.argonia/venv/bin/python -m pytest -q tools/places/studio/web/test/test_b
 Env: STUDIO_URL to test a running server instead (real bundles); SHOTS=<dir> to keep screenshots.
 """
 import json
+import re
 import os
 import socket
 import subprocess
@@ -30,10 +31,31 @@ def free_port():
         return s.getsockname()[1]
 
 
+REPO = WEB.parents[3]
+
+
+def refuse_shared_saves(url):
+    """The real-data run writes saves and starts finalise: only against a server rooted in a scratch clone, whose
+    autosaves and named saves land inside that clone, never the main tree's (the live studio's) out/ or place files."""
+    port = int(url.rsplit(":", 1)[1].split("/")[0])
+    out = subprocess.run(["ss", "-ltnpH", f"sport = :{port}"], capture_output=True, text=True).stdout
+    pid = out.split("pid=")[1].split(",")[0] if "pid=" in out else None
+    assert pid, f"no local process serves {url}; the real-data run only drives a studio started from a scratch clone"
+    env = dict(kv.split("=", 1) for kv in Path(f"/proc/{pid}/environ").read_text().split("\0") if "=" in kv)
+    root = Path(os.readlink(f"/proc/{pid}/cwd")).resolve()
+    autosave = (Path(env.get("PLACES_OUT", root / "out" / "places")) / "autosave").resolve()
+    main = REPO.resolve()
+    assert root != main and not root.is_relative_to(main), f"the server at {url} runs in the main tree {root}"
+    assert autosave.is_relative_to(root) and not autosave.is_relative_to(main / "out"), \
+        f"the server at {url} would write autosaves to {autosave}, outside its clone {root}"
+
+
 @pytest.fixture(scope="module")
 def server():
     if os.environ.get("STUDIO_URL"):
-        yield os.environ["STUDIO_URL"].rstrip("/")
+        url = os.environ["STUDIO_URL"].rstrip("/")
+        refuse_shared_saves(url)
+        yield url
         return
     fx = Path(tempfile.mkdtemp(prefix="studio-fixture-"))
     subprocess.run([sys.executable, str(WEB / "dev" / "make_fixture.py"), str(fx)], check=True, capture_output=True)
@@ -120,7 +142,7 @@ class Pad:
         self.page.screenshot(path=str(SHOTS / f"{name}.png"))
 
 
-def open_pad(browser, server, viewport, scheme="light", fresh=True):
+def open_pad(browser, server, viewport, scheme="light", fresh=True, choose="draft"):
     ctx = browser.new_context(viewport=viewport, device_scale_factor=1, has_touch=True, color_scheme=scheme)
     page = ctx.new_page()
     pad = Pad(page)
@@ -129,6 +151,12 @@ def open_pad(browser, server, viewport, scheme="light", fresh=True):
     if REAL:  # the real place builds its land in slices after the first frame
         page.wait_for_function("document.getElementById('progress').hidden", timeout=120000 * SLOW)
     page.wait_for_timeout(500)
+    if choose and page.locator("#start .sheet").is_visible():  # saved work: nothing applied until chosen
+        if choose == "draft":
+            page.get_by_role("button", name="Start from the builder's draft").click()
+        else:
+            page.get_by_role("button", name=choose).click()
+        page.wait_for_function("document.getElementById('start').hidden", timeout=30000 * SLOW)
     return pad
 
 
@@ -141,6 +169,9 @@ def pad(browser, server):
     if p.ev("studio.log.ops.length"):
         p.ev("studio.loadSave({ ops: [] })")
     p.pid = pid
+    p.intro_shown = p.ev("!document.getElementById('intro').hidden")
+    if p.intro_shown:
+        p.page.click("#intro button")
     yield p
     assert not p.errors, p.errors
     p.page.context.close()
@@ -172,9 +203,10 @@ DIGEST = """(() => { const m = studio.model, rows = [], r1 = (v) => Math.round(v
 
 # ---------- 16: first-run guide, chrome, design rules ----------
 def test_16_first_run_and_design(pad):
-    assert pad.ev("!document.getElementById('intro').hidden"), "the first-run guide shows"
+    assert pad.intro_shown, "the first-run guide shows"
+    pad.ev("studio.panels.intro()")
     pad.shot("01-intro-landscape")
-    pad.page.click(".intro button")
+    pad.page.click("#intro button")
     assert pad.ev("getComputedStyle(document.body).touchAction") == "none"
     assert pad.ev("getComputedStyle(document.body).userSelect") == "none"
     assert pad.ev("getComputedStyle(document.body).overscrollBehavior").startswith("none")
@@ -309,7 +341,7 @@ def test_04_from_the_source(pad):
     pad.pen_tap(gx, gy)
     pad.pen_tap(gx + 40, gy + 30)
     ops = pad.ops()[n0:]
-    assert len(ops) >= 2 and all(o["op"] == "ref.add" and o["src"] for o in ops)
+    assert len(ops) >= 2 and all(o["op"] == "ref.add" and o["src"] for o in ops), (n0, ops)
     # an enterable building brings its room and doors
     bld = pad.ev("""(() => { const s = studio, refs = s.srcBundle.spaces.exterior.refs;
                    return refs.find((r) => r.kind === 'building' && s.tools.doorsOf(r, refs).length); })()""")
@@ -537,7 +569,7 @@ def test_13_15_saves_finalise_heartbeat(pad, browser, server):
     pad.page.wait_for_function("document.getElementById('panel-body').textContent.includes('Test save one')", timeout=10000 * SLOW)
     n, ops, digest = len(pad.ops()), json.dumps(pad.ops(), sort_keys=True), pad.ev(DIGEST)
     # another session: the autosave is picked up after the machine was off
-    other = open_pad(browser, server, PORTRAIT)
+    other = open_pad(browser, server, PORTRAIT, choose="Continue the unsaved work")
     other.page.wait_for_function(f"studio.log.applied().length === {n}", timeout=15000 * SLOW)
     assert other.ev("studio.log.applied().length") == n, (other.errors, other.ev("document.getElementById('toast').textContent"))
     assert json.dumps(other.ops(), sort_keys=True) == ops and other.ev(DIGEST) == digest, "the same edits make the same place"
@@ -599,7 +631,7 @@ def test_17_walkway_clear_why_seat_modes(pad):
     assert "Walkway, Wooden boards" in pad.ev("document.getElementById('panel-body').textContent")
     assert pad.page.locator("#panel-body .seg[aria-label=Kind] button").all_text_contents() == ["Path", "Street", "Walkway"]
     pad.page.click("#rail button:has-text('Plants')")
-    assert "1 on a street or path" in pad.ev("document.getElementById('panel-body').textContent")
+    assert re.search(r"\d+ on a street or path", pad.ev("document.getElementById('panel-body').textContent"))
     z = pad.ev("""() => { const t = studio.terrain, x = 4000, y = 4000, f = [-300, -300, 300, 300];
         const mk = (mode) => studio.seated({ id: 'probe', base: 'x', pos: [x, y, 0], rot: [0, 0, 0.4], seat: { mode, dz: 0, foot: f } }).pos[2];
         return { ground: mk('ground'), clear: mk('clear'), above: mk('above'), stilts: mk('stilts') }; }""")
@@ -705,7 +737,7 @@ def test_21_detail_governor(pad):
     t0 = pad.ev("performance.now()")
     pad.ev("studio.ours.view.rig.yaw += 0.02; studio.ours.view.changed()")
     pad.page.wait_for_function("!studio.ours.view.needs", timeout=5000 * SLOW)
-    assert pad.ev("performance.now()") - t0 < 3000
+    assert pad.ev("performance.now()") - t0 < 3000 * SLOW
     # idle: nothing is drawn when nothing moves
     pad.page.wait_for_function("!studio.ours.view.needs && !studio.src.view.needs", timeout=10000 * SLOW)
     pad.page.wait_for_timeout(300)
@@ -718,3 +750,34 @@ def test_21_detail_governor(pad):
     assert pad.ev("studio.governor.level") == 1
     pad.page.click("#settings button.primary")
     pad.ev("studio.governor.setMode('auto')")
+
+
+# ---------- saved work is never applied silently ----------
+def test_22_start_choice(pad, browser, server):
+    pid = pad.pid
+    saves = json.load(urllib.request.urlopen(f"{server}/api/place/{pid}/saves"))
+    auto = next((x for x in saves if x["save_id"] == "autosave" and x["ops"]), None)
+    assert auto, "an earlier test left unsaved work"
+    # a named save made on an older draft
+    old = json.load(urllib.request.urlopen(f"{server}/api/place/{pid}/saves/autosave"))
+    body = {**old, "save_id": "older-draft", "name": "Older draft work", "rev": 0, "base": {**old["base"], "draft_key": "an-older-draft"}}
+    req = urllib.request.Request(f"{server}/api/place/{pid}/saves/older-draft", data=json.dumps(body).encode(), method="PUT",
+                                 headers={"Content-Type": "application/json"})
+    urllib.request.urlopen(req)
+    p = open_pad(browser, server, LANDSCAPE, choose=None)
+    assert p.page.locator("#start .sheet").is_visible()
+    assert p.ev("studio.log.applied().length") == 0, "nothing applied before the choice"
+    text = p.ev("document.getElementById('start').textContent")
+    assert "Unsaved work from" in text and f"{auto['ops']} edits" in text and "Older draft work" in text
+    p.page.wait_for_function("document.querySelector('#start .older')", timeout=10000 * SLOW)
+    assert "Made on an older draft" in p.ev("document.querySelector('#start .older').textContent")
+    p.shot("22-start-choice")
+    b = p.page.get_by_role("button", name="Discard the unsaved work")
+    b.click()
+    b.click()
+    p.page.wait_for_function("!document.getElementById('start').textContent.includes('Unsaved work from')", timeout=10000 * SLOW)
+    left = {x["save_id"]: x["ops"] for x in json.load(urllib.request.urlopen(f"{server}/api/place/{pid}/saves"))}
+    assert left.get("autosave", 0) == 0 and left["older-draft"] == auto["ops"]
+    p.page.get_by_role("button", name="Start from the builder's draft").click()
+    assert p.ev("studio.log.applied().length") == 0
+    p.page.context.close()

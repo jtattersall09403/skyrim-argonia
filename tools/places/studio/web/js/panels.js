@@ -433,15 +433,76 @@ export class Panels {
     parts.push(fresh);
     if (this.name === 'saves') this.show('Saves', parts);
   }
-  async resumeAutosave() {
-    const a = this.app;
-    try {
-      const list = await api.saves(a.place.place_id);
-      if (!(list || []).some((x) => (x.save_id || x.id || x) === 'autosave')) return;
-      const s = await api.save(a.place.place_id, 'autosave');
-      if (s) a.revs.autosave = s.rev || 0;
-      if (s?.ops?.length && !s.final) { await a.loadSave(s); a.toast(`Picked up where you left off: ${s.ops.length} changes from ${new Date(s.at).toLocaleString()}.`, 5000); }
-    } catch (e) { if (!/404/.test(e.message)) { console.error(e); a.toast(`Your latest work could not be opened: ${e.message}`, 8000); } }
+  // When the place has saved work, nothing is applied until the owner chooses: the builder's draft, or one save
+  // to continue (an autosave is "unsaved work"). An autosave can be discarded here; one made on an older draft
+  // says so, and what no longer fits is reported when it opens.
+  async startChoice() {
+    const a = this.app, pid = a.place.place_id;
+    let list = [];
+    try { list = (await api.saves(pid)) || []; } catch (e) { if (!/404/.test(e.message)) a.toast(`Your saves could not be listed: ${e.message}`, 8000); return null; }
+    const nOps = (x) => (Array.isArray(x.ops) ? x.ops.length : x.ops ?? 0);
+    list = (list.saves || list).map((x) => ({ ...x, ops: nOps(x) })).filter((x) => x.ops > 0 && !x.final)
+      .sort((x, y) => (y.save_id === 'autosave') - (x.save_id === 'autosave') || String(y.at).localeCompare(String(x.at)));
+    if (!list.length) return null;
+    const draftKey = a.saveBody('autosave', 'Autosave').base?.draft_key;
+    const when = (t) => new Date(t).toLocaleString([], { dateStyle: 'medium', timeStyle: 'short' });
+    const edits = (n) => `${n} edit${n === 1 ? '' : 's'}`;
+    const o = $('#start'); o.hidden = false;
+    o.innerHTML = `<div class="sheet" role="dialog" aria-label="Choose where to start"><h2>${esc(a.place.title || pid)} has saved work</h2>
+      <p>Nothing has been changed yet. Choose where to start.</p>
+      <div class="row"><button class="quiet fresh">Start from the builder's draft</button></div><ol class="history start-list"></ol></div>`;
+    const ol = o.querySelector('.start-list');
+    return new Promise((done) => {
+      const close = (v) => { o.hidden = true; o.innerHTML = ''; done(v); };
+      const auto0 = list.find((x) => x.save_id === 'autosave');
+      if (auto0) o.querySelector('.fresh').after(el('<p class="note">Your first edit from the draft replaces the unsaved work. To keep it, continue it and save it under a name first.</p>'));
+      o.querySelector('.fresh').onclick = () => { if (auto0) a.revs.autosave = auto0.rev || 0; close('draft'); };
+      for (const s of list) {
+        const auto = s.save_id === 'autosave';
+        const li = el(`<li><span class="what">${esc(auto ? `Unsaved work from ${when(s.at)}, ${edits(s.ops ?? 0)}` : `${s.name || s.save_id}, ${when(s.at)}, ${edits(s.ops ?? 0)}`)}<span class="note"></span></span></li>`);
+        const note = li.querySelector('.note');
+        const go = el(`<button class="primary">Continue</button>`);
+        go.setAttribute('aria-label', `Continue ${auto ? 'the unsaved work' : s.name || s.save_id}`);
+        go.onclick = async () => {
+          go.disabled = true;
+          try {
+            const full = await api.save(pid, s.save_id);
+            o.hidden = true; await a.loadSave(full);
+            if (auto) a.revs.autosave = full.rev || 0;
+            else { a.revs.autosave = list.find((x) => x.save_id === 'autosave')?.rev ?? a.revs.autosave ?? 0; a.markUnsaved(); }
+            const n = a.log.applied().length, m = full.ops?.length || 0;
+            if (n === m) a.toast(`Opened ${auto ? 'your unsaved work' : `"${s.name || s.save_id}"`}: ${edits(m)}.`, 5000);
+            close(s.save_id);
+          } catch (e) { o.hidden = false; go.disabled = false; note.textContent = `It could not be opened: ${e.message}`; }
+        };
+        const row = el('<div class="row"></div>'); row.append(go);
+        if (auto) {
+          const rm = el('<button class="danger">Discard</button>');
+          rm.setAttribute('aria-label', 'Discard the unsaved work');
+          rm.onclick = async () => {
+            if (rm.dataset.sure !== '1') { rm.dataset.sure = '1'; rm.textContent = 'Discard for good'; note.textContent = 'Tap again to throw these edits away. Named saves are kept.'; return; }
+            try {
+              a.revs.autosave = s.rev || 0;
+              const r = await a.putSave('autosave', 'Autosave');
+              if (r.conflict) throw new Error('another tab saved it a moment ago');
+              li.remove(); if (!ol.children.length) close('draft');
+            } catch (e) { note.textContent = `It could not be discarded: ${e.message}`; }
+          };
+          row.append(rm);
+        }
+        const key = s.base?.draft_key;
+        if (key && draftKey && key !== draftKey) {
+          note.textContent = 'Made on an older draft. Edits that still fit the current draft are kept; the first one that no longer fits, and every edit after it, is shown and not applied.';
+          li.classList.add('older');
+        }
+        li.querySelector('.what').append(row); ol.append(li);
+      }
+      // the list rows say nothing of an older draft until each save is read: read the bases quietly
+      for (const s of list) if (!s.base) api.save(pid, s.save_id).then((f) => {
+        const li = [...ol.children][list.indexOf(s)]; const k = f?.base?.draft_key;
+        if (li && k && draftKey && k !== draftKey && !li.classList.contains('older')) { li.classList.add('older'); li.querySelector('.note').textContent = 'Made on an older draft. Edits that still fit the current draft are kept; the first one that no longer fits, and every edit after it, is shown and not applied.'; }
+      }).catch(() => {});
+    });
   }
   // ---------- finalise ----------
   finalise() {

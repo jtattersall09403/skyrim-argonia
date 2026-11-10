@@ -95,7 +95,7 @@ class Studio {
     this.loadMs = Math.round(performance.now() - t0);
     this.interactiveAt = performance.now();
     this.loading(false);
-    await this.panels.resumeAutosave();
+    this.choosing = this.panels.startChoice().finally(() => { this.choosing = null; });
     this.tools.use('select');
   }
   async openSource(sid) {

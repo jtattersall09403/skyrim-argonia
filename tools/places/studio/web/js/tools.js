@@ -171,8 +171,9 @@ export class Tools {
       this.placing = { from: 'source', refs: a.srcSel, space: a.src.space };
       a.panels.sourceInfo(a.srcSel);
     } else { if (this.placing?.from === 'source') this.placing = null; a.panels.sourceInfo([]); }
+    this.placeGizmo();  // no handles while placing: a tap there places
   }
-  stopPlacing() { this.placing = null; this.app.srcSel = []; this.drawOutline(this.app.src, [], this.srcOutline); this.app.panels.placingChanged?.(); }
+  stopPlacing() { this.placing = null; this.app.srcSel = []; this.drawOutline(this.app.src, [], this.srcOutline); this.app.panels.placingChanged?.(); this.placeGizmo(); }
   // ---------- selection outline and gizmo ----------
   selectionChanged() {
     const a = this.app; if (!a.model) return;
@@ -221,7 +222,7 @@ export class Tools {
     const ring = g.querySelector('.ring'); Object.assign(ring.style, { left: `${-R}px`, top: `${-R}px`, width: `${2 * R}px`, height: `${2 * R}px` });
   }
   gizmoDown(kind, e) {
-    const refs = this.selRefs(); if (!refs.length) return;
+    const refs = this.selRefs(); if (!refs.length || this.placing) return;
     const v = this.app.ours.view, info = v.info(e);
     this.drag = { kind, refs, before: new Map(refs.map((r) => [r.id, clone({ pos: r.pos, rot: r.rot, scale: r.scale ?? 1, seat: r.seat })])),
       x0: e.clientX, y0: e.clientY, g0: info.ground(), c: this.centre(refs) };
@@ -259,8 +260,11 @@ export class Tools {
     if (this.app.ours.space !== 'exterior') return;
     if (this.opts.snapGround) { if (!r.seat || r.seat.mode === 'free') r.seat = { mode: 'ground', dz: 0 }; r.pos[2] = rnd(seatZ(this.app.terrain, r, this.app.placeRefsById())); }
   }
-  gizmoUp() {
-    const d = this.drag; this.drag = null; if (!d) return;
+  gizmoUp(e) {
+    const d = this.drag; if (!d) return;
+    // a tap on a handle with no movement changes nothing (it never re-seats things where they stand)
+    if (e && Math.hypot(e.clientX - d.x0, e.clientY - d.y0) < 3) { this.gizmoCancel(); return; }
+    this.drag = null;
     const ops = [];
     for (const r of d.refs) {
       const after = clone({ pos: r.pos, rot: r.rot, scale: r.scale ?? 1, seat: r.seat }), before = d.before.get(r.id);
