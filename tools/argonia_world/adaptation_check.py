@@ -468,9 +468,12 @@ def load_records() -> Records:
         rc.edit_text[r["id"]] = r["description"]
         rc.needs += [(r["id"], k) for k in (r["cell"], r["target"]) if k]
         rc.placing += " " + r["description"]
-    for e, t in w.query("SELECT edit, target FROM world_edit_target"):
+    for e, t, what in w.query("SELECT edit, target, what FROM world_edit_target"):
         rc.edit_targets.setdefault(e, set()).add(t)
-        rc.needs.append((e, t))
+        # The census holds actors, doors and markers; a static a clean-up disables is left to the build's clean-up, which
+        # reads its cell from the load order.
+        if not (what or "").startswith("disabled static:"):
+            rc.needs.append((e, t))
     for q, t, what in w.query("SELECT quest, target, what FROM quest_bmv_need"):
         rc.needs.append((q, t))
         rc.placing += " " + what

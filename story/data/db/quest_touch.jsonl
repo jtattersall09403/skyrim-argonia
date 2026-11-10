@@ -176,9 +176,8 @@
 {"quest_id":"quest.main.mq01","ord":8,"id":"npc.pirate-freeholds.opening-work-camp.n1-3","access":"write"}
 {"quest_id":"quest.main.mq01","ord":9,"id":"npc.hist-heartland.cult-raid-camp-unbound.leader-unbound-root","access":"read"}
 {"quest_id":"quest.main.mq01","ord":10,"id":"place.mercantile-coast.lilmoth","access":"write"}
-{"quest_id":"quest.main.mq01","ord":11,"id":"place.mercantile-coast.hereguard-plantation","access":"read"}
-{"quest_id":"quest.main.mq01","ord":12,"id":"flag.mq01.saved-sal","access":"write"}
-{"quest_id":"quest.main.mq01","ord":13,"id":"flag.mq01.saved-deesh","access":"write"}
+{"quest_id":"quest.main.mq01","ord":11,"id":"flag.mq01.saved-sal","access":"write"}
+{"quest_id":"quest.main.mq01","ord":12,"id":"flag.mq01.saved-deesh","access":"write"}
 {"quest_id":"quest.main.mq03","ord":0,"id":"npc.nesh-deeka","access":"write"}
 {"quest_id":"quest.main.mq03","ord":1,"id":"npc.mercantile-coast.lilmoth.fish-trader-house","access":"read"}
 {"quest_id":"quest.main.mq03","ord":2,"id":"npc.pirate-freeholds.opening-work-camp.n1","access":"write"}

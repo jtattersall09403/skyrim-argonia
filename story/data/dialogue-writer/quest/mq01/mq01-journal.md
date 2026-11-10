@@ -1,38 +1,50 @@
 # Journal brief: MQ01 No Name on the Work Roll
 
 Write each entry in the style guide's journal register (story/design/text/style-guide.md § journal):
-first person; past tense for events; "I'm to" for the objective; full names every entry; re-summarise the
-chain; directions in landmark prose; failure entries flat, with the consequence.
+first person; past tense for what just happened; one "I'm to" for the one step now owed, never a later
+step; full names as the game shows them; two to four sentences; an ending's entry may sum up the quest;
+directions in landmark prose; failure entries flat, with the consequence. Each objective is an imperative
+with a full stop and no "I" or "you", naming its target.
 
 ## Stage 10 (`text.journal.mq01.10`)
-- Draft: I came to in the hold of a broker's barge at Lilmoth's dock, among an Owing gang. Wuleen-Sei, the overseer, is reading the roll aloud, each name, the months owed and the months added for food, and my line is blank. I'm to answer her when she reaches it, then follow Wuleen-Sei up the plank, past Buys-The-Months, the broker on the pier, and north and west along the shore path to the families' camp at the edge of Hereguard Plantation, to the camp's fire.
-- Directions: The hold is the barge's one room below the deck; its door leads up to the plank and the pier of Lilmoth's dock. From the plank at Lilmoth's dock the shore path runs north and west along the water, past the first of the rice dikes; the camp is the cluster of huts on the reed bank at the paddy edge, where the path meets the reeds. The fire is in the middle of the camp; the hatching shed stands beside the cutting at the camp's far end.
-- The player knows: fact.mq01.owing-roll, fact.mq01.blank-line, fact.mq01.washed-out, fact.mq01.courier-state, fact.mq01.broker-holds
+- Draft: I came to in the hold of a broker's barge at Lilmoth's dock, among a gang of debtors who owe the broker months of work. I'm to speak to Wuleen-Sei, the overseer, who keeps the roll of what each of us owes.
+- Directions: The hold is the barge's one room below the deck; Wuleen-Sei stands in it with the gang.
+- The player knows: fact.mq01.owing-roll, fact.mq01.blank-line, fact.mq01.washed-out
+
+## Stage 20 (`text.journal.mq01.20`)
+- Draft: I gave Wuleen-Sei my answer to the blank line on the roll. I'm to leave the hold by the door at the top of its stairs, onto the pier.
+- Directions: The hold's way out is the door at the top of its stairs, which opens onto the pier at Lilmoth's dock.
+- The player knows: fact.mq01.owing-roll, fact.mq01.blank-line, fact.mq01.washed-out
+
+## Stage 30 (`text.journal.mq01.30`)
+- Draft: I came up out of the hold onto the pier at Lilmoth's dock. I'm to follow the gang along the dock to the fire at the families' camp, where the dock meets the land.
+- Directions: From the plank's foot the dock runs about fifty paces toward the land; the camp's fire burns on the open ground at the dock's landward end, with the hatching shed beyond it and the families' huts on the water to the west.
+- The player knows: fact.mq01.owing-roll, fact.mq01.blank-line, fact.mq01.washed-out, fact.mq01.broker-holds, fact.mq01.courier-state
 
 ## Stage 40 (`text.journal.mq01.40`)
-- Draft: As Wuleen-Sei read the roll at the camp's fire, in sight of the families' Hist cutting and the shed that holds their clutch, naming Sal-Sei, keeper of the clutch, and Deesh-Duun aloud, a tall Argonian woman with a knotted cord at her wrist came in off the water with two of her people, killed Mee-Tuja, the quiet man who walked with us, at the fire, took his satchel and looked at me, and left. In the struggle his strap with a brass tag was torn off and fell through the burnt boards into the deep water. The roll went into the fire. Her people are at the cutting and the huts are burning. Sal-Sei is at the shed and Deesh-Duun is hiding from the blades in the huts. I'm to reach one of them; I cannot reach both.
-- Directions: The shed is at the camp's far end beside the cutting; the cell's two cutters stand between the fire and the shed. The burning huts stand over the deep water under the plank boards and are entered only from the water.
-- The player knows: fact.mq01.owing-roll, fact.mq01.blank-line, fact.mq01.washed-out, fact.mq01.courier-state, fact.mq01.broker-holds, fact.mq01.satchel, fact.mq01.her-face, fact.mq01.gang-hist
+- Draft: At the camp's fire a tall Argonian woman with a knotted cord at her wrist killed the courier who walked with us and took his satchel. The camp is burning; I'm to reach Sal-Sei at the hatching shed to the north-east, where the woman's two cutters stand, or Deesh-Duun in the burning huts to the west; I cannot reach both.
+- Directions: The hatching shed stands north-east of the fire, beside the Hist cutting, with the two cutters between. The huts stand on the water west of the fire, beside the dock, and are reached by diving under the boards.
+- The player knows: fact.mq01.owing-roll, fact.mq01.blank-line, fact.mq01.washed-out, fact.mq01.broker-holds, fact.mq01.courier-state, fact.mq01.satchel, fact.mq01.her-face, fact.mq01.gang-hist
 
 ## Stage 41 (`text.journal.mq01.41`)
-- Draft: I ran for the hatching shed at the camp on Hereguard Plantation's paddy edge. Two of the woman's people have cut the roots that tie the cutting to the clutch, and Sal-Sei is on the ground beside the eggs. Behind me the huts have fallen in where Deesh-Duun was. I'm to drive the cutters off, or hide in the reeds until they leave, and get Sal-Sei out through the reeds to the shore.
-- Directions: From the shed the reeds run south to the shore below the camp, the way the families fish at night; keep the burning huts on the left hand.
-- The player knows: fact.mq01.owing-roll, fact.mq01.blank-line, fact.mq01.washed-out, fact.mq01.courier-state, fact.mq01.broker-holds, fact.mq01.satchel, fact.mq01.her-face, fact.mq01.gang-hist, fact.mq01.roots-cut
+- Draft: I reached the hatching shed. The two cutters have cut the roots that tie the Hist cutting to the clutch, and Sal-Sei is on the ground beside the eggs. I'm to bring Sal-Sei to the shore just west of the camp, past the cutters or out of their sight.
+- Directions: The shore is west of the camp, past the fire, at the water's edge beyond the huts.
+- The player knows: fact.mq01.owing-roll, fact.mq01.blank-line, fact.mq01.washed-out, fact.mq01.broker-holds, fact.mq01.courier-state, fact.mq01.satchel, fact.mq01.her-face, fact.mq01.gang-hist, fact.mq01.roots-cut
 
 ## Stage 42 (`text.journal.mq01.42`)
-- Draft: I went into the burning huts at the camp on Hereguard Plantation's paddy edge and pulled Deesh-Duun out through the deep water under the plank boards. She saw the woman with the knotted cord as closely as I did. From the water I can hear the cutters on the plank boards over us, walking from the shed to the water's edge where they came in, and Sal-Sei has not come out. I'm to bring Deesh-Duun south under the plank boards to the shore below the camp, keeping out of the cutters' sight until they are gone, or kill them first.
-- Directions: The shore is south of the huts; keep under the plank boards and the burning end of the camp stays on the left hand.
-- The player knows: fact.mq01.owing-roll, fact.mq01.blank-line, fact.mq01.washed-out, fact.mq01.courier-state, fact.mq01.broker-holds, fact.mq01.satchel, fact.mq01.her-face, fact.mq01.gang-hist, fact.mq01.roots-cut
+- Draft: I reached Deesh-Duun in the burning huts, under the boards. I'm to bring her to the shore just west of the camp, out of the cutters' sight, or kill them first.
+- Directions: The shore is west of the huts, at the water's edge; keep in the water under the boards and out of the cutters' sight.
+- The player knows: fact.mq01.owing-roll, fact.mq01.blank-line, fact.mq01.washed-out, fact.mq01.broker-holds, fact.mq01.courier-state, fact.mq01.satchel, fact.mq01.her-face, fact.mq01.gang-hist, fact.mq01.roots-cut
 
 ## Stage 90 (`text.journal.mq01.90`) ending: complete
-- Draft: I got out of the burning camp on Hereguard Plantation's paddy edge with Sal-Sei, the clutch-keeper. The eggs under the cut roots are dead and the cutting has withdrawn. The roll burned in the fire, so nobody can say what I owe, and nobody can say what I do not.
-- The player knows: fact.mq01.owing-roll, fact.mq01.blank-line, fact.mq01.washed-out, fact.mq01.courier-state, fact.mq01.broker-holds, fact.mq01.satchel, fact.mq01.her-face, fact.mq01.gang-hist, fact.mq01.roots-cut, fact.mq01.cutting-withdrew, fact.mq01.clutch-dead
+- Draft: I got out of the burning camp at Lilmoth's dock with Sal-Sei, the keeper of the clutch. The eggs under the cut roots are dead and the cutting has withdrawn. The roll burned in the fire, so nobody can say what I owe, and nobody can say what I do not.
+- The player knows: fact.mq01.owing-roll, fact.mq01.blank-line, fact.mq01.washed-out, fact.mq01.broker-holds, fact.mq01.courier-state, fact.mq01.satchel, fact.mq01.her-face, fact.mq01.gang-hist, fact.mq01.roots-cut, fact.mq01.cutting-withdrew, fact.mq01.clutch-dead
 
 ## Stage 91 (`text.journal.mq01.91`) ending: complete
-- Draft: I got out of the burning camp on Hereguard Plantation's paddy edge with Deesh-Duun, who saw the woman with the knotted cord as closely as I did. The roll burned in the fire, so nobody can say what I owe.
-- The player knows: fact.mq01.owing-roll, fact.mq01.blank-line, fact.mq01.washed-out, fact.mq01.courier-state, fact.mq01.broker-holds, fact.mq01.satchel, fact.mq01.her-face, fact.mq01.gang-hist, fact.mq01.roots-cut, fact.mq01.cutting-withdrew, fact.mq01.clutch-dead, fact.mq01.cutting-withdrew
+- Draft: I got out of the burning camp at Lilmoth's dock with Deesh-Duun, who saw the woman with the knotted cord as closely as I did. The roll burned in the fire, so nobody can say what I owe.
+- The player knows: fact.mq01.owing-roll, fact.mq01.blank-line, fact.mq01.washed-out, fact.mq01.broker-holds, fact.mq01.courier-state, fact.mq01.satchel, fact.mq01.her-face, fact.mq01.gang-hist, fact.mq01.roots-cut, fact.mq01.cutting-withdrew, fact.mq01.clutch-dead, fact.mq01.cutting-withdrew
 
 ## Stage 93 (`text.journal.mq01.93`) ending: complete
-- Draft: I got out of the burning camp on Hereguard Plantation's paddy edge alone. Sal-Sei and Deesh-Duun are dead. The roll burned in the fire, so nobody can say what I owe.
-- The player knows: fact.mq01.owing-roll, fact.mq01.blank-line, fact.mq01.washed-out, fact.mq01.courier-state, fact.mq01.broker-holds, fact.mq01.satchel, fact.mq01.her-face, fact.mq01.gang-hist, fact.mq01.roots-cut, fact.mq01.cutting-withdrew, fact.mq01.clutch-dead, fact.mq01.cutting-withdrew, fact.mq01.cutting-withdrew
+- Draft: I got out of the burning camp at Lilmoth's dock alone. Sal-Sei and Deesh-Duun are dead. The roll burned in the fire, so nobody can say what I owe.
+- The player knows: fact.mq01.owing-roll, fact.mq01.blank-line, fact.mq01.washed-out, fact.mq01.broker-holds, fact.mq01.courier-state, fact.mq01.satchel, fact.mq01.her-face, fact.mq01.gang-hist, fact.mq01.roots-cut, fact.mq01.cutting-withdrew, fact.mq01.clutch-dead, fact.mq01.cutting-withdrew, fact.mq01.cutting-withdrew
 

@@ -1450,13 +1450,15 @@ CREATE TABLE "quest_stage" (
   "journal_text" TEXT,
   "directions" TEXT,
   "ending_id" TEXT,
+  "hidden" INTEGER,
   PRIMARY KEY ("quest_id", "ord"),
   UNIQUE ("quest_id", "id"),
   FOREIGN KEY ("quest_id") REFERENCES "quest" ("id") ON DELETE CASCADE
 );
 
 -- Home of one row per element of `stages[].objectives` of each quest_stage row (ordered by `ord` where it has one).
--- `text` is the objective's text key; `objective_text` its words (the record's `objectiveText`).
+-- `text` is the objective's text key; `objective_text` its words (the record's `objectiveText`); `target` the cast,
+-- thing or ref id its compass marker points at (`none` only for a choice between several).
 CREATE TABLE "quest_objective" (
   "quest_id" TEXT NOT NULL,
   "stages_ord" INTEGER NOT NULL,
@@ -1466,6 +1468,7 @@ CREATE TABLE "quest_objective" (
   "complete_when" TEXT NOT NULL REFERENCES "condition"("id"),
   "where_ref" TEXT,
   "objective_text" TEXT,
+  "target" TEXT,
   PRIMARY KEY ("quest_id", "stages_ord", "ord"),
   FOREIGN KEY ("quest_id", "stages_ord") REFERENCES "quest_stage" ("quest_id", "ord") ON DELETE CASCADE
 );

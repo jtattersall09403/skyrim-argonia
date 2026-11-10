@@ -75,11 +75,15 @@
 {"quest_id":"quest.main.mq01","things_ord":6,"state":"before-40","value":"orderly"}
 {"quest_id":"quest.main.mq01","things_ord":7,"state":"after-40","value":"withdrawn (light out)"}
 {"quest_id":"quest.main.mq01","things_ord":7,"state":"before-40","value":"lit"}
-{"quest_id":"quest.main.mq01","things_ord":8,"state":"after-40","value":"Cuts-the-Old-Knot gone; the two cutters at the shed, then on the plank boards, then disabled at the water's edge"}
+{"quest_id":"quest.main.mq01","things_ord":8,"state":"after-40","value":"Cuts-the-Old-Knot gone; the two cutters at the shed until the ending"}
 {"quest_id":"quest.main.mq01","things_ord":8,"state":"at-40","value":"enabled"}
 {"quest_id":"quest.main.mq01","things_ord":8,"state":"before-40","value":"disabled"}
 {"quest_id":"quest.main.mq01","things_ord":9,"state":"all","value":"present"}
 {"quest_id":"quest.main.mq01","things_ord":10,"state":"all","value":"as the ledger says"}
+{"quest_id":"quest.main.mq01","things_ord":11,"state":"after-40","value":"burnt in the fire"}
+{"quest_id":"quest.main.mq01","things_ord":11,"state":"before-40","value":"with Wuleen-Sei"}
+{"quest_id":"quest.main.mq01","things_ord":12,"state":"after-40","value":"in the trap"}
+{"quest_id":"quest.main.mq01","things_ord":13,"state":"all","value":"present"}
 {"quest_id":"quest.main.mq03","things_ord":0,"state":"all","value":"aftermath"}
 {"quest_id":"quest.main.mq03","things_ord":1,"state":"all","value":"aftermath"}
 {"quest_id":"quest.main.mq03","things_ord":2,"state":"after-10","value":"carried"}

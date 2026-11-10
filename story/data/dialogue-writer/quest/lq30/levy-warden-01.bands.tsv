@@ -1,7 +1,7 @@
 key	variant	band	n	line
-topic.lq30-the-basin	lines	low	0	No. By the custom of Helstrom's Agaceph, our own may not follow a walk-out. It does not bind an outsider, so I will not stop you.
-topic.lq30-the-basin	lines	low	1	Know this. Anyone who walks into the basin round Helstrom may die there. The warning is posted at the gate.
-topic.lq30-the-basin	lines	low	2	What lies in the reed roots bites. The bite kills. The levy sends none after you. If we followed every youth out, no walk-out would be his own.
-topic.lq30-the-basin	lines	high	0	No, friend, I will not stop you. By the custom of Helstrom's Agaceph, our own may not follow a walk-out. It does not bind an outsider.
-topic.lq30-the-basin	lines	high	1	But hear me, for I would not see you lost. Anyone who walks into the basin round Helstrom may die there. A warning is posted at the gate.
-topic.lq30-the-basin	lines	high	2	What lies in the reed roots bites. The bite kills. The levy will send none of its own after you. If we followed every youth out, no walk-out would be his own.
+topic.lq30-the-basin	lines	low	0	No. I will not stop you.
+topic.lq30-the-basin	lines	low	1	I know the reed roots at low water. Watch your feet.
+topic.lq30-the-basin	lines	low	2	My duty ends at the gate. I send none of the levy after you.
+topic.lq30-the-basin	lines	high	0	No, friend, I will not stop you.
+topic.lq30-the-basin	lines	high	1	I would not see you lost, so hear what I know. I have kept this gate through many floods and I have watched the reed roots at low water. Go slowly and watch where you put each foot.
+topic.lq30-the-basin	lines	high	2	My duty ends at the gate. I will send none of the levy after you. I will be glad to see you come back.

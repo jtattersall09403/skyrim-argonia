@@ -1,4 +1,4 @@
 topic id	variant	band	prompt	line	fact ids
-topic.bc02-come-mother	main	low	Come with me. I will get you out.	Yes. I will follow you. Lead me out.	
+topic.bc02-come-mother	main	low	Come with me. I will get you out.	Yes. I will follow you. The heirs hold me for what they reckon I owe. Two others are bound here in the smoke, Says-It-Plain and Hides-In-Reeds. Lead me out.	
 topic.bc02-come-mother	main	words	Come with me. I will get you out.	Yes. I will follow you. The heirs hold me for what they reckon I owe. Two others are bound here in the smoke, Says-It-Plain and Hides-In-Reeds. Go back the way you came in.	fact.bc02.three-held
 topic.bc02-come-mother	main	high	Come with me. I will get you out.	Yes. I will follow you. The heirs hold me for what they reckon I owe them. Two others are bound here in the smoke, Says-It-Plain and Hides-In-Reeds. Go back the way you came in. When we are out, tell me of my daughter, Rows-For-Another. I have heard nothing of her.	fact.bc02.three-held

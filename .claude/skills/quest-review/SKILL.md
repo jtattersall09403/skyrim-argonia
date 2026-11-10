@@ -12,13 +12,14 @@ quest is good, believable and buildable from the proven blocks as written.
 ## 0. The bar
 
 - **Blocking means only:**
-  (a) a path the player cannot finish or a stage that cannot be left;
+  (a) a path the player cannot finish, a stage that cannot be left, or a stage on the only way forward that a new
+  character (skills at racial start, no gold) cannot pass, including a check on a hand-over from an ally;
   (b) a contradiction inside the record, or with the world data (census, story data);
   (c) a contradiction with canon lore or the extrapolation;
   (d) a Nordic element we add, or anything levelled against the player;
   (e) a breach of the skill rule (quest-write §3 item 3, program-checked): a stage (a pure choice stage excepted) not
   won by a skill route that can fail, a main quest without two ways through on different skills, a faction quest
-  ignoring its faction's skills, a stage that does not say plainly what to do and where, a route that climbs a tree,
+  ignoring its faction's skills, a stage with no entry, objective and target saying what to do and where, a route that climbs a tree,
   or a fail-forward demanded for an essential person;
   (f) a stage outside the proven block shapes (quest-write §4): a start on entering a cell or area, a trigger area
   carrying a check beyond its prerequisite stage, an escort without a follow package and a destination area, a kind
@@ -26,7 +27,8 @@ quest is good, believable and buildable from the proven blocks as written.
   fight without a fixed-level enemy or a Speech or gold route, standing kept other than as a global, a speaker not
   picked by their placed reference;
   (g) a place, person or thing that is not a real reference or a ledger edit; a people spot off the winning navmesh
-  or without a real floor; a thing not on a read surface; a model missing from the load order;
+  or without a real floor; a thing not on a read surface; a model missing from the load order; a person or place the
+  player cannot reach on some path into the stage (a locked door without its key on that path);
   (h) harder to script than an average Skyrim side quest (stages, aliases, conditions, timers, bespoke scripts);
   (i) a climax or resolution that is a procedure (an arbitration, hearing, trial, ruling, witnessed or spoken
   release, negotiation at a table); procedure may colour a quest, never resolve it.
@@ -46,7 +48,8 @@ quest is good, believable and buildable from the proven blocks as written.
 ## 1. Set-up
 
 - Run as a fresh agent given only the quest record, the world records it cites and this skill; never the author's
-  reasoning. Read the record with `python3 -m tools.argonia_world.quest_record export <quest id>` and the world with
+  reasoning. For a quest already built, read the built quest and topics as well (`plugin/Argonia/Quests`,
+  `DialogTopics`) and report any difference from the record as blocking (b). Read the record with `python3 -m tools.argonia_world.quest_record export <quest id>` and the world with
   `python3 -m tools.argonia_world.db query "SELECT ..."` (`fact` by `place_id`, `npc`, `npc_faction`, `stance*`,
   `culture_*`, the place's other quests). The lore: `../../../story/lore/`. Judge the quest against the BM&V place
   it names in `foundation`.
@@ -86,11 +89,26 @@ Investigation
    condition?
 
 Play
-8. Can every stage be followed with no markers, from dialogue and the journal (landmark, direction, distance)?
+8. Is each thing the player must do next its own stage, with an entry that tells that step only, one objective and a
+   target (every visible objective names a person, door, container or marker)? Can the step also be followed from
+   the entry's words alone (landmark, direction, distance)?
+8b. Does any entry, objective or topic intent tell something the build does not show or place (a scene with no
+    lines, a prop not in `things`, a host that was replaced)?
+8c. Can the player say each prompt with what they know at that stage, and is each a sentence, not a bare label? Does
+    every question a speaker asks have reply topics? Does every offer ("here is", "take this", "I will follow") have
+    the action that delivers it? Does any line refuse while its fragment advances the stage?
+8d. Does every topic have a last stage before the first ending, and does anyone still offer or describe the task
+    after an ending?
+8e. Is any fact given to two speakers in one place and stage window?
+8f. Does each ending leave its people a greeting that is true of that ending and no other?
+8g. Does an opening, or any sequence the player must finish, keep the player where they are, with no long
+    unescorted walk? Does a person the player follows set off only once the player can see them, and walk on one
+    navmesh island?
 9. Is there more than one approach somewhere, with different costs?
 10. Is it long enough beside comparable quests from Morrowind, Oblivion and Skyrim?
-11. Does every stage's `journalText` follow the journal register (first person, "I'm to", full names, re-summarised
-    chain, directions by landmark, failure entries flat with their consequence)?
+11. Does every `journalText` follow the journal register (first person, "I'm to" for one step, the next step and
+    not the whole chain, names as the game shows them, failure entries flat) and every `objectiveText` the objective
+    form (imperative, full stop, its requirement in numbers)?
 
 Endings and rewards
 12. Does a standalone quest, or a quest line as a whole, have at least two endings with different costs and rewards

@@ -35,7 +35,7 @@
 {"quest_id":"quest.main.mq01","ord":2,"skill":"Sneak","use":"sneak-past","reason":"out of the burning huts under the plank boards to the shore, unseen by the cutters (the dive is the way in, not the skill)"}
 {"quest_id":"quest.main.mq03","ord":0,"skill":"Alchemy","use":"test-a-sample","reason":"the player puts a drop of the spilled sap to the tongue as a tester does; it reads fresh, drawn at dusk, and it is what brings the dream"}
 {"quest_id":"quest.main.mq03","ord":1,"skill":"Lockpicking","use":"pick-a-lock","reason":"the courier's brass tag lies in a sunk, locked fish-trap under the burnt plank boards at the camp's fire"}
-{"quest_id":"quest.main.mq03","ord":2,"skill":"Speechcraft","use":"persuade","reason":"Ties will not tell the night before a stranger behind a screen unless shown the courier's tag, or talked round (Speechcraft 25)"}
+{"quest_id":"quest.main.mq03","ord":2,"skill":"Speechcraft","use":"persuade","reason":"Ties will not tell the night before a stranger unless shown the courier's tag, or talked round (Speechcraft 25)"}
 {"quest_id":"quest.main.mq04","ord":0,"skill":"Speech","use":"persuade","reason":"the root-herald is wary of strangers from Lilmoth: a Speech check of 25, or bring her food, for leave to see the tree"}
 {"quest_id":"quest.main.mq04","ord":1,"skill":"OneHanded","use":"fight","reason":"the leeches crowd the cut root (fixed band 2)"}
 {"quest_id":"quest.main.mq04","ord":2,"skill":"destruction","use":"fight","reason":"the same leeches from the stilts above"}
@@ -44,7 +44,6 @@
 {"quest_id":"quest.main.mq04","ord":5,"skill":"athletics","use":"swim","reason":"the gum trail breaks at the leech water and picks up on the far side"}
 {"quest_id":"quest.main.mq04","ord":6,"skill":"sneak","use":"sneak-past","reason":"a sentry keeps the cell's camp on the trail side"}
 {"quest_id":"quest.main.mq04","ord":7,"skill":"OneHanded","use":"fight","reason":"or the two at the camp are fought"}
-{"quest_id":"quest.main.mq05","ord":0,"skill":"speechcraft","use":"persuade","reason":"Nesh-Deeka sends the player only if they can be denied, so the player argues that they can carry the word and leave the Reed unnamed"}
 {"quest_id":"quest.main.mq05","ord":1,"skill":"oneHanded","use":"fight","reason":"two giant wasps the size of ponies (fauna-hazards) keep the way's far bend (fixed level, band 1): the quest's high point"}
 {"quest_id":"quest.main.mq05","ord":2,"skill":"sneak","use":"sneak-past","reason":"the other way past the wasps: on the root at night"}
 {"quest_id":"quest.main.mq05","ord":3,"skill":"speechcraft","use":"persuade","reason":"the player tells a tree-minder or a Nisswo what a cut Hist looks like"}

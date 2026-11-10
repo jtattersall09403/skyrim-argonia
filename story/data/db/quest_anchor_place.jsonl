@@ -1054,9 +1054,7 @@
 {"quest_id":"quest.local.sx38","ord":1,"value":"place.saxhleel-coast.tide-run-delta"}
 {"quest_id":"quest.lw.lw01","ord":0,"value":"place.dunmer-north.hissmir"}
 {"quest_id":"quest.main.mq01","ord":0,"value":"place.mercantile-coast.lilmoth"}
-{"quest_id":"quest.main.mq01","ord":1,"value":"place.mercantile-coast.hereguard-plantation"}
 {"quest_id":"quest.main.mq03","ord":0,"value":"place.mercantile-coast.lilmoth"}
-{"quest_id":"quest.main.mq03","ord":1,"value":"place.mercantile-coast.hereguard-plantation"}
 {"quest_id":"quest.main.mq04","ord":0,"value":"place.mercantile-coast.low-reed-village"}
 {"quest_id":"quest.main.mq05","ord":0,"value":"place.hist-heartland.helstrom"}
 {"quest_id":"quest.main.mq05","ord":1,"value":"place.mercantile-coast.lilmoth"}

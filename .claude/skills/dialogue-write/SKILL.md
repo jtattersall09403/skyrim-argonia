@@ -1,12 +1,12 @@
 ---
 name: dialogue-write
-description: Write Morrowind-style topic dialogue for one Argonia NPC of any race from a generated speaker brief, using matched Morrowind lines as the model. Use when authoring greetings, topic answers, quest lines or journal text for a person.
+description: Write topic dialogue in Morrowind's voice, built as Skyrim topics, for one Argonia NPC of any race from a generated speaker brief, using matched Morrowind lines as the model. Use when authoring greetings, topic answers, quest lines or journal text for a person.
 ---
 
 # Writing dialogue for one person
 
 The goal: lines that read as if they were Morrowind's, about our people
-and places in Black Marsh & Valenwood's (BM&V's) world; the lines become Creation Kit dialogue records on top of BM&V. New bans go in `bans.yaml`, new voice evidence in
+and places in Black Marsh & Valenwood's (BM&V's) world; the lines become Creation Kit dialogue records on top of BM&V. Bans are in `bans.yaml`, voice evidence in
 `voices.md`, deliberate echoes in `echoes.yaml`.
 
 ## 1. The brief
@@ -29,7 +29,7 @@ never-mentions); the culture chain; the others the player may be sent to; the th
 and per topic the intent or opinion, the facts it may state and hide, the speaker's knowledge, the links it
 grants, and what the player already knows.
 
-The imported written lines (`dialogue_line` rows) are reference only and never models (decision 0024 §7); the
+The imported written lines (`dialogue_line` rows) are reference only and never models; the
 facts (`fact`), topics (`topic`), glossary (`glossary_term`) and culture sheets are the source. Read them only
 through the database (`python3 -m tools.argonia_world.db query "SELECT ..."`).
 
@@ -59,7 +59,7 @@ The speaker and the player can each be any of the ten races. Use the speaker's v
 changes:
 
 - **Player race:** address terms and attitude follow the speaker's race and culture sheets (`voices.md`).
-- **Player faction and rank:** same faction, greet by `[player rank]` and share members' knowledge; rival
+- **Player faction and rank:** same faction, greet by the rank's name written out and share members' knowledge; rival
   faction, colder and less on faction topics; otherwise the default.
 - **Player crime here:** the person's crime greeting replaces the normal one.
 
@@ -68,16 +68,35 @@ changes:
 Split the corpus (`$ARGONIA_PRIVATE/dialogue/morrowind/morrowind-full.json`, never committed) **by topic kind**, one
 `corpus-find` agent per group, matched on the speaker's race and sex: greetings and refusals; trade and
 service; place and directions; rumours and advice; creatures and danger; quest arcs (offer, detail,
-directions, reminder, success, failure). Each returns up to four lines per topic and band. Check every id
+directions, reminder, success, failure). Each returns up to four lines per topic and wording. Check every id
 and quote against the corpus before using it. Never paste Morrowind lines into the repo.
 
 ## 4. Voice rules
 
-- **Bands** (1.3's three, by disposition): `low` below 30, `words` 30 to 69, `high` 70 and over. Length follows
-  warmth: the low band is short; only the high band is chatty.
-- **Essential topics have no refusal band** (old 0145): the low band is grudging but still
-  gives what the quest needs.
-- **Held-back information says so** (B09), so the player knows to raise disposition.
+- **A line tells; a question is a choice.** A speaker asks the player something ("What name?", "Did you see?", "Give
+  me a reason", "Are you crossing?") only when the brief lists the reply topics. With none, the speaker says what
+  they know or what they need, as a statement.
+- **A line promises only what the brief's `sets` delivers.** "Here is", "take", "I will follow", "I will meet you
+  there", "come back when I know you" are written only where the brief names the item given, the package, the place
+  or the way to earn it.
+- **A line that advances a stage never refuses.** When its fragment sets a stage or a flag the journal then relies
+  on, every wording of the line agrees to what the fragment does.
+- **A line is true wherever its window lets it be said.** The brief gives each line's place, first and last stage and
+  conditions. Write nothing that is false at the window's far end, in the fallback's other cases (a "not now" line
+  covers every reason the pass line failed), or once the clock moves ("four hours ago"). Once a quest has ended, no
+  line offers or describes its task; only the greeting for that ending speaks of it.
+- **The prompt is the player's sentence.** A full sentence the player would say with what the brief lists under "the
+  player already knows", never a bare label ("the boat"; "Did you see who came to the tree?" is a prompt); a cost or
+  check is in it ("(Persuade)", "(10 gold)").
+- **People by the name the game shows.** A person the player can meet is named as their base is named, with the role
+  beside it once; pronouns follow the brief's sex for that person.
+- **One speaker, one fact, per place.** The brief lists what the others in the same place and stage window say. Do
+  not restate it; give this speaker's own fact or their view of it in one clause.
+- **Wordings by regard.** The default wording is written for every line. A warm (regard 1 or more) and a cool (below
+  0) wording are written only where the brief marks the line "after a regard change". All three wordings state the
+  same facts and make the same commitment as the line's `sets`; only manner and length differ. Length follows
+  warmth: cool is short, only warm is chatty.
+- **A refusal says what would change it** (B09): the skill, the thing to bring or the price.
 - **Plain and explicit:** who did what and why, in plain clauses (B05); every quest line can be acted on.
 - **British English** spelling and punctuation, no serial comma (B08); the style guide
   (`../../../story/design/text/style-guide.md`) and its culture registers bind every line.
@@ -89,7 +108,7 @@ and quote against the corpus before using it. Never paste Morrowind lines into t
 
 1. Read the brief, `voices.md` and the whole of `bans.yaml`.
 2. Run the Find agents (section 3) and read their picks.
-3. Write each topic's bands and the listener variants it needs, modelling shape and cadence on the picks. Give
+3. Write each topic's wordings and the listener variants it needs, modelling shape and cadence on the picks. Give
    every act to a person: a roll, a hold, a town, a ship or a law never hears, wants, adds, knows or decides (B01);
    name who does it, or state the plain fact.
 4. Run `python3 .claude/skills/dialogue-write/lint.py LINES.txt --race <speaker race>` (required; exit 1 on

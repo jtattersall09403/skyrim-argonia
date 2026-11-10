@@ -578,8 +578,7 @@ consequence attached.
 > "I have slain an Urshilaku Ashlander. This will make my mission to speak with
 > Sul-Matuul and Nibani Maesa more difficult." — **Morrowind:Meet Sul-Matuul**
 
-Deliberate redundancy: each entry re-summarises the chain from its start.
-Keep that — a player returning after a month reads one entry, not eight.
+An ending's entry sums up the quest; other entries tell their own step.
 
 ### `system`
 **The place AI voice hides best**, because no character anchors the register.

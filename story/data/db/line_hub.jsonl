@@ -9,7 +9,7 @@
 {"line":"quest.line.league-of-open-water","ord":1,"settlement":"bmv.longmont","role":"hub","why":"a second ward"}
 {"line":"quest.line.main","ord":0,"settlement":"bmv.helstrom","cell":"2076BB:Black Marsh.esm","role":"seat","why":"the Veiled Reed in Helstrom; the hall where the empty seat is lodged"}
 {"line":"quest.line.main","ord":1,"settlement":"bmv.lilmoth","role":"hub","why":"the opening at Dock1, the unmarked house"}
-{"line":"quest.line.main","ord":2,"settlement":"bmv.hereguardplantation","role":"hub","why":"the Owing camp at the paddy edge"}
+{"line":"quest.line.main","ord":2,"settlement":"bmv.lilmoth","role":"hub","why":"the Owing camp where Lilmoth's dock meets the land"}
 {"line":"quest.line.main","ord":3,"settlement":"bmv.village","role":"hub","why":"the first turned Hist, east of Lilmoth"}
 {"line":"quest.line.main","ord":4,"settlement":"bmv.dock5","role":"hub","why":"Helstrom's river landing"}
 {"line":"quest.line.many-root","ord":0,"settlement":"bmv.groot","role":"seat","why":"the conclave grove (BM2's great root, unpeopled today)"}

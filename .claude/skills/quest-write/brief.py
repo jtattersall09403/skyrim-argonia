@@ -34,6 +34,23 @@ def voice_row(race: str) -> str:
     return f"no voice card for {race!r}"
 
 
+MOVES = {"inZone", "knowsTopic", "topicHeardFrom", "sceneEnded", "questStage", "all", "any"}
+
+
+def moves_only(s) -> bool:
+    """A step whose only act is going to a place or hearing someone (quest-write §3 item 3): every way on is a zone,
+    a heard topic or a scene's end."""
+    def terms(c):
+        if isinstance(c, dict):
+            for k, v in c.items():
+                yield k
+                if k in ("all", "any"):
+                    for x in v:
+                        yield from terms(x)
+    edges = s.get("successors", [])
+    return bool(edges) and all(set(terms(e.get("when"))) <= MOVES for e in edges)
+
+
 def check_condition(c, preds, where, out):
     if isinstance(c, dict):
         for k, v in c.items():
@@ -182,7 +199,9 @@ def main() -> int:
     # Stages: the imported fields, vocabulary terms, graph, journal draft.
     for s in q["stages"]:
         w = f"stage {s.get('id')}"
-        missing += [f"{w}: {k} missing (imported stage shape)" for k in STAGE_FIELDS if k not in s]
+        hidden = bool(s.get("hidden"))   # a stage the build needs and the player never reads: no journal, no objective
+        missing += [f"{w}: {k} missing (imported stage shape)" for k in STAGE_FIELDS if k not in s
+                    and not (hidden and k == "journal")]
         check_actions(s.get("onEnter"), verbs, f"{w} onEnter", missing)
         for o in s.get("objectives", []):
             check_condition(o.get("completeWhen"), preds, f"{w} objective {o.get('id')}", missing)
@@ -190,7 +209,7 @@ def main() -> int:
             check_condition(edge.get("when"), preds, f"{w} edge to {edge.get('to')}", missing)
             if edge.get("to") not in stage_ids:
                 missing.append(f"{w}: successor {edge.get('to')} is not a stage")
-        if not s.get("journalText"):
+        if not s.get("journalText") and not hidden:
             missing.append(f"{w}: journalText missing (style guide § journal)")
         if s.get("ending"):
             if s.get("endingId") not in {e["id"] for e in q["endings"]}:
@@ -202,7 +221,8 @@ def main() -> int:
             loose = [n for n in named if not guarded(n)]
             if loose and not s.get("failForward"):
                 missing.append(f"{w}: needs {loose[0]} alive, who is not essential or protected and has no failForward")
-            if "WONDER" not in q.get("shapes", []) and not any("startScene" in a for a in s.get("onEnter", [])) and not [x for x in stage_actions(s) if "skill" in x]:
+            if ("WONDER" not in q.get("shapes", []) and not hidden and not moves_only(s)
+                    and not any("startScene" in a for a in s.get("onEnter", [])) and not [x for x in stage_actions(s) if "skill" in x]):
                 missing.append(f"{w}: no skill action (principles/actions.md)")
             missing += [f"{w}: learns {g}" for g in s.get("learns", []) if g not in claims]
     if len(q["endings"]) < 1:
@@ -322,9 +342,13 @@ def main() -> int:
 
     J = [f"# Journal brief: {q['code']} {q['title']}", "",
          "Write each entry in the style guide's journal register (story/design/text/style-guide.md § journal):",
-         "first person; past tense for events; \"I'm to\" for the objective; full names every entry; re-summarise the",
-         "chain; directions in landmark prose; failure entries flat, with the consequence.", ""]
+         "first person; past tense for what just happened; one \"I'm to\" for the one step now owed, never a later",
+         "step; full names as the game shows them; two to four sentences; an ending's entry may sum up the quest;",
+         "directions in landmark prose; failure entries flat, with the consequence. Each objective is an imperative",
+         "with a full stop and no \"I\" or \"you\", naming its target.", ""]
     for s in q["stages"]:
+        if s.get("hidden"):
+            continue
         J += [f"## Stage {s['id']} (`{s['journal']}`){' ending: ' + s['ending'] if s.get('ending') else ''}",
               f"- Draft: {s['journalText']}"]
         if s.get("directions"):

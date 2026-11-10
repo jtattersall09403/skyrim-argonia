@@ -6,7 +6,7 @@ ARG_TG02_TopicClaimBeads_0	The beads are old family work. My family made them. T
 ARG_TG02_TopicHandOverDar_0	All three are here. I will take them. Here are eighty gold.
 ARG_TG02_TopicSellBeads_0	Yes, it is Kothringi glass. I will not say otherwise. Here are fifty gold for the beads.
 ARG_TG01_TopicGiveBack_0	Take it. I could not sell it anyway. I want no trouble, so go.
-ARG_TG01_TopicGiveBack_1	Sixty gold. I had a buyer for this, you know. Here, it is yours.
+ARG_TG01_TopicGiveBack_1	Sixty gold. I could not sell it anyway. Here, it is yours.
 ARG_TG02_TopicClaimFigurine_0	The bone figurine is mine. It was carved for my clutch. It should come back to me.
 ARG_TG02_TopicHandOverNeeta_0	You have the figurine, the charm and the beads. Good. Here is eighty gold. Take it.
 ARG_TG02_TopicSellFigurine_0	Yes, it is worn smooth. It is older than my clutch. I will pay you fifty gold for it.
@@ -53,9 +53,9 @@ ARG_TG01_TopicGiveBack_0@high.0	Take it. I could not sell it anyway. Here, it is
 ARG_TG01_TopicGiveBack_0@high.1	I want no trouble, friend. Go well. Thank you.
 ARG_TG01_TopicGiveBack_0@low.0	Take it. I could not sell it anyway.
 ARG_TG01_TopicGiveBack_0@low.1	I want no trouble. Go.
-ARG_TG01_TopicGiveBack_1@high.0	Sixty gold, friend. I had a buyer for this, you know.
+ARG_TG01_TopicGiveBack_1@high.0	Sixty gold, friend. I could not sell it anyway.
 ARG_TG01_TopicGiveBack_1@high.1	But I trust you. Here, it is yours.
-ARG_TG01_TopicGiveBack_1@low.0	Sixty gold. I had a buyer for this.
+ARG_TG01_TopicGiveBack_1@low.0	Sixty gold. I could not sell it anyway.
 ARG_TG01_TopicGiveBack_1@low.1	Here. It is yours.
 ARG_TG02_TopicClaimFigurine_0@high.0	The bone figurine is mine, friend. It was carved for my clutch.
 ARG_TG02_TopicClaimFigurine_0@high.1	I would be glad to have it back. It should come home to me.

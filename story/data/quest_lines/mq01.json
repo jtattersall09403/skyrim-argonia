@@ -6,12 +6,17 @@
     "variant": "main",
     "prompt": "Why am I here?",
     "lines": [
-     "Listen. Everyone on the broker's gang owes months. Months are the work we owe. I add more months to the roll for every meal.",
-     "I have read your line, and it has no name on it. What name do I call?"
+     "Your line is on the roll of this gang, and I am Wuleen-Sei, who keeps it. I add months to the roll for every meal a hand eats.",
+     "Ux-Xeek called your line, and it has no name on it. What name do I write?"
     ],
     "facts": [
      "fact.mq01.owing-roll",
      "fact.mq01.blank-line"
+    ],
+    "replies": [
+     "topic.mq01-answer-name",
+     "topic.mq01-answer-silent",
+     "topic.mq01-answer-defy"
     ]
    }
   ]
@@ -23,12 +28,10 @@
     "variant": "main",
     "prompt": "Put down the name I carry.",
     "lines": [
-     "We all heard you in the hold. Your line had no name on it, and now it has one.",
-     "Take the door up to the plank. The gang walks the shore path, north and west."
+     "Then your line has a name now, and it is written.",
+     "Go up the stairs and out by the door to the pier. We walk along the dock to the families' camp, where the dock meets the land."
     ],
-    "facts": [
-     "fact.mq01.blank-line"
-    ]
+    "facts": []
    }
   ]
  },
@@ -39,8 +42,8 @@
     "variant": "main",
     "prompt": "(Say nothing.)",
     "lines": [
-     "You say nothing. I read your line blank again. It has no name on it.",
-     "Take the door up to the plank. The gang walks the shore path, north and west."
+     "Then your line stays blank, with no name on it.",
+     "Then go up the stairs and out on the pier. The gang is going to the camp at the dock's landward end."
     ],
     "facts": [
      "fact.mq01.blank-line"
@@ -55,8 +58,8 @@
     "variant": "main",
     "prompt": "Do what you like with your roll.",
     "lines": [
-     "Ux-Xeek, who calls the names, laughed once and stopped. The gang heard you. Your line stays with no name on it.",
-     "Take the door up to the plank. The gang walks the shore path, north and west."
+     "Then I write nothing, and your line stays blank.",
+     "Get up the stairs and out on the pier. You go to the camp with the rest of the gang."
     ],
     "facts": [
      "fact.mq01.blank-line"
@@ -71,9 +74,9 @@
     "variant": "after-answer",
     "prompt": "Whose gang is this?",
     "lines": [
-     "I will say it plainly. I hold the months this gang works. I hire the gang out to Hereguard Plantation. I leave the counting to Wuleen-Sei.",
-     "Your line on the roll is mine to fill or to leave. Wuleen-Sei asks the names for me.",
-     "I heard the answer you gave the overseer, Wuleen-Sei. It was enough for her, and it is written. Go on with Wuleen-Sei."
+     "It is mine. I am Buys-The-Months, the broker. Every hand on it owes months to me.",
+     "I hire the gang out to unload the lighters at this dock, the boats that bring the ships' goods in to it.",
+     "Your place on the roll is mine, whatever stands on your line."
     ],
     "facts": [
      "fact.mq01.broker-holds"
@@ -83,8 +86,9 @@
     "variant": "before-answer",
     "prompt": "Whose gang is this?",
     "lines": [
-     "I will say it plainly. I hold the months this gang works. I hire the gang out to Hereguard Plantation. I leave the counting to Wuleen-Sei.",
-     "Your line on the roll is mine to fill or to leave. Wuleen-Sei asks the names for me. Give her your answer in the hold."
+     "It is mine. I am Buys-The-Months, the broker. Every hand on it owes months to me.",
+     "I hire the gang out to unload the lighters at this dock, the boats that bring the ships' goods in to it.",
+     "Your place on the roll is mine, and Wuleen-Sei has not finished with your line. Answer her in the hold."
     ],
     "facts": [
      "fact.mq01.broker-holds"
@@ -97,10 +101,9 @@
   "infos": [
    {
     "variant": "main",
-    "prompt": "Is that water for me?",
+    "prompt": "Who are you?",
     "lines": [
-     "Here is the day's water. Drink what you need and pass the cup to the next hand. I call the names in the hold every day, in order. I have never lost one.",
-     "Ask me for water whenever you are dry. Wuleen-Sei keeps the count of what you eat."
+     "I am Ux-Xeek, port hand of this barge. I call the names in the hold every day, in order. I have never lost one."
     ],
     "facts": []
    }
@@ -111,11 +114,10 @@
   "infos": [
    {
     "variant": "main",
-    "prompt": "What have the years away cost you?",
+    "prompt": "Why is your colour so thin?",
     "lines": [
-     "Two of us in this gang have been kept from the Hist so long that our colour and markings have thinned. Mine is going.",
-     "The gang families keep a cutting of the Hist from Nine Bends at the camp. Their egg clutch lies at its roots. I cannot stand beside my own Hist, so I want to stand beside the cutting before my colour is gone.",
-     "The camp is the end of the gang's walk. You will see the huts, the fire and the hatching shed there. The shed stands beside the cutting at the far end."
+     "I was kept from my Hist for years. My colour thinned and my markings went soft.",
+     "Finds-The-Other-Bank is thinned the same way. The gang families keep a cutting from the Hist at Nine Bends at their camp, and it is the nearest I can stand to a Hist. I mean to stand beside it before my colour is gone."
     ],
     "facts": [
      "fact.mq01.washed-out",

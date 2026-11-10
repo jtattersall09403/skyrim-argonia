@@ -371,6 +371,12 @@
       [
        "endingId"
       ]
+     ],
+     [
+      "hidden",
+      [
+       "hidden"
+      ]
      ]
     ],
     "conds": [],
@@ -397,6 +403,7 @@
      "actions",
      "ending",
      "endingId",
+     "hidden",
      "outside"
     ],
     "children": [
@@ -442,6 +449,12 @@
          [
           "objectiveText"
          ]
+        ],
+        [
+         "target",
+         [
+          "target"
+         ]
         ]
        ],
        "conds": [
@@ -457,6 +470,7 @@
         "id",
         "text",
         "objectiveText",
+        "target",
         "completeWhen"
        ],
        "children": []

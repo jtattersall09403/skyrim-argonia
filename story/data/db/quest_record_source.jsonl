@@ -27,12 +27,12 @@
 {"quest_id":"quest.local.lq30","source":"bmv","value":"bmv_placement 08D5E9 (the gate soldier, the levy warden); bmv_npc 17BC83 (the viper's base); bmv_cell 0D787F:Black Marsh.esm (the gate), 0D7883:Black Marsh.esm (the roots in the shallows, navmesh, no NPCs)"}
 {"quest_id":"quest.local.lq30","source":"ledger","value":"we.lq30.beast, we.lq30.youth, we.clean.helstrom"}
 {"quest_id":"quest.local.lq30","source":"lore"}
-{"quest_id":"quest.main.mq01","source":"bmv","value":"bmv_cell 0F9178:Black Marsh.esm (ship at Dock1), 005911:Black Marsh.esm (Hereguard Plantation), bmv_placement 0F9399 (the hold's door), 005AB4 (pier door); census docs/research/bmv/census.md"}
+{"quest_id":"quest.main.mq01","source":"bmv","value":"bmv_cell 0F9178:Black Marsh.esm (ship at Dock1), 00591F:Black Marsh.esm (Lilmoth's dock, navmesh 079823) (pier door 005AB4, the hold's door 0F9399); census docs/research/bmv/census.md"}
 {"quest_id":"quest.main.mq01","source":"bmvPeople","value":"none of BM&V's own actors is used by the quest; every person is a registry person or a ledger person"}
 {"quest_id":"quest.main.mq01","source":"ledger","value":"quest_adaptation, quest_host, quest_world_edit and world_edit of quest.main.mq01 (we.mq01.start, .barge-crew, .broker, .gang, .families, .camp, .cell, .no-valenwood, .no-welcome, .hold-location; we.clean.lilmoth, we.clean.hereguardplantation)"}
 {"quest_id":"quest.main.mq01","source":"lore"}
 {"quest_id":"quest.main.mq01","source":"roster","value":"story/design/quests/36-cast-roster.md §55 (Cuts-the-Old-Knot)"}
-{"quest_id":"quest.main.mq03","source":"bmv","value":"bmv_cell 0FE7F7:Black Marsh.esm (House, Lilmoth), 0F9178:Black Marsh.esm (the hold), 005911:Black Marsh.esm (the camp), bmv_placement 0FE95A (house door)"}
+{"quest_id":"quest.main.mq03","source":"bmv","value":"bmv_cell 0FE7F7:Black Marsh.esm (House, Lilmoth), 0F9178:Black Marsh.esm (the hold), 00591F:Black Marsh.esm (the camp, Dock1), bmv_placement 0FE95A (house door)"}
 {"quest_id":"quest.main.mq03","source":"ledger","value":"we.mq03.reed, we.mq03.house, we.mq03.rooms, we.mq03.door, we.mq03.dream, we.mq03.hurt, we.mq03.jar-marks, we.mq01.camp (aftermath), we.mq01.broker, we.mq01.hold-location, we.clean.hereguardplantation, we.clean.lilmoth"}
 {"quest_id":"quest.main.mq03","source":"lore"}
 {"quest_id":"quest.main.mq03","source":"roster","value":"story/design/quests/36-cast-roster.md §55 (Nesh-Deeka; Never-Writes-Twice; Cuts-the-Old-Knot)"}

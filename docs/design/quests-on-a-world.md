@@ -17,7 +17,7 @@ The work runs in this order; each part names the skill or tool that carries it.
 | 6 | Give everyone something to say | talk-write |
 | 7 | Write the quest dialogue | dialogue-write, text-review |
 | 8 | Read back, integrate, deploy | read-backs, plugin.sh, deploy |
-| 9 | Hand it to the owner | walk checks, rulings |
+| 9 | Hand it to the owner | owner checks, rulings |
 | 10 | Run it as parallel work | lanes, briefs, landing |
 
 ## 1. Make the world the game's world
@@ -64,9 +64,15 @@ The work runs in this order; each part names the skill or tool that carries it.
   host without a clean-up, a call that cites no lore.
 - **Each quest is written as a record** with `quest-write` (hidden truth, cast knowledge, things, clues, actions,
   stages, endings, topics) and reviewed by a fresh `quest-review` reader; the loop ends when a full round raises
-  nothing blocking. Every stage says plainly what to do; every main quest offers at least two ways through with
+  nothing blocking. Each thing the player must do next is its own stage, entry, objective and target; a new
+  character can always go on along the main quest; every main quest offers at least two ways through with
   different named skills; faction quests use the faction's own skills; everything is checked against the lore and
   the vibe.
+- **Every sequence the player must finish keeps them in it:** an opening happens where the player already is, with no
+  long unescorted walk; a person the player is told to follow sets off only once the player can see them and walks
+  one navmesh island.
+- **A check that can fail is never on the only way forward**, and never on a hand-over from an ally (a task given or
+  a report taken).
 - **A slice first:** fit the opening act and a few lines that do not clash, play them, then the rest.
 
 **Skill use.** Quests are played with the game's own skills, named in the record:
@@ -190,20 +196,23 @@ to four landmarked steps (a longer way gives its first three, then "from there, 
 place as a step), a cool first greeting and warmth only with regard, names by the naming rules, a trader's
 services matching their stock, and rumours that point to a quest only while it can start. A settlement's people do
 not repeat each other: each fact has one holder there, and anyone else who would know it points to that holder.
+Everyone the player can walk up to is covered, the people a quest places in the settlement as well as the census's.
 
 ## 7. Write the quest dialogue
 
-Per speaker from the record with `dialogue-write` (matched lines from the reference corpus as the model; the speaker's
-brief generated from the data, holding only that speaker's sourced facts, their part in each stage and the skill
-checks they answer), one `text-review` pass by another agent, then loaded. Each brief also knows who else the player
-hears in the same place during the same stage (the quest's topics by stage and place, its quest people by stage
-window, the settlement's talkers): a fact they share is said once, by the first speaker the player meets whose role
-it is, and the others point to that person and say their own thing. The echo check fails any line set where two
-speakers of one place and stage state the same fact or the same long clause, outside a named list of deliberate
-echoes (a quest rumour several people tell). A line that sets a stage or checks a skill
-says so plainly in the words the player reads (what was agreed, what is needed). Cool, middle and warm bands are
-separated by the engine's relationship rank; race forms of address only where the brief asks; a short greeting for
-anyone a quest ending leaves standing; journal and objective text written and reviewed the same way.
+Per speaker from the record with `dialogue-write` (matched lines from the reference corpus as the model; the
+speaker's brief generated from the data, holding that speaker's sourced facts, each line's place, stage window, check
+and effect, the reply topics, and what the others in the same place say), one `text-review` pass by another agent
+over the lines grouped by place, then loaded. Lines live in the story database and nowhere else. A line tells; a
+question is a choice with a topic per reply. A line offers only what its effect delivers, and a line that advances a
+stage never refuses. A prompt is a sentence the player would say with what they know, never a bare label, with its
+cost or check in it. Every topic has a first and a last stage; nobody offers the task after its ending. A refusal
+names what would change it. A fact has one speaker per place and stage window: the echo check fails any line set
+where two speakers of one place and stage state the same fact or the same long clause, outside a named list of
+deliberate echoes (a quest rumour several people tell). Warm and cool wordings exist only for lines spoken after that
+person's regard has changed, separated by the engine's relationship rank; race forms of address only where the brief
+asks. Everyone an ending leaves standing has a greeting true of that ending. Journal entries tell one step each;
+objectives are imperatives with a target.
 
 ## 8. Read back, integrate, deploy
 
@@ -234,8 +243,10 @@ anyone a quest ending leaves standing; journal and objective text written and re
 
 ## 9. Hand it to the owner
 
-- **Walk checks:** the fewest checks that prove what was built, each in plain words with the place, what to do and
+- **Owner checks:** the fewest checks that prove what was built, each in plain words with the place, what to do and
   what passing looks like; ticked checks stay as the record; superseded checks are marked.
+- **A passed check teaches the recipe:** when the owner passes a fix, its class of mistake is written into the
+  recipe and applied to every other quest of the slice before the next walk.
 - **Looks are the owner's call:** a model or a placement's look goes to the owner, never decided by a reviewer.
 - **Rulings** are recorded the day they are made, and the plan is updated from the walk before new work starts.
 

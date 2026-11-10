@@ -54,12 +54,9 @@
     "variant": "phial-carried",
     "prompt": "I will tell you what I saw at the camp.",
     "lines": [
-     "Sit. Tell me what you saw at the camp. Leave nothing out.",
-     "Did you see jars at the camp? Think carefully.",
-     "You are carrying a phial. Give it to me. I want to look at it.",
-     "Tell me about the jars once more. How many ring-marks did you see?",
-     "The Reed has word of a cell. It cuts a Hist's roots and draws its sap into jars. Your camp is the first work of it that the Reed has seen.",
-     "When you have told it all, ask me who I am. It matters to what you owe.",
+     "Sit. I have heard the others. Now I have heard you.",
+     "You are carrying a phial of the sap. Give it to me. I want to look at it.",
+     "The Reed has word of a cell. It cuts a Hist's roots and draws off the sap. Your camp is the first work of it that the Reed has seen.",
      "The courier's satchel was mine to see carried. I say no more of it."
     ],
     "facts": [
@@ -67,23 +64,17 @@
      "fact.mq03.satchel-hers"
     ],
     "lines@low": [
-     "Sit. Tell me what you saw at the camp. All of it.",
-     "Did you see jars at the camp? Think.",
-     "You are carrying a phial. Give it to me. I will look at it.",
-     "The jars again. How many ring-marks did you see?",
-     "The Reed has word of a cell. It cuts a Hist's roots and draws its sap into jars.",
+     "Sit. I have heard the others. Now I have heard you.",
+     "You are carrying a phial of the sap. Give it to me. I will look at it.",
+     "The Reed has word of a cell. It cuts a Hist's roots and draws off the sap.",
      "Your camp is the first work of it that the Reed has seen.",
-     "When you have told it all, ask me who I am.",
      "The courier's satchel was mine to see carried. I say no more of it."
     ],
     "lines@high": [
-     "Sit, please. Tell me what you saw at the camp. Take your time, but leave nothing out.",
-     "Did you see jars at the camp? Think it over. I am in no hurry.",
-     "You are carrying a phial. Give it to me, and I will take care with it. I want to look at it.",
-     "Tell me about the jars once more. How many ring-marks did you see?",
-     "The Reed has word of a cell. It cuts a Hist's roots and draws its sap into jars. I tell you this because I trust you.",
+     "Sit, please. I have heard the others. Now I have heard you.",
+     "You are carrying a phial of the sap. Give it to me, and I will take care with it. I want to look at it.",
+     "The Reed has word of a cell. It cuts a Hist's roots and draws off the sap. I tell you this because I trust you.",
      "Your camp is the first work of it that the Reed has seen.",
-     "When you have told it all, ask me who I am. It matters to what you owe. I think you will be glad of it.",
      "The courier's satchel was mine to see carried. I say no more of it. I am sorry I cannot."
     ]
    },
@@ -91,12 +82,9 @@
     "variant": "phial-none",
     "prompt": "I will tell you what I saw at the camp.",
     "lines": [
-     "Sit. Tell me what you saw at the camp. Leave nothing out.",
-     "Did you see jars at the camp? Think carefully.",
+     "Sit. I have heard the others. Now I have heard you.",
      "You took nothing from the shed. Then I have only your word. I will take it.",
-     "Tell me about the jars once more. How many ring-marks did you see?",
-     "The Reed has word of a cell. It cuts a Hist's roots and draws its sap into jars. Your camp is the first work of it that the Reed has seen.",
-     "When you have told it all, ask me who I am. It matters to what you owe.",
+     "The Reed has word of a cell. It cuts a Hist's roots and draws off the sap. Your camp is the first work of it that the Reed has seen.",
      "The courier's satchel was mine to see carried. I say no more of it."
     ],
     "facts": [
@@ -104,23 +92,17 @@
      "fact.mq03.satchel-hers"
     ],
     "lines@low": [
-     "Sit. Tell me what you saw at the camp. All of it.",
-     "Did you see jars at the camp? Think.",
-     "You took nothing from the shed. I have only your word. I will take it.",
-     "The jars again. How many ring-marks did you see?",
-     "The Reed has word of a cell. It cuts a Hist's roots and draws its sap into jars.",
+     "Sit. I have heard the others. Now I have heard you.",
+     "You took nothing from the shed. Then I have only your word. I will take it.",
+     "The Reed has word of a cell. It cuts a Hist's roots and draws off the sap.",
      "Your camp is the first work of it that the Reed has seen.",
-     "When you have told it all, ask me who I am.",
      "The courier's satchel was mine to see carried. I say no more of it."
     ],
     "lines@high": [
-     "Sit, please. Tell me what you saw at the camp. Take your time, but leave nothing out.",
-     "Did you see jars at the camp? Think it over. I am in no hurry.",
-     "You took nothing from the shed. I have only your word. I trust it, so I will take it.",
-     "Tell me about the jars once more. How many ring-marks did you see?",
-     "The Reed has word of a cell. It cuts a Hist's roots and draws its sap into jars. I tell you this because I trust you.",
+     "Sit, please. I have heard the others. Now I have heard you.",
+     "You took nothing from the shed. Then I have only your word. I trust it, so I will take it.",
+     "The Reed has word of a cell. It cuts a Hist's roots and draws off the sap. I tell you this because I trust you.",
      "Your camp is the first work of it that the Reed has seen.",
-     "When you have told it all, ask me who I am. It matters to what you owe. I think you will be glad of it.",
      "The courier's satchel was mine to see carried. I say no more of it. I am sorry I cannot."
     ]
    }
@@ -189,16 +171,16 @@
     "variant": "low",
     "prompt": "What did you see that night?",
     "lines": [
-     "I saw the camp that night. I do not tell strangers what I saw. Give me a reason."
+     "I saw the camp that night. I do not tell strangers what I saw. Bring me something of the courier's, or find better words."
     ],
     "facts": [],
     "lines@low": [
      "I saw the camp that night. I do not tell strangers what I saw.",
-     "Give me a reason, or the tag."
+     "Bring me something of the courier's, or find better words."
     ],
     "lines@high": [
      "I saw the camp that night, friend. I do not tell it to just anyone. I am sorry.",
-     "Give me a reason, or show me the tag, and I will think again."
+     "Bring me something of the courier's, or find better words, and I will think again."
     ]
    }
   ]
@@ -245,18 +227,21 @@
     "variant": "main",
     "prompt": "I will serve the Reed.",
     "lines": [
-     "Then you serve the Reed. What I offered is yours now. I have your word."
+     "Then you serve the Reed. What I offered is yours now. I have your word.",
+     "The first work is this. East of Lilmoth, at Low-Reed Village, a Hist has shut. Go and see why."
     ],
     "facts": [
      "fact.mq03.reed-offer"
     ],
     "lines@low": [
      "Then you serve the Reed. What I offered is yours now.",
-     "I have your word."
+     "I have your word.",
+     "The first work is this. East of Lilmoth, at Low-Reed Village, a Hist has shut. Go and see why."
     ],
     "lines@high": [
      "Then you serve the Reed. I am glad of it, friend.",
-     "What I offered is yours now. I have your word. I trust it."
+     "What I offered is yours now. I have your word. I trust it.",
+     "The first work is this. East of Lilmoth, at Low-Reed Village, a Hist has shut. Go and see why."
     ]
    }
   ]
@@ -268,18 +253,21 @@
     "variant": "main",
     "prompt": "Not yet.",
     "lines": [
-     "Then you do not take what I offered. That is your choice. The Reed will still send for you, and it will pay for the work."
+     "Then you do not take what I offered. That is your choice. The Reed will still send for you, and it will pay for the work.",
+     "Whatever you chose, the first work is at Low-Reed Village, east of Lilmoth. A Hist there has shut. Find out why."
     ],
     "facts": [
      "fact.mq03.reed-offer"
     ],
     "lines@low": [
      "Then you do not take what I offered. That is your choice.",
-     "The Reed will still send for you, and it will pay for the work."
+     "The Reed will still send for you, and it will pay for the work.",
+     "Whatever you chose, the first work is at Low-Reed Village, east of Lilmoth. A Hist there has shut. Find out why."
     ],
     "lines@high": [
      "Then you do not take what I offered. That is your choice. I do not hold it against you.",
-     "The Reed will still send for you, and it will pay for the work."
+     "The Reed will still send for you, and it will pay for the work.",
+     "Whatever you chose, the first work is at Low-Reed Village, east of Lilmoth. A Hist there has shut. Find out why."
     ]
    }
   ]

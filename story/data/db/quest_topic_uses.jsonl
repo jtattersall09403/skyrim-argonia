@@ -190,9 +190,13 @@
 {"quest_id":"quest.main.mq01","topics_ord":3,"ord":0,"value":"fact.mq01.blank-line"}
 {"quest_id":"quest.main.mq01","topics_ord":4,"ord":0,"value":"fact.mq01.broker-holds"}
 {"quest_id":"quest.main.mq01","topics_ord":4,"ord":1,"value":"fact.mq01.owing-roll"}
-{"quest_id":"quest.main.mq01","topics_ord":5,"ord":0,"value":"fact.mq01.owing-roll"}
 {"quest_id":"quest.main.mq01","topics_ord":6,"ord":0,"value":"fact.mq01.washed-out"}
 {"quest_id":"quest.main.mq01","topics_ord":6,"ord":1,"value":"fact.mq01.gang-hist"}
+{"quest_id":"quest.main.mq01","topics_ord":7,"ord":0,"value":"fact.mq01.gang-hist"}
+{"quest_id":"quest.main.mq01","topics_ord":7,"ord":1,"value":"fact.mq01.roots-cut"}
+{"quest_id":"quest.main.mq01","topics_ord":7,"ord":2,"value":"fact.mq01.clutch-dead"}
+{"quest_id":"quest.main.mq01","topics_ord":8,"ord":0,"value":"fact.mq01.her-face"}
+{"quest_id":"quest.main.mq01","topics_ord":8,"ord":1,"value":"fact.mq01.satchel"}
 {"quest_id":"quest.main.mq03","topics_ord":0,"ord":0,"value":"fact.mq03.satchel-hers"}
 {"quest_id":"quest.main.mq03","topics_ord":1,"ord":0,"value":"fact.mq03.sap-cell"}
 {"quest_id":"quest.main.mq03","topics_ord":1,"ord":1,"value":"fact.mq03.no-claim"}
