@@ -185,8 +185,9 @@ CREATE TABLE "cell" (
   "region_id" TEXT NOT NULL REFERENCES "region"("id"),
   "land_share" REAL NOT NULL,            -- share of the cell that is dry land on the map
   "margin" INTEGER NOT NULL CHECK ("margin" IN (0, 1)),  -- 1: border scenery past the province (no navmesh, flora detail or danger)
-  "danger_band_id" TEXT REFERENCES "danger_band"("id"),
-  "danger_why" TEXT,                     -- the rule that set the band
+  "natural_band_id" TEXT REFERENCES "danger_band"("id"),  -- the country before any town or road tames it
+  "danger_band_id" TEXT REFERENCES "danger_band"("id"),   -- ground danger: what a traveller meets there now
+  "danger_why" TEXT,                     -- the rules that set both bands (tools/newworld/danger.py)
   PRIMARY KEY ("x", "y")
 );
 
@@ -216,7 +217,7 @@ CREATE TABLE "place" (
   "population" INTEGER,                  -- people living there in 4E 201 (0 for a ruin or wild place)
   "footprint_radius_m" REAL,
   "siting" TEXT,                         -- its ground: riverbank, coast, island, lakeshore, inland, hilltop, seabed
-  "danger_band_id" TEXT REFERENCES "danger_band"("id"),
+  "danger_band_id" TEXT REFERENCES "danger_band"("id"),   -- researched strength of what lives inside (place_danger derives)
   "importance" INTEGER,                  -- 5 shapes the province .. 1 local colour
   "summary" TEXT,                        -- two or three sentences for the reader who knows nothing
   "lore_page" TEXT,                      -- the UESP page, when canon names it
@@ -249,6 +250,29 @@ CREATE TABLE "place_note_source" (
   FOREIGN KEY ("place_id", "aspect_id") REFERENCES "place_note"("place_id", "aspect_id")
 );
 
+-- How a place's people meet a visitor (tools/newworld/place_danger.py; docs/design/danger.md).
+CREATE TABLE "disposition" (
+  "id" TEXT NOT NULL PRIMARY KEY,        -- friendly, wary, hostile, abandoned
+  "rank" INTEGER NOT NULL UNIQUE,
+  "label" TEXT NOT NULL,
+  "about" TEXT NOT NULL
+);
+
+-- A place's danger, derived with its reasons (tools/newworld/place_danger.py); its ground is its cell's.
+-- `by` says whether the owner overruled any of it (newworld/sources/danger/owner.json).
+CREATE TABLE "place_danger" (
+  "place_id" TEXT NOT NULL PRIMARY KEY REFERENCES "place"("id"),
+  "disposition_id" TEXT NOT NULL REFERENCES "disposition"("id"),
+  "disposition_why" TEXT NOT NULL,
+  "strength_band_id" TEXT NOT NULL REFERENCES "danger_band"("id"),   -- how strong what lives inside is
+  "strength_why" TEXT NOT NULL,
+  "reach_band_id" TEXT NOT NULL REFERENCES "danger_band"("id"),      -- the worst ground on the calmest way in
+  "reach_why" TEXT NOT NULL,
+  "reward_band_id" TEXT NOT NULL REFERENCES "danger_band"("id"),     -- the higher of reach and strength: loot's band
+  "reward_why" TEXT NOT NULL,
+  "by" TEXT NOT NULL CHECK ("by" IN ('derived', 'owner'))
+);
+
 -- What the place needs of the terrain, so the land is built for it in one pass.
 CREATE TABLE "place_terrain_need" (
   "place_id" TEXT NOT NULL REFERENCES "place"("id"),
@@ -267,6 +291,8 @@ CREATE TABLE "place_give" (
   "detail" TEXT NOT NULL,                -- specific: 'Expert Alteration trainer', 'iron and corundum veins'
   "count" INTEGER NOT NULL CHECK ("count" >= 1),
   "reward_kind_id" TEXT REFERENCES "give_kind"("id"),   -- combat only: the loot give at this place that pays for it
+  "setting" TEXT CHECK ("setting" IN ('interior', 'provoked')),  -- a settlement's own fight: in a dungeon-like
+                                         -- interior of it, or its own people only when provoked; null elsewhere
   PRIMARY KEY ("place_id", "seq")
 );
 

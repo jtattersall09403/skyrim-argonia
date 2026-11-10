@@ -2,8 +2,9 @@
 contract docs/design/place-studio.md "Stock").
 
 A place's wealth is derived from its facts, never from danger alone: its settlement tier or kind, importance,
-population, trade position (roads at it, a major road, a boatman, its traders) and a mechanical read of its
-economy note. The figure, its band (P1..P5) and the reason are kept in `newworld/sources/stock/place_wealth.json`,
+population, trade position (roads at it, a major road, a boat stop, its traders) and a mechanical read of its
+economy note. Its danger enters as its reward band (tools/newworld/place_danger.py): the band's tier is the best
+the way in and the fight inside hold, and a lived place's ceiling is the higher of that and its wealth's. The figure, its band (P1..P5) and the reason are kept in `newworld/sources/stock/place_wealth.json`,
 one row per place; a row's `owner` block overrules the derived band for that place and is never touched by a
 rederive. build_db reads the file into the tables `place_wealth` (with the scale's lookups `stock_tier`,
 `place_wealth_band`, `person_wealth_band`).
@@ -73,13 +74,15 @@ def derive(w) -> list[dict]:
     notes = {r["place_id"]: r["text"] for r in w.query("SELECT place_id, text FROM place_note WHERE aspect_id='economy'")}
     sym_tier = {s.id: s.settlement_tier_id for s in w.rows("symbol")}
     rows = []
+    reward = {r.place_id: r.reward_band_id for r in w.rows("place_danger")}
     for p in w.rows("place"):
-        dt = danger_tier[p.danger_band_id or "D1"]
+        rb = reward[p.id]
+        dt = danger_tier[rb]
         lived = (p.status in LIVED) and (p.population or 0) > 0
-        row = {"id": p.id, "name": p.name, "danger_band_id": p.danger_band_id, "danger_tier": dt}
+        row = {"id": p.id, "name": p.name, "reward_band_id": rb, "danger_tier": dt}
         if not lived:
             row.update(wealth_score=None, band=None, open_tier=tiers[dt]["below"], ceiling_tier=dt,
-                       why=f"{p.status or 'unpeopled'}: no residents' wealth; the ground's band {p.danger_band_id} "
+                       why=f"{p.status or 'unpeopled'}: no residents' wealth; the reward band {rb} "
                            f"sets it ({dt} at the hardest spot, {tiers[dt]['below']} along the way)")
             rows.append(row)
             continue
@@ -98,7 +101,7 @@ def derive(w) -> list[dict]:
         boat = rules["boat"] if "boat-stop" in ks else 0
         traders = min(sum(k.startswith("trader-") or k == "fence" for k in ks) * rules["trader_each"], rules["trader_cap"])
         parts.append((tr + boat + traders, f"trade {tr + boat + traders} ({rd['roads']} roads"
-                      f"{', major' if rd['major'] else ''}{', boatman' if boat else ''}, {traders // max(rules['trader_each'], 1)} traders)"))
+                      f"{', major' if rd['major'] else ''}{', boat stop' if boat else ''}, {traders // max(rules['trader_each'], 1)} traders)"))
         ep, words = economy_read(notes.get(p.id, ""), rules)
         parts.append((ep, f"economy {ep:+d} ({' '.join(words) or 'no telling words'})"))
         score = max(0, sum(x for x, _ in parts))
@@ -106,7 +109,7 @@ def derive(w) -> list[dict]:
         ceiling = max(dt, band["ceiling_tier"], key=lambda t: tiers[t]["rank"])
         row.update(wealth_score=score, band=band["id"], open_tier="T1", ceiling_tier=ceiling,
                    why=f"score {score} = " + " + ".join(s for _, s in parts) + f" -> {band['id']} {band['label']}; "
-                       f"ceiling {ceiling} (wealth {band['ceiling_tier']}, ground {dt})")
+                       f"ceiling {ceiling} (wealth {band['ceiling_tier']}, reward band {rb} {dt})")
         rows.append(row)
     return rows
 

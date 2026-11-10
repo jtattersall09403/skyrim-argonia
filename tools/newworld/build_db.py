@@ -6,7 +6,8 @@ Sources (all committed):
   (regions.py), the rasters (raster.py), and, when built, `out/newworld/roads.json` and `borders.json` (roads.py);
 - the research: `newworld/sources/research/cultures.json`, `regions/*.json` and `places/*.json`
   (written by the research passes; each record names the id it fills);
-- the danger bands, derived by tools/newworld/danger.py from all of the above;
+- the danger bands, derived by tools/newworld/danger.py (cells) and place_danger.py (places, with the owner's
+  overrules in `newworld/sources/danger/owner.json`) from all of the above;
 - the stocking scale, each place's wealth, its people, goods and stock (`newworld/sources/stock/`,
   `newworld/sources/people/`; tools/newworld/stockdb.py, which also reloads those tables alone).
 
@@ -31,6 +32,7 @@ from tools.argonia_world import db
 from tools.newworld import danger
 from tools.newworld import flora
 from tools.newworld import frame as f
+from tools.newworld import place_danger
 from tools.newworld import stockdb
 from tools.newworld import travel
 from tools.newworld.regions import REGIONS
@@ -171,7 +173,7 @@ def build() -> db.World:
     w = db.open(root, cache=False)
 
     for table in ("statement_tier", "settlement_tier", "place_kind", "symbol", "road_class", "danger_band",
-                  "terrain_need", "note_aspect", "water_kind"):
+                  "terrain_need", "note_aspect", "water_kind", "disposition"):
         w.insert_many(table, key[table])
     give_kinds = load_give_kinds()
     w.insert_many("give_kind", give_kinds)
@@ -314,6 +316,7 @@ def build() -> db.World:
     terrain_and_water(w)
     flora.build(w)
     travel.load(w)
+    place_danger.assign(w)
     w.insert_many("source", sorted(sources.values(), key=lambda r: r["id"]))
     stockdb.load(w)
     w.save()
@@ -321,6 +324,7 @@ def build() -> db.World:
 
 
 GIVE_KINDS = RESEARCH / "give_kinds.json"
+SETTINGS = ("interior", "provoked")     # where a settlement's own fight lives (place-research, keep a settlement to itself)
 REWARD_FOR = {"combat-foes": ("boss-chest", "treasure", "gold-hoard", "unique-item"),
               "combat-boss": ("boss-chest", "gold-hoard", "unique-item"),
               "combat-creature": ("boss-chest", "treasure", "gold-hoard", "unique-item")}
@@ -357,8 +361,11 @@ def place_gives(pid: str, r: dict, kinds: dict[str, dict]) -> list[dict]:
         count = int(g.get("count", 1))
         if count < 1:
             raise ValueError(f"{pid}: give {i} ({kind}): count must be at least 1")
+        setting = g.get("setting")
+        if setting is not None and (kinds[kind]["group"] != "combat" or setting not in SETTINGS):
+            raise ValueError(f"{pid}: give {i} ({kind}): setting {setting!r} is for a combat give, one of {SETTINGS}")
         rows.append({"place_id": pid, "seq": i, "give_kind_id": kind, "detail": g["detail"].strip(), "count": count,
-                     "reward_kind_id": reward})
+                     "reward_kind_id": reward, "setting": setting})
     return rows
 
 

@@ -908,12 +908,12 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "boss chest, D4 tier (level 35): the raj-kaal's chest, glass and ebony tier",
+     "detail": "the raj-kaal's chest",
      "count": 1
     },
     {
      "kind": "gold-hoard",
-     "detail": "gold hoard from the Rose's highway tolls, D4 tier, in the old warden's vault",
+     "detail": "the Rose's highway tolls, in the old warden's vault",
      "count": 1
     },
     {
@@ -1433,7 +1433,7 @@
    "population": 12,
    "footprint_radius_m": 60,
    "siting": "lakeshore",
-   "danger_band_id": "D1",
+   "danger_band_id": "D3",
    "importance": 2,
    "summary": "Lujei is a shore village on the west side of the Blackrose lake channels, where the road from the Soulrest side meets the ferry. It tolls the crossing for the island core.",
    "lore_page": null,
@@ -1667,7 +1667,7 @@
    "population": 3,
    "footprint_radius_m": 25,
    "siting": "riverbank",
-   "danger_band_id": "D1",
+   "danger_band_id": "D3",
    "importance": 2,
    "summary": "A ferry landing with a cable raft across the Blackrose channel west of Lujei. It carries road traffic between the Soulrest side and the island.",
    "lore_page": null,
@@ -1850,7 +1850,7 @@
     },
     {
      "kind": "treasure",
-     "detail": "treasure, D1 tier (up to 50 gold, iron and steel): a drowned traveller's purse in the reeds",
+     "detail": "a drowned traveller's purse in the reeds",
      "count": 1
     },
     {
@@ -2107,7 +2107,7 @@
    "population": 9,
    "footprint_radius_m": 60,
    "siting": "lakeshore",
-   "danger_band_id": "D1",
+   "danger_band_id": "D3",
    "importance": 2,
    "summary": "Ka-Asei is a stilt village over the water at the lake's southeast, a day from Blackrose, sitting where the channel to the delta begins.",
    "lore_page": null,
@@ -2320,17 +2320,6 @@
      "kind": "fishing",
      "detail": "fish traps in the channel mouth",
      "count": 1
-    },
-    {
-     "kind": "combat-foes",
-     "detail": "night bandit boats at the channel mouth",
-     "count": 3,
-     "reward": "treasure"
-    },
-    {
-     "kind": "treasure",
-     "detail": "treasure, D1 tier (up to 50 gold, iron and steel): the bandits' boat strongbox",
-     "count": 1
     }
    ]
   },
@@ -2342,7 +2331,7 @@
    "population": 9,
    "footprint_radius_m": 60,
    "siting": "coast",
-   "danger_band_id": "D1",
+   "danger_band_id": "D3",
    "importance": 2,
    "summary": "Amalaja is a seaward village at the east end of the washes, close to the delta, where Blackrose's channels meet the Lilmoth coast. It trades fish for the delta's rice.",
    "lore_page": null,
@@ -2571,7 +2560,7 @@
    "population": 8,
    "footprint_radius_m": 60,
    "siting": "riverbank",
-   "danger_band_id": "D1",
+   "danger_band_id": "D3",
    "importance": 2,
    "summary": "Tei-Kur is a delta village north-east of Blackrose in the farm country between the lake and the Lilmoth coast. It feeds the cities with its rice and sends its own to Delta Ferry.",
    "lore_page": null,
@@ -2783,7 +2772,7 @@
     },
     {
      "kind": "treasure",
-     "detail": "treasure, D1 tier (up to 50 gold, iron and steel): a farmhand's lost pouch at the paddy edge",
+     "detail": "a farmhand's lost pouch at the paddy edge",
      "count": 1
     }
    ]
@@ -2796,7 +2785,7 @@
    "population": 4,
    "footprint_radius_m": 25,
    "siting": "riverbank",
-   "danger_band_id": "D1",
+   "danger_band_id": "D3",
    "importance": 2,
    "summary": "Delta Ferry is the crossing east of Blackrose where the road to Lilmoth meets the water. Rafts carry freight, rice and travellers across the delta channel.",
    "lore_page": null,
@@ -3418,7 +3407,7 @@
     },
     {
      "kind": "treasure",
-     "detail": "treasure, D1 tier (up to 50 gold, iron and steel): a smuggler's purse hidden under the jetty",
+     "detail": "a smuggler's purse hidden under the jetty",
      "count": 1
     }
    ]
@@ -3644,7 +3633,7 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "boss chest, D3 tier (level 20): the watch captain's chest",
+     "detail": "the watch captain's chest",
      "count": 1
     },
     {
@@ -3875,7 +3864,7 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "boss chest, D3 tier (level 20): the scavenger leader's chest",
+     "detail": "the scavenger leader's chest",
      "count": 1
     }
    ]
@@ -4128,12 +4117,12 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "boss chest, D4 tier (level 35): the serpent's den, glass and ebony tier",
+     "detail": "the chest in the serpent's den",
      "count": 1
     },
     {
      "kind": "gold-hoard",
-     "detail": "gold hoard, D4 tier: a Second Era war-chest in the drowned stockade",
+     "detail": "a Second Era war-chest in the drowned stockade",
      "count": 1
     },
     {
@@ -4373,7 +4362,7 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "boss chest, D3 tier (level 20): sunk under the minder's platform, the raiders' leavings",
+     "detail": "the raiders' leavings, sunk under the minder's platform",
      "count": 1
     },
     {
@@ -4620,7 +4609,7 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "boss chest, D3 tier (level 20): the half-buried granary's locked bin",
+     "detail": "the half-buried granary's locked bin",
      "count": 1
     },
     {
@@ -4855,7 +4844,7 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "boss chest, D3 tier (level 20): an underwater chest in the drowned carting yard",
+     "detail": "an underwater chest in the drowned carting yard",
      "count": 1
     },
     {
@@ -5093,7 +5082,7 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "boss chest, D3 tier (level 20): the paymaster's iron strongbox in the flooded cellar",
+     "detail": "the paymaster's iron strongbox in the flooded cellar",
      "count": 1
     },
     {
@@ -5324,7 +5313,7 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "boss chest, D3 tier (level 20): the third dome's grave goods, with a fox-folk mask",
+     "detail": "the third dome's grave goods, with a fox-folk mask",
      "count": 1
     },
     {
@@ -5550,7 +5539,7 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "boss chest, D3 tier (level 20): the buried ferry cache in the brambles",
+     "detail": "the buried ferry cache in the brambles",
      "count": 1
     },
     {
@@ -5776,7 +5765,7 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "boss chest, D3 tier (level 20): a sealed clay jar of fox-kite relics in the lower burrow",
+     "detail": "a sealed clay jar of fox-kite relics in the lower burrow",
      "count": 1
     },
     {
@@ -6041,7 +6030,7 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "boss chest, D2 tier (level 10): the captain's locked chest in the stern",
+     "detail": "the captain's locked chest in the stern",
      "count": 1
     },
     {
@@ -6064,7 +6053,7 @@
    "population": 12,
    "footprint_radius_m": 60,
    "siting": "inland",
-   "danger_band_id": "D1",
+   "danger_band_id": "D3",
    "importance": 2,
    "summary": "Chasepoint is the coast road stage east of Soulrest, a wreck-salvage and carting village on the Percar road. It stands where the road meets the first fork of the interior river.",
    "lore_page": null,
@@ -6531,17 +6520,6 @@
      "kind": "fishing",
      "detail": "sea fishing off the landing",
      "count": 1
-    },
-    {
-     "kind": "combat-foes",
-     "detail": "wreckers on the shore by night",
-     "count": 3,
-     "reward": "treasure"
-    },
-    {
-     "kind": "treasure",
-     "detail": "treasure, D1 tier (up to 50 gold, iron and steel): the wreckers' cache in the dunes",
-     "count": 1
     }
    ]
   },
@@ -7000,7 +6978,7 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "boss chest, D3 tier (level 20): the outlaw chief's chest",
+     "detail": "the outlaw chief's chest",
      "count": 1
     },
     {
@@ -7220,7 +7198,7 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "boss chest, D3 tier (level 20): the overseers' gold behind the fallen stone",
+     "detail": "the overseers' gold behind the fallen stone",
      "count": 1
     },
     {
@@ -7440,7 +7418,7 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "boss chest, D3 tier (level 20): the smugglers' store in the lower galleries",
+     "detail": "the smugglers' store in the lower galleries",
      "count": 1
     },
     {
@@ -7660,7 +7638,7 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "boss chest, D3 tier (level 20): grave goods at the vent shaft",
+     "detail": "grave goods at the vent shaft",
      "count": 1
     },
     {
@@ -7683,7 +7661,7 @@
    "population": 0,
    "footprint_radius_m": 40,
    "siting": "inland",
-   "danger_band_id": "D1",
+   "danger_band_id": "D3",
    "importance": 1,
    "summary": "A working quarry on the Percar road, worked by a Soulrest-quarter crew for the harbour.",
    "lore_page": null,
@@ -7888,7 +7866,7 @@
     },
     {
      "kind": "treasure",
-     "detail": "treasure, D1 tier (up to 50 gold, iron and steel): the bandits' stash by the road",
+     "detail": "the bandits' stash by the road",
      "count": 1
     }
    ]
@@ -7901,7 +7879,7 @@
    "population": 0,
    "footprint_radius_m": 40,
    "siting": "inland",
-   "danger_band_id": "D1",
+   "danger_band_id": "D3",
    "importance": 1,
    "summary": "A red-stone quarry on the south side of the cape.",
    "lore_page": null,
@@ -8101,7 +8079,7 @@
     },
     {
      "kind": "treasure",
-     "detail": "treasure, D1 tier (up to 50 gold, iron and steel): the saboteurs' stolen tools and coin",
+     "detail": "the saboteurs' stolen tools and coin",
      "count": 1
     }
    ]
@@ -8114,7 +8092,7 @@
    "population": 5,
    "footprint_radius_m": 25,
    "siting": "inland",
-   "danger_band_id": "D1",
+   "danger_band_id": "D3",
    "importance": 1,
    "summary": "Redgum Camp is a timber camp in the Percar hills west of Chasepoint. It cuts the red gum and sends logs to Soulrest.",
    "lore_page": null,
@@ -8317,7 +8295,7 @@
     },
     {
      "kind": "treasure",
-     "detail": "treasure, D1 tier (up to 50 gold, iron and steel): a lost logger's pack in the forest",
+     "detail": "a lost logger's pack in the forest",
      "count": 1
     }
    ]
@@ -8559,7 +8537,7 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "boss chest, D2 tier (level 10): the smugglers' chest in the tower base",
+     "detail": "the smugglers' chest in the tower base",
      "count": 1
     },
     {
@@ -8806,7 +8784,7 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "boss chest, D3 tier (level 20): the strongroom under the gatehouse",
+     "detail": "the strongroom under the gatehouse",
      "count": 1
     },
     {
@@ -9036,7 +9014,7 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "boss chest, D3 tier (level 20): the miners' gold buried under a hall floor",
+     "detail": "the miners' gold buried under a hall floor",
      "count": 1
     },
     {
@@ -9233,17 +9211,19 @@
      "kind": "combat-foes",
      "detail": "Banu-Jaleel watchers, hostile to Imperial-descended visitors",
      "count": 6,
-     "reward": "boss-chest"
+     "reward": "boss-chest",
+     "setting": "provoked"
     },
     {
      "kind": "combat-boss",
      "detail": "the watch leader",
      "count": 1,
-     "reward": "boss-chest"
+     "reward": "boss-chest",
+     "setting": "provoked"
     },
     {
      "kind": "boss-chest",
-     "detail": "boss chest, D3 tier (level 20): the watch leader's chest on the platform",
+     "detail": "the watch leader's chest on the platform",
      "count": 1
     },
     {
@@ -9454,17 +9434,19 @@
      "kind": "combat-foes",
      "detail": "Naka-Desh river guards, hostile only to those who refuse the riddle",
      "count": 5,
-     "reward": "boss-chest"
+     "reward": "boss-chest",
+     "setting": "provoked"
     },
     {
      "kind": "combat-boss",
      "detail": "the station elder",
      "count": 1,
-     "reward": "boss-chest"
+     "reward": "boss-chest",
+     "setting": "provoked"
     },
     {
      "kind": "boss-chest",
-     "detail": "boss chest, D2 tier (level 10): the station elder's chest",
+     "detail": "the station elder's chest",
      "count": 1
     },
     {
@@ -9674,7 +9656,7 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "boss chest, D3 tier (level 20): the deepest vent's burned offerings",
+     "detail": "the burned offerings at the deepest vent",
      "count": 1
     },
     {
@@ -9894,7 +9876,7 @@
     },
     {
      "kind": "treasure",
-     "detail": "treasure, D1 tier (up to 50 gold, iron and steel): the wreckers' takings in a shore cave",
+     "detail": "the wreckers' takings in a shore cave",
      "count": 1
     }
    ]
@@ -10154,7 +10136,7 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "boss chest, D2 tier (level 10): the Bosmer captain's chest in the stern",
+     "detail": "the Bosmer captain's chest in the stern",
      "count": 1
     },
     {

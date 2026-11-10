@@ -311,9 +311,9 @@ record, with the reason (`status: dropped`, `why` naming the edit), never to avo
 is entered only in the ledger. Each tier lists its weapon and armour materials, enchantment grade, soul gem, gems, jewellery,
 potion grade, gold range, lock and the most its container may hold (`value_max`). The tiers are checked against
 vanilla's level gates (`docs/research/skyrim/stocking-yields.md`). How a place's band is set:
-- Wild ground: the danger band sets the tier (`danger_tier`: D1 T1 .. D5 T5). The hardest spot holds the band's
-  tier and the way to it the tier below (`effort`).
-- A peopled place: its wealth (`place_wealth`) sets a ceiling (P1 T1 .. P5 T5, never below its ground's tier).
+- Wild ground: the place's reward band (`place_danger`, docs/design/danger.md) sets the tier (`danger_tier`: D0
+  and D1 T1 .. D5 T5). The hardest spot holds the band's tier and the way to it the tier below (`effort`).
+- A peopled place: its wealth (`place_wealth`) sets a ceiling (P1 T1 .. P5 T5, never below its reward band's tier).
   What lies open is T1. Each tier above the open tier needs one more step of `security`, and a container's lock is
   its best tier's `lock`.
 - A person: their wealth band W1..W5 sets the gold they carry and keep, their clothes, their jewellery and their best

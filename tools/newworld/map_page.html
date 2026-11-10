@@ -254,7 +254,28 @@ function glyph(p) {
     ctx.fillStyle = FAMCOL[p.fam] || "#ddd"; ctx.strokeStyle = "#1c2420";
     ctx.beginPath(); ctx.moveTo(sx, sy - r); ctx.lineTo(sx + r, sy); ctx.lineTo(sx, sy + r); ctx.lineTo(sx - r, sy); ctx.closePath(); ctx.fill(); ctx.stroke();
   }
+  dispMark(p.disp, sx, sy, (p.symid.startsWith("settlement") ? (TIER_R[p.symid] || 4) : 4.2) * z + 3.5);
   if (selected) { ctx.strokeStyle = css("--accent") || "#96570f"; ctx.lineWidth = 3; ctx.beginPath(); ctx.arc(sx, sy, 14 * z, 0, 7); ctx.stroke(); }
+}
+// A place's disposition round its glyph: hostile a solid red ring with four spikes, wary an amber dashed ring,
+// abandoned a grey dotted ring, friendly nothing.
+const DISP = { hostile: "#d0312d", wary: "#e0a020", abandoned: "#9aa3a0" };
+function dispMark(d, sx, sy, r) {
+  if (!DISP[d]) return;
+  ctx.save(); ctx.strokeStyle = DISP[d];
+  ctx.lineWidth = d === "hostile" ? 2.6 : 1.8;
+  ctx.setLineDash(d === "wary" ? [4, 3] : d === "abandoned" ? [1.5, 3] : []);
+  ctx.beginPath(); ctx.arc(sx, sy, r, 0, 7); ctx.stroke();
+  if (d === "hostile") {
+    ctx.beginPath();
+    for (let i = 0; i < 4; i++) { const a = Math.PI / 4 + i * Math.PI / 2; ctx.moveTo(sx + r * Math.cos(a), sy + r * Math.sin(a)); ctx.lineTo(sx + (r + 4) * Math.cos(a), sy + (r + 4) * Math.sin(a)); }
+    ctx.stroke();
+  }
+  ctx.restore();
+}
+function dispSwatch(d) {
+  const c = DISP[d], dash = d === "wary" ? "4 3" : d === "abandoned" ? "1.5 3" : "";
+  return `<svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true">${c ? `<circle cx="11" cy="11" r="6.5" fill="none" stroke="${c}" stroke-width="${d === "hostile" ? 2.6 : 1.8}" stroke-dasharray="${dash}"/>` : `<circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-opacity=".3"/>`}${d === "hostile" ? `<path d="M15.6 15.6l2.8 2.8M6.4 15.6l-2.8 2.8M6.4 6.4L3.6 3.6M15.6 6.4l2.8-2.8" stroke="${c}" stroke-width="2.6"/>` : ""}</svg>`;
 }
 function labels() {
   ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
@@ -345,11 +366,12 @@ function home() {
   const km = Math.round(D.roads.reduce((a, r) => a + r.len, 0) / 1000);
   const researched = D.places.filter(p => p.sum).length;
   let legend = "";
-  if (on.danger) legend += `<h3>Danger bands</h3><div class="legend">${Object.entries(D.bands).map(([k, b]) => `<div class="row"><span class="sw" style="background:${BANDCOL(k)}"></span><b>${k}</b> ${esc(b.label)}: ${esc(b.about)}</div>`).join("")}</div>`;
+  if (on.danger) legend += `<h3>Ground danger</h3><p class="sub" style="color:var(--muted)">Each cell by what roams there now: the country's own band, made safe only inside a city or town and calmer along roads and beside a village or garrisoned fort.</p><div class="legend">${Object.entries(D.bands).map(([k, b]) => `<div class="row"><span class="sw" style="background:${BANDCOL(k)}"></span><b>${k}</b> ${esc(b.label)}: ${esc(b.about)}</div>`).join("")}</div>`;
+  if (on.places) legend += `<h3>How a place meets you</h3><div class="legend">${Object.entries(D.dispositions).map(([k, d]) => `<div class="row">${dispSwatch(k)}<b>${esc(d.label)}</b> (${D.places.filter(p => p.disp === k).length}): ${esc(d.about)}</div>`).join("")}</div>`;
   legend += `<h3>Cultures</h3><div class="legend">${Object.entries(D.cultures).map(([k, c]) => `<div class="row"><span class="sw" style="background:${c.hex}"></span><button class="chip" data-culture="${k}">${esc(c.n)}</button></div>`).join("")}</div>`;
   setBody(`<p class="lead">This is Project Tamriel's map of Black Marsh, the Argonian homeland, turned into the base of our new worldspace. Every symbol on it is a place in the database below, researched as it stands in 4E 201.</p>
   <div class="stats"><div><b>${n}</b><span>places</span></div><div><b>${D.regions.length}</b><span>regions</span></div><div><b>${Object.keys(D.cultures).length}</b><span>cultures</span></div><div><b>${km}</b><span>km of road</span></div><div><b>${D.cells.length}</b><span>cells, 117 m a side</span></div><div><b>${researched}</b><span>places researched</span></div></div>
-  <p>Drag to move, pinch or scroll to zoom. Tap a place to read about it; tap open ground to read about its region. Switch layers above: <i>Original map</i> shows Project Tamriel's drawing, <i>Danger</i> colours each cell by how dangerous it is.</p>
+  <p>Drag to move, pinch or scroll to zoom. Tap a place to read about it; tap open ground to read about its region. Switch layers above: <i>Original map</i> shows Project Tamriel's drawing, <i>Danger</i> colours each cell by its ground danger, and a ring round a place says how it meets you.</p>
   <p><button class="chip" data-key>The map key: what every symbol means</button> ${WB.length ? `<button class="chip" data-water>Water: kinds and flow, and the water editor</button>` : ""}</p>
   <h3>Regions</h3><div class="list">${D.regions.map(r => `<button data-region="${r.id}">${esc(r.n)}</button>`).join("")}</div>${legend}
   <p class="sub" style="margin-top:16px;color:var(--muted);font-size:.86rem">Terrain layer: ${D.terrainKind === "terrain" ? "shaded from the generated heightmap" : "land and water from the map (the heightmap is not built yet)"}.</p>`, "home");
@@ -373,9 +395,10 @@ function showPlace(id) {
   ].filter(f => f[1] != null && f[1] !== "");
   setBody(`<button class="back" data-home>← Overview</button>
   <h2>${esc(p.n)}</h2>
-  <div class="chips"><span class="chip">${esc(p.kind)}</span>${bandChip(p.bandid, p.band)}${cul ? `<button class="chip" data-culture="${p.cul}">${esc(cul.n)}</button>` : ""}<button class="chip" data-region="${p.reg}">${esc(reg.n)}</button>${tierTag(p.tier)}</div>
+  <div class="chips"><span class="chip">${esc(p.kind)}</span><span class="chip" title="${esc(D.dispositions[p.disp].about)}">${dispSwatch(p.disp)} ${esc(D.dispositions[p.disp].label)}</span>${bandChip(p.rew, "Reward " + p.rew)}${cul ?`<button class="chip" data-culture="${p.cul}">${esc(cul.n)}</button>` : ""}<button class="chip" data-region="${p.reg}">${esc(reg.n)}</button>${tierTag(p.tier)}</div>
   ${p.sum ? `<p class="lead">${esc(p.sum)}</p>` : `<p class="lead" style="color:var(--muted)">Not researched yet.</p>`}
   <dl class="facts">${facts.map(([k, v]) => `<dt>${k}</dt><dd>${typeof v === "number" ? v : (String(v).startsWith("<") ? v : esc(v))}</dd>`).join("")}</dl>
+  <h3>Danger</h3>${p.danger.map(([k, v, id, why]) => `<p><b>${k}</b> ${id ? bandChip(id, v) : esc(v)} <span style="color:var(--muted)">${esc(why)}</span></p>`).join("")}
   ${p.gives && p.gives.length ? `<h3>What it gives the player</h3>${p.gives.map(g => `<p><b>${esc(g.k)}</b>${g.c > 1 ? ` ×${g.c}` : ""}: ${esc(g.d)}${g.r ? ` <span style="color:var(--muted)">(reward: ${esc(g.r)})</span>` : ""}</p>`).join("")}` : ""}
   ${p.needs.length ? `<h3>What it needs of the ground</h3>${p.needs.map(n => `<p>${esc(n.n)} <span class="mono">(${Math.round(n.r)} m)</span>: ${esc(n.why)}</p>`).join("")}` : ""}
   ${notesHtml(p.notes)}`, "place");

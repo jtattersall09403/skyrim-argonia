@@ -123,8 +123,12 @@ def data(w: db.World) -> dict:
     def band(b):
         return f"{b} · {bands[b].label}" if b else None
 
+    danger = {r.place_id: r for r in w.rows("place_danger")}
+    dispositions = {d.id: d for d in w.rows("disposition")}
+    ground = {(c.x, c.y): c for c in w.rows("cell")}
     places = []
     for p in w.rows("place"):
+        pd, c = danger[p.id], ground[(p.cell_x, p.cell_y)]
         places.append({
             "id": p.id, "n": p.name, "label": p.map_label, "x": round(p.px * SCALE, 1), "y": round(p.py * SCALE, 1),
             "kind": kinds[p.place_kind_id].label, "fam": kinds[p.place_kind_id].family, "kid": p.place_kind_id,
@@ -134,6 +138,14 @@ def data(w: db.World) -> dict:
             "world": [round(p.world_x), round(p.world_y)], "water": p.on_water, "sure": p.read_sure,
             "status": p.status, "held": p.held_by, "pop": p.population, "radius": p.footprint_radius_m,
             "siting": p.siting, "band": band(p.danger_band_id), "bandid": p.danger_band_id, "imp": p.importance,
+            "disp": pd.disposition_id, "danger": [
+                ["Disposition", dispositions[pd.disposition_id].label, None, pd.disposition_why],
+                ["Ground", band(c.danger_band_id), c.danger_band_id, c.danger_why],
+                ["Strength inside", band(pd.strength_band_id), pd.strength_band_id, pd.strength_why],
+                ["Way in", band(pd.reach_band_id), pd.reach_band_id, pd.reach_why],
+                ["Reward", band(pd.reward_band_id), pd.reward_band_id, pd.reward_why
+                 + (" (the owner's call)" if pd.by == "owner" else "")]],
+            "rew": pd.reward_band_id,
             "sum": p.summary, "lore": p.lore_page, "tier": p.statement_tier_id,
             "alias": [a.alias for a in w.rows("place_alias", place_id=p.id)],
             "needs": [{"n": needs[t.terrain_need_id], "r": t.radius_m, "why": t.why}
@@ -167,6 +179,7 @@ def data(w: db.World) -> dict:
         "cultures": {c.id: {"n": c.name, "hex": c.glyph_hex, "tint": c.tint_hex, "people": c.people,
                             "about": c.about, "why": c.why, "tier": c.statement_tier_id} for c in cultures.values()},
         "bands": {b.id: {"label": b.label, "about": b.about, "level": b.foe_level} for b in bands.values()},
+        "dispositions": {d.id: {"label": d.label, "about": d.about} for d in dispositions.values()},
         "tiers": {t.id: t.about for t in tiers.values()},
         "kinds": {k.id: {"label": k.label, "about": k.about, "fam": k.family} for k in kinds.values()},
         "symbols": [{"id": s.id, "label": s.label, "glyph": s.glyph, "pt": s.pt_key_name, "meaning": s.meaning,

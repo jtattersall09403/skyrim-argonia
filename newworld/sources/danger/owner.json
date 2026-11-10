@@ -1,0 +1,2 @@
+{"about": "The owner's overrules of a place's derived danger (tools/newworld/place_danger.py; docs/design/danger.md): {place_id: {disposition?, strength?, reward?, why}}. A rebuild keeps them; a derived value is never written here.",
+ "places": {}}

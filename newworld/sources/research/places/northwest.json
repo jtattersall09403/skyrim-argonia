@@ -600,7 +600,7 @@
    "population": 10,
    "footprint_radius_m": 60,
    "siting": "riverbank",
-   "danger_band_id": "D1",
+   "danger_band_id": "D3",
    "importance": 3,
    "summary": "A stone Imperial fort a short walk east of Stormhold, held by an Archwarden garrison as a toll station and river watch on the Morrowind border road. The eagle still hangs over the gate.",
    "lore_page": null,
@@ -833,7 +833,7 @@
    "population": 10,
    "footprint_radius_m": 60,
    "siting": "inland",
-   "danger_band_id": "D1",
+   "danger_band_id": "D3",
    "importance": 2,
    "summary": "A village of raised stone farmsteads on the causeway road south of Stormhold, living on saltrice and market vegetables for the city.",
    "lore_page": null,
@@ -1113,7 +1113,7 @@
    "population": 10,
    "footprint_radius_m": 60,
    "siting": "riverbank",
-   "danger_band_id": "D1",
+   "danger_band_id": "D3",
    "importance": 2,
    "summary": "A village on the river road east of Stormhold, near the old Tenmar Wall junction, living on river trade and the mine at its back.",
    "lore_page": null,
@@ -1393,7 +1393,7 @@
    "population": 4,
    "footprint_radius_m": 25,
    "siting": "inland",
-   "danger_band_id": "D1",
+   "danger_band_id": "D3",
    "importance": 1,
    "summary": "A raised stone farmstead of one Dunmer-descended family, south-west of Fort Willowmoth, growing saltrice for Stormhold.",
    "lore_page": null,
@@ -1669,7 +1669,7 @@
    "population": 5,
    "footprint_radius_m": 40,
    "siting": "riverbank",
-   "danger_band_id": "D1",
+   "danger_band_id": "D3",
    "importance": 1,
    "summary": "A weir-wardens' camp on the river south-east of Stormhold, keeping fish traps and sedge beds that feed the city.",
    "lore_page": null,
@@ -1905,7 +1905,7 @@
     },
     {
      "kind": "treasure",
-     "detail": "a drowned trader's strongbox under the weir, D1 tier",
+     "detail": "a drowned trader's strongbox under the weir",
      "count": 1
     }
    ]
@@ -2191,7 +2191,7 @@
    "population": 4,
    "footprint_radius_m": 35,
    "siting": "inland",
-   "danger_band_id": "D1",
+   "danger_band_id": "D3",
    "importance": 1,
    "summary": "A road post on the northern trunk where it leaves Stormhold's causeway north-west of Fort Willowmoth, taking a small toll on reed and fish cargoes.",
    "lore_page": null,
@@ -2656,7 +2656,7 @@
     },
     {
      "kind": "treasure",
-     "detail": "a cutters' stash of coin and a steel knife, D2 tier",
+     "detail": "a cutters' stash of coin and a steel knife",
      "count": 1
     }
    ]
@@ -2926,7 +2926,7 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "behind the old wall, D2 tier (level 10)",
+     "detail": "behind the old wall",
      "count": 1
     }
    ]
@@ -3170,7 +3170,7 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "the undercroft altar, D3 tier (level 20)",
+     "detail": "the undercroft altar",
      "count": 1
     },
     {
@@ -3188,7 +3188,7 @@
    "population": 0,
    "footprint_radius_m": 40,
    "siting": "inland",
-   "danger_band_id": "D2",
+   "danger_band_id": "D4",
    "importance": 1,
    "summary": "A ruined Imperial road waystation north of Jal-Veesa, roofless and half sunk in mud.",
    "lore_page": null,
@@ -3377,7 +3377,7 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "in the plinth's hollow, D2 tier (level 10)",
+     "detail": "in the plinth's hollow",
      "count": 1
     }
    ]
@@ -3626,7 +3626,7 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "the chief's chest, D3 tier (level 20)",
+     "detail": "the chief's chest",
      "count": 1
     },
     {
@@ -3645,7 +3645,7 @@
    "population": 12,
    "footprint_radius_m": 70,
    "siting": "riverbank",
-   "danger_band_id": "D1",
+   "danger_band_id": "D3",
    "importance": 3,
    "summary": "A frontier village at the old border crossing, built round the Imperial census-and-excise post beside a black river whose white bridge has lost its middle span. It lives on the Blackwood Road trade and the toll fort beside it.",
    "lore_page": null,
@@ -3977,7 +3977,7 @@
    "population": 12,
    "footprint_radius_m": 70,
    "siting": "inland",
-   "danger_band_id": "D1",
+   "danger_band_id": "D3",
    "importance": 3,
    "summary": "A stone Imperial keep beside Slough Point, held as the western customs fort on the Blackwood Road. The Imperial eagle still hangs over the gate. It has not been chiselled off.",
    "lore_page": null,
@@ -4444,12 +4444,12 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "the lowest hall, D4 tier (level 35)",
+     "detail": "the lowest hall",
      "count": 1
     },
     {
      "kind": "gold-hoard",
-     "detail": "the Conclave's vault store, D4 tier",
+     "detail": "the Conclave's vault store",
      "count": 1
     },
     {
@@ -4708,12 +4708,12 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "the keystone hall, D4 tier (level 35)",
+     "detail": "the keystone hall",
      "count": 1
     },
     {
      "kind": "gold-hoard",
-     "detail": "the tomb wings' grave goods, D4 tier",
+     "detail": "the tomb wings' grave goods",
      "count": 1
     },
     {
@@ -4964,12 +4964,12 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "the Fenlord's sarcophagus, D4 tier (level 35)",
+     "detail": "the Fenlord's sarcophagus",
      "count": 1
     },
     {
      "kind": "gold-hoard",
-     "detail": "the Fenlord's vault, D4 tier",
+     "detail": "the Fenlord's vault",
      "count": 1
     }
    ]
@@ -5171,7 +5171,7 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "the cache under the tower, D2 tier (level 10)",
+     "detail": "the cache under the tower",
      "count": 1
     }
    ]
@@ -5416,7 +5416,7 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "the undercroft, reached by swimming, D3 tier (level 20)",
+     "detail": "the undercroft, reached by swimming",
      "count": 1
     },
     {
@@ -5665,7 +5665,7 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "the flooded lower rooms, D3 tier (level 20)",
+     "detail": "the flooded lower rooms",
      "count": 1
     },
     {
@@ -5907,7 +5907,7 @@
     },
     {
      "kind": "treasure",
-     "detail": "a thief's sack of stolen traps and coin hidden in the reeds, D1 tier",
+     "detail": "a thief's sack of stolen traps and coin hidden in the reeds",
      "count": 1
     }
    ]
@@ -6403,7 +6403,7 @@
    "population": 5,
    "footprint_radius_m": 40,
    "siting": "riverbank",
-   "danger_band_id": "D1",
+   "danger_band_id": "D3",
    "importance": 1,
    "summary": "A weir-wardens' camp on the creek north-east of Gandranen, keeping traps for Jal-Veesa.",
    "lore_page": null,
@@ -6634,7 +6634,7 @@
    "population": 4,
    "footprint_radius_m": 25,
    "siting": "inland",
-   "danger_band_id": "D1",
+   "danger_band_id": "D3",
    "importance": 1,
    "summary": "A raised stone farmstead west of Jal-Veesa on the northern road.",
    "lore_page": null,
@@ -7108,7 +7108,7 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "in the leader's hut, D3 tier (level 20)",
+     "detail": "in the leader's hut",
      "count": 1
     }
    ]
@@ -7992,7 +7992,7 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "the courier's strongbox, D2 tier (level 10)",
+     "detail": "the courier's strongbox",
      "count": 1
     }
    ]
@@ -8254,7 +8254,7 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "the diggers' haul, D3 tier (level 20)",
+     "detail": "the diggers' haul",
      "count": 1
     },
     {
@@ -8521,7 +8521,7 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "the raiders' trench, D3 tier (level 20)",
+     "detail": "the raiders' trench",
      "count": 1
     },
     {
@@ -8735,7 +8735,7 @@
     },
     {
      "kind": "boss-chest",
-     "detail": "in the drowned hall, reached by swimming, D3 tier (level 20)",
+     "detail": "in the drowned hall, reached by swimming",
      "count": 1
     }
    ]
