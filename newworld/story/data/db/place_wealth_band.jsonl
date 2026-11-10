@@ -1,0 +1,5 @@
+{"id":"P1","rank":1,"label":"Poor","min_score":0,"ceiling_tier_id":"T1","trader_gold_mult":0.5,"people":"W1-W3, mostly W1-W2","about":"Scraping by: a camp, a homestead, a poor hamlet. Nothing better than common gear, and little of it."}
+{"id":"P2","rank":2,"label":"Modest","min_score":30,"ceiling_tier_id":"T2","trader_gold_mult":0.75,"people":"W1-W4, mostly W2-W3","about":"A working village or small outpost: sound tools and gear, a few coins put by."}
+{"id":"P3","rank":3,"label":"Comfortable","min_score":50,"ceiling_tier_id":"T3","trader_gold_mult":1.0,"people":"W1-W4, mostly W2-W3","about":"A market town: a smith with fine work, a merchant's strongbox, a few comfortable houses."}
+{"id":"P4","rank":4,"label":"Prosperous","min_score":70,"ceiling_tier_id":"T4","trader_gold_mult":1.25,"people":"W1-W5, mostly W2-W4","about":"A city of standing: rare things behind Expert locks in the rich houses and the seat of power."}
+{"id":"P5","rank":5,"label":"Rich","min_score":105,"ceiling_tier_id":"T5","trader_gold_mult":1.5,"people":"W1-W5, W5 a handful","about":"A great trading city: precious things in its vaults, behind Master locks and guards."}

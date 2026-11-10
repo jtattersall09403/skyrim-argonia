@@ -1,0 +1,161 @@
+{
+  "about": "The one stocking scale for the whole game (lane S0, owner's brief 2026-11-10 in docs/phases/new-worldspace-plan/nw-03-build-helstrom.md, Stocking). Nothing on it is levelled (decision 0035): a tier is what a thing is, wherever it stands. Vanilla's yields are a check, not the source (docs/research/skyrim/stocking-yields.md). Read by tools/newworld/wealth.py (into the database) and tools/places/stock (classify, derive).",
+
+  "tiers": [
+    {"id": "T1", "rank": 1, "label": "Common", "ref_level": 1, "below": "T1", "enchant_grade": 1, "lock": "Novice", "gold": [5, 40], "value_max": 80,
+     "weapon": ["WeapMaterialIron", "WeapMaterialSteel"], "armour": ["ArmorMaterialHide", "ArmorMaterialIron", "ArmorMaterialIronBanded", "ArmorMaterialStudded", "ArmorMaterialLeather"],
+     "soul_gem": "SoulGemPetty", "potion_grade": 1, "gem": [], "jewellery": ["JewelryRingSilver"],
+     "about": "What anyone may own and what lies about on safe ground. Vanilla hands these out from level 1 (measured gates: iron, steel weapons, hide, iron, studded armour at 1; leather at 6, taken here because it is the marsh's own make)."},
+    {"id": "T2", "rank": 2, "label": "Sound", "ref_level": 6, "below": "T1", "enchant_grade": 2, "lock": "Apprentice", "gold": [40, 120], "value_max": 250,
+     "weapon": ["WeapMaterialSteel", "WeapMaterialImperial", "WeapMaterialOrcish"], "armour": ["ArmorMaterialLeather", "ArmorMaterialSteel", "ArmorMaterialImperialLight", "ArmorMaterialImperialStudded", "ArmorMaterialImperialHeavy"],
+     "soul_gem": "SoulGemLesser", "potion_grade": 2, "gem": ["GemGarnet", "GemAmethyst"], "jewellery": ["JewelryRingSilver", "JewelryNecklaceSilver", "JewelryRingGold"],
+     "about": "Good working gear: the D2 ground's band (foes at level 10). Vanilla gates: imperial at 4, steel armour, leather and orcish weapons at 6, imperial armour at 7 to 8; enchantment grade 2 at 4 and 3 at 9."},
+    {"id": "T3", "rank": 3, "label": "Fine", "ref_level": 12, "below": "T2", "enchant_grade": 3, "lock": "Adept", "gold": [120, 300], "value_max": 700,
+     "weapon": ["WeapMaterialDwarven", "WeapMaterialElven"], "armour": ["ArmorMaterialScaled", "ArmorMaterialElven", "ArmorMaterialDwarven", "ArmorMaterialSteelPlate", "DLC2ArmorMaterialChitinLight", "DLC2ArmorMaterialChitinHeavy", "DLC2ArmorMaterialBonemoldLight", "DLC2ArmorMaterialBonemoldHeavy"],
+     "soul_gem": "SoulGemCommon", "potion_grade": 3, "gem": ["GemRuby", "GemGarnetFlawless", "GemAmethystFlawless"], "jewellery": ["JewelryRingGold", "JewelryNecklaceGold", "JewelryRingSilverGarnet", "JewelryRingSilverAmethyst", "JewelryRingSilverRuby"],
+     "about": "Fine, foreign or old-made gear: the D3 ground's band (foes at level 20). Vanilla gates: dwarven and elven armour at 12, steel plate and elven weapons at 18 to 19, scaled at 19; enchantment grade 4 at 17. Chitin and bonemold are Morrowind's make, carried over the border (provenance)."},
+    {"id": "T4", "rank": 4, "label": "Rare", "ref_level": 25, "below": "T3", "enchant_grade": 4, "lock": "Expert", "gold": [300, 700], "value_max": 1600,
+     "weapon": ["WeapMaterialGlass"], "armour": ["ArmorMaterialElvenGilded", "ArmorMaterialOrcish", "ArmorMaterialEbony"],
+     "soul_gem": "SoulGemGreater", "potion_grade": 4, "gem": ["GemSapphire", "gemRubyFlawless", "GemSapphireFlawless"], "jewellery": ["JewelryNecklaceSilverGems", "JewelryRingGoldSapphire", "JewelryNecklaceGoldGems", "JewelryNecklaceGoldRuby"],
+     "about": "What a capital's treasury or a deep ruin holds: the D4 ground's band (foes at level 35). Vanilla gates: orcish armour 25, elven gilded and glass weapons 27, ebony armour 32; enchantment grade 5 at 30."},
+    {"id": "T5", "rank": 5, "label": "Precious", "ref_level": 36, "below": "T4", "enchant_grade": 5, "lock": "Master", "gold": [700, 1500], "value_max": 3500,
+     "weapon": ["WeapMaterialEbony"], "armour": ["ArmorMaterialGlass"],
+     "soul_gem": "SoulGemGrand", "potion_grade": 5, "gem": ["GemEmerald", "GemEmeraldFlawless", "GemDiamond", "GemDiamondFlawless"], "jewellery": ["JewelryRingGoldEmerald", "JewelryRingGoldDiamond", "JewelryNecklaceSilverEmerald", "JewelryNecklaceGoldDiamond"],
+     "about": "The best a place can hold without a story: the D5 ground's band (foes at level 50) and the richest cities' vaults. Vanilla gates: glass armour and ebony weapons at 36."},
+    {"id": "T6", "rank": 6, "label": "Exceptional", "ref_level": 46, "below": "T5", "enchant_grade": 6, "lock": "Requires key", "gold": [1500, 5000], "value_max": 100000,
+     "weapon": ["WeapMaterialDaedric", "DLC1WeapMaterialDragonbone"], "armour": ["ArmorMaterialDaedric", "ArmorMaterialDragonscale", "ArmorMaterialDragonplate"],
+     "soul_gem": "SoulGemBlack", "potion_grade": 6, "gem": ["GemDiamondFlawless"], "jewellery": ["JewelryNecklaceGoldDiamond"],
+     "about": "Uniques and the best gear: authored by story only and counted in the world ledger (newworld/places/exceptional.jsonl); never derived. Vanilla gates: dragonplate 40, daedric and dragonscale 46 to 48; enchantment grade 6 at 43."}
+  ],
+
+  "danger_tier": {"D0": "T1", "D1": "T1", "D2": "T2", "D3": "T3", "D4": "T4", "D5": "T5"},
+  "danger_tier_why": "A band's foes and its loot share one ladder: each band's foe level falls in the tier whose vanilla gates it has reached (D1 level 1, D2 10, D3 20, D4 35, D5 50). The hardest spot of a ground holds its tier; the way to it holds the tier below (`below`).",
+
+  "never": {
+    "materials": ["WeapMaterialDraugr", "WeapMaterialDraugrHoned", "ArmorMaterialStormcloak", "ArmorMaterialBearStormcloak", "DLC2ArmorMaterialNordicHeavy", "DLC2ArmorMaterialNordicLight", "DLC2WeaponMaterialNordic", "DLC2ArmorMaterialStalhrimHeavy", "DLC2ArmorMaterialStalhrimLight", "DLC2WeaponMaterialStalhrim", "WeapMaterialFalmer", "WeapMaterialFalmerHoned", "ArmorMaterialFalmer", "ArmorMaterialForsworn", "ArmorMaterialMS02Forsworn", "ArmorMaterialPenitus", "DLC1ArmorMaterialDawnguard", "DLC1ArmorMaterialFalmerHardened", "ArmorMaterialBlades", "ArmorMaterialThievesGuild", "ArmorMaterialThievesGuildLeader"],
+    "edid_words": ["Skyforge", "Draugr", "Nord", "Stormcloak", "Whiterun", "Solitude", "Windhelm", "Riften", "Markarth", "Falkreath", "Dawnstar", "Morthal", "Winterhold", "Companions", "Thieves", "DarkBrotherhood", "Greybeard"],
+    "why": "Decision 0006: no Nordic element reaches the player through what we add; the gear of Skyrim's own peoples and orders (Nords, draugr, Stormcloaks, Falmer, Forsworn, Skaal stalhrim, the Dawnguard, the Blades, Penitus Oculatus, the hold guards) has no road into Black Marsh in 4E 201."
+  },
+
+  "place_wealth_bands": [
+    {"id": "P1", "rank": 1, "label": "Poor", "min_score": 0, "ceiling_tier": "T1", "trader_gold_mult": 0.5, "people": "W1-W3, mostly W1-W2", "about": "Scraping by: a camp, a homestead, a poor hamlet. Nothing better than common gear, and little of it."},
+    {"id": "P2", "rank": 2, "label": "Modest", "min_score": 30, "ceiling_tier": "T2", "trader_gold_mult": 0.75, "people": "W1-W4, mostly W2-W3", "about": "A working village or small outpost: sound tools and gear, a few coins put by."},
+    {"id": "P3", "rank": 3, "label": "Comfortable", "min_score": 50, "ceiling_tier": "T3", "trader_gold_mult": 1.0, "people": "W1-W4, mostly W2-W3", "about": "A market town: a smith with fine work, a merchant's strongbox, a few comfortable houses."},
+    {"id": "P4", "rank": 4, "label": "Prosperous", "min_score": 70, "ceiling_tier": "T4", "trader_gold_mult": 1.25, "people": "W1-W5, mostly W2-W4", "about": "A city of standing: rare things behind Expert locks in the rich houses and the seat of power."},
+    {"id": "P5", "rank": 5, "label": "Rich", "min_score": 105, "ceiling_tier": "T5", "trader_gold_mult": 1.5, "people": "W1-W5, W5 a handful", "about": "A great trading city: precious things in its vaults, behind Master locks and guards."}
+  ],
+
+  "person_wealth_bands": [
+    {"id": "W1", "rank": 1, "label": "Destitute", "carried": [0, 3], "home": [0, 0], "top_tier": "T1", "clothes": "ragged", "jewellery": 0, "home_store": "none, or a sack", "about": "Owns what they stand in: no coin put by, nothing worth stealing, nothing locked."},
+    {"id": "W2", "rank": 2, "label": "Poor", "carried": [2, 10], "home": [0, 15], "top_tier": "T1", "clothes": "rough", "jewellery": 0, "home_store": "an unlocked chest or sack", "about": "The tools of a trade and a few coins; a plain unlocked chest at home."},
+    {"id": "W3", "rank": 3, "label": "Modest", "carried": [8, 25], "home": [15, 50], "top_tier": "T2", "clothes": "plain", "jewellery": 1, "home_store": "a chest, unlocked or Novice", "about": "A sound weapon or tool, plain clothes, perhaps a copper ring; savings in a chest at home."},
+    {"id": "W4", "rank": 4, "label": "Comfortable", "carried": [20, 50], "home": [50, 150], "top_tier": "T3", "clothes": "fine", "jewellery": 2, "home_store": "a locked chest, Apprentice or Adept", "about": "Fine clothes, silver jewellery, one fine thing; a locked chest at home."},
+    {"id": "W5", "rank": 5, "label": "Wealthy", "carried": [40, 120], "home": [150, 500], "top_tier": "ceiling", "clothes": "fine", "jewellery": 3, "home_store": "a strongbox or safe, Adept to Expert", "about": "Gold jewellery and gems, the best the place holds (its ceiling tier), a strongbox or safe at home."}
+  ],
+  "person_wealth_why": "Measured on vanilla's town people (stocking-yields.md): a citizen carries about 10 to 18 gold, a jarl 32, a steward 28; a house's containers hold a median 19 gold (mean 116 to 149), a keep's a mean of 514; a strongbox 55 to 243, a safe 53 to 303. The bands span that range without following the player's level.",
+
+  "wealth": {
+    "settled_kinds": ["city", "town", "village", "hamlet", "outpost"],
+    "tier_points": {"metropolis": 40, "large-city": 34, "small-city": 26, "town": 18, "village": 10, "outpost": 6, "minor": 3},
+    "kind_points": {"fort": 14, "keep": 16, "prison": 10, "estate": 18, "farm": 6, "homestead": 4, "logging-camp": 6, "quarry": 6, "mine": 10, "lighthouse": 8, "ferry": 8, "station": 12, "belvedere": 16, "tribal-camp": 4, "outlaw-camp": 10, "cave": 4, "peak": 2, "abandoned-village": 2, "landmark": 2},
+    "importance_each": 5,
+    "population_log2": 3, "population_cap": 18,
+    "road_each": 2, "road_cap": 8, "major_road": 4, "boat": 4, "trader_each": 2, "trader_cap": 10,
+    "economy_plus": ["\\btrade", "\\bmarket", "\\bport\\b", "merchant", "\\brich", "wealth", "prosper", "thriv", "\\btribute", "\\btoll", "\\btax", "\\bexport", "\\bimport", "\\bsilver", "\\bgold\\b", "\\bgems?\\b", "ebony", "pearl", "spice", "luxur", "\\bbank", "shipyard", "caravan"],
+    "economy_minus": ["does not trade", "no trade", "little trade", "subsistence", "\\bpoor", "meag(re|er)", "barely", "famine", "starv", "nothing to (sell|trade)", "self-sufficient", "scrap", "hand to mouth", "declin", "dwindl"],
+    "economy_plus_each": 3, "economy_minus_each": 4, "economy_cap": 12,
+    "why": "A place's wealth is its size and standing (settlement tier or kind, importance, population), its trade position (roads at it, a major road, a boatman, its traders) and what its economy note says it makes and trades. Danger is not in it: a city is safe ground and still rich. Bands: P1 under 30, P2 30, P3 50, P4 70, P5 105 and over; tuned so the four metropolises reach P5, the large cities and regional capitals P4, market towns P3, villages P2 and camps P1."
+  },
+
+  "security": [
+    {"id": "S0", "label": "Open", "means": "loose in a public space, or an unlocked container anyone may use (no owner, or the town)", "holds_up_to": "open tier (T1 in a settlement)"},
+    {"id": "S1", "label": "Private", "means": "owned and unlocked, inside a home or behind a counter: taking it is stealing", "holds_up_to": "open tier + 1"},
+    {"id": "S2", "label": "Locked", "means": "a Novice or Apprentice lock", "holds_up_to": "open tier + 2"},
+    {"id": "S3", "label": "Well locked", "means": "an Adept lock, or hidden (under a floor, behind a panel)", "holds_up_to": "open tier + 3"},
+    {"id": "S4", "label": "Strong", "means": "an Expert lock, in a guarded or private upper room", "holds_up_to": "open tier + 4"},
+    {"id": "S5", "label": "Vault", "means": "a Master lock or a key-only lock, guarded", "holds_up_to": "any tier up to the place's ceiling; the ledger's things"}
+  ],
+  "lock_level": {"Novice": 1, "Apprentice": 25, "Adept": 50, "Expert": 75, "Master": 100, "Requires key": 255},
+  "security_why": "Value and protection agree (owner, 2026-11-10): what lies open is ordinary; each tier above the open tier needs one more step of protection. A container's lock is the lock of the best tier in it (the tier's `lock`), never lower. Vanilla does the same in towns: 94% of chests stand unlocked, every strongbox is locked (31 of 33 at Apprentice), safes at Adept and Expert.",
+
+  "effort": [
+    {"id": "E0", "means": "in plain sight on the way", "tier": "below"},
+    {"id": "E1", "means": "off the way, in a side room, on a body met on the road", "tier": "below"},
+    {"id": "E2", "means": "hidden, climbed to, swum to, or behind a lock", "tier": "band"},
+    {"id": "E3", "means": "behind a fight of the place's band", "tier": "band"},
+    {"id": "E4", "means": "beside the place's boss, at its end", "tier": "band", "gold": "the tier's gold doubled"}
+  ],
+  "effort_why": "On wild ground the band sets the best a place holds and effort decides how near the best a thing is: what is easy to reach is the tier below (`below`), what is hard holds the band's own tier, the boss's chest holds it with the most gold. In a settlement effort is the lock (security).",
+
+  "owner": [
+    {"id": "none", "means": "nobody's (the wild, a ruin, the dead): free to take", "sets": "the ground (danger tier, effort)"},
+    {"id": "person", "means": "a person of the place", "sets": "their wealth band (W1..W5), capped at the place's ceiling"},
+    {"id": "household", "means": "a household's shared store", "sets": "the richest member's band"},
+    {"id": "faction", "means": "the guard, the town, a temple, a trader's vendor faction", "sets": "the place's wealth band: a guard's store sound gear, a seat of power up to the ceiling"}
+  ],
+
+  "provenance": {
+    "local": "made here: the place's own trade (a smith of iron and steel, a tanner's hide and leather, the economy note's goods, its harvest and ore gives) or its culture's make",
+    "steps": [
+      {"max_km": 0, "cost": 1.0, "count": 1.0, "label": "made here"},
+      {"max_km": 30, "cost": 1.25, "count": 1.0, "label": "from a neighbour"},
+      {"max_km": 90, "cost": 1.5, "count": 0.5, "label": "carried in"},
+      {"max_km": null, "cost": 2.0, "count": 0.25, "label": "from far away", "owners": "W4 and up, traders of P3 and up"}
+    ],
+    "import_gates": "places with a boatman on the coast, and the road ends at the province's edge",
+    "why": "Made here is common and cheap; carried in is rarer and dearer with distance along the roads (owner, 2026-11-10). The game's price is the item's own value, which we never change: 'dearer' is spent from a container's or person's budget at `cost` times the value, so fewer appear, and `count` thins how many of a kind are held. Distances are shortest paths on the road tables from the place to the nearest maker; off the roads a straight line counts double."
+  },
+
+  "budget": {
+    "container": "the tier's value_max, times the owner's share",
+    "owner_share": {"W1": 0.1, "W2": 0.25, "W3": 0.5, "W4": 0.75, "W5": 1.0, "none": 1.0, "faction": 1.0},
+    "why": "A container's significant things (not gold) together stay within its tier's value_max times its owner's share; vanilla's town chests hold 21 to 49 gold of significant things, strongboxes 4 to 23 beside their gold, safes 265 to 945, boss chests 288 to 958, merchant chests 2,700 to 5,600."
+  },
+
+  "traders": {
+    "gold": {"trader-general": 750, "trader-blacksmith": 1000, "trader-apothecary": 500, "trader-spells": 500, "trader-innkeeper": 100, "trader-jeweller": 750, "trader-clothier": 500, "trader-fletcher": 750, "trader-bookseller": 500, "trader-hunter": 100, "fence": 1000},
+    "list_value": {"P1": 400, "P2": 900, "P3": 1800, "P4": 3000, "P5": 4500},
+    "best_tier": "the place's wealth ceiling, never above T5",
+    "why": "Vanilla's vendor gold lists (VendorGoldMisc 750, VendorGoldBlacksmith 1000 or 500 in a town, Apothecary and Spells 500, Inn 100, Street vendor 50), times the place's trader_gold_mult. A trader restocks every 48 hours, as vanilla's do, from one fixed authored list (stock rows `where.trader`), never a levelled one; vanilla's merchant chests hold 2,700 to 5,600 gold of significant things, so the list's value follows the place's band."
+  },
+
+  "ledger": {
+    "file": "newworld/places/exceptional.jsonl",
+    "caps": {"unique": 40, "T6": 60},
+    "why": "The exceptional is authored by story and counted game-wide (owner, 2026-11-10): Skyrim has about 40 hand-placed uniques of note (the dragon priest masks and the uniques on altars and bodies) beside its levelled best gear; we hold to that order of count, so each is a find."
+  },
+
+  "split": {
+    "value_min": 50,
+    "value_min_why": "A thing of real value is worth 50 gold or more: five nights at an inn (10 each); measured, only 10% of Skyrim's misc items and 9% of its books reach it, so clutter stays clutter.",
+    "gold": ["Skyrim.esm:00000F"],
+    "always_significant_sigs": ["WEAP", "AMMO", "SLGM", "SCRL", "KEYM"],
+    "jewellery_keywords": ["ArmorJewelry", "VendorItemJewelry", "ClothingRing", "ClothingNecklace", "ClothingCirclet"],
+    "gem_keywords": ["VendorItemGem"],
+    "clothing_keywords": ["ArmorClothing", "VendorItemClothing"],
+    "armour_keywords": ["ArmorLight", "ArmorHeavy", "ArmorShield", "VendorItemArmor"],
+    "misc_kinds": {"VendorItemOreIngot": "ingot-or-ore", "VendorItemAnimalHide": "hide", "VendorItemAnimalPart": "animal-part",
+                   "VendorItemTool": "tool", "VendorItemClutter": "clutter", "VendorItemSoulGem": "soul-gem"},
+    "container_kinds": [
+      ["corpse", ["corpse", "remains", "skeleton", "deadbody", "dead body", "\\bdead"]],
+      ["boss-chest", ["boss"]],
+      ["merchant-chest", ["merchant"]],
+      ["strongbox", ["strongbox", "strong box", "lockbox", "lock box"]],
+      ["safe", ["\\bsafe"]],
+      ["chest", ["chest", "coffer", "trunk"]],
+      ["coin-purse", ["coinpurse", "coin purse"]],
+      ["satchel", ["satchel", "knapsack", "backpack"]],
+      ["wardrobe", ["wardrobe"]],
+      ["dresser", ["dresser", "drawer"]],
+      ["end-table", ["endtable", "end table", "nightstand", "night stand"]],
+      ["cupboard", ["cupboard", "cabinet", "hutch"]],
+      ["barrel", ["barrel", "keg"]],
+      ["sack", ["sack", "\\bbag"]],
+      ["crate", ["crate", "box"]],
+      ["basket", ["basket"]],
+      ["urn", ["urn", "pot\\b", "jar"]]
+    ],
+    "always_significant_containers": ["corpse", "boss-chest", "merchant-chest", "strongbox", "safe", "chest"],
+    "why": "Owner, 2026-11-10: weapons, armour, jewellery, gems, gold, soul gems, potions, skill and spell books, keys, anything enchanted or of real value, and every chest, strongbox, safe or corpse is significant; food, crockery, cheap clutter, furniture and a crate of apples are set dressing. A container is significant when its kind is always so, when it is locked, or when it holds a significant thing."
+  }
+}

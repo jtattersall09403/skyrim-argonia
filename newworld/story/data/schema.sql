@@ -270,6 +270,60 @@ CREATE TABLE "place_give" (
   PRIMARY KEY ("place_id", "seq")
 );
 
+-- ---------------------------------------------------------------------------------------------------------
+-- Stocking (newworld/sources/stock/; tools/newworld/wealth.py; docs/design/place-studio.md "Stock")
+-- ---------------------------------------------------------------------------------------------------------
+
+-- The one fixed scale of quality for the whole game: material, enchantment grade, gold, lock (decision 0035).
+CREATE TABLE "stock_tier" (
+  "id" TEXT NOT NULL PRIMARY KEY,        -- T1..T6
+  "rank" INTEGER NOT NULL UNIQUE,
+  "label" TEXT NOT NULL,
+  "ref_level" INTEGER NOT NULL,          -- the vanilla list level whose gates it matches (a check, not a scaling)
+  "enchant_grade" INTEGER NOT NULL,      -- vanilla's enchantment grade 1..6
+  "lock" TEXT NOT NULL,                  -- the lock the best thing of this tier sits behind
+  "gold_lo" INTEGER NOT NULL,            -- a store's gold at this tier
+  "gold_hi" INTEGER NOT NULL,
+  "value_max" INTEGER NOT NULL,          -- a container's significant things together, at most
+  "about" TEXT NOT NULL
+);
+
+-- How well off a place is (P1 poor .. P5 rich): its ceiling tier, its traders' gold, its people's bands.
+CREATE TABLE "place_wealth_band" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "rank" INTEGER NOT NULL UNIQUE,
+  "label" TEXT NOT NULL,
+  "min_score" INTEGER NOT NULL,
+  "ceiling_tier_id" TEXT NOT NULL REFERENCES "stock_tier"("id"),
+  "trader_gold_mult" REAL NOT NULL,
+  "people" TEXT NOT NULL,                -- the spread of person wealth bands it holds
+  "about" TEXT NOT NULL
+);
+
+-- How well off a person is (W1 destitute .. W5 wealthy): the gold they carry and keep, the best tier they own.
+CREATE TABLE "person_wealth_band" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "rank" INTEGER NOT NULL UNIQUE,
+  "label" TEXT NOT NULL,
+  "carried_lo" INTEGER NOT NULL,
+  "carried_hi" INTEGER NOT NULL,
+  "home_lo" INTEGER NOT NULL,
+  "home_hi" INTEGER NOT NULL,
+  "top_tier" TEXT NOT NULL,              -- a tier id, or 'ceiling' (the place's)
+  "about" TEXT NOT NULL
+);
+
+-- Each place's wealth and its band on the scale, derived with its reason; `by` says whether the owner overruled it.
+CREATE TABLE "place_wealth" (
+  "place_id" TEXT NOT NULL PRIMARY KEY REFERENCES "place"("id"),
+  "wealth_score" REAL,                   -- null: nobody lives there; the ground alone sets its band
+  "place_wealth_band_id" TEXT REFERENCES "place_wealth_band"("id"),
+  "open_tier_id" TEXT NOT NULL REFERENCES "stock_tier"("id"),     -- what lies open, or along the way
+  "ceiling_tier_id" TEXT NOT NULL REFERENCES "stock_tier"("id"),  -- the best it holds without the ledger
+  "why" TEXT NOT NULL,
+  "by" TEXT NOT NULL CHECK ("by" IN ('derived', 'owner'))
+);
+
 CREATE TABLE "region_note" (
   "region_id" TEXT NOT NULL REFERENCES "region"("id"),
   "aspect_id" TEXT NOT NULL REFERENCES "note_aspect"("id"),

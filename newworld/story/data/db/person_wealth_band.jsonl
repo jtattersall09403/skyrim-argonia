@@ -1,0 +1,5 @@
+{"id":"W1","rank":1,"label":"Destitute","carried_lo":0,"carried_hi":3,"home_lo":0,"home_hi":0,"top_tier":"T1","about":"Owns what they stand in: no coin put by, nothing worth stealing, nothing locked."}
+{"id":"W2","rank":2,"label":"Poor","carried_lo":2,"carried_hi":10,"home_lo":0,"home_hi":15,"top_tier":"T1","about":"The tools of a trade and a few coins; a plain unlocked chest at home."}
+{"id":"W3","rank":3,"label":"Modest","carried_lo":8,"carried_hi":25,"home_lo":15,"home_hi":50,"top_tier":"T2","about":"A sound weapon or tool, plain clothes, perhaps a copper ring; savings in a chest at home."}
+{"id":"W4","rank":4,"label":"Comfortable","carried_lo":20,"carried_hi":50,"home_lo":50,"home_hi":150,"top_tier":"T3","about":"Fine clothes, silver jewellery, one fine thing; a locked chest at home."}
+{"id":"W5","rank":5,"label":"Wealthy","carried_lo":40,"carried_hi":120,"home_lo":150,"home_hi":500,"top_tier":"ceiling","about":"Gold jewellery and gems, the best the place holds (its ceiling tier), a strongbox or safe at home."}

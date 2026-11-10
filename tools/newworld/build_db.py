@@ -6,7 +6,8 @@ Sources (all committed):
   (regions.py), the rasters (raster.py), and, when built, `out/newworld/roads.json` and `borders.json` (roads.py);
 - the research: `newworld/sources/research/cultures.json`, `regions/*.json` and `places/*.json`
   (written by the research passes; each record names the id it fills);
-- the danger bands, derived by tools/newworld/danger.py from all of the above.
+- the danger bands, derived by tools/newworld/danger.py from all of the above;
+- the stocking scale and each place's wealth (`newworld/sources/stock/`, tools/newworld/wealth.py).
 
 The tables in `newworld/story/data/db/` are this build's output: rerunning rewrites them whole, so a change is made
 in a source and rebuilt, never in a table.
@@ -29,6 +30,7 @@ from tools.argonia_world import db
 from tools.newworld import danger
 from tools.newworld import flora
 from tools.newworld import frame as f
+from tools.newworld import wealth
 from tools.newworld.regions import REGIONS
 
 SRC = f.ROOT / "sources"
@@ -307,6 +309,7 @@ def build() -> db.World:
 
     roads_and_borders(w)
     danger.assign(w)
+    wealth.load(w)
     terrain_and_water(w)
     flora.build(w)
     w.insert_many("source", sorted(sources.values(), key=lambda r: r["id"]))
