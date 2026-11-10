@@ -353,7 +353,15 @@ class Studio {
       base: { draft_key: this.place.stamps?.draft?.key || this.draft.meta.stamp?.key || null, ground_sha: this.place.stamps?.ground_sha || this.status?.ground_sha || null },
       ops: this.log.applied() };
   }
+  // After a finalise has recorded the edits they are part of the place: the unsaved copy of them is emptied, so the
+  // next visit starts on the finalised place and is not offered the same edits again.
+  async dropAutosave() {
+    clearTimeout(this.autoT); this.finalised = true;
+    try { const r = await api.putSave(this.place.place_id, 'autosave', { ...this.saveBody('autosave', 'Autosave'), ops: [] }); if (!r.conflict) this.revs.autosave = r.rev; this.dirtySave = false; }
+    catch { /* the start sheet's Discard does the same */ }
+  }
   async autosave() {
+    if (this.finalised) return;
     this.saveState('saving');
     try {
       const r = await this.putSave('autosave', 'Autosave');

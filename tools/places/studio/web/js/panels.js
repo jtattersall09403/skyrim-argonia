@@ -518,6 +518,10 @@ export class Panels {
       if (tail) parts.push(el(`<pre class="log">${esc(tail)}</pre>`));
       if (r.report) parts.push(this.report(r.report));
       if (r.state === 'failed') parts.push(el('<p class="tag nordic">The run stopped. The step marked red failed; the log above says why. Your changes are saved.</p>'));
+      // once the edits are written into the place they are the place: drop the unsaved copy and offer the fresh view
+      const recorded = idx > 0 || (done && r.state === 'done');
+      if (recorded && !this.droppedFor) { this.droppedFor = rid; a.dropAutosave(); }
+      if (done && recorded) { const b = el('<button class="primary">Open the finalised place</button>'); b.onclick = () => location.reload(); parts.push(b); }
       if (this.name === 'finalise' || this.name === 'run') { this.name = 'run'; this.show(done ? (r.state === 'done' ? 'Finalised' : 'Finalise stopped') : 'Finalising', parts); }
       if (!done) this.runT = setTimeout(poll, 1500);
     };

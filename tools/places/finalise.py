@@ -373,6 +373,10 @@ def describe(p: dict) -> str:
 
 # ---------- the chain ----------
 
+STEP_WORDS = {"record": "writing your changes into the place files", "build": "building and checking the place",
+              "learn": "improving the place-building recipe", "report": "writing the report"}
+
+
 def finalise(run: Run, skip_build=False, budget=BUDGET_USD, turns=MAX_TURNS) -> int:
     run.put(state="running")
     for step in STEPS:
@@ -397,6 +401,18 @@ def finalise(run: Run, skip_build=False, budget=BUDGET_USD, turns=MAX_TURNS) -> 
                 "after you started editing. Open the save in the studio again; it will show the edit that no "
                 "longer fits.\n")
             run.put(state="failed", steps={step: {"status": "failed", "why": str(e)}},
+                    report=str(run.dir / "report.md"))
+            return 1
+        except Exception as e:  # noqa: BLE001  the tool itself broke: say so plainly, keep what was recorded
+            run.log(f"{step}: stopped: {e!r}")
+            kept = ("Your edits are recorded in the place's files." if run.done("record")
+                    else "Nothing was changed and your save is kept as it was.")
+            (run.dir / "report.md").write_text(
+                f"# Finalising {run.place_id.title()} stopped\n\nThe step \"{STEP_WORDS.get(step, step)}\" could not "
+                f"finish because the tool itself failed, not because of anything in your edits. {kept}\n\n"
+                f"What it said: `{str(e)[:400]}`\n\nRunning finalise again on the same save carries on from this "
+                "step.\n")
+            run.put(state="failed", steps={step: {"status": "failed", "why": str(e)[:400]}},
                     report=str(run.dir / "report.md"))
             return 1
         run.stamp(step, res)
