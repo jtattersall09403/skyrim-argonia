@@ -125,8 +125,12 @@ def test_cache_evicts_least_recently_used(tmp_path, monkeypatch):
         p.write_bytes(b"x" * 1000)
         os.utime(p, (now - 100 + i, now - 100 + i))
     cache.touch(cache.path("mesh", "00" * 32, "l0.glb"))  # the oldest is used again
-    r = cache.evict(cap=5000)
-    assert r["removed"] == 6 and r["after"] <= 4500
+    land = cache.root() / "land" / "Skyrim.esm_000001.webp"   # the land set is kept however old
+    land.parent.mkdir(parents=True)
+    land.write_bytes(b"x" * 400)
+    os.utime(land, (now - 500, now - 500))
+    r = cache.evict(cap=5400)
+    assert r["removed"] == 6 and r["after"] <= 4900 and land.exists()
     left = {p.name[:2] for p in (tmp_path / "assets" / "mesh").rglob("*.glb")}
     assert left == {"00", "07", "08", "09"}
 
@@ -176,9 +180,48 @@ def test_catalogue_fields():
     assert catalogue.is_nordic({"edid": "WRHouse01", "model": "architecture/whiterun/wrhouse01.nif"})
     assert catalogue.is_nordic({"edid": "TreePineForest01", "model": "landscape/trees/treepineforest01.nif"})
     assert not catalogue.is_nordic({"edid": "BMStiltHut01", "model": "bm/architecture/stilthut01.nif"})
+    for edid, model in (("RockM02Ice", "landscape/rocks/rockm02.nif"), ("IcePileS04", "x.nif"),
+                        ("CaveIHall1Way64L01ice", "x.nif"), ("X", "landscape/ice/x.nif")):
+        assert catalogue.is_nordic({"edid": edid, "model": model}), edid
+    for edid, model in (("LoadScreenDSApprentice01", "loadscreenart/loadscreendsapprentice01.nif"),
+                        ("BMChalice01", "bm/clutter/chalice.nif"), ("FoodIceCream", "clutter/icecream.nif")):
+        assert not catalogue.is_nordic({"edid": edid, "model": model}), edid
     assert catalogue.kind({"type": "STAT", "model": "landscape/rocks/rockcliff01.nif", "edid": "RockCliff01"}) == "rock"
     assert catalogue.kind({"type": "TREE", "model": "x.nif", "edid": "T"}) == "tree"
     assert catalogue.words("BMStiltHut01") == ["bm", "stilt", "hut"]
     t = catalogue.descriptor({"type": "STAT", "edid": "BMStiltHut01", "name": None, "model": "bm/stilthut01.nif",
                               "bounds": [[-140, -140, 0], [140, 140, 350]], "nordic": False}, "Black Marsh & Valenwood")
     assert "stilt hut" in t and "static object" in t and "Black Marsh" in t and "4.0 by 4.0 m" in t
+
+
+def test_a_converted_source_is_not_read_again_and_a_passing_failure_is_not_kept(tmp_path, monkeypatch):
+    monkeypatch.setenv("PLACES_OUT", str(tmp_path))
+    import tools.places.assets as A
+
+    class R:
+        reads = 0
+        stamp = 1
+
+        def ident(self, k):
+            return ("loose", k, 3, self.stamp)
+
+        def read(self, k):
+            R.reads += 1
+            return b"nif%d" % self.stamp
+
+        def where(self, k):
+            return "mod:x"
+    r = R()
+    monkeypatch.setattr(A, "resolver", lambda: r)
+    monkeypatch.setattr(A, "_hashed", {})
+    fails = [nifglb.NotNow("nifdump ran out of time"), nifglb.MeshError("not a NIF")]
+    monkeypatch.setattr(nifglb, "dump", lambda raw, tmp=None: (_ for _ in ()).throw(fails.pop(0)))
+    first = A.mesh_info("a/b.nif")
+    assert first["placeholder"] and first["retry"] and ".retry." in first["glb"]
+    second = A.mesh_info("a/b.nif")   # converted again: this time the mesh itself is at fault, and that is kept
+    assert second["placeholder"] and not second.get("retry") and ".retry." not in second["glb"] and not fails
+    reads = R.reads
+    assert A.mesh_info("a/b.nif")["glb"] == second["glb"] and R.reads == reads   # a hit reads no source
+    r.stamp = 2                                                                   # the source file changed
+    monkeypatch.setattr(nifglb, "dump", lambda raw, tmp=None: (_ for _ in ()).throw(nifglb.MeshError("still not")))
+    assert A.mesh_info("a/b.nif")["glb"] != second["glb"] and R.reads == reads + 1

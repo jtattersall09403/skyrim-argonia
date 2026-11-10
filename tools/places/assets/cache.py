@@ -99,7 +99,7 @@ def evict(cap: int | None = None) -> dict:
         for _, size, p in files:
             if total - freed <= target:
                 break
-            if p.parts[-3] == "land":  # the land set is small and always wanted
+            if p.parent.name == "land":  # the land set (land/<file>) is small and always wanted
                 continue
             try:
                 p.unlink()

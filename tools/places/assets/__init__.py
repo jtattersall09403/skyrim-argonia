@@ -29,17 +29,40 @@ from tools.places.assets.resolve import default as resolver
 from tools.places.assets.resolve import norm
 
 
+RETRY = "retry"   # in the name of a placeholder that stands in for one call only (the conversion is tried again)
+
+
 def _key(data: bytes, version: int) -> str:
     return hashlib.sha256(data + f"|v{version}".encode()).hexdigest()
 
 
+_hashed: dict[tuple[str, int], tuple[tuple, str]] = {}   # (data path, version) -> (what it resolved to, its key)
+
+
+def _source(k: str, version: int) -> tuple[str | None, bytes | None]:
+    """A data path's cache key and, when they had to be read to make it, its bytes; (None, None) when the profile
+    has no such file. The key is the hash of the source's bytes; it is worked out once per source file as it
+    stands (the resolver's `ident`), so a request for something already converted reads no source at all."""
+    r = resolver()
+    ident = r.ident(k) if hasattr(r, "ident") else None
+    hit = _hashed.get((k, version))
+    if ident is not None and hit and hit[0] == ident:
+        return hit[1], None
+    raw = r.read(k)
+    if raw is None:
+        return None, None
+    key = _key(raw, version)
+    if ident is not None:
+        _hashed[(k, version)] = (ident, key)
+    return key, raw
+
+
 def mesh_info(model: str, level: int = 0, bounds=None) -> dict:
     k = norm(model, "meshes")
-    raw = resolver().read(k)
-    if raw is None:
+    key, raw = _source(k, _mesh.VERSION)
+    found = key is not None
+    if not found:
         key = _key(("missing:" + k + json.dumps(bounds)).encode(), _mesh.VERSION)
-    else:
-        key = _key(raw, _mesh.VERSION)
     glb = cache.path("mesh", key, f"l{level}.glb")
     side = glb.with_suffix(".json")
     if glb.exists() and side.exists():
@@ -48,11 +71,17 @@ def mesh_info(model: str, level: int = 0, bounds=None) -> dict:
     with cache.lock(key):
         if glb.exists() and side.exists():
             return json.loads(side.read_text()) | {"glb": str(glb)}
-        if raw is None:
+        if not found:
             data, meta = _mesh.placeholder(bounds, "not found in the NewWorld profile (no loose file, no archive)")
         else:
             try:
+                raw = resolver().read(k) if raw is None else raw
                 data, meta = _mesh.build(_mesh.dump(raw, cache.root()), level)
+            except _mesh.NotNow as e:  # not the mesh's fault: a placeholder for now, under a name no later call reads
+                data, meta = _mesh.placeholder(bounds, str(e))
+                meta["retry"] = True
+                glb = cache.path("mesh", key, f"l{level}.{RETRY}.glb")
+                side = glb.with_suffix(".json")
             except Exception as e:  # any reader failure becomes a listed placeholder, never a crash
                 data, meta = _mesh.placeholder(bounds, f"{type(e).__name__}: {e}"[:300])
         meta = meta | {"model": k, "source": resolver().where(k), "bytes": len(data)}
@@ -67,14 +96,13 @@ def mesh(model: str, level: int = 0, bounds=None) -> Path:
 
 def tex_info(path: str, size: int = 512, keep_alpha: bool | None = None) -> dict | None:
     k = norm(path, "textures")
-    raw = resolver().read(k)
-    if raw is None:
+    key, raw = _source(k, 1)
+    if key is None:
         return None
     size = _tex.clamp_size(size)
     if keep_alpha is None:
         stem = k.rsplit(".", 1)[0]
         keep_alpha = not (stem.endswith("_n") or stem.endswith("_msn"))
-    key = _key(raw, 1)
     out = cache.path("tex", key, f"{size}{'' if keep_alpha else 'o'}.webp")
     side = out.with_suffix(".json")
     if out.exists() and side.exists():
@@ -82,7 +110,7 @@ def tex_info(path: str, size: int = 512, keep_alpha: bool | None = None) -> dict
         return json.loads(side.read_text()) | {"webp": str(out)}
     with cache.lock(key):
         if not (out.exists() and side.exists()):
-            data, meta = _tex.to_webp(raw, size, keep_alpha)
+            data, meta = _tex.to_webp(resolver().read(k) if raw is None else raw, size, keep_alpha)
             meta |= {"path": k, "bytes": len(data)}
             cache.write(side, json.dumps(meta).encode())
             cache.write(out, data)
@@ -99,7 +127,7 @@ def tex(path: str, size: int = 512) -> Path | None:
 def thumb(model: str, size: int = 256) -> Path:
     info = mesh_info(model, 1)
     key = Path(info["glb"]).name.split(".")[0]
-    out = cache.path("thumb", key, f"{size}.webp")
+    out = cache.path("thumb", key, f"{size}{'.' + RETRY if info.get('retry') else ''}.webp")
     if out.exists():
         cache.touch(out)
         return out

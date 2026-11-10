@@ -45,7 +45,12 @@ NORDIC = re.compile(r"(nord(?!ic\s*ruin)|nordic|whiterun|windhelm|solitude|marka
                     r"morthal|dragonsreach|skyhaven|farmhouse|stormcloak|draugr|snow|pine|aspen|reach|tundra|"
                     r"volcanic|wr(house|wall|gate|tower)|wh(house|wall)|sol(house|wall)|rift(house|wall)|"
                     r"mrk|winterhold|ice(?=[^a-z]|$)|frost|skyrim)")
-NORDIC_EXCEPT = re.compile(r"(icecream|spine|pineapple|porcupine|cutpine)")
+# words that only look cold: taken out before the search (ice ends many an English word; pine sits in spine)
+NORDIC_EXCEPT = re.compile(r"(icecream|spine|pineapple|porcupine|cutpine|apprentice|novice|chalice|lattice|device|"
+                           r"office|justice|service|spice|juice|police|notice|practice|sacrifice|voice|choice|malice|"
+                           r"orifice|edifice|precipice|cornice|crevice|poultice|advice|pumice|slice|price|twice)", re.I)
+# an ice variant named in the middle of an editor id, which the lower-case search cannot see: ..01iceLt, ..IceBlend
+ICE = re.compile(r"(?:(?<![A-Za-z])ice|(?<![A-Z])Ice)(?![a-z])")
 
 
 def words(s: str | None) -> list[str]:
@@ -57,8 +62,8 @@ def words(s: str | None) -> list[str]:
 
 
 def is_nordic(b: dict) -> bool:
-    text = f"{b.get('edid') or ''} {b.get('model') or ''}".lower()
-    return bool(NORDIC.search(NORDIC_EXCEPT.sub("", text)))
+    text = NORDIC_EXCEPT.sub("", f"{b.get('edid') or ''} {b.get('model') or ''}")
+    return bool(NORDIC.search(text.lower()) or ICE.search(text))
 
 
 def kind(b: dict) -> str:

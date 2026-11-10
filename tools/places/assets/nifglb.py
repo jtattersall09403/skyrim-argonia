@@ -44,6 +44,11 @@ class MeshError(Exception):
     pass
 
 
+class NotNow(MeshError):
+    """The mesh could not be converted this time for a reason that is not the mesh's (the reader is not built, it
+    ran out of time on a busy machine, the disk): the placeholder is not kept, and the next call converts again."""
+
+
 def tex_uri(p: str) -> str:
     """The texture's URI, or '' for a slot that does not name a .dds file (empty or garbage)."""
     p = p.strip()
@@ -70,14 +75,19 @@ def uri_path(uri: str) -> str:
 def dump(nif: bytes, tmp: Path | None = None) -> dict:
     """nifdump's shapes, each with its arrays as numpy."""
     if not NIFDUMP.exists():
-        raise MeshError(f"nifdump not built: run tools/places/assets/nifdump/build.sh ({NIFDUMP})")
-    with tempfile.TemporaryDirectory(dir=tmp) as d:
-        i, o = Path(d) / "in.nif", Path(d) / "out.bin"
-        i.write_bytes(nif)
-        r = subprocess.run([str(NIFDUMP), str(i), str(o)], capture_output=True, text=True, timeout=60)
-        if r.returncode != 0:
-            raise MeshError((r.stderr or r.stdout or f"nifdump exit {r.returncode}").strip()[:300])
-        raw = o.read_bytes()
+        raise NotNow(f"nifdump not built: run tools/places/assets/nifdump/build.sh ({NIFDUMP})")
+    try:
+        with tempfile.TemporaryDirectory(dir=tmp) as d:
+            i, o = Path(d) / "in.nif", Path(d) / "out.bin"
+            i.write_bytes(nif)
+            r = subprocess.run([str(NIFDUMP), str(i), str(o)], capture_output=True, text=True, timeout=60)
+            if r.returncode < 0:
+                raise NotNow(f"nifdump was killed (signal {-r.returncode})")
+            if r.returncode != 0:
+                raise MeshError((r.stderr or r.stdout or f"nifdump exit {r.returncode}").strip()[:300])
+            raw = o.read_bytes()
+    except (OSError, subprocess.TimeoutExpired) as e:
+        raise NotNow(f"{type(e).__name__}: {e}"[:300]) from e
     hl = struct.unpack_from("<I", raw)[0]
     head = json.loads(raw[4:4 + hl].decode("utf-8", "replace"))
     blob = memoryview(raw)[4 + hl:]

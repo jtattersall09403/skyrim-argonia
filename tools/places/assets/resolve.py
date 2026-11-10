@@ -103,6 +103,19 @@ class Resolver:
                 self._arcs = arcs
         return self._arcs
 
+    def ident(self, key: str) -> tuple | None:
+        """What a path resolves to, without reading it: the loose winner's file, size and time, else the archive
+        entry that holds it; None when nothing does. Equal idents mean equal bytes."""
+        f = self.loose_file(key)
+        if f:
+            st = f.stat()
+            return ("loose", str(f), st.st_size, st.st_mtime_ns)
+        k = key.replace("\\", "/")
+        for name, arc in self.archives():
+            if k in arc.files:
+                return ("bsa", name, *arc.files[k])
+        return None
+
     def where(self, key: str) -> str | None:
         if self.loose_file(key):
             return f"mod:{self.loose[key]}"
