@@ -289,3 +289,11 @@ added here the day they are made, with the date and the issue.
   **Finalise.** One tap runs record, build, learn and report unattended. Lessons from fault edits land in the
   skill as their own revertible commit; taste edits never become rules.
   **The phase file.** The owner's wording in a phase plan is preserved; agents add below it, never rewrite it.
+- 2026-11-10 (in session): the commit guard. When `tooling/lane_commit.sh` refuses a commit as undoing recent work
+  and the change is deliberate (a redraft's own output, files of a room the drafter dropped, the owner's finalised
+  edits), the agent uses `LANE_ALLOW_REVERT=1` or commits the deletion itself; the owner is not asked to run it.
+- 2026-11-10 (in session): the studio and the review. No "worth a look" list: the fault is fixed instead. No timing
+  or frame-rate measurements on the build machine. Nothing already proven is tested again, and a test that is
+  itself wrong or tests nothing the owner needs is fixed or removed, not satisfied. The lead reviews the code of
+  the drafter, the builder and the studio itself, not through subagents, and keeps the skills current with what
+  the review finds. A session with a goal never idles waiting on the owner.

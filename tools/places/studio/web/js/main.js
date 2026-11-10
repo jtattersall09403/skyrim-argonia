@@ -105,6 +105,7 @@ class Studio {
     this.model = modelFromFiles({ spaces, ...this.draft.files });
     this.spaceInfo = Object.fromEntries(Object.entries(this.draft.spaces).map(([k, v]) => [k, v.info]));
     if (this.terrain) this.terrain.override = this.model.land;
+    this.people.invalidateRoutes();
     this.log = new EditLog(this.model);
     this.log.on((kind, ops) => this.afterEdit(kind, ops));
     this.worldRefs = (ground.spaces.exterior?.refs || []).filter((r) => r.layer !== 'place'); this._wbk = null;
@@ -321,6 +322,7 @@ class Studio {
     if (touched.has('path')) this.ours.terrainMesh?.rebakeAll(pathsBox(ops));
     if (touched.has('veg') || touched.has('path')) this.refreshSide(this.ours);
     else this.refreshSide(this.ours, { world: false });
+    if (touched.has('ref') || touched.has('path') || touched.has('land')) this.people.invalidateRoutes();
     if (touched.has('person') || touched.has('ref')) this.people.refresh();
     if (kind !== 'call') this.markUnsaved();
     this.panels.historyChanged(); this.updateUndo();
@@ -382,7 +384,7 @@ class Studio {
     const spaces = {}; for (const [sid, s] of Object.entries(this.draft.spaces)) spaces[sid] = s.refs;
     const m = modelFromFiles({ spaces, ...this.draft.files });
     Object.assign(this.model, m); if (this.terrain) this.terrain.override = this.model.land;
-    this.log.model = this.model; const err = this.log.load(save.ops || []);
+    this.log.model = this.model; this.people.invalidateRoutes(); const err = this.log.load(save.ops || []);
     if (err) { console.error(err); this.toast(`Opened ${this.log.ops.length} of ${save.ops.length} changes. The next one no longer fits the draft: ${err.message}`, 8000); }
     this.terrain?.bump(null); this.ours.terrainMesh?.refreshCells(this.ours.terrainMesh.cells.keys()); this.ours.terrainMesh?.rebakeAll(); this.ours.terrainMesh?.tint?.();
     this.ours.trail = []; this.showSpace(this.ours, 'exterior');

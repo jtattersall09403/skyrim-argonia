@@ -3,6 +3,7 @@
 import * as THREE from 'three';
 import { mintId } from './ids.js';
 import { clock } from './geom.js';
+import { Walk, along } from './routes.js';
 
 const COLOURS = ['#2f7fd1', '#c2410c', '#15803d', '#7e22ce', '#b45309', '#0e7490', '#be185d', '#4d7c0f'];
 const NS = 'http://www.w3.org/2000/svg';
@@ -18,7 +19,7 @@ export function setPatrol(x, pts) {
 
 export class People {
   constructor(app) {
-    this.app = app; this.active = false; this.sel = null; this.armed = null; this.markers = new Map(); this._bySrc = new Map(); this._first = new Map();
+    this.app = app; this.active = false; this.sel = null; this.armed = null; this.markers = new Map(); this._bySrc = new Map(); this._first = new Map(); this._walk = null; this._legs = new Map();
     // a simple standing figure turned from a profile: legs, body, shoulders, neck, head
     const prof = [[0, 0], [22, 0], [20, 70], [26, 95], [30, 130], [12, 142], [9, 148], [17, 158], [16, 172], [9, 182], [0, 184]];
     this.geo = new THREE.LatheGeometry(prof.map(([x, y]) => new THREE.Vector2(x, y)), 10).rotateX(Math.PI / 2);
@@ -74,6 +75,32 @@ export class People {
     if (S !== 'exterior') { const out = this.doorTo(S, 'exterior'); if (out) return { p: out.pos, inside: true }; }
     return null;
   }
+  // ---------- walking routes ----------
+  // Outside, a person walks round buildings and water and along the paths (routes.js), as the game's people do on
+  // its walking mesh. The network is made again after an edit that moves a building, a path or the land; each leg
+  // between two spots is worked out once.
+  invalidateRoutes() { this._walk = null; this._legs.clear(); }
+  walkNet() {
+    const a = this.app;
+    if (!this._walk) this._walk = new Walk({ terrain: a.terrain, bases: a.bases, paths: [...a.model.paths.values()], refs: [...(a.model.spaces.exterior?.refs.values() || [])] });
+    return this._walk;
+  }
+  // The way from p to q in space S as [[x, y, z], ...]: routed outside, straight across a room.
+  leg(S, p, q) {
+    if (S !== 'exterior' || !this.app.terrain) return [p, q];
+    const k = `${Math.round(p[0])},${Math.round(p[1])}|${Math.round(q[0])},${Math.round(q[1])}`;
+    let r = this._legs.get(k);
+    if (!r) { r = this.walkNet().route(p, q).map(([x, y]) => [x, y, p[2]]); this._legs.set(k, r); }
+    return r;
+  }
+  // Several spots in turn as one walked line (back to the first when closed).
+  walked(S, spots, closed) {
+    const out = [];
+    for (let i = 0; i + 1 < spots.length || (closed && i < spots.length && spots.length > 1); i++) {
+      const L = this.leg(S, spots[i], spots[(i + 1) % spots.length]); out.push(...(out.length ? L.slice(1) : L));
+    }
+    return out.length ? out : spots;
+  }
   sorted(p) { return [...(p.routine || [])].sort((a, b) => a.start - b.start); }
   active_(p, t) {
     const st = this.sorted(p); if (!st.length) return null;
@@ -94,10 +121,10 @@ export class People {
     const pat = this.patrolPts(p);
     if (pat.length && ['patrol', 'work'].includes(a.s.kind) && this.stopPoint(a.s).space === S && S === 'exterior') {
       const n = pat.length, f = (a.rel * 2) % n, i = Math.floor(f), u = f - i;
-      const A = pat[i], B = pat[(i + 1) % n]; pos = [A[0] + (B[0] - A[0]) * u, A[1] + (B[1] - A[1]) * u, A[2] + (B[2] - A[2]) * u];
+      const A = pat[i], B = pat[(i + 1) % n], q = along(this.leg(S, A, B), u); pos = [q[0], q[1], A[2] + (B[2] - A[2]) * u];
     } else if (a.rel < 0.5) { // walking from the last stop for the first half hour
       const from = this.seenFrom(S, a.prev);
-      if (from?.p) { const u = a.rel / 0.5; pos = [0, 1, 2].map((k) => from.p[k] + (here.p[k] - from.p[k]) * u); }
+      if (from?.p) { const u = a.rel / 0.5, q = along(this.leg(S, from.p, here.p), u); pos = [q[0], q[1], from.p[2] + (here.p[2] - from.p[2]) * u]; }
     }
     return { pos, inside: here.inside, stop: a.s };
   }
@@ -133,7 +160,8 @@ export class People {
   cameraMoved(view) { if (view === this.app.ours.view && !this._routesDue) { this._routesDue = true; requestAnimationFrame(() => { this._routesDue = false; this.drawRoutes(); }); } }
   drawRoutes() {
     const a = this.app, v = a.ours.view, svg = this.layer(v); svg.innerHTML = '';
-    const S = a.ours.space, scr = (p) => { const z = S === 'exterior' && a.terrain ? (a.terrain.heightAt(p[0], p[1]) ?? p[2]) : p[2]; return v.toScreen([p[0], p[1], z + 10]); };
+    // outside, a line lies on the ground, or on the water's surface where it crosses on a deck
+    const S = a.ours.space, scr = (p) => { const z = S === 'exterior' && a.terrain ? Math.max(a.terrain.heightAt(p[0], p[1]) ?? p[2], a.terrain.waterAt(p[0], p[1]) ?? -Infinity) : p[2]; return v.toScreen([p[0], p[1], z + 10]); };
     const add = (tag, attrs, text) => { const e = document.createElementNS(NS, tag); for (const [k, val] of Object.entries(attrs)) e.setAttribute(k, val); if (text) e.textContent = text; svg.append(e); return e; };
     // short name labels: everyone near the camera, and the selected person wherever they are
     const cam = v.camera.position, o = a.ours.origin, near = Math.max(1800, Math.min(4000, v.rig.dist * 1.2));
@@ -152,9 +180,9 @@ export class People {
       const c = this.colour(p), mine = this.sel === p.id;
       if (this.sel && !mine) continue;
       const pts = this.sorted(p).map((s) => ({ s, w: this.seenFrom(S, s) })).filter((x) => x.w?.p);
-      if (pts.length > 1) add('polyline', { class: 'route', stroke: c, 'stroke-opacity': mine ? 0.95 : 0.5, points: [...pts, pts[0]].map((x) => { const q = scr(x.w.p); return `${q.x},${q.y}`; }).join(' ') });
+      if (pts.length > 1) add('polyline', { class: 'route', stroke: c, 'stroke-opacity': mine ? 0.95 : 0.5, points: this.walked(S, pts.map((x) => x.w.p), true).map((p) => { const q = scr(p); return `${q.x},${q.y}`; }).join(' ') });
       const pat = this.patrolPts(p);
-      if (pat.length && S === 'exterior') add('polygon', { class: 'route', stroke: c, 'stroke-dasharray': '8 6', points: pat.map((q) => { const s = scr(q); return `${s.x},${s.y}`; }).join(' ') });
+      if (pat.length && S === 'exterior') add('polygon', { class: 'route', stroke: c, 'stroke-dasharray': '8 6', points: this.walked(S, pat, true).map((q) => { const s = scr(q); return `${s.x},${s.y}`; }).join(' ') });
       if (mine) {
         for (const x of pts) {
           const q = scr(x.w.p); add('circle', { class: 'stop', cx: q.x, cy: q.y, r: 9, fill: c, 'fill-opacity': x.w.inside ? 0.45 : 1 });
