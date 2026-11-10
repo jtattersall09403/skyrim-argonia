@@ -193,16 +193,24 @@ The tools lay the network by these rules.
   travel network's (`docs/design/travel-network.md`), never the person's.
 - **A promised shrine blessing needs a thing to carry it**: the source's own Hist or shrine, else the tools add a
   young Hist in the town's middle, clear of buildings and streets (`stations` `shrine`); look at it in the render.
-- **A town with a jail arrests as Skyrim's holds do.** The jail is the copied room whose source cell's editor id or
-  name says jail, prison or gaol, else one that holds a jail door. The tools put the prisoner in a bed by a door that
-  locks, else a bed behind the room's bars, else behind the bars where they enclose most (adding a bedroll there),
-  stand the jail marker beside that bed, the release point at the arrival outside the jail's town door, and the
-  two evidence chests (stolen goods, the player's things) by the way in, owned by the crime faction and empty
-  (`draft jail`; `place.json`'s crime row `jail` names them). A town with no jail room fines only. Look at the
-  cell in the render: a prisoner should stand behind bars or a locked door.
+- **Only a foreign law jails.** The Argonian sentence is not a cell but the Owing, and the province punishes with no
+  prisons (`story/lore/topics/labour-and-bondage.md`, `prisons.md`). A place gets a jail only when its record's
+  holder (`held_by`, before "in", "with" or "alongside") names a foreign power keeping its law (the Empire, a Dunmer
+  Great House, the Thalmor; never an "ex-", "former" or "old" one); a native place's crime row says "native law:
+  the Owing, no cell", its faction fines only, and its guards speak no arrest lines (no "go to jail" with no jail).
+  Where the law jails, the jail is the copied room holding the jail kit (bars, jail walls, jail doors), never a
+  room known by its name alone; the tools put the prisoner in a bed by a door that locks, else a bed behind the
+  bars, else behind the bars where they enclose most (adding a bedroll there), stand the jail marker beside that
+  bed, the release point at the arrival outside the jail's town door, and the two evidence chests by the way in,
+  owned by the crime faction and empty (`draft jail`). Look at the cell in the render.
 - **A source's primitives keep their work.** A collision marker's box (an invisible wall or floor the source's
-  builders placed), a room or portal marker, an acoustic space and any other volume are copied with their
-  primitive, and the navmesh is built round a collision box as the solid it is. A trigger with a script whose
+  builders placed) is kept when it belongs to a piece we keep: its box touches or holds a kept building, static,
+  furniture, door, activator or container (a wall on a balcony, a plug in a doorway, a cap on a roof). It
+  then travels with that piece at its source offset, seated on it, as a light with its fixture, and the navmesh is
+  built round it as the solid it is. A box that met only the source's ground (its trees and rocks included) is
+  dropped with that reason: our ground is not the source's. Where our own ground needs a wall (a hole the fit left,
+  a ledge people would fall from), that is drafted with its own reason, never inherited. A room or portal marker,
+  an acoustic space and any other volume are copied with their primitive. A trigger with a script whose
   activation reaches nothing the place keeps (the source's quest or scene) is dropped with its reason in the
   ledger; a trap's trigger stays with its trap (`draft primitives`).
 - **People follow Skyrim's days** (`docs/research/skyrim/town-life.md`): an innkeeper keeps the inn day and
@@ -263,8 +271,8 @@ and removed per file; a stage that would write outside what it owns changes noth
 | `people` | the people source or the place's promises changed | names in `people.jsonl`, and each person's services as the record promises them (kind, detail, the network's destinations) |
 | `lights` | stations were added, a room's lights changed | the lights of added stations; each room's `twin_of` rows; `place.json` `lights` |
 | `stations` | the record promises a station the files lack | the added station, its worker's stop, `place.json` `stations` |
-| `jail` | the jail room, its door or its arrival changed | the jail's prison markers, bedroll and evidence chests; `place.json`'s crime row `jail` |
-| `primitives` | the source bundle or the primitive classes changed | each exterior row's `primitive`; a dropped trigger's row and its ledger row |
+| `jail` | the place's holder, the jail room, its door or its arrival changed | the jail's prison markers, bedroll and evidence chests; `place.json`'s crime row `jail` and `law` |
+| `primitives` | the source bundle, the kept pieces or the primitive classes changed | each exterior row's `primitive`, and a kept collision box's place, turn, seat and cluster by its piece; a dropped box's or trigger's row and its ledger row |
 
 1. Make the change that calls for it (`place.json` `draft`, the people source, a rule of the tools).
 2. Run the stage and read its counts: they are the whole change. Then run `streets` when what the network is built
@@ -280,8 +288,8 @@ and removed per file; a stage that would write outside what it owns changes noth
    plans only and lists every problem.
 2. `python3 -m tools.places check <place_id>` reads the built plugin back. All eighteen checks are green: `plugin`,
    `seat`, `overlap`, `doors`, `people`, `navmesh`, `streets`, `land`, `clear`, `services`, `nordic`, `rooms`,
-   `shadows`, `levelled`, `jail`, `primitives`, `stock`, `promises`. A town with no jail room passes `jail` with a
-   note that it fines only. Each failure's full list is in
+   `shadows`, `levelled`, `jail`, `primitives`, `stock`, `promises`. A place that fines only passes `jail` with a
+   note saying why (its law, or no jail room). Each failure's full list is in
    `out/places/shards/<place_id>/check_failures/<check>.txt`. `check <place_id> --reach [person]` says what is cut
    off from what.
 3. A failure is mended at its cause by the stage or the skill that owns it (a street by `streets`, a promise by `place-stock`). The place is never bent to pass a check, and a check is never loosened to pass a place.

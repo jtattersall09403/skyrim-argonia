@@ -214,7 +214,9 @@ piece it leaves, its top tread at the deck's height.
 `roles`, `keep_patches`; skill `place-build`), `fit` (global and per-cluster transforms, `clusters_info`,
 `relief_norm`, `patch_max`),
 `clearance` (the source's measured clearance), `factions` (`<place_id>.crime`, `.guard`, `.town`, and one
-`.vendor.NN` per trader with hours and `chest`; the crime row's `jail` is null for a place that fines only, else
+`.vendor.NN` per trader with hours and `chest`; the crime row's `law` says whether the place's law jails (`draft
+jail`: "foreign law: ..." or "native law: the Owing, no cell (held by ...)"), and its `jail` is null for a place that
+fines only, else
 `{space, known, cell, bed, door, marker, exterior, stolen, inventory}`: the jail room, how it was known, how the cell
 was chosen, the prisoner's bed and the cell's locking door (a source key or our id; null where it has none), and our
 ids of the jail marker, the exterior prison marker and the two evidence chests, written by `draft jail`), `stations` (needed, found, missing, added: {station, id, base,
@@ -800,8 +802,14 @@ their own cell (interior), as vanilla files them.
    input is PackageTargetLinkedReference with no keyword, and the actor's own linked ref names the first of a chain
    of linked XMarkerHeadings, closed when `patrol.loop`) with our schedule and place, then an unscheduled sandbox at home; the person's bed
    owned by them; everyone in the place's crime faction (vanilla's hold flags TrackCrime, CrimeGoldUseDefaults and
-   CanBeOwner, and its crime values), guards also in IsGuardFaction and GuardDialogueFaction (vanilla's
-   DialogueCrimeGuards speaks its arrest lines to an actor that IsGuard and is in GuardDialogueFaction).
+   CanBeOwner, and its crime values), guards also in IsGuardFaction, and where the place has a jail in
+   GuardDialogueFaction (vanilla's DialogueCrimeGuards speaks its arrest lines to an actor that IsGuard and is in
+   GuardDialogueFaction; its "go to jail" line, DGCrimeGoToJail 0267E1, has no condition, so a jail-less faction's
+   guards are kept out of it, as Skyrim's Orc strongholds' and the Skaal village's jail-less crime factions have no
+   such guards). Only a foreign law jails (decision 0032: the Argonian sentence is the Owing, not a cell;
+   `story/lore/topics/labour-and-bondage.md`, `prisons.md`): `draft jail` reads the place record's holder
+   (`held_by` before "in", "with" or "alongside") for a foreign power keeping its law (the Empire and its offices, a
+   Dunmer Great House, the Thalmor; never one named "ex-", "former" or "old"), and a native place fines only.
    The jail, as Skyrim.esm's hold factions have one (measured by `ArgoniaPlacesBuild jail` on Riften, Whiterun,
    Falkreath and Winterhold): the faction's JAIL and WAIT are a persistent PrisonMarker (Skyrim.esm 000004, a
    door-type marker) at the release point outside the jail's town door, whose teleport leads to a second PrisonMarker
@@ -809,7 +817,8 @@ their own cell (interior), as vanilla files them.
    EvidenceChestPlayerInventory (108D36) in the jail's room, persistent, empty, never respawning, owned by the crime
    faction; JOUT is BeggarOutfit (028B60); the shared crime faction list (CRGR) is left empty, so the place's bounty
    is its own. A ref owned `<place>.crime` is owned by the crime faction. A place whose crime row has no `jail` fines
-   only. `draft jail` (tools/places/draft/jail.py) chooses the room, the cell and where each thing stands. A stop names a ref (our id or a source key in its space), a position (2D, outside only, is
+   only. `draft jail` (tools/places/draft/jail.py) chooses the room (the copied room holding the jail kit: bars, jail
+   walls, jail doors; never a name alone), the cell and where each thing stands. A stop names a ref (our id or a source key in its space), a position (2D, outside only, is
    seated on the built land: the world's heights with the place's land patches, between the cell's vertices), or
    only a space (where one arrives in it by a load door, else its first furniture). A person whose day starts on
    patrol stands at the patrol's first point and keeps home there; every patrol stop of a day walks the one chain,
@@ -912,8 +921,9 @@ inventory, outfits, death item or spells, or in a placed container; a level that
 template chain reaches a levelled actor list or takes stats or an inventory from a template that scales); a jail
 not as vanilla's (check `jail`: the crime faction's JAIL, WAIT, STOL and PLCN not set to our refs, the jail marker off
 its room's navmesh, the release point off the town's main network, an evidence chest not in the jail, not empty,
-respawning or not the faction's, a guard not in IsGuardFaction and GuardDialogueFaction; a place with no jail room
-passes with a note that it fines only); a copied ref whose source has a primitive neither built with it identical
+respawning or not the faction's, a guard not in IsGuardFaction and GuardDialogueFaction; a place that fines only
+passes with a note saying why, and fails a guard of it in GuardDialogueFaction, whose lines would offer a jail it
+lacks); a copied ref whose source has a primitive neither built with it identical
 (type, half extents, colour) nor in the ledger as dropped with its reason (check `primitives`). It also
 fails on a link that
 resolves nowhere or a plugin not mastered on the world ESM. The promises are the place's rows of
@@ -934,8 +944,11 @@ names, then the built network: flights, joins, arrivals, work stops, streets and
 names), `lights` (added stations' lights, each room's shadow twins, `place.json` `lights`: `{added:[{id, base,
 on}], twins:[{space, src, base, of}]}`), `stations` (a promised station the files lack), `jail` (the jail room's
 cell, prison markers, bedroll and evidence chests, and the crime row's `jail`: Build step 6), `primitives` (each
-copied ref's primitive by its class, `tools/places/draft/primitives.py`: collision markers, room, portal and plane
-markers, multibounds, acoustic spaces and other volumes are written; a trap's trigger stays with its trap; a trigger
+copied ref's primitive by its class, `tools/places/draft/primitives.py`: a collision marker is kept when its box touches
+or holds the record box of a kept building, static, furniture, door, activator or container, and then stands at its source offset from the nearest such piece, turned with that piece's cluster and
+seated `on` it (as a light with its fixture; `fit` and `seating` leave it to this stage); one that met only the
+source's ground, trees and rocks is dropped with that reason, our ground not being the source's; room, portal and
+plane markers, multibounds, acoustic spaces and other volumes are written; a trap's trigger stays with its trap; a trigger
 with a script whose activation reaches nothing the place keeps, no ref following it and no link, is dropped with its
 reason in the ledger, a copied room's as a `removed` row). A whole draft runs `primitives`, the join, then `jail`. A stage writes only the
 rows and fields it owns. After a stage runs the tool checks that; if the stage wrote anything else, the tool

@@ -18,7 +18,8 @@ owns changes nothing and fails.
   stations   each promised crafting station the standing files lack, by the person who works it
   jail       the crime faction's jail: the jail room, the cell the player is put in, the prison markers both sides,
              the evidence chests (tools/places/draft/jail.py)
-  primitives each copied ref's primitive by its class, a source trigger that reaches nothing of ours dropped
+  primitives each copied ref's primitive by its class: a collision box kept with the piece it belongs to, one on
+             the source's ground and a trigger that reaches nothing of ours dropped
              (tools/places/draft/primitives.py)
 """
 from __future__ import annotations
@@ -48,7 +49,7 @@ OWNS: dict[str, dict[str, tuple]] = {
     "stations": {"spaces/*/refs.jsonl": (ANY, True), "people.jsonl": ({"work", "routine"}, False),
                  "place.json": ({"stations"}, False)},
     "jail": {"spaces/*/refs.jsonl": (ANY, True), "place.json": ({"factions"}, False)},
-    "primitives": {"spaces/exterior/refs.jsonl": ({"primitive"}, True), "spaces/*/refs.jsonl": (ANY, True),
+    "primitives": {"spaces/exterior/refs.jsonl": ({"primitive", "pos", "rot", "seat", "cluster"}, True), "spaces/*/refs.jsonl": (ANY, True),
                    "ledger.jsonl": (ANY, True)},
 }
 STAGES = tuple(OWNS)
@@ -141,8 +142,8 @@ def fit(st: Standing, log=print) -> None:
             lr.pop("as", None)
     for row in st.ext:
         sid = row.get("src")
-        if sid not in of or row.get("cluster") == of[sid]:
-            continue
+        if sid not in of or row.get("cluster") == of[sid] or row.get("primitive"):
+            continue  # a collision box travels with its piece (`primitives`)
         r = st.by_src[sid]
         if sid in st.bound:
             row["rot"] = geom.Xf((0, 0), (0, 0), st.turn(of[sid])).rot3(r.get("rot"))
@@ -274,8 +275,8 @@ def seating_stage(st: Standing, log=print) -> None:
     ours = st.ours()
     for sid, row in sorted(ours.items()):
         r = st.by_src.get(sid)
-        if r is None or sid not in of or row.get("base") != r.get("base"):
-            continue    # a replaced piece keeps the seat its replacement was given
+        if r is None or sid not in of or row.get("base") != r.get("base") or row.get("primitive"):
+            continue    # a replaced piece keeps the seat its replacement was given; a collision box, its piece's
         rule = st.seat_rule(r, row.get("cluster") or of[sid], ours)
         if rule != row.get("seat"):
             row["seat"] = rule

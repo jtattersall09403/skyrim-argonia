@@ -1,4 +1,12 @@
-"""`draft jail <place_id>`: the crime faction's jail, as Skyrim.esm gives a hold's crime faction one.
+"""`draft jail <place_id>`: the crime faction's jail, as Skyrim.esm gives a hold's crime faction one, where the
+place keeps a foreign law that jails.
+
+Who holds the place decides (decision 0032; story/lore/topics/labour-and-bondage.md section 2,
+story/lore/topics/prisons.md): the Argonian sentence is not a cell but an obligation of work (the Owing), and the
+province now punishes with no prisons and no courts; its prisons were foreign foundations. So a place gets a jail
+only when its record's holder (`place.held_by`, the clause before "in", "with" or "alongside") names a foreign power
+keeping its own law (the Empire and its offices, a Dunmer Great House, the Thalmor), never one it names as "ex-",
+"former" or "old"; a native place has none, and its crime row's `law` says why ("native law: the Owing, no cell").
 
 Measured on Skyrim.esm (`ArgoniaPlacesBuild jail`, CrimeFactionRift, CrimeFactionWhiterun, CrimeFactionFalkreath,
 CrimeFactionWinterhold): the faction's JAIL is a persistent PrisonMarker (Skyrim.esm 000004, a door-type marker)
@@ -9,9 +17,9 @@ Falkreath, Winterhold); STOL and PLCN are an EvidenceChestStolenGoods (0267E7) a
 PLCN); JOUT is BeggarOutfit (028B60). The guards' arrest lines are vanilla's DialogueCrimeGuards quest, which speaks
 to any actor that IsGuard and is in GuardDialogueFaction (people.py gives guards both).
 
-The rule, from the place's own things:
-  - the jail: a copied interior whose source cell's editor id or name says jail, prison or gaol; else one whose room
-    holds a jail door (a door whose base's editor id says so). None: the faction fines only (the check says so).
+The rule, from the place's own things, where the law jails:
+  - the jail: a copied interior whose room holds the jail kit (bars, a jail wall, a jail door: bases whose editor id
+    says jail or prison); a room's or a cell's name alone never makes it one. None: the faction fines only.
   - the cell the player is put in: a bed of the room by a door that locks (a jail door, or any inner door with a
     lock) within CELL_REACH; else a bed behind the room's bars (the straight way from where one arrives in the room
     to it crosses a piece of the jail kit: bars, a jail wall, a jail door); else, where the room has bars and no bed
@@ -45,6 +53,21 @@ MARKER_OFF = (128.0, 192.0)   # the jail marker this far from the bed (vanilla: 
 GRID = 64.0
 BAR_CLEAR = 48.0        # a point behind bars stands this far from them at least
 WHY = "the {place} crime faction's jail ({what}): vanilla's hold jail (draft jail)"
+FOREIGN = re.compile(r"(?<![-\w])(?<!ex-)(?:Imperial|Empire|Legion|Penitus|Thalmor|Aldmeri|Dominion|Hlaalu|Redoran|Telvanni|"
+                     r"Indoril|Dres)\b")
+QUALIFIED = re.compile(r"\b(?:ex|former|old)[- ]+(?:\w+[- ])?(?:Imperial|Empire|Legion|Thalmor|Hlaalu|Redoran|Telvanni|Indoril|Dres)", re.I)
+NATIVE = "native law: the Owing, no cell"
+
+
+def law(record: dict) -> tuple[bool, str]:
+    """(whether the place keeps a foreign law that jails, the reason in plain words) from its record's holder."""
+    held = str(record.get("held_by") or "")
+    holder = re.split(r"\b(?:in|with|alongside)\b|;", held, maxsplit=1)[0]
+    clean = QUALIFIED.sub("", holder)
+    m = FOREIGN.search(clean)
+    if m:
+        return True, f"foreign law: held by {holder.strip()} ({m.group(0)} law jails)"
+    return False, f"{NATIVE} (held by {held or 'nobody named'})"
 
 
 def segs_cross(a, b, c, d) -> bool:
@@ -80,22 +103,18 @@ def _seg_dist(p, a, b) -> float:
 
 
 def find_jail(spaces: dict, src, bases: dict) -> tuple[str, str] | None:
-    """(space id, how it was known) of the place's jail interior, or None."""
+    """(space id, how it was known) of the place's jail interior: the copied room holding the most jail kit (a jail
+    door first), or None. A name alone never makes a room a jail."""
+    best = None
     for sid, sp in sorted(spaces.items()):
         info = sp.get("space") or {}
         if sid == "exterior" or not info.get("copy_of"):
             continue
-        src_sid = info["copy_of"].split("/", 1)[1]
-        if JAIL_WORD.search(src_sid) or JAIL_WORD.search(str(info.get("name") or "")):
-            return sid, f"its source cell {src_sid} is a jail by its editor id"
-    for sid, sp in sorted(spaces.items()):
-        info = sp.get("space") or {}
-        if sid == "exterior" or not info.get("copy_of"):
-            continue
-        refs = room_things(sp, src, bases)
-        if any(r.get("kind") == "door" and JAIL_WORD.search(str((bases.get(r["base"]) or {}).get("edid") or "")) for r in refs):
-            return sid, "its room holds a jail door"
-    return None
+        kit = [r for r in room_things(sp, src, bases) if JAIL_WORD.search(str((bases.get(r.get("base")) or {}).get("edid") or ""))]
+        doors = sum(1 for r in kit if r.get("kind") == "door")
+        if kit and (best is None or (doors, len(kit)) > best[0]):
+            best = ((doors, len(kit)), sid, f"its room holds the jail kit ({doors} jail doors, {len(kit) - doors} bars and walls)")
+    return (best[1], best[2]) if best else None
 
 
 def room_things(sp: dict, src, bases: dict) -> list[dict]:
@@ -207,6 +226,13 @@ def apply(st, log=print) -> None:
     mine = {r["id"] for sp in spaces.values() for r in sp["refs"] if str(r.get("why") or "").endswith("(draft jail)")}
     for sp in spaces.values():  # this stage's own rows are made again from the rule
         sp["refs"] = [r for r in sp["refs"] if r["id"] not in mine]
+    from tools.places.draft.run import place_record
+    jails, why = law(place_record(pid)[0])
+    crime["law"] = why
+    if not jails:
+        crime["jail"] = None
+        log(f"draft jail {pid}: {why}: the crime faction fines only")
+        return
     found = find_jail(spaces, st.src, st.bases)
     if found is None:
         crime["jail"] = None

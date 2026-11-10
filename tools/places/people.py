@@ -10,8 +10,9 @@ level, no levelled lists: decision 0035) placed once as a persistent actor, with
     unscheduled sandbox at home, the fallback;
   - the bed: a FURN bed ref of the place, owned by the person (XOWN on the bed), as vanilla residents' beds;
   - the town's crime faction (our CrimeFaction<place>: vanilla's hold flags and crime values; the actor's CRIF and a
-    rank in it) and, for guards, IsGuardFaction and GuardDialogueFaction (vanilla's DialogueCrimeGuards quest speaks
-    the arrest lines to an actor that IsGuard and is in GuardDialogueFaction); where the place has a jail (place.json's
+    rank in it) and, for guards, IsGuardFaction, and where the place has a jail GuardDialogueFaction (vanilla's
+    DialogueCrimeGuards quest speaks the arrest lines, among them "go to jail", to an actor that IsGuard and is in
+    GuardDialogueFaction; a jail-less faction's guards are not, as Skyrim's Orc and Skaal ones); where it has one (place.json's
     crime faction row `jail`, written by `draft jail`, tools/places/draft/jail.py) the faction names its exterior
     prison marker (JAIL, and WAIT), its two evidence chests (STOL, PLCN) and the jail outfit (JOUT), and the refs
     owned `<place>.crime` are owned by it;
@@ -109,6 +110,9 @@ def plan(P: dict, S: dict, ids, facts: dict, notes: list[str]) -> dict:
     jail = jail_plan(P, by_id, pid)
     if jail:
         out["crime_faction"]["jail"] = jail
+    crime_row = next((f for f in (P["place"].get("factions") or []) if f.get("kind") == "crime"), None) or {}
+    if crime_row.get("law"):
+        out["crime_faction"]["law"] = crime_row["law"]
     for r in S["refs"]:  # a ref the place owns by the crime faction (the jail's evidence chests)
         if r.get("owner") == f"{pid}.crime":
             r["owner"] = out["crime_faction"]["fk"]
@@ -276,7 +280,9 @@ def plan(P: dict, S: dict, ids, facts: dict, notes: list[str]) -> dict:
                 raise Bad(f"people.jsonl: {who}: faction {f!r} is neither a form key nor a faction of {pid}")
             factions.append({"faction": f, "rank": int(fr.get("rank", 0))})
         if p.get("role") == "guard":
-            factions += [{"faction": IS_GUARD, "rank": 0}, {"faction": GUARD_DIALOGUE, "rank": 0}]
+            # vanilla's arrest lines (fine, resist, go to jail) only where there is a jail to go to: a jail-less
+            # faction's guards are not in GuardDialogueFaction, as Skyrim's Orc strongholds and the Skaal village
+            factions += [{"faction": IS_GUARD, "rank": 0}] + ([{"faction": GUARD_DIALOGUE, "rank": 0}] if jail else [])
         cls = None
         gives = []
         scripts, voice_list, travel = [], None, {}

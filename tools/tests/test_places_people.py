@@ -65,10 +65,10 @@ def test_rows_the_builder_cannot_seat_or_read_are_problems_and_the_rest_are_plan
     assert "off the land" in problems[0] and "no height" in problems[1] and "t.bed" in problems[2]
 
 
-def test_a_guard_speaks_vanilla_arrest_lines_and_a_stop_by_space_lands_by_a_door_never_a_prison_marker():
+def test_a_guard_of_a_jail_less_town_speaks_no_arrest_lines_and_a_stop_by_space_lands_by_a_door_never_a_prison_marker():
     out, problems = plan([guard()])
     keys = {f["faction"] for f in out["npcs"][0]["factions"]}
-    assert not problems and {people.IS_GUARD, people.GUARD_DIALOGUE} <= keys
+    assert not problems and people.IS_GUARD in keys and people.GUARD_DIALOGUE not in keys  # no jail: no "go to jail" line
     S = {"refs": [{"id": "t.a", "fk": "P:1", "kind": "marker", "space": "exterior", "pos": [0, 0, 0], "teleport": {"to": "P:3", "pos": [5, 5, 5]}},
                   {"id": "t.b", "fk": "P:2", "kind": "door", "space": "exterior", "pos": [0, 0, 0], "teleport": {"to": "P:4", "pos": [7, 7, 7]}},
                   {"id": "t.c", "fk": "P:3", "kind": "marker", "space": "jail", "pos": [5, 5, 5]},

@@ -47,14 +47,28 @@ def test_a_room_with_neither_bed_nor_bars_has_no_cell():
         jail.plan_jail("t", "cell", [ref(7, DOOR, "door", 0.0, 0.0)], BASES, [500.0, 0.0, 0.0])
 
 
-def test_the_jail_is_known_by_its_source_cells_editor_id():
-    spaces = {"exterior": {"refs": []}, "01Hall": {"space": {"copy_of": "s/01Hall"}, "refs": []},
-              "01BlackRoseJail": {"space": {"copy_of": "s/01BlackRoseJail"}, "refs": []}}
+def test_the_jail_is_the_room_holding_the_jail_kit_never_a_name_alone():
+    class Sp:
+        def __init__(self, refs):
+            self.refs = refs
 
     class Src:
-        spaces = {}
+        spaces = {"01BlackRoseJail": Sp([ref(9, BED, "furniture", 0.0, 0.0)]), "01Hall": Sp(bars())}
+    spaces = {"exterior": {"refs": []}, "01Hall": {"space": {"copy_of": "s/01Hall"}, "refs": []},
+              "01BlackRoseJail": {"space": {"copy_of": "s/01BlackRoseJail"}, "refs": []}}
     sid, how = jail.find_jail(spaces, Src(), BASES)
-    assert sid == "01BlackRoseJail" and "editor id" in how
+    assert sid == "01Hall" and "jail kit" in how
+
+
+@pytest.mark.parametrize("held,jails", [
+    ("The Helstrom assembly of interior naheesh and tree-minders; a tribal levy keeps the guard", False),
+    ("A merchant council, the ex-Imperial civil office and river interests", False),
+    ("A harbour authority and merchant council in the East Empire Company's old buildings", False),
+    ("An Imperial garrison under a legate", True),
+    ("House Hlaalu factors and their guards", True)])
+def test_only_a_foreign_law_jails_the_argonian_sentence_is_the_owing(held, jails):
+    got, why = jail.law({"held_by": held})
+    assert got is jails and (why.startswith("foreign law") if jails else why.startswith(jail.NATIVE))
 
 
 def test_the_faction_names_its_jail_rows_and_a_missing_row_is_a_problem():

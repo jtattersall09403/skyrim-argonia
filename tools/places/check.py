@@ -1310,10 +1310,13 @@ def check_jail(ctx) -> list[str]:
     if not cf:
         return []
     jail = cf.get("jail")
-    if not jail:
-        NOTES.append(f"jail: {pid} has no jail interior: its crime faction fines only (no arrest can jail the player)")
-        return []
     m = mine(ctx)
+    if not jail:
+        NOTES.append(f"jail: {pid} has no jail ({cf.get('law') or 'no jail room'}): its crime faction fines only")
+        # with no jail, vanilla's "go to jail" line must never be offered: no guard speaks the arrest lines
+        return [f"{n['id']}: a guard in GuardDialogueFaction, whose arrest lines offer a jail {pid} does not have"
+                for n in ppl.get("npcs", []) if n.get("role") == "guard" and m["npcs"].get(n["fk"]) is not None
+                and GUARD_FACTIONS[1] in (m["npcs"][n["fk"]].get("faction_keys") or [])]
     bad = []
     # the jail's space as the read-back names it: its cell's editor id
     space = next((I.get("edid") for I in ctx["plan"].get("interiors") or [] if I.get("space") == jail.get("space")), None) or jail.get("space")

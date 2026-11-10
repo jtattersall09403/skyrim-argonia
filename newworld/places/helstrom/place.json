@@ -6744,17 +6744,8 @@
    "id": "helstrom.crime",
    "kind": "crime",
    "name": "Helstrom",
-   "jail": {
-    "space": "01BlackRoseJail",
-    "known": "its source cell 01BlackRoseJail is a jail by its editor id",
-    "cell": "behind the room's bars, most enclosed by them (no bed there: a bedroll of ours)",
-    "bed": "helstrom.8WZBRV53E0823TN45QA30BP3SK",
-    "door": null,
-    "marker": "helstrom.34PK3MEYX74T3D5Q7DAM9MM9KZ",
-    "exterior": "helstrom.80QE98RACH0WS7DFQXCKREW26G",
-    "stolen": "helstrom.DHMKV3R360ENCEH0CDW43P0Z1Q",
-    "inventory": "helstrom.M5HGA5ZV0VE5B2MS0V36TV146Z"
-   }
+   "jail": null,
+   "law": "native law: the Owing, no cell (held by The Helstrom assembly of interior naheesh and tree-minders; a tribal levy keeps the guard)"
   },
   {
    "id": "helstrom.guard",

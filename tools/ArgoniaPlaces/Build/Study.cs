@@ -77,6 +77,14 @@ static class Study
             }
         }
         static float Dist(IPlacedObjectGetter a, IPlacedObjectGetter b) => a.Placement is { } p && b.Placement is { } q ? (p.Position - q.Position).Magnitude : -1;
+        // every crime-tracking faction: does it arrest, and has it a jail (the evidence for a jail-less faction)
+        if (edids.Length == 1 && edids[0] == "all")
+        {
+            foreach (var m in mods.AsEnumerable().Reverse().Concat(new[] { "Dawnguard.esm", "Dragonborn.esm" }.Select(f => SkyrimMod.CreateFromBinaryOverlay(Path.Combine(data, f), SkyrimRelease.SkyrimSE, Survey.NoStrings))))
+                foreach (var f in m.Factions.Where(x => x.Flags.HasFlag(Faction.FactionFlag.TrackCrime)))
+                    Console.WriteLine($"crime {m.ModKey.FileName} {f.EditorID} arrest {f.CrimeValues?.Arrest} aos {f.CrimeValues?.AttackOnSight} jail {(f.ExteriorJailMarker.IsNull ? "none" : "set")} stol {(f.StolenGoodsContainer.IsNull ? "none" : "set")} flags {f.Flags}");
+            edids = Array.Empty<string>();
+        }
         foreach (var e in edids)
         {
             var f = mods.AsEnumerable().Reverse().SelectMany(m => m.Factions).FirstOrDefault(x => x.EditorID == e);
@@ -108,6 +116,11 @@ static class Study
                 foreach (var i in t.Responses)
                     foreach (var c in i.Conditions) { var k = $"{t.Subtype}: {Cond(c)}"; seen[k] = seen.GetValueOrDefault(k) + 1; }
             foreach (var kv in seen.OrderByDescending(kv => kv.Value).Take(40)) Console.WriteLine($"  {kv.Value} x {kv.Key}");
+            // the lines that send the player to jail: their topic, prompt, conditions and fragment script
+            foreach (var t in sky.DialogTopics.Where(t => t.Quest.FormKey == q.FormKey))
+                foreach (var i in t.Responses.Where(i => (i.Prompt?.String ?? "").Contains("jail", StringComparison.OrdinalIgnoreCase)
+                    || (i.VirtualMachineAdapter as IDialogResponsesAdapterGetter)?.ScriptFragments?.FileName is { } fn && fn.Length > 0 && t.EditorID?.Contains("Jail", StringComparison.OrdinalIgnoreCase) == true))
+                    Console.WriteLine($"  jail line: topic {t.EditorID} '{t.Name?.String}' info {i.FormKey.ID:X6} prompt '{i.Prompt?.String}' frag {(i.VirtualMachineAdapter as IDialogResponsesAdapterGetter)?.ScriptFragments?.FileName} conditions [{string.Join("; ", i.Conditions.Select(Cond))}]");
         }
         string Cond(IConditionGetter c)
         {

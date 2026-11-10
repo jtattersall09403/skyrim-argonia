@@ -3,7 +3,12 @@ marker, a trigger, a room marker or an acoustic space its shape) carried onto th
 
 A copied ref keeps its primitive, or is dropped with its reason in the ledger, by its class (`classify`):
   collision   a collision marker or plane (the CollisionMarker base): an invisible wall or floor the source's builders
-              placed; written with its box, and the navmesh is built round it as the solid it is
+              placed. Kept when it belongs to a piece we keep: its box touches or holds the record box of a kept
+              building, static, furniture, door, activator or container (a wall on a balcony,
+              a plug in a doorway, a cap on a roof); it then travels with that piece, at its source offset from it
+              turned with the piece's cluster and seated `on` it, as a light travels with its fixture, and the
+              navmesh is built round it as the solid it is. One that met only the source's ground (and its trees
+              and rocks) is dropped: our ground is not the source's
   room        a room, portal or plane marker, a multibound: how the engine culls what is drawn; written
   acoustic    an acoustic space: the room's echo; written
   trap        a trap's trigger (a base of the trap kit): stays with its trap
@@ -15,14 +20,64 @@ unknown}); in a copied room the build copies the source ref's own, and a dropped
 """
 from __future__ import annotations
 
+import math
 import re
 
-from tools.places.draft import interiors, io
+import numpy as np
+
+from tools.places.draft import geom, interiors, io, lights
 
 COLLISION = {"Skyrim.esm:000021"}   # CollisionMarker
 ROOM = re.compile(r"^(RoomMarker|PortalMarker|PlaneMarker|MultiBound)", re.I)
 TRAP = re.compile(r"^Trap|TrapTrigger", re.I)
 KEEPS = {"collision", "room", "acoustic", "trap", "volume"}
+PIECE_KINDS = {"building", "static", "furniture", "door", "activator", "container"}  # what a collision box can belong to
+GROUND_ONLY = ("a collision box on the source's own ground (it touches no piece the place keeps): "
+               "our ground is not the source's, so it would hang in the air or lie buried where its builders never meant")
+
+
+def _obb(pos, rot, lo, hi):
+    from tools.places import build as B
+    R = B.rotation(*(rot or [0.0, 0.0, 0.0]))
+    lo, hi = np.asarray(lo, float), np.asarray(hi, float)
+    return np.asarray(pos, float) + R @ ((lo + hi) / 2), R, (hi - lo) / 2
+
+
+def boxes_meet(a, b) -> bool:
+    """Whether two oriented boxes (centre, rotation, half extents) meet (the separating axis test)."""
+    ca, Ra, ha = a
+    cb, Rb, hb = b
+    t = cb - ca
+    axes = [Ra[:, i] for i in range(3)] + [Rb[:, i] for i in range(3)] + \
+        [np.cross(Ra[:, i], Rb[:, j]) for i in range(3) for j in range(3)]
+    for ax in axes:
+        n = np.linalg.norm(ax)
+        if n < 1e-6:
+            continue
+        ax = ax / n
+        if abs(t @ ax) > sum(ha[i] * abs(Ra[:, i] @ ax) for i in range(3)) + sum(hb[i] * abs(Rb[:, i] @ ax) for i in range(3)):
+            return False
+    return True
+
+
+def piece_of(r: dict, pieces: list[dict], bases: dict) -> dict | None:
+    """The kept piece a collision box belongs to: of the source pieces whose record box it touches or holds, the
+    nearest; None when it met only the ground."""
+    b = np.asarray(r["primitive"]["bounds"], float)
+    reach = float(np.linalg.norm(b))
+    box = _obb(r["pos"], r.get("rot"), -b, b)
+    best = None
+    for p in pieces:
+        bb = (bases.get(p["base"]) or {}).get("bounds")
+        if not bb:
+            continue
+        s = float(p.get("scale") or 1.0)
+        d = math.dist(p["pos"], r["pos"])
+        if d > reach + math.dist(bb[0], bb[1]) * s or (best and d >= best[0]):
+            continue
+        if boxes_meet(box, _obb(p["pos"], p.get("rot"), [v * s for v in bb[0]], [v * s for v in bb[1]])):
+            best = (d, p)
+    return best[1] if best else None
 
 
 def classify(r: dict, base: dict, followers: set[str]) -> tuple[str, str | None]:
@@ -61,6 +116,20 @@ def shape(p: dict) -> dict:
     return {k: p[k] for k in ("type", "bounds", "color", "unknown") if k in p}
 
 
+def follow(row: dict, r: dict, prow: dict, piece: dict, st) -> None:
+    """A kept collision box where its piece now stands: its source offset from the piece turned with the piece's
+    cluster, its turn the same, seated `on` the piece at its source height over it."""
+    turn = st.turn(prow.get("cluster"))
+    ox, oy = lights.offset(r, piece, turn)
+    sx, sy = lights.plan_shift(prow)
+    row["pos"] = [round(prow["pos"][0] - sx + ox, 2), round(prow["pos"][1] - sy + oy, 2), row["pos"][2]]
+    row["rot"] = geom.Xf((0, 0), (0, 0), turn).rot3(r.get("rot"))
+    row["seat"] = lights.seat(r, prow)
+    if prow.get("cluster"):
+        row["cluster"] = prow["cluster"]
+    st.offsets[row["id"]] = round(math.dist(r["pos"], piece["pos"]), 1)
+
+
 def apply(st, log=print) -> dict:
     """The stage. Returns {class: {"written": n, "dropped": n}}."""
     counts: dict[str, dict[str, int]] = {}
@@ -74,12 +143,20 @@ def apply(st, log=print) -> dict:
         raise ValueError(f"the source bundle src.{st.place['source_id']} writes primitives without their type: extract it again")
     fol = followed(st.src_ext)
     ours, led = st.ours(), st.led()
+    pieces = [r for r in st.src_ext if r.get("kind") in PIECE_KINDS and not r.get("primitive") and r["id"] in ours]
+    st.offsets = {}
     for r in src_ext:
         cls, why = classify(r, st.bases.get(r["base"]) or {}, fol)
         row, lr = ours.get(r["id"]), led.get(r["id"])
+        piece = piece_of(r, pieces, st.bases) if cls == "collision" else None
+        if cls == "collision" and piece is None:
+            why = GROUND_ONLY
         if why is None:
-            if row is not None and row.get("primitive") != shape(r["primitive"]):
-                row["primitive"] = shape(r["primitive"])
+            if row is not None:
+                if row.get("primitive") != shape(r["primitive"]):
+                    row["primitive"] = shape(r["primitive"])
+                if piece is not None:
+                    follow(row, r, ours[piece["id"]], piece, st)
             tally(cls, row is not None)
             continue
         tally(cls, False)
@@ -117,5 +194,9 @@ def apply(st, log=print) -> dict:
             st.ledger[:] = [x for x in st.ledger if not (x.get("src") == r["id"] and x.get("copy") == sid)]
             st.ledger.append({"src": r["id"], "space": t, "copy": sid, "status": "dropped", "why": why})
             log(f"draft primitives {st.place_id}: {sid}/{r['id']} dropped: {why}")
+    from tools.places.seat import seat_all
+    seat_all(st.ext, st.G)
+    if st.offsets:
+        log(f"draft primitives {st.place_id}: the farthest kept collision box stands {max(st.offsets.values())} units from its piece")
     log(f"draft primitives {st.place_id}: " + ", ".join(f"{k} {v['written']} written, {v['dropped']} dropped" for k, v in sorted(counts.items())))
     return counts

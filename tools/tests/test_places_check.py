@@ -140,6 +140,9 @@ def test_a_jail_as_vanilla_passes_and_a_place_without_one_fines_only():
     c = ctx()
     c["plan"]["people"]["crime_faction"] = {"fk": k(30), "edid": "ANP_t_CrimeFaction"}
     assert not C.run(c)["jail"] and any("fines only" in n for n in C.NOTES)
+    c["dump"]["npcs"][0]["faction_keys"].append("Skyrim.esm:02BE3B")  # a jail-less town's guard offering "go to jail"
+    c["plan"]["people"]["npcs"][0]["role"] = "guard"
+    assert C.check_jail(c)
 
 
 @pytest.mark.parametrize("what", ["unset", "off_mesh", "release", "chest", "guard"])

@@ -1104,7 +1104,8 @@ def draft_people(place_id, rec, gives, src, bases, our, spaces, clusters, fit, o
     folk: list[dict] = []
     taken_names: set[str] = set()
     crime = f"{place_id}.crime"
-    factions = [{"id": crime, "kind": "crime", "name": rec.get("name"), "jail": None},
+    from tools.places.draft.jail import law
+    factions = [{"id": crime, "kind": "crime", "name": rec.get("name"), "jail": None, "law": law(rec)[1]},
                 {"id": f"{place_id}.guard", "kind": "guard", "crime": crime},
                 {"id": f"{place_id}.town", "kind": "town", "crime": crime}]
     # the inn: the hall with the most beds that no source trader keeps as a shop
