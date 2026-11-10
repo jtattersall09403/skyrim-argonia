@@ -183,6 +183,69 @@ def model_bounds(base: dict) -> list | None:
     return _fp[m] or base.get("bounds")
 
 
+WALK_TOPS = ROOT / "out" / "places" / "walk_tops.json"
+_wt: dict | None = None
+
+
+def top_at(tris, px: float = 0.0, py: float = 0.0) -> float | None:
+    """The highest upward-facing triangle of tris (n, 3, 3) over (px, py): where one stands there; None if none."""
+    import numpy as np
+    T = np.asarray(tris, float).reshape(-1, 3, 3)
+    if not len(T):
+        return None
+    a, e1, e2 = T[:, 0], T[:, 1] - T[:, 0], T[:, 2] - T[:, 0]
+    nrm = np.cross(e1, e2)
+    ln = np.linalg.norm(nrm, axis=1)
+    den = e1[:, 0] * e2[:, 1] - e2[:, 0] * e1[:, 1]
+    v = np.array([px, py], float) - a[:, :2]
+    dd = np.where(den == 0, 1.0, den)
+    u = (v[:, 0] * e2[:, 1] - e2[:, 0] * v[:, 1]) / dd
+    w = (e1[:, 0] * v[:, 1] - v[:, 0] * e1[:, 1]) / dd
+    ok = (ln > 0) & (np.abs(nrm[:, 2]) >= 0.7 * np.maximum(ln, 1e-9)) & (den != 0) & (u >= 0) & (w >= 0) & (u + w <= 1)
+    return float((a[:, 2] + u * e1[:, 2] + w * e2[:, 2])[ok].max()) if ok.any() else None
+
+
+def _collision_tris(model: str):
+    """The model's solid collision triangles (what the navmesh generator and the game walk on), or None."""
+    from tools.navmesh import nif
+    from tools.places import assets
+    raw = assets.resolver().read(assets.norm(model, "meshes"))
+    if raw is None:
+        return None
+    c = nif.collision(raw)
+    keep = [i for i, layer in enumerate(c.layers) if layer in nif.SOLID_LAYERS]
+    return c.tris[keep] if len(keep) else None
+
+
+def walk_top(base: dict) -> float:
+    """Where one walks on a walkway piece, as a height over its origin: the top of its collision at its centre (what
+    the navmesh and the game walk on), cached per model; the record's top when it has no readable collision."""
+    global _wt
+    m = str(base.get("model") or "").lower()
+    bb = base.get("bounds") or [[0, 0, 0], [0, 0, 0]]
+    if not m:
+        return float(bb[1][2])
+    if _wt is None:
+        try:
+            _wt = json.loads(WALK_TOPS.read_text())
+        except (OSError, ValueError):
+            _wt = {}
+    if m not in _wt:
+        t = None
+        try:
+            tris = _collision_tris(m)
+            t = top_at(tris) if tris is not None else None
+        except Exception:
+            t = None
+        _wt[m] = t
+        try:
+            WALK_TOPS.parent.mkdir(parents=True, exist_ok=True)
+            WALK_TOPS.write_text(json.dumps(_wt, sort_keys=True))
+        except OSError:
+            pass
+    return float(_wt[m]) if _wt[m] is not None else float(bb[1][2])
+
+
 def foot_box(foot) -> tuple[float, float, float, float]:
     """A seat rule's footprint as (x0, y0, x1, y1) in the ref's frame; the older [hx, hy] form is centred."""
     if len(foot) == 2:

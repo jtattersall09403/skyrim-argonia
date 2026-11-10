@@ -114,9 +114,10 @@ def piece_length(bases: dict, base: str) -> float:
 
 
 def lay(place_id: str, door_id: str, a, b, base: str, rows: list[dict], bases: dict, G) -> list[dict]:
-    """Walkway pieces end to end from a to b ([x, y, z] each), their decks (at their origins) on the line between the
-    two heights."""
-    top = 0.0  # a walkway piece's deck is its origin (Skyrim's dock and walkway pieces; their bounds' top is the rail)
+    """Walkway pieces end to end from a to b ([x, y, z] each), their decks (the top surface of the mesh, geom.walk) on
+    the line between the two heights."""
+    from tools.places.draft import geom
+    top = geom.walk(bases[base]) or 0.0
     length = piece_length(bases, base)
     near = [r for r in rows if r.get("kind") in overlap.SOLID and math.dist(r["pos"][:2], a[:2]) < math.dist(a[:2], b[:2]) + 4096]
     run = math.dist(a[:2], b[:2])
@@ -129,7 +130,7 @@ def lay(place_id: str, door_id: str, a, b, base: str, rows: list[dict], bases: d
         deck = float(a[2] + (b[2] - a[2]) * t)
         cand = {"id": io.mint(place_id, "join", door_id, str(j)), "base": base, "kind": "building",
                 "pos": [round(x, 2), round(y, 2), round(deck - top, 2)], "rot": [0.0, 0.0, round(yaw, 5)], "scale": 1.0,
-                "layer": "place", "flags": [], "src": None,
+                "layer": "place", "flags": [], "src": None, "walk": top,
                 "seat": {"mode": "free"},
                 "why": f"joins door {door_id}'s walkable island to the town's network"}
         hit = [o for o in near if overlap.inside(o["pos"], cand, bases) or overlap.inside(cand["pos"], o, bases)]
@@ -140,6 +141,102 @@ def lay(place_id: str, door_id: str, a, b, base: str, rows: list[dict], bases: d
             cand["seat"]["on"] = ways[0]["id"]  # it rests on the walkway it continues
         out.append(cand)
     return out
+
+
+def cut(place_id: str, door_ids: list[str], rows: list[dict], pdir: Path, log=print) -> int:
+    """A door left on an island no level join reaches (a ship's hatch with no way aboard in the source) leads
+    nowhere one can walk to: its room is left out with it, with the reason in the ledger, unless someone lives or
+    works in that room (then it stays, and `draft check` lists the island). Returns the rooms left out."""
+    import shutil
+    used = set()
+    for p in io.read_jsonl(pdir / "people.jsonl") if (pdir / "people.jsonl").exists() else []:
+        used.add(p.get("home"))
+        for k in ("bed", "work"):
+            used.add((p.get(k) or {}).get("space"))
+        used.update(s.get("space") for s in p.get("stops") or [] if isinstance(s, dict))
+    by_id = {r["id"]: r for r in rows}
+    gone, ledger = set(), []
+    for did in door_ids:
+        sid = ((by_id.get(did) or {}).get("door") or {}).get("to_space")
+        sdir = pdir / "spaces" / str(sid)
+        if not sid or sid == "exterior" or sid in used or not sdir.is_dir():
+            continue
+        sp = json.loads((sdir / "space.json").read_text())
+        if sp.get("door_from") != did:
+            continue   # a room with another way in stays
+        why = (f"its only door {did} stands on a walkable island with no way to the town (the source gives no "
+               f"way aboard) and nobody lives or works in it")
+        gone.add(did)
+        ledger.append({"src": by_id[did].get("src") or did, "space": "exterior", "status": "dropped", "why": why})
+        ledger.append({"src": "*", "space": sid, "status": "dropped", "why": why})
+        shutil.rmtree(sdir)
+        log(f"join {place_id}: left out room {sid} and its door {did}: no way to it")
+    if gone:
+        io.write_jsonl(pdir / "spaces" / "exterior" / "refs.jsonl", [r for r in rows if r["id"] not in gone])
+        dropped = {r["space"] for r in ledger if r["src"] == "*"}
+        srcs = {r["src"] for r in ledger if r["src"] != "*"}
+        old = [r for r in io.read_jsonl(pdir / "ledger.jsonl") if r.get("space") not in dropped
+               and not (r.get("space") == "exterior" and r.get("src") in srcs)]
+        io.write_jsonl(pdir / "ledger.jsonl", old + ledger)
+    return len(gone)
+
+
+def rehome(place_id: str, ctx: dict, bases: dict, src, pdir: Path, log=print) -> int:
+    """A person whose bed outdoors (a camp bed) stands where the town's walkable network does not reach (a tent shut
+    in by blocks) sleeps instead in a free bed of a home: the first room, by name, with a bed nobody has (never the inn's, whose beds are let); with none free, the last resident (residents only fill the beds left over) gives up theirs. Returns the
+    people moved."""
+    from tools.places import check as C
+    from tools.places.draft import interiors
+    comp = C.components(ctx["navs"], C.door_pairs(ctx))
+    main = Counter(comp.values()).most_common(1)[0][0]
+    rows = {r["id"]: r for r in io.read_jsonl(pdir / "spaces" / "exterior" / "refs.jsonl")}
+
+    def reached(pos) -> bool:
+        for n in ctx["navs"].values():
+            if n.space == "exterior":
+                t = n.tri_at(pos)
+                if t >= 0:
+                    return comp[(n.fk, t)] == main   # the first mesh holding it, as `check` finds a stop's
+        return False
+    ppl = io.read_jsonl(pdir / "people.jsonl")
+    inns = {(p.get("work") or {}).get("space") for p in ppl
+            if any((g.get("give_kind_id") or g.get("kind")) == "inn-room" for g in p.get("services") or [])}
+    taken = Counter(((p.get("bed") or {}).get("space"), (p.get("bed") or {}).get("ref")) for p in ppl)
+    free = []
+    for sdir in sorted((pdir / "spaces").iterdir()):
+        sp = json.loads((sdir / "space.json").read_text()) if (sdir / "space.json").exists() else None
+        if not sp or sp["space_id"] == "exterior" or sp.get("parent") != "exterior" or sp["space_id"] in inns:
+            continue
+        src_space = str(sp.get("copy_of") or "").split("/")[-1]
+        if src_space not in src.spaces:
+            continue
+        for b in interiors.beds_in(src.spaces[src_space].refs, bases, sp.get("room"), sp.get("copy_of")):
+            free += [(sp["space_id"], b["ref"])] * max(0, b["sleeps"] - taken[(sp["space_id"], b["ref"])])
+    moved = 0
+    for p in ppl:
+        bed = p.get("bed") or {}
+        r = rows.get(bed.get("ref")) if bed.get("space") == "exterior" else None
+        if r is None or reached(r["pos"]):
+            continue
+        if not free:   # residents only fill the beds left over: the last of them gives up a bed
+            res = sorted((q for q in ppl if q.get("role") == "resident" and not q.get("_gone")
+                          and (q.get("bed") or {}).get("space") not in (None, "exterior", *inns)), key=lambda q: q["id"])
+            if not res:
+                continue
+            res[-1]["_gone"] = True
+            free.append((res[-1]["bed"]["space"], res[-1]["bed"]["ref"]))
+            log(f"join {place_id}: resident {res[-1]['id']} left out: a guard needs the bed")
+        sid, ref = free.pop(0)
+        log(f"join {place_id}: {p['id']} sleeps in {sid}: the camp bed {r['id']} is off the town's walkable network")
+        p["bed"] = {**bed, "space": sid, "ref": ref}
+        p["home"] = sid
+        for st in p.get("routine") or []:
+            if st.get("at") == bed:
+                st["at"] = p["bed"]
+        moved += 1
+    if moved:
+        io.write_jsonl(pdir / "people.jsonl", [q for q in ppl if not q.get("_gone")])
+    return moved
 
 
 def join(place_id: str, places: Path = io.PLACES, out: Path = CHECK_OUT, log=print) -> int:
@@ -158,6 +255,9 @@ def join(place_id: str, places: Path = io.PLACES, out: Path = CHECK_OUT, log=pri
             log(f"join {place_id}: the build failed: {bad[-1:]}")
             return laid
         isl, P, main = islands(ctx)
+        if rehome(place_id, ctx, bases, src, pdir, log):
+            laid += 1   # people moved: the place is rebuilt and checked again
+            continue
         if not isl:
             break
         rows = io.read_jsonl(pdir / "spaces" / "exterior" / "refs.jsonl")
@@ -178,6 +278,7 @@ def join(place_id: str, places: Path = io.PLACES, out: Path = CHECK_OUT, log=pri
                     break
         if not new:
             log(f"join {place_id}: no island ({', '.join(sorted(isl))}) has a clear walkable way to the network")
+            cut(place_id, sorted(isl), rows, pdir, log)
             break
         door_id, d, a, b = said
         log(f"join {place_id}: door {door_id}: {len(new)} pieces over {d:.0f} units, z {a[2]:.0f} -> {b[2]:.0f}")

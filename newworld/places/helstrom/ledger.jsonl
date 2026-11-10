@@ -44,7 +44,6 @@
 {"src":"Dawnguard.esm:00F54A","space":"01BlackRoseJail","copy":"01BlackRoseJail","status":"dropped","why":"Nordic base (decision 0006); nothing Argonian stands in for it"}
 {"src":"Dawnguard.esm:00F54B","space":"01BlackRoseJail","copy":"01BlackRoseJail","status":"dropped","why":"Nordic base (decision 0006); nothing Argonian stands in for it"}
 {"src":"Dawnguard.esm:00F59A","space":"01BlackRoseJail","copy":"01BlackRoseJail","status":"replaced","base":"Here There Be Monsters - Curse of Cipactli.esp:029DC6"}
-{"src":"*","space":"01Exit2","status":"placed","as":["01Exit2"],"count":8}
 {"src":"*","space":"01Ship","status":"placed","as":["01Ship"],"count":1579}
 {"src":"Black Marsh North.esp:03E40E","space":"01Ship","status":"dropped","why":"people come from the place record's promises, the guards and the beds"}
 {"src":"Black Marsh North.esp:16BF6D","space":"01Ship","status":"dropped","why":"people come from the place record's promises, the guards and the beds"}
@@ -56,7 +55,6 @@
 {"src":"Black Marsh.esm:207708","space":"01cellDUPLICATE002","copy":"01cellDUPLICATE002","status":"dropped","why":"Nordic base (decision 0006); nothing Argonian stands in for it"}
 {"src":"Black Marsh.esm:207716","space":"01cellDUPLICATE002","copy":"01cellDUPLICATE002","status":"replaced","base":"King of the Murkmire.esp:198D14"}
 {"src":"Black Marsh North.esp:04F22E","space":"exterior","status":"adapted","as":"helstrom.A6X8VK0VZM4YEEAXZD8VC46XK5","cluster":"landing"}
-{"src":"Black Marsh North.esp:04F22F","space":"exterior","status":"adapted","as":"helstrom.8GXDM3P8M3NCZKG52NB6XJCPMQ","cluster":"landing"}
 {"src":"Black Marsh North.esp:04F235","space":"exterior","status":"adapted","as":"helstrom.D4FE07AGDGZPCEASBZDP4PM24M","cluster":"landing"}
 {"src":"Black Marsh North.esp:04F236","space":"exterior","status":"adapted","as":"helstrom.CANRW3SVZEQRY2TWQQKE2FRNP1","cluster":"landing"}
 {"src":"Black Marsh North.esp:05460C","space":"exterior","status":"dropped","why":"Nordic base (decision 0006); no replacement chosen"}
@@ -4958,7 +4956,9 @@
 {"src":"Black Marsh.esm:22B868","space":"exterior","status":"adapted","as":"helstrom.2DTJ0GKVTY5Y5N1H11DFWHA22E","cluster":"b24"}
 {"src":"Black Marsh.esm:22B869","space":"exterior","status":"adapted","as":"helstrom.S8BC1V7C0C83BYAD82WHKNPFJR","cluster":"b40"}
 {"src":"Black Marsh.esm:22B86B","space":"exterior","status":"adapted","as":"helstrom.5NWVCPEKBJ542FSXKMD6ZB15SP","cluster":"w57"}
-{"src":"Black Marsh.esm:22B86D","space":"exterior","status":"adapted","as":"helstrom.98HVZ25C8T8JMGRJ6K8XS6Z9VF","cluster":"s57","nudge":384.0}
+{"src":"Black Marsh.esm:22B86D","space":"exterior","status":"dropped","cluster":"s57","why":"no dry land within 384 units of its fitted spot; our water and land are kept as they are"}
 {"src":"Black Marsh.esm:22B86F","space":"exterior","status":"dropped","why":"stood in Black Marsh.esm:1E44AF once the clusters were fitted, with no step of either cluster clear"}
 {"src":"Black Marsh.esm:22B878","space":"exterior","status":"dropped","cluster":"w58","why":"no water within 384 units of its fitted spot; our water and land are kept as they are"}
 {"src":"Black Marsh.esm:23D458","space":"exterior","status":"replaced","as":"helstrom.XFGBG5HECYYJ1RY98225KWWC1J","cluster":"landing","base":"King of the Murkmire.esp:093D0D"}
+{"src":"Black Marsh North.esp:04F22F","space":"exterior","status":"dropped","why":"its only door helstrom.8GXDM3P8M3NCZKG52NB6XJCPMQ stands on a walkable island with no way to the town (the source gives no way aboard) and nobody lives or works in it"}
+{"src":"*","space":"01Exit2","status":"dropped","why":"its only door helstrom.8GXDM3P8M3NCZKG52NB6XJCPMQ stands on a walkable island with no way to the town (the source gives no way aboard) and nobody lives or works in it"}

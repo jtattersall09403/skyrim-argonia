@@ -91,10 +91,19 @@ def stand_height(x: float, y: float, ground: float, refs: list[dict], bases: dic
     for r in refs:
         b = bounds(r, bases)
         if b and contains_xy(r, bases, x, y):
-            top = r["pos"][2] + b[1][2]
+            top = r["pos"][2] + (b[1][2] if r.get("walk") is None else r["walk"])
             if h < top <= ground + STEP:
                 h = top
     return h
+
+
+def walk(base: dict) -> float | None:
+    """A walkway piece's deck as a height over its origin, from its mesh (seat.walk_top); None for other pieces."""
+    from tools.places.draft.paths import WALKWAY
+    from tools.places.seat import walk_top
+    if not WALKWAY.search(str(base.get("model") or "")):
+        return None
+    return round(walk_top(base), 1)
 
 
 class Xf:
@@ -153,6 +162,21 @@ def plane(base: dict, scale: float = 1.0) -> dict | None:
     ex, ey = (b[1][0] - b[0][0]) * scale, (b[1][1] - b[0][1]) * scale
     return {"axis": 0 if ex < ey else 1, "centre": [(b[0][0] + b[1][0]) / 2 * scale, (b[0][1] + b[1][1]) / 2 * scale],
             "width": max(ex, ey)}
+
+
+def front(base: dict) -> tuple[float, float] | None:
+    """A door's outward face as a unit normal in its own frame: a door modelled in place in its building has its
+    origin inside, off the leaf, so its front is the face away from the origin. None when the origin is on the leaf
+    (both faces alike: either may face out)."""
+    b, pl = mesh_bounds(base), plane(base)
+    if not b or not pl:
+        return None
+    k = pl["axis"]
+    c, half = (b[0][k] + b[1][k]) / 2, (b[1][k] - b[0][k]) / 2
+    if abs(c) <= half:
+        return None
+    s = 1.0 if c > 0 else -1.0
+    return (s, 0.0) if k == 0 else (0.0, s)
 
 
 def turn(v, rz: float) -> tuple[float, float]:

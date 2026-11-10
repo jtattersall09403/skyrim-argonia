@@ -64,6 +64,34 @@ def _base_type(b: dict) -> str:
     return str(b.get("type") or "")
 
 
+def src_outside(src, src_door: dict) -> tuple[float, float]:
+    """Where one stands outside a source door: the source's own arrival marker when the interior has it."""
+    sp = src.spaces.get(src_door["door"].get("to_space"))
+    if sp:
+        for r in sp.refs:
+            d = r.get("door") or {}
+            tp = d.get("to_pos")
+            if d.get("to_ref") == src_door["id"] and tp and geom.dist(tp, src_door["pos"]) < 512:
+                return (tp[0], tp[1])
+    rz = src_door.get("rot", [0, 0, 0])[2]
+    return (src_door["pos"][0] - 128 * math.sin(rz), src_door["pos"][1] - 128 * math.cos(rz))
+
+
+def face_out(rot: list, x: float, y: float, base: dict, out) -> tuple[float, float]:
+    """A replaced door turned to face out: its front (geom.front, from the mesh) toward `out`, the point one arrives
+    at outside it; turned half round about its leaf when its front faced in. Changes rot; returns the new origin."""
+    f = geom.front(base)
+    if f is None:
+        return x, y
+    cl = geom.turn(geom.plane(base)["centre"], rot[2])
+    n_ = geom.turn(f, rot[2])
+    if n_[0] * (out[0] - x - cl[0]) + n_[1] * (out[1] - y - cl[1]) >= 0:
+        return x, y
+    c1 = geom.turn(geom.plane(base)["centre"], rot[2] + math.pi)
+    rot[2] = round((rot[2] + math.pi) % (2 * math.pi), 5)
+    return x + cl[0] - c1[0], y + cl[1] - c1[1]
+
+
 def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, record: tuple | None = None,
           force: bool = False) -> dict:
     pdir = places / place_id
@@ -144,6 +172,11 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
             if al:
                 sx, sy = geom.turn(al["shift_local"], orig_yaw)
                 x, y = x + sx, y + sy
+                if r.get("kind") == "door" and (r.get("door") or {}).get("to_space"):
+                    yaw0 = rot[2]
+                    x, y = face_out(rot, x, y, bases.get(rep["base"]) or {}, cx.pt(*src_outside(src, r)))
+                    if rot[2] != yaw0:
+                        al = {**al, "turn_deg": (al["turn_deg"] + 180.0) % 360.0}
         row = {"id": io.mint(place_id, "exterior", rid), "base": rep["base"] if rep else r["base"], "kind": r.get("kind"),
                "pos": [round(x, 2), round(y, 2), r["pos"][2]], "rot": rot, "scale": r.get("scale", 1.0),
                "layer": "place", "flags": r.get("flags") or [], "src": rid, "seat": seat, "cluster": cid}
@@ -219,6 +252,9 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
     for cid, rows in sorted(by_cluster.items(), key=lambda kv: str(kv[0])):
         if not any(r.get("kind") == "door" and wrong(r) for r in rows):
             continue
+        # ... and never into another cluster's piece (separate's rule, kept after it)
+        others = overlap.Grid([r for r in our if r.get("cluster") != cid and r.get("kind") in overlap.SOLID], bases)
+        solids = [r for r in rows if r.get("kind") in overlap.SOLID]
         best = None
         for d in [0.0] + CLUSTER_NUDGE:
             for k in range(16):
@@ -228,15 +264,16 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
                     r["pos"][1] += dy
                 bad_doors = sum(1 for r in rows if r.get("kind") == "door" and wrong(r))
                 n = sum(1 for r in rows if wrong(r))
+                hits = others.hits(solids, z=False) if bad_doors == 0 else 0
                 for r in rows:
                     r["pos"][0] -= dx
                     r["pos"][1] -= dy
-                key = (bad_doors, n, d)
+                key = (bad_doors, hits, n, d)
                 if best is None or key < best[0]:
                     best = (key, dx, dy)
                 if d == 0.0:
                     break
-            if best[0][:2] == (0, 0):
+            if best[0][:3] == (0, 0, 0):
                 break
         _, dx, dy = best
         for r in rows:
@@ -253,9 +290,18 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
         x, y = row["pos"][0], row["pos"][1]
         if G.wet(x, y, 16) == want:
             continue
+        others = overlap.Grid([o for o in our if o is not row and o.get("kind") in overlap.SOLID], bases) \
+            if row.get("kind") in overlap.SOLID else None
+
+        def clear_at(sx, sy):   # never nudged into another thing (nor another into it)
+            if others is None:
+                return True
+            moved = {**row, "pos": [sx, sy, row["pos"][2]]}
+            return others.hits([moved], z=False) == 0
         spot = next(((x + d * math.cos(a), y + d * math.sin(a)) for d in NUDGE_STEPS
                      for a in (k * math.pi / 4 for k in range(8)) if G.wet(x + d * math.cos(a), y + d * math.sin(a), 16) == want
-                     and G.has(x + d * math.cos(a), y + d * math.sin(a))), None)
+                     and G.has(x + d * math.cos(a), y + d * math.sin(a))
+                     and clear_at(x + d * math.cos(a), y + d * math.sin(a))), None)
         lr = lrow_of[row["id"]]
         if spot:
             row["pos"][0], row["pos"][1] = round(spot[0], 2), round(spot[1], 2)
@@ -346,17 +392,7 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
 
     # --- paths ---
     def front(src_door: dict) -> tuple[float, float]:
-        """Where one stands outside a door: the source's own arrival marker when the interior has it."""
-        t = src_door["door"].get("to_space")
-        sp = src.spaces.get(t)
-        if sp:
-            for r in sp.refs:
-                d = r.get("door") or {}
-                tp = d.get("to_pos")
-                if d.get("to_ref") == src_door["id"] and tp and geom.dist(tp, src_door["pos"]) < 512:
-                    return (tp[0], tp[1])
-        rz = src_door.get("rot", [0, 0, 0])[2]
-        return (src_door["pos"][0] - 128 * math.sin(rz), src_door["pos"][1] - 128 * math.cos(rz))
+        return src_outside(src, src_door)
 
     our_row_of_src = {r["src"]: r for r in our if r.get("src")}
 
@@ -470,6 +506,7 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
         b = model_bounds(bases[walk_base])
         length = max(64.0, b[1][1] - b[0][1] - 16)
         foot = geom.foot({"base": walk_base, "kind": "building"}, bases)
+        deck = geom.walk(bases[walk_base]) or 0.0   # the deck under its posts, from the mesh
         # the route by length, and its wet runs
         cum = [0.0]
         for p, q in zip(route, route[1:]):
@@ -515,7 +552,8 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
                     cand = {"id": io.mint(place_id, "bridge", str(k), str(ri), str(j)), "base": walk_base,
                             "kind": "building", "pos": [round(x, 2), round(y, 2), 0.0],
                             "rot": [0.0, 0.0, round(yaw, 5)], "scale": 1.0, "layer": "place", "flags": [],
-                            "src": None, "seat": {"mode": "stilts", "dz": 0.0, "foot": foot},
+                            "src": None, "walk": deck,
+                            "seat": {"mode": "stilts", "dz": round(DECK_OVER - deck, 1), "foot": foot},
                             "why": f"carries street {k + 1:02d} over our water, which parts what the source's land "
                                    f"joined"}
                     near = [o for o in our + bridges + out if o.get("kind") in overlap.SOLID
@@ -525,7 +563,7 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
                     lift = max((o["pos"][2] + overlap.box(o, bases)[1][2] + 2 - cand["pos"][2] for o in under),
                                default=0.0)
                     if 0 < lift <= DECK_LIFT:   # a deck lifted a hand's breadth over a low thing just under it
-                        cand["seat"]["dz"] = round(lift, 1)
+                        cand["seat"]["dz"] = round(cand["seat"]["dz"] + lift, 1)
                         cand["pos"][2] = seat_z(cand, G)
                     if not any(overlap.inside(cand["pos"], o, bases) or overlap.inside(o["pos"], cand, bases)
                                for o in near):
@@ -569,9 +607,12 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
                           "style": "boardwalk" if wet else "dirt", "from": a, "to": b,
                           "laid": "routed on our ground" if routed else "the source's line, mapped"})
 
+    for r in our:   # one stands on a walkway's deck (its mesh's top surface), not on its rails
+        w = geom.walk(bases.get(r["base"]) or {})
+        if w is not None:
+            r["walk"] = w
     # --- doors: where one arrives outside each door, on our ground, and which way the door opens ---
     our_by_id = {r["id"]: r for r in our}
-    needs_look: list[dict] = []
     for sid, sp in sorted(spaces.items()):
         if sp["parent"] != "exterior":
             continue
@@ -590,14 +631,23 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
             if sup is not None and geom.contains_xy(sup, bases, q[0], q[1]):
                 return ext_door["pos"][2]
             g = G.height(*q)
-            return None if g is None else geom.stand_height(q[0], q[1], g, near, bases)
+            if g is None:
+                return None
+            # over water one stands on a deck laid over it (a bridge, a pier), else on the drowned ground
+            w = G.water(*q)
+            lvl = max(g, w) if w is not None else g
+            h = geom.stand_height(q[0], q[1], lvl, near, bases)
+            return h if h > lvl or lvl == g else g
 
         def clear(q):
-            if not G.has(*q) or (G.wet(q[0], q[1], 16) and not G.wet(ext_door["pos"][0], ext_door["pos"][1], 16)
-                                 and stand_z(q) != ext_door["pos"][2]):
+            z = stand_z(q) if G.has(*q) else None
+            if z is None:
                 return False
-            z = stand_z(q)
-            return z is not None and not any(geom.stands_in(r, bases, (q[0], q[1], z)) for r in near)
+            w = G.water(*q)
+            if (G.wet(q[0], q[1], 16) and not G.wet(ext_door["pos"][0], ext_door["pos"][1], 16)
+                    and z != ext_door["pos"][2] and not (w is not None and z > w)):
+                return False
+            return not any(geom.stands_in(r, bases, (q[0], q[1], z)) for r in near)
         if not clear(p):
             d0 = math.dist(p, ext_door["pos"][:2]) or 1.0
             ux, uy = (p[0] - ext_door["pos"][0]) / d0, (p[1] - ext_door["pos"][1]) / d0
@@ -611,12 +661,6 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
         arrival = [round(p[0], 2), round(p[1], 2), round(h if h is not None else ext_door["pos"][2], 2)]
         back["door"] = {**back["door"], "to_pos": arrival, "to_rot": [0.0, 0.0, round(out_yaw, 5)]}
         ext_door["door"] = {**ext_door["door"], "arrival": arrival}
-        if ext_door.get("align"):
-            needs_look.append({"door": ext_door["id"], "src": ext_door["src"], "base": ext_door["base"],
-                               "space": sid, "at": arrival[:2],
-                               "why": "replacement door: its plane is matched to the original's and one arrives on "
-                                      "the original's outer side, but which face of the new mesh is its front "
-                                      "cannot be read from the geometry; look that the door does not open inward"})
 
     if bridges:
         our.extend(bridges)
@@ -674,13 +718,13 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
         "beds": sum(b["sleeps"] for sp in spaces.values() for b in interiors.beds_in(
             src.spaces[sp["src_space"]].refs, bases, sp["room"], sp["copy_of"])),
     }
+    place.pop("needs_look", None)
     place.update({
         "fit": {**fit.as_dict(), "clusters_info": [c.as_dict() for c in clusters], "relief_norm": norm,
                 "patch_max": PATCH_MAX},
         "clearance": clearance,
         "factions": factions,
         "stations": stations,
-        "needs_look": needs_look,
         "ground": {"bundle": f"ground.{place_id}", "sha": G.sha, "stamp": grd.stamp()},
         "source": {"bundle": f"src.{place['source_id']}", "stamp": src.stamp()},
         "radius_m": radius_m,
@@ -750,6 +794,7 @@ def add_shrine(place_id, gives, our, bases, stations, centre, paths_our, G) -> N
 # yard behind it, each turned to face the yard where its user stands.
 YARD = {"grindstone": (3.0, -179.0, 296.0), "armour-workbench": (-354.0, 91.0, 162.0),
         "tanning-rack": (-204.0, -103.0, 251.0)}
+DECK_OVER = 16.0         # a laid bridge's deck stands this far over the water under it
 DECK_LIFT = 24.0         # the most a bridge deck is lifted over a drowned thing under it
 FLOOR = re.compile(r"road|dock|boardwalk|walkway|pier|jetty", re.I)
 YARD_PAD = 24.0          # the least gap between two placed bodies

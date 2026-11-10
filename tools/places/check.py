@@ -83,7 +83,8 @@ def stands_inside(ref: dict, p, shrink: float = OVERLAP_SHRINK) -> bool:
         return False
     s = float(ref.get("scale") or 1.0)
     local = B.rotation(*(ref.get("rot") or [0, 0, 0])).T @ (np.asarray(p[:3], float) - np.asarray(ref["pos"], float)) / s
-    return bool(b[2] - 1.0 <= local[2] < b[5] - ON_TOP / s)
+    top = b[5] if ref.get("walk") is None else float(ref["walk"])   # a walkway's deck, under its rails and posts
+    return bool(b[2] - 1.0 <= local[2] < top - ON_TOP / s)
 
 
 def point_seg(p, a, b) -> float:
@@ -392,7 +393,7 @@ def check_doors(ctx) -> list[str]:
             kinds = SOLID if space == "exterior" else SOLID - {"building", "static"}  # an interior's shell holds the room
             if o["fk"] == stands_on:
                 continue  # the thing the door stands on (its own building) holds the door, not the arrival
-            if o["space"] == space and o["fk"] != r["fk"] and m["rows"].get(o["fk"], {}).get("kind") in kinds and stands_inside(o, at):
+            if o["space"] == space and o["fk"] != r["fk"] and m["rows"].get(o["fk"], {}).get("kind") in kinds and stands_inside({**o, "walk": m["rows"][o["fk"]].get("walk")}, at):
                 bad.append(f"door {rid}: its arrival point is inside {m['rows'].get(o['fk'], {}).get('id', o['fk'])}")
     return bad
 

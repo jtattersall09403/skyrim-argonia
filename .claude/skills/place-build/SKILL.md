@@ -41,7 +41,10 @@ boats) on our water; a cluster whose spot fails slides, turns or steps to the ne
 moves with its whole building. A single piece that still has no ground of its kind is dropped and listed. No
 piece of one cluster stands in another's (the build's overlap rule: an origin within 0.8 of another solid's record
 box): the fit's last pass steps the smaller cluster the least distance clear, and a clash no step clears drops the
-smaller piece with the reason (`fit.separated`). A sunk filler block or a low platform (its top within a step of the
+smaller piece with the reason (`fit.separated`); a cluster or a piece stepped afterwards to its side of the waterline
+never steps into another. Pieces that stand in each other in the source (a mud dome over its entrance, windows
+set in it), compared in the source's own frame with full rotation, are one body and share a cluster; a tilted
+piece turns about the world's axis with its cluster (one transform). A sunk filler block or a low platform (its top within a step of the
 ground) is walked over, never an obstacle. Land
 patches only ease the ground under a building, at most 1.5 m at any point and never across the waterline; a
 building on a slope first takes the rise the source's own builders commonly built on (`fit.relief_norm`).
@@ -55,7 +58,13 @@ building on a slope first takes the rise the source's own builders commonly buil
    our ground round buildings and water at no steeper climb than the source's streets made. A link to a door on
    the water is a walkway (brown). A street that will not route without crossing our water is carried on bridges
    of the source's own walkway pieces, one piece per piece length along the route, each slid along it clear of
-   any solid there (a deck lifted a hand's breadth over a drowned thing just under it); look at each one. A camp
+   any solid there, its deck a hand's breadth over the water (a walkway's deck is the top of its collision at its
+centre, read per piece, never its record's top, which is the rail); look at each one. After the draft the tools
+build the place and join each door whose walkable ground is an island to the town by level walkway pieces laid
+from the island to the nearest point of the network at its height. A door whose island no level join reaches and
+whose room nobody lives or works in (a ship's hatch with no way aboard in the source) is left out with its room,
+with the reason in the ledger. A guard whose camp bed the town's network does not reach (a tent shut in by
+blocks) sleeps in a home's free bed instead; with none free, the last resident gives up theirs. A camp
    (beds in the open) is a stop like a door: a street reaches its edge.
 
 ## 4. Settle what the cost cannot
@@ -69,10 +78,14 @@ building on a slope first takes the rise the source's own builders commonly buil
   size and use from a non-Nordic source we deploy (`python -m tools.places search query "<what it is>"`, or the
   catalogue `out/places/catalogue/bases.jsonl`), and set `draft.replace` `{old: new}`, or
   `{old: {base, turn_deg}}`. A replaced walkway keeps the original's walking height (its top where the original's
-  was), so a door or a deck that met it still does. The tools line a replaced door or directional piece up with the original's plane
+  was), so a door or a deck that met it still does. A replacement is never chosen for a base the review calls
+  neutral. The tools line a replaced door or directional piece up with the original's plane
   from both meshes (the turn and the shift, `align` on the ref) and `draft check` proves it, with every door's arrival point where one stands (our ground, a low road or deck one steps onto, or the thing a door stands on), outside every placed thing's body by the build's own test, clear of
-  collision and in front of its plane. Which face of a new door mesh is its front cannot be read from geometry:
-  the tools list each such door in `place.json` `needs_look`; carry that list to the owner check. A door that leads
+  collision and in front of its plane. A replaced door faces out by construction: its front is read from its mesh
+  (a door modelled in place has its origin inside, off the leaf, so its front is the face away from the origin)
+  and it is turned half round about its leaf when that front would face away from where one arrives outside it
+  (the source's own arrival marker). A door's `to_pos` is where using it lands you: the exterior door's partner
+  holds the arrival outside, and `draft check` proves each replaced door faces it. A door that leads
   indoors is always replaced, never dropped. Drop decorative pieces with no equal.
 - **Leftovers**: `draft.drop` `{source ref id: reason}` for anything the source placed that our place must not have.
 - **What the record promises and the source lacks is added in the source's own style.** The tools add each
@@ -97,7 +110,8 @@ building on a slope first takes the rise the source's own builders commonly buil
   person works; residents fill the homes' remaining beds.
 - **Who sleeps where, the vanilla way.** An inn that rents a room keeps one of its beds unowned: that is the
   rented bed (`stations.rent_bed`). Guards sleep in a barracks or their camp's own beds (tents and bedrolls
-  outdoors), one guard to a bed, never in the inn's rooms or a family's home. Each house holds one household: a family, headed by
+  outdoors), one guard to a bed, never in the inn's rooms; a family's home only when the camp bed cannot be
+  walked to (see the joins above). Each house holds one household: a family, headed by
   the working person who lives there, then a partner, then their kin; never strangers thrown together.
 - Nothing levelled is ever placed (decision 0035); the tools drop it and list it.
 
@@ -108,7 +122,8 @@ building on a slope first takes the rise the source's own builders commonly buil
    bound, streets clear of buildings and open water, every door on a path, every promised service and station
    given and worked, a bed for every sleeper, an unowned bed to rent at the inn, guards out of the inn,
    every resident in one household under one roof, replaced pieces in the original's plane, nothing floating or buried
-   along its true outline beyond how it sat in the source, every door's arrival clear, nothing standing in another
+   along its true outline beyond how it sat in the source, every door's arrival clear and on dry ground or a deck
+   over the water, every replaced door facing its arrival, nothing standing in another
    by the build's overlap rule (inside a room, nothing added in the room's things), every copied room entered
    through a door pair both sides name with its outside arrival on our ground or a walkway a street reaches, and
    every person's stops each reached from the one before (our ground and streets outside, the builder's room

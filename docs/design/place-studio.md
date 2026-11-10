@@ -196,8 +196,7 @@ measured in the source the same way.
 
 `place.json` also holds: `draft` (the agent's calls: `anchor`, `rot_deg`, `search`, `replace`, `drop`, `add`,
 `roles`, `keep_patches`; skill `place-build`), `fit` (global and per-cluster transforms, `clusters_info`,
-`relief_norm`, `patch_max`), `needs_look` (each replaced door whose outward face cannot be read from geometry:
-{door, src, base, space, at, why}, for the studio and the owner check),
+`relief_norm`, `patch_max`),
 `clearance` (the source's measured clearance), `factions` (`<place_id>.crime`, `.guard`, `.town`, and one
 `.vendor.NN` per trader with hours and `chest`), `stations` (needed, found, missing, added: {station, id, base,
 space, by}), `ground`, `source`,
@@ -210,7 +209,10 @@ copy's own room (its beds are the ones nearer that door than any other way out).
 routine `at` name a copied ref by its source id with the copy's `space`; a row with no `src` in a copy is an
 addition (a station). `clear.jsonl` rows add `why` and `ref`. A ref the draft added (station, bridge) has `src`
 null and a `why`; a replaced door or directional piece carries `align: {turn_deg, shift, of}` (already applied
-to its pos and rot; the record of how its plane was matched to the original's). A person in an innkeeper's role
+to its pos and rot; the record of how its plane was matched to the original's; a replaced load door is also
+turned so its front, read from its mesh, faces its arrival). A walkway piece (dock, boardwalk, bridge, steps)
+carries `walk`, the height of its deck over its origin (the top of its collision at its centre): one standing at
+that height stands on it, not in it, for the drafter and for `check`. A person in an innkeeper's role
 has `bed` null and one 24-hour work stop (Skyrim's innkeepers keep no bed). An exterior door into a copy
 carries `door.arrival` [x, y, z], where one stands outside it on our ground, clear of collision; the copy's way
 out (its `door_back` row) has `to_pos` that arrival and `to_rot` facing away from the door. A copy of a shared

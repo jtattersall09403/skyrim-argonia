@@ -305,7 +305,8 @@ def check(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, g
             continue
         if not G.has(a[0], a[1]):
             bad.append(f"door {d['id']} arrival is off our ground")
-        elif G.wet(a[0], a[1], 16) and not G.wet(d["pos"][0], d["pos"][1], 16):
+        elif (G.wet(a[0], a[1], 16) and not G.wet(d["pos"][0], d["pos"][1], 16)
+              and not (len(a) > 2 and G.water(a[0], a[1]) is not None and a[2] > G.water(a[0], a[1]))):
             bad.append(f"door {d['id']} arrival is in the water")
         pl = geom.plane(bases.get(d["base"]) or {})
         if pl and math.dist(a[:2], d["pos"][:2]) > 16:
@@ -313,7 +314,11 @@ def check(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, g
             out = ((a[0] - d["pos"][0]) / math.dist(a[:2], d["pos"][:2]), (a[1] - d["pos"][1]) / math.dist(a[:2], d["pos"][:2]))
             if abs(n_[0] * out[0] + n_[1] * out[1]) < 0.5:
                 bad.append(f"door {d['id']} opens along its wall, not toward its way out")
-    summary["needs_look"] = len(place.get("needs_look") or [])
+        f = geom.front(bases.get(d["base"]) or {}) if d.get("align") else None
+        if f is not None and math.dist(a[:2], d["pos"][:2]) > 16:
+            n_, lc = geom.turn(f, d["rot"][2]), geom.turn(pl["centre"], d["rot"][2])
+            if n_[0] * (a[0] - d["pos"][0] - lc[0]) + n_[1] * (a[1] - d["pos"][1] - lc[1]) < 0:
+                bad.append(f"door {d['id']} faces in: its front is away from its arrival")
 
     # 7. no Nordic or levelled base placed
     for r in refs:

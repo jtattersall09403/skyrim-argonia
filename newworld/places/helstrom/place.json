@@ -585,8 +585,8 @@
     "cost_before": 285.714,
     "cost_after": 89.633,
     "nudge": [
-     147.0,
-     -354.8
+     -269.4,
+     -650.4
     ]
    },
    "b36": {
@@ -6957,23 +6957,23 @@
  "ground": {
   "bundle": "ground.helstrom",
   "sha": "c9d4a1acdd905460bd6316dafe4371f7d69156f1bcc459f727e1323e0c63d700",
-  "stamp": "3b9a7edb0bf59fdd"
+  "stamp": "a90ea98770aa4ecd"
  },
  "source": {
   "bundle": "src.bmv.helstrom",
-  "stamp": "d3d41817f06c53d3"
+  "stamp": "d0edf177390fb5ca"
  },
  "radius_m": 525,
  "counts": {
   "source_refs": 4964,
   "placed": 1946,
-  "adapted": 1004,
+  "adapted": 1003,
   "replaced": 95,
-  "dropped": 1919,
-  "exterior_refs": 3024,
+  "dropped": 1920,
+  "exterior_refs": 3029,
   "clusters": 255,
   "land_patches": 0,
-  "plants_cleared": 581,
+  "plants_cleared": 579,
   "paths": 14,
   "interiors": 13,
   "people": {
@@ -6990,119 +6990,8 @@
  },
  "draft_key": [
   1,
+  0,
   2,
   192.0
- ],
- "needs_look": [
-  {
-   "door": "helstrom.82D8KB7P3HT6XHBGSQN3CC1HGK",
-   "src": "Black Marsh.esm:1E42B2",
-   "base": "Here There Be Monsters - Curse of Cipactli.esp:029DC6",
-   "space": "01ArgonianHouseinside",
-   "at": [
-    -40866.17,
-    -593442.35
-   ],
-   "why": "replacement door: its plane is matched to the original's and one arrives on the original's outer side, but which face of the new mesh is its front cannot be read from the geometry; look that the door does not open inward"
-  },
-  {
-   "door": "helstrom.3XV2F6MD1B7PKBSFVGK00RNE9Y",
-   "src": "Black Marsh.esm:1E42B3",
-   "base": "Here There Be Monsters - Curse of Cipactli.esp:029DC6",
-   "space": "01ArgonianHouseinside.2",
-   "at": [
-    -41015.49,
-    -587141.16
-   ],
-   "why": "replacement door: its plane is matched to the original's and one arrives on the original's outer side, but which face of the new mesh is its front cannot be read from the geometry; look that the door does not open inward"
-  },
-  {
-   "door": "helstrom.9G97K75RF0DTW6V4C2Q3V4826H",
-   "src": "Black Marsh.esm:1E42B4",
-   "base": "Here There Be Monsters - Curse of Cipactli.esp:029DC6",
-   "space": "01ArgonianHouseinside.3",
-   "at": [
-    -42596.32,
-    -596810.56
-   ],
-   "why": "replacement door: its plane is matched to the original's and one arrives on the original's outer side, but which face of the new mesh is its front cannot be read from the geometry; look that the door does not open inward"
-  },
-  {
-   "door": "helstrom.PGD7Z5K8MH88AG3F491RZW76WX",
-   "src": "Black Marsh.esm:1E42B5",
-   "base": "Here There Be Monsters - Curse of Cipactli.esp:029DC6",
-   "space": "01ArgonianHouseinside.4",
-   "at": [
-    -32680.41,
-    -599851.48
-   ],
-   "why": "replacement door: its plane is matched to the original's and one arrives on the original's outer side, but which face of the new mesh is its front cannot be read from the geometry; look that the door does not open inward"
-  },
-  {
-   "door": "helstrom.72YEQTBMVHZ08SMRWYTEEE6VWW",
-   "src": "Black Marsh.esm:1E42B6",
-   "base": "Here There Be Monsters - Curse of Cipactli.esp:029DC6",
-   "space": "01ArgonianHouseinside.5",
-   "at": [
-    -32827.8,
-    -592993.37
-   ],
-   "why": "replacement door: its plane is matched to the original's and one arrives on the original's outer side, but which face of the new mesh is its front cannot be read from the geometry; look that the door does not open inward"
-  },
-  {
-   "door": "helstrom.JWD2FXF2XBHP13DNV5D2CT1DE1",
-   "src": "Black Marsh.esm:1E42B7",
-   "base": "Here There Be Monsters - Curse of Cipactli.esp:029DC6",
-   "space": "01ArgonianHouseinside.6",
-   "at": [
-    -27897.48,
-    -624407.24
-   ],
-   "why": "replacement door: its plane is matched to the original's and one arrives on the original's outer side, but which face of the new mesh is its front cannot be read from the geometry; look that the door does not open inward"
-  },
-  {
-   "door": "helstrom.WE70CCQDKMX08WGEB3VTV01566",
-   "src": "Black Marsh.esm:1E42B8",
-   "base": "Here There Be Monsters - Curse of Cipactli.esp:029DC6",
-   "space": "01ArgonianHouseinside.7",
-   "at": [
-    -27188.54,
-    -624451.1
-   ],
-   "why": "replacement door: its plane is matched to the original's and one arrives on the original's outer side, but which face of the new mesh is its front cannot be read from the geometry; look that the door does not open inward"
-  },
-  {
-   "door": "helstrom.C9KJC9MNXATB4EYGRRW711GR3E",
-   "src": "Black Marsh.esm:1E42B9",
-   "base": "Here There Be Monsters - Curse of Cipactli.esp:029DC6",
-   "space": "01ArgonianHouseinside.8",
-   "at": [
-    -27558.86,
-    -629159.63
-   ],
-   "why": "replacement door: its plane is matched to the original's and one arrives on the original's outer side, but which face of the new mesh is its front cannot be read from the geometry; look that the door does not open inward"
-  },
-  {
-   "door": "helstrom.SPXR35NGE7XF7BGVQ6BPPM306H",
-   "src": "Black Marsh.esm:1E44AE",
-   "base": "Here There Be Monsters - Curse of Cipactli.esp:029DC6",
-   "space": "01ArgonianHouseinside.9",
-   "at": [
-    -25577.74,
-    -612281.19
-   ],
-   "why": "replacement door: its plane is matched to the original's and one arrives on the original's outer side, but which face of the new mesh is its front cannot be read from the geometry; look that the door does not open inward"
-  },
-  {
-   "door": "helstrom.1TS7A5V3QWCH5CNQ90WDJE5874",
-   "src": "Black Marsh.esm:207718",
-   "base": "Here There Be Monsters - Curse of Cipactli.esp:029DC6",
-   "space": "01cellDUPLICATE002",
-   "at": [
-    -34769.35,
-    -605545.56
-   ],
-   "why": "replacement door: its plane is matched to the original's and one arrives on the original's outer side, but which face of the new mesh is its front cannot be read from the geometry; look that the door does not open inward"
-  }
  ]
 }
