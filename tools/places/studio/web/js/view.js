@@ -6,14 +6,33 @@ import { drainReady } from './objects.js';
 THREE.Object3D.DEFAULT_UP.set(0, 0, 1);
 const TAP_MS = 350, TAP_PX = 10;
 
+// One renderer and one canvas for every view: a tablet keeps each texture and mesh once, and one set of shaders.
+// The canvas lies behind the views and each view draws into its own rectangle of it. The drawing buffer is kept
+// between frames, so a view that has not changed is not drawn again.
+const shared = { renderer: null, canvas: null, views: [] };
+function sharedRenderer(host) {
+  if (shared.renderer) return shared.renderer;
+  const r = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'high-performance', preserveDrawingBuffer: true });
+  r.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5)); r.outputColorSpace = THREE.SRGBColorSpace;
+  r.setScissorTest(true); r.autoClear = true;
+  const c = r.domElement; c.className = 'stage-canvas'; c.setAttribute('aria-hidden', 'true'); host.prepend(c);
+  const fit = () => {
+    const b = host.getBoundingClientRect(); if (!b.width || !b.height) return;
+    r.setSize(b.width, b.height, false); for (const v of shared.views) v.resize();
+  };
+  new ResizeObserver(fit).observe(host); shared.fit = fit;
+  // a tablet may take the graphics context away (memory pressure, a long sleep): draw everything again when it returns
+  c.addEventListener('webglcontextlost', (e) => { e.preventDefault(); shared.lost = true; });
+  c.addEventListener('webglcontextrestored', () => { shared.lost = false; for (const v of shared.views) { for (const o of v.objects || []) o.dirty?.(); v.redraw(); } });
+  shared.renderer = r; shared.canvas = c; fit();
+  return r;
+}
+
 export class View {
   constructor(el, { name, app }) {
     this.el = el; this.name = name; this.app = app;
-    this.renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'high-performance', preserveDrawingBuffer: true });
-    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
-    this.renderer.outputColorSpace = THREE.SRGBColorSpace;
-    el.querySelector('.canvas-holder').appendChild(this.renderer.domElement);
-    this.canvas = this.renderer.domElement; this.canvas.setAttribute('aria-label', name);
+    this.canvas = el.querySelector('.canvas-holder'); this.canvas.setAttribute('aria-label', name);
+    this.renderer = sharedRenderer(el.parentElement); shared.views.push(this);
     this.scene = new THREE.Scene();
     this.scene.add(new THREE.HemisphereLight('#e8f0ff', '#4a4636', 1.6));
     const sun = new THREE.DirectionalLight('#fff4e0', 1.4); sun.position.set(0.4, -0.6, 1); this.scene.add(sun);
@@ -21,7 +40,7 @@ export class View {
     this.rig = { target: new THREE.Vector3(), dist: 6000, yaw: -Math.PI / 2, pitch: 0.75 };
     this.world = new THREE.Group(); this.scene.add(this.world);
     this.overlay = new THREE.Group(); this.scene.add(this.overlay);
-    this.pointers = new Map(); this.needs = true; this.frameTimes = []; this.lastCull = 0;
+    this.pointers = new Map(); this.needs = true; this.lastCull = 0;
     this.listen(); this.resize();
     new ResizeObserver(() => this.resize()).observe(el);
     this.setTheme(false);
@@ -43,8 +62,16 @@ export class View {
   }
   resize() {
     const r = this.el.getBoundingClientRect(); if (!r.width || !r.height) return;
-    this.renderer.setSize(r.width, r.height, false); this.camera.aspect = r.width / r.height;
-    this.camera.updateProjectionMatrix(); this.redraw();
+    this.camera.aspect = r.width / r.height; this.camera.updateProjectionMatrix(); this.redraw();
+  }
+  // Hidden under the other view shown full screen.
+  hidden() { const full = this.el.parentElement?.querySelector('.view.full'); return !this.el.offsetWidth || (full && full !== this.el); }
+  // Draw this view into its own rectangle of the shared canvas.
+  draw() {
+    const r = this.el.getBoundingClientRect(), b = shared.canvas.getBoundingClientRect();
+    const x = r.left - b.left, y = b.bottom - r.bottom;
+    this.renderer.setViewport(x, y, r.width, r.height); this.renderer.setScissor(x, y, r.width, r.height);
+    this.renderer.render(this.scene, this.camera);
   }
   redraw() { this.needs = true; }
   changed(fromLink) {
@@ -59,16 +86,13 @@ export class View {
     this.camera.lookAt(r.target); this.camera.updateMatrixWorld();
   }
   render(now) {
-    if (!this.needs || !this.el.offsetWidth) return false;
-    const t0 = performance.now();
+    if (!this.needs || shared.lost || this.hidden()) return false;
     const waiting = drainReady(this.renderer, this.objects || [], this.scene, this.camera);
     if (now - this.lastCull > 120 || this.objects?.some((o) => o._dirty)) {
       for (const o of this.objects || []) o.cull(this.camera); this.lastCull = now;
-      this.needs = true;
     }
-    this.renderer.render(this.scene, this.camera);
+    this.draw();
     this.needs = waiting > 0 || !!this.objects?.some((o) => o._dirty);
-    const dt = performance.now() - t0; this.frameTimes.push(dt); if (this.frameTimes.length > 240) this.frameTimes.shift();
     return true;
   }
   // ---- pointer: fingers navigate when a pen is about; the pen (or a finger with no pen) works the tool ----
@@ -176,5 +200,4 @@ export class View {
     const r = this.canvas.getBoundingClientRect();
     return { x: (v.x + 1) / 2 * r.width, y: (1 - v.y) / 2 * r.height, behind: v.z > 1 };
   }
-  frameStats() { const a = [...this.frameTimes].sort((x, y) => x - y); return a.length ? { median: a[a.length >> 1], p95: a[Math.floor(a.length * 0.95)], n: a.length } : null; }
 }

@@ -51,20 +51,23 @@ function fetchTexture(url, sampler) {
   }
   return texCache.get(url);
 }
+// Plants, rocks and small things are many and seen small: their textures are asked for at a quarter of the memory.
+const SMALL_TEX = new Set(['tree', 'plant', 'groundcover', 'rock', 'clutter', 'light', 'marker', 'other']);
+const sized = (uri, kind) => (SMALL_TEX.has(kind) ? uri.replace(/([?&]size=)(\d+)/, (m, a, n) => a + Math.min(Number(n), 256)) : uri);
 class QuietTextures {
-  constructor(parser) { this.parser = parser; this.name = 'studio_quiet_textures'; }
+  constructor(parser, kind) { this.parser = parser; this.kind = kind; this.name = 'studio_quiet_textures'; }
   loadTexture(i) {
     const json = this.parser.json, def = json.textures[i], img = json.images?.[def.source];
     if (!img?.uri || img.uri.startsWith('data:')) return null;
     const normalOnly = !(json.materials || []).some((m) => m.pbrMetallicRoughness?.baseColorTexture?.index === i || m.emissiveTexture?.index === i);
     if (normalOnly) return Promise.resolve(FLAT);
-    return fetchTexture(img.uri, json.samplers?.[def.sampler]).then((t) => {
+    return fetchTexture(sized(img.uri, this.kind), json.samplers?.[def.sampler]).then((t) => {
       if (t) return t;
       const m = new THREE.Texture(); m.userData.missing = img.uri; return m;
     });
   }
 }
-const loader = new GLTFLoader().register((parser) => new QuietTextures(parser));
+const loaderFor = (kind) => new GLTFLoader().register((parser) => new QuietTextures(parser, kind));
 
 // One plain material per look, shared: the diffuse (or, when the texture is missing, a quiet colour of the
 // thing's kind from the land's palette), cut-out alpha for leaves and lily pads (blending does not sort inside
@@ -99,7 +102,7 @@ export function loadModel(model, pri = 0, level = 0, kind = 'other') {
       queue.push({ pri, run: async () => {
         try {
           const buf = await getMesh(model, { level });
-          const gltf = await loader.parseAsync(buf, '');
+          const gltf = await loaderFor(kind).parseAsync(buf, '');
           gltf.scene.updateMatrixWorld(true);
           const parts = [];
           gltf.scene.traverse((o) => {
@@ -135,6 +138,20 @@ function boxMaterial(kind, ghost) {
 const BIG = 420; // bounds (game units, 70 to the metre) past which a thing is never distance-culled: 6 m
 const THIN = new Set(['tree', 'plant', 'groundcover', 'rock', 'clutter']);
 const tmpM = new THREE.Matrix4(), tmpV = new THREE.Vector3(), boundsM = new THREE.Matrix4();
+// A ref's matrix is kept with the pose it was worked out from: the world's 37,000 plants are not recomputed when
+// a list is set again after an edit, and a ref moved in place (a drag) gets a new matrix because its pose differs.
+const MATS = new WeakMap();
+function matrixOf(ref, origin) {
+  const p = ref.pos, r = ref.rot, sc = ref.scale ?? 1; let m = MATS.get(ref);
+  if (m && m.o === origin && m.x === p[0] && m.y === p[1] && m.z === p[2] && m.sc === sc && m.rx === (r?.[0] || 0) && m.ry === (r?.[1] || 0) && m.rz === (r?.[2] || 0)) return m;
+  m = new THREE.Matrix4().fromArray(refMatrix(p, r || [0, 0, 0], sc, origin));
+  m.o = origin; m.x = p[0]; m.y = p[1]; m.z = p[2]; m.sc = sc; m.rx = r?.[0] || 0; m.ry = r?.[1] || 0; m.rz = r?.[2] || 0;
+  MATS.set(ref, m); return m;
+}
+// Only the instances in use are sent to the GPU.
+function sendInstances(mesh, n) {
+  const a = mesh.instanceMatrix; a.clearUpdateRanges?.(); a.addUpdateRange?.(0, n * 16); a.needsUpdate = true;
+}
 
 // Models that have arrived wait here and are switched on a few at a time, their textures sent to the GPU first,
 // so a burst of arrivals never stalls a frame (view.js calls drainReady before each draw).
@@ -196,14 +213,19 @@ class Group {
   }
   makeFull() {
     if (this.full) for (const m of this.full) { this.layer.root.remove(m); m.dispose(); }
+    // every part of one model shares one buffer of instance matrices
+    let shared = null;
     this.full = this.fullParts.map((p) => {
-      const m = new THREE.InstancedMesh(p.geometry, this.ghost ? boxMaterial(this.kind, true) : p.material, this.cap);
+      const m = new THREE.InstancedMesh(p.geometry, this.ghost ? boxMaterial(this.kind, true) : p.material, shared ? 1 : this.cap);
+      if (shared) m.instanceMatrix = shared; else shared = m.instanceMatrix;
       m.count = 0; m.frustumCulled = false; m.userData.group = this; this.layer.root.add(m); return m;
     });
   }
   setRefs(refs) {
     this.refs = refs; this.ensure(refs.length);
-    this.matrices = refs.map((r) => new THREE.Matrix4().fromArray(refMatrix(r.pos, r.rot || [0, 0, 0], r.scale ?? 1, this.layer.origin)));
+    this.matrices = refs.map((r) => matrixOf(r, this.layer.origin));
+    let s = 1; for (const r of refs) if ((r.scale ?? 1) > s) s = r.scale;
+    this.big = this.radius * 2 * s > BIG;
   }
   // Fill instance buffers from what the camera can see.
   cull(cam, frustum, sphere) {
@@ -213,7 +235,7 @@ class Group {
     const [near, far] = RANGE[this.kind] || RANGE.default;
     // anything big (a building, dock, bridge, ship, big rock or tree: bounds over a few metres) is never thinned or
     // cut by distance, at any detail level; only small clutter and plants thin out (the frustum still applies)
-    const big = this.radius * 2 * Math.max(...this.refs.map((r) => r.scale ?? 1), 1) > BIG;
+    const big = this.big;
     // detail only changes how near the full model starts and how many small plants are skipped; plants and trees
     // are drawn out past the whole place (the far range) at every level, and trees are never skipped
     const thin = THIN.has(this.kind) && !big, scale = big ? 1 : this.layer.rangeScale * (thin ? detail.veg : 1);
@@ -231,12 +253,12 @@ class Group {
       if (!frustum.intersectsSphere(sphere)) continue;
       if (skips && d > near * scale * 0.5 && i % detail.density) continue;
       nearest = Math.min(nearest, d);
-      if (d < nearD && this.full) { for (const fm of this.full) fm.setMatrixAt(nf, m); nf++; }
+      if (d < nearD && this.full) this.full[0].setMatrixAt(nf++, m);
       else { tmpM.multiplyMatrices(m, this.boxLocal); this.box.setMatrixAt(nb++, tmpM); }
     }
     // an empty instanced mesh still costs a draw setup: hide it
-    this.box.count = nb; this.box.visible = nb > 0; if (nb) this.box.instanceMatrix.needsUpdate = true;
-    if (this.full) for (const fm of this.full) { fm.count = nf; fm.visible = nf > 0; if (nf) fm.instanceMatrix.needsUpdate = true; }
+    this.box.count = nb; this.box.visible = nb > 0; if (nb) sendInstances(this.box, nb);
+    if (this.full) { for (const fm of this.full) { fm.count = nf; fm.visible = nf > 0; } if (nf) sendInstances(this.full[0], nf); }
     if (!this.fullParts && !this.wantModel && nearest < Math.max(near * scale * 1.3, LIGHT.has(this.kind) ? farD : 0) && this.base?.model) {
       this.wantModel = true;
       loadModel(this.base.model, nearest, LIGHT.has(this.kind) ? 1 : 0, this.kind).then((parts) => {

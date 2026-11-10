@@ -1,41 +1,12 @@
-// Thumbnails for search results and the info panel, drawn here from each base's model and kept for the session.
-import * as THREE from 'three';
-import { loadModel, KIND_COLOUR } from './objects.js';
+// Thumbnails for search results and the info panel: the server's own picture of each base's model
+// (/api/asset/thumb, a small WebP it keeps), so the tablet neither downloads the model nor draws it for a picture.
+// A base with no model gets a plain tile in its kind's colour.
+import { API_BASE } from './api.js';
+import { KIND_COLOUR } from './objects.js';
 
-const SIZE = 160, cache = new Map();
-let renderer, scene, camera;
-function setup() {
-  if (renderer) return;
-  renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, preserveDrawingBuffer: true });
-  renderer.setSize(SIZE, SIZE, false); renderer.outputColorSpace = THREE.SRGBColorSpace;
-  scene = new THREE.Scene();
-  scene.add(new THREE.HemisphereLight('#ffffff', '#555544', 2.2));
-  const d = new THREE.DirectionalLight('#ffffff', 1.2); d.position.set(1, -1.4, 2); scene.add(d);
-  camera = new THREE.PerspectiveCamera(30, 1, 1, 100000); camera.up.set(0, 0, 1);
-}
-function shoot(objects, box) {
-  setup(); scene.add(...objects);
-  const c = box.getCenter(new THREE.Vector3()), r = box.getSize(new THREE.Vector3()).length() / 2 || 50;
-  camera.position.set(c.x + r * 1.6, c.y - r * 2.2, c.z + r * 1.4); camera.near = r / 50; camera.far = r * 20;
-  camera.lookAt(c); camera.updateProjectionMatrix();
-  renderer.render(scene, camera); const url = renderer.domElement.toDataURL('image/png');
-  scene.remove(...objects); return url;
-}
-// A box of the base's bounds straight away; the model's picture when it arrives.
-export function thumb(base, onReady) {
+export function thumb(base) {
   if (!base) return '';
-  if (cache.has(base.key)) return cache.get(base.key);
-  const b = base.bounds || [[-32, -32, 0], [32, 32, 64]];
-  const box = new THREE.Box3(new THREE.Vector3(...b[0]), new THREE.Vector3(...b[1]));
-  const m = new THREE.Mesh(new THREE.BoxGeometry(...box.getSize(new THREE.Vector3()).toArray()), new THREE.MeshLambertMaterial({ color: KIND_COLOUR[base.kind] || '#999' }));
-  m.position.copy(box.getCenter(new THREE.Vector3()));
-  const placeholder = shoot([m], box); m.geometry.dispose();
-  cache.set(base.key, placeholder);
-  if (base.model) loadModel(base.model, 0, 0, base.kind).then((parts) => {
-    if (!parts?.length) return;
-    const meshes = parts.map((p) => new THREE.Mesh(p.geometry, p.material)), bb = new THREE.Box3();
-    for (const mm of meshes) { mm.geometry.computeBoundingBox(); bb.union(mm.geometry.boundingBox); }
-    const url = shoot(meshes, bb); cache.set(base.key, url); onReady?.(url);
-  });
-  return placeholder;
+  if (base.model) return `${API_BASE}/asset/thumb?model=${encodeURIComponent(base.model)}`;
+  const c = encodeURIComponent(KIND_COLOUR[base.kind] || '#999999');
+  return `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Crect x='1.5' y='1.5' width='5' height='5' rx='1' fill='${c}'/%3E%3C/svg%3E`;
 }

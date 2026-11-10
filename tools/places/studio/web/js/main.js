@@ -74,12 +74,11 @@ class Studio {
     if (text === false) { l.hidden = true; return; } l.hidden = false; $('#loading-text').textContent = text;
   }
   async openPlace(id, checkKey = true) {
-    const t0 = performance.now();
     this.place = this.places.find((p) => p.place_id === id); this.placeFit = normaliseFit(this.place.fit);
     this.loading(`Loading ${this.place.title || id}: the ground`);
     this.landTex = this.landTex || await new LandTex().init();
     const [ground, draft] = await Promise.all([loadBundle(`ground.${id}`), loadBundle(`draft.${id}`, { extras: true, optional: true, terrain: false })]);
-    const moved = draft?.meta?.stamp?.key && this.place.stamps?.draft_key && draft.meta.stamp.key !== this.place.stamps.draft_key;
+    const moved = draft?.meta?.stamp?.key && this.place.stamps?.draft?.key && draft.meta.stamp.key !== this.place.stamps.draft.key;
     if (moved && checkKey) throw Object.assign(new Error('the draft changed while loading'), { draftMoved: true });
     this.ground = ground; this.draft = draft || emptyDraft(id);
     if (!draft) this.toast('This place has no draft yet: you see our ground with nothing placed on it.', 6000);
@@ -117,11 +116,9 @@ class Studio {
       const hid = []; v.scene.traverse((o) => { if (!o.visible) { hid.push(o); o.visible = true; } });
       try { await v.renderer.compileAsync(v.scene, v.camera); } catch { v.renderer.compile(v.scene, v.camera); }
       for (const o of hid) o.visible = false;
-      v.renderer.render(v.scene, v.camera); await new Promise((r) => requestAnimationFrame(r));
+      v.draw(); await new Promise((r) => requestAnimationFrame(r));
     }
-    this.loadMs = Math.round(performance.now() - t0);
-    this.interactiveAt = performance.now();
-    this.loading(false);
+    this.ready = true; this.loading(false);
     this.choosing = this.panels.startChoice().finally(() => { this.choosing = null; });
     this.tools.use('select');
   }
@@ -322,7 +319,7 @@ class Studio {
   }
   saveBody(save_id, name, final = false) {
     return { save_id, place_id: this.place.place_id, name, at: new Date().toISOString(), final, rev: this.revs[save_id] || 0,
-      base: { draft_key: this.place.stamps?.draft_key || this.draft.meta.stamp?.key || null, ground_sha: this.place.stamps?.ground_sha || this.status?.ground_sha || null },
+      base: { draft_key: this.place.stamps?.draft?.key || this.draft.meta.stamp?.key || null, ground_sha: this.place.stamps?.ground_sha || this.status?.ground_sha || null },
       ops: this.log.applied() };
   }
   async autosave() {
@@ -426,8 +423,7 @@ class Studio {
     requestAnimationFrame(tick);
   }
   stats() {
-    return { ours: this.ours.view.frameStats(), src: this.src.view.frameStats(), loadMs: this.loadMs,
-      detail: this.governor.state(), drawn: { world: this.ours.world?.drawn, place: this.ours.place?.drawn, src: this.src.layer?.drawn },
+    return { detail: this.governor.state(), drawn: { world: this.ours.world?.drawn, place: this.ours.place?.drawn, src: this.src.layer?.drawn },
       refs: { world: this.worldRefs?.length, place: this.model?.spaces.exterior?.refs.size, src: this.srcBundle?.spaces.exterior?.refs.length } };
   }
 }

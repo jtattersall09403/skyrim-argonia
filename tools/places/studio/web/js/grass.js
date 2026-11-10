@@ -4,7 +4,7 @@
 // slope, under a building or on a path the owner drew. Spots are a jittered grid hashed from the position, so the
 // same ground always grows the same blades. The ring's range and thinning are the ground-cover rules of objects.js.
 import { ObjectLayer, loadModel } from './objects.js';
-import { spotsFor, slopeOk, waterOk } from './grass_rules.js';
+import { spotsFor, slopeOk, waterOk, heightScale } from './grass_rules.js';
 
 const STEP = 150;     // one spot per 150 units (about 2 m)
 const RING = 3600;    // radius of the ring, about 50 m
@@ -20,7 +20,7 @@ export class GrassLayer extends ObjectLayer {
     this.on = true; this.centre = null; this.stale = true; this.good = new Map(); // grass key -> model usable (true) or missing (false)
     this.lastKey = '';
   }
-  invalidate() { this.stale = true; this._dirty = true; this.onDirty(); }
+  invalidate() { this.stale = true; this._blockersStale = true; this._dirty = true; this.onDirty(); }
   setOn(on) { this.on = on; this.invalidate(); }
   // The land texture that dominates a point: the top alpha layer over half opaque, else the quadrant's base.
   texAt(x, y) {
@@ -57,7 +57,9 @@ export class GrassLayer extends ObjectLayer {
   }
   regrow(cx, cy, t) {
     this.stale = false; this.centre = [cx, cy];
-    const blockers = this.buildings(), list = [];
+    // the buildings are listed once per change of the place, and only those near the ring are tested per spot
+    if (!this._blockers || this._blockersStale) { this._blockers = this.buildings(); this._blockersStale = false; }
+    const blockers = this._blockers.filter((b) => Math.hypot(b.pos[0] - cx, b.pos[1] - cy) < RING + b.r), list = [];
     const x0 = Math.floor((cx - RING) / STEP), x1 = Math.ceil((cx + RING) / STEP), y0 = Math.floor((cy - RING) / STEP), y1 = Math.ceil((cy + RING) / STEP);
     for (let gx = x0; gx <= x1; gx++) for (let gy = y0; gy <= y1; gy++) {
       const cellTex = this.texAt((gx + 0.5) * STEP, (gy + 0.5) * STEP); if (!cellTex) continue;
@@ -74,7 +76,7 @@ export class GrassLayer extends ObjectLayer {
         const slope = t.slopeAt(x, y);
         if (!slopeOk(g, slope) || this.blocked(x, y)) continue;
         if (blockers.some((b) => Math.hypot(b.pos[0] - x, b.pos[1] - y) < b.r)) continue;
-        const [h0, h1] = g.height_range ?? [0.8, 1.3], s = h0 + (h1 - h0) * hash(gx, gy, 5 + 10 * k);
+        const s = heightScale(g, hash(gx, gy, 5 + 10 * k));
         const rot = [0, 0, hash(gx, gy, 4 + 10 * k) * 6.2832];
         if (g.fit_to_slope) {
           const e = 32, gxs = (t.heightAt(x + e, y) - t.heightAt(x - e, y)) / (2 * e), gys = (t.heightAt(x, y + e) - t.heightAt(x, y - e)) / (2 * e);

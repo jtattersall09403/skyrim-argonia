@@ -9,3 +9,10 @@ test('density gives spots per cell, slope limits are degrees, water rule follows
   assert.ok(waterOk({ units_from_water: 100, units_from_water_type: 0 }, 150)); assert.ok(!waterOk({ units_from_water: 100, units_from_water_type: 0 }, 50));
   assert.ok(waterOk({ units_from_water: 100, units_from_water_type: 1 }, 50)); assert.ok(!waterOk({}, 3)); assert.ok(waterOk({}, 20));
 });
+test('the bundle writes the water type by name and the height range as one number', async () => {
+  const { heightScale } = await import('../js/grass_rules.js');
+  assert.ok(waterOk({ units_from_water: 0, units_from_water_type: 'EitherAtLeast' }, -50));
+  assert.ok(waterOk({ units_from_water: 10, units_from_water_type: 'AboveAtLeast' }, 20)); assert.ok(!waterOk({ units_from_water: 10, units_from_water_type: 'AboveAtLeast' }, -5));
+  assert.equal(heightScale({ height_range: 0.35 }, 0), 0.65); assert.equal(heightScale({ height_range: 0.35 }, 1), 1.35);
+  assert.equal(heightScale({ height_range: [0.8, 1.2] }, 0.5), 1);
+});
