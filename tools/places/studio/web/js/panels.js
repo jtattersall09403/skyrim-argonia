@@ -433,7 +433,10 @@ export class Panels {
       li.append(d); ol.append(li);
     }
     parts.push(ol);
-    if (this.name === 'notes') this.show('Notes for the agent', parts);
+    // the panel on show was typed into while the list was fetched: its words, and the cursor, carry over
+    const typing = document.activeElement?.classList?.contains('note-text');
+    text.value = this.noteDraft || '';
+    if (this.name === 'notes') { this.show('Notes for the agent', parts); if (typing) text.focus(); }
   }
   async savesPanel() {
     const a = this.app, parts = [];

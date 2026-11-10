@@ -31,6 +31,38 @@ const C = new NavMesh(squares([[0, 0], [1, 0], [2, 0], [3, 0]]));
 const s = C.route([10, 50, 0], [390, 50, 0]);
 assert(Math.abs(len(s) - 380) < 1e-6 && s.every((p) => Math.abs(p[1] - 50) < 1e-6), 'straight along a corridor');
 
+// a stop off the floor (a chair against a wall) is joined to the floor's nearest point; the rest of the way is on it
+const on = (m, p) => { const h = m.snap(p); return !!h && h.d < 1e-6; };
+const off = L.route([-60, 50, 0], [250, 280, 0]);
+assert.deepEqual(off[0], [-60, 50, 0], 'the way starts at the stop itself');
+assert.deepEqual(off[1].slice(0, 2), [0, 50], 'then the nearest point of the floor');
+for (const p of off.slice(1)) assert(on(L, p), `off the floor at ${p}`);
+const both = L.route([-60, 80, 0], [50, 160, 0]);
+assert(both.length === 4 && on(L, both[1]) && on(L, both[2]), 'two stops off one triangle are each joined to it');
+// a link only one triangle names is still a way through
+const oneWay = squares([[0, 0], [1, 0], [2, 0], [2, 1], [2, 2]]);
+for (let k = 0; k < 3; k++) if (oneWay.nb[3 * 6 + k] === 7) oneWay.nb[3 * 6 + k] = -1;   // 7 still names 6
+const ow = new NavMesh(oneWay), owr = ow.route([50, 20, 0], [250, 280, 0]);
+assert(owr && owr.every((p) => on(ow, p)) && Math.abs(len(owr) - len(L.route([50, 20, 0], [250, 280, 0]))) < 1e-6, 'the same way over links named from one side only');
+// two cells' meshes joined at a seam where the edges only partly overlap: the way crosses on the stretch they share
+const seam = new NavMesh({
+  verts: [0, 0, 0, 200, 0, 0, 200, 200, 0, 0, 200, 0, 200, 100, 0, 400, 100, 0, 400, 200, 0, 200, 200, 0],
+  tris: [0, 1, 2, 0, 2, 3, 4, 5, 6, 4, 6, 7], nb: [-1, 3, 1, 0, -1, -1, -1, -1, 3, 2, -1, 0], kind: [0, 0, 0, 0],
+});
+const over = seam.route([150, 20, 0], [390, 110, 0]);
+assert(over && over.length > 2, 'a way over the seam');
+for (const p of over) assert(on(seam, p), `off both meshes at ${p}`);
+// a stop at the foot of a long slope stands on the slope, not on the deck over it
+const slope = new NavMesh({
+  verts: [0, 0, 0, 2000, 0, 1500, 0, 400, 0, 0, 0, 300, 300, 0, 300, 0, 300, 300],
+  tris: [0, 1, 2, 3, 4, 5], nb: [-1, -1, -1, -1, -1, -1], kind: [0, 0],
+});
+assert.equal(slope.triAt([40, 40, 30]), 0, 'the slope under the stop, by its height there');
+assert.equal(slope.triAt([40, 40, 290]), 1, 'the deck, for a stop at its height');
+// a sliver with no area holds no point
+const sliver = new NavMesh({ verts: [0, 0, 0, 100, 0, 0, 200, 0, 0], tris: [0, 1, 2], nb: [-1, -1, -1], kind: [0] });
+assert(sliver.snap([300, 0, 0]).d > 99, 'a point beyond a sliver is off it');
+
 const real = new URL('../../../../../out/places/nav/helstrom.json', import.meta.url);
 if (fs.existsSync(real)) {
   const d = JSON.parse(fs.readFileSync(real)), t0 = performance.now(), m = new NavMesh(d.spaces.exterior), t1 = performance.now();
