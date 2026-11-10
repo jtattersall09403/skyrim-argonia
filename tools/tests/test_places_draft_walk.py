@@ -167,3 +167,21 @@ def test_rehome_moves_a_sleeper_off_the_network_into_a_home_bed(tmp_path, monkey
     assert set(ppl) == {"g"}                                   # the resident gave up the only bed
     assert ppl["g"]["bed"]["space"] == "home" and ppl["g"]["home"] == "home"
     assert ppl["g"]["routine"][0]["at"]["space"] == "home"
+
+
+def test_arrivals_puts_a_door_arrival_off_the_mesh_on_it_in_front_of_its_door(tmp_path):
+    ctx = _town()
+    W = walk.Walkable(ctx, comp=C.components(ctx["navs"], {}))
+    p = tmp_path / "p"
+    (p / "spaces" / "exterior").mkdir(parents=True)
+    (p / "spaces" / "hold").mkdir()
+    door = {"id": "d", "kind": "door", "pos": [150.0, -300.0, 0.0], "base": "x", "seat": {"mode": "ground"},
+            "door": {"to_space": "hold", "to_ref": "b", "arrival": [150.0, -150.0, 0.0]}}
+    walk.io.write_jsonl(p / "spaces" / "exterior" / "refs.jsonl", [door])
+    walk.io.write_jsonl(p / "spaces" / "hold" / "refs.jsonl",
+                        [{"id": "b", "kind": "door", "door": {"to_ref": "d", "to_pos": [150.0, -150.0, 0.0]}}])
+    assert walk.arrivals("p", p, W, {}, log=lambda *_: None) == 1
+    a = walk.io.read_jsonl(p / "spaces" / "exterior" / "refs.jsonl")[0]["door"]["arrival"]
+    assert W.on(a) and a[1] > -150.0
+    assert walk.io.read_jsonl(p / "spaces" / "hold" / "refs.jsonl")[0]["door"]["to_pos"] == a
+    assert walk.arrivals("p", p, W, {}, log=lambda *_: None) == 0

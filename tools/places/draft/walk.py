@@ -490,6 +490,71 @@ def rehome(place_id: str, W: "Walkable", bases: dict, src, pdir: Path, log=print
     return moved
 
 
+ARRIVAL_LEVEL = 64.0    # units: a door's arrival stands on mesh within this of its own height (the deck it lands on)
+ARRIVAL_REACH = 288.0   # how far from where it was an arrival is moved to stand on the mesh
+
+
+def arrivals(place_id: str, pdir: Path, W: Walkable, bases: dict, log=print) -> int:
+    """Every door's arrival outside stands on the town's main walkable network of the built mesh, at its own level
+    (on the deck or the ground it lands one on): one that does not is moved to the nearest point that does, on the
+    same side of its door, outside every placed thing's body, at the mesh's height there. The partner door's `to_pos`
+    and the door's `arrival` move together. Returns the arrivals moved."""
+    from tools.places.draft import geom
+
+    def level(q, z):   # the mesh's height at q on the main network at level z, else None
+        c, dp, zz = W.near((q[0], q[1], z), tol=ON_TOL)
+        m = W.main[c] & (np.abs(zz - z) <= ARRIVAL_LEVEL)
+        return float(zz[m][np.argmin(dp[m])]) if m.any() else None
+    ext = pdir / "spaces" / "exterior" / "refs.jsonl"
+    rows = io.read_jsonl(ext)
+    by_id = {r["id"]: r for r in rows}
+    moved, inner_dirty = 0, {}
+    for d in rows:
+        a = (d.get("door") or {}).get("arrival")
+        sid = (d.get("door") or {}).get("to_space")
+        if d.get("kind") != "door" or not a or not sid or len(a) < 3:
+            continue
+        if level(a, a[2]) is not None:
+            continue
+        sup = by_id.get((d.get("seat") or {}).get("on"))
+        near = [r for r in rows if r.get("kind") in geom.SOLID_KINDS and r is not d and r is not sup
+                and math.dist(r["pos"][:2], a[:2]) < 2048]
+        side = (a[0] - d["pos"][0], a[1] - d["pos"][1])
+        got = None
+        for r_ in np.arange(8.0, ARRIVAL_REACH + 1, 8.0):
+            for k in range(32):
+                q = (a[0] + r_ * math.cos(k * math.pi / 16), a[1] + r_ * math.sin(k * math.pi / 16))
+                if (q[0] - d["pos"][0]) * side[0] + (q[1] - d["pos"][1]) * side[1] <= 0:
+                    continue   # never behind its door
+                z = level(q, a[2])
+                if z is not None and not any(geom.stands_in(o, bases, (q[0], q[1], z)) for o in near):
+                    got = [round(float(q[0]), 2), round(float(q[1]), 2), round(z, 2)]
+                    break
+            if got:
+                break
+        if got is None:
+            log(f"join {place_id}: door {d['id']}: its arrival {[round(v) for v in a]} is off the walkable mesh, "
+                f"with no point of it within {ARRIVAL_REACH:.0f} units")
+            continue
+        sp = pdir / "spaces" / sid / "refs.jsonl"
+        inner = inner_dirty.get(sid) or (io.read_jsonl(sp) if sp.exists() else [])
+        back = next((o for o in inner if (o.get("door") or {}).get("to_ref") == d["id"]), None)
+        if back is None:
+            continue
+        yaw = math.atan2(got[0] - d["pos"][0], got[1] - d["pos"][1]) % (2 * math.pi)
+        back["door"] = {**back["door"], "to_pos": got, "to_rot": [0.0, 0.0, round(yaw, 5)]}
+        d["door"] = {**d["door"], "arrival": got}
+        inner_dirty[sid] = inner
+        moved += 1
+        log(f"join {place_id}: door {d['id']}: arrival moved {math.dist(a[:2], got[:2]):.0f} units onto the walkable "
+            f"mesh, z {a[2]:.0f} -> {got[2]:.0f}")
+    if moved:
+        io.write_jsonl(ext, rows)
+        for sid, inner in inner_dirty.items():
+            io.write_jsonl(pdir / "spaces" / sid / "refs.jsonl", inner)
+    return moved
+
+
 def streets(place_id: str, pdir: Path, W: Walkable, log=print) -> int:
     """Every street lies on the town's main walkable network of the built mesh: a stretch off it is re-laid along the
     way the mesh walks (`mend`), said in the street's `laid`; then each guard's patrol is taken again from the
@@ -593,7 +658,7 @@ def join(place_id: str, places: Path = io.PLACES, out: Path = CHECK_OUT, log=pri
                 continue   # the joined islands are the network once built
             log(f"join {place_id}: no island ({', '.join(sorted(isl))}) has a clear walkable way to the network")
             moved += cut(place_id, sorted(isl), rows, pdir, log)
-        got = streets(place_id, pdir, W, log)
+        got = arrivals(place_id, pdir, W, bases, log) + streets(place_id, pdir, W, log)
         done += got + moved
         if got or moved:
             settle()
