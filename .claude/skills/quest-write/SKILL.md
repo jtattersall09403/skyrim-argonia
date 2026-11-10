@@ -61,7 +61,9 @@ this skill carries is `docs/design/quests-on-a-world.md` (parts 3 to 5) and the 
    Conjuration, Restoration, Alchemy, Sneak, Lockpicking, Pickpocket, Speech, Mysticism); climbing and swimming are
    movement, not skills, and nothing climbs a tree. A stage is won by a route that can fail (a check of 25 or more,
    a lock level, a theft the crime engine can see, a fight that can be lost); a pure choice stage and an ending are
-   exempt, and so is a stage whose only act is hearing the task or reporting back. Every main quest has two ways through on different skills; a faction quest leans on its faction's.
+   exempt, and so is a stage whose only act is hearing the task, reporting back or going where the
+   journal says, and a hidden stage. Every main quest has two ways through on different skills; a faction quest
+   leans on its faction's.
    A failed check may simply stay closed until the player returns stronger. A fail-forward is written only where
    failure should matter; a person the quest must not lose is essential and needs none.
 3b. **The critical path is never closed to a new character.** A line that hands out the next task, or takes a
