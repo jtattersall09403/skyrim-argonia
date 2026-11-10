@@ -1,4 +1,4 @@
 topic id	variant	band	prompt	line	fact ids
-topic.bc02-come-killer	main	low	Come with me. I will get you out.	I will follow. Lead me out the way you came in.	
+topic.bc02-come-killer	main	low	Come with me. I will get you out.	I will follow. I killed, and the heirs hold me for it. Two others are bound here in the smoke, Says-It-Plain and Keeps-The-Old-Count. Lead me out the way you came in.	
 topic.bc02-come-killer	main	words	Come with me. I will get you out.	I will follow. I killed. I do not deny it. The heirs hold me for it. Two others are bound here in the smoke, Says-It-Plain and Keeps-The-Old-Count. The way out is the way you came in.	fact.bc02.three-held
 topic.bc02-come-killer	main	high	Come with me. I will get you out.	I will follow you. I killed. I do not deny it. The heirs hold me for it. Do not think me better than I am. Say it to me plainly and I will still come. Two others are bound here in the smoke, Says-It-Plain and Keeps-The-Old-Count. The way out is the way you came in.	fact.bc02.three-held

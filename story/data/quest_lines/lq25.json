@@ -25,7 +25,7 @@
   "speaker": "npc.hist-heartland.helstrom.boat-captain",
   "prompt": "I found this bucket under the crew's plank walk.",
   "lines": [
-   "That is the landing crew's bucket. It is full of offal. I believed the beast had always been there. This proves it did not.",
+   "That is the landing crew's bucket. It is full of offal. I believed the beast had always been there. This proves it was not.",
    "You have done me a great service. Take 60 gold for it.",
    "Now I will take my trade back on the river."
   ],
@@ -45,7 +45,7 @@
   "speaker": "npc.hist-heartland.helstrom.lq25-crew-steerer",
   "prompt": "I know about the offal under your plank walk.",
   "lines": [
-   "Yes. We dumped it there to fake a beast and scare the boat captain's trade off the river.",
+   "Yes. We dumped it there to draw a beast and scare the boat captain's trade off the river.",
    "If the boat captain hears of this, she will take all the river trade for herself. Say nothing to her.",
    "Here are 40 gold. It is a small price, but it is what we can pay."
   ],
@@ -53,7 +53,7 @@
    "fact.lq25.crew-baited"
   ],
   "lines@low": [
-   "Yes. We dumped the offal under the plank walk to fake a beast.",
+   "Yes. We dumped the offal under the plank walk to draw a beast.",
    "We meant to scare the boat captain's trade off the river.",
    "If she hears of it, she takes all the river trade. Say nothing to her.",
    "Take 40 gold. It is small. It is all we can pay. I do not give more."

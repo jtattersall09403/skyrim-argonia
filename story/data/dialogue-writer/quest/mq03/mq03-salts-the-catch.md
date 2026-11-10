@@ -22,7 +22,7 @@ Built by quest-write/brief.py from the quest record and the world records. Do no
 - Cuts-the-Old-Knot: Leader of the Unbound Root
 
 ## Things lines may name (and only these)
-- `thing.mq03.camp`: place; the camp at -1,0 on Hereguard Plantation's paddy edge; {'all': 'aftermath'}
+- `thing.mq03.camp`: place; the camp where Lilmoth's dock meets the land; {'all': 'aftermath'}
 - `thing.mq03.jar-marks`: dressing; the shed at the camp; {'all': 'aftermath'}
 - `thing.mq03.sap-phial`: item; the shed at the camp; {'after-10': 'carried', 'at-10': 'on the shed floor', 'before-10': 'absent (the jar-marks parent off)'}
 - `thing.mq03.courier-token`: item; the deep water under the plank boards at the camp's fire; {'after-10': 'carried if taken from the trap, else in the trap', 'at-10': 'in the locked fish-trap; the picks on the boards above', 'before-10': 'absent (the jar-marks parent off)'}

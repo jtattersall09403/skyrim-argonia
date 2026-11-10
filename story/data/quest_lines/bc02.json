@@ -6,7 +6,8 @@
    "I will follow. I killed. I do not deny it. The heirs hold me for it. Two others are bound here in the smoke, Says-It-Plain and Keeps-The-Old-Count. The way out is the way you came in."
   ],
   "lines@low": [
-   "I will follow. Lead me out the way you came in."
+   "I will follow. I killed, and the heirs hold me for it. Two others are bound here in the smoke, Says-It-Plain and Keeps-The-Old-Count.",
+   "Lead me out the way you came in."
   ],
   "lines@high": [
    "I will follow you. I killed. I do not deny it. The heirs hold me for it. Do not think me better than I am. Say it to me plainly and I will still come. Two others are bound here in the smoke, Says-It-Plain and Keeps-The-Old-Count. The way out is the way you came in."
@@ -19,7 +20,8 @@
    "Yes. I will follow you. The heirs hold me for what they reckon I owe. Two others are bound here in the smoke, Says-It-Plain and Hides-In-Reeds. Go back the way you came in."
   ],
   "lines@low": [
-   "Yes. I will follow you. Lead me out."
+   "Yes. I will follow you. The heirs hold me for what they reckon I owe. Two others are bound here in the smoke, Says-It-Plain and Hides-In-Reeds.",
+   "Lead me out."
   ],
   "lines@high": [
    "Yes. I will follow you. The heirs hold me for what they reckon I owe them. Two others are bound here in the smoke, Says-It-Plain and Hides-In-Reeds. Go back the way you came in. When we are out, tell me of my daughter, Rows-For-Another. I have heard nothing of her."
@@ -27,7 +29,7 @@
  },
  "topic.bc02-the-fire": {
   "speaker": "never-sold",
-  "prompt": "What is burning at Blackrose's east edge?",
+  "prompt": "Is there more to do?",
   "lines": [
    "The heirs' outer post, an old stone house on the shore at Blackrose's east edge, is burning. How it started is not known. Three are bound inside. Says-It-Plain is held for speaking against the heirs. Hides-In-Reeds is held for a killing. Keeps-The-Old-Count, Rows-For-Another's mother, is working off what the heirs reckon she owes. Third-Born Tsaxi stands outside the west wall and keeps the way in."
   ],
@@ -45,7 +47,8 @@
    "I will follow you. Three of us are bound in this old stone house, in the smoke: myself, Hides-In-Reeds and Keeps-The-Old-Count. Go. The way out is the way you came in. Remember that I spoke against the heirs."
   ],
   "lines@low": [
-   "I will follow you. Go. The way out is the way you came in."
+   "I will follow you. Three of us are bound in this old stone house, in the smoke: myself, Hides-In-Reeds and Keeps-The-Old-Count.",
+   "Go. The way out is the way you came in."
   ],
   "lines@high": [
    "You came for me. I will follow you. Three of us are bound in this old stone house, in the smoke: myself, Hides-In-Reeds and Keeps-The-Old-Count. I was held for speaking against the heirs. I would have my words remembered. Lead on. The way out is the way you came in."
@@ -67,7 +70,7 @@
    "You speak plainly, so I will answer plainly. Go in. The heirs will not go in after you. The way out will bear one trip. One will come out. Whoever is left inside dies in the fire. I do not envy you the choosing."
   ],
   "fail@low": [
-   "No. I keep the way in. Your words do not move me yet."
+   "No. I keep the way in. Your words do not move me yet. Find better words."
   ],
   "fail@high": [
    "I would hear you out if I could, but your words are not enough. I keep the way in. I will not open it. Find better words, or go back to the town."
@@ -89,7 +92,7 @@
    "You came out with one, so I will not stop you. Go by. The heirs lost nothing worth entering the stone house to fetch. Go while you can."
   ],
   "fail@low": [
-   "No. This one does not go by. Your words do not move me yet."
+   "No. This one does not go by. Your words do not move me yet. Find better words."
   ],
   "fail@high": [
    "I hear you. I do not like to hold this one, but your words are not enough. I keep the way. This one does not go by. Find better words."

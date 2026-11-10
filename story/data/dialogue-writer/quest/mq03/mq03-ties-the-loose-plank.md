@@ -35,7 +35,7 @@ Built by quest-write/brief.py from the quest record and the world records. Do no
 - Cuts-the-Old-Knot: Leader of the Unbound Root
 
 ## Things lines may name (and only these)
-- `thing.mq03.camp`: place; the camp at -1,0 on Hereguard Plantation's paddy edge; {'all': 'aftermath'}
+- `thing.mq03.camp`: place; the camp where Lilmoth's dock meets the land; {'all': 'aftermath'}
 - `thing.mq03.jar-marks`: dressing; the shed at the camp; {'all': 'aftermath'}
 - `thing.mq03.sap-phial`: item; the shed at the camp; {'after-10': 'carried', 'at-10': 'on the shed floor', 'before-10': 'absent (the jar-marks parent off)'}
 - `thing.mq03.courier-token`: item; the deep water under the plank boards at the camp's fire; {'after-10': 'carried if taken from the trap, else in the trap', 'at-10': 'in the locked fish-trap; the picks on the boards above', 'before-10': 'absent (the jar-marks parent off)'}
@@ -53,7 +53,7 @@ Built by quest-write/brief.py from the quest record and the world records. Do no
   - `fact.mq03.barge-gone`: Wuleen-Sei marched the unhurt back to the barge at Lilmoth's dock; hurt hands are no hire.
 - What the player does at these stages (set it up: who, where, what danger, what they need):
   - Speechcraft: persuade (Ties-The-Loose-Plank), inside someone's house or a guarded store
-- Directions to give: The house has no mark; the back room is past the front room's table, behind the screen, the mats beside it. The street door opens from inside; the camp is the shore path north and west of the dock.
+- Directions to give: The house has no mark; the back room is past the front room's table, the mats beside it. The street door opens from inside; the camp is where Lilmoth's dock meets the land.
 - Ties-The-Loose-Plank's knowledge at stage 20:
   - `fact.mq03.barge-gone`: knows
   - `fact.mq03.clean-cut`: knows

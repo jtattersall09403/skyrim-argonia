@@ -16,10 +16,10 @@
   "speaker": "npc.mercantile-coast.soulrest.crew-boss",
   "prompt": "Your crew is right. What now?",
   "lines": [
-   "Ussa-Rekh keeps our carved tokens in the chest beside him on the dock. He keeps them until our last season is worked. He promised that a crew who break their tokens before him are done with him."
+   "Ussa-Rekh keeps our carved tokens in the chest beside him on the dock. He keeps them until our last season is worked. He promised that a crew who break their tokens before him are done with him. Bring them to me."
   ],
   "lines@low": [
-   "You say my crew is right. Words cost nothing. I do not hand out my crew's troubles. Earn my trust. Then I will tell you what Ussa-Rekh holds of ours."
+   "Ussa-Rekh keeps our carved tokens in the chest beside him. A crew who break their tokens before him are done with him. He said so himself. Bring them to me."
   ],
   "lines@high": [
    "You have heard us, so hear this. Ussa-Rekh keeps our carved tokens in the chest beside him on the dock. He keeps them until our last season is worked. He promised us himself that a crew who break their tokens before him are done with him. That is how we end it. Bring them to me."
@@ -32,7 +32,7 @@
    "You have them. Give them to me. We will break them before Ussa-Rekh."
   ],
   "lines@low": [
-   "Those are ours. Give them to me."
+   "Those are ours. Give them to me. We will break them before Ussa-Rekh."
   ],
   "lines@high": [
    "You have them. Give them to me. Every one of us will break his own before Ussa-Rekh."
@@ -45,7 +45,7 @@
    "His no, from your mouth? I will not take that from you. Give me a reason worth hearing or keep clear."
   ],
   "lines@low": [
-   "Enough! I will not take his word from you."
+   "Enough! I will not take his word from you. Give me a reason worth hearing, or keep clear."
   ],
   "lines@high": [
    "I think you mean well. But you cannot tell my crew to work on. Give me a reason worth hearing, or something for my crew's lost days."
@@ -67,7 +67,7 @@
    "You speak plainly. I hear you. We will work the season. I will tell my crew myself."
   ],
   "fail@low": [
-   "No. Your words are too thin. I will not take it."
+   "No. Your words are too thin. Find better words, or give my crew something for its lost days. Until then I will not take it."
   ],
   "fail@high": [
    "I want to hear you, but not like this. Your words do not hold yet. Find better words, or give my crew something for its lost days. Until then I will not take it."
@@ -93,7 +93,8 @@
    "For thirty years I bought out Owings, the debts that bind a person to labour. I freed those crews. Now I hire them out. They work the season as agreed. Heavy-Rope, on this dock, can tell you what the crew asked of me, and of the tokens."
   ],
   "lines@low": [
-   "I hire out crews. That is all I say to one I do not know. Earn my regard. Then I will say more. Heavy-Rope, on this dock, can tell you what the crew asked of me."
+   "I bought out Owings for thirty years and freed these crews. Now I hire them out. They work the season as agreed.",
+   "Heavy-Rope, on this dock, can tell you what the crew asked of me, and of the tokens."
   ],
   "lines@high": [
    "For thirty years I bought out Owings, the debts that bind a person to labour. I freed these crews. Now I hire them out. The season is worked as agreed. I hold to what was agreed. Heavy-Rope, on this dock, can tell you what the crew asked of me, and of the tokens."
