@@ -355,3 +355,5 @@ added here the day they are made, with the date and the issue.
 - 2026-11-10 (in session): navmesh in BM&V is the agent's call, not a question for the owner: choose the most
   sensible approach that enables the quest system generally (joining existing navmesh, or adding it where the
   quests need ground that has none).
+- 2026-11-10 (in session, night): redrafts. A whole place is never redrafted to change one part of it. What needs
+  changing is changed and the rest is kept; a whole redraft only when a narrow change truly cannot be correct.
