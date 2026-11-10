@@ -508,7 +508,10 @@ def plan_spaces(P: dict, ids: Ids, tmp: Path) -> dict:
             ch = changes.get(r["fk"], {})
             if ch.get("removed"):
                 continue
-            our_id = ch.get("id") or f"{sid}/{r['fk']}"
+            # a copied ref is known by its space and source ref whether or not the place files list a change to it
+            # (the studio's change row carries the source id as its id): its form id is the same before and after an
+            # edit, and its own in every copy of the room
+            our_id = ch["id"] if ch.get("id") and ch["id"] != r["fk"] else f"{sid}/{r['fk']}"
             row = {"id": our_id, "src": r["fk"], "base": ch.get("base", r["base"]), "kind": ch.get("kind", kind_of(r)),
                    "base_edid": r.get("base_edid") if "base" not in ch else None,
                    "pos": ch.get("pos", r["pos"]), "rot": ch.get("rot", r["rot"]), "scale": ch.get("scale", r.get("scale", 1.0)),

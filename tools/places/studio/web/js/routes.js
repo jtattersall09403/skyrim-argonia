@@ -98,7 +98,12 @@ export class Walk {
   }
   cost(i, j) { const k = key(i, j); return (this.street.has(k) ? STREET : 1) * (this.byWall.has(k) ? BY_WALL : 1); }
   // The way from a to b ([x, y, ...]) as [[x, y], ...]; the straight line when there is no way round.
+  // A stop boxed in by its neighbours' outlines (records' boxes are coarser than the walls) gets more room at the ends.
   route(a, b) {
+    for (const free of [END_FREE, END_FREE * 3]) { const r = this.search(a, b, free); if (r) return r; }
+    return [[a[0], a[1]], [b[0], b[1]]];
+  }
+  search(a, b, endFree) {
     const si = Math.round(a[0] / STEP), sj = Math.round(a[1] / STEP), gi = Math.round(b[0] / STEP), gj = Math.round(b[1] / STEP);
     if (si === gi && sj === gj) return [[a[0], a[1]], [b[0], b[1]]];
     const pad = 48, i0 = Math.min(si, gi) - pad, i1 = Math.max(si, gi) + pad, j0 = Math.min(sj, gj) - pad, j1 = Math.max(sj, gj) + pad;
@@ -115,7 +120,7 @@ export class Walk {
         if (!di && !dj) continue;
         const ni = ci + di, nj = cj + dj;
         if (ni < i0 || ni > i1 || nj < j0 || nj > j1) continue;
-        const nearEnd = Math.max(Math.abs(ni - si), Math.abs(nj - sj)) <= END_FREE || Math.max(Math.abs(ni - gi), Math.abs(nj - gj)) <= END_FREE;
+        const nearEnd = Math.max(Math.abs(ni - si), Math.abs(nj - sj)) <= endFree || Math.max(Math.abs(ni - gi), Math.abs(nj - gj)) <= endFree;
         if (!nearEnd && this.shut(ni, nj, own)) continue;
         // no cutting a corner between two shut cells
         if (di && dj && !nearEnd && (this.shut(ci + di, cj, own) || this.shut(ci, cj + dj, own))) continue;
@@ -123,7 +128,7 @@ export class Walk {
         if (c < (cost.get(nk) ?? Infinity)) { cost.set(nk, c); prev.set(nk, cur); heap.push([c + Math.hypot(ni - gi, nj - gj) * STREET, nk]); }
       }
     }
-    if (!found) return [[a[0], a[1]], [b[0], b[1]]];
+    if (!found) return null;
     const cells = []; for (let k = goal; k !== start; k = prev.get(k)) cells.push(k);
     cells.reverse();
     const pts = [[a[0], a[1]], ...cells.slice(0, -1).map((k) => [(Math.floor(k / 65536) - 32768) * STEP, ((k % 65536) - 32768) * STEP]), [b[0], b[1]]];
