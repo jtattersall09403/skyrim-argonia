@@ -320,3 +320,6 @@ added here the day they are made, with the date and the issue.
   never overwrites it. World facts of people, economy and stock live in the database in third normal form from
   the start, populated more fully later (nw-05). The landing's walkability lane moves to Fable 5.2 at medium
   effort. The skills are brought up to date with every outstanding improvement.
+- 2026-11-10 (in session, evening): travel. Fast travel from the map will be removed in time (not yet), so no
+  place promises it. The place records' fast-travel promises are rewritten as promises about the travel network
+  (boat, coach, rootworm), authored sensibly place by place, and delivered by the place build as a service.
