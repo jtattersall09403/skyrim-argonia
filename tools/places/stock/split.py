@@ -69,6 +69,36 @@ def item_class(it: dict, r: dict | None = None) -> tuple[str, bool, str]:
     return kind, False, f"{kind} worth {value}"
 
 
+def item_tier(it: dict, sc: dict | None = None) -> tuple[str | None, str]:
+    """(tier, how) of one item on the scale, wherever a tier is computed (the item catalogue, the check, the studio):
+    1. the scale's explicit lists win: a tier that names the item itself (its soul gem, gems, jewellery) — a soul
+       gem's power outruns its price, so its value never sets its tier;
+    2. else its material: the lowest tier whose weapon or armour list names it;
+    3. an enchanted thing reaches the tier of its enchantment's grade (the tier whose `enchant_grade` it is) when that
+       is higher: an iron sword of arcing is not common, though its record's value is an iron sword's;
+    4. a thing of no listed material takes the tier its value reaches;
+    5. no value known (an item not measured yet) and none of the above: None.
+    `it` needs edid and keywords; value, ench and ench_grade when known (records.Records.item, the catalogue)."""
+    sc = sc or scale()
+    tiers = sc["tiers"]
+    rank = {t["id"]: t["rank"] for t in tiers}
+    edid = it.get("edid") or ""
+    for t in tiers:
+        if edid and (edid == t.get("soul_gem") or edid in t.get("gem", []) or edid in t.get("jewellery", [])):
+            return t["id"], "the scale's list for that tier"
+    kws = set(it.get("keywords") or [])
+    mat = next(((t["id"], f"its material ({k})") for t in tiers for k in t.get("weapon", []) + t.get("armour", [])
+                if k in kws), None)
+    value = it.get("value")
+    if mat is None and value is not None:
+        mat = (next((t["id"] for t in tiers if value <= t["value_max"]), tiers[-1]["id"]), f"its value ({value})")
+    grade = it.get("ench_grade")
+    by_ench = next((t["id"] for t in tiers if grade and t.get("enchant_grade") == min(grade, 6)), None)
+    if by_ench and (mat is None or rank[by_ench] > rank[mat[0]]):
+        return by_ench, f"its enchantment's grade ({grade})"
+    return mat or (None, "")
+
+
 def _kind(it: dict, kws: set, r: dict) -> str:
     s = it["sig"]
     if s == "WEAP":

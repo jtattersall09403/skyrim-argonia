@@ -178,3 +178,25 @@ def test_an_open_promise_or_a_missing_map_marker_fails():
 def test_summary_counts_and_ranks():
     s = verify.summary(SF.stock())
     assert s["containers_authored"] == 1 and s["top"][0]["value"] == 45 and s["gold"] == 30 + 12 + 5
+
+
+def test_the_scale_s_explicit_lists_win_over_value_everywhere_a_tier_is_computed():
+    from tools.places.stock import split
+    from tools.places.studio import stock as studio
+    sc = split.scale()
+    black = {"edid": "SoulGemBlack", "keywords": ["VendorItemSoulGem"], "value": 300}    # T3 by value alone
+    grand = {"edid": "SoulGemGrand", "keywords": ["VendorItemSoulGem"], "value": 200}    # T2 by value alone
+    assert split.item_tier(black, sc)[0] == "T6" and split.item_tier(grand, sc)[0] == "T5"
+    assert studio._listed_tier(black, sc)[0] == "T6"                                     # the studio reads the same rule
+    assert split.item_tier({"edid": "GemRuby", "keywords": ["VendorItemGem"], "value": 200}, sc)[0] == "T3"
+
+
+def test_an_enchanted_thing_takes_its_enchantment_s_grade_and_an_unmeasured_one_stays_unknown():
+    from tools.places.stock import split
+    sc = split.scale()
+    arcing = {"edid": "EnchIronSwordShock03", "keywords": ["WeapMaterialIron"], "value": 25, "ench": "Skyrim.esm:045F6F",
+              "ench_grade": 3}
+    assert split.item_tier(arcing, sc) == ("T3", "its enchantment's grade (3)")
+    assert split.item_tier({**arcing, "ench": None, "ench_grade": None}, sc)[0] == "T1"
+    assert split.item_tier({"edid": "Thing", "keywords": []}, sc) == (None, "")
+    assert split.item_tier({"edid": "Thing", "keywords": [], "value": 260}, sc)[0] == "T3"

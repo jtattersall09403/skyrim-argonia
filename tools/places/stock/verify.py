@@ -50,7 +50,6 @@ def load(place_id: str, plan: dict, dump: dict, esp: Path) -> dict | None:
     keys |= {i.item_id for v in st.person_items.values() for i in v} | {i.item_id for v in st.trader_items.values() for i in v}
     rec = Records.load(plugins_of(keys))
     rules = sc["split"]
-    mat_tier = {k: t["id"] for t in sc["tiers"] for s_ in ("weapon", "armour") for k in t[s_]}
     never_m = set(sc["never"]["materials"])
     never_w = [x.lower() for x in sc["never"]["edid_words"]]
 
@@ -60,7 +59,7 @@ def load(place_id: str, plan: dict, dump: dict, esp: Path) -> dict | None:
             return {"known": False, "significant": False, "value": 0, "tier": "T1", "kind": "?", "never": False, "edid": k}
         kind, sig, _ = split.item_class(it, rules)
         mat = next((m for m in it["keywords"] if "Material" in m), None)
-        tier = mat_tier.get(mat) or next((t["id"] for t in sc["tiers"] if it["value"] <= t["value_max"]), "T6")
+        tier = split.item_tier(it, sc)[0]
         return {"known": True, "significant": sig, "value": it["value"], "tier": tier, "kind": kind, "edid": it["edid"],
                 "sig": it["sig"],
                 "name": it["name"], "never": bool(mat in never_m or any(x in (it["edid"] or "").lower() for x in never_w))}

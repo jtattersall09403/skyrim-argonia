@@ -78,7 +78,8 @@ class Catalogue:
                                 continue
                             r = json.loads(line)
                             if r.get("type") in ITEM_SIGS:
-                                rows[r["key"]] = {k: r.get(k) for k in ("key", "edid", "name", "type", "keywords", "plugin")}
+                                rows[r["key"]] = {k: r.get(k) for k in ("key", "edid", "name", "type", "keywords", "plugin",
+                                                                        "value", "ench", "ench_grade")}
                 c.rows, c.mtime = rows, m
             return c
 
@@ -90,15 +91,12 @@ def tier_rank(scale: dict) -> dict:
 
 
 def _listed_tier(row: dict, scale: dict) -> tuple[str | None, str]:
-    """The lowest tier whose lists name the item's material or the item itself, with how it was found."""
-    kws, edid = set(row.get("keywords") or []), row.get("edid") or ""
-    for t in scale.get("tiers", []):
-        mat = next((k for k in t.get("weapon", []) + t.get("armour", []) if k in kws), None)
-        if mat:
-            return t["id"], f"its material ({mat})"
-        if edid and (edid == t.get("soul_gem") or edid in t.get("gem", []) or edid in t.get("jewellery", [])):
-            return t["id"], "the scale's list for that tier"
-    return None, ""
+    """The item's tier from its catalogue row, by the scale's one rule (split.item_tier: its explicit lists first,
+    then its material, its enchantment's grade, its value), with how it was found."""
+    from tools.places.stock import split
+    if not scale.get("tiers"):
+        return None, ""
+    return split.item_tier(row, scale)
 
 
 def never_of(row: dict, scale: dict) -> str | None:
@@ -128,14 +126,14 @@ def item_facts(key: str, measured: dict | None, cat: dict | None, scale: dict) -
                 "measured": True, "why_tier": "measured from the plugins"}
     from tools.places.stock import split
     it = {"key": key, "sig": cat.get("type") or "MISC", "edid": cat.get("edid"), "name": cat.get("name"),
-          "keywords": cat.get("keywords") or [], "value": 0, "ench": None}
+          "keywords": cat.get("keywords") or [], "value": cat.get("value") or 0, "ench": cat.get("ench")}
     try:
         kind, sig, _ = split.item_class(it, scale.get("split") or split.rules())
     except (KeyError, TypeError):
         kind, sig = "clutter", False
     tier, how = _listed_tier(cat, scale)
     return {"id": key, "edid": cat.get("edid"), "name": cat.get("name") or cat.get("edid") or key, "kind": kind,
-            "record": cat.get("type"), "value": None, "tier": tier, "significant": sig, "never": never_of(cat, scale),
+            "record": cat.get("type"), "value": cat.get("value"), "tier": tier, "significant": sig, "never": never_of(cat, scale),
             "measured": False, "why_tier": (f"from {how}" if tier else "not measured yet: finalise measures it")}
 
 

@@ -255,7 +255,6 @@ def items() -> int:
                         "Black Marsh.esm", "Black Marsh North.esp"])
     edids = {t["soul_gem"] for t in sc["tiers"]} | {n for t in sc["tiers"] for n in t["gem"] + t["jewellery"]}
     keys |= {k for k, r in rec.raw.items() if r.edid in edids and r.sig in ("MISC", "ARMO", "SLGM")}
-    mat_tier = {k: t["id"] for t in sc["tiers"] for s in ("weapon", "armour") for k in t[s]}
     never = set(sc["never"]["materials"])
     words = [w_.lower() for w_ in sc["never"]["edid_words"]]
     out = []
@@ -266,7 +265,7 @@ def items() -> int:
             continue
         kind, sig, _ = split.item_class(it, sc["split"])
         mat = next((m for m in it["keywords"] if "Material" in m), None)
-        tier = mat_tier.get(mat) or next((t["id"] for t in sc["tiers"] if it["value"] <= t["value_max"]), "T6")
+        tier = split.item_tier(it, sc)[0]
         out.append({"id": k, "form_key": form_key(k), "plugin": k.rsplit(":", 1)[0], "edid": it["edid"], "name": None,
                     "record": it["sig"], "item_kind_id": kind if kind in ITEM_KINDS else "clutter",
                     "value": it["value"], "material": mat, "stock_tier_id": tier, "enchanted": bool(it["ench"]),

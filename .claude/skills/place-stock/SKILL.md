@@ -60,6 +60,10 @@ Write `newworld/sources/stock/places/<place>.json` from the draft and the facts.
 - Differences come from the facts: a net-maker carries a knife and twine, a feather-dresser a fine blade, a
   household's elder the family's old ring. Draw them from the person's trade, household and backstory.
 - A notable person is written by hand: the leader, the richest household, anyone the record's hooks name.
+- Read what the source outfit leaves once its significant pieces go (armour, anything enchanted). When it loses its
+  only body piece, give a plain worn garment of the person's station (set dressing), so nobody stands bare.
+- `worn` on a weapon means it hangs at the belt: the build carries it and the person draws it. Only armour and
+  clothing make the outfit.
 
 **Containers' contents** follow from what the container is, where it stands and whose it is.
 - A household has one store, its best-kept container, at the head's band. Its other containers keep their set
@@ -74,6 +78,12 @@ Write `newworld/sources/stock/places/<place>.json` from the draft and the facts.
 
 **Loose things** follow from what the place is and its record: an offering at a shrine, a lost pack in the reeds,
 tools at a bench. Each lies on a ref or at a position, with an owner where people live.
+- Decide each significant loose thing of the source one by one. To keep it, write a row whose `id` is its ref
+  (no `on`, no `pos`) with an owner and the reason. To replace it, keep none and add a new row. Anything without a
+  row is not built; list it under `removed` with the reason.
+- A thing in a home is the household's: give `owner_faction` the household's id. A thing in a shared room is the
+  town's (`<place>.town`).
+- What lies open in a street is the open tier. A source's display of fine or exceptional things in the open goes.
 
 **Traders' lists** are fixed and restock to themselves. The gold is the scale's vanilla figure times the place's
 band. The list runs from T1 to the place's ceiling, fewer of each tier upward, within the band's list value. Things
@@ -93,9 +103,12 @@ the lore.
 
 `python3 -m tools.newworld.stockdb promises <place>` lists each `place_give` row and what delivers it. Loot,
 treasure and gold-hoard promises are yours: deliver each with a container or loose thing at the right tier, and a
-`deliveries` row naming it. A promise whose spot is not in the place files needs the spot built: ask for a
-place-build pass. Otherwise edit the place record, case by case, with the reason. In that case change the record,
-mark the delivery row `dropped` and name the edit in its `why`; a promise is never dropped to avoid the work.
+`deliveries` row naming it. A promise whose spot is not in the place files needs the spot built: never improvise
+the spot or its foes. Look for it in the drafted extent and in the database (a place of its own nearby); if it is in
+neither, write the delivery `open` with a `why` that says exactly what is missing and what would deliver it (the
+place-build pass, the placed people at a fixed level, the container at its tier), and put the choice to the owner:
+build the spot, or edit the record. Editing the record is the owner's call. When the owner rules it, change the
+record, mark the delivery row `dropped` and name the edit in its `why`; a promise is never dropped to avoid the work.
 
 ## 6. What stocking never breaks
 
@@ -111,8 +124,11 @@ mark the delivery row `dropped` and name the edit in its `why`; a promise is nev
    `python3 -m tools.newworld.stockdb load`. A load error reports the row and the column: fix the source, never the
    table.
 2. `python3 -m tools.newworld.stockdb promises <place>`: nothing open.
-3. Build and check the place (`python -m tools.places build <place>`, `check <place>`). The check passes only when every
-   significant thing traces to a row, that ownership and locks are set, and that nothing is levelled or respawns.
-4. Read the result against vanilla's yields: a house's gold, a strongbox's, a trader's list value. If a number is far
-   from them, either the facts explain it or the row is wrong.
+3. Build and check the place (`python -m tools.places build <place>`, `check <place>`). Its `stock` check passes
+   only when every significant thing traces to a row, every row is built, owners and locks are set, nothing respawns
+   but a merchant chest, and each holder is within its budget and band. Its `promises` check passes only when no
+   promise is open.
+4. `python -m tools.places stock report <place>` prints the place in numbers and its ten most valuable things. Read
+   them against vanilla's yields: a house's gold, a strongbox's, a trader's list value. If a number is far from them,
+   either the facts explain it or the row is wrong.
 5. Commit the sources and tables by path (`tooling/lane_commit.sh`), with the place's counts in the message.

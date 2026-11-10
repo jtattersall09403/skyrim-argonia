@@ -71,6 +71,32 @@ foreach (var m in mods)
                 if (!rows.ContainsKey(key)) order.Add(key);
                 rows[key] = new() { ["key"] = key, ["edid"] = r.EditorID, ["type"] = code, ["name"] = name, ["model"] = model,
                                     ["bounds"] = bounds, ["plugin"] = m.ModKey.FileName.String, ["keywords"] = kw };
+                // an item form's value and enchantment (the record's own, as the stocking extractor reads it), so its
+                // tier on the stocking scale is right before stockdb measures it
+                (long? value, FormKey ench) = r switch
+                {
+                    IWeaponGetter x => ((long?)x.BasicStats?.Value, x.ObjectEffect.FormKey),
+                    IArmorGetter x => (x.Value, x.ObjectEffect.FormKey),
+                    IBookGetter x => (x.Value, FormKey.Null),
+                    IIngestibleGetter x => (x.Value, FormKey.Null),
+                    IIngredientGetter x => (x.Value, FormKey.Null),
+                    IMiscItemGetter x => (x.Value, FormKey.Null),
+                    ISoulGemGetter x => (x.Value, FormKey.Null),
+                    IAmmunitionGetter x => (x.Value, FormKey.Null),
+                    IKeyGetter x => (x.Value, FormKey.Null),
+                    IScrollGetter x => (x.Value, FormKey.Null),
+                    ILightGetter x => (x.Value, FormKey.Null),
+                    _ => ((long?)null, FormKey.Null),
+                };
+                if (value != null)
+                {
+                    rows[key]["value"] = value;
+                    rows[key]["ench"] = ench.IsNull ? null : Key(ench);
+                    // the enchantment's grade, by vanilla's naming of its enchantments (EnchWeaponShockDamage03 is grade 3)
+                    if (!ench.IsNull && cache.TryResolve<IObjectEffectGetter>(ench, out var en)
+                        && System.Text.RegularExpressions.Regex.Match(en.EditorID ?? "", @"(\d\d)$") is { Success: true } g)
+                        rows[key]["ench_grade"] = int.Parse(g.Groups[1].Value);
+                }
             }
             catch (Exception e) { Console.Error.WriteLine($"{m.ModKey} {code} {r.FormKey}: {e.Message}"); }
         }

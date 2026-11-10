@@ -12,6 +12,7 @@ written anywhere but derived values (keys, editor ids, names, numbers).
 """
 from __future__ import annotations
 
+import re
 import struct
 from functools import lru_cache
 from pathlib import Path
@@ -92,6 +93,9 @@ class Records:
                    for v in struct.unpack_from(f"<{len(d) // 4}I", d)]
         out = {"key": key, "sig": rec.sig, "edid": rec.edid, "name": rec.name, "keywords": kws,
                "ench": self._ref(rec, rec.sub("EITM")), "value": 0, "weight": 0.0}
+        g = re.search(r"(\d\d)$", self.edid(out["ench"]) or "") if out["ench"] else None
+        if g:   # the enchantment's grade, by vanilla's naming of its enchantments (EnchWeaponShockDamage03 is 3)
+            out["ench_grade"] = int(g.group(1))
         data = rec.sub("DATA")
         if rec.sig in ("WEAP", "ARMO", "MISC", "SLGM", "KEYM", "SCRL"):
             out["value"], out["weight"] = _i32(data) or 0, _f32(data, 4) or 0.0

@@ -1,4 +1,15 @@
 {"id":"cite-culture-forest-green","kind":"reasoning","title":"culture:forest-green","locator":"culture:forest-green"}
+{"id":"cite-person-helstrom-87wth0ew4wj6aq9ctrc7gxazts","kind":"dossier","title":"person:helstrom.87WTH0EW4WJ6AQ9CTRC7GXAZTS","locator":"person:helstrom.87WTH0EW4WJ6AQ9CTRC7GXAZTS"}
+{"id":"cite-person-helstrom-8a62j4kyj8da3f58wkmry3y79f","kind":"dossier","title":"person:helstrom.8A62J4KYJ8DA3F58WKMRY3Y79F","locator":"person:helstrom.8A62J4KYJ8DA3F58WKMRY3Y79F"}
+{"id":"cite-person-helstrom-bgdsp6p2ttv6hnacjgn6kpvvby","kind":"dossier","title":"person:helstrom.BGDSP6P2TTV6HNACJGN6KPVVBY","locator":"person:helstrom.BGDSP6P2TTV6HNACJGN6KPVVBY"}
+{"id":"cite-person-helstrom-c2855503qh3shvrjdjsg1e9mkm","kind":"dossier","title":"person:helstrom.C2855503QH3SHVRJDJSG1E9MKM","locator":"person:helstrom.C2855503QH3SHVRJDJSG1E9MKM"}
+{"id":"cite-person-helstrom-fsf6529vrx65yhfs9sdr8jd794","kind":"dossier","title":"person:helstrom.FSF6529VRX65YHFS9SDR8JD794","locator":"person:helstrom.FSF6529VRX65YHFS9SDR8JD794"}
+{"id":"cite-person-helstrom-hv5320zme61st3ng6andrgjsas","kind":"dossier","title":"person:helstrom.HV5320ZME61ST3NG6ANDRGJSAS","locator":"person:helstrom.HV5320ZME61ST3NG6ANDRGJSAS"}
+{"id":"cite-person-helstrom-rtsj5gb95cs3fhg9mnnp1bezss","kind":"dossier","title":"person:helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS","locator":"person:helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS"}
+{"id":"cite-person-helstrom-ta28styj3xnyj9fpvmqeyjvqq4","kind":"dossier","title":"person:helstrom.TA28STYJ3XNYJ9FPVMQEYJVQQ4","locator":"person:helstrom.TA28STYJ3XNYJ9FPVMQEYJVQQ4"}
+{"id":"cite-person-helstrom-v7ck5843ekqs34zehs9hj39chn","kind":"dossier","title":"person:helstrom.V7CK5843EKQS34ZEHS9HJ39CHN","locator":"person:helstrom.V7CK5843EKQS34ZEHS9HJ39CHN"}
+{"id":"cite-person-helstrom-vp6htf3eaym7xem7wecspeg8fn","kind":"dossier","title":"person:helstrom.VP6HTF3EAYM7XEM7WECSPEG8FN","locator":"person:helstrom.VP6HTF3EAYM7XEM7WECSPEG8FN"}
+{"id":"cite-person-helstrom-yfmtjk20vgq52ak51gm46yjqyr","kind":"dossier","title":"person:helstrom.YFMTJK20VGQ52AK51GM46YJQYR","locator":"person:helstrom.YFMTJK20VGQ52AK51GM46YJQYR"}
 {"id":"cite-place-give-helstrom-1","kind":"reasoning","title":"place_give:helstrom/1","locator":"place_give:helstrom/1"}
 {"id":"cite-place-give-helstrom-11","kind":"reasoning","title":"place_give:helstrom/11","locator":"place_give:helstrom/11"}
 {"id":"cite-place-give-helstrom-13","kind":"reasoning","title":"place_give:helstrom/13","locator":"place_give:helstrom/13"}
@@ -21,6 +32,7 @@
 {"id":"cite-place-note-helstrom-look","kind":"reasoning","title":"place_note:helstrom/look","locator":"place_note:helstrom/look"}
 {"id":"cite-place-note-helstrom-people","kind":"reasoning","title":"place_note:helstrom/people","locator":"place_note:helstrom/people"}
 {"id":"cite-place-note-helstrom-present","kind":"reasoning","title":"place_note:helstrom/present","locator":"place_note:helstrom/present"}
+{"id":"cite-place-wealth-helstrom","kind":"dossier","title":"place_wealth:helstrom","locator":"place_wealth:helstrom"}
 {"id":"cite-region-murkwood","kind":"reasoning","title":"region:murkwood","locator":"region:murkwood"}
 {"id":"cite-story-design-quests-35-cast-md","kind":"dossier","title":"story/design/quests/35-cast.md","locator":"story/design/quests/35-cast.md"}
 {"id":"cite-story-lore-extrapolation-argonia-4e201-state-md","kind":"dossier","title":"story/lore/extrapolation/argonia-4e201-state.md","locator":"story/lore/extrapolation/argonia-4e201-state.md"}

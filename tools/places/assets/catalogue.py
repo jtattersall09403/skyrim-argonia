@@ -11,7 +11,9 @@ per base: `nordic` (decision 0006: Nordic architecture and Skyrim's cold-climate
 and model path), `kind` (the studio's kinds), `source` (the mod id), `has_model` (the model resolves in the NewWorld
 profile, so the converter can show it), and `text`, the plain-English descriptor lane V embeds for search.
 
-bases.jsonl rows: {key, edid, type, name, model, bounds, plugin, keywords, nordic, kind, source, has_model, text}."""
+bases.jsonl rows: {key, edid, type, name, model, bounds, plugin, keywords, value?, ench?, nordic, kind, source, has_model,
+text}; `value` and `ench` (the enchantment's key or null) on item forms, so an item's stocking tier is known before
+`stockdb items` measures it."""
 from __future__ import annotations
 
 import json

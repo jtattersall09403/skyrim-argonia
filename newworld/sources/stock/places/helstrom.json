@@ -1,18 +1,2578 @@
 {
  "place_id": "helstrom",
- "about": "Helstrom's goods and stock (tools/newworld/stockdb.py; contract docs/design/place-studio.md, Stock). The containers, loose things, people's possessions and traders' lists are written by the place-stock skill (lane S2).",
+ "about": "Helstrom's stock (skill place-stock, lane S2): the truth for what each container, person, trader and loose thing holds. Contract: docs/design/place-studio.md, Stock. 27 significant loose refs of the source are not built (see `removed`).",
  "goods": [
-  {"good": "feathers", "relation": "makes", "why": "Its market traders sell Murkwood feathers.", "tier": "EXTRAPOLATED", "cites": ["place_note:helstrom/economy"]},
-  {"good": "sap", "relation": "makes", "why": "Its market traders sell sap; a sap and herb seller keeps a stall.", "tier": "EXTRAPOLATED", "cites": ["place_note:helstrom/economy", "place_give:helstrom/4"]},
-  {"good": "eggs", "relation": "makes", "why": "Its market traders sell eggs.", "tier": "EXTRAPOLATED", "cites": ["place_note:helstrom/economy"]},
-  {"good": "river-fish", "relation": "makes", "why": "Its market traders sell river fish.", "tier": "EXTRAPOLATED", "cites": ["place_note:helstrom/economy"]},
-  {"good": "ironwork", "relation": "makes", "why": "The Root-Folk smith works the market smithy's forge.", "tier": "EXTRAPOLATED", "cites": ["place_give:helstrom/3", "place_give:helstrom/8"]},
-  {"good": "hide-and-leather", "relation": "makes", "why": "The market smithy has a tanning rack.", "tier": "EXTRAPOLATED", "cites": ["place_give:helstrom/13"]},
-  {"good": "river-goods", "relation": "trades", "why": "Helstrom does not trade outward: it receives and redistributes what the rivers bring it.", "tier": "EXTRAPOLATED", "cites": ["place_note:helstrom/economy"]}
+  {
+   "good": "feathers",
+   "relation": "makes",
+   "why": "its market traders sell Murkwood feathers (economy note); a feather-dresser and a feather-trapper live here",
+   "tier": "CANON_EXPLICIT",
+   "cites": [
+    "place_note:helstrom/economy"
+   ]
+  },
+  {
+   "good": "sap",
+   "relation": "makes",
+   "why": "its market traders sell sap (economy note); a sap-gatherer and the sap and herb seller live here",
+   "tier": "CANON_EXPLICIT",
+   "cites": [
+    "place_note:helstrom/economy"
+   ]
+  },
+  {
+   "good": "eggs",
+   "relation": "makes",
+   "why": "its market traders sell eggs (economy note)",
+   "tier": "CANON_EXPLICIT",
+   "cites": [
+    "place_note:helstrom/economy"
+   ]
+  },
+  {
+   "good": "river-fish",
+   "relation": "makes",
+   "why": "its market traders sell river fish (economy note); fishers of the river fork live here",
+   "tier": "CANON_EXPLICIT",
+   "cites": [
+    "place_note:helstrom/economy"
+   ]
+  },
+  {
+   "good": "ironwork",
+   "relation": "makes",
+   "why": "the Root-Folk smith works the forge at the market smithy with iron bought from the raft crews",
+   "tier": "EXTRAPOLATED",
+   "cites": [
+    "place_give:helstrom/3"
+   ]
+  },
+  {
+   "good": "hide-and-leather",
+   "relation": "makes",
+   "why": "a tanner tans hides at the smithy's rack",
+   "tier": "EXTRAPOLATED",
+   "cites": [
+    "place_give:helstrom/13"
+   ]
+  },
+  {
+   "good": "river-goods",
+   "relation": "trades",
+   "why": "the rafts and rootworms bring goods to Helstrom and its people share them out; nothing is sent outward (economy note)",
+   "tier": "CANON_EXPLICIT",
+   "cites": [
+    "place_note:helstrom/economy"
+   ]
+  }
  ],
- "containers": [],
- "loose": [],
- "possessions": [],
- "traders": [],
- "deliveries": []
+ "containers": [
+  {
+   "ref": "Black Marsh.esm:1DE603",
+   "space": "01ArgonianHouseinside",
+   "kind": "dresser",
+   "security": "S1",
+   "tier": "T2",
+   "gold": 50,
+   "items": [
+    {
+     "item": "Skyrim.esm:03EADD",
+     "count": 1,
+     "why": "a healing draught kept for the river"
+    }
+   ],
+   "why": "the household store of Poles-Upriver (W3 Modest, head of 6): gold 50 of 15-50 by household size; best tier T2, owned and unlocked: security S1 allows up to T2 (a chest, unlocked or Novice)",
+   "cites": [
+    "place_wealth:helstrom",
+    "person:helstrom.YFMTJK20VGQ52AK51GM46YJQYR"
+   ],
+   "owner_household": "helstrom.household.01ArgonianHouseinside"
+  },
+  {
+   "ref": "Black Marsh.esm:1DE733",
+   "space": "01ArgonianHouseinside.2",
+   "kind": "dresser",
+   "security": "S3",
+   "tier": "T3",
+   "gold": 150,
+   "items": [
+    {
+     "item": "Skyrim.esm:063B45",
+     "count": 1,
+     "why": "a garnet taken from a raft crew in trade and kept as savings"
+    }
+   ],
+   "why": "the household store of Counts-Twice (W4 Comfortable, head of 6): gold 150 of 50-150 by household size; best tier T3 behind an Adept lock, the lock of its best tier (a locked chest, Apprentice or Adept)",
+   "cites": [
+    "place_wealth:helstrom",
+    "person:helstrom.FSF6529VRX65YHFS9SDR8JD794"
+   ],
+   "owner_household": "helstrom.household.01ArgonianHouseinside.2",
+   "lock": "Adept"
+  },
+  {
+   "ref": "Black Marsh.esm:1DE68F",
+   "space": "01ArgonianHouseinside.3",
+   "kind": "dresser",
+   "security": "S3",
+   "tier": "T3",
+   "gold": 150,
+   "items": [
+    {
+     "item": "Skyrim.esm:05ACE4",
+     "count": 4,
+     "why": "iron bought from the raft crews for the forge"
+    },
+    {
+     "item": "Skyrim.esm:05ACE5",
+     "count": 2,
+     "why": "steel kept back for the levy's blades"
+    }
+   ],
+   "why": "the household store of Meshu-Ka (W4 Comfortable, head of 6): gold 150 of 50-150 by household size; best tier T3 behind an Adept lock, the lock of its best tier (a locked chest, Apprentice or Adept)",
+   "cites": [
+    "place_wealth:helstrom",
+    "person:helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS"
+   ],
+   "owner_household": "helstrom.household.01ArgonianHouseinside.3",
+   "lock": "Adept"
+  },
+  {
+   "ref": "Black Marsh.esm:1DE87B",
+   "space": "01ArgonianHouseinside.4",
+   "kind": "dresser",
+   "security": "S3",
+   "tier": "T3",
+   "gold": 150,
+   "items": [
+    {
+     "item": "Skyrim.esm:03EADE",
+     "count": 2,
+     "why": "the household's stronger draughts, kept back from the stall"
+    },
+    {
+     "item": "Skyrim.esm:0AE723",
+     "count": 1,
+     "why": "a cure kept for the household"
+    },
+    {
+     "item": "Skyrim.esm:063B5F",
+     "count": 4,
+     "why": "sap in sealed gourds: dear in Helstrom"
+    }
+   ],
+   "why": "the household store of Wujeel (W4 Comfortable, head of 6): gold 150 of 50-150 by household size; best tier T3 behind an Adept lock, the lock of its best tier (a locked chest, Apprentice or Adept)",
+   "cites": [
+    "place_wealth:helstrom",
+    "person:helstrom.BGDSP6P2TTV6HNACJGN6KPVVBY"
+   ],
+   "owner_household": "helstrom.household.01ArgonianHouseinside.4",
+   "lock": "Adept"
+  },
+  {
+   "ref": "Black Marsh.esm:1DE7D7",
+   "space": "01ArgonianHouseinside.5",
+   "kind": "dresser",
+   "security": "S1",
+   "tier": "T2",
+   "gold": 50,
+   "items": [
+    {
+     "item": "Skyrim.esm:03EADD",
+     "count": 2,
+     "why": "healing draughts from the tree-minders' hall"
+    }
+   ],
+   "why": "the household store of Taleeka-Ma (W3 Modest, head of 6): gold 50 of 15-50 by household size; best tier T2, owned and unlocked: security S1 allows up to T2 (a chest, unlocked or Novice)",
+   "cites": [
+    "place_wealth:helstrom",
+    "person:helstrom.V7CK5843EKQS34ZEHS9HJ39CHN"
+   ],
+   "owner_household": "helstrom.household.01ArgonianHouseinside.5"
+  },
+  {
+   "ref": "Black Marsh.esm:1E44AB",
+   "space": "01ArgonianHouseinside.6",
+   "kind": "chest",
+   "security": "S1",
+   "tier": "T2",
+   "gold": 50,
+   "items": [
+    {
+     "item": "Skyrim.esm:03B97C",
+     "count": 1,
+     "why": "an old ring of the household, kept in the store and not worn"
+    }
+   ],
+   "why": "the household store of Cheeval-Xu (W3 Modest, head of 6): gold 50 of 15-50 by household size; best tier T2, owned and unlocked: security S1 allows up to T2 (a chest, unlocked or Novice)",
+   "cites": [
+    "place_wealth:helstrom",
+    "person:helstrom.C2855503QH3SHVRJDJSG1E9MKM"
+   ],
+   "owner_household": "helstrom.household.01ArgonianHouseinside.6"
+  },
+  {
+   "ref": "Black Marsh.esm:1E4311",
+   "space": "01ArgonianHouseinside.7",
+   "kind": "dresser",
+   "security": "S1",
+   "tier": "T2",
+   "gold": 50,
+   "items": [],
+   "why": "the household store of Nolu-Jeel (W3 Modest, head of 6): gold 50 of 15-50 by household size; best tier T2, owned and unlocked: security S1 allows up to T2 (a chest, unlocked or Novice)",
+   "cites": [
+    "place_wealth:helstrom",
+    "person:helstrom.HV5320ZME61ST3NG6ANDRGJSAS"
+   ],
+   "owner_household": "helstrom.household.01ArgonianHouseinside.7"
+  },
+  {
+   "ref": "Black Marsh.esm:1E4354",
+   "space": "01ArgonianHouseinside.8",
+   "kind": "dresser",
+   "security": "S1",
+   "tier": "T2",
+   "gold": 50,
+   "items": [],
+   "why": "the household store of Ixtul-Bei (W3 Modest, head of 6): gold 50 of 15-50 by household size; best tier T2, owned and unlocked: security S1 allows up to T2 (a chest, unlocked or Novice)",
+   "cites": [
+    "place_wealth:helstrom",
+    "person:helstrom.TA28STYJ3XNYJ9FPVMQEYJVQQ4"
+   ],
+   "owner_household": "helstrom.household.01ArgonianHouseinside.8"
+  },
+  {
+   "ref": "Black Marsh.esm:1DE91F",
+   "space": "01ArgonianHouseinside.9",
+   "kind": "dresser",
+   "security": "S1",
+   "tier": "T2",
+   "gold": 50,
+   "items": [],
+   "why": "the household store of Kuxeesh (W3 Modest, head of 6): gold 50 of 15-50 by household size; best tier T2, owned and unlocked: security S1 allows up to T2 (a chest, unlocked or Novice)",
+   "cites": [
+    "place_wealth:helstrom",
+    "person:helstrom.VP6HTF3EAYM7XEM7WECSPEG8FN"
+   ],
+   "owner_household": "helstrom.household.01ArgonianHouseinside.9"
+  },
+  {
+   "ref": "Black Marsh.esm:23D5B5",
+   "space": "01Ship",
+   "kind": "chest",
+   "security": "S1",
+   "tier": "T2",
+   "gold": 21,
+   "items": [],
+   "why": "the household store of Sleeps-Last (W3 Modest, head of 1): gold 21 of 15-50 by household size; best tier T2, owned and unlocked: security S1 allows up to T2 (a chest, unlocked or Novice)",
+   "cites": [
+    "place_wealth:helstrom",
+    "person:helstrom.8A62J4KYJ8DA3F58WKMRY3Y79F"
+   ],
+   "owner_household": "helstrom.household.01Ship"
+  },
+  {
+   "ref": "helstrom.86CBE7ZFHVE5RE15Q94RB2FF14",
+   "space": "exterior",
+   "kind": "barrel",
+   "security": "S1",
+   "tier": "T2",
+   "gold": 0,
+   "items": [
+    {
+     "item": "Skyrim.esm:03EADD",
+     "count": 2,
+     "why": "the levy's field dressings"
+    }
+   ],
+   "why": "the levy's camp barrel at the landing: the guard's store, sound gear and field dressings, owned by the levy so taking from it is stealing; its gold is kept by each guard, not the camp",
+   "cites": [
+    "place_wealth:helstrom",
+    "person:helstrom.87WTH0EW4WJ6AQ9CTRC7GXAZTS"
+   ],
+   "owner_faction": "helstrom.guard"
+  },
+  {
+   "ref": "Black Marsh.esm:23D5E6",
+   "space": "01Ship",
+   "kind": "satchel",
+   "owner_household": "helstrom.household.01Ship",
+   "security": "S1",
+   "tier": "T1",
+   "gold": 0,
+   "items": [],
+   "why": "the lodge's satchel: the source's significant things are taken out; the lodge's store is the chest Black Marsh.esm:23D5B5; set dressing stays",
+   "cites": [
+    "place_wealth:helstrom"
+   ]
+  },
+  {
+   "ref": "Black Marsh.esm:23D5FE",
+   "space": "01Ship",
+   "kind": "end-table",
+   "owner_household": "helstrom.household.01Ship",
+   "security": "S1",
+   "tier": "T1",
+   "gold": 0,
+   "items": [],
+   "why": "the lodge's end-table: the source's significant things are taken out; the lodge's store is the chest Black Marsh.esm:23D5B5; set dressing stays",
+   "cites": [
+    "place_wealth:helstrom"
+   ]
+  },
+  {
+   "ref": "helstrom.FDFK0WXD3T1JDBRX2PRY07A0ZR",
+   "space": "exterior",
+   "kind": "corpse",
+   "security": "S0",
+   "effort": "E1",
+   "tier": "T1",
+   "gold": 5,
+   "items": [
+    {
+     "item": "Skyrim.esm:01397E",
+     "count": 1,
+     "why": "the dead one's own knife"
+    }
+   ],
+   "why": "a body on the city's ground with no owner, so free to take; the open tier T1 of a D1 place, the least gold of that tier",
+   "cites": [
+    "place_wealth:helstrom"
+   ]
+  },
+  {
+   "ref": "helstrom.HQXTF188GYDM9GF1BAY4DJZ697",
+   "space": "exterior",
+   "kind": "corpse",
+   "security": "S0",
+   "effort": "E1",
+   "tier": "T1",
+   "gold": 5,
+   "items": [
+    {
+     "item": "Skyrim.esm:01397E",
+     "count": 1,
+     "why": "the dead one's own knife"
+    }
+   ],
+   "why": "a body on the city's ground with no owner, so free to take; the open tier T1 of a D1 place, the least gold of that tier",
+   "cites": [
+    "place_wealth:helstrom"
+   ]
+  },
+  {
+   "ref": "helstrom.P7NJDDJTEQEF5H3J9R12KT3SWH",
+   "space": "exterior",
+   "kind": "corpse",
+   "security": "S0",
+   "effort": "E1",
+   "tier": "T1",
+   "gold": 5,
+   "items": [
+    {
+     "item": "Skyrim.esm:01397E",
+     "count": 1,
+     "why": "the dead one's own knife"
+    }
+   ],
+   "why": "a body on the city's ground with no owner, so free to take; the open tier T1 of a D1 place, the least gold of that tier",
+   "cites": [
+    "place_wealth:helstrom"
+   ]
+  }
+ ],
+ "loose": [
+  {
+   "id": "Black Marsh.esm:1DE621",
+   "space": "01ArgonianHouseinside",
+   "item": "Skyrim.esm:09659B",
+   "count": 1,
+   "owner_faction": "helstrom.household.01ArgonianHouseinside",
+   "why": "kept: a household's light for the night, ordinary (T1) and owned by the household, so taking it is stealing"
+  },
+  {
+   "id": "Black Marsh.esm:1DE622",
+   "space": "01ArgonianHouseinside",
+   "item": "Skyrim.esm:09659B",
+   "count": 1,
+   "owner_faction": "helstrom.household.01ArgonianHouseinside",
+   "why": "kept: a household's light for the night, ordinary (T1) and owned by the household, so taking it is stealing"
+  },
+  {
+   "id": "Black Marsh.esm:1DE748",
+   "space": "01ArgonianHouseinside.2",
+   "item": "Skyrim.esm:09659B",
+   "count": 1,
+   "owner_faction": "helstrom.household.01ArgonianHouseinside.2",
+   "why": "kept: a household's light for the night, ordinary (T1) and owned by the household, so taking it is stealing"
+  },
+  {
+   "id": "Black Marsh.esm:1DE767",
+   "space": "01ArgonianHouseinside.2",
+   "item": "Skyrim.esm:09659B",
+   "count": 1,
+   "owner_faction": "helstrom.household.01ArgonianHouseinside.2",
+   "why": "kept: a household's light for the night, ordinary (T1) and owned by the household, so taking it is stealing"
+  },
+  {
+   "id": "Black Marsh.esm:1DE6A4",
+   "space": "01ArgonianHouseinside.3",
+   "item": "Skyrim.esm:09659B",
+   "count": 1,
+   "owner_faction": "helstrom.household.01ArgonianHouseinside.3",
+   "why": "kept: a household's light for the night, ordinary (T1) and owned by the household, so taking it is stealing"
+  },
+  {
+   "id": "Black Marsh.esm:1DE6C3",
+   "space": "01ArgonianHouseinside.3",
+   "item": "Skyrim.esm:09659B",
+   "count": 1,
+   "owner_faction": "helstrom.household.01ArgonianHouseinside.3",
+   "why": "kept: a household's light for the night, ordinary (T1) and owned by the household, so taking it is stealing"
+  },
+  {
+   "id": "Black Marsh.esm:1DE890",
+   "space": "01ArgonianHouseinside.4",
+   "item": "Skyrim.esm:09659B",
+   "count": 1,
+   "owner_faction": "helstrom.household.01ArgonianHouseinside.4",
+   "why": "kept: a household's light for the night, ordinary (T1) and owned by the household, so taking it is stealing"
+  },
+  {
+   "id": "Black Marsh.esm:1DE8AF",
+   "space": "01ArgonianHouseinside.4",
+   "item": "Skyrim.esm:09659B",
+   "count": 1,
+   "owner_faction": "helstrom.household.01ArgonianHouseinside.4",
+   "why": "kept: a household's light for the night, ordinary (T1) and owned by the household, so taking it is stealing"
+  },
+  {
+   "id": "Black Marsh.esm:1DE7EC",
+   "space": "01ArgonianHouseinside.5",
+   "item": "Skyrim.esm:09659B",
+   "count": 1,
+   "owner_faction": "helstrom.household.01ArgonianHouseinside.5",
+   "why": "kept: a household's light for the night, ordinary (T1) and owned by the household, so taking it is stealing"
+  },
+  {
+   "id": "Black Marsh.esm:1DE80B",
+   "space": "01ArgonianHouseinside.5",
+   "item": "Skyrim.esm:09659B",
+   "count": 1,
+   "owner_faction": "helstrom.household.01ArgonianHouseinside.5",
+   "why": "kept: a household's light for the night, ordinary (T1) and owned by the household, so taking it is stealing"
+  },
+  {
+   "id": "Black Marsh.esm:1E430A",
+   "space": "01ArgonianHouseinside.6",
+   "item": "Skyrim.esm:09659B",
+   "count": 1,
+   "owner_faction": "helstrom.household.01ArgonianHouseinside.6",
+   "why": "kept: a household's light for the night, ordinary (T1) and owned by the household, so taking it is stealing"
+  },
+  {
+   "id": "Black Marsh.esm:1E43E5",
+   "space": "01ArgonianHouseinside.6",
+   "item": "Skyrim.esm:09659B",
+   "count": 1,
+   "owner_faction": "helstrom.household.01ArgonianHouseinside.6",
+   "why": "kept: a household's light for the night, ordinary (T1) and owned by the household, so taking it is stealing"
+  },
+  {
+   "id": "Black Marsh.esm:1E42BA",
+   "space": "01ArgonianHouseinside.7",
+   "item": "Skyrim.esm:09659B",
+   "count": 1,
+   "owner_faction": "helstrom.household.01ArgonianHouseinside.7",
+   "why": "kept: a household's light for the night, ordinary (T1) and owned by the household, so taking it is stealing"
+  },
+  {
+   "id": "Black Marsh.esm:1E447B",
+   "space": "01ArgonianHouseinside.7",
+   "item": "Skyrim.esm:09659B",
+   "count": 1,
+   "owner_faction": "helstrom.household.01ArgonianHouseinside.7",
+   "why": "kept: a household's light for the night, ordinary (T1) and owned by the household, so taking it is stealing"
+  },
+  {
+   "id": "Black Marsh.esm:1E436F",
+   "space": "01ArgonianHouseinside.8",
+   "item": "Skyrim.esm:09659B",
+   "count": 1,
+   "owner_faction": "helstrom.household.01ArgonianHouseinside.8",
+   "why": "kept: a household's light for the night, ordinary (T1) and owned by the household, so taking it is stealing"
+  },
+  {
+   "id": "Black Marsh.esm:1E4383",
+   "space": "01ArgonianHouseinside.8",
+   "item": "Skyrim.esm:09659B",
+   "count": 1,
+   "owner_faction": "helstrom.household.01ArgonianHouseinside.8",
+   "why": "kept: a household's light for the night, ordinary (T1) and owned by the household, so taking it is stealing"
+  },
+  {
+   "id": "Black Marsh.esm:1DE934",
+   "space": "01ArgonianHouseinside.9",
+   "item": "Skyrim.esm:09659B",
+   "count": 1,
+   "owner_faction": "helstrom.household.01ArgonianHouseinside.9",
+   "why": "kept: a household's light for the night, ordinary (T1) and owned by the household, so taking it is stealing"
+  },
+  {
+   "id": "Black Marsh.esm:1DE953",
+   "space": "01ArgonianHouseinside.9",
+   "item": "Skyrim.esm:09659B",
+   "count": 1,
+   "owner_faction": "helstrom.household.01ArgonianHouseinside.9",
+   "why": "kept: a household's light for the night, ordinary (T1) and owned by the household, so taking it is stealing"
+  },
+  {
+   "id": "Black Marsh.esm:23D460",
+   "space": "01Ship",
+   "item": "Skyrim.esm:013982",
+   "count": 1,
+   "owner_faction": "helstrom.household.01Ship",
+   "why": "kept: a raft crew's mace left at the lodge, T1, the lodge's"
+  },
+  {
+   "id": "Black Marsh.esm:23D4BA",
+   "space": "01Ship",
+   "item": "Skyrim.esm:02F2F4",
+   "count": 1,
+   "owner_faction": "helstrom.household.01Ship",
+   "why": "kept: the lodge's axe for firewood, T1, the lodge's"
+  },
+  {
+   "id": "Black Marsh.esm:2076FE",
+   "space": "01cellDUPLICATE002",
+   "item": "Skyrim.esm:09659B",
+   "count": 1,
+   "owner_faction": "helstrom.town",
+   "why": "kept: an ordinary scroll (25 gold, T1) in a shared room of the city, the town's"
+  },
+  {
+   "id": "Black Marsh.esm:2076FF",
+   "space": "01cellDUPLICATE002",
+   "item": "Skyrim.esm:09659B",
+   "count": 1,
+   "owner_faction": "helstrom.town",
+   "why": "kept: an ordinary scroll (25 gold, T1) in a shared room of the city, the town's"
+  },
+  {
+   "id": "Black Marsh.esm:207702",
+   "space": "01cellDUPLICATE002",
+   "item": "Skyrim.esm:0965AD",
+   "count": 1,
+   "owner_faction": "helstrom.town",
+   "why": "kept: an ordinary scroll (50 gold, T1) in a shared room of the city, the town's"
+  }
+ ],
+ "possessions": [
+  {
+   "person": "helstrom.1WMHR9CC0ASZH8S4KYVNRGTYW0",
+   "items": [
+    {
+     "item": "Skyrim.esm:03619E",
+     "count": 1,
+     "why": "the levy's issue: a leather cuirass, sound gear (T2) of the city's own tanning (hide and leather is made here)",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:013920",
+     "count": 1,
+     "why": "the levy's issue: leather boots (T2, made here)",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:013921",
+     "count": 1,
+     "why": "the levy's issue: leather bracers (T2, made here)",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:013989",
+     "count": 1,
+     "why": "the levy's issue: a steel sword from the market smithy (T2, ironwork made here)",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:03EADD",
+     "count": 1,
+     "why": "the levy's field dressing: one minor healing draught",
+     "worn": false
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 9,
+     "why": "carried gold, 2-10 for W2 Poor",
+     "worn": false
+    }
+   ],
+   "why": "Hulun-Kesh: guard, the city levy, night watch, W2 Poor"
+  },
+  {
+   "person": "helstrom.235848SZ2REAN855Y2BFV3TP49",
+   "items": [
+    {
+     "item": "Skyrim.esm:01397E",
+     "count": 1,
+     "why": "a net-maker's knife for cutting cord",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:0261C0",
+     "count": 1,
+     "why": "plain clothes: the armour or enchanted piece of the source's outfit is taken out, so a plain garment covers the body",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 5,
+     "why": "carried gold, 2-10 for W2 Poor",
+     "worn": false
+    }
+   ],
+   "why": "Okaw-Neesa: resident, net-maker, W2 Poor"
+  },
+  {
+   "person": "helstrom.27HEYZ8JQ16G29JJ49V6PW551Z",
+   "items": [
+    {
+     "item": "Skyrim.esm:013986",
+     "count": 1,
+     "why": "a fine blade for trimming quills: a feather-dresser's tool (T2 for her W3 band)",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 11,
+     "why": "carried gold, 8-25 for W3 Modest",
+     "worn": false
+    }
+   ],
+   "why": "Nuexa-Lei: resident, feather-dresser, W3 Modest"
+  },
+  {
+   "person": "helstrom.2SN1HV4PXJWQD4A9FS08RQ2TWC",
+   "items": [
+    {
+     "item": "Skyrim.esm:01397E",
+     "count": 1,
+     "why": "a cook's knife",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 22,
+     "why": "carried gold, 8-25 for W3 Modest",
+     "worn": false
+    }
+   ],
+   "why": "Lumeexa: resident, lumberry gatherer and cook, W3 Modest"
+  },
+  {
+   "person": "helstrom.2XC26VFV49CVC6MMG24SW81Z5N",
+   "items": [
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 16,
+     "why": "carried gold, 8-25 for W3 Modest",
+     "worn": false
+    }
+   ],
+   "why": "Jeenaxi: resident, egg-tender, W3 Modest"
+  },
+  {
+   "person": "helstrom.2XGAS6151RPSP9V039WAPCAVWE",
+   "items": [
+    {
+     "item": "Skyrim.esm:01397E",
+     "count": 1,
+     "why": "a knife for cutting herbs and roots in the swamp",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 25,
+     "why": "carried gold, 8-25 for W3 Modest",
+     "worn": false
+    }
+   ],
+   "why": "Lieshu: resident, herb-gatherer, W3 Modest"
+  },
+  {
+   "person": "helstrom.4GBW9ZEQ76A1V9ZGQ97EVH2G8Y",
+   "items": [
+    {
+     "item": "Skyrim.esm:03619E",
+     "count": 1,
+     "why": "the levy's issue: a leather cuirass, sound gear (T2) of the city's own tanning (hide and leather is made here)",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:013920",
+     "count": 1,
+     "why": "the levy's issue: leather boots (T2, made here)",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:013921",
+     "count": 1,
+     "why": "the levy's issue: leather bracers (T2, made here)",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:013989",
+     "count": 1,
+     "why": "the levy's issue: a steel sword from the market smithy (T2, ironwork made here)",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:03EADD",
+     "count": 1,
+     "why": "the levy's field dressing: one minor healing draught",
+     "worn": false
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 9,
+     "why": "carried gold, 2-10 for W2 Poor",
+     "worn": false
+    }
+   ],
+   "why": "Gahzeel: guard, the city levy, night watch, W2 Poor"
+  },
+  {
+   "person": "helstrom.6E8A5X2P02B4VC5QE4D7CPY62V",
+   "items": [
+    {
+     "item": "Skyrim.esm:03619E",
+     "count": 1,
+     "why": "the levy's issue: a leather cuirass, sound gear (T2) of the city's own tanning (hide and leather is made here)",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:013920",
+     "count": 1,
+     "why": "the levy's issue: leather boots (T2, made here)",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:013921",
+     "count": 1,
+     "why": "the levy's issue: leather bracers (T2, made here)",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:013989",
+     "count": 1,
+     "why": "the levy's issue: a steel sword from the market smithy (T2, ironwork made here)",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:03EADD",
+     "count": 1,
+     "why": "the levy's field dressing: one minor healing draught",
+     "worn": false
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 9,
+     "why": "carried gold, 2-10 for W2 Poor",
+     "worn": false
+    }
+   ],
+   "why": "Nine-Teeth: guard, the city levy, night watch, W2 Poor"
+  },
+  {
+   "person": "helstrom.6K5TAAAS7NZWRCPFSWQ7K7H912",
+   "items": [
+    {
+     "item": "Skyrim.esm:03619E",
+     "count": 1,
+     "why": "the levy's issue: a leather cuirass, sound gear (T2) of the city's own tanning (hide and leather is made here)",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:013920",
+     "count": 1,
+     "why": "the levy's issue: leather boots (T2, made here)",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:013921",
+     "count": 1,
+     "why": "the levy's issue: leather bracers (T2, made here)",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:013989",
+     "count": 1,
+     "why": "the levy's issue: a steel sword from the market smithy (T2, ironwork made here)",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:03EADD",
+     "count": 1,
+     "why": "the levy's field dressing: one minor healing draught",
+     "worn": false
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 6,
+     "why": "carried gold, 2-10 for W2 Poor",
+     "worn": false
+    }
+   ],
+   "why": "Ruweel-Ta: guard, the city levy, day watch, W2 Poor"
+  },
+  {
+   "person": "helstrom.6P3T5QK6SCB0ACS5W0BK2BKA5B",
+   "items": [
+    {
+     "item": "Skyrim.esm:01397E",
+     "count": 1,
+     "why": "a fisher's gutting knife",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 9,
+     "why": "carried gold, 2-10 for W2 Poor",
+     "worn": false
+    }
+   ],
+   "why": "Jeelixus: resident, trodh fisher, W2 Poor"
+  },
+  {
+   "person": "helstrom.6TM1KF73XG3CFP2A0MCDVDHH8E",
+   "items": [
+    {
+     "item": "Skyrim.esm:0209A6",
+     "count": 1,
+     "why": "plain clothes: the armour or enchanted piece of the source's outfit is taken out, so a plain garment covers the body",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 10,
+     "why": "carried gold, 2-10 for W2 Poor",
+     "worn": false
+    }
+   ],
+   "why": "Paxu-Lei: resident, scale-groomer, W2 Poor"
+  },
+  {
+   "person": "helstrom.705TBPJ2KY2PCAM2NN1H0HVHXT",
+   "items": [
+    {
+     "item": "Skyrim.esm:01397E",
+     "count": 1,
+     "why": "a tanner's skinning knife",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:0800E4",
+     "count": 4,
+     "why": "straps cut for his partner's fittings",
+     "worn": false
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 25,
+     "why": "carried gold, 8-25 for W3 Modest",
+     "worn": false
+    }
+   ],
+   "why": "Neeshal: resident, tanner, W3 Modest"
+  },
+  {
+   "person": "helstrom.70XB8VD8S4A3J2CHESHXF26B2C",
+   "items": [
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 7,
+     "why": "carried gold, 2-10 for W2 Poor",
+     "worn": false
+    }
+   ],
+   "why": "Ulaxeen: resident, raft-poler between the districts, W2 Poor"
+  },
+  {
+   "person": "helstrom.82Z8NX6PFJJAFJTXPT9AFW5F4G",
+   "items": [
+    {
+     "item": "Skyrim.esm:02F2F4",
+     "count": 1,
+     "why": "a raft-builder's axe for cutting cane",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 22,
+     "why": "carried gold, 8-25 for W3 Modest",
+     "worn": false
+    }
+   ],
+   "why": "Xuhal-Teeus: resident, raft-builder, W3 Modest"
+  },
+  {
+   "person": "helstrom.83KFGZX11WTYYG7AANHBJ86442",
+   "items": [
+    {
+     "item": "Skyrim.esm:0209A6",
+     "count": 1,
+     "why": "plain clothes: the armour or enchanted piece of the source's outfit is taken out, so a plain garment covers the body",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 5,
+     "why": "carried gold, 2-10 for W2 Poor",
+     "worn": false
+    }
+   ],
+   "why": "Wexa-Dun: resident, frog-pipe player, W2 Poor"
+  },
+  {
+   "person": "helstrom.87WTH0EW4WJ6AQ9CTRC7GXAZTS",
+   "items": [
+    {
+     "item": "Skyrim.esm:03619E",
+     "count": 1,
+     "why": "the levy's issue: a leather cuirass, sound gear (T2) of the city's own tanning (hide and leather is made here)",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:013920",
+     "count": 1,
+     "why": "the levy's issue: leather boots (T2, made here)",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:013921",
+     "count": 1,
+     "why": "the levy's issue: leather bracers (T2, made here)",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:013989",
+     "count": 1,
+     "why": "the levy's issue: a steel sword from the market smithy (T2, ironwork made here)",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:03EADD",
+     "count": 1,
+     "why": "the levy's field dressing: one minor healing draught",
+     "worn": false
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 25,
+     "why": "carried gold, 8-25 for W3 Modest",
+     "worn": false
+    }
+   ],
+   "why": "Tzalun: guard, the city levy, leads the day watch, W3 Modest"
+  },
+  {
+   "person": "helstrom.8A62J4KYJ8DA3F58WKMRY3Y79F",
+   "items": [
+    {
+     "item": "Skyrim.esm:01397E",
+     "count": 1,
+     "why": "the lodge keeper's kitchen knife",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 11,
+     "why": "carried gold, 8-25 for W3 Modest",
+     "worn": false
+    }
+   ],
+   "why": "Sleeps-Last: innkeeper, keeper of the boatmen's lodge, W3 Modest"
+  },
+  {
+   "person": "helstrom.93DEY86JNKQHJMDD6XG2CEMEY6",
+   "items": [
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 22,
+     "why": "carried gold, 8-25 for W3 Modest",
+     "worn": false
+    }
+   ],
+   "why": "Weetsa: resident, egg-gatherer, W3 Modest"
+  },
+  {
+   "person": "helstrom.9GXR0J529K0PP7Z1K6YXQ4G7WA",
+   "items": [
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 2,
+     "why": "carried gold, 2-10 for W2 Poor",
+     "worn": false
+    }
+   ],
+   "why": "Deetsa-Hul: resident, porter at the landing, W2 Poor"
+  },
+  {
+   "person": "helstrom.9NSKR4AZPYF3XXEDHPN0TX6WQK",
+   "items": [
+    {
+     "item": "Skyrim.esm:09171B",
+     "count": 1,
+     "why": "a naheesh's chain, worn when she sits with the assembly (W3: one piece of jewellery)",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:10CFEF",
+     "count": 1,
+     "why": "a naheesh's brown robes: the armour or enchanted piece of the source's outfit is taken out, so a plain garment covers the body",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 14,
+     "why": "carried gold, 8-25 for W3 Modest",
+     "worn": false
+    }
+   ],
+   "why": "Hixee-Ra: resident, naheesh of the assembly, W3 Modest"
+  },
+  {
+   "person": "helstrom.A9T6BFQ0VP4VSXGY7WRQ9745KF",
+   "items": [
+    {
+     "item": "Skyrim.esm:01397E",
+     "count": 1,
+     "why": "a carving knife for depth sticks",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:01BE1A",
+     "count": 1,
+     "why": "plain clothes: the armour or enchanted piece of the source's outfit is taken out, so a plain garment covers the body",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 7,
+     "why": "carried gold, 2-10 for W2 Poor",
+     "worn": false
+    }
+   ],
+   "why": "Oleeka-Tsun: resident, depth-stick carver, W2 Poor"
+  },
+  {
+   "person": "helstrom.AADTD3DNC5VXN4R7TWAZXV034D",
+   "items": [
+    {
+     "item": "Skyrim.esm:02F2F4",
+     "count": 1,
+     "why": "an axe for cutting new boards for the plank walks",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 16,
+     "why": "carried gold, 8-25 for W3 Modest",
+     "worn": false
+    }
+   ],
+   "why": "Saxeena: resident, plank-walk mender, W3 Modest"
+  },
+  {
+   "person": "helstrom.AZBB3MKKD7RXK477V5P4Q20373",
+   "items": [
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 2,
+     "why": "carried gold, 2-10 for W2 Poor",
+     "worn": false
+    }
+   ],
+   "why": "Shuxeeta: resident, porter at the landing, W2 Poor"
+  },
+  {
+   "person": "helstrom.BGDSP6P2TTV6HNACJGN6KPVVBY",
+   "items": [
+    {
+     "item": "Skyrim.esm:013986",
+     "count": 1,
+     "why": "a sound knife for cutting roots (T2, within his W4 band)",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:03EADD",
+     "count": 2,
+     "why": "two of his own healing draughts",
+     "worn": false
+    },
+    {
+     "item": "Skyrim.esm:0AE723",
+     "count": 1,
+     "why": "a cure for the swamp's fevers, his trade's best seller",
+     "worn": false
+    },
+    {
+     "item": "Skyrim.esm:09171B",
+     "count": 1,
+     "why": "a silver chain bought with sap money: sap is dear in Helstrom (W4)",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:086991",
+     "count": 1,
+     "why": "fine clothes bought with sap money: the armour or enchanted piece of the source's outfit is taken out, so a plain garment covers the body",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 25,
+     "why": "carried gold, 20-50 for W4 Comfortable",
+     "worn": false
+    }
+   ],
+   "why": "Wujeel: apothecary, sap and herb seller; teaches alchemy, W4 Comfortable"
+  },
+  {
+   "person": "helstrom.BW3NCY7HAY3B814SESJG6NG0ZW",
+   "items": [
+    {
+     "item": "Skyrim.esm:02F2F4",
+     "count": 1,
+     "why": "an axe for cutting grave-stakes",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 7,
+     "why": "carried gold, 2-10 for W2 Poor",
+     "worn": false
+    }
+   ],
+   "why": "Huzeel-Tan: resident, grave-stake carver, W2 Poor"
+  },
+  {
+   "person": "helstrom.C27961WTY6QXSFMPVKFY3T2FPH",
+   "items": [
+    {
+     "item": "Skyrim.esm:01397E",
+     "count": 1,
+     "why": "an apprentice's first blade, from his father's forge",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 14,
+     "why": "carried gold, 8-25 for W3 Modest",
+     "worn": false
+    }
+   ],
+   "why": "Bexeeh-Tul: resident, apprentice smith, W3 Modest"
+  },
+  {
+   "person": "helstrom.C2855503QH3SHVRJDJSG1E9MKM",
+   "items": [
+    {
+     "item": "Skyrim.esm:01397E",
+     "count": 1,
+     "why": "a knife for the rootworm harness",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:03B97C",
+     "count": 1,
+     "why": "the household head's ring (W3)",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 11,
+     "why": "carried gold, 8-25 for W3 Modest",
+     "worn": false
+    }
+   ],
+   "why": "Cheeval-Xu: resident, rootworm handler at the root landing, W3 Modest"
+  },
+  {
+   "person": "helstrom.C72K61PGJ6NNZ53Z8RWKR1SMY7",
+   "items": [
+    {
+     "item": "Skyrim.esm:01397E",
+     "count": 1,
+     "why": "a knife for clearing rot and creepers from the roots",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 5,
+     "why": "carried gold, 2-10 for W2 Poor",
+     "worn": false
+    }
+   ],
+   "why": "Xilsa-Jee: resident, root-tender, learning the tree-minder's work, W2 Poor"
+  },
+  {
+   "person": "helstrom.E4G7P7W1SB055JJNA9BMYTA5FC",
+   "items": [
+    {
+     "item": "Skyrim.esm:03B97C",
+     "count": 1,
+     "why": "a grave-singer's ring, worn when she sings over the dead (W3)",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:10CFF1",
+     "count": 1,
+     "why": "a grave-singer's grey robes: the armour or enchanted piece of the source's outfit is taken out, so a plain garment covers the body",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 22,
+     "why": "carried gold, 8-25 for W3 Modest",
+     "worn": false
+    }
+   ],
+   "why": "Ekaneesh: resident, grave-singer, W3 Modest"
+  },
+  {
+   "person": "helstrom.FSF6529VRX65YHFS9SDR8JD794",
+   "items": [
+    {
+     "item": "Skyrim.esm:013986",
+     "count": 1,
+     "why": "a trader's knife (T2)",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:01CF2B",
+     "count": 1,
+     "why": "a gold ring: a trader's wealth worn (W4: two pieces)",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:09171B",
+     "count": 1,
+     "why": "a silver chain (W4: two pieces)",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 40,
+     "why": "carried gold, 20-50 for W4 Comfortable",
+     "worn": false
+    }
+   ],
+   "why": "Counts-Twice: merchant, market trader in Murkwood feathers, sap, eggs and river fish, W4 Comfortable"
+  },
+  {
+   "person": "helstrom.GB97J7STHRZRTTP72ZHG4RN4BE",
+   "items": [
+    {
+     "item": "Skyrim.esm:01397E",
+     "count": 1,
+     "why": "a fisher's knife; he carries it on his turns in the levy too",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 7,
+     "why": "carried gold, 2-10 for W2 Poor",
+     "worn": false
+    }
+   ],
+   "why": "Taxeel-Wan: resident, fisher; serves turns in the levy, W2 Poor"
+  },
+  {
+   "person": "helstrom.GSD19Y7FZNH25ASYFXRF61NYYT",
+   "items": [
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 11,
+     "why": "carried gold, 8-25 for W3 Modest",
+     "worn": false
+    }
+   ],
+   "why": "Juxee-Meen: resident, pickler of frog's eyes, W3 Modest"
+  },
+  {
+   "person": "helstrom.H2SJRZ04Y8B7N1Q9D4SC7R8Z02",
+   "items": [
+    {
+     "item": "Skyrim.esm:03619E",
+     "count": 1,
+     "why": "the levy's issue: a leather cuirass, sound gear (T2) of the city's own tanning (hide and leather is made here)",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:013920",
+     "count": 1,
+     "why": "the levy's issue: leather boots (T2, made here)",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:013921",
+     "count": 1,
+     "why": "the levy's issue: leather bracers (T2, made here)",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:013989",
+     "count": 1,
+     "why": "the levy's issue: a steel sword from the market smithy (T2, ironwork made here)",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:03EADD",
+     "count": 1,
+     "why": "the levy's field dressing: one minor healing draught",
+     "worn": false
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 6,
+     "why": "carried gold, 2-10 for W2 Poor",
+     "worn": false
+    }
+   ],
+   "why": "Raxeela-Hut: guard, the city levy, day watch, W2 Poor"
+  },
+  {
+   "person": "helstrom.HNKX48AJYF89Q7WGNA02D1YV62",
+   "items": [
+    {
+     "item": "Skyrim.esm:01397E",
+     "count": 1,
+     "why": "a spear-fisher's knife for the catch",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 9,
+     "why": "carried gold, 2-10 for W2 Poor",
+     "worn": false
+    }
+   ],
+   "why": "Peeshal-Ru: resident, spear-fisher, W2 Poor"
+  },
+  {
+   "person": "helstrom.HV5320ZME61ST3NG6ANDRGJSAS",
+   "items": [
+    {
+     "item": "Skyrim.esm:02F2F4",
+     "count": 1,
+     "why": "a builder's axe for plank walks and stilt footings",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:03B97C",
+     "count": 1,
+     "why": "the household head's ring (W3)",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 11,
+     "why": "carried gold, 8-25 for W3 Modest",
+     "worn": false
+    }
+   ],
+   "why": "Nolu-Jeel: resident, builder of plank walks, W3 Modest"
+  },
+  {
+   "person": "helstrom.JBHQ2KBMH5X4HR0WQWJY5TMH1K",
+   "items": [
+    {
+     "item": "Skyrim.esm:01397E",
+     "count": 1,
+     "why": "a knife for sealing the sap gourds",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:0261C0",
+     "count": 1,
+     "why": "plain clothes: the armour or enchanted piece of the source's outfit is taken out, so a plain garment covers the body",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 22,
+     "why": "carried gold, 8-25 for W3 Modest",
+     "worn": false
+    }
+   ],
+   "why": "Heeshu: resident, sap-gatherer, W3 Modest"
+  },
+  {
+   "person": "helstrom.JH3BJB8DC2FXNSYD3F2KJ6FRE0",
+   "items": [
+    {
+     "item": "Skyrim.esm:03452E",
+     "count": 1,
+     "why": "plain clothes: the armour or enchanted piece of the source's outfit is taken out, so a plain garment covers the body",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 6,
+     "why": "carried gold, 2-10 for W2 Poor",
+     "worn": false
+    }
+   ],
+   "why": "Ohanga-Tsei: resident, net-mender, W2 Poor"
+  },
+  {
+   "person": "helstrom.JTM30R0H4G18Z3F47P0AS01C6B",
+   "items": [
+    {
+     "item": "Skyrim.esm:01397E",
+     "count": 1,
+     "why": "a river guide's knife",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:03EADD",
+     "count": 1,
+     "why": "a healing draught for the pilgrims she guides",
+     "worn": false
+    },
+    {
+     "item": "Skyrim.esm:01BE1A",
+     "count": 1,
+     "why": "plain clothes: the armour or enchanted piece of the source's outfit is taken out, so a plain garment covers the body",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 25,
+     "why": "carried gold, 8-25 for W3 Modest",
+     "worn": false
+    }
+   ],
+   "why": "Meeja-Tsoi: resident, pilgrim guide, W3 Modest"
+  },
+  {
+   "person": "helstrom.JVCV7101QV5QE2000KQ5RJ8WRY",
+   "items": [
+    {
+     "item": "Skyrim.esm:0209A6",
+     "count": 1,
+     "why": "plain clothes: the armour or enchanted piece of the source's outfit is taken out, so a plain garment covers the body",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 2,
+     "why": "carried gold, 2-10 for W2 Poor",
+     "worn": false
+    }
+   ],
+   "why": "Jeetsa-Rin: resident, tail-band dyer, W2 Poor"
+  },
+  {
+   "person": "helstrom.K3KEW6JNDH6HQTS3EANF71X664",
+   "items": [
+    {
+     "item": "Skyrim.esm:03B562",
+     "count": 1,
+     "why": "a trapper's bow for fellrunners (T1 for her W2 band)",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:01397D",
+     "count": 12,
+     "why": "arrows fletched in the city (feathers are made here)",
+     "worn": false
+    },
+    {
+     "item": "Skyrim.esm:01397E",
+     "count": 1,
+     "why": "a knife for the snares",
+     "worn": false
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 3,
+     "why": "carried gold, 2-10 for W2 Poor",
+     "worn": false
+    }
+   ],
+   "why": "Nuxeeka: resident, feather-trapper, W2 Poor"
+  },
+  {
+   "person": "helstrom.K4PGMQRCH4TMQD9YTKRX4889CV",
+   "items": [
+    {
+     "item": "Skyrim.esm:03619E",
+     "count": 1,
+     "why": "the levy's issue: a leather cuirass, sound gear (T2) of the city's own tanning (hide and leather is made here)",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:013920",
+     "count": 1,
+     "why": "the levy's issue: leather boots (T2, made here)",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:013921",
+     "count": 1,
+     "why": "the levy's issue: leather bracers (T2, made here)",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:013989",
+     "count": 1,
+     "why": "the levy's issue: a steel sword from the market smithy (T2, ironwork made here)",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:03EADD",
+     "count": 1,
+     "why": "the levy's field dressing: one minor healing draught",
+     "worn": false
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 9,
+     "why": "carried gold, 2-10 for W2 Poor",
+     "worn": false
+    }
+   ],
+   "why": "Uxal-Dee: guard, the city levy, night watch, W2 Poor"
+  },
+  {
+   "person": "helstrom.KXGAGQM60ANV7DVJBNTY46FYAN",
+   "items": [
+    {
+     "item": "Skyrim.esm:03619E",
+     "count": 1,
+     "why": "the levy's issue: a leather cuirass, sound gear (T2) of the city's own tanning (hide and leather is made here)",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:013920",
+     "count": 1,
+     "why": "the levy's issue: leather boots (T2, made here)",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:013921",
+     "count": 1,
+     "why": "the levy's issue: leather bracers (T2, made here)",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:013989",
+     "count": 1,
+     "why": "the levy's issue: a steel sword from the market smithy (T2, ironwork made here)",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:03EADD",
+     "count": 1,
+     "why": "the levy's field dressing: one minor healing draught",
+     "worn": false
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 6,
+     "why": "carried gold, 2-10 for W2 Poor",
+     "worn": false
+    }
+   ],
+   "why": "Sakka-Zuul: guard, the city levy, day watch, W2 Poor"
+  },
+  {
+   "person": "helstrom.NJMSPRDE0S07463DPEQBAYTKY4",
+   "items": [
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 22,
+     "why": "carried gold, 8-25 for W3 Modest",
+     "worn": false
+    }
+   ],
+   "why": "Tsiraxi: resident, river fisher, W3 Modest"
+  },
+  {
+   "person": "helstrom.P47W625FPEBNNT468NCZNW8Q41",
+   "items": [
+    {
+     "item": "Skyrim.esm:01397E",
+     "count": 1,
+     "why": "a knife for cutting fleshfly wax",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 2,
+     "why": "carried gold, 2-10 for W2 Poor",
+     "worn": false
+    }
+   ],
+   "why": "Ajum-Teel: resident, maker of fleshfly emollient and scale balm, W2 Poor"
+  },
+  {
+   "person": "helstrom.P6H0C0W4XJXXW7DSNE4GWYNMYE",
+   "items": [
+    {
+     "item": "Skyrim.esm:0E3C16",
+     "count": 1,
+     "why": "a pick for digging Heart-Mud from the pools",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 5,
+     "why": "carried gold, 2-10 for W2 Poor",
+     "worn": false
+    }
+   ],
+   "why": "Eleexa-Bur: resident, Heart-Mud digger, W2 Poor"
+  },
+  {
+   "person": "helstrom.PADKRG87WPNXXSJ0N7W8TWYS51",
+   "items": [
+    {
+     "item": "Skyrim.esm:09171B",
+     "count": 1,
+     "why": "a naheesh's chain (W3: one piece of jewellery)",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:10CFEF",
+     "count": 1,
+     "why": "a naheesh's brown robes: the armour or enchanted piece of the source's outfit is taken out, so a plain garment covers the body",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 14,
+     "why": "carried gold, 8-25 for W3 Modest",
+     "worn": false
+    }
+   ],
+   "why": "Ooxa-Leet: resident, naheesh of the assembly, W3 Modest"
+  },
+  {
+   "person": "helstrom.QX0K55RYNW76K37N2DWEGSDHEP",
+   "items": [
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 10,
+     "why": "carried gold, 2-10 for W2 Poor",
+     "worn": false
+    }
+   ],
+   "why": "Heetaxi: resident, resin-caulker, W2 Poor"
+  },
+  {
+   "person": "helstrom.RB4S9ARSXV8TYHFRAW9KNMVDTW",
+   "items": [
+    {
+     "item": "Skyrim.esm:013105",
+     "count": 1,
+     "why": "she keeps nothing while she works off her Owing: the armour or enchanted piece of the source's outfit is taken out, so a plain garment covers the body",
+     "worn": true
+    }
+   ],
+   "why": "Kassa-Weel: resident, porter, working off an Owing, W1 Destitute"
+  },
+  {
+   "person": "helstrom.RRR4CMCSQPTR9F46FDDSWE8QA1",
+   "items": [
+    {
+     "item": "Skyrim.esm:01397E",
+     "count": 1,
+     "why": "a knife for splitting cane",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:0261C0",
+     "count": 1,
+     "why": "plain clothes: the armour or enchanted piece of the source's outfit is taken out, so a plain garment covers the body",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 10,
+     "why": "carried gold, 2-10 for W2 Poor",
+     "worn": false
+    }
+   ],
+   "why": "Weesha-Lun: resident, basket-weaver, W2 Poor"
+  },
+  {
+   "person": "helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS",
+   "items": [
+    {
+     "item": "Black Marsh North.esp:03E3F9",
+     "count": 1,
+     "why": "his own blade of the city's pattern, which the levy and the raft crews ask for (BM&V's Argonian Sword; it is T3 on the scale, within his W4 band)",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:03B97C",
+     "count": 1,
+     "why": "a smith's plain ring (W4)",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 25,
+     "why": "carried gold, 20-50 for W4 Comfortable",
+     "worn": false
+    }
+   ],
+   "why": "Meshu-Ka: smith, Root-Folk smith at the market smithy, W4 Comfortable"
+  },
+  {
+   "person": "helstrom.T6GST0YXKCQPYBXWZ0JP71REBA",
+   "items": [
+    {
+     "item": "Skyrim.esm:01BE1A",
+     "count": 1,
+     "why": "plain clothes: the armour or enchanted piece of the source's outfit is taken out, so a plain garment covers the body",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 9,
+     "why": "carried gold, 2-10 for W2 Poor",
+     "worn": false
+    }
+   ],
+   "why": "Zeexa-Num: resident, frog-catcher, W2 Poor"
+  },
+  {
+   "person": "helstrom.TA28STYJ3XNYJ9FPVMQEYJVQQ4",
+   "items": [
+    {
+     "item": "Skyrim.esm:03B97C",
+     "count": 1,
+     "why": "the tally-keeper's ring, his household's one piece (W3)",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 16,
+     "why": "carried gold, 8-25 for W3 Modest",
+     "worn": false
+    }
+   ],
+   "why": "Ixtul-Bei: resident, tally-keeper of goods landed for the assembly, W3 Modest"
+  },
+  {
+   "person": "helstrom.TQRTJ0F942RQNR31D17MBB4J60",
+   "items": [
+    {
+     "item": "Skyrim.esm:013986",
+     "count": 1,
+     "why": "a courier's blade for the root tunnels (T2)",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 14,
+     "why": "carried gold, 8-25 for W3 Modest",
+     "worn": false
+    }
+   ],
+   "why": "Tsaxi-Rei: resident, rootworm courier, W3 Modest"
+  },
+  {
+   "person": "helstrom.V7CK5843EKQS34ZEHS9HJ39CHN",
+   "items": [
+    {
+     "item": "Skyrim.esm:03EADD",
+     "count": 2,
+     "why": "healing draughts for the sick at the tree-minders' hall",
+     "worn": false
+    },
+    {
+     "item": "Skyrim.esm:10CFF0",
+     "count": 1,
+     "why": "a tree-minder's green robes: the armour or enchanted piece of the source's outfit is taken out, so a plain garment covers the body",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 25,
+     "why": "carried gold, 8-25 for W3 Modest",
+     "worn": false
+    }
+   ],
+   "why": "Taleeka-Ma: spell-trader, tree-minder and healer; sells Restoration and Alteration tomes, W3 Modest"
+  },
+  {
+   "person": "helstrom.VP6HTF3EAYM7XEM7WECSPEG8FN",
+   "items": [
+    {
+     "item": "Skyrim.esm:01397E",
+     "count": 1,
+     "why": "a fisher's knife",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:03B97C",
+     "count": 1,
+     "why": "the household head's ring (W3)",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 11,
+     "why": "carried gold, 8-25 for W3 Modest",
+     "worn": false
+    }
+   ],
+   "why": "Kuxeesh: resident, pilgrim host and river fisher, W3 Modest"
+  },
+  {
+   "person": "helstrom.XG4SJG30BVXAPMN71DQ2GEZY6A",
+   "items": [
+    {
+     "item": "Skyrim.esm:02F2F4",
+     "count": 1,
+     "why": "an axe for cutting bark shingles",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 9,
+     "why": "carried gold, 2-10 for W2 Poor",
+     "worn": false
+    }
+   ],
+   "why": "Weeruk-Ta: resident, bark-shingle cutter, W2 Poor"
+  },
+  {
+   "person": "helstrom.Y46N24V2QMQMA14C1EF3ZC8NP0",
+   "items": [
+    {
+     "item": "Skyrim.esm:03452E",
+     "count": 1,
+     "why": "plain clothes: the armour or enchanted piece of the source's outfit is taken out, so a plain garment covers the body",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 10,
+     "why": "carried gold, 2-10 for W2 Poor",
+     "worn": false
+    }
+   ],
+   "why": "Ruxa-Neel: resident, water-carrier, W2 Poor"
+  },
+  {
+   "person": "helstrom.YFMTJK20VGQ52AK51GM46YJQYR",
+   "items": [
+    {
+     "item": "Skyrim.esm:013986",
+     "count": 1,
+     "why": "a boatwoman's blade against river thieves (T2 for her W3 band)",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:0209A6",
+     "count": 1,
+     "why": "plain clothes: the armour or enchanted piece of the source's outfit is taken out, so a plain garment covers the body",
+     "worn": true
+    },
+    {
+     "item": "Skyrim.esm:00000F",
+     "count": 25,
+     "why": "carried gold, 8-25 for W3 Modest",
+     "worn": false
+    }
+   ],
+   "why": "Poles-Upriver: boatman, raft-boatman to Truowa, Korydon, Marzai and Julo, W3 Modest"
+  }
+ ],
+ "traders": [
+  {
+   "person": "helstrom.FSF6529VRX65YHFS9SDR8JD794",
+   "give_seq": 2,
+   "gold": 937,
+   "items": [
+    {
+     "item": "Skyrim.esm:0E7ED0",
+     "count": 12,
+     "why": "Murkwood feathers, the stall's own trade (feathers are made here)"
+    },
+    {
+     "item": "Skyrim.esm:063B5F",
+     "count": 6,
+     "why": "sap from the tree-minders' release (made here)"
+    },
+    {
+     "item": "Skyrim.esm:07E8C8",
+     "count": 8,
+     "why": "marsh-bird eggs from the forest (made here)"
+    },
+    {
+     "item": "Skyrim.esm:023D6F",
+     "count": 8,
+     "why": "marsh-bird eggs (made here)"
+    },
+    {
+     "item": "Skyrim.esm:106E18",
+     "count": 6,
+     "why": "river fish (made here)"
+    },
+    {
+     "item": "Skyrim.esm:106E1A",
+     "count": 4,
+     "why": "river fish (made here)"
+    },
+    {
+     "item": "Skyrim.esm:065C9F",
+     "count": 6,
+     "why": "river fish (made here)"
+    },
+    {
+     "item": "Skyrim.esm:01397D",
+     "count": 40,
+     "why": "arrows fletched with Murkwood feathers (T1, made here)"
+    },
+    {
+     "item": "Skyrim.esm:01397F",
+     "count": 20,
+     "why": "steel-tipped arrows (T2, made here)"
+    },
+    {
+     "item": "Skyrim.esm:01397E",
+     "count": 2,
+     "why": "T1 knives from the market smithy (made here)"
+    },
+    {
+     "item": "Skyrim.esm:03B562",
+     "count": 1,
+     "why": "a T1 bow"
+    },
+    {
+     "item": "Skyrim.esm:013986",
+     "count": 1,
+     "why": "a T2 knife (made here)"
+    },
+    {
+     "item": "Skyrim.esm:013985",
+     "count": 1,
+     "why": "a T2 bow"
+    },
+    {
+     "item": "Skyrim.esm:03EADD",
+     "count": 3,
+     "why": "minor healing draughts brewed from local sap (T1, made here)"
+    },
+    {
+     "item": "Skyrim.esm:03EADE",
+     "count": 1,
+     "why": "a healing draught (T1 by value, made here)"
+    },
+    {
+     "item": "Skyrim.esm:02E4E2",
+     "count": 2,
+     "why": "petty soul gems carried in by the rafts"
+    },
+    {
+     "item": "Skyrim.esm:02E4E4",
+     "count": 1,
+     "why": "a lesser soul gem carried in"
+    },
+    {
+     "item": "Skyrim.esm:01399E",
+     "count": 1,
+     "why": "one T3 blade carried in from far away: fewer of each tier upward"
+    }
+   ],
+   "why": "the market trader in Murkwood feathers, sap, eggs and river fish (the economy note): the city's own goods first and in number, a few carried-in things; vanilla's general gold 750 times P4's 1.25; T1 to T3, within P4's list value 3000",
+   "cites": [
+    "place_wealth:helstrom",
+    "place_give:helstrom/2",
+    "place_note:helstrom/economy"
+   ]
+  },
+  {
+   "person": "helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS",
+   "give_seq": 3,
+   "gold": 1250,
+   "items": [
+    {
+     "item": "Skyrim.esm:01397E",
+     "count": 4,
+     "why": "T1 (made here: ironwork)"
+    },
+    {
+     "item": "Skyrim.esm:012EB7",
+     "count": 3,
+     "why": "T1 (made here)"
+    },
+    {
+     "item": "Skyrim.esm:013790",
+     "count": 2,
+     "why": "T1 (made here)"
+    },
+    {
+     "item": "Skyrim.esm:013982",
+     "count": 2,
+     "why": "T1 (made here)"
+    },
+    {
+     "item": "Skyrim.esm:013911",
+     "count": 2,
+     "why": "T1 hide (made here: the tanner works at the smithy's rack)"
+    },
+    {
+     "item": "Skyrim.esm:013910",
+     "count": 2,
+     "why": "T1 hide (made here)"
+    },
+    {
+     "item": "Skyrim.esm:013912",
+     "count": 2,
+     "why": "T1 hide (made here)"
+    },
+    {
+     "item": "Skyrim.esm:05ACE4",
+     "count": 6,
+     "why": "iron bought from the raft crews"
+    },
+    {
+     "item": "Skyrim.esm:0DB5D2",
+     "count": 4,
+     "why": "tanned leather from the smithy's rack"
+    },
+    {
+     "item": "Skyrim.esm:0800E4",
+     "count": 6,
+     "why": "straps for fittings"
+    },
+    {
+     "item": "Skyrim.esm:013986",
+     "count": 3,
+     "why": "T2 (made here)"
+    },
+    {
+     "item": "Skyrim.esm:013989",
+     "count": 3,
+     "why": "T2: the levy's issue blade (made here)"
+    },
+    {
+     "item": "Skyrim.esm:013983",
+     "count": 2,
+     "why": "T2 (made here)"
+    },
+    {
+     "item": "Skyrim.esm:013988",
+     "count": 1,
+     "why": "T2 (made here)"
+    },
+    {
+     "item": "Skyrim.esm:03619E",
+     "count": 2,
+     "why": "T2 leather (made here)"
+    },
+    {
+     "item": "Skyrim.esm:013920",
+     "count": 2,
+     "why": "T2 leather (made here)"
+    },
+    {
+     "item": "Skyrim.esm:013921",
+     "count": 2,
+     "why": "T2 leather (made here)"
+    },
+    {
+     "item": "Skyrim.esm:013922",
+     "count": 1,
+     "why": "T2 leather (made here)"
+    },
+    {
+     "item": "Skyrim.esm:05ACE5",
+     "count": 4,
+     "why": "steel for the T2 work"
+    },
+    {
+     "item": "Black Marsh North.esp:03E3F9",
+     "count": 1,
+     "why": "T3: one blade of the city's own pattern, his best work (BM&V's Argonian Sword)"
+    },
+    {
+     "item": "Black Marsh North.esp:037DF0",
+     "count": 1,
+     "why": "T3: one Argonian light cuirass of the city's pattern (BM&V's)"
+    },
+    {
+     "item": "Black Marsh North.esp:037DF7",
+     "count": 1,
+     "why": "T3: its gloves"
+    },
+    {
+     "item": "Black Marsh North.esp:037DF3",
+     "count": 1,
+     "why": "T3: its leggings"
+    },
+    {
+     "item": "Skyrim.esm:0139A6",
+     "count": 1,
+     "why": "T4, the place's ceiling: one glass dagger carried in from far away (cost 2, count a quarter)"
+    }
+   ],
+   "why": "the Root-Folk smith at the market smithy, who works iron bought from the raft crews: iron, steel, hide and leather made here and in number, the city's own pattern at T3, one far-carried piece at T4; vanilla's blacksmith gold 1000 times P4's 1.25; within P4's list value 3000",
+   "cites": [
+    "place_wealth:helstrom",
+    "place_give:helstrom/3",
+    "person:helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS"
+   ]
+  },
+  {
+   "person": "helstrom.BGDSP6P2TTV6HNACJGN6KPVVBY",
+   "give_seq": 4,
+   "gold": 625,
+   "items": [
+    {
+     "item": "Skyrim.esm:063B5F",
+     "count": 8,
+     "why": "sap: his trade (made here)"
+    },
+    {
+     "item": "Skyrim.esm:07E8B7",
+     "count": 6,
+     "why": "swamp herbs (made here)"
+    },
+    {
+     "item": "Skyrim.esm:057F91",
+     "count": 6,
+     "why": "swamp herbs (made here)"
+    },
+    {
+     "item": "Skyrim.esm:02F44C",
+     "count": 3,
+     "why": "swamp herbs (made here)"
+    },
+    {
+     "item": "Skyrim.esm:0516C8",
+     "count": 3,
+     "why": "swamp herbs (made here)"
+    },
+    {
+     "item": "Skyrim.esm:03AD56",
+     "count": 2,
+     "why": "from the swamp"
+    },
+    {
+     "item": "Skyrim.esm:059B86",
+     "count": 2,
+     "why": "from the swamp"
+    },
+    {
+     "item": "Skyrim.esm:03AD70",
+     "count": 4,
+     "why": "from the river"
+    },
+    {
+     "item": "Skyrim.esm:06BC00",
+     "count": 4,
+     "why": "from the river"
+    },
+    {
+     "item": "Skyrim.esm:06F950",
+     "count": 4,
+     "why": "from the swamp"
+    },
+    {
+     "item": "Skyrim.esm:03EADD",
+     "count": 6,
+     "why": "T1 healing (made here: sap)"
+    },
+    {
+     "item": "Skyrim.esm:03EAE0",
+     "count": 4,
+     "why": "T1 magicka (made here)"
+    },
+    {
+     "item": "Skyrim.esm:03EAE5",
+     "count": 4,
+     "why": "T1 stamina (made here)"
+    },
+    {
+     "item": "Skyrim.esm:03EADE",
+     "count": 3,
+     "why": "T1 healing (made here)"
+    },
+    {
+     "item": "Skyrim.esm:039BE8",
+     "count": 2,
+     "why": "T1 stamina (made here)"
+    },
+    {
+     "item": "Skyrim.esm:03EAE3",
+     "count": 1,
+     "why": "T1 vigorous healing (made here)"
+    },
+    {
+     "item": "Skyrim.esm:0AE723",
+     "count": 3,
+     "why": "cures for the swamp's fevers, his best seller (made here)"
+    },
+    {
+     "item": "Skyrim.esm:03EAF2",
+     "count": 1,
+     "why": "T1 (made here)"
+    },
+    {
+     "item": "Skyrim.esm:03EAE1",
+     "count": 2,
+     "why": "T1 magicka (made here)"
+    },
+    {
+     "item": "Skyrim.esm:039BE4",
+     "count": 1,
+     "why": "T2 extreme healing"
+    },
+    {
+     "item": "Skyrim.esm:03EAE4",
+     "count": 1,
+     "why": "T2 vigorous magicka"
+    },
+    {
+     "item": "Skyrim.esm:03EAF6",
+     "count": 1,
+     "why": "T3: one solution of health, his finest brew"
+    }
+   ],
+   "why": "the sap and herb seller: sap and swamp herbs made here first and in number, then the draughts he brews from them, fewer of each tier upward; vanilla's apothecary gold 500 times P4's 1.25; within P4's list value 3000",
+   "cites": [
+    "place_wealth:helstrom",
+    "place_give:helstrom/4",
+    "person:helstrom.BGDSP6P2TTV6HNACJGN6KPVVBY"
+   ]
+  },
+  {
+   "person": "helstrom.V7CK5843EKQS34ZEHS9HJ39CHN",
+   "give_seq": 5,
+   "gold": 625,
+   "items": [
+    {
+     "item": "Skyrim.esm:09E2AF",
+     "count": 1,
+     "why": "Restoration, Novice"
+    },
+    {
+     "item": "Skyrim.esm:09E2AE",
+     "count": 1,
+     "why": "Restoration, Novice"
+    },
+    {
+     "item": "Skyrim.esm:09E2A7",
+     "count": 1,
+     "why": "Alteration, Novice"
+    },
+    {
+     "item": "Skyrim.esm:09E2A8",
+     "count": 1,
+     "why": "Alteration, Novice"
+    },
+    {
+     "item": "Skyrim.esm:0A271D",
+     "count": 1,
+     "why": "Restoration, Apprentice"
+    },
+    {
+     "item": "Skyrim.esm:0A271E",
+     "count": 1,
+     "why": "Restoration, Apprentice"
+    },
+    {
+     "item": "Skyrim.esm:0A2720",
+     "count": 1,
+     "why": "Restoration, Apprentice"
+    },
+    {
+     "item": "Skyrim.esm:0A26E2",
+     "count": 1,
+     "why": "Alteration, Apprentice"
+    },
+    {
+     "item": "Skyrim.esm:0A26E3",
+     "count": 1,
+     "why": "Alteration, Apprentice"
+    },
+    {
+     "item": "Skyrim.esm:0A2727",
+     "count": 1,
+     "why": "Restoration, Adept"
+    },
+    {
+     "item": "Skyrim.esm:0A2722",
+     "count": 1,
+     "why": "Restoration, Adept"
+    },
+    {
+     "item": "Skyrim.esm:0A26E4",
+     "count": 1,
+     "why": "Alteration, Adept"
+    },
+    {
+     "item": "Skyrim.esm:0A26E6",
+     "count": 1,
+     "why": "Alteration, Adept: for a city of pools and rivers"
+    },
+    {
+     "item": "Skyrim.esm:03EAE0",
+     "count": 3,
+     "why": "magicka draughts (T1)"
+    },
+    {
+     "item": "Skyrim.esm:03EAE1",
+     "count": 1,
+     "why": "a magicka draught (T1)"
+    },
+    {
+     "item": "Skyrim.esm:02E4E2",
+     "count": 2,
+     "why": "petty soul gems carried in"
+    }
+   ],
+   "why": "the tree-minder and healer: tomes of Restoration and Alteration to Adept, as the place record lists them, a few magicka draughts; vanilla's spell vendor gold 500 times P4's 1.25; within P4's list value 3000",
+   "cites": [
+    "place_wealth:helstrom",
+    "place_give:helstrom/5",
+    "person:helstrom.V7CK5843EKQS34ZEHS9HJ39CHN"
+   ]
+  },
+  {
+   "person": "helstrom.8A62J4KYJ8DA3F58WKMRY3Y79F",
+   "give_seq": 6,
+   "gold": 125,
+   "items": [
+    {
+     "item": "Skyrim.esm:064B3B",
+     "count": 6,
+     "why": "cooked river fish, the lodge's own dish (river fish is made here)"
+    },
+    {
+     "item": "Skyrim.esm:065C9F",
+     "count": 4,
+     "why": "raw river fish (made here)"
+    },
+    {
+     "item": "Skyrim.esm:023D6F",
+     "count": 6,
+     "why": "marsh-bird eggs (made here)"
+    },
+    {
+     "item": "Skyrim.esm:0F431E",
+     "count": 4,
+     "why": "soup for the raft crews"
+    },
+    {
+     "item": "Skyrim.esm:065C97",
+     "count": 4,
+     "why": "bread"
+    },
+    {
+     "item": "Skyrim.esm:0669A5",
+     "count": 4,
+     "why": "leeks"
+    },
+    {
+     "item": "Skyrim.esm:03133C",
+     "count": 3,
+     "why": "wine carried in by the rafts"
+    }
+   ],
+   "why": "the boatmen's lodge, where raft crews and the few outsiders eat: food of the city's own goods, nothing significant; vanilla's inn gold 100 times P4's 1.25",
+   "cites": [
+    "place_wealth:helstrom",
+    "place_give:helstrom/6",
+    "person:helstrom.8A62J4KYJ8DA3F58WKMRY3Y79F"
+   ]
+  }
+ ],
+ "deliveries": [
+  {
+   "give_seq": 20,
+   "by": "record",
+   "status": "open",
+   "why": "open: the drowned Third Era villages are not in Helstrom's drafted extent (radius 525 m: no ruined stilt house, boat-robber or treasure among its refs) nor a place of their own in the database; to deliver it, a place-build pass must draft them (a ring of half-sunken stilt houses on the city's approaches) as a place of their own or as Helstrom's edge, with three placed boat-robbers at a fixed D1 level and a settlers' chest at T1; or the owner edits the record (place_give helstrom/20 and /21)"
+  },
+  {
+   "give_seq": 21,
+   "by": "record",
+   "status": "open",
+   "why": "open: the drowned Third Era villages are not in Helstrom's drafted extent (radius 525 m: no ruined stilt house, boat-robber or treasure among its refs) nor a place of their own in the database; to deliver it, a place-build pass must draft them (a ring of half-sunken stilt houses on the city's approaches) as a place of their own or as Helstrom's edge, with three placed boat-robbers at a fixed D1 level and a settlers' chest at T1; or the owner edits the record (place_give helstrom/20 and /21)"
+  }
+ ],
+ "removed": [
+  {
+   "space": "01ArgonianHouseinside",
+   "ref": "Black Marsh.esm:1DE627",
+   "edid": "FireboltScroll",
+   "why": "the source has the same Firebolt and Frenzy scrolls in every house; nothing known of a fisher's or a porter's household accounts for war magic, so the household has none (T1 by value)"
+  },
+  {
+   "space": "01ArgonianHouseinside",
+   "ref": "Black Marsh.esm:1DE628",
+   "edid": "FrenzyScroll",
+   "why": "the source has the same Firebolt and Frenzy scrolls in every house; nothing known of a fisher's or a porter's household accounts for war magic, so the household has none (T1 by value)"
+  },
+  {
+   "space": "01ArgonianHouseinside.2",
+   "ref": "Black Marsh.esm:1DE704",
+   "edid": "FireboltScroll",
+   "why": "the source has the same Firebolt and Frenzy scrolls in every house; nothing known of a fisher's or a porter's household accounts for war magic, so the household has none (T1 by value)"
+  },
+  {
+   "space": "01ArgonianHouseinside.2",
+   "ref": "Black Marsh.esm:1DE734",
+   "edid": "FrenzyScroll",
+   "why": "the source has the same Firebolt and Frenzy scrolls in every house; nothing known of a fisher's or a porter's household accounts for war magic, so the household has none (T1 by value)"
+  },
+  {
+   "space": "01ArgonianHouseinside.3",
+   "ref": "Black Marsh.esm:1DE660",
+   "edid": "FireboltScroll",
+   "why": "the source has the same Firebolt and Frenzy scrolls in every house; nothing known of a fisher's or a porter's household accounts for war magic, so the household has none (T1 by value)"
+  },
+  {
+   "space": "01ArgonianHouseinside.3",
+   "ref": "Black Marsh.esm:1DE690",
+   "edid": "FrenzyScroll",
+   "why": "the source has the same Firebolt and Frenzy scrolls in every house; nothing known of a fisher's or a porter's household accounts for war magic, so the household has none (T1 by value)"
+  },
+  {
+   "space": "01ArgonianHouseinside.4",
+   "ref": "Black Marsh.esm:1DE84C",
+   "edid": "FireboltScroll",
+   "why": "the source has the same Firebolt and Frenzy scrolls in every house; nothing known of a fisher's or a porter's household accounts for war magic, so the household has none (T1 by value)"
+  },
+  {
+   "space": "01ArgonianHouseinside.4",
+   "ref": "Black Marsh.esm:1DE87C",
+   "edid": "FrenzyScroll",
+   "why": "the source has the same Firebolt and Frenzy scrolls in every house; nothing known of a fisher's or a porter's household accounts for war magic, so the household has none (T1 by value)"
+  },
+  {
+   "space": "01ArgonianHouseinside.5",
+   "ref": "Black Marsh.esm:1DE7A8",
+   "edid": "FireboltScroll",
+   "why": "the source has the same Firebolt and Frenzy scrolls in every house; nothing known of a fisher's or a porter's household accounts for war magic, so the household has none (T1 by value)"
+  },
+  {
+   "space": "01ArgonianHouseinside.5",
+   "ref": "Black Marsh.esm:1DE7D8",
+   "edid": "FrenzyScroll",
+   "why": "the source has the same Firebolt and Frenzy scrolls in every house; nothing known of a fisher's or a porter's household accounts for war magic, so the household has none (T1 by value)"
+  },
+  {
+   "space": "01ArgonianHouseinside.6",
+   "ref": "Black Marsh.esm:1E445D",
+   "edid": "FrenzyScroll",
+   "why": "the source has the same Firebolt and Frenzy scrolls in every house; nothing known of a fisher's or a porter's household accounts for war magic, so the household has none (T1 by value)"
+  },
+  {
+   "space": "01ArgonianHouseinside.6",
+   "ref": "Black Marsh.esm:1E4479",
+   "edid": "FireboltScroll",
+   "why": "the source has the same Firebolt and Frenzy scrolls in every house; nothing known of a fisher's or a porter's household accounts for war magic, so the household has none (T1 by value)"
+  },
+  {
+   "space": "01ArgonianHouseinside.7",
+   "ref": "Black Marsh.esm:1E42BF",
+   "edid": "FireboltScroll",
+   "why": "the source has the same Firebolt and Frenzy scrolls in every house; nothing known of a fisher's or a porter's household accounts for war magic, so the household has none (T1 by value)"
+  },
+  {
+   "space": "01ArgonianHouseinside.7",
+   "ref": "Black Marsh.esm:1E433B",
+   "edid": "FrenzyScroll",
+   "why": "the source has the same Firebolt and Frenzy scrolls in every house; nothing known of a fisher's or a porter's household accounts for war magic, so the household has none (T1 by value)"
+  },
+  {
+   "space": "01ArgonianHouseinside.8",
+   "ref": "Black Marsh.esm:1E43C1",
+   "edid": "FireboltScroll",
+   "why": "the source has the same Firebolt and Frenzy scrolls in every house; nothing known of a fisher's or a porter's household accounts for war magic, so the household has none (T1 by value)"
+  },
+  {
+   "space": "01ArgonianHouseinside.8",
+   "ref": "Black Marsh.esm:1E443C",
+   "edid": "FrenzyScroll",
+   "why": "the source has the same Firebolt and Frenzy scrolls in every house; nothing known of a fisher's or a porter's household accounts for war magic, so the household has none (T1 by value)"
+  },
+  {
+   "space": "01ArgonianHouseinside.9",
+   "ref": "Black Marsh.esm:1DE8F0",
+   "edid": "FireboltScroll",
+   "why": "the source has the same Firebolt and Frenzy scrolls in every house; nothing known of a fisher's or a porter's household accounts for war magic, so the household has none (T1 by value)"
+  },
+  {
+   "space": "01ArgonianHouseinside.9",
+   "ref": "Black Marsh.esm:1DE920",
+   "edid": "FrenzyScroll",
+   "why": "the source has the same Firebolt and Frenzy scrolls in every house; nothing known of a fisher's or a porter's household accounts for war magic, so the household has none (T1 by value)"
+  },
+  {
+   "space": "01Ship",
+   "ref": "Black Marsh.esm:23D575",
+   "edid": "ArmorBanditHelmet",
+   "why": "fur armour of Skyrim's bandit kit, placed in the lodge in the source; raft crews of the hot marsh do not wear it"
+  },
+  {
+   "space": "01Ship",
+   "ref": "Black Marsh.esm:23D63D",
+   "edid": "ArmorBanditBoots",
+   "why": "fur armour of Skyrim's bandit kit, placed in the lodge in the source; raft crews of the hot marsh do not wear it"
+  },
+  {
+   "space": "01Ship",
+   "ref": "Black Marsh.esm:23D663",
+   "edid": "ArmorBanditCuirass",
+   "why": "fur armour of Skyrim's bandit kit, placed in the lodge in the source; raft crews of the hot marsh do not wear it"
+  },
+  {
+   "space": "01cellDUPLICATE002",
+   "ref": "Black Marsh.esm:20770E",
+   "edid": "DLC1StaffFalmerLightningBolt",
+   "why": "Falmer-made staffs: decision 0006 keeps the kit of Skyrim's peoples out of Black Marsh"
+  },
+  {
+   "space": "01cellDUPLICATE002",
+   "ref": "Black Marsh.esm:20770F",
+   "edid": "DLC1StaffFalmerChainLightning",
+   "why": "Falmer-made staffs: decision 0006 keeps the kit of Skyrim's peoples out of Black Marsh"
+  },
+  {
+   "space": "exterior",
+   "ref": "helstrom.0KGEFA827WATCQ3MCQNY0123F8",
+   "edid": "01sword1",
+   "why": "the source's battlefield tableau in the open street holds T6 (dragonbone, 1,500 gold) and T2 Imperial armour; the open tier here is T1, so it is not built"
+  },
+  {
+   "space": "exterior",
+   "ref": "helstrom.AH1HMT5E356GD3DD8C4RWR8ENS",
+   "edid": "ArmorImperialCuirass",
+   "why": "the source's battlefield tableau in the open street holds T6 (dragonbone, 1,500 gold) and T2 Imperial armour; the open tier here is T1, so it is not built"
+  },
+  {
+   "space": "exterior",
+   "ref": "helstrom.E2RCD60P78S7P8HNZ8FD8BFW1E",
+   "edid": "01sword4",
+   "why": "the source's battlefield tableau in the open street holds T6 (dragonbone, 1,500 gold) and T2 Imperial armour; the open tier here is T1, so it is not built"
+  },
+  {
+   "space": "exterior",
+   "ref": "helstrom.GFAG1C5Q43PACH8BJ9N2V165K8",
+   "edid": "01sword3",
+   "why": "the source's battlefield tableau in the open street holds T6 (dragonbone, 1,500 gold) and T2 Imperial armour; the open tier here is T1, so it is not built"
+  }
+ ]
 }

@@ -405,13 +405,13 @@
 {"place_id":"guxal","give_seq":7,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-creature: jungle predators on the paths behind the hamlet: giant snakes and a giant spider)"}
 {"place_id":"guxal","give_seq":8,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (treasure: a dead hunter's cache in a root hollow on the jungle path, up to 50 gold)"}
 {"place_id":"helstrom","give_seq":0,"seq":0,"by":"record","status":"delivered","why":"the world file's map marker for the place (ANW_MapMarker_<place>)"}
-{"place_id":"helstrom","give_seq":1,"seq":0,"by":"person","person_id":"helstrom.YFMTJK20VGQ52AK51GM46YJQYR","status":"delivered","why":"Naa-daro (boatman) gives it (people.jsonl services)"}
-{"place_id":"helstrom","give_seq":2,"seq":0,"by":"person","person_id":"helstrom.FSF6529VRX65YHFS9SDR8JD794","status":"delivered","why":"Bee-rus (merchant) gives it (people.jsonl services)"}
-{"place_id":"helstrom","give_seq":3,"seq":0,"by":"person","person_id":"helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS","status":"delivered","why":"Mee-daro (smith) gives it (people.jsonl services)"}
-{"place_id":"helstrom","give_seq":4,"seq":0,"by":"person","person_id":"helstrom.BGDSP6P2TTV6HNACJGN6KPVVBY","status":"delivered","why":"Ah-neeus (apothecary) gives it (people.jsonl services)"}
-{"place_id":"helstrom","give_seq":5,"seq":0,"by":"person","person_id":"helstrom.V7CK5843EKQS34ZEHS9HJ39CHN","status":"delivered","why":"Chee-ja (spell-trader) gives it (people.jsonl services)"}
-{"place_id":"helstrom","give_seq":6,"seq":0,"by":"person","person_id":"helstrom.8A62J4KYJ8DA3F58WKMRY3Y79F","status":"delivered","why":"Ula-wulm (innkeeper) gives it (people.jsonl services)"}
-{"place_id":"helstrom","give_seq":7,"seq":0,"by":"person","person_id":"helstrom.8A62J4KYJ8DA3F58WKMRY3Y79F","status":"delivered","why":"Ula-wulm (innkeeper) gives it (people.jsonl services)"}
+{"place_id":"helstrom","give_seq":1,"seq":0,"by":"person","person_id":"helstrom.YFMTJK20VGQ52AK51GM46YJQYR","status":"delivered","why":"Poles-Upriver (boatman) gives it (people.jsonl services)"}
+{"place_id":"helstrom","give_seq":2,"seq":0,"by":"person","person_id":"helstrom.FSF6529VRX65YHFS9SDR8JD794","status":"delivered","why":"Counts-Twice (merchant) gives it (people.jsonl services)"}
+{"place_id":"helstrom","give_seq":3,"seq":0,"by":"person","person_id":"helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS","status":"delivered","why":"Meshu-Ka (smith) gives it (people.jsonl services)"}
+{"place_id":"helstrom","give_seq":4,"seq":0,"by":"person","person_id":"helstrom.BGDSP6P2TTV6HNACJGN6KPVVBY","status":"delivered","why":"Wujeel (apothecary) gives it (people.jsonl services)"}
+{"place_id":"helstrom","give_seq":5,"seq":0,"by":"person","person_id":"helstrom.V7CK5843EKQS34ZEHS9HJ39CHN","status":"delivered","why":"Taleeka-Ma (spell-trader) gives it (people.jsonl services)"}
+{"place_id":"helstrom","give_seq":6,"seq":0,"by":"person","person_id":"helstrom.8A62J4KYJ8DA3F58WKMRY3Y79F","status":"delivered","why":"Sleeps-Last (innkeeper) gives it (people.jsonl services)"}
+{"place_id":"helstrom","give_seq":7,"seq":0,"by":"person","person_id":"helstrom.8A62J4KYJ8DA3F58WKMRY3Y79F","status":"delivered","why":"Sleeps-Last (innkeeper) gives it (people.jsonl services)"}
 {"place_id":"helstrom","give_seq":8,"seq":0,"by":"ref","ref_id":"helstrom.5D6YAVN2Y2P84B46BHPKVTQC0T","status":"delivered","why":"the place's forge (place.json stations)"}
 {"place_id":"helstrom","give_seq":9,"seq":0,"by":"ref","ref_id":"helstrom.5D6YAVN2Y2P84B46BHPKVTQC0T","status":"delivered","why":"the place's anvil (place.json stations)"}
 {"place_id":"helstrom","give_seq":10,"seq":0,"by":"ref","ref_id":"helstrom.RWV7F7ANRB8VRVSFQNH32BG6XM","status":"delivered","why":"the place's armour-workbench (place.json stations)"}
@@ -421,11 +421,11 @@
 {"place_id":"helstrom","give_seq":14,"seq":0,"by":"ref","ref_id":"helstrom.SZMBB7KNQT5SKKHQYZHQ21MYCS","status":"delivered","why":"the place's alchemy-lab (place.json stations)"}
 {"place_id":"helstrom","give_seq":15,"seq":0,"by":"ref","ref_id":"helstrom.PPBSD8NSK1CS8SC67JGHX7N490","status":"delivered","why":"the place's arcane-enchanter (place.json stations)"}
 {"place_id":"helstrom","give_seq":16,"seq":0,"by":"ref","ref_id":"helstrom.DZ16WVDNRWQN5F83QYDVS9YM8G","status":"delivered","why":"the place's cooking-pot (place.json stations)"}
-{"place_id":"helstrom","give_seq":17,"seq":0,"by":"person","person_id":"helstrom.V7CK5843EKQS34ZEHS9HJ39CHN","status":"delivered","why":"Chee-ja (spell-trader) gives it (people.jsonl services)"}
-{"place_id":"helstrom","give_seq":18,"seq":0,"by":"person","person_id":"helstrom.BGDSP6P2TTV6HNACJGN6KPVVBY","status":"delivered","why":"Ah-neeus (apothecary) gives it (people.jsonl services)"}
+{"place_id":"helstrom","give_seq":17,"seq":0,"by":"person","person_id":"helstrom.V7CK5843EKQS34ZEHS9HJ39CHN","status":"delivered","why":"Taleeka-Ma (spell-trader) gives it (people.jsonl services)"}
+{"place_id":"helstrom","give_seq":18,"seq":0,"by":"person","person_id":"helstrom.BGDSP6P2TTV6HNACJGN6KPVVBY","status":"delivered","why":"Wujeel (apothecary) gives it (people.jsonl services)"}
 {"place_id":"helstrom","give_seq":19,"seq":0,"by":"ref","ref_id":"helstrom.W8H2ZE5XRXHVJN6080NV1ASNXE","status":"delivered","why":"the place's shrine (place.json stations)"}
-{"place_id":"helstrom","give_seq":20,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (combat-foes: boat-robbers in the drowned Third Era villages)"}
-{"place_id":"helstrom","give_seq":21,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (treasure: settlers' goods in the drowned villages, D1 tier)"}
+{"place_id":"helstrom","give_seq":20,"seq":0,"by":"record","status":"open","why":"open: the drowned Third Era villages are not in Helstrom's drafted extent (radius 525 m: no ruined stilt house, boat-robber or treasure among its refs) nor a place of their own in the database; to deliver it, a place-build pass must draft them (a ring of half-sunken stilt houses on the city's approaches) as a place of their own or as Helstrom's edge, with three placed boat-robbers at a fixed D1 level and a settlers' chest at T1; or the owner edits the record (place_give helstrom/20 and /21)"}
+{"place_id":"helstrom","give_seq":21,"seq":0,"by":"record","status":"open","why":"open: the drowned Third Era villages are not in Helstrom's drafted extent (radius 525 m: no ruined stilt house, boat-robber or treasure among its refs) nor a place of their own in the database; to deliver it, a place-build pass must draft them (a ring of half-sunken stilt houses on the city's approaches) as a place of their own or as Helstrom's edge, with three placed boat-robbers at a fixed D1 level and a settlers' chest at T1; or the owner edits the record (place_give helstrom/20 and /21)"}
 {"place_id":"hirecan","give_seq":0,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (fast-travel: Hirecan)"}
 {"place_id":"hirecan","give_seq":1,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trader-spells: an Agaceph illusionist selling Illusion tomes up to Expert, and scrolls)"}
 {"place_id":"hirecan","give_seq":2,"seq":0,"by":"record","status":"open","why":"nothing delivers it yet (trainer: Illusion, Expert, the same illusionist)"}
