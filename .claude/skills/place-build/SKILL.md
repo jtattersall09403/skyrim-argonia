@@ -72,6 +72,13 @@ building on a slope first takes the rise the source's own builders commonly buil
 - **People follow Skyrim's days** (`docs/research/skyrim/town-life.md`): an innkeeper keeps the inn day and
   night and owns no bed; guards keep two 12-hour shifts on the streets. Never bend a day to satisfy a check;
   if a check disagrees with how Skyrim does it, the check is wrong.
+- **Beds decide the people.** A house copied from a cell several houses share keeps only its own room, by the
+  builder's room rule (the drafter calls it, so the beds counted are the beds built). Every promised service
+  person works; residents fill the homes' remaining beds.
+- **Who sleeps where, the vanilla way.** An inn that rents a room keeps one of its beds unowned: that is the
+  rented bed (`stations.rent_bed`). Guards sleep in a barracks or their camp's own beds (tents and bedrolls
+  outdoors), never in the inn's rooms or a family's home. Each house holds one household: a family, headed by
+  the working person who lives there, then a partner, then their kin; never strangers thrown together.
 - Nothing levelled is ever placed (decision 0035); the tools drop it and list it.
 
 ## 5. Check and iterate
@@ -79,7 +86,8 @@ building on a slope first takes the rise the source's own builders commonly buil
 1. `python -m tools.places draft check <place_id>` must PASS: every source ref accounted for, seated by its
    rule, buildings on ground no steeper than the source's, water and land as the source had them, patches within
    bound, streets clear of buildings and open water, every door on a path, every promised service and station
-   given and worked, a bed for every sleeper, replaced pieces in the original's plane, nothing floating or buried
+   given and worked, a bed for every sleeper, an unowned bed to rent at the inn, guards out of the inn,
+   every resident in one household under one roof, replaced pieces in the original's plane, nothing floating or buried
    along its true outline beyond how it sat in the source, every door's arrival clear; and the build's own
    `build <place_id> --plan` when it exists. Its `measures` line gives
    the patched cells and points and the streets' length: keep the patches as near nothing as the land allows.

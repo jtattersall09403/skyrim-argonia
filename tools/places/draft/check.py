@@ -121,9 +121,14 @@ def check(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, g
             continue
         sj = json.loads(sj.read_text())
         copy_of = sj["copy_of"].split("/", 1)[1]
-        for b in interiors.beds_in(src.spaces[copy_of].refs, bases, sj.get("room")):
+        for b in interiors.beds_in(src.spaces[copy_of].refs, bases, sj.get("room"), sj["copy_of"]):
             beds_total += b["sleeps"]
             bed_refs[(sdir.name, b["ref"])] = b["sleeps"]
+    for r in refs:   # the guard camp's beds, outdoors
+        if r.get("kind") == "furniture" and not r.get("removed") and interiors.is_bed(bases.get(r.get("base")) or {}):
+            n_ = interiors.sleeps(bases.get(r["base"]) or {})
+            beds_total += n_
+            bed_refs[("exterior", r["id"])] = n_
     sleepers = [p for p in folk if p["role"] not in people.NO_BED]   # innkeepers keep the inn all night (Skyrim)
     if beds_total < len(sleepers):
         bad.append(f"{len(sleepers)} sleepers for {beds_total} beds")
@@ -146,6 +151,26 @@ def check(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, g
     for k, n in use.items():
         if n > bed_refs.get(k, 0):
             bad.append(f"bed {k} slept in by {n}")
+    # an inn that rents a room keeps a bed nobody owns; guards sleep in their camp or barracks, never the inn's rooms
+    for p in folk:
+        if not any((g.get("give_kind_id") or g.get("kind")) == "inn-room" for g in p.get("services") or []):
+            continue
+        inn = (p.get("work") or {}).get("space")
+        if not any(sp_ == inn and k_ not in use for (sp_, k_) in bed_refs):
+            bad.append(f"{p['id']} rents the inn's room, but every bed of {inn} is owned")
+        for q in folk:
+            if q["role"] == "guard" and (q.get("bed") or {}).get("space") == inn:
+                bad.append(f"guard {q['id']} sleeps in the inn {inn}")
+    homes: dict = {}
+    for p in folk:
+        hh = (p.get("household") or {}).get("id")
+        if hh:
+            homes.setdefault(hh, set()).add(p.get("home"))
+        elif p["role"] == "resident":
+            bad.append(f"resident {p['id']} belongs to no household")
+    for hh, hs in homes.items():
+        if len(hs) != 1:
+            bad.append(f"household {hh} lives in several homes {sorted(map(str, hs))}")
     for p in folk:
         if p["role"] == "guard" and len((p.get("patrol") or {}).get("points") or []) < 2:
             bad.append(f"guard {p['id']} has no patrol")
@@ -296,6 +321,18 @@ def check(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, g
     return bad
 
 
+def round_trip(place_id: str, places: Path = io.PLACES) -> list[str]:
+    """The place files are in the contract's canonical order and text: the studio's load then write is byte-equal."""
+    import tempfile
+    from tools.places import edits
+    pdir = places / place_id
+    with tempfile.TemporaryDirectory() as td:
+        edits.write_place(Path(td), edits.load_place(pdir))
+        return [f"{f.relative_to(td)} is not in the canonical order and text (load then write changes it)"
+                for f in sorted(Path(td).rglob("*")) if f.is_file()
+                and (not (pdir / f.relative_to(td)).exists() or (pdir / f.relative_to(td)).read_bytes() != f.read_bytes())]
+
+
 def build_plan(place_id: str) -> list[str]:
     """The build's own validation of the place files (`build <place_id> --plan`), when the build has it."""
     import subprocess
@@ -315,7 +352,7 @@ def main(argv: list[str]) -> int:
     if len(argv) != 1:
         print("usage: python -m tools.places draft check <place_id>")
         return 2
-    bad = check(argv[0]) + build_plan(argv[0])
+    bad = check(argv[0]) + round_trip(argv[0]) + build_plan(argv[0])
     for b in bad[:200]:
         print("FAIL", b)
     if len(bad) > 200:

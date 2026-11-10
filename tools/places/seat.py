@@ -332,7 +332,7 @@ def reseat_place(place_id: str, bundles: Path = BUNDLES, places: Path = PLACES) 
     p = pdir / "spaces" / "exterior" / "refs.jsonl"
     refs = read_jsonl(p)
     n = seat_all(refs, g)
-    write_jsonl(p, refs)
+    write_jsonl(p, sorted(refs, key=lambda r: r["id"]))
     pj = pdir / "place.json"
     if pj.exists():
         place = json.loads(pj.read_text())

@@ -565,7 +565,7 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
         "paths": len(paths_our), "interiors": len(spaces),
         "people": {k: sum(1 for p in folk if p["role"] == k) for k in sorted({p["role"] for p in folk})},
         "beds": sum(b["sleeps"] for sp in spaces.values() for b in interiors.beds_in(
-            src.spaces[sp["src_space"]].refs, bases, sp["room"])),
+            src.spaces[sp["src_space"]].refs, bases, sp["room"], sp["copy_of"])),
     }
     place.update({
         "fit": {**fit.as_dict(), "clusters_info": [c.as_dict() for c in clusters], "relief_norm": norm,
@@ -581,6 +581,9 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
         "draft_key": key,
     })
     pj.write_text(json.dumps(place, indent=1, ensure_ascii=False) + "\n")
+    # every place file in the contract's one order and text (the studio's writer), so a finalise diffs only its edits
+    from tools.places import edits
+    edits.write_place(pdir, edits.load_place(pdir))
     return counts
 
 
@@ -589,7 +592,7 @@ def draft_people(place_id, rec, gives, src, bases, our, spaces, clusters, fit, o
     # beds of each copy
     slots: dict[str, list[dict]] = {}
     for sid, sp in sorted(spaces.items()):
-        for b in interiors.beds_in(src.spaces[sp["src_space"]].refs, bases, sp["room"]):
+        for b in interiors.beds_in(src.spaces[sp["src_space"]].refs, bases, sp["room"], sp["copy_of"]):
             for k in range(b["sleeps"]):
                 slots.setdefault(sid, []).append({"space": sid, "ref": b["ref"], "slot": k})
     shared = {sp["src_space"] for sp in spaces.values() if sum(1 for o in spaces.values()
@@ -597,6 +600,14 @@ def draft_people(place_id, rec, gives, src, bases, our, spaces, clusters, fit, o
     houses = sorted((sid for sid, sp in spaces.items() if sp["src_space"] in shared
                      or re.search(r"house|home|hut|shack", f"{sid} {sp.get('name') or ''}", re.I)), key=str)
     halls = sorted((sid for sid in spaces if sid not in houses), key=lambda s: (-len(slots.get(s, [])), s))
+    # the guard camp's beds: beds standing outdoors (tents and bedrolls) are the guards', the way Bethesda's guards
+    # sleep in a barracks or their camp, never in an inn's rooms or a family's home
+    camp = sorted(r["id"] for r in our if r.get("kind") == "furniture" and interiors.is_bed(bases.get(r["base"]) or {}))
+    for rid in camp:
+        b_ = bases.get(next(r["base"] for r in our if r["id"] == rid)) or {}
+        for k in range(interiors.sleeps(b_)):
+            slots.setdefault("exterior", []).append({"space": "exterior", "ref": rid, "slot": k})
+    barracks = sorted(sid for sid in halls if re.search(r"barrack|guard", f"{sid} {spaces[sid].get('name') or ''}", re.I))
     free = {sid: list(v) for sid, v in slots.items()}
 
     def take(sid):
@@ -640,7 +651,13 @@ def draft_people(place_id, rec, gives, src, bases, our, spaces, clusters, fit, o
     # the inn: the hall with the most beds that no source trader keeps as a shop
     shops = {sp_id for sp_id, r in actors if people.usable(src.npcs[r["base"]]) and any(
         people.role_score(src.npcs[r["base"]], ro) >= 2 for ro in ("merchant", "smith", "apothecary", "spell-trader"))}
-    inn_space = next((h for h in halls if spaces[h]["src_space"] not in shops), halls[0] if halls else None)
+    inn_space = next((h for h in halls if spaces[h]["src_space"] not in shops and h not in barracks),
+                     halls[0] if halls else None)
+    # an inn that rents a room keeps one bed nobody owns: the rented bed (vanilla: the innkeeper's script points at it)
+    rent_bed = None
+    if inn_space and free.get(inn_space) and any(g["give_kind_id"] == "inn-room" for g in gives):
+        rent_bed = free[inn_space].pop(0)["ref"]
+        free[inn_space] = [b_ for b_ in free[inn_space] if b_["ref"] != rent_bed]
     copies_of: dict[str, list[str]] = {}
     for sid_, sp_ in sorted(spaces.items()):
         copies_of.setdefault(sp_["src_space"], []).append(sid_)
@@ -697,6 +714,17 @@ def draft_people(place_id, rec, gives, src, bases, our, spaces, clusters, fit, o
         c = w.get("pos") or next((r["pos"] for r in our if r["id"] == w.get("ref")), None)
         return c is not None and geom.dist(row["pos"], c) <= w.get("radius", 384) + 256
 
+    members: dict[str, int] = {}
+
+    def household(home: str | None) -> dict:
+        """One family to a house (town-life.md): its first sleeper heads it (the working person when one lives
+        there), the second is the partner, the rest their kin; inns, halls and the camp hold no household."""
+        if home not in houses:
+            return {}
+        k = members.get(home, 0)
+        members[home] = k + 1
+        return {"household": {"id": f"{place_id}.household.{home}", "relation": ("head", "partner")[k] if k < 2 else "kin"}}
+
     services = people.service_people(gives)
     free_houses = list(houses)
     for n, sp in enumerate(services):
@@ -710,7 +738,7 @@ def draft_people(place_id, rec, gives, src, bases, our, spaces, clusters, fit, o
         if role in people.NO_BED:
             bed, home = None, work.get("space") if work.get("space") != "exterior" else home
         else:
-            bed = bed_for([home] if home else []) or bed_for(houses + halls)
+            bed = bed_for([home] if home else []) or bed_for(houses + [h for h in halls if h not in barracks])
             home = bed["space"] if bed else home
         pid = io.mint(place_id, "person", role, str(n))
         bed_at = {"space": bed["space"], "ref": bed["ref"], "radius": 128} if bed else town
@@ -725,7 +753,7 @@ def draft_people(place_id, rec, gives, src, bases, our, spaces, clusters, fit, o
                              "person": pid})
             fr.append({"faction": vid, "rank": 0})
         folk.append({"id": pid, "name": people.placeholder_name(pid, taken_names), "base_from": pick_base(role),
-                     "role": role, "home": home, "bed": bed_at if bed else None, "work": work,
+                     **household(home), "role": role, "home": home, "bed": bed_at if bed else None, "work": work,
                      "services": sp["gives"], "faction_ranks": fr,
                      "routine": people.routine(role, bed_at, work, eat, wander)})
     # the crafting stations the record promises and the source lacks, by the person who works them, the way
@@ -775,7 +803,7 @@ def draft_people(place_id, rec, gives, src, bases, our, spaces, clusters, fit, o
             space = w["space"]
             sp = spaces[space]
             src_refs = src.spaces[sp["src_space"]].refs
-            beds = interiors.beds_in(src_refs, bases, sp["room"])
+            beds = interiors.beds_in(src_refs, bases, sp["room"], sp["copy_of"])
             anchor_ids = {b_["ref"] for b_ in beds} or {sp.get("room")}
             pts = [r["pos"] for r in src_refs if r["id"] in anchor_ids] or [src_refs[0]["pos"]]
             cx_ = sum(p[0] for p in pts) / len(pts) + 128 * (k + 1)
@@ -802,7 +830,7 @@ def draft_people(place_id, rec, gives, src, bases, our, spaces, clusters, fit, o
     n_guards = people.guard_count(sum(1 for c in clusters if c.kind == "building"))
     for k in range(n_guards):
         shift = "day" if k % 2 == 0 else "night"
-        bed = bed_for(halls + houses)
+        bed = bed_for(["exterior"] + barracks + [h for h in halls if h != inn_space] + houses)
         pid = io.mint(place_id, "person", "guard", str(k))
         beat = beats[(k // 2) % len(beats)] if beats else []
         pts = beat + beat[-2:0:-1]
@@ -822,7 +850,7 @@ def draft_people(place_id, rec, gives, src, bases, our, spaces, clusters, fit, o
             bed = take(sid)
             pid = io.mint(place_id, "person", "resident", str(n))
             bed_at = {"space": sid, "ref": bed["ref"], "radius": 128}
-            folk.append({"id": pid, "name": people.placeholder_name(pid, taken_names),
+            folk.append({"id": pid, "name": people.placeholder_name(pid, taken_names), **household(sid),
                          "base_from": pick_base("resident"), "role": "resident", "home": sid, "bed": bed_at,
                          "work": town, "services": [], "faction_ranks": [{"faction": crime, "rank": 0},
                                                                           {"faction": f"{place_id}.town", "rank": 0}],
@@ -840,4 +868,5 @@ def draft_people(place_id, rec, gives, src, bases, our, spaces, clusters, fit, o
         else:
             ledger.append({"src": r["id"], "space": sp_id, "status": "dropped",
                            "why": "people come from the place record's promises, the guards and the beds"})
+    stations["rent_bed"] = {"space": inn_space, "ref": rent_bed} if rent_bed else None
     return folk, factions, stations

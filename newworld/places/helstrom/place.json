@@ -7325,7 +7325,11 @@
     "space": "exterior",
     "by": "helstrom.RTSJ5GB95CS3FHG9MNNP1BEZSS"
    }
-  ]
+  ],
+  "rent_bed": {
+   "space": "01Ship",
+   "ref": "Black Marsh.esm:0AA825"
+  }
  },
  "ground": {
   "bundle": "ground.helstrom",
@@ -7355,11 +7359,11 @@
    "guard": 8,
    "innkeeper": 1,
    "merchant": 1,
-   "resident": 9,
+   "resident": 49,
    "smith": 1,
    "spell-trader": 1
   },
-  "beds": 22
+  "beds": 58
  },
  "draft_key": [
   1,
