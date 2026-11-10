@@ -311,6 +311,10 @@ GET  /api/place/<id>/runs/<run_id>            {run_id, save_id, state: starting|
                                               log (tail), report (markdown, when done)} plus every
                                               field of finalise.read_run (steps, log_tail, report_md)
 GET  /api/place/<id>/seat?x=&y=               ground height, water height, slope at a point (the same code as seat)
+GET  /api/place/<id>/nav                      the built place's walking mesh (tools/places/navexport.py): the built
+                                              plugin's navmesh, outside (with the world's round it) and per room.
+                                              The studio finds people's routes on it (navroute.js), so a drawn
+                                              route is the way taken in the game; 404 before the first build
 GET  /api/place/<id>/notes                    the owner's notes for the agent, oldest first: [{id, at, text, things:
                                               [{id, space, base, name, kind, pos, src}], view: {space, at}, done,
                                               done_at, reply}]

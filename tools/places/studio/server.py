@@ -19,7 +19,7 @@ import warnings
 
 from aiohttp import web
 
-from tools.places import notes
+from tools.places import navexport, notes
 from tools.places.studio import awake, links
 from tools.places.studio.saves import AUTOSAVE, PLACE_ID, SAVE_ID, Conflict, Saves, atomic_write
 
@@ -331,6 +331,15 @@ async def save_put(req: web.Request) -> web.Response:
     return jok({"save_id": sid, "rev": save["rev"], "at": save["at"], "kept": kept})
 
 
+async def nav_get(req: web.Request) -> web.StreamResponse:
+    """The built place's walking mesh (tools/places/navexport.py), exported again when the plugin was rebuilt."""
+    pid = req.match_info["place_id"]
+    if not PLACE_ID.match(pid):
+        return jerr(400, "bad place id")
+    p = await asyncio.get_running_loop().run_in_executor(None, navexport.current, pid, req.app["cfg"].out)
+    return await send_file(req, p) if p else jerr(404, "this place has not been built")
+
+
 async def notes_get(req: web.Request) -> web.Response:
     """The owner's notes on a place (tools/places/notes.py), oldest first."""
     try:
@@ -578,6 +587,7 @@ def make_app(cfg: Config | None = None) -> web.Application:
     r.add_get("/api/place/{place_id}/saves/{save_id}", save_get)
     r.add_put("/api/place/{place_id}/saves/{save_id}", save_put)
     r.add_post("/api/place/{place_id}/finalise", finalise)
+    r.add_get("/api/place/{place_id}/nav", nav_get)
     r.add_get("/api/place/{place_id}/notes", notes_get)
     r.add_post("/api/place/{place_id}/notes", notes_post)
     r.add_get("/api/place/{place_id}/runs/{run_id}", run_get)

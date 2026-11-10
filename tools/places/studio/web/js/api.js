@@ -49,6 +49,8 @@ export const api = {
     method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ save_id }) }),
   run: (id, rid) => getJSON(`/place/${id}/runs/${rid}`),
   seat: (id, x, y) => getJSON(`/place/${id}/seat?x=${x}&y=${y}`),
+  // the built place's walking mesh (tools/places/navexport.py); null when the place has not been built
+  nav: (id) => getJSON(`/place/${id}/nav`, { optional: true }),
   notes: (id) => getJSON(`/place/${id}/notes`),
   // add a note ({text, things, view, save}) or close or reopen one ({id, done})
   note: (id, body) => getJSON(`/place/${id}/notes`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) }),

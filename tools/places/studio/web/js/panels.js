@@ -201,6 +201,7 @@ export class Panels {
       parts.push(el(`<p><strong>Tap our place ${what}.</strong>${P.armed.kind === 'patrol' && P.armed.i == null ? ' Keep tapping to add more points.' : ''}</p>`));
       const c = el('<button class="quiet">Done</button>'); c.onclick = () => { P.armed = null; this.peoplePanel(); }; parts.push(c);
     }
+    if (P.navOf(a.ours.space)) parts.push(el('<p class="tag">Each line is the way that person walks in the game: it is found on the built place\'s own walking mesh. A thing you have moved since the place was last built is walked to over our ground until you finalise.</p>'));
     const p = P.sel && a.model.people.get(P.sel);
     if (p) {
       const name = el(`<label class="field">Name<input type="text" value="${esc(p.name)}"></label>`);

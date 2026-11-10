@@ -4,6 +4,7 @@ import * as THREE from 'three';
 import { mintId } from './ids.js';
 import { clock } from './geom.js';
 import { Walk, along } from './routes.js';
+import { NavMesh } from './navroute.js';
 
 const COLOURS = ['#2f7fd1', '#c2410c', '#15803d', '#7e22ce', '#b45309', '#0e7490', '#be185d', '#4d7c0f'];
 const NS = 'http://www.w3.org/2000/svg';
@@ -76,28 +77,43 @@ export class People {
     return null;
   }
   // ---------- walking routes ----------
-  // Outside, a person walks round buildings and water and along the paths (routes.js), as the game's people do on
-  // its walking mesh. The network is made again after an edit that moves a building, a path or the land; each leg
-  // between two spots is worked out once.
+  // A leg is found on the built place's own walking mesh (navroute.js: the mesh the game's people walk, outside
+  // and in every room), so the line drawn is the way they go in the game. Where the mesh does not hold a leg's
+  // ends (the place is not built yet, or the thing was moved since the build) the leg is found on our ground
+  // instead: round buildings and water and along the paths (routes.js). Each leg is worked out once; an edit that
+  // moves a building, a path or the land has them worked out again.
   invalidateRoutes() { this._walk = null; this._legs.clear(); }
+  // the built mesh arrives after the place (main.js); a space's mesh is made ready when first walked
+  setNav(spaces) { this._navData = spaces || null; this._navs = new Map(); this._legs.clear(); if (spaces) { this.refresh(); this.drawRoutes(); } }
+  navOf(S) {
+    const d = this._navData?.[S]; if (!d) return null;
+    if (!this._navs.has(S)) this._navs.set(S, new NavMesh(d));
+    return this._navs.get(S);
+  }
   walkNet() {
     const a = this.app;
     if (!this._walk) this._walk = new Walk({ terrain: a.terrain, bases: a.bases, paths: [...a.model.paths.values()], refs: [...(a.model.spaces.exterior?.refs.values() || [])] });
     return this._walk;
   }
-  // The way from p to q in space S as [[x, y, z], ...]: routed outside, straight across a room.
+  // The way from p to q in space S as [[x, y, z], ...]; .built says it lies on the built mesh (its heights are the mesh's).
   leg(S, p, q) {
-    if (S !== 'exterior' || !this.app.terrain) return [p, q];
-    const k = `${Math.round(p[0])},${Math.round(p[1])}|${Math.round(q[0])},${Math.round(q[1])}`;
+    const k = `${S}|${Math.round(p[0])},${Math.round(p[1])},${Math.round(p[2] ?? 0)}|${Math.round(q[0])},${Math.round(q[1])},${Math.round(q[2] ?? 0)}`;
     let r = this._legs.get(k);
-    if (!r) { r = this.walkNet().route(p, q).map(([x, y]) => [x, y, p[2]]); this._legs.set(k, r); }
+    if (!r) {
+      r = this.navOf(S)?.route(p, q) || null;
+      if (r) r.built = true;
+      else if (S !== 'exterior' || !this.app.terrain) r = [p, q];
+      else r = this.walkNet().route(p, q).map(([x, y]) => [x, y, p[2]]);
+      this._legs.set(k, r);
+    }
     return r;
   }
-  // Several spots in turn as one walked line (back to the first when closed).
+  // Several spots in turn as one walked line (back to the first when closed); each point knows whether it lies on the built mesh.
   walked(S, spots, closed) {
     const out = [];
     for (let i = 0; i + 1 < spots.length || (closed && i < spots.length && spots.length > 1); i++) {
-      const L = this.leg(S, spots[i], spots[(i + 1) % spots.length]); out.push(...(out.length ? L.slice(1) : L));
+      const L = this.leg(S, spots[i], spots[(i + 1) % spots.length]);
+      for (const pt of out.length ? L.slice(1) : L) out.push(L.built ? [pt[0], pt[1], pt[2], true] : pt);
     }
     return out.length ? out : spots;
   }
@@ -161,7 +177,7 @@ export class People {
   drawRoutes() {
     const a = this.app, v = a.ours.view, svg = this.layer(v); svg.innerHTML = '';
     // outside, a line lies on the ground, or on the water's surface where it crosses on a deck
-    const S = a.ours.space, scr = (p) => { const z = S === 'exterior' && a.terrain ? Math.max(a.terrain.heightAt(p[0], p[1]) ?? p[2], a.terrain.waterAt(p[0], p[1]) ?? -Infinity) : p[2]; return v.toScreen([p[0], p[1], z + 10]); };
+    const S = a.ours.space, scr = (p) => { const z = p[3] ? p[2] : S === 'exterior' && a.terrain ? Math.max(a.terrain.heightAt(p[0], p[1]) ?? p[2], a.terrain.waterAt(p[0], p[1]) ?? -Infinity) : p[2]; return v.toScreen([p[0], p[1], z + 10]); };
     const add = (tag, attrs, text) => { const e = document.createElementNS(NS, tag); for (const [k, val] of Object.entries(attrs)) e.setAttribute(k, val); if (text) e.textContent = text; svg.append(e); return e; };
     // short name labels: everyone near the camera, and the selected person wherever they are
     const cam = v.camera.position, o = a.ours.origin, near = Math.max(1800, Math.min(4000, v.rig.dist * 1.2));
