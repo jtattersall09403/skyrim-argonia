@@ -95,7 +95,8 @@ def check(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, g
                        f"{'in water' if sw else 'on land'}")
 
     # 5. every door reached by a path, one network
-    doors = [r for r in refs if r.get("door") and r["door"].get("to_space") not in (None, "exterior")]
+    # a prison marker's teleport is an arrest's (the jail's release point), not a door one walks to
+    doors = [r for r in refs if r.get("door") and r["door"].get("to_space") not in (None, "exterior") and r.get("kind") != "marker"]
     ends = {}
     for p in paths:
         ends.setdefault(p.get("from"), p["points"][0])

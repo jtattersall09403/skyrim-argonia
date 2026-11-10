@@ -3,7 +3,8 @@ first draft. A place that holds the owner's finalised studio saves is never draf
 `--force "<why no narrow stage can be correct>"`.
 `draft <stage> <place_id>` runs one stage alone on the place files as they stand, changing only the rows that
 stage owns and printing the rows changed per file (tools/places/draft/stages.py): fit, pieces, seating, clearance,
-streets (also `join`), people, lights, stations.
+streets (also `join`), people, lights, stations, jail, primitives. A whole draft ends with `primitives`, the join
+and then `jail` (the jail's release point is the arrival the join lays).
 `draft check <place_id>` runs the draft's self-checks; `draft render <place_id>` writes top-down PNGs."""
 from __future__ import annotations
 
@@ -70,7 +71,9 @@ def main(argv: list[str]) -> int:
         print(f"draft {ids[0]}: whole draft forced: {force or 'no reason given'}")
     counts = draft(ids[0], force=force is not None)
     from tools.places.draft import walk
+    counts["primitives"] = stages.run("primitives", ids[0])  # before the network: a collision box is a solid of it
     # joins, rehomed sleepers, streets and patrols laid on the built network; it leaves the files seated and canonical
     counts["network"] = walk.join(ids[0])
+    counts["jail"] = stages.run("jail", ids[0])  # its release point is the arrival the join lays
     print(json.dumps(counts, indent=1))
     return 0

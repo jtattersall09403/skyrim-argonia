@@ -16,6 +16,10 @@ owns changes nothing and fails.
              promises a resident keeps, and names, from the people source
   lights     the lights of what we added (a forge's fire) and each copied room within the shadow limit
   stations   each promised crafting station the standing files lack, by the person who works it
+  jail       the crime faction's jail: the jail room, the cell the player is put in, the prison markers both sides,
+             the evidence chests (tools/places/draft/jail.py)
+  primitives each copied ref's primitive by its class, a source trigger that reaches nothing of ours dropped
+             (tools/places/draft/primitives.py)
 """
 from __future__ import annotations
 
@@ -43,6 +47,9 @@ OWNS: dict[str, dict[str, tuple]] = {
     "lights": {"spaces/*/refs.jsonl": (ANY, True), "place.json": ({"lights"}, False)},
     "stations": {"spaces/*/refs.jsonl": (ANY, True), "people.jsonl": ({"work", "routine"}, False),
                  "place.json": ({"stations"}, False)},
+    "jail": {"spaces/*/refs.jsonl": (ANY, True), "place.json": ({"factions"}, False)},
+    "primitives": {"spaces/exterior/refs.jsonl": ({"primitive"}, True), "spaces/*/refs.jsonl": (ANY, True),
+                   "ledger.jsonl": (ANY, True)},
 }
 STAGES = tuple(OWNS)
 BUILT = "formids.json"      # the build's own file in the place folder: no stage's, and no stage is judged by it
@@ -409,8 +416,18 @@ def stations(st: Standing, log=print) -> None:
     seat_all(st.ext, st.G)
 
 
+def jail_stage(st: Standing, log=print) -> None:
+    from tools.places.draft import jail
+    jail.apply(st, log)
+
+
+def primitives_stage(st: Standing, log=print) -> None:
+    from tools.places.draft import primitives
+    primitives.apply(st, log)
+
+
 RUN = {"fit": fit, "pieces": pieces, "seating": seating_stage, "clearance": clearance, "people": people_stage,
-       "lights": lights_stage, "stations": stations}
+       "lights": lights_stage, "stations": stations, "jail": jail_stage, "primitives": primitives_stage}
 
 
 # --- the run: snapshot, stage, proof of ownership, counts ---

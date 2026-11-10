@@ -116,7 +116,11 @@ compressed over HTTP.
 A ref: `{id, edid?, base, kind, pos:[x,y,z], rot:[rx,ry,rz], scale, layer, flags:[...], door:{to_space,to_ref,to_pos,
 to_rot,flags}?, owner:{owner,rank}?, linked:[{ref,keyword}]?, enable_parent:{ref,flags}?, lock:{level,key,flags}?,
 src?, cell?, map_marker?, primitive?, radius?, light_data:{fov,fade,end_cap,shadow_bias}?, emittance?,
-loc_ref_types?, count?, patrol?, persistent_location?, merchant_container?}`. `light_data` is a light ref's own
+loc_ref_types?, count?, patrol?, persistent_location?, merchant_container?, scripts?, activate_parents?}`. `primitive` is
+the ref's XPRM, the shape a collision marker, a trigger, a room marker or an acoustic space has: `{type: Box | Sphere |
+Plane | Line | Ellipsoid, bounds: [x, y, z] half extents round the ref's origin in its own frame (xEdit shows them
+doubled), color: [r, g, b], unknown}`; `scripts` the names of the ref's own scripts (VMAD) and `activate_parents` the
+refs whose activation it follows (XAPD). `light_data` is a light ref's own
 offsets to its base (XLIG) and `emittance` the region or light whose colour a ref glows with (XEMI: a window that
 follows the time of day). In a bundle `src` is the plugin whose version of the ref wins and `cell` the exterior cell;
 flags are `persistent, initially_disabled, visible_when_distant, high_priority_lod, multibound, no_respawn,
@@ -210,7 +214,10 @@ piece it leaves, its top tread at the deck's height.
 `roles`, `keep_patches`; skill `place-build`), `fit` (global and per-cluster transforms, `clusters_info`,
 `relief_norm`, `patch_max`),
 `clearance` (the source's measured clearance), `factions` (`<place_id>.crime`, `.guard`, `.town`, and one
-`.vendor.NN` per trader with hours and `chest`), `stations` (needed, found, missing, added: {station, id, base,
+`.vendor.NN` per trader with hours and `chest`; the crime row's `jail` is null for a place that fines only, else
+`{space, known, cell, bed, door, marker, exterior, stolen, inventory}`: the jail room, how it was known, how the cell
+was chosen, the prisoner's bed and the cell's locking door (a source key or our id; null where it has none), and our
+ids of the jail marker, the exterior prison marker and the two evidence chests, written by `draft jail`), `stations` (needed, found, missing, added: {station, id, base,
 space, by}), `ground`, `source`,
 `radius_m`, `counts`, `draft_key`.
 
@@ -763,9 +770,9 @@ their own cell (interior), as vanilla files them.
    (`removed: true` drops it; `base`, `pos`, `rot`, `scale`, `owner`, `door` replace the source's); a row with a
    `src` outside the kept room is not in the copy; a row without `src` is added. A copied ref whose base is still
    the source's keeps what the source ref itself says of it: a light's radius and light data, its emittance, an item
-   count, a charge, open by default, ignored by sandbox, its lock's key. An exterior row whose base is still the
+   count, a charge, open by default, ignored by sandbox, its lock's key, its primitive. An exterior row whose base is still the
    source's takes its source ref's `light_data` and `emittance` from the source bundle. Any row's own `radius`,
-   `light_data`, `emittance` and `count` (the ref shape's) are built as given, in a room or outside. An emittance
+   `light_data`, `emittance`, `count` and `primitive` (the ref shape's) are built as given, in a room or outside. An emittance
    is built only where its target is in our load order: a master's region or light as it is, another plugin's light
    copied in as ours; any other is left off and named in the write's notes. Source actors are never copied: people
    are ours.
@@ -792,8 +799,17 @@ their own cell (interior), as vanilla files them.
    SolitudeTempleMinister0x8; eat: GuardRiftenEatDayShift20x4; patrol: GuardRiftenBarracksPatrol, the vanilla way: its target
    input is PackageTargetLinkedReference with no keyword, and the actor's own linked ref names the first of a chain
    of linked XMarkerHeadings, closed when `patrol.loop`) with our schedule and place, then an unscheduled sandbox at home; the person's bed
-   owned by them; everyone in the place's crime faction (TrackCrime, vanilla's crime values), guards also in
-   IsGuardFaction. A stop names a ref (our id or a source key in its space), a position (2D, outside only, is
+   owned by them; everyone in the place's crime faction (vanilla's hold flags TrackCrime, CrimeGoldUseDefaults and
+   CanBeOwner, and its crime values), guards also in IsGuardFaction and GuardDialogueFaction (vanilla's
+   DialogueCrimeGuards speaks its arrest lines to an actor that IsGuard and is in GuardDialogueFaction).
+   The jail, as Skyrim.esm's hold factions have one (measured by `ArgoniaPlacesBuild jail` on Riften, Whiterun,
+   Falkreath and Winterhold): the faction's JAIL and WAIT are a persistent PrisonMarker (Skyrim.esm 000004, a
+   door-type marker) at the release point outside the jail's town door, whose teleport leads to a second PrisonMarker
+   beside the prisoner's bed in the jail and back; STOL and PLCN are an EvidenceChestStolenGoods (0267E7) and an
+   EvidenceChestPlayerInventory (108D36) in the jail's room, persistent, empty, never respawning, owned by the crime
+   faction; JOUT is BeggarOutfit (028B60); the shared crime faction list (CRGR) is left empty, so the place's bounty
+   is its own. A ref owned `<place>.crime` is owned by the crime faction. A place whose crime row has no `jail` fines
+   only. `draft jail` (tools/places/draft/jail.py) chooses the room, the cell and where each thing stands. A stop names a ref (our id or a source key in its space), a position (2D, outside only, is
    seated on the built land: the world's heights with the place's land patches, between the cell's vertices), or
    only a space (where one arrives in it by a load door, else its first furniture). A person whose day starts on
    patrol stands at the patrol's first point and keeps home there; every patrol stop of a day walks the one chain,
@@ -837,7 +853,8 @@ their own cell (interior), as vanilla files them.
    each other), then vanilla's Cure Disease. The message is ours.
 7. Navmesh: the touched exterior cells (placed collision, changed land, path cells) are rebuilt by
    `tools.navmesh` over the patched land and the place's collision (each base read from its plugin where the game
-   loads it, the game's Data or the laid stack's mod, so a mod's ship or pier is solid; a ref flagged
+   loads it, the game's Data or the laid stack's mod, so a mod's ship or pier is solid; a collision marker's
+   primitive is the box it gives, `build.collision_box`, outside and in a generated room alike; a ref flagged
    `initially_disabled` is built Initially Disabled and is no collision) in a window that grows from three rings until
    its last ring inside the cut comes out byte-equal to the world's own NAVM; the touched cells, ring 1 and every
    cell inside that came out different are ours, so every link out lands on a mesh the world already holds; a
@@ -855,7 +872,8 @@ their own cell (interior), as vanilla files them.
    join, is generated by the same Recast run over its collision (the plan's notes say which), and one that still
    has no floor is a problem. Door triangles on both sides follow vanilla's rule: the triangle nearest the
    partner's arrival marker in plan and height names the door, on whichever mesh of the space holds it (outside,
-   the arrival's cell or one beside it). The NAVI override carries our NVMI only.
+   the arrival's cell or one beside it); a prison marker's teleport is an arrest's, never a way people walk, and
+   names no triangle. The NAVI override carries our NVMI only.
 8. Assemble every shard into the plugin (`ArgoniaPlacesBuild write`); the world ESM is read, never written.
 
 **Deploy** (run by the lead after the owner's walk; the build never deploys): `infra/gpu-box/places_deploy.sh`
@@ -891,7 +909,12 @@ room built short of its source (check `rooms`: per room, its built refs and ligh
 kept room where a `room` is copied, less the rows the place removes and the loose things the stock takes out, naming
 what is missing by plugin); anything levelled (a levelled list in a person's
 inventory, outfits, death item or spells, or in a placed container; a level that follows the player; a base whose
-template chain reaches a levelled actor list or takes stats or an inventory from a template that scales). It also
+template chain reaches a levelled actor list or takes stats or an inventory from a template that scales); a jail
+not as vanilla's (check `jail`: the crime faction's JAIL, WAIT, STOL and PLCN not set to our refs, the jail marker off
+its room's navmesh, the release point off the town's main network, an evidence chest not in the jail, not empty,
+respawning or not the faction's, a guard not in IsGuardFaction and GuardDialogueFaction; a place with no jail room
+passes with a note that it fines only); a copied ref whose source has a primitive neither built with it identical
+(type, half extents, colour) nor in the ledger as dropped with its reason (check `primitives`). It also
 fails on a link that
 resolves nowhere or a plugin not mastered on the world ESM. The promises are the place's rows of
 `newworld/story/data/db/place_give.jsonl` (combat, loot and resource gives are not a place's to give). Nordic is,
@@ -909,7 +932,12 @@ where that cluster stands now), `pieces` (`draft.replace` and `draft.drop`), `se
 `clearance` (`clear.jsonl`), `streets` or `join` (the source's steps hung on their decks, residents' promises,
 names, then the built network: flights, joins, arrivals, work stops, streets and patrols), `people` (promises and
 names), `lights` (added stations' lights, each room's shadow twins, `place.json` `lights`: `{added:[{id, base,
-on}], twins:[{space, src, base, of}]}`), `stations` (a promised station the files lack). A stage writes only the
+on}], twins:[{space, src, base, of}]}`), `stations` (a promised station the files lack), `jail` (the jail room's
+cell, prison markers, bedroll and evidence chests, and the crime row's `jail`: Build step 6), `primitives` (each
+copied ref's primitive by its class, `tools/places/draft/primitives.py`: collision markers, room, portal and plane
+markers, multibounds, acoustic spaces and other volumes are written; a trap's trigger stays with its trap; a trigger
+with a script whose activation reaches nothing the place keeps, no ref following it and no link, is dropped with its
+reason in the ledger, a copied room's as a `removed` row). A whole draft runs `primitives`, the join, then `jail`. A stage writes only the
 rows and fields it owns. After a stage runs the tool checks that; if the stage wrote anything else, the tool
 restores the files and fails. A row a
 finalised save under `edits/` touched is kept as it stands. The run prints `{file: {changed, added, removed}}`. The

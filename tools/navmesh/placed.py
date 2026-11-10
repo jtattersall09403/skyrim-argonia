@@ -7,8 +7,9 @@ base's mesh from the intermediate's own STAT/ACTI record or from the plugin that
 Each exterior reference of a `place:` layer in the intermediate (out/build/argonia.json) whose base is a solid type
 is looked up in its own plugin (esm.py: MODL and OBND). Its mesh is found as the game finds it (meshes.py: the laid
 mod stack's loose files, then BSAs) and its Havok collision read (nif.py: compressed mesh, packed strips, convex
-hulls, boxes; the solid layers only). The triangles are scaled, turned by the reference's rotation and moved to its
-position. A mesh with no solid collision (a plant, a marker) adds nothing, as in game. A base whose mesh is not on
+hulls, boxes; the solid layers only). A reference with a `box` (a collision marker's primitive, half extents round its
+origin: tools/places/build.collision_box) is that box, whatever its base's mesh. The triangles are scaled, turned by
+the reference's rotation and moved to its position. A mesh with no solid collision (a plant, a marker) adds nothing, as in game. A base whose mesh is not on
 the VM or not readable falls back to its OBND box (backlog B4's old approximation), counted. Actors, disabled
 references and bases with neither mesh nor bounds are left out and counted.
 
@@ -123,10 +124,15 @@ def collide(refs: list[dict], data: Path, own: dict[str, str], resolver=None) ->
     res = resolver or meshes.Resolver(data)
     out: list[np.ndarray] = []
     tally = {"refs": len(refs), "collision": 0, "no_collision": 0, "box_fallback": 0, "no_base": 0, "triangles": 0}
+    tally["primitive"] = 0
     for x in sorted(refs, key=lambda r: r.get("formKey", "")):
         modl, ob = info.get(x["base"], ("", None))
-        c = res.collision(modl) if modl else None
-        if c is not None and c.tris is not None:
+        c = res.collision(modl) if modl and x.get("box") is None else None
+        if x.get("box") is not None:  # a collision marker: its primitive's box (half extents round its origin) is the solid
+            b = np.array(x["box"], float)
+            local = nif._box_tris(-b, b)
+            tally["primitive"] += 1
+        elif c is not None and c.tris is not None:
             local = c.tris
             tally["collision" if len(local) else "no_collision"] += 1
         elif ob is not None:

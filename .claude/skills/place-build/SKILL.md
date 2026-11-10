@@ -193,6 +193,18 @@ The tools lay the network by these rules.
   travel network's (`docs/design/travel-network.md`), never the person's.
 - **A promised shrine blessing needs a thing to carry it**: the source's own Hist or shrine, else the tools add a
   young Hist in the town's middle, clear of buildings and streets (`stations` `shrine`); look at it in the render.
+- **A town with a jail arrests as Skyrim's holds do.** The jail is the copied room whose source cell's editor id or
+  name says jail, prison or gaol, else one that holds a jail door. The tools put the prisoner in a bed by a door that
+  locks, else a bed behind the room's bars, else behind the bars where they enclose most (adding a bedroll there),
+  stand the jail marker beside that bed, the release point at the arrival outside the jail's town door, and the
+  two evidence chests (stolen goods, the player's things) by the way in, owned by the crime faction and empty
+  (`draft jail`; `place.json`'s crime row `jail` names them). A town with no jail room fines only. Look at the
+  cell in the render: a prisoner should stand behind bars or a locked door.
+- **A source's primitives keep their work.** A collision marker's box (an invisible wall or floor the source's
+  builders placed), a room or portal marker, an acoustic space and any other volume are copied with their
+  primitive, and the navmesh is built round a collision box as the solid it is. A trigger with a script whose
+  activation reaches nothing the place keeps (the source's quest or scene) is dropped with its reason in the
+  ledger; a trap's trigger stays with its trap (`draft primitives`).
 - **People follow Skyrim's days** (`docs/research/skyrim/town-life.md`): an innkeeper keeps the inn day and
   night and owns no bed; guards keep two 12-hour shifts on the streets. Never bend a day to satisfy a check: a check that disagrees with how Skyrim does it is a fault of the tool, to be reported and mended there.
 - **Beds decide the people.** A house copied from a cell several houses share keeps only its own room, by the
@@ -222,7 +234,8 @@ The tools lay the network by these rules.
    nothing floating or buried along its true outline beyond how it sat in the source, every door's arrival clear
    and on dry ground or a deck over the water, every replaced door facing its arrival, every light within 16
    units of its place by its fixture, every added forge lit, no room over four shadow casters, nothing Nordic
-   added and nothing levelled placed, no world plant left standing in what we placed, and the files in the
+   added and nothing levelled placed, no world plant left standing in what we placed, a jail as section 5 has it
+   where the town has a jail room, every source primitive built or dropped with its reason, and the files in the
    contract's order. It then builds the draft and runs every check of the build on it (section 8), so a draft that
    passes here passes there. Its `measures` line gives the patched cells and points and the streets' length: keep
    the patches as near nothing as you can.
@@ -250,6 +263,8 @@ and removed per file; a stage that would write outside what it owns changes noth
 | `people` | the people source or the place's promises changed | names in `people.jsonl`, and each person's services as the record promises them (kind, detail, the network's destinations) |
 | `lights` | stations were added, a room's lights changed | the lights of added stations; each room's `twin_of` rows; `place.json` `lights` |
 | `stations` | the record promises a station the files lack | the added station, its worker's stop, `place.json` `stations` |
+| `jail` | the jail room, its door or its arrival changed | the jail's prison markers, bedroll and evidence chests; `place.json`'s crime row `jail` |
+| `primitives` | the source bundle or the primitive classes changed | each exterior row's `primitive`; a dropped trigger's row and its ledger row |
 
 1. Make the change that calls for it (`place.json` `draft`, the people source, a rule of the tools).
 2. Run the stage and read its counts: they are the whole change. Then run `streets` when what the network is built
@@ -263,9 +278,10 @@ and removed per file; a stage that would write outside what it owns changes noth
 1. `python3 -m tools.places build <place_id>` builds the place layer plugin with the place's navmesh, from the
    place files and the database. It is a long job: run it under `tooling/job_guard.sh`. `build <place_id> --plan`
    plans only and lists every problem.
-2. `python3 -m tools.places check <place_id>` reads the built plugin back. All sixteen checks are green: `plugin`,
+2. `python3 -m tools.places check <place_id>` reads the built plugin back. All eighteen checks are green: `plugin`,
    `seat`, `overlap`, `doors`, `people`, `navmesh`, `streets`, `land`, `clear`, `services`, `nordic`, `rooms`,
-   `shadows`, `levelled`, `stock`, `promises`. Each failure's full list is in
+   `shadows`, `levelled`, `jail`, `primitives`, `stock`, `promises`. A town with no jail room passes `jail` with a
+   note that it fines only. Each failure's full list is in
    `out/places/shards/<place_id>/check_failures/<check>.txt`. `check <place_id> --reach [person]` says what is cut
    off from what.
 3. A failure is mended at its cause by the stage or the skill that owns it (a street by `streets`, a promise by `place-stock`). The place is never bent to pass a check, and a check is never loosened to pass a place.

@@ -103,6 +103,86 @@ def test_the_good_fixture_passes_every_check():
     assert not any(res.values()), res
 
 
+def with_jail(c):
+    """The fixture's town with a jail as vanilla's holds have one: the crime faction names the exterior prison marker
+    (JAIL, WAIT) and two evidence chests in the house (STOL, PLCN); the markers' teleports lead to each other."""
+    d, p = c["dump"], c["plan"]
+    crime = k(30)
+    jail = {"exterior": k(60), "marker": k(61), "stolen": k(62), "inventory": k(63), "space": "house"}
+    p["people"]["crime_faction"] = {"fk": crime, "edid": "ANP_t_CrimeFaction", "jail": jail}
+    rows = [{"fk": k(60), "id": "t.release", "kind": "marker", "space": "exterior", "pos": [2000.0, 1500.0, 800.0],
+             "rot": [0, 0, 0], "seat": {"mode": "free"}},
+            {"fk": k(61), "id": "t.jailmarker", "kind": "marker", "space": "house", "pos": [100.0, 100.0, 0.0], "rot": [0, 0, 0]},
+            {"fk": k(62), "id": "t.stolen", "kind": "container", "space": "house", "pos": [0.0, 300.0, 0.0], "rot": [0, 0, 0]},
+            {"fk": k(63), "id": "t.inventory", "kind": "container", "space": "house", "pos": [0.0, 400.0, 0.0], "rot": [0, 0, 0]}]
+    p["refs"] += rows
+    base = {"base": "Skyrim.esm:000004", "base_type": "DOOR", "base_edid": "PrisonMarker", "model": None, "rot": [0, 0, 0],
+            "scale": 1.0, "flags": 0x400, "persistent": True, "bounds": None}
+    d["refs"] += [{**base, "fk": k(60), "pos": rows[0]["pos"], "space": "exterior",
+                   "door": {"to_ref": k(61), "to_pos": [100.0, 100.0, 0.0], "to_rot": [0, 0, 0]}},
+                  {**base, "fk": k(61), "pos": rows[1]["pos"], "space": "house",
+                   "door": {"to_ref": k(60), "to_pos": [2000.0, 1500.0, 800.0], "to_rot": [0, 0, 0]}},
+                  {"fk": k(62), "base": "Skyrim.esm:0267E7", "base_type": "CONT", "pos": rows[2]["pos"], "rot": [0, 0, 0], "scale": 1.0,
+                   "flags": 0x400, "space": "house", "owner": crime, "contents": [], "respawns": False, "bounds": None},
+                  {"fk": k(63), "base": "Skyrim.esm:108D36", "base_type": "CONT", "pos": rows[3]["pos"], "rot": [0, 0, 0], "scale": 1.0,
+                   "flags": 0x400, "space": "house", "owner": crime, "contents": [], "respawns": False, "bounds": None}]
+    f = next(x for x in d["factions"] if x["fk"] == crime)
+    f.update({"jail": k(60), "wait": k(60), "stolen": k(62), "inventory": k(63), "arrest": True,
+              "flag_names": "TrackCrime, CrimeGoldUseDefaults, CanBeOwner"})
+    return c
+
+
+def test_a_jail_as_vanilla_passes_and_a_place_without_one_fines_only():
+    res = C.run(with_jail(ctx()))
+    assert not any(res.values()), res
+    C.run(ctx())
+    assert any("fines only" in n for n in C.NOTES) is False  # a place with no crime faction says nothing
+    c = ctx()
+    c["plan"]["people"]["crime_faction"] = {"fk": k(30), "edid": "ANP_t_CrimeFaction"}
+    assert not C.run(c)["jail"] and any("fines only" in n for n in C.NOTES)
+
+
+@pytest.mark.parametrize("what", ["unset", "off_mesh", "release", "chest", "guard"])
+def test_a_broken_jail_fails(what):
+    c = with_jail(ctx())
+    d = c["dump"]
+    if what == "unset":
+        next(x for x in d["factions"] if x["fk"] == k(30))["stolen"] = ""
+    elif what == "off_mesh":
+        next(x for x in d["refs"] if x["fk"] == k(61))["pos"] = [5000.0, 5000.0, 0.0]
+    elif what == "release":
+        next(x for x in d["refs"] if x["fk"] == k(61))["door"]["to_pos"] = [9000.0, 9000.0, 800.0]
+    elif what == "chest":
+        next(x for x in d["refs"] if x["fk"] == k(62))["respawns"] = True
+    elif what == "guard":
+        c["plan"]["people"]["npcs"][0]["role"] = "guard"
+    assert C.check_jail(c), what
+
+
+def with_primitives(c, built=True, why="a trigger of the source's quest"):
+    """A collision marker outside built with its source's box; a trigger in the copied house dropped with its reason."""
+    box = {"type": "Box", "bounds": [100.0, 8.0, 200.0], "color": [255, 255, 0], "unknown": 0.0}
+    c["plan"]["refs"].append({"fk": k(70), "id": "t.wall", "kind": "marker", "space": "exterior", "src": "X.esm:000070",
+                              "pos": [1500.0, 3000.0, 800.0], "rot": [0, 0, 0], "seat": {"mode": "free"}})
+    c["dump"]["refs"].append({"fk": k(70), "base": "Skyrim.esm:000021", "base_type": "STAT", "pos": [1500.0, 3000.0, 800.0],
+                              "rot": [0, 0, 0], "scale": 1.0, "flags": 0, "space": "exterior", "bounds": None,
+                              **({"primitive": box} if built else {})})
+    c["plan"]["interiors"] = [{"space": "house", "copy_of": "x/house"}]
+    trig = {"id": "X.esm:000071", "primitive": {**box, "color": [204, 76, 51]}}
+    c["primitive_inputs"] = ({"exterior": [{"id": "X.esm:000070", "primitive": box}], "house": [trig]},
+                             [{"src": "X.esm:000070", "space": "exterior", "status": "placed", "as": "t.wall"},
+                              {"src": "X.esm:000071", "space": "house", "copy": "house", "status": "dropped", "why": why}],
+                             {"house": {"X.esm:000071"}})
+    return c
+
+
+def test_a_primitive_built_identical_or_dropped_with_its_reason_passes():
+    c = with_primitives(ctx())
+    assert not C.check_primitives(c) and c["primitives"] == {"written": 1, "dropped": 1}
+    assert C.check_primitives(with_primitives(ctx(), built=False))
+    assert C.check_primitives(with_primitives(ctx(), why=""))
+
+
 def broken(name):
     c = copy.deepcopy(ctx())
     d, p = c["dump"], c["plan"]
@@ -152,6 +232,11 @@ def broken(name):
     elif name == "promises":
         c["stock"] = SF.stock()
         c["stock"]["deliveries"][0]["status"] = "open"
+    elif name == "jail":
+        c = with_jail(c)
+        next(x for x in c["dump"]["factions"] if x["fk"] == k(30))["jail"] = ""
+    elif name == "primitives":
+        c = with_primitives(c, built=False)
     return c
 
 

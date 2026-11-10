@@ -9,8 +9,12 @@ level, no levelled lists: decision 0035) placed once as a persistent actor, with
     names a ref of the place or a position (a persistent XMarkerHeading of ours is placed there); then one
     unscheduled sandbox at home, the fallback;
   - the bed: a FURN bed ref of the place, owned by the person (XOWN on the bed), as vanilla residents' beds;
-  - the town's crime faction (our CrimeFaction<place>: tracks crime; the actor's CRIF and a rank in it) and, for
-    guards, IsGuardFaction;
+  - the town's crime faction (our CrimeFaction<place>: vanilla's hold flags and crime values; the actor's CRIF and a
+    rank in it) and, for guards, IsGuardFaction and GuardDialogueFaction (vanilla's DialogueCrimeGuards quest speaks
+    the arrest lines to an actor that IsGuard and is in GuardDialogueFaction); where the place has a jail (place.json's
+    crime faction row `jail`, written by `draft jail`, tools/places/draft/jail.py) the faction names its exterior
+    prison marker (JAIL, and WAIT), its two evidence chests (STOL, PLCN) and the jail outfit (JOUT), and the refs
+    owned `<place>.crime` are owned by it;
   - services, one per give of the place record (newworld/story/data/db/place_give.jsonl) the person serves:
       trader-*        a vendor faction of ours (VENV hours from the person's work stop, VEND the vanilla vendor
                       list of that trade, VENC a merchant chest of ours in the place's chest cell, whose base is the
@@ -42,6 +46,8 @@ TEMPLATE = {  # routine kind -> the vanilla package copied (Skyrim.esm)
 XMARKER_HEADING = "Skyrim.esm:000034"
 CHEST_CELL_LIGHT = "Skyrim.esm:0300E2"
 IS_GUARD = "Skyrim.esm:086EEE"
+GUARD_DIALOGUE = "Skyrim.esm:02BE3B"  # GuardDialogueFaction: DialogueCrimeGuards' quest condition, with IsGuard
+JAIL_OUTFIT = "Skyrim.esm:028B60"  # BeggarOutfit: every vanilla hold crime faction's JOUT
 JOB_TRAINER = "Skyrim.esm:0E3A49"
 TRAINER_SKILL = {  # skill -> JobTrainer<Skill>Faction (Skyrim.esm)
     "Enchanting": "0E3A5B", "Restoration": "0E3A5A", "Illusion": "0E3A59", "Conjuration": "0E3A58", "Speech": "0E3A57",
@@ -100,6 +106,13 @@ def plan(P: dict, S: dict, ids, facts: dict, notes: list[str]) -> dict:
         """A ref of the place named by our id, or by its source key within a copied space."""
         return by_id.get(at.get("ref")) or by_src.get((at.get("space", "exterior"), at.get("ref")))
 
+    jail = jail_plan(P, by_id, pid)
+    if jail:
+        out["crime_faction"]["jail"] = jail
+    for r in S["refs"]:  # a ref the place owns by the crime faction (the jail's evidence chests)
+        if r.get("owner") == f"{pid}.crime":
+            r["owner"] = out["crime_faction"]["fk"]
+
     steps: dict = {}  # cell -> its built heights in steps: the world's, with the place's land patches over them
 
     def ground_z(x, y):
@@ -136,7 +149,9 @@ def plan(P: dict, S: dict, ids, facts: dict, notes: list[str]) -> dict:
             sp = at.get("space", "exterior")
             rs = [r for r in S["refs"] if r["space"] == sp]
             fk_in = {r["fk"] for r in rs}
-            land = sorted((r for r in S["refs"] if (r.get("teleport") or {}).get("to") in fk_in), key=lambda r: r["id"])
+            # a door into it, never a prison marker (its teleport is an arrest's, not a way in)
+            land = sorted((r for r in S["refs"] if (r.get("teleport") or {}).get("to") in fk_in and r.get("kind") != "marker"),
+                          key=lambda r: r["id"])
             if land:
                 at["pos"] = [float(v) for v in land[0]["teleport"]["pos"]]
                 return at
@@ -261,7 +276,7 @@ def plan(P: dict, S: dict, ids, facts: dict, notes: list[str]) -> dict:
                 raise Bad(f"people.jsonl: {who}: faction {f!r} is neither a form key nor a faction of {pid}")
             factions.append({"faction": f, "rank": int(fr.get("rank", 0))})
         if p.get("role") == "guard":
-            factions.append({"faction": IS_GUARD, "rank": 0})
+            factions += [{"faction": IS_GUARD, "rank": 0}, {"faction": GUARD_DIALOGUE, "rank": 0}]
         cls = None
         gives = []
         scripts, voice_list, travel = [], None, {}
@@ -371,6 +386,26 @@ def plan(P: dict, S: dict, ids, facts: dict, notes: list[str]) -> dict:
             problem(f"people.jsonl: {p.get('id') if isinstance(p, dict) else p}: a row the builder cannot read "
                     f"({type(e).__name__}: {e}); the person row's shape is in place-studio.md, Place files")
     return out
+
+
+def jail_plan(P: dict, by_id: dict, pid: str) -> dict | None:
+    """The crime faction's jail fields from place.json's crime row `jail` (`draft jail` writes it): JAIL and WAIT the
+    exterior prison marker, STOL and PLCN the evidence chests, JOUT vanilla's jail outfit; None for a place that fines
+    only (no jail interior). A row it names that is not in the place is a problem, and the faction then fines only."""
+    from tools.places.build import problem
+    row = next((f for f in (P["place"].get("factions") or []) if f.get("kind") == "crime"), None)
+    jail = (row or {}).get("jail")
+    if not jail:
+        return None
+    got = {k: by_id.get(jail.get(k) or "") for k in ("exterior", "marker", "stolen", "inventory")}
+    gone = sorted(k for k, v in got.items() if v is None)
+    if gone:
+        problem(f"place.json: {pid}.crime jail names {', '.join(f'{k} {jail.get(k)}' for k in gone)}, not in the place: run `draft jail {pid}`")
+        return None
+    for r in got.values():
+        r["persistent"] = True  # markers and the chests a faction names are persistent, as vanilla's
+    return {"exterior": got["exterior"]["fk"], "wait": got["exterior"]["fk"], "stolen": got["stolen"]["fk"],
+            "inventory": got["inventory"]["fk"], "marker": got["marker"]["fk"], "space": jail.get("space"), "outfit": JAIL_OUTFIT}
 
 
 def _spot(at: dict, by_id: dict) -> tuple[list[float], str]:

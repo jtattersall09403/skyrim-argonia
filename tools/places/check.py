@@ -8,7 +8,7 @@ place (ground, refs) and the world's own navmesh beside ours. Exit 1 when any ch
 function of one context dict, so tools/tests can feed it a small broken fixture each.
 
 Checks: seat, overlap, doors, people, navmesh, land, clear, services, nordic, rooms, shadows, levelled, plugin (masters, links),
-stock and promises (a stocked place: tools/places/stock/verify.py).
+jail, primitives, stock and promises (a stocked place: tools/places/stock/verify.py).
 """
 from __future__ import annotations
 
@@ -1294,12 +1294,173 @@ def island_report(ctx, person: str | None = None) -> list[str]:
     return out + legs
 
 
+JAIL_FLAGS = ("TrackCrime", "CanBeOwner")
+GUARD_FACTIONS = ("Skyrim.esm:086EEE", "Skyrim.esm:02BE3B")  # IsGuardFaction, GuardDialogueFaction: the arrest lines' speakers
+NOTES: list[str] = []  # what a passing check says plainly; main prints them
+
+
+def check_jail(ctx) -> list[str]:
+    """The crime faction's jail as vanilla's hold factions have it: JAIL and WAIT our exterior prison marker, STOL and
+    PLCN our two evidence chests, each a ref of our plugin; the jail marker on its room's navmesh, the release point
+    on the town's main network; the chests in the jail, empty, never respawning, owned by the faction; every guard in
+    IsGuardFaction and GuardDialogueFaction. A place with no jail interior fines only, which is said, not failed."""
+    ppl = ctx["plan"].get("people") or {}
+    cf = ppl.get("crime_faction") or {}
+    pid = ctx.get("place_id") or ctx["plan"].get("place_id")
+    if not cf:
+        return []
+    jail = cf.get("jail")
+    if not jail:
+        NOTES.append(f"jail: {pid} has no jail interior: its crime faction fines only (no arrest can jail the player)")
+        return []
+    m = mine(ctx)
+    bad = []
+    # the jail's space as the read-back names it: its cell's editor id
+    space = next((I.get("edid") for I in ctx["plan"].get("interiors") or [] if I.get("space") == jail.get("space")), None) or jail.get("space")
+    fac = next((f for f in ctx["dump"].get("factions") or [] if f["fk"] == cf["fk"]), None)
+    if fac is None:
+        return [f"crime faction {cf['fk']} is not in the plugin"]
+    for k in ("jail", "wait", "stolen", "inventory"):
+        want = jail["exterior" if k in ("jail", "wait") else k]
+        if fac.get(k) != want:
+            bad.append(f"crime faction {cf['edid']}: {k} is {fac.get(k) or 'unset'}, not {want}")
+        if want not in m["refs"]:
+            bad.append(f"crime faction {cf['edid']}: its {k} {want} is not a ref of ours in the plugin")
+    for fl in JAIL_FLAGS:
+        if fl not in str(fac.get("flag_names") or ""):
+            bad.append(f"crime faction {cf['edid']}: no {fl} flag (vanilla's hold factions have it)")
+    if not fac.get("arrest"):
+        bad.append(f"crime faction {cf['edid']}: does not arrest")
+    idx = nav_index(ctx)
+    comp = components(ctx["navs"], door_pairs(ctx))
+    sizes: dict = defaultdict(int)
+    for c in comp.values():
+        sizes[c] += 1
+    main = max(sizes, key=sizes.get) if sizes else None
+    ext, inner = m["refs"].get(jail["exterior"]), m["refs"].get(jail["marker"])
+    if inner is None or inner.get("space") != space:
+        bad.append(f"jail marker {jail['marker']}: not a ref of ours in {space}")
+    elif idx.at(inner["space"], inner["pos"]) is None:
+        bad.append(f"jail marker at {[round(v) for v in inner['pos']]} in {inner['space']} is off its room's navmesh")
+    if ext is not None and ext.get("door") and inner is not None:
+        land = inner.get("door", {}).get("to_pos") or ext["pos"]  # where a released prisoner stands
+        nd = idx.at("exterior", land)
+        if nd is None or comp.get(nd) != main:
+            bad.append(f"release point at {[round(v) for v in land]} is off the town's main network")
+    elif ext is not None:
+        bad.append(f"exterior jail marker {jail['exterior']}: no teleport to the jail marker")
+    for k in ("stolen", "inventory"):
+        c = m["refs"].get(jail[k])
+        if c is None:
+            continue
+        if c.get("space") != space:
+            bad.append(f"evidence chest {k}: in {c.get('space')}, not the jail {space}")
+        if c.get("contents"):
+            bad.append(f"evidence chest {k}: holds {len(c['contents'])} things (it starts empty)")
+        if c.get("respawns"):
+            bad.append(f"evidence chest {k}: respawns")
+        if c.get("owner") != cf["fk"]:
+            bad.append(f"evidence chest {k}: owned by {c.get('owner') or 'nobody'}, not the crime faction {cf['fk']}")
+    for n in ppl.get("npcs", []):
+        got = m["npcs"].get(n["fk"])
+        if n.get("role") == "guard" and got is not None:
+            gone = [f for f in GUARD_FACTIONS if f not in (got.get("faction_keys") or [])]
+            if gone:
+                bad.append(f"{n['id']}: a guard not in {', '.join(gone)} (vanilla's arrest lines need both)")
+    return bad
+
+
+def _prim_same(a: dict | None, b: dict | None) -> bool:
+    if not a or not b or a.get("type") != b.get("type") or list(a.get("color") or []) != list(b.get("color") or []):
+        return False
+    return all(abs(float(x) - float(y)) < 0.01 for x, y in zip(a.get("bounds") or [], b.get("bounds") or []))
+
+
+def primitive_inputs(ctx) -> tuple[dict, list[dict], dict] | None:
+    """(the source's refs by space id, the ledger, the place files' removed sources by space) for check_primitives:
+    a fixture's `primitive_inputs`, else the source bundle and the place files."""
+    if "primitive_inputs" in ctx:
+        return ctx["primitive_inputs"]
+    pdir = ctx.get("place_dir")
+    if not pdir or not (pdir / "place.json").exists():
+        return None
+    place = json.loads((pdir / "place.json").read_text())
+    bdir = B.OUT / "bundles" / f"src.{place.get('source_id')}" / "spaces"
+    if not bdir.exists():
+        return None
+
+    def src_refs(d: Path):
+        if (d / "refs.jsonl").exists():
+            return B.jsonl(d / "refs.jsonl")
+        if (d / "refs.jsonl.gz").exists():
+            return [json.loads(ln) for ln in gzip.open(d / "refs.jsonl.gz", "rt") if ln.strip()]
+        return []
+    src = {d.name: [r for r in src_refs(d) if r.get("primitive")] for d in bdir.iterdir() if d.is_dir()}
+    ledger = B.jsonl(pdir / "ledger.jsonl") if (pdir / "ledger.jsonl").exists() else []
+    removed = {sp.name: {x["src"] for x in B.jsonl(sp / "refs.jsonl") if x.get("removed") and x.get("src")}
+               for sp in (pdir / "spaces").iterdir() if (sp / "refs.jsonl").exists()} if (pdir / "spaces").exists() else {}
+    return src, ledger, removed
+
+
+def check_primitives(ctx) -> list[str]:
+    """Every copied ref whose source has a primitive is built with it, identical (type, half extents, colour), or is in
+    the ledger as dropped with its reason (`draft primitives`). A source ref outside a copy's kept room is not copied."""
+    got = primitive_inputs(ctx)
+    if got is None:
+        return []
+    src, ledger, removed = got
+    led = {(lr.get("copy") or lr["space"], lr["src"]): lr for lr in ledger}
+    m = mine(ctx)
+    rows = ctx["plan"]["refs"]
+    by_id = {r["id"]: r for r in rows}
+    by_src = {(r["space"], r.get("src")): r for r in rows if r.get("src")}
+    bad, n = [], Counter()
+
+    def built(row, want, what):
+        b = m["refs"].get(row["fk"]) if row else None
+        if b is None:
+            bad.append(f"{what}: has a primitive in the source and is neither built nor in the ledger as dropped")
+        elif not _prim_same(b.get("primitive"), want):
+            bad.append(f"{what}: built with primitive {b.get('primitive')}, the source's is {want}")
+        else:
+            n["written"] += 1
+
+    for r in src.get("exterior", []):
+        lr = led.get(("exterior", r["id"]))
+        if lr and lr.get("status") == "dropped":
+            n["dropped"] += 1
+            if not lr.get("why"):
+                bad.append(f"{r['id']}: dropped with no reason in the ledger")
+            continue
+        as_ = (lr or {}).get("as")
+        built(by_id.get(as_[0] if isinstance(as_, list) else as_) or by_src.get(("exterior", r["id"])), r["primitive"], r["id"])
+    for I in ctx["plan"].get("interiors") or []:
+        if not I.get("copy_of"):
+            continue
+        sid = I["space"]
+        for r in src.get(I["copy_of"].split("/", 1)[1], []):
+            row = by_src.get((sid, r["id"]))
+            if row is not None:
+                built(row, r["primitive"], f"{sid}/{r['id']}")
+            elif r["id"] in removed.get(sid, set()):
+                lr = led.get((sid, r["id"]))
+                n["dropped"] += 1
+                if not lr or lr.get("status") != "dropped" or not lr.get("why"):
+                    bad.append(f"{sid}/{r['id']}: removed with no ledger row saying why")
+            else:
+                n["not_in_room"] += 1
+    ctx["primitives"] = dict(n)
+    return bad
+
+
 CHECKS = {"plugin": check_plugin, "seat": check_seat, "overlap": check_overlap, "doors": check_doors, "people": check_people,
           "navmesh": check_navmesh, "streets": check_streets, "land": check_land, "clear": check_clear, "services": check_services,
-          "nordic": check_nordic, "rooms": check_rooms, "shadows": check_shadows, "levelled": check_levelled, "stock": check_stock, "promises": check_promises}
+          "nordic": check_nordic, "rooms": check_rooms, "shadows": check_shadows, "levelled": check_levelled, "jail": check_jail,
+          "primitives": check_primitives, "stock": check_stock, "promises": check_promises}
 
 
 def run(ctx: dict) -> dict[str, list[str]]:
+    NOTES.clear()
     return {name: fn(ctx) for name, fn in CHECKS.items()}
 
 
@@ -1323,7 +1484,8 @@ def main(argv: list[str]) -> int:
     esp_sha = hashlib.sha256((Path(a.out) / "plugin" / B.PLUGIN).read_bytes()).hexdigest()  # which build was checked
     report = {"place_id": a.place_id, "check_s": round(time.time() - t0, 1), "masters": ctx["dump"]["masters"], "counts": counts,
               "esp_sha256": esp_sha,
-              "results": {k: {"ok": not v, "failures": v[:50], "n": len(v)} for k, v in res.items()}}
+              "results": {k: {"ok": not v, "failures": v[:50], "n": len(v)} for k, v in res.items()},
+              "notes": list(NOTES), "primitives": ctx.get("primitives")}
     shard = Path(a.out) / "shards" / a.place_id
     (shard / "check.json").write_text(json.dumps(report, indent=1, sort_keys=True) + "\n")
     # the full lists, never cut, one file per check, so nothing is hidden
@@ -1336,6 +1498,8 @@ def main(argv: list[str]) -> int:
     else:
         for w in WARNINGS:
             print(f"warn {w}")
+        for w in NOTES:
+            print(f"note {w}")
         for k, v in res.items():
             print(f"{'ok  ' if not v else 'FAIL'} {k}" + ("" if not v else f" ({len(v)})"))
             for f in v[:20]:

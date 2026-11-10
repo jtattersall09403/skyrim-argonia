@@ -127,6 +127,9 @@ static class C
                 if (o.IsOpenByDefault) d["open_by_default"] = true;
                 if (o.IsIgnoredBySandbox) d["ignored_by_sandbox"] = true;
                 if (o.LocationRefTypes is { Count: > 0 } lrt) d["loc_ref_types"] = lrt.Select(x => Key(x.FormKey)).ToList();
+                if (o.Primitive is { } pr) d["primitive"] = Primitive(pr);
+                if (o.VirtualMachineAdapter is { Scripts.Count: > 0 } vm) d["scripts"] = vm.Scripts.Select(x => x.Name).ToList();
+                if (o.ActivateParents is { Parents.Count: > 0 } ap) d["activate_parents"] = ap.Parents.Select(x => Key(x.Reference.FormKey)).ToList();
                 break;
             case IPlacedNpcGetter n:
                 d["base"] = Key(n.Base.FormKey);
@@ -144,6 +147,28 @@ static class C
             if (b is IObjectBoundedGetter ob && ob.ObjectBounds is { } bb) d["bounds"] = new[] { bb.First.X, bb.First.Y, bb.First.Z, bb.Second.X, bb.Second.Y, bb.Second.Z };
         }
         return d;
+    }
+
+    /// A ref's primitive (XPRM: the shape a collision marker, a trigger or a room marker has) as the ref shape writes it:
+    /// {type: Box | Sphere | Plane | Line | Ellipsoid, bounds: [x, y, z] half extents round the ref's origin in its own
+    /// frame (xEdit shows them doubled), color: [r, g, b], unknown}.
+    public static Dictionary<string, object?> Primitive(IPlacedPrimitiveGetter p) => new()
+    {
+        ["type"] = p.Type.ToString(), ["bounds"] = V(p.Bounds), ["color"] = new[] { (int)p.Color.R, p.Color.G, p.Color.B }, ["unknown"] = p.Unknown,
+    };
+
+    /// The same shape back into a record's primitive.
+    public static PlacedPrimitive Primitive(JsonElement e)
+    {
+        var b = e.GetProperty("bounds");
+        var c = e.TryGetProperty("color", out var cv) && cv.ValueKind == JsonValueKind.Array ? cv : default;
+        return new PlacedPrimitive
+        {
+            Type = Enum.Parse<PlacedPrimitive.TypeEnum>(e.GetProperty("type").GetString()!),
+            Bounds = new P3Float((float)b[0].GetDouble(), (float)b[1].GetDouble(), (float)b[2].GetDouble()),
+            Color = c.ValueKind == JsonValueKind.Array ? System.Drawing.Color.FromArgb(c[0].GetInt32(), c[1].GetInt32(), c[2].GetInt32()) : System.Drawing.Color.Black,
+            Unknown = e.TryGetProperty("unknown", out var u) && u.ValueKind == JsonValueKind.Number ? (float)u.GetDouble() : 0f,
+        };
     }
 
     public static void WriteJson(string path, object o)

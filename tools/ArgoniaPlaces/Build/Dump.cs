@@ -161,6 +161,10 @@ static class Dump
         {
             ["fk"] = C.Key(f.FormKey), ["edid"] = f.EditorID, ["flags"] = (int)f.Flags, ["vendor"] = f.Flags.HasFlag(Faction.FactionFlag.Vendor),
             ["chest"] = C.Key(f.MerchantContainer.FormKey), ["list"] = C.Key(f.VendorBuySellList.FormKey), ["crime"] = f.Flags.HasFlag(Faction.FactionFlag.TrackCrime),
+            ["flag_names"] = f.Flags.ToString(), ["arrest"] = f.CrimeValues?.Arrest,
+            ["jail"] = C.Key(f.ExteriorJailMarker.FormKey), ["wait"] = C.Key(f.FollowerWaitMarker.FormKey),
+            ["stolen"] = C.Key(f.StolenGoodsContainer.FormKey), ["inventory"] = C.Key(f.PlayerInventoryContainer.FormKey),
+            ["jail_outfit"] = C.Key(f.JailOutfit.FormKey),
         }).ToList();
         var classes = mod.Classes.Select(c => new Dictionary<string, object?> { ["fk"] = C.Key(c.FormKey), ["edid"] = c.EditorID, ["teaches"] = c.Teaches?.ToString(), ["max_level"] = c.MaxTrainingLevel }).ToList();
         // anything levelled against the player that our records reach (decision 0035): levelled lists in an inventory, an

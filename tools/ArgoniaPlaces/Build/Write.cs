@@ -7,7 +7,8 @@
 //   - interiors: new cells whose header is the source cell's (links out of our masters copied by ForeignCopy, its
 //     location and encounter zone dropped), holding our refs and navmesh;
 //   - a ref of a copied interior keeps what its source ref itself says of its base (a light's radius and light data,
-//     an item count, a charge, open by default, ignored by sandbox, its lock's key), read from the source cell by `src`;
+//     an item count, a charge, open by default, ignored by sandbox, its lock's key, its primitive), read from the source
+//     cell by `src`; a row's own `primitive` (a collision marker's box outside) is written as given;
 //   - nothing levelled (decision 0035): a placed container that holds a levelled list is a copy of ours with fixed
 //     items, a placed levelled item list is the item it gives at level 1;
 //   - people (People.cs); stock (Stock.cs); the NAVI override with every NVMI of ours; beside the plugin,
@@ -400,6 +401,7 @@ static class Write
             o.Charge = src.Charge;
             o.IsOpenByDefault = src.IsOpenByDefault;
             o.IsIgnoredBySandbox = src.IsIgnoredBySandbox;
+            o.Primitive = src.Primitive?.DeepCopy();
             if (o.Lock is { } ol && src.Lock is { } sl && sl.Level == ol.Level && ol.Key.IsNull)
             {
                 ol.Flags = sl.Flags;
@@ -416,6 +418,8 @@ static class Write
         }
         if (S(r, "emittance") is { Length: > 0 } emk) ctx.Emit(o, emk);
         if (r.TryGetProperty("count", out var cnt) && cnt.ValueKind == JsonValueKind.Number) o.ItemCount = cnt.GetInt32();
+        // a row's own primitive (the ref shape's: a collision marker's box, a trigger's volume) over the source's
+        if (r.TryGetProperty("primitive", out var prim) && prim.ValueKind == JsonValueKind.Object && prim.TryGetProperty("type", out _)) o.Primitive = C.Primitive(prim);
         if (r.TryGetProperty("linked", out var ln) && ln.ValueKind == JsonValueKind.Array)
             foreach (var l in ln.EnumerateArray())
             {

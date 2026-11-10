@@ -63,3 +63,18 @@ def test_rows_the_builder_cannot_seat_or_read_are_problems_and_the_rest_are_plan
     assert [n["id"] for n in out["npcs"]] == ["t.guard"]
     assert len(problems) == 3
     assert "off the land" in problems[0] and "no height" in problems[1] and "t.bed" in problems[2]
+
+
+def test_a_guard_speaks_vanilla_arrest_lines_and_a_stop_by_space_lands_by_a_door_never_a_prison_marker():
+    out, problems = plan([guard()])
+    keys = {f["faction"] for f in out["npcs"][0]["factions"]}
+    assert not problems and {people.IS_GUARD, people.GUARD_DIALOGUE} <= keys
+    S = {"refs": [{"id": "t.a", "fk": "P:1", "kind": "marker", "space": "exterior", "pos": [0, 0, 0], "teleport": {"to": "P:3", "pos": [5, 5, 5]}},
+                  {"id": "t.b", "fk": "P:2", "kind": "door", "space": "exterior", "pos": [0, 0, 0], "teleport": {"to": "P:4", "pos": [7, 7, 7]}},
+                  {"id": "t.c", "fk": "P:3", "kind": "marker", "space": "jail", "pos": [5, 5, 5]},
+                  {"id": "t.d", "fk": "P:4", "kind": "door", "space": "jail", "pos": [7, 7, 7]}]}
+    S["by_id"] = {r["id"]: r for r in S["refs"]}
+    row = {"id": "t.w", "base_from": "Skyrim.esm:000001", "routine": [{"start": 8, "hours": 8, "kind": "work", "at": {"space": "jail"}}]}
+    B.PROBLEMS.clear()
+    out = people.plan({"place": {"place_id": "t"}, "people": [row]}, S, Ids(), facts(), [])
+    assert out["actors"][0]["pos"] == [7.0, 7.0, 7.0]  # by the door, not at the jail marker

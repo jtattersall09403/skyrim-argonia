@@ -34,9 +34,21 @@ static class People
         {
             EditorID = cf.GetProperty("edid").GetString(),
             Name = new TranslatedString(Language.English, cf.GetProperty("name").GetString()),
-            Flags = Faction.FactionFlag.TrackCrime,
+            // vanilla's hold crime factions (CrimeFactionRift, CrimeFactionWhiterun, CrimeFactionFalkreath): these flags and values
+            Flags = Faction.FactionFlag.TrackCrime | Faction.FactionFlag.CrimeGoldUseDefaults | Faction.FactionFlag.CanBeOwner,
             CrimeValues = new CrimeValues { Arrest = true, AttackOnSight = true, Murder = 1000, Assault = 40, Trespass = 5, Pickpocket = 25, StealMult = 0.5f, Escape = 100, Werewolf = 1000 },
         };
+        // a place with a jail: the arrest sends the player there (the plan's `jail`, tools/places/people.py): JAIL the exterior
+        // prison marker (its teleport leads to the one in the jail's cell), WAIT the same marker, STOL and PLCN the two
+        // evidence chests, JOUT the jail outfit; a place without one fines only
+        if (cf.TryGetProperty("jail", out var jail) && jail.ValueKind == JsonValueKind.Object)
+        {
+            crime.ExteriorJailMarker.SetTo(C.Fk(jail.GetProperty("exterior").GetString()!));
+            crime.FollowerWaitMarker.SetTo(C.Fk(jail.GetProperty("wait").GetString()!));
+            crime.StolenGoodsContainer.SetTo(C.Fk(jail.GetProperty("stolen").GetString()!));
+            crime.PlayerInventoryContainer.SetTo(C.Fk(jail.GetProperty("inventory").GetString()!));
+            if (S(jail, "outfit") is { } jo) crime.JailOutfit.SetTo(C.Fk(jo));
+        }
         mod.Factions.Add(crime);
 
         // the merchant chests' cell: an interior no door reaches (vanilla keeps them in such cells or under floors)

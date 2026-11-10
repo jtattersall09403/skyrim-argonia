@@ -60,6 +60,7 @@ CELL, VERTS, QUAD = 4096, 33, 128
 CLEAR_TOL = 64.0  # units in plan: a clear row matches the world's ref of its base nearest it, within this
 DOOR_MARKER_UNITS = 128.0  # a new door's arrival marker: this far in front of it (Skyrim's door markers sit 64-160 out)
 SOLID_KINDS = {"building", "static", "furniture", "door", "container", "rock", "tree", "activator", "clutter"}
+COLLISION_BASES = {"Skyrim.esm:000021"}  # CollisionMarker: its primitive is an invisible wall or floor, solid to people
 PERSISTENT_KINDS = {"door"}
 PATH_STYLE_LTEX = {"road": "dirt_road", "street": "dirt_road", "path": "dirt_road", "track": "dirt_grass",
                    "skirt": "road_skirt", "mud": "swamp_mud", "sand": "sand", "stone": "rock"}
@@ -453,6 +454,15 @@ def is_disabled(r: dict) -> bool:
     return bool(r.get("disabled")) or (isinstance(fl, list) and "initially_disabled" in fl)
 
 
+def collision_box(r: dict) -> list[float] | None:
+    """A collision marker's solid box: its primitive's half extents round its origin in its own frame (XPRM; a plane
+    is a box of its own thinness, a sphere or an ellipsoid the box round it), else None."""
+    p = r.get("primitive")
+    if r.get("base") not in COLLISION_BASES or not isinstance(p, dict) or not p.get("bounds"):
+        return None
+    return [max(abs(float(v)), 0.5) for v in p["bounds"]]
+
+
 def norm_ref(r: dict) -> dict:
     r = dict(r)
     r.setdefault("rot", [0.0, 0.0, 0.0])
@@ -467,7 +477,8 @@ def source_cell(plugin: str, cell: str, tmp: Path) -> dict | None:
         st = _plugin_path(plugin).stat()
     except SystemExit:
         return None
-    h = hashlib.sha256(f"{plugin}|{cell}|{st.st_size}|{st.st_mtime_ns}|{sha256(TOOL_PROJ / 'Read.cs')}".encode()).hexdigest()[:20]
+    code = sha256(TOOL_PROJ / "Read.cs") + sha256(TOOL_PROJ / "Common.cs")  # the reader and the ref shape it writes
+    h = hashlib.sha256(f"{plugin}|{cell}|{st.st_size}|{st.st_mtime_ns}|{code}".encode()).hexdigest()[:20]
     cache = OUT / "srccells" / f"{plugin}__{cell.replace(':', '_')}.{h}.json"
     if cache.exists():
         got = json.loads(cache.read_text())
@@ -573,6 +584,7 @@ def plan_spaces(P: dict, ids: Ids, tmp: Path) -> dict:
                    "base_edid": r.get("base_edid") if "base" not in ch else None,
                    "pos": ch.get("pos", r["pos"]), "rot": ch.get("rot", r["rot"]), "scale": ch.get("scale", r.get("scale", 1.0)),
                    "src_flags": r.get("flags", 0), "src_door": r.get("door"), "src_linked": r.get("linked"),
+                   "primitive": ch.get("primitive", r.get("primitive")),
                    "src_enable_parent": r.get("enable_parent"), "lock": ch.get("lock", r.get("lock")),
                    "owner": ch.get("owner"), "door": ch.get("door"), "seat": ch.get("seat"), "persistent": bool(r.get("persistent")),
                    "disabled": is_disabled(ch) if "flags" in ch or "disabled" in ch else bool(int(r.get("flags") or 0) & 0x800)}
@@ -905,7 +917,7 @@ def recast_refs(rows: list[dict], work: Path, tag: str, ground: bool) -> tuple[l
     for r in rows:
         f, local = split_key(r["base"])
         coll.append({"base": f"{local:06X}:{f}", "pos": r["pos"], "rot": r.get("rot") or [0.0, 0.0, 0.0],
-                     "scale": r.get("scale", 1.0), "formKey": r["fk"]})
+                     "scale": r.get("scale", 1.0), "formKey": r["fk"], "box": collision_box(r)})
     tris, _ = placed.collide(coll, game_data(), {})
     if not len(tris):
         return [], []
@@ -971,7 +983,8 @@ def mesh_navm(I: dict, ids: Ids, verts: list, tris: list) -> dict:
 
 def generate_interior_navmesh(I: dict, S: dict, ids: Ids, work: Path) -> list[dict]:
     """An interior's navmesh when its source has none: its own collision meshed (recast_refs, with a ground plane)."""
-    rows = [r for r in S["refs"] if r["space"] == I["space"] and r.get("kind") not in ("marker", "light", "door") and not r.get("disabled")]
+    rows = [r for r in S["refs"] if r["space"] == I["space"] and not r.get("disabled")
+            and (r.get("kind") not in ("marker", "light", "door") or collision_box(r))]
     verts, tris = recast_refs(rows, work, I["space"], ground=True)
     return [mesh_navm(I, ids, verts, tris)] if tris else []
 
@@ -996,7 +1009,7 @@ def components(tris: list) -> np.ndarray:
     return np.array([root(i) for i in range(len(tris))], np.int64)
 
 
-ROOM_RULE = "2"  # bump when room_partition's rule changes: its cache is keyed by it
+ROOM_RULE = "3"  # bump when room_partition's rule changes: its cache is keyed by it
 
 
 def room_partition(copy_of: str, refs: list[dict], work: Path) -> dict:
@@ -1012,7 +1025,8 @@ def room_partition(copy_of: str, refs: list[dict], work: Path) -> dict:
         d = r.get("door") or None
         placed_rows.append({"fk": r.get("fk") or r["id"], "base": r["base"], "pos": r["pos"], "rot": r.get("rot"),
                             "scale": r.get("scale", 1.0), "kind": kind_of(r) if "base_type" in r else r.get("kind"),
-                            "out": bool(d) and (d.get("to_space") is not None if "to_space" in d else True)})
+                            "out": bool(d) and (d.get("to_space") is not None if "to_space" in d else True),
+                            "primitive": r.get("primitive")})
     src, cell = copy_of.split("/", 1)
     stamp = OUT / "bundles" / f"src.{src}" / "bundle.json"  # one key per source cell, whoever asks (drafter, studio, build)
     h = hashlib.sha256(f"{copy_of}|{sha256(stamp) if stamp.exists() else json.dumps([[r['fk'], r['pos']] for r in placed_rows])}|{ROOM_RULE}".encode()).hexdigest()[:20]
@@ -1020,7 +1034,7 @@ def room_partition(copy_of: str, refs: list[dict], work: Path) -> dict:
     if cache.exists():
         got = json.loads(cache.read_text())
         return {"rooms": {k: {"refs": set(v["refs"]), "mesh": v["mesh"]} for k, v in got["rooms"].items()}}
-    solid = [r for r in placed_rows if r["kind"] not in ("marker", "light", "door")]
+    solid = [r for r in placed_rows if r["kind"] not in ("marker", "light", "door") or collision_box(r)]
     verts, tris = recast_refs(solid, work, "rooms", ground=False)
     V = np.asarray(verts, np.float64)
     comp = components(tris)
@@ -1258,8 +1272,8 @@ def finish_navmesh(navs: list[dict], S: dict, world_fid: int) -> tuple[list[dict
     notes = []
     for r in S["refs"]:
         t = r.get("teleport")
-        if not t:
-            continue
+        if not t or r.get("kind") == "marker":
+            continue  # a prison marker's teleport is an arrest's, never a way people walk: no door triangle
         at = by_fk[t["to"]]["teleport"]["pos"]  # one arrives by r through the partner: the partner's marker stands by r
         if r["space"] == "exterior":  # the arrival's own cell first, then the cells round it (an arrival by a cell line)
             cx, cy = cell_of(at[0], at[1])
@@ -1301,10 +1315,12 @@ def collision_objects(refs: list[dict]):
     from tools.navmesh.__main__ import game_data
     rows = []
     for r in refs:
-        if r["space"] != "exterior" or r.get("kind") not in SOLID_KINDS or r.get("disabled"):
+        box = collision_box(r)
+        if r["space"] != "exterior" or (r.get("kind") not in SOLID_KINDS and box is None) or r.get("disabled"):
             continue
         f, local = split_key(r["base"])
-        rows.append({"base": f"{local:06X}:{f}", "pos": r["pos"], "rot": r["rot"], "scale": r.get("scale", 1.0), "formKey": r["fk"]})
+        rows.append({"base": f"{local:06X}:{f}", "pos": r["pos"], "rot": r["rot"], "scale": r.get("scale", 1.0), "formKey": r["fk"],
+                     "box": box})
     if not rows:
         return None, {"refs": 0}
     return placed.collide(rows, game_data(), {})
@@ -1498,7 +1514,7 @@ def _plan_place(pid: str, pdir: Path, out: Path, no_navmesh: bool, plan_only: bo
     nav_info = {}
     navs: list[dict] = []
     if not no_navmesh:
-        solid = [r for r in S["refs"] if r["space"] == "exterior" and r.get("kind") in SOLID_KINDS]
+        solid = [r for r in S["refs"] if r["space"] == "exterior" and (r.get("kind") in SOLID_KINDS or collision_box(r))]
         touched = {tuple(r["cell"]) for r in solid} | land_changed | set(path_layers)
         if touched:
             objects, tally = collision_objects(S["refs"])

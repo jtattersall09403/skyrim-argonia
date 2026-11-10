@@ -545,7 +545,15 @@ static class Extractor
                 if (po.LinkedReferences.Count > 0) row["linked"] = po.LinkedReferences.Select(x => new { @ref = KeyN(x.Reference.FormKey), keyword = KeyN(x.KeywordOrReference.FormKey) }).ToList();
                 if (po.EnableParent is { } ep) row["enable_parent"] = new { @ref = KeyN(ep.Reference.FormKey), flags = ep.Flags.ToString() };
                 if (po.MapMarker is { } mm) row["map_marker"] = Dump(mm);
-                if (po.Primitive is { } prim) row["primitive"] = Dump(prim);
+                // the primitive (XPRM): its type, half extents round the origin, colour and unknown float; the ref's own
+                // scripts (VMAD) by name and the refs whose activation it follows (XAPD), for the drafter's primitive classes
+                if (po.Primitive is { } prim) row["primitive"] = new Dictionary<string, object?>
+                {
+                    ["type"] = prim.Type.ToString(), ["bounds"] = new[] { prim.Bounds.X, prim.Bounds.Y, prim.Bounds.Z },
+                    ["color"] = new[] { (int)prim.Color.R, prim.Color.G, prim.Color.B }, ["unknown"] = prim.Unknown,
+                };
+                if (po.VirtualMachineAdapter is { Scripts.Count: > 0 } vm) row["scripts"] = vm.Scripts.Select(x => x.Name).ToList();
+                if (po.ActivateParents is { Parents.Count: > 0 } ap) row["activate_parents"] = ap.Parents.Select(x => KeyN(x.Reference.FormKey)).ToList();
                 if (po.Radius is { } rad) row["radius"] = rad;
                 if (po.LightData is { } ld) row["light_data"] = LightDataRow(ld);
                 if (!po.Emittance.IsNull) row["emittance"] = Key(po.Emittance.FormKey);
