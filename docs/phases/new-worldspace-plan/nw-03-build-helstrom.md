@@ -104,6 +104,50 @@ text above as follows.
   - *What stocking never breaks.* A thing a quest names is the quest's and is never moved or removed. Ownership
     is set so that stealing is stealing. A lock is a fixed level. An authored container does not respawn. A
     trader restocks from a fixed authored list.
+  - *In the database from the start (owner, 2026-11-10).* The world facts of people, economy and stock live in
+    the new world's database in third normal form, fed from its source files: people, households, wealth bands,
+    notes with their sources, relations, factions; the scale's tiers and numbers, each place's wealth with its
+    reason and who set it, goods and what each place makes, trades and needs, the catalogue of item forms; stock
+    by holder, the ledger of the exceptional, and which thing delivers each promise. Helstrom is populated now;
+    the shapes are built to be filled across the game later (nw-05). A place's own folder holds only placement.
+  - *The owner's own words rank above an agent's.* What the owner writes in the studio is stored as the owner's
+    statement, and an agent's later pass keeps it and reports where it would have differed.
+- **Services (owner, 2026-11-10).** Every service the place record promises is built and working as part of the
+  place: traders with their stock and gold, the rented room, trainers, the boatman's travel, crafting stations,
+  the shrine's blessing, fast travel, guards and the crime faction.
+- **The studio draws exactly what will be in the game (owner, 2026-11-10).**
+  - Everything placed is seen whole at any zoom, fully zoomed out included: buildings, plants, trees, rocks and
+    everything else. No stand-in shapes; nothing the game does not draw (editor markers, effect shells).
+  - Grass and ground cover show, close up and at the distance one views a town from.
+  - Paths and roads look as the build paints them: the real land texture, soft edges, never flat and harsh.
+  - People's routes are the ways they take in the game, found on the built place's own walking mesh, outside and
+    indoors; never a ruled straight line.
+  - Streets wind with the ground as a person would walk it; streets, guard patrols and door arrivals lie on the
+    built walkable network; a deck, a pier or a ship that carries a door or a street can be walked to and from the
+    bank.
+  - The view tilts; a compass in each view shows where the camera points; the Selected panel gives a thing's
+    in-world coordinates, and its text is never squeezed on the tablet.
+  - The source pane can be put away and brought back.
+  - The Atlas opens inside the studio, on request, showing the place in the wider world, from the built Atlas
+    page with no copied code.
+  - The owner leaves notes for the agent in the studio, about the place or about selected things; agents read
+    them at session start and answer them.
+  - The studio starts reliably on the tablet and says plainly what is wrong when it cannot.
+- **Lighting (owner, 2026-11-10).** Every man-made light of the place is covered on purpose, not only inherited:
+  torches, lanterns, braziers, candles, fires, their lights and flames kept with their fixtures, night and day
+  switching, each room's own lighting, lights for what the draft adds where Skyrim's towns would light it, and
+  the torches people carry.
+- **Nothing levelled, people included.** A person is never built on a levelled base or one templated on a
+  levelled character; a container never holds a levelled list.
+- **The review (owner, 2026-11-10).** All the code of this phase is reviewed in full (drafter, builder, C# tools,
+  extractor, assets, server, studio), its faults fixed, its speed improved by reasoning (on the tablet above all)
+  and never by timing runs; nothing proven is proved again; no "worth a look" lists. The skills are kept current
+  with everything found, as clean recipes.
+- **Lanes and models (owner, 2026-11-10).** The lead plans and orchestrates. Delivery lanes run on Opus 5.5 at
+  medium effort, code review on Fable 5.2 at medium effort.
+- **After this phase.** The owner's walk feedback on the built world (water edges, level of detail, the map,
+  roads, grass, atmosphere, water kinds and flow, relief) is handed over to its own session with the dependencies
+  on this phase written down: a change of relief or water near a built place means a redraft of that place.
 
 ## The work (the agent's lanes; status moves in the commit that changes it)
 
@@ -119,5 +163,9 @@ resumes from this table: a lane not `done` is relaunched with its row as the sta
 | D | Draft: source bundle and our ground into place files (fit, seating, clearance, paths, people and routines, interiors); the skill `place-build`; Helstrom's first draft | `tools/places/draft`, `tools/places/seat.py`, `.claude/skills/place-build`, `newworld/places/helstrom` | | done (round 7): Helstrom `draft check` PASS (21 -> 0) and the real `build`/`check helstrom` 11 of 11 green (4,792 refs, 12 interiors, 195 navmeshes). Arrivals over water stand on a deck laid over it; a walkway's deck is read from its collision (`seat.walk_top`, the ref's `walk`), bridges stand 16 over the water; a cluster or piece stepped to its side of the waterline never steps into another; replaced load doors face out by construction (front from the mesh, turned about the leaf; `needs_look` removed); a door island no level join reaches whose room nobody uses is left out with its room (the ship hold 01Exit2, ledger reason); guards whose camp bed the network does not reach sleep in a home (4 guards, 4 residents left out). Tests `test_places_draft_walk.py` |
 | B | Build: place files into the place layer plugin (refs, interiors, doors, people, packages, guards, crime, services, land patches, clearance, paths, navmesh) and the checks | `tools/ArgoniaPlaces/Build`, `tools/places/build.py`, `tools/places/check.py` | done (round 5): `check` reads a walkway's deck (`walk`) for arrivals and stops (one on the deck is on it, not in it); Helstrom 11 of 11 green on the main build output; `tools.newworld.verify` 52 PASS, 0 FAIL |
 | F | Edits and finalise: applying a save, the finalise chain, the skill `place-lessons`, the report | `tools/places/edits.py`, `tools/places/finalise.py`, `.claude/skills/place-lessons` | done: edits, fixtures, finalise (kill-resume proven in each step), skill `place-lessons`; lessons proof on a synthetic place found the general lessons at $0.26 to $0.49 a run; round 3: a copied room's unlisted refs (kept from the source) are moved and removed by override rows `{id=src, src}` checked against the source row (draft_bundle.copy_space), dropped again when moved back; fixtures `tools/tests/places_edits/copy_refs/` (owed by the JS mirror); finalise on real Helstrom in a scratch clone: record 16 edits ok, seat ok, build ran and stopped on the clone lacking the world ESM, learn $0.67, report in plain English |
-| S | Stocking: the scale and its derivation; the skill `place-stock`; contents built as fixed containers, inventories and placed things; the check that every significant thing traces to an authored row; contents shown and editable in the studio; Helstrom stocked, every promise of its record delivered | `tools/places/stock*`, `.claude/skills/place-stock`, `tools/places/build.py`, `tools/places/studio` | in progress (2026-11-10): S0 done: the scale (`newworld/sources/stock/scale.json`, every place's wealth in `place_wealth.json`, Helstrom P4 with ceiling T4), people, goods and stock as tables of the new world's database fed from `newworld/sources/people/` and `stock/` (`tools/newworld/stockdb.py`), the split (`stock classify`), the derive (`stock derive`), the contract (place-studio.md, Stock) and the skill `place-stock`; vanilla's yields in `docs/research/skyrim/stocking-yields.md`. S1 done: Helstrom's light identities, now in `newworld/sources/people/helstrom.json`. S3 done: contents in the studio (a container's, a person's, a trader's and a laid-out thing's contents with their reasons, the person's identity, each changeable as an edit op: `identity.edit`, `stock.*`; item search refuses what is above the ceiling or on the never list, with the reason; finalise writes the sources, reloads the tables and passes content faults to the place-stock lessons). S2 done: the build makes a place's stock (`tools/places/stock/plan.py`, `ArgoniaPlaces/Build` Stock.cs) and `check` proves it (checks `stock` and `promises`, `tools/places/stock/verify.py`; `stock report`); one tier rule for every item (`split.item_tier`: the scale's lists, then material, enchantment grade, value), the catalogue carries item value and enchantment; Helstrom stocked (16 containers, 23 loose kept and 27 taken out, 58 people, 5 traders), its scratch build green on `stock` and `services`. Open: the drowned villages' foes and treasure (place_give helstrom/20 and /21: not in the drafted extent; the owner's call) |
+| S | Stocking: the scale and its derivation; the skill `place-stock`; contents built as fixed containers, inventories and placed things; the check that every significant thing traces to an authored row; contents shown and editable in the studio; Helstrom stocked, every promise of its record delivered | `tools/places/stock*`, `.claude/skills/place-stock`, `tools/places/build.py`, `tools/places/studio` | done 2026-11-10 in the sources, the builder, the check and the studio (S0 scale, contract, split, skill, database; S1 identities; S2 build, check, Helstrom stocked; S3 contents in the studio); owed: the stocked Helstrom in the committed build (with lane D4's redraft); the drowned villages' two promises (the owner's call) |
+| R | Review: the full code review of every lane's code, with fixes and tests | all | done 2026-11-10: builder navmesh, people and checks; C# build and extract tools and the extraction side; assets, search, seating, finalise, the studio server, routes and notes |
+| O | The owner's studio feedback: everything placed at any zoom, grass, paths as the build paints them, compass, coordinates, tilt, notes for the agent, the World map, routes on the built walking mesh, streets and patrols on the walkable network | `tools/places/studio`, `tools/places/draft`, `tools/places/navexport.py`, `tools/places/notes.py` | done 2026-11-10 except the landing: a pier and a ship that can be walked to and from the bank (lane D4, in progress) |
+| L | Lighting: the audit of man-made light in the source, the draft and the built place, then the fixes and the rule in `place-build` | `tools/places/draft`, `tools/places/build.py`, `tools/ArgoniaPlaces`, `tools/places/studio` | in progress (2026-11-10): the audit is running |
+| K | Skills: every skill this phase touched brought up to date as a clean recipe, with a recipe for a place's light identities | `.claude/skills` | todo: after lanes D4 and L land |
 | I | Integration (the lead): Helstrom end to end; save, load and finalise proven with test edits; the studio at its URL; the owner check posted | all | in progress (2026-11-10): the studio is live for the owner (issue #58); a real save-and-finalise ran end to end on Helstrom through the studio's API (record, seat, build, check 11 of 11, report; run helstrom.end-to-end-proof, no edits); the lead's review of the studio, the edit and finalise chain and the drafter's streets is done (one renderer for both views, pen previews once a frame, grass, the source pane hidden or shown, a sign-in that ran out says so, streets routed on our ground and decks, people's routes walked round buildings and water); owed: the owner's try of the studio on the tablet, their answer on footpaths to every hut group, the deploy of Helstrom after the nw-02 walk (`infra/gpu-box/places_deploy.sh`) |
