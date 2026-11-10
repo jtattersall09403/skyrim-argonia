@@ -147,8 +147,7 @@ why (one line: what it looks like)}`. A reviewed verdict outranks the folder rul
 the build's check; an unreviewed base keeps the folder rule. The wide search marks Nordic bases by the same rule.
 
 The catalogue's `lights.jsonl` holds every light base of the load order, with or without a model: `{key, edid,
-model, plugin, light:{radius, colour, flags, fov}}`. The drafter reads it to find a shadow caster's no-shadow twin
-and the lights of added stations.
+model, plugin, light:{radius, colour, flags, fov}}`. The drafter reads it for the lights of added stations.
 
 ## Place files (ours, committed): `newworld/places/<place_id>/`
 
@@ -162,8 +161,8 @@ spaces/<space_id>/refs.jsonl     the place layer's refs, same row shape as a bun
                        seat:{mode, dz, on?} (how it sits: on ground, on a ref, at source's height above ground,
                        in water, free) and src (the source ref it came from, if any). A light is seated `on` its
                        fixture (the lantern, sconce, window or fire within 128 units of it in the source) and
-                       stands at its source offset from it. In a copied room, twin_of on a light's row names the
-                       shadow-casting base the source placed: the row's base is its no-shadow twin
+                       stands at its source offset from it. A copied room's lights stand on the bases the source
+                       placed, shadow casters among them (no cap on shadow-casting lights in a room)
 spaces/<space_id>/space.json     interiors: {copy_of: "<source_id>/<space_id>"}; the refs file holds only our
                        changes to the copy (moved, removed, added)
 clear.jsonl            world plants and scatter switched off: {base, pos, by: draft|owner}; matched to the world's
@@ -473,7 +472,7 @@ An op: `{n, at, op, space, call: "fault"|"taste", note_group?, stroke?, ...paylo
 |---|---|
 | `ref.add` | `ref` (whole row; `src` set when copied from a source ref, `base` when from search); the first op into a space the place does not have yet carries `space_copy_of: "<source_id>/<space_id>"` and `space_name`, which become that interior's `space.json` |
 | `ref.remove` | `id`, `before` |
-| `ref.move` | `id`, `before:{pos,rot,scale,seat}`, `after:{...}` |
+| `ref.move` | `id`, `before:{pos,rot,scale,seat,primitive}` (the fields it changes), `after:{...}` |
 | `veg.clear` / `veg.restore` | `items:[{base,pos}]` |
 | `land.patch` | `cell`, `verts:[[row,col,before_z,after_z]]`, `tool:{kind: raise|lower|level|smooth, radius, strength}` |
 | `path.add` / `path.remove` / `path.edit` | `path`, `before?` |
@@ -625,12 +624,22 @@ move.
 small bulb of its own colour (a few pixels across at any distance), every bulb of a layer in one instanced mesh, with
 a faint ring at its radius for a selected light, the lights of a selected fixture, and any light within 1,500 units
 of where the view looks (a second instanced mesh). Bulbs are drawn and picked while the Select or Add tool is in use, or with the Selected panel's toggle
-"Lights: always show them", so other tools' views stay uncluttered. A light belongs to the nearest fixture within 128
+"Lights and invisible walls: always show them", so other tools' views stay uncluttered. A light belongs to the nearest fixture within 128
 units: a thing whose record names a lantern, sconce, candle, torch, brazier, fire, chandelier, lamp, window, glow,
 ember or hearth. The Selected panel gives a light's radius, colour (with a swatch), whether it casts shadows and the
 fixture it belongs to, and a fixture's lights. Moving, turning, resizing, seating, duplicating or removing a fixture
 takes its lights with it in the same undo step, each keeping its place in the fixture's frame and its height through
 its own seat. A light selected by itself moves or goes alone.
+
+**Invisible walls** (`objects.js`, `prims.js`). A ref with a primitive (a kept collision box, or a trigger, room or
+sound volume) has no model either. With the lights, and only then, each is drawn as a faint box of its real size (its
+half extents round the ref's origin, turned with the ref) with its edges outlined a pixel or two wide, or a faint wire
+sphere, every one of a layer in one instanced mesh filled when the layer changes (nothing is worked out per frame),
+and picked by its box. The Selected panel says what it is (a collision marker's box: "an invisible wall: people and
+the player cannot pass"; anything else: an invisible volume the game uses, nothing solid), the piece it belongs to
+(the piece its seat stands `on`) and its size in units and metres. It moves, turns and is removed as anything else
+is, and the panel's size fields (long, wide, high in units; a sphere's radius) change its extents as one `ref.move`
+of its `primitive`. The plain view never shows it.
 
 **Day and night** (`js/lighting.js`). Each view's bar has a Day and a Night switch; with the People tool on, the
 time of day drives both (night from the end of the climate's sunset to the start of its sunrise), and a view's switch
@@ -915,7 +924,7 @@ than 45 degrees plus a 32-unit step, as off a deck's edge; a line's first point,
 stop is, the deck first; a land patch whose
 built heights differ from `land.jsonl` or tear at a seam; a cleared plant still enabled, or a plant standing in a
 building, street or doorway; a service the place record promises with nobody giving it; a Nordic base added from
-outside the source place; a room with more than four shadow-casting lights (check `shadows`); a copied
+outside the source place; a copied
 room built short of its source (check `rooms`: per room, its built refs and lights against the bundle's cell, the
 kept room where a `room` is copied, less the rows the place removes and the loose things the stock takes out, naming
 what is missing by plugin); anything levelled (a levelled list in a person's
@@ -943,8 +952,8 @@ stand (`tools/places/draft/stages.py`): `fit` (each piece in its source cluster,
 where that cluster stands now), `pieces` (`draft.replace` and `draft.drop`), `seating` (seat rules and heights),
 `clearance` (`clear.jsonl`), `streets` or `join` (the source's steps hung on their decks, residents' promises,
 names, then the built network: flights, joins, arrivals, work stops, streets and patrols), `people` (promises and
-names), `lights` (added stations' lights, each room's shadow twins, `place.json` `lights`: `{added:[{id, base,
-on}], twins:[{space, src, base, of}]}`), `stations` (a promised station the files lack), `jail` (the jail room's
+names), `lights` (added stations' lights, each room's lights on the source's own bases, `place.json` `lights`:
+`{added:[{id, base, on}]}`), `stations` (a promised station the files lack), `jail` (the jail room's
 cell, prison markers, bedroll and evidence chests, and the crime row's `jail`: Build step 6), `primitives` (each
 copied ref's primitive by its class, `tools/places/draft/primitives.py`: a collision marker is kept when its box touches
 or holds the record box of a kept building, static, furniture, door, activator or container, and then stands at its source offset from the nearest such piece, turned with that piece's cluster and

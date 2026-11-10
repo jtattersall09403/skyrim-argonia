@@ -10,6 +10,7 @@ import { Contents } from './contents.js';
 import { identityOf } from './stock.js';
 import { groupsOf, touched } from './note_groups.js';
 import { FIXTURE_REACH, fixtureOf, lightFacts, lightsOf } from './lights.js';
+import { hasPrim, halfExtents, primFacts, resized } from './prims.js';
 
 const $ = (s) => document.querySelector(s);
 const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -116,7 +117,7 @@ export class Panels {
     const r2 = el('<div class="row"></div>');
     r2.append(toggle('Keep on the ground when moving', T.opts.snapGround, (v) => { T.opts.snapGround = v; }), toggle('Turn in 15° steps', T.opts.snapRot, (v) => { T.opts.snapRot = v; }));
     const r3 = el('<div class="row"></div>');
-    r3.append(toggle('Lights: always show them', !!T.opts.lights, (v) => { T.opts.lights = v; T.lightsShown(); }));
+    r3.append(toggle('Lights and invisible walls: always show them', !!T.opts.lights, (v) => { T.opts.lights = v; T.lightsShown(); }));
     parts.push(r, r2, r3);
     this.show(refs.length ? 'Selected' : 'Select', parts);
   }
@@ -144,9 +145,15 @@ export class Panels {
     if (r.door?.to_space) facts.push(['Door leads to', side === 'ours' ? a.spaceName(a.ours, r.door.to_space) : a.spaceName(a.src, r.door.to_space)]);
     const lit = this.lightFacts(r, base, side);
     facts.push(...lit.facts);
+    if (hasPrim(r)) {
+      const on = r.seat?.on && (side === 'ours' ? a.placeRefsById().get(r.seat.on) : null);
+      const ob = on && (a.bases.get(on.base) || {});
+      facts.push(...primFacts(r, base, ob ? ob.name || ob.edid || on.base : null));
+    }
     w.append(this.whereEl([r], side));
     if (lit.swatch) w.append(lit.swatch);
     w.append(el(`<dl class="facts">${facts.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join('')}</dl>`));
+    if (side === 'ours' && hasPrim(r)) w.append(this.primSize(r));
     const held = side === 'ours' && this.contents.refSection(r, base);
     if (held) w.append(held);
     if (r.door?.to_space) {
@@ -154,6 +161,22 @@ export class Panels {
       b.onclick = () => a.enter(side === 'ours' ? a.ours : a.src, r); w.append(b);
     }
     return w;
+  }
+  // A primitive's size, changed by its full extents in game units (a sphere by its radius), as one ordinary edit.
+  primSize(r) {
+    const round = /^Sphere$/i.test(r.primitive.type || ''), h = halfExtents(r);
+    const names = round ? ['Radius'] : ['Long', 'Wide', 'High'], vals = round ? [h[0]] : h.map((v) => 2 * v);
+    const f = el(`<form class="row prim-size" aria-label="Size of the invisible ${round ? 'sphere' : 'box'}">${names.map((n, i) =>
+      `<label>${n} <input type="number" min="2" step="1" data-i="${i}" value="${Math.round(vals[i])}" aria-label="${n}, units"></label>`).join('')}
+      <button type="submit" class="quiet">Set the size</button></form>`);
+    f.onsubmit = (e) => {
+      e.preventDefault();
+      const size = [...f.querySelectorAll('input')].map((i) => Number(i.value));
+      if (size.some((v) => !(v > 0))) return;
+      const before = { primitive: JSON.parse(JSON.stringify(r.primitive)) }, after = { primitive: resized(r.primitive, size) };
+      if (JSON.stringify(before) !== JSON.stringify(after)) this.app.push([{ op: 'ref.move', id: r.id, before, after }]);
+    };
+    return f;
   }
   // A light's radius, colour, shadows and the fixture it belongs to; a fixture's lights.
   lightFacts(r, base, side) {
@@ -166,7 +189,7 @@ export class Panels {
       const f = lightFacts(r, base);
       facts.push(['Light', `reaches ${Math.round(f.radius)} units (${(f.radius / 70).toFixed(1)} m)`]);
       if (f.colour) facts.push(['Colour', `red ${f.colour[0]}, green ${f.colour[1]}, blue ${f.colour[2]}`]);
-      facts.push(['Shadows', f.shadow ? 'casts shadows (costly: few per room)' : 'casts no shadows']);
+      facts.push(['Shadows', f.shadow ? 'casts shadows' : 'casts no shadows']);
       const fx = fixtureOf(r, refs, baseOf, pos);
       facts.push(['Belongs to', fx ? `${name(fx)}, ${Math.round(Math.hypot(...pos(fx).map((v, i) => v - pos(r)[i])))} units away: moves and goes with it`
         : `no lantern, sconce, candle, torch, fire or window within ${FIXTURE_REACH} units: it stands alone`]);

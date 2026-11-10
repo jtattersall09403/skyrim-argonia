@@ -5,6 +5,7 @@ import { GLTFLoader } from '../vendor/three-0.170.0/addons/loaders/GLTFLoader.js
 import { getMesh } from './api.js';
 import { refMatrix } from './xform.js';
 import { colourOf } from './lights.js';
+import { halfExtents, hasPrim, isRound } from './prims.js';
 
 export const KIND_COLOUR = {
   building: '#a08f78', static: '#9a9488', clutter: '#c4a46a', tree: '#4f6b3a', plant: '#6f9a4a', groundcover: '#86a35a',
@@ -212,9 +213,36 @@ const bulbGeo = new THREE.SphereGeometry(BULB, 10, 8);
 const ringGeo = new THREE.RingGeometry(0.985, 1, 64);
 // An effect (mist, fog, gas, glow): under effects\, or a model or record Bethesda names fx*.
 export const isEffect = (base) => /^effects[\\/]/i.test(base?.model || '') || /(^|[\\/])fx[^\\/]*\.nif$/i.test(base?.model || '') || /^fx/i.test(base?.edid || '');
+// A ref's primitive (a kept collision box: an invisible wall; a trigger or sound volume) has no model either: drawn
+// with the helpers as a faint box of its real size with its edges outlined a pixel or two wide (or a faint wire
+// sphere), every one of the layer in one instanced mesh, filled only when the layer changes; picked by its box.
+const PRIM_COLOUR = new THREE.Color('#7fd8ff');
+const primBoxGeo = new THREE.BoxGeometry(2, 2, 2);
+const primSphereGeo = new THREE.SphereGeometry(1, 16, 10);
+const primBoxMat = new THREE.ShaderMaterial({
+  transparent: true, depthWrite: false, side: THREE.DoubleSide, uniforms: { uFill: { value: 0.06 }, uLine: { value: 0.75 } },
+  vertexShader: `varying vec3 vP; varying vec3 vC;
+    void main() {
+      vP = position;
+      #ifdef USE_INSTANCING_COLOR
+        vC = instanceColor;
+      #else
+        vC = vec3(1.0);
+      #endif
+      gl_Position = projectionMatrix * modelViewMatrix * instanceMatrix * vec4(position, 1.0);
+    }`,
+  // pixels to each face's plane: on a face the nearest is the face itself, so the edge is the middle of the three
+  fragmentShader: `uniform float uFill; uniform float uLine; varying vec3 vP; varying vec3 vC;
+    void main() {
+      vec3 d = (1.0 - abs(vP)) / max(fwidth(vP), vec3(1e-6));
+      float mid = max(min(d.x, d.y), min(max(d.x, d.y), d.z));
+      gl_FragColor = vec4(vC, mix(uFill, uLine, 1.0 - smoothstep(0.75, 1.75, mid)));
+    }`,
+});
+const primSphereMat = new THREE.MeshBasicMaterial({ color: '#ffffff', wireframe: true, transparent: true, opacity: 0.3, depthWrite: false });
 // One base's instances.
 class Group {
-  constructor(layer, base, kind, ghost) {
+  constructor(layer, base, kind, ghost, prim = false) {
     this.layer = layer; this.base = base; this.kind = kind; this.ghost = ghost; this.refs = [];
     this.full = null; this.cap = 0; this.box = null; this.wantModel = false; this.matrices = [];
     // effects: the game's effect meshes, wherever a mod keeps them (Bethesda names them fx*: Dragonborn's Apocrypha
@@ -223,7 +251,9 @@ class Group {
     // a light with no model is a bulb (shown with the lights); any other thing with no model (a marker, a trigger
     // volume, a sound) has nothing to show: it is neither drawn nor picked
     this.bulb = isBulb(base, kind) && !ghost;
-    this.unseen = !base?.model && !ghost && !this.bulb;
+    // refs with a primitive are a group of their own (setRefs), drawn as their boxes with the helpers
+    this.prim = prim && !ghost;
+    this.unseen = !base?.model && !ghost && !this.bulb && !this.prim;
     if (this.bulb) this.colour = lightColour(base);
     // effects and markers carry the record's "everything" bounds; draw them as a small box (a bulb: its sphere)
     let b = this.bulb ? [[-BULB, -BULB, -BULB], [BULB, BULB, BULB]] : base?.bounds || [[-32, -32, 0], [32, 32, 64]];
@@ -261,6 +291,7 @@ class Group {
     // effects (mist, waterfall sheets, glows) are shader tricks of the game's: drawn here they are pale rings
     // and sheets over the land, so they stay unseen (still listed and pickable)
     if (this.fx || this.unseen) { this.box.visible = false; this.box.count = 0; return 0; }
+    if (this.prim) { this.box.visible = false; this.box.count = 0; return this.layer.showLights ? this.refs.length : 0; }
     if (this.bulb) { this.box.visible = false; this.box.count = 0; return this.layer.showLights ? this.layer.addBulbs(this, cam, frustum, sphere) : 0; }
     // everything placed (layer.always) is drawn whole at any distance: zoomed right out, every building, plant, tree
     // and rock shows, the ground cover placed one by one too; the grown grass (grass.js) thins itself by distance
@@ -314,6 +345,41 @@ export class ObjectLayer {
     this.rangeScale = 1; this.refs = []; this.byId = new Map(); this._dirty = true; this.onDirty = () => {};
     // lights without a model: every bulb of the layer in one instanced mesh, every near or selected ring in another
     this.showLights = false; this.ringIds = new Set(); this.bulbs = null; this.rings = null; this.nBulb = 0; this.nRing = 0;
+    // primitives: one instanced mesh of boxes, one of spheres, filled when the layer changes (fillPrims)
+    this.primBoxes = null; this.primSpheres = null; this.nPrim = 0;
+  }
+  primMeshes(n) {
+    if (this.primBoxes && this.primBoxes.instanceMatrix.count >= n) return;
+    const cap = Math.max(16, Math.ceil(n * 1.5));
+    for (const m of [this.primBoxes, this.primSpheres]) if (m) { this.root.remove(m); m.dispose(); }
+    this.primBoxes = new THREE.InstancedMesh(primBoxGeo, primBoxMat, cap);
+    this.primSpheres = new THREE.InstancedMesh(primSphereGeo, primSphereMat, cap);
+    for (const m of [this.primBoxes, this.primSpheres]) {
+      m.instanceColor = new THREE.InstancedBufferAttribute(new Float32Array(cap * 3), 3);
+      m.count = 0; m.visible = false; m.frustumCulled = false; m.renderOrder = 2; m.userData.prims = true; this.root.add(m);
+    }
+  }
+  // Every primitive of the layer, at its ref's pose and its own size, when the helpers are shown.
+  fillPrims() {
+    const groups = [...this.groups.values()].filter((g) => g.prim);
+    let nb = 0, ns = 0;
+    if (this.showLights && groups.length) {
+      this.primMeshes(groups.reduce((n, g) => n + g.refs.length, 0));
+      for (const g of groups) {
+        for (let i = 0; i < g.refs.length; i++) {
+          const r = g.refs[i], h = halfExtents(r), round = isRound(r);
+          tmpM.makeScale(...h).premultiply(g.matrices[i]);
+          const mesh = round ? this.primSpheres : this.primBoxes, k = round ? ns++ : nb++;
+          mesh.setMatrixAt(k, tmpM); mesh.setColorAt(k, PRIM_COLOUR);
+        }
+      }
+    }
+    for (const [m, k] of [[this.primBoxes, nb], [this.primSpheres, ns]]) {
+      if (!m) continue;
+      m.count = k; m.visible = k > 0;
+      if (k) { sendInstances(m, k); m.instanceColor.needsUpdate = true; }
+    }
+    this.nPrim = nb + ns;
   }
   setShowLights(on) { if (this.showLights !== !!on) { this.showLights = !!on; this.dirty(); } }
   setRingIds(ids) { this.ringIds = new Set(ids); this.dirty(); }
@@ -356,14 +422,14 @@ export class ObjectLayer {
     this.refs = list; this.byId = new Map(list.map((e) => [e.ref.id, e]));
     for (const e of list) {
       const base = this.bases.get(e.ref.base), kind = e.ref.kind || base?.kind || 'other';
-      const k = `${e.ref.base}|${e.ghost ? 1 : 0}`;
-      if (!buckets.has(k)) buckets.set(k, { base, kind, ghost: !!e.ghost, refs: [] });
+      const prim = hasPrim(e.ref) && !e.ghost, k = `${e.ref.base}|${e.ghost ? 1 : 0}${prim ? '|p' : ''}`;
+      if (!buckets.has(k)) buckets.set(k, { base, kind, ghost: !!e.ghost, prim, refs: [] });
       buckets.get(k).refs.push(e.ref);
     }
     for (const [k, g] of this.groups) if (!buckets.has(k)) { g.dispose(); this.groups.delete(k); }
     for (const [k, b] of buckets) {
       let g = this.groups.get(k);
-      if (!g) { g = new Group(this, b.base, b.kind, b.ghost); this.groups.set(k, g); }
+      if (!g) { g = new Group(this, b.base, b.kind, b.ghost, b.prim); this.groups.set(k, g); }
       g.setRefs(b.refs);
     }
     this.dirty();
@@ -371,6 +437,7 @@ export class ObjectLayer {
   cull(camera) {
     const frustum = new THREE.Frustum().setFromProjectionMatrix(new THREE.Matrix4().multiplyMatrices(camera.projectionMatrix, camera.matrixWorldInverse));
     const sphere = new THREE.Sphere(); let n = 0;
+    if (this._dirty) this.fillPrims();
     this.nBulb = 0; this.nRing = 0;
     for (const g of this.groups.values()) n += g.cull(camera, frustum, sphere);
     for (const [m, k] of [[this.bulbs, this.nBulb], [this.rings, this.nRing]]) {
@@ -384,7 +451,7 @@ export class ObjectLayer {
   pick(ray, { kinds, includeGhosts = false } = {}) {
     const hits = [], inv = new THREE.Matrix4(), lr = new THREE.Ray(), box = new THREE.Box3(), p = new THREE.Vector3();
     for (const g of this.groups.values()) {
-      if (g.unseen || g.fx || (g.bulb && !this.showLights)) continue;
+      if (g.unseen || g.fx || ((g.bulb || g.prim) && !this.showLights)) continue;
       if (g.ghost && !includeGhosts) continue;
       if (kinds && !kinds.has(g.kind)) continue;
       box.min.set(...g.bmin); box.max.set(g.bmin[0] + g.bsize[0], g.bmin[1] + g.bsize[1], g.bmin[2] + g.bsize[2]);
@@ -396,7 +463,9 @@ export class ObjectLayer {
           if (ray.distanceSqToPoint(tmpV) <= r * r) hits.push({ ref: g.refs[i], kind: g.kind, ghost: g.ghost, dist: d, point: tmpV.clone() });
           continue;
         }
-        if (ray.distanceSqToPoint(tmpV) > (g.radius * (g.refs[i].scale ?? 1) * 2 + 40) ** 2) continue;
+        if (g.prim) {  // a primitive is picked by its own box
+          const h = halfExtents(g.refs[i]); box.min.set(-h[0], -h[1], -h[2]); box.max.set(h[0], h[1], h[2]);
+        } else if (ray.distanceSqToPoint(tmpV) > (g.radius * (g.refs[i].scale ?? 1) * 2 + 40) ** 2) continue;
         inv.copy(m).invert(); lr.copy(ray).applyMatrix4(inv);
         if (lr.intersectBox(box, p)) {
           p.applyMatrix4(m);
@@ -409,7 +478,8 @@ export class ObjectLayer {
   }
   // World-space box corners of a ref, for selection outlines and lasso tests.
   worldBox(ref) {
-    const base = this.bases.get(ref.base), b = base?.bounds || [[-32, -32, 0], [32, 32, 64]];
+    const base = this.bases.get(ref.base), h = hasPrim(ref) ? halfExtents(ref) : null;
+    const b = h ? [h.map((v) => -v), h] : base?.bounds || [[-32, -32, 0], [32, 32, 64]];
     const m = new THREE.Matrix4().fromArray(refMatrix(ref.pos, ref.rot || [0, 0, 0], ref.scale ?? 1, this.origin));
     const pts = [];
     for (const x of [b[0][0], b[1][0]]) for (const y of [b[0][1], b[1][1]]) for (const z of [b[0][2], b[1][2]]) pts.push(new THREE.Vector3(x, y, z).applyMatrix4(m));

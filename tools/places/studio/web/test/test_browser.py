@@ -791,6 +791,52 @@ def test_21_lights_seen_and_handled(pad):
     pad.page.wait_for_timeout(500)
 
 
+def test_21_invisible_walls(pad):
+    # a kept collision box shows with the helpers as a faint outlined box of its real size, one instanced draw
+    pad.page.click("#rail [data-tool=select]")
+    wall = pad.ev("studio.model.spaces.exterior.refs.get('fixplace.wall0')")
+    wp = pad.ev("(id) => studio.seated(studio.model.spaces.exterior.refs.get(id)).pos", wall["id"])
+    pad.ev("studio.selection.clear(); studio.tools.selectionChanged()")
+    look_at(pad, "ours", wp, dist=2500, pitch=1.2)
+    pad.page.wait_for_function("studio.ours.place.nPrim >= 1 && studio.ours.place.primBoxes.visible", timeout=5000 * SLOW)
+    assert pad.ev("studio.ours.place.root.children.filter((m) => m.userData.prims && m.visible).length") == 1
+    pad.page.wait_for_timeout(300)
+    pad.shot("21-invisible-wall")
+    # picked by its box; the panel says what it is, whose it is and its size
+    pad.pen_tap(*pad.screen("ours", wp))
+    assert pad.ev("[...studio.selection]") == [wall["id"]], pad.ev("[...studio.selection]")
+    body = pad.ev("document.getElementById('panel-body').textContent")
+    assert "an invisible wall: people and the player cannot pass" in body and "Fix Hall" in body, body
+    assert "800 by 32 by 240 units" in body, body
+    pad.page.wait_for_timeout(200)
+    pad.shot("21-invisible-wall-selected")
+    # resized by its extents, as one ordinary edit
+    n0 = len(pad.ops())
+    pad.page.fill(".prim-size input[data-i='0']", "1000")
+    pad.page.get_by_role("button", name="Set the size").click()
+    ops = pad.ev("(n) => studio.log.applied().slice(n).map((o) => ({ op: o.op, id: o.id, after: o.after }))", n0)
+    assert ops == [{"op": "ref.move", "id": wall["id"], "after": {"primitive": {**wall["primitive"], "bounds": [500, 16, 120]}}}], ops
+    assert pad.ev("studio.model.spaces.exterior.refs.get('fixplace.wall0').primitive.bounds") == [500, 16, 120]
+    pad.ev("studio.log.undo()")
+    assert pad.ev("studio.model.spaces.exterior.refs.get('fixplace.wall0').primitive.bounds") == [400, 16, 120]
+    # moved and removed like anything else
+    pad.ev("(id) => { studio.selection = new Set([id]); studio.tools.selectionChanged(); }", wall["id"])
+    n0 = len(pad.ops())
+    pad.page.get_by_role("button", name="East", exact=True).click()
+    assert [o["id"] for o in pad.ops()[n0:]] == [wall["id"]]
+    pad.ev("studio.log.undo()")
+    n0 = len(pad.ops())
+    pad.page.get_by_role("button", name="Remove from our place").click()
+    assert [(o["op"], o["id"]) for o in pad.ops()[n0:]] == [("ref.remove", wall["id"])]
+    pad.ev("studio.log.undo()")
+    # the plain view never shows it (nor picks it: picking skips helpers while they are hidden)
+    pad.ev("studio.selection.clear(); studio.tools.selectionChanged()")
+    pad.page.click("#rail [data-tool=land]")
+    pad.page.wait_for_function("studio.ours.place.nPrim === 0 && !studio.ours.place.primBoxes.visible", timeout=5000 * SLOW)
+    assert not pad.ev("studio.ours.place.showLights")
+    pad.page.click("#rail [data-tool=select]")
+
+
 def test_21_grass_at_viewing_distance(pad):
     # the land texture's grass grows close up and from where one looks at a town (no cut-off at a short range)
     assert pad.ev("studio.ours.grass.on")

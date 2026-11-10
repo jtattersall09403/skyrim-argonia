@@ -76,7 +76,8 @@ export class Tools {
     this.lightsShown();
     for (const v of [a.ours.view, a.src.view]) v.resize();
   }
-  // Lights (bulbs with their rings) are drawn and picked while selecting or adding, or always with the Lights toggle.
+  // The helpers (lights as bulbs with their rings, primitives as their boxes) are drawn and picked while selecting or
+  // adding, or always with the Lights toggle.
   lightsOn() { return !!this.opts.lights || ['select', 'search'].includes(this.current); }
   lightsShown() {
     const a = this.app, on = this.lightsOn();

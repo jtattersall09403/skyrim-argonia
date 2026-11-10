@@ -39,7 +39,7 @@ SOURCE_ORDER = {"identities": {"households": ("id",), "people": ("id",)},
                 "stock": {"containers": ("space", "ref"), "loose": ("id",), "possessions": ("person",),
                           "traders": ("person",), "deliveries": ("give_seq", "by", "person", "ref", "status", "why")}}
 CALLS = ("fault", "taste")
-MOVE_FIELDS = ("pos", "rot", "scale", "seat")
+MOVE_FIELDS = ("pos", "rot", "scale", "seat", "primitive")
 TOL = 1e-3  # game units and radians; a before that differs by less than this matches
 
 

@@ -38,6 +38,7 @@ SHAPES = {
     "light": ("Light", (20, 20, 40)),
     "actor": ("Npc", (40, 40, 180)),
     "container": ("Container", (100, 60, 60)),
+    "marker": ("Static", (32, 32, 32)),
 }
 
 
@@ -234,6 +235,12 @@ def source_refs(bases, rng, cells, pfx, nbuild, nenter):
     t0 = next(r for r in refs if r["id"] == f"{pfx}.l0")
     refs.append(ref(f"{pfx}.lantern0", bases.get("Fix_Lantern", "clutter", size=(24, 24, 40)), "clutter",
                     [t0["pos"][0] + 30, t0["pos"][1], t0["pos"][2] - 20], [0, 0, 0]))
+    # an invisible wall along the first building's long side (a collision marker: no model, its box is its primitive)
+    b0 = next(r for r in refs if r["id"] == f"{pfx}.b0")
+    c, sn = math.cos(b0["rot"][2]), math.sin(b0["rot"][2])
+    refs.append(ref(f"{pfx}.wall0", bases.get("CollisionMarker", "marker", model=None), "marker",
+                    [b0["pos"][0] - 330 * sn, b0["pos"][1] + 330 * c, b0["pos"][2] + 120], list(b0["rot"]),
+                    primitive={"type": "Box", "bounds": [400.0, 16.0, 120.0], "color": [255, 255, 0], "unknown": 0.15}))
     return refs, back, npcs
 
 
@@ -329,6 +336,8 @@ def main():
                   seat={"mode": "ground", "dz": 0}, src=r["id"], cell=[int(x // CELL), int(y // CELL)])
         if "door" in r:
             nr["door"] = dict(r["door"], to_ref=r["door"]["to_ref"].replace("src", "fixplace", 1))
+        if "primitive" in r:   # a kept collision box travels with the piece it stands on
+            nr["seat"] = {"mode": "on", "on": "fixplace.b0", "dz": 120.0}
         drefs.append(nr)
     dint = {}
     for sid, rs in sint.items():
