@@ -4,12 +4,14 @@
 // slope, under a building or on a path the owner drew. Spots are a jittered grid hashed from the position, so the
 // same ground always grows the same blades. The ring's range and thinning are the ground-cover rules of objects.js.
 import { ObjectLayer, loadModel } from './objects.js';
+import { spotsFor, slopeOk, waterOk } from './grass_rules.js';
 
 const STEP = 150;     // one spot per 150 units (about 2 m)
 const RING = 3600;    // radius of the ring, about 50 m
 const SHOW_BELOW = 9000; // camera distance beyond which no grass is drawn
 const hash = (x, y, k) => { let h = (x * 374761393 + y * 668265263 + k * 2147483647) | 0; h = Math.imul(h ^ (h >>> 13), 1274126177); return ((h ^ (h >>> 16)) >>> 0) / 4294967296; };
 
+const MAX_SPOTS = 2600; // a ring's cap, so a tablet copes
 export class GrassLayer extends ObjectLayer {
   // terrain: bundle.js Terrain (or a getter); blocked(x, y): a drawn path; buildings(): [{pos, r}]
   constructor(origin, { terrain, blocked = () => false, buildings = () => [] }) {
@@ -58,16 +60,28 @@ export class GrassLayer extends ObjectLayer {
     const blockers = this.buildings(), list = [];
     const x0 = Math.floor((cx - RING) / STEP), x1 = Math.ceil((cx + RING) / STEP), y0 = Math.floor((cy - RING) / STEP), y1 = Math.ceil((cy + RING) / STEP);
     for (let gx = x0; gx <= x1; gx++) for (let gy = y0; gy <= y1; gy++) {
-      const x = (gx + hash(gx, gy, 1)) * STEP, y = (gy + hash(gx, gy, 2)) * STEP;
-      if (Math.hypot(x - cx, y - cy) > RING) continue;
-      const tex = this.texAt(x, y); if (!tex) continue;
-      const gs = this.grassesOf(tex); if (!gs.length) continue;
-      const z = t.heightAt(x, y); if (z == null) continue;
-      const w = t.waterAt(x, y); if (w != null && z < w + 8) continue;
-      if (t.slopeAt(x, y) > 0.8 || this.blocked(x, y)) continue;
-      if (blockers.some((b) => Math.hypot(b.pos[0] - x, b.pos[1] - y) < b.r)) continue;
-      const g = gs[Math.floor(hash(gx, gy, 3) * gs.length) % gs.length];
-      list.push({ ref: { id: `grass.${gx}.${gy}`, base: g.key, kind: 'groundcover', pos: [x, y, z], rot: [0, 0, hash(gx, gy, 4) * 6.2832], scale: 0.8 + hash(gx, gy, 5) * 0.5 } });
+      const cellTex = this.texAt((gx + 0.5) * STEP, (gy + 0.5) * STEP); if (!cellTex) continue;
+      const gs0 = this.grassesOf(cellTex); if (!gs0.length) continue;
+      const n = spotsFor(gs0[0].density, hash(gx, gy, 9));
+      for (let k = 0; k < n && list.length < MAX_SPOTS; k++) {
+        const x = (gx + hash(gx, gy, 1 + 10 * k)) * STEP, y = (gy + hash(gx, gy, 2 + 10 * k)) * STEP;
+        if (Math.hypot(x - cx, y - cy) > RING) continue;
+        const tex = this.texAt(x, y); if (!tex) continue;
+        const gs = this.grassesOf(tex); if (!gs.length) continue;
+        const g = gs[Math.floor(hash(gx, gy, 3 + 10 * k) * gs.length) % gs.length];
+        const z = t.heightAt(x, y); if (z == null) continue;
+        const w = t.waterAt(x, y); if (w != null && !waterOk(g, z - w)) continue;
+        const slope = t.slopeAt(x, y);
+        if (!slopeOk(g, slope) || this.blocked(x, y)) continue;
+        if (blockers.some((b) => Math.hypot(b.pos[0] - x, b.pos[1] - y) < b.r)) continue;
+        const [h0, h1] = g.height_range ?? [0.8, 1.3], s = h0 + (h1 - h0) * hash(gx, gy, 5 + 10 * k);
+        const rot = [0, 0, hash(gx, gy, 4 + 10 * k) * 6.2832];
+        if (g.fit_to_slope) {
+          const e = 32, gxs = (t.heightAt(x + e, y) - t.heightAt(x - e, y)) / (2 * e), gys = (t.heightAt(x, y + e) - t.heightAt(x, y - e)) / (2 * e);
+          rot[0] = -Math.atan(gys); rot[1] = Math.atan(gxs);
+        }
+        list.push({ ref: { id: `grass.${gx}.${gy}.${k}`, base: g.key, kind: 'groundcover', pos: [x, y, z], rot, scale: s } });
+      }
     }
     this.setRefs(list);
   }
