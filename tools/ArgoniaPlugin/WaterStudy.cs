@@ -23,6 +23,7 @@ static class WaterStudy
         "cells" => Cells(a[1], a[2]),
         "check" => Check(a[1], a[2], a[3], a[4], a.Length > 5 ? a[5] : null),
         "plan" => Plan(a[1], a[2], a[3], a.Length > 4 ? a[4] : null),
+        "selftest" => SelfTest(),
         "shore" => Shore(a[1], a[2..]),
         _ => throw new ArgumentException("waterstudy records|tamriel|cells|shore"),
     };
@@ -267,8 +268,6 @@ static class WaterStudy
         return 0;
     }
 
-    public static readonly string[] Still = { "pond", "green-marsh", "blackwater-swamp", "sea" };
-
     /// a cell's water key without its flow direction: "river-045" or "river-NE" -> "river"
     public static string KindOf(string key)
     {
@@ -315,7 +314,14 @@ static class WaterStudy
             cellKey[(g.Point.X, g.Point.Y)] = kv.GetString()!;
             eff[(g.Point.X, g.Point.Y)] = water[c.Water.IsNull ? def : c.Water.FormKey];
         }
-        var rep = Measure(cellKey, eff, flow);
+        var byEdid = m.Waters.Where(w => w.EditorID != null).GroupBy(w => w.EditorID!).ToDictionary(g => g.Key, g => (IWaterGetter)g.First());
+        var pureLook = new Dictionary<string, IWaterGetter>();
+        foreach (var p in JsonDocument.Parse(File.ReadAllText(cellsJson)).RootElement.GetProperty("watr").EnumerateObject())
+            if (p.Value.TryGetProperty("edid", out var ed) && byEdid.TryGetValue(ed.GetString()!, out var pw)) pureLook.TryAdd(KindOf(p.Name), pw);
+        var rep = Measure(cellKey, eff, flow, pureLook);
+        rep["convention"] = Convention(new[] { "RiverWaterFlowNE", "RiverWaterFlowNW", "CreekWaterFlowSE", "CreekWaterFlowSW" }
+            .Select(e => lo[1].Waters.First(w => w.EditorID == e)));
+        rep["shore"] = ShoreOf(ws);
         rep["world_water"] = water.TryGetValue(def, out var ww) ? ww.EditorID ?? def.ToString() : def.ToString();
         var js = JsonSerializer.Serialize(rep, new JsonSerializerOptions { WriteIndented = true });
         if (outJson != null) File.WriteAllText(outJson, js);
@@ -340,7 +346,9 @@ static class WaterStudy
             }
         var (cellWater, blend) = WaterBlend.Blend(mod, fc.NextIdTake, cellKey, keyOf, recs);
         var byKey = mod.Waters.ToDictionary(w => w.FormKey, w => (IWaterGetter)w);
-        var rep = Measure(cellKey, cellWater.ToDictionary(kv => kv.Key, kv => byKey[kv.Value]), FlowCells(flowJson));
+        var pureLook = new Dictionary<string, IWaterGetter>();
+        foreach (var (k, w) in recs) pureLook.TryAdd(KindOf(k), w);
+        var rep = Measure(cellKey, cellWater.ToDictionary(kv => kv.Key, kv => byKey[kv.Value]), FlowCells(flowJson), pureLook);
         rep["blend"] = blend;
         rep["records"] = mod.Waters.Count;
         var js = JsonSerializer.Serialize(rep, new JsonSerializerOptions { WriteIndented = true });
@@ -358,12 +366,21 @@ static class WaterStudy
         return flow;
     }
 
-    /// per kind: cells, the share carrying the kind's own record, the mean look; the closest pair of kinds as seen;
-    /// flowing cells' current and noise against the channel graph; still cells with a current
+    /// a key with a flow heading ("river-045", or the old "river-NE"): running water; any other key is still water
+    public static bool Flowing(string key) => KindOf(key) != key;
+
+    static double Dist(double[] a, double[] b) => a.Zip(b).Max(p => Math.Abs(p.First - p.Second));
+
+    /// per kind: cells, the share carrying the kind's own record, the share within 14 of its own look and the share
+    /// that looks nearer its own kind than any other (pureLook: kind -> the kind's own record); the kinds' own looks'
+    /// nearest pair; flowing cells' current and drift against the channel graph; still cells with a current; the
+    /// look's step at every edge between two water cells
     public static Dictionary<string, object> Measure(Dictionary<(int, int), string> cellKey, Dictionary<(int, int), IWaterGetter> eff,
-        Dictionary<(int, int), double> flow)
+        Dictionary<(int, int), double> flow, Dictionary<string, IWaterGetter> pureLook)
     {
+        var own = pureLook.ToDictionary(kv => kv.Key, kv => LookVec(kv.Value));
         var n = new Dictionary<string, int>(); var pure = new Dictionary<string, int>(); var sum = new Dictionary<string, double[]>();
+        var near = new Dictionary<string, int>(); var asOwn = new Dictionary<string, int>(); var dOwn = new Dictionary<string, List<double>>();
         int flowing = 0, velOk = 0, noiseOk = 0, stillN = 0, stillMoving = 0;
         var velErr = new List<double>(); var noiseErr = new List<double>(); var bad = new List<string>();
         foreach (var ((gx, gy), key) in cellKey)
@@ -375,7 +392,14 @@ static class WaterStudy
             var v = LookVec(w);
             if (!sum.ContainsKey(kind)) sum[kind] = new double[v.Length];
             for (var i = 0; i < v.Length; i++) sum[kind][i] += v[i];
-            if (Still.Contains(kind))
+            if (own.TryGetValue(kind, out var ov))
+            {
+                var d = Dist(v, ov);
+                (dOwn.TryGetValue(kind, out var dl) ? dl : dOwn[kind] = new()).Add(d);
+                if (d <= WaterBlend.STEP + 1) near[kind] = near.GetValueOrDefault(kind) + 1;
+                if (own.All(o => o.Key == kind || Dist(v, o.Value) > d)) asOwn[kind] = asOwn.GetValueOrDefault(kind) + 1;
+            }
+            if (!Flowing(key))
             {
                 stillN++;
                 if (VelHeading(w) != null) stillMoving++;
@@ -399,11 +423,12 @@ static class WaterStudy
                 }
         steps.Sort();
         var mean = sum.ToDictionary(kv => kv.Key, kv => kv.Value.Select(x => x / n[kv.Key]).ToArray());
-        var pairs = new List<(string a, string b, double d)>();
         var ks = mean.Keys.OrderBy(k => k).ToList();
-        for (var i = 0; i < ks.Count; i++)
-            for (var j = i + 1; j < ks.Count; j++)
-                pairs.Add((ks[i], ks[j], mean[ks[i]].Zip(mean[ks[j]]).Max(p => Math.Abs(p.First - p.Second))));
+        var pairs = new List<(string a, string b, double d)>();
+        var ok = own.Keys.OrderBy(k => k).ToList();
+        for (var i = 0; i < ok.Count; i++)
+            for (var j = i + 1; j < ok.Count; j++)
+                pairs.Add((ok[i], ok[j], Dist(own[ok[i]], own[ok[j]])));
         pairs.Sort((p, q) => p.d.CompareTo(q.d));
         velErr.Sort(); noiseErr.Sort();
         double P(List<double> l, double q) => l.Count == 0 ? 0 : Math.Round(l[Math.Min(l.Count - 1, (int)(q * l.Count))], 1);
@@ -412,10 +437,13 @@ static class WaterStudy
             ["kinds"] = ks.ToDictionary(k => k, k => (object)new Dictionary<string, object>
             {
                 ["cells"] = n[k], ["pure"] = pure.GetValueOrDefault(k), ["pure_share"] = Math.Round(pure.GetValueOrDefault(k) / (double)n[k], 3),
+                ["near_own_share"] = Math.Round(near.GetValueOrDefault(k) / (double)n[k], 3),
+                ["reads_as_own_share"] = Math.Round(asOwn.GetValueOrDefault(k) / (double)n[k], 3),
+                ["own_distance_median"] = dOwn.TryGetValue(k, out var dl) ? P(dl.OrderBy(x => x).ToList(), .5) : -1,
                 ["mean_look"] = mean[k].Select(x => Math.Round(x)).ToArray(),
             }),
-            ["pairs"] = pairs.Select(p => new object[] { p.a, p.b, Math.Round(p.d, 1) }).ToArray(),
-            ["min_pair"] = pairs.Count == 0 ? 0 : Math.Round(pairs[0].d, 1),
+            ["own_look_pairs"] = pairs.Select(p => new object[] { p.a, p.b, Math.Round(p.d, 1) }).ToArray(),
+            ["own_look_min_pair"] = pairs.Count == 0 ? 0 : Math.Round(pairs[0].d, 1),
             ["flowing_cells"] = flowing, ["velocity_within_22_5"] = velOk, ["noise_within_22_5"] = noiseOk,
             ["velocity_err_p50_p90_max"] = new[] { P(velErr, .5), P(velErr, .9), P(velErr, 1) },
             ["noise_err_p50_p90_max"] = new[] { P(noiseErr, .5), P(noiseErr, .9), P(noiseErr, 1) },
@@ -424,5 +452,110 @@ static class WaterStudy
             ["edge_steps"] = steps.Count, ["edge_step_p50_p99_max"] = new[] { P(steps, .5), P(steps, .99), P(steps, 1) },
         };
         return rep;
+    }
+
+    /// Update.esm's directional records: their surface drift (NoiseHeading) against their own current; a wrong reading
+    /// of the wind-direction convention puts them far apart
+    public static Dictionary<string, object> Convention(IEnumerable<IWaterGetter> waters)
+    {
+        var res = new Dictionary<string, object>();
+        foreach (var w in waters)
+            if (VelHeading(w) is { } vh) res[w.EditorID!] = new[] { Math.Round(vh), Math.Round(NoiseHeading(w)), Math.Round(AngErr(vh, NoiseHeading(w))) };
+        return res;
+    }
+
+    /// land against the water plane, read from the ESM's LAND (Heights): vertices within the fighting band
+    /// (|z - water| < 8), on the plane, near it (64), and the rise across each grid edge that crosses it
+    public static Dictionary<string, object> ShoreOf(IWorldspaceGetter ws)
+    {
+        long nearN = 0, fight = 0, on = 0;
+        var rises = new List<double>();
+        float defH = ws.LandDefaults?.DefaultWaterHeight ?? 0;
+        foreach (var b in ws.SubCells) foreach (var sb in b.Items) foreach (var c in sb.Items)
+        {
+            if (c.Landscape?.VertexHeightMap == null) continue;
+            var wh = c.WaterHeight is { } cw && cw < 1e9 && !float.IsNaN(cw) ? cw : defH;
+            var z = Heights(c.Landscape);
+            for (var y = 0; y < 33; y++)
+                for (var x = 0; x < 33; x++)
+                {
+                    var d = Math.Abs(z[x, y] - wh);
+                    if (d <= 64) nearN++;
+                    if (d < 8) fight++;
+                    if (d == 0) on++;
+                    if (x < 32 && (z[x, y] <= wh) != (z[x + 1, y] <= wh)) rises.Add(Math.Abs(z[x + 1, y] - z[x, y]));
+                    if (y < 32 && (z[x, y] <= wh) != (z[x, y + 1] <= wh)) rises.Add(Math.Abs(z[x, y + 1] - z[x, y]));
+                }
+        }
+        rises.Sort();
+        double P(double q) => rises.Count == 0 ? 0 : rises[Math.Min(rises.Count - 1, (int)(q * rises.Count))];
+        return new Dictionary<string, object>
+        {
+            ["vertices_near"] = nearN, ["within_fight_band"] = fight, ["on_plane"] = on, ["crossing_edges"] = rises.Count,
+            ["rise_p10_median_p90"] = new[] { P(.1), P(.5), P(.9) },
+        };
+    }
+
+    /// selftest: NoiseHeading, Head and Blend on hand-made records and a small grid; exit 1 naming each failure
+    static int SelfTest()
+    {
+        var fails = new List<string>();
+        void Ok(bool c, string what) { if (!c) fails.Add(what); }
+        var mod = new SkyrimMod(ModKey.FromFileName("WaterSelfTest.esm"), Rel);
+        uint id = 0x800;
+        Water Rec(string ed, (int, int, int) shallow, byte opacity, float d1, float d2, float d3)
+        {
+            var w = new Water(new FormKey(mod.ModKey, id++), Rel)
+            {
+                EditorID = ed, ShallowColor = Color.FromArgb(0, shallow.Item1, shallow.Item2, shallow.Item3),
+                DeepColor = Color.FromArgb(0, shallow.Item1 / 3, shallow.Item2 / 3, shallow.Item3 / 3),
+                ReflectionColor = Color.FromArgb(0, 100, 110, 120), Opacity = opacity,
+                NoiseLayerOneWindDirection = d1, NoiseLayerTwoWindDirection = d2, NoiseLayerThreeWindDirection = d3,
+                NoiseLayerOneAmplitudeScale = 0.9f, NoiseLayerTwoAmplitudeScale = 0.6f, NoiseLayerThreeAmplitudeScale = 0.9f,
+                NoiseLayerOneWindSpeed = 0.09f, NoiseLayerTwoWindSpeed = 0.04f, NoiseLayerThreeWindSpeed = 0.3f,
+                FogAboveWaterDistanceFarPlane = opacity * 2f,
+            };
+            mod.Waters.Add(w);
+            return w;
+        }
+        // NoiseHeading: ripples from the west (270) drift east (90); vanilla RiverWaterFlowNE's layers drift east-north-east
+        var west = Rec("W", (0, 0, 0), 0, 270, 270, 270);
+        Ok(AngErr(NoiseHeading(west), 90) < 0.01, $"NoiseHeading of layers from 270: {NoiseHeading(west):F1}, wants 90");
+        var ne = Rec("NE", (0, 0, 0), 0, 233, 267, 252);
+        Ok(AngErr(NoiseHeading(ne), 62) < 22.5, $"NoiseHeading of RiverWaterFlowNE's layers: {NoiseHeading(ne):F1}, its current runs 62");
+        // Head: turned to 200, the drift and the current both run 200, the layers keep their spread
+        var spread = (ne.NoiseLayerTwoWindDirection - ne.NoiseLayerOneWindDirection + 360) % 360;
+        WaterBlend.Head(ne, 200, 2.0);
+        Ok(AngErr(NoiseHeading(ne), 200) < 0.01, $"Head 200: drift {NoiseHeading(ne):F2}");
+        Ok(VelHeading(ne) is { } vh && AngErr(vh, 200) < 0.01, $"Head 200: current {VelHeading(ne)}");
+        Ok(Math.Abs((ne.NoiseLayerTwoWindDirection - ne.NoiseLayerOneWindDirection + 360) % 360 - spread) < 0.01, "Head changed the layers' spread");
+        // Blend: sea (bright) west of x = 20, swamp (dark) east, a river running north at x = 30; the far ends keep their records
+        var sea = Rec("Sea", (80, 175, 165), 30, 270, 210, 225);
+        var swamp = Rec("Swamp", (44, 30, 16), 95, 22, 150, 0);
+        var river = Rec("River", (112, 104, 44), 70, 233, 267, 252);
+        WaterBlend.Head(river, 0, 2.9);
+        var recs = new Dictionary<string, IWaterGetter> { ["sea"] = sea, ["blackwater-swamp"] = swamp, ["river-000"] = river };
+        var keyOf = recs.ToDictionary(kv => kv.Key, kv => kv.Value.FormKey);
+        var cells = new Dictionary<(int, int), string>();
+        for (var x = 0; x < 60; x++) for (var y = 0; y < 12; y++) cells[(x, y)] = x == 30 ? "river-000" : x < 20 ? "sea" : "blackwater-swamp";
+        var (cw, rep) = WaterBlend.Blend(mod, () => id++, cells, keyOf, recs);
+        var byKey = mod.Waters.ToDictionary(w => w.FormKey, w => (IWaterGetter)w);
+        var eff = cw.ToDictionary(kv => kv.Key, kv => byKey[kv.Value]);
+        double worst = 0;
+        foreach (var ((x, y), _) in cells)
+            foreach (var (dx, dy) in new[] { (1, 0), (0, 1), (1, 1), (1, -1) })
+                if (eff.TryGetValue((x + dx, y + dy), out var nb)) worst = Math.Max(worst, WaterBlend.Delta(eff[(x, y)], nb));
+        Ok(worst <= WaterBlend.STEP + 1, $"Blend: an edge steps {worst} > {WaterBlend.STEP + 1}");
+        Ok(cw[(0, 5)] == sea.FormKey && cw[(59, 5)] == swamp.FormKey, "Blend: cells far from a seam lost their own record");
+        Ok(cw[(19, 5)] != sea.FormKey && cw[(20, 5)] != swamp.FormKey, "Blend: the seam's cells were not graded");
+        var rb = eff[(30, 5)];
+        Ok(rb.NoiseLayerOneWindDirection == river.NoiseLayerOneWindDirection && rb.NoiseLayerThreeWindSpeed == river.NoiseLayerThreeWindSpeed
+           && rb.NoiseLayerOneAmplitudeScale == river.NoiseLayerOneAmplitudeScale && rb.LinearVelocity == river.LinearVelocity,
+           "Blend: a river cell's motion was mixed");
+        var sb = eff[(29, 5)];
+        Ok(sb.LinearVelocity == swamp.LinearVelocity && sb.NoiseLayerThreeWindSpeed == swamp.NoiseLayerThreeWindSpeed, "Blend: a swamp cell took the river's motion");
+        foreach (var f in fails) Console.WriteLine("FAIL " + f);
+        Console.WriteLine(fails.Count == 0 ? "waterstudy selftest: ok" : $"waterstudy selftest: {fails.Count} failed");
+        return fails.Count == 0 ? 0 : 1;
     }
 }

@@ -12,8 +12,8 @@ one JSON object per line: {"base": "<plugin>:<editor id>", "x", "y", "z" (world 
 linking the base when it is in an allowed master and copying it as our own record otherwise (ForeignCopy.cs).
 
 Water (research/nw-02-ground-water-rules.md section 3.4; one level 0, so the type is chosen per cell, XCWT): the
-cell's type is its dominant water body's kind (by water samples): sea (sea, bay and lake; the world's own water),
-black swamp, green marsh, pond, and river, stream and estuary by the channel graph's heading in the cell
+cell's type is its dominant water body's kind (by water samples): sea (ocean, shallow coast and bay; the world's own
+water), black swamp, green marsh, pond (ponds and lakes), and river, stream and estuary by the channel graph's heading in the cell
 (water_flow_cells.json) snapped to 16 headings; a river or stream that does not flow in the cell takes the region's
 still water. Every type is a WATR of our own (tools/newworld/world/water_types.py: the vanilla base, the values set,
 the heading and the current's speed), built by ArgoniaPlugin WaterBlend.Records.

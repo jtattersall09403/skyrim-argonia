@@ -52,7 +52,7 @@ KINDS = {
         "ShallowColor": [112, 104, 44], "DeepColor": [56, 82, 48], "ReflectionColor": [92, 118, 72], "Opacity": 70}},
     # clearer and quicker: vanilla's creek noise, its speeds raised past the river's, the creek's clear colours
     "stream": {"copy": "Update.esm:CreekWaterFlowSE", "edid": "ANW_CreekWaterFlow", "speed": 3.2, "set": {
-        "ShallowColor": [88, 98, 74], "DeepColor": [44, 52, 36], "ReflectionColor": [70, 86, 84], "Opacity": 25,
+        "ShallowColor": [96, 104, 92], "DeepColor": [52, 56, 48], "ReflectionColor": [80, 96, 104], "Opacity": 15,
         "NoiseLayerOneWindSpeed": 0.12, "NoiseLayerTwoWindSpeed": 0.07, "NoiseLayerThreeWindSpeed": 0.4}},
     # silty green-brown meeting the sea, running slowly seaward where the channel graph gives a heading
     "estuary": {"copy": "Update.esm:RiverWaterFlowNE", "edid": "ANW_EstuaryWaterFlow", "speed": 1.0, "set": {
@@ -85,10 +85,10 @@ def spec(key: str) -> dict:
     k = KINDS[kind]
     out = {"copy": k["copy"], "edid": k["edid"], "set": dict(k["set"])}
     if h:
-        out.update(edid=f"{k['edid']}_{h}", heading=int(h), speed=k["speed"])
-    elif kind in RUNNING:  # an estuary with no heading here: still
+        out.update(edid=f"{k['edid']}_{h}", heading=round(int(h) / STEP) * STEP, speed=k["speed"])  # "022" is 22.5
+    elif kind in RUNNING:  # an estuary with no heading here: still, its layers spread so it does not drift
         out["edid"] = "ANW_Water_Estuary"
-        out["set"].update(ZERO)
+        out["set"].update(ZERO | STILL_SPREAD)
     return out
 
 
@@ -102,6 +102,8 @@ LIMITS = [
     f"Running water flows one heading per cell, the channel's mean heading in that cell snapped to {HEADINGS} "
     "headings; where a river bends the heading steps from one cell to the next.",
     "Cells near a change of kind are our own blend records (ArgoniaPlugin WaterBlend.cs), graded across the seam "
-    "only, so no cell edge steps more than 12 of 255 in any colour; cells further from a seam keep their kind's own record.",
+    "only, so no cell edge (side or corner) steps more than 14 of 255 in any colour or in the opacity; a strong "
+    "contrast grades over more cells; rivers and streams, one to three cells wide, keep their own motion but share "
+    "their colour with their banks; cells away from a seam keep their kind's own record.",
     "No rapids, falls or ripple FX statics yet (placement step).",
 ]

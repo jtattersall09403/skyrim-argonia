@@ -46,7 +46,7 @@ REFS_CAP = 162           # natural refs in a cell: vanilla's forested max
 JACCARD_MAX = 0.60       # two regions' base sets: the most they may share (the place step reports 0.58, two sea regions)
 PATHS_MIN = 20           # settlement-pair paths the navmesh check must have found
 FLOW = re.compile(r"(River|Creek)WaterFlow", re.I)
-BLEND = re.compile(r"^ANW_WaterBlend_(.+)_\d{4}$")    # a graded seam cell: its own type's editor id, look mixed
+BLEND = re.compile(r"^ANW_WaterBlend_(.+)_\d{4,}$")    # a graded seam cell: its own type's editor id, look mixed
 
 
 def own_type(edid: str) -> str:
@@ -263,8 +263,7 @@ def run(plugin: Path, out: Path, do_dump: bool = True) -> int:
         hw = [k for k, c in cells.items() if c["water_h"] not in ("", str(water_h), f"{water_h}", "0")]
         rep.row("water", f"one water level ({water_h}) everywhere", len(hw), not hw, f"e.g. {hw[:4]}")
         from tools.newworld.world import water_check  # kinds as seen, flow, seams, land against the plane
-        water_check.rows(rep, water_check.esm_check(BIN / "ArgoniaPlugin.dll", plugin, DATA, OUT / "water_flow_cells.json", out),
-                         water_check.shore(plugin))
+        water_check.rows(rep, water_check.esm_check(BIN / "ArgoniaPlugin.dll", plugin, DATA, OUT / "water_flow_cells.json", out))
 
     @section(rep, "refs")
     def _refs():
