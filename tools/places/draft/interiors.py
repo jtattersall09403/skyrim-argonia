@@ -1,11 +1,12 @@
 """Interiors: every enterable building brings its interior as a copy of the source space, its doors paired.
 
 A source interior reached by several exterior doors is copied once per door, so each house has its own. When the
-source packs several rooms into one interior cell (one room behind each door), the copy's own room is the part of
-the cell nearer its own way out than any other; the copy's beds and people are that room's. An interior reached
+source packs several rooms into one interior cell (one room behind each door), the copy keeps one room: what lies within
+ROOM_RADIUS of its own way out; its beds are the kept ones nearer its own way out than any other. An interior reached
 only from another interior is copied once per copy of its parent. A copy brings everything of the source space but
-its actors (our people come from people.jsonl); its refs file holds only our changes: every door that leads out
-re-pointed at our door for it, and inner doors at our copies.
+its actors (our people come from people.jsonl), or of a shared cell only its own room (the refs within
+ROOM_RADIUS of its own door); its refs file holds only our changes: its own way out re-pointed at our door, the
+other rooms' ways out inside the kept room removed, and inner doors at our copies.
 """
 from __future__ import annotations
 
@@ -16,6 +17,7 @@ from tools.places.draft.io import Bundle, mint
 
 BED = re.compile(r"bed(?!side)|bedroll|hammock|sleep", re.I)
 DOUBLE = re.compile(r"double|dbl", re.I)
+ROOM_RADIUS = 1200.0   # a copied room keeps the source refs this near its own door (the build's rule, place-studio.md)
 
 
 def door_target(r: dict) -> str | None:
@@ -34,8 +36,9 @@ def beds_in(space_refs: list[dict], bases: dict, room: str | None = None) -> lis
         if not BED.search(name):
             continue
         if exits and len(exits) > 1:
+            own = next((d for d in exits if d["id"] == room), None)
             near = min(exits, key=lambda d: (math.dist(d["pos"], r["pos"]), d["id"]))
-            if near["id"] != room:
+            if near["id"] != room or own is None or math.dist(own["pos"], r["pos"]) > ROOM_RADIUS:
                 continue
         out.append({"ref": r["id"], "sleeps": 2 if DOUBLE.search(name) else 1})
     return sorted(out, key=lambda b: b["ref"])
@@ -75,9 +78,11 @@ def plan(place_id: str, src: Bundle, ext_doors: list[dict], our_door_id: dict[st
             row = {**r, "id": mint(place_id, sid, r["id"]), "src": r["id"], "seat": {"mode": "free"}}
             if r is back_row:
                 row["door"] = {**r["door"], "to_space": parent, "to_ref": our_from}
-            elif t2 == "exterior" and r["door"].get("to_ref") in our_door_id:
-                # another room's way out (rooms packed in one cell): to our door for that room
-                row["door"] = {**r["door"], "to_ref": our_door_id[r["door"]["to_ref"]]}
+            elif t2 == "exterior" and sp["room"]:
+                # another room's way out (rooms packed in one cell): not this house's; gone if inside the kept room
+                if math.dist(r["pos"], back_row["pos"]) > ROOM_RADIUS:
+                    continue
+                row = {"id": row["id"], "src": r["id"], "removed": True}
             elif t2 in src.spaces and t2 != "exterior" and t2 not in chain:
                 queue.append((t2, row["id"], r["id"], sid, chain + (t2,)))
             else:

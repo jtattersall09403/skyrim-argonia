@@ -12,7 +12,7 @@ import math
 from dataclasses import dataclass, field
 
 from tools.places.draft import geom
-from tools.places.seat import Ground, foot_points
+from tools.places.seat import Ground, foot_area, foot_points
 
 YARD = 512.0          # how far beyond its footprint a building's yard reaches
 STREET_LINK = 640.0   # single-linkage distance of street things
@@ -91,7 +91,7 @@ def decompose(refs: list[dict], bases: dict, g: Ground) -> tuple[list[Cluster], 
         f = geom.foot(r, bases)
         if r.get("kind") != "building" or not f or over_water(r):
             return False
-        if 4 * f[0] * f[1] >= SEED_AREA:
+        if foot_area(f) >= SEED_AREA:
             return True
         return any(rect_dist(r, bases, d["pos"][0], d["pos"][1]) <= DOOR_NEAR for d in doors)
 

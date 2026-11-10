@@ -58,8 +58,9 @@ building on a slope first takes the rise the source's own builders commonly buil
   size and use from a non-Nordic source we deploy (`python -m tools.places search query "<what it is>"`, or the
   catalogue `out/places/catalogue/bases.jsonl`), and set `draft.replace` `{old: new}`, or
   `{old: {base, turn_deg}}`. The tools line a replaced door or directional piece up with the original's plane
-  from both meshes (the turn and the shift, `align` on the ref) and `draft check` proves it; which face points
-  out cannot be told from geometry, so name every replaced door in your report for a look. A door that leads
+  from both meshes (the turn and the shift, `align` on the ref) and `draft check` proves it, with every door's arrival point on our ground, clear of
+  collision and in front of its plane. Which face of a new door mesh is its front cannot be read from geometry:
+  the tools list each such door in `place.json` `needs_look`; carry that list to the owner check. A door that leads
   indoors is always replaced, never dropped. Drop decorative pieces with no equal.
 - **Leftovers**: `draft.drop` `{source ref id: reason}` for anything the source placed that our place must not have.
 - **What the record promises and the source lacks is added in the source's own style.** The tools add each
@@ -78,7 +79,9 @@ building on a slope first takes the rise the source's own builders commonly buil
 1. `python -m tools.places draft check <place_id>` must PASS: every source ref accounted for, seated by its
    rule, buildings on ground no steeper than the source's, water and land as the source had them, patches within
    bound, streets clear of buildings and open water, every door on a path, every promised service and station
-   given and worked, a bed for every sleeper, replaced pieces in the original's plane. Its `measures` line gives
+   given and worked, a bed for every sleeper, replaced pieces in the original's plane, nothing floating or buried
+   along its true outline beyond how it sat in the source, every door's arrival clear; and the build's own
+   `build <place_id> --plan` when it exists. Its `measures` line gives
    the patched cells and points and the streets' length: keep the patches as near nothing as the land allows.
 2. Render again and look: does it read as the same town sitting naturally on our land? If not, go back to 2.
 3. `python -m tools.places seat <place_id>` must report 0 refs moved.

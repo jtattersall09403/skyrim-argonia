@@ -9,9 +9,11 @@ Seat rule (`ref.seat`): `{mode, dz, on?, foot?}`
   above   z = ground at the origin + dz (things that stand off the ground at the source's height)
   water   z = water surface at the origin + dz
   stilts  z = max(ground, water) under the footprint + dz; posts reach the bed
+  clear   z = highest ground under the footprint + dz (a raised thing whose underside cleared the ground everywhere)
   on      z = the supporting ref's seated z + dz (`on` is that ref's id in the same space)
   free    z is kept (interiors, markers the source placed in the air)
-`foot` is the footprint's half extents `[hx, hy]` in the ref's own frame (yaw only), omitted for a point.
+`foot` is the footprint `[x0, y0, x1, y1]` in the ref's own frame (yaw only), from the model's true geometry
+(`model_bounds`), omitted for a point.
 """
 from __future__ import annotations
 
@@ -146,17 +148,77 @@ class Ground:
 
 
 # --- footprints ---
+FOOTPRINTS = ROOT / "out" / "places" / "footprints.json"
+_fp: dict | None = None
+
+
+def model_bounds(base: dict) -> list | None:
+    """A base's true extent [[x0, y0, z0], [x1, y1, z1]] in its own frame: the mesh's own geometry (lane A's
+    converter), cached per model under out/places/footprints.json; the record's bounds when there is no mesh.
+    Bounds need not be centred on the origin: every footprint is taken from this, offsets and all."""
+    global _fp
+    m = str(base.get("model") or "").lower()
+    if not m:
+        return base.get("bounds")
+    if _fp is None:
+        try:
+            _fp = json.loads(FOOTPRINTS.read_text())
+        except (OSError, ValueError):
+            _fp = {}
+    if m not in _fp:
+        b = None
+        try:
+            from tools.places import assets
+            info = assets.mesh_info(m, bounds=base.get("bounds"))
+            if info.get("tris"):
+                b = info.get("bounds")
+        except Exception:
+            b = None
+        _fp[m] = b
+        try:
+            FOOTPRINTS.parent.mkdir(parents=True, exist_ok=True)
+            FOOTPRINTS.write_text(json.dumps(_fp, sort_keys=True))
+        except OSError:
+            pass
+    return _fp[m] or base.get("bounds")
+
+
+def foot_box(foot) -> tuple[float, float, float, float]:
+    """A seat rule's footprint as (x0, y0, x1, y1) in the ref's frame; the older [hx, hy] form is centred."""
+    if len(foot) == 2:
+        return (-foot[0], -foot[1], foot[0], foot[1])
+    return tuple(foot)
+
+
+def foot_radius(foot) -> float:
+    x0, y0, x1, y1 = foot_box(foot)
+    return max(math.hypot(x, y) for x in (x0, x1) for y in (y0, y1))
+
+
+def foot_area(foot) -> float:
+    x0, y0, x1, y1 = foot_box(foot)
+    return (x1 - x0) * (y1 - y0)
+
+
+def to_local(x: float, y: float, rz: float, px: float, py: float) -> tuple[float, float]:
+    """A world point in a ref's frame (the inverse of its clockwise yaw)."""
+    c, s = math.cos(rz), math.sin(rz)
+    dx, dy = px - x, py - y
+    return (dx * c - dy * s, dx * s + dy * c)
+
+
 def foot_points(x: float, y: float, rz: float, foot: list[float] | None, n: int = 3) -> list[tuple[float, float]]:
-    """Sample points over a footprint (n x n grid incl. corners), yaw only; a point when foot is None."""
+    """Sample points over a footprint (n x n grid incl. corners) at its true place in the ref's frame, yaw only;
+    the origin when foot is None."""
     if not foot:
         return [(x, y)]
-    hx, hy = foot
+    x0, y0, x1, y1 = foot_box(foot)
     c, s = math.cos(rz), math.sin(rz)
     pts = []
     for i in range(n):
         for j in range(n):
-            u = -hx + 2 * hx * i / (n - 1)
-            v = -hy + 2 * hy * j / (n - 1)
+            u = x0 + (x1 - x0) * i / (n - 1)
+            v = y0 + (y1 - y0) * j / (n - 1)
             # Skyrim's yaw turns clockwise seen from above
             pts.append((x + u * c + v * s, y - u * s + v * c))
     return pts
@@ -164,7 +226,7 @@ def foot_points(x: float, y: float, rz: float, foot: list[float] | None, n: int 
 
 def foot_ground(g: Ground, x: float, y: float, rz: float, foot, stilts: bool = False) -> float | None:
     hs = []
-    for px, py in foot_points(x, y, rz, foot):
+    for px, py in foot_points(x, y, rz, foot, 5):
         h = g.height(px, py)
         if h is None:
             continue
@@ -173,6 +235,11 @@ def foot_ground(g: Ground, x: float, y: float, rz: float, foot, stilts: bool = F
             h = max(h, w) if w is not None else h
         hs.append(h)
     return min(hs) if hs else None
+
+
+def foot_high(g: Ground, x: float, y: float, rz: float, foot) -> float | None:
+    hs = [h for h in (g.height(px, py) for px, py in foot_points(x, y, rz, foot, 5)) if h is not None]
+    return max(hs) if hs else None
 
 
 def foot_relief(g: Ground, x: float, y: float, rz: float, foot) -> float:
@@ -186,6 +253,8 @@ def reference_z(g: Ground, mode: str, x: float, y: float, rz: float, foot, on_z:
         return foot_ground(g, x, y, rz, foot)
     if mode == "above":
         return g.height(x, y)
+    if mode == "clear":
+        return foot_high(g, x, y, rz, foot)
     if mode == "water":
         w = g.water(x, y)
         return w if w is not None else g.height(x, y)

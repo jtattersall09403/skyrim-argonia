@@ -61,6 +61,14 @@ normal; door teleport markers against their doors). The browser converts to its 
 A bundle is one place as data, in `out/places/bundles/<bundle_id>/`; `bundle_id` is `src.<source_id>`,
 `ground.<place_id>` or `draft.<place_id>` (the place files resolved for viewing). The studio shows any bundle.
 
+The draft bundle is written by `python -m tools.places draft_bundle <place_id>` (`tools/places/draft_bundle.py`):
+the exterior's refs as written; each interior the source cell's refs without actors, cut to the kept room by the
+Build rule (`room` or `keep_within`), with our rows over them; people, paths, clear and land files as written;
+bases from the ground and source bundles; actor bases from the source. Its `stamp.key` is a sha256 over the place
+files (saves excepted) and the source and ground bundles' `bundle.json`. The studio rebuilds it whenever that key
+is stale, on `GET /api/places` and on a request for the draft's `bundle.json`, so a redraft, a re-seat or a
+finalise shows without a command. Unknown fields pass through.
+
 ```
 bundle.json            {bundle_id, kind: source|ground|draft, title, plugins (every plugin loaded, masters first),
                         source_plugins, worldspace, worldspace_edid, anchor:[x,y,z], cells:[[cx,cy]...],
@@ -160,13 +168,17 @@ edits/<save_id>.json   a studio save (below); finalised saves stay here as the l
 ```
 
 Seat rule `seat:{mode, dz, on?, foot?}` (one function, `tools/places/seat.py`): `ground` z = lowest ground under
-the footprint + dz; `above` z = ground at the origin + dz; `water` z = water surface + dz; `stilts` z = lowest of
+the footprint + dz; `clear` z = highest ground under the footprint + dz (a raised thing whose underside cleared the
+ground everywhere); `above` z = ground at the origin + dz; `water` z = water surface + dz; `stilts` z = lowest of
 max(ground, water) under the footprint + dz; `on` z = the ref `on`'s z + dz; `free` z kept (interiors). `foot` is
-the footprint's half extents `[hx, hy]` in the ref's own frame. dz is measured in the source the same way.
+the true footprint `[x0, y0, x1, y1]` in the ref's own frame (not centred on the origin), from the model's own
+geometry (`seat.model_bounds`, cached in `out/places/footprints.json`); every footprint test calls it. dz is
+measured in the source the same way.
 
 `place.json` also holds: `draft` (the agent's calls: `anchor`, `rot_deg`, `search`, `replace`, `drop`, `add`,
 `roles`, `keep_patches`; skill `place-build`), `fit` (global and per-cluster transforms, `clusters_info`,
-`relief_norm`, `patch_max`),
+`relief_norm`, `patch_max`), `needs_look` (each replaced door whose outward face cannot be read from geometry:
+{door, src, base, space, at, why}, for the studio and the owner check),
 `clearance` (the source's measured clearance), `factions` (`<place_id>.crime`, `.guard`, `.town`, and one
 `.vendor.NN` per trader with hours and `chest`), `stations` (needed, found, missing, added: {station, id, base,
 space, by}), `ground`, `source`,
@@ -180,7 +192,10 @@ routine `at` name a copied ref by its source id with the copy's `space`; a row w
 addition (a station). `clear.jsonl` rows add `why` and `ref`. A ref the draft added (station, bridge) has `src`
 null and a `why`; a replaced door or directional piece carries `align: {turn_deg, shift, of}` (already applied
 to its pos and rot; the record of how its plane was matched to the original's). A person in an innkeeper's role
-has `bed` null and one 24-hour work stop (Skyrim's innkeepers keep no bed).
+has `bed` null and one 24-hour work stop (Skyrim's innkeepers keep no bed). An exterior door into a copy
+carries `door.arrival` [x, y, z], where one stands outside it on our ground, clear of collision; the copy's way
+out (its `door_back` row) has `to_pos` that arrival and `to_rot` facing away from the door. A copy of a shared
+cell overrides only its own way out and removes the other rooms' ways out that fall in its kept room.
 
 Seating is data, never baked: `pos[2]` is what the last seating wrote, and `python -m tools.places seat` rewrites
 it from `seat` and the ground bundle. A ground rebuild is followed by `seat`, `build`, nothing else.
@@ -208,8 +223,15 @@ An op: `{n, at, op, space, call: "fault"|"taste", note?, stroke?, ...payload wit
 - `land.patch` heights are the patch's `dz` at that vertex, as `land.jsonl` holds it (0 is the world's own ground).
 - `path.add` and `person.add` carry the new row; `.remove` carries the removed row; `.edit` carries the row after
   and `before` the row before.
-- `veg.clear` writes `by: owner` unless the item names `by`; `veg.restore` items carry the `by` they had, so the
-  inverse restores it.
+- `veg.clear` writes the item as the row (`by: owner` unless the item names `by`); `veg.restore` items carry the
+  whole cleared row (`by`, and a draft row's `why` and `ref`), so the inverse puts it back as it was. Plants are
+  keyed by base and position rounded half up to a tenth of a unit (JavaScript's `Math.round(v * 10) / 10`).
+- A `ref.add` with `space_copy_of` creates the room: `space.json` is `{space_id, copy_of, name: space_name,
+  door_from, parent}`, where `door_from` and `parent` are the door (and its space) whose `door.to_space` is this
+  room, whichever op adds it first. Into a space that already exists it is a conflict. Its inverse is a
+  `ref.remove` with `space_drop: true`, which deletes the room when its last ref goes.
+- Doors are paired: after a save is applied, every door it added that leads into one of the place's own rooms
+  must find its `to_ref` there, leading back to it; otherwise the save is a conflict.
 - Rows are kept in one order (refs, paths and people by id, land by cell, clearance by base and position), so
   independent ops give the same files in any order. Floats match within 0.001.
 - An op whose `before` (or the row it names) does not match the files is a conflict: the save is not applied and
@@ -227,7 +249,9 @@ semantics; the front end's JavaScript mirror is tested against the same files.
 ```
 GET  /api/places                              places with a draft; each: place_id, title, source_id, similar,
                                               stamps:{draft, ground, source}, fit (place.json's fit as the draft
-                                              wrote it, or null: the studio's linked views map through it)
+                                              wrote it, or null: the studio's linked views map through it),
+                                              needs_look (place.json's, when it has one), draft_error (when
+                                              the draft bundle could not be rebuilt; the last good one is served)
 GET  /api/bundle/<bundle_id>/...              the bundle's files as written
 GET  /api/asset/mesh?model=<path>&level=0|1   GLB (converted on demand, off the event loop);
                                               level 1 is the light version (trees, plants, far away)

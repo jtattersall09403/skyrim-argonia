@@ -19,7 +19,7 @@ from dataclasses import dataclass, field
 
 from tools.places.draft import geom
 from tools.places.draft.cluster import Cluster
-from tools.places.seat import STEP, Ground, foot_points, foot_relief
+from tools.places.seat import STEP, Ground, foot_points, foot_relief, foot_area, foot_box, foot_radius
 
 LANDING_WEIGHT = 3.0
 COARSE_SAMPLES = 6
@@ -140,7 +140,7 @@ class Scorer:
                 take = c.wet[::max(1, len(c.wet) // COARSE_SAMPLES)][:COARSE_SAMPLES]
                 pool.extend((px, py, w, wl / max(len(take), 1)) for px, py, w in take)
                 if c.feet:
-                    f = max(c.feet, key=lambda f: f[4][0] * f[4][1])
+                    f = max(c.feet, key=lambda f: foot_area(f[4]))
                     heads.append((f, self.src_relief[(c.id, f[0])]))
             self._pool, self._heads = pool, heads
         g = self.ours
@@ -201,7 +201,7 @@ def local_fit(sc: Scorer, clusters: list[Cluster], xf: geom.Xf, bases_radius: di
     fit = Fit(xf.pivot, xf.to, xf)
     fit._centres = {c.id: c.centre for c in clusters}
     order = sorted(clusters, key=lambda c: (c.kind != "landing", c.kind != "building",
-                                            -sum(f[4][0] * f[4][1] for f in c.feet), c.id))
+                                            -sum(foot_area(f[4]) for f in c.feet), c.id))
     shifts: dict[str, tuple[float, float]] = {}
     circles: list[tuple[float, float, float]] = []
     for c in order:
@@ -224,7 +224,7 @@ def local_fit(sc: Scorer, clusters: list[Cluster], xf: geom.Xf, bases_radius: di
                             my = sum(s[1] / (d + 256) for s, d in neigh) / wsum
                             k += w_neigh * ((dx - mx) ** 2 + (dy - my) ** 2) / 256.0 ** 2
                         if c.kind == "building":
-                            mine = [(*cand.pt(f[1], f[2]), math.hypot(*f[4])) for f in c.feet[:1]]
+                            mine = [(*cand.pt(f[1], f[2]), foot_radius(f[4])) for f in c.feet[:1]]
                             k += W_OVERLAP * sum(_overlap(m, o) for m in mine for o in circles)
                         key = (round(k, 6), abs(dx) + abs(dy), abs(dr))
                         if best is None or key < best[0]:
@@ -240,7 +240,7 @@ def local_fit(sc: Scorer, clusters: list[Cluster], xf: geom.Xf, bases_radius: di
         fit.per[c.id] = cand
         shifts[c.id] = (dx, dy)
         if c.kind == "building":
-            circles.extend((*cand.pt(f[1], f[2]), math.hypot(*f[4])) for f in c.feet[:1])
+            circles.extend((*cand.pt(f[1], f[2]), foot_radius(f[4])) for f in c.feet[:1])
         fit.local[c.id] = {"dx": dx, "dy": dy, "drot_deg": round(math.degrees(dr), 2),
                            "cost_before": round(before, 3), "cost_after": round(sc.cost(c, cand), 3)}
     fit.cost = round(sum(sc.cost(c, fit.per[c.id]) for c in clusters), 3)
@@ -251,7 +251,8 @@ def patch_verts(ours: Ground, x: float, y: float, rz: float, f, target: float, m
     """Vertex offsets that bring the land under a footprint (and a vertex beyond) to `target`, blended out over
     the next vertex: {(cx, cy): [[row, col, dz]...]} (an edge vertex is written to both cells). No change is over
     max_dz, and no point crosses the waterline (it stays WATERLINE_GAP clear of the surface on its own side)."""
-    half = math.hypot(*f) + 2 * STEP
+    half = foot_radius(f) + 2 * STEP
+    x0, y0, x1, y1 = foot_box(f)
     verts: dict[tuple[int, int], list] = {}
     gx0, gx1 = math.floor((x - half) / STEP), math.ceil((x + half) / STEP)
     gy0, gy1 = math.floor((y - half) / STEP), math.ceil((y + half) / STEP)
@@ -259,8 +260,8 @@ def patch_verts(ours: Ground, x: float, y: float, rz: float, f, target: float, m
     for gx in range(gx0, gx1 + 1):
         for gy in range(gy0, gy1 + 1):
             dx, dy = gx * STEP - x, gy * STEP - y
-            u, v = abs(dx * c - dy * s), abs(dx * s + dy * c)
-            out = max(u - f[0], v - f[1], 0.0)
+            u, v = dx * c - dy * s, dx * s + dy * c
+            out = max(x0 - u, u - x1, y0 - v, v - y1, 0.0)
             if out > 2 * STEP:
                 continue
             blend = 1.0 if out <= STEP else max(0.0, 1 - (out - STEP) / STEP)

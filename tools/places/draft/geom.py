@@ -3,6 +3,8 @@ from __future__ import annotations
 
 import math
 
+from tools.places.seat import foot_radius, model_bounds
+
 LEVELLED = {"LVLN", "LVLI", "LVSP", "LeveledNpc", "LeveledItem", "LeveledSpell"}
 POINT_KINDS = {"marker", "actor", "light", "clutter", "groundcover"}
 
@@ -15,35 +17,32 @@ def solid(base: dict) -> bool:
 
 def bounds(ref: dict, bases: dict) -> tuple[list[float], list[float]] | None:
     base = bases.get(ref.get("base")) or {}
-    b = base.get("bounds")
-    if not b or not solid(base):
+    b = model_bounds(base) if solid(base) else None
+    if not b:
         return None
     s = float(ref.get("scale") or 1.0)
     return [v * s for v in b[0]], [v * s for v in b[1]]
 
 
 def foot(ref: dict, bases: dict, min_half: float = 24.0) -> list[float] | None:
-    """Half extents [hx, hy] of a ref's footprint in its own frame, or None for a small thing."""
+    """A ref's true footprint [x0, y0, x1, y1] in its own frame (scaled), or None for a small thing."""
     b = bounds(ref, bases)
     if not b:
         return None
     hx, hy = (b[1][0] - b[0][0]) / 2, (b[1][1] - b[0][1]) / 2
     if max(hx, hy) < min_half or ref.get("kind") in POINT_KINDS:
         return None
-    return [round(hx, 1), round(hy, 1)]
+    return [round(b[0][0], 1), round(b[0][1], 1), round(b[1][0], 1), round(b[1][1], 1)]
 
 
 def radius(ref: dict, bases: dict) -> float:
     f = foot(ref, bases, 0.0)
-    return math.hypot(*f) if f else 32.0
+    return foot_radius(f) if f else 32.0
 
 
 def reach(ref: dict, bases: dict) -> float:
-    """How far from its origin a ref's footprint reaches (bounds need not be centred on the origin)."""
-    b = bounds(ref, bases)
-    if not b:
-        return 32.0
-    return max(math.hypot(x, y) for x in (b[0][0], b[1][0]) for y in (b[0][1], b[1][1]))
+    """How far from its origin a ref's footprint reaches."""
+    return radius(ref, bases)
 
 
 def bottom(ref: dict, bases: dict) -> float:
@@ -100,21 +99,8 @@ def dist(a, b) -> float:
     return math.hypot(a[0] - b[0], a[1] - b[1])
 
 
-_mesh_cache: dict[str, list | None] = {}
-
-
 def mesh_bounds(base: dict) -> list | None:
-    """The model's own geometry bounds (lane A's converter), falling back to the record's bounds."""
-    m = base.get("model")
-    if not m:
-        return base.get("bounds")
-    if m not in _mesh_cache:
-        try:
-            from tools.places import assets
-            _mesh_cache[m] = assets.mesh_info(m).get("bounds")
-        except Exception:
-            _mesh_cache[m] = None
-    return _mesh_cache[m] or base.get("bounds")
+    return model_bounds(base)
 
 
 def plane(base: dict, scale: float = 1.0) -> dict | None:

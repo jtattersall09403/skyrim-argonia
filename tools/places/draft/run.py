@@ -29,7 +29,7 @@ from tools.places.draft.cluster import VEG, decompose
 from tools.places.draft.fit import Scorer, global_fit, local_fit, patch_for, patch_verts, relief_norm
 from tools.places.draft.fit import _pivot as fit_pivot
 from tools.places.draft.paths import PATH_WIDTH, STREET_WIDTH, NavGraph, network, simplify
-from tools.places.seat import Ground, foot_points, foot_relief, seat_all
+from tools.places.seat import Ground, foot_box, model_bounds, foot_points, foot_relief, seat_all
 
 UNITS_PER_M = 70.0
 STREET_SLOPE_MIN, STREET_SLOPE_MAX = 15.0, 35.0   # degrees: our streets climb no steeper than the source's did
@@ -403,8 +403,8 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
                         blocked_cells.add((i, j))
     walk_cells: set = set()
     for r in walk_our:
-        f = geom.foot(r, bases) or [64.0, 64.0]
-        for x, y in foot_points(r["pos"][0], r["pos"][1], r["rot"][2], [f[0] + 64, f[1] + 64], 7):
+        x0, y0, x1, y1 = foot_box(geom.foot(r, bases) or [64.0, 64.0])
+        for x, y in foot_points(r["pos"][0], r["pos"][1], r["rot"][2], [x0 - 64, y0 - 64, x1 + 64, y1 + 64], 7):
             walk_cells.add((round(x / 128), round(y / 128)))
 
     def blocked(x, y) -> bool:
@@ -424,7 +424,7 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
         """Walkway pieces end to end over each wet stretch of a route, along it, standing on stilts."""
         if not walk_base:
             return []
-        b = bases[walk_base]["bounds"]
+        b = model_bounds(bases[walk_base])
         length = max(64.0, b[1][1] - b[0][1] - 16)
         out = []
         for i, (p, q) in enumerate(zip(route, route[1:])):
@@ -474,6 +474,42 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
                           "points": [list(p) for p in laid], "width": width,
                           "style": "boardwalk" if wet else "dirt", "from": a, "to": b,
                           "laid": "routed on our ground" if routed else "the source's line, mapped"})
+
+    # --- doors: where one arrives outside each door, on our ground, and which way the door opens ---
+    our_by_id = {r["id"]: r for r in our}
+    needs_look: list[dict] = []
+    for sid, sp in sorted(spaces.items()):
+        if sp["parent"] != "exterior":
+            continue
+        ext_door = our_by_id[sp["door_from"]]
+        p = nodes_our.get(ext_door["src"])
+        back = next((r for r in sp["overrides"] if r["id"] == sp["door_back"]), None)
+        if p is None or back is None:
+            continue
+        # one arrives on dry ground clear of any other building: step out along the way out, then round it
+        def clear(q):
+            return G.has(*q) and (not G.wet(q[0], q[1], 16) or G.wet(ext_door["pos"][0], ext_door["pos"][1], 16)) \
+                and not any(r.get("kind") == "building" and geom.contains_xy(r, bases, q[0], q[1], -32)
+                            and not geom.contains_xy(r, bases, ext_door["pos"][0], ext_door["pos"][1], 64) for r in our)
+        if not clear(p):
+            d0 = math.dist(p, ext_door["pos"][:2]) or 1.0
+            ux, uy = (p[0] - ext_door["pos"][0]) / d0, (p[1] - ext_door["pos"][1]) / d0
+            cands = [(ext_door["pos"][0] + ux * r_, ext_door["pos"][1] + uy * r_) for r_ in (96.0, 160.0, 224.0, 288.0, 384.0)]
+            cands += [(p[0] + r_ * math.sin(t), p[1] + r_ * math.cos(t)) for r_ in (64.0, 128.0, 192.0, 256.0)
+                      for t in (k * math.pi / 8 for k in range(16))]
+            p = next((q for q in cands if clear(q)), p)
+            nodes_our[ext_door["src"]] = p
+        h = G.height(*p)
+        out_yaw = math.atan2(p[0] - ext_door["pos"][0], p[1] - ext_door["pos"][1]) % (2 * math.pi)
+        arrival = [round(p[0], 2), round(p[1], 2), round(h if h is not None else ext_door["pos"][2], 2)]
+        back["door"] = {**back["door"], "to_pos": arrival, "to_rot": [0.0, 0.0, round(out_yaw, 5)]}
+        ext_door["door"] = {**ext_door["door"], "arrival": arrival}
+        if ext_door.get("align"):
+            needs_look.append({"door": ext_door["id"], "src": ext_door["src"], "base": ext_door["base"],
+                               "space": sid, "at": arrival[:2],
+                               "why": "replacement door: its plane is matched to the original's and one arrives on "
+                                      "the original's outer side, but which face of the new mesh is its front "
+                                      "cannot be read from the geometry; look that the door does not open inward"})
 
     if bridges:
         our.extend(bridges)
@@ -537,6 +573,7 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
         "clearance": clearance,
         "factions": factions,
         "stations": stations,
+        "needs_look": needs_look,
         "ground": {"bundle": f"ground.{place_id}", "sha": G.sha, "stamp": grd.stamp()},
         "source": {"bundle": f"src.{place['source_id']}", "stamp": src.stamp()},
         "radius_m": radius_m,

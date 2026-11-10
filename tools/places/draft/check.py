@@ -16,9 +16,11 @@ from tools.places.draft import paths as paths_mod
 from tools.places.draft.geom import LEVELLED
 from tools.places.draft.fit import relief_allowed
 from tools.places.draft.paths import connected, dist_to_paths
-from tools.places.seat import Ground, foot_relief, seat_all
+from tools.places.seat import Ground, foot_points, foot_relief, seat_all
 
 SEAT_TOL = 1.0
+RELIEF_SLACK_ALL = 48.0
+SOLID = {"building", "static", "furniture", "container", "door", "activator"}
 summary: dict = {}       # the last check's measures (patches, streets, aligned pieces), printed by main
 DOOR_REACH = 160.0
 
@@ -235,6 +237,55 @@ def check(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, g
         summary.setdefault("aligned", 0)
         summary["aligned"] += 1
 
+    # 12. nothing floating or buried: the gap between a thing's underside along its true outline and the ground,
+    # against how it sat in the source
+    norm = place.get("fit", {}).get("relief_norm", 64.0)
+    for r in refs:
+        f = r["seat"].get("foot")
+        s_ = src_by.get(r.get("src"))
+        if not f or not s_ or r["seat"].get("mode") not in ("ground", "clear") or r.get("base") != s_.get("base") \
+                or r.get("kind") not in SOLID:
+            continue
+        b = geom.bounds(r, bases)
+        if not b:
+            continue
+
+        def gaps(g_, x, y, z, rz):
+            hs = [g_.height(px, py) for px, py in foot_points(x, y, rz, f, 5)]
+            return [z + b[0][2] - h for h in hs if h is not None]
+        go = gaps(G, r["pos"][0], r["pos"][1], r["pos"][2], r["rot"][2])
+        gs = gaps(S, s_["pos"][0], s_["pos"][1], s_["pos"][2], s_["rot"][2])
+        if not go or not gs:
+            continue
+        if r["seat"]["mode"] == "ground" and max(go) > max(max(gs), 0.0) + 16:
+            bad.append(f"{r['id']} ({r['kind']}) floats {max(go):.0f} above our ground (source {max(gs):.0f})")
+        src_rel = foot_relief(S, s_["pos"][0], s_["pos"][1], s_["rot"][2], f)
+        allow = relief_allowed(src_rel, r["seat"], norm) or max(norm, RELIEF_SLACK_ALL)
+        if -min(go) > -min(gs) + allow + 16:
+            bad.append(f"{r['id']} ({r['kind']}) buried {-min(go):.0f} into our ground (source {-min(gs):.0f})")
+
+    # 13. every door opens the way out: its arrival on our ground, clear of collision, its plane across the way out
+    blds = [r for r in refs if r.get("kind") == "building" and r["seat"].get("foot")]
+    for d in doors:
+        a = (d["door"] or {}).get("arrival")
+        if not a:
+            bad.append(f"door {d['id']} has no arrival point outside it")
+            continue
+        if not G.has(a[0], a[1]):
+            bad.append(f"door {d['id']} arrival is off our ground")
+        elif G.wet(a[0], a[1], 16) and not G.wet(d["pos"][0], d["pos"][1], 16):
+            bad.append(f"door {d['id']} arrival is in the water")
+        if any(geom.contains_xy(r, bases, a[0], a[1], -32) and not geom.contains_xy(r, bases, d["pos"][0], d["pos"][1], 64)
+               for r in blds):
+            bad.append(f"door {d['id']} arrival is inside a building")
+        pl = geom.plane(bases.get(d["base"]) or {})
+        if pl and math.dist(a[:2], d["pos"][:2]) > 16:
+            n_ = geom.turn((1.0, 0.0) if pl["axis"] == 0 else (0.0, 1.0), d["rot"][2])
+            out = ((a[0] - d["pos"][0]) / math.dist(a[:2], d["pos"][:2]), (a[1] - d["pos"][1]) / math.dist(a[:2], d["pos"][:2]))
+            if abs(n_[0] * out[0] + n_[1] * out[1]) < 0.5:
+                bad.append(f"door {d['id']} opens along its wall, not toward its way out")
+    summary["needs_look"] = len(place.get("needs_look") or [])
+
     # 7. no Nordic or levelled base placed
     for r in refs:
         b = bases.get(r["base"]) or {}
@@ -245,11 +296,26 @@ def check(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, g
     return bad
 
 
+def build_plan(place_id: str) -> list[str]:
+    """The build's own validation of the place files (`build <place_id> --plan`), when the build has it."""
+    import subprocess
+    import sys
+    b = io.ROOT / "tools" / "places" / "build.py"
+    if not b.exists() or "--plan" not in b.read_text():
+        return []
+    p = subprocess.run([sys.executable, "-m", "tools.places", "build", place_id, "--plan"], cwd=io.ROOT,
+                       capture_output=True, text=True)
+    if p.returncode == 0:
+        return []
+    lines = [x.strip() for x in (p.stdout + p.stderr).splitlines() if x.strip()]
+    return [f"build plan: {x}" for x in lines[-40:]] or [f"build plan failed ({p.returncode})"]
+
+
 def main(argv: list[str]) -> int:
     if len(argv) != 1:
         print("usage: python -m tools.places draft check <place_id>")
         return 2
-    bad = check(argv[0])
+    bad = check(argv[0]) + build_plan(argv[0])
     for b in bad[:200]:
         print("FAIL", b)
     if len(bad) > 200:

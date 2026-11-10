@@ -12,13 +12,14 @@ In order:
 from __future__ import annotations
 
 from tools.places.draft import geom
-from tools.places.seat import Ground, foot_ground, reference_z
+from tools.places.seat import Ground, foot_ground, foot_high, reference_z
 
 GROUND_BAND = 96.0
 SURFACE_BAND = 48.0
 CONTACT = 24.0
 SUPPORT_KINDS = {"building", "static", "furniture", "container", "activator", "other"}
 NEVER_ON = {"building", "tree", "rock"}
+RAISED_KINDS = {"building", "static"}
 
 
 def find_support(r: dict, near: list[dict], bases: dict, g: Ground) -> dict | None:
@@ -63,6 +64,12 @@ def infer(r: dict, near: list[dict], bases: dict, g: Ground | None, interior: bo
         if geom.bottom(r, bases) < w and r.get("kind") in ("building", "static", "other"):
             return {**out, "mode": "stilts", "dz": round(z - reference_z(g, "stilts", x, y, rz, f), 2)}
     gz = foot_ground(g, x, y, rz, f)
+    b = geom.bounds(r, bases)
+    if f and b and r.get("kind") in RAISED_KINDS:
+        top_ground = foot_high(g, x, y, rz, f)
+        if top_ground is not None and z + b[0][2] - top_ground > CONTACT:
+            # its underside clears the ground everywhere (a raised floor or platform): keep that clearance
+            return {**out, "mode": "clear", "dz": round(z - top_ground, 2)}
     if gz is not None and z - gz <= GROUND_BAND:
         return {**out, "mode": "ground", "dz": round(z - gz, 2)}
     return {**out, "mode": "above", "dz": round(z - (h if h is not None else z), 2)}
