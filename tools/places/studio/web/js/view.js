@@ -54,6 +54,7 @@ export class View {
     const r = this.rig, cp = Math.cos(r.pitch);
     this.camera.position.set(r.target.x + r.dist * cp * Math.cos(r.yaw), r.target.y + r.dist * cp * Math.sin(r.yaw), r.target.z + r.dist * Math.sin(r.pitch));
     this.camera.near = Math.max(5, r.dist / 400); this.camera.updateProjectionMatrix();
+    if (this.scene.fog) { this.scene.fog.near = Math.max(20000, r.dist * 2.5); this.scene.fog.far = this.scene.fog.near * 4; }
     this.camera.lookAt(r.target); this.camera.updateMatrixWorld();
   }
   render(now) {

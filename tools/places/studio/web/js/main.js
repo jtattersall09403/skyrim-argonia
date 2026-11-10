@@ -128,8 +128,8 @@ class Studio {
     } else if (first || side.returnRig) {
       if (side.returnRig) { Object.assign(v.rig, side.returnRig); v.rig.target = side.returnRig.target.clone(); side.returnRig = null; v.changed(); }
       else {
-        const pr = refs.filter((r) => r.layer !== 'world');
-        if (pr.length) v.frame(boxOf(pr));
+        const pr = refs.filter((r) => r.layer !== 'world'), core = pr.filter((r) => ['building', 'door', 'furniture', 'container'].includes(r.kind));
+        if (pr.length) v.frame(boxOf(core.length ? core : pr, 0.1));
         else if (side === this.ours) {
           const pl = this.ground.meta.place, c = pl ? [pl.world_x, pl.world_y] : side.origin;
           v.frame([c[0] - 6000, c[1] - 6000, c[0] + 6000, c[1] + 6000, this.terrain?.heightAt(c[0], c[1]) ?? 0]);
@@ -345,10 +345,12 @@ class Studio {
 }
 
 // [x0, y0, x1, y1, mean z, min z] of some refs.
-function boxOf(refs) {
-  let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity, z = 0, zmin = Infinity;
-  for (const r of refs) { const p = r.pos; x0 = Math.min(x0, p[0]); y0 = Math.min(y0, p[1]); x1 = Math.max(x1, p[0]); y1 = Math.max(y1, p[1]); z += p[2]; zmin = Math.min(zmin, p[2]); }
-  return refs.length ? [x0, y0, x1, y1, z / refs.length, zmin] : [-1000, -1000, 1000, 1000, 0, 0];
+// With trim, the outer tenth each side is left out, so a few far-flung refs do not set the frame.
+function boxOf(refs, trim = 0) {
+  if (!refs.length) return [-1000, -1000, 1000, 1000, 0, 0];
+  const q = (k) => { const a = refs.map((r) => r.pos[k]).sort((x, y) => x - y), i = Math.floor(trim * (a.length - 1)); return [a[i], a[a.length - 1 - i]]; };
+  const [x0, x1] = q(0), [y0, y1] = q(1), zs = refs.map((r) => r.pos[2]);
+  return [x0, y0, x1, y1, zs.reduce((s, v) => s + v, 0) / zs.length, Math.min(...zs)];
 }
 // place.json's fit: one transform, or per cluster (the first is the place's main frame).
 function normaliseFit(f) {

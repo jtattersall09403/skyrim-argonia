@@ -11,9 +11,11 @@ export const KIND_COLOUR = {
   marker: '#d05ad0', actor: '#4fa3d9', water: '#3d6f78', other: '#999999',
 };
 // How far each kind is drawn in full, and then as a box, in game units.
+// Nearer than the first: the model (the light version for plants, trees and rocks); out to the second: a stand-in
+// of the bounds (a cone for trees); beyond: not drawn.
 const RANGE = {
-  groundcover: [3000, 3000], plant: [6000, 9000], tree: [9000, 40000], rock: [7000, 20000], clutter: [3500, 6000],
-  light: [4000, 6000], marker: [4000, 6000], default: [12000, 60000],
+  groundcover: [4000, 4000], plant: [8000, 12000], tree: [12000, 60000], rock: [12000, 30000], clutter: [8000, 10000],
+  light: [6000, 8000], marker: [6000, 8000], default: [40000, 80000],
 };
 const PICK_RANK = { actor: 0, door: 1, furniture: 2, container: 2, clutter: 3, light: 3, activator: 3, marker: 3,
   building: 4, static: 5, rock: 6, tree: 7, plant: 8, groundcover: 9, water: 10, other: 6 };
@@ -57,6 +59,7 @@ export function loadModel(model, pri = 0, level = 0) {
 const LIGHT = new Set(['tree', 'plant', 'groundcover', 'rock']);
 
 const boxGeo = new THREE.BoxGeometry(1, 1, 1).translate(0.5, 0.5, 0.5);
+const coneGeo = new THREE.ConeGeometry(0.5, 1, 6, 1).rotateX(Math.PI / 2).translate(0.5, 0.5, 0.5);
 const boxMats = new Map();
 function boxMaterial(kind, ghost) {
   const k = `${kind}|${ghost}`;
@@ -74,7 +77,9 @@ class Group {
   constructor(layer, base, kind, ghost) {
     this.layer = layer; this.base = base; this.kind = kind; this.ghost = ghost; this.refs = [];
     this.full = null; this.cap = 0; this.box = null; this.wantModel = false; this.matrices = [];
-    const b = base?.bounds || [[-32, -32, 0], [32, 32, 64]];
+    // effects and markers carry the record's "everything" bounds; draw them as a small box
+    let b = base?.bounds || [[-32, -32, 0], [32, 32, 64]];
+    if (b[1].some((v, i) => v - b[0][i] > 20000)) b = [[-32, -32, 0], [32, 32, 64]];
     this.bmin = b[0]; this.bsize = [0, 1, 2].map((i) => Math.max(1, b[1][i] - b[0][i]));
     this.radius = Math.hypot(...this.bsize) / 2;
     boundsM.makeScale(...this.bsize); boundsM.setPosition(...this.bmin); this.boxLocal = boundsM.clone();
@@ -84,7 +89,7 @@ class Group {
     this.cap = Math.max(8, Math.ceil(n * 1.5));
     const mk = (geo, mat) => { const m = new THREE.InstancedMesh(geo, mat, this.cap); m.count = 0; m.frustumCulled = false; m.userData.group = this; this.layer.root.add(m); return m; };
     if (this.box) { this.layer.root.remove(this.box); this.box.dispose(); }
-    this.box = mk(boxGeo, boxMaterial(this.kind, this.ghost));
+    this.box = mk(this.kind === 'tree' ? coneGeo : boxGeo, boxMaterial(this.kind, this.ghost));
     if (this.fullParts) this.makeFull();
   }
   makeFull() {
@@ -116,7 +121,7 @@ class Group {
     }
     this.box.count = nb; this.box.instanceMatrix.needsUpdate = true;
     if (this.full) for (const fm of this.full) { fm.count = nf; fm.instanceMatrix.needsUpdate = true; }
-    if (!this.fullParts && !this.wantModel && nearest < near * scale && this.base?.model) {
+    if (!this.fullParts && !this.wantModel && nearest < near * scale * 1.3 && this.base?.model) {
       this.wantModel = true;
       loadModel(this.base.model, nearest, LIGHT.has(this.kind) ? 1 : 0).then((parts) => {
         if (!parts || !parts.length) return;
