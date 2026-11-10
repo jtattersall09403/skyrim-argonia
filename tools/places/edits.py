@@ -156,6 +156,32 @@ def _find(rows, rid):
     return None
 
 
+SOURCE_KEYS = ("base", "pos", "rot", "scale")  # what a before is checked against on a copied space's implicit ref
+
+
+def _implicit(files, op, rid):
+    """The source row of a copied space's ref that has no row of its own (the room as copied), or None."""
+    info = (files["spaces"].get(op["space"]) or {}).get("space") or {}
+    if not info.get("copy_of") or files.get("_source") is None:
+        return None
+    rows = files["_source"](op["space"], info)
+    if any(r.get("src") == rid and r["id"] != rid for r in files["spaces"][op["space"]]["refs"]):
+        return None   # that source ref already has a row of its own, under its own id
+    r = rows.get(rid)
+    return copy.deepcopy(r) if r is not None else None
+
+
+def _matches_source(files, op, row):
+    """True when a copy ref's override row is the source ref unchanged (so the row is dropped)."""
+    if not row.get("src") or row["id"] != row["src"] or row.get("removed"):
+        return False
+    info = (files["spaces"].get(op["space"]) or {}).get("space") or {}
+    if not info.get("copy_of") or files.get("_source") is None:
+        return False
+    s = files["_source"](op["space"], info).get(row["src"])
+    return s is not None and same(row, s)
+
+
 def _conflict(op, msg):
     raise EditConflict(f"op {op['n']} ({op['op']}): {msg}")
 
@@ -165,9 +191,13 @@ def _apply_one(files, op):
     if kind == "ref.add":
         new_space = op["space"] not in files["spaces"]
         rows = _space(files, op)
-        if _find(rows, op["ref"]["id"]) is not None:
+        i = _find(rows, op["ref"]["id"])
+        if i is not None and not rows[i].get("removed"):
             _conflict(op, f"ref {op['ref']['id']} already exists")
-        rows.append(copy.deepcopy(op["ref"]))
+        if i is not None:   # a copy ref removed by an override row comes back
+            rows.pop(i)
+        if not _matches_source(files, op, op["ref"]):
+            rows.append(copy.deepcopy(op["ref"]))
         sp = files["spaces"][op["space"]]
         if op.get("space_copy_of"):
             if not new_space and (sp["space"] or len(rows) > 1):
@@ -185,22 +215,43 @@ def _apply_one(files, op):
     elif kind == "ref.remove":
         rows = _space(files, op)
         i = _find(rows, op["id"])
+        if i is not None and rows[i].get("removed"):
+            i = None
         if i is None:
-            _conflict(op, f"ref {op['id']} is not in {op['space']}")
-        if not same(rows[i], op["before"]):
-            _conflict(op, f"ref {op['id']} differs from the save's before")
-        rows.pop(i)
+            src = _implicit(files, op, op["id"])
+            if src is None:
+                _conflict(op, f"ref {op['id']} is not in {op['space']}")
+            for k in SOURCE_KEYS:
+                if k in op["before"] and not same(src.get(k), op["before"][k]):
+                    _conflict(op, f"ref {op['id']} {k} is {src.get(k)}, the save expected {op['before'][k]}")
+            rows.append({"id": op["id"], "src": op["id"], "removed": True})
+        else:
+            if not same(rows[i], op["before"]):
+                _conflict(op, f"ref {op['id']} differs from the save's before")
+            row = rows.pop(i)
+            info = files["spaces"][op["space"]].get("space") or {}
+            if row.get("src") and info.get("copy_of") and files.get("_source") is not None \
+                    and row["src"] in files["_source"](op["space"], info):
+                rows.append({"id": row["id"], "src": row["src"], "removed": True})   # else the source ref returns
         if op.get("space_drop") and not rows:
             del files["spaces"][op["space"]]
     elif kind == "ref.move":
         rows = _space(files, op)
         i = _find(rows, op["id"])
+        if i is not None and rows[i].get("removed"):
+            _conflict(op, f"ref {op['id']} is removed from {op['space']}")
         if i is None:
-            _conflict(op, f"ref {op['id']} is not in {op['space']}")
+            src = _implicit(files, op, op["id"])
+            if src is None:
+                _conflict(op, f"ref {op['id']} is not in {op['space']}")
+            rows.append(src)
+            i = len(rows) - 1
         for k, v in op["before"].items():
             if not same(rows[i].get(k), v):
                 _conflict(op, f"ref {op['id']} {k} is {rows[i].get(k)}, the save expected {v}")
         rows[i].update(copy.deepcopy(op["after"]))
+        if _matches_source(files, op, rows[i]):
+            rows.pop(i)   # back to its source pose: the override goes
     elif kind == "veg.clear":
         have = {_veg_key(c) for c in files["clear"]}
         for it in op["items"]:
@@ -252,15 +303,45 @@ def _apply_one(files, op):
                 rows[i] = copy.deepcopy(row)
 
 
-def apply(place_files: dict, ops: list) -> dict:
-    """Apply ops in order to a copy of the place files; raise EditConflict at the first op that does not fit."""
+def apply(place_files: dict, ops: list, source=None) -> dict:
+    """Apply ops in order to a copy of the place files; raise EditConflict at the first op that does not fit.
+
+    source(space_id, space_info) -> {source id: row}: a copied space's refs as copied from the source, which the
+    place files list only when changed (Place files); a dict {space_id: [row...]} serves too. Without it only
+    listed refs can be edited."""
     for op in ops:
         check_op(op)
     files = canonical(place_files)
+    if isinstance(source, dict):
+        given = {sid: {r["id"]: r for r in rows} for sid, rows in source.items()}
+        source = lambda sid, info: given.get(sid, {})   # noqa: E731
+    files["_source"] = _cached(source) if source else None
     for op in ops:
         _apply_one(files, op)
     _check_doors(files, ops)
+    files.pop("_source")
     return canonical(files)
+
+
+def _cached(source):
+    memo = {}
+
+    def get(sid, info):
+        if sid not in memo:
+            memo[sid] = source(sid, info)
+        return memo[sid]
+    return get
+
+
+def bundle_source(bundles: Path | None = None):
+    """The source resolver over the source bundles: a copied space's refs, by the draft bundle's own reading of the
+    source cell and of the build's room rule (tools.places.draft_bundle.copy_space)."""
+    from tools.places import draft_bundle
+
+    def get(sid, info):
+        src = (bundles or draft_bundle.BUNDLES) / f"src.{info['copy_of'].split('/', 1)[0]}"
+        return {r["id"]: r for r in draft_bundle.copy_space(info, [], src)}
+    return get
 
 
 def _check_doors(files, ops):
@@ -319,13 +400,13 @@ def invert(ops: list) -> list:
     return [inverse(op) for op in reversed(ops)]
 
 
-def apply_save(place_files: dict, save: dict) -> dict:
+def apply_save(place_files: dict, save: dict, source=None) -> dict:
     """Apply a whole save once: place.json lists every save applied, and a second apply is rejected."""
     check_save(save, place_files.get("place", {}).get("place_id"))
     done = place_files.get("place", {}).get("saves_applied", [])
     if save["save_id"] in done:
         raise EditConflict(f"save {save['save_id']} is already applied to {save['place_id']}")
-    out = apply(place_files, save["ops"])
+    out = apply(place_files, save["ops"], source)
     out["place"]["saves_applied"] = done + [save["save_id"]]
     prefs = [preference(op, save["save_id"]) for op in save["ops"] if op.get("call", "fault") == "taste"]
     if prefs:
@@ -393,7 +474,7 @@ def main(argv: list[str]) -> int:
     if len(argv) >= 3 and argv[0] == "apply":
         to = Path(argv[argv.index("--to") + 1]) if "--to" in argv else Path(argv[1])
         try:
-            out = apply_save(load_place(Path(argv[1])), json.loads(Path(argv[2]).read_text()))
+            out = apply_save(load_place(Path(argv[1])), json.loads(Path(argv[2]).read_text()), bundle_source())
         except EditError as e:
             print(f"not applied: {e}", file=sys.stderr)
             return 1

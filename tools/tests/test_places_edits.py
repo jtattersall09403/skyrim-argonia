@@ -176,3 +176,23 @@ def test_real_helstrom_every_op_kind():
     ops = helstrom_ops(files)
     out = apply(files, ops)
     assert apply(out, invert(ops)) == files
+
+
+COPY = FIX / "copy_refs"   # a copied room's unlisted refs, resolved by the given source (not yet read by the JS mirror)
+
+
+@pytest.mark.parametrize("case", sorted(p.stem for p in COPY.glob("*.json")))
+def test_copy_ref_fixture(case):
+    c = json.loads((COPY / f"{case}.json").read_text())
+    if "expected" in c:
+        assert apply(PLACE, c["ops"], c["source"]) == c["expected"]
+    else:
+        with pytest.raises(EditError) as e:
+            apply(PLACE, c["ops"], c["source"])
+        assert re.search(c["error"], str(e.value))
+
+
+def test_copy_ref_needs_source():
+    c = json.loads((COPY / "copy_move.json").read_text())
+    with pytest.raises(EditConflict):
+        apply(PLACE, c["ops"])

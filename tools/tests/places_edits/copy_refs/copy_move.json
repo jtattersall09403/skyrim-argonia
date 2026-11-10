@@ -1,0 +1,303 @@
+{
+ "expected": {
+  "clear": [
+   {
+    "base": "Black Marsh.esm:0A0001",
+    "by": "draft",
+    "pos": [
+     990.0,
+     1990.0,
+     50.0
+    ]
+   }
+  ],
+  "land": [
+   {
+    "cell": [
+     3,
+     7
+    ],
+    "verts": [
+     [
+      4,
+      4,
+      12.0
+     ]
+    ],
+    "why": "doorstep"
+   }
+  ],
+  "paths": [
+   {
+    "id": "fix.path1",
+    "kind": "street",
+    "points": [
+     [
+      1000,
+      1900
+     ],
+     [
+      1400,
+      1900
+     ]
+    ],
+    "style": "mud",
+    "width": 256
+   }
+  ],
+  "people": [
+   {
+    "base_from": "Black Marsh.esm:0E0001",
+    "bed": "fix.10",
+    "faction_ranks": [],
+    "home": "fix.01",
+    "id": "fix.p1",
+    "name": "Guard 1",
+    "patrol": [
+     [
+      1000,
+      1900
+     ],
+     [
+      1400,
+      1900
+     ]
+    ],
+    "role": "guard",
+    "routine": [
+     {
+      "at": {
+       "pos": [
+        1000,
+        1900,
+        50
+       ],
+       "radius": 256,
+       "space": "exterior"
+      },
+      "hours": 12,
+      "kind": "patrol",
+      "start": 8
+     }
+    ],
+    "services": [],
+    "work": null
+   }
+  ],
+  "place": {
+   "place_id": "fixture",
+   "similar": [],
+   "source_id": "bmv.fixture"
+  },
+  "spaces": {
+   "FixHouse01": {
+    "refs": [
+     {
+      "base": "Black Marsh.esm:0D7030",
+      "flags": [],
+      "id": "Black Marsh.esm:207711",
+      "kind": "clutter",
+      "layer": "place",
+      "pos": [
+       130.0,
+       60.0,
+       0.0
+      ],
+      "rot": [
+       0,
+       0,
+       1.0
+      ],
+      "scale": 1.0,
+      "seat": {
+       "mode": "free"
+      },
+      "src": "Black Marsh.esm:207711"
+     },
+     {
+      "base": "Black Marsh.esm:0D7010",
+      "flags": [],
+      "id": "fix.10",
+      "kind": "furniture",
+      "layer": "place",
+      "pos": [
+       10,
+       20,
+       0
+      ],
+      "rot": [
+       0,
+       0,
+       0
+      ],
+      "scale": 1.0,
+      "seat": {
+       "dz": 0.0,
+       "mode": "free"
+      },
+      "src": "bmv.helstrom:10"
+     }
+    ],
+    "space": {
+     "copy_of": "bmv.fixture/FixHouse01"
+    }
+   },
+   "exterior": {
+    "refs": [
+     {
+      "base": "Black Marsh.esm:0D7001",
+      "flags": [],
+      "id": "fix.01",
+      "kind": "building",
+      "layer": "place",
+      "pos": [
+       1000,
+       2000,
+       50
+      ],
+      "rot": [
+       0,
+       0,
+       1.57
+      ],
+      "scale": 1.0,
+      "seat": {
+       "dz": 0.0,
+       "mode": "ground"
+      },
+      "src": "bmv.helstrom:01"
+     },
+     {
+      "base": "Black Marsh.esm:0D7002",
+      "flags": [],
+      "id": "fix.02",
+      "kind": "building",
+      "layer": "place",
+      "pos": [
+       1400,
+       2000,
+       48
+      ],
+      "rot": [
+       0,
+       0,
+       0
+      ],
+      "scale": 1.0,
+      "seat": {
+       "dz": 0.0,
+       "mode": "ground"
+      },
+      "src": "bmv.helstrom:02"
+     },
+     {
+      "base": "Black Marsh.esm:0D7003",
+      "flags": [],
+      "id": "fix.03",
+      "kind": "clutter",
+      "layer": "place",
+      "pos": [
+       1010,
+       2050,
+       51
+      ],
+      "rot": [
+       0,
+       0,
+       0
+      ],
+      "scale": 0.8,
+      "seat": {
+       "dz": 0.0,
+       "mode": "on"
+      },
+      "src": "bmv.helstrom:03"
+     }
+    ],
+    "space": null
+   }
+  }
+ },
+ "note": "a copied room's unlisted ref (source given); owed by the JS mirror",
+ "ops": [
+  {
+   "after": {
+    "pos": [
+     130.0,
+     60.0,
+     0.0
+    ],
+    "rot": [
+     0,
+     0,
+     1.0
+    ]
+   },
+   "before": {
+    "pos": [
+     100.0,
+     40.0,
+     0.0
+    ],
+    "rot": [
+     0,
+     0,
+     0.5
+    ]
+   },
+   "call": "fault",
+   "id": "Black Marsh.esm:207711",
+   "n": 1,
+   "op": "ref.move",
+   "space": "FixHouse01"
+  }
+ ],
+ "source": {
+  "FixHouse01": [
+   {
+    "base": "Black Marsh.esm:0D7030",
+    "flags": [],
+    "id": "Black Marsh.esm:207711",
+    "kind": "clutter",
+    "layer": "place",
+    "pos": [
+     100.0,
+     40.0,
+     0.0
+    ],
+    "rot": [
+     0,
+     0,
+     0.5
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "free"
+    },
+    "src": "Black Marsh.esm:207711"
+   },
+   {
+    "base": "Black Marsh.esm:0D7030",
+    "flags": [],
+    "id": "Black Marsh.esm:207712",
+    "kind": "clutter",
+    "layer": "place",
+    "pos": [
+     200.0,
+     40.0,
+     0.0
+    ],
+    "rot": [
+     0,
+     0,
+     0.5
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "free"
+    },
+    "src": "Black Marsh.esm:207712"
+   }
+  ]
+ }
+}

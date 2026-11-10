@@ -121,7 +121,7 @@ def step_record(run: Run) -> dict:
         run.log("record: the save is already in the place files (a resumed run)")
     else:
         (run.dir / "before.json").write_text(json.dumps(files, sort_keys=True))
-        out = edits.apply_save(files, save)
+        out = edits.apply_save(files, save, edits.bundle_source(run.repo / "out/places/bundles"))
         edits.write_place(run.place, out)
         (run.dir / "after.json").write_text(json.dumps(out, sort_keys=True))
         run.log(f"record: {len(save['ops'])} edits applied to {run.place.relative_to(run.repo)}")

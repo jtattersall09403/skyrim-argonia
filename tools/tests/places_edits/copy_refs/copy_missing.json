@@ -1,0 +1,85 @@
+{
+ "error": "is not in|expected",
+ "note": "a ref in neither the place files nor the copied room is a conflict",
+ "ops": [
+  {
+   "after": {
+    "pos": [
+     130.0,
+     60.0,
+     0.0
+    ],
+    "rot": [
+     0,
+     0,
+     1.0
+    ]
+   },
+   "before": {
+    "pos": [
+     100.0,
+     40.0,
+     0.0
+    ],
+    "rot": [
+     0,
+     0,
+     0.5
+    ]
+   },
+   "call": "fault",
+   "id": "Black Marsh.esm:207799",
+   "n": 1,
+   "op": "ref.move",
+   "space": "FixHouse01"
+  }
+ ],
+ "source": {
+  "FixHouse01": [
+   {
+    "base": "Black Marsh.esm:0D7030",
+    "flags": [],
+    "id": "Black Marsh.esm:207711",
+    "kind": "clutter",
+    "layer": "place",
+    "pos": [
+     100.0,
+     40.0,
+     0.0
+    ],
+    "rot": [
+     0,
+     0,
+     0.5
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "free"
+    },
+    "src": "Black Marsh.esm:207711"
+   },
+   {
+    "base": "Black Marsh.esm:0D7030",
+    "flags": [],
+    "id": "Black Marsh.esm:207712",
+    "kind": "clutter",
+    "layer": "place",
+    "pos": [
+     200.0,
+     40.0,
+     0.0
+    ],
+    "rot": [
+     0,
+     0,
+     0.5
+    ],
+    "scale": 1.0,
+    "seat": {
+     "mode": "free"
+    },
+    "src": "Black Marsh.esm:207712"
+   }
+  ]
+ }
+}
