@@ -38,7 +38,11 @@ seat rules, ids) is `docs/design/place-studio.md`. Never write mod record or ass
 What the tools hold to, so you can judge their output: our water and land are never changed to fit the source.
 A cluster that stood on dry land goes on our dry land, one in or over water (jetties, stilt houses, shallows,
 boats) on our water; a cluster whose spot fails slides, turns or steps to the next ground of its kind, and a door
-moves with its whole building. A single piece that still has no ground of its kind is dropped and listed. Land
+moves with its whole building. A single piece that still has no ground of its kind is dropped and listed. No
+piece of one cluster stands in another's (the build's overlap rule: an origin within 0.8 of another solid's record
+box): the fit's last pass steps the smaller cluster the least distance clear, and a clash no step clears drops the
+smaller piece with the reason (`fit.separated`). A sunk filler block or a low platform (its top within a step of the
+ground) is walked over, never an obstacle. Land
 patches only ease the ground under a building, at most 1.5 m at any point and never across the waterline; a
 building on a slope first takes the rise the source's own builders commonly built on (`fit.relief_norm`).
 
@@ -50,7 +54,9 @@ building on a slope first takes the rise the source's own builders commonly buil
 3. Streets (orange in the render) come from the source's painted roads, walkways and preferred navmesh, laid on
    our ground round buildings and water at no steeper climb than the source's streets made. A link to a door on
    the water is a walkway (brown). A street that will not route without crossing our water is carried on bridges
-   of the source's own walkway pieces; look at each one.
+   of the source's own walkway pieces, one piece per piece length along the route, each slid along it clear of
+   any solid there (a deck lifted a hand's breadth over a drowned thing just under it); look at each one. A camp
+   (beds in the open) is a stop like a door: a street reaches its edge.
 
 ## 4. Settle what the cost cannot
 
@@ -62,17 +68,24 @@ building on a slope first takes the rise the source's own builders commonly buil
   copy, or drop it with a ledger reason. `ledger.jsonl` lists each dropped one. For a Nordic base with no `replace`, find a piece of like
   size and use from a non-Nordic source we deploy (`python -m tools.places search query "<what it is>"`, or the
   catalogue `out/places/catalogue/bases.jsonl`), and set `draft.replace` `{old: new}`, or
-  `{old: {base, turn_deg}}`. The tools line a replaced door or directional piece up with the original's plane
+  `{old: {base, turn_deg}}`. A replaced walkway keeps the original's walking height (its top where the original's
+  was), so a door or a deck that met it still does. The tools line a replaced door or directional piece up with the original's plane
   from both meshes (the turn and the shift, `align` on the ref) and `draft check` proves it, with every door's arrival point where one stands (our ground, a low road or deck one steps onto, or the thing a door stands on), outside every placed thing's body by the build's own test, clear of
   collision and in front of its plane. Which face of a new door mesh is its front cannot be read from geometry:
   the tools list each such door in `place.json` `needs_look`; carry that list to the owner check. A door that leads
   indoors is always replaced, never dropped. Drop decorative pieces with no equal.
 - **Leftovers**: `draft.drop` `{source ref id: reason}` for anything the source placed that our place must not have.
 - **What the record promises and the source lacks is added in the source's own style.** The tools add each
-  missing crafting station by the person who works it, the way Skyrim's towns do (the smith's forge, anvil,
-  grindstone, workbench, tanning rack and smelter as one yard outside the smithy; the alchemy lab with the
-  apothecary; the enchanter with the spell trader; the cooking pot at the inn), from the plugins whose style the
-  place already uses. Check each in the render (`stations.added`); move one with `draft.add` and `draft.roles`
+  missing crafting station by the person who works it, the way Skyrim's towns do (the smith's yard outside the
+  smithy; the alchemy lab with the apothecary; the enchanter with the spell trader; the cooking pot at the inn).
+  A station's base is one whose record carries the station's crafting keyword (what the game keys on), from the
+  plugins whose style the place already uses; where no non-Nordic base carries it, the vanilla working base, said
+  in its `why`. One piece doing two stations' work counts for both (Skyrim's forge is its anvil). The smith's yard
+  is laid as Riverwood's (the forge, the grindstone beside it, the workbench and tanning rack across the yard, each
+  facing it): the forge on the nearest clear ground to its worker with room for the yard, the rest in that layout
+  or the nearest clear ground round the forge within the worker's reach. Clear means: dry under its outline, its
+  body clear of every placed solid by true record box (on a road or a deck only by its edge), 256 units from any
+  door, off the streets. A station added indoors stands on the walked-in floor clear of the room's things. Check each in the render (`stations.added`); move one with `draft.add` and `draft.roles`
   when it stands wrong. Traders work where the source's own trader of that trade worked.
   A promised shrine blessing needs a thing to carry it: the source's own Hist or shrine, else the tools add a
   young Hist in the town's middle, clear of buildings and streets (`stations` `shrine`); look at it in the render.
@@ -95,7 +108,11 @@ building on a slope first takes the rise the source's own builders commonly buil
    bound, streets clear of buildings and open water, every door on a path, every promised service and station
    given and worked, a bed for every sleeper, an unowned bed to rent at the inn, guards out of the inn,
    every resident in one household under one roof, replaced pieces in the original's plane, nothing floating or buried
-   along its true outline beyond how it sat in the source, every door's arrival clear; and the build's own
+   along its true outline beyond how it sat in the source, every door's arrival clear, nothing standing in another
+   by the build's overlap rule (inside a room, nothing added in the room's things), every copied room entered
+   through a door pair both sides name with its outside arrival on our ground or a walkway a street reaches, and
+   every person's stops each reached from the one before (our ground and streets outside, the builder's room
+   island inside, the door pair between), each on walkable ground or a piece of furniture; and the build's own
    `build <place_id> --plan` when it exists. Its `measures` line gives
    the patched cells and points and the streets' length: keep the patches as near nothing as the land allows.
 2. Render again and look: does it read as the same town sitting naturally on our land? If not, go back to 2.

@@ -175,3 +175,10 @@ def align(old: dict, new: dict, turn_deg: float | None) -> dict | None:
     rn = turn(pn["centre"], math.radians(t))
     return {"turn_deg": t, "shift_local": [round(po["centre"][0] - rn[0], 1), round(po["centre"][1] - rn[1], 1)],
             "width_ratio": round(pn["width"] / po["width"], 2) if po["width"] else None}
+
+
+def underfoot(ref: dict, bases: dict, G) -> bool:
+    """A piece whose top lies under the ground or no more than a step above it where it stands (the source's sunk
+    filler blocks, a low platform one steps onto): walked over, no obstacle."""
+    h = G.height(ref["pos"][0], ref["pos"][1])
+    return h is not None and top(ref, bases) <= h + STEP

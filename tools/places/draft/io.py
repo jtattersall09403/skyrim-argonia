@@ -148,9 +148,20 @@ STYLE_ORDER = ["Black Marsh.esm", "Black Marsh North.esp", "King of the Murkmire
 _stations: dict | None = None
 
 
+# the keyword the game keys a crafting station on (the build's own map, tools/places/check.py CRAFT_KEYWORD)
+STATION_KEYWORD = {"forge": "CraftingSmithingForge", "anvil": "CraftingSmithingForge",
+                   "armour-workbench": "CraftingSmithingArmorTable", "grindstone": "CraftingSmithingSharpeningWheel",
+                   "smelter": "CraftingSmelter", "tanning-rack": "CraftingTanningRack", "alchemy-lab": "WICraftingAlchemy",
+                   "arcane-enchanter": "WICraftingEnchanting", "cooking-pot": "CraftingCookpot",
+                   "oven": "BYOHCraftingOven", "staff-enchanter": "DLC2StaffEnchanter"}
+
+
 def station_base(station: str, path: Path = CATALOGUE) -> dict | None:
-    """The working crafting furniture for a station kind, from the catalogue: non-Nordic, in the plugins whose style
-    our places use first (STYLE_ORDER), never a hidden, test or dungeon variant."""
+    """The working crafting furniture for a station kind, from the catalogue: a base whose record carries the
+    station's crafting keyword (what the game keys on; never chosen by name or look), non-Nordic, in the plugins whose
+    style our places use first (STYLE_ORDER), never a hidden, test or dungeon variant. When no such base carries the
+    keyword, the vanilla working base (Skyrim.esm), marked `fallback` with the reason: function wins, the look is the
+    owner's call in the studio."""
     global _stations
     if _stations is None:
         _stations = {}
@@ -159,10 +170,18 @@ def station_base(station: str, path: Path = CATALOGUE) -> dict | None:
                 for line in f:
                     if '"FURN"' in line:
                         r = json.loads(line)
-                        if r.get("type") == "FURN" and not r.get("nordic") and r.get("model") \
-                                and r.get("plugin") in STYLE_ORDER and not re.search(STATION_SKIP, r.get("edid") or ""):
+                        if r.get("type") == "FURN" and r.get("model") and r.get("plugin") in STYLE_ORDER \
+                                and not re.search(STATION_SKIP, r.get("edid") or ""):
                             for st, pat in STATION_EDID.items():
-                                if re.search(pat, r.get("edid") or "", re.I):
+                                kw = STATION_KEYWORD.get(st)
+                                if (re.search(pat, r.get("edid") or "", re.I) or (kw and kw in r.get("keywords", []))) \
+                                        and (not kw or kw in (r.get("keywords") or [])):
                                     _stations.setdefault(st, []).append(r)
     cands = _stations.get(station) or []
-    return min(cands, key=lambda r: (STYLE_ORDER.index(r["plugin"]), r["key"])) if cands else None
+    styled = [r for r in cands if not r.get("nordic")]
+    if styled:
+        return min(styled, key=lambda r: (STYLE_ORDER.index(r["plugin"]), r["key"]))
+    vanilla = sorted((r for r in cands if r["plugin"] == "Skyrim.esm"), key=lambda r: r["key"])
+    if not vanilla:
+        return None
+    return {**vanilla[0], "fallback": f"the vanilla working base: no non-Nordic base carries {STATION_KEYWORD[station]}"}

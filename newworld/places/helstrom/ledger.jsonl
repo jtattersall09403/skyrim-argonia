@@ -714,7 +714,7 @@
 {"src":"Black Marsh.esm:1CE941","space":"exterior","status":"dropped","cluster":"w48","why":"no water within 384 units of its fitted spot; our water and land are kept as they are"}
 {"src":"Black Marsh.esm:1CE942","space":"exterior","status":"adapted","as":"helstrom.EF98CMFYNZBEFNJND7NFDG4EH0","cluster":"b27"}
 {"src":"Black Marsh.esm:1CE943","space":"exterior","status":"placed","as":"helstrom.S7YGRW192YXS1Y37NRYZWRQMZP","cluster":"s20"}
-{"src":"Black Marsh.esm:1CE945","space":"exterior","status":"adapted","as":"helstrom.7EYBTVRERWEX0YPF19W087GT9Z","cluster":"b38"}
+{"src":"Black Marsh.esm:1CE945","space":"exterior","status":"dropped","why":"stood in Black Marsh.esm:1D9114 once the clusters were fitted, with no step of either cluster clear"}
 {"src":"Black Marsh.esm:1CE948","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1CE949","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
 {"src":"Black Marsh.esm:1CE94A","space":"exterior","status":"placed","as":"helstrom.67Q7CCRHB8GQWDEKT7GTF1FRXK","cluster":"s21"}
@@ -871,7 +871,7 @@
 {"src":"Black Marsh.esm:1D3CC8","space":"exterior","status":"adapted","as":"helstrom.39YP73PMRFFN5G74PZ7P00104K","cluster":"b19"}
 {"src":"Black Marsh.esm:1D3CC9","space":"exterior","status":"adapted","as":"helstrom.BT7HYYAKM3H35W9NV5ZDD6ADEW","cluster":"b19"}
 {"src":"Black Marsh.esm:1D3CCA","space":"exterior","status":"dropped","why":"wild plant of the source's land; our world's own plants stand here"}
-{"src":"Black Marsh.esm:1D3CCC","space":"exterior","status":"adapted","as":"helstrom.HNZ57ZW8PJPXDEZKGPCPN37D2S","cluster":"s25"}
+{"src":"Black Marsh.esm:1D3CCC","space":"exterior","status":"dropped","why":"stood in Black Marsh.esm:1D9110 once the clusters were fitted, with no step of either cluster clear"}
 {"src":"Black Marsh.esm:1D3CCE","space":"exterior","status":"adapted","as":"helstrom.6F28KHN3332DQ68EDN03D6H2ZM","cluster":"b20"}
 {"src":"Black Marsh.esm:1D3CCF","space":"exterior","status":"adapted","as":"helstrom.Y7WVG97B9GF2YG5DE2QVZYBVCS","cluster":"b21"}
 {"src":"Black Marsh.esm:1D3CD0","space":"exterior","status":"adapted","as":"helstrom.2WZ2T70CJH2HB0VQ8QJST97XFV","cluster":"b19"}
@@ -1168,7 +1168,7 @@
 {"src":"Black Marsh.esm:1D910C","space":"exterior","status":"adapted","as":"helstrom.PY4EM61BR0D9XX9VDFPCKFQXJ9","cluster":"s42"}
 {"src":"Black Marsh.esm:1D910D","space":"exterior","status":"adapted","as":"helstrom.2CNS8JHW7H6426B57Z6H0Q5R1V","cluster":"s43"}
 {"src":"Black Marsh.esm:1D910E","space":"exterior","status":"adapted","as":"helstrom.0X1PGJ61Y1T09C4KGRS1KPEKVQ","cluster":"b34"}
-{"src":"Black Marsh.esm:1D910F","space":"exterior","status":"adapted","as":"helstrom.CRTB9Q0H1SQ3MQFJVMH9F542B0","cluster":"s25"}
+{"src":"Black Marsh.esm:1D910F","space":"exterior","status":"dropped","why":"stood in Black Marsh.esm:1D9110 once the clusters were fitted, with no step of either cluster clear"}
 {"src":"Black Marsh.esm:1D9110","space":"exterior","status":"adapted","as":"helstrom.3MQW0VW2H713R7CKNR3RHM0KST","cluster":"s44"}
 {"src":"Black Marsh.esm:1D9111","space":"exterior","status":"adapted","as":"helstrom.ZRDZ6TS4FP4Y9A2CVQEW77HD9Z","cluster":"s45"}
 {"src":"Black Marsh.esm:1D9112","space":"exterior","status":"adapted","as":"helstrom.379Y3AN2G3QZSNW067WQBXNG9E","cluster":"b35"}
@@ -1180,7 +1180,7 @@
 {"src":"Black Marsh.esm:1D9118","space":"exterior","status":"adapted","as":"helstrom.GQD1A6RXYZP0ZEERXWA7X88FAQ","cluster":"s50"}
 {"src":"Black Marsh.esm:1D9119","space":"exterior","status":"adapted","as":"helstrom.0APZB0VVZ7G8AF9C63ZJVRWB5Z","cluster":"s51"}
 {"src":"Black Marsh.esm:1D911A","space":"exterior","status":"adapted","as":"helstrom.4SFCW5B57BP7Y9VZZ4WAEETBBF","cluster":"b37"}
-{"src":"Black Marsh.esm:1D911B","space":"exterior","status":"adapted","as":"helstrom.KTJ2JPTZ9ATQR1ET9BJ0ZAYCBT","cluster":"s52","nudge":64.0}
+{"src":"Black Marsh.esm:1D911B","space":"exterior","status":"adapted","as":"helstrom.KTJ2JPTZ9ATQR1ET9BJ0ZAYCBT","cluster":"s52"}
 {"src":"Black Marsh.esm:1D911C","space":"exterior","status":"adapted","as":"helstrom.53GNKJXB2342T560A9W2N51W0W","cluster":"s53"}
 {"src":"Black Marsh.esm:1D911D","space":"exterior","status":"adapted","as":"helstrom.YXSX9N7YDTFY6AY806VKRPGEY0","cluster":"s54"}
 {"src":"Black Marsh.esm:1D9120","space":"exterior","status":"adapted","as":"helstrom.N77C8SW1KCZADZEZ7N673NHY1G","cluster":"b38"}

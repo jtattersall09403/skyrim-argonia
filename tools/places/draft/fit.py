@@ -90,7 +90,8 @@ class Fit:
     def as_dict(self) -> dict:
         return {"pivot": [round(v, 1) for v in self.pivot], "anchor": [round(v, 1) for v in self.anchor],
                 "rot_deg": round(math.degrees(self.xf.rot) % 360, 2), "cost": round(self.cost, 3),
-                "clusters": {cid: {**self.per[cid].as_dict(), **self.local.get(cid, {})} for cid in sorted(self.per)}}
+                "clusters": {cid: {**self.per[cid].as_dict(), **self.local.get(cid, {})} for cid in sorted(self.per)},
+                "separated": getattr(self, "separated", [])}
 
 
 class Scorer:

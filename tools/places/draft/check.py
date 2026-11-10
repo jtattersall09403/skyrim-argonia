@@ -11,7 +11,7 @@ import json
 import math
 from pathlib import Path
 
-from tools.places.draft import geom, interiors, io, people
+from tools.places.draft import geom, interiors, io, overlap, people, reach
 from tools.places.draft import paths as paths_mod
 from tools.places.draft.geom import LEVELLED
 from tools.places.draft.fit import relief_allowed
@@ -97,16 +97,58 @@ def check(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, g
     for p in paths:
         ends.setdefault(p.get("from"), p["points"][0])
         ends.setdefault(p.get("to"), p["points"][-1])
+    reached = set()
     for d in doors:
         p = ends.get(d.get("src"))
         if p is None or dist_to_paths(p, paths) > DOOR_REACH:
             bad.append(f"door {d['id']} reached by no path")
+        else:
+            reached.add(d["id"])
     if not connected(paths):
         bad.append("the paths are not one network")
     for d in doors:
         sid = d["door"]["to_space"]
         if not (pdir / "spaces" / sid / "space.json").exists():
             bad.append(f"door {d['id']} leads to {sid}, which is not drafted")
+
+    # 5b. nothing stands inside another where the source did not have it so (the build's overlap rule)
+    hits = overlap.pairs(refs, bases)
+    summary["overlaps"] = len(hits)
+    for a, b in hits:
+        bad.append(f"{a['id']} ({a['kind']}{', added' if not a.get('src') else ''}) stands inside {b['id']} "
+                   f"({b['kind']}{', added' if not b.get('src') else ''})")
+
+    # 5b'. inside a room: what the draft added stands in none of the room's things (its shell and walls hold it)
+    for sdir in sorted((pdir / "spaces").iterdir()):
+        sj = sdir / "space.json"
+        if sdir.name == "exterior" or not sj.exists() or not (sdir / "refs.jsonl").exists():
+            continue
+        ov = io.read_jsonl(sdir / "refs.jsonl")
+        sjd = json.loads(sj.read_text())
+        copy_of = sjd["copy_of"].split("/", 1)[1]
+        by_s = {o.get("src"): o for o in ov if o.get("src")}
+        keep = interiors.kept(sjd["copy_of"], sjd.get("room"))
+        room = [by_s.get(r["id"], r) for r in src.spaces[copy_of].refs if keep is None or r["id"] in keep]
+        things = [t for t in room if t.get("kind") in overlap.SOLID - {"building", "static"}]
+        for a in (o for o in ov if not o.get("src") and o.get("kind") in overlap.SOLID):
+            for t in things:
+                if overlap.inside(a["pos"], t, bases) or overlap.inside(t["pos"], a, bases):
+                    bad.append(f"{a['id']} (added, {sdir.name}) and {t['id']} stand in each other")
+
+    # 5c. every person's day walkable: each stop reached from the one before, on walkable ground or furniture
+    spaces = {}
+    for sdir in sorted((pdir / "spaces").iterdir()):
+        if sdir.name != "exterior" and (sdir / "space.json").exists():
+            ov = io.read_jsonl(sdir / "refs.jsonl") if (sdir / "refs.jsonl").exists() else []
+            spaces[sdir.name] = {**json.loads((sdir / "space.json").read_text()),
+                                 "overrides": [{"id": i} for o in ov for i in (o["id"], o.get("src")) if i],
+                                 "doors": [o for o in ov if o.get("door")]}
+    arrivals = reach.arrival_faults(refs, spaces, bases, paths, G)
+    cut = {x.split()[1] for x in arrivals if x.startswith("door ")} | {
+        spaces[x.split()[1]].get("door_from") for x in arrivals if x.startswith("room ")}
+    unreached = reach.check(folk, refs, spaces, bases, paths, G, lambda d: d in reached and d not in cut)
+    summary["unreachable_stops"] = len(unreached)
+    bad += arrivals + unreached
 
     # 6. services, beds, people
     given = {(g["seq"]) for p in folk for g in p.get("services") or []}
@@ -200,7 +242,8 @@ def check(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, g
     # 9. streets: never through a building, never over open water without a walkway
     walk = [r for r in refs if paths_mod.WALKWAY.search(str((bases.get(r["base"]) or {}).get("model", "")))
             or "street" in str(r.get("why", ""))]
-    solid_b = [r for r in refs if r.get("kind") == "building" and r not in walk and r["seat"].get("foot")]
+    solid_b = [r for r in refs if r.get("kind") == "building" and r not in walk and r["seat"].get("foot")
+               and not geom.underfoot(r, bases, G)]
     total = 0.0
     for p in paths:
         pts = p["points"]

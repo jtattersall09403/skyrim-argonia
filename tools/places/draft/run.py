@@ -22,14 +22,14 @@ import re
 from pathlib import Path
 
 from tools.places.draft import clear as clearmod
-from tools.places.draft import geom, interiors, io, people, seating
+from tools.places.draft import geom, interiors, io, overlap, people, seating
 from tools.places.draft import paths as paths_mod
 from tools.places.draft.geom import LEVELLED
 from tools.places.draft.cluster import VEG, decompose
 from tools.places.draft.fit import Scorer, global_fit, local_fit, patch_for, patch_verts, relief_norm
 from tools.places.draft.fit import _pivot as fit_pivot
 from tools.places.draft.paths import PATH_WIDTH, STREET_WIDTH, NavGraph, network, simplify
-from tools.places.seat import Ground, foot_box, model_bounds, foot_points, foot_relief, seat_all
+from tools.places.seat import Ground, foot_box, model_bounds, foot_points, foot_relief, seat_all, seat_z
 
 UNITS_PER_M = 70.0
 STREET_SLOPE_MIN, STREET_SLOPE_MAX = 15.0, 35.0   # degrees: our streets climb no steeper than the source's did
@@ -96,6 +96,10 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
     ledger: list[dict] = []
     replace = io.nordic_replace(dec, bases)
     drop = dec.get("drop") or {}
+    # no cluster's piece in another's: the smaller cluster steps clear
+    fit.separated = overlap.separate(sc, fit, clusters, by_src, bases,
+                                     lambda r: (replace.get(r["base"]) or {}).get("base", r["base"]))
+    gave_way = {m["drop"]: m["why"] for m in fit.separated if "drop" in m}
     our: list[dict] = []
     our_id: dict[str, str] = {}
     for r in sorted(ext, key=lambda r: r["id"]):
@@ -106,6 +110,8 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
         why = None
         if rid in drop:
             why = drop[rid]
+        elif rid in gave_way:
+            why = gave_way[rid]
         elif r.get("kind") == "water":
             why = "the source's water plane; our world's water stands here"
         elif rid in wild:
@@ -144,6 +150,15 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
                 row[k] = r[k]
         if al:
             row["align"] = {"turn_deg": al["turn_deg"], "shift": [round(sx, 1), round(sy, 1)], "of": r["base"]}
+        if rep and paths_mod.WALKWAY.search(str(b.get("model", ""))):
+            # a replaced walkway keeps the original's walking height: its top where the original's top was (a
+            # door or a deck that met the original's top still meets it)
+            ob, nb = model_bounds(b), model_bounds(bases.get(rep["base"]) or {})
+            if ob and nb:
+                lift = (ob[1][2] - nb[1][2]) * float(r.get("scale") or 1.0)
+                if abs(lift) > 1:
+                    row["seat"] = dict(row["seat"], dz=round(float(row["seat"].get("dz", 0.0)) + lift, 2))
+                    row["pos"][2] = round(row["pos"][2] + lift, 2)
         our_id[rid] = row["id"]
         our.append(row)
         loc = fit.local.get(cid, {})
@@ -376,6 +391,30 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
                   for t in (k * math.pi / 8 for k in range(16)) if not G.wet(q[0] + r * math.cos(t), q[1] + r * math.sin(t), 16)), q)
         nodes_our["landing"] = q
 
+    # a camp (beds in the open: the guards' tents) is a stop of its sleepers' day like a door: a street reaches its
+    # edge, the first point out of its tents from its bed nearest the town
+    src_solid = [r for r in ext if r.get("kind") == "building" and geom.foot(r, bases)]
+    camps: dict[str, dict] = {}
+    for r in ext:
+        if r.get("kind") == "furniture" and r["id"] in our_row_of_src and r["id"] in of \
+                and interiors.is_bed(bases.get(r.get("base")) or {}):
+            cur = camps.get(of[r["id"]])
+            if cur is None or (geom.dist(r["pos"], pivot), r["id"]) < (geom.dist(cur["pos"], pivot), cur["id"]):
+                camps[of[r["id"]]] = r
+    for cid, bed in sorted(camps.items()):
+        d = geom.dist(bed["pos"], pivot) or 1.0
+        ux, uy = (pivot[0] - bed["pos"][0]) / d, (pivot[1] - bed["pos"][1]) / d
+        edge = None
+        for k in range(1, int(min(d, 2048) // 64)):
+            p = (bed["pos"][0] + ux * 64 * k, bed["pos"][1] + uy * 64 * k)
+            if not S.wet(*p) and not any(geom.contains_xy(o, bases, p[0], p[1], 64) for o in src_solid
+                                         if geom.dist(o["pos"], p) < 2048):
+                edge = p
+                break
+        if edge:
+            nodes_src[f"camp.{cid}"] = edge
+            nodes_our[f"camp.{cid}"] = to_ours(bed["id"], edge)
+
     # the source's streets: its painted roads, its walkways, its navmesh's preferred paths
     paint = paths_mod.road_points(src.exterior.path)
     paint_grid = {(round(x / 128), round(y / 128)) for x, y in paint}
@@ -395,7 +434,7 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
     blocked_cells: set = set()
     for r in our:
         f = geom.foot(r, bases)
-        if r.get("kind") == "building" and f and r not in walk_our:
+        if r.get("kind") == "building" and f and r not in walk_our and not geom.underfoot(r, bases, G):
             rad = geom.reach(r, bases)
             for i in range(round((r["pos"][0] - rad - 80) / 128), round((r["pos"][0] + rad + 80) / 128) + 1):
                 for j in range(round((r["pos"][1] - rad - 80) / 128), round((r["pos"][1] + rad + 80) / 128) + 1):
@@ -421,27 +460,78 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
         walk_base = max(sorted(counts), key=lambda kb: counts[kb]) if counts else None
 
     def bridge_over(route, k) -> list[dict]:
-        """Walkway pieces end to end over each wet stretch of a route, along it, standing on stilts."""
+        """Walkway pieces end to end over each wet stretch of a route, walked along it by length (one piece per piece
+        length, never one per route step), standing on stilts; a piece that would stand in or round a solid already
+        there (a dock, a pier) is left out: that solid carries the street there."""
         if not walk_base:
             return []
         b = model_bounds(bases[walk_base])
         length = max(64.0, b[1][1] - b[0][1] - 16)
+        foot = geom.foot({"base": walk_base, "kind": "building"}, bases)
+        # the route by length, and its wet runs
+        cum = [0.0]
+        for p, q in zip(route, route[1:]):
+            cum.append(cum[-1] + geom.dist(p, q))
+
+        def at(d):
+            d = max(0.0, min(cum[-1], d))
+            for i in range(1, len(cum)):
+                if cum[i] >= d:
+                    t = (d - cum[i - 1]) / ((cum[i] - cum[i - 1]) or 1.0)
+                    p, q = route[i - 1], route[i]
+                    return (p[0] + (q[0] - p[0]) * t, p[1] + (q[1] - p[1]) * t)
+            return tuple(route[-1][:2])
+        step = 32.0
+        runs, start = [], None
+        n_s = int(cum[-1] // step) + 1
+        for i in range(n_s + 1):
+            d = min(i * step, cum[-1])
+            w = G.wet(*at(d), 8)
+            if w and start is None:
+                start = d
+            if (not w or i == n_s) and start is not None:
+                runs.append((start, d))
+                start = None
+        joined: list[tuple[float, float]] = []
+        for d0, d1 in runs:   # a dry blink shorter than half a piece is still the one crossing
+            if joined and d0 - joined[-1][1] < length / 2:
+                joined[-1] = (joined[-1][0], d1)
+            else:
+                joined.append((d0, d1))
         out = []
-        for i, (p, q) in enumerate(zip(route, route[1:])):
-            seg = geom.dist(p, q)
-            n = max(1, int(seg // length) + 1)
-            yaw = math.atan2(q[0] - p[0], q[1] - p[1]) % (2 * math.pi)
+        for ri, (d0, d1) in enumerate(joined):
+            n = max(1, math.ceil((d1 - d0) / length))
             for j in range(n):
-                x = p[0] + (q[0] - p[0]) * (j + 0.5) / n
-                y = p[1] + (q[1] - p[1]) * (j + 0.5) / n
-                if not G.wet(x, y, 8):
+                m0 = d0 + (d1 - d0) * (j + 0.5) / n
+                row = None
+                # slid along the route (never off it) until it stands clear of every solid there
+                for slide in [0.0] + [sgn * k * 32.0 for k in range(1, int(length // 64) + 1) for sgn in (1, -1)]:
+                    m = m0 + slide
+                    p, q = at(m - length / 2), at(m + length / 2)
+                    x, y = at(m)
+                    yaw = math.atan2(q[0] - p[0], q[1] - p[1]) % (2 * math.pi)
+                    cand = {"id": io.mint(place_id, "bridge", str(k), str(ri), str(j)), "base": walk_base,
+                            "kind": "building", "pos": [round(x, 2), round(y, 2), 0.0],
+                            "rot": [0.0, 0.0, round(yaw, 5)], "scale": 1.0, "layer": "place", "flags": [],
+                            "src": None, "seat": {"mode": "stilts", "dz": 0.0, "foot": foot},
+                            "why": f"carries street {k + 1:02d} over our water, which parts what the source's land "
+                                   f"joined"}
+                    near = [o for o in our + bridges + out if o.get("kind") in overlap.SOLID
+                            and geom.dist(o["pos"], cand["pos"]) < length * 2 + 2048]
+                    cand["pos"][2] = seat_z(cand, G)    # by height too: a deck over a drowned mound is clear of it
+                    under = [o for o in near if overlap.inside(cand["pos"], o, bases)]
+                    lift = max((o["pos"][2] + overlap.box(o, bases)[1][2] + 2 - cand["pos"][2] for o in under),
+                               default=0.0)
+                    if 0 < lift <= DECK_LIFT:   # a deck lifted a hand's breadth over a low thing just under it
+                        cand["seat"]["dz"] = round(lift, 1)
+                        cand["pos"][2] = seat_z(cand, G)
+                    if not any(overlap.inside(cand["pos"], o, bases) or overlap.inside(o["pos"], cand, bases)
+                               for o in near):
+                        row = cand
+                        break
+                if row is None:
                     continue
-                out.append({"id": io.mint(place_id, "bridge", str(k), str(i), str(j)), "base": walk_base,
-                            "kind": "building", "pos": [round(x, 2), round(y, 2), 0.0], "rot": [0.0, 0.0, round(yaw, 5)],
-                            "scale": 1.0, "layer": "place", "flags": [], "src": None,
-                            "seat": {"mode": "stilts", "dz": 0.0, "foot": geom.foot({"base": walk_base,
-                                                                                    "kind": "building"}, bases)},
-                            "why": f"carries street {k + 1:02d} over our water, which parts what the source's land joined"})
+                out.append(row)
         return out
 
     # a door that opens onto the water (on a ship or a pier) is reached over the source's own walkways from the
@@ -651,6 +741,118 @@ def add_shrine(place_id, gives, our, bases, stations, centre, paths_our, G) -> N
     stations["missing"].append("shrine")
 
 
+# A smith's yard as Bethesda lays one (Riverwood's, Skyrim.esm, measured in the forge's own frame: x right, y
+# ahead, yaw relative to the forge's): the grindstone beside the forge, the workbench and the tanning rack across the
+# yard behind it, each turned to face the yard where its user stands.
+YARD = {"grindstone": (3.0, -179.0, 296.0), "armour-workbench": (-354.0, 91.0, 162.0),
+        "tanning-rack": (-204.0, -103.0, 251.0)}
+DECK_LIFT = 24.0         # the most a bridge deck is lifted over a drowned thing under it
+FLOOR = re.compile(r"road|dock|boardwalk|walkway|pier|jetty", re.I)
+YARD_PAD = 24.0          # the least gap between two placed bodies
+DOOR_CLEAR = 256.0       # no station within this of a door
+YARD_RINGS = (224.0, 320.0, 448.0, 576.0, 704.0, 896.0, 1152.0, 1408.0)
+
+
+def _station_row(place_id, st, b, x, y, yaw, owner) -> dict:
+    why = f"{st}: promised by the place record ({owner['role']}'s work), lacking in the source"
+    return {"id": io.mint(place_id, "station", st), "base": b["key"], "kind": "furniture",
+            "pos": [round(x, 2), round(y, 2), 0.0], "rot": [0.0, 0.0, round(yaw % (2 * math.pi), 5)],
+            "scale": 1.0, "layer": "place", "flags": [], "src": None, "seat": {"mode": "ground", "dz": 0.0},
+            "why": why + (f" ({b['fallback']})" if b.get("fallback") else "")}
+
+
+def _floor(o: dict, bases: dict) -> bool:
+    """A piece one walks on (a road, a deck, a pier): a station may stand on it, as on the ground."""
+    b = overlap.box(o, bases)
+    m = str((bases.get(o.get("base")) or {}).get("model", ""))
+    return bool(b) and (FLOOR.search(m) is not None or b[1][2] <= geom.STEP)
+
+
+def yard_clear(row, near, doors, paths_our, G, bases, mine=()) -> bool:
+    """A station stands clear: on dry ground at its corners, its body clear of every placed solid (and of the
+    yard's other pieces) by true record box, clear of doors and of the streets."""
+    f = geom.foot(row, bases, 0.0) or [-32.0, -32.0, 32.0, 32.0]
+    pts = foot_points(row["pos"][0], row["pos"][1], row["rot"][2], f, 3)
+    for x, y in pts:
+        if not G.has(x, y) or G.wet(x, y, 8):
+            return False
+    for o in list(near) + list(mine):
+        if _floor(o, bases):   # on a road or a deck by its edge only, never with its origin in it (the build's rule)
+            if overlap.inside(row["pos"], o, bases, z=False, pad=32.0) or overlap.inside(o["pos"], row, bases, z=False):
+                return False
+        elif overlap.foot_hits(row, o, bases, YARD_PAD / 2):
+            return False
+    if any(geom.dist(row["pos"], d["pos"]) < DOOR_CLEAR for d in doors):
+        return False
+    return all(paths_mod.dist_to_paths(q, paths_our) > 16 for q in pts + [tuple(row["pos"][:2])])
+
+
+def yard_place(place_id, st, b, bases, our, paths_our, G, c, found, owner, added) -> dict | None:
+    """Where an added station stands: the forge on clear ground near its worker with room for the yard about it;
+    the yard's pieces in Riverwood's layout round the forge; any other station on the nearest clear ground round
+    the yard (or round its worker), facing it. Seated on the ground with its true footprint."""
+    forge = next((r for r in our if r["id"] in (found.get("forge") or [])), None) \
+        if people.STATION_OWNER.get(st) == "smith" else None
+    near = [o for o in our if o.get("kind") in overlap.SOLID
+            and geom.dist(o["pos"], forge["pos"] if forge is not None else c) < 4096]
+    doors = [o for o in our if o.get("door")]
+    mine = [r for r in our if r["id"] in {a["id"] for a in added}]
+    if st == "forge" or (st in YARD and forge is not None):
+        if st == "forge":
+            fb = b
+            others = [(k, io.station_base(k)) for k in YARD]
+            for _, kb in others:
+                if kb is not None:
+                    bases.setdefault(kb["key"], kb)
+            for whole in (True, False):   # the whole yard round it, else the forge alone where it fits
+                for ring in YARD_RINGS:
+                    for j in range(16):
+                        t = j * math.pi / 8
+                        qx, qy = c[0] + ring * math.sin(t), c[1] + ring * math.cos(t)
+                        for turn in range(8):
+                            yaw = t + math.pi + turn * math.pi / 4      # facing back towards its worker first
+                            f = _station_row(place_id, st, fb, qx, qy, yaw, owner)
+                            if not yard_clear(f, near, doors, paths_our, G, bases, mine):
+                                continue
+                            # room for the rest of the yard in its layout
+                            ok = True
+                            for k, kb in (others if whole else []):
+                                if kb is None:
+                                    continue
+                                u, v, dyaw = YARD[k]
+                                dx, dy = geom.turn((u, v), yaw)
+                                o = _station_row(place_id, k, kb, qx + dx, qy + dy, yaw + math.radians(dyaw), owner)
+                                if not yard_clear(o, near, doors, paths_our, G, bases, mine + [f]):
+                                    ok = False
+                                    break
+                            if ok:
+                                return _seat_foot(f, bases)
+            return None
+        u, v, dyaw = YARD[st]
+        dx, dy = geom.turn((u, v), forge["rot"][2])
+        row = _station_row(place_id, st, b, forge["pos"][0] + dx, forge["pos"][1] + dy,
+                           forge["rot"][2] + math.radians(dyaw), owner)
+        if yard_clear(row, near, doors, paths_our, G, bases, mine):
+            return _seat_foot(row, bases)
+    about = forge["pos"] if forge is not None else c
+    for ring in ((160.0,) + YARD_RINGS[:4] + (640.0,) if forge is not None else YARD_RINGS):   # in the worker's reach
+        for j in range(24):
+            t = j * math.pi / 12
+            qx, qy = about[0] + ring * math.sin(t), about[1] + ring * math.cos(t)
+            for turn in (0.0, math.pi / 2, -math.pi / 2, math.pi):     # facing the yard first
+                row = _station_row(place_id, st, b, qx, qy, t + math.pi + turn, owner)
+                if yard_clear(row, near, doors, paths_our, G, bases, mine):
+                    return _seat_foot(row, bases)
+    return None
+
+
+def _seat_foot(row: dict, bases: dict) -> dict:
+    f = geom.foot({"base": row["base"], "kind": "furniture"}, bases)
+    if f:
+        row["seat"]["foot"] = f
+    return row
+
+
 def draft_people(place_id, rec, gives, src, bases, our, spaces, clusters, fit, of, nodes_our, paths_our, dec, ledger, G):
     roles_override = dec.get("roles") or {}
     # beds of each copy
@@ -695,7 +897,7 @@ def draft_people(place_id, rec, gives, src, bases, our, spaces, clusters, fit, o
     centre = fit.xf.to
     town = {"space": "exterior", "pos": [round(centre[0], 1), round(centre[1], 1)], "radius": 1024}
     door_fronts = sorted(nodes_our.items(), key=lambda kv: kv[0])
-    building_doors = [(k, v) for k, v in door_fronts if k != "landing"]
+    building_doors = [(k, v) for k, v in door_fronts if k != "landing" and not k.startswith("camp.")]
     used_fronts: set[str] = set()
     stations_need = sorted({g["give_kind_id"] for g in gives if g["give_kind_id"] in people.STATIONS})
     found: dict[str, list[str]] = {}
@@ -823,7 +1025,7 @@ def draft_people(place_id, rec, gives, src, bases, our, spaces, clusters, fit, o
     # Skyrim's towns set them (town-life.md): the smith's yard, the apothecary's lab, the enchanter with the spell
     # trader, the cooking pot at the inn
     added = []
-    for st in stations_need:
+    for st in sorted(stations_need, key=lambda x: (x != "forge", x)):   # the forge first: the yard is laid round it
         role = people.STATION_OWNER.get(st)
         owner = next((p for p in folk if p["role"] == role), None) or next((p for p in folk if p["role"] != "guard"), None)
         if owner is None:
@@ -832,6 +1034,12 @@ def draft_people(place_id, rec, gives, src, bases, our, spaces, clusters, fit, o
         used = [i for i in found[st] if station_used(i, w)]
         if used:
             continue
+        same = next((o for o in stations_need if o != st and found.get(o) and io.STATION_KEYWORD.get(o)
+                     and io.STATION_KEYWORD.get(o) == io.STATION_KEYWORD.get(st)
+                     and any(station_used(i, w) for i in found[o])), None)
+        if same:   # one piece already does this work (Skyrim's forge is its anvil too)
+            found[st] = list(found[same])
+            continue
         b = io.station_base(st)
         if b is None:
             continue
@@ -839,27 +1047,9 @@ def draft_people(place_id, rec, gives, src, bases, our, spaces, clusters, fit, o
         k = sum(1 for a in added if a["by"] == owner["id"])
         if w.get("space", "exterior") == "exterior":
             c = w.get("pos") or next(r["pos"] for r in our if r["id"] == w.get("ref"))
-            spot = None
-            for ring in (224.0, 320.0, 416.0, 512.0, 640.0, 768.0, 1024.0, 1280.0, 1536.0):
-                for j in range(12):
-                    t = (k * 2 + j) * math.pi / 6
-                    q = (c[0] + ring * math.sin(t), c[1] + ring * math.cos(t))
-                    if G.has(*q) and not G.wet(q[0], q[1], 16) and not any(
-                            r.get("kind") == "building" and geom.contains_xy(r, bases, q[0], q[1], 48) for r in our):
-                        spot = (q, t)
-                        break
-                if spot:
-                    break
-            if spot is None:
+            row = yard_place(place_id, st, b, bases, our, paths_our, G, c, found, owner, added)
+            if row is None:
                 continue
-            (qx, qy), t = spot
-            row = {"id": io.mint(place_id, "station", st), "base": b["key"], "kind": "furniture",
-                   "pos": [round(qx, 2), round(qy, 2), 0.0], "rot": [0.0, 0.0, round((t + math.pi) % (2 * math.pi), 5)],
-                   "scale": 1.0, "layer": "place", "flags": [], "src": None,
-                   "seat": {"mode": "ground", "dz": 0.0, **({"foot": geom.foot({"base": b["key"], "kind": "furniture"},
-                                                                                bases)} if geom.foot(
-                       {"base": b["key"], "kind": "furniture"}, bases) else {})},
-                   "why": f"{st}: promised by the place record ({owner['role']}'s work), lacking in the source"}
             our.append(row)
             space = "exterior"
         else:
@@ -884,6 +1074,19 @@ def draft_people(place_id, rec, gives, src, bases, our, spaces, clusters, fit, o
                    "pos": [round(cx_, 2), round(cy_, 2), round(cz_, 2)], "rot": [0.0, 0.0, 0.0],
                    "scale": 1.0, "layer": "place", "flags": [], "src": None, "seat": {"mode": "free"},
                    "why": f"{st}: promised by the place record ({owner['role']}'s work), lacking in the source"}
+            if b.get("fallback"):
+                row["why"] += f" ({b['fallback']})"
+            # clear of the room's things by the build's rule (its shell and walls hold the room): the nearest spot
+            ov_src = {o.get("src"): o for o in sp["overrides"] if o.get("src")}
+            things = [ov_src.get(r_["id"], r_) for r_ in src_refs] + [o for o in sp["overrides"] if not o.get("src")]
+            things = [t for t in things if t.get("kind") in overlap.SOLID - {"building", "static"}
+                      and geom.dist(t["pos"], row["pos"]) < 1024]
+            x0, y0 = row["pos"][0], row["pos"][1]
+            for dx_, dy_ in [(0.0, 0.0)] + list(overlap.SHIFTS):
+                row["pos"][0], row["pos"][1] = round(x0 + dx_, 2), round(y0 + dy_, 2)
+                if not any(overlap.inside(row["pos"], t, bases, z=False, pad=16) or overlap.inside(t["pos"], row, bases, z=False, pad=16)
+                           for t in things):
+                    break
             sp["overrides"].append(row)
         if space == "exterior" and (st == "forge" or not station_used(row["id"], w)):
             # the worker's stop is the station (the forge for a smith; a lab that had to stand further off)
