@@ -20,7 +20,8 @@ world ESM ─────extract──▶ ground bundle ──┼─draft──�
 | Assets | `tools/places/assets` | Mesh and texture conversion for the browser, on demand, cached; the asset catalogue |
 | Search | `tools/places/search` | Embedding index over the catalogue |
 | Draft | `tools/places/draft`, skill `place-build` | Source bundle + our ground → place files |
-| Build | `tools/ArgoniaPlaces/Build` (C#, Mutagen), `python -m tools.places build` | Place files → `out/places/plugin/ArgoniaNWPlaces.esp`, navmesh, checks |
+| Stock | `tools/places/stock`, `tools/newworld/stockdb.py`, skill `place-stock` | The split, the derive; people, goods and contents as database sources (Stock, below) |
+| Build | `tools/ArgoniaPlaces/Build` (C#, Mutagen), `python -m tools.places build` | Place files and the database's stock → `out/places/plugin/ArgoniaNWPlaces.esp`, navmesh, checks |
 | Studio | `tools/places/studio` (server, Python), `tools/places/studio/web` (front end) | The owner's editor |
 | Finalise | `python -m tools.places finalise`, skill `place-lessons` | Edits → place files → build → lessons → report |
 
@@ -189,14 +190,9 @@ people.jsonl           one person per line: {id, name, base_from, role, home, be
                        patrol stop's route is `patrol`). services: [{kind | give_kind_id, detail, skill?, level?,
                        room_bed?}]; faction_ranks: [{faction: a form key or <place_id>.<name>, rank}]. Any other
                        shape is a problem `build --plan` lists, never a crash
-identities.jsonl       the people's light identities, one row per person id of people.jsonl: {id, name, household:
-                       {id, role: head|partner|elder|sibling|grown child|cousin|lodger|levy}, trade, wealth: W1..W5,
-                       backstory (one or two sentences), cites: [a repo path | place_note:<place>/<aspect> |
-                       place_give:<place>/<seq> | culture:<id> | region:<id>]}. Written by an agent from the lore and
-                       the place record; the drafter writes each row's name onto its person (a person without a row
-                       keeps the drafter's placeholder). `python -m tools.places identities check <place>` proves it:
-                       a row per person, names unique and by the naming rules, a household under one roof with one
-                       head and the drafter's head and partner, guards in the levy, every cite existing
+                       Who each person is (name, household, trade, wealth, notes) is not placement: it lives in the
+                       database's people source under the same id (Stock, below); the drafter writes each person's
+                       name from it onto this row
 ledger.jsonl           one row per source ref: {src, space, status: placed|adapted|replaced|dropped, as?, why?,
                        cluster?, patch?}; every source ref has one
 edits/<save_id>.json   a studio save (below); finalised saves stay here as the lessons' evidence
@@ -237,6 +233,142 @@ cell overrides only its own way out and removes the other rooms' ways out that f
 Seating is data, never baked: `pos[2]` is what the last seating wrote, and `python -m tools.places seat` rewrites
 it from `seat` and the ground bundle. A ground rebuild is followed by `seat`, `build`, nothing else.
 
+## Stock: people, goods and what a place holds
+
+Building a place includes what is in it (nw-03, Stocking). Nothing is random and nothing is levelled (decision 0035).
+Set dressing (food, crockery, cheap clutter, furniture) stays as the source has it. Everything significant is
+authored, each thing with its reason; what the source held of that kind is taken out. The skill is `place-stock`,
+run after `place-build`.
+
+**Where each fact lives.** World facts live in the new world's database, built from source files the way places and
+regions are. Placement lives in the place files. Each fact has one home:
+
+| Fact | Its home (source of truth) | Tables |
+|---|---|---|
+| The scale: tiers, materials, gold, locks, security, effort, wealth bands, budgets, traders' gold, the split | `newworld/sources/stock/scale.json` | `stock_tier`, `tier_material`, `tier_item`, `lock_level`, `security_level`, `effort_level`, `place_wealth_band`, `person_wealth_band`, `container_kind`, `item_kind`, `never_material` |
+| A place's wealth: derived figure, band, ceiling, reason, the owner's overrule | `newworld/sources/stock/place_wealth.json` (`python3 -m tools.newworld.wealth derive` rewrites the derived part; `owner` is kept) | `place_wealth` |
+| The item forms stocking names | `newworld/sources/stock/items.json` (generated: `python3 -m tools.newworld.stockdb items`) | `item` |
+| Goods, and what each place makes, trades and needs | `newworld/sources/stock/goods.json`; a place's own in its stock source `goods` | `good`, `good_material`, `place_good` |
+| Who each person is: name, sex, race, culture, household, role, trade, wealth, level, status, notes, ties, factions | `newworld/sources/people/<place_id>.json` (lookups in `people/lookups.json`) | `race`, `person_role`, `household_role`, `relation_kind`, `household`, `person`, `person_note`, `person_note_source`, `person_relation`, `person_faction` |
+| What holds what: containers, loose things, possessions, traders' lists; the deliveries stocking owns | `newworld/sources/stock/places/<place_id>.json` | `stock_container`, `stock_container_item`, `stock_container_source`, `stock_loose`, `person_item`, `trader`, `trader_item`, `trader_source`, `give_delivery` |
+| The exceptional: uniques and every T6 thing, counted game-wide | `newworld/sources/stock/unique.json` | `unique_item` |
+| Where a person sleeps, works and walks; the refs, rooms, stations | the place files (`people.jsonl`, `spaces/`, `place.json`) | none: the build reads them |
+
+`python3 -m tools.newworld.build_db` loads everything. `python3 -m tools.newworld.stockdb load` rewrites these tables
+alone from their sources (a whole build needs the map's extraction). `newworld/story/data/schema.sql` describes every
+column. A person id and a ref id are the place files' own (`<place_id>.<ulid>`, or a copied room's source key), so a
+row in the database and a row in the place files name the same thing. A person's `role` is held in both: the
+people source owns it, and `people.jsonl` carries the drafter's copy, which `identities check` proves equal.
+
+**The people source** `newworld/sources/people/<place_id>.json`: `{place_id, households: [{id, home_space, name}],
+people: [{id, name, sex, race (RACE editor id), culture_id, household: {id, role}, role, trade, wealth: W1..W5, level
+(fixed, or null until set), status: alive|dead|missing, tier (statement tier), notes: [{aspect: backstory|personality|
+secrets|relationships, text, tier, cites: [...]}], relations: [{to, kind}], factions: [{faction, rank}]}]}`. A cite
+is a repo path or a database row: `place_note:<place>/<aspect>`, `place_give:<place>/<seq>`, `culture:<id>`,
+`region:<id>`; each becomes a `source` row (`cite-...`). `python -m tools.places identities check <place>` proves a
+person per placed person, names unique and by the naming rules, one household per roof with one head, guards in the
+levy, every cite existing, and roles equal to `people.jsonl`'s. `tools.places.identities.read` gives the drafter
+each person's name.
+
+**The stock source** `newworld/sources/stock/places/<place_id>.json`:
+
+```
+{place_id,
+ goods:       [{good, relation: makes|trades|needs, why, tier, cites}],
+ containers:  [{ref, space, kind (container_kind), owner_person? | owner_household? | owner_faction?, lock? (lock_level),
+                security (S0..S5), effort? (E0..E4, wild ground), tier (T1..T6), gold, items: [{item, count, why}],
+                why, cites}],
+ loose:       [{id (<place_id>.<ulid>, minted once), space, on? (the ref it lies on) | pos: [x, y, z], item, count,
+                owner_person? | owner_faction?, effort?, why}],
+ possessions: [{person, items: [{item, count, worn, why}], why}],
+ traders:     [{person, give_seq, gold, items: [{item, count, why}], why, cites}],
+ deliveries:  [{give_seq, by: person|container|loose|ref|record, person? | ref?, status: delivered|open|dropped, why}]}
+```
+
+`item` is an item id, `"<plugin>:<6 hex>"` (an `item` row: run `stockdb items` after naming a new one). At most one
+owner per holder. `respawn` is never stored: an authored container never respawns, and a trader's merchant chest
+restocks every 48 hours to exactly its list (vanilla's own timing; the list is fixed and nothing in it is levelled).
+`deliveries` holds only what stocking owns (loot, a treasure, a record edit); the loader adds the rest:
+a person whose `people.jsonl` services name the give, a station of `place.json` `stations.found`, the world file's
+map marker for `fast-travel`. Anything else stays `open`. `python3 -m tools.newworld.stockdb promises <place>` lists
+each promise and what delivers it, and exits 1 while any is open. A promise is dropped only by editing the place
+record, with the reason (`status: dropped`, `why` naming the edit), never to avoid the work.
+
+**The scale** (`scale.json`, with its reasons): one fixed ladder T1 Common .. T5 Precious, and T6 Exceptional, which
+only the ledger holds. Each tier names its weapon and armour materials, enchantment grade, soul gem, gems, jewellery,
+potion grade, gold range, lock and the most its container may hold (`value_max`). The tiers are checked against
+vanilla's level gates (`docs/research/skyrim/stocking-yields.md`). How a place's band is set:
+- Wild ground: the danger band sets the tier (`danger_tier`: D1 T1 .. D5 T5). The hardest spot holds the band's
+  tier and the way to it the tier below (`effort`).
+- A peopled place: its wealth (`place_wealth`) sets a ceiling (P1 T1 .. P5 T5, never below its ground's tier).
+  What lies open is T1. Each tier above the open tier needs one more step of `security`, and a container's lock is
+  its best tier's `lock`.
+- A person: their wealth band W1..W5 sets the gold they carry and keep, their clothes, their jewellery and their best
+  tier (W5 reaches the place's ceiling).
+- An owner sets a container: a person or household by their band, a faction (guard, town, temple) by the place's
+  band, nobody by the ground.
+- Provenance: a thing made here (the place `makes` a good whose `good_material` covers it) is common and costs its
+  value. Carried in, it costs `cost` times its value against the holder's budget and comes in `count` times the
+  number, by road distance to the nearest maker or import gate.
+- Budget: a container's significant things together stay within its tier's `value_max` times its owner's share.
+- Never: a `never_material` or a Skyrim-only kit (decision 0006).
+
+**The split.** `python -m tools.places stock classify <place>` sorts every container, loose item and person's item
+of the draft bundle into set dressing or significant, from record data only (scale.json `split`), and prints what it
+catches before anything is taken out. A container is significant when its kind always is (chest, strongbox, safe,
+corpse, boss or merchant chest), when it is locked, or when it holds a significant thing. A container's and a
+person's levelled contents are read at level 1, as the build flattens them.
+
+**The derive.** `python -m tools.places stock derive <place> --to <path>` writes a first stock source with a reason
+on every row: a store per household (its best-kept container) by the head's band and the household's size, a
+body's few things, each person's tool or weapon, the levy's gear, jewellery and carried gold by band, each trader's
+gold and a list from T1 to the ceiling within the band's list value. It also writes what is taken out and what it
+leaves open. The skill reads it, corrects it and completes it by hand into the stock source.
+
+**What the build makes of it** (`tools/places/build.py`, lane S2):
+1. A `stock_container` row: the placed ref's base becomes a container of ours holding exactly the row's items and
+   gold, never respawning. The ref gets the row's lock (XLOC at the `lock_level`, no key unless the row's items carry
+   it) and its owner: the person's actor, a household faction of ours (every member at rank 0, `<household_id>`), or
+   the named faction. A significant container of the source with no row keeps only its set dressing.
+2. A `stock_loose` row: a placed ref of the item at its spot (on the ref's top surface, or at `pos`) with the owner.
+   A significant loose ref of the source with no row is not built (a copied room's override `removed: true`).
+3. `person_item` rows: our actor base's inventory is exactly these rows (`worn` ones make an outfit of ours) plus
+   the base's own set dressing, flattened at level 1. Nothing of the base's significant inventory or outfit stays.
+4. A `trader` row: the vendor's merchant chest of ours holds exactly `trader_item` and `gold`, restocking to it.
+5. `unique_item` rows are placed as their `held_by` says, like any other row.
+6. Nothing levelled anywhere (decision 0035).
+
+**What the build check proves** (`tools/places/check.py`, lane S2), on the built plugin:
+1. Nothing levelled: a container, an actor's inventory, outfit or death item, a placed item.
+2. Every significant thing traces to a row. The split is run over the built place, and each significant item stands
+   in its holder's stock row or in `unique_item`. Anything else fails, by holder and item.
+3. Every promise delivered: `give_delivery` has no `open` row for the place, and each delivered row's person or ref
+   exists in the build.
+4. Quest things untouched: a ref or item a quest record names is in no stock row and stands as the quest has it (the
+   quest tables of nw-05; none yet).
+5. Ownership set: every container and loose thing in a peopled place has its row's owner. Only S0 things and wild
+   ground are unowned.
+6. Locks and value agree: the built lock equals the row's; a container's tier is at most its security's reach
+   (`open tier + rank of security`); its significant value is within its budget.
+7. No respawn, except a trader's merchant chest.
+8. The ledger: a T6 or unique item has its `unique_item` row, and the game-wide counts are within `scale.json`
+   `ledger.caps`.
+9. Never: no item of a `never_material` or Skyrim-only kit.
+
+**The studio** (lane S3): `GET /api/place/<id>/stock` returns `{facts: place_wealth's row, people: [person rows with
+notes], households, containers, loose, possessions, traders, deliveries, items: {id: {edid, name, kind, value,
+tier, significant}}}` from the database. Names come from the asset catalogue. Selecting a container, a person or a
+loose thing shows its contents with each reason and the facts it cites, and offers the edit ops above
+(`identity.edit`, `stock.container.set`/`remove`, `stock.loose.add`/`remove`/`edit`, `stock.possessions.set`,
+`stock.trader.set`, `stock.delivery.set`). An op carries the whole row after and `before`, like a path or person
+op, so it has an inverse and conflicts are found the same way. Item search is `/api/search` with
+`kind=weapon,armour,...` over the catalogue.
+
+**Finalise** applies these ops to the source files, never to the tables: `identity.edit` to the people source,
+`stock.*` to the place's stock source, through the same `edits.apply` as the place files. Then `stockdb items` and
+`stockdb load` run, and the sources and tables are committed by path with the place. The build that follows reads
+the database.
+
 ## Edits
 
 The studio never writes place files. It keeps an ordered list of operations; undo and redo move a cursor in it; a
@@ -256,6 +388,12 @@ An op: `{n, at, op, space, call: "fault"|"taste", note?, stroke?, ...payload wit
 | `land.patch` | `cell`, `verts:[[row,col,before_z,after_z]]`, `tool:{kind: raise|lower|level|smooth, radius, strength}` |
 | `path.add` / `path.remove` / `path.edit` | `path`, `before?` |
 | `person.add` / `person.remove` / `person.edit` | `person`, `before?` (placement, routine stops, patrol points) |
+| `identity.edit` | `person` (the people source's row: name, sex, race, household, role, trade, wealth, level, notes), `before` |
+| `stock.container.set` / `stock.container.remove` | `container` (the stock source's whole container row with its items), `before?` |
+| `stock.loose.add` / `stock.loose.remove` / `stock.loose.edit` | `loose` (whole row), `before?` |
+| `stock.possessions.set` | `possessions` ({person, items, why}), `before` |
+| `stock.trader.set` | `trader` ({person, give_seq, gold, items, why, cites}), `before` |
+| `stock.delivery.set` | `delivery` ({give_seq, by, person?, ref?, status, why}), `before?` |
 
 - `land.patch` heights are the patch's `dz` at that vertex, as `land.jsonl` holds it (0 is the world's own ground).
 - `path.add` and `person.add` carry the new row; `.remove` carries the removed row; `.edit` carries the row after
