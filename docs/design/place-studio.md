@@ -64,7 +64,8 @@ A bundle is one place as data, in `out/places/bundles/<bundle_id>/`; `bundle_id`
 The draft bundle is written by `python -m tools.places draft_bundle <place_id>` (`tools/places/draft_bundle.py`):
 the exterior's refs as written; each interior the source cell's refs without actors, cut to the room the build keeps
 (`tools.places.build.room_partition`, the one copy of the room rule), with our rows over them; people, paths, clear and land files as written;
-bases from the ground and source bundles; actor bases from the source. Its `stamp.key` is a sha256 over the place
+every base a ref uses, from the source bundle (then the ground's), else the catalogue, and any in neither listed
+as `stamp.missing_bases`; actor bases from the source. Its `stamp.key` is a sha256 over the place
 files (saves excepted) and the source and ground bundles' `bundle.json`. The studio rebuilds it whenever that key
 is stale, on `GET /api/places` and on a request for the draft's `bundle.json`, so a redraft, a re-seat or a
 finalise shows without a command. Unknown fields pass through.
@@ -265,12 +266,14 @@ semantics; the front end's JavaScript mirror is tested against the same files.
 GET  /api/places                              places with a draft; each: place_id, title, source_id, similar,
                                               stamps:{draft, ground, source}, fit (place.json's fit as the draft
                                               wrote it, or null: the studio's linked views map through it),
-                                              needs_look (place.json's, when it has one), draft_error (when
-                                              the draft bundle could not be rebuilt; the last good one is served)
+                                              needs_look (place.json's, when it has one), draft_error: [{error} when the draft bundle
+                                              could not be rebuilt (the last good one is served), {missing_base, refs}
+                                              for a base in neither the source bundle nor the catalogue]
 GET  /api/bundle/<bundle_id>/...              the bundle's files as written
 GET  /api/asset/mesh?model=<path>&level=0|1   GLB (converted on demand, off the event loop);
                                               level 1 is the light version (trees, plants, far away)
-GET  /api/asset/tex?path=<path>&size=<n>      WebP; cached a month (immutable: the GLBs' texture URIs)
+GET  /api/asset/tex?path=<path>&size=<n>      WebP; cached a month (immutable: the GLBs' texture URIs); a texture
+                                              the profile lacks: 200, a 4x4 grey WebP, X-Argonia-Missing: 1
 GET  /api/asset/thumb?model=<path>            256 px WebP thumbnail of a mesh
 GET  /api/asset/land                          land.json: the land textures for the terrain splat (Assets, below)
 GET  /api/asset/land/<file>                   one land texture, WebP

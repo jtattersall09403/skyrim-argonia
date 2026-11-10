@@ -25,7 +25,19 @@ BUNDLES = ROOT / "out" / "places" / "bundles"
 BASE_TYPE = {"static": "STAT", "door": "DOOR", "furniture": "FURN", "container": "CONT", "light": "LIGH",
              "activator": "ACTI", "plant": "FLOR", "tree": "TREE", "marker": "IDLM", "actor": "NPC_"}
 FILES = ("people", "paths", "clear", "land")
-TOOL = "tools/places/draft_bundle.py v2"
+TOOL = "tools/places/draft_bundle.py v3"
+CATALOGUE = ROOT / "out" / "places" / "catalogue" / "bases.jsonl"
+_catalogue: dict = {}
+
+
+def catalogue(path: Path | None = None) -> dict:
+    """The asset catalogue indexed by key, read once per file change (39,280 rows)."""
+    p = Path(path or os.environ.get("PLACES_CATALOGUE") or CATALOGUE)
+    m = p.stat().st_mtime_ns if p.exists() else None
+    if _catalogue.get("at") != (str(p), m):
+        _catalogue.clear()
+        _catalogue.update(at=(str(p), m), rows={r["key"]: r for r in jsonl(p)})
+    return _catalogue["rows"]
 
 
 def jsonl(p: Path) -> list[dict]:
@@ -124,7 +136,21 @@ def build(place_id: str, places: Path = PLACES, bundles: Path = BUNDLES, force: 
         write_jsonl(out / "spaces" / sid / "refs.jsonl", rows)
         spaces.append(sid)
         counts[sid] = len(rows)
+    # every base a ref uses: the source bundle first (then the ground's), else the catalogue; none: reported
     bases = {r["key"]: r for f in (ground / "bases.jsonl", src / "bases.jsonl") for r in jsonl(f)}
+    used: dict[str, int] = {}
+    for sid in spaces:
+        for r in jsonl(out / "spaces" / sid / "refs.jsonl"):
+            if r.get("base"):
+                used[r["base"]] = used.get(r["base"], 0) + 1
+    cat, missing = None, []
+    for bk, n in sorted(used.items()):
+        if bk not in bases:
+            cat = cat if cat is not None else catalogue()
+            if bk in cat:
+                bases[bk] = cat[bk]
+            else:
+                missing.append({"missing_base": bk, "refs": n})
     write_jsonl(out / "bases.jsonl", bases.values())
     write_jsonl(out / "npcs.jsonl", jsonl(src / "npcs.jsonl"))
     for name in FILES:
@@ -136,7 +162,7 @@ def build(place_id: str, places: Path = PLACES, bundles: Path = BUNDLES, force: 
     meta = {"bundle_id": f"draft.{place_id}", "kind": "draft", "title": f"{place_id} (draft)",
             "plugins": gmeta.get("plugins"), "worldspace": gmeta.get("worldspace"), "anchor": gmeta.get("anchor"),
             "cells": gmeta.get("cells"), "spaces": spaces,
-            "stamp": {"key": k, "draft_key": place.get("draft_key"), "inputs": stamp_in, "tool": TOOL,
+            "stamp": {"key": k, "draft_key": place.get("draft_key"), "inputs": stamp_in, "tool": TOOL, "missing_bases": missing,
                       "at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")}}
     (out / "bundle.json").write_text(json.dumps(meta, indent=1, ensure_ascii=False))
     final = bundles / f"draft.{place_id}"
@@ -145,7 +171,7 @@ def build(place_id: str, places: Path = PLACES, bundles: Path = BUNDLES, force: 
         final.rename(old)
     out.rename(final)
     shutil.rmtree(old, ignore_errors=True)
-    return {"bundle_id": f"draft.{place_id}", "key": k, "rebuilt": True, "refs": counts}
+    return {"bundle_id": f"draft.{place_id}", "key": k, "rebuilt": True, "refs": counts, "missing_bases": missing}
 
 
 def main(argv: list[str]) -> int:

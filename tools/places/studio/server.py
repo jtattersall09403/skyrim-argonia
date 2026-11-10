@@ -137,6 +137,7 @@ async def places(req: web.Request) -> web.Response:
         pid = pj.parent.name
         draft_error = await fresh_draft(req.app, pid)
         draft = bundle_stamp(cfg, f"draft.{pid}")
+        draft_error = ([{"error": draft_error}] if draft_error else []) + list((draft or {}).get("missing_bases") or [])
         if draft is None and not (pj.parent / "spaces").exists():
             continue
         pl = json.loads(pj.read_text(encoding="utf-8"))
@@ -182,6 +183,21 @@ async def asset_mesh(req: web.Request):
     return await asset(req, "mesh", (m, int(lv)))
 
 
+MISSING_TEX: dict = {}
+
+
+def missing_tex() -> bytes:
+    """A 4x4 neutral grey WebP for a texture the profile lacks."""
+    if "b" not in MISSING_TEX:
+        import io
+
+        from PIL import Image
+        buf = io.BytesIO()
+        Image.new("RGB", (4, 4), (128, 128, 128)).save(buf, "WEBP", lossless=True)
+        MISSING_TEX["b"] = buf.getvalue()
+    return MISSING_TEX["b"]
+
+
 async def asset_tex(req: web.Request):
     p = req.query.get("path")
     if not p:
@@ -190,7 +206,15 @@ async def asset_tex(req: web.Request):
         size = int(req.query.get("size", "512"))
     except ValueError:
         return jerr(400, "size must be a number")
-    return await asset(req, "tex", (p, size), cache="public, max-age=2592000, immutable")
+    cache = "public, max-age=2592000, immutable"
+    try:
+        f = await asyncio.get_running_loop().run_in_executor(None, links.asset, "tex", p, size)
+    except FileNotFoundError:
+        f = None
+    if f is None or not f.exists():  # the profile lacks it: a neutral stand-in, marked, so the console stays clean
+        return web.Response(body=missing_tex(), content_type="image/webp",
+                            headers={"Cache-Control": "public, max-age=86400", "X-Argonia-Missing": "1"})
+    return await send_file(req, f, cache=cache)
 
 
 async def asset_thumb(req: web.Request):

@@ -228,3 +228,31 @@ def test_places_rebuilds_draft_and_carries_fit(tmp_path, monkeypatch):
         assert bj["stamp"]["key"] != k1
         assert (await c.get("/api/bundle/draft.fxd/paths.jsonl")).status == 200
     run(None, body)
+
+
+def test_draft_bases_from_catalogue_and_missing_reported(tmp_path, monkeypatch):
+    from tools.places import draft_bundle as db
+    fake_rooms(monkeypatch)
+    places, bundles = _draft_fixture(tmp_path)
+    cat = tmp_path / "catalogue.jsonl"
+    cat.write_text(json.dumps({"key": "Other.esp:029DC6", "edid": "BambooHutDoor01", "model": "x/door.nif"}) + "\n")
+    monkeypatch.setenv("PLACES_CATALOGUE", str(cat))
+    ext = places / "fxd" / "spaces" / "exterior" / "refs.jsonl"
+    with ext.open("a") as f:
+        f.write(json.dumps({"id": "fxd.d", "base": "Other.esp:029DC6", "kind": "door", "pos": [0, 0, 0]}) + "\n")
+        f.write(json.dumps({"id": "fxd.x", "base": "Gone.esp:000001", "kind": "static", "pos": [0, 0, 0]}) + "\n")
+    r = db.build("fxd", places, bundles)
+    keys = {b["key"] for b in db.jsonl(bundles / "draft.fxd" / "bases.jsonl")}
+    assert "Other.esp:029DC6" in keys and "Gone.esp:000001" not in keys
+    assert r["missing_bases"] == [{"missing_base": "Gone.esp:000001", "refs": 1}]
+
+
+def test_missing_texture_is_a_marked_stand_in(env, monkeypatch):
+    from tools.places.studio import links
+    monkeypatch.setattr(links, "asset", lambda kind, *a: None)
+
+    async def body(c):
+        r = await c.get("/api/asset/tex", params={"path": "textures/none.dds", "size": "512"})
+        assert r.status == 200 and r.headers["X-Argonia-Missing"] == "1" and r.content_type == "image/webp"
+        assert (await r.read())[:4] == b"RIFF"
+    run(env, body)
