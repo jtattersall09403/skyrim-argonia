@@ -19,7 +19,12 @@ idle.
 
 **Getting there.** Open the **"Argonia: New World"** card in Moonlight. Start a new game (or load any save), open the
 console with the key under Esc and type `coc ArgoniaNWStart`. You arrive on dry ground in the Valley of Storms, just
-south of Stormhold. To jump to any other place, type `cow ArgoniaBlackMarsh X Y` with the cell numbers given below.
+south of Stormhold. To jump to any other place, type `coc ANW` and the place's name with no spaces or dashes (for
+example `coc ANWHelstrom`, `coc ANWFortGysilla`, `coc ANWUzuTegh`): every one of the 258 places has its own named
+cell, and you land on dry ground in it, facing the place. The checks below give the exact names; the full list is
+`out/newworld/plugin/map/teleports.md` (made by `python -m tools.newworld.teleports build`). Do not use
+`cow ArgoniaBlackMarsh X Y`: the world's cells lie south of -128, and the game took Helstrom's `cow ... -8 -148` to a
+cell 256 north of it, out in the empty sea.
 
 **Commands for looking around** (type in the console, then close it):
 
@@ -49,9 +54,9 @@ show in the console with `getpos x` and `getpos y`, or just name the place). A s
       large patch of one texture repeating for a long way.
 - [ ] **C. Grass on the ground.** Most land has grass or low plants growing out of it (not bare painted ground),
       except on rock, roads, beaches and mud flats.
-- [ ] **D. Each region looks like itself.** Visit three: Murkwood round Helstrom (`cow ArgoniaBlackMarsh -8 -148`),
-      the Kotherra mangroves round Gideon (`cow ArgoniaBlackMarsh -52 -167`) and the Arnesian jungle round Thorn
-      (`cow ArgoniaBlackMarsh 60 -125`). Each has its own mix of trees and plants, and inside each there is a good
+- [ ] **D. Each region looks like itself.** Visit three: Murkwood round Helstrom (`coc ANWHelstrom`),
+      the Kotherra mangroves round Gideon (`coc ANWGideon`) and the Arnesian jungle round Thorn
+      (`coc ANWThorn`). Each has its own mix of trees and plants, and inside each there is a good
       variety, not the same tree over and over.
 - [ ] **E. Trees and rocks sit properly.** Look closely at the foot of trees, bushes and rocks on slopes: trunks go
       into the ground (no floating roots, no trunk buried halfway); rocks have no open, hollow back facing you; cliff
@@ -59,11 +64,11 @@ show in the console with `getpos x` and `getpos y`, or just name the place). A s
       texture); look in particular at a fern and a mangrove in the Kotherra mangroves (D), whose textures we repoint.
 - [ ] **F. Roads are clear.** Follow a road for a while (the road south from Stormhold is a good one): nothing grows or
       stands on the road itself, and its edges are dressed with the odd stone or marker as in Skyrim.
-- [ ] **G. Water types.** Visit: black swamp water in the Banujha Basin (`cow ArgoniaBlackMarsh -25 -195`); green
-      marsh water in Okuwun-Rahei (`cow ArgoniaBlackMarsh 55 -168`); a river in the Tulmek Washes
-      (`cow ArgoniaBlackMarsh 15 -207`); a stream in the Kotherra mangroves (`cow ArgoniaBlackMarsh -55 -163`); a pond
-      in Blackwood (`cow ArgoniaBlackMarsh -73 -130`); an estuary on the Arnesian coast (`cow ArgoniaBlackMarsh 56 -115`);
-      the open sea (`cow ArgoniaBlackMarsh 77 -150`). Each looks like its kind (dark, green, clear, sea), the river and
+- [ ] **G. Water types.** Visit: black swamp water in the Banujha Basin (`coc ANWWalkSwamp`); green
+      marsh water in Okuwun-Rahei (`coc ANWWalkMarsh`); a river in the Tulmek Washes
+      (`coc ANWWalkRiver`); a stream in the Kotherra mangroves (`coc ANWWalkStream`); a pond
+      in Blackwood (`coc ANWWalkPond`); an estuary on the Arnesian coast (`coc ANWWalkEstuary`);
+      the open sea (`coc ANWWalkSea`). Each looks like its kind (dark, green, clear, sea), the river and
       stream visibly flow, and ponds, marsh and swamp lie still.
 - [ ] **H. Flow goes the right way.** On the river and the stream in G, the water runs downstream toward the sea or
       the larger water it joins, not uphill or back on itself. (Where a river bends, the direction changes from one
@@ -76,23 +81,29 @@ show in the console with `getpos x` and `getpos y`, or just name the place). A s
       no mist out at sea.
 - [ ] **K. Weather.** `fw 0C821E`, then `fw 0C821F`: fog and rain both look like Black Marsh's own, not snow or a
       Skyrim sky.
-- [ ] **L. The distance.** Fly up high with `tfc` and `sucsm 1000` and look out: distant land, trees and water are
-      drawn (LOD), with no holes, no floating squares and no sudden pop where near meets far.
-- [ ] **M. The map.** Press M anywhere in the new world: the map shows Black Marsh's land, you can pan and zoom to the
-      edges, and the settlement markers are there (only Stormhold is known at the start; `tmm 1` reveals them all).
-- [ ] **N. People can get around.** Optional: near Lilmoth (`cow ArgoniaBlackMarsh 33 -224`), type
+- [ ] **L. The distance.** At Helstrom (`coc ANWHelstrom`) and in the Arnesian jungle (`coc ANWThorn`), stand still
+      and look out, then fly up with `tfc` and `sucsm 1000`: trees, palms, tall plants, big rocks, logs and cliffs
+      are drawn far off (as flat cut-outs for trees, as low-detail shapes for rocks and logs) and do not appear from
+      nothing as you come near. Small plants, ferns, herbs, reeds, grass and small stones still appear only within
+      about 100 to 150 metres, as in Skyrim. The ground far off does not flicker as you move, and land does not
+      flicker against water.
+- [ ] **M. The map.** Press M anywhere in the new world: the map shows Black Marsh's land; you can pan to every edge
+      of the province (the island in the eastern sea at Topal Bay, the oceans to the south and west, the land to the
+      north and north-west) and zoom out to see most of the province at once; the settlement markers are there (only
+      Stormhold is known at the start; `tmm 1` reveals them all).
+- [ ] **N. People can get around.** Optional: near Lilmoth (`coc ANWLilmoth`), type
       `player.placeatme 00023ABE` (a wolf), let it chase you and run round trees and along the road: it follows,
       not stuck or walking into the water at random.
 - [ ] **O. Relief (your call).** The terrain follows the region research: most of Black Marsh is low and nearly
       flat, like BM&V's own marsh (10 to 25 m of height in most regions), with more relief only in the uplands and
-      mesas (Chixathe mesa at Fort Chalkmoth, `cow ArgoniaBlackMarsh 37 -142`; the Aunike ridge at Aunike Crown,
-      `cow ArgoniaBlackMarsh -8 -179`). If you want more hills or higher
+      mesas (Chixathe mesa at Fort Chalkmoth, `coc ANWFortChalkmoth`; the Aunike ridge at Aunike Crown,
+      `coc ANWAunikeCrown`). If you want more hills or higher
       mesas anywhere, say where; it is a change to the region table, then one rebuild.
 - [ ] **P. Islets.** Places that stand in lakes now have land under them: Luntoc
-      (`cow ArgoniaBlackMarsh 14 -174`), Uzu-Tegh (`cow ArgoniaBlackMarsh 19 -170`) and Fort Gysilla
-      (`cow ArgoniaBlackMarsh 20 -180`) in Lake Ulaish. Each is a small island with water all round, not drowned.
-- [ ] **Q. Helstrom's waters.** Round Helstrom (`cow ArgoniaBlackMarsh -8 -148`) and along the river south-west of it
-      (`cow ArgoniaBlackMarsh -21 -140`): a few main rivers that flow, a few tributary streams, and many winding arms
+      (`coc ANWLuntoc`), Uzu-Tegh (`coc ANWUzuTegh`) and Fort Gysilla
+      (`coc ANWFortGysilla`) in Lake Ulaish. Each is a small island with water all round, not drowned.
+- [ ] **Q. Helstrom's waters.** Round Helstrom (`coc ANWHelstrom`) and along the river south-west of it
+      (`coc ANWWalkHelstromRiver`): a few main rivers that flow, a few tributary streams, and many winding arms
       of still green marsh between them.
 - [ ] **R. Water seams.** Wherever two kinds of water meet (fly along the river at Q into the marsh, or at G from a
       river out to sea): the water is one surface at one level, with no gaps, and its colour changes gradually over

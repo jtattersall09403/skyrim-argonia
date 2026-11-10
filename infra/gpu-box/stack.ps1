@@ -114,6 +114,14 @@ function Set-GameWindow {
   # Light shafts: the engine's volumetric lighting, linked per weather (WTHR HNAM, lane 1.15-r6-light); off by default in the prefs the stack writes.
   & $set "$docs\SkyrimPrefs.ini" 'Display' @{ 'bVolumetricLightingEnable' = 1 }
   & $set "$docs\SkyrimPrefs.ini" 'GamePlay' @{ 'bShowQuestMarkers' = 0; 'bShowFloatingQuestMarkers' = 0 }
+  # Draw distances: Bethesda's own Ultra preset (the game's Ultra.ini; the machine ran High's LOD switch distances and
+  # lower fades): distant LOD switches to coarser levels later, and objects, items and actors fade later inside the
+  # loaded cells. Grass stays at Ultra's 7000 (Bethesda's slider maximum). bEnableLandFade=0 stops terrain flickering
+  # as new areas load (sheson, dyndolod.info Help/xLODGen). Owner walk 5, 2026-11-10 (LOD lane).
+  & $set "$docs\SkyrimPrefs.ini" 'TerrainManager' @{ 'fBlockLevel0Distance' = '60000.0000'; 'fBlockLevel1Distance' = '90000.0000'; 'fBlockMaximumDistance' = '250000.0000'; 'fTreeLoadDistance' = '75000.0000'; 'fSplitDistanceMult' = '1.5000' }
+  & $set "$docs\SkyrimPrefs.ini" 'LOD' @{ 'fLODFadeOutMultObjects' = '30.0000'; 'fLODFadeOutMultItems' = '10.0000'; 'fLODFadeOutMultActors' = '15.0000' }
+  & $set "$docs\SkyrimPrefs.ini" 'Grass' @{ 'fGrassStartFadeDistance' = '7000.0000' }
+  & $set "$docs\Skyrim.ini" 'Display' @{ 'bEnableLandFade' = 0 }
   # Skyrim does not declare DPI awareness, so on a scaled desktop Windows enlarges its window past the screen edge.
   $layers = 'HKCU:\Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers'
   New-Item -Path $layers -Force | Out-Null

@@ -375,6 +375,15 @@ def run(plugin: Path, out: Path, do_dump: bool = True) -> int:
         p = subprocess.run([sys.executable, "-m", "tools.newworld.world.mapdata", "check", str(listing), "--plugin", str(plugin)],
                            cwd=REPO, capture_output=True, text=True)
         rep.row("lod", "terrain LOD files expected/found per level", p.stdout.strip().replace("\n", "; "), p.returncode == 0)
+        # walk 5 (trees and rocks popping in from nothing): every large base planned for LOD has it in DynDOLOD's output
+        logs = OUT / "lod/logs"
+        if not (logs / "LODGen_SSE_Export_ArgoniaBlackMarsh.txt").exists() or not (plugin / "map/lodplan.json").exists():
+            rep.fail("lod", "every large placed base planned for LOD has it", "DynDOLOD's lists or lodplan.json missing: lod.sh stage owed")
+        else:
+            p = subprocess.run([sys.executable, "-m", "tools.newworld.world.lodplan", "coverage", str(logs), "--plugin", str(plugin)],
+                               cwd=REPO, capture_output=True, text=True)
+            rep.row("lod", "every large placed base planned for LOD has it", p.stdout.strip().splitlines()[-1] if p.stdout.strip() else p.stderr[-200:],
+                    p.returncode == 0)
 
     @section(rep, "map")
     def _map():
@@ -385,6 +394,11 @@ def run(plugin: Path, out: Path, do_dump: bool = True) -> int:
                 "" if ok else "MNAM empty: world.sh's map stage (nwmap apply) has not run on this ESM")
         mk = w.get("map_markers", 0)
         rep.row("map", f"map markers in the persistent cell ({MARKERS})", mk, mk == MARKERS)
+        # walk 5: the map truncated (the box a quarter in), and teleports that landed in the sea
+        for mod, args, req in (("tools.newworld.world.mapdata", ["checkmap"], "pan box covers the whole province"),
+                               ("tools.newworld.teleports", ["check"], "every teleport lands on land above water in its own cell")):
+            p = subprocess.run([sys.executable, "-m", mod, *args, "--plugin", str(plugin)], cwd=REPO, capture_output=True, text=True)
+            rep.row("map", req, (p.stdout.strip().splitlines() or [p.stderr[-200:]])[0], p.returncode == 0)
 
     @section(rep, "start")
     def _start():

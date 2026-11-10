@@ -12,7 +12,12 @@
 #   lod.sh archive             the derived folder as a tar to s3://<private>/nw/lod/<key>.tar (never the repo, 0003)
 #   lod.sh survey xlodgen|texgen|dyndolod   start one tool in the desktop session, dump its windows, kill it
 #   lod.sh stage [step ...]    map, then (NW_LOD=1) tools, send, run [steps], check, archive: the whole stage
-#   PRESET=Low|Medium (default Low) sets DynDOLOD's preset. LOD_FORCE=1 reruns every machine step.
+#   PRESET=Low|Medium (default Medium, the preset of every final run) sets DynDOLOD's preset. LOD_FORCE=1 reruns
+#   every machine step.
+# The map stage also writes the teleport cells and the LOD plan (mapdata.py build: teleports.py, lodplan.py) and nwmap
+# apply turns them into records and DynDOLOD's files (map/DynDOLOD_SSE_*), which send lays in C:\argonia\lod\ and
+# lod.ps1 in Data\DynDOLOD\; the terrain step rewrites the meshes with sheson's xLODGen settings; check ends with
+# lodplan.py coverage (every large base planned for LOD has it).
 # Run under the machine's lock (LOD is CPU- and RAM-heavy):
 #   tooling/job_guard.sh run --gpu nw-lod -- infra/gpu-box/lod.sh stage
 # Logs and metrics come back to out/newworld/lod/ (never committed). The machine is not stopped here.
@@ -25,11 +30,12 @@ plug=out/newworld/plugin; esm=$plug/ArgoniaNewWorld.esm; lod=$plug/map/LODSettin
 out=out/newworld/lod; mkdir -p "$out"
 data="${ARGONIA_GAME_ROOT:-$HOME/games/skyrimse}/Data"
 bin=out/tools/ArgoniaPlugin
-PRESET=${PRESET:-Low}
+PRESET=${PRESET:-Medium}
 MOD='C:\argonia\ours\derived-NewWorld\argonia-newworld-lod'
 
-key() {  # the LOD's inputs: the mapped ESM, the .lod, the machine script, the tools' archives, the preset
-  { sha256sum "$esm" "$lod" "$here/lod.ps1" | cut -c1-64; "$PY" -c 'import json,sys; [print(m["sha256"]) for m in json.load(open(sys.argv[1]))["mods"]]' "$here/lod-tools.json"; echo "$PRESET"; } | sha256sum | cut -c1-16
+plan_files() { ls "$plug"/map/DynDOLOD_SSE_* 2>/dev/null; }  # nwmap apply's TexGen billboard and DynDOLOD rule files
+key() {  # the LOD's inputs: the mapped ESM, the .lod, the plan files, the machine script, the tools' archives, the preset
+  { sha256sum "$esm" "$lod" $(plan_files) "$here/lod.ps1" | cut -c1-64; "$PY" -c 'import json,sys; [print(m["sha256"]) for m in json.load(open(sys.argv[1]))["mods"]]' "$here/lod-tools.json"; echo "$PRESET"; } | sha256sum | cut -c1-16
 }
 ps1() {  # one lod.ps1 step; the GUI steps in the desktop session, the rest over SSH
   local step=$1; shift
@@ -46,6 +52,9 @@ ps1() {  # one lod.ps1 step; the GUI steps in the desktop session, the rest over
 fetch_back() {
   "$run" get 'C:/argonia/lod/logs' "$out/" >/dev/null 2>&1 || true
   "$run" get 'C:/argonia/lod/metrics' "$out/" >/dev/null 2>&1 || true
+  # DynDOLOD's own read-back of what got LOD (lodplan.py coverage): billboards used, the object LOD rows
+  "$run" get 'C:/argonia/tools/dyndolod/DynDOLOD/Logs/DynDOLOD_SSE_BillboardsUsed_ArgoniaBlackMarsh.txt' "$out/logs/" >/dev/null 2>&1 || true
+  "$run" get 'C:/argonia/tools/dyndolod/DynDOLOD/Edit Scripts/Export/LODGen_SSE_Export_ArgoniaBlackMarsh.txt' "$out/logs/" >/dev/null 2>&1 || true
 }
 put_ps1() {
   "$run" ps 'New-Item -ItemType Directory -Force C:\argonia\infra, C:\argonia\tools, C:\argonia\lod, C:\argonia\ours\newworld | Out-Null' >/dev/null
@@ -107,6 +116,10 @@ do_send() {  # each file only when the machine's copy differs
     # the machine's copy, read back after the send: the verifier's deploy row compares it with the build
     case "$f" in *.esm) mkdir -p "$repo/out/newworld/verify"; echo "$have" > "$repo/out/newworld/verify/play-esm.sha256" ;; esac
   done
+  # the LOD plan files (small): sent whole each time, old ones removed first
+  [ -n "$(plan_files)" ] || { echo "send: no $plug/map/DynDOLOD_SSE_* (lod.sh map)" >&2; exit 1; }
+  "$run" ps 'Remove-Item C:\argonia\lod\DynDOLOD_SSE_* -EA SilentlyContinue' >/dev/null
+  "$run" put $(plan_files) C:/argonia/lod/ >/dev/null; echo "send: $(plan_files | wc -l) LOD plan files"
 }
 
 do_run() {
@@ -128,6 +141,8 @@ do_check() {
   ps1 list >/dev/null
   "$run" get 'C:/argonia/lod/logs/files.txt' "$out/files.txt" >/dev/null
   "$PY" -m tools.newworld.world.mapdata check "$out/files.txt" | tee "$out/check.txt"
+  # every large base planned for LOD got it (DynDOLOD's own lists, fetched back by the run)
+  "$PY" -m tools.newworld.world.lodplan coverage "$out/logs" | tee -a "$out/check.txt"
 }
 
 do_archive() {

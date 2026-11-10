@@ -4,9 +4,12 @@
 # infra/gpu-box/lod.sh from the build VM; the GUI steps run in the desktop session (run.sh desktop).
 #   lod.ps1 -Step prepare      the NewWorld profile laid with no LOD of ours (stack.ps1 on -World NewWorld), the world's
 #                              LODSettings file into Data, DynDOLOD Resources linked into Data, old outputs cleared
-#   lod.ps1 -Step terrain      xLODGen: terrain LOD (meshes and textures, every level) for the world
-#   lod.ps1 -Step texgen       TexGen: the LOD textures and billboards of the laid trees and objects
-#   lod.ps1 -Step dyndolod     DynDOLOD: object and tree LOD for the world from -Preset (Low or Medium)
+#   lod.ps1 -Step terrain      xLODGen: terrain LOD (meshes and textures, every level) for the world, then the meshes
+#                              again with sheson's settings (Set-TerrainMeshes)
+#   lod.ps1 -Step texgen       TexGen: the LOD textures and billboards of the laid trees and objects (our billboard
+#                              overrides laid in Data\DynDOLOD\ first)
+#   lod.ps1 -Step dyndolod     DynDOLOD: object and tree LOD for the world from -Preset (Low or Medium), with our
+#                              plugin's rule file in Data\DynDOLOD\
 #   lod.ps1 -Step collect      the outputs into the derived folder, then the profile laid again with it
 #   lod.ps1 -Step list         the derived folder's files, one relative path a line, to C:\argonia\lod\logs\files.txt
 #   lod.ps1 -Step survey -Tool xlodgen|texgen|dyndolod   start the tool, dump its windows, kill it (control names)
@@ -256,6 +259,44 @@ function Lay-LodSettings {
   Say "lodsettings: $Mod\LODSettings\$World.lod ($((Get-Item $src).Length) bytes)"
 }
 
+# The world's LOD plan files (NewWorldMap.cs from tools/newworld/world/lodplan.py, sent by lod.sh to $Work): the TexGen
+# billboard overrides and our plugin's DynDOLOD rule file, read by TexGen and DynDOLOD from Data\DynDOLOD\ (dyndolod.info
+# Mod-Authors, TexGen-Configuration). Laid just before each tool starts: a fresh profile lay drops unrecorded files.
+function Lay-DynDOLOD-Data {
+  $files = @(Get-ChildItem $Work -File -Filter 'DynDOLOD_SSE_*' -EA SilentlyContinue)
+  if (-not $files) { throw "${Step}: no DynDOLOD_SSE_* plan files in $Work (lod.sh send)" }
+  New-Item -ItemType Directory -Force "$Data\DynDOLOD" | Out-Null
+  foreach ($f in $files) { Copy-Item $f.FullName "$Data\DynDOLOD\$($f.Name)" -Force }
+  Say "DynDOLOD data: $($files.Name -join ', ')"
+}
+
+# Terrain LOD meshes per sheson's recipe for xLODGen (dyndolod.info Help/xLODGen): LOD4 quality 0-5 with Protect Borders
+# and Optimize Unseen off; LOD8 and LOD16 quality 0-8 with Optimize Unseen 550 "in case there is visible z-fighting of
+# water in the distance"; LOD32 quality 0-10 with Optimize Unseen 550 "to improve coastlines on the map". The GUI's
+# defaults (quality 10/15/20/25, Protect Borders off, Optimize Unseen on) are what the run of 2026-11-09 used. xLODGen
+# keeps its options only in its GUI, so its own LODGen input (LODGen_Terrain_<world>.txt, written by the run) is
+# rewritten with these keys and LODGen run again on the same height data: the meshes replaced, the textures kept.
+$TerrainMesh = [ordered]@{ ProtectCellBorders = 'True'; QualityLOD4 = 4; WaterDeltaLOD4 = -1; QualityLOD8 = 6; WaterDeltaLOD8 = 550
+                           QualityLOD16 = 8; WaterDeltaLOD16 = 550; QualityLOD32 = 10; WaterDeltaLOD32 = 550 }
+function Set-TerrainMeshes {
+  $dir = "$Tools\xlodgen\xLODGen\Edit Scripts"
+  $src = "$dir\LODGen_Terrain_$World.txt"
+  if (-not (Test-Path $src)) { throw "terrain: no $src (xLODGen writes it)" }
+  $out = foreach ($l in Get-Content $src) {
+    if ($l -match '^([A-Za-z0-9]+)=' -and $TerrainMesh.Contains($Matches[1])) { "$($Matches[1])=$($TerrainMesh[$Matches[1]])" } else { $l } }
+  $have = @($out | % { ($_ -split '=')[0] })
+  foreach ($k in $TerrainMesh.Keys) { if ($k -notin $have) { throw "terrain: $src has no $k line" } }
+  $txt = "$Work\LODGen_Terrain_$World.txt"; Set-Content $txt $out -Encoding ASCII
+  Say "terrain meshes: LODGen again with $(($TerrainMesh.GetEnumerator() | % { "$($_.Key)=$($_.Value)" }) -join ' ')"
+  $t0 = Get-Date
+  $p = Start-Process "$dir\LODGenx64.exe" -ArgumentList "`"$txt`"" -WorkingDirectory $dir -PassThru -NoNewWindow `
+         -RedirectStandardOutput "$Work\logs\terrain-lodgen.txt" -RedirectStandardError "$Work\logs\terrain-lodgen-err.txt"
+  if (-not $p.WaitForExit($TimeoutMin * 60000)) { $p | Stop-Process -Force; throw "terrain: LODGen not done in $TimeoutMin min" }
+  $n = @(Get-ChildItem "$($Out.terrain)\meshes\terrain\$World" -Filter *.btr | ? { $_.LastWriteTime -gt $t0 }).Count
+  Say "terrain meshes: LODGen exit $($p.ExitCode), $n .btr rewritten in $([int]((Get-Date) - $t0).TotalSeconds) s"
+  if ($p.ExitCode -ne 0 -or $n -eq 0) { throw "terrain: LODGen failed (exit $($p.ExitCode), $n .btr); see $Work\logs\terrain-lodgen.txt" }
+}
+
 switch ($Step) {
   'prepare' {
     Stop-Process -Name SkyrimSE, skse64_loader -Force -EA SilentlyContinue
@@ -320,9 +361,11 @@ switch ($Step) {
     $n = (Get-ChildItem $Out.terrain -Recurse -File -Include *.btr, *.dds).Count; Say "terrain: $n files"
     if (-not $n) { throw 'terrain: no .btr or .dds written' }
     Assert-Terrain-Ours
+    Set-TerrainMeshes
     Link-Into-Data $Out.terrain   # DynDOLOD culls object LOD below the terrain LOD
   }
   'texgen' {
+    Lay-DynDOLOD-Data
     $p = Start-Tool texgen ($Paths + " -o:`"$($Out.texgen)\`"")
     $main = Main-Window $p
     Find-Control $p 'Start' '*Button*' 600 | Out-Null
@@ -344,6 +387,7 @@ switch ($Step) {
     else {
     Remove-Item "$($Out.dyndolod)\*" -Recurse -Force -EA SilentlyContinue   # no half-written output of a stopped run is collected
     Set-DynDOLOD-Worlds
+    Lay-DynDOLOD-Data
     $p = Start-Tool dyndolod ($Paths + " -o:`"$($Out.dyndolod)\`"")
     $main = Main-Window $p
     # The load's pop-ups (DLL/Scripts not found: Ignore; Resources) come before the wizard: watch them while waiting,
