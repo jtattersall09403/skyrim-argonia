@@ -208,6 +208,37 @@ put the old ones back. That can no longer happen (the install now refuses an out
       says she adds the months to the roll herself, and that everyone in the hold heard you. Say if any line you meet
       still makes a thing do what only a person does.
 
+## 10. Walk 5's quest fixes (built and deployed 2026-11-11)
+
+**Start a new game.** The opening has moved: the families' camp is now where Lilmoth's dock meets the land, about
+fifty paces from the barge, so the whole opening happens in one place and nobody has to find a camp far away.
+Black Marsh & Valenwood's ground does not let people walk from one stretch of its walking mesh to the next, which is
+why the gang could not march to the old camp; the new camp is on the same stretch as the pier.
+
+- [ ] **10.1 The opening, start to end.** In the hold, speak to Wuleen-Sei and answer her. Leave by the door at the
+      top of the stairs. On the pier the gang (Wuleen-Sei, Ux-Xeek, Dives-Without-A-Rope, Finds-The-Other-Bank and
+      Mee-Tuja the courier) is standing at the foot of the plank and sets off a moment after you come out; the
+      marker is on the camp's fire. Follow them along the dock to the fire. As they reach it the attack comes: a
+      tall Argonian woman kills Mee-Tuja, the huts on the water catch fire, and Dives-Without-A-Rope shouts where
+      Sal-Sei and Deesh-Duun are (you should hear or read it as a subtitle). Then either go to the hatching shed to
+      the north-east for Sal-Sei, or to the burning huts on the water to the west and dive under the boards for
+      Deesh-Duun, and bring the one you reached to the shore just west of the camp (marker). The quest ends there
+      and the next one starts on that shore. Tell us the step where anything did not happen as written, and whether
+      the gang walked all the way to the fire in front of you.
+- [ ] **10.2 Nobody is in two places.** After you come out on the pier, go back down into the hold by the pier
+      door: Wuleen-Sei, Ux-Xeek and the gang are no longer there.
+- [ ] **10.3 People in one place no longer repeat each other.** In the hold and on the pier, talk to everyone. Only
+      Wuleen-Sei explains that months are added for food; the others each say something of their own or send you to
+      her. The same rule was applied to every place the first act's quests visit: say if you meet two people in one
+      place telling you the same thing in nearly the same words.
+- [ ] **10.4 The Reed's house, without the oath** (part of 7.2). In the house in Lilmoth answer "Not yet" instead of
+      swearing. You can still leave the house and come back in, and Nesh-Deeka still gives you the next task. Before,
+      the door was locked to a key only the oath gave, so this path could not continue.
+- [ ] **10.5 Markers and plain steps in every quest** (as you play 7.2 to 7.7). Every objective now has a marker,
+      every journal entry tells only the next step, and a person who has already given you a quest no longer offers
+      it again once it is done. Say which quest and step if a marker is missing or points at nothing, or if someone
+      offers a finished quest again.
+
 ## Done
 
 - Climbing works (Phase 1 walk, 2026-11-06).

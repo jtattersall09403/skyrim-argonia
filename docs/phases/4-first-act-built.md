@@ -1,7 +1,7 @@
 # Phase 4: the first story slice, built from the proven blocks
 
 Status: [PROGRESS.md](../PROGRESS.md). The plan: [PLAN.md](../PLAN.md). Edit this file as the phase goes; it is the phase's whole brief.
-Rewritten 2026-11-08 after the owner's third walk (tmp/walk-3-feedback.md, [owner-rulings](../owner-rulings.md)). **Status 2026-11-10: built, read back and deployed, and walked by the owner through walk 5; the walk-5 fixes (the engine and writing reviews in docs/phases/4-walk5-engine/) are in progress, and the owner's next walk is owed (docs/owner-walk-checks.md).**
+Rewritten 2026-11-08 after the owner's third walk (tmp/walk-3-feedback.md, [owner-rulings](../owner-rulings.md)). **Status 2026-11-11: walk 5's fixes built, read back and deployed; the owner's walk is owed (docs/owner-walk-checks.md sections 7 and 10).**
 
 ## Already done (do not redo)
 
@@ -75,6 +75,23 @@ the quest is re-authored.
   chosen faction lines; talk to people in each place.
 
 ## Measured
+
+- **Walk 5's fixes (2026-11-11, owner walk 5).** The gang never marched because its travel package became eligible at
+  stage 30, set by the hold's door while the pier was unloaded: the gang made its walk unseen and stood at the dock's
+  end (the owner confirmed it in game), and BM&V's navmesh islands are not joined, so nobody could walk on to the
+  camp. The opening is re-authored (owner ruling) at the families' camp where Lilmoth's dock meets the land, on the
+  pier's own navmesh island 079823: stage 30 at the door switches the hold's people for the pier's, hidden stage 32
+  is set once the walkers are loaded and starts the march in the player's sight, the fire zone sets 40; plank to
+  fire, fire to shed, shed and huts to the shore are each one island (`inspect navpath` CONNECTED). A Fable 5.2
+  review of the whole act found 19 engine and 30 writing faults; fixed across the 11 quests (follow packages that
+  use the follow template, Run Once and endings that disarm their zones and stop, a target for every objective,
+  offers bounded by stage, no check on the only way forward, the Reed's house door open to the unsworn, no death
+  trigger on an essential person, LQ25's MQ05 gate built, after-quest greetings on ARG_Talk). Every builder is on
+  one QuestKit (zero-diff port); `plugin.sh questcheck` (120 failures on the walked plugin, 0 now),
+  `quest_text_check` and `echoes` are in the gate. Final build: round trip clean (2,000 YAML files), mainquestcheck
+  554/554, nightreedcheck 302/302, mqcheck, bccheck, localcheck, cleancheck, blocktest PASS, placecheck 120/0,
+  questcheck 11 quests 0 failed, talk_check 119/0, 80 of 80 scripts compiled; DEPLOY OK. Left for a lane of its own:
+  the quest lines' four file shapes converged on `dialogue_line` rows.
 
 - **Walk 4's quest fixes (2026-11-08, owner walk 4).** Root causes and fixes, each read back from the built plugin:
   (1) talk silent on a new game: the plugin shipped no SEQ file, so its Start Game Enabled quests (ARG_Talk and the six
