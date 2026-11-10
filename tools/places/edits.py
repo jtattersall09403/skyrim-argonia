@@ -202,11 +202,18 @@ def check_save(save: dict, place_id: str | None = None) -> None:
         raise EditError(f"the save is for place '{save['place_id']}', not '{place_id}'")
     if not isinstance(save["ops"], list):
         raise EditError("ops must be a list")
+    notes = save.get("notes") or []
+    if not isinstance(notes, list) or not all(isinstance(x, dict) and isinstance(x.get("id"), str)
+                                              and isinstance(x.get("text"), str) for x in notes):
+        raise EditError("notes must be a list of {id, text, at}")
+    note_ids = {x["id"] for x in notes}
     last = None
     for op in save["ops"]:
         check_op(op)
         if last is not None and op["n"] <= last:
             raise EditError(f"op numbers must increase: {op['n']} follows {last}")
+        if op.get("note_group") is not None and op["note_group"] not in note_ids:
+            raise EditError(f"op {op['n']}: note_group {op['note_group']!r} is not among the save's notes")
         last = op["n"]
 
 
@@ -592,20 +599,27 @@ def apply_save(place_files: dict, save: dict, source=None) -> dict:
         raise EditConflict(f"save {save['save_id']} is already applied to {save['place_id']}")
     out = apply(place_files, mark_owner(save["ops"]), source)   # the studio's edits are the owner's words
     out["place"]["saves_applied"] = done + [save["save_id"]]
-    prefs = [preference(op, save["save_id"]) for op in save["ops"] if op.get("call", "fault") == "taste"]
+    said = _notes_by_op(save)
+    prefs = [preference(op, save["save_id"], said.get(op["n"])) for op in save["ops"] if op.get("call", "fault") == "taste"]
     if prefs:
         out["place"]["preferences"] = out["place"].get("preferences", []) + prefs
     return out
 
 
-def preference(op: dict, save_id: str) -> dict:
-    """A taste op as that place's preference row in place.json."""
+def _notes_by_op(save: dict) -> dict:
+    """Each noted op's number -> the words of its note (the save's `notes` by `note_group`, or the op's own `note`)."""
+    from tools.places.change_notes import note_of
+    return note_of(save)
+
+
+def preference(op: dict, save_id: str, note: str | None = None) -> dict:
+    """A taste op as that place's preference row in place.json; `note` is its note's words."""
     row = next((op[k] or op.get("before") for k in ("container", "loose", "possessions", "trader", "delivery")
                 if k in op), None) or {}
     what = (op.get("id") or (op.get("ref") or op.get("path") or op.get("person") or {}).get("id") or op.get("cell")
             or (f"{row.get('space')}/{row['ref']}" if "container" in op else None)
             or row.get("id") or row.get("person") or (f"give {row['give_seq']}" if "give_seq" in row else None))
-    return {"save": save_id, "n": op["n"], "op": op["op"], "what": what, "note": op.get("note", "")}
+    return {"save": save_id, "n": op["n"], "op": op["op"], "what": what, "note": note if note is not None else op.get("note", "")}
 
 
 # ---------- disk ----------

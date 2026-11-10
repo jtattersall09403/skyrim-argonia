@@ -197,3 +197,42 @@ def test_content_faults_are_passed_to_the_lessons_agent(tmp_path):
     assert "3 of the fault edits" in text and str(skill) in text and "place-stock.SKILL.md" in text
     (run.dir / "faults.jsonl").write_text(json.dumps({"n": 1, "op": "ref.move"}) + "\n")
     assert "place-stock" not in agent_prompt(run)
+
+
+def test_grouped_notes_reach_the_lessons_step(repo):
+    """A note on several edits reaches the lessons agent once, with exactly the edits it covers said in plain words;
+    an older save's per-op note still reads as a note; a taste edit's preference keeps its note's words."""
+    r, agent = repo
+    save_p = r / "newworld/places/fixture/edits/s1.json"
+    save = json.loads(save_p.read_text())
+    for op in save["ops"]:
+        if op["n"] in (3, 4, 10):
+            op["note_group"] = "g1"
+        if op["n"] == 2:
+            op["note_group"] = "g2"
+    save["notes"] = [{"id": "g1", "text": "stalls must never block a walkway", "at": "x"},
+                     {"id": "g2", "text": "I like it gone", "at": "x"}]
+    save_p.write_text(json.dumps(save))
+    subprocess.run(["git", "-C", str(r), "commit", "-qam", "notes"], check=True)
+    p = run_chain(r, agent)
+    assert p.returncode == 0, p.stderr
+    run = r / "out/places/runs/fixture.s1"
+    said = json.loads((run / "notes.json").read_text())["notes"]
+    assert [(s["text"], s["call"], [o["n"] for c in s["changes"] for o in c["ops"]]) for s in said] == [
+        ("off the bank", "fault", [1]), ("I like it gone", "taste", [2]),
+        ("stalls must never block a walkway", "fault", [3, 4, 10])]
+    moved = said[2]["changes"][2]["ops"][0]
+    assert moved["op"] == "ref.move" and moved["from"] and moved["to"] and moved["where"] != "?"
+    faults = [json.loads(x) for x in (run / "faults.jsonl").read_text().splitlines()]
+    assert {f["n"]: f.get("note") for f in faults}[10] == "stalls must never block a walkway"
+    from tools.places.finalise import Run, agent_prompt
+    assert "notes.json" in agent_prompt(Run(r, "fixture", "s1"))
+    prefs = edits.load_place(r / "newworld/places/fixture")["place"]["preferences"]
+    assert [p_["note"] for p_ in prefs if p_["n"] == 2] == ["I like it gone"]
+
+
+def test_a_save_naming_a_missing_note_is_refused():
+    save = {"save_id": "s", "place_id": "p", "ops": [{"n": 1, "op": "veg.clear", "space": "exterior", "items": [],
+                                                      "note_group": "g9"}], "notes": []}
+    with pytest.raises(edits.EditError):
+        edits.check_save(save)

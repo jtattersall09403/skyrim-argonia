@@ -23,7 +23,7 @@ import sys
 import time
 from pathlib import Path
 
-from tools.places import edits
+from tools.places import change_notes, edits
 
 CODE_REPO = Path(__file__).resolve().parents[2]
 STEPS = ("record", "build", "learn", "report")
@@ -235,7 +235,10 @@ def agent_prompt(run: Run) -> str:
     places = run.repo / "newworld/places"
     return f"""Follow the skill place-lessons ({CODE_REPO / '.claude/skills/place-lessons/SKILL.md'}) on this finalised
 save. Inputs:
-- the save's fault edits, one per line: {run.dir / 'faults.jsonl'} (the whole save, taste included: {run.save_path})
+- the save's fault edits, one per line: {run.dir / 'faults.jsonl'} (the whole save, taste included: {run.save_path});
+  an edit's `note` is the words of the owner's note that covers it
+- the owner's notes, each with exactly the edits it covers, said as what changed, from what to what, and where:
+  {run.dir / 'notes.json'} (one note is one statement about all its edits)
 - the place files before the save and after it, as one JSON each: {run.dir / 'before.json'}, {run.dir / 'after.json'}
   (large: search them for the ids and positions you need rather than reading them whole)
 - the build and check results: {run.dir / 'build.done'}
@@ -244,6 +247,15 @@ save. Inputs:
 - the skill-fixes list for tool changes owed: {run.fixes}
 Write the whole rewritten place-build skill to {run.draft_skill} (only when the recipe changes; finalise puts it in
 place), and the lessons file to {run.dir / 'lessons.json'}. Edit nothing else but the skill-fixes list.{stock_note(run)}"""
+
+
+def write_notes(run: Run, save: dict) -> None:
+    """notes.json: each of the owner's notes with exactly the edits it covers, each said in plain words (what was
+    changed, from what to what, where), read against the place files as they stood before the save."""
+    before = run.dir / "before.json"
+    files = json.loads(before.read_text()) if before.exists() else None
+    said = change_notes.present(save, run.place_id, files, run.repo / "out/places/bundles")
+    (run.dir / "notes.json").write_text(json.dumps({"notes": said}, indent=1, ensure_ascii=False) + "\n")
 
 
 def stock_note(run: Run) -> str:
@@ -322,10 +334,13 @@ def step_learn(run: Run, budget: float, turns: int) -> dict:
     else:
         keep_texts(run)
     started.write_text(now())
+    said = change_notes.note_of(save)
     with open(run.dir / "faults.jsonl", "w") as fh:
         for op in save["ops"]:
             if op.get("call", "fault") == "fault":
-                fh.write(json.dumps(op, separators=(",", ":")) + "\n")
+                row = op | ({"note": said[op["n"]]} if op["n"] in said else {})
+                fh.write(json.dumps(row, separators=(",", ":")) + "\n")
+    write_notes(run, save)
     (run.dir / "lessons.json").unlink(missing_ok=True)
     run.draft_skill.unlink(missing_ok=True)
     run.draft_stock_skill.unlink(missing_ok=True)

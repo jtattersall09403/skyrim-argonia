@@ -12,8 +12,12 @@ thing right first time. The prompt names every input and the only files you may 
 
 ## Inputs
 
-- The save (`edits/<save_id>.json`): ordered ops, each with `op`, `space`, `call`, an optional `note` in the
-  owner's words, and its `before` and `after` (the op table is in `docs/design/place-studio.md`, Edits).
+- The save (`edits/<save_id>.json`): ordered ops, each with `op`, `space`, `call`, and its `before` and `after`
+  (the op table is in `docs/design/place-studio.md`, Edits). In the fault edits each op carries `note`, the
+  words of the owner's note that covers it, when one does.
+- The owner's notes (`notes.json`): each note's words with exactly the edits it covers, each edit said as what
+  changed, from what to what, and where. One note is one statement about all of its edits: "these three stalls
+  moved off the boardwalk: stalls must never block a walkway".
 - The place files before and after the save (`before.json`, `after.json`): every ref with its base, kind,
   position, rotation and seat; clearance; land patches; paths; people with routines.
 - The build and check results, when there are any.
@@ -23,15 +27,17 @@ thing right first time. The prompt names every input and the only files you may 
 ## Method
 
 1. **Read the recipe first.** Read `place-build` whole, so you know what a builder following it would do.
-2. **Take only the faults.** Set aside every `taste` op. Number the fault ops you will reason about.
+2. **Take only the faults.** Set aside every `taste` op. Number the fault ops you will reason about. Read the
+   owner's notes next: a note names the cause the owner sees in its edits, in the owner's words.
 3. **Reconstruct each fault.** For each fault op, say what the builder placed and what the owner did instead,
    in the place's terms: what kind of thing it is, what it stands on or near (bank, water, slope, street, door,
    another building), which way it faces, how far it moved and in which direction relative to those features.
    Look up neighbours in `before.json`: the nearest water, street, building and door, the ground's slope.
 4. **Group into patterns.** Ops that share a cause are one fault: twenty houses each nudged off a slope is one
    pattern, not twenty. Group by what the moved things have in common (kind, setting, direction of the change
-   relative to the feature) rather than by op type. A pattern needs at least two ops, or one op the owner's note
-   says is general.
+   relative to the feature) rather than by op type. The edits one note covers are one group the owner has made
+   already: start from it, and test the note's words against each of its edits. A pattern needs at least two ops,
+   or one op the owner's note says is general.
 5. **Find the cause in the recipe.** For each pattern, find the step of `place-build` that led the builder there:
    a rule that was wrong, a rule that was missing, an order of steps that decided too early, a measure taken at
    the wrong point. Quote the text to yourself; if no text led there, the recipe is silent on it.

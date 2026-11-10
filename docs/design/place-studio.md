@@ -447,10 +447,11 @@ derive` keeps every such row of the stock source as it stands and lists the diff
 The studio never writes place files. It keeps an ordered list of operations; undo and redo move a cursor in it; a
 save is the list up to the cursor.
 
-`edits/<save_id>.json`: `{save_id, place_id, name, at, rev, final: bool, base:{draft_key, ground_sha}, ops:[...]}`.
+`edits/<save_id>.json`: `{save_id, place_id, name, at, rev, final: bool, base:{draft_key, ground_sha}, ops:[...],
+notes:[{id, text, at}]}`.
 `rev` is raised by the server on every write. The autosave is the same shape at `out/places/autosave/<place_id>.json`
 (on disk and in the private bucket, never committed).
-An op: `{n, at, op, space, call: "fault"|"taste", note?, stroke?, ...payload with before and after}`.
+An op: `{n, at, op, space, call: "fault"|"taste", note_group?, stroke?, ...payload with before and after}`.
 
 | op | payload |
 |---|---|
@@ -498,6 +499,23 @@ An op: `{n, at, op, space, call: "fault"|"taste", note?, stroke?, ...payload wit
   the copied room's rows given as `source: {space_id: [row...]}`.
 - `place.json` lists `saves_applied`; a save already listed is rejected. Applying a save also appends each `taste`
   op to `place.json` `preferences` as `{save, n, op, what, note}`.
+
+**Notes on changes.** The owner's words for the agent travel with the changes they are about. A note is
+`{id, text, at}` in the save's `notes`, listed once; every op it covers carries its `id` in `note_group`, and an op
+naming a note the save does not list is a schema error (`check_save`). A change is one op, or the ops of one
+`stroke`; a note covers whole changes. An older save's per-op `note` reads as a note on that op and on the ops
+beside it with the same words (`tools/places/change_notes.py: groups`, `js/note_groups.js: groupsOf`). In the
+studio the note bar sits under the views in the page's flow, never over the panel or a view's controls: it counts
+the changes since the last note (the applied changes after the last noted one), a stepper trims the count to the
+last few, a Fault/Taste switch sets their call, and one ordinary text field (typed, handwritten or spoken) takes
+the note; confirming gives those changes one new note and the count starts again. Changes never noted stay
+unnoted. History picks any changes and gives them one note; tapping a change's note picks its changes and offers
+its words to edit or take away. The Notes panel lists the notes on the applied changes ("about 3 changes"), and
+Select picks the things they touched. Undo and redo leave each op's `note_group` as it is, so a note covers what is
+applied and comes back with its changes; a save writes the notes its applied ops name. A taste op's preference row
+takes its note's words. The agent reads each note with exactly the changes it covers, each said as what changed,
+from what to what, and where (`change_notes.present`): finalise's lessons step (`notes.json`) and
+`python -m tools.places notes`, which lists them for every save not yet finalised.
 
 `call` defaults to `fault`. Applying a save to the place files is one function (`tools/places/edits.py: apply`,
 `apply_save` for a whole save), used by load (in memory) and by finalise (to disk). The fixtures in
@@ -550,7 +568,8 @@ POST /api/place/<id>/notes                    {text, things, view} adds a note; 
                                               Kept in the place's edits/notes.jsonl (outside the draft's and the
                                               build's identity) and committed by path. An agent lists the open
                                               notes with `python -m tools.places notes`, makes the change, and
-                                              closes each with `notes done <place> <id> --reply "..."`
+                                              closes each with `notes done <place> <id> --reply "..."`. Notes on
+                                              changes are in the saves (Edits: notes on changes)
 GET  /api/place/<id>/stock                    who the place's people are and what it holds, from the database's
                                               sources (Stock: the studio)
 GET  /api/place/<id>/items?q=&kind=&limit=    item search for a holder: each result allowed or refused, with why
@@ -856,7 +875,8 @@ that plugin), so a draft that passes it passes `check` on the build.
 3. **Learn**: a headless agent (`.claude/agents/place-lessons.md`, `claude -p`, capped at $30 and 60 turns) runs
    the skill `place-lessons` on the save's fault ops and rewrites the skill `place-build` as a clean recipe, which
    the agent writes whole to `out/places/runs/<run_id>/place-build.SKILL.md` (it reads only `faults.jsonl`, the
-   save's fault ops) and finalise puts in place and commits as its own commit (one `git revert` removes it). Fault
+   save's fault ops, each with its note's words as `note`, and `notes.json`, each of the owner's notes with
+   exactly the ops it covers said in plain words) and finalise puts in place and commits as its own commit (one `git revert` removes it). Fault
    content ops (`identity.edit`, `stock.*`) are lessons for the skill `place-stock`: the prompt names them, and a
    rewrite the agent writes to `place-stock.SKILL.md` in the run folder is put in place in the same commit. Tool changes it finds are rows in
    `docs/skill-fixes.md`, never code edits. If the agent fails or runs over budget the skill is left as it was,

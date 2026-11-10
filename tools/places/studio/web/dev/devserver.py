@@ -399,7 +399,7 @@ class H(BaseHTTPRequestHandler):
                 return self.send(409, {"error": "this save changed since you last read it", "current": c})
             at = now()
             row = {"save_id": sid, "place_id": pid, "name": name, "at": at, "rev": rev + 1, "final": False, "base": base,
-                   "ops": ops, "kept": "disk"}
+                   "ops": ops, "notes": data.get("notes") or [], "kept": "disk"}
             f.parent.mkdir(parents=True, exist_ok=True)
             tmp = f.with_suffix(".tmp")
             tmp.write_text(json.dumps(row))

@@ -1,5 +1,5 @@
 // The sliding panel and the small overlays: what is selected, search, people, land, plants, paths, history,
-// saves and finalise, the fault-or-taste chip and the first-run guide. Plain English throughout.
+// saves and finalise, notes for the agent and the first-run guide. Plain English throughout.
 import { api } from './api.js';
 import { ICON } from './icons.js';
 import { thumb } from './thumbs.js';
@@ -8,6 +8,7 @@ import { clock, parseClock } from './geom.js';
 import { whereOf, whereRows } from './where.js';
 import { Contents } from './contents.js';
 import { identityOf } from './stock.js';
+import { groupsOf, touched } from './note_groups.js';
 
 const $ = (s) => document.querySelector(s);
 const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -358,23 +359,21 @@ export class Panels {
     parts.push(list);
     this.show('Paths and streets', parts);
   }
-  // ---------- fault or taste ----------
-  chip(ops) {
-    const c = $('#chip'), a = this.app, ns = ops.map((o) => o.n);
-    const call = () => ops[0].call;
-    c.innerHTML = '';
-    const what = el(`<span class="what">${esc(a.describe(ops[0]))}${ops.length > 1 && !ops[0].stroke ? ` and ${ops.length - 1} more` : ''}</span>`);
-    const btn = el(`<button class="call" data-call="${call()}" aria-label="Fault or taste: tap to change">${call() === 'taste' ? 'Taste' : 'Fault'}</button>`);
-    btn.onclick = () => { a.log.setCall(ns, call() === 'taste' ? 'fault' : 'taste'); btn.dataset.call = call(); btn.textContent = call() === 'taste' ? 'Taste' : 'Fault'; keep(); };
-    const note = el(`<input type="text" placeholder="Add a note (optional)" aria-label="Note for this change" value="${esc(ops[0].note || '')}">`);
-    note.onfocus = () => clearTimeout(this.chipT);
-    note.onchange = () => { a.log.setCall(ns, call(), note.value.trim()); };
-    note.onblur = () => keep();
-    note.onkeydown = (e) => { if (e.key === 'Enter') note.blur(); };
-    c.append(what, btn, note); c.hidden = false;
-    const keep = () => { clearTimeout(this.chipT); this.chipT = setTimeout(() => { if (document.activeElement !== note) c.hidden = true; }, 7000); };
-    keep();
+  // ---------- notes on changes ----------
+  notesChanged() { if (this.name === 'notes') this.notesPanel(); }
+  // Select the things some changes touched (in the space on show), so the owner sees what a note is about.
+  selectTouched(ops) {
+    const a = this.app, here = a.placeRefsById();
+    const ids = [...new Set(touched(ops).filter((t) => t.kind === 'ref' && t.space === a.ours.space && here.has(t.id)).map((t) => t.id))];
+    if (!ids.length) {
+      const elsewhere = touched(ops).some((t) => t.space !== a.ours.space);
+      a.toast(elsewhere ? 'Those changes are in another room or outside.' : 'Those changes touched the land, plants, paths or people, not things to select.');
+      return;
+    }
+    this.T.use('select'); a.selection = new Set(ids); this.T.selectionChanged();
   }
+  // One change's words, for a list.
+  changeWords(group, op) { return group.length > 1 && op.stroke ? `${this.app.describe(op)} (${group.length} cells)` : this.app.describe(op); }
   // ---------- history ----------
   historyChanged() { if (this.name === 'history') this.historyPanel(); }
   historyPanel() {
@@ -387,7 +386,20 @@ export class Panels {
     mk('Chosen are faults', () => { L.setCall([...this.chosen], 'fault'); this.chosen.clear(); this.historyPanel(); });
     mk('From the first chosen on: taste', () => { const n = Math.min(...this.chosen); if (Number.isFinite(n)) L.sinceCall(n, 'taste'); this.chosen.clear(); this.historyPanel(); });
     parts.push(bar);
-    const list = el('<ol class="history"></ol>');
+    // one note for the chosen changes; tapping a change's note chooses its changes and puts its words here to edit
+    if (this.chosen.size) {
+      const noteRow = el('<div class="row"></div>');
+      const words = el(`<input class="text" type="text" enterkeyhint="done" aria-label="One note for the chosen changes" placeholder="One note for the ${this.chosen.size === 1 ? 'chosen change' : `${this.chosen.size} chosen changes`}">`);
+      words.value = this.historyNote || ''; words.oninput = () => { this.historyNote = words.value; };
+      const keep = () => { const t = words.value.trim(); if (!t) return; L.setNote([...this.chosen], t); this.chosen.clear(); this.historyNote = ''; a.toast('Note kept with the chosen changes.'); this.historyPanel(); };
+      words.onkeydown = (e) => { if (e.key === 'Enter' && !e.isComposing) { e.preventDefault(); keep(); } };
+      const go = el('<button class="primary">Note the chosen</button>'); go.onclick = keep;
+      const off = el('<button class="quiet">Take their note away</button>');
+      off.onclick = () => { L.setNote([...this.chosen], ''); this.chosen.clear(); this.historyNote = ''; this.historyPanel(); };
+      noteRow.append(words, go, off); parts.push(noteRow);
+    }
+    const list = el('<ol class="history changes-noted"></ol>');
+    const noteOf = new Map(); for (const g of groupsOf(L.ops, L.notes)) for (const o of g.ops) noteOf.set(o.n, g);
     const top = el(`<li class="${L.cursor === 0 ? 'here' : ''}"><span class="what">The draft as the agent made it</span></li>`);
     const b0 = el('<button class="quiet">Go back here</button>'); b0.onclick = () => L.goto(0); top.append(b0); list.append(top);
     let lastStroke = null;
@@ -398,9 +410,13 @@ export class Panels {
       const li = el(`<li class="${future ? 'future' : ''}"></li>`);
       const chk = el(`<button class="quiet" aria-pressed="${this.chosen.has(op.n)}" aria-label="Choose this change" style="min-width:44px;padding:0">${this.chosen.has(op.n) ? '✓' : ''}</button>`);
       chk.onclick = () => { this.chosen.has(op.n) ? this.chosen.delete(op.n) : this.chosen.add(op.n); this.historyPanel(); };
-      const text = group.length > 1 ? `${a.describe(op)} (${group.length} cells)` : a.describe(op);
-      const what = el(`<button class="what" style="text-align:left;justify-content:flex-start">${esc(text)}${op.note ? `<span class="note">${esc(op.note)}</span>` : ''}</button>`);
-      what.onclick = () => L.goto(group[group.length - 1].n);
+      const g = noteOf.get(op.n), text = this.changeWords(group, op);
+      const about = g && g.changes.length > 1 ? ` (one note for ${g.changes.length} changes)` : '';
+      const what = el(`<button class="what" style="text-align:left;justify-content:flex-start;flex-direction:column;align-items:flex-start;display:flex">${esc(text)}${g ? `<span class="note said" data-note="${esc(g.id)}">${esc(g.text)}${esc(about)}</span>` : ''}</button>`);
+      what.onclick = (e) => {
+        if (g && e.target.closest('.said')) { this.chosen = new Set(g.ops.map((o) => o.n)); this.historyNote = g.text; this.historyPanel(); return; }
+        L.goto(group[group.length - 1].n);
+      };
       const call = el(`<button class="call" data-call="${op.call}">${op.call === 'taste' ? 'Taste' : 'Fault'}</button>`);
       call.onclick = () => { L.setCall([op.n], op.call === 'taste' ? 'fault' : 'taste'); this.historyPanel(); };
       li.append(chk, what, call); list.append(li);
@@ -439,11 +455,35 @@ export class Panels {
       } catch (e) { a.toast(`The note was not kept: ${e.message}. It is still in the box; try again.`, 7000); }
       if (this.name === 'notes') this.notesPanel();
     };
-    parts.push(send, el('<h3>Notes so far</h3>'));
+    parts.push(send);
+    // the notes kept with changes (the note bar under the views, or History): each with the changes it is about
+    const groups = groupsOf(a.log?.applied() || [], a.log?.notes);
+    if (groups.length) {
+      parts.push(el('<h3>Notes with your changes</h3>'), el('<p class="tag">These go to the agent with the changes they are about when you finalise.</p>'));
+      const gl = el('<ol class="history notes change-notes"></ol>');
+      for (const g of [...groups].reverse()) {
+        const n = g.changes.length, call = g.ops.every((o) => o.call === 'taste') ? 'taste' : 'fault';
+        const lines = g.changes.slice(0, 4).map((c) => esc(this.changeWords(c, c[0]))).join('; ') + (n > 4 ? `; and ${n - 4} more` : '');
+        const li = el(`<li><span class="call-dot" data-call="${call}"></span><span class="what">${esc(g.text)}<span class="note">About ${n === 1 ? 'one change' : `${n} changes`} (${call}): ${lines}</span></span></li>`);
+        const sel = el('<button class="quiet">Select</button>'); sel.onclick = () => this.selectTouched(g.ops);
+        const ed = el('<button class="quiet">Edit</button>');
+        ed.onclick = () => {
+          const box = el('<input class="text" type="text" enterkeyhint="done" aria-label="The words of this note">'); box.value = g.text;
+          const ok = el('<button class="primary">Keep</button>');
+          const keep = () => { const t = box.value.trim(); if (t) a.log.setNote(g.ops.map((o) => o.n), t); };
+          ok.onclick = keep; box.onkeydown = (e) => { if (e.key === 'Enter' && !e.isComposing) { e.preventDefault(); keep(); } };
+          const r = el('<div class="row"></div>'); r.append(box, ok); li.append(r); box.focus();
+        };
+        const rm = el('<button class="quiet">Remove</button>'); rm.onclick = () => a.log.setNote(g.ops.map((o) => o.n), '');
+        const btns = el('<div class="row"></div>'); btns.append(sel, ed, rm); li.append(btns); gl.append(li);
+      }
+      parts.push(gl);
+    }
+    parts.push(el('<h3>Notes so far</h3>'));
     let list = [];
     try { list = await api.notes(pid) || []; } catch (e) { parts.push(el(`<p>The notes could not be listed: ${esc(e.message)}</p>`)); }
     if (!list.length) parts.push(el('<p class="tag">None yet.</p>'));
-    const ol = el('<ol class="history notes"></ol>');
+    const ol = el('<ol class="history notes free-notes"></ol>');
     for (const n of [...list].reverse()) {
       const things = n.things?.length ? (n.things.length === 1 ? `About ${n.things[0].name || 'one thing'}` : `About ${n.things.length} things`) : 'About the place';
       const li = el(`<li class="${n.done ? 'future' : ''}"><span class="what">${esc(n.text)}<span class="note">${esc(things)} · ${esc(new Date(n.at).toLocaleString())} · ${n.done ? 'answered' : 'waiting for the agent'}</span>${n.reply ? `<span class="note reply">Agent: ${esc(n.reply)}</span>` : ''}</span></li>`);
@@ -644,7 +684,7 @@ export class Panels {
       <li>${ICON.move}<span><strong>Look around with your fingers.</strong> One finger turns the view, two fingers drag, pinch and twist.</span></li>
       <li>${ICON.select}<span><strong>Work with the pen.</strong> Tap to select, draw round things to select several, draw paths and land. Your palm and fingers never change anything while the pen is in use.</span></li>
       <li>${ICON.search}<span><strong>Copy from the source.</strong> Tap something in the source place on the right, then tap our place where it should go.</span></li>
-      <li>${ICON.history}<span><strong>Every change is a fault</strong> unless you mark it a taste call on the chip that appears after it. Undo and redo are at the top.</span></li></ul>
+      <li>${ICON.history}<span><strong>Every change is a fault</strong> unless you mark it a taste call in the bar under the views. Say what was wrong in that bar too: one note for all the changes since your last note. Undo and redo are at the top.</span></li></ul>
       <button class="primary">Start</button></div>`;
     o.querySelector('button').onclick = () => { o.hidden = true; try { localStorage.setItem('studio.intro.v1', '1'); } catch { /* fine */ } };
   }

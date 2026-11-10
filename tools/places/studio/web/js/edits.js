@@ -2,6 +2,7 @@
 // model. Pure JavaScript, no DOM: node runs it against the shared fixtures (test/edits_fixtures). It mirrors
 // tools/places/edits.py: apply(model, ops) gives the same place files.
 import { describeContent } from './stock.js';
+import { newNoteId } from './note_groups.js';
 
 export const GRID = 33;
 const TOL = 1e-3;
@@ -279,9 +280,10 @@ export function modelToFiles(m) {
   return sortKeys(out);
 }
 
-// The session's history: ops, a cursor (ops before it are applied), calls (fault|taste) and notes.
+// The session's history: ops, a cursor (ops before it are applied), calls (fault|taste) and notes. A note is
+// {id, text, at} in this.notes; each op it covers carries its id in `note_group` (note_groups.js).
 export class EditLog {
-  constructor(model) { this.model = model; this.ops = []; this.cursor = 0; this.listeners = []; this.n = 0; }
+  constructor(model) { this.model = model; this.ops = []; this.cursor = 0; this.listeners = []; this.n = 0; this.notes = new Map(); }
   on(fn) { this.listeners.push(fn); }
   emit(kind, ops) { for (const fn of this.listeners) fn(kind, ops); }
   // Add one op or a group (one stroke); applies them and drops the redo tail.
@@ -328,9 +330,39 @@ export class EditLog {
     this.emit('call', hit); return hit;
   }
   sinceCall(n, call) { return this.setCall(this.ops.filter((o) => o.n >= n).map((o) => o.n), call); }
+  // The ops of changes ns, whole strokes.
+  strokesOf(ns) {
+    const set = new Set(ns), strokes = new Set(this.ops.filter((o) => set.has(o.n) && o.stroke).map((o) => o.stroke));
+    return this.ops.filter((o) => set.has(o.n) || (o.stroke && strokes.has(o.stroke)));
+  }
+  // One note for changes ns (and call, when given, for all of them). When ns are exactly one note's changes its
+  // words change; otherwise they leave any note they had and share a new one. Empty words take their note away.
+  setNote(ns, text, call) {
+    const hit = this.strokesOf(ns); if (!hit.length) return [];
+    text = String(text ?? '').trim();
+    if (call) for (const o of hit) o.call = call;
+    const ids = new Set(hit.map((o) => o.note_group || ''));
+    const one = ids.size === 1 && !ids.has('') ? [...ids][0] : null;
+    if (text && one && this.ops.filter((o) => o.note_group === one).length === hit.length && this.notes.has(one)) {
+      this.notes.get(one).text = text;
+    } else {
+      const id = text ? newNoteId(this.notes) : null;
+      if (id) this.notes.set(id, { id, text, at: new Date().toISOString() });
+      for (const o of hit) { delete o.note; if (id) o.note_group = id; else delete o.note_group; }
+      const used = new Set(this.ops.map((o) => o.note_group).filter(Boolean));
+      for (const k of [...this.notes.keys()]) if (!used.has(k)) this.notes.delete(k);
+    }
+    this.emit('note', hit); return hit;
+  }
+  // The notes the applied ops carry, for a save: each once.
+  notesFor(ops = this.applied()) {
+    const used = new Set(ops.map((o) => o.note_group).filter(Boolean));
+    return [...this.notes.values()].filter((n) => used.has(n.id)).map((n) => ({ ...n }));
+  }
   applied() { return this.ops.slice(0, this.cursor); }
-  // A save's ops onto the model in order; stops at the first that no longer fits and says which.
-  load(ops) {
+  // A save's ops onto the model in order (and its notes); stops at the first that no longer fits and says which.
+  load(ops, notes = []) {
+    this.notes = new Map((notes || []).filter((x) => x?.id).map((x) => [x.id, { id: x.id, text: String(x.text ?? ''), at: x.at }]));
     this.ops = []; this.cursor = 0; this.n = 0; let err = null;
     for (const op of ops) {
       try { applyOp(this.model, op); } catch (e) { err = e; break; }

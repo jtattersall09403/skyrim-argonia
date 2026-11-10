@@ -15,6 +15,7 @@ import { People } from './people.js';
 import { Panels, plainKind } from './panels.js';
 import { segDist, clock } from './geom.js';
 import { Governor } from './governor.js';
+import { NoteBar } from './notes_bar.js';
 
 const VEG = new Set(['tree', 'plant', 'groundcover']);
 // The page tells the server what it is doing and what went wrong (out/places/studio-client.log), so a fault on the
@@ -38,7 +39,7 @@ class Studio {
     this.ours = { view: new View($('#view-ours'), { name: 'Our place', app: this }), space: 'exterior', side: 'ours' };
     this.src = { view: new View($('#view-src'), { name: 'Source place', app: this }), space: 'exterior', side: 'src' };
     this.ours.view.side = this.ours; this.src.view.side = this.src;
-    this.tools = new Tools(this); this.people = new People(this); this.panels = new Panels(this);
+    this.tools = new Tools(this); this.people = new People(this); this.panels = new Panels(this); this.noteBar = new NoteBar(this);
     this.linked = false; this.dirtySave = false; this.revs = {}; this.loop();
     this.wireChrome();
   }
@@ -114,7 +115,7 @@ class Studio {
     // the built place's walking mesh, for people's routes: fetched beside the rest, never waited for
     api.nav(id).then((d) => { if (this.place?.place_id === id && d?.spaces) this.people.setNav(d.spaces); }).catch(() => {});
     this.log = new EditLog(this.model);
-    this.log.on((kind, ops) => this.afterEdit(kind, ops));
+    this.log.on((kind, ops) => this.afterEdit(kind, ops)); this.noteBar.render();
     this.worldRefs = (ground.spaces.exterior?.refs || []).filter((r) => r.layer !== 'place'); this._wbk = null;
     const origin = ground.meta.anchor ? ground.meta.anchor.map(Math.round) : [0, 0, 0];
     this.ours.origin = origin;
@@ -332,6 +333,9 @@ class Studio {
   // ---------- edits ----------
   push(ops, space) { return this.log.push(ops, space ?? this.ours.space); }
   afterEdit(kind, ops) {
+    this.noteBar.changed(kind);
+    // a fault-or-taste call or a note changes no thing in the place: only the lists that show them
+    if (kind === 'call' || kind === 'note') { this.markUnsaved(); this.panels.historyChanged(); this.panels.notesChanged(); return; }
     const touched = new Set(ops.map((o) => o.op.split('.')[0]));
     if (touched.has('land') || touched.has('path')) { this.ours.grass?.invalidate(); }
     if (touched.has('land')) { const keys = new Set(ops.filter((o) => o.op === 'land.patch').map((o) => o.cell.join(','))); this.ours.terrainMesh?.refreshCells(keys); this.ours.terrainMesh?.tintCells(keys); }
@@ -342,10 +346,8 @@ class Studio {
     if (touched.has('person') || touched.has('ref')) this.people.refresh();
     // what a person is or carries: the People panel shows it (the Selected panel is drawn again below)
     if ((touched.has('identity') || touched.has('stock')) && this.panels.name === 'people') this.panels.peoplePanel();
-    if (kind !== 'call') this.markUnsaved();
-    this.panels.historyChanged(); this.updateUndo();
-    if (kind === 'push') this.panels.chip(ops);
-    if (kind === 'call') this.markUnsaved();
+    this.markUnsaved();
+    this.panels.historyChanged(); this.panels.notesChanged(); this.updateUndo();
     // the selection may point at things that undo took away
     for (const id of [...this.selection]) if (!this.placeRefsById().has(id)) this.selection.delete(id);
     this.tools.selectionChanged();
@@ -375,13 +377,13 @@ class Studio {
   saveBody(save_id, name, final = false) {
     return { save_id, place_id: this.place.place_id, name, at: new Date().toISOString(), final, rev: this.revs[save_id] || 0,
       base: { draft_key: this.place.stamps?.draft?.key || this.draft.meta.stamp?.key || null, ground_sha: this.place.stamps?.ground_sha || this.status?.ground_sha || null },
-      ops: this.log.applied() };
+      ops: this.log.applied(), notes: this.log.notesFor() };
   }
   // After a finalise has recorded the edits they are part of the place: the unsaved copy of them is emptied, so the
   // next visit starts on the finalised place and is not offered the same edits again.
   async dropAutosave() {
     clearTimeout(this.autoT); this.finalised = true;
-    try { const r = await api.putSave(this.place.place_id, 'autosave', { ...this.saveBody('autosave', 'Autosave'), ops: [] }); if (!r.conflict) this.revs.autosave = r.rev; this.dirtySave = false; }
+    try { const r = await api.putSave(this.place.place_id, 'autosave', { ...this.saveBody('autosave', 'Autosave'), ops: [], notes: [] }); if (!r.conflict) this.revs.autosave = r.rev; this.dirtySave = false; }
     catch { /* the start sheet's Discard does the same */ }
   }
   async autosave() {
@@ -406,11 +408,11 @@ class Studio {
     const spaces = {}; for (const [sid, s] of Object.entries(this.draft.spaces)) spaces[sid] = s.refs;
     const m = modelFromFiles({ spaces, ...this.draft.files, ...this.stockFiles() });
     Object.assign(this.model, m); if (this.terrain) this.terrain.override = this.model.land;
-    this.log.model = this.model; this.people.invalidateRoutes(); const err = this.log.load(save.ops || []);
+    this.log.model = this.model; this.people.invalidateRoutes(); const err = this.log.load(save.ops || [], save.notes || []);
     if (err) { console.error(err); this.toast(`Opened ${this.log.ops.length} of ${save.ops.length} changes. The next one no longer fits the draft: ${err.message}`, 8000); }
     this.terrain?.bump(null); this.ours.terrainMesh?.refreshCells(this.ours.terrainMesh.cells.keys()); this.ours.terrainMesh?.rebakeAll(); this.ours.terrainMesh?.tint?.();
     this.ours.trail = []; this.showSpace(this.ours, 'exterior');
-    this.refreshSide(this.ours); this.panels.historyChanged(); this.updateUndo();
+    this.refreshSide(this.ours); this.panels.historyChanged(); this.panels.notesChanged(); this.updateUndo(); this.noteBar.changed('load');
   }
   // ---------- chrome ----------
   wireChrome() {
