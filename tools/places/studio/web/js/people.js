@@ -8,7 +8,13 @@ const COLOURS = ['#2f7fd1', '#c2410c', '#15803d', '#7e22ce', '#b45309', '#0e7490
 const NS = 'http://www.w3.org/2000/svg';
 const clone = (o) => JSON.parse(JSON.stringify(o));
 const rnd = (v) => Math.round(v * 100) / 100;
-export const STOP_KINDS = { home: 'At home', bed: 'Sleeping', work: 'Working', meal: 'Eating', patrol: 'On patrol', wander: 'Walking about', pray: 'Praying', shop: 'Shopping' };
+export const STOP_KINDS = { sleep: 'Sleeping', eat: 'Eating', work: 'Working', wander: 'Walking about', sandbox: 'Idling about', patrol: 'On patrol' };
+// A patrol is {points: [[x,y] | [x,y,z] | stop...], loop}; an older bare list of points is read the same.
+export const patrolOf = (p) => (Array.isArray(p.patrol) ? p.patrol : p.patrol?.points) || [];
+export function setPatrol(x, pts) {
+  if (!pts.length) { delete x.patrol; return; }
+  x.patrol = { points: pts, loop: Array.isArray(x.patrol) ? true : (x.patrol?.loop ?? true) };
+}
 
 export class People {
   constructor(app) {
@@ -21,10 +27,30 @@ export class People {
   list() { return [...(this.app.model?.people.values() || [])]; }
   colour(p) { const i = this.list().indexOf(p); return COLOURS[(i < 0 ? 0 : i) % COLOURS.length]; }
   // ---------- where a stop is, seen from a space ----------
-  refPos(space, id) { return this.app.model.spaces[space]?.refs.get(id)?.pos || null; }
+  // a stop's ref is our id or a source key of that space
+  refPos(space, id) {
+    const refs = this.app.model.spaces[space]?.refs; if (!refs) return null;
+    const r = refs.get(id) || [...refs.values()].find((x) => x.src === id); return r?.pos || null;
+  }
+  // a stop with neither ref nor pos stands at its space's first furniture
+  firstFurniture(space) {
+    const refs = [...(this.app.model.spaces[space]?.refs.values() || [])];
+    return (refs.find((r) => r.kind === 'furniture') || (space !== 'exterior' && refs.find((r) => r.kind !== 'door')))?.pos || null;
+  }
+  ground(p) {
+    if (!p) return null;
+    if (p.length >= 3) return p;
+    const h = this.app.terrain?.heightAt(p[0], p[1]); return [p[0], p[1], h ?? 0];
+  }
   stopPoint(stop) {
-    const at = stop.at || {}; const p = at.pos || (at.ref && this.refPos(at.space || 'exterior', at.ref));
-    return { space: at.space || 'exterior', p: p ? this.app.seatedPoint?.(p) || p : null };
+    const at = stop.at || {}, space = at.space || 'exterior';
+    let p = at.pos || (at.ref && this.refPos(space, at.ref)) || (!at.ref && !at.pos && this.firstFurniture(space));
+    p = p && (p.length >= 3 ? p : this.ground(p));
+    return { space, p: p ? this.app.seatedPoint?.(p) || p : null };
+  }
+  // patrol points as [x,y,z] outside (a stop point inside another space is left out of the drawn route)
+  patrolPts(p) {
+    return patrolOf(p).map((q) => (Array.isArray(q) ? this.ground(q) : this.stopPoint({ at: q }).p)).filter(Boolean);
   }
   doorTo(fromSpace, toSpace) {
     for (const r of this.app.model.spaces[fromSpace]?.refs.values() || []) if (r.door?.to_space === toSpace) return r;
@@ -56,9 +82,10 @@ export class People {
     const a = this.active_(p, t); if (!a) return null;
     const here = this.seenFrom(S, a.s); if (!here?.p) return null;
     let pos = here.p;
-    if (p.patrol?.length && ['patrol', 'work'].includes(a.s.kind) && this.stopPoint(a.s).space === S && S === 'exterior') {
-      const n = p.patrol.length, f = (a.rel * 2) % n, i = Math.floor(f), u = f - i;
-      const A = p.patrol[i], B = p.patrol[(i + 1) % n]; pos = [A[0] + (B[0] - A[0]) * u, A[1] + (B[1] - A[1]) * u, A[2] + (B[2] - A[2]) * u];
+    const pat = this.patrolPts(p);
+    if (pat.length && ['patrol', 'work'].includes(a.s.kind) && this.stopPoint(a.s).space === S && S === 'exterior') {
+      const n = pat.length, f = (a.rel * 2) % n, i = Math.floor(f), u = f - i;
+      const A = pat[i], B = pat[(i + 1) % n]; pos = [A[0] + (B[0] - A[0]) * u, A[1] + (B[1] - A[1]) * u, A[2] + (B[2] - A[2]) * u];
     } else if (a.rel < 0.5) { // walking from the last stop for the first half hour
       const from = this.seenFrom(S, a.prev);
       if (from?.p) { const u = a.rel / 0.5; pos = [0, 1, 2].map((k) => from.p[k] + (here.p[k] - from.p[k]) * u); }
@@ -95,24 +122,35 @@ export class People {
   cameraMoved(view) { if (view === this.app.ours.view) this.drawRoutes(); }
   drawRoutes() {
     const a = this.app, v = a.ours.view, svg = this.layer(v); svg.innerHTML = '';
-    if (!this.active) return;
     const S = a.ours.space, scr = (p) => { const z = S === 'exterior' && a.terrain ? (a.terrain.heightAt(p[0], p[1]) ?? p[2]) : p[2]; return v.toScreen([p[0], p[1], z + 10]); };
     const add = (tag, attrs, text) => { const e = document.createElementNS(NS, tag); for (const [k, val] of Object.entries(attrs)) e.setAttribute(k, val); if (text) e.textContent = text; svg.append(e); return e; };
+    // short name labels: everyone near the camera, and the selected person wherever they are
+    const cam = v.camera.position, o = a.ours.origin, near = Math.max(1800, Math.min(4000, v.rig.dist * 1.2));
+    for (const p of v.origin ? this.list() : []) {
+      const m = this.markers.get(p.id), mine = this.sel === p.id;
+      if (!m?.visible) continue;
+      const d = Math.hypot(m.userData.at[0] - o[0] - cam.x, m.userData.at[1] - o[1] - cam.y, m.userData.at[2] - o[2] - cam.z);
+      if (!mine && d > near) continue;
+      const q = v.toScreen([m.userData.at[0], m.userData.at[1], m.userData.at[2] + 200]);
+      if (q.behind || q.x < 0 || q.y < 0 || q.x > v.el.clientWidth || q.y > v.el.clientHeight) continue;
+      const nm = p.name || 'Person', short = nm.length > 16 ? `${nm.slice(0, 15)}…` : nm;
+      add('text', { class: mine ? 'who name sel' : 'who name', x: q.x, y: q.y, 'text-anchor': 'middle' }, short);
+    }
+    if (!this.active) return;
     for (const p of this.list()) {
       const c = this.colour(p), mine = this.sel === p.id;
       if (this.sel && !mine) continue;
       const pts = this.sorted(p).map((s) => ({ s, w: this.seenFrom(S, s) })).filter((x) => x.w?.p);
       if (pts.length > 1) add('polyline', { class: 'route', stroke: c, 'stroke-opacity': mine ? 0.95 : 0.5, points: [...pts, pts[0]].map((x) => { const q = scr(x.w.p); return `${q.x},${q.y}`; }).join(' ') });
-      if (p.patrol?.length && S === 'exterior') add('polygon', { class: 'route', stroke: c, 'stroke-dasharray': '8 6', points: p.patrol.map((q) => { const s = scr(q); return `${s.x},${s.y}`; }).join(' ') });
+      const pat = this.patrolPts(p);
+      if (pat.length && S === 'exterior') add('polygon', { class: 'route', stroke: c, 'stroke-dasharray': '8 6', points: pat.map((q) => { const s = scr(q); return `${s.x},${s.y}`; }).join(' ') });
       if (mine) {
         for (const x of pts) {
           const q = scr(x.w.p); add('circle', { class: 'stop', cx: q.x, cy: q.y, r: 9, fill: c, 'fill-opacity': x.w.inside ? 0.45 : 1 });
           add('text', { class: 'who', x: q.x + 12, y: q.y - 8 }, `${clock(x.s.start)} ${STOP_KINDS[x.s.kind] || x.s.kind}${x.w.inside ? ' (inside)' : ''}`);
         }
-        (p.patrol || []).forEach((q, i) => { if (S !== 'exterior') return; const s = scr(q); add('rect', { class: 'stop', x: s.x - 7, y: s.y - 7, width: 14, height: 14, fill: c }); add('text', { class: 'who', x: s.x + 10, y: s.y + 4 }, `Patrol ${i + 1}`); });
+        pat.forEach((q, i) => { if (S !== 'exterior') return; const s = scr(q); add('rect', { class: 'stop', x: s.x - 7, y: s.y - 7, width: 14, height: 14, fill: c }); add('text', { class: 'who', x: s.x + 10, y: s.y + 4 }, `Patrol ${i + 1}`); });
       }
-      const m = this.markers.get(p.id);
-      if (m?.visible) { const q = v.toScreen(m.userData.at); add('text', { class: 'who', x: q.x + 14, y: q.y - 30 }, p.name || 'Person'); }
     }
   }
   // ---------- picking and editing ----------
@@ -158,17 +196,17 @@ export class People {
     const S = a.ours.space, at = { space: S, pos: [rnd(g[0]), rnd(g[1]), rnd(g[2])], radius: 256 }, arm = this.armed;
     if (arm.kind === 'new') {
       const base = arm.from ? arm.from.base : arm.base, npc = a.npcs.get(base) || a.srcBundle.npcs.get(base);
-      const person = { id: mintId(a.place.place_id), name: npc?.name || 'New person', base_from: base, role: 'resident', home: { space: S }, bed: null,
-        work: null, services: {}, faction_ranks: [], routine: [{ start: 0, hours: 24, kind: 'wander', at }] };
+      const person = { id: mintId(a.place.place_id), name: npc?.name || 'New person', base_from: base, role: 'resident', home: S, bed: null,
+        work: null, services: [], faction_ranks: [], routine: [{ start: 0, hours: 24, kind: 'wander', at }] };
       a.push({ op: 'person.add', person }); this.armed = null; this.select(person.id); return;
     }
     const p = a.model.people.get(arm.id); if (!p) return;
     const before = clone(p), after = clone(p);
     if (arm.kind === 'stop') { const s = this.sorted(after)[arm.i]; const idx = after.routine.findIndex((r) => r.start === s.start && r.kind === s.kind); after.routine[idx].at = { ...after.routine[idx].at, ...at, ref: undefined }; delete after.routine[idx].at.ref; }
-    if (arm.kind === 'patrol') { after.patrol = after.patrol || []; if (arm.i == null) after.patrol.push(at.pos); else after.patrol[arm.i] = at.pos; }
+    if (arm.kind === 'patrol') { const pts = [...patrolOf(after)], q = S === 'exterior' ? at.pos : at; if (arm.i == null) pts.push(q); else pts[arm.i] = q; setPatrol(after, pts); }
     if (arm.kind === 'all') { // move the person: every outdoor stop shifts with them
       const first = this.sorted(p).map((s) => this.stopPoint(s)).find((x) => x.space === S && x.p);
-      if (first) { const dx = g[0] - first.p[0], dy = g[1] - first.p[1]; for (const r of after.routine) if ((r.at?.space || 'exterior') === S && r.at.pos) r.at.pos = [rnd(r.at.pos[0] + dx), rnd(r.at.pos[1] + dy), r.at.pos[2]]; for (const q of after.patrol || []) { q[0] = rnd(q[0] + dx); q[1] = rnd(q[1] + dy); } }
+      if (first) { const dx = g[0] - first.p[0], dy = g[1] - first.p[1]; for (const r of after.routine) if ((r.at?.space || 'exterior') === S && r.at.pos) r.at.pos = [rnd(r.at.pos[0] + dx), rnd(r.at.pos[1] + dy), r.at.pos[2]]; for (const q of patrolOf(after)) { const v = Array.isArray(q) ? q : q.pos; if (v && (Array.isArray(q) || (q.space || 'exterior') === S)) { v[0] = rnd(v[0] + dx); v[1] = rnd(v[1] + dy); } } }
     }
     this.armed = arm.kind === 'patrol' && arm.i == null ? arm : null;
     a.push({ op: 'person.edit', person: after, before }); this.refresh(); a.panels.open('people');
@@ -191,7 +229,7 @@ export class People {
       else if (sp.space !== 'exterior' && !this.doorTo('exterior', sp.space)) out.push(`${clock(s.start)}: no door leads from outside into ${sp.space}.`);
     }
     // an innkeeper keeps no bed and works the whole day, as Skyrim's do
-    if (!isInnkeeper(p) && !(p.routine || []).some((s) => s.kind === 'bed')) out.push('This person has no time in bed.');
+    if (!isInnkeeper(p) && !(p.routine || []).some((s) => s.kind === 'sleep' || s.kind === 'bed')) out.push('This person has no time in bed.');
     return out;
   }
 }

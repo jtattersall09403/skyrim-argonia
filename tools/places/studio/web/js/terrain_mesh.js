@@ -1,6 +1,6 @@
 // The land drawn: a mesh per cell at every height point (every other point far away), splatted with the game's
 // land textures near the camera (base per quadrant, alpha layers, paths on top) and coloured by each texture's
-// average colour far away; water planes at each cell's water height.
+// average colour far away; water at each cell's water height, shaded by its depth over the land at the shore.
 import * as THREE from 'three';
 import { getJSON, texUrl } from './api.js';
 
@@ -41,6 +41,7 @@ function fillTiled(ctx, img, x, y, w, h, fallback) {
 const HEX = new Map();
 const hex = (h) => { let v = HEX.get(h); if (!v) { const c = new THREE.Color(h); v = [c.r, c.g, c.b]; HEX.set(h, v); } return v; };
 const nextFrame = () => new Promise((r) => requestAnimationFrame(() => r()));
+const SHORE = hex('#9fc4bd'), SHALLOW = 220;  // game units of water over the land before it reads as deep
 const WATER = ['#3d6f78', '#4a6a5a', '#385f70', '#506b55', '#2f5f73'];
 function waterColour(type) { let h = 0; for (const ch of String(type)) h = (h * 31 + ch.charCodeAt(0)) >>> 0; return WATER[h % WATER.length]; }
 
@@ -66,10 +67,52 @@ export class TerrainMesh {
     this.built = (async () => { while (i < order.length) { slice(8); this.onChange(); await nextFrame(); } this.onChange(); })();
     return this;
   }
-  waterMat(colour) {
-    this._waterMats = this._waterMats || new Map();
-    if (!this._waterMats.has(colour)) this._waterMats.set(colour, new THREE.MeshLambertMaterial({ color: colour, transparent: true, opacity: 0.6, depthWrite: false }));
-    return this._waterMats.get(colour);
+  waterMat(deep) {
+    const key = deep || 'sheet'; this._waterMats = this._waterMats || new Map();
+    if (!this._waterMats.has(key)) {
+      this._waterMats.set(key, new THREE.MeshLambertMaterial({ vertexColors: !deep, color: deep ? new THREE.Color(...deep) : 0xffffff,
+        transparent: true, opacity: deep ? 0.75 : 1, depthWrite: false, polygonOffset: true, polygonOffsetFactor: -1, polygonOffsetUnits: -1 }));
+    }
+    return this._waterMats.get(key);
+  }
+  // The water of one cell, at that cell's water height and depth-tested against the land. Where the land stands
+  // above the water everywhere there is none; where it is deep everywhere, one quad; at a shore a sheet over every
+  // height point whose alpha and tint follow the depth there, so the waterline runs along the land, softly.
+  shadeWater(e) {
+    const c = e.c; if (!c.water) return;
+    const t = this.t, g = t.grid, wh = c.water.height, wc = hex(c.water.colour || waterColour(c.water.type));
+    const d = new Float32Array(g * g); let lo = Infinity, hi = -Infinity;
+    for (let r = 0; r < g; r++) for (let k = 0; k < g; k++) { const v = wh - t.h(c.cell, r, k); d[r * g + k] = v; lo = Math.min(lo, v); hi = Math.max(hi, v); }
+    const kind = hi <= 0 ? 'none' : lo >= SHALLOW ? 'deep' : 'shore';
+    if (e.water && e.water.userData.kind !== kind) { e.water.removeFromParent(); if (e.water.userData.kind === 'shore') e.water.geometry.dispose(); e.water = null; }
+    if (kind === 'none') return;
+    const z = wh - this.origin[2];
+    if (!e.water) {
+      let w;
+      if (kind === 'deep') {
+        this._quad = this._quad || new THREE.PlaneGeometry(t.size, t.size);
+        w = new THREE.Mesh(this._quad, this.waterMat(wc)); w.position.set(e.centre[0], e.centre[1], z); w.updateMatrix();
+      } else {
+        const wg = new THREE.BufferGeometry(), wp = new Float32Array(g * g * 3), lp = e.geo.attributes.position.array;
+        for (let i = 0; i < g * g; i++) { wp[i * 3] = lp[i * 3]; wp[i * 3 + 1] = lp[i * 3 + 1]; wp[i * 3 + 2] = z; }
+        wg.setAttribute('position', new THREE.BufferAttribute(wp, 3));
+        this._wn = this._wn || new THREE.BufferAttribute(new Float32Array(g * g * 3).map((_, k) => (k % 3 === 2 ? 1 : 0)), 3);
+        wg.setAttribute('normal', this._wn);
+        wg.setAttribute('color', new THREE.BufferAttribute(new Float32Array(g * g * 4), 4));
+        wg.setIndex(this.coarse); wg.computeBoundingSphere();
+        w = new THREE.Mesh(wg, this.waterMat());
+      }
+      w.matrixAutoUpdate = false; w.renderOrder = 2; w.userData.water = c.water; w.userData.kind = kind;
+      e.water = w; this.water.add(w);
+    }
+    if (kind !== 'shore') return;
+    const col = e.water.geometry.attributes.color.array;
+    for (let i = 0; i < g * g; i++) {
+      const u = Math.max(0, Math.min(1, d[i] / SHALLOW));
+      for (let k = 0; k < 3; k++) col[i * 4 + k] = SHORE[k] + (wc[k] - SHORE[k]) * u;
+      col[i * 4 + 3] = d[i] <= 0 ? 0 : 0.3 + 0.45 * u;
+    }
+    e.water.geometry.attributes.color.needsUpdate = true;
   }
   buildCell(c) {
     const t = this.t, g = t.grid;
@@ -88,16 +131,10 @@ export class TerrainMesh {
       geo.setIndex(this.coarse);
       const mesh = new THREE.Mesh(geo, this.farMat); mesh.userData.cell = c.cell; mesh.matrixAutoUpdate = false;
       this.group.add(mesh);
-      const e = { c, mesh, geo, lod: 'far', centre: [(c.cell[0] + 0.5) * t.size - this.origin[0], (c.cell[1] + 0.5) * t.size - this.origin[1]] };
+      const e = { c, mesh, water: null, geo, lod: 'far', centre: [(c.cell[0] + 0.5) * t.size - this.origin[0], (c.cell[1] + 0.5) * t.size - this.origin[1]] };
       this.cells.set(c.cell.join(','), e);
       this.splatColours(e); this.updateHeights(e);
       if (this.pathsSet) this.splatPaths(e); else this.tintCell(e);
-      if (c.water) {
-        this._waterGeo = this._waterGeo || new THREE.PlaneGeometry(t.size, t.size);
-        const w = new THREE.Mesh(this._waterGeo, this.waterMat(c.water.colour || waterColour(c.water.type)));
-        w.position.set(e.centre[0], e.centre[1], c.water.height - this.origin[2]);
-        w.renderOrder = 2; w.userData.water = c.water; this.water.add(w);
-      }
     }
   }
   // Far away: each vertex the blend of its quadrant's texture average colours, times the land's vertex colours.
@@ -122,6 +159,7 @@ export class TerrainMesh {
     // normals from every point, whichever level is drawn
     const idx = e.geo.index; e.geo.setIndex(this.fine); e.geo.computeVertexNormals(); e.geo.setIndex(idx);
     e.geo.attributes.position.needsUpdate = true; e.geo.computeBoundingSphere();
+    this.shadeWater(e);
   }
   refreshCells(keys) { for (const k of keys) { const e = this.cells.get(k); if (e) this.updateHeights(e); } }
   // Cells near the camera's target get every height point and the full texture splat; far ones go light.

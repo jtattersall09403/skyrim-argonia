@@ -3,7 +3,7 @@
 import { api } from './api.js';
 import { ICON } from './icons.js';
 import { thumb } from './thumbs.js';
-import { STOP_KINDS, isInnkeeper } from './people.js';
+import { STOP_KINDS, isInnkeeper, patrolOf, setPatrol } from './people.js';
 import { clock } from './geom.js';
 
 const $ = (s) => document.querySelector(s);
@@ -211,7 +211,7 @@ export class Panels {
       const role = el(`<label class="field">What they do<input type="text" value="${esc(p.role)}"></label>`);
       role.querySelector('input').onchange = (e) => P.edit(p.id, (x) => { x.role = e.target.value; });
       parts.push(name, role);
-      const svc = Object.entries(p.services || {}).filter(([, v]) => v).map(([k]) => k);
+      const svc = Array.isArray(p.services) ? p.services.map((v) => v.detail || v.kind || v.give_kind_id).filter(Boolean) : Object.entries(p.services || {}).filter(([, v]) => v).map(([k]) => k);
       if (svc.length) parts.push(el(`<p>Gives: ${esc(svc.join(', '))}</p>`));
       for (const msg of P.problems(p)) parts.push(el(`<p class="tag nordic">${esc(msg)}</p>`));
       if (isInnkeeper(p) && !p.bed) parts.push(el('<p class="note">Keeps no bed and works all day, as Skyrim\'s innkeepers do.</p>'));
@@ -222,7 +222,7 @@ export class Panels {
         const li = el(`<li><div class="what"><div class="row" style="margin:0">
           <input type="time" step="900" aria-label="Starts at" value="${clock(s.start).padStart(5, '0')}" style="min-height:44px;width:7.5em">
           <label class="field" style="flex:0">for<input type="number" min="0.25" max="24" step="0.25" value="${s.hours}" style="width:5em" aria-label="Hours"></label>
-          <select aria-label="Doing">${Object.entries(STOP_KINDS).map(([k, v]) => `<option value="${k}" ${k === s.kind ? 'selected' : ''}>${v}</option>`).join('')}</select></div>
+          <select aria-label="Doing">${Object.entries(s.kind in STOP_KINDS ? STOP_KINDS : { ...STOP_KINDS, [s.kind]: s.kind }).map(([k, v]) => `<option value="${k}" ${k === s.kind ? 'selected' : ''}>${v}</option>`).join('')}</select></div>
           <span class="note">${esc(where)}</span></div></li>`);
         const find = (x) => x.routine.find((r) => r.start === s.start && r.kind === s.kind);
         const [tIn, hIn] = li.querySelectorAll('input'), kIn = li.querySelector('select');
@@ -240,10 +240,10 @@ export class Panels {
       add.onclick = () => { P.edit(p.id, (x) => { const last = P.sorted(x).pop(); x.routine.push({ start: last ? (last.start + last.hours) % 24 : 8, hours: 1, kind: 'wander', at: { space: a.ours.space, pos: last?.at?.pos ? [...last.at.pos] : null, radius: 256 } }); }); P.arm('stop', { id: p.id, i: P.sorted(a.model.people.get(p.id)).length - 1 }); };
       parts.push(add);
       parts.push(el('<h3>Patrol points</h3>'));
-      (p.patrol || []).forEach((q, i) => {
+      patrolOf(p).forEach((q, i) => {
         const row = el(`<div class="row"><span style="flex:1">Point ${i + 1}</span></div>`);
         const mv = el('<button class="quiet">Move</button>'); mv.onclick = () => P.arm('patrol', { id: p.id, i });
-        const rm = el('<button class="quiet">Remove</button>'); rm.onclick = () => { P.edit(p.id, (x) => { x.patrol.splice(i, 1); if (!x.patrol.length) delete x.patrol; }); this.peoplePanel(); };
+        const rm = el('<button class="quiet">Remove</button>'); rm.onclick = () => { P.edit(p.id, (x) => { const pts = [...patrolOf(x)]; pts.splice(i, 1); setPatrol(x, pts); }); this.peoplePanel(); };
         row.append(mv, rm); parts.push(row);
       });
       const ap = el('<button class="quiet">Add patrol points</button>'); ap.onclick = () => P.arm('patrol', { id: p.id, i: null }); parts.push(ap);

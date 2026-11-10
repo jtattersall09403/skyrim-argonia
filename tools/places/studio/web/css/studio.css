@@ -78,6 +78,8 @@ select { min-height: 44px; border-radius: 10px; border: 1px solid var(--line); b
 .sketch .route { fill: none; stroke-width: 3; }
 .sketch .stop { stroke: #fff; stroke-width: 2; }
 .sketch .who { font-size: 13px; font-weight: 600; paint-order: stroke; stroke: var(--panel); stroke-width: 4; fill: var(--ink); }
+.sketch .who.name { font-size: 12px; font-weight: 600; }
+.sketch .who.name.sel { font-size: 14px; fill: var(--accent); }
 
 /* the gizmo: big handles round the selection, for a pen or a finger */
 .gizmo { position: absolute; width: 0; height: 0; z-index: 3; }
