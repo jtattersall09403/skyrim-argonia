@@ -361,3 +361,12 @@ added here the day they are made, with the date and the issue.
   in the studio are applied the same way: only what the edit touches changes, and no later draft step regenerates
   over a place the owner has edited. The rule is a line in CLAUDE.md.
 - 2026-11-10 (in session, night): the AWS limit is $150 a month, up from $100 (decision 0008 amended).
+- 2026-11-10 (issue #60, the owner's reply): A, the fights removed from small settlements are restored as
+  encounters near the place. B, a friendly place's goods are capped by its wealth as well as by the land round it.
+  C, Helstrom stays in wealth band 4. D, the studio needs no shadows; in the game there is no cap on
+  shadow-casting lights: each room keeps the source's own. E, vanilla Nordic pieces a source place's own room
+  uses are accepted. F, the travel network stands as built.
+- 2026-11-10 (in session, night): law. A native Argonian place has no jail (the lore: the Owing, no cell). The
+  Owing is the playable sentence: the game's jail mechanism re-dressed as a season of work, no cell. Capital
+  punishment is part of native law: a person who resists arrest is fought to the death by the guards. The studio
+  shows a kept invisible wall as a faint box when selecting, as it shows lights.
