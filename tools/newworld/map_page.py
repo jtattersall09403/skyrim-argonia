@@ -125,6 +125,12 @@ def data(w: db.World) -> dict:
 
     danger = {r.place_id: r for r in w.rows("place_danger")}
     dispositions = {d.id: d for d in w.rows("disposition")}
+    laws = {r.id: r for r in w.rows("law")}
+    law = {r.place_id: r for r in w.rows("place_law")}
+    names = {p.id: p.name for p in w.rows("place")}
+    enc = defaultdict(list)
+    for e in w.rows("place_encounter"):
+        enc[e.place_id].append(e)
     ground = {(c.x, c.y): c for c in w.rows("cell")}
     places = []
     for p in w.rows("place"):
@@ -146,12 +152,21 @@ def data(w: db.World) -> dict:
                 ["Reward", band(pd.reward_band_id), pd.reward_band_id, pd.reward_why
                  + (" (the owner's call)" if pd.by == "owner" else "")]],
             "rew": pd.reward_band_id,
+            "law": [laws[law[p.id].law_id].label, laws[law[p.id].law_id].about,
+                    law[p.id].why + (f"; sentences are served at {names[law[p.id].jail_place_id]}"
+                                     if law[p.id].jail_place_id and law[p.id].jail_place_id != p.id else "")],
+            "enc": [{"d": g.detail, "k": give_kinds[g.give_kind_id].name, "spot": g.spot,
+                     "at": f"{round(g.bearing_deg)}°, {round(g.distance_m)} m", "s": e.strength_band_id,
+                     "sl": band(e.strength_band_id), "sw": e.strength_why, "r": e.reward_band_id,
+                     "rl": band(e.reward_band_id), "rw": e.reward_why}
+                    for e in enc[p.id] for g in [w.get("place_give", p.id, e.give_seq)]],
             "sum": p.summary, "lore": p.lore_page, "tier": p.statement_tier_id,
             "alias": [a.alias for a in w.rows("place_alias", place_id=p.id)],
             "needs": [{"n": needs[t.terrain_need_id], "r": t.radius_m, "why": t.why}
                       for t in w.rows("place_terrain_need", place_id=p.id)],
             "gives": [{"k": give_kinds[g.give_kind_id].name, "g": give_kinds[g.give_kind_id].group, "d": g.detail,
-                       "c": g.count, "r": give_kinds[g.reward_kind_id].name if g.reward_kind_id else None}
+                       "c": g.count, "r": give_kinds[g.reward_kind_id].name if g.reward_kind_id else None,
+                       "near": g.setting == "nearby"}
                       for g in sorted(w.rows("place_give", place_id=p.id), key=lambda g: g.seq)],
             "notes": notes("place", "place_id", p.id),
         })

@@ -399,7 +399,9 @@ function showPlace(id) {
   ${p.sum ? `<p class="lead">${esc(p.sum)}</p>` : `<p class="lead" style="color:var(--muted)">Not researched yet.</p>`}
   <dl class="facts">${facts.map(([k, v]) => `<dt>${k}</dt><dd>${typeof v === "number" ? v : (String(v).startsWith("<") ? v : esc(v))}</dd>`).join("")}</dl>
   <h3>Danger</h3>${p.danger.map(([k, v, id, why]) => `<p><b>${k}</b> ${id ? bandChip(id, v) : esc(v)} <span style="color:var(--muted)">${esc(why)}</span></p>`).join("")}
-  ${p.gives && p.gives.length ? `<h3>What it gives the player</h3>${p.gives.map(g => `<p><b>${esc(g.k)}</b>${g.c > 1 ? ` ×${g.c}` : ""}: ${esc(g.d)}${g.r ? ` <span style="color:var(--muted)">(reward: ${esc(g.r)})</span>` : ""}</p>`).join("")}` : ""}
+  ${p.enc && p.enc.length ? `<h3>Encounters near it</h3>${p.enc.map(e => `<p><b>${esc(e.k)}</b>: ${esc(e.d)}, at ${esc(e.spot)} <span class="mono">(${esc(e.at)})</span><br>${bandChip(e.s, e.sl)} <span style="color:var(--muted)">${esc(e.sw)}</span><br>Reward ${bandChip(e.r, e.rl)} <span style="color:var(--muted)">${esc(e.rw)}</span></p>`).join("")}` : ""}
+  ${p.law ? `<h3>Law</h3><p><b>${esc(p.law[0])}</b>: ${esc(p.law[1])} <span style="color:var(--muted)">${esc(p.law[2])}</span></p>` : ""}
+  ${p.gives && p.gives.length ? `<h3>What it gives the player</h3>${p.gives.map(g => `<p><b>${esc(g.k)}</b>${g.c > 1 ? ` ×${g.c}` : ""}: ${esc(g.d)}${g.near ? ` <span style="color:var(--muted)">(near the place)</span>` : ""}${g.r ? ` <span style="color:var(--muted)">(reward: ${esc(g.r)})</span>` : ""}</p>`).join("")}` : ""}
   ${p.needs.length ? `<h3>What it needs of the ground</h3>${p.needs.map(n => `<p>${esc(n.n)} <span class="mono">(${Math.round(n.r)} m)</span>: ${esc(n.why)}</p>`).join("")}` : ""}
   ${notesHtml(p.notes)}`, "place");
 }
