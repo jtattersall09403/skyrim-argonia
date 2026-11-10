@@ -6,7 +6,7 @@ const WALKWAY = /dock|boardwalk|bridge|walkway|steps|stair|road|plank|pier|jetty
 const STREET = 0.45;   // a step on a path costs this much of a step beside it
 const BY_WALL = 1.6;   // a step right beside a wall: people keep to the middle of a gap
 const END_FREE = 3;    // cells round each end that are never shut (a stop at a wall, on a ship's deck, at a door)
-const MAX_CELLS = 40000;
+const MAX_CELLS = 300000; // enough for a walk the length of a town (a search that gave up drew a straight line)
 const key = (i, j) => (i + 32768) * 65536 + (j + 32768);
 
 // A small binary heap of [cost, cell key].
@@ -101,7 +101,7 @@ export class Walk {
   route(a, b) {
     const si = Math.round(a[0] / STEP), sj = Math.round(a[1] / STEP), gi = Math.round(b[0] / STEP), gj = Math.round(b[1] / STEP);
     if (si === gi && sj === gj) return [[a[0], a[1]], [b[0], b[1]]];
-    const pad = 16, i0 = Math.min(si, gi) - pad, i1 = Math.max(si, gi) + pad, j0 = Math.min(sj, gj) - pad, j1 = Math.max(sj, gj) + pad;
+    const pad = 48, i0 = Math.min(si, gi) - pad, i1 = Math.max(si, gi) + pad, j0 = Math.min(sj, gj) - pad, j1 = Math.max(sj, gj) + pad;
     const start = key(si, sj), goal = key(gi, gj), cost = new Map([[start, 0]]), prev = new Map(), heap = new Heap();
     const own = new Set([...(this.wallOf.get(start) || []), ...(this.wallOf.get(goal) || [])]);
     heap.push([0, start]);
