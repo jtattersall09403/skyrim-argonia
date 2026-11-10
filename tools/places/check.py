@@ -7,7 +7,7 @@ the place's shard plan (which records are this place's, and its place files' row
 place (ground, refs) and the world's own navmesh beside ours. Exit 1 when any check fails; every check is a
 function of one context dict, so tools/tests can feed it a small broken fixture each.
 
-Checks: seat, overlap, doors, people, navmesh, land, clear, services, nordic, levelled, plugin (masters, links),
+Checks: seat, overlap, doors, people, navmesh, land, clear, services, nordic, rooms, shadows, levelled, plugin (masters, links),
 stock and promises (a stocked place: tools/places/stock/verify.py).
 """
 from __future__ import annotations
@@ -1112,12 +1112,25 @@ def is_nordic(model: str | None, edid: str | None) -> bool:
     return bool((model and NORDIC_MODEL.search(model)) or (edid and NORDIC_EDID.match(edid)))
 
 
+def source_bases(ctx) -> set[str]:
+    """The bases the source place itself uses (its bundle's bases.jsonl; `source_bases` in a test's context)."""
+    if ctx.get("source_bases") is not None:
+        return set(ctx["source_bases"])
+    pj = Path(ctx.get("place_dir") or B.PLACES / ctx.get("place_id", "")) / "place.json"
+    source_id = json.loads(pj.read_text()).get("source_id") if pj.exists() else None
+    p = B.OUT / "bundles" / f"src.{source_id}" / "bases.jsonl"
+    return {r["key"] for r in B.jsonl(p)} if source_id and p.exists() else set()
+
+
 def check_nordic(ctx) -> list[str]:
-    """Every ref of ours (exterior and interior copies alike): the Nordic review's looked-at verdict on its base
-    (newworld/places/nordic_review.jsonl) outranks the folder and editor-id rule."""
+    """Nothing Nordic among what we add from elsewhere (decision 0006). A piece the source place itself uses is
+    accepted as it comes and is not judged. Any other ref of ours (a station, a replacement, a laid piece): the
+    Nordic review's looked-at verdict on its base (newworld/places/nordic_review.jsonl) outranks the folder and
+    editor-id rule."""
     from tools.places.draft.io import nordic_review
     review = ctx.get("nordic_review")
     review = nordic_review() if review is None else review
+    own = source_bases(ctx)
     m = mine(ctx)
     bad = []
     for r in m["refs"].values():
@@ -1125,6 +1138,8 @@ def check_nordic(ctx) -> list[str]:
             continue
         if r.get("base_type") == "LIGH" and not r.get("model"):
             continue  # a light with no model shows nothing: no look to judge
+        if m["rows"].get(r["fk"], {}).get("base") in own:
+            continue  # the source place's own piece
         v = review.get(m["rows"].get(r["fk"], {}).get("base"))
         if v["verdict"] == "nordic" if v else is_nordic(r.get("model"), r.get("base_edid")):
             bad.append(f"{m['rows'].get(r['fk'], {}).get('id', r['fk'])}: Nordic base {r.get('base_edid')} ({r.get('model')})")
@@ -1191,6 +1206,22 @@ def check_rooms(ctx) -> list[str]:
     return bad
 
 
+def check_shadows(ctx) -> list[str]:
+    """No room holds more shadow-casting lights than the engine draws at once (lights.SHADOW_MAX): one line per room
+    that does. A light casts shadows by its base's flags (the catalogue's lights; `light_bases` in a test's context)."""
+    from tools.places.draft import lights
+    lb = ctx.get("light_bases")
+    lb = lights.light_bases() if lb is None else lb
+    m = mine(ctx)
+    per: dict[str, int] = defaultdict(int)
+    for fk, r in m["refs"].items():
+        row = m["rows"].get(fk) or {}
+        if row.get("space") not in (None, "exterior") and r.get("base_type") == "LIGH" and lights.casts(lb.get(row.get("base"))):
+            per[row["space"]] += 1
+    return [f"room {sp}: {n} shadow-casting lights, over the {lights.SHADOW_MAX} the engine draws at once"
+            for sp, n in sorted(per.items()) if n > lights.SHADOW_MAX]
+
+
 def check_levelled(ctx) -> list[str]:
     return [f"levelled: {x}" for x in ctx["dump"]["levelled"]]
 
@@ -1250,7 +1281,7 @@ def island_report(ctx, person: str | None = None) -> list[str]:
 
 CHECKS = {"plugin": check_plugin, "seat": check_seat, "overlap": check_overlap, "doors": check_doors, "people": check_people,
           "navmesh": check_navmesh, "streets": check_streets, "land": check_land, "clear": check_clear, "services": check_services,
-          "nordic": check_nordic, "rooms": check_rooms, "levelled": check_levelled, "stock": check_stock, "promises": check_promises}
+          "nordic": check_nordic, "rooms": check_rooms, "shadows": check_shadows, "levelled": check_levelled, "stock": check_stock, "promises": check_promises}
 
 
 def run(ctx: dict) -> dict[str, list[str]]:

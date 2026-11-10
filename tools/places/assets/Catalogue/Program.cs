@@ -2,6 +2,8 @@
 // Usage: Catalogue <out dir> <plugin path>... (load order, earliest first). Writes:
 //   bases.raw.jsonl  every base with a model, the last plugin's version winning: key (origin plugin:6-hex id),
 //                    edid, type, name, model, bounds, plugin (the winner), keywords (editor ids)
+//   lights.jsonl     every light base, with or without a model: key, edid, model, plugin, light {radius, colour,
+//                    flags, fov}
 //   ltex.jsonl       every land texture: key, edid, plugin, txst, diffuse, normal
 // Plugins are read as overlays; names come from the plugin's strings when it is localized.
 using System.Text.Json;
@@ -38,6 +40,18 @@ var kinds = new (string code, Func<ISkyrimModGetter, IEnumerable<IMajorRecordGet
     ("APPA", m => m.AlchemicalApparatuses), ("IDLM", m => m.IdleMarkers), ("ARMO", m => m.Armors),
 };
 var nameErrors = 0;
+// every light base, with or without a model (a bare light has none), the last plugin's version winning: what a
+// place's own lights are chosen from (a shadow caster's no-shadow twin, a forge's fire light)
+var lights = new Dictionary<string, Dictionary<string, object?>>();
+foreach (var m in mods)
+    foreach (var li in m.Lights)
+        try
+        {
+            lights[Key(li.FormKey)] = new() { ["key"] = Key(li.FormKey), ["edid"] = li.EditorID, ["type"] = "Light", ["kind"] = "light",
+                ["model"] = li.Model?.File.DataRelativePath.Path, ["plugin"] = m.ModKey.FileName.String,
+                ["light"] = new { radius = li.Radius, colour = new[] { li.Color.R, li.Color.G, li.Color.B }, flags = li.Flags.ToString(), fov = li.FOV } };
+        }
+        catch (Exception e) { Console.Error.WriteLine($"{m.ModKey} LIGH {li.FormKey}: {e.Message}"); }
 var rows = new Dictionary<string, Dictionary<string, object?>>();
 var order = new List<string>();
 foreach (var m in mods)
@@ -106,6 +120,8 @@ Directory.CreateDirectory(outDir);
 var opt = new JsonSerializerOptions { Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
 using (var w = new StreamWriter(Path.Combine(outDir, "bases.raw.jsonl")))
     foreach (var k in order) w.WriteLine(JsonSerializer.Serialize(rows[k], opt));
+using (var w = new StreamWriter(Path.Combine(outDir, "lights.jsonl")))
+    foreach (var k in lights.Keys.OrderBy(k => k, StringComparer.Ordinal)) w.WriteLine(JsonSerializer.Serialize(lights[k], opt));
 var lt = new Dictionary<string, Dictionary<string, object?>>();
 foreach (var m in mods)
     foreach (var l in m.LandscapeTextures)

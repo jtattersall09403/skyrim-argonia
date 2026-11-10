@@ -1,18 +1,18 @@
-{"base": "Black Marsh North.esp:0787CF", "edid": "01mjfire", "model": "architecture/highhrothgar/hhfirepit.nif", "verdict": "nordic", "why": "High Hrothgar's carved stone fire pit", "replace": {"base": "Skyrim.esm:0EA901"}}
+{"base": "Black Marsh North.esp:0787CF", "edid": "01mjfire", "model": "architecture/highhrothgar/hhfirepit.nif", "verdict": "nordic", "why": "High Hrothgar's carved stone fire pit"}
 {"base": "Black Marsh.esm:1DE559", "edid": "01mossground", "model": "architecture/windhelm/whgroundpiece.nif", "verdict": "neutral", "why": "a flat patch of moss and earth; nothing of Windhelm shows"}
-{"base": "Black Marsh.esm:1DE5DF", "edid": "01loaddoorArg", "model": "dungeons/nordic/doors/animated/mediumdoor/ruinsmediumdoorload01.nif", "verdict": "nordic", "why": "the Nordic-ruin carved double door with its iron bands (BM&V gives it no texture set of its own)", "replace": {"base": "Here There Be Monsters - Curse of Cipactli.esp:029DC6", "turn_deg": 90}}
+{"base": "Black Marsh.esm:1DE5DF", "edid": "01loaddoorArg", "model": "dungeons/nordic/doors/animated/mediumdoor/ruinsmediumdoorload01.nif", "verdict": "nordic", "why": "the Nordic-ruin carved double door with its iron bands (BM&V gives it no texture set of its own)"}
 {"base": "Black Marsh.esm:1DEE16", "edid": "01lightpost", "model": "architecture/solitude/clutter/slightpost01.nif", "verdict": "neutral", "why": "a plain wooden post with a crossbar"}
-{"base": "Black Marsh.esm:1E44EC", "edid": "01ArgThrone", "model": "furniture/nordic/ruins_chairshadow01.nif", "verdict": "nordic", "why": "the Nordic-ruin high-backed stone chair", "replace": {"base": "King of the Murkmire.esp:0259E4"}}
+{"base": "Black Marsh.esm:1E44EC", "edid": "01ArgThrone", "model": "furniture/nordic/ruins_chairshadow01.nif", "verdict": "nordic", "why": "the Nordic-ruin high-backed stone chair"}
 {"base": "Black Marsh.esm:1E9860", "edid": "01mosspike", "model": "architecture/whiterun/wrscaffold/wrscafguardtowerspikes01.nif", "verdict": "neutral", "why": "sharpened wooden stakes"}
 {"base": "Skyrim.esm:03611F", "edid": "SolitudeInnCandleDefault", "model": null, "verdict": "neutral", "why": "a light source, no model"}
-{"base": "Skyrim.esm:036170", "edid": "SSingleDoorInt01Load", "model": "architecture/solitude/doors/ssingledoorint01load.nif", "verdict": "nordic", "why": "Solitude's iron-strapped red door", "replace": {"base": "King of the Murkmire.esp:093D0D"}}
-{"base": "Skyrim.esm:03C308", "edid": "NorDoorMedium01", "model": "dungeons/nordic/doors/animated/mediumdoor/ruinsmediumdoor01.nif", "verdict": "nordic", "why": "the Nordic-ruin carved door", "replace": {"base": "Here There Be Monsters - Curse of Cipactli.esp:029DC6", "turn_deg": 90}}
-{"base": "Skyrim.esm:0453D8", "edid": "SHouseDoor02", "model": "architecture/solitude/doors/shousedoor02.nif", "verdict": "nordic", "why": "Solitude's panelled house door", "replace": {"base": "King of the Murkmire.esp:0259D2"}}
+{"base": "Skyrim.esm:036170", "edid": "SSingleDoorInt01Load", "model": "architecture/solitude/doors/ssingledoorint01load.nif", "verdict": "nordic", "why": "Solitude's iron-strapped red door"}
+{"base": "Skyrim.esm:03C308", "edid": "NorDoorMedium01", "model": "dungeons/nordic/doors/animated/mediumdoor/ruinsmediumdoor01.nif", "verdict": "nordic", "why": "the Nordic-ruin carved door"}
+{"base": "Skyrim.esm:0453D8", "edid": "SHouseDoor02", "model": "architecture/solitude/doors/shousedoor02.nif", "verdict": "nordic", "why": "Solitude's panelled house door"}
 {"base": "Skyrim.esm:047A5D", "edid": "RiftenRWHall1Way01", "model": "dungeons/riften/ratwayhall/riftenrwhall1way01.nif", "verdict": "neutral", "why": "a rough stone and plank tunnel piece, no carving"}
 {"base": "Skyrim.esm:0484C2", "edid": "RiftenRWHallArch01", "model": "dungeons/riften/ratwayhall/riftenrwhallarch01.nif", "verdict": "neutral", "why": "a rough stone arch, no carving"}
 {"base": "Skyrim.esm:050D03", "edid": "MrkMetalCage01", "model": "architecture/markarth/mrkmetalcage01.nif", "verdict": "neutral", "why": "a plain iron hanging cage"}
 {"base": "Skyrim.esm:0625E0", "edid": "SolitudeInnCandleDefaultShadow", "model": null, "verdict": "neutral", "why": "a light source, no model"}
-{"base": "Skyrim.esm:070D88", "edid": "SBigPlanter01", "model": "architecture/solitude/clutter/sbigplanter01.nif", "verdict": "nordic", "why": "Solitude's moulded stone planter", "replace": {"base": "King of the Murkmire.esp:04B5EC"}}
+{"base": "Skyrim.esm:070D88", "edid": "SBigPlanter01", "model": "architecture/solitude/clutter/sbigplanter01.nif", "verdict": "nordic", "why": "Solitude's moulded stone planter"}
 {"base": "Skyrim.esm:0722D6", "edid": "SShrinelFir02", "model": "architecture/solitude/interiors/sshrinelfir02.nif", "verdict": "nordic", "why": "Solitude temple wall with pointed tracery windows"}
 {"base": "Skyrim.esm:0722D8", "edid": "SShrinelFir01", "model": "architecture/solitude/interiors/sshrinelfir01.nif", "verdict": "nordic", "why": "Solitude temple wall with pointed tracery windows"}
 {"base": "Skyrim.esm:0722DA", "edid": "SShrinelSec01", "model": "architecture/solitude/interiors/sshrinelsec01.nif", "verdict": "nordic", "why": "Solitude temple wall with pointed tracery windows"}
@@ -28,9 +28,9 @@
 {"base": "Skyrim.esm:0AE630", "edid": "DockStepsDown01", "model": "architecture/docks/dockstepsdown01.nif", "verdict": "neutral", "why": "plain wooden dock steps"}
 {"base": "Skyrim.esm:0AEDF3", "edid": "DockStepsDown02", "model": "architecture/docks/dockstepsdown02.nif", "verdict": "neutral", "why": "plain wooden dock steps"}
 {"base": "Skyrim.esm:0B3A02", "edid": "MrkDocksideBridge01", "model": "architecture/markarth/mrkdocksidebridge01.nif", "verdict": "neutral", "why": "a plain wooden plank bridge"}
-{"base": "Skyrim.esm:0C0C6E", "edid": "WHfireplace01", "model": "architecture/windhelm/interiorkits/castle/whfireplace01.nif", "verdict": "nordic", "why": "Windhelm's dark stone castle fireplace", "replace": {"base": "King of the Murkmire.esp:015679"}}
-{"base": "Skyrim.esm:0C8CFF", "edid": "SBigPlanter03", "model": "architecture/solitude/clutter/sbigplanter03.nif", "verdict": "nordic", "why": "Solitude's moulded stone trough planter", "replace": {"base": "King of the Murkmire.esp:4B080F"}}
-{"base": "Skyrim.esm:0DAB8B", "edid": "SovCandleStick01Static", "model": "clutter/sovngarde/sovcandlestick01static.nif", "verdict": "nordic", "why": "Sovngarde's carved candlestick", "replace": {"base": "King of the Murkmire.esp:198D14"}}
+{"base": "Skyrim.esm:0C0C6E", "edid": "WHfireplace01", "model": "architecture/windhelm/interiorkits/castle/whfireplace01.nif", "verdict": "nordic", "why": "Windhelm's dark stone castle fireplace"}
+{"base": "Skyrim.esm:0C8CFF", "edid": "SBigPlanter03", "model": "architecture/solitude/clutter/sbigplanter03.nif", "verdict": "nordic", "why": "Solitude's moulded stone trough planter"}
+{"base": "Skyrim.esm:0DAB8B", "edid": "SovCandleStick01Static", "model": "clutter/sovngarde/sovcandlestick01static.nif", "verdict": "nordic", "why": "Sovngarde's carved candlestick"}
 {"base": "Skyrim.esm:0FED43", "edid": "ThalmorsBanner01", "model": "architecture/solitude/clutter/thalmorsbanner01.nif", "verdict": "neutral", "why": "a dark cloth banner; Thalmor, not Nordic"}
-{"base": "Skyrim.esm:1075FE", "edid": "MarkarthKeepThrone", "model": "architecture/markarth/mrkthrone4keep01.nif", "verdict": "nordic", "why": "Markarth's Dwemer-stone keep throne", "replace": {"base": "King of the Murkmire.esp:0259E4"}}
+{"base": "Skyrim.esm:1075FE", "edid": "MarkarthKeepThrone", "model": "architecture/markarth/mrkthrone4keep01.nif", "verdict": "nordic", "why": "Markarth's Dwemer-stone keep throne"}
 {"base": "Skyrim.esm:1094AB", "edid": "FXFireSovngarde", "model": "effects/fxfiresovngarde.nif", "verdict": "neutral", "why": "a light effect, no form"}

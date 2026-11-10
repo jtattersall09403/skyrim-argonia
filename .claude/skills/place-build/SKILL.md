@@ -1,6 +1,6 @@
 ---
 name: place-build
-description: Draft one place of the new world from its source place (any plugin we hold) onto our real ground - fit, seating, vegetation clearance, streets, interiors, people - as the place files the studio and the build read. Use for each place's first draft, and to redraft after the ground or the recipe changes.
+description: Draft one place of the new world from its source place (any plugin we hold) onto our real ground - fit, seating, vegetation clearance, streets, interiors, people, lights - as the place files the studio and the build read. Use for each place's first draft, and to change a drafted place by the one stage that owns the change.
 ---
 
 # Draft a place from its source
@@ -119,24 +119,42 @@ building on a slope first takes the rise the source's own builders commonly buil
 
 ## 4. Settle what the cost cannot
 
-- **Nordic bases are judged by look** (decision 0006). The folder flag only sorts; the verdict is the Nordic
-  review, `newworld/places/nordic_review.jsonl` (contract: Bundles). For every flagged base the source uses that
-  the review lacks, look at its thumbnail (`tools.places.assets.thumb(model)`): a carved Nordic door, a Solitude
-  planter or a Nord sword is `nordic`; leaves, moss, plain posts, planks and docks are `neutral`. Write its row,
-  with the standard replacement for a Nordic one; the tools then replace it in the exterior and in every interior
-  copy, or drop it with a ledger reason. `ledger.jsonl` lists each dropped one. For a Nordic base with no `replace`, find a piece of like
-  size and use from a non-Nordic source we deploy (`python -m tools.places search query "<what it is>"`, or the
-  catalogue `out/places/catalogue/bases.jsonl`), and set `draft.replace` `{old: new}`, or
-  `{old: {base, turn_deg}}`. A replaced walkway keeps the original's walking height (its top where the original's
-  was), so a door or a deck that met it still does. A replacement is never chosen for a base the review calls
-  neutral. The tools line a replaced door or directional piece up with the original's plane
-  from both meshes (the turn and the shift, `align` on the ref) and `draft check` proves it, with every door's arrival point where one stands (our ground, a low road or deck one steps onto, or the thing a door stands on), outside every placed thing's body by the build's own test, clear of
-  collision and in front of its plane. A replaced door faces out by construction: its front is read from its mesh
+- **The source's own pieces are accepted as they come.** A piece the source place itself uses, from its own mods,
+  Tropical Skyrim or the base game, is never judged by its look, replaced for it or dropped for it: a Solitude
+  door, a High Hrothgar fire pit or a Dawnguard runner the source set there stands in ours, lit or unlit as the
+  source has it. Decision 0006 governs only what we add from elsewhere (a station, a replacement, a laid piece):
+  the tools take those from non-Nordic bases, by the catalogue's folder rule, or the looked-at verdict in
+  `newworld/places/nordic_review.jsonl` where a base has one (contract: Bundles). `draft check` and the build's
+  `nordic` check fail a Nordic base added from outside the source place.
+- **A piece that cannot stand in our place as it is** (a door whose model does not fit the wall we give it, a piece
+  whose function ours lacks) is swapped by `draft.replace` `{old: new}` or `{old: {base, turn_deg}}`, for a piece of
+  like size and use from a non-Nordic source we deploy (`python -m tools.places search query "<what it is>"`, or the
+  catalogue `out/places/catalogue/bases.jsonl`). A replaced walkway keeps the original's walking height (its top
+  where the original's was), so a door or a deck that met it still does. The tools line a replaced door or
+  directional piece up with the original's plane from both meshes (the turn and the shift, `align` on the ref) and
+  `draft check` proves it. It also proves every door's arrival point is where one stands (our ground, a low road or
+  deck one steps onto, or the thing a door stands on), outside every placed thing's body by the build's own test,
+  clear of collision and in front of the door's plane. A replaced door faces out by construction: its front is read from its mesh
   (a door modelled in place has its origin inside, off the leaf, so its front is the face away from the origin)
   and it is turned half round about its leaf when that front would face away from where one arrives outside it
   (the source's own arrival marker). A door's `to_pos` is where using it lands you: the exterior door's partner
-  holds the arrival outside, and `draft check` proves each replaced door faces it. A door that leads
-  indoors is always replaced, never dropped. Drop decorative pieces with no equal.
+  holds the arrival outside, and `draft check` proves each replaced door faces it.
+- **A light belongs to its fixture.** A light has no body; the lantern, sconce, window or fire it was placed for
+  is the nearest one within 128 units of it in the source. The light shares that fixture's cluster, stands at its
+  source offset from it (turned with the cluster), is seated `on` it, and is left out when the fixture is.
+  `draft check` fails a light more than 16 units off that place.
+- **What we add is lit as Skyrim lights it** (measured on Skyrim.esm's exteriors). An added forge carries
+  LightForgeFire01 in the forge's own frame, where 15 of 24 vanilla forges carry it (median offset x -16, y 167,
+  z 84). An added smelter carries none (0 of 21) and an added alchemy lab none (3 of 16). The streets,
+  bridges and steps we lay carry no light unless the source lit its own walkways: count the source's walkway pieces
+  with a light within 256 units and light ours at that rate, rounded: where 1 source piece in 63 is lit, ten laid
+  pieces carry no light.
+- **No room holds more than four shadow-casting lights**, the number the engine draws at once. In a copied room
+  over that, the four of the largest radius, then nearest the room's middle, keep their shadows; each other
+  switches to its no-shadow twin base as Skyrim names them (`<name>NS`, or the name without `Shadow`, or `NS` on
+  the name before its `_` suffix), written as a row of the room with `twin_of`. A caster with no twin in the load
+  order cannot switch, so it is one of the four that keep their shadows; `draft check` fails a room that still
+  exceeds four.
 - **Leftovers**: `draft.drop` `{source ref id: reason}` for anything the source placed that our place must not have.
 - **What the record promises and the source lacks is added in the source's own style.** The tools add each
   missing crafting station by the person who works it, the way Skyrim's towns do (the smith's yard outside the
@@ -189,17 +207,40 @@ building on a slope first takes the rise the source's own builders commonly buil
    by the build's overlap rule (inside a room, nothing added in the room's things), every copied room entered
    through a door pair both sides name with its outside arrival on our ground or a walkway a street reaches, and
    every person's stops each reached from the one before (our ground and streets outside, the builder's room
-   island inside, the door pair between), each on walkable ground or a piece of furniture; and the build's own
+   island inside, the door pair between), each on walkable ground or a piece of furniture, every light within 16
+   units of its place by its fixture, every added forge lit, no room over four shadow casters; and the build's own
    `build <place_id> --plan` when it exists. Its `measures` line gives
    the patched cells and points and the streets' length: keep the patches as near nothing as the land allows.
-2. Render again and look: does it read as the same town sitting naturally on our land? If not, go back to 2.
-   Change only what needs changing: when the fit, the clusters, the interiors and the clearance stand and only
-   the network, the people's names or a resident's promise must follow a change (the people source, the place's
-   promises, a rule of the join), run `python -m tools.places draft join <place_id>`, the draft's last step alone
-   on the place files as they stand, never the whole draft again.
+2. Render again and look: does it read as the same town sitting naturally on our land? If not, go back to 2
+   for a first draft; a place already drafted is changed by section 6.
 3. `python -m tools.places seat <place_id>` must report 0 refs moved.
 
-## 6. Record
+## 6. Change a drafted place narrowly
+
+A drafted place is changed by the stage that owns what must change, run alone on the place files as they stand:
+`python -m tools.places draft <stage> <place_id>`. A stage changes only the rows it owns, leaves every other row
+byte for byte as it was, never changes a row a finalised studio save touched, and prints the rows changed, added
+and removed per file; a stage that would write outside what it owns changes nothing and fails.
+
+| Stage | Run it when | It owns |
+|---|---|---|
+| `fit` | a piece belongs in another cluster (a light with its fixture) | the cluster, place and turn of the exterior rows that move; their ledger rows |
+| `pieces` | `draft.replace` or `draft.drop` changed | the base, place, `align` and seat of the rows they name, in the exterior and every copied room; their ledger rows |
+| `seating` | a seat rule changed | the seat and height of exterior rows |
+| `clearance` | buildings, doors or streets moved | `clear.jsonl`: which of the world's plants go |
+| `streets` (also `join`) | pieces, doors or the join's rules changed | flights, joins, arrivals, work stops, streets, patrols |
+| `people` | the people source or the place's promises changed | names and promises in `people.jsonl` |
+| `lights` | stations were added, a room's lights changed | the lights of added stations; each room's `twin_of` rows; `place.json` `lights` |
+| `stations` | the record promises a station the files lack | the added station, its worker's stop, `place.json` `stations` |
+
+1. Make the change that calls for it (`place.json` `draft`, the people source, a rule of the tools).
+2. Run the stage, read its counts: they are the whole change. Then `streets` when what the network is built from
+   changed (a piece, a door, a station), and section 5's checks.
+3. Where a cluster sits on our land is the whole draft's search. `python -m tools.places draft <place_id>` on a
+   place that holds the owner's finalised studio saves is refused and names the stages; a whole draft there needs
+   `--force "<why no stage can be correct>"`, once, the reason kept in the commit.
+
+## 7. Record
 
 1. Correct the record's radius to what was built: `place.json` `radius_m` into the place's research record
    (`newworld/sources/research/places/*.json`, `footprint_radius_m`), then `python -m tools.newworld.build_db`.

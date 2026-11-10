@@ -1,11 +1,29 @@
-"""`python -m tools.places draft <place_id>` drafts a place from its source (skill place-build);
-`draft join <place_id>` runs the draft's last step alone on the place files as they stand (steps hung on their
-decks, residents' promises, names, then the build's network: flights, joins, arrivals, streets and patrols);
+"""`python -m tools.places draft <place_id>` drafts a place whole from its source (skill place-build): a place's
+first draft. A place that holds the owner's finalised studio saves is never drafted whole again without
+`--force "<why no narrow stage can be correct>"`.
+`draft <stage> <place_id>` runs one stage alone on the place files as they stand, changing only the rows that
+stage owns and printing the rows changed per file (tools/places/draft/stages.py): fit, pieces, seating, clearance,
+streets (also `join`), people, lights, stations.
 `draft check <place_id>` runs the draft's self-checks; `draft render <place_id>` writes top-down PNGs."""
 from __future__ import annotations
 
 import json
 import sys
+
+USAGE = "usage: python -m tools.places draft [<stage>|check|render] <place_id> [--force \"<why>\"]"
+
+
+def refusal(place_id: str, force: str | None, places=None) -> str | None:
+    """Why a whole draft of this place is refused, or None. A place with the owner's finalised saves is changed by
+    the stage that owns what must change; a whole draft regenerates every row, the owner's included."""
+    from tools.places.draft import io, stages
+    saves = stages.owner_saves((places or io.PLACES) / place_id)
+    if not saves or (force and force.strip()):
+        return None
+    return (f"draft {place_id}: refused: the place holds the owner's finalised studio saves ({', '.join(saves)}) and a "
+            f"whole draft regenerates every row. Run the stage that owns what must change, on the files as they "
+            f"stand: python -m tools.places draft <{'|'.join(stages.STAGES)}> {place_id}. A whole draft only when no "
+            f"stage can be correct: --force \"<why>\".")
 
 
 def main(argv: list[str]) -> int:
@@ -18,22 +36,39 @@ def main(argv: list[str]) -> int:
     if argv[0] == "render":
         from tools.places.draft.render import main as m
         return m(argv[1:])
-    if argv[0] == "join":
-        # the draft's last step alone, on the place files as they stand: what the fit, the clusters, the interiors
-        # and the clearance settled is kept, and only what the join's own rules change is written
-        from tools.places.draft import walk
+    from tools.places.draft import stages
+    if argv[0] == "join" or argv[0] in stages.STAGES:
         if len(argv) != 2:
-            print("usage: python -m tools.places draft join <place_id>", file=sys.stderr)
+            print(USAGE, file=sys.stderr)
             return 2
-        print(json.dumps({"network": walk.join(argv[1])}))
+        stage = "streets" if argv[0] == "join" else argv[0]
+        try:
+            counts = stages.run(stage, argv[1])
+        except stages.StageError as e:
+            print(str(e), file=sys.stderr)
+            return 1
+        print(json.dumps({"stage": stage, "place": argv[1], "rows": counts,
+                          "files_changed": len(counts)}, indent=1))
         return 0
     from tools.places.draft.run import draft
-    force = "--force" in argv
+    force = None
+    if "--force" in argv:
+        k = argv.index("--force")
+        force = argv[k + 1] if k + 1 < len(argv) and not argv[k + 1].startswith("--") and len(argv) > 2 else ""
+        if force in argv[:k] or (force and len([a for a in argv if not a.startswith("--")]) < 2):
+            force = ""
+        argv = argv[:k] + argv[k + (2 if force else 1):]
     ids = [a for a in argv if not a.startswith("--")]
     if len(ids) != 1:
-        print("usage: python -m tools.places draft [check|render] <place_id> [--force]", file=sys.stderr)
+        print(USAGE, file=sys.stderr)
         return 2
-    counts = draft(ids[0], force=force)
+    why = refusal(ids[0], force)
+    if why:
+        print(why, file=sys.stderr)
+        return 1
+    if force is not None:
+        print(f"draft {ids[0]}: whole draft forced: {force or 'no reason given'}")
+    counts = draft(ids[0], force=force is not None)
     from tools.places.draft import walk
     # joins, rehomed sleepers, streets and patrols laid on the built network; it leaves the files seated and canonical
     counts["network"] = walk.join(ids[0])

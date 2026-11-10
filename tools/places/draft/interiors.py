@@ -108,6 +108,42 @@ def swap(r: dict, bases: dict, rep: dict) -> dict:
     return out
 
 
+def built_room(src_refs: list[dict], keep: frozenset | None, overrides: list[dict]) -> list[dict]:
+    """A copied room's refs as the build makes them: the source cell's kept room, each ref as its override row has it,
+    less what the rows remove, people aside."""
+    ov = {o["src"]: o for o in overrides if o.get("src")}
+    out = []
+    for r in src_refs:
+        if r.get("kind") == "actor" or (keep is not None and r["id"] not in keep):
+            continue
+        row = ov.get(r["id"])
+        if row is None:
+            out.append(r)
+        elif not row.get("removed"):
+            out.append({**r, **{k: v for k, v in row.items() if k in ("base", "pos", "kind", "radius")}})
+    return out
+
+
+def shadow_twins(place_id: str, sid: str, src_refs: list[dict], keep: frozenset | None, overrides: list[dict],
+                 light_bases: dict | None = None) -> list[dict]:
+    """The room's override rows with its shadow casters beyond the engine's limit switched to their no-shadow twin
+    base (lights.shadow_plan): one row per switched light, the source ref as it is but for its base."""
+    from tools.places.draft import lights
+    lb = lights.light_bases() if light_bases is None else light_bases
+    ov = [o for o in overrides if not o.get("twin_of")]     # the plan is made afresh from the source's own lights
+    switch, _ = lights.shadow_plan(built_room(src_refs, keep, ov), lb)
+    by_src = {o.get("src"): o for o in ov}
+    for r in src_refs:
+        if r["id"] not in switch:
+            continue
+        row = by_src.get(r["id"])
+        if row is None:
+            row = {**r, "id": mint(place_id, sid, r["id"]), "src": r["id"], "seat": {"mode": "free"}}
+            ov.append(row)
+        row["twin_of"], row["base"] = r["base"], switch[r["id"]]
+    return ov
+
+
 def plan(place_id: str, src: Bundle, ext_doors: list[dict], our_door_id: dict[str, str], bases: dict | None = None,
          replace: dict | None = None, ledger: list | None = None) -> dict:
     """{our_space_id: {space_id, copy_of, src_space, door_from, door_back, room, parent, name, overrides}}.
@@ -139,20 +175,13 @@ def plan(place_id: str, src: Bundle, ext_doors: list[dict], our_door_id: dict[st
         keep = kept(sp["copy_of"], sp["room"])
         for r in sorted(refs, key=lambda r: r["id"]):
             t2 = door_target(r)
-            nordic = bool(bases and r.get("kind") != "actor" and (bases.get(r.get("base")) or {}).get("nordic"))
-            rep = (replace or {}).get(r.get("base")) if nordic else None
+            rep = (replace or {}).get(r.get("base")) if r.get("kind") != "actor" else None
             if not t2:
-                if nordic and keep is not None and r["id"] not in keep:
-                    continue      # another room's piece: not in this copy
-                if rep:
+                if rep and (keep is None or r["id"] in keep):   # another room's piece is not in this copy
                     sp["overrides"].append({**r, **swap(r, bases, rep), "id": mint(place_id, sid, r["id"]),
                                             "src": r["id"], "seat": {"mode": "free"}})
-                elif nordic:
-                    sp["overrides"].append({"id": mint(place_id, sid, r["id"]), "src": r["id"], "removed": True})
-                if nordic and ledger is not None:
-                    ledger.append({"src": r["id"], "space": t, "copy": sid, "status": "replaced" if rep else "dropped",
-                                   **({"base": rep["base"]} if rep else
-                                      {"why": "Nordic base (decision 0006); nothing Argonian stands in for it"})})
+                    if ledger is not None:
+                        ledger.append({"src": r["id"], "space": t, "copy": sid, "status": "replaced", "base": rep["base"]})
                 continue
             row = {**r, "id": mint(place_id, sid, r["id"]), "src": r["id"], "seat": {"mode": "free"}}
             if rep:
@@ -169,6 +198,9 @@ def plan(place_id: str, src: Bundle, ext_doors: list[dict], our_door_id: dict[st
             elif not rep:
                 continue
             sp["overrides"].append(row)
+    for sid, sp in spaces.items():
+        sp["overrides"] = shadow_twins(place_id, sid, src.spaces[sp["src_space"]].refs,
+                                       kept(sp["copy_of"], sp["room"]), sp["overrides"])
     # inner doors point at the copies made of their targets
     for sid, sp in spaces.items():
         for row in sp["overrides"]:

@@ -3,7 +3,8 @@
 Fails on: a source ref not accounted for (placed, adapted, replaced, or dropped with a reason); a ref not seated as
 its rule says (floating or buried); a building on ground steeper than the source's own with no patch; a door no
 path reaches; a promised service with nobody giving it; fewer beds than people; anything in water that the source
-had on land, or the reverse; a Nordic or levelled base placed; a person whose bed or routine points at nothing;
+had on land, or the reverse; a Nordic base added from outside the source place or a levelled base placed; a light off its fixture, an added forge
+unlit, a room over the shadow limit; a person whose bed or routine points at nothing;
 and every check of the build (`tools/places/check.py`, its streets on the main walked network among them) on the
 draft built.
 """
@@ -322,14 +323,16 @@ def check(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, g
             if n_[0] * (a[0] - d["pos"][0] - lc[0]) + n_[1] * (a[1] - d["pos"][1] - lc[1]) < 0:
                 bad.append(f"door {d['id']} faces in: its front is away from its arrival")
 
-    # 7. no Nordic or levelled base placed
+    # 7. nothing Nordic among what we add from elsewhere (the source place's own pieces are accepted as they come:
+    # io.place_bases), and no levelled base placed
     for r in refs:
         b = bases.get(r["base"]) or {}
         if b.get("nordic"):
-            bad.append(f"{r['id']} places a Nordic base {r['base']}")
+            bad.append(f"{r['id']} adds a Nordic base {r['base']} from outside the source place")
         if str(b.get("type")) in LEVELLED:
             bad.append(f"{r['id']} places a levelled base {r['base']}")
     bad += nordic_in_copies(pdir, src, bases)
+    bad += light_checks(pdir, place, src, bases, refs)
 
     # 14. no world plant left standing in what we placed or on a street (the build's clear check)
     from tools.places.draft import clear as clearmod
@@ -340,9 +343,40 @@ def check(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, g
     return bad
 
 
+def light_checks(pdir: Path, place: dict, src, bases: dict, refs: list[dict]) -> list[str]:
+    """Every light with its fixture (within lights.OFFSET_TOL of its source offset from it); every added station that
+    Skyrim lights carrying its light; no copied room over the engine's shadow limit."""
+    from tools.places.draft import lights
+    ext = [r for r in src.exterior.refs]
+    by_src = {r["id"]: r for r in ext}
+    turns = (place.get("fit") or {}).get("clusters") or {}
+    bad = lights.off_fixture(refs, by_src, lights.fixtures(ext, bases),
+                             lambda cid: float((turns.get(cid) or {}).get("rot", 0.0)))
+    have = {r["id"] for r in refs}
+    for r in lights.station_lights(place["place_id"], refs, place.get("stations")):
+        if r["id"] not in have:
+            bad.append(f"added station {r['seat']['on']} lacks its light ({r['why']})")
+    lb = lights.light_bases()
+    n_cast = 0
+    for sj in sorted((pdir / "spaces").glob("*/space.json")):
+        sp = json.loads(sj.read_text())
+        src_sp = src.spaces.get(sp["copy_of"].split("/", 1)[1]) if sp.get("copy_of") else None
+        if src_sp is None:
+            continue
+        room = interiors.built_room(src_sp.refs, interiors.kept(sp["copy_of"], sp.get("room")),
+                                    io.read_jsonl(sj.parent / "refs.jsonl"))
+        cast = sum(1 for r in room if r.get("kind") == "light" and lights.casts(lb.get(r.get("base"))))
+        n_cast = max(n_cast, cast)
+        if cast > lights.SHADOW_MAX:
+            bad.append(f"room {sp['space_id']}: {cast} shadow-casting lights, over the {lights.SHADOW_MAX} the engine "
+                       f"draws at once")
+    summary["shadow_casters_most_in_a_room"] = n_cast
+    return bad
+
+
 def nordic_in_copies(pdir: Path, src, bases: dict) -> list[str]:
-    """An interior copy brings its source room whole: every ref it keeps unchanged, and every override, must be of a
-    base the Nordic review (or, unreviewed, the folder rule) passes."""
+    """An interior copy brings its source room whole and as it comes; an override row that swaps in or adds a base
+    from outside the source place must not be Nordic (the review's verdict, else the folder rule)."""
     bad = []
     for sj in sorted((pdir / "spaces").glob("*/space.json")):
         sp = json.loads(sj.read_text())

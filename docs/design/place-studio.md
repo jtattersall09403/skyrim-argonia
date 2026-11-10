@@ -132,38 +132,18 @@ Whiterun, Windhelm, Riften, Solitude, Markarth, farmhouse and the like) and not 
 Imperial, Ayleid, Falmer), whatever plugin carries it, or when it is architecture from Skyrim's own masters outside
 those kits.
 
-The folder rule is a first sort, not a look: a pile of leaves from Riften's folder is not a Nordic element. The
-verdict, once a base has been looked at, is `newworld/places/nordic_review.jsonl`, one row per base: `{base (key),
-edid, model, verdict: "nordic"|"neutral", why (one line: what it looks like), replace?: {base, turn_deg?}}` (the
-standard non-Nordic piece that stands in for it). A reviewed verdict outranks the folder rule everywhere: the
-drafter (`io.place_bases`), `draft check` and the build's read-back check all read it, and an unreviewed base keeps
-the folder rule. The draft replaces a Nordic base by its `replace` (a place's own `draft.replace` over it), in the
-exterior and inside every interior copy alike, or drops it with a ledger reason. The table grows as sources are
-drafted: look at each newly flagged base's thumbnail and add its row.
+`nordic` judges only what we add from elsewhere. A piece the source place itself uses, from its own mods, Tropical
+Skyrim or the base game, is accepted as it comes. The drafter reads `nordic` false on every base of the source
+bundle (`io.place_bases`). The build's `nordic` check passes a ref whose base the source bundle holds. For a
+base we add (a station, a replacement, a laid piece) the folder rule is a first sort, not a look: a pile of leaves
+from Riften's folder is not a Nordic element. The verdict, once such a base has been looked at, is
+`newworld/places/nordic_review.jsonl`, one row per base: `{base (key), edid, model, verdict: "nordic"|"neutral",
+why (one line: what it looks like)}`. A reviewed verdict outranks the folder rule in the drafter, `draft check` and
+the build's check; an unreviewed base keeps the folder rule. The wide search marks Nordic bases by the same rule.
 
-An actor base: `{key, edid, name, short_name, race, race_edid, sex, flags, level, template, template_flags, class,
-class_edid, factions:[{faction,edid,rank}], crime_faction, voice, outfit, sleep_outfit, ai, keywords,
-services:{vendor:{faction, buy_sell_list, container, values, location}, trainer:{skill,max}, innkeeper, guard},
-packages:[{key, edid, plugin, via: npc | default_list:<list>, template, template_edid, type, flags, interrupt,
-speed, schedule:{month, day_of_week, date, hour, minute, duration_minutes}, data:{index:{$type, ...}},
-procedure_tree, idles, conditions, owner_quest, combat_style, on_begin, on_end, on_change}]}`: the packages as the
-records have them, every link a key.
-
-`python -m tools.places extract <source_id>` writes `src.<source_id>`: every ref of every loaded plugin in the
-extent's cells (the world's persistent refs placed by position), the land of each cell, the navmeshes, and every
-interior reached through the extent's doors, followed door to door but never into an interior that opens onto
-exterior ground outside the extent (listed in `not_followed`). `extract --ground <place_id>` writes
-`ground.<place_id>` from the place table alone: our world file's cells within 500 m plus half the allocated
-source's `extent_m` (300 m when none is allocated) plus 50 m of the place's `world_x, world_y`, every ref with layer
-`world`. A rerun whose key (the plugins' sha256, the extractor's own hash, the job) is unchanged does nothing; a
-changed one writes beside the old bundle and replaces it in one rename.
-
-The ground bundle is the proof of "the real world": it is extracted from `out/newworld/plugin/ArgoniaNewWorld.esm`,
-its stamp carries that file's sha256, and `python -m tools.places ground-check <place_id>` fails unless that sha
-equals the play machine's (`out/newworld/verify/play-esm.sha256`, the machine's copy hashed back by
-`infra/gpu-box/lod.sh send`). An absent, malformed or stale record fails with what to run, never a silent pass; a
-bundle behind the ESM built here fails with the re-extract to run. `ground_check.check(place_id)` returns
-`{ok, reason, ground_sha, built_sha, play_sha, play_recorded_at, built_at}`; the studio shows it.
+The catalogue's `lights.jsonl` holds every light base of the load order, with or without a model: `{key, edid,
+model, plugin, light:{radius, colour, flags, fov}}`. The drafter reads it to find a shadow caster's no-shadow twin
+and the lights of added stations.
 
 ## Place files (ours, committed): `newworld/places/<place_id>/`
 
@@ -175,7 +155,10 @@ place.json             allocation, the fit (how the source's frame maps onto our
                        the draft was seated on, the build key
 spaces/<space_id>/refs.jsonl     the place layer's refs, same row shape as a bundle ref, plus
                        seat:{mode, dz, on?} (how it sits: on ground, on a ref, at source's height above ground,
-                       in water, free) and src (the source ref it came from, if any)
+                       in water, free) and src (the source ref it came from, if any). A light is seated `on` its
+                       fixture (the lantern, sconce, window or fire within 128 units of it in the source) and
+                       stands at its source offset from it. In a copied room, twin_of on a light's row names the
+                       shadow-casting base the source placed: the row's base is its no-shadow twin
 spaces/<space_id>/space.json     interiors: {copy_of: "<source_id>/<space_id>"}; the refs file holds only our
                        changes to the copy (moved, removed, added)
 clear.jsonl            world plants and scatter switched off: {base, pos, by: draft|owner}; matched to the world's
@@ -892,7 +875,8 @@ deck, a dry triangle right over it. A line's point is taken at the level one rea
 than 45 degrees plus a 32-unit step, as off a deck's edge; a line's first point, and a patrol point, is found as a
 stop is, the deck first; a land patch whose
 built heights differ from `land.jsonl` or tear at a seam; a cleared plant still enabled, or a plant standing in a
-building, street or doorway; a service the place record promises with nobody giving it; a Nordic base; a copied
+building, street or doorway; a service the place record promises with nobody giving it; a Nordic base added from
+outside the source place; a room with more than four shadow-casting lights (check `shadows`); a copied
 room built short of its source (check `rooms`: per room, its built refs and lights against the bundle's cell, the
 kept room where a `room` is copied, less the rows the place removes and the loose things the stock takes out, naming
 what is missing by plugin); anything levelled (a levelled list in a person's
@@ -900,17 +884,26 @@ inventory, outfits, death item or spells, or in a placed container; a level that
 template chain reaches a levelled actor list or takes stats or an inventory from a template that scales). It also
 fails on a link that
 resolves nowhere or a plugin not mastered on the world ESM. The promises are the place's rows of
-`newworld/story/data/db/place_give.jsonl` (combat, loot and resource gives are not a place's to give). Nordic is
-the Nordic review's verdict for a base it lists, else a base whose model lies in Skyrim's hold-city, Nordic farm
-or Nordic ruin folders, or whose editor id carries their kit prefixes (decision 0006). Results go to `out/places/shards/<place_id>/check.json`, which the new world's
+`newworld/story/data/db/place_give.jsonl` (combat, loot and resource gives are not a place's to give). Nordic is,
+for a base the source bundle does not hold, the Nordic review's verdict where it lists the base, else a base whose
+model lies in Skyrim's hold-city, Nordic farm or Nordic ruin folders, or whose editor id carries their kit prefixes
+(decision 0006). Results go to `out/places/shards/<place_id>/check.json`, which the new world's
 read-back (`tools/newworld/verify.py`, area `places`) reports. Water triangles join the network as Skyrim.esm's do (in Tamriel 16,729 water-dry shared edges and 1,670 water-dry
 edge links, measured: actors wade and swim them); a street or a patrol is never laid along water deeper than a ford
 (`WADE`, 64 units, half the agent's height). The geometry is one: a ref is inside another
 when its origin is within 0.8 of the other's record box in plan under the other's full three-axis rotation and
 within its height; a standing point (arrival, stop) is inside a body only below its top by more than 16 units.
-`python -m tools.places draft join <place_id>` runs the draft's last step alone on the place files as they stand
-(the source's steps hung on their decks, residents' promises, names from the people source, then the built
-network: flights, joins, arrivals, work stops, streets and patrols), writing only the rows its rules change.
+`python -m tools.places draft <stage> <place_id>` runs one stage of the draft alone on the place files as they
+stand (`tools/places/draft/stages.py`): `fit` (each piece in its source cluster, a light in its fixture's, standing
+where that cluster stands now), `pieces` (`draft.replace` and `draft.drop`), `seating` (seat rules and heights),
+`clearance` (`clear.jsonl`), `streets` or `join` (the source's steps hung on their decks, residents' promises,
+names, then the built network: flights, joins, arrivals, work stops, streets and patrols), `people` (promises and
+names), `lights` (added stations' lights, each room's shadow twins, `place.json` `lights`: `{added:[{id, base,
+on}], twins:[{space, src, base, of}]}`), `stations` (a promised station the files lack). A stage writes only the
+rows and fields it owns. After a stage runs the tool checks that; if the stage wrote anything else, the tool
+restores the files and fails. A row a
+finalised save under `edits/` touched is kept as it stands. The run prints `{file: {changed, added, removed}}`. The
+whole `draft <place_id>` refuses a place with finalised saves unless `--force "<why>"` is given.
 `draft check <place_id>` runs this same check (the build into `out/places/draft_check/`, then these functions on
 that plugin), so a draft that passes it passes `check` on the build; it also mends every street again on that
 built mesh and fails if a stretch is re-laid (the streets are settled).

@@ -83,13 +83,15 @@ NORDIC_REVIEW = ROOT / "newworld" / "places" / "nordic_review.jsonl"
 
 
 def nordic_review(path: Path = NORDIC_REVIEW) -> dict[str, dict]:
-    """The looked-at verdict on bases whose model folder is Skyrim's Nordic kits (decision 0006): {base key: {base,
-    edid, model, verdict: nordic|neutral, why, replace?: {base, turn_deg?}}}. A verdict outranks the folder rule."""
+    """The looked-at verdict on bases we may add from elsewhere whose model folder is Skyrim's Nordic kits (decision
+    0006): {base key: {base, edid, model, verdict: nordic|neutral, why}}. A verdict outranks the folder rule. A piece
+    the source place itself uses is never judged: it is accepted as it comes."""
     return {r["base"]: r for r in read_jsonl(path)} if path.exists() else {}
 
 
 def is_nordic(key: str, base: dict, review: dict[str, dict]) -> bool:
-    """Nordic by the review where a base was looked at, else by the extractor's folder rule (the cautious default)."""
+    """For a base we add from elsewhere: Nordic by the review where it was looked at, else by the extractor's folder
+    rule (the cautious default)."""
     v = review.get(key)
     return v["verdict"] == "nordic" if v else bool(base.get("nordic"))
 
@@ -110,7 +112,8 @@ def catalogue_bases(keys: set[str], path: Path = CATALOGUE) -> dict[str, dict]:
 
 def place_bases(src: "Bundle", grd: "Bundle", place: dict) -> dict[str, dict]:
     """Every base a draft may place: the source's, the ground's, and the catalogue's for the agent's choices and the
-    stations and bridges the draft added (place.json)."""
+    stations, lights and bridges the draft added (place.json). `nordic` is false on every base the source place
+    itself uses (accepted as it comes) and the review's or the folder rule's verdict on what we add from elsewhere."""
     decisions = place.get("draft") or {}
     bases = dict(src.bases)
     for k, b in grd.bases.items():
@@ -120,10 +123,14 @@ def place_bases(src: "Bundle", grd: "Bundle", place: dict) -> dict[str, dict]:
         want.add(v["base"] if isinstance(v, dict) else v)
     want |= {a["base"] for a in decisions.get("add") or []}
     want |= {a["base"] for a in (place.get("stations") or {}).get("added") or []}
+    lit = place.get("lights") or {}
+    want_lights = {a["base"] for a in lit.get("added") or []} | {t["base"] for t in lit.get("twins") or []}
     review = nordic_review()
-    want |= {v["replace"]["base"] for k, v in review.items() if k in bases and v.get("replace")}
     bases.update(catalogue_bases(want - set(bases)))
-    return {k: ({**b, "nordic": is_nordic(k, b, review)} if k in review else b) for k, b in bases.items()}
+    if want_lights - set(bases):
+        from tools.places.draft import lights
+        bases.update({k: b for k, b in lights.light_bases().items() if k in want_lights and k not in bases})
+    return {k: {**b, "nordic": False if k in src.bases else is_nordic(k, b, review)} for k, b in bases.items()}
 
 
 WALKED = re.compile(r"dock|step|stair|bridge|walkway|plank|pier|ramp|boardwalk", re.I)
@@ -139,18 +146,16 @@ def keeps_function(old: dict, new: dict) -> bool:
     return bool(a and b and abs(a[1][2] - b[1][2]) <= WALK_TOP_TOL and abs(a[0][2] - b[0][2]) <= 4 * WALK_TOP_TOL)
 
 
-def nordic_replace(dec: dict, bases: dict, review: dict[str, dict] | None = None,
-                   refused: list | None = None) -> dict[str, dict]:
-    """{source base: {base, turn_deg?}}: the review's standard replacement for each Nordic base, then the place's own
-    `draft.replace` over it. A replacement is never applied to a base the review calls neutral, nor one that does not
-    keep the original's function (`keeps_function`); each refused one is listed in `refused`."""
-    review = nordic_review() if review is None else review
-    out = {k: dict(v["replace"]) for k, v in review.items() if v["verdict"] == "nordic" and v.get("replace")}
-    out.update({k: (v if isinstance(v, dict) else {"base": v}) for k, v in (dec.get("replace") or {}).items()})
+def replacements(dec: dict, bases: dict, refused: list | None = None) -> dict[str, dict]:
+    """{source base: {base, turn_deg?}}: the place's own `draft.replace`, the agent's call on a piece that cannot
+    stand in our place as it is (never its look as a Nordic piece: the source's own pieces are accepted as they
+    come). A replacement is never applied when it is Nordic itself or does not keep the original's function
+    (`keeps_function`); each refused one is listed in `refused`."""
+    out = {k: (dict(v) if isinstance(v, dict) else {"base": v}) for k, v in (dec.get("replace") or {}).items()}
     for k in list(out):
         why = None
-        if (review.get(k) or {}).get("verdict") == "neutral":
-            why = "the Nordic review calls it neutral"
+        if (bases.get(out[k]["base"]) or {}).get("nordic"):
+            why = "the replacement is a Nordic piece (decision 0006)"
         elif k in bases and out[k]["base"] in bases and not keeps_function(bases[k], bases[out[k]["base"]]):
             why = "the replacement does not keep its walking top"
         if why:

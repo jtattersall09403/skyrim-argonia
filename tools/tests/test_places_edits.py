@@ -148,8 +148,8 @@ def helstrom_ops(files):
         after["pos"] = [before["pos"][0] + 100, before["pos"][1] - 50, before["pos"][2] + 3]
         after["seat"]["dz"] = after["seat"].get("dz", 0) + 3
         add({"op": "ref.move", "id": r["id"], "before": before, "after": after})
-    aligned = next(x for x in ext if "align" in x)
-    add({"op": "ref.remove", "id": aligned["id"], "before": aligned, "call": "taste"})
+    gone = next(x for x in ext if x.get("kind") == "door")     # a row with a door block: the fullest row shape
+    add({"op": "ref.remove", "id": gone["id"], "before": gone, "call": "taste"})
     add({"op": "ref.add", "ref": dict(copy.deepcopy(ext[0]), id="helstrom.TESTADD", pos=[0.0, 0.0, 0.0])})
     add({"op": "veg.restore", "items": [files["clear"][0]]})
     add({"op": "veg.clear", "items": [{"base": "Skyrim.esm:0A7329", "pos": [1.0, 2.0, 3.0]}]})

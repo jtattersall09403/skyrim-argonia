@@ -2,17 +2,7 @@
  "place_id": "helstrom",
  "source_id": "bmv.helstrom",
  "similar": [],
- "draft": {
-  "replace": {
-   "Black Marsh.esm:1DE5DF": {
-    "base": "Here There Be Monsters - Curse of Cipactli.esp:029DC6",
-    "turn_deg": 90
-   },
-   "Skyrim.esm:0453D8": "King of the Murkmire.esp:0259D2",
-   "Skyrim.esm:036170": "King of the Murkmire.esp:093D0D",
-   "Black Marsh North.esp:0787CF": "Skyrim.esm:0EA901"
-  }
- },
+ "draft": {},
  "fit": {
   "pivot": [
    -31283.1,
@@ -6992,5 +6982,502 @@
  "saves_applied": [
   "end-to-end-proof",
   "real-edit-proof"
- ]
+ ],
+ "lights": {
+  "added": [
+   {
+    "id": "helstrom.HT0S62YWPQSE1XWJ4K4R49WDKN",
+    "base": "Skyrim.esm:0B15EE",
+    "on": "helstrom.5D6YAVN2Y2P84B46BHPKVTQC0T"
+   }
+  ],
+  "twins": [
+   {
+    "space": "01ArgonianHouseinside",
+    "src": "Black Marsh.esm:1DE57F",
+    "base": "Skyrim.esm:0B345B",
+    "of": "Skyrim.esm:0B345A"
+   },
+   {
+    "space": "01ArgonianHouseinside",
+    "src": "Black Marsh.esm:1DE611",
+    "base": "Skyrim.esm:02EE05",
+    "of": "Skyrim.esm:0B33F7"
+   },
+   {
+    "space": "01ArgonianHouseinside",
+    "src": "Black Marsh.esm:1DE613",
+    "base": "Skyrim.esm:02EE05",
+    "of": "Skyrim.esm:0B33F7"
+   },
+   {
+    "space": "01ArgonianHouseinside",
+    "src": "Black Marsh.esm:1DE617",
+    "base": "Skyrim.esm:02EE05",
+    "of": "Skyrim.esm:0B33F7"
+   },
+   {
+    "space": "01ArgonianHouseinside",
+    "src": "Black Marsh.esm:1DE619",
+    "base": "Skyrim.esm:02EE05",
+    "of": "Skyrim.esm:0B33F7"
+   },
+   {
+    "space": "01ArgonianHouseinside",
+    "src": "Black Marsh.esm:1DE61B",
+    "base": "Skyrim.esm:02EE05",
+    "of": "Skyrim.esm:0B33F7"
+   },
+   {
+    "space": "01ArgonianHouseinside",
+    "src": "Black Marsh.esm:1DE61D",
+    "base": "Skyrim.esm:02EE05",
+    "of": "Skyrim.esm:0B33F7"
+   },
+   {
+    "space": "01ArgonianHouseinside",
+    "src": "Black Marsh.esm:1DE61E",
+    "base": "Skyrim.esm:02EE05",
+    "of": "Skyrim.esm:0B33F7"
+   },
+   {
+    "space": "01ArgonianHouseinside",
+    "src": "Black Marsh.esm:1DE620",
+    "base": "Skyrim.esm:02EE05",
+    "of": "Skyrim.esm:0B33F7"
+   },
+   {
+    "space": "01ArgonianHouseinside.2",
+    "src": "Black Marsh.esm:1DE6E5",
+    "base": "Skyrim.esm:02EE05",
+    "of": "Skyrim.esm:0B33F7"
+   },
+   {
+    "space": "01ArgonianHouseinside.2",
+    "src": "Black Marsh.esm:1DE6FD",
+    "base": "Skyrim.esm:0B345B",
+    "of": "Skyrim.esm:0B345A"
+   },
+   {
+    "space": "01ArgonianHouseinside.2",
+    "src": "Black Marsh.esm:1DE739",
+    "base": "Skyrim.esm:02EE05",
+    "of": "Skyrim.esm:0B33F7"
+   },
+   {
+    "space": "01ArgonianHouseinside.2",
+    "src": "Black Marsh.esm:1DE73B",
+    "base": "Skyrim.esm:02EE05",
+    "of": "Skyrim.esm:0B33F7"
+   },
+   {
+    "space": "01ArgonianHouseinside.2",
+    "src": "Black Marsh.esm:1DE73D",
+    "base": "Skyrim.esm:02EE05",
+    "of": "Skyrim.esm:0B33F7"
+   },
+   {
+    "space": "01ArgonianHouseinside.2",
+    "src": "Black Marsh.esm:1DE73E",
+    "base": "Skyrim.esm:02EE05",
+    "of": "Skyrim.esm:0B33F7"
+   },
+   {
+    "space": "01ArgonianHouseinside.2",
+    "src": "Black Marsh.esm:1DE741",
+    "base": "Skyrim.esm:02EE05",
+    "of": "Skyrim.esm:0B33F7"
+   },
+   {
+    "space": "01ArgonianHouseinside.2",
+    "src": "Black Marsh.esm:1DE743",
+    "base": "Skyrim.esm:02EE05",
+    "of": "Skyrim.esm:0B33F7"
+   },
+   {
+    "space": "01ArgonianHouseinside.2",
+    "src": "Black Marsh.esm:1DE747",
+    "base": "Skyrim.esm:02EE05",
+    "of": "Skyrim.esm:0B33F7"
+   },
+   {
+    "space": "01ArgonianHouseinside.3",
+    "src": "Black Marsh.esm:1DE641",
+    "base": "Skyrim.esm:02EE05",
+    "of": "Skyrim.esm:0B33F7"
+   },
+   {
+    "space": "01ArgonianHouseinside.3",
+    "src": "Black Marsh.esm:1DE659",
+    "base": "Skyrim.esm:0B345B",
+    "of": "Skyrim.esm:0B345A"
+   },
+   {
+    "space": "01ArgonianHouseinside.3",
+    "src": "Black Marsh.esm:1DE695",
+    "base": "Skyrim.esm:02EE05",
+    "of": "Skyrim.esm:0B33F7"
+   },
+   {
+    "space": "01ArgonianHouseinside.3",
+    "src": "Black Marsh.esm:1DE697",
+    "base": "Skyrim.esm:02EE05",
+    "of": "Skyrim.esm:0B33F7"
+   },
+   {
+    "space": "01ArgonianHouseinside.3",
+    "src": "Black Marsh.esm:1DE699",
+    "base": "Skyrim.esm:02EE05",
+    "of": "Skyrim.esm:0B33F7"
+   },
+   {
+    "space": "01ArgonianHouseinside.3",
+    "src": "Black Marsh.esm:1DE69A",
+    "base": "Skyrim.esm:02EE05",
+    "of": "Skyrim.esm:0B33F7"
+   },
+   {
+    "space": "01ArgonianHouseinside.3",
+    "src": "Black Marsh.esm:1DE69D",
+    "base": "Skyrim.esm:02EE05",
+    "of": "Skyrim.esm:0B33F7"
+   },
+   {
+    "space": "01ArgonianHouseinside.3",
+    "src": "Black Marsh.esm:1DE69F",
+    "base": "Skyrim.esm:02EE05",
+    "of": "Skyrim.esm:0B33F7"
+   },
+   {
+    "space": "01ArgonianHouseinside.3",
+    "src": "Black Marsh.esm:1DE6A3",
+    "base": "Skyrim.esm:02EE05",
+    "of": "Skyrim.esm:0B33F7"
+   },
+   {
+    "space": "01ArgonianHouseinside.4",
+    "src": "Black Marsh.esm:1DE82D",
+    "base": "Skyrim.esm:02EE05",
+    "of": "Skyrim.esm:0B33F7"
+   },
+   {
+    "space": "01ArgonianHouseinside.4",
+    "src": "Black Marsh.esm:1DE845",
+    "base": "Skyrim.esm:0B345B",
+    "of": "Skyrim.esm:0B345A"
+   },
+   {
+    "space": "01ArgonianHouseinside.4",
+    "src": "Black Marsh.esm:1DE881",
+    "base": "Skyrim.esm:02EE05",
+    "of": "Skyrim.esm:0B33F7"
+   },
+   {
+    "space": "01ArgonianHouseinside.4",
+    "src": "Black Marsh.esm:1DE883",
+    "base": "Skyrim.esm:02EE05",
+    "of": "Skyrim.esm:0B33F7"
+   },
+   {
+    "space": "01ArgonianHouseinside.4",
+    "src": "Black Marsh.esm:1DE885",
+    "base": "Skyrim.esm:02EE05",
+    "of": "Skyrim.esm:0B33F7"
+   },
+   {
+    "space": "01ArgonianHouseinside.4",
+    "src": "Black Marsh.esm:1DE886",
+    "base": "Skyrim.esm:02EE05",
+    "of": "Skyrim.esm:0B33F7"
+   },
+   {
+    "space": "01ArgonianHouseinside.4",
+    "src": "Black Marsh.esm:1DE889",
+    "base": "Skyrim.esm:02EE05",
+    "of": "Skyrim.esm:0B33F7"
+   },
+   {
+    "space": "01ArgonianHouseinside.4",
+    "src": "Black Marsh.esm:1DE88B",
+    "base": "Skyrim.esm:02EE05",
+    "of": "Skyrim.esm:0B33F7"
+   },
+   {
+    "space": "01ArgonianHouseinside.4",
+    "src": "Black Marsh.esm:1DE88F",
+    "base": "Skyrim.esm:02EE05",
+    "of": "Skyrim.esm:0B33F7"
+   },
+   {
+    "space": "01ArgonianHouseinside.5",
+    "src": "Black Marsh.esm:1DE789",
+    "base": "Skyrim.esm:02EE05",
+    "of": "Skyrim.esm:0B33F7"
+   },
+   {
+    "space": "01ArgonianHouseinside.5",
+    "src": "Black Marsh.esm:1DE7A1",
+    "base": "Skyrim.esm:0B345B",
+    "of": "Skyrim.esm:0B345A"
+   },
+   {
+    "space": "01ArgonianHouseinside.5",
+    "src": "Black Marsh.esm:1DE7DD",
+    "base": "Skyrim.esm:02EE05",
+    "of": "Skyrim.esm:0B33F7"
+   },
+   {
+    "space": "01ArgonianHouseinside.5",
+    "src": "Black Marsh.esm:1DE7DF",
+    "base": "Skyrim.esm:02EE05",
+    "of": "Skyrim.esm:0B33F7"
+   },
+   {
+    "space": "01ArgonianHouseinside.5",
+    "src": "Black Marsh.esm:1DE7E1",
+    "base": "Skyrim.esm:02EE05",
+    "of": "Skyrim.esm:0B33F7"
+   },
+   {
+    "space": "01ArgonianHouseinside.5",
+    "src": "Black Marsh.esm:1DE7E2",
+    "base": "Skyrim.esm:02EE05",
+    "of": "Skyrim.esm:0B33F7"
+   },
+   {
+    "space": "01ArgonianHouseinside.5",
+    "src": "Black Marsh.esm:1DE7E5",
+    "base": "Skyrim.esm:02EE05",
+    "of": "Skyrim.esm:0B33F7"
+   },
+   {
+    "space": "01ArgonianHouseinside.5",
+    "src": "Black Marsh.esm:1DE7E7",
+    "base": "Skyrim.esm:02EE05",
+    "of": "Skyrim.esm:0B33F7"
+   },
+   {
+    "space": "01ArgonianHouseinside.5",
+    "src": "Black Marsh.esm:1DE7EB",
+    "base": "Skyrim.esm:02EE05",
+    "of": "Skyrim.esm:0B33F7"
+   },
+   {
+    "space": "01ArgonianHouseinside.6",
+    "src": "Black Marsh.esm:1E42C0",
+    "base": "Skyrim.esm:02EE05",
+    "of": "Skyrim.esm:0B33F7"
+   },
+   {
+    "space": "01ArgonianHouseinside.6",
+    "src": "Black Marsh.esm:1E4305",
+    "base": "Skyrim.esm:02EE05",
+    "of": "Skyrim.esm:0B33F7"
+   },
+   {
+    "space": "01ArgonianHouseinside.6",
+    "src": "Black Marsh.esm:1E4318",
+    "base": "Skyrim.esm:02EE05",
+    "of": "Skyrim.esm:0B33F7"
+   },
+   {
+    "space": "01ArgonianHouseinside.6",
+    "src": "Black Marsh.esm:1E445B",
+    "base": "Skyrim.esm:02EE05",
+    "of": "Skyrim.esm:0B33F7"
+   },
+   {
+    "space": "01ArgonianHouseinside.6",
+    "src": "Black Marsh.esm:1E446B",
+    "base": "Skyrim.esm:02EE05",
+    "of": "Skyrim.esm:0B33F7"
+   },
+   {
+    "space": "01ArgonianHouseinside.6",
+    "src": "Black Marsh.esm:1E4481",
+    "base": "Skyrim.esm:02EE05",
+    "of": "Skyrim.esm:0B33F7"
+   },
+   {
+    "space": "01ArgonianHouseinside.6",
+    "src": "Black Marsh.esm:1E4484",
+    "base": "Skyrim.esm:02EE05",
+    "of": "Skyrim.esm:0B33F7"
+   },
+   {
+    "space": "01ArgonianHouseinside.6",
+    "src": "Black Marsh.esm:1E4493",
+    "base": "Skyrim.esm:0B345B",
+    "of": "Skyrim.esm:0B345A"
+   },
+   {
+    "space": "01ArgonianHouseinside.6",
+    "src": "Black Marsh.esm:1E449B",
+    "base": "Skyrim.esm:02EE05",
+    "of": "Skyrim.esm:0B33F7"
+   },
+   {
+    "space": "01ArgonianHouseinside.7",
+    "src": "Black Marsh.esm:1E42D0",
+    "base": "Skyrim.esm:02EE05",
+    "of": "Skyrim.esm:0B33F7"
+   },
+   {
+    "space": "01ArgonianHouseinside.7",
+    "src": "Black Marsh.esm:1E430C",
+    "base": "Skyrim.esm:02EE05",
+    "of": "Skyrim.esm:0B33F7"
+   },
+   {
+    "space": "01ArgonianHouseinside.7",
+    "src": "Black Marsh.esm:1E4310",
+    "base": "Skyrim.esm:02EE05",
+    "of": "Skyrim.esm:0B33F7"
+   },
+   {
+    "space": "01ArgonianHouseinside.7",
+    "src": "Black Marsh.esm:1E432C",
+    "base": "Skyrim.esm:02EE05",
+    "of": "Skyrim.esm:0B33F7"
+   },
+   {
+    "space": "01ArgonianHouseinside.7",
+    "src": "Black Marsh.esm:1E433A",
+    "base": "Skyrim.esm:02EE05",
+    "of": "Skyrim.esm:0B33F7"
+   },
+   {
+    "space": "01ArgonianHouseinside.7",
+    "src": "Black Marsh.esm:1E433D",
+    "base": "Skyrim.esm:0B345B",
+    "of": "Skyrim.esm:0B345A"
+   },
+   {
+    "space": "01ArgonianHouseinside.7",
+    "src": "Black Marsh.esm:1E43D1",
+    "base": "Skyrim.esm:02EE05",
+    "of": "Skyrim.esm:0B33F7"
+   },
+   {
+    "space": "01ArgonianHouseinside.7",
+    "src": "Black Marsh.esm:1E4457",
+    "base": "Skyrim.esm:02EE05",
+    "of": "Skyrim.esm:0B33F7"
+   },
+   {
+    "space": "01ArgonianHouseinside.7",
+    "src": "Black Marsh.esm:1E446C",
+    "base": "Skyrim.esm:02EE05",
+    "of": "Skyrim.esm:0B33F7"
+   },
+   {
+    "space": "01ArgonianHouseinside.8",
+    "src": "Black Marsh.esm:1E42C2",
+    "base": "Skyrim.esm:02EE05",
+    "of": "Skyrim.esm:0B33F7"
+   },
+   {
+    "space": "01ArgonianHouseinside.8",
+    "src": "Black Marsh.esm:1E42E2",
+    "base": "Skyrim.esm:02EE05",
+    "of": "Skyrim.esm:0B33F7"
+   },
+   {
+    "space": "01ArgonianHouseinside.8",
+    "src": "Black Marsh.esm:1E438C",
+    "base": "Skyrim.esm:02EE05",
+    "of": "Skyrim.esm:0B33F7"
+   },
+   {
+    "space": "01ArgonianHouseinside.8",
+    "src": "Black Marsh.esm:1E43BA",
+    "base": "Skyrim.esm:02EE05",
+    "of": "Skyrim.esm:0B33F7"
+   },
+   {
+    "space": "01ArgonianHouseinside.8",
+    "src": "Black Marsh.esm:1E4458",
+    "base": "Skyrim.esm:02EE05",
+    "of": "Skyrim.esm:0B33F7"
+   },
+   {
+    "space": "01ArgonianHouseinside.8",
+    "src": "Black Marsh.esm:1E445F",
+    "base": "Skyrim.esm:02EE05",
+    "of": "Skyrim.esm:0B33F7"
+   },
+   {
+    "space": "01ArgonianHouseinside.8",
+    "src": "Black Marsh.esm:1E4461",
+    "base": "Skyrim.esm:02EE05",
+    "of": "Skyrim.esm:0B33F7"
+   },
+   {
+    "space": "01ArgonianHouseinside.8",
+    "src": "Black Marsh.esm:1E4469",
+    "base": "Skyrim.esm:0B345B",
+    "of": "Skyrim.esm:0B345A"
+   },
+   {
+    "space": "01ArgonianHouseinside.8",
+    "src": "Black Marsh.esm:1E447C",
+    "base": "Skyrim.esm:02EE05",
+    "of": "Skyrim.esm:0B33F7"
+   },
+   {
+    "space": "01ArgonianHouseinside.9",
+    "src": "Black Marsh.esm:1DE8D1",
+    "base": "Skyrim.esm:02EE05",
+    "of": "Skyrim.esm:0B33F7"
+   },
+   {
+    "space": "01ArgonianHouseinside.9",
+    "src": "Black Marsh.esm:1DE8E9",
+    "base": "Skyrim.esm:0B345B",
+    "of": "Skyrim.esm:0B345A"
+   },
+   {
+    "space": "01ArgonianHouseinside.9",
+    "src": "Black Marsh.esm:1DE925",
+    "base": "Skyrim.esm:02EE05",
+    "of": "Skyrim.esm:0B33F7"
+   },
+   {
+    "space": "01ArgonianHouseinside.9",
+    "src": "Black Marsh.esm:1DE927",
+    "base": "Skyrim.esm:02EE05",
+    "of": "Skyrim.esm:0B33F7"
+   },
+   {
+    "space": "01ArgonianHouseinside.9",
+    "src": "Black Marsh.esm:1DE929",
+    "base": "Skyrim.esm:02EE05",
+    "of": "Skyrim.esm:0B33F7"
+   },
+   {
+    "space": "01ArgonianHouseinside.9",
+    "src": "Black Marsh.esm:1DE92A",
+    "base": "Skyrim.esm:02EE05",
+    "of": "Skyrim.esm:0B33F7"
+   },
+   {
+    "space": "01ArgonianHouseinside.9",
+    "src": "Black Marsh.esm:1DE92D",
+    "base": "Skyrim.esm:02EE05",
+    "of": "Skyrim.esm:0B33F7"
+   },
+   {
+    "space": "01ArgonianHouseinside.9",
+    "src": "Black Marsh.esm:1DE92F",
+    "base": "Skyrim.esm:02EE05",
+    "of": "Skyrim.esm:0B33F7"
+   },
+   {
+    "space": "01ArgonianHouseinside.9",
+    "src": "Black Marsh.esm:1DE933",
+    "base": "Skyrim.esm:02EE05",
+    "of": "Skyrim.esm:0B33F7"
+   }
+  ]
+ }
 }

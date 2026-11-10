@@ -4,8 +4,9 @@ The agent's own calls (skill place-build) are inputs, read from place.json's `dr
   anchor [x, y]    where the source's middle goes on our land (default: the place record's position)
   rot_deg          the source's turn onto our land (default: searched)
   search           how far round the anchor the global fit looks (units, default 4096)
-  replace          {source base key: our base key | {base, turn_deg}}: a Nordic or unsuitable base swapped for one of
-                   like size and use (turn_deg when the new model's front faces another way)
+  replace          {source base key: our base key | {base, turn_deg}}: a base that cannot stand in our place as it
+                   is, swapped for one of like size and use (turn_deg when the new model's front faces another way);
+                   never for its look as a Nordic piece: the source's own pieces are accepted as they come
   drop             {source ref id: reason}: a source ref left out by judgement
   roles            {role: {space | pos:[x,y]}}: where a service person works, when the default is wrong
   keep_patches     false to forbid land patches (the check then lists what needs one)
@@ -25,7 +26,7 @@ from pathlib import Path
 
 from tools.places import identities
 from tools.places.draft import clear as clearmod
-from tools.places.draft import geom, interiors, io, overlap, people, seating
+from tools.places.draft import geom, interiors, io, lights, overlap, people, seating
 from tools.places.draft import paths as paths_mod
 from tools.places.draft.geom import LEVELLED
 from tools.places.draft.cluster import VEG, decompose
@@ -42,7 +43,7 @@ CLUSTER_NUDGE = [float(v) for v in range(64, 2049, 64)]
 NUDGE_STEPS = [64.0, 128.0, 192.0, 256.0, 320.0, 384.0]
 PATCH_KINDS = {"building", "static", "furniture", "container", "door", "activator"}
 TOOL_FILES = ["run.py", "cluster.py", "fit.py", "seating.py", "paths.py", "clear.py", "interiors.py", "people.py",
-              "geom.py", "io.py", "walk.py", "overlap.py"]
+              "geom.py", "io.py", "walk.py", "overlap.py", "lights.py"]
 
 
 def tool_key() -> str:
@@ -51,6 +52,10 @@ def tool_key() -> str:
     for f in TOOL_FILES + ["../seat.py"]:
         h.update((here / f).read_bytes())
     return h.hexdigest()[:16]
+
+
+def lights_out(fixture_id: str) -> str:
+    return f"its fixture {fixture_id} is left out; a light goes with its fixture"
 
 
 def place_record(place_id: str) -> tuple[dict, list[dict]]:
@@ -95,6 +100,36 @@ def face_out(rot: list, x: float, y: float, base: dict, out) -> tuple[float, flo
     return x + cl[0] - c1[0], y + cl[1] - c1[1]
 
 
+def replace_piece(row: dict, r: dict, rep: dict, bases: dict, outside) -> None:
+    """Our row of source ref r, standing where r's own base would, given the base `rep` names: a directional piece's
+    plane lined up with the original's (`align` on the row), a door that leads indoors turned to face `outside()`
+    (where one arrives outside it), a walkway's top kept where the original's was."""
+    b = bases.get(r["base"]) or {}
+    x, y, rot = row["pos"][0], row["pos"][1], row["rot"]
+    al = geom.align(b, bases.get(rep["base"]) or {}, rep.get("turn_deg")) if r.get("kind") in DIRECTIONAL else None
+    orig_yaw = rot[2]
+    rot[2] = round((rot[2] + math.radians(al["turn_deg"] if al else float(rep.get("turn_deg", 0)))) % (2 * math.pi), 5)
+    if al:
+        sx, sy = geom.turn(al["shift_local"], orig_yaw)
+        x, y = x + sx, y + sy
+        if r.get("kind") == "door" and (r.get("door") or {}).get("to_space"):
+            yaw0 = rot[2]
+            x, y = face_out(rot, x, y, bases.get(rep["base"]) or {}, outside())
+            if rot[2] != yaw0:
+                al = {**al, "turn_deg": (al["turn_deg"] + 180.0) % 360.0}
+        row["align"] = {"turn_deg": al["turn_deg"], "shift": [round(sx, 1), round(sy, 1)], "of": r["base"]}
+    row["base"], row["pos"][0], row["pos"][1] = rep["base"], round(x, 2), round(y, 2)
+    if paths_mod.WALKWAY.search(str(b.get("model", ""))):
+        # a replaced walkway keeps the original's walking height: its top where the original's top was (a door or
+        # a deck that met the original's top still meets it)
+        ob, nb = model_bounds(b), model_bounds(bases.get(rep["base"]) or {})
+        if ob and nb:
+            lift = (ob[1][2] - nb[1][2]) * float(r.get("scale") or 1.0)
+            if abs(lift) > 1:
+                row["seat"] = dict(row["seat"], dz=round(float(row["seat"].get("dz", 0.0)) + lift, 2))
+                row["pos"][2] = round(row["pos"][2] + lift, 2)
+
+
 def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, record: tuple | None = None,
           force: bool = False) -> dict:
     pdir = places / place_id
@@ -115,6 +150,7 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
     ext = [r for r in src.exterior.refs]
     by_src = {r["id"]: r for r in ext}
     clusters, of, wild = decompose(ext, bases, S)
+    bound = lights.fixtures(ext, bases)      # each light's fixture: it shares its cluster, its seat and its fate
     cl_by = {c.id: c for c in clusters}
     sc = Scorer(clusters, S, G)
     anchor = tuple(dec.get("anchor") or (rec.get("world_x", 0.0), rec.get("world_y", 0.0)))
@@ -127,7 +163,7 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
     # --- refs ---
     ledger: list[dict] = []
     refused: list[str] = []
-    replace = io.nordic_replace(dec, bases, refused=refused)
+    replace = io.replacements(dec, bases, refused=refused)
     for m in refused:
         print(f"draft {place_id}: {m}")
     drop = dec.get("drop") or {}
@@ -155,49 +191,24 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
             why = "outside every cluster"
         elif _base_type(b) in LEVELLED:
             why = "levelled (decision 0035)"
-        if why is None and b.get("nordic") and r.get("base") not in replace:
-            why = "Nordic base (decision 0006); no replacement chosen"
         if why:
             ledger.append({"src": rid, "space": "exterior", "status": "dropped", "why": why})
             continue
         cid = of[rid]
         cx = fit.per[cid]
-        seat = seating.infer(r, [by_src[i] for i in cl_by[cid].members], bases, S, False)
+        seat = lights.seat(r, by_src[bound[rid]]) if rid in bound else \
+            seating.infer(r, [by_src[i] for i in cl_by[cid].members], bases, S, False)
         x, y = cx.pt(r["pos"][0], r["pos"][1])
         rot = cx.rot3(r.get("rot"))
         rep = replace.get(r["base"])
-        al = None
-        if rep:
-            al = geom.align(bases.get(r["base"]) or {}, bases.get(rep["base"]) or {}, rep.get("turn_deg")) \
-                if r.get("kind") in DIRECTIONAL else None
-            orig_yaw = rot[2]
-            rot[2] = round((rot[2] + math.radians(al["turn_deg"] if al else float(rep.get("turn_deg", 0))))
-                           % (2 * math.pi), 5)
-            if al:
-                sx, sy = geom.turn(al["shift_local"], orig_yaw)
-                x, y = x + sx, y + sy
-                if r.get("kind") == "door" and (r.get("door") or {}).get("to_space"):
-                    yaw0 = rot[2]
-                    x, y = face_out(rot, x, y, bases.get(rep["base"]) or {}, cx.pt(*src_outside(src, r)))
-                    if rot[2] != yaw0:
-                        al = {**al, "turn_deg": (al["turn_deg"] + 180.0) % 360.0}
-        row = {"id": io.mint(place_id, "exterior", rid), "base": rep["base"] if rep else r["base"], "kind": r.get("kind"),
+        row = {"id": io.mint(place_id, "exterior", rid), "base": r["base"], "kind": r.get("kind"),
                "pos": [round(x, 2), round(y, 2), r["pos"][2]], "rot": rot, "scale": r.get("scale", 1.0),
                "layer": "place", "flags": r.get("flags") or [], "src": rid, "seat": seat, "cluster": cid}
         for k in ("owner", "lock", "door", "linked", "enable_parent", "primitive", "map_marker", "edid", "radius", "count"):
             if r.get(k) is not None:
                 row[k] = r[k]
-        if al:
-            row["align"] = {"turn_deg": al["turn_deg"], "shift": [round(sx, 1), round(sy, 1)], "of": r["base"]}
-        if rep and paths_mod.WALKWAY.search(str(b.get("model", ""))):
-            # a replaced walkway keeps the original's walking height: its top where the original's top was (a
-            # door or a deck that met the original's top still meets it)
-            ob, nb = model_bounds(b), model_bounds(bases.get(rep["base"]) or {})
-            if ob and nb:
-                lift = (ob[1][2] - nb[1][2]) * float(r.get("scale") or 1.0)
-                if abs(lift) > 1:
-                    row["seat"] = dict(row["seat"], dz=round(float(row["seat"].get("dz", 0.0)) + lift, 2))
-                    row["pos"][2] = round(row["pos"][2] + lift, 2)
+        if rep:
+            replace_piece(row, r, rep, bases, lambda: cx.pt(*src_outside(src, r)))
         our_id[rid] = row["id"]
         our.append(row)
         loc = fit.local.get(cid, {})
@@ -207,6 +218,14 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
         if status == "replaced":
             lrow["base"] = rep["base"]
         ledger.append(lrow)
+    # a light whose fixture is left out goes with it
+    led_of = {lr.get("as"): lr for lr in ledger if isinstance(lr.get("as"), str)}
+    for row in [r for r in our if r["src"] in bound and bound[r["src"]] not in our_id]:
+        led_of[row["id"]].update({"status": "dropped", "why": lights_out(bound[row["src"]])})
+        led_of[row["id"]].pop("as", None)
+        led_of[row["id"]].pop("base", None)
+        our_id.pop(row["src"])
+        our.remove(row)
     # links to our ids; a supporter or parent left out is let go
     for row in our:
         s = row["seat"]
@@ -373,6 +392,7 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
     # a flight of the source's steps that abuts a deck a little off its height hangs flush on it (one walked surface)
     from tools.places.draft import walk
     walk.flush_steps(our, bases)
+    lights.follow(our, by_src, bound, lambda cid: fit.per[cid].rot)   # each light at its place by its fixture
     seat_all(our, G)
 
     # --- interiors ---
@@ -758,6 +778,8 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
     # --- people ---
     folk, factions, stations = draft_people(place_id, rec, gives, src, bases, our, spaces, clusters, fit, of,
                                             nodes_our, paths_our, dec, ledger, G)
+    lit = lights.station_lights(place_id, our, stations)   # what we add is lit as Skyrim lights it
+    our.extend(lit)
     seat_all(our, G)
 
     # --- write ---
@@ -807,6 +829,9 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
         "clearance": clearance,
         "factions": factions,
         "stations": stations,
+        "lights": {"added": [{"id": r["id"], "base": r["base"], "on": r["seat"]["on"]} for r in lit],
+                   "twins": [{"space": sid, "src": o["src"], "base": o["base"], "of": o["twin_of"]}
+                             for sid, sp in sorted(spaces.items()) for o in sp["overrides"] if o.get("twin_of")]},
         "ground": {"bundle": f"ground.{place_id}", "sha": G.sha, "stamp": grd.stamp()},
         "source": {"bundle": f"src.{place['source_id']}", "stamp": src.stamp()},
         "radius_m": radius_m,
@@ -985,6 +1010,39 @@ def _seat_foot(row: dict, bases: dict) -> dict:
     f = geom.foot({"base": row["base"], "kind": "furniture"}, bases)
     if f:
         row["seat"]["foot"] = f
+    return row
+
+
+def room_station(place_id, st, b, bases, src_refs, overrides, pts, into, k, owner) -> dict:
+    """An added station indoors: on the floor one walks in on, stepped towards the room's beds (`pts`), clear of the
+    room's things by the build's rule. `into` is the arrival inside the room's door; `k` counts the stations this
+    worker already has."""
+    mx, my = sum(p[0] for p in pts) / len(pts), sum(p[1] for p in pts) / len(pts)
+    if into:
+        # on the floor one walks in on (the source's own arrival inside), stepped into the room towards its
+        # beds: a point the room's navmesh holds, never a guess at a floor height
+        d_ = math.dist(into[:2], (mx, my)) or 1.0
+        step = min(192.0 + 64.0 * k, d_ * 0.5)
+        cx_, cy_, cz_ = into[0] + (mx - into[0]) / d_ * step, into[1] + (my - into[1]) / d_ * step, into[2]
+    else:
+        cx_, cy_, cz_ = mx + 128 * (k + 1), my, min(p[2] for p in pts)
+    row = {"id": io.mint(place_id, "station", st), "base": b["key"], "kind": "furniture",
+           "pos": [round(cx_, 2), round(cy_, 2), round(cz_, 2)], "rot": [0.0, 0.0, 0.0],
+           "scale": 1.0, "layer": "place", "flags": [], "src": None, "seat": {"mode": "free"},
+           "why": f"{st}: promised by the place record ({owner['role']}'s work), lacking in the source"}
+    if b.get("fallback"):
+        row["why"] += f" ({b['fallback']})"
+    # clear of the room's things by the build's rule (its shell and walls hold the room): the nearest spot
+    ov_src = {o.get("src"): o for o in overrides if o.get("src")}
+    things = [ov_src.get(r_["id"], r_) for r_ in src_refs] + [o for o in overrides if not o.get("src")]
+    things = [t for t in things if t.get("kind") in overlap.SOLID - {"building", "static"}
+              and geom.dist(t["pos"], row["pos"]) < 1024]
+    x0, y0 = row["pos"][0], row["pos"][1]
+    for dx_, dy_ in [(0.0, 0.0)] + list(overlap.SHIFTS):
+        row["pos"][0], row["pos"][1] = round(x0 + dx_, 2), round(y0 + dy_, 2)
+        if not any(overlap.inside(row["pos"], t, bases, z=False, pad=16) or overlap.inside(t["pos"], row, bases, z=False, pad=16)
+                   for t in things):
+            break
     return row
 
 
@@ -1194,34 +1252,9 @@ def draft_people(place_id, rec, gives, src, bases, our, spaces, clusters, fit, o
             beds = interiors.beds_in(src_refs, bases, sp["room"], sp["copy_of"])
             anchor_ids = {b_["ref"] for b_ in beds} or {sp.get("room")}
             pts = [r["pos"] for r in src_refs if r["id"] in anchor_ids] or [src_refs[0]["pos"]]
-            mx, my = sum(p[0] for p in pts) / len(pts), sum(p[1] for p in pts) / len(pts)
             into = next((r_.get("door") or {} for r_ in our + [o for v in spaces.values() for o in v["overrides"]]
                          if r_["id"] == sp["door_from"]), {}).get("to_pos")
-            if into:
-                # on the floor one walks in on (the source's own arrival inside), stepped into the room towards its
-                # beds: a point the room's navmesh holds, never a guess at a floor height
-                d_ = math.dist(into[:2], (mx, my)) or 1.0
-                step = min(192.0 + 64.0 * k, d_ * 0.5)
-                cx_, cy_, cz_ = into[0] + (mx - into[0]) / d_ * step, into[1] + (my - into[1]) / d_ * step, into[2]
-            else:
-                cx_, cy_, cz_ = mx + 128 * (k + 1), my, min(p[2] for p in pts)
-            row = {"id": io.mint(place_id, "station", st), "base": b["key"], "kind": "furniture",
-                   "pos": [round(cx_, 2), round(cy_, 2), round(cz_, 2)], "rot": [0.0, 0.0, 0.0],
-                   "scale": 1.0, "layer": "place", "flags": [], "src": None, "seat": {"mode": "free"},
-                   "why": f"{st}: promised by the place record ({owner['role']}'s work), lacking in the source"}
-            if b.get("fallback"):
-                row["why"] += f" ({b['fallback']})"
-            # clear of the room's things by the build's rule (its shell and walls hold the room): the nearest spot
-            ov_src = {o.get("src"): o for o in sp["overrides"] if o.get("src")}
-            things = [ov_src.get(r_["id"], r_) for r_ in src_refs] + [o for o in sp["overrides"] if not o.get("src")]
-            things = [t for t in things if t.get("kind") in overlap.SOLID - {"building", "static"}
-                      and geom.dist(t["pos"], row["pos"]) < 1024]
-            x0, y0 = row["pos"][0], row["pos"][1]
-            for dx_, dy_ in [(0.0, 0.0)] + list(overlap.SHIFTS):
-                row["pos"][0], row["pos"][1] = round(x0 + dx_, 2), round(y0 + dy_, 2)
-                if not any(overlap.inside(row["pos"], t, bases, z=False, pad=16) or overlap.inside(t["pos"], row, bases, z=False, pad=16)
-                           for t in things):
-                    break
+            row = room_station(place_id, st, b, bases, src_refs, sp["overrides"], pts, into, k, owner)
             sp["overrides"].append(row)
         if space == "exterior" and (st == "forge" or not station_used(row["id"], w)):
             # the worker's stop is the station (the forge for a smith; a lab that had to stand further off)

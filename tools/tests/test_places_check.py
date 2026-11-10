@@ -132,6 +132,14 @@ def broken(name):
         c["gives"].append({"give_kind_id": "trainer", "detail": "Expert Alchemy"})
     elif name == "nordic":
         d["refs"][0]["model"] = "meshes/architecture/whiterun/wrhouse01.nif"
+        c["source_bases"] = set()
+    elif name == "shadows":  # five shadow-casting lights in the one room
+        c["light_bases"] = {"S:1": {"light": {"flags": "Dynamic, ShadowOmnidirectional"}}}
+        for i in range(5):
+            row = {"fk": k(0x700 + i), "id": f"t.l{i}", "kind": "light", "space": "house", "base": "S:1", "src": f"X.esm:0007{i:02d}"}
+            p["refs"].append(row)
+            d["refs"].append({"fk": row["fk"], "base_type": "LIGH", "model": None, "pos": [0.0, 0.0, 100.0], "rot": [0, 0, 0],
+                              "scale": 1.0, "flags": 0, "space": "house"})
     elif name == "rooms":  # the house copies a source room whose lantern light was not built
         p["interiors"] = [{"space": "house", "copy": {"plugin": "X.esm"}, "copy_of": "x/house"}]
         c["room_refs"] = {"x/house": [{"id": "X.esm:000001", "kind": "door", "pos": [100.0, 0.0, 0.0]},

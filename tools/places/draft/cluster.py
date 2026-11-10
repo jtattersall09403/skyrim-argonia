@@ -5,7 +5,8 @@ build's geometry) always share a cluster. Membership comes from links (linked re
 pairs follow the ref they belong to), then from space: a thing belongs to the nearest building whose footprint it
 stands within `YARD` of; things over the source's water join the landing; everything else forms street clusters by
 single linkage. Plants and rocks never seed a cluster: inside a yard or a street they are the source's own planting
-and come across; outside they are wild and our world's plants stand there instead.
+and come across; outside they are wild and our world's plants stand there instead. A light shares the cluster of its
+fixture (lights.fixtures).
 """
 from __future__ import annotations
 
@@ -234,5 +235,16 @@ def decompose(refs: list[dict], bases: dict, g: Ground) -> tuple[list[Cluster], 
         if len(c.wet) > MAX_SAMPLES:
             step = len(c.wet) / MAX_SAMPLES
             c.wet = [c.wet[int(k * step)] for k in range(MAX_SAMPLES)]
+    # a light goes with its fixture: the lantern, sconce, window or fire it was placed for. It has no body, so it
+    # joins that cluster last, weighing nothing in where the cluster sits.
+    from tools.places.draft import lights
+    for lid, fid in sorted(lights.fixtures(refs, bases).items()):
+        if fid in of and of.get(lid) != of[fid]:
+            if lid in of and lid in clusters[of[lid]].members:
+                clusters[of[lid]].members.remove(lid)
+            wild.pop(lid, None)
+            of[lid] = of[fid]
+            clusters[of[fid]].members.append(lid)
+            clusters[of[fid]].members.sort()
     out = [c for c in clusters.values() if c.members]
     return sorted(out, key=lambda c: c.id), of, wild
