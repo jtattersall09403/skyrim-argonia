@@ -219,14 +219,38 @@ Every slot is blue: the sun bluish white, the fog blue-grey, the ambient a dim b
 - Community Shaders 1.9.1 is in both profiles. Its DLL has per-weather settings (a `Weathers` folder of per-weather
   JSON keyed by the weather's editor id) for the features that register weather variables: Exponential Height Fog,
   image-based lighting and wetness.
-- Exponential Height Fog (the ray-marched volumetric height fog) is not laid: its add-on's shaders are not in the
-  profile, and the owner's round-5 ruling (2026-11-03) turned it and the exterior volumetric lighting off after they
-  veiled the sky grey (`mods/dependencies.json`, community-shaders `files`). The engine's own volumetric lighting is
-  on in the prefs the stack writes (`bVolumetricLightingEnable=1`), linked per weather.
-- So the volumetric low fog the owner likes is Skyrim's own placed mist (the owner names it "the Skyrim native
-  Hjaalmarch way"); we make that denser and stronger, give each class its own volumetric lighting records for the
-  engine's light shafts, and leave Community Shaders' fog off: turning it back on is the owner's call under the
-  round-5 ruling, and the grey veil it made is the opposite of the warmth asked for.
+- Features installed in both profiles (the community-shaders row is `profile: play`, so the NewWorld profile has the
+  same files): 26 `Shaders/Features/*.ini`: CSEditor, CloudShadows, DynamicCubemaps, ExtendedMaterials,
+  ExtendedTranslucency, GrassCollision, GrassLighting, HorizonFix, ImageBasedLighting, InteriorSun,
+  InverseSquareLighting, LODBlending, LightLimitFix, PerformanceOverlay, RemoteControl, RenderDoc,
+  ScreenSpaceShadows, Screenshot, SkySync, SubsurfaceScattering, TerrainShadows, TruePBR, UnifiedWater,
+  VolumetricLighting, VolumetricShadows, WaterEffects. Our overrides (`mods/dependencies.json`, community-shaders
+  `files`) set VolumetricLighting `ExteriorEnabled: false` and lay an ExponentialHeightFog override with density 0.
+- Not installed: Exponential Height Fog, the only Community Shaders feature that makes a volumetric ground or
+  height fog. Its code is in the 1.9.1 DLL, but its add-on (its `Shaders/Features/ExponentialHeightFog.ini` and its
+  shaders) is not laid: the row's `why` says "Its separate Exponential Height Fog add-on is NOT laid: with it the
+  2026-11-03 sky went to a grey veil" (commit 0fa53c73, 2026-11-05).
+- Where the off came from: not an owner ruling. It is a planner's entry of 2026-11-03 in docs/owner-brief.md (commit
+  ea4a3909; that file was retired at the pivot, d269dbf5, and the entry is not in docs/owner-rulings.md): "Community
+  Shaders' height fog and volumetric lighting are off for now (planner, from the sky bisect on Paris at 11:44): with
+  them on the sky was a flat grey veil with no clouds and dawn a cream wash ... The low mist comes from the weather
+  records only until the shader fog is re-authored within measured bounds." Round 6 then found the veil was our
+  own sky templates, not Community Shaders (4e304b9b), turned its exterior volumetric lighting back on, and turned it
+  off again when the dawn veil came back with no shafts (38c13f55). The owner's own words on Community Shaders are
+  the 2026-11-05 row ("at its default features") and walk 5's "using volumetrics from community shaders where
+  appropriate".
+- What a Community Shaders low ground fog for the new world needs: (1) a mod row for the Exponential Height Fog
+  add-on (a separate Community Shaders feature download), laid in the NewWorld profile only (a `profile: newworld`
+  row, since the community-shaders row's files are shared by both profiles); (2) its global settings authored near
+  the feature's defaults (density 0.005, falloff 0.2, start 0, the earlier measured bounds) with
+  `volumetricFogEnabled` on; (3) per-weather files `SKSE/Plugins/CommunityShaders/Weathers/<editor id>.json` for our
+  marsh and swamp weathers (fair, cloudy, mist, steam: dense and low at dawn), keyed on our editor ids, which no
+  other card loads; (4) for light shafts in it, VolumetricLighting `ExteriorEnabled: true` in a NewWorld-only
+  override. It is a call for the owner: the two earlier tries veiled the sky.
+- The engine's own volumetric lighting is on in the prefs the stack writes (`bVolumetricLightingEnable=1`, stack.ps1
+  line 115) and draws each weather's volumetric lighting records, so our per-class records take effect without it.
+- Built in this lane: the native low mist (Skyrim's placed mist; the owner names it "the Skyrim native Hjaalmarch
+  way"), denser and stronger, and per-class volumetric lighting records; no Community Shaders change.
 
 ## 4. What we built (the recipe is docs/design/atmosphere.md)
 

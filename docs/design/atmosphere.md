@@ -46,7 +46,8 @@ drifting below eye level over the marsh and swamp water. Research and every meas
 5. **Volumetric lighting.** Copy the class family's fair weather's volumetric lighting per hour; set its custom
    colour to the haze, its colour share and density from the class (`voli`).
 6. **Region lists.** Each region lists its set's six weathers with the class's chances plus the band's shifts
-   (at least 1 each, summing to 100). The climate lists the default set.
+   (at least 1 each, summing to 100), with the Override flag and priority 50 as Bethesda's regional sets carry them
+   (50 to 55), so the region's list replaces the climate's. The climate lists the default set.
 7. **Form ids are fixed** (`atmosphere.py` `BASE`): image spaces 0x80000 + set x 24 + kind x 4 + hour, volumetric
    0x80400 + set x 4 + hour, weathers 0x80500 + set x 8 + kind, climate 0x80600, where set = class index x 3 + band
    index in `classes.json` order. A weather's console id is the new world file's load index followed by its id
@@ -64,8 +65,10 @@ Skyrim's own way (Morthal's): always-on `FXMistLow01` statics, no script.
   hummock 0.45; flowing water 0.25; the sea, bays and lakes 0, nor within three samples of a sea cell's water.
 - Opacity: the class's full-opacity share (`mist.full_vis`, at least Hjaalmarch's 43 %) of `FXMistLow01Long` and
   `FXMistLow01` (57 : 43), the rest `FXMistLow01LongHalfVis` and `FXMistLow01HalfVis` (59 : 41).
-- Height: centre 0.9 to 1.4 m over the water or ground (below eye level); scale from the class; random yaw.
-- At most 8 in a cell; natural plus mist refs within the placer's 162 a cell.
+- Height: centre 0.9 to 1.4 m over the water or the ground under the ref (bilinear on the heightmap, as the game
+  reads its LAND); below eye level; scale from the class; random yaw.
+- At most 8 in a cell, and never more than the placer's 162 refs a cell leave after the cell's flora refs
+  (`refs/flora`), so `world/mist.py` runs after the placer.
 
 ## The pipeline (tools/newworld/world/world.sh)
 
@@ -76,18 +79,23 @@ makes every record from `atmosphere.json`; the regions take their lists) -> the 
 
 ## Proof off game
 
-- `python -m tools.newworld.atmosphere check --plugin <dir>`: every record at its id with every field as the spec,
-  every region's list, the climate, the classes at least as distinct as Bethesda's two closest regions, and warmer
-  than the build before walk 5 and BM&V (`measured.json`, from `atmosphere study`).
+- `python -m tools.newworld.atmosphere check --plugin <dir>`: every record at its id with every field and every
+  hour's image space and volumetric lighting link as the spec; every region's list, with the Override flag and
+  priority at least 50; the climate's list, chances and four sun times; the classes at least as distinct as
+  Bethesda's two closest regions (`measured.json`, from `atmosphere study`); warm: noon sun at most 6,000 K with
+  warmth at least +0.05 and far fog warmth at least -0.10.
 - `python -m tools.newworld.atmosphere swatch`: per set, the fair weather's sky, horizon, fog near and far, ambient
-  and sun at dawn, noon, dusk and night, beside the old build's and Tropical Skyrim's.
+  and sun at dawn, noon, dusk and night, beside Skyrim's base weathers (BM&V's) and Tropical Skyrim's.
 - `ArgoniaPlugin atmos sample <dir> <Data> <out.esm>` writes only the atmosphere's records through the writer's own
   `Build`, for a proof without the world.
-- `tools/newworld/verify.py`: the same atmosphere rows on the built world, and the mist rows (density by water kind
-  against Hjaalmarch and the old build, graded by class, opacity, height, budget, none at sea).
+- `tools/newworld/verify.py`: the same atmosphere rows on the built world, and the mist rows (at least 1.4 x
+  Hjaalmarch's density over blackwater swamp and green marsh water, graded by class, opacity, every centre 0.5 to
+  2.0 m over its surface, budget, none at sea).
 
 ## Community Shaders
 
-Its exponential height fog is not in the profile and its exterior volumetric lighting is off by the owner's round-5
-ruling (both veiled the sky grey). The engine's volumetric lighting uses our per-class records. Turning Community
-Shaders' fog on for the new world is an owner call; its per-weather settings would key on our weathers' editor ids.
+The low fog is the placed mist above. The engine's volumetric lighting (on in the prefs the stack writes) draws our
+per-class volumetric lighting records. Community Shaders' exterior volumetric lighting and its exponential height
+fog are off in the profile (`mods/dependencies.json`, community-shaders `files`; the height fog's add-on is not
+laid); a ground fog from them takes the add-on as a mod row and per-weather settings
+(`SKSE/Plugins/CommunityShaders/Weathers/<weather editor id>.json`) keyed on our weathers.

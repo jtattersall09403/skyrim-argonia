@@ -5,8 +5,8 @@
 // Facts kept from LandWorld.cs (measured on Skyrim.esm's Tamriel): LAND DATA flags 0x1F, compressed; per quadrant
 // BottomLeft, BottomRight, TopLeft, TopRight one base layer (0xFFFF); Array2d indexed [x, y], y north from the south;
 // blocks 32 x 32 cells, sub-blocks 8 x 8, floor division. VHGT offset is in 8-unit steps.
-// Placeholders the later nw-02 steps replace: the ground texture (BM&V's 01MOSS1 on every quadrant), the water type
-// (the BM&V BlackMarsh worldspace's), the climate (ours, NewWorldAtmosphere.cs).
+// The ground is painted from the tex shards (world/texture.py), the water typed per cell (world/cells.py, WaterBlend.cs),
+// the climate, weathers and region weather lists made by NewWorldAtmosphere.cs from atmosphere.json.
 using System.Diagnostics;
 using System.Text.Json;
 using Mutagen.Bethesda;
@@ -156,7 +156,7 @@ static class NewWorld
                 EditorID = "ANW_Region_" + r.Name.Replace("-", "_"),
                 Worldspace = new FormLinkNullable<IWorldspaceGetter>(ws.FormKey),
                 MapColor = System.Drawing.Color.FromArgb(120, 140, 90),
-                Weather = new RegionWeather { Weathers = new ExtendedList<WeatherType>(regionWeather(r.Name)) },
+                Weather = NewWorldAtmosphere.RegionWeatherOf(regionWeather(r.Name)),
                 Map = new RegionMap { Name = r.Value.GetProperty("name").GetString() },
             };
             mod.Regions.Add(reg);

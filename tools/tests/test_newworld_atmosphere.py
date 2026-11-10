@@ -62,6 +62,9 @@ def test_every_region_of_the_database_has_a_class():
     rc = A.region_classes(w)
     assert set(rc) == regions
     assert {b for _, b in rc.values()} <= set(A.BANDS)
+    aspects = {a.id for a in w.rows("note_aspect")}
+    _, regs = A.load_sources()
+    assert {aspect for _c, aspect, _w in regs["regions"].values()} <= aspects  # load() refuses any other
 
 
 @pytest.mark.parametrize("band", A.BANDS)

@@ -6,7 +6,7 @@
 // forms), at the fixed form ids the spec gives (atmosphere.py BASE: IMGS 0x80000.., VOLI 0x80400.., WTHR 0x80500..,
 // CLMT 0x80600), so the owner's `fw` commands stay the same from build to build (the ForeignCopy range starts at
 // 0x900 and ends near 0x3000; cells are 0x100000..).
-// A field in the spec is a dotted property path on the Mutagen record ("SkyUpper.Day", "FogDistanceDayFar",
+// A field in the spec is a dotted property path on the Mutagen record ("SkyUpperColor.Day", "FogDistanceDayFar",
 // "DirectionalAmbientLightingColors.Sunrise.DirectionalXPlus", "Cinematic.Saturation"); a colour is [r, g, b].
 using System.Collections;
 using System.Reflection;
@@ -49,7 +49,7 @@ static class NewWorldAtmosphere
             mod.Regions.Add(new Region(new FormKey(modKey, rid++), SkyrimRelease.SkyrimSE)
             {
                 EditorID = "ANW_Region_" + r.Name.Replace("-", "_"), Worldspace = new FormLinkNullable<IWorldspaceGetter>(ws.FormKey),
-                Weather = new RegionWeather { Weathers = new ExtendedList<WeatherType>(lists(r.Name)) },
+                Weather = RegionWeatherOf(lists(r.Name)),
             });
         var dir = Path.Combine(Path.GetDirectoryName(Path.GetFullPath(outPath))!, ".writing"); Directory.CreateDirectory(dir);
         var tmp = Path.Combine(dir, Path.GetFileName(outPath));
@@ -109,6 +109,14 @@ static class NewWorldAtmosphere
         Console.WriteLine($"atmos mist: {refs.Count} mist refs in {cells.Count} cells -> {outPath}");
         return 0;
     }
+
+    // A region's weather data as Bethesda's regional sets carry it (Skyrim.esm WeatherTundraMarsh, WeatherFallForest,
+    // WeatherReach, WeatherCoast: Override, priority 50 to 55): the region's list replaces the climate's.
+    public const ushort RegionPriority = 50;
+    public static RegionWeather RegionWeatherOf(IEnumerable<WeatherType> list) => new()
+    {
+        Weathers = new ExtendedList<WeatherType>(list), Flags = RegionData.RegionDataFlag.Override, Priority = (byte)RegionPriority,
+    };
 
     // ---- the writer's hook --------------------------------------------------------------------------------------
     // Builds every record of atmosphere.json into `mod`; returns the climate and each region's weather list.

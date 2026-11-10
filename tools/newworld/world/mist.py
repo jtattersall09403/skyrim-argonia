@@ -18,9 +18,10 @@ green marsh (1.8) and pond (1.2) water and on land within 20 m of it (0.8 of the
 mist whatever region they lie in. Weight 1 over still water and on marsh and swamp habitats, 0.8 on land within 20 m
 of still water, the habitat's own weight elsewhere (mangrove 0.7, hummock 0.45, Hist grove 0.5), 0.25 over flowing
 water (river fog), 0 over the sea, bays and lakes (a cell typed sea carries none on its water nor within 3 samples of
-it). The class also sets the full-opacity share and the scale. The centre sits 0.9 to 1.4 m over the water or ground:
-lower than Hjaalmarch's so the drift stays below eye level, and higher than before (0.6 to 1.0 m) so less of the mesh
-is buried. At most CAP refs in a cell.
+it). The class also sets the full-opacity share and the scale. The centre sits 0.9 to 1.4 m over the water or the
+ground under the ref (bilinear on the heightmap, as the LAND is read): below eye level, and high enough that most of
+the 2.5 m mesh stands above the surface. A cell takes at most CAP mist refs and never more than the placer's budget
+(REFS_CAP natural plus mist refs) leaves after the cell's flora refs (`<out>/refs/flora/`).
 """
 from __future__ import annotations
 
@@ -44,6 +45,9 @@ HJAAL_PER_HA = 3.53      # Hjaalmarch's marsh-water cells (section 3.5)
 HJAAL_MAX_CELL = 5
 LATTICE_M = 25.0
 CAP = 8                  # refs in one cell
+REFS_CAP = 162           # natural plus mist refs in a cell: vanilla's forested max (place.py CAP)
+WATER_MIN = 1.4          # mist refs a hectare over blackwater swamp and green marsh water, x Hjaalmarch's
+LIFT_RANGE = (0.5, 2.0)  # every ref's centre over its water or ground, metres
 Z_M = (0.9, 1.4)         # centre over the water or ground, metres
 HAB_W = {"reed_marsh": 1.0, "cypress_swamp": 1.0, "drowned_forest": 1.0, "mangrove_fringe": 0.7,
          "open_still_water": 1.0, "swamp_hummock": 0.45, "hist_grove": 0.5, "lake_bed": 0.5}
@@ -95,6 +99,7 @@ def build(out: Path) -> dict:
     for old in refs_dir.glob("*.jsonl"):
         old.unlink()
     lat = LATTICE_M * 70 / SAMPLE   # lattice, samples
+    natural = flora_counts(out / "refs/flora")
     n = int(math.ceil(32 / lat))
     by_region, by_class = Counter(), Counter()
     for cy in range(g["cy_top"], g["cy_bottom"] - 1, -1):
@@ -126,12 +131,12 @@ def build(out: Path) -> dict:
             p[w & ~still[k] & ~flowing[k]] = 0  # the sea, bays and lakes
             if cell.get("water") == "sea":
                 p[ndi.binary_dilation(w, iterations=3)] = 0
-            placed = 0
+            placed, cap = 0, max(0, min(CAP, REFS_CAP - natural.get((cx, cy), 0)))
             for a in range(n):
                 for b in range(n):
                     ry, rx = (a + rng.random()) * lat, (b + rng.random()) * lat
                     u = rng.random()
-                    if ry > 32 or rx > 32 or placed >= CAP:
+                    if ry > 32 or rx > 32 or placed >= cap:
                         continue
                     yi, xi = int(ry), int(rx)
                     if u >= p[yi, xi]:
@@ -139,7 +144,7 @@ def build(out: Path) -> dict:
                     full = rng.random() < c["full_vis"]
                     names, probs = zip(*(FULL if full else HALF))
                     base = names[int(rng.choice(len(names), p=probs))]
-                    surf = max(float(H_[yi, xi + i * 32]), 0.0)
+                    surf = max(ground(H_, ry, rx + i * 32), 0.0)
                     lines.append(json.dumps({"base": f"Skyrim.esm:{base}", "x": round(ox + (i * 32 + rx) * SAMPLE, 1),
                                              "y": round(oy - (north + ry) * SAMPLE, 1), "z": round(surf + rng.uniform(*Z_M) * 70, 1),
                                              "rx": 0, "ry": 0, "rz": round(rng.uniform(0, 2 * math.pi), 3),
@@ -152,6 +157,25 @@ def build(out: Path) -> dict:
     (refs_dir / "manifest.json").write_text(json.dumps(res, indent=1))
     log(f"mist: {res['refs']} refs; by class {dict(by_class)}")
     return res
+
+
+def ground(h, ry: float, rx: float) -> float:
+    """The ground at a fractional sample position (row south from the slice's top, column), bilinear on the samples,
+    as the game reads its LAND (NewWorldAtmosphere.cs MistStudy, NewWorldVerify.cs)."""
+    j, i = min(int(ry), h.shape[0] - 2), min(int(rx), h.shape[1] - 2)
+    ay, ax = ry - j, rx - i
+    return float((h[j, i] * (1 - ax) + h[j, i + 1] * ax) * (1 - ay) + (h[j + 1, i] * (1 - ax) + h[j + 1, i + 1] * ax) * ay)
+
+
+def flora_counts(d: Path) -> Counter:
+    """Natural refs a cell from the placer's shards (refs/flora/cy*.jsonl)."""
+    n = Counter()
+    for f in sorted(d.glob("cy*.jsonl")) if d.exists() else []:
+        for line in f.read_text().splitlines():
+            if line:
+                o = json.loads(line)
+                n[(math.floor(o["x"] / 4096), math.floor(o["y"] / 4096))] += 1
+    return n
 
 
 def density(refs, cells: dict) -> dict:
@@ -189,8 +213,6 @@ def spearman(a: list[float], b: list[float]) -> float:
     return cov / math.sqrt(va * vb) if va and vb else 0.0
 
 
-OLD_BUILD_PER_HA = {"blackwater-swamp": 2.98, "green-marsh": 2.88}   # build 20261109T204317Z, before walk 5
-REFS_CAP = 162           # natural plus mist refs in a cell: vanilla's forested max (place.py CAP)
 
 
 def rows(mist: list[dict], natural: list[dict], cells: dict) -> list[tuple[str, object, bool, str]]:
@@ -203,9 +225,8 @@ def rows(mist: list[dict], natural: list[dict], cells: dict) -> list[tuple[str, 
     out = []
     for k in ("blackwater-swamp", "green-marsh"):
         d = dens.get(k, {"per_ha": 0, "cells": 0})
-        out.append((f"low mist over {k} water: refs a hectare at least 1.25 x Hjaalmarch's marsh ({HJAAL_PER_HA}) and above "
-                    f"the old build ({OLD_BUILD_PER_HA[k]})", d["per_ha"],
-                    d["per_ha"] >= 1.25 * HJAAL_PER_HA and d["per_ha"] > OLD_BUILD_PER_HA[k],
+        out.append((f"low mist over {k} water: refs a hectare at least {WATER_MIN} x Hjaalmarch's marsh ({HJAAL_PER_HA})",
+                    d["per_ha"], d["per_ha"] >= WATER_MIN * HJAAL_PER_HA,
                     f"{d['cells']} cells; by water kind: " + ", ".join(f"{w} {v['per_ha']}" for w, v in sorted(dens.items()))))
     # graded by class: refs a hectare over each class's land and inland water cells, ranked against the class's density
     acc: dict[str, list[int]] = {}
@@ -225,11 +246,13 @@ def rows(mist: list[dict], natural: list[dict], cells: dict) -> list[tuple[str, 
                    for r in mist)
     share = {cid: full[(cid, True)] / max(1, full[(cid, True)] + full[(cid, False)]) for cid in ("blackwater-swamp", "green-marsh")}
     out.append(("stronger mist: the full-opacity share in the blackwater swamp and green marsh at least Hjaalmarch's 43 %",
-                {k: round(v, 2) for k, v in share.items()}, all(v >= 0.43 for v in share.values()), "the old build: 10 %"))
+                {k: round(v, 2) for k, v in share.items()}, all(v >= 0.43 for v in share.values()), ""))
     lift = sorted((float(r["z"]) - max(float(r["ground"]), 0.0)) / 70 for r in mist)
     q = (lift[len(lift) // 10], lift[len(lift) // 2], lift[9 * len(lift) // 10]) if lift else (0, 0, 0)
-    out.append(("below eye level: the centre over the water or ground p10/p50/p90 within 0.9 to 1.4 m", [round(v, 2) for v in q],
-                bool(lift) and q[0] >= Z_M[0] - 0.01 and q[2] <= Z_M[1] + 0.01, "Hjaalmarch 1.3/1.8/2.7 m; the old build 0.6 to 1.0 m"))
+    out.append((f"below eye level: the centre over the water or ground p10/p50/p90 within {Z_M[0]} to {Z_M[1]} m, every ref within "
+                f"{LIFT_RANGE[0]} to {LIFT_RANGE[1]} m", [round(v, 2) for v in (lift[0] if lift else 0, *q, lift[-1] if lift else 0)],
+                bool(lift) and q[0] >= Z_M[0] - 0.05 and q[2] <= Z_M[1] + 0.05 and lift[0] >= LIFT_RANGE[0] and lift[-1] <= LIFT_RANGE[1],
+                "min, p10, p50, p90, max; Hjaalmarch's p10/p50/p90 1.3/1.8/2.7 m"))
     nat = Counter((int(r["cx"]), int(r["cy"])) for r in natural)
     keys = set(mc) | set(nat)
     over = [k for k in keys if mc[k] + nat[k] > REFS_CAP]

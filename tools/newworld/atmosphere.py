@@ -2,7 +2,7 @@
 volumetric lighting and climate records they make, their read-back and a swatch sheet. The recipe is
 docs/design/atmosphere.md; the research and every measured number docs/research/nw-02-walk5-atmosphere.md.
 
-    python3 -m tools.newworld.atmosphere study  [--out out/atmosphere]          # measure Bethesda's, BM&V's, TS's, the old build's
+    python3 -m tools.newworld.atmosphere study  [--out out/atmosphere]          # measure Bethesda's, BM&V's, TS's and the build given by --old
     python3 -m tools.newworld.atmosphere spec   [--plugin out/newworld/plugin]  # <plugin>/atmosphere.json for the writer
     python3 -m tools.newworld.atmosphere check  [--plugin ...]                  # read the built ESM back against the spec
     python3 -m tools.newworld.atmosphere swatch [--plugin ...] [--out out/atmosphere]   # swatches.png
@@ -35,6 +35,10 @@ DATA = Path(os.environ.get("ARGONIA_GAME_ROOT", Path.home() / "games/skyrimse"))
 BIN = REPO / "out/tools/ArgoniaPlugin"
 TODS = ("Sunrise", "Day", "Sunset", "Night")
 BANDS = ("north", "middle", "south")
+# warm enough: tropical noon sun 5,000-6,000 K (research 1.1, 1.8); Skyrim's base set as BM&V lists it measures 7,446 K,
+# sun warmth -0.09, far fog warmth -0.34
+WARM_SUN_K, WARM_SUN_W, WARM_FOG_W = 6000, 0.05, -0.10
+REGION_PRIORITY = 50     # NewWorldAtmosphere.cs RegionPriority: Skyrim's regional weather sets carry Override, 50 to 55
 # fixed form ids (NewWorldAtmosphere.cs takes them from the spec): set s = class index * 3 + band index
 BASE = {"IMGS": 0x80000, "VOLI": 0x80400, "WTHR": 0x80500, "CLMT": 0x80600}
 SLOT_ROLE = {"SunlightColor": "sun", "EffectLightingColor": "sun", "FogNearColor": "haze", "FogFarColor": "far",
@@ -178,9 +182,11 @@ def load(w) -> None:
     bands = bands_of(w.rows("cell"))
     aspects = {a.id for a in w.rows("note_aspect")}
     for rid, (cid, aspect, why) in sorted(regs["regions"].items()):
+        if aspect not in aspects:
+            raise ValueError(f"regions.json {rid}: aspect {aspect!r} is not a note_aspect")
         band, cy = bands[rid]
         w.insert("region_atmosphere", region_id=rid, atmosphere_class_id=cid, band=band, centroid_cell_y=cy,
-                 note_aspect_id=aspect if aspect in aspects else None, why=why)
+                 note_aspect_id=aspect, why=why)
 
 
 def region_classes(w=None) -> dict[str, tuple[str, str]]:
@@ -396,7 +402,7 @@ def study(out: Path, old: Path | None = None) -> dict:
             regional[f"{a} / {b}"] = {f"{s}.{t}": round(delta_e(res[a][f"{s}.{t}"]["rgb"], res[b][f"{s}.{t}"]["rgb"]), 1)
                                       for s in ("FogNearColor", "FogFarColor", "AmbientColor", "SunlightColor") for t in ("Sunrise", "Day")}
     m = {"about": "Measured by `python -m tools.newworld.atmosphere study` (Skyrim.esm, Update.esm, Black Marsh.esm, Black Marsh "
-              "North.esp, Tropical Skyrim.esp, the build before walk 5): each reference weather list's chance-weighted colours at "
+              "North.esp, Tropical Skyrim.esp and the build given by --old): each reference weather list's chance-weighted colours at "
               "dawn and noon with warmth ((R-B)/mean) and colour temperature (McCamy), and the dE between Bethesda's regions. "
               "The verifier compares our records with these.", "references": res, "bethesda_regional_delta_e": regional}
     (out / "measure.json").write_text(json.dumps(m, indent=1))
@@ -448,6 +454,7 @@ def rows(plugin: Path) -> list[tuple[str, object, bool, str]]:
     ours = st["ArgoniaNewWorld.esm"]
     out = []
     byid = {(sig, int(r["FormKey"].split(":")[0], 16)): r for sig in ("WTHR", "IMGS", "VOLI", "CLMT") for r in ours[sig]}
+    edid_of = {r["FormKey"]: r.get("EditorID") for sig in ("WTHR", "IMGS", "VOLI") for r in ours[sig]}
     miss, wrong = [], []
     for sig, key in (("WTHR", "weathers"), ("IMGS", "imagespaces"), ("VOLI", "volumetric")):
         for e in sp[key]:
@@ -459,24 +466,38 @@ def rows(plugin: Path) -> list[tuple[str, object, bool, str]]:
                 got = get_path(r, path)
                 if isinstance(v, list) and list(got) != v or not isinstance(v, list) and abs(float(got) - float(v)) > 1e-3 * max(1, abs(float(v))):
                     wrong.append(f"{e['edid']} {path} {got} != {v}")
+            for field, links in (("ImageSpaces", e.get("imagespaces")), ("VolumetricLighting", e.get("volumetric"))):
+                for tod, want in (links or {}).items():  # each hour's link names our record of that editor id
+                    got = edid_of.get(r[field][tod]) if r.get(field) else None
+                    if got != want:
+                        wrong.append(f"{e['edid']} {field}.{tod} {got} != {want}")
     n = len(sp["weathers"]) + len(sp["imagespaces"]) + len(sp["volumetric"])
     out.append(("our weathers, image spaces and volumetric lightings at their form ids, every field as the spec",
                 f"{n - len(miss)}/{n}, {len(wrong)} fields off", not miss and not wrong, "; ".join((miss + wrong)[:4])))
     clim = byid.get(("CLMT", sp["climate"]["formid"]))
     regs = {r["EditorID"]: r for r in ours["REGN"]}
     wn = {r["FormKey"]: r.get("EditorID") for r in ours["WTHR"]}
-    bad = []
+    bad, weak = [], []
     for rid, lst in sp["regions"].items():
         r = regs.get("ANW_Region_" + rid.replace("-", "_"))
         got = [[wn.get(w["Weather"]), w["Chance"]] for w in (r["Weather"]["Weathers"] if r else [])]
         if got != lst:
             bad.append(rid)
+        wd = r["Weather"] if r else {}
+        if "Override" not in str(wd.get("Flags", "")) or int(wd.get("Priority") or 0) < REGION_PRIORITY:
+            weak.append(f"{rid} ({wd.get('Flags')}, {wd.get('Priority')})")
     out.append(("every region's weather list is its class set (read back)", f"{len(sp['regions']) - len(bad)}/{len(sp['regions'])}",
                 not bad, f"e.g. {bad[:3]}"))
+    out.append((f"every region's weather data overrides the climate (Override flag, priority at least {REGION_PRIORITY}, as Skyrim's "
+                "regional sets: 50 to 55)", f"{len(sp['regions']) - len(weak)}/{len(sp['regions'])}", not weak, f"e.g. {weak[:3]}"))
     ws = ours["WRLD"][0] if ours["WRLD"] else {}
-    out.append(("the worldspace's climate is ANW_Climate with the green marsh list and the tropical day",
-                f"{clim and clim['EditorID']} {clim and clim['SunriseBegin']}-{clim and clim['SunriseEnd']}/{clim and clim['SunsetBegin']}-{clim and clim['SunsetEnd']}",
-                bool(clim) and ws.get("Climate") == clim["FormKey"] and len(clim["WeatherTypes"]) == 6, ""))
+    c = sp["climate"]
+    want = {"list": c["weathers"], "times": [c[k] for k in ("sunrise_begin", "sunrise_end", "sunset_begin", "sunset_end")]}
+    got = {"list": [[wn.get(w["Weather"]), w["Chance"]] for w in clim["WeatherTypes"]] if clim else None,
+           "times": [clim[k] for k in ("SunriseBegin", "SunriseEnd", "SunsetBegin", "SunsetEnd")] if clim else None}
+    out.append(("the worldspace's climate is ANW_Climate with the spec's weather list and chances and its four sun times",
+                f"{clim and clim['EditorID']} {got['times']}",
+                bool(clim) and ws.get("Climate") == clim["FormKey"] and got == want, "" if got == want else f"read {got}, spec {want}"))
     # classes are distinct, as much as Bethesda's own regions are from each other
     cols = set_colours(rec, sp)
     keys = sorted(cols)
@@ -486,21 +507,17 @@ def rows(plugin: Path) -> list[tuple[str, object, bool, str]]:
     out.append((f"classes are distinct: every pair of classes differs at least as much as Bethesda's closest two regions (dE {ref:.1f}; "
                 "chance-weighted fog near, fog far, ambient, sunlight at dawn and noon)", round(worst[1], 1), worst[1] >= ref,
                 f"closest {worst[0]}"))
-    # warmth against the old build, BM&V and Tropical Skyrim
+    # warmth: fixed thresholds, set against Skyrim's base weathers as BM&V's climate lists them (measured.json)
     refs = json.loads(MEASURED.read_text())["references"]
     province = mean_colour([(cols[k]["list"]["SunlightColor"]["Day"], 1) for k in keys])
     fog = mean_colour([(cols[k]["list"]["FogFarColor"]["Day"], 1) for k in keys])
-    detail = []
-    ok = True
-    for name in ("old build (ANW_BlackMarshClimate)", "BM&V (BlackMarshClimate)", "Tropical Skyrim (its BM&V weathers)"):
-        if name in refs:
-            s0, f0 = refs[name]["SunlightColor.Day"]["rgb"], refs[name]["FogFarColor.Day"]["rgb"]
-            detail.append(f"{name}: sun {round(cct(s0))} K w {warmth(s0):+.2f}, fog {round(cct(f0))} K w {warmth(f0):+.2f}")
-            if name.startswith(("old", "BM&V")):
-                ok &= warmth(province) > warmth(s0) and warmth(fog) > warmth(f0)
-    out.append(("warmer than the old build and BM&V: noon sunlight and far fog (chance-weighted, mean of the sets)",
+    detail = [f"{name}: sun {refs[name]['SunlightColor.Day']['cct']} K w {refs[name]['SunlightColor.Day']['warmth']:+.2f}, "
+              f"fog {refs[name]['FogFarColor.Day']['cct']} K w {refs[name]['FogFarColor.Day']['warmth']:+.2f}"
+              for name in ("BM&V (BlackMarshClimate)", "Tropical Skyrim (its BM&V weathers)") if name in refs]
+    out.append((f"warm: noon sunlight at most {WARM_SUN_K} K with warmth at least {WARM_SUN_W:+.2f}, far fog warmth at least "
+                f"{WARM_FOG_W:+.2f} (chance-weighted, mean of the sets)",
                 f"sun {round(cct(province))} K w {warmth(province):+.2f}, fog {round(cct(fog))} K w {warmth(fog):+.2f}",
-                ok and len(detail) == 3, "; ".join(detail)))
+                cct(province) <= WARM_SUN_K and warmth(province) >= WARM_SUN_W and warmth(fog) >= WARM_FOG_W, "; ".join(detail)))
     return out
 
 
@@ -516,8 +533,8 @@ def swatch(plugin: Path, out: Path) -> Path:
     ref = Path(os.environ.get("NW_ATMOS_STUDY", REPO / "out/atmosphere")) / "study.json"
     if ref.exists():
         s = json.loads(ref.read_text())
-        for name, order, w in (("old build: SkyrimFog (45%)", ["Skyrim.esm", "Update.esm"], "SkyrimFog"),
-                               ("old build: ANW_ClearMorningMist", ["Skyrim.esm", "Update.esm", "ArgoniaNewWorld.esm"], "ANW_ClearMorningMist"),
+        for name, order, w in (("BM&V: SkyrimFog (45 %)", ["Skyrim.esm", "Update.esm"], "SkyrimFog"),
+                               ("BM&V: SkyrimClear", ["Skyrim.esm", "Update.esm"], "SkyrimClear"),
                                ("Tropical Skyrim: SkyrimFog", ["Skyrim.esm", "Update.esm", "Tropical Skyrim.esp"], "SkyrimFog")):
             if all(p in s for p in order):
                 try:
