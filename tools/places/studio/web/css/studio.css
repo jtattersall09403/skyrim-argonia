@@ -225,7 +225,7 @@ pre.log { font-size: 12px; background: var(--panel-2); padding: 8px; border-radi
 }
 
 /* the rest of the place streaming in: a quiet line at the foot of the views */
-.progress { position: fixed; left: 50%; bottom: 14px; transform: translateX(-50%); z-index: 8; display: flex; align-items: center; gap: 10px;
+.progress { position: fixed; left: 50%; bottom: 132px; transform: translateX(-50%); z-index: 8; display: flex; align-items: center; gap: 10px;
   background: var(--panel); color: var(--muted); border-radius: 18px; padding: 6px 14px; box-shadow: var(--shadow); font-size: 13px; pointer-events: none; }
 .progress[hidden] { display: none; }
 .progress b { display: block; width: 90px; height: 4px; border-radius: 2px; background: var(--panel-2); overflow: hidden; }
