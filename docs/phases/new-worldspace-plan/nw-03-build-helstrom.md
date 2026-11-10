@@ -25,9 +25,6 @@ Studio Tooling: I want to access it in a browser so I can use it from my tablet.
 * An agent looks at the edits I've made (after I 'finalise' or 'export' or whatever) and reasons about what they mean for our place builder agent Skill - what did it get wrong and why (that it can infer from the things I changed that were marked as 'faults' rather than 'taste calls'); what should change in the skill's recipe such that the next agent building a place gets it right first time - what is the generalisable pattern/lesson from this set of faults (rather than the hyper-specific lessons); apply those to the skills, leaving the skills reading simply as a clean recipe for how to do the thing correctly (not read as a patchwork or a history referencing feedback and decisions). 
 
 
-Figure out and implement some smart and super fast way for us to test/prove the core functionality of this tooling, and try it out with me first before we dive into all of the above. I'm pretty confident we can build most of it, so just think about what the riskiest functionalities are and let's prove those as simply and rapidly as possible first before building the rest.
-
-
 ---
 
 ## Agreed in the interview of 2026-11-09 (added by the agent; the owner's text above is unchanged)
