@@ -1,6 +1,7 @@
 {
  "about": "The new world's map key and lookups: authored here, built into the database by tools/newworld/build_db.py. Every meaning names its reason.",
  "statement_tier": [
+  {"id": "OWNER_STATED", "about": "The owner's own words, written or edited in the studio: final for the game. It ranks first, above canon: the owner rules what the game says, and a departure from canon is the owner's to make (decision 0032 binds what agents write, not the owner). No agent, derive or tool overwrites it; it reports the difference instead."},
   {"id": "CANON_EXPLICIT", "about": "Stated outright by an official source (UESP Lore pages and the games' texts)."},
   {"id": "CANON_DERIVED", "about": "Follows directly from canon statements without new invention."},
   {"id": "EXTRAPOLATED", "about": "Reasoned from canon, the region, comparable places and the 4E 201 state where canon is silent."},

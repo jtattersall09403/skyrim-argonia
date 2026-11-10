@@ -21,6 +21,7 @@ import json
 import math
 from pathlib import Path
 
+OWNER_TIER = "OWNER_STATED"   # the statement tier of the owner's own words (newworld/sources/key.json statement_tier)
 CONTENT_OPS = ("identity.edit", "stock.container.set", "stock.container.remove", "stock.loose.add", "stock.loose.remove",
                "stock.loose.edit", "stock.possessions.set", "stock.trader.set", "stock.delivery.set")
 OPS = ("ref.add", "ref.remove", "ref.move", "veg.clear", "veg.restore", "land.patch",
@@ -372,6 +373,70 @@ def _apply_one(files, op):
                 rows[i] = copy.deepcopy(row)
 
 
+def _words(x, out: dict) -> dict:
+    """Every reason (`why`) and note text (`text`) in a row, at any depth, with the tier it is recorded at."""
+    if isinstance(x, dict):
+        if isinstance(x.get("why"), str):
+            out[("why", x["why"])] = x.get("why_tier")
+        if isinstance(x.get("text"), str) and "aspect" in x:
+            out[("text", x["text"])] = x.get("tier")
+        for k, v in x.items():
+            if k not in ("why", "text"):
+                _words(v, out)
+    elif isinstance(x, list):
+        for v in x:
+            _words(v, out)
+    return out
+
+
+def owner_marks(row, before):
+    """A content op's row with the owner's own words marked: every reason (`why`) or note text (`text`) the row holds
+    that its before did not was written by the owner in the studio, so it is recorded at the owner's statement tier
+    (`why_tier` beside a reason, a note's `tier`). A word the row keeps from its before keeps the tier it had there.
+    Idempotent; js/stock.js ownerMarks is its mirror."""
+    old = _words(before, {}) if before is not None else {}
+
+    def walk(x):
+        if isinstance(x, dict):
+            for k, tk in (("why", "why_tier"), ("text", "tier")):
+                if isinstance(x.get(k), str) and (k == "why" or "aspect" in x):
+                    if (k, x[k]) not in old:
+                        x[tk] = OWNER_TIER
+                    elif old[(k, x[k])] and not x.get(tk):
+                        x[tk] = old[(k, x[k])]
+            for k, v in x.items():
+                if k not in ("why", "text"):
+                    walk(v)
+        elif isinstance(x, list):
+            for v in x:
+                walk(v)
+    row = copy.deepcopy(row)
+    walk(row)
+    return row
+
+
+def mark_owner(ops: list) -> list:
+    """The ops of a studio save with the owner's new words marked (owner_marks on each content op's row against its
+    before): the studio marks them as it makes an op (js/stock.js opFor), and finalise marks a save again before it
+    records it, so a save from any client goes in at the owner's tier. An op's inverse is never marked: undoing gives
+    back the row as it was."""
+    out, marked = [], {}    # a row as the save wrote it -> as marked, so a later op's before names the marked row
+    key = lambda r: json.dumps(r, sort_keys=True)   # noqa: E731
+    for op in ops:
+        op = copy.deepcopy(op)
+        if op.get("op") in CONTENT_OPS:
+            field = _content(op["op"])[0]
+            for k in ("before", field):
+                if isinstance(op.get(k), dict) and key(op[k]) in marked:
+                    op[k] = copy.deepcopy(marked[key(op[k])])
+            if not op["op"].endswith(".remove") and op.get(field) is not None:
+                was = key(op[field])
+                op[field] = owner_marks(op[field], op.get("before"))
+                marked[was] = op[field]
+        out.append(op)
+    return out
+
+
 def _apply_content(files, op):
     """identity.edit and stock.*: a row of the people or stock source replaced, added or removed. A row with no
     before is added (a conflict when one of its name is there); every before must equal the source's row."""
@@ -525,7 +590,7 @@ def apply_save(place_files: dict, save: dict, source=None) -> dict:
     done = place_files.get("place", {}).get("saves_applied", [])
     if save["save_id"] in done:
         raise EditConflict(f"save {save['save_id']} is already applied to {save['place_id']}")
-    out = apply(place_files, save["ops"], source)
+    out = apply(place_files, mark_owner(save["ops"]), source)   # the studio's edits are the owner's words
     out["place"]["saves_applied"] = done + [save["save_id"]]
     prefs = [preference(op, save["save_id"]) for op in save["ops"] if op.get("call", "fault") == "taste"]
     if prefs:

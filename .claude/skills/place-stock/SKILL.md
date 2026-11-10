@@ -96,6 +96,10 @@ against the budget and comes in `count` times the number. The derive's reason gi
 `newworld/sources/stock/unique.json` naming the story that puts it there, and the game-wide count stays within
 `ledger.caps`.
 
+A reason or note at the tier `OWNER_STATED` is the owner's own words: never change or remove it. The derive keeps
+such rows as they stand and lists where it would differ (`owner_kept`); raise a difference with the owner if the facts
+argue for it.
+
 Give every row a `why` that names the facts it stands on. Add `cites` where a holder takes them from the record or
 the lore.
 

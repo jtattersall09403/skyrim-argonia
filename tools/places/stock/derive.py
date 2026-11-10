@@ -10,6 +10,8 @@ to --to (default out/places/stock/<place_id>.derived.json; never the source file
   and promises (place_give); each person's role, household and wealth band (person);
 - the scale (scale.json): tier materials, gold, locks, security, budgets, traders, provenance;
 - the road tables, for provenance: the road distance to the nearest place that makes a thing, or to an import gate.
+A row of the stock source that holds the owner's own words (a reason or note at the statement tier OWNER_STATED,
+which the studio's edits write) is never overwritten: it stands in the draft as it is, and the difference is reported.
 Variety comes from facts, never from dice: a household's size sets where in its band's gold range its savings fall,
 a person's trade picks their tool, and every choice of a base is the first by value and key among those that fit.
 """
@@ -320,6 +322,40 @@ def derive(p: Place) -> dict:
     return out
 
 
+HOLDERS = {"containers": ("space", "ref"), "loose": ("id",), "possessions": ("person",), "traders": ("person",),
+           "deliveries": ("give_seq",), "goods": ("good", "relation")}
+
+
+def _owner_words(x) -> bool:
+    """True when a row holds the owner's own words (a reason or note at the owner's statement tier)."""
+    from tools.places.edits import OWNER_TIER
+    if isinstance(x, dict):
+        return x.get("why_tier") == OWNER_TIER or x.get("tier") == OWNER_TIER or any(_owner_words(v) for v in x.values())
+    return isinstance(x, list) and any(_owner_words(v) for v in x)
+
+
+def keep_owner_rows(doc: dict, source: dict | None) -> dict:
+    """An agent's derive never overwrites the owner's words: every row of the stock source that holds a reason or note
+    at the owner's tier stands in the derived draft as the source has it, and where the derive would say otherwise
+    the difference is reported in `owner_kept` ({list, key, derived}: what the derive would have written)."""
+    doc.setdefault("owner_kept", [])
+    for table, keys in HOLDERS.items():
+        mine = {tuple(r.get(k) for k in keys): r for r in (source or {}).get(table, []) if _owner_words(r)}
+        if not mine:
+            continue
+        rows = doc.setdefault(table, [])
+        for i, r in enumerate(rows):
+            k = tuple(r.get(x) for x in keys)
+            if k in mine:
+                if r != mine[k]:
+                    doc["owner_kept"].append({"list": table, "key": list(k), "derived": r})
+                rows[i] = mine.pop(k)
+        for k, r in mine.items():   # an owner's row the derive does not make at all
+            rows.append(r)
+            doc["owner_kept"].append({"list": table, "key": list(k), "derived": None})
+    return doc
+
+
 def main(argv: list[str]) -> int:
     ap = argparse.ArgumentParser(prog="stock derive")
     ap.add_argument("place")
@@ -328,6 +364,9 @@ def main(argv: list[str]) -> int:
     a = ap.parse_args(argv)
     p = Place.load(a.place, Path(a.out) if a.out else None)
     doc = derive(p)
+    from tools.places.stock.plan import stock_source
+    src = stock_source(a.place)
+    keep_owner_rows(doc, json.loads(src.read_text(encoding="utf-8")) if src.exists() else None)
     to = Path(a.to) if a.to else p.out / "stock" / f"{a.place}.derived.json"
     to.parent.mkdir(parents=True, exist_ok=True)
     to.write_text(json.dumps(doc, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
@@ -335,4 +374,7 @@ def main(argv: list[str]) -> int:
     print(f"wrote {to}: {n}")
     for o in doc["open"]:
         print("  open:", o)
+    for o in doc["owner_kept"]:
+        print(f"  the owner's row kept: {o['list']} {'/'.join(map(str, o['key']))}"
+              + (" (the derive would write it otherwise)" if o["derived"] else " (the derive makes no such row)"))
     return 0

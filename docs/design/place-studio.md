@@ -425,6 +425,15 @@ with the place; when the save holds a content op it then runs `stockdb items` (o
 `items.json` lacks) and `stockdb load`, and commits `items.json` and the tables by path. A failure there stops the
 chain at record; a rerun finds the save recorded and reloads again. The build that follows reads the database.
 
+**The owner's own words.** A reason (`why`) or note text (`text`) that a content op's row holds and its before did not
+is the owner's, written in the studio: it is recorded at the statement tier `OWNER_STATED` (a note's `tier`, `why_tier`
+beside a reason); a word the row keeps keeps the tier it had. `js/stock.js` `ownerMarks` marks a row as the studio
+makes its op, and `edits.apply_save` marks a save again (`edits.mark_owner`, so a later op's before names the marked
+row), so a save from any client goes in at the owner's tier; an op's inverse is never marked. `OWNER_STATED` ranks
+first among the statement tiers (`newworld/sources/key.json`, highest first), above canon: the owner rules what the
+game says, and a departure from canon is the owner's to make. No agent or tool overwrites an owner-tier row: `stock
+derive` keeps every such row of the stock source as it stands and lists the difference in `owner_kept`.
+
 ## Edits
 
 The studio never writes place files. It keeps an ordered list of operations; undo and redo move a cursor in it; a

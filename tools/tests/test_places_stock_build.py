@@ -180,6 +180,39 @@ def test_summary_counts_and_ranks():
     assert s["containers_authored"] == 1 and s["top"][0]["value"] == 45 and s["gold"] == 30 + 12 + 5
 
 
+def test_a_studio_save_records_the_owner_s_words_at_the_owner_s_tier():
+    from tools.places import edits
+    note0 = {"aspect": "backstory", "text": "an agent's line", "tier": "AGENT_INVENTED"}
+    person = {"id": "t.p", "name": "Ada", "notes": [note0]}
+    files = {"place": {"place_id": "t"}, "spaces": {}, "clear": [], "land": [], "paths": [], "people": [],
+             "identities": {"place_id": "t", "households": [], "people": [person]},
+             "stock": {"place_id": "t", "possessions": [{"person": "t.p", "items": [], "why": "derived",
+                                                         "why_tier": "AGENT_INVENTED"}]}}
+    p1 = {**person, "notes": [{"aspect": "backstory", "text": "the owner's line", "tier": "AGENT_INVENTED"}]}
+    pos0 = files["stock"]["possessions"][0]
+    pos1 = {**pos0, "items": [{"item": SF.RING, "count": 1, "worn": True, "why": "the owner wants a ring"}]}
+    pos2 = {**pos1, "items": pos1["items"] + [{"item": SF.DAGGER, "count": 1, "worn": True, "why": "and a knife"}]}
+    save = {"save_id": "s1", "place_id": "t", "ops": [   # as an older client wrote it: no marks, ops chained by before
+        {"n": 1, "op": "identity.edit", "person": p1, "before": person},
+        {"n": 2, "op": "stock.possessions.set", "possessions": pos1, "before": pos0},
+        {"n": 3, "op": "stock.possessions.set", "possessions": pos2, "before": pos1}]}
+    out = edits.apply_save(files, save)
+    assert out["identities"]["people"][0]["notes"][0]["tier"] == edits.OWNER_TIER
+    got = out["stock"]["possessions"][0]
+    assert got["why_tier"] == "AGENT_INVENTED"                                   # the agent's kept words keep theirs
+    assert [i.get("why_tier") for i in got["items"]] == [edits.OWNER_TIER, edits.OWNER_TIER]
+
+
+def test_a_derive_never_overwrites_the_owner_s_rows_and_reports_the_difference():
+    from tools.places.stock.derive import keep_owner_rows
+    owner = {"person": "t.p", "items": [{"item": SF.RING, "count": 1, "why": "mine", "why_tier": "OWNER_STATED"}], "why": "x"}
+    agent = {"person": "t.q", "items": [], "why": "y", "why_tier": "AGENT_INVENTED"}
+    doc = {"possessions": [{"person": "t.p", "items": [], "why": "derived"}, {"person": "t.q", "items": [], "why": "new"}]}
+    keep_owner_rows(doc, {"possessions": [owner, agent]})
+    assert doc["possessions"][0] == owner and doc["possessions"][1]["why"] == "new"   # the agent's row is the derive's
+    assert doc["owner_kept"] == [{"list": "possessions", "key": ["t.p"], "derived": {"person": "t.p", "items": [], "why": "derived"}}]
+
+
 def test_the_scale_s_explicit_lists_win_over_value_everywhere_a_tier_is_computed():
     from tools.places.stock import split
     from tools.places.studio import stock as studio

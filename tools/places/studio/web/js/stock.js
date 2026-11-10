@@ -5,6 +5,37 @@
 export const OWNER_WHY = 'The owner added it in the studio.';
 const clone = (o) => (o == null ? o : JSON.parse(JSON.stringify(o)));
 
+// ---------- the owner's own words (edits.py owner_marks) ----------
+// A reason (`why`) or note text (`text`) a row holds that its before did not is the owner's, recorded at the owner's
+// statement tier (`why_tier` beside a reason, a note's `tier`); a word the row keeps keeps the tier it had.
+export const OWNER_TIER = 'OWNER_STATED';
+function words(x, out) {
+  if (Array.isArray(x)) for (const v of x) words(v, out);
+  else if (x && typeof x === 'object') {
+    if (typeof x.why === 'string') out.set(`why\u0000${x.why}`, x.why_tier ?? null);
+    if (typeof x.text === 'string' && 'aspect' in x) out.set(`text\u0000${x.text}`, x.tier ?? null);
+    for (const [k, v] of Object.entries(x)) if (k !== 'why' && k !== 'text') words(v, out);
+  }
+  return out;
+}
+export function ownerMarks(row, before) {
+  const old = before == null ? new Map() : words(before, new Map());
+  const walk = (x) => {
+    if (Array.isArray(x)) { for (const v of x) walk(v); return; }
+    if (!x || typeof x !== 'object') return;
+    if (typeof x.why === 'string') {
+      const k = `why\u0000${x.why}`;
+      if (!old.has(k)) x.why_tier = OWNER_TIER; else if (old.get(k) && !x.why_tier) x.why_tier = old.get(k);
+    }
+    if (typeof x.text === 'string' && 'aspect' in x) {
+      const k = `text\u0000${x.text}`;
+      if (!old.has(k)) x.tier = OWNER_TIER; else if (old.get(k) && !x.tier) x.tier = old.get(k);
+    }
+    for (const [k, v] of Object.entries(x)) if (k !== 'why' && k !== 'text') walk(v);
+  };
+  const out = clone(row); walk(out); return out;
+}
+
 // ---------- the scale ----------
 export const tierRank = (scale) => Object.fromEntries((scale?.tiers || []).map((t, i) => [t.id, t.rank ?? i + 1]));
 export function tierLabel(scale, t) {
@@ -78,6 +109,7 @@ export const newPossessions = (person) => ({ person, items: [], why: 'The owner 
 
 // The op for a holder's row before and after (the panel pushes it).
 export function opFor(holder, before, after) {
+  after = after == null ? after : ownerMarks(after, before);   // the studio's edits are the owner's words
   switch (holder) {
     case 'container': return before ? { op: 'stock.container.set', container: after, before } : { op: 'stock.container.set', container: after };
     case 'possessions': return { op: 'stock.possessions.set', possessions: after, before: before ?? null };

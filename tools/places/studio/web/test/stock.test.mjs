@@ -5,7 +5,7 @@ import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { allowedItem, containerKind, withItem, withCount, withoutItem, withLock, withGold, withBackstory, opFor,
-  describeContent, containerOf, looseAt, tierLabel, OWNER_WHY } from '../js/stock.js';
+  describeContent, containerOf, looseAt, tierLabel, OWNER_WHY, ownerMarks, OWNER_TIER } from '../js/stock.js';
 import { modelFromFiles, applyOp, inverse, same, modelToFiles } from '../js/edits.js';
 
 const here = dirname(fileURLToPath(import.meta.url));
@@ -64,4 +64,16 @@ test('the history says what changed in plain words', () => {
   assert.equal(describeContent(opFor('identity', p0, { ...withBackstory(p0, 'x'), wealth: 'W4' }), name), 'Ada: wealth W3 → W4; backstory');
   const t = base.stock.traders[0];
   assert.equal(describeContent(opFor('trader', t, { ...t, gold: 600 }), name), "Ada's wares: gold 500 → 600");
+});
+
+test("the owner's new words go in at the owner's tier; kept words keep theirs (edits.py owner_marks)", () => {
+  const before = { person: 'p', why: 'derived', why_tier: 'AGENT_INVENTED', items: [{ item: 'a', count: 1, why: 'old' }] };
+  const after = { person: 'p', why: 'derived', items: [{ item: 'a', count: 1, why: 'old' }, { item: 'b', count: 1, why: 'the owner wants it' }] };
+  const op = opFor('possessions', before, after);
+  assert.equal(op.possessions.items[1].why_tier, OWNER_TIER);
+  assert.equal(op.possessions.why_tier, 'AGENT_INVENTED');
+  assert.equal(op.possessions.items[0].why_tier, undefined);
+  const note = ownerMarks({ id: 'p', notes: [{ aspect: 'backstory', text: 'new', tier: 'AGENT_INVENTED' }] },
+    { id: 'p', notes: [{ aspect: 'backstory', text: 'old', tier: 'AGENT_INVENTED' }] });
+  assert.equal(note.notes[0].tier, OWNER_TIER);
 });
