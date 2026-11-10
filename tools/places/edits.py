@@ -451,6 +451,11 @@ def write_place(root: Path, files: dict) -> None:
     files = canonical(files)
     root.mkdir(parents=True, exist_ok=True)
     (root / "place.json").write_text(json.dumps(files["place"], indent=1, ensure_ascii=False) + "\n")
+    # a space the files no longer have (a copied room taken out again) leaves no folder behind
+    import shutil
+    for old in sorted((root / "spaces").glob("*")) if (root / "spaces").exists() else []:
+        if old.is_dir() and old.name not in files["spaces"]:
+            shutil.rmtree(old)
     for sid, sp in files["spaces"].items():
         _write_jsonl(root / "spaces" / sid / "refs.jsonl", sp["refs"])
         if sp.get("space") is not None:

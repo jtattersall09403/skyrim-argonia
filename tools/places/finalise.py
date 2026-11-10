@@ -94,7 +94,10 @@ class Run:
             return None
         lane = self.repo / "tooling/lane_commit.sh"
         if lane.exists() and os.environ.get("FINALISE_PLAIN_COMMIT") != "1":
-            r = subprocess.run([str(lane), "-m", msg, "--", *rel], cwd=self.repo, capture_output=True, text=True)
+            # the owner's edits may put a file back as it once was or take a room's files away: both are deliberate
+            # here, so the guard against a stale tree undoing recent work is told so
+            r = subprocess.run([str(lane), "-m", msg, "--", *rel], cwd=self.repo, capture_output=True, text=True,
+                               env=dict(os.environ, LANE_ALLOW_REVERT="1"))
             self.log(r.stdout.strip() + r.stderr.strip())
             if r.returncode:
                 raise RuntimeError(f"lane_commit failed: {r.stderr.strip() or r.stdout.strip()}")

@@ -196,3 +196,15 @@ def test_copy_ref_needs_source():
     c = json.loads((COPY / "copy_move.json").read_text())
     with pytest.raises(EditConflict):
         apply(PLACE, c["ops"])
+
+
+def test_write_place_removes_a_dropped_space(tmp_path):
+    from tools.places import edits
+    files = {"place": {"place_id": "p"}, "spaces": {"exterior": {"refs": [], "space": None},
+                                                    "room": {"refs": [], "space": {"space_id": "room"}}},
+             "clear": [], "land": [], "paths": [], "people": []}
+    edits.write_place(tmp_path, files)
+    assert (tmp_path / "spaces" / "room" / "space.json").exists()
+    del files["spaces"]["room"]
+    edits.write_place(tmp_path, files)
+    assert not (tmp_path / "spaces" / "room").exists() and (tmp_path / "spaces" / "exterior").exists()
