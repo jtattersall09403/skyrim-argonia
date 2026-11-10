@@ -41,7 +41,7 @@ export class View {
     this.world = new THREE.Group(); this.scene.add(this.world);
     this.overlay = new THREE.Group(); this.scene.add(this.overlay);
     this.pointers = new Map(); this.needs = true; this.lastCull = 0;
-    this.listen(); this.resize();
+    this.listen(); this.makeCompass(); this.resize();
     new ResizeObserver(() => this.resize()).observe(el);
     this.setTheme(false);
   }
@@ -85,6 +85,20 @@ export class View {
     if (this.scene.fog) { this.scene.fog.near = Math.max(20000, r.dist * 2.5); this.scene.fog.far = this.scene.fog.near * 4; }
     this.camera.lookAt(r.target); this.camera.updateMatrixWorld();
     if (this.tiltIn && document.activeElement !== this.tiltIn) this.tiltIn.value = Math.round(r.pitch * 100);
+    if (this.rose) { const h = this.heading(); this.rose.style.transform = `rotate(${-h}deg)`; this.compass.dataset.heading = Math.round(h) % 360; }
+  }
+  // Which way the camera looks, in degrees clockwise from north (game +Y north, +X east): 0 north, 90 east.
+  heading() { const fx = -Math.cos(this.rig.yaw), fy = -Math.sin(this.rig.yaw); return ((Math.atan2(fx, fy) * 180 / Math.PI) + 360) % 360; }
+  // A compass at the view's lower left: its needle points to north on screen; a tap turns the view to face north.
+  makeCompass() {
+    const b = document.createElement('button'); b.className = 'compass'; b.type = 'button';
+    b.setAttribute('aria-label', `Turn the view of ${this.name} to face north`); b.title = 'Turn to face north';
+    b.innerHTML = '<svg viewBox="-24 -24 48 48" aria-hidden="true"><g class="rose"><circle r="21" class="dial"/>'
+      + '<path d="M0 -11 L4.5 1 L-4.5 1 Z" class="north"/><path d="M0 12 L4.5 1 L-4.5 1 Z" class="south"/>'
+      + '<text y="-16" x="0" class="n" text-anchor="middle" dominant-baseline="central">N</text></g></svg>';
+    b.addEventListener('pointerdown', (e) => e.stopPropagation());
+    b.addEventListener('click', () => { this.rig.yaw = -Math.PI / 2; this.changed(); });
+    this.el.appendChild(b); this.compass = b; this.rose = b.querySelector('.rose');
   }
   render(now) {
     if (!this.needs || shared.lost || this.hidden()) return false;

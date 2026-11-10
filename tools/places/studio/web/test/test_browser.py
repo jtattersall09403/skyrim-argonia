@@ -670,6 +670,74 @@ def test_20_notes_for_the_agent(pad, server):
     assert not pad.errors, pad.errors
 
 
+def test_21_compass(pad):
+    # each view has a compass; its needle turns with the camera and a tap faces the view north
+    assert pad.ev("document.querySelectorAll('.view .compass').length") == 2
+    for side, sel in (("ours", "#view-ours"), ("src", "#view-src")):
+        pad.ev("(s) => { const v = studio[s].view; v.rig.yaw = 0; v.changed(); }", side)  # the eye east of where it looks
+        assert pad.ev(f"document.querySelector('{sel} .compass').dataset.heading") == "270", "looking west"
+        assert "rotate(-270deg)" in pad.ev(f"document.querySelector('{sel} .compass .rose').style.transform")
+        box = pad.ev(f"(() => {{ const r = document.querySelector('{sel} .compass').getBoundingClientRect(); return [r.width, r.height]; }})()")
+        assert min(box) >= 44, box
+        pad.page.click(f"{sel} .compass")
+        assert pad.ev(f"document.querySelector('{sel} .compass').dataset.heading") == "0", "a tap faces north"
+        assert abs(pad.ev("(s) => studio[s].view.rig.yaw", side) + 3.141592653589793 / 2) < 1e-6
+    pad.shot("21-compass")
+
+
+def test_21_selected_shows_where(pad):
+    pad.page.click("#rail [data-tool=select]")
+    b = first_ref(pad, "building")
+    pad.ev("(id) => { studio.selection = new Set([id]); studio.tools.selectionChanged(); }", b["id"])
+    pos = pad.ev("(id) => studio.seated(studio.model.spaces.exterior.refs.get(id)).pos.map(Math.round)", b["id"])
+    where = lambda: pad.ev("document.querySelector('#panel-body dl.where').textContent")  # noqa: E731
+    w = where()
+    assert f"x {pos[0]}, y {pos[1]}, z {pos[2]}" in w, w
+    assert f"Cell{pos[0] // 4096}, {pos[1] // 4096}" in w and "Turned" in w, w
+    # it follows the thing when it moves
+    pad.page.get_by_role("button", name="East", exact=True).click()
+    pad.page.wait_for_function("(x) => document.querySelector('#panel-body dl.where').textContent.includes(`x ${x},`)", arg=pos[0] + 32, timeout=5000 * SLOW)
+    pad.shot("21-selected-where")
+    # several: the middle of them
+    ids = pad.ev("[...studio.model.spaces.exterior.refs.values()].filter((r) => r.kind === 'building').slice(0, 2).map((r) => r.id)")
+    pad.ev("(ids) => { studio.selection = new Set(ids); studio.tools.selectionChanged(); }", ids)
+    assert "Middle of them" in where()
+    pad.ev("studio.log.undo()")
+
+
+def test_21_grass_at_viewing_distance(pad):
+    # the land texture's grass grows close up and from where one looks at a town (no cut-off at a short range)
+    assert pad.ev("studio.ours.grass.on")
+    g = pad.ev("studio.seated([...studio.model.spaces.exterior.refs.values()].find((r) => r.kind === 'building')).pos")
+    for dist in (1500, 9000):
+        look_at(pad, "ours", g, dist=dist, pitch=0.8)
+        pad.page.wait_for_function("studio.ours.grass.refs.length > 0 && studio.ours.grass.drawn > 0", timeout=60000 * SLOW)
+    # thinned with distance: fewer blades per area from afar, and the larger ring is capped
+    assert pad.ev("studio.ours.grass.refs.length") <= 6000
+    pad.shot("21-grass-town-distance")
+
+
+def test_21_world_map(pad, browser, server):
+    pad.page.wait_for_function("document.getElementById('atlas-btn').dataset.built === '1'", timeout=10000 * SLOW)
+    pad.page.click("#atlas-btn")
+    assert pad.ev("!document.getElementById('atlas').hidden")
+    assert pad.ev("document.querySelector('#atlas iframe').src").endswith(f"/atlas/index.html#place={pad.pid}")
+    frame = pad.page.frame_locator("#atlas iframe")
+    if not REAL:  # the dev server's stand-in Atlas shows the place it was asked to open
+        assert frame.locator("#place").text_content(timeout=10000 * SLOW) == pad.pid
+    pad.shot("21-world-map")
+    pad.page.click("#atlas-close")
+    assert pad.ev("document.getElementById('atlas').hidden")
+    # when the Atlas has not been built, the button says so plainly
+    ctx = browser.new_context(viewport=LANDSCAPE, has_touch=True)
+    page = ctx.new_page()
+    page.route("**/atlas/**", lambda r: r.fulfill(status=404, body="the Atlas has not been built"))
+    page.goto(server + "/")
+    page.wait_for_function("document.getElementById('atlas-btn').dataset.built === '0'", timeout=30000 * SLOW)
+    assert "not built" in page.evaluate("document.getElementById('atlas-btn').textContent")
+    ctx.close()
+
+
 def test_22_start_choice(pad, browser, server):
     pid = pad.pid
     saves = json.load(urllib.request.urlopen(f"{server}/api/place/{pid}/saves"))

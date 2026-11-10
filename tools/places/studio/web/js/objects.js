@@ -107,6 +107,10 @@ export function loadModel(model, pri = 0, level = 0, kind = 'other') {
           const parts = [];
           gltf.scene.traverse((o) => {
             if (!o.isMesh) return;
+            // the converter's stand-in for a model it could not read: marked, so callers can leave it out
+            if (o.name === 'placeholder' || o.material?.name === 'placeholder') parts.placeholder = true;
+            // geometry the game never draws: editor markers (and all under them) show only in the Creation Kit
+            for (let q = o; q; q = q.parent) if (/^editormarker/i.test(q.name || '')) return;
             const g = o.geometry.clone(); g.applyMatrix4(o.matrixWorld);
             for (const k of Object.keys(g.attributes)) if (!['position', 'normal', 'uv', 'color'].includes(k)) g.deleteAttribute(k);
             parts.push({ geometry: g, material: plainMaterial(o.material, kind) });
@@ -235,8 +239,8 @@ class Group {
     // and sheets over the land, so they stay unseen (still listed and pickable)
     if (this.fx || this.unseen) { this.box.visible = false; this.box.count = 0; return 0; }
     // everything placed (layer.always) is drawn whole at any distance: zoomed right out, every building, plant, tree
-    // and rock shows. Only the grass tufts placed one by one stay near the eye (smaller than a pixel from afar)
-    const always = !!this.layer.always && this.kind !== 'groundcover';
+    // and rock shows, the ground cover placed one by one too; the grown grass (grass.js) thins itself by distance
+    const always = !!this.layer.always;
     const [near, far] = RANGE[this.kind] || RANGE.default;
     // anything big (a building, dock, bridge, ship, big rock or tree: bounds over a few metres) is never thinned or
     // cut by distance, at any detail level; only small clutter and plants thin out (the frustum still applies)

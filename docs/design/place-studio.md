@@ -340,6 +340,28 @@ return the converted file's path (synchronous, run off the event loop); `land_ta
 `tools.places.ground_check.status()` returns `{ground_sha, deployed_sha, match}`. Finalise calls `tools.places.finalise.start` and runs
 are read with `read_run` (Finalise, below); `rc` is the job_guard job `finalise.<run_id>`'s exit code.
 
+**What the views draw** (the front end, `tools/places/studio/web`): exactly what the game will show. Every placed
+thing is drawn whole at any zoom, its placed ground cover too. Geometry the game never shows is left out: effects
+(`effects\` models, the game's shader tricks), things with no model (markers, triggers, sounds) and any part of a
+model under a node named `EditorMarker` (the Creation Kit's own marker shapes, as on mist, fog and trap gas). Grass
+is grown as the game grows it, from each land texture's grass list (`grass.js`, rules in `grass_rules.js`): a ring
+round where the view looks, out to the view's distance (at most 16,000 units), every spot near the eye and, beyond
+3,000 units, a spot kept with chance (3000 / d)^2 and drawn up to twice the size, so the ground keeps its cover for at
+most 6,000 blades; none once the view stands back past 30,000 units, and none from a model the converter could not
+read. Drawn paths are painted as the build paints them (`path_paint.js`, numbers tested against `build.py`): one
+more alpha layer of the style's land texture (a style word picks the land texture whose editor id ends with the
+build's word for it), opacity 1 within the half width feathered to 0 over 96 units at each land grid point, tiled and
+lit like the ground; a boardwalk only ashore. Each view has a compass at its lower left (the needle points north on
+screen; a tap turns the view to face north), and the Selected panel gives the position in game units, the cell
+(floor of position / 4096, outside) and the turn in degrees, or the middle of several things, kept current as they
+move.
+
+**The world map.** The top bar's World map button opens the Atlas (the page `python3 -m tools.newworld.map_page`
+builds into `out/newworld/map/`) over the studio in a frame, loaded the first time it is opened, at
+`/atlas/index.html#place=<place_id>`: the Atlas reads `#place=` at load to centre, zoom and open that place. The
+server serves the built directory read-only at `/atlas/` (`STUDIO_ATLAS` overrides the directory) and answers 404
+when it has not been built, which the button then says. Nothing of the Atlas is copied into the studio.
+
 **Saves.** Writes are atomic. A named save is committed and pushed by path (`tooling/lane_commit.sh`) after each
 write, so it survives a stopped machine and a lost disk; the autosave goes to the private bucket at most once a
 minute.

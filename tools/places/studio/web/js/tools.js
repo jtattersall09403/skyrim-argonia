@@ -187,7 +187,7 @@ export class Tools {
   drawSelection() {
     const a = this.app; if (!a.model) return;
     this.drawOutline(a.ours, [...a.selection].map((id) => a.placeRefsById().get(id)).filter(Boolean).map((r) => a.seated(r)), this.outline);
-    this.placeGizmo();
+    this.placeGizmo(); a.panels?.refreshWhere?.();
   }
   drawOutline(side, refs, line) {
     const layer = side === this.app.ours ? side.place : side.layer;

@@ -27,3 +27,16 @@ export function heightScale(g, u) {
   const v = Math.max(0, Math.min(0.9, Number(r ?? 0.25) || 0));
   return 1 - v + 2 * v * u;
 }
+// How grass thins with distance from the eye (game units): every spot is grown out to GRASS_NEAR; beyond, a spot is
+// kept with chance p = (GRASS_NEAR / d)^2 (the ground a pixel covers grows with the square of the distance, so the
+// blades per pixel stay about level) and its blades are drawn 1/sqrt(p) larger, up to twice, so the ground keeps
+// its cover. No grass is grown once the view stands back further than GRASS_FAR (a blade is under a pixel there).
+export const GRASS_NEAR = 3000, GRASS_FAR = 30000;
+export function grassKeep(d) {
+  if (d <= GRASS_NEAR) return { p: 1, scale: 1 };
+  const p = (GRASS_NEAR / d) ** 2;
+  return { p, scale: Math.min(2, 1 / Math.sqrt(p)) };
+}
+// The ring grown round where the view looks: 50 m close up, out to the view's distance (the town one is looking at),
+// at most 230 m.
+export function ringRadius(dist) { return Math.max(3600, Math.min(16000, dist * 1.2)); }

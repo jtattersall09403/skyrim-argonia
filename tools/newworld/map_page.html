@@ -667,4 +667,10 @@ document.addEventListener("click", e => { if (!e.target.closest(".search")) $("#
 
 window.addEventListener("resize", resize);
 drawLayerButtons(); resize(); fit(); home();
+// a link may name a place to open on: #place=<place id> centres the map on it, zooms in and opens its card
+function openFromHash() {
+  const m = /(?:^#|&)place=([^&]+)/.exec(location.hash), p = m && placeById[decodeURIComponent(m[1])];
+  if (p) { showPlace(p.id); goTo(p.x, p.y, 3); }
+}
+openFromHash(); window.addEventListener("hashchange", openFromHash);
 </script>

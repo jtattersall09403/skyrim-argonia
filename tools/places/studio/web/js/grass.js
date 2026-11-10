@@ -2,20 +2,23 @@
 // it is drawn the same way here: a ring of instanced grass round where the camera looks, placed by the land texture
 // that dominates each spot (none on a texture with no list, as on a street), and never under water, on a steep
 // slope, under a building or on a path the owner drew. Spots are a jittered grid hashed from the position, so the
-// same ground always grows the same blades. The ring's range and thinning are the ground-cover rules of objects.js.
+// same ground always grows the same blades. The ring widens with the view (the whole town from where one looks at
+// it) and thins with distance from the eye by grassKeep (grass_rules.js): far spots are fewer and their blades
+// larger, so the ground reads as grassed at any viewing distance for a bounded number of blades.
 import { ObjectLayer, loadModel } from './objects.js';
-import { spotsFor, slopeOk, waterOk, heightScale } from './grass_rules.js';
+import { spotsFor, slopeOk, waterOk, heightScale, grassKeep, ringRadius, GRASS_FAR } from './grass_rules.js';
 
 const STEP = 150;     // one spot per 150 units (about 2 m)
-const RING = 3600;    // radius of the ring, about 50 m
-const SHOW_BELOW = 9000; // camera distance beyond which no grass is drawn
 const hash = (x, y, k) => { let h = (x * 374761393 + y * 668265263 + k * 2147483647) | 0; h = Math.imul(h ^ (h >>> 13), 1274126177); return ((h ^ (h >>> 16)) >>> 0) / 4294967296; };
 
-const MAX_SPOTS = 2600; // a ring's cap, so a tablet copes
+// a ring's cap: a blade is 10 to 60 triangles, so 6000 of them is under 400,000 triangles in one draw per grass
+// model, well inside a tablet's budget; the nearest spots are kept when the cap bites
+const MAX_SPOTS = 6000;
 export class GrassLayer extends ObjectLayer {
   // terrain: bundle.js Terrain (or a getter); blocked(x, y): a drawn path; buildings(): [{pos, r}]
   constructor(origin, { terrain, blocked = () => false, buildings = () => [] }) {
     super(origin, new Map());
+    this.always = true; // the ring does its own thinning by distance: the blades it grows are all drawn
     this.terrain = terrain; this.blocked = blocked; this.buildings = buildings; this.view = null;
     this.on = true; this.centre = null; this.stale = true; this.good = new Map(); // grass key -> model usable (true) or missing (false)
     this.lastKey = '';
@@ -41,7 +44,8 @@ export class GrassLayer extends ObjectLayer {
       if (!this.good.has(g.key)) {
         this.good.set(g.key, undefined);
         this.bases.set(g.key, { key: g.key, kind: 'groundcover', model: g.model, bounds: [[-30, -30, 0], [30, 30, 60]] });
-        loadModel(g.model, 0, 1, 'groundcover').then((parts) => { this.good.set(g.key, !!parts?.length); this.invalidate(); });
+        // a model the game cannot find either (the converter's placeholder box) grows nothing
+        loadModel(g.model, 0, 1, 'groundcover').then((parts) => { this.good.set(g.key, !!parts?.length && !parts.placeholder); this.invalidate(); });
       }
       if (this.good.get(g.key)) out.push(g);
     }
@@ -49,23 +53,29 @@ export class GrassLayer extends ObjectLayer {
   }
   cull(camera) {
     const v = this.view, t = this.terrain();
-    if (v && t && this.on && v.rig.dist < SHOW_BELOW) {
-      const c = v.rig.target, cx = c.x + this.origin[0], cy = c.y + this.origin[1];
-      if (this.stale || !this.centre || Math.hypot(cx - this.centre[0], cy - this.centre[1]) > RING * 0.2) this.regrow(cx, cy, t);
+    if (v && t && this.on && v.rig.dist < GRASS_FAR) {
+      const c = v.rig.target, cx = c.x + this.origin[0], cy = c.y + this.origin[1], d = v.rig.dist;
+      // grown again when the view slides a fifth of the ring or zooms by a third
+      if (this.stale || !this.centre || Math.hypot(cx - this.centre[0], cy - this.centre[1]) > ringRadius(d) * 0.2
+        || d / this.grownAt > 1.33 || this.grownAt / d > 1.33) this.regrow(cx, cy, t, d);
     } else if (this.refs.length) { this.centre = null; this.setRefs([]); }
     return super.cull(camera);
   }
-  regrow(cx, cy, t) {
-    this.stale = false; this.centre = [cx, cy];
+  regrow(cx, cy, t, dist = 3000) {
+    this.stale = false; this.centre = [cx, cy]; this.grownAt = dist;
+    const RING = ringRadius(dist);
     // the buildings are listed once per change of the place, and only those near the ring are tested per spot
     if (!this._blockers || this._blockersStale) { this._blockers = this.buildings(); this._blockersStale = false; }
     const blockers = this._blockers.filter((b) => Math.hypot(b.pos[0] - cx, b.pos[1] - cy) < RING + b.r), list = [];
     const x0 = Math.floor((cx - RING) / STEP), x1 = Math.ceil((cx + RING) / STEP), y0 = Math.floor((cy - RING) / STEP), y1 = Math.ceil((cy + RING) / STEP);
     for (let gx = x0; gx <= x1; gx++) for (let gy = y0; gy <= y1; gy++) {
+      // how far the eye is from this spot (the view's distance and the spot's from where it looks): far spots thin
+      const de = Math.hypot(dist, (gx + 0.5) * STEP - cx, (gy + 0.5) * STEP - cy), keep = grassKeep(de);
+      if (keep.p < 1 && hash(gx, gy, 8) >= keep.p) continue;
       const cellTex = this.texAt((gx + 0.5) * STEP, (gy + 0.5) * STEP); if (!cellTex) continue;
       const gs0 = this.grassesOf(cellTex); if (!gs0.length) continue;
       const n = spotsFor(gs0[0].density, hash(gx, gy, 9));
-      for (let k = 0; k < n && list.length < MAX_SPOTS; k++) {
+      for (let k = 0; k < n; k++) {
         const x = (gx + hash(gx, gy, 1 + 10 * k)) * STEP, y = (gy + hash(gx, gy, 2 + 10 * k)) * STEP;
         if (Math.hypot(x - cx, y - cy) > RING) continue;
         const tex = this.texAt(x, y); if (!tex) continue;
@@ -76,15 +86,16 @@ export class GrassLayer extends ObjectLayer {
         const slope = t.slopeAt(x, y);
         if (!slopeOk(g, slope) || this.blocked(x, y)) continue;
         if (blockers.some((b) => Math.hypot(b.pos[0] - x, b.pos[1] - y) < b.r)) continue;
-        const s = heightScale(g, hash(gx, gy, 5 + 10 * k));
+        const s = heightScale(g, hash(gx, gy, 5 + 10 * k)) * keep.scale;
         const rot = [0, 0, hash(gx, gy, 4 + 10 * k) * 6.2832];
         if (g.fit_to_slope) {
           const e = 32, gxs = (t.heightAt(x + e, y) - t.heightAt(x - e, y)) / (2 * e), gys = (t.heightAt(x, y + e) - t.heightAt(x, y - e)) / (2 * e);
           rot[0] = -Math.atan(gys); rot[1] = Math.atan(gxs);
         }
-        list.push({ ref: { id: `grass.${gx}.${gy}.${k}`, base: g.key, kind: 'groundcover', pos: [x, y, z], rot, scale: s } });
+        list.push({ ref: { id: `grass.${gx}.${gy}.${k}`, base: g.key, kind: 'groundcover', pos: [x, y, z], rot, scale: s }, de });
       }
     }
+    if (list.length > MAX_SPOTS) { list.sort((a, b) => a.de - b.de); list.length = MAX_SPOTS; }
     this.setRefs(list);
   }
 }

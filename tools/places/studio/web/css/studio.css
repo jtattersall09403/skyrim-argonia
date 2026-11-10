@@ -67,6 +67,14 @@ select { min-height: 44px; border-radius: 10px; border: 1px solid var(--line); b
 .bar-gap { flex: 1; }
 /* tilt: a slider at each view's right edge (top of the slider looks from above, bottom along the ground) */
 .tilt { position: absolute; right: 10px; bottom: 16px; display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 8px 4px 10px; border-radius: 14px; background: var(--panel); box-shadow: var(--shadow); font-size: 12px; font-weight: 600; z-index: 2; }
+/* compass: lower left of each view; the needle shows north on screen, a tap turns the view to face north */
+.compass { position: absolute; left: 10px; bottom: 16px; z-index: 2; width: 52px; height: 52px; padding: 2px; border-radius: 50%; background: var(--panel); box-shadow: var(--shadow); border: 0; display: grid; place-items: center; cursor: pointer; touch-action: manipulation; }
+.compass svg { width: 46px; height: 46px; overflow: visible; stroke: none; }
+.compass .rose { transform-origin: 0 0; transform-box: view-box; }
+.compass .dial { fill: none; stroke: var(--line); stroke-width: 1.5; }
+.compass .north { fill: var(--fault); }
+.compass .south { fill: var(--muted); }
+.compass .n { font-size: 9px; font-weight: 700; fill: var(--ink); }
 .tilt input { writing-mode: vertical-lr; direction: rtl; block-size: 44px; inline-size: 150px; min-width: 44px; touch-action: none; }
 /* with the side panel open the views are narrow: the source chooser keeps its room and Hide is its arrow alone */
 .view-bar .pick select { min-width: 8.5em; }
@@ -215,3 +223,9 @@ ul.plain { margin: 4px 0 12px; padding-left: 18px; color: var(--muted); line-hei
 .start-list .row { margin-top: 8px; display: flex; gap: 8px; flex-wrap: wrap; }
 .start-list .older .note { color: var(--warn, #b45309); }
 #start .sheet { max-height: calc(100vh - 32px); overflow-y: auto; overscroll-behavior: contain; }
+/* the world map (the Atlas page) over the whole studio, opened from the top bar */
+.atlas { position: fixed; inset: 0; z-index: 40; display: flex; flex-direction: column; background: var(--bg); }
+.atlas-bar { display: flex; align-items: center; gap: 12px; padding: 6px 12px; background: var(--panel); border-bottom: 1px solid var(--line); color: var(--ink); }
+.atlas-note { color: var(--muted); font-size: 14px; }
+.atlas iframe { flex: 1; width: 100%; border: 0; background: var(--bg); }
+#atlas-btn[data-built="0"] { opacity: .6; }

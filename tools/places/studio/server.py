@@ -516,6 +516,14 @@ async def web_file(req: web.Request) -> web.StreamResponse:
     return await send_file(req, p) if p else web.Response(status=404, text="not found")
 
 
+async def atlas_file(req: web.Request) -> web.StreamResponse:
+    """The Atlas (the world map page built by `python3 -m tools.newworld.map_page`), served read-only as it was
+    built, so the studio can show it without a copy of its code; 404 when it has not been built."""
+    base = Path(os.environ.get("STUDIO_ATLAS", ROOT / "out" / "newworld" / "map"))
+    p = inside(base, req.match_info.get("path") or "index.html")
+    return await send_file(req, p) if p else web.Response(status=404, text="the Atlas has not been built")
+
+
 def access(req: web.Request, status: int) -> None:
     """One line per request for the page and its scripts in out/places/studio-access.log (not the bundles, assets
     or heartbeats): which device asked for what and what it got, so a page that will not start on one device can
@@ -595,6 +603,7 @@ def make_app(cfg: Config | None = None) -> web.Application:
     r.add_post("/api/heartbeat", heartbeat)
     r.add_post("/api/clientlog", client_log)
     r.add_get("/api/status", status)
+    r.add_get("/atlas/{path:.*}", atlas_file)
     r.add_get("/", web_file)
     r.add_get("/{path:(?!api/).+}", web_file)
     app.on_startup.append(on_start)

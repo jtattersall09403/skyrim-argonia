@@ -108,6 +108,10 @@ def terrain(sp, cells, seed, river, wtype):
                      "vertex_colours": base64.b64encode(vc).decode()})
     ltex = {k: {"edid": e, "plugin": "Fix.esm", "diffuse": d, "normal": d.replace(".dds", "_n.dds"), "grasses": []}
             for k, (e, d) in LTEX.items()}
+    # the grass texture grows grass, written as the bundle writes it (the game's water rule by name)
+    ltex[LKEYS[0]]["grasses"] = [{"key": "Fix.esm:00B001", "edid": "FixGrassTuft01", "model": "landscape/grass/fixgrass01.nif",
+                                  "density": 40, "min_slope": 0, "max_slope": 60, "units_from_water": 0,
+                                  "units_from_water_type": "EitherAtLeast", "height_range": 0.3, "fit_to_slope": False}]
     sp.mkdir(parents=True, exist_ok=True)
     (sp / "terrain.f32").write_bytes(struct.pack(f"<{len(flat)}f", *flat))
     jwrite(sp / "terrain.json", {"cells": meta, "ltex": ltex})

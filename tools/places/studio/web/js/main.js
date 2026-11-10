@@ -7,6 +7,8 @@ import { View } from './view.js';
 import { TerrainMesh, LandTex } from './terrain_mesh.js';
 import { ObjectLayer } from './objects.js';
 import { GrassLayer } from './grass.js';
+import { pathLtex } from './path_paint.js';
+import { setupAtlas } from './atlas.js';
 import { fitPoint, unfitPoint } from './xform.js';
 import { Tools } from './tools.js';
 import { People } from './people.js';
@@ -175,8 +177,9 @@ class Studio {
     if (!Object.keys(out).length) out.path = { tex: null, colour: '#7a6446', label: 'Dirt path' };
     for (const p of this.model.paths.values()) {
       if (out[p.style]) continue;
-      const word = STYLE_WORD[p.style];
-      out[p.style] = { tex: this.terrain?.ltex[p.style] ? p.style : null, colour: word?.colour || '#7a6446', label: word?.label || plainTexName(this.terrain?.ltex[p.style]?.edid || p.style) };
+      // a style word is painted with the world's land texture the build picks for it (path_paint.js)
+      const word = STYLE_WORD[p.style], tex = pathLtex(p.style, this.terrain?.ltex);
+      out[p.style] = { tex, colour: word?.colour || '#7a6446', label: word?.label || plainTexName(this.terrain?.ltex[p.style]?.edid || p.style) };
     }
     return out;
   }
@@ -398,6 +401,7 @@ class Studio {
     $('#undo').onclick = () => this.log?.undo(); $('#redo').onclick = () => this.log?.redo();
     $('#finalise-btn').onclick = () => this.panels.finalise();
     $('#settings-btn').onclick = () => this.panels.settings();
+    setupAtlas({ placeId: () => this.place?.place_id, toast: (t, ms) => this.toast(t, ms) });
     $('#link').onclick = (e) => { this.linked = !this.linked; e.currentTarget.setAttribute('aria-pressed', this.linked); if (this.linked) this.cameraMoved(this.ours.view); };
     // the source place can be put away to make room, and asked back; remembered on this device
     const srcShown = (on) => {

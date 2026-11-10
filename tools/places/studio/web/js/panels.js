@@ -5,6 +5,7 @@ import { ICON } from './icons.js';
 import { thumb } from './thumbs.js';
 import { STOP_KINDS, isInnkeeper, patrolOf, setPatrol } from './people.js';
 import { clock, parseClock } from './geom.js';
+import { whereOf, whereRows } from './where.js';
 
 const $ = (s) => document.querySelector(s);
 const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -85,6 +86,7 @@ export class Panels {
     else {
       const counts = {}; for (const r of refs) counts[plainKind(r.kind)] = (counts[plainKind(r.kind)] || 0) + 1;
       parts.push(el(`<p><strong>${refs.length} things selected</strong>: ${Object.entries(counts).map(([k, n]) => `${n} × ${esc(k.toLowerCase())}`).join(', ')}.</p>`));
+      parts.push(this.whereEl(refs, 'ours'));
     }
     if (note) parts.push(el(`<p class="tag">${esc(note)}</p>`));
     if (refs.length) {
@@ -134,12 +136,25 @@ export class Panels {
     if (side === 'ours' && r.door?.arrival) facts.push(['Coming out', 'you arrive outside this door, on our ground and clear of anything in the way']);
     if (r.owner) facts.push(['Belongs to', r.owner]);
     if (r.door?.to_space) facts.push(['Door leads to', side === 'ours' ? a.spaceName(a.ours, r.door.to_space) : a.spaceName(a.src, r.door.to_space)]);
+    w.append(this.whereEl([r], side));
     w.append(el(`<dl class="facts">${facts.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join('')}</dl>`));
     if (r.door?.to_space) {
       const b = el('<button class="primary">Go inside</button>');
       b.onclick = () => a.enter(side === 'ours' ? a.ours : a.src, r); w.append(b);
     }
     return w;
+  }
+  // Where the selection stands in the game (position, cell outside, turn): drawn as a fact list and kept current
+  // by refreshWhere as the things move.
+  whereHtml(refs, side) {
+    const a = this.app, s = side === 'ours' ? a.ours : a.src, exterior = (s?.space || 'exterior') === 'exterior';
+    const shown = side === 'ours' ? refs.map((r) => a.seated(r)) : refs;
+    return whereRows(whereOf(shown, { exterior })).map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join('');
+  }
+  whereEl(refs, side) { const d = el(`<dl class="facts where" data-side="${side}">${this.whereHtml(refs, side)}</dl>`); return d; }
+  refreshWhere() {
+    const d = document.querySelector('#panel-body dl.where[data-side="ours"]'); if (!d || this.name !== 'select') return;
+    const refs = this.T.selRefs(); if (refs.length) d.innerHTML = this.whereHtml(refs, 'ours');
   }
   sourceInfo(refs) {
     const a = this.app;

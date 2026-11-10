@@ -3,6 +3,7 @@
 // average colour far away; water at each cell's water height, shaded by its depth over the land at the shore.
 import * as THREE from 'three';
 import { getJSON, texUrl } from './api.js';
+import { cellOpacity } from './path_paint.js';
 
 const TEX_PX = 512, Q = TEX_PX / 2, TILES = 3, NEAR_CELLS = 2.6, MAX_BAKED = 36;
 
@@ -205,34 +206,36 @@ export class TerrainMesh {
     const tctx = tmp.getContext('2d');
     const mask = this._mask || (this._mask = document.createElement('canvas')); mask.width = mask.height = 17;
     const mctx = mask.getContext('2d');
+    // one alpha layer: a 17x17 opacity grid (row 0 south) of a land texture, tiled as the base is, over a quadrant
+    const layer = (alpha, tex, qx, qy, fallback) => {
+      const data = mctx.createImageData(17, 17);
+      for (let r = 0; r < 17; r++) for (let c = 0; c < 17; c++) data.data[((16 - r) * 17 + c) * 4 + 3] = Math.max(0, Math.min(255, alpha(r, c) * 255));
+      mctx.putImageData(data, 0, 0);
+      tctx.globalCompositeOperation = 'source-over'; tctx.clearRect(0, 0, Q, Q);
+      fillTiled(tctx, img(tex), 0, 0, Q, Q, this.lt ? this.lt.avg(tex, lt) : fallback);
+      tctx.globalCompositeOperation = 'destination-in'; tctx.imageSmoothingEnabled = true;
+      tctx.drawImage(mask, 0, 0, 17, 17, 0, 0, Q, Q);
+      ctx.drawImage(tmp, qx, qy);
+    };
+    // paths are painted as the build paints them: one more alpha layer of the path's land texture, feathered
+    const g = this.t.grid, paths = [];
+    for (const p of this.paths()) { const op = cellOpacity(p, e.c.cell, this.t); if (op) paths.push([p, op]); }
     for (let qi = 0; qi < 4; qi++) {
       // canvas y runs north to south; quadrants are SW, SE, NW, NE
       const qx = (qi % 2) * Q, qy = qi < 2 ? Q : 0, q = e.c.quadrants[qi];
       ctx.globalCompositeOperation = 'source-over';
       fillTiled(ctx, img(q.base), qx, qy, Q, Q, this.lt ? this.lt.avg(q.base, lt) : '#4d5a2c');
-      for (const l of q.layers) {
-        if (!l.alpha) continue;
-        const data = mctx.createImageData(17, 17);
-        for (let r = 0; r < 17; r++) for (let c = 0; c < 17; c++) data.data[((16 - r) * 17 + c) * 4 + 3] = Math.max(0, Math.min(255, l.alpha[r * 17 + c] * 255));
-        mctx.putImageData(data, 0, 0);
-        tctx.globalCompositeOperation = 'source-over'; tctx.clearRect(0, 0, Q, Q);
-        fillTiled(tctx, img(l.tex), 0, 0, Q, Q, this.lt ? this.lt.avg(l.tex, lt) : '#6e5a41');
-        tctx.globalCompositeOperation = 'destination-in'; tctx.imageSmoothingEnabled = true;
-        tctx.drawImage(mask, 0, 0, 17, 17, 0, 0, Q, Q);
-        ctx.drawImage(tmp, qx, qy);
+      for (const l of q.layers) if (l.alpha) layer((r, c) => l.alpha[r * 17 + c], l.tex, qx, qy, '#6e5a41');
+      const r0 = qi >= 2 ? 16 : 0, c0 = qi % 2 ? 16 : 0;
+      for (const [p, op] of paths) {
+        const st = this.pathStyles[p.style] || {};
+        if (st.tex) layer((r, c) => op[(r0 + r) * g + c0 + c], st.tex, qx, qy, '#6e5a41');
+        else { // no land texture for the style: its colour, feathered the same way
+          const data = mctx.createImageData(17, 17), rgb = hex(st.colour || '#7a6446').map((v) => Math.round(v * 255));
+          for (let r = 0; r < 17; r++) for (let c = 0; c < 17; c++) { const i = ((16 - r) * 17 + c) * 4; data.data.set(rgb, i); data.data[i + 3] = op[(r0 + r) * g + c0 + c] * 255; }
+          mctx.putImageData(data, 0, 0); ctx.imageSmoothingEnabled = true; ctx.drawImage(mask, 0, 0, 17, 17, qx, qy, Q, Q);
+        }
       }
-    }
-    const cx0 = e.c.cell[0] * this.t.size, cy1 = (e.c.cell[1] + 1) * this.t.size, k = TEX_PX / this.t.size;
-    for (const p of this.paths()) {
-      const st = this.pathStyles[p.style] || {}, pim = st.tex ? img(st.tex) : null;
-      ctx.save();
-      ctx.strokeStyle = pim ? ctx.createPattern(pim, 'repeat') : (st.colour || (this.lt ? this.lt.avg(st.tex, lt) : '#8a7656'));
-      ctx.lineCap = 'round'; ctx.lineJoin = 'round';
-      ctx.beginPath();
-      p.points.forEach(([x, y], i) => { const sx = (x - cx0) * k, sy = (cy1 - y) * k; i ? ctx.lineTo(sx, sy) : ctx.moveTo(sx, sy); });
-      ctx.globalAlpha = 0.35; ctx.lineWidth = p.width * k * 1.3; ctx.stroke(); // a soft verge, as the game blends
-      ctx.globalAlpha = 0.95; ctx.lineWidth = p.width * k; ctx.stroke();
-      ctx.restore();
     }
     e.tex.needsUpdate = true;
   }
@@ -246,20 +249,14 @@ export class TerrainMesh {
   // Far cells show paths in their vertex colours.
   splatPaths(e) {
     if (!e.baseColour) return;
-    const g = this.t.grid, col = e.geo.attributes.color.array; col.set(e.baseColour);
-    const st0 = this.t.step, x0 = e.c.cell[0] * this.t.size, y0 = e.c.cell[1] * this.t.size, x1 = x0 + this.t.size, y1 = y0 + this.t.size;
+    const g = this.t.grid, col = e.geo.attributes.color.array, vc = e.c.vcol; col.set(e.baseColour);
+    // the path's land texture colour blended in by the build's feathered opacity at each grid point
     for (const p of this.paths()) {
-      const hw = p.width / 2;
-      let rgb = null;
-      // only the grid points inside each segment's box, and only segments that reach this cell
-      for (let i = 1; i < p.points.length; i++) {
-        const a = p.points[i - 1], b = p.points[i];
-        const sx0 = Math.min(a[0], b[0]) - hw, sx1 = Math.max(a[0], b[0]) + hw, sy0 = Math.min(a[1], b[1]) - hw, sy1 = Math.max(a[1], b[1]) + hw;
-        if (sx1 < x0 || sx0 > x1 || sy1 < y0 || sy0 > y1) continue;
-        if (!rgb) { const st = this.pathStyles[p.style] || {}; rgb = hex(st.colour || (this.lt ? this.lt.avg(st.tex, this.t.ltex) : '#6e5a41')); }
-        const c0 = Math.max(0, Math.ceil((sx0 - x0) / st0)), c1 = Math.min(g - 1, Math.floor((sx1 - x0) / st0));
-        const r0 = Math.max(0, Math.ceil((sy0 - y0) / st0)), r1 = Math.min(g - 1, Math.floor((sy1 - y0) / st0));
-        for (let r = r0; r <= r1; r++) for (let c = c0; c <= c1; c++) if (segD(x0 + c * st0, y0 + r * st0, a, b) < hw) col.set(rgb, (r * g + c) * 3);
+      const op = cellOpacity(p, e.c.cell, this.t); if (!op) continue;
+      const st = this.pathStyles[p.style] || {}, rgb = hex(st.tex && this.lt ? this.lt.avg(st.tex, this.t.ltex) : (st.colour || '#6e5a41'));
+      for (let i = 0; i < g * g; i++) {
+        const o = op[i]; if (!o) continue;
+        for (let k = 0; k < 3; k++) col[i * 3 + k] += (rgb[k] * (vc ? vc[i * 3 + k] / 255 : 1) - col[i * 3 + k]) * o;
       }
     }
     e.farColour = Float32Array.from(col); this.tintCell(e);

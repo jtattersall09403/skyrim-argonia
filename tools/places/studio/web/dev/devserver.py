@@ -265,7 +265,8 @@ class H(BaseHTTPRequestHandler):
         for k, v in (headers or {}).items():
             self.send_header(k, v)
         self.end_headers()
-        self.wfile.write(body)
+        if self.command != "HEAD":
+            self.wfile.write(body)
 
     def converting(self):
         self.send(202, {"state": "converting"}, headers={"Retry-After": "1"})
@@ -274,11 +275,17 @@ class H(BaseHTTPRequestHandler):
         n = int(self.headers.get("Content-Length") or 0)
         return self.rfile.read(n) if n else b""
 
+    def do_HEAD(self):  # the page asks whether the Atlas is there before offering it
+        p = unquote(urlparse(self.path).path)
+        return self.atlas(p[len("/atlas/"):] or "index.html") if p.startswith("/atlas/") else self.send(405, b"", "text/plain")
+
     def do_GET(self):
         u = urlparse(self.path)
         q = {k: v[0] for k, v in parse_qs(u.query).items()}
         p = unquote(u.path)
         st = self.st
+        if p.startswith("/atlas/"):
+            return self.atlas(p[len("/atlas/"):] or "index.html")
         if not p.startswith("/api/"):
             return self.static(p)
         if p == "/api/places":
@@ -434,6 +441,8 @@ class H(BaseHTTPRequestHandler):
         if level not in ("0", "1"):
             return self.send(400, {"error": "level must be 0 or 1"})
         base = st.find_base(model)
+        if not base and model.startswith("landscape/grass/"):  # a land texture's grass: no base of its own
+            base = {"bounds": [[-30, -30, 0], [30, 30, 60]], "kind": "groundcover"}
         if st.assets:
             pth = st.assets.mesh(model, int(level), base["bounds"] if base else None)
             return self.file(pth, "model/gltf-binary")
@@ -515,6 +524,24 @@ class H(BaseHTTPRequestHandler):
         res.sort(key=lambda r: -r["score"])
         self.send(200, {"q": q.get("q", ""), "scope": scope, "results": res[:limit]})
 
+    def atlas(self, rel):
+        """The world map: --atlas DIR when given (the built Atlas), else a stub page that shows the place it was asked
+        to open; --no-atlas answers 404, as the studio server does when the Atlas has not been built."""
+        if self.st.atlas is False:
+            return self.send(404, b"the Atlas has not been built", "text/plain")
+        if self.st.atlas:
+            root = Path(self.st.atlas).resolve(); f = (root / rel).resolve()
+            if root not in f.parents or not f.is_file():
+                return self.send(404, b"not found", "text/plain")
+            ct = {".html": "text/html", ".json": "application/json", ".png": "image/png", ".webp": "image/webp"}.get(f.suffix, "application/octet-stream")
+            return self.send(200, f.read_bytes(), ct)
+        if rel != "index.html":
+            return self.send(404, b"not found", "text/plain")
+        stub = ("<!doctype html><meta charset=utf-8><title>Atlas stub</title><body><h1>Atlas</h1><p id=place></p>"
+                "<script>const s = () => { document.getElementById('place').textContent = "
+                "(/place=([^&]+)/.exec(location.hash) || [])[1] || ''; }; s(); addEventListener('hashchange', s);</script>")
+        self.send(200, stub.encode(), "text/html")
+
     def static(self, p):
         root = self.st.web.resolve()
         f = (root / p.lstrip("/")).resolve()
@@ -537,6 +564,8 @@ def main():
     ap.add_argument("--saves", help="where saves go (default: fixture-out/saves, or a temp dir in real mode)")
     ap.add_argument("--web", default=str(here.parent))
     ap.add_argument("--mismatch", action="store_true")
+    ap.add_argument("--atlas", help="the built Atlas dir (out/newworld/map); default: a stub page")
+    ap.add_argument("--no-atlas", action="store_true", help="answer the Atlas with 404, as when it is not built")
     a = ap.parse_args()
     real = bool(a.bundles)
     if real:
@@ -547,6 +576,7 @@ def main():
     else:
         saves = a.saves or str(Path(a.fixture) / "saves")
         H.st = State(Path(a.fixture) / "bundles", a.fixture, a.web, a.mismatch, saves, False)
+    H.st.atlas = False if a.no_atlas else a.atlas
     srv = ThreadingHTTPServer(("127.0.0.1", a.port), H)
     print(f"serving {a.web} + API ({'real' if real else 'fixture'} data, assets "
           f"{'tools.places.assets' if H.st.assets else 'generated'}) on :{a.port}", flush=True)
