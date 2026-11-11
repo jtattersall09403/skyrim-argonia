@@ -30,8 +30,8 @@ The recipe (numbers from research/nw-02-ground-water-rules.md and docs/research/
 6. Grass: in each province, the grassy materials it names carry its own grass list (a variant material `id~province`,
    its own LTEX), so a marsh in the delta grows reeds and saltrice and one on the coast violets and saltrice.
 7. Smooth: each vertex keeps its 4 heaviest ground materials, the ground is blurred over 1.5 vertices, the road laid
-   over it (its materials' mix blurred alike, its weight blurred but raised to the drawn where that is near full, so its
-   edge is soft and its spine carries no ground or grass), traces under 8% are
+   over it blurred over 1 vertex (its ramp is smooth by its rule; a full blur would leave ground and grass on a narrow
+   road's spine), traces under 8% are
    dropped (the road and the ground each keeping their share); each quadrant keeps at most six materials (the engine's six texture slots: base + 5 alpha layers), road
    the heaviest at its corners first, then road materials, then by weight over the quadrant + an 8-vertex halo; a material
    fades to 0 over 6 vertices toward any quadrant that does not keep it (closed squares, so a shared vertex reads the
@@ -576,14 +576,11 @@ def encode_row(p: Painter, g: dict, cy: int):
     # so after the blur a quadrant rarely needs more than its six layers and the seam fade seldom has work to do
     w = top_v(w)
     w = ndi.gaussian_filter(w, (1.5, 1.5, 0), mode="nearest")
-    # the road over the blurred ground: its materials' mix blurred as the ground is (no join in one vertex), its pull
-    # the blurred one, raised toward the drawn where the drawn is near full (soft at its edge, full on its spine, so
-    # no ground or grass there)
-    pb = ndi.gaussian_filter(pull, (1.5, 1.5, 0), mode="nearest")
-    rb = ndi.gaussian_filter(road_w, (1.5, 1.5, 0), mode="nearest")
-    pf = pb + np.clip(pull - pb, 0, None) * np.clip((pull - 0.8) / 0.17, 0, 1)  # drawn only where it is near full
+    # the road over the blurred ground, itself blurred less (1 vertex): its ramp is smooth by its rule, and a full
+    # blur would leave ground (and grass) on a narrow road's spine
+    pf = ndi.gaussian_filter(pull, (1.0, 1.0, 0), mode="nearest")
     w = w * (1 - pf)
-    w[..., ROAD_IX] += rb * (pf / np.maximum(pb, 1e-6))
+    w[..., ROAD_IX] += ndi.gaussian_filter(road_w, (1.0, 1.0, 0), mode="nearest")
     w = prune(w)
     # quadrant lattice: 6 quadrant rows from north-32 (the cell's two are rows 2, 3), 2 quadrant columns of pad
     a0 = halo - 32 - HQ
