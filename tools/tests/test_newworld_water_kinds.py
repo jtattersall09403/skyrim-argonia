@@ -91,8 +91,9 @@ def test_arrows_follow_the_channel_round_its_bend_toward_the_sea():
     assert max(xs) > xs[0] and ys[-1] > ys[0]                   # it runs east, then turns south along the bend
 
 
-def test_the_map_kind_is_read_not_the_owners_kind_the_terrain_laid_over_it():
+def test_the_map_kind_is_read_not_the_owners_kind_the_terrain_laid_over_it(tmp_path, monkeypatch):
     import numpy as np
+    monkeypatch.setattr(wk.f, "OUT", tmp_path)   # no build.json: the body list alone decides
     bj = [{"raster_index": 1, "water_kind_id": "lake", "why": "owner override", "overridden": True,
            "map_kind": "stream", "map_why": "a channel under ~23 m wide"},
           {"raster_index": 2, "water_kind_id": "river", "why": "a channel over ~23 m wide", "overridden": None,
