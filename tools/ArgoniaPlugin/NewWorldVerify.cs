@@ -117,7 +117,7 @@ static class NewWorldVerify
         cw.WriteLine("x\ty\tedid\tland\twater\twater_h\tregion\trefs\tnavm\tnavm_tris\tland_quads\tgrass_quads\th_min\th_max\th_mean");
         using var gz = new GZipStream(File.Create(Path.Combine(outDir, "refs.tsv.gz")), CompressionLevel.Fastest);
         using var rw = new StreamWriter(gz);
-        rw.WriteLine("cx\tcy\tbase\tsig\tedid\tmodel\tfrom\tx\ty\tz\trx\try\trz\tscale\tground\tgx\tgy");
+        rw.WriteLine("cx\tcy\tbase\tsig\tedid\tmodel\tfrom\tx\ty\tz\trx\try\trz\tscale\tground\tgx\tgy\tfid");
         float water = ws.LandDefaults?.DefaultWaterHeight ?? 0;
         foreach (var b in ws.SubCells) foreach (var sb in b.Items) foreach (var c in sb.Items)
         {
@@ -168,7 +168,7 @@ static class NewWorldVerify
                     nref++;
                     var bk = po.Base.FormKey; recs.TryGetValue(bk, out var bs);
                     var (gh, gx, gy) = Ground(pos.X, pos.Y);
-                    rw.WriteLine($"{x}\t{y}\t{bk}\t{bs?.Sig}\t{bs?.Edid}\t{bs?.Model}\t{bs?.From}\t{pos.X:F1}\t{pos.Y:F1}\t{pos.Z:F1}\t{rot.X:F5}\t{rot.Y:F5}\t{rot.Z:F5}\t{po.Scale ?? 1f:F4}\t{gh:F1}\t{gx:F4}\t{gy:F4}");
+                    rw.WriteLine($"{x}\t{y}\t{bk}\t{bs?.Sig}\t{bs?.Edid}\t{bs?.Model}\t{bs?.From}\t{pos.X:F1}\t{pos.Y:F1}\t{pos.Z:F1}\t{rot.X:F5}\t{rot.Y:F5}\t{rot.Z:F5}\t{po.Scale ?? 1f:F4}\t{gh:F1}\t{gx:F4}\t{gy:F4}\t{po.FormKey.ID:X6}");
                 }
                 var navs = c.NavigationMeshes.ToList();
                 long tris = 0;

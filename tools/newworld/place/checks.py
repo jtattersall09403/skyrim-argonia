@@ -1,6 +1,7 @@
-"""Off-game checks of the placed references (nw-02 step 8), read back from the shards as the ESM writer reads them.
+"""Off-game checks of the placement (nw-02 step 8), read back from its shards as the ESM writer reads them: the
+things the rules placed (place.PLACED). The edits of single things are judged by the same rules in edits.py.
 
-Writes out/newworld/plugin/refs/check.json and prints one line per check; exit 1 when a hard check fails.
+Writes check.json beside the shards and prints one line per check; exit 1 when a hard check fails.
 Hard (must be 0 / true): refs on a road surface; trees in flowing water; trees in standing water against the rule
 (habitat or the family's standing_water_max_m); trunk seating outside the base's measured sink window by more than
 the LAND quantisation (4 units) plus the two triangulations' difference; rocks and cliffs with the mesh bottom above
@@ -22,18 +23,21 @@ from tools.newworld.place import place as P
 QUANT_M = 4 / P.UPM
 
 
-def load():
+def load(d=None):
     refs = []
-    for f in sorted(P.REFS.glob("cy*.jsonl")):
+    for f in sorted((d or P.PLACED).glob("cy*.jsonl")):
         refs += [json.loads(ln) for ln in f.read_text(encoding="utf-8").splitlines() if ln.strip()]
     return refs
 
 
-def run() -> int:
+def run(folder=None, refs=None) -> int:
+    """`folder`: the folder of shards judged, with its bases.json (default: the placement); `refs`: its references
+    when the caller holds them already (the read-back's, from the world file)."""
+    folder = folder or P.PLACED
     W = P.World(); Pa = P.Palette(W); R = P.Roads()
-    bases = json.loads((P.REFS / "bases.json").read_text())["bases"]
+    bases = json.loads((folder / "bases.json").read_text())["bases"]
     rec = {b["key"]: b for b in bases}
-    refs = load()
+    refs = load(folder) if refs is None else refs
     n = len(refs)
     xs = np.array([r["pos"][0] for r in refs]); ys = np.array([r["pos"][1] for r in refs])
     zs = np.array([r["pos"][2] for r in refs]); sc = np.array([r["scale"] for r in refs])
@@ -159,7 +163,7 @@ def run() -> int:
     res["total_refs"] = n
     res["by_class"] = dict(Counter(cls.tolist()))
     res["fails"] = fails
-    (P.REFS / "check.json").write_text(json.dumps(res, indent=1))
+    (folder / "check.json").write_text(json.dumps(res, indent=1))
     for k, v in res.items():
         if k not in ("variety", "by_class"):
             print(f"  {k}: {v}")

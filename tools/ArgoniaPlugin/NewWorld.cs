@@ -27,9 +27,12 @@ static class NewWorld
     static readonly FormKey XMarkerHeading = FormKey.Factory("000034:Skyrim.esm");
     static readonly Quadrant[] Quads = { Quadrant.BottomLeft, Quadrant.BottomRight, Quadrant.TopLeft, Quadrant.TopRight };
     // form ids by formula: the world, its persistent cell, the start marker; cell k of the grid IdCells + 2k, its LAND
-    // +1; the placed references count up from IdRefs in the shards' order (nothing is keyed on a reference's id).
+    // +1. A placed reference whose shard line carries its form id ("fid": the placer's, by formula from the
+    // reference's identity, IdRefs..; an added thing's, given once by its edit row, up to IdRefsCounted - 1) takes
+    // that id, so an edit of one reference moves no other's: a save names a reference by its id. A producer's line
+    // without one (the mist) counts up from IdRefsCounted in the shards' order.
     // Every other record's id is its name's in the registry (FormIds.cs), in its kind's block.
-    const uint IdWorld = 0x800, IdTopCell = 0x801, IdMarker = 0x802, IdCells = 0x100000, IdRefs = 0x200000, IdRefsEnd = 0x7FFFFF;
+    const uint IdWorld = 0x800, IdTopCell = 0x801, IdMarker = 0x802, IdCells = 0x100000, IdRefs = 0x200000, IdRefsCounted = 0x740000, IdRefsEnd = 0x7FFFFF;
     static readonly string[] Allowed = { "Skyrim.esm", "Update.esm", "Black Marsh.esm" };  // the only masters (verify.py MASTERS)
 
     record Manifest(JsonElement Root)
@@ -159,7 +162,8 @@ static class NewWorld
         Console.WriteLine("  water seams: " + string.Join(", ", blendReport.Select(kv => $"{kv.Key} {kv.Value}")));
         fc.Kind = "base";
         var refsByCell = Refs(plugDir, fc);
-        uint refId = IdRefs;
+        uint refId = IdRefsCounted;
+        var given = new HashSet<uint>();
         var mk = man.Marker;
         var mCell = (mk.GetProperty("cell")[0].GetInt32(), mk.GetProperty("cell")[1].GetInt32());
 
@@ -208,13 +212,17 @@ static class NewWorld
                     c.Regions = new ExtendedList<IFormLinkGetter<IRegionGetter>> { new FormLink<IRegionGetter>(regionKey[ci.GetProperty("region").GetString()!]) };
                 }
                 if (refsByCell.TryGetValue((cx, cy), out var rl))
-                    foreach (var (bk, pos, rot, sc) in rl)
-                        c.Temporary.Add(new PlacedObject(K(refId++), Rel)
+                    foreach (var (bk, pos, rot, sc, fid) in rl)
+                    {
+                        if (fid is { } id && (id < IdRefs || id >= IdRefsCounted || !given.Add(id)))
+                            throw new InvalidDataException($"a placed reference's form id {id:X6} is given twice or lies outside {IdRefs:X6}..{IdRefsCounted - 1:X6}");
+                        c.Temporary.Add(new PlacedObject(K(fid ?? refId++), Rel)
                         {
                             Base = new FormLinkNullable<IPlaceableObjectGetter>(bk),
                             Placement = new Placement { Position = pos, Rotation = rot },
                             Scale = sc == 1f ? null : sc,
                         });
+                    }
                 if ((cx, cy) == mCell)
                 {
                     c.EditorID = StartCell;
@@ -247,10 +255,10 @@ static class NewWorld
             ws.SubCells.Add(b);
         }
         NewWorldNavmesh.Attach(mod, ws, outPath, man.BuildId);  // nw-02 step 10: the navmesh, when built for this land
-        if (IdCells + 2 * k > IdRefs || refId > IdRefsEnd + 1) throw new InvalidDataException($"cells ran to {IdCells + 2 * k:X6} or placed references to {refId:X6}, out of their ranges");
+        if (IdCells + 2 * k > IdRefs || refId > IdRefsEnd + 1) throw new InvalidDataException($"cells ran to {IdCells + 2 * k:X6} or counted references to {refId:X6}, out of their ranges");
         InIdOrder(mod);
         ids.Save();
-        Console.WriteLine($"  form ids: {ids.Count} registered names, {ids.Added.Count} new; references {IdRefs:X6}..{refId - 1:X6}");
+        Console.WriteLine($"  form ids: {ids.Count} registered names, {ids.Added.Count} new; references: {given.Count} under their own ids, {refId - IdRefsCounted} counted from {IdRefsCounted:X6}");
         var lo = bm.ModHeader.MasterReferences.Select(m => m.Master).Append(bm.ModKey).Append(modKey).ToList();
         var upd = ModKey.FromFileName("Update.esm");  // a master always (its WATR/WTHR records win), placed after Skyrim.esm
         if (!lo.Contains(upd)) lo.Insert(lo.IndexOf(ModKey.FromFileName("Skyrim.esm")) + 1, upd);
@@ -289,9 +297,9 @@ static class NewWorld
     }
 
     // Placed refs from every producer's shards: <plugin dir>/refs/<producer>/cy<+NNN>.jsonl (format: cells.py).
-    static Dictionary<(int, int), List<(FormKey, P3Float, P3Float, float)>> Refs(string plugDir, ForeignCopy fc)
+    static Dictionary<(int, int), List<(FormKey, P3Float, P3Float, float, uint?)>> Refs(string plugDir, ForeignCopy fc)
     {
-        var res = new Dictionary<(int, int), List<(FormKey, P3Float, P3Float, float)>>();
+        var res = new Dictionary<(int, int), List<(FormKey, P3Float, P3Float, float, uint?)>>();
         var dir = Path.Combine(plugDir, "refs");
         if (!Directory.Exists(dir)) return res;
         var bases = new Dictionary<string, FormKey>();
@@ -329,7 +337,8 @@ static class NewWorld
                 var pos = new P3Float(G("x"), G("y"), G("z"));
                 var cell = ((int)Math.Floor(pos.X / CELL), (int)Math.Floor(pos.Y / CELL));
                 if (!res.TryGetValue(cell, out var l)) res[cell] = l = new();
-                l.Add((bk, pos, new P3Float(G("rx"), G("ry"), G("rz")), G("scale")));
+                uint? fid = o.TryGetProperty("fid", out var fe) ? uint.Parse(fe.GetString()!, System.Globalization.NumberStyles.HexNumber) : null;
+                l.Add((bk, pos, new P3Float(G("rx"), G("ry"), G("rz")), G("scale"), fid));
             }
         }
         return res;

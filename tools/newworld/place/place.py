@@ -7,17 +7,26 @@ flora_guild(_member), habitat, water_kind, road, road_vertex, road_class, road_n
 cliff open-side measures (out/newworld/research/flora_catalogue.json) and the base records' own plugins (OBND, MODL,
 record type, read with tools/navmesh/esm.py).
 
-Output (out/newworld/plugin/refs/flora/, never git), the shared placed-refs hook (tools/newworld/world/cells.py;
-written into the ESM by ArgoniaPlugin `newworld write`, which links a base in an allowed master and copies any other
-as our own record with ForeignCopy.cs):
+Output (out/newworld/plugin/placed/flora/, never git): the placement as the rules made it. The edits pass
+(edits.py) writes it, with the owner's edits of single things applied, to out/newworld/plugin/refs/flora/, the shared
+placed-refs hook (tools/newworld/world/cells.py; written into the ESM by ArgoniaPlugin `newworld write`, which links
+a base in an allowed master and copies any other as our own record with ForeignCopy.cs). Both folders hold:
     cy+NNN.jsonl     one placed reference a line, cells of that row west to east:
                      {"base": "<plugin>:<editor id>", "x", "y", "z" (units), "rx", "ry", "rz" (radians: Skyrim's
                       clockwise angles, z then y then x), "scale", "cell": [cx, cy], "cls" (flora class or
                       road_<kind>), "db" (flora_base id or dressing kind), "key": the base's "XXXXXX:<plugin>",
                       "pos": [x, y, z], "rot": [rx, ry, rz], "model": its MODL (the navmesh's obstacle reader uses
-                      pos, rot, scale and model)}
+                      pos, rot, scale and model), "id": the reference's identity, "fid": its form id (six hex
+                      digits) in the world file}
     bases.json       every base used: key, ref, copied (not in a master), sig, model, obnd, edid, plugin, db_id
     manifest.json    key, build id, counts, per-cell budget, refusal tally, timing.
+
+A reference's identity is `flora/<cx>,<cy>/<h>`: this producer, the cell the rules put it in, and ten hex digits of
+the digest of what the rules decided there (its base and the x, y drawn for it). It is the same after any rebuild
+that puts the same thing on the same spot, whatever else is placed or in what order, and it stays the thing's name
+when an edit moves it or changes its base. Its form id follows from the identity alone (form_ids): a slot of
+FID_FIRST..FID_LAST by the identity's digest, a taken slot passed over in the identities' sorted order, so a
+reference keeps its id while it stands and an edit renumbers nothing.
 
 The recipe (numbers from research/nw-02-flora-rules.md, nw-02-ground-water-rules.md, nw-02-salvage.md):
 1. Per cell (seeded by the seed and the cell: a cell rebuilds alone and identically), per (region, habitat) stratum
@@ -73,7 +82,9 @@ REPO = Path(__file__).resolve().parents[3]
 DB = REPO / "newworld/story/data/db"
 OUT = REPO / "out/newworld"
 LC = OUT / "landcover"
-REFS = OUT / "plugin/refs/flora"  # this producer's shards (tools/newworld/world/cells.py: the refs hook)
+PLACED = OUT / "plugin/placed/flora"  # the placement as the rules made it: read by the edits pass alone
+REFS = OUT / "plugin/refs/flora"  # this producer's shards with the edits applied (tools/newworld/world/cells.py: the refs hook)
+FID_FIRST, FID_LAST = 0x200000, 0x6FFFFF  # the world file's form ids for references placed by rule (NewWorld.cs)
 MANIFEST = OUT / "plugin/land/manifest.json"
 CATALOGUE = OUT / "research/flora_catalogue.json"
 DATA = Path(os.environ.get("ARGONIA_GAME_ROOT", Path.home() / "games/skyrimse")) / "Data"
@@ -126,6 +137,53 @@ FARM_RADIUS_M = 150.0
 ROAD_NEAR_DM = 730  # the landcover holds the distance to a road up to 73 m (past the widest collision placed): a reference further out is not tested against one
 ROAD_BODY_CLEAR = 48.0  # units from a blocked column's centre to the road's walking width: the actor's radius the
 # navmesh is made for (tools.navmesh.params.AGENT_RADIUS, 32) and one voxel of its grid (CELL_SIZE, 16)
+
+
+def ident(base_key: str, x: float, y: float, cell) -> str:
+    """The identity of the reference the rules put at (x, y) of `cell` with this base (the base's `XXXXXX:<plugin>`)."""
+    h = hashlib.sha1(f"{base_key.lower()}|{x:.1f}|{y:.1f}".encode()).hexdigest()[:10]
+    return f"flora/{int(cell[0])},{int(cell[1])}/{h}"
+
+
+def form_ids(idents) -> dict[str, int]:
+    """identity -> form id in FID_FIRST..FID_LAST. Each identity asks for the slot its digest names and, when that
+    is taken, the next free one after it; they are served in sorted order, so the answer follows from the set alone.
+    Two references with one identity stop the build."""
+    n = FID_LAST - FID_FIRST + 1
+    names = sorted(idents)
+    if len(set(names)) != len(names):
+        seen: set = set()
+        twice = [i for i in names if i in seen or seen.add(i)]
+        raise ValueError(f"placed references share an identity: {twice[:3]}")
+    if len(names) > n // 2:
+        raise ValueError(f"{len(names)} placed references are too many for the form ids {FID_FIRST:06X}..{FID_LAST:06X}")
+    taken, out = set(), {}
+    for i in names:
+        s = int.from_bytes(hashlib.sha256(i.encode()).digest()[:8], "big") % n
+        while s in taken:
+            s = (s + 1) % n
+        taken.add(s)
+        out[i] = FID_FIRST + s
+    return out
+
+
+def shard_line(r: dict, rec: dict) -> str:
+    """One reference as its shard line (`r`: cell, base key, pos, rot, scale, cls, db, id, fid; `rec`: its base's
+    plugin, edid and model)."""
+    (x, y, z), (rx, ry, rz) = r["pos"], r["rot"]
+    o = {"base": f"{rec['plugin']}:{rec['edid']}", "x": x, "y": y, "z": z, "rx": rx, "ry": ry, "rz": rz,
+         "scale": r["scale"], "cell": r["cell"], "cls": r["cls"], "db": r["db"], "key": r["base"],
+         "pos": r["pos"], "rot": r["rot"], "model": rec["model"], "id": r["id"], "fid": r["fid"]}
+    return json.dumps(o, separators=(",", ":"))
+
+
+def base_row(key: str, rec: dict, audit: dict, db_id, cls) -> dict:
+    """A base's row of bases.json (`rec`: read_bases' record; `audit`: its model's texture audit; `cls`: its flora
+    class, None for a base the flora tables do not hold)."""
+    return {"key": key, "ref": f"{rec['plugin']}:{rec['edid']}", "copied": key.split(":", 1)[1] not in MASTERS,
+            **{kk: rec[kk] for kk in ("sig", "model", "obnd", "edid", "plugin")}, "db_id": db_id, "cls": cls,
+            **({"alt_textures": audit["repairs"]} if audit["repairs"] else {}),
+            "missing_non_diffuse": len(audit["missing_other"])}
 
 
 def jsonl(name):
@@ -979,9 +1037,9 @@ def key() -> str:
 
 def run(force: bool = False, workers: int = 3) -> dict:
     t0 = time.time()
-    REFS.mkdir(parents=True, exist_ok=True)
+    PLACED.mkdir(parents=True, exist_ok=True)
     k = key()
-    mpath = REFS / "manifest.json"
+    mpath = PLACED / "manifest.json"
     if not force and mpath.exists() and json.loads(mpath.read_text()).get("key") == k:
         log(f"refs current ({k})")
         return json.loads(mpath.read_text())
@@ -1010,12 +1068,15 @@ def run(force: bool = False, workers: int = 3) -> dict:
                       "within_20pct": bool(tg.get(hi) and abs(got - tg[hi]) <= 0.2 * tg[hi])}
     used = sorted({r["base"] for out in results.values() for _, refs in out for r in refs})
     db_of = {v: kk for kk, v in P.key_of.items()}
-    bases = [{"key": b, "ref": f"{P.rec[b]['plugin']}:{P.rec[b]['edid']}", "copied": b.split(":", 1)[1] not in MASTERS,
-              **{kk: P.rec[b][kk] for kk in ("sig", "model", "obnd", "edid", "plugin")}, "db_id": db_of.get(b),
-              **({"alt_textures": P.tex_audit(P.rec[b]["model"])["repairs"]} if P.tex_audit(P.rec[b]["model"])["repairs"] else {}),
-              "missing_non_diffuse": len(P.tex_audit(P.rec[b]["model"])["missing_other"])} for b in used]
-    for old in REFS.glob("cy*.jsonl"):
+    bases = [base_row(b, P.rec[b], P.tex_audit(P.rec[b]["model"]), db_of.get(b), P.class_of.get(db_of.get(b))) for b in used]
+    mpath.unlink(missing_ok=True)  # a stopped write leaves no manifest: the shards are written again
+    for old in PLACED.glob("cy*.jsonl"):
         old.unlink()
+    for out in results.values():
+        for _, refs in out:
+            for r in refs:
+                r["id"] = ident(r["base"], r["pos"][0], r["pos"][1], r["cell"])
+    fids = form_ids([r["id"] for out in results.values() for _, refs in out for r in refs])
     per_cell = {}
     total = 0
     h = hashlib.sha256()
@@ -1025,19 +1086,15 @@ def run(force: bool = False, workers: int = 3) -> dict:
             per_cell[(cx, cy)] = sum(1 for r in refs if not r["cls"].startswith("road_"))
             for r in refs:
                 r.pop("_r", None); r.pop("_h", None)
-                rec = P.rec[r["base"]]
-                (x, y, z), (rx, ry, rz) = r["pos"], r["rot"]
-                o = {"base": f"{rec['plugin']}:{rec['edid']}", "x": x, "y": y, "z": z, "rx": rx, "ry": ry, "rz": rz,
-                     "scale": r["scale"], "cell": r["cell"], "cls": r["cls"], "db": r["db"], "key": r["base"],
-                     "pos": r["pos"], "rot": r["rot"], "model": rec["model"]}
-                lines.append(json.dumps(o, separators=(",", ":")))
+                r["fid"] = f"{fids[r['id']]:06X}"
+                lines.append(shard_line(r, P.rec[r["base"]]))
         total += len(lines)
         txt = "\n".join(lines) + ("\n" if lines else "")
         h.update(txt.encode())
-        tmp = REFS / f".cy{cy:+04d}.jsonl.tmp"
+        tmp = PLACED / f".cy{cy:+04d}.jsonl.tmp"
         tmp.write_text(txt, encoding="utf-8")
-        tmp.replace(REFS / f"cy{cy:+04d}.jsonl")
-    (REFS / "bases.json").write_text(json.dumps({"schema": 1, "key": k, "build_id": W.build_id, "bases": bases}, indent=1))
+        tmp.replace(PLACED / f"cy{cy:+04d}.jsonl")
+    (PLACED / "bases.json").write_text(json.dumps({"schema": 1, "key": k, "build_id": W.build_id, "bases": bases}, indent=1))
     counts = np.array(list(per_cell.values()))
     land = np.array([v for c, v in per_cell.items() if v > 0])
     man = {"key": k, "build_id": W.build_id, "refs": total, "dressing": len(dress), "bases": len(used),

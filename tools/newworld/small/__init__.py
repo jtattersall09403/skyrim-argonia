@@ -53,7 +53,10 @@ PATCHES = {"START_PLACE": START_PLACE, "WALK": []}
 PLAY_ESM, PLAY_WORLD = "ArgoniaSmallWorld.esm", "ArgoniaSmallWorld"     # the world's name, letter for letter as long
 REAL_ESM, REAL_WORLD = "ArgoniaNewWorld.esm", "ArgoniaBlackMarsh"
 # the rebuild's stages that run on the block, and the read-back's groups that judge a block's file
-STAGES = ("tools", "land", "landcover", "cells", "place", "paint", "mist", "navmesh", "map", "esm", "readback")
+STAGES = ("tools", "land", "landcover", "cells", "place", "edits", "paint", "mist", "navmesh", "map", "esm", "readback")
+# the block's own edits of single placed things (the province's name cells the block does not hold): a file beside
+# the block, absent until a test of the edits writes rows to it (`small tool tools.newworld.place edit ... --edits <it>`)
+EDITS = "out/newworld-small/placed_edits.jsonl"
 READBACK = "plugin,land,textures,water,refs,mist,navmesh"
 # the read-back's rows that count the whole province, by the start of their requirement, each with why
 READBACK_OFF = (
@@ -303,7 +306,7 @@ def plan_holds(root: Path = ROOT) -> int:
 # ---- the stages ---------------------------------------------------------------------------------------------------
 
 def _spec(s: str) -> str:
-    return s.replace("out:newworld/", "out:newworld-small/")
+    return s.replace(f"src:{_rb().EDITS_FILE}", f"out:{EDITS[4:]}").replace("out:newworld/", "out:newworld-small/")
 
 
 def stages(src: Path) -> tuple:
@@ -314,7 +317,7 @@ def stages(src: Path) -> tuple:
     def cmd(c: tuple) -> tuple:
         if "world.sh" in c[0]:
             return (*me, "esm", c[1])
-        c = tuple(a.replace(rb.PLUGIN, PLUGIN) if isinstance(a, str) else a for a in c)
+        c = tuple(a.replace(rb.PLUGIN, PLUGIN).replace(rb.EDITS_FILE, EDITS) if isinstance(a, str) else a for a in c)
         if c[:3] == me:
             return c
         if c[0] == rb.PY and c[1] == "-m":
@@ -386,6 +389,7 @@ def run(src: Path, to: str | None = None, force: tuple = (), plan_only: bool = F
     t.fresh = not plan_only
     rows = rb.plan(t, force)
     rb.print_plan(rows)
+    rb.edit_notes(rows, ROOT / "plugin", REPO / EDITS, REPO / "newworld/places")
     if plan_only:
         return 0
     todo = [r["stage"] for r in rows if r["state"] != "current"]

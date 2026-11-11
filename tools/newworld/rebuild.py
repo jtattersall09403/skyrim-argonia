@@ -109,7 +109,9 @@ PY = "{py}"
 BUILD = "out:newworld/terrain/build.json#id,sha256"       # the terrain build: its id and its heightmap's digest
 LAND = "out:newworld/plugin/land/manifest.json#key"
 LANDCOVER = "out:newworld/landcover/key.txt"
-FLORA = "out:newworld/plugin/refs/flora/manifest.json#key,shard_sha256"
+PLACED = "out:newworld/plugin/placed/flora/manifest.json#key,shard_sha256"   # the placement as the rules made it
+FLORA = "out:newworld/plugin/refs/flora/manifest.json#key,shard_sha256"      # the same with the edits of single things applied
+EDITS_FILE = "newworld/sources/placed_edits.jsonl"                           # those edits, one row each
 CELLS = "out:newworld/plugin/cells.json"
 # The compiled tools are read by their sources: the same sources compile to different bytes from one build to the next.
 DLL = "out:tools/ArgoniaPlugin/ArgoniaPlugin.dll"
@@ -139,7 +141,7 @@ DB_SOURCES = (*MAPS, "src:newworld/sources/road_corrections.json", "src:newworld
               "src:tools/newworld/terrain_beyond.py", "src:tools/argonia_world/db.py")
 # what the map extraction (the phase before this one) left under out/newworld: read here, built by its own tools
 # the stages whose checks are cheap and early: every long stage waits for them
-EARLY_CHECKS = ("needs", "water", "relief", "landings", "place")
+EARLY_CHECKS = ("needs", "water", "relief", "landings", "place", "edits")
 EXTERNAL = ("newworld/raster/water.png", "newworld/raster/foreign.png", "newworld/roads.json", "newworld/borders.json",
             "newworld/symbols.json", "newworld/research/flora_catalogue.json", "newworld/terrain_ref/tamriel_h.npy",
             "newworld/terrain_ref/tamriel_w.npy")
@@ -266,9 +268,21 @@ STAGES: tuple[Stage, ...] = (
                  "src:tools/newworld/place/place.py",
                  "src:tools/newworld/place/texsets.py"),
           check_reads=("src:tools/newworld/place/checks.py",),
-          writes=("out:newworld/plugin/refs/flora/manifest.json", "out:newworld/plugin/refs/flora/bases.json"),
-          agree=(("out:newworld/plugin/refs/flora/manifest.json#build_id", "out:newworld/terrain/build.json#id", "eq"),),
+          writes=("out:newworld/plugin/placed/flora/manifest.json", "out:newworld/plugin/placed/flora/bases.json"),
+          agree=(("out:newworld/plugin/placed/flora/manifest.json#build_id", "out:newworld/terrain/build.json#id", "eq"),),
           gb=3.4, minutes=3.5),
+    Stage("edits", "the edits of single placed things applied over the placement (nothing is placed again), the edited things judged",
+          cmds=((PY, "-m", "tools.newworld.place", "edits", "apply", "--edits", EDITS_FILE),),
+          checks=((PY, "-m", "tools.newworld.place", "edits", "check", "--edits", EDITS_FILE),),
+          reads=(PLACED, "out:newworld/plugin/placed/flora/bases.json", f"src:{EDITS_FILE}", LAID, "db:flora_base", "db:flora_family",
+                 "src:newworld/sources/key.json", "src:tools/newworld/place/edits.py", "src:tools/newworld/place/__main__.py",
+                 "src:tools/newworld/place/__init__.py"),
+          check_reads=(LAND, LANDCOVER, "out:newworld/landcover/legend.json", BUILD, "db:water_kind", "db:road", "db:road_class",
+                       "db:road_vertex", "src:tools/navmesh/placed.py", "src:tools/navmesh/solid.py", "src:tools/navmesh/params.py"),
+          writes=("out:newworld/plugin/refs/flora/manifest.json", "out:newworld/plugin/refs/flora/bases.json",
+                  "out:newworld/plugin/refs/flora/counts.json", "out:newworld/plugin/refs/flora/edits.json"),
+          agree=(("out:newworld/plugin/refs/flora/manifest.json#build_id", "out:newworld/terrain/build.json#id", "eq"),),
+          gb=0.8, minutes=0.2),
     Stage("paint", "the ground paint, and its check on the engine's view: layers, seams, edges, roads, swathes",
           cmds=((PY, "-m", "tools.newworld.keyed", "paint", "--out", PLUGIN),),
           proof=(PY, "-m", "tools.newworld.proofs", "paint", "--plugin", PLUGIN),
@@ -282,7 +296,7 @@ STAGES: tuple[Stage, ...] = (
           after=EARLY_CHECKS, gb=5.6, minutes=21.0),
     Stage("mist", "the low mist over marsh, swamp and pond",
           cmds=((PY, "-m", "tools.newworld.world.mist", "--out", PLUGIN),),
-          reads=(LAND, LANDCOVER, CELLS, FLORA, BUILD, "db:region_atmosphere", "db:atmosphere_class",
+          reads=(LAND, LANDCOVER, CELLS, "out:newworld/plugin/refs/flora/counts.json", BUILD, "db:region_atmosphere", "db:atmosphere_class",
                  "src:newworld/sources/atmosphere/classes.json", "src:tools/newworld/world/mist.py",
                  "src:tools/newworld/atmosphere.py", DBPY),
           writes=("out:newworld/plugin/refs/mist/manifest.json",),
@@ -362,12 +376,29 @@ STAGES: tuple[Stage, ...] = (
 
 # What a world rebuild leaves stale beyond this machine's out/newworld: (what, the stages that feed it, where its recipe is)
 DOWNSTREAM = (
-    ("the LOD on the play machine (terrain, trees, objects, the map)", ("land", "paint", "place", "map", "esm"),
+    ("the LOD on the play machine (terrain, trees, objects, the map)", ("land", "paint", "place", "edits", "map", "esm"),
      "the skill world-lod"),
     ("the play machine's deploy of ArgoniaNewWorld.esm", ("esm",), "the skill world-build, section Deploy"),
-    ("each built place's ground bundle, stages and build ({places})", ("terrain", "land", "paint", "place", "navmesh", "esm"),
+    ("each built place's ground bundle, stages and build ({places})", ("terrain", "land", "paint", "place", "edits", "navmesh", "esm"),
      "the skill place-build, section 7"),
 )
+
+
+def edit_notes(rows: list[dict], plugin: Path, edits: Path, places: Path, file=None) -> None:
+    """With the edits stage to run: the edits of single placed things waiting in the source file, and what each
+    stage and each machine redoes for them (tools/newworld/place/edits.py)."""
+    state = {r["stage"]: r["state"] for r in rows}
+    if state.get("edits", "current") == "current":
+        return
+    if state.get("place") not in ("current", "proved"):
+        print("edits of placed things: the placement itself is made again first; every edit is then applied over the new one "
+              "(kept where its thing still stands, re-anchored where the same thing stands within a metre, reported otherwise)", file=file)
+        return
+    try:
+        from tools.newworld.place import edits as E
+        E.print_pending(E.pending(edits, plugin / "placed/flora", plugin / "refs/flora", places), file)
+    except (ImportError, OSError, ValueError, KeyError) as e:
+        print(f"edits of placed things: not read ({type(e).__name__}: {e})", file=file)
 
 
 # ---- the tree a rebuild works in --------------------------------------------------------------------------------
@@ -1078,6 +1109,7 @@ def run(tree: Tree, to: str | None = None, force: tuple = (), budget_gb: float |
     tree.fresh = True        # a run decides by content, never by the digest cache
     rows = plan(tree, force)
     print_plan(rows)
+    edit_notes(rows, tree.out / "newworld/plugin", tree.repo / EDITS_FILE, tree.repo / "newworld/places")
     names = order(tree.stages)
     todo = [r["stage"] for r in rows if r["state"] != "current"]
     if to:
@@ -1130,7 +1162,9 @@ def main(argv=None) -> int:
     a = ap.parse_args(argv)
     tree = Tree()
     if a.cmd == "plan":
-        print_plan(plan(tree))
+        rows = plan(tree)
+        print_plan(rows)
+        edit_notes(rows, tree.out / "newworld/plugin", tree.repo / EDITS_FILE, tree.repo / "newworld/places")
         return 0
     if a.cmd == "preflight":
         return 0 if print_preflight(preflight(tree, plan(tree))) else 1

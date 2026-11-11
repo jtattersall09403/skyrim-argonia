@@ -540,12 +540,11 @@ def place_rows(rep: Report, natural: list[dict], out: Path) -> None:
         rows.append({"base": b["ref"], "key": b["key"], "db": db, "cls": cls, "cell": [int(r["cx"]), int(r["cy"])],
                      "pos": pos, "rot": [float(r["rx"]), float(r["ry"]), float(r["rz"])], "scale": float(r["scale"]), "model": b["model"]})
     rep.row("refs", "every placed ref maps to a catalogued base", unmapped, unmapped == 0)
+    rows = edit_rows(rep, natural, rows)
     work = out / "refs"
     work.mkdir(exist_ok=True)
     shutil.copy(src, work / "bases.json")
-    P.REFS = work
-    checks.load = lambda: rows
-    checks.run()
+    checks.run(work, rows)
     c = jload(work / "check.json")
     sw = c["trees_in_standing_water"]
     op = c["open_sides_facing_uphill"]
@@ -567,6 +566,42 @@ def place_rows(rep: Report, natural: list[dict], out: Path) -> None:
          min(v["distinct_bases_per_region"].values()) >= 10),
     ]:
         rep.row("refs", req, val, ok)
+
+
+def edit_rows(rep: Report, natural: list[dict], rows: list[dict]) -> list[dict]:
+    """The edits of single placed things (tools/newworld/place/edits.py) read back from the ESM: every reference of
+    the shards stands in the file under its own form id, a removed thing is gone, an edited thing stands where its
+    edit put it. Returns `rows` without the things an owner's edit made what they are: the placement's rules are
+    the rules of what the rules placed, and a rule the owner's edit breaks is the owner's choice."""
+    from tools.newworld.place import place as P
+    by_fid = {r["fid"]: r for r in natural if r.get("fid")}
+    if not by_fid:
+        rep.row("refs", "every placed thing stands under its own form id", "the dump carries no form ids", False)
+        return rows
+    n = miss = moved = 0
+    for f in sorted(P.REFS.glob("cy*.jsonl")):
+        for ln in f.read_text(encoding="utf-8").splitlines():
+            if not ln:
+                continue
+            o = json.loads(ln)
+            n += 1
+            r = by_fid.get(o["fid"])
+            miss += r is None
+            moved += r is not None and (abs(float(r["x"]) - o["x"]) > 0.11 or abs(float(r["y"]) - o["y"]) > 0.11)
+    rep.row("refs", "every placed thing of the shards stands in the ESM under its own form id, where the shards put it",
+            f"{n - miss - moved}/{n}", n > 0 and not miss and not moved, f"{miss} absent, {moved} elsewhere" if miss or moved else "")
+    ed = P.REFS / "edits.json"
+    things = jload(ed)["things"] if ed.exists() else []
+    gone = [t for t in things if t["now"] is None]
+    still = [t["fid"] for t in gone if t["fid"] in by_fid]
+    put = [t for t in things if t["now"] is not None]
+    off = [t["fid"] for t in put if t["fid"] not in by_fid or abs(float(by_fid[t["fid"]]["x"]) - t["now"]["pos"][0]) > 0.11
+           or abs(float(by_fid[t["fid"]]["y"]) - t["now"]["pos"][1]) > 0.11 or abs(float(by_fid[t["fid"]]["z"]) - t["now"]["pos"][2]) > 0.11]
+    rep.row("refs", "every edit of a placed thing is in the ESM (removed things gone; moved, swapped and added things where the edit put them)",
+            f"{len(gone) - len(still)}/{len(gone)} removed, {len(put) - len(off)}/{len(put)} placed", not still and not off,
+            f"e.g. {(still + off)[:4]}" if still or off else "")
+    owner = {(round(t["now"]["pos"][0], 1), round(t["now"]["pos"][1], 1)) for t in put if t["owner"]}
+    return [r for r in rows if (round(r["pos"][0], 1), round(r["pos"][1], 1)) not in owner]
 
 
 def finish(rep: Report, out: Path, t0: float, name: str = "report") -> int:

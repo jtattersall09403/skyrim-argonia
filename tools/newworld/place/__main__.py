@@ -5,6 +5,10 @@ from tools.newworld.place import place
 
 
 def main(argv=None) -> int:
+    argv = list(sys.argv[1:] if argv is None else argv)
+    if argv[:1] and argv[0] in ("refs", "edit", "edits"):
+        from tools.newworld.place import edits
+        return edits.main(argv)
     ap = argparse.ArgumentParser(prog="python -m tools.newworld.place")
     ap.add_argument("cmd", choices=("run", "check", "render", "cell", "current"))
     ap.add_argument("--force", action="store_true")
