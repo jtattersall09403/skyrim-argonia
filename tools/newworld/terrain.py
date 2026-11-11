@@ -276,12 +276,15 @@ def build(upload: bool = True) -> dict:
     tw.flow(body_r, bodies, {k.id: k.flows for k in w.rows("water_kind")})
     ov_file = f.ROOT / "sources" / "water_overrides.json"
     overrides = json.loads(ov_file.read_text()) if ov_file.exists() else {}
+    for b in bodies:                      # the map's own reading, kept beside the owner's: water_kinds classifies from it
+        b["map_kind"], b["map_why"] = b["water_kind_id"], b["why"]
     ov_problems = tw.apply_overrides(bodies, overrides, {k.id for k in w.rows("water_kind")})
     log("water bodies", len(bodies))
     Image.fromarray(body_r.astype(np.uint16)).save(OUT / "water_bodies.png")
     (OUT if TRIAL else f.OUT).joinpath("water_bodies.json").write_text(json.dumps(
         [{k: b.get(k) for k in ("id", "water_kind_id", "area_m2", "label_px", "label_py", "flows", "flow_note",
-                                "why", "raster_index", "region_id", "flow_deg", "name", "overridden")} for b in bodies], indent=1, default=_j))
+                                "why", "raster_index", "region_id", "flow_deg", "name", "overridden", "map_kind", "map_why")}
+         for b in bodies], indent=1, default=_j))
 
     # the smooth coast: the map's shores as smoothed polylines, filled and turned into a signed distance on the
     # samples (terrain_coast.sample_contour)

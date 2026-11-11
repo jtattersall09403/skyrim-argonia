@@ -2,7 +2,8 @@
 place and its region's ecology, never by its level (all water is at 0), then the owner's edits applied last.
 
 Rerunnable on whatever `out/newworld/water_bodies.json` + `out/newworld/terrain/water_bodies.png` the terrain build
-last wrote. Writes `out/newworld/water_classified.json` (one row per body) and `out/newworld/water_classified.png`
+last wrote; of each terrain body it reads the map's own kind (`map_kind`), never the owner's kind the terrain laid
+over it for the bed. Writes `out/newworld/water_classified.json` (one row per body) and `out/newworld/water_classified.png`
 (16-bit body index, map px; a painted area is its own body), which build_db reads into the `water_body` table.
 
 The recipe:
@@ -36,13 +37,20 @@ The recipe:
    type. The atlas's arrows walk each channel's centreline downstream, so they curve with it. Speed: `still`; `slow` for estuaries, rivers 150 m wide or more, and any running water in a region of
    wetness 0.8 or more; `fast` for streams in rough country (region roughness 4 m or more, or summit 50 m or more);
    else `moderate`.
-5. The owner's edits, last: `newworld/sources/water_paint.json` (strokes that paint a kind and flow over an area,
-   splitting the bodies they cross; later strokes win), then `newworld/sources/water_overrides.json` (water_kind_id,
-   flows, flow_toward_deg, speed, name; found by `point`, a map pixel inside the body, so an edit survives a rebuild
-   that changes ids; the body id is the fallback). Both are written by tools/newworld/water_overrides_pull.py
+5. The owner's edits: `newworld/sources/water_paint.json` (strokes that paint a kind and flow over an area,
+   splitting the bodies they cross; later strokes win) and `newworld/sources/water_overrides.json` (water_kind_id,
+   flows, flow_toward_deg, speed, name; found by `point`, a map pixel inside the body; the body id is the
+   fallback). An edit that sets a kind holds the water of the body it was made on (tools/newworld/water_held.py):
+   that water is cut out first, as its own body with the owner's kind, before anything else is decided, so the
+   edit keeps its water however the rest is cut. Both files are written by tools/newworld/water_overrides_pull.py
    from the atlas's water editor.
+6. The checks (`checks`, out/newworld/water_check.json; the run exits 1 when one fails): each kind's bodies and
+   area inside the picture against the accepted classification (`newworld/sources/water_accepted.json`), and every
+   owner edit on a body of the area recorded with it, with the owner's kind.
 
     python3 -m tools.newworld.water_kinds            # classify; prints counts
+    python3 -m tools.newworld.water_kinds --accept   # and take this classification as the accepted one, after a
+                                                     # look, when the kinds were meant to change
     python3 -m tools.newworld.water_kinds --png      # also a classification picture, out/newworld/water_kinds.png
     python3 -m tools.newworld.water_kinds --chunks   # and the 4 x 4 check: source map beside kinds and flow arrows,
                                                      # out/newworld/water_chunks/r<row>c<col>.png
@@ -62,6 +70,7 @@ from scipy.sparse import coo_matrix
 from scipy.sparse.csgraph import dijkstra
 
 from tools.newworld import frame as f
+from tools.newworld import water_held as wh
 
 DB = f.ROOT / "story" / "data" / "db"
 SRC = f.ROOT / "sources"
@@ -136,6 +145,40 @@ def heights_px(shape):
     row = np.clip(np.round((b["origin_world_y"] - wy) / b["sample_units"]).astype(int), 0, hm.shape[0] - 1)
     small = np.asarray(hm[row, col], np.float32) / f.UNITS_PER_METRE
     return np.kron(small, np.ones((4, 4), np.float32))[:shape[0], :shape[1]]
+
+
+def map_kinds(bj: list, raster: np.ndarray) -> dict:
+    """raster index -> (kind, why) as the map draws each of the terrain's bodies, before any owner edit. The terrain
+    build lays the owner's edits over its own body list (their kinds set the beds) and keeps the map's reading
+    beside them (`map_kind`, `map_why`). The shape rules here read the map's reading only: an owner's kind fed back
+    in as if drawn would reshape the bodies under the owner's own points (a bit of channel the owner calls a lake
+    reads as a still patch and is merged into its river, and the lake edit then lands on the whole river). A body
+    list written without the map's reading is read again from the body raster by the terrain's own labelling: each
+    body takes the kind that labelling gives its label point (nearly every body must label again as itself)."""
+    if all(s.get("map_kind") for s in bj):
+        return {s["raster_index"]: (s["map_kind"], s["map_why"]) for s in bj}
+    if not any(s.get("overridden") for s in bj):
+        return {s["raster_index"]: (s["water_kind_id"], s["why"]) for s in bj}
+    from tools.newworld import terrain_relief as tr
+    from tools.newworld import terrain_water as tw
+    from tools.newworld.terrain import region_px
+    regs = jsonl("region")
+    names = [r["id"] for r in regs]
+    word = {r["id"]: (tr.landform_word(r.get("landform")) or tr.landform_word(r.get("name"))
+                      or tr.NAME_GUESS.get(r["id"])) for r in regs}
+    cell_region = json.loads((f.OUT / "cell_region.json").read_text())
+    again, bodies = tw.label_bodies(raster > 0, region_px(cell_region, names, raster.shape), names,
+                                    {r["id"]: r["kind"] for r in regs}, word, M_PX)
+    by = {b["raster_index"]: b for b in bodies}
+    out, same = {}, 0
+    for s in bj:
+        b = by[int(again[s["label_py"], s["label_px"]])]
+        same += b["id"] == s["id"] and b["area_m2"] == s["area_m2"]
+        out[s["raster_index"]] = (b["water_kind_id"], b["why"])
+    if same < 0.99 * len(bj):
+        raise ValueError(f"only {same} of {len(bj)} water bodies label again as the terrain build labelled them: "
+                         "rebuild the terrain so its body list carries the map's reading")
+    return out
 
 
 def body_id(mask: np.ndarray, dist: np.ndarray, sl) -> tuple[str, int, int]:
@@ -622,7 +665,7 @@ def braid_smooth(raster, rows, vec, sigma: float = 40.0):
             v[m] = (sm * 32)[m]
 
 
-def classify(png: bool = False, chunks: bool = False) -> dict:
+def classify(png: bool = False, chunks: bool = False, accept: bool = False) -> dict:
     bj = json.loads((f.OUT / "water_bodies.json").read_text())
     raster = np.asarray(Image.open(f.OUT / "terrain" / "water_bodies.png")).astype(np.int32)
     water = raster > 0
@@ -637,6 +680,7 @@ def classify(png: bool = False, chunks: bool = False) -> dict:
         return counter[0]
 
     objs = ndi.find_objects(raster)
+    drawn = map_kinds(bj, raster)
     bodies = []
     for s in bj:
         i = s["raster_index"]
@@ -646,8 +690,9 @@ def classify(png: bool = False, chunks: bool = False) -> dict:
         m = raster[sl] == i
         reg_codes = regions[sl][m]
         rc = np.bincount(reg_codes + 1).argmax() - 1
-        bodies.append({"index": i, "id": s["id"], "sl": sl, "src_kind": s["water_kind_id"], "kind": s["water_kind_id"],
-                       "src_why": s["why"], "why": s["why"], "area_m2": s["area_m2"], "px": s["label_px"],
+        kind, why = drawn[i]
+        bodies.append({"index": i, "id": s["id"], "sl": sl, "src_kind": kind, "kind": kind,
+                       "src_why": why, "why": why, "area_m2": s["area_m2"], "px": s["label_px"],
                        "py": s["label_py"], "region": names[rc] if rc >= 0 else None})
     bodies = split_sea(raster, bodies, land, nxt)
 
@@ -670,6 +715,20 @@ def classify(png: bool = False, chunks: bool = False) -> dict:
             i = nxt()
             raster[lab == j] = i
             painted[i] = st
+    # step 5a, held: the water each of the owner's kind edits was made on is cut out whole (water_held), so the
+    # edit holds over that water however the rest is cut round it; a painted stroke over it still wins
+    ovp = SRC / "water_overrides.json"
+    ov_raw = json.loads(ovp.read_text()) if ovp.exists() else {}
+    held, held_kind = wh.load(raster.shape), wh.kinds(ov_raw)
+    taken = np.isin(raster, list(painted))
+    for k, sl in enumerate(ndi.find_objects(held), 1):
+        if sl is None or k not in held_kind:
+            continue
+        m = (held[sl] == k) & water[sl] & ~taken[sl]
+        if m.any():
+            i = nxt()
+            raster[sl][m] = i
+            painted[i] = {"water_kind_id": held_kind[k], "held": k}
     # the body list from the raster
     byindex = {b["index"]: b for b in bodies}
     raster = reshape(raster, byindex, painted, water, regions, names, rchar)
@@ -698,7 +757,9 @@ def classify(png: bool = False, chunks: bool = False) -> dict:
                    "why": src["why"] if src else "", "width_m": round(4 * float(dist[sl][m].mean()) * M_PX, 1),
                    "open_m": round(2 * float(dist[sl][m].max()) * M_PX, 1),
                    "set_by": "derived", "decided": bool(src and src.get("decided"))}
-            if i in painted:
+            if i in painted and painted[i].get("held"):
+                row.update(kind=painted[i]["water_kind_id"], why="owner set the kind", set_by="owner")
+            elif i in painted:
                 st = painted[i]
                 row.update(kind=st["water_kind_id"], why=f"owner painted {st['water_kind_id']}", set_by="owner",
                            paint=st)
@@ -737,8 +798,6 @@ def classify(png: bool = False, chunks: bool = False) -> dict:
     pools_and_mouths(raster, rows, ndi.distance_transform_edt(raster > 0))
 
     # step 3c: the owner's kinds first, then fringes, Helstrom's rivers and the sea test (see their docstrings)
-    ovp = SRC / "water_overrides.json"
-    ov_raw = json.loads(ovp.read_text()) if ovp.exists() else {}
     ov, _ = resolve_overrides(ov_raw, rows, raster)
     for r in rows:
         o = ov.get(r["id"])
@@ -837,10 +896,59 @@ def classify(png: bool = False, chunks: bool = False) -> dict:
         picture(raster, rows)
     if chunks:
         chunk_pictures(raster, rows, vec, gmap)
+    stats["check"] = checks(raster, rows, ov_raw, accept)
+    (f.OUT / "water_check.json").write_text(json.dumps(stats["check"], indent=1))
     return {"bodies": len(rows), "kinds": Counter(r["water_kind_id"] for r in rows),
             "flowing": sum(r["flows"] for r in rows), "speeds": Counter(r["speed"] for r in rows),
             "owner": sum(r["set_by"] == "owner" for r in rows),
             "overrides_without_a_body": unmatched, **stats}
+
+
+ACCEPTED = SRC / "water_accepted.json"
+KIND_TOL, KIND_FLOOR_M2, KIND_FLOOR_N = 0.02, 20_000, 3    # a kind may move 2% (or 2 ha, or 3 bodies) from the accepted
+WATERLINE_TOL = 0.001                                      # the water pixels inside the picture: the same waterline
+
+
+def measure(raster: np.ndarray, rows: list) -> dict:
+    """What the accepted record keeps of a classification: inside the picture (the map less its frame band, where
+    the water is the map's own and not the carried-on edge) the water pixels and, per kind, the bodies whose label
+    point lies there and the area."""
+    inner = np.zeros(raster.shape, bool)
+    inner[FRAME_BAND:-FRAME_BAND, FRAME_BAND:-FRAME_BAND] = True
+    names = sorted(COLOURS)
+    code = np.array([0] + [names.index(r["water_kind_id"]) + 1 for r in rows])
+    px = np.bincount(code[raster][inner], minlength=len(names) + 1)
+    n = Counter(r["water_kind_id"] for r in rows if inner[r["label_py"], r["label_px"]])
+    return {"water_px": int(px[1:].sum()),
+            "kinds": {k: {"bodies": n.get(k, 0), "area_m2": round(float(px[j + 1]) * M_PX * M_PX)}
+                      for j, k in enumerate(names)}}
+
+
+def checks(raster: np.ndarray, rows: list, ov_raw: dict, accept: bool = False) -> dict:
+    """The two checks a rebuild must pass (the result is also out/newworld/water_check.json, which verify reads).
+    - kinds: each kind's bodies and area inside the picture against the accepted classification
+      (newworld/sources/water_accepted.json), failing past KIND_TOL unless the waterline itself moved (then the
+      comparison means nothing and the new classification is looked at and accepted afresh, `--accept`).
+    - edits: every owner edit on the body its point finds, that body's area against the area recorded when the edit
+      was made and its kind against the edit's (water_held.check)."""
+    now = measure(raster, rows)
+    tb = f.OUT / "terrain" / "build.json"
+    now["terrain_build"] = json.loads(tb.read_text())["id"] if tb.exists() else None
+    if accept or not ACCEPTED.exists():
+        ACCEPTED.write_text(json.dumps(now, indent=1) + "\n")
+    was = json.loads(ACCEPTED.read_text())
+    moved = abs(now["water_px"] - was["water_px"]) > WATERLINE_TOL * was["water_px"]
+    off = []
+    for k, a in was["kinds"].items():
+        b = now["kinds"].get(k, {"bodies": 0, "area_m2": 0})
+        if abs(b["area_m2"] - a["area_m2"]) > max(KIND_TOL * a["area_m2"], KIND_FLOOR_M2) or \
+                abs(b["bodies"] - a["bodies"]) > max(KIND_TOL * a["bodies"], KIND_FLOOR_N):
+            off.append({"kind": k, "bodies": b["bodies"], "accepted_bodies": a["bodies"],
+                        "area_m2": b["area_m2"], "accepted_area_m2": a["area_m2"]})
+    edits = wh.check(ov_raw, raster, rows)
+    return {"accepted_build": was.get("terrain_build"), "terrain_build": now["terrain_build"],
+            "waterline_moved": bool(moved), "kinds_off": off, "edits": edits,
+            "ok": bool((moved or not off) and not edits["off"] and not edits["lost"] and not edits["no_record"])}
 
 
 def resolve_overrides(ov: dict, rows: list, raster: np.ndarray) -> tuple[dict, list]:
@@ -1097,4 +1205,8 @@ def picture(raster: np.ndarray, rows: list) -> None:
 
 
 if __name__ == "__main__":
-    print(json.dumps(classify(png="--png" in sys.argv, chunks="--chunks" in sys.argv), indent=1, default=dict))
+    result = classify(png="--png" in sys.argv, chunks="--chunks" in sys.argv, accept="--accept" in sys.argv)
+    print(json.dumps(result, indent=1, default=dict))
+    if not result["check"]["ok"]:
+        sys.exit("water_kinds: the classification moved from the accepted one, or an owner edit is off its water "
+                 "(out/newworld/water_check.json); look, then `--accept` if it is right")

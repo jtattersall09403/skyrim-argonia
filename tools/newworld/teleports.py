@@ -107,7 +107,8 @@ def ground(plugin: Path, g: su.Grid, places: Path | None = PLACES) -> np.ndarray
     """The ground as the game will have it: the world's heightmap with each built place's land patches
     (newworld/places/<id>/land.jsonl rows {cell, verts: [[row, col, dz]...]}, row and col from the cell's south-west
     corner as tools/places/seat.py applies them); a vertex shared by two cells is patched once."""
-    h = np.load(plugin / "land" / "limited.npy", mmap_mode="r")
+    # the limited heights are VHGT steps (world/land.py): x 8 for the game units every measure here is in
+    h = np.asarray(np.load(plugin / "land" / "limited.npy", mmap_mode="r"), np.float32) * su.VHGT_STEP_UNITS
     pat: dict[tuple[int, int], float] = {}
     for f in sorted(glob.glob(str(places / "*" / "land.jsonl"))) if places else []:
         for ln in Path(f).read_text().splitlines():
@@ -118,9 +119,6 @@ def ground(plugin: Path, g: su.Grid, places: Path | None = PLACES) -> np.ndarray
             for vr, vc, dz in row["verts"]:
                 x, y = (cx * 32 + vc) * su.VERTEX_SPACING_UNITS, (cy * 32 + vr) * su.VERTEX_SPACING_UNITS
                 pat[(round((g.origin_y - y) / su.VERTEX_SPACING_UNITS), round((x - g.origin_x) / su.VERTEX_SPACING_UNITS))] = float(dz)
-    if not pat:
-        return h
-    h = np.array(h, np.float32)
     for (r, c), dz in pat.items():
         if 0 <= r < g.height and 0 <= c < g.width:
             h[r, c] += dz

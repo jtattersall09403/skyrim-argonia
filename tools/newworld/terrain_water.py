@@ -4,8 +4,10 @@ How the map's water (`out/newworld/raster/water.png`, one pixel 2.93 m) is cut i
 1. Width. Each water pixel's local width is read by erosion and regrowth on the distance to land: a pixel is
    `open` when it lies in a disc of radius 25 px (73 m) that is all water (water at least ~150 m across), `channel`
    when in a disc of radius 4 px (width at least ~23 m), else `narrow`.
-2. Open water. Its connected parts are cut again by region. Open water in a sea region, or touching the map edge,
-   or joined to such water, is sea: `ocean` in a region named Ocean or Sea or in the Benthic Yobesh, `bay` in a
+2. Open water. Its connected parts are cut again by region. Open water in a sea region, or joined to such water,
+   is sea; so is open water touching the map edge when the water it belongs to (channels included) reaches a sea
+   region. Open water that merely reaches the map edge is not: the land past the edge is a neighbour's, and a lake
+   the edge cuts is still a lake. Sea is `ocean` in a region named Ocean or Sea or in the Benthic Yobesh, `bay` in a
    region named Bay and wherever sea water lies inside a land region. Open water joined to no sea is `lake`
    (under 0.05 km2 it is a `pond`).
 3. Channels and narrow water. Connected channel pixels are a `river`; where a channel meets sea water, its last
@@ -84,6 +86,8 @@ def label_bodies(water: np.ndarray, region_code: np.ndarray, region_names: list,
     sea_open = np.zeros_like(water)
     if n:
         idx = np.arange(1, n + 1)
+        joined, _ = ndi.label(water, EIGHT)              # the edge counts only for water that reaches a sea region
+        edge = edge & np.isin(joined, np.unique(joined[sea_px & water]))
         touches_sea = ndi.maximum(sea_px | edge, lab, idx).astype(bool)
         area = ndi.sum(np.ones_like(water), lab, idx)
         for k, sl in zip(idx, ndi.find_objects(lab)):

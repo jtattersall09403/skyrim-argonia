@@ -1,0 +1,46 @@
+{
+ "water_px": 3840979,
+ "kinds": {
+  "bay": {
+   "bodies": 1,
+   "area_m2": 731709
+  },
+  "blackwater-swamp": {
+   "bodies": 561,
+   "area_m2": 1756900
+  },
+  "estuary": {
+   "bodies": 12,
+   "area_m2": 155155
+  },
+  "green-marsh": {
+   "bodies": 453,
+   "area_m2": 1389659
+  },
+  "lake": {
+   "bodies": 27,
+   "area_m2": 1137127
+  },
+  "ocean": {
+   "bodies": 2,
+   "area_m2": 13092409
+  },
+  "pond": {
+   "bodies": 253,
+   "area_m2": 937590
+  },
+  "river": {
+   "bodies": 22,
+   "area_m2": 2062913
+  },
+  "shallow-coast": {
+   "bodies": 99,
+   "area_m2": 10507433
+  },
+  "stream": {
+   "bodies": 688,
+   "area_m2": 1107134
+  }
+ },
+ "terrain_build": "20261111T025937Z"
+}

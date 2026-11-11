@@ -10,8 +10,12 @@ How an agent pulls them (the database is reached only through the ArtifactData t
    next_cursor comes back); the same for collection = water_paint. Each document lands as
    <dir>/water_edits/<id>.json and <dir>/water_paint/<id>.json.
 2. python3 -m tools.newworld.water_overrides_pull <dir>
-   writes newworld/sources/water_overrides.json ({body id: {water_kind_id, flows, flow_toward_deg, speed, name, point, at}})
-   and newworld/sources/water_paint.json ([{water_kind_id, flows, speed, radius_px, points}], oldest first).
+   writes newworld/sources/water_overrides.json ({body id: {water_kind_id, flows, flow_toward_deg, speed, name, point, at,
+   area_m2, held}}) and newworld/sources/water_paint.json ([{water_kind_id, flows, speed, radius_px, points}], oldest
+   first). Each edit taken in is stamped from the classification the atlas shows (out/newworld/water_classified.*):
+   `area_m2`, the area of the body it was made on, and for a kind edit `held`, that body's water kept in
+   newworld/sources/water_owner_bodies.png (tools/newworld/water_held.py), so the edit holds over the same water on
+   every later build. Run it on the machine and the build the atlas was published from.
 3. python3 -m tools.newworld.water_kinds --png, then build_db, puts them into the classification and the db.
 """
 from __future__ import annotations
@@ -21,6 +25,7 @@ import sys
 from pathlib import Path
 
 from tools.newworld import frame as f
+from tools.newworld import water_held
 
 SRC = f.ROOT / "sources"
 KINDS = {"ocean", "shallow-coast", "bay", "estuary", "river", "stream", "lake", "pond", "green-marsh",
@@ -73,6 +78,19 @@ def convert(edits: dict, paint: dict) -> tuple[dict, list, list]:
     return ov, strokes, problems
 
 
+def merge(had: dict, pulled: dict) -> dict:
+    """The pulled edits laid over the file's. An edit made again at another point is an edit of other water: the
+    water recorded for it (`area_m2`, `held`) is dropped, to be recorded afresh."""
+    out = dict(had)
+    for k, v in pulled.items():
+        old = dict(had.get(k, {}))
+        if v.get("point") and old.get("point") and v["point"] != old["point"]:
+            old.pop("area_m2", None)
+            old.pop("held", None)
+        out[k] = {**old, **v}
+    return out
+
+
 def main(dirpath: str) -> None:
     d = Path(dirpath)
     ov, strokes, problems = convert(load(d, "water_edits"), load(d, "water_paint"))
@@ -81,11 +99,19 @@ def main(dirpath: str) -> None:
     # (an edit is taken back by deleting its entry from the file)
     op, pp = SRC / "water_overrides.json", SRC / "water_paint.json"
     had = json.loads(op.read_text()) if op.exists() else {}
-    ov = {**had, **{k: {**had.get(k, {}), **v} for k, v in ov.items()}}
+    ov = merge(had, ov)
     old = json.loads(pp.read_text()) if pp.exists() else []
     seen = {st.get("id") for st in strokes}
     strokes = [st for st in old if st.get("id") not in seen] + strokes
-    (SRC / "water_overrides.json").write_text(json.dumps(ov, indent=1, sort_keys=True) + "\n")
+    if (f.OUT / "water_classified.png").exists():
+        raster, rows = water_held.read(f.OUT)
+        held = water_held.load(raster.shape)
+        problems += [f"{k}: its point finds no water body" for k in water_held.record(ov, held, raster, rows)]
+        water_held.save(ov, held)
+    else:
+        problems.append("no out/newworld/water_classified.png here: the new edits' water is not recorded; run "
+                        "`python3 -m tools.newworld.water_held record` where the atlas's classification is")
+        (SRC / "water_overrides.json").write_text(json.dumps(ov, indent=1, sort_keys=True) + "\n")
     (SRC / "water_paint.json").write_text(json.dumps(strokes, indent=1) + "\n")
     print(f"{len(ov)} body edits, {len(strokes)} painted strokes", *problems, sep="\n")
 

@@ -16,7 +16,7 @@ def world(tmp_path, h, cx0=-3, cy_top=-150, refs=()):
     g = {"build_id": "t", "width": h.shape[1], "height": h.shape[0], "origin_x": cx0 * 4096.0,
          "origin_y": (cy_top + 1) * 4096.0, "water": 0.0}
     (p / "land" / "manifest.json").write_text(json.dumps({"grid": g, "marker": {"cell": [cx0, cy_top]}}))
-    np.save(p / "land" / "limited.npy", h.astype(np.float32))
+    np.save(p / "land" / "limited.npy", np.rint(h / su.VHGT_STEP_UNITS).astype(np.int32))  # VHGT steps, as land.py writes
     (p / "cells.json").write_text(json.dumps({"cells": {}}))
     (p / "refs" / "flora" / "cy-150.jsonl").write_text("".join(json.dumps({"x": x, "y": y}) + "\n" for x, y in refs))
     return p, su.Grid("t", h.shape[1], h.shape[0], g["origin_x"], g["origin_y"], 0.0)
@@ -89,3 +89,12 @@ def test_a_built_place_keeps_landings_out_of_its_buildings_and_on_its_patched_gr
     (p / "map" / "teleports.json").write_text(json.dumps(doc))
     assert any("keep-out" in b for b in tp.check(p, built))
     assert not any("keep-out" in b for b in tp.check(p, None))
+
+
+def test_the_ground_is_in_game_units_from_the_limited_steps(tmp_path):
+    h = np.full((33, 33), 160.0)  # Helstrom's marsh: 20 VHGT steps
+    p, g = world(tmp_path, h, cx0=-8, cy_top=-148)
+    assert np.load(p / "land" / "limited.npy").max() == 20
+    assert float(tp.ground(p, g, None).max()) == 160.0
+    lnd = tp.landing(g, tp.ground(p, g, None), {}, -8 * 4096 + 2048.0, -148 * 4096 + 2048.0, (-8, -148))
+    assert lnd["z"] == 160.0 + 32.0  # above the ground, not 108 units under it
