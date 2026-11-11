@@ -1,8 +1,8 @@
 # Walk 5, the ground: roads, textures and grass, measured
 
-Measured 2026-11-11 on the build VM. Ours is the whole-world repaint of terrain build 20261109T204317Z by
+Measured 2026-11-11 on the build VM. Ours is the whole-world repaint of terrain build 20261111T053723Z by
 `tools/newworld/world/texture.py`, read by `tools/newworld/world/texcheck.py` (every row passes); "the old build" is
-the ground of the ESM the owner walked. Skyrim.esm, Black Marsh North.esp and King of the Murkmire.esp are read with a
+the ground of the ESM the owner walked (terrain build 20261109T204317Z). Skyrim.esm, Black Marsh North.esp and King of the Murkmire.esp are read with a
 Python LAND reader (`tools/argonia_world/esm.py`; BTXT, ATXT, VTXT; layers stacked as the engine stacks them: base 1,
 each alpha layer replaces (1 - o) of what is under it). Every diffuse is read as the NewWorld profile resolves it.
 
@@ -26,8 +26,8 @@ triangle, and a step is the change of a weight between two vertices that share a
 - The old build: 39,183 of 107,744 quadrants (36%) carried seven. With the seventh not drawn, a vertex two quadrants
   share read differently from each by up to 1.0, and 690 road quadrants hid up to 0.91 of their road weight: the square
   and triangular patches cutting into roads, ending at quadrant lines.
-- Ours: 0 quadrants over six. Textures written per quadrant 1: 480, 2: 24,390, 3: 7,491, 4: 7,174, 5: 8,662,
-  6: 59,547; a land quadrant shows 5.28 on average; shared vertices agree to 0.0096 (limit 3/255).
+- Ours: 0 of 154,080 quadrants over six. Textures written per quadrant 1: 982, 2: 67,598, 3: 5,895, 4: 5,015,
+  5: 7,763, 6: 66,827; a land quadrant shows 5.45 on average; shared vertices agree to 0.0107 (limit 3/255).
 
 How a quadrant is cut to six: it keeps the heaviest ground at each of its four corners (read from the ground blurred
 over 6 vertices, so four corners seldom name four grounds, and the quadrants round a corner always share one), then
@@ -65,10 +65,10 @@ steps is 0.41 (research nw-02-ground-water-rules.md).
 |---|---|---|---|---|
 | road weight step, p99 | 0.31 | the steepest metre of any hold's mean ramp (Whiterun, 0.17 a metre) | 0.27 | 0.24 |
 | road weight step, max | 0.41 | BM&V's hardest hundredth of ground steps | 1.0 | 0.261 |
-| join: step of one road material where the road holds half or more, max | 0.41 | the same | 0.498 | 0.377 |
-| spine vertices under 0.6 road weight | 2.8% | Skyrim's worst hold (Whiterun) | 1.58% (1,435) | 0 of 91,051 |
+| join: step of one road material where the road holds half or more, max | 0.41 | the same | 0.498 | 0.383 |
+| spine vertices under 0.6 road weight | 2.8% | Skyrim's worst hold (Whiterun) | 1.58% (1,435) | 0 of 91,050 |
 | lowest road weight on a spine | 0.4 | ours (Skyrim has 0.0 in four holds) | 0.0 | 0.972 |
-| spine vertices with over 0.1 grass-bearing ground | 1.8% | Skyrim's worst hold (Hjaalmarch) | 42.7% | 0 (most 0.028) |
+| spine vertices with over 0.1 grass-bearing ground | 1.8% | Skyrim's worst hold (Hjaalmarch) | 42.7% | 0 (most 0.027) |
 | road quadrants over six textures | 0 | the shader | 690 | 0 |
 
 The spine is the vertices within 1.5 m of a road's centre line, clear of the ramp by which a road runs out toward
@@ -128,23 +128,32 @@ Run = for each land vertex, the distance to the nearest vertex whose dominant te
 | Skyrim Pale snow | 5.2 | 11.6 | 29.8 | 92.3 |
 | BM&V Black Marsh North | 376 | 602 | 376 | 602 |
 | the old build, worst region (chixathe-mesa) | 42.1 | 90.8 | 42.6 | 92.3 |
-| ours, our 20 land regions | 9.1 to 11.6 | 16.9 to 26.2 | 9.1 to 20.2 | 18.8 to 38.6 |
+| ours, our 20 land regions | 7.5 to 11.0 | 14.3 to 22.2 | 7.8 to 17.3 | 15.1 to 34.2 |
 
-Ours, worst region: texture p90 11.6 m (skeith-isle), p99 26.2 m (aphon-isle); grass p90 20.2 m and p99 38.6 m
-(skeith-isle). Limits: texture p90 12 m and p99 35 m, grass p90 80 m and p99 140 m. The largest share one material
-holds of any 1 km of land is 0.322 (rock_grass; the old build 0.377; limit 0.40). A grass-bearing layer lies in 57,599
-of 57,668 land quadrants.
+Ours, worst region on all four: skeith-isle, texture p90 11.0 m and p99 22.2 m, grass p90 17.3 m and p99 34.2 m.
+Limits: texture p90 12 m and p99 35 m, grass p90 80 m and p99 140 m. The largest share one material holds of any 1 km
+of land is 0.29 (marsh_grass; the old build 0.377; limit 0.40).
 
 The old build's material shares wandered only at 30 to 300 m. Ours wander at three scales: that noise; the ground's
 moisture, shade and roughness (shore distance, the canopy field, slope and the landcover's micro-relief, `relief.npy`),
 each material leaning by its own affinities; and each material's own value noise at 15 and 37 m.
+
+Two rules keep even ground breaking up. Skeith Isle showed why: 47% rocky outcrop on wide open slopes, far from
+shore and without canopy, painted with five grounds (gravel, two rocks, rock grass, rocky dark grass) whose
+affinities are nearly the same, so the middle scale told them apart least of any region (the spread of the
+materials' leanings: 0.12 at its median vertex, 0.25 at the median region's), and with its signature ground, grey
+gravel, stacked on the same gravel in its province's rock accent (0.38 of the palette against 0.13 to 0.18 for each
+other). Gravel was the dominant ground on 53% of the island's vertices with a run over 14 m, and its texture run was
+14.6 m at p90 and 38.7 m at p99. So: a region's signature ground is brought up to 0.2 of a palette and never stacked
+on an accent that already gives it that (`texture.signed`); and the small scale's gain rises, by up to 1.0 on 1.8,
+as the spread of a palette's materials' leanings falls from 0.25 to nothing.
 
 ## 4. Regional variety (weighted Jaccard between land regions' shares)
 
 | | ground, max | ground, mean | grass, max | grass, mean |
 |---|---|---|---|---|
 | the old build | 0.776 | 0.367 | 0.855 | 0.396 |
-| ours | 0.596 (banujha-basin and ultherus-swamp) | 0.252 | 0.727 (aphon-isle and skeith-isle) | 0.207 |
+| ours | 0.721 (banujha-basin and ultherus-swamp) | 0.262 | 0.692 (kotherra-mangroves and tulmek-washes) | 0.211 |
 
 Ground counts materials by their diffuse; grass splits each material's share over its grass list. Seven ground
 provinces (an accent per kind of habitat, a road set, grass lists) and a signature ground and grass list per land

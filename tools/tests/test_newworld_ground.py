@@ -184,3 +184,22 @@ def test_micro_relief_marks_humps_and_hollows():
     h[10, 10] = -700.0
     r = lc.micro_relief(h)
     assert r.dtype == np.int8 and r[30, 30] > 0 and r[10, 10] < 0
+
+
+def test_a_signature_ground_is_brought_up_to_its_share_and_never_stacked_on_the_accent():
+    v = tx.vec({"rock": .4, "moss": .4, "grey_gravel": .2 * 4 / 3.2})   # the accent already gives it 0.2 or more
+    look = tx.MI["grey_gravel"]
+    assert v[look] >= tx.SIG and np.array_equal(tx.signed(v, look), v)
+    low = tx.vec({"rock": .5, "moss": .45, "grey_gravel": .05})
+    out = tx.signed(low, look)
+    assert abs(out[look] - tx.SIG) < 1e-6 and abs(out.sum() - 1) < 1e-6
+    assert abs(out[tx.MI["rock"]] / out[tx.MI["moss"]] - .5 / .45) < 1e-5
+    none = tx.signed(tx.vec({"rock": 1}), look)
+    assert abs(none[look] - tx.SIG) < 1e-6 and abs(none[tx.MI["rock"]] - (1 - tx.SIG)) < 1e-6
+    # no palette holds its signature twice over: the heaviest share of any classed habitat stays under 0.45
+    legend = {"shape": [8, 8], "habitats": ["none"] + list(tx.PALETTE), "kinds": [], "regions": list(tx.REGIONS)}
+    prov = tx.province_of(legend["regions"])
+    for r, rn in enumerate(legend["regions"]):
+        for h, cls in tx.HAB_CLASS.items():
+            pal = (1 - tx.ACCENT) * tx.vec(tx.PALETTE[h]) + tx.ACCENT * tx.vec(tx.PROVINCES[tx.PROV[prov[r] - 1]]["accent"][cls])
+            assert tx.signed(pal, tx.MI[tx.REGIONS[rn]["look"]]).max() < 0.45, (rn, h)

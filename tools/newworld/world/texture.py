@@ -19,8 +19,10 @@ The recipe (numbers from research/nw-02-ground-water-rules.md and docs/research/
    habitat reads differently from one province to the next; the province also sets the road set and its grass.
 2. Patches at three scales: each material's share wanders by its own noise at 30 to 300 m (exp(1.4 n)); at the
    middle scale by the ground's moisture (near water, hollows), shade (the canopy field) and roughness (slope, humps),
-   each material leaning by its affinities (AFF); at the small scale (15 and 37 m) by its own value noise. So one
-   ground reads for metres to tens of metres, not hundreds (Skyrim.esm: a dominant texture runs 2.6 to 10.7 m at p90).
+   each material leaning by its affinities (AFF); at the small scale (15 and 37 m) by its own value noise, stronger
+   where the middle scale tells the palette's materials apart least (an even, open slope of gravel, rock and scrub).
+   So one ground reads for metres to tens of metres, not hundreds (Skyrim.esm: a dominant texture runs 2.6 to 10.7 m
+   at p90).
 3. Slope: rock patches over 22 deg on a noise mask.
 4. Water's edge, by the kind of the nearest water, on the signed shore distance (EDGE): marsh, sea (bare beach on the
    strand, beach grass on the dune band behind it), mangrove, river, lake. The band's pull fades to the habitat.
@@ -220,7 +222,7 @@ PROVINCES = {
                   "rock_grass": [f"{SK}:RockGrass01", f"{SK}:TundraGrass04"]}},
 }
 # Each region's own signature on top of its province, from its research's look notes: one ground it shows more of
-# (SIG of every classed habitat's palette) and its own grass list on one grassy material.
+# (at least SIG of every classed habitat's palette) and its own grass list on one grassy material.
 REGIONS = {
     "ultherus-swamp": {"look": "dark_moss", "grass": {"marsh_grass": [f"{TS}:CattailGrass01", f"{KM}:ALPAGrassReeds02", f"{KM}:ALPAGrassReeds04"]}},
     "nushara-bayou": {"look": "river_mud", "grass": {"marsh_grass": [f"{KM}:ALPAGrassWildSaltrice02", f"{KM}:ALPAGrassWildSaltrice04", f"{KM}:ALPAGrassReeds02"]}},
@@ -243,7 +245,7 @@ REGIONS = {
     "skeith-isle": {"look": "grey_gravel", "grass": {"meadow": [f"{KM}:ALPAGrassHeather01", f"{SK}:RockGrass01"]}},
     "aunike-ridge": {"look": "dark_grass_rocks", "grass": {"meadow": [f"{SK}:ReachGrass02", f"{KM}:ALPAGrassNettles01", f"{SK}:TundraGrass03"]}},
 }
-SIG = 0.2  # a region's signature ground's share of each classed habitat's palette
+SIG = 0.2  # the least a region's signature ground holds of each classed habitat's palette
 PROV = list(PROVINCES)
 DEFAULT_ROAD = "forest"
 ROAD_SET_NAMES = list(rp.ROAD_SETS)
@@ -302,6 +304,8 @@ K_FINE = 1.8  # the small scale: each material's own value noise at 15 and 37 m
 ROAD_WATER = (0.9, 8.9)  # shore distance (m; the waterline lies half a sample from the last land vertex): no road
 # from here, the whole road from there
 FINE_S = (8, 20)  # samples
+LEAN_SPREAD = 0.25  # the spread (weighted s.d.) of a palette's materials' leanings on the median land region's median vertex
+EVEN_FINE = 1.0  # what the small scale's gain rises by on ground that leans every material alike
 
 
 def log(*a):
@@ -369,6 +373,17 @@ def province_of(regions: list[str]) -> np.ndarray:
     return np.array([by.get(r, 0) for r in regions] + [0] * (256 - len(regions)), np.int16)
 
 
+def signed(v: np.ndarray, look: int) -> np.ndarray:
+    """A palette with the region's signature ground brought up to SIG of it (the rest scaled down). Where the
+    province's accent already gives that ground SIG or more, the palette stands: the signature is never stacked on
+    the accent, which would make one ground more than twice any other and one long swathe of it."""
+    if v[look] >= SIG:
+        return v
+    out = v * ((1 - SIG) / (1 - v[look]))
+    out[look] = SIG
+    return out
+
+
 class Painter:
     def __init__(self, legend):
         H, W = legend["shape"]
@@ -390,7 +405,7 @@ class Painter:
                 if prov[r]:
                     v = (1 - ACCENT) * own + ACCENT * vec(PROVINCES[PROV[prov[r] - 1]]["accent"][cls])
                 if rn in REGIONS:
-                    v = (1 - SIG) * v + SIG * vec({REGIONS[rn]["look"]: 1})
+                    v = signed(v, MI[REGIONS[rn]["look"]])
                 self.hab_vec[r, i] = v
         self.aff = np.zeros((NM, 3), np.float32)
         for m, a in AFF.items():
@@ -446,6 +461,15 @@ class Painter:
         rough = np.clip(slope / 20, 0, 1.5) + np.clip(relief / 1.5, -0.6, 1)
         env = np.stack([wet, shade, rough], -1)
         ri, ci = rr.astype(np.int64), cc.astype(np.int64)
+        # where the ground's state does not tell a palette's materials apart (they lean alike, as gravel, rock and
+        # scrub do on an even open slope), the small scale carries the break instead: its gain rises by up to
+        # EVEN_FINE as the spread of the materials' leanings falls from LEAN_SPREAD to nothing
+        nb = len(BASE)
+        lean_all = env @ self.aff[:nb].T
+        mean = (w[..., :nb] * lean_all).sum(-1, keepdims=True)
+        spread = np.sqrt((w[..., :nb] * (lean_all - mean) ** 2).sum(-1))
+        k_fine = K_FINE + EVEN_FINE * np.clip(1 - spread / LEAN_SPREAD, 0, 1)
+        del lean_all, mean, spread
         for j, m in enumerate(BASE):
             col = w[..., j]
             nz = col > 0
@@ -453,7 +477,7 @@ class Painter:
                 continue
             fine = 0.6 * vnoise(NOISE_SEED + 31 * j, ri[nz], ci[nz], FINE_S[0]) + 0.4 * vnoise(NOISE_SEED + 31 * j + 7, ri[nz], ci[nz], FINE_S[1])
             lean = env[nz] @ self.aff[j]
-            col[nz] *= np.exp(1.4 * self.fields.at(m, wr[nz], wc[nz]) + K_ENV * lean + K_FINE * fine)
+            col[nz] *= np.exp(1.4 * self.fields.at(m, wr[nz], wc[nz]) + K_ENV * lean + k_fine[nz] * fine)
         w /= w.sum(-1, keepdims=True) + 1e-9
         # rock patches on slopes
         steep = slope > 18
