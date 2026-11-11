@@ -373,3 +373,6 @@ added here the day they are made, with the date and the issue.
 - 2026-11-10 (in session, night): the walk 5 feedback on the built world is delivered by a fresh orchestrator
   session, started unattended by the nw-03 session when its own lanes have landed, from the hand-over
   (docs/phases/new-worldspace-plan/nw-02-walk-5-handover.md).
+- 2026-11-11 (in session, morning): the LOD is built for our worldspace only (ArgoniaBlackMarsh), never for any
+  other world in the load order. Each LOD run is checked for it: xLODGen's world list, DynDOLOD's preset and the
+  folders and logs each tool writes.
