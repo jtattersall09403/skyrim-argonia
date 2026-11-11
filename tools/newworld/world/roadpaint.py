@@ -1,19 +1,23 @@
 """How a road or a path is painted into the land: the one rule the world's roads (world/texture.py), a place's paths
-(tools/places/build.py plan_paths) and the place studio (tools/places/studio/web/js/path_paint.js) all follow.
+(tools/places/build.py plan_paths) and the place studio (tools/places/studio/web/js/path_paint.js) all follow, with no
+smoothing after it: the rule is soft by itself, so all three paint the same numbers.
 
-Measured (docs/research/nw-02-walk5-ground.md, section 1):
-- Skyrim paints the ground under a road with one dirt LTEX whose weight stays >= 0.97 to 3 m from the spine and
-  falls to 0.76 at 5 m, 0.56 at 6 m, 0.36 at 8 m (the road mesh's surface edge is at 3.45 m): a ramp of about 2.5
-  vertices. Expressed from the surface edge (e = distance - half width, m): 0.97 at -0.45, 0.90 at 0.55, 0.76 at
-  1.55, 0.56 at 2.55, 0.36 at 4.55; ours reaches 0 at 8.55 m. A minor road or a path keeps the same shape at 0.8
-  scale (it never gets narrower than 2 vertices of ramp).
+Measured (docs/research/nw-02-walk5-ground.md, section 2):
+- Skyrim paints the ground under a road mesh with the region's dirt LTEX. Over six holds' straight road pieces its
+  mean weight is 0.91 to 0.99 at 3 m from the spine (the mesh's surface edge is at 3.45 m) and falls to 0.39 to 0.78
+  at 8 m; the steepest metre of any hold's mean ramp is 0.17 (Whiterun, 5 to 6 m), 0.31 a vertex. Ours is one straight
+  ramp from 0.97 at 0.45 m inside the surface edge to 0 at 8.55 m outside it: 0.108 a metre, 0.20 a vertex (0.25 for
+  a minor road or a path, whose ramp is 0.8 as long), between Whiterun's and Falkreath's.
 - A quadrant shows at most six textures (base + five alpha layers): the landscape shader has six texture slots
   (Community Shaders Lighting.hlsl TexColor + TexLandColor2..6, two float4 blend weights of which six are used) and
   Skyrim.esm piles up at six distinct textures (7,506 quadrants) with only 337 at seven; BM&V and KoTM never pass six.
-- Our road has no road mesh over it, so the land is the road: a track core and a verge. The core material hands to the
-  verge over 4.5 m (2.5 vertices), never in one vertex; two track materials of the road's set vary along it (noise at
-  60 to 240 m, each always 15 % or more of the core), so a change of material along a road is a long blend, never a
-  join.
+- Our road has no road mesh over it, so the land is the road: a track core and a verge. The core is whole on a major
+  road's spine and falls to nothing over 6.5 m (3.6 vertices: 0.28 a vertex), the same on every class, so a path's
+  spine is four fifths track, and the verge holds the rest of the road's weight; two track materials of the road's
+  set vary along it (noise at 60 to 240 m, each always 15 % or more of the core), so a change of material along or
+  across a road is a ramp, never a join.
+- No road material grows grass, and the road holds 0.97 or more to 3 m from a major spine and 1.6 m from a minor one:
+  no grass-bearing ground reaches a spine.
 """
 from __future__ import annotations
 
@@ -22,9 +26,9 @@ import numpy as np
 M_PER_UNIT = 1 / 70.0
 VERTEX_M = 128 / 70.0
 # the land weight a road gives its own materials, by distance from the surface edge (m, + outward)
-PULL_E = (-0.45, 0.55, 1.55, 2.55, 4.55, 8.55)
-PULL_W = (0.97, 0.90, 0.76, 0.56, 0.36, 0.0)
-CORE_IN, CORE_OUT = -3.0, 1.5  # core share 1 inside -3 m of the edge, 0 from 1.5 m out (ramp 4.5 m)
+PULL_E = (-0.45, 8.55)
+PULL_W = (0.97, 0.0)
+CORE_IN, CORE_OUT = -3.45, 3.05  # core share 1 on a major spine, 0 from 3.05 m outside the edge (ramp 6.5 m)
 SCALE = {"major": 1.0, "minor": 0.8}
 HALF_M = {"major": 3.45, "minor": 2.0}
 # a place path's style -> its class (the reach of its ramp)
@@ -33,7 +37,7 @@ TRACK_MIN = 0.15  # each of a road set's two track materials keeps at least this
 
 
 def pull(edge_m, scale: float = 1.0) -> np.ndarray:
-    """The road's total weight at a distance (m) from its surface edge: 1 on the surface, the measured ramp beyond."""
+    """The road's total weight at a distance (m) from its surface edge: 1 on the surface, its straight ramp beyond."""
     e = np.asarray(edge_m, np.float64) / scale
     p = np.interp(e, PULL_E, PULL_W)
     return np.where(e <= PULL_E[0], np.clip(PULL_W[0] + (PULL_E[0] - e) * 0.03 / 1.5, PULL_W[0], 1.0), p)
@@ -44,9 +48,10 @@ def reach_m(scale: float = 1.0) -> float:
     return PULL_E[-1] * scale
 
 
-def core_share(edge_m, scale: float = 1.0) -> np.ndarray:
-    """Of the road's weight, the share of its track core (the rest is the verge)."""
-    e = np.asarray(edge_m, np.float64) / scale
+def core_weight(edge_m) -> np.ndarray:
+    """The most the track core can hold at a distance (m) from the surface edge: 1 on a major spine, a straight ramp
+    to 0 at CORE_OUT, the same on every class (the verge has the rest of the road's weight)."""
+    e = np.asarray(edge_m, np.float64)
     return np.clip((CORE_OUT - e) / (CORE_OUT - CORE_IN), 0, 1)
 
 
@@ -56,12 +61,14 @@ def track_mix(t) -> np.ndarray:
     return TRACK_MIN + (1 - 2 * TRACK_MIN) * s
 
 
-def road_weights(edge_m, scale: float, mix) -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
-    """-> (pull, track A weight, track B weight, verge weight), each a fraction of the vertex (they sum to pull)."""
+def road_weights(edge_m, scale, mix) -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
+    """-> (pull, track A weight, track B weight, verge weight), each a fraction of the vertex (they sum to pull). The
+    core is the lower of its own ramp and the pull, so no material of a road changes faster than the steeper of the
+    two ramps."""
     p = pull(edge_m, scale)
-    c = core_share(edge_m, scale)
+    c = np.minimum(p, core_weight(edge_m))
     m = track_mix(mix)
-    return p, p * c * m, p * c * (1 - m), p * (1 - c)
+    return p, c * m, c * (1 - m), p - c
 
 
 def layer_opacities(edge_m, scale: float, mix=0.0) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
@@ -91,6 +98,9 @@ ROAD_SETS = {
     "forest": ("gravel_track", "mud_track", "verge"),      # forest and swamp hummock: gravel first
     "upland": ("earth_track", "gravel_track", "clay_verge"),  # dry ridges, mesas and scrub
     "coast": ("sand_track", "gravel_track", "clay_verge"),    # sandy coasts and grassland
-    "clay": ("earth_track", "mud_track", "clay_verge"),       # red clay mounds and flood plains
+    "clay": ("mud_track", "gravel_track", "clay_verge"),      # red clay mounds and flood plains
 }
 ROAD_MATERIALS = sorted({m for s in ROAD_SETS.values() for m in s})
+# Every set carries COMMON_TRACK (at least TRACK_MIN of its core), so wherever a road has a core, every quadrant round
+# it can keep one road material in common however few texture slots it has.
+COMMON_TRACK = "gravel_track"

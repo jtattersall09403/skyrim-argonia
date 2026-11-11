@@ -25,7 +25,7 @@ static class NewWorld
     static readonly FormKey XMarkerHeading = FormKey.Factory("000034:Skyrim.esm");
     static readonly Quadrant[] Quads = { Quadrant.BottomLeft, Quadrant.BottomRight, Quadrant.TopLeft, Quadrant.TopRight };
     // fixed form ids: the bytes depend only on the shards
-    const uint IdWorld = 0x800, IdTopCell = 0x801, IdMarker = 0x802, IdCopies = 0x900, IdRegions = 0x880, IdCells = 0x100000, IdRefs = 0x200000;  // cell k: IdCells + 2k, its LAND +1; 0x900.. copied records
+    const uint IdWorld = 0x800, IdTopCell = 0x801, IdMarker = 0x802, IdCopies = 0x900, IdCopiesEnd = 0x80000, IdRegions = 0x880, IdCells = 0x100000, IdRefs = 0x200000;  // cell k: IdCells + 2k, its LAND +1; 0x900.. copied records
     static readonly string[] Allowed = { "Skyrim.esm", "Update.esm", "Black Marsh.esm" };  // the only masters (verify.py MASTERS)
 
     record Manifest(JsonElement Root)
@@ -248,6 +248,10 @@ static class NewWorld
             ws.SubCells.Add(b);
         }
         NewWorldNavmesh.Attach(mod, ws, outPath, man.BuildId);  // nw-02 step 10: the navmesh, when built for this land
+        // the copied records (ground textures first, in materials.json's listed order, then water, then placed bases)
+        // share one counter from IdCopies; the atmosphere's fixed ids begin at IdCopiesEnd
+        if (fc.NextId > IdCopiesEnd) throw new InvalidDataException($"copied records ran to {fc.NextId:X6}, into the atmosphere's ids at {IdCopiesEnd:X6}");
+        Console.WriteLine($"  copied records: {IdCopies:X6}..{fc.NextId - 1:X6} (free to {IdCopiesEnd:X6})");
         var lo = bm.ModHeader.MasterReferences.Select(m => m.Master).Append(bm.ModKey).Append(modKey).ToList();
         var upd = ModKey.FromFileName("Update.esm");  // a master always (its WATR/WTHR records win), placed after Skyrim.esm
         if (!lo.Contains(upd)) lo.Insert(lo.IndexOf(ModKey.FromFileName("Skyrim.esm")) + 1, upd);
@@ -442,6 +446,14 @@ static class NewWorld
         // ground layers, water types, regions, refs
         var ours = mod.LandscapeTextures.ToDictionary(t => t.FormKey);
         var layerHist = new long[8]; long quads = 0, badLayers = 0;
+        // the written layers against the painted shards texcheck measured: the same textures in the same order, every
+        // opacity the shard's byte (so texcheck's rows hold for the ESM itself)
+        var texDirC = Path.Combine(Path.GetDirectoryName(man.Dir)!, "tex");
+        var texManC = JsonDocument.Parse(File.ReadAllText(Path.Combine(texDirC, "manifest.json"))).RootElement;
+        int qBytesC = texManC.GetProperty("quad_bytes").GetInt32(), maxLC = texManC.GetProperty("max_layers").GetInt32();
+        var matEdid = JsonDocument.Parse(File.ReadAllText(Path.Combine(texDirC, "materials.json"))).RootElement.EnumerateArray()
+            .Select(m => "ANW_Ground_" + m.GetProperty("id").GetString()).ToList();
+        var shardRow = new Dictionary<int, byte[]>(); long texDiff = 0, texQuads = 0;
         var watrCells = new Dictionary<string, int>(); long regionCells = 0, cellsAll = 0;
         var regionName = mod.Regions.ToDictionary(r => r.FormKey, r => r.EditorID ?? "");
         var refsByRegion = new Dictionary<string, int>(); var refsByBase = new Dictionary<FormKey, int>();
@@ -475,6 +487,24 @@ static class NewWorld
                           && g.All(x => ours.ContainsKey(x.Header!.Texture.FormKey))
                           && alphas.All(x => x.AlphaLayerData is { } d && d.All(p => p.Opacity > 0 && p.Opacity <= 1.0001f && p.Position < 289));
                 if (!ok && badLayers++ < 5) Fail($"cell {c.Grid?.Point} quadrant {g.Key}: bad layers ({bases.Count} base, {alphas.Count} alpha)");
+                if (ok && c.Grid is { } cg)
+                {
+                    int gx = cg.Point.X, gy = cg.Point.Y;
+                    if (!shardRow.TryGetValue(gy, out var t))
+                        shardRow[gy] = t = File.ReadAllBytes(Path.Combine(texDirC, $"cy{(gy < 0 ? "-" : "+")}{Math.Abs(gy):000}.bin"));
+                    int o = (gx - cx0) * 4 * qBytesC + Array.IndexOf(Quads, g.Key) * qBytesC, n = t[o];
+                    bool same = n == 1 + alphas.Count && ours[bases[0].Header!.Texture.FormKey].EditorID == matEdid[t[o + 1]];
+                    for (var k = 1; same && k < n; k++)
+                    {
+                        var al = alphas[k - 1];
+                        var op = new byte[289];
+                        foreach (var pnt in al.AlphaLayerData!) op[pnt.Position] = (byte)Math.Round(pnt.Opacity * 255f);
+                        same = ours[al.Header!.Texture.FormKey].EditorID == matEdid[t[o + 1 + k]]
+                               && op.AsSpan().SequenceEqual(t.AsSpan(o + 1 + maxLC + (k - 1) * 289, 289));
+                    }
+                    texQuads++;
+                    if (!same && texDiff++ < 5) Fail($"cell {gx},{gy} quadrant {g.Key}: the written layers are not the painted shard's");
+                }
             }
         }
         if (quads != 4L * expected) Fail($"{quads} painted quadrants, expected {4L * expected}");
@@ -486,7 +516,7 @@ static class NewWorld
         Console.WriteLine($"  seams {seamEdges} edges, {seamBad} mismatches; VHGT overflow pairs before/after limiter {stats.GetProperty("overflow_pairs_before")}/{stats.GetProperty("overflow_pairs_after")}, limited vertices {stats.GetProperty("limited_vertices")}");
         Console.WriteLine($"  water: WRLD default {ws.LandDefaults?.DefaultWaterHeight}, cells off {wrongWater}; {markerLine}; coc {StartCell} (unique)");
         Console.WriteLine($"  masters {string.Join(", ", masters)}; {links} links, {badLinks} into asset-only plugins");
-        Console.WriteLine($"  ground: {quads} quadrants, layers per quadrant (base + alpha) {string.Join(" ", layerHist.Select((n, i) => $"{i}:{n}").Skip(1))}, bad {badLayers}; our LTEX {ours.Count} ({grassy} with grass)");
+        Console.WriteLine($"  ground: {quads} quadrants, layers per quadrant (base + alpha) {string.Join(" ", layerHist.Select((n, i) => $"{i}:{n}").Skip(1))}, bad {badLayers}; {texQuads - texDiff}/{texQuads} equal to the painted shards; our LTEX {ours.Count} ({grassy} with grass)");
         Console.WriteLine($"  water types by cell: {string.Join(", ", watrCells.OrderByDescending(x => x.Value).Take(12).Select(x => $"{x.Key} {x.Value}"))}");
         Console.WriteLine($"  regions: {mod.Regions.Count} REGN, cells with a region {regionCells}/{cellsAll}; climate {ws.Climate.FormKey}");
         Console.WriteLine($"  refs by region: {string.Join(", ", refsByRegion.OrderByDescending(x => x.Value).Select(x => $"{x.Key} {x.Value}"))}");

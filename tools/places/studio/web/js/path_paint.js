@@ -1,14 +1,14 @@
 // How a drawn path is painted onto the land, by the one rule the world's roads and the place build share
 // (tools/newworld/world/roadpaint.py; tools/places/build.py plan_paths): from the path's edge (its half width) the road
-// holds the measured ramp (PULL_E/PULL_W: full on the path, 0 by 8.55 m out for a road or a street, at 0.8 scale for a
-// path, a dirt track or a boardwalk ashore); its track core (two track materials of the ground's road set, shared by the
-// along-road noise roadMix) hands to the verge over 4.5 m. Drawn as three alpha layers over the world's ground, bottom
-// first (verge, track B, track A), whose composite is the build's weights. Pure, so node tests it against the build's
-// own numbers.
+// holds its straight ramp (PULL_E/PULL_W: full on the path, 0 by 8.55 m out for a road or a street, 0.8 as long for a
+// path, a dirt track or a boardwalk ashore); its track core (two track materials of the ground's road set, shared by
+// the along-road noise roadMix) falls away over 6.5 m and the verge holds the rest. Drawn as three alpha layers over
+// the world's ground, bottom first (verge, track B, track A), whose composite is the build's weights. Pure, and node
+// tests it against numbers the Python rule wrote (test/road_rule.json).
 export const M_PER_UNIT = 1 / 70;
-export const PULL_E = [-0.45, 0.55, 1.55, 2.55, 4.55, 8.55];
-export const PULL_W = [0.97, 0.90, 0.76, 0.56, 0.36, 0.0];
-export const CORE_IN = -3.0, CORE_OUT = 1.5, TRACK_MIN = 0.15;
+export const PULL_E = [-0.45, 8.55];
+export const PULL_W = [0.97, 0.0];
+export const CORE_IN = -3.45, CORE_OUT = 3.05, TRACK_MIN = 0.15;
 export const SCALE = { major: 1.0, minor: 0.8 };
 export const STYLE_CLASS = { road: 'major', street: 'major', path: 'minor', dirt: 'minor', track: 'minor', boardwalk: 'minor' };
 // a style of one land texture (the world material's id, the end of its editor id); every other style takes the road set
@@ -17,7 +17,7 @@ export const PATH_STYLE_LTEX = { skirt: 'verge', mud: 'swamp_mud', sand: 'sand',
 export const ROAD_SETS = {
   marsh: ['mud_track', 'gravel_track', 'verge'], forest: ['gravel_track', 'mud_track', 'verge'],
   upland: ['earth_track', 'gravel_track', 'clay_verge'], coast: ['sand_track', 'gravel_track', 'clay_verge'],
-  clay: ['earth_track', 'mud_track', 'clay_verge'],
+  clay: ['mud_track', 'gravel_track', 'clay_verge'],
 };
 export const DEFAULT_ROAD = 'forest';
 const NOISE_SEED = 9113;
@@ -31,15 +31,16 @@ function interp(x, xs, ys) {
 export function pull(e, scale = 1) {
   const x = e / scale;
   if (x <= PULL_E[0]) return Math.min(1, Math.max(PULL_W[0], PULL_W[0] + (PULL_E[0] - x) * 0.03 / 1.5));
-  return interp(x, PULL_E, PULL_W);
+  return Math.max(0, interp(x, PULL_E, PULL_W));
 }
 export function reachM(scale = 1) { return PULL_E[PULL_E.length - 1] * scale; }
-export function coreShare(e, scale = 1) { return Math.max(0, Math.min(1, (CORE_OUT - e / scale) / (CORE_OUT - CORE_IN))); }
+// the most the track core can hold at e: 1 on a major spine, a straight ramp to 0 at CORE_OUT, on every class
+export function coreWeight(e) { return Math.max(0, Math.min(1, (CORE_OUT - e) / (CORE_OUT - CORE_IN))); }
 export function trackMix(t) { return TRACK_MIN + (1 - 2 * TRACK_MIN) * (0.5 + 0.5 * Math.tanh(1.6 * t)); }
 // -> [pull, track A, track B, verge] weights of the vertex
 export function roadWeights(e, scale, mix) {
-  const p = pull(e, scale), c = coreShare(e, scale), m = trackMix(mix);
-  return [p, p * c * m, p * c * (1 - m), p * (1 - c)];
+  const p = pull(e, scale), c = Math.min(p, coreWeight(e)), m = trackMix(mix);
+  return [p, c * m, c * (1 - m), p - c];
 }
 // the same as three alpha layers over any ground, bottom first: [verge, track B, track A] opacities
 export function layerOpacities(e, scale, mix) {
@@ -72,8 +73,12 @@ export function segDist(x, y, a, b) {
   const t = l ? Math.max(0, Math.min(1, ((x - a[0]) * dx + (y - a[1]) * dy) / l)) : 0;
   return Math.hypot(x - a[0] - t * dx, y - a[1] - t * dy);
 }
+// the world names a ground material's land texture ANW_Ground_<id> (NewWorld.cs): the whole id, so `verge` is never
+// `clay_verge`
+export const LTEX_PREFIX = 'ANW_Ground_';
+const isMat = (edid, id) => (edid || '').toLowerCase() === (LTEX_PREFIX + id).toLowerCase();
 function keyOf(want, ltex) {
-  for (const [k, v] of Object.entries(ltex || {})) if ((v?.edid || '').toLowerCase().endsWith(want)) return k;
+  for (const [k, v] of Object.entries(ltex || {})) if (isMat(v?.edid, want)) return k;
   return null;
 }
 // The road set of the ground the place stands on: the set whose first track the world's own land here carries most
@@ -81,8 +86,8 @@ function keyOf(want, ltex) {
 export function roadSetName(terrain) {
   const count = {};
   for (const c of terrain?.list || []) for (const q of c.quadrants || []) for (const k of [q.base, ...(q.layers || []).map((l) => l.tex)]) {
-    const e = (terrain.ltex?.[k]?.edid || '').toLowerCase();
-    for (const [name, set] of Object.entries(ROAD_SETS)) if (e.endsWith(set[0]) || e.endsWith(set[2])) count[name] = (count[name] || 0) + 1;
+    const e = terrain.ltex?.[k]?.edid;
+    for (const [name, set] of Object.entries(ROAD_SETS)) if (isMat(e, set[0]) || isMat(e, set[2])) count[name] = (count[name] || 0) + 1;
   }
   let best = DEFAULT_ROAD, n = 0;
   for (const [name, set] of Object.entries(ROAD_SETS)) if ((count[name] || 0) > n) { n = count[name]; best = name; }

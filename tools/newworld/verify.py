@@ -229,6 +229,15 @@ def run(plugin: Path, out: Path, do_dump: bool = True) -> int:
         edge = {k: v for k, v in tc.items() if "step" in k or "edge" in k}
         rep.row("textures", "edge metric (blend step p99 <= 0.41, max <= 0.75, seam <= 3/255)", edge,
                 bool(tc.get("pass")), "texcheck.check over the painted shards the ESM was written from")
+        fails = tc.get("fails") or []
+        rep.row("textures", "no quadrant over six textures (the shader's six slots; a seventh layer is not drawn)",
+                tc.get("quadrants_over_cap"), tc.get("quadrants_over_cap") == 0, f"layers per quadrant {tc.get('layers_hist')}")
+        rep.row("textures", "roads: ramp, joins between road materials, the spine whole and free of grass (limits from Skyrim's roads)",
+                {k: v for k, v in tc.items() if k.startswith("road_") and not k.endswith("_at")},
+                not [f for f in fails if f.startswith("road_")], "; ".join(f for f in fails if f.startswith("road_")))
+        rep.row("textures", "swathes: how far one ground and one grass list run, worst region (Skyrim's holds: 2.6 to 10.7 m at p90)",
+                {k: v for k, v in tc.items() if k.startswith("run_")},
+                not [f for f in fails if f.startswith("run_")], "; ".join(f for f in fails if f.startswith("run_")))
         rep.row("textures", "swathe metric (one material's share of any 1 km of land <= 0.40)", tc.get("swathe_max_1km_land"),
                 tc.get("swathe_max_1km_land") is not None and tc["swathe_max_1km_land"] <= 0.40,
                 f"{tc.get('swathe_material')} at {tc.get('swathe_at_cell')}")

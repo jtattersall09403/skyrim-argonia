@@ -65,6 +65,9 @@ PERSISTENT_KINDS = {"door"}
 # a style of one land texture (texture.py ids); every other style (road, street, path, dirt, track, boardwalk) is painted
 # with the road set of the ground province it crosses (tools/newworld/world/roadpaint.py)
 PATH_STYLE_LTEX = {"skirt": "verge", "mud": "swamp_mud", "sand": "sand", "stone": "rock"}
+WORLD_LTEX_PREFIX = "ANW_Ground_"
+PATH_WALK_REACH = 96.0  # units beyond a path's half width that count as the path itself (the cells its navmesh changes)
+PATH_SEAM_FADE = 4.0  # vertices over which a texture a repainted quadrant cannot keep fades out toward it
 PLACE_MASTERS = {"Skyrim.esm", "Update.esm", "Dawnguard.esm", "HearthFires.esm", "Dragonborn.esm", "Black Marsh.esm"}  # Write.cs Masters
 NAV_RING = 3  # the navmesh window: the touched cells plus this many rings (ring 1 overridden, ring 2 must match)
 DOTNET_ENV = dict(os.environ, DOTNET_ROOT=str(Path.home() / ".dotnet"), DOTNET_NOLOGO="1", DOTNET_CLI_TELEMETRY_OPTOUT="1",
@@ -178,7 +181,9 @@ def tool(*args: str) -> None:
 
 def code_key() -> str:
     h = hashlib.sha256()
-    for p in sorted([Path(__file__), Path(__file__).with_name("people.py")] + list(TOOL_PROJ.glob("*.cs"))):
+    world = ROOT / "tools" / "newworld" / "world"  # the road rule and the ground's road sets the paths are painted by
+    for p in sorted([Path(__file__), Path(__file__).with_name("people.py"), world / "roadpaint.py", world / "texture.py"]
+                    + list(TOOL_PROJ.glob("*.cs"))):
         if p.exists():
             h.update(p.name.encode() + p.read_bytes())
     return h.hexdigest()[:16]
@@ -415,23 +420,28 @@ def path_road_set(x: float, y: float) -> tuple[str, str, str]:
     return rp.ROAD_SETS[tx.PROVINCES[tx.PROV[prov - 1]]["road"] if prov else tx.DEFAULT_ROAD]
 
 
-def plan_paths(paths: list[dict], facts: dict) -> dict[tuple[int, int], list[dict]]:
+def plan_paths(paths: list[dict], facts: dict, walked: set | None = None) -> dict[tuple[int, int], list[dict]]:
     """Paths -> the land textures of every quadrant they reach, painted by the world's road rule
     (tools/newworld/world/roadpaint.py, which the studio's path_paint.js follows): from the path's edge (its half width)
-    the measured ramp (full on the path, 0 by 8.55 m out for a road or a street, 6.8 m for a path, a dirt track or a
+    its straight ramp (full on the path, 0 by 8.55 m out for a road or a street, 6.8 m for a path, a dirt track or a
     boardwalk ashore); the track core (the two track materials of the ground province's road set, varying along it as
-    the world's roads do) hands to the verge over 4.5 m. A style naming one land texture (`mud`, `sand`, `stone`,
+    the world's roads do) falls away over 6.5 m and the verge holds the rest. A style naming one land texture (`mud`, `sand`, `stone`,
     `skirt`) or a land texture key the owner picked paints that texture alone, on the same ramp. Each reached quadrant
     is repainted whole: the world's composite there, the path blended over it, at most six textures kept (the path's
-    first, then those on the quadrant's border, so a shared vertex still reads as its neighbour's), as a base and
-    alpha layers that replace the world's in that quadrant. -> {cell: [{quadrant, base, layers: [{texture, alpha}],
-    paths, dropped}]}."""
+    first, then the heaviest), as a base and alpha layers that replace the world's in that quadrant. A texture a
+    quadrant cannot keep fades to nothing over PATH_SEAM_FADE vertices toward it, in it and in its neighbours (which
+    are then repainted too, with what the world paints there), so every vertex two quadrants share reads the same
+    from both, repainted or not. -> {cell: [{quadrant, base, layers: [{texture, alpha}], paths, dropped}]}.
+    `walked`, when given, is filled with the cells the paths themselves cross (a vertex within PATH_WALK_REACH of a
+    path's edge): the cells whose navmesh a path changes. Paint reaches further and changes no navmesh."""
     from tools.newworld.world import roadpaint as rp, texture as tx
     ltex = {t["edid"]: t["fk"] for t in facts["ltex"]}
     world_keys = set(ltex.values())
 
     def mat(mid: str) -> str | None:
-        return next((fk for e, fk in ltex.items() if e and e.lower().endswith(mid.lower())), None)
+        # the world names a ground material's land texture ANW_Ground_<id> (NewWorld.cs): the whole id, so `verge` is
+        # never `clay_verge`
+        return next((fk for e, fk in ltex.items() if e and e.lower() == (WORLD_LTEX_PREFIX + mid).lower()), None)
 
     specs = []
     for p in paths:
@@ -472,6 +482,7 @@ def plan_paths(paths: list[dict], facts: dict) -> dict[tuple[int, int], list[dic
                 e = (d - half) * rp.M_PER_UNIT
                 mix = tx.road_mix(np.floor(-Y / QUAD + 0.5).astype(np.int64), np.floor(X / QUAD + 0.5).astype(np.int64))
                 pull, wa, wb, wv = rp.road_weights(e, scale, mix)
+                on = d - half < PATH_WALK_REACH
                 if style == "boardwalk":
                     # a boardwalk's line is walked on its decks: only where it comes ashore is it a path on the ground
                     c = facts.get("by_cell", {}).get((cx, cy)) or {}
@@ -480,6 +491,9 @@ def plan_paths(paths: list[dict], facts: dict) -> dict[tuple[int, int], list[dic
                         from tools.newworld.world.units import VHGT_STEP_UNITS
                         wet = cell_steps(c) * VHGT_STEP_UNITS < w - 8
                         pull, wa, wb, wv = (np.where(wet, 0.0, v) for v in (pull, wa, wb, wv))
+                        on = on & ~wet
+                if walked is not None and on.any():
+                    walked.add((cx, cy))
                 if not (pull > 1e-3).any():
                     continue
                 cur = best.setdefault((cx, cy), {"pull": np.zeros((VERTS, VERTS)), "w": {}, "paths": set()})
@@ -493,38 +507,114 @@ def plan_paths(paths: list[dict], facts: dict) -> dict[tuple[int, int], list[dic
                 for k, v in zip(keys, (wa, wb, wv)):
                     cur["w"][k] = cur["w"].get(k, np.zeros((VERTS, VERTS))) + np.where(take, v, 0.0)
     path_keys = {k for _, _, keys, _ in specs for k in keys}
-    border = np.zeros((17, 17), bool)
-    border[[0, -1], :] = True
-    border[:, [0, -1]] = True
-    border = border.ravel()
-    out: dict[tuple[int, int], list[dict]] = {}
+    by_cell = facts.get("by_cell", {})
+
+    def world_quadrant(gq):
+        """A quadrant by its place on the world's quadrant lattice (2 cx + qx, 2 cy + qy) -> (cell, quadrant number,
+        its world composite or None when the world has no land texture layers there)."""
+        c, q = (gq[0] // 2, gq[1] // 2), (gq[1] % 2) * 2 + gq[0] % 2
+        layers = (by_cell.get(c) or {}).get("layers")
+        return c, q, (_world_quadrant(layers, q) if layers else None)
+
+    # every quadrant a path reaches: the world's composite with the path over it, and the six textures it keeps (the
+    # path's first, then the heaviest)
+    quads: dict[tuple[int, int], dict] = {}
     for c, cur in best.items():
-        layers = (facts.get("by_cell", {}).get(c) or {}).get("layers")
         for q, (y0, x0) in enumerate(((0, 0), (0, 16), (16, 0), (16, 16))):  # BL, BR, TL, TR
             pull = cur["pull"][y0:y0 + 17, x0:x0 + 17].ravel()
             if not (pull > 1e-3).any():
                 continue
-            if not layers:
+            gq = (2 * c[0] + x0 // 16, 2 * c[1] + y0 // 16)
+            world = world_quadrant(gq)[2]
+            if world is None:
                 problem(f"path reaches cell {c} quadrant {q}, which has no world land texture layers")
                 continue
-            w = {k: v * (1 - pull) for k, v in _world_quadrant(layers, q).items()}
+            w = {k: v * (1 - pull) for k, v in world.items()}
             for k, v in cur["w"].items():
                 w[k] = w.get(k, np.zeros(289)) + v[y0:y0 + 17, x0:x0 + 17].ravel()
             tot = {k: float(v.sum()) for k, v in w.items() if v.max() > 1e-4}
+            # kept first: the heaviest texture at each corner (every quadrant round a corner reads the same weights
+            # there, so they always keep one texture in common), then the path's, then the heaviest
+            names = sorted(tot)
+            corners = [max(names, key=lambda k: round(float(w[k][i]), 4)) for i in (0, 16, 272, 288)]
             mine = sorted((k for k in tot if k in path_keys and tot[k] > 0.5), key=lambda k: -tot[k])
-            edge = sorted((k for k in tot if k not in mine and w[k][border].max() > 1e-4), key=lambda k: -float(w[k][border].sum()))
-            rest = sorted((k for k in tot if k not in mine and k not in edge), key=lambda k: -tot[k])
-            keep = (mine + edge + rest)[:tx.MAXL]
+            rest = sorted(tot, key=lambda k: -tot[k])
+            keep = list(dict.fromkeys(corners + mine + rest))[:tx.MAXL]
             gone = [k for k in tot if k not in keep]
-            dropped = float(np.max(sum(w[k] for k in gone))) if gone else 0.0
-            flat = np.stack([w[k] for k in keep], 1)
-            flat /= np.maximum(flat.sum(1, keepdims=True), 1e-9)
-            order = sorted(range(len(keep)), key=lambda i: -float(flat[:, i].sum()))
-            ops = tx.quad_opacities(flat, order)
-            alpha = [{"texture": keep[order[k + 1]], "alpha": [[int(i), round(float(ops[k, i]), 4)] for i in np.flatnonzero(ops[k] > 1 / 512)]}
-                     for k in range(len(order) - 1)]
-            out.setdefault(c, []).append({"quadrant": q, "base": keep[order[0]], "layers": [a for a in alpha if a["alpha"]],
-                                          "paths": sorted(cur["paths"]), "dropped": round(dropped, 4)})
+            quads[gq] = {"cell": c, "quadrant": q, "w": w, "keep": keep, "gone": set(gone), "paths": sorted(cur["paths"]),
+                         "dropped": float(np.max(sum(w[k] for k in gone))) if gone else 0.0}
+    # a quadrant that could not keep a texture: its neighbours are repainted too (with what the world paints there),
+    # so the texture can fade out toward it from both sides and every shared vertex still reads the same
+    ring = ((-1, -1), (0, -1), (1, -1), (-1, 0), (1, 0), (-1, 1), (0, 1), (1, 1))
+    for gq, Q in list(quads.items()):
+        if not Q["dropped"]:
+            continue
+        for dx, dy in ring:
+            n = (gq[0] + dx, gq[1] + dy)
+            if n in quads:
+                continue
+            c, q, world = world_quadrant(n)
+            if world is None:
+                continue
+            keep = sorted((k for k in world if world[k].max() > 1e-4), key=lambda k: -float(world[k].sum()))[:tx.MAXL]
+            quads[n] = {"cell": c, "quadrant": q, "w": world, "keep": keep, "gone": set(), "paths": [], "dropped": 0.0}
+    if not quads:
+        return {}
+    # the repainted quadrants' vertices as one lattice, so every shared vertex is painted once and read by each quadrant
+    from scipy import ndimage as ndi
+    gx0, gy0 = min(g[0] for g in quads), min(g[1] for g in quads)
+    nx, ny = max(g[0] for g in quads) - gx0 + 1, max(g[1] for g in quads) - gy0 + 1
+    keys = sorted({k for Q in quads.values() for k in Q["keep"]})
+    ki = {k: i for i, k in enumerate(keys)}
+    Wt = np.zeros((ny * 16 + 1, nx * 16 + 1, len(keys)))          # weights, [y from the south, x, texture]
+    lack = np.zeros((ny * 16 + 1, nx * 16 + 1, len(keys)), bool)   # a quadrant there does not keep it (closed squares)
+    cut = np.zeros((ny * 16 + 1, nx * 16 + 1, len(keys)), bool)    # a quadrant there could not keep it though it had it
+    inside = np.zeros((ny * 16 + 1, nx * 16 + 1), bool)
+    road = np.zeros((ny * 16 + 1, nx * 16 + 1))                    # the paths' share of each vertex, kept or not
+    for gq, Q in quads.items():
+        r, c = (gq[1] - gy0) * 16, (gq[0] - gx0) * 16
+        sl = (slice(r, r + 17), slice(c, c + 17))
+        inside[sl] = True
+        road[sl] = sum((v for k, v in Q["w"].items() if k in path_keys), np.zeros(289)).reshape(17, 17)
+        for k in keys:
+            if k in Q["keep"]:
+                Wt[sl + (ki[k],)] = Q["w"][k].reshape(17, 17)
+            else:
+                lack[sl + (ki[k],)] = True
+                cut[sl + (ki[k],)] |= k in Q["gone"]
+    allow = np.ones_like(Wt)
+    for i in range(len(keys)):
+        if cut[..., i].any():   # it fades out toward the quadrants that could not keep it
+            allow[..., i] = np.clip(ndi.distance_transform_edt(~cut[..., i]) / PATH_SEAM_FADE, 0, 1)
+    allow[lack] = 0
+    F = Wt * allow
+    # what the cut and the fade took is given back from what is kept nearby (a blur over 3 vertices), else from
+    # whatever is kept there: a path's loss to the path's textures and the ground's to the ground (a cut never thins
+    # a path), then whatever is still owed to anything kept
+    near = ndi.gaussian_filter(F, (3, 3, 0), mode="constant") * allow
+    is_path = np.array([k in path_keys for k in keys])
+    for grp, share in ((is_path, road), (~is_path, 1 - road), (np.ones(len(keys), bool), None)):
+        if not grp.any():
+            continue
+        need = np.clip((1.0 if share is None else share) - F[..., grp].sum(-1), 0, 1)[..., None]
+        ns, as_ = near[..., grp].sum(-1, keepdims=True), allow[..., grp].sum(-1, keepdims=True)
+        F[..., grp] += need * np.where(ns > 1e-6, near[..., grp] / np.maximum(ns, 1e-9),
+                                       np.where(as_ > 1e-6, allow[..., grp] / np.maximum(as_, 1e-9), 0))
+    bare = inside & (F.sum(-1) < 1e-6)
+    if bare.any():
+        problem(f"path painting: {int(bare.sum())} land vertices are left with no texture their quadrants all keep")
+    out: dict[tuple[int, int], list[dict]] = {}
+    for gq, Q in sorted(quads.items()):
+        r, c = (gq[1] - gy0) * 16, (gq[0] - gx0) * 16
+        keep = Q["keep"]
+        flat = F[r:r + 17, c:c + 17][..., [ki[k] for k in keep]].reshape(289, len(keep))
+        flat = flat / np.maximum(flat.sum(1, keepdims=True), 1e-9)
+        order = sorted(range(len(keep)), key=lambda i: -float(flat[:, i].sum()))
+        ops = tx.quad_opacities(flat, order)
+        alpha = [{"texture": keep[order[k + 1]], "alpha": [[int(i), round(float(ops[k, i]), 4)] for i in np.flatnonzero(ops[k] > 1 / 512)]}
+                 for k in range(len(order) - 1)]
+        out.setdefault(Q["cell"], []).append({"quadrant": Q["quadrant"], "base": keep[order[0]], "layers": [a for a in alpha if a["alpha"]],
+                                              "paths": Q["paths"], "dropped": round(Q["dropped"], 4)})
     return out
 
 
@@ -1600,7 +1690,8 @@ def _plan_place(pid: str, pdir: Path, out: Path, no_navmesh: bool, plan_only: bo
     if land_build not in (facts.get("description") or ""):
         raise SystemExit(f"the world ESM is not of the land build {land_build} its navmesh inputs hold: rebuild the world first")
     land, patched, land_changed = plan_land(P["land"], facts)
-    path_layers = plan_paths(P["paths"], facts)
+    path_walked: set = set()
+    path_layers = plan_paths(P["paths"], facts, path_walked)
     clear = plan_clear(P["clear"], facts)
     facts["patched"] = patched  # the land as built: people's stops outside are seated on it
     from tools.places import people as ppl
@@ -1621,7 +1712,7 @@ def _plan_place(pid: str, pdir: Path, out: Path, no_navmesh: bool, plan_only: bo
     navs: list[dict] = []
     if not no_navmesh:
         solid = [r for r in S["refs"] if r["space"] == "exterior" and (r.get("kind") in SOLID_KINDS or collision_box(r))]
-        touched = {tuple(r["cell"]) for r in solid} | land_changed | set(path_layers)
+        touched = {tuple(r["cell"]) for r in solid} | land_changed | path_walked
         if touched:
             objects, tally = collision_objects(S["refs"])
             polylines = navworld.road_polylines() + [[(x, y, False) for x, y in p["points"]] for p in P["paths"]]

@@ -24,18 +24,22 @@ The recipe (numbers from research/nw-02-ground-water-rules.md and docs/research/
 3. Slope: rock patches over 22 deg on a noise mask.
 4. Water's edge, by the kind of the nearest water, on the signed shore distance (EDGE): marsh, sea (bare beach on the
    strand, beach grass on the dune band behind it), mangrove, river, lake. The band's pull fades to the habitat.
-5. Roads (roadpaint.py, the rule place paths share): from the surface edge (3.45 m from a major spine, 2 m minor) the
-   road holds the measured ramp; its track core (two materials of the province's road set, varying along it) hands
-   to the verge over 4.5 m; it fades out over the last 4 m before water.
+5. Roads (roadpaint.py, the rule place paths share, laid as it is with no smoothing): from the surface edge (3.45 m
+   from a major spine, 2 m minor) the road holds its straight ramp; its track core (two materials of the province's
+   road set, varying along it) falls away over 6.5 m and the verge holds the rest; a major and a minor road's
+   classes blend where they meet; toward water it is capped by a ramp over the last 8 m of
+   land (ROAD_WATER).
 6. Grass: in each province, the grassy materials it names carry its own grass list (a variant material `id~province`,
    its own LTEX), so a marsh in the delta grows reeds and saltrice and one on the coast violets and saltrice.
-7. Smooth: each vertex keeps its 4 heaviest ground materials, the ground is blurred over 1.5 vertices, the road laid
-   over it blurred over 1 vertex (its ramp is smooth by its rule; a full blur would leave ground and grass on a narrow
-   road's spine), traces under 8% are
-   dropped (the road and the ground each keeping their share); each quadrant keeps at most six materials (the engine's six texture slots: base + 5 alpha layers), road
-   the heaviest at its corners first, then road materials, then by weight over the quadrant + an 8-vertex halo; a material
-   fades to 0 over 6 vertices toward any quadrant that does not keep it (closed squares, so a shared vertex reads the
-   same from every quadrant), and what the fade takes is given back from a broad blur of the materials kept there.
+7. Smooth and cut: each vertex keeps its 4 heaviest ground materials, the ground is blurred over 1.5 vertices and the
+   road laid over it; traces under 8% are dropped (the road and the ground each keeping their share). Each quadrant
+   keeps at most six materials (the engine's six texture slots: base + 5 alpha layers): the heaviest ground at each of
+   its corners (of the ground blurred over 6 vertices; so the quadrants round a corner always share a ground), its
+   road materials (the track every road set carries first, so road quadrants always share a road material, then the
+   heaviest), then by weight over the quadrant + an 8-vertex halo. A material fades to 0 over 8 vertices toward
+   any quadrant that does not keep it (closed squares, so a shared vertex reads the same from every quadrant); what
+   the fade takes from a road material goes to the road materials kept there and what it takes from the ground to the
+   ground kept there, so the cut never opens a hole in a road nor lays road over ground.
 8. Layers: base = the quadrant's heaviest; alpha layers in falling coverage; opacities inverted from the weights
    (top down: o = w / what is left), so the composite is the painted weights exactly (to 1/255).
 Interrupt-proof: keyed on the land key + landcover key + this code; resumes by row; 3 worker processes.
@@ -58,10 +62,12 @@ from tools.newworld.world import roadpaint as rp
 REPO = Path(__file__).resolve().parents[3]
 LC = REPO / "out/newworld/landcover"
 MAXL = 6  # base + 5 alpha layers: the six texture slots of the landscape shader (roadpaint.py)
-FADE = 6.0  # vertices
+FADE = 8.0  # vertices (no more than the halo HQ: what fades is what the neighbour's halo saw too little of)
 TOP_V = 4
 HQ = 8  # halo, vertices, over which a quadrant's materials are chosen
 PRUNE = 0.08
+CORNER_BLUR = 6.0  # vertices; its reach (3 sigma) and the ground blur's (6) end inside every row window's halo, so every window
+# reads a corner alike
 Q = 17
 QBYTES = 1 + MAXL + (MAXL - 1) * Q * Q
 M = 128 / 70.0  # metres per vertex
@@ -247,6 +253,7 @@ MAT = BASE + [f"{m}~{p}" for m, p in VARIANTS]
 MI = {m: i for i, m in enumerate(MAT)}
 NM = len(MAT)
 ROAD_IX = np.array([MI[m] for m in rp.ROAD_MATERIALS])
+ROAD_COMMON = MI[rp.COMMON_TRACK]
 IS_ROAD = np.zeros(NM, bool)
 IS_ROAD[ROAD_IX] = True
 
@@ -292,6 +299,8 @@ ROCK = {"rock": .5, "rock_grass": .5}
 NOISE_SEED = 9113
 K_ENV = 1.5   # the middle scale: moisture, shade and roughness
 K_FINE = 1.8  # the small scale: each material's own value noise at 15 and 37 m
+ROAD_WATER = (0.9, 8.9)  # shore distance (m; the waterline lies half a sample from the last land vertex): no road
+# from here, the whole road from there
 FINE_S = (8, 20)  # samples
 
 
@@ -467,21 +476,28 @@ class Painter:
         # roads (roadpaint.py): the measured ramp from the surface edge, track core to verge, two tracks along it
         road = np.asarray(A["road"][sl], np.float32) / 10
         cls = np.asarray(A["roadcls"][sl])
-        major = cls == 1
-        half = np.where(major, rp.HALF_M["major"], rp.HALF_M["minor"])
-        scale = np.where(major, rp.SCALE["major"], rp.SCALE["minor"])
-        near = (cls > 0) & (road - half < rp.reach_m(1.0)) & (shore > -1)
+        # where a major and a minor road meet, the class (half width and scale) blends over ~3 vertices, so the nearer
+        # road's change of class is a flare, never a step (read 24 rows wider than the window, as below)
+        ra, rb = max(r0 - 24, 0), min(r1 + 24, A["roadcls"].shape[0])
+        major = ndi.gaussian_filter((np.asarray(A["roadcls"][ra:rb, c0:c1]) == 1).astype(np.float32), 3, mode="nearest")[r0 - ra:r0 - ra + cls.shape[0]]
+        half = rp.HALF_M["minor"] + (rp.HALF_M["major"] - rp.HALF_M["minor"]) * major
+        scale = rp.SCALE["minor"] + (rp.SCALE["major"] - rp.SCALE["minor"]) * major
+        near = (cls > 0) & (road - half < rp.reach_m(1.0)) & (shore > ROAD_WATER[0])
         pull = np.zeros(road.shape, np.float32)
         road_w = np.zeros(road.shape + (len(ROAD_IX),), np.float32)
         if near.any():
             e = road[near] - half[near]
             mix = road_mix(ri[near] + self.world_off[0], ci[near] + self.world_off[1])
             p, a, b, v = rp.road_weights(e, scale[near], mix)
-            fade = np.clip((shore[near] + 1) / 4, 0, 1)  # the road runs out over the last 4 m before water
-            p, a, b, v = p * fade, a * fade, b * fade, v * fade
+            # toward water the road is capped by a ramp of its own (the lower of the two: never steeper than either)
+            cap = np.clip((shore[near] - ROAD_WATER[0]) / (ROAD_WATER[1] - ROAD_WATER[0]), 0, 1)
+            k = np.minimum(p, cap) / np.maximum(p, 1e-9)
+            p, a, b, v = p * k, a * k, b * k, v * k
             # where two ground provinces' road sets meet, each set's share blends over ~10 m (no join in one vertex)
-            onehot = np.stack([(self.region_road[reg] == k).astype(np.float32) for k in range(len(ROAD_SET_NAMES))], -1)
-            soft = ndi.gaussian_filter(onehot, (6, 6, 0), mode="nearest")[near]
+            # (read 24 rows wider than the window, the blur's reach, so every window paints a vertex alike)
+            wide = self.region_road[np.asarray(A["region"][ra:rb, c0:c1])]
+            onehot = np.stack([(wide == k).astype(np.float32) for k in range(len(ROAD_SET_NAMES))], -1)
+            soft = ndi.gaussian_filter(onehot, (6, 6, 0), mode="nearest")[r0 - ra:r0 - ra + reg.shape[0]][near]
             soft /= soft.sum(-1, keepdims=True) + 1e-9
             rv = np.zeros((e.size, len(ROAD_IX)), np.float32)
             idx = np.arange(e.size)
@@ -535,26 +551,29 @@ def prune(w: np.ndarray) -> np.ndarray:
     return out
 
 
-def quadrant_sets(w: np.ndarray, hq: int = 1):
-    """w [rows, cols, NM] on a window whose row/col hq lies on a quadrant line (an hq-vertex halo before it):
-    -> (keep [qr, qc, NM] bool, sums [qr, qc, NM]). A quadrant keeps the heaviest material at each of its four corners
-    (so the quadrants meeting at a corner, and along an edge, always share one), then the road materials it or its
-    halo carries (a road is dropped only where four corner materials leave too few slots), then its heaviest by summed
-    weight over the quadrant + its hq halo, up to MAXL (a wide halo makes neighbours' sets agree)."""
+def quadrant_sets(w: np.ndarray, ground: np.ndarray, hq: int = 1):
+    """w [rows, cols, NM] on a window whose row/col hq lies on a quadrant line (an hq-vertex halo before it), and the
+    ground under the road there, broadly blurred (the same window): -> (keep [qr, qc, NM] bool, sums [qr, qc, NM]).
+    A quadrant keeps the heaviest ground at each of its four corners (so the quadrants meeting at a corner, and along
+    an edge, always share a ground), then the road materials it or its halo carries (the track every road set has
+    first, so road quadrants always share a road material, then the heaviest; four corners leave two slots),
+    then its heaviest by summed weight over the quadrant + its hq halo, up to MAXL (a wide halo makes neighbours' sets
+    agree)."""
     R, C = w.shape[0] - 2 * hq, w.shape[1] - 2 * hq
     nqr, nqc = (R - 1) // 16, (C - 1) // 16
     keep = np.zeros((nqr, nqc, NM), bool)
     sums = np.zeros((nqr, nqc, NM), np.float64)
-    corner = np.argmax(w[hq:R + hq:16, hq:C + hq:16], -1)  # the heaviest material at every quadrant corner
+    # rounded, ties to the lower index: every window that sees a corner or a quadrant picks alike
+    corner = np.argmax(np.round(ground[hq:R + hq:16, hq:C + hq:16], 4), -1)
     for i in range(nqr):
         a, b = i * 16, i * 16 + 17 + 2 * hq  # quadrant 17 + halo each side
         for j in range(nqc):
             c, d = j * 16, j * 16 + 17 + 2 * hq
-            # summed directly and rounded, ties to the lower index: every window that sees this quadrant picks alike
             s = np.round(w[a:b, c:d].astype(np.float64).sum((0, 1)), 4)
             sums[i, j] = s
-            roads = [int(k) for k in ROAD_IX[np.argsort(-s[ROAD_IX], kind="stable")] if s[k] > 0.5]
-            forced = list(dict.fromkeys([int(corner[i + di, j + dj]) for di in (0, 1) for dj in (0, 1)] + roads))
+            roads = [ROAD_COMMON] + [int(k) for k in ROAD_IX[np.argsort(-s[ROAD_IX], kind="stable")] if k != ROAD_COMMON]
+            forced = list(dict.fromkeys([int(corner[i + di, j + dj]) for di in (0, 1) for dj in (0, 1)]
+                                        + [k for k in roads if s[k] > 0.5]))
             top = forced + [int(k) for k in np.lexsort((np.arange(NM), -s)) if s[k] > 1e-3 and k not in forced]
             keep[i, j, top[:MAXL]] = True
     return keep, sums
@@ -564,7 +583,7 @@ def encode_row(p: Painter, g: dict, cy: int):
     """One cell row: shard bytes and per-row stats."""
     H, W = p.arr["habitat"].shape
     north = (g["cy_top"] - cy) * 32
-    halo = 40  # two quadrants + halo vertex + the blur's reach (6)
+    halo = 40  # two quadrants + the quadrant halo (HQ); the blurs' reach (24 at most) lies inside it for the rows that count
     r0, r1 = north - halo, north + 33 + halo
     rr0, rr1 = max(r0, 0), min(r1, H)
     w, pull, road_w = p.weights(rr0, rr1, 0, W)
@@ -576,16 +595,18 @@ def encode_row(p: Painter, g: dict, cy: int):
     # so after the blur a quadrant rarely needs more than its six layers and the seam fade seldom has work to do
     w = top_v(w)
     w = ndi.gaussian_filter(w, (1.5, 1.5, 0), mode="nearest")
-    # the road over the blurred ground, itself blurred less (1 vertex): its ramp is smooth by its rule, and a full
-    # blur would leave ground (and grass) on a narrow road's spine
-    pf = ndi.gaussian_filter(pull, (1.0, 1.0, 0), mode="nearest")
-    w = w * (1 - pf)
-    w[..., ROAD_IX] += ndi.gaussian_filter(road_w, (1.0, 1.0, 0), mode="nearest")
+    # the road over the blurred ground, as its rule gives it (soft by itself; a blur would thin a narrow road's spine)
+    ground = w
+    w = ground * (1 - pull)
+    w[..., ROAD_IX] += road_w
     w = prune(w)
     # quadrant lattice: 6 quadrant rows from north-32 (the cell's two are rows 2, 3), 2 quadrant columns of pad
     a0 = halo - 32 - HQ
-    win = np.pad(w[a0:a0 + 97 + 2 * HQ], ((0, 0), (32 + HQ, 32 + HQ), (0, 0)), mode="edge")
-    keep, _ = quadrant_sets(win, HQ)  # [6, nqc, NM]; quadrant row 2, 3 = the cell's; column j = global quadrant j - 2
+    lat = ((0, 0), (32 + HQ, 32 + HQ), (0, 0))
+    # the corners' ground is read from a broader blur (CORNER_BLUR), so a quadrant's four corners seldom name four
+    ground = ndi.gaussian_filter(ground, (CORNER_BLUR, CORNER_BLUR, 0), mode="nearest", truncate=3.0)
+    keep, _ = quadrant_sets(np.pad(w[a0:a0 + 97 + 2 * HQ], lat, mode="edge"), np.pad(ground[a0:a0 + 97 + 2 * HQ], lat, mode="edge"), HQ)
+    del ground  # [6, nqc, NM]; quadrant row 2, 3 = the cell's; column j = global quadrant j - 2
     # seam fade: each material fades to 0 over FADE vertices toward any quadrant that does not keep it (closed
     # squares, so a shared vertex reads the same from every quadrant), a pure function of position and the sets
     nqr, nqc = keep.shape[:2]
@@ -607,14 +628,24 @@ def encode_row(p: Painter, g: dict, cy: int):
     st = {"layers": []}
     cell_rows = w[halo:halo + 33]
     # what a fade takes is given back from a broad blur (sigma 6) of the materials still allowed there, so no
-    # vertex is renormalised from a small remainder (which would jump)
+    # vertex is renormalised from a small remainder (which would jump): the road's loss to the road materials kept
+    # there, the ground's to the ground, so the cut never thins a road
     broad = ndi.gaussian_filter(w[halo - 24:halo + 57], (6, 6, 0), mode="nearest")[24:57]
     for i in range(g["cells_x"]):
         sl = slice(i * 32, i * 32 + 33)
         allowed = fade[32:65, i * 32 + 32:i * 32 + 65]
         cw = cell_rows[:, sl] * allowed
-        s = cw.sum(-1, keepdims=True)
         fill = broad[:, sl] * allowed
+        for grp in (IS_ROAD, ~IS_ROAD):
+            lost = (cell_rows[:, sl][..., grp].sum(-1) - cw[..., grp].sum(-1))[..., None]
+            # by the broad blur of what the group keeps here, a fading material taking almost nothing back until its
+            # fade is nearly done (its fade to the fourth power), so what stays rises in a straight ramp as the other
+            # falls; where that has no weight, by what the group keeps
+            gf, ga = fill[..., grp] * allowed[..., grp] ** 3, allowed[..., grp]
+            gs, gas = gf.sum(-1, keepdims=True), ga.sum(-1, keepdims=True)
+            share = np.where(gs > 1e-4, gf / np.maximum(gs, 1e-9), np.where(gas > 1e-6, ga / np.maximum(gas, 1e-9), 0))
+            cw[..., grp] += lost * share
+        s = cw.sum(-1, keepdims=True)
         fs = fill.sum(-1, keepdims=True)
         ok = fs[..., 0] > 1e-4
         cw[ok] += (1 - s[ok]) * fill[ok] / fs[ok]

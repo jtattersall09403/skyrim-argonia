@@ -1,5 +1,6 @@
 """The ground paint's rules: the road ramp, the six-slot cap, the materials and provinces, the engine view."""
 import json
+import os
 from pathlib import Path
 
 import numpy as np
@@ -12,28 +13,66 @@ from tools.newworld.world import texture as tx
 REPO = Path(__file__).resolve().parents[2]
 
 
-def test_the_road_ramp_never_steps_more_than_half_between_two_vertices_and_is_gone_at_its_reach():
+STUDIO_FIXTURE = REPO / "tools/places/studio/web/test/road_rule.json"
+
+
+def road_rule_fixture() -> dict:
+    """The road rule's numbers at fixed inputs, for the studio's path_paint.js to be tested against (node reads the
+    file; this module proves the file is what the Python rule gives)."""
+    pts = [[0, 0], [-838680, -835251], [12345, -67890], [-344064, -385024], [5000, 77777]]
+    mix = [float(tx.road_mix(np.array([int(np.floor(-y / 128 + 0.5))]), np.array([int(np.floor(x / 128 + 0.5))]))[0]) for x, y in pts]
+    cases = []
+    for scale in sorted(set(rp.SCALE.values())):
+        for e in (-4.0, -2.0, -0.45, 0.0, 1.0, 3.05, 5.0, 8.0, 9.0):
+            for m in (-1.2, 0.0, 0.3, 2.0):
+                p, a, b, v = (float(x) for x in rp.road_weights(e, scale, m))
+                ov, ob, oa = (float(x) for x in rp.layer_opacities(e, scale, m))
+                cases.append({"e": e, "scale": scale, "mix": m, "weights": [p, a, b, v], "opacities": [ov, ob, oa]})
+    r6 = lambda o: json.loads(json.dumps(o), parse_float=lambda x: round(float(x), 6))
+    return r6({"road_mix": [{"x": x, "y": y, "value": v} for (x, y), v in zip(pts, mix)], "cases": cases,
+               "road_sets": {k: list(v) for k, v in rp.ROAD_SETS.items()}})
+
+
+def test_the_studio_fixture_is_what_the_rule_gives():
+    want = road_rule_fixture()
+    if os.environ.get("ARGONIA_WRITE_FIXTURES"):
+        STUDIO_FIXTURE.write_text(json.dumps(want, indent=1) + "\n")
+    assert json.loads(STUDIO_FIXTURE.read_text()) == want
+
+
+def test_the_road_is_no_steeper_than_skyrims_mean_ramp_and_is_gone_at_its_reach():
     for scale in (rp.SCALE["major"], rp.SCALE["minor"]):
         e = np.arange(-6, 12, rp.VERTEX_M / 4)  # any vertex placement across the edge
         for shift in np.linspace(0, rp.VERTEX_M, 5):
-            a = rp.pull(e + shift, scale)
-            b = rp.pull(e + shift + rp.VERTEX_M, scale)
-            assert np.abs(a - b).max() <= 0.5
+            for mix in (-2.0, 0.0, 2.0):
+                here = rp.road_weights(e + shift, scale, mix)
+                there = rp.road_weights(e + shift + rp.VERTEX_M, scale, mix)
+                assert np.abs(here[0] - there[0]).max() <= 0.31       # the road's weight (texcheck road_step_p99)
+                for a, b in zip(here[1:], there[1:]):                  # each of its materials (texcheck road_join_max)
+                    assert np.abs(a - b).max() <= 0.31
         assert rp.pull(rp.reach_m(scale), scale) == 0 and rp.pull(-3, scale) >= 0.97
 
 
-def test_the_core_hands_to_the_verge_over_two_vertices_or_more():
-    assert (rp.CORE_OUT - rp.CORE_IN) >= 2 * rp.VERTEX_M
+def test_no_grass_reaches_a_spine_and_every_set_carries_the_common_track():
+    assert tx.MATERIALS[rp.COMMON_TRACK][1] == []
+    for s in rp.ROAD_SETS.values():
+        assert rp.COMMON_TRACK in s[:2]
+    for cls in ("major", "minor"):   # within 1.5 m of a spine (texcheck's spine) the road holds 0.97 or more
+        assert rp.pull(1.5 - rp.HALF_M[cls], rp.SCALE[cls]) >= 0.97
+
+
+def test_the_core_falls_away_over_three_vertices_or_more_and_the_weights_sum_to_the_pull():
+    assert (rp.CORE_OUT - rp.CORE_IN) >= 3 * rp.VERTEX_M
     p, a, b, v = rp.road_weights(np.array([-3.0, 0.0, 3.0]), 1.0, np.array([0.0, 2.0, -2.0]))
-    assert np.allclose(a + b + v, p)
+    assert np.allclose(a + b + v, p) and (v >= 0).all()
     m = rp.track_mix(np.array([-9.0, 9.0]))
     assert m.min() >= rp.TRACK_MIN - 1e-9 and m.max() <= 1 - rp.TRACK_MIN + 1e-9
 
 
 def test_the_three_layers_compose_to_the_road_weights():
     e = np.linspace(-4, 9, 40)
-    ov, ob, oa = rp.layer_opacities(e, 0.6, 0.4)
-    p, a, b, v = rp.road_weights(e, 0.6, 0.4)
+    ov, ob, oa = rp.layer_opacities(e, 0.8, 0.4)
+    p, a, b, v = rp.road_weights(e, 0.8, 0.4)
     assert np.allclose(oa, a, atol=1e-9)
     assert np.allclose(ob * (1 - oa), b, atol=1e-9)
     assert np.allclose(ov * (1 - ob) * (1 - oa), v, atol=1e-9)
@@ -66,11 +105,36 @@ def test_the_engine_view_hides_a_seventh_texture():
     assert lost[0, :, 6].min() == 1
 
 
-def test_steps_count_the_triangle_diagonal():
+def test_steps_count_the_triangle_diagonal_per_vertex_spacing():
     g = np.zeros((17, 17, 1), np.float32)
-    g[1, 0] = 1  # one vertex: its diagonal neighbour (0, 1) steps by 1
+    g[1, 0] = 1  # one vertex: its diagonal neighbour (0, 1) steps by 1 over 1.41 spacings
     s = np.abs(tc.steps(g))
     assert s.max() == 1 and s.shape[0] == 16 * 17 * 2 + 16 * 16
+    assert abs(float(s[16 * 17 * 2:].max()) - 1 / np.sqrt(2)) < 1e-6
+
+
+def test_a_quadrant_keeps_its_corner_grounds_then_the_common_track_then_the_heaviest_roads():
+    hq = 2
+    n = 17 + 2 * hq
+    w = np.zeros((n, n, tx.NM), np.float32)
+    ground = np.zeros_like(w)
+    names = ["moss", "rock", "sand", "meadow"]
+    for k, m in enumerate(names):   # four grounds, one heaviest at each corner
+        ground[(hq, hq, hq + 16, hq + 16)[k], (hq, hq + 16, hq, hq + 16)[k], tx.MI[m]] = 1
+        w[..., tx.MI[m]] = 0.1
+    for m, v in (("gravel_track", 0.05), ("mud_track", 0.2), ("verge", 0.3)):
+        w[..., tx.MI[m]] = v
+    keep, _ = tx.quadrant_sets(w, ground, hq)
+    kept = {tx.MAT[i] for i in np.flatnonzero(keep[0, 0])}
+    assert kept == set(names) | {"gravel_track", "verge"}   # four corners, the common track, the heaviest other road
+
+
+def test_the_road_distance_is_to_the_line_itself():
+    segs = [(10.0, 10.0, 30.0, 30.0, 2), (10.0, 10.0, 10.0, 60.0, 1)]  # a diagonal path and a major road from one point
+    d, cls = lc.road_field((80, 80), segs)
+    assert abs(d[20, 21] - np.sqrt(0.5)) < 1e-4 and d[20, 20] == 0   # beside the diagonal: 0.71 samples, not 1
+    assert cls[20, 21] == 2 and cls[10, 40] == 1 and cls[10, 10] == 1  # a major road wins the tie at the junction
+    assert abs(d[70, 70] - np.hypot(40, 40)) < 1.0 and d[79, 0] >= lc.ROAD_EXACT
 
 
 def test_value_noise_is_a_function_of_position_alone():

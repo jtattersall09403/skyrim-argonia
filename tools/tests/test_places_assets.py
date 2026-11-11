@@ -176,6 +176,27 @@ def test_resolution_loose_winner_case_insensitive_then_archive(tmp_path):
     assert resolve.norm("Data\\Meshes\\X.nif", "meshes") == "meshes\\x.nif"
 
 
+def test_resolution_ignores_case_along_the_whole_path_when_a_mod_holds_two_spellings_of_a_folder(tmp_path):
+    # Tropical Skyrim holds both `Meshes/` and `meshes/`: a file under either is found by the lower-case data path
+    stack, data, assets = tmp_path / "stack", tmp_path / "data", tmp_path / "nw"
+    (assets / "ts" / "meshes" / "landscape" / "trees").mkdir(parents=True)
+    (assets / "ts" / "meshes" / "landscape" / "trees" / "palm.nif").write_bytes(b"tree")
+    (assets / "ts" / "Meshes" / "Landscape" / "Grass").mkdir(parents=True)
+    (assets / "ts" / "Meshes" / "Landscape" / "Grass" / "FernGrass01.NIF").write_bytes(b"grass")
+    (assets / "ts" / "Meshes" / "landscape" / "grass").mkdir(parents=True)
+    (assets / "ts" / "Meshes" / "landscape" / "grass" / "reed.nif").write_bytes(b"reed")
+    stack.mkdir()
+    data.mkdir()
+    (stack / "installed-NewWorld.json").write_text(json.dumps({"files": {
+        "meshes\\landscape\\grass\\ferngrass01.nif": ["ts", "x"], "meshes\\landscape\\trees\\palm.nif": ["ts", "x"],
+        "Meshes/Landscape/Grass/reed.nif": ["ts", "x"], "meshes\\landscape\\grass\\absent.nif": ["ts", "x"]}}))
+    r = resolve.Resolver(stack, data, assets)
+    assert r.read(resolve.norm("Landscape\\Grass\\FernGrass01.nif", "meshes")) == b"grass"
+    assert r.read(resolve.norm("landscape\\trees\\palm.nif", "meshes")) == b"tree"
+    assert r.read(resolve.norm("landscape/grass/REED.nif", "meshes")) == b"reed"
+    assert r.loose_file("meshes\\landscape\\grass\\absent.nif") is None
+
+
 def test_catalogue_fields():
     assert catalogue.is_nordic({"edid": "WRHouse01", "model": "architecture/whiterun/wrhouse01.nif"})
     assert catalogue.is_nordic({"edid": "TreePineForest01", "model": "landscape/trees/treepineforest01.nif"})

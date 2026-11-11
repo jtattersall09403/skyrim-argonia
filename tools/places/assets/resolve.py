@@ -53,7 +53,8 @@ class Resolver:
     def __init__(self, stack: Path = STACK, data: Path = DATA, asset_mods: Path = ASSET_MODS, profile: str = PROFILE):
         self.stack, self.data, self.asset_mods = stack, data, asset_mods
         rec = stack / f"installed-{profile}.json"
-        self.loose: dict[str, str] = {k: v[0] for k, v in json.loads(rec.read_text())["files"].items()} if rec.exists() else {}
+        self.loose: dict[str, str] = ({k.replace("/", "\\").lower(): v[0] for k, v in json.loads(rec.read_text())["files"].items()}
+                                      if rec.exists() else {})
         ml = stack / "MO2" / "profiles" / profile / "modlist.txt"
         self.order = [ln[1:].strip() for ln in ml.read_text(errors="replace").splitlines() if ln.startswith("+")] if ml.exists() else []
         self._dirs: dict[Path, dict[str, str]] = {}
@@ -61,22 +62,30 @@ class Resolver:
         self._lock = threading.Lock()
 
     # ---- loose files
-    def _ls(self, d: Path) -> dict[str, str]:
+    def _ls(self, d: Path) -> dict[str, list[str]]:
+        """A folder's entries by lower-case name: every spelling, since a mod may hold both `Meshes` and `meshes`."""
         if d not in self._dirs:
+            names: dict[str, list[str]] = {}
             try:
-                self._dirs[d] = {n.lower(): n for n in os.listdir(d)}
+                for n in sorted(os.listdir(d)):
+                    names.setdefault(n.lower(), []).append(n)
             except OSError:
-                self._dirs[d] = {}
+                pass
+            self._dirs[d] = names
         return self._dirs[d]
 
     def _find(self, root: Path, key: str) -> Path | None:
-        p = root
-        for part in key.split("\\"):
-            n = self._ls(p).get(part)
-            if n is None:
-                return None
-            p = p / n
-        return p if p.is_file() else None
+        """The file a lower-case data path names under a mod's folder, whatever the case of any folder or of the file
+        along the way (the game's loader ignores case on the whole path): every spelling of each part is followed."""
+        def walk(p: Path, parts: list[str]) -> Path | None:
+            if not parts:
+                return p if p.is_file() else None
+            for n in self._ls(p).get(parts[0], ()):
+                f = walk(p / n, parts[1:])
+                if f:
+                    return f
+            return None
+        return walk(root, key.split("\\"))
 
     def loose_file(self, key: str) -> Path | None:
         mod = self.loose.get(key)

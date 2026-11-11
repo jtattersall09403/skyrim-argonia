@@ -1,11 +1,13 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { PULL_E, PULL_W, CORE_IN, CORE_OUT, TRACK_MIN, SCALE, STYLE_CLASS, ROAD_SETS, PATH_STYLE_LTEX, pull, layerOpacities,
-  roadMix, pathLtexes, pathLtex, roadSetName, cellLayers } from '../js/path_paint.js';
+import { PULL_E, PULL_W, CORE_IN, CORE_OUT, TRACK_MIN, SCALE, STYLE_CLASS, ROAD_SETS, PATH_STYLE_LTEX, LTEX_PREFIX, pull, layerOpacities,
+  roadWeights, roadMix, pathLtexes, pathLtex, roadSetName, cellLayers } from '../js/path_paint.js';
 
 const rule = readFileSync(new URL('../../../../newworld/world/roadpaint.py', import.meta.url), 'utf8');
 const build = readFileSync(new URL('../../../build.py', import.meta.url), 'utf8');
+// the Python rule's own numbers (tools/tests/test_newworld_ground.py proves the file is what roadpaint.py gives)
+const fixture = JSON.parse(readFileSync(new URL('./road_rule.json', import.meta.url), 'utf8'));
 const pyTuple = (name) => JSON.parse(`[${rule.match(new RegExp(`^${name} = \\(([^)]*)\\)`, 'm'))[1]}]`);
 const pyNum = (name) => Number(rule.match(new RegExp(`${name} = (-?[\\d.]+)`))[1]);
 
@@ -20,21 +22,23 @@ test('the studio paints paths by the world road rule: the ramp, the core, the cl
     const m = rule.match(new RegExp(`"${name}": \\(([^)]*)\\)`));
     assert.deepEqual(set, JSON.parse(`[${m[1]}]`), name);
   }
+  assert.deepEqual(ROAD_SETS, fixture.road_sets);
   assert.deepEqual(PATH_STYLE_LTEX, JSON.parse(build.match(/^PATH_STYLE_LTEX = (\{[^}]*\})/m)[1]));
+  assert.equal(LTEX_PREFIX, build.match(/^WORLD_LTEX_PREFIX = "([^"]*)"/m)[1]);
 });
-test('the ramp is full on the path, falls over at least two vertices, and is gone at its reach', () => {
-  assert.equal(pull(-3, 1), 1); assert.ok(Math.abs(pull(1.55, 1) - 0.76) < 1e-9); assert.equal(pull(8.55, 1), 0);
-  assert.ok(Math.abs(pull(1.55 * 0.6, 0.6) - 0.76) < 1e-9);
-  // two vertices (3.66 m) out from full: still over a third, so no one-vertex edge
-  assert.ok(pull(-0.45 + 3.66, 1) > 0.35);
+test('the ramp is full on the path, straight beyond it, and gone at its reach', () => {
+  assert.equal(pull(-3, 1), 1); assert.ok(Math.abs(pull(4.05, 1) - 0.485) < 1e-9); assert.equal(pull(8.55, 1), 0);
+  assert.ok(Math.abs(pull(4.05 * 0.8, 0.8) - 0.485) < 1e-9);
+  // one vertex (1.83 m) further out never costs more than 0.31 (Skyrim's mean road ramp), on either class
+  for (const scale of Object.values(SCALE)) for (let e = -5; e < 10; e += 0.25) assert.ok(Math.abs(pull(e, scale) - pull(e + 128 / 70, scale)) <= 0.31);
 });
-test('the along-road mix and the three layers match the Python rule bit for bit (texture.road_mix, layer_opacities)', () => {
-  // values from tools/newworld/world/texture.py road_mix at these world points
-  const want = [[[0, 0], 1.09873], [[-838680, -835251], -0.83644], [[12345, -67890], -0.035616], [[-344064, -385024], -1.667214]];
-  for (const [[x, y], v] of want) assert.ok(Math.abs(roadMix(x, y) - v) < 1e-5, `${x},${y}: ${roadMix(x, y)} vs ${v}`);
-  // roadpaint.layer_opacities([-2, 0, 1, 3], 0.6, 0.3)[0] (the verge layer)
-  const verge = [-2, 0, 1, 3].map((e) => layerOpacities(e, 0.6, 0.3)[0]);
-  [0.0, 0.910502, 0.736667, 0.3195].forEach((v, i) => assert.ok(Math.abs(verge[i] - v) < 1e-5, `${i}: ${verge[i]}`));
+test('the along-road mix, the weights and the three layers are the Python rule\'s own numbers', () => {
+  assert.ok(fixture.road_mix.length >= 5 && fixture.cases.length >= 50);
+  for (const { x, y, value } of fixture.road_mix) assert.ok(Math.abs(roadMix(x, y) - value) < 2e-6, `${x},${y}: ${roadMix(x, y)} vs ${value}`);
+  for (const c of fixture.cases) {
+    roadWeights(c.e, c.scale, c.mix).forEach((v, i) => assert.ok(Math.abs(v - c.weights[i]) < 2e-6, `weights ${JSON.stringify(c)}: ${v}`));
+    layerOpacities(c.e, c.scale, c.mix).forEach((v, i) => assert.ok(Math.abs(v - c.opacities[i]) < 2e-6, `opacities ${JSON.stringify(c)}: ${v}`));
+  }
 });
 test('a style takes the road set of the ground, a one-texture style its texture, a picked key itself', () => {
   const ltex = { 'A:1': { edid: 'ANW_Ground_gravel_track' }, 'A:2': { edid: 'ANW_Ground_mud_track' }, 'A:3': { edid: 'ANW_Ground_verge' },
@@ -43,6 +47,9 @@ test('a style takes the road set of the ground, a one-texture style its texture,
   assert.deepEqual(pathLtexes('road', ltex, 'marsh'), ['A:2', 'A:1', 'A:3']);
   assert.deepEqual(pathLtexes('mud', ltex), ['A:4', 'A:4', 'A:4']); assert.deepEqual(pathLtexes('A:2', ltex), ['A:2', 'A:2', 'A:2']);
   assert.equal(pathLtex('dirt', ltex, 'coast'), 'A:5'); assert.equal(pathLtexes('dirt', { 'B:1': { edid: 'Grass' } }), null);
+  // a material is found by its whole name: `verge` is never `clay_verge`, whichever the land lists first
+  const clayFirst = { 'A:6': ltex['A:6'], ...ltex };
+  assert.deepEqual(pathLtexes('dirt', clayFirst, 'forest'), ['A:1', 'A:2', 'A:3']);
   const terrain = { ltex, list: [{ quadrants: [{ base: 'A:5', layers: [{ tex: 'A:6' }] }] }] };
   assert.equal(roadSetName(terrain), 'coast'); assert.equal(roadSetName({ ltex, list: [] }), 'forest');
 });

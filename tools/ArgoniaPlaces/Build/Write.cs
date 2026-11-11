@@ -281,23 +281,6 @@ static class Write
                     land.VertexHeightMap = new LandscapeVertexHeightMap { Offset = (float)h.GetProperty("offset").GetDouble(), HeightMap = hm };
                     land.VertexNormals = nm;
                 }
-                if (L.TryGetProperty("layers", out var ls) && ls.ValueKind == JsonValueKind.Array)
-                {
-                    if (land.Layers is null) throw new InvalidDataException($"cell {x},{y}: the world LAND has no layers");
-                    foreach (var a in ls.EnumerateArray())
-                    {
-                        var q = (Quadrant)a.GetProperty("quadrant").GetInt32();
-                        var next = land.Layers.Where(z => z.Header!.Quadrant == q && z is AlphaLayer).Select(z => (int)z.Header!.LayerNumber).DefaultIfEmpty(-1).Max() + 1;
-                        var ad = new ExtendedList<AlphaLayerData>();
-                        foreach (var pv in a.GetProperty("alpha").EnumerateArray())
-                            ad.Add(new AlphaLayerData { Position = (ushort)pv[0].GetInt32(), Opacity = (float)pv[1].GetDouble() });
-                        land.Layers.Add(new AlphaLayer
-                        {
-                            Header = new LayerHeader { Texture = new FormLink<ILandscapeTextureGetter>(ctx.Link(a.GetProperty("texture").GetString()!)), Quadrant = q, LayerNumber = (ushort)next },
-                            AlphaLayerData = ad,
-                        });
-                    }
-                }
                 if (L.TryGetProperty("quads", out var qs) && qs.ValueKind == JsonValueKind.Array)
                 {
                     // a quadrant the place's paths repaint: its base and alpha layers replace the world's (build.py plan_paths)
@@ -305,14 +288,21 @@ static class Write
                     foreach (var a in qs.EnumerateArray())
                     {
                         var q = (Quadrant)a.GetProperty("quadrant").GetInt32();
+                        var alphas = a.GetProperty("layers").EnumerateArray().ToList();
+                        if (alphas.Count > 5) throw new InvalidDataException($"cell {x},{y} quadrant {q}: {alphas.Count + 1} land textures (the game shows six)");
                         land.Layers.RemoveAll(z => z.Header!.Quadrant == q);
                         land.Layers.Add(new BaseLayer { Header = new LayerHeader { Texture = new FormLink<ILandscapeTextureGetter>(ctx.Link(a.GetProperty("base").GetString()!)), Quadrant = q, LayerNumber = 0xFFFF } });
                         ushort k = 0;
-                        foreach (var l in a.GetProperty("layers").EnumerateArray())
+                        foreach (var l in alphas)
                         {
                             var ad = new ExtendedList<AlphaLayerData>();
                             foreach (var pv in l.GetProperty("alpha").EnumerateArray())
-                                ad.Add(new AlphaLayerData { Position = (ushort)pv[0].GetInt32(), Opacity = (float)pv[1].GetDouble() });
+                            {
+                                int pos = pv[0].GetInt32();
+                                float op = (float)pv[1].GetDouble();
+                                if (pos < 0 || pos > 288 || !(op > 0) || op > 1.0001f) throw new InvalidDataException($"cell {x},{y} quadrant {q}: alpha point {pos} = {op}");
+                                ad.Add(new AlphaLayerData { Position = (ushort)pos, Opacity = Math.Min(op, 1f) });
+                            }
                             land.Layers.Add(new AlphaLayer
                             {
                                 Header = new LayerHeader { Texture = new FormLink<ILandscapeTextureGetter>(ctx.Link(l.GetProperty("texture").GetString()!)), Quadrant = q, LayerNumber = k++ },

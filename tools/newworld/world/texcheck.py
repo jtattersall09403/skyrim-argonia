@@ -11,14 +11,21 @@ diagonal included, is a visible edge whose shape is the triangle's.
 Writes `<out>/tex/check.json` and, with --crops, `<out>/crops/tex_*.png` rendered per triangle from the diffuse
 textures the NewWorld profile resolves (6 repeats per cell edge); `tex_overview.png` (1 px per 4 vertices).
 
+A step is the change of a weight between two vertices that share a triangle edge, per vertex spacing (1.83 m): the
+diagonal's, which is 1.41 spacings long, is divided by 1.41.
+
 Rows (PASS limits; the measured references are in docs/research/nw-02-walk5-ground.md):
   layers: no quadrant over six textures; seams: a vertex shared by quadrants reads the same from each (<= 3/255).
   edges: per material, the step between neighbouring vertices: p99 <= 0.41 (BM&V), max <= 0.75.
-  roads (vertices within a road's reach): the road weight's step p99 <= 0.30 and max <= 0.5 (a ramp of two
-    vertices or more); the join, the step of one road material where the road holds >= half the vertex, max <= 0.35;
-    the spine (within 1.5 m of a road centre line, 4 m or more from water, where the road runs out): under 1% of its
-    vertices hold less than 0.6 road weight and none less than 0.4 (no patch cuts through a road), under 1% carry
-    more than 0.1 grass-bearing ground; no road quadrant over the cap.
+  roads (vertices within a road's reach), against Skyrim.esm's road ground under its straight road pieces in six
+    holds: the road weight's step p99 <= 0.31 (the steepest metre of any hold's mean ramp: Whiterun, 0.17 a metre)
+    and max <= 0.41; the join, the step of one road material where the road holds >= half the vertex, max <= 0.41
+    (both: no harder than the hardest hundredth of BM&V's ground steps, the edges limit); the spine (within 1.5 m of
+    a road centre line, clear of the ramp by which a road runs out toward water): at most 2.8% of its vertices under
+    0.6 road weight (Whiterun, Skyrim's worst hold) and none under 0.4, at most 1.8% carrying more than 0.1
+    grass-bearing ground (Hjaalmarch, Skyrim's worst hold); no road quadrant over the cap. Skyrim's own road steps
+    are harder than these (p90 1.0 in every hold: a hard brush under a road mesh), so the step limits are taken from
+    its mean ramp and from BM&V's painted ground: what a road with no mesh over it must show.
   swathes: per land region, the distance from a vertex to the nearest change of its dominant texture (run) p90 <= 12 m
     and p99 <= 35 m, of its dominant grass list p90 <= 80 m and p99 <= 140 m (Skyrim.esm's five holds: texture p90
     2.6 to 10.7, p99 7.5 to 33.7; grass p90 15 to 77, p99 44 to 135); no material over 0.40 of any land 1 km window.
@@ -60,8 +67,8 @@ OLD_DIFFUSE = {
     "silt": "argonia\\landscape\\dirt02.dds",
 }
 OLD_ROAD = {"dirt_road", "road_skirt"}
-LIMITS = {"step_p99": 0.41, "step_max": 0.75, "seam_max": 3 / 255 + 1e-6, "road_step_p99": 0.30, "road_step_max": 0.5,
-          "road_join_max": 0.35, "road_spine_min": 0.4, "road_spine_low_share": 0.01, "run_tex_p90": 12.0, "run_tex_p99": 35.0, "run_grass_p90": 80.0,
+LIMITS = {"step_p99": 0.41, "step_max": 0.75, "seam_max": 3 / 255 + 1e-6, "road_step_p99": 0.31, "road_step_max": 0.41,
+          "road_join_max": 0.41, "road_spine_min": 0.4, "road_spine_low_share": 0.028, "road_spine_grassy_share": 0.018, "run_tex_p90": 12.0, "run_tex_p99": 35.0, "run_grass_p90": 80.0,
           "run_grass_p99": 140.0, "swathe_1km": 0.40, "textures_per_quadrant": 2.5}
 SEA_REGIONS = {"benthic-yobesh", "padomaic-ocean", "sea-of-mists", "topal-bay"}
 
@@ -129,11 +136,12 @@ def full_dense(W, mats, n, nm):
 
 
 def steps(g: np.ndarray) -> np.ndarray:
-    """g [..., 17, 17, k] -> the steps between every pair of vertices that share a triangle edge: x, y and the
-    SE-NW diagonal of each quad ((r, c+1) to (r+1, c), y from the south), stacked [..., pairs, k]."""
+    """g [..., 17, 17, k] -> the steps between every pair of vertices that share a triangle edge, per vertex spacing:
+    x, y and the SE-NW diagonal of each quad ((r, c+1) to (r+1, c), y from the south; 1.41 spacings long, so divided
+    by 1.41), stacked [..., pairs, k]."""
     dx = g[..., :, 1:, :] - g[..., :, :-1, :]
     dy = g[..., 1:, :, :] - g[..., :-1, :, :]
-    dd = g[..., 1:, :-1, :] - g[..., :-1, 1:, :]
+    dd = (g[..., 1:, :-1, :] - g[..., :-1, 1:, :]) / np.sqrt(2).astype(g.dtype)
     sh = g.shape[:-3]
     return np.concatenate([dx.reshape(*sh, -1, g.shape[-1]), dy.reshape(*sh, -1, g.shape[-1]),
                            dd.reshape(*sh, -1, g.shape[-1])], -2)
@@ -222,9 +230,9 @@ def check(out: Path, rows: list[int] | None = None) -> dict:
             return out_
         land = quads((fl & 1) == 0)
         rdq, rcq, rgq, shq = quads(rd), quads(rc), quads(rg), quads(sh)
-        reach = np.where(rcq == 1, rp.HALF_M["major"] + rp.reach_m(1.0), rp.HALF_M["minor"] + rp.reach_m(0.6))
+        reach = np.where(rcq == 1, rp.HALF_M["major"] + rp.reach_m(1.0), rp.HALF_M["minor"] + rp.reach_m(rp.SCALE["minor"]))
         roadv = (rcq > 0) & (rdq < reach) & land
-        spine = (rcq > 0) & (rdq < 1.5) & land & (shq >= 4)
+        spine = (rcq > 0) & (rdq < 1.5) & land & (shq >= tx.ROAD_WATER[1])
         # layers
         nlayers += n.tolist()
         oc = n > SLOTS
@@ -335,7 +343,7 @@ def check(out: Path, rows: list[int] | None = None) -> dict:
                          ("road_join_max", L["road_join_max"], res["road_join_max"] <= L["road_join_max"]),
                          ("road_spine_min", L["road_spine_min"], res["road_spine_min"] >= L["road_spine_min"]),
                          ("road_spine_low_share", L["road_spine_low_share"], res["road_spine_low_share"] <= L["road_spine_low_share"]),
-                         ("road_spine_grassy_share", 0.01, res["road_spine_grassy_share"] <= 0.01),
+                         ("road_spine_grassy_share", L["road_spine_grassy_share"], res["road_spine_grassy_share"] <= L["road_spine_grassy_share"]),
                          ("road_quadrants_over_cap", 0, res["road_quadrants_over_cap"] == 0),
                          ("run_tex_p90_worst", L["run_tex_p90"], res["run_tex_p90_worst"] <= L["run_tex_p90"]),
                          ("run_tex_p99_worst", L["run_tex_p99"], res["run_tex_p99_worst"] <= L["run_tex_p99"]),

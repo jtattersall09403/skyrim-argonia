@@ -14,7 +14,7 @@ the place pads (out/newworld/terrain/places_terrain.json). Writes out/newworld/l
     shore.npy    int16   signed distance to the water line, decimetres (+ land, - water), clipped +-3000 m
     sea.npy      int16   land: distance to sea water (ocean, shallow coast, bay, estuary), dm, clipped 3000 m
     run.npy      int16   land: distance to running water (river, stream), dm, clipped 3000 m
-    road.npy     uint16  distance to the nearest road spine, dm, clipped 6000 dm
+    road.npy     uint16  distance to the nearest road spine (to its line, within 73 m), dm, clipped 6000 dm
     roadcls.npy  uint8   the nearest road's class (1 major, 2 minor; 0 none within 100 m)
     canopy.npy   uint8   tree-cover multiplier 0..255 for the planting step (glades, stands, clearings, banks)
     slope.npy    uint8   degrees (from the heightmap smoothed over ~2 samples)
@@ -161,29 +161,62 @@ def region_map():
     return code[ir, ic].astype(np.int16), names
 
 
-def road_raster(shape, ox, oy):
-    """Road spines drawn on the sample grid (1 major, 2 minor), bridges (vertices on water) left out."""
+def road_segments(ox, oy) -> list[tuple[float, float, float, float, int]]:
+    """Road spines as segments on the sample grid: (row a, col a, row b, col b, class 1 major / 2 minor), bridges
+    (both ends on water) left out."""
     cls = {r["id"]: (1 if r["road_class_id"] == "major" else 2) for r in jsonl("road")}
     verts: dict = {}
     for v in jsonl("road_vertex"):
         verts.setdefault(v["road_id"], []).append(v)
-    out = np.zeros(shape, np.uint8)
+    segs = []
     for rid, vs in verts.items():
         vs.sort(key=lambda v: v["seq"])
-        k = cls.get(rid, 2)
         for a, b in zip(vs, vs[1:]):
             if a["on_water"] and b["on_water"]:
                 continue
-            ca, ra = (a["world_x"] - ox) / SAMPLE, (oy - a["world_y"]) / SAMPLE
-            cb, rb = (b["world_x"] - ox) / SAMPLE, (oy - b["world_y"]) / SAMPLE
-            n = int(max(abs(cb - ca), abs(rb - ra)) * 2) + 2
-            t = np.linspace(0, 1, n)
-            r = np.rint(ra + (rb - ra) * t).astype(int)
-            c = np.rint(ca + (cb - ca) * t).astype(int)
-            ok = (r >= 0) & (r < shape[0]) & (c >= 0) & (c < shape[1])
-            cur = out[r[ok], c[ok]]
-            out[r[ok], c[ok]] = np.where((cur == 0) | (cur > k), k, cur)
-    return out
+            segs.append(((oy - a["world_y"]) / SAMPLE, (a["world_x"] - ox) / SAMPLE,
+                         (oy - b["world_y"]) / SAMPLE, (b["world_x"] - ox) / SAMPLE, cls.get(rid, 2)))
+    return segs
+
+
+ROAD_EXACT = 40  # samples (73 m): within this of a spine the distance is measured to the line itself
+
+
+def road_field(shape, segs) -> tuple[np.ndarray, np.ndarray]:
+    """-> (distance to the nearest road spine in samples, float32; that road's class, 0 where there is none). Within
+    ROAD_EXACT samples the distance is to the spine's line itself, not to the samples it crosses, so a road's ramp
+    runs straight at any heading (a rasterised spine steps by a whole sample); a major road wins a tie. Beyond it, the
+    distance to the nearest sample a spine crosses."""
+    H, W = shape
+    ras = np.zeros(shape, np.uint8)
+    exact = np.full(shape, np.inf, np.float32)
+    cls = np.zeros(shape, np.uint8)
+    P = ROAD_EXACT
+    for ra, ca, rb, cb, k in segs:
+        n = int(max(abs(cb - ca), abs(rb - ra)) * 2) + 2
+        t = np.linspace(0, 1, n)
+        r = np.rint(ra + (rb - ra) * t).astype(int)
+        c = np.rint(ca + (cb - ca) * t).astype(int)
+        ok = (r >= 0) & (r < H) & (c >= 0) & (c < W)
+        cur = ras[r[ok], c[ok]]
+        ras[r[ok], c[ok]] = np.where((cur == 0) | (cur > k), k, cur)
+        r0, r1 = max(int(min(ra, rb)) - P, 0), min(int(max(ra, rb)) + P + 2, H)
+        c0, c1 = max(int(min(ca, cb)) - P, 0), min(int(max(ca, cb)) + P + 2, W)
+        if r0 >= r1 or c0 >= c1:
+            continue
+        rr, cc = np.mgrid[r0:r1, c0:c1].astype(np.float32)
+        dr, dc = rb - ra, cb - ca
+        ll = dr * dr + dc * dc
+        u = np.clip(((rr - ra) * dr + (cc - ca) * dc) / ll, 0, 1) if ll > 0 else 0.0
+        d = np.hypot(rr - (ra + u * dr), cc - (ca + u * dc)).astype(np.float32)
+        e, kc = exact[r0:r1, c0:c1], cls[r0:r1, c0:c1]
+        take = (d < e - 1e-4) | ((np.abs(d - e) <= 1e-4) & (k < kc))
+        e[take] = d[take]
+        kc[take] = k
+    rd, (ir, ic) = ndi.distance_transform_edt(ras == 0, return_indices=True)
+    near = exact <= P
+    dist = np.where(near, exact, np.maximum(rd, P)).astype(np.float32)
+    return dist, np.where(near, cls, ras[ir, ic]).astype(np.uint8)
 
 
 def place_mask(shape, ox, oy):
@@ -433,11 +466,10 @@ def build(force: bool = False) -> dict:
     slope = np.degrees(np.arctan(np.hypot(gx, gy))).astype(np.float32)
     del gx, gy
     log("roads, pads, margin")
-    roads = road_raster((H, W), ox, oy)
-    rd, (ir, ic) = ndi.distance_transform_edt(roads == 0, return_indices=True)
+    rd, rcls = road_field((H, W), road_segments(ox, oy))
     road = np.clip(np.rint(rd * M_PER_S * 10), 0, 6000).astype(np.uint16)
-    roadcls = np.where(rd * M_PER_S < 100, roads[ir, ic], 0).astype(np.uint8)
-    del rd, ir, ic, roads
+    roadcls = np.where(rd * M_PER_S < 100, rcls, 0).astype(np.uint8)
+    del rd, rcls
     pad = place_mask((H, W), ox, oy)
     margin = margin_mask((H, W), ox, oy)
     fields = Fields((H, W), habs + ["_band", "_stand", "_glade"])
