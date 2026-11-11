@@ -340,6 +340,11 @@ def run(plugin: Path, out: Path, do_dump: bool = True) -> int:
         for req, v, ok, det in atmosphere_cs.rows(plugin, STACK):
             rep.row("height fog", req, v, ok, det)
 
+    @section(rep, "relief")
+    def _relief():
+        from tools.newworld import terrain_character
+        terrain_character.verify_rows(rep, set(cells))
+
     @section(rep, "navmesh")
     def _nav():
         # margin_cells.json and scope_cells.json are in map cells (8192 units, two Skyrim cells a side)

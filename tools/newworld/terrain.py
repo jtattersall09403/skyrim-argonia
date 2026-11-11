@@ -14,15 +14,24 @@ The recipe:
    float, so the level costs nothing; heights then read as height above the water). Every map water pixel lies
    under it and every land pixel above it.
 2. Grid: the scope's bounding box plus one Morrowind cell all round, samples every 128 units, north-up, sample (0, 0)
-   at the north-west corner (origin in build.json). Heights are float32 game units (70 a metre).
+   at the north-west corner (origin in build.json). Heights are float32 game units (70 a metre). The scope reaches
+   tiles.BEYOND_CELLS past the picture on every side (build.json "beyond" names the cell bounds).
 3. Islands (terrain_shape.carve_islets): every place whose `place_terrain_need` is island gets its islet on the map
-   pixels (land under the footprint, a ring of water round it) before anything reads the water.
+   pixels (land under the footprint, a ring of water round it) before anything reads the water. Then the map is
+   carried past its edge (terrain_beyond): the ruler band and the cells beyond the picture read as the map's last
+   true pixels carried outward and blurred with distance, so Cyrodiil and Morrowind run on as foreign land to the
+   west, north-west and north and the open sea runs on to the east, south and south-west.
    Water bodies (terrain_water): every body labelled with a kind and flow guess, then the owner's hand edits from
    `newworld/sources/water_overrides.json` ({"<body id>": {"water_kind_id", "flows", "flow_toward_deg", "name"}},
    read on every build); its kind sets the bed (BED).
-4. Relief (terrain_relief): region parameters from the region table, the fallback table where empty.
-5. Weathering (terrain_erode): drainage erosion, slope detail and talus on the natural ground, then a buildable
-   core for every large built place (town tier and up; radius by tier and slope limit in terrain_erode).
+4. Relief (terrain_relief): region parameters from the region table, the fallback table where empty; mesa
+   plateaus and escarpment faces fade out within ROAD_CLEAR_M of a road (roads run in the cuts). Each land region's
+   character (terrain_forms, newworld/sources/region_relief.json: its landform from its research's landscape note)
+   keeps a share of the shared relief and adds its own landform, the large forms here.
+5. Weathering (terrain_erode): drainage erosion, slope detail and talus on the natural ground; then each region's
+   fine forms (terrain_forms, after weathering, which would smooth them away); then a buildable core for every
+   large built place (town tier and up; radius by tier and slope limit in terrain_erode). Forms keep clear of roads
+   and of every place's footprint.
 6. Banks and beds (terrain_shape.compose). Then places' needs from `place_terrain_need` (a place with no row takes
    its kind's fallback) in this order: shore access, rises, flat pads (a
    rise is raised over its landing and a pad fitted level on top of its rise; a rise smaller than its pad
@@ -30,6 +39,9 @@ The recipe:
    network and laid; then entrances, each facing down its road when one comes within 60 m, else the best dry and
    open heading, never burying a road's bed. Then LAND's 8-unit rounding and step limit, the map's water guaranteed
    pixel by pixel, and any entrance the rounding spoiled shaped again.
+   Then ground held as built (terrain_held): every built place (newworld/places/<id>) keeps the heights of the
+   terrain build it was seated on within its place layer's cells plus 400 m, blended out over 300 m; checked at 0
+   difference (check.json "held").
 7. Cliff mask: slope over 55 degrees (FreeClimb climbs them; cliff meshes go there later).
 8. Outputs in out/newworld/terrain/: heightmap.npy (float32 units), heightmap.png (16-bit, h = offset + scale v),
    cliff.png, water_bodies.png (16-bit body index, map px) with out/newworld/water_bodies.json, roads_terrain.json
@@ -52,8 +64,12 @@ from PIL import Image
 from scipy import ndimage as ndi
 
 from tools.newworld import frame as f
+from tools.newworld import terrain_beyond as tb
+from tools.newworld import terrain_clearance as tcl
 from tools.newworld import terrain_coast as tc
 from tools.newworld import terrain_erode as te
+from tools.newworld import terrain_forms as tf
+from tools.newworld import terrain_held as th
 from tools.newworld import terrain_relief as tr
 from tools.newworld import terrain_shape as ts
 from tools.newworld import terrain_water as tw
@@ -68,6 +84,7 @@ CLIFF_DEG = 55.0
 MAP_HELD = 0.97        # share of map water (land) pixels whose centre reads under (over) the water level
 BLOCKS_HELD = 0.99     # share of 4 x 4 pixel blocks whose majority class the heightmap keeps
 SEED = 1952
+ROAD_CLEAR_M = (30.0, 90.0)   # mesa plateaus and escarpment faces fade out within this distance of a road
 NEED_DEFAULT_R = {"entrance-in-slope": 15.0, "rise": 25.0, "shore-access": 20.0, "seabed": 30.0}
 SEABED_DEPTH = {"sunken-ruin": 8.0, "shipwreck": 5.0}
 CROPS = {"north-uplands-barsaebica": (1170, 669), "chixathe-mesa": (2318, 866), "helstrom-delta": None,
@@ -99,11 +116,38 @@ def region_px(cell_region: dict, names: list, shape) -> np.ndarray:
     code = np.full((len(ys), len(xs)), -1, np.int32)
     for key, r in cell_region.items():
         cx, cy = map(int, key.split(","))
-        code[ys.stop - 1 - cy, cx - xs.start] = lut[r]
+        if cx in xs and cy in ys:          # cells past the picture have no map pixels
+            code[ys.stop - 1 - cy, cx - xs.start] = lut[r]
     py, px = np.mgrid[0:shape[0], 0:shape[1]]
     cx = np.floor(((px + 0.5) - f.X0_PX) / f.PX_PER_CELL).astype(int) - xs.start
     cyv = np.floor(-((py + 0.5) - f.Y0_PX) / f.PX_PER_CELL).astype(int)
     return code[np.clip(ys.stop - 1 - cyv, 0, len(ys) - 1), np.clip(cx, 0, len(xs) - 1)]
+
+
+def map_water() -> np.ndarray:
+    """The map's water with its ruler band read as what lies there (terrain_beyond)."""
+    water_px = np.asarray(Image.open(f.OUT / "raster" / "water.png")).astype(bool)
+    foreign_px = np.asarray(Image.open(f.OUT / "raster" / "foreign.png")).astype(bool)
+    ext, _, pad = tb.extend(water_px, foreign_px)
+    return tb.corrected(ext, pad, water_px.shape).copy()
+
+
+def road_samples(grid) -> np.ndarray:
+    """Every road's line as sample positions (n, 2) about a sample apart (for forms to keep off the roads)."""
+    roads_file = f.OUT / "roads.json"
+    if not roads_file.exists():
+        return np.zeros((0, 2))
+    out = []
+    for e in json.loads(roads_file.read_text())["edges"]:
+        p = np.array(e["points"], float)
+        if len(p) < 2:
+            continue
+        seg = np.hypot(*np.diff(p, axis=0).T)
+        s = np.concatenate([[0], np.cumsum(seg)])
+        t = np.arange(0, s[-1] + 1e-9, grid.k)
+        i, j = grid.ij(np.interp(t, s, p[:, 0]), np.interp(t, s, p[:, 1]))
+        out.append(np.stack([i, j], 1))
+    return np.concatenate(out) if out else np.zeros((0, 2))
 
 
 NEED_ORDER = {"shore-access": 0, "rise": 1, "flat-pad": 2, "seabed": 3, "island": 4, "entrance-in-slope": 5}
@@ -158,8 +202,12 @@ def build(upload: bool = True) -> dict:
     names = [r.id for r in regions]
     rkind = {r.id: r.kind for r in regions}
     params, psrc = {}, {}
+    spec = tf.load()
     for r in regions:
         params[r.id], psrc[r.id] = tr.region_params(r)
+        if r.id in spec and r.kind != "sea":
+            params[r.id] = tf.overrides(spec, r.id, params[r.id])
+            psrc[r.id] += f"; character '{spec[r.id]['character']}' (region_relief.json)"
     for extra in ("foreign", "islet"):
         fl, su, ro, cl, we, ramp, form = tr.FALLBACK[extra]
         params[extra] = {"floor": fl, "summit": su, "rough": ro, "cliff": cl, "wet": we, "ramp": ramp, "form": form}
@@ -179,6 +227,12 @@ def build(upload: bool = True) -> dict:
     islets = ts.carve_islets(water_px, [(r.place_id, pl_at[r.place_id].px, pl_at[r.place_id].py, r.radius_m)
                                         for r in isl_rows if r.place_id in pl_at], f.UNITS_PER_PX / f.UNITS_PER_METRE)
     log("islets", len(islets))
+    # past the map (terrain_beyond): the ruler band and the cells beyond the picture read as the map's edge carried
+    # outward; the picture's own extent keeps its pixels, the band corrected
+    water_ext, foreign_ext, pad = tb.extend(water_px, foreign_px)
+    water_px = tb.corrected(water_ext, pad, water_px.shape).copy()
+    foreign_px = tb.corrected(foreign_ext, pad, foreign_px.shape).copy()
+    grid_x = tb.shifted(grid, pad)
 
     # 3. water bodies
     rpx = region_px(cell_region, names, water_px.shape)
@@ -195,8 +249,8 @@ def build(upload: bool = True) -> dict:
 
     # the smooth coast: the map's shores as smoothed polylines, filled and turned into a signed distance on the
     # samples (terrain_coast.sample_contour)
-    sd_m = tc.sample_contour(water_px, grid, SEED)
-    rejoined = tc.repair(sd_m, grid, water_px)
+    sd_m = tc.sample_contour(water_ext, grid_x, SEED)
+    rejoined = tc.repair(sd_m, grid_x, water_ext)
     water_s = sd_m < 0
     coast = tc.agreement(water_s, grid, water_px)
     coast["bodies_rejoined"] = rejoined
@@ -209,14 +263,19 @@ def build(upload: bool = True) -> dict:
     cpx, cpy = f.world_to_px(wx, wy)
     H, W = water_px.shape
     inb = (cpx >= 0) & (cpx < W) & (cpy >= 0) & (cpy < H)
+    exb = (cpx + pad >= 0) & (cpx + pad < W + 2 * pad) & (cpy + pad >= 0) & (cpy + pad < H + 2 * pad)
     ff = np.zeros(wx.shape)
-    ff[inb] = ndi.uniform_filter(foreign_px.astype(np.float32), 5)[cpy[inb].astype(int), cpx[inb].astype(int)]
+    ff[exb] = ndi.uniform_filter(foreign_ext.astype(np.float32), 5)[(cpy[exb] + pad).astype(int),
+                                                                     (cpx[exb] + pad).astype(int)]
     ridge_cells = {}
     for rid in names:
         if params[rid]["form"] == "ridge":
             cs = np.array([list(map(int, k.split(","))) for k, v in cell_region.items() if v == rid], float)
             ridge_cells[rid] = (cs + 0.5) * f.CELL_UNITS
     Fc = tr.coarse_fields(wx, wy, cell_region, params, ff, {n for n in names if rkind[n] == "sea"}, ridge_cells)
+    code_c, lut_c = Fc.pop("_code"), Fc.pop("_lut")
+    # off the picture counts as open sea for the inland rise (as it always has): the province's own relief keeps the
+    # scale its places and needs were fitted to; the land past the map is modest backdrop either way
     sea_c = np.ones(wx.shape, bool)
     kind_arr = np.array(["land"] + [b["water_kind_id"] for b in bodies])
     sea_body = np.isin(kind_arr, ["ocean", "bay", "shallow-coast"])[body_r]
@@ -225,6 +284,25 @@ def build(upload: bool = True) -> dict:
     shape = (grid.rows, grid.cols)
     F = {k: tr.upsample(v, shape, C, order=1) for k, v in Fc.items()}
     coast_full = tr.upsample(coast_t, shape, C, order=1)
+    # each region's own landform (terrain_forms), by its share of the ground; the islets of sea regions and the land
+    # past the border take none
+    char_w = tf.region_weights(np.where(ff > 0.5, -1, code_c), lut_c,
+                               [r for r in spec if r in lut_c and rkind.get(r) != "sea"])
+    road_ij = road_samples(grid)
+    rc = np.ones(wx.shape, bool)
+    ri = np.clip(np.round(road_ij / C).astype(int), 0, np.array(wx.shape) - 1)
+    rc[ri[:, 0], ri[:, 1]] = False
+    rd = ndi.distance_transform_edt(rc) * C * grid.m
+    F["road_fade"] = tr.upsample(tr.smoothstep(ROAD_CLEAR_M[0], ROAD_CLEAR_M[1], rd), shape, C, order=1)
+    del rc, rd
+    span_full = np.maximum(F["summit"] - F["floor"], 0)
+    tier_r = {t.id: t.footprint_radius_m for t in w.rows("settlement_tier")}
+    sym_t = {s.id: s.settlement_tier_id for s in w.rows("symbol")}
+    place_ijr = np.array([(*(float(v) for v in grid.ij(p.px, p.py)),
+                           float(p.footprint_radius_m or tier_r.get(sym_t.get(p.symbol_id)) or 25.0))
+                          for p in w.rows("place")])
+    form_kw = dict(ox=grid.ox, oy=grid.oy, m=grid.m, coast_t=coast_full, road_ij=road_ij, span=span_full,
+                   places=place_ijr, seed=SEED)
     sm = grid.m
     wp = tr.warp_field(shape, sm, SEED + 7)
     n = {k: tr.fbm(shape, sm, tr.SCALES[k], SEED + s_, wp) for s_, k in
@@ -235,8 +313,13 @@ def build(upload: bool = True) -> dict:
              micro=tr.fbm(shape, sm, tr.SCALES["micro"], SEED + 6))
     log("noise and fields")
     relief_m = tr.relief(F, n, coast_full)
-    del n
+    del n, F["road_fade"]
+    dw = np.maximum(sd_m, 0).astype(np.float32)
+    forms = {"before": tf.apply(relief_m, "before", spec, char_w, C, dw=dw, **form_kw)}
     relief_m = te.weather(relief_m, water_s, F, SEED)
+    forms["after"] = tf.apply(relief_m, "after", spec, char_w, C, dw=dw, **form_kw)
+    del dw, span_full
+    log("characters", {k: sorted(v) for k, v in forms.items()})
     sym_tier0 = {s.id: s.settlement_tier_id for s in w.rows("symbol")}
     big = [(*(float(v) for v in grid.ij(p.px, p.py)), sym_tier0.get(p.symbol_id)) for p in w.rows("place")
            if sym_tier0.get(p.symbol_id) in te.BUILD_R_M and not p.on_water]
@@ -365,6 +448,14 @@ def build(upload: bool = True) -> dict:
         plans, road_out, grade_of, corridor = lay_roads(h, water_px, water_s, grid, w)
     log("places", len(place_out), "roads", len(plans))
 
+    # clear of the water plane outside a narrow shore band, as Skyrim's land and beds are (terrain_clearance)
+    keep = np.zeros(h.shape, bool)          # places' shaped ground (pads, shores, rises) keeps its shaping
+    for _o, p_, nd_, r_m_, *_r, i0_, j0_ in todo:
+        sl_, di_, dj_ = ts._disc(grid, i0_, j0_, (float(r_m_ or 25.0) + 20.0) / grid.m)
+        keep[sl_] |= np.hypot(di_, dj_) * grid.m <= float(r_m_ or 25.0) + 20.0
+    clearance = tcl.apply(h, sd_m, water_s, keep)
+    del keep
+    log("clearance", clearance)
     # LAND format and the water guarantee
     h = ts.quantise(h)
     passes = ts.clamp_steps(h)
@@ -388,6 +479,10 @@ def build(upload: bool = True) -> dict:
         ts.clamp_steps(h)
         cliff = ts.slope_deg(h) > CLIFF_DEG
         log("entrances reshaped", len(redo))
+    # built places keep the ground they were seated on (terrain_held), blended into the new ground beyond
+    held = th.apply(h, grid, water_s)
+    cliff = ts.slope_deg(h) > CLIFF_DEG
+    log("held", held)
     for rec, i0, j0, facing, *_ in entrances:
         rec.update(ts.entrance_ok(h, water_s, cliff, grid, i0, j0, facing))
 
@@ -404,6 +499,8 @@ def build(upload: bool = True) -> dict:
     chk = check(h, grid, water_px, plans, grade_of, place_out, cliff)
     chk["guarantee_fails_px"] = fails[:200]
     chk["coast"] = coast
+    chk["held"] = th.check(h, grid)
+    chk["clearance"] = clearance
     (OUT / "check.json").write_text(json.dumps(chk, indent=1, default=_j))
     stamp = dt.datetime.now(dt.timezone.utc).strftime("%Y%m%dT%H%M%SZ")
     sha = hashlib.sha256((OUT / "heightmap.npy").read_bytes()).hexdigest()
@@ -413,7 +510,12 @@ def build(upload: bool = True) -> dict:
              "about": ("float32 game units (70 a metre), north-up, row 0 the north edge; heightmap.png is 16-bit: "
                        f"h = {offset} + 8 v units; water bodies at map px; cliffs over {CLIFF_DEG} deg"),
              "png_offset_units": offset, "png_scale_units": ts.QUANT,
-             "regions": psrc, "water_overrides": len(overrides), "water_override_problems": ov_problems, "roads_used": bool(plans), "settled_places": settled, "islets": islets, "seconds": round(time.time() - t0)}
+             "regions": psrc, "characters": forms, "held": held,
+             "beyond": {"pad_px": tb.PAD_PX, "cells_x": [int(round(grid.ox / f.CELL_UNITS)),
+                                                   int(round((grid.ox + (grid.cols - 1) * ts.STEP) / f.CELL_UNITS)) - 1],
+                        "cells_y": [int(round((grid.oy - (grid.rows - 1) * ts.STEP) / f.CELL_UNITS)),
+                                    int(round(grid.oy / f.CELL_UNITS)) - 1]},
+             "water_overrides": len(overrides), "water_override_problems": ov_problems, "roads_used": bool(plans), "settled_places": settled, "islets": islets, "seconds": round(time.time() - t0)}
     (OUT / "build.json").write_text(json.dumps(bjson, indent=1, default=_j))
     log("checks", json.dumps({k: v for k, v in chk.items() if k != "guarantee_fails_px"}, default=_j))
     if upload and not TRIAL:
@@ -439,6 +541,7 @@ def check(h, grid, water_px, plans=None, grade_of=None, places=None, cliff=None)
     sd = ts.slope_deg(h)
     out["slope_share_over_55"] = round(float((sd > CLIFF_DEG).mean()), 4)
     out["slope_share_over_30"] = round(float((sd > 30).mean()), 4)
+    out["plane_shares"] = tcl.shares(h)          # points within 32 / 64 units of the water plane, per LOD spacing
     if plans:
         out["roads"] = ts.road_checks(h, grid, plans, grade_of)
     if places:
@@ -483,11 +586,12 @@ def check_built() -> int:
     b = json.loads((OUT / "build.json").read_text())
     h = np.load(OUT / "heightmap.npy")
     sha = hashlib.sha256((OUT / "heightmap.npy").read_bytes()).hexdigest()
-    water_px = np.asarray(Image.open(f.OUT / "raster" / "water.png")).astype(bool)
+    water_px = map_water()
     p0x, p0y = f.world_to_px(b["origin_world_x"], b["origin_world_y"])
     grid = ts.Grid(rows=b["height"], cols=b["width"], p0x=p0x, p0y=p0y, ox=b["origin_world_x"],
                    oy=b["origin_world_y"])
     chk = check(h, grid, water_px)
+    chk["held"] = th.check(h, grid)
     old = json.loads((OUT / "check.json").read_text())
     for k in ("roads", "entrances", "entrances_bad", "coast"):
         if k in old:
@@ -497,7 +601,8 @@ def check_built() -> int:
     # the smooth coast moves banks by a pixel or two: the map's water and land are held on 4 px blocks
     ok = (chk["water_pixels_under"] >= MAP_HELD and chk["land_pixels_above"] >= MAP_HELD
           and chk.get("coast", {}).get("blocks4", 0) >= BLOCKS_HELD and chk["land_format"]["ok"]
-          and chk["sha256_matches"] and not chk.get("entrances_bad")
+          and chk["sha256_matches"] and not chk.get("entrances_bad") and th.ok(chk["held"])
+          and all(v["pm32"] <= tcl.MAX_PM32 and v["pm64"] <= tcl.MAX_PM64 for v in chk["plane_shares"].values())
           and chk.get("roads", {}).get("grade_over_limit_points", 0) == 0)
     return 0 if ok else 1
 
@@ -506,3 +611,5 @@ if __name__ == "__main__":
     if sys.argv[1:2] == ["check"]:
         sys.exit(check_built())
     build(upload="--no-upload" not in sys.argv)
+    from tools.newworld import terrain_character
+    terrain_character.report(OUT, "build")         # character.json: the regions' relief character and distances

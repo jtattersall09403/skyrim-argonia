@@ -19,7 +19,9 @@ How a height is made:
    low    = hummocks barely above the water, an occasional low rise (swamp, bayou, basin, washes, mangroves, lake).
 4. The relief of hills and low ground grows inland: it is scaled by 0.35 + 0.65 (1 - exp(-d / 5 km)), d the distance
    from the open sea, so rivers run downhill to the sea; mesas and ridges keep their full height, hills most of it.
-5. Cliff share terraces hills and ridges: 5 x the share (at most 0.9) mixes in steps of a sixth of the region's
+5. A region with a relief character (terrain_forms) keeps only its `base` share of this shared relief over its
+   floor; mesa plateaus and escarpment faces fade out near roads (F["road_fade"], when given).
+6. Cliff share terraces hills and ridges: 5 x the share (at most 0.9) mixes in steps of a sixth of the region's
    relief with risers a twenty-fifth of a step high in plan; mesa risers are cliffs by design.
 """
 from __future__ import annotations
@@ -52,7 +54,9 @@ FALLBACK = {
     "cape":       (1.0,  35.0,  4.0, 0.10, 0.40, 25, "hills"),
     "mesa":       (5.0, 140.0,  4.0, 0.35, 0.10, 40, "mesa"),
     "ridge":      (5.0, 220.0,  6.0, 0.30, 0.15, 40, "ridge"),
-    "foreign":    (2.0,  60.0,  4.0, 0.05, 0.40, 30, "hills"),
+    # land past the border and past the map: Cyrodiil's Blackwood and Nibenay lowland, Morrowind's Deshaan plain:
+    # modest generic hills, never a mountain wall
+    "foreign":    (2.0,  40.0,  3.0, 0.03, 0.45, 30, "hills"),
     "islet":      (0.5,  10.0,  1.5, 0.02, 0.50, 10, "hills"),
 }
 # Region names with no landform word: a guess from where they lie, until the research fills `landform`.
@@ -210,9 +214,9 @@ def coarse_fields(wx: np.ndarray, wy: np.ndarray, region_of_cell: dict, params: 
             flat[n] = lut["islet"] if "islet" in lut else -1
     code = flat.reshape(shape)
     code[(code < 0) | (foreign_frac > 0.5)] = lut["foreign"]
-    fields = {}
-    for key in ("floor", "summit", "rough", "cliff", "wet", "ramp"):
-        vals = np.array([params[n][key] for n in names], np.float64)
+    fields = {"_code": code, "_lut": lut}
+    for key in ("floor", "summit", "rough", "cliff", "wet", "ramp", "base"):
+        vals = np.array([params[n].get(key, 1.0) for n in names], np.float64)
         fields[key] = ndi.gaussian_filter(vals[code], BLEND_SIGMA, mode="nearest")
     for form in FORMS:
         vals = np.array([params[n]["form"] == form for n in names], np.float64)
@@ -242,7 +246,9 @@ def relief(F: dict, n: dict, coast_t: np.ndarray) -> np.ndarray:
     base = np.clip(0.5 + 0.22 * (0.55 * n["swell"] + 0.6 * n["big"] + 0.45 * n["mid"]), 0, 1)
     hill = np.clip(base + 0.4 * knolls, 0, 1.2) ** 1.6
     m = n["edge"]
-    plateau = 0.55 * smoothstep(-0.38, -0.29, m) + 0.45 * smoothstep(0.42, 0.51, m)
+    # roads run in the cuts between mesas and below escarpments, never up a cliff: both fade out near a road
+    rf = F.get("road_fade", 1.0)
+    plateau = (0.55 * smoothstep(-0.38, -0.29, m) + 0.45 * smoothstep(0.42, 0.51, m)) * rf
     mesa = 0.25 * hill + 0.75 * plateau
     ridge = F["spine"] * (0.5 + 0.35 * hill + 0.1 * n["mid"]) + 0.25 * hill * (1 - F["spine"])
     ridge = np.maximum(ridge, 0) / (1 + 0.3 * np.maximum(ridge, 0))          # soft top, no clipped flat
@@ -264,12 +270,14 @@ def relief(F: dict, n: dict, coast_t: np.ndarray) -> np.ndarray:
     # share sets how much ground lies above one
     c = np.clip(F["cliff"] * 3.0, 0, 0.8) * (1 - F["w_mesa"]) * (1 - F["w_low"])
     e = n["esc"] + 0.5 * n["big"] + 0.06 * n["small"]
-    face = smoothstep(0.30, 0.40, e) + smoothstep(0.95, 1.05, e)
+    face = (smoothstep(0.30, 0.40, e) + smoothstep(0.95, 1.05, e)) * rf
     h = h + c * 0.22 * span * face * smoothstep(-0.6, 0.4, n["mid"])      # faces die out and return along their run
     tops = F["w_mesa"] * plateau
     # mesa tops: level overall, but with low knolls and shallow swales (about 12% of the relief), never a slab
     h += tops * 0.12 * span * (0.4 + amod) * (ridg - 0.45)
     h += F["rough"] * 0.05 * n["small"] * (1 - 0.85 * tops) * (1 - 0.7 * F["w_low"])
+    # the region's character keeps only `base` of the shared relief (terrain_forms adds its own landform)
+    h = F["floor"] + F.get("base", 1.0) * (h - F["floor"])
     h += 0.11 * n["micro"]          # micro relief over a LAND step: no 8-unit contour ribbons on gentle ground
     lo = F["floor"] * 0.5            # a soft floor: ground pressed below it eases onto it, never a clipped flat
     return (0.5 * (h + lo + np.sqrt((h - lo) ** 2 + 4.0))).astype(np.float32)

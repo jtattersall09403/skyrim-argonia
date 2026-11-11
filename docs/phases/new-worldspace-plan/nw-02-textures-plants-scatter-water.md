@@ -136,3 +136,16 @@ navmesh, the read-back), Helstrom brought level by its narrow stages, the LOD on
 | A | Atmosphere: warm, humid, by region and latitude (research, then weather, image space, climate and region records); more and stronger low mist | in progress |
 | L | Far view: LOD water edges and flicker, trees and rocks with no LOD, the map's water, squares and pan limits; teleport commands; the crash report | in progress |
 | I | Integrated rebuild, Helstrom level, LOD build and lay, read-back, owner check | todo |
+
+## Walk 5: the terrain build (current truth)
+
+The terrain build (`tools/newworld/terrain.py`) now also: carries the map past its edge (`terrain_beyond`: the scope
+reaches 8 map cells past the picture, foreign land west, north-west and north, open sea east, south and south-west;
+world cells x -50..56, y -129..-40); gives each land region its own landform from its research's landscape note
+(`terrain_forms`, `newworld/sources/region_relief.json`); keeps every built place's ground as built, lifted by one
+constant (`terrain_held`, `newworld/sources/terrain_held.json`; Helstrom +72 units on build 20261109T204317Z, so the
+place is re-seated by its seating stage); and stands land and beds clear of the water plane outside a narrow shore
+band (`terrain_clearance`, checked by `terrain check`: within 32 / 64 units at most 0.03 / 0.05 at every LOD
+spacing). `terrain_character` measures the regions' relief distances (character.json; read-back rows in verify).
+Measured numbers: docs/research/nw-02-walk5-relief.md. After a terrain build, rerun `tiles scope` and `regions`
+first when the scope changes, then the chain from water_kinds as before.

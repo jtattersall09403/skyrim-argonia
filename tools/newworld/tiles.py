@@ -100,16 +100,27 @@ def margin_cells(province: set[tuple[int, int]]) -> set[tuple[int, int]]:
     return out
 
 
+BEYOND_CELLS = 8   # cells past the picture's edge on every side: the neighbours' land and the open sea carried on
+
+
+def beyond_cells() -> set[tuple[int, int]]:
+    """Every cell within BEYOND_CELLS of the picture but off it: unplayable border scenery whose land and sea are
+    the map's edge carried outward (terrain_beyond), so the world does not stop where the picture does."""
+    xs, ys = f.cell_range()
+    return {(cx, cy) for cx in range(xs.start - BEYOND_CELLS, xs.stop + BEYOND_CELLS)
+            for cy in range(ys.start - BEYOND_CELLS, ys.stop + BEYOND_CELLS) if cx not in xs or cy not in ys}
+
+
 def scope_cells() -> set[tuple[int, int]]:
-    """Every cell the world is built over: the province and its margin."""
+    """Every cell the world is built over: the province, its margin and the cells beyond the picture."""
     p = province_cells()
-    return p | margin_cells(p)
+    return p | margin_cells(p) | beyond_cells()
 
 
 def write_scope() -> None:
-    """out/newworld/scope_cells.json (province and margin) and margin_cells.json (the margin alone)."""
+    """out/newworld/scope_cells.json (province, margin, beyond) and margin_cells.json (all but the province)."""
     p = province_cells()
-    m = margin_cells(p)
+    m = margin_cells(p) | beyond_cells()
     (f.OUT / "scope_cells.json").write_text(json.dumps(sorted(p | m)))
     (f.OUT / "margin_cells.json").write_text(json.dumps(sorted(m)))
     print(len(p), "province cells,", len(m), "margin cells")
