@@ -3,8 +3,9 @@
 // Input (tools/navmesh/inputs.py): grid.json {rows, cols, x0, ytop, step, cells: [x0, y0, x1, y1], params{...}}
 // and three row-major rasters (and skip.u8, one byte a cell), row 0 north, one sample per LAND vertex: height.f32 (the game's ground, units),
 // water.f32 (the water surface over a wet sample, NaN where dry), flags.u8 (bit 0 painted road).
-// Placed collision as triangles of 3 world corners: objects.f32 (a place's: walkable where level enough) and
-// objects/cy+NNN.f32 with .n.i32 (the world's scatter, a file a cell row: solid obstacles).
+// Placed collision: objects.f32, a place's own, as triangles of 3 world corners (walkable where level enough); and
+// objects/cy+NNN.runs.i32, the world's scatter reduced to the voxel columns it blocks (tools/navmesh/solid.py), a
+// file a cell row: rows of (j, first i, last i), column (i, j) being x in [i cs, (i + 1) cs), y in [j cs, (j + 1) cs).
 // Output: raw/cy+NNN.bin, one file per cell row, each cell: i32 x, y, nv, nt; nv x f32 (x, y, z) world units;
 // nt x (u16 v0, v1, v2, u8 area). Triangles are counter-clockwise seen from above, as every vanilla NAVM's.
 // No choice is made here that the params do not name; seams, links and the NVNM are tools/navmesh/stitch.py's.
@@ -67,18 +68,19 @@ static class Cells
         var raw = Path.Combine(outDir, "raw");
         Directory.CreateDirectory(raw);
         foreach (var old in Directory.GetFiles(raw, "cy*.bin")) File.Delete(old);
-        // the placed objects' collision, triangles of 3 corners of world x, y, z: objects.f32 (inputs.py: a place's
-        // or a test's own, whole) and objects/cy+NNN.f32 (placed.py write_rows: the province's, one file a cell
-        // row, each holding the triangles within the pad of that row). A row's cells read both, in that order.
+        // a place's collision, triangles of 3 corners of world x, y, z: objects.f32 (inputs.py: a place's or a
+        // test's own, whole); and the columns the world's scatter blocks, objects/cy+NNN.runs.i32 (placed.py
+        // write_rows: one file a cell row, the columns of that row's cells and of the border round them).
         var objPath = Path.Combine(inDir, "objects.f32");
         var objAll = File.Exists(objPath) ? Raster<float>(objPath, (int)(new FileInfo(objPath).Length / 4)) : Array.Empty<float>();
         var objDir = Path.Combine(inDir, "objects");
         long cells = 0, tris = 0, reused = 0;
         int nx = box[2] - box[0] + 1, B = p.BorderSamples;
         float pad = (B + 1) * step;
-        // the triangles; where the row file's begin (those are obstacles only); and for each of those the placed
-        // object it belongs to (cy+NNN.n.i32: the triangle count of each object in turn)
-        (float[], int, int[]) RowObjects(int cy)
+        int per = (int)MathF.Round(CellUnits / p.Cs), bcols = (int)MathF.Round(B * step / p.Cs);  // columns a cell, and of its border
+        int maskW = nx * per + 2 * bcols, maskH = per + 2 * bcols, maskI0 = box[0] * per - bcols;
+        // the place triangles that reach the row, and the row's blocked columns as a raster (null: none)
+        (float[], byte[]?) RowObjects(int cy)
         {
             var keep = new List<float>();
             for (var t = 0; t + 9 <= objAll.Length; t += 9)
@@ -86,31 +88,30 @@ static class Cells
                 float ya = MathF.Min(objAll[t + 1], MathF.Min(objAll[t + 4], objAll[t + 7])) - pad, yb = MathF.Max(objAll[t + 1], MathF.Max(objAll[t + 4], objAll[t + 7])) + pad;
                 if ((int)MathF.Floor(ya / CellUnits) <= cy && (int)MathF.Floor(yb / CellUnits) >= cy) for (var k = 0; k < 9; k++) keep.Add(objAll[t + k]);
             }
-            var rowPath = Path.Combine(objDir, $"cy{cy:+000;-000}.f32");
-            if (!File.Exists(rowPath)) return (keep.ToArray(), keep.Count, Array.Empty<int>());
-            var row = Raster<float>(rowPath, (int)(new FileInfo(rowPath).Length / 4));
-            var runPath = Path.Combine(objDir, $"cy{cy:+000;-000}.n.i32");
-            var runs = Raster<int>(runPath, (int)(new FileInfo(runPath).Length / 4));
-            var group = new int[row.Length / 9];
-            var at = 0;
-            for (var r = 0; r < runs.Length; r++) for (var k = 0; k < runs[r]; k++) group[at++] = r;
-            if (at != group.Length) throw new InvalidDataException($"{runPath}: counts do not add up to the triangles");
-            if (keep.Count == 0) return (row, 0, group);
-            var from = keep.Count;
-            keep.AddRange(row);
-            return (keep.ToArray(), from, group);
+            var rowPath = Path.Combine(objDir, $"cy{cy:+000;-000}.runs.i32");
+            if (!File.Exists(rowPath)) return (keep.ToArray(), null);
+            var runs = Raster<int>(rowPath, (int)(new FileInfo(rowPath).Length / 4));
+            var mask = new byte[maskW * maskH];
+            int j0 = cy * per - bcols;
+            for (var r = 0; r + 3 <= runs.Length; r += 3)
+            {
+                int j = runs[r] - j0, a = Math.Max(runs[r + 1] - maskI0, 0), b = Math.Min(runs[r + 2] - maskI0, maskW - 1);
+                if (j < 0 || j >= maskH) continue;
+                for (var i = a; i <= b; i++) mask[j * maskW + i] = 1;
+            }
+            return (keep.ToArray(), mask);
         }
         // Checkpoint (decision 0037): each cell's result in cache/cx_cy.bin under the sha256 of what it reads (the
         // params, its window of height, water and flags samples, CacheVersion, and every object triangle within the
-        // pad of the cell, its neighbours' included); a rerun, a ground change elsewhere or a re-scatter elsewhere
-        // reuses every cell whose inputs are unchanged. Written by temp file and rename.
+        // pad of the cell and every column its window holds that the scatter blocks); a rerun, a ground change
+        // elsewhere or a re-scatter elsewhere reuses every cell whose inputs are unchanged. Written by temp file and rename.
         var cache = Path.Combine(outDir, "cache");
         Directory.CreateDirectory(cache);
         var prm = System.Text.Encoding.UTF8.GetBytes(g.GetProperty("params").GetRawText() + "|" + CacheVersion + "|" + step + "|" + x0 + "|" + ytop);
         for (var cy = box[3]; cy >= box[1]; cy--)
         {
-            var (obj, obstacleFrom, group) = RowObjects(cy);
-            var grid = new Grid(rows, cols, x0, ytop, step, hgt, wat, flg, obj, obstacleFrom, group);
+            var (obj, mask) = RowObjects(cy);
+            var grid = new Grid(rows, cols, x0, ytop, step, hgt, wat, flg, obj, mask, maskW, per, bcols, box[0]);
             // each cell's object triangles, bucketed once, in file order
             var buckets = new List<int>[nx];
             for (var k = 0; k < nx; k++) buckets[k] = new List<int>();
@@ -151,7 +152,7 @@ static class Cells
         return 0;
     }
 
-    const string CacheVersion = "cells/2";  // bump when Cell's method changes: every cached cell is then rebuilt
+    const string CacheVersion = "cells/3";  // bump when Cell's method changes: every cached cell is then rebuilt
 
     static void WriteCell(BinaryWriter w, int cx, int cy, (List<float>, List<int>) c)
     {
@@ -191,14 +192,11 @@ static class Cells
             h.AppendData(System.Runtime.InteropServices.MemoryMarshal.AsBytes(g.W.AsSpan(k, n)));
             h.AppendData(g.F.AsSpan(k, n));
         }
-        // an obstacle triangle is hashed with which of the cell's objects it belongs to, counted from the cell's first:
-        // a re-scatter elsewhere in the row renumbers the row's objects and leaves this cell's key as it was
-        var firstGroup = -1;
-        int first(int t) { if (firstGroup < 0) firstGroup = g.Group[(t - g.ObstacleFrom) / 9]; return firstGroup; }
-        foreach (var t in objIdx)
+        foreach (var t in objIdx) h.AppendData(System.Runtime.InteropServices.MemoryMarshal.AsBytes(g.Obj.AsSpan(t, 9)));
+        if (g.Mask != null)  // the blocked columns of the cell's own window
         {
-            h.AppendData(System.Runtime.InteropServices.MemoryMarshal.AsBytes(g.Obj.AsSpan(t, 9)));
-            if (t >= g.ObstacleFrom) h.AppendData(BitConverter.GetBytes(g.Group[(t - g.ObstacleFrom) / 9] - first(t)));
+            int size = g.Per + 2 * g.Bcols, at = (cx - g.BoxX0) * g.Per;
+            for (var j = 0; j < size; j++) h.AppendData(g.Mask.AsSpan(j * g.MaskW + at, size));
         }
         return h.GetHashAndReset();
     }
@@ -212,8 +210,10 @@ static class Cells
         return a;
     }
 
-    sealed record Grid(int Rows, int Cols, float X0, float Ytop, float Step, float[] H, float[] W, byte[] F, float[] Obj, int ObstacleFrom, int[] Group)
+    sealed record Grid(int Rows, int Cols, float X0, float Ytop, float Step, float[] H, float[] W, byte[] F, float[] Obj, byte[]? Mask, int MaskW, int Per, int Bcols, int BoxX0)
     {
+        // whether the scatter blocks heightfield column (x, z) of cell cx's window (the row's raster starts at the row's own border)
+        public bool Blocked(int cx, int x, int z) => Mask != null && Mask[z * MaskW + (cx - BoxX0) * Per + x] != 0;
         // sample (row, col) from world (x, y) at sample positions
         public int Col(float x) => (int)Math.Round((x - X0) / Step);
         public int Row(float y) => (int)Math.Round((Ytop - y) / Step);
@@ -279,7 +279,6 @@ static class Cells
         var objV = new List<float>();
         var objT = new List<int>();
         var objA = new List<int>();
-        var objG = new List<int>();  // the placed object an obstacle triangle belongs to, -1 for a place's triangle
         foreach (var t in objIdx)  // the bucketed triangles, a superset of those the window takes, in file order
         {
             float xa = MathF.Min(g.Obj[t], MathF.Min(g.Obj[t + 3], g.Obj[t + 6])), xb = MathF.Max(g.Obj[t], MathF.Max(g.Obj[t + 3], g.Obj[t + 6]));
@@ -292,49 +291,41 @@ static class Cells
                 zmin = Math.Min(zmin, g.Obj[t + 3 * k + 2]); zmax = Math.Max(zmax, g.Obj[t + 3 * k + 2]);
             }
             objT.Add(k0); objT.Add(k0 + 1); objT.Add(k0 + 2);
-            objA.Add(t >= g.ObstacleFrom ? Null : Walkable);
-            objG.Add(t >= g.ObstacleFrom ? g.Group[(t - g.ObstacleFrom) / 9] : -1);
+            objA.Add(Walkable);
         }
         // A place's collision carries an actor where a face is within the slope limit (a porch, a deck, a stair). The
-        // world's scatter (trees, rocks, logs, cliff pieces: the row files) only stands in the way: no face of it is
-        // floor, so no mesh is laid on a trunk's root flare, a log or a boulder's top, and whatever of it stays
-        // under the climb height is stepped over on the ground's own mesh (the low-obstacle filter below).
+        // world's scatter (trees, rocks, logs, cliff pieces) only stands in the way: no face of it is floor, so no
+        // mesh is laid on a trunk's root flare, a log or a boulder's top. It comes as the columns it blocks: those
+        // where its solid reaches into the band a body fills over the ground, above the climb and under the agent's
+        // height; what stays lower is stepped over on the ground's own mesh.
         var ov = objV.ToArray();
-        for (var t = 0; t < objT.Count; t += 3) if (objA[t / 3] != Null) objA[t / 3] = Slope(ov, objT[t], objT[t + 1], objT[t + 2], cosMax);
+        for (var t = 0; t < objT.Count; t += 3) objA[t / 3] = Slope(ov, objT[t], objT[t + 1], objT[t + 2], cosMax);
+        var blocked = false;
+        if (g.Mask != null)
+            for (var z = 0; z < g.Per + 2 * g.Bcols && !blocked; z++)
+                for (var x = 0; x < g.Per + 2 * g.Bcols; x++) if (g.Blocked(cx, x, z)) { blocked = true; break; }
         float bord = B * g.Step;
         var bmin = new RcVec3f(wx0 - bord, zmin - 2 * p.Ch, wy0 - bord);
         var bmax = new RcVec3f(wx0 + CellUnits + bord, zmax + p.AgentHeight + 2 * p.Ch, wy0 + CellUnits + bord);
         int border = (int)MathF.Round(bord / p.Cs);
         int size = (int)MathF.Round((CellUnits + 2 * bord) / p.Cs);
         var ctx = new RcContext();
-        int walkH = (int)MathF.Ceiling(p.AgentHeight / p.Ch), walkC = (int)MathF.Floor(p.AgentClimb / p.Ch), walkR = (int)MathF.Ceiling((objA.Count > 0 ? p.ObjAgentRadius : p.AgentRadius) / p.Cs);
+        int walkH = (int)MathF.Ceiling(p.AgentHeight / p.Ch), walkC = (int)MathF.Floor(p.AgentClimb / p.Ch), walkR = (int)MathF.Ceiling((objA.Count > 0 || blocked ? p.ObjAgentRadius : p.AgentRadius) / p.Cs);
         var hf = new RcHeightfield(size, size, bmin, bmax, p.Cs, p.Ch, border);
         RcRasterizations.RasterizeTriangles(ctx, verts, tris.ToArray(), areas.ToArray(), areas.Count, hf, walkC);
         if (objA.Count > 0)
         {
-            // a place's triangles go in with the ground; the scatter's are voxelised apart, each column's solid runs
-            // found first, and each run then meets the ground once: a run whose top is within the climb of the ground
-            // is stepped over, any other is an obstacle. (Rasterised straight in, a finely cut rock climbs face by
-            // face, each within the climb of the last, and its top ends up floor.)
-            var pt = new List<int>(); var pa = new List<int>(); var st = new List<int>(); var sg = new List<int>();
-            for (var t = 0; t < objT.Count; t += 3)
-            {
-                var into = objG[t / 3] < 0 ? pt : st;
-                into.Add(objT[t]); into.Add(objT[t + 1]); into.Add(objT[t + 2]);
-                if (objG[t / 3] < 0) pa.Add(objA[t / 3]); else sg.Add(objG[t / 3]);
-            }
-            if (pa.Count > 0) RcRasterizations.RasterizeTriangles(ctx, ov, pt.ToArray(), pa.ToArray(), pa.Count, hf, walkC);
-            if (sg.Count > 0)
-            {
-                var solid = new RcHeightfield(size, size, bmin, bmax, p.Cs, p.Ch, border);
-                RcRasterizations.RasterizeTriangles(ctx, ov, st.ToArray(), new int[sg.Count], sg.Count, solid, walkC);
-                FillObstacles(solid, ov, st, sg, walkC);
-                for (var k = 0; k < solid.spans.Length; k++)
-                    for (var sp = solid.spans[k]; sp != null; sp = sp.next)
-                        RcRasterizations.AddSpan(hf, k % solid.width, k / solid.width, sp.smin, sp.smax, Null, walkC);
-            }
+            RcRasterizations.RasterizeTriangles(ctx, ov, objT.ToArray(), objA.ToArray(), objA.Count, hf, walkC);
             SolidGround(hf, g);
         }
+        if (blocked)  // a blocked column holds a body from the ground to the agent's height: no floor there
+            for (var z = 0; z < hf.height; z++)
+                for (var x = 0; x < hf.width; x++)
+                {
+                    if (!g.Blocked(cx, x, z)) continue;
+                    var gi = (int)MathF.Floor((Ground(g, hf.bmin.X + (x + 0.5f) * hf.cs, hf.bmin.Z + (z + 0.5f) * hf.cs) - hf.bmin.Y) / hf.ch);
+                    RcRasterizations.AddSpan(hf, x, z, Math.Clamp(gi - 2, 0, 0x1FFE), Math.Clamp(gi + walkH, 1, 0x1FFF), Null, walkC);
+                }
         RcFilters.FilterLowHangingWalkableObstacles(ctx, walkC, hf);
         RcFilters.FilterLedgeSpans(ctx, walkH, walkC, hf);
         RcFilters.FilterWalkableLowHeightSpans(ctx, walkH, hf);
@@ -366,59 +357,6 @@ static class Cells
             if (MathF.Abs(z0 - z) <= p.SnapMax) outV[i + 2] = z;
         }
         return (outV, outT);
-    }
-
-    // An obstacle is solid, not a shell: Recast rasterises a mesh's faces, so the ground inside a trunk's hull or
-    // under a boulder's skin would stay open floor with head room. For each placed object in turn, every column whose
-    // centre its faces cross is filled between the crossings, bottom to top in pairs (in, out); with an odd count
-    // the lowest crossing is the top of a body open underneath (a rock's collision has no underside) and the column
-    // is filled from the bottom up to it.
-    static void FillObstacles(RcHeightfield hf, float[] v, List<int> tris, List<int> group, int walkC)
-    {
-        var cross = new Dictionary<int, List<float>>();
-        void Flush()
-        {
-            foreach (var (col, hs) in cross)
-            {
-                hs.Sort();
-                int x = col % hf.width, z = col / hf.width;
-                void Span(float lo, float hi)
-                {
-                    int a = Math.Clamp((int)MathF.Floor((lo - hf.bmin.Y) / hf.ch), 0, 0x1FFE), b = Math.Clamp((int)MathF.Ceiling((hi - hf.bmin.Y) / hf.ch), a + 1, 0x1FFF);
-                    RcRasterizations.AddSpan(hf, x, z, a, b, Null, walkC);
-                }
-                var k = 0;
-                if (hs.Count % 2 == 1) { Span(hf.bmin.Y, hs[0]); k = 1; }
-                for (; k + 1 < hs.Count; k += 2) Span(hs[k], hs[k + 1]);
-            }
-            cross.Clear();
-        }
-        var cur = -1;
-        for (var t = 0; t < tris.Count; t += 3)
-        {
-            var gI = group[t / 3];
-            if (gI < 0) continue;
-            if (gI != cur) { Flush(); cur = gI; }
-            int a = 3 * tris[t], b = 3 * tris[t + 1], c = 3 * tris[t + 2];
-            float ax = v[a], az = v[a + 2], bx = v[b], bz = v[b + 2], cx = v[c], cz = v[c + 2];
-            float d = (bz - cz) * (ax - cx) + (cx - bx) * (az - cz);
-            if (MathF.Abs(d) < 1e-6f) continue;  // a vertical face crosses no column's centre line
-            int x0 = Math.Max(0, (int)MathF.Ceiling((MathF.Min(ax, MathF.Min(bx, cx)) - hf.bmin.X) / hf.cs - 0.5f));
-            int x1 = Math.Min(hf.width - 1, (int)MathF.Floor((MathF.Max(ax, MathF.Max(bx, cx)) - hf.bmin.X) / hf.cs - 0.5f));
-            int z0 = Math.Max(0, (int)MathF.Ceiling((MathF.Min(az, MathF.Min(bz, cz)) - hf.bmin.Z) / hf.cs - 0.5f));
-            int z1 = Math.Min(hf.height - 1, (int)MathF.Floor((MathF.Max(az, MathF.Max(bz, cz)) - hf.bmin.Z) / hf.cs - 0.5f));
-            for (var z = z0; z <= z1; z++)
-                for (var x = x0; x <= x1; x++)
-                {
-                    float px = hf.bmin.X + (x + 0.5f) * hf.cs, pz = hf.bmin.Z + (z + 0.5f) * hf.cs;
-                    float l1 = ((bz - cz) * (px - cx) + (cx - bx) * (pz - cz)) / d, l2 = ((cz - az) * (px - cx) + (ax - cx) * (pz - cz)) / d, l3 = 1 - l1 - l2;
-                    // a centre on a face's edge is taken by two of its three edges only, so two faces sharing it seldom both count
-                    if (l1 < 0 || l2 < 0 || l3 <= 0) continue;
-                    if (!cross.TryGetValue(x + z * hf.width, out var hs)) cross[x + z * hf.width] = hs = new List<float>();
-                    hs.Add(l1 * v[a + 1] + l2 * v[b + 1] + l3 * v[c + 1]);
-                }
-        }
-        Flush();
     }
 
     // The ground is solid, as the game's terrain is: in each column every span below the one that holds the ground

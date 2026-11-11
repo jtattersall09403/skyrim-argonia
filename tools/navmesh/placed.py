@@ -9,8 +9,8 @@ reed, a mist effect) adds nothing, as in game: that, never the producer or the k
 can cut the navmesh.
 
 The new world's scatter (nw-02 step 8: trees, plants, rocks, cliffs, logs, road dressing, mist; every producer's
-shards under `<plugin>/refs/<producer>/cy<+NNN>.jsonl`) is streamed one cell row at a time and only stands in the
-way: ArgoniaNav fills each reference as a solid body and lays no mesh on it. What Skyrim's own navmesh does round
+shards under `<plugin>/refs/<producer>/cy<+NNN>.jsonl`) only stands in the way: each reference is reduced to the
+voxel columns its solid blocks (solid.py), a cell row at a time and cached by row, and ArgoniaNav lays no mesh there. What Skyrim's own navmesh does round
 such things is measured by vanilla.py (docs/research/nw-02-walk5-navmesh.md): it is cut round whatever rises above
 stepping height, whatever its width, and left whole over what stays below.
 
@@ -19,7 +19,8 @@ infrastructure's persistent references) are one array, and carry an actor where 
 reference with a `box` (a collision marker's primitive, half extents round its origin) is that box, and a base whose
 mesh is not on the VM falls back to its OBND box, counted.
 
-    write_rows(refs_dir, data, out, box, pad) -> tally              the new world's refs shards, one file a cell row
+    write_rows(refs_dir, data, out, box, heights, frame) -> tally   the new world's refs shards as blocked columns, a file a cell row
+    blocked_columns(tris, heights, frame) -> (runs, faces)          the voxel columns one thing blocks (solid.py)
     collidable_count(refs_dir, data) -> int                         the shards' references that can cut the navmesh
     footprint(tris, ground) -> Footprint | None                     what of a collision stands in an actor's way
     from_shards(refs_dir, data) -> ((n, 3, 3), tally)               the shards as one array (a small world)
@@ -249,86 +250,217 @@ class Models:
         return self.tris[k]
 
 
-def write_rows(refs_dir: Path, data: Path, out: Path, box, pad: float, ground=None, resolver=None, sample: int = 8) -> dict:
-    """The new world's placed collision for the cells of `box`, one file a cell row: `out/cy<+NNN>.f32`, the world
-    triangles (3 corners x 3 floats) that reach within `pad` of the row, from every producer's shards, and beside it
-    `cy<+NNN>.n.i32`, the triangle count of each reference in turn (ArgoniaNav fills each as one solid body).
+PREP = "rows/2"  # bump when what a row's blocked columns are made from changes: every cached row is then built again
+_JOB: dict = {}  # what a row's worker reads (set before the pool forks)
+
+
+def world_tris(local: np.ndarray, x: dict) -> np.ndarray:
+    """A base's collision (mesh units) as the reference's own triangles in world units."""
+    m = rotation(*x["rot"]) * float(x.get("scale") or 1.0)
+    return (local.reshape(-1, 3) @ m.T + np.array(x["pos"], float)).reshape(-1, 3, 3)
+
+
+def blocked_columns(tris: np.ndarray, heights: np.ndarray, frame) -> tuple[np.ndarray, int]:
+    """The voxel columns one thing's collision (world triangles) blocks, as rows (j, first i, last i), and how many
+    of its faces lie in the band: solid.columns, and every column those close in, over the ground raster `heights` (row 0 north; `frame` = the
+    world x and y of its first sample and the sample spacing)."""
+    from tools.navmesh import solid
+    hit, i0, j0, band = solid.columns(np.ascontiguousarray(tris, np.float64), heights, float(frame[0]), float(frame[1]), float(frame[2]),
+                                      params.CELL_SIZE, params.AGENT_CLIMB, params.AGENT_HEIGHT)
+    if hit.shape[0] > 2 and hit.shape[1] > 2:
+        from scipy import ndimage
+        hit = ndimage.binary_fill_holes(hit)  # ground its own columns close in is inside it: under a shell, within a ring
+    return solid.runs(hit, i0, j0), int(band)
+
+
+def _row_job(s: int):
+    """One cell row's references reduced to the columns they block: (row, runs, the row's record)."""
+    from tools.navmesh import solid
+    J = _JOB
+    h, frame, (i_lo, i_hi, j_lo, j_hi) = J["h"], J["frame"], J["window"]
+    x0u, ytop, step = frame
+    got, probe = [], []
+    rec = {"fed": 0, "triangles": 0, "band_triangles": 0, "producers": {}}
+    for x in J["rows"][s]:
+        w = world_tris(J["tris"][x["k"]] if x.get("box") is None else nif._box_tris(-np.array(x["box"], float), np.array(x["box"], float)), x)
+        rr, band = blocked_columns(w, h, frame)
+        rec["triangles"] += len(w)
+        rec["band_triangles"] += band
+        if len(rr):
+            got.append(rr)
+        if x["inside"]:
+            rec["fed"] += 1
+            rec["producers"][x["who"]] = rec["producers"].get(x["who"], 0) + 1
+            if rec["fed"] % J["sample"] == 0:
+                gz = float(h[min(max(int(round((ytop - x["pos"][1]) / step)), 0), h.shape[0] - 1), min(max(int(round((x["pos"][0] - x0u) / step)), 0), h.shape[1] - 1)])
+                f = footprint(w, gz)
+                if f is not None:
+                    probe.append([float(f.stand[0]), float(f.stand[1]), f.radius, f.top])
+    runs = np.zeros((0, 3), np.int32)
+    if got:  # one raster over what the row's things reach of the box, so columns two things block are held once
+        rr = np.concatenate(got)
+        ja, jb = max(int(rr[:, 0].min()), j_lo), min(int(rr[:, 0].max()), j_hi - 1)
+        if jb >= ja:
+            mask = np.zeros((jb - ja + 1, i_hi - i_lo), bool)
+            solid.paint(mask, i_lo, ja, rr)
+            runs = solid.runs(mask, i_lo, ja)
+    rec["columns"] = int((runs[:, 2] - runs[:, 1] + 1).sum()) if len(runs) else 0
+    rec["probe"] = probe
+    return s, runs, rec
+
+
+def write_rows(refs_dir: Path, data: Path, out: Path, box, heights: np.ndarray, frame, cache: Path | None = None, resolver=None,
+               sample: int = 8, workers: int | None = None) -> dict:
+    """The new world's placed collision for the cells of `box`, reduced to the voxel columns it blocks (solid.py):
+    `out/cy<+NNN>.runs.i32` for each cell row that holds any, rows of (j, first i, last i) over the row's cells and
+    the border ArgoniaNav reads round them. `heights` is the ground raster (row 0 north), `frame` the world x and y
+    of its first sample and the sample spacing.
+
+    The work is done a row of references at a time and kept under `cache` (`cy<+NNN>.npy` with `.json`), each row
+    under the digest of what it is made from: its references, their bases' collision, the ground they can reach,
+    the box and the rule's numbers. A row whose digest stands is not built again.
 
     `out/tally.json`: `refs` (in the box), `collidable` (those whose base's mesh has solid collision: counted by
-    base), `fed` (those whose triangles were written: counted as they are written), `no_collision`, `unresolved`
-    (mesh not found or not readable: a fault), `triangles`, and per producer the same counts.
-    `out/probe.npy`: every `sample`-th fed reference whose collision stands in an actor's way (footprint() over the
-    ground under it, `ground(x, y)`): x, y of a point on its collision, footprint radius, the collision's top above the ground; the built
-    navmesh is checked against these (checks.py: a hole where each stands)."""
+    base), `fed` (those reduced to columns: counted by the rows as they do it), `no_collision`, `unresolved` (mesh
+    not found or not readable: a fault), `triangles` (the collision instanced), `band_triangles` (the faces that
+    reach the band of some column: what is cut to columns), `columns` (blocked), and per producer the counts.
+    `out/probe.npy`: every `sample`-th fed reference of a row whose collision stands in an actor's way (footprint()
+    over the ground under it): x, y of a point on its collision, footprint radius, the collision's top above the
+    ground; the built navmesh is checked against these (checks.py: a hole where each stands)."""
+    import hashlib
+    import multiprocessing as mp
+    import os
+    import shutil
+    from tools.navmesh import solid
     x0, y0, x1, y1 = box
-    out.mkdir(parents=True, exist_ok=True)
-    for f in list(out.glob("cy*.f32")) + list(out.glob("cy*.i32")) + list(out.glob("*.tmp")):
-        f.unlink()
+    x0u, ytop, step = (float(v) for v in frame)
+    if out.exists():
+        shutil.rmtree(out)
+    out.mkdir(parents=True)
+    cs = params.CELL_SIZE
+    per, bcols = int(round(CELL / cs)), int(round(params.BORDER_SAMPLES * step / cs))
+    window = (x0 * per - bcols, (x1 + 1) * per + bcols, y0 * per - bcols, (y1 + 1) * per + bcols)  # i, j: first, one past the last
     models = Models(data, resolver)
-    lo_x, hi_x = x0 * CELL - pad, (x1 + 1) * CELL + pad
-    tally = {"refs": 0, "collidable": 0, "fed": 0, "no_collision": 0, "unresolved": 0, "triangles": 0, "producers": {}, "unresolved_models": []}
+    tally = {"refs": 0, "collidable": 0, "fed": 0, "no_collision": 0, "unresolved": 0, "triangles": 0, "band_triangles": 0,
+             "columns": 0, "producers": {}, "unresolved_models": []}
     per_base: dict[str, int] = {}
-    files: dict[int, object] = {}
-    runs: dict[int, list[int]] = {}
-    probe = []
-    try:
-        for path in shard_files(refs_dir):
-            row = shard_row(path)
-            if row is not None and not y0 - REACH_ROWS <= row <= y1 + REACH_ROWS:
-                continue
-            refs = read_shard(path)
-            models.learn(refs)
-            who = tally["producers"].setdefault(path.parent.name if path.parent != refs_dir else "", {"refs": 0, "fed": 0})
-            for x in refs:
-                inside = x0 <= x["pos"][0] // CELL <= x1 and y0 <= x["pos"][1] // CELL <= y1
-                local = models.collision(x) if x.get("box") is None else nif._box_tris(-np.array(x["box"], float), np.array(x["box"], float))
-                k = x["base"] or x["edid"]
+    reach: dict[str, float] = {}
+    digest: dict[str, bytes] = {}
+    rows: dict[int, list[dict]] = {}
+    far = 0.0
+    for path in shard_files(refs_dir):
+        row = shard_row(path)
+        if row is not None and not y0 - REACH_ROWS <= row <= y1 + REACH_ROWS:
+            continue
+        refs = read_shard(path)
+        models.learn(refs)
+        name = path.parent.name if path.parent != refs_dir else ""
+        who = tally["producers"].setdefault(name, {"refs": 0, "fed": 0})
+        for x in refs:
+            inside = x0 <= x["pos"][0] // CELL <= x1 and y0 <= x["pos"][1] // CELL <= y1
+            k = x["base"] or x["edid"]
+            local = models.collision(x) if x.get("box") is None else nif._box_tris(-np.array(x["box"], float), np.array(x["box"], float))
+            if inside:
+                tally["refs"] += 1
+                who["refs"] += 1
+                per_base[k] = per_base.get(k, 0) + 1
+            if local is None:
                 if inside:
-                    tally["refs"] += 1
-                    who["refs"] += 1
-                    per_base[k] = per_base.get(k, 0) + 1
-                if local is None:
-                    if inside:
-                        tally["unresolved"] += 1
-                        if len(tally["unresolved_models"]) < 10 and k not in tally["unresolved_models"]:
-                            tally["unresolved_models"].append(k)
-                    continue
-                if not len(local):
-                    tally["no_collision"] += inside
-                    continue
-                m = rotation(*x["rot"]) * float(x.get("scale") or 1.0)
-                w = (local.reshape(-1, 3) @ m.T + np.array(x["pos"], float)).reshape(-1, 3, 3)
-                keep = (w[:, :, 0].max(axis=1) >= lo_x) & (w[:, :, 0].min(axis=1) <= hi_x)
-                ra = np.floor((w[:, :, 1].min(axis=1) - pad) / CELL).astype(int)
-                rb = np.floor((w[:, :, 1].max(axis=1) + pad) / CELL).astype(int)
-                wrote = False
-                for r in range(max(y0, int(ra.min())), min(y1, int(rb.max())) + 1):
-                    t = w[keep & (ra <= r) & (rb >= r)]
-                    if not len(t):
-                        continue
-                    if r not in files:
-                        files[r] = open(out / f"cy{r:+04d}.f32.tmp", "wb")
-                    files[r].write(t.astype(np.float32).tobytes())
-                    runs.setdefault(r, []).append(len(t))
-                    tally["triangles"] += len(t)
-                    wrote = True
-                if inside and wrote:
-                    tally["fed"] += 1
-                    who["fed"] += 1
-                    if ground is not None and tally["fed"] % sample == 0:
-                        f = footprint(w, float(ground(x["pos"][0], x["pos"][1])))
-                        if f is not None:
-                            probe.append((f.stand[0], f.stand[1], f.radius, f.top))
-    finally:
-        for fh in files.values():
-            fh.close()
-    for r in files:
-        np.array(runs[r], np.int32).tofile(out / f"cy{r:+04d}.n.i32")
-        (out / f"cy{r:+04d}.f32.tmp").replace(out / f"cy{r:+04d}.f32")
+                    tally["unresolved"] += 1
+                    if len(tally["unresolved_models"]) < 10 and k not in tally["unresolved_models"]:
+                        tally["unresolved_models"].append(k)
+                continue
+            if not len(local):
+                tally["no_collision"] += inside
+                continue
+            if x.get("box") is None and k not in reach:
+                reach[k] = float(np.linalg.norm(local.reshape(-1, 3), axis=1).max())
+                digest[k] = hashlib.blake2b(np.ascontiguousarray(local, np.float64).tobytes(), digest_size=16).digest()
+            r = (reach[k] if x.get("box") is None else float(np.linalg.norm(x["box"]))) * float(x.get("scale") or 1.0) + cs
+            px, py = x["pos"][0], x["pos"][1]
+            if px + r < window[0] * cs or px - r > window[1] * cs or py + r < window[2] * cs or py - r > window[3] * cs:
+                continue  # it cannot reach a cell of the box
+            far = max(far, r)
+            rows.setdefault(int(py // CELL), []).append({"k": k, "pos": x["pos"], "rot": x["rot"], "scale": x.get("scale"), "box": x.get("box"),
+                                                         "inside": bool(inside), "who": name, "reach": r})
+    if far > REACH_ROWS * CELL - bcols * cs:  # then one in a row not read could reach the box as well
+        raise ValueError(f"navmesh: a placed thing reaches {far:.0f} units, past the {REACH_ROWS} cell rows of shards read either side of the box")
     # the collidable references counted the other way, by base: every reference of a base whose mesh has collision
     tally["collidable"] = sum(n for k, n in per_base.items() if models.tris.get(k) is not None and len(models.tris[k]))
+    h = np.ascontiguousarray(heights, np.float32)
+    keys = {}
+    for s, xs in rows.items():
+        hk = hashlib.blake2b(digest_size=16)
+        hk.update(json.dumps([PREP, cs, params.AGENT_CLIMB, params.AGENT_HEIGHT, list(window), [x0u, ytop, step], list(h.shape), sample]).encode())
+        far_s = max(x["reach"] for x in xs)
+        ra = max(int((ytop - ((s + 1) * CELL + far_s)) // step) - 1, 0)
+        rb = min(int((ytop - (s * CELL - far_s)) // step) + 3, h.shape[0])
+        ca = max(int((window[0] * cs - x0u) // step) - 2, 0)
+        cb = min(int((window[1] * cs - x0u) // step) + 3, h.shape[1])
+        hk.update(np.ascontiguousarray(h[ra:rb, ca:cb]).tobytes())
+        for x in xs:
+            hk.update(json.dumps([x["k"], x["pos"], x["rot"], x["scale"], x["box"], x["inside"], x["who"]]).encode())
+            hk.update(digest.get(x["k"], b""))
+        keys[s] = hk.hexdigest()
+    built: dict[int, tuple] = {}
+    stale = []
+    if cache is not None:
+        cache.mkdir(parents=True, exist_ok=True)
+        for f in cache.glob("cy*"):  # a row that holds nothing now
+            if shard_row(Path(f.name.split(".")[0] + ".jsonl")) not in rows:
+                f.unlink()
+    for s in sorted(rows):
+        try:
+            rec = json.loads((cache / f"cy{s:+04d}.json").read_text())
+            if rec["key"] != keys[s]:
+                raise ValueError
+            built[s] = (np.load(cache / f"cy{s:+04d}.npy"), rec)
+        except (OSError, ValueError, KeyError, TypeError):
+            stale.append(s)
+    reused = len(built)
+    _JOB.update(h=h, frame=(x0u, ytop, step), window=window, rows=rows, tris=models.tris, sample=sample)
+    n_proc = workers if workers is not None else min(4, os.cpu_count() or 1)
+    try:
+        if n_proc > 1 and len(stale) > 2:
+            with mp.get_context("fork").Pool(n_proc) as pool:
+                done = list(pool.imap_unordered(_row_job, stale))
+        else:
+            done = [_row_job(s) for s in stale]
+    finally:
+        _JOB.clear()
+    for s, runs, rec in done:
+        rec["key"] = keys[s]
+        built[s] = (runs, rec)
+        if cache is not None:
+            tmp = cache / f"cy{s:+04d}.npy.tmp"
+            with open(tmp, "wb") as fh:
+                np.save(fh, runs)
+            tmp.replace(cache / f"cy{s:+04d}.npy")
+            (cache / f"cy{s:+04d}.json.tmp").write_text(json.dumps(rec, sort_keys=True) + "\n")
+            (cache / f"cy{s:+04d}.json.tmp").replace(cache / f"cy{s:+04d}.json")
+    probe = []
+    for s in sorted(built):
+        rec = built[s][1]
+        for k in ("fed", "triangles", "band_triangles"):
+            tally[k] += rec[k]
+        for name, n in rec["producers"].items():
+            tally["producers"][name]["fed"] += n
+        probe += rec["probe"]
+    for r in range(y0, y1 + 1):  # each cell row's file: the blocked columns of its cells and their border, from every row that reaches it
+        ja, jb = r * per - bcols, (r + 1) * per + bcols
+        parts = [a[(a[:, 0] >= ja) & (a[:, 0] < jb)] for s in sorted(built) for a in [built[s][0]] if len(a)]
+        parts = [a for a in parts if len(a)]
+        if not parts:
+            continue
+        mask = np.zeros((jb - ja, window[1] - window[0]), bool)
+        for a in parts:
+            solid.paint(mask, window[0], ja, a)
+        rr = solid.runs(mask, window[0], ja)
+        tally["columns"] += int(mask[bcols:bcols + per].sum())
+        rr.tofile(out / f"cy{r:+04d}.runs.i32")
     np.save(out / "probe.npy", np.array(probe, np.float64).reshape(-1, 4))
     (out / "tally.json").write_text(json.dumps(tally, indent=1, sort_keys=True) + "\n")
+    print(json.dumps({"placed rows": {"built": len(stale), "reused": reused}}), flush=True)
     return tally
 
 

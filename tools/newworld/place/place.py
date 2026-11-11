@@ -26,7 +26,9 @@ The recipe (numbers from research/nw-02-flora-rules.md, nw-02-ground-water-rules
    The first 20 m from water (shore distance) get 1.7 x the small-scatter density (vanilla 2.0-2.8 vs 1.3-1.5 per
    100 m2). Margin cells: canopy trees, palms, boulders and cliffs only, at 0.15 x.
 2. Refusals: another habitat under the point; a place pad; within the road surface edge (class paint_full_m) plus a
-   clearance (trees 2.5 m, rocks 1.0 m, other flora 0.5 m, from the study's p5); water: flowing kinds carry no tree,
+   clearance (trees 2.5 m, rocks 1.0 m, other flora 0.5 m, from the study's p5); anything whose collision at
+   walking height comes within an actor's clearance of the road's walking width, whatever its position (step 6);
+   water: flowing kinds carry no tree,
    shrub or log; standing water only to the family's standing_water_max_m and trees only in the habitats where
    trees stand in water; water-only plants 0.2 m and deeper; seabed families in their depth band; slope windows
    (trees and palms 35 deg, shrubs 40, herbs 45, cliffs from 28); the canopy field thins trees (landcover glades,
@@ -43,6 +45,14 @@ The recipe (numbers from research/nw-02-flora-rules.md, nw-02-ground-water-rules
 5. Road dressing per km within 10 m of the edge (study 2.4): rock piles 40 at 1-4 m out, boulders 30 at 2.5-7 m,
    cairns 3 at 1.5-4 m (KoTM's Argonian-textured vanilla rocks); BM&V's own signpost beside each junction at 0.8 m;
    KoTM's woven and Saxhleel fences along roads within 150 m of a farm, estate or homestead.
+6. The road's walking width stays clear (road_shortfall): no voxel column a reference's collision blocks (solid
+   over the climb and under an actor's height: tools/navmesh/solid.py, the navmesh's own reading) has its centre
+   within ROAD_BODY_CLEAR of the walking width, the wider of the class's surface (paint_full_m) and the strip the
+   navmesh marks as road (tools.navmesh.inputs.ROAD_HALF_UNITS) either side of the spine. Skyrim's navmesh is cut
+   round a plant, a rock or a log whose collision rises to body height whatever its width
+   (docs/research/nw-02-walk5-navmesh.md), so a wide hull at a large scale is kept off the road by that hull. A
+   natural reference that falls short is refused; road dressing is moved straight out from the road by what it
+   falls short (its offset is its collision's near side), and dropped only when four moves do not clear it.
 """
 from __future__ import annotations
 
@@ -113,6 +123,9 @@ FENCES = ("0157FF:King of the Murkmire.esp", "0157FB:King of the Murkmire.esp", 
           "1AD5F1:King of the Murkmire.esp")
 FARM_KINDS = ("farm", "estate", "homestead")
 FARM_RADIUS_M = 150.0
+ROAD_NEAR_DM = 730  # the landcover holds the distance to a road up to 73 m (past the widest collision placed): a reference further out is not tested against one
+ROAD_BODY_CLEAR = 48.0  # units from a blocked column's centre to the road's walking width: the actor's radius the
+# navmesh is made for (tools.navmesh.params.AGENT_RADIUS, 32) and one voxel of its grid (CELL_SIZE, 16)
 
 
 def jsonl(name):
@@ -382,6 +395,18 @@ class Palette:
             self._tex[model] = self._audit.model(self.resolver.read(model) or b"", model_mod(self.resolver, model))
         return self._tex[model]
 
+    def collision(self, key: str):
+        """The base's solid collision triangles in mesh units (empty when its mesh has none; None when unreadable),
+        as the navmesh reads it; `reach[key]` is its farthest point from the origin."""
+        if not hasattr(self, "_coll"):
+            self._coll, self.reach = {}, {}
+        if key not in self._coll:
+            c = self.resolver.collision(self.rec[key]["model"]) if self.rec.get(key, {}).get("model") else None
+            t = None if c is None or c.tris is None else c.tris
+            self._coll[key] = t
+            self.reach[key] = float(np.linalg.norm(t.reshape(-1, 3), axis=1).max()) if t is not None and len(t) else 0.0
+        return self._coll[key]
+
     def sink_m(self, bid, rng):
         """Metres at scale 1 the pivot is set under the ground."""
         b = self.base[bid]; c = self.cls[self.class_of[bid]]
@@ -436,6 +461,32 @@ def tilt_rot(theta_deg, gx, gy):
     ry = -math.asin(tx)
     rx = math.atan2(ty, tz)
     return rx, ry
+
+
+def road_shortfall(W: World, P: Palette, R: Roads, r: dict) -> float:
+    """Units by which a reference's collision at walking height (pos, rot, scale, base key) is inside the clear line
+    of the road's walking width; 0 when it keeps clear (step 6 of the recipe)."""
+    from tools.navmesh import placed
+    from tools.navmesh.inputs import ROAD_HALF_UNITS
+    local = P.collision(r["base"])
+    if local is None or not len(local):
+        return 0.0
+    d, i = R.tree.query(np.array(r["pos"][:2], float))
+    if d - P.reach[r["base"]] * float(r["scale"]) > max(R.edge[i] * UPM, ROAD_HALF_UNITS) + ROAD_BODY_CLEAR + 2 * UPM:
+        return 0.0
+    w = placed.world_tris(local, r)
+    ra = max(int((W.oy - w[:, :, 1].max()) // SAMPLE) - 1, 0)
+    ca = max(int((w[:, :, 0].min() - W.ox) // SAMPLE) - 1, 0)
+    rb = min(int((W.oy - w[:, :, 1].min()) // SAMPLE) + 3, W.H)
+    cb = min(int((w[:, :, 0].max() - W.ox) // SAMPLE) + 3, W.W)
+    runs, _ = placed.blocked_columns(w, np.ascontiguousarray(W.h[ra:rb, ca:cb], np.float32), (W.ox + ca * SAMPLE, W.oy - ra * SAMPLE, SAMPLE))
+    if not len(runs):
+        return 0.0
+    cs = placed.params.CELL_SIZE
+    jj = np.repeat(runs[:, 0], runs[:, 2] - runs[:, 1] + 1)  # the centres of each run's columns, a point a column
+    ii = np.concatenate([np.arange(a, b + 1) for a, b in runs[:, 1:]])
+    dd, k = R.tree.query(np.column_stack([(ii + 0.5) * cs, (jj + 0.5) * cs]))
+    return max(float((np.maximum(R.edge[k] * UPM, ROAD_HALF_UNITS) + ROAD_BODY_CLEAR - dd).max()), 0.0)
 
 
 _W: World | None = None
@@ -524,7 +575,7 @@ def place_cell(cx: int, cy: int, pre: list[dict]) -> tuple[list[dict], dict]:
                     for _ in range(rng.poisson(k - 1) if k > 1 else 0):
                         b2 = same[rng.choice(len(same), p=sw)][0]
                         cand.append((*near(cxp, cyp, spread, mm2), b2, hi))
-                    for pf in P.partners.get(f["id"], ()):
+                    for pf in sorted(P.partners.get(f["id"], ())):  # in a fixed order: a set's own differs from run to run
                         if pf in fams and rng.random() < 0.5:
                             pr = fams[pf]
                             for _ in range(1 + rng.poisson(1)):
@@ -553,7 +604,7 @@ def place_cell(cx: int, cy: int, pre: list[dict]) -> tuple[list[dict], dict]:
     run = W.at("run", xs, ys)
     road = W.at("road", xs, ys)
     u = rng.random(len(cand))
-    near = road < 400
+    near = road < ROAD_NEAR_DM  # the landcover's distance to a road, decimetres
     clear = np.full(len(cand), 1e9)
     if near.any():
         clear[near] = R.clear(xs[near], ys[near])
@@ -661,6 +712,9 @@ def place_cell(cx: int, cy: int, pre: list[dict]) -> tuple[list[dict], dict]:
         p = {"cell": [cx, cy], "base": P.key_of[b], "pos": [round(float(x), 1), round(float(y), 1), round(float(z), 1)],
              "rot": [round(rx, 5), round(ry, 5), round(rz, 5)], "scale": round(float(sc), 4), "cls": c, "db": b,
              "_r": rad, "_h": int(his[i])}
+        if near[i] and road_shortfall(W, P, R, p) > 0:
+            tally["refused: collision on the road"] += 1
+            continue
         placed.append(p)
         grid[gk].append((x, y, rad, c))
         natural += 1
@@ -716,19 +770,48 @@ def dressing(W: World, P: Palette, R: Roads) -> list[dict]:
     xs = np.array([o[3][0] for o in out]); ys = np.array([o[3][1] for o in out])
     z0 = W.ground(xs, ys); flags = W.at("flags", xs, ys); slope = W.at("slope", xs, ys)
     clear = R.clear(xs, ys)
+    def seat(q, kind_, base_, sc_, sink_, rz_):
+        """The spot's ground and the reference seated on it (tilted with the slope when it is a rock), or None when
+        the spot is wet, on a place's pad, steep or on the road's surface."""
+        g = float(W.ground(q[0], q[1]))
+        if g <= 0.05 * UPM or int(W.at("flags", q[0], q[1])) & 2 or float(W.at("slope", q[0], q[1])) > 35 \
+                or R.clear(np.array([q[0]]), np.array([q[1]]))[0] < 0.5:
+            return None
+        rx_ = ry_ = 0.0
+        if kind_ == "dress":
+            gx, gy = W.gradient(q[0], q[1]); gx, gy = float(gx), float(gy)
+            rx_, ry_ = tilt_rot(min(0.85 * math.degrees(math.atan(math.hypot(gx, gy))), 30), gx, gy)
+        return g, {"base": base_, "pos": [float(q[0]), float(q[1]), g - sink_ * UPM * sc_], "rot": [rx_, ry_, rz_], "scale": sc_}
+
     for i, (src, kind, base, q, yaw) in enumerate(out):
         if z0[i] <= 0.05 * UPM or flags[i] & 2 or slope[i] > 35 or clear[i] < 0.5:
             continue
+        key = P.key_of[base] if src == "dress" else base
+        rec = P.rec[key]
+        rng = np.random.default_rng([SEED, 11, i])
+        sc, sink = 1.0, 0.0
         if src == "dress":
-            key = P.key_of[base]; rec = P.rec[key]
-            rng = np.random.default_rng([SEED, 11, i])
             sc = (P.base[base].get("scale_med") or 1.0) * rng.uniform(0.85, 1.15)
             sink = P.sink_m(base, rng)
-            gx, gy = W.gradient(q[0], q[1]); gx, gy = float(gx), float(gy)
-            theta = min(0.85 * math.degrees(math.atan(math.hypot(gx, gy))), 30)
-            rx, ry = tilt_rot(theta, gx, gy)
             rz = rng.uniform(0, 2 * math.pi)
-            z = float(z0[i]) - sink * UPM * sc
+        else:
+            rz = (math.pi / 2 - yaw) % (2 * math.pi)  # clockwise yaw that turns the mesh +X along the road
+        got = seat(q, src, key, sc, sink, rz)
+        for _ in range(5):  # step 6: its collision's near side keeps the walking width clear, or it moves straight out
+            short = road_shortfall(W, P, R, got[1]) if got else 0.0
+            if not short:
+                break
+            d, k = R.tree.query(q)
+            q = q + (q - R.pts[k]) / max(d, 1e-6) * (short + 8.0)
+            got = seat(q, src, key, sc, sink, rz)
+        else:
+            got = None
+        if got is None:
+            continue
+        g0, trial = got
+        rx, ry = trial["rot"][0], trial["rot"][1]
+        if src == "dress":
+            z = trial["pos"][2]
             ob = rec["obnd"]
             gap = underside_gap(W, q[0], q[1], z, ob, sc, (rx, ry, rz)) + 0.05 * UPM
             if gap > EXTRA_SINK_MAX * (ob[5] - ob[2]) * sc:
@@ -736,9 +819,7 @@ def dressing(W: World, P: Palette, R: Roads) -> list[dict]:
             z -= max(gap, 0.0)
             db = base
         else:
-            key = base; rec = P.rec[key]; sc = 1.0; rx = ry = 0.0
-            rz = (math.pi / 2 - yaw) % (2 * math.pi)  # clockwise yaw that turns the mesh +X along the road
-            z = float(z0[i]); db = kind
+            z = g0; db = kind
         cx = int(math.floor(q[0] / CELL)); cy = int(math.floor(q[1] / CELL))
         refs.append({"cell": [cx, cy], "base": key, "pos": [round(float(q[0]), 1), round(float(q[1]), 1), round(z, 1)],
                      "rot": [round(rx, 5), round(ry, 5), round(rz, 5)], "scale": round(float(sc), 4),
@@ -961,6 +1042,7 @@ def run(force: bool = False, workers: int = 3) -> dict:
     land = np.array([v for c, v in per_cell.items() if v > 0])
     man = {"key": k, "build_id": W.build_id, "refs": total, "dressing": len(dress), "bases": len(used),
            "copied_bases": sum(1 for b in bases if b["copied"]), "shard_sha256": h.hexdigest()[:16], "seconds": round(time.time() - t0, 1),
+
            "per_cell_natural": {"p50": float(np.percentile(counts, 50)), "p99": float(np.percentile(counts, 99)),
                                 "max": int(counts.max()), "p50_nonempty": float(np.percentile(land, 50)) if len(land) else 0,
                                 "vanilla": {"p95": 83, "max": 162}},

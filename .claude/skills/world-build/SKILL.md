@@ -124,7 +124,8 @@ decides on.
   studio finalise. `preflight` proves all of that, the inputs, the accepted records, the disk and the memory, and
   that every stale stage's tool starts; `run` runs it first and starts nothing if it is red.
 - Before a run that reaches a long stage (`paint`, `navmesh`, `esm`), clear what can be cleared first:
-  `make check`, and the terrain's own trial for a terrain change (section 2).
+  `make check`, the terrain's own trial for a terrain change (section 2), and the navmesh's fast test for a change
+  to the placement or the navmesh ([checks.md](checks.md)).
 - The run starts each stale stage as soon as the stages it reads from are done, side by side where the machine's
   memory allows. Every cheap check (the terrain check, the needs, the water kinds, the relief rows, the teleports'
   landings, the placement check) is green before the paint or the navmesh starts.

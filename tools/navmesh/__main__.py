@@ -7,6 +7,11 @@
         cell under DIR/cache) -> stitch.py (seams, edge links, NVNM, NAVI; cached per cell under DIR/stitch) ->
         checks.py (L1) and province.py (coverage, seams, components, settlement paths); writes DIR/navm,
         DIR/navi.json, DIR/check.json, DIR/build.json. Exit 1 when a check is red.
+    python -m tools.navmesh sample [--plugin DIR] [--refs DIR] [--out DIR] [--only NAME]
+        the fast test before a province build (a couple of minutes): each of SAMPLES, a block of 64 cells chosen
+        for what goes wrong there, built on the bare ground and again round what is placed, into DIR/<name>-bare
+        and DIR/<name> (default DIR: out/newworld/navmesh-samples). A sample is green when its checks are, every
+        collidable reference is fed, and the road is on the mesh no less than on the bare ground. Exit 1 on a red one.
     python -m tools.navmesh check [--out DIR]     the checks again over a built DIR
     python -m tools.navmesh current [--plugin DIR] [--out DIR]
         exit 0 when DIR/build.json's key is the key of today's inputs (build_key): the navmesh need not be rebuilt
@@ -45,7 +50,7 @@ def records_sha256(out: Path) -> str:
     return h.hexdigest()
 
 
-KEYED_CODE = ("inputs.py", "placed.py", "meshes.py", "nif.py", "bsa.py", "esm.py", "stitch.py", "nvnm.py", "params.py", "world.py",
+KEYED_CODE = ("inputs.py", "placed.py", "solid.py", "meshes.py", "nif.py", "bsa.py", "esm.py", "stitch.py", "nvnm.py", "params.py", "world.py",
               "ArgoniaNav/Program.cs", "ArgoniaNav/ArgoniaNav.csproj")  # what shapes the records; the checks do not
 
 
@@ -121,8 +126,6 @@ def build(out: Path, box=None, plugin: Path = world.PLUGIN, run_check: bool = Tr
     r = subprocess.run([str(NAV_BIN), "cells", "--in", str(out / "in"), "--out", str(out)], env=env, capture_output=True, text=True)
     if r.returncode:
         raise SystemExit(f"navmesh: ArgoniaNav failed\n{(r.stdout + r.stderr)[-3000:]}")
-    for f in (out / "in" / "objects").glob("cy*.*32"):  # the scatter's triangles are ArgoniaNav's alone: 1.5 GB a province
-        f.unlink()
     t["recast_s"] = round(time.time() - t0, 1)
     t["recast_log"] = r.stdout.strip().splitlines()[-2:]
     t0 = time.time()
@@ -145,6 +148,42 @@ def build(out: Path, box=None, plugin: Path = world.PLUGIN, run_check: bool = Tr
     return res
 
 
+# The fast test's blocks, (x0, y0, x1, y1) in cells, each for what it holds
+SAMPLES = {
+    "jungle-road": (-16, -152, -9, -145),  # a hist grove and cypress swamp with a dressed road: wide root and trunk collision
+    "upland": (-24, -176, -17, -169),  # upland scrub and outcrop: cliff pieces, boulders, a dressed road
+    "marsh": (-40, -200, -33, -193),  # drowned forest and mangrove: trees standing in water, a road on the dry ground
+    "town-approach": (-40, -160, -33, -153),  # the roads into Gul-Tej past mountain-trim pieces
+    "coast-ridges": (36, -223, 43, -216),  # ridge pieces across a shore east of Lilmoth: ground closed in behind them
+}
+
+
+def sample(plugin: Path, refs: Path, out: Path, only: str | None = None) -> bool:
+    from tools.navmesh import meshes
+    meshes.PROFILE = "NewWorld"
+    ok = True
+    for name, box in SAMPLES.items():
+        if only and name != only:
+            continue
+        bare = build(out / f"{name}-bare", box, plugin)["check"]
+        res = build(out / name, box, plugin, refs=refs)
+        ck, pl, comp = res["check"], res["check"]["placed"], res["check"]["province"]["components"]
+        green = bool(ck["green"] and pl["fed"] == pl["collidable"] and ck["road"]["on_navmesh"] >= bare["road"]["on_navmesh"])
+        ok &= green
+        print(json.dumps({"sample": name, "green": green, "road": [ck["road"]["on_navmesh"], ck["road"]["samples"]],
+                          "road_bare": bare["road"]["on_navmesh"], "heights_over": ck["heights"]["over"],
+                          "fed": pl["fed"], "collidable": pl["collidable"], "cut_round_tall": pl["stands_tall"]["share"],
+                          "band_triangles": pl["band_triangles"], "triangles": pl["triangles"],
+                          "main_m2": comp["main_m2"], "main_m2_bare": bare["province"]["components"]["main_m2"],
+                          "cut_off": [comp["cut_off_on_a_main_landmass"], comp["cut_off_m2"]],
+                          "cut_off_bare": [bare["province"]["components"]["cut_off_on_a_main_landmass"], bare["province"]["components"]["cut_off_m2"]],
+                          "largest_cut_off": comp["largest_cut_off"][:2], "cut_off_share": comp["cut_off_share"],
+                          "shut_in": [ck["province"]["reach"]["places_in_a_cut_off_piece"], ck["province"]["reach"]["road_vertices_in_a_cut_off_piece"]],
+                          "seams_mismatched": ck["province"]["seams"]["mismatched"],
+                          "sha256": res["sha256"], "seconds": res["times"]}), flush=True)
+    return ok
+
+
 def game_data() -> Path:
     root = os.environ.get("ARGONIA_GAME_ROOT")
     return Path(root) / "Data" if root else Path.home() / "games" / "skyrimse" / "Data"
@@ -162,6 +201,11 @@ def main(argv=None) -> int:
     b.add_argument("--no-placed", action="store_true")
     c = sub.add_parser("check")
     c.add_argument("--out", default=str(OUT))
+    sm = sub.add_parser("sample", help="the fast test: five blocks of 64 cells, bare and round what is placed")
+    sm.add_argument("--plugin", default=str(world.PLUGIN))
+    sm.add_argument("--refs")
+    sm.add_argument("--out", default=str(world.PLUGIN.parent / "navmesh-samples"))
+    sm.add_argument("--only", choices=sorted(SAMPLES))
     k = sub.add_parser("current", help="exit 0 when the standing navmesh was built from today's inputs; writes nothing")
     k.add_argument("--plugin", default=str(world.PLUGIN))
     k.add_argument("--out")
@@ -175,6 +219,8 @@ def main(argv=None) -> int:
         print("navmesh: its key is today's" if stored == now else f"navmesh: its key {stored} is not today's {now}")
         return 0 if stored == now else 1
     out = Path(a.out)
+    if a.cmd == "sample":
+        return 0 if sample(Path(a.plugin), Path(a.refs or Path(a.plugin) / "refs"), out, a.only) else 1
     if a.cmd == "build" and not a.refs:
         a.refs = str(Path(a.plugin) / "refs")
     if a.cmd == "check":
@@ -206,6 +252,10 @@ def main(argv=None) -> int:
     if "check" in res:
         ck = res["check"]
         print(json.dumps({k: ck[k] for k in ("green", "heights", "degenerate", "links", "islands", "navi", "road", "placed", "province")}, sort_keys=True))
+        shut = ck["province"]["reach"]  # measured, not judged: the ground's own cut-off pieces are the terrain's to mend
+        if shut["places_in_a_cut_off_piece"] or shut["road_vertices_in_a_cut_off_piece"]:
+            print(f"navmesh: {shut['places_in_a_cut_off_piece']} places and {shut['road_vertices_in_a_cut_off_piece']} road vertices lie in a cut-off piece: "
+                  f"{[p['id'] for p in shut['places']]} {shut['road'][:3]}")
         return 0 if ck["green"] else 1
     return 0
 

@@ -10,6 +10,10 @@
                dry-or-shallow ground, depth within WATER_MAX_DEPTH, across the navmesh cells): an island of its own
                (no other component on that landmass is larger) or cut off on a landmass the main component holds
                (cliffs, steep ground)
+               the cut-off pieces are also counted by size (CUT_OFF_BINS, m2) with their share of the mesh, to set
+               beside Skyrim's own (tools/navmesh/vanilla.py islands)
+    reach      the places and road vertices that lie in a cut-off piece, listed: each place's nearest triangle
+               (within SNAP_UNITS) and each dry road vertex's (within ROAD_SNAP) against the cut-off pieces
     paths      PAIRS settlement pairs (cities and towns, each to its nearest unpaired one), A* over triangle centroids
                from the triangle under each place's nearest walkable point; a failure names whether the two stand on
                different landmasses
@@ -26,6 +30,8 @@ from scipy import ndimage
 from tools.navmesh import nvnm, params, stitch
 from tools.navmesh import world as su
 
+CUT_OFF_BINS = [0, 10, 25, 50, 100, 250, 1000, 1e12]  # m2, as vanilla.ISLAND_BINS
+ROAD_SNAP = 256.0  # a road vertex is on the triangle whose centroid is within this of it
 PAIRS = 20
 SNAP_UNITS = 2048.0  # a place's point moves to the nearest triangle centroid within this (half a cell)
 
@@ -201,7 +207,7 @@ def run(out, cells: set, ras) -> dict:
     for c, lmk in comp_land.items():
         if comp_area[c] > land_best[lmk][0]:
             land_best[lmk] = (float(comp_area[c]), c)
-    islands, cut = [], []
+    islands, cut, cut_ids = [], [], set()
     for c in np.argsort(-comp_area):
         c = int(c)
         if c == main:
@@ -213,6 +219,29 @@ def run(out, cells: set, ras) -> dict:
             islands.append(row)
         else:
             cut.append(row)
+            cut_ids.add(c)
+    by_size = [{"m2": [lo, hi if hi < 1e11 else None], "pieces": sum(1 for r in cut if lo <= r["m2"] < hi),
+                "area_m2": round(sum(r["m2"] for r in cut if lo <= r["m2"] < hi)),
+                "share": round(sum(r["m2"] for r in cut if lo <= r["m2"] < hi) / total, 5) if total else None}
+               for lo, hi in zip(CUT_OFF_BINS, CUT_OFF_BINS[1:])]
+    # reach: places and roads against the cut-off pieces
+    from scipy.spatial import cKDTree
+    tree = cKDTree(pv.cent[:, :2]) if pv.n else None
+    shut_places, shut_road, road_seen = [], [], 0
+    for p in su.settlements():
+        if (int(p["x"] // su.CELL_UNITS), int(p["y"] // su.CELL_UNITS)) in cells and tree is not None:
+            d, i = tree.query((p["x"], p["y"]))
+            if d <= SNAP_UNITS and int(pv.labels[i]) in cut_ids:
+                shut_places.append({"id": p["id"], "m2": round(float(comp_area[pv.labels[i]]), 1)})
+    for line in su.road_polylines():
+        for x, y, wet in line:
+            if wet or tree is None or (int(x // su.CELL_UNITS), int(y // su.CELL_UNITS)) not in cells:
+                continue
+            d, i = tree.query((x, y))
+            if d <= ROAD_SNAP:
+                road_seen += 1
+                if int(pv.labels[i]) in cut_ids:
+                    shut_road.append([round(x), round(y), round(float(comp_area[pv.labels[i]]), 1)])
     # paths
     pr = []
     inside = [p for p in su.settlements() if (int(p["x"] // su.CELL_UNITS), int(p["y"] // su.CELL_UNITS)) in cells]
@@ -241,7 +270,10 @@ def run(out, cells: set, ras) -> dict:
                        "islands": len(islands), "islands_m2": round(sum(r["m2"] for r in islands), 1),
                        "largest_islands": islands[:10],
                        "cut_off_on_a_main_landmass": len(cut), "cut_off_m2": round(sum(r["m2"] for r in cut), 1),
-                       "largest_cut_off": cut[:10]},
+                       "cut_off_share": round(sum(r["m2"] for r in cut) / total, 5) if total else None,
+                       "cut_off_by_size": by_size, "largest_cut_off": cut[:10]},
+        "reach": {"places_in_a_cut_off_piece": len(shut_places), "places": shut_places[:20], "road_vertices": road_seen,
+                  "road_vertices_in_a_cut_off_piece": len(shut_road), "road": shut_road[:20]},
         "paths": {"pairs": len(pr), "ok": sum(1 for r in pr if r.get("ok")), "list": pr},
     }
 

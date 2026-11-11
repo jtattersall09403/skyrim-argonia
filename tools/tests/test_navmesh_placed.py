@@ -1,6 +1,7 @@
 """The navmesh is cut round what is placed on the new world: every producer's refs shards are read, the collidable
-references are the ones fed, a placed boulder leaves a hole all the way through (a solid, not a shell), a low stone is
-stepped over, and moving a boulder rebuilds only the cells it touches. Synthetic ground and meshes (no game data;
+references are the ones fed, each reduced to the voxel columns it blocks (a boulder right through: a solid, not a
+shell; a low stone and a high bough none), a second run reuses every row and writes the same bytes, moving a boulder
+rebuilds only the cells it touches, and the flora placer keeps a road's walking width clear of a thing's collision. Synthetic ground and meshes (no game data;
 the build tests need the .NET SDK, else they are skipped)."""
 import json
 
@@ -49,26 +50,76 @@ def write_refs(root, rock_at):
 
 BOX = (CX0 + 1, CY_TOP - N + 2, CX0 + N - 2, CY_TOP - 1)
 ROCK = at(13, -16, 1920, 1920)
+FRAME = (CX0 * 4096.0, (CY_TOP + 1) * 4096.0, 128.0)  # the ground raster's first sample and its spacing
 
 
 def test_every_producers_shards_are_read_and_the_collidable_are_fed(tmp_path):
     write_refs(tmp_path / "refs", ROCK)
     assert [f.parent.name for f in placed.shard_files(tmp_path / "refs")] == ["flora", "mist", "flora"]
-    t = placed.write_rows(tmp_path / "refs", tmp_path, tmp_path / "objects", BOX, 384.0, ground=lambda x, y: 200.0, resolver=Resolver(), sample=1)
+    kw = dict(cache=tmp_path / "rows", resolver=Resolver(), sample=1)
+    t = placed.write_rows(tmp_path / "refs", tmp_path, tmp_path / "objects", BOX, ground(), FRAME, **kw)
     assert (t["refs"], t["collidable"], t["fed"], t["no_collision"], t["unresolved"]) == (4, 2, 2, 2, 0)
     assert t["producers"] == {"flora": {"refs": 3, "fed": 2}, "mist": {"refs": 1, "fed": 0}}
     assert placed.collidable_count(tmp_path / "refs", tmp_path, BOX, Resolver()) == 2
-    rows = np.fromfile(tmp_path / "objects" / "cy-016.f32", np.float32).reshape(-1, 3, 3)
-    assert len(rows) == len(SHELL) and np.fromfile(tmp_path / "objects" / "cy-016.n.i32", np.int32).tolist() == [len(SHELL)]
+    runs = np.fromfile(tmp_path / "objects" / "cy-016.runs.i32", np.int32).reshape(-1, 3)  # the boulder's columns
+    assert t["columns"] == int((runs[:, 2] - runs[:, 1] + 1).sum()) and 1350 <= t["columns"] <= 1650  # 600 x 600 units of 16
+    assert ((runs[:, 1] + 0.5) * 16 > ROCK[0] - 450).all() and ((runs[:, 2] + 0.5) * 16 < ROCK[0] + 450).all()
+    assert not (tmp_path / "objects" / "cy-017.runs.i32").exists()  # the low stone blocks nothing
     probe = np.load(tmp_path / "objects" / "probe.npy")  # the boulder alone stands in an actor's way
     assert len(probe) == 1 and abs(probe[0, 0] - ROCK[0]) <= 300 and probe[0, 3] > 128
+    first = {f.name: f.read_bytes() for f in (tmp_path / "objects").iterdir()}
+    stamp = {f.name: f.stat().st_mtime_ns for f in (tmp_path / "rows").iterdir()}
+    assert placed.write_rows(tmp_path / "refs", tmp_path, tmp_path / "objects", BOX, ground(), FRAME, **kw) == t
+    assert {f.name: f.read_bytes() for f in (tmp_path / "objects").iterdir()} == first  # the same bytes,
+    assert {f.name: f.stat().st_mtime_ns for f in (tmp_path / "rows").iterdir()} == stamp  # from the rows kept
+
+
+def test_what_blocks_a_column():
+    h = np.zeros((40, 40), np.float32)
+    def cols(t):
+        runs, _ = placed.blocked_columns(np.asarray(t, float), h, (0.0, 40 * 128.0, 128.0))
+        return int((runs[:, 2] - runs[:, 1] + 1).sum()) if len(runs) else 0
+    assert cols(box_tris(100, 100, 200, 180, -20, 300)) == 7 * 6  # a body through the band: every column it stands in
+    assert cols(box_tris(100, 100, 200, 180, -20, 30)) == 0  # under the climb: stepped over
+    assert cols(nif._box_tris(np.array([100.0, 100, 130]), np.array([200.0, 180, 300]))) == 0  # a closed body over an actor's head: walked under
+    shell = box_tris(100, 100, 600, 600, -20, 900)
+    assert cols(shell[[i for i in range(len(shell)) if not (shell[i][:, 2] < 0).all()]]) == 32 * 32  # no underside: solid all the same
+    ring = np.concatenate([box_tris(4, 4, 396, 12, 0, 200), box_tris(4, 388, 396, 396, 0, 200), box_tris(4, 4, 12, 396, 0, 200),
+                           box_tris(388, 4, 396, 396, 0, 200)])
+    assert cols(ring) == 25 * 25  # the ground one thing closes in is inside it
+
+
+def test_the_placer_keeps_a_roads_walking_width_clear():
+    from scipy.spatial import cKDTree
+    from tools.newworld.place import place
+
+    class W:
+        h, ox, oy, H, W = np.zeros((64, 64), np.float32), 0.0, 64 * 128.0, 64, 64
+
+    class P:
+        reach = {"hull": 500.0, "bare": 0.0}
+
+        def collision(self, key):
+            return box_tris(-100, -100, 100, 100, -20, 300) if key == "hull" else np.zeros((0, 3, 3))
+
+    class R:
+        pts = np.column_stack([np.arange(0, 8000.0, 70.0), np.full(115, 4000.0)])  # a minor road running east
+        edge = np.full(115, 2.0)
+        tree = cKDTree(pts)
+
+    def short(key, y, scale=1.0):
+        return place.road_shortfall(W, P(), R, {"base": key, "pos": [4000.0, y, 0.0], "rot": [0, 0, 0], "scale": scale})
+    assert short("hull", 4000.0 + 192 + 48 + 100 + 24) == 0  # its near side past the walking width and the clearance
+    assert 30 < short("hull", 4000.0 + 192 + 100) < 70  # a collision at the walking width's edge is inside the clear line
+    assert short("hull", 4700.0, scale=5.0) > 0  # the same base at scale 5 reaches the road from 10 m out
+    assert short("bare", 4000.0) == 0  # no collision, no rule
 
 
 def test_a_mesh_that_is_not_found_is_a_fault(tmp_path):
     (tmp_path / "refs" / "flora").mkdir(parents=True)
     (tmp_path / "refs" / "flora" / "cy-016.jsonl").write_text(json.dumps(
         {"key": "000009:Mod.esp", "pos": ROCK, "rot": [0, 0, 0], "scale": 1.0, "model": "gone.nif"}) + "\n")
-    t = placed.write_rows(tmp_path / "refs", tmp_path, tmp_path / "objects", BOX, 384.0, resolver=Resolver())
+    t = placed.write_rows(tmp_path / "refs", tmp_path, tmp_path / "objects", BOX, ground(), FRAME, resolver=Resolver())
     assert t["unresolved"] == 1 and t["unresolved_models"] == ["000009:Mod.esp"]
 
 
@@ -105,7 +156,7 @@ def built(tmp_path_factory):
 def test_a_placed_boulder_leaves_a_hole_right_through(built):
     out, first, again, moved = built
     ck = first["check"]
-    assert ck["green"] and ck["objects"] == len(SHELL) + len(SLAB)
+    assert ck["green"] and ck["objects"] > 0
     pl = ck["placed"]
     assert pl["fed"] == pl["collidable"] == 2 and pl["green"] and first["placed"]["objects"] == 2
     assert pl["stands_tall"] == {"probed": 0, "in_a_hole": 0, "share": None} or pl["stands_tall"]["share"] == 1.0
