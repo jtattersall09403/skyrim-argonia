@@ -116,3 +116,8 @@ give `getpos x` and `getpos y` from the console). A screenshot helps. Each check
       none out at sea, and none indoors. If the sky ever looks like a flat grey or cream sheet, press End, open
       Exponential Height Fog and untick "Enable Exponential Height Fog", and tell us: that one setting turns the
       ground fog off and puts the game's own fog back.
+- [ ] **O. People and creatures go round things.** Near Lilmoth (`coc ANWLilmoth`), type `player.placeatme 00023ABE`
+      (a wolf), let it chase you through trees and round rocks, then along the road: it goes round trunks and
+      boulders instead of running into them, follows the road, and does not get stuck or wander into the water. The
+      walking mesh used to ignore every tree, rock and cliff; it is now cut round them, and plants and rocks are kept
+      from overhanging roads.
