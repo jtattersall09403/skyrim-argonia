@@ -321,7 +321,7 @@ def stages(src: Path) -> tuple:
         checks = s.checks
         if s.name == "readback":
             checks = ((*me, "readback"),)
-        cmds, reads = s.cmds, s.reads
+        cmds, reads = tuple(c for c in s.cmds if c != rb.NAVMESH_SAMPLE), s.reads   # the block is itself the fast test
         if s.name == "map":       # the teleports' check judges every place of the province; the plan is the LOD's
             checks = ((*me, "plan-holds"),)   # whole one here: the derived LOD models made, and the plan that names them
             lm = "out/newworld-small/lodmodels"
