@@ -71,7 +71,8 @@ def test_the_stages_are_the_rebuilds_own_under_the_small_world():
     real = R.Tree().by_name
     for name in ("land", "landcover", "cells", "place", "paint", "mist", "navmesh"):
         # the same tool and arguments, run through the re-rooting runner; the same code read
-        for mine, theirs in zip(st[name].cmds + st[name].checks, real[name].cmds + real[name].checks):
+        theirs_all = tuple(c for c in real[name].cmds if c != R.NAVMESH_SAMPLE) + real[name].checks   # the block is the fast test
+        for mine, theirs in zip(st[name].cmds + st[name].checks, theirs_all):
             assert mine[:4] == (R.PY, "-m", "tools.newworld.small", "tool") and mine[4] == theirs[2]
         assert small.code_specs(st[name]) == small.code_specs(real[name])
     assert R.order(tuple(st.values()))[0] == "cut"
