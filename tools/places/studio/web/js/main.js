@@ -7,7 +7,7 @@ import { View } from './view.js';
 import { TerrainMesh, LandTex } from './terrain_mesh.js';
 import { ObjectLayer } from './objects.js';
 import { GrassLayer } from './grass.js';
-import { pathLtex } from './path_paint.js';
+import { pathLtexes, roadSetName } from './path_paint.js';
 import { setupAtlas } from './atlas.js';
 import { fitPoint, unfitPoint } from './xform.js';
 import { Tools } from './tools.js';
@@ -178,16 +178,16 @@ class Studio {
       const used = new Set(); for (const c of terr.list) for (const q of c.quadrants) { used.add(q.base); for (const l of q.layers) used.add(l.tex); }
       for (const key of used) {
         const lt = terr.ltex[key] || {}, words = `${lt.edid || ''} ${lt.diffuse || key || ''}`;
-        if (key && re.test(words) && !out[key]) out[key] = { tex: key, label: plainTexName(lt.edid || lt.diffuse || key) };
+        if (key && re.test(words) && !out[key]) out[key] = { tex: key, texs: [key, key, key], label: plainTexName(lt.edid || lt.diffuse || key) };
       }
       Object.assign(this.ltexAll || (this.ltexAll = {}), terr.ltex);
     }
     if (!Object.keys(out).length) out.path = { tex: null, colour: '#7a6446', label: 'Dirt path' };
     for (const p of this.model.paths.values()) {
       if (out[p.style]) continue;
-      // a style word is painted with the world's land texture the build picks for it (path_paint.js)
-      const word = STYLE_WORD[p.style], tex = pathLtex(p.style, this.terrain?.ltex);
-      out[p.style] = { tex, colour: word?.colour || '#7a6446', label: word?.label || plainTexName(this.terrain?.ltex[p.style]?.edid || p.style) };
+      // a style word is painted with the world's land textures the build picks for it: the ground's road set (path_paint.js)
+      const word = STYLE_WORD[p.style], texs = pathLtexes(p.style, this.terrain?.ltex, roadSetName(this.terrain));
+      out[p.style] = { tex: texs?.[0] ?? null, texs, colour: word?.colour || '#7a6446', label: word?.label || plainTexName(this.terrain?.ltex[p.style]?.edid || p.style) };
     }
     return out;
   }

@@ -18,6 +18,7 @@ the place pads (out/newworld/terrain/places_terrain.json). Writes out/newworld/l
     roadcls.npy  uint8   the nearest road's class (1 major, 2 minor; 0 none within 100 m)
     canopy.npy   uint8   tree-cover multiplier 0..255 for the planting step (glades, stands, clearings, banks)
     slope.npy    uint8   degrees (from the heightmap smoothed over ~2 samples)
+    relief.npy   int8    micro-relief: height over the ground within ~11 m, dm (+ hump, - hollow)
     flags.npy    uint8   1 water, 2 place pad, 4 margin cell, 8 road surface (< 3.5 m major / 2 m minor)
     legend.json, stats.json, preview.png (habitat colours, 1 px = 4 samples)
 
@@ -351,6 +352,13 @@ class Chooser:
         return res
 
 
+def micro_relief(hs: np.ndarray) -> np.ndarray:
+    """Height (units, lightly smoothed) -> its height over the ground round it (sigma 6 samples, ~11 m), dm, int8:
+    + a hump or bank top, - a hollow (the ground paint's wet and rough patches follow it)."""
+    d = (hs - ndi.gaussian_filter(hs, 6)) / UPM * 10
+    return np.clip(np.rint(d), -127, 127).astype(np.int8)
+
+
 def F_at(fields, h, wr, wc):
     return fields.at(h, wr, wc)
 
@@ -420,6 +428,7 @@ def build(force: bool = False) -> dict:
     log("slope")
     hs = ndi.gaussian_filter(np.asarray(hm, np.float32), 1.5)
     gy, gx = np.gradient(hs, SAMPLE)
+    relief = micro_relief(hs)
     del hs
     slope = np.degrees(np.arctan(np.hypot(gx, gy))).astype(np.float32)
     del gx, gy
@@ -511,11 +520,13 @@ def build(force: bool = False) -> dict:
     log("write")
     for name, a in (("habitat", habitat), ("region", region), ("kind", kind), ("shore", dm(shore)),
                     ("sea", dm(sea, 0)), ("run", dm(run, 0)), ("road", road), ("roadcls", roadcls),
-                    ("canopy", canopy), ("slope", np.clip(np.rint(slope), 0, 90).astype(np.uint8)), ("flags", flags)):
+                    ("canopy", canopy), ("slope", np.clip(np.rint(slope), 0, 90).astype(np.uint8)), ("flags", flags),
+                    ("relief", relief)):
         _save(name, a)
     legend = {"build_id": b["id"], "habitats": ["none"] + habs, "regions": regions, "kinds": kinds,
               "shape": [H, W], "origin_world": [ox, oy], "sample_units": SAMPLE,
-              "units": {"shore": "dm", "sea": "dm", "run": "dm", "road": "dm", "canopy": "0..255", "slope": "deg"},
+              "units": {"shore": "dm", "sea": "dm", "run": "dm", "road": "dm", "canopy": "0..255", "slope": "deg",
+                        "relief": "dm"},
               "flags": {"water": 1, "place_pad": 2, "margin": 4, "road_surface": 8}}
     (OUT / "legend.json").write_text(json.dumps(legend, indent=1))
     stats = report(habitat, region, water, canopy, habs, regions, shares)

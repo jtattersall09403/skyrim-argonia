@@ -614,10 +614,13 @@ is grown as the game grows it, from each land texture's grass list (`grass.js`, 
 round where the view looks, out to the view's distance (at most 16,000 units), every spot near the eye and, beyond
 4,500 units, a spot kept with chance (4500 / d)^2 and drawn up to twice the size, so the ground keeps its cover for at
 most 6,000 blades; none once the view stands back past 30,000 units, and none from a model the converter could not
-read. Drawn paths are painted as the build paints them (`path_paint.js`, numbers tested against `build.py`): one
-more alpha layer of the style's land texture (a style word picks the land texture whose editor id ends with the
-build's word for it), opacity 1 within the half width feathered to 0 over 96 units at each land grid point, tiled and
-lit like the ground; a boardwalk only ashore. Each view has a compass at its lower left (the needle points north on
+read. Drawn paths are painted as the build paints them, by the world's road rule (`path_paint.js`, its numbers and its
+noise tested against `tools/newworld/world/roadpaint.py` and `texture.road_mix`): three alpha layers over the ground
+(verge, second track, first track) whose composite is the build's weights: full on the path, the measured ramp from
+its edge (0 by 8.55 m out for a road or a street, 6.8 m for a path, a dirt track or a boardwalk), the track core
+handing to the verge over 4.5 m; a style word takes the road set of the ground (the set whose track the world's land
+here carries, else the forest set), a one-texture style (`mud`, `sand`, `stone`, `skirt`) or a picked key its own
+texture; tiled and lit like the ground; a boardwalk only ashore. Each view has a compass at its lower left (the needle points north on
 screen; a tap turns the view to face north), and the Selected panel gives the position in game units, the cell
 (floor of position / 4096, outside) and the turn in degrees, or the middle of several things, kept current as they
 move.
@@ -805,9 +808,13 @@ their own cell (interior), as vanilla files them.
    a plain door.
 4. Land: each `land.jsonl` vertex (`row` from the south, `col` from the west, `dz` in units, rounded to 8-unit
    steps) is applied to the world's own heights; every cell whose heights or normals change gets a LAND override
-   (the world's record with new VHGT and VNML, the normals computed as the world computes them). Paths paint one
-   alpha layer per quadrant of the world's own LTEX for their `style` (`road`, `street`, `path`: dirt_road;
-   `track`: dirt_grass; `mud`, `sand`, `stone`, `skirt`), opacity 1 within the half width, feathered over 96 units.
+   (the world's record with new VHGT and VNML, the normals computed as the world computes them). Paths are painted
+   by the world's road rule (`tools/newworld/world/roadpaint.py`): a style word (`road`, `street`, `path`, `dirt`,
+   `track`, `boardwalk`) takes the road set of the ground province at the path (two track materials varying along
+   it, a verge), a one-texture style (`mud`, `sand`, `stone`, `skirt`) or a picked key its texture; full on the
+   path, the measured ramp beyond its edge. Each quadrant a path reaches is repainted whole (the world's composite
+   with the path blended over it, at most six textures: the path's, then those on the quadrant's border, then the
+   heaviest) and its base and alpha layers replace the world's in that quadrant (`quads` in the plan; Write.cs).
 5. Clearance: each `clear.jsonl` row matches the world's ref of its base nearest it within 64 units, overridden
    **Initially Disabled**. Bethesda also deletes (Update.esm: 59 deleted, 7 disabled), but a deleted master ref
    breaks any save or link that names it and cannot come back when the owner un-clears; BM&V disables (40 refs).

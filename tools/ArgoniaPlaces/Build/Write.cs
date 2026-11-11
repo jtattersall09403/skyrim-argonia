@@ -2,7 +2,7 @@
 // Every decision is in the plan; this only turns rows into records:
 //   - the world's WRLD, its persistent cell and each touched CELL as overrides that carry only their header (the
 //     world's own refs, LAND and NAVM stay the world's) plus what the plan adds: our refs, the cleared refs (the
-//     world's ref with Initially Disabled set), LAND (the world's record with our VHGT/VNML and added alpha layers),
+//     world's ref with Initially Disabled set), LAND (the world's record with our VHGT/VNML and the quadrants our paths repaint),
 //     NAVM (the plan's bytes);
 //   - interiors: new cells whose header is the source cell's (links out of our masters copied by ForeignCopy, its
 //     location and encounter zone dropped), holding our refs and navmesh;
@@ -296,6 +296,29 @@ static class Write
                             Header = new LayerHeader { Texture = new FormLink<ILandscapeTextureGetter>(ctx.Link(a.GetProperty("texture").GetString()!)), Quadrant = q, LayerNumber = (ushort)next },
                             AlphaLayerData = ad,
                         });
+                    }
+                }
+                if (L.TryGetProperty("quads", out var qs) && qs.ValueKind == JsonValueKind.Array)
+                {
+                    // a quadrant the place's paths repaint: its base and alpha layers replace the world's (build.py plan_paths)
+                    if (land.Layers is null) throw new InvalidDataException($"cell {x},{y}: the world LAND has no layers");
+                    foreach (var a in qs.EnumerateArray())
+                    {
+                        var q = (Quadrant)a.GetProperty("quadrant").GetInt32();
+                        land.Layers.RemoveAll(z => z.Header!.Quadrant == q);
+                        land.Layers.Add(new BaseLayer { Header = new LayerHeader { Texture = new FormLink<ILandscapeTextureGetter>(ctx.Link(a.GetProperty("base").GetString()!)), Quadrant = q, LayerNumber = 0xFFFF } });
+                        ushort k = 0;
+                        foreach (var l in a.GetProperty("layers").EnumerateArray())
+                        {
+                            var ad = new ExtendedList<AlphaLayerData>();
+                            foreach (var pv in l.GetProperty("alpha").EnumerateArray())
+                                ad.Add(new AlphaLayerData { Position = (ushort)pv[0].GetInt32(), Opacity = (float)pv[1].GetDouble() });
+                            land.Layers.Add(new AlphaLayer
+                            {
+                                Header = new LayerHeader { Texture = new FormLink<ILandscapeTextureGetter>(ctx.Link(l.GetProperty("texture").GetString()!)), Quadrant = q, LayerNumber = k++ },
+                                AlphaLayerData = ad,
+                            });
+                        }
                     }
                 }
                 cell.Landscape = land;

@@ -108,6 +108,13 @@ static class NewWorld
             var spec = m.GetProperty("ltex").GetString()!.Split(':');
             var key = fc.Get(spec[0], spec[1], forceCopy: true);
             var lt = mod.LandscapeTextures[key];
+            if (matKeys.Contains(key))
+            {
+                // a second material of one source (another grass list): its own LTEX, a copy of the first
+                lt = (LandscapeTexture)lt.Duplicate(new FormKey(modKey, fc.NextIdTake()));
+                mod.LandscapeTextures.Add(lt);
+                key = lt.FormKey;
+            }
             lt.EditorID = "ANW_Ground_" + m.GetProperty("id").GetString();
             var ts = lt.TextureSet.FormKey;  // our own TXST too, so the ground's diffuse paths read from this plugin alone
             if (!ts.IsNull && ts.ModKey != modKey) lt.TextureSet.SetTo(fc.Get(ts, ts.ModKey.FileName, forceCopy: true));
@@ -463,7 +470,8 @@ static class NewWorld
                 var bases = g.Where(x => x is not IAlphaLayerGetter).ToList();
                 var alphas = g.OfType<IAlphaLayerGetter>().ToList();
                 layerHist[Math.Min(alphas.Count + bases.Count, 7)]++;
-                bool ok = bases.Count == 1 && alphas.Count <= 6 && alphas.Select(x => (int)x.Header!.LayerNumber).SequenceEqual(Enumerable.Range(0, alphas.Count))
+                bool ok = bases.Count == 1 && alphas.Count <= 5 &&  // six textures a quadrant: the shader's six slots
+                           alphas.Select(x => (int)x.Header!.LayerNumber).SequenceEqual(Enumerable.Range(0, alphas.Count))
                           && g.All(x => ours.ContainsKey(x.Header!.Texture.FormKey))
                           && alphas.All(x => x.AlphaLayerData is { } d && d.All(p => p.Opacity > 0 && p.Opacity <= 1.0001f && p.Position < 289));
                 if (!ok && badLayers++ < 5) Fail($"cell {c.Grid?.Point} quadrant {g.Key}: bad layers ({bases.Count} base, {alphas.Count} alpha)");

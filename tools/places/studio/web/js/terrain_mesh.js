@@ -3,7 +3,7 @@
 // average colour far away; water at each cell's water height, shaded by its depth over the land at the shore.
 import * as THREE from 'three';
 import { getJSON, texUrl } from './api.js';
-import { cellOpacity } from './path_paint.js';
+import { cellLayers } from './path_paint.js';
 
 const TEX_PX = 512, Q = TEX_PX / 2, TILES = 3, NEAR_CELLS = 2.6, MAX_BAKED = 36;
 
@@ -183,7 +183,7 @@ export class TerrainMesh {
     while (this.queue.length) {
       const e = this.queue.shift();
       const keys = new Set(); for (const q of e.c.quadrants) { keys.add(q.base); for (const l of q.layers) keys.add(l.tex); }
-      for (const p of this.paths()) if (this.pathStyles[p.style]?.tex) keys.add(this.pathStyles[p.style].tex);
+      for (const p of this.paths()) for (const k of this.pathStyles[p.style]?.texs || []) keys.add(k);
       await Promise.all([...keys].filter(Boolean).map((k) => this.lt?.load(k, this.t.ltex)));
       if (!e.canvas) { e.canvas = document.createElement('canvas'); e.canvas.width = e.canvas.height = TEX_PX; e.tex = new THREE.CanvasTexture(e.canvas); e.tex.colorSpace = THREE.SRGBColorSpace; e.tex.anisotropy = 4; }
       e.mat = e.mat || new THREE.MeshLambertMaterial({ map: e.tex, vertexColors: true });
@@ -217,9 +217,9 @@ export class TerrainMesh {
       tctx.drawImage(mask, 0, 0, 17, 17, 0, 0, Q, Q);
       ctx.drawImage(tmp, qx, qy);
     };
-    // paths are painted as the build paints them: one more alpha layer of the path's land texture, feathered
+    // paths are painted as the build paints them (path_paint.js): verge, second track, first track, on the road ramp
     const g = this.t.grid, paths = [];
-    for (const p of this.paths()) { const op = cellOpacity(p, e.c.cell, this.t); if (op) paths.push([p, op]); }
+    for (const p of this.paths()) { const ops = cellLayers(p, e.c.cell, this.t); if (ops) paths.push([p, ops]); }
     for (let qi = 0; qi < 4; qi++) {
       // canvas y runs north to south; quadrants are SW, SE, NW, NE
       const qx = (qi % 2) * Q, qy = qi < 2 ? Q : 0, q = e.c.quadrants[qi];
@@ -227,12 +227,15 @@ export class TerrainMesh {
       fillTiled(ctx, img(q.base), qx, qy, Q, Q, this.lt ? this.lt.avg(q.base, lt) : '#4d5a2c');
       for (const l of q.layers) if (l.alpha) layer((r, c) => l.alpha[r * 17 + c], l.tex, qx, qy, '#6e5a41');
       const r0 = qi >= 2 ? 16 : 0, c0 = qi % 2 ? 16 : 0;
-      for (const [p, op] of paths) {
+      for (const [p, ops] of paths) {
         const st = this.pathStyles[p.style] || {};
-        if (st.tex) layer((r, c) => op[(r0 + r) * g + c0 + c], st.tex, qx, qy, '#6e5a41');
-        else { // no land texture for the style: its colour, feathered the same way
+        if (st.texs) for (let k = 0; k < 3; k++) layer((r, c) => ops[k][(r0 + r) * g + c0 + c], st.texs[2 - k], qx, qy, '#6e5a41');
+        else { // no land texture for the style: its colour, on the same ramp (the three layers' total)
           const data = mctx.createImageData(17, 17), rgb = hex(st.colour || '#7a6446').map((v) => Math.round(v * 255));
-          for (let r = 0; r < 17; r++) for (let c = 0; c < 17; c++) { const i = ((16 - r) * 17 + c) * 4; data.data.set(rgb, i); data.data[i + 3] = op[(r0 + r) * g + c0 + c] * 255; }
+          for (let r = 0; r < 17; r++) for (let c = 0; c < 17; c++) {
+            const i = ((16 - r) * 17 + c) * 4, j = (r0 + r) * g + c0 + c;
+            data.data.set(rgb, i); data.data[i + 3] = (1 - (1 - ops[0][j]) * (1 - ops[1][j]) * (1 - ops[2][j])) * 255;
+          }
           mctx.putImageData(data, 0, 0); ctx.imageSmoothingEnabled = true; ctx.drawImage(mask, 0, 0, 17, 17, qx, qy, Q, Q);
         }
       }
@@ -250,13 +253,16 @@ export class TerrainMesh {
   splatPaths(e) {
     if (!e.baseColour) return;
     const g = this.t.grid, col = e.geo.attributes.color.array, vc = e.c.vcol; col.set(e.baseColour);
-    // the path's land texture colour blended in by the build's feathered opacity at each grid point
+    // the path's land texture colours blended in by the build's layer opacities at each grid point
     for (const p of this.paths()) {
-      const op = cellOpacity(p, e.c.cell, this.t); if (!op) continue;
-      const st = this.pathStyles[p.style] || {}, rgb = hex(st.tex && this.lt ? this.lt.avg(st.tex, this.t.ltex) : (st.colour || '#6e5a41'));
-      for (let i = 0; i < g * g; i++) {
-        const o = op[i]; if (!o) continue;
-        for (let k = 0; k < 3; k++) col[i * 3 + k] += (rgb[k] * (vc ? vc[i * 3 + k] / 255 : 1) - col[i * 3 + k]) * o;
+      const ops = cellLayers(p, e.c.cell, this.t); if (!ops) continue;
+      const st = this.pathStyles[p.style] || {};
+      for (let l = 0; l < 3; l++) {
+        const tex = st.texs?.[2 - l], rgb = hex(tex && this.lt ? this.lt.avg(tex, this.t.ltex) : (st.colour || '#6e5a41'));
+        for (let i = 0; i < g * g; i++) {
+          const o = ops[l][i]; if (!o) continue;
+          for (let k = 0; k < 3; k++) col[i * 3 + k] += (rgb[k] * (vc ? vc[i * 3 + k] / 255 : 1) - col[i * 3 + k]) * o;
+        }
       }
     }
     e.farColour = Float32Array.from(col); this.tintCell(e);
