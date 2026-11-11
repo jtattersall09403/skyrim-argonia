@@ -1,7 +1,7 @@
 # What a change makes stale
 
 The stages, in order: `tools`, `scope`, `regions`, `db`, `terrain`, `needs`, `water`, `db-water`, `land`, `relief`,
-`landcover`, `cells`, `landings`, `place`, `paint`, `mist`, `atmosphere`, `height-fog`, `navmesh`, `map`, `esm`,
+`landcover`, `cells`, `landings`, `place`, `edits`, `paint`, `mist`, `atmosphere`, `height-fog`, `navmesh`, `map`, `esm`,
 `readback`, `upload`. `tools/newworld/rebuild.sh plan` prints the order with what each stage waits for, and is the
 authority on what is stale; this table says what to expect and what follows on the other machines.
 
@@ -18,10 +18,10 @@ ground paint are built again whenever their stage runs, under a new key: every s
 
 | A change to | Edit | Runs | Follows | Left alone | Beyond this build |
 |---|---|---|---|---|---|
-| Region relief or landforms | `newworld/sources/region_relief.json`, `tools/newworld/terrain_*.py` | `terrain`, and each stage that reads the edited module (`needs` and `water` for `terrain_relief.py`; `water`, `landcover`, `cells` and `paint` for `terrain.py`) | every stage after it but `atmosphere` | `tools`, `scope`, `regions`, `db`, `atmosphere` | the whole LOD; the deploy; every built place (held, so `seating` moves nothing unless its row's build changes; ground bundle, build, check) |
+| Region relief or landforms | `newworld/sources/region_relief.json`, `tools/newworld/terrain_*.py` | `terrain`, and each stage that reads the edited module (`needs` for `terrain_relief.py`, `terrain_shape.py` and `terrain_clearance.py`; `water` for `terrain_relief.py`, `terrain_water.py` and `terrain.py`; `relief` for `terrain_character.py` and `terrain_held.py`; `landcover`, `cells` and `paint` for `terrain.py`) | every stage after it but `atmosphere` | `tools`, `scope`, `regions`, `db`, `atmosphere` | the whole LOD; the deploy; every built place (held, so `seating` moves nothing unless its row's build changes; ground bundle, build, check) |
 | Scope (how far the world reaches) | `tools/newworld/tiles.py` | `scope`, `regions`, `db`, `terrain` | every stage after | `tools` | as relief; the map's pan box moves with it |
 | The source map's water | the map picture's reading: `python3 -m tools.newworld.raster` | `db`, `terrain`, `water` | every stage after | `tools`, `scope`, `regions` | as relief. The waterline moves: `water` stays red until the owner accepts the classification (the skill's section 2) |
-| An owner's water edit from the Atlas | the pull, below | `db`, `terrain`, `water` | every stage after | `tools`, `scope`, `regions` | as relief; republish the Atlas |
+| An owner's water edit from the Atlas | the pull, below | `db`, `terrain`, `water` | every stage after. A kind edit moves no land: only the held water's bed and kind change | `tools`, `scope`, `regions` | as relief; republish the Atlas |
 | Water kinds' rules | `tools/newworld/water_kinds.py` | `water`, `cells` | `landcover`, then `landings`, `place`, `paint`, `mist`, `height-fog`, `navmesh`, `map`, `esm`, `upload` | `terrain`, `needs`, `land`, `relief`, `atmosphere` | if `landcover` ran: the whole LOD, the deploy, each built place's ground bundle and `clearance`; else the deploy alone. `--accept` only on the owner's word |
 | Roads | `newworld/sources/road_corrections.json`, then `python3 -m tools.newworld.roads` | `db`, `terrain` | every stage after | `tools`, `scope`, `regions` | as relief |
 | A place added or moved, its size or its terrain needs | its research record (the skill `place-research`) | `db` | `terrain` and every stage after, when its position, footprint or needs changed; else only the stages that read the columns that changed (`landings`, `place`, `navmesh`, `map` for a name, a kind or a rank) | the rest | as relief when the terrain ran; else the deploy if `esm` ran |
@@ -43,6 +43,24 @@ with the ArtifactData tool into a folder, then `python3 -m tools.newworld.water_
 | Navmesh parameters | `tools/navmesh/*.py`, `tools/navmesh/ArgoniaNav/` | `navmesh` (and `tools` for the C#; and `place` for `esm.py`, `meshes.py`, `bsa.py`, `nif.py`, `placed.py`, `solid.py`, `params.py` and `inputs.py`: the placement reads the models through the first three and keeps the road clear by each collision's blocked columns through the rest, so its refs, and with them the flora sets' row, follow) | `esm`, `upload` | every other stage | the deploy; each built place's build and check (its navmesh joins the world's) |
 | The laid mod stack (a mod added, taken out, reordered or changed) | `mods/dependencies.json`, staged | `place`, `navmesh`, `map`, `esm`; `paint`'s check alone | `mist`, `upload` | `terrain` to `landings`, `atmosphere`, `height-fog` | tree and object LOD; the deploy of the world file and the stack; each built place's build |
 
+`place` writes the placement as the rules make it (`out/newworld/plugin/placed/flora`). `edits` applies
+`newworld/sources/placed_edits.jsonl` over it into `out/newworld/plugin/refs/flora`, which every later stage reads;
+nothing is placed again. An edit of one placed thing (a tree removed, a rock moved, a base swapped, a thing added):
+
+1. List what stands there: `python3 -m tools.newworld.place refs --cell CX CY` (or `--fid HEX`, `--at X Y`).
+2. Append the edit: `python3 -m tools.newworld.place edit remove|move|swap|add|restore --by <who> ...`. It
+   validates the row; never write the file by hand, and never change a rule to move one thing.
+3. `tools/newworld/rebuild.sh small`, then `tools/newworld/rebuild.sh plan`: it lists, for the edits waiting, the
+   shard rows, the navmesh cells, the mist, the built places and the LOD they reach. Then run.
+4. Gather a session's edits into one rebuild and one DynDOLOD run (the skill `world-lod`, section 3).
+
+| A change to | Edit | Runs | Follows | Left alone | Beyond this build |
+|---|---|---|---|---|---|
+| One placed thing | `python3 -m tools.newworld.place edit`, as above | `edits` | `navmesh` (the cells within reach), `map`, `esm`, `readback`, `upload`; `mist` only when a cell's count changes | `place`, and every ground stage: `terrain` to `landings`, `paint` | the deploy; `dyndolod` alone, `texgen` only for a base new to the world, never terrain LOD; a built place whose `clear.jsonl` names an edited thing or whose cells hold one (the skill `place-build`, section 7) |
+
+After a change to the placement's rules, read the `ORPHANED` lines of the plan and of the `edits` stage: each is an
+edit whose thing the rules no longer place. Answer each with a new edit or with `edit restore`.
+
 ## Water's look, air, mist
 
 | A change to | Edit | Runs | Follows | Left alone | Beyond this build |
@@ -57,9 +75,9 @@ with the ArtifactData tool into a folder, then `python3 -m tools.newworld.water_
 | A change to | Edit | Runs | Follows | Left alone | Beyond this build |
 |---|---|---|---|---|---|
 | Map data, teleports | `tools/newworld/world/mapdata.py`, `tools/newworld/teleports.py` | `map`, and `landings` for `teleports.py` | `esm` (the map is applied; the file is not written again), `upload` | every stage before `map` | the deploy; the walk list's teleports if names changed |
-| The LOD plan | `tools/newworld/world/lodplan.py`, `lod_models.json` | `map` | `esm`, `upload` | every stage before `map` | tree and object LOD, the small world's selftest first (the skill `world-lod`); the deploy |
+| The LOD plan | `tools/newworld/world/lodplan.py`, `lod_models.json` | `map` | `esm`, `upload`, when the plan comes out different | every stage before `map` | the small world's selftest (the skill `world-lod`, section 4); tree and object LOD and the deploy when the plan changed |
 | A built place's exterior or land patches | `newworld/places/<id>/` (the skill `place-build`) | `landings`, `map` | `esm`, `readback`, `upload` | every other stage | the deploy |
-| The world file's writer | `tools/ArgoniaPlugin/NewWorld*.cs`, `WaterBlend.cs`, `ForeignCopy.cs`, `FormIds.cs`, `WaterStudy.cs`, `tools/newworld/world/world.sh` | `tools` for the C#, and the stage that reads the edited file: `esm` (the writer, the map, the navmesh records, water, copied records, `world.sh`), `atmosphere` (`NewWorldAtmosphere.cs`), `readback` (`NewWorldVerify.cs`, `WaterStudy.cs`) | `readback`, `upload` after `esm` | every shard stage | the deploy if `esm` ran |
+| The world file's writer | `tools/ArgoniaPlugin/NewWorld*.cs`, `WaterBlend.cs`, `ForeignCopy.cs`, `FormIds.cs`, `WaterStudy.cs`, `tools/newworld/world/world.sh` | `tools` for the C#, and the stage that reads the edited file: `esm` (the writer, the map, the navmesh records, water, copied records, `world.sh`), `atmosphere` (`NewWorldAtmosphere.cs`), `readback` (`NewWorldVerify.cs`, `WaterStudy.cs`) | `readback`, `upload` after `esm`, each skipped when the file comes out the same bytes | every shard stage | if the file's bytes changed: the deploy, the LOD steps whose keys moved (`infra/gpu-box/lod.sh keys`), each built place's build. `NewWorldMap.cs` is also read by the LOD's selftest (the skill `world-lod`, section 4) |
 | A tool or script fix that changes no output | the tool | the stage that reads the file | nothing, when its output is the same bytes; every stage after it, when the stage is `land`, `landcover`, `place` or `paint` | all else | nothing, or as the row of the stage that was built again |
 | The read-back | `tools/newworld/verify.py` | `readback`, `relief` | nothing | all else | nothing |
 

@@ -19,10 +19,11 @@ reads has changed. Nothing that is current is built again, here or on the other 
 | 4 | Run the stale stages on the small world, and mend what it finds | section 5 |
 | 5 | Run the rebuild once, under the job guard | section 5 |
 | 6 | Mend a red check at its cause and run again | section 6, and [checks.md](checks.md) |
-| 7 | Commit what the run rewrote; bring the built places and the other machines level | section 7 |
+| 7 | Commit what the run rewrote; bring the play machine's copy, the built places and the LOD level, in that order | section 7 |
 | 8 | The owner's walk check | section 9 |
 
-Lanes working beside a build: section 8. Costs: section 10.
+The order of the stages is the command's, never yours: no stage is run by hand, and no check is saved for the end.
+Lanes working beside a build: section 8. Weighing a review's findings: section 6. Costs: section 10.
 
 ## 1. Measure first
 
@@ -45,26 +46,35 @@ it is not ready to build.
 - **A built place's ground is held.** Every folder under `newworld/places/` has a row in
   `newworld/sources/terrain_held.json`: the terrain build it was seated on and its cells. Inside them the beds are
   that build's, sample for sample, and the land is that build's plus a lift that ramps from nothing at the old
-  waterline. A terrain change is tried on the built places before the world is rebuilt:
-  `ARGONIA_TERRAIN_PROBE=<place>,<place> tooling/job_guard.sh run nw-rebuild -- tools/newworld/rebuild.sh run --to needs`
-  builds the terrain, runs `terrain check` (held ground exact, each water kind's waterline triangles over 45
-  degrees within Skyrim's share) and judges every place's needs, and stops there
-  (`tooling/job_guard.sh wait nw-rebuild`). Read both before anything later runs.
+  waterline. A pad's level ground begins behind the bank, never at the water's edge: the bank keeps a slope the
+  navmesh walks.
+- **A terrain change is tried before the world is rebuilt.**
+  `tooling/job_guard.sh run nw-rebuild -- tools/newworld/rebuild.sh run --to needs` builds the terrain, runs
+  `terrain check` (held ground exact, each water kind's waterline triangles over 45 degrees within Skyrim's share)
+  and judges every place's needs, and stops there (`tooling/job_guard.sh wait nw-rebuild`). Read both before
+  anything later runs. With `ARGONIA_TERRAIN_PROBE=<place>,<place>` set, the terrain build also logs the ground at
+  those places after each of its steps, which names the step that moved a place.
 - **The waterline does not move without the owner.** `water_kinds` fails when a kind's bodies or area leave the
   accepted classification (`newworld/sources/water_accepted.json`) or the waterline moves. When the change is
-  meant to move them, show the owner the new classification (the Atlas, section 7), and only on the owner's word
+  meant to move them, show the owner the new classification on the Atlas (the map page of section 7, step 2), and only on the owner's word
   run `python3 -m tools.newworld.water_kinds --accept`, then the rebuild again.
 - **The owner's water edits hold their water.** Each kind edit keeps the water of the body it was made on
-  (`newworld/sources/water_owner_bodies.png`). An edit is taken in only by the pull in [changes.md](changes.md);
-  never edit `water_overrides.json` by hand.
+  (`newworld/sources/water_owner_bodies.png`), however the bodies are cut on a later build; it sets that water's
+  kind and its bed and moves no land. An edit is taken in only by the pull in [changes.md](changes.md); never edit
+  `water_overrides.json` by hand.
 - **One frame.** Every raster and position is the picture's own pixels and world units, whatever the grid's
   size: a tool finds a sample through the build's origin (`build.json`, the landcover legend, `units.Grid`),
   never by an index it kept. A new consumer of the grid gets a row and a test in the
   [frame audit](../../../docs/research/nw-02-walk5-water-frame.md).
-- **Ids stay.** Noise, rounding and seeds are anchored to the picture's grid, so a wider scope moves no ground.
-  Form ids are registered, never renumbered: `newworld/sources/world_formids.json` holds the id of every land
-  texture, water type, blend, region and copied base by its name, a new one takes the next id of its kind's block,
-  and an entry is never edited or removed. Cells and atmosphere records are placed by formula.
+- **The same inputs build the same bytes.** Noise, rounding and seeds are anchored to the picture's grid, so a
+  wider scope moves no ground, and a stage run twice on the same inputs writes the same output: the placement
+  places the same references. The world file comes out the same bytes however often its map data is applied.
+- **Ids stay.** Form ids are registered, never renumbered: `newworld/sources/world_formids.json` holds the id of
+  every land texture, water type, blend, region and copied base by its name, a new one takes the next id of its
+  kind's block, and an entry is never edited or removed. Cells and atmosphere records are placed by formula, and
+  a placed reference's id follows from its lasting identity (the cell the rules put it in, its base and place
+  there), so an edit or a re-place of its neighbours leaves it.
+  Commit the file after a run that added ids (section 7).
 - **A terrain need is mended, not waved through.** `terrain_needs` fails on a failure that
   `newworld/sources/terrain_needs_accepted.json` does not name. A row is added there only when the map gives the
   place no such ground, with that reason, the judge's own words for the failure (`reason`) and the value it was
@@ -154,8 +164,9 @@ Then the full run:
   `make check`, the terrain's own trial for a terrain change (section 2), and the navmesh's fast test for a change
   to the placement or the navmesh ([checks.md](checks.md)).
 - The run starts each stale stage as soon as the stages it reads from are done, side by side where the machine's
-  memory allows. Every cheap check (the terrain check, the needs, the water kinds, the relief rows, the teleports'
-  landings, the placement check) is green before the paint or the navmesh starts.
+  memory allows. Every cheap check (the terrain check, the needs, the water kinds, the relief rows that read the
+  regions apart, the teleports' landings, the placement check, the edits' check) is green before the paint or the navmesh starts,
+  and the read-back of the written file is the run's own last stage.
 - A stopped run is resumed by the same command: stamped stages are current, the stage that was stopped runs
   again, and the long stages keep the rows and cells they had built for it.
 - `run --to <stage>` runs only what that stage needs. `run --force <stage>` runs a current stage again.
@@ -163,7 +174,7 @@ Then the full run:
 - The run ends with a summary: stages run, stages skipped, checks passed and failed, what went stale beyond
   this build, and the tracked files it rewrote.
 
-## 6. A red check
+## 6. A red check, and a review's findings
 
 A red command or check stops the run there: nothing new starts, the stages already running finish, and the
 check's own lines are printed (`out/newworld/rebuild/logs/<stage>.log` has the whole output).
@@ -175,43 +186,67 @@ check's own lines are printed (`out/newworld/rebuild/logs/<stage>.log` has the w
 3. Run the same command again. Only the mended stage and what follows it run; if the stage's commands stood and
    only its check's reading changed, the check alone runs.
 
+A review of the world, its LOD or a place ranks each finding by what the player would notice in the game.
+
+- A fault that breaks the game or is plainly seen is mended, whatever it reruns.
+- A fault the player would not really notice is mended only when the mend is cheap and reruns no long stage or
+  step. Otherwise it is written as one line in the current phase's file in `docs/phases/`, and the work goes on.
+- A mend is proved on the small world (section 5, and the skill `world-lod`, section 4) before any long job is
+  run for it.
+
 ## 7. After a green run
+
+What stands on the world file is brought level in this order, each step only when the run's summary lists it as
+stale beyond this build. The order keeps every long job on a world file that can no longer change.
 
 1. Commit by path the tracked files the summary lists (`mods/dependencies.json`, tables under
    `newworld/story/data/db/`, and `newworld/sources/world_formids.json` after a run that added form ids) with the
    change that caused them.
 2. Republish the Atlas when the terrain or the water changed: `python3 -m tools.newworld.map_page`, then publish
    `out/newworld/map/index.html` to the Atlas's own link (`tools/newworld/water_overrides_pull.py` names it).
-3. Bring level what the summary lists as stale beyond this build, in this order, each only if listed:
-   - **Each built place.** Its ground must be checked before any LOD is built over it. Re-extract its ground
-     bundle (`python3 -m tools.places extract --ground <place_id>`), then run the stages that the change calls for
-     in the table of the skill `place-build`, section 7 (a relief change: `seating`; re-scattered plants or a
-     changed navmesh rule: `clearance`), then its build and check (section 8 there), then `streets` and the build
-     and check again where pieces or doors moved or the `streets` check names a point off the network.
-   - **The LOD.** See the section below.
-   - **The deploy** of the world file and the stack to the play machine. See the section below.
-4. Run the whole read-back once the other machines are level: `python3 -m tools.newworld.verify` (every group,
+3. Prove the world file settled: `tools/newworld/rebuild.sh settled` exits 0 when the main tree is level with
+   `origin/main`, no stage is stale, no rebuild runs and no lane's worktree holds a change to a source of the
+   world file. Otherwise it names what is owed: land or wait for that lane, bring the tree level, rebuild.
+   Nothing below starts on a world file that is not settled.
+4. **The play machine's copy.** `infra/gpu-box/run.sh up`, then `infra/gpu-box/lod.sh map` and
+   `infra/gpu-box/lod.sh send` (the skill `world-lod`, section 5): the world file with its map data and LOD plan
+   is on the play machine, and its hash is recorded here.
+5. **Each built place**, before any LOD is built over it. Re-extract its ground bundle
+   (`python3 -m tools.places extract --ground <place_id>`, then `python3 -m tools.places ground-check <place_id>`),
+   run the stages the change calls for (the skill `place-build`, section 7: a relief change, `seating`;
+   re-scattered plants or a changed navmesh rule, `clearance`), then its build and check (section 8 there), then
+   `streets` and the build and check again where pieces or doors moved or the `streets` check names a point off the
+   network. Commit the place files a stage changed.
+6. **The LOD**, and with it the deploy of the place layer and the stack: the skill `world-lod`, sections 4 to 8.
+7. **The whole read-back**, once the other machines are level: `python3 -m tools.newworld.verify` (every group,
    the LOD's, the deploy's and the places' rows included). It must pass in full before the owner is asked to walk.
 
-### The LOD and the deploy
-
-The skill `world-lod` is the recipe for the play machine's steps: which LOD step a change makes stale, the small
-world's selftest, the preflight, the run and the deploy. No LOD step starts before every built place's ground is
-level and checked on this world file.
+A built place carries the hash of the world file it was built over, and each LOD step a key read from that file.
+Both stand while the file's bytes stand: after step 4 the file changes only by a rebuild.
 
 ## 8. Lanes in worktrees
 
 - The main tree is the one writer of `out/`. A lane in its own worktree changes code and sources, proves them
-  with tests on tmp paths, and lands; the rebuild runs in the main tree after the lane has landed.
-- A lane that must read the build's outputs links them, never copies and never writes them:
+  with tests on tmp paths and on the small world, and commits on its own branch; the rebuild runs in the main tree
+  after the lane has landed.
+- A lane reads the build's outputs through hard links and writes none of them:
   `cp -al <main tree>/out/newworld out/newworld` in the worktree, made again after each rebuild and removed when
   the reading is done (`rm -rf out/newworld` there removes the links alone). A hard link is the main tree's own
-  file: a tool that writes under `out/newworld` in a worktree writes the main tree's build. So in a worktree
-  `rebuild.sh run` refuses, no stage tool is run on its default paths, and nothing is driven through
-  `tools.newworld.rebuild` from Python. What may run there: `tools/newworld/rebuild.sh plan`,
-  `tools/newworld/rebuild.sh small` (it needs no link), and a tool told to write to another folder (`--out`, `--plugin`, `ARGONIA_TERRAIN_OUT=<dir>` for a trial terrain).
+  file: a tool that rewrites it in place rewrites the main tree's build, and a rebuild in the main tree changes
+  what the lane reads. So a file a lane's run rewrites is copied first (`cp --remove-destination`), never linked;
+  in a worktree `rebuild.sh run` refuses, no stage tool is run on its default paths, and nothing is driven through
+  `tools.newworld.rebuild` from Python.
+- What may run in a worktree: `tools/newworld/rebuild.sh plan`, `tools/newworld/rebuild.sh small` (it reads the
+  main tree's build and writes the worktree's `out/newworld-small/`; it needs no link), and a tool told to write
+  to another folder (`--out`, `--plugin`, `ARGONIA_TERRAIN_OUT=<dir>` for a trial terrain).
 - A test never reads the tree's `out/`: it builds its own inputs under its tmp path (`tools/tests/conftest.py`
   points every module's `out/` path at a tmp folder).
+- A lane's scratch is a folder of its own, deleted by name when the lane ends; a shared scratch folder is never
+  cleared with a glob. A tracked file a rehearsal rewrote is restored or committed before the lane returns.
+- A lane ends committed and clean: `git commit -m "<message>" -- <paths>` on its branch, no uncommitted or
+  untracked file. The lead lands it with `tooling/lane_land.sh <worktree>` (rebase, `make check`, push, the main
+  tree brought level, the worktree and branch removed). `tooling/lane_commit.sh` is the main tree's command and
+  refuses in a lane's worktree.
 - A lane that changes a rule says, in its hand-over, which row of [changes.md](changes.md) its change is, so the
   rebuild after it is planned before it lands.
 
@@ -224,13 +259,12 @@ level and checked on this world file.
   `out/newworld/plugin/map/teleports.md` (`coc ANW<Place>` for every place, `coc ANWWalk<Water>` for each kind of
   water, `coc ArgoniaNWStart`); never a cell number.
 - Post it with `tooling/owner_inbox.py --post` only when the whole read-back has passed and the play machine
-  holds this world file, its LOD and the stack.
+  holds this world file, its LOD, the place layer and the stack.
 
 ## 10. Costs
 
 - The rebuild runs on the build VM: about an hour of stage time when everything is stale, a few minutes for a
-  change late in the order; the small world about two minutes. The plan prints the stale stages' time and largest memory peak. Stop the VM when the
-  work is done (`tooling/agent_stop.sh`).
-- The play machine costs about $0.80 an hour while it runs (decision 0039) and stops itself when idle. The agent
-  starts it for the LOD, the deploy and the place checks that need it, as jobs under
-  `tooling/job_guard.sh run --gpu`, and never leaves it waiting on a build that has not finished here.
+  change late in the order; the small world about two minutes. The plan prints the stale stages' time and largest
+  memory peak. Stop the VM when the work is done (`tooling/agent_stop.sh`).
+- The play machine's cost and care are in the skill `world-lod`, section 9. It is started only once the world
+  file is settled here (section 7).

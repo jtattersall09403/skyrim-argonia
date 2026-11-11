@@ -15,7 +15,7 @@ Measurements and reasons are in [the LOD design](../../../docs/design/lod.md).
 
 | Step | What | Where |
 |---|---|---|
-| 1 | The world file is green and every built place's ground is level and checked on it | the skill `world-build`, section 7 |
+| 1 | The world file is green, settled and on the play machine, and every built place is level and checked on it | the skill `world-build`, section 7 |
 | 2 | Read which steps the change makes stale | section 3, `lod.sh keys` |
 | 3 | Run the stage on the small world when a script, a setting, a tool or the plan's code changed | section 4 |
 | 4 | Preflight, and mend every fault it names | section 5 |
@@ -60,7 +60,7 @@ and stops at the first breach:
 
 | Step | Where | What it does | Keyed on | Time |
 |---|---|---|---|---|
-| `map` | build VM | Map box, markers, the `.lod` file, teleports, the plan; the derived LOD models; the records and plan files applied to the world file and checked | Not keyed: seconds; each LOD model on its full model and target | under a minute |
+| `map` | build VM | Map box, markers, the `.lod` file, teleports, the plan; the derived LOD models; the records and plan files applied to the world file and checked. While the plan and the markers stand, every apply writes the same bytes | Not keyed: seconds; each LOD model on its full model and target | under a minute |
 | `prepare` | machine | The NewWorld profile laid fresh without our LOD; the outputs that stand linked into Data again | Runs when a step will | 1 min |
 | `terrain` | machine | xLODGen, then our mesh pass | The ESM's land, water, cell grid and ground textures (each land texture and the texture set it names); the `.lod`; the xLODGen archive; `terrain.tool` for the tool run, `terrain.post` for our pass | 34 min, then 82 s |
 | `texgen` | machine | TexGen with our billboard files, then every planned billboard checked | The billboard files; the ESM's tree and static base records; the DynDOLOD archives; `texgen.tool`, `texgen.post` | 6 min |
@@ -70,12 +70,15 @@ and stops at the first breach:
 | `archive` | build VM | The mod folder and the LOD models to the private bucket | The three keys | 2 min |
 
 `infra/gpu-box/lod.sh keys` prints each step's key as wanted and as the machine holds it. A step whose key stands
-on the machine is skipped; nothing that is current is made again.
+on the machine is skipped; nothing that is current is made again. A key is read from the world file's own records
+and from the settings of its step, never from a script's text or a stamp beside the file, and each step has its
+own: a change reaches only the steps that read it.
 
 | A change to | Reruns | Leaves alone |
 |---|---|---|
 | Placed references only (places built, plants scattered again with the same bases) | `dyndolod`, `collect` | `terrain`, `texgen` |
 | A re-place or a navmesh rebuild (land, water and ground paint as they were) | `dyndolod`, `collect`; `texgen` only when a tree or static base is new or changed | `terrain`, always: every record keeps its registered form id (the skill `world-build`) |
+| Edits of single placed things (the skill `world-build`, [changes.md](../world-build/changes.md)) | `dyndolod`, `collect`, once for a session's edits; `texgen` only when an edit brings a tree or static base new to the world. Without the run an edit shows in the loaded cells and not far off | `terrain`, always |
 | A new or changed tree base, or the billboard plan | `texgen`, `dyndolod`, `collect` | `terrain` |
 | A new or changed static base that is no tree | `texgen` (it reads every static base record), `dyndolod`, `collect` | `terrain` |
 | Terrain, water or ground paint, in any cells | `terrain` (its textures are made again only for what is missing: section 6), `dyndolod`, `collect` | `texgen` |
@@ -83,6 +86,7 @@ on the machine is skipped; nothing that is current is made again.
 | A rule, a derived LOD model, the DynDOLOD settings or preset | `dyndolod`, `collect` | `terrain`, `texgen` |
 | Map markers, teleports, cell names, the map box | Nothing on the machine: `map` alone | every machine step |
 | A fix to how `lod.ps1` or `lod.sh` drives a window or a step | Nothing by key. The small world first (section 4); raise the step's `rev` in `lod-settings.json` only when the fix changes what the step writes | every output |
+| The plan's code or list, the plan coming out the same (`lodplan.py`, `lod_models.json`, `NewWorldMap.cs`) | Nothing by key. The small world first (section 4) | every output |
 | A tool update (`lod-tools.json`) | That tool's steps and what stands on them: xLODGen `terrain` and `dyndolod`; DynDOLOD or its Resources `texgen` and `dyndolod` | the other tool's step |
 
 ## 4. The small world first
@@ -99,10 +103,11 @@ here, `C:\argonia\lod-small\` there, with a game folder of its own that the tool
 the game's Data without our LOD mod). It never lays the profile and never writes the game's Data or the real
 LOD's folders and keys. About ten minutes from nothing; a step proven for today's code is skipped.
 
-- Run it whenever `lod.sh`, `lod.ps1`, `pscheck.ps1`, `lodkeys.py`, the plan's code (`lodplan.py`, `lodmodels.py`,
-  `lod_models.json`, `NewWorldMap.cs`), `lod-settings.json` or a tool changed. Each step that ends green is recorded
-  on the machine with its code key; `lod.sh stage` refuses a step that will run and whose code key is not recorded.
-  A step whose code stands is skipped here and asks for nothing there.
+- Run it whenever `lod.sh`, `lod.ps1`, `pscheck.ps1`, `lodkeys.py`, the plan's code (`mapdata.py`, `lodplan.py`,
+  `lodmodels.py`, `niflod.cpp`, `lod_models.json`, `NewWorldMap.cs`), `lod-settings.json` or a tool changed. Each
+  step that ends green is recorded on the machine with its code key; `lod.sh stage` refuses a step that will run
+  and whose code key is not recorded. A step whose code stands is skipped here and asks for nothing there.
+  `lod.sh keys` prints each step's code key beside the one proven.
 - Mend what it finds and run it again: a fault costs minutes here.
 - `lod.sh selftest pass` runs our mesh pass alone over the standing terrain output;
   `LOD_FORCE=terrain SELFTEST_STOP=<seconds> lod.sh selftest prepare terrain` stops the terrain tool part-way, and
@@ -121,21 +126,33 @@ models); the terrain at sea, at the province's edge and on the map.
     infra/gpu-box/lod.sh preflight
 
 One `FAULT ...` line a fault, exit 1 on any, kept in `out/newworld/lod/preflight.txt`. It proves, before any long
-step: the map and plan against the world file; the plan is this build's, the billboard files list exactly the
-planned trees, the rule file names exactly the planned models, every planned and derived model is there; the tools
-are at their pinned hashes on both machines; the machine holds the world file, the `.lod`, the plan files and the
-LOD models built here; the machine's scripts pass the script checker; no tool or game is running; disk and memory
-are enough; DynDOLOD's preset holds our world alone; every step that will run was proven on the small world.
-A fault about the machine quotes what the machine printed in place of the line wanted; a machine that answered
-with no report at all is one fault that says so. Mend every fault and run it again: no long step starts on a red preflight.
+step:
+
+- the world file is settled (`tools/newworld/rebuild.sh settled` exits 0; the skill `world-build`, section 7,
+  step 3), so the file cannot change under the run;
+- the map and plan against the world file; the plan is this build's, the billboard files list the planned
+  trees and no others, the rule file names the planned models and no others, every planned and derived model is
+  there;
+- the tools are at their pinned hashes on both machines; the machine holds the world file, the `.lod`, the plan
+  files and the LOD models built here;
+- the machine's scripts pass the script checker (`pscheck.ps1`: a parse error, a function's variable that hides
+  one of the script's own under another case, an exit code read from a process whose handle was never taken), and
+  every step has its code;
+- no tool or game is running; disk and memory are enough; DynDOLOD's preset holds our world alone;
+- every step that will run was proven on the small world.
+
+A fault about the machine quotes what the machine printed, in place of the line the preflight wanted. A machine
+that answered with no report at all gives one fault that says so. Mend every fault and run the preflight again: no
+long step starts on a red preflight.
 
 ## 6. Run
 
     NW_LOD=1 tooling/job_guard.sh run --gpu nw-lod -- infra/gpu-box/lod.sh stage
     tooling/job_guard.sh wait nw-lod
 
-- `stage` runs `map`, the preflight, the stale machine steps, `check` and `archive`. Never stop a `--gpu` job with
-  `job_guard.sh stop`: it stops the machine.
+- Run it from the main tree. `stage` runs `map`, the preflight, the stale machine steps, `check` and `archive`.
+  Never stop a `--gpu` job with `job_guard.sh stop`: it stops the machine.
+- No lane that changes a source of the world file is started or landed while the stage runs.
 - A stopped or failed run is started again with the same command. Finished steps are skipped by their keys.
 - Save points inside a step, each marked the moment it is whole:
 
@@ -149,7 +166,7 @@ with no report at all is one fault that says so. Mend every fault and run it aga
 - TexGen and DynDOLOD keep nothing part-way: a fault inside either costs that run again (6 and 16 minutes).
   That is the worst rerun.
 - `LOD_FORCE="texgen dyndolod"` runs the named steps, tool and all, whatever their keys. Use it only when an output
-  is wrong for a reason no key reads, and say why.
+  is wrong for a reason no key reads, and say why in the commit message.
 
 ## 7. The checks after
 
@@ -159,6 +176,9 @@ with no report at all is one fault that says so. Mend every fault and run it aga
 - `out/newworld/lod/logs/`: each step's log and the tools' message panes; `metrics/`: seconds and peak memory.
 - A miss is mended at its cause: the plan (`lodplan.py`), a model, a rule, a setting. Then the same command runs
   the one step that reads the mend.
+- A `note:` line of the coverage names a model DynDOLOD found LOD models of that the list lacks: add it to
+  `tools/newworld/world/lod_models.json` in its sorted place, so the plan gives its bases no rule of ours.
+- Findings beyond the checks are weighed by what the player would notice (the skill `world-build`, section 6).
 
 ## 8. Deploy, read-back, walk
 

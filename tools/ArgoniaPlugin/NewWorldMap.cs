@@ -1,5 +1,6 @@
 // The new world's native map (nw-02 step 11): the WRLD's map fields and one map marker per settlement, applied to
-// ArgoniaNewWorld.esm in place after `newworld write` (rerunnable: our markers are replaced, never added twice).
+// ArgoniaNewWorld.esm in place after `newworld write` (rerunnable: our markers are replaced, never added twice, and
+// the file comes out the same bytes from the first apply as from any later one).
 // Inputs from `python -m tools.newworld.world.mapdata build` (<plugin>/map/map.json, markers.json). The vanilla way:
 // a marker is a persistent ref of MapMarker (Skyrim.esm 000010) in the world's persistent cell with XMRK/FNAM/FULL/TNAM;
 // flags Visible|CanTravelTo only on the start place (discovered), 0 on the rest (found by walking near them). The
@@ -26,8 +27,56 @@ static class NewWorldMap
     {
         "apply" => Apply(a[1], a[2], a[3]),
         "check" => Check(a[1], a[2]),
-        _ => throw new ArgumentException("nwmap apply <esm> <mapdir> <data> | check <esm> <mapdir>"),
+        "selftest" => SelfTest(a[1]),
+        _ => throw new ArgumentException("nwmap apply <esm> <mapdir> <data> | check <esm> <mapdir> | selftest <scratch dir>"),
     };
+
+    // `nwmap selftest <scratch dir>`: apply is the same from its first run (no game data). A small world file with
+    // statics of its own and three of a master's planned as trees is applied three times: each apply writes the same
+    // bytes, and the STAT group holds ours as written, then the overrides, highest form id first.
+    static int SelfTest(string dir)
+    {
+        var data = Path.Combine(dir, "Data"); var map = Path.Combine(dir, "map");
+        Directory.CreateDirectory(data); Directory.CreateDirectory(map);
+        var mk = new ModKey("Skyrim", ModType.Master);
+        var master = new SkyrimMod(mk, Rel);
+        uint[] ids = [0x900, 0x905, 0x902, 0x9A0];  // the plan's order, which is not the file's
+        foreach (var id in ids) master.Statics.Add(new Static(new FormKey(mk, id), Rel) { EditorID = $"MasterTree{id:X}" });
+        master.BeginWrite.ToPath(Path.Combine(data, mk.FileName)).WithNoLoadOrder().Write();
+        var ours = new SkyrimMod(new ModKey("NwMapSelfTest", ModType.Master), Rel);
+        string[] own = ["OurRock", "OurTree", "OurReed"];
+        foreach (var e in own) ours.Statics.AddNew(e);
+        var ws = ours.Worldspaces.AddNew(World);
+        ws.TopCell = new Cell(ours.GetNextFormKey(), Rel) { Grid = new CellGrid() };
+        ws.TopCell.Persistent.Add(new PlacedObject(ours.GetNextFormKey(), Rel) { Base = new FormLinkNullable<IPlaceableObjectGetter>(new FormKey(mk, ids[0])) });
+        var esm = Path.Combine(dir, ours.ModKey.FileName);
+        ours.BeginWrite.ToPath(esm).WithLoadOrder([mk, ours.ModKey]).WithDataFolder(data).Write();
+        File.WriteAllText(Path.Combine(map, "map.json"), """{"usable": [0, 0], "nw": [-1, 1], "se": [1, -1], "bounds": [-1, -1, 1, 1]}""");
+        File.WriteAllText(Path.Combine(map, "markers.json"), """{"markers": [{"place": "a-place", "discovered": true, "x": 1, "y": 2, "z": 3, "name": "A Place", "type": "City"}]}""");
+        var bases = ids.Select(id => $$"""{"mech": "tree", "sig": "STAT", "edid": "MasterTree{{id:X}}", "key": "{{id:X6}}:{{mk.FileName}}"}""")
+            .Append("""{"mech": "tree", "sig": "STAT", "edid": "OurTree", "key": null}""");
+        File.WriteAllText(Path.Combine(map, "lodplan.json"), $$"""{"bases": [{{string.Join(", ", bases)}}]}""");
+        var fails = new List<string>();
+        var runs = new List<byte[]>();
+        var quiet = new StringWriter(); var shown = Console.Out;
+        for (var i = 0; i < 3; i++)
+        {
+            Console.SetOut(quiet);
+            try { Apply(esm, map, data); } finally { Console.SetOut(shown); }
+            runs.Add(File.ReadAllBytes(esm));
+            if (i > 0 && !runs[i].AsSpan().SequenceEqual(runs[0])) fails.Add($"apply {i + 1} wrote other bytes than the first apply");
+        }
+        using (var back = SkyrimMod.CreateFromBinaryOverlay(esm, Rel))
+        {
+            var got = back.Statics.Select(s => s.FormKey.ModKey == mk ? $"{s.FormKey.ID:X}" : s.EditorID!).ToList();
+            var want = own.Concat(ids.OrderByDescending(i => i).Select(i => $"{i:X}")).ToList();
+            if (!got.SequenceEqual(want)) fails.Add($"STAT group order {string.Join(" ", got)}, wanted {string.Join(" ", want)}");
+            if (back.Statics.Count(s => s.MajorFlags.HasFlag(Static.MajorFlag.HasTreeLOD)) != ids.Length + 1) fails.Add("Has Tree LOD is not on the four overrides and our tree alone");
+        }
+        foreach (var f in fails) Console.WriteLine("  FAIL " + f);
+        Console.WriteLine(fails.Count == 0 ? "nwmap selftest: PASS" : $"nwmap selftest: {fails.Count} FAIL");
+        return fails.Count == 0 ? 0 : 1;
+    }
 
     static JsonElement Json(string p) => JsonDocument.Parse(File.ReadAllText(p)).RootElement;
     static P2Int16 P(JsonElement e) => new((short)e[0].GetInt32(), (short)e[1].GetInt32());
@@ -196,6 +245,16 @@ static class NewWorldMap
                 if (!rules.Any(r => r.StartsWith(mask + ","))) rules.Add(rule);
             }
         }
+        // One order of the STAT group, whatever the file held before: our statics as written, then our overrides of
+        // masters' statics by load order and form id, highest first. The group is emptied and filled again, because a
+        // record set after one was removed takes the removed one's place: left to that, a first apply and a later one
+        // would write the same records in different orders, and the file's hash and every key read from it would move.
+        var lo = mod.ModHeader.MasterReferences.Select(m => m.Master).ToList();
+        var all = mod.Statics.ToList();
+        mod.Statics.Clear();
+        foreach (var s in all.Where(s => s.FormKey.ModKey == mod.ModKey)) mod.Statics.Set(s);
+        foreach (var s in all.Where(s => s.FormKey.ModKey != mod.ModKey)
+                     .OrderByDescending(s => lo.IndexOf(s.FormKey.ModKey)).ThenByDescending(s => s.FormKey.ID)) mod.Statics.Set(s);
         foreach (var f in Directory.GetFiles(mapDir, "DynDOLOD_SSE_*")) File.Delete(f);
         foreach (var (plugin, lines) in bill)
             File.WriteAllLines(Path.Combine(mapDir, $"DynDOLOD_SSE_TexGen_Billboards_{Squash(plugin)}.txt"), lines);

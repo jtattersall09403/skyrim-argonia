@@ -41,8 +41,8 @@ def test_real_order_is_derived_and_true():
 
 def test_every_output_read_has_a_writer_or_is_the_extraction():
     writes = [w for s in R.STAGES for w in s.writes]
-    # the LOD run's own feedback, a built place's plan and the hollow study's extras: each absent until its tool has run
-    optional = {"out:newworld/lod/logs/coverage.json", "out:places/shards/*/plan.json", "out:newworld/research/hollow_extra.json"}
+    # a built place's plan and the hollow study's extras: each absent until its tool has run
+    optional = {"out:places/shards/*/plan.json", "out:newworld/research/hollow_extra.json"}
     for s in R.STAGES:
         assert not set(s.reads) & set(s.check_reads), s.name
         for r in s.reads + s.check_reads:
@@ -976,3 +976,54 @@ def test_an_empty_table_keeps_its_empty_file(tmp_path):
     assert build_db.save_whole(w) == ["a", "b"]
     d = tmp_path / "story/data/db"
     assert (d / "a.jsonl").read_text().strip() == '{"id":"x"}' and (d / "b.jsonl").exists() and (d / "b.jsonl").read_text() == ""
+
+
+# ---- settled: the world file cannot change under a long job that reads it -----------------------------------------
+
+def test_src_patterns_match_within_a_name_and_across_folders():
+    m = lambda pat, f: bool(R._src_re(pat).match(f))  # noqa: E731
+    assert m("tools/newworld/*.py", "tools/newworld/verify.py") and not m("tools/newworld/*.py", "tools/newworld/small/__init__.py")
+    assert m("tools/ArgoniaPlugin/**/*.cs", "tools/ArgoniaPlugin/NewWorld.cs") and m("tools/ArgoniaPlugin/**/*.cs", "tools/ArgoniaPlugin/a/b/C.cs")
+    assert m("newworld/places/*/land.jsonl", "newworld/places/helstrom/land.jsonl")
+    assert m("newworld/sources/flora/**/*", "newworld/sources/flora/sets/a.json") and not m("in.txt", "in.txt.bak")
+    srcs = R.world_sources()
+    hit = lambda f: any(p.match(f) for p in srcs)  # noqa: E731
+    assert hit("tools/ArgoniaPlugin/NewWorldMap.cs") and hit("newworld/sources/world_formids.json") and hit("mods/dependencies.json")
+    assert not hit("docs/PLAN.md") and not hit(".claude/skills/world-build/SKILL.md") and not hit("tooling/tidy.py")
+
+
+def test_settled_names_a_tree_behind_a_stale_stage_and_a_lane_on_the_sources(tree, tmp_path_factory):
+    main, origin = tree.repo, tmp_path_factory.mktemp("origin") / "o.git"
+
+    def git(*a, cwd=main):
+        subprocess.run(["git", "-c", "user.name=t", "-c", "user.email=t@t", *a], cwd=cwd, check=True, capture_output=True)
+    git("init", "-q", "--bare", "-b", "main", str(origin))
+    git("init", "-q", "-b", "main")
+    (main / "notes.md").write_text("n")
+    (main / ".gitignore").write_text("out/\n")
+    git("add", "in.txt", "gate.txt", "notes.md", ".gitignore")
+    git("commit", "-q", "-m", "seed")
+    git("remote", "add", "origin", str(origin))
+    git("push", "-q", "-u", "origin", "main")
+    assert any("the rebuild is owed for a, b, c" in w for w in R.unsettled(tree))      # nothing built yet
+    assert R.run(tree, check_first=False) == 0
+    assert R.unsettled(tree) == []
+    # a lane that changes only what no stage reads leaves it settled; one that changes a source does not
+    lanes = tmp_path_factory.mktemp("lanes")
+    git("worktree", "add", "-q", "-b", "worktree-docs", str(lanes / "docs"), "origin/main")
+    (lanes / "docs" / "notes.md").write_text("more")
+    assert R.unsettled(tree) == []
+    git("worktree", "add", "-q", "-b", "worktree-rule", str(lanes / "rule"), "origin/main")
+    (lanes / "rule" / "in.txt").write_text("two")                                       # uncommitted is enough
+    assert [w for w in R.unsettled(tree) if w.startswith("lane rule: in.txt changes")] and len(R.unsettled(tree)) == 1
+    git("commit", "-q", "-am", "rule", cwd=lanes / "rule")
+    assert len(R.unsettled(tree)) == 1
+    # the lane lands: the main tree is behind until it is level, then the rebuild is owed, then it is settled
+    git("push", "-q", "origin", "HEAD:main", cwd=lanes / "rule")
+    assert any("1 commits behind origin/main" in w for w in R.unsettled(tree))
+    git("merge", "-q", "--ff-only", "origin/main")
+    assert any("the rebuild is owed for a" in w for w in R.unsettled(tree))
+    assert R.run(tree, check_first=False) == 0
+    assert R.unsettled(tree) == []
+    # from a worktree it is never settled: the world file is the main tree's
+    assert "the world file is the main tree's" in R.unsettled(Tree(repo=lanes / "docs", stages=tree.stages, py=sys.executable))[0]

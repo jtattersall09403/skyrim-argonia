@@ -6,7 +6,8 @@
 #   2. rebase the lane's branch on origin/main (a conflict stops here, the rebase undone: resolve it in the lane)
 #   3. the gate in the lane's worktree (`make check`; LANE_GATE overrides the command); red refuses
 #   4. push to origin/main (main moved meanwhile: back to 2, up to three times)
-#   5. fast-forward the main tree, keeping its uncommitted edits; skipped, and said, while a job runs from it
+#   5. fast-forward the main tree, keeping its uncommitted edits; skipped, and said, while a job runs from it (a job that only
+#      waits, its command a sleep, does not count)
 #   6. remove the worktree and delete its branch, once everything in it is on main (tooling/tidy.py's content rule)
 # Never runs stash, reset --hard or a checkout of paths; never touches another lane's worktree.
 set -euo pipefail
@@ -45,7 +46,7 @@ git -C "$main" fetch -q origin
 if [ "$(git -C "$main" symbolic-ref -q --short HEAD)" != main ]; then
   echo "main tree left as is: it is not on main"
 elif job=$("$PY" -c 'import sys; sys.path.insert(0, sys.argv[1]); import tidy
-print(next((n for n, c in tidy.job_cwds() if tidy._inside(c, tidy.Path(sys.argv[2]))), ""))' "$here" "$main") && [ -n "$job" ]; then
+print(next((n for n, c in tidy.job_cwds(waits=False) if tidy._inside(c, tidy.Path(sys.argv[2]))), ""))' "$here" "$main") && [ -n "$job" ]; then
   echo "main tree left as is: job $job runs from it; fast-forward it when the job ends (git merge --ff-only origin/main)"
 elif git -C "$main" merge -q --ff-only origin/main 2>/dev/null; then
   echo "main tree is at $(git -C "$main" rev-parse --short HEAD)"

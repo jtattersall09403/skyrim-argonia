@@ -6,6 +6,8 @@
 #                                          (one block of the real build, out/newworld-small/): minutes; run it before
 #                                          a full run, whose preflight refuses stage code the block has not proved
 #   tools/newworld/rebuild.sh preflight    everything checkable before the first long stage
+#   tools/newworld/rebuild.sh settled      exit 0 when the world file cannot change under a long job that reads it
+#                                          (main tree level with origin/main, nothing stale, no lane on its sources)
 #   tooling/job_guard.sh run nw-rebuild -- tools/newworld/rebuild.sh run [--to STAGE] [--force STAGE]
 #   tooling/job_guard.sh wait nw-rebuild
 set -euo pipefail

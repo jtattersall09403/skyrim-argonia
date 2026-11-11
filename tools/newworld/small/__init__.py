@@ -245,10 +245,29 @@ def esm(step: str, root: Path = ROOT) -> int:
             rc = _dotnet("nwmap", "apply", str(file), str(plug / "map"), data)
             if rc:
                 return rc
-        return _dotnet("nwmap", "check", str(file), str(plug / "map"), tee=plug / "map-check.txt")
+        rc = _dotnet("nwmap", "check", str(file), str(plug / "map"), tee=plug / "map-check.txt")
+        return rc or _apply_again(file, plug, data)
     if step == "check":
         return _dotnet("newworld", "check", str(file), str(man), data, tee=plug / "check.txt")
     raise ValueError(step)
+
+
+def _apply_again(file: Path, plug: Path, data: str) -> int:
+    """The map applied once more to a copy of the file writes the same bytes: the LOD's map step applies it again, and
+    a file that moved would move every key and stamp read from it."""
+    import hashlib
+    import shutil
+    import tempfile
+    with tempfile.TemporaryDirectory(dir=plug.parent) as tmp:
+        again, m = Path(tmp) / file.name, Path(tmp) / "map"
+        shutil.copy(file, again)
+        shutil.copytree(plug / "map", m)
+        if _dotnet("nwmap", "apply", str(again), str(m), data, quiet=True) != 0:
+            print("  FAIL the map could not be applied a second time")
+            return 1
+        same = hashlib.sha256(again.read_bytes()).digest() == hashlib.sha256(file.read_bytes()).digest()
+    print("  the map applied again writes the same file: " + ("PASS" if same else "FAIL"))
+    return 0 if same else 1
 
 
 def readback(root: Path = ROOT) -> int:
@@ -330,7 +349,7 @@ def stages(src: Path) -> tuple:
             reads += ("src:tools/newworld/world/lodmodels.py", "src:tools/newworld/niflod/niflod.cpp")
         out.append(dataclasses.replace(
             s, cmds=tuple(cmd(c) for c in cmds), checks=tuple(cmd(c) for c in checks),
-            reads=tuple(_spec(r) for r in reads if "lod/logs/coverage.json" not in r),
+            reads=tuple(_spec(r) for r in reads),
             check_reads=tuple(_spec(r) for r in s.check_reads), writes=tuple(_spec(w) for w in s.writes),
             agree=tuple((_spec(a), _spec(b), how) for a, b, how in s.agree),
             after=tuple(a for a in s.after if a in STAGES), proof=()))

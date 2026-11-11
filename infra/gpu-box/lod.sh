@@ -11,6 +11,7 @@
 #   lod.sh send                the ESM to C:\argonia\ours\newworld\, the .lod, the plan files and the LOD models to
 #                              C:\argonia\lod\ (each when changed)
 #   lod.sh preflight           every check that needs no long step, one "FAULT ..." line each (exit 1 on any): the
+#                              world file settled (rebuild.sh settled), the
 #                              plan against the world file and the profile, then tools, send and the machine's own
 #                              checks (scripts parsed, tools at their hashes, disk, memory, inputs as sent, DynDOLOD's
 #                              preset holding our world alone). Run it after `lod.sh map`, before any run.
@@ -216,6 +217,12 @@ do_preflight() {  # every check that needs no long step; one FAULT line per faul
   [ -f "$esm" ] && keys
   fault() { echo "FAULT $*" | tee -a "$f"; bad=1; }
   [ -f "$esm" ] || { fault "no $esm (world.sh)"; return 1; }
+  # the world file is settled before a long step reads it: the main tree level with origin/main, no rebuild owed or
+  # running, no lane holding a change to its sources (tools/newworld/rebuild.sh settled)
+  if [ -z "$SMALL" ]; then
+    local why
+    while IFS= read -r why; do [ -z "$why" ] || fault "the world file is not settled: $why"; done < <(tools/newworld/rebuild.sh settled | grep -v '^settled:' || true)
+  fi
   [ -f "$bin/ArgoniaPlugin.dll" ] || dotnet build -c Release -o "$bin" tools/ArgoniaPlugin >/dev/null
   dotnet "$bin/ArgoniaPlugin.dll" nwmap check "$src/ArgoniaNewWorld.esm" "$src/map" > "$out/map-check.txt" 2>&1 || fault "the map and plan against the world file: $(tail -3 "$out/map-check.txt" | tr '\n' ' ') (lod.sh map)"
   "$PY" -m tools.newworld.world.lodplan preflight --plugin "$src" --lodmodels "$lm/manifest.json" | tee -a "$f" || bad=1

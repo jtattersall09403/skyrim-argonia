@@ -2,6 +2,7 @@
 # Commit exactly the given paths and land them on origin/main without touching other lanes' dirty edits.
 # Usage: tooling/lane_commit.sh -m "<message>" -- <pathspec>...
 # Never runs stash, checkout of paths, reset --hard, or pull. Env: LANE_COAUTHOR overrides the trailer name.
+# Refused in a lane's worktree (branch worktree-*): a lane commits on its branch and tooling/lane_land.sh lands it.
 set -u
 COAUTHOR="${LANE_COAUTHOR:-Claude Sonnet 5.5 <noreply@anthropic.com>}"
 die() { echo "lane_commit: $*" >&2; exit 1; }
@@ -16,6 +17,13 @@ while [ $# -gt 0 ]; do
     *) die "unknown argument: $1 (usage: -m msg -- paths)" ;;
   esac
 done
+# A lane in its own worktree commits on its branch and the lead lands it (tooling/lane_land.sh: rebase, gate, push,
+# worktree and branch removed). This command pushes to main, so it is for the main tree alone.
+if [ "$(git rev-parse --path-format=absolute --git-dir)" != "$(git rev-parse --path-format=absolute --git-common-dir)" ]; then
+  case "$(git symbolic-ref -q --short HEAD)" in
+    worktree-*) die "refused: this is a lane's worktree. Commit on its branch (git commit -m msg -- paths) and leave it clean; the lead lands it with tooling/lane_land.sh" ;;
+  esac
+fi
 [ -n "$msg" ] || die "no message (-m)"
 [ "${#paths[@]}" -gt 0 ] || die "no pathspec after --"
 for p in "${paths[@]}"; do

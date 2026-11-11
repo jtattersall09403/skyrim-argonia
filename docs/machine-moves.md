@@ -46,7 +46,9 @@ count as generated. A worktree or branch with anything else is kept and named wi
 start; idle for a day it is named as abandoned work, to land or to delete on the lead's decision.
 
 **Disk.** The spool of every job that ended over two days ago (`~/.argonia/jobs`; a queued, running or cut-off job
-is never touched), session and tool scratch under `/tmp` untouched for two days, and the cached mod archives the
+is never touched), tool scratch under `/tmp` untouched for two days, a session's scratch folder once the session
+has ended (no process of it runs, its transcript has not been written for three days) and nothing in the folder
+changed for two days, and the cached mod archives the
 bucket's `mods/` holds once they pass 1 GB or the disk is under its floor (`stack.py evict` checks each against the
 manifest's hash first; `stack.py fetch` takes it back in minutes).
 

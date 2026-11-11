@@ -41,4 +41,13 @@ for f in one two three; do git -C "$t/o.git" cat-file -e "main:$f.txt" || fail "
 [ "$(tail -1 other.txt)" = dirty ] || fail "dirty file touched"
 [ "$(git status --porcelain)" = " M other.txt" ] || fail "status changed: $(git status --porcelain)"
 [ -z "$(git worktree list | sed -n 2p)" ] || fail "worktree left behind"
+
+# 3: a lane's worktree is refused, with nothing committed or pushed: the lane commits on its branch
+git worktree add -q -b worktree-lane "$t/lane" origin/main
+cd "$t/lane"; echo lane > lane.txt
+before=$(git -C "$t/o.git" rev-parse main)
+out=$("$script" -m "from a lane" -- lane.txt 2>&1) && fail "a lane's worktree was let through"
+echo "$out" | grep -q "lane_land.sh" || fail "the refusal does not name lane_land.sh: $out"
+[ "$(git -C "$t/o.git" rev-parse main)" = "$before" ] || fail "a lane pushed to main"
+[ "$(git rev-parse HEAD)" = "$(git rev-parse origin/main)" ] || fail "a lane's refused commit was made"
 echo PASS

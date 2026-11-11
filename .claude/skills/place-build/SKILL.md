@@ -33,7 +33,8 @@ seat rules, ids) is `docs/design/place-studio.md`. Never write mod record or ass
   the place promises the player).
 - The bundles under `out/places/bundles/`: `src.<source_id>` (`python3 -m tools.places extract <source_id>`) and
   `ground.<place_id>` (`python3 -m tools.places extract --ground <place_id>`). The ground bundle must come from
-  the deployed world file: `python3 -m tools.places ground-check <place_id>` passes.
+  the deployed world file: `python3 -m tools.places ground-check <place_id>` passes. The world file is settled and
+  on the play machine first (the skill `world-build`, section 7).
 - Skyrim's town rules: `docs/research/skyrim/town-life.md`.
 
 ## 1. Read the source's character
@@ -55,7 +56,9 @@ seat rules, ids) is `docs/design/place-studio.md`. Never write mod record or ass
 
 What the tools hold to, so you can judge their output:
 
-- Our water and land are never changed to fit the source. A cluster is the pieces of one building or one group, moved as one. A cluster that stood on dry land goes on our dry land,
+- Our water and land are never changed to fit the source. Ground a place needs (a pad, a rise, a landing) is asked
+  for in its record and shaped by the world's terrain, which holds a built place's ground from then on (the skill
+  `world-build`, section 2). A cluster is the pieces of one building or one group, moved as one. A cluster that stood on dry land goes on our dry land,
   one in or over water (jetties, stilt houses, shallows, boats) on our water. A cluster whose spot fails slides,
   turns or steps to the next ground of its kind, and a door moves with its whole building. A single piece that
   still has no ground of its kind is dropped and listed.
@@ -120,8 +123,8 @@ The tools lay the network by these rules.
   the town's network walks, running down over the deck until its treads meet the deck, which hides the rest of
   the run. No tread stands under the ground and the flight's body is clear of every solid but its deck. Of the
   flights that fit, the one the deck hides least, then the one whose top is nearest where the street reaches the
-  bank's top. A crossing whose banks have no deck (a ford between steep banks) is not joined by this: say so and
-  settle it with the world's ground first.
+  bank's top. A crossing whose banks have no deck (a ford between steep banks) is not joined by this: name it in
+  the hand-over and change the world's ground first (the skill `world-build`).
 - **Gangways and joins.** A door whose walkable ground is still an island is joined to the town by level walkway
   pieces laid from the island to the nearest point of the network at its height (never across a height the
   navmesh does not climb: that is a flight's work). A piece laid for a door that stands on a thing (a ship's
@@ -236,7 +239,7 @@ The tools lay the network by these rules.
   night and owns no bed; guards keep two 12-hour shifts on the streets. Never bend a day to satisfy a check: a check that disagrees with how Skyrim does it is a fault of the tool, to be reported and mended there.
 - **Beds decide the people.** A house copied from a cell several houses share keeps only its own room, by the
   builder's room rule (the drafter calls it, so the beds counted are the beds built). Every promised service
-  person works; residents fill the homes' remaining beds. A promise a townsman keeps beside his own life (a rootworm stop's handler, a follower) makes no person of its own: it is given to a resident (the skill `place-people` chooses which, by the trade it writes; until then the first resident who gives nothing yet). A stop's handler works at it through the service hours.
+  person works; residents fill the homes' remaining beds. A promise a townsman keeps beside his own life (a rootworm stop's handler, a follower) makes no person of its own: it is given to a resident (the skill `place-people` chooses which, by the trade it writes; until it has chosen, the first resident who has no service to give). A stop's handler works at it through the service hours.
 - **Who sleeps where, the vanilla way.** An inn that rents a room keeps one of its beds unowned: that is the
   rented bed (`stations.rent_bed`). Guards sleep in a barracks or their camp's own beds (tents and bedrolls
   outdoors), one guard to a bed, never in the inn's rooms. A guard whose camp bed the town's network does not
@@ -299,14 +302,21 @@ and removed per file; a stage that would write outside what it owns changes noth
 3. Where a cluster sits on our land is the whole draft's search. `python3 -m tools.places draft <place_id>` on a
    place that holds the owner's finalised studio saves is refused and names the stages; a whole draft there needs
    `--force "<why no stage can be correct>"`, once, the reason kept in the commit.
+4. After a world rebuild the place is brought level in the order of the skill `world-build`, section 7, step 5.
+5. After edits of single placed things, `tools/newworld/rebuild.sh plan` names each place they reach. A place
+   whose `clear.jsonl` holds a row for an edited thing: take that row out and build the place again. A place
+   whose cells hold an edit: extract its ground bundle again and build it. No other place changes.
 
 ## 8. Build and check
 
 1. `python3 -m tools.places build <place_id>` builds the place layer plugin with the place's navmesh, from the
    place files and the database. The navmesh is cut round the place's own pieces and round everything the world has
    placed there (the world's refs shards) but the plants the place clears, so it meets the world's own navmesh edge
-   for edge: the world file, its refs shards and its navmesh must be of one build. It is a long job: run it under `tooling/job_guard.sh`. `build <place_id> --plan`
-   plans only and lists every problem.
+   for edge: the world file, its refs shards and its navmesh must be of one build, and the build fails when the
+   shards do not hold every world ref the place clears. The built plugin records the hash of the world file it was
+   built over: a place built over another world file is stale, and `infra/gpu-box/places_deploy.sh` refuses it. It
+   is a long job: run `build <place_id> --plan` first (it plans only and lists every problem), then the build under
+   `tooling/job_guard.sh`.
 2. `python3 -m tools.places check <place_id>` reads the built plugin back. All seventeen checks are green: `plugin`,
    `seat`, `overlap`, `doors`, `people`, `navmesh`, `streets`, `land`, `clear`, `services`, `nordic`, `rooms`,
    `levelled`, `jail`, `primitives`, `stock`, `promises`. A place that fines only passes `jail` with a
@@ -314,7 +324,9 @@ and removed per file; a stage that would write outside what it owns changes noth
    its Owing and its resist line whole. Each failure's full list is in
    `out/places/shards/<place_id>/check_failures/<check>.txt`. `check <place_id> --reach [person]` says what is cut
    off from what.
-3. A failure is mended at its cause by the stage or the skill that owns it (a street by `streets`, a promise by `place-stock`). The place is never bent to pass a check, and a check is never loosened to pass a place.
+3. A failure is mended at its cause by the stage or the skill that owns it (a street by `streets`, a promise by
+   `place-stock`). The place is never bent to pass a check, and a check is never loosened to pass a place. A
+   finding beyond the checks is weighed by what the player would notice (the skill `world-build`, section 6).
 4. `python3 -m tools.places navexport <place_id>` writes the built walking mesh the studio draws people's routes
    on.
 

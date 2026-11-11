@@ -320,7 +320,7 @@ STAGES: tuple[Stage, ...] = (
           checks=((PY, "-m", "tools.newworld.teleports", "check", "--plugin", PLUGIN),),
           reads=(LAND, CELLS, FLORA, "out:newworld/plugin/refs/flora/bases.json", "out:newworld/plugin/refs/mist/manifest.json",
                  "out:newworld/scope_cells.json", "out:newworld/margin_cells.json", PLACE_MAP, "db:place_kind", *BUILT_PLACES,
-                 "src:tools/newworld/world/lod_models.json", "out:newworld/lod/logs/coverage.json", LAID,
+                 "src:tools/newworld/world/lod_models.json", LAID,
                  "src:tools/newworld/world/mapdata.py", "src:tools/newworld/teleports.py",
                  "src:tools/newworld/world/lodplan.py", "src:tools/newworld/world/units.py"),
           writes=("out:newworld/plugin/map/map.json", "out:newworld/plugin/map/markers.json",
@@ -772,6 +772,68 @@ def preflight(tree: Tree, rows: list[dict]) -> list[tuple[str, bool, str]]:
     return out
 
 
+def _src_re(pat: str) -> re.Pattern:
+    """A `src:` pattern as a regular expression over repo paths: `**/` any folders, `*` and `?` within one name;
+    a pattern with no wildcard names a file, or a folder and everything under it."""
+    rx = "".join("(?:.*/)?" if t == "**/" else "[^/]*" if t == "*" else "[^/]" if t == "?" else re.escape(t)
+                 for t in re.split(r"(\*\*/|\*|\?)", pat) if t)
+    return re.compile(rx + ("" if any(c in pat for c in "*?") else "(?:/.*)?") + r"\Z")
+
+
+def world_sources(stages: tuple = STAGES) -> list[re.Pattern]:
+    """Every tracked file the world file is built from: the `src:` reads of each stage but the upload."""
+    pats = sorted({r[4:].split("#")[0] for s in stages if s.name != "upload" for r in s.reads + s.check_reads
+                   if r.startswith("src:")})
+    return [_src_re(p) for p in pats]
+
+
+def lanes_changing(repo: Path, sources: list[re.Pattern]) -> list[str]:
+    """Each lane worktree whose own changes since it left origin/main (committed or not) touch a source of the
+    world file: `<lane>: <file> (and n more)`."""
+    out, wt = [], None
+    for ln in _git(repo, "worktree", "list", "--porcelain").stdout.split("\n"):
+        if ln.startswith("worktree "):
+            wt = Path(ln[9:])
+        if not ln.startswith("worktree ") or wt == repo or not wt.is_dir() or wt.parent.name.startswith("lane_"):
+            continue
+        base = _git(wt, "merge-base", "HEAD", "origin/main").stdout.strip()
+        if not base:
+            continue
+        changed = [f for f in _git(wt, "diff", "--name-only", base).stdout.split("\n") if f and any(p.match(f) for p in sources)]
+        if changed:
+            out.append(f"{wt.name}: {changed[0]}" + (f" (and {len(changed) - 1} more)" if len(changed) > 1 else ""))
+    return out
+
+
+def unsettled(tree: Tree) -> list[str]:
+    """Why the world file may still change under a long job that reads it on another machine (the LOD, a place
+    build): one line a reason, none when it is settled. Settled: this is the main tree, level with origin/main; no
+    rebuild runs; every stage but the upload is current; no lane's worktree holds a change to a source of the
+    world file."""
+    out = []
+    why = not_the_writer(tree)
+    if why:
+        return [f"this is {why}: the world file is the main tree's"]
+    if _git(tree.repo, "fetch", "--quiet", "origin", "main").returncode:
+        out.append("origin/main could not be fetched: the tree cannot be shown level with it")
+    else:
+        behind = _git(tree.repo, "rev-list", "--count", "HEAD..origin/main").stdout.strip()
+        if behind != "0":
+            out.append(f"the main tree is {behind} commits behind origin/main: bring it level, then tools/newworld/rebuild.sh plan")
+    pidf = tree.state / "run.pid"
+    try:
+        os.kill(int(pidf.read_text()), 0)
+        out.append("a rebuild is running: wait for it (tooling/job_guard.sh wait nw-rebuild)")
+    except (OSError, ValueError):
+        pass
+    stale = [r["stage"] for r in plan(tree) if r["state"] != "current" and r["stage"] != "upload"]
+    if stale:
+        out.append(f"the rebuild is owed for {', '.join(stale)}: tools/newworld/rebuild.sh plan, then run")
+    out += [f"lane {ln} changes what the world file is built from: land it and rebuild, or wait for it"
+            for ln in lanes_changing(tree.repo, world_sources(tree.stages))]
+    return out
+
+
 def tool_modules(argv: tuple) -> list[str]:
     """The Python modules a command runs: the `-m` module, and the tool a keyed command wraps."""
     from tools.newworld import keyed
@@ -1060,6 +1122,7 @@ def main(argv=None) -> int:
     sub = ap.add_subparsers(dest="cmd", required=True)
     sub.add_parser("plan", help="the order and each stage's state; writes nothing but the digest cache, which no run reads")
     sub.add_parser("preflight", help="everything checkable before the first long stage")
+    sub.add_parser("settled", help="exit 0 when the world file cannot change under a long job that reads it; else why")
     r = sub.add_parser("run", help="run the stale stages")
     r.add_argument("--to", help="only the stale stages this stage needs, and itself")
     r.add_argument("--force", action="append", default=[], help="treat this stage as stale (repeatable)")
@@ -1071,6 +1134,10 @@ def main(argv=None) -> int:
         return 0
     if a.cmd == "preflight":
         return 0 if print_preflight(preflight(tree, plan(tree))) else 1
+    if a.cmd == "settled":
+        why = unsettled(tree)
+        print("\n".join(why) if why else "settled: the world file is what origin/main builds, and no lane changes its sources")
+        return 1 if why else 0
     return run(tree, a.to, tuple(a.force), a.budget_gb)
 
 

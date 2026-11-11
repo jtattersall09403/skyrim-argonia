@@ -26,6 +26,7 @@ REF = os.environ.get("TIDY_REF", "origin/main")
 IDLE_H = float(os.environ.get("IDLE_H", "3"))          # a worktree untouched this long is idle
 LOUD_H = float(os.environ.get("TIDY_LOUD_H", "24"))    # a kept worktree older than this is shouted at session start
 JOB_DAYS = float(os.environ.get("TIDY_JOB_DAYS", "2"))  # job logs and scratch older than this go
+SESSION_DAYS = float(os.environ.get("TIDY_SESSION_DAYS", "3"))  # a session whose transcript is this old has ended
 EVICT_GB = float(os.environ.get("TIDY_EVICT_GB", "1"))  # cached mod archives go once they hold this much
 FLOOR_GB = float(os.environ.get("DISK_FLOOR_GB", "15"))  # job_guard.sh run tidies the disk first under this
 BUCKET_EVERY_H = float(os.environ.get("TIDY_BUCKET_EVERY_H", "24"))
@@ -235,8 +236,18 @@ def lock_live(lock: str | None) -> bool:
     return _alive(int(m[1]), m[2]) if m else True
 
 
-def job_cwds(jobs: Path = None) -> list[tuple[str, Path]]:
-    """(name, cwd) of every job_guard job that is queued or running."""
+def job_waits(jobs: Path, name: str) -> bool:
+    """A job whose whole command is a sleep only waits (the lead's idle hold): it reads and writes no file."""
+    try:
+        argv = [a for a in (jobs / f"{name}.cmd").read_bytes().split(b"\0") if a]
+    except OSError:
+        return False
+    return bool(argv) and os.path.basename(argv[0]) == b"sleep"
+
+
+def job_cwds(jobs: Path = None, waits: bool = True) -> list[tuple[str, Path]]:
+    """(name, cwd) of every job_guard job that is queued or running; waits=False leaves out a job that only
+    waits (job_waits): it holds its folder in place and blocks no change to the files there."""
     jobs = jobs or JOBS
     out = []
     for st in jobs.glob("*.state"):
@@ -246,6 +257,8 @@ def job_cwds(jobs: Path = None) -> list[tuple[str, Path]]:
                 continue
             pid = int((jobs / f"{name}.pid").read_text().strip() or 0)
             if not _alive(pid):   # a dead job (killed, or its machine stopped) holds nothing, whatever its state file says
+                continue
+            if not waits and job_waits(jobs, name):
                 continue
             out.append((name, Path((jobs / f"{name}.cwd").read_text().strip())))
         except (OSError, ValueError):
@@ -447,18 +460,49 @@ def stale_jobs(jobs: Path, now: float, days: float = JOB_DAYS) -> list[tuple[str
     return out
 
 
-def stale_scratch(now: float, days: float = JOB_DAYS) -> list[tuple[Path, str]]:
-    """Scratch nothing reads any more: a session's scratch folder under /tmp/claude-<uid>, and our tools' own
-    temp folders under /tmp, when nothing in them changed for `days` and no process stands in them."""
-    tmp, uid, out = Path(tempfile.gettempdir()), os.getuid(), []
+def session_procs() -> set[str]:
+    """The session ids live processes carry (CLAUDE_CODE_SESSION_ID in the environment of every shell, job and
+    subagent a session starts)."""
+    out = set()
+    for p in Path("/proc").glob("[0-9]*"):
+        try:
+            env = (p / "environ").read_bytes()
+        except OSError:
+            continue
+        i = env.find(b"CLAUDE_CODE_SESSION_ID=")
+        if i >= 0 and (i == 0 or env[i - 1] == 0):
+            out.add(env[i + 23:].split(b"\0", 1)[0].decode(errors="replace"))
+    return out
+
+
+def session_live(sid: str, now: float, procs: set[str], days: float = SESSION_DAYS, projects: Path = None) -> str | None:
+    """Why a session counts as live, or None: a process of it runs, or its transcript (its own file or any file
+    of its folder, under whichever project holds it) was written within `days`. A session that waits on a long
+    job or on its owner writes nothing for hours and is still live: only days of silence end it."""
+    if sid in procs:
+        return "a process of the session runs"
+    projects = projects or HOME / ".claude/projects"
+    newest = 0.0
+    for t in (*projects.glob(f"*/{sid}.jsonl"), *projects.glob(f"*/{sid}")):
+        newest = max(newest, _newest(t))
+    if now - newest < days * 86400:
+        return f"its transcript was written under {days:g} days ago"
+    return None
+
+
+def stale_scratch(now: float, days: float = JOB_DAYS, tmp: Path = None, projects: Path = None,
+                  procs: set[str] = None) -> list[tuple[Path, str]]:
+    """Scratch nothing reads any more. A session's scratch folder under /tmp/claude-<uid>/<project>/<session> goes
+    only when the session is not live (session_live) and nothing in it changed for `days`; our tools' own temp
+    folders under /tmp when nothing in them changed for `days`. Never a folder a process stands in."""
+    tmp, uid, out = tmp or Path(tempfile.gettempdir()), os.getuid(), []
+    procs = session_procs() if procs is None else procs
     cand: list[tuple[Path, str]] = []
     for base in tmp.glob(f"claude-{uid}"):
         for d in base.iterdir():
             if d.is_dir() and not d.is_symlink() and d.name.startswith("-"):  # a project's folder: one per session
-                for s in d.iterdir():
-                    log = HOME / ".claude/projects" / d.name / f"{s.name}.jsonl"  # the session's transcript
-                    if not (log.exists() and now - log.stat().st_mtime < days * 86400):
-                        cand.append((s, "a past session's scratch"))
+                cand += [(s, "a past session's scratch") for s in d.iterdir()
+                         if not session_live(s.name, now, procs, projects=projects)]
             else:
                 cand.append((d, "session scratch"))
     for pat, what in (("lane_commit.*", "lane_commit scratch"), ("lane_cs.*", "lane_commit build scratch"),

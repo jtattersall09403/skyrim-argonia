@@ -277,3 +277,62 @@ def test_stale_jobs_spare_live_and_recent(tmp_path):
     (tmp_path / "RESUMED-old").write_text("1")
     os.utime(tmp_path / "RESUMED-old", (old, old))
     assert [n for n, _ in tidy.stale_jobs(tmp_path, now, 2)] == ["RESUMED-old", "old-done", "old.dotted-name"]
+
+
+def test_a_live_sessions_scratch_is_never_removed(tmp_path):
+    """A session's scratch folder goes only when no process of the session runs, its transcript has not been
+    written for SESSION_DAYS and nothing in it changed for the scratch age."""
+    now, old = time.time(), time.time() - 10 * 86400
+    tmp, projects = tmp_path / "tmp", tmp_path / "projects"
+    base = tmp / f"claude-{os.getuid()}" / "-home-proj"
+
+    def session(sid, transcript_age_days=None, in_project="-home-proj", sub=False):
+        f = base / sid / "scratchpad" / "run.sh"
+        write(f, "x")
+        for q in (f, f.parent, f.parent.parent):
+            os.utime(q, (old, old))                      # the scratch itself is old in every case
+        if transcript_age_days is not None:
+            t = projects / in_project / (f"{sid}/subagents/a.jsonl" if sub else f"{sid}.jsonl")
+            write(t, "{}")
+            for q in (t, *(t.parents[:2] if sub else ())):
+                os.utime(q, (now - transcript_age_days * 86400,) * 2)
+
+    session("ended", transcript_age_days=10)
+    session("no-transcript")
+    session("waiting", transcript_age_days=1)            # silent for a day (a long job, the owner away): live
+    session("other-project", transcript_age_days=0.1, in_project="-home-proj--claude-worktrees-x")
+    session("only-subagents-write", transcript_age_days=0.1, sub=True)
+    session("has-process", transcript_age_days=10)       # e.g. its hold job still runs
+    got = {p.name for p, _ in tidy.stale_scratch(now, 2, tmp=tmp, projects=projects, procs={"has-process"})}
+    assert got == {"ended", "no-transcript"}
+    # scratch written a minute ago is kept even when the session cannot be found at all
+    write(base / "no-transcript" / "scratchpad" / "new.sh", "x")
+    got = {p.name for p, _ in tidy.stale_scratch(now, 2, tmp=tmp, projects=projects, procs=set())}
+    assert got == {"ended", "has-process"}
+
+
+def test_session_procs_reads_this_process_tree(monkeypatch):
+    sid = "test-session-of-tidy"
+    p = subprocess.Popen(["sleep", "30"], env={**os.environ, "CLAUDE_CODE_SESSION_ID": sid})
+    try:
+        assert sid in tidy.session_procs()
+        assert tidy.session_live(sid, time.time(), tidy.session_procs(), projects=Path("/nonexistent"))
+    finally:
+        p.kill()
+        p.wait()
+    assert tidy.session_live(sid, time.time(), tidy.session_procs(), projects=Path("/nonexistent")) is None
+
+
+def test_a_job_that_only_waits_is_left_out_on_request(tmp_path):
+    def job(name, argv, cwd):
+        (tmp_path / f"{name}.state").write_text("running\n")
+        (tmp_path / f"{name}.pid").write_text(f"{os.getpid()}\n")
+        (tmp_path / f"{name}.cmd").write_bytes(b"".join(a.encode() + b"\0" for a in argv))
+        (tmp_path / f"{name}.cwd").write_text(f"{cwd}\n")
+
+    job("hold", ["sleep", "14400"], "/main")
+    job("hold2", ["/usr/bin/sleep", "4h"], "/main")
+    job("build", ["tools/newworld/rebuild.sh", "run"], "/main")
+    job("sleepy", ["bash", "-c", "sleep 5; make"], "/main")
+    assert {n for n, _ in tidy.job_cwds(tmp_path)} == {"hold", "hold2", "build", "sleepy"}
+    assert {n for n, _ in tidy.job_cwds(tmp_path, waits=False)} == {"build", "sleepy"}

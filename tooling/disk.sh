@@ -6,7 +6,7 @@
 #       worktrees   a lane worktree goes with its branch when nothing works in it, nothing in it changed for IDLE_H
 #                   hours (default 3) and all its content is on origin/main, compared by content; one with content
 #                   that is not on main is kept and named, loudly once idle TIDY_LOUD_H hours (default 24)
-#       disk        job spools ended over two days ago, scratch untouched for two days, superseded LOD step markers,
+#       disk        job spools ended over two days ago, scratch untouched for two days (a session's only once the session has ended), superseded LOD step markers,
 #                   cached mod archives the bucket holds (stack.py evict)
 #       bucket      under nw/terrain, nw/plugin and nw/lod only what is referenced, or the newest, stays; once a day
 #                   (--bucket: now; --disk-only: never). mods/ and every other prefix are never touched.

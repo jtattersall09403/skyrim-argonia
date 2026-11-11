@@ -99,3 +99,34 @@ def test_refuses_dirty_red_and_conflicting(repo, tmp_path):
     assert wt.is_dir() and g(wt, "status", "--porcelain") == "" and (wt / "a.txt").read_text() == "a from lane x\n"
     r = land(repo, repo)
     assert r.returncode != 0 and "main tree" in r.stderr
+
+
+def test_a_hold_job_does_not_block_the_fast_forward_and_a_working_job_does(repo, tmp_path):
+    jobs = tmp_path / "jobs"
+    jobs.mkdir()
+
+    def job(name, argv):
+        (jobs / f"{name}.state").write_text("running\n")
+        (jobs / f"{name}.pid").write_text(f"{os.getpid()}\n")
+        (jobs / f"{name}.cmd").write_bytes(b"".join(a.encode() + b"\0" for a in argv))
+        (jobs / f"{name}.cwd").write_text(f"{repo}\n")
+
+    def run(wt):
+        return subprocess.run([str(repo / "tooling/lane_land.sh"), str(wt)], capture_output=True, text=True,
+                              env={**ENV, "LANE_GATE": "true", "HOME": str(repo.parent), "JOBS_DIR": str(jobs)})
+
+    job("hold", ["sleep", "14400"])
+    wt = lane(repo, "k1")
+    (wt / "a.txt").write_text("a1\n")
+    g(wt, "commit", "-qam", "k1")
+    r = run(wt)
+    assert r.returncode == 0 and "main tree is at" in r.stdout, r.stdout + r.stderr
+    assert (repo / "a.txt").read_text() == "a1\n"
+
+    job("nw-rebuild", ["tools/newworld/rebuild.sh", "run"])
+    wt = lane(repo, "k2")
+    (wt / "a.txt").write_text("a2\n")
+    g(wt, "commit", "-qam", "k2")
+    r = run(wt)
+    assert r.returncode == 0 and "job nw-rebuild runs from it" in r.stdout, r.stdout + r.stderr
+    assert (repo / "a.txt").read_text() == "a1\n"

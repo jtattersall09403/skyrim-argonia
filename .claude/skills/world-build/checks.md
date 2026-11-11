@@ -1,8 +1,9 @@
 # What each check proves
 
 Every check reads the output its stage wrote (the heightmap, the shards, the written world file), never the plan
-or the rule that made it. Each runs straight after its stage; a red one stops the run with its own lines. The
-numbers behind each limit are in the research file named.
+or the rule that made it. Each runs straight after its stage; a red one stops the run with its own lines. A check
+that counts proves what was fed as well as what came out: the count of the things that its stage read is in its output
+and is compared with the source's own. The numbers behind each limit are in the research file named.
 
 | Stage | Check | It proves | Mend it in | Numbers |
 |---|---|---|---|---|
@@ -17,7 +18,7 @@ numbers behind each limit are in the research file named.
 | `paint` | `python3 -m tools.newworld.world.texcheck` | on the engine's view (six textures a quadrant, blends per triangle): no quadrant over six; seams agree; no hard edge; roads ramp, join and keep their spine free of grass as Skyrim's do; no swathe of one ground or one grass runs further than Skyrim's holds; regions differ | `texture.py`, `roadpaint.py` | [ground](../../../docs/research/nw-02-walk5-ground.md) |
 | `navmesh` | the build's own checks (`out/newworld/plugin/navmesh/check.json`), then `python3 -m tools.newworld.world.navobjects` | every land cell outside the margin has a mesh; no seam fault; no vertex off the ground; settlement pairs are joined by a path; the placed trees, rocks and cliffs cut the mesh: the objects fed are the refs in the shards that collide, by the navmesh tool's own count, and the mesh has a hole where the tall ones stand. Measured beside them, not judged: the road samples on the mesh, the cut-off pieces by size, and every place and road vertex that lies in one (`province.reach`: read it, and mend the terrain or the placement that closes them in) | `tools/navmesh/`; a road off the mesh in `tools/newworld/place/` | [navmesh](../../../docs/research/nw-02-walk5-navmesh.md) |
 | `map` | `python3 -m tools.newworld.teleports check` | every teleport lands above the water, in the cell its name opens, clear of every placed object and of a built place's buildings; no name opens two cells | `teleports.py` | [far view](../../../docs/research/nw-02-walk5-L.md) |
-| `esm` | `tools/newworld/world/world.sh map`, then `world.sh check` | the map box, markers, named cells and LOD flags are in the file; every cell has its land within the height error, seams match, no overflow; the water, the regions and the start marker are as planned; masters are Skyrim, Update and Black Marsh only | `tools/ArgoniaPlugin/` | |
+| `esm` | `tools/newworld/world/world.sh map`, then `world.sh check` | the map box, markers, named cells and LOD flags are in the file, and the file is the same bytes however often they are applied (the small world applies them twice and compares); every cell has its land within the height error, seams match, no overflow; the water, the regions and the start marker are as planned; masters are Skyrim, Update and Black Marsh only | `tools/ArgoniaPlugin/` | |
 | `readback` | `python3 -m tools.newworld.verify --skip lod,deploy,places,relief` | every requirement, with a number, on the written file and the staged stack: the plugin, land, textures, water, placed objects, mist, atmosphere, height fog, navmesh, map and start marker | the stage that owns the failing row | `out/newworld/verify/report.md` |
 
 The navmesh has a fast test. The `navmesh` stage runs it before its province build, and it is run by hand before any
@@ -34,3 +35,6 @@ the province are printed and not judged; the run names each with its reason.
 
 The read-back's `lod`, `deploy` and `places` rows judge the other machines' work. They run in the whole read-back
 (`python3 -m tools.newworld.verify`) once the LOD is built, the world file deployed and the built places rebuilt.
+
+Before a long job on another machine reads the world file, `tools/newworld/rebuild.sh settled` must exit 0 (the
+skill's section 7, step 3). The LOD's preflight runs it.
