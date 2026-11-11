@@ -334,6 +334,12 @@ def run(plugin: Path, out: Path, do_dump: bool = True) -> int:
         for req, v, ok, det in atmosphere.rows(plugin):
             rep.row("atmosphere", req, v, ok, det)
 
+    @section(rep, "height fog")
+    def _cs_fog():
+        from tools.newworld import atmosphere_cs  # Community Shaders' per-weather height fog, NewWorld profile only
+        for req, v, ok, det in atmosphere_cs.rows(plugin, STACK):
+            rep.row("height fog", req, v, ok, det)
+
     @section(rep, "navmesh")
     def _nav():
         # margin_cells.json and scope_cells.json are in map cells (8192 units, two Skyrim cells a side)

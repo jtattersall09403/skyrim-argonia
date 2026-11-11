@@ -3,7 +3,8 @@
 How the new world's air is made: warm, steamy and tropical, different by region and by latitude, with low mist
 drifting below eye level over the marsh and swamp water. Research and every measured number:
 `docs/research/nw-02-walk5-atmosphere.md`. Code: `tools/newworld/atmosphere.py`, `tools/newworld/world/mist.py`,
-`tools/ArgoniaPlugin/NewWorldAtmosphere.cs`. Sources: `newworld/sources/atmosphere/`.
+`tools/ArgoniaPlugin/NewWorldAtmosphere.cs`, `tools/newworld/atmosphere_cs.py` (Community Shaders' height fog).
+Sources: `newworld/sources/atmosphere/`.
 
 ## The model
 
@@ -74,7 +75,8 @@ Skyrim's own way (Morthal's): always-on `FXMistLow01` statics, no script.
 
 `world/cells.py` (water and regions) -> `world/mist.py` (refs/mist) -> `atmosphere.py spec` (reads the vanilla
 records through `ArgoniaPlugin atmos study`, writes `atmosphere.json`) -> the ESM write (`NewWorldAtmosphere.Build`
-makes every record from `atmosphere.json`; the regions take their lists) -> the read-back. The database's
+makes every record from `atmosphere.json`; the regions take their lists) -> `atmosphere_cs.py write` (the height
+fog's files into the `cs-height-fog` row; then `stack.py stage`) -> the read-back. The database's
 `atmosphere_class` and `region_atmosphere` come from `build_db` (`atmosphere.load`).
 
 ## Proof off game
@@ -92,10 +94,60 @@ makes every record from `atmosphere.json`; the regions take their lists) -> the 
   Hjaalmarch's density over blackwater swamp and green marsh water, graded by class, opacity, every centre 0.5 to
   2.0 m over its surface, budget, none at sea).
 
-## Community Shaders
+## Community Shaders: the low height fog (NewWorld profile only)
 
-The low fog is the placed mist above. The engine's volumetric lighting (on in the prefs the stack writes) draws our
-per-class volumetric lighting records. Community Shaders' exterior volumetric lighting and its exponential height
-fog are off in the profile (`mods/dependencies.json`, community-shaders `files`; the height fog's add-on is not
-laid); a ground fog from them takes the add-on as a mod row and per-weather settings
-(`SKSE/Plugins/CommunityShaders/Weathers/<weather editor id>.json`) keyed on our weathers.
+Over the placed mist, Community Shaders' Exponential Height Fog draws a low, warm fog layer per weather, with light
+shafts in it. Code: `tools/newworld/atmosphere_cs.py`. Everything below is laid in the NewWorld profile only; the
+Argonia profile (Black Marsh & Valenwood) keeps the community-shaders row's files.
+
+1. **The add-on.** The `cs-height-fog` row (`mods/dependencies.json`, `profile: newworld`) is the feature's release
+   asset built with the Community Shaders the stack lays (v1.9.1; its DLL requires the feature at 1-3-2, which this
+   asset is). `pick: ["Shaders"]` lays its feature ini and shaders. When Community Shaders moves, the row moves to the
+   same release's asset.
+2. **The two global overrides** sit at the community-shaders row's paths
+   (`SKSE/Plugins/CommunityShaders/Overrides/Argonia_ExponentialHeightFog.json`, `..._VolumetricLighting.json`), so in
+   the NewWorld profile the newworld row's copies win:
+   - height fog on, replacing the vanilla fog (`disableVanillaFog`); no sky cubemap and no added colour; any weather
+     not ours takes the feature's shipped values (density 0.005, falloff 0.2);
+   - volumetric lighting on outdoors (`ExteriorEnabled`, medium quality). Community Shaders sets the engine's
+     `bEnableVolumetricLighting` from it every time the player goes outdoors, so this switch is what lets our
+     weathers' volumetric lighting records draw.
+3. **One file per weather of ours**, `SKSE/Plugins/CommunityShaders/Weathers/0x<local form id>~ArgoniaNewWorld.esm.json`
+   (Community Shaders keys a weather by its local form id, hex upper case, and the plugin that defines it), holding
+   `{"featureSettings": {"ExponentialHeightFog": {"__enabled": true, ...}}}` with the names the feature registers:
+   - **Fog Density**: the fog 90 % thick along its floor at the weather's own day fog far (the record's visibility
+     for its class and band; the shader's level ray fades as 2^(-d L ln 2), d = density / 1000), times the class's
+     strength (blackwater swamp and green marsh 1.4, river corridor 1.2, rainforest 1.1, south coast 1.0, east and
+     west coasts 0.7, islands and highland 0.5) and the kind's (fair 0.7, cloudy 0.9, mist and steam 1.0, rain and
+     storm 0.5), at most 1;
+   - **Fog Height**: the class's floor, the 75th percentile of the surface (water at 0) over its still and flowing
+     water and its marsh habitats on the current terrain, rounded to 10 units; below the floor the fog is full;
+   - **Fog Height Falloff** 2.0, the feature's maximum: the fog halves every 500 units (7 m) above the floor, so it
+     fills the hollows and lies over the water, and the mesa tops and the sky stay clear;
+   - **Directional Inscattering Multiplier**: the sun scattered forward in the fog (anisotropy 0.6, global): fair and
+     steam 1.0, cloudy 0.8, mist 0.4, rain and storm 0.2;
+   - **volumetricFogEnabled** in the sunlit kinds (fair, cloudy, steam), out to 20,000 units, its **Volumetric
+     Albedo** the weather's day fog near colour scaled to a top channel of 1: the fog is lit and shadowed, so the sun
+     falls through canopy gaps in shafts;
+   - **the veil guard**, also global but stated in each file: `disableVanillaFog` true, **Original Fog Color Amount**
+     1 (the fog's colour is the weather's own fog colour at the hour), the added colour's and the cubemap tint's
+     alphas 0. With the vanilla fog kept, Community Shaders' composite paints every sky pixel with the weather's far
+     fog colour at its fog maximum: a flat veil with no clouds.
+   The feature has no time of day: a weather's values hold at every hour; the dawn mist of the records' night fog
+   slot shows in the fog's colour only.
+4. **Generated, then staged.** `python -m tools.newworld.atmosphere_cs write` writes the row's `files` (the two
+   overrides and the 102 weather files) into the manifest from `atmosphere.json` and the terrain; `stack.py stage`
+   lays them like any row's files (a changed file re-stages the row alone).
+
+Pipeline place: after `atmosphere.py spec` and the terrain, before `stack.py stage` and the deploy.
+
+Proof (`python -m tools.newworld.atmosphere_cs check`, and the "height fog" rows of `tools/newworld/verify.py`): one
+file per weather, parsed back, each value inside the range the feature registers; every block enabled; the veil
+guard in every file; the sky through the fog from the floor (the shader's integral): at least 0.7 of the sky's own
+colour at the zenith in every weather and 0.8 at 15 degrees in fair and cloudy weather; the peat swamp and green
+marsh thicker than the highland, coasts and islands; mist and steam thicker than fair and cloudy; the manifest's
+files equal the generator's; the add-on and the files laid in NewWorld by the row and in Argonia not at all; the two
+overrides from this row in NewWorld and from community-shaders in Argonia; the staged add-on's version 1-3-2.
+
+If the sky looks veiled in game, the one switch is the Community Shaders menu's Exponential Height Fog, "Enable
+Exponential Height Fog": off, the weathers' own fog returns as built.

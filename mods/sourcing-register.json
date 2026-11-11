@@ -513,6 +513,15 @@
   "notes": "shaders over the whole game, default features; the height-fog add-on not laid"
  },
  {
+  "name": "Exponential Height Fog (Community Shaders feature, v1.9.1 release asset)",
+  "source_url": "https://github.com/community-shaders/skyrim-community-shaders/releases/download/v1.9.1/Exponential.Height.Fog-2026-09-24T12-32Z.zip",
+  "version": "1-3-2 (mods/dependencies.json row cs-height-fog)",
+  "licence": "GPL-3.0",
+  "used_by": "the NewWorld profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it): the new world's low height fog, with our per-weather settings files",
+  "linked_or_forked_by": "none: depended on as the player’s own download",
+  "notes": "Community Shaders Team; its Nexus page (180146) is not published, so the row takes the release asset built with the Community Shaders 1.9.1 the stack lays"
+ },
+ {
   "name": "dTry Plugin Updates: Stop On Slash",
   "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/85740",
   "version": "2.2.1",

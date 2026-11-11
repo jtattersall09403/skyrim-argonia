@@ -135,8 +135,8 @@ database holds it with the measured band (`region_atmosphere`). Sea regions take
 - God rays through canopy and mist: volumetric light shafts. Transfers: the weather's volumetric lighting records
   (where the engine's volumetric lighting runs).
 - Volumetric and particle ground fog: low banks below eye level, drifting. Transfers: placed mist statics
-  (Skyrim's own way, section 3.5); a ray-marched height fog exists in Community Shaders but is not in our profile
-  (section 3.6).
+  (Skyrim's own way, section 3.5), in a low height fog layer (Community Shaders' Exponential Height Fog, the
+  NewWorld profile, section 3.7).
 - Bloom, tone mapping and grading: warm tint, slightly higher saturation for greens, soft bloom on bright haze.
   Transfers: the image space's tint colour and saturation, per weather and hour.
 - Weather mixes: tropical games favour fair-humid and cloudy days with frequent short storms and post-rain steam
@@ -216,9 +216,9 @@ Every slot is blue: the sun bluish white, the fog blue-grey, the ambient a dim b
 
 ### 3.6 Community Shaders in the NewWorld profile
 
-- Community Shaders 1.9.1 is in both profiles. Its DLL has per-weather settings (a `Weathers` folder of per-weather
-  JSON keyed by the weather's editor id) for the features that register weather variables: Exponential Height Fog,
-  image-based lighting and wetness.
+- Community Shaders 1.9.1 is in both profiles. Its DLL has per-weather settings for the features that register
+  weather variables (Exponential Height Fog among them): a `Weathers` folder of JSON files keyed by the weather's
+  local form id and plugin, not its editor id (section 3.7).
 - Features installed in both profiles (the community-shaders row is `profile: play`, so the NewWorld profile has the
   same files): 26 `Shaders/Features/*.ini`: CSEditor, CloudShadows, DynamicCubemaps, ExtendedMaterials,
   ExtendedTranslucency, GrassCollision, GrassLighting, HorizonFix, ImageBasedLighting, InteriorSun,
@@ -226,10 +226,10 @@ Every slot is blue: the sun bluish white, the fog blue-grey, the ambient a dim b
   ScreenSpaceShadows, Screenshot, SkySync, SubsurfaceScattering, TerrainShadows, TruePBR, UnifiedWater,
   VolumetricLighting, VolumetricShadows, WaterEffects. Our overrides (`mods/dependencies.json`, community-shaders
   `files`) set VolumetricLighting `ExteriorEnabled: false` and lay an ExponentialHeightFog override with density 0.
-- Not installed: Exponential Height Fog, the only Community Shaders feature that makes a volumetric ground or
-  height fog. Its code is in the 1.9.1 DLL, but its add-on (its `Shaders/Features/ExponentialHeightFog.ini` and its
-  shaders) is not laid: the row's `why` says "Its separate Exponential Height Fog add-on is NOT laid: with it the
-  2026-11-03 sky went to a grey veil" (commit 0fa53c73, 2026-11-05).
+- Exponential Height Fog, the only Community Shaders feature that makes a volumetric ground or height fog, is not in
+  the community-shaders row: its code is in the 1.9.1 DLL, its add-on (its `Shaders/Features/ExponentialHeightFog.ini`
+  and its shaders) is a separate download, and the row's `why` keeps it out of the Argonia profile ("with it the
+  2026-11-03 sky went to a grey veil", commit 0fa53c73). The NewWorld profile now lays it from its own row (3.7).
 - Where the off came from: not an owner ruling. It is a planner's entry of 2026-11-03 in docs/owner-brief.md (commit
   ea4a3909; that file was retired at the pivot, d269dbf5, and the entry is not in docs/owner-rulings.md): "Community
   Shaders' height fog and volumetric lighting are off for now (planner, from the sky bisect on Paris at 11:44): with
@@ -239,18 +239,77 @@ Every slot is blue: the sun bluish white, the fog blue-grey, the ambient a dim b
   off again when the dawn veil came back with no shafts (38c13f55). The owner's own words on Community Shaders are
   the 2026-11-05 row ("at its default features") and walk 5's "using volumetrics from community shaders where
   appropriate".
-- What a Community Shaders low ground fog for the new world needs: (1) a mod row for the Exponential Height Fog
-  add-on (a separate Community Shaders feature download), laid in the NewWorld profile only (a `profile: newworld`
-  row, since the community-shaders row's files are shared by both profiles); (2) its global settings authored near
-  the feature's defaults (density 0.005, falloff 0.2, start 0, the earlier measured bounds) with
-  `volumetricFogEnabled` on; (3) per-weather files `SKSE/Plugins/CommunityShaders/Weathers/<editor id>.json` for our
-  marsh and swamp weathers (fair, cloudy, mist, steam: dense and low at dawn), keyed on our editor ids, which no
-  other card loads; (4) for light shafts in it, VolumetricLighting `ExteriorEnabled: true` in a NewWorld-only
-  override. It is a call for the owner: the two earlier tries veiled the sky.
-- The engine's own volumetric lighting is on in the prefs the stack writes (`bVolumetricLightingEnable=1`, stack.ps1
-  line 115) and draws each weather's volumetric lighting records, so our per-class records take effect without it.
-- Built in this lane: the native low mist (Skyrim's placed mist; the owner names it "the Skyrim native Hjaalmarch
-  way"), denser and stronger, and per-class volumetric lighting records; no Community Shaders change.
+- The prefs flag `bVolumetricLightingEnable=1` (stack.ps1) is not the last word outdoors: Community Shaders'
+  VolumetricLighting sets the engine's `bEnableVolumetricLighting` to its `ExteriorEnabled` each time the player goes
+  outdoors (VolumetricLighting.cpp SetupVL). With the community-shaders row's `ExteriorEnabled: false`, no weather's
+  volumetric lighting record draws outdoors; the NewWorld profile's override turns it on (3.7).
+
+### 3.7 Community Shaders' height fog for the new world, measured (walk 5, lane A2)
+
+Read in the Community Shaders v1.9.1 source (tag v1.9.1, the release the stack lays) and the staged files.
+
+- **The add-on and its version.** The DLL accepts a feature whose ini version is at least its built-in minimum
+  (Feature.cpp; FEATURE_MINIMAL_VERSIONS from each feature's ini at build): Exponential Height Fog 1-3-2. Its Nexus
+  page (mod 180146, named in ExponentialHeightFog.h) is not published (Nexus API: `status: not_published`, files
+  403). The v1.9.1 GitHub release carries it as `Exponential.Height.Fog-2026-09-24T12-32Z.zip` (12,935 bytes, sha256
+  306127c8...; 7 shader files and the ini, Version = 1-3-2), built in the same run as
+  `CommunityShaders-2026-09-24T12-32Z.zip`, whose `CommunityShaders.dll` is byte-identical to the one the stack lays
+  from Nexus (sha256 10ba95e6...). The ini says `Unreleased = True`: that hides the feature from the menu only while
+  it is not installed (Feature.h IsHiddenUnreleased).
+- **Per-weather files.** WeatherManager::LoadPerWeatherSettingsFromDisk reads `<CS>/Weathers/*.json`, keyed by the file
+  stem; a weather's key is Util::GetFormFileKey: `0x<local form id, hex upper, unpadded>~<the plugin that defines it>`
+  (Utils/Form.cpp), e.g. `0x80508~ArgoniaNewWorld.esm`. The file holds `{"featureSettings": {"<feature short name>":
+  {...}}}` and a block is used only with `"__enabled": true`. The keys are the names the feature registers
+  (RegisterWeatherVariables), which for this feature are mostly the display strings: "Fog Density", "Fog Height",
+  "Fog Height Falloff", "Original Fog Color Amount", "Volumetric Albedo", and three flags in camel case
+  (`disableVanillaFog`, `respectVanillaFogFade`, `volumetricFogEnabled`). A key absent from a block keeps the global
+  (overridden) value. Values blend across a weather transition; there is no time-of-day input.
+- **Ranges** (RegisterWeatherVariables): density 0-1, height -22,000-22,000, falloff 0.001-2.0, start 0-100,000,
+  inscattering multiplier 0-10, anisotropy -0.99-0.99, original colour amount 0-1, volumetric distance 1,000-200,000.
+- **The shader** (ExponentialHeightFog.hlsli): density d = Fog Density / 1000 a unit at and below Fog Height, times
+  2^(-f h) at h units above it (f = falloff / 1000); a ray's transmittance is 2^(-d L (1 - 2^(-f dz)) / (f dz)): a
+  level ray 2^(-d L ln 2), a ray to the sky at elevation e 2^(-d / (f sin e)). Falloff 2.0, the maximum, halves the
+  fog every 500 units (7 m): the feature cannot draw a layer thinner than that, so the drifts below eye level stay the
+  placed mist's (3.5) and the height fog is the low layer they sit in.
+- **The grey veil.** Community Shaders' composite (ISSAOComposite.hlsl, APPLY_FOG): with the height fog enabled the fog
+  is applied to every pixel, the sky's included (`isGeometryDepth || exponentialHeightFogEnabled`); with
+  `disableVanillaFog` off, each sky pixel first takes the vanilla fog colour at the far plane's fog factor, which is
+  the weather's fog maximum: the whole sky in the far fog colour, no clouds, a cream dawn (the dawn far fog). The
+  2026-11-03 override had the height fog enabled with `disableVanillaFog: 0` (and round 4's density 0.1 and falloff
+  30 before it); that matches the veil the sky A/B saw. Round 6's cause, the old sky templates (commit 446ee951's lane:
+  the Argonia.esm weathers' sky colours read from Skyrim.esm instead of the load order's winner, and every cloud layer
+  painted cream), is a second, separate cause; the new world does not use those weathers: its 102 weathers are copies
+  of the load order's winning Bethesda regional weathers (all 102 from Update.esm in the NewWorld load order) with
+  their own cloud layers, and none is an Argonia.esm weather. With `disableVanillaFog` on, as the feature ships it,
+  the sky takes only the height fog, which thins upward (above).
+- **Our floors** (the 75th percentile of the surface, water at 0, over each class's still and flowing water and marsh
+  habitats; terrain build 20261109T204317Z): blackwater swamp 300 units, green marsh 210, river corridor 180,
+  rainforest 120, south coast 890, east coast 160, west coast 360, islands 170, highland 1,220.
+- **What we set** (generated, `tools/newworld/atmosphere_cs.py`; recipe in docs/design/atmosphere.md), by class, the
+  mean density per kind, the distance to 95 % fogged on a level line at eye height, and the least sky left at 15
+  degrees in fair weather (camera at the floor):
+
+| class | floor (units) | fair | cloudy | mist | steam | rain | 95 % fogged at the eye, fair / mist (m) | sky at 15 deg, fair |
+|---|---|---|---|---|---|---|---|---|
+| blackwater-swamp | 300 | 0.148 | 0.153 | 0.679 | 0.848 | 0.566 | 763 / 167 | 0.81 |
+| green-marsh | 210 | 0.097 | 0.100 | 0.444 | 0.523 | 0.370 | 1215 / 266 | 0.87 |
+| river-corridor | 180 | 0.075 | 0.077 | 0.345 | 0.405 | 0.287 | 1477 / 323 | 0.90 |
+| rainforest | 120 | 0.079 | 0.081 | 0.359 | 0.449 | 0.299 | 1443 / 316 | 0.89 |
+| coast-south | 890 | 0.081 | 0.084 | 0.372 | 0.437 | 0.310 | 1294 / 283 | 0.90 |
+| coast-east | 160 | 0.046 | 0.047 | 0.210 | 0.233 | 0.175 | 2385 / 522 | 0.94 |
+| coast-west | 360 | 0.044 | 0.045 | 0.200 | 0.222 | 0.166 | 2505 / 547 | 0.94 |
+| island | 170 | 0.026 | 0.027 | 0.119 | 0.132 | 0.099 | 4174 / 913 | 0.96 |
+| highland | 1220 | 0.021 | 0.022 | 0.096 | 0.106 | 0.080 | 5009 / 1097 | 0.97 |
+
+  The feature's shipped density is 0.005 (2026-11-03's round-4 bank was 0.1 with falloff 30). The least sky at the
+  zenith over all 102 weathers is 0.73 (blackwater swamp, south, steam); at 15 degrees in fair and cloudy weather
+  0.80 (blackwater swamp, south, cloudy). Per weather the density scales with the record's own day fog far, so the
+  height fog keeps each weather's visibility at the floor and adds the height: full in the hollows and over the
+  water, half 7 m up, a sixteenth 28 m up.
+- **The profile split, measured on the stage** (`stack.py stage`, 2026-11-11): the Argonia profile's laid files
+  53,999 before and after, identical (installed.json `files` and `plugins` equal; the profile folder unchanged);
+  NewWorld 100,974 to 101,084 files: 110 added (8 add-on files, 102 weather files) and the two override paths now
+  from the `cs-height-fog` row.
 
 ## 4. What we built (the recipe is docs/design/atmosphere.md)
 
