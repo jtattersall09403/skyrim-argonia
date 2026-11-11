@@ -284,11 +284,11 @@ function Set-TerrainMeshes {
   $dir = "$Tools\xlodgen\xLODGen\Edit Scripts"
   $src = "$dir\LODGen_Terrain_$World.txt"
   if (-not (Test-Path $src)) { throw "terrain: no $src (xLODGen writes it)" }
-  $out = foreach ($l in Get-Content $src) {
+  $lines = foreach ($l in Get-Content $src) {
     if ($l -match '^([A-Za-z0-9]+)=' -and $TerrainMesh.Contains($Matches[1])) { "$($Matches[1])=$($TerrainMesh[$Matches[1]])" } else { $l } }
-  $have = @($out | % { ($_ -split '=')[0] })
+  $have = @($lines | % { ($_ -split "=")[0] })
   foreach ($k in $TerrainMesh.Keys) { if ($k -notin $have) { throw "terrain: $src has no $k line" } }
-  $txt = "$Work\LODGen_Terrain_$World.txt"; Set-Content $txt $out -Encoding ASCII
+  $txt = "$Work\LODGen_Terrain_$World.txt"; Set-Content $txt $lines -Encoding ASCII
   Say "terrain meshes: LODGen again with $(($TerrainMesh.GetEnumerator() | % { "$($_.Key)=$($_.Value)" }) -join ' ')"
   $t0 = Get-Date
   $p = Start-Process "$dir\LODGenx64.exe" -ArgumentList "`"$txt`"" -WorkingDirectory $dir -PassThru -NoNewWindow `
