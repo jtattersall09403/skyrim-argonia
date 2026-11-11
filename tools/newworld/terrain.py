@@ -118,6 +118,14 @@ def probe(stage: str, a: np.ndarray, per_m: float = 1.0) -> None:
             a[i, j] / per_m, win.mean() / per_m, win.min() / per_m, win.max() / per_m))
 
 
+def input_digests() -> dict:
+    """sha256 (12 hex) of the files that decide where the ground lies and what shape it takes: written into
+    build.json, and `terrain check` fails when one has changed since (the build no longer answers its inputs)."""
+    files = {"scope_cells.json": f.OUT / "scope_cells.json", "cell_region.json": f.OUT / "cell_region.json",
+             "region_relief.json": tf.SPEC, "terrain_held.json": th.HELD}
+    return {k: hashlib.sha256(p.read_bytes()).hexdigest()[:12] if p.exists() else None for k, p in files.items()}
+
+
 def make_grid(scope) -> ts.Grid:
     c = np.array(scope)
     x0, x1 = c[:, 0].min() - 1, c[:, 0].max() + 1
@@ -210,6 +218,7 @@ def lay_roads(h, water_px, water_s, grid, w):
 def build(upload: bool = True) -> dict:
     from tools.argonia_world import db
     t0 = time.time()
+    inputs = input_digests()
     OUT.mkdir(parents=True, exist_ok=True)
     (OUT / "crops").mkdir(exist_ok=True)
     w = db.open("newworld")
@@ -555,7 +564,7 @@ def build(upload: bool = True) -> dict:
              "about": ("float32 game units (70 a metre), north-up, row 0 the north edge; heightmap.png is 16-bit: "
                        f"h = {offset} + 8 v units; water bodies at map px; cliffs over {CLIFF_DEG} deg"),
              "png_offset_units": offset, "png_scale_units": ts.QUANT,
-             "regions": psrc, "characters": forms, "held": held,
+             "regions": psrc, "characters": forms, "held": held, "inputs": inputs, "peak_rss_mb": rss_mb()[1],
              "beyond": {"pad_px": tb.PAD_PX, "cells_x": [int(round(grid.ox / f.CELL_UNITS)),
                                                    int(round((grid.ox + (grid.cols - 1) * ts.STEP) / f.CELL_UNITS)) - 1],
                         "cells_y": [int(round((grid.oy - (grid.rows - 1) * ts.STEP) / f.CELL_UNITS)),
@@ -642,11 +651,14 @@ def check_built() -> int:
         if k in old:
             chk[k] = old[k]
     chk["sha256_matches"] = sha == b["sha256"]
+    now = input_digests()
+    chk["inputs_changed"] = sorted(k for k, v in now.items() if b.get("inputs", {}).get(k) != v)
     print(json.dumps(chk, indent=1, default=_j))
     # the smooth coast moves banks by a pixel or two: the map's water and land are held on 4 px blocks
     ok = (chk["water_pixels_under"] >= MAP_HELD and chk["land_pixels_above"] >= MAP_HELD
           and chk.get("coast", {}).get("blocks4", 0) >= BLOCKS_HELD and chk["land_format"]["ok"]
           and chk["sha256_matches"] and not chk.get("entrances_bad") and th.ok(chk["held"])
+          and not chk["inputs_changed"]
           and all(v["pm32"] <= tcl.MAX_PM32 and v["pm64"] <= tcl.MAX_PM64 for v in chk["plane_shares"].values())
           and chk.get("roads", {}).get("grade_over_limit_points", 0) == 0)
     return 0 if ok else 1

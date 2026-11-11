@@ -139,13 +139,20 @@ navmesh, the read-back), Helstrom brought level by its narrow stages, the LOD on
 
 ## Walk 5: the terrain build (current truth)
 
-The terrain build (`tools/newworld/terrain.py`) now also: carries the map past its edge (`terrain_beyond`: the scope
-reaches 8 map cells past the picture, foreign land west, north-west and north, open sea east, south and south-west;
-world cells x -50..56, y -129..-40); gives each land region its own landform from its research's landscape note
+Order: `python -m tools.newworld.tiles scope`, then `python -m tools.newworld.regions` (both before the terrain
+build: it reads the scope and each cell's region), then `python -m tools.newworld.terrain`,
+`python -m tools.newworld.terrain check`, `python -m tools.newworld.terrain_needs`, then the chain from water_kinds.
+
+The terrain build (`tools/newworld/terrain.py`): carries the map past its edge (`terrain_beyond`: the scope reaches
+8 map cells past the picture, foreign land west, north-west and north, open sea east, south and south-west; map
+cells x -50..56, y -129..-40; those cells are margin); anchors every noise, the drainage jitter, the rain, the
+rounding pattern and each pad's outline to the picture's own grid (`terrain_relief.anchor`), so a wider scope moves
+no ground of the province; gives each land region its own landform from its research's landscape note
 (`terrain_forms`, `newworld/sources/region_relief.json`); keeps every built place's ground as built, lifted by one
 constant (`terrain_held`, `newworld/sources/terrain_held.json`; Helstrom +72 units on build 20261109T204317Z, so the
 place is re-seated by its seating stage); and stands land and beds clear of the water plane outside a narrow shore
-band (`terrain_clearance`, checked by `terrain check`: within 32 / 64 units at most 0.03 / 0.05 at every LOD
-spacing). `terrain_character` measures the regions' relief distances (character.json; read-back rows in verify).
-Measured numbers: docs/research/nw-02-walk5-relief.md. After a terrain build, rerun `tiles scope` and `regions`
-first when the scope changes, then the chain from water_kinds as before.
+band (`terrain_clearance`). build.json names its inputs by digest and its peak memory (5.6 GB). `terrain check`
+fails when the plane shares pass 0.03 / 0.05 at any LOD spacing, when a held place's land differs from its build
+plus the lift, or when an input changed since the build. `ARGONIA_TERRAIN_PROBE=place,place` logs those places'
+ground after every stage. `terrain_character` measures the regions' relief distances against Skyrim's neighbouring
+regions (character.json; read-back rows in verify). Measured numbers: docs/research/nw-02-walk5-relief.md.

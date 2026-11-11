@@ -3,7 +3,7 @@
  "regions": {
   "murkwood": {"character": "root-hummocks", "base": 0.6,
    "reads": "heartland.json: Low, wet ground cut by braided river arms flowing toward the lake, with dry rises where the roots hold the soil; landform: root-hummocks."},
-  "lake-ulaish": {"character": "strandlines", "base": 0.3,
+  "lake-ulaish": {"character": "strandlines", "base": 0.6,
    "reads": "heartland.json: A shallow basin with flat shores, silt islets and a delta of river arms at the north-west; the south shore is firmer."},
   "aunike-ridge": {"character": "cuesta", "form": "ridge",
    "reads": "heartland.json: A long spine of firm ground rising from marsh, with rock outcrops, two summits, steep faces on the north and shelving slopes on the south."},
@@ -27,7 +27,7 @@
    "reads": "southwest.json: Low hills up to about 45 m behind the coast, flat sandy shores, salt creeks and mangrove edges."},
   "tulmek-washes": {"character": "mud-islands", "base": 0.15, "ramp_m": 45,
    "reads": "southwest.json: Dead-flat lowland of standing water with tiny rises; channels braid round low islands of reed and mud."},
-  "kotherra-mangroves": {"character": "tidal-flats", "base": 0.2,
+  "kotherra-mangroves": {"character": "tidal-flats",
    "reads": "west.json: Mudflats and mangrove channels with a few raised banks; the estuary's low ground stands under water."},
   "nha-enasa": {"character": "levees",  "base": 0.5,
    "reads": "west.json: Low river banks and reed flats, drier than the delta, cut by channels."},
@@ -37,9 +37,9 @@
    "reads": "eastcoast.json: A flat to gently rolling plain behind a wide bay, cut by shallow rivers that end in mud-flats at the coast. Low clay rises carry the villages; headlands of dark stone hold the ruins."},
   "okuwun-rahei": {"character": "clay-mounds", "base": 0.3,
    "reads": "eastcoast.json: Low red clay mounds above flat marsh, big lakes in the west and a maze of creeks in the south-east, ending in cliffs and a falls at the coast."},
-  "skeith-isle": {"character": "crag", "ramp_m": 4,
+  "skeith-isle": {"character": "as-laid",
    "reads": "eastcoast.json: A single rise of dark rock with cliff edges to the west and north, shingle beaches to the south and east, a central crag."},
-  "aphon-isle": {"character": "spine", "form": "ridge", "ramp_m": 6,
+  "aphon-isle": {"character": "as-laid",
    "reads": "west.json: A low hilly island with rocky shores and a high spine running through it."}
  }
 }

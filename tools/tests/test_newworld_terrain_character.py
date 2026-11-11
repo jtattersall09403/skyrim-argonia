@@ -299,3 +299,20 @@ def test_held_zone_lifts_land_by_one_constant(monkeypatch):
     th.apply(h, grid, h < 0)
     res = th.check(h, grid)
     assert th.ok(res) and res["p"]["lift_units"] == L
+
+
+def test_build_inputs_are_digested(tmp_path, monkeypatch):
+    """build.json names its inputs by digest; a changed or missing input shows."""
+    from tools.newworld import terrain as T
+    for name in ("scope_cells.json", "cell_region.json", "region_relief.json", "terrain_held.json"):
+        (tmp_path / name).write_text("{}")
+    monkeypatch.setattr(f, "OUT", tmp_path)
+    monkeypatch.setattr(tf, "SPEC", tmp_path / "region_relief.json")
+    monkeypatch.setattr(th, "HELD", tmp_path / "terrain_held.json")
+    a = T.input_digests()
+    assert set(a) == {"scope_cells.json", "cell_region.json", "region_relief.json", "terrain_held.json"}
+    (tmp_path / "region_relief.json").write_text('{"regions": {}}')
+    b = T.input_digests()
+    assert b["region_relief.json"] != a["region_relief.json"] and b["scope_cells.json"] == a["scope_cells.json"]
+    (tmp_path / "terrain_held.json").unlink()
+    assert T.input_digests()["terrain_held.json"] is None

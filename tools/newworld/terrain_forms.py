@@ -7,7 +7,7 @@ Whiterun open tundra). Here each land region gets the landform its research desc
 the shared relief:
 
   root-hummocks   dense root hummocks 7 to 12 m across and up to a metre high, and a few broad dry rises
-  strandlines     flat silt shores lined with low beach ridges parallel to the water, fading inland
+  strandlines     flat silt shores lined with faint beach ridges parallel to the water, fading inland
   cuesta          north-facing scarps over long shelving south slopes (a tilted, stepped spine), rock tors
   ring-mounds     rings of firm ground 90 to 200 m across on flat swamp
   river-terraces  broad rounded rises between the rivers, and benches stepping up from the rivers' shores
@@ -15,7 +15,7 @@ the shared relief:
   ravined-mounds  broad mounds on a plain cut by narrow winding ravines that start and end
   knob-and-kettle close knobs and kettle hollows, and a few larger ruin mounds
   inselbergs      steep isolated hills standing out of flat bog
-  braided-ridges  thin ridges of firm ground midway between the channels, following them, as chains of rises
+  braided-ridges  thin low ridges of firm ground midway between the channels, following them, as chains of rises
   sea-cut         a raised coastal bench with a short, cut shore, and a few low hills
   beach-ridges    sandy beach ridges parallel to the sea behind the shore
   mud-islands     dead-flat ground with small flat-topped mud islands
@@ -24,8 +24,8 @@ the shared relief:
   basin-islets    flat-topped islets on a flat basin floor
   clay-rises      broad low clay rises on a plain, rocky headlands at the sea
   clay-mounds     discrete rounded clay mounds standing on flat marsh, a raised coastal edge
-  crag            a short, steep shore round the island's own rise
-  spine           a ridge down the island's middle line (the ground climbs with the distance from the shore)
+  as-laid         nothing added: the shared relief at the region's own heights already reads unlike every other
+                  region's (the two rock isles; a form there only drew them toward each other)
 
 Every feature is placed on a lattice anchored to world position (a hash of the lattice cell), so the same ground comes
 out whatever the scope. Large forms are laid before weathering (stage "before": drainage and rain then cut them like
@@ -205,7 +205,7 @@ def strandlines(c, stage):
     if stage == "before":
         return None
     ph = 2 * np.pi * c.dw / 40.0 + 0.9 * c.noise(180, 30)
-    return 1.2 * np.maximum(np.cos(ph), 0) ** 3 * np.exp(-c.dw / 500.0) * _smoothstep(3, 10, c.dw) \
+    return 0.3 * np.maximum(np.cos(ph), 0) ** 3 * np.exp(-c.dw / 160.0) * _smoothstep(3, 10, c.dw) \
         * _road_fade(c, 4, 12)
 
 
@@ -230,7 +230,7 @@ def ring_mounds(c, stage):
     d = d * np.clip(1 + 0.22 * c.noise(110, 51), 0.5, 1.6)        # no ring is a circle
     R = 45 + 55 * a[near, 0]
     w = 10 + 8 * a[near, 1]
-    h = (2.0 + 1.5 * a[near, 2]) * (0.35 + 0.65 * _smoothstep(-0.7, 0.1, c.noise(90, 52)))   # and each has its gaps
+    h = (2.0 + 1.5 * a[near, 2]) * (0.5 + 0.5 * _smoothstep(-0.7, 0.1, c.noise(90, 52)))     # and each has its gaps
     return (h * np.exp(-((d - R) / w) ** 2)).astype(np.float32) * _smoothstep(3, 10, c.dw) * _road_fade(c, 4, 15)
 
 
@@ -254,9 +254,9 @@ def ravined_mounds(c, stage):
         return None
     mounds = _blobs(c, 200, 0.6, 60, 40, 75, 4.0, 9.0) * _smoothstep(10, 30, c.dw)
     n = c.noise(220, 61) + 0.35 * c.noise(70, 62)
-    v = np.clip(1 - np.abs(n) / 0.2, 0, 1) ** 1.2
+    v = np.clip(1 - np.abs(n) / 0.24, 0, 1) ** 1.2
     reach = _smoothstep(-0.4, 0.3, c.noise(450, 63))          # a ravine starts and ends: none closes on itself
-    cut = -7.0 * v * reach * _smoothstep(1.5, 5.0, c.rel + mounds) * _smoothstep(8, 30, c.dw)
+    cut = -8.0 * v * reach * _smoothstep(1.5, 5.0, c.rel + mounds) * _smoothstep(8, 30, c.dw)
     return (mounds + cut).astype(np.float32) * _road_fade(c, 6, 20)
 
 
@@ -290,11 +290,12 @@ def braided_ridges(c, stage):
         return None
     # the crest of the ground between two channels: where the distance to the water stops rising
     gy, gx = np.gradient(ndi.gaussian_filter(c.dw, 2.0), c.m)
-    crest = _smoothstep(0.15, 0.6, 1 - np.clip(np.hypot(gx, gy), 0, 1)) * _smoothstep(5, 12, c.dw)
-    ridge = np.clip(ndi.gaussian_filter(crest.astype(np.float32), 3.0) * 1.6, 0, 1)
+    crest = _smoothstep(0.3, 0.75, 1 - np.clip(np.hypot(gx, gy), 0, 1)) * _smoothstep(5, 12, c.dw)
+    ridge = np.clip(ndi.gaussian_filter(crest.astype(np.float32), 1.5) * 1.3, 0, 1)
     ridge = ridge * (0.55 + 0.45 * _smoothstep(-0.8, 0.3, c.noise(140, 91)))      # a chain of rises, not a wall
     hum = _blobs(c, 30, 0.6, 95, 5, 9, 0.2, 0.5)
-    return ((2.2 * ridge + hum * ridge) * _smoothstep(2, 8, c.dw)).astype(np.float32) * _road_fade(c, 4, 12)
+    # low and thin: the bayou stays the calmest ground of the province between them
+    return ((1.2 * ridge + hum * ridge) * _smoothstep(2, 8, c.dw)).astype(np.float32) * _road_fade(c, 4, 12)
 
 
 def sea_cut(c, stage):
@@ -326,7 +327,7 @@ def tidal_flats(c, stage):
 def levees(c, stage):
     if stage == "before":
         return None
-    crest = 1.8 * np.exp(-((c.dw - 12.0) / 7.0) ** 2)
+    crest = 1.3 * np.exp(-((c.dw - 22.0) / 10.0) ** 2)
     swamp = 0.5 * _smoothstep(30, 80, c.dw) * _smoothstep(260, 140, c.dw)
     return (crest - swamp).astype(np.float32) * _road_fade(c, 4, 12)
 
@@ -356,15 +357,8 @@ def clay_mounds(c, stage):
     return mounds + (3.5 * np.exp(-c.dsea / 100.0) * (c.dsea < 500)).astype(np.float32) * _road_fade(c)
 
 
-def crag(c, stage):
-    return None          # the short shore ramp (ramp_m) is the cliff; the island's own rise is the crag
-
-
-def spine(c, stage):
-    if stage == "after":
-        return None
-    # the island's middle line stands highest: the ground climbs with the distance from the shore
-    return np.clip(0.09 * c.dw, 0, 16.0).astype(np.float32) * _road_fade(c)
+def as_laid(c, stage):
+    return None          # the shared relief at the region's own heights is its character
 
 
 CHARACTERS = {"root-hummocks": root_hummocks, "strandlines": strandlines, "cuesta": cuesta,
@@ -373,7 +367,7 @@ CHARACTERS = {"root-hummocks": root_hummocks, "strandlines": strandlines, "cuest
               "braided-ridges": braided_ridges, "sea-cut": sea_cut, "beach-ridges": beach_ridges,
               "mud-islands": mud_islands, "tidal-flats": tidal_flats, "levees": levees,
               "basin-islets": basin_islets, "clay-rises": clay_rises, "clay-mounds": clay_mounds,
-              "crag": crag, "spine": spine}
+              "as-laid": as_laid}
 
 
 def region_weights(code: np.ndarray, lut: dict, rids) -> dict:

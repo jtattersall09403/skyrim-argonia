@@ -22,9 +22,11 @@ above; two landforms of one amplitude differ here):
 - line: how linear the shapes are where they stand, whatever way they run (|k1| - |k2| over |k1| + |k2| of the
   50 m band's curvatures, weighted by curvature: ridges, rings, ravines and beach lines near 1, domes and kettles
   near 0);
-- skew: of the 100 m band (mounds standing on a flat skew positive, ravines and kettles cut into a plain negative);
-- kurt: log of the 100 m band's kurtosis over a Gaussian's (a few strong shapes on calm ground: high; ground busy
-  everywhere: low).
+- skew: of the 100 m band, by quantiles ((p90 + p10 - 2 p50) / (p90 - p10): mounds standing on a flat skew
+  positive, ravines and kettles cut into a plain negative);
+- kurt: log of the 100 m band's tail width (p97.5 - p2.5) over its middle (p75 - p25), against a Gaussian's 2.906
+  (a few strong shapes on calm ground: high; ground busy everywhere: low). Both by quantiles, so a region reads as
+  its ground at large and not as the mounds and pads of a handful of places.
 
 The distance between two regions is the Euclidean distance of their feature vectors, each feature divided by its
 spread (SCALE: fixed numbers, so tables from different builds compare). Skyrim's sample regions (SKYRIM_BOXES, in
@@ -100,11 +102,10 @@ def measure(h_m: np.ndarray, mask: np.ndarray) -> dict | None:
         d = b[mask]
         rms[wl] = float(np.sqrt(np.mean(d ** 2)))
         if wl == 100:
-            sd = float(d.std())
-            z = (d - d.mean()) / max(sd, 1e-6)
-            calm = sd < FLOOR_M
-            r["skew"] = 0.0 if calm else float(np.clip((z ** 3).mean(), -3, 3))
-            r["kurt"] = 0.0 if calm else float(np.clip(np.log((z ** 4).mean() / 3.0), -1, 3))
+            q = np.percentile(d, (2.5, 10, 25, 50, 75, 90, 97.5))
+            calm = q[5] - q[1] < FLOOR_M
+            r["skew"] = 0.0 if calm else float((q[5] + q[1] - 2 * q[3]) / (q[5] - q[1]))
+            r["kurt"] = 0.0 if calm else float(np.clip(np.log((q[6] - q[0]) / max(q[4] - q[2], 1e-6) / 2.906), -1, 3))
         if wl == 50:
             byy, byx = np.gradient(np.gradient(b, M, axis=0), M)
             bxx = np.gradient(np.gradient(b, M, axis=1), M, axis=1)
@@ -128,7 +129,7 @@ def vector(r: dict) -> np.ndarray:
 # the pooled spread of each feature (Skyrim's seven sample regions and our land regions on build 20261109T204317Z),
 # fixed so tables from different builds compare; `line` barely varied there (0.045: neither had linear landforms), so
 # it takes grain's spread, the other 0-to-1 measure of direction
-SCALE = (1.4075, 1.274, 19.0779, 0.517, 0.2023, 0.2794, 0.2134, 0.2854, 0.4165, 0.0999, 0.0999, 1.3264, 0.7399)
+SCALE = (1.4075, 1.274, 19.0779, 0.517, 0.2023, 0.2794, 0.2134, 0.2854, 0.4165, 0.0999, 0.0999, 0.166, 0.3679)
 
 
 def scale_of(rows: dict) -> np.ndarray:
