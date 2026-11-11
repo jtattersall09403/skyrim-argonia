@@ -39,7 +39,7 @@ world with minimal tweaks ([PLAN](docs/PLAN.md), [0038](docs/decisions/0038-the-
 ## Agents
 
 - Plan every piece of work, and every tool used, to be interrupt-proof: nothing lost but the downtime, resumed from exactly where it got to ([0037](docs/decisions/0037-work-is-interrupt-proof.md)); long jobs run under `tooling/job_guard.sh`; no `sleep` or polling; stop the build VM when done (`tooling/agent_stop.sh`).
-- Commit with `tooling/lane_commit.sh -m msg -- paths` (never stash, checkout or pull on a dirty tree); status moves in the same commit.
+- In the main tree commit with `tooling/lane_commit.sh -m msg -- paths` (never stash, checkout or pull on a dirty tree); status moves in the same commit. A lane in a worktree commits on its own branch by path and leaves the worktree clean; the lead lands it with `tooling/lane_land.sh <worktree>`.
 - `make check` (lint, unit, guard) is the one gate; run it before a commit that reaches code.
 - Tidying is automatic (`tooling/disk.sh tidy`, at session start, at `agent_stop.sh`, when a lane lands and under the disk floor: [machine-moves](docs/machine-moves.md)); delete, never archive. Still owed: a lane deletes its own scratch and leaves its worktree clean and committed before it returns; the lead lands each lane with `tooling/lane_land.sh <worktree>`.
 - Model and effort live only in `.claude/agents/` frontmatter; one deliverable per context; return ≤ 25 lines.
