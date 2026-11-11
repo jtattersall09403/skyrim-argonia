@@ -15,7 +15,9 @@ out/newworld/terrain_held/<place>.<build>.npz, with its world origin, and reused
 """
 from __future__ import annotations
 
+import hashlib
 import json
+import os
 import shutil
 import subprocess
 import sys
@@ -87,7 +89,10 @@ def zone_box(rec: dict, reach_m: float) -> tuple[float, float, float, float]:
 def patch(pid: str, rec: dict) -> dict:
     """The held ground of one place: {"h": units, "x0", "y0": world position of its sample (0, 0)}."""
     stamp = rec["terrain_build"]
-    fn = STORE / f"{pid}.{stamp}.npz"
+    x0, x1, y0, y1 = zone_box(rec, MARGIN_M + BLEND_M + 50)
+    # keyed by the build and the box cut from it: a row whose cells (or the margins) change cuts a new patch
+    key = hashlib.sha256(json.dumps([stamp, x0, x1, y0, y1]).encode()).hexdigest()[:12]
+    fn = STORE / f"{pid}.{stamp}.{key}.npz"
     if fn.exists():
         z = np.load(fn)
         return {"h": z["h"], "x0": float(z["x0"]), "y0": float(z["y0"])}
@@ -95,15 +100,21 @@ def patch(pid: str, rec: dict) -> dict:
     b = json.loads(bp.read_text())
     if b["id"] != stamp:
         raise SystemExit(f"terrain_held: {bp} is build {b['id']}, not {stamp}")
+    if hashlib.sha256(hp.read_bytes()).hexdigest() != b["sha256"]:
+        raise SystemExit(f"terrain_held: {hp} is not build {stamp}'s heightmap (sha256 differs from its build.json); "
+                         f"delete {hp.parent} if it is a broken download and run again")
     H = np.load(hp, mmap_mode="r")
-    x0, x1, y0, y1 = zone_box(rec, MARGIN_M + BLEND_M + 50)
     j0, j1 = int(round((x0 - b["origin_world_x"]) / STEP)), int(round((x1 - b["origin_world_x"]) / STEP))
     i0, i1 = int(round((b["origin_world_y"] - y1) / STEP)), int(round((b["origin_world_y"] - y0) / STEP))
     i0, j0 = max(i0, 0), max(j0, 0)
     h = np.array(H[i0:i1 + 1, j0:j1 + 1], np.float32)
+    if not h.size:
+        raise SystemExit(f"terrain_held: {pid}'s cells lie outside build {stamp}")
     px0, py0 = b["origin_world_x"] + j0 * STEP, b["origin_world_y"] - i0 * STEP
     STORE.mkdir(parents=True, exist_ok=True)
-    np.savez(fn, h=h, x0=px0, y0=py0, stamp=stamp)
+    part = fn.with_suffix(".part.npz")          # written whole, then renamed: an interrupted cut leaves no patch
+    np.savez(part, h=h, x0=px0, y0=py0, stamp=stamp)
+    os.replace(part, fn)
     del H
     if tmp is not None:
         shutil.rmtree(tmp)

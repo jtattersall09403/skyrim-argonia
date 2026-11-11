@@ -89,6 +89,8 @@ class Grid:
     k: float = STEP / 204.8   # map px per sample
     ox: float = 0.0       # world position of sample (0, 0)
     oy: float = 0.0
+    ai: int = 0           # sample (ai, aj) is sample (0, 0) of the base window (terrain_relief.anchor): what is
+    aj: int = 0           # seeded by position is seeded from there, so a wider scope moves nothing
 
     @property
     def m(self) -> float:
@@ -189,11 +191,22 @@ def hold_water(h: np.ndarray, water_s: np.ndarray) -> int:
 def quantise(h: np.ndarray) -> np.ndarray:
     """Heights onto the LAND step (QUANT units), dithered: a fixed fine pattern (a few samples across, half a step)
     decides the rounding where the ground leans gently (level ground stays one level), so gentle ground does not show its step edges as long contour ribbons."""
-    from tools.newworld.terrain_relief import noise
+    from tools.newworld import terrain_relief as tr
     d = np.empty(h.shape, np.float32)
     band = 1024
-    for i0 in range(0, h.shape[0], band):
-        d[i0:i0 + band] = noise((min(band, h.shape[0] - i0), h.shape[1]), 2.5, 4409 + i0)
+    # the pattern is laid in bands of rows counted from the base window (terrain_relief.anchor), each band's part of
+    # that window drawn as the window alone would draw it: a wider scope turns no rounding in the province
+    ai, aj, base = tr.anchor_of(h.shape)
+    for b in range((0 - ai) // band, (h.shape[0] - 1 - ai) // band + 1):
+        r0, r1 = max(0, ai + b * band), min(h.shape[0], ai + (b + 1) * band)
+        shape_b = (r1 - r0, h.shape[1])
+        own = min(base[0], (b + 1) * band) - b * band if 0 <= b * band < base[0] else 0   # the window's rows here
+        if own > 0:
+            tr.anchor(shape_b, 0, aj, (own, base[1]))
+            d[r0:r1] = tr.noise(shape_b, 2.5, 4409 + b * band)
+            tr.unanchor(shape_b)
+        else:
+            d[r0:r1] = tr.noise(shape_b, 2.5, 7_000_003 + abs(b))
     # only where the ground leans a little (a step every 1 to 20 samples): level ground stays one clean level,
     # steeper ground has no ribbons to hide
     g = np.hypot(*np.gradient(ndi.gaussian_filter(h, 1.5))) / QUANT
@@ -267,7 +280,7 @@ def flat_pad(h, water_s, grid, i0, j0, r_m, floor_units=None):
     skirt = max(40.0, r_m)
     sl, di, dj = _disc(grid, i0, j0, (1.3 * r_m + skirt) / grid.m)
     d = np.hypot(di, dj) * grid.m
-    rr = r_m * np.maximum(1.0, wobble(i0, j0, np.arctan2(di, dj)))   # the footprint covers the radius
+    rr = r_m * np.maximum(1.0, wobble(i0 - grid.ai, j0 - grid.aj, np.arctan2(di, dj)))   # covers the radius
     land = ~water_s[sl]
     inner = land & (d <= rr)
     if not inner.any():

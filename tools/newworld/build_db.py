@@ -229,8 +229,10 @@ def build() -> db.World:
     g = np.asarray(Image.open(f.REGION_MAP).convert("RGB")).astype(int)
     a = np.asarray(Image.open(f.BASE_MAP).convert("RGB")).astype(int)
     by_region = defaultdict(list)
+    xs_on, ys_on = f.cell_range()
     for c, r in cell_region.items():
-        by_region[r].append(c)
+        if c[0] in xs_on and c[1] in ys_on:      # a cell past the picture has no map pixels to read a colour from
+            by_region[r].append(c)
     region_cols = ("summary", "landform", "elevation_floor_m", "elevation_summit_m", "roughness_m", "cliff_share",
                    "wetness", "biome", "climate", "culture_id", "danger_band_id", "statement_tier_id")
     for rid, name, label, px, py, kind in REGIONS:
@@ -253,9 +255,12 @@ def build() -> db.World:
     # cells (their danger bands are set by danger.py once places and roads are in); margin cells are border scenery
     mfile = f.OUT / "margin_cells.json"
     margin = {tuple(c) for c in json.loads(mfile.read_text())} if mfile.exists() else set()
+    # land share on the map carried past its edge (terrain_beyond), so a cell past the picture reads what the
+    # terrain build lays there
+    from tools.newworld import terrain_beyond as tb
+    water_ext, pad = tb.extend_water(water)
     for (x, y), rid in sorted(cell_region.items()):
-        l, t, rr, b = f.cell_px_box(x, y)
-        land = 1.0 - float(water[max(t, 0):b, max(l, 0):rr].mean())
+        land = tb.cell_land_share(water_ext, pad, f.cell_px_box(x, y))
         w.insert("cell", x=x, y=y, region_id=rid, land_share=round(land, 3), margin=int((x, y) in margin))
 
     # places

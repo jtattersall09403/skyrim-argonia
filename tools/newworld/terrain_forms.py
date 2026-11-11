@@ -10,22 +10,22 @@ the shared relief:
   strandlines     flat silt shores lined with low beach ridges parallel to the water, fading inland
   cuesta          north-facing scarps over long shelving south slopes (a tilted, stepped spine), rock tors
   ring-mounds     rings of firm ground 90 to 200 m across on flat swamp
-  river-terraces  benches stepping up from the rivers, 5 m a step
+  river-terraces  broad rounded rises between the rivers, and benches stepping up from the rivers' shores
   gorges          the mesa's rivers in steep-walled gorges (a short shore ramp)
-  ravined-mounds  broad mounds on a plain cut by narrow winding ravines
+  ravined-mounds  broad mounds on a plain cut by narrow winding ravines that start and end
   knob-and-kettle close knobs and kettle hollows, and a few larger ruin mounds
   inselbergs      steep isolated hills standing out of flat bog
-  braided-ridges  thin long ridges of firm ground running north and south between the channels
+  braided-ridges  thin ridges of firm ground midway between the channels, following them, as chains of rises
   sea-cut         a raised coastal bench with a short, cut shore, and a few low hills
   beach-ridges    sandy beach ridges parallel to the sea behind the shore
   mud-islands     dead-flat ground with small flat-topped mud islands
-  tidal-flats     dead-flat mud with low raised banks along the channels
+  tidal-flats     flat mud with raised banks along the channels
   levees          natural levees along the channels with backswamps behind them
   basin-islets    flat-topped islets on a flat basin floor
   clay-rises      broad low clay rises on a plain, rocky headlands at the sea
-  clay-mounds     discrete rounded clay mounds over flat marsh, a raised coastal edge
-  crag            rock tors and a short, steep shore
-  spine           (form only: a ridge down the island's long axis)
+  clay-mounds     discrete rounded clay mounds standing on flat marsh, a raised coastal edge
+  crag            a short, steep shore round the island's own rise
+  spine           a ridge down the island's middle line (the ground climbs with the distance from the shore)
 
 Every feature is placed on a lattice anchored to world position (a hash of the lattice cell), so the same ground comes
 out whatever the scope. Large forms are laid before weathering (stage "before": drainage and rain then cut them like
@@ -36,6 +36,7 @@ lowers the ground under 0.6 m above the water that stood over it.
 from __future__ import annotations
 
 import json
+import zlib
 from dataclasses import dataclass
 
 import numpy as np
@@ -112,8 +113,8 @@ class Crop:
         ix, iy = ix.ravel().astype(np.int64), iy.ravel().astype(np.int64)
         sel = _hash(ix, iy, k, self.seed) < keep
         ix, iy = ix[sel], iy[sel]
-        px = (ix + 0.15 + 0.7 * _hash(ix, iy, k + 1, self.seed)) * spacing_m
-        py = (iy + 0.15 + 0.7 * _hash(ix, iy, k + 2, self.seed)) * spacing_m
+        px = (ix + _hash(ix, iy, k + 1, self.seed)) * spacing_m       # anywhere in its cell: no rows, no columns
+        py = (iy + _hash(ix, iy, k + 2, self.seed)) * spacing_m
         att = np.stack([_hash(ix, iy, k + 3 + a, self.seed) for a in range(n_attr)], 1)
         cols = (px * U - self.ox) / STEP - self.j0
         rows = (self.oy - py * U) / STEP - self.i0
@@ -146,8 +147,10 @@ class Crop:
         """Smooth value noise (about unit spread) anchored to the world, wavelength wl_m."""
         xm, ym = self.world_m()
         gx, gy = xm / wl_m, ym / wl_m
-        ix0, iy0 = np.floor(gx.min()) - 1, np.floor(gy.min()) - 1
-        nx, ny = int(np.ceil(gx.max()) - ix0) + 3, int(np.ceil(gy.max()) - iy0) + 3
+        # ten lattice cells of margin: the spline's edge effect dies out before the window, so two windows over
+        # the same ground read the same noise
+        ix0, iy0 = np.floor(gx.min()) - 10, np.floor(gy.min()) - 10
+        nx, ny = int(np.ceil(gx.max()) - ix0) + 11, int(np.ceil(gy.max()) - iy0) + 11
         IX, IY = np.meshgrid(np.arange(nx) + ix0, np.arange(ny) + iy0)
         lat = _hash(IX.astype(np.int64), IY.astype(np.int64), k, self.seed) * 2 - 1
         cy, cx = np.broadcast_arrays(gy - iy0, gx - ix0)
@@ -167,11 +170,15 @@ def _flat_top(d, r, edge=0.3):
     return np.clip((1 - d / r) / edge, 0, 1) ** 1.5
 
 
-def _blobs(c: Crop, spacing, keep, k, r_lo, r_hi, h_lo, h_hi, prof=_dome):
+def _blobs(c: Crop, spacing, keep, k, r_lo, r_hi, h_lo, h_hi, prof=_dome, rough=0.25):
+    """Scattered shapes of profile `prof`, each with its own radius and height; `rough` wanders every outline (no
+    shape is a circle)."""
     rows, cols, a = c.points(spacing, keep, k)
     if not len(rows):
         return np.zeros(c.shape, np.float32)
     d, near = c.nearest(rows, cols)
+    if rough:
+        d = d * np.clip(1 + rough * c.noise(0.75 * (r_lo + r_hi), k + 7), 0.45, 1.8)
     r = r_lo + (r_hi - r_lo) * a[near, 0]
     h = h_lo + (h_hi - h_lo) * a[near, 1]
     return (h * prof(d, r)).astype(np.float32)
@@ -190,25 +197,26 @@ def _road_fade(c: Crop, near=10.0, far=40.0):
 def root_hummocks(c, stage):
     if stage == "before":
         return _blobs(c, 320, 0.7, 10, 60, 120, 1.5, 3.5) * _road_fade(c)
-    hum = _blobs(c, 13, 0.85, 20, 3.5, 6.0, 0.35, 1.1)
+    hum = _blobs(c, 13, 0.85, 20, 4.0, 7.0, 0.7, 1.8)       # Hjaalmarch's marsh: 0.4 m of relief at 20 m
     return hum * _smoothstep(2, 10, c.dw) * _road_fade(c, 4, 12)
 
 
 def strandlines(c, stage):
     if stage == "before":
         return None
-    ph = 2 * np.pi * c.dw / 24.0 + 0.8 * c.noise(180, 30)
-    return 0.7 * np.maximum(np.cos(ph), 0) ** 3 * np.exp(-c.dw / 160.0) * _smoothstep(3, 10, c.dw) \
+    ph = 2 * np.pi * c.dw / 40.0 + 0.9 * c.noise(180, 30)
+    return 1.2 * np.maximum(np.cos(ph), 0) ** 3 * np.exp(-c.dw / 500.0) * _smoothstep(3, 10, c.dw) \
         * _road_fade(c, 4, 12)
 
 
 def cuesta(c, stage):
     xm, ym = c.world_m()
     if stage == "before":
-        s = ym / 260.0 + 0.35 * c.noise(500, 40) + 0.0 * xm
+        s = ym / 260.0 + 0.9 * c.noise(700, 40) + 0.25 * c.noise(180, 41) + 0.0 * xm     # scarps wander and fork
         t = s - np.floor(s)
         prof = np.where(t < 0.9, t / 0.9, 1 - _smoothstep(0.9, 0.97, t))
-        return (0.2 * c.span * prof).astype(np.float32) * _road_fade(c)
+        run = 0.5 + 0.5 * _smoothstep(-0.6, 0.4, c.noise(900, 42))                        # and die out along their run
+        return (0.2 * c.span * prof * run).astype(np.float32) * _road_fade(c)
     return _blobs(c, 140, 0.5, 45, 5, 10, 2.0, 4.0, lambda d, r: _steep(d, r, 0.5)) * _road_fade(c, 8, 20)
 
 
@@ -219,20 +227,22 @@ def ring_mounds(c, stage):
     if not len(rows):
         return np.zeros(c.shape, np.float32)
     d, near = c.nearest(rows, cols)
+    d = d * np.clip(1 + 0.22 * c.noise(110, 51), 0.5, 1.6)        # no ring is a circle
     R = 45 + 55 * a[near, 0]
     w = 10 + 8 * a[near, 1]
-    h = 2.0 + 1.5 * a[near, 2]
+    h = (2.0 + 1.5 * a[near, 2]) * (0.35 + 0.65 * _smoothstep(-0.7, 0.1, c.noise(90, 52)))   # and each has its gaps
     return (h * np.exp(-((d - R) / w) ** 2)).astype(np.float32) * _smoothstep(3, 10, c.dw) * _road_fade(c, 4, 15)
 
 
 def river_terraces(c, stage):
     if stage == "before":
-        return None
+        return _blobs(c, 420, 0.7, 56, 120, 220, 6.0, 14.0) * _smoothstep(40, 160, c.dw) * _road_fade(c)
     step = 5.0
-    q = c.rel / step
+    wander = 1.0 * c.noise(160, 55)                       # a bench's edge wanders off the contour and breaks
+    q = (c.rel + wander) / step
     fr = q - np.floor(q)
-    tq = step * (np.floor(q) + _smoothstep(0.78, 1.0, fr))
-    return ((tq - c.rel) * 0.85 * np.exp(-c.dw / 500.0)).astype(np.float32) * _road_fade(c)
+    tq = step * (np.floor(q) + _smoothstep(0.78, 1.0, fr)) - wander
+    return ((tq - c.rel) * 0.85 * np.exp(-c.dw / 90.0)).astype(np.float32) * _road_fade(c)
 
 
 def gorges(c, stage):
@@ -241,11 +251,13 @@ def gorges(c, stage):
 
 def ravined_mounds(c, stage):
     if stage == "before":
-        return _blobs(c, 180, 0.75, 60, 45, 80, 4.0, 9.0) * _road_fade(c)
-    n = c.noise(160, 61) + 0.35 * c.noise(70, 62)
-    v = np.clip(1 - np.abs(n) / 0.16, 0, 1) ** 1.2
-    return (-4.5 * v * _smoothstep(1.5, 5.0, c.rel) * _smoothstep(8, 30, c.dw)).astype(np.float32) \
-        * _road_fade(c, 6, 20)
+        return None
+    mounds = _blobs(c, 200, 0.6, 60, 40, 75, 4.0, 9.0) * _smoothstep(10, 30, c.dw)
+    n = c.noise(220, 61) + 0.35 * c.noise(70, 62)
+    v = np.clip(1 - np.abs(n) / 0.2, 0, 1) ** 1.2
+    reach = _smoothstep(-0.4, 0.3, c.noise(450, 63))          # a ravine starts and ends: none closes on itself
+    cut = -7.0 * v * reach * _smoothstep(1.5, 5.0, c.rel + mounds) * _smoothstep(8, 30, c.dw)
+    return (mounds + cut).astype(np.float32) * _road_fade(c, 6, 20)
 
 
 def knob_and_kettle(c, stage):
@@ -273,26 +285,16 @@ def inselbergs(c, stage):
     return None
 
 
-def _aniso(c: Crop, along_m, across_m, k):
-    """Noise stretched along north-south: long thin shapes."""
-    xm, ym = c.world_m()
-    gx, gy = xm / across_m, ym / along_m
-    ix0, iy0 = np.floor(gx.min()) - 1, np.floor(gy.min()) - 1
-    nx, ny = int(np.ceil(gx.max()) - ix0) + 3, int(np.ceil(gy.max()) - iy0) + 3
-    IX, IY = np.meshgrid(np.arange(nx) + ix0, np.arange(ny) + iy0)
-    lat = _hash(IX.astype(np.int64), IY.astype(np.int64), k, c.seed) * 2 - 1
-    wob = 0.6 * c.noise(300, k + 1) / across_m * 40
-    cy, cx = np.broadcast_arrays(gy - iy0, gx - ix0 + wob)
-    return 1.7 * ndi.map_coordinates(lat, [cy, cx], order=3, mode="nearest").astype(np.float32)
-
-
 def braided_ridges(c, stage):
     if stage == "before":
         return None
-    n = _aniso(c, 380, 70, 90)
-    ridge = _smoothstep(0.45, 0.1, np.abs(n))
+    # the crest of the ground between two channels: where the distance to the water stops rising
+    gy, gx = np.gradient(ndi.gaussian_filter(c.dw, 2.0), c.m)
+    crest = _smoothstep(0.15, 0.6, 1 - np.clip(np.hypot(gx, gy), 0, 1)) * _smoothstep(5, 12, c.dw)
+    ridge = np.clip(ndi.gaussian_filter(crest.astype(np.float32), 3.0) * 1.6, 0, 1)
+    ridge = ridge * (0.55 + 0.45 * _smoothstep(-0.8, 0.3, c.noise(140, 91)))      # a chain of rises, not a wall
     hum = _blobs(c, 30, 0.6, 95, 5, 9, 0.2, 0.5)
-    return ((1.6 * ridge + hum * ridge) * _smoothstep(2, 8, c.dw)).astype(np.float32) * _road_fade(c, 4, 12)
+    return ((2.2 * ridge + hum * ridge) * _smoothstep(2, 8, c.dw)).astype(np.float32) * _road_fade(c, 4, 12)
 
 
 def sea_cut(c, stage):
@@ -304,21 +306,21 @@ def sea_cut(c, stage):
 def beach_ridges(c, stage):
     if stage == "before":
         return None
-    ph = 2 * np.pi * c.dsea / 32.0 + 0.8 * c.noise(200, 110)
-    return (1.2 * np.maximum(np.cos(ph), 0) ** 2 * _smoothstep(420, 150, c.dsea)
+    ph = 2 * np.pi * c.dsea / 44.0 + 0.9 * c.noise(200, 110)
+    return (1.0 * np.maximum(np.cos(ph), 0) ** 2 * _smoothstep(420, 150, c.dsea)
             * _smoothstep(3, 12, c.dw)).astype(np.float32) * _road_fade(c, 4, 12)
 
 
 def mud_islands(c, stage):
     if stage == "before":
         return None
-    return _blobs(c, 60, 0.6, 120, 14, 30, 0.8, 1.6, _flat_top) * _smoothstep(2, 8, c.dw) * _road_fade(c, 4, 12)
+    return _blobs(c, 70, 0.45, 120, 10, 24, 0.6, 1.2, _flat_top) * _smoothstep(2, 8, c.dw) * _road_fade(c, 4, 12)
 
 
 def tidal_flats(c, stage):
     if stage == "before":
         return None
-    return (0.6 * np.exp(-((c.dw - 7.0) / 4.0) ** 2)).astype(np.float32) * _road_fade(c, 4, 12)
+    return (0.9 * np.exp(-((c.dw - 14.0) / 8.0) ** 2)).astype(np.float32) * _road_fade(c, 4, 12)
 
 
 def levees(c, stage):
@@ -332,7 +334,7 @@ def levees(c, stage):
 def basin_islets(c, stage):
     if stage == "before":
         return None
-    return _blobs(c, 80, 0.6, 140, 22, 40, 1.0, 1.8, lambda d, r: _flat_top(d, r, 0.25)) \
+    return _blobs(c, 110, 0.45, 140, 18, 34, 1.0, 1.8, lambda d, r: _flat_top(d, r, 0.25)) \
         * _smoothstep(3, 10, c.dw) * _road_fade(c, 4, 15)
 
 
@@ -349,18 +351,20 @@ def clay_rises(c, stage):
 
 def clay_mounds(c, stage):
     if stage == "before":
-        return _blobs(c, 170, 0.8, 160, 40, 80, 5.0, 12.0) * _road_fade(c, 15, 50)
-    return (3.5 * np.exp(-c.dsea / 100.0) * (c.dsea < 500)).astype(np.float32) * _road_fade(c)
+        return None
+    mounds = _blobs(c, 190, 0.7, 160, 35, 70, 3.5, 8.0) * _smoothstep(8, 25, c.dw) * _road_fade(c, 15, 50)
+    return mounds + (3.5 * np.exp(-c.dsea / 100.0) * (c.dsea < 500)).astype(np.float32) * _road_fade(c)
 
 
 def crag(c, stage):
-    if stage == "before":
-        return None
-    return _blobs(c, 90, 0.6, 170, 8, 18, 3.0, 7.0, lambda d, r: _steep(d, r, 0.5)) * _road_fade(c, 8, 20)
+    return None          # the short shore ramp (ramp_m) is the cliff; the island's own rise is the crag
 
 
 def spine(c, stage):
-    return None
+    if stage == "after":
+        return None
+    # the island's middle line stands highest: the ground climbs with the distance from the shore
+    return np.clip(0.09 * c.dw, 0, 16.0).astype(np.float32) * _road_fade(c)
 
 
 CHARACTERS = {"root-hummocks": root_hummocks, "strandlines": strandlines, "cuesta": cuesta,
@@ -388,7 +392,7 @@ def apply(relief_m: np.ndarray, stage: str, spec: dict, weights: dict, coarse: i
     from tools.newworld.terrain_relief import upsample
     done = {}
     H, W = relief_m.shape
-    for k, (rid, wc) in enumerate(sorted(weights.items())):
+    for rid, wc in sorted(weights.items()):
         ch = (spec.get(rid) or {}).get("character")
         fn = CHARACTERS.get(ch)
         if fn is None:
@@ -429,7 +433,9 @@ def apply(relief_m: np.ndarray, stage: str, spec: dict, weights: dict, coarse: i
             np.minimum(win, np.maximum(dp, 0), out=win)
         dsea = (-5000.0 * np.log(np.clip(1 - coast_t[sl], 1e-6, 1))).astype(np.float32)
         crop = Crop(i0=i0, j0=j0, shape=shape, ox=ox, oy=oy, m=m, rel=relief_m[sl].copy(), dw=dw[sl],
-                    dsea=dsea, droad=droad, span=span[sl], seed=seed + 7919 * k)
+                    dsea=dsea, droad=droad, span=span[sl],
+                    seed=seed + zlib.crc32(rid.encode()) % 1_000_003)      # by the region's id: one region's
+        # forms never move because another region joined or left the table
         add = fn(crop, stage)
         if add is None:
             continue

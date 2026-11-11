@@ -192,7 +192,7 @@ def test_droplets_cut_and_stay_off_the_water():
     stop[:, :3] = True
     k = np.ones((n, n), np.float32)
     k[:, 50:] = 0
-    out = td.erode(h, k, stop, 400, 5)
+    out = td.erode(h, k, stop, 0.15, 5)
     assert (out - h)[:, 4:46].min() < -0.01                  # it erodes
     assert np.abs(out - h)[:, 54:].max() == 0                 # not where erodibility is 0
 

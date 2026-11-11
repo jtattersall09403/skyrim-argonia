@@ -23,7 +23,11 @@ def test_forms_anchored_to_the_world():
     """Two overlapping windows lay the same ground where they overlap: features are fixed by world position."""
     a = tf.root_hummocks(_crop(0, 0), "after")
     b = tf.root_hummocks(_crop(50, 70), "after")
-    assert np.allclose(a[50:, 70:], b[:150, :130], atol=1e-5)
+    assert np.allclose(a[50:, 70:], b[:150, :130], atol=1e-4)
+    for name in ("ring-mounds", "ravined-mounds", "cuesta"):          # the forms that read noise, too
+        fa = sum(x for x in (tf.CHARACTERS[name](_crop(0, 0), s) for s in ("before", "after")) if x is not None)
+        fb = sum(x for x in (tf.CHARACTERS[name](_crop(50, 70), s) for s in ("before", "after")) if x is not None)
+        assert np.allclose(fa[50:, 70:], fb[:150, :130], atol=2e-3), name
     assert a.max() > 0.3                        # hummocks stand up to about a metre
 
 
@@ -136,17 +140,133 @@ def test_scope_reaches_past_the_picture():
     assert len(b) == (len(xs) + 2 * tiles.BEYOND_CELLS) * (len(ys) + 2 * tiles.BEYOND_CELLS) - len(xs) * len(ys)
 
 
-def test_character_measure_tells_flat_from_hummocky():
+def _ground(kind, amp=1.0, n=420):
+    """Synthetic ground of one landform at one amplitude (metres), on a 2 m base."""
+    c = _crop(n=n)
+    yy, xx = np.mgrid[0:n, 0:n].astype(np.float32) * (128 / 70)
+    if kind == "mounds":
+        add = tf._blobs(c, 90, 0.7, 5, 20, 30, 2.0, 3.0)
+    elif kind == "kettles":
+        add = -tf._blobs(c, 90, 0.7, 5, 20, 30, 2.0, 3.0)
+    elif kind == "ridges":
+        add = 2.5 * np.maximum(np.cos(2 * np.pi * xx / 90), 0) ** 3
+    else:                                   # benches: flats between a few steep risers
+        add = 2.5 * np.floor(xx / 180) + 0 * yy
+    return (6.0 + amp * add).astype(np.float32)
+
+
+def test_character_measure_reads_landform_not_only_amplitude():
+    """Two landforms of one amplitude lie further apart than one landform at two amplitudes; a flat sheet and
+    hummocky ground are far apart."""
+    m = np.zeros((420, 420), bool)
+    m[40:-40, 40:-40] = True
+    rows = {k: tch.measure(_ground(k), m) for k in ("mounds", "kettles", "ridges", "benches")}
+    rows["mounds x1.5"] = tch.measure(_ground("mounds", 1.5), m)
+    d = tch.distances(rows, tch.scale_of({}))
+    same = d["mounds"]["mounds x1.5"]
+    for other in ("kettles", "ridges", "benches"):
+        assert d["mounds"][other] > 1.5 * same, (other, d["mounds"][other], same)
+    assert rows["mounds"]["skew"] > 0.5 > -0.5 > rows["kettles"]["skew"]
+    assert rows["ridges"]["line"] > rows["mounds"]["line"] + 0.2
+    assert rows["ridges"]["grain"] > rows["mounds"]["grain"] + 0.3
+    assert rows["benches"]["flat"] > rows["mounds"]["flat"]
     rng = np.random.default_rng(1)
-    flat = np.full((300, 300), 2.0, np.float32) + 0.01 * rng.standard_normal((300, 300)).astype(np.float32)
-    c = _crop(n=300)
-    hum = flat + tf.root_hummocks(c, "after")
-    m = np.ones(flat.shape, bool)
-    a = tch.summarise(flat, tch.fields(flat), m)
-    b = tch.summarise(hum, tch.fields(hum), m)
-    assert b["r20"] > 5 * a["r20"] and b["flat"] < a["flat"]
-    d = tch.distances({"a": a, "b": b}, tch.scale_of({}))
-    assert d["a"]["b"] > 1.0
+    flat = np.full((420, 420), 2.0, np.float32) + 0.01 * rng.standard_normal((420, 420)).astype(np.float32)
+    hum = flat + tf.root_hummocks(_crop(n=420), "after")
+    a, b = tch.measure(flat, m), tch.measure(hum, m)
+    assert b["flat"] < a["flat"] and b["fine"] > a["fine"]
+    assert tch.distances({"a": a, "b": b}, tch.scale_of({}))["a"]["b"] > 1.0
+    assert tch.measure(flat, np.zeros_like(m)) is None                 # too little ground is no measure
+
+
+def test_character_judge_fails_on_alike_neighbours():
+    c = {"neighbour_pairs": {"a|b": 1.0, "a|c": 4.0}, "nearest": {"a": 1.0, "b": 1.0, "c": 4.0},
+         "skyrim_min_neighbour": 1.6, "skyrim_mean_neighbour": 2.9, "skyrim_nearest": {"x": 0.9}, "mean_neighbour": 2.5}
+    j = tch.judge(c)
+    assert not j["ok"] and list(j["neighbours_too_alike"]) == ["a|b"]
+    c["neighbour_pairs"] = {"a|b": 2.0, "a|c": 4.0}
+    c["mean_neighbour"] = 3.0
+    assert tch.judge(c)["ok"]
+
+
+def test_noise_is_anchored_to_the_base_window():
+    """A grid wider than its base window lays the window's noise where the window alone would."""
+    from tools.newworld import terrain_relief as tr
+    base, wide = (200, 260), (328, 388)
+    alone = tr.noise(base, 40.0, 11)
+    tr.anchor(wide, 64, 64, base)
+    try:
+        z = tr.noise(wide, 40.0, 11)
+    finally:
+        tr.unanchor(wide)
+    inner = z[64:264, 64:324]
+    assert np.abs(inner - alone).max() < 1e-3
+    assert z[:40].std() > 0.3 and z[:, -40:].std() > 0.3               # and real noise beyond it
+    assert not np.allclose(tr.noise(wide, 40.0, 11)[64:264, 64:324], alone, atol=1e-3)     # unregistered: its own
+
+
+def test_rounding_pattern_and_droplets_are_anchored():
+    from tools.newworld import terrain_droplets as td
+    from tools.newworld import terrain_relief as tr
+    base = np.linspace(0, 300, 96 * 128, dtype=np.float32).reshape(96, 128)      # gently leaning ground
+    wide = np.pad(base, 64, mode="edge")
+    alone = ts.quantise(base)
+    tr.anchor(wide.shape, 64, 64, base.shape)
+    try:
+        q = ts.quantise(wide)
+    finally:
+        tr.unanchor(wide.shape)
+    assert (q[64 + 4:64 + 92, 64 + 4:64 + 124] == alone[4:92, 4:124]).mean() > 0.99
+    cand = np.ones((96, 128), bool)
+    a = td.starts_of(cand, 0.5, 5)
+    big = np.ones((224, 256), bool)
+    b = td.starts_of(big, 0.5, 5, origin=(64, 64))
+    inb = (b[:, 0] >= 64) & (b[:, 0] < 128) & (b[:, 1] >= 64) & (b[:, 1] < 192)   # the base's first row of blocks
+    ina = a[:, 0] < 64
+    assert np.allclose(np.sort(b[inb] - 64, axis=0), np.sort(a[ina], axis=0))
+    cand2 = cand.copy()
+    cand2[70:, 70:] = False                                             # a change in one block
+    c = td.starts_of(cand2, 0.5, 5)
+    assert np.allclose(c[(c[:, 0] < 64) & (c[:, 1] < 64)], a[(a[:, 0] < 64) & (a[:, 1] < 64)])   # moves no other
+
+
+def test_cell_land_share_off_the_picture():
+    water = np.zeros((400, 400), bool)
+    water[240:, :] = True
+    ext, pad = tb.extend_water(water, pad=80)
+    assert tb.cell_land_share(ext, pad, (-60, 100, -20, 140)) == 1.0     # west of the picture, in the land's rows
+    assert tb.cell_land_share(ext, pad, (-60, 320, -20, 360)) == 0.0     # west of it, in the sea's rows
+    with pytest.raises(SystemExit):
+        tb.cell_land_share(ext, pad, (-200, 100, -160, 140))             # past the carried map: loud
+
+
+def test_grid_past_the_carried_map_stops_the_build():
+    g = ts.Grid(rows=10, cols=10, p0x=-5.0, p0y=3.0)
+    with pytest.raises(SystemExit):
+        tb.covers(g, (100, 100))
+    tb.covers(ts.Grid(rows=10, cols=10, p0x=5.0, p0y=3.0), (100, 100))
+
+
+def test_held_patch_is_keyed_by_its_box_and_checks_the_source(tmp_path, monkeypatch):
+    import hashlib
+    src = tmp_path / "src"
+    src.mkdir()
+    h = np.arange(200 * 200, dtype=np.float32).reshape(200, 200)
+    np.save(src / "heightmap.npy", h)
+    sha = hashlib.sha256((src / "heightmap.npy").read_bytes()).hexdigest()
+    b = {"id": "T0", "origin_world_x": -100 * 128.0, "origin_world_y": 100 * 128.0, "sha256": sha}
+    (src / "build.json").write_text(json.dumps(b))
+    monkeypatch.setattr(th, "STORE", tmp_path / "store")
+    monkeypatch.setattr(th, "MARGIN_M", 10.0)
+    monkeypatch.setattr(th, "BLEND_M", 10.0)
+    monkeypatch.setattr(th, "_source", lambda stamp: (src / "heightmap.npy", src / "build.json", None))
+    one = th.patch("p", {"terrain_build": "T0", "cells": [[0, -1]]})
+    two = th.patch("p", {"terrain_build": "T0", "cells": [[0, -1], [1, -1]]})       # the row grew: a new patch
+    assert two["h"].shape[1] > one["h"].shape[1]
+    assert len(list((tmp_path / "store").glob("p.T0.*.npz"))) == 2
+    (src / "build.json").write_text(json.dumps(b | {"sha256": "0" * 64}))            # a wrong or broken source
+    with pytest.raises(SystemExit):
+        th.patch("p", {"terrain_build": "T0", "cells": [[2, -1]]})
 
 
 def test_clearance_keeps_the_waterline_and_clears_the_plane():

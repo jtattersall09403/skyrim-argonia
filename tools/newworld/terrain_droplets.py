@@ -112,17 +112,42 @@ def _run(h, k, stop, starts, oi, oj, ow, inertia, capacity, min_slope, deposit, 
     return h
 
 
-def erode(h: np.ndarray, k: np.ndarray, stop: np.ndarray, droplets: int, seed: int = 1952) -> np.ndarray:
-    """`h` eroded by `droplets` droplets started at random on samples where k > 0 and not `stop`. Returns a copy."""
-    rng = np.random.default_rng(seed)
-    cand = np.flatnonzero((k.ravel() > 0.02) & ~stop.ravel())
-    if cand.size == 0 or droplets <= 0:
+BLOCK = 64     # droplets are drawn block by block (a Skyrim cell), each block from its own seed
+
+
+def starts_of(cand: np.ndarray, per_sample: float, seed: int, origin=(0, 0)) -> np.ndarray:
+    """Droplet start positions (n, 2: row, col): `per_sample` droplets for every candidate sample, drawn block by
+    block, each block seeded by its place from `origin` (the base window's sample (0, 0)). So the rain on one block
+    depends on that block alone: a change of ground or of scope elsewhere moves no rill here."""
+    R, C = cand.shape
+    out = []
+    for bi in range((0 - origin[0]) // BLOCK, (R - 1 - origin[0]) // BLOCK + 1):
+        r0, r1 = max(0, origin[0] + bi * BLOCK), min(R, origin[0] + (bi + 1) * BLOCK)
+        cols = np.flatnonzero(cand[r0:r1].any(0))
+        if not cols.size:
+            continue
+        for bj in range((int(cols[0]) - origin[1]) // BLOCK, (int(cols[-1]) - origin[1]) // BLOCK + 1):
+            c0, c1 = max(0, origin[1] + bj * BLOCK), min(C, origin[1] + (bj + 1) * BLOCK)
+            ii, jj = np.nonzero(cand[r0:r1, c0:c1])
+            if not ii.size:
+                continue
+            rng = np.random.default_rng([seed, bi + (1 << 20), bj + (1 << 20)])
+            want = per_sample * ii.size
+            n = int(want) + int(rng.random() < want - int(want))
+            pick = rng.integers(0, ii.size, n)
+            out.append(np.stack([ii[pick] + r0, jj[pick] + c0], 1) + rng.uniform(0, 1, (n, 2)))
+    return np.concatenate(out) if out else np.zeros((0, 2))
+
+
+def erode(h: np.ndarray, k: np.ndarray, stop: np.ndarray, per_sample: float, seed: int = 1952,
+          origin=(0, 0)) -> np.ndarray:
+    """`h` eroded by `per_sample` droplets for every sample where k > 0.02 and not `stop` (starts_of). Returns a
+    copy."""
+    starts = starts_of((k > 0.02) & ~stop, per_sample, seed, origin)
+    if not len(starts):
         return h.copy()
-    pick = cand[rng.integers(0, cand.size, droplets)]
-    starts = np.stack([pick // h.shape[1], pick % h.shape[1]], 1).astype(np.float64)
-    starts += rng.uniform(0, 1, starts.shape)
     oi, oj, ow = _brush(RADIUS)
     out = h.astype(np.float64).copy()
-    _run(out, k.astype(np.float64), stop, starts, oi, oj, ow, INERTIA, CAPACITY, MIN_SLOPE, DEPOSIT, ERODE,
+    _run(out, np.ascontiguousarray(k, np.float32), stop, starts, oi, oj, ow, INERTIA, CAPACITY, MIN_SLOPE, DEPOSIT, ERODE,
          EVAPORATE, GRAVITY, MAX_STEPS)
     return out.astype(np.float32)

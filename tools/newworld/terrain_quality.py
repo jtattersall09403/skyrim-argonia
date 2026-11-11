@@ -180,9 +180,13 @@ def region_masks(shape) -> dict:
     rpx = T.region_px(cell_region, names, water_px.shape)
     p0x, p0y = f.world_to_px(b["origin_world_x"], b["origin_world_y"])
     k = 128.0 / 204.8
-    jx = np.clip(np.floor(p0x + np.arange(shape[1]) * k).astype(int), 0, water_px.shape[1] - 1)
-    iy = np.clip(np.floor(p0y + np.arange(shape[0]) * k).astype(int), 0, water_px.shape[0] - 1)
-    code = rpx[np.ix_(iy, jx)]
+    jx = np.floor(p0x + np.arange(shape[1]) * k).astype(int)
+    iy = np.floor(p0y + np.arange(shape[0]) * k).astype(int)
+    # ground past the picture (and in its ruler band) is no region's: it is counted in neither class
+    inside = (((iy >= f.FRAME_PX) & (iy < water_px.shape[0] - f.FRAME_PX))[:, None]
+              & ((jx >= f.FRAME_PX) & (jx < water_px.shape[1] - f.FRAME_PX))[None, :])
+    code = np.where(inside, rpx[np.ix_(np.clip(iy, 0, water_px.shape[0] - 1),
+                                       np.clip(jx, 0, water_px.shape[1] - 1))], -1)
     low = np.array([form[n] == "low" or summit[n] <= 26 for n in names] + [False])
     high = np.array([form[n] != "low" and summit[n] >= 45 for n in names] + [False])
     return {"our_marsh": low[code], "our_upland": high[code]}

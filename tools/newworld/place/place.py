@@ -446,11 +446,16 @@ _MARGIN: set | None = None
 _FACTOR: dict = {}  # habitat idx -> density factor (calibrate(): the habitat's mean refs/ha hits its target)
 
 
+def margin_skyrim_cells(map_cells) -> set:
+    """margin_cells.json is in map cells (8192 units); the cells placed here are Skyrim cells (4096): two a side."""
+    return {(2 * x + a, 2 * y + b) for x, y in map_cells for a in (0, 1) for b in (0, 1)}
+
+
 def _init():
     global _W, _P, _R, _MARGIN
     if _W is None:
         _W = World(); _P = Palette(_W); _R = Roads()
-        _MARGIN = {tuple(c) for c in json.loads((OUT / "margin_cells.json").read_text())}
+        _MARGIN = margin_skyrim_cells(json.loads((OUT / "margin_cells.json").read_text()))
 
 
 def place_cell(cx: int, cy: int, pre: list[dict]) -> tuple[list[dict], dict]:

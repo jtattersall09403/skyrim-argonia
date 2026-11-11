@@ -110,15 +110,19 @@ def region_params(region) -> tuple[dict, str]:
     return p, src
 
 
-def upsample(coarse: np.ndarray, shape: tuple[int, int], factor: float, order: int = 3, warp=None) -> np.ndarray:
+def upsample(coarse: np.ndarray, shape: tuple[int, int], factor: float, order: int = 3, warp=None,
+             shift=(0, 0), offset=(0, 0), prefiltered: bool = False) -> np.ndarray:
     """A coarse field (one value every `factor` samples) resampled onto the full grid; `warp` (di, dj), offsets in
-    samples, reads it at displaced positions (domain warping)."""
+    samples, reads it at displaced positions (domain warping). Sample (shift) reads the coarse point (offset);
+    `prefiltered`: `coarse` holds spline coefficients already."""
     out = np.empty(shape, np.float32)
-    jj = np.arange(shape[1], dtype=np.float32) / factor
-    pre = ndi.spline_filter(coarse.astype(np.float64), order=order) if order > 1 else coarse.astype(np.float64)
+    jj = (np.arange(shape[1], dtype=np.float32) - shift[1]) / factor + offset[1]
+    pre = coarse.astype(np.float64)
+    if order > 1 and not prefiltered:
+        pre = ndi.spline_filter(pre, order=order)
     band = max(1, 2_000_000 // shape[1])
     for i0 in range(0, shape[0], band):
-        ii = np.arange(i0, min(shape[0], i0 + band), dtype=np.float32) / factor
+        ii = (np.arange(i0, min(shape[0], i0 + band), dtype=np.float32) - shift[0]) / factor + offset[0]
         I, J = np.meshgrid(ii, jj, indexing="ij")
         if warp is not None:
             I = I + warp[0][i0:i0 + len(ii)] / factor + 2
@@ -127,14 +131,61 @@ def upsample(coarse: np.ndarray, shape: tuple[int, int], factor: float, order: i
     return out
 
 
+# Noise is anchored to the world, not to the grid: a grid registered with anchor() draws the lattice of its base
+# window (the picture's own grid: the scope without the cells past the picture) from the seed exactly as that grid
+# alone would, and the lattice round it from a second stream; mean and spread are the base window's. So widening the
+# scope lays new ground round the province and leaves every hill of the province where it stood.
+_ANCHOR: dict = {}
+
+
+def anchor(shape, di: int, dj: int, base_shape) -> None:
+    """Register a grid: its sample (di, dj) is sample (0, 0) of its base window, which is base_shape samples."""
+    _ANCHOR[tuple(shape)] = (int(di), int(dj), tuple(int(v) for v in base_shape))
+
+
+def unanchor(shape) -> None:
+    _ANCHOR.pop(tuple(shape), None)
+
+
+def anchor_of(shape) -> tuple[int, int, tuple]:
+    """(di, dj, base_shape) of a registered grid; an unregistered grid is its own base."""
+    return _ANCHOR.get(tuple(shape), (0, 0, tuple(shape)))
+
+
 def noise(shape, wavelength_samples: float, seed: int, warp=None) -> np.ndarray:
-    """Cubic value noise, zero mean and unit spread, with features `wavelength_samples` apart; `warp` as upsample."""
+    """Cubic value noise, zero mean and unit spread, with features `wavelength_samples` apart; `warp` as upsample.
+    Anchored to the grid's base window (anchor())."""
+    wl = wavelength_samples
+    di, dj, base = anchor_of(shape)
     rng = np.random.default_rng(seed)
     pad = 4 if warp is None else 8
-    cs = (int(shape[0] / wavelength_samples) + pad, int(shape[1] / wavelength_samples) + pad)
-    z = upsample(rng.standard_normal(cs), shape, wavelength_samples, warp=warp)
-    z -= z.mean()
-    z /= z.std() + 1e-9
+    cs = (int(base[0] / wl) + pad, int(base[1] / wl) + pad)
+    lat = rng.standard_normal(cs)
+    if (di, dj, base) == (0, 0, tuple(shape)):
+        z = upsample(lat, shape, wl, warp=warp)
+        win = z
+    else:
+        # the base lattice's spline coefficients set into those of a wider lattice from a second stream
+        m0, m1 = int(np.ceil(di / wl)) + pad, int(np.ceil(dj / wl)) + pad
+        e0 = int(np.ceil(max(shape[0] - di - base[0], 0) / wl)) + pad
+        e1 = int(np.ceil(max(shape[1] - dj - base[1], 0) / wl)) + pad
+        ext = ndi.spline_filter(np.random.default_rng([seed, 1]).standard_normal((m0 + cs[0] + e0, m1 + cs[1] + e1)),
+                                order=3)
+        co = ndi.spline_filter(lat, order=3)
+        a0, a1, b0, b1 = m0, m0 + cs[0], m1, m1 + cs[1]
+        ext[a0:a1, b0:b1] = co
+        # the base lattice read past its own edge reads its edge (as the window alone does): its edge coefficients
+        # carried a cell out (three where a warp reaches further)
+        k = 1 if warp is None else 3
+        ext[a0 - k:a0, b0:b1], ext[a1:a1 + k, b0:b1] = co[:1], co[-1:]
+        ext[a0:a1, b0 - k:b0], ext[a0:a1, b1:b1 + k] = co[:, :1], co[:, -1:]
+        ext[a0 - k:a0, b0 - k:b0], ext[a0 - k:a0, b1:b1 + k] = co[0, 0], co[0, -1]
+        ext[a1:a1 + k, b0 - k:b0], ext[a1:a1 + k, b1:b1 + k] = co[-1, 0], co[-1, -1]
+        z = upsample(ext, shape, wl, warp=warp, shift=(di, dj), offset=(m0, m1), prefiltered=True)
+        win = z[di:di + base[0], dj:dj + base[1]]
+    mean, std = float(win.mean()), float(win.std())
+    z -= mean
+    z /= std + 1e-9
     return z
 
 
@@ -145,7 +196,7 @@ def fbm(shape, step_m: float, wavelengths_m, seed: int, warp=None) -> np.ndarray
         amp = 1.0 / (k + 1)
         out += amp * noise(shape, max(2.0, wl / step_m), seed * 101 + k, warp)
         total += amp * amp
-    return out / np.sqrt(total)
+    return out / np.float32(np.sqrt(total))       # float32 throughout: a numpy float64 scalar would widen the grid
 
 
 def warp_field(shape, step_m: float, seed: int) -> tuple[np.ndarray, np.ndarray]:
@@ -230,7 +281,22 @@ def coarse_fields(wx: np.ndarray, wy: np.ndarray, region_of_cell: dict, params: 
     return fields
 
 
+RELIEF_BAND = 256    # rows worked at a time: the relief is pointwise, so its temporaries stay a strip, not a grid
+
+
 def relief(F: dict, n: dict, coast_t: np.ndarray) -> np.ndarray:
+    """relief_rows over the whole grid, RELIEF_BAND rows at a time (the same heights, a strip's worth of memory)."""
+    out = np.empty(coast_t.shape, np.float32)
+
+    def cut(d, sl):
+        return {k: (v[sl] if isinstance(v, np.ndarray) and v.ndim == 2 else v) for k, v in d.items()}
+    for i0 in range(0, coast_t.shape[0], RELIEF_BAND):
+        sl = slice(i0, i0 + RELIEF_BAND)
+        out[sl] = relief_rows(cut(F, sl), cut(n, sl), coast_t[sl])
+    return out
+
+
+def relief_rows(F: dict, n: dict, coast_t: np.ndarray) -> np.ndarray:
     """Natural ground height (metres above the water) from full-resolution fields F and noise n (the large noises
     read through one domain warp, so no shape traces a single smooth noise contour).
 

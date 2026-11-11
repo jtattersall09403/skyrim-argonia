@@ -64,7 +64,8 @@ def _carry(a: np.ndarray, pad: int) -> tuple[np.ndarray, np.ndarray]:
     return out, dist
 
 
-def extend(water_px: np.ndarray, foreign_px: np.ndarray, pad: int = PAD_PX) -> tuple[np.ndarray, np.ndarray, int]:
+def _water(water_px: np.ndarray, pad: int) -> tuple[np.ndarray, np.ndarray]:
+    """The padded water raster, and where it lies past the map's true pixels."""
     from tools.newworld.terrain_relief import noise
     land, dist = _carry(~water_px.astype(bool), pad)
     n = noise(land.shape, NOISE[0], SEED)
@@ -73,7 +74,25 @@ def extend(water_px: np.ndarray, foreign_px: np.ndarray, pad: int = PAD_PX) -> t
     water_ext = np.ones(land.shape, bool)
     water_ext[pad:pad + water_px.shape[0], pad:pad + water_px.shape[1]] = water_px
     water_ext[beyond] = ~land_b[beyond]
-    del land, n
+    return water_ext, beyond
+
+
+def extend_water(water_px: np.ndarray, pad: int = PAD_PX) -> tuple[np.ndarray, int]:
+    """The water raster alone carried past the map (for readers that need no foreign land)."""
+    return _water(water_px, pad)[0], pad
+
+
+def cell_land_share(water_ext: np.ndarray, pad: int, px_box: tuple[int, int, int, int]) -> float:
+    """Share of land in a cell's pixel box (left, top, right, bottom on the picture; may lie off it). Stops when the
+    box leaves the padded raster: the pad no longer covers the scope."""
+    l, t, r, b = (int(v) + pad for v in px_box)
+    if l < 0 or t < 0 or r > water_ext.shape[1] or b > water_ext.shape[0] or r <= l or b <= t:
+        raise SystemExit(f"terrain_beyond: cell box {px_box} lies outside the map carried {pad} px past its edge")
+    return 1.0 - float(water_ext[t:b, l:r].mean())
+
+
+def extend(water_px: np.ndarray, foreign_px: np.ndarray, pad: int = PAD_PX) -> tuple[np.ndarray, np.ndarray, int]:
+    water_ext, beyond = _water(water_px, pad)
     fr, _ = _carry(foreign_px.astype(bool), pad)
     foreign_ext = np.zeros(water_ext.shape, bool)
     foreign_ext[pad:pad + foreign_px.shape[0], pad:pad + foreign_px.shape[1]] = foreign_px
@@ -88,6 +107,14 @@ def extend(water_px: np.ndarray, foreign_px: np.ndarray, pad: int = PAD_PX) -> t
 def shifted(grid, pad: int):
     """The same grid read against the padded rasters."""
     return dataclasses.replace(grid, p0x=grid.p0x + pad, p0y=grid.p0y + pad)
+
+
+def covers(grid_x, shape) -> None:
+    """Stop when a grid (already shifted) reaches past the padded rasters: PAD_PX no longer covers the scope."""
+    x1, y1 = grid_x.p0x + (grid_x.cols - 1) * grid_x.k, grid_x.p0y + (grid_x.rows - 1) * grid_x.k
+    if grid_x.p0x < 0 or grid_x.p0y < 0 or x1 > shape[1] - 1 or y1 > shape[0] - 1:
+        raise SystemExit(f"terrain_beyond: the grid reaches past the map carried {PAD_PX} px beyond its edge "
+                         "(raise PAD_PX with tiles.BEYOND_CELLS)")
 
 
 def corrected(water_ext: np.ndarray, pad: int, shape) -> np.ndarray:

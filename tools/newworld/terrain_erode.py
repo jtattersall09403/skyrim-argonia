@@ -110,17 +110,27 @@ def receivers(h: np.ndarray, outlet: np.ndarray, dx: float) -> tuple[np.ndarray,
 
 
 def stream_power(h: np.ndarray, outlet: np.ndarray, k: np.ndarray, floor: np.ndarray, steps: int = STEPS,
-                 dx: float = C * M) -> np.ndarray:
-    """Implicit stream-power erosion with diffusion; outlets fixed; land never below `floor`."""
+                 dx: float = C * M, base=None) -> np.ndarray:
+    """Implicit stream-power erosion with diffusion; outlets fixed; land never below `floor`. `base` (i, j, shape):
+    the base window on this grid (terrain_relief.anchor); its routing jitter is drawn as that window alone would
+    draw it, the rest from a second stream."""
     h = h.astype(np.float64).copy()
     rng = np.random.default_rng(29)
+    rng2 = np.random.default_rng([29, 1])
+
+    def jitter():
+        if base is None or (base[0], base[1], tuple(base[2])) == (0, 0, h.shape):
+            return rng.uniform(0, 0.25, h.shape)
+        j = rng2.uniform(0, 0.25, h.shape)
+        j[base[0]:base[0] + base[2][0], base[1]:base[1] + base[2][1]] = rng.uniform(0, 0.25, base[2])
+        return j
     kf = k.ravel().astype(np.float64)
     fl = floor.ravel()
     area0 = dx * dx
     for _ in range(steps):
         hf = fill(h, outlet)
         # routing on a jittered copy: filled flats would otherwise drain down dead-straight D8 lines
-        jit = hf + np.where(outlet, 0, rng.uniform(0, 0.25, h.shape))
+        jit = hf + np.where(outlet, 0, jitter())
         rcv, dist = receivers(jit, outlet, dx)
         order = np.argsort(jit.ravel(), kind="stable")           # low to high: every receiver before its donors
         acc = np.full(rcv.size, area0)
@@ -176,18 +186,24 @@ def thermal(h: np.ndarray, iters: int = 6, talus_deg: float = TALUS_DEG, keep_de
 
 
 def weather(relief_m: np.ndarray, water_s: np.ndarray, F: dict, seed: int = 1952) -> np.ndarray:
-    """The weathered natural ground (metres). F: the full-resolution region fields (floor, summit, rough, w_mesa)."""
+    """The weathered natural ground (metres). F: the full-resolution region fields (floor, summit, rough, w_mesa).
+    Every whole-grid working field is freed as soon as its last reader has run (the grid is tens of millions of
+    samples; the hollow fill at the end needs the room)."""
     shape = relief_m.shape
     span = np.maximum(F["summit"] - F["floor"], 0)
     kfac = np.clip((span - 15.0) / 45.0, 0, 1)
-    plateau = F["w_mesa"] * (ndi.gaussian_filter(relief_m, 2) - ndi.gaussian_filter(relief_m, 12) > -0.5)
+    sm2 = ndi.gaussian_filter(relief_m, 2)
+    plateau = F["w_mesa"] * (sm2 - ndi.gaussian_filter(relief_m, 12) > -0.5)
     # mesa tops keep their flats; their risers erode hardest, so ravines cut back into the escarpment (headward
     # erosion embays the edge, as drainage does to a real mesa) instead of the edge tracing one smooth line
-    gy, gx = np.gradient(ndi.gaussian_filter(relief_m, 2), M)
+    gy, gx = np.gradient(sm2, M)
     steep = np.hypot(gx, gy)
-    top = np.clip(plateau, 0, 1) * (steep < 0.12)
+    del sm2, gy, gx
+    top = (np.clip(plateau, 0, 1) * (steep < 0.12)).astype(np.float32)
     riser = F["w_mesa"] * np.clip((steep - 0.2) / 0.4, 0, 1)
-    kfac = np.clip(kfac * (1 - 0.8 * ndi.gaussian_filter(top.astype(np.float32), 2)) + RISER_K * riser, 0, RISER_K)
+    del steep
+    kfac = np.clip(kfac * (1 - 0.8 * ndi.gaussian_filter(top, 2)) + RISER_K * riser, 0, RISER_K)
+    del riser
     hc = _down(relief_m, C)
     oc = _down(water_s.astype(np.float32), C) > 0
     oc[0, :] = oc[-1, :] = oc[:, 0] = oc[:, -1] = True
@@ -195,7 +211,11 @@ def weather(relief_m: np.ndarray, water_s: np.ndarray, F: dict, seed: int = 1952
     kc = _down(kfac, C) * K0
     floorc = np.where(oc, 0.0, np.maximum(DRY_M, _down(F["floor"], C) * 0.3))
     floorc = np.minimum(floorc, hc)
-    ec = stream_power(hc, oc, kc, floorc)
+    from tools.newworld.terrain_relief import anchor_of
+    ai, aj, abase = anchor_of(shape)
+    if ai % C or aj % C:
+        raise SystemExit(f"terrain_erode: the base window starts at sample ({ai}, {aj}), off the drainage grid ({C})")
+    ec = stream_power(hc, oc, kc, floorc, base=(ai // C, aj // C, (abase[0] // C, abase[1] // C)))
     # valleys, not trenches: the incision spread over two widths, so a valley's width and depth grow with its
     # drainage (a big channel's cut spreads wide and U-shaped, a rill's stays a shallow swale), capped by the relief
     cut = np.minimum(ec - hc, 0)
@@ -205,45 +225,57 @@ def weather(relief_m: np.ndarray, water_s: np.ndarray, F: dict, seed: int = 1952
     # weighted by the full-resolution erodibility (a cubic resample of a near-zero field rings, and a hard mask of
     # it flips in drainage-grid blocks)
     out = relief_m + _up(cut, shape, C) * np.clip(kfac / 0.05, 0, 1)
+    del hc, oc, kc, floorc, ec, cut, base
     # rain: particle erosion at full resolution cuts rills and gullies that branch, join and widen downstream, and
     # settles their sediment as fans and smooth floors (terrain_droplets); none on marsh floors or mesa tops
     from tools.newworld import terrain_droplets as td
     stop = water_s.copy()
     stop[:2, :] = stop[-2:, :] = stop[:, :2] = stop[:, -2:] = True
     # no rain cut within 25 m of the water: droplets gathering at a channel's head carved hooks round its tip
-    near_w = np.clip(ndi.distance_transform_edt(~water_s) * M / 25.0, 0, 1)
-    kd = near_w * np.clip((span - 6.0) / 40.0, 0, 1) * (1 - 0.85 * ndi.gaussian_filter(top.astype(np.float32), 3))
-    out = td.erode(out, kd, stop, int(DROPS_PER_SAMPLE * float((kd > 0.02).sum())), seed + 13)
+    kd = np.clip(ndi.distance_transform_edt(~water_s).astype(np.float32) * (M / 25.0), 0, 1)
+    kd = kd * np.clip((span - 6.0) / 40.0, 0, 1) * (1 - 0.85 * ndi.gaussian_filter(top, 3))
+    del top
+    out = td.erode(out, kd, stop, DROPS_PER_SAMPLE, seed + 13, origin=(ai, aj))
+    del kd, stop
     # detail by place, not one texture: crests and convex shoulders a little rough, slopes carry the rills the rain
     # cut, flats and valley floors stay smooth
     sm3 = ndi.gaussian_filter(out, 3)
     gy, gx = np.gradient(sm3, M)
-    sl = np.clip(np.hypot(gx, gy) / 0.35, 0, 1)
-    convex = np.clip((sm3 - ndi.gaussian_filter(out, 12)) / 1.5, 0, 1)
-    det = ridged(shape, 30 / M, seed + 11)
-    out = out + (0.05 + 0.2 * np.minimum(kfac, 1)) * F["rough"] * sl * convex * det * (1 - 0.8 * np.clip(plateau, 0, 1))
+    det = np.clip(np.hypot(gx, gy) / 0.35, 0, 1)                           # slope
+    del gy, gx
+    det *= np.clip((sm3 - ndi.gaussian_filter(out, 12)) / 1.5, 0, 1)        # convexity
+    del sm3
+    det *= ridged(shape, 30 / M, seed + 11)
+    out = out + (0.05 + 0.2 * np.minimum(kfac, 1)) * F["rough"] * det * (1 - 0.8 * np.clip(plateau, 0, 1))
+    del det, plateau
     out = thermal(out)
     # low ground (little relief span) keeps most of its fine relief under 15 m: marsh lies flat between
     # rarer, softer hummocks
-    lw = np.clip(1 - kfac, 0, 1) * np.clip((40.0 - span) / 25.0, 0, 1)
+    lw_f = np.clip((40.0 - span) / 25.0, 0, 1)
+    del span
     broad = ndi.gaussian_filter(out, 15 / M / 2)
-    out = broad + (1 - 0.3 * lw) * (out - broad)
+    out = broad + (1 - 0.3 * np.clip(1 - kfac, 0, 1) * lw_f) * (out - broad)
+    del broad, kfac
     # closed hollows on low ground filled to their spill height: marsh lies flat between its hummocks (BM&V's marsh
     # is flat ground about 1.7 m up, with few hollows). Hills keep theirs: filling every hollow between knolls lays
     # featureless plains across the uplands; the drainage step has already opened their valleys
     outlet = water_s.copy()
     outlet[0, :] = outlet[-1, :] = outlet[:, 0] = outlet[:, -1] = True
-    seed = np.where(outlet, out, out.max() + 1.0)
-    filled = reconstruction(seed.astype(np.float32), out.astype(np.float32), method="erosion")
-    lw_f = np.clip((40.0 - span) / 25.0, 0, 1)
+    out = out.astype(np.float32)
+    seed_f = np.where(outlet, out, np.float32(out.max() + 1.0))
+    del outlet
+    filled = reconstruction(seed_f, out, method="erosion")
+    del seed_f
     out = out + lw_f * (np.maximum(out, filled - LOW_HOLLOW_M) - out)       # no low-ground hollow deeper than this
     out = out + LOW_FILL * lw_f * (filled - out)
     return np.maximum(out, np.minimum(relief_m, DRY_M)).astype(np.float32)
 
 
-def settle_places(relief_m: np.ndarray, centres_ij: list[tuple[float, float, str]], m: float = M) -> list[dict]:
+def settle_places(relief_m: np.ndarray, centres_ij: list[tuple[float, float, str]], m: float = M,
+                  origin=(0, 0)) -> list[dict]:
     """Ease the ground around each large built place into a buildable core (see the module recipe). Mutates
-    `relief_m`; returns what was done per place."""
+    `relief_m`; returns what was done per place. `origin`: the base window's sample (0, 0) on this grid (each
+    core's outline is seeded by its position from there)."""
     done = []
     for i0, j0, tier in centres_ij:
         r = BUILD_R_M.get(tier)
@@ -257,7 +289,7 @@ def settle_places(relief_m: np.ndarray, centres_ij: list[tuple[float, float, str
         ii, jj = np.mgrid[a:b, c:d]
         dist = np.hypot(ii - i0, jj - j0) * m
         from tools.newworld.terrain_shape import wobble
-        dist = dist / wobble(i0, j0, np.arctan2(ii - i0, jj - j0))   # an irregular core, not a circle
+        dist = dist / wobble(i0 - origin[0], j0 - origin[1], np.arctan2(ii - i0, jj - j0))   # irregular, no circle
         broad = ndi.gaussian_filter(win, 60 / m / 2, mode="nearest")
         fine = win - broad
         keep = BUILD_KEEP

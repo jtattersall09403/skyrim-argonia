@@ -95,8 +95,27 @@ def _j(o):
     return o.item() if hasattr(o, "item") else str(o)
 
 
+def rss_mb() -> tuple[int, int]:
+    """(resident now, peak so far) of this process, MB."""
+    import resource
+    now = int(open("/proc/self/statm").read().split()[1]) * os.sysconf("SC_PAGE_SIZE") >> 20
+    return now, resource.getrusage(resource.RUSAGE_SELF).ru_maxrss >> 10
+
+
 def log(*a):
-    print(f"[{time.strftime('%H:%M:%S')}]", *a, flush=True)
+    print(f"[{time.strftime('%H:%M:%S')}] [{'/'.join(map(str, rss_mb()))} MB]", *a, flush=True)
+
+
+# ARGONIA_TERRAIN_PROBE=place,place: log the ground at those places after every stage (finding what moved a place)
+PROBE = [p for p in os.environ.get("ARGONIA_TERRAIN_PROBE", "").split(",") if p]
+_probe_at = {}
+
+
+def probe(stage: str, a: np.ndarray, per_m: float = 1.0) -> None:
+    for pid, (i, j, r) in _probe_at.items():
+        win = a[max(0, i - r):i + r + 1, max(0, j - r):j + r + 1]
+        log("probe", pid, stage, "centre %.2f mean %.2f min %.2f max %.2f m" % (
+            a[i, j] / per_m, win.mean() / per_m, win.min() / per_m, win.max() / per_m))
 
 
 def make_grid(scope) -> ts.Grid:
@@ -215,7 +234,14 @@ def build(upload: bool = True) -> dict:
     word = {r.id: (tr.landform_word(r.landform) or tr.landform_word(r.name) or tr.NAME_GUESS.get(r.id))
             for r in regions}
     grid = make_grid(scope)
-    log("grid", grid.rows, "x", grid.cols)
+    # noise and everything seeded by position are anchored to the picture's own grid (terrain_relief.anchor): the
+    # scope without the cells past the picture, so those cells add ground round the province and move none of it
+    from tools.newworld import tiles
+    past = tiles.beyond_cells()
+    base = make_grid([c for c in scope if tuple(c) not in past])
+    grid.ai, grid.aj = int(round((grid.oy - base.oy) / ts.STEP)), int(round((base.ox - grid.ox) / ts.STEP))
+    tr.anchor((grid.rows, grid.cols), grid.ai, grid.aj, (base.rows, base.cols))
+    log("grid", grid.rows, "x", grid.cols, "base window", base.rows, "x", base.cols, "at", (grid.ai, grid.aj))
 
     # islands first (terrain_shape.carve_islets): every place that needs an island gets one on the map itself, so
     # the bodies, the coast, the banks and the water kinds all see it
@@ -233,6 +259,7 @@ def build(upload: bool = True) -> dict:
     water_px = tb.corrected(water_ext, pad, water_px.shape).copy()
     foreign_px = tb.corrected(foreign_ext, pad, foreign_px.shape).copy()
     grid_x = tb.shifted(grid, pad)
+    tb.covers(grid_x, water_ext.shape)
 
     # 3. water bodies
     rpx = region_px(cell_region, names, water_px.shape)
@@ -312,18 +339,30 @@ def build(upload: bool = True) -> dict:
     n.update(small=tr.fbm(shape, sm, tr.SCALES["small"], SEED + 2), amod=tr.fbm(shape, sm, tr.SCALES["amod"], SEED + 5),
              micro=tr.fbm(shape, sm, tr.SCALES["micro"], SEED + 6))
     log("noise and fields")
+    for p in w.rows("place"):
+        if p.id in PROBE:
+            _probe_at[p.id] = (*(int(round(float(v))) for v in grid.ij(p.px, p.py)),
+                               int((p.footprint_radius_m or 25.0) / grid.m))
     relief_m = tr.relief(F, n, coast_full)
-    del n, F["road_fade"]
+    probe("relief", relief_m)
+    for k in [k for k in F if k not in ("summit", "floor", "w_mesa", "rough", "ramp")]:
+        del F[k]                    # the rest of the region fields were the relief's alone
+    log("relief")
+    del n
     dw = np.maximum(sd_m, 0).astype(np.float32)
     forms = {"before": tf.apply(relief_m, "before", spec, char_w, C, dw=dw, **form_kw)}
+    probe("forms before", relief_m)
     relief_m = te.weather(relief_m, water_s, F, SEED)
+    probe("weathered", relief_m)
+    log("weathered")
     forms["after"] = tf.apply(relief_m, "after", spec, char_w, C, dw=dw, **form_kw)
     del dw, span_full
     log("characters", {k: sorted(v) for k, v in forms.items()})
     sym_tier0 = {s.id: s.settlement_tier_id for s in w.rows("symbol")}
     big = [(*(float(v) for v in grid.ij(p.px, p.py)), sym_tier0.get(p.symbol_id)) for p in w.rows("place")
            if sym_tier0.get(p.symbol_id) in te.BUILD_R_M and not p.on_water]
-    settled = te.settle_places(relief_m, big, sm)
+    settled = te.settle_places(relief_m, big, sm, origin=(grid.ai, grid.aj))
+    probe("forms after, settled", relief_m)
     log("weathered; large places settled", len(settled))
 
     # 5. banks and beds
@@ -344,6 +383,7 @@ def build(upload: bool = True) -> dict:
     bed_cap = np.where(water_s & (bed_cap == 0), 1.2, bed_cap)
     h, d_land, d_water = ts.compose(water_s, relief_m, F["ramp"], bed_slope, bed_cap, sm, sd_m)
     del relief_m, bed_slope, bed_cap, d_land, d_water
+    probe("composed", h, ts.U)
     log("composed")
 
     # places
@@ -421,8 +461,10 @@ def build(upload: bool = True) -> dict:
 
     for order, p, nd, r_m, facing, why, i0, j0 in todo:
         if order >= NEED_ORDER["entrance-in-slope"] and not roads_done:
+            probe("needs before roads", h, ts.U)
             plans, road_out, grade_of, corridor = lay_roads(h, water_px, water_s, grid, w)
             roads_done = True
+            probe("roads", h, ts.U)
         rec = {"place_id": p.id, "need": nd, "radius_m": r_m, "why": why, "px": p.px, "py": p.py}
         if nd == "flat-pad":
             if p.on_water:
@@ -446,6 +488,7 @@ def build(upload: bool = True) -> dict:
         place_out.append(rec)
     if not roads_done:
         plans, road_out, grade_of, corridor = lay_roads(h, water_px, water_s, grid, w)
+    probe("places and roads", h, ts.U)
     log("places", len(place_out), "roads", len(plans))
 
     # clear of the water plane outside a narrow shore band, as Skyrim's land and beds are (terrain_clearance)
@@ -455,6 +498,7 @@ def build(upload: bool = True) -> dict:
         keep[sl_] |= np.hypot(di_, dj_) * grid.m <= float(r_m_ or 25.0) + 20.0
     clearance = tcl.apply(h, sd_m, water_s, keep)
     del keep
+    probe("clearance", h, ts.U)
     log("clearance", clearance)
     # LAND format and the water guarantee
     h = ts.quantise(h)
@@ -482,6 +526,7 @@ def build(upload: bool = True) -> dict:
     # built places keep the ground they were seated on (terrain_held), blended into the new ground beyond
     held = th.apply(h, grid, water_s)
     cliff = ts.slope_deg(h) > CLIFF_DEG
+    probe("final", h, ts.U)
     log("held", held)
     for rec, i0, j0, facing, *_ in entrances:
         rec.update(ts.entrance_ok(h, water_s, cliff, grid, i0, j0, facing))
