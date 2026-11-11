@@ -1054,18 +1054,22 @@ def join_parts(n):
             rf"Remove-Item -LiteralPath $_.FullName }}; $o.Close(); ")
 
 
+def row_digest(keys, n):
+    """A mod folder's push digest: every file the row itself laid (staged/<row>.files.json, written by stage), so a
+    file another row overrides in a profile record still counts toward its own row (a newworld row's override at a
+    play row's path must not hide an edit to the play row's copy)."""
+    hf = keys / f"{n}.files.json"
+    own = json.loads(hf.read_text()) if hf.exists() else {}
+    return hashlib.sha256("".join(sorted(f"{k}{h}" for k, h in own.items())).encode()).hexdigest()
+
+
 def cmd_push(a):
     """Tar each changed mod folder, copy it over and unpack it into C:\\argonia\\MO2\\mods\\<id>."""
     out = per_machine(STACK / "push")
     out.mkdir(exist_ok=True)
     sent = json.loads((out / "sent.json").read_text()) if (out / "sent.json").exists() else {}
     names = [d.name for d in sorted((MO2 / "mods").iterdir())]
-    digest = {}
-    inst = {}
-    for profile in (PROFILE, NEWWORLD):  # a mod's files are the same in either profile
-        inst.update(json.loads((STACK / installed_name(profile)).read_text())["files"])
-    for n in names:
-        digest[n] = hashlib.sha256("".join(sorted(f"{k}{v[1]}" for k, v in inst.items() if v[0] == n)).encode()).hexdigest()
+    digest = {n: row_digest(STACK / "staged", n) for n in names}
     todo = [n for n in names if sent.get(n) != digest[n] and n != "pandora-output"]
     only = getattr(a, "only", None)
     if only:  # these rows alone: every other mod, and its record on the machine, stays as the machine has it

@@ -17,22 +17,25 @@ Per weather (atmosphere.py's spec, <plugin>/atmosphere.json):
   class's strength (thick over the peat swamp and the green marsh, thin on the highland, the coasts and the islands)
   and the kind's (mist and steam thick, fair thinner, rain and storm left to their rain);
 - the layer's floor (`Fog Height`) is the class's wet ground, measured on the terrain (75th percentile of the surface,
-  water at 0, over its still and flowing water and its marsh habitats); below the floor the fog is full, above it
-  halves every 500 units (falloff 2.0, the feature's documented maximum): it lies in the hollows and over the water and
+  water at 0, over its still and flowing water and its marsh habitats); a camera at or below the floor sees the full
+  density, and above it the density halves every 500 units (falloff 2.0, the feature's documented maximum): it lies in the hollows and over the water and
   thins up the slopes;
 - colour: the weather's own fog colour by the hour (`Original Fog Color Amount` 1), no added colour and no sky
   cubemap (their alphas 0), the sun's own colour scattered forward (anisotropy 0.6, humid haze), so it never greys;
 - volumetric (the froxel fog, lit and shadowed: shafts through canopy) in the sunlit kinds (fair, cloudy, steam),
-  out to 20,000 units, its albedo the weather's day fog colour.
+  out to 20,000 units, its albedo (stated in every weather) the weather's day fog colour.
 The feature has no time-of-day input: the per-weather values hold at every hour.
 
 Global (overrides, the NewWorld profile only, the same paths as the community-shaders row's so they win there):
-the height fog on with the feature's shipped values for any other weather; Community Shaders' volumetric lighting on
-outdoors (it sets the engine's bEnableVolumetricLighting, so our weathers' volumetric lighting records draw).
+the height fog on; a weather with no file (another worldspace's) takes global_fog(), vanilla clear weather's
+visibility at sea level thinning upward; Community Shaders' volumetric lighting on outdoors (it sets the engine's
+bEnableVolumetricLighting, so our weathers' volumetric lighting records draw). Indoors the feature is off
+(SceneSettings/InteriorOnly), so each interior keeps its own vanilla cell fog.
 """
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import math
 import sys
@@ -48,8 +51,13 @@ ADDON_INI = "Shaders/Features/ExponentialHeightFog.ini"
 ADDON_VERSION = "1-3-2"   # CS 1.9.1's FEATURE_MINIMAL_VERSIONS entry (features/Exponential Height Fog/.../ExponentialHeightFog.ini)
 FALLOFF = 2.0             # the feature's documented maximum: the thinnest layer it draws, halving every 500 units
 OPACITY_AT_FAR = 0.9      # fogged at the weather's own day fog far
-EYE = 120.0               # units, the eye over the ground (1.7 m)
 VOLUMETRIC_DISTANCE = 20000.0
+GLOBAL_FAR = 80000.0      # vanilla SkyrimClear's day fog far (Update.esm, the load order's winner)
+# Indoors (Community Shaders' SceneSettings, applied when the sky mode is not full): the feature off, so the shaders
+# take their vanilla fog branch and each interior keeps its own cell fog. One setting a file, `_feature` naming it.
+INTERIOR = "SKSE/Plugins/CommunityShaders/SceneSettings/InteriorOnly/Argonia_ExponentialHeightFog.json"
+INTERIOR_OFF = {"_feature": "ExponentialHeightFog", "enabled": 0}
+LOADED_LOG = "Finished loading per-weather settings. Total weathers: {}"   # WeatherManager.cpp, CommunityShaders.log
 ANISOTROPY = 0.6
 WET_PERCENTILE = 75
 # The class's strength: thick in the peat swamp and the green marsh, where the owner asked for more; thin where the
@@ -134,9 +142,9 @@ def weather_settings(w: dict, floor: float) -> dict:
          "Directional Inscattering Multiplier": inscatter, "volumetricFogEnabled": vol,
          # the veil guard, also global: stated per weather so no other override can bring the vanilla fog back
          "disableVanillaFog": True, "Original Fog Color Amount": 1.0,
-         "Fog Inscattering Color": [0.0, 0.0, 0.0, 0.0], "Inscattering Cubemap Tint": [1.0, 1.0, 1.0, 0.0]}
-    if vol:
-        s["Volumetric Albedo"] = albedo(w["set"]["FogNearColor.Day"])
+         "Fog Inscattering Color": [0.0, 0.0, 0.0, 0.0], "Inscattering Cubemap Tint": [1.0, 1.0, 1.0, 0.0],
+         # in every weather, sunlit or not: a key a weather lacks blends to the global value through a transition
+         "Volumetric Albedo": albedo(w["set"]["FogNearColor.Day"])}
     return s
 
 
@@ -147,25 +155,40 @@ def sky_transmittance(s: dict, elevation_deg: float, above_floor: float = 0.0) -
     return 2 ** (-(d0 * 2 ** (-f * max(above_floor, 0.0))) / (f * math.sin(math.radians(elevation_deg))))
 
 
+def global_fog() -> dict:
+    """The fog of a weather with no file of ours (other worldspaces, any weather not ours): the nearest the feature's
+    formula comes to a plain distance fog without fogging the sky. A level-uniform fog (falloff toward 0) fogs every sky
+    pixel, as the sky ray's integral d / (f sin e) grows without bound; so the density matches vanilla SkyrimClear's
+    visibility (90 % at its 80,000-unit day fog far) along the floor at sea level (height 0), and the falloff is the
+    least, in steps of 0.05, that leaves 0.8 of the sky at 15 degrees from that floor."""
+    density = round(math.log2(1 / (1 - OPACITY_AT_FAR)) / math.log(2) * 1000 / GLOBAL_FAR, 4)
+    falloff = next(x / 100 for x in range(5, 201, 5)
+                   if sky_transmittance({"Fog Density": density, "Fog Height Falloff": x / 100}, 15) >= SKY_MIN["fair_15deg"])
+    return {"Fog Density": density, "Fog Height Falloff": falloff, "Fog Height": 0.0}
+
+
 def global_files() -> list[dict]:
     meta = {"modName": "Argonia (new world)", "version": "walk5", "enabled": True}
+    g = global_fog()
     ehf = {"enabled": 1, "useDynamicCubemaps": 0, "disableVanillaFog": 1, "respectVanillaFogFade": 1,
            "originalFogColorAmount": 1.0, "fogInscatteringColor": [0.0, 0.0, 0.0, 0.0],
-           "inscatteringTint": [1.0, 1.0, 1.0, 0.0], "fogHeight": 0.0, "fogHeightFalloff": 0.2, "fogDensity": 0.005,
-           "startDistance": 0.0, "directionalInscatteringAnisotropy": ANISOTROPY, "directionalInscatteringMultiplier": 1.0,
+           "inscatteringTint": [1.0, 1.0, 1.0, 0.0], "fogHeight": g["Fog Height"],
+           "fogHeightFalloff": g["Fog Height Falloff"], "fogDensity": g["Fog Density"], "startDistance": 0.0, "directionalInscatteringAnisotropy": ANISOTROPY, "directionalInscatteringMultiplier": 1.0,
            "sunlightAttenuationAmount": 1.0, "volumetricFogEnabled": 0, "volumetricFogDistance": VOLUMETRIC_DISTANCE,
            "volumetricFogExtinctionScale": 1.0, "volumetricDirectionalScatteringIntensity": 1.0,
            "volumetricSkyLightingIntensity": 0.5,
            "_metadata": {**meta, "description": "Exponential Height Fog on, replacing the vanilla fog (kept, it paints the "
                          "sky pixels with the far fog colour: a flat veil). Our weathers set their own low fog per "
-                         "weather (Weathers/); any other weather takes the feature's shipped values. No sky cubemap and "
-                         "no added colour: the fog takes the weather's own fog colour."}}
+                         "weather (Weathers/); any other weather takes a fog as thick as vanilla's clear weather at sea "
+                         "level, thinning upward. Off indoors (SceneSettings/InteriorOnly). No sky cubemap and no added "
+                         "colour: the fog takes the weather's own fog colour."}}
     vl = {"ExteriorEnabled": True, "ExteriorQuality": 1, "InteriorEnabled": True, "InteriorQuality": 1,
           "_metadata": {**meta, "description": "Volumetric lighting outdoors: it sets the engine's "
                         "bEnableVolumetricLighting, so our weathers' volumetric lighting records draw shafts through "
                         "the canopy and the mist. Medium quality."}}
     return [{"path": f"{CS}/Overrides/Argonia_ExponentialHeightFog.json", "text": json.dumps(ehf, indent=1) + "\n"},
-            {"path": f"{CS}/Overrides/Argonia_VolumetricLighting.json", "text": json.dumps(vl, indent=1) + "\n"}]
+            {"path": f"{CS}/Overrides/Argonia_VolumetricLighting.json", "text": json.dumps(vl, indent=1) + "\n"},
+            {"path": INTERIOR, "text": json.dumps(INTERIOR_OFF) + "\n"}]
 
 
 def generate(spec: dict, fl: dict) -> list[dict]:
@@ -195,7 +218,7 @@ def write(plugin: Path) -> int:
     row["files"] = files
     if changed:
         MANIFEST.write_text(json.dumps(doc, indent=1, ensure_ascii=False) + "\n")
-    print(f"atmosphere_cs: {len(files) - 2} weather files, floors {fl['floors']} (terrain {fl['build_id']}); "
+    print(f"atmosphere_cs: {len(parse_weathers({f['path']: f['text'] for f in files}))} weather files, floors {fl['floors']} (terrain {fl['build_id']}); "
           f"{'written' if changed else 'unchanged'}", file=sys.stderr)
     return 0
 
@@ -212,23 +235,29 @@ def in_range(name: str, v) -> bool:
 
 
 def parse_weathers(files: dict[str, str]) -> dict[str, dict]:
-    """{path: the feature block} of the per-weather files among `files` (path -> text)."""
-    out = {}
-    for p, t in files.items():
-        if p.lower().startswith(f"{CS}/Weathers/".lower()):
-            out[p] = json.loads(t)["featureSettings"][FEATURE]
-    return out
+    """{path: the whole file} of the per-weather files among `files` (path -> text)."""
+    return {p: json.loads(t) for p, t in files.items() if p.lower().startswith(f"{CS}/Weathers/".lower())}
 
 
-def file_rows(spec: dict, files: dict[str, str]) -> list[tuple[str, object, bool, str]]:
-    """Rows over the row's files (path -> text): one per weather, parsed back, in the feature's ranges, the veil guard,
-    the sky through the fog."""
+def esm_weathers(st: dict) -> dict[str, str]:
+    """{the per-weather file's path, lower case: the weather's editor id} for each of our weathers in the ESM read back
+    (`atmosphere.readback`): the editor id and local form id as the game loads them."""
+    return {weather_file(int(r["FormKey"].split(":")[0], 16) & 0xFFFFFF).lower(): r["EditorID"]
+            for r in st[ESM]["WTHR"] if (r.get("EditorID") or "").startswith("ANW_W_")}
+
+
+def file_rows(want: dict[str, str], files: dict[str, str]) -> list[tuple[str, object, bool, str]]:
+    """Rows over the row's files (path -> text) against the weathers of the ESM (path, lower case -> editor id): one
+    file per weather, naming it, parsed back, in the feature's ranges; the veil guard; the interior switch; the sky."""
     rows = []
-    want = {weather_file(w["formid"]).lower(): w for w in spec["weathers"]}
-    got = {p.lower(): s for p, s in parse_weathers(files).items()}
+    docs = {p.lower(): d for p, d in parse_weathers(files).items()}
+    got = {p: d["featureSettings"][FEATURE] for p, d in docs.items()}
+    meta = {p: d.get("_argonia", {}) for p, d in docs.items()}
     miss, extra = sorted(set(want) - set(got)), sorted(set(got) - set(want))
-    rows.append(("one height-fog file per weather of ours, parsed back", f"{len(set(want) & set(got))}/{len(want)}",
+    rows.append(("one height-fog file per weather of the ESM, at its form id, parsed back", f"{len(set(want) & set(got))}/{len(want)}",
                  not miss and not extra and bool(want), (f"missing {miss[:2]} " if miss else "") + (f"extra {extra[:2]}" if extra else "")))
+    named = [p for p in set(want) & set(got) if meta[p].get("weather") != want[p]]
+    rows.append(("each file names the weather the ESM has at that form id", len(named), not named, ", ".join(named[:2])))
     bad = [(p, k, v) for p, s in got.items() for k, v in s.items() if not in_range(k, v)]
     rows.append(("every per-weather value inside the feature's registered range", len(bad), not bad,
                  "; ".join(f"{p.rsplit('/', 1)[-1]} {k}={v}" for p, k, v in bad[:3])))
@@ -238,28 +267,30 @@ def file_rows(spec: dict, files: dict[str, str]) -> list[tuple[str, object, bool
             or s.get("Fog Inscattering Color", [0, 0, 0, 0])[3] != 0 or s.get("Inscattering Cubemap Tint", [0, 0, 0, 0])[3] != 0]
     rows.append(("veil guard: vanilla fog replaced, colour the weather's own (no added colour, no sky cubemap)", len(veil),
                  not veil, ", ".join(veil[:3])))
+    noalb = [p for p, s in got.items() if "Volumetric Albedo" not in s]
+    rows.append(("every weather states its volumetric albedo (no blend to white in a transition)", len(noalb), not noalb,
+                 ", ".join(noalb[:2])))
+    inner = json.loads(files.get(INTERIOR, "{}"))
+    keys = [k for k in inner if not k.startswith("_")]
+    rows.append(("indoors the height fog is off (SceneSettings/InteriorOnly: one setting, enabled 0)", inner or "missing",
+                 inner.get("_feature") == FEATURE and keys == ["enabled"] and inner["enabled"] == 0, ""))
     zen = {p: sky_transmittance(s, 90) for p, s in got.items()}
-    fair = {p: sky_transmittance(s, 15) for p, s in got.items() if want.get(p, {}).get("kind") in ("fair", "cloudy")}
+    fair = {p: sky_transmittance(s, 15) for p, s in got.items() if meta[p].get("kind") in ("fair", "cloudy")}
     zmin, fmin = min(zen.values(), default=0), min(fair.values(), default=0)
     rows.append((f"sky at the zenith through the fog, every weather, >= {SKY_MIN['zenith']}", round(zmin, 3),
                  zmin >= SKY_MIN["zenith"], min(zen, key=zen.get, default="").rsplit("/", 1)[-1]))
     rows.append((f"sky at 15 deg in fair and cloudy weather, >= {SKY_MIN['fair_15deg']}", round(fmin, 3),
                  fmin >= SKY_MIN["fair_15deg"], min(fair, key=fair.get, default="").rsplit("/", 1)[-1]))
-    by = {}
+    by, kd = {}, {}
     for p, s in got.items():
-        w = want.get(p)
-        if w:
-            by.setdefault(w["class"], []).append(s["Fog Density"])
+        by.setdefault(meta[p].get("class"), []).append(s["Fog Density"])
+        if meta[p].get("class") == "green-marsh":
+            kd.setdefault(meta[p].get("kind"), []).append(s["Fog Density"])
     mean = {c: sum(v) / len(v) for c, v in by.items()}
     thick = min((mean[c] for c in ("blackwater-swamp", "green-marsh") if c in mean), default=0)
     thin = max((mean[c] for c in ("highland", "island", "coast-east", "coast-west") if c in mean), default=1)
     rows.append(("peat swamp and green marsh fog thicker than highland, coasts and islands (mean density)",
                  f"{thick:.3f} > {thin:.3f}", thick > thin, ""))
-    kd = {}
-    for p, s in got.items():
-        w = want.get(p)
-        if w and w["class"] == "green-marsh":
-            kd.setdefault(w["kind"], []).append(s["Fog Density"])
     kmean = {k: sum(v) / len(v) for k, v in kd.items()}
     ok = bool(kmean) and min(kmean.get("mist", 0), kmean.get("steam", 0)) > max(kmean.get("fair", 1), kmean.get("cloudy", 1))
     rows.append(("mist and steam weathers thicker than fair and cloudy (green marsh)",
@@ -267,26 +298,44 @@ def file_rows(spec: dict, files: dict[str, str]) -> list[tuple[str, object, bool
     return rows
 
 
-def stack_rows(stack: Path, spec: dict) -> list[tuple[str, object, bool, str]]:
-    """Rows over the staged stack: the add-on and the files in the NewWorld profile only; the overrides win there."""
+def sha_text(text: str) -> str:
+    return hashlib.sha256(text.encode()).hexdigest()
+
+
+def stack_rows(stack: Path, want: dict[str, str], files: dict[str, str]) -> list[tuple[str, object, bool, str]]:
+    """Rows over the staged stack: the add-on and the files in the NewWorld profile only, the laid bytes the row's,
+    the overrides winning there."""
     rows = []
     rec = {p: stack / f for p, f in (("NewWorld", "installed-NewWorld.json"), ("Argonia", "installed.json"))}
     if not all(f.exists() for f in rec.values()):
         return [("height fog staged (installed records)", "missing", False, f"no {', '.join(str(f) for f in rec.values() if not f.exists())}: stack.py stage")]
     nw, ar = (json.loads(rec[p].read_text())["files"] for p in ("NewWorld", "Argonia"))
-    ini = ADDON_INI.replace("/", "\\").lower()
+
+    def key(p: str) -> str:
+        return p.replace("/", "\\").lower()
+    ini = key(ADDON_INI)
     rows.append(("height-fog add-on laid in NewWorld, by its row", nw.get(ini, ["-"])[0], nw.get(ini, ["-"])[0] == ROW, ""))
     ours_ar = sorted(k for k, v in ar.items() if v[0] == ROW)
     rows.append(("Argonia profile lays none of the height-fog row's files", len(ours_ar), not ours_ar, ", ".join(ours_ar[:3])))
-    want = {weather_file(w["formid"]).replace("/", "\\").lower() for w in spec["weathers"]}
-    laid = {k for k, v in nw.items() if k.startswith(f"{CS}/Weathers/".replace("/", "\\").lower()) and v[0] == ROW}
-    rows.append(("a per-weather file laid in NewWorld for every weather of ours, no other", f"{len(want & laid)}/{len(want)}",
-                 laid == want and bool(want), f"{len(want - laid)} missing, {len(laid - want)} extra" if laid != want else ""))
-    for name in ("Argonia_ExponentialHeightFog.json", "Argonia_VolumetricLighting.json"):
-        k = f"{CS}/Overrides/{name}".replace("/", "\\").lower()
+    laid = {k for k, v in nw.items() if k.startswith(key(f"{CS}/Weathers/")) and v[0] == ROW}
+    wk = {key(p) for p in want}
+    rows.append(("a per-weather file laid in NewWorld for every weather of the ESM, no other", f"{len(wk & laid)}/{len(wk)}",
+                 laid == wk and bool(wk), f"{len(wk - laid)} missing, {len(laid - wk)} extra" if laid != wk else ""))
+    stale = []
+    for p, t in files.items():
+        disk = stack / "MO2/mods" / ROW / p
+        h = sha_text(t)
+        if nw.get(key(p), ["-", ""])[1] != h or not disk.exists() or hashlib.sha256(disk.read_bytes()).hexdigest() != h:
+            stale.append(p)
+    rows.append(("every file of the row laid with the generated bytes (record and staged file sha256)",
+                 f"{len(files) - len(stale)}/{len(files)}", not stale and bool(files), ", ".join(stale[:2])))
+    for name in ("Overrides/Argonia_ExponentialHeightFog.json", "Overrides/Argonia_VolumetricLighting.json"):
+        k = key(f"{CS}/{name}")
         rows.append((f"{name}: NewWorld's from the height-fog row, Argonia's from community-shaders",
                      f"{nw.get(k, ['-'])[0]} / {ar.get(k, ['-'])[0]}",
                      nw.get(k, ["-"])[0] == ROW and ar.get(k, ["-"])[0] == "community-shaders", ""))
+    rows.append(("the interior switch laid in NewWorld by the height-fog row", nw.get(key(INTERIOR), ["-"])[0],
+                 nw.get(key(INTERIOR), ["-"])[0] == ROW, ""))
     staged = stack / "MO2/mods" / ROW / ADDON_INI
     ver = ""
     if staged.exists():
@@ -297,12 +346,26 @@ def stack_rows(stack: Path, spec: dict) -> list[tuple[str, object, bool, str]]:
     return rows
 
 
+def readback(plugin: Path) -> dict:
+    """The ESM's atmosphere records read back (atmosphere.readback), reusing its file when newer than the ESM."""
+    from tools.newworld import atmosphere
+    f, esm = plugin / "atmosphere-readback.json", plugin / ESM
+    if f.exists() and esm.exists() and f.stat().st_mtime > esm.stat().st_mtime:
+        return json.loads(f.read_text())
+    return atmosphere.readback(plugin)[0]
+
+
 def rows(plugin: Path, stack: Path | None = None) -> list[tuple[str, object, bool, str]]:
-    """The verifier's rows: the manifest row is the generator's output for this spec, its files read back, the stack."""
+    """The verifier's rows: the weathers the built ESM holds, the manifest row's files read back against them, the
+    row as the generator's output, the stack."""
     spec = json.loads((plugin / "atmosphere.json").read_text())
     row = manifest_row(json.loads(MANIFEST.read_text()))
     files = {f["path"]: f["text"] for f in row.get("files", [])}
-    out = file_rows(spec, files)
+    try:
+        want = esm_weathers(readback(plugin))
+    except Exception as e:  # noqa: BLE001 - a row that cannot be measured is a FAIL naming why
+        return [("our weathers read back from the ESM", "unmeasured", False, f"{type(e).__name__}: {str(e)[:200]}")]
+    out = file_rows(want, files)
     try:
         fresh = generate(spec, floors(plugin))
         same = fresh == row.get("files")
@@ -311,7 +374,7 @@ def rows(plugin: Path, stack: Path | None = None) -> list[tuple[str, object, boo
     except (OSError, RuntimeError, KeyError) as e:
         out.append(("the manifest row's files are the generator's for this spec and terrain", "unmeasured", False, str(e)[:200]))
     if stack is not None:
-        out += stack_rows(stack, spec)
+        out += stack_rows(stack, want, files)
     return out
 
 

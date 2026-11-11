@@ -308,8 +308,18 @@ Read in the Community Shaders v1.9.1 source (tag v1.9.1, the release the stack l
   water, half 7 m up, a sixteenth 28 m up.
 - **The profile split, measured on the stage** (`stack.py stage`, 2026-11-11): the Argonia profile's laid files
   53,999 before and after, identical (installed.json `files` and `plugins` equal; the profile folder unchanged);
-  NewWorld 100,974 to 101,084 files: 110 added (8 add-on files, 102 weather files) and the two override paths now
-  from the `cs-height-fog` row.
+  NewWorld 100,974 to 101,085 files: 111 added (8 add-on files, 102 weather files, the interior switch) and the two
+  override paths now from the `cs-height-fog` row; all 105 of the row's files laid with the generated sha256. Against
+  a sample ESM written by the world writer's own `Build` (`ArgoniaPlugin atmos sample`, 102 WTHR), every file sits at
+  its weather's local form id and names its editor id (102/102).
+- **Indoors** (SceneSettingsManager.cpp): files in `<CS>/SceneSettings/InteriorOnly/` each set one feature setting
+  (`_feature` names the feature; exactly one key not starting with `_`, else skipped), applied through the feature's
+  own settings on entering a cell whose sky mode is not full and reverted on leaving. With the height fog's `enabled`
+  0 every shader takes its vanilla fog branch (Lighting.hlsl, ISSAOComposite.hlsl), the sky pixels excluded as in
+  vanilla.
+- **A weather with no file**: the feature cannot draw a level distance fog, since the sky ray's integral d / (f sin e)
+  grows without bound as the falloff goes to 0. The global values are vanilla SkyrimClear's visibility (density
+  0.0599, 90 % at 80,000 units) on a sea-level floor with falloff 0.75 (0.81 of the sky left at 15 degrees).
 
 ## 4. What we built (the recipe is docs/design/atmosphere.md)
 

@@ -107,11 +107,21 @@ Argonia profile (Black Marsh & Valenwood) keeps the community-shaders row's file
 2. **The two global overrides** sit at the community-shaders row's paths
    (`SKSE/Plugins/CommunityShaders/Overrides/Argonia_ExponentialHeightFog.json`, `..._VolumetricLighting.json`), so in
    the NewWorld profile the newworld row's copies win:
-   - height fog on, replacing the vanilla fog (`disableVanillaFog`); no sky cubemap and no added colour; any weather
-     not ours takes the feature's shipped values (density 0.005, falloff 0.2);
+   - height fog on, replacing the vanilla fog (`disableVanillaFog`); no sky cubemap and no added colour;
+   - a weather with no file of ours (another worldspace's weathers) has no vanilla fog in this profile, only these
+     global values (`atmosphere_cs.global_fog`). The feature cannot draw a plain distance fog: as the falloff goes to
+     0 the sky ray's integral grows without bound and the whole sky fogs. So the global fog is vanilla SkyrimClear's
+     visibility (90 % at 80,000 units: density 0.0599) along a floor at sea level (height 0), with falloff 0.75, the
+     least (in steps of 0.05) that leaves 0.8 of the sky at 15 degrees. It thins upward (half every 1,333 units):
+     ground high above sea level in another worldspace gets little fog, and the world map, its camera far above any
+     floor, draws with almost none;
    - volumetric lighting on outdoors (`ExteriorEnabled`, medium quality). Community Shaders sets the engine's
      `bEnableVolumetricLighting` from it every time the player goes outdoors, so this switch is what lets our
-     weathers' volumetric lighting records draw.
+     weathers' volumetric lighting records draw;
+   - indoors the height fog is off: `SKSE/Plugins/CommunityShaders/SceneSettings/InteriorOnly/Argonia_ExponentialHeightFog.json`
+     is `{"_feature": "ExponentialHeightFog", "enabled": 0}` (one setting a file). Community Shaders applies it on
+     entering a cell whose sky mode is not full and restores the outdoor value on leaving; with `enabled` 0 the
+     shaders take their vanilla fog branch, so each interior keeps its own cell fog.
 3. **One file per weather of ours**, `SKSE/Plugins/CommunityShaders/Weathers/0x<local form id>~ArgoniaNewWorld.esm.json`
    (Community Shaders keys a weather by its local form id, hex upper case, and the plugin that defines it), holding
    `{"featureSettings": {"ExponentialHeightFog": {"__enabled": true, ...}}}` with the names the feature registers:
@@ -121,14 +131,16 @@ Argonia profile (Black Marsh & Valenwood) keeps the community-shaders row's file
      west coasts 0.7, islands and highland 0.5) and the kind's (fair 0.7, cloudy 0.9, mist and steam 1.0, rain and
      storm 0.5), at most 1;
    - **Fog Height**: the class's floor, the 75th percentile of the surface (water at 0) over its still and flowing
-     water and its marsh habitats on the current terrain, rounded to 10 units; below the floor the fog is full;
+     water and its marsh habitats on the current terrain, rounded to 10 units; a camera at or below the floor sees
+     the full density;
    - **Fog Height Falloff** 2.0, the feature's maximum: the fog halves every 500 units (7 m) above the floor, so it
      fills the hollows and lies over the water, and the mesa tops and the sky stay clear;
    - **Directional Inscattering Multiplier**: the sun scattered forward in the fog (anisotropy 0.6, global): fair and
      steam 1.0, cloudy 0.8, mist 0.4, rain and storm 0.2;
-   - **volumetricFogEnabled** in the sunlit kinds (fair, cloudy, steam), out to 20,000 units, its **Volumetric
-     Albedo** the weather's day fog near colour scaled to a top channel of 1: the fog is lit and shadowed, so the sun
-     falls through canopy gaps in shafts;
+   - **volumetricFogEnabled** in the sunlit kinds (fair, cloudy, steam), out to 20,000 units: the fog is lit and
+     shadowed, so the sun falls through canopy gaps in shafts; **Volumetric Albedo** in every weather, the weather's
+     day fog near colour scaled to a top channel of 1 (a key a weather lacks blends to the global value, white,
+     through a transition);
    - **the veil guard**, also global but stated in each file: `disableVanillaFog` true, **Original Fog Color Amount**
      1 (the fog's colour is the weather's own fog colour at the hour), the added colour's and the cubemap tint's
      alphas 0. With the vanilla fog kept, Community Shaders' composite paints every sky pixel with the weather's far
@@ -136,18 +148,22 @@ Argonia profile (Black Marsh & Valenwood) keeps the community-shaders row's file
    The feature has no time of day: a weather's values hold at every hour; the dawn mist of the records' night fog
    slot shows in the fog's colour only.
 4. **Generated, then staged.** `python -m tools.newworld.atmosphere_cs write` writes the row's `files` (the two
-   overrides and the 102 weather files) into the manifest from `atmosphere.json` and the terrain; `stack.py stage`
+   overrides, the interior switch and the 102 weather files) into the manifest from `atmosphere.json` and the terrain; `stack.py stage`
    lays them like any row's files (a changed file re-stages the row alone).
 
 Pipeline place: after `atmosphere.py spec` and the terrain, before `stack.py stage` and the deploy.
 
-Proof (`python -m tools.newworld.atmosphere_cs check`, and the "height fog" rows of `tools/newworld/verify.py`): one
-file per weather, parsed back, each value inside the range the feature registers; every block enabled; the veil
-guard in every file; the sky through the fog from the floor (the shader's integral): at least 0.7 of the sky's own
+Proof (`python -m tools.newworld.atmosphere_cs check`, and the "height fog" rows of `tools/newworld/verify.py`), judged
+against the built ESM read back (each `ANW_W_` weather's editor id and local form id): one file per weather of the
+ESM at its form id, naming that weather, parsed back, each value inside the range the feature registers; every
+block enabled; the veil guard and the albedo in every file; the interior switch; the sky through the fog from the floor (the shader's integral): at least 0.7 of the sky's own
 colour at the zenith in every weather and 0.8 at 15 degrees in fair and cloudy weather; the peat swamp and green
 marsh thicker than the highland, coasts and islands; mist and steam thicker than fair and cloudy; the manifest's
-files equal the generator's; the add-on and the files laid in NewWorld by the row and in Argonia not at all; the two
-overrides from this row in NewWorld and from community-shaders in Argonia; the staged add-on's version 1-3-2.
+files equal the generator's; the add-on and the files laid in NewWorld by the row and in Argonia not at all; every
+file of the row laid with the generated bytes (the profile record's sha256 and the staged file's); the two
+overrides from this row in NewWorld and from community-shaders in Argonia; the staged add-on's version 1-3-2. In
+game, `Documents\My Games\Skyrim Special Edition\SKSE\CommunityShaders.log` carries "Finished loading per-weather
+settings. Total weathers: 102" when the game read the files.
 
 If the sky looks veiled in game, the one switch is the Community Shaders menu's Exponential Height Fog, "Enable
 Exponential Height Fog": off, the weathers' own fog returns as built.

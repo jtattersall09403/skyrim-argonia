@@ -35,6 +35,7 @@ SPEC = {"weathers": [weather(0x80520 + k, "green-marsh", kind, far)
            for k, (kind, far) in enumerate([("fair", 80000), ("cloudy", 100000), ("mist", 25000),
                                             ("rain", 15000), ("storm", 25000), ("steam", 21250)])]}
 FLOORS = {"build_id": "t", "floors": {"green-marsh": 210, "highland": 1220}}
+WANT = {C.weather_file(w["formid"]).lower(): w["edid"] for w in SPEC["weathers"]}   # as the ESM read back gives it
 
 
 def test_the_weather_file_is_named_as_community_shaders_keys_it():
@@ -47,19 +48,52 @@ def test_generate_is_deterministic_and_reads_back_green():
     files = C.generate(SPEC, FLOORS)
     assert files == C.generate(SPEC, FLOORS)
     assert [f["path"] for f in files] == sorted(f["path"] for f in files)
-    assert len(files) == 2 + len(SPEC["weathers"])
-    rows = C.file_rows(SPEC, {f["path"]: f["text"] for f in files})
+    assert len(files) == 3 + len(SPEC["weathers"])
+    rows = C.file_rows(WANT, {f["path"]: f["text"] for f in files})
     assert all(ok for _, _, ok, _ in rows), [r for r in rows if not r[2]]
 
 
+def test_file_rows_judge_against_the_esm_not_the_generator():
+    files = {f["path"]: f["text"] for f in C.generate(SPEC, FLOORS)}
+    moved = {C.weather_file(0x80700).lower() if k == C.weather_file(0x80520).lower() else k: v for k, v in WANT.items()}
+    assert not dict((r[0], r[2]) for r in C.file_rows(moved, files))[
+        "one height-fog file per weather of the ESM, at its form id, parsed back"]
+    renamed = dict(WANT, **{C.weather_file(0x80520).lower(): "ANW_W_Other"})
+    assert not dict((r[0], r[2]) for r in C.file_rows(renamed, files))["each file names the weather the ESM has at that form id"]
+    no_inside = {k: v for k, v in files.items() if k != C.INTERIOR}
+    assert not all(r[2] for r in C.file_rows(WANT, no_inside))
+
+
+def test_esm_weathers_reads_editor_id_and_local_form_id():
+    st = {C.ESM: {"WTHR": [{"FormKey": "080520:ArgoniaNewWorld.esm", "EditorID": "ANW_W_GreenMarsh_Middle_Fair"},
+                           {"FormKey": "000800:ArgoniaNewWorld.esm", "EditorID": "SomethingElse"}]}}
+    assert C.esm_weathers(st) == {C.weather_file(0x80520).lower(): "ANW_W_GreenMarsh_Middle_Fair"}
+
+
+def test_the_interior_switch_is_one_setting_off():
+    inner = json.loads(next(f["text"] for f in C.global_files() if f["path"] == C.INTERIOR))
+    assert C.INTERIOR.startswith("SKSE/Plugins/CommunityShaders/SceneSettings/InteriorOnly/")
+    assert inner == {"_feature": "ExponentialHeightFog", "enabled": 0}
+    assert [k for k in inner if not k.startswith("_")] == ["enabled"] and "enabled" in SETTINGS
+
+
+def test_the_global_fog_is_vanilla_clears_visibility_with_the_sky_kept():
+    g = C.global_fog()
+    assert 1 - shader_transmittance(g, 0, C.GLOBAL_FAR, 0) == pytest.approx(0.9, abs=2e-3)
+    assert C.sky_transmittance(g, 15) >= C.SKY_MIN["fair_15deg"]
+    assert C.sky_transmittance(dict(g, **{"Fog Height Falloff": g["Fog Height Falloff"] - 0.05}), 15) < C.SKY_MIN["fair_15deg"]
+    assert all(C.in_range(k, v) for k, v in g.items())
+
+
 def test_each_block_is_the_features_own_names_and_ranges():
-    for f in C.generate(SPEC, FLOORS)[2:]:
+    for f in [f for f in C.generate(SPEC, FLOORS) if "/Weathers/" in f["path"]]:
         doc = json.loads(f["text"])
         s = doc["featureSettings"]["ExponentialHeightFog"]
         assert s["__enabled"] is True and s["disableVanillaFog"] is True
         assert all(C.in_range(k, v) for k, v in s.items()), s
         assert s["Fog Height Falloff"] == 2.0 and s["Fog Height"] in (210.0, 1220.0)
         assert s["volumetricFogEnabled"] == (doc["_argonia"]["kind"] in ("fair", "cloudy", "steam"))
+        assert len(s["Volumetric Albedo"]) == 4   # in every weather: no blend to the white default
 
 
 def test_ranges_reject_out_of_range_and_unknown_values():
@@ -112,7 +146,7 @@ def test_the_global_overrides_are_the_features_settings_and_replace_the_play_row
     assert vl["ExteriorEnabled"] is True
     doc = json.loads(C.MANIFEST.read_text())
     play = {f["path"] for f in next(m for m in doc["mods"] if m["id"] == "community-shaders")["files"]}
-    assert set(g) <= play   # the same paths, so the newworld row's copies win in its profile only
+    assert set(g) - {C.INTERIOR} <= play   # the same paths, so the newworld row's copies win in its profile only
 
 
 def test_the_manifest_row_is_newworld_only_and_whole():
@@ -137,19 +171,27 @@ def test_the_manifest_row_is_newworld_only_and_whole():
         assert all(C.in_range(k, v) for k, v in block.items())
 
 
-def test_stack_rows_split_the_profiles(tmp_path):
-    ini = C.ADDON_INI.replace("/", "\\").lower()
-    ov = [f"{C.CS}/Overrides/{n}".replace("/", "\\").lower()
-          for n in ("Argonia_ExponentialHeightFog.json", "Argonia_VolumetricLighting.json")]
-    wf = {C.weather_file(w["formid"]).replace("/", "\\").lower(): [C.ROW, "h"] for w in SPEC["weathers"]}
-    nw = {ini: [C.ROW, "h"], **{k: [C.ROW, "h"] for k in ov}, **wf}
+def test_stack_rows_split_the_profiles_and_read_the_laid_bytes(tmp_path):
+    def key(p):
+        return p.replace("/", "\\").lower()
+    files = {f["path"]: f["text"] for f in C.generate(SPEC, FLOORS)}
+    mods = tmp_path / "MO2/mods" / C.ROW
+    for p, t in files.items():
+        (mods / p).parent.mkdir(parents=True, exist_ok=True)
+        (mods / p).write_text(t)
+    ini = mods / C.ADDON_INI
+    ini.parent.mkdir(parents=True)
+    ini.write_text("[Info]\nVersion = 1-3-2\nUnreleased = True\n")
+    nw = {key(C.ADDON_INI): [C.ROW, "h"], **{key(p): [C.ROW, C.sha_text(t)] for p, t in files.items()}}
+    ov = [key(f"{C.CS}/Overrides/{n}") for n in ("Argonia_ExponentialHeightFog.json", "Argonia_VolumetricLighting.json")]
     ar = {k: ["community-shaders", "h"] for k in ov}
     (tmp_path / "installed-NewWorld.json").write_text(json.dumps({"files": nw}))
     (tmp_path / "installed.json").write_text(json.dumps({"files": ar}))
-    p = tmp_path / "MO2/mods" / C.ROW / C.ADDON_INI
-    p.parent.mkdir(parents=True)
-    p.write_text("[Info]\nVersion = 1-3-2\nUnreleased = True\n")
-    rows = C.stack_rows(tmp_path, SPEC)
+    rows = C.stack_rows(tmp_path, WANT, files)
     assert all(ok for _, _, ok, _ in rows), [r for r in rows if not r[2]]
-    (tmp_path / "installed.json").write_text(json.dumps({"files": {**ar, ini: [C.ROW, "h"]}}))
-    assert not all(ok for _, _, ok, _ in C.stack_rows(tmp_path, SPEC))
+    p = next(iter(WANT))
+    (mods / next(x for x in files if x.lower() == p)).write_text("{}")   # a laid file not the generated bytes
+    assert not all(ok for _, _, ok, _ in C.stack_rows(tmp_path, WANT, files))
+    (mods / next(x for x in files if x.lower() == p)).write_text(files[next(x for x in files if x.lower() == p)])
+    (tmp_path / "installed.json").write_text(json.dumps({"files": {**ar, key(C.ADDON_INI): [C.ROW, "h"]}}))
+    assert not all(ok for _, _, ok, _ in C.stack_rows(tmp_path, WANT, files))
