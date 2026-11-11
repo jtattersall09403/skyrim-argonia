@@ -196,3 +196,17 @@ def test_gpu_job_keeps_machine_busy_while_it_runs_only(tmp_path):
     assert n >= 2 and "--machine argonia-play ps" in hits.read_text()
     time.sleep(2.5)
     assert len(hits.read_text().splitlines()) == n  # none after the job ended
+
+
+def test_run_tidies_the_disk_under_the_floor(tmp_path):
+    """Under the free-disk floor `run` calls the tidy's disk part first, and starts the job whatever it does."""
+    tidy = tmp_path / "tidy.sh"
+    tidy.write_text(f'#!/bin/bash\necho "$@" >> {tmp_path}/tidied\nexit 1\n')
+    tidy.chmod(0o755)
+    env = {"DISK_TIDY": str(tidy), "JOB_GUARD_NO_SYSTEMD": "1"}
+    r = guard(tmp_path, "run", "roomy", "--", "true", env={**env, "DISK_FLOOR_GB": "0"})
+    assert r.returncode == 0 and not (tmp_path / "tidied").exists()
+    r = guard(tmp_path, "run", "tight", "--", "true", env={**env, "DISK_FLOOR_GB": "100000000"})
+    assert r.returncode == 0 and "under the floor" in r.stderr and "started tight" in r.stdout
+    assert (tmp_path / "tidied").read_text() == "tidy --disk-only --quiet\n"
+    assert guard(tmp_path, "wait", "tight").returncode == 0

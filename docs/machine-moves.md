@@ -16,13 +16,58 @@ was terminated with its disk and nothing the new goal needs was lost, for that r
 ## The build VM's disk
 
 The owner pays for the build VM's disk by its size (120 GB gp3, about $11 a month), so it must never need to grow.
-`tooling/disk.sh report` shows what fills it, by kind; `tooling/disk.sh tidy` frees what the bucket can give back:
+`tooling/disk.sh report` shows what fills it, by kind. Kept on purpose: the staged mods (`~/.argonia/stack`, what
+stack push sends), the owner's Skyrim SE install (`~/games/skyrimse`, read for vanilla records) and the main tree's
+`out/` (the current build).
 
-- **Mod archives** (`~/.argonia/mods`, 16 GB): `stack.py evict` deletes each local archive once the bucket's
-  `mods/` holds it with the manifest's hash; `stack.py fetch` takes it back from the bucket in minutes.
+## Tidying is automatic
 
-Kept on purpose: the staged mods (`~/.argonia/stack/MO2`, what stack push sends) and the owner's Skyrim SE install
-(`~/games/skyrimse`, read for vanilla records).
+`tooling/disk.sh tidy` is the one tidy of the disk, the lane worktrees and the bucket (the rules are
+`tooling/tidy.py`). It deletes and never archives, is safe to interrupt and to run twice, and removes a thing only
+when a named rule proves nothing needs it. `tidy --dry-run` prints exactly what would go and why, and what is kept
+and by which reference. Nobody has to ask for it; it runs:
+
+| When | Where it is wired | What runs |
+|---|---|---|
+| Every session start | the SessionStart hook in `.claude/settings.json` | all of it, quietly; the bucket once a day |
+| A deliberate stop | `tooling/agent_stop.sh`, before the marker | all of it |
+| A lane lands | `tooling/lane_land.sh <worktree>` | that lane's worktree and branch |
+| Free disk under 15 GB | `tooling/job_guard.sh run`, before the job starts | worktrees and disk, never the bucket |
+
+**Lane worktrees.** A lane worktree goes, with its branch, when nothing works in it (its session's lock is dead, no
+process stands in it, no job was started from it), nothing in it changed for 3 hours, and all its content is on
+`origin/main`. A lane branch whose worktree is already gone goes by the same rule on its tip. Content is compared,
+never commit ids: the worktree as it stands (commits, uncommitted edits, untracked files) is merged into main, and
+what the merge would not change is landed. A file the merge would change is still landed when main's history since
+the fork held the lane's version or took its change and then moved on, when every run of words the lane added
+stood in the file on main at some point, or when it lies in a generated tree (`plugin/Argonia`, the records list,
+the story database) that main regenerated after the lane last wrote in it. Place files are hand-edited and never
+count as generated. A worktree or branch with anything else is kept and named with its age, at every session
+start; idle for a day it is named as abandoned work, to land or to delete on the lead's decision.
+
+**Disk.** The spool of every job that ended over two days ago (`~/.argonia/jobs`; a queued, running or cut-off job
+is never touched), session and tool scratch under `/tmp` untouched for two days, and the cached mod archives the
+bucket's `mods/` holds once they pass 1 GB or the disk is under its floor (`stack.py evict` checks each against the
+manifest's hash first; `stack.py fetch` takes it back in minutes).
+
+**Bucket** (`s3://argonia-private-050977237313`). Things are deleted only under `nw/terrain/`, `nw/plugin/` and
+`nw/lod/`, and there only a build that no reference names, that is not the newest, and that is over a day old.
+The references: the current terrain build (`out/newworld/terrain/build.json`); every terrain build a built place's
+held ground names (`newworld/sources/terrain_held.json`); the current world file (`out/newworld/plugin`); the world
+file on the play machine (the newest uploaded up to the time `lod.sh send` recorded in
+`out/newworld/verify/play-esm.sha256`); the LOD on the play machine (the key whose `dyndolod` step marker under
+`~/.argonia/lod-steps` is newest); any build id a tracked `.json` file names. The first three are read from the
+main tree and from every lane worktree. `mods/` (the mod cache) and every other prefix are listed and never touched.
+
+### Why worktrees were orphaned, and what prevents each
+
+| Mechanism | What prevents it now |
+|---|---|
+| Nothing removed a lane's worktree when the lane ended: the Agent tool keeps a worktree that has changes, and landing was a hand rebase and push that stopped there. | `lane_land.sh` lands and removes in one command; the tidy removes any that is missed. |
+| A landed branch looked unlanded: the rebase gave its commits new ids, so `git cherry`, `git branch -d` and an ancestry test all said "not on main", and nobody dared delete it. | The tidy and `lane_land.sh` compare content, never ids (`disk.sh landed <worktree>`). |
+| Lanes ended with uncommitted generated files (the record YAML and the records list a build rewrites: up to 339 changed and 259 untracked files in one worktree), so every old worktree looked like unfinished work. | Generated trees count as landed once main regenerated them; a lane leaves its worktree clean and committed before it returns (CLAUDE.md, the delivery agents' rules). |
+| The tidy ran only when someone asked, and archived to the bucket, which the owner's rule "delete, never archive" had since ruled out; so it was not run. | It deletes, and runs from the four triggers above. |
+| A session that died left its worktree locked. | A lock counts only while the process it names is alive. |
 
 ## Interrupts: the job queue survives a reboot
 

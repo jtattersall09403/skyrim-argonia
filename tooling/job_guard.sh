@@ -14,6 +14,8 @@
 #     ago (default 600; a holder that never ran a job counts from the slot's creation), other lanes' jobs pass it
 #     and `status` shows "(idle Nm, yielding)". `run` with ARGONIA_LANE records the job's lane in <name>.lane.
 #   job_guard.sh release [--gpu[=<machine>]] <lane>   free the slot (only its own lane's)
+#     Before it starts a job, `run` checks free disk: under $DISK_FLOOR_GB (default 15) it runs
+#     `tooling/disk.sh tidy --disk-only` first.
 #   job_guard.sh wait <name>                          wait up to 270 s; exit 0 done-ok, 1 done-failed, 3 still running
 #   job_guard.sh status [<name>] | log <name>
 #   job_guard.sh stop <name>                          end the job and everything it started (its process group)
@@ -127,6 +129,15 @@ case "$cmd" in
     if [ -f "$JOBS/$name.pid" ]; then
       if [ -f "$JOBS/$name.boot" ] && [ "$(cat "$JOBS/$name.boot")" != "$(cat /proc/sys/kernel/random/boot_id)" ]; then rm -f "$JOBS/$name.pid" "$JOBS/$name.boot"
       elif kill -0 "$(cat "$JOBS/$name.pid")" 2>/dev/null; then echo "job $name already running" >&2; exit 2; fi
+    fi
+    # The disk floor: under $DISK_FLOOR_GB free (default 15; 0 turns it off) the tidy's disk part runs before the job
+    # starts (landed lane worktrees, old job spools and scratch, cached mod archives; never the bucket). It never
+    # stops the job: a disk still under the floor after it is said in the caller's output.
+    floor=${DISK_FLOOR_GB:-15}; free_gb() { df --output=avail -BG "$JOBS" | tail -1 | tr -dc 0-9; }
+    if [ "$floor" -gt 0 ] && [ "$(free_gb)" -lt "$floor" ]; then
+      echo "disk: $(free_gb) GB free, under the floor of $floor GB; tidying before $name" >&2
+      "${DISK_TIDY:-$(dirname "$(readlink -f "$0")")/disk.sh}" tidy --disk-only --quiet >&2 || true
+      [ "$(free_gb)" -ge "$floor" ] || echo "disk: still $(free_gb) GB free after the tidy; tooling/disk.sh report shows what fills it" >&2
     fi
     rm -f "$JOBS/$name.rc" "$JOBS/$name.started" "$JOBS/$name.lane" "$JOBS/$name.machine" "$JOBS/$name.unit" "$JOBS/$name.gpu"
     # The spool a relaunch needs (job_resume.sh). JOB_SEQ keeps a resumed job's place; else the next number.

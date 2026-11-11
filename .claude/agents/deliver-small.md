@@ -21,5 +21,6 @@ cause is in another system. Returning early is correct, never a failure.
 - Report path: the brief's; the return is at most 25 lines. Numbers and test output, never an unmeasured claim.
 - Commit only your paths, by pathspec: `git pull --rebase`, then `git commit -- <paths>`.
 - Long jobs: `tooling/job_guard.sh run <name> -- <cmd>` in the background, then `tooling/job_guard.sh wait <name>`; never `sleep` or poll.
+- Before returning: delete your own scratch and leave your worktree clean and committed (no uncommitted or untracked file); the lead lands it with `tooling/lane_land.sh`, and the tidy removes what is landed.
 
 Spawns: find, reader. Never: deliver, deliver-small, research, run.

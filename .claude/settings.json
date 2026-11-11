@@ -47,6 +47,11 @@
           {
             "type": "command",
             "command": "grep -n \"in progress\" \"$CLAUDE_PROJECT_DIR\"/docs/PROGRESS.md || true"
+          },
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR\"/tooling/disk.sh tidy --quiet 2>&1 | tail -20 || true",
+            "timeout": 180
           }
         ]
       }
