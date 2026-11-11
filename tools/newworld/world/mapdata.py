@@ -116,15 +116,57 @@ def camera(box: dict) -> dict:
     return {"min_height": 50000.0, "max_height": round(80000.0 * k), "pitch": 50.0}
 
 
+def wrld_mnam(esm: Path, edid: str = WORLD) -> dict:
+    """The written WRLD's MNAM, read from the ESM itself: top-level groups are skipped by size until GRUP WRLD, whose
+    records are read until the one with this editor id (MNAM: usable x, y int32; NW x, y, SE x, y int16; camera
+    min, max height, initial pitch float)."""
+    import zlib
+    with open(esm, "rb") as f:
+        head = f.read(24)
+        f.seek(24 + struct.unpack_from("<I", head, 4)[0])  # past TES4
+        while True:
+            gh = f.read(24)
+            if len(gh) < 24:
+                raise ValueError(f"no WRLD {edid} in {esm}")
+            size, label = struct.unpack_from("<I4s", gh, 4)
+            if gh[:4] != b"GRUP" or label != b"WRLD":
+                f.seek(size - 24, 1)
+                continue
+            end = f.tell() - 24 + size
+            while f.tell() < end:
+                h = f.read(24)
+                n = struct.unpack_from("<I", h, 4)[0]
+                if h[:4] == b"GRUP":
+                    f.seek(n - 24, 1)
+                    continue
+                body = f.read(n)
+                if struct.unpack_from("<I", h, 8)[0] & 0x40000:
+                    body = zlib.decompress(body[4:])
+                subs, o = {}, 0
+                while o < len(body):
+                    sig, ln = body[o:o + 4].decode("latin-1"), struct.unpack_from("<H", body, o + 4)[0]
+                    subs.setdefault(sig, body[o + 6:o + 6 + ln])
+                    o += 6 + ln
+                if subs.get("EDID", b"").rstrip(b"\0").decode("latin-1") == edid:
+                    ux, uy, nx, ny, sx, sy, lo, hi, pitch = struct.unpack_from("<2i4h3f", subs["MNAM"])
+                    return {"usable": [ux, uy], "nw": [nx, ny], "se": [sx, sy], "min_height": lo, "max_height": hi, "pitch": pitch}
+            raise ValueError(f"no WRLD {edid} in {esm}")
+
+
 def check_map(plugin: Path, scope_dir: Path) -> list[str]:
-    """Faults of map.json against the province: a province cell the pan box leaves out (more than the margin the
-    view reaches past the box), a box outside the built cells."""
+    """Faults of the written map against the province: the ESM's MNAM (read from the ESM, not the plan) against the
+    box and camera the scope gives, a province cell the box leaves out by more than MAP_MARGIN, a box outside the
+    built cells."""
     g, _ = grid(plugin)
-    mp = json.loads((plugin / "map" / "map.json").read_text())
+    esm = plugin / "ArgoniaNewWorld.esm"
+    mp = wrld_mnam(esm)
     want = map_box(g, scope_dir)
+    cam = camera(want)
     bad = []
     if mp["nw"] != want["nw"] or mp["se"] != want["se"]:
-        bad.append(f"pan box NW{mp['nw']} SE{mp['se']}, the province gives NW{want['nw']} SE{want['se']}")
+        bad.append(f"the ESM's pan box NW{mp['nw']} SE{mp['se']}, the province gives NW{want['nw']} SE{want['se']}")
+    if mp["max_height"] != cam["max_height"] or mp["min_height"] != cam["min_height"]:
+        bad.append(f"the ESM's camera {mp['min_height']:.0f}/{mp['max_height']:.0f}, the box gives {cam['min_height']:.0f}/{cam['max_height']}")
     px0, px1, py0, py1 = want["province"]
     if mp["nw"][0] - px0 > MAP_MARGIN or px1 - mp["se"][0] > MAP_MARGIN or py1 - mp["nw"][1] > MAP_MARGIN or mp["se"][1] - py0 > MAP_MARGIN:
         bad.append(f"province x {px0}..{px1} y {py0}..{py1} reaches past the box NW{mp['nw']} SE{mp['se']} by more than {MAP_MARGIN} cells")
@@ -213,8 +255,8 @@ def main(argv: list[str]) -> int:
         return 0
     if a.cmd == "checkmap":
         bad = check_map(plugin, Path(a.scope))
-        mp = json.loads((plugin / "map" / "map.json").read_text())
-        print(f"map box NW{mp['nw']} SE{mp['se']} province {mp.get('province_cells')} camera {mp.get('camera')}: {len(bad)} faults")
+        mp = wrld_mnam(plugin / "ArgoniaNewWorld.esm")
+        print(f"ESM map box NW{mp['nw']} SE{mp['se']} camera {mp['min_height']:.0f}/{mp['max_height']:.0f}: {len(bad)} faults")
         for b in bad:
             print("  FAIL", b)
         return 1 if bad else 0

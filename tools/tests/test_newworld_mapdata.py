@@ -53,6 +53,23 @@ def test_map_box_spans_the_whole_province_inside_the_built_cells(tmp_path):
     assert box["se"] == [97 - mapdata.MAP_MARGIN, -242 + mapdata.MAP_MARGIN]
 
 
+def test_wrld_mnam_is_read_from_the_esm_itself(tmp_path):
+    def sub(sig, data):
+        return sig.encode() + struct.pack("<H", len(data)) + data
+    def rec(sig, fid, body):
+        return sig.encode() + struct.pack("<IIIIHH", len(body), 0, fid, 0, 44, 0) + body
+    def grup(label, body):
+        return b"GRUP" + struct.pack("<I4sIIHH", 24 + len(body), label, 0, 0, 0, 0) + body
+    mnam = struct.pack("<2i4h3f", 0, 0, -76, -103, 87, -232, 50000.0, 160000.0, 50.0)
+    other = rec("WRLD", 0x801, sub("EDID", b"Other\0") + sub("MNAM", struct.pack("<2i4h3f", 0, 0, 1, 1, 2, 0, 1.0, 2.0, 3.0)))
+    ours = rec("WRLD", 0x800, sub("EDID", b"ArgoniaBlackMarsh\0") + sub("MNAM", mnam))
+    esm = tmp_path / "w.esm"
+    esm.write_bytes(rec("TES4", 0, sub("HEDR", b"\0" * 12)) + grup(b"STAT", rec("STAT", 0x900, sub("EDID", b"S\0")))
+                    + grup(b"WRLD", other + grup(b"\0\0\0\0", b"") + ours))
+    m = mapdata.wrld_mnam(esm)
+    assert m["nw"] == [-76, -103] and m["se"] == [87, -232] and m["max_height"] == 160000.0
+
+
 def test_camera_height_follows_the_box_from_tamriels():
     assert mapdata.camera({"nw": [-30, 15], "se": [40, -40]})["max_height"] == 80000  # Tamriel's own box
     assert mapdata.camera({"nw": [-76, -103], "se": [87, -232]})["max_height"] == 160000  # at most twice

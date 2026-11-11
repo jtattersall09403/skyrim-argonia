@@ -222,7 +222,9 @@ function Start-Tool($name, $argline) {
   Get-Process -Name ([IO.Path]::GetFileNameWithoutExtension($Exe[$name])) -EA SilentlyContinue | Stop-Process -Force
   if (-not (Test-Path $Exe[$name])) { throw "no $($Exe[$name]): lod.sh tools" }
   Say "start $($Exe[$name]) $argline" | Write-Host  # to the host: this function returns only the process
-  Start-Process $Exe[$name] -ArgumentList $argline -WorkingDirectory (Split-Path $Exe[$name]) -PassThru
+  $p = Start-Process $Exe[$name] -ArgumentList $argline -WorkingDirectory (Split-Path $Exe[$name]) -PassThru
+  $null = $p.Handle  # so ExitCode is kept for Measure-Run's message (PowerShell 5.1)
+  $p
 }
 $Paths = "-sse -autoload -d:`"$Data\`" -p:`"$Prefs\Plugins.txt`" -m:`"$Ini`""
 function Link-Into-Data($src, $sub = '') {
@@ -291,6 +293,7 @@ function Set-TerrainMeshes {
   $t0 = Get-Date
   $p = Start-Process "$dir\LODGenx64.exe" -ArgumentList "`"$txt`"" -WorkingDirectory $dir -PassThru -NoNewWindow `
          -RedirectStandardOutput "$Work\logs\terrain-lodgen.txt" -RedirectStandardError "$Work\logs\terrain-lodgen-err.txt"
+  $null = $p.Handle  # PowerShell 5.1 keeps ExitCode only when the handle was taken before the exit
   if (-not $p.WaitForExit($TimeoutMin * 60000)) { $p | Stop-Process -Force; throw "terrain: LODGen not done in $TimeoutMin min" }
   $n = @(Get-ChildItem "$($Out.terrain)\meshes\terrain\$World" -Filter *.btr | ? { $_.LastWriteTime -gt $t0 }).Count
   Say "terrain meshes: LODGen exit $($p.ExitCode), $n .btr rewritten in $([int]((Get-Date) - $t0).TotalSeconds) s"

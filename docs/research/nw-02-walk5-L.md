@@ -92,12 +92,21 @@ The plan for the next build (lodplan.json, read back by `lodplan coverage` after
 
 | mechanism | bases | refs |
 |---|---|---|
-| tree billboard (TexGen forced by DynDOLOD_SSE_TexGen_Billboards_*.txt; Has Tree LOD on 45 STAT trees) | 158 | 124,776 |
+| tree billboard (TexGen forced by DynDOLOD_SSE_TexGen_Billboards_*.txt; Has Tree LOD on our 45 STAT trees) | 158 | 124,776 |
+| tree billboard, Black Marsh.esm's static trees (an override of ours carries Has Tree LOD) | 14 | 24,074 |
 | object LOD, own LOD models (unchanged) | 50 | 22,571 |
-| object LOD, full model at LOD4 (and LOD8 when over 1,500 units), rule file DynDOLOD_SSE_argonianewworldesm.ini | 79 | 73,458 |
+| object LOD, full model at LOD4 (LOD8 for cliffs), rule file DynDOLOD_SSE_argonianewworldesm.ini, within the budget | 10 | 3,877 |
+| none: full model too heavy for the per-block budget (logs, stumps, rocks; no LOD mesh of the shape exists) | 33 | 28,755 |
+| none: Skyrim's own None families (RockL/M/S, rock piles) and rocks under 1,500 units | 37 | 34,361 |
 | none: harvestable flora (FLOR) | 31 | 40,070 |
-| none: small (bounds under 512 units: reeds, ferns, herbs, small rocks, small plants) | 130 | 265,311 |
+| none: small (bounds under 512 units: reeds, ferns, herbs, small rocks, small plants) | 115 | 247,702 |
 | none: low and wide ground cover (under 256 units high) | 24 | 30,681 |
+
+The budget: a full model is used as is (DynDOLOD does not decimate it), so a rule may add to each LOD block at most
+what Tamriel's own object LOD carries there: measured on the 517 LOD4 and 152 LOD8 .bto of Skyrim - Meshes1.bsa,
+p50 3,864 / p90 9,327 / max 18,141 triangles a LOD4 block, p90 14,263 a LOD8 block; the p90 is the budget. Models are
+taken largest first; uprooted logs (4,562 triangles x 2,206 refs) and large logs (3,409 x 1,740) are refused. 172
+billboards in all, under the 256 a world.
 
 DynDOLOD's own rules, measured: rules apply top to bottom, first match wins; a `plugin;form id` mask is a
 reference's, never a base's (dyndolod.info Mesh-Mask-Reference-Rules), so ours are mesh masks; a plugin's rule file
@@ -116,7 +125,8 @@ Helstrom's place record: world -32174, -605839, cell (-8, -148) in the plugin's 
 below -128 was affected (all but Thorn -125 and the estuary -115); `coc ArgoniaNWStart` (cell -7,-128) worked. The
 native way, as Skyrim's `coc Riverwood`: a named exterior cell with a COCMarkerHeading (Skyrim.esm 000032). 266
 teleports (258 places, 8 walk checks) in 265 named cells, 0 faults in `teleports check` (land at least 8 units above
-the water and all its neighbours, gentle, 96 units clear of placed objects, inside its own cell: 11 places stand on
+the water and all its neighbours, gentle, 96 units clear of placed objects and clear of a built place's buildings
+by their footprints, on the ground with the place's land patches (newworld/places/<id>/), inside its own cell: 11 places stand on
 water and land in the nearest cell with dry ground, 5 seabed ruins and wrecks with no land within 3 cells land on the
 water above them).
 

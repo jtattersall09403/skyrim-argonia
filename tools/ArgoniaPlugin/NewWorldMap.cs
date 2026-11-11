@@ -73,7 +73,7 @@ static class NewWorldMap
             });
         }
         var nCoc = Teleports(mod, ws, mapDir);
-        var (nFlag, nBill, nRule) = LodPlan(mod, mapDir);
+        var (nFlag, nBill, nRule) = LodPlan(mod, mapDir, data);
         var lo = mod.ModHeader.MasterReferences.Select(r => r.Master).Append(mod.ModKey).ToList();
         var dir = Path.GetDirectoryName(Path.GetFullPath(esm))!;
         var tmpDir = Path.Combine(dir, ".writing-map"); Directory.CreateDirectory(tmpDir);
@@ -140,13 +140,16 @@ static class NewWorldMap
     //       mask is a reference's, never a base's)
     static string Squash(string file) => new string(file.ToLowerInvariant().Where(char.IsLetterOrDigit).ToArray());
 
-    static (int, int, int) LodPlan(SkyrimMod mod, string mapDir)
+    static (int, int, int) LodPlan(SkyrimMod mod, string mapDir, string data)
     {
         var doc = JsonIf(Path.Combine(mapDir, "lodplan.json"));
         if (doc is not { } d) { Console.WriteLine("  no lodplan.json: no LOD plan"); return (0, 0, 0); }
         var ours = mod.EnumerateMajorRecords().Where(r => r.EditorID != null && (r is IStatic || r is ITree))
             .GroupBy(r => r.EditorID!).ToDictionary(g => g.Key, g => g.First());
         foreach (var s in mod.Statics) s.MajorFlags &= ~Static.MajorFlag.HasTreeLOD;
+        // our overrides of masters' statics exist only for the flag: dropped, then made again from the plan
+        foreach (var fk in mod.Statics.Where(s => s.FormKey.ModKey != mod.ModKey).Select(s => s.FormKey).ToList()) mod.Statics.Remove(fk);
+        var masters = new Dictionary<ModKey, ISkyrimModDisposableGetter>();
         var bill = new Dictionary<string, List<string>>();
         var rules = new List<string>();
         int flags = 0;
@@ -160,6 +163,17 @@ static class NewWorldMap
             {
                 var fk = FormKey.Factory(b.GetProperty("key").GetString()!);
                 plugin = fk.ModKey.FileName; id = fk.ID;
+                if (mech == "tree" && b.GetProperty("sig").GetString() == "STAT")
+                {
+                    // a master's static tree: an override of ours carries the flag (the master's record, flag added)
+                    if (!mod.ModHeader.MasterReferences.Any(m => m.Master == fk.ModKey)) throw new InvalidDataException($"lodplan: {fk} is not of a master");
+                    if (!masters.TryGetValue(fk.ModKey, out var m)) masters[fk.ModKey] = m = SkyrimMod.CreateFromBinaryOverlay(Path.Combine(data, fk.ModKey.FileName), Rel);
+                    var src = m.Statics.FirstOrDefault(s => s.FormKey == fk) ?? throw new InvalidDataException($"lodplan: {fk} is no STAT in {fk.ModKey}");
+                    var ov = (Static)src.DeepCopy();
+                    ov.MajorFlags |= Static.MajorFlag.HasTreeLOD;
+                    mod.Statics.Set(ov);
+                    flags++;
+                }
             }
             else
             {
@@ -175,7 +189,7 @@ static class NewWorldMap
             }
             else
             {
-                var mask = "\\" + b.GetProperty("model").GetString()!.Replace('/', '\\').ToLowerInvariant();
+                var mask = b.GetProperty("model").GetString()!.Replace('/', '\\').ToLowerInvariant();
                 var lod8 = b.GetProperty("lod8").GetBoolean() ? "Full" : "None";
                 if (!rules.Any(r => r.StartsWith(mask + ","))) rules.Add($"{mask},Full,{lod8},None,None,FarLOD,Unchanged,0");
             }
@@ -240,18 +254,65 @@ static class NewWorldMap
         int flagged = 0;
         if (JsonIf(Path.Combine(mapDir, "lodplan.json")) is { } lp)
         {
-            var want = lp.GetProperty("bases").EnumerateArray().Where(b => b.GetProperty("mech").GetString() == "tree" && b.GetProperty("key").ValueKind != JsonValueKind.String)
-                .Select(b => b.GetProperty("edid").GetString()!).ToHashSet();
+            var plan = lp.GetProperty("bases").EnumerateArray().ToList();
+            string Mech(JsonElement b) => b.GetProperty("mech").GetString()!;
+            bool Keyed(JsonElement b) => b.GetProperty("key").ValueKind == JsonValueKind.String;
+            // Has Tree LOD on exactly the statics planned as trees: ours by editor id, a master's on our override
+            var want = plan.Where(b => Mech(b) == "tree" && !Keyed(b)).Select(b => b.GetProperty("edid").GetString()!).ToHashSet();
+            var wantOv = plan.Where(b => Mech(b) == "tree" && Keyed(b) && b.GetProperty("sig").GetString() == "STAT")
+                .Select(b => FormKey.Factory(b.GetProperty("key").GetString()!)).ToHashSet();
             foreach (var s in mod.Statics)
             {
                 var has = s.MajorFlags.HasFlag(Static.MajorFlag.HasTreeLOD);
                 if (has) flagged++;
-                if (has != want.Contains(s.EditorID ?? "")) fails.Add($"{s.EditorID} Has Tree LOD {has}");
+                var should = s.FormKey.ModKey == mod.ModKey ? want.Contains(s.EditorID ?? "") : wantOv.Contains(s.FormKey);
+                if (has != should) fails.Add($"{s.EditorID} {s.FormKey} Has Tree LOD {has}");
             }
-            if (!File.Exists(Path.Combine(mapDir, $"DynDOLOD_SSE_{Squash(mod.ModKey.FileName)}.ini"))) fails.Add("no DynDOLOD rule file: nwmap apply owed");
-            var nb = Directory.GetFiles(mapDir, "DynDOLOD_SSE_TexGen_Billboards_*.txt").Sum(f => File.ReadAllLines(f).Length);
-            var nt = lp.GetProperty("bases").EnumerateArray().Count(b => b.GetProperty("mech").GetString() == "tree");
+            foreach (var fk in wantOv.Where(k => !mod.Statics.ContainsKey(k))) fails.Add($"no override of {fk} with Has Tree LOD");
+            // each billboard line: <plugin>;<form id>;<edid>,True resolving to a planned tree that is a TREE or a flagged STAT here
+            var trees = mod.Trees.ToDictionary(t => t.FormKey);
+            var statics = mod.Statics.ToDictionary(s => s.FormKey);
+            var planTrees = plan.Where(b => Mech(b) == "tree").ToDictionary(b => b.GetProperty("edid").GetString()!);
+            int nb = 0;
+            foreach (var f in Directory.GetFiles(mapDir, "DynDOLOD_SSE_TexGen_Billboards_*.txt"))
+                foreach (var ln in File.ReadAllLines(f))
+                {
+                    nb++;
+                    var m = System.Text.RegularExpressions.Regex.Match(ln, @"^([^;]+);([0-9A-F]{8});([^,]+),True$");
+                    if (!m.Success) { fails.Add($"billboard line '{ln}'"); continue; }
+                    if (!planTrees.TryGetValue(m.Groups[3].Value, out var pb)) { fails.Add($"billboard {m.Groups[3].Value} not planned as a tree"); continue; }
+                    var plugin = mod.ModHeader.MasterReferences.Select(x => x.Master).Append(mod.ModKey).FirstOrDefault(k => k.FileName.String.Equals(m.Groups[1].Value, StringComparison.OrdinalIgnoreCase));
+                    if (plugin.IsNull) { fails.Add($"billboard {ln}: {m.Groups[1].Value} is neither ours nor a master"); continue; }
+                    var fk = new FormKey(plugin, Convert.ToUInt32(m.Groups[2].Value, 16) & 0xFFFFFF);
+                    var ok = trees.ContainsKey(fk) || (statics.TryGetValue(fk, out var st) && st.MajorFlags.HasFlag(Static.MajorFlag.HasTreeLOD))
+                             || (plugin != mod.ModKey && pb.GetProperty("sig").GetString() == "TREE" && Keyed(pb) && FormKey.Factory(pb.GetProperty("key").GetString()!) == fk);
+                    if (!ok) fails.Add($"billboard {ln}: no TREE or Has-Tree-LOD STAT {fk} here");
+                }
+            var nt = planTrees.Count;
             if (nb != nt) fails.Add($"TexGen billboard files list {nb} bases, lodplan.json {nt}: nwmap apply owed");
+            if (nt > 256) fails.Add($"{nt} tree billboards: past DynDOLOD's 256 a world");
+            // the rule file: [Skyrim LODGen], LODGen1..n, 8 fields, the mask a planned object model, LOD8 as planned
+            var rf = Path.Combine(mapDir, $"DynDOLOD_SSE_{Squash(mod.ModKey.FileName)}.ini");
+            var objs = plan.Where(b => Mech(b) == "object").GroupBy(b => b.GetProperty("model").GetString()!.Replace('/', '\\').ToLowerInvariant())
+                .ToDictionary(g => g.Key, g => g.First().GetProperty("lod8").GetBoolean());
+            if (!File.Exists(rf)) fails.Add("no DynDOLOD rule file: nwmap apply owed");
+            else
+            {
+                var lines = File.ReadAllLines(rf).Where(l => l.Trim() != "").ToList();
+                if (lines.FirstOrDefault() != "[Skyrim LODGen]") fails.Add("rule file does not open with [Skyrim LODGen]");
+                var seenMasks = new HashSet<string>();
+                for (var i = 1; i < lines.Count; i++)
+                {
+                    var m = System.Text.RegularExpressions.Regex.Match(lines[i], @"^LODGen(\d+)=(.*)$");
+                    var f = m.Success ? m.Groups[2].Value.Split(',') : [];
+                    if (!m.Success || int.Parse(m.Groups[1].Value) != i) { fails.Add($"rule line {i} '{lines[i]}' not LODGen{i}"); continue; }
+                    if (f.Length != 8) { fails.Add($"rule {i}: {f.Length} fields, not 8"); continue; }
+                    if (f[0].StartsWith('\\') || !objs.TryGetValue(f[0], out var l8)) { fails.Add($"rule {i}: mask {f[0]} is no planned object model"); continue; }
+                    seenMasks.Add(f[0]);
+                    if (f[1] != "Full" || f[2] != (l8 ? "Full" : "None") || f[3] != "None" || f[4] != "None") fails.Add($"rule {i}: levels {string.Join(",", f[1..5])}, plan LOD8 {l8}");
+                }
+                foreach (var miss in objs.Keys.Where(k => !seenMasks.Contains(k))) fails.Add($"planned object model {miss} has no rule");
+            }
         }
         Console.WriteLine($"  teleport cells named with their marker {named}; statics with Has Tree LOD {flagged}");
         Console.WriteLine($"nwmap check: WRLD {World} MNAM usable {md.UsableDimensions} NW{md.NorthwestCellCoords} SE{md.SoutheastCellCoords} cam {md.CameraMinHeight}/{md.CameraMaxHeight}/{md.CameraInitialPitch}; ONAM scale {ws.WorldMapOffsetScale} offset {ws.WorldMapCellOffset}");

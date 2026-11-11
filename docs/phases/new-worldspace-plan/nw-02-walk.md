@@ -82,11 +82,12 @@ show in the console with `getpos x` and `getpos y`, or just name the place). A s
 - [ ] **K. Weather.** `fw 0C821E`, then `fw 0C821F`: fog and rain both look like Black Marsh's own, not snow or a
       Skyrim sky.
 - [ ] **L. The distance.** At Helstrom (`coc ANWHelstrom`) and in the Arnesian jungle (`coc ANWThorn`), stand still
-      and look out, then fly up with `tfc` and `sucsm 1000`: trees, palms, tall plants, big rocks, logs and cliffs
-      are drawn far off (as flat cut-outs for trees, as low-detail shapes for rocks and logs) and do not appear from
-      nothing as you come near. Small plants, ferns, herbs, reeds, grass and small stones still appear only within
-      about 100 to 150 metres, as in Skyrim. The ground far off does not flicker as you move, and land does not
-      flicker against water.
+      and look out, then fly up with `tfc` and `sucsm 1000`: trees, palms and tall plants (including the mangroves and
+      swamp trees) are drawn far off as flat cut-outs and do not appear from nothing as you come near; cliffs and the
+      big rock outcrops that have a far-off shape are drawn too. Most fallen logs, stumps and boulders still appear
+      only within about 100 to 150 metres: their full shapes are too heavy to draw far off and no lighter shape of them
+      exists (we make none). Small plants, ferns, herbs, reeds, grass and small stones also appear only within that
+      distance, as in Skyrim. The ground far off does not flicker as you move.
 - [ ] **M. The map.** Press M anywhere in the new world: the map shows Black Marsh's land; you can pan to every edge
       of the province (the island in the eastern sea at Topal Bay, the oceans to the south and west, the land to the
       north and north-west) and zoom out to see most of the province at once; the settlement markers are there (only

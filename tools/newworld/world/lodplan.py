@@ -9,10 +9,13 @@ of 2026-11-09 (DynDOLOD_SSE_BillboardsUsed_ArgoniaBlackMarsh.txt, LODGen_SSE_Exp
     (TexGen_SSE.ini) AND whose model path holds "tree". Most King of the Murkmire plants and every BM&V or KotM tree
     kept as a STAT failed one of those: 54 TREE bases (91,469 refs) and 50 STAT trees were listed ",False" or never
     considered. TexGen's override file DynDOLOD_SSE_TexGen_Billboards_<plugin>.txt forces a listed base's billboard
-    (",True"), and the writer sets "Has Tree LOD" on our STAT trees.
-  - object LOD is drawn for a STAT with LOD models (its own <model>_lod*.nif or DynDOLOD Resources' meshes\\lod\\...);
-    a large rock, log or cliff without one is drawn by a DynDOLOD rule naming its full model ("Full") at LOD4 (and
-    LOD8 when it is very large), the rule placed ahead of the preset's catch-all.
+    (",True"), and the writer sets "Has Tree LOD" on our STAT trees (a master's static tree on an override of ours).
+    At most 256 billboards a world: past that the fewest-placed get none.
+  - object LOD is drawn for a STAT with LOD models (its own <model>_lod*.nif or DynDOLOD Resources' meshes\\lod\\...,
+    found where DynDOLOD looks); a large log, cliff or rock (over 1,500 units) without one may be drawn by a rule naming
+    its full model ("Full", no decimation) at LOD4, and LOD8 for cliffs alone, only while every LOD block stays within
+    BUDGET, the triangles Tamriel's own object LOD carries per block; past it the model gets none (we make no LOD
+    meshes). Skyrim's own None families (RockL/M/S, rock piles) and rocks under 1,500 units get none.
   - small things get no LOD in Skyrim (grass, ground cover, herbs, ferns, small rocks: DynDOLOD's Medium preset
     rules \\rockl, \\rockm, \\rockpile None): they are drawn only inside the loaded cells, fading by the ini's
     fLODFadeOutMultObjects; nothing here changes that.
@@ -41,11 +44,19 @@ REPO = Path(__file__).resolve().parents[3]
 OWN_LOD = Path(__file__).with_name("lod_models.json")  # models DynDOLOD found LOD models for (measured, refreshed by coverage)
 MIN_MAGNITUDE = 512.0  # TexGen_SSE.ini MinTreeModelMagnitude: bounds diagonal
 MIN_HEIGHT = 256.0  # TexGen_SSE.ini MinTreeModelHeight: bounds Z2
-LOD8_MAGNITUDE = 1500.0  # a full model also at LOD8: the very large (cliffs, fallen giants)
+BOULDER_MAGNITUDE = 1500.0  # a rock smaller than this gets no LOD (Skyrim gives its RockL/M/S none)
 BILLBOARD_CAP = 256  # DynDOLOD: at most 256 billboards in one worldspace's tree LOD atlas
 TREE_CLASSES = {"canopy_tree", "palm", "understorey", "water_plant", "seabed_plant"}
-OBJECT_CLASSES = {"log", "boulder", "cliff", "road_rock_pile", "road_boulder", "seabed_rock", "mushroom", "road_fence",
-                  "road_cairn", "road_signpost"}
+OBJECT_CLASSES = {"log", "boulder", "cliff", "road_boulder", "seabed_rock", "mushroom", "road_fence", "road_cairn",
+                  "road_signpost"}
+ROCK_CLASSES = {"boulder", "road_boulder", "seabed_rock"}
+LOD8_CLASSES = {"cliff"}  # a full model also at LOD8: cliffs alone (DynDOLOD: LOD8/16 None for small objects)
+# DynDOLOD's Medium preset rules that give a model family no LOD (Rules\DynDOLOD_SSE_Medium.ini, in its preset ini):
+SKYRIM_NONE = ("\\rockl", "\\rockm", "\\rocks0", "\\rockpile", "\\icepile", "\\snowdrifts\\", "\\roadchunk", "\\hay\\")
+# The triangles a full-model rule may add to one LOD block: the 90th percentile of what Tamriel's own object LOD
+# carries per block (Skyrim - Meshes1.bsa, meshes\terrain\tamriel\objects: 517 LOD4 .bto p50 3,864, p90 9,327,
+# max 18,141; 152 LOD8 .bto p50 6,156, p90 14,263), measured 2026-11-10.
+BUDGET = {4: 9327, 8: 14263}
 
 
 def initials(file: str) -> str:
@@ -57,15 +68,52 @@ def our_edid(b: dict) -> str:
     return f"ANW_{initials(b['plugin'])}_{b['edid']}" if b["copied"] else b["edid"]
 
 
-def refs_per_base(plugin: Path) -> tuple[collections.Counter, dict]:
-    n, cls = collections.Counter(), {}
+def refs_per_base(plugin: Path) -> tuple[collections.Counter, dict, dict]:
+    """Refs per base, its placer class, and its refs per LOD block {level: Counter((bx, by))} (a level-L block holds
+    L x L cells from a multiple of L, the .lod grid's)."""
+    n, cls, blocks = collections.Counter(), {}, {}
     for f in glob.glob(str(plugin / "refs" / "flora" / "cy*.jsonl")):
         with open(f) as fh:
             for ln in fh:
                 r = json.loads(ln)
                 n[r["base"]] += 1
                 cls.setdefault(r["base"], r.get("cls"))
-    return n, cls
+                cx, cy = int(r["x"] // 4096), int(r["y"] // 4096)
+                b = blocks.setdefault(r["base"], {4: collections.Counter(), 8: collections.Counter()})
+                for lvl in (4, 8):
+                    b[lvl][(cx // lvl, cy // lvl)] += 1
+    return n, cls, blocks
+
+
+def lod_model(model: str, read) -> str | None:
+    """A LOD model of the same shape where DynDOLOD looks for one by name (dyndolod.info Mod-Authors: <model>_lod_0..3
+    beside it or under meshes\\lod\\), found in the NewWorld profile; None when there is none."""
+    m = model.replace("/", "\\").lower()
+    stem = m[:-4] if m.endswith(".nif") else m
+    rest = stem.split("\\", 1)[1] if "\\" in stem else stem
+    for c in (f"{stem}_lod.nif", f"{stem}_lod_0.nif", f"lod\\{rest}_lod_0.nif", f"lod\\{rest}_lod.nif", f"lod\\{stem}_lod_0.nif"):
+        if read(c) is not None:
+            return c
+    return None
+
+
+def triangles(model: str, read) -> int | None:
+    """The full model's drawn triangles (every shape not hidden), or None when it cannot be read."""
+    from tools.places.assets import nifglb
+    raw = read(model)
+    if raw is None:
+        return None
+    try:
+        return sum(s["tris"] for s in nifglb.dump(raw)["shapes"] if not s.get("hidden"))
+    except Exception:  # noqa: BLE001 - a mesh nifdump cannot read is a model with no count
+        return None
+
+
+def resolver():
+    """read(model path under meshes) -> bytes | None, as the NewWorld profile has it (tools/places/assets/resolve.py)."""
+    from tools.places.assets import resolve
+    r = resolve.default()
+    return lambda p: r.read(resolve.norm(p, "meshes"))
 
 
 def own_lod_models(extra: Path | None = None) -> set[str]:
@@ -87,11 +135,14 @@ def classify(b: dict, refs: int, cls: str | None, own: set[str]) -> tuple[str, s
     if b["sig"] == "TREE" and big:
         return "tree", "TREE base at TexGen's size: billboard forced"
     if b["sig"] == "STAT" and cls in TREE_CLASSES and big:
-        if b["copied"]:
-            return "tree", "STAT tree at TexGen's size: Has Tree LOD set, billboard forced"
-        # a master's STAT (Black Marsh.esm) cannot carry our flag: its full model below
+        # ours carries the flag itself; a master's (Black Marsh.esm) gets an override of ours that carries it
+        return "tree", "STAT tree at TexGen's size: Has Tree LOD set" + ("" if b["copied"] else " on our override") + ", billboard forced"
+    if b["sig"] == "STAT" and any(s in "\\" + model for s in SKYRIM_NONE):
+        return "none", "a model family Skyrim's own LOD rules give none (RockL/M/S, rock piles)"
+    if b["sig"] == "STAT" and cls in ROCK_CLASSES and mag < BOULDER_MAGNITUDE:
+        return "none", f"rock under {BOULDER_MAGNITUDE:.0f} units: no LOD, as Skyrim's RockL/M/S"
     if b["sig"] == "STAT" and mag >= MIN_MAGNITUDE and (cls in OBJECT_CLASSES or (cls in TREE_CLASSES and o[5] >= MIN_HEIGHT)):
-        return "object", "large STAT without LOD models: full model rule at LOD4" + (" and LOD8" if mag >= LOD8_MAGNITUDE else "")
+        return "object", "large STAT without LOD models: full model rule at LOD4" + (" and LOD8" if cls in LOD8_CLASSES else "")
     if b["sig"] == "FLOR":
         return "none", "flora (harvestable plant): no LOD in Skyrim"
     if mag >= MIN_MAGNITUDE:
@@ -99,24 +150,66 @@ def classify(b: dict, refs: int, cls: str | None, own: set[str]) -> tuple[str, s
     return "none", f"small ({cls}, bounds {mag:.0f} units): no LOD in Skyrim, drawn in the loaded cells"
 
 
-def build(plugin: Path, extra: Path | None = None) -> dict:
+def budget(rows: list[dict], blocks: dict, tris: dict) -> None:
+    """Full-model rules within the per-block budget: models taken largest first; a model whose triangles times its
+    refs would carry any LOD4 block (or, for an LOD8 rule, any LOD8 block) past BUDGET gets no LOD (we make no LOD
+    meshes). A rule is per model (a mesh mask), so a model's bases are taken or refused together."""
+    by_model: dict[str, list[dict]] = {}
+    for r in rows:
+        if r["mech"] == "object":
+            by_model.setdefault(r["model"].lower(), []).append(r)
+    load = {4: collections.Counter(), 8: collections.Counter()}
+    for model, rs in sorted(by_model.items(), key=lambda kv: -max(r["magnitude"] for r in kv[1])):
+        t = tris.get(model)
+        add = {lvl: collections.Counter() for lvl in (4, 8)}
+        for r in rs:
+            for lvl in (4, 8) if r["lod8"] else (4,):
+                for k, v in blocks[r["source"]][lvl].items():
+                    add[lvl][k] += v * (t or 0)
+        over = [(lvl, k, load[lvl][k] + v) for lvl in add for k, v in add[lvl].items() if load[lvl][k] + v > BUDGET[lvl]]
+        if t is None or over:
+            why = ("its full model cannot be read" if t is None else
+                   f"its full model ({t} triangles) would carry LOD{over[0][0]} block {over[0][1]} to {over[0][2]} triangles, "
+                   f"past Tamriel's {BUDGET[over[0][0]]}: no LOD (no LOD mesh of the shape exists, and we make none)")
+            for r in rs:
+                r["mech"], r["why"], r["lod8"] = "none", why, False
+            continue
+        for lvl in add:
+            load[lvl].update(add[lvl])
+    for r in rows:
+        if r["mech"] == "object":
+            r["block_peak"] = {lvl: max((load[lvl][k] for k in blocks[r["source"]][lvl]), default=0) for lvl in (4, 8)}
+
+
+def build(plugin: Path, extra: Path | None = None, read=None) -> dict:
     bases = json.loads((plugin / "refs" / "flora" / "bases.json").read_text())
-    n, cls = refs_per_base(plugin)
+    n, cls, blocks = refs_per_base(plugin)
     own = own_lod_models(extra)
-    rows = []
+    read = read or resolver()
+    rows, tris = [], {}
     for b in bases["bases"]:
         mech, why = classify(b, n[b["ref"]], cls.get(b["ref"]), own)
         o = b["obnd"]
+        model = b["model"].replace("/", "\\").lower()
+        lm = None
+        if mech == "object":
+            lm = lod_model(model, read)
+            if lm:
+                mech, why = "own", f"a LOD model of the same shape, {lm} (DynDOLOD's catch-all rule finds it)"
+            elif model not in tris:
+                tris[model] = triangles(model, read)
         rows.append({"edid": our_edid(b), "plugin": "ArgoniaNewWorld.esm" if b["copied"] else b["plugin"],
                      "key": None if b["copied"] else b["key"],  # a master's own form key; ours is read from the ESM
                      "source": b["ref"], "sig": b["sig"], "cls": cls.get(b["ref"]), "refs": n[b["ref"]],
                      "magnitude": round(math.dist(o[:3], o[3:])), "model": b["model"], "mech": mech, "why": why,
-                     "lod8": mech == "object" and math.dist(o[:3], o[3:]) >= LOD8_MAGNITUDE})
+                     "triangles": tris.get(model), "lod_model": lm,
+                     "lod8": mech == "object" and cls.get(b["ref"]) in LOD8_CLASSES})
+    budget(rows, blocks, tris)
     trees = [r for r in rows if r["mech"] == "tree"]
-    if len(trees) > BILLBOARD_CAP:  # keep the most-placed; the rest drawn as objects (full model)
-        trees.sort(key=lambda r: -r["refs"] * r["magnitude"])
+    if len(trees) > BILLBOARD_CAP:  # the atlas holds 256: the most-placed keep theirs
+        trees.sort(key=lambda r: -r["refs"])
         for r in trees[BILLBOARD_CAP:]:
-            r["mech"], r["why"] = "object", f"over the {BILLBOARD_CAP}-billboard atlas: full model rule at LOD4"
+            r["mech"], r["why"] = "none", f"past the {BILLBOARD_CAP}-billboard atlas (fewer refs than the {BILLBOARD_CAP} kept)"
     tally = collections.defaultdict(lambda: [0, 0])
     for r in rows:
         tally[r["mech"]][0] += 1

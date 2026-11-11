@@ -18,7 +18,8 @@ named cell is found by its editor id, so `coc` never passes cell numbers through
 
 The landing: the heightmap sample nearest the place's centre, inside the place's own cell (the cell holding the
 centre), whose height and its eight neighbours' are at least LAND_MIN above the water, gentle (SLOPE_MAX a sample),
-and CLEAR from every placed object; when the own cell has none, the nearest such sample in the cells around (named
+and CLEAR from every placed object (a built place's buildings by their footprints, its land patches applied to the
+ground: newworld/places/<id>/, the places plugin's own content); when the own cell has none, the nearest such sample in the cells around (named
 in the list as a neighbour cell, the place being on water); a place on water with no dry land within SEARCH_CELLS
 (a seabed ruin, a wreck at sea) lands on the water's surface above its centre. Two places in one cell share its name (the first by
 importance names it). The start cell keeps NewWorld.cs's name, ArgoniaNWStart.
@@ -39,6 +40,7 @@ from tools.newworld.world import units as su
 
 REPO = Path(__file__).resolve().parents[2]
 DB = REPO / "newworld/story/data/db"
+PLACES = REPO / "newworld/places"  # the built places: their exterior refs and land patches are in the places plugin
 WORLD = "ArgoniaBlackMarsh"
 START_CELL = "ArgoniaNWStart"  # NewWorld.cs StartCell: the start marker's cell
 LAND_MIN = 8.0  # units above the water: one VHGT step
@@ -71,16 +73,58 @@ def grid(plugin: Path) -> su.Grid:
     return su.Grid(g["build_id"], g["width"], g["height"], g["origin_x"], g["origin_y"], g["water"])
 
 
-def refs_by_cell(plugin: Path) -> dict[tuple[int, int], np.ndarray]:
-    """Placed objects' x, y per cell (every producer under refs/)."""
+def _add(acc: dict, x: float, y: float, rad: float) -> None:
+    """One keep-out circle, listed in every cell it touches."""
+    for cx in range(int((x - rad) // su.CELL_UNITS), int((x + rad) // su.CELL_UNITS) + 1):
+        for cy in range(int((y - rad) // su.CELL_UNITS), int((y + rad) // su.CELL_UNITS) + 1):
+            acc.setdefault((cx, cy), []).append((x, y, rad))
+
+
+def refs_by_cell(plugin: Path, places: Path | None = PLACES) -> dict[tuple[int, int], np.ndarray]:
+    """Keep-out circles (x, y, radius) per cell: every placed object of the world (refs/<producer>/cy*.jsonl, CLEAR
+    round it) and of each built place's exterior (newworld/places/<id>/spaces/exterior/refs.jsonl, written into
+    the places plugin): a building or other seated piece by its footprint's far corner, scaled, plus CLEAR."""
     acc: dict[tuple[int, int], list] = {}
     for f in glob.glob(str(plugin / "refs" / "*" / "cy*.jsonl")):
         with open(f) as fh:
             for ln in fh:
                 r = json.loads(ln)
                 x, y = r.get("x", r.get("pos", [0, 0])[0]), r.get("y", r.get("pos", [0, 0])[1])
-                acc.setdefault((int(x // su.CELL_UNITS), int(y // su.CELL_UNITS)), []).append((x, y))
+                acc.setdefault((int(x // su.CELL_UNITS), int(y // su.CELL_UNITS)), []).append((x, y, CLEAR))
+    for f in sorted(glob.glob(str(places / "*" / "spaces" / "exterior" / "refs.jsonl"))) if places else []:
+        with open(f) as fh:
+            for ln in fh:
+                if not ln.strip():
+                    continue
+                r = json.loads(ln)
+                foot = (r.get("seat") or {}).get("foot")
+                far = max(math.hypot(a, b) for a in foot[0::2] for b in foot[1::2]) * float(r.get("scale") or 1) if foot else 0.0
+                _add(acc, r["pos"][0], r["pos"][1], far + CLEAR)
     return {k: np.asarray(v, float) for k, v in acc.items()}
+
+
+def ground(plugin: Path, g: su.Grid, places: Path | None = PLACES) -> np.ndarray:
+    """The ground as the game will have it: the world's heightmap with each built place's land patches
+    (newworld/places/<id>/land.jsonl rows {cell, verts: [[row, col, dz]...]}, row and col from the cell's south-west
+    corner as tools/places/seat.py applies them); a vertex shared by two cells is patched once."""
+    h = np.load(plugin / "land" / "limited.npy", mmap_mode="r")
+    pat: dict[tuple[int, int], float] = {}
+    for f in sorted(glob.glob(str(places / "*" / "land.jsonl"))) if places else []:
+        for ln in Path(f).read_text().splitlines():
+            if not ln.strip():
+                continue
+            row = json.loads(ln)
+            cx, cy = row["cell"]
+            for vr, vc, dz in row["verts"]:
+                x, y = (cx * 32 + vc) * su.VERTEX_SPACING_UNITS, (cy * 32 + vr) * su.VERTEX_SPACING_UNITS
+                pat[(round((g.origin_y - y) / su.VERTEX_SPACING_UNITS), round((x - g.origin_x) / su.VERTEX_SPACING_UNITS))] = float(dz)
+    if not pat:
+        return h
+    h = np.array(h, np.float32)
+    for (r, c), dz in pat.items():
+        if 0 <= r < g.height and 0 <= c < g.width:
+            h[r, c] += dz
+    return h
 
 
 def cell_ok(g: su.Grid, h: np.ndarray, refs: dict, cx: int, cy: int) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
@@ -108,8 +152,7 @@ def cell_ok(g: su.Grid, h: np.ndarray, refs: dict, cx: int, cy: int) -> tuple[np
         y = g.origin_y - rr * su.VERTEX_SPACING_UNITS
         for i in range(0, len(pts), 512):
             p = pts[i:i + 512]
-            d = np.hypot(x[..., None] - p[:, 0], y[..., None] - p[:, 1]).min(-1)
-            ok &= d >= CLEAR
+            ok &= (np.hypot(x[..., None] - p[:, 0], y[..., None] - p[:, 1]) >= p[:, 2]).all(-1)
     # a sample on the cell's own edge belongs to two cells: keep the landing strictly inside this one
     ok[[0, -1], :] = ok[:, [0, -1]] = False
     return rr.ravel(), cc.ravel(), ok.ravel()
@@ -146,13 +189,13 @@ def surface(g: su.Grid, x: float, y: float, own: tuple[int, int]) -> dict:
             "own_cell": True, "surface": True}
 
 
-def build(plugin: Path) -> dict:
+def build(plugin: Path, built: Path | None = PLACES) -> dict:
     g = grid(plugin)
-    h = np.load(plugin / "land" / "limited.npy", mmap_mode="r")
+    h = ground(plugin, g, built)
     man = json.loads((plugin / "land" / "manifest.json").read_text())
     start_cell = tuple(man["marker"]["cell"])
     cells = json.loads((plugin / "cells.json").read_text())["cells"]
-    refs = refs_by_cell(plugin)
+    refs = refs_by_cell(plugin, built)
     places = [json.loads(ln) for ln in (DB / "place.jsonl").read_text().splitlines() if ln.strip()]
     places.sort(key=lambda p: (-(p.get("importance") or 0), p["id"]))
     names: dict[tuple[int, int], str] = {start_cell: START_CELL}
@@ -214,14 +257,15 @@ def markdown(doc: dict) -> str:
     return "\n".join(lines) + "\n"
 
 
-def check(plugin: Path) -> list[str]:
+def check(plugin: Path, built: Path | None = PLACES) -> list[str]:
     """Faults: a landing not above the water (itself and its neighbours), not in its named cell, a place landing
-    outside its own cell while its own cell has dry land, a landing within CLEAR of a placed object, a name used
-    twice for two cells."""
+    outside its own cell while its own cell has dry land, a landing inside a placed object's keep-out (a world ref,
+    or a built place's building or piece), a name used twice for two cells. The ground is the world's with the built
+    places' land patches."""
     g = grid(plugin)
-    h = np.load(plugin / "land" / "limited.npy", mmap_mode="r")
+    h = ground(plugin, g, built)
     doc = json.loads((plugin / "map" / "teleports.json").read_text())
-    refs = refs_by_cell(plugin)
+    refs = refs_by_cell(plugin, built)
     bad = []
     if doc["build_id"] != g.build_id:
         bad.append(f"teleports.json is of build {doc['build_id']}, the land is {g.build_id}")
@@ -248,8 +292,8 @@ def check(plugin: Path) -> list[str]:
         if t["kind"] == "place" and not t["own_cell"] and cell_ok(g, h, refs, *t["place_cell"])[2].any():
             bad.append(f"{t['id']}: lands outside its own cell {t['place_cell']}, which has dry land")
         pts = refs.get(tuple(cell))
-        if pts is not None and len(pts) and np.hypot(pts[:, 0] - t["x"], pts[:, 1] - t["y"]).min() < CLEAR:
-            bad.append(f"{t['id']}: within {CLEAR:.0f} units of a placed object")
+        if pts is not None and len(pts) and (np.hypot(pts[:, 0] - t["x"], pts[:, 1] - t["y"]) < pts[:, 2]).any():
+            bad.append(f"{t['id']}: inside a placed object's keep-out (a world ref, or a built place's building)")
     return bad
 
 

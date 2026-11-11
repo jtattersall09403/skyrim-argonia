@@ -33,7 +33,7 @@ def test_landing_is_dry_in_own_cell_and_clear_of_refs(tmp_path):
     h[40:60, 40:60] = 12.0  # an island in the middle cell, barely above the water as Helstrom's marsh is
     centre_x, centre_y = -3 * 4096 + 50 * 128, -149 * 4096 - 50 * 128
     p, g = world(tmp_path, h, refs=[(centre_x, centre_y)])  # a tree on the island's centre
-    refs = tp.refs_by_cell(p)
+    refs = tp.refs_by_cell(p, None)
     own = (int(centre_x // 4096), int(centre_y // 4096))
     lnd = tp.landing(g, h, refs, centre_x, centre_y, own)
     assert lnd["own_cell"] and lnd["cell"] == list(own)
@@ -61,5 +61,31 @@ def test_check_flags_a_landing_in_water(tmp_path):
            "teleports": [{"kind": "place", "id": "helstrom", "coc": "ANWHelstrom", "cell": [-8, -148], "place_cell": [-8, -148],
                           "x": x, "y": y, "z": 0.0, "own_cell": True}]}
     (p / "map" / "teleports.json").write_text(json.dumps(doc))
-    bad = tp.check(p)
+    bad = tp.check(p, None)
     assert any("not above the water" in b for b in bad)
+
+
+def test_a_built_place_keeps_landings_out_of_its_buildings_and_on_its_patched_ground(tmp_path):
+    h = np.full((32 + 1, 32 + 1), 40.0)
+    p, g = world(tmp_path, h, cx0=-8, cy_top=-148)
+    built = tmp_path / "places"
+    (built / "helstrom" / "spaces" / "exterior").mkdir(parents=True)
+    cx, cy = -8 * 4096 + 16 * 128, -148 * 4096 + 16 * 128  # the cell's middle
+    house = {"pos": [cx, cy, 40.0], "scale": 1.0, "seat": {"foot": [-600, -200, -380, 200]}}
+    (built / "helstrom" / "spaces" / "exterior" / "refs.jsonl").write_text(json.dumps(house) + "\n")
+    # the place's land patch sinks a strip east of the house under the water
+    verts = [[r, c, -100.0] for r in range(33) for c in range(20, 33)]
+    (built / "helstrom" / "land.jsonl").write_text(json.dumps({"cell": [-8, -148], "verts": verts}) + "\n")
+    hh = tp.ground(p, g, built)
+    refs = tp.refs_by_cell(p, built)
+    lnd = tp.landing(g, hh, refs, cx, cy, (-8, -148))
+    assert np.hypot(lnd["x"] - cx, lnd["y"] - cy) >= 600  # outside the house's footprint
+    assert lnd["x"] < -8 * 4096 + 20 * 128  # not on the patched-down strip
+    # a landing by the house (the world's ground and refs alone allowed it) is a fault
+    (p / "map").mkdir()
+    doc = {"build_id": "t", "cells": [{"coc": "ANWHelstrom", "cell": [-8, -148]}],
+           "teleports": [{"kind": "place", "id": "helstrom", "coc": "ANWHelstrom", "cell": [-8, -148], "place_cell": [-8, -148],
+                          "x": cx + 200, "y": cy, "z": 100.0, "own_cell": True}]}
+    (p / "map" / "teleports.json").write_text(json.dumps(doc))
+    assert any("keep-out" in b for b in tp.check(p, built))
+    assert not any("keep-out" in b for b in tp.check(p, None))
