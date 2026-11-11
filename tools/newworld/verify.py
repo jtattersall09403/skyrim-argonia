@@ -178,7 +178,7 @@ def run(plugin: Path, out: Path, do_dump: bool = True) -> int:
     water_h = g.get("water", 0)
     intent = jload(plugin / "cells.json") if (plugin / "cells.json").exists() else None
     land = {k for k, c in cells.items() if c["h_max"] and float(c["h_max"]) > water_h}
-    placed = [r for r in refs if r["edid"] != "MapMarker"]
+    placed = [r for r in refs if r["edid"] not in ("MapMarker", "COCMarkerHeading")]   # markers: the map and teleports rows
     mist = [r for r in placed if MIST.match(r["edid"] or "")]
     natural = [r for r in placed if not MIST.match(r["edid"] or "")]
 
