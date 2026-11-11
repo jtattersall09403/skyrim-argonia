@@ -393,3 +393,9 @@ added here the day they are made, with the date and the issue.
 - 2026-11-11 (in session): tidying is automatic. The build machine's disk and the bucket are cleared of what is
   no longer needed periodically and whenever appropriate, in every session, without the owner asking; no worktree
   is left abandoned or orphaned when its lane has ended.
+- 2026-11-11 (in session): reviews are weighed by what the player would notice. A review ranks each fault by its
+  effect in game; a fault that breaks the game or is plainly noticeable is fixed; a tiny fault, or one that would
+  not really be noticed in game, is not worth hours of fixing and rebuilding (fix it only where the fix is cheap
+  and needs no long job; otherwise note it in one line and move on). And for any long-running tool or job there
+  is always a fast way to find faults and test fixes (for the LOD, a small world first): it is built before the
+  long job is relied on.
