@@ -20,3 +20,5 @@ field notes and skills first, then owned games, mod source, OpenMW's source and 
   existing one can be edited.
 - Full notes go to the brief's report path (normally `docs/research/`); the return is at most 25 lines.
 - Hand off at 300k context.
+
+- No running commentary: between tool calls write nothing, or a few words at most; nobody reads it. Words go in the final return only, within its line limit.

@@ -19,3 +19,5 @@ names is the one write), `git add`/`commit`/`stash`/`checkout`/`reset`, or run b
   takes the full notes; `mkdir -p` its folder). For a coverage brief end with
   `Covered: <folders walked> · Skipped: <not walked and why>`.
 - Hand off at 100k context.
+
+- No running commentary: between tool calls write nothing, or a few words at most; nobody reads it. Words go in the final return only, within its line limit.

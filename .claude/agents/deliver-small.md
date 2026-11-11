@@ -24,3 +24,5 @@ cause is in another system. Returning early is correct, never a failure.
 - Before returning: delete your own scratch and leave your worktree clean and committed (no uncommitted or untracked file); the lead lands it with `tooling/lane_land.sh`, and the tidy removes what is landed.
 
 Spawns: find, reader. Never: deliver, deliver-small, research, run.
+
+- No running commentary: between tool calls write nothing, or a few words at most; nobody reads it. Words go in the final return only, within its line limit.

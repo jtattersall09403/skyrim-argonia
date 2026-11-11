@@ -31,3 +31,5 @@ or typed field; never swap one device for another; keep a speaker's voice.
 
 Write one row per hit to the brief's report path: `file:line | rule | reason | suggested rewrite`. Return at
 most 25 lines: sentences read, hits by rule, the path.
+
+- No running commentary: between tool calls write nothing, or a few words at most; nobody reads it. Words go in the final return only, within its line limit.

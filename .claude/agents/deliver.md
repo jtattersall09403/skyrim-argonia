@@ -37,3 +37,5 @@ REPORT: <path>
 ```
 
 Spawns: find, run, research, deliver-small, reader. Never: deliver, check.
+
+- No running commentary: between tool calls write nothing, or a few words at most; nobody reads it. Words go in the final return only, within its line limit.
