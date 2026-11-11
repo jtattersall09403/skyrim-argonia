@@ -148,8 +148,8 @@ The terrain build (`tools/newworld/terrain.py`): carries the map past its edge (
 cells x -50..56, y -129..-40; those cells are margin); anchors every noise, the drainage jitter, the rain, the
 rounding pattern and each pad's outline to the picture's own grid (`terrain_relief.anchor`), so a wider scope moves
 no ground of the province; gives each land region its own landform from its research's landscape note
-(`terrain_forms`, `newworld/sources/region_relief.json`); keeps every built place's ground as built, lifted by one
-constant (`terrain_held`, `newworld/sources/terrain_held.json`; Helstrom +72 units on build 20261109T204317Z, so the
+(`terrain_forms`, `newworld/sources/region_relief.json`); keeps every built place's beds as built and its land as built plus a lift that
+ramps from 0 at the old waterline to the whole lift 24.9 m from it (`terrain_held`, `newworld/sources/terrain_held.json`; Helstrom +72 units on build 20261109T204317Z, so the
 place is re-seated by its seating stage); and stands land and beds clear of the water plane outside a narrow shore
 band (`terrain_clearance`). build.json names its inputs by digest and its peak memory (5.6 GB). `terrain check`
 fails when the plane shares pass 0.03 / 0.05 at any LOD spacing, when a held place's land differs from its build

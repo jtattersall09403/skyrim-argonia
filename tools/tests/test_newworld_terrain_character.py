@@ -324,3 +324,62 @@ def test_build_inputs_are_digested(tmp_path, monkeypatch):
     assert b["region_relief.json"] != a["region_relief.json"] and b["scope_cells.json"] == a["scope_cells.json"]
     (tmp_path / "terrain_held.json").unlink()
     assert T.input_digests()["terrain_held.json"] is None
+
+
+def _held_case(monkeypatch, old):
+    rec = {"terrain_build": "T0", "cells": [[0, -1]]}
+    p = {"h": old, "x0": -32 * 128.0, "y0": 32 * 128.0}
+    monkeypatch.setattr(th, "MARGIN_M", 40.0)
+    monkeypatch.setattr(th, "BLEND_M", 20.0)
+    monkeypatch.setattr(th, "rows", lambda: {"p": rec})
+    monkeypatch.setattr(th, "patch", lambda pid, r: p)
+    return rec, p, ts.Grid(rows=120, cols=120, p0x=0.0, p0y=0.0, ox=-40 * 128.0, oy=40 * 128.0)
+
+
+def test_held_lift_ramps_from_the_waterline_and_beds_stay(monkeypatch):
+    """Beds are the old build's exactly; land is old + a lift that is nothing at the waterline, whole past the
+    ramp, on LAND's step, never more than one step between neighbours; an islet narrower than the ramp stays low."""
+    old = np.full((80, 80), 16.0, np.float32)
+    old[:, :20] = -24.0                                   # water on the west
+    old[30:34, 5:9] = 16.0                                # an islet 4 samples across
+    rec, p, grid = _held_case(monkeypatch, old)
+    L = th.lift(rec, p)
+    r = th.ramp(old, L)
+    assert L == 64 and (r[old <= 0] == 0).all() and r[:, 20].max() == 0        # nothing at the waterline
+    far = int(np.ceil(th.ramp_units(L) / 128)) + 1
+    assert (r[:, 20 + far:] == L).all() and (np.mod(r, 8) == 0).all()
+    assert np.abs(np.diff(r, axis=1)).max() <= 8 and np.abs(np.diff(r, axis=0)).max() <= 8
+    assert r[30:34, 5:9].max() <= 8                        # the islet stays low
+    h = np.full((120, 120), 300.0, np.float32)
+    h[:, :28] = -200.0                                     # the new build would deepen the bed
+    th.apply(h, grid, h < 0)
+    res = th.check(h, grid)["p"]
+    assert th.ok({"p": res}), res
+    assert res["water_max_diff_units"] == 0.0 and res["max_diff_units"] == 0.0 and res["waterline_moved"] == 0
+    assert res["shore_over_walk"] <= res["shore_over_walk_held_build"]
+    assert res["land_triangle_steepened_max_deg"] <= th.RAMP_ADDED_DEG
+    w = th.weight(rec, p)
+    sub = h[8:88, 8:88]
+    assert (sub[(w >= 1) & (old <= 0)] == -24.0).all()     # no bed deepened
+    bad = h.copy()
+    bad[8:88, 8:88][(w >= 1) & (old > 0)] += 72            # the uniform lift: a step at the waterline
+    assert not th.ok(th.check(bad, grid))
+    deep = h.copy()
+    deep[8:88, 8:88][(w >= 1) & (old <= 0)] -= 8           # a deepened bed
+    assert not th.ok(th.check(deep, grid))
+
+
+def test_shore_measures_and_still_water_reach():
+    from tools.newworld import terrain_clearance as tcl
+    h = np.full((40, 40), 16.0, np.float32)
+    h[:, :10] = -16.0
+    s = tcl.shore_steep(h)
+    assert s["triangles"] > 0 and s["over_walk"] == 0.0 and tcl.shore_rise(h) == [32.0, 32.0, 32.0]
+    h[:, 10:] = 200.0                                      # a bank 216 units over one sample: 59 degrees
+    assert tcl.shore_steep(h)["over_walk"] == 1.0
+    d = np.full((1, 4), 4.0, np.float32)
+    ws = np.array([[False, False, True, True]])
+    still = np.array([[True, False, True, False]])
+    c = tcl.floors(d, d, ws, still)
+    assert c[0, 0] < c[0, 1] and c[0, 2] < c[0, 3]         # still water: a gentler shore on both sides
+    assert (tcl.floors(d * 5, d * 5, ws, still) == tcl.LAND_CLEAR_M * tcl.U).all()   # and the same clearance beyond

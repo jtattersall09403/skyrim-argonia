@@ -516,8 +516,10 @@ def build(upload: bool = True) -> dict:
     for _o, p_, nd_, r_m_, *_r, i0_, j0_ in todo:
         sl_, di_, dj_ = ts._disc(grid, i0_, j0_, (float(r_m_ or 25.0) + 20.0) / grid.m)
         keep[sl_] |= np.hypot(di_, dj_) * grid.m <= float(r_m_ or 25.0) + 20.0
-    clearance = tcl.apply(h, sd_m, water_s, keep)
-    del keep
+    keep |= th.zone_mask(grid, h.shape, blend=False)    # held ground is laid after, whole: nothing to clear there
+    still = np.isin(np.array(["land"] + [b["water_kind_id"] for b in bodies]), tcl.STILL)[bidx] & ~off
+    clearance = tcl.apply(h, sd_m, water_s, keep, still)
+    del keep, still
     probe("clearance", h, ts.U)
     log("clearance", clearance)
     # LAND format and the water guarantee
@@ -606,7 +608,14 @@ def check(h, grid, water_px, plans=None, grade_of=None, places=None, cliff=None)
     sd = ts.slope_deg(h)
     out["slope_share_over_55"] = round(float((sd > CLIFF_DEG).mean()), 4)
     out["slope_share_over_30"] = round(float((sd > 30).mean()), 4)
-    out["plane_shares"] = tcl.shares(h)          # points within 32 / 64 units of the water plane, per LOD spacing
+    # points within 32 / 64 units of the water plane, per LOD spacing: outside held zones (the check's thresholds),
+    # inside them (a built place's banks stay as built: they lie nearer the plane), and over all
+    zone = th.zone_mask(grid, h.shape)
+    out["plane_shares"] = tcl.shares(h, valid=~zone)
+    out["plane_shares_held"] = tcl.shares(h, valid=zone) if zone.any() else {}
+    out["plane_shares_all"] = tcl.shares(h)
+    del zone
+    out["shore"] = tcl.shore_steep(h) | {"rise_p10_50_90": tcl.shore_rise(h)}
     if plans:
         out["roads"] = ts.road_checks(h, grid, plans, grade_of)
     if places:

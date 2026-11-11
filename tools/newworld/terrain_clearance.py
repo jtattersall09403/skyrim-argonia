@@ -39,17 +39,27 @@ MAX_PM32 = 0.03             # the terrain check: at most about twice Skyrim's sh
 MAX_PM64 = 0.05
 
 
-def floors(d_land_m: np.ndarray, d_water_m: np.ndarray, water_s: np.ndarray) -> np.ndarray:
-    """The clearance (units) each sample must keep from the plane: up for land, down for water."""
-    land = U * np.minimum(LAND_CLEAR_M, SHORE_M + (LAND_CLEAR_M - SHORE_M) * d_land_m / LAND_REACH_M)
-    bed = U * np.minimum(BED_CLEAR_M, SHORE_M + (BED_CLEAR_M - SHORE_M) * d_water_m / BED_REACH_M)
+# Still inland water (marsh, swamp, pond) is walked in and out of: its shore takes Hjaalmarch's profile (Skyrim.esm:
+# the rise across a shore edge 8 / 24 / 48 units at p10 / median / p90; land and bed clear of the plane by 8 m,
+# share within 32 units 0.34 at 2-8 m inland and 0.027 at 8-20 m), a longer reach on both sides.
+STILL = ("green-marsh", "blackwater-swamp", "pond")
+STILL_REACH_M = 8.0
+
+
+def floors(d_land_m: np.ndarray, d_water_m: np.ndarray, water_s: np.ndarray, still=None) -> np.ndarray:
+    """The clearance (units) each sample must keep from the plane: up for land, down for water. `still`: samples
+    whose water is still inland water (STILL_REACH_M both sides)."""
+    lr = LAND_REACH_M if still is None else np.where(still, STILL_REACH_M, LAND_REACH_M)
+    br = BED_REACH_M if still is None else np.where(still, STILL_REACH_M, BED_REACH_M)
+    land = U * np.minimum(LAND_CLEAR_M, SHORE_M + (LAND_CLEAR_M - SHORE_M) * d_land_m / lr)
+    bed = U * np.minimum(BED_CLEAR_M, SHORE_M + (BED_CLEAR_M - SHORE_M) * d_water_m / br)
     return np.where(water_s, bed, land).astype(np.float32)
 
 
-def apply(h: np.ndarray, sd_m: np.ndarray, water_s: np.ndarray, keep: np.ndarray | None = None) -> dict:
+def apply(h: np.ndarray, sd_m: np.ndarray, water_s: np.ndarray, keep: np.ndarray | None = None, still=None) -> dict:
     """Raise land and deepen water to their clearance (h in units, mutated). sd_m: the smooth signed distance from
-    the waterline (metres, water < 0). `keep`: samples left as they are."""
-    c = floors(np.maximum(sd_m, 0), np.maximum(-sd_m, 0), water_s)
+    the waterline (metres, water < 0). `keep`: samples left as they are. `still`: as floors."""
+    c = floors(np.maximum(sd_m, 0), np.maximum(-sd_m, 0), water_s, still)
     up = ~water_s & (h < c)
     down = water_s & (h > -c)
     if keep is not None:
@@ -73,3 +83,60 @@ def shares(h: np.ndarray, water_level: float | np.ndarray = 0.0, valid: np.ndarr
         out[f"lod{s}" if s > 1 else "full"] = {"pm32": round(float((a <= 32).mean()), 4),
                                                "pm64": round(float((a <= 64).mean()), 4)}
     return out
+
+
+STEP = 128.0
+WALK_DEG = 45.0             # tools/navmesh/params.py MAX_SLOPE_DEG: the steepest triangle the navmesh walks
+
+
+def triangle_slopes(h: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
+    """Slope (degrees) of the two triangles of every quad of samples: (north-west, south-east), each (R-1, C-1)."""
+    a, b, c, d = h[:-1, :-1], h[:-1, 1:], h[1:, :-1], h[1:, 1:]
+    t1 = np.degrees(np.arctan(np.hypot(b - a, c - a) / STEP)).astype(np.float32)
+    t2 = np.degrees(np.arctan(np.hypot(d - c, d - b) / STEP)).astype(np.float32)
+    return t1, t2
+
+
+def waterline(h: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
+    """Which of those triangles cross the waterline (a corner in the water and a corner on land)."""
+    w = h <= 0
+    a, b, c, d = w[:-1, :-1], w[:-1, 1:], w[1:, :-1], w[1:, 1:]
+    return (a | b | c) & ~(a & b & c), (b | c | d) & ~(b & c & d)
+
+
+def shore_steep(h: np.ndarray, inside: np.ndarray | None = None, code: np.ndarray | None = None,
+                names: list | None = None) -> dict:
+    """Waterline triangles and the share of them over WALK_DEG; `inside` (samples): only quads wholly inside;
+    `code` (samples) with `names`: the same per code (the code of a quad's north-west sample)."""
+    t1, t2 = triangle_slopes(h)
+    w1, w2 = waterline(h)
+    if inside is not None:
+        q = inside[:-1, :-1] & inside[:-1, 1:] & inside[1:, :-1] & inside[1:, 1:]
+        w1, w2 = w1 & q, w2 & q
+    n = int(w1.sum() + w2.sum())
+    over = int((t1[w1] > WALK_DEG).sum() + (t2[w2] > WALK_DEG).sum())
+    out = {"triangles": n, "over_walk": round(over / n, 4) if n else 0.0,
+           "median_deg": round(float(np.median(np.concatenate([t1[w1], t2[w2]]))), 1) if n else 0.0}
+    if code is not None:
+        cq = code[:-1, :-1]
+        out["by"] = {}
+        for k, name in enumerate(names):
+            s1, s2 = w1 & (cq == k), w2 & (cq == k)
+            m = int(s1.sum() + s2.sum())
+            if m:
+                out["by"][name] = {"triangles": m, "over_walk": round(
+                    float(((t1[s1] > WALK_DEG).sum() + (t2[s2] > WALK_DEG).sum()) / m), 4)}
+    return out
+
+
+def shore_rise(h: np.ndarray, sel: np.ndarray | None = None) -> list:
+    """The rise (units) across every sample edge that crosses the waterline: p10, median, p90."""
+    r = []
+    for ax in (0, 1):
+        x, y = (h[:-1], h[1:]) if ax == 0 else (h[:, :-1], h[:, 1:])
+        m = (x <= 0) != (y <= 0)
+        if sel is not None:
+            m &= (sel[:-1] & sel[1:]) if ax == 0 else (sel[:, :-1] & sel[:, 1:])
+        r.append(np.abs(x[m] - y[m]))
+    r = np.concatenate(r)
+    return [float(v) for v in np.percentile(r, (10, 50, 90))] if r.size else []

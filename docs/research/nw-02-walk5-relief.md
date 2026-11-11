@@ -52,3 +52,27 @@ The build's peak resident set was 12.4 GB (the relief's whole-grid float64 tempo
 working fields held to its end). The relief is worked 256 rows at a time in float32 and the weathering frees each
 field after its last reader: peak 5.6 GB (/usr/bin/time -v: 5,612,644 kB), written into build.json (peak_rss_mb).
 The character measure works a region's window at a time: 0.6 GB.
+
+## Held ground at the waterline, and how steep the shores are (2026-11-11, trial build 20261111T081946Z)
+A uniform lift of a held zone's land stood whole on the first land sample from the water and its beds were deepened:
+inside Helstrom's zone and blend the waterline triangles steeper than the navmesh walks (45 degrees) went from 5.3%
+to 38.8% (median slope 20.6 to 43.2 degrees). The rule now (terrain_held): beds are the held build's exactly; land is
+the held build's plus a lift that is 0 at the old waterline and whole 24.9 m from it (a smoothstep on LAND's 8-unit
+step; the shortest ramp whose rise from one sample to the next stays under one step, so no triangle gains more than
+5.05 degrees; islets and spits narrower than about 50 m never take the whole 72 units). Helstrom's zone (865,322
+samples): water difference 0, land difference from old + ramp 0, waterline moved 0, waterline triangles over 45
+degrees 1.81% in the held build and 1.81% now, the most any land triangle steepened 5.05 degrees.
+Points within 32 / 64 units of the plane: outside held zones 0.0169 / 0.0378 at full resolution, 0.0174 / 0.0390 at
+LOD32 (the check's 0.03 / 0.05 is judged there); inside held zones 0.060 / 0.128 (0.068 / 0.134 at LOD32: a built
+place's banks stay as built); over all 0.0185 / 0.0412.
+Waterline triangles over 45 degrees outside held zones, old build > build 20261111T053723Z > now: all 7.8% > 6.5% >
+6.5%; green-marsh 8.1 > 9.3 > 9.2; blackwater-swamp 6.1 > 3.6 > 3.5; pond 9.4 > 7.5 > 7.3; lake 5.0 > 9.1 > 9.1;
+river 5.6 > 5.0 > 5.0; stream 7.6 > 6.1 > 6.1; ocean 4.8 > 13.2 > 13.2. Skyrim: Hjaalmarch 0.9% (rise across a shore
+edge 8 / 24 / 48 units), the north coast 2.7% (8 / 32 / 72), the Rift 8.6% (16 / 32 / 96). The clearance did not
+steepen the province's shores; our marsh, swamp and pond shores were already steeper than Hjaalmarch's in the old
+build. Still inland water (green-marsh, blackwater-swamp, pond) now takes an 8 m clearance reach on both sides
+(Hjaalmarch is clear of the plane by 8 m): its rise across a shore edge went 32 / 48 / 104 to 24 / 40 / 96 (marsh),
+32 / 48 / 72 to 24 / 40 / 72 (swamp), 32 / 48 / 88 to 24 / 40 / 88 (pond). The share over 45 degrees barely moved:
+it comes from the composed bank (the relief reached over a 7 m shore ramp where high ground meets the water), not
+from the clearance; bringing it to Hjaalmarch's 0.9% means capping the bank's height beside still water in
+terrain_shape.compose, which moves places' shores.

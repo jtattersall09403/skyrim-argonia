@@ -2,7 +2,9 @@
 
 Every place built as a place layer (a folder under newworld/places/) has a row in newworld/sources/terrain_held.json:
 the terrain build it was seated on and the place layer's cells (Skyrim cells, 4096 units). Within those cells plus
-MARGIN_M the new heightmap is that build's, sample for sample (its pier, streets, seating, navmesh and shore stay true
+MARGIN_M the water's beds are that build's, sample for sample, and the land is that build's plus a lift that is
+nothing at the old waterline and whole ramp_units() from it (so the waterline, the banks' slopes and the wading
+depths stay as built (its pier, streets, seating, navmesh and shore stay true
 without re-seating); beyond, the old ground blends into the new over BLEND_M (smootherstep), rounded to LAND's step,
 land kept over and water under the water level as the map says. A built place with no row stops the build; a place
 layer that has grown past its row's cells stops it too (re-seat the place and give the row the new build's id).
@@ -163,10 +165,36 @@ def lift(rec: dict, p: dict) -> float:
     return float(max(0.0, np.ceil(need / QUANT) * QUANT))
 
 
-def held_ground(rec: dict, p: dict, new: np.ndarray, L: float) -> np.ndarray:
-    """The held heights on the patch window: old land + L, old water kept or deepened to the new ground's bed."""
-    old = p["h"]
-    return np.where(old > 0, old + L, np.where(new < 0, np.minimum(old, new), old)).astype(np.float32)
+def ramp_units(L: float) -> float:
+    """How far from the old waterline (units) the lift is whole. The lift follows a smoothstep, whose steepest grade
+    is 1.5 L over its length; the length is the shortest that keeps the ramp's rise from one sample to the next
+    under one LAND step (QUANT), so two neighbouring samples never differ by more than one step of added height and
+    no triangle gains more than RAMP_ADDED_DEG (one step along each side: atan(8 x 1.414 / 128) = 5.05 degrees).
+    For 72 units that is 1745 units, 24.9 m; an islet or spit narrower than twice that never takes the whole lift."""
+    return 1.5 * L * STEP / QUANT * 1.01
+
+
+RAMP_ADDED_DEG = 5.06
+
+
+def ramp(old: np.ndarray, L: float) -> np.ndarray:
+    """The lift (units, on LAND's step) of every sample of the old ground: 0 in the water and at the waterline,
+    rising without a kink to L at ramp_units(L) from the old waterline (distance from the nearest old water sample,
+    less the half sample to the waterline)."""
+    land = old > 0
+    if L <= 0:
+        return np.zeros(old.shape, np.float32)
+    if land.all():
+        return np.where(land, L, 0).astype(np.float32)
+    d = np.maximum(ndi.distance_transform_edt(land) * STEP - STEP / 2, 0)
+    t = np.clip(d / ramp_units(L), 0, 1)
+    return np.where(land, np.round(L * t * t * (3 - 2 * t) / QUANT) * QUANT, 0).astype(np.float32)
+
+
+def held_ground(p: dict, L: float) -> np.ndarray:
+    """The held heights on the whole patch: the old beds exactly (a built place's wading routes, piers and stilts
+    were fitted to them), the old land plus the ramped lift."""
+    return (p["h"] + ramp(p["h"], L)).astype(np.float32)
 
 
 def apply(h: np.ndarray, grid, water_s: np.ndarray) -> dict:
@@ -182,7 +210,7 @@ def apply(h: np.ndarray, grid, water_s: np.ndarray) -> dict:
         w = weight(rec, p)[ps]
         L = lift(rec, p)
         new = h[gs]
-        old = held_ground(rec, {"h": p["h"][ps]}, new, L)
+        old = held_ground(p, L)[ps]
         mix = w * old + (1 - w) * new
         ring = (w > 0) & (w < 1)
         mix = np.where(ring, np.round(mix / QUANT) * QUANT, mix)
@@ -190,14 +218,30 @@ def apply(h: np.ndarray, grid, water_s: np.ndarray) -> dict:
         mix = np.where(ring & ws & (mix > -QUANT), -QUANT, mix)
         mix = np.where(ring & ~ws & (mix < QUANT), QUANT, mix)
         h[gs] = np.where(w >= 1, old, mix).astype(h.dtype)
-        out[pid] = {"terrain_build": rec["terrain_build"], "lift_units": L, "held_samples": int((w >= 1).sum()),
-                    "blend_samples": int(ring.sum()), "margin_m": MARGIN_M, "blend_m": BLEND_M}
+        out[pid] = {"terrain_build": rec["terrain_build"], "lift_units": L, "ramp_m": round(ramp_units(L) / U, 1),
+                    "held_samples": int((w >= 1).sum()), "blend_samples": int(ring.sum()), "margin_m": MARGIN_M,
+                    "blend_m": BLEND_M}
+    return out
+
+
+def zone_mask(grid, shape, blend: bool = True) -> np.ndarray:
+    """The samples of every held zone (with its blend ring when `blend`)."""
+    out = np.zeros(shape, bool)
+    for pid, rec in rows().items():
+        p = patch(pid, rec)
+        win = _window(grid, p)
+        if win is not None:
+            w = weight(rec, p)[win[1]]
+            out[win[0]] |= (w > 0) if blend else (w >= 1)
     return out
 
 
 def check(h: np.ndarray, grid) -> dict:
-    """Per built place, inside its zone: the largest departure (units) of a land sample from its held build's height
-    plus the lift (must be 0), and the water samples standing higher than in the held build (must be 0)."""
+    """Per built place, inside its zone: water samples against the held build (largest difference, must be 0); land
+    samples against the held build plus the ramped lift (must be 0); samples whose side of the waterline changed
+    (0); the share of waterline triangles steeper than the navmesh walks, in the held build and now (no higher
+    now); and the most any land triangle steepened (at most RAMP_ADDED_DEG)."""
+    from tools.newworld import terrain_clearance as tcl
     out = {}
     for pid, rec in rows().items():
         p = patch(pid, rec)
@@ -206,24 +250,37 @@ def check(h: np.ndarray, grid) -> dict:
             out[pid] = {"max_diff_units": None, "note": "outside the grid"}
             continue
         gs, ps = win
-        w = weight(rec, p)[ps]
-        inside = w >= 1
-        full = int((weight(rec, p) >= 1).sum())
+        wfull = weight(rec, p)
+        inside = wfull[ps] >= 1
         L = lift(rec, p)
-        old, new = p["h"][ps][inside].astype(np.float64), h[gs][inside].astype(np.float64)
+        old = p["h"][ps].astype(np.float64)
+        want = held_ground(p, L)[ps].astype(np.float64)
+        new = np.asarray(h[gs], np.float64)
         land = old > 0
-        d = np.abs(new[land] - old[land] - L)
+        dl = np.abs(new - want)[inside & land]
+        dw = np.abs(new - old)[inside & ~land]
+        so, sn = tcl.shore_steep(old, inside), tcl.shore_steep(new, inside)
+        added = 0.0
+        for a, b in zip(tcl.triangle_slopes(old), tcl.triangle_slopes(new)):
+            q = (inside & land)[:-1, :-1] & (inside & land)[:-1, 1:] & (inside & land)[1:, :-1] & (inside & land)[1:, 1:]
+            if q.any():
+                added = max(added, float((b - a)[q].max()))
         out[pid] = {"terrain_build": rec["terrain_build"], "samples": int(inside.sum()),
-                    "zone_samples_in_grid": f"{int(inside.sum())} of {full}", "lift_units": L,
-                    "max_diff_units": float(d.max()) if d.size else None,
-                    "water_higher": int((new[~land] > old[~land]).sum()),
-                    "waterline_moved": int(((new > 0) != land).sum())}
+                    "zone_samples_in_grid": f"{int(inside.sum())} of {int((wfull >= 1).sum())}", "lift_units": L,
+                    "ramp_m": round(ramp_units(L) / U, 1),
+                    "max_diff_units": float(dl.max()) if dl.size else None,
+                    "water_max_diff_units": float(dw.max()) if dw.size else 0.0,
+                    "waterline_moved": int((((new > 0) != land) & inside).sum()),
+                    "shore_over_walk_held_build": so["over_walk"], "shore_over_walk": sn["over_walk"],
+                    "shore_median_deg_held_build": so["median_deg"], "shore_median_deg": sn["median_deg"],
+                    "land_triangle_steepened_max_deg": round(added, 2)}
     return out
 
 
 def ok(res: dict) -> bool:
-    return all(r.get("max_diff_units") == 0.0 and r["samples"] > 0 and not r.get("water_higher")
-               and not r.get("waterline_moved") for r in res.values())
+    return all(r.get("max_diff_units") == 0.0 and r["samples"] > 0 and r.get("water_max_diff_units") == 0.0
+               and not r.get("waterline_moved") and r["shore_over_walk"] <= r["shore_over_walk_held_build"]
+               and r["land_triangle_steepened_max_deg"] <= RAMP_ADDED_DEG for r in res.values())
 
 
 if __name__ == "__main__":
