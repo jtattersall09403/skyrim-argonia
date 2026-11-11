@@ -387,3 +387,6 @@ added here the day they are made, with the date and the issue.
   LOD will be rebuilt after places are built). (4) Long jobs run once: every check that can be made before a long
   job is made before it, and what it finds is fixed and checked again first; checks are not a formality. (5) Break
   bad patterns and going round in circles when found.
+- 2026-11-11 (in session, morning): the skills for rebuilding the world and its LOD say plainly to run only what
+  needs to be run: nothing that has not changed, or is already right, is regenerated. Each recipe names, for each
+  kind of change, the stages it makes stale and the stages it leaves alone.
