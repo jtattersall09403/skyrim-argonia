@@ -2,6 +2,7 @@
 what it reads has changed, each check run straight after the stage it judges. The recipe is the skill world-build.
 
     tools/newworld/rebuild.sh plan                  # the order, and which stages are stale (and why) or current
+    tools/newworld/rebuild.sh small                 # the stale stages on the small test world first: minutes (tools/newworld/small)
     tools/newworld/rebuild.sh preflight             # everything checkable before the first long stage
     tooling/job_guard.sh run nw-rebuild -- tools/newworld/rebuild.sh run [--to STAGE] [--force STAGE ...]
     tooling/job_guard.sh wait nw-rebuild
@@ -739,6 +740,12 @@ def preflight(tree: Tree, rows: list[dict]) -> list[tuple[str, bool, str]]:
     built = sorted(p.parent.name for p in (tree.repo / "newworld/places").glob("*/place.json"))
     rows_held = set(json.loads(held.read_text()).get("places", {})) if held.exists() else set()
     out.append(("every built place has its held-ground row", set(built) <= rows_held, "no row for " + ", ".join(sorted(set(built) - rows_held)) if set(built) - rows_held else ", ".join(built)))
+    # the small world first: a stale stage's code is the code its last green run on the block proved
+    if tree.stages is STAGES:
+        from tools.newworld import small
+        owed = small.unproven(tree, stale)
+        out.append(("every stale stage's code is the code of its last green run on the small world", not owed,
+                    "; ".join(owed) + ": run tools/newworld/rebuild.sh small, mend what it finds, then this" if owed else ""))
     # the machine
     free = shutil.disk_usage(tree.out if tree.out.exists() else tree.repo).free / 1e9
     out.append((f"disk: {DISK_GB:.0f} GB free under out/", free >= DISK_GB, f"{free:.1f} GB free"))
@@ -784,8 +791,10 @@ def _env() -> dict:
 
 
 class Run:
-    def __init__(self, tree: Tree, todo: list[str], budget_gb: float, echo=print):
-        self.tree, self.todo, self.budget, self.echo = tree, list(todo), budget_gb, echo
+    def __init__(self, tree: Tree, todo: list[str], budget_gb: float, echo=print, past_checks: bool = False):
+        """`past_checks`: a red check marks its stage red and the run goes on (the small world: every fault in one
+        pass); a red command stops the run either way."""
+        self.tree, self.todo, self.budget, self.echo, self.past_checks = tree, list(todo), budget_gb, echo, past_checks
         self.deps = deps(tree.stages)
         self.done: dict[str, dict] = {}          # stage -> result
         self.running: dict[str, Stage] = {}
@@ -871,6 +880,9 @@ class Run:
             res["seconds"] = round(time.time() - t0, 1)
             self.q.put(res)
 
+    def _stops(self, res: dict) -> bool:
+        return res.get("result") == "red" and not (self.past_checks and res.get("failed") == "check")
+
     def go(self, forced: tuple = ()) -> dict[str, dict]:
         self.forced = set(forced)
         left = [n for n in order(self.tree.stages) if n in self.todo]
@@ -880,7 +892,7 @@ class Run:
                     s = self.tree.by_name[name]
                     if any(d in left or d in self.running for d in self.deps[name]):
                         continue
-                    if any(self.done.get(d, {}).get("result") == "red" for d in self.deps[name]):
+                    if any(self._stops(self.done.get(d, {})) for d in self.deps[name]):
                         continue
                     if self.running and (s.alone or any(r.alone for r in self.running.values())):
                         continue
@@ -899,7 +911,11 @@ class Run:
             del self.running[name]
             self.done[name] = res
             self._say(name, f"{res['result']} in {res['seconds']:.0f} s" + (f": {res['line']}" if res["result"] in ("skipped", "proved") else ""))
-            if res["result"] == "red" and not self.red:
+            if res["result"] == "red" and not self._stops(res):
+                self._say(name, "RED at its check; the run goes on")
+                for ln in res["line"].splitlines():
+                    self._say(name, "  " + ln)
+            elif res["result"] == "red" and not self.red:
                 self.red = name
                 self._say(name, f"RED at its {res['failed']}; nothing new starts" + (f"; waiting for {', '.join(self.running)}" if self.running else ""))
                 for ln in res["line"].splitlines():
