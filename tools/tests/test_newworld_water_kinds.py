@@ -167,14 +167,23 @@ def test_the_kinds_check_fails_on_a_kind_that_moved_unless_the_waterline_did(tmp
     r[200:300, 100:300] = 2             # a marsh
     rows = [{"raster_index": 1, "id": "a", "water_kind_id": "river", "area_m2": 1.0, "label_px": 300, "label_py": 125},
             {"raster_index": 2, "id": "b", "water_kind_id": "green-marsh", "area_m2": 1.0, "label_px": 200, "label_py": 250}]
-    first = wk.checks(r, rows, {})      # nothing accepted yet: this classification becomes the record
+    missing = wk.checks(r, rows, {})    # nothing accepted: a failure, and nothing written
+    assert not missing["ok"] and missing["accepted_missing"] and not wk.ACCEPTED.exists()
+    first = wk.checks(r, rows, {}, accept=True)
     assert first["ok"] and json.loads(wk.ACCEPTED.read_text())["kinds"]["river"]["bodies"] == 1
     rows[0]["water_kind_id"] = "lake"   # the river turned lake on the same waterline
     res = wk.checks(r, rows, {})
     assert not res["ok"] and not res["waterline_moved"] and {o["kind"] for o in res["kinds_off"]} == {"river", "lake"}
-    r[160:190, 100:500] = 1             # the waterline itself moved: nothing to compare, looked at afresh
-    assert wk.checks(r, rows, {})["waterline_moved"]
-    assert wk.checks(r, rows, {}, accept=True)["ok"] and not wk.checks(r, rows, {})["kinds_off"]
+    rows[0]["water_kind_id"] = "river"
+    r[160:190, 100:500] = 2             # the waterline itself moved: a failure until it is looked at and accepted
+    res = wk.checks(r, rows, {})
+    assert res["waterline_moved"] and not res["ok"]
+    assert wk.checks(r, rows, {}, accept=True)["ok"] and wk.checks(r, rows, {})["ok"]
+    (tmp_path / "raster").mkdir()       # another source water picture: a failure too
+    (tmp_path / "raster" / "water.png").write_bytes(b"another picture")
+    res = wk.checks(r, rows, {})
+    assert res["source_changed"] and not res["ok"]
+    assert not wk.checks(r, rows, {}, held_lost=["held water 7 (lake) lies on no water"], accept=True)["ok"]
 
 
 def test_a_pulled_edit_made_at_another_point_drops_the_water_recorded_for_it():
@@ -218,6 +227,11 @@ def test_verify_reads_the_water_check_as_two_rows(tmp_path):
     rep = Rep()
     wh.rows(rep, tmp_path / "water_check.json")
     assert [ok for _, ok, _ in rep.rows] == [True, True]
+    for key, val in (("waterline_moved", True), ("source_changed", True), ("held_lost", ["held water 7"])):
+        (tmp_path / "water_check.json").write_text(json.dumps(dict(check, **{key: val})))
+        rep = Rep()
+        wh.rows(rep, tmp_path / "water_check.json")
+        assert [ok for _, ok, _ in rep.rows] == ([True, False] if key == "held_lost" else [False, True]), key
 
 
 def test_the_owners_held_water_takes_its_kind_in_the_terrains_bodies_never_by_id():
@@ -243,3 +257,67 @@ def test_the_owners_held_water_takes_its_kind_in_the_terrains_bodies_never_by_id
     assert lake["map_kind"] == "river" and lake["overridden"] and lake["area_m2"] == round(400 * 8.56, 1)
     assert raster[lake["label_py"], lake["label_px"]] == 3 and raster[river["label_py"], river["label_px"]] == 1
     assert river["area_m2"] == round(800 * 8.56, 1) and lake["id"] != river["id"]
+
+
+def test_recording_shares_an_index_only_on_exactly_the_same_water(tmp_path, monkeypatch):
+    import numpy as np
+    from tools.newworld import water_held as wh
+    monkeypatch.setattr(wh, "OVERRIDES", tmp_path / "water_overrides.json")   # save() never reaches the sources
+    monkeypatch.setattr(wh, "PNG", tmp_path / "water_owner_bodies.png")
+    r = np.zeros((60, 100), np.int32)
+    r[10:30, 10:60] = 1                           # a marsh, 1000 px
+    rows = [{"raster_index": 1, "id": "wb-30-20", "water_kind_id": "green-marsh", "area_m2": 1000.0}]
+    ov = {"wb-30-20": {"at": "1", "point": [30, 20], "name": "named first"}}
+    held = np.zeros(r.shape, np.int32)
+    wh.record(ov, held, r, rows)
+    assert "held" not in ov["wb-30-20"]
+    ov["wb-30-20"]["water_kind_id"] = "green-marsh"         # the name edit gains a kind: it is held now
+    wh.record(ov, held, r, rows)
+    assert ov["wb-30-20"]["held"] == 1 and (held == 1).sum() == 1000
+    # a later cut: a pond inside the marsh, and a lake over the marsh's east end and new water beyond it
+    r[15:20, 15:25] = 2
+    r[10:30, 50:80] = 3
+    rows += [{"raster_index": 2, "id": "wb-20-17", "water_kind_id": "pond", "area_m2": 50.0},
+             {"raster_index": 3, "id": "wb-65-20", "water_kind_id": "lake", "area_m2": 600.0}]
+    ov["wb-20-17"] = {"at": "2", "point": [20, 17], "water_kind_id": "pond"}
+    ov["wb-65-20"] = {"at": "3", "point": [65, 20], "water_kind_id": "lake"}
+    wh.record(ov, held, r, rows)
+    a, b, c = (ov[k]["held"] for k in ("wb-30-20", "wb-20-17", "wb-65-20"))
+    assert len({a, b, c}) == 3                              # the pond inside the marsh does not take the marsh
+    assert (held == b).sum() == 50 and (held == c).sum() == 600 and (held == a).sum() == 1000 - 50 - 200
+    assert wh.kinds(ov) == {a: "green-marsh", b: "pond", c: "lake"}
+    # a body that takes all of an earlier edit's held water: the earlier edit follows it
+    r[15:20, 15:25] = 4
+    r[14:21, 14:26][r[14:21, 14:26] == 1] = 4
+    rows.append({"raster_index": 4, "id": "wb-19-17", "water_kind_id": "lake", "area_m2": 84.0})
+    ov["wb-19-17"] = {"at": "4", "point": [19, 17], "water_kind_id": "lake"}
+    wh.record(ov, held, r, rows)
+    assert ov["wb-20-17"]["held"] == ov["wb-19-17"]["held"] and (held == b).sum() == 0
+    assert wh.kinds(ov)[ov["wb-19-17"]["held"]] == "lake"
+    try:
+        wh.save(ov, np.full((2, 2), 70000, np.int32))
+    except ValueError:
+        pass
+    else:
+        raise AssertionError("a held index past 16 bits was saved")
+    assert not wh.OVERRIDES.exists()
+
+
+def test_held_water_cut_from_a_terrain_body_is_never_a_sliver_and_lost_held_water_is_named():
+    import numpy as np
+    from tools.newworld import terrain_water as tw
+    raster = np.zeros((40, 200), np.int32)
+    raster[10:20, 0:200] = 1                      # a river, 2000 px
+    raster[30:34, 0:12] = 2                       # a pond, 48 px
+    def body(i, kind):
+        return {"id": f"b{i}", "raster_index": i, "water_kind_id": kind, "area_m2": float((raster == i).sum()),
+                "label_px": 0, "label_py": 0, "region_id": None, "why": "", "map_kind": kind, "map_why": ""}
+    bodies = [body(1, "river"), body(2, "pond")]
+    held = np.zeros(raster.shape, np.int32)
+    held[10:13, 0:10] = 1                         # 30 px of the river: under SLIVER_PX, left to the river
+    held[30:34, 0:10] = 2                         # all of the pond but 8 px: the whole pond is the owner's
+    held[10:20, 100:200] = 4                      # half the river: cut off
+    lost = tw.hold(raster, bodies, held, {1: "lake", 2: "green-marsh", 3: "pond", 4: "lake", 9: "bay"})
+    assert lost == ["held water 3 (pond) lies on no water", "held water 9 (bay) lies on no water"]
+    assert [b["water_kind_id"] for b in bodies] == ["river", "green-marsh", "lake"]
+    assert (raster == 1).sum() == 1000 and (raster == 2).sum() == 48 and (raster == 3).sum() == 1000

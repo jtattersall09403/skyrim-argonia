@@ -175,6 +175,11 @@ def check_map(plugin: Path, scope_dir: Path) -> list[str]:
     return bad
 
 
+def marker_z(h, row: int, col: int, water: float) -> float:
+    """A marker's height in game units: 64 over the ground (the limited heights are VHGT steps), or over the water."""
+    return max(float(h[row, col]) * su.VHGT_STEP_UNITS, water) + 64.0
+
+
 def build(plugin: Path, scope_dir: Path = None) -> dict:
     scope_dir = scope_dir or SCOPE
     g, man = grid(plugin)
@@ -193,7 +198,7 @@ def build(plugin: Path, scope_dir: Path = None) -> dict:
             raise ValueError(f"{p['id']} lies outside the land grid")
         x = g.origin_x + col * su.VERTEX_SPACING_UNITS
         y = g.origin_y - row * su.VERTEX_SPACING_UNITS
-        z = max(float(h[row, col]), g.water) + 64.0
+        z = marker_z(h, row, col, g.water)
         markers.append({"place": p["id"], "name": p["name"], "kind": p["place_kind_id"],
                         "type": MARKER_TYPE[p["place_kind_id"]], "x": x, "y": y, "z": z,
                         "cell": [int(x // su.CELL_UNITS), int(y // su.CELL_UNITS)],

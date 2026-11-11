@@ -235,7 +235,8 @@ def hold(raster: np.ndarray, bodies: list, held: np.ndarray, held_kind: dict) ->
     """The owner's water in the terrain's bodies, so each takes its kind's bed. `held` is the owner's held water
     (tools/newworld/water_held.py: map px, k the k-th held body) and `held_kind` its kind per k. Where held water
     covers a whole body, the body takes the owner's kind; where it covers part of one of another kind, that part is
-    cut off as a body of its own (appended; both parts are labelled again). `raster` and `bodies` change in place.
+    cut off as a body of its own (appended; both parts are labelled again). No body under SLIVER_PX is made, the
+    smallest the labelling keeps: a smaller held part is left to its body, and a body left with less is taken whole. `raster` and `bodies` change in place.
     The map's own reading of every body stays in `map_kind`. Returns the held bodies that lie on no water."""
     by_i = {b["raster_index"]: b for b in bodies}
     objs = ndi.find_objects(raster)
@@ -251,10 +252,10 @@ def hold(raster: np.ndarray, bodies: list, held: np.ndarray, held_kind: dict) ->
         b["area_m2"] = round(float(m.sum()) * px_m2, 1)
 
     lost = []
-    for k, sl in enumerate(ndi.find_objects(held), 1):
-        if sl is None or k not in held_kind:
-            continue
-        m = (held[sl] == k) & (raster[sl] > 0)
+    slices = ndi.find_objects(held)
+    for k in sorted(held_kind):
+        sl = slices[k - 1] if 0 < k <= len(slices) else None
+        m = (held[sl] == k) & (raster[sl] > 0) if sl is not None else np.zeros((0, 0), bool)
         if not m.any():
             lost.append(f"held water {k} ({held_kind[k]}) lies on no water")
             continue
@@ -264,7 +265,9 @@ def hold(raster: np.ndarray, bodies: list, held: np.ndarray, held_kind: dict) ->
                 continue
             part = m & (raster[sl] == i)
             n = int(part.sum())
-            if n < npx[i]:                                # part of the body: cut it off as its own
+            if n < SLIVER_PX and npx[i] - n >= SLIVER_PX:  # a sliver of held water on a body: no body of its own
+                continue
+            if npx[i] - n >= SLIVER_PX:                   # part of the body: cut it off as its own
                 new = dict(b, raster_index=len(bodies) + 1)
                 raster[sl][part] = new["raster_index"]
                 npx[i] -= n

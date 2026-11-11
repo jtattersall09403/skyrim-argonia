@@ -45,8 +45,9 @@ The recipe:
    edit keeps its water however the rest is cut. Both files are written by tools/newworld/water_overrides_pull.py
    from the atlas's water editor.
 6. The checks (`checks`, out/newworld/water_check.json; the run exits 1 when one fails): each kind's bodies and
-   area inside the picture against the accepted classification (`newworld/sources/water_accepted.json`), and every
-   owner edit on a body of the area recorded with it, with the owner's kind.
+   area inside the picture against the accepted classification (`newworld/sources/water_accepted.json`, on the same
+   waterline and the same source water picture), every owner edit on a body of the area recorded with it, with
+   the owner's kind, and every held water still on water.
 
     python3 -m tools.newworld.water_kinds            # classify; prints counts
     python3 -m tools.newworld.water_kinds --accept   # and take this classification as the accepted one, after a
@@ -57,6 +58,7 @@ The recipe:
 """
 from __future__ import annotations
 
+import hashlib
 import json
 import math
 import re
@@ -157,6 +159,10 @@ def map_kinds(bj: list, raster: np.ndarray) -> dict:
     body takes the kind that labelling gives its label point (nearly every body must label again as itself)."""
     if all(s.get("map_kind") for s in bj):
         return {s["raster_index"]: (s["map_kind"], s["map_why"]) for s in bj}
+    tb = f.OUT / "terrain" / "build.json"
+    if any(s.get("map_kind") for s in bj) or (tb.exists() and "water_held" in json.loads(tb.read_text())):
+        raise ValueError("water_bodies.json is of a terrain build that writes the map's reading (`map_kind`) but "
+                         f"{sum(not s.get('map_kind') for s in bj)} bodies lack it: rebuild the terrain")
     if not any(s.get("overridden") for s in bj):
         return {s["raster_index"]: (s["water_kind_id"], s["why"]) for s in bj}
     from tools.newworld import terrain_relief as tr
@@ -721,8 +727,11 @@ def classify(png: bool = False, chunks: bool = False, accept: bool = False) -> d
     ov_raw = json.loads(ovp.read_text()) if ovp.exists() else {}
     held, held_kind = wh.load(raster.shape), wh.kinds(ov_raw)
     taken = np.isin(raster, list(painted))
-    for k, sl in enumerate(ndi.find_objects(held), 1):
-        if sl is None or k not in held_kind:
+    slices, held_lost = ndi.find_objects(held), []
+    for k in sorted(held_kind):
+        sl = slices[k - 1] if 0 < k <= len(slices) else None
+        if sl is None or not ((held[sl] == k) & water[sl]).any():
+            held_lost.append(f"held water {k} ({held_kind[k]}) lies on no water")
             continue
         m = (held[sl] == k) & water[sl] & ~taken[sl]
         if m.any():
@@ -896,7 +905,7 @@ def classify(png: bool = False, chunks: bool = False, accept: bool = False) -> d
         picture(raster, rows)
     if chunks:
         chunk_pictures(raster, rows, vec, gmap)
-    stats["check"] = checks(raster, rows, ov_raw, accept)
+    stats["check"] = checks(raster, rows, ov_raw, accept, held_lost)
     (f.OUT / "water_check.json").write_text(json.dumps(stats["check"], indent=1))
     return {"bodies": len(rows), "kinds": Counter(r["water_kind_id"] for r in rows),
             "flowing": sum(r["flows"] for r in rows), "speeds": Counter(r["speed"] for r in rows),
@@ -924,19 +933,29 @@ def measure(raster: np.ndarray, rows: list) -> dict:
                       for j, k in enumerate(names)}}
 
 
-def checks(raster: np.ndarray, rows: list, ov_raw: dict, accept: bool = False) -> dict:
+def checks(raster: np.ndarray, rows: list, ov_raw: dict, accept: bool = False, held_lost: list = ()) -> dict:
     """The two checks a rebuild must pass (the result is also out/newworld/water_check.json, which verify reads).
     - kinds: each kind's bodies and area inside the picture against the accepted classification
-      (newworld/sources/water_accepted.json), failing past KIND_TOL unless the waterline itself moved (then the
-      comparison means nothing and the new classification is looked at and accepted afresh, `--accept`).
+      (newworld/sources/water_accepted.json), failing past KIND_TOL, and failing when the waterline itself moved
+      or the source water picture (out/newworld/raster/water.png, by sha256) is another: then the comparison means
+      nothing and the new classification is looked at and accepted afresh (`--accept`, the only writer of the
+      record; a missing record fails).
     - edits: every owner edit on the body its point finds, that body's area against the area recorded when the edit
       was made and its kind against the edit's (water_held.check)."""
     now = measure(raster, rows)
     tb = f.OUT / "terrain" / "build.json"
     now["terrain_build"] = json.loads(tb.read_text())["id"] if tb.exists() else None
-    if accept or not ACCEPTED.exists():
+    src = f.OUT / "raster" / "water.png"
+    now["water_sha256"] = hashlib.sha256(src.read_bytes()).hexdigest() if src.exists() else None
+    edits = wh.check(ov_raw, raster, rows)
+    if accept:
         ACCEPTED.write_text(json.dumps(now, indent=1) + "\n")
+    if not ACCEPTED.exists():
+        return {"accepted_build": None, "terrain_build": now["terrain_build"], "accepted_missing": True,
+                "waterline_moved": False, "source_changed": False, "kinds_off": [], "edits": edits,
+                "held_lost": list(held_lost), "ok": False}
     was = json.loads(ACCEPTED.read_text())
+    source_changed = was.get("water_sha256") != now["water_sha256"]
     moved = abs(now["water_px"] - was["water_px"]) > WATERLINE_TOL * was["water_px"]
     off = []
     for k, a in was["kinds"].items():
@@ -945,10 +964,11 @@ def checks(raster: np.ndarray, rows: list, ov_raw: dict, accept: bool = False) -
                 abs(b["bodies"] - a["bodies"]) > max(KIND_TOL * a["bodies"], KIND_FLOOR_N):
             off.append({"kind": k, "bodies": b["bodies"], "accepted_bodies": a["bodies"],
                         "area_m2": b["area_m2"], "accepted_area_m2": a["area_m2"]})
-    edits = wh.check(ov_raw, raster, rows)
     return {"accepted_build": was.get("terrain_build"), "terrain_build": now["terrain_build"],
-            "waterline_moved": bool(moved), "kinds_off": off, "edits": edits,
-            "ok": bool((moved or not off) and not edits["off"] and not edits["lost"] and not edits["no_record"])}
+            "waterline_moved": bool(moved), "source_changed": bool(source_changed), "kinds_off": off, "edits": edits,
+            "held_lost": list(held_lost),
+            "ok": bool(not moved and not source_changed and not off and not held_lost and not edits["off"]
+                       and not edits["lost"] and not edits["no_record"])}
 
 
 def resolve_overrides(ov: dict, rows: list, raster: np.ndarray) -> tuple[dict, list]:

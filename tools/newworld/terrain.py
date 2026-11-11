@@ -121,8 +121,10 @@ def probe(stage: str, a: np.ndarray, per_m: float = 1.0) -> None:
 def input_digests() -> dict:
     """sha256 (12 hex) of the files that decide where the ground lies and what shape it takes: written into
     build.json, and `terrain check` fails when one has changed since (the build no longer answers its inputs)."""
+    from tools.newworld import water_held as wh
     files = {"scope_cells.json": f.OUT / "scope_cells.json", "cell_region.json": f.OUT / "cell_region.json",
-             "region_relief.json": tf.SPEC, "terrain_held.json": th.HELD}
+             "region_relief.json": tf.SPEC, "terrain_held.json": th.HELD,
+             "water_overrides.json": wh.OVERRIDES, "water_owner_bodies.png": wh.PNG}
     return {k: hashlib.sha256(p.read_bytes()).hexdigest()[:12] if p.exists() else None for k, p in files.items()}
 
 
@@ -278,9 +280,12 @@ def build(upload: bool = True) -> dict:
     for b in bodies:                      # the map's own reading, kept beside the owner's: water_kinds classifies from it
         b["map_kind"], b["map_why"] = b["water_kind_id"], b["why"]
     ov_problems = tw.hold(body_r, bodies, wh.load(water_px.shape), wh.kinds(overrides))
-    # the sea the inland rise is measured from: sea by kind, and with it open water the map's edge cuts (off the
-    # picture counts as sea for the rise, and such water carries that edge inward)
-    rise_sea = np.array([False] + [b["water_kind_id"] in ("ocean", "bay", "shallow-coast") or b["edge_cut"]
+    if ov_problems:
+        raise SystemExit("terrain: the owner's held water lies on no water of this map: " + "; ".join(ov_problems))
+    # the sea the inland rise is measured from: sea as the map draws it (`map_kind`: the owner's kind on a water
+    # sets its bed and moves no land), and with it open water the map's edge cuts (off the picture counts as sea
+    # for the rise, and such water carries that edge inward)
+    rise_sea = np.array([False] + [b["map_kind"] in ("ocean", "bay", "shallow-coast") or b["edge_cut"]
                                    for b in bodies])[body_r]
     tw.flow(body_r, bodies, {k.id: k.flows for k in w.rows("water_kind")})
     log("water bodies", len(bodies))
@@ -575,7 +580,7 @@ def build(upload: bool = True) -> dict:
                                                    int(round((grid.ox + (grid.cols - 1) * ts.STEP) / f.CELL_UNITS)) - 1],
                         "cells_y": [int(round((grid.oy - (grid.rows - 1) * ts.STEP) / f.CELL_UNITS)),
                                     int(round(grid.oy / f.CELL_UNITS)) - 1]},
-             "water_overrides": len(overrides), "water_override_problems": ov_problems, "roads_used": bool(plans), "settled_places": settled, "islets": islets, "seconds": round(time.time() - t0)}
+             "water_overrides": len(overrides), "water_held": len(wh.kinds(overrides)), "water_override_problems": ov_problems, "roads_used": bool(plans), "settled_places": settled, "islets": islets, "seconds": round(time.time() - t0)}
     (OUT / "build.json").write_text(json.dumps(bjson, indent=1, default=_j))
     log("checks", json.dumps({k: v for k, v in chk.items() if k != "guarantee_fails_px"}, default=_j))
     if upload and not TRIAL:
@@ -664,6 +669,7 @@ def check_built() -> int:
     ok = (chk["water_pixels_under"] >= MAP_HELD and chk["land_pixels_above"] >= MAP_HELD
           and chk.get("coast", {}).get("blocks4", 0) >= BLOCKS_HELD and chk["land_format"]["ok"]
           and chk["sha256_matches"] and not chk.get("entrances_bad") and th.ok(chk["held"])
+          and not b.get("water_override_problems")
           and not chk["inputs_changed"]
           and all(v["pm32"] <= tcl.MAX_PM32 and v["pm64"] <= tcl.MAX_PM64 for v in chk["plane_shares"].values())
           and chk.get("roads", {}).get("grade_over_limit_points", 0) == 0)

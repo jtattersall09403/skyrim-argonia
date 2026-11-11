@@ -74,9 +74,12 @@ def kinds(ov: dict) -> dict:
 
 
 def record(ov: dict, held: np.ndarray, raster: np.ndarray, rows: list) -> list:
-    """Stamp every edit in `ov` that has no `area_m2` yet from a classification (`raster`, `rows`): the area of the
-    body its point lands on, and for a kind edit that body's water into `held` (edits on one body share its index).
-    Both are changed in place. Returns the keys of edits whose point found no body."""
+    """Stamp every edit in `ov` not yet recorded (no `area_m2`, or a kind and no `held`: an edit of flow or name
+    that has since been given a kind) from a classification (`raster`, `rows`): the area of the body its point lands
+    on, and for a kind edit that body's water into `held`. Edits share an index only on exactly the same water: a
+    body lying inside larger held water, or overlapping it, is stamped as its own, and an earlier edit whose held
+    water is thereby all taken follows the new index. Both are changed in place. Returns the keys of edits whose
+    point found no body."""
     by_k = {r["raster_index"]: r for r in rows}
     index_of: dict = {}                       # classification body -> held index, for bodies already held
     for key, o in ov.items():
@@ -87,7 +90,7 @@ def record(ov: dict, held: np.ndarray, raster: np.ndarray, rows: list) -> list:
     lost = []
     top = max([int(held.max())] + [int(o.get("held") or 0) for o in ov.values()])
     for key, o in sorted(ov.items(), key=lambda kv: str(kv[1].get("at", ""))):
-        if o.get("area_m2") is not None:
+        if o.get("area_m2") is not None and (o.get("held") or not o.get("water_kind_id")):
             continue
         pt = point_of(key, o)
         k = body_at(raster, *pt) if pt else 0
@@ -100,12 +103,18 @@ def record(ov: dict, held: np.ndarray, raster: np.ndarray, rows: list) -> list:
         if k not in index_of:
             m = raster == k
             inside = np.unique(held[m])
-            if len(inside) == 1 and inside[0] > 0:        # exactly a body held already: the same water
-                index_of[k] = int(inside[0])
+            if len(inside) == 1 and inside[0] > 0 and (raster[held == inside[0]] == k).all():
+                index_of[k] = int(inside[0])              # exactly a body held already: the same water
             else:
+                was = set(inside[inside > 0].tolist())
                 top += 1
                 held[m] = top
                 index_of[k] = top
+                gone = {i for i in was if not (held == i).any()}     # held water this body took whole
+                for e in ov.values():
+                    if e.get("held") and int(e["held"]) in gone:
+                        e["held"] = top
+                index_of = {b: (top if i in gone else i) for b, i in index_of.items()}
         o["held"] = index_of[k]
     return lost
 
@@ -149,18 +158,24 @@ def rows(rep, path: Path) -> None:
         rep.fail("water", "water kinds against the accepted classification", "water_check.json missing: run water_kinds")
         return
     c = json.loads(path.read_text())
+    if c.get("accepted_missing"):
+        rep.fail("water", "water kinds against the accepted classification",
+                 "newworld/sources/water_accepted.json missing: look at the classification, then water_kinds --accept")
     off = c["kinds_off"]
     rep.row("water", f"each water kind's bodies and area inside the picture within 2% of the accepted classification "
-                     f"(build {c['accepted_build']})", f"{len(off)} kinds off" + (", waterline moved" if c["waterline_moved"] else ""),
-            not off or c["waterline_moved"],
+                     f"(build {c['accepted_build']}), on the same waterline and the same source water picture",
+            f"{len(off)} kinds off" + (", waterline moved" if c["waterline_moved"] else "")
+            + (", the source water picture changed" if c.get("source_changed") else ""),
+            not off and not c["waterline_moved"] and not c.get("source_changed") and not c.get("accepted_missing"),
             "; ".join(f"{o['kind']}: {o['bodies']} bodies {o['area_m2'] / 1e4:.1f} ha, accepted "
                       f"{o['accepted_bodies']} and {o['accepted_area_m2'] / 1e4:.1f} ha" for o in off))
     e = c["edits"]
-    bad = e["off"] + e["lost"] + e["no_record"]
+    bad = e["off"] + e["lost"] + e["no_record"] + c.get("held_lost", [])
     rep.row("water", "every owner water edit on the water it was made on (the body at its point within 10% of the "
                      "area recorded with the edit, with the edit's kind)",
             f"{e['same']} of {e['edits']} as made, {e['overtaken']} overtaken by a later edit on the same body",
-            not bad, f"off {e['off'][:3]}, no body {e['lost'][:3]}, no recorded area {e['no_record'][:3]}" if bad else "")
+            not bad, f"off {e['off'][:3]}, no body {e['lost'][:3]}, no recorded area {e['no_record'][:3]}, held water on "
+                     f"no water {c.get('held_lost', [])[:3]}" if bad else "")
 
 
 def read(dirpath: Path) -> tuple[np.ndarray, list]:
@@ -169,6 +184,8 @@ def read(dirpath: Path) -> tuple[np.ndarray, list]:
 
 
 def save(ov: dict, held: np.ndarray) -> None:
+    if int(held.max()) > 65535:
+        raise ValueError(f"{int(held.max())} held bodies: more than the 16-bit raster holds")
     OVERRIDES.write_text(json.dumps(ov, indent=1, sort_keys=True) + "\n")
     if held.any() or PNG.exists():
         Image.fromarray(held.astype(np.uint16)).save(PNG, optimize=True)

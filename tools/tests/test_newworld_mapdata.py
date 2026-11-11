@@ -74,3 +74,10 @@ def test_camera_height_follows_the_box_from_tamriels():
     assert mapdata.camera({"nw": [-30, 15], "se": [40, -40]})["max_height"] == 80000  # Tamriel's own box
     assert mapdata.camera({"nw": [-76, -103], "se": [87, -232]})["max_height"] == 160000  # at most twice
     assert mapdata.camera({"nw": [0, 10], "se": [10, 0]})["max_height"] == 80000  # never below Tamriel's
+
+
+def test_a_marker_stands_over_the_ground_in_game_units():
+    import numpy as np
+    h = np.array([[20, -30]], np.int32)  # limited.npy: VHGT steps (Helstrom's marsh is 20 steps, 160 units)
+    assert mapdata.marker_z(h, 0, 0, 0.0) == 160.0 + 64.0
+    assert mapdata.marker_z(h, 0, 1, 0.0) == 64.0  # over the water where the ground is under it

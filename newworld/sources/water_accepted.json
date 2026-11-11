@@ -42,5 +42,6 @@
    "area_m2": 1107134
   }
  },
- "terrain_build": "20261111T025937Z"
+ "terrain_build": "20261111T025937Z",
+ "water_sha256": "0d6a13c93b933f89d57eb2d866e0b6ea954562765d80b9f30eafcfda46ba0e9f"
 }

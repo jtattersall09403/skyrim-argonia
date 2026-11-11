@@ -167,6 +167,7 @@ made on (`newworld/sources/water_owner_bodies.png`, the edit's `held` and `area_
 `water_overrides_pull` from the classification the atlas shows), so an edit keeps its water however the rest is cut
 on a later build. The run ends with two checks (`out/newworld/water_check.json`, two `verify` rows) and exits 1 on
 either: each kind's bodies and area inside the picture within 2% of the accepted classification
-(`newworld/sources/water_accepted.json`; `--accept` after a look when the classification is meant to change), and
+(`newworld/sources/water_accepted.json`, on the same waterline and source water picture; `--accept` after a look
+when the classification is meant to change), and
 every owner edit on a body within 10% of its recorded area with the owner's kind. Measurements and the frame audit
 of every consumer of the grid: [research](../../research/nw-02-walk5-water-frame.md).

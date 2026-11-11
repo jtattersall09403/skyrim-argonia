@@ -91,9 +91,10 @@ def merge(had: dict, pulled: dict) -> dict:
     return out
 
 
-def main(dirpath: str) -> None:
+def main(dirpath: str) -> int:
     d = Path(dirpath)
     ov, strokes, problems = convert(load(d, "water_edits"), load(d, "water_paint"))
+    pulled = dict(ov)
     # the files are the record, the atlas's store only what was edited there since: an atlas published afresh
     # starts with an empty store, so what the files already hold is kept and the pulled edits are laid over it
     # (an edit is taken back by deleting its entry from the file)
@@ -106,6 +107,7 @@ def main(dirpath: str) -> None:
     if (f.OUT / "water_classified.png").exists():
         raster, rows = water_held.read(f.OUT)
         held = water_held.load(raster.shape)
+        problems += other_bodies(pulled, raster, rows)
         problems += [f"{k}: its point finds no water body" for k in water_held.record(ov, held, raster, rows)]
         water_held.save(ov, held)
     else:
@@ -114,7 +116,21 @@ def main(dirpath: str) -> None:
         (SRC / "water_overrides.json").write_text(json.dumps(ov, indent=1, sort_keys=True) + "\n")
     (SRC / "water_paint.json").write_text(json.dumps(strokes, indent=1) + "\n")
     print(f"{len(ov)} body edits, {len(strokes)} painted strokes", *problems, sep="\n")
+    return 1 if problems else 0
+
+
+def other_bodies(pulled: dict, raster, rows: list) -> list:
+    """Pulled edits whose key names one body while its point finds another: the classification here is not the one
+    the atlas showed when the edit was made."""
+    by_k = {r["raster_index"]: r["id"] for r in rows}
+    out = []
+    for key, o in sorted(pulled.items()):
+        pt = water_held.point_of(key, o)
+        found = by_k.get(water_held.body_at(raster, *pt)) if pt else None
+        if found and key.startswith("wb-") and found != key:
+            out.append(f"{key}: its point finds body {found}, not the body the edit was made on")
+    return out
 
 
 if __name__ == "__main__":
-    main(sys.argv[1])
+    sys.exit(main(sys.argv[1]))

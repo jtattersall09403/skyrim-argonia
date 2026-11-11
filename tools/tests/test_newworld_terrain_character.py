@@ -309,8 +309,16 @@ def test_build_inputs_are_digested(tmp_path, monkeypatch):
     monkeypatch.setattr(f, "OUT", tmp_path)
     monkeypatch.setattr(tf, "SPEC", tmp_path / "region_relief.json")
     monkeypatch.setattr(th, "HELD", tmp_path / "terrain_held.json")
+    from tools.newworld import water_held as wh
+    monkeypatch.setattr(wh, "OVERRIDES", tmp_path / "water_overrides.json")
+    monkeypatch.setattr(wh, "PNG", tmp_path / "water_owner_bodies.png")
+    (tmp_path / "water_overrides.json").write_text("{}")
     a = T.input_digests()
-    assert set(a) == {"scope_cells.json", "cell_region.json", "region_relief.json", "terrain_held.json"}
+    assert set(a) == {"scope_cells.json", "cell_region.json", "region_relief.json", "terrain_held.json",
+                      "water_overrides.json", "water_owner_bodies.png"}
+    assert a["water_owner_bodies.png"] is None          # the owner's water: an edit taken in shows in the check
+    (tmp_path / "water_overrides.json").write_text('{"wb-1-2": {}}')
+    assert T.input_digests()["water_overrides.json"] != a["water_overrides.json"]
     (tmp_path / "region_relief.json").write_text('{"regions": {}}')
     b = T.input_digests()
     assert b["region_relief.json"] != a["region_relief.json"] and b["scope_cells.json"] == a["scope_cells.json"]

@@ -77,38 +77,47 @@ along the old ruler and now lies in open ocean; the name follows the point.
 
 ## The terrain rebuilt with the owner's kinds by held water
 
-Trial build 20261111T045753Z in a worktree (same inputs as 20261111T025937Z, not uploaded), against 025937Z:
-- `build.json` reports 0 override problems (8 unknown bodies before); 2,267 terrain bodies (2,211), 56 of them
-  parts cut off for the owner's kinds. Kinds changed on 640,268 map px, the largest: the south-west sea bay to
-  ocean (474,396 px, the owner's ocean), river to blackwater swamp 58,466, the northern lake ocean to lake 21,053,
-  estuary to green marsh 19,893.
+Trial build 20261111T052124Z in a worktree (same inputs as 20261111T025937Z, not uploaded), against 025937Z:
+- `build.json` reports 0 override problems (8 unknown bodies before) and 222 held waters; a held water lying on no
+  water stops the build, and `terrain check` fails on it and when `water_overrides.json` or
+  `water_owner_bodies.png` has changed since the build (both are in the input digests). 2,227 terrain bodies
+  (2,211), none under 40 px, the smallest the labelling keeps. Kinds changed on 639,814 map px, the largest: the
+  south-west sea bay to ocean (the owner's ocean), river to blackwater swamp, the northern lake ocean to lake,
+  estuary to green marsh.
 - `terrain check` 0; Helstrom's held zone the old ground plus 72 units on 865,322 of 865,322 samples, max
   difference 0; `terrain_needs` the same 6 failures (blackrose-prison, fort-chalkmoth, mine-28-m65, vicrium,
   seafalls, blackrose).
 - water_kinds on it: check ok, 2,143 bodies, 725 flowing, round Helstrom 27.0 ha kept and 30.9 ha to marsh, 289
-  edits: 269 as made, 20 overtaken, none off.
-- Heights: 1,525,955 of 39,457,089 samples differ. 1,242,470 lie in or within 3 map px of water whose kind changed
-  (the beds; up to 4,904 units where bay became ocean). 610 other water samples differ by one step (8 units). The
-  land also moved: 282,875 samples (0.72% of the grid) more than 3 px from any changed water, 99% of them by 64
-  units or less, the most 304 units (4.3 m); half lie within 220 m of changed water, 90% within 1 km. The largest
-  patches are at map px (762, 2358), (858, 351), (2710, 1292) and (2155, 1168). The cause was not pinned: 62% lie
-  within 293 m of changed water and 75% within 293 m of a road, and the stages after the beds (weathering,
-  clearance, roads at fords and bridges) all read the beds.
+  edits: 269 as made, 20 overtaken, none off, no held water lost.
+- Heights: 2,493,770 of 39,457,089 samples differ. 1,244,412 lie in or within 3 map px (9 m) of water whose kind
+  changed: the beds, up to 4,904 units where bay became ocean. 717 other water samples differ by one step.
+- The land moved too: 1,246,119 samples (3.2% of the grid) more than 9 m from any changed bed, 70% of them by one
+  step (8 units), 99% by 104 units or less, the most 936 units (13 m). The cause is the inland rise. It is measured
+  from the sea (`coast_t`, a 5 km fall-off that feeds the relief, both landform passes and the erosion), and the
+  sea is now read from the map's own kinds (`map_kind`) and from open water the map's edge cuts, so an owner's
+  kind sets a bed and moves no land. Build 025937Z read the kinds with the owner's laid on by id, so its rise
+  counted as sea the owner-set shallow coast its id matching happened to hit, 81,003 map px in 33 patches, the
+  largest 72,817 px at map px (2232, 2239) and 4,603 px at (1730, 2359); those are inland water again for the rise
+  and the land round them stands a little higher. Measured by building both ways from the same inputs: with the
+  rise read from the owner's kinds by held water the land outside the beds differs from 025937Z on 282,875
+  samples (99% by 64 units or less, the most 304), with the map's kinds on 1,246,119. Of the 1,246,119, 17,634 lie
+  within 18 m of a changed bed and 510,258 within 88 m of a road line; the rest was not split further between the
+  rise and the road lines that sample bank heights.
 
 ## The checks that would have caught it
 
 `water_kinds` ends with two checks, written to `out/newworld/water_check.json`, and exits 1 when either fails;
 `verify` reads the file as two rows.
 - Kinds: per kind, the bodies and the area inside the picture (the map less its ruler band) against
-  `newworld/sources/water_accepted.json`; a kind off by more than 2% (or 2 ha, or 3 bodies) fails unless the water
-  pixels there moved by over 0.1% (then there is nothing to compare). On the faulty run: river 208 ha to 101 ha,
-  lake 114 ha to 219 ha.
-  `water_kinds --accept` writes the record after the new classification has been looked at. The record in the
+  `newworld/sources/water_accepted.json`; a kind off by more than 2% (or 2 ha, or 3 bodies) fails, and so does a
+  waterline that moved by over 0.1%, another source water picture (the record keeps the sha256 of
+  `out/newworld/raster/water.png`) or a missing record. On the faulty run: river 208 ha to 101 ha, lake 114 ha to
+  219 ha. `water_kinds --accept` is the only writer of the record, after the new classification has been looked at. The record in the
   repository is the fixed classification of 20261111T025937Z; against the deployed one it differs in the sea
   (bay 294 to 73 ha, ocean 926 to 1,309 ha, shallow coast 1,209 to 1,051 ha: cause 3) and by 6 ponds.
 - Edits: every owner edit, the body its point finds, that body's area against the edit's `area_m2` (10% or
   500 m2) and its kind against the owner's kind on that water (the latest kind edit made on it). On the faulty
-  run: 18 off.
+  run: 18 off. A held water left on no water fails the same check.
 
 ## The frame of every consumer
 
@@ -125,7 +134,7 @@ Each row was measured on the built outputs of 20261111T025937Z; the test is in
 | world/land.py | `units.Grid` from build.json | grid cx0 -100, cy_top -79; limited x 8 equals the heightmap at Helstrom; start marker (-26880, -521856), cell (-7, -128), as deployed | correct; Grid test |
 | world/cells.py | Grid | 20,406 of 20,640 cells inside a region carry the map's region for their map cell; Helstrom's cell (-8, -148) murkwood | correct; Grid test |
 | place (flora) and mist refs | Grid, legend origin | 95,392 of 95,392 sampled refs in the cell row their file names; flora 15 units (median) from the ground at its position | correct; Grid test |
-| world/mapdata.py | Grid | 116 of 116 markers within a cell of their place record | correct; Grid test |
+| world/mapdata.py | Grid | 116 of 116 markers within a cell of their place record; marker heights were read in the wrong unit | frame correct; unit fixed; `test_a_marker_stands_over_the_ground_in_game_units` |
 | teleports.py | Grid | 266 landings, 0 faults; heights were read in the wrong unit | frame correct; unit fixed; `test_the_ground_is_in_game_units_from_the_limited_steps` |
 | tools/navmesh | Grid from the land manifest | build box (-99, -257) to (112, -80), inside the land grid | correct; Grid test |
 | build_db rasters and positions | map px, `frame.px_to_world` | Helstrom px (1482.9, 1038.2) to (-32174, -605839), the record's | correct; map pixel test |
