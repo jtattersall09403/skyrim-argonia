@@ -399,3 +399,8 @@ added here the day they are made, with the date and the issue.
   and needs no long job; otherwise note it in one line and move on). And for any long-running tool or job there
   is always a fast way to find faults and test fixes (for the LOD, a small world first): it is built before the
   long job is relied on.
+- 2026-11-11 (in session, evening): the owner edits placed plants and rocks one at a time. "I will also want to be
+  able to edit plants without having to regenerate/re-place all of them (e.g. if I remove a tree or move a rock in
+  the studio it would be madness to re-place everything else)." An owner's edit of a placed thing in the world
+  (remove, move, add) is its own record applied over the placement; it never re-places anything else, and a
+  rebuild after it redoes only what that thing touches.
