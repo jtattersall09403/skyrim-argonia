@@ -34,6 +34,10 @@ slot straight after its commands. A red command or check stops the run there: no
 already running finish, and the check's own lines are printed. A run decides by content: the digest cache
 (`digests.json`, keyed on each file's inode, size and times) serves `plan` and `preflight` alone.
 
+A stage may add to a tracked file it reads (`adds`: the esm stage adds each new record's form id to
+`newworld/sources/world_formids.json`, and never changes one). That file is read again after the commands, so the
+run that added is current, and the summary names the file: commit it by path.
+
 Out: `out/newworld/rebuild/` (stamps, `logs/<stage>.log`, `summary.json`, `run.pid`, `digests.json`); never git.
 """
 from __future__ import annotations
@@ -98,6 +102,7 @@ class Stage:
     proof: tuple = ()
     lock: str | None = None
     alone: bool = False
+    adds: tuple = ()        # those of its reads its own commands may add to: read again after them, so the run that added is current
 
 
 PY = "{py}"
@@ -110,7 +115,9 @@ CELLS = "out:newworld/plugin/cells.json"
 DLL = "out:tools/ArgoniaPlugin/ArgoniaPlugin.dll"
 WRITER_CS = ("src:tools/ArgoniaPlugin/NewWorld.cs", "src:tools/ArgoniaPlugin/NewWorldAtmosphere.cs",
              "src:tools/ArgoniaPlugin/NewWorldMap.cs", "src:tools/ArgoniaPlugin/NewWorldNavmesh.cs",
-             "src:tools/ArgoniaPlugin/WaterBlend.cs", "src:tools/ArgoniaPlugin/ForeignCopy.cs")
+             "src:tools/ArgoniaPlugin/WaterBlend.cs", "src:tools/ArgoniaPlugin/ForeignCopy.cs",
+             "src:tools/ArgoniaPlugin/FormIds.cs")
+FORMIDS = "src:newworld/sources/world_formids.json"       # the world file's form ids by name: the writer adds, never changes
 BUILT_PLACES = ("src:newworld/places/*/land.jsonl", "src:newworld/places/*/spaces/exterior/refs.jsonl")
 DBPY = "src:tools/argonia_world/db.py"
 LAID = "laid:NewWorld"
@@ -330,7 +337,8 @@ STAGES: tuple[Stage, ...] = (
                  "out:newworld/plugin/map/map.json", "out:newworld/plugin/map/markers.json",
                  "out:newworld/plugin/map/teleports.json", "out:newworld/plugin/map/lodplan.json", *WRITER_CS,
                  f"ext:{GAME}/Skyrim.esm", f"ext:{GAME}/Update.esm", f"ext:{GAME}/Black Marsh.esm", LAID,
-                 "src:tools/newworld/world/world.sh"),
+                 "src:tools/newworld/world/world.sh", FORMIDS),
+          adds=(FORMIDS,),
           writes=("out:newworld/plugin/ArgoniaNewWorld.esm", "out:newworld/plugin/ArgoniaNewWorld.json",
                   "out:newworld/plugin/check.txt"),
           agree=(("out:newworld/plugin/ArgoniaNewWorld.json#key", "out:newworld/plugin/land/manifest.json#key", "starts"),),
@@ -862,6 +870,9 @@ class Run:
                             hit = [ln for ln in tail if re.search(r"\bFAIL\b|Error|error:|Traceback", ln)][-8:] or tail[-5:]
                             res.update(result="red", failed=kind, line="\n".join(hit), rc=rc)
                             return
+                    if kind == "stage" and cmds and s.adds:        # what the commands added to is read as they left it
+                        inputs.update({spec: tree.digest(spec) for spec in s.adds})
+                        key, bkey = tree.key_of(inputs), tree.build_key(s, inputs)
                     if kind == "stage" and state != "proved":      # the commands stand: a check is repeated alone
                         tree.write_stamp(s, {"built": bkey, "at": at})
             # the stage's own tracked or database outputs may be among another stage's reads, never its own
@@ -941,7 +952,8 @@ def summary(tree: Tree, rows: list[dict], done: dict[str, dict]) -> dict:
     skipped = [r["stage"] for r in rows if r["state"] == "current"] + [n for n, r in done.items() if r["result"] == "skipped"]
     proved = [n for n, r in done.items() if r["result"] == "proved"]
     checks_ok = sum(len(tree.by_name[n].checks) for n in ran + proved)
-    tracked = _git(tree.repo, "status", "--short", "--", "mods/dependencies.json", "newworld/story/data/db").stdout.splitlines()
+    tracked = _git(tree.repo, "status", "--short", "--", "mods/dependencies.json", "newworld/story/data/db",
+                   FORMIDS.split(":", 1)[1]).stdout.splitlines()
     doc = {"ran": ran, "skipped": skipped, "proved": proved, "red": red,
            "not_run": [n for n, r in done.items() if r["result"] == "not run"],
            "checks_passed": checks_ok, "checks_failed": [f"{n}: {done[n]['failed']}" for n in red],

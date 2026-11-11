@@ -10,6 +10,7 @@
     <PackageReference Include="Mutagen.Bethesda.Skyrim" Version="0.54.4" />
     <!-- shared with tools/ArgoniaPlugin by link, never edited from here -->
     <Compile Include="../../ArgoniaPlugin/ForeignCopy.cs" Link="Shared/ForeignCopy.cs" />
+    <Compile Include="../../ArgoniaPlugin/FormIds.cs" Link="Shared/FormIds.cs" />
     <Compile Include="../../ArgoniaPlugin/Survey.cs" Link="Shared/Survey.cs" />
   </ItemGroup>
 </Project>

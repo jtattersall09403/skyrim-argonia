@@ -5,6 +5,8 @@
 # is the skill world-build.
 #   world.sh write    the ESM from land/, tex/, cells.json, atmosphere.json, refs/<producer>/ and navmesh/
 #                     (ArgoniaPlugin `newworld write`); skipped when the stamp ArgoniaNewWorld.json holds this key.
+#                     Every record's form id that is not placed by formula is its name's in the registry
+#                     newworld/sources/world_formids.json: a new name is added there, and the file is then committed
 #                     The key ends with NW_STAGE_KEY when the rebuild sets it (the digest of everything its stage
 #                     reads): the file is then written anew unless it was written for that very key
 #   world.sh map      the map data of map/ applied when the ESM lacks it (`nwmap apply`), then read back -> map-check.txt
@@ -22,6 +24,7 @@ export DOTNET_ROOT="$HOME/.dotnet" PATH="$HOME/.dotnet:$PATH" DOTNET_CLI_TELEMET
 py=$(ls "$HOME/.argonia/venv/bin/python" 2>/dev/null || command -v python3)
 data="${ARGONIA_GAME_ROOT:-$HOME/games/skyrimse}/Data"
 out=out/newworld/plugin; esm=$out/ArgoniaNewWorld.esm; man=$out/land/manifest.json; stamp=$out/ArgoniaNewWorld.json
+formids=newworld/sources/world_formids.json
 bin=out/tools/ArgoniaPlugin
 plugin() { dotnet "$bin/ArgoniaPlugin.dll" "$@"; }
 # one writer of the ESM at a time: a pid file checked with kill -0 (no flock); a second writer refuses
@@ -36,7 +39,7 @@ writer() {
 esm_key() {
   key=$("$py" -c 'import json,sys; print(json.load(open(sys.argv[1]))["key"])' "$man")
   key="$key:${NW_REF_PRODUCERS:-all}:$(cat "$out/tex/manifest.json" "$out/cells.json" "$out/atmosphere.json" $(find "$out/refs" -name '*.jsonl' | sort) | sha256sum | cut -c1-16)"
-  codekey=$(cat tools/ArgoniaPlugin/NewWorld.cs tools/ArgoniaPlugin/WaterBlend.cs tools/ArgoniaPlugin/ForeignCopy.cs tools/ArgoniaPlugin/NewWorldNavmesh.cs tools/ArgoniaPlugin/NewWorldAtmosphere.cs $(ls "$out"/navmesh/navi.json "$out"/navmesh/navm/cy*.jsonl.gz 2>/dev/null) | sha256sum | cut -c1-16)
+  codekey=$(cat tools/ArgoniaPlugin/NewWorld.cs tools/ArgoniaPlugin/WaterBlend.cs tools/ArgoniaPlugin/ForeignCopy.cs tools/ArgoniaPlugin/FormIds.cs tools/ArgoniaPlugin/NewWorldNavmesh.cs tools/ArgoniaPlugin/NewWorldAtmosphere.cs $(ls "$out"/navmesh/navi.json "$out"/navmesh/navm/cy*.jsonl.gz 2>/dev/null) | sha256sum | cut -c1-16)
   [ -z "${NW_STAGE_KEY:-}" ] || codekey="$codekey:$NW_STAGE_KEY"
 }
 esm_current() { [ -f "$esm" ] && [ -f "$stamp" ] && grep -q "\"key\": \"$key:$codekey\"" "$stamp"; }
@@ -49,7 +52,7 @@ case "$1" in
       echo "esm current ($key)"
     else
       t0=$(date +%s.%N)
-      plugin newworld write "$man" "$data" "$esm"
+      plugin newworld write "$man" "$data" "$esm" "$formids"
       t1=$(date +%s.%N)
       "$py" -c 'import json,sys,os; k,e,t=sys.argv[1:4]; json.dump({"key":k,"esm":e,"bytes":os.path.getsize(e),"write_s":round(float(t),1)},open(sys.argv[4],"w"),indent=1)' \
         "$key:$codekey" "$esm" "$(echo "$t1 - $t0" | bc)" "$stamp.tmp"

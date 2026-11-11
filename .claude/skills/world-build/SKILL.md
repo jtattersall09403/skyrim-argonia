@@ -62,8 +62,9 @@ it is not ready to build.
   never by an index it kept. A new consumer of the grid gets a row and a test in the
   [frame audit](../../../docs/research/nw-02-walk5-water-frame.md).
 - **Ids stay.** Noise, rounding and seeds are anchored to the picture's grid, so a wider scope moves no ground.
-  Atmosphere records have fixed form ids. The world's copied records count up in the listed order of
-  `tex/materials.json`: add a material at the end of its list, and rebuild the place layer after the world.
+  Form ids are registered, never renumbered: `newworld/sources/world_formids.json` holds the id of every land
+  texture, water type, blend, region and copied base by its name, a new one takes the next id of its kind's block,
+  and an entry is never edited or removed. Cells and atmosphere records are placed by formula.
 - **A terrain need is mended, not waved through.** `terrain_needs` fails on a failure that
   `newworld/sources/terrain_needs_accepted.json` does not name. A row is added there only when the map gives the
   place no such ground, with that reason, the judge's own words for the failure (`reason`) and the value it was
@@ -177,7 +178,8 @@ check's own lines are printed (`out/newworld/rebuild/logs/<stage>.log` has the w
 ## 7. After a green run
 
 1. Commit by path the tracked files the summary lists (`mods/dependencies.json`, tables under
-   `newworld/story/data/db/`) with the change that caused them.
+   `newworld/story/data/db/`, and `newworld/sources/world_formids.json` after a run that added form ids) with the
+   change that caused them.
 2. Republish the Atlas when the terrain or the water changed: `python3 -m tools.newworld.map_page`, then publish
    `out/newworld/map/index.html` to the Atlas's own link (`tools/newworld/water_overrides_pull.py` names it).
 3. Bring level what the summary lists as stale beyond this build, in this order, each only if listed:

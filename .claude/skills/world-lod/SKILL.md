@@ -75,6 +75,7 @@ on the machine is skipped; nothing that is current is made again.
 | A change to | Reruns | Leaves alone |
 |---|---|---|
 | Placed references only (places built, plants scattered again with the same bases) | `dyndolod`, `collect` | `terrain`, `texgen` |
+| A re-place or a navmesh rebuild (land, water and ground paint as they were) | `dyndolod`, `collect`; `texgen` only when a tree or static base is new or changed | `terrain`, always: every record keeps its registered form id (the skill `world-build`) |
 | A new or changed tree base, or the billboard plan | `texgen`, `dyndolod`, `collect` | `terrain` |
 | A new or changed static base that is no tree | `texgen` (it reads every static base record), `dyndolod`, `collect` | `terrain` |
 | Terrain, water or ground paint, in any cells | `terrain` (its textures are made again only for what is missing: section 6), `dyndolod`, `collect` | `texgen` |

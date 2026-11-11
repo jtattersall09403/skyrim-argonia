@@ -168,8 +168,7 @@ resolver follows every spelling of each part of a path, as the game's loader doe
 
 ## 6. Form ids
 
-The world's copied records share one counter from 0x900: the ground's LTEX, TXST and GRAS first, in the listed order
-of `tex/materials.json` (a JSON array written from `texture.py`'s literal order: no dictionary or hash order), then
-water, then placed bases. Adding a material moves every later copied id; nothing outside the world's own ESM holds
-one (the place layer reads the world's LTEX by editor id at each build, so it is rebuilt after the world). The writer
-stops if the counter reaches the atmosphere's fixed ids at 0x80000.
+Each material's LTEX holds its form id by the material's id in the registry `newworld/sources/world_formids.json`
+(`ltex:<material id>`), and its texture set and grass by the record they are copied from (`copy:<source form key>`).
+A new material takes the next id of the ground block (0x010000..0x01FFFF); no other id moves, whatever the order of
+`tex/materials.json`. The writer stops when a block is full.

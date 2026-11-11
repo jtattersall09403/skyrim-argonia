@@ -4,8 +4,8 @@
 //   atmos study <out.json> <plugin paths...>   every WTHR, CLMT, IMGS, VOLI and REGN weather list, as JSON (read only)
 // Records are copies of vanilla forms (the load order's winner), re-coloured and re-timed (never edits of vanilla
 // forms), at the fixed form ids the spec gives (atmosphere.py BASE: IMGS 0x80000.., VOLI 0x80400.., WTHR 0x80500..,
-// CLMT 0x80600), so the owner's `fw` commands stay the same from build to build (the ForeignCopy range starts at
-// 0x900 and ends near 0x3000; cells are 0x100000..).
+// CLMT 0x80600), so the owner's `fw` commands stay the same from build to build (the registry's blocks stand clear
+// of 0x80000..0x80FFF: FormIds.cs; cells are 0x100000..).
 // A field in the spec is a dotted property path on the Mutagen record ("SkyUpperColor.Day", "FogDistanceDayFar",
 // "DirectionalAmbientLightingColors.Sunrise.DirectionalXPlus", "Cinematic.Saturation"); a colour is [r, g, b].
 using System.Collections;

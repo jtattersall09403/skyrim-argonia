@@ -344,7 +344,7 @@ static class WaterStudy
                 var xy = e.Name.Split(',');
                 cellKey[(int.Parse(xy[0]), int.Parse(xy[1]))] = wv.GetString()!;
             }
-        var (cellWater, blend) = WaterBlend.Blend(mod, fc.NextIdTake, cellKey, keyOf, recs);
+        var (cellWater, blend) = WaterBlend.Blend(mod, _ => fc.NextIdTake(), cellKey, keyOf, recs);
         var byKey = mod.Waters.ToDictionary(w => w.FormKey, w => (IWaterGetter)w);
         var pureLook = new Dictionary<string, IWaterGetter>();
         foreach (var (k, w) in recs) pureLook.TryAdd(KindOf(k), w);
@@ -538,7 +538,7 @@ static class WaterStudy
         var keyOf = recs.ToDictionary(kv => kv.Key, kv => kv.Value.FormKey);
         var cells = new Dictionary<(int, int), string>();
         for (var x = 0; x < 60; x++) for (var y = 0; y < 12; y++) cells[(x, y)] = x == 30 ? "river-000" : x < 20 ? "sea" : "blackwater-swamp";
-        var (cw, rep) = WaterBlend.Blend(mod, () => id++, cells, keyOf, recs);
+        var (cw, rep) = WaterBlend.Blend(mod, _ => id++, cells, keyOf, recs);
         var byKey = mod.Waters.ToDictionary(w => w.FormKey, w => (IWaterGetter)w);
         var eff = cw.ToDictionary(kv => kv.Key, kv => byKey[kv.Value]);
         double worst = 0;

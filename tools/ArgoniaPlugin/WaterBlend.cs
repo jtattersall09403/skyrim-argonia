@@ -47,7 +47,7 @@ static class WaterBlend
         {
             var v = p.Value;
             var src = v.GetProperty("copy").GetString()!.Split(':');
-            var w = (Water)fc.Find(src[0], src[1]).Duplicate(new FormKey(mod.ModKey, fc.NextIdTake()));
+            var w = (Water)fc.Find(src[0], src[1]).Duplicate(new FormKey(mod.ModKey, fc.Take("water", "watr:" + p.Name)));
             w.EditorID = v.GetProperty("edid").GetString();
             if (v.TryGetProperty("set", out var set))
                 foreach (var f in set.EnumerateObject()) Set(w, f.Name, f.Value);
@@ -186,8 +186,10 @@ static class WaterBlend
     };
 
     /// cells: (cx, cy) -> water type key; recs: key -> the record shown; returns (cx, cy) -> the FormKey to write, and a report.
+    /// idOf gives a graded record its id by its name, "blend:<own type>|<the looks mixed in, in 32nds>|<its look>":
+    /// what the record is, never the order it was made in.
     public static (Dictionary<(int, int), FormKey> cellWater, Dictionary<string, object> report) Blend(
-        ISkyrimMod mod, Func<uint> nextId, Dictionary<(int, int), string> cells, Dictionary<string, FormKey> keyOf,
+        ISkyrimMod mod, Func<string, uint> idOf, Dictionary<(int, int), string> cells, Dictionary<string, FormKey> keyOf,
         Dictionary<string, IWaterGetter> recs)
     {
         // one representative key per look
@@ -281,7 +283,7 @@ static class WaterBlend
                        + "|" + string.Join(",", v);
             if (!made.TryGetValue(name, out var m))
             {
-                var fk = new FormKey(mod.ModKey, nextId());
+                var fk = new FormKey(mod.ModKey, idOf("blend:" + name));
                 var w = (Water)recs[own].Duplicate(fk);
                 // the name keeps the cell's own type (its kind and flow): ANW_WaterBlend_<own type's editor id>_NNNN
                 w.EditorID = $"ANW_WaterBlend_{recs[own].EditorID}_{made.Count:D4}";

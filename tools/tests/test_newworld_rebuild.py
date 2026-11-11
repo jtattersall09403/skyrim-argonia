@@ -389,6 +389,38 @@ def test_what_the_checks_alone_read_reruns_the_checks_alone(tmp_path):
     assert (t.out / "tool.env").read_text().split() == ["-"] and R.plan(t)[0]["state"] == "current"   # the tool never ran again
 
 
+ADDING_TOOL = """
+import pathlib as p
+o = p.Path('out'); o.mkdir(exist_ok=True)
+word, ids = p.Path('in.txt').read_text(), p.Path('ids.txt')
+if word not in ids.read_text().split():
+    ids.write_text(ids.read_text() + word + '\\n')          # a new name is added to the registry the stage reads
+(o / 'w.txt').write_text(word + '=' + str(ids.read_text().split().index(word)))
+(o / 'w.runs').open('a').write('x')
+"""
+
+
+def test_a_stage_that_adds_to_a_file_it_reads_is_current_after_that_run(tmp_path):
+    (tmp_path / "in.txt").write_text("one")
+    (tmp_path / "ids.txt").write_text("zero\n")
+    s = Stage("w", "", cmds=((PY, "-c", ADDING_TOOL),), reads=("src:in.txt", "src:ids.txt"), adds=("src:ids.txt",), writes=("out:w.txt",))
+    t = Tree(repo=tmp_path, stages=(s,), py=sys.executable)
+    assert R.run(t, check_first=False) == 0 and (tmp_path / "ids.txt").read_text() == "zero\none\n"
+    assert R.plan(t)[0]["state"] == "current"                      # the file as the commands left it is what the stage read
+    assert R.run(t, check_first=False) == 0 and runs(t, "w") == 1
+    (tmp_path / "in.txt").write_text("zero")                       # a known name: nothing is added, the stage runs once
+    assert R.run(t, check_first=False) == 0 and runs(t, "w") == 2 and R.plan(t)[0]["state"] == "current"
+    (tmp_path / "ids.txt").write_text("one\nzero\n")               # the registry changed by another hand: stale
+    assert R.plan(t)[0]["state"] == "stale"
+    assert R.run(t, check_first=False) == 0 and (t.out / "w.txt").read_text() == "zero=1"
+
+
+def test_the_world_files_stage_reads_the_form_id_registry_and_may_add_to_it():
+    esm = {s.name: s for s in R.STAGES}["esm"]
+    assert R.FORMIDS in esm.reads and esm.adds == (R.FORMIDS,) and "src:tools/ArgoniaPlugin/FormIds.cs" in esm.reads
+    assert all(a in s.reads for s in R.STAGES for a in s.adds)
+
+
 @pytest.mark.parametrize("name", list(keyed.TOOLS))
 def test_the_build_key_is_folded_into_each_keyed_tools_own_key(name, monkeypatch):
     import importlib
@@ -411,7 +443,7 @@ def test_the_keyed_tools_run_as_they_do_by_hand_without_a_build_key(monkeypatch,
 WORLD_DOTNET = """#!/usr/bin/env bash
 case "$*" in
   build*) exit 0 ;;
-  *"newworld write"*) echo esm > "${@: -1}"; echo x >> "$COUNT" ;;
+  *"newworld write"*) echo esm > "${@: -2:1}"; echo x >> "$COUNT" ;;
   *"newworld check"*) printf 'cells 12\\n  PASS in 27.3 s\\n' ;;
 esac
 """
@@ -423,7 +455,7 @@ def test_the_world_file_is_written_anew_for_a_new_build_key_and_its_check_holds_
     (repo / "tools/newworld/world/world.sh").write_bytes((REPO / "tools/newworld/world/world.sh").read_bytes())
     os.chmod(repo / "tools/newworld/world/world.sh", 0o755)
     (repo / "tools/ArgoniaPlugin").mkdir(parents=True)
-    for n in ("NewWorld", "WaterBlend", "ForeignCopy", "NewWorldNavmesh", "NewWorldAtmosphere"):
+    for n in ("NewWorld", "WaterBlend", "ForeignCopy", "FormIds", "NewWorldNavmesh", "NewWorldAtmosphere"):
         (repo / f"tools/ArgoniaPlugin/{n}.cs").write_text(n)
     plug = repo / "out/newworld/plugin"
     for d in ("land", "tex", "refs/flora"):

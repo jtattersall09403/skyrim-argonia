@@ -1,6 +1,8 @@
 // newworld: the new world's plugin ArgoniaNewWorld.esm from the land shards (tools/newworld/world/land.py), and its
 // off-game read-back. Ported from the old ArgoniaGen/LandWorld.cs (ac983185): same LAND layout, no intermediate JSON.
-//   newworld write <land/manifest.json> <Data dir> <out.esm>
+//   newworld write <land/manifest.json> <Data dir> <out.esm> [form ids registry]
+//       the registry (FormIds.cs) holds the id of every record that is not placed by formula; the world's is
+//       newworld/sources/world_formids.json, another world's defaults to formids.json beside its ESM
 //   newworld check <out.esm> <land/manifest.json> <Data dir>      (exit 1 on any failure)
 // Facts kept from LandWorld.cs (measured on Skyrim.esm's Tamriel): LAND DATA flags 0x1F, compressed; per quadrant
 // BottomLeft, BottomRight, TopLeft, TopRight one base layer (0xFFFF); Array2d indexed [x, y], y north from the south;
@@ -24,8 +26,10 @@ static class NewWorld
     const string StartCell = "ArgoniaNWStart", StartMarker = "ArgoniaNWStartMarker";
     static readonly FormKey XMarkerHeading = FormKey.Factory("000034:Skyrim.esm");
     static readonly Quadrant[] Quads = { Quadrant.BottomLeft, Quadrant.BottomRight, Quadrant.TopLeft, Quadrant.TopRight };
-    // fixed form ids: the bytes depend only on the shards
-    const uint IdWorld = 0x800, IdTopCell = 0x801, IdMarker = 0x802, IdCopies = 0x900, IdCopiesEnd = 0x80000, IdRegions = 0x880, IdCells = 0x100000, IdRefs = 0x200000;  // cell k: IdCells + 2k, its LAND +1; 0x900.. copied records
+    // form ids by formula: the world, its persistent cell, the start marker; cell k of the grid IdCells + 2k, its LAND
+    // +1; the placed references count up from IdRefs in the shards' order (nothing is keyed on a reference's id).
+    // Every other record's id is its name's in the registry (FormIds.cs), in its kind's block.
+    const uint IdWorld = 0x800, IdTopCell = 0x801, IdMarker = 0x802, IdCells = 0x100000, IdRefs = 0x200000, IdRefsEnd = 0x7FFFFF;
     static readonly string[] Allowed = { "Skyrim.esm", "Update.esm", "Black Marsh.esm" };  // the only masters (verify.py MASTERS)
 
     record Manifest(JsonElement Root)
@@ -49,13 +53,13 @@ static class NewWorld
 
     public static int Run(string[] a) => a[0] switch
     {
-        "write" => Write(a[1], a[2], a[3]),
+        "write" => Write(a[1], a[2], a[3], a.Length > 4 ? a[4] : Path.Combine(Path.GetDirectoryName(Path.GetFullPath(a[3]))!, "formids.json")),
         "check" => Check(a[1], a[2], a[3]),
         "navmesh" => NewWorldNavmesh.Run(a[1..]),
         _ => throw new ArgumentException("newworld write|check"),
     };
 
-    static int Write(string manPath, string data, string outPath)
+    static int Write(string manPath, string data, string outPath, string idsPath)
     {
         var sw = Stopwatch.StartNew();
         var man = Load(manPath);
@@ -97,7 +101,8 @@ static class NewWorld
         // the ground paint (tools/newworld/world/texture.py): our own LTEX per material, copied from its source
         // (asset-only plugins via ForeignCopy), with our grass list
         var allowed = Allowed.Select(f => ModKey.FromFileName(f)).ToList();  // a DLC record (Black Marsh's own masters) is copied too
-        using var fc = new ForeignCopy(mod, allowed, data, IdCopies);
+        var ids = FormIds.Load(idsPath);
+        using var fc = new ForeignCopy(mod, allowed, data, ids) { Kind = "ground" };
         var texDir = Path.Combine(Path.GetDirectoryName(man.Dir)!, "tex");
         var texMan = JsonDocument.Parse(File.ReadAllText(Path.Combine(texDir, "manifest.json"))).RootElement;
         if (texMan.GetProperty("build_id").GetString() != man.BuildId) throw new InvalidDataException("tex shards are another terrain build");
@@ -106,15 +111,9 @@ static class NewWorld
         foreach (var m in JsonDocument.Parse(File.ReadAllText(Path.Combine(texDir, "materials.json"))).RootElement.EnumerateArray())
         {
             var spec = m.GetProperty("ltex").GetString()!.Split(':');
-            var key = fc.Get(spec[0], spec[1], forceCopy: true);
+            // each material its own LTEX (two materials of one source differ by their grass), its id the material's
+            var key = fc.CopyAs(fc.Find(spec[0], spec[1]), spec[0], ids.Take("ground", "ltex:" + m.GetProperty("id").GetString()));
             var lt = mod.LandscapeTextures[key];
-            if (matKeys.Contains(key))
-            {
-                // a second material of one source (another grass list): its own LTEX, a copy of the first
-                lt = (LandscapeTexture)lt.Duplicate(new FormKey(modKey, fc.NextIdTake()));
-                mod.LandscapeTextures.Add(lt);
-                key = lt.FormKey;
-            }
             lt.EditorID = "ANW_Ground_" + m.GetProperty("id").GetString();
             var ts = lt.TextureSet.FormKey;  // our own TXST too, so the ground's diffuse paths read from this plugin alone
             if (!ts.IsNull && ts.ModKey != modKey) lt.TextureSet.SetTo(fc.Get(ts, ts.ModKey.FileName, forceCopy: true));
@@ -133,10 +132,9 @@ static class NewWorld
         var (climKey, regionWeather) = NewWorldAtmosphere.Build(mod, fc, plugDir);  // atmosphere.json (tools/newworld/atmosphere.py)
         ws.Climate = new FormLinkNullable<IClimateGetter>(climKey);
         var regionKey = new Dictionary<string, FormKey>();
-        uint rid = IdRegions;
         foreach (var r in cj.GetProperty("regions").EnumerateObject())
         {
-            var reg = new Region(K(rid++), Rel)
+            var reg = new Region(K(ids.Take("region", "region:" + r.Name)), Rel)
             {
                 EditorID = "ANW_Region_" + r.Name.Replace("-", "_"),
                 Worldspace = new FormLinkNullable<IWorldspaceGetter>(ws.FormKey),
@@ -156,9 +154,10 @@ static class NewWorld
                 var xy = e.Name.Split(',');
                 cellKind[(int.Parse(xy[0]), int.Parse(xy[1]))] = wv.GetString()!;
             }
-        var (cellWater, blendReport) = WaterBlend.Blend(mod, fc.NextIdTake, cellKind, watrKey, watrRec);
+        var (cellWater, blendReport) = WaterBlend.Blend(mod, n => ids.Take("water", n), cellKind, watrKey, watrRec);
         File.WriteAllText(Path.Combine(plugDir, "water_blend.json"), JsonSerializer.Serialize(blendReport));
         Console.WriteLine("  water seams: " + string.Join(", ", blendReport.Select(kv => $"{kv.Key} {kv.Value}")));
+        fc.Kind = "base";
         var refsByCell = Refs(plugDir, fc);
         uint refId = IdRefs;
         var mk = man.Marker;
@@ -248,10 +247,10 @@ static class NewWorld
             ws.SubCells.Add(b);
         }
         NewWorldNavmesh.Attach(mod, ws, outPath, man.BuildId);  // nw-02 step 10: the navmesh, when built for this land
-        // the copied records (ground textures first, in materials.json's listed order, then water, then placed bases)
-        // share one counter from IdCopies; the atmosphere's fixed ids begin at IdCopiesEnd
-        if (fc.NextId > IdCopiesEnd) throw new InvalidDataException($"copied records ran to {fc.NextId:X6}, into the atmosphere's ids at {IdCopiesEnd:X6}");
-        Console.WriteLine($"  copied records: {IdCopies:X6}..{fc.NextId - 1:X6} (free to {IdCopiesEnd:X6})");
+        if (IdCells + 2 * k > IdRefs || refId > IdRefsEnd + 1) throw new InvalidDataException($"cells ran to {IdCells + 2 * k:X6} or placed references to {refId:X6}, out of their ranges");
+        InIdOrder(mod);
+        ids.Save();
+        Console.WriteLine($"  form ids: {ids.Count} registered names, {ids.Added.Count} new; references {IdRefs:X6}..{refId - 1:X6}");
         var lo = bm.ModHeader.MasterReferences.Select(m => m.Master).Append(bm.ModKey).Append(modKey).ToList();
         var upd = ModKey.FromFileName("Update.esm");  // a master always (its WATR/WTHR records win), placed after Skyrim.esm
         if (!lo.Contains(upd)) lo.Insert(lo.IndexOf(ModKey.FromFileName("Skyrim.esm")) + 1, upd);
@@ -264,6 +263,29 @@ static class NewWorld
         File.Move(tmp, outPath, true);
         Console.WriteLine($"newworld write: {outPath}: {k} cells with LAND, build {man.BuildId}, {new FileInfo(outPath).Length} bytes, {sw.Elapsed.TotalSeconds:F1} s");
         return 0;
+    }
+
+    // Each top group's records in the order of their ids, a record after the records of its own group it links to (a
+    // levelled list after the lists inside it): the file's order follows from the records, never from the order the
+    // build met them in.
+    static void InIdOrder(SkyrimMod mod)
+    {
+        foreach (var g in mod.EnumerateMajorRecords().Where(r => r is not (ICellGetter or IPlacedGetter or ILandscapeGetter or INavigationMeshGetter or IWorldspaceGetter))
+                     .GroupBy(r => r.GetType()).Select(t => mod.GetTopLevelGroup(t.Key)).ToList())
+        {
+            var byKey = g.Records.ToDictionary(r => r.FormKey);
+            var done = new HashSet<FormKey>();
+            var order = new List<IMajorRecord>();
+            void Put(IMajorRecord r)
+            {
+                if (!done.Add(r.FormKey)) return;
+                foreach (var l in r.EnumerateFormLinks().Select(l => l.FormKey).Where(byKey.ContainsKey).Distinct().OrderBy(l => l.ID)) Put(byKey[l]);
+                order.Add(r);
+            }
+            foreach (var r in byKey.Values.OrderBy(r => r.FormKey.ID)) Put(r);
+            ((dynamic)g).Clear();  // the typed group's own Clear: a group emptied record by record does not keep the order it is filled in
+            foreach (var r in order) g.AddUntyped(r);
+        }
     }
 
     // Placed refs from every producer's shards: <plugin dir>/refs/<producer>/cy<+NNN>.jsonl (format: cells.py).

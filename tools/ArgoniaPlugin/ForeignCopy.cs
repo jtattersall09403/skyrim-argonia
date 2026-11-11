@@ -2,7 +2,9 @@
 // Black Marsh North, Valenwood...: their assets are installed, their plugins are not active) as a NEW record of ours,
 // so the written plugin never masters them nor links into them. Owner ruling 2026-11-08.
 // Use (any writer, e.g. the new world's textures, water, and the placement step's TREE/STAT/FLOR bases):
-//   var fc = new ForeignCopy(ourMod, allowedMasters, dataDir, nextId);   // nextId: the first free object id
+//   var fc = new ForeignCopy(ourMod, allowedMasters, dataDir, ids);      // ids: the plugin's registry (FormIds.cs):
+//                                    // a copy's id is its source's for life ("copy:<source form key>"), in fc.Kind's block
+//   var fc = new ForeignCopy(ourMod, allowedMasters, dataDir, nextId);   // a plugin with no registry: ids count up from nextId
 //   FormKey ours = fc.Get("King of the Murkmire.esp", "LALPAMarshGrass");  // by plugin + editor id
 //   FormKey ours = fc.Get(someForeignFormKey, "Tropical Skyrim.esp");     // by form key, read from that plugin
 // A record found in an allowed master (Skyrim.esm, Update.esm, Black Marsh.esm and its masters) is linked, not
@@ -27,15 +29,23 @@ sealed class ForeignCopy : IDisposable
     readonly string data;
     readonly Dictionary<string, ISkyrimModDisposableGetter> plugins = new(StringComparer.OrdinalIgnoreCase);
     public readonly Dictionary<FormKey, FormKey> Map = new();
+    readonly FormIds? ids;
+    readonly Dictionary<FormKey, FormKey> sourceOf = new();  // ours -> the record it copies
     uint next;
     public uint NextId => next;
-    public uint NextIdTake() => next++;  // an id for a record the caller builds itself (shares the copy range)
+    public uint NextIdTake() => ids is null ? next++ : throw new InvalidOperationException("this plugin's ids are registered: Take(kind, name)");
+    /// The kind whose block a copy first asked for now takes its id from (a registered plugin).
+    public string Kind = "";
+    /// An id for a record the caller builds itself, by its registered name; counted up where the plugin has no registry.
+    public uint Take(string kind, string name) => ids is null ? next++ : ids.Take(kind, name);
 
     public ForeignCopy(SkyrimMod mod, IEnumerable<ModKey> allowed, string data, uint firstId)
     {
         this.mod = mod; this.allowed = allowed.ToHashSet(); this.data = data; next = firstId;
         this.allowed.Add(mod.ModKey);
     }
+
+    public ForeignCopy(SkyrimMod mod, IEnumerable<ModKey> allowed, string data, FormIds ids) : this(mod, allowed, data, 0) { this.ids = ids; }
 
     public bool IsAllowed(ModKey m) => allowed.Contains(m);
 
@@ -82,8 +92,18 @@ sealed class ForeignCopy : IDisposable
     {
         if (Map.TryGetValue(src.FormKey, out var m)) return m;
         if (!forceCopy && allowed.Contains(src.FormKey.ModKey)) return src.FormKey;
-        var ours = new FormKey(mod.ModKey, next++);
+        var ours = new FormKey(mod.ModKey, Take(Kind, $"copy:{src.FormKey}"));
         Map[src.FormKey] = ours;
+        return Copy(src, file, ours);
+    }
+
+    /// A copy of `src` at an id the caller holds, made as Get makes one but not the source's one copy: a second copy
+    /// of one source (a land texture per material) is its own record, and nothing that links to the source is led to it.
+    public FormKey CopyAs(IMajorRecordGetter src, string file, uint id) => Copy(src, file, new FormKey(mod.ModKey, id));
+
+    FormKey Copy(IMajorRecordGetter src, string file, FormKey ours)
+    {
+        sourceOf[ours] = src.FormKey;
         var dup = (IMajorRecord)src.Duplicate(ours);
         dup.EditorID = $"ANW_{Initials(file)}_{src.EditorID ?? src.FormKey.IDString()}";
         foreach (var l in src.EnumerateFormLinks().Select(l => l.FormKey).Distinct().ToList())
@@ -132,7 +152,7 @@ sealed class ForeignCopy : IDisposable
         model.AlternateTextures ??= new();
         foreach (var (shape, index, s) in alts)
         {
-            var ts = new TextureSet(new FormKey(mod.ModKey, next++), SkyrimRelease.SkyrimSE)
+            var ts = new TextureSet(new FormKey(mod.ModKey, Take(Kind, $"alttex:{sourceOf[ours]}:{index}")), SkyrimRelease.SkyrimSE)
             {
                 EditorID = $"{rec.EditorID}_Tex{index}",
                 ObjectBounds = new ObjectBounds(),
