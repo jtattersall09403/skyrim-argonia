@@ -9,12 +9,16 @@
                       with both ends on water left out: those are crossings, not ground)
           skip.u8     one byte per cell of the box, north row first, west to east: 1 = no navmesh (outside the cell
                       table, or margin; world.navmesh_cells)
-          objects.f32 placed collision triangles (placed.py, or a test's own), 3 corners x 3 floats, world units;
+          objects.f32 placed collision triangles (a place's, or a test's own), 3 corners x 3 floats, world units;
                       written only when there are some
+          objects/    the new world's placed collision from the refs shards (`refs`: placed.write_rows), one file
+                      a cell row (removed once ArgoniaNav has read them), with its tally and the probe points
+                      the check reads
 """
 from __future__ import annotations
 
 import json
+import shutil
 from pathlib import Path
 
 import numpy as np
@@ -51,7 +55,7 @@ def road_mask(shape, x0: float, ytop: float, step: float, polylines=None) -> np.
 
 
 def write(out: Path, land: world.Land, box, cells: set, objects: np.ndarray | None = None, polylines=None,
-          heights: np.ndarray | None = None) -> dict:
+          heights: np.ndarray | None = None, refs: Path | None = None, data: Path | None = None, resolver=None) -> dict:
     out.mkdir(parents=True, exist_ok=True)
     g = land.grid
     h = land.heights() if heights is None else heights
@@ -72,7 +76,22 @@ def write(out: Path, land: world.Land, box, cells: set, objects: np.ndarray | No
     if objects is not None and len(objects):
         n_obj = len(objects)
         np.asarray(objects, np.float32).tofile(obj)
+    rows_dir = out / "objects"
+    if rows_dir.exists():
+        shutil.rmtree(rows_dir)
+    placed_tally = None
+    if refs is not None:
+        from tools.navmesh import placed
+        hh = np.asarray(h, np.float32)
+
+        def ground(x, y):  # the nearest LAND sample: where a placed thing's footprint is cut for the check
+            return hh[min(max(int(round((ytop - y) / step)), 0), shape[0] - 1), min(max(int(round((x - x0u) / step)), 0), shape[1] - 1)]
+        pad = (params.BORDER_SAMPLES + 1) * step  # ArgoniaNav's own reach past a cell: its window and one sample
+        placed_tally = placed.write_rows(refs, data, rows_dir, box, pad, ground=ground, resolver=resolver)
+        n_obj += placed_tally["triangles"]
     grid = {"rows": shape[0], "cols": shape[1], "x0": x0u, "ytop": ytop, "step": step, "cells": list(box),
-            "build_id": land.build_id, "water": g.water, "params": params.recast(), **({"objects": n_obj} if n_obj else {})}
+            "build_id": land.build_id, "water": g.water, "params": params.recast(), **({"objects": n_obj} if n_obj else {}),
+            **({"placed": {k: placed_tally[k] for k in ("refs", "collidable", "fed", "no_collision", "unresolved", "triangles")}}
+               if placed_tally else {})}
     (out / "grid.json").write_text(json.dumps(grid, indent=1, sort_keys=True) + "\n")
     return grid

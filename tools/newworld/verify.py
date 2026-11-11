@@ -394,6 +394,15 @@ def run(plugin: Path, out: Path, do_dump: bool = True, only: set | None = None, 
         s = p.get("seams", {})
         rep.row("navmesh", "0 seam faults", s.get("mismatched", 0) + s.get("unmatched_segments", 0),
                 s.get("mismatched", 0) + s.get("unmatched_segments", 0) == 0)
+        # the collision of everything placed reached the voxeliser, and the mesh is cut where the tall things stand
+        pl = c.get("placed") or {}
+        rep.row("navmesh", "placed objects fed to the navmesh = the shards' collidable refs, above zero",
+                f"{pl.get('fed')}/{pl.get('collidable')}", bool(pl.get("fed")) and pl.get("fed") == pl.get("collidable") and not pl.get("unresolved"),
+                f"{pl.get('unresolved')} with a mesh not found or not read" if pl.get("unresolved") else
+                ("" if pl else "check.json has no 'placed': the navmesh was built without the placed refs"))
+        st = pl.get("stands_tall") or {}
+        rep.row("navmesh", f"a hole in the navmesh where a placed thing taller than an actor stands (share >= {pl.get('hole_min')})",
+                st.get("share"), (st.get("share") or 0) >= (pl.get("hole_min") or 1), f"{st.get('in_a_hole')} of {st.get('probed')} probed")
         comp = p.get("components", {})
         # islands across water cannot join the main component; the share is of the main landmass's walkable area
         main_m2, cut_m2 = comp.get("main_m2") or 0, comp.get("cut_off_m2") or 0

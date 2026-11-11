@@ -10,6 +10,9 @@
               largest is an island; the count, and each larger than ISLAND_REPORT_M2, are listed
     navi      the NAVI lists every NAVM once and nothing else; each entry's edge links are its NVNM's neighbour
               navmeshes, its location the vertex mean, its pathing cell the NVNM's
+    placed    the placed references fed (those whose collision triangles reached the voxeliser) equal the collidable
+              ones (those whose base's mesh has solid collision), no mesh unread, and the navmesh has a hole where
+              the probed ones that stand taller than an actor are (the share, against Skyrim's own)
     road      the painted road samples inside the box (dry ones) that lie on a triangle: the share (measured)
     coverage  the same for every dry sample whose ground slope is within the walkable angle (measured)
 """
@@ -39,6 +42,10 @@ class Rasters:
         self.f = np.memmap(d / "flags.u8", np.uint8, "r", shape=shape)
         obj = d / "objects.f32"  # the placed objects' collision triangles (inputs.py), 3 corners each
         self.tris = np.fromfile(obj, np.float32).reshape(-1, 3, 3).astype(np.float64) if obj.exists() else None
+        # the province's placed scatter (placed.write_rows) only stands in the way: no vertex stands on it, so its
+        # triangles are not read here; its probe points are (a point on each sampled tall thing's collision)
+        probe = d / "objects" / "probe.npy"
+        self.probe = np.load(probe) if probe.exists() else np.zeros((0, 4))
 
     def top_dist(self, x, y, z, margin: float):
         """|z - the nearest placed-collision surface| at (x, y), over every object triangle that holds the point in
@@ -182,11 +189,20 @@ def run(out: Path) -> dict:
     walk = {"under_30": [0, 0], "30_to_40": [0, 0], "40_to_45": [0, 0]}
     max_slope_ground, steep_ground = 0.0, 0
     degenerate, degenerate_at = 0, []
+    pr = ras.probe
+    pr_cell = np.floor(pr[:, :2] / su.CELL_UNITS).astype(int)
+    stand = {"tall": [0, 0], "low": [0, 0]}  # probes on a navmeshed cell, and those of them the navmesh leaves a hole for
     for x, y, fk, n in stitch.read_navm(out):
         local = int(fk.split(":")[0], 16)
         v = n.verts.astype(np.float64)
         tv = n.tris["v"].astype(int)
         tri_count[local] = len(tv)
+        here = pr[(pr_cell[:, 0] == x) & (pr_cell[:, 1] == y)]
+        if len(here):
+            off = ~covered(here[:, :2], v, tv)
+            for name, m in (("tall", here[:, 3] >= params.AGENT_HEIGHT), ("low", here[:, 3] < params.AGENT_HEIGHT)):
+                stand[name][0] += int(m.sum())
+                stand[name][1] += int((off & m).sum())
         bad = degenerate_mask(v, tv)
         degenerate += int(bad.sum())
         degenerate_at += [[x, y, int(ti)] for ti in np.nonzero(bad)[0][:10 - len(degenerate_at)]]
@@ -293,7 +309,7 @@ def run(out: Path) -> dict:
     cd = np.concatenate(cdev) if cdev else np.zeros(0)
     res = {
         "box": box, "navm": len(navm_meta), "triangles": int(sum(tri_count.values())), "vertices": int(len(vd)),
-        "objects": 0 if ras.tris is None else len(ras.tris),
+        "objects": int(ras.g.get("objects", 0)),
         "heights": {"tolerance": params.TOLERANCE_Z, "over": over, "vertex_max": round(float(vd.max()), 2) if len(vd) else 0,
                     "vertex_p99": round(float(np.percentile(vd, 99)), 2) if len(vd) else 0,
                     "centroid_p99": round(float(np.percentile(cd, 99)), 2) if len(cd) else 0,
@@ -310,7 +326,19 @@ def run(out: Path) -> dict:
         "ground_triangles_steeper_than_walkable": steep_ground,
         "max_ground_slope_deg": round(max_slope_ground, 1),
     }
-    res["green"] = (over == 0 and degenerate == 0 and not asym and not bad_target and not bad_geom and not missing and not navi_err)
+    pl = ras.g.get("placed")
+    ok_placed = True
+    if pl is not None:
+        tall = stand["tall"]
+        share = round(tall[1] / tall[0], 4) if tall[0] else None
+        # every collidable reference is fed, none is lost to an unread mesh, a province's worth of references feeds
+        # some, and the built navmesh has a hole where the tall ones stand (Skyrim's own share: params.HOLE_MIN)
+        ok_placed = (pl["fed"] == pl["collidable"] and pl["unresolved"] == 0 and (pl["fed"] > 0 or pl["refs"] < params.PLACED_SOME)
+                     and (share is None or tall[0] < 20 or share >= params.HOLE_MIN))
+        res["placed"] = {**pl, "green": ok_placed, "hole_min": params.HOLE_MIN,
+                         "stands_tall": {"probed": tall[0], "in_a_hole": tall[1], "share": share},
+                         "stands_low": {"probed": stand["low"][0], "in_a_hole": stand["low"][1]}}
+    res["green"] = (ok_placed and over == 0 and degenerate == 0 and not asym and not bad_target and not bad_geom and not missing and not navi_err)
     return res
 
 

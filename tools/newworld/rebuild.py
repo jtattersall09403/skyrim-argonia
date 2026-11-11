@@ -292,6 +292,7 @@ STAGES: tuple[Stage, ...] = (
     Stage("navmesh", "the navmesh of every land cell round the placed objects, its seams and paths checked",
           cmds=((PY, "-m", "tools.navmesh", "build", "--plugin", PLUGIN, "--out", f"{PLUGIN}/navmesh"),),
           checks=((PY, "-m", "tools.newworld.world.navobjects", "--plugin", PLUGIN),),
+          proof=(PY, "-m", "tools.navmesh", "current", "--plugin", PLUGIN, "--out", f"{PLUGIN}/navmesh"),
           reads=(LAND, FLORA, "out:newworld/plugin/refs/flora/bases.json", "out:newworld/plugin/refs/mist/manifest.json",
                  "out:newworld/margin_cells.json", "out:newworld/scope_cells.json", "db:road", "db:road_vertex", LAID,
                  PLACE_MAP, "src:tools/navmesh/ArgoniaNav/**/*.cs", "src:tools/navmesh/*.py",

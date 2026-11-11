@@ -31,6 +31,10 @@ WATER_MAX_DEPTH = 1000.0  # deeper water has no navmesh: vanilla water triangles
 OBJECT_AGENT_RADIUS = 16.0  # the erosion in a cell that holds placed collision: at 32 the walkable strip in front of a
 # porch door (the station house's doorframe slab, 125 deep, 45 above the ground, met by a 45-degree stair) erodes
 # away and the door is cut off (measured on Claywater, lane nav-walk); 16 keeps it. Ground-only cells keep 32.
+HOLE_MIN = 0.85  # the least share of placed things taller than an actor that the navmesh is cut round: Skyrim's own
+# hand-made navmesh cuts round 0.97 of its trees whatever the trunk (0.95 at a radius of 8 to 12) and 0.87 of its
+# rocks that top 128; lower things it mostly leaves on the mesh (tools/navmesh/vanilla.py, docs/research/nw-02-walk5-navmesh.md)
+PLACED_SOME = 1000  # a build with this many placed references and none fed is a fault
 TOLERANCE_Z = 32.0  # L1: a vertex within this of the ground (two detail errors), or of the water surface
 SEAM_DZ = 64.0  # a cross-cell edge pair links when both its ends are within this height
 ISLAND_REPORT_M2 = 100.0  # L1: every island (a component apart from the main one) larger than this is listed, m^2

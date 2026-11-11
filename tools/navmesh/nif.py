@@ -146,6 +146,29 @@ def _box_tris(lo, hi) -> np.ndarray:
     return np.array([[c[a], c[b], c[d]] for a, b, cc, d in faces for a, b, d in ((a, b, cc), (a, cc, d))])
 
 
+def _capsule_tris(a: np.ndarray, b: np.ndarray, r: float, sides: int = 8) -> np.ndarray:
+    """A capsule as a prism round its own axis, end to end with the caps' reach: a leaning trunk keeps its
+    thickness (its axis-aligned box would be as wide as the lean is long)."""
+    axis = b - a
+    ln = float(np.linalg.norm(axis))
+    if ln < 1e-9:
+        return _box_tris(a - r, a + r)
+    u = axis / ln
+    v = np.cross(u, [1.0, 0, 0] if abs(u[0]) < 0.9 else [0, 1.0, 0])
+    v /= np.linalg.norm(v)
+    w = np.cross(u, v)
+    ang = np.arange(sides) * (2 * math.pi / sides)
+    ring = r * (np.cos(ang)[:, None] * v + np.sin(ang)[:, None] * w)
+    lo, hi = a - r * u + ring, b + r * u + ring
+    out = []
+    for i in range(sides):
+        j = (i + 1) % sides
+        out += [[lo[i], lo[j], hi[j]], [lo[i], hi[j], hi[i]]]
+        if 0 < i < sides - 1:
+            out += [[lo[0], lo[j], lo[i]], [hi[0], hi[i], hi[j]]]
+    return np.array(out)
+
+
 class _Reader:
     def __init__(self, nif: Nif):
         self.n = nif
@@ -165,7 +188,7 @@ class _Reader:
         o += 4  # controller
         o += 4 if n.bsver > 26 else 2  # flags
         t = n.f(o, 3)
-        rot = np.array(n.f(o + 12, 9)).reshape(3, 3).T  # nif.xml Matrix33: m11 m21 m31 m12 ... (column by column)
+        rot = np.array(n.f(o + 12, 9)).reshape(3, 3)  # nif.xml Matrix33 is written m11 m21 m31 m12 ... for row vectors: read in rows, it is the matrix on column vectors (a pine's trunk bone turns its capsule from x to up)
         s = n.f(o + 48)
         o += 52
         if n.bsver <= 34:
@@ -260,8 +283,7 @@ class _Reader:
         elif t == "bhkCapsuleShape":
             o += 4 + 4 + 8
             a, r1, b, r2 = np.array(n.f(o, 3)), n.f(o + 12), np.array(n.f(o + 16, 3)), n.f(o + 28)
-            r = max(r1, r2, n.f(o - 12))
-            self.emit(_box_tris(np.minimum(a, b) - r, np.maximum(a, b) + r), m, layer)
+            self.emit(_capsule_tris(a, b, max(r1, r2, n.f(o - 12))), m, layer)
         elif t == "bhkSphereShape":
             r = n.f(o + 4)
             self.emit(_box_tris(np.full(3, -r), np.full(3, r)), m, layer)
