@@ -2,6 +2,7 @@
 
     python3 -m tools.newworld.terrain            # build into out/newworld/terrain/, check, copy to the bucket
     python3 -m tools.newworld.terrain check      # re-check the built outputs
+    python3 -m tools.newworld.terrain inputs     # exit 1 naming each input that changed since the build
     python3 -m tools.newworld.terrain --no-upload
 
 Inputs: the map's water (`out/newworld/raster/water.png`) and foreign land (`foreign.png`), the region of every
@@ -725,9 +726,19 @@ def check_built() -> int:
     return 0 if ok else 1
 
 
+def inputs_changed() -> list[str]:
+    """The inputs whose digest is no longer the one build.json recorded."""
+    was = json.loads((OUT / "build.json").read_text()).get("inputs", {})
+    return sorted(k for k, v in input_digests().items() if was.get(k) != v)
+
+
 if __name__ == "__main__":
     if sys.argv[1:2] == ["check"]:
         sys.exit(check_built())
+    if sys.argv[1:2] == ["inputs"]:
+        changed = inputs_changed()
+        print("terrain inputs:", "changed since the build: " + ", ".join(changed) if changed else "as built")
+        sys.exit(1 if changed else 0)
     build(upload="--no-upload" not in sys.argv)
     from tools.newworld import terrain_character
     terrain_character.report(OUT, "build")         # character.json: the regions' relief character and distances

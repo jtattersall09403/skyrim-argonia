@@ -39,7 +39,7 @@ with the ArtifactData tool into a folder, then `python3 -m tools.newworld.water_
 
 | A change to | Edit | Runs | Follows | Left alone | Beyond this build |
 |---|---|---|---|---|---|
-| Water records' look or flow | `tools/newworld/world/water_types.py`, `tools/ArgoniaPlugin/WaterBlend.cs` | `cells` (and `tools` for the C#) | `landings`, `mist`, `map`, `esm`, `readback`, `upload` | `terrain` to `landcover`, `place`, `paint`, `navmesh` | the deploy; each built place's build (over the new world file) |
+| Water records' look or flow | `tools/newworld/world/water_types.py`, `tools/ArgoniaPlugin/WaterBlend.cs` | `cells` for the Python; `tools` and `esm` for the C# | `landings`, `mist`, `map`, `esm`, `readback`, `upload` | `terrain` to `landcover`, `place`, `paint`, `navmesh` | the deploy; each built place's build (over the new world file) |
 | Atmosphere classes or weathers | `newworld/sources/atmosphere/`, `tools/newworld/atmosphere.py` | `db`, `atmosphere`, `mist` | `height-fog`, `map`, `esm`, `readback`, `upload` | every ground stage, `paint`, `navmesh` | the deploy of the world file and the stack; each built place's ground bundle (the studio's night view reads the climate) |
 | Mist | `tools/newworld/world/mist.py` | `mist`, `height-fog` | `map`, `esm`, `readback`, `upload` | everything before `mist`, `paint`, `navmesh` | the deploy |
 | Community Shaders settings | `tools/newworld/atmosphere_cs.py` | `height-fog` | `readback` | `esm` and every stage before it | the stack's deploy only: the world file is unchanged |
@@ -51,7 +51,7 @@ with the ArtifactData tool into a folder, then `python3 -m tools.newworld.water_
 | Map data, teleports | `tools/newworld/world/mapdata.py`, `tools/newworld/teleports.py` | `map`, `landings` | `esm` (the map is applied; the file is not written again), `readback`, `upload` | every stage before `map` | the deploy; the walk list's teleports if names changed |
 | The LOD plan | `tools/newworld/world/lodplan.py`, `lod_models.json` | `map` | `esm`, `readback`, `upload` | every stage before `map` | tree and object LOD; the deploy |
 | A built place's exterior or land patches | `newworld/places/<id>/` (the skill `place-build`) | `landings`, `map` | `esm`, `readback`, `upload` | every other stage | the deploy |
-| The world file's writer | `tools/ArgoniaPlugin/*.cs` | `tools` | `atmosphere`, `esm`, `readback`, `upload` (each only if the compiled tool changed) | every shard stage | the deploy if `esm` ran |
+| The world file's writer | `tools/ArgoniaPlugin/NewWorld*.cs`, `WaterBlend.cs`, `ForeignCopy.cs`, `WaterStudy.cs` | `tools`, and the stage that reads the edited file: `esm` (the writer, the map, the navmesh records, water, copied records), `atmosphere` (`NewWorldAtmosphere.cs`), `readback` (`NewWorldVerify.cs`, `WaterStudy.cs`) | `readback`, `upload` after `esm` | every shard stage | the deploy if `esm` ran |
 | A tool or script fix that changes no output | the tool | the stage that reads the file | nothing: its output is the same bytes, so every later stage is skipped | all else | nothing |
 | The read-back | `tools/newworld/verify.py` | `readback` | nothing | all else | nothing |
 

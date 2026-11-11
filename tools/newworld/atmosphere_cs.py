@@ -2,6 +2,7 @@
 
     python3 -m tools.newworld.atmosphere_cs write [--plugin out/newworld/plugin]   # the row's files into the manifest
     python3 -m tools.newworld.atmosphere_cs check [--plugin out/newworld/plugin]   # the rows below, PASS/FAIL
+    python3 -m tools.newworld.atmosphere_cs current [--plugin out/newworld/plugin] # exit 1 when `write` would change the row
 
 The fog is Community Shaders' Exponential Height Fog (the add-on of the same build as the Community Shaders the stack
 lays, mods/dependencies.json row `cs-height-fog`, profile newworld). Each of our weathers gets a per-weather settings
@@ -380,12 +381,17 @@ def rows(plugin: Path, stack: Path | None = None) -> list[tuple[str, object, boo
 
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
-    ap.add_argument("cmd", choices=("write", "check"))
+    ap.add_argument("cmd", choices=("write", "check", "current"))
     ap.add_argument("--plugin", type=Path, default=REPO / "out/newworld/plugin")
     ap.add_argument("--stack", type=Path, default=Path.home() / ".argonia/stack")
     a = ap.parse_args(argv)
     if a.cmd == "write":
         return write(a.plugin)
+    if a.cmd == "current":
+        same = manifest_row(json.loads(MANIFEST.read_text())).get("files") == generate(
+            json.loads((a.plugin / "atmosphere.json").read_text()), floors(a.plugin))
+        print("atmosphere_cs: the row's files are " + ("the generator's for this spec and terrain" if same else "not the generator's: run write, then stack.py stage"))
+        return 0 if same else 1
     bad = 0
     for req, v, ok, det in rows(a.plugin, a.stack):
         print(f"{'PASS' if ok else 'FAIL'}  {req}: {v}" + (f"  ({det})" if det else ""))

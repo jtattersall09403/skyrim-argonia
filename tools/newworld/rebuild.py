@@ -63,6 +63,7 @@ class Stage:
     (a table of the world database; `-col` leaves a column out), `ext:<path>` (a file outside the repo, by size and
     time). `writes`: `out:<path>`, `db:<table>` or `db:*`, `src:<path>` (a tracked file the stage rewrites).
     `after`: stages it waits for without reading them (a long stage waits for the cheap checks).
+    `proof`: a cheap command that exits 0 when the standing output is what the stage would write today.
     `agree`: pairs (a, b, how) of `out:` specs that must be equal ("eq") or a prefixed by b ("starts"): an output
     names the build it stands on. `gb` and `minutes`: the measured peak memory and wall time on the build VM."""
     name: str
@@ -75,6 +76,7 @@ class Stage:
     gb: float = 1.0
     minutes: float = 1.0
     after: tuple = ()
+    proof: tuple = ()
     lock: str | None = None
     alone: bool = False
 
@@ -85,7 +87,11 @@ LAND = "out:newworld/plugin/land/manifest.json#key"
 LANDCOVER = "out:newworld/landcover/key.txt"
 FLORA = "out:newworld/plugin/refs/flora/manifest.json#key,shard_sha256"
 CELLS = "out:newworld/plugin/cells.json"
+# The compiled tools are read by their sources: the same sources compile to different bytes from one build to the next.
 DLL = "out:tools/ArgoniaPlugin/ArgoniaPlugin.dll"
+WRITER_CS = ("src:tools/ArgoniaPlugin/NewWorld.cs", "src:tools/ArgoniaPlugin/NewWorldAtmosphere.cs",
+             "src:tools/ArgoniaPlugin/NewWorldMap.cs", "src:tools/ArgoniaPlugin/NewWorldNavmesh.cs",
+             "src:tools/ArgoniaPlugin/WaterBlend.cs", "src:tools/ArgoniaPlugin/ForeignCopy.cs")
 BUILT_PLACES = ("src:newworld/places/*/land.jsonl", "src:newworld/places/*/spaces/exterior/refs.jsonl")
 DB_SOURCES = ("src:newworld/sources/key.json", "src:newworld/sources/research/**/*.json", "src:newworld/sources/danger/**/*",
               "src:newworld/sources/stock/**/*", "src:newworld/sources/people/**/*", "src:newworld/sources/atmosphere/*.json",
@@ -139,7 +145,7 @@ STAGES: tuple[Stage, ...] = (
           writes=("out:newworld/terrain/build.json", "out:newworld/terrain/heightmap.npy", "out:newworld/terrain/check.json",
                   "out:newworld/terrain/places_terrain.json", "out:newworld/terrain/character.json",
                   "out:newworld/terrain/water_bodies.png", "out:newworld/water_bodies.json"),
-          gb=5.7, minutes=8.0),
+          proof=(PY, "-m", "tools.newworld.terrain", "inputs"), gb=5.7, minutes=9.0),
     Stage("needs", "every place's terrain need on the built heightmap, against the accepted failures",
           cmds=((PY, "-m", "tools.newworld.terrain_needs"),),
           reads=(BUILD, "out:newworld/terrain/places_terrain.json", "db:place[id,on_water]",
@@ -217,7 +223,7 @@ STAGES: tuple[Stage, ...] = (
                  "src:tools/newworld/world/roadpaint.py", "src:tools/newworld/world/texcheck.py"),
           writes=("out:newworld/plugin/tex/manifest.json", "out:newworld/plugin/tex/materials.json"),
           agree=(("out:newworld/plugin/tex/manifest.json#key", "out:newworld/plugin/land/manifest.json#key", "starts"),),
-          after=EARLY_CHECKS, gb=5.5, minutes=22.0),
+          after=EARLY_CHECKS, gb=5.6, minutes=21.0),
     Stage("mist", "the low mist over marsh, swamp and pond",
           cmds=((PY, "-m", "tools.newworld.world.mist", "--out", PLUGIN),),
           reads=(LAND, LANDCOVER, CELLS, FLORA, BUILD, "db:region_atmosphere", "db:atmosphere_class",
@@ -225,25 +231,28 @@ STAGES: tuple[Stage, ...] = (
                  "src:tools/newworld/atmosphere.py"),
           writes=("out:newworld/plugin/refs/mist/manifest.json",),
           agree=(("out:newworld/plugin/refs/mist/manifest.json#build_id", "out:newworld/plugin/land/manifest.json#build_id", "eq"),),
-          gb=1.5, minutes=0.5),
+          gb=0.3, minutes=0.2),
     Stage("atmosphere", "the weather, image space, lighting and climate records' spec",
           cmds=((PY, "-m", "tools.newworld.atmosphere", "spec", "--plugin", PLUGIN),),
-          reads=("src:newworld/sources/atmosphere/*.json", "db:atmosphere_class", "db:region_atmosphere", DLL,
+          after=("tools",),
+          reads=("src:newworld/sources/atmosphere/*.json", "db:atmosphere_class", "db:region_atmosphere",
+                 "src:tools/ArgoniaPlugin/NewWorldAtmosphere.cs",
                  f"ext:{GAME}/Skyrim.esm", f"ext:{GAME}/Update.esm", "src:tools/newworld/atmosphere.py"),
-          writes=("out:newworld/plugin/atmosphere.json",), gb=1.0, minutes=0.5, lock="dotnet"),
+          writes=("out:newworld/plugin/atmosphere.json",), gb=0.5, minutes=0.2, lock="dotnet"),
     Stage("height-fog", "Community Shaders' height fog: a settings file per weather in the mod row, staged",
           cmds=((PY, "-m", "tools.newworld.atmosphere_cs", "write", "--plugin", PLUGIN),
                 ("python3", "infra/gpu-box/stack.py", "stage")),
           reads=("out:newworld/plugin/atmosphere.json", LAND, LANDCOVER, BUILD, "src:tools/newworld/atmosphere_cs.py",
                  "src:tools/newworld/world/mist.py"),
-          writes=("src:mods/dependencies.json",), gb=1.5, minutes=1.0, lock="stack"),
+          writes=("src:mods/dependencies.json",),
+          proof=(PY, "-m", "tools.newworld.atmosphere_cs", "current", "--plugin", PLUGIN), gb=1.5, minutes=1.0, lock="stack"),
     Stage("navmesh", "the navmesh of every land cell, its seams and paths checked",
           cmds=((PY, "-m", "tools.navmesh", "build", "--plugin", PLUGIN, "--out", f"{PLUGIN}/navmesh"),),
           reads=(LAND, "out:newworld/margin_cells.json", "out:newworld/scope_cells.json", "db:road", "db:road_vertex",
-                 PLACE_MAP, "out:tools/ArgoniaNav/ArgoniaNav.dll", "src:tools/navmesh/*.py"),
+                 PLACE_MAP, "src:tools/navmesh/ArgoniaNav/**/*.cs", "src:tools/navmesh/*.py"),
           writes=("out:newworld/plugin/navmesh/build.json", "out:newworld/plugin/navmesh/check.json"),
           agree=(("out:newworld/plugin/navmesh/build.json#build_id", "out:newworld/plugin/land/manifest.json#build_id", "eq"),),
-          after=EARLY_CHECKS, gb=3.0, minutes=9.0),
+          after=EARLY_CHECKS + ("tools",), gb=0.8, minutes=4.5),
     Stage("map", "map markers and pan box, the named teleports, the LOD plan; then every landing checked",
           cmds=((PY, "-m", "tools.newworld.world.mapdata", "build", "--plugin", PLUGIN),),
           checks=((PY, "-m", "tools.newworld.teleports", "check", "--plugin", PLUGIN),),
@@ -264,20 +273,21 @@ STAGES: tuple[Stage, ...] = (
                  "out:newworld/plugin/atmosphere.json", FLORA, "out:newworld/plugin/refs/flora/bases.json",
                  "out:newworld/plugin/refs/mist", "out:newworld/plugin/navmesh/build.json#sha256",
                  "out:newworld/plugin/map/map.json", "out:newworld/plugin/map/markers.json",
-                 "out:newworld/plugin/map/teleports.json", "out:newworld/plugin/map/lodplan.json", DLL,
+                 "out:newworld/plugin/map/teleports.json", "out:newworld/plugin/map/lodplan.json", *WRITER_CS,
                  f"ext:{GAME}/Skyrim.esm", f"ext:{GAME}/Update.esm", f"ext:{GAME}/Black Marsh.esm",
                  "src:tools/newworld/world/world.sh"),
           writes=("out:newworld/plugin/ArgoniaNewWorld.esm", "out:newworld/plugin/ArgoniaNewWorld.json",
                   "out:newworld/plugin/check.txt"),
           agree=(("out:newworld/plugin/ArgoniaNewWorld.json#key", "out:newworld/plugin/land/manifest.json#key", "starts"),),
-          gb=4.0, minutes=6.0, lock="dotnet"),
+          after=("tools",), gb=6.0, minutes=3.0, lock="dotnet"),
     Stage("readback", "the read-back of the written file: every requirement with a number",
           checks=((PY, "-m", "tools.newworld.verify", "--skip", f"{DOWNSTREAM_GROUPS},relief"),),
           reads=("out:newworld/plugin/ArgoniaNewWorld.json#key", "out:newworld/plugin/check.txt",
                  "out:newworld/plugin/navmesh/check.json", "out:newworld/water_check.json", "src:mods/dependencies.json",
                  "src:tools/newworld/verify.py", "src:tools/newworld/atmosphere_cs.py", "src:tools/newworld/place/checks.py",
-                 "src:tools/newworld/world/water_check.py", "src:tools/newworld/world/mist.py"),
-          gb=3.0, minutes=4.0, lock="dotnet"),
+                 "src:tools/newworld/world/water_check.py", "src:tools/newworld/world/mist.py",
+                 "src:tools/ArgoniaPlugin/NewWorldVerify.cs", "src:tools/ArgoniaPlugin/WaterStudy.cs"),
+          gb=2.7, minutes=3.5, lock="dotnet"),
     Stage("upload", "the world file and its records to the bucket",
           cmds=(("tools/newworld/world/world.sh", "upload"),),
           reads=("out:newworld/plugin/ArgoniaNewWorld.json#key", "out:newworld/plugin/check.txt"),
@@ -576,14 +586,20 @@ def others_running() -> list[str]:
     return hits
 
 
-def preflight(tree: Tree, rows: list[dict], writing: bool = True) -> list[tuple[str, bool, str]]:
+def not_the_writer(tree: Tree) -> str | None:
+    """Why this tree may not write out/, or None. The main tree is the one writer: a worktree's out/ is hard links
+    to the main tree's files, and a stage that writes there writes the main tree's build."""
+    gd, cd = (_git(tree.repo, "rev-parse", "--path-format=absolute", a).stdout.strip() for a in ("--git-dir", "--git-common-dir"))
+    return None if gd == cd else f"a worktree of {Path(cd).parent}"
+
+
+def preflight(tree: Tree, rows: list[dict]) -> list[tuple[str, bool, str]]:
     """Everything checkable before the first long stage: (what, ok, detail) rows."""
     out: list[tuple[str, bool, str]] = []
     stale = [tree.by_name[r["stage"]] for r in rows if r["state"] != "current"]
     # the tree: the one writer is the main tree, level with origin/main
-    gd, cd = (_git(tree.repo, "rev-parse", "--path-format=absolute", a).stdout.strip() for a in ("--git-dir", "--git-common-dir"))
-    out.append(("this is the main tree, the one writer of out/ (a worktree only plans)", gd == cd or not writing,
-                "" if gd == cd else f"a worktree of {Path(cd).parent}"))
+    why = not_the_writer(tree)
+    out.append(("this is the main tree, the one writer of out/ (a worktree only plans)", why is None, why or ""))
     f = _git(tree.repo, "fetch", "--quiet", "origin", "main")
     if f.returncode:
         out.append(("the tree is level with origin/main", False, "git fetch origin main failed: " + f.stderr.strip()[:120]))
@@ -806,6 +822,9 @@ def run(tree: Tree, to: str | None = None, force: tuple = (), budget_gb: float |
     if not todo:
         print_summary(summary(tree, rows, {}))
         return 0
+    if not_the_writer(tree):
+        print(f"refused: this is {not_the_writer(tree)}; the main tree is the one writer of out/", file=sys.stderr)
+        return 2
     if check_first:
         print("preflight")
         if not print_preflight(preflight(tree, rows)):
@@ -834,25 +853,38 @@ def run(tree: Tree, to: str | None = None, force: tuple = (), budget_gb: float |
 
 
 def adopt(tree: Tree) -> int:
-    """Stamp the standing outputs as built from today's inputs. For one case only: outputs the stage tools built
-    from this tree outside `run` (a stage run by hand while mending it). Every stage's outputs must exist and name
-    the builds they stand on, or nothing is stamped. It proves the builds agree with each other, not that a tool
-    without a build id in its output read today's sources: after a source or rule change, run the stage."""
-    bad = [(s.name, tree.disagreement(s)) for s in tree.stages if tree.disagreement(s)]
+    """Stamp, without building, the standing outputs that prove their own build: for a tree whose outputs the stage
+    tools built outside `run`. A stage is stamped only when its outputs exist and it has a proof that holds: its
+    outputs name the builds they stand on (`agree`), and its `proof` command, if it has one, exits 0. A stage with
+    no proof is left stale and runs at the next `run` (those stages are short). One red proof of a stage whose
+    outputs name another build stops the adoption: the tree is mid-build, so run it. The proof is of the builds
+    agreeing, not of the rules: after a rule or source change, run the stage."""
+    todo = [tree.by_name[n] for n in order(tree.stages) if not tree.own_state(tree.by_name[n])[0]]
+    bad = [(s.name, tree.disagreement(s)) for s in todo if s.agree and tree.disagreement(s)]
     if bad:
         for n, why in bad:
             print(f"  FAIL {n}: {why}")
-        print("adopt: nothing stamped")
+        print("adopt: nothing stamped; the outputs are of different builds: run the rebuild")
         return 1
     n = 0
-    for s in tree.stages:
-        if not tree.own_state(s)[0]:
-            inputs = tree.inputs(s)
-            tree.write_stamp(s, {"key": tree.key_of(inputs), "built": tree.key_of(inputs), "inputs": inputs, "adopted": True,
-                                 "at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())})
-            n += 1
+    for s in todo:
+        if not (s.agree or s.proof):
+            print(f"  left to run  {s.name}: its output carries no proof of its build")
+            continue
+        why = tree.disagreement(s)
+        if not why and s.proof:
+            p = subprocess.run([tree.py if a == PY else a for a in s.proof], cwd=tree.repo, env=_env(), capture_output=True, text=True)
+            why = None if p.returncode == 0 else (p.stdout.strip().splitlines() or p.stderr.strip().splitlines() or ["its proof is red"])[-1]
+        if why:
+            print(f"  left to run  {s.name}: {why}")
+            continue
+        inputs = tree.inputs(s)
+        tree.write_stamp(s, {"key": tree.key_of(inputs), "built": tree.key_of(inputs), "inputs": inputs, "adopted": True,
+                             "at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())})
+        print(f"  stamped      {s.name}")
+        n += 1
     tree.save_cache()
-    print(f"adopt: {n} stages stamped from the standing outputs")
+    print(f"adopt: {n} of {len(todo)} stages stamped from the standing outputs")
     return 0
 
 

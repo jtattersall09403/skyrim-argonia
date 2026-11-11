@@ -86,8 +86,14 @@ It prints the order (derived from what each stage reads and writes) and each sta
   the same bytes is skipped at its turn.
 
 If the plan shows more stale than the table led you to expect, find out why before running: a file changed that
-you did not mean to change. If it shows a stage `never run by the rebuild`, its output was made by a stage tool run
-by hand; run it through the rebuild.
+you did not mean to change.
+
+A stage `never run by the rebuild` has an output a stage tool wrote outside the rebuild. Where the whole tree was
+built that way, take it in once with `tools/newworld/rebuild.sh adopt`: it stamps, without building, each stage
+whose outputs prove their own build (they name the terrain build they stand on; the terrain's inputs are as
+built; the height fog's files are what the generator writes today) and leaves every other stage to run. Those are
+the short ones. It refuses when the outputs are of different builds. It proves that the builds agree, not that a
+rule is unchanged: after a rule or source change, run the stage.
 
 ## 5. Run
 
@@ -151,10 +157,12 @@ and the LOD is built for our worldspace only.
 - The main tree is the one writer of `out/`. A lane in its own worktree changes code and sources, proves them
   with tests on tmp paths, and lands; the rebuild runs in the main tree after the lane has landed.
 - A lane that must read the build's outputs links them, never copies and never writes them:
-  `cp -al <main tree>/out/newworld out/newworld` in the worktree, made again after each rebuild. A hard link shares
-  the file with the main tree, so a tool that writes under `out/newworld` in a worktree changes the main tree's
-  build: run there only `tools/newworld/rebuild.sh plan` and tools told to write to another folder (`--out`,
-  `--plugin`). A trial terrain goes to its own folder (`ARGONIA_TERRAIN_OUT=<dir>`).
+  `cp -al <main tree>/out/newworld out/newworld` in the worktree, made again after each rebuild and removed when
+  the reading is done (`rm -rf out/newworld` there removes the links alone). A hard link is the main tree's own
+  file: a tool that writes under `out/newworld` in a worktree writes the main tree's build. So in a worktree
+  `rebuild.sh run` refuses, no stage tool is run on its default paths, and nothing is driven through
+  `tools.newworld.rebuild` from Python. What may run there: `tools/newworld/rebuild.sh plan`, and a tool told to
+  write to another folder (`--out`, `--plugin`, `ARGONIA_TERRAIN_OUT=<dir>` for a trial terrain).
 - A test never reads the tree's `out/`: it builds its own inputs under its tmp path (`tools/tests/conftest.py`
   points every module's `out/` path at a tmp folder).
 - A lane that changes a rule says, in its hand-over, which row of [changes.md](changes.md) its change is, so the

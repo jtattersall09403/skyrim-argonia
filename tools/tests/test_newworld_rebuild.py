@@ -156,6 +156,28 @@ def test_to_runs_only_what_a_stage_needs(tree):
     assert R.run(tree, to="nothing", check_first=False) == 2
 
 
+def test_a_worktree_plans_and_never_runs(tree, tmp_path_factory, capsys):
+    """A worktree's out/ is hard links to the main tree's files: the run refuses there, preflight or none."""
+    import subprocess
+    main = tmp_path_factory.mktemp("main")
+    wt = tmp_path_factory.mktemp("lanes") / "lane"
+
+    def git(*a, cwd=main):
+        subprocess.run(["git", "-c", "user.name=t", "-c", "user.email=t@t", *a], cwd=cwd, check=True, capture_output=True)
+    git("init", "-q")
+    (main / "in.txt").write_text("one")
+    (main / "gate.txt").write_text("pass")
+    git("add", "in.txt", "gate.txt")
+    git("commit", "-q", "-m", "seed")
+    git("worktree", "add", "-q", str(wt))
+    lane = Tree(repo=wt, stages=tree.stages, py=tree.py)
+    assert states(lane)["a"] == "stale"                       # it plans
+    assert R.run(lane, check_first=False) == 2                # and refuses to run
+    assert "the main tree is the one writer" in capsys.readouterr().err and not (wt / "out" / "a.txt").exists()
+    home = Tree(repo=main, stages=tree.stages, py=tree.py)
+    assert R.run(home, check_first=False) == 0 and (main / "out" / "a.txt").exists()
+
+
 def test_force_runs_a_current_stage(tree):
     R.run(tree, check_first=False)
     assert R.run(tree, force=("b",), check_first=False) == 0
@@ -237,26 +259,42 @@ def test_a_named_field_of_a_manifest_is_the_digest(tmp_path):
     assert t.digest("out:m.json#key") == d
 
 
-def agree_tree(tmp_path):
+def agree_tree(tmp_path, proof_rc=0):
     w = "import json,sys,pathlib as p\no=p.Path('out'); o.mkdir(exist_ok=True)\n(o/sys.argv[1]).write_text(json.dumps({'build_id': sys.argv[2]}))"
-    stages = (Stage("land", "", cmds=((PY, "-c", w, "land.json", "B2"),), writes=("out:land.json",)),
+    stages = (Stage("land", "", cmds=((PY, "-c", w, "land.json", "B2"),), writes=("out:land.json",),
+                    proof=(PY, "-c", f"import sys; print('land inputs: as built' if not {proof_rc} else 'land inputs: changed'); sys.exit({proof_rc})")),
               Stage("cells", "", cmds=((PY, "-c", w, "cells.json", "B2"),), reads=("out:land.json",), writes=("out:cells.json",),
-                    agree=(("out:cells.json#build_id", "out:land.json#build_id", "eq"),)))
+                    agree=(("out:cells.json#build_id", "out:land.json#build_id", "eq"),)),
+              Stage("spec", "", cmds=((PY, "-c", w, "spec.json", "-"),), writes=("out:spec.json",)))
     return Tree(repo=tmp_path, stages=stages, py=__import__("sys").executable)
 
 
 def test_an_output_of_another_build_is_stale_and_adopt_refuses_it(tmp_path, capsys):
     t = agree_tree(tmp_path)
     t.out.mkdir()
-    (t.out / "land.json").write_text(json.dumps({"build_id": "B2"}))
-    (t.out / "cells.json").write_text(json.dumps({"build_id": "B1"}))
+    for name, build in (("land", "B2"), ("cells", "B1"), ("spec", "-")):
+        (t.out / f"{name}.json").write_text(json.dumps({"build_id": build}))
     assert R.adopt(t) == 1 and "cells" in capsys.readouterr().out and not (t.state / "land.json").exists()
     (t.out / "cells.json").write_text(json.dumps({"build_id": "B2"}))
     assert R.adopt(t) == 0
-    assert {r["stage"]: r["state"] for r in R.plan(t)} == {"land": "current", "cells": "current"}
+    out = capsys.readouterr().out
+    assert "left to run  spec: its output carries no proof of its build" in out and "2 of 3 stages stamped" in out
+    assert {r["stage"]: r["state"] for r in R.plan(t)} == {"land": "current", "cells": "current", "spec": "stale"}
     (t.out / "cells.json").write_text(json.dumps({"build_id": "B1"}))
     row = R.plan(t)[1]
     assert row["state"] == "stale" and "B1" in row["why"]
+
+
+def test_adopt_leaves_a_stage_whose_proof_is_red_to_run(tmp_path, capsys):
+    t = agree_tree(tmp_path, proof_rc=1)
+    t.out.mkdir()
+    for name in ("land", "cells", "spec"):
+        (t.out / f"{name}.json").write_text(json.dumps({"build_id": "B2"}))
+    assert R.adopt(t) == 0
+    assert "left to run  land: land inputs: changed" in capsys.readouterr().out
+    assert {r["stage"]: r["state"] for r in R.plan(t)} == {"land": "stale", "cells": "follows", "spec": "stale"}
+    assert R.run(t, check_first=False) == 0          # land runs; cells' input is the same bytes: skipped
+    assert {r["stage"]: r["state"] for r in R.plan(t)} == {"land": "current", "cells": "current", "spec": "current"}
 
 
 # ---- the checks the rebuild gates on ---------------------------------------------------------------------------------
