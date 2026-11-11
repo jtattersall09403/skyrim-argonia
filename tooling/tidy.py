@@ -245,7 +245,7 @@ def job_cwds(jobs: Path = None) -> list[tuple[str, Path]]:
             if st.read_text().strip() not in ("queued", "running"):
                 continue
             pid = int((jobs / f"{name}.pid").read_text().strip() or 0)
-            if (jobs / f"{name}.rc").exists() and not _alive(pid):
+            if not _alive(pid):   # a dead job (killed, or its machine stopped) holds nothing, whatever its state file says
                 continue
             out.append((name, Path((jobs / f"{name}.cwd").read_text().strip())))
         except (OSError, ValueError):
