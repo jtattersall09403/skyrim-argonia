@@ -1,7 +1,9 @@
 """The key of each LOD step: what that step truly reads, so a change reruns only the steps it reaches (decision 0037).
 
     python -m tools.newworld.world.lodkeys [--plugin out/newworld/plugin] [--preset Medium] [--lodmodels <manifest>]
-        -> one JSON object {"terrain-tool": k, "terrain": k, "texgen-tool": k, "texgen": k, "dyndolod": k, "parts": {...}}
+                                       [--esm ArgoniaNewWorld.esm] [--world ArgoniaBlackMarsh]
+        -> one JSON object {"terrain-tool": k, "terrain": k, "texgen-tool": k, "texgen": k, "dyndolod": k,
+                            "proof": {"terrain": k, "texgen": k, "dyndolod": k}, "parts": {...}}
 
   terrain-tool  (xLODGen, the long run) reads the world's land and water: from the ESM itself the world record's
             land and water fields, every LAND record, every exterior cell's grid, water height and water type, and
@@ -18,6 +20,11 @@
             reads TexGen's textures): every record of the ESM bar what no LOD is made from (the teleport and map
             markers, the cells' names, the world's map box), the plan files, the LOD models' key, both other keys,
             lod-settings.json's "dyndolod" section, the preset, the DynDOLOD and Resources archives.
+
+"proof" is each step's code key: the scripts that drive it, its settings, its tools and what writes its plan
+(PROOF). `lod.sh selftest` records it on the machine for each step it ran green on the small world, and
+`lod.sh stage` refuses a step whose code key is not the one recorded: the same code was never run on the small
+world. A step whose code key stands is not proven again.
 
 lod-settings.json holds each step's settings and a "rev" a change to that step's code in lod.ps1 raises when it
 changes what the step writes; lod.ps1's own text is in no key, so a fix to how a window is driven reruns nothing.
@@ -133,13 +140,31 @@ def _sha(*parts) -> str:
     return h.hexdigest()[:16]
 
 
-def keys(plugin: Path, preset: str = "Medium", lodmodels: str = "", settings: dict | None = None,
-         tools: dict | None = None, parts: dict | None = None) -> dict:
+# What each step's code is: the files whose change must be run on the small world before a full run (repo paths).
+DRIVERS = ("infra/gpu-box/lod.sh", "infra/gpu-box/lod.ps1", "infra/gpu-box/pscheck.ps1", "tools/newworld/world/lodkeys.py")
+PLAN = ("tools/newworld/world/lodplan.py", "tools/newworld/world/lod_models.json", "tools/ArgoniaPlugin/NewWorldMap.cs")
+PROOF = {"terrain": (*DRIVERS, "tools/newworld/world/mapdata.py"),
+         "texgen": (*DRIVERS, *PLAN),
+         "dyndolod": (*DRIVERS, *PLAN, "tools/newworld/world/lodmodels.py", "tools/newworld/niflod/niflod.cpp")}
+
+
+def proof_keys(settings: dict | None = None, tools: dict | None = None, repo: Path = REPO) -> dict:
     settings = settings or json.loads(SETTINGS.read_text())
     tools = tools or {m["id"]: m["sha256"] for m in json.loads(TOOLS.read_text())["mods"]}
-    parts = parts or esm_parts(plugin / "ArgoniaNewWorld.esm")
+    own = {"terrain": [tools["xlodgen"]], "texgen": [tools["dyndolod"], tools["dyndolod-resources"]],
+           "dyndolod": [tools["dyndolod"], tools["dyndolod-resources"]]}
+    return {step: _sha("proof", step, [hashlib.sha256((repo / f).read_bytes()).hexdigest() for f in files],
+                       settings[step], own[step]) for step, files in PROOF.items()}
+
+
+def keys(plugin: Path, preset: str = "Medium", lodmodels: str = "", settings: dict | None = None,
+         tools: dict | None = None, parts: dict | None = None, esm: str = "ArgoniaNewWorld.esm",
+         world: str = "ArgoniaBlackMarsh") -> dict:
+    settings = settings or json.loads(SETTINGS.read_text())
+    tools = tools or {m["id"]: m["sha256"] for m in json.loads(TOOLS.read_text())["mods"]}
+    parts = parts or esm_parts(plugin / esm)
     m = plugin / "map"
-    lod = hashlib.sha256((m / "LODSettings" / "ArgoniaBlackMarsh.lod").read_bytes()).hexdigest()
+    lod = hashlib.sha256((m / "LODSettings" / f"{world}.lod").read_bytes()).hexdigest()
     bills = [(f.name, hashlib.sha256(f.read_bytes()).hexdigest()) for f in sorted(m.glob("DynDOLOD_SSE_TexGen_Billboards_*.txt"))]
     rules = [(f.name, hashlib.sha256(f.read_bytes()).hexdigest()) for f in sorted(m.glob("DynDOLOD_SSE_*.ini"))]
     dyn = [tools["dyndolod"], tools["dyndolod-resources"]]
@@ -150,6 +175,7 @@ def keys(plugin: Path, preset: str = "Medium", lodmodels: str = "", settings: di
     texgen = _sha("texgen", texgen_tool, settings["texgen"]["post"])
     dyndolod = _sha("dyndolod", parts["world"], bills, rules, lodmodels, terrain, texgen, settings["dyndolod"], preset, dyn)
     return {"terrain": terrain, "texgen": texgen, "dyndolod": dyndolod, "terrain-tool": terrain_tool, "texgen-tool": texgen_tool,
+            "proof": proof_keys(settings, tools),
             "parts": {**parts, "lod": lod, "billboards": bills, "rules": rules, "lodmodels": lodmodels, "preset": preset}}
 
 
@@ -158,11 +184,13 @@ def main(argv: list[str]) -> int:
     ap.add_argument("--plugin", default=str(REPO / "out/newworld/plugin"))
     ap.add_argument("--preset", default="Medium")
     ap.add_argument("--lodmodels", default="", help="the derived LOD models' manifest (its key enters dyndolod's)")
+    ap.add_argument("--esm", default="ArgoniaNewWorld.esm", help="the world file's name in the plugin folder")
+    ap.add_argument("--world", default="ArgoniaBlackMarsh", help="the worldspace (its .lod's name)")
     a = ap.parse_args(argv)
     lm = ""
     if a.lodmodels and Path(a.lodmodels).exists():
         lm = json.loads(Path(a.lodmodels).read_text())["key"]
-    print(json.dumps(keys(Path(a.plugin), a.preset, lm)))
+    print(json.dumps(keys(Path(a.plugin), a.preset, lm, esm=a.esm, world=a.world)))
     return 0
 
 

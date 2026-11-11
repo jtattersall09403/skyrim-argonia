@@ -15,6 +15,13 @@
 #   lod.ps1 -Step list         the derived folder's files, one relative path a line, to C:\argonia\lod\logs\files.txt
 #   lod.ps1 -Step keys         "<step>=<key>" for each step whose output stands (the key its run was given with -Key)
 #   lod.ps1 -Step preflight    everything checkable before a long step: one "FAULT ..." line each, then "preflight OK"
+#   lod.ps1 -Step hashes -Tag t   sha256 and path of every file of the three outputs -> logs\hashes-t.txt
+#   lod.ps1 -Step unlay        (-Small) the small world's own Data folder removed
+# -Small is the small test world (infra/gpu-box/lod.sh selftest): its own world (-World), its own work folder
+# (C:\argonia\lod-small: inputs, outputs, keys, logs, the collected folder), its own plugins file and its own game
+# folder (game\Data), which the tools are pointed at (-d:). That folder is hard links to the game's Data without our
+# LOD mod's files (TexGen refuses to start beside an earlier TexGen output) and without the real world's plugins,
+# plus the small world's file. The profile is never laid; the game's Data, the real LOD's folders and its keys are never written.
 # A step's output carries the key it was made for (C:\argonia\lod\out\<step>.key, written when the step ends well,
 # removed when it starts): lod.sh skips a step whose key on the machine is the one it wants. Each step's settings are
 # in lod-settings.json (sent beside this script), which is part of that step's key; this script's text is in none.
@@ -26,8 +33,9 @@
 # pop-up stops the step (named in the log), never clicked blind.
 # Every step writes C:\argonia\lod\metrics\<step>.json: wall seconds, peak working set of the tool's processes
 # (the tool, LODGen, Texconv) summed per 2 s sample, the machine's lowest free physical memory, and the exit state.
-param([Parameter(Mandatory)][ValidateSet('prepare', 'resources', 'terrain', 'texgen', 'dyndolod', 'collect', 'list', 'survey', 'keys', 'preflight')][string]$Step,
-      [string]$Key = '', [string]$ToolKey = '', [switch]$Fresh, [string]$Keep = '',
+param([Parameter(Mandatory)][ValidateSet('prepare', 'resources', 'terrain', 'texgen', 'dyndolod', 'collect', 'list', 'survey', 'keys', 'preflight', 'hashes', 'unlay')][string]$Step,
+      [string]$Key = '', [string]$ToolKey = '', [switch]$Fresh, [string]$Keep = '', [switch]$Small, [string]$Tag = 'now',
+      [int]$StopAfterSec = 0,
       [ValidateSet('xlodgen', 'texgen', 'dyndolod')][string]$Tool = 'xlodgen',
       [ValidateSet('Low', 'Medium')][string]$Preset = 'Medium',
       [string]$World = 'ArgoniaBlackMarsh', [int]$TimeoutMin = 180)
@@ -36,10 +44,20 @@ $Game = 'C:\Program Files (x86)\Steam\steamapps\common\Skyrim Special Edition'
 $Data = "$Game\Data"
 $Root = 'C:\argonia'
 $Tools = "$Root\tools"
-$Work = "$Root\lod"
-$Mod = "$Root\ours\derived-NewWorld\argonia-newworld-lod"
-$Stack = { & "$Root\infra\stack.ps1" -Cmd on -World NewWorld | Out-Null }
 $Prefs = "$env:LOCALAPPDATA\Skyrim Special Edition"
+$PluginsFile = "$Prefs\Plugins.txt"
+$RealMod = "$Root\ours\derived-NewWorld\argonia-newworld-lod"
+if ($Small) {
+  if ($World -eq 'ArgoniaBlackMarsh') { throw "lod.ps1 -Small needs the small world's own -World" }
+  $GameData = $Data
+  $Work = "$Root\lod-small"; $Mod = "$Work\mod"; $Stack = { }; $PluginsFile = "$Work\Plugins.txt"; $Data = "$Work\game\Data"
+  $WorldFile = "$Work\$World.esm"
+} else {
+  $Work = "$Root\lod"
+  $Mod = $RealMod
+  $Stack = { & "$Root\infra\stack.ps1" -Cmd on -World NewWorld | Out-Null }
+  $WorldFile = "$Root\ours\newworld\ArgoniaNewWorld.esm"
+}
 $Ini = "$env:USERPROFILE\Documents\My Games\Skyrim Special Edition\"
 $Out = @{ terrain = "$Work\out\terrain"; texgen = "$Work\out\texgen"; dyndolod = "$Work\out\dyndolod" }
 $Exe = @{ xlodgen = "$Tools\xlodgen\xLODGen\xLODGenx64.exe"; texgen = "$Tools\dyndolod\DynDOLOD\TexGenx64.exe"
@@ -51,13 +69,13 @@ $Settings = Get-Content "$Root\infra\lod-settings.json" -Raw | ConvertFrom-Json
 $LodModels = "$Work\lodmodels"   # the derived LOD models (tools/newworld/world/lodmodels.py), a Data-shaped folder
 New-Item -ItemType Directory -Force "$Work\logs", "$Work\metrics", "$Work\out", $Mod | Out-Null
 function Clear-Output($s) {  # a step's tool starting again: its output and the keys that vouched for it
-  Remove-Item "$Work\out\$s.key", "$Work\out\$s-tool.key" -Force -EA SilentlyContinue
+  Remove-Item "$Work\out\$s.key", "$Work\out\$s-tool.key", "$Work\out\$s-running.key" -Force -EA SilentlyContinue
   Remove-Item $Out[$s] -Recurse -Force -EA SilentlyContinue; New-Item -ItemType Directory -Force $Out[$s] | Out-Null
 }
 function Set-OutputKey($s) { if ($Key) { Set-Content "$Work\out\$s.key" $Key -Encoding ASCII } }
 # The save point inside a step: the long tool run's output is marked the moment the tool has finished, before any pass
 # or check of ours runs on it, so a fault in our own code never costs the tool's run again.
-function Set-ToolKey($s) { Remove-Item "$Work\out\$s.key" -Force -EA SilentlyContinue; if ($ToolKey) { Set-Content "$Work\out\$s-tool.key" $ToolKey -Encoding ASCII } }
+function Set-ToolKey($s) { Remove-Item "$Work\out\$s.key", "$Work\out\$s-running.key" -Force -EA SilentlyContinue; if ($ToolKey) { Set-Content "$Work\out\$s-tool.key" $ToolKey -Encoding ASCII } }
 function Tool-Stands($s) {
   $f = "$Work\out\$s-tool.key"
   $ok = -not $Fresh -and $ToolKey -and (Test-Path $f) -and (Get-Content $f -Raw).Trim() -eq $ToolKey
@@ -165,6 +183,8 @@ function Set-DynDOLOD-Worlds {
     elseif ($sec -eq 'DynDOLOD' -and $l -match '^NearGrid=') { $worlds = $true; $at = $rows.Count + 1 }
     elseif ($sec -eq 'DynDOLOD' -and $worlds -and $l -match '^([^=]+)=[01]$') {
       if ($Matches[1] -eq $World) { $l = "$World=1"; $ours = $true } else { $l = "$($Matches[1])=0" } }
+    # the preset also saves the output path of the run before, and DynDOLOD exports to it whatever -o: says
+    elseif ($sec -eq 'DynDOLOD' -and $l -match '^OutputPath=') { $l = "OutputPath=$($Out.dyndolod)\" }
     $rows.Add($l)
   }
   if ($at -lt 0) { throw "${Step}: no NearGrid line in $DynPreset" }
@@ -173,11 +193,33 @@ function Set-DynDOLOD-Worlds {
   $on = @(Get-Content $DynPreset | ? { $_ -match '^[A-Za-z0-9_]+=1$' } | ? { $l2 = $_; $rows.IndexOf($l2) -ge $at })
   Say "worldspaces in the preset at 1: $($on -join ', ')"
 }
+# TexGen opens with the output path its preset file saved at its last run (Presets\DynDOLOD_SSE_TexGen.ini,
+# OutputPath), whatever -o: says: written here before every run, or it writes into the folder of the run before.
+function Set-TexGen-Output {
+  $f = "$Tools\dyndolod\DynDOLOD\Edit Scripts\DynDOLOD\Presets\DynDOLOD_SSE_TexGen.ini"
+  if (-not (Test-Path $f)) { Say 'texgen preset: none yet (the first run takes -o:)'; return }
+  $rows = @(Get-Content $f | % { if ($_ -match '^OutputPath=') { "OutputPath=$($Out.texgen)\" } else { $_ } })
+  Set-Content $f $rows -Encoding ASCII
+  Say "texgen preset: $(@($rows | ? { $_ -match '^OutputPath=' }) -join ', ')"
+}
 # Fails the step at once when DynDOLOD starts LODGen for any world but ours (its Logs\LODGen_SSE_<world>_log.txt).
 function Assert-Only-Ours($since) {
   $bad = Get-ChildItem "$Tools\dyndolod\DynDOLOD\Logs" -Filter 'LODGen_SSE_*_log.txt' -EA SilentlyContinue | ? { $_.LastWriteTime -gt $since } |
     % { $_.Name -replace '^LODGen_SSE_', '' -replace '(_TerrainUnderside)?_log\.txt$', '' } | ? { $_ -ne $World } | Sort -Unique
   if ($bad) { throw "${Step}: DynDOLOD is generating other worlds: $($bad -join ', ')" }
+}
+# xLODGen's finish line can come back unreadable from its window, and then never matches. The run is also over when
+# its output has settled: files there, their count unchanged for 90 s, no helper running, and the tool itself idle
+# over those 90 s (under 2 s of processor time). The step's own verdict after the wait reads the disk again.
+$Settle = @{ count = -1; since = Get-Date; cpu = 0.0; settled = $false }
+function Terrain-Settled($proc) {
+  $c = @(Get-ChildItem $Out.terrain -Recurse -File -Include *.btr, *.dds -EA SilentlyContinue).Count
+  $proc.Refresh(); $cpuNow = $proc.TotalProcessorTime.TotalSeconds
+  if ($c -ne $Settle.count -or @(Get-Process -Name $Helpers -EA SilentlyContinue).Count -or ($cpuNow - $Settle.cpu) -gt 2) {
+    $Settle.count = $c; $Settle.since = Get-Date; $Settle.cpu = $cpuNow; return $false }
+  $idle = $c -gt 0 -and ((Get-Date) - $Settle.since).TotalSeconds -ge 90
+  if ($idle) { $Settle.settled = $true; Say "terrain: no finish line read; the output has settled ($c files, 90 s, the tool idle)" }
+  $idle
 }
 # Fails the terrain step as soon as xLODGen writes a world folder (meshes|textures\terrain\<world>) other than ours.
 function Assert-Terrain-Ours {
@@ -253,7 +295,7 @@ function Start-Tool($name, $argline) {
   $null = $p.Handle  # so ExitCode is kept for Measure-Run's message (PowerShell 5.1)
   $p
 }
-$Paths = "-sse -autoload -d:`"$Data\`" -p:`"$Prefs\Plugins.txt`" -m:`"$Ini`""
+$Paths = "-sse -autoload -d:`"$Data\`" -p:`"$PluginsFile`" -m:`"$Ini`""
 function Link-Into-Data($src, $sub = '') {
   Add-Type -TypeDefinition 'using System; using System.Runtime.InteropServices; public static class HL2 {
     [DllImport("kernel32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
@@ -267,6 +309,42 @@ function Link-Into-Data($src, $sub = '') {
     $n++
   }
   Say "linked $n files from $src into Data"
+}
+# The small world's own Data folder: every file of the game's Data as a hard link, but our LOD mod's files and the
+# real world's plugins; then the small world's file. Made anew each time: a link keeps the bytes it was made on.
+function Lay-Small-Data {
+  Add-Type -TypeDefinition 'using System; using System.Runtime.InteropServices; public static class HL3 {
+    [DllImport("kernel32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
+    public static extern bool CreateHardLink(string link, string target, IntPtr sa); }' -EA SilentlyContinue
+  if (Test-Path "$Work\game") { [IO.Directory]::Delete("\\?\$Work\game", $true) }
+  # the tools take the folder above Data for the game's: its exe is read for the version, and an output path
+  # inside it is refused, so the folder stands apart from the outputs
+  [void][IO.Directory]::CreateDirectory($Data)
+  if (-not [HL3]::CreateHardLink("$Work\game\SkyrimSE.exe", "$Game\SkyrimSE.exe", [IntPtr]::Zero)) { throw 'link failed: SkyrimSE.exe' }
+  $skip = New-Object 'System.Collections.Generic.HashSet[string]' ([StringComparer]::OrdinalIgnoreCase)
+  if (Test-Path $RealMod) { foreach ($f in [IO.Directory]::EnumerateFiles($RealMod, '*', 'AllDirectories')) { [void]$skip.Add($f.Substring($RealMod.Length)) } }
+  foreach ($f in '\ArgoniaNewWorld.esm', '\ArgoniaNWPlaces.esp', '\SEQ\ArgoniaNWPlaces.seq') { [void]$skip.Add($f) }
+  $n = 0
+  foreach ($f in [IO.Directory]::EnumerateFiles($GameData, '*', 'AllDirectories')) {
+    $rel = $f.Substring($GameData.Length); if ($skip.Contains($rel)) { continue }
+    $dst = "\\?\$Data$rel"
+    [void][IO.Directory]::CreateDirectory([IO.Path]::GetDirectoryName($dst))
+    if (-not [HL3]::CreateHardLink($dst, "\\?\$f", [IntPtr]::Zero)) { throw "link failed: $f" }
+    $n++
+  }
+  if (-not (Test-Path $WorldFile)) { throw "prepare: no $WorldFile (lod.sh sends it)" }
+  Copy-Item $WorldFile "$Data\$World.esm"
+  $rows = @(Get-Content "$Prefs\Plugins.txt" | ? { $_ -notmatch 'ArgoniaNewWorld\.esm|ArgoniaNWPlaces\.esp' }) + "*$World.esm"
+  Set-Content $PluginsFile $rows -Encoding ASCII
+  Say "small Data: $n files linked from the game's Data ($($skip.Count) of our LOD mod and the real world left out), $World.esm laid"
+}
+# A file copied into Data: in the small world's folder a file of that name may be a link to the game's own, and a copy
+# over a link would write the game's file, so the name is freed first.
+function Copy-Into-Data($src, $rel) {
+  $dst = "$Data\$rel"
+  New-Item -ItemType Directory -Force (Split-Path $dst) | Out-Null
+  if (Test-Path $dst) { Remove-Item $dst -Force }
+  Copy-Item $src $dst
 }
 function Link-Resources {  # into Data while the tools run
   # Interface too: DynDOLOD 3.0 alpha-217 refuses to start without interface\dyndolod\dyndolod.dds even when no
@@ -295,7 +373,7 @@ function Lay-DynDOLOD-Data {
   $files = @(Get-ChildItem $Work -File -Filter 'DynDOLOD_SSE_*' -EA SilentlyContinue)
   if (-not $files) { throw "${Step}: no DynDOLOD_SSE_* plan files in $Work (lod.sh send)" }
   New-Item -ItemType Directory -Force "$Data\DynDOLOD" | Out-Null
-  foreach ($f in $files) { Copy-Item $f.FullName "$Data\DynDOLOD\$($f.Name)" -Force }
+  foreach ($f in $files) { Copy-Into-Data $f.FullName "DynDOLOD\$($f.Name)" }
   Say "DynDOLOD data: $($files.Name -join ', ')"
 }
 
@@ -347,7 +425,7 @@ function Preflight {
   $ram = [math]::Round((Get-CimInstance Win32_OperatingSystem).FreePhysicalMemory / 1MB, 1); Say "ram free $ram GB"
   if ($ram -lt 8) { $f.Add("machine: $ram GB of memory free, under 8") }
   foreach ($x in Get-ChildItem $Work -File -Filter 'DynDOLOD_SSE_*' -EA SilentlyContinue) { Say "have $($x.Name) $((Get-FileHash $x.FullName -Algorithm SHA256).Hash.ToLower())" }
-  foreach ($x in "$Root\ours\newworld\ArgoniaNewWorld.esm", "$Work\$World.lod") {
+  foreach ($x in $WorldFile, "$Work\$World.lod") {
     if (Test-Path $x) { Say "have $(Split-Path $x -Leaf) $((Get-FileHash $x -Algorithm SHA256).Hash.ToLower())" } else { $f.Add("input: no $x (lod.sh send)") } }
   # DynDOLOD's preset: written as before every run, then read back: only our world may stand at 1
   try {
@@ -364,24 +442,34 @@ function Preflight {
 }
 
 switch ($Step) {
-  'keys' { foreach ($s in 'terrain-tool', 'terrain', 'texgen-tool', 'texgen', 'dyndolod') { if (Test-Path "$Work\out\$s.key") { Say "$s=$((Get-Content "$Work\out\$s.key" -Raw).Trim())" } } }
-  'preflight' { Preflight }
+  'keys' { foreach ($s in 'terrain-tool', 'terrain', 'texgen-tool', 'texgen', 'dyndolod', 'terrain-running') { if (Test-Path "$Work\out\$s.key") { Say "$s=$((Get-Content "$Work\out\$s.key" -Raw).Trim())" } } }
+  'unlay' {
+    if (-not $Small) { throw "unlay is the small world's" }
+    if (Test-Path "$Work\game") { [IO.Directory]::Delete("\\?\$Work\game", $true) }
+    Say "unlaid: the small world's game folder removed"
+  }
+  'hashes' {
+    $rows = foreach ($o in $Out.GetEnumerator() | Sort-Object Name) { foreach ($f in Get-ChildItem $o.Value -Recurse -File -EA SilentlyContinue | Sort-Object FullName) {
+      "$((Get-FileHash $f.FullName -Algorithm SHA256).Hash.ToLower())  $($o.Name)$($f.FullName.Substring($o.Value.Length))" } }
+    Set-Content "$Work\logs\hashes-$Tag.txt" $rows -Encoding ASCII; Say "hashes: $(@($rows).Count) files -> hashes-$Tag.txt"
+  }
   'prepare' {
-    Stop-Process -Name SkyrimSE, skse64_loader -Force -EA SilentlyContinue
+    if (-not $Small) { Stop-Process -Name SkyrimSE, skse64_loader -Force -EA SilentlyContinue }
     # a tool a failed step left open holds Data's archives, and the fresh lay below cannot delete them (game-12)
     Get-Process xLODGenx64, TexGenx64, DynDOLODx64, LODGen*, Texconv* -EA SilentlyContinue | Stop-Process -Force -EA SilentlyContinue
     Start-Sleep 2
     Remove-Item "$Mod\*" -Recurse -Force -EA SilentlyContinue   # Data without any old LOD of ours
     $kept = @($Keep -split ',' | ? { $_ })
-    foreach ($s in @($Out.Keys)) { if ($s -notin $kept -or -not ((Test-Path "$Work\out\$s.key") -or (Test-Path "$Work\out\$s-tool.key"))) { Clear-Output $s } }
+    foreach ($s in @($Out.Keys)) { if ($s -notin $kept -or -not ((Test-Path "$Work\out\$s.key") -or (Test-Path "$Work\out\$s-tool.key") -or (Test-Path "$Work\out\$s-running.key"))) { Clear-Output $s } }
     Lay-LodSettings
     & $Stack
+    if ($Small) { Lay-Small-Data; Copy-Into-Data "$Work\$World.lod" "LODSettings\$World.lod" }
     if (-not (Test-Path "$Data\LODSettings\$World.lod")) { throw "prepare: LODSettings\$World.lod not laid in Data" }
-    if (-not (Test-Path "$Data\ArgoniaNewWorld.esm")) { throw 'prepare: ArgoniaNewWorld.esm not in Data (lod.sh sends it)' }
+    if (-not (Test-Path "$Data\$(Split-Path $WorldFile -Leaf)")) { throw "prepare: $(Split-Path $WorldFile -Leaf) not in Data (lod.sh sends it)" }
     Link-Resources
     # the outputs that stand, into the fresh Data: DynDOLOD culls under the terrain LOD and reads TexGen's textures
     foreach ($s in 'terrain', 'texgen') { if (Test-Path "$Work\out\$s.key") { Say "kept: $s ($((Get-Content "$Work\out\$s.key" -Raw).Trim()))"; Link-Into-Data $Out[$s] } }
-    Say "plugins: $((Get-Content "$Prefs\Plugins.txt") -join ', ')"
+    Say "plugins: $((Get-Content $PluginsFile) -join ', ')"
     $free = (Get-PSDrive C).Free; Say "C: free $([math]::Round($free / 1GB, 1)) GB"
     if ($free -lt 20GB) { throw 'prepare: under 20 GB free on C:' }
   }
@@ -403,7 +491,20 @@ switch ($Step) {
   }
   'terrain' {
     if (-not (Tool-Stands terrain)) {
-    Clear-Output terrain
+    # xLODGen skips a terrain LOD texture that is already in its output folder (its Terrain-LOD readme: "can be used
+    # to continue generating"), so a run that was stopped is carried on, not started again: the output is kept when
+    # the run that wrote it had this very key. The files being written at the stop are the newest: twice as many as
+    # the machine has threads are deleted, with every empty file. xLODGen writes every mesh again, and so does our pass.
+    $run = "$Work\out\terrain-running.key"
+    if (-not $Fresh -and $ToolKey -and (Test-Path $run) -and (Get-Content $run -Raw).Trim() -eq $ToolKey) {
+      $tex = @(Get-ChildItem $Out.terrain -Recurse -File -Filter *.dds -EA SilentlyContinue | Sort-Object LastWriteTime -Descending)
+      $drop = @($tex | Select-Object -First (2 * [Environment]::ProcessorCount)) + @($tex | ? { $_.Length -eq 0 })
+      $drop | Remove-Item -Force -EA SilentlyContinue
+      Say "terrain: carrying on the stopped run of $ToolKey ($($tex.Count) textures there, the newest $(@($drop).Count) made again)"
+    } else {
+      Clear-Output terrain
+      if ($ToolKey) { Set-Content $run $ToolKey -Encoding ASCII }
+    }
     $p = Start-Tool xlodgen ($Paths + " -lodgen -o:`"$($Out.terrain)\`"")
     $main = Main-Window $p
     Find-Control $p 'Generate' '*Button*' 600 | Out-Null   # the options dialog, after the plugins load
@@ -413,13 +514,16 @@ switch ($Step) {
     Set-Check $p 'Terrain LOD' $true
     Dump $p 'before Generate'
     Click $p 'Generate'
-    try { Measure-Run $p { $null = Watch-Popups $p $main; Assert-Terrain-Ours; (Tool-Text $p) -match 'LOD Generator: finished|LOD generation done' } }
+    $tGen = Get-Date
+    try { Measure-Run $p { $null = Watch-Popups $p $main; Assert-Terrain-Ours
+      if ($StopAfterSec -and ((Get-Date) - $tGen).TotalSeconds -gt $StopAfterSec) { throw "terrain: stopped after $StopAfterSec s (-StopAfterSec: the test of carrying on)" }
+      ((Tool-Text $p) -match 'LOD Generator: finished|LOD generation done') -or (Terrain-Settled $p) } }
     catch { $p | Stop-Process -Force -EA SilentlyContinue; Get-Process LODGen* -EA SilentlyContinue | Stop-Process -Force -EA SilentlyContinue; throw }
     # round 5 close-8 (20:39): the done-check's pop-up watcher wrote a line, which made the check true 6 s before the
     # tool's finish line existed, and this re-read found none. The watcher's output is now discarded above, and this
     # re-read waits for the finish line (up to 10 min) instead of failing on one early read.
     $t1 = Get-Date
-    do { $txt = Tool-Text $p; if ($txt -match 'finished|generation done') { break }; Start-Sleep 5 } while (((Get-Date) - $t1).TotalMinutes -lt 10)
+    do { $txt = Tool-Text $p; if ($txt -match 'finished|generation done') { break }; Start-Sleep 5 } while (((Get-Date) - $t1).TotalMinutes -lt $(if ($Settle.settled) { 0.2 } else { 10 }))
     Set-Content "$Work\logs\terrain-messages.txt" $txt
     if ($txt -notmatch 'finished|generation done') {
       # The window's text can come back unreadable (close-8, 20:39: 691 KB of '?'). The verdict then comes from the
@@ -447,6 +551,7 @@ switch ($Step) {
     if (-not (Tool-Stands texgen)) {
     Clear-Output texgen
     Lay-DynDOLOD-Data
+    Set-TexGen-Output
     $p = Start-Tool texgen ($Paths + " -o:`"$($Out.texgen)\`"")
     $main = Main-Window $p
     Find-Control $p 'Start' '*Button*' 600 | Out-Null
@@ -456,6 +561,7 @@ switch ($Step) {
     $t1 = Get-Date  # as terrain: re-read until the finish line is there (close-8, 20:39), not once
     do { $txt = Tool-Text $p; if ($txt -match 'completed successfully') { break }; Start-Sleep 5 } while (((Get-Date) - $t1).TotalMinutes -lt 10)
     Set-Content "$Work\logs\texgen-messages.txt" $txt
+    if ($txt -notmatch [regex]::Escape("Creating billboard $($Out.texgen)\")) { $p | Stop-Process -Force; throw "texgen: it did not write under $($Out.texgen) (its preset's OutputPath)" }
     if ($txt -notmatch 'completed successfully') { $p | Stop-Process -Force; throw 'texgen: did not complete' }
     Set-ToolKey texgen   # TexGen's output is whole once it says so; leaving the tool is ours
     try { Click $p 'Exit TexGen' } catch { Say 'no Exit TexGen button: the tool is stopped' }
@@ -510,6 +616,9 @@ switch ($Step) {
     do { $txt = Tool-Text $p; if ($txt -match 'generated successfully') { break }; Start-Sleep 5 } while (((Get-Date) - $t1).TotalMinutes -lt 10)
     Set-Content "$Work\logs\dyndolod-messages.txt" $txt
     if ($txt -notmatch 'generated successfully') { $p | Stop-Process -Force; throw 'dyndolod: did not complete' }
+    $bto = @(Get-ChildItem "$($Out.dyndolod)\meshes\terrain\$World\objects" -Filter *.bto -EA SilentlyContinue).Count
+    Say "dyndolod: $bto object LOD files of $World under $($Out.dyndolod)"
+    if (-not $bto) { $p | Stop-Process -Force; throw "dyndolod: no object LOD of $World under $($Out.dyndolod) (its preset's OutputPath)" }
     Set-OutputKey dyndolod   # the output is whole at the finish line: marked before the leaving of the tool, which is ours
     # the finish dialog (a few seconds after the finish line) offers 'Save and Exit' when plugins were made and
     # 'Exit DynDOLOD' when none were; waited for, so the tool is never stopped while it still writes

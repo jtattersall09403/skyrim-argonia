@@ -117,3 +117,38 @@ def test_a_change_to_our_own_pass_never_rekeys_the_tool_run(tmp_path):
     assert b["terrain"] != a["terrain"] and b["texgen"] != a["texgen"] and b["dyndolod"] != a["dyndolod"]
     c = all_keys({**SETTINGS, "terrain": {"tool": {"rev": 2}, "post": SETTINGS["terrain"]["post"]}})
     assert c["terrain-tool"] != a["terrain-tool"] and c["terrain"] != a["terrain"] and c["texgen"] == a["texgen"]
+
+
+def test_a_steps_code_key_follows_its_own_scripts_settings_and_tools(tmp_path):
+    """The proof keys (what `lod.sh selftest` records and `lod.sh stage` asks for): a change to the plan's writer
+    asks texgen and dyndolod to be proven again and leaves terrain; a driver script asks all three; a step's own
+    setting or tool asks that step alone."""
+    for files in lodkeys.PROOF.values():
+        for f in files:
+            (tmp_path / f).parent.mkdir(parents=True, exist_ok=True)
+            (tmp_path / f).write_text(f)
+            assert (lodkeys.REPO / f).exists(), f
+    base = lodkeys.proof_keys(SETTINGS, TOOLS, tmp_path)
+    assert set(base) == {"terrain", "texgen", "dyndolod"}
+
+    def moved(settings=SETTINGS, tools=TOOLS):
+        now = lodkeys.proof_keys(settings, tools, tmp_path)
+        return {s for s in base if now[s] != base[s]}
+    assert moved() == set()
+    (tmp_path / "tools/newworld/world/lodplan.py").write_text("changed")
+    assert moved() == {"texgen", "dyndolod"}
+    (tmp_path / "tools/newworld/world/lodplan.py").write_text("tools/newworld/world/lodplan.py")
+    (tmp_path / "infra/gpu-box/lod.ps1").write_text("changed")
+    assert moved() == {"terrain", "texgen", "dyndolod"}
+    (tmp_path / "infra/gpu-box/lod.ps1").write_text("infra/gpu-box/lod.ps1")
+    assert moved(settings={**SETTINGS, "dyndolod": {"rev": 2}}) == {"dyndolod"}
+    assert moved(tools={**TOOLS, "xlodgen": "x2"}) == {"terrain"}
+
+
+def test_the_small_world_is_keyed_under_its_own_names(tmp_path):
+    m = tmp_path / "map/LODSettings"
+    m.mkdir(parents=True)
+    (m / "ArgoniaSmallWorld.lod").write_bytes(b"\0" * 16)
+    (tmp_path / "ArgoniaSmallWorld.esm").write_bytes(esm())
+    k = lodkeys.keys(tmp_path, settings=SETTINGS, tools=TOOLS, esm="ArgoniaSmallWorld.esm", world="ArgoniaSmallWorld")
+    assert k["terrain"] and k["dyndolod"] and set(k["proof"]) == {"terrain", "texgen", "dyndolod"}

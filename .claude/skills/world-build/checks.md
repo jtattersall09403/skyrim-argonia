@@ -6,6 +6,7 @@ numbers behind each limit are in the research file named.
 
 | Stage | Check | It proves | Mend it in | Numbers |
 |---|---|---|---|---|
+| the small world, before any full run | `tools/newworld/rebuild.sh small` | the stages from `land` to `readback` run green on one block of the real build, with each stage's own check below and the read-back's rows that judge a block; the block still holds one of everything a stage has a rule for; nothing under `out/newworld/` was written | the stage that owns the red check; the block (`tools/newworld/small`) when the world changed under it | |
 | `tools` | the C# tools compile | the writer and the navmesh tool build before anything waits on them | the C# | |
 | `terrain` | `python3 -m tools.newworld.terrain check` | the map's water lies under the water level and its land over it; every built place's beds are its held build's and its land that build's plus the ramped lift; each water kind's share of waterline triangles over 45 degrees (what the navmesh walks) is within Skyrim's for that kind; land and beds keep clear of the water plane at every LOD spacing; no road over its grade; every entrance dry and open; the build still answers everything it read (`inputs.json`) | `terrain_*.py`, `region_relief.json`, `terrain_held.json` | [relief](../../../docs/research/nw-02-walk5-relief.md) |
 | `needs` | `python3 -m tools.newworld.terrain_needs` | every place has the ground its record asks for (island, rise, level pad behind the bank, shore access, seabed, entrance), but for the failures `terrain_needs_accepted.json` names, each for the reason and no worse than the value it was accepted at | the terrain's shaping, or the place's record | [relief](../../../docs/research/nw-02-walk5-relief.md) |
@@ -27,6 +28,9 @@ round what is placed, in about two minutes, into `out/newworld/navmesh-samples` 
 It is green when each block's checks are, every collidable reference is fed, and the road is on the mesh no less
 than on the bare ground. A change to the placement is placed first (`python3 -m tools.newworld.place run`, three
 minutes), so the test reads the refs the change makes.
+
+On the small world the checks of `landings`, `relief` and `map` do not run, and the read-back's rows that count
+the province are printed and not judged; the run names each with its reason.
 
 The read-back's `lod`, `deploy` and `places` rows judge the other machines' work. They run in the whole read-back
 (`python3 -m tools.newworld.verify`) once the LOD is built, the world file deployed and the built places rebuilt.

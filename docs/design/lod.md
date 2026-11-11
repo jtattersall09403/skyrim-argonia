@@ -1,8 +1,10 @@
-# The new world's LOD: how it is built
+# The new world's LOD: measurements and reasons
 
 What the player sees beyond the loaded cells of ArgoniaBlackMarsh, and the world map drawn from it. The LOD is a
 derived build output (decision 0014): made on the play machine from the world file, laid in the NewWorld profile,
-archived in the private bucket, never committed.
+archived in the private bucket, never committed. The recipe (the order of work, what a change reruns, the small
+world's selftest, preflight, run, checks, deploy) is the skill `world-lod`; this file holds what was measured and
+why each rule is so.
 
 ## The rule of the world
 
@@ -88,98 +90,80 @@ What decides whether a heavy model gets one is the density of its refs, not the 
 of logs and stumps, the budget leaves each a dozen triangles, and no faithful shape exists at that count. Those
 bases stay without LOD.
 
-## The steps
+## The mesh settings of our terrain pass
 
-`infra/gpu-box/lod.sh` drives everything from the build VM; `lod.ps1` is the machine's half. The three tools have no
-unattended mode, so each is driven by window messages in the desktop session; an unknown pop-up stops the step.
+xLODGen keeps its mesh options in its window, so its own LODGen input (`LODGen_Terrain_<world>.txt`, kept beside
+the output) is rewritten with `lod-settings.json`'s `terrain.post` keys and LODGen run again on the same height
+data: sheson's recipe (LOD4 quality 4 with protected cell borders; LOD8/16/32 quality 6/8/10 with Optimize Unseen
+550). The meshes are replaced, the textures kept.
 
-| step | where | what it does | reads (its key) |
-|---|---|---|---|
-| map | build VM | `mapdata.py build` (map box, markers, the `.lod` file, teleports, the plan), `lodmodels.py build`, the plan again, `nwmap apply` (records, billboard and rule files), `nwmap check` | not keyed: seconds |
-| preflight | both | every check that needs no long step (below) | |
-| prepare | machine | the NewWorld profile laid fresh with no LOD of ours; the `.lod` into Data; DynDOLOD Resources linked into Data; the outputs of the steps that stand kept and linked into Data again, the others cleared | runs when a step will |
-| terrain | machine | xLODGen terrain LOD for our world (save point `terrain-tool`); then LODGen again on xLODGen's own input file with `lod-settings.json`'s mesh settings (sheson's recipe: LOD4 quality 4 with protected cell borders; LOD8/16/32 quality 6/8/10 with Optimize Unseen 550), replacing the meshes and keeping the textures | from the ESM: the world's land and water fields, every LAND, every exterior cell's grid, water height and water type, LTEX and TXST; the `.lod`; the xLODGen archive; `terrain.tool` for xLODGen's run, `terrain.post` for our pass |
-| texgen | machine | TexGen: LOD textures and the billboards, our billboard lists laid in `Data\DynDOLOD\` first (save point `texgen-tool`); then every planned billboard checked by form id | the billboard files; the ESM's STAT and TREE records; the DynDOLOD and Resources archives; `texgen.tool` for TexGen's run, `texgen.post` for our pass |
-| dyndolod | machine | DynDOLOD (preset Medium): object and tree LOD, with our rule file and the derived LOD models in Data. Static LOD only: `Dynamic LOD`, `Occlusion data` and `Terrain underside` are unticked (`lod-settings.json`), since only DynDOLOD's own plugins use what they make and this job enables none | the whole ESM; the billboard and rule files; the LOD models' key; the terrain and texgen keys (it culls under the terrain LOD and reads TexGen's textures); the `dyndolod` settings; the preset; the DynDOLOD and Resources archives |
-| collect | machine | Resources, TexGen's, the terrain's and DynDOLOD's outputs into the derived mod folder; the profile laid again with it | skipped when the mod already holds the three steps' keys |
-| check | both | every expected terrain LOD file per level (`mapdata.py check`), then `lodplan.py coverage` | |
-| archive | build VM | the mod folder and the LOD models to the private bucket | the three keys |
+Read from the rewritten `.btr` (the pass rewrites every one: 2,484 / 672 / 195 / 56 at levels 4 / 8 / 16 / 32 in
+82 s): LOD water is two triangles for each cell that holds water, at the water height. At LOD8, 16 and 32 land
+more than 550 units under the water is not drawn as land: an all-sea block's land becomes one coarse sheet (640
+triangles) pushed far below (7,600 to 9,800 units down), and in a shore block no land triangle is left lying wholly
+deeper than 550 under. Land less than 550 under the water keeps its shape at every level, and LOD4 keeps
+everything. So the setting clears the deep sea floor from under the far water and off the map; it does nothing for
+marsh land a few units above or below the water, whose far-off flicker against the water plane is a matter of the
+land's relief at the waterline.
 
-What the terrain mesh settings do, read from the rewritten `.btr` (the second pass rewrites every one: 2,484 / 672 /
-195 / 56 at levels 4 / 8 / 16 / 32 in 82 s): LOD water is two triangles for each cell that holds water, at the
-water height. At LOD8, 16 and 32 (Optimize Unseen 550) land more than 550 units under the water is not drawn as
-land: an all-sea block's land becomes one coarse sheet (640 triangles) pushed far below (7,600 to 9,800 units
-down), and in a shore block no land triangle is left lying wholly deeper than 550 under. Land less than 550 under
-the water keeps its shape at every level, and LOD4 keeps everything. So the setting clears the deep sea floor from
-under the far water and off the map; it does nothing for marsh land a few units above or below the water, whose
-far-off flicker against the water plane is a matter of the land's relief at the waterline.
+## Keys
 
-Save points. A long tool run's output is marked the moment the tool has finished, before any pass or check of
-ours runs on it, so a fault in our own code never costs the tool's run again:
+Each step's key (`tools/newworld/world/lodkeys.py`) is what the step truly reads, so a change reruns only what it
+reaches, and the key of a finished step lives on the machine beside its output: a step is skipped only when the
+output that is really there was made for the inputs wanted now. The settings of a tool run and of our pass over it
+are separate sections of `lod-settings.json`, each with its own `rev`. `lod.ps1`'s text is in no output key, since
+a fix to how a window is driven changes no output; it is in each step's code key (`proof`), which the small
+world's selftest records and a full run asks for.
 
-| save point | marked when | what runs after it, alone and again at will |
+## Save points: what each tool gives, and what was proven
+
+Measured on the small world (16 by 16 cells; `lod.sh selftest`), every comparison by sha256 of each output file:
+
+| Tool | Handle | Source | Proven | Built |
+|---|---|---|---|---|
+| xLODGen | A terrain texture already in the output folder is skipped ("can be used to continue generating", its Terrain-LOD readme) | the tool's readme | A run stopped after 25 s with 290 of 340 textures written, then carried on: all 340 textures and 35 meshes the same bytes as an unstopped run's | Yes: a stopped terrain run of the same key is carried on; the newest textures (twice the thread count) and empty files are made again |
+| xLODGen | Meshes are written again by every run | the tool's readme | | Nothing to keep: our own pass writes every mesh again in any case |
+| LODGen (terrain) | Run again on xLODGen's kept input file | sheson's xLODGen notes | Our pass alone over the standing output: 35 meshes the same bytes, 2 s | Yes: `terrain-tool` then `terrain` |
+| xLODGen | "Specific chunk" (a level and a south-west cell) makes one chunk's textures | the tool's readme; whether a chunk's bytes equal a whole run's is not documented | Not tested | No: skipping existing textures gives the same saving with no window to drive. A change to terrain or paint in some cells still makes every texture again: regenerating only the chunks a change touches needs a key per chunk and is not built |
+| TexGen | None: no skip of existing files, no cache | dyndolod.info, TexGen | | No handle: a fault inside costs the run (about 3 to 6 minutes) |
+| DynDOLOD | Its own pass keeps nothing part-way | dyndolod.info | | No handle: a fault inside costs the pass |
+| LODGen (objects) | DynDOLOD ends by exporting the object LOD's inputs and starting LODGen on them; expert mode's "Execute LODGen" runs LODGen from that export again | dyndolod.info, Expert Mode | LODGen run on the small world's export: 27 of its 32 object LOD files differ in bytes from DynDOLOD's own run (tree LOD, textures and plugins the same) | No: not proven equal, so no save point is marked on it |
+| DynDOLOD | Tree LOD and object LOD as separate runs | their boxes are separate; whether one keeps the other's output is not documented | Not tested | No |
+
+Two faults of the tools' own state, found by the first small runs and held since by the scripts: TexGen and
+DynDOLOD each open with the output path their preset file saved at the run before, whatever `-o:` says, so a run
+for another folder writes into the last one's. Each preset's `OutputPath` is written before every run, and each
+step fails when its tool wrote nowhere under its own folder. And TexGen refuses to start while an earlier TexGen
+output is in the Data folder it reads, so the small world runs against a Data folder of its own (hard links to the
+game's, without our LOD mod's files).
+
+xLODGen's finish line can come back unreadable from its window (one small run in seven sat idle on it): the terrain
+step also ends when the output has settled (files there, their count unchanged and the tool idle for 90 s).
+
+The worst rerun after a fault or a stop: DynDOLOD (16 minutes on the whole world), or
+TexGen's run (6 minutes). A stopped terrain run loses the textures being written; a fault in any pass of ours
+loses that pass.
+
+## The small world
+
+`ArgoniaSmallWorld`: the block of cells (4, -134) to (19, -119) of the real build, cut and built by
+`tools/newworld/rebuild.sh small` (the skill `world-build`), renamed for the play machine by `small play`.
+Its plan holds 94 of the world's 172 billboard bases, 12 bases with LOD models of their own, 9 rule-matched
+bases and one of the three derived cliff models.
+
+| Step | Small world | Whole world |
 |---|---|---|
-| `terrain-tool` | xLODGen says it has finished (about 34 minutes) | our pass: the file counts, the world rule, the LODGen mesh pass from xLODGen's kept input file (82 s), the link into Data; then `terrain` is marked |
-| `texgen-tool` | TexGen says it has completed (about 6 minutes) | our pass: every planned billboard is there by form id, the link into Data; then `texgen` is marked |
-| `dyndolod` | DynDOLOD's finish line (about 16 minutes) | leaving the tool, collect, check, coverage, archive |
+| prepare (its own game folder: 104,650 hard links) | 52 s | 1 min |
+| terrain: xLODGen, then our mesh pass (375 files) | 77 s | 34 min, then 82 s |
+| texgen | 195 s | 6 min |
+| dyndolod | 194 s | 16 min |
+| collect | 17 s | 2 min |
+| the whole selftest, preflight and checks included | 612 s | about an hour |
 
-`prepare` never deletes an output whose marker is one of the keys wanted now. The settings of a tool run and of our
-pass over it are separate sections of `lod-settings.json` (`tool`, `post`), each with its own `rev`, and each save
-point is keyed on its own section: a change to a pass reruns that pass, never the tool before it.
-
-What the tools give no handle for, so a fault inside costs that tool's whole run: xLODGen's terrain run and
-DynDOLOD's run are each one pass driven through one window; neither has been split into kept pieces here.
-
-Keys (`tools/newworld/world/lodkeys.py`, shown by `lod.sh keys`): each save point's key is what it truly reads, so a
-change reruns only what it reaches. A change to placed references alone (places built) reruns dyndolod and
-leaves terrain and texgen; a changed billboard list or tree base reruns texgen and dyndolod; changed land or water
-reruns terrain and dyndolod. The key of a finished step lives on the machine beside its output
-(`C:\argonia\lod\out\<step>.key`, removed when the step starts, written when it ends well), so a step is skipped
-only when the output that is really there was made for the inputs wanted now. `lod.ps1`'s own text is in no key: a
-fix to how a window is driven reruns nothing. Each step's settings are in `infra/gpu-box/lod-settings.json`; change a
-setting, or raise the step's `rev` when a code change alters what the step writes, and that step runs again.
-
-## Before a run: preflight
-
-`infra/gpu-box/lod.sh preflight` (after `lod.sh map`; the stage runs it too). One `FAULT ...` line per fault, exit 1 on
-any, written to `out/newworld/lod/preflight.txt`:
-
-- `nwmap check`: the map, the Has-Tree-LOD flags, the billboard files and the rule file against the world file;
-- `lodplan preflight`: the plan is this build's and is what the plan builds to now; the billboard files list
-  exactly the planned trees (256 at most); the rule file names exactly the planned models, each drawn as planned;
-  every planned model is in the profile; every derived LOD model is built, and no other placed model shares its
-  file name (DynDOLOD pairs by file name);
-- the tools fetched and at their pinned hashes (`lod-tools.json`), on the build VM and on the machine;
-- the ESM, the `.lod`, the plan files and the LOD models sent, and the machine's copies hashed against ours;
-- on the machine: `pscheck.ps1` over `lod.ps1` and `stack.ps1` (parser errors; a function-local name that hides a
-  script-scope one, since PowerShell names are case-blind; one name under two spellings; `.ExitCode` read from a
-  process whose handle was never taken; PSScriptAnalyzer's errors); no tool or game still running; 30 GB free on
-  C:; 8 GB of memory free; DynDOLOD's preset holding our world alone.
-
-## The run
-
-```
-infra/gpu-box/run.sh up
-infra/gpu-box/lod.sh map
-infra/gpu-box/lod.sh preflight
-NW_LOD=1 tooling/job_guard.sh run --gpu nw-lod -- infra/gpu-box/lod.sh stage
-tooling/job_guard.sh wait nw-lod
-infra/gpu-box/run.sh stop
-```
-
-A stopped or failed run is started again with the same command: the steps that finished are skipped by their keys.
-`LOD_FORCE="texgen dyndolod"` runs the named steps, tool and all, whatever their keys.
-
-After places are built, only the object and tree LOD change: the same commands; terrain is skipped by its key.
-
-## After a run: what proves it
-
-- `out/newworld/lod/check.txt`: every expected `.btr` and texture per level found; `lodplan coverage`: every base
-  planned for a billboard has one by name, every base planned for object LOD is in DynDOLOD's export, drawn from
-  the model planned (its own LOD models, the full model, or the derived one), and every rule of ours matched
-  references. Exit 1 on any miss.
-- `out/newworld/lod/logs/`: each step's log, the tools' message panes, DynDOLOD's `BillboardsUsed` and `LODGen
-  export`; `out/newworld/lod/metrics/`: seconds and peak memory per step; `timings.txt`.
-- `tools/newworld/verify.py`'s `lod` section reads the same files into the world's read-back.
-
-The owner judges the look in the walk.
+What is fixed in a small run: TexGen spends 98 s loading the load order and making its object textures
+whatever the world holds, then 88 s on the block's 94 billboards (it renders only bases the loaded plugins hold, and
+keeps none between runs); DynDOLOD's 148 s is 11 s of loading and the rest its own pass over the load order's rules.
+A step proven for today's code whose output stands is skipped, so a warm run costs only the steps a change
+reaches; `lod.sh`, `lod.ps1` and `pscheck.ps1` are in every step's code key, so a change to one of them runs all
+three again.
+What the small world cannot prove is listed in the skill `world-lod`, section 4.

@@ -355,7 +355,7 @@ STAGES: tuple[Stage, ...] = (
 # What a world rebuild leaves stale beyond this machine's out/newworld: (what, the stages that feed it, where its recipe is)
 DOWNSTREAM = (
     ("the LOD on the play machine (terrain, trees, objects, the map)", ("land", "paint", "place", "map", "esm"),
-     "docs/design/lod.md"),
+     "the skill world-lod"),
     ("the play machine's deploy of ArgoniaNewWorld.esm", ("esm",), "the skill world-build, section Deploy"),
     ("each built place's ground bundle, stages and build ({places})", ("terrain", "land", "paint", "place", "navmesh", "esm"),
      "the skill place-build, section 7"),

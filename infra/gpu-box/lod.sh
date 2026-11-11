@@ -22,6 +22,17 @@
 #   lod.sh archive             the derived folder as a tar to s3://<private>/nw/lod/<key>.tar (never the repo, 0003)
 #   lod.sh survey xlodgen|texgen|dyndolod   start one tool in the desktop session, dump its windows, kill it
 #   lod.sh stage [step ...]    map, then (NW_LOD=1) preflight, run [steps], check, archive: the whole stage
+#   lod.sh selftest [step ...] the whole stage on the small test world (tools/newworld/rebuild.sh small: one block of
+#                              the real build as ArgoniaSmallWorld.esm) in minutes: preflight, run, check, coverage,
+#                              under its own names on both machines (out/newworld-small/lod here; C:\argonia\lod-small
+#                              there, with a Data folder of its own), so the game's Data, the real LOD's outputs
+#                              and keys and the profile are never touched. Each step that
+#                              ends green is recorded with its code key (lodkeys.py "proof"); a step recorded for
+#                              today's code and standing is skipped. `stage`'s preflight refuses a step whose code
+#                              was never run here. SELFTEST_STOP=<s> stops the terrain tool after <s> seconds (the
+#                              test of carrying a stopped run on); `selftest pass` runs our pass over the terrain
+#                              tool's standing output alone; SELFTEST_KEEP=1 keeps
+#                              the small world's game folder after the run.
 #   PRESET=Low|Medium (default Medium, the preset of every final run) sets DynDOLOD's preset. LOD_FORCE=1 reruns
 #   every machine step; LOD_FORCE="texgen dyndolod" those steps.
 # The map stage also writes the teleport cells and the LOD plan (mapdata.py build: teleports.py, lodplan.py) and nwmap
@@ -36,28 +47,41 @@ here=$(cd "$(dirname "$0")" && pwd); repo=$(cd "$here/../.." && pwd); cd "$repo"
 run="$here/run.sh"
 PY=$(ls "$HOME/.argonia/venv/bin/python" 2>/dev/null || command -v python3)
 export DOTNET_ROOT="$HOME/.dotnet" PATH="$HOME/.dotnet:$PATH" DOTNET_CLI_TELEMETRY_OPTOUT=1 DOTNET_NOLOGO=1
-plug=out/newworld/plugin; esm=$plug/ArgoniaNewWorld.esm; lod=$plug/map/LODSettings/ArgoniaBlackMarsh.lod
-out=out/newworld/lod; mkdir -p "$out"
+SMALL=; [ "${1:-}" = selftest ] && SMALL=1
+if [ -n "$SMALL" ]; then
+  # the small world: built here under the stage tools' own names (src), sent under the play machine's (plug)
+  root=out/newworld-small; src=$root/plugin; plug=$root/play/plugin; WORLD=ArgoniaSmallWorld; ESM=$WORLD.esm
+  MWORK='C:\argonia\lod-small'; MESM="$MWORK\\$ESM"; PSX="-World $WORLD -Small"
+else
+  root=out/newworld; src=$root/plugin; plug=$src; WORLD=ArgoniaBlackMarsh; ESM=ArgoniaNewWorld.esm
+  MWORK='C:\argonia\lod'; MESM='C:\argonia\ours\newworld\ArgoniaNewWorld.esm'; PSX=
+fi
+MW=${MWORK//\\//}   # the machine's work folder with forward slashes, for scp
+esm=$plug/$ESM; lod=$plug/map/LODSettings/$WORLD.lod
+out=$root/lod; mkdir -p "$out"
 data="${ARGONIA_GAME_ROOT:-$HOME/games/skyrimse}/Data"
 bin=out/tools/ArgoniaPlugin
 PRESET=${PRESET:-Medium}
-MOD='C:\argonia\ours\derived-NewWorld\argonia-newworld-lod'
+MOD='C:\argonia\ours\derived-NewWorld\argonia-newworld-lod'; [ -z "$SMALL" ] || MOD="$MWORK\\mod"
 
-lm=out/newworld/lodmodels   # the derived far-off models: manifest.json and a Data-shaped meshes\ tree (never committed)
+lm=$root/lodmodels   # the derived far-off models: manifest.json and a Data-shaped meshes\ tree (never committed)
 plan_files() { ls "$plug"/map/DynDOLOD_SSE_* 2>/dev/null; }  # nwmap apply's TexGen billboard and DynDOLOD rule files
 KEYS=
 keys() {  # each step's key (lodkeys.py), computed once a call of this script
-  [ -n "$KEYS" ] || KEYS=$("$PY" -m tools.newworld.world.lodkeys --plugin "$plug" --preset "$PRESET" --lodmodels "$lm/manifest.json")
+  [ -n "$KEYS" ] || KEYS=$("$PY" -m tools.newworld.world.lodkeys --plugin "$plug" --preset "$PRESET" --lodmodels "$lm/manifest.json" --esm "$ESM" --world "$WORLD")
 }
+proof() { keys; "$PY" -c 'import json,sys; print(json.loads(sys.argv[1])["proof"][sys.argv[2]])' "$KEYS" "$1"; }
+# the code keys the small world's selftest recorded on the machine, one "<step>=<key>" a line
+proved() { "$run" ps 'Get-Content C:\argonia\lod-small\proved.txt -EA SilentlyContinue' | tr -d '\r' | grep -oE '(terrain|texgen|dyndolod)=[0-9a-f]+' || true; }
 want() { keys; "$PY" -c 'import json,sys; print(json.loads(sys.argv[1])[sys.argv[2]])' "$KEYS" "$1"; }
 key() { echo "$(want terrain) $(want texgen) $(want dyndolod)" | sha256sum | cut -c1-16; }   # the whole LOD's (the archive's)
-machine_keys() { "$run" ps 'powershell -ExecutionPolicy Bypass -File C:\argonia\infra\lod.ps1 -Step keys' | tr -d '\r' | grep -oE '(terrain-tool|terrain|texgen-tool|texgen|dyndolod)=[0-9a-f]+' || true; }
+machine_keys() { "$run" ps "powershell -ExecutionPolicy Bypass -File C:\\argonia\\infra\\lod.ps1 -Step keys $PSX" | tr -d '\r' | grep -oE '(terrain-tool|terrain-running|terrain|texgen-tool|texgen|dyndolod)=[0-9a-f]+' || true; }
 ps1() {  # one lod.ps1 step; the GUI steps in the desktop session, the rest over SSH
   local step=$1; shift
-  local line="powershell -ExecutionPolicy Bypass -File C:\\argonia\\infra\\lod.ps1 -Step $step -Preset $PRESET $*"
+  local line="powershell -ExecutionPolicy Bypass -File C:\\argonia\\infra\\lod.ps1 -Step $step -Preset $PRESET $PSX $*"
   local t0=$SECONDS o
   case "$step" in
-    terrain|texgen|dyndolod|survey) o=$(DESKTOP_JOB=lod DESKTOP_WAIT=${DESKTOP_WAIT:-14400} "$run" desktop "$line") ;;
+    terrain|texgen|dyndolod|survey) o=$(DESKTOP_JOB=lod DESKTOP_WAIT=${DESKTOP_WAIT:-14400} "$run" desktop "$line") || true ;;
     *) o=$("$run" ps "$line") ;;
   esac
   echo "$o"
@@ -65,14 +89,14 @@ ps1() {  # one lod.ps1 step; the GUI steps in the desktop session, the rest over
   grep -q "$step OK" <<<"$o" || { "$run" ps 'Stop-Process -Name DynDOLODx64, TexGenx64, xLODGenx64, LODGenx64 -Force -EA SilentlyContinue' >/dev/null || true; fetch_back; echo "lod.sh: $step failed" >&2; exit 1; }
 }
 fetch_back() {
-  "$run" get 'C:/argonia/lod/logs' "$out/" >/dev/null 2>&1 || true
-  "$run" get 'C:/argonia/lod/metrics' "$out/" >/dev/null 2>&1 || true
+  "$run" get "$MW/logs" "$out/" >/dev/null 2>&1 || true
+  "$run" get "$MW/metrics" "$out/" >/dev/null 2>&1 || true
   # DynDOLOD's own read-back of what got LOD (lodplan.py coverage): billboards used, the object LOD rows
-  "$run" get 'C:/argonia/tools/dyndolod/DynDOLOD/Logs/DynDOLOD_SSE_BillboardsUsed_ArgoniaBlackMarsh.txt' "$out/logs/" >/dev/null 2>&1 || true
-  "$run" get 'C:/argonia/tools/dyndolod/DynDOLOD/Edit Scripts/Export/LODGen_SSE_Export_ArgoniaBlackMarsh.txt' "$out/logs/" >/dev/null 2>&1 || true
+  "$run" get "C:/argonia/tools/dyndolod/DynDOLOD/Logs/DynDOLOD_SSE_BillboardsUsed_$WORLD.txt" "$out/logs/" >/dev/null 2>&1 || true
+  "$run" get "C:/argonia/tools/dyndolod/DynDOLOD/Edit Scripts/Export/LODGen_SSE_Export_$WORLD.txt" "$out/logs/" >/dev/null 2>&1 || true
 }
 put_ps1() {
-  "$run" ps 'New-Item -ItemType Directory -Force C:\argonia\infra, C:\argonia\tools, C:\argonia\lod, C:\argonia\ours\newworld | Out-Null' >/dev/null
+  "$run" ps 'New-Item -ItemType Directory -Force C:\argonia\infra, C:\argonia\tools, C:\argonia\lod, C:\argonia\lod-small, C:\argonia\ours\newworld | Out-Null' >/dev/null
   "$run" put "$here/lod.ps1" "$here/stack.ps1" "$here/pscheck.ps1" "$here/lod-settings.json" C:/argonia/infra/ >/dev/null
 }
 
@@ -125,7 +149,7 @@ EOF
 
 do_send() {  # each file only when the machine's copy differs
   local f dst have
-  for f in "$esm:C:\\argonia\\ours\\newworld\\ArgoniaNewWorld.esm" "$lod:C:\\argonia\\lod\\ArgoniaBlackMarsh.lod"; do
+  for f in "$esm:$MESM" "$lod:$MWORK\\$WORLD.lod"; do
     dst=${f#*:}; f=${f%%:*}
     have=$("$run" ps "(Get-FileHash '$dst' -Algorithm SHA256 -EA SilentlyContinue).Hash" | tr -d '\r' | tr 'A-F' 'a-f' | tail -1)
     if [ "$have" = "$(sha256sum "$f" | cut -c1-64)" ]; then echo "send: $(basename "$f") current"
@@ -134,23 +158,23 @@ do_send() {  # each file only when the machine's copy differs
       have=$("$run" ps "(Get-FileHash '$dst' -Algorithm SHA256 -EA SilentlyContinue).Hash" | tr -d '\r' | tr 'A-F' 'a-f' | tail -1)
     fi
     # the machine's copy, read back after the send: the verifier's deploy row compares it with the build
-    case "$f" in *.esm) mkdir -p "$repo/out/newworld/verify"; echo "$have" > "$repo/out/newworld/verify/play-esm.sha256" ;; esac
+    [ -n "$SMALL" ] || case "$f" in *.esm) mkdir -p "$repo/out/newworld/verify"; echo "$have" > "$repo/out/newworld/verify/play-esm.sha256" ;; esac
   done
   # the LOD plan files (small): sent whole each time, old ones removed first
   [ -n "$(plan_files)" ] || { echo "send: no $plug/map/DynDOLOD_SSE_* (lod.sh map)" >&2; exit 1; }
-  "$run" ps 'Remove-Item C:\argonia\lod\DynDOLOD_SSE_* -EA SilentlyContinue' >/dev/null
-  "$run" put $(plan_files) C:/argonia/lod/ >/dev/null; echo "send: $(plan_files | wc -l) LOD plan files"
+  "$run" ps "Remove-Item $MWORK\\DynDOLOD_SSE_* -EA SilentlyContinue" >/dev/null
+  "$run" put $(plan_files) "$MW/" >/dev/null; echo "send: $(plan_files | wc -l) LOD plan files"
   # the derived LOD models: sent whole when their key differs from the machine's copy
   local k; k=$("$PY" -c 'import json,sys; print(json.load(open(sys.argv[1]))["key"])' "$lm/manifest.json" 2>/dev/null || true)
-  have=$("$run" ps 'Get-Content C:\argonia\lod\lodmodels\.key -EA SilentlyContinue' | tr -d '\r' | tail -1)
-  if [ -z "$k" ]; then "$run" ps 'Remove-Item C:\argonia\lod\lodmodels -Recurse -Force -EA SilentlyContinue' >/dev/null; echo "send: no LOD models"
+  have=$("$run" ps "Get-Content $MWORK\\lodmodels\\.key -EA SilentlyContinue" | tr -d '\r' | tail -1)
+  if [ -z "$k" ]; then "$run" ps "Remove-Item $MWORK\\lodmodels -Recurse -Force -EA SilentlyContinue" >/dev/null; echo "send: no LOD models"
   elif [ "$k" = "$have" ]; then echo "send: LOD models current ($k)"
   else
     local tmp; tmp=$(mktemp -d); tar -cf "$tmp/lodmodels.tar" -C "$lm" meshes; echo "$k" > "$tmp/.key"
-    "$run" ps 'Remove-Item C:\argonia\lod\lodmodels -Recurse -Force -EA SilentlyContinue; New-Item -ItemType Directory -Force C:\argonia\lod\lodmodels | Out-Null' >/dev/null
-    "$run" put "$tmp/lodmodels.tar" C:/argonia/lod/lodmodels/lodmodels.tar >/dev/null
-    "$run" ps 'tar -xf C:\argonia\lod\lodmodels\lodmodels.tar -C C:\argonia\lod\lodmodels; Remove-Item C:\argonia\lod\lodmodels\lodmodels.tar' >/dev/null
-    "$run" put "$tmp/.key" C:/argonia/lod/lodmodels/.key >/dev/null   # last: the key vouches for a whole copy
+    "$run" ps "Remove-Item $MWORK\\lodmodels -Recurse -Force -EA SilentlyContinue; New-Item -ItemType Directory -Force $MWORK\\lodmodels | Out-Null" >/dev/null
+    "$run" put "$tmp/lodmodels.tar" "$MW/lodmodels/lodmodels.tar" >/dev/null
+    "$run" ps "tar -xf $MWORK\\lodmodels\\lodmodels.tar -C $MWORK\\lodmodels; Remove-Item $MWORK\\lodmodels\\lodmodels.tar" >/dev/null
+    "$run" put "$tmp/.key" "$MW/lodmodels/.key" >/dev/null   # last: the key vouches for a whole copy
     echo "send: $(find "$lm/meshes" -name '*.nif' | wc -l) LOD models sent ($k)"; rm -r "$tmp"
   fi
 }
@@ -161,12 +185,12 @@ do_preflight() {  # every check that needs no long step; one FAULT line per faul
   fault() { echo "FAULT $*" | tee -a "$f"; bad=1; }
   [ -f "$esm" ] || { fault "no $esm (world.sh)"; return 1; }
   [ -f "$bin/ArgoniaPlugin.dll" ] || dotnet build -c Release -o "$bin" tools/ArgoniaPlugin >/dev/null
-  dotnet "$bin/ArgoniaPlugin.dll" nwmap check "$esm" "$plug/map" > "$out/map-check.txt" 2>&1 || fault "the map and plan against the world file: $(tail -3 "$out/map-check.txt" | tr '\n' ' ') (lod.sh map)"
-  "$PY" -m tools.newworld.world.lodplan preflight --plugin "$plug" --lodmodels "$lm/manifest.json" | tee -a "$f" || bad=1
+  dotnet "$bin/ArgoniaPlugin.dll" nwmap check "$src/ArgoniaNewWorld.esm" "$src/map" > "$out/map-check.txt" 2>&1 || fault "the map and plan against the world file: $(tail -3 "$out/map-check.txt" | tr '\n' ' ') (lod.sh map)"
+  "$PY" -m tools.newworld.world.lodplan preflight --plugin "$src" --lodmodels "$lm/manifest.json" | tee -a "$f" || bad=1
   keys || fault "the step keys cannot be computed"
   do_tools | tee -a "$f" || fault "the tools are not at their pinned hashes"
   do_send | tee -a "$f" || fault "the inputs could not be sent"
-  o=$("$run" ps 'powershell -ExecutionPolicy Bypass -File C:\argonia\infra\lod.ps1 -Step preflight' | tr -d '\r') || true
+  o=$("$run" ps "powershell -ExecutionPolicy Bypass -File C:\\argonia\\infra\\lod.ps1 -Step preflight $PSX" | tr -d '\r') || true
   grep -E 'FAULT|disk free|ram free|preset worlds|have lodmodels' <<<"$o" | sed 's/^\[[0-9:]*\] //' | tee -a "$f"
   grep -q 'preflight OK' <<<"$o" || { bad=1; grep -q FAULT <<<"$o" || fault "the machine's preflight did not finish: $(tail -2 <<<"$o" | tr '\n' ' ')"; }
   # the machine holds exactly what was built here: the ESM, the .lod, each plan file, each tool
@@ -180,7 +204,16 @@ do_preflight() {  # every check that needs no long step; one FAULT line per faul
   done < <("$PY" -c 'import json,sys; [print(m["id"], m["sha256"]) for m in json.load(open(sys.argv[1]))["mods"]]' "$here/lod-tools.json")
   x=$(find "$lm/meshes" -name '*_lod_*.nif' 2>/dev/null | wc -l)
   grep -q "have lodmodels $x\$" <<<"$o" || fault "the machine does not hold the $x LOD models built here"
-  echo "keys wanted: terrain $(want terrain) texgen $(want texgen) dyndolod $(want dyndolod); on the machine: $(machine_keys | tr '\n' ' ')" | tee -a "$f"
+  local mk pv s; mk=$(machine_keys); pv=$(proved)
+  echo "keys wanted: terrain $(want terrain) texgen $(want texgen) dyndolod $(want dyndolod); on the machine: $(tr '\n' ' ' <<<"$mk")" | tee -a "$f"
+  # the small world first: a step that will run has had this very code (scripts, settings, tools, plan writer) run
+  # green on the small world; a step whose output stands, or whose code key is the one recorded, asks for nothing
+  if [ -z "$SMALL" ]; then
+    for s in terrain texgen dyndolod; do
+      if [ "${LOD_FORCE:-}" != 1 ] && ! grep -qw "$s" <<<"${LOD_FORCE:-}" && grep -qx "$s=$(want $s)" <<<"$mk"; then continue; fi
+      grep -qx "$s=$(proof $s)" <<<"$pv" || fault "the $s step will run, and its scripts, settings, tools or plan writer changed since its last green run on the small world: infra/gpu-box/lod.sh selftest"
+    done
+  fi
   [ $bad = 0 ] && echo "preflight OK" | tee -a "$f" || { echo "preflight FAILED (see $f)" >&2; return 1; }
 }
 
@@ -195,6 +228,8 @@ do_run() {
     if grep -qx "$s=$(want $s)" <<<"$have"; then keep="$keep,$s"; continue; fi
     # the tool's own output may stand while our pass over it is owed: kept, and the step runs only that pass
     [ $s != dyndolod ] && grep -qx "$s-tool=$(want $s-tool)" <<<"$have" && keep="$keep,$s"
+    # a terrain run that was stopped part-way for this very key is carried on from the textures it wrote
+    [ $s = terrain ] && ! grep -qw terrain <<<"${LOD_FORCE:-}" && [ "${LOD_FORCE:-}" != 1 ] && grep -qx "terrain-running=$(want terrain-tool)" <<<"$have" && keep="$keep,$s"
     grep -qw "$s" <<<"${steps[*]}" && todo="$todo $s"
   done
   echo "== keys: stand:${keep//,/ }; to run:${todo:- none}" | tee -a "$out/timings.txt"
@@ -204,6 +239,7 @@ do_run() {
       terrain|texgen|dyndolod)
         if ! grep -qw "$s" <<<"$todo"; then echo "== $s: its output stands for $(want $s); skipped"; continue; fi
         if [ "$s" = dyndolod ]; then ps1 "$s" -Key "$(want $s)"
+        elif [ "$s" = terrain ] && [ -n "$SMALL" ] && [ -n "${SELFTEST_STOP:-}" ]; then ps1 "$s" -Key "$(want $s)" -ToolKey "$(want $s-tool)" -Fresh -StopAfterSec "$SELFTEST_STOP"
         elif [ "${LOD_FORCE:-}" = 1 ] || grep -qw "$s" <<<"${LOD_FORCE:-}"; then ps1 "$s" -Key "$(want $s)" -ToolKey "$(want $s-tool)" -Fresh   # the tool too
         else ps1 "$s" -Key "$(want $s)" -ToolKey "$(want $s-tool)"; fi
         continue ;;
@@ -216,10 +252,41 @@ do_run() {
 
 do_check() {
   ps1 list >/dev/null
-  "$run" get 'C:/argonia/lod/logs/files.txt' "$out/files.txt" >/dev/null
-  "$PY" -m tools.newworld.world.mapdata check "$out/files.txt" | tee "$out/check.txt"
+  "$run" get "$MW/logs/files.txt" "$out/files.txt" >/dev/null
+  local logs="$out/logs" files="$out/files.txt"
+  if [ -n "$SMALL" ]; then  # the machine's listing and logs under the names the stage tools read them by
+    cp "$out/files.txt" "$out/logs/files.txt"; rm -rf "$out/real"
+    "$PY" -m tools.newworld.small real-names "$out/logs" "$out/real" >/dev/null; logs="$out/real"; files="$out/real/files.txt"
+  fi
+  "$PY" -m tools.newworld.world.mapdata check "$files" --plugin "$src" | tee "$out/check.txt"
   # every large base planned for LOD got it (DynDOLOD's own lists, fetched back by the run)
-  "$PY" -m tools.newworld.world.lodplan coverage "$out/logs" | tee -a "$out/check.txt"
+  "$PY" -m tools.newworld.world.lodplan coverage "$logs" --plugin "$src" | tee -a "$out/check.txt"
+}
+hashes() {  # sha256 and path of every output file on the machine, fetched as $out/hashes-<tag>.txt
+  "$run" ps "powershell -ExecutionPolicy Bypass -File C:\\argonia\\infra\\lod.ps1 -Step hashes -Tag $1 $PSX" >/dev/null
+  "$run" get "$MW/logs/hashes-$1.txt" "$out/hashes-$1.txt" >/dev/null; echo "hashes: $(wc -l < "$out/hashes-$1.txt") files -> $out/hashes-$1.txt"
+}
+do_selftest() {
+  local steps=("$@") s force="" pv
+  tools/newworld/rebuild.sh small play
+  put_ps1
+  case "${1:-}" in
+    pass) keys; ps1 terrain -Key "$(want terrain)" -ToolKey "$(want terrain-tool)"; ps1 unlay; fetch_back; hashes pass; return ;;    # our pass alone: the tool's output stands
+    hashes) hashes "${2:-now}"; return ;;
+    unlay) ps1 unlay; return ;;
+  esac
+  do_preflight
+  # a step proven for today's code and standing is skipped; one whose code changed runs again, tool and all
+  pv=$(proved)
+  for s in terrain texgen dyndolod; do grep -qx "$s=$(proof $s)" <<<"$pv" || force="$force $s"; done
+  [ -z "$force" ] || echo "== selftest: code not yet proven for:$force (run again, tool and all)"
+  LOD_FORCE="${LOD_FORCE:-}$force" do_run "${steps[@]}"
+  do_check
+  [ -n "${SELFTEST_KEEP:-}" ] || ps1 unlay      # the small world's Data folder goes when the run is done
+  # each step that ran or stood is now proven for this code
+  printf '%s\n' "terrain=$(proof terrain)" "texgen=$(proof texgen)" "dyndolod=$(proof dyndolod)" > "$out/proved.txt"
+  "$run" put "$out/proved.txt" "$MW/proved.txt" >/dev/null
+  echo "selftest OK: the LOD stage on the small world ($WORLD); proven: $(tr '\n' ' ' < "$out/proved.txt")"
 }
 
 do_archive() {
@@ -244,7 +311,9 @@ case "$cmd" in
   map) do_map ;;
   models) do_models ;;
   preflight) put_ps1; do_preflight ;;
-  keys) put_ps1; keys; echo "wanted: terrain=$(want terrain) texgen=$(want texgen) dyndolod=$(want dyndolod)"; echo "machine: $(machine_keys | tr '\n' ' ')" ;;
+  keys) put_ps1; keys; echo "wanted: terrain=$(want terrain) texgen=$(want texgen) dyndolod=$(want dyndolod)"; echo "machine: $(machine_keys | tr '\n' ' ')"
+        echo "code keys: terrain=$(proof terrain) texgen=$(proof texgen) dyndolod=$(proof dyndolod); proven on the small world: $(proved | tr '\n' ' ')" ;;
+  selftest) t0=$SECONDS; do_selftest "$@"; echo "== selftest: $(( SECONDS - t0 )) s" | tee -a "$out/timings.txt" ;;
   tools) put_ps1; do_tools ;;
   send) put_ps1; do_send ;;
   run) put_ps1; do_run "$@" ;;

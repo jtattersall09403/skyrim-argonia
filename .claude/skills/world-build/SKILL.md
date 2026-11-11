@@ -16,10 +16,11 @@ reads has changed. Nothing that is current is built again, here or on the other 
 | 1 | Measure before you set a rule; check the change against what stands on the ground | sections 1 and 2 |
 | 2 | Make the change at its source | section 3, and [changes.md](changes.md) |
 | 3 | Read the plan: which stages are stale and why | section 4 |
-| 4 | Run the rebuild once, under the job guard | section 5 |
-| 5 | Mend a red check at its cause and run again | section 6, and [checks.md](checks.md) |
-| 6 | Commit what the run rewrote; bring the built places and the other machines level | section 7 |
-| 7 | The owner's walk check | section 9 |
+| 4 | Run the stale stages on the small world, and mend what it finds | section 5 |
+| 5 | Run the rebuild once, under the job guard | section 5 |
+| 6 | Mend a red check at its cause and run again | section 6, and [checks.md](checks.md) |
+| 7 | Commit what the run rewrote; bring the built places and the other machines level | section 7 |
+| 8 | The owner's walk check | section 9 |
 
 Lanes working beside a build: section 8. Costs: section 10.
 
@@ -116,13 +117,38 @@ decides on.
 
 ## 5. Run
 
+The small world first, before any full run:
+
+    tools/newworld/rebuild.sh small
+
+It cuts one 16 by 16 cell block of the real build (`tools/newworld/small`: three regions, still and flowing water,
+forest, rocky upland with cliffs, a road with a junction, a place at the water) and runs the stages from `land` to
+`readback` on it under `out/newworld-small/`: the same commands and checks, each tool's paths pointed at the small
+world, nothing under `out/newworld/` written (the run ends by proving it). Twelve stages from nothing take about
+two minutes; a stage whose inputs stand is not run again.
+
+- A red check marks its stage and the run goes on, so one run shows every fault. Mend each at its cause and run
+  it again until it is green.
+- A lane runs it in its own worktree: it reads the main tree's build and writes the worktree's
+  `out/newworld-small/`.
+- `rebuild.sh run` refuses a stale stage whose code is not the code of its last green small run, and names it. A
+  stage whose code stands is not asked to be proven again.
+- What the block does not prove, so what a full run still risks: memory and time at the province's size; the
+  province's connectivity (settlement paths, landings, the walk checks' anchors); the rows that count the province
+  (water kinds against the accepted classification, mist densities, regions read apart); the terrain, needs and
+  water stages, which run before the cut; and every rule on ground the block does not hold (sea, coast, the
+  margin, the cells beyond the picture).
+
+Then the full run:
+
     tools/newworld/rebuild.sh preflight
     tooling/job_guard.sh run nw-rebuild -- tools/newworld/rebuild.sh run
     tooling/job_guard.sh wait nw-rebuild
 
 - Run it in the main tree, level with `origin/main`. One rebuild at a time, never beside a place build or a
-  studio finalise. `preflight` proves all of that, the inputs, the accepted records, the disk and the memory, and
-  that every stale stage's tool starts; `run` runs it first and starts nothing if it is red.
+  studio finalise. `preflight` proves all of that, the inputs, the accepted records, the small world's proof of
+  every stale stage's code, the disk and the memory, and that every stale stage's tool starts; `run` runs it first
+  and starts nothing if it is red.
 - Before a run that reaches a long stage (`paint`, `navmesh`, `esm`), clear what can be cleared first:
   `make check`, the terrain's own trial for a terrain change (section 2), and the navmesh's fast test for a change
   to the placement or the navmesh ([checks.md](checks.md)).
@@ -167,10 +193,9 @@ check's own lines are printed (`out/newworld/rebuild/logs/<stage>.log` has the w
 
 ### The LOD and the deploy
 
-[docs/design/lod.md](../../../docs/design/lod.md) is the recipe for the play machine's steps: which LOD step a
-change makes stale, its preflight, and the deploy of the world file and the stack. Two rules hold here: no LOD step
-starts before every built place's ground is level and checked on this world file, and the LOD is built for our
-worldspace only.
+The skill `world-lod` is the recipe for the play machine's steps: which LOD step a change makes stale, the small
+world's selftest, the preflight, the run and the deploy. No LOD step starts before every built place's ground is
+level and checked on this world file.
 
 ## 8. Lanes in worktrees
 
@@ -181,8 +206,8 @@ worldspace only.
   the reading is done (`rm -rf out/newworld` there removes the links alone). A hard link is the main tree's own
   file: a tool that writes under `out/newworld` in a worktree writes the main tree's build. So in a worktree
   `rebuild.sh run` refuses, no stage tool is run on its default paths, and nothing is driven through
-  `tools.newworld.rebuild` from Python. What may run there: `tools/newworld/rebuild.sh plan`, and a tool told to
-  write to another folder (`--out`, `--plugin`, `ARGONIA_TERRAIN_OUT=<dir>` for a trial terrain).
+  `tools.newworld.rebuild` from Python. What may run there: `tools/newworld/rebuild.sh plan`,
+  `tools/newworld/rebuild.sh small` (it needs no link), and a tool told to write to another folder (`--out`, `--plugin`, `ARGONIA_TERRAIN_OUT=<dir>` for a trial terrain).
 - A test never reads the tree's `out/`: it builds its own inputs under its tmp path (`tools/tests/conftest.py`
   points every module's `out/` path at a tmp folder).
 - A lane that changes a rule says, in its hand-over, which row of [changes.md](changes.md) its change is, so the
@@ -202,7 +227,7 @@ worldspace only.
 ## 10. Costs
 
 - The rebuild runs on the build VM: about an hour of stage time when everything is stale, a few minutes for a
-  change late in the order. The plan prints the stale stages' time and largest memory peak. Stop the VM when the
+  change late in the order; the small world about two minutes. The plan prints the stale stages' time and largest memory peak. Stop the VM when the
   work is done (`tooling/agent_stop.sh`).
 - The play machine costs about $0.80 an hour while it runs (decision 0039) and stops itself when idle. The agent
   starts it for the LOD, the deploy and the place checks that need it, as jobs under
