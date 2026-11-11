@@ -121,7 +121,7 @@ ours runs on it, so a fault in our own code never costs the tool's run again:
 |---|---|---|
 | `terrain-tool` | xLODGen says it has finished (about 34 minutes) | our pass: the file counts, the world rule, the LODGen mesh pass from xLODGen's kept input file (82 s), the link into Data; then `terrain` is marked |
 | `texgen-tool` | TexGen says it has completed (about 6 minutes) | our pass: every planned billboard is there by form id, the link into Data; then `texgen` is marked |
-| `dyndolod` | DynDOLOD's finish line (about 15 to 30 minutes) | leaving the tool, collect, check, coverage, archive |
+| `dyndolod` | DynDOLOD's finish line (about 16 minutes) | leaving the tool, collect, check, coverage, archive |
 
 `prepare` never deletes an output whose marker is one of the keys wanted now. The settings of a tool run and of our
 pass over it are separate sections of `lod-settings.json` (`tool`, `post`), each with its own `rev`, and each save

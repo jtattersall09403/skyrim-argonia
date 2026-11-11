@@ -157,6 +157,7 @@ do_send() {  # each file only when the machine's copy differs
 
 do_preflight() {  # every check that needs no long step; one FAULT line per fault
   local f="$out/preflight.txt" o bad=0; : > "$f"
+  [ -f "$esm" ] && keys
   fault() { echo "FAULT $*" | tee -a "$f"; bad=1; }
   [ -f "$esm" ] || { fault "no $esm (world.sh)"; return 1; }
   [ -f "$bin/ArgoniaPlugin.dll" ] || dotnet build -c Release -o "$bin" tools/ArgoniaPlugin >/dev/null
@@ -185,6 +186,7 @@ do_preflight() {  # every check that needs no long step; one FAULT line per faul
 
 do_run() {
   local steps=("$@") s have keep="" todo=""
+  keys   # once, here: a $(want ...) is a subshell and would compute them again each time
   [ ${#steps[@]} -gt 0 ] || steps=(prepare terrain texgen dyndolod collect)
   have=$(machine_keys)
   # a step stands when the machine's output carries the key wanted now (and it is not forced)
@@ -222,7 +224,7 @@ do_check() {
 
 do_archive() {
   local bucket=${ARGONIA_PRIVATE_BUCKET:-argonia-private-050977237313} k obj tmp
-  k=$(key); obj="nw/lod/$k.tar"
+  keys; k=$(key); obj="nw/lod/$k.tar"
   if [ -z "${LOD_FORCE:-}" ] && aws s3 ls "s3://$bucket/$obj" >/dev/null 2>&1; then echo "archive: s3://$bucket/$obj there; skipped"; return; fi
   tmp=$(mktemp -d)
   "$run" ps "Set-Location '$MOD'; tar -cf C:\\argonia\\lod\\lod.tar *" >/dev/null
@@ -242,7 +244,7 @@ case "$cmd" in
   map) do_map ;;
   models) do_models ;;
   preflight) put_ps1; do_preflight ;;
-  keys) put_ps1; echo "wanted: terrain=$(want terrain) texgen=$(want texgen) dyndolod=$(want dyndolod)"; echo "machine: $(machine_keys | tr '\n' ' ')" ;;
+  keys) put_ps1; keys; echo "wanted: terrain=$(want terrain) texgen=$(want texgen) dyndolod=$(want dyndolod)"; echo "machine: $(machine_keys | tr '\n' ' ')" ;;
   tools) put_ps1; do_tools ;;
   send) put_ps1; do_send ;;
   run) put_ps1; do_run "$@" ;;
