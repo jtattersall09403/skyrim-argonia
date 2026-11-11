@@ -376,3 +376,14 @@ added here the day they are made, with the date and the issue.
 - 2026-11-11 (in session, morning): the LOD is built for our worldspace only (ArgoniaBlackMarsh), never for any
   other world in the load order. Each LOD run is checked for it: xLODGen's world list, DynDOLOD's preset and the
   folders and logs each tool writes.
+- 2026-11-11 (in session, morning, before leaving the session unattended): (1) Far-off shapes (LOD models) for the
+  placed things that have none and are too heavy to draw far off as they are (fallen logs, stumps, boulders): "how
+  simple would it be to just make these too, in whatever is the most Skyrim native way that you can do? ... If
+  there's a known simple and reliable way then just do it please." So a lighter far-off model derived from a
+  placed model is allowed where a known, simple and reliable way exists (the lead's reading: this is a derived
+  build output like the rest of the LOD, generated on the machines and never committed; it is the one exception to
+  "we make no art"). (2) Parallelism wherever sensible. (3) Everything rerunnable must be right first time: clean
+  recipe skills are written and maintained for whatever of this work agents will need again (the object and tree
+  LOD will be rebuilt after places are built). (4) Long jobs run once: every check that can be made before a long
+  job is made before it, and what it finds is fixed and checked again first; checks are not a formality. (5) Break
+  bad patterns and going round in circles when found.
