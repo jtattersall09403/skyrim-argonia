@@ -390,3 +390,6 @@ added here the day they are made, with the date and the issue.
 - 2026-11-11 (in session, morning): the skills for rebuilding the world and its LOD say plainly to run only what
   needs to be run: nothing that has not changed, or is already right, is regenerated. Each recipe names, for each
   kind of change, the stages it makes stale and the stages it leaves alone.
+- 2026-11-11 (in session): tidying is automatic. The build machine's disk and the bucket are cleared of what is
+  no longer needed periodically and whenever appropriate, in every session, without the owner asking; no worktree
+  is left abandoned or orphaned when its lane has ended.
