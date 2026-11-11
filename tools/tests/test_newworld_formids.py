@@ -9,12 +9,13 @@ from pathlib import Path
 
 import pytest
 
+from tools.newworld import idspace
+
 REPO = Path(__file__).resolve().parents[2]
 FILE = REPO / "newworld/sources/world_formids.json"
 DOTNET = Path.home() / ".dotnet"
-# ids placed by formula (NewWorld.cs, atmosphere.py, NewWorldMap.cs): no block may reach into them
-FORMULA = {"world": (0x800, 0x802), "atmosphere": (0x80000, 0x80FFF), "cells": (0x100000, 0x1FFFFF),
-           "references": (0x200000, 0x7FFFFF), "teleports and map markers": (0xFE0000, 0xFFFFFF)}
+# ids placed by formula (tools/newworld/idspace.py: every allocator's range): no block may reach into them
+FORMULA = {k: v for k, v in idspace.SPAN.items() if k not in idspace.REGISTRY and k != "seeded"}
 NAME = re.compile(r"(copy:[0-9A-F]{6}:.+\.es[pml]|alttex:[0-9A-F]{6}:.+\.es[pml]:\d+|ltex:\S+|watr:\S+|blend:[^|]+\|[^|]*\|[\d,]+|region:[\w-]+)")
 
 

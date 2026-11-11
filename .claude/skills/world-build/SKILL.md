@@ -74,6 +74,10 @@ it is not ready to build.
   kind's block, and an entry is never edited or removed. Cells and atmosphere records are placed by formula, and
   a placed reference's id follows from its lasting identity (the cell the rules put it in, its base and place
   there), so an edit or a re-place of its neighbours leaves it.
+- **Every allocator keeps to its range.** `tools/newworld/idspace.py` is the one table of the world file's form
+  ids: each allocator's range, sized for the province, none overlapping. A new kind of record takes a new row
+  there and gives ids inside it alone; a range is never moved once a build has shipped its ids.
+  `python3 -m tools.newworld.idspace` prints the table and judges what is built.
   Commit the file after a run that added ids (section 7).
 - **A terrain need is mended, not waved through.** `terrain_needs` fails on a failure that
   `newworld/sources/terrain_needs_accepted.json` does not name. A row is added there only when the map gives the

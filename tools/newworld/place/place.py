@@ -26,7 +26,8 @@ the digest of what the rules decided there (its base and the x, y drawn for it).
 that puts the same thing on the same spot, whatever else is placed or in what order, and it stays the thing's name
 when an edit moves it or changes its base. Its form id follows from the identity alone (form_ids): a slot of
 FID_FIRST..FID_LAST by the identity's digest, a taken slot passed over in the identities' sorted order, so a
-reference keeps its id while it stands and an edit renumbers nothing.
+reference keeps its id while it stands and an edit renumbers nothing. The navmesh's ids lie inside that range and
+are never given (FID_HOLE).
 
 The recipe (numbers from research/nw-02-flora-rules.md, nw-02-ground-water-rules.md, nw-02-salvage.md):
 1. Per cell (seeded by the seed and the cell: a cell rebuilds alone and identically), per (region, habitat) stratum
@@ -78,13 +79,16 @@ from pathlib import Path
 import numpy as np
 from scipy.spatial import cKDTree
 
+from tools.newworld import idspace
+
 REPO = Path(__file__).resolve().parents[3]
 DB = REPO / "newworld/story/data/db"
 OUT = REPO / "out/newworld"
 LC = OUT / "landcover"
 PLACED = OUT / "plugin/placed/flora"  # the placement as the rules made it: read by the edits pass alone
 REFS = OUT / "plugin/refs/flora"  # this producer's shards with the edits applied (tools/newworld/world/cells.py: the refs hook)
-FID_FIRST, FID_LAST = 0x200000, 0x6FFFFF  # the world file's form ids for references placed by rule (NewWorld.cs)
+FID_FIRST, FID_LAST = idspace.PLACED  # the world file's form ids for references placed by rule (NewWorld.cs),
+FID_HOLE = idspace.HOLE  # but for the navmesh's own in their midst (tools/newworld/idspace.py: every allocator's range)
 MANIFEST = OUT / "plugin/land/manifest.json"
 CATALOGUE = OUT / "research/flora_catalogue.json"
 DATA = Path(os.environ.get("ARGONIA_GAME_ROOT", Path.home() / "games/skyrimse")) / "Data"
@@ -146,10 +150,13 @@ def ident(base_key: str, x: float, y: float, cell) -> str:
 
 
 def form_ids(idents) -> dict[str, int]:
-    """identity -> form id in FID_FIRST..FID_LAST. Each identity asks for the slot its digest names and, when that
-    is taken, the next free one after it; they are served in sorted order, so the answer follows from the set alone.
+    """identity -> form id in FID_FIRST..FID_LAST outside FID_HOLE (the navmesh's ids, idspace.py). Each identity
+    asks for the slot its digest names and, when that is taken, the next free one after it; they are served in sorted
+    order, so the answer follows from the set alone. An identity whose slot lies in the hole is served after the
+    rest, at the first slot outside the hole that its digest salted 1, 2, ... names, so it moves no other's.
     Two references with one identity stop the build."""
     n = FID_LAST - FID_FIRST + 1
+    h0, h1 = FID_HOLE[0] - FID_FIRST, FID_HOLE[1] - FID_FIRST
     names = sorted(idents)
     if len(set(names)) != len(names):
         seen: set = set()
@@ -157,13 +164,30 @@ def form_ids(idents) -> dict[str, int]:
         raise ValueError(f"placed references share an identity: {twice[:3]}")
     if len(names) > n // 2:
         raise ValueError(f"{len(names)} placed references are too many for the form ids {FID_FIRST:06X}..{FID_LAST:06X}")
-    taken, out = set(), {}
-    for i in names:
-        s = int.from_bytes(hashlib.sha256(i.encode()).digest()[:8], "big") % n
-        while s in taken:
+
+    def slot(text: str) -> int:
+        return int.from_bytes(hashlib.sha256(text.encode()).digest()[:8], "big") % n
+
+    taken, out, held = set(), {}, []
+
+    def give(i: str, s: int) -> None:
+        while s in taken or h0 <= s <= h1:
             s = (s + 1) % n
         taken.add(s)
         out[i] = FID_FIRST + s
+
+    for i in names:
+        s = slot(i)
+        if h0 <= s <= h1:
+            held.append(i)
+        else:
+            give(i, s)
+    for i in held:
+        k, s = 1, slot(f"{i}|1")
+        while h0 <= s <= h1:
+            k += 1
+            s = slot(f"{i}|{k}")
+        give(i, s)
     return out
 
 

@@ -24,7 +24,9 @@ sealed class FormIds
     // The world plugin's blocks. Beside them, by formula: 0x800..0x802 the world, its persistent cell and the start
     // marker; 0x80000..0x80FFF the atmosphere (atmosphere.py); 0x100000.. the cells and their LAND; the placed
     // references: 0x200000..0x6FFFFF those placed by rule (each by its identity, place.py form_ids), 0x700000..0x73FFFF
-    // those an edit added (given once by its row, edits.py), 0x740000..0x7FFFFF the rest, counted (NewWorld.cs); 0xFE0000.. the teleport markers, 0xFF0000.. the map markers (NewWorldMap.cs).
+    // those an edit added (given once by its row, edits.py), 0x740000..0x7FFFFF the rest, counted (NewWorld.cs); 0x600000..0x609677
+    // inside the references' range the navmesh's (navmesh/stitch.py), never a reference's; 0xFE0000.. the teleport markers,
+    // 0xFF0000.. the map markers (NewWorldMap.cs). Every range is a row of one table, tools/newworld/idspace.py.
     public static readonly (string Kind, uint First, uint Last)[] WorldBlocks =
     {
         ("region", 0x000880, 0x0008FF),

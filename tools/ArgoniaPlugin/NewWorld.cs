@@ -30,9 +30,12 @@ static class NewWorld
     // +1. A placed reference whose shard line carries its form id ("fid": the placer's, by formula from the
     // reference's identity, IdRefs..; an added thing's, given once by its edit row, up to IdRefsCounted - 1) takes
     // that id, so an edit of one reference moves no other's: a save names a reference by its id. A producer's line
-    // without one (the mist) counts up from IdRefsCounted in the shards' order.
+    // without one (the mist) counts up from IdRefsCounted in the shards' order. The navmesh's records hold
+    // IdNavmesh..IdNavmeshEnd inside the references' range (navmesh/stitch.py): no reference may carry one.
     // Every other record's id is its name's in the registry (FormIds.cs), in its kind's block.
+    // Every allocator's range is one table, tools/newworld/idspace.py; these are its numbers.
     const uint IdWorld = 0x800, IdTopCell = 0x801, IdMarker = 0x802, IdCells = 0x100000, IdRefs = 0x200000, IdRefsCounted = 0x740000, IdRefsEnd = 0x7FFFFF;
+    const uint IdNavmesh = 0x600000, IdNavmeshEnd = 0x609677;
     static readonly string[] Allowed = { "Skyrim.esm", "Update.esm", "Black Marsh.esm" };  // the only masters (verify.py MASTERS)
 
     record Manifest(JsonElement Root)
@@ -214,8 +217,8 @@ static class NewWorld
                 if (refsByCell.TryGetValue((cx, cy), out var rl))
                     foreach (var (bk, pos, rot, sc, fid) in rl)
                     {
-                        if (fid is { } id && (id < IdRefs || id >= IdRefsCounted || !given.Add(id)))
-                            throw new InvalidDataException($"a placed reference's form id {id:X6} is given twice or lies outside {IdRefs:X6}..{IdRefsCounted - 1:X6}");
+                        if (fid is { } id && (id < IdRefs || id >= IdRefsCounted || (id >= IdNavmesh && id <= IdNavmeshEnd) || !given.Add(id)))
+                            throw new InvalidDataException($"a placed reference's form id {id:X6} is given twice, lies outside {IdRefs:X6}..{IdRefsCounted - 1:X6} or is one of the navmesh's ({IdNavmesh:X6}..{IdNavmeshEnd:X6})");
                         c.Temporary.Add(new PlacedObject(K(fid ?? refId++), Rel)
                         {
                             Base = new FormLinkNullable<IPlaceableObjectGetter>(bk),
@@ -255,7 +258,7 @@ static class NewWorld
             ws.SubCells.Add(b);
         }
         NewWorldNavmesh.Attach(mod, ws, outPath, man.BuildId);  // nw-02 step 10: the navmesh, when built for this land
-        if (IdCells + 2 * k > IdRefs || refId > IdRefsEnd + 1) throw new InvalidDataException($"cells ran to {IdCells + 2 * k:X6} or counted references to {refId:X6}, out of their ranges");
+        if (IdCells + 2 * k > IdRefs || refId > IdRefsEnd + 1 || k > IdNavmeshEnd - IdNavmesh + 1) throw new InvalidDataException($"cells ran to {IdCells + 2 * k:X6} or counted references to {refId:X6}, out of their ranges");
         InIdOrder(mod);
         ids.Save();
         Console.WriteLine($"  form ids: {ids.Count} registered names, {ids.Added.Count} new; references: {given.Count} under their own ids, {refId - IdRefsCounted} counted from {IdRefsCounted:X6}");

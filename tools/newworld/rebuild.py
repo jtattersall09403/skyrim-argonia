@@ -119,6 +119,7 @@ WRITER_CS = ("src:tools/ArgoniaPlugin/NewWorld.cs", "src:tools/ArgoniaPlugin/New
              "src:tools/ArgoniaPlugin/NewWorldMap.cs", "src:tools/ArgoniaPlugin/NewWorldNavmesh.cs",
              "src:tools/ArgoniaPlugin/WaterBlend.cs", "src:tools/ArgoniaPlugin/ForeignCopy.cs",
              "src:tools/ArgoniaPlugin/FormIds.cs")
+IDSPACE = "src:tools/newworld/idspace.py"                # every allocator's range of the world file's form ids
 FORMIDS = "src:newworld/sources/world_formids.json"       # the world file's form ids by name: the writer adds, never changes
 BUILT_PLACES = ("src:newworld/places/*/land.jsonl", "src:newworld/places/*/spaces/exterior/refs.jsonl")
 DBPY = "src:tools/argonia_world/db.py"
@@ -266,7 +267,7 @@ STAGES: tuple[Stage, ...] = (
                  "db:region_flora", "db:habitat", "db:road", "db:road_class", "db:road_node", "db:road_vertex", PLACE_MAP,
                  "db:water_kind", "db:region", "src:tools/newworld/place/__init__.py", "src:tools/newworld/place/__main__.py",
                  "src:tools/newworld/place/place.py",
-                 "src:tools/newworld/place/texsets.py"),
+                 "src:tools/newworld/place/texsets.py", IDSPACE),
           check_reads=("src:tools/newworld/place/checks.py",),
           writes=("out:newworld/plugin/placed/flora/manifest.json", "out:newworld/plugin/placed/flora/bases.json"),
           agree=(("out:newworld/plugin/placed/flora/manifest.json#build_id", "out:newworld/terrain/build.json#id", "eq"),),
@@ -276,7 +277,7 @@ STAGES: tuple[Stage, ...] = (
           checks=((PY, "-m", "tools.newworld.place", "edits", "check", "--edits", EDITS_FILE),),
           reads=(PLACED, "out:newworld/plugin/placed/flora/bases.json", f"src:{EDITS_FILE}", LAID, "db:flora_base", "db:flora_family",
                  "src:newworld/sources/key.json", "src:tools/newworld/place/edits.py", "src:tools/newworld/place/__main__.py",
-                 "src:tools/newworld/place/__init__.py"),
+                 "src:tools/newworld/place/__init__.py", IDSPACE),
           check_reads=(LAND, LANDCOVER, "out:newworld/landcover/legend.json", BUILD, "db:water_kind", "db:road", "db:road_class",
                        "db:road_vertex", "src:tools/navmesh/placed.py", "src:tools/navmesh/solid.py", "src:tools/navmesh/params.py"),
           writes=("out:newworld/plugin/refs/flora/manifest.json", "out:newworld/plugin/refs/flora/bases.json",
@@ -708,6 +709,9 @@ def print_plan(rows: list[dict], file=None) -> None:
         print(f"  {r['state']:<7} {r['stage']:<11} {r['why']}", file=file)
 
 
+# what the form id check reads, and the stage that writes it: a stale stage's output is not judged, it is made again
+ID_PARTS = {"grid": "land", "refs/flora": "edits", "refs/mist": "mist", "navmesh": "navmesh", "map": "map", "atmosphere": "atmosphere"}
+
 # ---- preflight ----------------------------------------------------------------------------------------------------
 
 BUSY = re.compile(r"python\S*\s+(-\S+\s+)*-m\s+tools\.(newworld\.(?!rebuild\s+(plan|preflight)|verify|map_page)|navmesh\s+build|places\s+(build|finalise|draft|seat|extract))"
@@ -785,6 +789,15 @@ def preflight(tree: Tree, rows: list[dict]) -> list[tuple[str, bool, str]]:
         owed = small.unproven(tree, stale)
         out.append(("every stale stage's code is the code of its last green run on the small world", not owed,
                     "; ".join(owed) + ": run tools/newworld/rebuild.sh small, mend what it finds, then this" if owed else ""))
+    # form ids: none used twice, none in another allocator's range, on every output whose stage is current
+    if "edits" in tree.by_name:
+        from tools.newworld import idspace
+        plugin = tree.path_of(tree.by_name["edits"].writes[0]).parents[2]
+        state = {r["stage"]: r["state"] for r in rows}
+        skip = frozenset(part for part, stage in ID_PARTS.items() if state.get(stage, "current") != "current")
+        bad, n = idspace.faults(plugin, skip=skip, registry=tree.repo / "newworld/sources/world_formids.json")
+        out.append(("form ids: none used twice, none outside its allocator's range (tools/newworld/idspace.py)", not bad,
+                    "; ".join(bad[:3]) if bad else f"{n['ids']} ids read" + (f"; not read, their stage runs first: {', '.join(sorted(skip))}" if skip else "")))
     # the machine
     free = shutil.disk_usage(tree.out if tree.out.exists() else tree.repo).free / 1e9
     out.append((f"disk: {DISK_GB:.0f} GB free under out/", free >= DISK_GB, f"{free:.1f} GB free"))

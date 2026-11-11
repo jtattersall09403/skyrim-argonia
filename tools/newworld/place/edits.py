@@ -40,6 +40,7 @@ import time
 from collections import Counter
 from pathlib import Path
 
+from tools.newworld import idspace
 from tools.newworld.place import place as P
 
 EDITS = P.REPO / "newworld/sources/placed_edits.jsonl"
@@ -48,7 +49,7 @@ KEY = P.REPO / "newworld/sources/key.json"
 OWNER, OWNER_TIER, AGENT_TIER = "owner", "OWNER_STATED", "AGENT_INVENTED"
 OPS = ("remove", "move", "swap", "add", "restore")
 REANCHOR = 70.0  # units (1 m): no two placed things stand closer, so the nearest of one base within it is the same thing
-ADD_FIRST, ADD_LAST = 0x700000, 0x73FFFF  # form ids of added things (NewWorld.cs); the rules' own are P.FID_FIRST..
+ADD_FIRST, ADD_LAST = idspace.SPAN["added"]  # form ids of added things (NewWorld.cs); the rules' own are P.FID_FIRST..
 IDENT = re.compile(r"flora/(-?\d+),(-?\d+)/([0-9a-f]{10}|add\d{6})")
 HOVER_M = 0.5
 RULES = {"road": "it stands on a road's surface",
@@ -523,7 +524,8 @@ class Judge:
 
 def check(edits: Path | None = None, placed_dir: Path | None = None, refs_dir: Path | None = None, log=print) -> int:
     """The edited things judged by the placement's rules; writes edits_check.json beside the shards. Red when the
-    hook is not the edits' (apply first), or when an edit below the owner's tier breaks a rule."""
+    hook is not the edits' (apply first), when an edit below the owner's tier breaks a rule, or when a form id is
+    used twice or lies in another allocator's range (form_id_faults)."""
     placed = Placed(placed_dir)
     out = Path(refs_dir or P.REFS)
     rows = load(edits)
@@ -565,8 +567,22 @@ def check(edits: Path | None = None, placed_dir: Path | None = None, refs_dir: P
     log(f"edits check: {doc['things']} things changed ({doc['removed']} removed, {doc['judged']} judged by the placement's rules): "
         f"{doc['confirmed']} rule breaks confirmed by the owner, {doc['to_confirm']} to confirm, {red} failed; rows orphaned "
         f"{doc['orphaned']}, re-anchored {doc['reanchored']}, held {doc['held']}, void {doc['void']}")
-    log("PASS" if not red else "FAIL")
-    return 1 if red else 0
+    ids = form_id_faults(out, log)
+    log("PASS" if not red and not ids else "FAIL")
+    return 1 if red or ids else 0
+
+
+def form_id_faults(refs_dir: Path, log=print) -> int:
+    """The form ids of every producer's references as they now stand (this hook's shards and, in a plugin's refs/,
+    the other producers' beside it) with the plugin's other allocators (idspace.py): none used twice, none in
+    another allocator's range. A fault here stops the run before the navmesh and the world file are made."""
+    plugin = refs_dir.parent.parent if refs_dir.parent.name == "refs" else None
+    bad, n = idspace.faults(plugin or refs_dir, producers=None if plugin else [refs_dir])
+    for b in bad:
+        log(f"  FAIL form ids: {b}")
+    log(f"form ids: {n['ids']} read ({', '.join(f'{k} {v}' for k, v in n.items() if k != 'ids')}): "
+        + ("none used twice, none outside its allocator's range" if not bad else f"{len(bad)} faults"))
+    return len(bad)
 
 
 # ---- what an edit makes stale -------------------------------------------------------------------------------------
