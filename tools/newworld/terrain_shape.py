@@ -311,8 +311,9 @@ def flat_pad(h, water_s, grid, i0, j0, r_m, floor_units=None):
     return float(c0)
 
 
-def shore_access(h, water_s, grid, i0, j0, r_m):
-    """Within the radius, land near the water eases down to a gentle shore (1 in 8) to the waterline."""
+def shore_access(h, water_s, grid, i0, j0, r_m, leave=None):
+    """Within the radius, land near the water eases down to a gentle shore (1 in 8) to the waterline. `leave`:
+    samples left as they are."""
     sl, di, dj = _disc(grid, i0, j0, (r_m + 20) / grid.m)
     if not water_s[sl].any():           # no water in reach: nothing to give access to (no dish dug in dry ground)
         return
@@ -322,6 +323,8 @@ def shore_access(h, water_s, grid, i0, j0, r_m):
     x = np.clip((d - r_m) / 20.0, 0, 1)
     w = 1 - x * x * (3 - 2 * x)
     land = ~water_s[sl]
+    if leave is not None:
+        land = land & ~leave[sl]
     h[sl] = np.where(land, np.minimum(h[sl], h[sl] * (1 - w) + np.minimum(h[sl], target) * w), h[sl])
 
 

@@ -53,26 +53,85 @@ working fields held to its end). The relief is worked 256 rows at a time in floa
 field after its last reader: peak 5.6 GB (/usr/bin/time -v: 5,612,644 kB), written into build.json (peak_rss_mb).
 The character measure works a region's window at a time: 0.6 GB.
 
-## Held ground at the waterline, and how steep the shores are (2026-11-11, trial build 20261111T081946Z)
+## Held ground at the waterline (tools/newworld/terrain_held.py; build 20261111T094531Z)
 A uniform lift of a held zone's land stood whole on the first land sample from the water and its beds were deepened:
 inside Helstrom's zone and blend the waterline triangles steeper than the navmesh walks (45 degrees) went from 5.3%
-to 38.8% (median slope 20.6 to 43.2 degrees). The rule now (terrain_held): beds are the held build's exactly; land is
-the held build's plus a lift that is 0 at the old waterline and whole 24.9 m from it (a smoothstep on LAND's 8-unit
-step; the shortest ramp whose rise from one sample to the next stays under one step, so no triangle gains more than
-5.05 degrees; islets and spits narrower than about 50 m never take the whole 72 units). Helstrom's zone (865,322
-samples): water difference 0, land difference from old + ramp 0, waterline moved 0, waterline triangles over 45
-degrees 1.81% in the held build and 1.81% now, the most any land triangle steepened 5.05 degrees.
-Points within 32 / 64 units of the plane: outside held zones 0.0169 / 0.0378 at full resolution, 0.0174 / 0.0390 at
-LOD32 (the check's 0.03 / 0.05 is judged there); inside held zones 0.060 / 0.128 (0.068 / 0.134 at LOD32: a built
-place's banks stay as built); over all 0.0185 / 0.0412.
-Waterline triangles over 45 degrees outside held zones, old build > build 20261111T053723Z > now: all 7.8% > 6.5% >
-6.5%; green-marsh 8.1 > 9.3 > 9.2; blackwater-swamp 6.1 > 3.6 > 3.5; pond 9.4 > 7.5 > 7.3; lake 5.0 > 9.1 > 9.1;
-river 5.6 > 5.0 > 5.0; stream 7.6 > 6.1 > 6.1; ocean 4.8 > 13.2 > 13.2. Skyrim: Hjaalmarch 0.9% (rise across a shore
-edge 8 / 24 / 48 units), the north coast 2.7% (8 / 32 / 72), the Rift 8.6% (16 / 32 / 96). The clearance did not
-steepen the province's shores; our marsh, swamp and pond shores were already steeper than Hjaalmarch's in the old
-build. Still inland water (green-marsh, blackwater-swamp, pond) now takes an 8 m clearance reach on both sides
-(Hjaalmarch is clear of the plane by 8 m): its rise across a shore edge went 32 / 48 / 104 to 24 / 40 / 96 (marsh),
-32 / 48 / 72 to 24 / 40 / 72 (swamp), 32 / 48 / 88 to 24 / 40 / 88 (pond). The share over 45 degrees barely moved:
-it comes from the composed bank (the relief reached over a 7 m shore ramp where high ground meets the water), not
-from the clearance; bringing it to Hjaalmarch's 0.9% means capping the bank's height beside still water in
-terrain_shape.compose, which moves places' shores.
+to 38.8% (median slope 20.6 to 43.2 degrees). The rule: beds are the held build's exactly; land is the held build's
+plus a lift that is 0 at the old waterline and whole 24.9 m from it (a smoothstep on LAND's 8-unit step; the shortest
+ramp whose rise from one sample to the next stays under one step, so no triangle gains more than 5.05 degrees;
+islets and spits narrower than about 50 m never take the whole 72 units). Helstrom's zone (865,322 samples): water
+difference 0, land difference from old + ramp 0, waterline moved 0, waterline triangles over 45 degrees 1.81% in
+the held build and 1.81% now (median 20.6 degrees in both), the most any land triangle steepened 5.05 degrees.
+Points within 32 / 64 units of the plane: outside held zones 0.0182 / 0.0403 at full resolution, 0.0183 / 0.0409
+at LOD8, 0.0189 / 0.0412 at LOD16, 0.0186 / 0.0418 at LOD32 (the check's 0.03 / 0.05 is judged there, one
+threshold for the province; Hjaalmarch itself reads 0.178 / 0.320 at LOD8 spacing: a marsh lies near the plane and
+Bethesda leaves it so); inside held zones 0.060 / 0.128 (0.068 / 0.135 at LOD32: a built place's banks stay as
+built); over all 0.0198 / 0.0437.
+
+## The banks beside the water (tools/newworld/terrain_clearance.py BANK, place_banks; terrain_needs.py)
+Skyrim.esm, land height over its own water by distance from the waterline (terrain_ref/tamriel_h.npy), and the share
+of waterline triangles steeper than the navmesh walks (45 degrees):
+- Hjaalmarch's marsh: 0.9% over 45 degrees; the rise across a shore edge 8 / 24 / 48 units (p10 / median / p90);
+  p90 height 48 units at 1 m, 98 at 3 m, 160 at 5 m, 224 at 7 m, 328 at 10 m, 480 at 14 m, 696 at 20 m.
+- Lake Ilinalta: 8.2%; rise 8 / 40 / 88; p90 height 88 at 1 m, 202 at 3 m, 321 at 5 m, 400 at 7 m, 1104 at 10 m.
+- The north coast: 2.7%; rise 8 / 32 / 72; p90 height 64 at 1 m, 144 at 3 m, 232 at 5 m, 336 at 7 m, 560 at 10 m,
+  992 at 14 m, 1880 at 20 m.
+- Rivers: the White River 13.4% (rise 16 / 36 / 120), the Karth 20.8%, the Rift 8.6%: steeper than ours, so ours are
+  left.
+Ours were far steeper than Hjaalmarch where people, creatures and the player walk in and out of still water (the
+relief reached over a 7 m shore ramp where high ground met the water, and pads and rises were laid level to the
+water's edge). The rule:
+1. The land beside still water (green-marsh, blackwater-swamp, pond), lakes and the sea (ocean, bay, shallow-coast)
+   rises no faster than the p90 profile above for its kind (terrain_shape.compose; again after the places are
+   shaped, for ground a skirt raised past a place's need). Past the profile's last point the bound runs on at its
+   last grade and soon stands over any relief.
+2. Ground a place shaped (its needs' discs plus 20 m: pads, rises, islet mounds) is not level to the water's edge at
+   such water. The bank is the bank: within the bank band, BANK_BAND_M = two samples = 3.66 m from the waterline
+   (every corner of a waterline triangle lies within it), the ground rises from the shore height at 0.6 (31
+   degrees) at most; behind the band the place's ground is as shaped. Ground standing more than 2.2 m over the
+   water at its waterfront ends in a scarp behind its strand. A road's bed is the road solver's.
+3. terrain_needs judges each need on the ground it is about, with the same BANK_BAND_M (imported): a flat pad's
+   slope p90 on its land behind the band, the band read as the level of the ground behind it; a rise's top behind
+   the band against the land round it; a pad or a top with under a quarter (MIN_BEHIND) of its land behind the band
+   fails as "no room behind the bank"; a shore-access on the band's row at the waterline (its gentlest sample no
+   steeper than 15 degrees: the band's crest reads the lip of the ground behind it, which is no landing). The build
+   judges every landing on the finished ground by that test and cuts again, 1 in 8 into the pad, any that a pad
+   laid after it buried (a rise keeps its body, a road its bed).
+Why the band and not the whole of a need's disc: easing the whole disc to 31 degrees was measured on build
+20261111T053723Z. Half of the eased samples lie more than 3.7 m from the water and 27% more than 7.3 m (pads and
+rises stand up to tens of metres over the water at their waterfront), so judged behind a band of 3.7, 5.5, 7.3 or
+9.2 m the needs showed 17, 20, 20 and 21 failures (tydeos's pad at 23 to 30 degrees, southwatch-keep, aphon-belvedere
+and estate-15-m110 near 30). The shore measure reads only the first two samples from the water, so the band alone
+gives the same shares.
+Build 20261111T094531Z, waterline triangles over 45 degrees outside held zones, before (build 20261111T081946Z) >
+now, against Skyrim's and the check's threshold (terrain_clearance.MAX_OVER_WALK):
+| water kind | before | now | Skyrim | threshold |
+|---|---|---|---|---|
+| green-marsh | 9.2% | 0.30% | 0.9% (Hjaalmarch) | 2% |
+| blackwater-swamp | 3.5% | 0.33% | 0.9% | 2% |
+| pond | 7.3% | 0.61% | 0.9% | 2% |
+| lake | 9.1% | 1.13% | 8.2% (Ilinalta) | 9% |
+| ocean | 13.2% | 2.20% | 2.7% (north coast) | 5.5% |
+| bay | 20% | 1.76% | 2.7% | 5.5% |
+| shallow-coast | | 1.71% | 2.7% | 5.5% |
+| river | 5.0% | 4.95% | 13.4% (White River) | 13.4% |
+| stream | 6.1% | 6.08% | 13.4% | 13.4% |
+| estuary | | 7.63% | 13.4% | 13.4% |
+Rise across a shore edge now (p10 / median / p90 units): green-marsh 24 / 32 / 56, blackwater-swamp 24 / 40 / 56,
+pond 24 / 40 / 64 (Hjaalmarch 8 / 24 / 48); lake 32 / 48 / 64 (Ilinalta 8 / 40 / 88); ocean 32 / 48 / 72 (north
+coast 8 / 32 / 72). 38,567 land samples were lowered by the step after the places, 14,060 of them in places' bands;
+no waterline sample changed side against build 20261111T053723Z (0 of 39.5 million).
+terrain_needs: 6 failures of 368, the six known (blackrose-prison 13.4, fort-chalkmoth 14.1, mine-28-m65 25.9 and
+vicrium 28.2 degrees; seafalls's rise: the place stands on water, there is no land at its top; blackrose's island
+joined to the mainland). No pad or top lacks room behind the bank. Two faults of the trial that eased a pad's first
+3.7 m by the smooth distance while the test read a two-sample strip by sample steps:
+- tydeos's pad read 10.0 degrees: its pad stands about 10 m over the water and the central-difference slope of its
+  first row behind the bank read the bank. It is not the tilted pad of the old build's list; behind the band it
+  reads 9.1 degrees, as before the banks.
+- fort-shellmoth's shore-access read 15.8 degrees: its pad, laid after its landing, buried it; the pad stands 2.1
+  to 2.6 m over the water along the whole waterfront, so the bank there is 31 degrees from the water to the pad
+  (23.9 degrees at its gentlest on the waterline row; the 8.9 a whole-band reading gives is the pad's lip). It is
+  the one place of 97 whose waterline row has no gentle bank. Its landing is cut again into the pad (637 samples
+  lowered, by 2.2 m at most): shore-access 8.0 degrees, pad 7.3 degrees (3.6 before the cut). The largest of the 97
+  shore-access readings is 9.6 degrees.
+Roads: 0 of 86,822 points over grade. Entrances: 49, 0 bad. Peak memory 5.65 GB (/usr/bin/time: 5,652,068 kB).

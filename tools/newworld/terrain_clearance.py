@@ -37,6 +37,8 @@ STRIDES = (1, 4, 8, 16, 32)
 SKYRIM = {"pm32": 0.0137, "pm64": 0.0253}
 MAX_PM32 = 0.03             # the terrain check: at most about twice Skyrim's share at any spacing
 MAX_PM64 = 0.05
+# (one threshold for the province: a marsh region alone lies nearer the plane, as Skyrim's does; Hjaalmarch itself
+# reads 0.178 / 0.320 at LOD8 spacing)
 
 
 # Still inland water (marsh, swamp, pond) is walked in and out of: its shore takes Hjaalmarch's profile (Skyrim.esm:
@@ -63,8 +65,14 @@ BANK = {"still": ((0.0, 8.0), (1.0, 48.0), (3.0, 98.0), (5.0, 160.0), (7.0, 224.
 BANK_OF = {"green-marsh": "still", "blackwater-swamp": "still", "pond": "still", "lake": "lake",
            "ocean": "sea", "bay": "sea", "shallow-coast": "sea"}
 BANKS = ("still", "lake", "sea")
-PLACE_BANK = 0.6            # rise per unit of distance of a pad's edge at such water (31 degrees: walked)
-PLACE_BANK_M = 3.7          # ... over its first two samples from the water (terrain_needs: the bank is no pad)
+# Ground a place shaped (a pad, a rise, an islet's mound, their skirts) is not level to the water's edge. Where it
+# meets still water, a lake or the sea, the bank is the bank: within BANK_BAND_M of the waterline the ground rises
+# from the water no faster than PLACE_BANK, and the place's level ground begins behind that band, as shaped (ground
+# standing more than PLACE_BANK x BANK_BAND_M, 2.2 m, over the water ends in a scarp behind its strand).
+# terrain_needs judges a pad or a rise on its ground behind the band and a
+# shore-access on the band's row at the waterline.
+PLACE_BANK = 0.6            # rise per unit of distance (31 degrees: walked by the navmesh and by people)
+BANK_BAND_M = 2 * 128.0 / U  # two samples (3.66 m): every corner of a waterline triangle lies within it
 # `terrain check`: the share of waterline triangles over WALK_DEG by water kind, outside held zones, at most this
 # (about twice Skyrim's own for still water and the sea, where people walk in and out; Skyrim's own for lakes and
 # for rivers, whose banks Bethesda leaves steep)
@@ -90,6 +98,31 @@ def bank_bound(d_land_m: np.ndarray, code: np.ndarray) -> np.ndarray:
             last = (y[-1] - y[-2]) / (x[-1] - x[-2])
             out[m] = np.where(d <= x[-1], np.interp(d, x, y), y[-1] + last * (d - x[-1]))
     return out
+
+
+def bank_band(water_s: np.ndarray) -> np.ndarray:
+    """The land within BANK_BAND_M of the waterline (half a sample out from the nearest water sample)."""
+    from scipy import ndimage as ndi
+    m = 128.0 / U
+    return ~water_s & (ndi.distance_transform_edt(~water_s) * m - m / 2 <= BANK_BAND_M)
+
+
+def place_banks(h: np.ndarray, water_s: np.ndarray, sd_m: np.ndarray, bank: np.ndarray, shaped: np.ndarray,
+                leave: np.ndarray | None = None) -> dict:
+    """Bound the land (h in units, mutated) beside still water, lakes and the sea after the places are shaped.
+    `bank`: bank_code per sample; `shaped`: the samples of the places' needs; `leave`: samples left as they are
+    (a road's bed is the road solver's). Outside `shaped`, ground a place's skirt raised takes the natural bank
+    again (bank_bound); inside, the bank band rises no faster than PLACE_BANK from the shore height and the ground
+    behind the band stays as shaped."""
+    d = np.maximum(sd_m, 0)
+    lim = bank_bound(d, bank)
+    band = bank_band(water_s)
+    np.copyto(lim, np.where(band, SHORE_M * U + PLACE_BANK * U * d, np.inf), where=shaped & (bank > 0))
+    cut = ~water_s & (h > lim)
+    if leave is not None:
+        cut &= ~leave
+    h[cut] = lim[cut]
+    return {"samples": int(cut.sum()), "in_places_bands": int((cut & shaped & band).sum())}
 
 
 def kind_codes(grid, body_r: np.ndarray, bodies: list) -> tuple[np.ndarray, list]:

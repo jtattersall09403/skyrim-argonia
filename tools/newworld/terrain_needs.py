@@ -3,12 +3,18 @@
     python3 -m tools.newworld.terrain_needs [terrain dir]     # default out/newworld/terrain; writes needs.json there
 
 Reads the build's places_terrain.json (every need the build shaped: table rows and kind fallbacks) and judges it on
-heightmap.npy, land being ground over the water level:
+heightmap.npy, land being ground over the water level. The bank is the bank: land within BANK_BAND_M of the water
+follows the shore's walked profile (terrain_clearance), and a place's level ground begins behind it, as at Skyrim's
+waterside towns and forts. Each need is judged on the ground it is about:
 - island: dry ground at the place, and that ground a true island: it does not reach the edge of a
   disc 3 radii + 100 m out (a peninsula fails);
-- rise: the ground within half the radius stands RISE_M over the land in a ring 1.6 to 2.5 radii out;
-- flat-pad: the land within the radius (less the bank, 2 samples from the water) has 90 % of its slopes under PAD_SLOPE_DEG (a place on water stands on stilts);
-- shore-access: water within the radius + 20 m, and dry ground beside it no steeper than SHORE_SLOPE_DEG;
+- rise: the ground within half the radius, behind the bank, stands RISE_M over the land in a ring 1.6 to 2.5 radii
+  out; a top with under MIN_BEHIND of its land behind the bank fails (no room behind the bank);
+- flat-pad: the land within the radius, behind the bank, has 90 % of its slopes under PAD_SLOPE_DEG; a pad with
+  under MIN_BEHIND of its land behind the bank fails (no room behind the bank); a place on water stands on stilts;
+- shore-access: water within the radius + 20 m, and the bank beside it no steeper than SHORE_SLOPE_DEG at its
+  gentlest, read on the band's row at the waterline (the band's crest reads the lip of the ground behind it, which
+  is no landing);
 - seabed: water at the place, its bed SEABED_M or more under the surface;
 - entrance-in-slope: the build's own entrance test (dry and open).
 """
@@ -23,11 +29,30 @@ from scipy import ndimage as ndi
 
 from tools.newworld import frame as f
 from tools.newworld import terrain_shape as ts
+from tools.newworld.terrain_clearance import BANK_BAND_M    # the reach the terrain eases a place's ground over
 
 RISE_M = 2.0
 PAD_SLOPE_DEG = 10.0
 SHORE_SLOPE_DEG = 15.0
 SEABED_M = 3.0
+MIN_BEHIND = 0.25           # the least share of a pad's or a top's land that must lie behind the bank
+
+
+def behind_bank(land: np.ndarray, area: np.ndarray, m: float) -> tuple[np.ndarray, np.ndarray, float]:
+    """(the bank band, `area` behind it, the share of `area` behind it). The band is the land within BANK_BAND_M of
+    the waterline (half a sample out from the nearest water sample); `m`: metres a sample."""
+    band = land & (ndi.distance_transform_edt(land) * m - m / 2 <= BANK_BAND_M)
+    behind = area & ~band
+    return band, behind, float(behind.sum()) / max(1, int(area.sum()))
+
+
+def slope_behind(win: np.ndarray, band: np.ndarray, behind: np.ndarray) -> np.ndarray:
+    """Slope (degrees) of every sample of `win` with the bank band read as the level of the nearest ground behind
+    it: the bank beside a pad never reads as the pad's own slope. `behind`: the land that is not band."""
+    if not band.any() or not behind.any():
+        return ts.slope_deg(win)
+    ii = ndi.distance_transform_edt(~behind, return_distances=False, return_indices=True)
+    return ts.slope_deg(np.where(band, win[ii[0], ii[1]], win))
 
 
 def grid_of(b: dict) -> ts.Grid:
@@ -38,13 +63,14 @@ def grid_of(b: dict) -> ts.Grid:
 def judge(h, grid, rec, on_water=False, slope=None) -> tuple[bool, str]:
     nd, r = rec["need"], float(rec["radius_m"])
     i0, j0 = (float(v) for v in grid.ij(rec["px"], rec["py"]))
-    reach = {"island": 3 * r + 100, "rise": 2.6 * r, "shore-access": r + 25}.get(nd, r + 5)
+    reach = {"island": 3 * r + 100, "rise": 2.6 * r, "shore-access": r + 25}.get(nd, r + 5) + BANK_BAND_M
     sl, di, dj = ts._disc(grid, i0, j0, reach / grid.m)
     d = np.hypot(di, dj) * grid.m
     win = h[sl]
     land = win > ts.WATER_LEVEL
     sw = slope[sl] if slope is not None else ts.slope_deg(win)
     if nd == "island":
+        reach -= BANK_BAND_M
         lab, _ = ndi.label(land & (d <= reach))
         core = np.unique(lab[land & (d <= 5)])
         core = core[core > 0]
@@ -55,25 +81,31 @@ def judge(h, grid, rec, on_water=False, slope=None) -> tuple[bool, str]:
         area = float(np.isin(lab, core).sum() * grid.m ** 2)
         return (not joined), f"islet {area:.0f} m2" + (", joined to the mainland" if joined else ", islanded")
     if nd == "rise":
-        top = land & (d <= 0.5 * r)
+        whole = land & (d <= 0.5 * r)
         ring = land & (d >= 1.6 * r) & (d <= 2.5 * r)
-        if not top.any() or not ring.any():
+        if not whole.any() or not ring.any():
             return False, "no land at the top or round it"
+        _band, top, share = behind_bank(land, whole, grid.m)
+        if share < MIN_BEHIND:
+            return False, f"no room behind the bank ({share:.0%} of the top)"
         lift = (float(win[top].mean()) - float(win[ring].mean())) / ts.U
         return lift >= RISE_M, f"lift {lift:.1f} m"
     if nd == "flat-pad":
         if on_water:
             return True, "on water (stilts)"
-        sel = land & (d <= r) & ~ndi.binary_dilation(~land, iterations=2)   # the bank into the water is no pad
-        if not sel.any():
+        whole = land & (d <= r)
+        if not whole.any():
             return False, "no land in the footprint"
-        p90 = float(np.percentile(sw[sel], 90))
+        band, sel, share = behind_bank(land, whole, grid.m)
+        if share < MIN_BEHIND:
+            return False, f"no room behind the bank ({share:.0%} of the pad)"
+        p90 = float(np.percentile(slope_behind(win, band, land & ~band)[sel], 90))
         return p90 <= PAD_SLOPE_DEG, f"slope p90 {p90:.1f} deg"
     if nd == "shore-access":
         wat = ~land & (d <= r + 20)
         if not wat.any():
             return False, "no water within reach"
-        bank = land & (d <= r + 20) & ndi.binary_dilation(~land, iterations=2)
+        bank = behind_bank(land, land, grid.m)[0] & (d <= r + 20) & ndi.binary_dilation(~land, np.ones((3, 3), bool))
         if not bank.any():
             return False, "no dry bank within reach"
         best = float(sw[bank].min())

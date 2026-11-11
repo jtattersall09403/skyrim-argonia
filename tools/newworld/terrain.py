@@ -37,7 +37,10 @@ The recipe:
    rise is raised over its landing and a pad fitted level on top of its rise; a rise smaller than its pad
    stands on the pad, after it), sea beds; then the roads, solved as one
    network and laid; then entrances, each facing down its road when one comes within 60 m, else the best dry and
-   open heading, never burying a road's bed. Then LAND's 8-unit rounding and step limit, the map's water guaranteed
+   open heading, never burying a road's bed. Then the bank (terrain_clearance.place_banks): beside still water,
+   lakes and the sea the land rises no faster than Skyrim's measured bank, and ground a place shaped is not level
+   to the water's edge: within BANK_BAND_M of the waterline it rises at 31 degrees at most and the place's level
+   ground begins behind it; a landing a pad buried is cut again. Then LAND's 8-unit rounding and step limit, the map's water guaranteed
    pixel by pixel, and any entrance the rounding spoiled shaped again.
    Then ground held as built (terrain_held): every built place (newworld/places/<id>) keeps the heights of the
    terrain build it was seated on within its place layer's cells plus 400 m, blended out over 300 m; checked at 0
@@ -518,25 +521,11 @@ def build(upload: bool = True) -> dict:
     for _o, p_, nd_, r_m_, *_r, i0_, j0_ in todo:
         sl_, di_, dj_ = ts._disc(grid, i0_, j0_, (float(r_m_ or 25.0) + 20.0) / grid.m)
         keep[sl_] |= np.hypot(di_, dj_) * grid.m <= float(r_m_ or 25.0) + 20.0
-    # pads are laid level to the water's edge. Beside still water, lakes and the sea, ground shaped past a place's
-    # own need takes the natural bank again; inside the need a pad keeps its level and only its edge at the water
-    # (tcl.PLACE_BANK_M: the bank terrain_needs leaves out of a pad) is eased to a bank a person walks
-    # (tcl.PLACE_BANK). A rise at the water stays the rock it was asked to be; a road's bed is the road solver's
-    lim = tcl.bank_bound(np.maximum(sd_m, 0), bank)
-    d_u = np.maximum(sd_m, 0) * ts.U
-    np.copyto(lim, np.where(d_u <= tcl.PLACE_BANK_M * ts.U, ts.SHORE_M * ts.U + tcl.PLACE_BANK * d_u, np.inf),
-              where=keep & (bank > 0))
-    del d_u
-    rises = np.zeros(h.shape, bool)
-    for _o, p_, nd_, r_m_, *_r, i0_, j0_ in todo:
-        if nd_ in ("rise", "island"):
-            sl_, di_, dj_ = ts._disc(grid, i0_, j0_, 2.6 * float(r_m_ or 25.0) / grid.m)
-            rises[sl_] |= np.hypot(di_, dj_) * grid.m <= 2.6 * float(r_m_ or 25.0)
-    banked = ~water_s & (h > lim) & ~rises & ~(corridor if corridor is not None else False)
-    del rises
-    h[banked] = lim[banked]
-    log("banks", int(banked.sum()), "samples of shaped ground eased to the water")
-    del lim, banked, bank
+    # the bank: ground the places shaped is not level to the water's edge beside still water, lakes and the sea
+    # (terrain_clearance.place_banks); a road's bed is the road solver's
+    banks = tcl.place_banks(h, water_s, sd_m, bank, keep, corridor)
+    log("banks", banks)
+    del bank
     keep |= th.zone_mask(grid, h.shape, blend=False)    # held ground is laid after, whole: nothing to clear there
     still = np.isin(np.array(kind_of_body), tcl.STILL)[bidx] & ~off
     clearance = tcl.apply(h, sd_m, water_s, keep, still)
@@ -550,6 +539,29 @@ def build(upload: bool = True) -> dict:
     ts.clamp_steps(h)
     fails = []
     log("water held", held, "clamp passes", passes)
+    # landings judged on the finished ground (terrain_needs' own test): a pad or a rise laid after its place's
+    # landing can bury it, the whole waterfront standing over the water; such a landing is cut again into the pad
+    # (a rise keeps its body, a road its bed)
+    from tools.newworld import terrain_needs as tn
+    body = np.zeros(h.shape, bool) if corridor is None else corridor.copy()
+    for _o, p_, nd_, r_m_, *_r, i0_, j0_ in todo:
+        if nd_ in ("rise", "island"):
+            sl_, di_, dj_ = ts._disc(grid, i0_, j0_, 1.6 * float(r_m_ or 25.0) / grid.m)
+            body[sl_] |= np.hypot(di_, dj_) * grid.m <= 1.6 * float(r_m_ or 25.0)
+    recut = []
+    zone = th.zone_mask(grid, h.shape)             # held ground is laid after, whole
+    for _o, p_, nd_, r_m_, *_r, i0_, j0_ in todo:
+        if nd_ == "shore-access" and not zone[int(i0_), int(j0_)] and water_s[ts._disc(grid, i0_, j0_, (float(r_m_) + 20) / grid.m)[0]].any() \
+                and not tn.judge(h, grid, {"need": nd_, "radius_m": r_m_, "px": p_.px, "py": p_.py})[0]:
+            ts.shore_access(h, water_s, grid, i0_, j0_, float(r_m_), leave=body)
+            recut.append(p_.id)
+    del body, zone
+    if recut:
+        h = ts.quantise(h)
+        ts.clamp_steps(h)
+        ts.hold_water(h, water_s)
+        ts.clamp_steps(h)
+    log("landings cut again", recut)
     cliff = ts.slope_deg(h) > CLIFF_DEG
 
     # entrances judged on the finished ground; any spoiled by the rounding or the water guarantee is shaped again
@@ -589,6 +601,7 @@ def build(upload: bool = True) -> dict:
     chk["coast"] = coast
     chk["held"] = th.check(h, grid)
     chk["clearance"] = clearance
+    chk["banks"] = banks | {"band_m": round(tcl.BANK_BAND_M, 2), "landings_cut_again": recut}
     (OUT / "check.json").write_text(json.dumps(chk, indent=1, default=_j))
     stamp = dt.datetime.now(dt.timezone.utc).strftime("%Y%m%dT%H%M%SZ")
     sha = hashlib.sha256((OUT / "heightmap.npy").read_bytes()).hexdigest()
