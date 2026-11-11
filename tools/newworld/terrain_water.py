@@ -7,7 +7,8 @@ How the map's water (`out/newworld/raster/water.png`, one pixel 2.93 m) is cut i
 2. Open water. Its connected parts are cut again by region. Open water in a sea region, or joined to such water,
    is sea; so is open water touching the map edge when the water it belongs to (channels included) reaches a sea
    region. Open water that merely reaches the map edge is not: the land past the edge is a neighbour's, and a lake
-   the edge cuts is still a lake. Sea is `ocean` in a region named Ocean or Sea or in the Benthic Yobesh, `bay` in a
+   the edge cuts is still a lake (marked `edge_cut`: the terrain's inland rise counts it with the sea past the
+   edge). Sea is `ocean` in a region named Ocean or Sea or in the Benthic Yobesh, `bay` in a
    region named Bay and wherever sea water lies inside a land region. Open water joined to no sea is `lake`
    (under 0.05 km2 it is a `pond`).
 3. Channels and narrow water. Connected channel pixels are a `river`; where a channel meets sea water, its last
@@ -17,8 +18,8 @@ How the map's water (`out/newworld/raster/water.png`, one pixel 2.93 m) is cut i
    wet region (bayou, mangroves, basin, marsh) it is `green-marsh`.
 5. Slivers under 40 px join the body they touch most.
 6. Ids. A body's label point is its most interior pixel (farthest from land; the first in raster order on a tie);
-   its id is `wb-<px>-<py>` of that point, so a rebuild from the same map gives the same ids, and an owner's edit
-   (kind, flow) keyed by id carries over. Every body records `why` for its kind.
+   its id is `wb-<px>-<py>` of that point, so a rebuild from the same map gives the same ids. Every body records
+   `why` for its kind. The owner's kinds are laid on by the water they hold (`hold`), never by id.
 7. Flow. Running water (river, stream, estuary) is given a direction toward the sea: the distance from the sea
    along the water network (Dijkstra over water pixels, sources the pixels touching ocean or bay) falls toward the
    mouth, and the terrain rises inland by construction, so the guess runs from the body's farthest pixel to its
@@ -84,9 +85,11 @@ def label_bodies(water: np.ndarray, region_code: np.ndarray, region_names: list,
 
     lab, n = ndi.label(open_, EIGHT)
     sea_open = np.zeros_like(water)
+    edge_cut = np.zeros_like(water)                      # open inland water the map's edge cuts
     if n:
         idx = np.arange(1, n + 1)
         joined, _ = ndi.label(water, EIGHT)              # the edge counts only for water that reaches a sea region
+        at_edge = ndi.maximum(edge, lab, idx).astype(bool)
         edge = edge & np.isin(joined, np.unique(joined[sea_px & water]))
         touches_sea = ndi.maximum(sea_px | edge, lab, idx).astype(bool)
         area = ndi.sum(np.ones_like(water), lab, idx)
@@ -111,6 +114,8 @@ def label_bodies(water: np.ndarray, region_code: np.ndarray, region_names: list,
                 a = area[k - 1] * px_m2
                 kind = "pond" if a < POND_M2 else "lake"
                 add(m, kind, f"open water ({a / 1e6:.2f} km2) joined to no sea", sl)
+                if at_edge[k - 1]:
+                    edge_cut[sl] |= m
     near_sea = np.zeros_like(water)
     if sea_open.any():
         near_sea = ndi.distance_transform_edt(~sea_open) <= ESTUARY_PX
@@ -171,7 +176,7 @@ def label_bodies(water: np.ndarray, region_code: np.ndarray, region_names: list,
         final[sl][m] = new
         bodies.append({"id": f"wb-{lpx}-{lpy}", "raster_index": new, "water_kind_id": kind,
                        "area_m2": round(float(a), 1), "label_px": lpx, "label_py": lpy,
-                       "region_id": rname or None, "why": why})
+                       "region_id": rname or None, "why": why, "edge_cut": bool(edge_cut[sl][m].any())})
     return final, bodies
 
 
@@ -226,28 +231,48 @@ def flow(raster: np.ndarray, bodies: list, flows_kind: dict) -> None:
                           f"{lo[0] + sl[0].start}); the sea {np.nanmin(gv) * 2.93 / 1000:.1f} km on along the water")
 
 
-def apply_overrides(bodies: list, overrides: dict, kinds: set) -> list:
-    """The owner's hand edits (`newworld/sources/water_overrides.json`, keyed by body id) win over the defaults.
-    Returns the problems found (unknown ids or kinds)."""
-    by_id = {b["id"]: b for b in bodies}
-    problems = []
-    for bid, o in overrides.items():
-        b = by_id.get(bid)
-        if b is None:
-            problems.append(f"override for unknown body {bid}")
+def hold(raster: np.ndarray, bodies: list, held: np.ndarray, held_kind: dict) -> list:
+    """The owner's water in the terrain's bodies, so each takes its kind's bed. `held` is the owner's held water
+    (tools/newworld/water_held.py: map px, k the k-th held body) and `held_kind` its kind per k. Where held water
+    covers a whole body, the body takes the owner's kind; where it covers part of one of another kind, that part is
+    cut off as a body of its own (appended; both parts are labelled again). `raster` and `bodies` change in place.
+    The map's own reading of every body stays in `map_kind`. Returns the held bodies that lie on no water."""
+    by_i = {b["raster_index"]: b for b in bodies}
+    objs = ndi.find_objects(raster)
+    npx = np.bincount(raster.ravel(), minlength=len(bodies) + 1).tolist()
+    dist = ndi.distance_transform_edt(raster > 0)
+    px_m2 = bodies[0]["area_m2"] / max(npx[bodies[0]["raster_index"]], 1) if bodies else 0.0
+
+    def label(b: dict, sl) -> None:
+        m = raster[sl] == b["raster_index"]
+        ly, lx = np.unravel_index(int(np.argmax(np.where(m, dist[sl], -1))), m.shape)
+        b["label_px"], b["label_py"] = int(lx + sl[1].start), int(ly + sl[0].start)
+        b["id"] = f"wb-{b['label_px']}-{b['label_py']}"
+        b["area_m2"] = round(float(m.sum()) * px_m2, 1)
+
+    lost = []
+    for k, sl in enumerate(ndi.find_objects(held), 1):
+        if sl is None or k not in held_kind:
             continue
-        if "water_kind_id" in o:
-            if o["water_kind_id"] not in kinds:
-                problems.append(f"{bid}: unknown kind {o['water_kind_id']}")
-            else:
-                b["water_kind_id"] = o["water_kind_id"]
-                b["why"] = "owner override"
-        if "flows" in o:
-            b["flows"] = bool(o["flows"])
-        if o.get("flow_toward_deg") is not None:
-            b["flow_deg"] = o["flow_toward_deg"]
-            b["flow_note"] = f"owner: flows toward {o['flow_toward_deg']} deg"
-        if "name" in o:
-            b["name"] = o["name"]
-        b["overridden"] = True
-    return problems
+        m = (held[sl] == k) & (raster[sl] > 0)
+        if not m.any():
+            lost.append(f"held water {k} ({held_kind[k]}) lies on no water")
+            continue
+        for i in np.unique(raster[sl][m]).tolist():
+            b = by_i[i]
+            if b["water_kind_id"] == held_kind[k]:
+                continue
+            part = m & (raster[sl] == i)
+            n = int(part.sum())
+            if n < npx[i]:                                # part of the body: cut it off as its own
+                new = dict(b, raster_index=len(bodies) + 1)
+                raster[sl][part] = new["raster_index"]
+                npx[i] -= n
+                npx.append(n)
+                bodies.append(new)
+                by_i[new["raster_index"]] = new
+                label(new, sl)
+                label(b, objs[i - 1])
+                b = new
+            b["water_kind_id"], b["why"], b["overridden"] = held_kind[k], "owner set the kind", True
+    return lost

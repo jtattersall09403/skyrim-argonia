@@ -161,7 +161,8 @@ regions (character.json; read-back rows in verify). Measured numbers: docs/resea
 
 `python -m tools.newworld.water_kinds --png` after every terrain build. It classifies from the map's own reading of
 each terrain body (`map_kind` in `out/newworld/water_bodies.json`), never from the owner's kinds the terrain laid
-over its bodies for the beds. The owner's kind edits are cut out first: each holds the water of the body it was
+over its bodies for the beds (the terrain lays them by the water each edit holds, `terrain_water.hold`, never by
+body id, and `build.json` lists any held water that lies on no water). The owner's kind edits are cut out first: each holds the water of the body it was
 made on (`newworld/sources/water_owner_bodies.png`, the edit's `held` and `area_m2`, stamped by
 `water_overrides_pull` from the classification the atlas shows), so an edit keeps its water however the rest is cut
 on a later build. The run ends with two checks (`out/newworld/water_check.json`, two `verify` rows) and exits 1 on

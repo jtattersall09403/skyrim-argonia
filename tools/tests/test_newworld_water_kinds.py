@@ -218,3 +218,28 @@ def test_verify_reads_the_water_check_as_two_rows(tmp_path):
     rep = Rep()
     wh.rows(rep, tmp_path / "water_check.json")
     assert [ok for _, ok, _ in rep.rows] == [True, True]
+
+
+def test_the_owners_held_water_takes_its_kind_in_the_terrains_bodies_never_by_id():
+    import numpy as np
+    from tools.newworld import terrain_water as tw
+    raster = np.zeros((60, 120), np.int32)
+    raster[20:30, 0:120] = 1                      # a river
+    raster[40:50, 10:30] = 2                      # a pond
+    bodies = [{"id": "wb-0-24", "raster_index": 1, "water_kind_id": "river", "area_m2": 1200 * 8.56, "label_px": 0,
+               "label_py": 24, "region_id": None, "why": "a channel", "map_kind": "river", "map_why": "a channel"},
+              {"id": "wb-19-44", "raster_index": 2, "water_kind_id": "pond", "area_m2": 200 * 8.56, "label_px": 19,
+               "label_py": 44, "region_id": None, "why": "still", "map_kind": "pond", "map_why": "still"}]
+    held = np.zeros(raster.shape, np.int32)
+    held[20:30, 80:120] = 1                       # the owner's lake: the river's east end
+    held[40:50, 10:30] = 2                        # the owner's marsh: the whole pond
+    held[0:5, 0:5] = 3                            # held water the map no longer has
+    held[20:30, 0:10] = 4                         # the owner's river on the river: nothing to change
+    lost = tw.hold(raster, bodies, held, {1: "lake", 2: "green-marsh", 3: "pond", 4: "river"})
+    assert lost == ["held water 3 (pond) lies on no water"]
+    assert len(bodies) == 3 and (raster == 3).sum() == 400 and (raster == 1).sum() == 800
+    river, pond, lake = bodies
+    assert (river["water_kind_id"], pond["water_kind_id"], lake["water_kind_id"]) == ("river", "green-marsh", "lake")
+    assert lake["map_kind"] == "river" and lake["overridden"] and lake["area_m2"] == round(400 * 8.56, 1)
+    assert raster[lake["label_py"], lake["label_px"]] == 3 and raster[river["label_py"], river["label_px"]] == 1
+    assert river["area_m2"] == round(800 * 8.56, 1) and lake["id"] != river["id"]

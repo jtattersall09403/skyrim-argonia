@@ -21,9 +21,9 @@ The recipe:
    carried past its edge (terrain_beyond): the ruler band and the cells beyond the picture read as the map's last
    true pixels carried outward and blurred with distance, so Cyrodiil and Morrowind run on as foreign land to the
    west, north-west and north and the open sea runs on to the east, south and south-west.
-   Water bodies (terrain_water): every body labelled with a kind and flow guess, then the owner's hand edits from
-   `newworld/sources/water_overrides.json` ({"<body id>": {"water_kind_id", "flows", "flow_toward_deg", "name"}},
-   read on every build); its kind sets the bed (BED).
+   Water bodies (terrain_water): every body labelled with a kind (kept as `map_kind`), then the owner's kinds laid
+   on by the water each of the owner's edits holds (tools/newworld/water_held.py; `terrain_water.hold`), read on
+   every build; a body's kind sets its bed (BED).
 4. Relief (terrain_relief): region parameters from the region table, the fallback table where empty; mesa
    plateaus and escarpment faces fade out within ROAD_CLEAR_M of a road (roads run in the cuts). Each land region's
    character (terrain_forms, newworld/sources/region_relief.json: its landform from its research's landscape note)
@@ -273,17 +273,22 @@ def build(upload: bool = True) -> dict:
     # 3. water bodies
     rpx = region_px(cell_region, names, water_px.shape)
     body_r, bodies = tw.label_bodies(water_px, rpx, names, rkind, word, f.UNITS_PER_PX / f.UNITS_PER_METRE)
-    tw.flow(body_r, bodies, {k.id: k.flows for k in w.rows("water_kind")})
-    ov_file = f.ROOT / "sources" / "water_overrides.json"
-    overrides = json.loads(ov_file.read_text()) if ov_file.exists() else {}
+    from tools.newworld import water_held as wh
+    overrides = json.loads(wh.OVERRIDES.read_text()) if wh.OVERRIDES.exists() else {}
     for b in bodies:                      # the map's own reading, kept beside the owner's: water_kinds classifies from it
         b["map_kind"], b["map_why"] = b["water_kind_id"], b["why"]
-    ov_problems = tw.apply_overrides(bodies, overrides, {k.id for k in w.rows("water_kind")})
+    ov_problems = tw.hold(body_r, bodies, wh.load(water_px.shape), wh.kinds(overrides))
+    # the sea the inland rise is measured from: sea by kind, and with it open water the map's edge cuts (off the
+    # picture counts as sea for the rise, and such water carries that edge inward)
+    rise_sea = np.array([False] + [b["water_kind_id"] in ("ocean", "bay", "shallow-coast") or b["edge_cut"]
+                                   for b in bodies])[body_r]
+    tw.flow(body_r, bodies, {k.id: k.flows for k in w.rows("water_kind")})
     log("water bodies", len(bodies))
     Image.fromarray(body_r.astype(np.uint16)).save(OUT / "water_bodies.png")
     (OUT if TRIAL else f.OUT).joinpath("water_bodies.json").write_text(json.dumps(
         [{k: b.get(k) for k in ("id", "water_kind_id", "area_m2", "label_px", "label_py", "flows", "flow_note",
-                                "why", "raster_index", "region_id", "flow_deg", "name", "overridden", "map_kind", "map_why")}
+                                "why", "raster_index", "region_id", "flow_deg", "name", "overridden", "map_kind", "map_why",
+                                "edge_cut")}
          for b in bodies], indent=1, default=_j))
 
     # the smooth coast: the map's shores as smoothed polylines, filled and turned into a signed distance on the
@@ -316,9 +321,7 @@ def build(upload: bool = True) -> dict:
     # off the picture counts as open sea for the inland rise (as it always has): the province's own relief keeps the
     # scale its places and needs were fitted to; the land past the map is modest backdrop either way
     sea_c = np.ones(wx.shape, bool)
-    kind_arr = np.array(["land"] + [b["water_kind_id"] for b in bodies])
-    sea_body = np.isin(kind_arr, ["ocean", "bay", "shallow-coast"])[body_r]
-    sea_c[inb] = sea_body[cpy[inb].astype(int), cpx[inb].astype(int)]
+    sea_c[inb] = rise_sea[cpy[inb].astype(int), cpx[inb].astype(int)]
     coast_t = 1 - np.exp(-ndi.distance_transform_edt(~sea_c) * C * ts.STEP / f.UNITS_PER_METRE / 5000.0)
     shape = (grid.rows, grid.cols)
     F = {k: tr.upsample(v, shape, C, order=1) for k, v in Fc.items()}

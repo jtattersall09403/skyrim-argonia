@@ -48,7 +48,11 @@ in older records is a count from 2026-11-09 morning, before the fringe and Helst
   body out first, whole, with the owner's kind, and classifies the rest round it. The 289 existing edits were
   stamped once from the deployed classification: 222 held bodies (286 kind edits), 3 edits without a kind.
 - `terrain_water.label_bodies`: the map's edge makes open water sea only when the water it belongs to reaches a
-  sea region. The northern lake is a pond again; the bed follows at the next terrain build.
+  sea region. The northern lake is a lake again, with a lake's bed.
+- `terrain_water.hold` replaces the terrain's matching of edits to its own bodies by id: the owner's held water is
+  laid on the terrain's bodies (a body it covers takes the owner's kind; a part it covers is cut off as its own
+  body), so each owner-set water gets its kind's bed. The inland rise is still measured from the sea by kind, and
+  from open water the map's edge cuts (`edge_cut`: off the picture counts as sea for the rise).
 - `teleports.ground` read `land/limited.npy` (VHGT steps) as game units: every landing was written at steps + 32,
   so 108 units under the ground at Helstrom (ground 160). Now steps x 8.
 
@@ -70,6 +74,26 @@ of 0.9 ha in the north-east margin. The 6,805 fewer running pixels are these. On
 before: `wb-1846-2606`, a name only ("Update-2026-11-09c", no kind), whose point lay in the shallow coast drawn
 along the old ruler and now lies in open ocean; the name follows the point.
 `teleports build`: 266 landings, 0 faults; `ANWWalkHelstromRiver` lands in its own cell (-21, -140).
+
+## The terrain rebuilt with the owner's kinds by held water
+
+Trial build 20261111T045753Z in a worktree (same inputs as 20261111T025937Z, not uploaded), against 025937Z:
+- `build.json` reports 0 override problems (8 unknown bodies before); 2,267 terrain bodies (2,211), 56 of them
+  parts cut off for the owner's kinds. Kinds changed on 640,268 map px, the largest: the south-west sea bay to
+  ocean (474,396 px, the owner's ocean), river to blackwater swamp 58,466, the northern lake ocean to lake 21,053,
+  estuary to green marsh 19,893.
+- `terrain check` 0; Helstrom's held zone the old ground plus 72 units on 865,322 of 865,322 samples, max
+  difference 0; `terrain_needs` the same 6 failures (blackrose-prison, fort-chalkmoth, mine-28-m65, vicrium,
+  seafalls, blackrose).
+- water_kinds on it: check ok, 2,143 bodies, 725 flowing, round Helstrom 27.0 ha kept and 30.9 ha to marsh, 289
+  edits: 269 as made, 20 overtaken, none off.
+- Heights: 1,525,955 of 39,457,089 samples differ. 1,242,470 lie in or within 3 map px of water whose kind changed
+  (the beds; up to 4,904 units where bay became ocean). 610 other water samples differ by one step (8 units). The
+  land also moved: 282,875 samples (0.72% of the grid) more than 3 px from any changed water, 99% of them by 64
+  units or less, the most 304 units (4.3 m); half lie within 220 m of changed water, 90% within 1 km. The largest
+  patches are at map px (762, 2358), (858, 351), (2710, 1292) and (2155, 1168). The cause was not pinned: 62% lie
+  within 293 m of changed water and 75% within 293 m of a road, and the stages after the beds (weathering,
+  clearance, roads at fords and bridges) all read the beds.
 
 ## The checks that would have caught it
 
