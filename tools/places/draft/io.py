@@ -96,8 +96,9 @@ def is_nordic(key: str, base: dict, review: dict[str, dict]) -> bool:
     return v["verdict"] == "nordic" if v else bool(base.get("nordic"))
 
 
-def catalogue_bases(keys: set[str], path: Path = CATALOGUE) -> dict[str, dict]:
+def catalogue_bases(keys: set[str], path: Path | None = None) -> dict[str, dict]:
     """Base rows of the asset catalogue (every source we hold) for keys a bundle lacks (replacements, additions)."""
+    path = path or CATALOGUE
     if not keys or not path.exists():
         return {}
     out = {}
@@ -196,13 +197,14 @@ STATION_KEYWORD = {"forge": "CraftingSmithingForge", "anvil": "CraftingSmithingF
                    "oven": "BYOHCraftingOven", "staff-enchanter": "DLC2StaffEnchanter"}
 
 
-def station_base(station: str, path: Path = CATALOGUE) -> dict | None:
+def station_base(station: str, path: Path | None = None) -> dict | None:
     """The working crafting furniture for a station kind, from the catalogue: a base whose record carries the
     station's crafting keyword (what the game keys on; never chosen by name or look), non-Nordic, in the plugins whose
     style our places use first (STYLE_ORDER), never a hidden, test or dungeon variant. When no such base carries the
     keyword, the vanilla working base (Skyrim.esm), marked `fallback` with the reason: function wins, the look is the
     owner's call in the studio."""
     global _stations
+    path = path or CATALOGUE
     if _stations is None:
         _stations = {}
         if path.exists():

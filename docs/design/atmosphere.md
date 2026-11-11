@@ -71,13 +71,14 @@ Skyrim's own way (Morthal's): always-on `FXMistLow01` statics, no script.
 - At most 8 in a cell, and never more than the placer's 162 refs a cell leave after the cell's flora refs
   (`refs/flora`), so `world/mist.py` runs after the placer.
 
-## The pipeline (tools/newworld/world/world.sh)
+## The pipeline (stages of tools/newworld/rebuild.sh; the skill world-build)
 
-`world/cells.py` (water and regions) -> `world/mist.py` (refs/mist) -> `atmosphere.py spec` (reads the vanilla
-records through `ArgoniaPlugin atmos study`, writes `atmosphere.json`) -> the ESM write (`NewWorldAtmosphere.Build`
-makes every record from `atmosphere.json`; the regions take their lists) -> `atmosphere_cs.py write` (the height
-fog's files into the `cs-height-fog` row; then `stack.py stage`) -> the read-back. The database's
-`atmosphere_class` and `region_atmosphere` come from `build_db` (`atmosphere.load`).
+`cells` (`world/cells.py`: water and regions) -> `mist` (`world/mist.py`: refs/mist, after the placer) ->
+`atmosphere` (`atmosphere.py spec` reads the vanilla records through `ArgoniaPlugin atmos study`, writes
+`atmosphere.json`; it waits on the database alone) -> `height-fog` (`atmosphere_cs.py write`: the height fog's files
+into the `cs-height-fog` row; then `stack.py stage`) -> `esm` (`NewWorldAtmosphere.Build` makes every record from
+`atmosphere.json`; the regions take their lists) -> `readback`. The database's `atmosphere_class` and
+`region_atmosphere` come from the `db` stage (`build_db`, `atmosphere.load`).
 
 ## Proof off game
 

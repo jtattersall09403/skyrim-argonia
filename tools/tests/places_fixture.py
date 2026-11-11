@@ -71,6 +71,18 @@ def our_height(x, y):   # a river along x > 42500 at our anchor (40000, 2000), l
     return -200.0 + 0.08 * (42500 - x) + k
 
 
+def catalogue(root: Path) -> Path:
+    """The asset catalogue the draft adds a promised station from: one working forge (it carries the crafting
+    keyword the game keys on), in a plugin of the places' own style."""
+    p = root / "catalogue" / "bases.jsonl"
+    p.parent.mkdir(parents=True, exist_ok=True)
+    _jsonl(p, [{"key": "Black Marsh.esm:000F01", "edid": "CraftingBlacksmithForgeFx", "type": "FURN", "name": "Forge",
+                "model": "fx/forge.nif", "bounds": [[-150, -150, -40], [140, 340, 260]], "plugin": "Black Marsh.esm",
+                "keywords": ["CraftingSmithingForge"], "nordic": False, "kind": "furniture", "source": "fx",
+                "has_model": True}])
+    return p
+
+
 def build(root: Path) -> Path:
     b = root / "bundles"
     # --- source ---

@@ -2,7 +2,14 @@
 game consumes, and a PASS/FAIL table.
 
     python3 -m tools.newworld.verify [--plugin out/newworld/plugin] [--out out/newworld/verify] [--no-dump]
+                                     [--only GROUP,...] [--skip GROUP,...]
     tooling/job_guard.sh run nw-verify -- python3 -m tools.newworld.verify      (about 3 min on the full world)
+
+The rows are in groups, each named for what it judges (GROUPS: the group and whose output it reads). `--only` runs
+the named groups and writes `report-only-<groups>.md/.json`; `--skip` leaves groups out of the report. A group that
+reads no ESM (`relief`) runs before the ESM is written: tools/newworld/rebuild.py runs it straight after the land
+shards, the ESM's groups after the world file, and leaves the groups of other machines' work (`lod`, `deploy`,
+`places`) to the recipes that do that work.
 
 Read: ArgoniaNewWorld.esm (through `ArgoniaPlugin nwverify dump`: masters, links, cells, LAND, layers, water, regions,
 climate, navmesh, every placed object with the LAND's ground under it), the NewWorld profile's laid-file record
@@ -54,6 +61,10 @@ def own_type(edid: str) -> str:
     m = BLEND.match(edid or "")
     return m.group(1) if m else edid
 MIST = re.compile(r"^FXMist", re.I)
+# group -> whose output it reads: the terrain build, the written ESM, or work done after it on other machines
+GROUPS = {"plugin": "esm", "land": "esm", "textures": "esm", "water": "esm", "refs": "esm", "mist": "esm",
+          "atmosphere": "esm", "height fog": "esm", "relief": "terrain", "navmesh": "esm", "lod": "lod", "map": "esm",
+          "start": "esm", "deploy": "deploy", "places": "places"}
 
 
 class Report:
@@ -78,9 +89,11 @@ class Report:
         return "\n".join(out) + "\n"
 
 
-def section(rep: Report, area: str):
-    """Run one group of checks; an exception becomes a FAIL row naming it, never a crash."""
+def section(rep: Report, area: str, want=None):
+    """Run one group of checks (when `want` selects it); an exception becomes a FAIL row naming it, never a crash."""
     def wrap(fn):
+        if want is not None and area not in want:
+            return fn
         try:
             fn()
         except BaseException as e:  # SystemExit from a reused tool included
@@ -156,25 +169,31 @@ def nif_textures(raw: bytes) -> set[str]:
 
 # ---- the checks
 
-def run(plugin: Path, out: Path, do_dump: bool = True) -> int:
+def run(plugin: Path, out: Path, do_dump: bool = True, only: set | None = None, skip: set | None = None) -> int:
     t0 = time.time()
     out.mkdir(parents=True, exist_ok=True)
     rep = Report()
     d = out / "dump"
-    if not (plugin / ESM).exists():
-        rep.fail("plugin", "ArgoniaNewWorld.esm built", f"{plugin / ESM} missing: run tools/newworld/world/world.sh")
-        return finish(rep, out, t0)
-    if do_dump:
-        try:
-            dump(plugin, out)
-        except subprocess.CalledProcessError as e:
-            rep.fail("plugin", "ESM loads in Mutagen", f"nwverify dump failed (exit {e.returncode}); see the log")
-            return finish(rep, out, t0)
-    H = jload(d / "header.json")
-    cells = read_cells(d)
-    refs = read_refs(d)
+    want = (set(only) if only else set(GROUPS)) - set(skip or ())
+    name = "report-only-" + "-".join(sorted(want)).replace(" ", "_") if only else "report"
     man = jload(plugin / "land/manifest.json")
     g = man["grid"]
+    if all(GROUPS[a] == "terrain" for a in want):   # no row reads the ESM: the land's cells stand for its cells
+        H, refs = {}, []
+        cells = {(x, y): {"h_max": ""} for y in range(g["cy_bottom"], g["cy_top"] + 1) for x in range(g["cx0"], g["cx1"] + 1)}
+    else:
+        if not (plugin / ESM).exists():
+            rep.fail("plugin", "ArgoniaNewWorld.esm built", f"{plugin / ESM} missing: run tools/newworld/rebuild.sh")
+            return finish(rep, out, t0, name)
+        if do_dump:
+            try:
+                dump(plugin, out)
+            except subprocess.CalledProcessError as e:
+                rep.fail("plugin", "ESM loads in Mutagen", f"nwverify dump failed (exit {e.returncode}); see the log")
+                return finish(rep, out, t0, name)
+        H = jload(d / "header.json")
+        cells = read_cells(d)
+        refs = read_refs(d)
     water_h = g.get("water", 0)
     intent = jload(plugin / "cells.json") if (plugin / "cells.json").exists() else None
     land = {k for k, c in cells.items() if c["h_max"] and float(c["h_max"]) > water_h}
@@ -182,7 +201,7 @@ def run(plugin: Path, out: Path, do_dump: bool = True) -> int:
     mist = [r for r in placed if MIST.match(r["edid"] or "")]
     natural = [r for r in placed if not MIST.match(r["edid"] or "")]
 
-    @section(rep, "plugin")
+    @section(rep, "plugin", want)
     def _plugin():
         rep.row("plugin", "ESM loads in Mutagen with 0 errors", len(H["errors"]), not H["errors"], "; ".join(H["errors"][:3]))
         rep.row("plugin", "ESM flag set", H["esm_flag"], H["esm_flag"])
@@ -195,7 +214,7 @@ def run(plugin: Path, out: Path, do_dump: bool = True) -> int:
         rep.row("plugin", "every link resolves in the masters or ours", H["unresolved_links"], H["unresolved_links"] == 0,
                 "; ".join(H["unresolved_examples"][:3]))
 
-    @section(rep, "land")
+    @section(rep, "land", want)
     def _land():
         exp = {(x, y) for y in range(g["cy_bottom"], g["cy_top"] + 1) for x in range(g["cx0"], g["cx1"] + 1)}
         have = {k for k, c in cells.items() if c["land"] == "1"}
@@ -203,7 +222,7 @@ def run(plugin: Path, out: Path, do_dump: bool = True) -> int:
         rep.row("land", "every cell of the grid has LAND", f"{len(have & exp)}/{len(exp)}", not miss,
                 f"missing e.g. {miss[:5]}" if miss else "")
 
-    @section(rep, "textures")
+    @section(rep, "textures", want)
     def _tex():
         lt = H["ltex"]
         rep.row("textures", "ground textures (LTEX) in the ESM", len(lt), len(lt) > 1,
@@ -242,7 +261,7 @@ def run(plugin: Path, out: Path, do_dump: bool = True) -> int:
                 tc.get("swathe_max_1km_land") is not None and tc["swathe_max_1km_land"] <= 0.40,
                 f"{tc.get('swathe_material')} at {tc.get('swathe_at_cell')}")
 
-    @section(rep, "water")
+    @section(rep, "water", want)
     def _water():
         if intent is None:
             rep.fail("water", "every water cell's WATR matches its kind", "cells.json missing: run world/cells.py")
@@ -276,7 +295,7 @@ def run(plugin: Path, out: Path, do_dump: bool = True) -> int:
         from tools.newworld.world import water_check  # kinds as seen, flow, seams, land against the plane
         water_check.rows(rep, water_check.esm_check(BIN / "ArgoniaPlugin.dll", plugin, DATA, OUT / "water_flow_cells.json", out))
 
-    @section(rep, "refs")
+    @section(rep, "refs", want)
     def _refs():
         if not natural:
             rep.fail("refs", "placed trees, plants, rocks, cliffs, road dressing",
@@ -314,7 +333,7 @@ def run(plugin: Path, out: Path, do_dump: bool = True) -> int:
                 f"missing e.g. {list(notex)[:4]}; " * bool(notex) + f"warning: {other} non-diffuse slots missing")
         place_rows(rep, natural, out)
 
-    @section(rep, "mist")
+    @section(rep, "mist", want)
     def _mist():
         if not mist:
             rep.fail("mist", "mist refs over marsh and inland water", "0 FXMist refs in the ESM: the mist refs (refs/mist) are not written yet")
@@ -327,7 +346,7 @@ def run(plugin: Path, out: Path, do_dump: bool = True) -> int:
         for req, v, ok, det in mist_rows.rows(mist, natural, intent["cells"] if intent else {}):
             rep.row("mist", req, v, ok, det)
 
-    @section(rep, "atmosphere")
+    @section(rep, "atmosphere", want)
     def _atmo():
         w = H.get("world") or {}
         cw = w.get("climate_weathers") or []
@@ -345,18 +364,18 @@ def run(plugin: Path, out: Path, do_dump: bool = True) -> int:
         for req, v, ok, det in atmosphere.rows(plugin):
             rep.row("atmosphere", req, v, ok, det)
 
-    @section(rep, "height fog")
+    @section(rep, "height fog", want)
     def _cs_fog():
         from tools.newworld import atmosphere_cs  # Community Shaders' per-weather height fog, NewWorld profile only
         for req, v, ok, det in atmosphere_cs.rows(plugin, STACK):
             rep.row("height fog", req, v, ok, det)
 
-    @section(rep, "relief")
+    @section(rep, "relief", want)
     def _relief():
         from tools.newworld import terrain_character
         terrain_character.verify_rows(rep, set(cells))
 
-    @section(rep, "navmesh")
+    @section(rep, "navmesh", want)
     def _nav():
         # margin_cells.json and scope_cells.json are in map cells (8192 units, two Skyrim cells a side)
         margin = {tuple(c) for c in jload(OUT / "margin_cells.json")}
@@ -385,7 +404,7 @@ def run(plugin: Path, out: Path, do_dump: bool = True) -> int:
         rep.row("navmesh", f"settlement-pair paths ({PATHS_MIN})", f"{pa.get('ok')}/{pa.get('pairs')}",
                 (pa.get("pairs") or 0) >= PATHS_MIN and pa.get("ok") == pa.get("pairs"))
 
-    @section(rep, "lod")
+    @section(rep, "lod", want)
     def _lod():
         ls = plugin / "map/LODSettings/ArgoniaBlackMarsh.lod"
         rep.row("lod", ".lod settings file (16 bytes)", ls.stat().st_size if ls.exists() else "missing",
@@ -407,7 +426,7 @@ def run(plugin: Path, out: Path, do_dump: bool = True) -> int:
             rep.row("lod", "every large placed base planned for LOD has it", p.stdout.strip().splitlines()[-1] if p.stdout.strip() else p.stderr[-200:],
                     p.returncode == 0)
 
-    @section(rep, "map")
+    @section(rep, "map", want)
     def _map():
         w = H.get("world") or {}
         nw, se = w.get("map_nw") or [0, 0], w.get("map_se") or [0, 0]
@@ -422,7 +441,7 @@ def run(plugin: Path, out: Path, do_dump: bool = True) -> int:
             p = subprocess.run([sys.executable, "-m", mod, *args, "--plugin", str(plugin)], cwd=REPO, capture_output=True, text=True)
             rep.row("map", req, (p.stdout.strip().splitlines() or [p.stderr[-200:]])[0], p.returncode == 0)
 
-    @section(rep, "start")
+    @section(rep, "start", want)
     def _start():
         m = H.get("marker")
         rep.row("start", "`coc ArgoniaNWStart` names one cell", H.get("start_cells"), H.get("start_cells") == 1)
@@ -433,7 +452,7 @@ def run(plugin: Path, out: Path, do_dump: bool = True) -> int:
         rep.row("start", "start marker on dry ground, within 64 units above it", f"z {m['pos'][2]:.0f}, ground {m['ground']:.0f}", ok,
                 f"cell {m['cell']}")
 
-    @section(rep, "deploy")
+    @section(rep, "deploy", want)
     def _deploy():
         # Our plugins are laid from C:\argonia\ours (stack.ps1's $OursPlugins), not staged as a mod row, so the deploy is
         # proved by stack.ps1 laying the ESM in the NewWorld profile and by the machine's copy (lod.sh send reads its
@@ -452,7 +471,7 @@ def run(plugin: Path, out: Path, do_dump: bool = True) -> int:
                 pv.exists() and "FAIL" not in pv.read_text(errors="replace"),
                 "" if pv.exists() else f"{pv.relative_to(REPO)}: save the play machine's verify output there after the push")
 
-    @section(rep, "places")
+    @section(rep, "places", want)
     def _places():
         # the place layer (tools/places build/check, docs/design/place-studio.md): rows only once a layer is built
         pl = REPO / "out/places/plugin"
@@ -476,7 +495,7 @@ def run(plugin: Path, out: Path, do_dump: bool = True) -> int:
             rep.row("places", f"{pid}: every place check green", f"{len(r['results']) - len(red)}/{len(r['results'])}", not red,
                     ", ".join(red))
 
-    return finish(rep, out, t0)
+    return finish(rep, out, t0, name)
 
 
 _ASSETS: list = []
@@ -541,13 +560,13 @@ def place_rows(rep: Report, natural: list[dict], out: Path) -> None:
         rep.row("refs", req, val, ok)
 
 
-def finish(rep: Report, out: Path, t0: float) -> int:
-    (out / "report.md").write_text(rep.md())
-    (out / "report.json").write_text(json.dumps({"rows": rep.rows, "seconds": round(time.time() - t0, 1)}, indent=1, default=str))
+def finish(rep: Report, out: Path, t0: float, name: str = "report") -> int:
+    (out / f"{name}.md").write_text(rep.md())
+    (out / f"{name}.json").write_text(json.dumps({"rows": rep.rows, "seconds": round(time.time() - t0, 1)}, indent=1, default=str))
     n = Counter(r["result"] for r in rep.rows)
     for r in rep.rows:
         print(f"{r['result']}  {r['area']}: {r['requirement']} = {r['value']}" + (f"  ({r['detail']})" if r["detail"] and r["result"] == "FAIL" else ""))
-    print(f"verify: {n['PASS']} PASS, {n['FAIL']} FAIL in {time.time() - t0:.0f} s -> {out / 'report.md'}")
+    print(f"verify: {n['PASS']} PASS, {n['FAIL']} FAIL in {time.time() - t0:.0f} s -> {out / (name + '.md')}")
     return 1 if n["FAIL"] else 0
 
 
@@ -556,8 +575,14 @@ def main(argv=None) -> int:
     ap.add_argument("--plugin", type=Path, default=OUT / "plugin")
     ap.add_argument("--out", type=Path, default=OUT / "verify")
     ap.add_argument("--no-dump", action="store_true", help="judge the last dump again")
+    ap.add_argument("--only", help="these groups alone, comma-separated: " + ", ".join(GROUPS))
+    ap.add_argument("--skip", help="every group but these")
     a = ap.parse_args(argv)
-    return run(a.plugin, a.out, not a.no_dump)
+    only, skip = ({x.strip() for x in v.split(",")} if v else None for v in (a.only, a.skip))
+    bad = ((only or set()) | (skip or set())) - set(GROUPS)
+    if bad:
+        ap.error(f"no group {sorted(bad)}; groups: {', '.join(GROUPS)}")
+    return run(a.plugin, a.out, not a.no_dump, only, skip)
 
 
 if __name__ == "__main__":

@@ -10,14 +10,20 @@ sys.path.insert(0, str(Path(__file__).parent))
 import places_fixture as F  # noqa: E402
 
 from tools.places import seat  # noqa: E402
-from tools.places.draft import check, geom, people, render, run  # noqa: E402
+from tools.places.draft import check, geom, io, lights, people, render, run  # noqa: E402
 
 
 @pytest.fixture(scope="module")
 def fx(tmp_path_factory):
+    """The draft over the fixture's own catalogue (the station the record promises is added from it), never the
+    tree's out/places/catalogue."""
     root = F.build(tmp_path_factory.mktemp("places"))
-    counts = run.draft("fx", root / "bundles", root / "places", record=(F.RECORD, F.GIVES))
-    return root, counts
+    with pytest.MonkeyPatch.context() as mp:
+        mp.setattr(io, "CATALOGUE", F.catalogue(root))
+        mp.setattr(io, "_stations", None)
+        mp.setattr(lights, "_lights", None)
+        counts = run.draft("fx", root / "bundles", root / "places", record=(F.RECORD, F.GIVES))
+        yield root, counts
 
 
 def test_ground_queries(tmp_path):

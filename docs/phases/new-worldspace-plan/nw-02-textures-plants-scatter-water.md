@@ -100,6 +100,9 @@ run → LOD full run → the off-game read-back (step 12).
 
 Owner faults whose lessons land in the recipes once verified are in docs/skill-fixes.md.
 
+Skills made in this phase: `world-build` (changing and rebuilding the new world: `tools/newworld/rebuild.sh` runs
+only the stages a change made stale, each check straight after its stage).
+
 ## Round 2: the owner's feedback of 2026-11-09 (before the first walk)
 
 The owner's feedback (owner-rulings.md, 2026-11-09) is delivered before the walk; the walk check (nw-02-walk.md) is
@@ -139,9 +142,9 @@ navmesh, the read-back), Helstrom brought level by its narrow stages, the LOD on
 
 ## Walk 5: the terrain build (current truth)
 
-Order: `python -m tools.newworld.tiles scope`, then `python -m tools.newworld.regions` (both before the terrain
-build: it reads the scope and each cell's region), then `python -m tools.newworld.terrain`,
-`python -m tools.newworld.terrain check`, `python -m tools.newworld.terrain_needs`, then the chain from water_kinds.
+Order: the stages of `tools/newworld/rebuild.sh` (`plan` prints it; the skill `world-build`): `scope`, then
+`regions` (both before the terrain build: it reads the scope and each cell's region), then `terrain` with
+`terrain check`, `needs`, then the stages from `water`.
 
 The terrain build (`tools/newworld/terrain.py`): carries the map past its edge (`terrain_beyond`: the scope reaches
 8 map cells past the picture, foreign land west, north-west and north, open sea east, south and south-west; map

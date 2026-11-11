@@ -1,61 +1,62 @@
 #!/usr/bin/env bash
-# ArgoniaNewWorld.esm from the current terrain build (out/newworld/terrain/build.json names it), then its read-back
-# and the upload. Masters: Skyrim.esm, Update.esm (+ Black Marsh.esm and its masters when linked); records of
-# asset-only mods are copied as ours (ArgoniaPlugin ForeignCopy.cs). Rerun after any terrain rebuild; each stage skips what already matches:
-#   tooling/job_guard.sh run nw-world -- tools/newworld/world/world.sh
-#   tooling/job_guard.sh wait nw-world
-# Stages: land shards (tools/newworld/world/land.py, keyed on build id + heightmap + code; resumes by row) ->
-# landcover (tools/newworld/landcover.py, keyed) -> ground paint (world/texture.py, keyed, resumes by row) ->
-# cells, water types and regions (world/cells.py) -> low mist refs (world/mist.py) -> the atmosphere records'
-# spec (tools/newworld/atmosphere.py spec -> atmosphere.json: weathers, image spaces, volumetric lighting, climate, region lists) ->
-# navmesh (python -m tools.navmesh build -> out/newworld/plugin/navmesh, attached by NewWorldNavmesh.cs) ->
-# ESM write (tools/ArgoniaPlugin `newworld write`, skipped when the stamp's key matches) -> read-back
-# (`newworld check`: cells, height error, seams, overflow, water, the coc marker) -> bucket
-# s3://argonia-private-050977237313/nw/plugin/<build id>/. Out: out/newworld/plugin/ (never git).
-# Env: ARGONIA_GAME_ROOT (default ~/games/skyrimse) for Data; NW_UPLOAD=0 skips the upload.
+# The world file's own steps: ArgoniaNewWorld.esm from the shards under out/newworld/plugin, its map data, its check
+# and its upload. tools/newworld/rebuild.sh runs them as its `esm` and `upload` stages, after the stages that write
+# the shards; the order of the whole rebuild, its keys and its checks are tools/newworld/rebuild.py's, and the recipe
+# is the skill world-build.
+#   world.sh write    the ESM from land/, tex/, cells.json, atmosphere.json, refs/<producer>/ and navmesh/
+#                     (ArgoniaPlugin `newworld write`); skipped when the stamp ArgoniaNewWorld.json holds this key
+#   world.sh map      the map data of map/ applied when the ESM lacks it (`nwmap apply`), then read back -> map-check.txt
+#   world.sh check    the file read back (`newworld check`: cells, height error, seams, overflow, water, the start
+#                     marker) -> check.txt
+#   world.sh upload   the ESM, its stamp, check.txt and the land manifest -> s3://argonia-private-050977237313/nw/plugin/<build id>/
+#   world.sh          the whole rebuild: tools/newworld/rebuild.sh run
+# Masters: Skyrim.esm, Update.esm, Black Marsh.esm; records of asset-only mods are copied as ours (ForeignCopy.cs).
+# Out: out/newworld/plugin/ (never git). Env: ARGONIA_GAME_ROOT (default ~/games/skyrimse) for Data;
+# NW_REF_PRODUCERS (default all) limits the refs written; NW_UPLOAD=0 skips the upload.
 set -euo pipefail
 repo=$(cd "$(dirname "$0")/../../.." && pwd); cd "$repo"
+[ $# -gt 0 ] || exec tools/newworld/rebuild.sh run
 export DOTNET_ROOT="$HOME/.dotnet" PATH="$HOME/.dotnet:$PATH" DOTNET_CLI_TELEMETRY_OPTOUT=1 DOTNET_NOLOGO=1
 py=$(ls "$HOME/.argonia/venv/bin/python" 2>/dev/null || command -v python3)
 data="${ARGONIA_GAME_ROOT:-$HOME/games/skyrimse}/Data"
 out=out/newworld/plugin; esm=$out/ArgoniaNewWorld.esm; man=$out/land/manifest.json; stamp=$out/ArgoniaNewWorld.json
 bin=out/tools/ArgoniaPlugin
-# one writer at a time: a pid file checked with kill -0 (no flock); a second run refuses
-mkdir -p "$out"; pidf="$out/world.sh.pid"
-if [ -f "$pidf" ] && kill -0 "$(cat "$pidf")" 2>/dev/null; then
-  echo "world.sh: another run (pid $(cat "$pidf")) is writing $out; wait for it (tooling/job_guard.sh status)" >&2; exit 2
-fi
-echo $$ > "$pidf"; trap 'rm -f "$pidf"' EXIT
-"$py" -m tools.newworld.world.land --out "$out"
-"$py" -m tools.newworld.landcover
-"$py" -m tools.newworld.world.texture --out "$out"
-"$py" -m tools.newworld.world.cells --out "$out"
-"$py" -m tools.newworld.world.mist --out "$out"
-"$py" -m tools.newworld.atmosphere spec --plugin "$out"
-# navmesh (tools/navmesh, per-cell cached; NW_NAVMESH=0 skips): red checks are reported, never block the land
-if [ "${NW_NAVMESH:-1}" = 1 ]; then "$py" -m tools.navmesh build --plugin "$out" --out "$out/navmesh" || echo "navmesh: checks red (see $out/navmesh/check.json)"; fi
-dotnet build -c Release -o "$bin" tools/ArgoniaPlugin >/dev/null
-key=$("$py" -c 'import json,sys; print(json.load(open(sys.argv[1]))["key"])' "$man")
-key="$key:${NW_REF_PRODUCERS:-all}:$(cat "$out/tex/manifest.json" "$out/cells.json" "$out/atmosphere.json" $(find "$out/refs" -name '*.jsonl' | sort) | sha256sum | cut -c1-16)"
-codekey=$(cat tools/ArgoniaPlugin/NewWorld.cs tools/ArgoniaPlugin/WaterBlend.cs tools/ArgoniaPlugin/ForeignCopy.cs tools/ArgoniaPlugin/NewWorldNavmesh.cs tools/ArgoniaPlugin/NewWorldAtmosphere.cs $(ls "$out"/navmesh/navi.json "$out"/navmesh/navm/cy*.jsonl.gz 2>/dev/null) | sha256sum | cut -c1-16)
-if [ -f "$esm" ] && [ -f "$stamp" ] && grep -q "\"key\": \"$key:$codekey\"" "$stamp"; then
-  echo "esm current ($key)"
-else
-  t0=$(date +%s.%N)
-  dotnet "$bin/ArgoniaPlugin.dll" newworld write "$man" "$data" "$esm"
-  t1=$(date +%s.%N)
-  "$py" -c 'import json,sys,os; k,e,t=sys.argv[1:4]; json.dump({"key":k,"esm":e,"bytes":os.path.getsize(e),"write_s":round(float(t),1)},open(sys.argv[4],"w"),indent=1)' \
-    "$key:$codekey" "$esm" "$(echo "$t1 - $t0" | bc)" "$stamp.tmp"
-  mv "$stamp.tmp" "$stamp"
-fi
-# the native map (nw-02 step 11): settlement markers and MNAM/ONAM, applied whenever the ESM lacks this build's map
-"$py" -m tools.newworld.world.mapdata build >/dev/null
-dotnet "$bin/ArgoniaPlugin.dll" nwmap check "$esm" "$out/map" >/dev/null || dotnet "$bin/ArgoniaPlugin.dll" nwmap apply "$esm" "$out/map" "$data"
-dotnet "$bin/ArgoniaPlugin.dll" nwmap check "$esm" "$out/map" | tee "$out/map-check.txt"
-dotnet "$bin/ArgoniaPlugin.dll" newworld check "$esm" "$man" "$data" | tee "$out/check.txt"
-"$py" -m tools.newworld.world.texcheck --out "$out" | tee -a "$out/check.txt"
-if [ "${NW_UPLOAD:-1}" = 1 ]; then
-  id=$("$py" -c 'import json,sys; print(json.load(open(sys.argv[1]))["build_id"])' "$man")
-  for f in "$esm" "$stamp" "$out/check.txt" "$man"; do aws s3 cp --only-show-errors "$f" "s3://argonia-private-050977237313/nw/plugin/$id/"; done
-  echo "uploaded to s3://argonia-private-050977237313/nw/plugin/$id/"
-fi
+plugin() { dotnet "$bin/ArgoniaPlugin.dll" "$@"; }
+# one writer of the ESM at a time: a pid file checked with kill -0 (no flock); a second writer refuses
+writer() {
+  mkdir -p "$out"; pidf="$out/world.sh.pid"
+  if [ -f "$pidf" ] && kill -0 "$(cat "$pidf")" 2>/dev/null; then
+    echo "world.sh: another run (pid $(cat "$pidf")) is writing $out; wait for it (tooling/job_guard.sh status)" >&2; exit 2
+  fi
+  echo $$ > "$pidf"; trap 'rm -f "$pidf"' EXIT
+}
+case "$1" in
+  write)
+    writer
+    dotnet build -c Release -o "$bin" tools/ArgoniaPlugin -v q -nologo >/dev/null
+    key=$("$py" -c 'import json,sys; print(json.load(open(sys.argv[1]))["key"])' "$man")
+    key="$key:${NW_REF_PRODUCERS:-all}:$(cat "$out/tex/manifest.json" "$out/cells.json" "$out/atmosphere.json" $(find "$out/refs" -name '*.jsonl' | sort) | sha256sum | cut -c1-16)"
+    codekey=$(cat tools/ArgoniaPlugin/NewWorld.cs tools/ArgoniaPlugin/WaterBlend.cs tools/ArgoniaPlugin/ForeignCopy.cs tools/ArgoniaPlugin/NewWorldNavmesh.cs tools/ArgoniaPlugin/NewWorldAtmosphere.cs $(ls "$out"/navmesh/navi.json "$out"/navmesh/navm/cy*.jsonl.gz 2>/dev/null) | sha256sum | cut -c1-16)
+    if [ -f "$esm" ] && [ -f "$stamp" ] && grep -q "\"key\": \"$key:$codekey\"" "$stamp"; then
+      echo "esm current ($key)"
+    else
+      t0=$(date +%s.%N)
+      plugin newworld write "$man" "$data" "$esm"
+      t1=$(date +%s.%N)
+      "$py" -c 'import json,sys,os; k,e,t=sys.argv[1:4]; json.dump({"key":k,"esm":e,"bytes":os.path.getsize(e),"write_s":round(float(t),1)},open(sys.argv[4],"w"),indent=1)' \
+        "$key:$codekey" "$esm" "$(echo "$t1 - $t0" | bc)" "$stamp.tmp"
+      mv "$stamp.tmp" "$stamp"
+    fi ;;
+  map)
+    writer
+    plugin nwmap check "$esm" "$out/map" >/dev/null || plugin nwmap apply "$esm" "$out/map" "$data"
+    plugin nwmap check "$esm" "$out/map" | tee "$out/map-check.txt" ;;
+  check)
+    plugin newworld check "$esm" "$man" "$data" | tee "$out/check.txt" ;;
+  upload)
+    [ "${NW_UPLOAD:-1}" = 1 ] || { echo "upload skipped (NW_UPLOAD=0)"; exit 0; }
+    id=$("$py" -c 'import json,sys; print(json.load(open(sys.argv[1]))["build_id"])' "$man")
+    for f in "$esm" "$stamp" "$out/check.txt" "$man"; do aws s3 cp --only-show-errors "$f" "s3://argonia-private-050977237313/nw/plugin/$id/"; done
+    echo "uploaded to s3://argonia-private-050977237313/nw/plugin/$id/" ;;
+  *) echo "usage: world.sh [write|map|check|upload]" >&2; exit 2 ;;
+esac

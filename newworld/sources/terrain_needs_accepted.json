@@ -1,0 +1,11 @@
+{
+ "about": "Terrain needs that fail on the built heightmap and stand: the map gives the place no such ground. Read by tools/newworld/terrain_needs.py, which exits 1 on any failure not named here. A row is added only with its reason; a row whose need passes again is taken out.",
+ "accepted": [
+  {"place_id": "blackrose-prison", "need": "flat-pad", "why": "the pad holds the rise the prison stands on"},
+  {"place_id": "fort-chalkmoth", "need": "flat-pad", "why": "the pad holds the rise the fort stands on"},
+  {"place_id": "mine-28-m65", "need": "flat-pad", "why": "the pad holds the knoll its entrance is cut into"},
+  {"place_id": "vicrium", "need": "flat-pad", "why": "the pad holds the knoll its entrance is cut into"},
+  {"place_id": "seafalls", "need": "rise", "why": "the map draws the place on open water: no land to raise"},
+  {"place_id": "blackrose", "need": "island", "why": "the map draws the place joined to the mainland"}
+ ]
+}

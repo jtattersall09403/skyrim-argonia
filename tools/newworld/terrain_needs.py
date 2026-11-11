@@ -2,6 +2,10 @@
 
     python3 -m tools.newworld.terrain_needs [terrain dir]     # default out/newworld/terrain; writes needs.json there
 
+Exit 1 on a failure that newworld/sources/terrain_needs_accepted.json does not name (place, need, and why the
+failure stands). A failure is mended in the terrain or the place's record; it is accepted only when the map itself
+gives the place no such ground, and the row says so.
+
 Reads the build's places_terrain.json (every need the build shaped: table rows and kind fallbacks) and judges it on
 heightmap.npy, land being ground over the water level. The bank is the bank: land within BANK_BAND_M of the water
 follows the shore's walked profile (terrain_clearance), and a place's level ground begins behind it, as at Skyrim's
@@ -140,10 +144,27 @@ def measure(out_dir: Path) -> dict:
     return res
 
 
+ACCEPTED = f.ROOT / "sources" / "terrain_needs_accepted.json"
+
+
+def judge_accepted(rows: list[dict], accepted: list[dict]) -> tuple[list[dict], list[dict], list[dict]]:
+    """(new failures, accepted failures, accepted rows that now pass or are gone)."""
+    acc = {(a["place_id"], a["need"]) for a in accepted}
+    failed = {(r["place_id"], r["need"]) for r in rows if not r["ok"]}
+    new = [r for r in rows if not r["ok"] and (r["place_id"], r["need"]) not in acc]
+    old = [r for r in rows if not r["ok"] and (r["place_id"], r["need"]) in acc]
+    return new, old, [a for a in accepted if (a["place_id"], a["need"]) not in failed]
+
+
 if __name__ == "__main__":
     r = measure(Path(sys.argv[1]) if len(sys.argv) > 1 else f.OUT / "terrain")
-    print(json.dumps({k: v for k, v in r.items() if k != "rows"}))
-    for row in r["rows"]:
-        if not row["ok"]:
-            print("FAIL", row["need"], row["place_id"], row["why"])
-    sys.exit(0 if r["failures"] == 0 else 1)
+    accepted = json.loads(ACCEPTED.read_text())["accepted"] if ACCEPTED.exists() else []
+    new, old, gone = judge_accepted(r["rows"], accepted)
+    print(json.dumps({**{k: v for k, v in r.items() if k != "rows"}, "accepted": len(old), "new": len(new)}))
+    for row in old:
+        print("accepted", row["need"], row["place_id"], row["why"])
+    for a in gone:
+        print("passes now, take its row out of terrain_needs_accepted.json:", a["need"], a["place_id"])
+    for row in new:
+        print("FAIL", row["need"], row["place_id"], row["why"])
+    sys.exit(1 if new else 0)

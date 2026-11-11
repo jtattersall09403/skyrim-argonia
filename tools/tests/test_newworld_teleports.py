@@ -98,3 +98,25 @@ def test_the_ground_is_in_game_units_from_the_limited_steps(tmp_path):
     assert float(tp.ground(p, g, None).max()) == 160.0
     lnd = tp.landing(g, tp.ground(p, g, None), {}, -8 * 4096 + 2048.0, -148 * 4096 + 2048.0, (-8, -148))
     assert lnd["z"] == 160.0 + 32.0  # above the ground, not 108 units under it
+
+
+def test_landings_prove_every_teleport_before_the_plants_are_placed(tmp_path, monkeypatch, capsys):
+    h = np.full((32 + 1, 32 + 1), 50.0)
+    cx = -3 * 4096 + 16 * 128
+    cy = -149 * 4096 - 16 * 128
+    p, g = world(tmp_path, h, refs=[(cx, cy)])   # a plant of the build before, on the place's centre
+    db = tmp_path / "db"
+    db.mkdir()
+    (db / "place.jsonl").write_text(json.dumps({"id": "helstrom", "name": "Helstrom", "world_x": cx, "world_y": cy}) + "\n")
+    monkeypatch.setattr(tp, "DB", db)
+    monkeypatch.setattr(tp, "WALK", [])
+    assert tp.main(["landings", "--plugin", str(p)]) == 0
+    assert "1 found" in capsys.readouterr().out and not (p / "map").exists()     # nothing written
+    early = tp.build(p, None, write=False, world_refs=False)["teleports"][0]
+    assert (early["x"], early["y"]) == (cx, cy)                                  # the old plant keeps nothing clear
+    late = tp.build(p, None, write=False)["teleports"][0]
+    assert np.hypot(late["x"] - cx, late["y"] - cy) >= tp.CLEAR
+    # a walk check whose kind of water is nowhere near its anchor is named, and the proof is red
+    monkeypatch.setattr(tp, "WALK", [{"name": "ANWWalkPond", "check": "G", "what": "a pond", "water": "pond", "near": [-3, -150]}])
+    assert tp.main(["landings", "--plugin", str(p)]) == 1
+    assert "ANWWalkPond: no bank of pond" in capsys.readouterr().out

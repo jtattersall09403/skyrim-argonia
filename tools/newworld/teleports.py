@@ -12,6 +12,9 @@ named cell is found by its editor id, so `coc` never passes cell numbers through
            <plugin>/map/teleports.md     the console list for the owner
     python -m tools.newworld.teleports check [--plugin ...]    every landing on land above water, in its own cell,
         clear of placed objects; exit 1 on any fault
+    python -m tools.newworld.teleports landings [--plugin ...] before the plants are placed: every place has dry land
+        within reach and every walk check its kind of water (the land, the cells' water and the built places only;
+        writes nothing); exit 1 naming the first that has none
 
 `ArgoniaPlugin nwmap apply` (lod.sh map, a world.sh stage) names each cell and places the marker;
 `nwmap check` reads both back.
@@ -80,12 +83,12 @@ def _add(acc: dict, x: float, y: float, rad: float) -> None:
             acc.setdefault((cx, cy), []).append((x, y, rad))
 
 
-def refs_by_cell(plugin: Path, places: Path | None = PLACES) -> dict[tuple[int, int], np.ndarray]:
+def refs_by_cell(plugin: Path, places: Path | None = PLACES, world: bool = True) -> dict[tuple[int, int], np.ndarray]:
     """Keep-out circles (x, y, radius) per cell: every placed object of the world (refs/<producer>/cy*.jsonl, CLEAR
     round it) and of each built place's exterior (newworld/places/<id>/spaces/exterior/refs.jsonl, written into
     the places plugin): a building or other seated piece by its footprint's far corner, scaled, plus CLEAR."""
     acc: dict[tuple[int, int], list] = {}
-    for f in glob.glob(str(plugin / "refs" / "*" / "cy*.jsonl")):
+    for f in glob.glob(str(plugin / "refs" / "*" / "cy*.jsonl")) if world else []:
         with open(f) as fh:
             for ln in fh:
                 r = json.loads(ln)
@@ -187,13 +190,15 @@ def surface(g: su.Grid, x: float, y: float, own: tuple[int, int]) -> dict:
             "own_cell": True, "surface": True}
 
 
-def build(plugin: Path, built: Path | None = PLACES) -> dict:
+def build(plugin: Path, built: Path | None = PLACES, write: bool = True, world_refs: bool = True) -> dict:
+    """The teleports of the land in `plugin`. `write=False, world_refs=False` is the early proof (`landings`): no
+    file is written and the world's placed objects, not yet placed on this land, keep nothing clear."""
     g = grid(plugin)
     h = ground(plugin, g, built)
     man = json.loads((plugin / "land" / "manifest.json").read_text())
     start_cell = tuple(man["marker"]["cell"])
     cells = json.loads((plugin / "cells.json").read_text())["cells"]
-    refs = refs_by_cell(plugin, built)
+    refs = refs_by_cell(plugin, built, world_refs)
     places = [json.loads(ln) for ln in (DB / "place.jsonl").read_text().splitlines() if ln.strip()]
     places.sort(key=lambda p: (-(p.get("importance") or 0), p["id"]))
     names: dict[tuple[int, int], str] = {start_cell: START_CELL}
@@ -239,6 +244,8 @@ def build(plugin: Path, built: Path | None = PLACES) -> dict:
     doc = {"build_id": g.build_id, "world": WORLD, "marker_base": "000032:Skyrim.esm",  # COCMarkerHeading
            "cells": [{"coc": n, "cell": list(c)} for c, n in sorted(names.items(), key=lambda kv: kv[1]) if n != START_CELL],
            "teleports": out}
+    if not write:
+        return doc
     d = plugin / "map"
     d.mkdir(parents=True, exist_ok=True)
     (d / "teleports.json").write_text(json.dumps(doc, indent=1))
@@ -297,10 +304,20 @@ def check(plugin: Path, built: Path | None = PLACES) -> list[str]:
 
 def main(argv: list[str]) -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("cmd", choices=("build", "check"))
+    ap.add_argument("cmd", choices=("build", "check", "landings"))
     ap.add_argument("--plugin", default=str(REPO / "out/newworld/plugin"))
     a = ap.parse_args(argv)
     plugin = Path(a.plugin)
+    if a.cmd == "landings":
+        try:
+            doc = build(plugin, write=False, world_refs=False)
+        except ValueError as e:
+            print(f"teleports landings: FAIL {e}")
+            return 1
+        t = doc["teleports"]
+        print(f"teleports landings: {len(t)} found ({sum(x['kind'] == 'walk' for x in t)} walk checks), "
+              f"{sum(not x['own_cell'] for x in t)} in a neighbour cell")
+        return 0
     if a.cmd == "build":
         doc = build(plugin)
         t = doc["teleports"]
