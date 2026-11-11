@@ -25,6 +25,7 @@ waterside towns and forts. Each need is judged on the ground it is about:
 from __future__ import annotations
 
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -147,12 +148,37 @@ def measure(out_dir: Path) -> dict:
 ACCEPTED = f.ROOT / "sources" / "terrain_needs_accepted.json"
 
 
+NUMBER = re.compile(r"(?<![\w.])-?\d+(?:\.\d+)?")
+# which way each reason's measure is worse: +1 a larger value, -1 a smaller one
+WORSE = {"slope p90 # deg": 1, "gentlest bank # deg": 1, "lift # m": -1, "depth # m": -1,
+         "no room behind the bank (#% of the pad)": -1, "no room behind the bank (#% of the top)": -1}
+
+
+def reason(why: str) -> tuple[str, float | None]:
+    """A failure's reason as its class (the judge's words, each number as #) and its first measure."""
+    m = NUMBER.search(why)
+    return NUMBER.sub("#", why), (float(m.group()) if m else None)
+
+
+def stands(row: dict, a: dict | None) -> bool:
+    """Whether a failure is the one its accepted row names: the same reason, and a measure no worse than the bound."""
+    if a is None:
+        return False
+    cls, v = reason(row["why"])
+    if cls != a.get("reason"):
+        return False
+    way = WORSE.get(cls)
+    return way is None or v is None or (a.get("bound") is not None and (v - a["bound"]) * way <= 0)
+
+
 def judge_accepted(rows: list[dict], accepted: list[dict]) -> tuple[list[dict], list[dict], list[dict]]:
-    """(new failures, accepted failures, accepted rows that now pass or are gone)."""
-    acc = {(a["place_id"], a["need"]) for a in accepted}
+    """(new failures, accepted failures, accepted rows that now pass or are gone). An accepted row names the
+    reason its need failed for and the value measured when it was accepted (`reason`, `bound`): a failure for
+    another reason, or one whose measure is worse than the bound, is new."""
+    acc = {(a["place_id"], a["need"]): a for a in accepted}
     failed = {(r["place_id"], r["need"]) for r in rows if not r["ok"]}
-    new = [r for r in rows if not r["ok"] and (r["place_id"], r["need"]) not in acc]
-    old = [r for r in rows if not r["ok"] and (r["place_id"], r["need"]) in acc]
+    new = [r for r in rows if not r["ok"] and not stands(r, acc.get((r["place_id"], r["need"])))]
+    old = [r for r in rows if not r["ok"] and stands(r, acc.get((r["place_id"], r["need"])))]
     return new, old, [a for a in accepted if (a["place_id"], a["need"]) not in failed]
 
 
@@ -165,6 +191,9 @@ if __name__ == "__main__":
         print("accepted", row["need"], row["place_id"], row["why"])
     for a in gone:
         print("passes now, take its row out of terrain_needs_accepted.json:", a["need"], a["place_id"])
+    was = {(a["place_id"], a["need"]): a for a in accepted}
     for row in new:
-        print("FAIL", row["need"], row["place_id"], row["why"])
+        a = was.get((row["place_id"], row["need"]))
+        print("FAIL", row["need"], row["place_id"], row["why"],
+              f"(accepted only as {a.get('reason')!r} no worse than {a.get('bound')})" if a else "")
     sys.exit(1 if new else 0)

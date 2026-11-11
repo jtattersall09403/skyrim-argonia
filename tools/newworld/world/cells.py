@@ -96,9 +96,9 @@ def build(out: Path) -> dict:
             if w.any():
                 kc = Counter(K[:, sc][w].tolist()).most_common(1)[0][0]
                 kname = kinds[kc] if kc < len(kinds) else "ocean"
-                key = wt.key_for(kname, flow.get((cx, cy)), still.get(regions[rc], {}).get("wet", "pond"))
-                rec["water"] = key
-                counts[key] += 1
+                watr = wt.key_for(kname, flow.get((cx, cy)), still.get(regions[rc], {}).get("wet", "pond"))
+                rec["water"] = watr
+                counts[watr] += 1
             cells[f"{cx},{cy}"] = rec
     region_rows = {}
     for r in lc.jsonl("region"):

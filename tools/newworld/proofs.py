@@ -3,8 +3,9 @@ output, against the same key computed now by the tool's own functions. Read-only
 
     python3 -m tools.newworld.proofs land|landcover|paint [--plugin out/newworld/plugin]
 
-tools/newworld/rebuild.py asks this of a stage it holds no stamp for. It lives here, outside the tools, because each
-of these tools hashes its own file into its key: a line added to the tool would make its whole output stale.
+tools/newworld/rebuild.py asks this of a stage it holds no record of. It lives here, outside the tools, because each
+of these tools hashes its own file into its key: a line added to the tool would make its whole output stale. An
+output the rebuild built carries the rebuild's key as well (tools/newworld/keyed.py) and is judged by its stamp.
 The key's make-up is each tool's, restated here beside the lines it comes from; a tool that changes how it keys
 changes its line here in the same commit (the proof then fails closed: the stage runs).
 """

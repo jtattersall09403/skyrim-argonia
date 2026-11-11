@@ -45,9 +45,10 @@ it is not ready to build.
   `newworld/sources/terrain_held.json`: the terrain build it was seated on and its cells. Inside them the beds are
   that build's, sample for sample, and the land is that build's plus a lift that ramps from nothing at the old
   waterline. A terrain change is tried on the built places before the world is rebuilt:
-  `ARGONIA_TERRAIN_PROBE=<place>,<place> tools/newworld/rebuild.sh run --to needs` builds the terrain, runs
-  `terrain check` (held ground exact, each water kind's waterline triangles over 45 degrees within Skyrim's
-  share) and judges every place's needs, and stops there. Read both before anything later runs.
+  `ARGONIA_TERRAIN_PROBE=<place>,<place> tooling/job_guard.sh run nw-rebuild -- tools/newworld/rebuild.sh run --to needs`
+  builds the terrain, runs `terrain check` (held ground exact, each water kind's waterline triangles over 45
+  degrees within Skyrim's share) and judges every place's needs, and stops there
+  (`tooling/job_guard.sh wait nw-rebuild`). Read both before anything later runs.
 - **The waterline does not move without the owner.** `water_kinds` fails when a kind's bodies or area leave the
   accepted classification (`newworld/sources/water_accepted.json`) or the waterline moves. When the change is
   meant to move them, show the owner the new classification (the Atlas, section 7), and only on the owner's word
@@ -64,7 +65,8 @@ it is not ready to build.
   `tex/materials.json`: add a material at the end of its list, and rebuild the place layer after the world.
 - **A terrain need is mended, not waved through.** `terrain_needs` fails on a failure that
   `newworld/sources/terrain_needs_accepted.json` does not name. A row is added there only when the map gives the
-  place no such ground, with that reason.
+  place no such ground, with that reason, the judge's own words for the failure (`reason`) and the value it was
+  measured at (`bound`): the same need failing for another reason, or worse than its bound, fails the stage again.
 
 ## 3. Make the change at its source
 
@@ -83,21 +85,34 @@ It prints the order (derived from what each stage reads and writes) and each sta
 - `stale`, with the reason: the inputs that changed, a missing output, or an output that names another build. It
   runs.
 - `follows` a stale stage: it runs only if that stage changes something it reads. A stage whose inputs come out
-  the same bytes is skipped at its turn.
+  the same bytes is skipped at its turn. A terrain build whose heightmap comes out the same bytes is the same
+  build: it keeps its id, and the stages after it are skipped.
+- `proved`: the rebuild has no record of the stage, and its own tool proves its output was made from today's
+  inputs. Its checks alone run, and the run marks it; from then on it goes stale by everything it reads.
 
 If the plan shows more stale than the table led you to expect, find out why before running: a file changed that
 you did not mean to change.
 
-A stamp is written only by the run that made the output. A stage the rebuild has never run is current only when
-its own tool proves it: the key the tool stored beside its output, computed again from today's inputs, is the
-same (the terrain, the land shards, the landcover, the placed refs, the ground paint, the cells, the world file).
-Matching build ids are not proof. A stage that cannot prove it is stale and runs; the tools that keep their own
-keys or caches make that run short. Never stamp by hand.
+The rebuild keeps one record for each stage (`out/newworld/rebuild/<stage>.json`), written only by a run: that the
+stage's commands have started, that they are done, and, when its checks are green, the key of everything the stage
+read. A run that was killed or went red part-way through a stage leaves that stage stale, whatever is done to its
+inputs afterwards. A stage with no record is current only when its own tool proves it: the record the tool left
+beside its output, computed again from today's inputs, is the same (the terrain, the land shards, the landcover,
+the placed refs, the ground paint, the cells). Matching build ids are not proof. A stage that cannot prove it runs.
+Never write a record by hand.
+
+The land shards, the landcover, the placed refs, the ground paint and the world file each skip, or resume by row,
+on a key of their own that covers less than their stage reads. The rebuild hands each its own key for the stage
+(`tools/newworld/keyed.py`, `world.sh`), so a stage the plan calls stale is always built again and a stopped run
+resumes where it stopped. Run by hand, each tool keeps its own key.
 
 A tool that hashes its own file into its key (`world/land.py`, `landcover.py`, `world/texture.py`,
 `place/place.py`) goes stale with any edit to that file, a comment included: its whole output is built again, and
-everything after it. Put what is not the rule itself in another file (`tools/newworld/proofs.py` holds those
-tools' proofs for that reason).
+everything after it. Put what is not the rule itself in another file (`tools/newworld/proofs.py` and
+`tools/newworld/keyed.py` hold those tools' proofs and the rebuild's key for that reason).
+
+`plan` reads each file once and remembers its digest while the file is untouched; `run` reads every file it
+decides on.
 
 ## 5. Run
 
@@ -109,12 +124,12 @@ tools' proofs for that reason).
   studio finalise. `preflight` proves all of that, the inputs, the accepted records, the disk and the memory, and
   that every stale stage's tool starts; `run` runs it first and starts nothing if it is red.
 - Before a run that reaches a long stage (`paint`, `navmesh`, `esm`), clear what can be cleared first:
-  `make check`, and `run --to needs` for a terrain change (section 2).
+  `make check`, and the terrain's own trial for a terrain change (section 2).
 - The run starts each stale stage as soon as the stages it reads from are done, side by side where the machine's
   memory allows. Every cheap check (the terrain check, the needs, the water kinds, the relief rows, the teleports'
   landings, the placement check) is green before the paint or the navmesh starts.
-- A stopped run is resumed by the same command: stamped stages are current, and the long stages keep their own
-  rows and cells.
+- A stopped run is resumed by the same command: stamped stages are current, the stage that was stopped runs
+  again, and the long stages keep the rows and cells they had built for it.
 - `run --to <stage>` runs only what that stage needs. `run --force <stage>` runs a current stage again.
 - Never run a stage's tool by hand in the main tree to move the build on: the plan cannot tell what it read.
 - The run ends with a summary: stages run, stages skipped, checks passed and failed, what went stale beyond
@@ -150,11 +165,10 @@ check's own lines are printed (`out/newworld/rebuild/logs/<stage>.log` has the w
 
 ### The LOD and the deploy
 
-**Owed: this section is cut from [docs/design/lod.md](../../../docs/design/lod.md) when that recipe has landed.**
-Until then that document is the authority for the play machine's steps (which LOD step a change makes stale, the
-preflight, the worldspace rule, the deploy of the world file) and nothing here restates it. Two rules hold
-whatever it says: no LOD step starts before every built place's ground is level and checked on this world file,
-and the LOD is built for our worldspace only.
+[docs/design/lod.md](../../../docs/design/lod.md) is the recipe for the play machine's steps: which LOD step a
+change makes stale, its preflight, and the deploy of the world file and the stack. Two rules hold here: no LOD step
+starts before every built place's ground is level and checked on this world file, and the LOD is built for our
+worldspace only.
 
 ## 8. Lanes in worktrees
 

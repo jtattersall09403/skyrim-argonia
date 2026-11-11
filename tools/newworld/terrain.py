@@ -4,6 +4,11 @@
     python3 -m tools.newworld.terrain check      # re-check the built outputs
     python3 -m tools.newworld.terrain inputs     # exit 1 naming each input that changed since the build
     python3 -m tools.newworld.terrain --no-upload
+    python3 -m tools.newworld.terrain_upload     # the standing build to the bucket (NW_UPLOAD=0 skips it)
+
+A build whose heightmap comes out the standing build's, byte for byte, is that build: it keeps its id and its
+record (`settle`), so nothing that stands on the build goes stale. `inputs.json` beside the build holds the digest
+of everything the build read.
 
 Inputs: the map's water (`out/newworld/raster/water.png`) and foreign land (`foreign.png`), the region of every
 cell (`out/newworld/cell_region.json`), the scope (`out/newworld/scope_cells.json`), the roads
@@ -59,7 +64,6 @@ import hashlib
 import json
 import math
 import os
-import subprocess
 import sys
 import time
 
@@ -76,6 +80,7 @@ from tools.newworld import terrain_forms as tf
 from tools.newworld import terrain_held as th
 from tools.newworld import terrain_relief as tr
 from tools.newworld import terrain_shape as ts
+from tools.newworld import terrain_upload
 from tools.newworld import terrain_water as tw
 
 OUT = f.OUT / "terrain"
@@ -83,7 +88,7 @@ OUT = f.OUT / "terrain"
 TRIAL = bool(os.environ.get("ARGONIA_TERRAIN_OUT"))
 if TRIAL:
     OUT = f.Path(os.environ["ARGONIA_TERRAIN_OUT"])
-BUCKET = "s3://argonia-private-050977237313/nw/terrain"
+BUCKET = terrain_upload.BUCKET
 CLIFF_DEG = 55.0
 MAP_HELD = 0.97        # share of map water (land) pixels whose centre reads under (over) the water level
 BLOCKS_HELD = 0.99     # share of 4 x 4 pixel blocks whose majority class the heightmap keeps
@@ -122,14 +127,40 @@ def probe(stage: str, a: np.ndarray, per_m: float = 1.0) -> None:
             a[i, j] / per_m, win.mean() / per_m, win.min() / per_m, win.max() / per_m))
 
 
+def _reads():
+    """The rebuild's view of this tree and its terrain stage: what the terrain reads is named once, in
+    tools/newworld/rebuild.py, and digested here by the same code."""
+    from tools.newworld import rebuild as R
+    t = R.Tree(repo=f.REPO, out=f.OUT.parent, fresh=True)
+    return t, t.by_name["terrain"].reads
+
+
 def input_digests() -> dict:
-    """sha256 (12 hex) of the files that decide where the ground lies and what shape it takes: written into
-    build.json, and `terrain check` fails when one has changed since (the build no longer answers its inputs)."""
-    from tools.newworld import water_held as wh
-    files = {"scope_cells.json": f.OUT / "scope_cells.json", "cell_region.json": f.OUT / "cell_region.json",
-             "region_relief.json": tf.SPEC, "terrain_held.json": th.HELD,
-             "water_overrides.json": wh.OVERRIDES, "water_owner_bodies.png": wh.PNG}
-    return {k: hashlib.sha256(p.read_bytes()).hexdigest()[:12] if p.exists() else None for k, p in files.items()}
+    """The digest of everything the terrain stage reads (files by content, tables by the columns read, the code):
+    written beside the build as inputs.json. `terrain inputs` and `terrain check` fail when one has changed since
+    (the build no longer answers its inputs)."""
+    t, reads = _reads()
+    return {spec: t.digest(spec) for spec in reads}
+
+
+VOLATILE = ("seconds", "peak_rss_mb")     # a run's time and memory: never a reason to rewrite the record
+
+
+def settle(old: dict | None, new: dict) -> dict | None:
+    """The build record to write, or None when the standing record holds. A build whose heightmap is the standing
+    build's, byte for byte, is that build: it keeps its id and the bucket folder named for it, and when nothing
+    else in the record changed but the run's time and memory the record is left as it is, bytes and time."""
+    new = json.loads(json.dumps(new, default=_j))
+    if not old or old.get("sha256") != new["sha256"]:
+        return new
+    new = {**new, "id": old["id"], "files": old.get("files", new["files"])}
+    drop = (*VOLATILE, "inputs")
+    same = {k: v for k, v in new.items() if k not in drop} == {k: v for k, v in old.items() if k not in drop}
+    return None if same else new
+
+
+def record_inputs(build_id: str, sha: str, inputs: dict) -> None:
+    (OUT / "inputs.json").write_text(json.dumps({"id": build_id, "sha256": sha, "inputs": inputs}, indent=1))
 
 
 def make_grid(scope) -> ts.Grid:
@@ -612,19 +643,24 @@ def build(upload: bool = True) -> dict:
              "about": ("float32 game units (70 a metre), north-up, row 0 the north edge; heightmap.png is 16-bit: "
                        f"h = {offset} + 8 v units; water bodies at map px; cliffs over {CLIFF_DEG} deg"),
              "png_offset_units": offset, "png_scale_units": ts.QUANT,
-             "regions": psrc, "characters": forms, "held": held, "inputs": inputs, "peak_rss_mb": rss_mb()[1],
+             "regions": psrc, "characters": forms, "held": held, "peak_rss_mb": rss_mb()[1],
              "beyond": {"pad_px": tb.PAD_PX, "cells_x": [int(round(grid.ox / f.CELL_UNITS)),
                                                    int(round((grid.ox + (grid.cols - 1) * ts.STEP) / f.CELL_UNITS)) - 1],
                         "cells_y": [int(round((grid.oy - (grid.rows - 1) * ts.STEP) / f.CELL_UNITS)),
                                     int(round(grid.oy / f.CELL_UNITS)) - 1]},
              "water_overrides": len(overrides), "water_held": len(wh.kinds(overrides)), "water_override_problems": ov_problems, "roads_used": bool(plans), "settled_places": settled, "islets": islets, "seconds": round(time.time() - t0)}
-    (OUT / "build.json").write_text(json.dumps(bjson, indent=1, default=_j))
+    standing = json.loads((OUT / "build.json").read_text()) if (OUT / "build.json").exists() else None
+    kept = settle(standing, bjson)
+    if kept is None:
+        bjson = standing
+        log("the heightmap is build", bjson["id"], "byte for byte: its id and record stand")
+    else:
+        bjson = kept
+        (OUT / "build.json").write_text(json.dumps(bjson, indent=1))
+    record_inputs(bjson["id"], sha, inputs)
     log("checks", json.dumps({k: v for k, v in chk.items() if k != "guarantee_fails_px"}, default=_j))
     if upload and not TRIAL:
-        subprocess.run(["aws", "s3", "cp", "--recursive", "--quiet", str(OUT), f"{BUCKET}/{stamp}/"], check=True)
-        subprocess.run(["aws", "s3", "cp", "--quiet", str(f.OUT / "water_bodies.json"), f"{BUCKET}/{stamp}/"],
-                       check=True)
-        log("uploaded", f"{BUCKET}/{stamp}/")
+        log("uploaded", terrain_upload.upload())
     return bjson
 
 
@@ -712,8 +748,7 @@ def check_built() -> int:
         if k in old:
             chk[k] = old[k]
     chk["sha256_matches"] = sha == b["sha256"]
-    now = input_digests()
-    chk["inputs_changed"] = sorted(k for k, v in now.items() if b.get("inputs", {}).get(k) != v)
+    chk["inputs_changed"] = inputs_changed()
     print(json.dumps(chk, indent=1, default=_j))
     # the smooth coast moves banks by a pixel or two: the map's water and land are held on 4 px blocks
     ok = (chk["water_pixels_under"] >= MAP_HELD and chk["land_pixels_above"] >= MAP_HELD
@@ -727,17 +762,34 @@ def check_built() -> int:
 
 
 def inputs_changed() -> list[str]:
-    """The inputs whose digest is no longer the one build.json recorded."""
-    was = json.loads((OUT / "build.json").read_text()).get("inputs", {})
-    return sorted(k for k, v in input_digests().items() if was.get(k) != v)
+    """The inputs whose digest is no longer the one inputs.json recorded for the standing build; the record
+    itself when it is missing or another build's."""
+    b = json.loads((OUT / "build.json").read_text())
+    rec = json.loads((OUT / "inputs.json").read_text()) if (OUT / "inputs.json").exists() else {}
+    if rec.get("id") != b["id"] or rec.get("sha256") != b["sha256"]:
+        return ["inputs.json (no record of this build's inputs)"]
+    now, was = input_digests(), rec.get("inputs") or {}
+    return sorted(k.split(":", 1)[-1] for k in now.keys() | was.keys() if was.get(k) != now.get(k))
+
+
+def unproven() -> list[str]:
+    """Why the standing build is not proved to be made from today's inputs: the inputs that changed, and the
+    heightmap when it is not the one the build recorded."""
+    b = json.loads((OUT / "build.json").read_text())
+    hm = OUT / "heightmap.npy"
+    sha = hashlib.sha256(hm.read_bytes()).hexdigest() if hm.exists() else None
+    return inputs_changed() + ([] if sha == b["sha256"] else ["heightmap.npy (not the build's own)"])
 
 
 if __name__ == "__main__":
     if sys.argv[1:2] == ["check"]:
         sys.exit(check_built())
     if sys.argv[1:2] == ["inputs"]:
-        changed = inputs_changed()
-        print("terrain inputs:", "changed since the build: " + ", ".join(changed) if changed else "as built")
+        try:
+            changed = unproven()
+        except (OSError, ValueError, KeyError) as e:
+            changed = [f"no build to prove ({type(e).__name__}: {e})"]
+        print("terrain inputs:", "changed since the build: " + ", ".join(changed[:6]) if changed else "as built")
         sys.exit(1 if changed else 0)
     build(upload="--no-upload" not in sys.argv)
     from tools.newworld import terrain_character

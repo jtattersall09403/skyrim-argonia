@@ -4,11 +4,12 @@
 # the shards; the order of the whole rebuild, its keys and its checks are tools/newworld/rebuild.py's, and the recipe
 # is the skill world-build.
 #   world.sh write    the ESM from land/, tex/, cells.json, atmosphere.json, refs/<producer>/ and navmesh/
-#                     (ArgoniaPlugin `newworld write`); skipped when the stamp ArgoniaNewWorld.json holds this key
-#   world.sh current  exit 0 when the ESM and its stamp hold the key `write` computes today (writes nothing)
+#                     (ArgoniaPlugin `newworld write`); skipped when the stamp ArgoniaNewWorld.json holds this key.
+#                     The key ends with NW_STAGE_KEY when the rebuild sets it (the digest of everything its stage
+#                     reads): the file is then written anew unless it was written for that very key
 #   world.sh map      the map data of map/ applied when the ESM lacks it (`nwmap apply`), then read back -> map-check.txt
 #   world.sh check    the file read back (`newworld check`: cells, height error, seams, overflow, water, the start
-#                     marker) -> check.txt
+#                     marker) -> check.txt (the same bytes for the same file: the time it took is left out)
 #   world.sh upload   the ESM, its stamp, check.txt and the land manifest -> s3://argonia-private-050977237313/nw/plugin/<build id>/
 #   world.sh          the whole rebuild: tools/newworld/rebuild.sh run
 # Masters: Skyrim.esm, Update.esm, Black Marsh.esm; records of asset-only mods are copied as ours (ForeignCopy.cs).
@@ -36,12 +37,10 @@ esm_key() {
   key=$("$py" -c 'import json,sys; print(json.load(open(sys.argv[1]))["key"])' "$man")
   key="$key:${NW_REF_PRODUCERS:-all}:$(cat "$out/tex/manifest.json" "$out/cells.json" "$out/atmosphere.json" $(find "$out/refs" -name '*.jsonl' | sort) | sha256sum | cut -c1-16)"
   codekey=$(cat tools/ArgoniaPlugin/NewWorld.cs tools/ArgoniaPlugin/WaterBlend.cs tools/ArgoniaPlugin/ForeignCopy.cs tools/ArgoniaPlugin/NewWorldNavmesh.cs tools/ArgoniaPlugin/NewWorldAtmosphere.cs $(ls "$out"/navmesh/navi.json "$out"/navmesh/navm/cy*.jsonl.gz 2>/dev/null) | sha256sum | cut -c1-16)
+  [ -z "${NW_STAGE_KEY:-}" ] || codekey="$codekey:$NW_STAGE_KEY"
 }
 esm_current() { [ -f "$esm" ] && [ -f "$stamp" ] && grep -q "\"key\": \"$key:$codekey\"" "$stamp"; }
 case "$1" in
-  current)
-    esm_key
-    if esm_current; then echo "esm: its key is today's"; else echo "esm: its key is not today's"; exit 1; fi ;;
   write)
     writer
     dotnet build -c Release -o "$bin" tools/ArgoniaPlugin -v q -nologo >/dev/null
@@ -61,11 +60,11 @@ case "$1" in
     plugin nwmap check "$esm" "$out/map" >/dev/null || plugin nwmap apply "$esm" "$out/map" "$data"
     plugin nwmap check "$esm" "$out/map" | tee "$out/map-check.txt" ;;
   check)
-    plugin newworld check "$esm" "$man" "$data" | tee "$out/check.txt" ;;
+    plugin newworld check "$esm" "$man" "$data" | sed -E 's/^( *(PASS|FAIL)) in [0-9.]+ s$/\1/' | tee "$out/check.txt" ;;
   upload)
     [ "${NW_UPLOAD:-1}" = 1 ] || { echo "upload skipped (NW_UPLOAD=0)"; exit 0; }
     id=$("$py" -c 'import json,sys; print(json.load(open(sys.argv[1]))["build_id"])' "$man")
     for f in "$esm" "$stamp" "$out/check.txt" "$man"; do aws s3 cp --only-show-errors "$f" "s3://argonia-private-050977237313/nw/plugin/$id/"; done
     echo "uploaded to s3://argonia-private-050977237313/nw/plugin/$id/" ;;
-  *) echo "usage: world.sh [write|current|map|check|upload]" >&2; exit 2 ;;
+  *) echo "usage: world.sh [write|map|check|upload]" >&2; exit 2 ;;
 esac
