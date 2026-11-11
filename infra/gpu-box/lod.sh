@@ -179,6 +179,38 @@ do_send() {  # each file only when the machine's copy differs
   fi
 }
 
+# The machine's preflight output (lod.ps1 -Step preflight) read against what it must say: its report lines, then one
+# FAULT line for each thing that cannot be read from it, with what the machine said instead. $1 the output; the rest
+# the lines wanted of it: "have <file> <sha256>", "tool <id> <sha256>", "have lodmodels <count>". Exit 1 on any fault.
+read_machine() {
+  local o w k got bad=0
+  o=$(tr -d '\r' <<<"$1" | sed 's/^\[[0-9:]*\] //'); shift
+  said() { awk -v k="$1" '$0 == k || index($0, k " ") == 1' <<<"$o" | head -1; }
+  if ! grep -q '[^[:space:]]' <<<"$o"; then
+    echo "FAULT the machine's preflight printed nothing: no answer over SSH, or lod.ps1 never started (infra/gpu-box/run.sh ps hostname)"; return 1
+  fi
+  grep -E '^(FAULT|disk free|ram free|preset worlds|have lodmodels) ' <<<"$o" || true
+  if ! grep -qE '^(FAULT|tool|have|disk free|ram free|preset worlds) ' <<<"$o"; then
+    echo "FAULT the machine's preflight ran none of its checks: it printed no tool, have, disk, memory or preset line, only \"$(grep '[^[:space:]]' <<<"$o" | tail -3 | paste -sd'|')\" (lod.ps1's preflight step)"; return 1
+  fi
+  for k in 'disk free' 'ram free' 'preset worlds at 1:'; do
+    [ -n "$(said "$k")" ] || { echo "FAULT the machine's preflight printed no \"$k\" line"; bad=1; }
+  done
+  for w in "$@"; do
+    grep -qxF "$w" <<<"$o" && continue
+    k=${w% *}; got=$(said "$k"); got=${got:-no \"$k\" line}; bad=1
+    case "$w" in
+      tool\ *) k=${k#tool }; echo "FAULT tool $k on the machine is not at its pinned hash $(cut -c1-12 <<<"${w##* }") (the machine printed: $got)" ;;
+      have\ lodmodels\ *) echo "FAULT the machine does not hold the ${w##* } LOD models built here (the machine printed: $got)" ;;
+      *) echo "FAULT the machine's ${k#have } is not the one built here, ${w##* } (the machine printed: $got)" ;;
+    esac
+  done
+  if ! grep -qx 'preflight OK' <<<"$o"; then
+    bad=1; grep -q '^FAULT ' <<<"$o" || echo "FAULT the machine's preflight did not finish: $(grep '[^[:space:]]' <<<"$o" | tail -2 | paste -sd'|')"
+  fi
+  return $bad
+}
+
 do_preflight() {  # every check that needs no long step; one FAULT line per fault
   local f="$out/preflight.txt" o bad=0; : > "$f"
   [ -f "$esm" ] && keys
@@ -190,20 +222,14 @@ do_preflight() {  # every check that needs no long step; one FAULT line per faul
   keys || fault "the step keys cannot be computed"
   do_tools | tee -a "$f" || fault "the tools are not at their pinned hashes"
   do_send | tee -a "$f" || fault "the inputs could not be sent"
-  o=$("$run" ps "powershell -ExecutionPolicy Bypass -File C:\\argonia\\infra\\lod.ps1 -Step preflight $PSX" | tr -d '\r') || true
-  { grep -E 'FAULT|disk free|ram free|preset worlds|have lodmodels' <<<"$o" || true; } | sed 's/^\[[0-9:]*\] //' | tee -a "$f"
-  grep -q 'preflight OK' <<<"$o" || { bad=1; grep -q FAULT <<<"$o" || fault "the machine's preflight did not finish: $(tail -2 <<<"$o" | tr '\n' ' ')"; }
-  # the machine holds exactly what was built here: the ESM, the .lod, each plan file, each tool
-  local x h
-  for x in "$esm" "$lod" $(plan_files); do
-    h=$(sha256sum "$x" | cut -c1-64)
-    grep -q "have $(basename "$x") $h" <<<"$o" || fault "the machine's $(basename "$x") is not the one built here ($h)"
-  done
-  while read -r x h; do
-    grep -q "tool $x $h" <<<"$o" || fault "tool $x on the machine is not at its pinned hash ${h:0:12}"
-  done < <("$PY" -c 'import json,sys; [print(m["id"], m["sha256"]) for m in json.load(open(sys.argv[1]))["mods"]]' "$here/lod-tools.json")
-  x=$(find "$lm/meshes" -name '*_lod_*.nif' 2>/dev/null | wc -l)
-  grep -q "have lodmodels $x\$" <<<"$o" || fault "the machine does not hold the $x LOD models built here"
+  o=$("$run" ps "powershell -ExecutionPolicy Bypass -File C:\\argonia\\infra\\lod.ps1 -Step preflight $PSX" 2>&1) || true
+  # the machine holds exactly what was built here: the ESM, the .lod, each plan file, each tool, the LOD models
+  local x h need=()
+  for x in "$esm" "$lod" $(plan_files); do need+=("have $(basename "$x") $(sha256sum "$x" | cut -c1-64)"); done
+  while read -r x h; do need+=("tool $x $h"); done < <("$PY" -c 'import json,sys; [print(m["id"], m["sha256"]) for m in json.load(open(sys.argv[1]))["mods"]]' "$here/lod-tools.json")
+  need+=("have lodmodels $(find "$lm/meshes" -name '*_lod_*.nif' 2>/dev/null | wc -l)")
+  x=$(read_machine "$o" "${need[@]}") || bad=1
+  tee -a "$f" <<<"$x"
   local mk pv s; mk=$(machine_keys); pv=$(proved)
   echo "keys wanted: terrain $(want terrain) texgen $(want texgen) dyndolod $(want dyndolod); on the machine: $(tr '\n' ' ' <<<"$mk")" | tee -a "$f"
   # the small world first: a step that will run has had this very code (scripts, settings, tools, plan writer) run
@@ -315,6 +341,7 @@ case "$cmd" in
         echo "code keys: terrain=$(proof terrain) texgen=$(proof texgen) dyndolod=$(proof dyndolod); proven on the small world: $(proved | tr '\n' ' ')" ;;
   selftest) t0=$SECONDS; do_selftest "$@"; echo "== selftest: $(( SECONDS - t0 )) s" | tee -a "$out/timings.txt" ;;
   tools) put_ps1; do_tools ;;
+  read-machine) read_machine "$(cat "$1")" "${@:2}" ;;   # a saved preflight output read as the preflight reads it
   send) put_ps1; do_send ;;
   run) put_ps1; do_run "$@" ;;
   check) put_ps1; do_check ;;

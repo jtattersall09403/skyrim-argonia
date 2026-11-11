@@ -25,7 +25,8 @@ def grup(label, kind, content):
     return b"GRUP" + struct.pack("<I", 24 + len(content)) + label + struct.pack("<iII", kind, 0, 0) + content
 
 
-def esm(land=b"\x01" * 40, water=1.0, ref_x=10.0, stat_flags=0, mnam=b"\0" * 28, interior=b"a", marker_x=0.0, cell_name=b""):
+def esm(land=b"\x01" * 40, water=1.0, ref_x=10.0, stat_flags=0, mnam=b"\0" * 28, interior=b"a", marker_x=0.0, cell_name=b"",
+        fern_id=0x511, fern=b"fern.dds", mud=b"mud.dds"):
     refr = rec(b"REFR", 0x900, sub(b"NAME", struct.pack("<I", 0x800)) + sub(b"DATA", struct.pack("<6f", ref_x, 0, 0, 0, 0, 0)))
     refr += rec(b"REFR", 0x901, sub(b"NAME", struct.pack("<I", 0x32)) + sub(b"DATA", struct.pack("<6f", marker_x, 0, 0, 0, 0, 0)))
     cell = rec(b"CELL", 0x700, (sub(b"EDID", cell_name + b"\0") if cell_name else b"") + sub(b"DATA", b"\x02\x00") + sub(b"XCLC", struct.pack("<iiI", 3, -4, 0)) + sub(b"XCLW", struct.pack("<f", water))
@@ -34,9 +35,11 @@ def esm(land=b"\x01" * 40, water=1.0, ref_x=10.0, stat_flags=0, mnam=b"\0" * 28,
     wrld = rec(b"WRLD", 0x600, sub(b"EDID", b"ArgoniaBlackMarsh\0") + sub(b"DNAM", struct.pack("<ff", -2048, 0)) + sub(b"MNAM", mnam))
     world = grup(b"WRLD", 0, wrld + grup(struct.pack("<I", 0x600), 1, grup(struct.pack("<i", 0), 4, grup(struct.pack("<i", 0), 5, cell + children))))
     stat = grup(b"STAT", 0, rec(b"STAT", 0x800, sub(b"EDID", b"Tree\0") + sub(b"MODL", b"t.nif\0"), flags=stat_flags))
-    ltex = grup(b"LTEX", 0, rec(b"LTEX", 0x500, sub(b"EDID", b"Mud\0")))
+    txst = grup(b"TXST", 0, rec(b"TXST", 0x510, sub(b"EDID", b"MudSet\0") + sub(b"TX00", mud + b"\0"))
+                + rec(b"TXST", fern_id, sub(b"EDID", b"FernSet\0") + sub(b"TX00", fern + b"\0")))  # a plant's: no land's
+    ltex = grup(b"LTEX", 0, rec(b"LTEX", 0x500, sub(b"EDID", b"Mud\0") + sub(b"TNAM", struct.pack("<I", 0x510))))
     cells = grup(b"CELL", 0, rec(b"CELL", 0x400, sub(b"EDID", interior + b"\0") + sub(b"XCLW", struct.pack("<f", 5.0))))
-    return rec(b"TES4", 0, sub(b"HEDR", b"\0" * 12)) + ltex + stat + cells + world
+    return rec(b"TES4", 0, sub(b"HEDR", b"\0" * 12)) + txst + ltex + stat + cells + world
 
 
 def keys(tmp_path, raw, settings=SETTINGS, tools=TOOLS, preset="Medium", lodmodels="", bill=b"p;00000800;Tree,True\n", rules=b"[Skyrim LODGen]\n"):
@@ -48,6 +51,16 @@ def keys(tmp_path, raw, settings=SETTINGS, tools=TOOLS, preset="Medium", lodmode
     (plugin / "map" / "DynDOLOD_SSE_argonianewworldesm.ini").write_bytes(rules)
     k = lodkeys.keys(plugin, preset, lodmodels, settings, tools)
     return k["terrain"], k["texgen"], k["dyndolod"]
+
+
+def test_a_texture_set_no_land_texture_names_is_not_terrain(tmp_path):
+    """A rebuild that re-places plants renumbers and rewrites their texture sets; the ground's own are unchanged."""
+    t0, x0, d0 = keys(tmp_path, esm())
+    for other in (esm(fern_id=0x512), esm(fern=b"fern2.dds")):
+        t1, x1, d1 = keys(tmp_path, other)
+        assert t1 == t0 and x1 == x0 and d1 != d0
+    t2, _, _ = keys(tmp_path, esm(mud=b"mud2.dds"))  # the texture set the land texture names
+    assert t2 != t0
 
 
 def test_a_change_to_placed_references_alone_reruns_dyndolod_and_not_terrain(tmp_path):

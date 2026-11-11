@@ -7,7 +7,8 @@
 
   terrain-tool  (xLODGen, the long run) reads the world's land and water: from the ESM itself the world record's
             land and water fields, every LAND record, every exterior cell's grid, water height and water type, and
-            the land textures (LTEX, TXST); the .lod file; lod-settings.json's terrain.tool; the xLODGen archive.
+            the land textures (each LTEX, and the texture sets a LTEX names: a plant's or a tree's texture set is no
+            land's); the .lod file; lod-settings.json's terrain.tool; the xLODGen archive.
   terrain   (our pass over it: LODGen again with our mesh settings, the counts, the link into Data) stands on
             terrain-tool and reads lod-settings.json's terrain.post. A change there never reruns xLODGen.
   texgen-tool  (TexGen, the long run) reads the bases a billboard is made for: the billboard files, the ESM's tree
@@ -46,7 +47,7 @@ TOOLS = REPO / "infra/gpu-box/lod-tools.json"
 COMPRESSED = 0x00040000
 WRLD_SUBS = {b"EDID", b"WNAM", b"PNAM", b"NAM2", b"NAM3", b"NAM4", b"DNAM", b"NAM0", b"NAM9", b"DATA"}  # land, water, bounds
 CELL_SUBS = {b"DATA", b"XCLC", b"XCLW", b"XCWT"}  # flags (has water), grid, water height, water type
-LAND_TEX = {b"LTEX", b"TXST"}
+LAND_TEX = {b"LTEX", b"TXST"}  # a TXST only when a LTEX names it (TNAM)
 BASES = {b"STAT", b"TREE"}
 # What the map stage writes and no LOD is made from: references to Skyrim.esm's marker bases (COCMarkerHeading 000032,
 # MapMarker 000010; Skyrim.esm is every plugin's first master), a cell's editor id, the world's map box.
@@ -90,6 +91,8 @@ def esm_parts(esm: Path) -> dict[str, str]:
             if sig in keep:
                 hs[part].update(sig + struct.pack("<I", len(d)) + d)
 
+    sets: dict[int, bytes] = {}  # each texture set of the file, by form id: read by terrain LOD only as a land texture's
+    named: set[int] = set()
     with open(esm, "rb") as f:
         size = f.seek(0, 2)
         f.seek(0)
@@ -123,10 +126,15 @@ def esm_parts(esm: Path) -> dict[str, str]:
                 picked("terrain", h, raw, WRLD_SUBS)
             elif sig == b"CELL" and exterior:
                 picked("terrain", h, raw, CELL_SUBS)
-            elif sig in LAND_TEX:
+            elif sig == b"LTEX":
                 hs["terrain"].update(h[:4] + h[12:16] + body(h, raw))
+                named.update(struct.unpack("<I", d)[0] for s, d in _subs(body(h, raw)) if s == b"TNAM" and len(d) == 4)
+            elif sig == b"TXST":
+                sets[struct.unpack_from("<I", h, 12)[0]] = h[:4] + h[12:16] + body(h, raw)
             elif sig in BASES:
                 hs["bases"].update(h[:4] + h[8:16] + body(h, raw))  # the flags too: Has Tree LOD is one
+        for fid in sorted(named & set(sets)):  # after the walk: texture sets come before land textures in a plugin
+            hs["terrain"].update(sets[fid])
         f.seek(0)
         while chunk := f.read(1 << 22):
             hs["esm"].update(chunk)

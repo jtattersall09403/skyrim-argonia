@@ -62,7 +62,7 @@ and stops at the first breach:
 |---|---|---|---|---|
 | `map` | build VM | Map box, markers, the `.lod` file, teleports, the plan; the derived LOD models; the records and plan files applied to the world file and checked | Not keyed: seconds; each LOD model on its full model and target | under a minute |
 | `prepare` | machine | The NewWorld profile laid fresh without our LOD; the outputs that stand linked into Data again | Runs when a step will | 1 min |
-| `terrain` | machine | xLODGen, then our mesh pass | The ESM's land, water, cell grid and ground textures; the `.lod`; the xLODGen archive; `terrain.tool` for the tool run, `terrain.post` for our pass | 34 min, then 82 s |
+| `terrain` | machine | xLODGen, then our mesh pass | The ESM's land, water, cell grid and ground textures (each land texture and the texture set it names); the `.lod`; the xLODGen archive; `terrain.tool` for the tool run, `terrain.post` for our pass | 34 min, then 82 s |
 | `texgen` | machine | TexGen with our billboard files, then every planned billboard checked | The billboard files; the ESM's tree and static base records; the DynDOLOD archives; `texgen.tool`, `texgen.post` | 6 min |
 | `dyndolod` | machine | DynDOLOD (preset Medium) with our rule file and the derived LOD models | The whole ESM bar markers and names; the plan files; the LOD models' key; the terrain and texgen keys; the `dyndolod` settings; the preset; the archives | 16 min |
 | `collect` | machine | The three outputs into the derived mod folder; the profile laid again with it | Skipped when the mod holds the three keys | 2 min |
@@ -125,7 +125,8 @@ planned trees, the rule file names exactly the planned models, every planned and
 are at their pinned hashes on both machines; the machine holds the world file, the `.lod`, the plan files and the
 LOD models built here; the machine's scripts pass the script checker; no tool or game is running; disk and memory
 are enough; DynDOLOD's preset holds our world alone; every step that will run was proven on the small world.
-Mend every fault and run it again: no long step starts on a red preflight.
+A fault about the machine quotes what the machine printed in place of the line wanted; a machine that answered
+with no report at all is one fault that says so. Mend every fault and run it again: no long step starts on a red preflight.
 
 ## 6. Run
 

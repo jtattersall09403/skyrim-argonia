@@ -443,6 +443,7 @@ function Preflight {
 
 switch ($Step) {
   'keys' { foreach ($s in 'terrain-tool', 'terrain', 'texgen-tool', 'texgen', 'dyndolod', 'terrain-running') { if (Test-Path "$Work\out\$s.key") { Say "$s=$((Get-Content "$Work\out\$s.key" -Raw).Trim())" } } }
+  'preflight' { Preflight }
   'unlay' {
     if (-not $Small) { throw "unlay is the small world's" }
     if (Test-Path "$Work\game") { [IO.Directory]::Delete("\\?\$Work\game", $true) }
@@ -669,5 +670,6 @@ switch ($Step) {
     & $Stack
     Say "laid again with the LOD folder"
   }
+  default { throw "lod.ps1: step $Step has no code (a step named in the parameter's list and missing from this switch)" }
 }
 Say "$Step OK"
