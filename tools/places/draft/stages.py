@@ -299,9 +299,15 @@ def clearance(st: Standing, log=print) -> None:
     rows = clearmod.apply(world, measure, buildings, st.bases, paths, doors, feet)
     got = {r.get("ref") for r in rows}
     rows += clearmod.along(world, measure, [p for p in paths if "re-laid" in str(p.get("laid"))], got)
-    # a plant already cleared keeps its row as it stands (the reason first given); the stage owns which plants go
+    # a plant already cleared keeps its row as it stands (the reason first given); the stage owns which plants go.
+    # A row is that plant's only while the world still has it there: a re-scattered world reuses its refs' ids
     was = {r.get("ref"): r for r in st.files["clear"] if r.get("by") == "draft"}
-    st.files["clear"] = [r for r in st.files["clear"] if r.get("by") != "draft"] + [was.get(r.get("ref"), r) for r in rows]
+
+    def kept(r: dict) -> dict:
+        o = was.get(r.get("ref"))
+        same = o is not None and o.get("base") == r.get("base") and math.dist(o["pos"], r["pos"]) <= 1.0
+        return o if same else r
+    st.files["clear"] = [r for r in st.files["clear"] if r.get("by") != "draft"] + [kept(r) for r in rows]
 
 
 def streets(place_id: str, places: Path, log=print) -> None:

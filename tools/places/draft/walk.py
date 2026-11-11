@@ -654,6 +654,10 @@ def arrivals(place_id: str, pdir: Path, W: Walkable, bases: dict, log=print) -> 
         if d.get("kind") != "door" or not a or not sid or len(a) < 3:
             continue
         at = level(a, a[2])
+        if at is None:      # the ground it stood on has since moved under it: the level nearest its own, where it is
+            c, zz = W.stands(a[:2])
+            near_z = float(zz[np.argmin(np.abs(zz - a[2]))]) if len(c) else None
+            at = near_z if near_z is not None and abs(near_z - a[2]) <= Z_TOL else None
         if at is not None and abs(at - a[2]) <= ARRIVAL_ON:
             continue
         sup = by_id.get((d.get("seat") or {}).get("on"))
@@ -844,6 +848,17 @@ def join(place_id: str, places: Path = io.PLACES, out: Path = CHECK_OUT, log=pri
         rows = io.read_jsonl(pdir / "spaces" / "exterior" / "refs.jsonl")
         paths = io.read_jsonl(pdir / "paths.jsonl") if (pdir / "paths.jsonl").exists() else []
         have, new = {r["id"] for r in rows}, []
+        # a street's deck that ends against a bank standing over it: one flight up the bank, before anything else
+        # is judged cut off (what such a deck carries is an island only for want of it)
+        up = bank_stairs(place_id, paths, Wd, rows, bases, steps_bases(rows, bases, G), G, log)
+        for r in up:
+            log(f"join {place_id}: {r['why']}: a flight of {r['base']} at {[round(v) for v in r['pos']]}, "
+                f"hung on {r['seat']['on']}")
+        if up:
+            done += len(up) + moved
+            io.write_jsonl(pdir / "spaces" / "exterior" / "refs.jsonl", rows + up)
+            settle()
+            continue   # the flights are the network once built
         for key, (c, want) in sorted(deck_islands(ctx, Wd, paths).items()):
             got = [r for r in stairs(place_id, key, c, Wd, rows + new, bases, steps_bases(rows, bases, G), G, want)
                    if r["id"] not in have]
@@ -1102,6 +1117,118 @@ def stairs(place_id: str, key: str, c: int, Wd: "Walkable", rows: list[dict], ba
                 cand.append((round(buried / BURY), round(to), row["id"], row))
     cand.sort(key=lambda t: t[:3])
     return [t[3] for t in (cand if every else cand[:1])]
+
+
+BANK_REACH = 768.0     # how far along its street past a deck's end the top of the bank over it is looked for
+BANK_NEAR = 512.0      # a bank flight whose top end is within this of where a street reaches the bank's top serves it
+BANK_WHY = "from its deck up the bank that stands over it"
+BANK_STEP = 16.0       # the street is read, and the flight's top end tried, every this many units
+
+
+def bank_stairs(place_id: str, paths: list[dict], Wd: "Walkable", rows: list[dict], bases: dict, sbases: list[str],
+                G, log=lambda *_: None) -> list[dict]:
+    """One flight of the source's own steps wherever a street leaves a deck for a bank that stands over it by more
+    than a step the mesh climbs and the mesh does not walk from one to the other (a low bridge that ends against a
+    steep bank): hung on the deck piece the street leaves, square to it (`hang`), its top tread at the height of the
+    bank's top where the town's network walks, running down over the deck until its treads meet the deck, which hides
+    the rest of its run; never a tread under the ground, its body clear of every solid but its deck. Of the flights
+    that fit one end (off any edge of any of the deck's pieces there), the one the deck hides least, then the one
+    whose top is nearest where the street reaches the bank's top. [] when no street needs one."""
+    dk = decks(rows, bases)
+    near = [r for r in rows if r.get("kind") in overlap.SOLID]
+    have = {r["id"] for r in rows}
+
+    def deck_at(q):
+        for d, dz, (x0, y0, x1, y1) in dk:
+            if math.dist(d["pos"][:2], q) > 1024:
+                continue
+            lx, ly = to_local(d, q[0], q[1])
+            g = G.height(q[0], q[1])
+            if x0 <= lx <= x1 and y0 <= ly <= y1 and g is not None and g <= dz + TREAD_MEET:
+                return d, dz, (x0, y0, x1, y1)
+        return None
+
+    def top(q):     # the ground at q where the town's network walks it, else None
+        g = G.height(q[0], q[1])
+        if g is None:
+            return None
+        t, dp, z = Wd.found((q[0], q[1], g))
+        return g if t >= 0 and Wd.main[t] and dp <= ON_TOL and abs(z - g) <= CLIMB else None
+
+    def top_end(r):  # where a hung flight's top end stands
+        fl = flight(bases.get(r["base"]) or {})
+        return to_world(r, *((fl["top"], fl["v"]) if fl["axis"] == 0 else (fl["v"], fl["top"]))) if fl else r["pos"][:2]
+    tops = [top_end(r) for r in rows if str(r.get("why") or "").endswith(BANK_WHY)]
+    out: list[dict] = []
+    for p in paths:
+        S = [q for _, q in samples(p.get("points") or [], BANK_STEP)]
+        on = [deck_at(q) for q in S]
+        for i in range(len(S) - 1):
+            for a, b, step in ((i, i + 1, 1), (i + 1, i, -1)):       # the street leaves a deck at a for the land at b
+                if on[a] is None or on[b] is not None:
+                    continue
+                d, dz, (x0, y0, x1, y1) = on[a]
+                reach = range(b, min(len(S), b + int(BANK_REACH / BANK_STEP)) if step > 0
+                              else max(-1, b - int(BANK_REACH / BANK_STEP)), step)
+                k = next((j for j in reach if on[j] is None and top(S[j]) is not None), None)
+                if k is None or top(S[k]) - dz <= CLIMB:
+                    continue       # the bank is no higher than a step over the deck: the mesh walks it
+                if all(Wd.line_ok(S[min(a, k):max(a, k) + 1])):
+                    continue       # walked already (a flight stands there)
+                hosts = [h for h in dk if abs(h[1] - dz) <= TREAD_MEET and math.dist(h[0]["pos"][:2], S[a]) <= 1024]
+                if any(math.dist(q, S[k]) <= BANK_NEAR for q in tops):
+                    continue       # this end has its flight (the street is laid over it with the rest)
+                cand = []
+                for h, hz, (hx0, hy0, hx1, hy1) in hosts:        # the deck's pieces at this end, each edge of each
+                    c0 = to_world(h, (hx0 + hx1) / 2, (hy0 + hy1) / 2)
+                    for e, (ox, oy) in enumerate(((0, 1), (0, -1), (1, 0), (-1, 0))):
+                        rid = io.mint(place_id, "steps", h["id"], "bank", str(e))
+                        far = to_world(h, (hx0 + hx1) / 2 + ox, (hy0 + hy1) / 2 + oy)
+                        o = (far[0] - c0[0], far[1] - c0[1])
+                        L = math.hypot(*o)
+                        o = (o[0] / L, o[1] / L)     # the way the flight runs down: from the bank back over the deck
+                        if rid in have or o[0] * (S[a][0] - S[k][0]) + o[1] * (S[a][1] - S[k][1]) <= 0:
+                            continue
+                        for s in np.arange(0.0, BANK_REACH + 1.0, BANK_STEP):
+                            A = (c0[0] - o[0] * s, c0[1] - o[1] * s)
+                            g = top(A)
+                            if g is None or g - hz <= CLIMB:
+                                continue
+                            for sbase in sbases:
+                                fl = flight(bases[sbase])
+                                if fl is None:
+                                    continue
+                                pos, rot, seat = hang(fl, h, g, A, o)
+                                hidden = None
+                                for u, z in zip(fl["us"], fl["zs"]):
+                                    run = abs(u - fl["top"])
+                                    x, y = A[0] + o[0] * run, A[1] + o[1] * run
+                                    gg, tz = G.height(x, y), pos[2] + z
+                                    if gg is None or gg > tz + 8:
+                                        break      # the ground stands over a tread
+                                    if tz - hz <= TREAD_MEET:
+                                        lx, ly = to_local(h, x, y)
+                                        if hx0 <= lx <= hx1 and hy0 <= ly <= hy1 and tz >= hz - TREAD_MEET:
+                                            hidden = abs(fl["foot"] - u)
+                                        break
+                                if hidden is None:
+                                    continue
+                                row = {"id": rid, "base": sbase, "kind": "building", "pos": pos, "rot": rot,
+                                       "scale": 1.0, "layer": "place", "flags": [], "src": None,
+                                       "walk": geom_walk(bases[sbase]), "seat": seat,
+                                       "why": f"brings street {p['id'].rsplit('.', 1)[-1]} {BANK_WHY}"}
+                                if not overlap.hits(row, near, bases):
+                                    cand.append((round(hidden / BURY), round(math.dist(A, S[k]) / STEP), float(s),
+                                                 sbase, rid, row))
+                if cand:
+                    row = min(cand, key=lambda c: c[:5])[5]
+                    out.append(row)
+                    have.add(row["id"])
+                    tops.append(top_end(row))
+                else:
+                    log(f"join {place_id}: street {p['id']} leaves the deck of {d['id']} for a bank "
+                        f"{top(S[k]) - dz:.0f} over it and no flight of steps fits")
+    return out
 
 
 def deck_islands(ctx: dict, Wd: "Walkable", paths: list[dict]) -> dict:

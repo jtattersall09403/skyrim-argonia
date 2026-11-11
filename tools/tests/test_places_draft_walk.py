@@ -469,3 +469,56 @@ def test_each_travel_stop_has_its_own_operator_with_the_networks_destinations():
     assert people.road_end(paths, (0, 0), dry=lambda q: q[1] < 1000) == [500.0, 0.0]
     folk = [{"id": "c", "role": "boatman", "services": [people.service_row(gives[1], routes)]}]
     assert any("not its operator 'carter'" in b for b in people.service_problems(folk, gives, routes))
+
+
+def test_an_arrival_whose_ground_moved_under_it_takes_the_meshs_height_where_it_is(tmp_path):
+    ctx = _town()
+    W = walk.Walkable(ctx, comp=C.components(ctx["navs"], {}))
+    p = tmp_path / "p"
+    (p / "spaces" / "exterior").mkdir(parents=True)
+    (p / "spaces" / "hold").mkdir()
+    door = {"id": "d", "kind": "door", "pos": [150.0, 50.0, -72.0], "base": "x", "seat": {"mode": "ground"},
+            "door": {"to_space": "hold", "to_ref": "b", "arrival": [150.0, 150.0, -72.0]}}   # the land rose 72 since
+    walk.io.write_jsonl(p / "spaces" / "exterior" / "refs.jsonl", [door])
+    walk.io.write_jsonl(p / "spaces" / "hold" / "refs.jsonl",
+                        [{"id": "b", "kind": "door", "door": {"to_ref": "d", "to_pos": [150.0, 150.0, -72.0]}}])
+    assert walk.arrivals("p", p, W, {}, log=lambda *_: None) == 1
+    a = walk.io.read_jsonl(p / "spaces" / "exterior" / "refs.jsonl")[0]["door"]["arrival"]
+    assert a == [150.0, 150.0, 0.0]                                    # where it was, at the mesh's height
+    assert walk.io.read_jsonl(p / "spaces" / "hold" / "refs.jsonl")[0]["door"]["to_pos"] == a
+
+
+class _Bank:
+    """Water under y 200, a face too steep to walk from there up to a bank `top` high from y 300 on; the mesh walks
+    the bank's top only."""
+
+    def __init__(self, top):
+        self.top, self.main = top, np.ones(1, bool)
+
+    def height(self, x, y):
+        return -50.0 + (self.top + 50.0) * min(1.0, max(0.0, (y - 200.0) / 100.0))
+
+    def found(self, p):
+        return (0, 0.0, self.top) if p[1] >= 300.0 else (-1, float("inf"), None)
+
+    def line_ok(self, pts):
+        return [False] * len(pts)
+
+
+def test_a_street_leaving_a_deck_for_a_bank_over_it_gets_one_flight_up_the_bank(monkeypatch):
+    bases = _docks(monkeypatch)
+    monkeypatch.setattr(walk, "geom_walk", lambda base: None)
+    dock = {"id": "dock", "base": "dock", "kind": "building", "pos": [0.0, 0.0, 13.0], "rot": [0.0, 0.0, 0.0],
+            "scale": 1.0, "seat": {"mode": "stilts", "dz": 13.0}}       # its deck 16 over the water, ending in the bank
+    street = [{"id": "fx.path.01", "points": [[0.0, -200.0], [0.0, 600.0]]}]
+    B = _Bank(150.0)
+    got = walk.bank_stairs("fx", street, B, [dock], bases, ["steps"], B)
+    assert len(got) == 1
+    fl = got[0]
+    assert fl["seat"]["on"] == "dock" and fl["why"].endswith(walk.BANK_WHY)
+    assert math.isclose(fl["pos"][2] + FLIGHT["zs"][0], 150.0)          # its top tread at the bank top's height
+    top = walk.to_world(fl, FLIGHT["top"], FLIGHT["v"])
+    assert abs(top[0]) < 0.1 and 300.0 <= top[1] <= 320.0               # its top end at the brink, on the deck's line
+    assert walk.bank_stairs("fx", street, B, [dock, fl], bases, ["steps"], B) == []   # that end has its flight
+    low = _Bank(40.0)                                                   # a bank a step over the deck: the mesh walks it
+    assert walk.bank_stairs("fx", street, low, [dock], bases, ["steps"], low) == []

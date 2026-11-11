@@ -176,3 +176,15 @@ def test_people_re_reads_a_service_from_the_record_and_changes_that_row_alone(fx
     assert again["services"] == good and good[0]["kind"] == "boat-stop" and good[0]["destinations"] == []
     assert C.service_rows({"folk": rows(p), "gives": F.GIVES, "routes": {}}) == []
     assert people.refresh_services(rows(p), F.GIVES, {}) == []      # settled: nothing more to change
+
+
+def test_clearance_takes_a_reused_world_ref_as_the_plant_the_world_has_now(fx):
+    p = fx / "places/fx/clear.jsonl"
+    rs = rows(p)
+    stale = next(r for r in rs if r.get("by") == "draft")
+    true_pos = list(stale["pos"])
+    stale["pos"] = [true_pos[0] + 500.0, true_pos[1], true_pos[2]]     # the row of a plant an older world had there
+    p.write_text("".join(json.dumps(r, separators=(",", ":")) + "\n" for r in rs))
+    counts = stages.run("clearance", "fx", fx / "places", fx / "bundles", log=lambda *_: None)
+    assert counts == {"clear.jsonl": {"changed": 1, "added": 0, "removed": 0}}
+    assert next(r for r in rows(p) if r["ref"] == stale["ref"])["pos"] == true_pos

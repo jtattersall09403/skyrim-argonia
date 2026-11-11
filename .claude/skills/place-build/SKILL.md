@@ -109,6 +109,14 @@ The tools lay the network by these rules.
   the flight's body is clear of every solid by the build's overlap rule. Of the flights that fit, the one the bank
   buries least is laid, then the one nearest the deck's streets and doors. A deck nothing of the town uses (a
   rowing boat, a bridge deck high overhead) gets none. Look at each flight in the render.
+- **Flights for decks below our bank.** Where a street leaves a deck for a bank that stands over it by more than
+  a step and too steep for the mesh to walk (a low bridge ending against a bank face), one flight of the source's
+  own steps is hung on the deck piece there, square to it: its top tread at the height of the bank's top where
+  the town's network walks, running down over the deck until its treads meet the deck, which hides the rest of
+  the run. No tread stands under the ground and the flight's body is clear of every solid but its deck. Of the
+  flights that fit, the one the deck hides least, then the one whose top is nearest where the street reaches the
+  bank's top. A crossing whose banks have no deck (a ford between steep banks) is not joined by this: say so and
+  settle it with the world's ground first.
 - **Gangways and joins.** A door whose walkable ground is still an island is joined to the town by level walkway
   pieces laid from the island to the nearest point of the network at its height (never across a height the
   navmesh does not climb: that is a flight's work). A piece laid for a door that stands on a thing (a ship's
