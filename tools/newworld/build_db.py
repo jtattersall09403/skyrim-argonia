@@ -328,8 +328,14 @@ def build() -> db.World:
     atmosphere.load(w)
     w.insert_many("source", sorted(sources.values(), key=lambda r: r["id"]))
     stockdb.load(w)
-    w.save()
+    save_whole(w)
     return w
+
+
+def save_whole(w: db.World) -> list[str]:
+    """Every table of the schema written back, a table with no rows as its empty file: the build starts from no
+    files, and a table another phase fills later keeps its place in the repository."""
+    return w.save(sorted(w.tables))
 
 
 GIVE_KINDS = RESEARCH / "give_kinds.json"

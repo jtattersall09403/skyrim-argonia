@@ -88,12 +88,16 @@ It prints the order (derived from what each stage reads and writes) and each sta
 If the plan shows more stale than the table led you to expect, find out why before running: a file changed that
 you did not mean to change.
 
-A stage `never run by the rebuild` has an output a stage tool wrote outside the rebuild. Where the whole tree was
-built that way, take it in once with `tools/newworld/rebuild.sh adopt`: it stamps, without building, each stage
-whose outputs prove their own build (they name the terrain build they stand on; the terrain's inputs are as
-built; the height fog's files are what the generator writes today) and leaves every other stage to run. Those are
-the short ones. It refuses when the outputs are of different builds. It proves that the builds agree, not that a
-rule is unchanged: after a rule or source change, run the stage.
+A stamp is written only by the run that made the output. A stage the rebuild has never run is current only when
+its own tool proves it: the key the tool stored beside its output, computed again from today's inputs, is the
+same (the terrain, the land shards, the landcover, the placed refs, the ground paint, the cells, the world file).
+Matching build ids are not proof. A stage that cannot prove it is stale and runs; the tools that keep their own
+keys or caches make that run short. Never stamp by hand.
+
+A tool that hashes its own file into its key (`world/land.py`, `landcover.py`, `world/texture.py`,
+`place/place.py`) goes stale with any edit to that file, a comment included: its whole output is built again, and
+everything after it. Put what is not the rule itself in another file (`tools/newworld/proofs.py` holds those
+tools' proofs for that reason).
 
 ## 5. Run
 

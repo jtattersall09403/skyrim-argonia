@@ -16,7 +16,7 @@ what it reads: a stage whose inputs come out the same is skipped. "Left alone" s
 | Scope (how far the world reaches) | `tools/newworld/tiles.py` | `scope` | `regions`, `db`, `terrain` and every stage after | `tools` | as relief; the map's pan box moves with it |
 | The source map's water | the map picture's reading: `python3 -m tools.newworld.raster` | `db`, `terrain`, `water` | every stage after | `tools`, `scope`, `regions` | as relief. The waterline moves: `water` stays red until the owner accepts the classification (the skill's section 2) |
 | An owner's water edit from the Atlas | the pull, below | `db`, `terrain`, `water` | every stage after | `tools`, `scope`, `regions`, `atmosphere` | as relief; republish the Atlas |
-| Water kinds' rules | `tools/newworld/water_kinds.py` | `water`, `cells` | `db-water`, `landcover`, then `landings`, `place`, `paint`, `mist`, `height-fog`, `map`, `esm`, `readback`, `upload` | `terrain`, `needs`, `land`, `relief`, `navmesh`, `atmosphere` | if `landcover` ran: the whole LOD, the deploy, each built place's ground bundle and `clearance`; else the deploy alone. `--accept` only on the owner's word |
+| Water kinds' rules | `tools/newworld/water_kinds.py` | `water`, `cells` | `db-water`, `landcover`, then `landings`, `place`, `paint`, `navmesh`, `mist`, `height-fog`, `map`, `esm`, `readback`, `upload` | `terrain`, `needs`, `land`, `relief`, `atmosphere` | if `landcover` ran: the whole LOD, the deploy, each built place's ground bundle and `clearance`; else the deploy alone. `--accept` only on the owner's word |
 | Roads | `newworld/sources/road_corrections.json`, then `python3 -m tools.newworld.roads` | `db`, `terrain` | every stage after | `tools`, `scope`, `regions` | as relief |
 | A place added or moved, its size or its terrain needs | its research record (the skill `place-research`) | `db` | `terrain` and every stage after, when its position, footprint or needs changed; else `land`, `landings`, `place`, `navmesh`, `map` only | the rest | as relief when the terrain ran; else the deploy if `esm` ran |
 | A place's words, people, stock or wealth | its sources | `db` | the stages that read the database, each skipped at its turn: the tables they read are the same | every other stage | nothing |
@@ -31,8 +31,8 @@ with the ArtifactData tool into a folder, then `python3 -m tools.newworld.water_
 |---|---|---|---|---|---|
 | Ground materials or painting rules | `tools/newworld/world/texture.py`, `roadpaint.py` | `paint` | `esm`, `readback`, `upload` | everything before `paint`; `place`, `mist`, `navmesh`, `map` | the terrain LOD's textures; the deploy; each built place's ground bundle and build (it reads the world's ground records by name) |
 | The paint's check | `tools/newworld/world/texcheck.py` | `paint` (its own key keeps the shards: only the check works) | nothing unless the shards change | all else | nothing |
-| Flora sets | `newworld/sources/flora/` | `db` | `place`, then `mist`, `map`, `esm`, `readback`, `upload` | `terrain` to `cells`, `paint`, `navmesh`, `atmosphere` | tree and object LOD (not terrain LOD); the deploy; each built place's `clearance` |
-| Placement rules | `tools/newworld/place/*.py` | `place` | `mist`, `map`, `esm`, `readback`, `upload` | as flora sets | as flora sets |
+| Flora sets | `newworld/sources/flora/` | `db` | `place`, then `navmesh`, `mist`, `map`, `esm`, `readback`, `upload` | `terrain` to `cells`, `paint`, `atmosphere` | tree and object LOD (not terrain LOD); the deploy; each built place's `clearance` |
+| Placement rules | `tools/newworld/place/*.py` | `place` | `navmesh` (it is cut round the placed objects), `mist`, `map`, `esm`, `readback`, `upload` | as flora sets | as flora sets |
 | Navmesh parameters | `tools/navmesh/*.py`, `tools/navmesh/ArgoniaNav/` | `navmesh` (and `tools` for the C#) | `esm`, `readback`, `upload` | every other stage | the deploy; each built place's build and check (its navmesh joins the world's) |
 
 ## Water's look, air, mist
@@ -41,7 +41,7 @@ with the ArtifactData tool into a folder, then `python3 -m tools.newworld.water_
 |---|---|---|---|---|---|
 | Water records' look or flow | `tools/newworld/world/water_types.py`, `tools/ArgoniaPlugin/WaterBlend.cs` | `cells` for the Python; `tools` and `esm` for the C# | `landings`, `mist`, `map`, `esm`, `readback`, `upload` | `terrain` to `landcover`, `place`, `paint`, `navmesh` | the deploy; each built place's build (over the new world file) |
 | Atmosphere classes or weathers | `newworld/sources/atmosphere/`, `tools/newworld/atmosphere.py` | `db`, `atmosphere`, `mist` | `height-fog`, `map`, `esm`, `readback`, `upload` | every ground stage, `paint`, `navmesh` | the deploy of the world file and the stack; each built place's ground bundle (the studio's night view reads the climate) |
-| Mist | `tools/newworld/world/mist.py` | `mist`, `height-fog` | `map`, `esm`, `readback`, `upload` | everything before `mist`, `paint`, `navmesh` | the deploy |
+| Mist | `tools/newworld/world/mist.py` | `mist`, `height-fog` | `navmesh`, `map`, `esm`, `readback`, `upload` | everything before `mist`, `paint` | the deploy |
 | Community Shaders settings | `tools/newworld/atmosphere_cs.py` | `height-fog` | `readback` | `esm` and every stage before it | the stack's deploy only: the world file is unchanged |
 
 ## The map, and tools

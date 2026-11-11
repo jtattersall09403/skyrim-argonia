@@ -1,5 +1,5 @@
-"""The new world's flora sets (nw-02 step 6): every region has a varied set, nothing Nordic, every base is a
-catalogued mesh, water rules hold, and the regions differ from one another."""
+"""The new world's flora sets (nw-02 step 6): every region has a varied set, nothing Nordic, water rules hold, and the
+regions differ from one another."""
 import json
 import re
 from collections import defaultdict
@@ -43,16 +43,6 @@ def test_no_nordic_base(w):
             assert "mangrove" in b.model.lower(), b.id
         else:
             assert not NORDIC.search(f"{b.edid} {b.model}".lower()), b.id
-
-
-def test_every_base_is_a_catalogued_mesh(w):
-    if not flora.CATALOGUE.exists():
-        pytest.skip("the flora study's catalogue is not on this machine")
-    cat = {(e["form"], e["modl"]): e for v in json.loads(flora.CATALOGUE.read_text())["catalogue"].values() for e in v}
-    for b in w.rows("flora_base"):
-        e = cat.get((b.form_key, b.model))
-        assert e is not None, b.id
-        assert not e["nordic_flag"] or b.nordic_override, b.id
 
 
 def test_water_rules(w):

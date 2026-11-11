@@ -5,6 +5,7 @@
 # is the skill world-build.
 #   world.sh write    the ESM from land/, tex/, cells.json, atmosphere.json, refs/<producer>/ and navmesh/
 #                     (ArgoniaPlugin `newworld write`); skipped when the stamp ArgoniaNewWorld.json holds this key
+#   world.sh current  exit 0 when the ESM and its stamp hold the key `write` computes today (writes nothing)
 #   world.sh map      the map data of map/ applied when the ESM lacks it (`nwmap apply`), then read back -> map-check.txt
 #   world.sh check    the file read back (`newworld check`: cells, height error, seams, overflow, water, the start
 #                     marker) -> check.txt
@@ -30,14 +31,22 @@ writer() {
   fi
   echo $$ > "$pidf"; trap 'rm -f "$pidf"' EXIT
 }
+# the ESM's key: the land's key, the producers written, the shards' and specs' bytes, the writer's code, the navmesh
+esm_key() {
+  key=$("$py" -c 'import json,sys; print(json.load(open(sys.argv[1]))["key"])' "$man")
+  key="$key:${NW_REF_PRODUCERS:-all}:$(cat "$out/tex/manifest.json" "$out/cells.json" "$out/atmosphere.json" $(find "$out/refs" -name '*.jsonl' | sort) | sha256sum | cut -c1-16)"
+  codekey=$(cat tools/ArgoniaPlugin/NewWorld.cs tools/ArgoniaPlugin/WaterBlend.cs tools/ArgoniaPlugin/ForeignCopy.cs tools/ArgoniaPlugin/NewWorldNavmesh.cs tools/ArgoniaPlugin/NewWorldAtmosphere.cs $(ls "$out"/navmesh/navi.json "$out"/navmesh/navm/cy*.jsonl.gz 2>/dev/null) | sha256sum | cut -c1-16)
+}
+esm_current() { [ -f "$esm" ] && [ -f "$stamp" ] && grep -q "\"key\": \"$key:$codekey\"" "$stamp"; }
 case "$1" in
+  current)
+    esm_key
+    if esm_current; then echo "esm: its key is today's"; else echo "esm: its key is not today's"; exit 1; fi ;;
   write)
     writer
     dotnet build -c Release -o "$bin" tools/ArgoniaPlugin -v q -nologo >/dev/null
-    key=$("$py" -c 'import json,sys; print(json.load(open(sys.argv[1]))["key"])' "$man")
-    key="$key:${NW_REF_PRODUCERS:-all}:$(cat "$out/tex/manifest.json" "$out/cells.json" "$out/atmosphere.json" $(find "$out/refs" -name '*.jsonl' | sort) | sha256sum | cut -c1-16)"
-    codekey=$(cat tools/ArgoniaPlugin/NewWorld.cs tools/ArgoniaPlugin/WaterBlend.cs tools/ArgoniaPlugin/ForeignCopy.cs tools/ArgoniaPlugin/NewWorldNavmesh.cs tools/ArgoniaPlugin/NewWorldAtmosphere.cs $(ls "$out"/navmesh/navi.json "$out"/navmesh/navm/cy*.jsonl.gz 2>/dev/null) | sha256sum | cut -c1-16)
-    if [ -f "$esm" ] && [ -f "$stamp" ] && grep -q "\"key\": \"$key:$codekey\"" "$stamp"; then
+    esm_key
+    if esm_current; then
       echo "esm current ($key)"
     else
       t0=$(date +%s.%N)
@@ -58,5 +67,5 @@ case "$1" in
     id=$("$py" -c 'import json,sys; print(json.load(open(sys.argv[1]))["build_id"])' "$man")
     for f in "$esm" "$stamp" "$out/check.txt" "$man"; do aws s3 cp --only-show-errors "$f" "s3://argonia-private-050977237313/nw/plugin/$id/"; done
     echo "uploaded to s3://argonia-private-050977237313/nw/plugin/$id/" ;;
-  *) echo "usage: world.sh [write|map|check|upload]" >&2; exit 2 ;;
+  *) echo "usage: world.sh [write|current|map|check|upload]" >&2; exit 2 ;;
 esac

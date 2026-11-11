@@ -5,14 +5,16 @@ what it reads has changed, each check run straight after the stage it judges. Th
     tools/newworld/rebuild.sh preflight             # everything checkable before the first long stage
     tooling/job_guard.sh run nw-rebuild -- tools/newworld/rebuild.sh run [--to STAGE] [--force STAGE ...]
     tooling/job_guard.sh wait nw-rebuild
-    tools/newworld/rebuild.sh adopt                 # stamp outputs the stage tools built by hand (see adopt())
 
 How it decides. STAGES names, for each stage, what it reads and what it writes. The order is derived from that: a
 stage follows every stage that writes something it reads. A stage's key is the digest of everything it reads (file
 contents, the columns of a database table, the named fields of an upstream manifest) and of its commands; the key
 of its last green run is its stamp, `out/newworld/rebuild/<stage>.json`. A stage is current when its stamp holds
 today's key, its outputs exist and name the builds they stand on (`agree`); otherwise it is stale, and so is every
-stage after it until its own inputs prove unchanged once the stages before it have run. The stage tools keep their
+stage after it until its own inputs prove unchanged once the stages before it have run. A stamp is written only by
+the run that made the output. A stage with no stamp is current only on proof its own tool left beside its output:
+the key the tool stored there, recomputed by the tool from today's inputs (`proof`). A stage that cannot prove it
+runs; where its tool skips on its own key that run is short, and it is stamped after it. The stage tools keep their
 own keys and resume by row or by cell, so a stopped run resumes where it stopped (decision 0037).
 
 How it runs. Stale stages start as soon as the stages they read from are done, side by side while their measured
@@ -63,7 +65,8 @@ class Stage:
     (a table of the world database; `-col` leaves a column out), `ext:<path>` (a file outside the repo, by size and
     time). `writes`: `out:<path>`, `db:<table>` or `db:*`, `src:<path>` (a tracked file the stage rewrites).
     `after`: stages it waits for without reading them (a long stage waits for the cheap checks).
-    `proof`: a cheap command that exits 0 when the standing output is what the stage would write today.
+    `proof`: the tool's own command that exits 0 when the key it stored beside its output is the key it computes
+    from today's inputs; it writes nothing. It stands for a stamp only while the stage has none.
     `agree`: pairs (a, b, how) of `out:` specs that must be equal ("eq") or a prefixed by b ("starts"): an output
     names the build it stands on. `gb` and `minutes`: the measured peak memory and wall time on the build VM."""
     name: str
@@ -173,6 +176,7 @@ STAGES: tuple[Stage, ...] = (
           writes=("db:terrain_build", "db:water_body"), gb=1.1, minutes=0.5, alone=True),
     Stage("land", "the LAND shards: heights in the engine's steps, normals, the start marker",
           cmds=((PY, "-m", "tools.newworld.world.land", "--out", PLUGIN),),
+          proof=(PY, "-m", "tools.newworld.proofs", "land", "--plugin", PLUGIN),
           reads=(BUILD, "db:place[id,world_x,world_y]", "src:tools/newworld/world/land.py", "src:tools/newworld/world/quantize.py",
                  "src:tools/newworld/world/units.py"),
           writes=("out:newworld/plugin/land/manifest.json", "out:newworld/plugin/land/limited.npy"),
@@ -185,7 +189,7 @@ STAGES: tuple[Stage, ...] = (
                  "src:tools/newworld/terrain_character.py", "src:tools/newworld/terrain_held.py"),
           gb=0.6, minutes=0.2),
     Stage("landcover", "one habitat per sample, with shore, road and water-kind fields",
-          cmds=((PY, "-m", "tools.newworld.landcover"),),
+          cmds=((PY, "-m", "tools.newworld.landcover"),), proof=(PY, "-m", "tools.newworld.proofs", "landcover"),
           reads=(BUILD, "out:newworld/terrain/places_terrain.json", "out:newworld/water_classified.json",
                  "out:newworld/water_classified.png", "out:newworld/cell_region.json", "out:newworld/margin_cells.json",
                  "db:habitat", "db:region_habitat", "db:road", "db:road_vertex", "db:region", "db:water_kind",
@@ -195,7 +199,8 @@ STAGES: tuple[Stage, ...] = (
           gb=2.6, minutes=0.8),
     Stage("cells", "each cell's water record and region",
           cmds=((PY, "-m", "tools.newworld.world.cells", "--out", PLUGIN),),
-          reads=(LAND, LANDCOVER, "out:newworld/water_flow_cells.json", "db:region", "db:water_kind",
+          proof=(PY, "-m", "tools.newworld.world.cells", "--current", "--out", PLUGIN),
+          reads=(LAND, LANDCOVER, "out:newworld/water_flow_cells.json", "db:region", "db:region_note", "db:water_kind",
                  "src:tools/newworld/world/cells.py", "src:tools/newworld/world/water_types.py",
                  "src:tools/newworld/water_kinds.py"),
           writes=(CELLS,),
@@ -206,7 +211,7 @@ STAGES: tuple[Stage, ...] = (
           reads=(LAND, CELLS, PLACE_MAP, *BUILT_PLACES, "src:tools/newworld/teleports.py"),
           gb=1.0, minutes=0.3),
     Stage("place", "trees, plants, rocks, cliffs and road dressing placed and seated, and the placement check",
-          cmds=((PY, "-m", "tools.newworld.place", "run"),),
+          cmds=((PY, "-m", "tools.newworld.place", "run"),), proof=(PY, "-m", "tools.newworld.place", "current"),
           checks=((PY, "-m", "tools.newworld.place", "check"),),
           reads=(LAND, LANDCOVER, "out:newworld/landcover/legend.json", BUILD, "out:newworld/margin_cells.json",
                  "out:newworld/research/flora_catalogue.json",
@@ -218,6 +223,7 @@ STAGES: tuple[Stage, ...] = (
           gb=3.4, minutes=1.8),
     Stage("paint", "the ground paint, and its check on the engine's view: layers, seams, edges, roads, swathes",
           cmds=((PY, "-m", "tools.newworld.world.texture", "--out", PLUGIN),),
+          proof=(PY, "-m", "tools.newworld.proofs", "paint", "--plugin", PLUGIN),
           checks=((PY, "-m", "tools.newworld.world.texcheck", "--out", PLUGIN),),
           reads=(LAND, LANDCOVER, "db:habitat", "db:region", "db:road", "src:tools/newworld/world/texture.py",
                  "src:tools/newworld/world/roadpaint.py", "src:tools/newworld/world/texcheck.py"),
@@ -245,10 +251,12 @@ STAGES: tuple[Stage, ...] = (
           reads=("out:newworld/plugin/atmosphere.json", LAND, LANDCOVER, BUILD, "src:tools/newworld/atmosphere_cs.py",
                  "src:tools/newworld/world/mist.py"),
           writes=("src:mods/dependencies.json",),
-          proof=(PY, "-m", "tools.newworld.atmosphere_cs", "current", "--plugin", PLUGIN), gb=1.5, minutes=1.0, lock="stack"),
-    Stage("navmesh", "the navmesh of every land cell, its seams and paths checked",
+          gb=1.5, minutes=1.0, lock="stack"),
+    Stage("navmesh", "the navmesh of every land cell round the placed objects, its seams and paths checked",
           cmds=((PY, "-m", "tools.navmesh", "build", "--plugin", PLUGIN, "--out", f"{PLUGIN}/navmesh"),),
-          reads=(LAND, "out:newworld/margin_cells.json", "out:newworld/scope_cells.json", "db:road", "db:road_vertex",
+          checks=((PY, "-m", "tools.newworld.world.navobjects", "--plugin", PLUGIN),),
+          reads=(LAND, FLORA, "out:newworld/plugin/refs/flora/bases.json", "out:newworld/plugin/refs/mist/manifest.json",
+                 "src:tools/newworld/world/navobjects.py", "out:newworld/margin_cells.json", "out:newworld/scope_cells.json", "db:road", "db:road_vertex",
                  PLACE_MAP, "src:tools/navmesh/ArgoniaNav/**/*.cs", "src:tools/navmesh/*.py"),
           writes=("out:newworld/plugin/navmesh/build.json", "out:newworld/plugin/navmesh/check.json"),
           agree=(("out:newworld/plugin/navmesh/build.json#build_id", "out:newworld/plugin/land/manifest.json#build_id", "eq"),),
@@ -268,6 +276,7 @@ STAGES: tuple[Stage, ...] = (
           gb=1.5, minutes=1.0),
     Stage("esm", "ArgoniaNewWorld.esm written, the map data applied, and the file's own check",
           cmds=(("tools/newworld/world/world.sh", "write"), ("tools/newworld/world/world.sh", "map")),
+          proof=("tools/newworld/world/world.sh", "current"),
           checks=(("tools/newworld/world/world.sh", "check"),),
           reads=(LAND, "out:newworld/plugin/tex/manifest.json#key", "out:newworld/plugin/tex/materials.json", CELLS,
                  "out:newworld/plugin/atmosphere.json", FLORA, "out:newworld/plugin/refs/flora/bases.json",
@@ -449,12 +458,22 @@ class Tree:
                 return f"{a.split(':', 1)[1]} is {xa}, {b.split(':', 1)[1]} is {xb}"
         return None
 
+    def unproven(self, s: Stage) -> str | None:
+        """Why the stage's own record does not prove its output was made from today's inputs, or None."""
+        p = subprocess.run([self.py if a == PY else a for a in s.proof], cwd=self.repo, env=_env(), capture_output=True, text=True)
+        return None if p.returncode == 0 else (p.stdout.strip().splitlines() or p.stderr.strip().splitlines() or ["its proof is red"])[-1][:160]
+
     def own_state(self, s: Stage, inputs: dict | None = None) -> tuple[bool, str]:
         """(current, why) from the stage's own stamp, inputs and outputs, whatever the stages before it are."""
         inputs = inputs or self.inputs(s)
         st = self.stamp(s)
         if not st.get("key"):
-            return False, "never run by the rebuild (no stamp)"
+            if st.get("built"):
+                return False, "its check was red at the last run"
+            if not s.proof:
+                return False, "never run by the rebuild, and its output carries no proof of its inputs"
+            bad = self.disagreement(s) or self.unproven(s)
+            return (False, f"never run by the rebuild; {bad}") if bad else (True, "proved by its own record (no stamp)")
         if st["key"] != self.key_of(inputs):
             was = st.get("inputs") or {}
             ch = [k for k in inputs if was.get(k) != inputs[k]]
@@ -555,7 +574,7 @@ def print_plan(rows: list[dict], file=None) -> None:
 
 # ---- preflight ----------------------------------------------------------------------------------------------------
 
-BUSY = re.compile(r"python\S*\s+(-\S+\s+)*-m\s+tools\.(newworld\.(?!rebuild\s+(plan|preflight|adopt)|verify|map_page)|navmesh\s+build|places\s+(build|finalise|draft|seat|extract))"
+BUSY = re.compile(r"python\S*\s+(-\S+\s+)*-m\s+tools\.(newworld\.(?!rebuild\s+(plan|preflight)|verify|map_page)|navmesh\s+build|places\s+(build|finalise|draft|seat|extract))"
                   r"|tools[./]places[./]finalise|(^|[\s/])(world|rebuild)\.sh(\s|$)")
 
 
@@ -694,9 +713,9 @@ class Run:
             inputs = tree.inputs(s)
             key = tree.key_of(inputs)
             st = tree.stamp(s)
-            if st.get("key") == key and tree.disagreement(s) is None and s.name not in self.forced:
+            if s.name not in self.forced and tree.own_state(s, inputs)[0]:
                 res["result"] = "skipped"
-                res["line"] = "its inputs are unchanged"
+                res["line"] = "its inputs are unchanged" if st.get("key") else "its own record proves it (it stays unstamped)"
                 return
             (tree.state / "logs").mkdir(parents=True, exist_ok=True)
             with open(tree.state / "logs" / f"{s.name}.log", "w") as log:
@@ -852,42 +871,6 @@ def run(tree: Tree, to: str | None = None, force: tuple = (), budget_gb: float |
     return 1 if doc["red"] else 0
 
 
-def adopt(tree: Tree) -> int:
-    """Stamp, without building, the standing outputs that prove their own build: for a tree whose outputs the stage
-    tools built outside `run`. A stage is stamped only when its outputs exist and it has a proof that holds: its
-    outputs name the builds they stand on (`agree`), and its `proof` command, if it has one, exits 0. A stage with
-    no proof is left stale and runs at the next `run` (those stages are short). One red proof of a stage whose
-    outputs name another build stops the adoption: the tree is mid-build, so run it. The proof is of the builds
-    agreeing, not of the rules: after a rule or source change, run the stage."""
-    todo = [tree.by_name[n] for n in order(tree.stages) if not tree.own_state(tree.by_name[n])[0]]
-    bad = [(s.name, tree.disagreement(s)) for s in todo if s.agree and tree.disagreement(s)]
-    if bad:
-        for n, why in bad:
-            print(f"  FAIL {n}: {why}")
-        print("adopt: nothing stamped; the outputs are of different builds: run the rebuild")
-        return 1
-    n = 0
-    for s in todo:
-        if not (s.agree or s.proof):
-            print(f"  left to run  {s.name}: its output carries no proof of its build")
-            continue
-        why = tree.disagreement(s)
-        if not why and s.proof:
-            p = subprocess.run([tree.py if a == PY else a for a in s.proof], cwd=tree.repo, env=_env(), capture_output=True, text=True)
-            why = None if p.returncode == 0 else (p.stdout.strip().splitlines() or p.stderr.strip().splitlines() or ["its proof is red"])[-1]
-        if why:
-            print(f"  left to run  {s.name}: {why}")
-            continue
-        inputs = tree.inputs(s)
-        tree.write_stamp(s, {"key": tree.key_of(inputs), "built": tree.key_of(inputs), "inputs": inputs, "adopted": True,
-                             "at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())})
-        print(f"  stamped      {s.name}")
-        n += 1
-    tree.save_cache()
-    print(f"adopt: {n} of {len(todo)} stages stamped from the standing outputs")
-    return 0
-
-
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -897,7 +880,6 @@ def main(argv=None) -> int:
     r.add_argument("--to", help="only the stale stages this stage needs, and itself")
     r.add_argument("--force", action="append", default=[], help="treat this stage as stale (repeatable)")
     r.add_argument("--budget-gb", type=float, help="memory the stages may use side by side (default: available less 2)")
-    sub.add_parser("adopt", help="stamp outputs the stage tools built outside `run`, when they agree")
     a = ap.parse_args(argv)
     tree = Tree()
     if a.cmd == "plan":
@@ -905,8 +887,6 @@ def main(argv=None) -> int:
         return 0
     if a.cmd == "preflight":
         return 0 if print_preflight(preflight(tree, plan(tree))) else 1
-    if a.cmd == "adopt":
-        return adopt(tree)
     return run(tree, a.to, tuple(a.force), a.budget_gb)
 
 

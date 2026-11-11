@@ -259,42 +259,105 @@ def test_a_named_field_of_a_manifest_is_the_digest(tmp_path):
     assert t.digest("out:m.json#key") == d
 
 
-def agree_tree(tmp_path, proof_rc=0):
+def proof_tree(tmp_path):
+    """`land` keeps its own key beside its output (key.txt = the source's text) and proves it; `cells` names the
+    build it stands on but has no proof; `spec` has neither."""
     w = "import json,sys,pathlib as p\no=p.Path('out'); o.mkdir(exist_ok=True)\n(o/sys.argv[1]).write_text(json.dumps({'build_id': sys.argv[2]}))"
-    stages = (Stage("land", "", cmds=((PY, "-c", w, "land.json", "B2"),), writes=("out:land.json",),
-                    proof=(PY, "-c", f"import sys; print('land inputs: as built' if not {proof_rc} else 'land inputs: changed'); sys.exit({proof_rc})")),
+    land = ("import pathlib as p\no=p.Path('out'); o.mkdir(exist_ok=True)\n(o/'land.json').write_text('{\"build_id\": \"B2\"}')\n"
+            "(o/'land.key').write_text(p.Path('rule.txt').read_text())\n(o/'land.runs').open('a').write('x')")
+    proof = ("import sys,pathlib as p\nk=p.Path('out/land.key')\nok=k.exists() and k.read_text()==p.Path('rule.txt').read_text()\n"
+             "print('land: its key is today\\'s' if ok else 'land: its key is not today\\'s'); sys.exit(0 if ok else 1)")
+    (tmp_path / "rule.txt").write_text("rule 1")
+    stages = (Stage("land", "", cmds=((PY, "-c", land),), reads=("src:rule.txt",), writes=("out:land.json",), proof=(PY, "-c", proof)),
               Stage("cells", "", cmds=((PY, "-c", w, "cells.json", "B2"),), reads=("out:land.json",), writes=("out:cells.json",),
                     agree=(("out:cells.json#build_id", "out:land.json#build_id", "eq"),)),
               Stage("spec", "", cmds=((PY, "-c", w, "spec.json", "-"),), writes=("out:spec.json",)))
     return Tree(repo=tmp_path, stages=stages, py=__import__("sys").executable)
 
 
-def test_an_output_of_another_build_is_stale_and_adopt_refuses_it(tmp_path, capsys):
-    t = agree_tree(tmp_path)
-    t.out.mkdir()
-    for name, build in (("land", "B2"), ("cells", "B1"), ("spec", "-")):
-        (t.out / f"{name}.json").write_text(json.dumps({"build_id": build}))
-    assert R.adopt(t) == 1 and "cells" in capsys.readouterr().out and not (t.state / "land.json").exists()
-    (t.out / "cells.json").write_text(json.dumps({"build_id": "B2"}))
-    assert R.adopt(t) == 0
-    out = capsys.readouterr().out
-    assert "left to run  spec: its output carries no proof of its build" in out and "2 of 3 stages stamped" in out
-    assert {r["stage"]: r["state"] for r in R.plan(t)} == {"land": "current", "cells": "current", "spec": "stale"}
+def by_hand(t, key="rule 1"):
+    """Outputs the stage tools wrote outside the rebuild: no stamps."""
+    t.out.mkdir(exist_ok=True)
+    for name in ("land", "cells", "spec"):
+        (t.out / f"{name}.json").write_text(json.dumps({"build_id": "B2"}))
+    (t.out / "land.key").write_text(key)
+
+
+def test_an_unstamped_stage_is_current_only_on_its_own_tools_proof(tmp_path):
+    t = proof_tree(tmp_path)
+    by_hand(t)
+    rows = {r["stage"]: r for r in R.plan(t)}
+    assert rows["land"]["state"] == "current" and "proved by its own record" in rows["land"]["why"]
+    # agreeing build ids are no proof, and neither is an output that merely exists
+    assert rows["cells"]["state"] == "stale" and "no proof" in rows["cells"]["why"]
+    assert rows["spec"]["state"] == "stale"
+    assert not (t.state / "land.json").exists()                  # the plan stamps nothing
+
+
+def test_a_proof_that_fails_leaves_the_stage_stale_with_the_tools_line(tmp_path):
+    t = proof_tree(tmp_path)
+    by_hand(t, key="rule 0")
+    row = R.plan(t)[0]
+    assert row["state"] == "stale" and "its key is not today's" in row["why"]
+
+
+def test_the_run_stamps_only_what_it_made(tmp_path):
+    t = proof_tree(tmp_path)
+    by_hand(t)
+    assert R.run(t, check_first=False) == 0
+    assert not (t.out / "land.runs").exists()                    # proved: not run, and not stamped
+    assert not t.stamp(t.by_name["land"]) and t.stamp(t.by_name["cells"]).get("key") and t.stamp(t.by_name["spec"]).get("key")
+    assert {r["stage"]: r["state"] for r in R.plan(t)} == {"land": "current", "cells": "current", "spec": "current"}
+    (t.repo / "rule.txt").write_text("rule 2")                   # the rule changed: the proof no longer holds
+    assert R.plan(t)[0]["state"] == "stale"
+    assert R.run(t, check_first=False) == 0
+    assert (t.out / "land.runs").read_text() == "x" and t.stamp(t.by_name["land"]).get("key")
+    assert {r["stage"]: r["state"] for r in R.plan(t)} == {"land": "current", "cells": "current", "spec": "current"}
+
+
+def test_an_output_of_another_build_is_stale_whatever_its_stamp(tmp_path):
+    t = proof_tree(tmp_path)
+    assert R.run(t, check_first=False) == 0
     (t.out / "cells.json").write_text(json.dumps({"build_id": "B1"}))
     row = R.plan(t)[1]
     assert row["state"] == "stale" and "B1" in row["why"]
 
 
-def test_adopt_leaves_a_stage_whose_proof_is_red_to_run(tmp_path, capsys):
-    t = agree_tree(tmp_path, proof_rc=1)
-    t.out.mkdir()
-    for name in ("land", "cells", "spec"):
-        (t.out / f"{name}.json").write_text(json.dumps({"build_id": "B2"}))
-    assert R.adopt(t) == 0
-    assert "left to run  land: land inputs: changed" in capsys.readouterr().out
-    assert {r["stage"]: r["state"] for r in R.plan(t)} == {"land": "stale", "cells": "follows", "spec": "stale"}
-    assert R.run(t, check_first=False) == 0          # land runs; cells' input is the same bytes: skipped
-    assert {r["stage"]: r["state"] for r in R.plan(t)} == {"land": "current", "cells": "current", "spec": "current"}
+def test_no_command_stamps_without_building():
+    assert not hasattr(R, "adopt")
+    with pytest.raises(SystemExit):
+        R.main(["adopt"])
+
+
+# ---- the navmesh was fed the placed objects ---------------------------------------------------------------------------
+
+def nav(tmp_path, tris, fed):
+    from tools.newworld.world import navobjects
+    d = tmp_path / "plugin" / "navmesh"
+    d.mkdir(parents=True, exist_ok=True)
+    (d / "check.json").write_text(json.dumps({"objects": tris}))
+    (d / "build.json").write_text(json.dumps({} if fed is None else {"placed": {"objects": fed}}))
+    return navobjects, tmp_path / "plugin"
+
+
+def test_a_navmesh_no_placed_object_reached_is_red(tmp_path):
+    N, p = nav(tmp_path, 0, None)
+    r = N.rows(p, tmp_path, count=lambda refs, data: None)
+    assert [ok for _, _, ok, _ in r] == [False, False] and "owed by the navmesh tool" in r[1][3]
+
+
+def test_the_fed_count_must_be_the_collidable_refs(tmp_path):
+    N, p = nav(tmp_path, 5000, 120)
+    assert [ok for _, _, ok, _ in N.rows(p, tmp_path, count=lambda refs, data: 120)] == [True, True]
+    assert [ok for _, _, ok, _ in N.rows(p, tmp_path, count=lambda refs, data: 150)] == [True, False]
+    assert [ok for _, _, ok, _ in N.rows(p, tmp_path, count=lambda refs, data: None)] == [True, False]
+
+
+def test_the_navmesh_stage_reads_the_placed_refs_and_checks_them():
+    s = {x.name: x for x in R.STAGES}["navmesh"]
+    assert R.FLORA in s.reads and "out:newworld/plugin/refs/flora/bases.json" in s.reads
+    assert any("tools.newworld.world.navobjects" in c for c in s.checks)
+    assert "place" in R.deps(R.STAGES, waits=False)["navmesh"]
 
 
 # ---- the checks the rebuild gates on ---------------------------------------------------------------------------------
@@ -310,3 +373,16 @@ def test_terrain_needs_fail_only_on_a_failure_not_accepted():
 def test_the_accepted_needs_file_names_place_need_and_reason():
     for a in json.loads((R.REPO / "newworld/sources/terrain_needs_accepted.json").read_text())["accepted"]:
         assert a["place_id"] and a["need"] and len(a["why"]) > 10
+
+
+def test_an_empty_table_keeps_its_empty_file(tmp_path):
+    """build_db starts from no table files: a table with no rows is written as its empty file, never left out."""
+    from tools.argonia_world import db
+    from tools.newworld import build_db
+    (tmp_path / "story/data").mkdir(parents=True)
+    (tmp_path / "story/data/schema.sql").write_text("CREATE TABLE a (id TEXT PRIMARY KEY);\nCREATE TABLE b (id TEXT PRIMARY KEY);\n")
+    w = db.open(tmp_path, cache=False)
+    w.insert("a", id="x")
+    assert build_db.save_whole(w) == ["a", "b"]
+    d = tmp_path / "story/data/db"
+    assert (d / "a.jsonl").read_text().strip() == '{"id":"x"}' and (d / "b.jsonl").exists() and (d / "b.jsonl").read_text() == ""

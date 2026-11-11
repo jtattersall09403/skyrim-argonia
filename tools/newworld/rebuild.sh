@@ -5,7 +5,6 @@
 #   tools/newworld/rebuild.sh preflight    everything checkable before the first long stage
 #   tooling/job_guard.sh run nw-rebuild -- tools/newworld/rebuild.sh run [--to STAGE] [--force STAGE]
 #   tooling/job_guard.sh wait nw-rebuild
-#   tools/newworld/rebuild.sh adopt        stamp outputs the stage tools built outside `run`, when they agree
 set -euo pipefail
 repo=$(cd "$(dirname "$0")/../.." && pwd); cd "$repo"
 py=$(ls "$HOME/.argonia/venv/bin/python" 2>/dev/null || command -v python3)

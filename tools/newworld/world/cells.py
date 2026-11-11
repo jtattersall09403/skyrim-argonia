@@ -1,6 +1,10 @@
 """Per-cell water type and region (nw-02 step 7), from the landcover.
 
     python3 -m tools.newworld.world.cells [--out out/newworld/plugin]
+    python3 -m tools.newworld.world.cells --current     # exit 0 when cells.key is today's key (writes nothing)
+
+`<out>/cells.key`, written after cells.json, is what it was made from (key()). It stands beside the file, not in it:
+the world file's key is over cells.json's bytes.
 
 Writes `<out>/cells.json` ({"build_id", "cells": {"cx,cy": {"water": watr key, "region": region id}}, "watr": the
 water records by key, "regions": name and wetness per region, "limits": what the engine cannot show}). The low mist
@@ -46,6 +50,24 @@ def log(*a):
     print(*a, file=sys.stderr, flush=True)
 
 
+def key(out: Path) -> str:
+    """What cells.json was made from: the land shards' key, the landcover's key, the cells where water flows, the
+    regions and their notes, and this code with the water records' and the water kinds' it calls."""
+    import hashlib
+    from tools.newworld import water_kinds
+    h = hashlib.sha256()
+    h.update(json.loads((out / "land/manifest.json").read_text())["key"].encode())
+    for p in (LC / "key.txt", f.OUT / "water_flow_cells.json", lc.DB / "region.jsonl", lc.DB / "region_note.jsonl",
+              Path(__file__), Path(wt.__file__), Path(water_kinds.__file__)):
+        h.update(p.read_bytes())
+    return h.hexdigest()[:16]
+
+
+def current(out: Path) -> bool:
+    k = out / "cells.key"
+    return (out / "cells.json").exists() and k.exists() and (LC / "key.txt").exists() and k.read_text() == key(out)
+
+
 def build(out: Path) -> dict:
     man = json.loads((out / "land/manifest.json").read_text())
     legend = json.loads((LC / "legend.json").read_text())
@@ -84,7 +106,9 @@ def build(out: Path) -> dict:
         region_rows[r["id"]] = {"name": r["name"], "map_label": r.get("map_label"), "wetness": wv}
     res = {"build_id": man["build_id"], "cells": cells, "watr": wt.records(counts), "regions": region_rows, "limits": LIMITS,
            "water_cells": dict(counts)}
+    (out / "cells.key").unlink(missing_ok=True)
     (out / "cells.json").write_text(json.dumps(res))
+    (out / "cells.key").write_text(key(out))
     log(f"cells: water types {dict(counts)}")
     return res
 
@@ -92,7 +116,13 @@ def build(out: Path) -> dict:
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("--out", type=Path, default=REPO / "out/newworld/plugin")
-    build(ap.parse_args(argv).out)
+    ap.add_argument("--current", action="store_true")
+    a = ap.parse_args(argv)
+    if a.current:
+        ok = current(a.out)
+        print("cells:", "its key is today's" if ok else "its key is not today's")
+        return 0 if ok else 1
+    build(a.out)
     return 0
 
 
