@@ -1,7 +1,8 @@
 """The navmesh is cut round what is placed on the new world: every producer's refs shards are read, the collidable
 references are the ones fed, each reduced to the voxel columns it blocks (a boulder right through: a solid, not a
 shell; a low stone and a high bough none), a second run reuses every row and writes the same bytes, moving a boulder
-rebuilds only the cells it touches, and the flora placer keeps a road's walking width clear of a thing's collision. Synthetic ground and meshes (no game data;
+rebuilds only the cells it touches, the flora placer keeps a road's walking width clear of a thing's collision, a
+world reference a place clears is left out by where it stands, and a row kept under other code is built again. Synthetic ground and meshes (no game data;
 the build tests need the .NET SDK, else they are skipped)."""
 import json
 
@@ -72,6 +73,41 @@ def test_every_producers_shards_are_read_and_the_collidable_are_fed(tmp_path):
     assert placed.write_rows(tmp_path / "refs", tmp_path, tmp_path / "objects", BOX, ground(), FRAME, **kw) == t
     assert {f.name: f.read_bytes() for f in (tmp_path / "objects").iterdir()} == first  # the same bytes,
     assert {f.name: f.stat().st_mtime_ns for f in (tmp_path / "rows").iterdir()} == stamp  # from the rows kept
+
+
+def test_a_cleared_reference_is_left_out_by_where_it_stands(tmp_path):
+    write_refs(tmp_path / "refs", ROCK)
+    kw = dict(cache=tmp_path / "rows", resolver=Resolver(), sample=1)
+    run = lambda at_: placed.write_rows(tmp_path / "refs", tmp_path, tmp_path / "objects", BOX, ground(), FRAME,
+                                        exclude=placed.Cleared([at_]), **kw)
+    near = [ROCK[0] + 0.06, ROCK[1] - 0.06, ROCK[2] + 0.03]  # as the world file holds it: a 32-bit float of the shard's
+    t = run(near)
+    assert (t["refs"], t["collidable"], t["fed"], t["cleared"]) == (3, 1, 1, 1)  # the boulder is not there
+    assert not (tmp_path / "objects" / "cy-016.runs.i32").exists() and len(np.load(tmp_path / "objects" / "probe.npy")) == 0
+    t = run([ROCK[0] + 2.0, ROCK[1], ROCK[2]])  # another thing's place: nothing is left out
+    assert (t["refs"], t["fed"], t["cleared"]) == (4, 2, 0) and (tmp_path / "objects" / "cy-016.runs.i32").exists()
+    assert "cleared" not in placed.write_rows(tmp_path / "refs", tmp_path, tmp_path / "objects", BOX, ground(), FRAME, **kw)
+
+
+def test_a_row_kept_under_other_code_is_built_again(tmp_path, monkeypatch, capsys):
+    write_refs(tmp_path / "refs", ROCK)
+    code = []
+    for f in placed.ROW_CODE:
+        code.append(tmp_path / f.name)
+        code[-1].write_bytes(f.read_bytes())
+    assert [f.name for f in code] == ["solid.py", "placed.py"]
+    monkeypatch.setattr(placed, "ROW_CODE", tuple(code))
+
+    def run():
+        placed.write_rows(tmp_path / "refs", tmp_path, tmp_path / "objects", BOX, ground(), FRAME, cache=tmp_path / "rows",
+                          resolver=Resolver(), sample=1)
+        return json.loads(capsys.readouterr().out.strip().splitlines()[-1])["placed rows"]
+    assert run() == {"built": 2, "reused": 0}
+    assert run() == {"built": 0, "reused": 2}
+    for f in code:  # an edit to either file: every kept row is stale
+        f.write_bytes(f.read_bytes() + b"\n# edited\n")
+        assert run() == {"built": 2, "reused": 0}
+        assert run() == {"built": 0, "reused": 2}
 
 
 def test_what_blocks_a_column():

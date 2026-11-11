@@ -299,6 +299,12 @@ def clearance(st: Standing, log=print) -> None:
     rows = clearmod.apply(world, measure, buildings, st.bases, paths, doors, feet)
     got = {r.get("ref") for r in rows}
     rows += clearmod.along(world, measure, [p for p in paths if "re-laid" in str(p.get("laid"))], got)
+    from tools.places.draft import bodies
+    solid = bodies.load(st.bases)
+    if solid is None:
+        log(f"draft clearance {st.place_id}: no world land is built here: the world's things are cleared by their roots alone")
+    else:
+        rows += clearmod.across(world, {r.get("ref") for r in rows}, paths, doors, solid)
     # a plant already cleared keeps its row as it stands (the reason first given); the stage owns which plants go.
     # A row is that plant's only while the world still has it there: a re-scattered world reuses its refs' ids
     was = {r.get("ref"): r for r in st.files["clear"] if r.get("by") == "draft"}

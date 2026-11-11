@@ -729,10 +729,11 @@ def stops(place_id: str, pdir: Path, W: Walkable, log=print) -> int:
     return n
 
 
-def streets(place_id: str, pdir: Path, W: Walkable, world: list[dict] | None = None, log=print) -> int:
+def streets(place_id: str, pdir: Path, W: Walkable, world: list[dict] | None = None, log=print, bases: dict | None = None) -> int:
     """Every street lies on the town's main walkable network of the built mesh: a stretch off it is re-laid along the
     way the mesh walks (`mend`), said in the street's `laid`, and the world's plants (`world`, the ground bundle's)
-    the new line reaches are cleared by the draft's own measure; then each guard's patrol is taken again from the
+    the new line reaches are cleared by the draft's own measure, and those whose body lies across it (`bases`: the
+    ground bundle's, for their meshes); then each guard's patrol is taken again from the
     streets, every point on the network. Returns the changes (stretches re-laid and patrols changed)."""
     from tools.places.draft import people
     pj, fj = pdir / "paths.jsonl", pdir / "people.jsonl"
@@ -752,8 +753,12 @@ def streets(place_id: str, pdir: Path, W: Walkable, world: list[dict] | None = N
         if world and place.get("clearance"):
             from tools.places.draft import clear as clearmod
             rows = io.read_jsonl(cj) if cj.exists() else []
-            more = clearmod.along(world, place["clearance"], [p for p in paths if "re-laid" in str(p.get("laid"))],
-                                  {r.get("ref") for r in rows})
+            relaid = [p for p in paths if "re-laid" in str(p.get("laid"))]
+            more = clearmod.along(world, place["clearance"], relaid, {r.get("ref") for r in rows})
+            from tools.places.draft import bodies
+            solid = bodies.load(bases) if bases is not None else None
+            if solid is not None:
+                more += clearmod.across(world, {r.get("ref") for r in rows + more}, relaid, [], solid)
             if more:
                 io.write_jsonl(cj, sorted(rows + more, key=lambda x: (x["pos"][0], x["pos"][1], x["base"])))
                 log(f"join {place_id}: {len(more)} world plants cleared off the re-laid streets")
@@ -907,7 +912,7 @@ def join(place_id: str, places: Path = io.PLACES, out: Path = CHECK_OUT, log=pri
             log(f"join {place_id}: no island ({', '.join(sorted(isl))}) has a clear walkable way to the network")
             moved += cut(place_id, sorted(isl), rows, pdir, log)
         world = [r for r in (grd.exterior.refs if grd.exterior else []) if r.get("layer", "world") == "world"]
-        got = arrivals(place_id, pdir, W, bases, log) + stops(place_id, pdir, W, log) + streets(place_id, pdir, W, world, log)
+        got = arrivals(place_id, pdir, W, bases, log) + stops(place_id, pdir, W, log) + streets(place_id, pdir, W, world, log, bases)
         done += got + moved
         if got or moved:
             settle()

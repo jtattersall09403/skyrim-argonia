@@ -1265,11 +1265,13 @@ def room_partition(copy_of: str, refs: list[dict], work: Path) -> dict:
     return {"rooms": {k: {"refs": set(v["refs"]), "mesh": v["mesh"]} for k, v in rooms.items()}}
 
 
-def exterior_navmesh(touched: set, objects, patched: dict, polylines, out: Path) -> tuple[list[dict], dict]:
-    """tools.navmesh over the window (touched cells + NAV_RING rings) with the place's land and collision; the
-    touched cells and their first ring are ours (their seams are re-split at the changed neighbour), the second
-    ring must come out byte-equal to the world's own NAVM (the join is then edge for edge)."""
-    from tools.navmesh import __main__ as nav, nvnm, stitch, world
+def exterior_navmesh(touched: set, objects, patched: dict, polylines, out: Path, cleared=()) -> tuple[list[dict], dict]:
+    """tools.navmesh over the window (touched cells + NAV_RING rings) with the place's land and collision, cut
+    round everything the world has placed there (its refs shards, as the world's own navmesh is) but the world
+    refs the place switches off (`cleared`: their positions); the touched cells and their first ring are ours
+    (their seams are re-split at the changed neighbour), the second ring must come out byte-equal to the world's
+    own NAVM (the join is then edge for edge)."""
+    from tools.navmesh import __main__ as nav, meshes, nvnm, stitch, world
     land = world.Land.load(WORLD_DIR)
     xs = [c[0] for c in touched]
     ys = [c[1] for c in touched]
@@ -1293,12 +1295,18 @@ def exterior_navmesh(touched: set, objects, patched: dict, polylines, out: Path)
     reach = NAV_RING
     while True:
         box = (min(xs) - reach, min(ys) - reach, max(xs) + reach, max(ys) + reach)
-        was = stitch.STACKED
+        was = stitch.STACKED, meshes.PROFILE
         stitch.STACKED = True  # decks and steps on a cell line: seams split and linked by height too (the world's off)
+        meshes.PROFILE = "NewWorld"  # the world's placed meshes are found by the new world's mod order
         try:
-            res = nav.build(out, box, WORLD_DIR, run_check=False, objects=objects, heights=heights, polylines=polylines, land=land)
+            res = nav.build(out, box, WORLD_DIR, run_check=False, objects=objects, heights=heights, polylines=polylines, land=land,
+                            refs=WORLD_DIR / "refs", cleared=cleared)
         finally:
-            stitch.STACKED = was
+            stitch.STACKED, meshes.PROFILE = was
+        pl = res.get("placed") or {}
+        if pl.get("cleared") != len(cleared) or pl.get("unresolved"):
+            problem(f"navmesh: the world's refs shards hold {pl.get('cleared')} of the {len(cleared)} world refs the place clears, and "
+                    f"{pl.get('unresolved')} of their meshes are not read: the world file and out/newworld/plugin/refs are not of one build")
         built, world_rows = {}, {}
         for p in sorted((out / "navm").glob("cy*.jsonl.gz")):
             for ln in gzip.open(p, "rt"):
@@ -1321,7 +1329,7 @@ def exterior_navmesh(touched: set, objects, patched: dict, polylines, out: Path)
             break
         reach += 1
     ring1 = R[0] | R[1]
-    seam = {"reach": reach, "trusted_cells": sum(1 for c in inner if c in built or c in world_rows),
+    seam = {"reach": reach, "placed": {k: pl.get(k) for k in ("refs", "collidable", "fed", "cleared")}, "trusted_cells": sum(1 for c in inner if c in built or c in world_rows),
             "differ": [list(c) for c in differ(inner)], "last_ring_differ": [list(c) for c in differ(last)]}
     if seam["last_ring_differ"]:
         problem(f"navmesh: {reach} rings out from the place its cells still come out unlike the world's "
@@ -1716,7 +1724,8 @@ def _plan_place(pid: str, pdir: Path, out: Path, no_navmesh: bool, plan_only: bo
         if touched:
             objects, tally = collision_objects(S["refs"])
             polylines = navworld.road_polylines() + [[(x, y, False) for x, y in p["points"]] for p in P["paths"]]
-            ext, nav_info = exterior_navmesh(touched, objects, patched, polylines, out / "navmesh" / pid)
+            ext, nav_info = exterior_navmesh(touched, objects, patched, polylines, out / "navmesh" / pid,
+                                              [r["pos"] for r in clear])
             nav_info["collision"] = tally
             navs += ext
         copied = [I for I in S["interiors"] if I["copy"] and not I.get("room_mesh")]

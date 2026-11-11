@@ -161,11 +161,38 @@ def shard_row(path: Path) -> int | None:
     return int(m.group(1)) if m else None
 
 
-def read_shard(path: Path) -> list[dict]:
+class Cleared:
+    """World references a place switches off (its clear rows), known by where they stand: the shards carry no form
+    id, and no two placed things stand within a metre. `pos in cleared` is true for a reference standing within
+    `tol` units of one of them; `found` holds the ones met."""
+
+    def __init__(self, positions, tol: float = 1.0):
+        self.tol, self.found = float(tol), set()
+        self.at: dict[tuple[int, int], list[tuple[float, float, float]]] = {}
+        for q in positions:
+            q = (float(q[0]), float(q[1]), float(q[2]))
+            self.at.setdefault((int(q[0] // 64), int(q[1] // 64)), []).append(q)
+
+    def __len__(self) -> int:
+        return sum(len(v) for v in self.at.values())
+
+    def __contains__(self, pos) -> bool:
+        x, y, z = float(pos[0]), float(pos[1]), float(pos[2])
+        for i in {int((x - self.tol) // 64), int((x + self.tol) // 64)}:
+            for j in {int((y - self.tol) // 64), int((y + self.tol) // 64)}:
+                for q in self.at.get((i, j), ()):
+                    if (q[0] - x) ** 2 + (q[1] - y) ** 2 + (q[2] - z) ** 2 <= self.tol ** 2:
+                        self.found.add(q)
+                        return True
+        return False
+
+
+def read_shard(path: Path, exclude: Cleared | None = None) -> list[dict]:
     """One shard's references, one JSON object a line, each given the keys collide() reads whatever its producer
     wrote: `base` (the FormKey `XXXXXX:Plugin`, from `key` when `base` names an editor id as `Plugin:EditorID`,
     else `edid`), `pos` and `rot` (from x, y, z and rx, ry, rz when not given), `scale`, optional `model` (its MODL).
-    Disabled ones are left out; the order is by position, so a shard rewritten in another order reads the same."""
+    Disabled ones and those standing where `exclude` holds one are left out; the order is by position, so a shard
+    rewritten in another order reads the same."""
     out = []
     for ln in path.read_text(encoding="utf-8").splitlines():
         if not ln.strip():
@@ -181,6 +208,8 @@ def read_shard(path: Path) -> list[dict]:
         else:
             base, edid = None, x.get("base")
         if None in pos or not (base or edid):
+            continue
+        if exclude is not None and pos in exclude:
             continue
         out.append({"base": base, "edid": edid, "pos": pos, "rot": x.get("rot") or [x.get("rx", 0.0), x.get("ry", 0.0), x.get("rz", 0.0)],
                     "scale": x.get("scale"), "model": x.get("model"), "box": x.get("box")})
@@ -250,7 +279,18 @@ class Models:
         return self.tris[k]
 
 
-PREP = "rows/2"  # bump when what a row's blocked columns are made from changes: every cached row is then built again
+ROW_CODE = (Path(__file__).with_name("solid.py"), Path(__file__))  # the code that makes a row's blocked columns
+
+
+def row_code_key() -> str:
+    """The digest of ROW_CODE's bytes, part of every row's key: a row kept under other code is built again."""
+    import hashlib
+    h = hashlib.sha256()
+    for f in ROW_CODE:
+        h.update(f.name.encode() + b"\0" + hashlib.sha256(f.read_bytes()).digest())
+    return h.hexdigest()
+
+
 _JOB: dict = {}  # what a row's worker reads (set before the pool forks)
 
 
@@ -310,7 +350,7 @@ def _row_job(s: int):
 
 
 def write_rows(refs_dir: Path, data: Path, out: Path, box, heights: np.ndarray, frame, cache: Path | None = None, resolver=None,
-               sample: int = 8, workers: int | None = None) -> dict:
+               sample: int = 8, workers: int | None = None, exclude: Cleared | None = None) -> dict:
     """The new world's placed collision for the cells of `box`, reduced to the voxel columns it blocks (solid.py):
     `out/cy<+NNN>.runs.i32` for each cell row that holds any, rows of (j, first i, last i) over the row's cells and
     the border ArgoniaNav reads round them. `heights` is the ground raster (row 0 north), `frame` the world x and y
@@ -318,7 +358,9 @@ def write_rows(refs_dir: Path, data: Path, out: Path, box, heights: np.ndarray, 
 
     The work is done a row of references at a time and kept under `cache` (`cy<+NNN>.npy` with `.json`), each row
     under the digest of what it is made from: its references, their bases' collision, the ground they can reach,
-    the box and the rule's numbers. A row whose digest stands is not built again.
+    the box, the rule's numbers and the code that reduces them (ROW_CODE). A row whose digest stands is not built
+    again. References standing where `exclude` holds one (a place's cleared world plants) are not read, and
+    `tally.json` then says how many of them the shards held (`cleared`).
 
     `out/tally.json`: `refs` (in the box), `collidable` (those whose base's mesh has solid collision: counted by
     base), `fed` (those reduced to columns: counted by the rows as they do it), `no_collision`, `unresolved` (mesh
@@ -352,7 +394,7 @@ def write_rows(refs_dir: Path, data: Path, out: Path, box, heights: np.ndarray, 
         row = shard_row(path)
         if row is not None and not y0 - REACH_ROWS <= row <= y1 + REACH_ROWS:
             continue
-        refs = read_shard(path)
+        refs = read_shard(path, exclude)
         models.learn(refs)
         name = path.parent.name if path.parent != refs_dir else ""
         who = tally["producers"].setdefault(name, {"refs": 0, "fed": 0})
@@ -387,11 +429,14 @@ def write_rows(refs_dir: Path, data: Path, out: Path, box, heights: np.ndarray, 
         raise ValueError(f"navmesh: a placed thing reaches {far:.0f} units, past the {REACH_ROWS} cell rows of shards read either side of the box")
     # the collidable references counted the other way, by base: every reference of a base whose mesh has collision
     tally["collidable"] = sum(n for k, n in per_base.items() if models.tris.get(k) is not None and len(models.tris[k]))
+    if exclude is not None:
+        tally["cleared"] = len(exclude.found)
     h = np.ascontiguousarray(heights, np.float32)
+    code = row_code_key()
     keys = {}
     for s, xs in rows.items():
         hk = hashlib.blake2b(digest_size=16)
-        hk.update(json.dumps([PREP, cs, params.AGENT_CLIMB, params.AGENT_HEIGHT, list(window), [x0u, ytop, step], list(h.shape), sample]).encode())
+        hk.update(json.dumps([code, cs, params.AGENT_CLIMB, params.AGENT_HEIGHT, list(window), [x0u, ytop, step], list(h.shape), sample]).encode())
         far_s = max(x["reach"] for x in xs)
         ra = max(int((ytop - ((s + 1) * CELL + far_s)) // step) - 1, 0)
         rb = min(int((ytop - (s * CELL - far_s)) // step) + 3, h.shape[0])

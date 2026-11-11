@@ -66,6 +66,11 @@ What the tools hold to, so you can judge their output:
   source's own frame with full rotation, are one body and share a cluster. A tilted piece turns about the world's
   axis with its cluster (one transform).
 - A sunk filler block or a low platform (its top within a step of the ground) is walked over, never an obstacle.
+- The world's plants give way to the town. A plant rooted closer to a building, a street or a door than the
+  source's own plants came is cleared, and so is anything rooted inside a placed thing. A thing of the world whose
+  body lies across a street's walking width or a door front is cleared wherever it is rooted (a great root, a rock
+  piece many metres wide): its body is its solid collision at walking height, the same columns the navmesh is cut
+  round it by.
 - Land patches only ease the ground under a building, at most 1.5 m at any point and never across the waterline.
   A building on a slope first takes the rise the source's own builders commonly built on (`fit.relief_norm`).
 
@@ -280,7 +285,7 @@ and removed per file; a stage that would write outside what it owns changes noth
 | `fit` | a piece belongs in another cluster (a light with its fixture) | the cluster, place and turn of the exterior rows that move; their ledger rows |
 | `pieces` | `draft.replace` or `draft.drop` changed | the base, place, `align` and seat of the rows they name, in the exterior and every copied room; their ledger rows |
 | `seating` | a seat rule changed | the seat and height of exterior rows |
-| `clearance` | buildings, doors or streets moved | `clear.jsonl`: which of the world's plants go |
+| `clearance` | buildings, doors or streets moved; the world's plants were placed again | `clear.jsonl`: which of the world's plants go |
 | `streets` (also `join`) | pieces, doors or the join's rules changed | flights, joins, arrivals, work stops, streets, patrols |
 | `people` | the people source or the place's promises changed | names in `people.jsonl`, and each person's services as the record promises them (kind, detail, the network's destinations) |
 | `lights` | stations were added, a room's lights changed | the lights of added stations; each room's lights on the source's own bases; `place.json` `lights` |
@@ -298,7 +303,9 @@ and removed per file; a stage that would write outside what it owns changes noth
 ## 8. Build and check
 
 1. `python3 -m tools.places build <place_id>` builds the place layer plugin with the place's navmesh, from the
-   place files and the database. It is a long job: run it under `tooling/job_guard.sh`. `build <place_id> --plan`
+   place files and the database. The navmesh is cut round the place's own pieces and round everything the world has
+   placed there (the world's refs shards) but the plants the place clears, so it meets the world's own navmesh edge
+   for edge: the world file, its refs shards and its navmesh must be of one build. It is a long job: run it under `tooling/job_guard.sh`. `build <place_id> --plan`
    plans only and lists every problem.
 2. `python3 -m tools.places check <place_id>` reads the built plugin back. All seventeen checks are green: `plugin`,
    `seat`, `overlap`, `doors`, `people`, `navmesh`, `streets`, `land`, `clear`, `services`, `nordic`, `rooms`,

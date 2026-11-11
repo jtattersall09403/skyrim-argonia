@@ -19,7 +19,8 @@ numbers behind each limit are in the research file named.
 | `esm` | `tools/newworld/world/world.sh map`, then `world.sh check` | the map box, markers, named cells and LOD flags are in the file; every cell has its land within the height error, seams match, no overflow; the water, the regions and the start marker are as planned; masters are Skyrim, Update and Black Marsh only | `tools/ArgoniaPlugin/` | |
 | `readback` | `python3 -m tools.newworld.verify --skip lod,deploy,places,relief` | every requirement, with a number, on the written file and the staged stack: the plugin, land, textures, water, placed objects, mist, atmosphere, height fog, navmesh, map and start marker | the stage that owns the failing row | `out/newworld/verify/report.md` |
 
-The navmesh has a fast test, run before any rebuild that reaches `place` or `navmesh` by a change to either:
+The navmesh has a fast test. The `navmesh` stage runs it before its province build, and it is run by hand before any
+rebuild that reaches `place` or `navmesh` by a change to either:
 `python3 -m tools.navmesh sample` builds five blocks of 64 cells (a dressed jungle road, an upland with cliff
 pieces, a marsh with trees in water, a town's approach, a shore behind ridge pieces), each on the bare ground and
 round what is placed, in about two minutes, into `out/newworld/navmesh-samples` (`--out` elsewhere in a worktree).

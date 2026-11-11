@@ -13,7 +13,8 @@
                       written only when there are some
           objects/    the new world's placed collision from the refs shards (`refs`: placed.write_rows) as the
                       voxel columns it blocks, one file a cell row, with its tally and the probe points the check
-                      reads; the rows are kept under `<out>/../rows`, each under the digest of what it is made from
+                      reads; the rows are kept under `<out>/../rows`, each under the digest of what it is made from.
+                      `cleared`: positions of world references a place switches off, left out of them
 """
 from __future__ import annotations
 
@@ -55,7 +56,8 @@ def road_mask(shape, x0: float, ytop: float, step: float, polylines=None) -> np.
 
 
 def write(out: Path, land: world.Land, box, cells: set, objects: np.ndarray | None = None, polylines=None,
-          heights: np.ndarray | None = None, refs: Path | None = None, data: Path | None = None, resolver=None) -> dict:
+          heights: np.ndarray | None = None, refs: Path | None = None, data: Path | None = None, resolver=None,
+          cleared=None) -> dict:
     out.mkdir(parents=True, exist_ok=True)
     g = land.grid
     h = land.heights() if heights is None else heights
@@ -83,11 +85,13 @@ def write(out: Path, land: world.Land, box, cells: set, objects: np.ndarray | No
     if refs is not None:
         from tools.navmesh import placed
         placed_tally = placed.write_rows(refs, data, rows_dir, box, np.asarray(h, np.float32), (x0u, ytop, step),
-                                         cache=out.parent / "rows", resolver=resolver)
+                                         cache=out.parent / "rows", resolver=resolver,
+                                         exclude=None if cleared is None else placed.Cleared(cleared))
         n_obj += placed_tally["band_triangles"]
     grid = {"rows": shape[0], "cols": shape[1], "x0": x0u, "ytop": ytop, "step": step, "cells": list(box),
             "build_id": land.build_id, "water": g.water, "params": params.recast(), **({"objects": n_obj} if n_obj else {}),
-            **({"placed": {k: placed_tally[k] for k in ("refs", "collidable", "fed", "no_collision", "unresolved", "triangles", "band_triangles", "columns")}}
+            **({"placed": {k: placed_tally[k] for k in ("refs", "collidable", "fed", "no_collision", "unresolved", "triangles", "band_triangles", "columns", "cleared")
+                           if k in placed_tally}}
                if placed_tally else {})}
     (out / "grid.json").write_text(json.dumps(grid, indent=1, sort_keys=True) + "\n")
     return grid

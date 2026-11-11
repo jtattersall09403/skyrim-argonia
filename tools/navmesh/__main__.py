@@ -104,7 +104,8 @@ def check(out: Path, cells: set | None = None) -> dict:
 
 
 def build(out: Path, box=None, plugin: Path = world.PLUGIN, run_check: bool = True, objects=None, cells=None,
-          land=None, heights=None, polylines=None, after_inputs=None, refs: Path | None = None, resolver=None) -> dict:
+          land=None, heights=None, polylines=None, after_inputs=None, refs: Path | None = None, resolver=None,
+          cleared=None) -> dict:
     from tools.navmesh import inputs, stitch
     land = land or world.Land.load(plugin)
     box = tuple(box) if box else (land.box[0] + 1, land.box[1] + 1, land.box[2] - 1, land.box[3] - 1)
@@ -114,7 +115,7 @@ def build(out: Path, box=None, plugin: Path = world.PLUGIN, run_check: bool = Tr
     t0 = time.time()
     build_tool()
     grid = inputs.write(out / "in", land, box, cells, objects=objects, polylines=polylines, heights=heights, refs=refs,
-                        data=game_data(), resolver=resolver)
+                        data=game_data(), resolver=resolver, cleared=cleared)
     if "placed" in grid:
         print(json.dumps({"placed": grid["placed"]}), flush=True)
     (out / "in" / "cells.json").write_text(json.dumps(sorted(cells)))

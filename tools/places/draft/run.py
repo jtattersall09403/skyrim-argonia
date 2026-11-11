@@ -774,6 +774,10 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
     footprints = [r for r in our if geom.foot(r, bases) and (r.get("kind") not in VEG or r.get("kind") in geom.SOLID_KINDS)]
     world = [r for r in (grd.exterior.refs if grd.exterior else []) if r.get("layer", "world") == "world"]
     clear_rows = clearmod.apply(world, clearance, our_buildings, bases, paths_our, list(nodes_our.values()), footprints)
+    from tools.places.draft import bodies
+    solid = bodies.load(bases)
+    if solid is not None:
+        clear_rows += clearmod.across(world, {r.get("ref") for r in clear_rows}, paths_our, list(nodes_our.values()), solid)
 
     # --- people ---
     folk, factions, stations = draft_people(place_id, rec, gives, src, bases, our, spaces, clusters, fit, of,

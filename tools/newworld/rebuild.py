@@ -136,6 +136,11 @@ EXTERNAL = ("newworld/raster/water.png", "newworld/raster/foreign.png", "newworl
             "newworld/symbols.json", "newworld/research/flora_catalogue.json", "newworld/terrain_ref/tamriel_h.npy",
             "newworld/terrain_ref/tamriel_w.npy")
 
+# The navmesh's fast test (tools/navmesh/__main__.py, `sample`: five blocks of 64 cells, bare and round what is
+# placed, about two minutes; exit 1 on a red block). The navmesh stage runs it before the province build, and a
+# small test world's navmesh step calls the same command with its own --plugin and --out.
+NAVMESH_SAMPLE = (PY, "-m", "tools.navmesh", "sample", "--plugin", PLUGIN, "--out", "out/newworld/navmesh-samples")
+
 STAGES: tuple[Stage, ...] = (
     Stage("tools", "the C# tools compile (ArgoniaPlugin, ArgoniaNav)",
           cmds=(("dotnet", "build", "-c", "Release", "-o", "out/tools/ArgoniaPlugin", "tools/ArgoniaPlugin", "-v", "q", "-nologo"),
@@ -291,7 +296,7 @@ STAGES: tuple[Stage, ...] = (
           writes=("src:mods/dependencies.json",),
           gb=1.5, minutes=1.0, lock="stack"),
     Stage("navmesh", "the navmesh of every land cell round the placed objects, its seams and paths checked",
-          cmds=((PY, "-m", "tools.navmesh", "build", "--plugin", PLUGIN, "--out", f"{PLUGIN}/navmesh"),),
+          cmds=(NAVMESH_SAMPLE, (PY, "-m", "tools.navmesh", "build", "--plugin", PLUGIN, "--out", f"{PLUGIN}/navmesh")),
           checks=((PY, "-m", "tools.newworld.world.navobjects", "--plugin", PLUGIN),),
           proof=(PY, "-m", "tools.navmesh", "current", "--plugin", PLUGIN, "--out", f"{PLUGIN}/navmesh"),
           reads=(LAND, FLORA, "out:newworld/plugin/refs/flora/bases.json", "out:newworld/plugin/refs/mist/manifest.json",
@@ -301,7 +306,7 @@ STAGES: tuple[Stage, ...] = (
           check_reads=("src:tools/newworld/world/navobjects.py",),
           writes=("out:newworld/plugin/navmesh/build.json", "out:newworld/plugin/navmesh/check.json"),
           agree=(("out:newworld/plugin/navmesh/build.json#build_id", "out:newworld/plugin/land/manifest.json#build_id", "eq"),),
-          after=EARLY_CHECKS + ("tools",), gb=0.8, minutes=4.5),
+          after=EARLY_CHECKS + ("tools",), gb=0.8, minutes=17.0),  # the fast test 2, the province 15
     Stage("map", "map markers and pan box, the named teleports, the LOD plan; then every landing checked",
           cmds=((PY, "-m", "tools.newworld.world.mapdata", "build", "--plugin", PLUGIN),),
           checks=((PY, "-m", "tools.newworld.teleports", "check", "--plugin", PLUGIN),),

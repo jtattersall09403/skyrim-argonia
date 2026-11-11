@@ -46,6 +46,12 @@ CK's climb and agent height) and a point of it is tested against the navmesh tri
   (`tools/newworld/place/place.py`, step 6): no blocked column within 48 units (the actor's radius and a voxel) of
   the wider of the road's surface and the 192-unit strip the navmesh marks as road. A natural reference that falls
   short is refused; road dressing is moved straight out by what it falls short.
+- A built place's navmesh is cut round the same shards (`tools/places/build.py`, `exterior_navmesh`), less the world
+  references the place clears, so the cells round the place come out byte for byte the world's own and the join is
+  edge for edge. The place's clearance clears a world thing whose blocked columns come within 48 units of a street's
+  surface or a door front, wherever it is rooted (`tools/places/draft/clear.py`, `across`).
+- A row of references is kept under a digest that takes in `solid.py` and `placed.py` themselves: an edit to either
+  builds every row again.
 - Small sealed pieces are left in the mesh, as Skyrim leaves them. The check lists every place and road vertex that
   lies in a cut-off piece (`check.json`, `province.reach`).
 - Two readings of the mesh files are corrected in `nif.py`: a node's rotation was applied transposed (every

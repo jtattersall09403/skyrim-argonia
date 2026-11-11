@@ -157,8 +157,9 @@ check's own lines are printed (`out/newworld/rebuild/logs/<stage>.log` has the w
 3. Bring level what the summary lists as stale beyond this build, in this order, each only if listed:
    - **Each built place.** Its ground must be checked before any LOD is built over it. Re-extract its ground
      bundle (`python3 -m tools.places extract --ground <place_id>`), then run the stages that the change calls for
-     in the table of the skill `place-build`, section 7 (a relief change: `seating`; re-scattered plants:
-     `clearance`; then `streets` where pieces or doors moved), then its build and check (section 8 there).
+     in the table of the skill `place-build`, section 7 (a relief change: `seating`; re-scattered plants or a
+     changed navmesh rule: `clearance`), then its build and check (section 8 there), then `streets` and the build
+     and check again where pieces or doors moved or the `streets` check names a point off the network.
    - **The LOD.** See the section below.
    - **The deploy** of the world file and the stack to the play machine. See the section below.
 4. Run the whole read-back once the other machines are level: `python3 -m tools.newworld.verify` (every group,

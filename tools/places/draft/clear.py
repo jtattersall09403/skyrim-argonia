@@ -4,7 +4,9 @@ The source's clearance is how close its own plants come to what it built: for tr
 separately, the CLEAR_PCT percentile of each plant's distance to the nearest building footprint, street and
 doorway, over the plants within the town's reach. Our world's plants (ground bundle refs of layer `world`) closer
 than that to what we placed are switched off in clear.jsonl; anything standing inside a footprint, on a street or
-in a doorway is always cleared.
+in a doorway is always cleared. A plant is measured from its root; a thing of the world whose body at walking height
+lies across a street's walking width or a door front goes too, wherever it is rooted (`across`): a great root, a
+rock piece many metres wide.
 """
 from __future__ import annotations
 
@@ -17,6 +19,8 @@ REACH = 1536.0          # plants this close to a building count towards the meas
 DOORWAY = 192.0         # nothing grows closer than this to a door front
 CAP = 768.0
 STREET_HALF = 128.0
+BODY_CLEAR = 48.0       # a street's walking width beyond its surface, and a door front: an actor's radius and a voxel
+BODY_STEP = 16.0        # a street is sampled this often against a body's columns (the navmesh's voxel)
 TALL = {"tree"}
 LOW = {"plant", "groundcover", "rock"}
 CLEARED_KINDS = TALL | LOW
@@ -157,5 +161,44 @@ def along(world: list[dict], clearance: dict, paths: list[dict], cleared: set) -
         p = (r["pos"][0], r["pos"][1])
         if dist_to_paths(p, paths) <= max(clearance[_cls(r["kind"])]["street"], 0.0):
             rows.append({"base": r["base"], "pos": [round(v, 1) for v in r["pos"]], "by": "draft", "why": "street",
+                         "ref": r.get("id")})
+    return rows
+
+
+def across(world: list[dict], cleared: set, paths: list[dict], doors: list, bodies) -> list[dict]:
+    """The rows for world things not yet cleared whose body stands in the way: its solid collision at walking height
+    (`bodies.columns`: the columns the navmesh is cut round it by) comes within BODY_CLEAR of a street's surface or
+    of a door front, wherever its root is. The built navmesh would have a hole there, and the street no way through."""
+    import numpy as np
+    from scipy.spatial import cKDTree
+    pts, rad, door = [], [], []
+    for pa in paths:
+        for a, b in zip(pa["points"], pa["points"][1:]):
+            n = max(1, int(geom.dist(a, b) // BODY_STEP))
+            pts += [(a[0] + (b[0] - a[0]) * k / n, a[1] + (b[1] - a[1]) * k / n) for k in range(n + 1)]
+        rad += [pa.get("width", 2 * STREET_HALF) / 2 + BODY_CLEAR] * (len(pts) - len(rad))
+    door = [False] * len(pts) + [True] * len(doors)
+    pts += [(d[0], d[1]) for d in doors]
+    rad += [BODY_CLEAR] * len(doors)
+    if not pts:
+        return []
+    P, R, D = np.array(pts, float), np.array(rad, float), np.array(door, bool)
+    tree = cKDTree(P)
+    rows = []
+    for r in world:
+        if r.get("kind") not in CLEARED_KINDS or r.get("id") in cleared:
+            continue
+        reach = bodies.reach(r)
+        near = tree.query_ball_point(r["pos"][:2], reach + R.max() + BODY_STEP) if reach else []
+        if not near:
+            continue
+        cols = bodies.columns(r)
+        if not len(cols):
+            continue
+        d, _ = cKDTree(cols).query(P[near])
+        hit = d <= R[near]
+        if hit.any():
+            why = "its body lies across a street" if (hit & ~D[near]).any() else "its body stands in a doorway"
+            rows.append({"base": r["base"], "pos": [round(v, 1) for v in r["pos"]], "by": "draft", "why": why,
                          "ref": r.get("id")})
     return rows
