@@ -1,9 +1,10 @@
 {
- "about": "Full models (paths under meshes, lower case) for which DynDOLOD 3 Alpha-217 found LOD models of their own (an *_lod*.nif in its object LOD rows), read from LODGen_SSE_Export_ArgoniaBlackMarsh.txt of the run of 2026-11-09 (terrain build 20261109T204317Z). lodplan.py gives these bases no rule (the preset catch-all draws their LOD models); lodplan coverage adds any newly found from the latest run (out/newworld/lod/logs/coverage.json).",
+ "about": "Full models (paths under meshes, lower case) for which DynDOLOD 3 Alpha-217 found LOD models of their own (an *_lod*.nif in its object LOD rows of LODGen_SSE_Export_ArgoniaBlackMarsh.txt). lodplan.py gives these bases no rule (the preset catch-all draws their LOD models); lodplan coverage names any model a run found that this list lacks.",
  "models": [
   "argonia\\clutter\\fencewoven01.nif",
   "argonia\\clutter\\fencewoven02.nif",
   "argonia\\mountains\\lsrockwall01.nif",
+  "argonia\\mountains\\lsrockwall02.nif",
   "argonia\\mountains\\lsrockwall03.nif",
   "argonia\\mountains\\mountaincliffsm01.nif",
   "argonia\\trees\\cypressdebris\\giantcypressknee01.nif",
@@ -11,6 +12,7 @@
   "argonia\\trees\\cypressdebris\\giantcypressknee03.nif",
   "argonia\\trees\\cypressdebris\\giantcypressknee04.nif",
   "argonia\\trees\\cypressdebris\\giantcypressknee05.nif",
+  "landscape\\dirtcliffs\\dirtcliffs01.nif",
   "landscape\\dirtcliffs\\dirtcliffs02.nif",
   "landscape\\dirtcliffs\\dirtcliffs03.nif",
   "landscape\\dirtcliffs\\dirtcliffs04moss.nif",
@@ -36,6 +38,7 @@
   "landscape\\rocks\\cairns\\rockcairn04.nif",
   "landscape\\rocks\\rockanimalden01.nif",
   "landscape\\rocks\\rockcaveentrance01.nif",
+  "landscape\\rocks\\rockcaveentrance02.nif",
   "landscape\\rocks\\rockcliff02.nif",
   "landscape\\rocks\\rockcliff03.nif",
   "landscape\\rocks\\rockcliff05.nif",

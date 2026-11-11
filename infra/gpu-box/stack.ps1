@@ -93,9 +93,9 @@ function Set-GameWindow {
     $lines = [System.Collections.Generic.List[string]](Get-Content $file)
     foreach ($k in $values.Keys) {
       $pat = "^$([regex]::Escape($k))="
-      $cur = ''; $keep = [System.Collections.Generic.List[string]]::new()
-      foreach ($l in $lines) { if ($l -match '^\[(.+)\]$') { $cur = $Matches[1] }; if (-not ($l -match $pat -and $cur -ne $section)) { $keep.Add($l) } }
-      $lines = $keep
+      $cur = ''; $kept = [System.Collections.Generic.List[string]]::new()
+      foreach ($l in $lines) { if ($l -match '^\[(.+)\]$') { $cur = $Matches[1] }; if (-not ($l -match $pat -and $cur -ne $section)) { $kept.Add($l) } }
+      $lines = $kept
       $s = $lines.IndexOf("[$section]"); if ($s -lt 0) { $lines.Add("[$section]"); $s = $lines.Count - 1 }
       $e = $s + 1; while ($e -lt $lines.Count -and -not ($lines[$e] -match '^\[')) { $e++ }
       $i = -1; for ($j = $s + 1; $j -lt $e; $j++) { if ($lines[$j] -match $pat) { $i = $j; break } }
@@ -289,6 +289,7 @@ switch ($Cmd) {
     "engine: Nemesis 0.84-beta; codes $($codes -join ' '); $unlinked files made copies" | Set-Content $log
     foreach ($na in @('-update', ('-generate ' + ($codes -join ' ')))) {
       $p = Start-Process $exe -WorkingDirectory (Split-Path $exe) -ArgumentList $na -PassThru
+      $null = $p.Handle  # PowerShell 5.1 keeps ExitCode only when the handle was taken before the exit
       if (-not $p.WaitForExit(900000)) { $p.Kill(); "nemesis $na did not finish in 900 s" | Add-Content $log; throw "Nemesis $na did not finish in 900 s" }
       "nemesis $na exit $($p.ExitCode)" | Add-Content $log
     }
@@ -322,6 +323,7 @@ switch ($Cmd) {
     ConvertTo-Json @($entries) | Set-Content "$out\Pandora_Engine\ActiveMods.json" -Encoding ASCII
     $exe = Get-ChildItem $tool -Recurse -Filter 'Pandora Behaviour Engine+.exe' | Select -First 1
     $p = Start-Process $exe.FullName -WorkingDirectory $exe.DirectoryName -ArgumentList "--tesv:`"$Game`" --auto_run --auto_close" -PassThru
+      $null = $p.Handle  # PowerShell 5.1 keeps ExitCode only when the handle was taken before the exit
     if (-not $p.WaitForExit(600000)) { $p.Kill(); throw 'Pandora did not finish in 600 s' }
     $n = (Get-ChildItem "$out\meshes" -Recurse -File -EA SilentlyContinue).Count
     if ($n -eq 0) { throw "Pandora wrote no behaviours (exit $($p.ExitCode)); see $out\Engine.log" }

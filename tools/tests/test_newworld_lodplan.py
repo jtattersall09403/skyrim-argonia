@@ -54,3 +54,50 @@ def test_full_models_are_refused_past_tamriels_per_block_budget():
     lodplan.budget(rows, blocks, {"big.nif": 1000, "log.nif": 4562})  # 456,200 triangles in one block: refused
     assert rows[0]["mech"] == "object" and rows[1]["mech"] == "none" and "past Tamriel's" in rows[1]["why"]
     assert rows[0]["block_peak"][4] == 2000 <= lodplan.BUDGET[4]
+    assert rows[1]["heavy"] and not rows[0].get("heavy")  # the refused model is owed a LOD model
+
+
+def _coverage(tmp_path, plan_rows, billboards, export_rows):
+    import json
+    plugin, logs = tmp_path / "plugin", tmp_path / "logs"
+    (plugin / "map").mkdir(parents=True)
+    logs.mkdir()
+    (plugin / "map" / "lodplan.json").write_text(json.dumps({"bases": plan_rows}))
+    (logs / "DynDOLOD_SSE_BillboardsUsed_ArgoniaBlackMarsh.txt").write_text(
+        "".join(f"{e} [TREE:0A000001] Billboard {'found' if ok else 'not found'} x\n" for e, ok in billboards))
+    (logs / "LODGen_SSE_Export_ArgoniaBlackMarsh.txt").write_text(
+        "".join("\t".join(["x"] * 9 + [e, "x", "x", "meshes\\" + full, lod4, "", "", "x"]) + "\n" for e, full, lod4 in export_rows))
+    rc = lodplan.coverage(plugin, logs)
+    return rc, json.loads((logs / "coverage.json").read_text())
+
+
+def test_coverage_holds_each_base_to_the_mechanism_planned(tmp_path):
+    def row(edid, mech, model, **kw):
+        return {"edid": edid, "mech": mech, "model": model, "refs": 5, **kw}
+    plan = [row("Palm", "tree", "t\\palm.nif"), row("Cliff", "object", "r\\cliff.nif"),
+            row("Log", "lodmodel", "t\\log.nif", lod_model="lod\\t\\log_lod_0.nif"), row("Fern", "none", "p\\fern.nif")]
+    good = [("Cliff", "r\\cliff.nif", "meshes\\r\\cliff.nif"), ("Log", "t\\log.nif", "meshes\\lod\\t\\log_lod_0.nif")]
+    rc, doc = _coverage(tmp_path / "a", plan, [("Palm", True)], good)
+    assert rc == 0 and doc["missing"] == [] and doc["rules"] == 2 and doc["rules_without_refs"] == []
+    # a billboard not made, a rule that matched nothing, a derived model DynDOLOD did not draw from: each is a miss
+    rc, doc = _coverage(tmp_path / "b", plan, [("Palm", False)], [("Log", "t\\log.nif", "meshes\\t\\log.nif")])
+    assert rc == 1 and len(doc["missing"]) == 3 and doc["rules_without_refs"] == ["r\\cliff.nif"]
+
+
+def test_a_base_with_a_texture_repair_is_planned_as_our_copy_of_it(tmp_path):
+    import json
+    plugin = tmp_path / "plugin"
+    (plugin / "refs" / "flora").mkdir(parents=True)
+    b = {"key": "11FE76:Black Marsh.esm", "ref": "Black Marsh.esm:01MANGROVE", "copied": False, "sig": "STAT", "edid": "01MANGROVE",
+         "plugin": "Black Marsh.esm", "model": "landscape\\trees\\mangrove.nif", "obnd": BIG}
+    rows = [dict(b, alt_textures=[{"shape": "s", "index": 1, "slots": ["a.dds"]}]),
+            dict(b, ref="Black Marsh.esm:01MANGROVE2", edid="01MANGROVE2", key="11FE77:Black Marsh.esm")]
+    (plugin / "refs" / "flora" / "bases.json").write_text(json.dumps({"build_id": "b", "key": "k", "bases": rows}))
+    (plugin / "refs" / "flora" / "cy000.jsonl").write_text(
+        "".join(json.dumps({"base": r["ref"], "cls": "canopy_tree", "x": 0, "y": 0}) + "\n" for r in rows))
+    doc = lodplan.build(plugin, read=lambda p: None)
+    got = {r["source"]: r for r in doc["bases"]}
+    mine, masters = got["Black Marsh.esm:01MANGROVE"], got["Black Marsh.esm:01MANGROVE2"]
+    # NewWorld.cs places the repaired base as ANW_BM_01MANGROVE: the flag and the billboard go to that record
+    assert (mine["edid"], mine["plugin"], mine["key"], mine["mech"]) == ("ANW_BM_01MANGROVE", "ArgoniaNewWorld.esm", None, "tree")
+    assert (masters["edid"], masters["plugin"], masters["key"], masters["mech"]) == ("01MANGROVE2", "Black Marsh.esm", "11FE77:Black Marsh.esm", "tree")

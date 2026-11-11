@@ -137,7 +137,8 @@ static class NewWorldMap
     //   DynDOLOD_SSE_argonianewworldesm.ini  a plugin's rule file ([Skyrim LODGen], LODGen1..n), whose rules DynDOLOD
     //       lists ahead of the preset's catch-all: one mesh-mask rule per large static model without LOD models, its
     //       full model at LOD4 (and LOD8), "\<model>,Full,Full|None,None,None,FarLOD,Unchanged,0" (a plugin;form id
-    //       mask is a reference's, never a base's)
+    //       mask is a reference's, never a base's); and one per heavy model with a derived LOD model
+    //       (lodmodels.py), that model at LOD4: "<model>,Level0,None,None,None,FarLOD,Unchanged,0"
     static string Squash(string file) => new string(file.ToLowerInvariant().Where(char.IsLetterOrDigit).ToArray());
 
     static (int, int, int) LodPlan(SkyrimMod mod, string mapDir, string data)
@@ -156,7 +157,7 @@ static class NewWorldMap
         foreach (var b in d.GetProperty("bases").EnumerateArray())
         {
             var mech = b.GetProperty("mech").GetString();
-            if (mech != "tree" && mech != "object") continue;
+            if (mech != "tree" && mech != "object" && mech != "lodmodel") continue;
             var edid = b.GetProperty("edid").GetString()!;
             string plugin; uint id;
             if (b.GetProperty("key").ValueKind == JsonValueKind.String)
@@ -191,7 +192,8 @@ static class NewWorldMap
             {
                 var mask = b.GetProperty("model").GetString()!.Replace('/', '\\').ToLowerInvariant();
                 var lod8 = b.GetProperty("lod8").GetBoolean() ? "Full" : "None";
-                if (!rules.Any(r => r.StartsWith(mask + ","))) rules.Add($"{mask},Full,{lod8},None,None,FarLOD,Unchanged,0");
+                var rule = mech == "lodmodel" ? $"{mask},Level0,None,None,None,FarLOD,Unchanged,0" : $"{mask},Full,{lod8},None,None,FarLOD,Unchanged,0";
+                if (!rules.Any(r => r.StartsWith(mask + ","))) rules.Add(rule);
             }
         }
         foreach (var f in Directory.GetFiles(mapDir, "DynDOLOD_SSE_*")) File.Delete(f);
@@ -293,8 +295,8 @@ static class NewWorldMap
             if (nt > 256) fails.Add($"{nt} tree billboards: past DynDOLOD's 256 a world");
             // the rule file: [Skyrim LODGen], LODGen1..n, 8 fields, the mask a planned object model, LOD8 as planned
             var rf = Path.Combine(mapDir, $"DynDOLOD_SSE_{Squash(mod.ModKey.FileName)}.ini");
-            var objs = plan.Where(b => Mech(b) == "object").GroupBy(b => b.GetProperty("model").GetString()!.Replace('/', '\\').ToLowerInvariant())
-                .ToDictionary(g => g.Key, g => g.First().GetProperty("lod8").GetBoolean());
+            var objs = plan.Where(b => Mech(b) == "object" || Mech(b) == "lodmodel").GroupBy(b => b.GetProperty("model").GetString()!.Replace('/', '\\').ToLowerInvariant())
+                .ToDictionary(g => g.Key, g => Mech(g.First()) == "lodmodel" ? "Level0,None" : g.First().GetProperty("lod8").GetBoolean() ? "Full,Full" : "Full,None");
             if (!File.Exists(rf)) fails.Add("no DynDOLOD rule file: nwmap apply owed");
             else
             {
@@ -309,7 +311,7 @@ static class NewWorldMap
                     if (f.Length != 8) { fails.Add($"rule {i}: {f.Length} fields, not 8"); continue; }
                     if (f[0].StartsWith('\\') || !objs.TryGetValue(f[0], out var l8)) { fails.Add($"rule {i}: mask {f[0]} is no planned object model"); continue; }
                     seenMasks.Add(f[0]);
-                    if (f[1] != "Full" || f[2] != (l8 ? "Full" : "None") || f[3] != "None" || f[4] != "None") fails.Add($"rule {i}: levels {string.Join(",", f[1..5])}, plan LOD8 {l8}");
+                    if ($"{f[1]},{f[2]}" != l8 || f[3] != "None" || f[4] != "None") fails.Add($"rule {i}: levels {string.Join(",", f[1..5])}, plan {l8}");
                 }
                 foreach (var miss in objs.Keys.Where(k => !seenMasks.Contains(k))) fails.Add($"planned object model {miss} has no rule");
             }

@@ -1,0 +1,38 @@
+{
+ "about": "Each LOD step's settings (infra/gpu-box/lod.ps1 reads them on the machine), a section per save point: the long tool run (\"tool\") and our own pass over its output (\"post\"). A section is part of that save point's key (tools/newworld/world/lodkeys.py): change a setting, or raise rev when a change to that part of lod.ps1 changes what it writes, and only that part (and what stands on it) runs again. A change to a post section never reruns the tool.",
+ "terrain": {
+  "tool": {
+   "rev": 1
+  },
+  "post": {
+   "rev": 1,
+   "meshes": {
+    "ProtectCellBorders": "True",
+    "QualityLOD4": 4,
+    "WaterDeltaLOD4": -1,
+    "QualityLOD8": 6,
+    "WaterDeltaLOD8": 550,
+    "QualityLOD16": 8,
+    "WaterDeltaLOD16": 550,
+    "QualityLOD32": 10,
+    "WaterDeltaLOD32": 550
+   }
+  }
+ },
+ "texgen": {
+  "tool": {
+   "rev": 1
+  },
+  "post": {
+   "rev": 1
+  }
+ },
+ "dyndolod": {
+  "rev": 1,
+  "untick": [
+   "Dynamic LOD",
+   "Occlusion data",
+   "Terrain underside"
+  ]
+ }
+}

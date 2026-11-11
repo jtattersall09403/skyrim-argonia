@@ -229,7 +229,7 @@ def build(plugin: Path, scope_dir: Path = None) -> dict:
     from tools.newworld import teleports
     from tools.newworld.world import lodplan
     teleports.build(plugin)
-    lodplan.build(plugin, plugin.parent / "lod" / "logs" / "coverage.json")
+    lodplan.build(plugin)
     return mp
 
 

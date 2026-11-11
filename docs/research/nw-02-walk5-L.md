@@ -149,3 +149,34 @@ Cell 0x103C32 is cell k = 7705 of NewWorld.cs's numbering, (-23, -137) (read bac
 LAND, water and a navmesh and no placed object of ours. The reference being drawn has form id 0 and no parent cell:
 it was already freed when the background cell loader set up its shader, so no mesh or base of ours is named. A
 background-loader race while moving fast (the owner flew with `tcl` and a raised speed); nothing in our files to fix.
+
+## 7. Far-off models for the heavy bases (measured 2026-11-11, terrain 20261111T053723Z)
+
+How Skyrim does it, measured on 28 `*_lod_N.nif` of Skyrim - Meshes against their full models (the cliffs, mountain
+trims and cave entrance our world places): root BSFadeNode; only BSTriShape, BSLightingShaderProperty (type 0),
+BSShaderTextureSet (diffuse and normal map) and, on 6 of 42 shapes, NiAlphaProperty (flags 4844); every shape a child
+of the root; shader flags 1 0x80400300 on 14 shapes (the commonest), flags 2 0x8001 or 0x8021 (vertex colours, half the
+shapes); no collision or extra data. Triangles against the full model: level 0 median 0.137 (123 to 741 triangles, 5
+pairs), level 1 0.112 (80 to 390, 12 pairs), level 2 0.034 (23 to 114, 11 pairs).
+
+The route built (docs/design/lod.md, Derived LOD models): nifly reads and writes (nifdump, niflod), fast-simplification
+collapses the position-welded surface, every output vertex is a source vertex. Round trip: every written nif reads
+back in both readers with the layout above.
+
+What it gives on the 32 heavy models (26,592 refs):
+
+- At Skyrim's own share of the triangles (0.137), 14 of 32 pass every check. 17 lose more than a tenth of an axis's
+  extent (thin roots, mushroom caps and stump flares collapse: 11 % to 58 % short); 2 of those also stop above their
+  target (many small pieces: `deadroothuge01` stays at 916 of 5,484) and one names textures the profile lacks
+  (`bigshrub(colorful)`). One more fails only on textures the profile lacks (`tr_flora_acbranch_04`, whose full
+  model names them too).
+- The block budget decides before the tool does. The heavy refs lie up to 363 in one LOD4 block (median 17, 90th
+  percentile 53). At Skyrim's share of triangles a block would carry a median 4,410, a 90th percentile 12,728 and at
+  most 85,544 triangles from these alone, against the budget of 9,327 (179 of 938 blocks over; 56 over Tamriel's
+  largest block, 18,141). Held to the budget, 18 models get a target of 12 to 741 triangles and 14 get none; only
+  the two desert cliffs (11 refs; targets 578 and 741) keep a faithful shape at their target. Logs, stumps and roots
+  would need 12 to 66 triangles each, where none passes the bounds check.
+
+So the two cliffs get derived LOD models and the other 30 models stay without LOD. Two things would change that,
+and both are needed: a budget ruling for derived models above Tamriel's (the dense blocks), and a collapse that
+holds thin parts (the 17 that lose their shape at Skyrim's own share).
