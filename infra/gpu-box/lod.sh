@@ -191,7 +191,7 @@ do_preflight() {  # every check that needs no long step; one FAULT line per faul
   do_tools | tee -a "$f" || fault "the tools are not at their pinned hashes"
   do_send | tee -a "$f" || fault "the inputs could not be sent"
   o=$("$run" ps "powershell -ExecutionPolicy Bypass -File C:\\argonia\\infra\\lod.ps1 -Step preflight $PSX" | tr -d '\r') || true
-  grep -E 'FAULT|disk free|ram free|preset worlds|have lodmodels' <<<"$o" | sed 's/^\[[0-9:]*\] //' | tee -a "$f"
+  { grep -E 'FAULT|disk free|ram free|preset worlds|have lodmodels' <<<"$o" || true; } | sed 's/^\[[0-9:]*\] //' | tee -a "$f"
   grep -q 'preflight OK' <<<"$o" || { bad=1; grep -q FAULT <<<"$o" || fault "the machine's preflight did not finish: $(tail -2 <<<"$o" | tr '\n' ' ')"; }
   # the machine holds exactly what was built here: the ESM, the .lod, each plan file, each tool
   local x h
