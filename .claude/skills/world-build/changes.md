@@ -14,6 +14,20 @@ Two things decide how far a change reaches. A terrain build whose heightmap come
 build and keeps its id, so the stages after it are skipped. The land shards, the landcover, the placed refs and the
 ground paint are built again whenever their stage runs, under a new key: every stage after one of them runs too.
 
+Each stage is keyed on what it reads, and of a built place's files the world reads fields, never the file: the
+database who gives which promise (`people.jsonl` `id`, `role` and `services`' `seq`) and the stations found
+(`place.json` `stations.found`); the terrain the cells the place's plan covers (`out/places/shards/<id>/plan.json`
+`cells`' `x` and `y`), held against its row of `terrain_held.json`. A place build that changes none of them leaves
+every stage current.
+
+A built place, in its turn, stands on records of the world file, never on the file's bytes: the LAND, the navmesh
+and the placed references of the cells it read (the ground bundle its whole reach, the build its own cells and the
+ring its navmesh joins), the bases those references name, the worldspace record, the land textures, the file's
+masters and description, and the form ids of the map markers its travel lines land on. Where a row's last column
+names the built places, it means those whose records the change moved: `python3 -m tools.places worldparts
+<place_id>` names what moved under a place, and the run's summary lists only those places. A rewrite that moves
+none (a map marker, the map box, a teleport marker, a far cell) leaves every place current.
+
 ## The ground
 
 | A change to | Edit | Runs | Follows | Left alone | Beyond this build |
@@ -25,7 +39,9 @@ ground paint are built again whenever their stage runs, under a new key: every s
 | Water kinds' rules | `tools/newworld/water_kinds.py` | `water`, `cells` | `landcover`, then `landings`, `place`, `paint`, `mist`, `height-fog`, `navmesh`, `map`, `esm`, `upload` | `terrain`, `needs`, `land`, `relief`, `atmosphere` | if `landcover` ran: the whole LOD, the deploy, each built place's ground bundle and `clearance`; else the deploy alone. `--accept` only on the owner's word |
 | Roads | `newworld/sources/road_corrections.json`, then `python3 -m tools.newworld.roads` | `db`, `terrain` | every stage after | `tools`, `scope`, `regions` | as relief |
 | A place added or moved, its size or its terrain needs | its research record (the skill `place-research`) | `db` | `terrain` and every stage after, when its position, footprint or needs changed; else only the stages that read the columns that changed (`landings`, `place`, `navmesh`, `map` for a name, a kind or a rank) | the rest | as relief when the terrain ran; else the deploy if `esm` ran |
-| A place's words, people, stock or wealth | its sources; a built place's `people.jsonl` and `place.json` | `db` | the stages that read the database, each skipped at its turn: the columns they read are the same | every other stage | nothing |
+| A place's words, people, stock or wealth | its sources; of a built place's files, who gives which promise (`people.jsonl`) and the stations found (`place.json`) | `db` | the stages that read the database, each skipped at its turn: the columns they read are the same | every other stage | nothing |
+| A built place built again with the same content (its ground stamp, a bed, a routine, the plan's own numbers) | `python3 -m tools.places build <place_id>` | nothing | nothing | every stage | nothing |
+| A built place's layer covers other cells | the place's files, then its build; its row of `newworld/sources/terrain_held.json` when it grew past the row's cells (the terrain stops until the place is re-seated and the row updated) | `terrain` | every stage after, each skipped when the heightmap comes out the same bytes | `tools`, `scope`, `regions`, `db` | as relief when the heightmap changed; else nothing |
 
 The owner's water edits are pulled, never typed: list the Atlas's `water_edits` and `water_paint` collections
 with the ArtifactData tool into a folder, then `python3 -m tools.newworld.water_overrides_pull <folder>`
@@ -40,8 +56,8 @@ with the ArtifactData tool into a folder, then `python3 -m tools.newworld.water_
 | Flora sets | `newworld/sources/flora/` | `db` | `place`, then `navmesh`, `mist`, `map`, `esm`, `upload` | `terrain` to `cells`, `paint`, `atmosphere` | tree and object LOD (not terrain LOD); the deploy; each built place's `clearance` |
 | Placement rules | `tools/newworld/place/place.py`, `texsets.py` | `place` | `navmesh` (it is cut round the placed objects), `mist`, `map`, `esm`, `upload` | as flora sets | as flora sets. Run the navmesh's fast test first ([checks.md](checks.md)) |
 | The placement's check | `tools/newworld/place/checks.py` | `place`'s check alone: the refs stand | nothing | all else | nothing |
-| Navmesh parameters | `tools/navmesh/*.py`, `tools/navmesh/ArgoniaNav/` | `navmesh` (and `tools` for the C#; and `place` for `esm.py`, `meshes.py`, `bsa.py`, `nif.py`, `placed.py`, `solid.py`, `params.py` and `inputs.py`: the placement reads the models through the first three and keeps the road clear by each collision's blocked columns through the rest, so its refs, and with them the flora sets' row, follow) | `esm`, `upload` | every other stage | the deploy; each built place's build and check (its navmesh joins the world's) |
-| The laid mod stack (a mod added, taken out, reordered or changed) | `mods/dependencies.json`, staged | `place`, `navmesh`, `map`, `esm`; `paint`'s check alone | `mist`, `upload` | `terrain` to `landings`, `atmosphere`, `height-fog` | tree and object LOD; the deploy of the world file and the stack; each built place's build |
+| Navmesh parameters | `tools/navmesh/*.py`, `tools/navmesh/ArgoniaNav/` | `navmesh` (and `tools` for the C#; and `place` for `esm.py`, `meshes.py`, `bsa.py`, `nif.py`, `placed.py`, `solid.py`, `params.py` and `inputs.py`: the placement reads the models through the first three and keeps the road clear by each collision's blocked columns through the rest, so its refs, and with them the flora sets' row, follow; and the check of `edits` for `placed.py`, `solid.py` and `params.py`) | `esm`, `upload` | every other stage | the deploy; each built place's build and check (its navmesh joins the world's) |
+| The laid mod stack (a mod added, taken out, reordered or changed) | `mods/dependencies.json`, staged | `place`, `edits`, `navmesh`, `map`, `esm`; `paint`'s check alone | `mist`, `upload` | `terrain` to `landings`, `atmosphere`, `height-fog` | tree and object LOD; the deploy of the world file and the stack; each built place's build |
 
 `place` writes the placement as the rules make it (`out/newworld/plugin/placed/flora`). `edits` applies
 `newworld/sources/placed_edits.jsonl` over it into `out/newworld/plugin/refs/flora`, which every later stage reads;
@@ -65,8 +81,8 @@ edit whose thing the rules no longer place. Answer each with a new edit or with 
 
 | A change to | Edit | Runs | Follows | Left alone | Beyond this build |
 |---|---|---|---|---|---|
-| Water records' look or flow | `tools/newworld/world/water_types.py`, `tools/ArgoniaPlugin/WaterBlend.cs` | `cells` for the Python; `tools` and `esm` for the C# | `landings`, `mist`, `navmesh`, `map`, `esm`, `upload` | `terrain` to `landcover`, `place`, `paint` | the deploy; each built place's build (over the new world file) |
-| Atmosphere classes or weathers | `newworld/sources/atmosphere/`, `tools/newworld/atmosphere.py` | `db`, `atmosphere`, `mist` (and `height-fog` for `atmosphere.py`) | `height-fog`, `navmesh`, `map`, `esm`, `upload` | every ground stage, `paint` | the deploy of the world file and the stack; each built place's ground bundle (the studio's night view reads the climate) |
+| Water records' look or flow | `tools/newworld/world/water_types.py`, `tools/ArgoniaPlugin/WaterBlend.cs` | `cells` for the Python; `tools` and `esm` for the C# | `landings`, `mist`, `navmesh`, `map`, `esm`, `upload` | `terrain` to `landcover`, `place`, `paint` | the deploy; each built place whose cells' water records changed |
+| Atmosphere classes or weathers | `newworld/sources/atmosphere/`, `tools/newworld/atmosphere.py` | `db`, `atmosphere` (and `mist` and `height-fog` for `atmosphere.py`) | `mist`, `height-fog`, `navmesh`, `map`, `esm`, `upload` | every ground stage, `paint` | the deploy of the world file and the stack; each built place's ground bundle (the studio's night view reads the climate) |
 | Mist | `tools/newworld/world/mist.py` | `mist`, `height-fog` | `navmesh`, `map`, `esm`, `upload` | everything before `mist`, `paint` | the deploy |
 | Community Shaders settings | `tools/newworld/atmosphere_cs.py` | `height-fog` | nothing | `esm` and every stage before it | the stack's deploy only: the world file is unchanged |
 
@@ -74,12 +90,14 @@ edit whose thing the rules no longer place. Answer each with a new edit or with 
 
 | A change to | Edit | Runs | Follows | Left alone | Beyond this build |
 |---|---|---|---|---|---|
-| Map data, teleports | `tools/newworld/world/mapdata.py`, `tools/newworld/teleports.py` | `map`, and `landings` for `teleports.py` | `esm` (the map is applied; the file is not written again), `upload` | every stage before `map` | the deploy; the walk list's teleports if names changed |
+| Map data, teleports | `tools/newworld/world/mapdata.py`, `tools/newworld/teleports.py` | `map`, and `landings` for `teleports.py` | `esm` (the map is applied; the file is not written again), `upload` | every stage before `map` | the deploy; the walk list's teleports if names changed; a built place only when a cell of its own is named anew or a map marker its travel lines land on takes another form id |
 | The LOD plan | `tools/newworld/world/lodplan.py`, `lod_models.json` | `map` | `esm`, `upload`, when the plan comes out different | every stage before `map` | the small world's selftest (the skill `world-lod`, section 4); tree and object LOD and the deploy when the plan changed |
 | A built place's exterior or land patches | `newworld/places/<id>/` (the skill `place-build`) | `landings`, `map` | `esm`, `readback`, `upload` | every other stage | the deploy |
-| The world file's writer | `tools/ArgoniaPlugin/NewWorld*.cs`, `WaterBlend.cs`, `ForeignCopy.cs`, `FormIds.cs`, `WaterStudy.cs`, `tools/newworld/world/world.sh` | `tools` for the C#, and the stage that reads the edited file: `esm` (the writer, the map, the navmesh records, water, copied records, `world.sh`), `atmosphere` (`NewWorldAtmosphere.cs`), `readback` (`NewWorldVerify.cs`, `WaterStudy.cs`) | `readback`, `upload` after `esm`, each skipped when the file comes out the same bytes | every shard stage | if the file's bytes changed: the deploy, the LOD steps whose keys moved (`infra/gpu-box/lod.sh keys`), each built place's build. `NewWorldMap.cs` is also read by the LOD's selftest (the skill `world-lod`, section 4) |
+| The world file's writer | `tools/ArgoniaPlugin/NewWorld*.cs`, `WaterBlend.cs`, `ForeignCopy.cs`, `FormIds.cs`, `WaterStudy.cs`, `tools/newworld/world/world.sh` | `tools` for the C#, and the stage that reads the edited file: `esm` (the writer, the map, the navmesh records, water, copied records, `world.sh`), `atmosphere` (`NewWorldAtmosphere.cs`), `readback` (`NewWorldVerify.cs`, `WaterStudy.cs`) | `readback`, `upload` after `esm`, each skipped when the file comes out the same bytes | every shard stage | if the file's bytes changed: the deploy, the LOD steps whose keys moved (`infra/gpu-box/lod.sh keys`), each built place whose records moved (`python3 -m tools.places worldparts <place_id>`). `NewWorldMap.cs` is also read by the LOD's selftest (the skill `world-lod`, section 4) |
 | A tool or script fix that changes no output | the tool | the stage that reads the file | nothing, when its output is the same bytes; every stage after it, when the stage is `land`, `landcover`, `place` or `paint` | all else | nothing, or as the row of the stage that was built again |
 | The read-back | `tools/newworld/verify.py` | `readback`, `relief` | nothing | all else | nothing |
+| The table of form id ranges | `tools/newworld/idspace.py` | `place`, `edits` | every stage after `place` | `terrain` to `landings`, `paint`, `atmosphere` | as placement rules |
+| What a stage reads, or the rebuild itself | `tools/newworld/rebuild.py` | `readback` | nothing. A stage whose read is named more narrowly keeps its record while the wider read it recorded is unchanged: the main tree's next plan writes the record under the new name and nothing is built again | all else | nothing |
 
 A tool fix that should change nothing is proved by the plan and the run together: the plan shows its one stage
 stale and the rest following, and the run's summary shows every following stage skipped. If a following stage

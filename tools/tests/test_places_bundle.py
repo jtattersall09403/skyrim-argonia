@@ -1,11 +1,11 @@
-"""tools/places/bundle.py (reader and writer) and ground_check.py on a synthetic bundle: no game data needed."""
+"""tools/places/bundle.py (reader and writer) on a synthetic bundle: no game data needed. The ground check is in
+test_places_worldparts.py."""
 import array
 import json
 
 import pytest
 
 from tools.places import bundle as B
-from tools.places import ground_check
 
 
 def make_bundle(root, bundle_id="ground.t", esm_sha="a" * 64):
@@ -94,47 +94,3 @@ def test_sha_cache_written_by_many_at_once(tmp_path, monkeypatch):
     [t.join() for t in ts]
     assert errors == [] and not list(tmp_path.glob("*.tmp"))
     assert len(B.sha256_file(files[0])) == 64
-
-
-@pytest.fixture
-def gc(tmp_path, monkeypatch):
-    monkeypatch.setattr(B, "_SHA_CACHE", tmp_path / "c.json")
-    monkeypatch.setattr(ground_check, "BUNDLES", tmp_path / "bundles")
-    esm = tmp_path / "W.esm"; esm.write_bytes(b"world")
-    monkeypatch.setattr(ground_check, "ESM", esm)
-    monkeypatch.setattr(ground_check, "PLAY_SHA", tmp_path / "play-esm.sha256")
-    monkeypatch.setattr(ground_check, "REPO", tmp_path)
-    return tmp_path, B.sha256_file(esm)
-
-
-def test_ground_check_cases(gc):
-    root, sha = gc
-    assert not ground_check.check("t")["ok"]                          # no bundle
-    make_bundle(root / "bundles", esm_sha=sha)
-    r = ground_check.check("t")
-    assert not r["ok"] and "absent" in r["reason"]                    # no play record: never a silent pass
-    (root / "play-esm.sha256").write_text("garbage\n")
-    assert not ground_check.check("t")["ok"]
-    (root / "play-esm.sha256").write_text("b" * 64 + "\n")
-    r = ground_check.check("t")
-    assert not r["ok"] and r["play_sha"] == "b" * 64
-    (root / "play-esm.sha256").write_text(sha.upper() + "\n")
-    assert ground_check.check("t")["ok"]
-    assert ground_check.main(["t"]) == 0
-
-
-def test_ground_check_behind_build(gc):
-    root, sha = gc
-    make_bundle(root / "bundles", esm_sha="c" * 64)
-    (root / "play-esm.sha256").write_text(sha)
-    r = ground_check.check("t")
-    assert not r["ok"] and "behind the built world file" in r["reason"]
-
-
-def test_status_shape(gc):
-    root, sha = gc
-    assert ground_check.status()["match"] is False
-    make_bundle(root / "bundles", esm_sha=sha)
-    (root / "play-esm.sha256").write_text(sha)
-    s = ground_check.status()
-    assert s["match"] and s["ground_sha"] == sha == s["deployed_sha"] and s["place_id"] == "t"

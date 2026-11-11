@@ -32,9 +32,16 @@ seat rules, ids) is `docs/design/place-studio.md`. Never write mod record or ass
   Our record: `db.open("newworld")`, tables `place` (position, siting, population, summary) and `place_give` (what
   the place promises the player).
 - The bundles under `out/places/bundles/`: `src.<source_id>` (`python3 -m tools.places extract <source_id>`) and
-  `ground.<place_id>` (`python3 -m tools.places extract --ground <place_id>`). The ground bundle must come from
+  `ground.<place_id>` (`python3 -m tools.places extract --ground <place_id>`). The ground bundle must stand on
   the deployed world file: `python3 -m tools.places ground-check <place_id>` passes. The world file is settled and
   on the play machine first (the skill `world-build`, section 7).
+- What a place stands on in the world. The ground bundle and the build each keep a stamp of the world records
+  they read: the LAND, the navmesh and the placed references of their cells (the bundle's whole reach; the
+  build's own cells and the two-cell ring its navmesh joins), the bases those references name, the worldspace
+  record, the land textures, the world file's masters and description, and the form ids of the map markers the
+  place's travel lines land on. The place is current while those are the world file's, whatever else of the file
+  is rewritten: `extract --ground` and `build` then say up to date and write nothing, and `place.json`'s ground
+  key stays. `python3 -m tools.places worldparts <place_id>` names what moved when something did.
 - Skyrim's town rules: `docs/research/skyrim/town-life.md`.
 
 ## 1. Read the source's character
@@ -302,7 +309,8 @@ and removed per file; a stage that would write outside what it owns changes noth
 3. Where a cluster sits on our land is the whole draft's search. `python3 -m tools.places draft <place_id>` on a
    place that holds the owner's finalised studio saves is refused and names the stages; a whole draft there needs
    `--force "<why no stage can be correct>"`, once, the reason kept in the commit.
-4. After a world rebuild the place is brought level in the order of the skill `world-build`, section 7, step 5.
+4. After a world rebuild a place is brought level only when `python3 -m tools.places worldparts <place_id>`
+   names world records that moved under it, in the order of the skill `world-build`, section 7, step 5.
 5. After edits of single placed things, `tools/newworld/rebuild.sh plan` names each place they reach. A place
    whose `clear.jsonl` holds a row for an edited thing: take that row out and build the place again. A place
    whose cells hold an edit: extract its ground bundle again and build it. No other place changes.
@@ -313,9 +321,12 @@ and removed per file; a stage that would write outside what it owns changes noth
    place files and the database. The navmesh is cut round the place's own pieces and round everything the world has
    placed there (the world's refs shards) but the plants the place clears, so it meets the world's own navmesh edge
    for edge: the world file, its refs shards and its navmesh must be of one build, and the build fails when the
-   shards do not hold every world ref the place clears. The built plugin records the hash of the world file it was
-   built over: a place built over another world file is stale, and `infra/gpu-box/places_deploy.sh` refuses it. It
-   is a long job: run `build <place_id> --plan` first (it plans only and lists every problem), then the build under
+   shards do not hold every world ref the place clears. The build keeps, in `out/places/shards/<place_id>/world.json`,
+   the stamp of the world records it stands on (Inputs): a place whose records the world file no longer holds is
+   stale, the read-back's `places` row names what moved, and `infra/gpu-box/places_deploy.sh` refuses it. The
+   world's own stages read of the place only who gives which promise, the stations found and the cells its plan
+   covers, so a build that changes none of those leaves the world current (the skill `world-build`,
+   [changes.md](../world-build/changes.md)). It is a long job: run `build <place_id> --plan` first (it plans only and lists every problem), then the build under
    `tooling/job_guard.sh`.
 2. `python3 -m tools.places check <place_id>` reads the built plugin back. All seventeen checks are green: `plugin`,
    `seat`, `overlap`, `doors`, `people`, `navmesh`, `streets`, `land`, `clear`, `services`, `nordic`, `rooms`,

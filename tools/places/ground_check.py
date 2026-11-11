@@ -1,9 +1,12 @@
 """python -m tools.places ground-check <place_id> [--json]
 
-Passes only when the ground bundle `ground.<place_id>` was extracted from exactly the world file the play machine
-has: the bundle's stamped ESM sha256 equals out/newworld/verify/play-esm.sha256 (the play machine's copy, hashed
-back by `infra/gpu-box/lod.sh send`). It also says when the bundle is behind the ESM built here. Never a silent pass:
-an absent or stale record fails with what to run. `check()` is the same test for the studio's status.
+Passes only when the ground bundle `ground.<place_id>` stands on the world records the world file holds, here and
+on the play machine: the bundle's stamp of them (its cells' LAND and placed references, the bases they name, the
+worldspace, the land textures: tools/places/worldparts.py) is read again from the world file built here, and the
+play machine's copy (out/newworld/verify/play-esm.sha256, hashed back by `infra/gpu-box/lod.sh send`) is a file that
+holds the same. A world file rewritten with none of them changed leaves the bundle current; one that changes any
+names which. Never a silent pass: an absent record fails with what to run. `check()` is the same test for the
+studio's status.
 """
 from __future__ import annotations
 
@@ -11,6 +14,7 @@ import argparse
 import json
 import time
 
+from tools.places import worldparts
 from tools.places.bundle import BUNDLES, REPO, sha256_file
 
 ESM = REPO / "out" / "newworld" / "plugin" / "ArgoniaNewWorld.esm"
@@ -22,22 +26,30 @@ def _iso(t: float) -> str:
 
 
 def check(place_id: str) -> dict:
-    """{ok, reason, ground_sha, built_sha, play_sha, play_recorded_at, built_at}; ok only on a proven match."""
+    """{ok, reason, ground_sha, built_sha, play_sha, play_recorded_at, built_at, changed}; ok only on a proven
+    match. `ground_sha` is the world file the bundle was read from, `changed` what of the world moved under it."""
     res = {"place_id": place_id, "ok": False, "ground_sha": None, "built_sha": None, "play_sha": None,
-           "play_recorded_at": None, "built_at": None, "reason": ""}
+           "play_recorded_at": None, "built_at": None, "changed": [], "reason": ""}
+    extract = f"run `python -m tools.places extract --ground {place_id}`"
     meta_f = BUNDLES / f"ground.{place_id}" / "bundle.json"
     if not meta_f.exists():
-        res["reason"] = f"no ground bundle: run `python -m tools.places extract --ground {place_id}`"
+        res["reason"] = f"no ground bundle: {extract}"
         return res
     meta = json.loads(meta_f.read_text())
-    ground = (meta.get("esm") or {}).get("sha256")
-    res["ground_sha"] = ground
-    if not ground:
-        res["reason"] = "the ground bundle carries no ESM stamp: re-extract it"
+    st = meta.get("world")
+    res["ground_sha"] = (meta.get("esm") or {}).get("sha256")
+    if not st:
+        res["reason"] = f"the ground bundle names no world records it stands on: {extract}"
         return res
-    if ESM.exists():
-        res["built_sha"] = sha256_file(ESM)
-        res["built_at"] = _iso(ESM.stat().st_mtime)
+    if not ESM.exists():
+        res["reason"] = f"no world file here ({ESM.relative_to(REPO)}): build the world"
+        return res
+    res["built_sha"] = sha256_file(ESM)
+    res["built_at"] = _iso(ESM.stat().st_mtime)
+    res["changed"] = worldparts.changed(st, ESM)
+    if res["changed"]:
+        res["reason"] = f"under the ground bundle the world changed: {'; '.join(res['changed'])}: {extract}"
+        return res
     if not PLAY_SHA.exists():
         res["reason"] = (f"no record of the play machine's world file ({PLAY_SHA.relative_to(REPO)} is absent): "
                          "deploy with `infra/gpu-box/lod.sh send`, which hashes the machine's copy back")
@@ -48,21 +60,18 @@ def check(place_id: str) -> dict:
     if len(play) != 64:
         res["reason"] = f"{PLAY_SHA.relative_to(REPO)} holds no sha256 ({play[:20]!r}): resend with `infra/gpu-box/lod.sh send`"
         return res
-    if ground == play:
+    holds = True if play == res["built_sha"] else worldparts.file_holds(st, play)
+    if holds:
         res["ok"] = True
-        res["reason"] = "the ground is the play machine's world file"
-        if res["built_sha"] and res["built_sha"] != ground:
-            res["reason"] += f" (a newer build {res['built_sha'][:12]} is here, not yet sent)"
-        return res
-    stale = ESM.exists() and PLAY_SHA.stat().st_mtime < ESM.stat().st_mtime
-    if res["built_sha"] and res["built_sha"] != ground:
-        res["reason"] = (f"the ground bundle ({ground[:12]}) is behind the built world file ({res['built_sha'][:12]}): "
-                         f"run `python -m tools.places extract --ground {place_id}`")
-    elif stale:
-        res["reason"] = (f"the play machine's record ({play[:12]}, {res['play_recorded_at']}) predates the build "
-                         f"({res['built_at']}): deploy with `infra/gpu-box/lod.sh send`")
+        res["reason"] = "the ground stands on the world records the play machine's world file holds"
+        if play != res["built_sha"]:
+            res["reason"] += f" (a newer build {res['built_sha'][:12]} is here, not yet sent; it changes none of them)"
+    elif holds is None:
+        res["reason"] = (f"the play machine's world file ({play[:12]}, {res['play_recorded_at']}) was never read here: "
+                         "deploy with `infra/gpu-box/lod.sh send`")
     else:
-        res["reason"] = f"the play machine has {play[:12]}, the ground was read from {ground[:12]}: deploy or re-extract"
+        res["reason"] = (f"the play machine's world file ({play[:12]}) holds other records under this ground than the "
+                         "build here: deploy with `infra/gpu-box/lod.sh send`")
     return res
 
 

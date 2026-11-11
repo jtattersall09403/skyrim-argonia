@@ -42,7 +42,7 @@ def test_real_order_is_derived_and_true():
 def test_every_output_read_has_a_writer_or_is_the_extraction():
     writes = [w for s in R.STAGES for w in s.writes]
     # a built place's plan and the hollow study's extras: each absent until its tool has run
-    optional = {"out:places/shards/*/plan.json", "out:newworld/research/hollow_extra.json"}
+    optional = {R.PLACE_CELLS, "out:newworld/research/hollow_extra.json"}
     for s in R.STAGES:
         assert not set(s.reads) & set(s.check_reads), s.name
         for r in s.reads + s.check_reads:
@@ -111,6 +111,8 @@ def code_read(mod: str, no_lazy: set[str] = frozenset()) -> set[str]:
 # functions the stage does not run
 NOT_READ = {("place", "tools/newworld/verify.py"): "place calls verify.assets() alone: the laid stack's file listing, read as laid:NewWorld",
             ("terrain", "tools/newworld/rebuild.py"): "the terrain takes from it the list of what its stage reads, each digested itself",
+            **{("readback", f): "the read-back's places group alone calls it, and the stage's read-back leaves that group out"
+               for f in ("tools/places/__init__.py", "tools/places/worldparts.py")},
             **{(n, "tools/newworld/keyed.py"): "it ends the tool's key with the build key and changes nothing the tool writes"
                for n in keyed.TOOLS}}
 # a table a stage's tool module names in a function the stage does not run
@@ -154,7 +156,7 @@ def test_every_source_and_table_a_stage_reads_is_in_the_tree():
         for r in s.reads + s.check_reads:
             kind, _, rest = r.partition(":")
             if kind == "src" and r not in made:
-                assert tree._files(tree.repo, rest), (s.name, r)
+                assert tree._files(tree.repo, rest.split("#")[0]), (s.name, r)
             if kind == "db":
                 table, _, cols = rest.partition("[")
                 p = tree.db / f"{table}.jsonl"
@@ -704,8 +706,13 @@ def touch(t: Tree, spec: str, n: int) -> None:
         p = (t.repo if kind == "src" else t.out) / path.replace("**/*", "d/x").replace("**/", "d/").replace("*", "x")
         p = p if p.suffix else p / "x.jsonl"
         p.parent.mkdir(parents=True, exist_ok=True)
-        p.write_text(json.dumps({f.lstrip("-"): "same" if f.startswith("-") else f"v{n}" for f in fields.split(",")} | {"other": f"v{n}"})
-                     if fields else f"v{n}")
+        doc = {"other": f"v{n}"}
+        for f in fields.split(",") if fields else ():
+            at, *path = doc, *f.lstrip("-").split(".")         # a dotted name: the field inside the field
+            for part in path[:-1]:
+                at = at.setdefault(part, {})
+            at[path[-1]] = "same" if f.startswith("-") else f"v{n}"
+        p.write_text(json.dumps(doc) if fields else f"v{n}")
 
 
 def tmp_tree(tmp_path) -> Tree:
@@ -1027,3 +1034,149 @@ def test_settled_names_a_tree_behind_a_stale_stage_and_a_lane_on_the_sources(tre
     assert R.unsettled(tree) == []
     # from a worktree it is never settled: the world file is the main tree's
     assert "the world file is the main tree's" in R.unsettled(Tree(repo=lanes / "docs", stages=tree.stages, py=sys.executable))[0]
+
+
+# ---- a built place's files: the world reads fields of them, and a place build that changes none moves nothing --------
+
+def _place_tree(tmp_path, wide: bool = False):
+    """A tree with one built place and two stub stages that read of it what the real db and terrain stages read
+    (`wide`: the whole files, as their records once named them)."""
+    pdir, shard = tmp_path / "newworld/places/helstrom", tmp_path / "out/places/shards/helstrom"
+    if not pdir.exists():
+        pdir.mkdir(parents=True)
+        shard.mkdir(parents=True)
+        (pdir / "place.json").write_text(json.dumps({"ground": {"sha": "s1"}, "stations": {"needed": 2, "found": {"forge": ["r1"]}}}))
+        (pdir / "people.jsonl").write_text(json.dumps({"id": "p1", "role": "smith", "services": [{"seq": 3, "at": "x"}], "bed": "b1"}) + "\n")
+        (shard / "plan.json").write_text(json.dumps({"cells": [{"cell": "W:1", "x": 1, "y": 2}], "stats": {"plan_s": 1.0}}))
+    n = R.NARROWED
+    stages = (
+        Stage("db", "", cmds=(cat("newworld/places/helstrom/place.json", "db.txt", "db.runs"),),
+              reads=(n[R.PLACE_PEOPLE], n[R.PLACE_STATIONS]) if wide else (R.PLACE_PEOPLE, R.PLACE_STATIONS), writes=("out:db.txt",)),
+        Stage("terrain", "", cmds=(cat("newworld/places/helstrom/place.json", "terrain.txt", "terrain.runs"),),
+              reads=(n[R.PLACE_CELLS],) if wide else (R.PLACE_CELLS,), writes=("out:terrain.txt",)),
+    )
+    return Tree(repo=tmp_path, stages=stages, py=sys.executable), pdir, shard
+
+
+def _edit(p: Path, fn) -> None:
+    rows = p.suffix == ".jsonl"
+    doc = [json.loads(ln) for ln in p.read_text().splitlines()] if rows else json.loads(p.read_text())
+    fn(doc)
+    p.write_text("".join(json.dumps(r) + "\n" for r in doc) if rows else json.dumps(doc))
+
+
+def _place_build(pdir: Path, shard: Path, sha: str) -> None:
+    """What a place build with no change of content rewrites: the place file's ground stamp, the plan's own numbers."""
+    _edit(pdir / "place.json", lambda d: d["ground"].update(sha=sha))
+    _edit(shard / "plan.json", lambda d: d["stats"].update(plan_s=float(len(sha))))
+
+
+def test_the_real_db_and_terrain_stages_read_fields_of_a_place_never_its_files_whole():
+    by = {s.name: s for s in R.STAGES}
+    for name in ("db", "db-water"):
+        assert {R.PLACE_PEOPLE, R.PLACE_STATIONS} <= set(by[name].reads)
+    assert R.PLACE_CELLS in by["terrain"].reads
+    for s in R.STAGES:
+        assert not set(R.NARROWED.values()) & set(s.reads + s.check_reads), s.name
+    # the fields are the ones the loaders read: stockdb._deliveries of the place files, terrain_held.rows of the plan
+    from tools.newworld import stockdb, terrain_held
+    src = inspect.getsource(stockdb._deliveries)
+    assert all(w in src for w in ('"stations"', '"found"', 'p["id"]', '"services"', '"seq"', "p.get('role')"))
+    assert set(re.findall(r"""\bp(?:\[|\.get\()['"](\w+)""", src)) == {"id", "services", "role"} and src.count("_json(pj)") == 1  # no other field
+    assert 'json.loads(plan.read_text())["cells"]' in inspect.getsource(terrain_held.rows) and '(c["x"], c["y"])' in inspect.getsource(terrain_held.rows)
+
+
+def test_a_place_build_that_changes_no_content_leaves_db_and_terrain_current(tmp_path):
+    tree, pdir, shard = _place_tree(tmp_path)
+    assert R.run(tree, check_first=False) == 0 and states(tree) == {"db": "current", "terrain": "current"}
+    _place_build(pdir, shard, "s2")
+    _edit(pdir / "people.jsonl", lambda d: d[0].update(bed="b2"))                   # a bed moved: placement, not the database's
+    assert states(Tree(repo=tmp_path, stages=tree.stages, py=sys.executable, fresh=True)) == {"db": "current", "terrain": "current"}
+    assert R.run(tree, check_first=False) == 0 and (runs(tree, "db"), runs(tree, "terrain")) == (1, 1)
+
+
+@pytest.mark.parametrize("change, stale", [
+    (lambda pdir, shard: _edit(pdir / "people.jsonl", lambda d: d.append({"id": "p2", "role": "guard", "services": []})), "db"),
+    (lambda pdir, shard: _edit(pdir / "people.jsonl", lambda d: d[0]["services"].append({"seq": 4})), "db"),
+    (lambda pdir, shard: _edit(pdir / "place.json", lambda d: d["stations"]["found"].update(altar=["r9"])), "db"),
+    (lambda pdir, shard: _edit(shard / "plan.json", lambda d: d["cells"][0].update(x=5)), "terrain"),
+    (lambda pdir, shard: _edit(shard / "plan.json", lambda d: d["cells"].append({"cell": "W:2", "x": 2, "y": 2})), "terrain"),
+], ids=["a person added", "a service given", "a station found", "a cell moved", "a cell added"])
+def test_a_change_to_a_place_that_reaches_the_world_makes_its_stage_stale(tmp_path, change, stale):
+    tree, pdir, shard = _place_tree(tmp_path)
+    assert R.run(tree, check_first=False) == 0
+    change(pdir, shard)
+    other = "terrain" if stale == "db" else "db"
+    assert states(tree) == {stale: "stale", other: "current"}
+
+
+def test_a_second_place_makes_both_stages_stale(tmp_path):
+    tree, pdir, shard = _place_tree(tmp_path)
+    assert R.run(tree, check_first=False) == 0
+    for d in (pdir, shard):
+        (d.parent / "tenmal").mkdir()
+        for f in d.iterdir():
+            (d.parent / "tenmal" / f.name).write_bytes(f.read_bytes())
+    assert states(tree) == {"db": "stale", "terrain": "stale"}
+
+
+def test_a_record_made_under_the_whole_files_is_carried_to_the_fields(tmp_path):
+    """The stages' records from before they read fields: they stand while the whole files are as recorded, and are
+    then kept under the fields' names, so the next place build moves nothing."""
+    wide, pdir, shard = _place_tree(tmp_path, wide=True)
+    assert R.run(wide, check_first=False) == 0
+    tree, _, _ = _place_tree(tmp_path)
+    old = tree.stamp(tree.by_name["db"])
+    assert states(tree) == {"db": "current", "terrain": "current"}                  # nothing re-derived
+    st = tree.stamp(tree.by_name["db"])
+    assert st["carried_from"] == old["key"] and set(st["inputs"]) >= {R.PLACE_PEOPLE, R.PLACE_STATIONS} and st["at"] == old["at"]
+    assert st["key"] == tree.key_of(tree.inputs(tree.by_name["db"]))
+    _place_build(pdir, shard, "s3")
+    assert states(tree) == {"db": "current", "terrain": "current"}
+    assert R.run(tree, check_first=False) == 0 and (runs(tree, "db"), runs(tree, "terrain")) == (1, 1)
+
+
+def test_a_record_is_not_carried_when_the_whole_file_changed_since(tmp_path):
+    wide, pdir, shard = _place_tree(tmp_path, wide=True)
+    assert R.run(wide, check_first=False) == 0
+    _place_build(pdir, shard, "s4")                 # the record cannot show what the fields were: the stage runs once
+    tree, _, _ = _place_tree(tmp_path)
+    assert states(tree) == {"db": "stale", "terrain": "stale"}
+    assert "carried_from" not in tree.stamp(tree.by_name["db"])
+
+
+def test_a_lane_that_changes_a_place_file_outside_the_fields_read_is_no_lane_on_the_sources(tmp_path):
+    def git(*a):
+        return subprocess.run(["git", "-c", "user.name=t", "-c", "user.email=t@t", *a], cwd=tmp_path, check=True, capture_output=True, text=True).stdout.strip()
+    tree, pdir, shard = _place_tree(tmp_path)
+    (tmp_path / "newworld/places/helstrom/land.jsonl").write_text("")
+    git("init", "-q", "-b", "main")
+    git("add", "newworld")
+    git("commit", "-q", "-m", "seed")
+    base = git("rev-parse", "HEAD")
+    fields = R.field_sources(tree.stages)
+    place, people = "newworld/places/helstrom/place.json", "newworld/places/helstrom/people.jsonl"
+    _place_build(pdir, shard, "s5")
+    assert R.same_fields(tmp_path, base, place, fields)
+    _edit(pdir / "place.json", lambda d: d["stations"]["found"].update(altar=["r9"]))
+    assert not R.same_fields(tmp_path, base, place, fields)
+    assert R.same_fields(tmp_path, base, people, fields)                                # unchanged
+    _edit(pdir / "people.jsonl", lambda d: d[0].update(role="fisher"))
+    assert not R.same_fields(tmp_path, base, people, fields)
+    # a file some stage reads whole is a source by any change; so is a file new to the lane
+    whole = R.field_sources(tree.stages + (Stage("x", "", reads=("src:newworld/places/*/place.json",)),))
+    _edit(pdir / "place.json", lambda d: d["stations"]["found"].pop("altar"))
+    assert R.same_fields(tmp_path, base, place, fields) and not R.same_fields(tmp_path, base, place, whole)
+    assert not R.same_fields(tmp_path, base, "newworld/places/tenmal/place.json", fields)
+    by_field, whole = R.field_sources()
+    assert any(p.match(place) for p, _ in by_field) and not any(p.match(place) or p.match(people) for p in whole)
+    assert any(p.match("newworld/places/helstrom/land.jsonl") for p in whole)
+
+
+def test_after_a_run_only_the_places_whose_world_records_moved_are_named_stale(tmp_path, monkeypatch):
+    tree, _, _ = _place_tree(tmp_path)
+    monkeypatch.setattr(R, "place_stale", lambda t, p: [])
+    assert not [d for d in R.downstream(tree, ["esm", "map"]) if "built place" in d]
+    monkeypatch.setattr(R, "place_stale", lambda t, p: ["under its build the world changed: 1 cell (3,-4)"])
+    assert [d for d in R.downstream(tree, ["esm"]) if "built place" in d and "(helstrom)" in d]
+    assert not [d for d in R.downstream(tree, ["water"]) if "built place" in d]

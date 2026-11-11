@@ -79,7 +79,8 @@ OWN_ROWS = ("cs-height-fog",)
 class Stage:
     """One stage. `reads`: `src:<glob>` (a committed file, by content), `out:<path>[#field,...]` (a build output under
     out/, by content or by the named JSON fields, `#-field` for all but those; a glob or a folder reads every file
-    under it), `db:<table>[cols]` (a table of the world database; `-col` leaves a column out), `ext:<path>` (a file
+    under it; a field of a `src:` file is named the same way, a dotted name reaches into it (`stations.found`, and
+    through a list each item's: `cells.x`), and of a .jsonl file the fields are each row's), `db:<table>[cols]` (a table of the world database; `-col` leaves a column out), `ext:<path>` (a file
     outside the repo, by size and time), `laid:<profile>` (the mod stack as laid for that profile: its record but
     for OWN_ROWS, and its load order). `check_reads`: the same, for what the checks read and the commands do not.
     `writes`: `out:<path>`, `db:<table>` or `db:*`, `src:<path>` (a tracked file the stage rewrites).
@@ -126,8 +127,20 @@ DBPY = "src:tools/argonia_world/db.py"
 LAID = "laid:NewWorld"
 ESM = "out:newworld/plugin/ArgoniaNewWorld.esm"
 MAPS = ("src:newworld/sources/maps/PT3-map-Black_Marsh.png", "src:newworld/sources/maps/PT3-map-Black_Marsh_Regions.png")
-DB_SOURCES = (*MAPS, "src:newworld/sources/road_corrections.json", "src:newworld/places/*/people.jsonl",
-              "src:newworld/places/*/place.json", "src:tools/newworld/regions.py", "src:tools/newworld/frame.py",
+# What the world reads of a built place's files, by the fields its loaders read, so a place build that changes none
+# of them leaves the world current. The database (stockdb._deliveries): who of its people gives which promise
+# (people.jsonl id, role, services' seq) and the stations found (place.json stations.found). The terrain
+# (terrain_held.rows): the cells its place layer covers (plan.json cells' x and y), held against its row of
+# terrain_held.json, which names the terrain build it holds.
+PLACE_PEOPLE = "src:newworld/places/*/people.jsonl#id,role,services.seq"
+PLACE_STATIONS = "src:newworld/places/*/place.json#stations.found"
+PLACE_CELLS = "out:places/shards/*/plan.json#cells.x,cells.y"
+# A read named more narrowly than a stage's record names it: the record stands while the wider read it holds is
+# unchanged (the narrower one is then unchanged too), and is carried to the narrower name (Tree.carry).
+NARROWED = {PLACE_PEOPLE: "src:newworld/places/*/people.jsonl", PLACE_STATIONS: "src:newworld/places/*/place.json",
+            PLACE_CELLS: "out:places/shards/*/plan.json"}
+DB_SOURCES = (*MAPS, "src:newworld/sources/road_corrections.json", PLACE_PEOPLE,
+              PLACE_STATIONS, "src:tools/newworld/regions.py", "src:tools/newworld/frame.py",
               "src:tools/newworld/tiles.py", "src:tools/places/stock/*.py",
               "src:newworld/sources/key.json", "src:newworld/sources/research/**/*.json", "src:newworld/sources/danger/**/*",
               "src:newworld/sources/stock/**/*", "src:newworld/sources/people/**/*", "src:newworld/sources/atmosphere/*.json",
@@ -177,7 +190,7 @@ STAGES: tuple[Stage, ...] = (
           reads=("out:newworld/raster/water.png", "out:newworld/raster/foreign.png", "out:newworld/cell_region.json",
                  "out:newworld/scope_cells.json", "out:newworld/roads.json",
                  "out:newworld/terrain_ref/tamriel_h.npy", "out:newworld/terrain_ref/tamriel_w.npy",
-                 "out:places/shards/*/plan.json",
+                 PLACE_CELLS,
                  PLACE_GROUND, "db:place_terrain_need",
                  "db:region[id,name,landform,kind,elevation_floor_m,elevation_summit_m,roughness_m,cliff_share,wetness]",
                  "db:road_class", "db:settlement_tier", "db:symbol", "db:water_kind", "db:terrain_need", DBPY,
@@ -385,6 +398,22 @@ DOWNSTREAM = (
 )
 
 
+def _picked(doc, name: str):
+    """The value at a dotted name; through a list, the value of each of its items."""
+    head, _, rest = name.partition(".")
+    if isinstance(doc, list):
+        return [_picked(x, name) for x in doc]
+    v = doc.get(head) if isinstance(doc, dict) else None
+    return _picked(v, rest) if rest else v
+
+
+def _fields_of(text: str, rows: bool, names: list[str]) -> str:
+    """The named fields of a JSON text, of each of its rows when it is a .jsonl's, as one canonical text."""
+    docs = [json.loads(ln) for ln in text.splitlines() if ln.strip()] if rows else json.loads(text)
+    got = [{n: _picked(r, n) for n in names} for r in docs] if rows else {n: _picked(docs, n) for n in names}
+    return json.dumps(got, sort_keys=True)
+
+
 def edit_notes(rows: list[dict], plugin: Path, edits: Path, places: Path, file=None) -> None:
     """With the edits stage to run: the edits of single placed things waiting in the source file, and what each
     stage and each machine redoes for them (tools/newworld/place/edits.py)."""
@@ -433,6 +462,15 @@ class Tree:
         """A file's sha256. A plan remembers it by the file's inode, size, and times of change (the inode's own
         included: no edit keeps it), so it never reads a large output twice; `fresh` reads the file whatever is
         remembered."""
+        def whole() -> str:
+            h = hashlib.sha256()
+            with open(p, "rb") as f:
+                for blk in iter(lambda: f.read(1 << 20), b""):
+                    h.update(blk)
+            return h.hexdigest()[:20]
+        return self._remembered(p, str(p), whole)
+
+    def _remembered(self, p: Path, slot: str, read) -> str:
         if self._cache is None:
             try:
                 self._cache = json.loads((self.state / "digests.json").read_text())
@@ -440,15 +478,20 @@ class Tree:
                 self._cache = {}
         st = p.stat()
         sig = [st.st_ino, st.st_size, st.st_mtime_ns, st.st_ctime_ns]
-        hit = self._cache.get(str(p))
+        hit = self._cache.get(slot)
         if not self.fresh and isinstance(hit, list) and hit[:4] == sig and len(hit) == 5:
             return hit[4]
-        h = hashlib.sha256()
-        with open(p, "rb") as f:
-            for blk in iter(lambda: f.read(1 << 20), b""):
-                h.update(blk)
-        self._cache[str(p)] = [*sig, h.hexdigest()[:20]]
-        return self._cache[str(p)][4]
+        self._cache[slot] = [*sig, read()]
+        return self._cache[slot][4]
+
+    def _fields_sha(self, p: Path, names: list[str]) -> str:
+        """The digest of the named fields of one JSON file (of each row of a .jsonl file), remembered as a file's is."""
+        def fields() -> str:
+            try:
+                return hashlib.sha256(_fields_of(p.read_text(encoding="utf-8"), p.suffix == ".jsonl", names).encode()).hexdigest()[:20]
+            except ValueError:
+                return "unreadable"
+        return self._remembered(p, f"{p}#{','.join(names)}", fields)
 
     def _laid_digest(self, profile: str) -> str:
         """The stack as laid for a profile: its record's rows, plugins and files but for OWN_ROWS, and its load order."""
@@ -508,6 +551,14 @@ class Tree:
             return h.hexdigest()[:20]
         root = self.repo if kind == "src" else self.out
         path, _, fields = rest.partition("#")
+        if fields and (any(c in path for c in "*?[") or path.endswith(".jsonl") or "." in fields):
+            hits, names = self._files(root, path), fields.split(",")
+            if not hits:
+                return "absent"
+            h = hashlib.sha256()
+            for q in hits:
+                h.update(f"{q.relative_to(root)}:{self._fields_sha(q, names)}\n".encode())
+            return h.hexdigest()[:20]
         if fields:
             p = root / path
             if not p.exists():
@@ -560,6 +611,30 @@ class Tree:
         tmp.write_text(json.dumps(doc, indent=1))
         os.replace(tmp, self.state / f"{s.name}.json")
 
+    def carried(self, s: Stage, st: dict, inputs: dict) -> bool:
+        """Whether the stage's record, made when it named some reads more widely (NARROWED), still proves its
+        output: it is whole (its key is its inputs'), every other read is as recorded, and each wider read it
+        holds is unchanged today, so the narrower one named now is unchanged too."""
+        was, held = st.get("inputs") or {}, st.get("key") or st.get("proved")
+        if not held or held != self.key_of(was):
+            return False
+        new = [k for k in inputs if k not in was]
+        gone = [k for k in was if k not in inputs]
+        if not new or any(was[k] != inputs[k] for k in inputs if k in was):
+            return False
+        return (all(NARROWED.get(k) in gone for k in new) and sorted(gone) == sorted(NARROWED[k] for k in new)
+                and all(self.digest(k) == was[k] for k in gone))
+
+    def carry(self, s: Stage) -> bool:
+        """Write the stage's record under the narrower reads when `carried` proves it; True when it did."""
+        inputs, st = self.inputs(s), self.stamp(s)
+        if st.get("running") or not self.carried(s, st, inputs):
+            return False
+        word = "key" if st.get("key") else "proved"
+        self.write_stamp(s, {**st, word: self.key_of(inputs), "built": self.build_key(s, inputs), "inputs": inputs,
+                             "carried_from": st[word]})
+        return True
+
     def path_of(self, spec: str) -> Path | None:
         kind, _, rest = spec.partition(":")
         if kind == "db":
@@ -600,6 +675,8 @@ class Tree:
             return "stale", "its last run stopped part-way through its commands"
         held = st.get("key") or st.get("proved")
         if held:
+            if held != self.key_of(inputs) and self.carried(s, st, inputs) and not self.disagreement(s):
+                return "current", st.get("at", "") + " (its record stands: the reads named more narrowly now are unchanged)"
             if held != self.key_of(inputs):
                 was = st.get("inputs") or {}
                 ch = [k for k in inputs if was.get(k) != inputs[k]]
@@ -677,8 +754,11 @@ def plan(tree: Tree, force: tuple = ()) -> list[dict]:
     only if that stage changes what it reads)."""
     d, reads = deps(tree.stages), deps(tree.stages, waits=False)
     rows, moved = [], set()
+    writer = tree.state.exists() and not_the_writer(tree) is None
     for name in order(tree.stages):
         s = tree.by_name[name]
+        if writer and any(r in NARROWED for r in s.reads + s.check_reads):
+            tree.carry(s)       # the one writer keeps its records under the reads' names of today
         state, why = tree.own_state(s)
         if name in force:
             state, why = "stale", "forced"
@@ -831,7 +911,30 @@ def world_sources(stages: tuple = STAGES) -> list[re.Pattern]:
     return [_src_re(p) for p in pats]
 
 
-def lanes_changing(repo: Path, sources: list[re.Pattern]) -> list[str]:
+def field_sources(stages: tuple = STAGES) -> tuple[list, list]:
+    """Of the tracked files the world file is built from: (pattern, names) of each read by its fields, and the
+    patterns of those read whole."""
+    specs = sorted({r[4:] for s in stages if s.name != "upload" for r in s.reads + s.check_reads if r.startswith("src:")})
+    return ([(_src_re(r.split("#")[0]), r.split("#")[1].split(",")) for r in specs if "#" in r],
+            [_src_re(r) for r in specs if "#" not in r])
+
+
+def same_fields(wt: Path, base: str, f: str, fields: tuple[list, list]) -> bool:
+    """Whether a file a lane changed is read by the world by its fields alone and holds the same in them as at
+    `base`: such a change (a place build's own stamp in a place file) moves nothing of the world."""
+    by_field, whole = fields
+    names = [n for p, ns in by_field if p.match(f) for n in ns]
+    if not names or any(n.startswith("-") for n in names) or any(p.match(f) for p in whole):
+        return False
+    old = _git(wt, "show", f"{base}:{f}")
+    try:
+        return (not old.returncode and (wt / f).is_file()
+                and _fields_of(old.stdout, f.endswith(".jsonl"), names) == _fields_of((wt / f).read_text(encoding="utf-8"), f.endswith(".jsonl"), names))
+    except ValueError:
+        return False
+
+
+def lanes_changing(repo: Path, sources: list[re.Pattern], fields: tuple[list, list] = ([], [])) -> list[str]:
     """Each lane worktree whose own changes since it left origin/main (committed or not) touch a source of the
     world file: `<lane>: <file> (and n more)`."""
     out, wt = [], None
@@ -843,7 +946,8 @@ def lanes_changing(repo: Path, sources: list[re.Pattern]) -> list[str]:
         base = _git(wt, "merge-base", "HEAD", "origin/main").stdout.strip()
         if not base:
             continue
-        changed = [f for f in _git(wt, "diff", "--name-only", base).stdout.split("\n") if f and any(p.match(f) for p in sources)]
+        changed = [f for f in _git(wt, "diff", "--name-only", base).stdout.split("\n") if f and any(p.match(f) for p in sources)
+                   and not same_fields(wt, base, f, fields)]
         if changed:
             out.append(f"{wt.name}: {changed[0]}" + (f" (and {len(changed) - 1} more)" if len(changed) > 1 else ""))
     return out
@@ -874,7 +978,7 @@ def unsettled(tree: Tree) -> list[str]:
     if stale:
         out.append(f"the rebuild is owed for {', '.join(stale)}: tools/newworld/rebuild.sh plan, then run")
     out += [f"lane {ln} changes what the world file is built from: land it and rebuild, or wait for it"
-            for ln in lanes_changing(tree.repo, world_sources(tree.stages))]
+            for ln in lanes_changing(tree.repo, world_sources(tree.stages), field_sources(tree.stages))]
     return out
 
 
@@ -1047,9 +1151,22 @@ def downstream(tree: Tree, ran: list[str]) -> list[str]:
     out = []
     for what, feeders, where in DOWNSTREAM:
         hit = [f for f in feeders if f in ran]
-        if hit and ("{places}" not in what or places):
-            out.append(f"{what.format(places=', '.join(places))}: stale after {', '.join(hit)} ({where})")
+        # a built place is stale only when the world records it stands on moved (tools/places/worldparts.py)
+        moved = [p for p in places if place_stale(tree, p)] if hit and "{places}" in what else []
+        if hit and ("{places}" not in what or moved):
+            out.append(f"{what.format(places=', '.join(moved))}: stale after {', '.join(hit)} ({where})")
     return out
+
+
+def place_stale(tree: Tree, place_id: str) -> list[str]:
+    """Why a built place is not current against this tree's world file (the world records under its ground bundle
+    and its build, read from the file by record); nothing when it is. A place that cannot be read counts as stale."""
+    try:
+        from tools.places import worldparts
+        return worldparts.stale(place_id, tree.out / "newworld/plugin/ArgoniaNewWorld.esm", tree.out / "places/bundles",
+                                tree.out / "places/shards")
+    except (ImportError, OSError, ValueError, KeyError) as e:
+        return [f"not read ({type(e).__name__}: {e})"]
 
 
 def summary(tree: Tree, rows: list[dict], done: dict[str, dict]) -> dict:

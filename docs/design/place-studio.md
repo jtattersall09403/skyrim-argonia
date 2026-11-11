@@ -929,7 +929,7 @@ their own cell (interior), as vanilla files them.
 8. Assemble every shard into the plugin (`ArgoniaPlacesBuild write`); the world ESM is read, never written.
 
 **Deploy** (run by the lead after the owner's walk; the build never deploys): `infra/gpu-box/places_deploy.sh`
-(`--dry-run` checks and stages only). It refuses a plugin built over another world ESM than
+(`--dry-run` checks and stages only). It refuses a place whose world records (tools/places/worldparts.py) are no longer those of
 `out/newworld/plugin/ArgoniaNewWorld.esm` or a place whose check read another build, prints each place's checks,
 builds the plugin's SEQ file (`ArgoniaPlugin seq`: the travel dialogue quest is Start Game Enabled, and the
 engine starts a SEQ's quests before a new game's first frame, as `Argonia.seq` does for Argonia.esp), then sends

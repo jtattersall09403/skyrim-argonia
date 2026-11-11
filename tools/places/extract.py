@@ -19,6 +19,7 @@ import sys
 import time
 from pathlib import Path
 
+from tools.places import worldparts
 from tools.places.bundle import BUNDLES, REPO, publish, settle, sha256_file, stamp_key, write_json
 
 SOURCES = REPO / "newworld" / "places" / "sources.jsonl"
@@ -150,6 +151,15 @@ def source_half_extent_m(place_id: str) -> float:
     return DEFAULT_HALF_EXTENT_M
 
 
+def _inputs(plugins, dirs: list, world: dict | None) -> dict:
+    """What a bundle's stamp holds of each plugin it read: the file's sha256; of the world file, the key of the
+    world records the bundle stands on (tools/places/worldparts.py), so a rewrite that leaves them is no new input."""
+    inputs = {f: sha256_file(find_plugin(f, dirs)) for f in plugins if not (world and f == WORLD_ESM.name)}
+    if world:
+        inputs[WORLD_ESM.name] = "parts:" + world["key"]
+    return inputs
+
+
 def run(job: dict, force: bool = False) -> Path:
     final = BUNDLES / job["bundle_id"]
     settle(final)
@@ -158,9 +168,12 @@ def run(job: dict, force: bool = False) -> Path:
     params = {k: v for k, v in job.items() if k not in ("out", "search")}
     prev = final / "bundle.json"
     if prev.exists() and not force:
-        st = json.loads(prev.read_text()).get("stamp", {})
+        was = json.loads(prev.read_text())
+        st = was.get("stamp", {})
         try:
-            inputs = {f: sha256_file(find_plugin(f, dirs)) for f in st.get("inputs", {})}
+            world = worldparts.again(was["world"], WORLD_ESM) if job["kind"] == "ground" and was.get("world") else None
+            # a ground bundle that names no world records it stands on is read again: it cannot be shown current
+            inputs = _inputs(st.get("inputs", {}), dirs, world) if world or job["kind"] != "ground" else None
         except FileNotFoundError:
             inputs = None
         if inputs and stamp_key(inputs, tool, params) == st.get("key"):
@@ -182,11 +195,13 @@ def run(job: dict, force: bool = False) -> Path:
         raise RuntimeError(f"the extractor failed on {job['bundle_id']}")
     jf.unlink()
     meta = json.loads((tmp / "bundle.json").read_text())
-    inputs = {f: sha256_file(find_plugin(f, dirs)) for f in meta["plugins"]}
+    world = worldparts.stamp(WORLD_ESM, meta["cells"]) if job["kind"] == "ground" else None
+    inputs = _inputs(meta["plugins"], dirs, world)
     meta["stamp"] = {"key": stamp_key(inputs, tool, params), "inputs": inputs, "tool": tool,
                      "at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()), "seconds": round(time.time() - t0)}
     if job["kind"] == "ground":
-        meta["esm"] = {"file": WORLD_ESM.name, "sha256": inputs[WORLD_ESM.name]}
+        meta["esm"] = {"file": WORLD_ESM.name, "sha256": world["sha256"]}   # the file it was read from, for the record
+        meta["world"] = world                                               # the records of it the bundle stands on
         meta["place"] = job["place"]
         meta["radius_m"] = job["radius_m"]
     write_json(tmp / "bundle.json", meta)

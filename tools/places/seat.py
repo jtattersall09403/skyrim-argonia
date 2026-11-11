@@ -74,7 +74,9 @@ class Ground:
             bmeta = json.loads(bj.read_text())
             stamp = bmeta.get("stamp") or {}
             ins = stamp.get("inputs") or {}
-            sha = (bmeta.get("esm") or {}).get("sha256") or next(
+            # the ground's key: the world records the bundle stands on, so a place file names a new ground only
+            # when those change (tools/places/worldparts.py)
+            sha = (bmeta.get("world") or {}).get("key") or (bmeta.get("esm") or {}).get("sha256") or next(
                 (v for k, v in sorted(ins.items()) if k.lower().endswith(".esm")), None)
         return cls(cells, water, dw, sha)
 

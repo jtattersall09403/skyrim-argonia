@@ -5,7 +5,8 @@
 # Argonia.seq does for Argonia.esp) and the compiled scripts it names (TIF_ARG_BoatTravel.pex, TIF_ARG_NoSurrender.pex, compiled with the rest
 # of papyrus/ by records_jobs.sh papyrus into out/gpu/papyrus), then stack.ps1 -World NewWorld on.
 #   places_deploy.sh [--dry-run]   --dry-run: check and stage only (the SEQ built, every file named), nothing sent
-# Refuses a plugin built over another world ESM than out/newworld/plugin's, or a place whose check read another
+# Refuses a place whose world records (those it stands on: tools/places/worldparts.py) are no longer
+# out/newworld/plugin's world file's, or a place whose check read another
 # build (PLACES_FORCE=1 overrides). Rerunnable: every file is replaced, nothing else is touched.
 #   C:\argonia\ours\newworld\ArgoniaNWPlaces.esp   stack.ps1's NewWorld ours plugins (after ArgoniaNewWorld.esm)
 #   C:\argonia\ours\newworld\SEQ\ArgoniaNWPlaces.seq  laid into Data\SEQ in the NewWorld profile only
@@ -19,14 +20,15 @@ seq=out/places/plugin/SEQ/ArgoniaNWPlaces.seq; pex=(out/gpu/papyrus/TIF_ARG_Boat
 [ -f "$esp" ] || { echo "no $esp: run python -m tools.places build" >&2; exit 1; }
 for p in "${pex[@]}"; do [ -f "$p" ] || { echo "no $p: run infra/gpu-box/records_jobs.sh papyrus" >&2; exit 1; }; done
 python3 - "$esm" "$esp" <<'PY' || [ -n "${PLACES_FORCE:-}" ]
-import hashlib, json, sys
+import json, sys
+sys.path.insert(0, "")
 from pathlib import Path
 esm, esp = Path(sys.argv[1]), Path(sys.argv[2])
 b = json.loads((esp.parent / "build.json").read_text())
 bad = []
-if b.get("world_sha256") != hashlib.sha256(esm.read_bytes()).hexdigest():
-    bad.append(f"{esp.name} was built over another {esm.name}: rebuild it")
+from tools.places import worldparts
 for pid in sorted(b.get("places") or {}):
+    bad += [f"{pid}: {w}" for w in worldparts.stale(pid, esm.resolve())]
     c = Path("out/places/shards") / pid / "check.json"
     r = json.loads(c.read_text()) if c.exists() else {}
     if r.get("esp_sha256") != b.get("esp_sha256"):

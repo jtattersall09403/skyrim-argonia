@@ -239,9 +239,11 @@ def read_place(pdir: Path) -> dict:
             "land": jsonl(pdir / "land.jsonl"), "paths": jsonl(pdir / "paths.jsonl")}
 
 
-def place_key(pdir: Path, world_sha: str) -> str:
+def place_key(pdir: Path, world_key: str) -> str:
+    """The key of one place's plan: its files, the code, its stock and travel, and the key of the world records it
+    stands on (`world_stamp`), never the world file's own hash."""
     from tools.places.stock import plan as stockplan
-    h = hashlib.sha256((world_sha + code_key() + stockplan.key(pdir.name)).encode())
+    h = hashlib.sha256((world_key + code_key() + stockplan.key(pdir.name)).encode())
     h.update(json.dumps([[s for s in jsonl(DB / "travel_stop.jsonl") if s["place_id"] == pdir.name],
                          travel_routes(pdir.name)], sort_keys=True).encode())  # the network's part in the place
     for p in sorted(pdir.rglob("*")):
@@ -1755,7 +1757,8 @@ def _plan_place(pid: str, pdir: Path, out: Path, no_navmesh: bool, plan_only: bo
     if not plan_only:
         ids.save()  # a plan-only run never writes form ids: it may run beside a build
     plan = {
-        "place_id": pid, "world": {"worldspace": facts["worldspace"], "top_cell": facts["top_cell"], "esm": WORLD},
+        "place_id": pid, "world": {"worldspace": facts["worldspace"], "top_cell": facts["top_cell"], "esm": WORLD,
+                                   "asked": sorted(list(c) for c in ask)},
         "cells": sorted([{"x": c[0], "y": c[1], "cell": facts["by_cell"][c]["fk"]} for c in ask if c in facts["by_cell"]],
                         key=lambda r: (r["x"], r["y"])),
         "refs": S["refs"], "interiors": [{k: v for k, v in I.items() if k != "fk_of_src"} for I in S["interiors"]],
@@ -1765,6 +1768,14 @@ def _plan_place(pid: str, pdir: Path, out: Path, no_navmesh: bool, plan_only: bo
         "stats": {"plan_s": round(time.time() - t0, 1), "nav": nav_info},
     }
     return plan
+
+
+def world_stamp(pid: str, asked) -> dict:
+    """What of the world file the place's plan stands on (tools/places/worldparts.py): the cells it asked the world
+    for (its own and the ring its navmesh joins) and the map markers its travel lines land on."""
+    from tools.places import worldparts
+    arrivals = {"ANW_MapMarker_" + r["to_place_id"].replace("-", "_") for rs in travel_routes(pid).values() for r in rs}
+    return worldparts.stamp(WORLD_ESM, asked, arrivals)
 
 
 def main(argv: list[str]) -> int:
@@ -1788,9 +1799,11 @@ def main(argv: list[str]) -> int:
         if not (pdir / "place.json").exists():
             raise SystemExit(f"no place files at {pdir}")
         shard = out / "shards" / pid
-        key = place_key(pdir, world_sha) + (":nonav" if a.no_navmesh else "")
+        # the plan stands while the world records its last build read are the world file's still (world.json)
+        was = None if a.force or a.plan or not (shard / "world.json").exists() else json.loads((shard / "world.json").read_text())
+        key = was and place_key(pdir, world_stamp(pid, was["cells"])["key"]) + (":nonav" if a.no_navmesh else "")
         kp = shard / "key.txt"
-        if not a.force and not a.plan and kp.exists() and kp.read_text() == key and (shard / "plan.json").exists():
+        if key and kp.exists() and kp.read_text() == key and (shard / "plan.json").exists():
             report["places"][pid] = {"rebuilt": False}
             log(f"build {pid}: unchanged")
             continue
@@ -1805,8 +1818,10 @@ def main(argv: list[str]) -> int:
                 return 1
             if a.plan:
                 continue
+        world = world_stamp(pid, plan["world"]["asked"])
         atomic_json(shard / "plan.json", plan)
-        kp.write_text(key)
+        atomic_json(shard / "world.json", world)
+        kp.write_text(place_key(pdir, world["key"]) + (":nonav" if a.no_navmesh else ""))
         report["places"][pid] = {"rebuilt": True, "plan_s": round(time.time() - t1, 1), "notes": plan["notes"]}
         log(f"build {pid}: planned in {time.time() - t1:.1f} s; {len(plan['refs'])} refs, {len(plan['interiors'])} interiors, "
             f"{len(plan['land'])} land cells, {len(plan['clear'])} cleared, {len(plan['navmesh']['navm'])} navmeshes")

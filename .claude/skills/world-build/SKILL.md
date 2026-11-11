@@ -128,7 +128,9 @@ everything after it. Put what is not the rule itself in another file (`tools/new
 `tools/newworld/keyed.py` hold those tools' proofs and the rebuild's key for that reason).
 
 `plan` reads each file once and remembers its digest while the file is untouched; `run` reads every file it
-decides on.
+decides on. A read may name fields of a file (`<path>#<field>,<field>`, a dotted name for a field inside a
+field, each row's fields of a `.jsonl`): the stage then goes stale by those fields' values alone. Name a new read
+by the fields its tool reads whenever the file is also written by something that does not change them.
 
 ## 5. Run
 
@@ -210,23 +212,28 @@ stale beyond this build. The order keeps every long job on a world file that can
    `out/newworld/map/index.html` to the Atlas's own link (`tools/newworld/water_overrides_pull.py` names it).
 3. Prove the world file settled: `tools/newworld/rebuild.sh settled` exits 0 when the main tree is level with
    `origin/main`, no stage is stale, no rebuild runs and no lane's worktree holds a change to a source of the
-   world file. Otherwise it names what is owed: land or wait for that lane, bring the tree level, rebuild.
+   world file (of a built place's files, a change to the fields the world reads: [changes.md](changes.md)).
+   Otherwise it names what is owed: land or wait for that lane, bring the tree level, rebuild.
    Nothing below starts on a world file that is not settled.
 4. **The play machine's copy.** `infra/gpu-box/run.sh up`, then `infra/gpu-box/lod.sh map` and
    `infra/gpu-box/lod.sh send` (the skill `world-lod`, section 5): the world file with its map data and LOD plan
    is on the play machine, and its hash is recorded here.
-5. **Each built place**, before any LOD is built over it. Re-extract its ground bundle
-   (`python3 -m tools.places extract --ground <place_id>`, then `python3 -m tools.places ground-check <place_id>`),
-   run the stages the change calls for (the skill `place-build`, section 7: a relief change, `seating`;
-   re-scattered plants or a changed navmesh rule, `clearance`), then its build and check (section 8 there), then
-   `streets` and the build and check again where pieces or doors moved or the `streets` check names a point off the
-   network. Commit the place files a stage changed.
+5. **Each built place the run left stale**, before any LOD is built over it.
+   `python3 -m tools.places worldparts <place_id>` says whether the world records under its ground bundle or its
+   build moved, and which; a place it calls current needs nothing. For a stale one, extract its ground bundle
+   again (`python3 -m tools.places extract --ground <place_id>`, then
+   `python3 -m tools.places ground-check <place_id>`), run the stages the change calls for (the skill
+   `place-build`, section 7: a relief change, `seating`; re-scattered plants or a changed navmesh rule,
+   `clearance`), then its build and check (section 8 there), then `streets` and the build and check again where
+   pieces or doors moved or the `streets` check names a point off the network. Commit the place files a stage
+   changed.
 6. **The LOD**, and with it the deploy of the place layer and the stack: the skill `world-lod`, sections 4 to 8.
 7. **The whole read-back**, once the other machines are level: `python3 -m tools.newworld.verify` (every group,
    the LOD's, the deploy's and the places' rows included). It must pass in full before the owner is asked to walk.
 
-A built place carries the hash of the world file it was built over, and each LOD step a key read from that file.
-Both stand while the file's bytes stand: after step 4 the file changes only by a rebuild.
+A built place carries a stamp of the world records it stands on, and each LOD step a key read from the world
+file's records. Both are read from the file by record, so each stands while what it reads stands, whatever else
+of the file a rebuild rewrites; after step 4 the file changes only by a rebuild.
 
 ## 8. Lanes in worktrees
 

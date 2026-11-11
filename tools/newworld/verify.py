@@ -487,10 +487,12 @@ def run(plugin: Path, out: Path, do_dump: bool = True, only: set | None = None, 
         if not (pl / "build.json").exists():
             return
         b = json.loads((pl / "build.json").read_text())
-        sha = hashlib.sha256((plugin / ESM).read_bytes()).hexdigest()
-        rep.row("places", "ArgoniaNWPlaces.esp is built over this world ESM", b.get("world_sha256", "")[:12], b.get("world_sha256") == sha,
-                "" if b.get("world_sha256") == sha else "rerun `python -m tools.places build`")
+        from tools.places import worldparts
         for pid in sorted(b.get("places") or {}):
+            # current while the world records the place stands on are the file's still, whatever else was rewritten
+            why = worldparts.stale(pid, plugin / ESM)
+            rep.row("places", f"{pid}: the world records its ground bundle and its build stand on are unchanged",
+                    "unchanged" if not why else f"{len(why)} stale", not why, "; ".join(why))
             c = REPO / "out/places/shards" / pid / "check.json"
             if not c.exists():
                 rep.fail("places", f"{pid}: every place check green", f"never checked: run `python -m tools.places check {pid}`")
