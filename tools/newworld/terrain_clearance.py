@@ -40,10 +40,74 @@ MAX_PM64 = 0.05
 
 
 # Still inland water (marsh, swamp, pond) is walked in and out of: its shore takes Hjaalmarch's profile (Skyrim.esm:
-# the rise across a shore edge 8 / 24 / 48 units at p10 / median / p90; land and bed clear of the plane by 8 m,
-# share within 32 units 0.34 at 2-8 m inland and 0.027 at 8-20 m), a longer reach on both sides.
+# the rise across a shore edge 8 / 24 / 48 units at p10 / median / p90), a longer reach on both sides.
 STILL = ("green-marsh", "blackwater-swamp", "pond")
-STILL_REACH_M = 8.0
+STILL_REACH_M = 12.0        # Hjaalmarch's lowest land (p10): 8 units at 1 m, 32 at 5 m, 64 at 10 m; beds alike
+
+# The bank beside the water (terrain_shape.compose bounds the land by these): the height (units) the land may reach
+# by distance inland (m), Skyrim.esm's p90 of land height over its own water by distance from the waterline
+# (terrain_ref/tamriel_h.npy; boxes in terrain_character.SKYRIM_BOXES and Lake Ilinalta, cells -12..-2, -12..-8).
+# Past the last point the bound runs on at its last grade and soon stands over any relief: a region's landforms
+# keep their height beyond the shore.
+#   Hjaalmarch's marsh: p10/median/p90 8/16/48 at 0-2 m, 16/48/98 at 2-4, 32/80/160 at 4-6, 48/112/224 at 6-8,
+#   64/160/328 at 8-12, 104/232/480 at 12-16, 160/312/696 at 16-24; 0.9% of waterline triangles over 45 degrees, the
+#   rise across a shore edge 8/24/48; within 32/64 units of the plane at LOD8 spacing 0.178/0.320 (its far water
+#   does not flicker: the marsh lies near the plane and Bethesda leaves it so).
+#   Lake Ilinalta: 8.2% over 45 degrees, rise 8/40/88. The north coast: 2.7%, rise 8/32/72.
+#   Rivers (no bound: ours are gentler): the White River 13.4%, rise 16/36/120; the Karth 20.8%; the Rift 8.6%.
+BANK = {"still": ((0.0, 8.0), (1.0, 48.0), (3.0, 98.0), (5.0, 160.0), (7.0, 224.0), (10.0, 328.0), (14.0, 480.0),
+                  (20.0, 696.0)),
+        "lake": ((0.0, 8.0), (1.0, 88.0), (3.0, 202.0), (5.0, 321.0), (7.0, 400.0), (10.0, 1104.0)),
+        "sea": ((0.0, 8.0), (1.0, 64.0), (3.0, 144.0), (5.0, 232.0), (7.0, 336.0), (10.0, 560.0), (14.0, 992.0),
+                (20.0, 1880.0))}
+BANK_OF = {"green-marsh": "still", "blackwater-swamp": "still", "pond": "still", "lake": "lake",
+           "ocean": "sea", "bay": "sea", "shallow-coast": "sea"}
+BANKS = ("still", "lake", "sea")
+PLACE_BANK = 0.6            # rise per unit of distance of a pad's edge at such water (31 degrees: walked)
+PLACE_BANK_M = 3.7          # ... over its first two samples from the water (terrain_needs: the bank is no pad)
+# `terrain check`: the share of waterline triangles over WALK_DEG by water kind, outside held zones, at most this
+# (about twice Skyrim's own for still water and the sea, where people walk in and out; Skyrim's own for lakes and
+# for rivers, whose banks Bethesda leaves steep)
+MAX_OVER_WALK = {"green-marsh": 0.02, "blackwater-swamp": 0.02, "pond": 0.02, "lake": 0.09, "ocean": 0.055,
+                 "bay": 0.055, "shallow-coast": 0.055, "estuary": 0.134, "river": 0.134, "stream": 0.134}
+
+
+def bank_code(kind_of_body: list, bidx: np.ndarray) -> np.ndarray:
+    """Per sample, which bank bound its nearest water asks for: 0 none, else 1 + its place in BANKS.
+    kind_of_body: the kind of body index 0, 1, ... (0 is land); bidx: each sample's nearest body."""
+    lut = np.array([BANKS.index(BANK_OF[k]) + 1 if k in BANK_OF else 0 for k in kind_of_body], np.uint8)
+    return lut[bidx]
+
+
+def bank_bound(d_land_m: np.ndarray, code: np.ndarray) -> np.ndarray:
+    """The height (units) the land may reach at d_land_m from the water under its bank code (inf where none)."""
+    out = np.full(d_land_m.shape, np.inf, np.float32)
+    for k, name in enumerate(BANKS):
+        m = code == k + 1
+        if m.any():
+            x, y = (np.array(v) for v in zip(*BANK[name]))
+            d = d_land_m[m]
+            last = (y[-1] - y[-2]) / (x[-1] - x[-2])
+            out[m] = np.where(d <= x[-1], np.interp(d, x, y), y[-1] + last * (d - x[-1]))
+    return out
+
+
+def kind_codes(grid, body_r: np.ndarray, bodies: list) -> tuple[np.ndarray, list]:
+    """Per sample, the kind of its nearest map water (an index into the returned names; the last name is the
+    water past the map)."""
+    from scipy import ndimage as ndi
+    names = sorted({b["water_kind_id"] for b in bodies})
+    lut = np.zeros(int(body_r.max()) + 2, np.int16)
+    for b in bodies:
+        lut[b["raster_index"]] = names.index(b["water_kind_id"])
+    iy, ix = ndi.distance_transform_edt(body_r == 0, return_distances=False, return_indices=True)
+    kpx = lut[body_r[iy, ix]]
+    py = np.floor(grid.p0y + np.arange(grid.rows) * grid.k).astype(int)
+    px = np.floor(grid.p0x + np.arange(grid.cols) * grid.k).astype(int)
+    off = ((py < 0) | (py >= body_r.shape[0]))[:, None] | ((px < 0) | (px >= body_r.shape[1]))[None, :]
+    code = kpx[np.ix_(np.clip(py, 0, body_r.shape[0] - 1), np.clip(px, 0, body_r.shape[1] - 1))].copy()
+    code[off] = len(names)
+    return code, names + ["past the map"]
 
 
 def floors(d_land_m: np.ndarray, d_water_m: np.ndarray, water_s: np.ndarray, still=None) -> np.ndarray:

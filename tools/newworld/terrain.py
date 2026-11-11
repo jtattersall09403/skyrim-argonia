@@ -401,7 +401,9 @@ def build(upload: bool = True) -> dict:
     # a water sample whose own pixel class disagrees (nearest-pixel edge cases) takes stream bed
     bed_slope = np.where(water_s & (bed_slope == 0), 0.12, bed_slope)
     bed_cap = np.where(water_s & (bed_cap == 0), 1.2, bed_cap)
-    h, d_land, d_water = ts.compose(water_s, relief_m, F["ramp"], bed_slope, bed_cap, sm, sd_m)
+    kind_of_body = ["land"] + [b["water_kind_id"] for b in bodies]
+    bank = np.where(off, 0, tcl.bank_code(kind_of_body, bidx)).astype(np.uint8)
+    h, d_land, d_water = ts.compose(water_s, relief_m, F["ramp"], bed_slope, bed_cap, sm, sd_m, bank)
     del relief_m, bed_slope, bed_cap, d_land, d_water
     probe("composed", h, ts.U)
     log("composed")
@@ -516,8 +518,27 @@ def build(upload: bool = True) -> dict:
     for _o, p_, nd_, r_m_, *_r, i0_, j0_ in todo:
         sl_, di_, dj_ = ts._disc(grid, i0_, j0_, (float(r_m_ or 25.0) + 20.0) / grid.m)
         keep[sl_] |= np.hypot(di_, dj_) * grid.m <= float(r_m_ or 25.0) + 20.0
+    # pads are laid level to the water's edge. Beside still water, lakes and the sea, ground shaped past a place's
+    # own need takes the natural bank again; inside the need a pad keeps its level and only its edge at the water
+    # (tcl.PLACE_BANK_M: the bank terrain_needs leaves out of a pad) is eased to a bank a person walks
+    # (tcl.PLACE_BANK). A rise at the water stays the rock it was asked to be; a road's bed is the road solver's
+    lim = tcl.bank_bound(np.maximum(sd_m, 0), bank)
+    d_u = np.maximum(sd_m, 0) * ts.U
+    np.copyto(lim, np.where(d_u <= tcl.PLACE_BANK_M * ts.U, ts.SHORE_M * ts.U + tcl.PLACE_BANK * d_u, np.inf),
+              where=keep & (bank > 0))
+    del d_u
+    rises = np.zeros(h.shape, bool)
+    for _o, p_, nd_, r_m_, *_r, i0_, j0_ in todo:
+        if nd_ in ("rise", "island"):
+            sl_, di_, dj_ = ts._disc(grid, i0_, j0_, 2.6 * float(r_m_ or 25.0) / grid.m)
+            rises[sl_] |= np.hypot(di_, dj_) * grid.m <= 2.6 * float(r_m_ or 25.0)
+    banked = ~water_s & (h > lim) & ~rises & ~(corridor if corridor is not None else False)
+    del rises
+    h[banked] = lim[banked]
+    log("banks", int(banked.sum()), "samples of shaped ground eased to the water")
+    del lim, banked, bank
     keep |= th.zone_mask(grid, h.shape, blend=False)    # held ground is laid after, whole: nothing to clear there
-    still = np.isin(np.array(["land"] + [b["water_kind_id"] for b in bodies]), tcl.STILL)[bidx] & ~off
+    still = np.isin(np.array(kind_of_body), tcl.STILL)[bidx] & ~off
     clearance = tcl.apply(h, sd_m, water_s, keep, still)
     del keep, still
     probe("clearance", h, ts.U)
@@ -614,8 +635,14 @@ def check(h, grid, water_px, plans=None, grade_of=None, places=None, cliff=None)
     out["plane_shares"] = tcl.shares(h, valid=~zone)
     out["plane_shares_held"] = tcl.shares(h, valid=zone) if zone.any() else {}
     out["plane_shares_all"] = tcl.shares(h)
-    del zone
-    out["shore"] = tcl.shore_steep(h) | {"rise_p10_50_90": tcl.shore_rise(h)}
+    # waterline triangles steeper than the navmesh walks, by the kind of the water, outside held zones
+    code, knames = tcl.kind_codes(grid, np.asarray(Image.open(OUT / "water_bodies.png")),
+                                  json.loads((OUT if TRIAL else f.OUT).joinpath("water_bodies.json").read_text()))
+    out["shore"] = tcl.shore_steep(h, ~zone, code, knames) | {"rise_p10_50_90": tcl.shore_rise(h, ~zone)}
+    out["shore"]["rise_by"] = {n: tcl.shore_rise(h, ~zone & (code == k)) for k, n in enumerate(knames)}
+    out["shore_too_steep"] = {k: v["over_walk"] for k, v in out["shore"]["by"].items()
+                              if v["over_walk"] > tcl.MAX_OVER_WALK.get(k, 1.0)}
+    del code, zone
     if plans:
         out["roads"] = ts.road_checks(h, grid, plans, grade_of)
     if places:
@@ -679,7 +706,7 @@ def check_built() -> int:
           and chk.get("coast", {}).get("blocks4", 0) >= BLOCKS_HELD and chk["land_format"]["ok"]
           and chk["sha256_matches"] and not chk.get("entrances_bad") and th.ok(chk["held"])
           and not b.get("water_override_problems")
-          and not chk["inputs_changed"]
+          and not chk["inputs_changed"] and not chk["shore_too_steep"]
           and all(v["pm32"] <= tcl.MAX_PM32 and v["pm64"] <= tcl.MAX_PM64 for v in chk["plane_shares"].values())
           and chk.get("roads", {}).get("grade_over_limit_points", 0) == 0)
     return 0 if ok else 1

@@ -383,3 +383,25 @@ def test_shore_measures_and_still_water_reach():
     c = tcl.floors(d, d, ws, still)
     assert c[0, 0] < c[0, 1] and c[0, 2] < c[0, 3]         # still water: a gentler shore on both sides
     assert (tcl.floors(d * 5, d * 5, ws, still) == tcl.LAND_CLEAR_M * tcl.U).all()   # and the same clearance beyond
+
+
+def test_bank_bound_follows_the_measured_profile_and_frees_the_ground_beyond():
+    from tools.newworld import terrain_clearance as tcl
+    code = tcl.bank_code(["land", "green-marsh", "river", "lake", "ocean"], np.array([[1, 2, 3, 4]]))
+    assert code.tolist() == [[1, 0, 2, 3]]
+    d = np.array([[1.0, 1.0, 1.0, 1.0]], np.float32)
+    b = tcl.bank_bound(d, code)
+    assert b[0, 0] == 48 and np.isinf(b[0, 1]) and b[0, 2] == 88 and b[0, 3] == 64      # a river's bank is free
+    far = tcl.bank_bound(d * 200, code)
+    assert far[0, 0] > 5000                                  # beyond the shore the bound stands over any relief
+    n = 60
+    sd = np.tile(np.linspace(-20, 90, n, dtype=np.float32), (n, 1))
+    ws = sd < 0
+    relief = np.full((n, n), 30.0, np.float32)               # 30 m of ground right at the water
+    args = (ws, relief, np.full((n, n), 7.0, np.float32), np.full((n, n), 0.1, np.float32),
+            np.full((n, n), 1.0, np.float32), 128 / 70, sd)
+    free = ts.compose(*args)[0]
+    held = ts.compose(*args, bank=np.ones((n, n), np.uint8))[0]
+    assert tcl.shore_steep(free)["over_walk"] > 0.5 and tcl.shore_steep(held)["over_walk"] == 0.0
+    assert ((held > 0) == (free > 0)).all()                  # the waterline does not move
+    assert np.allclose(held[:, -5:], free[:, -5:])           # and the ground beyond keeps its height

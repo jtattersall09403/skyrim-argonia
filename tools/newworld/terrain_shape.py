@@ -115,8 +115,8 @@ def sample_classes(grid: Grid, water_px: np.ndarray) -> np.ndarray:
 
 
 def compose(water_s: np.ndarray, relief_m: np.ndarray, ramp_m: np.ndarray, bed_slope: np.ndarray,
-            bed_cap_m: np.ndarray, m_per_sample: float, sd_m: np.ndarray | None = None
-            ) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
+            bed_cap_m: np.ndarray, m_per_sample: float, sd_m: np.ndarray | None = None,
+            bank: np.ndarray | None = None) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
     """Land and water heights (units) from the classes and relief. Returns (h, d_land_m, d_water_m).
 
     With `sd_m` (terrain_coast's smooth signed distance, metres) the distances are read from it, so heights near
@@ -131,6 +131,11 @@ def compose(water_s: np.ndarray, relief_m: np.ndarray, ramp_m: np.ndarray, bed_s
     d_land, d_water = d_land.astype(np.float32), d_water.astype(np.float32)
     land = fb + np.maximum(relief_m - fb, 0) * (1 - np.exp(-d_land / np.maximum(ramp_m, 1)))
     depth = np.minimum(wb + bed_slope * d_water, np.maximum(bed_cap_m, wb))
+    if bank is not None:
+        # `bank` (terrain_clearance.bank_code): the bank beside still water, lakes and the sea rises no faster than
+        # Skyrim's measured bank (terrain_clearance.BANK), by each land sample's distance from the water
+        from tools.newworld.terrain_clearance import bank_bound
+        land = np.minimum(land, bank_bound(d_land, bank) / U)
     h = np.where(water_s, -depth, land) * U
     return h.astype(np.float32), d_land, d_water
 
