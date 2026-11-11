@@ -1,18 +1,18 @@
 # New world walk check (nw-02)
 
-The owner's walk of the new Black Marsh world, posted once the off-game read-back passes in full
-(`tooling/job_guard.sh run nw-verify -- python3 -m tools.newworld.verify`; the table is `out/newworld/verify/report.md`).
-It sits apart from `docs/owner-walk-checks.md`, which is the walk list for the BM&V game; ticks go here, in the same way.
-Posted 2026-11-09 as issue #56 after the read-back passed 50/50; rebuilt the same day with the owner's 2026-11-09
-feedback (round 2: water, islets, places, six asset mods, keys) and posted to #56 again as ready.
+The owner's walk of the new Black Marsh world. It sits apart from `docs/owner-walk-checks.md`, which is the walk list
+for the Black Marsh & Valenwood game; ticks go here, in the same way. This is the walk after round 3: everything in
+the owner's walk 5 feedback of 2026-11-10 on the built world was changed and the whole world rebuilt (terrain build
+20261111T053723Z). The off-game read-back is `out/newworld/verify/report.md`
+(`tooling/job_guard.sh run nw-verify -- python3 -m tools.newworld.verify`).
 
 ---
 
-**What this is.** Black Marsh is now a whole world of our own, made from the Project Tamriel map: its own land,
-ground textures, trees and plants per region, rocks and cliffs, roads, water of the right kinds, ground mist,
-far-distance scenery (LOD), the world map and a navmesh (the walkable layer people and creatures use to find their
-way). It is a separate plugin with its own Moonlight card, so your Black Marsh & Valenwood game is untouched. You are
-only looking: nothing here is a quest.
+**What this is.** Black Marsh as a whole world of our own, rebuilt after your walk 5 notes: the ground has more
+shape and differs region by region, water kinds look different and rivers run, roads are repainted, the ground cover
+is broken up, the air is warm and differs by region, there is more low mist, trees are drawn far away, the map pans
+to the edges, and land and sea carry on beyond the borders. You are only looking: nothing here is a quest. Helstrom
+the city is not in this world yet: it is laid in after you have walked the world.
 
 **Cost.** The play machine costs about $0.80 an hour while it runs; this walk is about an hour. It stops itself when
 idle.
@@ -20,94 +20,99 @@ idle.
 **Getting there.** Open the **"Argonia: New World"** card in Moonlight. Start a new game (or load any save), open the
 console with the key under Esc and type `coc ArgoniaNWStart`. You arrive on dry ground in the Valley of Storms, just
 south of Stormhold. To jump to any other place, type `coc ANW` and the place's name with no spaces or dashes (for
-example `coc ANWHelstrom`, `coc ANWFortGysilla`, `coc ANWUzuTegh`): every one of the 258 places has its own named
-cell, and you land on dry ground in it, facing the place. The checks below give the exact names; the full list is
-`out/newworld/plugin/map/teleports.md` (made by `python -m tools.newworld.teleports build`). Do not use
-`cow ArgoniaBlackMarsh X Y`: the world's cells lie south of -128, and the game took Helstrom's `cow ... -8 -148` to a
-cell 256 north of it, out in the empty sea.
+example `coc ANWLilmoth`, `coc ANWFortGysilla`, `coc ANWUzuTegh`): every one of the 258 places has its own named
+cell, and you land on dry ground beside it. The checks below give the exact names. The old `cow ArgoniaBlackMarsh X Y`
+commands were the fault you reported: the game cannot address this world's southern cells that way, and took
+Helstrom's numbers to open sea far to the north. Do not use them.
 
 **Commands for looking around** (type in the console, then close it):
 
 - `tgm`: you cannot be hurt. `tcl`: walk through anything and fly where you look (type again to stop).
-- `tfc`: a free camera that flies away from your body (`tfc 1` also freezes time, good for looking at one moment);
-  `sucsm 500` sets how fast it flies (try 200 to 1000). Type `tfc` again to come back.
-- `player.setav speedmult 400`: run four times as fast (`player.setav speedmult 100` puts it back).
+- `player.setav speedmult 400`: run four times as fast (`player.setav speedmult 100` puts it back). Flying with
+  `tcl` at more than about four times speed can outrun the game's loading of the land ahead; the crash you had in
+  walk 5 was in that loader, on a cell that held only land, water and the walking mesh, with nothing of ours named.
+- `tfc`: a free camera that flies away from your body (`tfc 1` also freezes time); `sucsm 500` sets how fast it
+  flies. Type `tfc` again to come back.
 - `tm`: hide the HUD and menus for a clean look (type again to bring them back; the console still opens).
-- `fov 90`: a wider view (`fov 70` is the default).
 - `set gamehour to 6` (dawn), `set gamehour to 12` (noon), `set gamehour to 22` (night): the time of day.
-- `fw 0C821E` forces fog, `fw 00081A` clear sky, `fw 0C821F` overcast rain, `fw 0C8220` storm rain (`fw` is a
-  forced change; wait a few seconds for it to settle).
+- Weather now comes from the region you stand in, by itself. To force one of a region's own weathers, type
+  `help ANW_W_ 4` to list them with their numbers (the names read region type, north/middle/south, and Fair, Cloudy,
+  Mist, Rain, Storm or Steam), then `fw` and the number shown, for example the number beside
+  `ANW_W_GreenMarsh_Middle_Mist`.
 - `tg` hides and shows grass, `tt` hides and shows trees: use them only to see the ground underneath.
 - M: the map menu.
-- **New keys on the keyboard:** a tap of Space dodges and a hold of Space sprints; Left Shift jumps (and climbs);
-  hold Option (Alt) to walk. The pad is unchanged.
 
 ## The checks
 
-Reply on the issue with the letter of any check that did not look right, what you saw and where (the cell numbers
-show in the console with `getpos x` and `getpos y`, or just name the place). A screenshot helps.
+Reply on the issue with the letter of any check that did not look right, what you saw and where (name the place, or
+give `getpos x` and `getpos y` from the console). A screenshot helps. Each check names the walk 5 note it answers.
 
-- [ ] **A. Arriving.** After `coc ArgoniaNWStart` you stand on dry land, not in water or under the ground, and the
-      game did not stall.
-- [ ] **B. Ground textures blend.** Walk or fly over a few hundred metres anywhere: grass, mud, sand and rock fade
-      into one another. You should not see straight lines, squares or hard edges between two ground textures, and no
-      large patch of one texture repeating for a long way.
-- [ ] **C. Grass on the ground.** Most land has grass or low plants growing out of it (not bare painted ground),
-      except on rock, roads, beaches and mud flats.
-- [ ] **D. Each region looks like itself.** Visit three: Murkwood round Helstrom (`coc ANWHelstrom`),
-      the Kotherra mangroves round Gideon (`coc ANWGideon`) and the Arnesian jungle round Thorn
-      (`coc ANWThorn`). Each has its own mix of trees and plants, and inside each there is a good
-      variety, not the same tree over and over.
-- [ ] **E. Trees and rocks sit properly.** Look closely at the foot of trees, bushes and rocks on slopes: trunks go
-      into the ground (no floating roots, no trunk buried halfway); rocks have no open, hollow back facing you; cliff
-      pieces face out of the hill with their open side hidden against it. Nothing is bright purple (a missing
-      texture); look in particular at a fern and a mangrove in the Kotherra mangroves (D), whose textures we repoint.
-- [ ] **F. Roads are clear.** Follow a road for a while (the road south from Stormhold is a good one): nothing grows or
-      stands on the road itself, and its edges are dressed with the odd stone or marker as in Skyrim.
-- [ ] **G. Water types.** Visit: black swamp water in the Banujha Basin (`coc ANWWalkSwamp`); green
-      marsh water in Okuwun-Rahei (`coc ANWWalkMarsh`); a river in the Tulmek Washes
-      (`coc ANWWalkRiver`); a stream in the Kotherra mangroves (`coc ANWWalkStream`); a pond
-      in Blackwood (`coc ANWWalkPond`); an estuary on the Arnesian coast (`coc ANWWalkEstuary`);
-      the open sea (`coc ANWWalkSea`). Each looks like its kind (dark, green, clear, sea), the river and
-      stream visibly flow, and ponds, marsh and swamp lie still.
-- [ ] **H. Flow goes the right way.** On the river and the stream in G, the water runs downstream toward the sea or
-      the larger water it joins, not uphill or back on itself. (Where a river bends, the direction changes from one
-      cell to the next: that step is a limit of the game's water, not a fault.)
-- [ ] **I. Water's edges.** At the sea, a river and the swamp in G: the ground goes from bed, to wet edge, to bank, to
-      land, with plants and stones that suit each kind of water (beach at the sea, mud and reeds at the swamp).
-      Trees do not stand in the river or stream; they stand in water only in swamp, mangrove and drowned forest.
-- [ ] **J. Mist.** In the Banujha swamp (G), `set gamehour to 6`: low drifting mist below eye level over the water
-      and wet ground. `set gamehour to 12` with `fw 00081A`: thin or gone. `set gamehour to 22`: back again. There is
-      no mist out at sea.
-- [ ] **K. Weather.** `fw 0C821E`, then `fw 0C821F`: fog and rain both look like Black Marsh's own, not snow or a
-      Skyrim sky.
-- [ ] **L. The distance.** At Helstrom (`coc ANWHelstrom`) and in the Arnesian jungle (`coc ANWThorn`), stand still
-      and look out, then fly up with `tfc` and `sucsm 1000`: trees, palms and tall plants (including the mangroves and
-      swamp trees) are drawn far off as flat cut-outs and do not appear from nothing as you come near; cliffs and the
-      big rock outcrops that have a far-off shape are drawn too. Most fallen logs, stumps and boulders still appear
-      only within about 100 to 150 metres: their full shapes are too heavy to draw far off and no lighter shape of them
-      exists (we make none). Small plants, ferns, herbs, reeds, grass and small stones also appear only within that
-      distance, as in Skyrim. The ground far off does not flicker as you move.
-- [ ] **M. The map.** Press M anywhere in the new world: the map shows Black Marsh's land; you can pan to every edge
-      of the province (the island in the eastern sea at Topal Bay, the oceans to the south and west, the land to the
-      north and north-west) and zoom out to see most of the province at once; the settlement markers are there (only
-      Stormhold is known at the start; `tmm 1` reveals them all).
-- [ ] **N. People can get around.** Optional: near Lilmoth (`coc ANWLilmoth`), type
-      `player.placeatme 00023ABE` (a wolf), let it chase you and run round trees and along the road: it follows,
-      not stuck or walking into the water at random.
-- [ ] **O. Relief (your call).** The terrain follows the region research: most of Black Marsh is low and nearly
-      flat, like BM&V's own marsh (10 to 25 m of height in most regions), with more relief only in the uplands and
-      mesas (Chixathe mesa at Fort Chalkmoth, `coc ANWFortChalkmoth`; the Aunike ridge at Aunike Crown,
-      `coc ANWAunikeCrown`). If you want more hills or higher
-      mesas anywhere, say where; it is a change to the region table, then one rebuild.
-- [ ] **P. Islets.** Places that stand in lakes now have land under them: Luntoc
-      (`coc ANWLuntoc`), Uzu-Tegh (`coc ANWUzuTegh`) and Fort Gysilla
-      (`coc ANWFortGysilla`) in Lake Ulaish. Each is a small island with water all round, not drowned.
-- [ ] **Q. Helstrom's waters.** Round Helstrom (`coc ANWHelstrom`) and along the river south-west of it
-      (`coc ANWWalkHelstromRiver`): a few main rivers that flow, a few tributary streams, and many winding arms
-      of still green marsh between them.
-- [ ] **R. Water seams.** Wherever two kinds of water meet (fly along the river at Q into the marsh, or at G from a
-      river out to sea): the water is one surface at one level, with no gaps, and its colour changes gradually over
-      several cells, with no straight line or square edge where one kind meets the next.
-- [ ] **S. Keys.** On the keyboard: tap Space to dodge, hold Space to sprint, Left Shift to jump and to climb,
-      hold Option to walk. Nothing else happens on those keys.
+- [ ] **A. Teleports.** (Your note: the coordinates were wrong.) `coc ANWLilmoth`, `coc ANWGideon`, `coc ANWThorn`:
+      each lands you on dry ground beside that place, not in water, under the ground or out at sea.
+- [ ] **B. Water kinds.** (Your note: all water looked the same.) Visit black swamp water (`coc ANWWalkSwamp`), green
+      marsh water (`coc ANWWalkMarsh`), a river (`coc ANWWalkRiver`), a stream (`coc ANWWalkStream`), a pond
+      (`coc ANWWalkPond`), an estuary (`coc ANWWalkEstuary`) and the open sea (`coc ANWWalkSea`). The swamp is dark
+      tea-brown, opaque and still; the marsh is opaque algae green and still; the pond is clear green and still; the
+      river is brown-green and visibly running; the stream is clearer and quicker; the estuary is silty green-brown;
+      the sea is a warm blue-green.
+- [ ] **C. Flow.** (Your note: all flowing the same way.) At the river and the stream in B, and on the river
+      south-west of Helstrom's site (`coc ANWWalkHelstromRiver`): the ripples drift downstream, toward the sea or the
+      larger water the channel joins, and follow the channel round its bends (the direction changes a little from
+      one stretch to the next: the game sets it per cell). Swamp, marsh and pond do not drift at all.
+- [ ] **D. Water seams.** Where two kinds of water meet (follow the river in C into the marsh; fly from the estuary
+      out to sea): one surface at one level, and the colour changes gradually, with no straight line or square.
+- [ ] **E. Water's edge, near and far.** (Your notes: flicker between water and land, straight hard edges, in free
+      camera and on the map.) At `coc ANWWalkSwamp` and `coc ANWWalkSea`, walk the shore, then fly up and away with
+      `tcl` or `tfc` and look back along the shore from a distance: the land does not flicker against the water,
+      and the far shore follows the land's shape instead of running in long straight lines or squares. The ground
+      far off does not flicker either.
+- [ ] **F. The map.** (Your notes: hard edges and bad water on the map, light squares, cut off at the edges.) Press
+      M: the water on the map follows the shores, with no flicker as you pan and no pale square patches on the land;
+      you can pan to every edge of the province (the island in Topal Bay in the east, the oceans to the south and
+      west, the land to the north and north-west) and zoom out to see most of it at once. Say also whether the map
+      looks right for haze: it is drawn without fog now.
+- [ ] **G. Beyond the borders.** (Your note: land beyond our borders, W, N and NW.) From the western border
+      (`coc ANWUmpholo`, then fly west) and the north (`coc ArgoniaNWStart`, then fly north): low hilly land carries
+      on past the border instead of the world ending (it has no places in it). From the east coast
+      (`coc ANWBalaKarag`) look out to sea: open water to the horizon, with no edge.
+- [ ] **H. Trees far away.** (Your note: trees invisible at a distance, fading in from nothing.) In the Arnesian
+      jungle (`coc ANWThorn`) and Murkwood (`coc ANWTzelHaar`), stand still and look out, then fly up: trees, palms,
+      mangroves and swamp trees are drawn far off as flat cut-outs and no longer appear from nothing as you come
+      near; cliffs are drawn far off too. Told plainly: most fallen logs, stumps and boulders still appear only
+      within about 100 to 150 metres, because their full shapes are too heavy to draw far off and no lighter shape of
+      them exists (we make no art); small plants, ferns, reeds, grass and small stones also appear only near you, as
+      in Skyrim, though from further than before.
+- [ ] **I. Roads.** (Your note: triangular patches, hard joins, harsh dark flat roads.) Walk the road out of
+      `coc ANWLilmoth`, `coc ANWGideon` and `coc ANWUmpholo` (where a main road meets a path): one continuous, lighter
+      earth or gravel track with a grassy or pale edge fading into the ground; no square or triangular patches cutting
+      into it, no hard join where its surface changes, no grass growing in its middle, nothing standing on it.
+- [ ] **J. Swathes.** (Your note: large swathes of the same ground cover.) At `coc ANWHirecan` and `coc ANWKorydon`,
+      walk away from the road: the ground and its grass change every few metres to a few tens of metres, never one
+      cover as far as you can see.
+- [ ] **K. Ground by region.** (Your note: more texture and ground cover variety between regions.) Compare the ground
+      and grass at `coc ANWLilmoth` (coast), `coc ANWTzelHaar` (dark forest floor), `coc ANWChasepoint` (red clay),
+      `coc ANWNacydes` (hills) and `coc ANWRainbreakerKeep` (gravel and heather on Skeith Isle): each reads as a
+      different country.
+- [ ] **L. Relief by region.** (Your note: more variety of relief between regions, within the lore.) Stand on open
+      ground at `coc ANWTzelHaar` (Murkwood: root hummocks underfoot), `coc ANWKorydon` (Ultherus Swamp: broken rings
+      of firm ground), `coc ANWAunikeCrown` (Aunike Ridge: long scarps), `coc ANWArchon` (Nushara Bayou: thin ridges
+      running north to south), `coc ANWAroxhu` (Okuwun-Rahei: round clay mounds), `coc ANWMeliton` (Blackwood: steep
+      hills standing out of the bog) and `coc ArgoniaNWStart` (Valley of Storms: winding ravines). Each region's
+      ground has its own shape; most of Black Marsh is still low. Name any region that still feels like its
+      neighbour.
+- [ ] **M. Warm air, by region.** (Your note: too cold and grey; warm, steamy, tropical, differing by region and
+      latitude.) At noon (`set gamehour to 12`), wait a little for each region's own weather to settle, and compare:
+      `coc ANWAroxhu` (Okuwun-Rahei green marsh: golden, humid, pale gold-green haze), `coc ANWKharaxos` (Banujha
+      blackwater swamp: amber-brown and close), `coc ANWTzelHaar` (Murkwood rainforest: green and dim),
+      `coc ANWFortChalkmoth` (Chixathe mesa: crisp, blue distance), `coc ANWBalaKarag` (east coast: silver sea haze),
+      `coc ANWSoulrest` (south coast: milky and warm), `coc ANWGiovesse` (west coast: golden), `coc ANWLilmoth`
+      (islands: bright turquoise air) and `coc ArgoniaNWStart` (the north by Morrowind: clearer and whiter than the
+      south). None is blue-grey and cold. Then `set gamehour to 7` at the marsh: a warm dawn.
+- [ ] **N. Low mist and ground fog.** (Your note: more of the low drifting fog, stronger, over marsh and swamp.) At
+      `coc ANWWalkSwamp` and `coc ANWWalkMarsh`, `set gamehour to 6`: thicker, more solid drifts of mist below eye
+      level over the water and its banks than before, lying in a warm ground fog that thins higher up, with the sky
+      and its clouds still clear above. At noon in fair weather it has thinned, and under trees there are sunbeams
+      through a light haze. After rain (force a region's Steam weather as described above) it is thickest. There is
+      none out at sea, and none indoors. If the sky ever looks like a flat grey or cream sheet, press End, open
+      Exponential Height Fog and untick "Enable Exponential Height Fog", and tell us: that one setting turns the
+      ground fog off and puts the game's own fog back.
