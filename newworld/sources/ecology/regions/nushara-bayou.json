@@ -1,0 +1,258 @@
+{
+ "region": "nushara-bayou",
+ "creatures": [
+  {
+   "kind": "ripper-eel",
+   "size_class": "small",
+   "hostility": "hostile",
+   "habitat": "water-brackish",
+   "time": "any",
+   "group": [
+    1,
+    3
+   ],
+   "signature": true,
+   "asset": "bmv",
+   "cite": "story/lore/topics/ecology-encounters-loot.md#Creature notes that change how a fight plays"
+  },
+  {
+   "kind": "glowgill-guar",
+   "size_class": "game",
+   "hostility": "benign",
+   "habitat": "shore",
+   "time": "day",
+   "group": [
+    2,
+    4
+   ],
+   "signature": true,
+   "asset": "bmv",
+   "cite": "story/lore/topics/fauna-hazards.md#Domesticated and useful animals"
+  },
+  {
+   "kind": "crocodile",
+   "size_class": "predator",
+   "hostility": "hostile",
+   "habitat": "water-fresh",
+   "time": "any",
+   "group": [
+    1,
+    3
+   ],
+   "signature": true,
+   "asset": "bmv",
+   "cite": "story/lore/topics/fauna-hazards.md#Apex and set-piece creatures"
+  },
+  {
+   "kind": "mudcrab",
+   "size_class": "small",
+   "hostility": "defensive",
+   "habitat": "shore",
+   "time": "any",
+   "group": [
+    1,
+    3
+   ],
+   "signature": false,
+   "asset": "vanilla",
+   "extrapolation": "region notes list mudcrabs on banks and coasts; vanilla Skyrim and Morrowind kind"
+  },
+  {
+   "kind": "marsh-bird",
+   "size_class": "small",
+   "hostility": "benign",
+   "habitat": "marsh",
+   "time": "day",
+   "group": [
+    2,
+    6
+   ],
+   "signature": false,
+   "asset": "tropical-skyrim",
+   "extrapolation": "wading and reed birds fill every wet region note; unnamed in the lore",
+   "cite": "newworld/story/data/db/region_note.jsonl#nushara-bayou/ecology"
+  },
+  {
+   "kind": "reed-heron",
+   "size_class": "small",
+   "hostility": "benign",
+   "habitat": "water-fresh",
+   "time": "day",
+   "group": [
+    1,
+    2
+   ],
+   "signature": false,
+   "asset": "tropical-skyrim",
+   "extrapolation": "a still-water wader; extrapolated from the wading birds of region notes"
+  },
+  {
+   "kind": "slaughterfish",
+   "size_class": "small",
+   "hostility": "hostile",
+   "habitat": "water-fresh",
+   "time": "any",
+   "group": [
+    2,
+    5
+   ],
+   "signature": false,
+   "asset": "vanilla",
+   "cite": "story/lore/topics/ecology-encounters-loot.md#2. Regional encounter composition ; newworld/story/data/db/region_note.jsonl#nushara-bayou/dangers"
+  },
+  {
+   "kind": "death-hopper",
+   "size_class": "predator",
+   "hostility": "hostile",
+   "habitat": "water-fresh",
+   "time": "any",
+   "group": [
+    2,
+    5
+   ],
+   "signature": false,
+   "asset": "none",
+   "cite": "story/lore/topics/fauna-hazards.md#Everyday hazards"
+  },
+  {
+   "kind": "giant-snake",
+   "size_class": "predator",
+   "hostility": "hostile",
+   "habitat": "marsh",
+   "time": "any",
+   "group": [
+    1,
+    2
+   ],
+   "signature": false,
+   "asset": "bmv",
+   "cite": "story/lore/topics/fauna-hazards.md#Apex and set-piece creatures"
+  },
+  {
+   "kind": "gnat-cloud",
+   "size_class": "insect",
+   "hostility": "defensive",
+   "habitat": "water-fresh",
+   "time": "night",
+   "group": [
+    6,
+    20
+   ],
+   "signature": false,
+   "asset": "effect-only",
+   "extrapolation": "a standing cloud over still water follows from the lore of insect load as the baseline hazard (EC P2)"
+  },
+  {
+   "kind": "torchbug",
+   "size_class": "insect",
+   "hostility": "benign",
+   "habitat": "marsh",
+   "time": "night",
+   "group": [
+    3,
+    10
+   ],
+   "signature": false,
+   "asset": "vanilla",
+   "cite": "story/lore/topics/fauna-hazards.md#Flora"
+  },
+  {
+   "kind": "marsh-turtle",
+   "size_class": "game",
+   "hostility": "benign",
+   "habitat": "marsh",
+   "time": "day",
+   "group": [
+    1,
+    3
+   ],
+   "signature": false,
+   "asset": "vanilla",
+   "extrapolation": "the earlier list and the turtle-shell uses of EC S1 imply living turtles"
+  },
+  {
+   "kind": "swamp-jelly",
+   "size_class": "small",
+   "hostility": "benign",
+   "habitat": "water-fresh",
+   "time": "day",
+   "group": [
+    1,
+    3
+   ],
+   "signature": true,
+   "asset": "none",
+   "cite": "story/lore/topics/ecology-encounters-loot.md#Creature notes that change how a fight plays"
+  },
+  {
+   "kind": "kotu-gava",
+   "size_class": "insect",
+   "hostility": "hostile",
+   "habitat": "marsh",
+   "time": "any",
+   "group": [
+    2,
+    6
+   ],
+   "signature": false,
+   "asset": "none",
+   "cite": "story/lore/topics/fauna-hazards.md#Everyday hazards"
+  },
+  {
+   "kind": "kaj-thux",
+   "size_class": "giant",
+   "hostility": "hostile",
+   "habitat": "marsh",
+   "time": "any",
+   "group": [
+    1,
+    1
+   ],
+   "signature": false,
+   "asset": "bmv",
+   "cite": "story/lore/topics/fauna-hazards.md#Apex and set-piece creatures"
+  }
+ ],
+ "harvestables": [
+  {
+   "ingredient": "eel-slime",
+   "habitat": "water-brackish",
+   "cite": "story/lore/topics/ecology-encounters-loot.md#Creature notes that change how a fight plays"
+  },
+  {
+   "ingredient": "death-hopper-bile",
+   "habitat": "water-fresh",
+   "cite": "story/lore/topics/ingredients-alchemy.md#The slice ingredients (68)"
+  },
+  {
+   "ingredient": "marshweed",
+   "habitat": "marsh",
+   "cite": "story/lore/topics/fauna-hazards.md#Flora"
+  },
+  {
+   "ingredient": "jelly-feeler",
+   "habitat": "water-fresh",
+   "cite": "story/lore/topics/ingredients-alchemy.md#The slice ingredients (68)"
+  },
+  {
+   "ingredient": "river-betty",
+   "habitat": "water-fresh",
+   "cite": "story/lore/topics/ingredients-alchemy.md#The slice ingredients (68)"
+  },
+  {
+   "ingredient": "torchbug-thorax",
+   "habitat": "marsh",
+   "cite": "story/lore/topics/ingredients-alchemy.md#The slice ingredients (68)"
+  }
+ ],
+ "hostile_npcs": [
+  {
+   "group": "smugglers using the back-water routes",
+   "support": "newworld/story/data/db/region.jsonl#nushara-bayou (summary: its back-water routes carry ...)"
+  },
+  {
+   "group": "Naga-Kur raiders",
+   "support": "none"
+  }
+ ]
+}

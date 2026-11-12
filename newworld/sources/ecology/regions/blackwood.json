@@ -1,0 +1,262 @@
+{
+ "region": "blackwood",
+ "creatures": [
+  {
+   "kind": "death-hopper",
+   "size_class": "predator",
+   "hostility": "hostile",
+   "habitat": "water-fresh",
+   "time": "any",
+   "group": [
+    2,
+    5
+   ],
+   "signature": true,
+   "asset": "none",
+   "cite": "story/lore/topics/fauna-hazards.md#Everyday hazards"
+  },
+  {
+   "kind": "giant-spider",
+   "size_class": "predator",
+   "hostility": "hostile",
+   "habitat": "canopy",
+   "time": "any",
+   "group": [
+    1,
+    2
+   ],
+   "signature": true,
+   "asset": "bmv",
+   "extrapolation": "region notes list giant spiders for Blackwood and the Arnesian Jungle",
+   "cite": "newworld/story/data/db/region_note.jsonl#blackwood/dangers"
+  },
+  {
+   "kind": "bog-dog",
+   "size_class": "predator",
+   "hostility": "hostile",
+   "habitat": "bush",
+   "time": "any",
+   "group": [
+    3,
+    5
+   ],
+   "signature": false,
+   "asset": "bmv",
+   "cite": "story/lore/topics/ecology-encounters-loot.md#Creature notes that change how a fight plays"
+  },
+  {
+   "kind": "hackwing",
+   "size_class": "predator",
+   "hostility": "hostile",
+   "habitat": "open",
+   "time": "day",
+   "group": [
+    2,
+    5
+   ],
+   "signature": false,
+   "asset": "bmv",
+   "cite": "story/lore/topics/fauna-hazards.md#Everyday hazards ; newworld/story/data/db/region_note.jsonl#blackwood/dangers"
+  },
+  {
+   "kind": "crow",
+   "size_class": "small",
+   "hostility": "benign",
+   "habitat": "open",
+   "time": "day",
+   "group": [
+    2,
+    6
+   ],
+   "signature": false,
+   "asset": "vanilla",
+   "cite": "story/lore/topics/ecology-encounters-loot.md#4. Loot provenance"
+  },
+  {
+   "kind": "giant-snake",
+   "size_class": "predator",
+   "hostility": "hostile",
+   "habitat": "marsh",
+   "time": "any",
+   "group": [
+    1,
+    2
+   ],
+   "signature": false,
+   "asset": "bmv",
+   "cite": "story/lore/topics/fauna-hazards.md#Apex and set-piece creatures"
+  },
+  {
+   "kind": "marsh-giant",
+   "size_class": "giant",
+   "hostility": "defensive",
+   "habitat": "bush",
+   "time": "any",
+   "group": [
+    1,
+    1
+   ],
+   "signature": true,
+   "asset": "bmv",
+   "cite": "story/lore/topics/fauna-hazards.md#Apex and set-piece creatures"
+  },
+  {
+   "kind": "bog-blight",
+   "size_class": "predator",
+   "hostility": "hostile",
+   "habitat": "marsh",
+   "time": "night",
+   "group": [
+    2,
+    5
+   ],
+   "signature": true,
+   "asset": "vanilla",
+   "cite": "story/lore/topics/fauna-hazards.md#Apex and set-piece creatures"
+  },
+  {
+   "kind": "kotu-gava",
+   "size_class": "insect",
+   "hostility": "hostile",
+   "habitat": "marsh",
+   "time": "any",
+   "group": [
+    2,
+    6
+   ],
+   "signature": false,
+   "asset": "none",
+   "cite": "story/lore/topics/fauna-hazards.md#Everyday hazards"
+  },
+  {
+   "kind": "giant-wasp",
+   "size_class": "insect",
+   "hostility": "hostile",
+   "habitat": "canopy",
+   "time": "day",
+   "group": [
+    1,
+    3
+   ],
+   "signature": false,
+   "asset": "bmv",
+   "cite": "story/lore/topics/fauna-hazards.md#Everyday hazards"
+  },
+  {
+   "kind": "marsh-rat",
+   "size_class": "small",
+   "hostility": "defensive",
+   "habitat": "bush",
+   "time": "night",
+   "group": [
+    2,
+    5
+   ],
+   "signature": false,
+   "asset": "vanilla",
+   "cite": "story/lore/topics/fauna-hazards.md#Everyday hazards"
+  },
+  {
+   "kind": "torchbug",
+   "size_class": "insect",
+   "hostility": "benign",
+   "habitat": "marsh",
+   "time": "night",
+   "group": [
+    3,
+    10
+   ],
+   "signature": false,
+   "asset": "vanilla",
+   "cite": "story/lore/topics/fauna-hazards.md#Flora"
+  },
+  {
+   "kind": "crocodile",
+   "size_class": "predator",
+   "hostility": "hostile",
+   "habitat": "water-fresh",
+   "time": "any",
+   "group": [
+    1,
+    3
+   ],
+   "signature": false,
+   "asset": "bmv",
+   "cite": "story/lore/topics/fauna-hazards.md#Apex and set-piece creatures ; newworld/story/data/db/region_note.jsonl#blackwood/ecology"
+  },
+  {
+   "kind": "hist-frog",
+   "size_class": "small",
+   "hostility": "benign",
+   "habitat": "marsh",
+   "time": "night",
+   "group": [
+    2,
+    6
+   ],
+   "signature": false,
+   "asset": "vanilla",
+   "cite": "story/lore/topics/fauna-hazards.md#Domesticated and useful animals"
+  },
+  {
+   "kind": "marsh-deer",
+   "size_class": "game",
+   "hostility": "benign",
+   "habitat": "bush",
+   "time": "day",
+   "group": [
+    1,
+    4
+   ],
+   "signature": false,
+   "asset": "bmv",
+   "extrapolation": "Black Marsh mod lists deer; a browser of dry rises"
+  }
+ ],
+ "harvestables": [
+  {
+   "ingredient": "death-hopper-bile",
+   "habitat": "water-fresh",
+   "cite": "story/lore/topics/ingredients-alchemy.md#The slice ingredients (68)"
+  },
+  {
+   "ingredient": "bog-dog-dung",
+   "habitat": "bush",
+   "cite": "story/lore/topics/ingredients-alchemy.md#The slice ingredients (68)"
+  },
+  {
+   "ingredient": "hackwing-plume",
+   "habitat": "open",
+   "cite": "story/lore/topics/ingredients-alchemy.md#The slice ingredients (68)"
+  },
+  {
+   "ingredient": "crow-feather",
+   "habitat": "open",
+   "cite": "story/lore/topics/ingredients-alchemy.md#The slice ingredients (68)"
+  },
+  {
+   "ingredient": "marsh-giant-blood",
+   "habitat": "bush",
+   "cite": "story/lore/topics/ingredients-alchemy.md#The slice ingredients (68)"
+  },
+  {
+   "ingredient": "wasp-sting",
+   "habitat": "canopy",
+   "cite": "story/lore/topics/ingredients-alchemy.md#The slice ingredients (68)"
+  }
+ ],
+ "hostile_npcs": [
+  {
+   "group": "Sul-Xan raiders",
+   "support": "story/lore/topics/ecology-encounters-loot.md#3. Fixed populations, not spawns"
+  },
+  {
+   "group": "Lut-Eileel warbands",
+   "support": "story/lore/topics/ecology-encounters-loot.md#3. Fixed populations, not spawns"
+  },
+  {
+   "group": "Hutan-Tzel outposts hostile to trespass",
+   "support": "newworld/story/data/db/region_note.jsonl#blackwood/present"
+  }
+ ]
+}

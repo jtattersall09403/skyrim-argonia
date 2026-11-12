@@ -1,0 +1,259 @@
+{
+ "region": "hatandros-bight",
+ "creatures": [
+  {
+   "kind": "mudskipper",
+   "size_class": "small",
+   "hostility": "benign",
+   "habitat": "shore",
+   "time": "day",
+   "group": [
+    3,
+    8
+   ],
+   "signature": true,
+   "asset": "vanilla",
+   "extrapolation": "tide-flat fish that walks the mud; mangrove ecology"
+  },
+  {
+   "kind": "mudcrab",
+   "size_class": "small",
+   "hostility": "defensive",
+   "habitat": "shore",
+   "time": "any",
+   "group": [
+    1,
+    3
+   ],
+   "signature": true,
+   "asset": "vanilla",
+   "extrapolation": "region notes list mudcrabs on banks and coasts; vanilla Skyrim and Morrowind kind",
+   "cite": "newworld/story/data/db/region_note.jsonl#hatandros-bight/dangers"
+  },
+  {
+   "kind": "sea-gull",
+   "size_class": "small",
+   "hostility": "benign",
+   "habitat": "shore",
+   "time": "day",
+   "group": [
+    3,
+    10
+   ],
+   "signature": false,
+   "asset": "tropical-skyrim",
+   "extrapolation": "shore and sea birds; Tropical Skyrim and vanilla bird sets"
+  },
+  {
+   "kind": "alit",
+   "size_class": "game",
+   "hostility": "hostile",
+   "habitat": "open",
+   "time": "day",
+   "group": [
+    1,
+    3
+   ],
+   "signature": true,
+   "asset": "vanilla",
+   "cite": "story/lore/topics/ecology-encounters-loot.md#2. Regional encounter composition"
+  },
+  {
+   "kind": "kagouti",
+   "size_class": "game",
+   "hostility": "defensive",
+   "habitat": "open",
+   "time": "day",
+   "group": [
+    1,
+    3
+   ],
+   "signature": true,
+   "asset": "vanilla",
+   "cite": "story/lore/topics/ecology-encounters-loot.md#2. Regional encounter composition"
+  },
+  {
+   "kind": "guar",
+   "size_class": "game",
+   "hostility": "benign",
+   "habitat": "open",
+   "time": "day",
+   "group": [
+    2,
+    5
+   ],
+   "signature": false,
+   "asset": "bmv",
+   "cite": "story/lore/topics/fauna-hazards.md#Domesticated and useful animals"
+  },
+  {
+   "kind": "giant-snake",
+   "size_class": "predator",
+   "hostility": "hostile",
+   "habitat": "marsh",
+   "time": "any",
+   "group": [
+    1,
+    2
+   ],
+   "signature": false,
+   "asset": "bmv",
+   "cite": "story/lore/topics/fauna-hazards.md#Apex and set-piece creatures ; newworld/story/data/db/region_note.jsonl#hatandros-bight/dangers"
+  },
+  {
+   "kind": "hackwing",
+   "size_class": "predator",
+   "hostility": "hostile",
+   "habitat": "open",
+   "time": "day",
+   "group": [
+    2,
+    5
+   ],
+   "signature": false,
+   "asset": "bmv",
+   "cite": "story/lore/topics/fauna-hazards.md#Everyday hazards ; newworld/story/data/db/region_note.jsonl#hatandros-bight/ecology"
+  },
+  {
+   "kind": "burglar-crab",
+   "size_class": "small",
+   "hostility": "defensive",
+   "habitat": "shore",
+   "time": "any",
+   "group": [
+    1,
+    4
+   ],
+   "signature": false,
+   "asset": "bmv",
+   "extrapolation": "mud-bank crab from the earlier creature list",
+   "cite": "newworld/story/data/db/region_note.jsonl#hatandros-bight/dangers"
+  },
+  {
+   "kind": "salt-midge",
+   "size_class": "insect",
+   "hostility": "defensive",
+   "habitat": "shore",
+   "time": "day",
+   "group": [
+    8,
+    20
+   ],
+   "signature": false,
+   "asset": "effect-only",
+   "extrapolation": "tide-flat biting midges, the salt-water cousin of the fleshfly baseline"
+  },
+  {
+   "kind": "restless-dead",
+   "size_class": "predator",
+   "hostility": "hostile",
+   "habitat": "rock",
+   "time": "night",
+   "group": [
+    1,
+    3
+   ],
+   "signature": false,
+   "asset": "vanilla",
+   "extrapolation": "ruin ghosts and undead named in region dangers of the Velothi ruin country"
+  },
+  {
+   "kind": "crocodile",
+   "size_class": "predator",
+   "hostility": "hostile",
+   "habitat": "water-fresh",
+   "time": "any",
+   "group": [
+    1,
+    3
+   ],
+   "signature": false,
+   "asset": "bmv",
+   "cite": "story/lore/topics/fauna-hazards.md#Apex and set-piece creatures ; newworld/story/data/db/region_note.jsonl#hatandros-bight/ecology"
+  },
+  {
+   "kind": "dragonfly",
+   "size_class": "insect",
+   "hostility": "benign",
+   "habitat": "water-fresh",
+   "time": "day",
+   "group": [
+    2,
+    8
+   ],
+   "signature": false,
+   "asset": "vanilla",
+   "extrapolation": "a harmless water-edge insect that makes the still water read as alive; nothing in the lore forbids it"
+  },
+  {
+   "kind": "sea-lion",
+   "size_class": "game",
+   "hostility": "benign",
+   "habitat": "shore",
+   "time": "day",
+   "group": [
+    2,
+    6
+   ],
+   "signature": false,
+   "asset": "vanilla",
+   "extrapolation": "shore-resting seals for cold open coast; extrapolated"
+  },
+  {
+   "kind": "king-crab",
+   "size_class": "giant",
+   "hostility": "hostile",
+   "habitat": "shore",
+   "time": "any",
+   "group": [
+    1,
+    1
+   ],
+   "signature": false,
+   "asset": "bmv",
+   "extrapolation": "wreck- and spire-haunting crab of mud flats; the mod stone-crab at giant scale"
+  }
+ ],
+ "harvestables": [
+  {
+   "ingredient": "mudcrab-chitin",
+   "habitat": "shore",
+   "cite": "story/lore/topics/ingredients-alchemy.md#The slice ingredients (68)"
+  },
+  {
+   "ingredient": "river-salt",
+   "habitat": "shore",
+   "cite": "story/lore/topics/ingredients-alchemy.md#The slice ingredients (68)"
+  },
+  {
+   "ingredient": "orange-dartwing",
+   "habitat": "open",
+   "cite": "story/lore/topics/ingredients-alchemy.md#The slice ingredients (68)"
+  },
+  {
+   "ingredient": "lavender",
+   "habitat": "open",
+   "cite": "story/lore/topics/ingredients-alchemy.md#The slice ingredients (68)"
+  },
+  {
+   "ingredient": "moon-sugar",
+   "habitat": "open",
+   "extrapolation": "Morrowind trade good; Thorn and Seafalls handle it"
+  },
+  {
+   "ingredient": "thistle-branch",
+   "habitat": "open",
+   "cite": "story/lore/topics/ingredients-alchemy.md#The slice ingredients (68)"
+  }
+ ],
+ "hostile_npcs": [
+  {
+   "group": "smugglers at landings",
+   "support": "newworld/story/data/db/region_note.jsonl#hatandros-bight/dangers"
+  },
+  {
+   "group": "Sarpa raiders on the inland margin",
+   "support": "newworld/story/data/db/region_note.jsonl#hatandros-bight/dangers"
+  }
+ ]
+}

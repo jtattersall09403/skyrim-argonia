@@ -1,0 +1,203 @@
+{
+ "source": "Skyrim.esm (Update.esm overrides not applied), Tamriel exterior cells with LAND",
+ "cells": {
+  "tamriel_exterior_cells": 11186,
+  "with_land": 11186,
+  "by_class": {
+   "shore": 820,
+   "forest": 2162,
+   "open": 1773,
+   "water": 3097,
+   "mountain": 3334
+  },
+  "method": "classes as in the module docstring: water (>50% vertices under water), shore (some), mountain (mean ground > 4000 units, dry), forest (>=10 TREE refs), open (rest)"
+ },
+ "creature_density": {
+  "creature_refs": 2853,
+  "refs_by_class": {
+   "forest": 1297,
+   "mountain": 464,
+   "shore": 632,
+   "open": 213,
+   "water": 247
+  },
+  "refs_per_100_cells_by_class": {
+   "shore": 77.07,
+   "forest": 59.99,
+   "open": 12.01,
+   "water": 7.98,
+   "mountain": 13.92
+  },
+  "refs_per_100_cells_all": 25.51,
+  "occupied_cells_by_class": {
+   "mountain": 293,
+   "forest": 814,
+   "shore": 348,
+   "open": 139,
+   "water": 139
+  },
+  "levelled_share": 0.696,
+  "levelled_share_by_class": {
+   "forest": 0.749,
+   "mountain": 0.659,
+   "shore": 0.699,
+   "open": 0.7,
+   "water": 0.478
+  },
+  "group_size_distribution": {
+   "groups": 1834,
+   "by_size": {
+    "1": 1168,
+    "2": 423,
+    "3": 183,
+    "4": 34,
+    "5": 14,
+    "6": 7,
+    "7": 3,
+    "9": 1,
+    "12": 1
+   },
+   "mean": 1.56,
+   "share_of_groups_size_1": 0.637,
+   "share_of_groups_size_2_to_3": 0.33,
+   "share_of_groups_size_4_plus": 0.033
+  },
+  "hostile_share": 0.38,
+  "hostile_share_by_class": {
+   "forest": 0.342,
+   "mountain": 0.336,
+   "shore": 0.386,
+   "open": 0.423,
+   "water": 0.611
+  },
+  "races_top": {
+   "FoxRace": 630,
+   "BearBlackRace": 380,
+   "GoatRace": 271,
+   "ElkRace": 249,
+   "MudcrabRace": 228,
+   "WolfRace": 209,
+   "SabreCatRace": 123,
+   "HorkerRace": 123,
+   "SlaughterfishRace": 95,
+   "ChickenRace": 94,
+   "HorseRace": 69,
+   "TrollFrostRace": 51,
+   "DragonRace": 49,
+   "DeerRace": 46,
+   "GiantRace": 33,
+   "MammothRace": 23,
+   "WitchlightRace": 21,
+   "ChaurusReaperRace": 21,
+   "HareRace": 17,
+   "SkeeverRace": 17,
+   "CowRace": 14,
+   "CartHorseRace": 13,
+   "HagravenRace": 12,
+   "SprigganRace": 11,
+   "IceWraithRace": 11
+  },
+  "nearest_door_m_p10_50_90": [
+   37.39,
+   112.73,
+   199.28
+  ],
+  "within_60m_of_a_door": 0.178,
+  "nearest_named_cell_m_p10_50_90": [
+   17.9,
+   57.55,
+   109.58
+  ],
+  "within_200m_of_a_named_cell": 0.989,
+  "method": "ACHR in Tamriel whose base NPC_ (or every NPC_ an LVLN base or templated list can resolve to) has a race editor-ID with none of the humanoid words (Nord, Imperial, ..., Draugr, Skeleton, Falmer, Dremora, Vampire, Afflicted, Snow, Manakin, Default, Naga, Human, Elf); cell from the ref's position; per 100 cells = refs / cells of that class * 100; levelled = base is an LVLN or an NPC_ templated to one; group = connected refs each within 1500 units of another (single-link, all classes); hostile = any resolved NPC_ with AIDT aggression >= 1 (race and faction names are not read, aggression is the engine's own flag); distance = ref to nearest door/cave mouth (REFR with XTEL) and to the centre of the nearest named exterior cell (cell editor-ID); Skyrim has no road records (its roads are painted), so road distance is not measured here (see tools.newworld.roads for the new world's own roads)"
+ },
+ "harvestable_density": {
+  "harvestable_refs": 17307,
+  "flor_refs": 4395,
+  "tree_refs": 12912,
+  "distinct_ingredient_kinds_total": 49,
+  "refs_per_cell_by_class": {
+   "shore": 4.604,
+   "forest": 3.862,
+   "open": 0.125,
+   "water": 0.755,
+   "mountain": 0.787
+  },
+  "refs_per_100_cells_by_class": {
+   "shore": 460.37,
+   "forest": 386.22,
+   "open": 12.52,
+   "water": 75.46,
+   "mountain": 78.67
+  },
+  "refs_per_100_cells_near_water_shore_or_water": 156.0,
+  "refs_per_100_cells_forest": 386.2,
+  "refs_per_100_cells_open": 12.5,
+  "distinct_kinds_per_cell_p10_50_90_by_class": {
+   "shore": [
+    0.0,
+    2.0,
+    4.0
+   ],
+   "forest": [
+    0.0,
+    1.0,
+    4.0
+   ],
+   "open": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "water": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "mountain": [
+    0.0,
+    0.0,
+    2.0
+   ]
+  },
+  "distinct_kinds_per_cell_mean_by_class": {
+   "shore": 2.021,
+   "forest": 1.676,
+   "open": 0.085,
+   "water": 0.32,
+   "mountain": 0.44
+  },
+  "method": "REFR in Tamriel whose base is a FLOR or TREE record with a PFIG (the ingredient it yields); cell from the ref's position; a kind is a distinct PFIG form; per-cell figures divide by all cells of the class including cells with none; near water = water plus shore classes"
+ },
+ "encounter_zones": {
+  "eczn_records": 278,
+  "min_level_min_max": [
+   1,
+   24
+  ],
+  "max_level_min_max": [
+   0,
+   30
+  ],
+  "max_level_zero_share": 0.982,
+  "min_level_counts_top": {
+   "6": 129,
+   "8": 38,
+   "2": 36,
+   "14": 19,
+   "18": 15,
+   "12": 12,
+   "24": 9,
+   "5": 7,
+   "16": 6,
+   "10": 5,
+   "1": 2
+  },
+  "never_resets": 61,
+  "match_pc_below_min": 1,
+  "tamriel_exterior_cells_with_zone": 4,
+  "share_of_tamriel_exterior_cells_with_zone": 0.0,
+  "creature_refs_with_zone_ref": 14,
+  "method": "ECZN DATA (location, rank, min level, flags, max level; max 0 = no cap); cells counted when the Tamriel exterior CELL record carries XEZN; per-ref XEZN on creature ACHR counted apart (most creature refs inherit the cell's or location's zone)"
+ }
+}

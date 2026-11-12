@@ -1,0 +1,220 @@
+{
+ "region": "aphon-isle",
+ "creatures": [
+  {
+   "kind": "sea-gull",
+   "size_class": "small",
+   "hostility": "benign",
+   "habitat": "shore",
+   "time": "day",
+   "group": [
+    3,
+    10
+   ],
+   "signature": false,
+   "asset": "tropical-skyrim",
+   "extrapolation": "shore and sea birds; Tropical Skyrim and vanilla bird sets"
+  },
+  {
+   "kind": "tern",
+   "size_class": "small",
+   "hostility": "benign",
+   "habitat": "water-salt",
+   "time": "day",
+   "group": [
+    3,
+    8
+   ],
+   "signature": false,
+   "asset": "tropical-skyrim",
+   "extrapolation": "open-sea bird; extrapolated for sea regions"
+  },
+  {
+   "kind": "hermit-crab",
+   "size_class": "small",
+   "hostility": "benign",
+   "habitat": "shore",
+   "time": "day",
+   "group": [
+    2,
+    6
+   ],
+   "signature": true,
+   "asset": "vanilla",
+   "extrapolation": "shell-bearing crab of tide lines; benign scenery"
+  },
+  {
+   "kind": "mudcrab",
+   "size_class": "small",
+   "hostility": "defensive",
+   "habitat": "shore",
+   "time": "any",
+   "group": [
+    1,
+    3
+   ],
+   "signature": false,
+   "asset": "vanilla",
+   "extrapolation": "region notes list mudcrabs on banks and coasts; vanilla Skyrim and Morrowind kind"
+  },
+  {
+   "kind": "reef-slaughterfish",
+   "size_class": "small",
+   "hostility": "hostile",
+   "habitat": "water-salt",
+   "time": "any",
+   "group": [
+    3,
+    6
+   ],
+   "signature": false,
+   "asset": "vanilla",
+   "extrapolation": "slaughterfish are a coast kind in the regional table; the sea form schools on reefs"
+  },
+  {
+   "kind": "sea-lion",
+   "size_class": "game",
+   "hostility": "benign",
+   "habitat": "shore",
+   "time": "day",
+   "group": [
+    2,
+    6
+   ],
+   "signature": true,
+   "asset": "vanilla",
+   "extrapolation": "shore-resting seals for cold open coast; extrapolated"
+  },
+  {
+   "kind": "shark",
+   "size_class": "predator",
+   "hostility": "hostile",
+   "habitat": "water-salt",
+   "time": "any",
+   "group": [
+    1,
+    3
+   ],
+   "signature": false,
+   "asset": "bmv",
+   "extrapolation": "Black Marsh mod ships sharks; coast fauna of any warm sea"
+  },
+  {
+   "kind": "salt-midge",
+   "size_class": "insect",
+   "hostility": "defensive",
+   "habitat": "shore",
+   "time": "day",
+   "group": [
+    8,
+    20
+   ],
+   "signature": false,
+   "asset": "effect-only",
+   "extrapolation": "tide-flat biting midges, the salt-water cousin of the fleshfly baseline"
+  },
+  {
+   "kind": "sea-skater",
+   "size_class": "insect",
+   "hostility": "benign",
+   "habitat": "water-salt",
+   "time": "day",
+   "group": [
+    4,
+    12
+   ],
+   "signature": false,
+   "asset": "vanilla",
+   "extrapolation": "water-striders on calm sea surface; a harmless insect for sea regions"
+  },
+  {
+   "kind": "lurker-shark",
+   "size_class": "predator",
+   "hostility": "hostile",
+   "habitat": "water-salt",
+   "time": "any",
+   "group": [
+    1,
+    2
+   ],
+   "signature": true,
+   "asset": "bmv",
+   "extrapolation": "Black Marsh mod lurker shark, a deep-water ambusher"
+  },
+  {
+   "kind": "dreugh",
+   "size_class": "predator",
+   "hostility": "hostile",
+   "habitat": "shore",
+   "time": "night",
+   "group": [
+    1,
+    2
+   ],
+   "signature": true,
+   "asset": "bmv",
+   "cite": "story/lore/topics/ecology-encounters-loot.md#2. Regional encounter composition"
+  },
+  {
+   "kind": "stinging-jelly",
+   "size_class": "small",
+   "hostility": "hostile",
+   "habitat": "water-salt",
+   "time": "any",
+   "group": [
+    2,
+    6
+   ],
+   "signature": false,
+   "asset": "vanilla",
+   "extrapolation": "sea jellyfish of warm shelf water; extrapolated hazard"
+  },
+  {
+   "kind": "king-crab",
+   "size_class": "giant",
+   "hostility": "hostile",
+   "habitat": "shore",
+   "time": "any",
+   "group": [
+    1,
+    1
+   ],
+   "signature": false,
+   "asset": "bmv",
+   "extrapolation": "wreck- and spire-haunting crab of mud flats; the mod stone-crab at giant scale"
+  }
+ ],
+ "harvestables": [
+  {
+   "ingredient": "small-pearl",
+   "habitat": "water-salt",
+   "cite": "story/lore/topics/ingredients-alchemy.md#The slice ingredients (68)"
+  },
+  {
+   "ingredient": "river-salt",
+   "habitat": "shore",
+   "cite": "story/lore/topics/ingredients-alchemy.md#The slice ingredients (68)"
+  },
+  {
+   "ingredient": "frost-salts",
+   "habitat": "water-salt",
+   "extrapolation": "cold-water salts washed up on exposed coasts"
+  },
+  {
+   "ingredient": "mudcrab-chitin",
+   "habitat": "shore",
+   "cite": "story/lore/topics/ingredients-alchemy.md#The slice ingredients (68)"
+  },
+  {
+   "ingredient": "dreugh-wax",
+   "habitat": "shore",
+   "cite": "story/lore/topics/ingredients-alchemy.md#The slice ingredients (68)"
+  }
+ ],
+ "hostile_npcs": [
+  {
+   "group": "smugglers working the cave",
+   "support": "newworld/story/data/db/region_note.jsonl#aphon-isle (summary: smugglers' cave); story/lore/topics/ecology-encounters-loot.md#3. Fixed populations, not spawns"
+  }
+ ]
+}

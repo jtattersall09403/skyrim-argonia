@@ -1,0 +1,257 @@
+{
+ "region": "aunike-ridge",
+ "creatures": [
+  {
+   "kind": "mountain-goat",
+   "size_class": "game",
+   "hostility": "defensive",
+   "habitat": "rock",
+   "time": "day",
+   "group": [
+    2,
+    5
+   ],
+   "signature": true,
+   "asset": "vanilla",
+   "extrapolation": "cliff-edge goat of mesa and ridge; vanilla"
+  },
+  {
+   "kind": "cave-bat",
+   "size_class": "small",
+   "hostility": "benign",
+   "habitat": "rock",
+   "time": "night",
+   "group": [
+    3,
+    8
+   ],
+   "signature": true,
+   "asset": "vanilla",
+   "extrapolation": "bats of mesa and ridge caves; vanilla critter"
+  },
+  {
+   "kind": "spitting-lizard",
+   "size_class": "small",
+   "hostility": "defensive",
+   "habitat": "rock",
+   "time": "day",
+   "group": [
+    1,
+    3
+   ],
+   "signature": false,
+   "asset": "vanilla",
+   "extrapolation": "small dry-ground lizard; the mesa and ridge are Argonian homeland"
+  },
+  {
+   "kind": "fire-beetle",
+   "size_class": "insect",
+   "hostility": "defensive",
+   "habitat": "rock",
+   "time": "night",
+   "group": [
+    2,
+    5
+   ],
+   "signature": false,
+   "asset": "vanilla",
+   "extrapolation": "burn-scar and peat-fire ground (burning ground hazard) draws heat-loving beetles"
+  },
+  {
+   "kind": "giant-snake",
+   "size_class": "predator",
+   "hostility": "hostile",
+   "habitat": "marsh",
+   "time": "any",
+   "group": [
+    1,
+    2
+   ],
+   "signature": true,
+   "asset": "bmv",
+   "cite": "story/lore/topics/fauna-hazards.md#Apex and set-piece creatures ; newworld/story/data/db/region_note.jsonl#aunike-ridge/dangers"
+  },
+  {
+   "kind": "hackwing",
+   "size_class": "predator",
+   "hostility": "hostile",
+   "habitat": "open",
+   "time": "day",
+   "group": [
+    2,
+    5
+   ],
+   "signature": false,
+   "asset": "bmv",
+   "cite": "story/lore/topics/fauna-hazards.md#Everyday hazards"
+  },
+  {
+   "kind": "bog-dog",
+   "size_class": "predator",
+   "hostility": "hostile",
+   "habitat": "bush",
+   "time": "any",
+   "group": [
+    3,
+    5
+   ],
+   "signature": false,
+   "asset": "bmv",
+   "cite": "story/lore/topics/ecology-encounters-loot.md#Creature notes that change how a fight plays"
+  },
+  {
+   "kind": "red-wolf",
+   "size_class": "predator",
+   "hostility": "hostile",
+   "habitat": "open",
+   "time": "night",
+   "group": [
+    2,
+    4
+   ],
+   "signature": true,
+   "asset": "bmv",
+   "extrapolation": "Black Marsh mod 2 ships red wolf for open drier ground"
+  },
+  {
+   "kind": "alit",
+   "size_class": "game",
+   "hostility": "hostile",
+   "habitat": "open",
+   "time": "day",
+   "group": [
+    1,
+    3
+   ],
+   "signature": false,
+   "asset": "vanilla",
+   "cite": "story/lore/topics/ecology-encounters-loot.md#2. Regional encounter composition"
+  },
+  {
+   "kind": "netch",
+   "size_class": "game",
+   "hostility": "benign",
+   "habitat": "open",
+   "time": "day",
+   "group": [
+    1,
+    2
+   ],
+   "signature": false,
+   "asset": "vanilla",
+   "extrapolation": "Morrowind kind named for the Morrowind border and Velothi ruin country"
+  },
+  {
+   "kind": "kagouti",
+   "size_class": "game",
+   "hostility": "defensive",
+   "habitat": "open",
+   "time": "day",
+   "group": [
+    1,
+    3
+   ],
+   "signature": false,
+   "asset": "vanilla",
+   "cite": "story/lore/topics/ecology-encounters-loot.md#2. Regional encounter composition"
+  },
+  {
+   "kind": "giant-centipede",
+   "size_class": "insect",
+   "hostility": "hostile",
+   "habitat": "bush",
+   "time": "night",
+   "group": [
+    1,
+    2
+   ],
+   "signature": false,
+   "asset": "bmv",
+   "extrapolation": "a ground-dwelling arthropod of the wet leaf-litter; carried over from the earlier creature list"
+  },
+  {
+   "kind": "torchbug",
+   "size_class": "insect",
+   "hostility": "benign",
+   "habitat": "marsh",
+   "time": "night",
+   "group": [
+    3,
+    10
+   ],
+   "signature": false,
+   "asset": "vanilla",
+   "cite": "story/lore/topics/fauna-hazards.md#Flora"
+  },
+  {
+   "kind": "lamia",
+   "size_class": "predator",
+   "hostility": "hostile",
+   "habitat": "rock",
+   "time": "any",
+   "group": [
+    1,
+    3
+   ],
+   "signature": false,
+   "asset": "bmv",
+   "cite": "story/lore/topics/fauna-hazards.md#Apex and set-piece creatures"
+  },
+  {
+   "kind": "treant-grove-guardian",
+   "size_class": "giant",
+   "hostility": "defensive",
+   "habitat": "canopy",
+   "time": "any",
+   "group": [
+    1,
+    1
+   ],
+   "signature": false,
+   "asset": "bmv",
+   "extrapolation": "the mod forest guardian and tree mother, a plant-body guardian of high ground"
+  }
+ ],
+ "harvestables": [
+  {
+   "ingredient": "giant-lichen",
+   "habitat": "rock",
+   "cite": "story/lore/topics/ingredients-alchemy.md#The slice ingredients (68)"
+  },
+  {
+   "ingredient": "thistle-branch",
+   "habitat": "open",
+   "cite": "story/lore/topics/ingredients-alchemy.md#The slice ingredients (68)"
+  },
+  {
+   "ingredient": "rock-warbler-egg",
+   "habitat": "rock",
+   "cite": "story/lore/topics/ingredients-alchemy.md#The slice ingredients (68)"
+  },
+  {
+   "ingredient": "white-cap",
+   "habitat": "rock",
+   "cite": "story/lore/topics/ingredients-alchemy.md#The slice ingredients (68)"
+  },
+  {
+   "ingredient": "imp-stool",
+   "habitat": "rock",
+   "cite": "story/lore/topics/ingredients-alchemy.md#The slice ingredients (68)"
+  },
+  {
+   "ingredient": "lavender",
+   "habitat": "open",
+   "cite": "story/lore/topics/ingredients-alchemy.md#The slice ingredients (68)"
+  }
+ ],
+ "hostile_npcs": [
+  {
+   "group": "Naga raiders",
+   "support": "newworld/story/data/db/region_note.jsonl#aunike-ridge/dangers"
+  },
+  {
+   "group": "Paatru raiders",
+   "support": "newworld/story/data/db/region_note.jsonl#aunike-ridge/dangers"
+  }
+ ]
+}

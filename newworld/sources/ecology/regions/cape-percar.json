@@ -1,0 +1,252 @@
+{
+ "region": "cape-percar",
+ "creatures": [
+  {
+   "kind": "fire-beetle",
+   "size_class": "insect",
+   "hostility": "defensive",
+   "habitat": "rock",
+   "time": "night",
+   "group": [
+    2,
+    5
+   ],
+   "signature": true,
+   "asset": "vanilla",
+   "extrapolation": "burn-scar and peat-fire ground (burning ground hazard) draws heat-loving beetles"
+  },
+  {
+   "kind": "fire-drake",
+   "size_class": "predator",
+   "hostility": "hostile",
+   "habitat": "rock",
+   "time": "any",
+   "group": [
+    1,
+    1
+   ],
+   "signature": true,
+   "asset": "bmv",
+   "extrapolation": "Black Marsh mod lists dragling and forest drake lizards; fire-scarred ground suits a drake"
+  },
+  {
+   "kind": "hackwing",
+   "size_class": "predator",
+   "hostility": "hostile",
+   "habitat": "open",
+   "time": "day",
+   "group": [
+    2,
+    5
+   ],
+   "signature": false,
+   "asset": "bmv",
+   "cite": "story/lore/topics/fauna-hazards.md#Everyday hazards"
+  },
+  {
+   "kind": "mudcrab",
+   "size_class": "small",
+   "hostility": "defensive",
+   "habitat": "shore",
+   "time": "any",
+   "group": [
+    1,
+    3
+   ],
+   "signature": false,
+   "asset": "vanilla",
+   "extrapolation": "region notes list mudcrabs on banks and coasts; vanilla Skyrim and Morrowind kind"
+  },
+  {
+   "kind": "crow",
+   "size_class": "small",
+   "hostility": "benign",
+   "habitat": "open",
+   "time": "day",
+   "group": [
+    2,
+    6
+   ],
+   "signature": false,
+   "asset": "vanilla",
+   "cite": "story/lore/topics/ecology-encounters-loot.md#4. Loot provenance"
+  },
+  {
+   "kind": "marsh-rat",
+   "size_class": "small",
+   "hostility": "defensive",
+   "habitat": "bush",
+   "time": "night",
+   "group": [
+    2,
+    5
+   ],
+   "signature": false,
+   "asset": "vanilla",
+   "cite": "story/lore/topics/fauna-hazards.md#Everyday hazards"
+  },
+  {
+   "kind": "red-wolf",
+   "size_class": "predator",
+   "hostility": "hostile",
+   "habitat": "open",
+   "time": "night",
+   "group": [
+    2,
+    4
+   ],
+   "signature": true,
+   "asset": "bmv",
+   "extrapolation": "Black Marsh mod 2 ships red wolf for open drier ground"
+  },
+  {
+   "kind": "alit",
+   "size_class": "game",
+   "hostility": "hostile",
+   "habitat": "open",
+   "time": "day",
+   "group": [
+    1,
+    3
+   ],
+   "signature": false,
+   "asset": "vanilla",
+   "cite": "story/lore/topics/ecology-encounters-loot.md#2. Regional encounter composition"
+  },
+  {
+   "kind": "guar",
+   "size_class": "game",
+   "hostility": "benign",
+   "habitat": "open",
+   "time": "day",
+   "group": [
+    2,
+    5
+   ],
+   "signature": false,
+   "asset": "bmv",
+   "cite": "story/lore/topics/fauna-hazards.md#Domesticated and useful animals"
+  },
+  {
+   "kind": "giant-snake",
+   "size_class": "predator",
+   "hostility": "hostile",
+   "habitat": "marsh",
+   "time": "any",
+   "group": [
+    1,
+    2
+   ],
+   "signature": false,
+   "asset": "bmv",
+   "cite": "story/lore/topics/fauna-hazards.md#Apex and set-piece creatures"
+  },
+  {
+   "kind": "bog-dog",
+   "size_class": "predator",
+   "hostility": "hostile",
+   "habitat": "bush",
+   "time": "any",
+   "group": [
+    3,
+    5
+   ],
+   "signature": false,
+   "asset": "bmv",
+   "cite": "story/lore/topics/ecology-encounters-loot.md#Creature notes that change how a fight plays"
+  },
+  {
+   "kind": "giant-wasp",
+   "size_class": "insect",
+   "hostility": "hostile",
+   "habitat": "canopy",
+   "time": "day",
+   "group": [
+    1,
+    3
+   ],
+   "signature": false,
+   "asset": "bmv",
+   "cite": "story/lore/topics/fauna-hazards.md#Everyday hazards"
+  },
+  {
+   "kind": "burglar-crab",
+   "size_class": "small",
+   "hostility": "defensive",
+   "habitat": "shore",
+   "time": "any",
+   "group": [
+    1,
+    4
+   ],
+   "signature": true,
+   "asset": "bmv",
+   "extrapolation": "mud-bank crab from the earlier creature list"
+  },
+  {
+   "kind": "cave-bat",
+   "size_class": "small",
+   "hostility": "benign",
+   "habitat": "rock",
+   "time": "night",
+   "group": [
+    3,
+    8
+   ],
+   "signature": false,
+   "asset": "vanilla",
+   "extrapolation": "bats of mesa and ridge caves; vanilla critter"
+  },
+  {
+   "kind": "treant-grove-guardian",
+   "size_class": "giant",
+   "hostility": "defensive",
+   "habitat": "canopy",
+   "time": "any",
+   "group": [
+    1,
+    1
+   ],
+   "signature": false,
+   "asset": "bmv",
+   "extrapolation": "the mod forest guardian and tree mother, a plant-body guardian of high ground"
+  }
+ ],
+ "harvestables": [
+  {
+   "ingredient": "fire-salts",
+   "habitat": "rock",
+   "extrapolation": "burn-scar vents of the Great Burn leave salt crusts (EC fauna hazards)"
+  },
+  {
+   "ingredient": "crow-feather",
+   "habitat": "open",
+   "cite": "story/lore/topics/ingredients-alchemy.md#The slice ingredients (68)"
+  },
+  {
+   "ingredient": "troll-fat",
+   "habitat": "bush",
+   "cite": "story/lore/topics/ingredients-alchemy.md#The slice ingredients (68)"
+  },
+  {
+   "ingredient": "honeycomb",
+   "habitat": "canopy",
+   "cite": "story/lore/topics/ingredients-alchemy.md#The slice ingredients (68)"
+  },
+  {
+   "ingredient": "thistle-branch",
+   "habitat": "open",
+   "cite": "story/lore/topics/ingredients-alchemy.md#The slice ingredients (68)"
+  }
+ ],
+ "hostile_npcs": [
+  {
+   "group": "bandits in the burned mines and quarries",
+   "support": "extrapolation: the Great Burn emptied the mines (fauna-hazards Burning ground) and left a hiding place"
+  },
+  {
+   "group": "Imperial deserter bands from Soulrest",
+   "support": "extrapolation: Soulrest's mines were abandoned after the 3E 427 uprisings (fauna-hazards Minerals)"
+  }
+ ]
+}

@@ -1,0 +1,244 @@
+{
+ "region": "lake-ulaish",
+ "creatures": [
+  {
+   "kind": "river-otter",
+   "size_class": "small",
+   "hostility": "benign",
+   "habitat": "water-fresh",
+   "time": "day",
+   "group": [
+    1,
+    3
+   ],
+   "signature": true,
+   "asset": "vanilla",
+   "extrapolation": "a small river mammal for lake shores; extrapolated"
+  },
+  {
+   "kind": "reed-heron",
+   "size_class": "small",
+   "hostility": "benign",
+   "habitat": "water-fresh",
+   "time": "day",
+   "group": [
+    1,
+    2
+   ],
+   "signature": true,
+   "asset": "tropical-skyrim",
+   "extrapolation": "a still-water wader; extrapolated from the wading birds of region notes"
+  },
+  {
+   "kind": "osheeja-gar",
+   "size_class": "game",
+   "hostility": "defensive",
+   "habitat": "water-fresh",
+   "time": "any",
+   "group": [
+    2,
+    5
+   ],
+   "signature": true,
+   "asset": "vanilla",
+   "cite": "story/lore/topics/fauna-hazards.md#Domesticated and useful animals ; newworld/story/data/db/region_note.jsonl#lake-ulaish/people"
+  },
+  {
+   "kind": "slaughterfish",
+   "size_class": "small",
+   "hostility": "hostile",
+   "habitat": "water-fresh",
+   "time": "any",
+   "group": [
+    2,
+    5
+   ],
+   "signature": false,
+   "asset": "vanilla",
+   "cite": "story/lore/topics/ecology-encounters-loot.md#2. Regional encounter composition ; newworld/story/data/db/region_note.jsonl#lake-ulaish/dangers"
+  },
+  {
+   "kind": "crocodile",
+   "size_class": "predator",
+   "hostility": "hostile",
+   "habitat": "water-fresh",
+   "time": "any",
+   "group": [
+    1,
+    3
+   ],
+   "signature": false,
+   "asset": "bmv",
+   "cite": "story/lore/topics/fauna-hazards.md#Apex and set-piece creatures ; newworld/story/data/db/region_note.jsonl#lake-ulaish/ecology"
+  },
+  {
+   "kind": "haj-mota",
+   "size_class": "game",
+   "hostility": "defensive",
+   "habitat": "water-fresh",
+   "time": "any",
+   "group": [
+    1,
+    2
+   ],
+   "signature": true,
+   "asset": "bmv",
+   "cite": "story/lore/topics/fauna-hazards.md#Apex and set-piece creatures"
+  },
+  {
+   "kind": "giant-leech",
+   "size_class": "insect",
+   "hostility": "hostile",
+   "habitat": "water-fresh",
+   "time": "any",
+   "group": [
+    1,
+    4
+   ],
+   "signature": false,
+   "asset": "bmv",
+   "cite": "story/lore/topics/fauna-hazards.md#Everyday hazards"
+  },
+  {
+   "kind": "gnat-cloud",
+   "size_class": "insect",
+   "hostility": "defensive",
+   "habitat": "water-fresh",
+   "time": "night",
+   "group": [
+    6,
+    20
+   ],
+   "signature": false,
+   "asset": "effect-only",
+   "extrapolation": "a standing cloud over still water follows from the lore of insect load as the baseline hazard (EC P2)"
+  },
+  {
+   "kind": "dragonfly",
+   "size_class": "insect",
+   "hostility": "benign",
+   "habitat": "water-fresh",
+   "time": "day",
+   "group": [
+    2,
+    8
+   ],
+   "signature": false,
+   "asset": "vanilla",
+   "extrapolation": "a harmless water-edge insect that makes the still water read as alive; nothing in the lore forbids it"
+  },
+  {
+   "kind": "marsh-bird",
+   "size_class": "small",
+   "hostility": "benign",
+   "habitat": "marsh",
+   "time": "day",
+   "group": [
+    2,
+    6
+   ],
+   "signature": false,
+   "asset": "tropical-skyrim",
+   "extrapolation": "wading and reed birds fill every wet region note; unnamed in the lore",
+   "cite": "newworld/story/data/db/region_note.jsonl#lake-ulaish/ecology"
+  },
+  {
+   "kind": "hoarvor",
+   "size_class": "small",
+   "hostility": "hostile",
+   "habitat": "marsh",
+   "time": "any",
+   "group": [
+    1,
+    3
+   ],
+   "signature": false,
+   "asset": "bmv",
+   "cite": "story/lore/topics/fauna-hazards.md#Everyday hazards"
+  },
+  {
+   "kind": "wamasu",
+   "size_class": "giant",
+   "hostility": "hostile",
+   "habitat": "water-fresh",
+   "time": "any",
+   "group": [
+    1,
+    1
+   ],
+   "signature": false,
+   "asset": "bmv",
+   "cite": "story/lore/topics/fauna-hazards.md#Apex and set-piece creatures"
+  },
+  {
+   "kind": "death-hopper",
+   "size_class": "predator",
+   "hostility": "hostile",
+   "habitat": "water-fresh",
+   "time": "any",
+   "group": [
+    2,
+    5
+   ],
+   "signature": false,
+   "asset": "none",
+   "cite": "story/lore/topics/fauna-hazards.md#Everyday hazards"
+  },
+  {
+   "kind": "swamp-jelly",
+   "size_class": "small",
+   "hostility": "benign",
+   "habitat": "water-fresh",
+   "time": "day",
+   "group": [
+    1,
+    3
+   ],
+   "signature": false,
+   "asset": "none",
+   "cite": "story/lore/topics/ecology-encounters-loot.md#Creature notes that change how a fight plays"
+  }
+ ],
+ "harvestables": [
+  {
+   "ingredient": "osheeja-gar-flesh",
+   "habitat": "water-fresh",
+   "cite": "story/lore/topics/ingredients-alchemy.md#The slice ingredients (68)"
+  },
+  {
+   "ingredient": "nirnroot",
+   "habitat": "water-fresh",
+   "cite": "story/lore/topics/fauna-hazards.md#Flora"
+  },
+  {
+   "ingredient": "river-betty",
+   "habitat": "water-fresh",
+   "cite": "story/lore/topics/ingredients-alchemy.md#The slice ingredients (68)"
+  },
+  {
+   "ingredient": "giant-leech-blood",
+   "habitat": "water-fresh",
+   "cite": "story/lore/topics/ingredients-alchemy.md#The slice ingredients (68)"
+  },
+  {
+   "ingredient": "jelly-feeler",
+   "habitat": "water-fresh",
+   "cite": "story/lore/topics/ingredients-alchemy.md#The slice ingredients (68)"
+  },
+  {
+   "ingredient": "marshweed",
+   "habitat": "marsh",
+   "cite": "story/lore/topics/fauna-hazards.md#Flora"
+  }
+ ],
+ "hostile_npcs": [
+  {
+   "group": "toll-fort bandits on the shore roads",
+   "support": "extrapolation: the lake note names a toll fort, and EC section 3 says highwaymen follow merchant traffic"
+  },
+  {
+   "group": "Tribeless Naga highwaymen",
+   "support": "story/lore/topics/ecology-encounters-loot.md#3. Fixed populations, not spawns"
+  }
+ ]
+}

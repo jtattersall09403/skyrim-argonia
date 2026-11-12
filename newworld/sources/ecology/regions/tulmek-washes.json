@@ -1,0 +1,243 @@
+{
+ "region": "tulmek-washes",
+ "creatures": [
+  {
+   "kind": "slaughterfish",
+   "size_class": "small",
+   "hostility": "hostile",
+   "habitat": "water-fresh",
+   "time": "any",
+   "group": [
+    2,
+    5
+   ],
+   "signature": true,
+   "asset": "vanilla",
+   "cite": "story/lore/topics/ecology-encounters-loot.md#2. Regional encounter composition"
+  },
+  {
+   "kind": "crocodile",
+   "size_class": "predator",
+   "hostility": "hostile",
+   "habitat": "water-fresh",
+   "time": "any",
+   "group": [
+    1,
+    3
+   ],
+   "signature": true,
+   "asset": "bmv",
+   "cite": "story/lore/topics/fauna-hazards.md#Apex and set-piece creatures"
+  },
+  {
+   "kind": "osheeja-gar",
+   "size_class": "game",
+   "hostility": "defensive",
+   "habitat": "water-fresh",
+   "time": "any",
+   "group": [
+    2,
+    5
+   ],
+   "signature": false,
+   "asset": "vanilla",
+   "cite": "story/lore/topics/fauna-hazards.md#Domesticated and useful animals ; newworld/story/data/db/region_note.jsonl#tulmek-washes/dangers"
+  },
+  {
+   "kind": "death-hopper",
+   "size_class": "predator",
+   "hostility": "hostile",
+   "habitat": "water-fresh",
+   "time": "any",
+   "group": [
+    2,
+    5
+   ],
+   "signature": false,
+   "asset": "none",
+   "cite": "story/lore/topics/fauna-hazards.md#Everyday hazards"
+  },
+  {
+   "kind": "giant-leech",
+   "size_class": "insect",
+   "hostility": "hostile",
+   "habitat": "water-fresh",
+   "time": "any",
+   "group": [
+    1,
+    4
+   ],
+   "signature": false,
+   "asset": "bmv",
+   "cite": "story/lore/topics/fauna-hazards.md#Everyday hazards"
+  },
+  {
+   "kind": "gnat-cloud",
+   "size_class": "insect",
+   "hostility": "defensive",
+   "habitat": "water-fresh",
+   "time": "night",
+   "group": [
+    6,
+    20
+   ],
+   "signature": false,
+   "asset": "effect-only",
+   "extrapolation": "a standing cloud over still water follows from the lore of insect load as the baseline hazard (EC P2)"
+  },
+  {
+   "kind": "wamasu",
+   "size_class": "giant",
+   "hostility": "hostile",
+   "habitat": "water-fresh",
+   "time": "any",
+   "group": [
+    1,
+    1
+   ],
+   "signature": true,
+   "asset": "bmv",
+   "cite": "story/lore/topics/fauna-hazards.md#Apex and set-piece creatures"
+  },
+  {
+   "kind": "hist-frog",
+   "size_class": "small",
+   "hostility": "benign",
+   "habitat": "marsh",
+   "time": "night",
+   "group": [
+    2,
+    6
+   ],
+   "signature": false,
+   "asset": "vanilla",
+   "cite": "story/lore/topics/fauna-hazards.md#Domesticated and useful animals"
+  },
+  {
+   "kind": "marsh-bird",
+   "size_class": "small",
+   "hostility": "benign",
+   "habitat": "marsh",
+   "time": "day",
+   "group": [
+    2,
+    6
+   ],
+   "signature": false,
+   "asset": "tropical-skyrim",
+   "extrapolation": "wading and reed birds fill every wet region note; unnamed in the lore"
+  },
+  {
+   "kind": "mudcrab",
+   "size_class": "small",
+   "hostility": "defensive",
+   "habitat": "shore",
+   "time": "any",
+   "group": [
+    1,
+    3
+   ],
+   "signature": false,
+   "asset": "vanilla",
+   "extrapolation": "region notes list mudcrabs on banks and coasts; vanilla Skyrim and Morrowind kind"
+  },
+  {
+   "kind": "bog-blight",
+   "size_class": "predator",
+   "hostility": "hostile",
+   "habitat": "marsh",
+   "time": "night",
+   "group": [
+    2,
+    5
+   ],
+   "signature": false,
+   "asset": "vanilla",
+   "cite": "story/lore/topics/fauna-hazards.md#Apex and set-piece creatures"
+  },
+  {
+   "kind": "dragonfly",
+   "size_class": "insect",
+   "hostility": "benign",
+   "habitat": "water-fresh",
+   "time": "day",
+   "group": [
+    2,
+    8
+   ],
+   "signature": false,
+   "asset": "vanilla",
+   "extrapolation": "a harmless water-edge insect that makes the still water read as alive; nothing in the lore forbids it"
+  },
+  {
+   "kind": "kaj-thux",
+   "size_class": "giant",
+   "hostility": "hostile",
+   "habitat": "marsh",
+   "time": "any",
+   "group": [
+    1,
+    1
+   ],
+   "signature": true,
+   "asset": "bmv",
+   "cite": "story/lore/topics/fauna-hazards.md#Apex and set-piece creatures"
+  },
+  {
+   "kind": "swamp-jelly",
+   "size_class": "small",
+   "hostility": "benign",
+   "habitat": "water-fresh",
+   "time": "day",
+   "group": [
+    1,
+    3
+   ],
+   "signature": false,
+   "asset": "none",
+   "cite": "story/lore/topics/ecology-encounters-loot.md#Creature notes that change how a fight plays"
+  }
+ ],
+ "harvestables": [
+  {
+   "ingredient": "osheeja-gar-flesh",
+   "habitat": "water-fresh",
+   "cite": "story/lore/topics/ingredients-alchemy.md#The slice ingredients (68)"
+  },
+  {
+   "ingredient": "nirnroot",
+   "habitat": "water-fresh",
+   "cite": "story/lore/topics/fauna-hazards.md#Flora"
+  },
+  {
+   "ingredient": "river-betty",
+   "habitat": "water-fresh",
+   "cite": "story/lore/topics/ingredients-alchemy.md#The slice ingredients (68)"
+  },
+  {
+   "ingredient": "slaughterfish-egg",
+   "habitat": "water-fresh",
+   "cite": "story/lore/topics/ingredients-alchemy.md#The slice ingredients (68)"
+  },
+  {
+   "ingredient": "wamasu-organ",
+   "habitat": "water-fresh",
+   "cite": "story/lore/topics/ingredients-alchemy.md#The slice ingredients (68)"
+  },
+  {
+   "ingredient": "marshweed",
+   "habitat": "marsh",
+   "cite": "story/lore/topics/fauna-hazards.md#Flora"
+  }
+ ],
+ "hostile_npcs": [
+  {
+   "group": "bandits",
+   "support": "newworld/story/data/db/region_note.jsonl#tulmek-washes/dangers"
+  },
+  {
+   "group": "Blackguards' heirs from Blackrose Prison",
+   "support": "story/lore/topics/ecology-encounters-loot.md#3. Fixed populations, not spawns"
+  }
+ ]
+}

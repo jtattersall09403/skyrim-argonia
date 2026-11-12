@@ -1,0 +1,274 @@
+{
+ "region": "althii-archipelago",
+ "creatures": [
+  {
+   "kind": "mangrove-crab",
+   "size_class": "small",
+   "hostility": "defensive",
+   "habitat": "shore",
+   "time": "any",
+   "group": [
+    2,
+    5
+   ],
+   "signature": true,
+   "asset": "vanilla",
+   "extrapolation": "region note: mangrove coasts, paddy fauna and crabs",
+   "cite": "newworld/story/data/db/region_note.jsonl#althii-archipelago/ecology"
+  },
+  {
+   "kind": "mudcrab",
+   "size_class": "small",
+   "hostility": "defensive",
+   "habitat": "shore",
+   "time": "any",
+   "group": [
+    1,
+    3
+   ],
+   "signature": false,
+   "asset": "vanilla",
+   "extrapolation": "region notes list mudcrabs on banks and coasts; vanilla Skyrim and Morrowind kind"
+  },
+  {
+   "kind": "burglar-crab",
+   "size_class": "small",
+   "hostility": "defensive",
+   "habitat": "shore",
+   "time": "any",
+   "group": [
+    1,
+    4
+   ],
+   "signature": false,
+   "asset": "bmv",
+   "extrapolation": "mud-bank crab from the earlier creature list",
+   "cite": "newworld/story/data/db/region_note.jsonl#althii-archipelago/ecology"
+  },
+  {
+   "kind": "marsh-bird",
+   "size_class": "small",
+   "hostility": "benign",
+   "habitat": "marsh",
+   "time": "day",
+   "group": [
+    2,
+    6
+   ],
+   "signature": false,
+   "asset": "tropical-skyrim",
+   "extrapolation": "wading and reed birds fill every wet region note; unnamed in the lore",
+   "cite": "newworld/story/data/db/region_note.jsonl#althii-archipelago/ecology"
+  },
+  {
+   "kind": "sea-gull",
+   "size_class": "small",
+   "hostility": "benign",
+   "habitat": "shore",
+   "time": "day",
+   "group": [
+    3,
+    10
+   ],
+   "signature": false,
+   "asset": "tropical-skyrim",
+   "extrapolation": "shore and sea birds; Tropical Skyrim and vanilla bird sets"
+  },
+  {
+   "kind": "reed-heron",
+   "size_class": "small",
+   "hostility": "benign",
+   "habitat": "water-fresh",
+   "time": "day",
+   "group": [
+    1,
+    2
+   ],
+   "signature": false,
+   "asset": "tropical-skyrim",
+   "extrapolation": "a still-water wader; extrapolated from the wading birds of region notes"
+  },
+  {
+   "kind": "slaughterfish",
+   "size_class": "small",
+   "hostility": "hostile",
+   "habitat": "water-fresh",
+   "time": "any",
+   "group": [
+    2,
+    5
+   ],
+   "signature": false,
+   "asset": "vanilla",
+   "cite": "story/lore/topics/ecology-encounters-loot.md#2. Regional encounter composition ; newworld/story/data/db/region_note.jsonl#althii-archipelago/dangers"
+  },
+  {
+   "kind": "glowgill-guar",
+   "size_class": "game",
+   "hostility": "benign",
+   "habitat": "shore",
+   "time": "day",
+   "group": [
+    2,
+    4
+   ],
+   "signature": true,
+   "asset": "bmv",
+   "cite": "story/lore/topics/fauna-hazards.md#Domesticated and useful animals"
+  },
+  {
+   "kind": "guar",
+   "size_class": "game",
+   "hostility": "benign",
+   "habitat": "open",
+   "time": "day",
+   "group": [
+    2,
+    5
+   ],
+   "signature": false,
+   "asset": "bmv",
+   "cite": "story/lore/topics/fauna-hazards.md#Domesticated and useful animals ; newworld/story/data/db/region_note.jsonl#althii-archipelago/ecology"
+  },
+  {
+   "kind": "marsh-turtle",
+   "size_class": "game",
+   "hostility": "benign",
+   "habitat": "marsh",
+   "time": "day",
+   "group": [
+    1,
+    3
+   ],
+   "signature": false,
+   "asset": "vanilla",
+   "extrapolation": "the earlier list and the turtle-shell uses of EC S1 imply living turtles"
+  },
+  {
+   "kind": "crocodile",
+   "size_class": "predator",
+   "hostility": "hostile",
+   "habitat": "water-fresh",
+   "time": "any",
+   "group": [
+    1,
+    3
+   ],
+   "signature": false,
+   "asset": "bmv",
+   "cite": "story/lore/topics/fauna-hazards.md#Apex and set-piece creatures"
+  },
+  {
+   "kind": "shark",
+   "size_class": "predator",
+   "hostility": "hostile",
+   "habitat": "water-salt",
+   "time": "any",
+   "group": [
+    1,
+    3
+   ],
+   "signature": true,
+   "asset": "bmv",
+   "extrapolation": "Black Marsh mod ships sharks; coast fauna of any warm sea"
+  },
+  {
+   "kind": "giant-snake",
+   "size_class": "predator",
+   "hostility": "hostile",
+   "habitat": "marsh",
+   "time": "any",
+   "group": [
+    1,
+    2
+   ],
+   "signature": false,
+   "asset": "bmv",
+   "cite": "story/lore/topics/fauna-hazards.md#Apex and set-piece creatures"
+  },
+  {
+   "kind": "sea-drake",
+   "size_class": "giant",
+   "hostility": "hostile",
+   "habitat": "water-salt",
+   "time": "any",
+   "group": [
+    1,
+    1
+   ],
+   "signature": true,
+   "asset": "bmv",
+   "cite": "story/lore/topics/fauna-hazards.md#Apex and set-piece creatures"
+  },
+  {
+   "kind": "gnat-cloud",
+   "size_class": "insect",
+   "hostility": "defensive",
+   "habitat": "water-fresh",
+   "time": "night",
+   "group": [
+    6,
+    20
+   ],
+   "signature": false,
+   "asset": "effect-only",
+   "extrapolation": "a standing cloud over still water follows from the lore of insect load as the baseline hazard (EC P2)"
+  },
+  {
+   "kind": "dragonfly",
+   "size_class": "insect",
+   "hostility": "benign",
+   "habitat": "water-fresh",
+   "time": "day",
+   "group": [
+    2,
+    8
+   ],
+   "signature": false,
+   "asset": "vanilla",
+   "extrapolation": "a harmless water-edge insect that makes the still water read as alive; nothing in the lore forbids it"
+  }
+ ],
+ "harvestables": [
+  {
+   "ingredient": "mudcrab-chitin",
+   "habitat": "shore",
+   "cite": "story/lore/topics/ingredients-alchemy.md#The slice ingredients (68)"
+  },
+  {
+   "ingredient": "small-pearl",
+   "habitat": "water-salt",
+   "cite": "story/lore/topics/ingredients-alchemy.md#The slice ingredients (68)"
+  },
+  {
+   "ingredient": "river-salt",
+   "habitat": "shore",
+   "cite": "story/lore/topics/ingredients-alchemy.md#The slice ingredients (68)"
+  },
+  {
+   "ingredient": "slaughterfish-scales",
+   "habitat": "water-fresh",
+   "cite": "story/lore/topics/ingredients-alchemy.md#The slice ingredients (68)"
+  },
+  {
+   "ingredient": "dried-flower-buds",
+   "habitat": "bush",
+   "cite": "story/lore/topics/fauna-hazards.md#Everyday hazards"
+  },
+  {
+   "ingredient": "marshweed",
+   "habitat": "marsh",
+   "cite": "story/lore/topics/fauna-hazards.md#Flora"
+  }
+ ],
+ "hostile_npcs": [
+  {
+   "group": "bandits in the burnt forts",
+   "support": "newworld/story/data/db/region_note.jsonl#althii-archipelago/dangers"
+  },
+  {
+   "group": "Naga-Kur raiders",
+   "support": "none"
+  }
+ ]
+}

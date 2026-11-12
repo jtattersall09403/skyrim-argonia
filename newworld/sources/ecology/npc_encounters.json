@@ -1,0 +1,358 @@
+{
+ "principle": "Hostile humanoid encounters are fixed or territorial and name the holder; a group with support none has no lore cite and must not spawn without an extrapolation ruling.",
+ "regions": {
+  "althii-archipelago": {
+   "random_hostile_encounters_supported": true,
+   "rule": "territorial and attributable, never anonymous bandits (story/lore/topics/ecology-encounters-loot.md#3. Fixed populations, not spawns)",
+   "groups": [
+    {
+     "group": "bandits in the burnt forts",
+     "support": "newworld/story/data/db/region_note.jsonl#althii-archipelago/dangers"
+    },
+    {
+     "group": "Naga-Kur raiders",
+     "support": "none"
+    }
+   ],
+   "unsupported_groups": [
+    "Naga-Kur raiders"
+   ]
+  },
+  "aphon-isle": {
+   "random_hostile_encounters_supported": true,
+   "rule": "territorial and attributable, never anonymous bandits (story/lore/topics/ecology-encounters-loot.md#3. Fixed populations, not spawns)",
+   "groups": [
+    {
+     "group": "smugglers working the cave",
+     "support": "newworld/story/data/db/region_note.jsonl#aphon-isle (summary: smugglers' cave); story/lore/topics/ecology-encounters-loot.md#3. Fixed populations, not spawns"
+    }
+   ],
+   "unsupported_groups": []
+  },
+  "arnesian-jungle": {
+   "random_hostile_encounters_supported": true,
+   "rule": "territorial and attributable, never anonymous bandits (story/lore/topics/ecology-encounters-loot.md#3. Fixed populations, not spawns)",
+   "groups": [
+    {
+     "group": "Dunmer slavers working the Morrowind border",
+     "support": "newworld/story/data/db/region_note.jsonl#arnesian-jungle/history (Arnesian War of 3E 396 began as a slave revolt)"
+    }
+   ],
+   "unsupported_groups": []
+  },
+  "aunike-ridge": {
+   "random_hostile_encounters_supported": true,
+   "rule": "territorial and attributable, never anonymous bandits (story/lore/topics/ecology-encounters-loot.md#3. Fixed populations, not spawns)",
+   "groups": [
+    {
+     "group": "Naga raiders",
+     "support": "newworld/story/data/db/region_note.jsonl#aunike-ridge/dangers"
+    },
+    {
+     "group": "Paatru raiders",
+     "support": "newworld/story/data/db/region_note.jsonl#aunike-ridge/dangers"
+    }
+   ],
+   "unsupported_groups": []
+  },
+  "banujha-basin": {
+   "random_hostile_encounters_supported": true,
+   "rule": "territorial and attributable, never anonymous bandits (story/lore/topics/ecology-encounters-loot.md#3. Fixed populations, not spawns)",
+   "groups": [
+    {
+     "group": "Mine-Burner tribesmen who hold the basin against outsiders",
+     "support": "newworld/story/data/db/region.jsonl#banujha-basin (summary: held by the Mine-Burner tribes)"
+    }
+   ],
+   "unsupported_groups": []
+  },
+  "barsaebica": {
+   "random_hostile_encounters_supported": true,
+   "rule": "territorial and attributable, never anonymous bandits (story/lore/topics/ecology-encounters-loot.md#3. Fixed populations, not spawns)",
+   "groups": [
+    {
+     "group": "Fenlord undead guarding Barsaebic ruins",
+     "support": "story/lore/topics/ecology-encounters-loot.md#3. Fixed populations, not spawns"
+    },
+    {
+     "group": "frontier raiders at Slough Point",
+     "support": "newworld/story/data/db/region.jsonl#barsaebica (summary: the frontier at Slough Point)"
+    }
+   ],
+   "unsupported_groups": []
+  },
+  "benthic-yobesh": {
+   "random_hostile_encounters_supported": true,
+   "rule": "territorial and attributable, never anonymous bandits (story/lore/topics/ecology-encounters-loot.md#3. Fixed populations, not spawns)",
+   "groups": [
+    {
+     "group": "Bell Station divers' rivals (salvagers)",
+     "support": "newworld/story/data/db/region.jsonl#benthic-yobesh (summary: only Bell Station's divers work it)"
+    }
+   ],
+   "unsupported_groups": []
+  },
+  "blackwood": {
+   "random_hostile_encounters_supported": true,
+   "rule": "territorial and attributable, never anonymous bandits (story/lore/topics/ecology-encounters-loot.md#3. Fixed populations, not spawns)",
+   "groups": [
+    {
+     "group": "Sul-Xan raiders",
+     "support": "story/lore/topics/ecology-encounters-loot.md#3. Fixed populations, not spawns"
+    },
+    {
+     "group": "Lut-Eileel warbands",
+     "support": "story/lore/topics/ecology-encounters-loot.md#3. Fixed populations, not spawns"
+    },
+    {
+     "group": "Hutan-Tzel outposts hostile to trespass",
+     "support": "newworld/story/data/db/region_note.jsonl#blackwood/present"
+    }
+   ],
+   "unsupported_groups": []
+  },
+  "cape-percar": {
+   "random_hostile_encounters_supported": true,
+   "rule": "territorial and attributable, never anonymous bandits (story/lore/topics/ecology-encounters-loot.md#3. Fixed populations, not spawns)",
+   "groups": [
+    {
+     "group": "bandits in the burned mines and quarries",
+     "support": "extrapolation: the Great Burn emptied the mines (fauna-hazards Burning ground) and left a hiding place"
+    },
+    {
+     "group": "Imperial deserter bands from Soulrest",
+     "support": "extrapolation: Soulrest's mines were abandoned after the 3E 427 uprisings (fauna-hazards Minerals)"
+    }
+   ],
+   "unsupported_groups": []
+  },
+  "chixathe-mesa": {
+   "random_hostile_encounters_supported": true,
+   "rule": "territorial and attributable, never anonymous bandits (story/lore/topics/ecology-encounters-loot.md#3. Fixed populations, not spawns)",
+   "groups": [
+    {
+     "group": "Sarpa raiders",
+     "support": "newworld/story/data/db/region_note.jsonl#chixathe-mesa/dangers"
+    },
+    {
+     "group": "Velothi undead",
+     "support": "newworld/story/data/db/region_note.jsonl#chixathe-mesa/dangers"
+    }
+   ],
+   "unsupported_groups": []
+  },
+  "hatandros-bight": {
+   "random_hostile_encounters_supported": true,
+   "rule": "territorial and attributable, never anonymous bandits (story/lore/topics/ecology-encounters-loot.md#3. Fixed populations, not spawns)",
+   "groups": [
+    {
+     "group": "smugglers at landings",
+     "support": "newworld/story/data/db/region_note.jsonl#hatandros-bight/dangers"
+    },
+    {
+     "group": "Sarpa raiders on the inland margin",
+     "support": "newworld/story/data/db/region_note.jsonl#hatandros-bight/dangers"
+    }
+   ],
+   "unsupported_groups": []
+  },
+  "kotherra-mangroves": {
+   "random_hostile_encounters_supported": true,
+   "rule": "territorial and attributable, never anonymous bandits (story/lore/topics/ecology-encounters-loot.md#3. Fixed populations, not spawns)",
+   "groups": [
+    {
+     "group": "pirates of the eastern Topal Bay shore",
+     "support": "newworld/story/data/db/region_note.jsonl#topal-bay"
+    },
+    {
+     "group": "Tribeless Naga highwaymen on the Blackwood Road",
+     "support": "story/lore/topics/ecology-encounters-loot.md#3. Fixed populations, not spawns"
+    }
+   ],
+   "unsupported_groups": []
+  },
+  "lake-ulaish": {
+   "random_hostile_encounters_supported": true,
+   "rule": "territorial and attributable, never anonymous bandits (story/lore/topics/ecology-encounters-loot.md#3. Fixed populations, not spawns)",
+   "groups": [
+    {
+     "group": "toll-fort bandits on the shore roads",
+     "support": "extrapolation: the lake note names a toll fort, and EC section 3 says highwaymen follow merchant traffic"
+    },
+    {
+     "group": "Tribeless Naga highwaymen",
+     "support": "story/lore/topics/ecology-encounters-loot.md#3. Fixed populations, not spawns"
+    }
+   ],
+   "unsupported_groups": []
+  },
+  "murkwood": {
+   "random_hostile_encounters_supported": true,
+   "rule": "territorial and attributable, never anonymous bandits (story/lore/topics/ecology-encounters-loot.md#3. Fixed populations, not spawns)",
+   "groups": [
+    {
+     "group": "Naga-Kur patrols",
+     "support": "story/lore/topics/ecology-encounters-loot.md#3. Fixed populations, not spawns"
+    },
+    {
+     "group": "Veeskhleel (Ghost People)",
+     "support": "story/lore/topics/ecology-encounters-loot.md#3. Fixed populations, not spawns"
+    },
+    {
+     "group": "Hist-root zealots who kill outsiders without leave",
+     "support": "newworld/story/data/db/region.jsonl#murkwood (summary: outsiders who enter without leave do not come out)"
+    }
+   ],
+   "unsupported_groups": []
+  },
+  "nha-enasa": {
+   "random_hostile_encounters_supported": true,
+   "rule": "territorial and attributable, never anonymous bandits (story/lore/topics/ecology-encounters-loot.md#3. Fixed populations, not spawns)",
+   "groups": [
+    {
+     "group": "Tribeless Naga highwaymen near the river stations",
+     "support": "story/lore/topics/ecology-encounters-loot.md#3. Fixed populations, not spawns"
+    },
+    {
+     "group": "Kothringi ruin undead",
+     "support": "newworld/story/data/db/region.jsonl#nha-enasa (summary: Kothringi ruins)"
+    }
+   ],
+   "unsupported_groups": []
+  },
+  "nushara-bayou": {
+   "random_hostile_encounters_supported": true,
+   "rule": "territorial and attributable, never anonymous bandits (story/lore/topics/ecology-encounters-loot.md#3. Fixed populations, not spawns)",
+   "groups": [
+    {
+     "group": "smugglers using the back-water routes",
+     "support": "newworld/story/data/db/region.jsonl#nushara-bayou (summary: its back-water routes carry ...)"
+    },
+    {
+     "group": "Naga-Kur raiders",
+     "support": "none"
+    }
+   ],
+   "unsupported_groups": [
+    "Naga-Kur raiders"
+   ]
+  },
+  "okuwun-rahei": {
+   "random_hostile_encounters_supported": true,
+   "rule": "territorial and attributable, never anonymous bandits (story/lore/topics/ecology-encounters-loot.md#3. Fixed populations, not spawns)",
+   "groups": [
+    {
+     "group": "Sarpa raiders",
+     "support": "newworld/story/data/db/region_note.jsonl#okuwun-rahei/dangers"
+    },
+    {
+     "group": "smuggler landings",
+     "support": "newworld/story/data/db/region_note.jsonl#okuwun-rahei/dangers"
+    }
+   ],
+   "unsupported_groups": []
+  },
+  "padomaic-ocean": {
+   "random_hostile_encounters_supported": true,
+   "rule": "territorial and attributable, never anonymous bandits (story/lore/topics/ecology-encounters-loot.md#3. Fixed populations, not spawns)",
+   "groups": [
+    {
+     "group": "Skeith Isle pirates",
+     "support": "newworld/story/data/db/region.jsonl#padomaic-ocean (summary: Skeith Isle's pirates work the sea)"
+    },
+    {
+     "group": "Dunmer slavers (the wreck of a slaver lies on the shelf)",
+     "support": "newworld/story/data/db/region_note.jsonl#padomaic-ocean/present"
+    }
+   ],
+   "unsupported_groups": []
+  },
+  "sea-of-mists": {
+   "random_hostile_encounters_supported": true,
+   "rule": "territorial and attributable, never anonymous bandits (story/lore/topics/ecology-encounters-loot.md#3. Fixed populations, not spawns)",
+   "groups": [
+    {
+     "group": "wreckers and pirates working the sandbars",
+     "support": "newworld/story/data/db/region.jsonl#sea-of-mists (summary: wrecks, small islands and a lighthouse mark it)"
+    }
+   ],
+   "unsupported_groups": []
+  },
+  "skeith-isle": {
+   "random_hostile_encounters_supported": true,
+   "rule": "territorial and attributable, never anonymous bandits (story/lore/topics/ecology-encounters-loot.md#3. Fixed populations, not spawns)",
+   "groups": [
+    {
+     "group": "Skeith Isle pirates and smugglers",
+     "support": "newworld/story/data/db/region.jsonl#skeith-isle (summary: held by pirates and smugglers)"
+    }
+   ],
+   "unsupported_groups": []
+  },
+  "topal-bay": {
+   "random_hostile_encounters_supported": true,
+   "rule": "territorial and attributable, never anonymous bandits (story/lore/topics/ecology-encounters-loot.md#3. Fixed populations, not spawns)",
+   "groups": [
+    {
+     "group": "pirates of the eastern shore",
+     "support": "newworld/story/data/db/region_note.jsonl#topal-bay"
+    },
+    {
+     "group": "Dunmer slavers",
+     "support": "none"
+    }
+   ],
+   "unsupported_groups": [
+    "Dunmer slavers"
+   ]
+  },
+  "tulmek-washes": {
+   "random_hostile_encounters_supported": true,
+   "rule": "territorial and attributable, never anonymous bandits (story/lore/topics/ecology-encounters-loot.md#3. Fixed populations, not spawns)",
+   "groups": [
+    {
+     "group": "bandits",
+     "support": "newworld/story/data/db/region_note.jsonl#tulmek-washes/dangers"
+    },
+    {
+     "group": "Blackguards' heirs from Blackrose Prison",
+     "support": "story/lore/topics/ecology-encounters-loot.md#3. Fixed populations, not spawns"
+    }
+   ],
+   "unsupported_groups": []
+  },
+  "ultherus-swamp": {
+   "random_hostile_encounters_supported": false,
+   "rule": "territorial and attributable, never anonymous bandits (story/lore/topics/ecology-encounters-loot.md#3. Fixed populations, not spawns)",
+   "groups": [
+    {
+     "group": "Tribeless Naga",
+     "support": "none"
+    },
+    {
+     "group": "Dead-Water scouts",
+     "support": "none"
+    }
+   ],
+   "unsupported_groups": [
+    "Tribeless Naga",
+    "Dead-Water scouts"
+   ]
+  },
+  "valley-of-storms": {
+   "random_hostile_encounters_supported": true,
+   "rule": "territorial and attributable, never anonymous bandits (story/lore/topics/ecology-encounters-loot.md#3. Fixed populations, not spawns)",
+   "groups": [
+    {
+     "group": "Morrowind border bandits",
+     "support": "newworld/story/data/db/region.jsonl#valley-of-storms (summary: beside the Morrowind border)"
+    },
+    {
+     "group": "Stormhold crystal-seekers",
+     "support": "extrapolation: Stormhold Crystals are valuable and volatile (fauna-hazards Minerals)"
+    }
+   ],
+   "unsupported_groups": []
+  }
+ }
+}

@@ -1,0 +1,247 @@
+{
+ "region": "murkwood",
+ "creatures": [
+  {
+   "kind": "miregaunt",
+   "size_class": "giant",
+   "hostility": "hostile",
+   "habitat": "marsh",
+   "time": "any",
+   "group": [
+    1,
+    1
+   ],
+   "signature": true,
+   "asset": "bmv",
+   "cite": "story/lore/topics/fauna-hazards.md#Apex and set-piece creatures"
+  },
+  {
+   "kind": "medusa",
+   "size_class": "predator",
+   "hostility": "hostile",
+   "habitat": "marsh",
+   "time": "any",
+   "group": [
+    1,
+    2
+   ],
+   "signature": true,
+   "asset": "bmv",
+   "cite": "story/lore/topics/fauna-hazards.md#Apex and set-piece creatures"
+  },
+  {
+   "kind": "voriplasm",
+   "size_class": "giant",
+   "hostility": "hostile",
+   "habitat": "water-fresh",
+   "time": "any",
+   "group": [
+    1,
+    1
+   ],
+   "signature": true,
+   "asset": "bmv",
+   "cite": "story/lore/topics/fauna-hazards.md#Apex and set-piece creatures"
+  },
+  {
+   "kind": "marsh-giant",
+   "size_class": "giant",
+   "hostility": "defensive",
+   "habitat": "bush",
+   "time": "any",
+   "group": [
+    1,
+    1
+   ],
+   "signature": false,
+   "asset": "bmv",
+   "cite": "story/lore/topics/fauna-hazards.md#Apex and set-piece creatures"
+  },
+  {
+   "kind": "fellrunner",
+   "size_class": "game",
+   "hostility": "benign",
+   "habitat": "bush",
+   "time": "day",
+   "group": [
+    2,
+    6
+   ],
+   "signature": true,
+   "asset": "none",
+   "cite": "story/lore/topics/fauna-hazards.md#Domesticated and useful animals"
+  },
+  {
+   "kind": "bog-blight",
+   "size_class": "predator",
+   "hostility": "hostile",
+   "habitat": "marsh",
+   "time": "night",
+   "group": [
+    2,
+    5
+   ],
+   "signature": false,
+   "asset": "vanilla",
+   "cite": "story/lore/topics/fauna-hazards.md#Apex and set-piece creatures"
+  },
+  {
+   "kind": "giant-snake",
+   "size_class": "predator",
+   "hostility": "hostile",
+   "habitat": "marsh",
+   "time": "any",
+   "group": [
+    1,
+    2
+   ],
+   "signature": false,
+   "asset": "bmv",
+   "cite": "story/lore/topics/fauna-hazards.md#Apex and set-piece creatures"
+  },
+  {
+   "kind": "hist-frog",
+   "size_class": "small",
+   "hostility": "benign",
+   "habitat": "marsh",
+   "time": "night",
+   "group": [
+    2,
+    6
+   ],
+   "signature": false,
+   "asset": "vanilla",
+   "cite": "story/lore/topics/fauna-hazards.md#Domesticated and useful animals"
+  },
+  {
+   "kind": "torchbug",
+   "size_class": "insect",
+   "hostility": "benign",
+   "habitat": "marsh",
+   "time": "night",
+   "group": [
+    3,
+    10
+   ],
+   "signature": false,
+   "asset": "vanilla",
+   "cite": "story/lore/topics/fauna-hazards.md#Flora"
+  },
+  {
+   "kind": "fleshfly",
+   "size_class": "insect",
+   "hostility": "hostile",
+   "habitat": "any",
+   "time": "day",
+   "group": [
+    8,
+    25
+   ],
+   "signature": false,
+   "asset": "effect-only",
+   "cite": "story/lore/topics/fauna-hazards.md#Everyday hazards"
+  },
+  {
+   "kind": "hackwing",
+   "size_class": "predator",
+   "hostility": "hostile",
+   "habitat": "open",
+   "time": "day",
+   "group": [
+    2,
+    5
+   ],
+   "signature": false,
+   "asset": "bmv",
+   "cite": "story/lore/topics/fauna-hazards.md#Everyday hazards"
+  },
+  {
+   "kind": "swamp-jelly",
+   "size_class": "small",
+   "hostility": "benign",
+   "habitat": "water-fresh",
+   "time": "day",
+   "group": [
+    1,
+    3
+   ],
+   "signature": false,
+   "asset": "none",
+   "cite": "story/lore/topics/ecology-encounters-loot.md#Creature notes that change how a fight plays"
+  },
+  {
+   "kind": "giant-wasp",
+   "size_class": "insect",
+   "hostility": "hostile",
+   "habitat": "canopy",
+   "time": "day",
+   "group": [
+    1,
+    3
+   ],
+   "signature": false,
+   "asset": "bmv",
+   "cite": "story/lore/topics/fauna-hazards.md#Everyday hazards"
+  },
+  {
+   "kind": "feather-serpent",
+   "size_class": "giant",
+   "hostility": "hostile",
+   "habitat": "canopy",
+   "time": "any",
+   "group": [
+    1,
+    1
+   ],
+   "signature": true,
+   "asset": "none",
+   "cite": "story/lore/topics/fauna-hazards.md#Apex and set-piece creatures"
+  }
+ ],
+ "harvestables": [
+  {
+   "ingredient": "rootland-mushroom",
+   "habitat": "bush",
+   "cite": "story/lore/topics/ingredients-alchemy.md#The slice ingredients (68)"
+  },
+  {
+   "ingredient": "swamp-fungal-pod",
+   "habitat": "marsh",
+   "cite": "story/lore/topics/ingredients-alchemy.md#The slice ingredients (68)"
+  },
+  {
+   "ingredient": "hanging-moss",
+   "habitat": "canopy",
+   "cite": "story/lore/topics/fauna-hazards.md#Flora"
+  },
+  {
+   "ingredient": "somnalius-frond",
+   "habitat": "bush",
+   "cite": "story/lore/topics/fauna-hazards.md#Flora"
+  },
+  {
+   "ingredient": "torchbug-thorax",
+   "habitat": "marsh",
+   "cite": "story/lore/topics/ingredients-alchemy.md#The slice ingredients (68)"
+  },
+  {
+   "ingredient": "marsh-giant-blood",
+   "habitat": "bush",
+   "cite": "story/lore/topics/ingredients-alchemy.md#The slice ingredients (68)"
+  }
+ ],
+ "hostile_npcs": [
+  {
+   "group": "Naga-Kur patrols",
+   "support": "story/lore/topics/ecology-encounters-loot.md#3. Fixed populations, not spawns"
+  },
+  {
+   "group": "Veeskhleel (Ghost People)",
+   "support": "story/lore/topics/ecology-encounters-loot.md#3. Fixed populations, not spawns"
+  },
+  {
+   "group": "Hist-root zealots who kill outsiders without leave",
+   "support": "newworld/story/data/db/region.jsonl#murkwood (summary: outsiders who enter without leave do not come out)"
+  }
+ ]
+}

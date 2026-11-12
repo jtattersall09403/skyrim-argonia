@@ -1,0 +1,260 @@
+{
+ "region": "arnesian-jungle",
+ "creatures": [
+  {
+   "kind": "parrot",
+   "size_class": "small",
+   "hostility": "benign",
+   "habitat": "canopy",
+   "time": "day",
+   "group": [
+    2,
+    8
+   ],
+   "signature": true,
+   "asset": "tropical-skyrim",
+   "extrapolation": "Tropical Skyrim bird set supplies canopy parrots; a jungle staple"
+  },
+  {
+   "kind": "giant-spider",
+   "size_class": "predator",
+   "hostility": "hostile",
+   "habitat": "canopy",
+   "time": "any",
+   "group": [
+    1,
+    2
+   ],
+   "signature": true,
+   "asset": "bmv",
+   "extrapolation": "region notes list giant spiders for Blackwood and the Arnesian Jungle",
+   "cite": "newworld/story/data/db/region_note.jsonl#arnesian-jungle/ecology"
+  },
+  {
+   "kind": "giant-snake",
+   "size_class": "predator",
+   "hostility": "hostile",
+   "habitat": "marsh",
+   "time": "any",
+   "group": [
+    1,
+    2
+   ],
+   "signature": false,
+   "asset": "bmv",
+   "cite": "story/lore/topics/fauna-hazards.md#Apex and set-piece creatures ; newworld/story/data/db/region_note.jsonl#arnesian-jungle/ecology"
+  },
+  {
+   "kind": "mudcrab",
+   "size_class": "small",
+   "hostility": "defensive",
+   "habitat": "shore",
+   "time": "any",
+   "group": [
+    1,
+    3
+   ],
+   "signature": false,
+   "asset": "vanilla",
+   "extrapolation": "region notes list mudcrabs on banks and coasts; vanilla Skyrim and Morrowind kind",
+   "cite": "newworld/story/data/db/region_note.jsonl#arnesian-jungle/ecology"
+  },
+  {
+   "kind": "slaughterfish",
+   "size_class": "small",
+   "hostility": "hostile",
+   "habitat": "water-fresh",
+   "time": "any",
+   "group": [
+    2,
+    5
+   ],
+   "signature": false,
+   "asset": "vanilla",
+   "cite": "story/lore/topics/ecology-encounters-loot.md#2. Regional encounter composition ; newworld/story/data/db/region_note.jsonl#arnesian-jungle/ecology"
+  },
+  {
+   "kind": "wild-boar",
+   "size_class": "game",
+   "hostility": "defensive",
+   "habitat": "bush",
+   "time": "day",
+   "group": [
+    1,
+    4
+   ],
+   "signature": true,
+   "asset": "vanilla",
+   "extrapolation": "a forest-floor omnivore; extrapolated for upland jungle"
+  },
+  {
+   "kind": "marsh-deer",
+   "size_class": "game",
+   "hostility": "benign",
+   "habitat": "bush",
+   "time": "day",
+   "group": [
+    1,
+    4
+   ],
+   "signature": false,
+   "asset": "bmv",
+   "extrapolation": "Black Marsh mod lists deer; a browser of dry rises"
+  },
+  {
+   "kind": "stalker-cat",
+   "size_class": "predator",
+   "hostility": "hostile",
+   "habitat": "bush",
+   "time": "night",
+   "group": [
+    1,
+    2
+   ],
+   "signature": true,
+   "asset": "bmv",
+   "extrapolation": "a jungle ambush cat; Black Marsh mod 2 ships leopard and panther"
+  },
+  {
+   "kind": "cicada-chorus",
+   "size_class": "insect",
+   "hostility": "benign",
+   "habitat": "canopy",
+   "time": "day",
+   "group": [
+    4,
+    10
+   ],
+   "signature": false,
+   "asset": "vanilla",
+   "extrapolation": "canopy insects whose chorus marks a healthy jungle; extrapolated"
+  },
+  {
+   "kind": "giant-wasp",
+   "size_class": "insect",
+   "hostility": "hostile",
+   "habitat": "canopy",
+   "time": "day",
+   "group": [
+    1,
+    3
+   ],
+   "signature": false,
+   "asset": "bmv",
+   "cite": "story/lore/topics/fauna-hazards.md#Everyday hazards"
+  },
+  {
+   "kind": "tree-viper",
+   "size_class": "small",
+   "hostility": "hostile",
+   "habitat": "canopy",
+   "time": "any",
+   "group": [
+    1,
+    2
+   ],
+   "signature": false,
+   "asset": "vanilla",
+   "extrapolation": "canopy snake from the earlier creature list"
+  },
+  {
+   "kind": "dragon-frog",
+   "size_class": "small",
+   "hostility": "defensive",
+   "habitat": "bush",
+   "time": "day",
+   "group": [
+    1,
+    3
+   ],
+   "signature": false,
+   "asset": "vanilla",
+   "extrapolation": "bright poison-frog of wet leaf-litter, from the earlier creature list"
+  },
+  {
+   "kind": "treant-grove-guardian",
+   "size_class": "giant",
+   "hostility": "defensive",
+   "habitat": "canopy",
+   "time": "any",
+   "group": [
+    1,
+    1
+   ],
+   "signature": true,
+   "asset": "bmv",
+   "extrapolation": "the mod forest guardian and tree mother, a plant-body guardian of high ground"
+  },
+  {
+   "kind": "torchbug",
+   "size_class": "insect",
+   "hostility": "benign",
+   "habitat": "marsh",
+   "time": "night",
+   "group": [
+    3,
+    10
+   ],
+   "signature": false,
+   "asset": "vanilla",
+   "cite": "story/lore/topics/fauna-hazards.md#Flora"
+  },
+  {
+   "kind": "alit",
+   "size_class": "game",
+   "hostility": "hostile",
+   "habitat": "open",
+   "time": "day",
+   "group": [
+    1,
+    3
+   ],
+   "signature": false,
+   "asset": "vanilla",
+   "cite": "story/lore/topics/ecology-encounters-loot.md#2. Regional encounter composition"
+  }
+ ],
+ "harvestables": [
+  {
+   "ingredient": "hanging-moss",
+   "habitat": "canopy",
+   "cite": "story/lore/topics/fauna-hazards.md#Flora"
+  },
+  {
+   "ingredient": "blue-dartwing",
+   "habitat": "canopy",
+   "cite": "story/lore/topics/ingredients-alchemy.md#The slice ingredients (68)"
+  },
+  {
+   "ingredient": "honeycomb",
+   "habitat": "canopy",
+   "cite": "story/lore/topics/ingredients-alchemy.md#The slice ingredients (68)"
+  },
+  {
+   "ingredient": "bee",
+   "habitat": "canopy",
+   "cite": "story/lore/topics/ingredients-alchemy.md#The slice ingredients (68)"
+  },
+  {
+   "ingredient": "spriggan-sap",
+   "habitat": "canopy",
+   "cite": "story/lore/topics/ingredients-alchemy.md#The slice ingredients (68)"
+  },
+  {
+   "ingredient": "somnalius-frond",
+   "habitat": "bush",
+   "cite": "story/lore/topics/fauna-hazards.md#Flora"
+  },
+  {
+   "ingredient": "fly-amanita",
+   "habitat": "bush",
+   "cite": "story/lore/topics/ingredients-alchemy.md#The slice ingredients (68)"
+  }
+ ],
+ "hostile_npcs": [
+  {
+   "group": "Dunmer slavers working the Morrowind border",
+   "support": "newworld/story/data/db/region_note.jsonl#arnesian-jungle/history (Arnesian War of 3E 396 began as a slave revolt)"
+  }
+ ]
+}

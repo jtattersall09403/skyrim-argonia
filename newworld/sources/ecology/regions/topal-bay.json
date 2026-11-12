@@ -1,0 +1,219 @@
+{
+ "region": "topal-bay",
+ "creatures": [
+  {
+   "kind": "shark",
+   "size_class": "predator",
+   "hostility": "hostile",
+   "habitat": "water-salt",
+   "time": "any",
+   "group": [
+    1,
+    3
+   ],
+   "signature": true,
+   "asset": "bmv",
+   "extrapolation": "Black Marsh mod ships sharks; coast fauna of any warm sea"
+  },
+  {
+   "kind": "ripper-eel",
+   "size_class": "small",
+   "hostility": "hostile",
+   "habitat": "water-brackish",
+   "time": "any",
+   "group": [
+    1,
+    3
+   ],
+   "signature": false,
+   "asset": "bmv",
+   "cite": "story/lore/topics/ecology-encounters-loot.md#Creature notes that change how a fight plays"
+  },
+  {
+   "kind": "sea-gull",
+   "size_class": "small",
+   "hostility": "benign",
+   "habitat": "shore",
+   "time": "day",
+   "group": [
+    3,
+    10
+   ],
+   "signature": false,
+   "asset": "tropical-skyrim",
+   "extrapolation": "shore and sea birds; Tropical Skyrim and vanilla bird sets"
+  },
+  {
+   "kind": "tern",
+   "size_class": "small",
+   "hostility": "benign",
+   "habitat": "water-salt",
+   "time": "day",
+   "group": [
+    3,
+    8
+   ],
+   "signature": false,
+   "asset": "tropical-skyrim",
+   "extrapolation": "open-sea bird; extrapolated for sea regions"
+  },
+  {
+   "kind": "sea-skater",
+   "size_class": "insect",
+   "hostility": "benign",
+   "habitat": "water-salt",
+   "time": "day",
+   "group": [
+    4,
+    12
+   ],
+   "signature": false,
+   "asset": "vanilla",
+   "extrapolation": "water-striders on calm sea surface; a harmless insect for sea regions"
+  },
+  {
+   "kind": "flying-fish",
+   "size_class": "small",
+   "hostility": "benign",
+   "habitat": "water-salt",
+   "time": "day",
+   "group": [
+    4,
+    12
+   ],
+   "signature": true,
+   "asset": "vanilla",
+   "extrapolation": "schooling surface fish of warm open seas"
+  },
+  {
+   "kind": "manta-ray",
+   "size_class": "game",
+   "hostility": "benign",
+   "habitat": "water-salt",
+   "time": "day",
+   "group": [
+    1,
+    4
+   ],
+   "signature": true,
+   "asset": "vanilla",
+   "extrapolation": "shelf-sea wing-fish; extrapolated"
+  },
+  {
+   "kind": "reef-slaughterfish",
+   "size_class": "small",
+   "hostility": "hostile",
+   "habitat": "water-salt",
+   "time": "any",
+   "group": [
+    3,
+    6
+   ],
+   "signature": false,
+   "asset": "vanilla",
+   "extrapolation": "slaughterfish are a coast kind in the regional table; the sea form schools on reefs"
+  },
+  {
+   "kind": "stinging-jelly",
+   "size_class": "small",
+   "hostility": "hostile",
+   "habitat": "water-salt",
+   "time": "any",
+   "group": [
+    2,
+    6
+   ],
+   "signature": false,
+   "asset": "vanilla",
+   "extrapolation": "sea jellyfish of warm shelf water; extrapolated hazard"
+  },
+  {
+   "kind": "sea-turtle",
+   "size_class": "game",
+   "hostility": "benign",
+   "habitat": "water-salt",
+   "time": "day",
+   "group": [
+    1,
+    3
+   ],
+   "signature": false,
+   "asset": "bmv",
+   "extrapolation": "warm-water shelf turtle; extrapolated"
+  },
+  {
+   "kind": "lurker-shark",
+   "size_class": "predator",
+   "hostility": "hostile",
+   "habitat": "water-salt",
+   "time": "any",
+   "group": [
+    1,
+    2
+   ],
+   "signature": false,
+   "asset": "bmv",
+   "extrapolation": "Black Marsh mod lurker shark, a deep-water ambusher"
+  },
+  {
+   "kind": "salt-midge",
+   "size_class": "insect",
+   "hostility": "defensive",
+   "habitat": "shore",
+   "time": "day",
+   "group": [
+    8,
+    20
+   ],
+   "signature": false,
+   "asset": "effect-only",
+   "extrapolation": "tide-flat biting midges, the salt-water cousin of the fleshfly baseline"
+  },
+  {
+   "kind": "great-sea-turtle",
+   "size_class": "giant",
+   "hostility": "benign",
+   "habitat": "water-salt",
+   "time": "day",
+   "group": [
+    1,
+    1
+   ],
+   "signature": true,
+   "asset": "bmv",
+   "extrapolation": "a vast old turtle of the shelf; the sea-going cousin of haj mota"
+  }
+ ],
+ "harvestables": [
+  {
+   "ingredient": "small-pearl",
+   "habitat": "water-salt",
+   "cite": "story/lore/topics/ingredients-alchemy.md#The slice ingredients (68)"
+  },
+  {
+   "ingredient": "river-salt",
+   "habitat": "shore",
+   "cite": "story/lore/topics/ingredients-alchemy.md#The slice ingredients (68)"
+  },
+  {
+   "ingredient": "eel-slime",
+   "habitat": "water-brackish",
+   "cite": "story/lore/topics/ecology-encounters-loot.md#Creature notes that change how a fight plays"
+  },
+  {
+   "ingredient": "dreugh-wax",
+   "habitat": "shore",
+   "cite": "story/lore/topics/ingredients-alchemy.md#The slice ingredients (68)"
+  }
+ ],
+ "hostile_npcs": [
+  {
+   "group": "pirates of the eastern shore",
+   "support": "newworld/story/data/db/region_note.jsonl#topal-bay"
+  },
+  {
+   "group": "Dunmer slavers",
+   "support": "none"
+  }
+ ]
+}
