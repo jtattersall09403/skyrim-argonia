@@ -444,3 +444,9 @@ added here the day they are made, with the date and the issue.
   NewWorldMusic.cs and music/records.json; the slot stays in the pack unused); the death sting is ours and approved;
   the level-up sting is recut from the owner's own Overture. (b) Wild Hist lanterns stay only near places ("they are
   presumably placed there by people"): within 2 cells of a place in Murkwood, as built.
+- 2026-11-12 (in session, evening): stings: the death sting is approved; discovering a place plays Skyrim's own
+  sting for now; the level-up sting is cut from the owner's own Overture, at about the length of Skyrim's level-up
+  sting (measured, not guessed). Hist lanterns hang only near places ("they are presumably placed there by
+  people"); Helstrom gets its lanterns now, and Helstrom is deployed only "after I have done my editing and feedback
+  on the draft in the studio". The flagged dialogue of the BM&V version is rewritten with the updated dialogue
+  skill (directions in words, the Morrowind find step on every run).
