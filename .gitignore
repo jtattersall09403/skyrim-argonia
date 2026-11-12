@@ -37,3 +37,4 @@ tmp/
 # Spriggit names a record directory "<EditorID> - <id>_<Plugin>.esm" (an override of a master's record): not a plugin file
 !plugin/**/*.esm/
 !plugin/**/*.esp/
+story/playtests/index.json
