@@ -189,6 +189,12 @@ would fall in love with"; and every quest uses in-game skills, which is "really 
 The overall story of the main quest and of each major faction is written by Fable, knowing the quest rules and the
 ceiling, aiming at what Morrowind achieved inside minimal scripting: storytelling, deep world building, compelling
 lines, moral ambiguity and real conflict of several kinds.
+Before any quest of it is written, the story itself is read on paper (the owner's idea, 2026-11-12): fresh readers are
+taken through it one quest at a time as a player would meet it, saying at each step what they think is going on, whom
+they trust, what they expect and what they would choose; new readers every round; a separate reader checks each
+chapter can be built at the ceiling. Readers are evidence, not votes. The loop stops when a round can retell the
+story, wants the next chapter, splits on the conflicts meant to be ambiguous, and raises nothing new the author
+agrees with.
 
 ## What the owner will be asked to check
 

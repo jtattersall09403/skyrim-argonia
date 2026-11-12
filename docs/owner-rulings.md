@@ -509,3 +509,14 @@ added here the day they are made, with the date and the issue.
   or something)". A paper player's finding that a fix then clears (a later player is no longer confused or bored
   there) is generalised into the recipe that produced the fault, as owner-verified fixes are; the lead may add,
   split and restructure the quest skills into one connected set.
+- 2026-11-12 (in session, nw-05, a reader loop for the story itself): the owner proposed "something like the 'agent
+  player' loop" for the story and factions rewrite: "You author an overall story, then you take a fresh agent
+  through it chapter by chapter or quest by quest without it knowing the context or what the ending will be, and it
+  does the same sorts of things ... thinking aloud and giving its feedback. You use that feedback to improve your
+  story, and loop until you decide you've reached the Morrowind level quality bar. For the main quest and each of
+  the factions." Adopted by the lead for nw-05 (the owner asked "what do you think?"; no objection is recorded yet):
+  the story is told to fresh readers one quest at a time as a player would meet it; at each step they say what they
+  think is going on, whom they trust, what they expect and what they would choose; fresh readers every round; a
+  separate reader checks each chapter can be built at the ceiling; readers are evidence, not votes; it stops when a
+  round can retell it, wants the next chapter, splits on the conflicts meant to be ambiguous and raises nothing new
+  the author agrees with.
