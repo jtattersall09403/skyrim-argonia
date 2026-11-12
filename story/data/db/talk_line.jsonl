@@ -40,11 +40,11 @@
 {"talker":"01512D:Black Marsh.esm","topic":"talk.harvest","ord":1,"text":"Wild leeks grow on the bank a short way east-south-east of here. Take them from the bank and not from my lily pads, dry-foot."}
 {"talker":"01512D:Black Marsh.esm","topic":"talk.secret","ord":1,"text":"A giant crab lives in the shallows a short way south-south-west, and he is called Old Salty. I will say no more about him to a dry-foot I do not know."}
 {"talker":"01512D:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Uleesh. I fish the shallows below the walls and sell my catch inside. The rent inside is more than I can get for fish, so I stay out here. Twenty years on the same water now."}
-{"talker":"01512E:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"Lilmoth. Go north along the shore, not far, until you come to the dead tree on your left. Then south-east, a short way. Lilmoth is there."}
+{"talker":"01512E:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"Lilmoth. Follow the shore north, a short way, until you come to the dead tree on your left. Then walk south-east, a short way. Lilmoth is there."}
 {"talker":"01512E:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"You came back, my friend. I was watching the water and the clouds, too. Tell me what the sky was like on your road."}
 {"talker":"01512E:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Hm. You are speaking to me. … What did the sky look like, where you came from?"}
-{"talker":"01512E:Black Marsh.esm","topic":"talk.harvest","ord":1,"text":"Giant lichen. A short way west-south-west of here. … I only watch the water."}
-{"talker":"01512E:Black Marsh.esm","topic":"talk.here","ord":1,"text":"The huts are just west of here. I stand out here, beyond them, where the water comes in. The water has to be seen first."}
+{"talker":"01512E:Black Marsh.esm","topic":"talk.harvest","ord":1,"text":"Giant lichen grows a short way west-south-west of here. … I do not gather. I only watch the water."}
+{"talker":"01512E:Black Marsh.esm","topic":"talk.here","ord":1,"text":"The hands' huts stand just west of here. … I am out beyond them, at the edge, where the flood water comes in."}
 {"talker":"01512E:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"Owings… ask Lifts-The-Sacks about them. I would pay mine, if I knew whom to pay."}
 {"talker":"01512E:Black Marsh.esm","topic":"talk.lore","ord":2,"text":"Kept long from your own Hist, you fade. The colour thins. The markings go soft. They come back when you go home."}
 {"talker":"01512E:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Tumeesh. I was sold on to Hereguard's labour by a broker in Lilmoth. He did not tell me. … I do not know who holds my months now."}
