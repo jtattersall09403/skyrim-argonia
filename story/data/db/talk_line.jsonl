@@ -729,13 +729,13 @@
 {"talker":"0C725A:Black Marsh.esm","topic":"talk.rumours","ord":1,"text":"Ask Tzeel-Vaa about the Haven road. I hear everything said on this dock, not what is said elsewhere. I would like to know what he says."}
 {"talker":"0C725A:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Tuh-Weem. I guard this dock. Everything said on it reaches my ears. I am rarely wrong about what I hear."}
 {"talker":"0C725A:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Mends-The-Hulls mends boats at the north-east dock. She is usually just north-east of here. I think she is courting someone. Ask her yourself. Tell me what she says."}
-{"talker":"0C725B:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The longboat? Walk south-east, a hundred and seventy paces or so. The longboat is in front of you."}
+{"talker":"0C725B:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The longboat? Walk south-east a short way and you will reach it. Mind your boots on the silt."}
 {"talker":"0C725B:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"The water is low this season, so I have time to talk. Stand by me if you like."}
 {"talker":"0C725B:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Mind where you put your boots. The silt is soft here."}
-{"talker":"0C725B:Black Marsh.esm","topic":"talk.here","ord":1,"text":"There is a house about ten paces south-east of here. That is all I would point out."}
+{"talker":"0C725B:Black Marsh.esm","topic":"talk.here","ord":1,"text":"There is a house just south-east of here. That is all I would point out."}
 {"talker":"0C725B:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"Ask Counts-The-Tolls about crossings and the owing set there. He has forgotten where he came from, so ask him plainly. I have worked mine off in the silt for nine seasons."}
 {"talker":"0C725B:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Dredges-The-Silt. I clear the channels around Black Rose so the boats can pass. It is owing work. It has taken me nine seasons so far."}
-{"talker":"0C725B:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Xuth-Ma is the guard on the road to the jail. You will usually find him about five paces south-east of here. He is a good man. He is the one who listens to me in the evenings."}
+{"talker":"0C725B:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Xuth-Ma is the guard on the road to the jail. You will usually find him just south-east of here. He is a good man. He is the one who listens to me in the evenings."}
 {"talker":"0C725D:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The cooking fire? Go south, a hundred and sixty paces or so. The fire is there."}
 {"talker":"0C725D:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"Keep your voice low, and stand by me a while. I will not mind the company."}
 {"talker":"0C725D:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Move along, if you please. I am on watch."}
