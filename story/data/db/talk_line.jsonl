@@ -713,13 +713,13 @@
 {"talker":"0C7258:Black Marsh.esm","topic":"talk.self","ord":2,"text":"I am a guard on this road. I do not like the jail. I will not say why."}
 {"talker":"0C7258:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Dredges-The-Silt keeps the town's channels clear. I know no better company. You will usually find the dredger just north-west of here."}
 {"talker":"0C7258:Black Marsh.esm","topic":"talk.someone","ord":2,"text":"You want Dredges-The-Silt, the dredger who clears the town's channels. Look just north-west of here."}
-{"talker":"0C7259:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The cooking fire? Walk south about a hundred and twenty paces. It is there. You cannot miss it."}
+{"talker":"0C7259:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The cooking fire? Go south a short way. You cannot miss it."}
 {"talker":"0C7259:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"Still watching that jail, as you see. It is good to talk to someone I trust. I am still waiting for the day it is emptied."}
 {"talker":"0C7259:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"What do you want? I am watching the road below the jail. Keep your hands where I can see them."}
-{"talker":"0C7259:Black Marsh.esm","topic":"talk.here","ord":1,"text":"The house is south-west of here, about twenty paces. Go and look at it yourself."}
+{"talker":"0C7259:Black Marsh.esm","topic":"talk.here","ord":1,"text":"The house is just south-west of here. Go and look at it yourself."}
 {"talker":"0C7259:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"The families who hold the Rose say it is their home, not a prison. They take it badly when outsiders call it one. I call it a jail. I do not care who hears me."}
 {"talker":"0C7259:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Wazei. I guard this road. My captain has put me where he can see me, because I have been warned twice for wanting a fight with the keepers up there."}
-{"talker":"0C7259:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Ruh-Jaal is the guard nearest the jail. You will usually find him about thirty-five paces west-north-west of here. Do not expect much of him. He is a coward."}
+{"talker":"0C7259:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Ruh-Jaal is the guard nearest the jail. You will usually find him just west-north-west of here. Do not expect much of him. He is a coward."}
 {"talker":"0C725A:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The cooking fire? Walk south about forty-five paces, to the boat on its rack. Then south-west about forty-five more. You will be standing at it. Are you meeting someone there?"}
 {"talker":"0C725A:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"Come closer, my friend. Keep your voice down. I hear more on this dock than any other guard. For you I will share it."}
 {"talker":"0C725A:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Keep your voice low. I do not know your face. I like to know every face on this dock."}
