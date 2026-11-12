@@ -1,0 +1,5550 @@
+{
+ "grasses": [
+  {
+   "key": "000D62:FlowerFields.esp",
+   "edid": "ESpforgetmenot03",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espforgetmenot03.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "violet",
+   "diffuse": "textures\\landscape\\grass\\espforgetmenot03.dds",
+   "flower_share": 0.0251,
+   "mean": "#5c5e60",
+   "shares": {
+    "yellow": 0.0105,
+    "violet": 0.0251,
+    "pink": 0.0115
+   }
+  },
+  {
+   "key": "000D63:FlowerFields.esp",
+   "edid": "ESpForgetmenot04",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espforgetmenot04.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\espforgetmenot04.dds",
+   "flower_share": 0.0148,
+   "mean": "#66843d",
+   "shares": {
+    "yellow": 0.0069,
+    "white": 0.0148
+   }
+  },
+  {
+   "key": "000D64:FlowerFields.esp",
+   "edid": "ESpForgetmenot05",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espforgetmenot05.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\espforgetmenot05.dds",
+   "flower_share": 0.0058,
+   "mean": "#3e5d49",
+   "shares": {
+    "white": 0.0058
+   }
+  },
+  {
+   "key": "000D6D:FlowerFields.esp",
+   "edid": "ESpHellebore01",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esphellebore01.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "pink",
+   "diffuse": "textures\\landscape\\grass\\esphellebore01a.dds",
+   "flower_share": 0.053,
+   "mean": "#456139",
+   "shares": {
+    "pink": 0.053
+   }
+  },
+  {
+   "key": "000D6E:FlowerFields.esp",
+   "edid": "ESpHellebore02",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esphellebore02.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "white",
+   "diffuse": "textures\\landscape\\grass\\esphellebore02a.dds",
+   "flower_share": 0.0681,
+   "mean": "#62833b",
+   "shares": {
+    "white": 0.0681
+   }
+  },
+  {
+   "key": "000D6F:FlowerFields.esp",
+   "edid": "ESpHyasintBlue",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esphyasintblue.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "violet",
+   "diffuse": "textures\\landscape\\grass\\esphyasint01blue.dds",
+   "flower_share": 0.0798,
+   "mean": "#515d63",
+   "shares": {
+    "blue": 0.0173,
+    "violet": 0.0798
+   }
+  },
+  {
+   "key": "000D70:FlowerFields.esp",
+   "edid": "ESpHyasintPink",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esphyasintpink.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "pink",
+   "diffuse": "textures\\landscape\\grass\\esphyasint01pink.dds",
+   "flower_share": 0.1901,
+   "mean": "#735a4f",
+   "shares": {
+    "pink": 0.1901
+   }
+  },
+  {
+   "key": "000D71:FlowerFields.esp",
+   "edid": "ESpHyasintWhite",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esphyasintwhite.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "white",
+   "diffuse": "textures\\landscape\\grass\\esphyasint01white.dds",
+   "flower_share": 0.2188,
+   "mean": "#798d6c",
+   "shares": {
+    "white": 0.2188
+   }
+  },
+  {
+   "key": "000D72:FlowerFields.esp",
+   "edid": "ESpIris01Blue",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espiris01blue.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "blue",
+   "diffuse": "textures\\landscape\\grass\\iris-blue-1k.dds",
+   "flower_share": 0.0239,
+   "mean": "#416f15",
+   "shares": {
+    "blue": 0.0239
+   }
+  },
+  {
+   "key": "000D73:FlowerFields.esp",
+   "edid": "ESpIris01Darkblue",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espiris01darkblue.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "violet",
+   "diffuse": "textures\\landscape\\grass\\iris-darkblue-1k.dds",
+   "flower_share": 0.0384,
+   "mean": "#416d14",
+   "shares": {
+    "violet": 0.0384
+   }
+  },
+  {
+   "key": "000D74:FlowerFields.esp",
+   "edid": "ESpIris01Leaves",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espiris01leaves.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\espiris01leaves.dds",
+   "flower_share": 0.0003,
+   "mean": "#3d6f0d",
+   "shares": {}
+  },
+  {
+   "key": "000D75:FlowerFields.esp",
+   "edid": "ESpIris01Yellow",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espiris01yellow.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\iris-yellow-1k.dds",
+   "flower_share": 0.0441,
+   "mean": "#47730e",
+   "shares": {
+    "yellow": 0.0441
+   }
+  },
+  {
+   "key": "000D76:FlowerFields.esp",
+   "edid": "ESpLadysMantle01",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espladysmantle01.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\espladysmantle01.dds",
+   "flower_share": 0.0002,
+   "mean": "#5f873e",
+   "shares": {}
+  },
+  {
+   "key": "000D77:FlowerFields.esp",
+   "edid": "ESpLeaves01",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espleaves01.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\espleaves.dds",
+   "flower_share": 0.0065,
+   "mean": "#477522",
+   "shares": {
+    "yellow": 0.0065
+   }
+  },
+  {
+   "key": "000D78:FlowerFields.esp",
+   "edid": "ESpLilyoftheValley01",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esplilyofthevalley01.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "white",
+   "diffuse": "textures\\landscape\\grass\\lilyofthevalley-512.dds",
+   "flower_share": 0.0616,
+   "mean": "#426d2b",
+   "shares": {
+    "white": 0.0616
+   }
+  },
+  {
+   "key": "000D79:FlowerFields.esp",
+   "edid": "ESpLilyofthevalley02",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esplilyofthevalley02.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\espflilyofthevalley02.dds",
+   "flower_share": 0.01,
+   "mean": "#386a0c",
+   "shares": {
+    "white": 0.01
+   }
+  },
+  {
+   "key": "000D7A:FlowerFields.esp",
+   "edid": "ESpLilyofthevalley03",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esplilyofthevalley03.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\espflilyofthevalley03.dds",
+   "flower_share": 0.0162,
+   "mean": "#205f09",
+   "shares": {
+    "white": 0.0162
+   }
+  },
+  {
+   "key": "000D7B:FlowerFields.esp",
+   "edid": "ESpLilyofthevalley04",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esplilyofthevalley04.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\espflilyofthevalley04.dds",
+   "flower_share": 0.0121,
+   "mean": "#2e660b",
+   "shares": {
+    "white": 0.0121
+   }
+  },
+  {
+   "key": "000D7C:FlowerFields.esp",
+   "edid": "ESpLilyofthevalley05",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esplilyofthevalley05.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\espflilyofthevalley05.dds",
+   "flower_share": 0.0,
+   "mean": "#185400",
+   "shares": {}
+  },
+  {
+   "key": "000D7D:FlowerFields.esp",
+   "edid": "ESpLiverleaf01blue",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espliverleaf01blue.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "blue",
+   "diffuse": "textures\\landscape\\grass\\liverleaf-blue-2k.dds",
+   "flower_share": 0.1653,
+   "mean": "#5f6358",
+   "shares": {
+    "yellow": 0.0243,
+    "blue": 0.1653,
+    "violet": 0.0364,
+    "white": 0.013
+   }
+  },
+  {
+   "key": "000D7E:FlowerFields.esp",
+   "edid": "ESpLiverleaf01leaves",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espliverleaf01leaves.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\espliverleaf01leaves.dds",
+   "flower_share": 0.0371,
+   "mean": "#687234",
+   "shares": {
+    "yellow": 0.0371
+   }
+  },
+  {
+   "key": "000D7F:FlowerFields.esp",
+   "edid": "ESpLiverleaf01pink",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espliverleaf01pink.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "pink",
+   "diffuse": "textures\\landscape\\grass\\liverleaf-pink-2k.dds",
+   "flower_share": 0.1105,
+   "mean": "#786457",
+   "shares": {
+    "yellow": 0.0242,
+    "violet": 0.0874,
+    "pink": 0.1105,
+    "white": 0.0137
+   }
+  },
+  {
+   "key": "000D80:FlowerFields.esp",
+   "edid": "ESpLiverleaf01purple",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espliverleaf01purple.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "violet",
+   "diffuse": "textures\\landscape\\grass\\liverleaf-purple-2k.dds",
+   "flower_share": 0.1909,
+   "mean": "#696457",
+   "shares": {
+    "yellow": 0.0246,
+    "violet": 0.1909,
+    "white": 0.0134
+   }
+  },
+  {
+   "key": "000D81:FlowerFields.esp",
+   "edid": "ESpLiverleaf01white",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espliverleaf01white.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "white",
+   "diffuse": "textures\\landscape\\grass\\liverleaf-white-2k.dds",
+   "flower_share": 0.1302,
+   "mean": "#7d8257",
+   "shares": {
+    "yellow": 0.0242,
+    "white": 0.1302
+   }
+  },
+  {
+   "key": "000D82:FlowerFields.esp",
+   "edid": "ESpLiverleaf02AGblue",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espliverleaf02agblue.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "blue",
+   "diffuse": "textures\\landscape\\grass\\liverleafag-blue-2k.dds",
+   "flower_share": 0.2705,
+   "mean": "#5a5d61",
+   "shares": {
+    "yellow": 0.0232,
+    "blue": 0.2705
+   }
+  },
+  {
+   "key": "000D83:FlowerFields.esp",
+   "edid": "ESpLiverleaf02AGpink",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espliverleaf02agpink.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "pink",
+   "diffuse": "textures\\landscape\\grass\\liverleafag-pink-2k.dds",
+   "flower_share": 0.1084,
+   "mean": "#7c665e",
+   "shares": {
+    "yellow": 0.0233,
+    "violet": 0.056,
+    "pink": 0.1084
+   }
+  },
+  {
+   "key": "000D84:FlowerFields.esp",
+   "edid": "ESpLiverleaf02AGpurple",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espliverleaf02agpurple.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "violet",
+   "diffuse": "textures\\landscape\\grass\\liverleafag-purple-2k.dds",
+   "flower_share": 0.2063,
+   "mean": "#696562",
+   "shares": {
+    "yellow": 0.0233,
+    "violet": 0.2063
+   }
+  },
+  {
+   "key": "000D85:FlowerFields.esp",
+   "edid": "ESpLiverleaf02AGwhite",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espliverleaf02agwhite.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "white",
+   "diffuse": "textures\\landscape\\grass\\liverleafag-white-2k.dds",
+   "flower_share": 0.1773,
+   "mean": "#848963",
+   "shares": {
+    "yellow": 0.0234,
+    "white": 0.1773
+   }
+  },
+  {
+   "key": "000D86:FlowerFields.esp",
+   "edid": "ESpLupin01",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esplupin01.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\esplupins01.dds",
+   "flower_share": 0.0,
+   "mean": "#0a590d",
+   "shares": {}
+  },
+  {
+   "key": "000D87:FlowerFields.esp",
+   "edid": "ESpMarshmarigold01",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espmarshmarigold01.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "yellow",
+   "diffuse": "textures\\landscape\\grass\\marshmarigold-1k.dds",
+   "flower_share": 0.3029,
+   "mean": "#625d0c",
+   "shares": {
+    "orange": 0.0066,
+    "yellow": 0.3029
+   }
+  },
+  {
+   "key": "000D88:FlowerFields.esp",
+   "edid": "ESpMaylilly01",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espmaylilly01.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "white",
+   "diffuse": "textures\\landscape\\grass\\espmaylilly01.dds",
+   "flower_share": 0.0542,
+   "mean": "#538653",
+   "shares": {
+    "white": 0.0542
+   }
+  },
+  {
+   "key": "000D89:FlowerFields.esp",
+   "edid": "ESpMaylilly02",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espmaylilly02.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\espmaylilly02.dds",
+   "flower_share": 0.0384,
+   "mean": "#4e8556",
+   "shares": {
+    "cyan": 0.0093,
+    "white": 0.0384
+   }
+  },
+  {
+   "key": "000D8A:FlowerFields.esp",
+   "edid": "ESpMeadowsweet01",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espmeadowsweet01.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "yellow",
+   "diffuse": "textures\\landscape\\grass\\espmeadowsweet01.dds",
+   "flower_share": 0.2058,
+   "mean": "#a0a44d",
+   "shares": {
+    "orange": 0.0262,
+    "yellow": 0.2058,
+    "white": 0.0558
+   }
+  },
+  {
+   "key": "000D8B:FlowerFields.esp",
+   "edid": "ESPMeadowsweet02",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espmeadowsweet02.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "yellow",
+   "diffuse": "textures\\landscape\\grass\\espmeadowsweet02.dds",
+   "flower_share": 0.0578,
+   "mean": "#6e8031",
+   "shares": {
+    "orange": 0.0238,
+    "yellow": 0.0578,
+    "white": 0.0347
+   }
+  },
+  {
+   "key": "000D8C:FlowerFields.esp",
+   "edid": "ESPMeadowsweet03",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espmeadowsweet03.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "yellow",
+   "diffuse": "textures\\landscape\\grass\\espmeadowsweet03.dds",
+   "flower_share": 0.1595,
+   "mean": "#828941",
+   "shares": {
+    "orange": 0.0129,
+    "yellow": 0.1595,
+    "white": 0.0341
+   }
+  },
+  {
+   "key": "000D8D:FlowerFields.esp",
+   "edid": "ESpMeadowsweet04",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espmeadowsweet04.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "red",
+   "diffuse": "textures\\landscape\\grass\\espmeadowsweet04.dds",
+   "flower_share": 0.0121,
+   "mean": "#4d342c",
+   "shares": {
+    "red": 0.0121,
+    "orange": 0.0184
+   }
+  },
+  {
+   "key": "000D8E:FlowerFields.esp",
+   "edid": "ESpMeadowsweet05",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espmeadowsweet05.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "straw",
+   "diffuse": "textures\\landscape\\grass\\espmeadowsweet05.dds",
+   "flower_share": 0.0378,
+   "mean": "#58562a",
+   "shares": {
+    "red": 0.0064,
+    "orange": 0.0171,
+    "yellow": 0.0378
+   }
+  },
+  {
+   "key": "000D8F:FlowerFields.esp",
+   "edid": "ESpPacificbleedingheart01",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esppacificbleedingheart01.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "pink",
+   "diffuse": "textures\\landscape\\grass\\esppacificbleedingheart01.dds",
+   "flower_share": 0.0606,
+   "mean": "#4b8933",
+   "shares": {
+    "yellow": 0.0143,
+    "pink": 0.0606
+   }
+  },
+  {
+   "key": "000D90:FlowerFields.esp",
+   "edid": "ESpPacificbleedingheart01leaves",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esppacificbleedingheart01leaves.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\esppacificbleedingheart01leaves.dds",
+   "flower_share": 0.0,
+   "mean": "#4a7f3c",
+   "shares": {}
+  },
+  {
+   "key": "000D91:FlowerFields.esp",
+   "edid": "ESpPacificbleedingheart02",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esppacificbleedingheart02.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "pink",
+   "diffuse": "textures\\landscape\\grass\\esppacificbleedingheart02.dds",
+   "flower_share": 0.0793,
+   "mean": "#5b6541",
+   "shares": {
+    "pink": 0.0793
+   }
+  },
+  {
+   "key": "000D92:FlowerFields.esp",
+   "edid": "ESpPacificbleedingheart02leaves",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esppacificbleedingheart02leaves.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\esppacificbleedingheart02leaves.dds",
+   "flower_share": 0.0,
+   "mean": "#588b49",
+   "shares": {}
+  },
+  {
+   "key": "000D93:FlowerFields.esp",
+   "edid": "ESpPasqueflower01blue",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esppasqueflower01blue.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "blue",
+   "diffuse": "textures\\landscape\\grass\\pasqueflower-blue-1k.dds",
+   "flower_share": 0.0892,
+   "mean": "#585851",
+   "shares": {
+    "orange": 0.0053,
+    "yellow": 0.0205,
+    "blue": 0.0892
+   }
+  },
+  {
+   "key": "000D94:FlowerFields.esp",
+   "edid": "ESpPasqueflower01purple",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esppasqueflower01purple.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "violet",
+   "diffuse": "textures\\landscape\\grass\\pasqueflower-purple-1k.dds",
+   "flower_share": 0.0846,
+   "mean": "#685853",
+   "shares": {
+    "yellow": 0.0527,
+    "violet": 0.0846
+   }
+  },
+  {
+   "key": "000D95:FlowerFields.esp",
+   "edid": "ESpPasqueflower01red",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esppasqueflower01red.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "red",
+   "diffuse": "textures\\landscape\\grass\\pasqueflower-red-1k.dds",
+   "flower_share": 0.1127,
+   "mean": "#64482d",
+   "shares": {
+    "red": 0.1127,
+    "orange": 0.0056,
+    "yellow": 0.0503
+   }
+  },
+  {
+   "key": "000D96:FlowerFields.esp",
+   "edid": "ESpPasqueflower01white",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esppasqueflower01white.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "white",
+   "diffuse": "textures\\landscape\\grass\\pasqueflower-white-1k.dds",
+   "flower_share": 0.1492,
+   "mean": "#8a896f",
+   "shares": {
+    "orange": 0.0065,
+    "yellow": 0.0207,
+    "white": 0.1492
+   }
+  },
+  {
+   "key": "000DA5:FlowerFields.esp",
+   "edid": "ESpSiberianIris01",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espsiberianiris01.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\espsiberianiris01.dds",
+   "flower_share": 0.0,
+   "mean": "#6ea63b",
+   "shares": {}
+  },
+  {
+   "key": "000DA6:FlowerFields.esp",
+   "edid": "ESpSiberianIris01b",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espsiberianiris01b.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\espsiberianiris01.dds",
+   "flower_share": 0.0,
+   "mean": "#6ea63b",
+   "shares": {}
+  },
+  {
+   "key": "000DA7:FlowerFields.esp",
+   "edid": "ESpSnowdrops",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espsnowdrops.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "white",
+   "diffuse": "textures\\landscape\\grass\\snowdrops-1k.dds",
+   "flower_share": 0.1784,
+   "mean": "#64894c",
+   "shares": {
+    "white": 0.1784
+   }
+  },
+  {
+   "key": "000DAD:FlowerFields.esp",
+   "edid": "ESpTulip02Orange1",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esptulip02orange1.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "orange",
+   "diffuse": "textures\\landscape\\grass\\esptulip02orange1.dds",
+   "flower_share": 0.0741,
+   "mean": "#434928",
+   "shares": {
+    "red": 0.0734,
+    "orange": 0.0741
+   }
+  },
+  {
+   "key": "000DAE:FlowerFields.esp",
+   "edid": "ESpTulip02Orange2",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esptulip02orange2.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "orange",
+   "diffuse": "textures\\landscape\\grass\\esptulip02orange2.dds",
+   "flower_share": 0.0779,
+   "mean": "#4b5232",
+   "shares": {
+    "red": 0.0743,
+    "orange": 0.0779
+   }
+  },
+  {
+   "key": "000DAF:FlowerFields.esp",
+   "edid": "ESpTulip02Red",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esptulip02red.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "red",
+   "diffuse": "textures\\landscape\\grass\\esptulip02red.dds",
+   "flower_share": 0.0602,
+   "mean": "#445923",
+   "shares": {
+    "red": 0.0602
+   }
+  },
+  {
+   "key": "000DB0:FlowerFields.esp",
+   "edid": "ESpTulipOrange",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esptuliporange.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "orange",
+   "diffuse": "textures\\landscape\\grass\\esptulip01orange.dds",
+   "flower_share": 0.1791,
+   "mean": "#4f5e1c",
+   "shares": {
+    "red": 0.105,
+    "orange": 0.1791
+   }
+  },
+  {
+   "key": "000DB1:FlowerFields.esp",
+   "edid": "ESpTulipPink",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esptulippink.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "red",
+   "diffuse": "textures\\landscape\\grass\\esptulip01pink.dds",
+   "flower_share": 0.1964,
+   "mean": "#485326",
+   "shares": {
+    "red": 0.1964,
+    "pink": 0.0247
+   }
+  },
+  {
+   "key": "000DB2:FlowerFields.esp",
+   "edid": "ESpTulipPinkLight",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esptulippinklight.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\esptulip01pinklight.dds",
+   "flower_share": 0.0087,
+   "mean": "#32652d",
+   "shares": {
+    "pink": 0.0087,
+    "white": 0.0071
+   }
+  },
+  {
+   "key": "000DB3:FlowerFields.esp",
+   "edid": "ESpTulipPinkRed",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esptulippinkred.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "red",
+   "diffuse": "textures\\landscape\\grass\\esptulip01pinkred.dds",
+   "flower_share": 0.1263,
+   "mean": "#394e1e",
+   "shares": {
+    "red": 0.1263,
+    "pink": 0.0746
+   }
+  },
+  {
+   "key": "000DB4:FlowerFields.esp",
+   "edid": "ESpTulipRed",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esptulipred.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "red",
+   "diffuse": "textures\\landscape\\grass\\esptulip01red.dds",
+   "flower_share": 0.2224,
+   "mean": "#3e4c16",
+   "shares": {
+    "red": 0.2224
+   }
+  },
+  {
+   "key": "000DB5:FlowerFields.esp",
+   "edid": "ESpTulipWhite",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esptulipwhite.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "white",
+   "diffuse": "textures\\landscape\\grass\\esptulip01white.dds",
+   "flower_share": 0.0832,
+   "mean": "#397633",
+   "shares": {
+    "white": 0.0832
+   }
+  },
+  {
+   "key": "000DB6:FlowerFields.esp",
+   "edid": "ESpTulipWhiteRed",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esptulipwhitered.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "white",
+   "diffuse": "textures\\landscape\\grass\\esptulip01whitered.dds",
+   "flower_share": 0.089,
+   "mean": "#436d38",
+   "shares": {
+    "red": 0.0257,
+    "white": 0.089
+   }
+  },
+  {
+   "key": "000DB7:FlowerFields.esp",
+   "edid": "ESpTulipYellow",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esptulipyellow.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "yellow",
+   "diffuse": "textures\\landscape\\grass\\esptulip01yellow.dds",
+   "flower_share": 0.1978,
+   "mean": "#407119",
+   "shares": {
+    "yellow": 0.1978
+   }
+  },
+  {
+   "key": "000DB9:FlowerFields.esp",
+   "edid": "ESpWinterAconite01white",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espwinteraconite01white.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\winteraconite-white-1k.dds",
+   "flower_share": 0.0001,
+   "mean": "#394a39",
+   "shares": {}
+  },
+  {
+   "key": "000DBA:FlowerFields.esp",
+   "edid": "ESpWinterAconite02yellow",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espwinteraconite02yellow.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "yellow",
+   "diffuse": "textures\\landscape\\grass\\winteraconite-yellow-1k.dds",
+   "flower_share": 0.2195,
+   "mean": "#5d5317",
+   "shares": {
+    "orange": 0.0312,
+    "yellow": 0.2195
+   }
+  },
+  {
+   "key": "000DBB:FlowerFields.esp",
+   "edid": "ESpWoodAnemone01white",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espwoodanemone01white.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\woodanemone-white-2k.dds",
+   "flower_share": 0.0023,
+   "mean": "#323a30",
+   "shares": {}
+  },
+  {
+   "key": "000DBC:FlowerFields.esp",
+   "edid": "ESpWoodAnemone02White",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espwoodanemone02white.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\espwoodanemone02white.dds",
+   "flower_share": 0.0097,
+   "mean": "#688333",
+   "shares": {
+    "yellow": 0.0076,
+    "white": 0.0097
+   }
+  },
+  {
+   "key": "000DBD:FlowerFields.esp",
+   "edid": "ESpWoodAnemone03White",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espwoodanemone03white.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\espwoodanemone03white.dds",
+   "flower_share": 0.01,
+   "mean": "#627f2b",
+   "shares": {
+    "yellow": 0.01
+   }
+  },
+  {
+   "key": "000DBE:FlowerFields.esp",
+   "edid": "ESpWoodAnemone04White",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espwoodanemone04white.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "white",
+   "diffuse": "textures\\landscape\\grass\\espwoodanemone04white.dds",
+   "flower_share": 0.1589,
+   "mean": "#5f8240",
+   "shares": {
+    "yellow": 0.0115,
+    "white": 0.1589
+   }
+  },
+  {
+   "key": "000DD6:FlowerFields.esp",
+   "edid": "ESuButtercup01",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esubuttercup01.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "yellow",
+   "diffuse": "textures\\landscape\\grass\\esubuttercup01.dds",
+   "flower_share": 0.0834,
+   "mean": "#415218",
+   "shares": {
+    "yellow": 0.0834
+   }
+  },
+  {
+   "key": "000DD7:FlowerFields.esp",
+   "edid": "ESuButtercup01b",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esubuttercup01b.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "yellow",
+   "diffuse": "textures\\landscape\\grass\\esubuttercup01.dds",
+   "flower_share": 0.0834,
+   "mean": "#415218",
+   "shares": {
+    "yellow": 0.0834
+   }
+  },
+  {
+   "key": "000DD8:FlowerFields.esp",
+   "edid": "ESuButtercup02",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esubuttercup02.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "yellow",
+   "diffuse": "textures\\landscape\\grass\\esubuttercup02.dds",
+   "flower_share": 0.1897,
+   "mean": "#669126",
+   "shares": {
+    "yellow": 0.1897
+   }
+  },
+  {
+   "key": "000DD9:FlowerFields.esp",
+   "edid": "ESuButtercup03",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esubuttercup03.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\esubuttercup03.dds",
+   "flower_share": 0.0006,
+   "mean": "#537231",
+   "shares": {}
+  },
+  {
+   "key": "000DDC:FlowerFields.esp",
+   "edid": "ESuClover01leaves",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esuclover01leaves.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\esuclover01leaves.dds",
+   "flower_share": 0.0029,
+   "mean": "#345d25",
+   "shares": {}
+  },
+  {
+   "key": "000DDD:FlowerFields.esp",
+   "edid": "ESuClover01White",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esuclover01white.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\esuclover01white.dds",
+   "flower_share": 0.0378,
+   "mean": "#40651d",
+   "shares": {
+    "red": 0.0053,
+    "orange": 0.0248,
+    "yellow": 0.0378,
+    "white": 0.0233
+   }
+  },
+  {
+   "key": "000DDE:FlowerFields.esp",
+   "edid": "ESuClover02leaves",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esuclover02leaves.nif",
+   "density": 90,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\esuclover02leaves.dds",
+   "flower_share": 0.0008,
+   "mean": "#526a43",
+   "shares": {}
+  },
+  {
+   "key": "000DDF:FlowerFields.esp",
+   "edid": "ESuClover02Red",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esuclover02red.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\esuclover02red.dds",
+   "flower_share": 0.0091,
+   "mean": "#526346",
+   "shares": {
+    "pink": 0.0091
+   }
+  },
+  {
+   "key": "000DE0:FlowerFields.esp",
+   "edid": "ESuCloverLeaves01",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esucloverleaves01.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\esucloverleaves01.dds",
+   "flower_share": 0.0002,
+   "mean": "#53892c",
+   "shares": {}
+  },
+  {
+   "key": "000DE1:FlowerFields.esp",
+   "edid": "ESuColumbine01Blue",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esucolumbine01blue.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "blue",
+   "diffuse": "textures\\landscape\\grass\\esucolumbine01blue.dds",
+   "flower_share": 0.1224,
+   "mean": "#4e5e5f",
+   "shares": {
+    "blue": 0.1224
+   }
+  },
+  {
+   "key": "000DE2:FlowerFields.esp",
+   "edid": "ESuColumbine01Pink",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esucolumbine01pink.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "pink",
+   "diffuse": "textures\\landscape\\grass\\esucolumbine01pink.dds",
+   "flower_share": 0.0535,
+   "mean": "#67712f",
+   "shares": {
+    "red": 0.0418,
+    "orange": 0.0055,
+    "yellow": 0.0176,
+    "pink": 0.0535
+   }
+  },
+  {
+   "key": "000E10:FlowerFields.esp",
+   "edid": "ESuHeather01",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esuheather01.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "pink",
+   "diffuse": "textures\\landscape\\grass\\esuheather01.dds",
+   "flower_share": 0.0148,
+   "mean": "#43471e",
+   "shares": {
+    "orange": 0.0052,
+    "pink": 0.0148
+   }
+  },
+  {
+   "key": "000E11:FlowerFields.esp",
+   "edid": "ESuHeather01ds",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esuheather01ds.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "straw",
+   "diffuse": "textures\\landscape\\grass\\esuheather01ds.dds",
+   "flower_share": 0.0049,
+   "mean": "#43461f",
+   "shares": {}
+  },
+  {
+   "key": "000E12:FlowerFields.esp",
+   "edid": "ESuHeather02",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esuheather02.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "pink",
+   "diffuse": "textures\\landscape\\grass\\esuheather01.dds",
+   "flower_share": 0.0148,
+   "mean": "#43471e",
+   "shares": {
+    "orange": 0.0052,
+    "pink": 0.0148
+   }
+  },
+  {
+   "key": "000E13:FlowerFields.esp",
+   "edid": "ESuHeather02b",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esuheather02b.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "straw",
+   "diffuse": "textures\\landscape\\grass\\esuheather02.dds",
+   "flower_share": 0.0069,
+   "mean": "#3a3b25",
+   "shares": {
+    "pink": 0.0069
+   }
+  },
+  {
+   "key": "000E14:FlowerFields.esp",
+   "edid": "ESuHeather02ds",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esuheather02ds.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "straw",
+   "diffuse": "textures\\landscape\\grass\\esuheather02ds.dds",
+   "flower_share": 0.0007,
+   "mean": "#3f4324",
+   "shares": {}
+  },
+  {
+   "key": "000E15:FlowerFields.esp",
+   "edid": "ESuHeather02dsb",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esuheather02dsb.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "straw",
+   "diffuse": "textures\\landscape\\grass\\esuheather02ds.dds",
+   "flower_share": 0.0007,
+   "mean": "#3f4324",
+   "shares": {}
+  },
+  {
+   "key": "000E26:FlowerFields.esp",
+   "edid": "ESuLeaves02",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esuleaves02.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\esuleaves02.dds",
+   "flower_share": 0.0,
+   "mean": "#527e58",
+   "shares": {}
+  },
+  {
+   "key": "000E27:FlowerFields.esp",
+   "edid": "ESuLeaves03",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esuleaves03.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\esuleaves03.dds",
+   "flower_share": 0.0,
+   "mean": "#57753e",
+   "shares": {}
+  },
+  {
+   "key": "000E2D:FlowerFields.esp",
+   "edid": "ESuLupin01Blue",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esulupin01blue.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "violet",
+   "diffuse": "textures\\landscape\\grass\\esulupinsblue01.dds",
+   "flower_share": 0.0542,
+   "mean": "#263f27",
+   "shares": {
+    "blue": 0.012,
+    "violet": 0.0542
+   }
+  },
+  {
+   "key": "000E2E:FlowerFields.esp",
+   "edid": "ESuLupin01BlueWhite",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esulupin01bluewhite.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "violet",
+   "diffuse": "textures\\landscape\\grass\\esulupinsblue02.dds",
+   "flower_share": 0.0486,
+   "mean": "#2a4829",
+   "shares": {
+    "blue": 0.0234,
+    "violet": 0.0486,
+    "white": 0.0142
+   }
+  },
+  {
+   "key": "000E2F:FlowerFields.esp",
+   "edid": "ESuLupin01Pink",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esulupin01pink.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "pink",
+   "diffuse": "textures\\landscape\\grass\\esulupins01pink.dds",
+   "flower_share": 0.0127,
+   "mean": "#3c5124",
+   "shares": {
+    "red": 0.0051,
+    "orange": 0.0087,
+    "pink": 0.0127
+   }
+  },
+  {
+   "key": "000E30:FlowerFields.esp",
+   "edid": "ESuLupin01PinkWhite",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esulupin01pinkwhite.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\esulupins01pinkwhite.dds",
+   "flower_share": 0.0063,
+   "mean": "#41582a",
+   "shares": {
+    "yellow": 0.0063
+   }
+  },
+  {
+   "key": "000E31:FlowerFields.esp",
+   "edid": "ESuLupin01White",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esulupin01white.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\esulupins01white.dds",
+   "flower_share": 0.0078,
+   "mean": "#4a6733",
+   "shares": {
+    "yellow": 0.0078
+   }
+  },
+  {
+   "key": "000E32:FlowerFields.esp",
+   "edid": "ESuLupins02Blue01",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esulupins02blue01.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "violet",
+   "diffuse": "textures\\landscape\\grass\\esulupins02blue01.dds",
+   "flower_share": 0.0688,
+   "mean": "#20522a",
+   "shares": {
+    "blue": 0.0191,
+    "violet": 0.0688
+   }
+  },
+  {
+   "key": "000E33:FlowerFields.esp",
+   "edid": "ESuLupins02BlueWhite01",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esulupins02bluewhite01.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "violet",
+   "diffuse": "textures\\landscape\\grass\\esulupins02bluewhite01.dds",
+   "flower_share": 0.0159,
+   "mean": "#195c1e",
+   "shares": {
+    "violet": 0.0159,
+    "white": 0.0095
+   }
+  },
+  {
+   "key": "000E34:FlowerFields.esp",
+   "edid": "ESuLupins02BlueWhite02",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esulupins02bluewhite02.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "violet",
+   "diffuse": "textures\\landscape\\grass\\esulupins02bluewhite02.dds",
+   "flower_share": 0.036,
+   "mean": "#17561f",
+   "shares": {
+    "blue": 0.0186,
+    "violet": 0.036,
+    "white": 0.007
+   }
+  },
+  {
+   "key": "000E35:FlowerFields.esp",
+   "edid": "ESuLupins02Pink01",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esulupins02pink01.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "pink",
+   "diffuse": "textures\\landscape\\grass\\esulupins02pink01.dds",
+   "flower_share": 0.0133,
+   "mean": "#355b28",
+   "shares": {
+    "orange": 0.0052,
+    "pink": 0.0133
+   }
+  },
+  {
+   "key": "000E36:FlowerFields.esp",
+   "edid": "ESuLupins02Pink02",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esulupins02pink02.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\esulupins02pink02.dds",
+   "flower_share": 0.0434,
+   "mean": "#225d17",
+   "shares": {
+    "orange": 0.0434,
+    "yellow": 0.0156
+   }
+  },
+  {
+   "key": "000E37:FlowerFields.esp",
+   "edid": "ESuLupins02Pink03",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esulupins02pink03.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "pink",
+   "diffuse": "textures\\landscape\\grass\\esulupins02pink03.dds",
+   "flower_share": 0.0209,
+   "mean": "#2b6128",
+   "shares": {
+    "pink": 0.0209
+   }
+  },
+  {
+   "key": "000E38:FlowerFields.esp",
+   "edid": "ESuLupins02PinkWhite01",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esulupins02pinkwhite01.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\esulupins02pinkwhite01.dds",
+   "flower_share": 0.009,
+   "mean": "#326428",
+   "shares": {
+    "yellow": 0.0056,
+    "white": 0.009
+   }
+  },
+  {
+   "key": "000E39:FlowerFields.esp",
+   "edid": "ESuLupins02PinkWhite02",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esulupins02pinkwhite02.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\esulupins02pinkwhite02.dds",
+   "flower_share": 0.0108,
+   "mean": "#2d6928",
+   "shares": {
+    "yellow": 0.0087,
+    "white": 0.0108
+   }
+  },
+  {
+   "key": "000E3A:FlowerFields.esp",
+   "edid": "ESuLupins02White01",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esulupins02white01.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\esulupins02white01.dds",
+   "flower_share": 0.0025,
+   "mean": "#23641f",
+   "shares": {}
+  },
+  {
+   "key": "000E3B:FlowerFields.esp",
+   "edid": "ESuLupins02White02",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esulupins02white02.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\esulupins02white02.dds",
+   "flower_share": 0.0248,
+   "mean": "#296b20",
+   "shares": {
+    "yellow": 0.0248
+   }
+  },
+  {
+   "key": "000E3E:FlowerFields.esp",
+   "edid": "ESuMeadowsweet01",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esumeadowsweet01.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\esumeadowsweet01.dds",
+   "flower_share": 0.0008,
+   "mean": "#224f15",
+   "shares": {}
+  },
+  {
+   "key": "000E3F:FlowerFields.esp",
+   "edid": "ESuMeadowsweet02",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esumeadowsweet02.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\esumeadowsweet02.dds",
+   "flower_share": 0.0178,
+   "mean": "#3a521a",
+   "shares": {
+    "yellow": 0.0178
+   }
+  },
+  {
+   "key": "000E4A:FlowerFields.esp",
+   "edid": "ESuOxeyeDaisy01",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esuoxeyedaisy01.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "white",
+   "diffuse": "textures\\landscape\\grass\\esuoxeyedaisy01.dds",
+   "flower_share": 0.2936,
+   "mean": "#899a5e",
+   "shares": {
+    "yellow": 0.0464,
+    "white": 0.2936
+   }
+  },
+  {
+   "key": "000E4B:FlowerFields.esp",
+   "edid": "ESuOxeyeDaisy02",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esuoxeyedaisy02.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "white",
+   "diffuse": "textures\\landscape\\grass\\esuoxeyedaisy02.dds",
+   "flower_share": 0.3595,
+   "mean": "#99a56d",
+   "shares": {
+    "yellow": 0.0699,
+    "white": 0.3595
+   }
+  },
+  {
+   "key": "000E4C:FlowerFields.esp",
+   "edid": "ESuOxeyeDaisy03",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esuoxeyedaisy03.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "white",
+   "diffuse": "textures\\landscape\\grass\\esuoxeyedaisy03.dds",
+   "flower_share": 0.2552,
+   "mean": "#869657",
+   "shares": {
+    "yellow": 0.0611,
+    "white": 0.2552
+   }
+  },
+  {
+   "key": "000E4F:FlowerFields.esp",
+   "edid": "ESuPoppy01White",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esupoppy01white.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "white",
+   "diffuse": "textures\\landscape\\grass\\esupoppy01white.dds",
+   "flower_share": 0.2787,
+   "mean": "#7d8d67",
+   "shares": {
+    "yellow": 0.0066,
+    "white": 0.2787
+   }
+  },
+  {
+   "key": "000E50:FlowerFields.esp",
+   "edid": "ESuPoppy02Red",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esupoppy02red.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "red",
+   "diffuse": "textures\\landscape\\grass\\esupoppy02red.dds",
+   "flower_share": 0.4221,
+   "mean": "#5e3714",
+   "shares": {
+    "red": 0.4221,
+    "yellow": 0.0073
+   }
+  },
+  {
+   "key": "000E51:FlowerFields.esp",
+   "edid": "ESuPoppy03Pink",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esupoppy03pink.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "white",
+   "diffuse": "textures\\landscape\\grass\\esupoppy03pink.dds",
+   "flower_share": 0.1018,
+   "mean": "#878e6d",
+   "shares": {
+    "white": 0.1018
+   }
+  },
+  {
+   "key": "000E52:FlowerFields.esp",
+   "edid": "ESuPoppy04Leaves",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esupoppy04leaves.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\esupoppy04leaves.dds",
+   "flower_share": 0.0,
+   "mean": "#53672d",
+   "shares": {}
+  },
+  {
+   "key": "000E5F:FlowerFields.esp",
+   "edid": "ESuWelshPoppy01Orange",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esuwelshpoppy01orange.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "orange",
+   "diffuse": "textures\\landscape\\grass\\esuwelshpoopy01orange.dds",
+   "flower_share": 0.4517,
+   "mean": "#88761e",
+   "shares": {
+    "orange": 0.4517,
+    "yellow": 0.0405
+   }
+  },
+  {
+   "key": "000E60:FlowerFields.esp",
+   "edid": "ESuWelshPoppy01Red",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esuwelshpoppy01red.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "red",
+   "diffuse": "textures\\landscape\\grass\\esuwelshpoopy01red.dds",
+   "flower_share": 0.4634,
+   "mean": "#85551f",
+   "shares": {
+    "red": 0.4634,
+    "orange": 0.0256
+   }
+  },
+  {
+   "key": "000E61:FlowerFields.esp",
+   "edid": "ESuWelshPoppy01White",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esuwelshpoppy01white.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "white",
+   "diffuse": "textures\\landscape\\grass\\esuwelshpoopy01white.dds",
+   "flower_share": 0.0538,
+   "mean": "#8d9d5d",
+   "shares": {
+    "white": 0.0538
+   }
+  },
+  {
+   "key": "000E62:FlowerFields.esp",
+   "edid": "ESuWelshPoppy01Yellow",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esuwelshpoppy01yellow.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "yellow",
+   "diffuse": "textures\\landscape\\grass\\esuwelshpoopy01yellow.dds",
+   "flower_share": 0.4898,
+   "mean": "#89911c",
+   "shares": {
+    "yellow": 0.4898
+   }
+  },
+  {
+   "key": "000E99:FlowerFields.esp",
+   "edid": "Ztfieldgrass01",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\ztfieldgrass01.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\2048grass.dds",
+   "flower_share": 0.0,
+   "mean": "#292f0e",
+   "shares": {}
+  },
+  {
+   "key": "000EEF:FlowerFields.esp",
+   "edid": "ESpAlpineSnowbell",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espalpinesnowbell.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\alpinesnowbell-1k.dds",
+   "flower_share": 0.0356,
+   "mean": "#8a9a8f",
+   "shares": {
+    "white": 0.0356
+   }
+  },
+  {
+   "key": "000EFC:FlowerFields.esp",
+   "edid": "ESpBluebells01blue",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espbluebells01blue.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "white",
+   "diffuse": "textures\\landscape\\grass\\bluebellsblue-1k.dds",
+   "flower_share": 0.0594,
+   "mean": "#4a5b4c",
+   "shares": {
+    "blue": 0.0391,
+    "white": 0.0594
+   }
+  },
+  {
+   "key": "000EFD:FlowerFields.esp",
+   "edid": "ESpBluebells01darkblue",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espbluebells01darkblue.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "blue",
+   "diffuse": "textures\\landscape\\grass\\bluebells-darkblue-1k.dds",
+   "flower_share": 0.0754,
+   "mean": "#44564b",
+   "shares": {
+    "blue": 0.0754,
+    "white": 0.0418
+   }
+  },
+  {
+   "key": "000EFE:FlowerFields.esp",
+   "edid": "ESpBluebells01pink",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espbluebells01pink.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "white",
+   "diffuse": "textures\\landscape\\grass\\bluebells-pink-1k.dds",
+   "flower_share": 0.0599,
+   "mean": "#575a46",
+   "shares": {
+    "pink": 0.0432,
+    "white": 0.0599
+   }
+  },
+  {
+   "key": "000EFF:FlowerFields.esp",
+   "edid": "ESpBluebells01white",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espbluebells01white.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "white",
+   "diffuse": "textures\\landscape\\grass\\bluebells-white-1k.dds",
+   "flower_share": 0.1069,
+   "mean": "#596850",
+   "shares": {
+    "white": 0.1069
+   }
+  },
+  {
+   "key": "000F00:FlowerFields.esp",
+   "edid": "ESpBluebells02blue",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espbluebells02blue.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "violet",
+   "diffuse": "textures\\landscape\\grass\\espfbluebells02-blue.dds",
+   "flower_share": 0.0908,
+   "mean": "#47543e",
+   "shares": {
+    "blue": 0.0071,
+    "violet": 0.0908,
+    "white": 0.0064
+   }
+  },
+  {
+   "key": "000F01:FlowerFields.esp",
+   "edid": "ESpBluebells02blue2",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espbluebells02blue2.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "blue",
+   "diffuse": "textures\\landscape\\grass\\espfbluebells02-blue2.dds",
+   "flower_share": 0.1209,
+   "mean": "#3e543f",
+   "shares": {
+    "blue": 0.1209,
+    "violet": 0.0142,
+    "white": 0.0062
+   }
+  },
+  {
+   "key": "000F02:FlowerFields.esp",
+   "edid": "ESpBluebells02pink",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espbluebells02pink.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "violet",
+   "diffuse": "textures\\landscape\\grass\\espfbluebells02-pink.dds",
+   "flower_share": 0.0273,
+   "mean": "#50573c",
+   "shares": {
+    "violet": 0.0273,
+    "white": 0.0071
+   }
+  },
+  {
+   "key": "000F03:FlowerFields.esp",
+   "edid": "ESpBluebells03blue",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espbluebells03blue.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "violet",
+   "diffuse": "textures\\landscape\\grass\\espbluebells03blue.dds",
+   "flower_share": 0.0139,
+   "mean": "#53624b",
+   "shares": {
+    "violet": 0.0139,
+    "white": 0.0242
+   }
+  },
+  {
+   "key": "000F04:FlowerFields.esp",
+   "edid": "ESpBluebells04blue",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espbluebells04blue.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "blue",
+   "diffuse": "textures\\landscape\\grass\\espbluebells04blue.dds",
+   "flower_share": 0.0896,
+   "mean": "#536656",
+   "shares": {
+    "blue": 0.0896,
+    "violet": 0.0673,
+    "white": 0.0117
+   }
+  },
+  {
+   "key": "000F05:FlowerFields.esp",
+   "edid": "ESpBluebells04leaves",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espbluebells04leaves.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\espbluebells04leaves.dds",
+   "flower_share": 0.0001,
+   "mean": "#3e6324",
+   "shares": {}
+  },
+  {
+   "key": "000F14:FlowerFields.esp",
+   "edid": "ESpColumbine01",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espcolumbine01.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\espcolumbine01.dds",
+   "flower_share": 0.0006,
+   "mean": "#4e7e1c",
+   "shares": {}
+  },
+  {
+   "key": "000F1A:FlowerFields.esp",
+   "edid": "ESpCrocus01",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espcrocus01.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "violet",
+   "diffuse": "textures\\landscape\\grass\\espcrocus01.dds",
+   "flower_share": 0.354,
+   "mean": "#865ca7",
+   "shares": {
+    "orange": 0.0429,
+    "blue": 0.0065,
+    "violet": 0.354,
+    "pink": 0.0095,
+    "white": 0.0944
+   }
+  },
+  {
+   "key": "000F1B:FlowerFields.esp",
+   "edid": "ESpCrocus01B",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espcrocus01b.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "violet",
+   "diffuse": "textures\\landscape\\grass\\espcrocus01.dds",
+   "flower_share": 0.354,
+   "mean": "#865ca7",
+   "shares": {
+    "orange": 0.0429,
+    "blue": 0.0065,
+    "violet": 0.354,
+    "pink": 0.0095,
+    "white": 0.0944
+   }
+  },
+  {
+   "key": "000F1C:FlowerFields.esp",
+   "edid": "ESpCrocus01Pink",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espcrocus01pink.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "pink",
+   "diffuse": "textures\\landscape\\grass\\espcrocus01pink.dds",
+   "flower_share": 0.3423,
+   "mean": "#ad5ca6",
+   "shares": {
+    "orange": 0.0431,
+    "violet": 0.0271,
+    "pink": 0.3423,
+    "white": 0.0946
+   }
+  },
+  {
+   "key": "000F1D:FlowerFields.esp",
+   "edid": "ESpCrocus01Pink2",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espcrocus01pink2.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "pink",
+   "diffuse": "textures\\landscape\\grass\\espcrocus01pink2.dds",
+   "flower_share": 0.3644,
+   "mean": "#b25c79",
+   "shares": {
+    "red": 0.0099,
+    "orange": 0.0431,
+    "pink": 0.3644,
+    "white": 0.0953
+   }
+  },
+  {
+   "key": "000F1E:FlowerFields.esp",
+   "edid": "ESpCrocus01Yellow",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espcrocus01yellow.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "yellow",
+   "diffuse": "textures\\landscape\\grass\\espcrocus01yellow.dds",
+   "flower_share": 0.3018,
+   "mean": "#bc974e",
+   "shares": {
+    "red": 0.0062,
+    "orange": 0.2096,
+    "yellow": 0.3018,
+    "white": 0.0651
+   }
+  },
+  {
+   "key": "000F1F:FlowerFields.esp",
+   "edid": "ESpCrocus02",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espcrocus02.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "white",
+   "diffuse": "textures\\landscape\\grass\\espcrocus02.dds",
+   "flower_share": 0.1023,
+   "mean": "#6c7f50",
+   "shares": {
+    "yellow": 0.0146,
+    "white": 0.1023
+   }
+  },
+  {
+   "key": "000F20:FlowerFields.esp",
+   "edid": "ESpCrocus02leaves",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espcrocus02leaves.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\espcrocus02leaves.dds",
+   "flower_share": 0.0005,
+   "mean": "#3e7217",
+   "shares": {}
+  },
+  {
+   "key": "000F21:FlowerFields.esp",
+   "edid": "ESpCrocus03",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espcrocus03.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "pink",
+   "diffuse": "textures\\landscape\\grass\\espcrocus03.dds",
+   "flower_share": 0.0911,
+   "mean": "#5f554f",
+   "shares": {
+    "violet": 0.0446,
+    "pink": 0.0911
+   }
+  },
+  {
+   "key": "000F22:FlowerFields.esp",
+   "edid": "ESpDaffodil01darkyellow",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espdaffodil01darkyellow.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "yellow",
+   "diffuse": "textures\\landscape\\grass\\daffodil-darkyellow-1k.dds",
+   "flower_share": 0.3111,
+   "mean": "#8c7d1a",
+   "shares": {
+    "orange": 0.1109,
+    "yellow": 0.3111
+   }
+  },
+  {
+   "key": "000F23:FlowerFields.esp",
+   "edid": "ESpDaffodil01white",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espdaffodil01white.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\daffodil-white-1k.dds",
+   "flower_share": 0.0425,
+   "mean": "#858e5d",
+   "shares": {
+    "white": 0.0425
+   }
+  },
+  {
+   "key": "000F24:FlowerFields.esp",
+   "edid": "ESpDaffodil01whiteorange",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espdaffodil01whiteorange.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "yellow",
+   "diffuse": "textures\\landscape\\grass\\daffodil-whiteorange-1k.dds",
+   "flower_share": 0.147,
+   "mean": "#828434",
+   "shares": {
+    "orange": 0.0058,
+    "yellow": 0.147
+   }
+  },
+  {
+   "key": "000F25:FlowerFields.esp",
+   "edid": "ESpDaffodil01whitered",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espdaffodil01whitered.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "orange",
+   "diffuse": "textures\\landscape\\grass\\daffodil-whitered-1k.dds",
+   "flower_share": 0.1491,
+   "mean": "#877f3e",
+   "shares": {
+    "orange": 0.1491
+   }
+  },
+  {
+   "key": "000F26:FlowerFields.esp",
+   "edid": "ESpDaffodil01yellow",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espdaffodil01yellow.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "yellow",
+   "diffuse": "textures\\landscape\\grass\\daffodil-yellow-1k.dds",
+   "flower_share": 0.4128,
+   "mean": "#89851c",
+   "shares": {
+    "orange": 0.0063,
+    "yellow": 0.4128
+   }
+  },
+  {
+   "key": "000F27:FlowerFields.esp",
+   "edid": "ESpDaffodil01yelloworange",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espdaffodil01yelloworange.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "yellow",
+   "diffuse": "textures\\landscape\\grass\\daffodil-yelloworange-1k.dds",
+   "flower_share": 0.2697,
+   "mean": "#897c1f",
+   "shares": {
+    "orange": 0.1494,
+    "yellow": 0.2697
+   }
+  },
+  {
+   "key": "000F28:FlowerFields.esp",
+   "edid": "ESpDaffodil01yellowwhite",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espdaffodil01yellowwhite.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "yellow",
+   "diffuse": "textures\\landscape\\grass\\daffodil-yellowwhite-1k.dds",
+   "flower_share": 0.2721,
+   "mean": "#84852e",
+   "shares": {
+    "yellow": 0.2721
+   }
+  },
+  {
+   "key": "000F29:FlowerFields.esp",
+   "edid": "ESpDaffodil02",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espdaffodil02.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "yellow",
+   "diffuse": "textures\\landscape\\grass\\espdaffodil02.dds",
+   "flower_share": 0.068,
+   "mean": "#6e844c",
+   "shares": {
+    "orange": 0.0082,
+    "yellow": 0.068,
+    "white": 0.0401
+   }
+  },
+  {
+   "key": "000F2A:FlowerFields.esp",
+   "edid": "ESpDaffodil03Leaves",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espdaffodil03leaves.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\espdaffodil03leaves.dds",
+   "flower_share": 0.0,
+   "mean": "#486d3d",
+   "shares": {}
+  },
+  {
+   "key": "000F2B:FlowerFields.esp",
+   "edid": "ESpDandelion01",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espdandelion01.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\dandelion-1k.dds",
+   "flower_share": 0.0,
+   "mean": "#505d47",
+   "shares": {}
+  },
+  {
+   "key": "000F2C:FlowerFields.esp",
+   "edid": "ESpDandelion01Leaves",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espdandelion01leaves.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\espdandelion01leaves.dds",
+   "flower_share": 0.0003,
+   "mean": "#5c7628",
+   "shares": {}
+  },
+  {
+   "key": "000F2D:FlowerFields.esp",
+   "edid": "ESpDandelion02",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espdandelion02.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "yellow",
+   "diffuse": "textures\\landscape\\grass\\espdandelion02.dds",
+   "flower_share": 0.1342,
+   "mean": "#5b6f16",
+   "shares": {
+    "yellow": 0.1342
+   }
+  },
+  {
+   "key": "000F2E:FlowerFields.esp",
+   "edid": "ESpDandelion02leaves",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espdandelion02leaves.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\espdandelion02leaves.dds",
+   "flower_share": 0.0035,
+   "mean": "#436417",
+   "shares": {}
+  },
+  {
+   "key": "000F2F:FlowerFields.esp",
+   "edid": "ESpDogViolet01",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espdogviolet01.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "violet",
+   "diffuse": "textures\\landscape\\grass\\espdogviolet01.dds",
+   "flower_share": 0.0182,
+   "mean": "#296133",
+   "shares": {
+    "violet": 0.0182
+   }
+  },
+  {
+   "key": "000F33:FlowerFields.esp",
+   "edid": "ESpforgetmenot01",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espforgetmenot01.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\espforgetmenot01a.dds",
+   "flower_share": 0.0242,
+   "mean": "#374c2f",
+   "shares": {
+    "white": 0.0242
+   }
+  },
+  {
+   "key": "000F34:FlowerFields.esp",
+   "edid": "ESpforgetmenot02",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espforgetmenot02.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "blue",
+   "diffuse": "textures\\landscape\\grass\\espforgetmenot02c.dds",
+   "flower_share": 0.2195,
+   "mean": "#3e5f63",
+   "shares": {
+    "yellow": 0.0104,
+    "blue": 0.2195
+   }
+  },
+  {
+   "key": "001F5B:FlowerFields.esp",
+   "edid": "ESuheather02Vu",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esuheather02vu.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "straw",
+   "diffuse": "textures\\landscape\\grass\\esuheather02.dds",
+   "flower_share": 0.0069,
+   "mean": "#3a3b25",
+   "shares": {
+    "pink": 0.0069
+   }
+  },
+  {
+   "key": "001F5C:FlowerFields.esp",
+   "edid": "ESuheather01Vu",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esuheather01vu.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "pink",
+   "diffuse": "textures\\landscape\\grass\\esuheather01.dds",
+   "flower_share": 0.0148,
+   "mean": "#43471e",
+   "shares": {
+    "orange": 0.0052,
+    "pink": 0.0148
+   }
+  },
+  {
+   "key": "001F66:FlowerFields.esp",
+   "edid": "EspSiberianIris01Vu",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espsiberianiris01vu.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\espsiberianiris01.dds",
+   "flower_share": 0.0,
+   "mean": "#6ea63b",
+   "shares": {}
+  },
+  {
+   "key": "002896:Tropical Skyrim.esp",
+   "edid": "TropicalGrassPlant01",
+   "winner": "Tropical Skyrim.esp",
+   "mesh": "meshes\\landscape\\grass\\grassfern01.nif",
+   "density": 5,
+   "slope": [
+    0,
+    50
+   ],
+   "height_range": 0.0,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "straw",
+   "diffuse": "textures\\landscape\\grass\\swordfern.dds",
+   "flower_share": 0.009,
+   "mean": "#3b3f1a",
+   "shares": {
+    "orange": 0.0071,
+    "yellow": 0.009
+   }
+  },
+  {
+   "key": "0043EA:Tropical Skyrim.esp",
+   "edid": "CattailGrass01",
+   "winner": "Tropical Skyrim.esp",
+   "mesh": "meshes\\landscape\\grass\\cattailgrass.nif",
+   "density": 30,
+   "slope": [
+    0,
+    40
+   ],
+   "height_range": 0.3,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\grasscattails.dds",
+   "flower_share": 0.0359,
+   "mean": "#66742c",
+   "shares": {
+    "orange": 0.0359,
+    "yellow": 0.0075
+   }
+  },
+  {
+   "key": "007607:Tropical Skyrim.esp",
+   "edid": "TropicalGrassPlant02",
+   "winner": "Tropical Skyrim.esp",
+   "mesh": "meshes\\landscape\\grass\\grassplant01.nif",
+   "density": 3,
+   "slope": [
+    0,
+    50
+   ],
+   "height_range": 0.0,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\grassplant01.dds",
+   "flower_share": 0.0079,
+   "mean": "#3b4219",
+   "shares": {
+    "orange": 0.0062,
+    "yellow": 0.0079
+   }
+  },
+  {
+   "key": "007608:Tropical Skyrim.esp",
+   "edid": "TropicalGrass01",
+   "winner": "Tropical Skyrim.esp",
+   "mesh": "meshes\\landscape\\grass\\marshgrassobj01.nif",
+   "density": 5,
+   "slope": [
+    0,
+    42
+   ],
+   "height_range": 0.3,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\frozenmarshgrassobj01.dds",
+   "flower_share": 0.0012,
+   "mean": "#36441e",
+   "shares": {}
+  },
+  {
+   "key": "0078AE:Dawnguard.esm",
+   "edid": "DLC01SoulCairnGrass01",
+   "winner": "Dawnguard.esm",
+   "mesh": "meshes\\landscape\\grass\\dlc01soulcairngrass01.nif",
+   "density": 80,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.3,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "yellow",
+   "diffuse": "textures\\dlc01\\landscape\\grass\\dlc01soulcairngrass01.dds",
+   "flower_share": 0.2404,
+   "mean": "#6e5d3b",
+   "shares": {
+    "orange": 0.0168,
+    "yellow": 0.2404
+   }
+  },
+  {
+   "key": "0135BE:Skyrim.esm",
+   "edid": "FieldGrass01",
+   "winner": "Update.esm",
+   "mesh": "meshes\\landscape\\grass\\fieldgrass01.nif",
+   "density": 64,
+   "slope": [
+    0,
+    45
+   ],
+   "height_range": 0.2,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "straw",
+   "diffuse": "textures\\landscape\\grass\\fieldgrassobj01.dds",
+   "flower_share": 0.0358,
+   "mean": "#494d20",
+   "shares": {
+    "yellow": 0.0358
+   }
+  },
+  {
+   "key": "014041:Skyrim.esm",
+   "edid": "ForestGrass01",
+   "winner": "Tropical Skyrim.esp",
+   "mesh": "meshes\\landscape\\grass\\forestgrass01.nif",
+   "density": 25,
+   "slope": [
+    0,
+    33
+   ],
+   "height_range": 0.1,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\forestgrass01.dds",
+   "flower_share": 0.0,
+   "mean": "#2a511b",
+   "shares": {}
+  },
+  {
+   "key": "0173F4:Skyrim.esm",
+   "edid": "FernGrass01",
+   "winner": "Tropical Skyrim.esp",
+   "mesh": "meshes\\landscape\\grass\\ferngrass01.nif",
+   "density": 37,
+   "slope": [
+    0,
+    50
+   ],
+   "height_range": 0.2,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "straw",
+   "diffuse": "textures\\landscape\\grass\\swordfern.dds",
+   "flower_share": 0.009,
+   "mean": "#3b3f1a",
+   "shares": {
+    "orange": 0.0071,
+    "yellow": 0.009
+   }
+  },
+  {
+   "key": "01771E:Dragonborn.esm",
+   "edid": "DLC02VolcanicAshRocks01",
+   "winner": "Dragonborn.esm",
+   "mesh": "meshes\\landscape\\grass\\dlc02volcanicashrocks01.nif",
+   "density": 10,
+   "slope": [
+    0,
+    10
+   ],
+   "height_range": 0.05,
+   "mesh_ok": false,
+   "textures_ok": false,
+   "family": "unknown"
+  },
+  {
+   "key": "017EA2:Dragonborn.esm",
+   "edid": "DLC02VolcanicAshGrass01",
+   "winner": "Dragonborn.esm",
+   "mesh": "meshes\\landscape\\grass\\dlc02volcanicashgrass01.nif",
+   "density": 60,
+   "slope": [
+    0,
+    46
+   ],
+   "height_range": 0.03,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "straw",
+   "diffuse": "textures\\dlc02\\landscape\\grass\\volcanicashgrass03.dds",
+   "flower_share": 0.0001,
+   "mean": "#514232",
+   "shares": {}
+  },
+  {
+   "key": "01CC70:Skyrim.esm",
+   "edid": "SnowGrass01",
+   "winner": "Update.esm",
+   "mesh": "meshes\\landscape\\grass\\snowgrass01.nif",
+   "density": 40,
+   "slope": [
+    0,
+    48
+   ],
+   "height_range": 0.2,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\snowgrass01.dds",
+   "flower_share": 0.0,
+   "mean": "#45512d",
+   "shares": {}
+  },
+  {
+   "key": "01E341:Dragonborn.esm",
+   "edid": "DLC02VolcanicAshGrass02",
+   "winner": "Dragonborn.esm",
+   "mesh": "meshes\\landscape\\grass\\dlc02volcanicashgrass02.nif",
+   "density": 60,
+   "slope": [
+    0,
+    46
+   ],
+   "height_range": 0.03,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "straw",
+   "diffuse": "textures\\dlc02\\landscape\\grass\\volcanicashgrass02.dds",
+   "flower_share": 0.0064,
+   "mean": "#4a4a41",
+   "shares": {
+    "white": 0.0064
+   }
+  },
+  {
+   "key": "02ACD3:Skyrim.esm",
+   "edid": "TundraGrass03",
+   "winner": "Tropical Skyrim.esp",
+   "mesh": "meshes\\landscape\\grass\\tundragrassobj03.nif",
+   "density": 3,
+   "slope": [
+    0,
+    19
+   ],
+   "height_range": 0.25,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "straw",
+   "diffuse": "textures\\landscape\\grass\\tundragrassobj03.dds",
+   "flower_share": 0.0299,
+   "mean": "#6a6f3e",
+   "shares": {
+    "orange": 0.006,
+    "yellow": 0.0299
+   }
+  },
+  {
+   "key": "02B6C6:King of the Murkmire.esp",
+   "edid": "ALPAGrassLong01A",
+   "winner": "King of the Murkmire.esp",
+   "mesh": "meshes\\landscape\\grass\\tallgrass01.nif",
+   "density": 40,
+   "slope": [
+    0,
+    28
+   ],
+   "height_range": 0.2,
+   "mesh_ok": false,
+   "textures_ok": false,
+   "family": "unknown"
+  },
+  {
+   "key": "02B6C7:King of the Murkmire.esp",
+   "edid": "ALPAGrassLong02A",
+   "winner": "King of the Murkmire.esp",
+   "mesh": "meshes\\landscape\\grass\\tallgrass02.nif",
+   "density": 40,
+   "slope": [
+    0,
+    28
+   ],
+   "height_range": 0.2,
+   "mesh_ok": false,
+   "textures_ok": false,
+   "family": "unknown"
+  },
+  {
+   "key": "02B6C8:King of the Murkmire.esp",
+   "edid": "ALPAGrassLong01B",
+   "winner": "King of the Murkmire.esp",
+   "mesh": "meshes\\landscape\\grass\\tallgrass01.nif",
+   "density": 40,
+   "slope": [
+    0,
+    28
+   ],
+   "height_range": 0.2,
+   "mesh_ok": false,
+   "textures_ok": false,
+   "family": "unknown"
+  },
+  {
+   "key": "02B6C9:King of the Murkmire.esp",
+   "edid": "ALPAGrassLong02B",
+   "winner": "King of the Murkmire.esp",
+   "mesh": "meshes\\landscape\\grass\\tallgrass02.nif",
+   "density": 40,
+   "slope": [
+    0,
+    28
+   ],
+   "height_range": 0.2,
+   "mesh_ok": false,
+   "textures_ok": false,
+   "family": "unknown"
+  },
+  {
+   "key": "02B6CA:King of the Murkmire.esp",
+   "edid": "ALPAGrassLong03A",
+   "winner": "King of the Murkmire.esp",
+   "mesh": "meshes\\landscape\\grass\\vactrolswamptall01.nif",
+   "density": 40,
+   "slope": [
+    0,
+    28
+   ],
+   "height_range": 0.2,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "straw",
+   "diffuse": "textures\\landscape\\grass\\vacswampgrass01.dds",
+   "flower_share": 0.0262,
+   "mean": "#645b34",
+   "shares": {
+    "orange": 0.0082,
+    "yellow": 0.0262,
+    "white": 0.0061
+   }
+  },
+  {
+   "key": "02B6CB:King of the Murkmire.esp",
+   "edid": "ALPAGrassLong03B",
+   "winner": "King of the Murkmire.esp",
+   "mesh": "meshes\\landscape\\grass\\vactrolswamptall01.nif",
+   "density": 40,
+   "slope": [
+    0,
+    28
+   ],
+   "height_range": 0.2,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "straw",
+   "diffuse": "textures\\landscape\\grass\\vacswampgrass01.dds",
+   "flower_share": 0.0262,
+   "mean": "#645b34",
+   "shares": {
+    "orange": 0.0082,
+    "yellow": 0.0262,
+    "white": 0.0061
+   }
+  },
+  {
+   "key": "02F3FA:Skyrim.esm",
+   "edid": "TundraGrass01",
+   "winner": "Tropical Skyrim.esp",
+   "mesh": "meshes\\landscape\\grass\\tundragrass01.nif",
+   "density": 4,
+   "slope": [
+    0,
+    14
+   ],
+   "height_range": 0.2,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "straw",
+   "diffuse": "textures\\landscape\\grass\\tundragrassobj01.dds",
+   "flower_share": 0.0265,
+   "mean": "#616a33",
+   "shares": {
+    "yellow": 0.0265
+   }
+  },
+  {
+   "key": "02FB3B:FlowerFields.esp",
+   "edid": "ESuColumbine01Red",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esucolumbine01red.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.5,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "red",
+   "diffuse": "textures\\landscape\\grass\\esucolumbine01red.dds",
+   "flower_share": 0.1317,
+   "mean": "#6b6c2b",
+   "shares": {
+    "red": 0.1317,
+    "orange": 0.0158,
+    "yellow": 0.0123,
+    "pink": 0.02
+   }
+  },
+  {
+   "key": "02FB41:FlowerFields.esp",
+   "edid": "ESuColumbine01Indigo",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esucolumbine01indigo.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.5,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "violet",
+   "diffuse": "textures\\landscape\\grass\\esucolumbine01indigo.dds",
+   "flower_share": 0.3225,
+   "mean": "#545969",
+   "shares": {
+    "violet": 0.3225
+   }
+  },
+  {
+   "key": "02FE1B:King of the Murkmire.esp",
+   "edid": "ALPAGrassWildSaltrice01",
+   "winner": "King of the Murkmire.esp",
+   "mesh": "meshes\\landscape\\grass\\ewpshore03.nif",
+   "density": 40,
+   "slope": [
+    0,
+    28
+   ],
+   "height_range": 0.2,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\ewpshore03.dds",
+   "flower_share": 0.0057,
+   "mean": "#465726",
+   "shares": {
+    "orange": 0.0057
+   }
+  },
+  {
+   "key": "02FE1C:King of the Murkmire.esp",
+   "edid": "ALPAGrassWildSaltrice02",
+   "winner": "King of the Murkmire.esp",
+   "mesh": "meshes\\landscape\\grass\\ewpshore03a.nif",
+   "density": 40,
+   "slope": [
+    0,
+    28
+   ],
+   "height_range": 0.2,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\ewpshore03.dds",
+   "flower_share": 0.0057,
+   "mean": "#465726",
+   "shares": {
+    "orange": 0.0057
+   }
+  },
+  {
+   "key": "02FE1D:King of the Murkmire.esp",
+   "edid": "ALPAGrassWildSaltrice03",
+   "winner": "King of the Murkmire.esp",
+   "mesh": "meshes\\landscape\\grass\\ewpshore03b.nif",
+   "density": 40,
+   "slope": [
+    0,
+    28
+   ],
+   "height_range": 0.2,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\ewpshore03.dds",
+   "flower_share": 0.0057,
+   "mean": "#465726",
+   "shares": {
+    "orange": 0.0057
+   }
+  },
+  {
+   "key": "02FE1E:King of the Murkmire.esp",
+   "edid": "ALPAGrassWildSaltrice04",
+   "winner": "King of the Murkmire.esp",
+   "mesh": "meshes\\landscape\\grass\\ewpshore03c.nif",
+   "density": 40,
+   "slope": [
+    0,
+    28
+   ],
+   "height_range": 0.2,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\ewpshore03.dds",
+   "flower_share": 0.0057,
+   "mean": "#465726",
+   "shares": {
+    "orange": 0.0057
+   }
+  },
+  {
+   "key": "02FE1F:King of the Murkmire.esp",
+   "edid": "ALPAGrassReeds01",
+   "winner": "King of the Murkmire.esp",
+   "mesh": "meshes\\landscape\\grass\\ewpshore07.nif",
+   "density": 40,
+   "slope": [
+    0,
+    28
+   ],
+   "height_range": 0.2,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\ewpshore07.dds",
+   "flower_share": 0.016,
+   "mean": "#527433",
+   "shares": {
+    "orange": 0.0107,
+    "yellow": 0.016
+   }
+  },
+  {
+   "key": "02FE20:King of the Murkmire.esp",
+   "edid": "ALPAGrassReeds02",
+   "winner": "King of the Murkmire.esp",
+   "mesh": "meshes\\landscape\\grass\\ewpshore07a.nif",
+   "density": 40,
+   "slope": [
+    0,
+    28
+   ],
+   "height_range": 0.2,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\ewpshore07.dds",
+   "flower_share": 0.016,
+   "mean": "#527433",
+   "shares": {
+    "orange": 0.0107,
+    "yellow": 0.016
+   }
+  },
+  {
+   "key": "02FE21:King of the Murkmire.esp",
+   "edid": "ALPAGrassReeds03",
+   "winner": "King of the Murkmire.esp",
+   "mesh": "meshes\\landscape\\grass\\ewpshore07b.nif",
+   "density": 40,
+   "slope": [
+    0,
+    28
+   ],
+   "height_range": 0.2,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\ewpshore07.dds",
+   "flower_share": 0.016,
+   "mean": "#527433",
+   "shares": {
+    "orange": 0.0107,
+    "yellow": 0.016
+   }
+  },
+  {
+   "key": "02FE22:King of the Murkmire.esp",
+   "edid": "ALPAGrassReeds04",
+   "winner": "King of the Murkmire.esp",
+   "mesh": "meshes\\landscape\\grass\\ewpshore07c.nif",
+   "density": 40,
+   "slope": [
+    0,
+    28
+   ],
+   "height_range": 0.2,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\ewpshore07.dds",
+   "flower_share": 0.016,
+   "mean": "#527433",
+   "shares": {
+    "orange": 0.0107,
+    "yellow": 0.016
+   }
+  },
+  {
+   "key": "02FE23:King of the Murkmire.esp",
+   "edid": "ALPAGrassMarsh01",
+   "winner": "King of the Murkmire.esp",
+   "mesh": "meshes\\landscape\\grass\\ewpshore13.nif",
+   "density": 40,
+   "slope": [
+    0,
+    28
+   ],
+   "height_range": 0.2,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\ewpshore13.dds",
+   "flower_share": 0.0021,
+   "mean": "#497407",
+   "shares": {}
+  },
+  {
+   "key": "02FE24:King of the Murkmire.esp",
+   "edid": "ALPAGrassMarsh02",
+   "winner": "King of the Murkmire.esp",
+   "mesh": "meshes\\landscape\\grass\\ewpshore13a.nif",
+   "density": 40,
+   "slope": [
+    0,
+    28
+   ],
+   "height_range": 0.2,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\ewpshore13.dds",
+   "flower_share": 0.0021,
+   "mean": "#497407",
+   "shares": {}
+  },
+  {
+   "key": "02FE25:King of the Murkmire.esp",
+   "edid": "ALPAGrassButtercup01",
+   "winner": "King of the Murkmire.esp",
+   "mesh": "meshes\\landscape\\grass\\ewpshore14.nif",
+   "density": 40,
+   "slope": [
+    0,
+    28
+   ],
+   "height_range": 0.2,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "yellow",
+   "diffuse": "textures\\landscape\\grass\\ewpshore14.dds",
+   "flower_share": 0.1251,
+   "mean": "#2e3f16",
+   "shares": {
+    "yellow": 0.1251
+   }
+  },
+  {
+   "key": "02FE26:King of the Murkmire.esp",
+   "edid": "ALPAGrassButtercup02",
+   "winner": "King of the Murkmire.esp",
+   "mesh": "meshes\\landscape\\grass\\ewpshore14a.nif",
+   "density": 40,
+   "slope": [
+    0,
+    28
+   ],
+   "height_range": 0.2,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "yellow",
+   "diffuse": "textures\\landscape\\grass\\ewpshore14.dds",
+   "flower_share": 0.1251,
+   "mean": "#2e3f16",
+   "shares": {
+    "yellow": 0.1251
+   }
+  },
+  {
+   "key": "02FE27:King of the Murkmire.esp",
+   "edid": "ALPAGrassViolet01",
+   "winner": "King of the Murkmire.esp",
+   "mesh": "meshes\\landscape\\grass\\ewpshore15.nif",
+   "density": 40,
+   "slope": [
+    0,
+    28
+   ],
+   "height_range": 0.2,
+   "mesh_ok": true,
+   "textures_ok": false,
+   "family": "unknown",
+   "diffuse": null
+  },
+  {
+   "key": "02FE28:King of the Murkmire.esp",
+   "edid": "ALPAGrassViolet02",
+   "winner": "King of the Murkmire.esp",
+   "mesh": "meshes\\landscape\\grass\\ewpshore17.nif",
+   "density": 40,
+   "slope": [
+    0,
+    28
+   ],
+   "height_range": 0.2,
+   "mesh_ok": true,
+   "textures_ok": false,
+   "family": "unknown",
+   "diffuse": null
+  },
+  {
+   "key": "02FE29:King of the Murkmire.esp",
+   "edid": "ALPAGrassViolet03",
+   "winner": "King of the Murkmire.esp",
+   "mesh": "meshes\\landscape\\grass\\ewpshore17a.nif",
+   "density": 40,
+   "slope": [
+    0,
+    28
+   ],
+   "height_range": 0.2,
+   "mesh_ok": true,
+   "textures_ok": false,
+   "family": "unknown",
+   "diffuse": null
+  },
+  {
+   "key": "0336FA:Skyrim.esm",
+   "edid": "TundraGrass04",
+   "winner": "Tropical Skyrim.esp",
+   "mesh": "meshes\\landscape\\grass\\tundragrassobj04.nif",
+   "density": 5,
+   "slope": [
+    0,
+    19
+   ],
+   "height_range": 0.3,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "white",
+   "diffuse": "textures\\landscape\\grass\\tundragrassobj04.dds",
+   "flower_share": 0.1219,
+   "mean": "#6c8242",
+   "shares": {
+    "yellow": 0.0163,
+    "white": 0.1219
+   }
+  },
+  {
+   "key": "03DCDF:DepthsOfSkyrim.esp",
+   "edid": "TBPRiverKelpGrass02",
+   "winner": "DepthsOfSkyrim.esp",
+   "mesh": "meshes\\landscape\\grass\\waterkelpshort01.nif",
+   "density": 10,
+   "slope": [
+    0,
+    55
+   ],
+   "height_range": 0.2,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "yellow",
+   "diffuse": "textures\\landscape\\grass\\coastkelpgrass01.dds",
+   "flower_share": 0.1137,
+   "mean": "#372b09",
+   "shares": {
+    "orange": 0.0269,
+    "yellow": 0.1137
+   }
+  },
+  {
+   "key": "03DCE0:DepthsOfSkyrim.esp",
+   "edid": "TBPRiverKelpGrass01",
+   "winner": "DepthsOfSkyrim.esp",
+   "mesh": "meshes\\landscape\\grass\\waterkelptall01.nif",
+   "density": 15,
+   "slope": [
+    0,
+    50
+   ],
+   "height_range": 0.2,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "yellow",
+   "diffuse": "textures\\landscape\\grass\\coastkelpgrass01.dds",
+   "flower_share": 0.1137,
+   "mean": "#372b09",
+   "shares": {
+    "orange": 0.0269,
+    "yellow": 0.1137
+   }
+  },
+  {
+   "key": "03DCE1:DepthsOfSkyrim.esp",
+   "edid": "TBPRockGrass01",
+   "winner": "DepthsOfSkyrim.esp",
+   "mesh": "meshes\\landscape\\grass\\rockgrass01.nif",
+   "density": 10,
+   "slope": [
+    0,
+    40
+   ],
+   "height_range": 0.1,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "straw",
+   "diffuse": "textures\\landscape\\grass\\rocksgrass01.dds",
+   "flower_share": 0.0012,
+   "mean": "#6a5c4c",
+   "shares": {}
+  },
+  {
+   "key": "04013C:Skyrim.esm",
+   "edid": "FrozenMarshGrass01",
+   "winner": "Tropical Skyrim.esp",
+   "mesh": "meshes\\landscape\\grass\\marshgrassobj01.nif",
+   "density": 60,
+   "slope": [
+    0,
+    42
+   ],
+   "height_range": 0.3,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\frozenmarshgrassobj01.dds",
+   "flower_share": 0.0012,
+   "mean": "#36441e",
+   "shares": {}
+  },
+  {
+   "key": "042EBA:DepthsOfSkyrim.esp",
+   "edid": "TBP_Algae01",
+   "winner": "DepthsOfSkyrim.esp",
+   "mesh": "meshes\\landscape\\grass\\tbpalgae01.nif",
+   "density": 12,
+   "slope": [
+    0,
+    55
+   ],
+   "height_range": 0.5,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\dos\\plants\\algae01.dds",
+   "flower_share": 0.0,
+   "mean": "#314112",
+   "shares": {}
+  },
+  {
+   "key": "048749:Skyrim.esm",
+   "edid": "RockGrass01",
+   "winner": "Tropical Skyrim.esp",
+   "mesh": "meshes\\landscape\\grass\\rockgrass01.nif",
+   "density": 10,
+   "slope": [
+    0,
+    40
+   ],
+   "height_range": 0.02,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "straw",
+   "diffuse": "textures\\landscape\\grass\\rocksgrass01.dds",
+   "flower_share": 0.0012,
+   "mean": "#6a5c4c",
+   "shares": {}
+  },
+  {
+   "key": "053491:Skyrim.esm",
+   "edid": "ReachGrass01",
+   "winner": "Tropical Skyrim.esp",
+   "mesh": "meshes\\landscape\\grass\\reachgrassobj01.nif",
+   "density": 30,
+   "slope": [
+    0,
+    35
+   ],
+   "height_range": 0.2,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\reachgrassobj01.dds",
+   "flower_share": 0.0049,
+   "mean": "#313a0e",
+   "shares": {}
+  },
+  {
+   "key": "053903:Skyrim.esm",
+   "edid": "ReachGrass02",
+   "winner": "Tropical Skyrim.esp",
+   "mesh": "meshes\\landscape\\grass\\reachgrassobj02.nif",
+   "density": 30,
+   "slope": [
+    0,
+    35
+   ],
+   "height_range": 0.2,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\reachgrassobj01.dds",
+   "flower_share": 0.0049,
+   "mean": "#313a0e",
+   "shares": {}
+  },
+  {
+   "key": "0578B0:DepthsOfSkyrim.esp",
+   "edid": "TBPCoastDriftwood",
+   "winner": "DepthsOfSkyrim.esp",
+   "mesh": "meshes\\landscape\\grass\\tbpcoastdriftwood01.nif",
+   "density": 1,
+   "slope": [
+    0,
+    45
+   ],
+   "height_range": 0.5,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "straw",
+   "diffuse": "textures\\landscape\\trees\\treepineforestbarkcomp.dds",
+   "flower_share": 0.001,
+   "mean": "#403d2e",
+   "shares": {}
+  },
+  {
+   "key": "0578B1:DepthsOfSkyrim.esp",
+   "edid": "TBPSeaweed11",
+   "winner": "DepthsOfSkyrim.esp",
+   "mesh": "meshes\\landscape\\grass\\waterkelptall03.nif",
+   "density": 3,
+   "slope": [
+    0,
+    55
+   ],
+   "height_range": 0.5,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "straw",
+   "diffuse": "textures\\dos\\plants\\seaweed08.dds",
+   "flower_share": 0.0,
+   "mean": "#453b1d",
+   "shares": {}
+  },
+  {
+   "key": "0597D1:Skyrim.esm",
+   "edid": "FallForestGrass01",
+   "winner": "Update.esm",
+   "mesh": "meshes\\landscape\\grass\\fallforestgrassobj01.nif",
+   "density": 65,
+   "slope": [
+    0,
+    38
+   ],
+   "height_range": 0.2,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\fallforestgrassobj01.dds",
+   "flower_share": 0.0042,
+   "mean": "#535f31",
+   "shares": {}
+  },
+  {
+   "key": "05B5A8:Skyrim.esm",
+   "edid": "FallForestGrass02",
+   "winner": "Update.esm",
+   "mesh": "meshes\\landscape\\grass\\fallforestgrassobj02.nif",
+   "density": 45,
+   "slope": [
+    0,
+    34
+   ],
+   "height_range": 0.2,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\fallforestgrassobj02.dds",
+   "flower_share": 0.0,
+   "mean": "#222714",
+   "shares": {}
+  },
+  {
+   "key": "05BDDB:DepthsOfSkyrim.esp",
+   "edid": "TBPEwpSea02",
+   "winner": "DepthsOfSkyrim.esp",
+   "mesh": "meshes\\landscape\\grass\\tbpewpsea02.nif",
+   "density": 30,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.5,
+   "mesh_ok": false,
+   "textures_ok": false,
+   "family": "unknown"
+  },
+  {
+   "key": "05BDDC:DepthsOfSkyrim.esp",
+   "edid": "TBPEwpSea06",
+   "winner": "DepthsOfSkyrim.esp",
+   "mesh": "meshes\\landscape\\grass\\tbp_seaweed06.nif",
+   "density": 30,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.5,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "straw",
+   "diffuse": "textures\\landscape\\grass\\seaweed02.dds",
+   "flower_share": 0.0025,
+   "mean": "#272a0d",
+   "shares": {}
+  },
+  {
+   "key": "05BDDD:DepthsOfSkyrim.esp",
+   "edid": "TBPEwpSea10",
+   "winner": "DepthsOfSkyrim.esp",
+   "mesh": "meshes\\landscape\\grass\\tbpewpsea10.nif",
+   "density": 1,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.5,
+   "mesh_ok": false,
+   "textures_ok": false,
+   "family": "unknown"
+  },
+  {
+   "key": "05BDDE:DepthsOfSkyrim.esp",
+   "edid": "TBPEwpSea03",
+   "winner": "DepthsOfSkyrim.esp",
+   "mesh": "meshes\\landscape\\grass\\tbp_seaweed05.nif",
+   "density": 5,
+   "slope": [
+    0,
+    75
+   ],
+   "height_range": 0.5,
+   "mesh_ok": false,
+   "textures_ok": false,
+   "family": "unknown"
+  },
+  {
+   "key": "05BDE1:DepthsOfSkyrim.esp",
+   "edid": "TBPRockGrassWater02",
+   "winner": "DepthsOfSkyrim.esp",
+   "mesh": "meshes\\landscape\\grass\\rockgrasswater01.nif",
+   "density": 10,
+   "slope": [
+    0,
+    34
+   ],
+   "height_range": 0.1,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "straw",
+   "diffuse": "textures\\landscape\\grass\\rocksgrasswater01.dds",
+   "flower_share": 0.0379,
+   "mean": "#46462a",
+   "shares": {
+    "yellow": 0.0379
+   }
+  },
+  {
+   "key": "06BD7F:DepthsOfSkyrim.esp",
+   "edid": "TBPCoastDriftwood2",
+   "winner": "DepthsOfSkyrim.esp",
+   "mesh": "meshes\\landscape\\grass\\tbpcoastdriftwood02.nif",
+   "density": 1,
+   "slope": [
+    0,
+    45
+   ],
+   "height_range": 0.5,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "straw",
+   "diffuse": "textures\\landscape\\trees\\treepineforestbarkcomp.dds",
+   "flower_share": 0.001,
+   "mean": "#403d2e",
+   "shares": {}
+  },
+  {
+   "key": "0713D8:Skyrim.esm",
+   "edid": "VolcanicGrass01",
+   "winner": "Update.esm",
+   "mesh": "meshes\\landscape\\grass\\volcanicgrassobj01.nif",
+   "density": 62,
+   "slope": [
+    0,
+    36
+   ],
+   "height_range": 0.3,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "yellow",
+   "diffuse": "textures\\landscape\\grass\\volcanictundragrassobj01.dds",
+   "flower_share": 0.1304,
+   "mean": "#8c7657",
+   "shares": {
+    "orange": 0.0778,
+    "yellow": 0.1304,
+    "white": 0.0423
+   }
+  },
+  {
+   "key": "07186F:FlowerFields.esp",
+   "edid": "RBSunflower01FF",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\rbsunflower01.nif",
+   "density": 50,
+   "slope": [
+    0,
+    40
+   ],
+   "height_range": 0.5,
+   "mesh_ok": false,
+   "textures_ok": false,
+   "family": "unknown"
+  },
+  {
+   "key": "071870:FlowerFields.esp",
+   "edid": "RBSunflower02FF",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\rbsunflower02.nif",
+   "density": 30,
+   "slope": [
+    0,
+    30
+   ],
+   "height_range": 0.5,
+   "mesh_ok": false,
+   "textures_ok": false,
+   "family": "unknown"
+  },
+  {
+   "key": "071871:FlowerFields.esp",
+   "edid": "RBSunflower03FF",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\rbsunflower03.nif",
+   "density": 30,
+   "slope": [
+    0,
+    30
+   ],
+   "height_range": 0.5,
+   "mesh_ok": false,
+   "textures_ok": false,
+   "family": "unknown"
+  },
+  {
+   "key": "071872:FlowerFields.esp",
+   "edid": "RBSunflower04FF",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\rbsunflower04.nif",
+   "density": 30,
+   "slope": [
+    0,
+    30
+   ],
+   "height_range": 0.5,
+   "mesh_ok": false,
+   "textures_ok": false,
+   "family": "unknown"
+  },
+  {
+   "key": "071CF5:Skyrim.esm",
+   "edid": "VolcanicGrass02",
+   "winner": "Update.esm",
+   "mesh": "meshes\\landscape\\grass\\volcanicgrassobj02.nif",
+   "density": 45,
+   "slope": [
+    0,
+    38
+   ],
+   "height_range": 0.3,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "red",
+   "diffuse": "textures\\landscape\\grass\\volcanictundragrassobj02.dds",
+   "flower_share": 0.0354,
+   "mean": "#6d594b",
+   "shares": {
+    "red": 0.0354,
+    "orange": 0.0194,
+    "white": 0.0437
+   }
+  },
+  {
+   "key": "074A8B:Skyrim.esm",
+   "edid": "BeachGrass01",
+   "winner": "Update.esm",
+   "mesh": "meshes\\landscape\\grass\\beachgrassobj01.nif",
+   "density": 90,
+   "slope": [
+    0,
+    42
+   ],
+   "height_range": 0.2,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "straw",
+   "diffuse": "textures\\landscape\\grass\\coastbeachgrassobj01.dds",
+   "flower_share": 0.0313,
+   "mean": "#8e8065",
+   "shares": {
+    "white": 0.0313
+   }
+  },
+  {
+   "key": "074A8C:Skyrim.esm",
+   "edid": "BeachGrass02",
+   "winner": "Update.esm",
+   "mesh": "meshes\\landscape\\grass\\beachgrassobj02.nif",
+   "density": 80,
+   "slope": [
+    0,
+    44
+   ],
+   "height_range": 0.25,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "straw",
+   "diffuse": "textures\\landscape\\grass\\coastbeachgrassobj01.dds",
+   "flower_share": 0.0313,
+   "mean": "#8e8065",
+   "shares": {
+    "white": 0.0313
+   }
+  },
+  {
+   "key": "078A8D:DepthsOfSkyrim.esp",
+   "edid": "TBPSeaweed02Test",
+   "winner": "DepthsOfSkyrim.esp",
+   "mesh": "meshes\\landscape\\grass\\tbp_seaweed02test.nif",
+   "density": 10,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.2,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "straw",
+   "diffuse": "textures\\landscape\\grass\\seaweed02.dds",
+   "flower_share": 0.0025,
+   "mean": "#272a0d",
+   "shares": {}
+  },
+  {
+   "key": "078A98:DepthsOfSkyrim.esp",
+   "edid": "TBPWaterKelpGrass01",
+   "winner": "DepthsOfSkyrim.esp",
+   "mesh": "meshes\\landscape\\grass\\waterkelptall02.nif",
+   "density": 5,
+   "slope": [
+    0,
+    50
+   ],
+   "height_range": 0.2,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "straw",
+   "diffuse": "textures\\landscape\\grass\\seaweed02.dds",
+   "flower_share": 0.0025,
+   "mean": "#272a0d",
+   "shares": {}
+  },
+  {
+   "key": "078F6D:Skyrim.esm",
+   "edid": "WaterKelpGrass01",
+   "winner": "DepthsOfSkyrim.esp",
+   "mesh": "meshes\\landscape\\grass\\waterkelptall01.nif",
+   "density": 5,
+   "slope": [
+    0,
+    50
+   ],
+   "height_range": 0.2,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "yellow",
+   "diffuse": "textures\\landscape\\grass\\coastkelpgrass01.dds",
+   "flower_share": 0.1137,
+   "mean": "#372b09",
+   "shares": {
+    "orange": 0.0269,
+    "yellow": 0.1137
+   }
+  },
+  {
+   "key": "078F6E:Skyrim.esm",
+   "edid": "WaterKelpGrass02",
+   "winner": "DepthsOfSkyrim.esp",
+   "mesh": "meshes\\landscape\\grass\\waterkelpshort01.nif",
+   "density": 2,
+   "slope": [
+    0,
+    55
+   ],
+   "height_range": 0.2,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "yellow",
+   "diffuse": "textures\\landscape\\grass\\coastkelpgrass01.dds",
+   "flower_share": 0.1137,
+   "mean": "#372b09",
+   "shares": {
+    "orange": 0.0269,
+    "yellow": 0.1137
+   }
+  },
+  {
+   "key": "07AACC:Skyrim.esm",
+   "edid": "WaterCoralGrass01",
+   "winner": "Update.esm",
+   "mesh": "meshes\\landscape\\grass\\watercoralgrass01.nif",
+   "density": 20,
+   "slope": [
+    0,
+    50
+   ],
+   "height_range": 0.2,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "orange",
+   "diffuse": "textures\\landscape\\grass\\coastcoralgrass01.dds",
+   "flower_share": 0.1637,
+   "mean": "#42260f",
+   "shares": {
+    "red": 0.0109,
+    "orange": 0.1637,
+    "yellow": 0.0064
+   }
+  },
+  {
+   "key": "082C9B:DepthsOfSkyrim.esp",
+   "edid": "TBPWaterCoralGrass02",
+   "winner": "DepthsOfSkyrim.esp",
+   "mesh": "meshes\\landscape\\grass\\watercoralgrass01.nif",
+   "density": 7,
+   "slope": [
+    0,
+    50
+   ],
+   "height_range": 0.2,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "orange",
+   "diffuse": "textures\\landscape\\grass\\coastcoralgrass01.dds",
+   "flower_share": 0.1637,
+   "mean": "#42260f",
+   "shares": {
+    "red": 0.0109,
+    "orange": 0.1637,
+    "yellow": 0.0064
+   }
+  },
+  {
+   "key": "082C9C:DepthsOfSkyrim.esp",
+   "edid": "TBPRockGrassWater03",
+   "winner": "DepthsOfSkyrim.esp",
+   "mesh": "meshes\\landscape\\grass\\tbprockgrasswater03.nif",
+   "density": 3,
+   "slope": [
+    0,
+    45
+   ],
+   "height_range": 0.1,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "straw",
+   "diffuse": "textures\\landscape\\grass\\rocksgrasswater01.dds",
+   "flower_share": 0.0379,
+   "mean": "#46462a",
+   "shares": {
+    "yellow": 0.0379
+   }
+  },
+  {
+   "key": "08A830:FlowerFields.esp",
+   "edid": "ESpCowslip01",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espcowslip01.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.5,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "yellow",
+   "diffuse": "textures\\landscape\\grass\\cowslip-1k.dds",
+   "flower_share": 0.208,
+   "mean": "#5b6b1c",
+   "shares": {
+    "orange": 0.0231,
+    "yellow": 0.208
+   }
+  },
+  {
+   "key": "08A831:FlowerFields.esp",
+   "edid": "ESpCowslip01leaves",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espcowslip01leaves.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.5,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\espcowslip01leaves.dds",
+   "flower_share": 0.0,
+   "mean": "#305222",
+   "shares": {}
+  },
+  {
+   "key": "08A832:FlowerFields.esp",
+   "edid": "ESpCowslip02leaves",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espcowslip02leaves.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.5,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\espcowslip02leaves.dds",
+   "flower_share": 0.0,
+   "mean": "#37591b",
+   "shares": {}
+  },
+  {
+   "key": "08A833:FlowerFields.esp",
+   "edid": "ESpCowslip02Yellow",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espcowslip02yellow.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.5,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "yellow",
+   "diffuse": "textures\\landscape\\grass\\espcowslip02yellow.dds",
+   "flower_share": 0.0958,
+   "mean": "#425c1b",
+   "shares": {
+    "yellow": 0.0958
+   }
+  },
+  {
+   "key": "08A834:FlowerFields.esp",
+   "edid": "ESpCowsnipRed",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espcowsnipred.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.5,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "red",
+   "diffuse": "textures\\landscape\\grass\\espcowsnipreda.dds",
+   "flower_share": 0.0333,
+   "mean": "#355d23",
+   "shares": {
+    "red": 0.0333,
+    "orange": 0.0191,
+    "yellow": 0.0351
+   }
+  },
+  {
+   "key": "08A835:FlowerFields.esp",
+   "edid": "ESpFritillary01",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espfritillary01.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.5,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "pink",
+   "diffuse": "textures\\landscape\\grass\\espfritillary01.dds",
+   "flower_share": 0.0394,
+   "mean": "#505c2f",
+   "shares": {
+    "red": 0.0162,
+    "yellow": 0.0069,
+    "pink": 0.0394
+   }
+  },
+  {
+   "key": "08A836:FlowerFields.esp",
+   "edid": "ESpFritillary02",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espfritillary02.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.5,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "pink",
+   "diffuse": "textures\\landscape\\grass\\espfritillary02.dds",
+   "flower_share": 0.0462,
+   "mean": "#56622c",
+   "shares": {
+    "red": 0.0338,
+    "orange": 0.0206,
+    "pink": 0.0462
+   }
+  },
+  {
+   "key": "08A837:FlowerFields.esp",
+   "edid": "ESpFritillary03",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espfritillary03.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.5,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\espfritillary03.dds",
+   "flower_share": 0.0031,
+   "mean": "#485724",
+   "shares": {}
+  },
+  {
+   "key": "08A838:FlowerFields.esp",
+   "edid": "ESpFritillary04",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espfritillary04.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.5,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\espfritillary04.dds",
+   "flower_share": 0.0078,
+   "mean": "#527544",
+   "shares": {
+    "white": 0.0078
+   }
+  },
+  {
+   "key": "08A839:FlowerFields.esp",
+   "edid": "ESpFritillary05",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espfritillary05.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.5,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "pink",
+   "diffuse": "textures\\landscape\\grass\\espfritillary05.dds",
+   "flower_share": 0.0166,
+   "mean": "#5c7047",
+   "shares": {
+    "pink": 0.0166,
+    "white": 0.0099
+   }
+  },
+  {
+   "key": "08A83A:FlowerFields.esp",
+   "edid": "ESpPerennialCornflower01",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\espperennialcornflower01.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.5,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\espperennialcornflower01.dds",
+   "flower_share": 0.0099,
+   "mean": "#5a6522",
+   "shares": {
+    "yellow": 0.0099
+   }
+  },
+  {
+   "key": "08A83B:FlowerFields.esp",
+   "edid": "ESpPheasantsEyeDaffodil01",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esppheasantseyedaffodil01.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.5,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\esppheasantseyedaffodil01.dds",
+   "flower_share": 0.0238,
+   "mean": "#61774a",
+   "shares": {
+    "yellow": 0.0197,
+    "white": 0.0238
+   }
+  },
+  {
+   "key": "08CFD6:FlowerFields.esp",
+   "edid": "Eforestcloverpatch01",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\forestcloverpatch01.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.5,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\forestcloverpatch01.dds",
+   "flower_share": 0.0015,
+   "mean": "#50633a",
+   "shares": {}
+  },
+  {
+   "key": "08CFD8:FlowerFields.esp",
+   "edid": "ESuScabious02Purple",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esuscabious02purple.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.5,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "straw",
+   "diffuse": "textures\\landscape\\grass\\esuscabious02purple.dds",
+   "flower_share": 0.0,
+   "mean": "#4a4747",
+   "shares": {}
+  },
+  {
+   "key": "08CFD9:FlowerFields.esp",
+   "edid": "ESuScabious01Purple",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esuscabious01purple.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.5,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\esuscabious01purple.dds",
+   "flower_share": 0.0114,
+   "mean": "#6e9550",
+   "shares": {
+    "violet": 0.0114
+   }
+  },
+  {
+   "key": "08CFDA:FlowerFields.esp",
+   "edid": "ESuScabious01Pink",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esuscabious01pink.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.5,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "pink",
+   "diffuse": "textures\\landscape\\grass\\esuscabious01pink.dds",
+   "flower_share": 0.0872,
+   "mean": "#748e4b",
+   "shares": {
+    "red": 0.0121,
+    "pink": 0.0872
+   }
+  },
+  {
+   "key": "08CFDB:FlowerFields.esp",
+   "edid": "ESuPeachLeavedBellflower01",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esupeachleavedbellflower01.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.5,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "violet",
+   "diffuse": "textures\\landscape\\grass\\esupeachleavedbellflower01.dds",
+   "flower_share": 0.3663,
+   "mean": "#503c61",
+   "shares": {
+    "violet": 0.3663
+   }
+  },
+  {
+   "key": "08CFDC:FlowerFields.esp",
+   "edid": "ESuLingonberry01",
+   "winner": "FlowerFields.esp",
+   "mesh": "meshes\\landscape\\grass\\esulingonberry01.nif",
+   "density": 100,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.5,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\esulingonberry01.dds",
+   "flower_share": 0.0041,
+   "mean": "#394d26",
+   "shares": {}
+  },
+  {
+   "key": "09C1AE:DepthsOfSkyrim.esp",
+   "edid": "TBPSeaweed06Var1",
+   "winner": "DepthsOfSkyrim.esp",
+   "mesh": "meshes\\landscape\\grass\\tbp_seaweed06.nif",
+   "density": 5,
+   "slope": [
+    0,
+    20
+   ],
+   "height_range": 0.5,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "straw",
+   "diffuse": "textures\\landscape\\grass\\seaweed02.dds",
+   "flower_share": 0.0025,
+   "mean": "#272a0d",
+   "shares": {}
+  },
+  {
+   "key": "0A63B1:DepthsOfSkyrim.esp",
+   "edid": "TBPSeaweed05",
+   "winner": "DepthsOfSkyrim.esp",
+   "mesh": "meshes\\landscape\\grass\\tbp_seaweed05var1.nif",
+   "density": 3,
+   "slope": [
+    0,
+    90
+   ],
+   "height_range": 0.5,
+   "mesh_ok": false,
+   "textures_ok": false,
+   "family": "unknown"
+  },
+  {
+   "key": "0BC025:Skyrim.esm",
+   "edid": "SnowGrass01Forest",
+   "winner": "Update.esm",
+   "mesh": "meshes\\landscape\\grass\\snowgrass01.nif",
+   "density": 30,
+   "slope": [
+    0,
+    48
+   ],
+   "height_range": 0.2,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\snowgrass01.dds",
+   "flower_share": 0.0,
+   "mean": "#45512d",
+   "shares": {}
+  },
+  {
+   "key": "0D40AE:DepthsOfSkyrim.esp",
+   "edid": "TBP_coralsmall01",
+   "winner": "DepthsOfSkyrim.esp",
+   "mesh": "meshes\\landscape\\grass\\tbp_coralsmall01.nif",
+   "density": 1,
+   "slope": [
+    0,
+    25
+   ],
+   "height_range": 0.5,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "orange",
+   "diffuse": "textures\\landscape\\grass\\tbpcoastcoralgrass02.dds",
+   "flower_share": 0.0718,
+   "mean": "#2d1a0b",
+   "shares": {
+    "red": 0.0091,
+    "orange": 0.0718
+   }
+  },
+  {
+   "key": "0F17FD:Skyrim.esm",
+   "edid": "SnowGrass01Light",
+   "winner": "Update.esm",
+   "mesh": "meshes\\landscape\\grass\\snowgrass01.nif",
+   "density": 50,
+   "slope": [
+    0,
+    45
+   ],
+   "height_range": 0.2,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\snowgrass01.dds",
+   "flower_share": 0.0,
+   "mean": "#45512d",
+   "shares": {}
+  },
+  {
+   "key": "0F17FE:Skyrim.esm",
+   "edid": "SnowGrass02",
+   "winner": "Update.esm",
+   "mesh": "meshes\\landscape\\grass\\snowgrass02.nif",
+   "density": 30,
+   "slope": [
+    0,
+    45
+   ],
+   "height_range": 0.2,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\snowgrass02.dds",
+   "flower_share": 0.0,
+   "mean": "#46522e",
+   "shares": {}
+  },
+  {
+   "key": "0F69A4:Skyrim.esm",
+   "edid": "ForestGrass02",
+   "winner": "Tropical Skyrim.esp",
+   "mesh": "meshes\\landscape\\grass\\forestgrass02.nif",
+   "density": 5,
+   "slope": [
+    0,
+    33
+   ],
+   "height_range": 0.1,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\forestgrass02.dds",
+   "flower_share": 0.019,
+   "mean": "#55803b",
+   "shares": {
+    "yellow": 0.019
+   }
+  },
+  {
+   "key": "0F871D:Skyrim.esm",
+   "edid": "RockGrassWater01",
+   "winner": "Update.esm",
+   "mesh": "meshes\\landscape\\grass\\rockgrasswater01.nif",
+   "density": 20,
+   "slope": [
+    0,
+    34
+   ],
+   "height_range": 0.1,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "straw",
+   "diffuse": "textures\\landscape\\grass\\rocksgrasswater01.dds",
+   "flower_share": 0.0379,
+   "mean": "#46462a",
+   "shares": {
+    "yellow": 0.0379
+   }
+  },
+  {
+   "key": "0F871E:Skyrim.esm",
+   "edid": "RockGrassSnow01",
+   "winner": "Update.esm",
+   "mesh": "meshes\\landscape\\grass\\rockgrasssnowobj01.nif",
+   "density": 12,
+   "slope": [
+    0,
+    36
+   ],
+   "height_range": 0.05,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "white",
+   "diffuse": "textures\\landscape\\grass\\rocksgrasssnow01.dds",
+   "flower_share": 0.1056,
+   "mean": "#818789",
+   "shares": {
+    "white": 0.1056
+   }
+  },
+  {
+   "key": "1098CA:Skyrim.esm",
+   "edid": "FieldGrass02",
+   "winner": "Update.esm",
+   "mesh": "meshes\\landscape\\grass\\fieldgrassflowers02.nif",
+   "density": 20,
+   "slope": [
+    0,
+    45
+   ],
+   "height_range": 0.2,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "yellow",
+   "diffuse": "textures\\landscape\\grass\\fieldgrassobj02.dds",
+   "flower_share": 0.1273,
+   "mean": "#65713b",
+   "shares": {
+    "yellow": 0.1273,
+    "cyan": 0.052
+   }
+  },
+  {
+   "key": "12A8F0:DepthsOfSkyrim.esp",
+   "edid": "TBPWaterCoralGrass03",
+   "winner": "DepthsOfSkyrim.esp",
+   "mesh": "meshes\\landscape\\grass\\watercoralgrass01.nif",
+   "density": 15,
+   "slope": [
+    0,
+    50
+   ],
+   "height_range": 0.2,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "orange",
+   "diffuse": "textures\\landscape\\grass\\coastcoralgrass01.dds",
+   "flower_share": 0.1637,
+   "mean": "#42260f",
+   "shares": {
+    "red": 0.0109,
+    "orange": 0.1637,
+    "yellow": 0.0064
+   }
+  },
+  {
+   "key": "12A8F1:DepthsOfSkyrim.esp",
+   "edid": "TBP_coralsmall02",
+   "winner": "DepthsOfSkyrim.esp",
+   "mesh": "meshes\\landscape\\grass\\tbp_coralsmall01.nif",
+   "density": 1,
+   "slope": [
+    0,
+    25
+   ],
+   "height_range": 0.5,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "orange",
+   "diffuse": "textures\\landscape\\grass\\tbpcoastcoralgrass02.dds",
+   "flower_share": 0.0718,
+   "mean": "#2d1a0b",
+   "shares": {
+    "red": 0.0091,
+    "orange": 0.0718
+   }
+  },
+  {
+   "key": "37FE2F:King of the Murkmire.esp",
+   "edid": "ALPAGrassFern01",
+   "winner": "King of the Murkmire.esp",
+   "mesh": "meshes\\landscape\\grass\\esufern01.nif",
+   "density": 40,
+   "slope": [
+    0,
+    28
+   ],
+   "height_range": 0.2,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\esufern01.dds",
+   "flower_share": 0.0018,
+   "mean": "#264e04",
+   "shares": {}
+  },
+  {
+   "key": "37FE30:King of the Murkmire.esp",
+   "edid": "ALPAGrassYarrow01",
+   "winner": "King of the Murkmire.esp",
+   "mesh": "meshes\\landscape\\grass\\esuyarrow01.nif",
+   "density": 40,
+   "slope": [
+    0,
+    28
+   ],
+   "height_range": 0.2,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "white",
+   "diffuse": "textures\\landscape\\grass\\esuyarrow01.dds",
+   "flower_share": 0.2016,
+   "mean": "#638155",
+   "shares": {
+    "white": 0.2016
+   }
+  },
+  {
+   "key": "37FE31:King of the Murkmire.esp",
+   "edid": "ALPAGrassRams01",
+   "winner": "King of the Murkmire.esp",
+   "mesh": "meshes\\landscape\\grass\\esurams.nif",
+   "density": 40,
+   "slope": [
+    0,
+    28
+   ],
+   "height_range": 0.2,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\esurams01.dds",
+   "flower_share": 0.011,
+   "mean": "#608043",
+   "shares": {
+    "white": 0.011
+   }
+  },
+  {
+   "key": "37FE32:King of the Murkmire.esp",
+   "edid": "ALPAGrassNettles01",
+   "winner": "King of the Murkmire.esp",
+   "mesh": "meshes\\landscape\\grass\\esunettles01.nif",
+   "density": 40,
+   "slope": [
+    0,
+    28
+   ],
+   "height_range": 0.2,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\esunettles01.dds",
+   "flower_share": 0.0012,
+   "mean": "#5c7b42",
+   "shares": {}
+  },
+  {
+   "key": "37FE33:King of the Murkmire.esp",
+   "edid": "ALPAGrassHeather01",
+   "winner": "King of the Murkmire.esp",
+   "mesh": "meshes\\landscape\\grass\\esuheather01.nif",
+   "density": 40,
+   "slope": [
+    0,
+    28
+   ],
+   "height_range": 0.2,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "pink",
+   "diffuse": "textures\\landscape\\grass\\esuheather01.dds",
+   "flower_share": 0.0148,
+   "mean": "#43471e",
+   "shares": {
+    "orange": 0.0052,
+    "pink": 0.0148
+   }
+  },
+  {
+   "key": "37FE34:King of the Murkmire.esp",
+   "edid": "ALPAGrassHeather02",
+   "winner": "King of the Murkmire.esp",
+   "mesh": "meshes\\landscape\\grass\\esuheather02.nif",
+   "density": 40,
+   "slope": [
+    0,
+    28
+   ],
+   "height_range": 0.2,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "pink",
+   "diffuse": "textures\\landscape\\grass\\esuheather01.dds",
+   "flower_share": 0.0148,
+   "mean": "#43471e",
+   "shares": {
+    "orange": 0.0052,
+    "pink": 0.0148
+   }
+  },
+  {
+   "key": "720C61:King of the Murkmire.esp",
+   "edid": "ALPAGrassLupin01",
+   "winner": "King of the Murkmire.esp",
+   "mesh": "meshes\\landscape\\grass\\esulupins02blue01.nif",
+   "density": 40,
+   "slope": [
+    0,
+    28
+   ],
+   "height_range": 0.2,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "violet",
+   "diffuse": "textures\\landscape\\grass\\esulupins02blue01.dds",
+   "flower_share": 0.0688,
+   "mean": "#20522a",
+   "shares": {
+    "blue": 0.0191,
+    "violet": 0.0688
+   }
+  },
+  {
+   "key": "720C62:King of the Murkmire.esp",
+   "edid": "ALPAGrassLupin02",
+   "winner": "King of the Murkmire.esp",
+   "mesh": "meshes\\landscape\\grass\\esulupins02bluewhite02.nif",
+   "density": 40,
+   "slope": [
+    0,
+    28
+   ],
+   "height_range": 0.2,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "violet",
+   "diffuse": "textures\\landscape\\grass\\esulupins02bluewhite02.dds",
+   "flower_share": 0.036,
+   "mean": "#17561f",
+   "shares": {
+    "blue": 0.0186,
+    "violet": 0.036,
+    "white": 0.007
+   }
+  },
+  {
+   "key": "720C63:King of the Murkmire.esp",
+   "edid": "ALPASeaGrass01",
+   "winner": "King of the Murkmire.esp",
+   "mesh": "meshes\\landscape\\grass\\ewpsea01.nif",
+   "density": 20,
+   "slope": [
+    0,
+    50
+   ],
+   "height_range": 0.2,
+   "mesh_ok": false,
+   "textures_ok": false,
+   "family": "unknown"
+  },
+  {
+   "key": "720C65:King of the Murkmire.esp",
+   "edid": "ALPASeaGrass02",
+   "winner": "King of the Murkmire.esp",
+   "mesh": "meshes\\landscape\\grass\\ewpsea02.nif",
+   "density": 20,
+   "slope": [
+    0,
+    50
+   ],
+   "height_range": 0.2,
+   "mesh_ok": false,
+   "textures_ok": false,
+   "family": "unknown"
+  },
+  {
+   "key": "720C66:King of the Murkmire.esp",
+   "edid": "ALPASeaGrass03",
+   "winner": "King of the Murkmire.esp",
+   "mesh": "meshes\\landscape\\grass\\ewpsea03.nif",
+   "density": 20,
+   "slope": [
+    0,
+    50
+   ],
+   "height_range": 0.2,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "straw",
+   "diffuse": "textures\\landscape\\grass\\ewpsea03.dds",
+   "flower_share": 0.0013,
+   "mean": "#2c2e2f",
+   "shares": {}
+  },
+  {
+   "key": "720C67:King of the Murkmire.esp",
+   "edid": "ALPASeaGrass04",
+   "winner": "King of the Murkmire.esp",
+   "mesh": "meshes\\landscape\\grass\\ewpsea04.nif",
+   "density": 20,
+   "slope": [
+    0,
+    50
+   ],
+   "height_range": 0.2,
+   "mesh_ok": false,
+   "textures_ok": false,
+   "family": "unknown"
+  },
+  {
+   "key": "80C885:King of the Murkmire.esp",
+   "edid": "ALPAGrassFern02",
+   "winner": "King of the Murkmire.esp",
+   "mesh": "meshes\\landscape\\grass\\esufern05.nif",
+   "density": 40,
+   "slope": [
+    0,
+    28
+   ],
+   "height_range": 0.2,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\esufern05.dds",
+   "flower_share": 0.0,
+   "mean": "#163b04",
+   "shares": {}
+  },
+  {
+   "key": "80C886:King of the Murkmire.esp",
+   "edid": "ALPAGrassFern03",
+   "winner": "King of the Murkmire.esp",
+   "mesh": "meshes\\landscape\\grass\\espfern01.nif",
+   "density": 40,
+   "slope": [
+    0,
+    28
+   ],
+   "height_range": 0.2,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\espfern01.dds",
+   "flower_share": 0.0023,
+   "mean": "#437d2a",
+   "shares": {}
+  },
+  {
+   "key": "80C887:King of the Murkmire.esp",
+   "edid": "ALPAGrassFern04",
+   "winner": "King of the Murkmire.esp",
+   "mesh": "meshes\\landscape\\grass\\espfernbraken01.nif",
+   "density": 40,
+   "slope": [
+    0,
+    28
+   ],
+   "height_range": 0.2,
+   "mesh_ok": true,
+   "textures_ok": true,
+   "family": "green",
+   "diffuse": "textures\\landscape\\grass\\espfernbraken01.dds",
+   "flower_share": 0.0,
+   "mean": "#57913e",
+   "shares": {}
+  }
+ ]
+}

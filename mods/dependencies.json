@@ -4690,6 +4690,35 @@
    "permission_ask": false,
    "runtime": "engine music files (WAV 44.1 kHz 16-bit stereo)",
    "conflicts": "none: new files under music/argonia/ only"
+  },
+  {
+   "id": "flower-fields-se",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 20960,
+    "file": 280639
+   },
+   "name": "Flower Fields SE",
+   "author": "mobiusbelmont - XONextGenXO",
+   "version": "1.1",
+   "archive": "Flower Fields SE - High Res Loose Files-20960-1-1-1651349718.zip",
+   "why": "flower grasses (Hodminnir flower resource) for the regions whose identity colour no grass we held carries (nw-03b D2 ground colour); asset-only: our own LTEX grass lists name its GRAS records, copied into ArgoniaNewWorld.esm, assets loose in the NewWorld profile, plugin never active",
+   "required": true,
+   "profile": "newworld",
+   "licence": "none stated",
+   "permission_summary": "No reuse terms on the page; port made with the original author's written permission. Used as a requirement only: nothing redistributed (decision 0003).",
+   "ai_clause": "not stated",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API v1 description read 2026-11-12 (lane nw-03b D2)",
+   "plugins": [],
+   "runtime": "data only (no DLL)",
+   "conflicts": "not yet swept by houseCARL",
+   "linked_or_forked_by": "none: depended on as the player's own download; ArgoniaNewWorld.esm copies its GRAS records (ForeignCopy) and names its assets by path",
+   "from": "nw-03b D2",
+   "asset_only": true,
+   "size_kb": 92083,
+   "sha256": "071c4c7f4d08171b1a89931d42f44ee0d340a046f1618918a2bce39044bf35ab"
   }
  ]
 }

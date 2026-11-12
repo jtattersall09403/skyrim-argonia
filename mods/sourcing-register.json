@@ -1194,5 +1194,14 @@
   "used_by": "the NewWorld profile (asset-only; the player downloads it): creature records and assets of the new world's ecology (phase nw-03b)",
   "linked_or_forked_by": "none: depended on as the player's own download",
   "notes": "author Skinwalker21. No terms stated on the page."
+ },
+ {
+  "name": "Flower Fields SE (Nexus 20960)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/20960?tab=files&file_id=280639",
+  "version": "1.1 (row flower-fields-se)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile (asset-only; the player downloads it): flower and leaf grasses of the regions' ground colour (phase nw-03b D2)",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "authors mobiusbelmont, ported by XONextGenXO with the original author's written permission; uses Hodminnir's flower resource. No reuse terms on the page (permission_ask). Its GRAS records are copied into ArgoniaNewWorld.esm and named by our land textures; meshes and textures stay the player's own download."
  }
 ]

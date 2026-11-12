@@ -7,24 +7,28 @@ there and nowhere next door. Both change records only: no terrain, tree, scatter
 
 1. **Census.** `python -m tools.newworld.dressing.grass_census` reads every grass (GRAS) the New World load order
    offers (Skyrim, Update, the DLC, Black Marsh, Valenwood, King of the Murkmire, Depths of Skyrim, Tropical
-   Skyrim; last wins), resolves its mesh and textures as the game does (the assets audit's resolver) and measures
+   Skyrim, and Flower Fields SE as an asset-only grass source; last wins), resolves its mesh and textures as the game does (the assets audit's resolver) and measures
    its diffuse texture's opaque pixels: the share of each hue family among saturated pixels, and white. A grass is a
    flower grass when one family passes its floor (yellow, white and orange 5%, since dry grass tips are pale and
-   warm; violet, blue, pink and red 1.2%). Output: `out/newworld/dressing/grass_census.json`.
+   warm; violet, blue, pink and red 1.2%). Output: `newworld/sources/dressing/grass_census.json`, a committed source, rerun when a grass-bearing plugin
+   of the load order changes (the check builds it when it is missing).
 2. **The colour.** Each land region's colour is its identity sheet's `ground.family`
    (`newworld/sources/identity/regions.json`, grounded in the region's look notes).
-3. **The palette.** In `tools/newworld/world/texture.py`, each region's own grass lists (`REGIONS[...]["grass"]`,
-   on `meadow`, `marsh_grass`, `forest_floor`, and `rainforest`, `moss` or `rock_grass` where the region shows
-   them) carry its colour's flower grass on every grassy material, beside its own leaf grasses. A flower grass is
-   listed in one region only; the province lists carry leaf grasses only. The base lists of the shore, edge and
-   underwater materials stay one list everywhere, by water kind and habitat, as Skyrim's do.
+3. **The palette.** In `tools/newworld/world/texture.py`, each region's own grass lists (`REGIONS[...]["grass"]`)
+   carry its colour's flower grass on every grassy material it names, beside its own leaf grasses; a flower grass is
+   listed in one region only. Every other grassy material takes its province's list for the material's role
+   (`ROLE`: moss, reeds, forest, dry, beach; `ROLES` per province), so no grass list is shared by every region and
+   each role keeps its habit (moss low, reeds tall). Where two neighbours of one province still share too much, one
+   of them takes its own list on a role's materials (leaf grasses no neighbour uses). The material table stays under
+   255 entries (the paint's one-byte index).
 4. **What keeps it Skyrim-like.** Only the lists change: the materials, their blend, the swathe and hard-edge
    rules of the ground paint (walk-5 ground research) and each grass record's own density are untouched.
 5. **The check.** `python -m tools.newworld.dressing.ground_colour`: no flower grass in two regions; a region's
    flower grasses are of its sheet's family; a sheet family the load order has a free flower grass for is met;
    neighbouring regions (`newworld/sources/identity/adjacency.json`) never show the same flower colour; the share of
-   palette grass types two neighbours have in common is at most 0.5. A family no complete land grass carries is
-   listed as unmet: the sourcing gap to close with a grass mod.
+   land grass types two neighbours have in common (shared over union) is at most 0.6. A family no complete land
+   grass carries is listed as unmet: the sourcing gap to close with a grass mod, searched as
+   [creature-mod-search](../research/creature-mod-search.md) does for creatures.
 
 ## Small signature things
 

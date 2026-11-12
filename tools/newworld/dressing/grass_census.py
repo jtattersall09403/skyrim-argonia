@@ -8,7 +8,8 @@ the opaque pixels (white counts as a family: bright, unsaturated); else the plan
 
     python -m tools.newworld.dressing.grass_census [--json OUT]
 
-Writes out/newworld/dressing/grass_census.json (the input of the ground-colour check)."""
+Writes newworld/sources/dressing/grass_census.json, a committed source (the input of the ground-colour check);
+rerun it when a grass-bearing plugin of the load order changes."""
 from __future__ import annotations
 
 import argparse
@@ -21,11 +22,11 @@ from pathlib import Path
 import numpy as np
 
 REPO = Path(__file__).resolve().parents[3]
-OUT = REPO / "out/newworld/dressing/grass_census.json"
+OUT = REPO / "newworld/sources/dressing/grass_census.json"  # committed: regenerate when the load order's grasses change
 # grass-bearing plugins of the New World load order, in load order (last wins)
 PLUGINS = ["Skyrim.esm", "Update.esm", "Dawnguard.esm", "HearthFires.esm", "Dragonborn.esm", "Black Marsh.esm",
            "Black Marsh North.esp", "Valenwood.esp", "King of the Murkmire.esp", "DepthsOfSkyrim.esp",
-           "Tropical Skyrim.esp"]
+           "Tropical Skyrim.esp", "FlowerFields.esp"]
 # least share of opaque pixels for a flower family: the pale and warm families also tip dry grass, so they need more
 FLOWER_MIN = {"yellow": 0.05, "white": 0.05, "orange": 0.05}
 FLOWER_MIN_OTHER = 0.012
@@ -70,6 +71,18 @@ def main(argv=None) -> int:
     from tools.places.assets.dds import decode
     from tools.places.assets.resolve import DATA, STACK, Resolver
     audit = Audit(Resolver(), active_plugins(STACK / "MO2/profiles/NewWorld"))
+    res = audit.R
+    plain_read = res.read
+
+    def read(key: str):   # an asset-only mod laid under newworld-assets/<id> and not yet in the stack's install record
+        b = plain_read(key)
+        if b is None:
+            for d in sorted(res.asset_mods.glob("*")) if res.asset_mods.is_dir() else ():
+                f = res._find(d, key)
+                if f:
+                    return f.read_bytes()
+        return b
+    res.read = read
     win: dict[str, tuple[str, object]] = {}
     for name in PLUGINS:
         if (DATA / name).exists():

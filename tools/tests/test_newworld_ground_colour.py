@@ -31,3 +31,15 @@ def test_shared_flower_and_overlap_fail():
 def test_colour_without_any_grass_is_unmet_not_fault():
     r = gc.check(tex([f"{KM}:Fern"], [f"{KM}:Cup"]), FAM, ADJ, {"a": "blue", "b": "yellow"})
     assert r["faults"] == [] and len(r["unmet"]) == 1
+
+
+def test_missing_census_is_built(tmp_path, monkeypatch):
+    from tools.newworld.dressing import grass_census
+
+    def fake(argv):
+        import json
+        from pathlib import Path
+        Path(argv[1]).write_text(json.dumps({"grasses": [{"edid": "Lupin", "family": "violet"}]}))
+        return 0
+    monkeypatch.setattr(grass_census, "main", fake)
+    assert gc.census_families(tmp_path / "c.json") == {"Lupin": "violet"}

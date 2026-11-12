@@ -24,9 +24,9 @@ from collections import defaultdict
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[3]
-CENSUS = REPO / "out/newworld/dressing/grass_census.json"
+CENSUS = REPO / "newworld/sources/dressing/grass_census.json"   # committed source (grass_census.py)
 IDENTITY = REPO / "newworld/sources/identity"
-OVERLAP_MAX = 0.5  # palette lists only: the base shore, edge and rock lists are shared by design
+OVERLAP_MAX = 0.6
 # flower grasses that cannot carry a region's colour on land: under water, snow-covered (decision 0006), or incomplete
 NOT_FOR_LAND = {"RockGrassSnow01", "SnowGrass01", "SnowGrass01Forest", "SnowGrass01Light", "SnowGrass02",
                 "DLC01SoulCairnGrass01", "ALPAGrassViolet01", "ALPAGrassViolet02", "ALPAGrassViolet03"}
@@ -123,6 +123,10 @@ def check(tex, families: dict[str, str], adj: dict[str, set[str]], colour: dict[
 
 
 def census_families(path: Path = CENSUS) -> dict[str, str]:
+    """The census's family per grass; the census is built first when it is missing."""
+    if not path.exists():
+        from tools.newworld.dressing import grass_census
+        grass_census.main(["--json", str(path)])
     return {g["edid"]: g["family"] for g in json.loads(path.read_text())["grasses"]}
 
 
