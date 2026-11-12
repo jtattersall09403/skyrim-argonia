@@ -9,10 +9,10 @@ the `.pex` files are build outputs and are sent by `infra/gpu-box/deploy.sh`.
 |---|---|
 | `ARG_QF_MQ101.psc` | MQ101's fragment script in `Argonia.esp`'s MQ101 override: the engine starts MQ101 on a new game; stage 0 starts `ARG_Opening` and stops MQ101 (no Helgen); with `ArgoniaNewWorld.esm` loaded (the New World card) it instead puts the player on `ArgoniaNWStartMarker` (0x802) and calls `ANW_TravelGive.BeginNewGame()` (0x090000) |
 | `ARG_StartQuestScript.psc` | `ARG_Opening`'s script: the player to `ARG_OpeningMarker` on Lilmoth's dock, the race menu, the roughspun tunic and footwraps, stage 10's journal line (PLAN Phase 1, the start) |
-| `ARG_QF_BlockTest.psc` | Phase 3's test quest `ARG_BlockTest`: the stage fragments, every effect block once (docs/phases/3-building-blocks.md); removed after the owner's walk |
-| `ARG_QF_BlockTestEnd.psc` | the second test quest `ARG_BlockTestEnd`'s stage 100: `IncSideQuests()` and `Stop()`, as vanilla side quests end |
-| `TIF_ARG_BT_20/40/50/90.psc` | the test quest's keeper lines: `GetOwningQuest().SetStage(n)` at the line's end (TR-topic) |
-| `SF_ARG_BT_Scene.psc` | the test scene's end fragment: stage 60 (TR-scene) |
+| `ARG_Effects.psc` | the quest form's results carried out, row by row: `Run(Op, What, Num, From, To, Quest, Speaker)`, a global function with one numbered operation per result (docs/design/quest-form.md, "How a form becomes records"); every operation is safe to repeat |
+| `ARG_QuestStages.psc` | the one stage script of every form-built quest: the rows (`Op`, `What`, `Num`), `Stages`, `StageFrom`, `StageTo`, and `QuestId`, `Kind`, `Labels` for the plugin reader; a fragment per stage (0 to 255, written by a generator) runs that stage's rows |
+| `ARG_LineEffects.psc` | the one response script of every form-built quest's lines: the line's rows, `Owner`, `Line`, `Written`; runs the rows as the line ends (as it begins for a speaks-first line) |
+| `ARG_AliasEffects.psc` | the mortal watch's script on each person a main or faction quest cannot go on without, and on a who-must-live row with a window: on death it runs its rows once |
 | `ARG_QF_TG01.psc`, `ARG_QF_TG02.psc` | the Night-Reed quests TG01 and TG02 (`tools/ArgoniaPlugin/NightReed.cs`): stage fragments and the helpers their lines call (pay, hand-overs, the guarded all-three checks) |
 | `generated/TIF_ARG_TG0*.psc` | their lines' end fragments, written by the seed from NightReed.cs (one call each) |
 | `ARG_QF_MQ01.psc`, `ARG_QF_MQ03.psc` | the opening act's MQ01 (character creation, then the hold, the march, the strike, the choice) and MQ03 (the dawn camp, the Reed's house, the dream), `tools/ArgoniaPlugin/MainQuest.cs`; MQ101 now starts `ARG_MQ01` |

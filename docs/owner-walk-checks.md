@@ -250,6 +250,64 @@ way", "a long walk") instead of counting paces.
       directions, and should never give a number of paces or metres. Then follow one route from each person: you
       should arrive where they said. Reply here with any answer that sends you the wrong way or still gives a number.
 
+## 12. Walk 6: the generic scripts' block test (built 2026-11-12)
+
+Every quest is now built from one form by the same scripts (`ARG_QuestStages`, `ARG_Effects`, `ARG_LineEffects`,
+`ARG_AliasEffects`). The block test is two small quests made from `tools/questform/blocktest/blocktest.json` ("Block
+Test") and `blocktest-two.json` ("Block Test, the Second") that use every kind of step once, so this walk proves the
+scripts. The old test quest is gone: **start a new game** (the first quest runs from the first moment) and stay on
+Lilmoth's dock. Do 12.1 to 12.9 in one game, in order, and 12.10 and 12.11 in games of their own. Reply with the number
+of any check that did not happen as written.
+
+- [ ] **12.1 The keeper speaks first.** Within a moment of the dock appearing the Dock Keeper (he stands
+      near where you start) walks up to you and speaks without being asked. Pass: you hear or read "You are the one for
+      the block test...", a message box reads "Block test: the Dock Keeper spoke first.", you now have 10 gold more and a
+      lockpick, and the journal (J) shows "Block Test" with "The Dock Keeper gave me ten gold and a lockpick...".
+- [ ] **12.2 Markers on the compass, the map and over the target.** Still in stage 20. Pass: the compass at the top shows
+      a quest marker for the barrel's token and one for the Dock Keeper; the map (M) shows the same two; and the marker
+      sits over the Dock Keeper's head when you look at him and over the barrel (a barrel on the dock a few paces east of
+      him) when you look at that.
+- [ ] **12.3 The take trigger.** Open the barrel and take the token (a wooden bowl). Pass: a message box reads "Block
+      test: taking the token from the barrel set stage 30 (a take trigger)." and the journal now says "I have the token
+      from the barrel. The Dock Keeper will want it."
+- [ ] **12.4 Lines that test who you are.** Talk to the keeper and ask each of these; a line is only offered when it is
+      true. "Have we spoken before?": answers "We have. Block test: spoken_before holds." and never the "Never" answer.
+      "Do you know my kind?": "One of the People" if your character is an Argonian, else "Not one of the People", only
+      one of the two. "What do you call me?": "Brother" for a male character, "Sister" for a female one, only one of the
+      two.
+- [ ] **12.5 Hand-in and the number, faction and skill tests.** Say "Here is the token." Pass: he says "Good. You are one
+      of the dock hands now...", the token is gone from your inventory, and the journal says "I gave the Dock Keeper the
+      token. I am one of the dock hands now." Then say "Make me a senior hand." (it is only offered now, and needs your
+      speech skill at 5 or more): he says the mudcrab is in the ship and its door is unlocked, and the journal says "I am a
+      senior hand...". Say "Is the crab still in the ship?": "It is."
+- [ ] **12.6 The death trigger.** Go to the ship door (the hatch about twenty paces east of the keeper) and go in; a mudcrab is
+      now there (it was switched on by the last step) and the compass shows its marker. Kill it. Pass: a message box
+      reads "Block test: the mudcrab's death set stage 60 (a death trigger)." and the journal says "I killed the mudcrab in
+      the ship." Ask the keeper "Is the crab still in the ship?" later: "No, you killed it."
+- [ ] **12.7 The use trigger and the second quest starting.** Leave the ship by the door you came in by. Pass: a message
+      box reads "Block test: using the ship's door set stage 70 (a use trigger).", the first quest's journal says "I came
+      out of the ship by its door...", and a new quest "Block Test, the Second" appears with "The Dock Keeper's walker is
+      waiting for me on the dock."
+- [ ] **12.8 The second quest, and one quest's stage moving the other.** Find the walker (a person on the dock, south-west
+      of the keeper; the compass marks her) and say "The keeper sent me.": the second quest's journal says "The walker told
+      me to wait by the bollard...", and the bollard (a spot a few paces south of her) and she are both marked. Then go to
+      the keeper and say "The crab is dead." Pass: he takes 5 of your gold, a message box reads "Block test complete: the
+      ship's door is locked again and every result has run.", the first quest is listed as completed, the ship's door is
+      locked again, and the mudcrab is gone. Go back to the walker and say "Has the keeper given his word?" (offered only
+      now): she says you passed, and the second quest's journal says "The Dock Keeper said I passed, so the second block
+      test is done." and is completed.
+- [ ] **12.9 A line after the quest has ended.** Speak to the keeper once more. Pass: he greets you with "You passed the
+      block test. Block test: a greeting after the quest's end."
+- [ ] **12.10 The walker's fight fails the second quest, quietly** (a new game of its own). Do 12.1 to 12.7 as fast as you
+      like, or just the parts that start the second quest, then talk to the walker and say "Fight me." She attacks; kill
+      her. Pass: the second quest's journal says "The walker is dead. The second block test failed." and it is listed as
+      failed, and **no message box** appears for her death (she is not a person the story cannot go on without).
+- [ ] **12.11 The mortal watch** (a new game of its own; save first, on the dock, before the keeper speaks to you, and
+      load that save afterwards). Kill the Dock Keeper. Pass: a message box reads "With this death the root of what was
+      to come is cut: this faction's story can no longer be finished. Load an earlier save to let it grow again, or go on in
+      the marsh as it now is." and the first quest's journal says "The Dock Keeper is dead. Nobody else can finish the
+      block test with me." and it is listed as failed. The message appears once, not again if you load nothing and wait.
+
 ## Done
 
 - Climbing works (Phase 1 walk, 2026-11-06).
