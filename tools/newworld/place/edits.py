@@ -396,6 +396,16 @@ def counts_after(placed: Placed, res: dict) -> Counter:
     return +n
 
 
+def full_digest(res: dict, edits: Path | None) -> str:
+    """The digest of the edits as applied: the resolved things', and the seat and drop rows' when there are any.
+    `apply` records it and `check` compares it, so both read it from here."""
+    d = digest(res)
+    seats, drops = seat_rows(edits), drop_rows(edits)
+    if seats or drops:
+        d = hashlib.sha256((d + json.dumps(sorted(seats.items())) + json.dumps(sorted(drops))).encode()).hexdigest()[:12]
+    return d
+
+
 def apply(edits: Path | None = None, placed_dir: Path | None = None, refs_dir: Path | None = None, log=print) -> dict:
     """The placement with the edits applied, written to the placed-refs hook; returns the record (edits.json)."""
     t0 = time.time()
@@ -420,9 +430,7 @@ def apply(edits: Path | None = None, placed_dir: Path | None = None, refs_dir: P
         if dest is not None and dest != home:
             here.setdefault(dest, {})
             arrive.setdefault(dest, []).append(ident)
-    d = digest(res)
-    if seats or drops:
-        d = hashlib.sha256((d + json.dumps(sorted(seats.items())) + json.dumps(sorted(drops))).encode()).hexdigest()[:12]
+    d = full_digest(res, edits)
     key = placed.manifest["key"] + (f"+{d}" if d else "")
     man_path = out / "manifest.json"
     try:
@@ -579,7 +587,7 @@ def check(edits: Path | None = None, placed_dir: Path | None = None, refs_dir: P
         rec = json.loads((out / "edits.json").read_text())
     except (OSError, ValueError):
         rec = {}
-    if rec.get("digest") != digest(res) or rec.get("placed_key") != placed.manifest["key"]:
+    if rec.get("digest") != full_digest(res, edits) or rec.get("placed_key") != placed.manifest["key"]:
         log("FAIL the placed-refs hook is not this placement with these edits applied: run the edits stage")
         return 1
     judged, red = [], 0
