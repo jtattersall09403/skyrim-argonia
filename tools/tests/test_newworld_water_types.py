@@ -123,3 +123,56 @@ def test_rows_pass_good_water_and_each_fails_on_its_fault():
         assert res[row] == "FAIL", row
         assert sum(r == "FAIL" for r in res.values()) == 1, (row, res)
     assert "FAIL" in _rows({k: x for k, x in GOOD.items() if k != "shore"}).values()   # no LAND read: a FAIL, not a pass
+
+
+def _dist(a, b):
+    f = lambda s: [*s["ShallowColor"], *s["DeepColor"], *s["ReflectionColor"], s["Opacity"]]
+    return max(abs(x - y) for x, y in zip(f(a), f(b)))
+
+
+def test_region_variants_keep_kind_identity_and_differ_by_look():
+    rs = wt.regions()
+    assert len(rs) == 24 and {r["look"] for r in rs.values()} <= set(wt.LOOKS)
+    assert wt.split("river-045@nha-enasa") == ("river", "045", "nha-enasa") and wt.split("pond@aphon-isle") == ("pond", "", "aphon-isle")
+    assert wt.split("sea") == ("sea", "", "") and wt.plain_key("river-045@nha-enasa") == "river-045"
+    assert wt.key_for("lake", None, "pond", "aphon-isle") == "pond@aphon-isle"
+    assert wt.key_for("river", 50, "pond", "nha-enasa") in ("river-045@nha-enasa", "river-045")
+    assert wt.key_for("lake", None, "pond", "no-such-region") == "pond" and wt.key_for("lake", None, "pond") == "pond"
+    plain = {k: wt.spec(k)["set"] for k in wt.KINDS if k not in wt.RUNNING}
+    seen = set()
+    for rid, r in rs.items():
+        for kind in plain:
+            key = wt.variant_key(kind, rid)
+            if key == kind:
+                assert wt.toward(wt.KINDS[kind]["set"], r["look"]) == wt.KINDS[kind]["set"]
+                continue
+            s = wt.spec(key)
+            assert s["copy"] == wt.KINDS[kind]["copy"] and s["edid"].endswith(f"_R{r['slot']:02d}") and len(s["edid"]) <= 40
+            assert s["set"]["LinearVelocity"] == [0, 0, 0] and not v.FLOW.search(s["edid"])
+            seen.add(s["edid"])
+            assert s["set"] != wt.KINDS[kind]["set"]
+            # every variant still reads as its own kind: nearer its own plain record than any other kind's
+            own = _dist(s["set"], plain[kind])
+            assert all(own < _dist(s["set"], o) for k, o in plain.items() if k != kind), (key, own)
+    assert len(seen) == len({e for e in seen})
+    run = wt.spec("river-135@nha-enasa")
+    assert run["heading"] == 135 and run["speed"] > 0 and v.FLOW.search(run["edid"]) and run["edid"].endswith("_R14")
+    # two regions with different looks differ; the same look is the same colour
+    a, b = wt.spec("pond@aphon-isle")["set"], wt.spec("pond@barsaebica")["set"]
+    assert a["ShallowColor"] != b["ShallowColor"]
+
+
+def test_records_carry_the_plain_record_of_each_variant_and_the_neutral_sea():
+    keys = wt.records(["pond@aphon-isle", "river-045@nha-enasa"])
+    assert {"sea", "pond", "river-045", "pond@aphon-isle", "river-045@nha-enasa"} == set(keys)
+    assert keys["sea"] == wt.spec("sea") and "look" not in keys["sea"]
+    assert len({k["edid"] for k in keys.values()}) == len(keys)
+
+
+def test_running_kinds_read_as_their_own_kind_in_every_region():
+    plain = {k: wt.KINDS[k]["set"] for k in wt.KINDS}
+    for rid, r in wt.regions().items():
+        for kind in wt.KINDS:
+            s = wt.toward(wt.KINDS[kind]["set"], r["look"])
+            own = _dist(s, plain[kind])
+            assert all(own < _dist(s, o) for k, o in plain.items() if k != kind), (kind, rid, own)

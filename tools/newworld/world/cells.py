@@ -19,7 +19,10 @@ Water (research/nw-02-ground-water-rules.md section 3.4; one level 0, so the typ
 cell's type is its dominant water body's kind (by water samples): sea (ocean, shallow coast and bay; the world's own
 water), black swamp, green marsh, pond (ponds and lakes), and river, stream and estuary by the channel graph's heading in the cell
 (water_flow_cells.json) snapped to 16 headings; a river or stream that does not flow in the cell takes the region's
-still water. Every type is a WATR of our own (tools/newworld/world/water_types.py: the vanilla base, the values set,
+still water. In a region with a water look the type is that region's variant ("pond@aphon-isle",
+"river-045@nha-enasa"): the kind's record with its colours moved toward the look (identity regions.json water.look),
+kept only where it differs from the kind's own record; the cell passes its region to water_types.key_for. The
+worldspace's own water stays the plain sea. Every type is a WATR of our own (tools/newworld/world/water_types.py: the vanilla base, the values set,
 the heading and the current's speed), built by ArgoniaPlugin WaterBlend.Records.
 
 """
@@ -58,7 +61,7 @@ def key(out: Path) -> str:
     h = hashlib.sha256()
     h.update(json.loads((out / "land/manifest.json").read_text())["key"].encode())
     for p in (LC / "key.txt", f.OUT / "water_flow_cells.json", lc.DB / "region.jsonl", lc.DB / "region_note.jsonl",
-              Path(__file__), Path(wt.__file__), Path(water_kinds.__file__)):
+              Path(__file__), Path(wt.__file__), Path(water_kinds.__file__), wt.IDENTITY):
         h.update(p.read_bytes())
     return h.hexdigest()[:16]
 
@@ -96,7 +99,7 @@ def build(out: Path) -> dict:
             if w.any():
                 kc = Counter(K[:, sc][w].tolist()).most_common(1)[0][0]
                 kname = kinds[kc] if kc < len(kinds) else "ocean"
-                watr = wt.key_for(kname, flow.get((cx, cy)), still.get(regions[rc], {}).get("wet", "pond"))
+                watr = wt.key_for(kname, flow.get((cx, cy)), still.get(regions[rc], {}).get("wet", "pond"), regions[rc])
                 rec["water"] = watr
                 counts[watr] += 1
             cells[f"{cx},{cy}"] = rec

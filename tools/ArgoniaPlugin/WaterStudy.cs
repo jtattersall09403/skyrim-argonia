@@ -271,6 +271,8 @@ static class WaterStudy
     /// a cell's water key without its flow direction: "river-045" or "river-NE" -> "river"
     public static string KindOf(string key)
     {
+        var at = key.IndexOf('@');   // "river-045@nha-enasa": the region's variant of the key before the '@'
+        if (at >= 0) key = key[..at];
         var i = key.LastIndexOf('-');
         if (i < 0) return key;
         var tail = key[(i + 1)..];
@@ -367,7 +369,7 @@ static class WaterStudy
     }
 
     /// a key with a flow heading ("river-045", or the old "river-NE"): running water; any other key is still water
-    public static bool Flowing(string key) => KindOf(key) != key;
+    public static bool Flowing(string key) { var b = key.Contains('@') ? key[..key.IndexOf('@')] : key; return KindOf(b) != b; }
 
     static double Dist(double[] a, double[] b) => a.Zip(b).Max(p => Math.Abs(p.First - p.Second));
 
