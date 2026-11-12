@@ -139,7 +139,7 @@ def load() -> tuple:
     return regions, sea, bind, nbr, water
 
 
-def main() -> int:
+def main(argv: list[str] | None = None) -> int:  # no arguments: it reads the sources (the small world passes none it needs)
     fails, stats = check(*load())
     for f in fails:
         print(f)

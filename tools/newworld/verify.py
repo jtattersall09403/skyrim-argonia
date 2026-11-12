@@ -354,7 +354,7 @@ def run(plugin: Path, out: Path, do_dump: bool = True, only: set | None = None, 
                     notex[r["from"][0]] += 1
         rep.row("refs", "every model's diffuse textures resolve in the NewWorld profile (alt textures applied)", len(notex), not notex,
                 f"missing e.g. {list(notex)[:4]}; " * bool(notex) + f"warning: {other} non-diffuse slots missing")
-        place_rows(rep, natural, out)
+        place_rows(rep, natural, out, plugin)
 
     @section(rep, "mist", want)
     def _mist():
@@ -541,11 +541,18 @@ def assets() -> Assets:
     return _ASSETS[0]
 
 
-def place_rows(rep: Report, natural: list[dict], out: Path) -> None:
-    """The placement checks (tools/newworld/place/checks.py) run over the refs read back from the ESM."""
+def place_rows(rep: Report, natural: list[dict], out: Path, plugin: Path) -> None:
+    """The placement checks (tools/newworld/place/checks.py) run over the refs read back from the ESM: the place's refs,
+    against the catalogue of the world being read (the small world's own); the dressing range's things (critter
+    spawners, signature things, plants) are the dressing stage's and are checked by its own check."""
     from tools.newworld.place import checks
     from tools.newworld.place import place as P
-    src = P.REFS / "bases.json"
+    from tools.newworld import idspace
+    dlo, dhi = next((a, b) for n, a, b, *_ in idspace.RANGES if n == "dressing")
+    natural = [r for r in natural if not (r.get("fid") and dlo <= int(r["fid"], 16) <= dhi)]
+    src = plugin / "refs/flora/bases.json"
+    if not src.exists():
+        src = P.REFS / "bases.json"
     bases = jload(src)["bases"]
     by_key = {b["key"].lower(): b for b in bases}
     def em(edid, model):  # two sources may share an editor id (BM&V North and Valenwood): the model tells them apart

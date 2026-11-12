@@ -381,6 +381,11 @@ static class NewWorld
             var name = a.GetProperty("name").GetString()!;
             var sp = a.GetProperty("src").GetString()!.Split(':', 2);
             var src = mod.Npcs[fc.Get(sp[0], sp[1], forceCopy: true)];
+            // the source's own copy is never placed, yet it stands in our file: it keeps no player-level multiplier either
+            // (decision 0035), so it takes the lowest band level any of its band copies has
+            var lv0 = (short)a.GetProperty("level").GetInt32();
+            if (src.Configuration.Level is not NpcLevel sl || sl.Level > lv0) src.Configuration.Level = new NpcLevel { Level = lv0 };
+            src.Configuration.TemplateFlags &= ~NpcConfiguration.TemplateFlag.Stats;
             var n = (Npc)src.Duplicate(new FormKey(mod.ModKey, ids.Take("base", "eco:" + name)));
             var kit = name.Contains('~') ? "_" + name.Split('~')[1].Split('@')[0] : "";
             n.EditorID = $"ANW_Eco_{src.EditorID}_{a.GetProperty("band").GetString()}{kit}";

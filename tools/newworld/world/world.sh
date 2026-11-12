@@ -38,15 +38,15 @@ writer() {
 # the ESM's key: the land's key, the producers written, the shards' and specs' bytes, the writer's code, the navmesh
 esm_key() {
   key=$("$py" -c 'import json,sys; print(json.load(open(sys.argv[1]))["key"])' "$man")
-  key="$key:${NW_REF_PRODUCERS:-all}:$(cat "$out/tex/manifest.json" "$out/cells.json" "$out/atmosphere.json" $(find "$out/refs" "$out/ecology" -name '*.jsonl' 2>/dev/null | sort) $(ls "$out"/ecology/actors.json 2>/dev/null) | sha256sum | cut -c1-16)"
-  codekey=$(cat tools/ArgoniaPlugin/NewWorld.cs tools/ArgoniaPlugin/WaterBlend.cs tools/ArgoniaPlugin/ForeignCopy.cs tools/ArgoniaPlugin/FormIds.cs tools/ArgoniaPlugin/NewWorldNavmesh.cs tools/ArgoniaPlugin/NewWorldAtmosphere.cs tools/ArgoniaPlugin/NewWorldTravel.cs newworld/sources/travel/menu.json $(ls "$out"/navmesh/navi.json "$out"/navmesh/navm/cy*.jsonl.gz 2>/dev/null) | sha256sum | cut -c1-16)
+  key="$key:${NW_REF_PRODUCERS:-all}:$(cat "$out/tex/manifest.json" "$out/cells.json" "$out/atmosphere.json" $(find "$out/refs" "$out/ecology" "$out/dressing" -name '*.jsonl' 2>/dev/null | sort) $(ls "$out"/ecology/actors.json 2>/dev/null) | sha256sum | cut -c1-16)"
+  codekey=$(cat tools/ArgoniaPlugin/NewWorld.cs tools/ArgoniaPlugin/WaterBlend.cs tools/ArgoniaPlugin/ForeignCopy.cs tools/ArgoniaPlugin/FormIds.cs tools/ArgoniaPlugin/NewWorldNavmesh.cs tools/ArgoniaPlugin/NewWorldAtmosphere.cs tools/ArgoniaPlugin/NewWorldTravel.cs tools/ArgoniaPlugin/NewWorldMusic.cs newworld/sources/travel/menu.json newworld/sources/music/records.json newworld/sources/music/pieces.json newworld/sources/atmosphere/regions.json tools/newworld/idspace.py $(ls "$out"/navmesh/navi.json "$out"/navmesh/navm/cy*.jsonl.gz 2>/dev/null) | sha256sum | cut -c1-16)
   [ -z "${NW_STAGE_KEY:-}" ] || codekey="$codekey:$NW_STAGE_KEY"
 }
 esm_current() { [ -f "$esm" ] && [ -f "$stamp" ] && grep -q "\"key\": \"$key:$codekey\"" "$stamp"; }
 case "$1" in
   write)
     writer
-    dotnet build -c Release -o "$bin" tools/ArgoniaPlugin -v q -nologo >/dev/null
+    mkdir -p "$HOME/.argonia"; flock "$HOME/.argonia/dotnet-build.lock" dotnet build -c Release -o "$bin" tools/ArgoniaPlugin -v q -nologo >/dev/null  # the one lock every ArgoniaPlugin build takes (verify.py dump)
     esm_key
     if esm_current; then
       echo "esm current ($key)"

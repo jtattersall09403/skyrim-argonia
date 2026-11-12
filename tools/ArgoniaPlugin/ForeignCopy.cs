@@ -120,6 +120,10 @@ sealed class ForeignCopy : IDisposable
             Console.WriteLine($"foreign copy: {dup.EditorID}: {placed.Count} link(s) into the source's world (placed refs, cells, quests, dialogue) nulled");
         }
         DropDangling(dup);
+        // nothing in our file is levelled against the player (decision 0035): a copied actor keeps a fixed level, the
+        // lowest its multiplier allowed (a band copy sets its own; a template copy is never placed)
+        if (dup is Npc npc && npc.Configuration.Level is PcLevelMult)
+            npc.Configuration.Level = new NpcLevel { Level = (short)Math.Max(1, (int)npc.Configuration.CalcMinLevel) };
         mod.GetTopLevelGroup(dup.GetType()).AddUntyped(dup);
         Copies[ours] = dup;
         return ours;

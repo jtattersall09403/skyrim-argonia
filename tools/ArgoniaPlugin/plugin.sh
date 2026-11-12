@@ -21,7 +21,7 @@ export DOTNET_ROOT="$HOME/.dotnet" PATH="$HOME/.dotnet:$PATH" DOTNET_CLI_TELEMET
 spriggit=("$HOME/.argonia/spriggit/0.41.0/Spriggit.CLI")  # pinned in infra/build-vm/toolchain.lock
 spr=(-p Spriggit.Yaml -v 0.41.0)
 yaml=plugin/Argonia; esp=out/Argonia.esp; bin=out/tools/ArgoniaPlugin
-tool() { dotnet build -c Release -o "$bin" tools/ArgoniaPlugin >/dev/null && dotnet "$bin/ArgoniaPlugin.dll" "$@"; }
+tool() { mkdir -p "$HOME/.argonia"; flock "$HOME/.argonia/dotnet-build.lock" dotnet build -c Release -o "$bin" tools/ArgoniaPlugin >/dev/null && dotnet "$bin/ArgoniaPlugin.dll" "$@"; }
 build() {
   mkdir -p out; "${spriggit[@]}" deserialize -i "$yaml" -o "$esp" "${spr[@]}" >/dev/null
   loadorder; tool fixup "$esp" "${lo[@]}"  # the conditions Spriggit's YAML cannot carry (shutdown.json)

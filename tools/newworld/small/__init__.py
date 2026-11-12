@@ -53,7 +53,7 @@ PATCHES = {"START_PLACE": START_PLACE, "WALK": []}
 PLAY_ESM, PLAY_WORLD = "ArgoniaSmallWorld.esm", "ArgoniaSmallWorld"     # the world's name, letter for letter as long
 REAL_ESM, REAL_WORLD = "ArgoniaNewWorld.esm", "ArgoniaBlackMarsh"
 # the rebuild's stages that run on the block, and the read-back's groups that judge a block's file
-STAGES = ("tools", "land", "landcover", "cells", "place", "edits", "paint", "mist", "navmesh", "map", "ecology", "esm", "readback")
+STAGES = ("tools", "land", "landcover", "cells", "place", "edits", "paint", "mist", "navmesh", "map", "ecology", "dressing", "esm", "readback")
 # the block's own edits of single placed things (the province's name cells the block does not hold): a file beside
 # the block, absent until a test of the edits writes rows to it (`small tool tools.newworld.place edit ... --edits <it>`)
 EDITS = "out/newworld-small/placed_edits.jsonl"
