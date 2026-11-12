@@ -277,12 +277,12 @@
 {"talker":"02A206:Black Marsh.esm","topic":"talk.here","ord":1,"text":"The dead trees on the shore track stand just north-east of here. The band camps among them. Why do you ask?"}
 {"talker":"02A206:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I carry a blade in each hand. I keep the band's watch. I was a guard once. I will not tell you for whom."}
 {"talker":"02A206:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Two Argonians loiter by the leeks to the north. Sheeh-Vos is just north-north-east, and Waits-For-Lanterns just north-east. I do not trust either of them. You there, what business do you have with them?"}
-{"talker":"02A207:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"Flaa Heet, is it? Walk south-west, a hundred paces or so, till you come to the rowing boat. Then keep to the shore south-west another hundred paces. The village is there."}
-{"talker":"02A207:Black Marsh.esm","topic":"talk.directions","ord":2,"text":"The dock? Look, fellow, it is there, north-north-east, seventy-odd paces. I have stared at it long enough to know."}
+{"talker":"02A207:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"Flaa Heet, is it? Walk south-west a short way, till you come to the rowing boat. Then keep to the shore, south-west, another short way. The village is there."}
+{"talker":"02A207:Black Marsh.esm","topic":"talk.directions","ord":2,"text":"The dock? Look, fellow, it is just there, north-north-east, in plain sight. I have stared at it long enough to know."}
 {"talker":"02A207:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"Ahh, my friend, my friend. Sit down and tell me you brought something to wet the throat. I will tell you about the boat again, if you will have it."}
 {"talker":"02A207:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Hm? Oh. What do you want, fellow? I am only sitting."}
 {"talker":"02A207:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"Black Marsh is wide. I have seen only the water of it. There is a big ship tied up at the dock now, with steps going down beside it to the water. I watched them load her, I did, every crate."}
-{"talker":"02A207:Black Marsh.esm","topic":"talk.rumours","ord":1,"text":"There are three dead Dunmer lying at the east end of the dock, ninety paces north-north-east of here, near enough. They have not been buried. I do not go near, but I notice who does."}
+{"talker":"02A207:Black Marsh.esm","topic":"talk.rumours","ord":1,"text":"There are three dead Dunmer lying at the east end of the dock, a short way north-north-east of here. They have not been buried. I do not go near, but I notice who does."}
 {"talker":"02A207:Black Marsh.esm","topic":"talk.self","ord":1,"text":"Deep-In-His-Cups, they call me. I earned it. I was a boatman once, and I lost my boat. Sit a while and I will tell you how, fellow."}
 {"talker":"02A208:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"Come close, friend. Keep your voice low, eh? I know you. The dock is quiet."}
 {"talker":"02A208:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Hsst. Do not stand over me, cousin. I am only picking leeks."}
