@@ -1018,8 +1018,11 @@ built mesh and fails if a stretch is re-laid (the streets are settled).
    also writes its taste ops to `place.json` `preferences`), mark the save final, commit the place and the sources
    by path; with content ops, reload the stock tables and commit them (Stock: Finalise). The applied files are kept
    as `after.json` before they are written, so a run stopped while writing writes the same files again.
-2. **Build**: seat, build, check (a verb not yet built is reported as not available). A failed build or check
-   does not undo the record; the report says what failed and what it means.
+2. **Build**: against the current world: `worldparts` decides whether the world moved under the place; if so the
+   ground is taken again (`extract --ground`, `ground-check`); then seat, build, check, navexport, and the place layer
+   onto the New World card (`infra/gpu-box/places_deploy.sh`, which waits out a live stream); `finalise --plan`
+   prints the order. A failed build or check does not undo the record and skips the deploy; the report says what
+   failed and what it means.
 3. **Learn**: a headless agent (`.claude/agents/place-lessons.md`, `claude -p`, capped at $30 and 60 turns) runs
    the skill `place-lessons` on the save's fault ops and rewrites the skill `place-build` as a clean recipe, which
    the agent writes whole to `out/places/runs/<run_id>/place-build.SKILL.md` (it reads only `faults.jsonl`, the
