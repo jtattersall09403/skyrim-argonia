@@ -109,6 +109,18 @@ static class NewWorldMusic
             foreach (var s in L(rec.GetProperty(key))) { o.Tracks.Add(Track(s, null)); joined++; }
             mod.MusicTypes.Add(o);
         }
+        // the level-up sting the player hears is the UI sound UILevelUp (SOUN 057B45 -> SNDR 057B44), not the level-up
+        // music type: the descriptor plays our slot's copy under Data\Sound (a SNDR names files under Sound\), every
+        // other field as Skyrim.esm's (the load order's winner: no plugin of the NewWorld profile overrides it, measured
+        // 2026-11-12). The world file loads on the New World card alone, so the override is that card's.
+        if (rec.TryGetProperty("levelup_sound", out var lus))
+        {
+            var fk = FormKey.Factory("057B44:Skyrim.esm");
+            var d = sky.SoundDescriptors.First(x => x.FormKey == fk).DeepCopy();
+            d.SoundFiles.Clear();
+            d.SoundFiles.Add(new Mutagen.Bethesda.Plugins.Assets.AssetLink<Mutagen.Bethesda.Skyrim.Assets.SkyrimSoundAssetType>(rec.GetProperty("levelup_sound_file").GetString()!.Replace("{slot}", lus.GetString()!)));
+            mod.SoundDescriptors.Add(d);
+        }
         Console.WriteLine($"  music: {mod.MusicTracks.Count(t => t.FormKey.ModKey == mod.ModKey)} tracks, {typeOf.Count} explore types, {regions} regions, {Defaults.Length} of Skyrim's types joined ({joined} tracks), {guarded.Count} of Skyrim's tracks kept out of the world");
     }
 

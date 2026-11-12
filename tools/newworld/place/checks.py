@@ -84,6 +84,8 @@ def run(folder=None, refs=None) -> int:
             if P.underside_gap(W, xs[i], ys[i], zs[i], ob, sc[i], r["rot"]) > 0.5:  # the shard's rounding (0.1 unit, 1e-5 rad)
                 hover += 1
             continue
+        if r.get("seated"):      # seated by its own mesh (an edit's seat row): the edits check judges it
+            continue
         lo, hi = b.get("sink_lo_m"), b.get("sink_hi_m")
         if lo is None or hi is None or hi <= lo:
             s0 = b.get("sink_m") if b.get("sink_m") is not None else Pa.cls[c].get("sink_m", 0.1)

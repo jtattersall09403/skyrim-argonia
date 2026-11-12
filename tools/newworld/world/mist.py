@@ -183,7 +183,7 @@ def density(refs, cells: dict) -> dict:
     mc = Counter(refs)
     area, got, top = Counter(), Counter(), Counter()
     for key, c in cells.items():
-        w = c.get("water", "land")
+        w = c.get("water", "land").split("@")[0]      # a region's variant counts as its kind
         w = "river" if w.startswith("river") else "stream" if w.startswith("stream") else w
         xy = tuple(map(int, key.split(",")))
         area[w] += 1

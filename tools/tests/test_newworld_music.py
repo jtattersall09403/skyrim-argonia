@@ -36,6 +36,8 @@ def test_records_name_only_slots_and_cover_every_class():
     named = [s for k in ("night", "combat", "boss", "death", "levelup") for s in RECORDS[k]]
     assert "discovery" not in RECORDS and "discovery" not in CS.split("Defaults")[1].split("];")[0]   # Skyrim's own (owner, 2026-11-12)
     named += [s for v in RECORDS["day"].values() for s in v]
+    # level-up: the UI sound plays our sting; the level-up music type adds nothing in the new world
+    assert RECORDS["levelup"] == [] and RECORDS["levelup_sound"] in SLOTS and "057B44" in CS
     assert set(named) <= set(SLOTS)
     classes = {v[0] for v in json.loads((REPO / "newworld/sources/atmosphere/regions.json").read_text())["regions"].values()}
     assert classes <= set(RECORDS["day"]) and RECORDS["world"] in RECORDS["day"]

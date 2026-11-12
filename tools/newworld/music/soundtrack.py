@@ -167,6 +167,15 @@ def build():
                 ti.mtime, ti.uid, ti.gid, ti.uname, ti.gname = 0, 0, 0, "", ""
                 with open(f, "rb") as fh:
                     tf.addfile(ti, fh)
+            # the level-up sting is a sound descriptor's file (records.json levelup_sound): a copy under sound/, where a
+            # SNDR's paths start
+            rec = json.loads((ROOT / "newworld/sources/music/records.json").read_text())
+            if rec.get("levelup_sound"):
+                f = out / f"{rec['levelup_sound']}.wav"
+                ti = tf.gettarinfo(f, "sound/" + rec["levelup_sound_file"].replace("\\", "/").format(slot=rec["levelup_sound"]))
+                ti.mtime, ti.uid, ti.gid, ti.uname, ti.gname = 0, 0, 0, "", ""
+                with open(f, "rb") as fh:
+                    tf.addfile(ti, fh)
     h = hashlib.sha256(tar.read_bytes()).hexdigest()
     if s3("cp", str(tar), f"{BUCKET}/mods/{TAR}", "--metadata", f"sha256={h}").returncode:
         sys.exit("upload failed")

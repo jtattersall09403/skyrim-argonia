@@ -137,6 +137,9 @@ def weather_settings(w: dict, floor: float) -> dict:
     far = w["set"]["FogDistanceDayFar"]
     # the shader's level ray: 2^(-d0 L ln 2) (its line integral's limit, ExponentialHeightFog.hlsli), d0 = density / 1000
     density = min(1.0, math.log2(1 / (1 - OPACITY_AT_FAR)) / math.log(2) * 1000 / far * cm * km)
+    if w["kind"] in ("fair", "cloudy"):   # a near-sighted region's fair day still leaves SKY_MIN of the sky at 15 degrees
+        cap = -math.log2(SKY_MIN["fair_15deg"]) * FALLOFF * math.sin(math.radians(15))
+        density = min(density, math.floor(cap * 1e4) / 1e4)
     s = {"__enabled": True,
          "Fog Density": round(density, 4), "Fog Height": float(floor), "Fog Height Falloff": FALLOFF,
          "Directional Inscattering Multiplier": inscatter, "volumetricFogEnabled": vol,

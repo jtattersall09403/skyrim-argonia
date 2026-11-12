@@ -573,6 +573,14 @@ def place_rows(rep: Report, natural: list[dict], out: Path, plugin: Path) -> Non
                      "pos": pos, "rot": [float(r["rx"]), float(r["ry"]), float(r["rz"])], "scale": float(r["scale"]), "model": b["model"]})
     rep.row("refs", "every placed ref maps to a catalogued base", unmapped, unmapped == 0)
     rows = edit_rows(rep, natural, rows)
+    # a base the edits seat by its own mesh (placed_edits.jsonl seat rows) sits by that rule, not by its catalogued
+    # sink window: the edits check judges it, so the seating row here leaves it out
+    from tools.newworld.place import edits as E
+    seated = {s.lower() for s in E.seat_rows()}
+    for r in rows:
+        b = by_key.get(r["key"].lower()) or {}
+        if f"{b.get('plugin', '')}:{b.get('edid', '')}".lower() in seated:
+            r["seated"] = True
     work = out / "refs"
     work.mkdir(exist_ok=True)
     shutil.copy(src, work / "bases.json")

@@ -319,7 +319,7 @@ static class WaterStudy
         var byEdid = m.Waters.Where(w => w.EditorID != null).GroupBy(w => w.EditorID!).ToDictionary(g => g.Key, g => (IWaterGetter)g.First());
         var pureLook = new Dictionary<string, IWaterGetter>();
         foreach (var p in JsonDocument.Parse(File.ReadAllText(cellsJson)).RootElement.GetProperty("watr").EnumerateObject())
-            if (p.Value.TryGetProperty("edid", out var ed) && byEdid.TryGetValue(ed.GetString()!, out var pw)) pureLook.TryAdd(KindOf(p.Name), pw);
+            if (p.Value.TryGetProperty("edid", out var ed) && byEdid.TryGetValue(ed.GetString()!, out var pw)) pureLook.TryAdd(OwnKey(p.Name), pw);
         var rep = Measure(cellKey, eff, flow, pureLook);
         rep["convention"] = Convention(new[] { "RiverWaterFlowNE", "RiverWaterFlowNW", "CreekWaterFlowSE", "CreekWaterFlowSW" }
             .Select(e => lo[1].Waters.First(w => w.EditorID == e)));
@@ -349,7 +349,7 @@ static class WaterStudy
         var (cellWater, blend) = WaterBlend.Blend(mod, _ => fc.NextIdTake(), cellKey, keyOf, recs);
         var byKey = mod.Waters.ToDictionary(w => w.FormKey, w => (IWaterGetter)w);
         var pureLook = new Dictionary<string, IWaterGetter>();
-        foreach (var (k, w) in recs) pureLook.TryAdd(KindOf(k), w);
+        foreach (var (k, w) in recs) pureLook.TryAdd(OwnKey(k), w);
         var rep = Measure(cellKey, cellWater.ToDictionary(kv => kv.Key, kv => byKey[kv.Value]), FlowCells(flowJson), pureLook);
         rep["blend"] = blend;
         rep["records"] = mod.Waters.Count;
@@ -377,10 +377,16 @@ static class WaterStudy
     /// that looks nearer its own kind than any other (pureLook: kind -> the kind's own record); the kinds' own looks'
     /// nearest pair; flowing cells' current and drift against the channel graph; still cells with a current; the
     /// look's step at every edge between two water cells
+    /// a water key's own look's key: its kind, and the region of a region's variant ("river-045@nha-enasa" -> "river@nha-enasa")
+    public static string OwnKey(string key) { var at = key.IndexOf('@'); return KindOf(key) + (at >= 0 ? key[at..] : ""); }
+
     public static Dictionary<string, object> Measure(Dictionary<(int, int), string> cellKey, Dictionary<(int, int), IWaterGetter> eff,
         Dictionary<(int, int), double> flow, Dictionary<string, IWaterGetter> pureLook)
     {
-        var own = pureLook.ToDictionary(kv => kv.Key, kv => LookVec(kv.Value));
+        // the kinds' own looks, and each region's variant of them: a cell is judged against the looks of its own region
+        var ownAll = pureLook.ToDictionary(kv => kv.Key, kv => LookVec(kv.Value));
+        foreach (var kv in ownAll.Where(kv => kv.Key.Contains('@')).ToList()) ownAll.TryAdd(kv.Key[..kv.Key.IndexOf('@')], kv.Value);
+        var own = ownAll.Where(kv => !kv.Key.Contains('@')).ToDictionary(kv => kv.Key, kv => kv.Value);
         var n = new Dictionary<string, int>(); var pure = new Dictionary<string, int>(); var sum = new Dictionary<string, double[]>();
         var near = new Dictionary<string, int>(); var asOwn = new Dictionary<string, int>(); var dOwn = new Dictionary<string, List<double>>();
         int flowing = 0, velOk = 0, noiseOk = 0, stillN = 0, stillMoving = 0;
@@ -394,12 +400,14 @@ static class WaterStudy
             var v = LookVec(w);
             if (!sum.ContainsKey(kind)) sum[kind] = new double[v.Length];
             for (var i = 0; i < v.Length; i++) sum[kind][i] += v[i];
-            if (own.TryGetValue(kind, out var ov))
+            var reg = key.Contains('@') ? key[key.IndexOf('@')..] : "";
+            double[] Look(string k) => ownAll.TryGetValue(k + reg, out var r) ? r : own[k];
+            if (own.ContainsKey(kind))
             {
-                var d = Dist(v, ov);
+                var d = Dist(v, Look(kind));
                 (dOwn.TryGetValue(kind, out var dl) ? dl : dOwn[kind] = new()).Add(d);
                 if (d <= WaterBlend.STEP + 1) near[kind] = near.GetValueOrDefault(kind) + 1;
-                if (own.All(o => o.Key == kind || Dist(v, o.Value) > d)) asOwn[kind] = asOwn.GetValueOrDefault(kind) + 1;
+                if (own.Keys.All(o => o == kind || Dist(v, Look(o)) > d)) asOwn[kind] = asOwn.GetValueOrDefault(kind) + 1;
             }
             if (!Flowing(key))
             {

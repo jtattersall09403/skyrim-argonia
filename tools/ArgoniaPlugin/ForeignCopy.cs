@@ -122,8 +122,12 @@ sealed class ForeignCopy : IDisposable
         DropDangling(dup);
         // nothing in our file is levelled against the player (decision 0035): a copied actor keeps a fixed level, the
         // lowest its multiplier allowed (a band copy sets its own; a template copy is never placed)
-        if (dup is Npc npc && npc.Configuration.Level is PcLevelMult)
-            npc.Configuration.Level = new NpcLevel { Level = (short)Math.Max(1, (int)npc.Configuration.CalcMinLevel) };
+        if (dup is Npc npc)
+        {
+            if (npc.Configuration.Level is PcLevelMult)
+                npc.Configuration.Level = new NpcLevel { Level = (short)Math.Max(1, (int)npc.Configuration.CalcMinLevel) };
+            npc.Configuration.TemplateFlags &= ~NpcConfiguration.TemplateFlag.Stats;   // its own fixed level, not a template's
+        }
         mod.GetTopLevelGroup(dup.GetType()).AddUntyped(dup);
         Copies[ours] = dup;
         return ours;
