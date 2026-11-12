@@ -199,5 +199,360 @@
   "share_of_tamriel_exterior_cells_with_zone": 0.0,
   "creature_refs_with_zone_ref": 14,
   "method": "ECZN DATA (location, rank, min level, flags, max level; max 0 = no cap); cells counted when the Tamriel exterior CELL record carries XEZN; per-ref XEZN on creature ACHR counted apart (most creature refs inherit the cell's or location's zone)"
+ },
+ "critters": {
+  "bases": {
+   "FCAmbWaterfallSalmon01": {
+    "refs": 51,
+    "refs_per_100_cells_by_class": {
+     "shore": 4.512,
+     "forest": 0.231,
+     "mountain": 0.27
+    },
+    "share_over_water": 0.333,
+    "share_on_water_edge": 0.157,
+    "share_dry": 0.51,
+    "share_near_harvestable_15m": 0.412,
+    "spawn_hours": []
+   },
+   "FCAmbWaterfallSalmon02": {
+    "refs": 38,
+    "refs_per_100_cells_by_class": {
+     "shore": 4.146,
+     "forest": 0.093,
+     "mountain": 0.06
+    },
+    "share_over_water": 0.368,
+    "share_on_water_edge": 0.158,
+    "share_dry": 0.474,
+    "share_near_harvestable_15m": 0.579,
+    "spawn_hours": []
+   },
+   "FXBirdFlockFleePineACT": {
+    "refs": 6,
+    "refs_per_100_cells_by_class": {
+     "shore": 0.122,
+     "forest": 0.093,
+     "water": 0.032,
+     "mountain": 0.06
+    },
+    "share_over_water": 0.0,
+    "share_on_water_edge": 0.333,
+    "share_dry": 0.667,
+    "share_near_harvestable_15m": 0.167,
+    "spawn_hours": []
+   },
+   "FXbirdOPreyACT": {
+    "refs": 6,
+    "refs_per_100_cells_by_class": {
+     "forest": 0.093,
+     "open": 0.056,
+     "mountain": 0.09
+    },
+    "share_over_water": 0.0,
+    "share_on_water_edge": 0.0,
+    "share_dry": 1.0,
+    "share_near_harvestable_15m": 0.333,
+    "spawn_hours": []
+   },
+   "FXbirdOPreyNoNestACT": {
+    "refs": 45,
+    "refs_per_100_cells_by_class": {
+     "shore": 1.341,
+     "forest": 0.278,
+     "open": 0.169,
+     "water": 0.613,
+     "mountain": 0.18
+    },
+    "share_over_water": 0.533,
+    "share_on_water_edge": 0.0,
+    "share_dry": 0.467,
+    "share_near_harvestable_15m": 0.333,
+    "spawn_hours": []
+   },
+   "MothSpawner": {
+    "refs": 2,
+    "refs_per_100_cells_by_class": {
+     "shore": 0.122,
+     "forest": 0.046
+    },
+    "share_over_water": 0.0,
+    "share_on_water_edge": 0.0,
+    "share_dry": 1.0,
+    "share_near_harvestable_15m": 0.5,
+    "spawn_hours": [
+     [
+      6.0,
+      18.0,
+      10
+     ]
+    ]
+   },
+   "critterSpawnDragonflies24x7": {
+    "refs": 22,
+    "refs_per_100_cells_by_class": {
+     "shore": 1.341,
+     "forest": 0.416,
+     "water": 0.065
+    },
+    "share_over_water": 0.0,
+    "share_on_water_edge": 0.455,
+    "share_dry": 0.545,
+    "share_near_harvestable_15m": 0.318,
+    "spawn_hours": [
+     [
+      5.0,
+      20.0,
+      2
+     ]
+    ]
+   },
+   "critterSpawnDragonflies24x7_Many": {
+    "refs": 29,
+    "refs_per_100_cells_by_class": {
+     "shore": 1.098,
+     "forest": 0.694,
+     "open": 0.113,
+     "water": 0.097
+    },
+    "share_over_water": 0.069,
+    "share_on_water_edge": 0.138,
+    "share_dry": 0.793,
+    "share_near_harvestable_15m": 0.517,
+    "spawn_hours": [
+     [
+      5.0,
+      20.0,
+      5
+     ]
+    ]
+   },
+   "critterSpawnDragonfliesFireflies24x7": {
+    "refs": 24,
+    "refs_per_100_cells_by_class": {
+     "shore": 1.829,
+     "forest": 0.278,
+     "water": 0.065,
+     "mountain": 0.03
+    },
+    "share_over_water": 0.167,
+    "share_on_water_edge": 0.167,
+    "share_dry": 0.667,
+    "share_near_harvestable_15m": 0.5,
+    "spawn_hours": [
+     [
+      20.0,
+      23.0,
+      3
+     ],
+     [
+      5.0,
+      20.0,
+      5
+     ]
+    ]
+   },
+   "critterSpawnFirefly24x7": {
+    "refs": 15,
+    "refs_per_100_cells_by_class": {
+     "shore": 1.707,
+     "forest": 0.046
+    },
+    "share_over_water": 0.067,
+    "share_on_water_edge": 0.533,
+    "share_dry": 0.4,
+    "share_near_harvestable_15m": 0.133,
+    "spawn_hours": [
+     [
+      0.9,
+      23.9,
+      2
+     ]
+    ]
+   },
+   "critterSpawnInsects_Bees": {
+    "refs": 13,
+    "refs_per_100_cells_by_class": {
+     "forest": 0.324,
+     "water": 0.097,
+     "mountain": 0.09
+    },
+    "share_over_water": 0.0,
+    "share_on_water_edge": 0.0,
+    "share_dry": 1.0,
+    "share_near_harvestable_15m": 0.308,
+    "spawn_hours": [
+     [
+      6.0,
+      18.0,
+      10
+     ]
+    ]
+   },
+   "critterSpawnInsects_Few": {
+    "refs": 58,
+    "refs_per_100_cells_by_class": {
+     "shore": 1.22,
+     "forest": 0.648,
+     "mountain": 1.02
+    },
+    "share_over_water": 0.0,
+    "share_on_water_edge": 0.034,
+    "share_dry": 0.966,
+    "share_near_harvestable_15m": 0.276,
+    "spawn_hours": [
+     [
+      6.0,
+      18.0,
+      3
+     ],
+     [
+      20.0,
+      23.0,
+      2
+     ]
+    ]
+   },
+   "critterSpawnInsects_Many": {
+    "refs": 401,
+    "refs_per_100_cells_by_class": {
+     "shore": 9.146,
+     "forest": 12.072,
+     "open": 0.395,
+     "water": 0.323,
+     "mountain": 1.44
+    },
+    "share_over_water": 0.002,
+    "share_on_water_edge": 0.072,
+    "share_dry": 0.925,
+    "share_near_harvestable_15m": 0.17,
+    "spawn_hours": [
+     [
+      6.0,
+      18.0,
+      3
+     ],
+     [
+      20.0,
+      23.0,
+      3
+     ]
+    ]
+   },
+   "critterSpawnInsects_ManyNocturnalOnly": {
+    "refs": 4,
+    "refs_per_100_cells_by_class": {
+     "shore": 0.244,
+     "forest": 0.093
+    },
+    "share_over_water": 0.25,
+    "share_on_water_edge": 0.25,
+    "share_dry": 0.5,
+    "share_near_harvestable_15m": 0.5,
+    "spawn_hours": [
+     [
+      20.0,
+      23.0,
+      3
+     ]
+    ]
+   },
+   "critterSpawnInsects_SingleNocturnalOnly": {
+    "refs": 5,
+    "refs_per_100_cells_by_class": {
+     "forest": 0.231
+    },
+    "share_over_water": 0.0,
+    "share_on_water_edge": 0.0,
+    "share_dry": 1.0,
+    "share_near_harvestable_15m": 0.0,
+    "spawn_hours": [
+     [
+      20.0,
+      23.0,
+      3
+     ]
+    ]
+   },
+   "critterSpawnPond_Deep": {
+    "refs": 190,
+    "refs_per_100_cells_by_class": {
+     "shore": 9.878,
+     "forest": 0.139,
+     "water": 3.423
+    },
+    "share_over_water": 0.984,
+    "share_on_water_edge": 0.0,
+    "share_dry": 0.016,
+    "share_near_harvestable_15m": 0.263,
+    "spawn_hours": [
+     [
+      0.1,
+      23.9,
+      3
+     ],
+     [
+      0.1,
+      23.9,
+      3
+     ]
+    ]
+   },
+   "critterSpawnPond_Deep_FishOnly": {
+    "refs": 479,
+    "refs_per_100_cells_by_class": {
+     "shore": 7.561,
+     "water": 13.465
+    },
+    "share_over_water": 1.0,
+    "share_on_water_edge": 0.0,
+    "share_dry": 0.0,
+    "share_near_harvestable_15m": 0.228,
+    "spawn_hours": [
+     [
+      0.1,
+      23.9,
+      3
+     ]
+    ]
+   },
+   "critterSpawnPond_Shallow": {
+    "refs": 491,
+    "refs_per_100_cells_by_class": {
+     "shore": 41.098,
+     "forest": 1.018,
+     "open": 0.113,
+     "water": 4.101,
+     "mountain": 0.09
+    },
+    "share_over_water": 0.939,
+    "share_on_water_edge": 0.0,
+    "share_dry": 0.061,
+    "share_near_harvestable_15m": 0.31,
+    "spawn_hours": [
+     [
+      6.0,
+      23.0,
+      3
+     ],
+     [
+      1.0,
+      23.0,
+      3
+     ]
+    ]
+   }
+  },
+  "black_marsh": {
+   "plugin": "King of the Murkmire.esp",
+   "spawner_refs": 116,
+   "cells_with_refs": 82,
+   "cells_with_spawners": 22,
+   "spawners_per_cell": 1.415,
+   "skyrim_spawners_per_land_cell": 0.155,
+   "factor": 9.1,
+   "method": "REFR of the plugin placed by x, y into 4096-unit cells; the cells counted are those holding any ref of it; spawners are bases named critterSpawn* or ArgoniaCritterSpawn*"
+  },
+  "method": "REFR in Tamriel whose base ACTI is a critter spawner or critter (editor id starting critter, DragonFly, Fish, Firefly, Moth, FXbird, FCAmb; not dummies, triggers, furniture or tanks), in a cell with LAND; per 100 cells = refs / cells of the class * 100; over water = ground under the cell's water height at the ref, on the edge = within 2 m above it; near a harvestable = a FLOR with an ingredient within 15 m; spawn_hours = the start and end hour and most critters of each critterspawn script of the base"
  }
 }

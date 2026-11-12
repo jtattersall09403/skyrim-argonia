@@ -14,6 +14,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import re
 import struct
 import zlib
 from collections import Counter, defaultdict
@@ -27,7 +28,9 @@ M = 70.03
 HUMANOID = ("Nord", "Imperial", "Breton", "Redguard", "HighElf", "DarkElf", "WoodElf", "Orc", "Argonian", "Khajiit",
             "Elder", "Child", "Draugr", "Skeleton", "Falmer", "Dremora", "Vampire", "Afflicted", "Snow", "Manakin",
             "Default", "Naga", "Human", "Elf")
-KEEP = {b"NPC_", b"LVLN", b"ECZN", b"RACE", b"CELL", b"WRLD", b"FLOR", b"TREE"}
+KEEP = {b"NPC_", b"LVLN", b"ECZN", b"RACE", b"CELL", b"WRLD", b"FLOR", b"TREE", b"ACTI"}
+CRITTER = re.compile(r"^(critter|DragonFly|Fish|Firefly|Moth|FXbird|FXBird|FCAmb)", re.I)
+NOT_CRITTER = re.compile(r"Dummy|Trig|Quest|Furniture|Tank|CatchData", re.I)
 OUT = Path(__file__).resolve().parents[3] / "newworld" / "sources" / "ecology" / "skyrim_measures.json"
 GROUP_R = 1500.0
 
@@ -69,7 +72,7 @@ def heights(vhgt: bytes) -> np.ndarray:
 def scan(path: Path) -> dict:
     blob = path.read_bytes()
     o = {"npc": {}, "lvln": {}, "race": {}, "eczn": {}, "cells": {}, "flor": {}, "tree": {}, "achr": [], "refr": [],
-         "world": {}}
+         "world": {}, "acti": {}}
     cur = {"cell": None, "interior": False}
 
     def body(i, size, flags):
@@ -113,6 +116,10 @@ def scan(path: Path) -> dict:
                     pf = d.get(b"PFIG")
                     o["flor" if sig == b"FLOR" else "tree"][fid] = (
                         _z(d.get(b"EDID", b"")), struct.unpack("<I", pf)[0] if pf and len(pf) >= 4 else None)
+                elif sig == b"ACTI":
+                    edid = _z(d.get(b"EDID", b""))
+                    if CRITTER.match(edid) and not NOT_CRITTER.search(edid):
+                        o["acti"][fid] = (edid, spawn_windows(d.get(b"VMAD")))
                 elif sig == b"WRLD" and fid == TAMRIEL and b"DNAM" in d:
                     o["world"]["water"] = struct.unpack_from("<f", d[b"DNAM"], 4)[0]
                 elif sig == b"CELL" and wrld == TAMRIEL:
@@ -137,12 +144,122 @@ def scan(path: Path) -> dict:
     return o
 
 
+def spawn_windows(vmad: bytes | None) -> list:
+    """[start hour, end hour, most critters] of each critter spawn script on an activator's VMAD (v5, object format 2)."""
+    if not vmad or len(vmad) < 6:
+        return []
+    out = []
+    try:
+        _, fmt, n = struct.unpack_from("<hhH", vmad, 0)
+        o = 6
+        for _ in range(n):
+            ln, = struct.unpack_from("<H", vmad, o)
+            name = vmad[o + 2:o + 2 + ln].decode("latin1")
+            o += 2 + ln + 1
+            pc, = struct.unpack_from("<H", vmad, o)
+            o += 2
+            props = {}
+            for _ in range(pc):
+                ln, = struct.unpack_from("<H", vmad, o)
+                pn = vmad[o + 2:o + 2 + ln].decode("latin1")
+                t = vmad[o + 2 + ln]
+                o += 4 + ln
+                if t == 1:
+                    o += 8
+                elif t == 2:
+                    ln, = struct.unpack_from("<H", vmad, o)
+                    o += 2 + ln
+                elif t in (3, 4):
+                    props[pn] = struct.unpack_from("<i" if t == 3 else "<f", vmad, o)[0]
+                    o += 4
+                elif t == 5:
+                    props[pn] = vmad[o]
+                    o += 1
+                else:
+                    return out
+            if name.lower().startswith("critterspawn") and "fStartSpawnTime" in props:
+                out.append([round(props["fStartSpawnTime"], 1), round(props["fEndSpawnTime"], 1), int(props.get("iMaxCritterCount", 0))])
+    except (struct.error, KeyError):
+        pass
+    return out
+
+
 def pct(v, ps=(10, 50, 90)):
     return [round(float(np.percentile(v, p)), 2) for p in ps] if len(v) else []
 
 
 def cell_of(x, y):
     return (int(x // CELL), int(y // CELL))
+
+
+def black_marsh_critters(_o: dict, skyrim_per_cell: float) -> dict:
+    """How the modder of this world's own ground places spawners: King of the Murkmire's critter spawner refs (its own
+    and Skyrim's bases) against the cells its refs stand in, and that per cell over Skyrim's per land cell. Black Marsh
+    itself and Tropical Skyrim place none."""
+    from tools.argonia_world.esm import Plugin
+    from tools.newworld.ecology.census import plugin_path
+    p = Plugin.read(plugin_path("King of the Murkmire.esp"), {"ACTI", "REFR", "CELL"})
+    own = {r.key: r.edid for r in p.records("ACTI") if r.edid}
+    spawn = re.compile(r"^(critterSpawn|ArgoniaCritterSpawn)", re.I)
+    base = {r.key: r.edid for r in Plugin.read(data_dir() / "Skyrim.esm", {"ACTI"}).records("ACTI") if r.edid}
+    cells, n, in_cells = set(), 0, set()
+    for r in p.records("REFR"):
+        d = r.sub("DATA")
+        if not d or len(d) < 12:
+            continue
+        x, y = struct.unpack_from("<2f", d)
+        cells.add(cell_of(x, y))
+        e = own.get(r.ref("NAME")) or base.get(r.ref("NAME"))
+        if e and spawn.match(e):
+            n += 1
+            in_cells.add(cell_of(x, y))
+    per = n / len(cells)
+    return {"plugin": "King of the Murkmire.esp", "spawner_refs": n, "cells_with_refs": len(cells), "cells_with_spawners": len(in_cells),
+            "spawners_per_cell": round(per, 3), "skyrim_spawners_per_land_cell": round(skyrim_per_cell, 3),
+            "factor": round(per / skyrim_per_cell, 1),
+            "method": "REFR of the plugin placed by x, y into 4096-unit cells; the cells counted are those holding any ref of "
+                      "it; spawners are bases named critterSpawn* or ArgoniaCritterSpawn*"}
+
+
+def measure_critters(o: dict, cls: dict, cells: dict, world_water: float, land: Counter) -> dict:
+    """Skyrim's critter spawn activators (insects, fish, birds) placed in Tamriel: per base the refs per 100 cells of
+    each class, where they stand against the water (over it, on its edge within 2 m, dry), how many stand within 15 m
+    of a harvestable plant, and the hours the base's spawn script runs."""
+    flor = np.array([(x, y) for fid, x, y, _, _ in o["refr"] if fid in o["flor"] and o["flor"][fid][1]])
+    rows: dict = defaultdict(Counter)
+    for fid, x, y, _, _ in o["refr"]:
+        if fid not in o["acti"]:
+            continue
+        xy = cell_of(x, y)
+        if xy not in cls:
+            continue
+        c = cells[xy]
+        wl = c["water"] if c["water"] is not None and c["water"] < 1e6 else world_water
+        i, j = min(32, max(0, int((x - xy[0] * CELL) / 128))), min(32, max(0, int((y - xy[1] * CELL) / 128)))
+        z = float(c["h"][j, i]) - wl
+        r = rows[o["acti"][fid][0]]
+        r["n"] += 1
+        r["class:" + cls[xy]] += 1
+        r["water:" + ("over" if z < 0 else "edge" if z < 140 else "dry")] += 1
+        r["flora"] += int(len(flor) > 0 and float(np.sqrt(((flor - (x, y)) ** 2).sum(1)).min()) / M < 15)
+    bases = {}
+    for fid, (edid, win) in sorted(o["acti"].items(), key=lambda kv: kv[1][0]):
+        r = rows.get(edid)
+        if not r:
+            continue
+        n = r["n"]
+        bases[edid] = {"refs": n, "refs_per_100_cells_by_class": {k: round(100 * r["class:" + k] / land[k], 3) for k in land if r["class:" + k]},
+                       "share_over_water": round(r["water:over"] / n, 3), "share_on_water_edge": round(r["water:edge"] / n, 3),
+                       "share_dry": round(r["water:dry"] / n, 3), "share_near_harvestable_15m": round(r["flora"] / n, 3),
+                       "spawn_hours": win}
+    spawners = re.compile(r"^(critterSpawn|ArgoniaCritterSpawn)", re.I)
+    sky = sum(r["n"] for e, r in rows.items() if spawners.match(e))
+    return {"bases": bases, "black_marsh": black_marsh_critters(o, sky / sum(land.values())),
+            "method": "REFR in Tamriel whose base ACTI is a critter spawner or critter (editor id starting critter, DragonFly, "
+                      "Fish, Firefly, Moth, FXbird, FCAmb; not dummies, triggers, furniture or tanks), in a cell with LAND; "
+                      "per 100 cells = refs / cells of the class * 100; over water = ground under the cell's water height "
+                      "at the ref, on the edge = within 2 m above it; near a harvestable = a FLOR with an ingredient within "
+                      "15 m; spawn_hours = the start and end hour and most critters of each critterspawn script of the base"}
 
 
 def measure(o: dict) -> dict:
@@ -243,6 +360,7 @@ def measure(o: dict) -> dict:
     dm, nm = nearest(pts, doors), nearest(pts, named)
     # harvestables
     harvest = Counter()
+    base_cls = defaultdict(Counter)       # class -> base editor id -> refs
     kinds_cell = defaultdict(set)
     harvest_total = {"FLOR": 0, "TREE": 0}
     kinds_all = set()
@@ -252,6 +370,7 @@ def measure(o: dict) -> dict:
                 xy = cell_of(x, y)
                 if xy in cls:
                     harvest[xy] += 1
+                    base_cls[cls[xy]][tbl[fid][0]] += 1
                     kinds_cell[xy].add(tbl[fid][1])
                     kinds_all.add(tbl[fid][1])
                     harvest_total[sig] += 1
@@ -261,6 +380,7 @@ def measure(o: dict) -> dict:
     kcls = defaultdict(list)
     for xy in cls:
         kcls[cls[xy]].append(len(kinds_cell.get(xy, ())))
+    critters = measure_critters(o, cls, cells, world_water, land)
     ez = o["eczn"]
     cell_zone = [xy for xy, c in cells.items() if c["zone"]]
     return {
@@ -305,11 +425,13 @@ def measure(o: dict) -> dict:
             "refs_per_100_cells_near_water_shore_or_water": round(100 * (hcls["water"] + hcls["shore"]) / (land["water"] + land["shore"]), 1),
             "refs_per_100_cells_forest": round(100 * hcls["forest"] / land["forest"], 1),
             "refs_per_100_cells_open": round(100 * hcls["open"] / land["open"], 1),
+            "bases_by_class_top": {k: dict(c.most_common(25)) for k, c in sorted(base_cls.items())},
             "distinct_kinds_per_cell_p10_50_90_by_class": {k: pct(v) for k, v in kcls.items()},
             "distinct_kinds_per_cell_mean_by_class": {k: round(float(np.mean(v)), 3) for k, v in kcls.items()},
             "method": "REFR in Tamriel whose base is a FLOR or TREE record with a PFIG (the ingredient it yields); "
                       "cell from the ref's position; a kind is a distinct PFIG form; per-cell figures divide by all "
                       "cells of the class including cells with none; near water = water plus shore classes"},
+        "critters": critters,
         "encounter_zones": {
             "eczn_records": len(ez),
             "min_level_min_max": [min(z["min"] for z in ez.values()), max(z["min"] for z in ez.values())],

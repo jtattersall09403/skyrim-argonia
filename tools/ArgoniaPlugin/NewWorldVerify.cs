@@ -184,6 +184,12 @@ static class NewWorldVerify
                         marker = new { cell = new[] { x, y }, cell_edid = c.EditorID, pos = new[] { pos.X, pos.Y, pos.Z }, ground = gm.g, water };
                         continue;
                     }
+                    if (po.FormKey.ID is >= 0xF00000 and <= 0xFDFFFF)    // an ecology critter: with the actors, not the placed refs
+                    {
+                        recs.TryGetValue(po.Base.FormKey, out var cb);
+                        ew.WriteLine($"{x}\t{y}\t{po.FormKey.ID:X6}\t{pos.X:F2}\t{pos.Y:F2}\t{pos.Z:F2}\t{rot.Z:F5}\t{po.Base.FormKey}\t{cb?.Edid}\t{cb?.Sig}");
+                        continue;
+                    }
                     nref++;
                     var bk = po.Base.FormKey; recs.TryGetValue(bk, out var bs);
                     var (gh, gx, gy) = Ground(pos.X, pos.Y);

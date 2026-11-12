@@ -593,7 +593,9 @@ def ecology_rows(rep: Report, plugin: Path, d: Path) -> None:
         return
     actors = jload(eco / "actors.json")["actors"]
     level = {a["name"]: int(a["level"]) for a in actors}
-    got = {r["fid"].upper(): r for r in read_tsv(d / "ecology.tsv")}
+    rows_all = {r["fid"].upper(): r for r in read_tsv(d / "ecology.tsv")}
+    got = {k: r for k, r in rows_all.items() if r["sig"] != "Activator"}
+    crit = {k: r for k, r in rows_all.items() if r["sig"] == "Activator"}
     npcs = {r["edid"]: r for r in read_tsv(d / "eco_npcs.tsv")}
     base_level = {r["key"]: r for r in npcs.values()}
     n = miss = moved = wrong = bad_lvl = 0
@@ -635,6 +637,43 @@ def ecology_rows(rep: Report, plugin: Path, d: Path) -> None:
     rep.row("ecology", "no ecology ACHR outside 0xF00000..0xFDFFFF", len(out), not out, ", ".join(out[:4]))
     extra = set(got) - seen
     rep.row("ecology", "no ACHR in the ESM that no shard names", len(extra), not extra, ", ".join(sorted(extra)[:4]))
+    critter_rows(rep, eco, crit)
+
+
+def critter_rows(rep: Report, eco: Path, crit: dict) -> None:
+    """The placed critters (ecology/critters/cy*.jsonl) read back: each stands as a REFR of the ACTI its shard names, under
+    its own id, in its cell, where the shard put it; every id inside the ecology's range; none the shards do not name."""
+    n = miss = moved = wrong = base = 0
+    ex: list[str] = []
+    seen = set()
+    for f in sorted((eco / "critters").glob("cy*.jsonl")):
+        for ln in f.read_text(encoding="utf-8").splitlines():
+            if not ln:
+                continue
+            o = json.loads(ln)
+            n += 1
+            fid = o["fid"].upper()
+            seen.add(fid)
+            r = crit.get(fid)
+            if r is None:
+                miss += 1
+                ex.append(f"{fid} absent")
+                continue
+            if max(abs(float(r["x"]) - o["x"]), abs(float(r["y"]) - o["y"]), abs(float(r["z"]) - o["z"])) > 1.0:
+                moved += 1
+                ex.append(f"{fid} moved")
+            if (int(r["cx"]), int(r["cy"])) != (math.floor(o["x"] / 4096), math.floor(o["y"] / 4096)):
+                wrong += 1
+            if r["base_edid"] != o["base"].split(":", 1)[1]:
+                base += 1
+                ex.append(f"{fid} base {r['base_edid']}")
+    rep.row("ecology", "every critter shard ref stands as a REFR under its own form id, within 1 unit of its place",
+            f"{n - miss - moved}/{n}", not miss and not moved, "; ".join(ex[:4]) if miss or moved else "")
+    rep.row("ecology", "every critter stands in the cell holding its x,y and on the base ACTI its shard names",
+            f"{n - wrong - base}/{n}", not wrong and not base, "; ".join(ex[:4]) if base else "")
+    out = [k for k in crit if not 0xF00000 <= int(k, 16) <= 0xFDFFFF]
+    rep.row("ecology", "no ecology critter REFR outside 0xF00000..0xFDFFFF or that no shard names", len(out) + len(set(crit) - seen),
+            not out and not set(crit) - seen, ", ".join(sorted(set(crit) - seen)[:4]))
 
 
 def edit_rows(rep: Report, natural: list[dict], rows: list[dict]) -> list[dict]:

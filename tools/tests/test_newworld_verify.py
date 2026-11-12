@@ -44,3 +44,22 @@ def test_ecology_rows(tmp_path):
     rep = v.Report()
     v.ecology_rows(rep, tmp_path / "plugin", d)
     assert all(r["result"] == "PASS" for r in rep.rows), rep.md()
+
+
+def test_ecology_critter_rows(tmp_path):
+    eco, d = tmp_path / "plugin/ecology", tmp_path / "dump"
+    (eco / "critters").mkdir(parents=True)
+    d.mkdir()
+    (eco / "actors.json").write_text('{"actors":[]}')
+    (eco / "critters/cy+001.jsonl").write_text('{"base":"Skyrim.esm:critterSpawnFirefly24x7","fid":"F00002","x":4100.0,"y":10.0,"z":5.0}\n')
+    head = "cx\tcy\tfid\tx\ty\tz\trz\tbase\tbase_edid\tsig\n"
+    (d / "eco_npcs.tsv").write_text("edid\tkey\tlevel_kind\tlevel\tstats_template\tautocalc\n")
+    (d / "ecology.tsv").write_text(head + "1\t0\tF00002\t4100.5\t10\t5\t0\tK\tcritterSpawnFirefly24x7\tActivator\n")
+    rep = v.Report()
+    v.ecology_rows(rep, tmp_path / "plugin", d)
+    assert all(r["result"] == "PASS" for r in rep.rows if "critter" in r["requirement"]), rep.md()
+    (d / "ecology.tsv").write_text(head + "1\t0\tF00002\t4100.5\t10\t5\t0\tK\tSomethingElse\tActivator\n"
+                                   + "1\t0\tF00003\t4100.5\t10\t5\t0\tK\tcritterSpawnFirefly24x7\tActivator\n")
+    rep = v.Report()
+    v.ecology_rows(rep, tmp_path / "plugin", d)
+    assert sum(r["result"] != "PASS" for r in rep.rows if "critter" in r["requirement"]) == 2, rep.md()
