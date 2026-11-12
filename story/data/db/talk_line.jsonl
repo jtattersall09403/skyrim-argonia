@@ -622,13 +622,13 @@
 {"talker":"0934C1:Black Marsh North.esp","topic":"talk.self","ord":1,"text":"Rufio Casca, soldier of the company. I guard the west cages with the Argonian guards, and I say the Owing is fair to anyone who asks."}
 {"talker":"0934C1:Black Marsh North.esp","topic":"talk.someone","ord":1,"text":"Wazei-Ru has the cage doors on the west side, just north-north-east of here. Soft on the prisoners, and I've told Wazei-Ru so."}
 {"talker":"0934C1:Black Marsh North.esp","topic":"talk.trade","ord":1,"text":"The company keeps watch on the west cages for the field-owners, civilian. We keep the doors shut and the prisoners where they belong."}
-{"talker":"0934C2:Black Marsh North.esp","topic":"talk.directions","ord":1,"text":"Temple Pass, traveller? Follow the path north from here, some hundred and fifty paces, until you reach the stone tower on your left. Then walk north over open ground, some seven hundred paces, and you are there. It is a fair step, so go steady."}
+{"talker":"0934C2:Black Marsh North.esp","topic":"talk.directions","ord":1,"text":"Temple Pass, traveller? Follow the path north a short way, until you reach the stone tower on your left. Then walk north over open ground a fair way, and you are there. Go steady."}
 {"talker":"0934C2:Black Marsh North.esp","topic":"talk.greet-friend","ord":1,"text":"Sit a moment if you like. My feet are glad of the excuse."}
 {"talker":"0934C2:Black Marsh North.esp","topic":"talk.greet-stranger","ord":1,"text":"Traveller. I guard the houses on this side, so keep to the path and we'll have no trouble."}
-{"talker":"0934C2:Black Marsh North.esp","topic":"talk.here","ord":1,"text":"This is the east side, where I stand guard with Jeelus-Vax. There's a house about twenty paces east-north-east of here, if that's the one you want."}
+{"talker":"0934C2:Black Marsh North.esp","topic":"talk.here","ord":1,"text":"This is the east side, where I stand guard with Jeelus-Vax. The house is just east-north-east of here, if that's the one you want."}
 {"talker":"0934C2:Black Marsh North.esp","topic":"talk.lore","ord":1,"text":"Ask Jeelus-Vax about the title, traveller. I think that question is the real fight in Thorn, whatever else you hear."}
 {"talker":"0934C2:Black Marsh North.esp","topic":"talk.self","ord":1,"text":"Severan Otho, soldier of the hired company. Jeelus-Vax and I watch the east houses. It's honest work, traveller, though I'll be glad to go home."}
-{"talker":"0934C2:Black Marsh North.esp","topic":"talk.someone","ord":1,"text":"Nalvos Brenur? A Dunmer labourer, held under an Owing, so he works off a debt. He's about twenty paces south of me, and he's a clever one."}
+{"talker":"0934C2:Black Marsh North.esp","topic":"talk.someone","ord":1,"text":"Nalvos Brenur? A Dunmer labourer, held under an Owing, so he works off a debt. He's just south of me, and he's a clever one."}
 {"talker":"0934C3:Black Marsh North.esp","topic":"talk.directions","ord":1,"text":"Thorn? Follow the path south-west for seventy paces or so; the dead tree will be on your right. From there, south for sixty paces. That is Thorn, party."}
 {"talker":"0934C3:Black Marsh North.esp","topic":"talk.greet-friend","ord":1,"text":"For you I have a moment. Speak, and I will hear it."}
 {"talker":"0934C3:Black Marsh North.esp","topic":"talk.greet-stranger","ord":1,"text":"You are a stranger to me, party. State your business."}
