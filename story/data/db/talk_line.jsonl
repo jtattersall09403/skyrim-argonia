@@ -813,13 +813,13 @@
 {"talker":"0C7269:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"Ask Xuth-Ma about the families of the Rose. He talks of it. I do not."}
 {"talker":"0C7269:Black Marsh.esm","topic":"talk.self","ord":1,"text":"Teeda-Wan. I keep the peace at this market. That is all."}
 {"talker":"0C7269:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Lux Ha works the nets on the market dock. Usually just east-south-east of here. Lux Ha should be paid more."}
-{"talker":"0C729E:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The longboat. Yes. Walk south-east, about a hundred and fifty-five paces, until the house is on your left. Then walk south, about a hundred paces more. The longboat is there."}
+{"talker":"0C729E:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The longboat. Yes. Walk south-east a short way, until you reach the house on your left. Then walk south a short way more. The longboat is there."}
 {"talker":"0C729E:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"Hm. Stand with me a while. I am in no hurry. I am glad it is you."}
 {"talker":"0C729E:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"You wish to speak with me? Then speak. I am Iron-Jaw. I guard the north district."}
-{"talker":"0C729E:Black Marsh.esm","topic":"talk.here","ord":1,"text":"Hm. There is the house, just there, about ten paces north-north-west of where we stand."}
+{"talker":"0C729E:Black Marsh.esm","topic":"talk.here","ord":1,"text":"Hm. There is the house, just there, just north-north-west of where we stand."}
 {"talker":"0C729E:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"Hm. Ask Quintel about Emperor Pelagius. I would like to read his tale in a book one day."}
 {"talker":"0C729E:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Iron-Jaw. A cudgel struck my face in my first year. The name stayed with me. I have stood in the north district ever since. I can read well."}
-{"talker":"0C729E:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Shaleem is the person you want. Shaleem is a guard in the north district. She is the best guard in the town. You will usually find Shaleem about five paces south-south-east of here."}
+{"talker":"0C729E:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Shaleem is the person you want. Shaleem is a guard in the north district. She is the best guard in the town. You will usually find Shaleem just south-south-east of here."}
 {"talker":"0C72A3:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The cooking fire? Go south past Black Rose, about three hundred and thirty-five paces. The cooking fire is there."}
 {"talker":"0C72A3:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"Come and stand with me by the boats a while. I could use the company."}
 {"talker":"0C72A3:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"I do not know you. Why are you at the landing?"}
