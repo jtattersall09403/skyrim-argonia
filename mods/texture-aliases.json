@@ -1,20 +1,97 @@
 {
- "about": "A file a mod ships at one path, laid again at the path that mod's own mesh names (infra/gpu-box/stack.py lay_aliases, the folder argonia-texture-aliases; nothing here is a game file). Found by tools/newworld/assets_audit.py. gkbjunglebranch10 is shipped by no mod: its own family's gkbjunglebranch3 stands in; ewpshore15 and ewpshore17 are shipped by no mod either: King of the Murkmire's violet grasses show Flower Fields' dog violet.",
+ "about": "A file a mod ships at one path, laid again at the path that mod's own mesh names (infra/gpu-box/stack.py lay_aliases, the folder argonia-texture-aliases; nothing here is a game file). Found by tools/newworld/assets_audit.py. gkbjunglebranch10 is shipped by no mod: its own family's gkbjunglebranch3 stands in; ewpshore15 and ewpshore17 are shipped by no mod either: King of the Murkmire's violet grasses show Flower Fields' dog violet. The giant snakes King of the Murkmire copies name Mihail's snake mesh at Mihail's own path; Curse of Cipactli ships it under its Actors folder. Skinwalker21's giant snail names its leech's gradient and cubemap at the snail's path.",
  "aliases": {
-  "textures\\plants\\groundplants1\\fern2.dds": ["bmv", "textures\\landscape\\plants\\fern2.dds"],
-  "textures\\plants\\groundplants1\\fern2_n.dds": ["bmv", "textures\\landscape\\plants\\fern2_n.dds"],
-  "textures\\plants\\grplants2\\leafcol.dds": ["bmv", "textures\\landscape\\plants\\leafcol.dds"],
-  "textures\\plants\\grplants2\\leafcol_n.dds": ["bmv", "textures\\landscape\\plants\\leafcol_n.dds"],
-  "textures\\landscape\\trees\\treeoaktrunk_n.dds": ["bmv", "textures\\landscape\\trees\\ethas\\treeoaktrunk_n.dds"],
-  "textures\\landscape\\gkbbranch1.dds.dds": ["bmv", "textures\\landscape\\trees\\gkbbranch1.dds"],
-  "textures\\landscape\\grass\\ewpshore15.dds": ["flower-fields-se", "textures\\landscape\\grass\\espdogviolet01.dds"],
-  "textures\\landscape\\grass\\ewpshore17.dds": ["flower-fields-se", "textures\\landscape\\grass\\espdogviolet01.dds"],
-  "textures\\landscape\\trees\\gkbjunglebranch10.dds": ["bmv", "textures\\landscape\\trees\\gkbjunglebranch3.dds"],
-  "textures\\0manor house\\sfloorhouse01.dds": ["bmv", "textures\\textures\\0manor house\\sfloorhouse01.dds"],
-  "textures\\0manor house\\sfloorhouse01_n.dds": ["bmv", "textures\\textures\\0manor house\\sfloorhouse01_n.dds"],
-  "textures\\0manor house\\sintcoloumn02.dds": ["bmv", "textures\\textures\\0manor house\\sintcoloumn02.dds"],
-  "textures\\0manor house\\sintcoloumn02_n.dds": ["bmv", "textures\\textures\\0manor house\\sintcoloumn02_n.dds"],
-  "textures\\breticshipside01_n.dds": ["bmv", "textures\\breticships\\breticshipside01_n.dds"],
-  "meshes\\actors\\dragon\\character assets\\bones\\cobraskull.nif": ["king-of-the-murkmire", "meshes\\mihail monsters and animals\\dragon\\giant snake\\bones\\cobraskull.nif"]
+  "textures\\plants\\groundplants1\\fern2.dds": [
+   "bmv",
+   "textures\\landscape\\plants\\fern2.dds"
+  ],
+  "textures\\plants\\groundplants1\\fern2_n.dds": [
+   "bmv",
+   "textures\\landscape\\plants\\fern2_n.dds"
+  ],
+  "textures\\plants\\grplants2\\leafcol.dds": [
+   "bmv",
+   "textures\\landscape\\plants\\leafcol.dds"
+  ],
+  "textures\\plants\\grplants2\\leafcol_n.dds": [
+   "bmv",
+   "textures\\landscape\\plants\\leafcol_n.dds"
+  ],
+  "textures\\landscape\\trees\\treeoaktrunk_n.dds": [
+   "bmv",
+   "textures\\landscape\\trees\\ethas\\treeoaktrunk_n.dds"
+  ],
+  "textures\\landscape\\gkbbranch1.dds.dds": [
+   "bmv",
+   "textures\\landscape\\trees\\gkbbranch1.dds"
+  ],
+  "textures\\landscape\\grass\\ewpshore15.dds": [
+   "flower-fields-se",
+   "textures\\landscape\\grass\\espdogviolet01.dds"
+  ],
+  "textures\\landscape\\grass\\ewpshore17.dds": [
+   "flower-fields-se",
+   "textures\\landscape\\grass\\espdogviolet01.dds"
+  ],
+  "textures\\landscape\\trees\\gkbjunglebranch10.dds": [
+   "bmv",
+   "textures\\landscape\\trees\\gkbjunglebranch3.dds"
+  ],
+  "textures\\0manor house\\sfloorhouse01.dds": [
+   "bmv",
+   "textures\\textures\\0manor house\\sfloorhouse01.dds"
+  ],
+  "textures\\0manor house\\sfloorhouse01_n.dds": [
+   "bmv",
+   "textures\\textures\\0manor house\\sfloorhouse01_n.dds"
+  ],
+  "textures\\0manor house\\sintcoloumn02.dds": [
+   "bmv",
+   "textures\\textures\\0manor house\\sintcoloumn02.dds"
+  ],
+  "textures\\0manor house\\sintcoloumn02_n.dds": [
+   "bmv",
+   "textures\\textures\\0manor house\\sintcoloumn02_n.dds"
+  ],
+  "textures\\breticshipside01_n.dds": [
+   "bmv",
+   "textures\\breticships\\breticshipside01_n.dds"
+  ],
+  "meshes\\actors\\dragon\\character assets\\bones\\cobraskull.nif": [
+   "king-of-the-murkmire",
+   "meshes\\mihail monsters and animals\\dragon\\giant snake\\bones\\cobraskull.nif"
+  ],
+  "meshes\\mihail monsters and animals\\dragon\\giant snake\\mihailgiantsnake.nif": [
+   "htbm-cipactli",
+   "meshes\\here there be monsters - curse of cipactli\\actors\\mihailgiantsnake.nif"
+  ],
+  "meshes\\mihail monsters and animals\\dragon\\giant snake\\skeletongiantsnake.nif": [
+   "htbm-cipactli",
+   "meshes\\here there be monsters - curse of cipactli\\actors\\skeletongiantsnake.nif"
+  ],
+  "textures\\here there be monsters - curse of cipactli\\trees\\eressea\\architecture\\citesylvestrepactevert\\boisebenenoir02_n.dds": [
+   "htbm-cipactli",
+   "textures\\here there be monsters - curse of cipactli\\trees\\boisebenenoir02_n.dds"
+  ],
+  "textures\\here there be monsters - curse of cipactli\\trees\\eressea\\architecture\\citesylvestrepactevert\\boisebenenoir02hist.dds": [
+   "htbm-cipactli",
+   "textures\\here there be monsters - curse of cipactli\\trees\\boisebenenoir02hist.dds"
+  ],
+  "textures\\here there be monsters - curse of cipactli\\trees\\eressea\\architecture\\citesylvestrepactevert\\boisebenenoir02hist_g.dds": [
+   "htbm-cipactli",
+   "textures\\here there be monsters - curse of cipactli\\trees\\boisebenenoir02hist_g.dds"
+  ],
+  "textures\\skinwalker21 creatures\\horker\\giant snail\\skyrim\\effects\\gradients\\gradblood.dds": [
+   "giant-leeches",
+   "textures\\skinwalker21 creatures\\horker\\leech\\skyrim\\gradblood.dds"
+  ],
+  "textures\\skinwalker21 creatures\\horker\\giant snail\\skyrim\\ore_ebony_e.dds": [
+   "giant-leeches",
+   "textures\\skinwalker21 creatures\\horker\\leech\\skyrim\\ore_ebony_e.dds"
+  ],
+  "textures\\skinwalker21 creatures\\horker\\leech\\ore_ebony_e.dds": [
+   "giant-leeches",
+   "textures\\skinwalker21 creatures\\horker\\leech\\skyrim\\ore_ebony_e.dds"
+  ]
  }
 }
