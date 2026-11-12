@@ -314,3 +314,14 @@ def test_seat_clearance_poses_the_mesh():
     # tipped 90 degrees about y: the vertex 100 units along x goes 100 units down
     c = S.clearance(pts, [0.0, 0.0, 500.0], [0.0, np.pi / 2, 0.0], 1.0, lambda xs, ys: np.zeros(len(xs)))
     assert abs(c - 400.0) < 1e-6
+
+
+def test_a_drop_row_takes_away_every_thing_of_its_base_and_nothing_else(world):
+    world["edits"].write_text(json.dumps({"n": 1, "op": "drop", "base": "Trees.esp:TreePalm", "by": "agent",
+                                          "at": "2026-11-12T00:00:00Z", "tier": "AGENT_INVENTED"}) + "\n")
+    rec = apply(world)
+    got = {o["id"]: o for f in world["refs"].glob("cy*.jsonl") for o in map(json.loads, f.read_text().splitlines())}
+    assert rec["dropped"] == {"Trees.esp:TreePalm": 2}
+    for (base, x, y), r in world["by"].items():
+        assert (r["id"] in got) == (base != PALM)
+    assert sum(json.loads((world["refs"] / "counts.json").read_text()).values()) == len(THINGS) - 2

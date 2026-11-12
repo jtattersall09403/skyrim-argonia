@@ -78,7 +78,7 @@ own: a change reaches only the steps that read it.
 |---|---|---|
 | Placed references only (places built, plants scattered again with the same bases) | `dyndolod`, `collect` | `terrain`, `texgen` |
 | A re-place or a navmesh rebuild (land, water and ground paint as they were) | `dyndolod`, `collect`; `texgen` only when a tree or static base is new or changed | `terrain`, always: every record keeps its registered form id (the skill `world-build`) |
-| Edits of single placed things (the skill `world-build`, [changes.md](../world-build/changes.md)) | `dyndolod`, `collect`, once for a session's edits; `texgen` only when an edit brings a tree or static base new to the world. Without the run an edit shows in the loaded cells and not far off | `terrain`, always |
+| Edits of placed things, one thing or every thing of a base (`seat`, `drop`) (the skill `world-build`, [changes.md](../world-build/changes.md)) | `dyndolod`, `collect`, once for a session's edits; `texgen` only when an edit brings a tree or static base new to the world. Without the run an edit shows in the loaded cells and not far off: a seated or dropped tree's billboard stands where it stood | `terrain`, always |
 | A new or changed tree base, or the billboard plan | `texgen`, `dyndolod`, `collect` | `terrain` |
 | A new or changed static base that is no tree | `texgen` (it reads every static base record), `dyndolod`, `collect` | `terrain` |
 | Terrain, water or ground paint, in any cells | `terrain` (its textures are made again only for what is missing: section 6), `dyndolod`, `collect` | `texgen` |

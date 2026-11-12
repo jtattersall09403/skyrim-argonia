@@ -98,6 +98,14 @@ placed model resolving in the NewWorld profile (25 KotM/TR texture paths do not)
 mud 130–150/ha, marsh grass 39/ha, river bottom 27/ha, table in the report) → world.sh (ESM with refs) → navmesh full
 run → LOD full run → the off-game read-back (step 12).
 
+Owed at the next placement run (2026-11-12, the owner's floating trees; today carried by `seat` and `drop` rows in
+newworld/sources/placed_edits.jsonl, which then become no-ops and are deleted):
+- `place.py` `sink_m`: clamp so no base but rocks and floating water plants is lifted above the ground (a measured
+  negative sink is the source's raised bed or water, not ours); then no thing's lowest vertex stands over 0.5 m clear
+  (`python -m tools.newworld.place.seat audit`).
+- The flora tables: the three hanging-moss bases (ArgoniaTreeSwampCypressMoss01-03, `argonia\trees\hangingmoss0N.nif`)
+  out of the standalone trees (families.json), so they are never placed with nothing to hang from.
+
 Owner faults whose lessons land in the recipes once verified are in docs/skill-fixes.md.
 
 Skills made in this phase: `world-build` (changing and rebuilding the new world: `tools/newworld/rebuild.sh` runs

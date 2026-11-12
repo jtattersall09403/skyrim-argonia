@@ -18,7 +18,8 @@ The source is newworld/sources/placed_edits.jsonl (committed): one row an edit, 
 `seat` is a rule over one base, not a thing: {"n", "op": "seat", "base": plugin:edid, "to": {"embed_m": m}, "by", "at",
 "tier", "why"}; every thing of that base the rules placed (and no single-thing row names) is lowered until its mesh's
 lowest vertex sits embed_m into the ground (tools/newworld/place/seat.py), its identity, form id, x, y, rotation and
-scale kept; a thing already touching the ground is left as it is.
+scale kept; a thing already touching the ground is left as it is. `drop` (same shape, no `to`) takes away every thing
+of one base the rules placed (a base that cannot stand alone, such as moss with nothing to hang from).
 
 `apply` reads the placement (out/newworld/plugin/placed/flora, place.PLACED) and writes the placed-refs hook
 (out/newworld/plugin/refs/flora, place.REFS): every shard the same bytes as the placement's but the rows of the
@@ -52,7 +53,8 @@ EDITS = P.REPO / "newworld/sources/placed_edits.jsonl"
 PLACES = P.REPO / "newworld/places"
 KEY = P.REPO / "newworld/sources/key.json"
 OWNER, OWNER_TIER, AGENT_TIER = "owner", "OWNER_STATED", "AGENT_INVENTED"
-OPS = ("remove", "move", "swap", "add", "restore", "seat")
+OPS = ("remove", "move", "swap", "add", "restore", "seat", "drop")
+BASE_OPS = ("seat", "drop")  # rules over every thing of one base
 REANCHOR = 70.0  # units (1 m): no two placed things stand closer, so the nearest of one base within it is the same thing
 ADD_FIRST, ADD_LAST = idspace.SPAN["added"]  # form ids of added things (NewWorld.cs); the rules' own are P.FID_FIRST..
 IDENT = re.compile(r"flora/(-?\d+),(-?\d+)/([0-9a-f]{10}|add\d{6})")
@@ -108,9 +110,9 @@ def validate(r: dict) -> None:
         raise EditError(f"row {r.get('n')}: {why}")
     if not isinstance(r.get("n"), int) or r.get("op") not in OPS:
         bad(f"op {r.get('op')!r} is none of {', '.join(OPS)}, or n is no number")
-    if r["op"] == "seat":                 # a rule over every thing of one base: no identity of its own
+    if r["op"] in BASE_OPS:               # a rule over every thing of one base: no identity of its own
         if not isinstance(r.get("base"), str) or not isinstance((r.get("to") or {}).get("embed_m", 0.0), (int, float)):
-            bad("seat needs base (plugin:edid) and may give to.embed_m")
+            bad(f"{r['op']} needs base (plugin:edid); seat may give to.embed_m")
         if not r.get("by") or not r.get("at") or not r.get("tier"):
             bad("by, at and tier are all needed")
         return
@@ -151,12 +153,17 @@ def load(path: Path | None = None, seats: bool = False) -> list[dict]:
     fids = [r["fid"] for r in rows if r["op"] == "add"]
     if len(set(ns)) != len(ns) or len(set(fids)) != len(fids) or ns != sorted(ns):
         raise EditError(f"{path}: the rows' numbers are not rising and single, or two added things share a form id")
-    return rows if seats else [r for r in rows if r["op"] != "seat"]
+    return rows if seats else [r for r in rows if r["op"] not in BASE_OPS]
 
 
 def seat_rows(path: Path | None = None) -> dict[str, float]:
     """base (plugin:edid) -> how far its things' lowest vertex is set into the ground (the last seat row wins)."""
     return {r["base"]: float((r.get("to") or {}).get("embed_m", SEAT_EMBED_M)) for r in load(path, seats=True) if r["op"] == "seat"}
+
+
+def drop_rows(path: Path | None = None) -> set[str]:
+    """The bases (plugin:edid) every thing of which the edits take away."""
+    return {r["base"] for r in load(path, seats=True) if r["op"] == "drop"}
 
 
 # ---- the placement, read a row at a time --------------------------------------------------------------------------
@@ -396,8 +403,8 @@ def apply(edits: Path | None = None, placed_dir: Path | None = None, refs_dir: P
     out = Path(refs_dir or P.REFS)
     out.mkdir(parents=True, exist_ok=True)
     rows = load(edits)
-    seats = seat_rows(edits)
-    seater, seated = (Seater() if seats else None), Counter()
+    seats, drops = seat_rows(edits), drop_rows(edits)
+    seater, seated, dropped, dropped_cells = (Seater() if seats else None), Counter(), Counter(), Counter()
     extra = new_bases(rows, placed)
     res = resolve(rows, placed, extra)
     bases = {**placed.bases, **extra}
@@ -414,8 +421,8 @@ def apply(edits: Path | None = None, placed_dir: Path | None = None, refs_dir: P
             here.setdefault(dest, {})
             arrive.setdefault(dest, []).append(ident)
     d = digest(res)
-    if seats:
-        d = hashlib.sha256((d + json.dumps(sorted(seats.items()))).encode()).hexdigest()[:12]
+    if seats or drops:
+        d = hashlib.sha256((d + json.dumps(sorted(seats.items())) + json.dumps(sorted(drops))).encode()).hexdigest()[:12]
     key = placed.manifest["key"] + (f"+{d}" if d else "")
     man_path = out / "manifest.json"
     try:
@@ -426,9 +433,13 @@ def apply(edits: Path | None = None, placed_dir: Path | None = None, refs_dir: P
         man_path.unlink(missing_ok=True)      # a stopped pass leaves no manifest: the shards are compared again
     h, total, wrote = hashlib.sha256(), 0, []
     for cy in placed.rows:
-        if cy in here or seats:
+        if cy in here or seats or drops:
             lines = []
             for ln, o in placed.lines(cy):
+                if o["id"] not in here.get(cy, ()) and o["base"] in drops:
+                    dropped[o["base"]] += 1
+                    dropped_cells[tuple(o["cell"])] += 1
+                    continue
                 if o["id"] not in here.get(cy, ()):
                     z = seater.seat(o, seats[o["base"]]) if o["base"] in seats else None
                     if z is None:
@@ -457,17 +468,20 @@ def apply(edits: Path | None = None, placed_dir: Path | None = None, refs_dir: P
         bdoc["key"] = f"{bdoc['key']}+{hashlib.sha256(json.dumps(sorted(extra)).encode()).hexdigest()[:12]}"
     _write(out / "bases.json", json.dumps(bdoc, indent=1))
     counts = counts_after(placed, res)
+    for c, n in dropped_cells.items():
+        counts[c] -= n
     _write(out / "counts.json", json.dumps({f"{c[0]},{c[1]}": v for c, v in sorted(counts.items())}))
     tally = Counter(r["status"] for r in res["rows"])
     rec = {"placed_key": placed.manifest["key"], "digest": d, "file_rows": len(rows), "by_status": dict(sorted(tally.items())),
            "rows": res["rows"],
            "things": [{"id": i, "fid": (st or res["was"][i])["fid"], "owner": i in res["owner"], "confirmed": res["confirmed"][i],
                        "was": res["was"][i], "now": st} for i, st in sorted(res["final"].items())],
-           "new_bases": sorted(extra), "seated": dict(sorted(seated.items()))}
+           "new_bases": sorted(extra), "seated": dict(sorted(seated.items())),
+           "dropped": dict(sorted(dropped.items()))}
     _write(out / "edits.json", json.dumps(rec, indent=1))
     man = {**placed.manifest, "key": key, "refs": total, "shard_sha256": h.hexdigest()[:16],
            "placed": {k: placed.manifest.get(k) for k in ("key", "refs", "shard_sha256", "bases")}, "bases": len(bdoc["bases"]),
-           "edits": {"rows": len(rows) + len(seats), "things": len(res["final"]), "digest": d, "seated": sum(seated.values()),
+           "edits": {"rows": len(rows) + len(seats), "things": len(res["final"]), "digest": d, "seated": sum(seated.values()), "dropped": sum(dropped.values()),
                      **dict(sorted(tally.items()))}}
     _write(man_path, json.dumps(man, indent=1))
     log(f"edits: {len(rows)} rows, {len(res['final'])} things changed; the placement itself untouched ({placed.manifest['refs']} references, "
@@ -773,7 +787,7 @@ def edit(op: str, by: str, edits: Path | None = None, placed_dir: Path | None = 
     path = Path(edits or EDITS)
     placed = Placed(placed_dir)
     rows = load(path, seats=True)
-    res = resolve([r for r in rows if r["op"] != "seat"], placed, {})
+    res = resolve([r for r in rows if r["op"] not in BASE_OPS], placed, {})
     tier = tier or (OWNER_TIER if by == OWNER else AGENT_TIER)
     if tier not in tiers():
         raise EditError(f"tier {tier!r} is none of the statement tiers ({', '.join(tiers())})")
