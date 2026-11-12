@@ -1,9 +1,9 @@
 {"quest_id":"quest.bc.bc01","things_ord":0,"state":"all","value":"present"}
 {"quest_id":"quest.bc.bc01","things_ord":1,"state":"after-90","value":"taken by Never-Sold"}
-{"quest_id":"quest.bc.bc01","things_ord":1,"state":"during","value":"on the landing, or carried"}
+{"quest_id":"quest.bc.bc01","things_ord":1,"state":"during","value":"carried"}
 {"quest_id":"quest.bc.bc01","things_ord":2,"state":"after-90","value":"Rows-For-Another gone home"}
 {"quest_id":"quest.bc.bc01","things_ord":2,"state":"after-91","value":"Rows-For-Another gone down the channel"}
-{"quest_id":"quest.bc.bc01","things_ord":2,"state":"during","value":"both on the landing"}
+{"quest_id":"quest.bc.bc01","things_ord":2,"state":"during","value":"both on the bank"}
 {"quest_id":"quest.bc.bc01","things_ord":3,"state":"all","value":"in the house"}
 {"quest_id":"quest.bc.bc02","things_ord":0,"state":"all","value":"present"}
 {"quest_id":"quest.bc.bc02","things_ord":1,"state":"all","value":"present"}
@@ -18,6 +18,8 @@
 {"quest_id":"quest.bc.bc03","things_ord":3,"state":"all","value":"present"}
 {"quest_id":"quest.bc.bc03","things_ord":1,"state":"after-90","value":"broken"}
 {"quest_id":"quest.bc.bc03","things_ord":1,"state":"during","value":"on the dock, or carried"}
+{"quest_id":"quest.bc.bc03","things_ord":1,"state":"after-90","value":"Heavy-Rope's"}
+{"quest_id":"quest.bc.bc03","things_ord":1,"state":"during","value":"carried"}
 {"quest_id":"quest.bc.bc03","things_ord":2,"state":"all","value":"present"}
 {"quest_id":"quest.local.lf83","things_ord":0,"state":"after-40","value":"a band of fresh grey clay rammed in behind the coping and down the lining on the ford side (place_local_state_variants lf83-well-clayed)"}
 {"quest_id":"quest.local.lf83","things_ord":0,"state":"before-40","value":"a new crack a finger wide from the coping down the lining on the ford side, with old mortar lines of earlier mending beside it; examining it sets flag.lf83.crack-seen (an activator: handed to the planner, 16b)"}

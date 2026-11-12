@@ -1,10 +1,11 @@
-{"quest_id":"quest.bc.bc01","ord":0,"skill":"sneak","use":"steal","reason":"the debt book is taken from beside Hulm-Tei while he stands over it"}
-{"quest_id":"quest.bc.bc01","ord":1,"skill":"speechcraft","use":"persuade","reason":"Rows-For-Another is talked into going down the channel now (Speechcraft 30)"}
+{"quest_id":"quest.bc.bc01","ord":0,"skill":"speechcraft","use":"persuade","reason":"Hulm-Tei is talked into striking the page on the custom (Speechcraft 25)"}
+{"quest_id":"quest.bc.bc01","ord":1,"skill":"mercantile","use":"bribe","reason":"or paid the first price from Never-Sold's coin"}
+{"quest_id":"quest.bc.bc01","ord":2,"skill":"speechcraft","use":"persuade","reason":"or Rows-For-Another is talked into going down the channel now (Speechcraft 30)"}
 {"quest_id":"quest.bc.bc02","ord":0,"skill":"speechcraft","use":"persuade","reason":"Third-Born Tsaxi is talked into counting one lost to the smoke (Speechcraft 25)"}
 {"quest_id":"quest.bc.bc02","ord":1,"skill":"mercantile","use":"bribe","reason":"or he is paid Never-Sold's 100 gold for it"}
-{"quest_id":"quest.bc.bc03","ord":0,"skill":"sneak","use":"steal","reason":"the crew's tokens are taken from beside Ussa-Rekh while he stands over them"}
-{"quest_id":"quest.bc.bc03","ord":1,"skill":"speechcraft","use":"persuade","reason":"Heavy-Rope is talked into taking the refusal (Speechcraft 30)"}
-{"quest_id":"quest.bc.bc03","ord":2,"skill":"mercantile","use":"bribe","reason":"or his crew are paid 50 gold to take it"}
+{"quest_id":"quest.bc.bc03","ord":0,"skill":"speechcraft","use":"persuade","reason":"Ussa-Rekh is talked into giving up the tokens (Speechcraft 30)"}
+{"quest_id":"quest.bc.bc03","ord":1,"skill":"mercantile","use":"bribe","reason":"or paid the crew's coin for the last season"}
+{"quest_id":"quest.bc.bc03","ord":2,"skill":"speechcraft","use":"persuade","reason":"or Heavy-Rope is talked into taking the refusal (Speechcraft 30)"}
 {"quest_id":"quest.local.lf83","ord":0,"skill":"spear","use":"hunt","reason":"a crocodile has taken the deep pool under the clay cut below the ford, where the landing digs its plaster clay; the landing will not dig until it is dead"}
 {"quest_id":"quest.local.lf83","ord":1,"skill":"marksman","use":"snipe","reason":"or shoot it from the station's wall above the cut when it suns"}
 {"quest_id":"quest.local.lf83","ord":2,"skill":"speechcraft","use":"present-evidence","reason":"each keeper's objections are answered with what the player found (the cracked and re-mortared head, the silt, the ledger, the doubter's word) or by persuasion"}

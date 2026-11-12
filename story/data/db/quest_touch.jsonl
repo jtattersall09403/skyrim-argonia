@@ -4,6 +4,7 @@
 {"quest_id":"quest.bc.bc01","ord":3,"id":"place.imperial-penal-south.blackrose","access":"read"}
 {"quest_id":"quest.bc.bc01","ord":4,"id":"flag.bc01.bought-down","access":"write"}
 {"quest_id":"quest.bc.bc01","ord":5,"id":"flag.bc01.slipped-away","access":"write"}
+{"quest_id":"quest.bc.bc01","ord":6,"id":"flag.bc01.settled","access":"write"}
 {"quest_id":"quest.bc.bc02","ord":0,"id":"npc.imperial-penal-south.blackrose.chainbreaker-patron","access":"read"}
 {"quest_id":"quest.bc.bc02","ord":1,"id":"npc.imperial-penal-south.blackrose.post-gatekeeper","access":"read"}
 {"quest_id":"quest.bc.bc02","ord":2,"id":"npc.imperial-penal-south.blackrose.held-speaker","access":"write"}
