@@ -782,13 +782,13 @@
 {"talker":"0C7264:Black Marsh.esm","topic":"talk.self","ord":2,"text":"I mend hulls. Pitch-Pot says my work is careless, but Pitch-Pot is slow and expensive. My patches hold."}
 {"talker":"0C7264:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Tuh-Weem is the guard at the north-east boat dock. She is usually just south-west of here. She should mind her own dock."}
 {"talker":"0C7264:Black Marsh.esm","topic":"talk.someone","ord":2,"text":"You want Tuh-Weem, the guard at the north-east boat dock. As a rule she is just south-west of here. Go and ask her."}
-{"talker":"0C7266:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"Walk north-west for a little over two hundred paces. You will be at Black Rose Jail. Eat before you go."}
+{"talker":"0C7266:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"Black Rose Jail is a short way to the north-west of here. Eat before you go."}
 {"talker":"0C7266:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"There you are, my friend. Sit down and eat. You look thin to me. The pot is hot."}
 {"talker":"0C7266:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"If you want food, say so. If you do not, I have a pot to watch."}
-{"talker":"0C7266:Black Marsh.esm","topic":"talk.here","ord":1,"text":"This is Black Rose. My cooking fire is ten paces north-west of here. The dock is fifteen or so to the north-north-east. Have you eaten today?"}
+{"talker":"0C7266:Black Marsh.esm","topic":"talk.here","ord":1,"text":"This is Black Rose. My cooking fire is just north-west of here, and the dock is just north-north-east. You have not eaten today, I think."}
 {"talker":"0C7266:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"Ask Tzeel-Vaa about who goes into Black Rose and who stays. I came on a prison barge as its cook, and I never got back on it. Have you eaten?"}
 {"talker":"0C7266:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Weeska. I cook at the fire and feed the dock hands. Sit, or move along."}
-{"talker":"0C7266:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Lux Ha mends nets at the market dock, about five paces south-south-west of here. Lux Ha works too hard. I doubt that one has eaten."}
+{"talker":"0C7266:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Lux Ha mends nets at the market dock, usually just south-south-west of here. Lux Ha works too hard. I doubt that one has eaten."}
 {"talker":"0C7267:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The longboat? It is in plain sight. It lies about sixty-three paces east of here. You cannot miss it."}
 {"talker":"0C7267:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"Look at what the boats brought in today. If you have something to sell, I will give you a fair price."}
 {"talker":"0C7267:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Stranger. Buying or selling? I deal in both."}
