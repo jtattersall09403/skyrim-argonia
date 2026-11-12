@@ -663,15 +663,15 @@
 {"talker":"0C724F:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"In the Second Era, word went round the coast that Black Rose had fallen and was gone. It was not. It is still here. I watch its landing."}
 {"talker":"0C724F:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Sakeeth. I watch the south landing for boats that do not pay. I grew up hauling nets on these docks. I joined the guard to be issued boots."}
 {"talker":"0C724F:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Holds-Fast is the guard on the path above the south docks. He is usually just east-north-east of here. I would trust him in a real fight."}
-{"talker":"0C7250:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The jail. North-east two hundred and sixty paces. The jail is there."}
-{"talker":"0C7250:Black Marsh.esm","topic":"talk.directions","ord":2,"text":"Haven. South-east a hundred and ten paces, round the cliffs, to the boat on its rack. Then south-west two hundred and thirty paces, past the stone tower. Haven is there."}
+{"talker":"0C7250:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The jail. Walk north-east a short way. It is there."}
+{"talker":"0C7250:Black Marsh.esm","topic":"talk.directions","ord":2,"text":"Haven. Walk south-east a short way, round the cliffs, to the boat on its rack. Then walk south-west a short way, past the stone tower. Haven is there."}
 {"talker":"0C7250:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"It is you. Stand by the post a while, my friend. The road is quiet and I am glad of the company."}
 {"talker":"0C7250:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Stop there. State your business. Let me see what you carry."}
-{"talker":"0C7250:Black Marsh.esm","topic":"talk.here","ord":1,"text":"The tower is north-north-west of here, about ninety paces. Ahkeeh smokes fish in this town. It is the best thing in Black Rose. I stand at the west gate and count what comes through it."}
+{"talker":"0C7250:Black Marsh.esm","topic":"talk.here","ord":1,"text":"The tower is a short way north-north-west of here. Ahkeeh smokes fish in this town. It is the best thing in Black Rose. I stand at the west gate and count what comes through it."}
 {"talker":"0C7250:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"People say many go into Black Rose and few ever leave. Old prison staff, freed prisoners, deserters and runaways all came here and stayed. I have counted a good many of them through this gate."}
 {"talker":"0C7250:Black Marsh.esm","topic":"talk.rumours","ord":1,"text":"The dead lie on the road toward Haven. They are Imperials, with an elf among them. The people of Black Rose have not gone to bury them."}
 {"talker":"0C7250:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Tzeel-Vaa, guard at the west gate. I have stood here longer than the two beside me have been alive. My father guarded this same road for the same pay."}
-{"talker":"0C7250:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Quintel is the other guard at this gate, grandson of an Imperial jailer. He is usually about five paces north-north-east of me. He is too soft for the work."}
+{"talker":"0C7250:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Quintel is the other guard at this gate, grandson of an Imperial jailer. He is usually just north-north-east of here. He is too soft for the work."}
 {"talker":"0C7251:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The cooking fire by the docks? Walk east about two hundred and twenty-five paces. The fire is there. I charge no toll for directions."}
 {"talker":"0C7251:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"You again. Come, stand a while, my friend. For you there is no fee at this gate. I have said that to very few."}
 {"talker":"0C7251:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"The crossing costs coin. I will name the sum once I have seen your pack."}
