@@ -756,12 +756,12 @@
 {"talker":"0C725F:Black Marsh.esm","topic":"talk.here","ord":1,"text":"This is the north district. I know all of it. The house is just east-north-east of here. Nobody knows this place better than me."}
 {"talker":"0C725F:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Zeeki. I am the cleverest child in the north district. Ask anyone. One day I will captain a boat of my own."}
 {"talker":"0C725F:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Talks-To-Water, the boat captain? That is the best captain there is. You will usually find the captain just west-south-west of here. One day I will have a place on that boat."}
-{"talker":"0C7260:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The cooking fire? A sweet first. Go south-east, two hundred and forty paces. The fire is there."}
+{"talker":"0C7260:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The cooking fire? A sweet first. Go south-east a short way. You will see the fire."}
 {"talker":"0C7260:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"Did you bring a sweet? I have heard things at the jail, and I will tell you them."}
 {"talker":"0C7260:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Who are you? Stay where I can see you. Have you got a sweet?"}
-{"talker":"0C7260:Black Marsh.esm","topic":"talk.here","ord":1,"text":"The standing stone is five paces south of here. The tower is twenty paces off, north-north-west. Give me a sweet and I will tell you more."}
+{"talker":"0C7260:Black Marsh.esm","topic":"talk.here","ord":1,"text":"The standing stone is just south of here. The tower is just north-north-west. I like sweets better than talking."}
 {"talker":"0C7260:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Skink. I play by the standing stone, where the other children do not come. I have no family. I hear things at the jail. I tell them for a sweet."}
-{"talker":"0C7260:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Pays-In-Reeds is nice. She weaves reeds into mats to work off what she owes. She is usually about twenty-five paces east-south-east of here."}
+{"talker":"0C7260:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Pays-In-Reeds is nice. She weaves reeds into mats to work off what she owes. She is usually just east-south-east of here."}
 {"talker":"0C7263:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The cooking fire by the docks? Listen, water, a stranger wants to walk. Go south-east about seventy paces to the house. Then go south about a hundred and fifty paces. The cooking fire is there."}
 {"talker":"0C7263:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"I told the water you would return. Come, sit by it and tell me what you have seen."}
 {"talker":"0C7263:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"You have the look of someone who does not know the water. What do you want?"}
