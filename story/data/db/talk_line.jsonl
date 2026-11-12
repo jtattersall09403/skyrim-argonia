@@ -12,13 +12,13 @@
 {"talker":"00FF4E:Black Marsh.esm","topic":"talk.here","ord":1,"text":"I keep this yard, visitor. It belongs to the plantation house. The house food barrels and the ingredient barrel stand just west of here, and the meat barrels just west-south-west. Do not touch them. The crop of Hereguard Plantation is sold in Lilmoth."}
 {"talker":"00FF4E:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Hurz-Weel. I keep the yard and the stores of the house. I was born on this plantation. Everything here is my charge, so I must see that it is all counted and right before anyone checks."}
 {"talker":"00FF4E:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"The house servants, visitor? Neeta-Lei is just south-south-east of here and Mazei-Tul just north. You will find them sitting, because I do the heavy work."}
-{"talker":"00FF4F:Black Marsh.esm","topic":"talk.advice","ord":1,"text":"Pick up the iron spear lying about six paces south-south-west of here. The spear has no owner, so take it. Ha."}
+{"talker":"00FF4F:Black Marsh.esm","topic":"talk.advice","ord":1,"text":"An iron spear lies on the ground just south-south-west of here. It has no owner, so take it. Ha."}
 {"talker":"00FF4F:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"Back again! Good. Sit on a sack and rest your shoulders. The goats remember you too. Ha."}
 {"talker":"00FF4F:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"You want something from me? Mind the goats. I am loading, so speak while I lift."}
-{"talker":"00FF4F:Black Marsh.esm","topic":"talk.here","ord":1,"text":"This is a plantation. The goats and chickens keep the yard about ten paces west-north-west of here, and I keep the sacks. Ha."}
+{"talker":"00FF4F:Black Marsh.esm","topic":"talk.here","ord":1,"text":"This is a plantation. The goats and chickens keep the yard just west-north-west of here, and I keep the sacks. Ha."}
 {"talker":"00FF4F:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"A debt in Black Marsh is paid in work. An arbitrator turns the loss into months of labour, which we count in nushmeekos. When the months are worked, it is over. A holder owed months can also sell them to a man who needs hands. The worker goes with them. I do not say that to be pitied. Ha."}
 {"talker":"00FF4F:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Lifts-The-Sacks. I load the crop and do the heavy work that the other hands avoid. My uncle ran up a debt, and I am working it off. Ha."}
-{"talker":"00FF4F:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Reads-The-Shallows, the boat captain, waits about ten paces north-north-west of here. He thanks a man for his work. Few do. Ha."}
+{"talker":"00FF4F:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Reads-The-Shallows, the boat captain, waits just north-north-west of here. He thanks a man for his work. Few do. Ha."}
 {"talker":"01512B:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"There you are, my friend. You are thinner than last time. Sit by the spit and eat something."}
 {"talker":"01512B:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Well, hatchling, you look hungry. Eat something."}
 {"talker":"01512B:Black Marsh.esm","topic":"talk.harvest","ord":1,"text":"Gleamblossom grows a short way south of here, hatchling. Do not go picking on an empty belly."}
