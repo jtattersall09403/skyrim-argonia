@@ -910,16 +910,16 @@
 {"talker":"1454E3:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"Ask Raxa-Tum about Lilmoth. I was born here and have never left, so I can tell you nothing of it."}
 {"talker":"1454E3:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Lux Ha. I mend the nets that come off the market boats. There is always more to mend. I was born in Black Rose and have never left it."}
 {"talker":"1454E3:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"You will usually find Nuxi-Ra, the street vendor at the market, just north of here."}
-{"talker":"1454F2:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"Walk south-west about a hundred and fifteen paces, to the longboat on your left. Then west along the boards, sixty-five paces. The cooking fire is there."}
+{"talker":"1454F2:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"Walk south-west a short way, until the longboat is on your left. Then go along the boards, just west. The cooking fire is there."}
 {"talker":"1454F2:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"Few people come out this far. You are always welcome, my friend. Sit by the water."}
 {"talker":"1454F2:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Yes? Say what you want."}
 {"talker":"1454F2:Black Marsh.esm","topic":"talk.greet-stranger","ord":2,"text":"You are on my dock. Speak, then."}
-{"talker":"1454F2:Black Marsh.esm","topic":"talk.here","ord":1,"text":"The dock is a few paces south-east of here. My house is ten paces north."}
+{"talker":"1454F2:Black Marsh.esm","topic":"talk.here","ord":1,"text":"The dock is just south-east of here. My house is just north."}
 {"talker":"1454F2:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"Ask Keeps-The-Stone about the fox-folk. It is not mine to tell. I live at the edge for the quiet."}
 {"talker":"1454F2:Black Marsh.esm","topic":"talk.rumours","ord":1,"text":"There is smoke from the stone house just west of my dock. People are shut inside it, and Third-Born Tsaxi keeps the door."}
 {"talker":"1454F2:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Ree-Shaal. I fish from this dock and live in the house behind it."}
 {"talker":"1454F2:Black Marsh.esm","topic":"talk.self","ord":2,"text":"I moved out to the edge to be away from the town. I like the quiet. Visitors spoil it."}
-{"talker":"1454F2:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Sleeps-Standing, the guard at the far east dock, is usually about twenty paces south-east of here. Go and talk to him."}
+{"talker":"1454F2:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Sleeps-Standing, the guard at the far east dock, is usually just south-east of here. Go and talk to him."}
 {"talker":"1454F3:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The cooking fire? Climb west, a hundred and thirty-five paces or so, until the longboat is on your left. Then take the boards west, sixty-five paces more. The cooking fire is there."}
 {"talker":"1454F3:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"Hnn. Come, stand with me. Nothing is happening here, and I like it better with you."}
 {"talker":"1454F3:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Hnn. Yes? Speak. I am listening."}
