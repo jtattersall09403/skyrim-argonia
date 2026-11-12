@@ -20,8 +20,9 @@ How a cell is dressed (decision 0034: Skyrim's own numbers):
   shallow fresh water edges), reeds (within REED_M of a placed reed or fern, or a marsh habitat), shore (within
   SHORE_M of water). Never on a road (ROAD_M), in a held cell, a landing's cell, or water deeper than its edge.
 - Each thing sits on the ground (a floating kind `lift` units above it) with a random yaw and a scale in SCALE; spawners and effects sit as they are.
-- A hanging kind (habitat `hang`) hangs from the hang points (hang_points.json) of placed trees near a built place,
-  a road's edge or in a Hist grove, by its rope's top, never tilted (lanterns()); check_hung judges each one.
+- A hanging kind (habitat `hang`) hangs from the hang points (hang_points.json) of placed Hist and Hist-grove trees
+  near a built place, by its rope's top, never tilted, at the source mod's rate and count per tree (lanterns());
+  check_hung judges each one.
 Every draw is seeded by the cell and kind, so a rerun writes the same bytes. A reference's id is DRESS_FIRST + its
 identity's digest (cell, kind, ordinal) in the `dressing` idspace row, probed on a collision.
 """
@@ -56,10 +57,9 @@ LOD_FLAG = 0x8000                               # STAT "has distant LOD"
 TOLERANCE = (0.4, 1.6)                          # placed / expected per kind and region
 TREE_CLS = ("canopy_tree", "understorey")       # placed flora a hanging kind hangs from
 NEAR_CELLS = 2                                  # a tree this many cells from a built place is near a settlement
-EDGE_M = 40.0                                   # a road's edge: ROAD_M to EDGE_M from its centre line
 BELOW_MIN = 60.0                                # units of air under a hanging thing's bottom
-HANG_TRIES = 24                                 # draws of a tree and hang point for one hanging thing
-HANG_CAP = 2                                    # hanging things in one cell
+PART_M = 300.0                                  # units: trees standing this close are parts of one tree (a Hist's trunk, crown, glands)
+CARRIERS_CAP = 1                                # trees carrying hanging things in one cell
 ANCHOR_TOL = 3.5                                # units (5 cm): a hanging thing's anchor from its tree's hang point
 
 
@@ -170,14 +170,15 @@ def near_held(cell: tuple, held: set) -> bool:
 
 
 def hang_fit(t: dict, hp, shape: dict, rs: Raster, others: list) -> dict | None:
-    """The lantern under one hang point, or None: over water, a road or ground too close, or inside a neighbour."""
+    """The lantern under one hang point, or None: over water, a road or ground too close, or inside a neighbour (a
+    tree standing within PART_M of this one is a part of the same tree, as a Hist is built of several pieces)."""
     w = hang_world(t, hp)
     s = rs.at(w[0], w[1])
     bottom = w[2] - shape["drop"]
     if s["water"] or s["road"] < ROAD_M or bottom - max(s["ground"], 0.0) < BELOW_MIN:
         return None
     for u in others:
-        if u is t:
+        if u is t or (u["x"] - t["x"]) ** 2 + (u["y"] - t["y"]) ** 2 < PART_M ** 2:
             continue
         c, r = u["sphere"]
         if np.linalg.norm(w - c) < r or np.linalg.norm(w - np.array([0, 0, shape["drop"]]) - c) < r:
@@ -185,10 +186,38 @@ def hang_fit(t: dict, hp, shape: dict, rs: Raster, others: list) -> dict | None:
     return {"w": w, "site": s}
 
 
+def is_carrier(t: dict, site: dict) -> bool:
+    """A tree that carries lanterns: a Hist (its base's editor id names Hist: tree, trunk or gland) or a tree of a Hist grove."""
+    return bool(t["hang"]) and ("Hist" in t["base"].split(":", 1)[-1] or site["grove"])
+
+
+def hang_tree(t: dict, k: int, base_of, rng, shapes: dict, rs: "Raster", others: list) -> list[dict]:
+    """Up to k lanterns on one tree, each on its own hang point (drawn in a seeded order), each fitting."""
+    out = []
+    for hn in rng.permutation(len(t["hang"])):
+        if len(out) == k:
+            break
+        base = base_of(rng)
+        rz = float(rng.uniform(0, 360))
+        sh = shapes[base]
+        f = hang_fit(t, t["hang"][int(hn)], sh, rs, others)
+        if f is None:
+            continue
+        a = math.radians(rz)
+        ax, ay = sh["anchor"][0], sh["anchor"][1]
+        w = f["w"]
+        out.append({"base": base, "x": round(w[0] - (ax * math.cos(a) - ay * math.sin(a)), 2),
+                    "y": round(w[1] - (ax * math.sin(a) + ay * math.cos(a)), 2), "z": round(w[2] - sh["anchor"][2], 2),
+                    "rz": round(rz, 1), "scale": 1.0, "tree": t["id"], "hang": int(hn)})
+    return out
+
+
 def lanterns(out: Path, ks: dict, cells: dict, held: set, man: dict, legend: dict) -> tuple[dict, dict]:
-    """({cy: hanging lanterns}, {"region|kind": eligible cells}): in each hanging kind's regions, from the hang points of placed trees near a built
-    place (within NEAR_CELLS), a road's edge (ROAD_M to EDGE_M) or in a Hist grove; Poisson at the kind's rate per
-    100 such cells, at most HANG_CAP a cell."""
+    """({cy: hanging lanterns}, {"region|kind": eligible cells}). In each hanging kind's regions, a cell within
+    NEAR_CELLS of a built place (never a held cell) is eligible when it holds a carrier (is_carrier) with a hang point
+    the longest lantern fits. Of a region's eligible cells, the share the source's rate gives (bound_per100 over the
+    mean of per_carrier) carries, chosen by a digest order; one carrier in each takes a count drawn from the source's
+    own counts per carrier, one lantern per hang point (as many as fit)."""
     from tools.newworld.dressing.hang_points import load
     hang = {k: v for k, v in ks.items() if v["habitat"] == "hang"}
     if not hang:
@@ -197,13 +226,13 @@ def lanterns(out: Path, ks: dict, cells: dict, held: set, man: dict, legend: dic
     rs = Raster(man, legend)
     shapes: dict = {}
     res: dict = {}
+    pending: dict = {}
     eligible = Counter()
     for (cx, cy), ts in sorted(trees.items()):
         c = cells.get((cx // 2, cy // 2))
-        if not c or c.get("margin") or (cx, cy) in held:
+        if not c or c.get("margin") or (cx, cy) in held or not near_held((cx, cy), held):
             continue
         reg = c.get("region_id")
-        settled = near_held((cx, cy), held)
         for k, v in sorted(hang.items()):
             if reg not in v["regions"]:
                 continue
@@ -211,44 +240,26 @@ def lanterns(out: Path, ks: dict, cells: dict, held: set, man: dict, legend: dic
                 if b not in shapes:
                     shapes[b] = lantern_shape(base_facts({b})[b]["mesh"])
             others = [u for dx in (-1, 0, 1) for dy in (-1, 0, 1) for u in trees.get((cx + dx, cy + dy), [])]
-            fits = []
-            for t in ts:
-                if not t["hang"]:
-                    continue
-                s = rs.at(t["x"], t["y"])
-                if not (settled or s["grove"] or ROAD_M <= s["road"] <= EDGE_M):
-                    continue
-                for n, hp in enumerate(t["hang"]):
-                    fits.append((t, n, hp))
-            if not fits:
+            longest = max((shapes[b] for b in v["bases"]), key=lambda sh: sh["drop"])
+            carriers = [t for t in ts if is_carrier(t, rs.at(t["x"], t["y"]))
+                        and any(hang_fit(t, hp, longest, rs, others) for hp in t["hang"])]
+            if not carriers:
                 continue
             eligible[(reg, k)] += 1
-            rate = min(v["per100"], v["bound_per100"]) / 100
-            rng = np.random.default_rng((0xD2E6, cx & 0xFFFF, cy & 0xFFFF, int(hashlib.sha256(k.encode()).hexdigest()[:6], 16)))
-            n = min(int(rng.poisson(rate)), HANG_CAP)
-            used: set = set()
-            for o in range(n):
-                for _ in range(HANG_TRIES):
-                    t, hn, hp = fits[int(rng.integers(len(fits)))]
-                    base = v["bases"][int(rng.integers(len(v["bases"])))]
-                    rz = float(rng.uniform(0, 360))
-                    if t["id"] in used:
-                        continue
-                    sh = shapes[base]
-                    f = hang_fit(t, hp, sh, rs, others)
-                    if f is None:
-                        continue
-                    used.add(t["id"])
-                    a = math.radians(rz)
-                    ax, ay = sh["anchor"][0], sh["anchor"][1]
-                    w = f["w"]
-                    x = w[0] - (ax * math.cos(a) - ay * math.sin(a))
-                    y = w[1] - (ax * math.sin(a) + ay * math.cos(a))
-                    res.setdefault(cy, []).append({
-                        "base": base, "x": round(x, 2), "y": round(y, 2), "z": round(w[2] - sh["anchor"][2], 2),
-                        "rz": round(rz, 1), "scale": 1.0, "kind": k, "region": reg, "cell": [cx, cy],
-                        "id": f"{cx},{cy}/{k}/{o}", "tree": t["id"], "hang": hn})
-                    break
+            pending.setdefault((reg, k), []).append(((cx, cy), carriers, others))
+    for (reg, k), sites in sorted(pending.items()):
+        v = hang[k]
+        per = v["per_carrier"]
+        take = round(len(sites) * v["bound_per100"] / 100 / (sum(per) / len(per)))
+        sites.sort(key=lambda s: hashlib.sha256(f"{s[0][0]},{s[0][1]}/{k}".encode()).hexdigest())
+        for (cx, cy), carriers, others in sorted(sites[:take], key=lambda s: s[0]):
+            rng = np.random.default_rng((0xD2E7, cx & 0xFFFF, cy & 0xFFFF, int(hashlib.sha256(k.encode()).hexdigest()[:6], 16)))
+            t = carriers[int(rng.integers(len(carriers)))]
+            want = int(per[int(rng.integers(len(per)))])
+            for o, h in enumerate(hang_tree(t, want, lambda r: v["bases"][int(r.integers(len(v["bases"])))],
+                                            rng, shapes, rs, others)):
+                h.update({"kind": k, "region": reg, "cell": [cx, cy], "id": f"{cx},{cy}/{k}/{o}"})
+                res.setdefault(cy, []).append(h)
     return res, {f"{r}|{k}": n for (r, k), n in sorted(eligible.items())}
 
 
@@ -281,7 +292,7 @@ def build(out: Path) -> dict:
     hung, eligible = lanterns(out, ks, cells, held, man, legend)
     for rk, n in eligible.items():
         r, k = rk.split("|")
-        expect[(r, k)] += min(ks[k]["per100"], ks[k]["bound_per100"]) / 100 * n
+        expect[(r, k)] += ks[k]["bound_per100"] / 100 * n
     for cy in range(g["cy_top"], g["cy_bottom"] - 1, -1):
         north = (g["cy_top"] - cy) * 32
         rs = slice(north, north + 33)
@@ -398,8 +409,9 @@ def check_kinds(ks: dict, facts: dict, adj: dict, land: list[str]) -> list[str]:
 
 
 def check_hung(out: Path, ks: dict, man: dict, land_man: dict) -> list[str]:
-    """Each hanging thing hangs from a hang point of a tree that stands after the edits (anchor within ANCHOR_TOL),
-    with air, dry ground and no road below it; each kind under its bound per 100 eligible cells, HANG_CAP a cell."""
+    """Each hanging thing hangs from its own hang point of a tree that stands after the edits (anchor within
+    ANCHOR_TOL), with air, dry ground and no road below it; each carrier holds a count within the source's range,
+    CARRIERS_CAP carriers a cell; each kind's lanterns per 100 eligible cells within TOLERANCE of its bound."""
     from tools.newworld.dressing.hang_points import load
     hang = {k for k, v in ks.items() if v["habitat"] == "hang"}
     if not hang:
@@ -407,18 +419,20 @@ def check_hung(out: Path, ks: dict, man: dict, land_man: dict) -> list[str]:
     trees = {t["id"]: t for ts in trees_by_cell(out, load()).values() for t in ts}
     rs = Raster(land_man, json.loads((LC / "legend.json").read_text()))
     shapes: dict = {}
-    faults, per_cell, per_rk = [], Counter(), Counter()
+    faults, per_tree, per_rk = [], Counter(), Counter()
+    carriers: dict = {}
     for f in sorted((out / "dressing").glob("cy*.jsonl")):
         for line in f.read_text().splitlines():
             o = json.loads(line) if line else None
             if not o or o["kind"] not in hang:
                 continue
-            per_cell[tuple(o["cell"])] += 1
             per_rk[f"{o['region']}|{o['kind']}"] += 1
             t = trees.get(o.get("tree"))
             if t is None or o.get("hang", 99) >= len(t["hang"]):
                 faults.append(f"{o['id']}: its tree or hang point is not placed")
                 continue
+            per_tree[(o["kind"], t["id"], o["hang"])] += 1
+            carriers.setdefault(tuple(o["cell"]), set()).add(t["id"])
             if o["base"] not in shapes:
                 shapes[o["base"]] = lantern_shape(base_facts({o["base"]})[o["base"]]["mesh"])
             sh = shapes[o["base"]]
@@ -429,13 +443,16 @@ def check_hung(out: Path, ks: dict, man: dict, land_man: dict) -> list[str]:
                 faults.append(f"{o['id']}: anchor off its tree's hang point")
             if hang_fit(t, t["hang"][o["hang"]], sh, rs, []) is None:
                 faults.append(f"{o['id']}: over water or a road, or too little air below")
-    for c, n in per_cell.items():
-        if n > HANG_CAP:
-            faults.append(f"{c}: {n} hanging things in one cell")
+    faults += [f"{k[1]} hang point {k[2]}: {n} lanterns on one point" for k, n in per_tree.items() if n > 1]
+    by_tree = Counter((k, t) for k, t, _ in per_tree)
+    for (k, t), n in by_tree.items():
+        if n > max(ks[k]["per_carrier"]):
+            faults.append(f"{t}: {n} lanterns, over the source's {max(ks[k]['per_carrier'])} a carrier")
+    faults += [f"{c}: {len(ts)} carrying trees in one cell" for c, ts in carriers.items() if len(ts) > CARRIERS_CAP]
     for rk, n in per_rk.items():
         cells = man.get("hang_eligible_cells", {}).get(rk, 0)
         bound = ks[rk.split("|")[1]]["bound_per100"]
-        if not cells or 100 * n / cells > bound:
+        if not cells or 100 * n / cells > bound * TOLERANCE[1]:
             faults.append(f"{rk}: {n} in {cells} eligible cells, over {bound} per 100")
     return faults
 

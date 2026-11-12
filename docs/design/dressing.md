@@ -64,16 +64,19 @@ there and nowhere next door. Both change records only: no terrain, tree, scatter
    tree base not yet measured.
 2. **The kind.** A kind whose habitat is `hang` (`hanging-hist-lanterns`: King of the Murkmire's rope lanterns
    `DLC2DarkElfLantern05Rope` and `04Rope`, self-lit by their glow shell, with no light reference, as the mod places
-   them) hangs only from placed trees. Its bound is the source mod's own rate (`bound_per100`: King of the
-   Murkmire's lanterns per 100 of its cells), since Skyrim has no outdoor measure for it.
-3. **Where.** In the kind's regions, a tree (as the edits stage leaves it in `refs/flora`) is eligible when it stands
-   within two cells of a built place, at a road's edge (6 to 40 m from its centre line) or in a Hist grove, and never
-   in a held cell. A cell with an eligible tree draws its count by Poisson at the kind's rate, at most two a cell, one a
-   tree.
-4. **How it hangs.** The hang point is posed by the tree's rotation, scale and final position; the lantern hangs
-   from it by its rope's top (its mesh's highest vertices), with a free yaw and no tilt. It is refused over water or a
-   road, with less than 60 units of air between its bottom and the ground, or inside a neighbouring tree's solid
-   core (the inscribed sphere of its bounds).
-5. **The check.** Each hanging thing's anchor is within 5 cm of a hang point of a tree that stands after the edits;
-   it has the air, ground and road clearance of step 4; at most two hang in a cell; each region's count per 100
-   eligible cells is at most the kind's bound.
+   them) hangs only from placed trees. Its numbers are the source mod's own, measured: King of the Murkmire hangs 23
+   lanterns in 10 of its 93 cells, all inside its huts and houses, 1 to 5 to a carrying cell (`per_carrier`), so
+   its rate is 24.7 per 100 cells (`bound_per100`). A built place hangs its own (place-build's hanging things).
+3. **Where.** In the kind's region (Murkwood, where the wild world's living Hist trees stand), a cell within two
+   cells of a built place, never a held cell, is eligible when it holds a carrier: a tree whose editor id names Hist
+   (tree, trunk or gland) or a tree in a Hist grove, with a hang point the longest lantern fits. Of the eligible
+   cells, the share the rate gives (`bound_per100` over the mean count per carrier) carries, chosen in a digest
+   order; one carrier in each takes a count drawn from `per_carrier`, each lantern on its own hang point.
+4. **How it hangs.** The hang point is posed by the tree's rotation, scale and final position (`refs/flora`, after
+   the edits); the lantern hangs from it by its rope's top (its mesh's highest vertices), with a free yaw and no
+   tilt. It is refused over water or a road, with less than 60 units of air between its bottom and the ground, or
+   inside a neighbouring tree's solid core (the inscribed sphere of its bounds); trees standing within 3 m of the
+   carrier are parts of the same tree (a Hist is built of trunk, crown and glands) and are not neighbours.
+5. **The check.** Each hanging thing's anchor is within 5 cm of its own hang point of a tree that stands after the
+   edits; it has the air, ground and road clearance of step 4; a carrier holds at most the source's largest count,
+   one carrier a cell; each region's count per 100 eligible cells is within tolerance of the bound.

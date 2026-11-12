@@ -322,10 +322,9 @@
     "cite": "newworld/story/data/db/region_note.jsonl#banujha-basin/look"
    },
    "signature": {
-    "thing": "gar egg clutches in the reed margins; rope lanterns the Hist-tenders hang from the trees by their settlements, roads and Hist groves",
+    "thing": "gar egg clutches in the reed margins",
     "cite": "newworld/story/data/db/region_note.jsonl#banujha-basin/ecology",
-    "extrapolation": "a small thing the region's named life or history would leave",
-    "also_cite": "newworld/story/data/db/region_note.jsonl#banujha-basin/present"
+    "extrapolation": "a small thing the region's named life or history would leave"
    },
    "creature": {
     "kind": "hackwing",
@@ -381,10 +380,9 @@
     "cite": "newworld/story/data/db/region_note.jsonl#barsaebica/look"
    },
    "signature": {
-    "thing": "bone piles by the Ayleid stones; rope lanterns the Hist-tenders hang from the trees by their settlements, roads and Hist groves",
+    "thing": "bone piles by the Ayleid stones",
     "cite": "newworld/story/data/db/region_note.jsonl#barsaebica/ecology",
-    "extrapolation": "a small thing the region's named life or history would leave",
-    "also_cite": "newworld/story/data/db/region_note.jsonl#barsaebica/faith"
+    "extrapolation": "a small thing the region's named life or history would leave"
    },
    "creature": {
     "kind": "lamia",
@@ -846,9 +844,10 @@
     "cite": "newworld/story/data/db/region_note.jsonl#murkwood/look"
    },
    "signature": {
-    "thing": "torchbug fireflies at dusk",
+    "thing": "torchbug fireflies at dusk; rope lanterns hung on the Hist and Hist-grove trees by the settlements that tend them",
     "cite": "newworld/story/data/db/region_note.jsonl#murkwood/ecology",
-    "extrapolation": "a small thing the region's named life or history would leave"
+    "extrapolation": "a small thing the region's named life or history would leave",
+    "also_cite": "newworld/story/data/db/region_note.jsonl#murkwood/faith"
    },
    "creature": {
     "kind": "fellrunner",

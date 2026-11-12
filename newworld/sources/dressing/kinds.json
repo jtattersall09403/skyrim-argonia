@@ -1,5 +1,5 @@
 {
- "about": "Small signature things: each kind in one or two regions, no neighbour sharing it; bases from the load order (plugin:edid), placed by tools/newworld/dressing/place.py. sort: the Skyrim measure it is bounded by (skyrim_measures.json); per100: refs per 100 land cells of the region where its habitat holds; habitat: dressing habitat (place.py HABITATS). thing: the identity sheet's signature (newworld/sources/identity/regions.json) it delivers, or the lore line it rests on. A hanging kind (habitat 'hang') hangs from placed trees' hang points (hang_points.json) near settlements, roads' edges and Hist groves; its bound is the source mod's own rate (bound_per100, bound) where Skyrim has no measure.",
+ "about": "Small signature things: each kind in one or two regions, no neighbour sharing it; bases from the load order (plugin:edid), placed by tools/newworld/dressing/place.py. sort: the Skyrim measure it is bounded by (skyrim_measures.json); per100: refs per 100 land cells of the region where its habitat holds; habitat: dressing habitat (place.py HABITATS). thing: the identity sheet's signature (newworld/sources/identity/regions.json) it delivers, or the lore line it rests on. A hanging kind (habitat 'hang') hangs from the hang points (hang_points.json) of placed Hist and Hist-grove trees near settlements; its rate (bound_per100) and count per carrying tree (per_carrier) are the source mod's own, measured (bound).",
  "kinds": {
   "glowing-fungi": {
    "sort": "fungi",
@@ -339,18 +339,28 @@
   },
   "hanging-hist-lanterns": {
    "sort": "lanterns",
-   "per100": 20,
    "habitat": "hang",
-   "bound_per100": 26.9,
-   "bound": "King of the Murkmire hangs 25 rope and paper lanterns in its 93 cells (at most 5 in a cell), none outdoors",
+   "bound_per100": 24.7,
+   "bound": "King of the Murkmire hangs 23 rope and paper lanterns in 10 of its 93 cells (counts per carrying cell: per_carrier), all inside huts and houses, none outdoors and none on a Hist tree; the wild world matches that rate per 100 eligible cells and that count per carrying tree",
    "regions": [
-    "banujha-basin",
-    "barsaebica"
+    "murkwood"
    ],
-   "thing": "rope lanterns hung from the trees by the Hist-kin who tend them: Soulrest depends on the basin's Hist (banujha-basin present); the Hist pool at Jal-Veesa is the living shrine of barsaebica; wamasu organs are made into lanterns (story/lore/topics/loading-facts.md fact.wamasu-lanterns)",
+   "thing": "rope lanterns hung on the Hist and Hist-grove trees by the settlements that tend them: in Murkwood every settlement sends its people to a village tree to hatch and bury (murkwood faith); wamasu organs are made into lanterns (story/lore/topics/loading-facts.md fact.wamasu-lanterns). Murkwood alone: the wild world's living Hist trees stand there (and on its neighbours' edges)",
    "bases": [
     "King of the Murkmire.esp:DLC2DarkElfLantern05Rope",
     "King of the Murkmire.esp:DLC2DarkElfLantern04Rope"
+   ],
+   "per_carrier": [
+    2,
+    3,
+    4,
+    3,
+    1,
+    1,
+    1,
+    5,
+    2,
+    1
    ]
   }
  }

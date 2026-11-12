@@ -50,3 +50,19 @@ def test_hang_world_posed_by_tree():
     t = {"x": 1000.0, "y": 2000.0, "z": -30.0, "rx": 0.0, "ry": 0.0, "rz": math.pi / 2, "scale": 2.0}
     w = dp.hang_world(t, [100.0, 0.0, 300.0])
     assert np.allclose(w, [1000.0, 2200.0, 570.0], atol=1e-6)
+
+
+class FlatRaster:
+    def at(self, x, y):
+        return {"ground": 0.0, "water": False, "road": 99.0, "grove": False}
+
+
+def test_several_lanterns_each_on_its_own_point():
+    t = {"x": 0.0, "y": 0.0, "z": 0.0, "rx": 0.0, "ry": 0.0, "rz": 0.0, "scale": 1.0, "id": "t", "base": "P:HistTree",
+         "hang": [[100.0, 0.0, 400.0, 20], [-100.0, 0.0, 380.0, 20], [0.0, 100.0, 300.0, 20]], "sphere": (np.zeros(3), 1.0)}
+    shapes = {"L": {"anchor": [0.0, 0.0, 6.0], "drop": 118.0}}
+    got = dp.hang_tree(t, 5, lambda r: "L", np.random.default_rng(1), shapes, FlatRaster(), [t])
+    assert len(got) == 3 and len({g["hang"] for g in got}) == 3
+    for g in got:
+        assert abs(g["z"] - (t["hang"][g["hang"]][2] - 6.0)) < 0.01
+    assert dp.is_carrier(t, {"grove": False}) and not dp.is_carrier(dict(t, base="Skyrim.esm:TreeFloraThistle01"), {"grove": False})
