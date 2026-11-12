@@ -61,6 +61,11 @@ directions rewrite after routes v2 landed, one reader pass (150 fixes). Talk.cs 
 Black Marsh's main world (BlackMarsh2's 18 crashed the seed); they keep the shared base name. Seed, check and
 `talk_check` (ESP read-back) 0 problems.
 
+**Directions the Morrowind way (2026-11-12).** Owed: rewrite the lines that count paces (lint B13), 403 talk lines
+(Thorn 104, Blackrose 121, Lilmoth 43, Hereguard Plantation 34, Helstrom 28, village 28, dock5 23, dock2 22; 115 of
+them directions) and 25 quest `dialogue_line` rows (Claywater 13, about-Blackwood and about-Gideon 6, LQ83 2,
+imported 4), from regenerated briefs.
+
 **The slice quests' people (2026-11-08).** On a new game 119 talkers are reachable: the SEQ file
 (`out/SEQ/Argonia.seq`, from Seq.cs) starts the start-game quests that carry their dialogue. Of the 25 people the
 slice quests place, all 25 speak: those with no quest topic of their own answer "Who are you?" (or "Where are we

@@ -54,15 +54,38 @@ def unbacked(text: str, backing: str) -> list[str]:
     return out
 
 
+def told_problems(text: str, sources: list[str]) -> tuple[list[str], list[str]]:
+    """A directions reply against its speaker's routes (talk_route.check_told): (truth problems, counts). A problem
+    stands only when the reply breaks every one of the routes, since one reply may tell two of them."""
+    from tools.argonia_world import talk_route as tr
+    counts = [m.group(0) for m in tr.COUNT.finditer(text)]
+    if not sources:
+        return [], counts
+    each = [{p for p in tr.check_told(text, s) if not p.startswith("a count")} for s in sources]
+    return sorted(set.intersection(*each)), counts
+
+
 def check_lines(w) -> int:
-    """Every written reply's names, ingredients and sides against its speaker's facts and row; returns the count."""
+    """Every written reply's names, ingredients and sides against its speaker's facts and row, and every directions
+    reply against its routes (bearing words, landmark order, distance band; a count of paces is owed a rewrite and
+    is reported, not failed); returns the count of problems."""
     facts = {f.id: f.claim for f in w.rows("talk_fact")}
-    bad = 0
+    routes = {f.id: f.source for f in w.rows("talk_fact")
+              if f.topic == "talk.directions" and f.source.startswith("talk_route:")}
+    bad = owed = 0
     for t in w.rows("talker"):
         own = " ".join(facts[f.strip()] for tt in w.rows("talker_topic", talker=t.id)
                        for f in tt.facts.split(",") if f.strip() in facts)
         backing = own + " " + " ".join(str(v) for v in dataclasses.astuple(t))
+        srcs = [routes[f.strip()] for tt in w.rows("talker_topic", talker=t.id) if tt.topic == "talk.directions"
+                for f in tt.facts.split(",") if f.strip() in routes]
         for ln in w.rows("talk_line", talker=t.id):
+            if ln.topic == "talk.directions":
+                wrong, counts = told_problems(ln.text, srcs)
+                if wrong:
+                    bad += 1
+                    print(f"DIRECTIONS {t.id} #{ln.ord}: {'; '.join(wrong)}")
+                owed += bool(counts)
             miss = unbacked(ln.text, backing)
             if miss:
                 bad += 1
@@ -78,7 +101,8 @@ def check_lines(w) -> int:
             if missing:
                 bad += 1
                 print(f"GREETING {t.id} {t.known_as}: no {sorted(missing)}")
-    print(f"talk_check lines: {bad} problems (unbacked, warm address, greetings)")
+    print(f"talk_check lines: {bad} problems (unbacked, directions, warm address, greetings); "
+          f"{owed} directions replies give a count of paces (a rewrite owed, lint B13)")
     return bad
 
 

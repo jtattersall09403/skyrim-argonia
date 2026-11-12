@@ -197,14 +197,16 @@ block built, read back and given one owner check.
 Every person who can be talked to gets a name, a short backstory, a personality and their own true topics through
 `talk-write`: facts from the loaded world (the world wins over a lore line it contradicts), directions as routes of two
 to four landmarked steps (a longer way gives its first three, then "from there, ask again"; never the speaker's own
-place as a step), a cool first greeting and warmth only with regard, names by the naming rules, a trader's
+place as a step), told the Morrowind way by landmark, way, compass point and a word for how far, never a count,
+and checked against the measured route, a cool first greeting and warmth only with regard, names by the naming rules, a trader's
 services matching their stock, and rumours that point to a quest only while it can start. A settlement's people do
 not repeat each other: each fact has one holder there, and anyone else who would know it points to that holder.
 Everyone the player can walk up to is covered, the people a quest places in the settlement as well as the census's.
 
 ## 7. Write the quest dialogue
 
-Per speaker from the record with `dialogue-write` (matched lines from the reference corpus as the model; the
+Per speaker from the record with `dialogue-write` (matched lines from the reference corpus as the model, found
+by one small find agent per topic group on every run, a rewrite included; the
 speaker's brief generated from the data, holding that speaker's sourced facts, each line's place, stage window, check
 and effect, the reply topics, and what the others in the same place say), one `text-review` pass by another agent
 over the lines grouped by place, then loaded. Lines live in the story database and nowhere else. A line tells; a
@@ -215,8 +217,9 @@ names what would change it. A fact has one speaker per place and stage window: t
 where two speakers of one place and stage state the same fact or the same long clause, outside a named list of
 deliberate echoes (a quest rumour several people tell). Warm and cool wordings exist only for lines spoken after that
 person's regard has changed, separated by the engine's relationship rank; race forms of address only where the brief
-asks. Everyone an ending leaves standing has a greeting true of that ending. Journal entries tell one step each;
-objectives are imperatives with a target.
+asks. Everyone an ending leaves standing has a greeting true of that ending. Directions name landmarks, ways and places to ask
+at, with a word for how far; no line counts paces. Journal entries tell one step each; objectives are imperatives
+with a target.
 
 ## 8. Read back, integrate, deploy
 

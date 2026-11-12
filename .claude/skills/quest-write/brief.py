@@ -20,7 +20,7 @@ import yaml
 
 HERE = pathlib.Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE.parents[2]))
-from tools.argonia_world import adaptation_check, db, echoes, quest_record, records  # noqa: E402
+from tools.argonia_world import adaptation_check, db, echoes, quest_record, records, talk_route  # noqa: E402
 VOICES = HERE.parent / "dialogue-write" / "voices.md"
 WEAPONS = ["long-blade", "short-blade", "axe", "blunt-weapon", "spear", "marksman", "hand-to-hand"]
 STAGE_FIELDS = ["id", "place", "journal"]   # onEnter, objectives, successors: no rows is an empty list
@@ -316,7 +316,8 @@ def main() -> int:
                 L += [f"  - {x['skill']}: {x['use']}" + (f" ({x['target']})" if x.get("target") else "")
                       + (f", {x['setting']}" if x.get("setting") else "") for x in acts]
             dirs = [s_["directions"] for s_ in q["stages"] if s_["id"] in t["stages"] and s_.get("directions")]
-            L += [f"- Directions to give: {d}" for d in dirs]
+            L += [f"- Directions to give (landmarks, the way, compass points and a word for how far; never a count): "
+                  f"{talk_route.in_words(d)}" for d in dirs]
             L += [f"- {p['name']}'s knowledge at stage {first}:"] + [f"  - `{f}`: {v_}" for f, v_ in column(c, first).items()]
             L += [f"- The player already knows at stage {first} (anything else is explained when first named):"]
             L += [f"  - `{f}`: {claims[f]}" for f in knows_at(first)]
@@ -344,7 +345,7 @@ def main() -> int:
          "Write each entry in the style guide's journal register (story/design/text/style-guide.md § journal):",
          "first person; past tense for what just happened; one \"I'm to\" for the one step now owed, never a later",
          "step; full names as the game shows them; two to four sentences; an ending's entry may sum up the quest;",
-         "directions in landmark prose; failure entries flat, with the consequence. Each objective is an imperative",
+         "directions in landmark prose with a word for how far, never a count; failure entries flat, with the consequence. Each objective is an imperative",
          "with a full stop and no \"I\" or \"you\", naming its target.", ""]
     for s in q["stages"]:
         if s.get("hidden"):
@@ -352,7 +353,7 @@ def main() -> int:
         J += [f"## Stage {s['id']} (`{s['journal']}`){' ending: ' + s['ending'] if s.get('ending') else ''}",
               f"- Draft: {s['journalText']}"]
         if s.get("directions"):
-            J.append(f"- Directions: {s['directions']}")
+            J.append(f"- Directions: {talk_route.in_words(s['directions'])}")
         J += [f"- The player knows: {', '.join(knows_at(s['id'] + 1))}", ""]
     (out / f"{q['code'].lower()}-journal.md").write_text("\n".join(J) + "\n")
     print(f"wrote {out / (q['code'].lower() + '-journal.md')} ({len(q['stages'])} entries)")

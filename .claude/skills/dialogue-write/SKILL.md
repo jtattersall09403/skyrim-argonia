@@ -65,11 +65,17 @@ changes:
 
 ## 3. Find agents
 
-Split the corpus (`$ARGONIA_PRIVATE/dialogue/morrowind/morrowind-full.json`, never committed) **by topic kind**, one
-`corpus-find` agent per group, matched on the speaker's race and sex: greetings and refusals; trade and
-service; place and directions; rumours and advice; creatures and danger; quest arcs (offer, detail,
-directions, reminder, success, failure). Each returns up to four lines per topic and wording. Check every id
-and quote against the corpus before using it. Never paste Morrowind lines into the repo.
+Every run finds its models first, a rewrite of one line included. The corpus
+(`$ARGONIA_PRIVATE/dialogue/morrowind/morrowind-full.json`, never committed; `ARGONIA_PRIVATE` is
+`/home/ubuntu/argonia-private`) is split by topic kind into `groups/` by `corpus_split.py` (run it once if the
+folder is missing). Spawn one `corpus-find` agent per group the brief's topics touch, in parallel, each given its
+group file, the speaker (race, sex, role, chattiness, friendliness), its topics with their bands, and its report
+path `$ARGONIA_PRIVATE/dialogue/morrowind/finds/<speaker ref6 or brief name>/<group>.txt`. The groups: greetings
+(the speaker's race file) and refusals; trade and service; place and directions (with each route's shape from the
+brief); rumours and advice; creatures and danger; quest arcs (offer, detail, directions, reminder, success,
+failure); topics in general. Each returns up to four lines per topic and wording. Check every id and quote against
+the corpus before using it, and name the ids each topic is modelled on in the return. `talk_brief.py load`
+refuses a person with no finds. Never paste Morrowind lines into the repo.
 
 ## 4. Voice rules
 
@@ -96,6 +102,16 @@ and quote against the corpus before using it. Never paste Morrowind lines into t
   0) wording are written only where the brief marks the line "after a regard change". All three wordings state the
   same facts and make the same commitment as the line's `sets`; only manner and length differ. Length follows
   warmth: cool is short, only warm is chatty.
+- **Directions as Morrowind gives them.** A way is told by what the player will see: named places, the path or
+  shore and where it goes, bridges, buildings and ruins, with compass points in words (B13: never a count of
+  paces, steps or metres). How far is a word from the brief's distance band: "just" (in sight, under 60 m), "a
+  short way" or "not far" (under 200 m), "a fair way" (under 600 m), "a long walk" (under 2 km), "far" beyond; or
+  it is the landmark itself ("until you reach the wreck", "just past the burnt-out house"). Most often a place is
+  placed beside another the player knows ("it is just north of the dock"); a route is two to four steps in order,
+  each ending at its landmark and its side, and a longer way names the place to ask at next. A speaker may hedge
+  ("I think", "they say") or warn of a miss ("if you reach the water, you have gone too far") as their personality
+  would. Never add a landmark, change a heading, skip a turn or make a way longer or shorter than its word;
+  `talk_check` reads compass points, landmark order and distance words back against the measured route.
 - **A refusal says what would change it** (B09): the skill, the thing to bring or the price.
 - **Plain and explicit:** who did what and why, in plain clauses (B05); every quest line can be acted on.
 - **British English** spelling and punctuation, no serial comma (B08); the style guide

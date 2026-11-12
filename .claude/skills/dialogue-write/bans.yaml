@@ -158,3 +158,16 @@
   good:
     - Hear me, outlander.
   detect: '\[(player|player race|player rank|name|PCName|PCRace)\]'
+
+- id: B13-counted-distance
+  rule: >-
+    A direction never counts paces, steps, yards, metres or miles; Morrowind's direction lines give none (0 of 356
+    measured). Distance is a landmark ("until you reach the wreck"), a place to ask at, or a word of how far ("just
+    north", "a short way", "a fair way", "a long walk"): the brief's distance band, said as this person would.
+  bad:
+    - Follow the shore north-east, three hundred paces, until Lilmoth is on your right.
+    - Walk north-east about 129 paces, and the cooking fire is there.
+  good:
+    - Follow the shore north-east a fair way, until you have Lilmoth on your right.
+    - The cooking fire? Just north-east of here. You can see the smoke.
+  detect: "(?i)\\b(?:\\d+|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|fifteen|twenty|thirty|forty|fifty|sixty|seventy|eighty|ninety|hundred|thousand|dozen)\\b[\\w\\s-]{0,24}?\\b(?:paces|steps|strides|yards|metres|meters|leagues|miles)\\b|\\bpaces\\b"

@@ -12,15 +12,27 @@ settlement and the quest stages there, with the facts each owns (tools/argonia_w
 hand-made; a missing row stops it.
 
 LINES.tsv: one reply per line, `<topic id>\\t<text>`; a topic's second line is the reply's next response (the
-person goes on speaking). `load` replaces the person's talk_line rows and marks the talker written.
+person goes on speaking). `load` refuses a person whose find step left no matched Morrowind lines in
+$ARGONIA_PRIVATE/dialogue/morrowind/finds/<ref6>/, then replaces the person's talk_line rows and marks the talker written.
 """
 import argparse
+import os
 import pathlib
+import re
 import sys
 
 HERE = pathlib.Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE.parents[2]))
 from tools.argonia_world import db, echoes  # noqa: E402
+from tools.argonia_world import talk_route as tr  # noqa: E402
+
+told = tr.in_words  # a fact's claim as the writer gets it: measured distances as words, no count
+
+
+def finds_dir(who: str) -> pathlib.Path:
+    """Where the corpus-find agents put a person's matched Morrowind lines (private, never committed)."""
+    base = pathlib.Path(os.environ.get("ARGONIA_PRIVATE", "/home/ubuntu/argonia-private"))
+    return base / "dialogue" / "morrowind" / "finds" / who.split(":")[0]
 
 RACE = {"ArgonianRace": "Argonian", "DarkElfRace": "Dunmer", "ImperialRace": "Imperial", "KhajiitRace": "Khajiit",
         "NordRace": "Nord", "BretonRace": "Breton", "HighElfRace": "Altmer", "WoodElfRace": "Bosmer",
@@ -52,11 +64,14 @@ def brief(w, who: str, out: pathlib.Path) -> int:
          "Write each topic's reply in this person's voice. State only the facts listed under the topic; add none. "
          "One to three sentences a reply (a route may take four); a second line only where the person would go on. "
          "No Skyrim place, person or thing (decision 0006). British English.", "",
-         "**Directions** are routes from where the person stands, as Morrowind gives them: retell the legs in order "
-         "with their landmarks and headings (\"walk west until you see the wrecked boat, then follow the shore "
-         "north...\"), in this person's words; drop a leg's count of paces or round it as a local would, merge two "
-         "short legs, but never add a landmark, change a heading or skip a turn. Vary the telling with the person; "
-         "a place in sight is paces and a compass point only.", "",
+         "**Directions** are given the Morrowind way: by landmarks, the way's kind (the path, the shore, the bridge), "
+         "compass points in words and how far in words (\"just north\", \"a short way\", \"a fair way\", \"a long "
+         "walk\"), never a count of paces or any number. Each route below is told leg by leg with its landmark and side; "
+         "say it in this person's words, in the route's order, often as the place it lies beside (\"it is just past the "
+         "burnt-out house\") or two or three steps then the landmark that tells the player they are there; merge two "
+         "short legs, but never add a landmark, change a heading, skip a turn or make a way longer or shorter than its "
+         "word. A route that ends \"ask again\" names the place to ask at. A place in sight is \"just\" and a compass "
+         "point.", "",
          "**Standing.** The player is a stranger unless they become a friend. Every topic reply is said to a "
          "stranger: neutral or cool by temperament, no warm address. The friend greeting is the one place a warm "
          "word fits; at most two warm address terms (\"my friend\", \"brother\", \"dear\") in all of this person's "
@@ -92,10 +107,13 @@ def brief(w, who: str, out: pathlib.Path) -> int:
             if f.source.startswith(echoes.POINTER):
                 L.append(f"- `{fid}`: another person here tells this; point to them by name and name the subject in a "
                          f"few words, never tell it: {f.claim}")
+            elif f.topic == "talk.directions" and f.source.startswith("talk_route:"):
+                L.append(f"- `{fid}`: {told(f.claim)} (route: {tr.shape(f.source)})")
             else:
-                L.append(f"- `{fid}`: {f.claim}")
+                L.append(f"- `{fid}`: {told(f.claim)}")
         L.append("")
-    L += echoes.brief_section(echoes.speech(w), t.known_as, echoes.claims(w), {tt.topic for tt in tts})
+    L += echoes.brief_section(echoes.speech(w), t.known_as,
+                                {k: told(v or "") for k, v in echoes.claims(w).items()}, {tt.topic for tt in tts})
     L += ["## Output", "", "A TSV file, one reply per line: `<topic id>` TAB `<text>`. Every topic above once or "
           "twice; nothing else."]
     out.write_text("\n".join(L) + "\n")
@@ -104,6 +122,10 @@ def brief(w, who: str, out: pathlib.Path) -> int:
 
 
 def load(w, who: str, path: pathlib.Path) -> int:
+    finds = finds_dir(who)
+    if not any(re.search(r"\bmw\d{5}\b", f.read_text()) for f in finds.glob("*.txt")):
+        print(f"{who}: no matched Morrowind lines in {finds}: run the find step (dialogue-write section 3) first")
+        return 1
     tts = w.rows("talker_topic", talker=who)
     allowed = {tt.topic for tt in tts}
     # a writer sometimes puts a fact id where the topic id goes: map it to the topic that cites the fact

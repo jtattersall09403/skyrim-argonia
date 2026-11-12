@@ -43,7 +43,7 @@ in prose. Worked examples, exported from the rows: [examples/lh38.yaml](examples
 | `outside` | `{packet}` when the stage is built in a later packet (import field) |
 | + `actions` / `approaches` | `{skill, use, target, setting, note}` from `skill-uses.yaml`; approaches are `{id, actions}` (principles/actions.md). Supporting acts as `{system, use}` |
 | + `learns` | fact ids the player learns here (player knowledge is computed from these) |
-| + `directions` | how the player finds the place in words (landmark, direction, distance, against the real route network), written into the journal entry beside the objective's target |
+| + `directions` | how the player finds the place in words (landmarks, the way, compass points and a word for how far, never a count; against the real route network), written into the journal entry beside the objective's target |
 
 ## 2. The record's sections (added to the object, written in this order)
 

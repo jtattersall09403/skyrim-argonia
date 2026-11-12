@@ -14,10 +14,14 @@ quest's cast says nothing in their own topics that the quest's lines contradict 
 
 ## The rules
 
-1. **Directions are routes.** Every `talk.directions` fact is made by `talk_route` from the speaker's ref: legs
-   (walk, follow the path, follow the shore, cross the bridge, along the boards, swim, climb) ending at real
-   landmarks, each with its form key in `source`. A place in sight (under 60 m, near straight) is paces and a
-   compass point. The writer retells the legs in the person's voice; never adds a landmark.
+1. **Directions are routes, told the Morrowind way.** Every `talk.directions` fact is made by `talk_route` from
+   the speaker's ref: legs (walk, follow the path, follow the shore, cross the bridge, along the boards, swim, climb)
+   ending at real landmarks, each with its form key in `source`. The claim tells each leg by its way, its compass
+   point, its landmark and side and a word for how far (`talk_route.BANDS`: "just" under 60 m and in sight, "a short
+   way" under 200 m, "a fair way" under 600 m, "a long walk" under 2 km, "far" beyond), never a count; the measured
+   legs stay in `source` for the check. A place in sight is "just" and a compass point. The writer retells the
+   route in the person's voice; never adds a landmark. Any distance in another fact's claim reaches the writer as
+   its band's words too.
 2. **Address follows standing.** Topic replies are said to a stranger: neutral or cool by temperament. Two
    greetings a person, `talk.greet-stranger` and `talk.greet-friend` (Talk.cs gates them on GetRelationshipRank
    with the player, < 1 and >= 1, Skyrim's Hello way). At most two warm address terms in all of a person's lines,
@@ -48,7 +52,8 @@ quest's cast says nothing in their own topics that the quest's lines contradict 
 3. **Routes.** Write each directions fact with `source` naming `speaker <ref6>` and `target <key6>` (a map marker,
    a talker or a ref), then `python3 -m tools.argonia_world.talk_route facts --settlement S --write` (the
    settlement's own worldspace). Check a route by hand with `talk_route route --from REF --to KEY`. The legs it
-   makes keep these rules, and `source` carries each leg (`legs: kind paces@degrees (why)`) for talk_check:
+   makes keep these rules, and `source` carries each measured leg (`legs: kind paces@degrees (why)`) for talk_check,
+   which reads the told wording back against it (compass points, landmark order, distance words):
    - a leg under 50 paces joins its neighbour, unless it meets a swim or a bridge or the whole route is under 150;
    - a leg over 350 paces is cut at a landmark near its middle (the search widens along the leg and out from it);
      a long leg with no landmark at all names what it follows (along the shore, along the path, over open ground);
@@ -76,7 +81,8 @@ quest's cast says nothing in their own topics that the quest's lines contradict 
    quest stage there) on the topics this person answers, with the facts each holds.
 9. **Lines.** `export ARGONIA_PRIVATE=/home/ubuntu/argonia-private` (the Morrowind corpus, for corpus-find; dotnet
    is ~/.dotnet, plugin.sh sets PATH). One `dialogue-writer` agent per person, in parallel (at most 20 at once), each given its brief and an output path
-   (TSV `<topic>\t<text>`), lint run with `--race`. Then `talk_brief.py load LINES.tsv --talker REF`.
+   (TSV `<topic>\t<text>`); each runs its own find step (dialogue-write section 3) and lint with `--race`. Then
+   `talk_brief.py load LINES.tsv --talker REF` (it refuses a person with no finds).
 10. **Echoes.** `python3 -m tools.argonia_world.echoes check --window S`: 0 clusters (no two people of the
     settlement share a fact, a seven-word run or a greeting's opening) and the shared-phrase check (`talk_check`
     repeats); reword the later person's line and reload.

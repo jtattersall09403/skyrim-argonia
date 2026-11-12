@@ -11,7 +11,7 @@ The route: A* on a grid (GRID units a square): road, dock and bridge squares cos
 water (ground under the water line) 3 (swimming); steep bare land is closed. The path is cut into legs by kind
 (walk, road, shore, bridge, dock, swim, climb) and at its turns (Douglas-Peucker, TURN units); each leg ends at the
 most notable landmark within REACH of its end, with its side. A target under CLOSE in a near-straight line is given
-as paces and a compass point only.
+as "just" and a compass point only.
 
     python3 -m tools.argonia_world.talk_route cache    [--world 23D689:Black Marsh.esm]
     python3 -m tools.argonia_world.talk_route route    --from REF --to REF|MARKER|x,y [--json]
@@ -37,7 +37,7 @@ CACHE = db.REPO / "out/talk_route"
 GRID = 192.0            # units a square (2.7 m)
 UNITS_M = 70.0
 PACE = 52.5             # units a pace (0.75 m)
-CLOSE = 60 * UNITS_M    # under this, in a near-straight line: paces and a compass point
+CLOSE = 60 * UNITS_M    # under this, in a near-straight line: in sight, "just" and a compass point
 TURN = 700.0            # Douglas-Peucker tolerance: a bend this far off the line is a turn
 REACH = 1600.0          # a leg's landmark lies this close to its end
 MIN_LEG = 1400.0        # a run shorter than this merges into the one before
@@ -739,14 +739,56 @@ def _build(G: Grid, s: int, pts: list, along: list, cuts: list, must: set, shape
 VERB = {"walk": "walk {h}", "road": "follow the path {h}", "shore": "follow the shore {h}",
         "bridge": "cross the bridge {h}", "dock": "go along the boards {h}", "swim": "swim {h}", "climb": "climb {h}"}
 
+# How far, in the words Morrowind's direction lines use (never a count: 0 of its 356 direction lines gives one).
+# A leg's measured length in metres picks its band; the told route and the brief carry only the band's words, and
+# talk_check reads the words back to the band. Skyrim's scale: a person walks about 2 m a second, so a short way is
+# under two minutes' walk, a long walk the far side of a settlement or the next landmark out of sight.
+BANDS = [  # (under metres, band, the words that say it: the first is what describe() writes, the rest are read back)
+    (60, "near", ["just", r"just (?:to the )?(?:north|south|east|west|past|beyond|across|outside|there|here)",
+                  "right there", "close by", "a few steps", "in sight", "nearby"]),
+    (200, "short", ["a short way", "a little way", "not far", "a short walk", "a stone's throw"]),
+    (600, "fair", ["a fair way", "a good walk", "some way", "a fair walk"]),
+    (2000, "long", ["a long walk", "a long way", "a good long way"]),
+    (float("inf"), "far", ["far off", r"far (?:to the )?(?:north|south|east|west)", "a long journey",
+                           "most of a day"]),
+]
+BAND_ORDER = [b for _, b, _ in BANDS]
+
+
+def band(m: float) -> str:
+    """The distance band of a length in metres."""
+    return next(b for top, b, _ in BANDS if m < top)
+
+
+def band_words(b: str) -> str:
+    return next(ws for _, n, ws in BANDS if n == b)[0]
+
+
+BAND_RE = [(n, re.compile(r"\b(?:" + "|".join(sorted(ws[1:] + [ws[0]], key=len, reverse=True)) + r")\b", re.I))
+           for _, n, ws in BANDS]
+
+
+MEASURE = re.compile(r"\b(?:about |some )?(\d+) ?(paces|m|metres|meters)\b")
+
+
+def in_words(text: str) -> str:
+    """Text for a writer with every measured distance ("about 129 paces", "60 m") put as the words of its band, so
+    no count reaches the writer (briefs: talk_brief, quest-write's brief)."""
+    def say(m: re.Match) -> str:
+        n = int(m.group(1)) * (PACE / UNITS_M if m.group(2) == "paces" else 1)
+        return band_words(band(n))
+    return MEASURE.sub(say, text or "")
+
 
 def describe(r: dict, target_name: str) -> str:
-    """A plain, neutral telling of the route: the writer re-tells it in the speaker's own voice."""
+    """The route as a local tells it, the Morrowind way: each leg's way, compass point, distance in words and the
+    landmark it ends at; no counts. The writer re-tells it in the speaker's own voice."""
     if r["kind"] == "close":
-        text = f"{target_name} is about {r['paces']} paces {r['bearing']} of here, in sight."
+        text = f"{target_name} is just {r['bearing']} of here, in sight."
         return text[0].upper() + text[1:]
     if r["kind"] == "none":
-        return f"{target_name} lies about {r['straight_m']} m {r['bearing']} of here; no way on foot was found."
+        return (f"{target_name} lies {band_words(band(r['straight_m']))} {r['bearing']} of here; no way on foot "
+                f"was found.")
     bits = []
     for n, lg in enumerate(r["legs"]):
         if lg["kind"] == "ask":
@@ -758,7 +800,7 @@ def describe(r: dict, target_name: str) -> str:
         why = lg.get("why", "")
         if why.startswith(("round", "over", "across")) or (why.startswith("along") and why[10:] not in v):
             v += f" {why}"
-        s = f"{v} about {lg['paces']} paces"
+        s = f"{v} {band_words(band(lg['m']))}"
         if lg.get("past"):
             s += " past " + " and ".join(p["what"] for p in lg["past"])
         if lg["landmark"]:
@@ -819,6 +861,106 @@ def leg_problems(src: str, W: World | None = None) -> list[str]:
     off = _angle(math.cos(math.radians(d0)), math.sin(math.radians(d0)), tx - sx, ty - sy)
     if off > AWAY and not legs[0][3]:
         out.append(f"leg 1 heads {round(off)} degrees off the target")
+    return out
+
+
+WAYPOINT = re.compile(r"[0-9A-F]{6}:.+?\.es[mpl] (.+?) \((-?\d+), (-?\d+)\)")
+COUNT = re.compile(r"\b(?:\d+|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|fifteen|twenty|thirty|"
+                   r"forty|fifty|sixty|seventy|eighty|ninety|hundred|a hundred|thousand|dozen)\b[\w\s-]{0,24}?"
+                   r"\b(?:paces|steps|strides|yards|metres|meters|leagues|miles)\b|\bpaces\b", re.I)
+WORD_DIR = re.compile(r"\b(north|south|east|west)(?:[- ]?(north|south|east|west))?(?:[- ]?(north|south|east|west))?"
+                      r"(?:ward|ern|erly)?\b", re.I)
+
+
+def _parse(src: str) -> tuple[list, list, tuple, tuple] | None:
+    """A directions source as (legs [(kind, paces, degrees, why)], waypoints [(what, x, y)], speaker xy, target xy)."""
+    m = re.search(r"legs: ([^;]*);", src)
+    pos = re.findall(r"\((-?\d+), (-?\d+)\)", src)
+    if not m or len(pos) < 2:
+        return None
+    legs = [(k, int(p), int(d), why) for k, p, d, why in LEG.findall(m.group(1))]
+    wps = re.search(r"waypoints: (.*?); legs:", src)
+    way = [(what.strip(), int(x), int(y)) for what, x, y in
+           (WAYPOINT.findall(wps.group(1)) if wps else [])]
+    return legs, way, tuple(map(int, pos[0])), tuple(map(int, pos[-1]))
+
+
+def shape(src: str) -> str:
+    """What a writer and a find agent need of a route's shape: legs, their kinds, anchors and distance bands."""
+    p = _parse(src)
+    if not p:
+        return "no route"
+    legs, way, (sx, sy), (tx, ty) = p
+    if legs and legs[0][0] == "close":
+        return "in sight: one compass point and \"just\"; no legs"
+    told = [lg for lg in legs if lg[0] != "ask"]
+    out = (f"{len(told)} leg{'s' * (len(told) != 1)} ({', '.join(lg[0] for lg in told)}); distance "
+           f"{', '.join(band(lg[1] * PACE / UNITS_M) for lg in told)}; anchors: "
+           f"{', '.join(w for w, _, _ in way) or 'none (what each leg follows)'}")
+    return out + ("; then ask again" if any(lg[0] == "ask" for lg in legs) else "")
+
+
+def _bearing_word(m: re.Match) -> float:
+    """The angle (degrees counter-clockwise from east) a compass phrase names: north-north-east is two parts
+    north-east to one part north."""
+    ang = {"east": 0, "north": 90, "west": 180, "south": 270}
+    parts = [ang[g.lower()] for g in m.groups() if g]
+    weights = [1] if len(parts) == 1 else [1, 1] if len(parts) == 2 else [2, 1, 1]
+    x = sum(w * math.cos(math.radians(a)) for w, a in zip(weights, parts))
+    y = sum(w * math.sin(math.radians(a)) for w, a in zip(weights, parts))
+    return math.degrees(math.atan2(y, x)) % 360
+
+
+def _off(a: float, b: float) -> float:
+    return abs((a - b + 180) % 360 - 180)
+
+
+def check_told(text: str, src: str) -> list[str]:
+    """What a told direction says that its route does not: a count of paces or another unit; a compass point no leg
+    (nor the target's bearing) heads within 50 degrees of, or out of the legs' order; landmarks out of route order;
+    a distance word more than one band off the leg it falls in. Empty when the telling is true to the route."""
+    out = [f"a count: {m.group(0)!r}" for m in COUNT.finditer(text)]
+    p = _parse(src)
+    if not p:
+        return out
+    legs, way, (sx, sy), (tx, ty) = p
+    told = [lg for lg in legs if lg[0] not in ("ask", "none")] or [("close", 0, _deg((sx, sy), (tx, ty)), "")]
+    target = _deg((sx, sy), (tx, ty))
+    heads = [lg[2] for lg in told] + [lg[2] for lg in legs if lg[0] == "ask"]
+    low = text.lower()
+    # landmarks in route order
+    # (a summary may name a landmark before the legs do: each is looked for after the one before it on the way)
+    pos, prev = -1, None
+    for what, _, _ in way:
+        core = re.sub(r"^(?:the|a|an) ", "", what.lower())
+        if core not in low:
+            continue
+        i = low.find(core, pos + 1)
+        if i < 0:
+            out.append(f"landmarks out of order: {core!r} is told before {prev!r}, which comes first on the way")
+            continue
+        pos, prev = i, core
+    # compass points: each on a leg at or after the last one matched, or the target's bearing
+    k = 0
+    for m in WORD_DIR.finditer(text):
+        if re.match(r"(?:side|edge|end|bank|shore|gate|wall)\b", low[m.end():].lstrip()):
+            continue  # "the north side": where a thing is, not a heading
+        a = _bearing_word(m)
+        hit = next((j for j in range(k, len(heads)) if _off(a, heads[j]) <= 50), None)
+        if hit is None and _off(a, target) <= 50:
+            continue
+        if hit is None:
+            back = any(_off(a, h) <= 50 for h in heads[:k])
+            out.append(f"{m.group(0)!r} " + ("out of the legs' order" if back else
+                                             f"is no leg's heading ({', '.join(str(h) for h in heads)} degrees)"))
+            continue
+        k = hit
+    # distance words: each within one band of a leg (or the whole way)
+    bands = [band(lg[1] * PACE / UNITS_M) for lg in told] + [band(sum(lg[1] for lg in told) * PACE / UNITS_M)]
+    for name, rx in BAND_RE:
+        for m in rx.finditer(text):
+            if not any(abs(BAND_ORDER.index(name) - BAND_ORDER.index(b)) <= 1 for b in bands):
+                out.append(f"{m.group(0)!r} says {name}; the way is {', '.join(bands[:-1])}")
     return out
 
 
