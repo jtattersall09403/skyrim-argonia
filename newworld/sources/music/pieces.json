@@ -483,33 +483,38 @@
       "id": "sting-levelup",
       "role": "sting: level up",
       "minutes": 0.25,
-      "axes": "A short triumphant sting, 15 seconds long. [0:00-0:10] One bright rising flourish: the four-note call on conch and flute over a single log-drum hit and a bright major string chord, D major. [0:10-0:15] the chord held and fading to silence.",
+      "axes": "A level-up fanfare sting, the whole piece is 8 seconds. [0:00-0:03] starts instantly with no intro: a fast low rolling swell of hollow log drums and low strings rising in a single crescendo. [0:03] one broad, bright, triumphant arrival in D major: full ensemble and a powerful wordless choir with conch shell horns stating the four-note call once. [0:04-0:08] the final major chord rings out and decays. [0:08 onward] silence.",
       "reference": {
-        "title": "Triumphant",
-        "length": "0:14",
+        "title": "the stock level-up sting (feel only: no melody, harmony or audio taken)",
+        "length": "0:07",
         "sources": "docs/design/music.md#sources"
       },
-      "feel": "A short jingle, about 14 seconds: one bright, rising, triumphant flourish on brass and strings in a major key, ending on a held chord.",
-      "kept": "t2",
+      "feel": "A very short sting, 6 to 9 seconds: a low drum roll or swell surging into one broad, bright, triumphant arrival with wordless choir and full ensemble, then ringing out and decaying; heroic, warm, final, one gesture.",
+      "kept": "t9",
       "measured": {
-        "seconds": 59.3,
-        "pulse_bpm": 60,
-        "centroid_hz": 1708,
-        "onsets_per_s": 2.82,
-        "loudness_by_tenth_db": [
-          -14,
-          -15,
+        "seconds": 60.2,
+        "peak_s": 2.2,
+        "centroid_hz_at_peak": 2373,
+        "loudness_by_half_s_db": [
+          -83,
+          -68,
+          -48,
+          -31,
+          -9,
           -11,
           -11,
-          -10,
-          -12,
-          -12,
-          -13,
-          -14,
-          -21
+          -16,
+          -17,
+          -19,
+          -19,
+          -20,
+          -19,
+          -21,
+          -19,
+          -20
         ]
       },
-      "cut_s": 8.25
+      "cut_s": 7.5
     },
     {
       "id": "sting-death",

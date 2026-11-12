@@ -49,7 +49,7 @@ only (sources below), in plain musical terms.
 | battle-war | Drumbeats of the Dunmer (2:03) | stripped back; minimalist repeating drum rhythms that want a resonant, forceful sound; few instruments above | 120 BPM, G minor; repeating war-drum patterns, massed wordless chant |
 | battle-water | Stormclouds on the Battlefield (2:11) | sparse, repetitive rhythmic writing; dark, brooding, surging | 128 BPM, B minor; churning gourd and wood rhythm, swirling strings, surges |
 | battle-last | Knight's Charge (2:05) | its opening seconds announce the fight; bold, driving, building tension | 136 BPM, F minor; bold opening hit, driving drums and strings, choir swells to a climax |
-| sting-levelup | Triumphant (0:14) | a short bright jingle, rising, major | the call on conch and flute over one drum hit and a bright major chord |
+| sting-levelup | the stock level-up sting, feel only (0:07) | a low swell surging into one broad bright arrival with wordless choir, ringing out; heroic, final | log-drum and low-string swell into the call on conch over choir and a D major chord, decaying (round-3 take t9, cut 7.5 s) |
 | sting-death | Fate's Quickening (0:17) | a short jingle, falling and mournful | the call slowed on low flute over a fading drone (round-1 take kept) |
 | sting-discovery | The Prophecy Fulfilled (1:11) | angelic choir and a high solo voice; a starry-eyed sense of wonder | thumb-piano and airy choir rising into the call |
 

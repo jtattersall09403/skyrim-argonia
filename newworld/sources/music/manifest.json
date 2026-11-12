@@ -85,7 +85,13 @@
     "sting-levelup": {
       "t1": "01a1d041-08d4-7382-8a4a-23c839613de5",
       "t2": "01a1d051-a220-7433-b93f-f78b894c53a2",
-      "t3": "01a1d051-a212-75b3-b3b9-3a1e35b425e3"
+      "t3": "01a1d051-a212-75b3-b3b9-3a1e35b425e3",
+      "t4": "01a1d0b7-686f-7eb0-a84a-480d020d77c1",
+      "t5": "01a1d0b7-68fc-7b20-b7ae-6991440dded9",
+      "t6": "01a1d0b7-6869-7c53-83ca-e9c009cbbaba",
+      "t7": "01a1d0b7-6842-7aa3-98cb-162d20b335af",
+      "t8": "01a1d0b7-6902-7eb0-898e-1a5fa8c659a6",
+      "t9": "01a1d0b7-68e5-7dc3-a8d8-1aa1e5037c7c"
     },
     "sting-death": {
       "t1": "01a1d041-107e-7450-866a-ccafc2fbd91c",
@@ -166,7 +172,8 @@
     },
     "sting-levelup": {
       "t2": "https://v3b.fal.media/files/b/0ab22f40/6YIeptbAfzBzWGkhjDiZj_output.mp3",
-      "t3": "https://v3b.fal.media/files/b/0ab22f40/nlW-02i5EUmgYs0orBdGv_output.mp3"
+      "t3": "https://v3b.fal.media/files/b/0ab22f40/nlW-02i5EUmgYs0orBdGv_output.mp3",
+      "t9": "https://v3b.fal.media/files/b/0ab231c5/ka7XpP4h33KAMsp1ERwFX_output.mp3"
     },
     "sting-death": {
       "t2": "https://v3b.fal.media/files/b/0ab22f43/h2taL10m5PBZ27H7ZvatB_output.mp3",
