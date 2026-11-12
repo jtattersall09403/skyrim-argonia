@@ -160,6 +160,34 @@ def ruin_culture(tags: dict) -> str:
     return f"ruin-{'dunmer' if top == 'daedric' and cult.get('dunmer') else top}" if f"ruin-{top}" in RUINS else "ruin"
 
 
+SETTLEMENTS = {"city", "town", "village", "hamlet"}
+SETTLE_KW = {"LocTypeCity", "LocTypeTown", "LocTypeSettlement", "LocTypeDwelling", "LocTypeHabitation"}
+SETTLE_MARKER = {"City", "Town", "Settlement", "SkyrimCity", "WindhelmCity", "RavenRockCity", "DLC02RavenRock"}
+HOSTILE_KW = {"LocTypeDungeon", "LocTypeClearable", "LocTypeMilitaryFort", "LocTypeBanditCamp", "LocTypeVampireLair",
+              "LocTypeWarlockLair", "LocTypeDraugrCrypt", "LocTypeFalmerHive", "LocTypeDwarvenAutomatons",
+              "LocTypeForswornCamp", "LocTypeHagravenNest", "LocTypeAnimalDen", "LocTypeDragonPriestLair"}
+
+
+def settled(c: dict) -> bool:
+    """A settlement only on a settlement signal: Bethesda's keyword or map marker, or a built-up cluster of houses
+    with people living in it (beds and furniture)."""
+    kws = set(c.get("keywords") or [])
+    if re.search(r"sanctuary|hideout|barrow|temple|cave|crypt|tomb|ruin|\bdun\b", f"{c.get('name')} {c.get('edid')}", re.I):
+        return False  # a lair Bethesda files under a town keyword is still a lair
+    if kws & SETTLE_KW or (c.get("marker") or {}).get("type") in SETTLE_MARKER:
+        return True
+    return "cluster" in kws and c["counts"].get("building", 0) >= 40 and c.get("residents", 0) > 0 \
+        and c["counts"].get("furniture", 0) > 0
+
+
+def hostile_people(c: dict) -> None:
+    """In a place Bethesda types as a dungeon, a fort or a lair, everyone placed there is a foe (bandits, a
+    garrison of the war): none of them is a resident."""
+    if set(c.get("keywords") or []) & HOSTILE_KW and not set(c.get("keywords") or []) & SETTLE_KW:
+        c["enemies"] = c.get("enemies", 0) + c.get("residents", 0)
+        c["residents"] = 0
+
+
 def classify(c: dict) -> tuple[str, str]:
     """(kind, why): a location keyword first, then the map marker's type, then the name, then the counts."""
     kws = set(c.get("keywords") or [])
@@ -186,14 +214,10 @@ def classify(c: dict) -> tuple[str, str]:
                     break
                 kind, why = k, f"name '{rx}'"
                 break
+    if kind == "fort" and re.search(r"temple|barrow|crypt|tomb|sanctuary|cave", own, re.I):
+        kind, why = "ruin", f"a {why} named as a dungeon"
     if kind is None:
-        if res >= 30:
-            kind = "town"
-        elif res >= 10:
-            kind = "village"
-        elif res >= 3:
-            kind = "hamlet"
-        elif tags.get("ship", 0) >= 10:
+        if tags.get("ship", 0) >= 10:
             kind = "shipwreck"
         elif tags.get("ruin", 0) >= 5 or en > res:
             kind = "ruin"
@@ -207,6 +231,9 @@ def classify(c: dict) -> tuple[str, str]:
         why = f"built-up cluster of {blds} buildings"
     if re.search(r"BYOHHouse", c.get("edid") or "") or (kind in ("town", "village") and res < 3 and blds < 25):
         kind, why = "homestead", why + "; a single house"
+    if kind in SETTLEMENTS and not settled(c):
+        kind = ruin_culture(tags) if en or tags.get("ruin", 0) >= 5 else "landmark"
+        why += "; no settlement signal"
     if kind == "village" and res < 6:
         kind = "hamlet"
     if kind == "city" and res < 25:
@@ -274,6 +301,7 @@ def load_candidates() -> tuple[list[dict], dict]:
                 sid, n = f"{c['candidate_id']}.{n}", n + 1
             seen.add(sid)
             c["source_id"] = sid
+            hostile_people(c)
             c["kind"], c["kind_why"] = classify(c)
             c["description"] = description(c)
             out.append(c)
@@ -363,7 +391,13 @@ def check_unique(srcs: list[dict]) -> None:
 
 
 def place_features() -> tuple[list[dict], dict]:
+    """Our places, each with `population` set to the research's own estimate (newworld/sources/research/places),
+    never the table's, which this match overwrites: a rerun on unchanged inputs writes the same numbers."""
+    from tools.newworld.build_db import RESEARCH, load_json_dir
+    est = {r["id"]: r.get("population") for r in load_json_dir(str(RESEARCH / "places" / "*.json"))}
     places = [json.loads(line) for line in (DB / "place.jsonl").open() if line.strip()]
+    for p in places:
+        p["population"] = est.get(p["id"])
     gives = defaultdict(list)
     for line in (DB / "place_give.jsonl").open():
         g = json.loads(line)

@@ -28,3 +28,17 @@ def test_two_allocated_sources_on_one_cell_fail():
     with pytest.raises(AssertionError):
         check_unique([cand("a", [[0, 0]], 1), cand("b", [[0, 0], [0, 1]], 1)])
     check_unique([cand("a", [[0, 0]], 1), cand("b", [[0, 1]], 1)])
+
+
+def test_counts_or_a_lair_never_make_a_settlement():
+    from tools.places.sources_match import classify, settled
+    lair = cand("db", [[0, 0]], 900, edid="DarkBrotherhoodSanctuaryLocation", keywords=["LocTypeTown"], residents=30)
+    assert not settled(lair)
+    crowd = cand("x", [[0, 0]], 900, edid="SomeBarrowLocation", residents=40, enemies=0, tags={"nordic": 9})
+    assert classify(crowd)[0] not in ("city", "town", "village", "hamlet")
+
+
+def test_population_is_the_same_on_a_rerun():
+    from tools.places.sources_match import population
+    p = {"status": "inhabited", "population": 100, "place_kind_id": "city"}
+    assert population(p, [], {"residents": 322}) == population(p, [], {"residents": 322})
