@@ -14,14 +14,14 @@
 {"quest_id":"quest.bc.bc03","section":"deadline","value":"none: the season runs on."}
 {"quest_id":"quest.bc.bc03","section":"revealOrder","value":"The refusal (k2), his thirty years (k1), the tokens themselves (k3)."}
 {"quest_id":"quest.local.lf83","section":"aftermath"}
-{"quest_id":"quest.local.lf83","section":"deadline","value":"the world's: the wet season. The quest starts only in the dry season (startWhen seasonIs dry) and fails to stage 90 when the wet season comes (seasonIs wet); the rains are announced by Signs-For-The-Cargo and Takes-The-Short-Weight (fact.lf83.rains-close). The monsoon closes the road at the Drowning Gate, 87 m east along the road (place.imperial-fringe.the-drowning-gate), and with it the station's trade, which raises Livia's stake"}
+{"quest_id":"quest.local.lf83","section":"deadline","value":"none on the clock: Signs-For-The-Cargo and Takes-The-Short-Weight say the rains are close (fact.lf83.rains-close), which raises the landing's stake, but the quest stays open until terms are made or a keeper dies"}
 {"quest_id":"quest.local.lf83","section":"leverage"}
 {"quest_id":"quest.local.lf83","section":"objections"}
 {"quest_id":"quest.local.lf83","section":"revealOrder"}
 {"quest_id":"quest.local.lf83","section":"sides"}
-{"quest_id":"quest.local.lh38","section":"accusation","needed":2,"too_few":"Reeh-Shaal laughs it off and leaves on the next boat unless stopped"}
-{"quest_id":"quest.local.lh38","section":"cure","value":"raise the body; the water clears in three days"}
-{"quest_id":"quest.local.lh38","section":"endings","wrong":"e-wrong","right":"e-justice","partial":"e-fight","unsolved":"e-unsolved"}
+{"quest_id":"quest.local.lh38","section":"accusation","needed":2,"too_few":"Reeh-Shaal laughs it off"}
+{"quest_id":"quest.local.lh38","section":"cure","value":"raise the body; Im-Moro says the water will then clear"}
+{"quest_id":"quest.local.lh38","section":"endings","wrong":"e-wrong","right":"e-justice","partial":"e-fight","unsolved":"e-deal"}
 {"quest_id":"quest.local.lh38","section":"firstIllLastWell","value":"guests at the lodge first (they drink most), then the fire stand's customers; the office-holders, who drink from the far side of the pool, last"}
 {"quest_id":"quest.local.lh38","section":"ladder"}
 {"quest_id":"quest.local.lh38","section":"leads"}
@@ -81,10 +81,10 @@
 {"quest_id":"quest.main.mq05","section":"rumour","value":"The Reed says the interior's tree-minders and Nisswo gather at Helstrom and carry news home, and that it cannot say a cut Hist's story there itself."}
 {"quest_id":"quest.mr.mr01","section":"cure","value":"seal the cut (costs the roots it runs through), or reopen it downstream (floods the dead grove's land, where the founders' rival's descendants now fish)"}
 {"quest_id":"quest.mr.mr01","section":"firstIllLastWell","value":"the Hist's lowest roots first, then the spring, then the river landing last"}
-{"quest_id":"quest.mr.mr01","section":"gate","value":"the second landing is a full dive in the wet season"}
+{"quest_id":"quest.mr.mr01","section":"gate","value":"the second landing is a full dive"}
 {"quest_id":"quest.mr.mr01","section":"ladder"}
 {"quest_id":"quest.mr.mr01","section":"misdiagnosis","wrong":"salt from the salt works upstream","test":"taste the river above the fork (k1); the herald's ledger (k2)"}
-{"quest_id":"quest.mr.mr01","section":"nonLethalFailure","value":"out of breath, the player wakes at the first landing's air pocket with the sample lost (1.5 death rule applies elsewhere)"}
+{"quest_id":"quest.mr.mr01","section":"nonLethalFailure","value":"none; the samples lie where they are and can be taken again after a reload"}
 {"quest_id":"quest.mr.mr01","section":"pointOfNoReturn","value":"the deepest chamber: the player must have breath or water-breathing to come back"}
 {"quest_id":"quest.mr.mr01","section":"prepHints","value":"the couriers at Gate-Side Camp say: four breaths, a light that burns under water, and fire for the swarms"}
 {"quest_id":"quest.mr.mr01","section":"prize","value":"the third sample and the sight of the breach"}

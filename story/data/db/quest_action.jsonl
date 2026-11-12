@@ -15,8 +15,6 @@
 {"quest_id":"quest.bc.bc03","stages_ord":1,"ord":0,"skill":"lockpicking","use":"open-a-strongbox","setting":"in a crowd or a market","note":"a low lock","target":"Ussa-Rekh's chest"}
 {"quest_id":"quest.bc.bc03","stages_ord":2,"ord":0,"skill":"speechcraft","use":"persuade","setting":"in a crowd or a market","note":"Speechcraft 30 on topic.bc03-yield-talk","target":"Heavy-Rope"}
 {"quest_id":"quest.bc.bc03","stages_ord":2,"ord":1,"skill":"mercantile","use":"bribe","setting":"in a crowd or a market","note":"50 gold to the crew on topic.bc03-yield-pay","target":"Heavy-Rope"}
-{"quest_id":"quest.local.lh38","stages_ord":2,"ord":0,"skill":"swimming","use":"swim","setting":"in a flooded ruin, root-cave or under water","note":"one breath; alteration: water-breathe also serves"}
-{"quest_id":"quest.local.lh38","stages_ord":2,"ord":1,"skill":"illusion","use":"light-a-dark-place","note":"optional: a torch will not burn underwater"}
 {"quest_id":"quest.local.lq25","stages_ord":0,"ord":0,"skill":"oneHanded","use":"fight","setting":"in a flooded ruin, root-cave or under water","note":"the crocodile is fought in its lair under the plank walk","target":"a crocodile (fixed level, band 1)"}
 {"quest_id":"quest.local.lq25","stages_ord":0,"ord":1,"skill":"marksman","use":"snipe","setting":"open ground by day","note":"the crocodile is shot from the planks as it lies under the plank walk","target":"the crocodile"}
 {"quest_id":"quest.local.lq25","stages_ord":0,"ord":2,"skill":"destruction","use":"kill-from-range","setting":"open ground by day","note":"the crocodile is burnt or frozen from the planks","target":"the crocodile"}

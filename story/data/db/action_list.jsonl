@@ -72,7 +72,6 @@
 {"id":"quest_ending:quest.local.lf83|2:world"}
 {"id":"quest_ending:quest.local.lf83|3:world"}
 {"id":"quest_ending:quest.local.lf83|4:world"}
-{"id":"quest_ending:quest.local.lf83|5:world"}
 {"id":"quest_ending:quest.local.lh38|0:rewards"}
 {"id":"quest_ending:quest.local.lh38|0:world"}
 {"id":"quest_ending:quest.local.lh38|1:rewards"}
@@ -80,7 +79,6 @@
 {"id":"quest_ending:quest.local.lh38|2:rewards"}
 {"id":"quest_ending:quest.local.lh38|2:world"}
 {"id":"quest_ending:quest.local.lh38|3:world"}
-{"id":"quest_ending:quest.local.lh38|4:world"}
 {"id":"quest_ending:quest.local.lq25|0:rewards"}
 {"id":"quest_ending:quest.local.lq25|0:world"}
 {"id":"quest_ending:quest.local.lq25|1:rewards"}
@@ -138,7 +136,7 @@
 {"id":"quest_stage:quest.local.lh37|0:on_enter"}
 {"id":"quest_stage:quest.local.lh37|1:on_enter"}
 {"id":"quest_stage:quest.local.lh38|0:on_enter"}
-{"id":"quest_stage:quest.local.lh38|3:on_enter"}
+{"id":"quest_stage:quest.local.lh38|2:on_enter"}
 {"id":"quest_stage:quest.local.lh51|0:on_enter"}
 {"id":"quest_stage:quest.local.lh63|0:on_enter"}
 {"id":"quest_stage:quest.local.lh63|1:on_enter"}
@@ -150,8 +148,6 @@
 {"id":"quest_stage:quest.local.lp14|2:on_enter"}
 {"id":"quest_stage:quest.local.lp19|0:on_enter"}
 {"id":"quest_stage:quest.local.lq15|0:on_enter"}
-{"id":"quest_stage:quest.local.lq15|1:on_enter"}
-{"id":"quest_stage:quest.local.lq15|2:on_enter"}
 {"id":"quest_stage:quest.local.lq25|0:on_enter"}
 {"id":"quest_stage:quest.local.lq25|1:on_enter"}
 {"id":"quest_stage:quest.local.lq30|0:on_enter"}
@@ -179,11 +175,8 @@
 {"id":"quest_stage:quest.main.mq05|2:on_enter"}
 {"id":"quest_stage:quest.mr.mr01|0:on_enter"}
 {"id":"quest_stage:quest.mr.mr01|3:on_enter"}
-{"id":"quest_stage:quest.mr.mr01|4:on_enter"}
 {"id":"quest_stage:quest.ni.ni05|0:on_enter"}
-{"id":"quest_stage:quest.ni.ni05|1:on_enter"}
 {"id":"quest_stage:quest.ni.ni05|2:on_enter"}
-{"id":"quest_stage:quest.ni.ni05|3:on_enter"}
 {"id":"quest_stage:quest.tg.tg01|0:on_enter"}
 {"id":"quest_stage:quest.tg.tg01|1:on_enter"}
 {"id":"quest_stage:quest.tg.tg01|2:on_enter"}

@@ -33,7 +33,6 @@
 {"quest_id":"quest.local.lh38","ord":7,"id":"item.lh38.sealed-packet","kind":"item","source":"new","where":"item.lh38.satchel"}
 {"quest_id":"quest.local.lh38","ord":8,"id":"npc.lh38.sick-guests","kind":"two people (2.4 records)","source":"new","where":"lying on mats in the lodge"}
 {"quest_id":"quest.local.lh38","ord":9,"id":"thing.rope-coil-yard","kind":"place","source":"existing: behind the lodge (culture.group.greenspring.lodge)"}
-{"quest_id":"quest.local.lh38","ord":10,"id":"zone.greenspring.spring-pool","kind":"private volume","source":"new","where":"thing.spring-pool"}
 {"quest_id":"quest.local.lq25","ord":0,"id":"thing.lq25.beast","kind":"actors","source":"new (we.lq25.beast, W-fixed, band 1): one crocodile, our base 'Crocodile' templated on BM&V's Alligator 0BCB00:Black Marsh.esm at a fixed level, in the shallows under the crew's plank walk on the landing (cell 0D77AF, -9,15), under ref.lq25.beast, on from stage 20","where":"the shallows under the plank walk"}
 {"quest_id":"quest.local.lq25","ord":1,"id":"thing.lq25.bait","kind":"item","source":"new (we.lq25.beast, W-ref): the landing crew's bait bucket (our misc item, a vanilla bucket's model, offal in it), which the player takes, in the shallows under the crew's plank walk on the landing (cell 0D77AF, -9,15), under ref.lq25.beast","where":"under the plank walk"}
 {"quest_id":"quest.local.lq25","ord":2,"id":"thing.lq25.crew","kind":"actors","source":"existing: Okan-Zish is BM&V's villager 08D5EE (cell 0D77AD, -10,15) and Wuleen-Taza the villager 08D5EF (cell 0D77AF, -9,15), each given a base of their own templated on the shared one (the Talk names shape) and named so (we.lq25.crew); the boat captain is BM&V's Boat Captain 08D5F1 (cell 0D78BF, -9,19), unchanged, who speaks through a reference alias on 08D5F1","where":"the landing and Helstrom"}
@@ -69,7 +68,7 @@
 {"quest_id":"quest.mr.mr01","ord":1,"id":"thing.salt-sack","kind":"container","source":"existing: the herald's sack of upriver salt (blueprint b-herald)"}
 {"quest_id":"quest.mr.mr01","ord":2,"id":"thing.founders-stakes","kind":"activator group","source":"new","where":"the old grave-stakes beside the shrine at the Hist's foot"}
 {"quest_id":"quest.mr.mr01","ord":3,"id":"thing.sample-1","kind":"socket","source":"new","where":"place.hist-heartland.root-gallery-drowned-stair, first landing, air pocket"}
-{"quest_id":"quest.mr.mr01","ord":4,"id":"thing.sample-2","kind":"socket","source":"new","where":"the drowned stair, second landing under water in the wet season"}
+{"quest_id":"quest.mr.mr01","ord":4,"id":"thing.sample-2","kind":"socket","source":"new","where":"the drowned stair, second landing, under water"}
 {"quest_id":"quest.mr.mr01","ord":5,"id":"thing.sample-3","kind":"socket","source":"new","where":"the deepest chamber, beyond one breath"}
 {"quest_id":"quest.mr.mr01","ord":6,"id":"thing.breach","kind":"dressing","source":"new","where":"the deepest chamber, beside thing.sample-3"}
 {"quest_id":"quest.mr.mr01","ord":7,"id":"thing.parasite-swarms","kind":"hostiles","source":"new","where":"between the landings of the drowned stair"}

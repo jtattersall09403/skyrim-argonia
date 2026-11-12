@@ -1,3 +1,6 @@
 {"quest_id":"quest.local.lf83","thing_id":"item.station-water-ledger","hook":"read","sets_flag":"flag.lf83.ledger-read"}
 {"quest_id":"quest.local.lf83","thing_id":"thing.lf83.mortar-tub","hook":"activate","sets_flag":"flag.lf83.tub-seen"}
 {"quest_id":"quest.local.lf83","thing_id":"thing.lf83.well-head","hook":"activate","sets_flag":"flag.lf83.crack-seen"}
+{"quest_id":"quest.local.lp14","thing_id":"thing.lp14.waterline-mark","hook":"activate","sets_flag":"flag.lp14.mark-seen"}
+{"quest_id":"quest.local.lf67","thing_id":"thing.lf67.dropped-spade","hook":"activate","sets_flag":"flag.lf67.den-found"}
+{"quest_id":"quest.local.lr24","thing_id":"item.lr24.charge-book","hook":"read","sets_flag":"flag.lr24.ledger-read"}

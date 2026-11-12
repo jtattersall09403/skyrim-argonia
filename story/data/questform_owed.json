@@ -24,7 +24,7 @@
   "quest.fg.fg07": [
    "objective target",
    "objective text",
-   "placeCleared",
+   "placement",
    "start"
   ],
   "quest.local.ht01": [
@@ -43,21 +43,14 @@
    "start"
   ],
   "quest.local.lf67": [
-   "discovered",
    "objective target",
    "objective text",
    "placement",
    "start"
   ],
   "quest.local.lf83": [
-   "all",
-   "applyLocalVariant",
-   "flag as a mover",
    "objective target",
-   "objectiveComplete",
-   "placement",
-   "seasonIs",
-   "setPrice"
+   "placement"
   ],
   "quest.local.lh07": [
    "objective target",
@@ -72,17 +65,9 @@
    "start"
   ],
   "quest.local.lh38": [
-   "all",
-   "daysSince",
-   "inZone",
-   "moveRef",
    "objective target",
    "objective text",
-   "offerTeach",
-   "placement",
-   "setPrice",
-   "startTimer",
-   "witnessed"
+   "placement"
   ],
   "quest.local.lh51": [
    "objective target",
@@ -91,7 +76,6 @@
    "start"
   ],
   "quest.local.lh63": [
-   "grantHistStep",
    "objective target",
    "objective text",
    "placement",
@@ -116,7 +100,6 @@
    "start"
   ],
   "quest.local.lm56": [
-   "discovered",
    "objective target",
    "objective text",
    "placement",
@@ -147,7 +130,6 @@
    "start"
   ],
   "quest.local.lp14": [
-   "discovered",
    "objective target",
    "objective text",
    "placement",
@@ -160,8 +142,6 @@
    "start"
   ],
   "quest.local.lq15": [
-   "applyLocalVariant",
-   "clearLocalVariant",
    "objective target",
    "objective text",
    "placement",
@@ -188,7 +168,6 @@
    "start"
   ],
   "quest.local.lr24": [
-   "knowsTopic",
    "objective target",
    "objective text",
    "placement",
@@ -216,8 +195,6 @@
    "start"
   ],
   "quest.local.lv40": [
-   "applyLocalVariant",
-   "clearLocalVariant",
    "objective target",
    "objective text",
    "placement",
@@ -236,10 +213,9 @@
    "start"
   ],
   "quest.local.sx08": [
-   "discovered",
    "objective target",
    "objective text",
-   "placeCleared"
+   "placement"
   ],
   "quest.main.mq04": [
    "any",
@@ -256,18 +232,11 @@
    "start"
   ],
   "quest.mr.mr01": [
-   "all",
-   "applyLocalVariant",
-   "flag as a mover",
    "objective target",
    "objective text",
-   "placement",
-   "seedRumour",
-   "startScene"
+   "placement"
   ],
   "quest.ni.ni05": [
-   "applyLocalVariant",
-   "clearLocalVariant",
    "objective target",
    "objective text",
    "placement",
@@ -282,7 +251,6 @@
    "placement"
   ],
   "quest.tg.tg04": [
-   "all",
    "objective target",
    "objective text",
    "placement",

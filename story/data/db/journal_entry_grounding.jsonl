@@ -32,7 +32,6 @@
 {"journal_entry_id":"text.journal.lf83.20","ord":2,"value":"fact.claywater-station.why-pressures-2"}
 {"journal_entry_id":"text.journal.lf83.30","ord":0,"value":"fact.claywater-station.why-pressures-2"}
 {"journal_entry_id":"text.journal.lf83.30","ord":1,"value":"fact.claywater-station.why-occupantsMotive-1"}
-{"journal_entry_id":"text.journal.lf83.90","ord":0,"value":"fact.claywater-station.questHooks-opportunity-1"}
 {"journal_entry_id":"text.journal.lh07.10","ord":0,"value":"fact.greenspring.why-occupantsMotive-1"}
 {"journal_entry_id":"text.journal.lh07.20","ord":0,"value":"fact.greenspring.why-pressures-1"}
 {"journal_entry_id":"text.journal.lh07.90","ord":0,"value":"fact.greenspring.why-occupantsMotive-1"}
@@ -46,8 +45,6 @@
 {"journal_entry_id":"text.journal.lh38.10","ord":1,"value":"fact.greenspring.playerPurpose-hook-1"}
 {"journal_entry_id":"text.journal.lh38.10","ord":2,"value":"fact.greenspring.questHooks-opportunity-1"}
 {"journal_entry_id":"text.journal.lh38.20","ord":0,"value":"fact.greenspring.why-founding-1"}
-{"journal_entry_id":"text.journal.lh38.30","ord":0,"value":"fact.greenspring.why-founding-1"}
-{"journal_entry_id":"text.journal.lh38.90","ord":0,"value":"fact.greenspring.why-founding-1"}
 {"journal_entry_id":"text.journal.lh51.10","ord":0,"value":"fact.greenspring.tag-rest-shelter"}
 {"journal_entry_id":"text.journal.lh51.20","ord":0,"value":"fact.greenspring.why-occupantsMotive-3"}
 {"journal_entry_id":"text.journal.lh51.90","ord":0,"value":"fact.greenspring.tag-rest-shelter"}
@@ -188,7 +185,6 @@
 {"journal_entry_id":"text.journal.tg04.10","ord":1,"value":"fact.lighter-flotilla.vibe-signatureFeature-1"}
 {"journal_entry_id":"text.journal.tg04.20","ord":0,"value":"fact.lighter-flotilla.contents-loot-l1-1"}
 {"journal_entry_id":"text.journal.tg04.30","ord":0,"value":"fact.lighter-flotilla.contents-loot-l1-1"}
-{"journal_entry_id":"text.journal.tg04.40","ord":0,"value":"fact.lighter-flotilla.contents-loot-l1-1"}
 {"journal_entry_id":"text.journal.tg04.90","ord":0,"value":"fact.lighter-flotilla.contents-loot-l1-1"}
 {"journal_entry_id":"text.objective.bc05.ask-okan-sei","ord":0,"value":"fact.rose-bone-waystation.why-siteAdvantages-2"}
 {"journal_entry_id":"text.objective.fg07.clear-camp","ord":0,"value":"fact.the-broke-column.tag-combat-challenge"}

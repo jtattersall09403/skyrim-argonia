@@ -34,7 +34,7 @@
 {"quest_id":"quest.local.lh38","ord":8,"id":"k8","form":"line","carrier":"npc.hist-heartland.greenspring.n2-2"}
 {"quest_id":"quest.local.lh38","ord":9,"id":"k9","form":"line","carrier":"npc.hist-heartland.greenspring.tree-minder"}
 {"quest_id":"quest.local.lh38","ord":10,"id":"k10","form":"behaviour","carrier":"npc.hist-heartland.greenspring.n3"}
-{"quest_id":"quest.local.lh38","ord":11,"id":"k11","form":"behaviour","carrier":"npc.hist-heartland.greenspring.n3"}
+{"quest_id":"quest.local.lh38","ord":11,"id":"k11","form":"line","carrier":"npc.hist-heartland.greenspring.n1"}
 {"quest_id":"quest.local.lq25","ord":0,"id":"k1","form":"place","carrier":"thing.lq25.bait"}
 {"quest_id":"quest.local.lq25","ord":1,"id":"k2","form":"item","carrier":"thing.lq25.bait"}
 {"quest_id":"quest.local.lq25","ord":2,"id":"k3","form":"line","carrier":"npc.hist-heartland.helstrom.lq25-crew-steerer"}

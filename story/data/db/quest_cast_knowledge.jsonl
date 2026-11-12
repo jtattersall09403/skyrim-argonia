@@ -29,7 +29,6 @@
 {"quest_id":"quest.bc.bc03","cast_ord":1,"fact_id":"fact.bc03.tokens","value":"knows"}
 {"quest_id":"quest.local.lf83","cast_ord":0,"fact_id":"fact.lf83.after-landing","value":"knows"}
 {"quest_id":"quest.local.lf83","cast_ord":0,"fact_id":"fact.lf83.after-poler-dead","value":"knows"}
-{"quest_id":"quest.local.lf83","cast_ord":0,"fact_id":"fact.lf83.after-rains","value":"knows"}
 {"quest_id":"quest.local.lf83","cast_ord":0,"fact_id":"fact.lf83.after-shared","value":"knows"}
 {"quest_id":"quest.local.lf83","cast_ord":0,"fact_id":"fact.lf83.after-station","value":"knows"}
 {"quest_id":"quest.local.lf83","cast_ord":0,"fact_id":"fact.lf83.basket-at-cut","value":"suspects"}
@@ -38,7 +37,6 @@
 {"quest_id":"quest.local.lf83","cast_ord":0,"fact_id":"fact.lf83.clay-holds","value":"ignorant"}
 {"quest_id":"quest.local.lf83","cast_ord":0,"fact_id":"fact.lf83.cracked-lining","value":"knows"}
 {"quest_id":"quest.local.lf83","cast_ord":0,"fact_id":"fact.lf83.crocodile-dead","value":"knows"}
-{"quest_id":"quest.local.lf83","cast_ord":0,"fact_id":"fact.lf83.ferry-free","value":"knows"}
 {"quest_id":"quest.local.lf83","cast_ord":0,"fact_id":"fact.lf83.ford-charge","value":"knows"}
 {"quest_id":"quest.local.lf83","cast_ord":0,"fact_id":"fact.lf83.ford-in-well","value":"hides \"she says the water is only low after a dry season\""}
 {"quest_id":"quest.local.lf83","cast_ord":0,"fact_id":"fact.lf83.jar-kept","value":"knows"}
@@ -53,7 +51,6 @@
 {"quest_id":"quest.local.lf83","cast_ord":0,"fact_id":"fact.lf83.water-dipper","value":"knows"}
 {"quest_id":"quest.local.lf83","cast_ord":1,"fact_id":"fact.lf83.after-keeper-dead","value":"knows"}
 {"quest_id":"quest.local.lf83","cast_ord":1,"fact_id":"fact.lf83.after-landing","value":"knows"}
-{"quest_id":"quest.local.lf83","cast_ord":1,"fact_id":"fact.lf83.after-rains","value":"knows"}
 {"quest_id":"quest.local.lf83","cast_ord":1,"fact_id":"fact.lf83.after-shared","value":"knows"}
 {"quest_id":"quest.local.lf83","cast_ord":1,"fact_id":"fact.lf83.after-station","value":"knows"}
 {"quest_id":"quest.local.lf83","cast_ord":1,"fact_id":"fact.lf83.basket-at-cut","value":"knows"}
@@ -64,7 +61,6 @@
 {"quest_id":"quest.local.lf83","cast_ord":1,"fact_id":"fact.lf83.cracked-lining","value":"knows"}
 {"quest_id":"quest.local.lf83","cast_ord":1,"fact_id":"fact.lf83.crocodile-bend","value":"knows"}
 {"quest_id":"quest.local.lf83","cast_ord":1,"fact_id":"fact.lf83.crocodile-dead","value":"knows"}
-{"quest_id":"quest.local.lf83","cast_ord":1,"fact_id":"fact.lf83.ferry-free","value":"knows"}
 {"quest_id":"quest.local.lf83","cast_ord":1,"fact_id":"fact.lf83.ford-charge","value":"knows"}
 {"quest_id":"quest.local.lf83","cast_ord":1,"fact_id":"fact.lf83.landing-free","value":"knows"}
 {"quest_id":"quest.local.lf83","cast_ord":1,"fact_id":"fact.lf83.lining-will-hold","value":"ignorant"}
@@ -79,7 +75,6 @@
 {"quest_id":"quest.local.lf83","cast_ord":2,"fact_id":"fact.lf83.after-keeper-dead","value":"knows"}
 {"quest_id":"quest.local.lf83","cast_ord":2,"fact_id":"fact.lf83.after-landing","value":"knows"}
 {"quest_id":"quest.local.lf83","cast_ord":2,"fact_id":"fact.lf83.after-poler-dead","value":"knows"}
-{"quest_id":"quest.local.lf83","cast_ord":2,"fact_id":"fact.lf83.after-rains","value":"knows"}
 {"quest_id":"quest.local.lf83","cast_ord":2,"fact_id":"fact.lf83.after-shared","value":"knows"}
 {"quest_id":"quest.local.lf83","cast_ord":2,"fact_id":"fact.lf83.after-station","value":"knows"}
 {"quest_id":"quest.local.lf83","cast_ord":2,"fact_id":"fact.lf83.basket-at-cut","value":"knows"}
@@ -89,7 +84,6 @@
 {"quest_id":"quest.local.lf83","cast_ord":2,"fact_id":"fact.lf83.cracked-lining","value":"knows"}
 {"quest_id":"quest.local.lf83","cast_ord":2,"fact_id":"fact.lf83.crocodile-bend","value":"knows"}
 {"quest_id":"quest.local.lf83","cast_ord":2,"fact_id":"fact.lf83.crocodile-dead","value":"knows"}
-{"quest_id":"quest.local.lf83","cast_ord":2,"fact_id":"fact.lf83.ferry-free","value":"knows"}
 {"quest_id":"quest.local.lf83","cast_ord":2,"fact_id":"fact.lf83.ford-charge","value":"knows"}
 {"quest_id":"quest.local.lf83","cast_ord":2,"fact_id":"fact.lf83.ford-in-well","value":"suspects"}
 {"quest_id":"quest.local.lf83","cast_ord":2,"fact_id":"fact.lf83.jar-kept","value":"knows"}
@@ -112,6 +106,7 @@
 {"quest_id":"quest.local.lh38","cast_ord":1,"fact_id":"fact.lh38.rope-sold-late","value":"hides \"selling after the lodge closed breaks the price and hours the village agreed (culture.settlement.greenspring norms), and he suspects why she wanted it\""}
 {"quest_id":"quest.local.lh38","cast_ord":1,"fact_id":"fact.lh38.sickness","value":"knows"}
 {"quest_id":"quest.local.lh38","cast_ord":2,"fact_id":"fact.lh38.courier-missing","value":"believes \"the courier left before dawn without paying\""}
+{"quest_id":"quest.local.lh38","cast_ord":2,"fact_id":"fact.lh38.night-watch","value":"knows"}
 {"quest_id":"quest.local.lh38","cast_ord":2,"fact_id":"fact.lh38.pack-unpaid","value":"hides \"a guest vanishing without paying is bad for the lodge's name\""}
 {"quest_id":"quest.local.lh38","cast_ord":3,"fact_id":"fact.lh38.body-in-throat","value":"hides \"she killed the courier\""}
 {"quest_id":"quest.local.lh38","cast_ord":3,"fact_id":"fact.lh38.food-blamed","value":"knows"}

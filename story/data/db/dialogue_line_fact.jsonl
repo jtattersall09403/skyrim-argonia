@@ -59,11 +59,8 @@
 {"dialogue_line_id":"line.claywater-station.landing-s-poler.role-poling","ord":1,"value":"fact.claywater-station.playerPurpose-hook-2"}
 {"dialogue_line_id":"line.claywater-station.landing-s-poler.role-poling","ord":2,"value":"fact.lf83.ford-charge"}
 {"dialogue_line_id":"line.claywater-station.landing-s-poler.two-charges.after-40","ord":0,"value":"fact.lf83.after-shared"}
-{"dialogue_line_id":"line.claywater-station.landing-s-poler.two-charges.after-40","ord":1,"value":"fact.lf83.ferry-free"}
 {"dialogue_line_id":"line.claywater-station.landing-s-poler.two-charges.after-41","ord":0,"value":"fact.lf83.after-station"}
 {"dialogue_line_id":"line.claywater-station.landing-s-poler.two-charges.after-42","ord":0,"value":"fact.lf83.after-landing"}
-{"dialogue_line_id":"line.claywater-station.landing-s-poler.two-charges.after-42","ord":1,"value":"fact.lf83.ferry-free"}
-{"dialogue_line_id":"line.claywater-station.landing-s-poler.two-charges.after-90","ord":0,"value":"fact.lf83.after-rains"}
 {"dialogue_line_id":"line.claywater-station.landing-s-poler.two-charges.after-92","ord":0,"value":"fact.lf83.after-keeper-dead"}
 {"dialogue_line_id":"line.claywater-station.landing-s-poler.two-charges.pay","ord":0,"value":"fact.lf83.ford-charge"}
 {"dialogue_line_id":"line.claywater-station.landing-s-poler.two-charges.tell","ord":0,"value":"fact.lf83.ford-charge"}
@@ -130,7 +127,6 @@
 {"dialogue_line_id":"line.claywater-station.n1-3.two-charges.stage-40","ord":0,"value":"fact.lf83.after-shared"}
 {"dialogue_line_id":"line.claywater-station.n1-3.two-charges.stage-41","ord":0,"value":"fact.lf83.after-station"}
 {"dialogue_line_id":"line.claywater-station.n1-3.two-charges.stage-42","ord":0,"value":"fact.lf83.after-landing"}
-{"dialogue_line_id":"line.claywater-station.n1-3.two-charges.stage-90","ord":0,"value":"fact.lf83.after-rains"}
 {"dialogue_line_id":"line.claywater-station.n1-3.two-charges.stage-92","ord":0,"value":"fact.lf83.after-keeper-dead"}
 {"dialogue_line_id":"line.claywater-station.n1-3.two-charges.stage-93","ord":0,"value":"fact.lf83.after-poler-dead"}
 {"dialogue_line_id":"line.claywater-station.n1.about-claywater","ord":0,"value":"fact.claywater-station.why-founding-2"}
@@ -190,8 +186,6 @@
 {"dialogue_line_id":"line.claywater-station.well-keeper.greeting.after-41","ord":0,"value":"fact.lf83.stop-charge"}
 {"dialogue_line_id":"line.claywater-station.well-keeper.greeting.after-41","ord":1,"value":"fact.lf83.lining-will-hold"}
 {"dialogue_line_id":"line.claywater-station.well-keeper.greeting.after-42","ord":0,"value":"fact.lf83.stop-charge"}
-{"dialogue_line_id":"line.claywater-station.well-keeper.greeting.after-90","ord":0,"value":"fact.lf83.stop-charge"}
-{"dialogue_line_id":"line.claywater-station.well-keeper.greeting.after-90","ord":1,"value":"fact.lf83.cracked-lining"}
 {"dialogue_line_id":"line.claywater-station.well-keeper.greeting.after-93","ord":0,"value":"fact.lf83.stop-charge"}
 {"dialogue_line_id":"line.claywater-station.well-keeper.greeting.start","ord":0,"value":"fact.lf83.stop-charge"}
 {"dialogue_line_id":"line.claywater-station.well-keeper.landing-terms.20","ord":0,"value":"fact.lf83.stone-refused"}
@@ -223,13 +217,9 @@
 {"dialogue_line_id":"line.claywater-station.well-keeper.stop-charge.drop","ord":1,"value":"fact.lf83.remortared"}
 {"dialogue_line_id":"line.claywater-station.well-keeper.stop-charge.hold","ord":0,"value":"fact.lf83.stop-charge"}
 {"dialogue_line_id":"line.claywater-station.well-keeper.two-charges.after-40","ord":0,"value":"fact.lf83.after-shared"}
-{"dialogue_line_id":"line.claywater-station.well-keeper.two-charges.after-40","ord":1,"value":"fact.lf83.ferry-free"}
 {"dialogue_line_id":"line.claywater-station.well-keeper.two-charges.after-41","ord":0,"value":"fact.lf83.after-station"}
 {"dialogue_line_id":"line.claywater-station.well-keeper.two-charges.after-41","ord":1,"value":"fact.lf83.lining-will-hold"}
 {"dialogue_line_id":"line.claywater-station.well-keeper.two-charges.after-42","ord":0,"value":"fact.lf83.after-landing"}
-{"dialogue_line_id":"line.claywater-station.well-keeper.two-charges.after-42","ord":1,"value":"fact.lf83.ferry-free"}
-{"dialogue_line_id":"line.claywater-station.well-keeper.two-charges.after-90","ord":0,"value":"fact.lf83.after-rains"}
-{"dialogue_line_id":"line.claywater-station.well-keeper.two-charges.after-90","ord":1,"value":"fact.lf83.ford-charge"}
 {"dialogue_line_id":"line.claywater-station.well-keeper.two-charges.after-93","ord":0,"value":"fact.lf83.after-poler-dead"}
 {"dialogue_line_id":"line.claywater-station.well-keeper.two-charges.cut","ord":0,"value":"fact.lf83.stop-charge"}
 {"dialogue_line_id":"line.claywater-station.well-keeper.two-charges.cut","ord":1,"value":"fact.lf83.lining-will-hold"}
