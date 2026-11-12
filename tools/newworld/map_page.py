@@ -128,6 +128,8 @@ def data(w: db.World) -> dict:
     laws = {r.id: r for r in w.rows("law")}
     law = {r.place_id: r for r in w.rows("place_law")}
     names = {p.id: p.name for p in w.rows("place")}
+    src_place = {s.id: s for s in w.rows("source_place")}
+    src_of = {r.place_id: src_place[r.source_place_id] for r in w.rows("place_source") if r.rank == 0}
     enc = defaultdict(list)
     for e in w.rows("place_encounter"):
         enc[e.place_id].append(e)
@@ -143,7 +145,9 @@ def data(w: db.World) -> dict:
             "skyrim_cell": [int(p.world_x // f.SKYRIM_CELL_UNITS), int(p.world_y // f.SKYRIM_CELL_UNITS)],
             "world": [round(p.world_x), round(p.world_y)], "water": p.on_water, "sure": p.read_sure,
             "status": p.status, "held": p.held_by, "pop": p.population, "radius": p.footprint_radius_m,
-            "siting": p.siting, "band": band(p.danger_band_id), "bandid": p.danger_band_id, "imp": p.importance,
+            "siting": p.siting, "band": band(p.danger_band_id),
+            "src": (f"{src_of[p.id].name} ({src_of[p.id].kind}, {src_of[p.id].plugin}; source {src_of[p.id].id})"
+                    if p.id in src_of else None), "bandid": p.danger_band_id, "imp": p.importance,
             "disp": pd.disposition_id, "danger": [
                 ["Disposition", dispositions[pd.disposition_id].label, None, pd.disposition_why],
                 ["Ground", band(c.danger_band_id), c.danger_band_id, c.danger_why],

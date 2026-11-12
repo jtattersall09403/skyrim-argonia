@@ -1029,3 +1029,49 @@ CREATE TABLE "region_atmosphere" (
   "note_aspect_id" TEXT REFERENCES "note_aspect"("id"),  -- the region research it rests on
   "why" TEXT NOT NULL
 );
+
+-- ---------------------------------------------------------------------------------------------------------
+-- Source places: each place's source place out of a plugin we hold, mined and matched (nw-04;
+-- tools/places/sources_mine.py and sources_match.py write newworld/sources/source_match/; build_db loads it).
+-- `python -m tools.places source <place_id>` writes the allocated source's bundle (3D layout, interiors, terrain).
+-- ---------------------------------------------------------------------------------------------------------
+
+-- A candidate source place that is some place's allocated source or one of its alternates.
+CREATE TABLE "source_place" (
+  "id" TEXT NOT NULL PRIMARY KEY,        -- the extractor's source id (newworld/places/sources*.jsonl)
+  "title" TEXT NOT NULL,
+  "name" TEXT NOT NULL,
+  "plugin" TEXT NOT NULL,                -- the plugin that adds it
+  "mod_id" TEXT NOT NULL,                -- its row in mods/dependencies.json (or skyrim)
+  "mined_group" TEXT NOT NULL,           -- the mined plugin group (tools/places/sources_mine.py GROUPS)
+  "kind" TEXT NOT NULL,                  -- what kind of place it is (sources_match.classify)
+  "kind_why" TEXT,                       -- the keyword, map marker or name that says so
+  "worldspace" TEXT NOT NULL,
+  "worldspace_edid" TEXT,
+  "location" TEXT,                       -- its LCTN record, when it has one
+  "cells" INTEGER NOT NULL,
+  "interiors" INTEGER NOT NULL,
+  "residents" INTEGER NOT NULL,          -- placed actors that are not hostile: its population
+  "enemies" INTEGER NOT NULL,
+  "buildings" INTEGER NOT NULL,
+  "refs" INTEGER NOT NULL,
+  "footprint_m" REAL,
+  "wet_share" REAL NOT NULL,             -- share of its land cells with ground under water
+  "culture_tags" TEXT,                   -- its tilesets' cultures, commonest first
+  "description" TEXT NOT NULL
+);
+
+-- Per place: rank 0 its allocated source (no two places share one), ranks 1-3 the next most similar.
+CREATE TABLE "place_source" (
+  "place_id" TEXT NOT NULL REFERENCES "place"("id"),
+  "rank" INTEGER NOT NULL CHECK ("rank" BETWEEN 0 AND 3),
+  "source_place_id" TEXT NOT NULL REFERENCES "source_place"("id"),
+  "score" REAL NOT NULL,
+  "score_kind" REAL NOT NULL, "score_text" REAL NOT NULL, "score_size" REAL NOT NULL, "score_status" REAL NOT NULL,
+  "score_culture" REAL NOT NULL, "score_water" REAL NOT NULL, "score_interior" REAL NOT NULL, "score_name" REAL NOT NULL,
+  "why" TEXT NOT NULL,
+  "population_before" INTEGER,           -- rank 0: the research's estimate
+  "population_after" INTEGER,            -- rank 0: place.population, from the source's residents
+  "population_why" TEXT,
+  PRIMARY KEY ("place_id", "rank")
+);

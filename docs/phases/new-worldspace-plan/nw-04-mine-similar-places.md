@@ -13,3 +13,17 @@ Also update the place records in the DB for population: should be baselined on p
 Think of a sensible way to present the results to me so I can sense check in a useful way that doesn't require me to go through and check every match individually.
 
 Do not rebuild LOD at this point.
+
+## Delivered (2026-11-12, agent)
+
+- Mined: `python -m tools.places sources-mine` (the extractor's `mine` mode, tools/ArgoniaPlaces/Extract/Mine.cs):
+  locations, map markers and, for mods that place towns by cells alone (BM&V), built-up clusters; 1216 candidates
+  from 18 plugin groups into out/newworld/sources/mined/, 821 usable (an exterior and 15+ refs). BM&V's Lilmoth left out.
+- Matched: `python -m tools.places sources-match`: score = kind 0.38, text (bge-small) 0.14, size 0.14, status 0.10,
+  culture 0.10, water 0.08, interior 0.06, plus 0.3 for the same name in a Black Marsh mod; one linear assignment
+  with cost weighted by importance (1, 1.5, 2.5, 4, 6). Helstrom kept on bmv.helstrom.
+- Stored: newworld/sources/source_match/ into the database tables `source_place` and `place_source` (rank 0
+  allocated, 1-3 alternates, each score part); `place.population` from the allocated source, why in `place_source`.
+- Loading: `python -m tools.places source <place_id> [--rank N]` writes the bundle (layout, interiors, bases, actors,
+  navmesh, the source's terrain heights and land textures); importance 4-5 pre-extracted.
+- Sense check: `python -m tools.places sources-page` -> out/newworld/sources/index.html; the atlas shows "Source place".

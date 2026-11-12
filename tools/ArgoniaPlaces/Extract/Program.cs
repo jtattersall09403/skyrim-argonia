@@ -1,11 +1,13 @@
 // ArgoniaPlacesExtract: a place out of any plugin into a bundle (docs/design/place-studio.md, "Bundles").
 //   extract <job.json>          the job extract.py writes: plugins, worldspace, cells or areas, doors to follow, out dir
 //   survey <job.json> <out.tsv> per exterior cell of the worldspace: placed refs by kind and plugin (to measure a source)
+//   mine <job.json> <out.jsonl> one row per candidate source place of the job's "mine" plugins (tools/places/sources_mine.py)
 //   types <Interface...>        the Mutagen getter's properties (a probe for whoever extends this tool)
 switch (args.FirstOrDefault())
 {
     case "extract": return Extractor.Run(Job.Load(args[1]));
     case "survey": return Extractor.Survey(Job.Load(args[1]), args[2]);
+    case "mine": return Miner.Run(args[1], args[2]);
     case "types":
         foreach (var n in args[1..])
         {

@@ -1,0 +1,174 @@
+"""python -m tools.places sources-page
+
+The owner's sense check of the source-place match, one self-contained page: out/newworld/sources/index.html. Reads
+the committed match (newworld/sources/source_match/), the places (newworld/story/data/db/place.jsonl, the research's
+population from git HEAD's version when the working copy already holds the new one) and the mining status.
+"""
+from __future__ import annotations
+
+import html
+import json
+import statistics
+from collections import Counter, defaultdict
+
+from tools.places.bundle import REPO
+from tools.places.sources_match import FAMILY, MATCH, RANKED
+from tools.places.sources_mine import GROUPS, OUT as MINED
+
+OUT = REPO / "out" / "newworld" / "sources" / "index.html"
+DB = REPO / "newworld" / "story" / "data" / "db"
+
+
+def e(s) -> str:
+    return html.escape(str(s if s is not None else ""))
+
+
+def jl(p):
+    return [json.loads(line) for line in p.read_text().splitlines() if line.strip()]
+
+
+def fam(k: str) -> str:
+    if k.startswith("ruin") or k.endswith("-ruin"):
+        return "ruin"
+    return FAMILY.get(k, k)
+
+
+CSS = """
+:root{--bg:#f7f5f0;--card:#fff;--ink:#1d2321;--muted:#5d6763;--line:#dcd8cf;--accent:#2f6b5a;--warn:#a2512b;--bar:#6f9f8f;--bar2:#c7a15a}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#141816;--card:#1c2220;--ink:#e6ebe8;--muted:#9aa6a1;--line:#2e3633;--accent:#7cc4ad;--warn:#e39a74;--bar:#4f8d7a;--bar2:#b08c47}}
+:root[data-theme="dark"]{--bg:#141816;--card:#1c2220;--ink:#e6ebe8;--muted:#9aa6a1;--line:#2e3633;--accent:#7cc4ad;--warn:#e39a74;--bar:#4f8d7a;--bar2:#b08c47}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,Segoe UI,sans-serif}
+main{max-width:980px;margin:0 auto;padding:16px}h1{font-size:1.5rem;margin:.2em 0}h2{font-size:1.15rem;margin:1.6em 0 .5em;border-bottom:1px solid var(--line);padding-bottom:.2em}
+p.lead{color:var(--muted)}.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px}
+.tile{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:10px}.tile b{display:block;font-size:1.35rem}.tile span{color:var(--muted);font-size:.85rem}
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}table{border-collapse:collapse;width:100%;font-size:.88rem;background:var(--card)}
+th,td{border-bottom:1px solid var(--line);padding:5px 6px;text-align:left;vertical-align:top}th{color:var(--muted);font-weight:600}
+td.n{text-align:right;font-variant-numeric:tabular-nums}.bar{display:inline-block;height:9px;background:var(--bar);border-radius:2px;vertical-align:middle}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:10px 12px;margin:8px 0}.card h3{margin:0 0 4px;font-size:1rem}
+.muted{color:var(--muted)}.warn{color:var(--warn)}.k{font-family:ui-monospace,Menlo,monospace;font-size:.8rem;color:var(--muted);word-break:break-all}
+ol.alts{margin:4px 0 0;padding-left:20px}.chip{display:inline-block;border:1px solid var(--line);border-radius:10px;padding:0 6px;font-size:.78rem;margin:1px}
+"""
+
+
+def main(argv: list[str]) -> int:
+    places = {p["id"]: p for p in jl(DB / "place.jsonl")}
+    match = jl(MATCH / "place_source.jsonl")
+    src = {s["id"]: s for s in jl(MATCH / "source_place.jsonl")}
+    ranked = json.loads(RANKED.read_text())
+    status = json.loads((MINED / "status.json").read_text())
+    by = defaultdict(dict)
+    for r in match:
+        by[r["place_id"]][r["rank"]] = r
+    a0 = [by[p][0] for p in places]
+    imp = {p: places[p]["importance"] for p in places}
+    out = []
+    w = out.append
+
+    w(f"<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content='width=device-width,initial-scale=1'>"
+      f"<title>Source Place Matches</title><style>{CSS}</style></head><body><main>")
+    w("<h1>Source places for our 258 places</h1><p class=lead>Each of our places has been given one source place out of "
+      "a game or mod plugin we hold: its layout, buildings and interiors are what the place will be drafted from. "
+      "No two places share a source. Below are the numbers, the major places one by one, and the matches most worth a "
+      "second look, so that not every match needs checking.</p>")
+    scores = [r["score"] for r in a0]
+    mism = [r for r in a0 if fam(places[r["place_id"]]["place_kind_id"]) != fam(src[r["source_place_id"]]["kind"])]
+    pb = sum((r.get("population_before") or 0) for r in a0)
+    pa = sum((r.get("population_after") or 0) for r in a0)
+    mined_n = sum(s.get("rows", 0) for s in status.values() if s.get("mined"))
+    tiles = [(len(places), "our places, each with a source"), (ranked["candidates"], f"usable candidates (of {mined_n} mined)"),
+             (sum(1 for s in status.values() if s.get("mined")), "plugin groups mined"),
+             (f"{statistics.mean(scores):.2f}", "mean similarity (0-1) of the allocated source"),
+             (f"{statistics.mean(r['score'] for r in a0 if imp[r['place_id']] >= 4):.2f}", "mean for the 21 major places"),
+             (len(mism), "places whose source is another family of place"),
+             (f"{pb} → {pa}", "total population, before → after")]
+    w("<div class=tiles>" + "".join(f"<div class=tile><b>{e(v)}</b><span>{e(t)}</span></div>" for v, t in tiles) + "</div>")
+
+    w("<h2>How similar, by importance</h2><p class=muted>Importance 5 shapes the province, 1 is local colour. The "
+      "allocation weighs a major place six times a minor one, so the major places should score highest.</p>")
+    w("<div class=scroll><table><tr><th>Importance</th><th class=n>Places</th><th class=n>Mean</th><th class=n>Lowest</th>"
+      "<th class=n>Median</th><th>Spread (each bar a place)</th></tr>")
+    for i in (5, 4, 3, 2, 1):
+        s = sorted(r["score"] for r in a0 if imp[r["place_id"]] == i)
+        bars = "".join(f"<span class=bar title='{x:.2f}' style='width:3px;height:{max(2, round(x * 26))}px;margin-right:1px'></span>" for x in s)
+        w(f"<tr><td>{i}</td><td class=n>{len(s)}</td><td class=n>{statistics.mean(s):.2f}</td><td class=n>{s[0]:.2f}</td>"
+          f"<td class=n>{statistics.median(s):.2f}</td><td style='white-space:nowrap'>{bars}</td></tr>")
+    w("</table></div>")
+
+    w("<h2>What kinds of source each kind of place got</h2><div class=scroll><table><tr><th>Our kind</th><th class=n>Places</th>"
+      "<th class=n>Mean</th><th>Source kinds used (count)</th><th>From</th></tr>")
+    kinds = defaultdict(list)
+    for r in a0:
+        kinds[places[r["place_id"]]["place_kind_id"]].append(r)
+    for k, rs in sorted(kinds.items(), key=lambda x: -len(x[1])):
+        sk = Counter(src[r["source_place_id"]]["kind"] for r in rs)
+        gp = Counter(src[r["source_place_id"]]["mined_group"] for r in rs)
+        w(f"<tr><td>{e(k)}</td><td class=n>{len(rs)}</td><td class=n>{statistics.mean(r['score'] for r in rs):.2f}</td>"
+          f"<td>{', '.join(f'{e(a)} {b}' for a, b in sk.most_common())}</td><td class=muted>{', '.join(f'{e(a)} {b}' for a, b in gp.most_common())}</td></tr>")
+    w("</table></div>")
+
+    def srcline(r):
+        s = src[r["source_place_id"]]
+        return (f"<b>{e(s['name'])}</b> <span class=chip>{e(s['kind'])}</span> <span class=chip>{e(s['plugin'])}</span> "
+                f"score {r['score']:.2f} · {s['residents']} residents, {s['buildings']} buildings, {s['interiors']} interiors "
+                f"<div class=k>{e(s['id'])}</div>")
+
+    w("<h2>The 21 major places</h2><p class=muted>Allocated source first, then the three next most similar (these may be "
+      "shared with other places). “Why” names the kind of place the source is and its strongest score parts.</p>")
+    for p in sorted(places.values(), key=lambda p: (-p["importance"], p["name"])):
+        if p["importance"] < 4:
+            continue
+        r0 = by[p["id"]][0]
+        w(f"<div class=card><h3>{e(p['name'])} <span class=muted>· {e(p['place_kind_id'])} · importance {p['importance']}</span></h3>"
+          f"<div>{srcline(r0)}</div><div class=muted>Why: {e(r0['why'])}</div>"
+          f"<div class=muted>Population {r0.get('population_before')} → {r0.get('population_after')}: {e(r0.get('population_why'))}</div>"
+          f"<ol class=alts>" + "".join(f"<li>{srcline(by[p['id']][k])}</li>" for k in (1, 2, 3) if k in by[p["id"]]) + "</ol></div>")
+
+    def table(rows, title, note):
+        w(f"<h2>{title}</h2><p class=muted>{note}</p><div class=scroll><table><tr><th>Our place</th><th>Kind</th><th class=n>Imp.</th>"
+          "<th>Source</th><th>Source kind</th><th class=n>Score</th><th>Why</th></tr>")
+        for r in rows:
+            p, s = places[r["place_id"]], src[r["source_place_id"]]
+            w(f"<tr><td>{e(p['name'])}</td><td>{e(p['place_kind_id'])}</td><td class=n>{p['importance']}</td>"
+              f"<td>{e(s['name'])} <span class=muted>({e(s['plugin'])})</span></td><td>{e(s['kind'])}</td>"
+              f"<td class=n>{r['score']:.2f}</td><td class=muted>{e(r['why'])}</td></tr>")
+        w("</table></div>")
+
+    table(sorted(a0, key=lambda r: r["score"])[:25], "The 25 weakest matches",
+          "Where the best unique source we hold is still a poor fit; a better source would need a plugin we do not mine.")
+    table(sorted(mism, key=lambda r: (-imp[r["place_id"]], r["score"])), f"Source of another family ({len(mism)})",
+          "Our place is one family (settlement, camp, military, ruin, underground, water, landmark) and its source another.")
+
+    w("<h2>Population</h2>")
+    ch = Counter()
+    for r in a0:
+        ch[places[r["place_id"]]["place_kind_id"]] += (r.get("population_after") or 0) - (r.get("population_before") or 0)
+    w(f"<p>Total {pb} before, {pa} after. Each lived place starts from its source's residents and moves halfway toward the "
+      "record's own estimate, held inside its kind's range and never under the people its gives name; ruined, abandoned "
+      "and sunken places the record leaves empty stay at 0.</p><p class=muted>Change by kind: "
+      + ", ".join(f"{e(k)} {v:+d}" for k, v in ch.most_common() if v) + "</p>")
+    big = sorted(a0, key=lambda r: -abs((r.get("population_after") or 0) - (r.get("population_before") or 0)))[:20]
+    w("<div class=scroll><table><tr><th>Place</th><th>Kind</th><th class=n>Before</th><th class=n>After</th><th>Why</th></tr>")
+    for r in big:
+        p = places[r["place_id"]]
+        w(f"<tr><td>{e(p['name'])}</td><td>{e(p['place_kind_id'])}</td><td class=n>{r.get('population_before')}</td>"
+          f"<td class=n>{r.get('population_after')}</td><td class=muted>{e(r.get('population_why'))}</td></tr>")
+    w("</table></div>")
+
+    w("<h2>Plugins mined</h2><div class=scroll><table><tr><th>Group</th><th>Plugins</th><th>Mod</th><th class=n>Mined</th>"
+      "<th class=n>Usable</th><th class=n>Allocated</th></tr>")
+    usable = ranked["by_group"]
+    alloc = Counter(src[r["source_place_id"]]["mined_group"] for r in a0)
+    for g, (_l, mine, credit) in GROUPS.items():
+        s = status.get(g, {})
+        mined = s.get("rows", 0) if s.get("mined") else f"not mined: {s.get('why', 'not run')}"
+        w(f"<tr><td>{e(g)}</td><td>{e(', '.join(mine))}</td><td>{e(credit)}</td><td class=n>{e(mined)}</td>"
+          f"<td class=n>{usable.get(g, 0)}</td><td class=n>{alloc.get(g, 0)}</td></tr>")
+    w("</table></div><p class=muted>A plugin that only carries building pieces (Xanmeer, the Ayleid resources, the "
+      "Hist tree) places no town of its own, so it yields no candidate; its pieces still reach us through the places "
+      f"that use them. Dropped before matching: {e(', '.join(f'{k} {v}' for k, v in ranked['dropped'].items()))}; "
+      "BM&amp;V's Lilmoth is left out entirely, as asked.</p>")
+    w("</main></body></html>")
+    OUT.parent.mkdir(parents=True, exist_ok=True)
+    OUT.write_text("\n".join(out))
+    print(OUT)
+    return 0

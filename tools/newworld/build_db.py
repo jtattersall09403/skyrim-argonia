@@ -296,8 +296,11 @@ def build() -> db.World:
                      "label": label, "named": named, "world": (wx, wy)})
     place_cols = ("status", "held_by", "population", "footprint_radius_m", "siting", "danger_band_id", "importance",
                   "summary", "lore_page", "statement_tier_id")
+    source_pop = source_match_population()
     for p in rows:
         s, r = p["s"], places_r.get(p["id"], {})
+        if p["id"] in source_pop:  # the allocated source's people, adjusted by the record (nw-04)
+            r = dict(r, population=source_pop[p["id"]])
         cx, cy = p["cell"]
         region = cell_region.get((cx, cy)) or nearest_region(cell_region, cx, cy)
         name = r.get("name") or (title(p["label"]) if p["named"] else
@@ -328,6 +331,7 @@ def build() -> db.World:
     atmosphere.load(w)
     w.insert_many("source", sorted(sources.values(), key=lambda r: r["id"]))
     stockdb.load(w)
+    source_match(w)
     save_whole(w)
     return w
 
@@ -517,6 +521,24 @@ def join_dead_ends(w: db.World, rd: dict, syms: list) -> None:
         rd["edges"].append({"id": f"join-{j['place']}", "class": cls, "from": node["id"], "to": target["id"],
                             "points": pts})
         node["kind"] = "junction"
+
+
+SOURCE_MATCH = SRC / "source_match"   # each place's source place (tools/places/sources_match.py)
+
+
+def source_match_population() -> dict[str, int]:
+    p = SOURCE_MATCH / "place_source.jsonl"
+    if not p.exists():
+        return {}
+    rows = (json.loads(line) for line in p.read_text().splitlines() if line.strip())
+    return {r["place_id"]: r["population_after"] for r in rows if r["rank"] == 0}
+
+
+def source_match(w: db.World) -> None:
+    for table, name in (("source_place", "source_place.jsonl"), ("place_source", "place_source.jsonl")):
+        p = SOURCE_MATCH / name
+        if p.exists():
+            w.insert_many(table, [json.loads(line) for line in p.read_text().splitlines() if line.strip()])
 
 
 def main() -> None:

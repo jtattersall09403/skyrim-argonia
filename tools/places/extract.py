@@ -1,6 +1,7 @@
 """python -m tools.places extract <source_id> | --ground <place_id> [--radius-m M] [--force]
 
-Writes the bundle `src.<source_id>` (a source place declared in newworld/places/sources.jsonl, read out of its
+Writes the bundle `src.<source_id>` (a source place declared in newworld/places/sources.jsonl or the mined
+sources_mined.jsonl, read out of its
 plugins) or `ground.<place_id>` (our own world file round the place, newworld/story/data/db/place.jsonl) under
 out/places/bundles/ (docs/design/place-studio.md, "Bundles"). The C# extractor (tools/ArgoniaPlaces/Extract) reads
 the plugins; this module resolves the inputs, stamps the bundle and skips a rerun whose key is unchanged.
@@ -23,6 +24,7 @@ from tools.places import worldparts
 from tools.places.bundle import BUNDLES, REPO, publish, settle, sha256_file, stamp_key, write_json
 
 SOURCES = REPO / "newworld" / "places" / "sources.jsonl"
+MINED_SOURCES = REPO / "newworld" / "places" / "sources_mined.jsonl"   # tools/places/sources_match.py writes it
 PLACES = REPO / "newworld" / "story" / "data" / "db" / "place.jsonl"
 ALLOCATIONS = REPO / "newworld" / "places"
 PROJECT = REPO / "tools" / "ArgoniaPlaces" / "Extract"
@@ -66,11 +68,16 @@ def find_plugin(name: str, dirs: list[str]) -> Path:
 
 
 def load_sources() -> dict[str, dict]:
+    """Every declared source: the mined ones (each place's allocated source and alternates), then the hand-written
+    rows of sources.jsonl, which win on a shared id."""
     rows = {}
-    for line in SOURCES.read_text(encoding="utf-8").splitlines():
-        if line.strip():
-            r = json.loads(line)
-            rows[r["source_id"]] = r
+    for path in (MINED_SOURCES, SOURCES):
+        if not path.exists():
+            continue
+        for line in path.read_text(encoding="utf-8").splitlines():
+            if line.strip():
+                r = json.loads(line)
+                rows[r["source_id"]] = r
     return rows
 
 

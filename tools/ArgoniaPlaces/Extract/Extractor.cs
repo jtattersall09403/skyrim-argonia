@@ -94,7 +94,7 @@ static class Extractor
         AppDomain.CurrentDomain.ProcessExit += (_, _) => { try { Directory.Delete(d, true); } catch (IOException) { } };
         return d;
     }
-    static readonly Mutagen.Bethesda.Plugins.Binary.Parameters.BinaryReadParameters NoStrings = new()
+    internal static readonly Mutagen.Bethesda.Plugins.Binary.Parameters.BinaryReadParameters NoStrings = new()
     {
         StringsParam = new Mutagen.Bethesda.Strings.StringsReadParameters { StringsFolderOverride = NoStr, BsaFolderOverride = NoStr },
     };

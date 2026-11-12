@@ -28,7 +28,10 @@ seat rules, ids) is `docs/design/place-studio.md`. Never write mod record or ass
 
 ## Inputs
 
-- `place.json`: `place_id`, `source_id`, `similar`. A source place is a row of `newworld/places/sources.jsonl`.
+- `place.json`: `place_id`, `source_id`, `similar`. The source is the place's allocated source in the database:
+  table `place_source` rank 0 (ranks 1-3 are the next most similar, `similar`), described in `source_place`;
+  `python3 -m tools.places source <place_id>` writes its bundle. A source place is a row of
+  `newworld/places/sources.jsonl` (hand-written) or `sources_mined.jsonl` (written by `tools.places sources-match`).
   Our record: `db.open("newworld")`, tables `place` (position, siting, population, summary) and `place_give` (what
   the place promises the player).
 - The bundles under `out/places/bundles/`: `src.<source_id>` (`python3 -m tools.places extract <source_id>`) and

@@ -183,8 +183,8 @@
 {"place_id":"peak-m11-m84","law_id":"native","why":"Argonian law, no cell: Chime-Keeper lookout parties"}
 {"place_id":"peak-m4-m90","law_id":"none","why":"no one keeps law: abandoned, abandoned"}
 {"place_id":"percar-scar","law_id":"none","why":"no one keeps law: abandoned, ruined"}
-{"place_id":"quarry-m14-m107","law_id":"none","why":"no one keeps law: friendly, inhabited"}
-{"place_id":"quarry-m18-m109","law_id":"none","why":"no one keeps law: friendly, inhabited"}
+{"place_id":"quarry-m14-m107","law_id":"native","why":"Argonian law, no cell: A quarry crew of Soulrest-quarter kin"}
+{"place_id":"quarry-m18-m109","law_id":"native","why":"Argonian law, no cell: A quarry crew of Soulrest-quarter kin"}
 {"place_id":"rainbreaker-keep","law_id":"none","why":"no one keeps law: hostile, occupied"}
 {"place_id":"renhu","law_id":"native","why":"Argonian law, no cell: Renhu elders, under the Aroxhu council"}
 {"place_id":"sal-axan","law_id":"native","why":"Argonian law, no cell: A village moot of Lilmoth-coast families, in the fort's shadow"}

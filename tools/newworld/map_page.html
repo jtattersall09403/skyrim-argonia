@@ -384,6 +384,7 @@ function showPlace(id) {
   const cul = D.cultures[p.cul], reg = regionById[p.reg];
   const facts = [
     ["Status", p.status], ["Held by", p.held], ["Population", p.pop != null ? p.pop : null],
+    ["Source place", p.src],
     ["Built area", p.radius ? `about ${Math.round(p.radius)} m across its radius` : null], ["Ground", p.siting],
     ["Importance", p.imp ? ["", "local colour", "local", "regional", "major", "shapes the province"][p.imp] : null],
     ["On the map", (p.label ? `“${p.label}”, ` : "unlabelled, ") + p.sym + (p.sure ? "" : " (read with doubt)")],
