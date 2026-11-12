@@ -127,14 +127,14 @@
 {"talker":"01CCEE:Black Marsh North.esp","topic":"talk.lore","ord":1,"text":"The villages around Thorn belonged to the Archeins. They kept their accounts better than they kept faith. My family worked for them, and we still keep their habits."}
 {"talker":"01CCEE:Black Marsh North.esp","topic":"talk.self","ord":1,"text":"I am Holds-The-Tally. I keep the south dock and count every crate that comes off the ships. I am paid by the cargo, so I count it twice."}
 {"talker":"01CCEE:Black Marsh North.esp","topic":"talk.someone","ord":1,"text":"Gaius Fennic, a soldier of the Imperial company, stands just north of this dock. He is honest, and I would trust his count."}
-{"talker":"01CCF0:Black Marsh North.esp","topic":"talk.directions","ord":1,"text":"Temple Pass? Walk north a short way, to the dead tree on your left. Then north again, a fair way, to the stone tower on your left. Then climb north-west over open ground, a fair way. It is there."}
+{"talker":"01CCF0:Black Marsh North.esp","topic":"talk.directions","ord":1,"text":"Temple Pass? Go north a short way, and you will see a dead tree on your left. Keep north a fair way, and the stone tower stands on your left. Then climb north-west over open ground, a fair way. Temple Pass is there."}
 {"talker":"01CCF0:Black Marsh North.esp","topic":"talk.greet-friend","ord":1,"text":"It is good to see you again, my friend. Stand with me a while. I am watching the road."}
 {"talker":"01CCF0:Black Marsh North.esp","topic":"talk.greet-stranger","ord":1,"text":"Stranger. Say what you need."}
 {"talker":"01CCF0:Black Marsh North.esp","topic":"talk.greet-stranger","ord":2,"text":"What is it, stranger? I am watching the road."}
-{"talker":"01CCF0:Black Marsh North.esp","topic":"talk.here","ord":1,"text":"I keep this corner and watch the road north. The hut is just south-west of here."}
+{"talker":"01CCF0:Black Marsh North.esp","topic":"talk.here","ord":1,"text":"I keep this corner and watch the road north. Look just south-west of my post. That is the hut."}
 {"talker":"01CCF0:Black Marsh North.esp","topic":"talk.lore","ord":1,"text":"The Tear road leaves Thorn to the north, for Morrowind. Traders use it to earn coin, and that is all there is to it. I came from a village on that road."}
 {"talker":"01CCF0:Black Marsh North.esp","topic":"talk.self","ord":1,"text":"I am Sheel-Taza. I guard the south-west corner. I came from a village up the Tear road, and I find Thorn too loud."}
-{"talker":"01CCF0:Black Marsh North.esp","topic":"talk.someone","ord":1,"text":"Lucan Sevro, the archer of the hired Imperial company, is just north-east of here. He is reckless with his bow, stranger. He shoots too near the huts."}
+{"talker":"01CCF0:Black Marsh North.esp","topic":"talk.someone","ord":1,"text":"Look just north-east of my corner. Lucan Sevro, the archer of the hired Imperial company, is there. He is reckless with his bow, stranger. He shoots too near the huts."}
 {"talker":"01CCF2:Black Marsh North.esp","topic":"talk.directions","ord":1,"text":"Listen well, hatchling. Follow the path north a fair way, and the stone tower is there."}
 {"talker":"01CCF2:Black Marsh North.esp","topic":"talk.greet-friend","ord":1,"text":"Hm. You stopped for an old guard. Stand with me a while. The watch is long, and I would sooner spend it with someone who remembers me."}
 {"talker":"01CCF2:Black Marsh North.esp","topic":"talk.greet-stranger","ord":1,"text":"What do you want, hatchling? Say it plainly. I am on watch."}
