@@ -1622,6 +1622,39 @@ CREATE TABLE "quest_thing_state" (
   FOREIGN KEY ("quest_id", "things_ord") REFERENCES "quest_thing" ("quest_id", "ord") ON DELETE CASCADE
 );
 
+-- Home of one row per element of `placements` of each quest row: where each person, thing, door or marker the
+-- quest names stands in the world (the quest form's refs, docs/design/quest-form.md). `ref` is the id the record
+-- uses; an existing reference by `form_key`, or a new placement of `base` (`base_kind`) anchored `near` an existing
+-- reference's form key or at a census `place`, by the surface or navmesh `rule`, or inside a thing's `container`.
+-- `hostile`: a person the quest asks the player to fight; `kill_choice`: killing them is the player's choice.
+-- `cell`, `x`, `y`, `z`, `interior`: where it stands (an existing actor's are read from bmv_placement when left out).
+CREATE TABLE "quest_placement" (
+  "quest_id" TEXT NOT NULL,
+  "ord" INTEGER NOT NULL,
+  "ref" TEXT NOT NULL,
+  "kind" TEXT NOT NULL CHECK ("kind" IN ('person', 'thing', 'door', 'marker')),
+  "form_key" TEXT,
+  "base_kind" TEXT CHECK ("base_kind" IN ('template_person', 'item', 'existing_base')),
+  "base" TEXT,
+  "near" TEXT,
+  "place" TEXT,
+  "rule" TEXT CHECK ("rule" IN ('surface', 'navmesh')),
+  "container" TEXT,
+  "enabled" BOOLEAN NOT NULL CHECK ("enabled" IN (0, 1)),
+  "hostile" BOOLEAN CHECK ("hostile" IN (0, 1)),
+  "kill_choice" BOOLEAN CHECK ("kill_choice" IN (0, 1)),
+  "cell" TEXT,
+  "x" REAL,
+  "y" REAL,
+  "z" REAL,
+  "interior" BOOLEAN CHECK ("interior" IN (0, 1)),
+  PRIMARY KEY ("quest_id", "ord"),
+  UNIQUE ("quest_id", "ref"),
+  CHECK (("form_key" IS NULL) <> ("base" IS NULL)),
+  CHECK (("base" IS NULL) = ("base_kind" IS NULL)),
+  FOREIGN KEY ("quest_id") REFERENCES "quest" ("id") ON DELETE CASCADE
+);
+
 -- One native hook on a quest thing (1.4): activating the thing's activator, or reading its book, sets one flag of
 -- the quest. ArgoniaCore's thing table (skse/core generated things.h, tools/argonia_world/thing_hooks.py) is keyed by
 -- the world id of the record the thing is placed as (its build_ref base). Not part of the quest record: a quest
@@ -1793,6 +1826,9 @@ CREATE TABLE "quest_topic" (
   "person" TEXT NOT NULL REFERENCES "npc"("id"),
   "essential" BOOLEAN NOT NULL CHECK ("essential" IN (0, 1)),
   "intent" TEXT NOT NULL,
+  -- how the line opens: null for a topic the player picks; `greeting`; `speaks-first` (the person walks up and
+  -- starts it; the same line is also open as a topic)
+  "kind" TEXT CHECK ("kind" IN ('greeting', 'speaks-first')),
   PRIMARY KEY ("quest_id", "ord"),
   FOREIGN KEY ("quest_id") REFERENCES "quest" ("id") ON DELETE CASCADE
 );

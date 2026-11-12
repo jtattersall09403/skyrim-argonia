@@ -2,9 +2,9 @@
 PY := $(firstword $(wildcard $(HOME)/.argonia/venv/bin/python) python3)
 RUFF := $(firstword $(wildcard $(HOME)/.argonia/venv/bin/ruff) $(shell command -v ruff) python3 -m ruff)
 
-.PHONY: check guard lint unit adaptation questtext hooks deploy plugin plugin-check plugin-seed map
+.PHONY: check guard lint unit adaptation questtext questform hooks deploy plugin plugin-check plugin-seed map
 
-check: guard lint unit adaptation questtext
+check: guard lint unit adaptation questtext questform
 	@echo "CHECK GREEN"
 
 guard:
@@ -24,6 +24,11 @@ adaptation:
 # The slice quests' player-visible text, from the story data (review-writing section E): see tools/argonia_world/quest_text_check.py.
 questtext:
 	@$(PY) -m tools.argonia_world.quest_text_check check
+
+# Every staged quest record compiled to the quest form and checked, against story/data/questform_owed.json
+# (docs/design/quest-form.md); the example form passes.
+questform:
+	@$(PY) -m tools.questform gate
 
 hooks:
 	@bash tooling/guards/install_hooks.sh

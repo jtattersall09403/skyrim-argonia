@@ -1,0 +1,310 @@
+{
+ "_about": "Quest records with stages that do not yet fit the quest form, each with its refused terms (docs/design/quest-form.md). make check fails on a quest that does not fit and is not listed, on a listed quest that now fits, and on a listed quest whose terms changed; the list only shrinks (python3 -m tools.questform owed --write rewrites listed rows, never adds one).",
+ "quests": {
+  "quest.bc.bc01": [
+   "inZone",
+   "moveRef",
+   "not",
+   "placement"
+  ],
+  "quest.bc.bc02": [
+   "inZone",
+   "placement"
+  ],
+  "quest.bc.bc03": [
+   "all",
+   "placement"
+  ],
+  "quest.bc.bc05": [
+   "objective target",
+   "objective text",
+   "placement",
+   "start"
+  ],
+  "quest.fg.fg07": [
+   "objective target",
+   "objective text",
+   "placeCleared",
+   "start"
+  ],
+  "quest.local.ht01": [
+   "start"
+  ],
+  "quest.local.ld65": [
+   "objective target",
+   "objective text",
+   "placement",
+   "start"
+  ],
+  "quest.local.lf21": [
+   "objective target",
+   "objective text",
+   "placement",
+   "start"
+  ],
+  "quest.local.lf67": [
+   "discovered",
+   "objective target",
+   "objective text",
+   "placement",
+   "start"
+  ],
+  "quest.local.lf83": [
+   "all",
+   "applyLocalVariant",
+   "flag as a mover",
+   "objective target",
+   "objectiveComplete",
+   "placement",
+   "seasonIs",
+   "setPrice"
+  ],
+  "quest.local.lh07": [
+   "objective target",
+   "objective text",
+   "placement",
+   "start"
+  ],
+  "quest.local.lh37": [
+   "objective target",
+   "objective text",
+   "placement",
+   "start"
+  ],
+  "quest.local.lh38": [
+   "all",
+   "daysSince",
+   "inZone",
+   "moveRef",
+   "objective target",
+   "objective text",
+   "offerTeach",
+   "placement",
+   "setPrice",
+   "startTimer",
+   "witnessed"
+  ],
+  "quest.local.lh51": [
+   "objective target",
+   "objective text",
+   "placement",
+   "start"
+  ],
+  "quest.local.lh63": [
+   "grantHistStep",
+   "objective target",
+   "objective text",
+   "placement",
+   "start"
+  ],
+  "quest.local.lm08": [
+   "objective target",
+   "objective text",
+   "placement",
+   "start"
+  ],
+  "quest.local.lm23": [
+   "objective target",
+   "objective text",
+   "placement",
+   "start"
+  ],
+  "quest.local.lm38": [
+   "objective target",
+   "objective text",
+   "placement",
+   "start"
+  ],
+  "quest.local.lm56": [
+   "discovered",
+   "objective target",
+   "objective text",
+   "placement",
+   "start"
+  ],
+  "quest.local.lm57": [
+   "objective target",
+   "objective text",
+   "placement",
+   "start"
+  ],
+  "quest.local.lm62": [
+   "objective target",
+   "objective text",
+   "placement",
+   "start"
+  ],
+  "quest.local.ln07": [
+   "objective target",
+   "objective text",
+   "placement",
+   "start"
+  ],
+  "quest.local.lp13": [
+   "objective target",
+   "objective text",
+   "placement",
+   "start"
+  ],
+  "quest.local.lp14": [
+   "discovered",
+   "objective target",
+   "objective text",
+   "placement",
+   "start"
+  ],
+  "quest.local.lp19": [
+   "objective target",
+   "objective text",
+   "placement",
+   "start"
+  ],
+  "quest.local.lq15": [
+   "applyLocalVariant",
+   "clearLocalVariant",
+   "objective target",
+   "objective text",
+   "placement",
+   "start"
+  ],
+  "quest.local.lq25": [
+   "placement"
+  ],
+  "quest.local.lq29": [
+   "objective target",
+   "objective text",
+   "placement",
+   "start"
+  ],
+  "quest.local.lq30": [
+   "inZone",
+   "moveRef",
+   "placement"
+  ],
+  "quest.local.lr03": [
+   "objective target",
+   "objective text",
+   "placement",
+   "start"
+  ],
+  "quest.local.lr24": [
+   "knowsTopic",
+   "objective target",
+   "objective text",
+   "placement",
+   "start"
+  ],
+  "quest.local.lr39": [
+   "objective target",
+   "objective text",
+   "placement",
+   "start"
+  ],
+  "quest.local.lr52": [
+   "start"
+  ],
+  "quest.local.lv38": [
+   "objective target",
+   "objective text",
+   "placement",
+   "start"
+  ],
+  "quest.local.lv39": [
+   "objective target",
+   "objective text",
+   "placement",
+   "start"
+  ],
+  "quest.local.lv40": [
+   "applyLocalVariant",
+   "clearLocalVariant",
+   "objective target",
+   "objective text",
+   "placement",
+   "start"
+  ],
+  "quest.local.sx05": [
+   "objective target",
+   "objective text",
+   "placement",
+   "start"
+  ],
+  "quest.local.sx06": [
+   "objective target",
+   "objective text",
+   "placement",
+   "start"
+  ],
+  "quest.local.sx08": [
+   "discovered",
+   "objective target",
+   "objective text",
+   "placeCleared"
+  ],
+  "quest.main.mq01": [
+   "all",
+   "inZone",
+   "knowsTopic",
+   "moveRef",
+   "placement",
+   "startScene"
+  ],
+  "quest.main.mq03": [
+   "all",
+   "any",
+   "grantHistStep",
+   "moveRef",
+   "placement",
+   "sceneEnded",
+   "setDoorAccess",
+   "startScene"
+  ],
+  "quest.main.mq04": [
+   "any",
+   "grantServiceAccess",
+   "inZone",
+   "placement"
+  ],
+  "quest.main.mq05": [
+   "any",
+   "inZone",
+   "placement"
+  ],
+  "quest.main.mq32": [
+   "start"
+  ],
+  "quest.mr.mr01": [
+   "all",
+   "applyLocalVariant",
+   "flag as a mover",
+   "objective target",
+   "objective text",
+   "placement",
+   "seedRumour",
+   "startScene"
+  ],
+  "quest.ni.ni05": [
+   "applyLocalVariant",
+   "clearLocalVariant",
+   "objective target",
+   "objective text",
+   "placement",
+   "start"
+  ],
+  "quest.tg.tg01": [
+   "inZone",
+   "placement"
+  ],
+  "quest.tg.tg02": [
+   "all",
+   "placement"
+  ],
+  "quest.tg.tg04": [
+   "all",
+   "objective target",
+   "objective text",
+   "placement",
+   "start"
+  ]
+ }
+}

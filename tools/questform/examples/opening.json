@@ -1,0 +1,73 @@
+{
+ "version": 1,
+ "quest": {
+  "id": "quest.example.opening",
+  "editor_id": "ARG_ExampleOpening",
+  "name": "Off the Pier",
+  "kind": "main",
+  "start": {"by": "game", "stage": 10}
+ },
+ "stages": [
+  {"number": 10, "shown": true, "ending": "none", "results": [],
+   "journal": "I woke in the hold of a work barge with no memory of how I came aboard. A man with a roll waits outside the hold's door. I'm to speak to him."},
+  {"number": 20, "shown": true, "ending": "none", "results": [],
+   "journal": "The man with the roll says my name is not on it and I owe nobody here. If I want work, I'm to find Sample-Contact at the Sample House in Lilmoth."},
+  {"number": 30, "shown": true, "ending": "none", "results": [],
+   "journal": "I found Sample-Contact at the Sample House in Lilmoth. I'm to ask her to take me in."},
+  {"number": 40, "shown": true, "ending": "completed",
+   "results": [{"do": "join_faction", "faction": "faction.example.reed"}],
+   "journal": "Sample-Contact took me in. I serve the Reed now."},
+  {"number": 90, "shown": true, "ending": "failed", "results": [],
+   "journal": "Sample-Contact is dead. Nobody else in Lilmoth will take me in."}
+ ],
+ "objectives": [
+  {"number": 10, "text": "Speak to the man at the hold's door.", "shown_at": [10], "completed_at": [20],
+   "targets": ["npc.example.roll-man"]},
+  {"number": 20, "text": "Find Sample-Contact in Lilmoth.", "shown_at": [20], "completed_at": [30],
+   "targets": ["npc.example.contact"]},
+  {"number": 30, "text": "Ask Sample-Contact to take you in.", "shown_at": [30], "completed_at": [40],
+   "targets": ["npc.example.contact"]}
+ ],
+ "refs": [
+  {"id": "npc.example.roll-man", "kind": "person", "enabled": true,
+   "placement": {"base": {"kind": "template_person", "id": "0A0010:Example.esp"},
+                 "anchor": {"near": "0A0020:Example.esp", "rule": "surface"}},
+   "at": {"cell": "0A0100:Example.esp", "interior": false, "x": 1000.0, "y": 2000.0, "z": 50.0}},
+  {"id": "door.example.hold", "kind": "door", "enabled": true,
+   "placement": {"existing": "0A0020:Example.esp"},
+   "at": {"cell": "0A0100:Example.esp", "interior": false, "x": 1100.0, "y": 2000.0, "z": 50.0}},
+  {"id": "npc.example.contact", "kind": "person", "enabled": true,
+   "placement": {"base": {"kind": "template_person", "id": "0A0011:Example.esp"},
+                 "anchor": {"place": "place.example.sample-house", "rule": "navmesh"}},
+   "at": {"cell": "0A0200:Example.esp", "interior": true, "x": 0.0, "y": 0.0, "z": 0.0}}
+ ],
+ "lines": [
+  {"id": "roll-man.first", "speaker": "npc.example.roll-man", "kind": "speaks_first", "prompt": null,
+   "text": "Your name is not on my roll. You owe nobody here, so get off my pier. Want work? Find Sample-Contact at the Sample House in Lilmoth.",
+   "written": true, "conditions": [], "results": [{"do": "set_stage", "stage": 20}],
+   "first_stage": 10, "last_stage": 10, "answers": []},
+  {"id": "roll-man.roll", "speaker": "npc.example.roll-man", "kind": "topic", "prompt": "What is this roll?",
+   "text": "Your name is not on my roll. You owe nobody here, so get off my pier. Want work? Find Sample-Contact at the Sample House in Lilmoth.",
+   "written": true, "conditions": [], "results": [{"do": "set_stage", "stage": 20}],
+   "first_stage": 10, "last_stage": 10, "answers": []},
+  {"id": "contact.work", "speaker": "npc.example.contact", "kind": "topic", "prompt": "I was told you have work.",
+   "text": "Work for those who ask the right way.", "written": false, "conditions": [],
+   "results": [{"do": "set_stage", "stage": 30}], "first_stage": 20, "last_stage": 20, "answers": []},
+  {"id": "contact.ask", "speaker": "npc.example.contact", "kind": "topic", "prompt": "Will you take me in?",
+   "text": "She asks whether the player will serve the Reed.", "written": false, "conditions": [], "results": [],
+   "first_stage": 30, "last_stage": 30, "answers": ["contact.yes", "contact.no"]},
+  {"id": "contact.yes", "speaker": "npc.example.contact", "kind": "answer", "prompt": "I will serve.",
+   "text": "She welcomes the player in.", "written": false, "conditions": [],
+   "results": [{"do": "set_stage", "stage": 40}], "first_stage": 30, "last_stage": 30, "answers": []},
+  {"id": "contact.no", "speaker": "npc.example.contact", "kind": "answer", "prompt": "Not yet.",
+   "text": "She tells the player to come back when they are sure.", "written": false, "conditions": [],
+   "results": [], "first_stage": 30, "last_stage": 30, "answers": []},
+  {"id": "contact.after", "speaker": "npc.example.contact", "kind": "greeting", "prompt": null,
+   "text": "She greets the player as one of the Reed.", "written": false, "conditions": [], "results": [],
+   "first_stage": 40, "last_stage": 40, "answers": []}
+ ],
+ "triggers": [],
+ "must_live": [
+  {"ref": "npc.example.contact", "fail_stage": 90, "main_message": true}
+ ]
+}

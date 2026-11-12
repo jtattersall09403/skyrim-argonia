@@ -167,6 +167,7 @@
   "facts",
   "cast",
   "things",
+  "placements",
   "conclusions",
   "clues",
   "shapeData",
@@ -1297,6 +1298,152 @@
   },
   {
    "rel": [
+    "placements"
+   ],
+   "mode": "list",
+   "key": null,
+   "node": {
+    "table": "quest_placement",
+    "pk": [
+     "quest_id",
+     "ord"
+    ],
+    "parent_cols": [
+     "quest_id"
+    ],
+    "fields": [
+     [
+      "ref",
+      [
+       "ref"
+      ]
+     ],
+     [
+      "kind",
+      [
+       "kind"
+      ]
+     ],
+     [
+      "form_key",
+      [
+       "formKey"
+      ]
+     ],
+     [
+      "base_kind",
+      [
+       "base",
+       "kind"
+      ]
+     ],
+     [
+      "base",
+      [
+       "base",
+       "id"
+      ]
+     ],
+     [
+      "near",
+      [
+       "anchor",
+       "near"
+      ]
+     ],
+     [
+      "place",
+      [
+       "anchor",
+       "place"
+      ]
+     ],
+     [
+      "rule",
+      [
+       "anchor",
+       "rule"
+      ]
+     ],
+     [
+      "container",
+      [
+       "container"
+      ]
+     ],
+     [
+      "enabled",
+      [
+       "enabled"
+      ]
+     ],
+     [
+      "hostile",
+      [
+       "hostile"
+      ]
+     ],
+     [
+      "kill_choice",
+      [
+       "killChoice"
+      ]
+     ],
+     [
+      "cell",
+      [
+       "at",
+       "cell"
+      ]
+     ],
+     [
+      "x",
+      [
+       "at",
+       "x"
+      ]
+     ],
+     [
+      "y",
+      [
+       "at",
+       "y"
+      ]
+     ],
+     [
+      "z",
+      [
+       "at",
+       "z"
+      ]
+     ],
+     [
+      "interior",
+      [
+       "at",
+       "interior"
+      ]
+     ]
+    ],
+    "conds": [],
+    "acts": [],
+    "order": [
+     "ref",
+     "kind",
+     "formKey",
+     "base",
+     "anchor",
+     "container",
+     "enabled",
+     "hostile",
+     "killChoice",
+     "at"
+    ],
+    "children": []
+   }
+  },
+  {
+   "rel": [
     "conclusions"
    ],
    "mode": "list",
@@ -1854,6 +2001,12 @@
       [
        "intent"
       ]
+     ],
+     [
+      "kind",
+      [
+       "kind"
+      ]
      ]
     ],
     "conds": [],
@@ -1862,6 +2015,7 @@
      "id",
      "label",
      "person",
+     "kind",
      "stages",
      "essential",
      "intent",

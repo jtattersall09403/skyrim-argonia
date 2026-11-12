@@ -56,16 +56,20 @@ in prose. Worked examples, exported from the rows: [examples/lh38.yaml](examples
 | 5 | `playerStart`, `facts` | facts any player has on arrival; the quest's new facts `{id, claim, from}`, `from` a truth event, a place fact or `culture.*#field` | truth |
 | 6 | `cast` | each person by `npc` id with `wants`, `fears`, `knowledge` per fact (`knows`, `believes: <false version>`, `suspects`, `hides: <reason>`; absent = ignorant), `changes` per stage; `persona` only for what the registry and stance file lack, marked `invented` | `npc`, `stance`, culture sheets, 36-cast-roster |
 | 7 | `things` | every physical thing: `{id, kind, source: existing <id> | new, where, states}` | truth + clues |
+| 7b | `placements` | where every person, thing, door and marker the quest names stands: `{ref, kind (person, thing, door, marker), formKey}` for an existing reference, or `{ref, kind, base: {kind (template_person, item, existing_base), id}, anchor: {near: <form key> or place: <census place>, rule: surface or navmesh}}` for a new one, or a thing's `container` (a thing's ref); `enabled` (on at the start), `hostile` (the player is to fight them), `killChoice` (killing them is the player's choice), `at: {cell, interior, x, y, z}` (read from the census for an existing actor) | things + cast |
 | 8 | `conclusions`, `clues` | each conclusion with three clues or more; each clue's `form` (line, thing, place, behaviour), `carrier`, `gives`, `supports` | cast knowledge + things |
 | 9 | `shapeData` | the sections each shape requires (`shapes.yaml`) | truth + clues |
 | 10 | `stages` | as §1, with actions, learns and directions | conclusions + clues |
 | 11 | `endings` | `{id, when, world (actions), seen, rewards (actions)}`: two or more with real costs | stages |
-| 12 | `topics` | `{id: topic.<slug>, label, person, stages, essential, intent, uses, hides, grants}`; the id is an existing `topic` row or `new` | cast + stages |
+| 12 | `topics` | `{id: topic.<slug>, label, person, kind, stages, essential, intent, uses, hides, grants}`; the id is an existing `topic` row or `new`; `kind` is left out for a topic the player picks, `greeting`, or `speaks-first` (the person walks up and says it; it stays open as a topic too) | cast + stages |
 | 13 | `review` | the `quest-review` findings and how each was answered; first the writer's lore-check entries (`id: L<n>`, `severity: lore`, quest-write §6b), then the reviewer's (`severity: blocking` for a quest-review §0 blocking item, otherwise `high`, `medium`, `low`) | quest-write §6b, quest-review |
 
 A **line record** (faction, main, Daedric) comes before its quests: `principles/questlines.md` lists its sections.
 
 ## 3. The engine mapping: the built shapes
+
+A record is built through its quest form (`python3 -m tools.questform compile <quest id>`;
+[quest-form](../../../docs/design/quest-form.md) maps each record term to the form and lists the terms it refuses).
 
 | Record field | Built as |
 |---|---|
