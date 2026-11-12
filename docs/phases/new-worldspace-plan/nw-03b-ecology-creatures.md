@@ -1,4 +1,4 @@
-# Ecology and creatures between places
+# Ecology, creatures between places, regional distinctiveness
 
 Goal: Author and deliver ecology and between-place creature spawning for our new Argonia world.
 
@@ -42,7 +42,43 @@ Owed: the full rebuild and deploy, binding the regions' lore harvestables to FLO
 
 Pad route walk spots (menu page "Walk-check spots", `SPOTS` in `tools/newworld/teleports.py`): D1 Cape Percar (-43,-197); D5 Murkwood (-6,-141); fresh water Banujha Basin (-26,-175); salt water Aphon Isle (-69,-186); canopy Arnesian Jungle (47,-120) against open (44,-114); night insects Nushara Bayou (37,-177); hostile people band Chixathe Mesa (17,-133, a band in the small world's draw); harvestables Ultherus Swamp (13,-183); dry Aunike Ridge (-20,-163); sea shore Hatandros Bight (61,-133).
 
-# Delivered (round 3: ready to rebuild)
+# Regional distinctiveness
 
-- Ecology critters, hostile people (38 of 39 groups), damage by band, harvestables and the pad route are written; stage keying is in the rebuild table; the readback stage also runs the assets audit.
-- Owed: the lead's rebuild (expected stale: paint, edits, mist, navmesh, map, ecology, esm, readback, plus place and edits once for the id-space key rename); the deploy (`stack.py stage`, then install the New World card with the texture aliases from `mods/texture-aliases.json`; the Papyrus compile and the C# build happen there); then the owner's walk, [nw-03b-walk.md](nw-03b-walk.md).
+For music, I would like to create our own versions of every Morrowind track, using Suno to adapt them to our Black Marsh game theme and vibe and context. You should do it so that we have consistency between them in whatever way makes them sound intentionally authored as part of an overall soundtrack whilst also distinctive from each other.
+
+Morrowind tracks freely available to donwload: https://archive.org/download/morrowind-soundtrack
+
+Use whatever tools are most appropriate for this.
+## The plan for regional distinctiveness (agreed with the owner in session, 2026-11-12)
+
+What already varies by region: trees and plants, ground cover, relief, and the air (fog colour, sun, sky, weather
+mix, visibility) through 9 shared atmosphere classes and 3 latitude bands. What does not: brightness and night
+(copied from Skyrim's weather for every class), the water's look (by water kind only), ambient sound and music
+(none per region). The air's differences are too narrow to read: every class's day haze is a pale warm pastel,
+seven of nine classes see between 0.55 and 0.83 of Skyrim's fog distance, and the weather mixes are nearly the same.
+
+Each of the 24 regions gets a one-line identity: its light, how far you see, its sound, its colour, one small
+thing found only there, one creature. Neighbouring regions differ on at least three of the six; a check judges it.
+Every part below is cited to the region's lore research, changes records only, and needs no terrain, tree, scatter
+or LOD rebuild.
+
+1. **Sound per region.** An ambient bed for each region by day and by night (frog chorus, cicadas, surf and
+   gulls, wind in reeds, the near silence of the deep swamp), built from sound records the load order already
+   holds, as Skyrim's regions carry their sounds.
+2. **Music.** A Black Marsh soundtrack with one piece for each Morrowind track's role (exploration, battle, the
+   theme, the stings), one shared palette of instruments and a recurring motif so they read as one authored score,
+   each region leaning on its own subset. See the owner call on how the pieces are made.
+3. **The air, widened.** Each region has its own settings instead of a shared class: brightness, colour strength
+   and night darkness differ; visibility runs from about 0.3 to 1.2 of Skyrim's; weather mixes differ in kind (one
+   region nearly always overcast and dripping, another mostly clear).
+4. **The water's look per region.** Black, tea-brown, algae green, clear turquoise: a water type per region and
+   kind, the waterline and the kinds untouched.
+5. **Colour in the ground cover.** One dominant flower and grass colour per region, so the same flower grasses no
+   longer recur across regions.
+6. **Small signature things.** Things with no far-off model, placed after the navmesh as the creatures are:
+   glowing fungi, bone piles, egg clutches, spore and pollen drifts, fireflies, will-o'-the-wisps, each kind in
+   one or two regions only.
+7. **Creatures.** Every lore kind without a model is re-authored to a lore-consistent kind that has one, searched
+   and sourced again, until every region has its full range of sizes, its own signatures and no stand-ins.
+
+Later, with a LOD build: one landmark silhouette per region, and how open or closed the canopy is.

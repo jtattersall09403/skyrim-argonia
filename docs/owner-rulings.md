@@ -418,3 +418,14 @@ added here the day they are made, with the date and the issue.
   villages that got mapped to shrines)": every kind whose allocated sources are of another kind or culture, or
   score low, gets more sources, first by mining what we hold more finely, then by new mods taken as layout
   sources and asset dependencies the player downloads (never redistributed).
+- 2026-11-12 (in session, nw-04 calls, issue #64): Skyrim's Nordic towns are accepted as layout sources ("they
+  get adapted to our land anyway"); more mods are sourced and mined for ruins and "any other bad gaps as well (e.g.
+  the villages that got mapped to shrines)". Sourcing mods is the lane's own job: "I do not want to be just
+  presented with a list of mods to download at the end"; a gap is reported only after a proper search ("Improve
+  your search ability").
+- 2026-11-12 (in session, regional distinctiveness): after the walk of the new world the regions "still don't feel
+  that different to each other". The owner asked for all of the lead's levers (sound, music, a wider air, water
+  look, ground-cover colour, small signature things, creatures), planned in nw-03b's "Regional distinctiveness"
+  section and delivered. Music: "our own versions of every Morrowind track, using Suno to adapt them to our Black
+  Marsh game theme", consistent as one soundtrack yet distinct. Unmet creatures: "do a loop of reauthoring &
+  searching & sourcing until you have a broad enough set of creatures meeting all the requirements".
