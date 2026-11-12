@@ -887,14 +887,14 @@
 {"talker":"141539:Black Marsh North.esp","topic":"talk.lore","ord":1,"text":"Ask Watches-The-Road about the town's old war with the Empire. A deserter taught me the sword, not the town's history."}
 {"talker":"141539:Black Marsh North.esp","topic":"talk.self","ord":1,"text":"I am Corvane, guard of the east dock and of the big ship moored past it. I took my name from a deserter who taught me the sword. We came to Black Rose together. I stayed after he left."}
 {"talker":"141539:Black Marsh North.esp","topic":"talk.someone","ord":1,"text":"Pitch-Pot seals the boats at this dock. He works harder than anyone on the docks. You will usually find him just east-south-east of me."}
-{"talker":"14153A:Black Marsh North.esp","topic":"talk.directions","ord":1,"text":"The jail? Walk north-west, about a hundred and ninety paces. Black Rose Jail is there."}
+{"talker":"14153A:Black Marsh North.esp","topic":"talk.directions","ord":1,"text":"The jail? Walk north-west a short way, and Black Rose Jail is there. Mind my pot as you go!"}
 {"talker":"14153A:Black Marsh North.esp","topic":"talk.greet-friend","ord":1,"text":"I smell of pitch, I know, but I am glad to see you! Come close."}
 {"talker":"14153A:Black Marsh North.esp","topic":"talk.greet-stranger","ord":1,"text":"Mind your feet. The pitch is hot. You will smell me before you see me."}
 {"talker":"14153A:Black Marsh North.esp","topic":"talk.greet-stranger","ord":2,"text":"Stand back from the pot or you will be burned. What do you want?"}
-{"talker":"14153A:Black Marsh North.esp","topic":"talk.here","ord":1,"text":"I seal hulls here, so I can tell you about boats. The big ship is about forty paces east-south-east of here. A boat lies about twenty paces south-east."}
+{"talker":"14153A:Black Marsh North.esp","topic":"talk.here","ord":1,"text":"I seal hulls here, so I can tell you about boats. The big ship is just east-south-east of here. A boat lies just south-east."}
 {"talker":"14153A:Black Marsh North.esp","topic":"talk.lore","ord":1,"text":"Ask Sakeeth about the old talk that Black Rose had fallen! I know tar, leaks and rot. She knows the rest."}
 {"talker":"14153A:Black Marsh North.esp","topic":"talk.self","ord":1,"text":"They call me Pitch-Pot. I got the name as a hatchling, when I fell into the pot. I have smelled of tar ever since."}
-{"talker":"14153A:Black Marsh North.esp","topic":"talk.someone","ord":1,"text":"Corvane is the guard on the east dock. He is a good sort. He is usually a few paces west-north-west of here."}
+{"talker":"14153A:Black Marsh North.esp","topic":"talk.someone","ord":1,"text":"Corvane is the guard on the east dock. He is a good sort. He is usually just west-north-west of here."}
 {"talker":"141561:Black Marsh North.esp","topic":"talk.directions","ord":1,"text":"The cooking fire? Go south, a hundred and eighty paces or so. The fire is there."}
 {"talker":"141561:Black Marsh North.esp","topic":"talk.greet-friend","ord":1,"text":"The next mat can wait. Sit by me a while."}
 {"talker":"141561:Black Marsh North.esp","topic":"talk.greet-stranger","ord":1,"text":"Mind the reed. I am counting mats."}
