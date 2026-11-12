@@ -483,3 +483,11 @@ added here the day they are made, with the date and the issue.
   you'll need to build it out in the phase plan." The walk 6 planner session owns that phase after walk 6 is
   delivered: it builds out the phase's plan (the owner's own words in the phase file are kept as written, detail
   appended below them) and delivers it.
+- 2026-11-12 (in session, the new world's first pass of fitting quests, nw-05): "I don't want the quests and story
+  to feel like they're patched or shoehorned into that world, I want them to feel really naturally and deeply
+  integrated with it, whilst keeping the overall factions and spirit of the original. You have creative license to
+  rewrite and reauthor, I want it to flow like a really nicely written exciting story throughout that any elder
+  scrolls fan would fall in love with and have a lot of fun playing through. (The 'using in game skills' for every
+  quest is really key to the fun as well btw)". For nw-05: the factions and the spirit are kept; everything else
+  may be rewritten so the story grows out of the new world's places, people and regions; every quest is played
+  with the game's own skills.

@@ -166,6 +166,10 @@ Once everything above is delivered, its lessons learned and the skills updated, 
 the new world phase that is the first pass of fitting the authored quests to the new world, using the updated
 skills. Its brief is minimal, so its plan is built out in its own phase file first (the owner's words kept as
 written, detail appended below them).
+The owner's bar for it: the quests and story must not feel "patched or shoehorned" into the new world but
+"really naturally and deeply integrated with it", keeping the factions and the spirit; there is creative licence to
+rewrite and re-author so it reads as "a really nicely written exciting story throughout that any elder scrolls fan
+would fall in love with"; and every quest uses in-game skills, which is "really key to the fun".
 
 ## What the owner will be asked to check
 
