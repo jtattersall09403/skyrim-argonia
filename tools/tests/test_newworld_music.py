@@ -84,3 +84,29 @@ def test_a_cut_excerpt_is_audible_and_silence_is_refused(tmp_path):
     soundtrack.convert(src, out, None, {"start_s": 20, "end_s": 28, "fade_in_s": 0.05, "fade_out_s": 4})
     assert soundtrack.audible(*soundtrack.loudness(out))
     assert not soundtrack.audible(-70.0, -200.0)
+
+
+def test_a_slot_with_its_own_target_is_built_and_checked_at_that_loudness(tmp_path):
+    """A deliberately quiet slot (`target_lufs`) is converted to its own level, and check measures it against that
+    level, not the shared -16 LUFS."""
+    import shutil
+    import subprocess
+    import sys
+    import pytest
+    sys.path.insert(0, str(REPO / "tools/newworld/music"))
+    import soundtrack
+    if not shutil.which(soundtrack.FFMPEG):
+        pytest.skip("no ffmpeg")
+    targets = soundtrack.targets()
+    assert targets["theme"] == soundtrack.TARGET_LUFS
+    quiet = next(p for p in PIECES["pieces"] if "target_lufs" in p)
+    assert targets[quiet["id"]] == quiet["target_lufs"] < soundtrack.TARGET_LUFS
+    src = tmp_path / "src.wav"
+    subprocess.run([soundtrack.FFMPEG, "-v", "error", "-f", "lavfi", "-i", "anoisesrc=color=pink:duration=20:amplitude=0.5",
+                    str(src)], check=True)
+    out = tmp_path / "quiet.wav"
+    soundtrack.convert(src, out, None, None, -24.0)
+    lufs, peak = soundtrack.loudness(out)
+    assert abs(lufs - -24.0) < 1
+    assert soundtrack.audible(lufs, peak, -24.0)
+    assert not soundtrack.audible(lufs, peak)

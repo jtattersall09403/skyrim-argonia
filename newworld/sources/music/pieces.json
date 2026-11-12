@@ -483,15 +483,67 @@
       "id": "music-levelup",
       "role": "music: level up",
       "minutes": 0.32,
-      "axes": "Not generated: an excerpt of the theme slot (the owner's Overture).",
-      "feel": "Skyrim's level-up music (MUSC 03B565 MUSSpecialSuccess, MUS_LevelUp_01-03, measured): 18.7-19.3 s, a steady body, the peak at 12.0-12.9 s, 20 dB down within 2.0-2.3 s of it, under -40 dB by 16.8-18.6 s. Ours has the same shape.",
-      "excerpt": {
-        "of": "theme",
-        "start_s": 119.6,
-        "end_s": 138.6,
-        "fade_in_s": 0.05,
-        "fade_out_s": 3.5,
-        "why": "the Overture's closing statement from a downbeat (1:59.6) into its final chord (2:13.4, 13.8 s in), which rings out on its own decay under a 3.5 s fade; 19.0 s"
+      "axes": "A 20-second ambient affirmation cue, then silence. Very sparse: long sustained tones only, almost no separate notes. Wordless soft humming choir in a warm middle register, airy higher voices above, and bowed strings sustaining slow, overlapping major chords over a deep drone, very wide stereo, one gentle chord change every four seconds, no rhythm, no drums, no plucked notes. Level and calm for the first ten seconds; from 0:09 a slow, soft swell to its fullest, slightly brighter point at 0:12, where a breathy reed flute sounds a four-note call once (up a fourth, down a half step, down a whole step, held); by 0:15 everything releases into a soft reverb tail fading to silence by 0:19. Warm, quiet, content, not dramatic, not heroic. Organic instruments only, no synths, no lyrics.",
+      "feel": "Skyrim's level-up music (MUSC 03B565, MUS_LevelUp_01-03, measured): 18.7-19.3 s; a sustained, wide (side/mid 0.9-1.0) chord wash with no drums or beat (0.4-0.6 onsets a second, percussive share 0.11-0.20, held pitches); it sits level about 10 dB under its peak, swells gently from about 8 s to one peak at 12-13 s, then falls 20 dB in 2.5-3 s and is silent by 18-19 s; mid brightness (centroid about 1250 Hz, darkening only in the tail). A take passes when, cut to 19 s with our 6 s exponential fade from 13 s, its envelope over 0-13.5 s is within 5 dB mean of Skyrim's, its peak is 10.5-14 s, onsets at most 1.5 a second, centroid 810-1680 Hz (0.65-1.35 of Skyrim's) and percussive share at most 0.25.",
+      "kept": "r5-t8",
+      "target_lufs": -19.0,
+      "target_why": "Skyrim's level-up tracks measure -13.0 to -14.3 LUFS against -21.7 to -23.6 for its exploration tracks: about 9 LU louder, not quieter, so Skyrim gives no quieter level to copy (the same ratio would put ours at -7 LUFS). The owner heard the -16 LUFS excerpt as too loud, so the slot is set 3 LU under our music; owner to judge.",
+      "cut": {
+        "start_s": 4.5,
+        "seconds": 19.0,
+        "fade": "0.3 s in; 6 s exponential out from 13.0 s"
+      },
+      "measured": {
+        "lufs": -11.1,
+        "lra_lu": 7.3,
+        "peak_s": 12.0,
+        "tail_s_peak_to_-20dB": 2.0,
+        "centroid_hz_median": 971,
+        "onsets_per_s": 0.63,
+        "percussive_share": 0.018,
+        "pitched_share": 0.77,
+        "stereo_side_to_mid": 0.79,
+        "shape_err_db": 2.8
+      },
+      "takes_round5": {
+        "t1": "01a1d120-f93c-7422-84ee-1ff9b5a71e7a",
+        "t2": "01a1d120-f947-7d43-a476-c349890554a0",
+        "t3": "01a1d120-f91b-7f53-89bb-7eb199062d6e",
+        "t4": "01a1d120-f991-75b2-8f41-14c2a71d484c (declined by the model's content checker)",
+        "t5": "01a1d120-f97c-7da2-ad1b-d9d2a6c12fce",
+        "t6": "01a1d120-f96a-7272-87bb-cb811f0299ca",
+        "t7": "01a1d120-f98e-7c21-bc66-f938a76e6b90",
+        "t8": "01a1d120-f9b1-7ed1-b958-ffb6270a3257",
+        "t9": "01a1d123-a26e-7412-a093-43b1ef23933d",
+        "t10": "01a1d123-a264-7fb0-9fd9-5ae56f10d057",
+        "t11": "01a1d123-a23a-7f62-a2e8-900096b011c3",
+        "t12": "01a1d123-a254-7b52-83e0-85363691ba78"
+      },
+      "alternatives": [
+        {
+          "take": "s3://argonia-private-050977237313/nw/music/round5/music-levelup-t11.mp3",
+          "why": "round-5 take t11, cut from 9.0 s: passes (shape 3.0 dB, 1.32 onsets/s, centroid 937 Hz)"
+        },
+        {
+          "take": "s3://argonia-private-050977237313/nw/music/round5/music-levelup-t10.mp3",
+          "why": "round-5 take t10, cut from 25.0 s: passes (shape 4.6 dB, 1.11 onsets/s, centroid 899 Hz)"
+        },
+        {
+          "excerpt": {
+            "of": "theme",
+            "start_s": 119.6,
+            "end_s": 138.6,
+            "fade_in_s": 0.05,
+            "fade_out_s": 3.5,
+            "why": "the Overture's closing statement from a downbeat (1:59.6) into its final chord (2:13.4, 13.8 s in), which rings out on its own decay under a 3.5 s fade; 19.0 s"
+          },
+          "why": "rejected by the owner (2026-11-12: too loud and dramatic): the Overture's closing statement 1:59.6-2:18.6"
+        }
+      ],
+      "reference": {
+        "title": "the stock level-up music type (measured traits only: no melody, harmony or audio taken)",
+        "length": "0:19",
+        "sources": "docs/design/music.md#sources"
       }
     },
     {
@@ -559,7 +611,8 @@
           "fade_from_s": 3.2,
           "why": "round-4 take t6: a swell to its arrival at 2.7 s (+15.8 dB), brightness barely rising (passes by the narrowest margin)"
         }
-      ]
+      ],
+      "approved": "owner, 2026-11-12: take r4-t5, the cut in the game build"
     },
     {
       "id": "sting-death",

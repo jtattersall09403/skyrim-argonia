@@ -49,8 +49,8 @@ only (sources below), in plain musical terms.
 | battle-war | Drumbeats of the Dunmer (2:03) | stripped back; minimalist repeating drum rhythms that want a resonant, forceful sound; few instruments above | 120 BPM, G minor; repeating war-drum patterns, massed wordless chant |
 | battle-water | Stormclouds on the Battlefield (2:11) | sparse, repetitive rhythmic writing; dark, brooding, surging | 128 BPM, B minor; churning gourd and wood rhythm, swirling strings, surges |
 | battle-last | Knight's Charge (2:05) | its opening seconds announce the fight; bold, driving, building tension | 136 BPM, F minor; bold opening hit, driving drums and strings, choir swells to a climax |
-| music-levelup | none: an excerpt of our own Overture | Skyrim's level-up music type (DOBJ LUMS -> MUSC 03B565 MUSSpecialSuccess, tracks MUS_LevelUp_01-03, measured 18.7-19.3 s: a steady body, the peak at 12.0-12.9 s, 20 dB down within 2.0-2.3 s, under -40 dB by 16.8-18.6 s) | the Overture 1:59.6-2:18.6 (19.0 s): its closing statement into the final chord at 13.8 s, which decays under a 3.5 s fade |
-| sting-levelup | the stock level-up sound, feel and shape only | what the player hears at a level-up (measured): the UI sound UILevelUp (SOUN 057B45 -> SNDR 057B44, UI_LevelUp.wav, 10.3 s file): about 4 s of body (peak at 2.8 s), then about 4 s of decay (-38 dB at 6.5 s, -47 dB by 8 s); the music type is the separate, longer layer (music-levelup) | round-4 take t5: from near silence a swell into one bright arrival at 2.6 s, cut at 7.1 s with a 4 s fade from 3.1 s. Every candidate must pass two measured tests: it starts at a phrase start (200 ms RMS at least 12 dB under the following second) and it rises (loudness and brightness climb, the peak 2.5-4.5 s in and 8 dB or more over the first 0.5 s). Alternatives in pieces.json `alternatives`: the Overture's opening 0:00.1-0:09.1 (its only passing moment) and take t6 |
+| music-levelup | the stock level-up music type, measured traits only | Skyrim's level-up music type (DOBJ LUMS -> MUSC 03B565 MUSSpecialSuccess): a soft, sustained, wide chord wash with no drums or beat, level for eight seconds, swelling gently to one peak two thirds through and gone by 19 s (measurements below) | round-5 take t8, 19 s cut from 4.5 s with a 6 s exponential fade from 13 s, at its own quieter level (`target_lufs` -19); alternatives: takes t11 and t10, and the owner-rejected Overture excerpt 1:59.6-2:18.6 |
+| sting-levelup (approved by the owner, 2026-11-12) | the stock level-up sound, feel and shape only | what the player hears at a level-up (measured): the UI sound UILevelUp (SOUN 057B45 -> SNDR 057B44, UI_LevelUp.wav, 10.3 s file): about 4 s of body (peak at 2.8 s), then about 4 s of decay (-38 dB at 6.5 s, -47 dB by 8 s); the music type is the separate, longer layer (music-levelup) | round-4 take t5: from near silence a swell into one bright arrival at 2.6 s, cut at 7.1 s with a 4 s fade from 3.1 s. Every candidate must pass two measured tests: it starts at a phrase start (200 ms RMS at least 12 dB under the following second) and it rises (loudness and brightness climb, the peak 2.5-4.5 s in and 8 dB or more over the first 0.5 s). Alternatives in pieces.json `alternatives`: the Overture's opening 0:00.1-0:09.1 (its only passing moment) and take t6 |
 | sting-death | Fate's Quickening (0:17) | a short jingle, falling and mournful | the call slowed on low flute over a fading drone (round-1 take kept) |
 | sting-discovery | The Prophecy Fulfilled (1:11) | angelic choir and a high solo voice; a starry-eyed sense of wonder | thumb-piano and airy choir rising into the call; cut at its first 4.0 s, then faded out to the quietest point between 4.0 and 7.5 s (5.28 s; `fade_from_s`, `cut_s`) |
 
@@ -58,6 +58,37 @@ Level-up has two parts, as Skyrim's does: the UI sound UILevelUp (SNDR 057B44, o
 level-up music type MUSC 03B565 (our music-levelup, 19 s, joined to the type for the new world only). The records do
 not show which moment the engine plays MUSC 03B565 at (the level-up notice or the stats menu); that is an owner walk
 check.
+
+### Skyrim's level-up music, measured
+
+Read from the player's own `Skyrim - Sounds.bsa` in memory (decoded by ffmpeg, nothing written out, nothing given to a
+model), 2026-11-12:
+
+| track | length | LUFS | LRA | envelope | centroid | onsets/s | percussive share | pitched frames | side/mid |
+|---|---|---|---|---|---|---|---|---|---|
+| MUS_LevelUp_01 | 19.3 s | -13.0 | 11.9 LU | level ~10-15 dB under peak from 0.5 s, swell from 8.5 s, peak 13.0 s, -20 dB 2.5 s later, silent by 19 s | 1311 Hz | 0.57 | 0.12 | 66%, held (median step 0 semitones) | 0.90 |
+| MUS_LevelUp_02 | 19.1 s | -14.3 | 10.5 LU | level ~8-13 dB under, steady climb from 8 s, peak 12.0 s, -20 dB in 3.0 s | 1200 Hz | 0.37 | 0.20 | 58%, held | 1.04 |
+| MUS_LevelUp_03 | 18.7 s | -13.4 | 10.5 LU | level ~9-11 dB under, climb from 8.5 s, peak 12.0 s, -20 dB in 2.5 s | 1218 Hz | 0.53 | 0.11 | 58%, held | 0.92 |
+
+Brightness sits at 1100-1600 Hz through the body and falls to 100-400 Hz only in the tail. For comparison, Skyrim's
+exploration tracks measure -23.1 (day 01), -23.6 (day 02) and -21.7 (night 01) LUFS; their loudest 3 s reach -14.6
+to -18.4 against -8.0 to -10.0 for the level-up tracks. So the level-up music is about 9 LU louder than Skyrim's
+normal music, not quieter, and 2-3 LU louder than our -16 LUFS slots.
+
+In plain words: a soft, slow, sustained and very wide chord wash with no drums, no beat and no tune to follow, sitting
+level for eight seconds, swelling gently to one peak two thirds through (12-13 s), then falling away in under three
+seconds and gone by 19 s. It is ambient in character but not quiet in level: played louder than the exploration
+music, so it reads as a calm, full affirmation rather than an event.
+
+Ours (round 5, 12 takes at $0.10, one declined by the model's content checker) was briefed from these traits only.
+Lyria writes about a minute whatever the brief says, so each take is cut to 19 s at the start whose envelope best
+matches Skyrim's mean over 0-13.5 s, with a 6 s exponential fade from 13 s shaped like Skyrim's tail. A take passes
+when that cut is within 5 dB mean of Skyrim's envelope, peaks at 10.5-14 s, has at most 1.5 onsets a second, a
+centroid of 810-1680 Hz and a percussive share of at most 0.25. Three passed: t8 (kept: shape 2.8 dB, 0.63 onsets/s,
+971 Hz, percussive 0.02, side/mid 0.79), t11 (3.0 dB, 1.32, 937 Hz) and t10 (4.6 dB, 1.11, 899 Hz). Ours are
+darker (about 900-970 Hz against 1250) and have less percussive energy than Skyrim's; every Lyria take was darker.
+The slot is built to -19 LUFS (`target_lufs`): Skyrim's ratio would put it at -7 LUFS, louder still, so the
+owner's ear (the -16 excerpt was too loud) sets it 3 LU under our music; `check` measures it against its own target.
 
 ### Sources for the feel
 
@@ -96,22 +127,21 @@ at pieces, so swapping a file needs no record change.
 
 To put your own music in a slot:
 
-1. Name the file after the slot, for example `explore-mist.mp3`. The two level-up slots, `sting-levelup` and
-   `music-levelup`, are cut from the theme slot's file at their times in pieces.json (`excerpt`): drop a new
-   theme and both follow it; change their times there to choose another cut. Accepted: `.wav`, `.mp3`, `.flac`, `.m4a`.
+1. Name the file after the slot, for example `explore-mist.mp3`. A slot with an `excerpt` in pieces.json is cut
+   from the file of its `of` slot at its times: change them there to choose another cut. Accepted: `.wav`, `.mp3`, `.flac`, `.m4a`.
 2. Upload it to `s3://argonia-private-050977237313/nw/music/owner/`.
 3. Run `python3 tools/newworld/music/soundtrack.py build` on the build machine, then `stack.py stage` on the play
    machine.
 
 The tool converts every slot to 44.1 kHz 16-bit stereo WAV at the same loudness (-16 LUFS integrated, peaks under
--1.5 dB), cuts stings at their `cut_s` with the fade out from their `fade_from_s` (else the last 2 s), cuts an `excerpt` slot (sting-levelup) from the file in its `of` slot at its `start_s`-`end_s` with its fades, and uses your file in place of ours. Our piece stays in the bucket (`ours/`)
+-1.5 dB; a slot's own `target_lufs` sets a deliberately quieter one), cuts stings at their `cut_s` with the fade out from their `fade_from_s` (else the last 2 s), cuts an `excerpt` slot from the file in its `of` slot at its `start_s`-`end_s` with its fades, and uses your file in place of ours. Our piece stays in the bucket (`ours/`)
 as the alternative: delete your file and build again to go back. `soundtrack.py check` lists each slot and whether
-it holds our piece or your file, and measures every slot of the built pack: a slot more than 3 LU off -16 LUFS or
-peaking under -10 dBFS fails, and `build` ships nothing while any slot fails. The tools use the system ffmpeg
-(`/usr/bin/ffmpeg`; `FFMPEG` names another). The theme slot holds the owner's Overture now, and the level-up sting is cut from it at every build: to hear another cut, copy one of `excerpt_alternatives` over `excerpt` in pieces.json and build again.
+it holds our piece or your file, and measures every slot of the built pack: a slot more than 3 LU off its target (-16 LUFS or its
+`target_lufs`) or peaking less than 6 dB over that target fails, and `build` ships nothing while any slot fails. The tools use the system ffmpeg
+(`/usr/bin/ffmpeg`; `FFMPEG` names another). The theme slot holds the owner's Overture now. To hear an alternative of a slot, copy one of its `alternatives` in pieces.json into the slot and build again.
 
-Loudness: -16 LUFS is a common game-music level, not yet measured against Skyrim's own tracks (their archive is on
-the play machine only and was not read while the owner may be playing). Format: the engine plays `.wav` music
+Loudness: -16 LUFS is a common game-music level; Skyrim's exploration tracks measure -21.7 to -23.6 LUFS and its
+level-up tracks -13.0 to -14.3 (above). Format: the engine plays `.wav` music
 tracks; WAV is shipped (about 500 MB). A move to `.xwm` would be a conversion step at deploy on the play machine.
 
 ## In game (Bethesda's way, decision 0034)

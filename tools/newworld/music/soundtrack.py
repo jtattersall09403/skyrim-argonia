@@ -9,7 +9,7 @@ Generated audio is never committed (decision 0003).
 
   soundtrack.py keep <slot> <file>   put our kept take of a slot into the bucket (ours/)
   soundtrack.py check                list every slot and which source fills it; red on an empty slot; measure every
-                                     slot of the built pack (target loudness within 3 LU, peak above -10 dBFS)
+                                     slot of the built pack (its target loudness, `target_lufs` or -16, within 3 LU, peak above -10 dBFS)
   soundtrack.py build                convert each slot to 44.1 kHz 16-bit stereo WAV at the target loudness (stings
                                      cut to their length with a fade), tar as music/argonia/<slot>.wav, put the tar in
                                      the private mod cache (only when every slot measures audible) as built-argonia-soundtrack.tar with its sha256, and write
@@ -43,6 +43,11 @@ def slots():
 
 def excerpts():
     return {p["id"]: p["excerpt"] for p in json.loads(PIECES.read_text())["pieces"] if "excerpt" in p}
+
+
+def targets():
+    """slot -> integrated loudness it is built to: its own `target_lufs` (a deliberately quiet or loud slot), else TARGET_LUFS."""
+    return {p["id"]: p.get("target_lufs", TARGET_LUFS) for p in json.loads(PIECES.read_text())["pieces"]}
 
 
 def cuts():
@@ -91,17 +96,17 @@ def excerpt_input(ex):
     return ["-ss", str(ex["start_s"]), "-t", str(round(ex["end_s"] - ex["start_s"], 3))]
 
 
-def excerpt_filter(ex):
+def excerpt_filter(ex, target=TARGET_LUFS):
     """ffmpeg output args for an excerpt: a short fade in, the fade out ending at the cut, then the loudness."""
     d = round(ex["end_s"] - ex["start_s"], 3)
     return ["-af", f"afade=t=in:st=0:d={ex['fade_in_s']},afade=t=out:st={round(d - ex['fade_out_s'], 3)}:d={ex['fade_out_s']},"
-            f"loudnorm=I={TARGET_LUFS}:TP={TRUE_PEAK}:LRA=11"]
+            f"loudnorm=I={target}:TP={TRUE_PEAK}:LRA=11"]
 
 
-def convert(src, dst, sting, ex=None):
-    cut = excerpt_filter(ex) if ex else ["-t", str(sting[0]), "-af",
-           f"afade=t=out:st={sting[1]}:d={round(sting[0] - sting[1], 3)},loudnorm=I={TARGET_LUFS}:TP={TRUE_PEAK}:LRA=11"] if sting \
-        else ["-af", f"loudnorm=I={TARGET_LUFS}:TP={TRUE_PEAK}:LRA=11"]
+def convert(src, dst, sting, ex=None, target=TARGET_LUFS):
+    cut = excerpt_filter(ex, target) if ex else ["-t", str(sting[0]), "-af",
+           f"afade=t=out:st={sting[1]}:d={round(sting[0] - sting[1], 3)},loudnorm=I={target}:TP={TRUE_PEAK}:LRA=11"] if sting \
+        else ["-af", f"loudnorm=I={target}:TP={TRUE_PEAK}:LRA=11"]
     subprocess.run([FFMPEG, "-v", "error", "-y", *(excerpt_input(ex) if ex else []), "-i", str(src), *cut,
                     "-ar", "44100", "-ac", "2", "-c:a", "pcm_s16le", str(dst)], check=True)
 
@@ -115,16 +120,16 @@ def loudness(path):
     return num("I:"), num("Peak:")
 
 
-def audible(lufs, peak):
-    """A built slot is at the target loudness (within 3 LU) with a real peak: no silent or near-silent file ships."""
-    return abs(lufs - TARGET_LUFS) <= 3 and peak > -10  # sting-death, a soft piece at target, peaks at -6.3
+def audible(lufs, peak, target=TARGET_LUFS):
+    """A built slot is at its target loudness (within 3 LU) with a real peak: no silent or near-silent file ships."""
+    return abs(lufs - target) <= 3 and peak > target + 6  # -10 dBFS at -16; sting-death, soft at -16, peaks at -6.3
 
 
 def verify(folder):
-    bad = []
+    bad, tg = [], targets()
     for f in sorted(Path(folder).glob("*.wav")):
         lufs, peak = loudness(f)
-        ok = audible(lufs, peak)
+        ok = audible(lufs, peak, tg.get(f.stem, TARGET_LUFS))
         bad += [] if ok else [f.stem]
         print(f"  {f.stem:18} {lufs:6.1f} LUFS peak {peak:6.1f} dBFS {'ok' if ok else 'NOT AUDIBLE'}")
     return bad
@@ -156,7 +161,8 @@ def build():
             raw = t / ("in" + Path(src[sid][1]).suffix)
             if s3("cp", src[sid][1], str(raw)).returncode:
                 sys.exit(f"cannot fetch {src[sid][1]}")
-            convert(raw, out / f"{sid}.wav", cuts()[sid] if role.startswith("sting") else None, excerpts().get(sid))
+            convert(raw, out / f"{sid}.wav", cuts()[sid] if role.startswith("sting") else None, excerpts().get(sid),
+                    targets()[sid])
             raw.unlink()
         bad = verify(out)
         if bad:
