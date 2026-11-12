@@ -629,14 +629,14 @@
 {"talker":"0934C2:Black Marsh North.esp","topic":"talk.lore","ord":1,"text":"Ask Jeelus-Vax about the title, traveller. I think that question is the real fight in Thorn, whatever else you hear."}
 {"talker":"0934C2:Black Marsh North.esp","topic":"talk.self","ord":1,"text":"Severan Otho, soldier of the hired company. Jeelus-Vax and I watch the east houses. It's honest work, traveller, though I'll be glad to go home."}
 {"talker":"0934C2:Black Marsh North.esp","topic":"talk.someone","ord":1,"text":"Nalvos Brenur? A Dunmer labourer, held under an Owing, so he works off a debt. He's just south of me, and he's a clever one."}
-{"talker":"0934C3:Black Marsh North.esp","topic":"talk.directions","ord":1,"text":"Thorn? Follow the path south-west for seventy paces or so; the dead tree will be on your right. From there, south for sixty paces. That is Thorn, party."}
+{"talker":"0934C3:Black Marsh North.esp","topic":"talk.directions","ord":1,"text":"Thorn? Follow the path just south-west until you reach the dead tree on your right. Then go just south, and you are in Thorn, party."}
 {"talker":"0934C3:Black Marsh North.esp","topic":"talk.greet-friend","ord":1,"text":"For you I have a moment. Speak, and I will hear it."}
 {"talker":"0934C3:Black Marsh North.esp","topic":"talk.greet-stranger","ord":1,"text":"You are a stranger to me, party. State your business."}
 {"talker":"0934C3:Black Marsh North.esp","topic":"talk.greet-stranger","ord":2,"text":"Well, party? I have accounts to close. Be brief."}
-{"talker":"0934C3:Black Marsh North.esp","topic":"talk.here","ord":1,"text":"This is Thorn, party. The hut is about forty paces north-north-east of here."}
+{"talker":"0934C3:Black Marsh North.esp","topic":"talk.here","ord":1,"text":"This is Thorn, party. The hut is just north-north-east of here."}
 {"talker":"0934C3:Black Marsh North.esp","topic":"talk.lore","ord":1,"text":"Ask Nalvos Brenur about the ledger, party. I keep it and I collect on it. I am not paid to explain it, party."}
 {"talker":"0934C3:Black Marsh North.esp","topic":"talk.self","ord":1,"text":"I am Quill-Teeth, party, one of the Tax Heel. That is what the people of Thorn call the collectors the field-owners send. I am very good at my work."}
-{"talker":"0934C3:Black Marsh North.esp","topic":"talk.someone","ord":1,"text":"Doveth Aralen is a Dunmer held under an Owing, and the eldest of the house's labourers. You will find Doveth about twenty-five paces south-south-east of here. Doveth is slow, party, so ask and then wait."}
+{"talker":"0934C3:Black Marsh North.esp","topic":"talk.someone","ord":1,"text":"Doveth Aralen is a Dunmer held under an Owing, and the eldest of the house's labourers. You will find Doveth just south-south-east of here. Doveth is slow, party, so ask and then wait."}
 {"talker":"0934C3:Black Marsh North.esp","topic":"talk.trade","ord":1,"text":"I collect Owings for the field-owners, party. I also keep the ledger. A person called Owes-Nothing wants it burned, because Owes-Nothing is a debtor in hiding."}
 {"talker":"0934C4:Black Marsh North.esp","topic":"talk.directions","ord":1,"text":"The stone tower, party? Climb north-west, about one hundred and forty paces. One hundred and forty. The tower is there."}
 {"talker":"0934C4:Black Marsh North.esp","topic":"talk.greet-friend","ord":1,"text":"It is good to see your face again, party. I do not say that to many."}
