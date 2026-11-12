@@ -46,8 +46,9 @@ the quest; on a main or faction quest it also shows the main quest's message box
 
 The people met are the forms' refs and every authored talker standing in the places the forms involve (the refs'
 cells and their settlements), with each talker's topics gated as the build gates them. Names and places come from the
-world database; a quest's new placements and items need a names file beside the form (`<quest>.names.json`:
-`names` by id, `places` by cell with `name`, `interior` and an interior's `entrance`).
+world database, then from the forms (their `names`, a ref's `name`, a door's `destination` as "Door to ...", a marker's
+`name` as its cell's place name); what neither holds needs a names file beside the form (`<quest>.names.json`:
+`names` by id, `places` by cell with `name`, `interior` and an interior's `entrance`). A ref's own `name` always wins.
 
 ## Running it
 

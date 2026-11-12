@@ -31,6 +31,7 @@ def load_forms(paths: list[str]) -> tuple[list[dict], list[str]]:
     files = []
     for p in map(Path, paths):
         files += sorted(p.glob("*.json")) if p.is_dir() else [p]
+    files = [f for f in files if not f.name.endswith(".names.json")]
     if not files:
         raise G.HarnessError(f"no quest forms in {paths}")
     forms = []
@@ -57,10 +58,10 @@ def utc_stamp() -> str:
 
 
 def new(forms_paths, *, player="hand", source="designed", start=None, at=None, sheet=None, know=None,
-        use_db=True, max_commands=G.MAX_COMMANDS, root: Path = RUNS, model=None) -> tuple[Path, str]:
+        names=(), use_db=True, max_commands=G.MAX_COMMANDS, root: Path = RUNS, model=None) -> tuple[Path, str]:
     """Make a session (its run folder) and return (folder, the opening screen)."""
     forms, files = load_forms(forms_paths)
-    snap = W.snapshot(forms, use_db=use_db)
+    snap = W.snapshot(forms, [Path(n) for n in names], use_db=use_db)
     g = G.Game(forms, snap, sheet=parse_sheet(sheet))
     screen = g.begin(start=start, at=at)
     qid = start or forms[0]["quest"]["id"]

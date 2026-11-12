@@ -8,9 +8,10 @@ A snapshot, kept in the session so a run never changes under the player:
   it (talk.md: every topic gated to the talker; the stranger greeting; a rumour gated on its quest's stages);
 - doors: where a door leads (the position of its other side), for a door the census knows.
 
-Sources, later winning: the world database (story/data/db), then each names file given (`--names`, JSON with
-"names" {id: name} and "places" {cell: {name, interior, entrance}}). A name nobody gives is a harness error at the
-start of the run (game.py), never made up.
+Sources, later winning: the world database (story/data/db), then the forms (their `names`, a ref's `name`, a door's
+`destination`, a marker's `name` as its cell's place name), then each names file given (`--names`, JSON with "names"
+{id: name} and "places" {cell: {name, interior, entrance}}), then a ref's own `name` again (it is its name and
+nothing else). A name nobody gives is a harness error at the start of the run (game.py), never made up.
 """
 from __future__ import annotations
 
@@ -90,23 +91,26 @@ def from_db(forms: list[dict]) -> dict:
 
 
 def _place(w, cell) -> dict:
-    c = w.query("SELECT name, interior FROM bmv_cell WHERE id = ?", cell)
-    if not c:
-        return {}
-    out = {"name": c[0]["name"], "interior": bool(c[0]["interior"])}
-    s = w.query("SELECT s.name FROM bmv_settlement_cell x JOIN bmv_settlement s ON s.id = x.settlement "
-                "WHERE x.cell = ?", cell)
-    if s and not out["interior"] and not out["name"]:
-        out["name"] = s[0]["name"]
-    elif s and out["interior"] and out["name"] and s[0]["name"] not in out["name"]:
-        out["name"] = f"{out['name']}, {s[0]['name']}"
-    if out["interior"]:
-        e = w.query("SELECT t.x, t.y FROM bmv_interior_exit x JOIN bmv_door d ON d.id = x.door "
-                    "JOIN bmv_door t ON t.id = d.target JOIN bmv_cell c ON c.id = t.cell "
-                    "WHERE x.interior = ? AND c.interior = 0", cell)
-        if e:
-            out["entrance"] = {"x": e[0]["x"], "y": e[0]["y"]}
-    return out
+    from tools.questform.compile import place
+    return place(w, cell)
+
+
+def from_forms(forms: list[dict]) -> tuple[dict, dict]:
+    """What the forms alone say the player sees: (names, places). The form's `names` for its items, a ref's `name` (a
+    door that leads somewhere is "Door to <destination>" unless it has a name of its own), and a marker's `name` as
+    the name of the place its cell is."""
+    names, places = {}, {}
+    for f in forms:
+        names.update(f.get("names", {}))
+        for r in f.get("refs", []):
+            n, dest = r.get("name"), r.get("destination")
+            if r.get("kind") == "door" and dest and n in (None, "Door"):
+                n = f"Door to {dest}"
+            if n:
+                names[r["id"]] = n
+            if r.get("kind") == "marker" and n and r.get("at"):
+                places[r["at"]["cell"]] = {"name": n, "interior": r["at"]["interior"]}
+    return names, places
 
 
 def load_names(path: Path) -> dict:
@@ -118,7 +122,11 @@ def snapshot(forms: list[dict], names_files: list[Path] = (), use_db: bool = Tru
     """A ref's own `name` field is its name and nothing else; a person placed from a template with no name of our
     own gets the quest cast's name from the story database, else the template's, with one warning line saying so."""
     snap = from_db(forms) if use_db else {"names": {}, "places": {}, "talkers": [], "doors": {}, "fallback": []}
-    given = set()
+    names, places = from_forms(forms)
+    snap["names"].update(names)
+    for c, v in places.items():
+        snap["places"][c] = {**snap["places"].get(c, {}), **v}
+    given = set(names)
     for p in names_files:
         extra = load_names(p)
         given |= set(extra["names"])
