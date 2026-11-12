@@ -1,0 +1,349 @@
+{
+ "topic.mq04-errand": {
+  "speaker": "npc.nesh-deeka",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "What does the Reed want at Low-Reed Village?",
+    "lines": [
+     "I want one thing learned there. At the burnt camp the cutters cut the gang's Hist cutting, the slip of sacred tree they kept. I need to know whether they cut the Hist of Low-Reed Village as well.",
+     "Follow the shore east out of Lilmoth until you reach the village. It stands on stilts over fresh water.",
+     "Hires-By-The-Season is its root-herald, the one who speaks for the village to strangers. She stands on the raised ground at the village's middle.",
+     "Do not name the Reed there. You are a stranger who heard that the tree turned its face, and that is all you need be.",
+     "I fear the cutters did not stop at the cutting. I would be glad if you proved me wrong."
+    ],
+    "facts": [
+     "fact.mq04.cell-known"
+    ]
+   }
+  ]
+ },
+ "topic.mq04-give-nesh": {
+  "speaker": "npc.nesh-deeka",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Here are the jars the cutters drew from Low-Reed Village's Hist.",
+    "lines": [
+     "Then they did cut that Hist as well. From a dropped jar I learned that the cutters draw sap. These jars show me they cut trees with villages standing round them, which is what I feared.",
+     "I take them, and here is fifty gold. The Reed pays its hands.",
+     "I will not dress up what this costs Low-Reed. While I keep the jars they are not poured back at the cut root, and the village's Hist stays dark.",
+     "The Reed wants them as proof. I can hold up a jar where I must. I cannot hold up the word of a hand with no name."
+    ],
+    "facts": [
+     "fact.mq04.camp-jars"
+    ]
+   },
+   {
+    "variant": "fail",
+    "prompt": "Here are the jars the cutters drew from Low-Reed Village's Hist.",
+    "lines": [
+     "I see no jars in your hands. Bring me the ones the cutters drew from that tree, and then I will pay for them.",
+     "The Reed pays for the jars themselves, not for the telling of them."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.mq04-low-reed": {
+  "speaker": "npc.mercantile-coast.low-reed-village.root-herald",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "I've come from Lilmoth about your Hist.",
+    "lines": [
+     "I am Hires-By-The-Season, the root-herald of Low-Reed Village. I speak for our people to strangers, and I have little reason to trust anyone from Lilmoth.",
+     "The Hist is the great tree our people hold sacred. Its eggs hatch in the pool at its roots.",
+     "Eleven nights ago its light went out and its leaves shut. The eggs in the pool died.",
+     "Our people say the leeches came up the roots. Then the tree shut. They blame Pays-Late too, the tree-minder who keeps the tree, because he let the leeches in.",
+     "He stands by the roots under the stilts on the south side of the village, day and night. He will not say why.",
+     "If a stranger can get the truth out of him, let the stranger try."
+    ],
+    "facts": [
+     "fact.mq04.tree-closed",
+     "fact.mq04.village-blames"
+    ]
+   }
+  ]
+ },
+ "topic.mq04-herald-who": {
+  "speaker": "npc.mercantile-coast.low-reed-village.root-herald",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Who are you?",
+    "lines": [
+     "I am Hires-By-The-Season, the root-herald. When strangers come to Low-Reed Village, I am the one who answers them.",
+     "Our sacred tree, the Hist, is shut. We wait. Pays-Late, who keeps the tree, stands by its roots on the south side."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.mq04-herald-greet": {
+  "speaker": "npc.mercantile-coast.low-reed-village.root-herald",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": null,
+    "lines": [
+     "You came from Lilmoth about our tree.",
+     "What comes after is the village's business."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.mq04-root": {
+  "speaker": "npc.mercantile-coast.low-reed-village.chime-tuner",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Why do you stand by the roots?",
+    "lines": [
+     "I am Pays-Late, the tree-minder of this village. I tend the Hist, our sacred tree. The pool where the eggs lie at its roots is mine to tend as well.",
+     "I wash the roots where the leeches crowd. That is my work, and I do it alone.",
+     "A face from Lilmoth will get no more from me. I do not speak for the villagers. Their root-herald does that.",
+     "The box at my feet is my gum box, where I keep the black gum for the roots. It is locked, and it stays so."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.mq04-persuade": {
+  "speaker": "npc.mercantile-coast.low-reed-village.chime-tuner",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "The village blames you whatever you say. Tell me what happened to your tree. (Speech 25)",
+    "lines": [
+     "You do not shout it to the village. You ask me quietly. I have carried this alone too long.",
+     "A root of the Hist was cut under the stilts, and its sap was drawn off. The cut was sealed with black gum from the sap-workshop. It was my gum, and my knife was gone from the workshop.",
+     "I knew how it would look, so I hid the cut and told only Turns-The-Clutch, who tends the eggs in the pool. The drips led north to the leech water, and there I lost them.",
+     "A boat came in from the north reeds that night and went back out. She saw it too. If you want to know where the sap went, ask me."
+    ],
+    "facts": [
+     "fact.mq04.root-cut",
+     "fact.mq04.minder-hid",
+     "fact.mq04.strangers-seen"
+    ]
+   },
+   {
+    "variant": "fail",
+    "prompt": "The village blames you whatever you say. Tell me what happened to your tree. (Speech 25)",
+    "lines": [
+     "Soft words from a stranger are not enough. I have work at the roots.",
+     "Come back better spoken, and I may listen. Or come with something of mine in your hand to show me."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.mq04-gum-pot": {
+  "speaker": "npc.mercantile-coast.low-reed-village.chime-tuner",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "This is your gum pot. The cut on your tree is sealed with this gum.",
+    "lines": [
+     "That is my pot. Then you know already, and there is no use in my hiding it.",
+     "I found the cut sealed with that gum, and my knife missing from the sap-workshop. I knew it would be called my work, so I hid it. I followed the sap's drips north as far as the leech water before I lost them.",
+     "That night a boat slipped in from the north reeds and out again. Turns-The-Clutch saw it from the egg pool. Ask me where the sap went, and I will tell you where to look."
+    ],
+    "facts": [
+     "fact.mq04.root-cut",
+     "fact.mq04.minder-hid",
+     "fact.mq04.strangers-seen"
+    ]
+   },
+   {
+    "variant": "fail",
+    "prompt": "This is your gum pot. The cut on your tree is sealed with this gum.",
+    "lines": [
+     "You hold nothing of mine to show me. I will not answer for what I have not seen in your hand.",
+     "Bring me something that is mine, and I will answer. Or find words that move me."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.mq04-lean": {
+  "speaker": "npc.mercantile-coast.low-reed-village.chime-tuner",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Tell me, or the whole village hears that you would not.",
+    "lines": [
+     "Enough. You know I cannot bear the whole village looking at me, and you use it.",
+     "My own black gum sealed the cut on that root, and my knife had vanished from the workshop. I hid the cut, because I knew it would be called my work.",
+     "That same night a boat came down out of the north reeds and away again. That is all I know, and you have it now.",
+     "I will not forget who leaned on me. Ask what else you must, and then leave me."
+    ],
+    "facts": [
+     "fact.mq04.root-cut",
+     "fact.mq04.minder-hid",
+     "fact.mq04.strangers-seen"
+    ]
+   }
+  ]
+ },
+ "topic.mq04-minder-wait": {
+  "speaker": "npc.mercantile-coast.low-reed-village.chime-tuner",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Where did the sap go?",
+    "lines": [
+     "North, in the boat that came from the north reeds. I cannot give you a name for whoever was in it.",
+     "North of the village the reeds end at the leech water, where the leeches breed. Cross it and go past the last stilt house. There is a dry rise standing in the reeds. The villagers do not go there.",
+     "Whoever keeps the jars will not give them up for words. Go ready, and take care in the water.",
+     "Bring the sap back to me here at the roots, and I will see it goes back where it was taken from."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.mq04-give-secret": {
+  "speaker": "npc.mercantile-coast.low-reed-village.chime-tuner",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Take the jars and pour the sap back. I'll say nothing of what you hid.",
+    "lines": [
+     "You brought it back, and you promise to keep my secret. I did not think a stranger would do either.",
+     "I will carry the jars to the cut root and pour the sap back myself. The villagers will go on blaming me, and I will bear that.",
+     "I thank you for keeping what I hid."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.mq04-give-truth": {
+  "speaker": "npc.mercantile-coast.low-reed-village.chime-tuner",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Take the jars, but tell Hires-By-The-Season yourself that you hid the cut.",
+    "lines": [
+     "I will take the jars. You ask me to stand before the root-herald and say I hid the cut. That is a hard thing to ask.",
+     "You have my word. I will tell Hires-By-The-Season myself.",
+     "I did not cut my tree. Once I have spoken, the villagers will know that, and they will know what I hid as well."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.mq04-keep-for-reed": {
+  "speaker": "npc.mercantile-coast.low-reed-village.chime-tuner",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "These jars are proof of who cut your tree. They go to the people I work for.",
+    "lines": [
+     "Then the tree stays dark, and the villagers go on blaming me.",
+     "I cannot stop you. Take them, if that is what you will do."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.mq04-minder-greet-90": {
+  "speaker": "npc.mercantile-coast.low-reed-village.chime-tuner",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": null,
+    "lines": [
+     "The sap is back at the root. What I hid stays between us."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.mq04-minder-greet-91": {
+  "speaker": "npc.mercantile-coast.low-reed-village.chime-tuner",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": null,
+    "lines": [
+     "The sap is back at the root. I have said what I had to say, and I did not cut my tree."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.mq04-minder-greet-92": {
+  "speaker": "npc.mercantile-coast.low-reed-village.chime-tuner",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": null,
+    "lines": [
+     "The tree is still dark, and the villagers still blame me. You took what could have mended it."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.mq04-clutch-who": {
+  "speaker": "npc.mercantile-coast.low-reed-village.egg-tender",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Who are you?",
+    "lines": [
+     "I am Turns-The-Clutch, the egg-tender of Low-Reed Village. I keep the village's eggs here, in the pool at the roots of the Hist, our great tree.",
+     "The eggs that lay in this pool are dead. They died the night the Hist shut its leaves, and I could do nothing for them.",
+     "The next clutch will be laid in time, and I want the Hist open when it is."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.mq04-the-boat-seen": {
+  "speaker": "npc.mercantile-coast.low-reed-village.egg-tender",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Did you see who came to your tree?",
+    "lines": [
+     "I saw a boat. I will tell you, though it shames me.",
+     "It came in from the north reeds the night the tree shut, and it went back out again. I took it for a netter's boat and gave it no more thought.",
+     "I stood by this pool and did not go to look. I did not even call out. That is mine to carry.",
+     "Whoever cut the root closed the cut with black gum. That gum is made in our own sap-workshop, and Pays-Late, who minds the tree, keeps it in the box at his feet. If you would know more, look in that box.",
+     "He stands on the bank by the roots, under the stilts on the village's south side. I will say no more of him. If you want more of him, ask him."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.mq04-cell-who-1": {
+  "speaker": "npc.mercantile-coast.low-reed-village.cell-man-1",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Who are you?",
+    "lines": [
+     "I am Hides-His-Wake. I keep these jars for the Root, and they are not yours to touch. Go back across the water."
+    ],
+    "facts": [
+     "fact.mq04.camp-jars"
+    ]
+   }
+  ]
+ },
+ "topic.mq04-cell-who-2": {
+  "speaker": "npc.mercantile-coast.low-reed-village.cell-man-2",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Who are you?",
+    "lines": [
+     "I am Counts-The-Jars. I count every jar on this rise, and I know the number. Leave now, or I will kill you."
+    ],
+    "facts": []
+   }
+  ]
+ }
+}

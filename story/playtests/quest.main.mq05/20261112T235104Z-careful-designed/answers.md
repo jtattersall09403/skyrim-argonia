@@ -1,0 +1,7 @@
+1. I think I'm meant to follow the Mnemic Egg lead and the cutters. The journal ended on that hook, so the next step is probably to go back to Nesh-Deeka, or to whoever knows about the egg, and find out what the cutters want with the sap. I'm not certain of the exact next objective, because I didn't recheck the journal in detail after the last conversation.
+
+2. I work for the Veiled Reed, the state's quiet service, through Nesh-Deeka. I took the work when she offered it. She paid me, and I'm on no roll, so the Reed can use me. The woman with the knotted cord let me live, and I still don't know why. I'm doing the work partly to find that out. I'm not sure I trust the Reed, but it's the only thread I have.
+
+3. The most confusing moment was Kaska-Meen. The plain topic gave me her full reply, and the persuade topic then failed on a Speech check I couldn't meet. The quest still treated her as unpersuaded and sent me to Ei-Tuja. I couldn't tell whether I had done something wrong or the game had a gap. The two near-identical topics added to it.
+
+4. I'd tell the writer the mood, the world and the way the threads tie together are strong, and I want to know what comes next. Make the persuade-versus-plain-topic distinction clear, and say up front when a skill check can close a route. If a conversation gives the player her whole answer, the quest should react to it. I'd also like the wasps on the road to show up, or be left out of the text.

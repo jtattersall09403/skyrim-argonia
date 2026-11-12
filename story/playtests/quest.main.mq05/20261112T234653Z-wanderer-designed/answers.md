@@ -1,0 +1,7 @@
+1. **What I'm meant to do next:** I don't know, because the journal showed no new objective. The most natural next step is to go back to Nesh-Deeka and report what Ei-Tuja said about the Mnemic Egg. After that I'd chase the cutters, and the woman with the knotted cord who let me live. The game never said so, though. I was left to guess.
+
+2. **Who I work for:** The Veiled Reed, through Nesh-Deeka. I took their work and their gold at the start, and every task since has come from her. I'm not sure I trust them. I don't know what the Reed wants with the cutters' sap or what it will do with what I bring. I also don't know why I was picked, apart from being on no roll.
+
+3. **Most confusing moment:** Kaska-Meen saying she had nothing to add. After Ei-Tuja's disagreement with her, I expected her side to matter, and it just stopped. The wasp warning was also confusing. Nesh-Deeka made it sound like a danger, but nothing happened, so I wasn't sure whether I'd missed something or the game had dropped it.
+
+4. **What I'd tell the writer:** The world and the mystery are strong. The thread of the cutters, the sap, the hold with roots through its deck, and the dry voice pulled me in. The Mnemic Egg reveal was the best moment. But close the small loops you open. Pay off the wasps or don't mention them, and give Kaska-Meen something real to say. When a quest ends, give me an objective or a clear pointer to what comes next, so I don't have to guess whether the game is over.

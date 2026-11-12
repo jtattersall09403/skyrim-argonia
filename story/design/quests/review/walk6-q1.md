@@ -149,3 +149,32 @@ All four finished with no stall and no harness error (MQ04 runs played on into M
 - The paper game cannot start a later quest with the items an earlier one gave (Nesh-Deeka's page), and models no
   lock levels or pickpocketing.
 - A failed skill line shows its gated twin and a fallback with the same prompt twice in the menu.
+
+## The dialogue and the paper players (lane D2a)
+
+- **Stale lines gone.** The 37 old `dialogue_line` rows of MQ04 and MQ05 and the two `quest_people.json` entries of the
+  cell men are removed; nothing of the old wording was still true of the new topics and standing places.
+- **Written.** 102 lines in `story/data/quest_lines/mq04.json` and `mq05.json` (Pays-Late 34, Nesh-Deeka 23, Kaska-Meen
+  13, Ei-Tuja 12, Hires-By-The-Season 10, Turns-The-Clutch 8, the two men on the dry rise 1 each), per speaker with
+  dialogue-write (a Morrowind find step on every run), a fail wording for each checked topic, the echo check clean.
+  The player's word for the cell is "the cutters" (MQ03's word) in every line, prompt and journal; a man on the dry
+  rise names "the Root", left as a hook. Journals rewritten one step and why; objectives 20, 21 and 45 reworded.
+- **Text review.** One reader pass over the lines by place, journals and objectives: 44 hits, 36 rewrites applied.
+  Not applied: the fail rows' "sets stage" (an artefact of the review table), "is dead" journals (the register allows
+  them), the closing question of the endings (kept as the Act's hook).
+- **Record changes.** MQ05 stage 40's Archery use is `snipe` (the brief builder refused `fight`); the persuade and
+  minder-wait labels follow the lines' prompts; MQ05 journal 40 says how each teller would carry the word.
+- **Paper players** (`story/playtests/quest.main.mq04/20261112T2346*`, `T2349*`, `T2351*`; the same for MQ05): eight
+  runs, no harness error. All could say what was going on (the cutters cut Hist roots for their sap; the Reed wants
+  it known without its name), who wanted what, and what they want next (what the cutters want with the sap, the
+  Mnemic Egg, why the woman with the knotted cord spared them). Changed after the first four: Kaska-Meen's greeting
+  after the player chose Ei-Tuja (was "nothing to add"; now her side and its cost), the choice of teller foreshadowed
+  by Nesh-Deeka and journal 40, Pays-Late's promised "who took the sap" topic now asks and answers where the sap went.
+- **Still weak, outside the lines.** A failed check shows the success text and the same prompt twice (both
+  confirming players were misled at Pays-Late and Kaska-Meen); the gum box, the pot and the wasps are missing from the
+  form; MQ04's stages 40 and 41 both fire after leaning (two journal entries); every run ends with no next objective
+  (Act II's); Nesh-Deeka and Hires-By-The-Season say the same after every MQ04 ending (a flag-gated wording needs a
+  record change); give-truth asks Pays-Late to tell a root-herald who may be dead (stage 21's branch).
+- **Tool faults met.** `quest-write/brief.py` refuses a hand-in or door stage as having "no skill action", though
+  quest-write §3 exempts it (`moves_only` ignores `hasItem` and `flag`); `echoes.brief_section` crashes sorting a
+  greeting's topic (None) beside MQ01's and MQ03's greetings. Both were worked round in a scratch runner, not edited.

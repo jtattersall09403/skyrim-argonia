@@ -1,0 +1,7 @@
+1. I'm not sure there is anything left. My journal showed no open objective after I talked to Ei-Tuja, and Kaska-Meen gave me nothing new. If the game continues, I'd expect to go back to Nesh-Deeka to report on Helstrom, or to follow the loose threads: the cutters, the woman with the knotted cord, and Kaska-Meen's resentment that I went to Ei-Tuja first.
+
+2. I work for the Veiled Reed through Nesh-Deeka. I took the job because I had no name on any roll and nowhere else to go, and she paid me. My loyalty is thin, though. I returned the sap to the tree instead of handing it to her, so I act for the Reed only where it fits what I think is right. The woman with the knotted cord, who spared me, is still an open question.
+
+3. The most confusing moment was the dialogue with Pays-Late. He offered to say who took the sap, but the topic that appeared told me nothing. Separately, the gum-pot line worked even though I never picked up a pot, so I could not tell what the game was checking.
+
+4. I'd tell the writer the characters and the central mystery are strong, and the journal kept me oriented. Please fix the dead-end topic and the item check that doesn't match what I carry. Make the fights carry more weight, since they were over almost at once. When a quest ends with no objective, give me a clear signal that I'm done or where to go next, because I ended up checking the journal repeatedly to find out.

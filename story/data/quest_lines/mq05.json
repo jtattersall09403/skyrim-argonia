@@ -1,0 +1,202 @@
+{
+ "topic.mq05-back": {
+  "speaker": "npc.nesh-deeka",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "I've seen what the cutters did at Low-Reed Village. What now?",
+    "lines": [
+     "Then you have seen what a cut is. A Hist that falls silent kills no eggs. The Hist at Low-Reed Village was cut at the root, and the eggs at its roots died of the cut.",
+     "The interior, the villages inland behind the marsh, must hear that difference. The people who can carry it home gather at Helstrom, a great city behind the marsh. They are the tree-minders, who tend each village's Hist, and the Nisswo, wandering priests who read what a Hist says.",
+     "I want them to hear what a cut tree looks like from someone the Reed can deny. So you go alone, and I send no escort.",
+     "Do not name the Reed in Helstrom. If it is named, what you saw becomes the Reed's word and I cannot disown it. I do not like using a hand I can disown. I have no other.",
+     "Take the coast ship at Lilmoth's stop, on the east side of the town. The ship has a door that opens on Helstrom's landing. Go ashore by it.",
+     "From the landing the way runs inland over roots and through shallows. Two giant wasps keep the far bend of it, short of the gate.",
+     "Just inside the gate, to the west, is the grove. Ei-Tuja stands there, a Nisswo who reads for anyone. Kaska-Meen is a tree-minder who sits in the city's assembly and keeps the grove's watch, and she hears few strangers.",
+     "Whoever you tell decides how the word travels. A Nisswo preaches it in every village, where the cutters will hear it too. A tree-minder carries it only to those who keep trees.",
+     "Go and tell one of them what you saw. Say only that, as a stranger who saw it."
+    ],
+    "facts": [
+     "fact.mq05.severance-not-silence",
+     "fact.mq05.reed-goal",
+     "fact.mq05.wasps"
+    ]
+   }
+  ]
+ },
+ "topic.mq05-way": {
+  "speaker": "npc.nesh-deeka",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "How do I get to Helstrom?",
+    "lines": [
+     "The coast ship lies at Lilmoth's stop on the east side of the town. Go up to its upper deck and through the inner door, and that door opens on Helstrom's landing.",
+     "From the landing the way runs inland over roots and through shallows. Where it bends, two giant wasps keep the root, unless they have been cleared since. Past them you come to a soldier at the city's gate.",
+     "The grove is just inside, to the west. Ei-Tuja the Nisswo and Kaska-Meen the tree-minder are there. Go alone, and do not name the Reed."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.mq05-the-quarrel": {
+  "speaker": "npc.hist-heartland.helstrom.nisswo-interpreter-debating-house",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "What do you and Kaska-Meen disagree over?",
+    "lines": [
+     "I am Ei-Tuja, a Nisswo, a wanderer who reads what the Hist tell us. I read for anyone who asks and take nothing for it.",
+     "I hold that a Hist that goes quiet is telling us something, and its tree-minders must not clamp it shut.",
+     "Kaska-Meen, the tree-minder who keeps the watch here, disagrees. Ask her for her own reasons."
+    ],
+    "facts": [
+     "fact.mq05.eituja-view"
+    ]
+   }
+  ]
+ },
+ "topic.mq05-tell-nisswo": {
+  "speaker": "npc.hist-heartland.helstrom.nisswo-interpreter-debating-house",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "I saw a Hist cut at the root, not gone silent. The village's eggs died of the cut.",
+    "lines": [
+     "Then it is not a silence at all. It is a thing done to a tree.",
+     "I will preach that in every village I walk to. The cutters will hear it with everyone else, and I will say it all the same.",
+     "Hear this as well. When a Hist dies it leaves a Mnemic Egg, a seed of its sap that holds the tree's memories. The Aldmeri Dominion used one, long ago, to stop a generation of eggs hatching.",
+     "Whoever gathers a living tree's sap may be after such a thing. I do not say it is so. I say you should keep it in mind."
+    ],
+    "facts": [
+     "fact.mq05.mnemic-egg"
+    ]
+   }
+  ]
+ },
+ "topic.mq05-to-minder": {
+  "speaker": "npc.hist-heartland.helstrom.nisswo-interpreter-debating-house",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "The tree-minders should hear this. Will Kaska-Meen?",
+    "lines": [
+     "Kaska-Meen hears few strangers. She hears only a stranger whom she judges worth hearing.",
+     "I will not speak for you. If I did, I would take a side, and I gain nothing by it.",
+     "Go to her in the grove and make your case yourself. Give her a good reason to listen."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.mq05-eituja-greet": {
+  "speaker": "npc.hist-heartland.helstrom.nisswo-interpreter-debating-house",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": null,
+    "lines": [
+     "I will preach what you saw in every village. A Hist cut at the root is not a Hist gone silent."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.mq05-eituja-greet-91": {
+  "speaker": "npc.hist-heartland.helstrom.nisswo-interpreter-debating-house",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": null,
+    "lines": [
+     "So you told Kaska-Meen. The tree-minders will clamp their trees shut. I would have read it differently."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.mq05-the-watch": {
+  "speaker": "npc.hist-heartland.helstrom.grove-s-senior-tree",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "What is your watch here?",
+    "lines": [
+     "I am Kaska-Meen, a tree-minder of the interior. I keep a village's Hist, the great tree our people hold sacred, and I sit in this city's assembly for those who keep theirs.",
+     "When a Hist falls silent, only its tree-minders should watch it. We know its moods, and a stranger knows only fear. I keep the watch in this grove for them, and I do not sit with strangers.",
+     "The Nisswo here, Ei-Tuja, thinks otherwise. Ask him, if you want that side of it."
+    ],
+    "facts": [
+     "fact.mq05.kaska-view"
+    ]
+   }
+  ]
+ },
+ "topic.mq05-tell-minder": {
+  "speaker": "npc.hist-heartland.helstrom.grove-s-senior-tree",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "I saw a Hist cut at the root, not gone silent. Hear me out. (Speech 25)",
+    "lines": [
+     "A cut is done to a tree. A silence is the tree's own. I held them to be one thing, and I do not like to be shown I was wrong.",
+     "I will carry it to the interior's tree-minders. They will guard their trees and let no stranger near. Some of the strangers they turn away will be honest ones in need. I know that cost, and I pay it.",
+     "There is more. When a Hist dies it leaves a Mnemic Egg, a seed of its sap that holds the tree's memories. The Aldmeri Dominion used one, long ago, to stop a whole generation of eggs hatching. Whoever gathers a living tree's sap may be after such a thing."
+    ],
+    "facts": [
+     "fact.mq05.mnemic-egg"
+    ]
+   },
+   {
+    "variant": "fail",
+    "prompt": "I saw a Hist cut at the root, not gone silent. Hear me out. (Speech 25)",
+    "lines": [
+     "A stranger tells me a tree was cut, and I have only the stranger's word. I do not sit with strangers.",
+     "Ei-Tuja, the Nisswo, will hear anyone. Or come back when your words weigh more."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.mq05-other": {
+  "speaker": "npc.hist-heartland.helstrom.grove-s-senior-tree",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "I'll take this to the Nisswo instead.",
+    "lines": [
+     "Then take it to Ei-Tuja. He will preach it to every village.",
+     "The ones who did the cutting will hear it too. I would have kept it among tree-minders, but I cannot stop you."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.mq05-kaska-greet": {
+  "speaker": "npc.hist-heartland.helstrom.grove-s-senior-tree",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": null,
+    "lines": [
+     "I will carry it to the tree-minders. A cut is not a silence. I keep the watch here."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.mq05-kaska-greet-92": {
+  "speaker": "npc.hist-heartland.helstrom.grove-s-senior-tree",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": null,
+    "lines": [
+     "So you took it to Ei-Tuja. He will preach it in every village, and the cutters will hear it with everyone else.",
+     "Had you brought it to me, the tree-minders would have shut their trees before the cutters knew anyone was warned."
+    ],
+    "facts": []
+   }
+  ]
+ }
+}
