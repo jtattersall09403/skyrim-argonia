@@ -462,3 +462,12 @@ added here the day they are made, with the date and the issue.
   new updated skill." Every line the B13 lint and talk_check flag (a count of paces, yards or metres) is rewritten whole
   through the dialogue skills with the Morrowind find step: directions by landmarks, compass words and distance
   words, never a number.
+- 2026-11-12 (walk 6, the quests; tmp/walk-6-quests-feedback.md, kept whole in docs/phases/walk-6-quests-handover.md):
+  the opening and the start of the main quest were "a complete mess". "Let's have nothing more complicated than
+  Morrowind-level scripting for all of our quests, and do much less world-editing for each quest." The barge is
+  kept; outside its door the man starts the talk himself: the player is not on his list, owes nobody, and is sent
+  to a named place and person who inducts them into the main quest's faction. Everything authored so far is
+  reviewed and rowed back, keeping the spirit. Quest markers on the map and in game for objectives and things to
+  pick up or use. "Anyone in our game can die", with a message like Morrowind's when a main-quest person dies. An
+  off-game paper playtest played by a fresh agent, on the game's own built version, part of authoring, never a
+  gate, with a broad brief and an artifact to explore the runs. The plan: docs/phases/walk-6-quests.md, issue #68.
