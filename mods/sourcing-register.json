@@ -1203,5 +1203,6 @@
   "used_by": "the NewWorld profile (asset-only; the player downloads it): flower and leaf grasses of the regions' ground colour (phase nw-03b D2)",
   "linked_or_forked_by": "none: depended on as the player's own download",
   "notes": "authors mobiusbelmont, ported by XONextGenXO with the original author's written permission; uses Hodminnir's flower resource. No reuse terms on the page (permission_ask). Its GRAS records are copied into ArgoniaNewWorld.esm and named by our land textures; meshes and textures stay the player's own download."
- }
+ },
+ {"name": "Elder Souls: Argonia soundtrack (our own, generated)", "source_url": "https://fal.ai/models/google/lyria-3.5", "version": "0.1.0 (row argonia-soundtrack)", "licence": "our own: Google Lyria 3.5 outputs through fal.ai belong to the requester, commercial use allowed (fal's terms); the theme slot holds the owner's own Overture", "used_by": "the NewWorld profile: the new world's music records (exploration per region, combat, stings), docs/design/music.md", "linked_or_forked_by": "none: built by tools/newworld/music/soundtrack.py into the private mod cache, never committed (decision 0003)", "notes": "prompts are our own descriptions (newworld/sources/music/pieces.json); no third-party audio was given to the model; each piece's reference track is used for described feel only, never named in a prompt."}
 ]

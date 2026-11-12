@@ -16,6 +16,8 @@ def test_nif_textures_reads_length_prefixed_paths():
 def test_norm_asset_roots_and_absolute_paths():
     assert A.norm_asset("Landscape\\grass\\a.nif") == "meshes\\landscape\\grass\\a.nif"
     assert A.norm_asset("skyrimhd\\build\\pc\\data\\textures\\plants\\t.dds") == "textures\\plants\\t.dds"
+    assert A.norm_asset("Data\\Music\\argonia\\theme.wav") == "music\\argonia\\theme.wav"  # a MUST track
+    assert A.norm_asset("fx\\a.wav") == "sound\\fx\\a.wav"
     assert A.norm_asset("Sky\\c.dds") == "textures\\sky\\c.dds"
 
 

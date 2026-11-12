@@ -1,25 +1,579 @@
 {
-  "about": "The Black Marsh soundtrack: one original piece per role of a classic open-world RPG score (theme, 8 exploration, 7 battle, 3 stings). docs/design/music.md. Each prompt = the shared style + the piece's axes. Audio is generated, never committed; tools/newworld/music/generate.py keeps the manifest.",
+  "about": "The Black Marsh soundtrack: one original piece per role of a classic open-world RPG score (theme, 8 exploration, 7 battle, 3 stings). docs/design/music.md. Each prompt = the shared style + the piece's axes. Audio is generated, never committed; each piece names one reference track (reference) and the feel it is written to (feel); prompts carry only `style` + `axes`, never a reference; the manifest keeps every take.",
   "style": "Original instrumental game soundtrack for a tropical swamp jungle province of reptilian people. Shared palette: breathy cane reed flutes, plucked wooden tongue-drum and thumb-piano tones, hollow log drums, bone and wooden clackers, conch shell horns, low bowed strings and a deep sustained drone, wordless low throat-singing and humming choir (no words, no lyrics). Recurring signature motif: a four-note call that rises a perfect fourth, then falls a half step and a whole step and holds. Production: warm, spacious, humid reverb like a canopy at night, analog warmth, no modern synths, no electric guitar, no drum kit, no lyrics, cinematic and organic.",
   "pieces": [
-    {"id": "theme", "role": "main theme", "minutes": 4, "axes": "Main title theme. Majestic and ancient, slow build from solo reed flute stating the four-note call over the drone to full low strings, log drums and wordless choir carrying the call in broad unison. 70 BPM, D minor (dorian colour). Lead: reed flute then massed low strings. Awe at a living, breathing marsh."},
-    {"id": "explore-mist", "role": "exploration", "minutes": 4, "axes": "Exploration, morning mist over still black water. Very slow and spacious, long silences, drone and soft thumb-piano, the call heard once softly mid-piece. 60 BPM, A minor. Lead: plucked wooden thumb-piano. Mood: hushed, patient."},
-    {"id": "explore-canopy", "role": "exploration", "minutes": 4, "axes": "Exploration under the green rainforest canopy, gentle forward motion, light hand percussion of wood and seed rattles, flute melody that answers the call. 84 BPM, E dorian. Lead: breathy cane flute. Mood: curious, warm."},
-    {"id": "explore-river", "role": "exploration", "minutes": 4, "axes": "Exploration along a slow wide river, flowing arpeggios on plucked wood, cello line in long phrases, the call in the cello. 76 BPM, G major (mixolydian colour). Lead: solo cello. Mood: journeying, hopeful."},
-    {"id": "explore-hist", "role": "exploration", "minutes": 5, "axes": "Exploration near an ancient sacred tree, reverent and mysterious, layered humming choir chords, low drone, sparse bone chimes, the call sung softly. 56 BPM, C minor. Lead: wordless humming choir. Mood: sacred, dreamlike."},
-    {"id": "explore-coast", "role": "exploration", "minutes": 4, "axes": "Exploration on a warm sea coast, open and bright, conch shell horn phrases, swaying 6/8 log drum, the call on the conch. 90 BPM, F major. Lead: conch horn and flute. Mood: open, windswept."},
-    {"id": "explore-highland", "role": "exploration", "minutes": 4, "axes": "Exploration on dry mesa highlands above the swamp, sparse, stark, plucked low strings and a lone fretless bowed fiddle, wide intervals, the call stretched slowly. 66 BPM, B phrygian. Lead: bowed folk fiddle. Mood: lonely, vast."},
-    {"id": "explore-night", "role": "exploration", "minutes": 5, "axes": "Exploration at tropical night, insect-like soft wooden rattles, deep drone, distant low throat-singing, the call on a low flute very quietly. 58 BPM, F sharp minor. Lead: low bass reed flute. Mood: dark, warm, a little uneasy."},
-    {"id": "explore-rain", "role": "exploration", "minutes": 4, "axes": "Exploration in warm rain over a bayou, gently pattering wooden percussion, thumb-piano and flute duet, the call traded between them. 72 BPM, D dorian. Lead: thumb-piano and flute duet. Mood: melancholy, tender."},
-    {"id": "battle-ambush", "role": "battle", "minutes": 3, "axes": "Battle music. Fast pounding log drums and bone clackers in 7/8, stabbing low strings, the call shouted by conch horns. 140 BPM, D minor. Lead: log drums and conch. Mood: sudden danger."},
-    {"id": "battle-hunt", "role": "battle", "minutes": 3, "axes": "Battle music. Relentless driving hand drums, ostinato low strings, aggressive rhythmic throat-singing grunts without words, the call in the strings. 128 BPM, E minor. Lead: driving low string ostinato. Mood: predatory chase."},
-    {"id": "battle-deep", "role": "battle", "minutes": 3, "axes": "Battle music. Heavy slow-hitting giant drums, dark brass-like horn swells from conch, menacing drone, the call low and slow. 100 BPM, C sharp minor. Lead: giant drums and low horns. Mood: monstrous, heavy."},
-    {"id": "battle-skirmish", "role": "battle", "minutes": 3, "axes": "Battle music. Quick nimble wooden percussion and shrill reed flute runs, pizzicato strings, the call fast on flute. 150 BPM, A minor. Lead: shrill reed flute. Mood: frantic skirmish."},
-    {"id": "battle-war", "role": "battle", "minutes": 3, "axes": "Battle music. Martial war chant energy, massed wordless chanting choir on vowels, war drums, strings tremolo, the call as a rallying cry. 120 BPM, G minor. Lead: massed wordless choir. Mood: heroic, defiant."},
-    {"id": "battle-water", "role": "battle", "minutes": 3, "axes": "Battle music. Churning, splashing water-like percussion of hollow gourds and wood, swirling string runs, the call in low reeds. 132 BPM, B minor. Lead: swirling strings. Mood: chaotic, drowning."},
-    {"id": "battle-last", "role": "battle", "minutes": 3, "axes": "Battle music. Desperate and epic, building drums and full low strings with choir swelling, the call at full force at the climax. 136 BPM, F minor. Lead: full ensemble. Mood: desperate last stand."},
-    {"id": "sting-levelup", "role": "sting: level up", "minutes": 0.2, "axes": "A short triumphant sting about ten seconds long: the four-note call on conch and flute over one log-drum hit and a bright string chord, then silence. D major."},
-    {"id": "sting-death", "role": "sting: death", "minutes": 0.2, "axes": "A short mournful sting about twelve seconds long: the four-note call slowed on low reed flute over a fading drone and a single low drum, then silence. D minor."},
-    {"id": "sting-discovery", "role": "sting: discovery", "minutes": 0.2, "axes": "A short wondrous sting about ten seconds long: shimmering thumb-piano and humming choir rising into the four-note call, one soft drum, then silence. A major."}
+    {
+      "id": "theme",
+      "role": "main theme",
+      "minutes": 4,
+      "axes": "Main title theme. Majestic and ancient, slow build from solo reed flute stating the four-note call over the drone to full low strings, log drums and wordless choir carrying the call in broad unison. 70 BPM, D minor (dorian colour). Lead: reed flute then massed low strings. Awe at a living, breathing marsh.",
+      "reference": {
+        "title": "Nerevar Rising",
+        "length": "1:54",
+        "sources": "docs/design/music.md#sources"
+      },
+      "feel": "Moderate, stately 3/4-feeling pulse around 70 BPM; minor mode with a modal, ancient colour. One lone line states a simple, singable tune, then each restatement adds instruments and grows in volume and scope until violins and full brass carry a climactic finish. Light, gentle, ethereal rather than heavy; long crescendo shape, quiet start, loud end."
+    },
+    {
+      "id": "explore-mist",
+      "role": "exploration",
+      "minutes": 3,
+      "axes": "Exploration at dawn over still black water, about 3 minutes, 60 BPM, A minor, free and unhurried pulse. [0:00-0:50] Scattered held tones on drone, low strings and breathy reed flute enter one by one, overlapping like a sunrise slowly gathering, very quiet. [0:50-1:50] A calm, spacious middle: soft plucked thumb-piano over the drone, the four-note call once, softly. [1:50-3:00] The texture churns and builds: busy repeating low string figures and short conch-horn interjections, then eases away. Mood: hushed, then awakening.",
+      "reference": {
+        "title": "Silt Sunrise",
+        "length": "3:11",
+        "sources": "docs/design/music.md#sources"
+      },
+      "feel": "Slow, about 60 BPM, free-feeling pulse. Opens like an orchestra tuning: scattered, overlapping held tones that gather into increasingly complex orchestration, like a sun rising; settles into a calm, spacious middle; closes over busy string ostinati with short brass-like interjections. Dark, quiet start, building, churning end. Minor/modal.",
+      "kept": "t4",
+      "measured": {
+        "seconds": 177.9,
+        "pulse_bpm": 81,
+        "centroid_hz": 734,
+        "onsets_per_s": 2.36,
+        "loudness_by_tenth_db": [
+          -19,
+          -18,
+          -16,
+          -14,
+          -13,
+          -12,
+          -9,
+          -8,
+          -13,
+          -17
+        ]
+      }
+    },
+    {
+      "id": "explore-canopy",
+      "role": "exploration",
+      "minutes": 3,
+      "axes": "Exploration under a green rainforest canopy, about 3 minutes, 84 BPM, E dorian, gentle steady walking pulse. [0:00-0:30] A dark, low opening: held deep bowed bass chords and drone, quiet. [0:30-2:40] It opens into a brighter, airy walking theme: breathy cane flute melody over light plucked strings and thumb-piano, soft wooden seed rattles, the four-note call answered by the flute; small swells, never loud. [2:40-3:00] Thins back to flute and drone. Mood: curious, warm.",
+      "reference": {
+        "title": "Over the Next Hill",
+        "length": "3:04",
+        "sources": "docs/design/music.md#sources"
+      },
+      "feel": "Walking pace, about 84 BPM, gentle steady pulse in 4. A dark, low introduction on sustained double-bass chords opens into a much brighter, ambient field theme; woodwind melody over light pizzicato strings; warm, unhurried, mid-level dynamics with small swells.",
+      "kept": "t2",
+      "measured": {
+        "seconds": 176.3,
+        "pulse_bpm": 86,
+        "centroid_hz": 872,
+        "onsets_per_s": 2.5,
+        "loudness_by_tenth_db": [
+          -19,
+          -14,
+          -13,
+          -13,
+          -10,
+          -11,
+          -10,
+          -9,
+          -9,
+          -18
+        ]
+      }
+    },
+    {
+      "id": "explore-river",
+      "role": "exploration",
+      "minutes": 3,
+      "axes": "Exploration along a slow, wide river, about 3 minutes, 76 BPM, G mixolydian, flowing pulse with a lightly syncopated, lilting melody. Solo cello sings long phrases over rich layered low strings and rippling plucked-wood figures; the four-note call in the cello. Shape: long gentle crescendos and decrescendos, two broad arcs, the second fuller with soft log drum. Mood: journeying, hopeful.",
+      "reference": {
+        "title": "The Road Most Travelled",
+        "length": "3:15",
+        "sources": "docs/design/music.md#sources"
+      },
+      "feel": "Moderate flowing tempo, about 76 BPM in 4 with a syncopated lilt in the melody; major/mixolydian, hopeful. Rich, layered string textures with a solo cello carrying the tune; gradual crescendos and decrescendos in long arcs; journeying, warm.",
+      "kept": "t3",
+      "measured": {
+        "seconds": 176.5,
+        "pulse_bpm": 76,
+        "centroid_hz": 1211,
+        "onsets_per_s": 2.85,
+        "loudness_by_tenth_db": [
+          -16,
+          -14,
+          -13,
+          -12,
+          -10,
+          -13,
+          -13,
+          -10,
+          -10,
+          -16
+        ]
+      }
+    },
+    {
+      "id": "explore-hist",
+      "role": "exploration",
+      "minutes": 5,
+      "axes": "Exploration near an ancient sacred tree, reverent and mysterious, layered humming choir chords, low drone, sparse bone chimes, the call sung softly. 56 BPM, C minor. Lead: wordless humming choir. Mood: sacred, dreamlike.",
+      "reference": {
+        "title": "Blessing of Vivec",
+        "length": "3:16",
+        "sources": "docs/design/music.md#sources"
+      },
+      "feel": "Slow, about 56 BPM, austere and solemn. A jagged, unflowing solo cello leads over sparse accompaniment; harmony balanced between light and dark, major and minor, high and low, held in tension. Quiet to moderate, reverent, with an undercurrent of unease.",
+      "kept": "t1",
+      "measured": {
+        "seconds": 175.1,
+        "pulse_bpm": 60,
+        "centroid_hz": 751,
+        "onsets_per_s": 2.47,
+        "loudness_by_tenth_db": [
+          -17,
+          -14,
+          -13,
+          -12,
+          -12,
+          -10,
+          -11,
+          -10,
+          -10,
+          -21
+        ]
+      }
+    },
+    {
+      "id": "explore-coast",
+      "role": "exploration",
+      "minutes": 3,
+      "axes": "Exploration on a warm sea coast, about 3 minutes, 72 BPM, F major, gently rocking 6/8 pulse like small waves. Light breathy reed flute leads a reflective tune over soft bowed strings and drone; soft conch horn answers with the four-note call. [0:00-1:00] flute and strings, light. [1:00-2:10] a broad, warm swell with log drum and choir hum. [2:10-3:00] back to flute alone, fading. Mood: open, reflective, calm.",
+      "reference": {
+        "title": "Peaceful Waters",
+        "length": "3:06",
+        "sources": "docs/design/music.md#sources"
+      },
+      "feel": "Slow to moderate, about 72 BPM, gently rocking pulse; major key with modal touches. Light flute texture over soft strings, reflective and warm; a broad pastoral swell in the middle, then a quiet close. Open, nostalgic, calm.",
+      "kept": "t3",
+      "measured": {
+        "seconds": 176.6,
+        "pulse_bpm": 74,
+        "centroid_hz": 912,
+        "onsets_per_s": 2.79,
+        "loudness_by_tenth_db": [
+          -15,
+          -14,
+          -11,
+          -11,
+          -9,
+          -9,
+          -12,
+          -13,
+          -16,
+          -21
+        ]
+      }
+    },
+    {
+      "id": "explore-highland",
+      "role": "exploration",
+      "minutes": 3,
+      "axes": "Exploration on dry mesa highlands above the swamp, about 3 minutes, 96 BPM, B dorian, light and playful. [0:00-1:10] Light plucked string and thumb-piano ostinati in a three-against-four cross-rhythm, a bowed folk fiddle with the four-note call. [1:10-1:50] A wordless humming choir interlude, airy. [1:50-2:40] Ostinati return. [2:40-3:00] Dissolves into reed flutes alone. Mood: lively, wide, wandering.",
+      "reference": {
+        "title": "Caprice",
+        "length": "3:28",
+        "sources": "docs/design/music.md#sources"
+      },
+      "feel": "Moderate, about 96 BPM, light and playful; a 3-against-4 cross-rhythm in light-hearted string ostinati; a choir interlude in the middle; dissolves into a simple woodwinds-only section; moves smoothly between moods; mid dynamics.",
+      "kept": "t3",
+      "measured": {
+        "seconds": 178.9,
+        "pulse_bpm": 86,
+        "centroid_hz": 1095,
+        "onsets_per_s": 3.01,
+        "loudness_by_tenth_db": [
+          -15,
+          -13,
+          -13,
+          -14,
+          -16,
+          -10,
+          -10,
+          -9,
+          -9,
+          -19
+        ]
+      }
+    },
+    {
+      "id": "explore-night",
+      "role": "exploration",
+      "minutes": 3,
+      "axes": "Exploration at tropical night, about 3 minutes, 54 BPM with almost no felt pulse, F sharp minor, unresolved. Low held tones on bass reed flute, deep drone and distant low throat-singing; soft wooden rattles like insects; the four-note call on low flute, very quietly, twice. Quiet throughout, one slow swell in the middle and back. Mood: dark, warm, ominous.",
+      "reference": {
+        "title": "Darkened Depths",
+        "length": "0:51",
+        "sources": "docs/design/music.md#sources"
+      },
+      "feel": "Slow, no clear pulse; brief, ominous underscore: low held tones, dark colour, quiet throughout with a slight swell; minor and unresolved.",
+      "kept": "t3",
+      "measured": {
+        "seconds": 171.5,
+        "pulse_bpm": 81,
+        "centroid_hz": 777,
+        "onsets_per_s": 2.48,
+        "loudness_by_tenth_db": [
+          -22,
+          -14,
+          -12,
+          -12,
+          -11,
+          -10,
+          -10,
+          -9,
+          -13,
+          -30
+        ]
+      }
+    },
+    {
+      "id": "explore-rain",
+      "role": "exploration",
+      "minutes": 3,
+      "axes": "Exploration in warm rain over a bayou, about 3 minutes, 66 BPM, D dorian, restful. [0:00-1:10] Thumb-piano and breathy flute trade phrases over soft strings and pattering wooden percussion; the call passed between them. [1:10-2:10] An ethereal, airy wordless high choir floats in, gentle swell. [2:10-3:00] Glistening high string tremolo and a lone flute fading out. Mood: tender, melancholy, at rest.",
+      "reference": {
+        "title": "Shed Your Travails",
+        "length": "3:13",
+        "sources": "docs/design/music.md#sources"
+      },
+      "feel": "Slow, about 66 BPM, restful and tender; strings and woodwinds in gentle dialogue, a middle section with an ethereal wordless female choir, ending on glistening high string tremolo and a fading flute; soft dynamics with one gentle swell.",
+      "kept": "t3",
+      "measured": {
+        "seconds": 169.8,
+        "pulse_bpm": 66,
+        "centroid_hz": 1037,
+        "onsets_per_s": 2.66,
+        "loudness_by_tenth_db": [
+          -16,
+          -15,
+          -14,
+          -11,
+          -10,
+          -10,
+          -8,
+          -10,
+          -15,
+          -18
+        ]
+      }
+    },
+    {
+      "id": "battle-ambush",
+      "role": "battle",
+      "minutes": 2.2,
+      "axes": "Battle music, about 2 minutes 30, 140 BPM, D minor, starts at once at full intensity. [0:00-1:00] Driving fast low-string ostinato with syncopated stabbing accents, pounding log drums and bone clackers, conch horns shout the four-note call. [1:00-1:35] A calmer, tense middle: drone, quiet drum pulse. [1:35-2:30] The driving section returns, loud, ends on a hit. Mood: sudden danger.",
+      "reference": {
+        "title": "Ambush",
+        "length": "2:33",
+        "sources": "docs/design/music.md#sources"
+      },
+      "feel": "Fast, about 140 BPM; driving violin ostinato with syncopated accents; ABA form with a calmer middle section; sudden start at full intensity, loud, tense.",
+      "kept": "t3",
+      "measured": {
+        "seconds": 152.1,
+        "pulse_bpm": 70,
+        "centroid_hz": 1619,
+        "onsets_per_s": 2.87,
+        "loudness_by_tenth_db": [
+          -13,
+          -12,
+          -11,
+          -12,
+          -14,
+          -13,
+          -13,
+          -11,
+          -10,
+          -14
+        ]
+      }
+    },
+    {
+      "id": "battle-hunt",
+      "role": "battle",
+      "minutes": 2.2,
+      "axes": "Battle music, about 2 minutes 15, 132 BPM, E minor, relentless. Driving low-string ostinato and hand drums never let up; conch horns in bright stacked open fourths and fifths ring above; rhythmic wordless throat grunts; the four-note call in the horns. Loud throughout with a final surge. Mood: predatory chase.",
+      "reference": {
+        "title": "Hunter's Pursuit",
+        "length": "2:17",
+        "sources": "docs/design/music.md#sources"
+      },
+      "feel": "Fast, about 132 BPM; relentless forward pulse; stacked open fourths and fifths in high brass over driving strings; bright, hard, loud throughout.",
+      "kept": "t3",
+      "measured": {
+        "seconds": 136.1,
+        "pulse_bpm": 70,
+        "centroid_hz": 1438,
+        "onsets_per_s": 3.22,
+        "loudness_by_tenth_db": [
+          -17,
+          -14,
+          -14,
+          -11,
+          -10,
+          -12,
+          -13,
+          -11,
+          -10,
+          -11
+        ]
+      }
+    },
+    {
+      "id": "battle-deep",
+      "role": "battle",
+      "minutes": 2.2,
+      "axes": "Battle music, about 2 minutes, 126 BPM, C sharp minor, energetic and continuous. Fast flowing bowed string runs over heavy giant drums and a menacing drone; dark low horn swells from conch; the four-note call low and broad. Loud, constant motion, a heavier final section. Mood: monstrous, heavy, relentless.",
+      "reference": {
+        "title": "Bright Spears Dark Blood",
+        "length": "2:06",
+        "sources": "docs/design/music.md#sources"
+      },
+      "feel": "Fast, about 126 BPM; energetic, flowing fast violin lines over strong percussion; continuous motion; loud, heroic and dark.",
+      "kept": "t3",
+      "measured": {
+        "seconds": 122.8,
+        "pulse_bpm": 68,
+        "centroid_hz": 2025,
+        "onsets_per_s": 3.26,
+        "loudness_by_tenth_db": [
+          -13,
+          -12,
+          -11,
+          -12,
+          -11,
+          -11,
+          -16,
+          -12,
+          -11,
+          -13
+        ]
+      }
+    },
+    {
+      "id": "battle-skirmish",
+      "role": "battle",
+      "minutes": 2.2,
+      "axes": "Battle music, about 2 minutes, 150 BPM, A minor, quick and nimble. Rapid falling string ostinato figures with syncopated counter-rhythms in wooden percussion; booming resonant log drums; one shrill reed flute and one fiddle as soloists; the four-note call fast on the flute. Loud, frantic. Mood: skirmish.",
+      "reference": {
+        "title": "Dance of Swords",
+        "length": "2:13",
+        "sources": "docs/design/music.md#sources"
+      },
+      "feel": "Fast, about 150 BPM; rapid descending violin ostinato figures with syncopated counter-rhythms; booming resonant drums against one or two solo instruments; the main theme's material returns; loud, nimble.",
+      "kept": "t2",
+      "measured": {
+        "seconds": 121.0,
+        "pulse_bpm": 76,
+        "centroid_hz": 1738,
+        "onsets_per_s": 2.93,
+        "loudness_by_tenth_db": [
+          -17,
+          -14,
+          -11,
+          -12,
+          -10,
+          -13,
+          -13,
+          -11,
+          -10,
+          -11
+        ]
+      }
+    },
+    {
+      "id": "battle-war",
+      "role": "battle",
+      "minutes": 2.2,
+      "axes": "Battle music, about 2 minutes, 120 BPM, G minor, martial. Minimalist repeating war-drum patterns on deep resonant log drums carry it, forceful and insistent; a massed wordless chanting choir and few other instruments above; the four-note call as a rallying cry. Loud from start to end, building in weight. Mood: defiant.",
+      "reference": {
+        "title": "Drumbeats of the Dunmer",
+        "length": "2:03",
+        "sources": "docs/design/music.md#sources"
+      },
+      "feel": "Moderate-fast, about 120 BPM; stripped-back, minimalist repeating drum rhythms needing a resonant, forceful sound; few instruments above the drums; martial, insistent, loud.",
+      "kept": "t2",
+      "measured": {
+        "seconds": 120.3,
+        "pulse_bpm": 60,
+        "centroid_hz": 1499,
+        "onsets_per_s": 3.0,
+        "loudness_by_tenth_db": [
+          -18,
+          -14,
+          -12,
+          -12,
+          -10,
+          -10,
+          -10,
+          -14,
+          -10,
+          -15
+        ]
+      }
+    },
+    {
+      "id": "battle-water",
+      "role": "battle",
+      "minutes": 2.2,
+      "axes": "Battle music, about 2 minutes, 128 BPM, B minor, brooding. Sparse, repetitive churning rhythm on hollow gourds and wood like splashing water, swirling string figures rising and falling, low reeds with the four-note call; surges of intensity like a storm. Mood: chaotic, drowning.",
+      "reference": {
+        "title": "Stormclouds on the Battlefield",
+        "length": "2:11",
+        "sources": "docs/design/music.md#sources"
+      },
+      "feel": "Moderate-fast, about 128 BPM; sparse, repetitive rhythmic writing; dark, brooding, churning; loud with surges.",
+      "kept": "t3",
+      "measured": {
+        "seconds": 122.7,
+        "pulse_bpm": 66,
+        "centroid_hz": 1419,
+        "onsets_per_s": 2.71,
+        "loudness_by_tenth_db": [
+          -21,
+          -15,
+          -15,
+          -12,
+          -8,
+          -8,
+          -15,
+          -14,
+          -11,
+          -10
+        ]
+      }
+    },
+    {
+      "id": "battle-last",
+      "role": "battle",
+      "minutes": 2.2,
+      "axes": "Battle music, about 2 minutes, 136 BPM, F minor, desperate. The first seconds announce the fight with a bold full-ensemble hit; driving drums and full low strings; the choir swells; tension builds to a climax with the four-note call at full force. Loud. Mood: desperate last stand.",
+      "reference": {
+        "title": "Knight's Charge",
+        "length": "2:05",
+        "sources": "docs/design/music.md#sources"
+      },
+      "feel": "Fast, about 136 BPM; a battle theme whose opening seconds announce a fight; bold brass and strings over drums; driving, heroic, builds tension to a climax; loud.",
+      "kept": "t3",
+      "measured": {
+        "seconds": 120.5,
+        "pulse_bpm": 68,
+        "centroid_hz": 1968,
+        "onsets_per_s": 3.06,
+        "loudness_by_tenth_db": [
+          -18,
+          -12,
+          -12,
+          -13,
+          -12,
+          -11,
+          -10,
+          -10,
+          -10,
+          -13
+        ]
+      }
+    },
+    {
+      "id": "sting-levelup",
+      "role": "sting: level up",
+      "minutes": 0.25,
+      "axes": "A short triumphant sting, 15 seconds long. [0:00-0:10] One bright rising flourish: the four-note call on conch and flute over a single log-drum hit and a bright major string chord, D major. [0:10-0:15] the chord held and fading to silence.",
+      "reference": {
+        "title": "Triumphant",
+        "length": "0:14",
+        "sources": "docs/design/music.md#sources"
+      },
+      "feel": "A short jingle, about 14 seconds: one bright, rising, triumphant flourish on brass and strings in a major key, ending on a held chord.",
+      "kept": "t2",
+      "measured": {
+        "seconds": 59.3,
+        "pulse_bpm": 60,
+        "centroid_hz": 1708,
+        "onsets_per_s": 2.82,
+        "loudness_by_tenth_db": [
+          -14,
+          -15,
+          -11,
+          -11,
+          -10,
+          -12,
+          -12,
+          -13,
+          -14,
+          -21
+        ]
+      },
+      "cut_s": 8.25
+    },
+    {
+      "id": "sting-death",
+      "role": "sting: death",
+      "minutes": 0.2,
+      "axes": "A short mournful sting about twelve seconds long: the four-note call slowed on low reed flute over a fading drone and a single low drum, then silence. D minor.",
+      "reference": {
+        "title": "Fate's Quickening",
+        "length": "0:17",
+        "sources": "docs/design/music.md#sources"
+      },
+      "feel": "A short jingle, about 17 seconds: a falling, mournful gesture, minor, low, ending in silence.",
+      "kept": "t1",
+      "measured": {
+        "seconds": 61.4,
+        "pulse_bpm": 81,
+        "centroid_hz": 722,
+        "onsets_per_s": 2.12,
+        "loudness_by_tenth_db": [
+          -13,
+          -14,
+          -10,
+          -12,
+          -10,
+          -12,
+          -10,
+          -13,
+          -12,
+          -19
+        ]
+      },
+      "cut_s": 11.75
+    },
+    {
+      "id": "sting-discovery",
+      "role": "sting: discovery",
+      "minutes": 0.25,
+      "axes": "A short wondering sting, 15 seconds long. [0:00-0:10] Shimmering thumb-piano and an airy wordless humming choir rise into the four-note call, one soft drum, A major, luminous. [0:10-0:15] the choir chord held and fading to silence.",
+      "reference": {
+        "title": "The Prophecy Fulfilled",
+        "length": "1:11",
+        "sources": "docs/design/music.md#sources"
+      },
+      "feel": "Slow; angelic choir and a solo high voice bring a starry-eyed sense of wonder; soft, rising, luminous.",
+      "kept": "t3",
+      "measured": {
+        "seconds": 61.9,
+        "pulse_bpm": 83,
+        "centroid_hz": 1168,
+        "onsets_per_s": 2.62,
+        "loudness_by_tenth_db": [
+          -18,
+          -14,
+          -13,
+          -12,
+          -12,
+          -12,
+          -11,
+          -11,
+          -12,
+          -19
+        ]
+      },
+      "cut_s": 10.5
+    }
   ]
 }

@@ -2,25 +2,179 @@
   "about": "Generation manifest: piece -> take -> fal request id (google/lyria-3.5, $0.10 per generation, 2026-11-12). A restart reads results by request id and never resubmits. Audio is never committed; kept files live at s3://argonia-private-050977237313/nw/music/.",
   "model": "google/lyria-3.5 via fal.ai",
   "takes": {
-    "theme": {"t1": "01a1d03f-67d8-7710-a6a2-6809d80d46e6"},
-    "explore-mist": {"t1": "01a1d041-0253-7330-986c-e2b1f8433720"},
-    "explore-canopy": {"t1": "01a1d041-013d-7dc0-b586-51f6f1adb5f1"},
-    "explore-river": {"t1": "01a1d041-0253-7330-986c-e2ac151e5909"},
-    "explore-hist": {"t1": "01a1d041-0250-7641-9174-d3755b619af6"},
-    "explore-coast": {"t1": "01a1d041-0228-7af0-9572-d4630a98daa1"},
-    "explore-highland": {"t1": "01a1d041-01e0-74d3-83a2-57e990d1d08b"},
-    "explore-night": {"t1": "01a1d041-0229-7222-b1a3-ee39e2da1f7f"},
-    "explore-rain": {"t1": "01a1d041-024e-7220-946d-4247ba37227d"},
-    "battle-ambush": {"t1": "01a1d041-08ef-7162-907f-42c6af27d6bf"},
-    "battle-hunt": {"t1": "01a1d041-08ed-7181-8838-ce44140e64a0"},
-    "battle-deep": {"t1": "01a1d041-08da-7621-9a15-9f71005ef6be"},
-    "battle-skirmish": {"t1": "01a1d041-08bc-7432-ba28-0d6ab7cb4540"},
-    "battle-war": {"t1": "01a1d041-0948-78a3-afa2-c033c4b22d52"},
-    "battle-water": {"t1": "01a1d041-0904-7070-ac86-bb1c46da2b0c"},
-    "battle-last": {"t1": "01a1d041-08b9-7751-829f-5c3fd0f3cd6a"},
-    "sting-levelup": {"t1": "01a1d041-08d4-7382-8a4a-23c839613de5"},
-    "sting-death": {"t1": "01a1d041-107e-7450-866a-ccafc2fbd91c"},
-    "sting-discovery": {"t1": "01a1d041-10d0-7d71-8bfc-1f37e8d9beba"}
+    "theme": {
+      "t1": "01a1d03f-67d8-7710-a6a2-6809d80d46e6"
+    },
+    "explore-mist": {
+      "t1": "01a1d041-0253-7330-986c-e2b1f8433720",
+      "t2": "01a1d04f-96d8-7ae1-b6c5-7d6dc99b73f1",
+      "t3": "01a1d04f-961b-7f42-bfcb-efcccb441a3b",
+      "t4": "01a1d04f-962a-7c40-9444-67d57f9901ff"
+    },
+    "explore-canopy": {
+      "t1": "01a1d041-013d-7dc0-b586-51f6f1adb5f1",
+      "t2": "01a1d04f-9721-75e0-9dda-5cfc32942457",
+      "t3": "01a1d04f-966e-7d41-b3e0-ebe53b1e8661",
+      "t4": "01a1d04f-961e-7121-95cf-08338c645c91"
+    },
+    "explore-river": {
+      "t1": "01a1d041-0253-7330-986c-e2ac151e5909",
+      "t2": "01a1d04f-9629-7ff1-9e85-9d5930adb3ae",
+      "t3": "01a1d04f-9633-7542-9ebc-78b89f4d7110"
+    },
+    "explore-hist": {
+      "t1": "01a1d041-0250-7641-9174-d3755b619af6",
+      "t2": "01a1d050-2219-7ad3-92e4-80ac27776f30",
+      "t3": "01a1d050-22ce-7cb0-81c0-6c5851b83cb4"
+    },
+    "explore-coast": {
+      "t1": "01a1d041-0228-7af0-9572-d4630a98daa1",
+      "t2": "01a1d050-2245-7c10-83cc-31087471135b",
+      "t3": "01a1d050-22bf-7521-a6b9-f299aec52ac6"
+    },
+    "explore-highland": {
+      "t1": "01a1d041-01e0-74d3-83a2-57e990d1d08b",
+      "t2": "01a1d050-22bc-7840-becd-c9454ea73027",
+      "t3": "01a1d050-2273-7b31-bfb2-601291b605b5"
+    },
+    "explore-night": {
+      "t1": "01a1d041-0229-7222-b1a3-ee39e2da1f7f",
+      "t2": "01a1d050-22bf-7ad2-8eca-68b7e4f86d2b",
+      "t3": "01a1d050-2231-73e0-a7b3-2171ffb7b2cc"
+    },
+    "explore-rain": {
+      "t1": "01a1d041-024e-7220-946d-4247ba37227d",
+      "t2": "01a1d050-e5c1-7e20-8a10-05a5cb1257e9",
+      "t3": "01a1d050-e608-7f82-a159-207a5e4a85b3"
+    },
+    "battle-ambush": {
+      "t1": "01a1d041-08ef-7162-907f-42c6af27d6bf",
+      "t2": "01a1d050-e5fa-7433-9ad8-8a85e6a27c4a",
+      "t3": "01a1d050-e63b-74f2-bd30-17b5d78765a6"
+    },
+    "battle-hunt": {
+      "t1": "01a1d041-08ed-7181-8838-ce44140e64a0",
+      "t2": "01a1d050-e60a-7ec3-94b2-d6efb7b51875",
+      "t3": "01a1d050-e602-7092-bd5e-16f4eefdedcd"
+    },
+    "battle-deep": {
+      "t1": "01a1d041-08da-7621-9a15-9f71005ef6be",
+      "t2": "01a1d050-e5fd-7f40-8af4-1eb545f1ad2c",
+      "t3": "01a1d050-e627-7532-92d7-7b91871ed411"
+    },
+    "battle-skirmish": {
+      "t1": "01a1d041-08bc-7432-ba28-0d6ab7cb4540",
+      "t2": "01a1d051-5055-73a2-8777-0a0c23450175",
+      "t3": "01a1d051-5010-71a1-bdb5-e3e7d5a9da31"
+    },
+    "battle-war": {
+      "t1": "01a1d041-0948-78a3-afa2-c033c4b22d52",
+      "t2": "01a1d051-5027-7163-a3de-314b79a08813",
+      "t3": "01a1d051-505b-78d0-897d-29fc30bd5066"
+    },
+    "battle-water": {
+      "t1": "01a1d041-0904-7070-ac86-bb1c46da2b0c",
+      "t2": "01a1d051-50e5-7780-af6d-e579d05d5bbf",
+      "t3": "01a1d051-506b-7be3-96b4-9684ba6c2b06"
+    },
+    "battle-last": {
+      "t1": "01a1d041-08b9-7751-829f-5c3fd0f3cd6a",
+      "t2": "01a1d051-50e4-7da3-8f29-7ea35dfa0934",
+      "t3": "01a1d051-5087-7041-b01d-2b42ddf239a0"
+    },
+    "sting-levelup": {
+      "t1": "01a1d041-08d4-7382-8a4a-23c839613de5",
+      "t2": "01a1d051-a220-7433-b93f-f78b894c53a2",
+      "t3": "01a1d051-a212-75b3-b3b9-3a1e35b425e3"
+    },
+    "sting-death": {
+      "t1": "01a1d041-107e-7450-866a-ccafc2fbd91c",
+      "t2": "01a1d051-a2f4-76e1-91f1-f080804b2d39",
+      "t3": "01a1d051-a24a-7173-9484-d0649fb4f255"
+    },
+    "sting-discovery": {
+      "t1": "01a1d041-10d0-7d71-8bfc-1f37e8d9beba",
+      "t2": "01a1d051-a243-7261-93f9-bcd8f884df57",
+      "t3": "01a1d051-a257-7623-9ace-9e0de7ad3e8d"
+    }
   },
-  "files": {"theme": {"t1": "https://v3b.fal.media/files/b/0ab22eb1/VQQHDfbLtYkEzgV4u-Lco_output.mp3"}}
+  "files": {
+    "theme": {
+      "t1": "https://v3b.fal.media/files/b/0ab22eb1/VQQHDfbLtYkEzgV4u-Lco_output.mp3"
+    },
+    "explore-mist": {
+      "t2": "https://v3b.fal.media/files/b/0ab22f22/W5iGCcobCCn4wKGFttZeN_output.mp3",
+      "t3": "https://v3b.fal.media/files/b/0ab22f1b/iJHg2BCA85L8l-faHO1o9_output.mp3",
+      "t4": "https://v3b.fal.media/files/b/0ab22f1b/km2SNCas5cjiVC4EcJ1l1_output.mp3"
+    },
+    "explore-canopy": {
+      "t2": "https://v3b.fal.media/files/b/0ab22f22/zSTHQL5Slh8zbh8chCnH6_output.mp3",
+      "t3": "https://v3b.fal.media/files/b/0ab22f20/ZS7bpOQXc1HU3_w8n60OZ_output.mp3",
+      "t4": "https://v3b.fal.media/files/b/0ab22f1e/L4bV1ixeetIhG1ukVf2nK_output.mp3"
+    },
+    "explore-river": {
+      "t2": "https://v3b.fal.media/files/b/0ab22f1f/T3nR4Sav-YOoPDwlm4rui_output.mp3",
+      "t3": "https://v3b.fal.media/files/b/0ab22f21/hrGtWQpeFXK67gfow03lp_output.mp3"
+    },
+    "explore-hist": {
+      "t2": "https://v3b.fal.media/files/b/0ab22f23/AqCpj3kLMPrTOU6iakQoy_output.mp3",
+      "t3": "https://v3b.fal.media/files/b/0ab22f2e/dcFMa1XMf7Ibu1r5HDKJO_output.mp3"
+    },
+    "explore-coast": {
+      "t2": "https://v3b.fal.media/files/b/0ab22f27/jk4fkBpzFSimBU5rIcje-_output.mp3",
+      "t3": "https://v3b.fal.media/files/b/0ab22f2c/PfzEdUXO1rC9_nY-mSo8r_output.mp3"
+    },
+    "explore-highland": {
+      "t2": "https://v3b.fal.media/files/b/0ab22f2d/efrno_TLaN11pSzAhf26s_output.mp3",
+      "t3": "https://v3b.fal.media/files/b/0ab22f28/Y4TOp0mo7RaCSntYIKWAG_output.mp3"
+    },
+    "explore-night": {
+      "t2": "https://v3b.fal.media/files/b/0ab22f2b/CBchU4J2iYxQJb5ipcnyh_output.mp3",
+      "t3": "https://v3b.fal.media/files/b/0ab22f25/Ma6UQ9kAvvbXoJ076X8ga_output.mp3"
+    },
+    "explore-rain": {
+      "t2": "https://v3b.fal.media/files/b/0ab22f2f/crK9hNQcHacp_fryg3nyg_output.mp3",
+      "t3": "https://v3b.fal.media/files/b/0ab22f33/OwTymxDYetxKk9nOai9a4_output.mp3"
+    },
+    "battle-ambush": {
+      "t2": "https://v3b.fal.media/files/b/0ab22f2f/DYmdAB41MdiPmizoQCvSt_output.mp3",
+      "t3": "https://v3b.fal.media/files/b/0ab22f36/n0WgzUtvs0cfyR4DkVYU5_output.mp3"
+    },
+    "battle-hunt": {
+      "t2": "https://v3b.fal.media/files/b/0ab22f33/6T-siwnkyG3km9hwFm-i1_output.mp3",
+      "t3": "https://v3b.fal.media/files/b/0ab22f32/2dZv_TsmN8YFfJH7zZ56Q_output.mp3"
+    },
+    "battle-deep": {
+      "t2": "https://v3b.fal.media/files/b/0ab22f30/bhyi1x8b8zrOmdgWDzymR_output.mp3",
+      "t3": "https://v3b.fal.media/files/b/0ab22f38/XdLd-Gas9sF4J3tAS391D_output.mp3"
+    },
+    "battle-skirmish": {
+      "t2": "https://v3b.fal.media/files/b/0ab22f3a/MpRIEKJI3AN2z13RmvOo-_output.mp3",
+      "t3": "https://v3b.fal.media/files/b/0ab22f37/DWycYZwlghLEZOm4YPLLL_output.mp3"
+    },
+    "battle-war": {
+      "t2": "https://v3b.fal.media/files/b/0ab22f3b/dEUiEmc6dc2kpeSbVj1ss_output.mp3",
+      "t3": "https://v3b.fal.media/files/b/0ab22f3b/D8zKHlqYnQOMxVOU5BgTN_output.mp3"
+    },
+    "battle-water": {
+      "t2": "https://v3b.fal.media/files/b/0ab22f3e/Bkn__k-PzSecPsWd96W4E_output.mp3",
+      "t3": "https://v3b.fal.media/files/b/0ab22f3c/6yHsZ0BoHYa8K6g4HBKyK_output.mp3"
+    },
+    "battle-last": {
+      "t2": "https://v3b.fal.media/files/b/0ab22f3f/tsMLN66MDFfNrTV9X0sgw_output.mp3",
+      "t3": "https://v3b.fal.media/files/b/0ab22f3e/RTeT8ki-Mqe5GueiAD8f1_output.mp3"
+    },
+    "sting-levelup": {
+      "t2": "https://v3b.fal.media/files/b/0ab22f40/6YIeptbAfzBzWGkhjDiZj_output.mp3",
+      "t3": "https://v3b.fal.media/files/b/0ab22f40/nlW-02i5EUmgYs0orBdGv_output.mp3"
+    },
+    "sting-death": {
+      "t2": "https://v3b.fal.media/files/b/0ab22f43/h2taL10m5PBZ27H7ZvatB_output.mp3",
+      "t3": "https://v3b.fal.media/files/b/0ab22f43/csb1nCMPFr683KNX4poxn_output.mp3"
+    },
+    "sting-discovery": {
+      "t2": "https://v3b.fal.media/files/b/0ab22f42/5Z5pX-8l5hjIkHpeYoJxI_output.mp3",
+      "t3": "https://v3b.fal.media/files/b/0ab22f42/eXjSAa9a_RhLwEGyLlkc6_output.mp3"
+    }
+  }
 }

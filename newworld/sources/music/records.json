@@ -1,0 +1,22 @@
+{
+  "about": "How the soundtrack's slots (pieces.json) become the new world's music records (tools/ArgoniaPlugin/NewWorldMusic.cs; docs/design/music.md 'In game'). Each region plays its atmosphere class's exploration type (the class from newworld/sources/atmosphere/regions.json); its day pieces play 06:00-20:00 and the night pieces 20:00-06:00, as Skyrim's explore tracks are conditioned on GetCurrentTime. Combat, death, level-up and discovery are Skyrim's default music types: the battle pieces and stings are added to them for the new world only, and Skyrim's own tracks in them are kept out of the new world.",
+  "files": "Data\\Music\\argonia\\{slot}.wav",
+  "day": {
+    "blackwater-swamp": ["explore-mist", "explore-hist", "explore-rain"],
+    "green-marsh": ["explore-rain", "explore-canopy", "explore-mist"],
+    "river-corridor": ["explore-river", "explore-canopy"],
+    "rainforest": ["explore-canopy", "explore-hist", "explore-river"],
+    "highland": ["explore-highland", "explore-river"],
+    "coast-east": ["explore-coast", "explore-river", "explore-mist"],
+    "coast-south": ["explore-coast", "explore-river", "explore-mist"],
+    "coast-west": ["explore-coast", "explore-river", "explore-mist"],
+    "island": ["explore-coast", "explore-highland"]
+  },
+  "night": ["explore-night", "explore-hist"],
+  "world": "blackwater-swamp",
+  "combat": ["battle-ambush", "battle-hunt", "battle-deep", "battle-skirmish", "battle-war", "battle-water", "battle-last"],
+  "boss": ["battle-last", "battle-deep"],
+  "death": ["sting-death"],
+  "levelup": ["sting-levelup"],
+  "discovery": ["sting-discovery"]
+}

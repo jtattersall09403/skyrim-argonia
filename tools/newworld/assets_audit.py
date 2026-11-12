@@ -67,6 +67,8 @@ def norm_asset(path: str) -> str:
     ext = Path(path.lower()).suffix
     root = ROOTS.get(ext, "meshes")
     p = path.replace("/", "\\").lower()
+    if p.lstrip("\\").removeprefix("data\\").startswith("music\\"):  # a music track (MUST ANAM) is Data\Music\..., not sound
+        root = "music"
     cut = p.find("\\data\\" + root + "\\")      # an authoring tool's absolute path: the game reads from data\
     return norm(p[cut + 6:] if cut >= 0 else p, root)
 
