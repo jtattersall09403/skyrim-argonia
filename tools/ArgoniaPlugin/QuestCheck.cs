@@ -18,6 +18,9 @@ using Mutagen.Bethesda.Skyrim;
 //   people   no two enabled people of one name stand in reach of each other during a simulated run
 //   offers   a topic gated on a stage has an upper bound below the first ending
 //   doors    a key-locked door of ours is opened or its key given on every ending
+//   form-built quests (quests of ours built by QuestForm, and the mortal watch) are judged by the rules of FormCheck.cs
+//   instead (runonce, aliases, scripts, package, zones-scenes, target-on) and are left out of the rules above; `mortal`
+//   runs once over the whole plugin.
 // Prints one `FAIL <quest> <rule>: <what>` line per fault and a summary; exit 1 on any failure.
 sealed record Spot(string Cell, bool Interior, string World, float X, float Y, float Z)
 {
@@ -571,9 +574,10 @@ static partial class QuestCheck
         var mods = Survey.Load(paths.Append(esp));
         var m = Load(mods, papyrusDir);
         var fails = All(m);
+        fails.AddRange(FormLoadAndRun(mods, out var forms));
         foreach (var f in fails) Console.WriteLine(f);
         var n = m.Checked.Count();
-        Console.WriteLine($"questcheck: {n} quests, {fails.Count} failed checks");
+        Console.WriteLine($"questcheck: {n} quests, {forms} form-built quests, {fails.Count} failed checks");
         return fails.Count == 0 ? 0 : 1;
     }
 
@@ -700,7 +704,7 @@ static partial class QuestCheck
     {
         var e = q.EditorID ?? "";
         var res = new Q { Key = q.FormKey.ToString(), Edid = e, RunOnce = q.Flags.HasFlag(Quest.Flag.RunOnce), StartGame = q.Flags.HasFlag(Quest.Flag.StartGameEnabled),
-            Check = e.StartsWith("ARG_") && !e.StartsWith("ARG_BlockTest") && e != "ARG_Opening"
+            Check = e.StartsWith("ARG_") && !e.StartsWith("ARG_BlockTest") && e != "ARG_Opening" && !IsFormBuilt(q)
                 && q.Stages.Any(s => s.Index > 0) }; // a story quest; a dialogue-only quest (ARG_Talk) has no stage but 0
         foreach (var s in q.Stages)
             res.Stages.Add(new St { Index = s.Index, StartUp = s.Flags.HasFlag(QuestStage.Flag.StartUpStage),
@@ -870,6 +874,7 @@ static partial class QuestCheck
         T("offers fail: no upper bound", true, Offers, m => q(m).Infos.Add(new Info { Topic = "T", Conds = [new Cond("q1", Op.Ge, 10)] }));
         T("doors pass", false, Doors, m => { Door(m); m.Scripts["QF"].Fns["Fragment_90"].Body.Add(new Stmt("give", "Key", [])); });
         T("doors fail: locked out", true, Doors, Door);
+        bad += FormSelfTest();
         Console.WriteLine(bad == 0 ? "questcheck selftest: all rules judge their fixtures" : $"questcheck selftest: {bad} misjudged");
         return bad == 0 ? 0 : 1;
     }
