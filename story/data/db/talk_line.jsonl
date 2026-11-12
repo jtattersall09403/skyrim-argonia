@@ -617,10 +617,10 @@
 {"talker":"0934C1:Black Marsh North.esp","topic":"talk.greet-friend","ord":1,"text":"Well. You've kept your head down and your hands clean, which is more than most manage. Good to see you, my friend."}
 {"talker":"0934C1:Black Marsh North.esp","topic":"talk.greet-stranger","ord":1,"text":"I'm on watch, civilian. State your business and keep your voice down."}
 {"talker":"0934C1:Black Marsh North.esp","topic":"talk.greet-stranger","ord":2,"text":"Yes, civilian? Ask what you need to ask. I'm on duty."}
-{"talker":"0934C1:Black Marsh North.esp","topic":"talk.here","ord":1,"text":"The signposts are about ten paces south-south-west of here, civilian. Read them before you go wandering about."}
+{"talker":"0934C1:Black Marsh North.esp","topic":"talk.here","ord":1,"text":"The signposts are just south-south-west of here, civilian. Read them before you go wandering about."}
 {"talker":"0934C1:Black Marsh North.esp","topic":"talk.lore","ord":1,"text":"Ask Decimus Pell why the Owing is defended, civilian. I hold that it is fair, and I keep order on that footing."}
 {"talker":"0934C1:Black Marsh North.esp","topic":"talk.self","ord":1,"text":"Rufio Casca, soldier of the company. I guard the west cages with the Argonian guards, and I say the Owing is fair to anyone who asks."}
-{"talker":"0934C1:Black Marsh North.esp","topic":"talk.someone","ord":1,"text":"Wazei-Ru has the cage doors on the west side, about ten paces north-north-east of here. Soft on the prisoners, and I've told Wazei-Ru so."}
+{"talker":"0934C1:Black Marsh North.esp","topic":"talk.someone","ord":1,"text":"Wazei-Ru has the cage doors on the west side, just north-north-east of here. Soft on the prisoners, and I've told Wazei-Ru so."}
 {"talker":"0934C1:Black Marsh North.esp","topic":"talk.trade","ord":1,"text":"The company keeps watch on the west cages for the field-owners, civilian. We keep the doors shut and the prisoners where they belong."}
 {"talker":"0934C2:Black Marsh North.esp","topic":"talk.directions","ord":1,"text":"Temple Pass, traveller? Follow the path north from here, some hundred and fifty paces, until you reach the stone tower on your left. Then walk north over open ground, some seven hundred paces, and you are there. It is a fair step, so go steady."}
 {"talker":"0934C2:Black Marsh North.esp","topic":"talk.greet-friend","ord":1,"text":"Sit a moment if you like. My feet are glad of the excuse."}
