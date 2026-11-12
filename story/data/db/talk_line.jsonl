@@ -903,13 +903,13 @@
 {"talker":"141561:Black Marsh North.esp","topic":"talk.rumours","ord":1,"text":"Never-Sold has put money aside to buy a woman out of her Owing on the estate north of Blackrose. He is looking for someone to lend a hand. I know what an Owing weighs. Look for Never-Sold in the Chainbreakers' house, in the north district."}
 {"talker":"141561:Black Marsh North.esp","topic":"talk.self","ord":1,"text":"I am Pays-In-Reeds. I weave mats and baskets from marsh reed. I make one mat a day, and that pays my owing. I am working toward my last mat."}
 {"talker":"141561:Black Marsh North.esp","topic":"talk.someone","ord":1,"text":"Skink is the child who plays by the jail's standing stone. You will find that child just west-north-west of here. That child should be in a home, not out by a jail."}
-{"talker":"1454E3:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"Walk north-west, about two hundred and twenty paces. Black Rose Jail is there."}
+{"talker":"1454E3:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"Black Rose Jail? It is a short way north-west of here. Go that way and you will reach it."}
 {"talker":"1454E3:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"My hands will keep working, but I am glad of the company. Sit a while."}
 {"talker":"1454E3:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Yes? Mind the net, please. I am in the middle of a knot."}
-{"talker":"1454E3:Black Marsh.esm","topic":"talk.here","ord":1,"text":"This is Black Rose, the market dock. The cooking fire is about ten paces west-south-west of here. A boat lies about twenty-five paces south-south-west."}
+{"talker":"1454E3:Black Marsh.esm","topic":"talk.here","ord":1,"text":"This is Black Rose, the market dock. The cooking fire is just west-south-west of here. A boat lies just south-south-west."}
 {"talker":"1454E3:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"Ask Raxa-Tum about Lilmoth. I was born here and have never left, so I can tell you nothing of it."}
 {"talker":"1454E3:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Lux Ha. I mend the nets that come off the market boats. There is always more to mend. I was born in Black Rose and have never left it."}
-{"talker":"1454E3:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"You will usually find Nuxi-Ra, the street vendor at the market, about ten paces north of here."}
+{"talker":"1454E3:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"You will usually find Nuxi-Ra, the street vendor at the market, just north of here."}
 {"talker":"1454F2:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"Walk south-west about a hundred and fifteen paces, to the longboat on your left. Then west along the boards, sixty-five paces. The cooking fire is there."}
 {"talker":"1454F2:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"Few people come out this far. You are always welcome, my friend. Sit by the water."}
 {"talker":"1454F2:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Yes? Say what you want."}
