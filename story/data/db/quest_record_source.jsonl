@@ -27,15 +27,14 @@
 {"quest_id":"quest.local.lq30","source":"bmv","value":"bmv_placement 08D5E9 (the gate soldier, the levy warden); bmv_npc 17BC83 (the viper's base); bmv_cell 0D787F:Black Marsh.esm (the gate), 0D7883:Black Marsh.esm (the roots in the shallows, navmesh, no NPCs)"}
 {"quest_id":"quest.local.lq30","source":"ledger","value":"we.lq30.beast, we.lq30.youth, we.clean.helstrom"}
 {"quest_id":"quest.local.lq30","source":"lore"}
-{"quest_id":"quest.main.mq01","source":"bmv","value":"bmv_cell 0F9178:Black Marsh.esm (ship at Dock1), 00591F:Black Marsh.esm (Lilmoth's dock, navmesh 079823) (pier door 005AB4, the hold's door 0F9399); census docs/research/bmv/census.md"}
-{"quest_id":"quest.main.mq01","source":"bmvPeople","value":"none of BM&V's own actors is used by the quest; every person is a registry person or a ledger person"}
-{"quest_id":"quest.main.mq01","source":"ledger","value":"quest_adaptation, quest_host, quest_world_edit and world_edit of quest.main.mq01 (we.mq01.start, .barge-crew, .broker, .gang, .families, .camp, .cell, .no-valenwood, .no-welcome, .hold-location; we.clean.lilmoth, we.clean.hereguardplantation)"}
+{"quest_id":"quest.main.mq01","source":"bmv","value":"bmv_cell 0F9178:Black Marsh.esm (01ShipDUPLICATE001, the hold; door 0F9399 to deck door 005AB4); 00591F:Black Marsh.esm (Dock1, the pier, navmesh 079823; the pier beside the ship at 5350,-7800); 0FE7F7:Black Marsh.esm (01CabinIntsining1, \"House\"; door 0FE95A at 31553,-7639, inner side 0FE832); map marker 082193:Black Marsh North.esp (Lilmoth Dock, 30909,-2852); the old lighthouse ImpExtLighthouse01 shell (7717,-4443); the sailing ship 0ShipImperial (31851,-2027) with its door 0AA664"}
+{"quest_id":"quest.main.mq01","source":"ledger","value":"we.mq01.start, we.mq01.hold-location, we.mq01.no-valenwood, we.mq01.no-welcome, we.mq01.gang, we.mq01.broker, we.mq03.house, we.mq03.door, we.clean.lilmoth, we.clean.hereguardplantation"}
 {"quest_id":"quest.main.mq01","source":"lore"}
-{"quest_id":"quest.main.mq01","source":"roster","value":"story/design/quests/36-cast-roster.md §55 (Cuts-the-Old-Knot)"}
-{"quest_id":"quest.main.mq03","source":"bmv","value":"bmv_cell 0FE7F7:Black Marsh.esm (House, Lilmoth), 0F9178:Black Marsh.esm (the hold), 00591F:Black Marsh.esm (the camp, Dock1), bmv_placement 0FE95A (house door)"}
-{"quest_id":"quest.main.mq03","source":"ledger","value":"we.mq03.reed, we.mq03.house, we.mq03.rooms, we.mq03.door, we.mq03.dream, we.mq03.hurt, we.mq03.jar-marks, we.mq01.camp (aftermath), we.mq01.broker, we.mq01.hold-location, we.clean.hereguardplantation, we.clean.lilmoth"}
+{"quest_id":"quest.main.mq01","source":"roster","value":"story/design/quests/36-cast-roster.md §55 (Nesh-Deeka; Cuts-the-Old-Knot)"}
+{"quest_id":"quest.main.mq03","source":"bmv","value":"bmv_cell 0F9178:Black Marsh.esm (the hold; door 0F9399 to deck door 005AB4); 0FE7F7:Black Marsh.esm (Salts-The-Catch's house, door 0FE95A); 00591F:Black Marsh.esm (Dock1, the pier at Hereguard Plantation)"}
+{"quest_id":"quest.main.mq03","source":"ledger","value":"we.mq03.sack, we.mq01.gang, we.mq03.house, we.mq03.door, we.mq01.hold-location, we.clean.lilmoth"}
 {"quest_id":"quest.main.mq03","source":"lore"}
-{"quest_id":"quest.main.mq03","source":"roster","value":"story/design/quests/36-cast-roster.md §55 (Nesh-Deeka; Never-Writes-Twice; Cuts-the-Old-Knot)"}
+{"quest_id":"quest.main.mq03","source":"roster","value":"story/design/quests/36-cast-roster.md §55 (Nesh-Deeka; Cuts-the-Old-Knot)"}
 {"quest_id":"quest.main.mq04","source":"bmv","value":"bmv_settlement bmv.village, bmv_cell 03978F:Black Marsh.esm, 039793:Black Marsh.esm; place_bmv place.mercantile-coast.low-reed-village"}
 {"quest_id":"quest.main.mq04","source":"ledger","value":"we.mq04.name, we.mq04.village, we.mq04.people, we.mq04.cell, we.mq04.items, we.mq04.leeches, we.clean.village"}
 {"quest_id":"quest.main.mq04","source":"lore"}

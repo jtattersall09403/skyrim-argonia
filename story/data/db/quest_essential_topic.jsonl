@@ -51,10 +51,13 @@
 {"quest_id":"quest.local.lv40","ord":1,"value":"topic.riverwalk-sounded-way"}
 {"quest_id":"quest.local.sx05","ord":0,"value":"topic.lot-four"}
 {"quest_id":"quest.local.sx06","ord":0,"value":"topic.unwritten-lot"}
-{"quest_id":"quest.main.mq01","ord":0,"value":"topic.mq01-the-roll"}
-{"quest_id":"quest.main.mq03","ord":0,"value":"topic.mq03-the-boat"}
-{"quest_id":"quest.main.mq03","ord":1,"value":"topic.mq03-the-attack"}
-{"quest_id":"quest.main.mq03","ord":2,"value":"topic.mq03-the-offer"}
+{"quest_id":"quest.main.mq01","ord":0,"value":"topic.mq01-not-on-roll"}
+{"quest_id":"quest.main.mq01","ord":1,"value":"topic.mq01-work"}
+{"quest_id":"quest.main.mq01","ord":2,"value":"topic.mq01-sent"}
+{"quest_id":"quest.main.mq01","ord":3,"value":"topic.mq01-join"}
+{"quest_id":"quest.main.mq03","ord":0,"value":"topic.mq03-errand"}
+{"quest_id":"quest.main.mq03","ord":1,"value":"topic.mq03-give-jar"}
+{"quest_id":"quest.main.mq03","ord":2,"value":"topic.mq03-taste"}
 {"quest_id":"quest.main.mq04","ord":0,"value":"topic.mq04-the-village"}
 {"quest_id":"quest.main.mq04","ord":1,"value":"topic.mq04-the-cut"}
 {"quest_id":"quest.main.mq05","ord":0,"value":"topic.mq05-the-word"}

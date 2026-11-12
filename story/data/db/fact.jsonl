@@ -579,30 +579,26 @@
 {"id":"fact.morrowind.border","says":"The border between the provinces is cold and resented on both sides."}
 {"id":"fact.morrowind.mournhold","says":"Argonian armies sacked Mournhold in the Fourth Era."}
 {"id":"fact.morrowind.north","says":"Morrowind is the Dunmer province north of the marsh."}
-{"id":"fact.mq01.blank-line","claim":"The roll has a line for me and no name on it.","ord":2,"from_ref":"t2","quest_id":"quest.main.mq01"}
-{"id":"fact.mq01.broker-holds","claim":"The broker on the pier at Lilmoth's dock holds the gang's months and hires them out to unload the lighters at Lilmoth's dock; my blank line is his to fill or to leave.","ord":1,"from_ref":"t9","quest_id":"quest.main.mq01"}
-{"id":"fact.mq01.clutch-dead","claim":"The camp's egg clutch died the night of the attack.","ord":10,"from_ref":"t7","quest_id":"quest.main.mq01"}
-{"id":"fact.mq01.courier-state","claim":"'The man who walks with the gang serves the state and will not say so.'.","ord":4,"from_ref":"t3","quest_id":"quest.main.mq01"}
-{"id":"fact.mq01.cutting-withdrew","claim":"The camp's Hist cutting withdrew the night of the attack.","ord":9,"from_ref":"t6","quest_id":"quest.main.mq01"}
-{"id":"fact.mq01.gang-hist","claim":"The gang families keep a Hist cutting from Nine Bends at their camp, with their clutch at its roots.","ord":5,"from_ref":"t1","quest_id":"quest.main.mq01"}
-{"id":"fact.mq01.her-face","claim":"'A tall Argonian woman with a knotted cord at her wrist led the attackers, and she let me live.'.","ord":7,"from_ref":"t5","quest_id":"quest.main.mq01"}
-{"id":"fact.mq01.owing-roll","claim":"Everyone on the broker's gang owes months, and the overseer adds months to the roll for food.","ord":0,"from_ref":"t2","quest_id":"quest.main.mq01"}
-{"id":"fact.mq01.roots-cut","claim":"'The cutting's roots to the clutch were cut before it withdrew.'.","ord":8,"from_ref":"t6","quest_id":"quest.main.mq01"}
-{"id":"fact.mq01.satchel","claim":"The leader of the attackers took the courier's satchel and nothing else.","ord":6,"from_ref":"t5","quest_id":"quest.main.mq01"}
-{"id":"fact.mq01.washed-out","claim":"Two of the gang have been kept from their Hist so long that their colour and markings have thinned.","ord":3,"from_ref":"t2","quest_id":"quest.main.mq01"}
-{"id":"fact.mq03.barge-gone","claim":"Wuleen-Sei marched the unhurt back to the barge at Lilmoth's dock; hurt hands are no hire.","ord":5,"from_ref":"t2","quest_id":"quest.main.mq03"}
-{"id":"fact.mq03.clean-cut","claim":"The cutting's roots were cut clean at the ring, one stroke each, by hands that knew where.","ord":0,"from_ref":"t1","quest_id":"quest.main.mq03"}
-{"id":"fact.mq03.cord-woman","claim":"The woman with the knotted cord at her wrist led the cell; she took the courier's satchel and left the cutting to her cutters.","ord":3,"from_ref":"t1","quest_id":"quest.main.mq03"}
-{"id":"fact.mq03.courier-token","claim":"The courier's brass tag on its strap fell through the burnt plank boards at the camp's fire into the families' sunk fish-trap below: he was the state's man.","ord":4,"from_ref":"t1","quest_id":"quest.main.mq03"}
-{"id":"fact.mq03.house-reed","claim":"Salts-The-Catch, a fish-trader, keeps the house for the Reed and asks nothing.","ord":7,"from_ref":"t3","quest_id":"quest.main.mq03"}
-{"id":"fact.mq03.jar-rings","claim":"Ring-marks of jars stand in the sap spilled on the shed floor: the cutters came with jars and filled them there.","ord":1,"from_ref":"t1","quest_id":"quest.main.mq03"}
-{"id":"fact.mq03.no-claim","claim":"The roll burnt in the camp's fire: nobody can show what I owe, or that I was ever on it.","ord":8,"from_ref":"t3","quest_id":"quest.main.mq03"}
-{"id":"fact.mq03.reed-named","claim":"Nesh-Deeka is of the Veiled Reed, the state's quiet service, which shows no face and wants a hand it can deny.","ord":9,"from_ref":"t3","quest_id":"quest.main.mq03"}
-{"id":"fact.mq03.reed-offer","claim":"Nesh-Deeka offers the Reed's protection, a door in Lilmoth and a stipend, on condition I serve the Reed.","ord":11,"from_ref":"t3","quest_id":"quest.main.mq03"}
-{"id":"fact.mq03.sap-cell","claim":"The Reed has word of a cell that cuts a Hist's roots and draws its sap into jars; the camp is the first work of it the Reed has seen.","ord":10,"from_ref":"t3","quest_id":"quest.main.mq03"}
-{"id":"fact.mq03.sap-fresh","claim":"The spilled sap is fresh, drawn at dusk, and the rings are many: the cell means to keep what it draws, so it is a long work and not a raid.","ord":2,"from_ref":"t1","quest_id":"quest.main.mq03"}
-{"id":"fact.mq03.satchel-hers","claim":"The courier's satchel was Nesh-Deeka's to see carried, and she says no more of it.","ord":6,"from_ref":"t2","quest_id":"quest.main.mq03"}
-{"id":"fact.mq03.witness-wanted","claim":"Nesh-Deeka wants the survivor's account of the cell's work, and then the Reed's people see the survivor home.","ord":12,"from_ref":"t3","quest_id":"quest.main.mq03"}
+{"id":"fact.mq01.camp-burned","claim":"Two nights ago the gang's camp up the estuary burned: a woman with a knotted cord at her wrist killed the courier who walked with the gang and took his satchel, which was Nesh-Deeka's.","ord":6,"from_ref":"t2","quest_id":"quest.main.mq01"}
+{"id":"fact.mq01.cutting-cut","claim":"The woman's people cut the camp's Hist cutting, a slip of the sacred tree the families' lives come from, from the eggs at its roots, and the eggs died.","ord":7,"from_ref":"t2","quest_id":"quest.main.mq01"}
+{"id":"fact.mq01.guest-pays","claim":"Salts-The-Catch, the fish-trader who sells the broker his gang's food, asked at the pier for anyone off the ship who saw the camp burn; her guest, Nesh-Deeka, pays for work.","ord":3,"from_ref":"t4","quest_id":"quest.main.mq01"}
+{"id":"fact.mq01.jar","claim":"Dives-Without-A-Rope carried aboard a jar one of the cutters dropped by the fire, and will not let it go.","ord":11,"from_ref":"t3","quest_id":"quest.main.mq01"}
+{"id":"fact.mq01.no-name","claim":"No line of the broker's work roll is mine: I owe him nothing, so he cannot hire me out, and he wants me off his pier.","ord":2,"from_ref":"t5","quest_id":"quest.main.mq01"}
+{"id":"fact.mq01.owing-roll","claim":"Everyone in the ship's hold works off an Owing, months of work owed for a debt or a wrong, and the broker Buys-The-Months holds their months on his work roll.","ord":0,"from_ref":"t0","quest_id":"quest.main.mq01"}
+{"id":"fact.mq01.port-hand","claim":"Ux-Xeek is the broker's port hand, who calls the gang out to the lighters.","ord":4,"from_ref":"t0","quest_id":"quest.main.mq01"}
+{"id":"fact.mq01.pulled-aboard","claim":"The gang carried me aboard, hurt, from the bank by the fire at their camp the night it burned, and brought me down the estuary in their longboat to the broker's ship.","ord":1,"from_ref":"t3","quest_id":"quest.main.mq01"}
+{"id":"fact.mq01.reed","claim":"Nesh-Deeka serves the Veiled Reed, the quiet service of the An-Xileel, the state that rules Black Marsh, and wants a hand nobody can claim.","ord":9,"from_ref":"t4","quest_id":"quest.main.mq01"}
+{"id":"fact.mq01.sap-cell","claim":"The Reed has word of a cell that cuts a Hist's roots and draws its sap into jars; the camp is the first of its work the Reed has seen.","ord":10,"from_ref":"t2","quest_id":"quest.main.mq01"}
+{"id":"fact.mq01.spared","claim":"The gang say the woman with the knotted cord looked at me lying by the fire and let me live.","ord":8,"from_ref":"t2","quest_id":"quest.main.mq01"}
+{"id":"fact.mq01.washed-out","claim":"Dives-Without-A-Rope's colour has thinned from years away from Nine Bends, the tree her family answers to.","ord":5,"from_ref":"t0","quest_id":"quest.main.mq01"}
+{"id":"fact.mq03.dream","claim":"Under the sap I spoke of the ship's hold, empty, with roots grown up through its deck in a ring like trees, and a door at the top of its stairs that nobody built, and a dry voice I could not make into words.","ord":6,"from_ref":"t4","quest_id":"quest.main.mq03"}
+{"id":"fact.mq03.hear-tree","claim":"Dives-Without-A-Rope means to lick the jar's sap to hear her own tree, Nine Bends, once before the jar is taken from her.","ord":1,"from_ref":"t2","quest_id":"quest.main.mq03"}
+{"id":"fact.mq03.jar-kept","claim":"Dives-Without-A-Rope keeps the cutters' jar locked in a sack by her place in the ship's hold, with the key on her.","ord":0,"from_ref":"t2","quest_id":"quest.main.mq03"}
+{"id":"fact.mq03.jars-brought","claim":"The cutters came off the water with empty jars and filled them from the cut roots.","ord":2,"from_ref":"t1","quest_id":"quest.main.mq03"}
+{"id":"fact.mq03.long-work","claim":"The sap was drawn fresh at the roots into jars the cutters brought: the cell means to keep what it draws, so it is a long work and not a raid.","ord":3,"from_ref":"t1","quest_id":"quest.main.mq03"}
+{"id":"fact.mq03.low-reed","claim":"Word has come to Nesh-Deeka that the Hist of Low-Reed Village, east of Lilmoth, has turned its face.","ord":7,"from_ref":"t3","quest_id":"quest.main.mq03"}
+{"id":"fact.mq03.sap-fresh","claim":"The sap is fresh, drawn from cut roots, and the stopper and the jar's neck carry the rings of other jars filled beside it.","ord":4,"from_ref":"t1","quest_id":"quest.main.mq03"}
+{"id":"fact.mq03.taster","claim":"Sap shows a taster visions, and shows a stranger something different; Nesh-Deeka wants the player to taste it while she writes.","ord":5,"from_ref":"t3","quest_id":"quest.main.mq03"}
 {"id":"fact.mq04.camp-jars","claim":"The camp holds jars of the Hist's sap and two men of the cell.","ord":10,"from_ref":"t6","quest_id":"quest.main.mq04"}
 {"id":"fact.mq04.cell-cord","claim":"The two men at the camp wear the knotted cord at the wrist, as the woman at the camp by Lilmoth's dock did.","ord":11,"from_ref":"t1","quest_id":"quest.main.mq04"}
 {"id":"fact.mq04.cell-known","claim":"The Reed has word of a cell that cuts a Hist's roots and draws its sap into jars; the camp by Lilmoth's dock was its work.","ord":0,"from_ref":"t1","quest_id":"quest.main.mq04"}

@@ -60,46 +60,19 @@
 {"quest_id":"quest.local.lq30","things_ord":1,"state":"before-30","value":"Haj-Wan by the gate, Sei-Wan absent"}
 {"quest_id":"quest.local.lq30","things_ord":1,"state":"during","value":"Sei-Wan among the roots and Haj-Wan by the gate"}
 {"quest_id":"quest.local.lq30","things_ord":2,"state":"all","value":"present"}
-{"quest_id":"quest.main.mq01","things_ord":0,"state":"after-90","value":"crew and gang off (MQ01's crew parent disabled)"}
-{"quest_id":"quest.main.mq01","things_ord":0,"state":"before-90","value":"crew and gang present"}
-{"quest_id":"quest.main.mq01","things_ord":2,"state":"after-90","value":"gone from the pier"}
-{"quest_id":"quest.main.mq01","things_ord":2,"state":"before-90","value":"on the pier"}
-{"quest_id":"quest.main.mq01","things_ord":3,"state":"all","value":"present until the strike"}
-{"quest_id":"quest.main.mq01","things_ord":4,"state":"after-41","value":"Sal-Sei follows the player (alias package, stages 41 to 90)"}
-{"quest_id":"quest.main.mq01","things_ord":4,"state":"after-42","value":"Deesh-Duun follows the player (alias package, stages 42 to 91)"}
-{"quest_id":"quest.main.mq01","things_ord":4,"state":"all","value":"present until the strike"}
-{"quest_id":"quest.main.mq01","things_ord":5,"state":"after-90","value":"on the shore, burnt and wet"}
-{"quest_id":"quest.main.mq01","things_ord":5,"state":"before-90","value":"off"}
-{"quest_id":"quest.main.mq01","things_ord":6,"state":"after-90","value":"aftermath (the cutting withdrawn, the clutch grey)"}
-{"quest_id":"quest.main.mq01","things_ord":6,"state":"at-40","value":"attacked (fire in the huts)"}
-{"quest_id":"quest.main.mq01","things_ord":6,"state":"before-40","value":"orderly"}
-{"quest_id":"quest.main.mq01","things_ord":7,"state":"after-40","value":"withdrawn (light out)"}
-{"quest_id":"quest.main.mq01","things_ord":7,"state":"before-40","value":"lit"}
-{"quest_id":"quest.main.mq01","things_ord":8,"state":"after-40","value":"Cuts-the-Old-Knot gone; the two cutters at the shed until the ending"}
-{"quest_id":"quest.main.mq01","things_ord":8,"state":"at-40","value":"enabled"}
-{"quest_id":"quest.main.mq01","things_ord":8,"state":"before-40","value":"disabled"}
-{"quest_id":"quest.main.mq01","things_ord":9,"state":"all","value":"present"}
-{"quest_id":"quest.main.mq01","things_ord":10,"state":"all","value":"as the ledger says"}
-{"quest_id":"quest.main.mq01","things_ord":11,"state":"after-40","value":"burnt in the fire"}
-{"quest_id":"quest.main.mq01","things_ord":11,"state":"before-40","value":"with Wuleen-Sei"}
-{"quest_id":"quest.main.mq01","things_ord":12,"state":"after-40","value":"in the trap"}
-{"quest_id":"quest.main.mq01","things_ord":13,"state":"all","value":"present"}
-{"quest_id":"quest.main.mq03","things_ord":0,"state":"all","value":"aftermath"}
-{"quest_id":"quest.main.mq03","things_ord":1,"state":"all","value":"aftermath"}
-{"quest_id":"quest.main.mq03","things_ord":2,"state":"after-10","value":"carried"}
-{"quest_id":"quest.main.mq03","things_ord":2,"state":"at-10","value":"on the shed floor"}
-{"quest_id":"quest.main.mq03","things_ord":2,"state":"before-10","value":"absent (the jar-marks parent off)"}
-{"quest_id":"quest.main.mq03","things_ord":3,"state":"after-10","value":"carried if taken from the trap, else in the trap"}
-{"quest_id":"quest.main.mq03","things_ord":3,"state":"at-10","value":"in the locked fish-trap; the picks on the boards above"}
-{"quest_id":"quest.main.mq03","things_ord":3,"state":"before-10","value":"absent (the jar-marks parent off)"}
-{"quest_id":"quest.main.mq03","things_ord":4,"state":"after-20","value":"gone"}
-{"quest_id":"quest.main.mq03","things_ord":4,"state":"before-20","value":"at the shore"}
-{"quest_id":"quest.main.mq03","things_ord":5,"state":"all","value":"present"}
-{"quest_id":"quest.main.mq03","things_ord":6,"state":"after-90","value":"gone"}
-{"quest_id":"quest.main.mq03","things_ord":6,"state":"at-20-to-40","value":"on a mat"}
-{"quest_id":"quest.main.mq03","things_ord":6,"state":"before-20","value":"on the shore"}
-{"quest_id":"quest.main.mq03","things_ord":7,"state":"at-40","value":"on"}
-{"quest_id":"quest.main.mq03","things_ord":7,"state":"before-40","value":"off"}
+{"quest_id":"quest.main.mq01","things_ord":0,"state":"all","value":"as BM&V has it, with the three of the gang standing in it"}
+{"quest_id":"quest.main.mq01","things_ord":1,"state":"all","value":"standing in the hold"}
+{"quest_id":"quest.main.mq01","things_ord":2,"state":"all","value":"standing at the pier beside the ship"}
+{"quest_id":"quest.main.mq01","things_ord":3,"state":"all","value":"as BM&V has it, with Salts-The-Catch and Nesh-Deeka standing in it"}
+{"quest_id":"quest.main.mq01","things_ord":4,"state":"all","value":"standing in the house"}
+{"quest_id":"quest.main.mq01","things_ord":5,"state":"all","value":"as the ledger says"}
+{"quest_id":"quest.main.mq03","things_ord":0,"state":"after-mq01-90","value":"locked, holding the jar until it is taken"}
+{"quest_id":"quest.main.mq03","things_ord":0,"state":"before-mq01-90","value":"off"}
+{"quest_id":"quest.main.mq03","things_ord":1,"state":"after-30","value":"with Nesh-Deeka (taken by topic.mq03-give-jar)"}
+{"quest_id":"quest.main.mq03","things_ord":1,"state":"before-30","value":"in the sack, or carried"}
+{"quest_id":"quest.main.mq03","things_ord":2,"state":"all","value":"on Dives-Without-A-Rope, or carried"}
+{"quest_id":"quest.main.mq03","things_ord":3,"state":"all","value":"on the floor until taken"}
+{"quest_id":"quest.main.mq03","things_ord":4,"state":"after-90","value":"carried"}
 {"quest_id":"quest.main.mq04","things_ord":0,"state":"after-90","value":"reconciled (light back low)"}
 {"quest_id":"quest.main.mq04","things_ord":0,"state":"before-90","value":"withdrawn"}
 {"quest_id":"quest.main.mq04","things_ord":1,"state":"all","value":"present"}

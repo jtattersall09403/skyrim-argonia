@@ -45,23 +45,21 @@
 {"quest_id":"quest.local.lq30","source":"lore","ord":3,"value":"story/lore/extrapolation/argonia-4e201-state.md §2 (the guard a tribal levy)"}
 {"quest_id":"quest.local.lq30","source":"lore","ord":4,"value":"story/lore/extrapolation/gap-register.md §8 QA5"}
 {"quest_id":"quest.local.lq30","source":"lore","ord":5,"value":"story/design/province-vibe.md §5 and §9"}
-{"quest_id":"quest.main.mq01","source":"lore","ord":0,"value":"story/lore/topics/labour-and-bondage.md §2-3"}
-{"quest_id":"quest.main.mq01","source":"lore","ord":1,"value":"story/lore/topics/hist-and-sap.md (Silence vs severance; Reproduction and the hatchery; Gloor)"}
-{"quest_id":"quest.main.mq01","source":"lore","ord":2,"value":"story/lore/topics/hist-placement.md (Nine Bends; Gideon)"}
-{"quest_id":"quest.main.mq01","source":"lore","ord":3,"value":"story/lore/lilmoth.md (Lilmoth in 4E 201)"}
-{"quest_id":"quest.main.mq01","source":"lore","ord":4,"value":"story/lore/extrapolation/gap-register.md §8 QA1, QA7"}
-{"quest_id":"quest.main.mq01","source":"lore","ord":5,"value":"story/lore/extrapolation/quest-plan-deltas.md (Q7)"}
-{"quest_id":"quest.main.mq01","source":"lore","ord":6,"value":"story/lore/topics/sithis-nisswo-shadowscales.md (grave-stakes)"}
-{"quest_id":"quest.main.mq01","source":"lore","ord":7,"value":"story/design/province-vibe.md §3-5"}
-{"quest_id":"quest.main.mq01","source":"lore","ord":8,"value":"§9"}
+{"quest_id":"quest.main.mq01","source":"lore","ord":0,"value":"story/lore/topics/labour-and-bondage.md §1-3"}
+{"quest_id":"quest.main.mq01","source":"lore","ord":1,"value":"story/lore/topics/hist-and-sap.md (Sap; Silence vs severance)"}
+{"quest_id":"quest.main.mq01","source":"lore","ord":2,"value":"story/lore/topics/hist-placement.md (Nine Bends)"}
+{"quest_id":"quest.main.mq01","source":"lore","ord":3,"value":"story/lore/lilmoth.md (Site and fabric; Lilmoth in 4E 201)"}
+{"quest_id":"quest.main.mq01","source":"lore","ord":4,"value":"story/lore/extrapolation/gap-register.md §8 QA1, QA7, QA8"}
+{"quest_id":"quest.main.mq01","source":"lore","ord":5,"value":"story/design/quests/10-political-frame.md §6"}
+{"quest_id":"quest.main.mq01","source":"lore","ord":6,"value":"story/design/quests/30-main-quest.md §18b, §19, §24b.2"}
+{"quest_id":"quest.main.mq01","source":"lore","ord":7,"value":"story/design/province-vibe.md §2-5, §9"}
 {"quest_id":"quest.main.mq03","source":"lore","ord":0,"value":"story/lore/topics/hist-and-sap.md (Sap; Silence vs severance)"}
-{"quest_id":"quest.main.mq03","source":"lore","ord":1,"value":"story/lore/an-xileel.md"}
-{"quest_id":"quest.main.mq03","source":"lore","ord":2,"value":"story/lore/lilmoth.md (Lilmoth in 4E 201)"}
-{"quest_id":"quest.main.mq03","source":"lore","ord":3,"value":"story/lore/topics/labour-and-bondage.md §2"}
-{"quest_id":"quest.main.mq03","source":"lore","ord":4,"value":"story/design/quests/10-political-frame.md §6"}
-{"quest_id":"quest.main.mq03","source":"lore","ord":5,"value":"story/design/quests/30-main-quest.md §18d, §24b.2"}
+{"quest_id":"quest.main.mq03","source":"lore","ord":1,"value":"story/lore/topics/labour-and-bondage.md (The tell; §2)"}
+{"quest_id":"quest.main.mq03","source":"lore","ord":2,"value":"story/lore/topics/hist-placement.md (Nine Bends)"}
+{"quest_id":"quest.main.mq03","source":"lore","ord":3,"value":"story/lore/extrapolation/gap-register.md §8 QA1, QA8, QA18"}
+{"quest_id":"quest.main.mq03","source":"lore","ord":4,"value":"story/design/quests/30-main-quest.md §18d"}
+{"quest_id":"quest.main.mq03","source":"lore","ord":5,"value":"story/design/quests/10-political-frame.md §6"}
 {"quest_id":"quest.main.mq03","source":"lore","ord":6,"value":"story/design/province-vibe.md §5, §7, §9"}
-{"quest_id":"quest.main.mq03","source":"lore","ord":7,"value":"story/lore/extrapolation/gap-register.md §8 QA1, QA8, QA18"}
 {"quest_id":"quest.main.mq04","source":"lore","ord":0,"value":"story/lore/topics/hist-and-sap.md (Sap; Reproduction and the hatchery; Silence vs severance)"}
 {"quest_id":"quest.main.mq04","source":"lore","ord":1,"value":"story/lore/topics/material-culture.md (tree-minder, root-herald, egg-tender)"}
 {"quest_id":"quest.main.mq04","source":"lore","ord":2,"value":"story/lore/regions/murkmire.md (Villages and tribes)"}
