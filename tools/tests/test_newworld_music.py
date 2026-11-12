@@ -57,7 +57,7 @@ def test_an_excerpt_is_cut_from_another_slot_with_clean_fades():
     for p in PIECES["pieces"]:
         for ex in [p["excerpt"], *p.get("excerpt_alternatives", [])] if "excerpt" in p else []:
             assert ex["of"] in SLOTS and ex["of"] != p["id"] and "excerpt" not in next(q for q in PIECES["pieces"] if q["id"] == ex["of"])
-            assert 6 <= ex["end_s"] - ex["start_s"] <= 9 and 0.03 <= ex["fade_in_s"] <= 0.08 and 1.5 <= ex["fade_out_s"] <= 2.5
-    args = soundtrack.excerpt_filter({"of": "theme", "start_s": 129.5, "end_s": 136.5, "fade_in_s": 0.05, "fade_out_s": 2.0})
-    assert args[:4] == ["-ss", "129.5", "-t", "7.0"]
-    assert "afade=t=in:st=0:d=0.05" in args[5] and "afade=t=out:st=5.0:d=2.0" in args[5] and "loudnorm" in args[5]
+            assert 17.5 <= ex["end_s"] - ex["start_s"] <= 20.5 and 0.03 <= ex["fade_in_s"] <= 0.08 and 2 <= ex["fade_out_s"] <= 4.5  # Skyrim's: 18.7-19.3 s
+    args = soundtrack.excerpt_filter({"of": "theme", "start_s": 119.6, "end_s": 138.6, "fade_in_s": 0.05, "fade_out_s": 3.5})
+    assert args[:4] == ["-ss", "119.6", "-t", "19.0"]
+    assert "afade=t=in:st=0:d=0.05" in args[5] and "afade=t=out:st=15.5:d=3.5" in args[5] and "loudnorm" in args[5]

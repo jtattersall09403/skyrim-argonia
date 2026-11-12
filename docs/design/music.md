@@ -49,7 +49,7 @@ only (sources below), in plain musical terms.
 | battle-war | Drumbeats of the Dunmer (2:03) | stripped back; minimalist repeating drum rhythms that want a resonant, forceful sound; few instruments above | 120 BPM, G minor; repeating war-drum patterns, massed wordless chant |
 | battle-water | Stormclouds on the Battlefield (2:11) | sparse, repetitive rhythmic writing; dark, brooding, surging | 128 BPM, B minor; churning gourd and wood rhythm, swirling strings, surges |
 | battle-last | Knight's Charge (2:05) | its opening seconds announce the fight; bold, driving, building tension | 136 BPM, F minor; bold opening hit, driving drums and strings, choir swells to a climax |
-| sting-levelup | the stock level-up sting, feel only (0:07) | a low swell surging into one broad bright arrival with wordless choir, ringing out; heroic, final | log-drum and low-string swell into the call on conch over choir and a D major chord, decaying (round-3 take t9, cut 7.5 s) |
+| sting-levelup | none: an excerpt of our own Overture, as Skyrim cuts its level-up sting from its main theme | Skyrim's level-up tracks (mus_levelup_01-03 in Skyrim - Sounds.bsa, measured): 18.7-19.3 s, a steady body, the peak at 12.0-12.9 s, 20 dB down within 2.0-2.3 s of it, under -40 dB by 16.8-18.6 s | the Overture 1:59.6-2:18.6 (19.0 s): its closing statement into the final chord at 13.8 s, ringing out under a 3.5 s fade; alternatives B 0:25.7-0:45.2 and C 0:33.6-0:52.2 in pieces.json `excerpt_alternatives` |
 | sting-death | Fate's Quickening (0:17) | a short jingle, falling and mournful | the call slowed on low flute over a fading drone (round-1 take kept) |
 | sting-discovery | The Prophecy Fulfilled (1:11) | angelic choir and a high solo voice; a starry-eyed sense of wonder | thumb-piano and airy choir rising into the call |
 
@@ -96,9 +96,9 @@ To put your own music in a slot:
    machine.
 
 The tool converts every slot to 44.1 kHz 16-bit stereo WAV at the same loudness (-16 LUFS integrated, peaks under
--1.5 dB), cuts stings at their `cut_s`, and uses your file in place of ours. Our piece stays in the bucket (`ours/`)
+-1.5 dB), cuts stings at their `cut_s`, cuts an `excerpt` slot (sting-levelup) from the file in its `of` slot at its `start_s`-`end_s` with its fades, and uses your file in place of ours. Our piece stays in the bucket (`ours/`)
 as the alternative: delete your file and build again to go back. `soundtrack.py check` lists each slot and whether
-it holds our piece or your file. The theme slot holds the owner's Overture now.
+it holds our piece or your file. The theme slot holds the owner's Overture now, and the level-up sting is cut from it at every build: to hear another cut, copy one of `excerpt_alternatives` over `excerpt` in pieces.json and build again.
 
 Loudness: -16 LUFS is a common game-music level, not yet measured against Skyrim's own tracks (their archive is on
 the play machine only and was not read while the owner may be playing). Format: the engine plays `.wav` music

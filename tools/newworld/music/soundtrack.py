@@ -3,6 +3,8 @@
 Slots are the piece ids of newworld/sources/music/pieces.json. Each slot is filled from, in order:
   1. the owner's drop-in  s3://<bucket>/nw/music/owner/<slot>.(wav|mp3|flac|m4a)
   2. our generated piece  s3://<bucket>/nw/music/ours/<slot>.mp3   (the kept take; manifest.json)
+A piece with `excerpt` {of, start_s, end_s, fade_in_s, fade_out_s} is instead cut, at every build, from the file that
+fills slot `of` (the way a game cuts its level-up sting from its main theme); it counts as that file's source.
 Generated audio is never committed (decision 0003).
 
   soundtrack.py keep <slot> <file>   put our kept take of a slot into the bucket (ours/)
@@ -38,6 +40,10 @@ def slots():
     return [(p["id"], p["role"]) for p in json.loads(PIECES.read_text())["pieces"]]
 
 
+def excerpts():
+    return {p["id"]: p["excerpt"] for p in json.loads(PIECES.read_text())["pieces"] if "excerpt" in p}
+
+
 def cuts():
     return {p["id"]: p.get("cut_s", STING_SECONDS) for p in json.loads(PIECES.read_text())["pieces"]}
 
@@ -59,6 +65,8 @@ def sources():
         o = [f for f in own if Path(f).stem == sid and Path(f).suffix.lower() in FORMATS]
         out[sid] = ("owner", OWNER + sorted(o)[0]) if o else ("ours", OURS + f"{sid}.mp3") if f"{sid}.mp3" in ours \
             else ("empty", None)
+    for sid, ex in excerpts().items():
+        out[sid] = out[ex["of"]]
     return out
 
 
@@ -67,13 +75,22 @@ def check():
     for sid, role in slots():
         kind, url = src[sid]
         bad += kind == "empty"
-        print(f"{sid:18} {role:20} {kind:6} {url or '-'}")
+        ex = excerpts().get(sid)
+        print(f"{sid:18} {role:20} {kind:6} {url or '-'}" + (f" [{ex['start_s']}-{ex['end_s']} s]" if ex else ""))
     print(f"{len(src) - bad}/{len(src)} slots filled; owner files: {sum(k == 'owner' for k, _ in src.values())}")
     return 1 if bad else 0
 
 
-def convert(src, dst, sting):
-    cut = ["-t", str(sting), "-af",
+def excerpt_filter(ex):
+    """ffmpeg args that cut an excerpt: start, length, a short fade in, the fade out ending at the cut."""
+    d = round(ex["end_s"] - ex["start_s"], 3)
+    return ["-ss", str(ex["start_s"]), "-t", str(d), "-af",
+            f"afade=t=in:st=0:d={ex['fade_in_s']},afade=t=out:st={round(d - ex['fade_out_s'], 3)}:d={ex['fade_out_s']},"
+            f"loudnorm=I={TARGET_LUFS}:TP={TRUE_PEAK}:LRA=11"]
+
+
+def convert(src, dst, sting, ex=None):
+    cut = excerpt_filter(ex) if ex else ["-t", str(sting), "-af",
            f"afade=t=out:st={sting - FADE}:d={FADE},loudnorm=I={TARGET_LUFS}:TP={TRUE_PEAK}:LRA=11"] if sting \
         else ["-af", f"loudnorm=I={TARGET_LUFS}:TP={TRUE_PEAK}:LRA=11"]
     subprocess.run([FFMPEG, "-v", "error", "-y", "-i", str(src), *cut, "-ar", "44100", "-ac", "2",
@@ -92,7 +109,7 @@ def build():
             raw = t / ("in" + Path(src[sid][1]).suffix)
             if s3("cp", src[sid][1], str(raw)).returncode:
                 sys.exit(f"cannot fetch {src[sid][1]}")
-            convert(raw, out / f"{sid}.wav", cuts()[sid] if role.startswith("sting") else None)
+            convert(raw, out / f"{sid}.wav", cuts()[sid] if role.startswith("sting") else None, excerpts().get(sid))
             raw.unlink()
         tar = Path.home() / ".argonia/mods" / TAR
         tar.parent.mkdir(parents=True, exist_ok=True)
@@ -115,6 +132,8 @@ def build():
 def keep(sid, f):
     if sid not in dict(slots()):
         sys.exit(f"no slot {sid}")
+    if sid in excerpts():
+        sys.exit(f"{sid} is an excerpt of {excerpts()[sid]['of']}: change its times in pieces.json")
     if s3("cp", f, OURS + f"{sid}.mp3").returncode:
         sys.exit("upload failed")
 

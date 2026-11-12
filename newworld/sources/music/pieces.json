@@ -484,12 +484,7 @@
       "role": "sting: level up",
       "minutes": 0.25,
       "axes": "A level-up fanfare sting, the whole piece is 8 seconds. [0:00-0:03] starts instantly with no intro: a fast low rolling swell of hollow log drums and low strings rising in a single crescendo. [0:03] one broad, bright, triumphant arrival in D major: full ensemble and a powerful wordless choir with conch shell horns stating the four-note call once. [0:04-0:08] the final major chord rings out and decays. [0:08 onward] silence.",
-      "reference": {
-        "title": "the stock level-up sting (feel only: no melody, harmony or audio taken)",
-        "length": "0:07",
-        "sources": "docs/design/music.md#sources"
-      },
-      "feel": "A very short sting, 6 to 9 seconds: a low drum roll or swell surging into one broad, bright, triumphant arrival with wordless choir and full ensemble, then ringing out and decaying; heroic, warm, final, one gesture.",
+      "feel": "Skyrim's own level-up tracks (mus_levelup_01-03, measured): 18.7-19.3 s; a steady body for about 12 s, a climb to the peak at 12.0-12.9 s, then down 20 dB within 2.0-2.3 s of the peak and under -40 dB by 16.8-18.6 s. Ours: an excerpt of the same shape cut from the Overture.",
       "kept": "t9",
       "measured": {
         "seconds": 60.2,
@@ -514,7 +509,32 @@
           -20
         ]
       },
-      "cut_s": 7.5
+      "excerpt": {
+        "of": "theme",
+        "start_s": 119.6,
+        "end_s": 138.6,
+        "fade_in_s": 0.05,
+        "fade_out_s": 3.5,
+        "why": "A: the Overture's closing statement from a downbeat (119.6 s) into its final chord (133.4 s, 13.8 s in), which rings out on its own decay under a 3.5 s fade; 19.0 s"
+      },
+      "excerpt_alternatives": [
+        {
+          "of": "theme",
+          "start_s": 25.7,
+          "end_s": 45.2,
+          "fade_in_s": 0.05,
+          "fade_out_s": 3.0,
+          "why": "B: the first full-ensemble statement from a downbeat (25.7 s), its loudest bar at 40.0 s (14.3 s in), faded over the phrase tail before the next phrase at 45.3 s; 19.5 s"
+        },
+        {
+          "of": "theme",
+          "start_s": 33.6,
+          "end_s": 52.2,
+          "fade_in_s": 0.05,
+          "fade_out_s": 3.0,
+          "why": "C: from the quiet point before the arrival at 34.8 s, through the 40 s peak and the next phrase's peak at 50.0 s (16.4 s in), faded over the held chord 50.7-52.2 s; 18.6 s"
+        }
+      ]
     },
     {
       "id": "sting-death",
