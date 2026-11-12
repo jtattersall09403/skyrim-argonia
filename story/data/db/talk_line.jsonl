@@ -378,10 +378,10 @@
 {"talker":"05D7CB:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Xeeh-Nah works just east-south-east of here. Xeeh-Nah should marry, I always say. Go and see, child."}
 {"talker":"05D7CC:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"Warrior! You are here! Did you bring the sword? Show me, show me, I will not touch it."}
 {"talker":"05D7CC:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Hey, warrior! Have you got a sword? Do you have any scars? Show me one!"}
-{"talker":"05D7CC:Black Marsh.esm","topic":"talk.harvest","ord":1,"text":"Gourds? Fifteen paces north-west, warrior. I could carry them all myself, but I am busy with the cows."}
-{"talker":"05D7CC:Black Marsh.esm","topic":"talk.here","ord":1,"text":"This is Soulrest, and I am the best fighter in it! Ask the cows. A boar roots about eighty paces north-east of here, and I am going to fight it one day."}
+{"talker":"05D7CC:Black Marsh.esm","topic":"talk.harvest","ord":1,"text":"Gourds? They grow just north-west of here, warrior. I could carry them all myself, but I am busy with the cows."}
+{"talker":"05D7CC:Black Marsh.esm","topic":"talk.here","ord":1,"text":"This is Soulrest, and I am the best fighter in it! Ask the cows. A boar roots a short way north-east of here, and I am going to fight it one day."}
 {"talker":"05D7CC:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Cow-Chaser, a hatchling of Soulrest, and I am going to be a warrior! I practise on the cows, because they run and that makes them hard to hit. Do you have a real sword?"}
-{"talker":"05D7CC:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Little-Gecko sits ten paces west-south-west of here. Little-Gecko is a baby. Xeeh-Nah works fifteen paces south. Xeeh-Nah is the strongest person alive! Go and see for yourself, warrior."}
+{"talker":"05D7CC:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Little-Gecko sits just west-south-west of here. Little-Gecko is a baby. Xeeh-Nah works just south of here. Xeeh-Nah is the strongest person alive! Go and see for yourself, warrior."}
 {"talker":"05D7CD:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"Hereguard Plantation. Go north-west, three hundred paces and a little more, until Lilmoth Dock is on your left. Climb west a hundred paces, to the big ship on your left. Then west again, a hundred and fifty paces, to the dead tree on your left. From there, ask again, ojel. The plantation lies further west."}
 {"talker":"05D7CD:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"Kin. Good. Sit by the benches a while. I will move the loads later."}
 {"talker":"05D7CD:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Mm. What do you want, ojel? I have loads to move."}
