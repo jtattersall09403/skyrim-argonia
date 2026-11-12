@@ -321,6 +321,7 @@ static class NewWorld
         // the travel menu (newworld/sources/travel/menu.json, beside the registry): the gamepad's way in, no console
         var menu = Path.Combine(Path.GetDirectoryName(Path.GetFullPath(idsPath))!, "travel", "menu.json");
         if (File.Exists(menu)) NewWorldTravel.Attach(mod, ids, menu);
+        NewWorldMusic.Attach(mod, ws, Path.GetDirectoryName(Path.GetFullPath(idsPath))!, data);  // music records (newworld/sources/music/records.json)
         NewWorldNavmesh.Attach(mod, ws, outPath, man.BuildId);  // nw-02 step 10: the navmesh, when built for this land
         if (IdCells + 2 * k > IdRefs || refId > IdRefsEnd + 1 || k > IdNavmeshEnd - IdNavmesh + 1) throw new InvalidDataException($"cells ran to {IdCells + 2 * k:X6} or counted references to {refId:X6}, out of their ranges");
         InIdOrder(mod);
@@ -553,7 +554,6 @@ static class NewWorld
         return res;
     }
 
-    // Placed refs from every producer's shards: <plugin dir>/refs/<producer>/cy<+NNN>.jsonl (format: cells.py).
     // The small signature things (<plugin dir>/dressing/cy*.jsonl, tools/newworld/dressing/place.py): one reference a line,
     // its base from a master plugin (fc.Get), position, yaw, scale and form id.
     static Dictionary<(int, int), List<(FormKey, P3Float, float, float, uint)>> Dressing(string plugDir, ForeignCopy fc)
@@ -580,6 +580,7 @@ static class NewWorld
         return res;
     }
 
+    // Placed refs from every producer's shards: <plugin dir>/refs/<producer>/cy<+NNN>.jsonl (format: cells.py).
     static Dictionary<(int, int), List<(FormKey, P3Float, P3Float, float, uint?)>> Refs(string plugDir, ForeignCopy fc)
     {
         var res = new Dictionary<(int, int), List<(FormKey, P3Float, P3Float, float, uint?)>>();

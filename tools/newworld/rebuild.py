@@ -116,19 +116,21 @@ EDITS_FILE = "newworld/sources/placed_edits.jsonl"                           # t
 CELLS = "out:newworld/plugin/cells.json"
 # The compiled tools are read by their sources: the same sources compile to different bytes from one build to the next.
 DLL = "out:tools/ArgoniaPlugin/ArgoniaPlugin.dll"
+IDSPACE = "src:tools/newworld/idspace.py"                # every allocator's range of the world file's form ids
 WRITER_CS = ("src:tools/ArgoniaPlugin/NewWorld.cs", "src:tools/ArgoniaPlugin/NewWorldAtmosphere.cs",
              "src:tools/ArgoniaPlugin/NewWorldMap.cs", "src:tools/ArgoniaPlugin/NewWorldNavmesh.cs",
              "src:tools/ArgoniaPlugin/WaterBlend.cs", "src:tools/ArgoniaPlugin/ForeignCopy.cs",
              "src:tools/ArgoniaPlugin/FormIds.cs", "src:tools/ArgoniaPlugin/NewWorldTravel.cs",
-             "src:newworld/sources/travel/menu.json")
-IDSPACE = "src:tools/newworld/idspace.py"                # every allocator's range of the world file's form ids
+             "src:newworld/sources/travel/menu.json", "src:tools/ArgoniaPlugin/NewWorldMusic.cs",
+             "src:newworld/sources/music/records.json", "src:newworld/sources/music/pieces.json",
+             "src:newworld/sources/atmosphere/regions.json", IDSPACE + "#music")
 # A stage reads of the table only the rows it allocates from (`#row,row`): a row added for another stage moves none.
 IDSPACE_PLACE = IDSPACE + "#placed,placed-high,navmesh"
 IDSPACE_EDITS = IDSPACE + "#added,placed,placed-high,navmesh"
 IDSPACE_ECOLOGY = IDSPACE + "#ecology"
+IDSPACE_DRESSING = IDSPACE + "#dressing"
 FORMIDS = "src:newworld/sources/world_formids.json"       # the world file's form ids by name: the writer adds, never changes
 BUILT_PLACES = ("src:newworld/places/*/land.jsonl", "src:newworld/places/*/spaces/exterior/refs.jsonl")
-IDSPACE_DRESSING = IDSPACE + "#dressing"
 DBPY = "src:tools/argonia_world/db.py"
 LAID = "laid:NewWorld"
 ESM = "out:newworld/plugin/ArgoniaNewWorld.esm"
@@ -382,8 +384,6 @@ STAGES: tuple[Stage, ...] = (
                   "out:newworld/plugin/ecology/harvest/records.json", "out:newworld/plugin/ecology/harvest/check.json"),
           agree=(("out:newworld/plugin/ecology/manifest.json#build_id", "out:newworld/plugin/land/manifest.json#build_id", "eq"),),
           after=("navmesh",), gb=1.0, minutes=0.5),
-    Stage("esm", "ArgoniaNewWorld.esm written, the map data applied, and the file's own check",
-          cmds=(("tools/newworld/world/world.sh", "write"), ("tools/newworld/world/world.sh", "map")),
     Stage("dressing", "the small signature things of each region (two kinds no neighbour has), by Skyrim's rate per sort; checked",
           cmds=((PY, "-m", "tools.newworld.dressing.place", "run"),),
           checks=((PY, "-m", "tools.newworld.dressing.place", "check"),),
@@ -395,6 +395,8 @@ STAGES: tuple[Stage, ...] = (
           writes=("out:newworld/plugin/dressing/manifest.json", "out:newworld/plugin/dressing/check.json"),
           agree=(("out:newworld/plugin/dressing/manifest.json#build_id", "out:newworld/plugin/land/manifest.json#build_id", "eq"),),
           after=("navmesh",), gb=1.0, minutes=0.5),
+    Stage("esm", "ArgoniaNewWorld.esm written, the map data applied, and the file's own check",
+          cmds=(("tools/newworld/world/world.sh", "write"), ("tools/newworld/world/world.sh", "map")),
           checks=(("tools/newworld/world/world.sh", "check"),),
           reads=(LAND, "out:newworld/plugin/tex/manifest.json#key", "out:newworld/plugin/tex/materials.json", CELLS,
                  "out:newworld/plugin/atmosphere.json", FLORA, "out:newworld/plugin/refs/flora/bases.json",
@@ -403,9 +405,9 @@ STAGES: tuple[Stage, ...] = (
                  "out:newworld/plugin/map/teleports.json", "out:newworld/plugin/map/lodplan.json", *WRITER_CS,
                  "out:newworld/plugin/ecology/manifest.json", "out:newworld/plugin/ecology/actors.json",
                  "out:newworld/plugin/ecology/harvest/manifest.json", "out:newworld/plugin/ecology/harvest/records.json",
+                 "out:newworld/plugin/dressing/manifest.json",
                  f"ext:{GAME}/Skyrim.esm", f"ext:{GAME}/Update.esm", f"ext:{GAME}/Black Marsh.esm", LAID,
                  "src:tools/newworld/world/world.sh", FORMIDS),
-                 "out:newworld/plugin/dressing/manifest.json",
           adds=(FORMIDS,),
           writes=("out:newworld/plugin/ArgoniaNewWorld.esm", "out:newworld/plugin/ArgoniaNewWorld.json",
                   "out:newworld/plugin/check.txt"),
@@ -422,9 +424,9 @@ STAGES: tuple[Stage, ...] = (
                  "src:tools/newworld/*.py", "src:tools/newworld/world/*.py", "src:tools/newworld/place/*.py",
                  "src:tools/navmesh/*.py", "src:tools/places/assets/resolve.py", DBPY,
                  "src:tools/newworld/assets_audit.py", "src:tools/argonia_world/esm.py", "src:newworld/sources/assets_missing_allowed.json",
+                 "src:tools/newworld/identity.py", "src:newworld/sources/identity/*.json",
                  "src:mods/texture-aliases.json", "src:tools/ArgoniaPlugin/NewWorldVerify.cs", "src:tools/ArgoniaPlugin/WaterStudy.cs"),
           gb=2.7, minutes=3.5, lock="dotnet"),
-                 "src:tools/newworld/identity.py", "src:newworld/sources/identity/*.json",
     Stage("upload", "the world file and its records to the bucket",
           cmds=((PY, "-m", "tools.newworld.terrain_upload"), ("tools/newworld/world/world.sh", "upload")),
           reads=(BUILD, ESM, "out:newworld/plugin/ArgoniaNewWorld.json#key", "out:newworld/plugin/check.txt",
