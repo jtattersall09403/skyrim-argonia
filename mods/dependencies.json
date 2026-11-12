@@ -2838,6 +2838,192 @@
    "asset_only": true
   },
   {
+   "id": "mihail-kagouti",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 27521,
+    "file": 286911
+   },
+   "name": "Kagouti- Mihail Monsters and Animals (SE-AE version) (''morrowind'')",
+   "author": "Mihail",
+   "version": "2.1",
+   "archive": "kagouti (se-ae) 2.1-27521-2-1-1653674472.rar",
+   "size_kb": 14442,
+   "why": "the kagouti of Black Marsh's lore rows (nw-03b creature search, docs/research/creature-mod-search.md); asset-only: its creature records copied into ArgoniaNewWorld.esm (ForeignCopy), assets loose in the NewWorld profile, plugin never active",
+   "required": true,
+   "profile": "newworld",
+   "sha256": "72d6cb2a6ebc860510279f2322c886e5c7969c6dbfec3bee816365c32981d610",
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; the player's own download is fine as a dependency; copying its records into our generated plugin is using its contents and needs the author's word before release (as htbm).",
+   "ai_clause": "not stated",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API v1 description read 2026-11-12 (lane nw-03b C)",
+   "plugins": [
+    "mihailkagouti.esp"
+   ],
+   "runtime": "data only (no DLL)",
+   "conflicts": "not yet swept by houseCARL",
+   "linked_or_forked_by": "none: depended on as the player's own download; ArgoniaNewWorld.esm copies its creature records",
+   "from": "nw-03b C",
+   "asset_only": true
+  },
+  {
+   "id": "giant-leeches",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 104589,
+    "file": 442642
+   },
+   "name": "Giant Leeches (Creature Series) SE-AE",
+   "author": "Skinwalker21",
+   "version": "1.1",
+   "archive": "Giant Leeches (Creature Series) SE-AE-104589-1-1-1699991289.zip",
+   "size_kb": 14257,
+   "why": "the giant leech of the swamps (nw-03b creature search, docs/research/creature-mod-search.md); asset-only: its creature records copied into ArgoniaNewWorld.esm (ForeignCopy), assets loose in the NewWorld profile, plugin never active",
+   "required": true,
+   "profile": "newworld",
+   "sha256": "2d119fb92cc317923207b597fe651e9757f0768001fd43a77a0e62c7c7d547cd",
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; the player's own download is fine as a dependency; copying its records into our generated plugin is using its contents and needs the author's word before release (as htbm).",
+   "ai_clause": "not stated",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API v1 description read 2026-11-12 (lane nw-03b C)",
+   "plugins": [
+    "BirbWalker21_Leeches.esp"
+   ],
+   "runtime": "data only (no DLL)",
+   "conflicts": "not yet swept by houseCARL",
+   "linked_or_forked_by": "none: depended on as the player's own download; ArgoniaNewWorld.esm copies its creature records",
+   "from": "nw-03b C",
+   "asset_only": true
+  },
+  {
+   "id": "blue-whales",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 47619,
+    "file": 193914
+   },
+   "name": "Blue Whales SE",
+   "author": "Skinwalker21 ported by FireOogle",
+   "version": "1.0",
+   "archive": "Blue Whales SE-47619-1-0-1616861314.7z",
+   "size_kb": 16380,
+   "why": "the great whale of the open sea (nw-03b creature search, docs/research/creature-mod-search.md); asset-only: its creature records copied into ArgoniaNewWorld.esm (ForeignCopy), assets loose in the NewWorld profile, plugin never active",
+   "required": true,
+   "profile": "newworld",
+   "sha256": "9959bb10f404a63123a2141a52947930d25e8d086294effa56450fef0dab10a1",
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; the player's own download is fine as a dependency; copying its records into our generated plugin is using its contents and needs the author's word before release (as htbm).",
+   "ai_clause": "not stated",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API v1 description read 2026-11-12 (lane nw-03b C)",
+   "plugins": [
+    "Blue Whales.esp"
+   ],
+   "runtime": "data only (no DLL)",
+   "conflicts": "not yet swept by houseCARL",
+   "linked_or_forked_by": "none: depended on as the player's own download; ArgoniaNewWorld.esm copies its creature records",
+   "from": "nw-03b C",
+   "asset_only": true
+  },
+  {
+   "id": "lamia-enemies",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 50880,
+    "file": 233627
+   },
+   "name": "LamiaEnemies",
+   "author": "m",
+   "version": "1.1",
+   "archive": "LamiaEnemies_ver1_1-50880-1-1-1633766546.zip",
+   "size_kb": 10318,
+   "why": "the lamia of the coasts (nw-03b creature search, docs/research/creature-mod-search.md); asset-only: its creature records copied into ArgoniaNewWorld.esm (ForeignCopy), assets loose in the NewWorld profile, plugin never active",
+   "required": true,
+   "profile": "newworld",
+   "sha256": "a280bdcad1db0708102e8acf1c1cb937d5c0ca2d5baf981e031d285db3b59a07",
+   "licence": "none stated",
+   "permission_summary": "Page: the author allows use of the mod's resources for TES5 (not for other games).",
+   "ai_clause": "not stated",
+   "permission_ask": false,
+   "permission_evidence": "Nexus API v1 description read 2026-11-12 (lane nw-03b C)",
+   "plugins": [
+    "LamiaEnemies.esp"
+   ],
+   "runtime": "data only (no DLL)",
+   "conflicts": "not yet swept by houseCARL",
+   "linked_or_forked_by": "none: depended on as the player's own download; ArgoniaNewWorld.esm copies its creature records",
+   "from": "nw-03b C",
+   "asset_only": true
+  },
+  {
+   "id": "gorgons-medusa",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 100485,
+    "file": 425300
+   },
+   "name": "Gorgons and Medusa in Skyrim",
+   "author": "ELAF",
+   "version": "1",
+   "archive": "1-100485-1-1694556381.rar",
+   "size_kb": 56642,
+   "why": "the medusa (nw-03b creature search, docs/research/creature-mod-search.md); asset-only: its creature records copied into ArgoniaNewWorld.esm (ForeignCopy), assets loose in the NewWorld profile, plugin never active",
+   "required": true,
+   "profile": "newworld",
+   "sha256": "085aaa08c14d8ebb916075e1a36d7015eb0e182b553e7711926feb70738c477d",
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; the player's own download is fine as a dependency; copying its records into our generated plugin is using its contents and needs the author's word before release (as htbm).",
+   "ai_clause": "not stated",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API v1 description read 2026-11-12 (lane nw-03b C)",
+   "plugins": [
+    "Medusas ENG.esp"
+   ],
+   "runtime": "data only (no DLL)",
+   "conflicts": "not yet swept by houseCARL",
+   "linked_or_forked_by": "none: depended on as the player's own download; ArgoniaNewWorld.esm copies its creature records",
+   "from": "nw-03b C",
+   "asset_only": true
+  },
+  {
+   "id": "mihail-nix-hounds",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 54358,
+    "file": 303491
+   },
+   "name": "Nix-Hounds - Mihail Monsters and Animals (SE-AE version) (''morrowind'')",
+   "author": "Mihail",
+   "version": "1.2",
+   "archive": "nix-hounds (se-ae) 1.2-54358-1-2-1659234113.rar",
+   "size_kb": 16352,
+   "why": "the nix-hound, a true fit for the bog dog (nw-03b creature search, docs/research/creature-mod-search.md); asset-only: its creature records copied into ArgoniaNewWorld.esm (ForeignCopy), assets loose in the NewWorld profile, plugin never active",
+   "required": true,
+   "profile": "newworld",
+   "sha256": "f98826cf83990c4e7ff839e4382dbd8fd0dc3b001b12de3dfbf98c98d60fa427",
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; the player's own download is fine as a dependency; copying its records into our generated plugin is using its contents and needs the author's word before release (as htbm).",
+   "ai_clause": "not stated",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API v1 description read 2026-11-12 (lane nw-03b C)",
+   "plugins": [
+    "mihailnixcreatures.esp"
+   ],
+   "runtime": "data only (no DLL)",
+   "conflicts": "not yet swept by houseCARL",
+   "linked_or_forked_by": "none: depended on as the player's own download; ArgoniaNewWorld.esm copies its creature records",
+   "from": "nw-03b C",
+   "asset_only": true
+  },
+  {
    "id": "htbm-cipactli",
    "group": "newworld",
    "source": {
@@ -3854,6 +4040,142 @@
    "permission_ask": false,
    "conflicts": "none: not laid into Data",
    "linked_or_forked_by": "none: a tool run on the player's own machine; its output is derived there and never shipped (decision 0014 §4)"
+  },
+  {
+   "id": "caves-of-morrowind",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 13745,
+    "file": 304919
+   },
+   "name": "Caves of Morrowind",
+   "author": "Speedygun1",
+   "version": "V3.1",
+   "archive": "Caves of Morrowind V3.1-13745-V3-1-1659745920.zip",
+   "size_kb": 11982,
+   "why": "a source place for 4 of the new world's places (Velothi tombs and Dunmer caves; nw-04, newworld/sources/source_match/): its plugin read for layout, asset-only: its meshes and textures laid loose in the NewWorld profile alone, its plugins never active",
+   "required": true,
+   "profile": "newworld",
+   "sha256": "e1df52d86807d7335b605d8b939bfab2d67501853a332c9c6da17cdd8bcd4ef8",
+   "licence": "none stated",
+   "permission_summary": "The player's own download is fine as a dependency; placing its meshes/textures or copied records in our generated plugin is using its contents in our mod and needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API mod 13745 file 304919 (MAIN), read 2026-11-12",
+   "plugins": [
+    "CavesofMorrowind.esp"
+   ],
+   "masters": [
+    "Skyrim.esm",
+    "Update.esm"
+   ],
+   "runtime": "data only; plugins off (asset-only)",
+   "conflicts": "not swept (plugins never active)",
+   "linked_or_forked_by": "none: depended on as the player’s own download",
+   "asset_only": true
+  },
+  {
+   "id": "moonpath-to-elsweyr",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 4341,
+    "file": 19300
+   },
+   "name": "Moonpath to Elsweyr SSE",
+   "author": "MuppetPuppet and An_Old_Sock",
+   "version": "1.16.1",
+   "archive": "Moonpath to Elsweyr SSE-4341-1-16-1.7z",
+   "size_kb": 91951,
+   "why": "a source place for 1 of the new world's places (Khajiit jungle camps; nw-04, newworld/sources/source_match/): its plugin read for layout, asset-only: its meshes and textures laid loose in the NewWorld profile alone, its plugins never active",
+   "required": true,
+   "profile": "newworld",
+   "sha256": "81fdbed9a79f13ae00808aab69130f4e2be7553771ad0b84c1590d527fa2eb31",
+   "licence": "none stated",
+   "permission_summary": "The player's own download is fine as a dependency; placing its meshes/textures or copied records in our generated plugin is using its contents in our mod and needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API mod 4341 file 19300 (MAIN), read 2026-11-12",
+   "plugins": [
+    "moonpath.esp"
+   ],
+   "masters": [
+    "Skyrim.esm",
+    "Update.esm"
+   ],
+   "runtime": "data only; plugins off (asset-only)",
+   "conflicts": "not swept (plugins never active)",
+   "linked_or_forked_by": "none: depended on as the player’s own download",
+   "asset_only": true
+  },
+  {
+   "id": "wyrmstooth",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 45565,
+    "file": 670394
+   },
+   "name": "Wyrmstooth",
+   "author": "Jonx0r",
+   "version": "1.20.3",
+   "archive": "Wyrmstooth-45565-1-20-3-1759129708.zip",
+   "size_kb": 224785,
+   "why": "a source place for 18 of the new world's places (island ruins, camps, forts and hamlets; nw-04, newworld/sources/source_match/): its plugin read for layout, asset-only: its meshes and textures laid loose in the NewWorld profile alone, its plugins never active",
+   "required": true,
+   "profile": "newworld",
+   "sha256": "e996175c2b49ab07cc86647cda837ff8930f39eb212f62affe749fad847e6c4d",
+   "licence": "none stated",
+   "permission_summary": "The player's own download is fine as a dependency; placing its meshes/textures or copied records in our generated plugin is using its contents in our mod and needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API mod 45565 file 670394 (MAIN), read 2026-11-12",
+   "plugins": [
+    "Wyrmstooth.esp"
+   ],
+   "masters": [
+    "Skyrim.esm",
+    "Update.esm"
+   ],
+   "runtime": "data only; plugins off (asset-only)",
+   "conflicts": "not swept (plugins never active)",
+   "linked_or_forked_by": "none: depended on as the player’s own download",
+   "asset_only": true
+  },
+  {
+   "id": "nyhus",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 4016,
+    "file": 830473
+   },
+   "name": "Nyhus and the border of Cyrodiil",
+   "author": "JoopvanDie",
+   "version": "10.3",
+   "archive": "Nyhus SSE 10.3 esp 4016 10.3 2026-11-01T15-07Z qTl1SoW7f.rar",
+   "size_kb": 375080,
+   "why": "a source place for 13 of the new world's places (Cyrodiil border Imperial forts and ruins, villages; nw-04, newworld/sources/source_match/): its plugin read for layout, asset-only: its meshes and textures laid loose in the NewWorld profile alone, its plugins never active",
+   "required": true,
+   "profile": "newworld",
+   "sha256": "cad8e1f02e66912c43ff6a3d9a2a013fda046209609fb43d7b243b108eb36167",
+   "licence": "none stated",
+   "permission_summary": "The player's own download is fine as a dependency; placing its meshes/textures or copied records in our generated plugin is using its contents in our mod and needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API mod 4016 file 830473 (MAIN), read 2026-11-12",
+   "plugins": [
+    "Nyhus.esp"
+   ],
+   "masters": [
+    "Skyrim.esm",
+    "Update.esm"
+   ],
+   "runtime": "data only; plugins off (asset-only)",
+   "conflicts": "not swept (plugins never active)",
+   "linked_or_forked_by": "none: depended on as the player’s own download",
+   "asset_only": true
   }
  ]
 }

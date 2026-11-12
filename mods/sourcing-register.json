@@ -969,5 +969,95 @@
   "used_by": "the NewWorld profile (asset-only; the player downloads it): creature records and assets of the new world's ecology (phase nw-03b)",
   "linked_or_forked_by": "none: depended on as the player's own download",
   "notes": "author aviform. No terms on the page. Owner supplied this mod (2026-11-12). Bat swarm retexture and its optional plugin, read as a source; the player's own download."
+ },
+ {
+  "name": "Caves of Morrowind (Nexus 13745)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/13745?tab=files&file_id=304919",
+  "version": "V3.1 (mods/dependencies.json row caves-of-morrowind)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it): a layout source for 4 new-world places (nw-04)",
+  "linked_or_forked_by": "none: depended on as the player’s own download; its plugins never active, never a master",
+  "notes": "author Speedygun1. The player's own download is fine as a dependency; placing its meshes/textures or copied records in our generated plugin needs the author's permission."
+ },
+ {
+  "name": "Moonpath to Elsweyr SSE (Nexus 4341)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/4341?tab=files&file_id=19300",
+  "version": "1.16.1 (mods/dependencies.json row moonpath-to-elsweyr)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it): a layout source for 1 new-world places (nw-04)",
+  "linked_or_forked_by": "none: depended on as the player’s own download; its plugins never active, never a master",
+  "notes": "author MuppetPuppet and An_Old_Sock. The player's own download is fine as a dependency; placing its meshes/textures or copied records in our generated plugin needs the author's permission."
+ },
+ {
+  "name": "Wyrmstooth (Nexus 45565)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/45565?tab=files&file_id=670394",
+  "version": "1.20.3 (mods/dependencies.json row wyrmstooth)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it): a layout source for 18 new-world places (nw-04)",
+  "linked_or_forked_by": "none: depended on as the player’s own download; its plugins never active, never a master",
+  "notes": "author Jonx0r. The player's own download is fine as a dependency; placing its meshes/textures or copied records in our generated plugin needs the author's permission."
+ },
+ {
+  "name": "Nyhus and the border of Cyrodiil (Nexus 4016)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/4016?tab=files&file_id=830473",
+  "version": "10.3 (mods/dependencies.json row nyhus)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it): a layout source for 13 new-world places (nw-04)",
+  "linked_or_forked_by": "none: depended on as the player’s own download; its plugins never active, never a master",
+  "notes": "author JoopvanDie. The player's own download is fine as a dependency; placing its meshes/textures or copied records in our generated plugin needs the author's permission."
+ },
+ {
+  "name": "Kagouti- Mihail Monsters and Animals (SE-AE version) (''morrowind'') (Nexus 27521)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/27521?tab=files&file_id=286911",
+  "version": "2.1 (mods/dependencies.json row mihail-kagouti)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile (asset-only; the player downloads it): creature records and assets of the new world's ecology (phase nw-03b)",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "author Mihail. No terms stated on the page."
+ },
+ {
+  "name": "Giant Leeches (Creature Series) SE-AE (Nexus 104589)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/104589?tab=files&file_id=442642",
+  "version": "1.1 (mods/dependencies.json row giant-leeches)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile (asset-only; the player downloads it): creature records and assets of the new world's ecology (phase nw-03b)",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "author Skinwalker21. No terms stated on the page."
+ },
+ {
+  "name": "Blue Whales SE (Nexus 47619)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/47619?tab=files&file_id=193914",
+  "version": "1.0 (mods/dependencies.json row blue-whales)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile (asset-only; the player downloads it): creature records and assets of the new world's ecology (phase nw-03b)",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "author Skinwalker21 ported by FireOogle. No terms stated on the page."
+ },
+ {
+  "name": "LamiaEnemies (Nexus 50880)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/50880?tab=files&file_id=233627",
+  "version": "1.1 (mods/dependencies.json row lamia-enemies)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile (asset-only; the player downloads it): creature records and assets of the new world's ecology (phase nw-03b)",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "author m. Page: the author allows use of the mod's resources for TES5 (not for other games)."
+ },
+ {
+  "name": "Gorgons and Medusa in Skyrim (Nexus 100485)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/100485?tab=files&file_id=425300",
+  "version": "1 (mods/dependencies.json row gorgons-medusa)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile (asset-only; the player downloads it): creature records and assets of the new world's ecology (phase nw-03b)",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "author ELAF. No terms stated on the page."
+ },
+ {
+  "name": "Nix-Hounds - Mihail Monsters and Animals (SE-AE version) (''morrowind'') (Nexus 54358)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/54358?tab=files&file_id=303491",
+  "version": "1.2 (mods/dependencies.json row mihail-nix-hounds)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile (asset-only; the player downloads it): creature records and assets of the new world's ecology (phase nw-03b)",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "author Mihail. No terms stated on the page."
  }
 ]
