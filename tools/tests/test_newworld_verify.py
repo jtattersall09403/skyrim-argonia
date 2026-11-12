@@ -97,4 +97,4 @@ def test_dressing_rows(tmp_path):
 
 def test_flower_grass_thick():
     from tools.newworld import verify as v
-    assert v.flower_grass_thick({"ESpTulipRed": 100, "ESpTulipWhite": 40, "ALPAGrassFern01": 90}) == ["ESpTulipRed"]
+    assert v.flower_grass_thick({"ANW_FF_ESpTulipRed": 100, "ANW_FF_ESuPoppy02Red": 40, "ANW_KotM_ALPAGrassFern01": 90}) == ["ANW_FF_ESpTulipRed"]

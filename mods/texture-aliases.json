@@ -1,5 +1,5 @@
 {
- "about": "A file a mod ships at one path, laid again at the path that mod's own mesh names (infra/gpu-box/stack.py lay_aliases, the folder argonia-texture-aliases; nothing here is a game file). Found by tools/newworld/assets_audit.py. gkbjunglebranch10 is shipped by no mod: its own family's gkbjunglebranch3 stands in.",
+ "about": "A file a mod ships at one path, laid again at the path that mod's own mesh names (infra/gpu-box/stack.py lay_aliases, the folder argonia-texture-aliases; nothing here is a game file). Found by tools/newworld/assets_audit.py. gkbjunglebranch10 is shipped by no mod: its own family's gkbjunglebranch3 stands in; ewpshore15 and ewpshore17 are shipped by no mod either: King of the Murkmire's violet grasses show Flower Fields' dog violet.",
  "aliases": {
   "textures\\plants\\groundplants1\\fern2.dds": ["bmv", "textures\\landscape\\plants\\fern2.dds"],
   "textures\\plants\\groundplants1\\fern2_n.dds": ["bmv", "textures\\landscape\\plants\\fern2_n.dds"],
@@ -7,6 +7,8 @@
   "textures\\plants\\grplants2\\leafcol_n.dds": ["bmv", "textures\\landscape\\plants\\leafcol_n.dds"],
   "textures\\landscape\\trees\\treeoaktrunk_n.dds": ["bmv", "textures\\landscape\\trees\\ethas\\treeoaktrunk_n.dds"],
   "textures\\landscape\\gkbbranch1.dds.dds": ["bmv", "textures\\landscape\\trees\\gkbbranch1.dds"],
+  "textures\\landscape\\grass\\ewpshore15.dds": ["flower-fields-se", "textures\\landscape\\grass\\espdogviolet01.dds"],
+  "textures\\landscape\\grass\\ewpshore17.dds": ["flower-fields-se", "textures\\landscape\\grass\\espdogviolet01.dds"],
   "textures\\landscape\\trees\\gkbjunglebranch10.dds": ["bmv", "textures\\landscape\\trees\\gkbjunglebranch3.dds"],
   "textures\\0manor house\\sfloorhouse01.dds": ["bmv", "textures\\textures\\0manor house\\sfloorhouse01.dds"],
   "textures\\0manor house\\sfloorhouse01_n.dds": ["bmv", "textures\\textures\\0manor house\\sfloorhouse01_n.dds"],

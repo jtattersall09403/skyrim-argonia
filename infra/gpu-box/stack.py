@@ -740,7 +740,8 @@ def vanilla_plugins():
 
 # manifest fields that describe a row without changing what is laid
 DOC_FIELDS = {"licence", "permission_summary", "ai_clause", "permission_ask", "permission_evidence", "runtime",
-              "conflicts", "linked_or_forked_by", "plugins"}
+              "conflicts", "linked_or_forked_by", "plugins",
+              "name", "why", "note", "drop_note", "keep_note"}
 
 
 def stage_key(m) -> str:

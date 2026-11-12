@@ -20,5 +20,7 @@ def test_stage_key_and_staged_ok(tmp_path):
     assert not stack.staged_ok(m2, stack.stage_key(m2), keys, mods, tools)
     noted = {**m, next(iter(stack.DOC_FIELDS)): "a note"}  # a doc field leaves the key alone
     assert stack.stage_key(noted) == k
+    prose = {**m, "why": "a reason", "note": "n", "drop_note": "d", "keep_note": "k", "name": "Name"}  # prose never re-stages
+    assert stack.stage_key(prose) == k
     (mods / "bmv").rmdir()  # the files gone: re-stage
     assert not stack.staged_ok(m, k, keys, mods, tools)

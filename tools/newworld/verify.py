@@ -662,10 +662,10 @@ def ecology_rows(rep: Report, plugin: Path, d: Path) -> None:
 
 
 def flower_grass_thick(density: dict) -> list:
-    """The Flower Fields grass copies (by the grass census) in a world file's {edid: density} that are over the limit."""
+    """The Flower Fields grass copies (by the grass census; our copies are named ANW_FF_<edid>) in a world file's {edid: density} that are over the limit."""
     census = jload(REPO / "newworld/sources/dressing/grass_census.json")["grasses"]
     ff = {r["edid"] for r in census if r["winner"] == "FlowerFields.esp"}
-    return sorted(k for k, v in density.items() if k in ff and v > FLOWER_GRASS_DENSITY)
+    return sorted(k for k, v in density.items() if k.removeprefix("ANW_FF_") in ff and v > FLOWER_GRASS_DENSITY)
 
 
 def dressing_rows(rep: Report, plugin: Path) -> None:
