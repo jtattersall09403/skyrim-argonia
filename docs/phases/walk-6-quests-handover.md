@@ -85,6 +85,29 @@ ruling in docs/owner-rulings.md, and post any call that is truly the owner's as 
      are fast and belong in `make check`. The agent playthrough is run by the quest's author as a step of the
      recipe (at the three moments above, and again only when the quest's player-facing flow changes), its
      transcript and findings kept beside the quest; it is never in the test suite and never blocks a commit.
+   Two more from the owner, later the same evening:
+   - "Make sure that the agent playing the paper version has a broad enough brief that it can use it's own
+     initiative - don't overly restrict it into only looking for certain things, invite it to think for itself and
+     give general feedback as well as the specific stuff. Like what does it think about how the quest is feeling,
+     does it understand what's going on, how fun does the quest feel, does it want to find out what happens next,
+     does everything make sense, what's it's overall open ended feedback and take? That sort of thing."
+   - "I would also be interested in having an artefact that allows me to visually and textually see agents'
+     playtest runs and explore them to see what happened and what their feedback was etc. not just text, somehow
+     kind of nicely visual as well, be creative."
+
+   Reading: the playtester's brief is a role, not a checklist. It is told who it is and what it can do, asked to
+   think aloud as a player would at every step (what it believes is going on, what it wants, why it chooses what
+   it chooses), and at the end to give its own open take in its own words: how the quest felt, whether it
+   understood it, whether it was fun, whether it wants to know what happens next, what made no sense, anything
+   else it noticed. A few standing questions may be asked after that take, never before, so they do not steer it.
+   Different players are worth running (a careful reader, an impatient one who skips dialogue, one who wanders).
+   And an owner-facing artifact (published with the Artifact tool, private to the owner, readable on a phone)
+   that shows each run as something to explore: the path the player took through the quest as a visual track
+   (stages reached, where they went on the map, who they spoke to, where they stalled or guessed), the player's
+   thinking beside each step, what the game showed them at that moment, and their closing take; runs of the same
+   quest side by side, so it is plain where different players diverged or all got lost. Its data comes from the
+   kept transcripts, so every new run appears without the page being rewritten. Design it as a real piece of
+   work (the artifact-design and dataviz skills), not a log viewer.
 7. **Why the last build went wrong**, in a short record: the stage that fired at the camp fire with a journal entry
    describing things that had not happened; Deesh-Duun's line that was untrue; talking to her not counting as
    reaching her; the cutters standing still; the calm music; the objective that fired later after swimming about;
