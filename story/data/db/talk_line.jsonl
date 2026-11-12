@@ -311,10 +311,10 @@
 {"talker":"037DFE:Black Marsh North.esp","topic":"talk.trade","ord":1,"text":"I am a guard at the town's centre, traveller. New guards are posted to the centre until someone trusts them. I would rather be on the south dock."}
 {"talker":"037E00:Black Marsh North.esp","topic":"talk.greet-friend","ord":1,"text":"Ah, it is you. Sit a while, my friend. I am only half awake, but I am glad of the company."}
 {"talker":"037E00:Black Marsh North.esp","topic":"talk.greet-stranger","ord":1,"text":"Mm. Yes, traveller? Speak slowly. I have been on watch a long time."}
-{"talker":"037E00:Black Marsh North.esp","topic":"talk.here","ord":1,"text":"I keep watch over the east houses with Jeelus-Vax, traveller. The house is about fifteen paces north-north-west of here."}
+{"talker":"037E00:Black Marsh North.esp","topic":"talk.here","ord":1,"text":"I keep watch over the east houses with Jeelus-Vax, traveller. The house lies just north-north-west of here."}
 {"talker":"037E00:Black Marsh North.esp","topic":"talk.lore","ord":1,"text":"Ask Tolyn Vedram about the painting of the Slave-Coffles, traveller. I have seen it too, and I do not like to speak of it."}
 {"talker":"037E00:Black Marsh North.esp","topic":"talk.self","ord":1,"text":"I am Sleeps-Standing, traveller. I earned the name on a long watch. I guard the east houses."}
-{"talker":"037E00:Black Marsh North.esp","topic":"talk.someone","ord":1,"text":"Find Severan Otho about twenty paces south-south-east of here, traveller. He is a hired Imperial."}
+{"talker":"037E00:Black Marsh North.esp","topic":"talk.someone","ord":1,"text":"Severan Otho, the hired Imperial soldier, stands just south-south-east of here, traveller."}
 {"talker":"037E00:Black Marsh North.esp","topic":"talk.trade","ord":1,"text":"I guard the east houses. The watch changes twice a day, traveller. The night is long."}
 {"talker":"037E04:Black Marsh North.esp","topic":"talk.directions","ord":1,"text":"Thorn, outlander? Take the path south-west, near a hundred paces, until the dead tree stands on your right. Then go south about sixty-five paces, and you are in the square of Thorn."}
 {"talker":"037E04:Black Marsh North.esp","topic":"talk.greet-friend","ord":1,"text":"I need not ask whose side you are on. Sit. I will see to the Owings after we talk."}
