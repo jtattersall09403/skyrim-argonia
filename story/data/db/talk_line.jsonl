@@ -872,14 +872,14 @@
 {"talker":"130780:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"Ask Raxa-Tum about Black Rose and Lilmoth. I know Lilmoth. It is a midden."}
 {"talker":"130780:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Mireel. I came to Black Rose from Lilmoth and stayed. The guard took me because I can read. I keep the duty rolls for the south docks."}
 {"talker":"130780:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Holds-Fast is usually just south-south-east of here, on this same path. He is a brute, but a useful one."}
-{"talker":"130789:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"Walk north about a hundred and seventy paces. You are at Black Rose Jail. I give this way free."}
+{"talker":"130789:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"Black Rose Jail? Walk north a short way, and it is there. I give this way free."}
 {"talker":"130789:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"Ah, there you are. Stand with me a while. Today I will name you no price."}
 {"talker":"130789:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Keep your purse close, stranger. Then we will get on well."}
 {"talker":"130789:Black Marsh.esm","topic":"talk.greet-stranger","ord":2,"text":"You want something from me? Most things here have a price. Mine is always fair."}
-{"talker":"130789:Black Marsh.esm","topic":"talk.here","ord":1,"text":"This is Black Rose. The house is about thirty-five paces north-east of here. The market's cooking fire is about forty paces east."}
+{"talker":"130789:Black Marsh.esm","topic":"talk.here","ord":1,"text":"This is Black Rose. The house is just north-east of here. The market's cooking fire is just east of here."}
 {"talker":"130789:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"Ask Xuth-Ma about the Rose and its families. He gives that away for nothing. I give nothing away."}
-{"talker":"130789:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Ten-Coins. The name is the price of looking away. Everyone at the docks knows it. I call it a fee, and I call it a fair one."}
-{"talker":"130789:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Okaw-Sei is a guard like me, on the dock walk below the market. You will usually find him about fifteen paces east-south-east of here."}
+{"talker":"130789:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Ten-Coins. The name is the price of looking away. Everyone knows it at the docks. I call it a fee, and I call it a fair one."}
+{"talker":"130789:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Okaw-Sei is a guard like me, on the dock walk below the market. You will usually find him just east-south-east of here."}
 {"talker":"141539:Black Marsh North.esp","topic":"talk.directions","ord":1,"text":"The cooking fire is in plain sight, about forty-five paces south-south-west of here. Walk straight to it."}
 {"talker":"141539:Black Marsh North.esp","topic":"talk.greet-friend","ord":1,"text":"The dock is quiet. You may stand with me, if you wish."}
 {"talker":"141539:Black Marsh North.esp","topic":"talk.greet-stranger","ord":1,"text":"This dock is watched. Say who you are and why you are here."}
