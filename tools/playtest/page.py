@@ -35,7 +35,7 @@ def outcome(ended: str, quest: str) -> tuple[str, str, dict]:
         q, _, state = part.rpartition(" ")
         if q:
             each[q] = state
-    if why.startswith("quest ") and not each:
+    if why.startswith("quest ") and m.group(2) is None:
         each[quest] = why.split(" ", 1)[1]
         why = "all quests ended"
     key, label = WHY.get(why, ("other", why))
@@ -240,11 +240,22 @@ def _forms_meta(sess: dict, quest: str) -> dict:
 
 
 def _run_paths(root: Path) -> list[str]:
-    idx = _json(root / "index.json")
-    paths = [r["path"] for r in idx.get("runs") or [] if r.get("path")]
-    if not paths:
-        paths = [str(p.parent.relative_to(root)) for p in sorted(root.glob("*/*/run.json"))]
-    return [p for p in paths if (root / p / "run.json").exists()]
+    """Every kept run, read from the run folders themselves (an index file may be stale or absent)."""
+    return [p.parent.relative_to(root).as_posix() for p in sorted(Path(root).glob("*/*/run.json"))]
+
+
+def _played(run: dict, rows: list[dict], quest: str) -> list[str]:
+    """The quests a run played, its own first: a chained quest counts when it started during the run or its stage
+    changed (a quest loaded and left waiting at one stage was not played)."""
+    seen: dict[str, set] = {}
+    for r in rows:
+        for q, n in (((r.get("summary") or {}).get("stages")) or {}).items():
+            seen.setdefault(q, set()).add(n)
+    for q, done in (run.get("stages") or {}).items():
+        seen.setdefault(q, set()).update(done or [])
+    at_start = next((set((r.get("summary") or {}).get("stages") or {}) for r in rows if r.get("summary")), set())
+    return [quest] + [q for q, ns in seen.items()
+                      if q != quest and (len(ns - {None}) > 1 or (q not in at_start and ns - {None}))]
 
 
 def collect(root: Path = S.RUNS) -> dict:
@@ -254,16 +265,30 @@ def collect(root: Path = S.RUNS) -> dict:
         folder = root / path
         run = _json(folder / "run.json")
         sess = _json(folder / "session.json")
-        quest = run.get("quest") or sess.get("quest") or path.split("/")[0]
+        first = run.get("quest") or sess.get("quest") or path.split("/")[0]
         fh = run.get("forms_hash") or sess.get("forms_hash") or path
-        key = f"{quest}@{fh}"
-        if key not in forms:
-            forms[key] = _forms_meta(sess, quest)
         ended = run.get("ended") or "open"
-        how, label, each = outcome(ended, quest)
-        st = steps(S.transcript(folder), quest)
-        runs.append({
-            "id": _slug(path), "path": path, "quest": quest, "qid": _slug(quest), "forms": key,
+        rows = S.transcript(folder)
+        chain = _played(run, rows, first)
+        for quest in chain:
+            key = f"{quest}@{fh}"
+            if key not in forms:
+                forms[key] = _forms_meta(sess, quest)
+            runs.append(_entry(path, folder, run, sess, rows, quest, key, chain, ended))
+    return {"runs": runs, "forms": forms, "questions": list(S.QUESTIONS)}
+
+
+def _entry(path, folder, run, sess, rows, quest, key, chain, ended) -> dict:
+    """One run as the page shows it under one of the quests it played (a chained run appears under each)."""
+    first = chain[0]
+    how, label, each = outcome(ended, quest)
+    if quest != first and quest not in each:  # an older run.json names only the first quest's ending
+        last = next((s for s in reversed(steps(rows, quest)) if s["ended"]), None)
+        how, label = (last["ended"], last["ended"]) if last else ("other", "not recorded for this quest")
+    st = steps(rows, quest)
+    return {
+            "id": _slug(path) + ("" if quest == first else "-in-" + _slug(quest)), "path": path, "quest": quest,
+            "qid": _slug(quest), "forms": key, "chain": chain, "chained_from": None if quest == first else first,
             "player": run.get("player") or "unknown", "source": run.get("source") or "designed",
             "model": run.get("model"), "created": run.get("created"), "ended": ended, "outcome": how,
             "outcome_label": label, "quests": each, "counts": run.get("counts") or {},
@@ -272,8 +297,7 @@ def collect(root: Path = S.RUNS) -> dict:
             "know": sess.get("know"), "at": sess.get("at"),
             "take": _read(folder / "take.md"), "answers": answers(_read(folder / "answers.md")),
             "brief": _read(folder / "brief.md"), "broken": sess.get("broken"), "steps": st,
-        })
-    return {"runs": runs, "forms": forms, "questions": list(S.QUESTIONS)}
+    }
 
 
 def render(data: dict) -> str:

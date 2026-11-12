@@ -137,6 +137,7 @@ a.rrow:hover { background: var(--silt); }
 .findings { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: .75rem 1.5rem; }
 .finding { font-size: .9375rem; color: var(--ink-2); max-width: 38rem; }
 .finding strong { color: var(--ink); font-weight: 600; }
+.chainnote { font-size: .875rem; color: var(--ink-2); background: var(--silt); border-radius: 4px; padding: .35rem .6rem; max-width: 40rem; }
 .words { display: flex; flex-direction: column; gap: .25rem; }
 .word { display: grid; grid-template-columns: 7rem minmax(0, 1fr); gap: .25rem 1rem; color: inherit; text-decoration: none; padding: .45rem 0; border-top: 1px solid var(--rule); align-items: baseline; }
 .word:hover .wt { text-decoration: underline; text-decoration-thickness: 1px; }
@@ -403,6 +404,15 @@ const order = (a, b) => {
 };
 RUNS.sort(order);
 const QUESTS = [...new Set(RUNS.map(r => r.quest))].sort();
+const ONE = RUNS.filter(r => !r.chained_from);  // each run once, under the quest it began with
+const RUNCOUNT = ONE.length;
+const firstRun = r => RUNS.find(x => x.path === r.path && !x.chained_from);
+function chainNote(r) {
+  if (!r.chained_from) return null;
+  const f = firstRun(r);
+  return h("p", { class: "chainnote" }, "Played in the same run, after ", f ? h("a", { href: runHref(f) }, qname(r.chained_from)) : qname(r.chained_from),
+    ". The take and answers are the whole run's.");
+}
 const qname = q => { const r = RUNS.find(x => x.quest === q); return r ? meta(r).name : q; };
 
 function filtered(ignoreQuest) {
@@ -538,6 +548,7 @@ function hitsSection(runs) {
     return (a ? "…" : "") + t.slice(a, b) + (b < t.length ? "…" : "");
   };
   for (const r of runs) {
+    if (r.chained_from) continue;
     if (r.take && r.take.toLowerCase().includes(q)) hits.push([r, "Closing take", null, r.take]);
     for (const a of r.answers || []) if (a.a.toLowerCase().includes(q)) hits.push([r, a.n ? "Answer " + a.n : "Answers", null, a.a]);
     r.steps.forEach((st, k) => { if (st.think && st.think.toLowerCase().includes(q)) hits.push([r, "Thinking at step " + k, k, st.think]); });
@@ -562,11 +573,11 @@ function overview() {
   view.append(h("section", { class: "stack", style: "padding-block: 1.5rem 1.75rem" },
     h("h1", null, "What the players made of it"),
     h("p", { class: "lede" }, "Fresh players who know nothing of a quest play it in words, thinking aloud at every step, then say what they made of it. " +
-      `${RUNS.length} run${RUNS.length === 1 ? "" : "s"} of ${QUESTS.length} quest${QUESTS.length === 1 ? "" : "s"} are kept.`),
+      `${RUNCOUNT} run${RUNCOUNT === 1 ? "" : "s"} of ${QUESTS.length} quest${QUESTS.length === 1 ? "" : "s"} are kept` + (RUNCOUNT < RUNS.length ? "; a run that went on into a later quest shows under each quest it played." : ".")),
     RUNS.length ? h("div", { class: "chips" },
-      players.map(p => h("span", { class: "chip", style: pc(p) }, h("span", { class: "sw" }), cap(p), h("b", null, RUNS.filter(r => r.player === p).length))),
-      [...new Set(RUNS.map(r => r.source))].map(src => h("span", { class: "chip" }, src, h("b", null, RUNS.filter(r => r.source === src).length))),
-      Object.keys(OUT).filter(k => RUNS.some(r => r.outcome === k)).map(k => h("span", { class: "chip" }, h("span", { class: "out t-" + OUT[k][1] }, glyph(k), OUT[k][0]), h("b", null, RUNS.filter(r => r.outcome === k).length))))
+      players.map(p => h("span", { class: "chip", style: pc(p) }, h("span", { class: "sw" }), cap(p), h("b", null, ONE.filter(r => r.player === p).length))),
+      [...new Set(ONE.map(r => r.source))].map(src => h("span", { class: "chip" }, src, h("b", null, ONE.filter(r => r.source === src).length))),
+      Object.keys(OUT).filter(k => ONE.some(r => r.outcome === k)).map(k => h("span", { class: "chip" }, h("span", { class: "out t-" + OUT[k][1] }, glyph(k), OUT[k][0]), h("b", null, ONE.filter(r => r.outcome === k).length))))
       : null,
     filterLine(runs.length, RUNS.length)));
   if (!RUNS.length) {
@@ -609,6 +620,7 @@ function questView(qid) {
   view.append(h("section", { class: "block" }, h("h3", null, "Their closing takes"),
     h("div", { class: "takes" }, runs.map(r => h("article", { class: "take", style: pc(r.player) },
       h("div", { class: "take-head" }, h("span", { class: "chips" }, whoEl(r), srcEl(r)), outEl(r)),
+      chainNote(r),
       r.take ? h("p", { class: "take-text" }, hl(r.take)) : h("p", { class: "muted" }, "No take was given."),
       h("a", { href: runHref(r), style: "font-size: .875rem" }, `Walk through the ${r.player} run, ${r.steps.length ? r.steps.length - 1 : 0} commands`))))));
   const qs = D.questions || [];
@@ -814,6 +826,7 @@ function runView(id, step) {
       r.cost_usd != null ? h("span", null, h("b", null, "$" + Number(r.cost_usd).toFixed(3))) : null,
       r.model ? h("span", null, "model ", h("b", null, r.model)) : null,
       h("span", null, stamp(r.created))),
+    chainNote(r),
     r.broken ? h("p", { class: "l-harn" }, "The run stopped on a harness error: " + r.broken) : null));
   view.append(h("section", { class: "block" }, h("div", { class: "takes" },
     h("article", { class: "take", style: pc(r.player) }, h("h3", null, "Closing take"), r.take ? h("p", { class: "take-text" }, hl(r.take)) : h("p", { class: "muted" }, "No take was given.")),

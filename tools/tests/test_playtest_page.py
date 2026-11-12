@@ -30,13 +30,11 @@ def test_page_from_the_kept_runs(tmp_path):
     _check_contract(html)
     data = _data(html)
     kept = sorted(p.parent.relative_to(S.RUNS).as_posix() for p in S.RUNS.glob("*/*/run.json"))
-    assert n == len(kept) == len(data["runs"])
-    for path in kept:
-        assert P._slug(path) in html
-        run = next(r for r in data["runs"] if r["path"] == path)
-        rows = S.transcript(S.RUNS / path)
-        assert len(run["steps"]) == len(rows)
-        assert all(r["forms"] in data["forms"] for r in data["runs"])
+    assert n == len(data["runs"]) and sorted({r["path"] for r in data["runs"]}) == kept
+    for run in data["runs"]:
+        assert run["id"] in html and run["forms"] in data["forms"]
+        assert len(run["steps"]) == len(S.transcript(S.RUNS / run["path"]))
+    assert len({r["id"] for r in data["runs"]}) == len(data["runs"])
     assert size < 4_000_000
 
 
@@ -62,6 +60,13 @@ def test_screen_lines_flags_and_plain_words():
                              "summary": None}], "q")
     assert steps[2]["flags"] == ["repeat"] and "stuck" in steps[3]["flags"] and steps[4]["flags"] == ["harness"]
     assert steps[1]["from"] is None and steps[1]["stage"] == 20
+
+
+def test_a_chained_run_is_shown_under_every_quest_it_played():
+    def row(stages):
+        return {"think": "x", "command": "look", "result": "", "summary": {"stages": stages}}
+    rows = [row({"q1": 10, "q2": 0, "q3": 0}), row({"q1": 90, "q2": 0, "q3": 0, "q4": 10}), row({"q1": 90, "q2": 10, "q3": 0, "q4": 10})]
+    assert P._played({"stages": {"q1": [10, 90], "q2": [0, 10], "q3": [0], "q4": [10]}}, rows, "q1") == ["q1", "q2", "q4"]
 
 
 def test_answers_are_matched_to_the_questions():
