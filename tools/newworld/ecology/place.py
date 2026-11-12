@@ -354,6 +354,8 @@ def build(out: Path) -> dict:
                 ordinal[p["kind"]] += 1
                 name = f"{p.pop('rec')}@{band}"
                 lvl = band_level(band, p["size"], foe)
+                if name in actors and actors[name]["level"] != lvl:   # one record serving kinds of two sizes: an actor a size
+                    name += f"/{p['size']}"
                 gear = p.pop("gear", None)
                 actors[name] = {"name": name, "src": name.rsplit("@", 1)[0].split("~")[0], "band": band, "level": lvl,
                                 "health_mult": BAND_HEALTH[band], "kind": p["kind"], "size": p["size"],

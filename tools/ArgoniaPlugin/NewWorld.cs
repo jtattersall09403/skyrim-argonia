@@ -388,7 +388,8 @@ static class NewWorld
             src.Configuration.TemplateFlags &= ~NpcConfiguration.TemplateFlag.Stats;
             var n = (Npc)src.Duplicate(new FormKey(mod.ModKey, ids.Take("base", "eco:" + name)));
             var kit = name.Contains('~') ? "_" + name.Split('~')[1].Split('@')[0] : "";
-            n.EditorID = $"ANW_Eco_{src.EditorID}_{a.GetProperty("band").GetString()}{kit}";
+            var sized = name.Contains('/') ? "_" + name.Split('/')[1] : "";   // one record at a second size (ecology/place.py)
+            n.EditorID = $"ANW_Eco_{src.EditorID}_{a.GetProperty("band").GetString()}{kit}{sized}";
             var cfg = n.Configuration;
             cfg.Level = new NpcLevel { Level = (short)a.GetProperty("level").GetInt32() };
             cfg.TemplateFlags &= ~NpcConfiguration.TemplateFlag.Stats;
