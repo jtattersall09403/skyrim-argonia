@@ -152,6 +152,7 @@
 {"quest_id":"quest.main.mq01","cast_ord":0,"fact_id":"fact.mq01.pulled-aboard","value":"knows"}
 {"quest_id":"quest.main.mq01","cast_ord":0,"fact_id":"fact.mq01.spared","value":"knows"}
 {"quest_id":"quest.main.mq01","cast_ord":1,"fact_id":"fact.mq01.camp-burned","value":"knows"}
+{"quest_id":"quest.main.mq01","cast_ord":1,"fact_id":"fact.mq01.camp-night","value":"knows"}
 {"quest_id":"quest.main.mq01","cast_ord":1,"fact_id":"fact.mq01.cutting-cut","value":"knows"}
 {"quest_id":"quest.main.mq01","cast_ord":1,"fact_id":"fact.mq01.owing-roll","value":"knows"}
 {"quest_id":"quest.main.mq01","cast_ord":1,"fact_id":"fact.mq01.pulled-aboard","value":"knows"}
@@ -162,15 +163,23 @@
 {"quest_id":"quest.main.mq01","cast_ord":3,"fact_id":"fact.mq01.pulled-aboard","value":"knows"}
 {"quest_id":"quest.main.mq01","cast_ord":3,"fact_id":"fact.mq01.washed-out","value":"knows"}
 {"quest_id":"quest.main.mq01","cast_ord":4,"fact_id":"fact.mq01.guest-pays","value":"knows"}
+{"quest_id":"quest.main.mq01","cast_ord":4,"fact_id":"fact.mq01.salts-house","value":"knows"}
 {"quest_id":"quest.main.mq01","cast_ord":5,"fact_id":"fact.mq01.camp-burned","value":"knows"}
+{"quest_id":"quest.main.mq01","cast_ord":5,"fact_id":"fact.mq01.courier-unclaimed","value":"knows"}
 {"quest_id":"quest.main.mq01","cast_ord":5,"fact_id":"fact.mq01.cutting-cut","value":"knows"}
+{"quest_id":"quest.main.mq01","cast_ord":5,"fact_id":"fact.mq01.deniable","value":"knows"}
 {"quest_id":"quest.main.mq01","cast_ord":5,"fact_id":"fact.mq01.guest-pays","value":"knows"}
 {"quest_id":"quest.main.mq01","cast_ord":5,"fact_id":"fact.mq01.jar","value":"knows"}
 {"quest_id":"quest.main.mq01","cast_ord":5,"fact_id":"fact.mq01.no-name","value":"knows"}
+{"quest_id":"quest.main.mq01","cast_ord":5,"fact_id":"fact.mq01.pay","value":"knows"}
 {"quest_id":"quest.main.mq01","cast_ord":5,"fact_id":"fact.mq01.pulled-aboard","value":"knows"}
 {"quest_id":"quest.main.mq01","cast_ord":5,"fact_id":"fact.mq01.reed","value":"knows"}
+{"quest_id":"quest.main.mq01","cast_ord":5,"fact_id":"fact.mq01.reed-answers","value":"knows"}
+{"quest_id":"quest.main.mq01","cast_ord":5,"fact_id":"fact.mq01.reed-work","value":"knows"}
 {"quest_id":"quest.main.mq01","cast_ord":5,"fact_id":"fact.mq01.sap-cell","value":"knows"}
 {"quest_id":"quest.main.mq01","cast_ord":5,"fact_id":"fact.mq01.spared","value":"knows"}
+{"quest_id":"quest.main.mq01","cast_ord":5,"fact_id":"fact.mq01.two-things","value":"knows"}
+{"quest_id":"quest.main.mq03","cast_ord":0,"fact_id":"fact.mq03.errand","value":"knows"}
 {"quest_id":"quest.main.mq03","cast_ord":0,"fact_id":"fact.mq03.jar-kept","value":"knows"}
 {"quest_id":"quest.main.mq03","cast_ord":0,"fact_id":"fact.mq03.long-work","value":"knows"}
 {"quest_id":"quest.main.mq03","cast_ord":0,"fact_id":"fact.mq03.low-reed","value":"knows"}
@@ -180,8 +189,11 @@
 {"quest_id":"quest.main.mq03","cast_ord":1,"fact_id":"fact.mq03.jar-kept","value":"knows"}
 {"quest_id":"quest.main.mq03","cast_ord":1,"fact_id":"fact.mq03.jars-brought","value":"knows"}
 {"quest_id":"quest.main.mq03","cast_ord":2,"fact_id":"fact.mq03.jar-kept","value":"knows"}
+{"quest_id":"quest.main.mq03","cast_ord":2,"fact_id":"fact.mq03.nobody-touches","value":"knows"}
 {"quest_id":"quest.main.mq03","cast_ord":3,"fact_id":"fact.mq03.jars-brought","value":"suspects"}
+{"quest_id":"quest.main.mq03","cast_ord":3,"fact_id":"fact.mq03.spare-picks","value":"knows"}
 {"quest_id":"quest.main.mq03","cast_ord":4,"fact_id":"fact.mq03.jar-kept","value":"knows"}
+{"quest_id":"quest.main.mq03","cast_ord":4,"fact_id":"fact.mq03.salts-door","value":"knows"}
 {"quest_id":"quest.main.mq04","cast_ord":0,"fact_id":"fact.mq04.root-cut","value":"believes \"the leeches came up the roots and the tree shut\""}
 {"quest_id":"quest.main.mq04","cast_ord":0,"fact_id":"fact.mq04.tree-closed","value":"knows"}
 {"quest_id":"quest.main.mq04","cast_ord":0,"fact_id":"fact.mq04.village-blames","value":"knows"}

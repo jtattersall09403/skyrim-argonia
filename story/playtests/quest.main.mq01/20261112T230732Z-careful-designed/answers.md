@@ -1,0 +1,7 @@
+1. I think I'm meant to bring the jar of Hist sap to Nesh-Deeka and have the quest close. After that she'd send me on the Low-Reed matter, which is the next job. In practice the journal still says "bring the jar to her," so I don't know what the game wants from me. I may have to taste the sap, or the quest may be stuck because I took the whole Lockbox early.
+
+2. I work for Nesh-Deeka, an agent of the state service, for now. She was open about where she holds back. She offered pay, and I had no other prospects. I also want to find out who cut the Hist roots, and her work gets me closer to that.
+
+3. The most confusing moment was the Lockbox and the jar. Using the key did nothing visible, the jar never appeared as something I could take, and I couldn't tell whether I carried it inside the lockbox. The persuasion gave me a key with no journal update. Paying 20 gold gave me a key too, and that one did advance the journal. Then Nesh-Deeka's handover dialogue played out twice and the journal never changed.
+
+4. First, make the quest tolerate taking the Lockbox early, or stop me from taking it before I have the key. Second, make the jar a real item that shows up in my inventory and say so when I get it. Third, make the persuade route and the gold route update the journal the same way. Fourth, fix Dives being "he" and then "she," and the duplicate 20-gold options. Fifth, make the handover finish the quest, or tell me what's missing. The writing and characters are strong, and the bugs are in the plumbing underneath them.

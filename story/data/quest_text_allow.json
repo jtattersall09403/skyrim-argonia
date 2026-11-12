@@ -13,8 +13,8 @@
     {"key": "ARG_TG02_TopicSellBeads_0", "text": "Here are fifty gold", "why": "the fragment pays 50 gold (ARG_QF_TG02 SellBack)"}
   ],
   "retired": {
-    "quest.main.mq01": ["Hereguard", "plantation", "paddy", "shore path", "rice dike"],
-    "quest.main.mq03": ["screen", "fog", "Hereguard"],
+    "quest.main.mq01": ["paddy", "shore path", "rice dike"],
+    "quest.main.mq03": ["screen", "fog"],
     "quest.bc.bc02": ["the keep", "cells", "Black Rose Jail"]
   },
   "roles": {

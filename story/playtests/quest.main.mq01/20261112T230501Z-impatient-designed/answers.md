@@ -1,0 +1,7 @@
+1. I think I'm supposed to get the jar from the lockbox on Dives-Without-A-Rope's ship, bring it to Nesh-Deeka, and then have the journal move on to whatever the Veiled Reed wants next. As far as I can tell, the delivery already happened in dialogue, so the game should have moved on and didn't. I can't say for sure what the next step is meant to be.
+
+2. Nominally I work for Nesh-Deeka and, through him, the Veiled Reed. I took the job because I had no money and no other lead. I don't really trust it. I'm not sure what the Reed wants, and the woman with the knotted cord who spared me is still unexplained.
+
+3. The jar. I used the key, picked the lock, and took the Lockbox itself. After all that, I couldn't tell whether I actually had the jar. The persuade attempt looked like it worked in the text, but nothing in the quest changed. Then Nesh-Deeka accepted the jar anyway and gave me a vision, and the journal still showed the objective as open. I couldn't tell whether I'd done something wrong or the game had broken.
+
+4. Your setting and tone are good, and the Hist sap and spy plot hooked me. But the jar step needs to be sturdier. Make the jar its own item, and make sure taking the whole lockbox or skipping the key doesn't break the quest. Make persuade and the 20-gold payment count as quest progress, and remove the duplicate 20-gold options. When a delivery scene plays, the journal should update. If I'm stuck, the game should say so instead of leaving me guessing.

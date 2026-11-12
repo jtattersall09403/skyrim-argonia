@@ -131,3 +131,31 @@ taken at stage 10 unhanded: stage 20 and the take triggers are cut, and the hand
 Left for the owner or later lanes: the camp is told, never visitable (the plan said "can go and see the day after";
 no structure may be added); the force-greet starts about 23 m from the deck door; the walk to the house is about
 400 m and its reach is not proven by a check; MQ03's route doubles back (house, hold, house).
+
+## The join given weight, the dialogue, and the paper players (lane D1)
+
+- **The join.** Before the player says yes at MQ01 stage 30, Nesh-Deeka answers six questions they may choose: what
+  the Veiled Reed is (it watches for cults, smugglers and killers who would harm the state or the trees, works through
+  houses like this one and wears no mark; frame §6, QA8), why it wants them (their name is on no roll, so if they are
+  taken the Reed never knew them; and the woman who spared them is the one the Reed is after), what it pays (fifty gold
+  on yes, her door stays open), whom it answers to (the An-Xileel's offices at Stormhold and nobody else; frame §5,
+  roster §55), whether the dead courier was theirs (yes: Mee-Tuja, unclaimed in death), and what she is not telling
+  them (two things, named by neither; roster §55). "Not yet" leaves the offer open. The broker's first line now tells a
+  new player where they are, what an Owing gang is and why they are not his problem. Truth t6 and six facts carry it
+  (L11 to L14). Review round 3 (one quest-reviewer): one blocking finding (the courier's carrying-aboard fact left on
+  the stage 21 path) and the stipend MQ04 and MQ05 do not pay, both fixed.
+- **One teller per fact in the Lilmoth window** (hold, pier and house are one settlement window): Wuleen-Sei tells how
+  the gang carried the player aboard and what she saw of the raid (fact.mq01.camp-night); the broker the Owing and the
+  roll; Nesh-Deeka the woman, the courier, the cutting and the sparing. MQ03: Dives-Without-A-Rope owns the lockbox and
+  key, Ux-Xeek her spare picks (a new topic: she had none in MQ03), Wuleen-Sei that the gang will not touch the lockbox,
+  Nesh-Deeka the errand.
+- **Dialogue.** Written per speaker with dialogue-write (finds on every run), one text-review pass applied, then the
+  linter and the echoes check clean. The lines are `story/data/quest_lines/mq01.json` and `mq03.json` (the old
+  opening's lines replaced).
+- **Paper players after dialogue** (`story/playtests/quest.main.mq01/20261112T2305*`, `...T230732Z-careful-designed`):
+  all four joined the Reed, could say what it is and why they joined or hesitated (no other prospects, her honesty
+  about what she holds back, the woman who spared them), and named the next step. All four stopped in MQ03 at the jar,
+  for causes outside the record: the form does not yet hold the jar, the key or the lockpicks (being fixed elsewhere),
+  and the compiler's fallback line for a check (persuade, the twenty gold, the hand-in and the taste) repeats the pass
+  text, so a failed check reads as success and the same prompt shows twice. The paper game shows a person's sex
+  nowhere, so players guessed "he" for Dives-Without-A-Rope and Nesh-Deeka.

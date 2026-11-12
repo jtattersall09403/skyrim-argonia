@@ -1,273 +1,286 @@
 {
- "topic.mq03-the-boat": {
-  "speaker": "npc.dunmer-north.stormhold.reed-officer",
+ "topic.mq03-jar-ask": {
+  "speaker": "npc.pirate-freeholds.opening-work-camp.n1-2",
   "infos": [
    {
-    "variant": "ready",
-    "prompt": "I am ready to go.",
+    "variant": "main",
+    "prompt": "Nesh-Deeka wants the jar you carried off the camp.",
     "lines": [
-     "You have tasted the sap. You are hurt.",
-     "Step aboard. We go when you are ready. Ask me who sent us if you want to know."
+     "No. That jar holds sap of Nine Bends, my own tree. It is not for Nesh-Deeka to take. If you lick the sap, the Hist shows you a vision.",
+     "I mean to lick it and hear my tree once, before anyone takes it from me. The jar is locked in my lockbox on the far side of the hold. I keep the key on me. So what are you to me?",
+     "A reason, a price or a fight?"
     ],
-    "facts": [],
-    "lines@low": [
-     "You tasted the sap. You are hurt.",
-     "Step aboard. We go when you are ready. Ask who sent us if you want to know."
+    "facts": [
+     "fact.mq03.hear-tree",
+     "fact.mq03.jar-kept"
     ],
-    "lines@high": [
-     "You have tasted the sap and you are hurt. I am sorry for it.",
-     "You are welcome aboard. Step on. We go when you are ready. Ask me who sent us if you wish to know."
-    ]
-   },
-   {
-    "variant": "where",
-    "prompt": "Who sent you?",
-    "lines": [
-     "A friend of the courier's sent us. You are hurt, as the others here are hurt. We take the hurt to a house in Lilmoth by boat.",
-     "The shed stands beside the withdrawn cutting, at the camp's far end. Sap lies spilled on its floor.",
-     "The burnt boards lie over deep water at the camp's fire. The courier's strap and tag lie in the gang families' locked fish-trap on the bottom, straight below them. Lockpicks lie loose beside the fire."
-    ],
-    "facts": [],
-    "lines@low": [
-     "A friend of the courier's sent us. You are hurt, as the others are.",
-     "We take the hurt to a house in Lilmoth by boat.",
-     "The shed is beside the withdrawn cutting, at the camp's far end. Sap lies spilled on its floor.",
-     "Burnt boards lie over deep water at the camp's fire.",
-     "The courier's strap and tag lie in the gang families' locked fish-trap. It is on the bottom, straight below the boards.",
-     "Lockpicks lie loose beside the fire. I do not know you well. That is all I give."
-    ],
-    "lines@high": [
-     "A friend of the courier's sent us. You are hurt, as the others here are hurt. I am sorry for it.",
-     "We take the hurt to a house in Lilmoth by boat. You are welcome on the boat.",
-     "The shed stands beside the withdrawn cutting, at the camp's far end. Sap lies spilled on its floor.",
-     "The burnt boards lie over deep water at the camp's fire.",
-     "The courier's strap and tag lie in the gang families' locked fish-trap, on the bottom, straight below the boards.",
-     "Lockpicks lie loose beside the fire. Use them. I trust you with this."
+    "replies": [
+     "topic.mq03-persuade",
+     "topic.mq03-buy",
+     "topic.mq03-take-it"
     ]
    }
   ]
  },
- "topic.mq03-the-attack": {
+ "topic.mq03-what-she-saw": {
+  "speaker": "npc.pirate-freeholds.opening-work-camp.n1-2",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "What did you see at the cutting?",
+    "lines": [
+     "I saw them come ashore at night. They were the cutters, the people who cut a Hist's roots. Each carried empty jars.",
+     "They went straight to the roots of the camp's cutting, the slip of the Hist that grew there. They cut the roots and filled the jars from the cuts. They were quick and quiet.",
+     "One jar rolled away by the fire. I took it before I thought. I knew it was Nine Bends the moment I held it."
+    ],
+    "facts": [
+     "fact.mq03.jars-brought"
+    ]
+   }
+  ]
+ },
+ "topic.mq03-persuade": {
+  "speaker": "npc.pirate-freeholds.opening-work-camp.n1-2",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "(Persuade) The one I work for means to find who cut your tree. We can learn it from the jar.",
+    "lines": [
+     "You speak as if you mean it. I wanted one taste of my tree before the jar was taken from me. I wanted it badly. But I want more to know who cut Nine Bends. Find who did it. That is all I ask of you.",
+     "Here is the key. The jar is in my lockbox, on the far side of the hold. I go back to my months with empty hands. Do not make me sorry."
+    ],
+    "facts": [
+     "fact.mq03.hear-tree"
+    ],
+    "gives": [
+     "thing.mq03.sack-key"
+    ]
+   },
+   {
+    "variant": "fail",
+    "prompt": "(Persuade) The one I work for means to find who cut your tree. We can learn it from the jar.",
+    "lines": [
+     "Words cost nothing. I have heard plenty in this hold, and none of them gave me back my tree.",
+     "Pay me twenty gold, a month off my roll, and the key is yours. It is only a lockbox's lock, so I ask no more.",
+     "Or come back when your words weigh more."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.mq03-buy": {
+  "speaker": "npc.pirate-freeholds.opening-work-camp.n1-2",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "I will give you twenty gold for the key. (20 gold)",
+    "lines": [
+     "Twenty gold is a month off my roll, so I will take it. It is not a fair price for Nine Bends. It is what I can spare. Here is the key.",
+     "My lockbox is on the far side of the hold, and the jar is inside it. Do not tell me what you will do with it. I would rather not hear."
+    ],
+    "facts": [
+     "fact.mq03.jar-kept"
+    ],
+    "gives": [
+     "thing.mq03.sack-key"
+    ]
+   },
+   {
+    "variant": "fail",
+    "prompt": "I will give you twenty gold for the key. (20 gold)",
+    "lines": [
+     "Twenty, or nothing. Twenty gold is a month off my roll, and I will not sell the key for less.",
+     "Come back with twenty gold and it is yours."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.mq03-take-it": {
+  "speaker": "npc.pirate-freeholds.opening-work-camp.n1-2",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Then I will take it.",
+    "lines": [
+     "Then try. The lockbox is locked, and its key stays on me. If you take the jar, you take all I have left of my tree."
+    ],
+    "facts": [
+     "fact.mq03.jar-kept"
+    ]
+   }
+  ]
+ },
+ "topic.mq03-dives-after": {
+  "speaker": "npc.pirate-freeholds.opening-work-camp.n1-2",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "What will you do without the jar?",
+    "lines": [
+     "I will work off my months as before. I have a shift, my food and my sleep, and that will not change. I meant to taste Nine Bends once.",
+     "If the jar leaves my hands, I will go without, as I have done for years. I hope whoever has it finds who cut my tree."
+    ],
+    "facts": [
+     "fact.mq03.hear-tree"
+    ]
+   }
+  ]
+ },
+ "topic.mq03-dives-greet": {
+  "speaker": "npc.pirate-freeholds.opening-work-camp.n1-2",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": null,
+    "lines": [
+     "My lockbox is empty. I hope whoever has the jar finds who cut my tree."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.mq03-errand": {
   "speaker": "npc.nesh-deeka",
   "infos": [
    {
-    "variant": "phial-carried",
-    "prompt": "I will tell you what I saw at the camp.",
+    "variant": "main",
+    "prompt": "What does the Reed want of me?",
     "lines": [
-     "Sit. I have heard the others. Now I have heard you.",
-     "You are carrying a phial of the sap. Give it to me. I want to look at it.",
-     "The Reed has word of a cell. It cuts a Hist's roots and draws off the sap. Your camp is the first work of it that the Reed has seen.",
-     "The courier's satchel was mine to see carried. I say no more of it."
+     "I want the cutters' jar, the one Dives-Without-A-Rope carried off the camp. I mean to learn from it what the cutters wanted.",
+     "It is in the hold of the ship of Buys-The-Months, at the pier at Hereguard Plantation, west of Lilmoth. Go west along the shore, a fair way, past the old lighthouse.",
+     "Dives-Without-A-Rope keeps it in the hold. How you get it is your affair. Look over the hold before you decide. Then bring the jar to me here."
     ],
     "facts": [
-     "fact.mq03.sap-cell",
-     "fact.mq03.satchel-hers"
-    ],
-    "lines@low": [
-     "Sit. I have heard the others. Now I have heard you.",
-     "You are carrying a phial of the sap. Give it to me. I will look at it.",
-     "The Reed has word of a cell. It cuts a Hist's roots and draws off the sap.",
-     "Your camp is the first work of it that the Reed has seen.",
-     "The courier's satchel was mine to see carried. I say no more of it."
-    ],
-    "lines@high": [
-     "Sit, please. I have heard the others. Now I have heard you.",
-     "You are carrying a phial of the sap. Give it to me, and I will take care with it. I want to look at it.",
-     "The Reed has word of a cell. It cuts a Hist's roots and draws off the sap. I tell you this because I trust you.",
-     "Your camp is the first work of it that the Reed has seen.",
-     "The courier's satchel was mine to see carried. I say no more of it. I am sorry I cannot."
-    ]
-   },
-   {
-    "variant": "phial-none",
-    "prompt": "I will tell you what I saw at the camp.",
-    "lines": [
-     "Sit. I have heard the others. Now I have heard you.",
-     "You took nothing from the shed. Then I have only your word. I will take it.",
-     "The Reed has word of a cell. It cuts a Hist's roots and draws off the sap. Your camp is the first work of it that the Reed has seen.",
-     "The courier's satchel was mine to see carried. I say no more of it."
-    ],
-    "facts": [
-     "fact.mq03.sap-cell",
-     "fact.mq03.satchel-hers"
-    ],
-    "lines@low": [
-     "Sit. I have heard the others. Now I have heard you.",
-     "You took nothing from the shed. Then I have only your word. I will take it.",
-     "The Reed has word of a cell. It cuts a Hist's roots and draws off the sap.",
-     "Your camp is the first work of it that the Reed has seen.",
-     "The courier's satchel was mine to see carried. I say no more of it."
-    ],
-    "lines@high": [
-     "Sit, please. I have heard the others. Now I have heard you.",
-     "You took nothing from the shed. Then I have only your word. I trust it, so I will take it.",
-     "The Reed has word of a cell. It cuts a Hist's roots and draws off the sap. I tell you this because I trust you.",
-     "Your camp is the first work of it that the Reed has seen.",
-     "The courier's satchel was mine to see carried. I say no more of it. I am sorry I cannot."
+     "fact.mq03.errand"
     ]
    }
   ]
  },
- "topic.mq03-the-night": {
-  "speaker": "npc.pirate-freeholds.opening-work-camp.n1",
+ "topic.mq03-give-jar": {
+  "speaker": "npc.nesh-deeka",
   "infos": [
    {
-    "variant": "tag",
-    "prompt": "What did you see that night?",
+    "variant": "main",
+    "prompt": "Here is the jar Dives-Without-A-Rope carried off the camp.",
     "lines": [
-     "That is the courier's tag. Then I will tell you.",
-     "I watched from the shore at the end of my shift. A woman with a knotted cord at her wrist led the cell. She took the courier's satchel. She left the cutting to her cutters. The roots were cut clean at the ring, one stroke each, by hands that knew where.",
-     "Wuleen-Sei marched the unhurt back to the barge at the dock, because hurt hands are no hire."
+     "That is the jar. Let me draw the stopper. The sap is fresh from the roots. It was drawn into a jar that the cutters brought with them, so they mean to keep it. This is a long work, not a raid.",
+     "Whoever tastes Hist sap sees a vision. A stranger may see something else. I do not know which you are. I will write while you put one drop on your tongue. Will you taste it?"
     ],
     "facts": [
-     "fact.mq03.cord-woman",
-     "fact.mq03.clean-cut",
-     "fact.mq03.barge-gone"
+     "fact.mq03.long-work",
+     "fact.mq03.taster"
     ],
-    "lines@low": [
-     "That is the courier's tag. Then I will tell you. I keep my warmth back.",
-     "I watched from the shore at the end of my shift. A woman with a knotted cord at her wrist led the cell.",
-     "She took the courier's satchel. She left the cutting to her cutters.",
-     "The roots were cut clean at the ring, one stroke each, by hands that knew where.",
-     "Wuleen-Sei marched the unhurt back to the barge at the dock. Hurt hands are no hire."
-    ],
-    "lines@high": [
-     "That is the courier's tag. Then I will tell you. You have earned it.",
-     "I watched from the shore at the end of my shift. A woman with a knotted cord at her wrist led the cell.",
-     "She took the courier's satchel. She left the cutting to her cutters.",
-     "The roots were cut clean at the ring, one stroke each, by hands that knew where.",
-     "Wuleen-Sei marched the unhurt back to the barge at the dock, because hurt hands are no hire."
-    ]
-   },
-   {
-    "variant": "words",
-    "prompt": "What did you see that night?",
-    "lines": [
-     "You ask fairly. I will tell it once.",
-     "I watched from the shore at the end of my shift. A woman with a knotted cord at her wrist led the cell. She took the courier's satchel. She left the cutting to her cutters. The roots were cut clean at the ring, one stroke each, by hands that knew where.",
-     "Wuleen-Sei marched the unhurt back to the barge at the dock, because hurt hands are no hire."
-    ],
-    "facts": [
-     "fact.mq03.cord-woman",
-     "fact.mq03.clean-cut",
-     "fact.mq03.barge-gone"
-    ],
-    "lines@low": [
-     "You ask fairly. I will tell it once, and I will not say it twice.",
-     "I watched from the shore at the end of my shift. A woman with a knotted cord at her wrist led the cell.",
-     "She took the courier's satchel. She left the cutting to her cutters.",
-     "The roots were cut clean at the ring, one stroke each, by hands that knew where.",
-     "Wuleen-Sei marched the unhurt back to the barge at the dock. Hurt hands are no hire."
-    ],
-    "lines@high": [
-     "You ask fairly and I trust you. I will tell it once, so listen well.",
-     "I watched from the shore at the end of my shift. A woman with a knotted cord at her wrist led the cell.",
-     "She took the courier's satchel. She left the cutting to her cutters.",
-     "The roots were cut clean at the ring, one stroke each, by hands that knew where.",
-     "Wuleen-Sei marched the unhurt back to the barge at the dock, because hurt hands are no hire."
-    ]
-   },
-   {
-    "variant": "low",
-    "prompt": "What did you see that night?",
-    "lines": [
-     "I saw the camp that night. I do not tell strangers what I saw. Bring me something of the courier's, or find better words."
-    ],
-    "facts": [],
-    "lines@low": [
-     "I saw the camp that night. I do not tell strangers what I saw.",
-     "Bring me something of the courier's, or find better words."
-    ],
-    "lines@high": [
-     "I saw the camp that night, friend. I do not tell it to just anyone. I am sorry.",
-     "Bring me something of the courier's, or find better words, and I will think again."
+    "replies": [
+     "topic.mq03-taste",
+     "topic.mq03-read-sap"
     ]
    }
   ]
  },
- "topic.mq03-the-offer": {
+ "topic.mq03-read-sap": {
   "speaker": "npc.nesh-deeka",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "(Alchemy) Let me read the sap first, as a tester does, then taste it.",
+    "lines": [
+     "You read it as a tester does. Good. It is fresh sap, drawn from cut roots. The stopper and the neck of the jar show the marks of other jars filled beside it. I will note that.",
+     "Then you tasted, and I wrote what you said while you were under it. A ship's hold with roots through its deck. A door that was never built, and a voice, dry, that made no words.",
+     "I cannot tell you what it means, and I will not guess. Keep the page and twenty-five gold, and I will keep the jar. We pay our hands.",
+     "One more thing, because you are one of mine now: the Hist at Low-Reed, a village east of here, has turned its face from its people."
+    ],
+    "facts": [
+     "fact.mq03.sap-fresh",
+     "fact.mq03.low-reed"
+    ]
+   },
+   {
+    "variant": "fail",
+    "prompt": "(Alchemy) Let me read the sap first, as a tester does, then taste it.",
+    "lines": [
+     "It is sap. Reading the rings on a stopper takes Alchemy of 25, and yours is less than that. I need a tongue, not a tester.",
+     "Put a drop on your tongue as I asked, and I will write while it holds you."
+    ],
+    "facts": []
+   }
+  ]
+ },
+ "topic.mq03-taste": {
+  "speaker": "npc.nesh-deeka",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "I will taste a drop.",
+    "lines": [
+     "Good. Be still. I will write while you are under it. A ship's hold. Roots through the deck. A door that was never built. A dry voice with no words in it.",
+     "You said all of it aloud, and I wrote it on the page. I do not know what it means. I will not guess. Keep the page. Twenty-five gold is yours, and I take the jar. We pay our hands.",
+     "I have heard that the Hist at Low-Reed Village, east of Lilmoth, has turned its face away."
+    ],
+    "facts": [
+     "fact.mq03.low-reed"
+    ]
+   }
+  ]
+ },
+ "topic.mq03-nesh-greet": {
+  "speaker": "npc.nesh-deeka",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": null,
+    "lines": [
+     "You are back, my hand. I still cannot say what the Hist at Low-Reed Village has done."
+    ],
+    "facts": [
+     "fact.mq03.low-reed"
+    ]
+   }
+  ]
+ },
+ "topic.mq03-salts": {
+  "speaker": "npc.mercantile-coast.lilmoth.fish-trader-house",
   "infos": [
    {
     "variant": "main",
     "prompt": "Who are you?",
     "lines": [
-     "I am of the Veiled Reed. It is the state's quiet service. We show no face. We want a hand we can deny.",
-     "No master can claim you now. The roll burnt in the camp's fire, so the broker cannot show what you owe, or that you were ever on it.",
-     "I offer you the Reed's protection, a door in Lilmoth and a stipend. The condition is that you serve the Reed. Think before you answer.",
-     "I want the survivor's account of the cell's work. When I have it, the Reed's people see the survivor home."
+     "Salts-The-Catch. Fish is my trade, and this is my house. I ask nothing of whoever comes through the door. Nesh-Deeka waits at the far end of the room."
     ],
     "facts": [
-     "fact.mq03.reed-named",
-     "fact.mq03.no-claim",
-     "fact.mq03.reed-offer",
-     "fact.mq03.witness-wanted"
-    ],
-    "lines@low": [
-     "I am of the Veiled Reed, the state's quiet service. We show no face. We want a hand we can deny.",
-     "No master can claim you now. The roll burnt in the camp's fire, so the broker cannot show what you owe, or that you were ever on it.",
-     "I offer you the Reed's protection, a door in Lilmoth and a stipend. The condition is that you serve the Reed.",
-     "This is business. I do not know you well enough for more. Think before you answer.",
-     "I want the survivor's account of the cell's work. When I have it, the Reed's people see the survivor home."
-    ],
-    "lines@high": [
-     "I am of the Veiled Reed, the state's quiet service. We show no face. We want a hand we can deny. I would be glad if it were yours.",
-     "No master can claim you now. The roll burnt in the camp's fire, so the broker cannot show what you owe, or that you were ever on it.",
-     "I offer you the Reed's protection, a door in Lilmoth and a stipend. The condition is that you serve the Reed.",
-     "I do not ask it lightly of someone I trust. Take your time before you answer.",
-     "I want the survivor's account of the cell's work. When I have it, the Reed's people see the survivor home."
+     "fact.mq03.salts-door"
     ]
    }
   ]
  },
- "topic.mq03-take-oath": {
-  "speaker": "npc.nesh-deeka",
+ "topic.mq03-ux-xeek": {
+  "speaker": "npc.pirate-freeholds.opening-work-barge.npc-opening-roll-reader",
   "infos": [
    {
     "variant": "main",
-    "prompt": "I will serve the Reed.",
+    "prompt": "Who are you?",
     "lines": [
-     "Then you serve the Reed. What I offered is yours now. I have your word.",
-     "The first work is this. East of Lilmoth, at Low-Reed Village, a Hist has shut. Go and see why."
+     "I am Ux-Xeek, the broker's port hand. I call the gang out to the lighters, the flat boats that carry cargo to the ships, and they must be there on time.",
+     "The lockpicks on the floor by Dives-Without-A-Rope's lockbox are mine. They are my spares for the lighters' padlocks. I have not counted them today. Now I have work to do."
     ],
     "facts": [
-     "fact.mq03.reed-offer"
-    ],
-    "lines@low": [
-     "Then you serve the Reed. What I offered is yours now.",
-     "I have your word.",
-     "The first work is this. East of Lilmoth, at Low-Reed Village, a Hist has shut. Go and see why."
-    ],
-    "lines@high": [
-     "Then you serve the Reed. I am glad of it, friend.",
-     "What I offered is yours now. I have your word. I trust it.",
-     "The first work is this. East of Lilmoth, at Low-Reed Village, a Hist has shut. Go and see why."
+     "fact.mq03.spare-picks"
     ]
    }
   ]
  },
- "topic.mq03-refuse-oath": {
-  "speaker": "npc.nesh-deeka",
+ "topic.mq03-wuleen": {
+  "speaker": "npc.pirate-freeholds.opening-work-barge.npc-opening-overseer",
   "infos": [
    {
     "variant": "main",
-    "prompt": "Not yet.",
+    "prompt": "Who are you?",
     "lines": [
-     "Then you do not take what I offered. That is your choice. The Reed will still send for you, and it will pay for the work.",
-     "Whatever you chose, the first work is at Low-Reed Village, east of Lilmoth. A Hist there has shut. Find out why."
+     "I am Wuleen-Sei, the broker's overseer in this hold. The gang answers to me, and I answer to Buys-The-Months. Since the camp, my gang will not touch Dives-Without-A-Rope's lockbox.",
+     "I will not make them. The gang has lost enough. Ask Dives-Without-A-Rope what she keeps in it."
     ],
     "facts": [
-     "fact.mq03.reed-offer"
-    ],
-    "lines@low": [
-     "Then you do not take what I offered. That is your choice.",
-     "The Reed will still send for you, and it will pay for the work.",
-     "Whatever you chose, the first work is at Low-Reed Village, east of Lilmoth. A Hist there has shut. Find out why."
-    ],
-    "lines@high": [
-     "Then you do not take what I offered. That is your choice. I do not hold it against you.",
-     "The Reed will still send for you, and it will pay for the work.",
-     "Whatever you chose, the first work is at Low-Reed Village, east of Lilmoth. A Hist there has shut. Find out why."
+     "fact.mq03.nobody-touches"
     ]
    }
   ]

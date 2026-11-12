@@ -1,128 +1,335 @@
 {
- "topic.mq01-the-roll": {
-  "speaker": "npc.pirate-freeholds.opening-work-barge.npc-opening-overseer",
-  "infos": [
-   {
-    "variant": "main",
-    "prompt": "Why am I here?",
-    "lines": [
-     "Your line is on the roll of this gang, and I am Wuleen-Sei, who keeps it. I add months to the roll for every meal a hand eats.",
-     "Ux-Xeek called your line, and it has no name on it. What name do I write?"
-    ],
-    "facts": [
-     "fact.mq01.owing-roll",
-     "fact.mq01.blank-line"
-    ],
-    "replies": [
-     "topic.mq01-answer-name",
-     "topic.mq01-answer-silent",
-     "topic.mq01-answer-defy"
-    ]
-   }
-  ]
- },
- "topic.mq01-answer-name": {
-  "speaker": "npc.pirate-freeholds.opening-work-barge.npc-opening-overseer",
-  "infos": [
-   {
-    "variant": "main",
-    "prompt": "Put down the name I carry.",
-    "lines": [
-     "Then your line has a name now, and it is written.",
-     "Go up the stairs and out by the door to the pier. We walk along the dock to the families' camp, where the dock meets the land."
-    ],
-    "facts": []
-   }
-  ]
- },
- "topic.mq01-answer-silent": {
-  "speaker": "npc.pirate-freeholds.opening-work-barge.npc-opening-overseer",
-  "infos": [
-   {
-    "variant": "main",
-    "prompt": "(Say nothing.)",
-    "lines": [
-     "Then your line stays blank, with no name on it.",
-     "Then go up the stairs and out on the pier. The gang is going to the camp at the dock's landward end."
-    ],
-    "facts": [
-     "fact.mq01.blank-line"
-    ]
-   }
-  ]
- },
- "topic.mq01-answer-defy": {
-  "speaker": "npc.pirate-freeholds.opening-work-barge.npc-opening-overseer",
-  "infos": [
-   {
-    "variant": "main",
-    "prompt": "Do what you like with your roll.",
-    "lines": [
-     "Then I write nothing, and your line stays blank.",
-     "Get up the stairs and out on the pier. You go to the camp with the rest of the gang."
-    ],
-    "facts": [
-     "fact.mq01.blank-line"
-    ]
-   }
-  ]
- },
- "topic.mq01-the-hire": {
+ "topic.mq01-not-on-roll": {
   "speaker": "npc.mercantile-coast.lilmoth.broker-buys-the-months",
   "infos": [
    {
-    "variant": "after-answer",
-    "prompt": "Whose gang is this?",
+    "variant": "main",
+    "prompt": "Who are you?",
     "lines": [
-     "It is mine. I am Buys-The-Months, the broker. Every hand on it owes months to me.",
-     "I hire the gang out to unload the lighters at this dock, the boats that bring the ships' goods in to it.",
-     "Your place on the roll is mine, whatever stands on your line."
+     "I am Buys-The-Months, a broker. This is my pier, below Hereguard Plantation. Lilmoth lies a fair way east along the shore. That ship is mine.",
+     "The water at Lilmoth is too shallow for a ship her size, so she lies here. The Argonians in her hold are an Owing gang. Each of them works off months of work owed for a debt or a wrong.",
+     "I keep those months written on my work roll, and I hire the gang out to unload the lighters, the cargo boats, at Lilmoth's dock. You came down the estuary with them, but you are on no line of my roll.",
+     "You owe me nothing, so I cannot hire you out. You are no affair of mine. Get off my pier."
     ],
     "facts": [
-     "fact.mq01.broker-holds"
-    ]
-   },
-   {
-    "variant": "before-answer",
-    "prompt": "Whose gang is this?",
-    "lines": [
-     "It is mine. I am Buys-The-Months, the broker. Every hand on it owes months to me.",
-     "I hire the gang out to unload the lighters at this dock, the boats that bring the ships' goods in to it.",
-     "Your place on the roll is mine, and Wuleen-Sei has not finished with your line. Answer her in the hold."
-    ],
-    "facts": [
-     "fact.mq01.broker-holds"
+     "fact.mq01.owing-roll",
+     "fact.mq01.no-name"
     ]
    }
   ]
  },
- "topic.mq01-the-march": {
-  "speaker": "npc.pirate-freeholds.opening-work-camp.n1-2",
+ "topic.mq01-work": {
+  "speaker": "npc.mercantile-coast.lilmoth.broker-buys-the-months",
   "infos": [
    {
     "variant": "main",
-    "prompt": "Why is your colour so thin?",
+    "prompt": "Where can I find work, then?",
     "lines": [
-     "I was kept from my Hist for years. My colour thinned and my markings went soft.",
-     "Finds-The-Other-Bank is thinned the same way. The gang families keep a cutting from the Hist at Nine Bends at their camp, and it is the nearest I can stand to a Hist. I mean to stand beside it before my colour is gone."
+     "I have no work for you. Salts-The-Catch is a fish-trader who sells me my gang's food. She asked at the pier for anyone off my ship who saw the camp burn.",
+     "A guest of hers, Nesh-Deeka, pays for work. Go to Nesh-Deeka. Keep to the shore going east, a fair way. You pass the old lighthouse, and then you are in Lilmoth.",
+     "Keep on until you reach the second of the big ships, the one at anchor off Lilmoth's own dock. Salts-The-Catch's house is south of that ship, beside a wooden walkway."
     ],
     "facts": [
-     "fact.mq01.washed-out",
-     "fact.mq01.gang-hist"
+     "fact.mq01.guest-pays"
     ]
    }
   ]
  },
- "topic.mq01-strike": {
+ "topic.mq01-broker-after": {
+  "speaker": "npc.mercantile-coast.lilmoth.broker-buys-the-months",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Who are you?",
+    "lines": [
+     "I am Buys-The-Months. I have said all I will. You are on no line of my roll, so leave my pier.",
+     "Salts-The-Catch keeps her house south of the second big ship, below Lilmoth Dock, beside a wooden walkway. Nesh-Deeka is in there."
+    ],
+    "facts": [
+     "fact.mq01.no-name"
+    ]
+   }
+  ]
+ },
+ "topic.mq01-broker-greet": {
+  "speaker": "npc.mercantile-coast.lilmoth.broker-buys-the-months",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": null,
+    "lines": [
+     "You again. You are on no line of my roll. Leave my pier."
+    ],
+    "facts": [
+     "fact.mq01.no-name"
+    ]
+   }
+  ]
+ },
+ "topic.mq01-dives": {
   "speaker": "npc.pirate-freeholds.opening-work-camp.n1-2",
   "infos": [
    {
     "variant": "main",
-    "prompt": "The strike falls at the fire.",
+    "prompt": "Who are you?",
     "lines": [
-     "Sal-Sei ran for the hatching shed, at the north-east end of the camp! The huts on the water to the west are burning. Deesh-Duun is in them."
+     "I am Dives-Without-A-Rope. My family belongs to Nine Bends, a Hist, one of the great sacred trees of my people. I have been years away from it. Look at my colour. It has thinned for want of the tree.",
+     "Here I work, I eat and I sleep. If you want to know about the camp, ask Wuleen-Sei."
+    ],
+    "facts": [
+     "fact.mq01.washed-out"
+    ]
+   }
+  ]
+ },
+ "topic.mq01-sent": {
+  "speaker": "npc.nesh-deeka",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Buys-The-Months says you pay for anyone off his ship.",
+    "lines": [
+     "Sit. Salts-The-Catch told me what Buys-The-Months said of you. I am Nesh-Deeka, and I do not lie well to a face, so I will tell you plainly. Two nights ago the gang's camp up the estuary burned.",
+     "A woman with a knotted cord at her wrist killed the courier who walked with the gang. She took his satchel. The satchel was mine.",
+     "Her people also cut the camp's Hist cutting, a slip of the sacred tree from which the families draw their lives. They cut it away from the eggs at its roots. The eggs died.",
+     "The gang say she looked at you lying by the fire and let you live. I serve the Veiled Reed, the quiet service of the An-Xileel, the state that rules Black Marsh. Do not say that name to a stranger.",
+     "Not here, not on the pier. I have work for a hand whose name is on no roll. Ask me whatever you like about it before you answer. I will tell you what I can, and where I am holding back."
+    ],
+    "facts": [
+     "fact.mq01.camp-burned",
+     "fact.mq01.cutting-cut",
+     "fact.mq01.spared",
+     "fact.mq01.reed"
+    ]
+   }
+  ]
+ },
+ "topic.mq01-sent-cold": {
+  "speaker": "npc.nesh-deeka",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "I am looking for work.",
+    "lines": [
+     "Come in. Salts-The-Catch described you to me. You are the one the gang carried aboard Buys-The-Months's ship, off the bank by the fire, the night their camp burned.",
+     "That same night a woman with a knotted cord at her wrist killed the courier who walked with the gang. She took his satchel. The satchel was mine.",
+     "Her people also cut the camp's Hist cutting, a slip of the sacred tree from which the families draw their lives. They cut it away from the eggs at its roots. The eggs died.",
+     "The gang say she saw you by the fire and let you live. I serve the Veiled Reed, the quiet service of the An-Xileel, the state that rules Black Marsh. Do not say that name to a stranger.",
+     "I need a hand whose name is on no roll, and you may be that hand. Ask me what you like before you answer. I will not lie to you about what I keep back."
+    ],
+    "facts": [
+     "fact.mq01.pulled-aboard",
+     "fact.mq01.camp-burned",
+     "fact.mq01.cutting-cut",
+     "fact.mq01.spared",
+     "fact.mq01.reed"
+    ]
+   }
+  ]
+ },
+ "topic.mq01-the-woman": {
+  "speaker": "npc.nesh-deeka",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Who was the woman with the knotted cord?",
+    "lines": [
+     "I do not know her name. We have heard of a small band that cuts a Hist's roots and draws the sap into jars. The camp is the first of its work that we have seen.",
+     "Why she spared a stranger, I cannot say. I would like to know. I think you would too."
+    ],
+    "facts": [
+     "fact.mq01.sap-cell"
+    ]
+   }
+  ]
+ },
+ "topic.mq01-what-reed": {
+  "speaker": "npc.nesh-deeka",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "What is the Veiled Reed?",
+    "lines": [
+     "We watch for cults, smugglers and killers who would harm the state or the trees. We work from houses like this one. My people wear no mark. You would not know one of us across a room.",
+     "That is what makes us useful. It is also what I would fear, if I were you. Most of what we stop deserves stopping. I do not say all of it. I am not sure of it."
+    ],
+    "facts": [
+     "fact.mq01.reed-work"
+    ]
+   }
+  ]
+ },
+ "topic.mq01-why-me": {
+  "speaker": "npc.nesh-deeka",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Why would the Reed want me?",
+    "lines": [
+     "Because your name is on no roll. No family, broker or village will ask after you, so if you are taken, we never knew you. I will not dress that up. The woman who spared you is the one we are after.",
+     "You have a reason of your own to look for her. I would like you to look with your eyes open."
+    ],
+    "facts": [
+     "fact.mq01.deniable"
+    ]
+   }
+  ]
+ },
+ "topic.mq01-pay": {
+  "speaker": "npc.nesh-deeka",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "What does the Reed pay?",
+    "lines": [
+     "Fifty gold in your palm the moment you say yes, and my door here stays open to you after.",
+     "It is little against what the work may cost you. I will not tell you otherwise."
+    ],
+    "facts": [
+     "fact.mq01.pay"
+    ]
+   }
+  ]
+ },
+ "topic.mq01-answers-to": {
+  "speaker": "npc.nesh-deeka",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Who does the Reed answer to?",
+    "lines": [
+     "To the An-Xileel's offices at Stormhold, the state's city in the north-west. We answer to those offices alone. No tree, village or court has a say in what we do.",
+     "The people of those places never see our work. I have thought for years about whether that is a strength. I still cannot say."
+    ],
+    "facts": [
+     "fact.mq01.reed-answers"
+    ]
+   }
+  ]
+ },
+ "topic.mq01-courier": {
+  "speaker": "npc.nesh-deeka",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Was the courier who died at the camp one of yours?",
+    "lines": [
+     "Yes. Mee-Tuja walked with the gang as our cover. His name was on no roll, as yours is not. He is dead now. The Reed will not own his body or his name. That is the price of working for us.",
+     "I will not pretend it is anything else."
+    ],
+    "facts": [
+     "fact.mq01.courier-unclaimed"
+    ]
+   }
+  ]
+ },
+ "topic.mq01-not-telling": {
+  "speaker": "npc.nesh-deeka",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "What are you not telling me?",
+    "lines": [
+     "Two things. I will not name them. I do not lie well to a face, so I tell you where the gap is. If you found it later, you would call me a liar. Weigh that before you answer."
+    ],
+    "facts": [
+     "fact.mq01.two-things"
+    ]
+   }
+  ]
+ },
+ "topic.mq01-join": {
+  "speaker": "npc.nesh-deeka",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "I will work for the Reed.",
+    "lines": [
+     "Good. We pay our hands, so here is the first of it, fifty gold. Now the first work. Buys-The-Months told Salts-The-Catch that Dives-Without-A-Rope, one of his gang, carried a jar aboard his ship.",
+     "The cutters, the people who cut the Hist's roots, dropped it by the fire. Dives-Without-A-Rope will not let it go. Bring me that jar from the ship's hold.",
+     "The ship is the one you were carried to, west of town past the old lighthouse. How you take it from her is your affair. Keep the Reed's name out of it."
+    ],
+    "facts": [
+     "fact.mq01.jar"
+    ]
+   }
+  ]
+ },
+ "topic.mq01-not-yet": {
+  "speaker": "npc.nesh-deeka",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Not yet.",
+    "lines": [
+     "Then my offer stands. It costs you nothing to leave it standing. I will be in this house. There is no other work on the dock for a stranger. Walk Lilmoth if you must. Come back to me."
     ],
     "facts": []
+   }
+  ]
+ },
+ "topic.mq01-salts": {
+  "speaker": "npc.mercantile-coast.lilmoth.fish-trader-house",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Who are you?",
+    "lines": [
+     "I am Salts-The-Catch. I sell fish, and I keep this house below Lilmoth Dock. People come and go here. I ask nothing of them. Nesh-Deeka sits at the far end of the room."
+    ],
+    "facts": [
+     "fact.mq01.salts-house"
+    ]
+   }
+  ]
+ },
+ "topic.mq01-ux-xeek": {
+  "speaker": "npc.pirate-freeholds.opening-work-barge.npc-opening-roll-reader",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Who are you?",
+    "lines": [
+     "I am Ux-Xeek, the broker's port hand. I read out the roll, the list of the gang's names, and call the gang out to the lighters, the flat boats that carry cargo to the ships.",
+     "You are not on my roll, so I have no time for you."
+    ],
+    "facts": [
+     "fact.mq01.port-hand"
+    ]
+   }
+  ]
+ },
+ "topic.mq01-where-am-i": {
+  "speaker": "npc.pirate-freeholds.opening-work-barge.npc-opening-overseer",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "Where am I?",
+    "lines": [
+     "You are in the hold of a ship. It belongs to Buys-The-Months, a broker who hires out the work of others. The ship is moored at the pier at Hereguard Plantation, west of Lilmoth.",
+     "I am Wuleen-Sei, his overseer. My gang carried you aboard, hurt, from the bank by the fire at our camp, the night it burned. We brought you down the estuary in our longboat.",
+     "Go up the stairs and out of the door onto the deck. Buys-The-Months waits on the pier. Ask him what is owed in this hold, and why. That is for him to say, not me."
+    ],
+    "facts": [
+     "fact.mq01.pulled-aboard"
+    ]
+   }
+  ]
+ },
+ "topic.mq01-the-camp": {
+  "speaker": "npc.pirate-freeholds.opening-work-barge.npc-opening-overseer",
+  "infos": [
+   {
+    "variant": "main",
+    "prompt": "What happened at your camp?",
+    "lines": [
+     "Raiders came off the water in the dark, two nights ago. Then the huts burned.",
+     "I was getting my gang into the longboat by torchlight. I never saw the raiders' faces.",
+     "Who they were, and what they took, I cannot tell you. Ask in Lilmoth. Others there know more than a broker's overseer."
+    ],
+    "facts": [
+     "fact.mq01.camp-night"
+    ]
    }
   ]
  }

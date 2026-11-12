@@ -28,9 +28,10 @@
 {"quest_id":"quest.local.lq30","ord":0,"skill":"marksman","use":"snipe","reason":"the viper is shot from the shallows before it can close"}
 {"quest_id":"quest.local.lq30","ord":1,"skill":"oneHanded","use":"fight","reason":"the viper is fought among the roots in the shallows of 0D7883"}
 {"quest_id":"quest.local.lq30","ord":2,"skill":"speechcraft","use":"persuade","reason":"Sei-Wan is talked into coming home (Speech 25)"}
+{"quest_id":"quest.main.mq01","ord":0,"skill":"Speechcraft","use":"interrogate","reason":"the player questions Nesh-Deeka about the Veiled Reed (what it is, whom it answers to, what it pays, what became of its courier, what she keeps back) before giving their word; no check: stage 30 is a pure choice stage (quest-write §3 item 3)"}
 {"quest_id":"quest.main.mq03","ord":0,"skill":"Lockpicking","use":"pick-a-lock","reason":"Dives-Without-A-Rope keeps the jar in a lockbox locked (Novice), and lockpicks lie on the hold's floor beside it"}
 {"quest_id":"quest.main.mq03","ord":1,"skill":"Speechcraft","use":"persuade","reason":"she gives up the key to someone who can tell her the Reed means to find who cut her tree (Speechcraft 25)"}
-{"quest_id":"quest.main.mq03","ord":2,"skill":"Pickpocket","use":"lift","reason":"the key is on her"}
+{"quest_id":"quest.main.mq03","ord":2,"skill":"Pickpocket","use":"pickpocket","reason":"the key is on her"}
 {"quest_id":"quest.main.mq03","ord":3,"skill":"Alchemy","use":"test-a-sample","reason":"at Nesh-Deeka's table a tester reads the sap before the taste: fresh-drawn, and the rings of many jars on it"}
 {"quest_id":"quest.main.mq04","ord":0,"skill":"Speech","use":"persuade","reason":"Pays-Late is talked round to tell what he hid (Speech 25)"}
 {"quest_id":"quest.main.mq04","ord":1,"skill":"Sneak","use":"steal","reason":"his gum pot is taken from the gum box at his feet under his eyes; the crime engine sees a theft"}
