@@ -520,3 +520,13 @@ added here the day they are made, with the date and the issue.
   separate reader checks each chapter can be built at the ceiling; readers are evidence, not votes; it stops when a
   round can retell it, wants the next chapter, splits on the conflicts meant to be ambiguous and raises nothing new
   the author agrees with.
+- 2026-11-12 (in session, review loops must not go in circles): "with your overlapping checks (e.g. the separate
+  deliverability check) ... you must not create circular issues - e.g. the player readers giving some feedback
+  that leads to a change that the deliverability reader then says is undeliverable that leads to a change that
+  then the player reader doesn't like... I think you need to get the feedback from all of them and make coherent
+  sets of changes that resolve everything together and leaves the output in a state that resolved all of their
+  issues without creating any new ones." And on fresh agents being agreeable: "you should consider this in the
+  persona that you prompt them with (don't make them *too* harsh though or we'll never pass)." Every round gathers
+  all readers' findings first (players and the deliverability reader), the author makes one set of changes that
+  answers them together inside the ceiling, and the next round checks that set whole; a reader's persona is honest
+  and a little hard to please, never hostile.

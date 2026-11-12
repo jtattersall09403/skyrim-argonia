@@ -196,6 +196,11 @@ they trust, what they expect and what they would choose; new readers every round
 chapter can be built at the ceiling. Readers are evidence, not votes. The loop stops when a round can retell the
 story, wants the next chapter, splits on the conflicts meant to be ambiguous, and raises nothing new the author
 agrees with.
+Rounds never chase each other (owner, 2026-11-12): in each round every reader reads the same version (the players
+and the deliverability reader together), the author gathers all their findings and makes one coherent set of changes
+that answers them at once inside the ceiling, and the next round's fresh readers judge that set whole. No change is
+made for one reader alone. Each reader's persona is an honest player who is a little hard to please and says so
+plainly, not a critic paid to find fault.
 
 ## What the owner will be asked to check
 
