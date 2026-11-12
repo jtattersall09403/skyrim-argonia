@@ -175,7 +175,7 @@ NAVMESH_SAMPLE = (PY, "-m", "tools.navmesh", "sample", "--plugin", PLUGIN, "--ou
 
 STAGES: tuple[Stage, ...] = (
     Stage("tools", "the C# tools compile (ArgoniaPlugin, ArgoniaNav)",
-          cmds=(("flock", str(Path.home() / ".argonia/dotnet-build.lock"), "dotnet", "build", "-c", "Release", "-o", "out/tools/ArgoniaPlugin", "tools/ArgoniaPlugin", "-v", "q", "-nologo"),
+          cmds=(("flock", "-o", str(Path.home() / ".argonia/dotnet-build.lock"), "dotnet", "build", "-c", "Release", "-o", "out/tools/ArgoniaPlugin", "tools/ArgoniaPlugin", "-v", "q", "-nologo"),
                 ("dotnet", "build", "-c", "Release", "-o", "out/tools/ArgoniaNav", "tools/navmesh/ArgoniaNav", "-v", "q", "-nologo")),
           reads=("src:tools/ArgoniaPlugin/**/*.cs", "src:tools/ArgoniaPlugin/*.csproj", "src:tools/navmesh/ArgoniaNav/**/*.cs",
                  "src:tools/navmesh/ArgoniaNav/*.csproj"),

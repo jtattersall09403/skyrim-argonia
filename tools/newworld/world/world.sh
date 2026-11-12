@@ -46,7 +46,7 @@ esm_current() { [ -f "$esm" ] && [ -f "$stamp" ] && grep -q "\"key\": \"$key:$co
 case "$1" in
   write)
     writer
-    mkdir -p "$HOME/.argonia"; flock "$HOME/.argonia/dotnet-build.lock" dotnet build -c Release -o "$bin" tools/ArgoniaPlugin -v q -nologo >/dev/null  # the one lock every ArgoniaPlugin build takes (verify.py dump)
+    mkdir -p "$HOME/.argonia"; flock -o "$HOME/.argonia/dotnet-build.lock" dotnet build -c Release -o "$bin" tools/ArgoniaPlugin -v q -nologo >/dev/null  # the one lock every ArgoniaPlugin build takes (verify.py dump)
     esm_key
     if esm_current; then
       echo "esm current ($key)"
