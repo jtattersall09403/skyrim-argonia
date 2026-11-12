@@ -54,6 +54,37 @@ ruling in docs/owner-rulings.md, and post any call that is truly the owner's as 
    what was clear and what was not. It tests quest progression, story, dialogue and character, not navigation,
    visuals or combat. It must be simple enough that it does not become its own source of faults. Design it properly
    first; then use it on the new opening and the first quests, fix what confuses, and add it to the quest recipe.
+   The owner added three points on the harness the same evening (2026-11-12), in their words:
+   - "It's essential that the version it's 'playing on paper' is actually the game version. I don't want to overdo
+     specify this as I think you will do it better than me but so you know what I mean? If it just tests what the
+     author *says* will happen in game that's not much good if that then doesn't actually happen in game."
+   - "Rather than *just* being a test that is run on a built quest, is there a way we can have it like...integrated
+     somehow in the process of actually authoring and building them in the first place? So we don't have to spend
+     ages building a bunch of quests wrong, then time testing them with this new harness, then time fixing, then
+     testing again... Etc."
+   - "I also think it shouldn't become a regularly running 'gate' or part of a test suite as it will be somewhat
+     probabilistic and also presumably quite slow to run."
+
+   The previous session's reading, for you to challenge:
+   - **It plays the built records, never the author's account.** The harness's world is derived by a deterministic
+     reader from the built plugin (the ESP read back, or the Spriggit YAML it is built from, whichever the read-back
+     already proves equal): quest stages and their conditions, objectives and their targets, aliases, dialogue
+     topics with their conditions and result fragments, journal text, markers, who stands where. The quest record
+     and the writer's notes are not an input. Where the plugin holds a script fragment, the reader models only what
+     the Morrowind-level ceiling allows (set stage, give or take an item, move or enable a thing, change a faction
+     or a global), which is one more reason for the ceiling: anything the reader cannot model is a fault reported by
+     the reader, not something the playtester is told happened. The deterministic part (what state follows what
+     action) is code with unit tests; only the player is an agent.
+   - **It is part of authoring, at each step where a change is cheap.** The same state machine runs on the quest
+     record before anything is built (the record compiled to the same intermediate form the plugin reader emits),
+     so a fresh-agent playthrough reads the quest as designed before dialogue is written; again after dialogue;
+     and once on the built plugin, where the reader also diffs the built form against the designed form and names
+     every difference. One representation, three moments, so "built wrong" is caught by the diff and "confusing"
+     by the player, each as early as it can be.
+   - **It is not a gate.** The deterministic parts (the reader, the designed-against-built diff, the ceiling check)
+     are fast and belong in `make check`. The agent playthrough is run by the quest's author as a step of the
+     recipe (at the three moments above, and again only when the quest's player-facing flow changes), its
+     transcript and findings kept beside the quest; it is never in the test suite and never blocks a commit.
 7. **Why the last build went wrong**, in a short record: the stage that fired at the camp fire with a journal entry
    describing things that had not happened; Deesh-Duun's line that was untrue; talking to her not counting as
    reaching her; the cutters standing still; the calm music; the objective that fired later after swimming about;
