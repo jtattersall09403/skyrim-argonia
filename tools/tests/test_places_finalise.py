@@ -250,3 +250,11 @@ def test_a_save_naming_a_missing_note_is_refused():
                                                       "note_group": "g9"}], "notes": []}
     with pytest.raises(edits.EditError):
         edits.check_save(save)
+
+
+def test_a_stale_world_stamp_makes_the_build_refresh_the_ground_first_and_deploy_last(tmp_path):
+    from tools.places import finalise as F
+    names = lambda moved: [n for n, _ in F.build_plan(tmp_path, "helstrom", moved)]
+    assert names(True) == ["extract", "ground-check", "seat", "build", "check", "navexport", "deploy"]
+    assert names(False) == ["seat", "build", "check", "navexport", "deploy"]
+    assert F.build_plan(tmp_path, "helstrom", True)[0][1][-2:] == ["--ground", "helstrom"]

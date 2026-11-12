@@ -163,6 +163,20 @@ text above as follows.
   roads, grass, atmosphere, water kinds and flow, relief) is handed over to its own session with the dependencies
   on this phase written down: a change of relief or water near a built place means a redraft of that place.
 
+## For the owner: from your studio edits to the game (added by the agent, 2026-11-12)
+
+1. Open the studio at https://studio.jacktat-play.stream and pick Helstrom. It shows the place as drafted, with the two
+   lanterns hanging in the Hist in the middle of town, over the world as rebuilt today.
+2. Make your edits (move, add, remove, retype a person or a thing) and press Save. Saving keeps your edits; it changes
+   nothing in the game yet.
+3. When you are happy, press Finalise on that save. This starts a chain on the build machine that runs by itself, in
+   this order: your edits recorded; the town's ground taken again from the current world if the world changed under it;
+   the town seated, built, checked and its navigation mesh written; then the town laid onto the "Argonia: New World"
+   card. If you are playing at that moment, the last step waits until you stop streaming. The studio shows each step as it
+   finishes and a short report at the end.
+4. You can tell it reached the game when the studio's report says "deploy: ok". Start the "Argonia: New World" card,
+   take "Argonia Travel", "Places by region", Black Marsh's Helstrom, and look at what you changed.
+
 ## The work (the agent's lanes; status moves in the commit that changes it)
 
 The design and the contracts every lane builds to: [place-studio](../../design/place-studio.md). A fresh session

@@ -28,7 +28,7 @@ from tools.places import change_notes, edits
 
 CODE_REPO = Path(__file__).resolve().parents[2]
 STEPS = ("record", "build", "learn", "report")
-BUILD_VERBS = ("seat", "build", "check")
+BUILD_VERBS = ("seat", "build", "check", "navexport")
 BUDGET_USD = 30.0   # the owner was told 1 to 2% of the weekly allowance per finalise (1% is about $19)
 MAX_TURNS = 60
 COMMIT_TRIES, COMMIT_WAIT_S = 4, 3.0   # the studio server commits saves and notes in this tree while the chain runs
@@ -210,23 +210,47 @@ def verb_available(repo: Path, verb: str) -> bool:
     return (repo / "tools/places" / f"{verb}.py").exists() or (repo / "tools/places" / verb / "__init__.py").exists()
 
 
+def build_plan(repo: Path, place_id: str, world_moved: bool) -> list[tuple[str, list[str]]]:
+    """The build step's commands, in the place-build skill's order (section 7 of world-build): the ground bundle taken
+    again from the current world when the world moved under it, then seat, build, check and navexport, then the
+    place layer onto the New World card (which waits out a live stream itself)."""
+    m = lambda *a: [PY, "-m", "tools.places", *a]
+    plan = []
+    if world_moved:
+        plan += [("extract", m("extract", "--ground", place_id)), ("ground-check", m("ground-check", place_id))]
+    plan += [(v, m(v, place_id)) for v in BUILD_VERBS]
+    plan.append(("deploy", ["bash", str(repo / "infra/gpu-box/places_deploy.sh")]))
+    return plan
+
+
+def world_moved(repo: Path, place_id: str) -> bool:
+    """`worldparts` exits 1 when the world records under the place's ground bundle or build changed."""
+    r = subprocess.run([PY, "-m", "tools.places", "worldparts", place_id], cwd=repo, capture_output=True, text=True)
+    return r.returncode != 0
+
+
 def step_build(run: Run, skip: bool) -> dict:
     results = {}
-    for verb in BUILD_VERBS:
-        if skip or not verb_available(run.repo, verb):
-            results[verb] = {"rc": None, "status": "skipped" if skip else "not available yet", "tail": ""}
-            run.log(f"build: {verb} {results[verb]['status']}")
+    moved = False if skip else world_moved(run.repo, run.place_id)
+    run.log(f"build: the world {'moved under' if moved else 'stands as under'} {run.place_id}")
+    for name, cmd in build_plan(run.repo, run.place_id, moved):
+        verb = cmd[3] if cmd[0] == PY else None
+        if skip or (verb and not verb_available(run.repo, verb)):
+            results[name] = {"rc": None, "status": "skipped" if skip else "not available yet", "tail": ""}
+            run.log(f"build: {name} {results[name]['status']}")
             continue
-        cmd = [PY, "-m", "tools.places", verb, run.place_id]
+        if name == "deploy" and any(v["status"] == "failed" for v in results.values()):
+            results[name] = {"rc": None, "status": "skipped", "tail": "a step before it failed"}
+            continue
         run.log("build: " + shlex.join(cmd))
         r = subprocess.run(cmd, cwd=run.repo, capture_output=True, text=True)   # the repo's own tools and files
         out = (r.stdout + r.stderr).strip().splitlines()
         with open(run.dir / "run.log", "a") as f:
             f.write("\n".join(out) + "\n")
-        results[verb] = {"rc": r.returncode, "status": "ok" if r.returncode == 0 else "failed",
+        results[name] = {"rc": r.returncode, "status": "ok" if r.returncode == 0 else "failed",
                          "tail": "\n".join(out[-30:])}
-        if r.returncode and verb != "check":
-            break   # a failed seat or build leaves nothing to check
+        if r.returncode and name not in ("check", "deploy"):
+            break   # a failed seat or build leaves nothing to check or deploy
     crash_point("build")
     sha = run.commit(f"{run.place_id}: seated after the owner's edits (save {run.save_id})", [run.place])
     ok = all(v["status"] in ("ok", "skipped", "not available yet") for v in results.values())
@@ -603,8 +627,16 @@ def main(argv: list[str]) -> int:
     ap.add_argument("--relearn", action="store_true", help="run the lessons step and the report again")
     ap.add_argument("--skip-build", action="store_true", help="do not seat, build or check (a test run)")
     ap.add_argument("--budget", type=float, default=BUDGET_USD)
+    ap.add_argument("--plan", action="store_true", help="print the build step's commands in order and run nothing")
     ap.add_argument("--max-turns", type=int, default=MAX_TURNS)
     a = ap.parse_args(argv)
+    if a.plan:
+        repo = Path(a.repo)
+        moved = world_moved(repo, a.place_id)
+        print(f"the world {'moved under' if moved else 'stands as under'} {a.place_id}")
+        for i, (name, cmd) in enumerate(build_plan(repo, a.place_id, moved), 1):
+            print(f"{i}. {name}: {shlex.join(cmd)}")
+        return 0
     run = Run(Path(a.repo), a.place_id, a.save_id, skill=a.skill)
     if a.relearn:
         for s in ("learn", "report"):

@@ -40,6 +40,17 @@ if bad:
     print("\n".join(bad))
 sys.exit(1 if bad else 0)
 PY
+# never under the owner's stream: the lay restarts the stack. It waits for the stream to end (up to 4 hours),
+# re-reading every 5 minutes, unless DEPLOY_STREAM_WAITED=1 says the caller already waited.
+if [ $dry = 0 ] && [ -z "${DEPLOY_STREAM_WAITED:-}" ]; then
+  for _ in $(seq 48); do
+    live=$(ARGONIA_PEEK=1 "$here/run.sh" ps '. C:\argonia\infra\stream-activity.ps1; (Get-StreamActivity).streaming' 2>/dev/null | tr -d '\r' | tail -1)
+    [ "$live" = True ] || break
+    echo "places deploy: a stream session is live; waiting for it to end"
+    f=$(mktemp -u); mkfifo "$f"; read -r -t 300 <> "$f" || true; rm -f "$f"
+  done
+  [ "$live" = True ] && { echo "places deploy refused: the stream is still live after 4 hours" >&2; exit 3; }
+fi
 export DOTNET_ROOT="$HOME/.dotnet" PATH="$HOME/.dotnet:$PATH" DOTNET_CLI_TELEMETRY_OPTOUT=1 DOTNET_NOLOGO=1
 bin=out/tools/ArgoniaPlugin
 mkdir -p "$HOME/.argonia"; flock -o "$HOME/.argonia/dotnet-build.lock" dotnet build -c Release -o "$bin" tools/ArgoniaPlugin >/dev/null
