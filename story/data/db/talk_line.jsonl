@@ -650,11 +650,11 @@
 {"talker":"0934C5:Black Marsh North.esp","topic":"talk.greet-friend","ord":1,"text":"Stand with us, then. A sharp blade is always welcome here."}
 {"talker":"0934C5:Black Marsh North.esp","topic":"talk.greet-stranger","ord":1,"text":"Outlander. Say what you want, or leave me."}
 {"talker":"0934C5:Black Marsh North.esp","topic":"talk.greet-stranger","ord":2,"text":"Why do you interrupt me, outlander? I have work to do."}
-{"talker":"0934C5:Black Marsh North.esp","topic":"talk.here","ord":1,"text":"There is nothing here but open ground, outlander. The house is twenty paces south of here."}
+{"talker":"0934C5:Black Marsh North.esp","topic":"talk.here","ord":1,"text":"There is nothing here but open ground, outlander. The house is just south of here."}
 {"talker":"0934C5:Black Marsh North.esp","topic":"talk.lore","ord":1,"text":"Ask Fendyl Omoren about Heita-Meen, outlander. I know the story, and I mean to finish it."}
 {"talker":"0934C5:Black Marsh North.esp","topic":"talk.lore","ord":2,"text":"Ask Nalvos Brenur about the families of Thorn, outlander. Mine is a mixed one, and I will say no more of it."}
 {"talker":"0934C5:Black Marsh North.esp","topic":"talk.self","ord":1,"text":"I am Breaks-The-Ledger. I fight for the rising, outlander. That is all you need to know."}
-{"talker":"0934C5:Black Marsh North.esp","topic":"talk.someone","ord":1,"text":"Owes-Nothing is a soldier of the rising, like me. You will find him sixty paces south-east of here. He is slower than I would like."}
+{"talker":"0934C5:Black Marsh North.esp","topic":"talk.someone","ord":1,"text":"Owes-Nothing is a soldier of the rising, like me. You will find him just south-east of here. He is slower than I would like."}
 {"talker":"0934C5:Black Marsh North.esp","topic":"talk.trade","ord":1,"text":"I fight in the rising. We mean to break the Tax Heel's ledgers before anything else. The Tax Heel collect Owings and tolls for the field-owners."}
 {"talker":"0C724F:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The market's cooking fire? It is north-east of here, a short way. Go on, I have boats to watch."}
 {"talker":"0C724F:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"You are back, my friend. The water is quiet, so stay a while and talk."}
