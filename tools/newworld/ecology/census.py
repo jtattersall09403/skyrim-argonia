@@ -32,7 +32,8 @@ def plugin_path(name: str) -> Path:
 
 PLUGINS = ["Skyrim.esm", "Dawnguard.esm", "Dragonborn.esm", "ccBGSSSE001-Fish.esm", "Black Marsh.esm",
            "Black Marsh North.esp", "Here There Be Monsters.esp", "Here There Be Monsters - Curse of Cipactli.esp",
-           "King of the Murkmire.esp", "Tropical Skyrim.esp", "Tropical Skyrim -- Birds.esp"]
+           "King of the Murkmire.esp", "Tropical Skyrim.esp", "Tropical Skyrim -- Birds.esp",
+           "mihaildreughbundle.esp", "Otters.esp"]
 HUMAN_SOURCES = {"Black Marsh.esm", "Black Marsh North.esp", "King of the Murkmire.esp"}
 HOSTILE = re.compile(r"bandit|raider|slaver|pirate|thief|outlaw|brigand|marauder|cultist|necromancer|warlock|mage|"
                      r"poacher|smuggler|assassin|cutthroat|reaver|corsair", re.I)

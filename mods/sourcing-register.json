@@ -942,5 +942,32 @@
   "licence": "MIT (vendor/three-0.170.0/LICENSE)",
   "used_by": "the place studio's browser front end (tools/places/studio/web), WebGL2 drawing of places; no game asset",
   "linked_or_forked_by": "vendored unchanged into tools/places/studio/web/vendor/three-0.170.0 (no CDN at run time: the page sits behind the owner's login)"
+ },
+ {
+  "name": "Dreughs - Mihail Monsters and Animals (SE-AE version) (Nexus 139898)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/139898?tab=files&file_id=586850",
+  "version": "1 (mods/dependencies.json row mihail-dreughs)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile (asset-only; the player downloads it): creature records and assets of the new world's ecology (phase nw-03b)",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "author Mihail. Page: the author appreciates notice when a mod incorporates it but does not require it. Owner supplied this mod (2026-11-12). Its creature records are copied into ArgoniaNewWorld.esm (ForeignCopy) and point at the player's own installed assets; nothing redistributed (decision 0003)."
+ },
+ {
+  "name": "Otters - (Animal Series Pt.10) SE (Nexus 49518)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/49518?tab=files&file_id=201867",
+  "version": "1.0 (row otters-skinwalker)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile (asset-only; the player downloads it): creature records and assets of the new world's ecology (phase nw-03b)",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "author Skinwalker21. No terms on the page. Owner supplied this mod (2026-11-12). Otter records copied into ArgoniaNewWorld.esm, assets the player's own download."
+ },
+ {
+  "name": "Better Bats (Nexus 33789)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/33789?tab=files&file_id=129507",
+  "version": "1.0 (rows better-bats, better-bats-esp: Dark Brown Texture and Optional ESP)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile (asset-only; the player downloads it): creature records and assets of the new world's ecology (phase nw-03b)",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "author aviform. No terms on the page. Owner supplied this mod (2026-11-12). Bat swarm retexture and its optional plugin, read as a source; the player's own download."
  }
 ]

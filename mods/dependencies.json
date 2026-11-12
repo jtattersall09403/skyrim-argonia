@@ -2716,6 +2716,128 @@
    "asset_only": true
   },
   {
+   "id": "mihail-dreughs",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 139898,
+    "file": 586850
+   },
+   "name": "Dreughs - Mihail Monsters and Animals (SE-AE version)",
+   "author": "Mihail",
+   "version": "1",
+   "archive": "dreughs (se-ae)-139898-1-1737727902.rar",
+   "size_kb": 250660,
+   "why": "the lore dreugh (land and sea forms) of the Black Marsh coasts and seas; supplied by the owner (2026-11-12, nw-03b); asset-only: its creature records copied into ArgoniaNewWorld.esm, its assets laid loose in the NewWorld profile, its plugin never active",
+   "required": true,
+   "profile": "newworld",
+   "sha256": "a010c68862d396a21b4a0a9c93c5c46059369e9836a7e76c56a5794dcf8cd641",
+   "licence": "none stated",
+   "permission_summary": "Page: the author appreciates being told when a mod incorporates it, but it is not required; the owner supplied this mod himself (2026-11-12).",
+   "ai_clause": "not stated",
+   "permission_ask": false,
+   "permission_evidence": "Nexus API v1 description read 2026-11-12 (lane nw-03b C); owner approved the mods he linked",
+   "plugins": [
+    "mihaildreughbundle.esp"
+   ],
+   "runtime": "data only (no DLL)",
+   "conflicts": "not yet swept by houseCARL",
+   "linked_or_forked_by": "none: depended on as the player's own download; ArgoniaNewWorld.esm copies its creature records (ForeignCopy) and names its assets by path",
+   "from": "nw-03b C",
+   "asset_only": true
+  },
+  {
+   "id": "otters-skinwalker",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 49518,
+    "file": 201867
+   },
+   "name": "Otters - (Animal Series Pt.10) SE",
+   "author": "Skinwalker21",
+   "version": "1.0",
+   "archive": "Otters - (Animal Series Pt.10) SE-49518-1-0-1620238341.zip",
+   "size_kb": 6385,
+   "why": "the river otter of Black Marsh's rivers; supplied by the owner (2026-11-12, nw-03b); asset-only: its otter records copied into ArgoniaNewWorld.esm, assets loose in the NewWorld profile, plugin never active",
+   "required": true,
+   "profile": "newworld",
+   "sha256": "1c7220f9821d93ca421983597875bfbf54d826159b71964ba2bc4d5406d2ec6c",
+   "licence": "none stated",
+   "permission_summary": "No terms on the page; the owner supplied this mod himself (2026-11-12).",
+   "ai_clause": "not stated",
+   "permission_ask": false,
+   "permission_evidence": "Nexus API v1 description read 2026-11-12 (lane nw-03b C); owner approved the mods he linked",
+   "plugins": [
+    "Otters.esp"
+   ],
+   "runtime": "data only (no DLL)",
+   "conflicts": "not yet swept by houseCARL",
+   "linked_or_forked_by": "none: depended on as the player's own download; ArgoniaNewWorld.esm copies its creature records (ForeignCopy) and names its assets by path",
+   "from": "nw-03b C",
+   "asset_only": true
+  },
+  {
+   "id": "better-bats",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 33789,
+    "file": 129507
+   },
+   "name": "Better Bats (Dark Brown Texture)",
+   "author": "aviform",
+   "version": "1.0",
+   "archive": "Dark Brown Texture-33789-1-0-1584710983.rar",
+   "size_kb": 171,
+   "why": "the cave bat: a retexture of the vanilla bat swarm (textures/effects/fxbat01) for the new world's caves; supplied by the owner (2026-11-12, nw-03b); textures loose in the NewWorld profile",
+   "required": true,
+   "profile": "newworld",
+   "sha256": "f5c18f8265ce244d564eac7fad4e1573e7a93b6be5755bea23512e156fba3eb6",
+   "licence": "none stated",
+   "permission_summary": "No terms on the page; the owner supplied this mod himself (2026-11-12).",
+   "ai_clause": "not stated",
+   "permission_ask": false,
+   "permission_evidence": "Nexus API v1 description read 2026-11-12 (lane nw-03b C); owner approved the mods he linked",
+   "plugins": [],
+   "runtime": "data only (no DLL)",
+   "conflicts": "not yet swept by houseCARL",
+   "linked_or_forked_by": "none: depended on as the player's own download; ArgoniaNewWorld.esm copies its creature records (ForeignCopy) and names its assets by path",
+   "from": "nw-03b C",
+   "asset_only": true
+  },
+  {
+   "id": "better-bats-esp",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 33789,
+    "file": 129512
+   },
+   "name": "Better Bats (Optional ESP)",
+   "author": "aviform",
+   "version": "1.0",
+   "archive": "Optional ESP-33789-1-0-1584711207.rar",
+   "size_kb": 13,
+   "why": "Better Bats' optional plugin: bats that can be shot down and bats clinging to cave walls; read as a source for the new world's cave bats, never active",
+   "required": true,
+   "profile": "newworld",
+   "sha256": "403b37ff328d82724b0e2502bd8c38325646c4888c0e7b1bd681b3e4b041b4b5",
+   "licence": "none stated",
+   "permission_summary": "No terms on the page; the owner supplied this mod himself (2026-11-12).",
+   "ai_clause": "not stated",
+   "permission_ask": false,
+   "permission_evidence": "Nexus API v1 description read 2026-11-12 (lane nw-03b C); owner approved the mods he linked",
+   "plugins": [
+    "batcritter.esp"
+   ],
+   "runtime": "data only (no DLL)",
+   "conflicts": "not yet swept by houseCARL",
+   "linked_or_forked_by": "none: depended on as the player's own download; ArgoniaNewWorld.esm copies its creature records (ForeignCopy) and names its assets by path",
+   "from": "nw-03b C",
+   "asset_only": true
+  },
+  {
    "id": "htbm-cipactli",
    "group": "newworld",
    "source": {
