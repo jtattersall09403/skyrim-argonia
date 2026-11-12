@@ -4,55 +4,80 @@ How the new world's air is made: warm, steamy and tropical, different by region 
 drifting below eye level over the marsh and swamp water. Research and every measured number:
 `docs/research/nw-02-walk5-atmosphere.md`. Code: `tools/newworld/atmosphere.py`, `tools/newworld/world/mist.py`,
 `tools/ArgoniaPlugin/NewWorldAtmosphere.cs`, `tools/newworld/atmosphere_cs.py` (Community Shaders' height fog).
-Sources: `newworld/sources/atmosphere/`.
+Sources: `newworld/sources/atmosphere/` and the identity sheets, `newworld/sources/identity/regions.json`.
 
 ## The model
 
-- **A class per region.** Each region has an atmosphere class: a real tropical atmosphere (peat swamp, green marsh
-  and backwater, river corridor, lowland rainforest, highland, the east, south and west coasts, islands).
-  `regions.json` names it with the region research it rests on; a sea region takes the class of the coast it washes.
-- **A band per region.** North (by the Morrowind border), middle or south (the south coast belt), measured from the
-  mean cell row of the region's province cells (not its border scenery). The band shifts the class's sun, humidity
-  and weather chances (`classes.json` `bands`).
-- **A weather set per class and band.** Six kinds: fair, cloudy, mist, rain, storm, steam (the air after rain). Each
-  is our own copy of the vanilla weather of the same kind in the Bethesda regional set the class's family names
-  (marsh: Hjaalmarch's MA; forest: the Rift's FF; upland: the Reach's RE; coast: CO), the load order's winner, with
-  its own four image spaces; the set has four volumetric lightings shared by its non-rain kinds.
+- **An identity per region.** Each region's identity sheet (`newworld/sources/identity/regions.json`, the recipe
+  `docs/design/identity.md`) sets its light (the day haze's mood colour, brightness, colour strength, night level),
+  its sight (visibility as a fraction of Skyrim's fog distances, 0.3 to 1.2) and its weather mix, each cited to the
+  region research. Neighbouring regions differ on at least three of six measured things (`identity.py check`).
+- **A class per region as its family.** Each region keeps an atmosphere class (`regions.json`: peat swamp, green
+  marsh and backwater, river corridor, lowland rainforest, highland, the east, south and west coasts, islands) for
+  what the identity does not set: its source weather family, sun colour temperature, dawn and dusk and night hazes,
+  ground colour, dawn mist, steam, volumetric share, the low mist and the height fog's strength. A sea region takes
+  the class of the coast it washes. The latitude band (north, middle, south; measured from the region's province
+  cells) shifts the sun's temperature.
+- **A weather set per region.** Six kinds: fair, cloudy, mist, rain, storm, steam (the air after rain). Each is our
+  own copy of the vanilla weather of the same kind in the Bethesda regional set the class's family names (marsh:
+  Hjaalmarch's MA; forest: the Rift's FF; upland: the Reach's RE; coast: CO), the load order's winner, with its own
+  four image spaces; the set has four volumetric lightings shared by its non-rain kinds.
 - **One climate.** The worldspace's climate (one per worldspace in the engine) carries the tropical day and the
-  default list (the green marsh's middle set).
+  default list: the set of a region of the default class and band (`classes.json` `climate`).
+
+## Skyrim's range, measured
+
+Measured over the 48 non-snow `Skyrim*` weathers Skyrim's regions list (Skyrim.esm and Update.esm winners;
+`atmosphere.extremes`, written to the spec's `limits` at every build). Ours are held inside it:
+
+| measure | Skyrim's least | Skyrim's most | median |
+|---|---|---|---|
+| day fog far (units) | 15,000 (SkyrimOvercastRain) | 100,000 (SkyrimDA02Weather) | 60,000 |
+| night fog far | 10,000 (SkyrimStormRain) | 100,000 | 40,000 |
+| noon sunlight luminance (of 255) | 108 | 238 (SkyrimFogVT) | 178 |
+| noon ambient luminance | 27 (SkyrimOvercastRainFF) | 238 (SkyrimCloudyVT_A) | 183 |
+| night ambient luminance | 3 (SkyrimOvercastRain) | 126 (SkyrimClearVT_A) | 85 |
+| noon far fog luminance | 30 | 194 (SkyrimCloudy_A) | 146 |
+| image space saturation | 1.4 (SkyrimClear night) | 2.5 | 1.9 |
+
+Our widest: Chixathe Mesa's clear air sees 1.2 of Skyrim's base distances (fair 96,000, cloudy 100,000 held at
+Skyrim's most); Murkwood's and Ultherus's 0.3 (cloudy 30,000, mist and rain held at Skyrim's least, 15,000).
 
 ## The records
 
 1. **Colours.** For each colour slot and hour, keep the source weather's luminance (Bethesda's level for that
-   weather and hour) and take the class's hue (`recolour`):
+   weather and hour) and take the region's hue (`recolour`):
    - sunlight and effect lighting: the black body at the class's colour temperature for the hour plus the band's
      offset (`sun_k`);
-   - fog near: the class's haze for the hour; fog far: the haze a quarter of the way to the sky;
-   - ambient and the four side directions of the directional ambient: the class's fill;
+   - fog near: the haze for the hour: by day the region's mood colour, at dawn and dusk half way from the class's
+     to it, at night the class's; fog far: the haze a quarter of the way to the sky;
+   - ambient and the four side directions of the directional ambient: the class's fill, by day half way to the mood;
    - directional ambient from the ground (Z+): the class's ground colour; from the sky (Z-): sky and fill halved;
-   - sky upper: the class's sky; sky lower and horizon: sky toward haze (0.6); both mixed over the source by the
-     class's `sky_mix`.
-   By day the fog's luminance is multiplied by the class's fog gain (steam 1.1 more), the ambient by its ambient
-   gain and the sun by its sun gain. Rain and storm take the class's hue at 0.7 and 0.6 strength so they keep their
-   overcast character.
+   - sky upper: the class's sky (by day 0.3 toward the mood); sky lower and horizon: sky toward haze (0.6); both
+     mixed over the source by the class's `sky_mix`.
+   By day the fog's luminance is multiplied by the class's fog gain times the region's brightness (steam 1.1 more),
+   the ambient by its ambient gain and the sun by its sun gain, each times the brightness; at night every slot by
+   the region's night level. Rain and storm take the hue at 0.7 and 0.6 strength so they keep their overcast
+   character. Every colour's luminance is then held inside Skyrim's range for that slot and hour.
 2. **Fog distances.** Start from Skyrim's base weathers of the same kind (`reference_fog`: Clear, Cloudy, Fog,
-   OvercastRain, StormRain) and multiply by the class's visibility, sqrt((1 - RH) / 0.5) / aerosol, RH being the
-   class's afternoon humidity plus the band's offset. Day near is 0. Steam's day far is the mist's times
-   `steam_scale`.
+   OvercastRain, StormRain) and multiply by the region's visibility; hold inside Skyrim's range. Day near is 0.
+   Steam's day far is the mist's times `steam_scale`.
 3. **The dawn mist.** Fair and cloudy weathers get a dense night slot (near 0, far `night_mist.far`, power 0.4, max
    `night_mist.max`). The climate's sunrise window (05:00-11:00) lerps it to the day slot: thick at dawn, gone
    before noon; the sunset window (16:30-20:30, centred on the tropical sunset at about 18:30) brings it back.
 4. **Image spaces.** Copy each source weather's image space per hour; set the tint colour to the hour's sun mixed
-   0.3 toward the haze (at the kind's strength) and the saturation to the source's times the class's `saturation`.
+   0.3 toward the haze (at the kind's strength) and the saturation to the source's times the class's `saturation`
+   times the region's, held inside Skyrim's range.
 5. **Volumetric lighting.** Copy the class family's fair weather's volumetric lighting per hour; set its custom
    colour to the haze, its colour share and density from the class (`voli`).
-6. **Region lists.** Each region lists its set's six weathers with the class's chances plus the band's shifts
-   (at least 1 each, summing to 100), with the Override flag and priority 50 as Bethesda's regional sets carry them
-   (50 to 55), so the region's list replaces the climate's. The climate lists the default set.
-7. **Form ids are fixed** (`atmosphere.py` `BASE`): image spaces 0x80000 + set x 24 + kind x 4 + hour, volumetric
-   0x80400 + set x 4 + hour, weathers 0x80500 + set x 8 + kind, climate 0x80600, where set = class index x 3 + band
-   index in `classes.json` order. A weather's console id is the new world file's load index followed by its id
-   (`fw <index>0805XX`).
+6. **Region lists.** Each region lists its own six weathers with its identity's chances (each at least 1, summing
+   to 100), with the Override flag and priority 50 as Bethesda's regional sets carry them (50 to 55), so the
+   region's list replaces the climate's.
+7. **Form ids are fixed** (`atmosphere.py`): a region's set is its identity `slot` (never renumbered; a new region
+   takes the next slot): image spaces 0x80800 + slot x 24 + kind x 4 + hour, volumetric 0x80A40 + slot x 4 + hour,
+   weathers 0x80B00 + slot x 8 + kind (`REGION_BASE`); the climate 0x80600. The class sets' ids (`BASE`, 0x80000 to
+   0x805FF) stay reserved and unused. A weather's console id is the new world file's load index followed by its id
+   (`fw <index>080BXX`).
 
 ## The low mist
 
@@ -84,10 +109,12 @@ into the `cs-height-fog` row; then `stack.py stage`) -> `esm` (`NewWorldAtmosphe
 
 - `python -m tools.newworld.atmosphere check --plugin <dir>`: every record at its id with every field and every
   hour's image space and volumetric lighting link as the spec; every region's list, with the Override flag and
-  priority at least 50; the climate's list, chances and four sun times; the classes at least as distinct as
-  Bethesda's two closest regions (`measured.json`, from `atmosphere study`); warm: noon sun at most 6,000 K with
+  priority at least 50; the climate's list, chances and four sun times; every two neighbouring regions at least as
+  distinct as Bethesda's two closest regions (`measured.json`, from `atmosphere study`; adjacency from
+  `newworld/sources/identity/adjacency.json`); warm: noon sun at most 6,000 K with
   warmth at least +0.05 and far fog warmth at least -0.10.
-- `python -m tools.newworld.atmosphere swatch`: per set, the fair weather's sky, horizon, fog near and far, ambient
+- `python -m tools.newworld.identity check` and `table`: the identity sheets whole and the neighbour contrast table.
+- `python -m tools.newworld.atmosphere swatch`: per region set, the fair weather's sky, horizon, fog near and far, ambient
   and sun at dawn, noon, dusk and night, beside Skyrim's base weathers (BM&V's) and Tropical Skyrim's.
 - `ArgoniaPlugin atmos sample <dir> <Data> <out.esm>` writes only the atmosphere's records through the writer's own
   `Build`, for a proof without the world.
@@ -127,7 +154,7 @@ Argonia profile (Black Marsh & Valenwood) keeps the community-shaders row's file
    (Community Shaders keys a weather by its local form id, hex upper case, and the plugin that defines it), holding
    `{"featureSettings": {"ExponentialHeightFog": {"__enabled": true, ...}}}` with the names the feature registers:
    - **Fog Density**: the fog 90 % thick along its floor at the weather's own day fog far (the record's visibility
-     for its class and band; the shader's level ray fades as 2^(-d L ln 2), d = density / 1000), times the class's
+     for its region; the shader's level ray fades as 2^(-d L ln 2), d = density / 1000), times the class's
      strength (blackwater swamp and green marsh 1.4, river corridor 1.2, rainforest 1.1, south coast 1.0, east and
      west coasts 0.7, islands and highland 0.5) and the kind's (fair 0.7, cloudy 0.9, mist and steam 1.0, rain and
      storm 0.5), at most 1;
@@ -149,7 +176,7 @@ Argonia profile (Black Marsh & Valenwood) keeps the community-shaders row's file
    The feature has no time of day: a weather's values hold at every hour; the dawn mist of the records' night fog
    slot shows in the fog's colour only.
 4. **Generated, then staged.** `python -m tools.newworld.atmosphere_cs write` writes the row's `files` (the two
-   overrides, the interior switch and the 102 weather files) into the manifest from `atmosphere.json` and the terrain; `stack.py stage`
+   overrides, the interior switch and one file per weather, 144) into the manifest from `atmosphere.json` and the terrain; `stack.py stage`
    lays them like any row's files (a changed file re-stages the row alone).
 
 Pipeline place: after `atmosphere.py spec` and the terrain, before `stack.py stage` and the deploy.
@@ -164,7 +191,7 @@ files equal the generator's; the add-on and the files laid in NewWorld by the ro
 file of the row laid with the generated bytes (the profile record's sha256 and the staged file's); the two
 overrides from this row in NewWorld and from community-shaders in Argonia; the staged add-on's version 1-3-2. In
 game, `Documents\My Games\Skyrim Special Edition\SKSE\CommunityShaders.log` carries "Finished loading per-weather
-settings. Total weathers: 102" when the game read the files.
+settings. Total weathers: 144" when the game read the files.
 
 If the sky looks veiled in game, the one switch is the Community Shaders menu's Exponential Height Fog, "Enable
 Exponential Height Fog": off, the weathers' own fog returns as built.
