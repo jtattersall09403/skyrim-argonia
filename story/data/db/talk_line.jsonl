@@ -750,12 +750,12 @@
 {"talker":"0C725E:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"Ask Sakeeth about the Second Era tale that this town was gone. I guard the north district and leave tales to others."}
 {"talker":"0C725E:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Shaleem. I guard the north district, so mind how you behave in it."}
 {"talker":"0C725E:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Talks-To-Water is a boat captain in the north district. You will usually find him just east-south-east of here. Tell him to take more care with his boat."}
-{"talker":"0C725F:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The cooking fire? Everyone knows that. Walk south about two hundred and fifteen paces past the house and you will be standing at it. Could you find it without me?"}
+{"talker":"0C725F:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The cooking fire? Everyone knows that. Walk south a short way past the house and you will be standing at it. I could find it with my eyes shut."}
 {"talker":"0C725F:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"I have been watching the water for boats all day! Do you want to hear what I have noticed?"}
 {"talker":"0C725F:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"You are new here, are you not? I notice everyone new. Where did you come from? Did you come by boat?"}
-{"talker":"0C725F:Black Marsh.esm","topic":"talk.here","ord":1,"text":"This is the north district. I know all of it. The house is about fifteen paces east-north-east of here. Why, are you looking for something?"}
+{"talker":"0C725F:Black Marsh.esm","topic":"talk.here","ord":1,"text":"This is the north district. I know all of it. The house is just east-north-east of here. Nobody knows this place better than me."}
 {"talker":"0C725F:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Zeeki. I am the cleverest child in the north district. Ask anyone. One day I will captain a boat of my own."}
-{"talker":"0C725F:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Talks-To-Water, the boat captain? That is the best captain there is. You will usually find the captain about fifteen paces west-south-west of here. Could you ask for a place on the boat for me?"}
+{"talker":"0C725F:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Talks-To-Water, the boat captain? That is the best captain there is. You will usually find the captain just west-south-west of here. One day I will have a place on that boat."}
 {"talker":"0C7260:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The cooking fire? A sweet first. Go south-east, two hundred and forty paces. The fire is there."}
 {"talker":"0C7260:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"Did you bring a sweet? I have heard things at the jail, and I will tell you them."}
 {"talker":"0C7260:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Who are you? Stay where I can see you. Have you got a sweet?"}
