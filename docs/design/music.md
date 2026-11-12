@@ -55,9 +55,9 @@ only (sources below), in plain musical terms.
 | sting-discovery | The Prophecy Fulfilled (1:11) | angelic choir and a high solo voice; a starry-eyed sense of wonder | thumb-piano and airy choir rising into the call; cut at its first 4.0 s, then faded out to the quietest point between 4.0 and 7.5 s (5.28 s; `fade_from_s`, `cut_s`) |
 
 Level-up has two parts, as Skyrim's does: the UI sound UILevelUp (SNDR 057B44, our sting-levelup, 8 s) and the
-level-up music type MUSC 03B565 (our music-levelup, 19 s, joined to the type for the new world only). The records do
-not show which moment the engine plays MUSC 03B565 at (the level-up notice or the stats menu); that is an owner walk
-check.
+level-up music type MUSC 03B565 (our music-levelup, 19 s, joined to the type for the new world only). The sting
+plays when the HUD's LEVEL UP notice appears; the music type plays when the level-up menu (choose Health, Magicka or
+Stamina) opens ([level-up audio](../research/skyrim/level-up-audio.md)).
 
 ### Skyrim's level-up music, measured
 
@@ -168,7 +168,7 @@ Ours (`tools/ArgoniaPlugin/NewWorldMusic.cs`, data `newworld/sources/music/recor
 - level-up, in Skyrim's two parts: the UI sound UILevelUp (SNDR 057B44; Skyrim.esm is the load order's winner),
   heard when the level-up notice appears, plays the short slot sting-levelup from
   `Data\Sound\fx\argonia\sting-levelup.wav` (the pack carries that copy beside its music file); the level-up music type
-  (MUSSpecialSuccess), heard when the level is taken, plays the longer slot music-levelup, Skyrim's tracks kept out.
+  (MUSSpecialSuccess), heard when the level-up menu opens, plays the longer slot music-levelup, Skyrim's tracks kept out.
 
 | Class (regions) | Day exploration |
 |---|---|
