@@ -405,15 +405,15 @@
 {"talker":"084A85:Black Marsh.esm","topic":"talk.here","ord":1,"text":"This is Low-Reed Village. I know every face in it. The rowing boat lies on the water just west of here. It is mine to guard. Do not touch it, tall one."}
 {"talker":"084A85:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Ree-Nakka. I am a hatchling of this village. I mind the rowing boat. Who comes and who goes? I count them all. Who are you counting?"}
 {"talker":"084A85:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Mends-The-Nets works just east-south-east of here. That is the cleverest person in the village. Ixa-Mee plays just east. Ixa-Mee is a tattler. Keep your secrets from that one."}
-{"talker":"084A86:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"Stranger. Walk east round the cliffs about ninety paces to the giant tree. Then walk west over open ground, about six hundred and fifty paces, until the burnt-out house is on your left. Walk west about three hundred and fifty paces from there, and the ruin is in front of you."}
+{"talker":"084A86:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"Stranger. Go east round the cliffs a short way, until you reach the giant tree. Then go west over open ground a fair way, until the burnt-out house is on your left. Go west a fair way more, and you will find the Dwemer ruin."}
 {"talker":"084A86:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"It is you. I am glad, my friend. I will not whisper this time."}
 {"talker":"084A86:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Stranger. Your hands are empty. That is good."}
 {"talker":"084A86:Black Marsh.esm","topic":"talk.greet-stranger","ord":2,"text":"Stranger. I am not to talk long. Please say what you need."}
-{"talker":"084A86:Black Marsh.esm","topic":"talk.harvest","ord":1,"text":"Lily pads float east-south-east of here, stranger, about twenty-five paces off. Take them yourself."}
-{"talker":"084A86:Black Marsh.esm","topic":"talk.here","ord":1,"text":"This is Low-Reed Village. There is a bamboo hut about twenty paces north of here with a bed roll in it. I sleep there."}
+{"talker":"084A86:Black Marsh.esm","topic":"talk.harvest","ord":1,"text":"Lily pads float just east-south-east of here, stranger. Take them yourself."}
+{"talker":"084A86:Black Marsh.esm","topic":"talk.here","ord":1,"text":"This is Low-Reed Village. There is a bamboo hut just north of here with a bed roll in it. I sleep there."}
 {"talker":"084A86:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Ixa-Mee, stranger. I was hatched here in Low-Reed Village, as was everyone I know."}
-{"talker":"084A86:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Mends-The-Nets sits about nine paces south-west of here. Mends-The-Nets is kind to me."}
-{"talker":"084A86:Black Marsh.esm","topic":"talk.trade","ord":1,"text":"I fetch for Mends-The-Nets, stranger. The village workbench is about sixteen paces north of here."}
+{"talker":"084A86:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Mends-The-Nets sits just south-west of here. Mends-The-Nets is kind to me."}
+{"talker":"084A86:Black Marsh.esm","topic":"talk.trade","ord":1,"text":"I fetch for Mends-The-Nets, stranger. The village workbench is just north of here."}
 {"talker":"084A87:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"Alten Merihall, traveller. Walk south-west about 175 paces until the giant tree is on your right. Then go west over open ground about 500 paces to reach it."}
 {"talker":"084A87:Black Marsh.esm","topic":"talk.directions","ord":2,"text":"Longmont is a plain way, traveller. Walk south-east about 200 paces until the giant tree is on your right, then walk east about 170 paces to reach it."}
 {"talker":"084A87:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"There is room by the nets. Sit while I work, friend. A knot holds better when two people talk over it."}
