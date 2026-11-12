@@ -166,7 +166,7 @@ def place_at(cv: "P.Cellview", mask: np.ndarray, rng, taken: list) -> tuple | No
         return None
     for _ in range(8):
         k = int(rng.integers(len(ys)))
-        ry, rx = min(ys[k] + rng.random(), 31.99), min(xs[k] + rng.random(), 31.99)
+        ry, rx = ys[k] + 0.1 + 0.8 * rng.random(), xs[k] + 0.1 + 0.8 * rng.random()   # inside its sample: the check reads the same one
         x, y = cv.world(ry, rx)
         if all((x - a) ** 2 + (y - b) ** 2 >= MIN_GAP ** 2 for a, b in taken):
             taken.append((x, y))
