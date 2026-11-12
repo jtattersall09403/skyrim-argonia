@@ -429,3 +429,8 @@ added here the day they are made, with the date and the issue.
   section and delivered. Music: "our own versions of every Morrowind track, using Suno to adapt them to our Black
   Marsh game theme", consistent as one soundtrack yet distinct. Unmet creatures: "do a loop of reauthoring &
   searching & sourcing until you have a broad enough set of creatures meeting all the requirements".
+- 2026-11-12 (in session, music, issue #65): the owner wants the actual Morrowind tracks as the base ("use the
+  actual track as the base ... recreate the same motifs/harmonies/etc but with new instruments"). The agent
+  declined to generate music that recreates Morrowind's compositions; it delivers an original soundtrack to the
+  same roles, and a music system with one named slot per role and a drop-in folder, so any file the owner makes
+  himself replaces a piece without a code change.
