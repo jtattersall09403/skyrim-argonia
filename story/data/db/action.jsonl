@@ -137,7 +137,6 @@
 {"list_id":"quest_ending:quest.main.mq01|0:world","ord":1,"term":"enableRef"}
 {"list_id":"quest_ending:quest.main.mq01|0:world","ord":2,"term":"enableRef"}
 {"list_id":"quest_ending:quest.main.mq01|1:world","ord":0,"term":"setFlag"}
-{"list_id":"quest_ending:quest.main.mq01|2:world","ord":0,"term":"setFlag"}
 {"list_id":"quest_ending:quest.main.mq03|0:rewards","ord":0,"term":"giveGold"}
 {"list_id":"quest_ending:quest.main.mq03|0:world","ord":0,"term":"setFlag"}
 {"list_id":"quest_ending:quest.main.mq03|0:world","ord":1,"term":"disableRef"}
@@ -260,8 +259,8 @@
 {"list_id":"quest_stage:quest.main.mq03|3:on_enter","ord":0,"term":"giveItem"}
 {"list_id":"quest_stage:quest.main.mq03|4:on_enter","ord":0,"term":"takeGold"}
 {"list_id":"quest_stage:quest.main.mq03|4:on_enter","ord":1,"term":"giveItem"}
-{"list_id":"quest_stage:quest.main.mq03|6:on_enter","ord":0,"term":"takeItem"}
-{"list_id":"quest_stage:quest.main.mq03|6:on_enter","ord":1,"term":"giveItem"}
+{"list_id":"quest_stage:quest.main.mq03|5:on_enter","ord":0,"term":"takeItem"}
+{"list_id":"quest_stage:quest.main.mq03|5:on_enter","ord":1,"term":"giveItem"}
 {"list_id":"quest_stage:quest.main.mq04|0:on_enter","ord":0,"term":"grantTopic"}
 {"list_id":"quest_stage:quest.main.mq04|2:on_enter","ord":0,"term":"grantTopic"}
 {"list_id":"quest_stage:quest.main.mq04|2:on_enter","ord":1,"term":"grantTopic"}

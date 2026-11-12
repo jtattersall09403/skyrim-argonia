@@ -269,6 +269,12 @@
 {"quest_id":"quest.main.mq01","review_findings_ord":16,"ord":0,"value":"stages.96"}
 {"quest_id":"quest.main.mq01","review_findings_ord":16,"ord":1,"value":"truth.t0"}
 {"quest_id":"quest.main.mq01","review_findings_ord":16,"ord":2,"value":"truth.t1"}
+{"quest_id":"quest.main.mq01","review_findings_ord":17,"ord":0,"value":"stages.10"}
+{"quest_id":"quest.main.mq01","review_findings_ord":17,"ord":1,"value":"stages.95"}
+{"quest_id":"quest.main.mq01","review_findings_ord":17,"ord":2,"value":"endings.e-broker-dead"}
+{"quest_id":"quest.main.mq01","review_findings_ord":18,"ord":0,"value":"topics.topic.mq01-not-on-roll"}
+{"quest_id":"quest.main.mq01","review_findings_ord":18,"ord":1,"value":"things.thing.mq01.broker"}
+{"quest_id":"quest.main.mq01","review_findings_ord":18,"ord":2,"value":"endings.e-joined"}
 {"quest_id":"quest.main.mq03","review_findings_ord":0,"ord":0,"value":"truth.t1"}
 {"quest_id":"quest.main.mq03","review_findings_ord":0,"ord":1,"value":"facts.fact.mq03.jars-brought"}
 {"quest_id":"quest.main.mq03","review_findings_ord":0,"ord":2,"value":"facts.fact.mq03.long-work"}
@@ -306,6 +312,12 @@
 {"quest_id":"quest.main.mq03","review_findings_ord":14,"ord":2,"value":"truth.t2"}
 {"quest_id":"quest.main.mq03","review_findings_ord":14,"ord":3,"value":"objectives.jar"}
 {"quest_id":"quest.main.mq03","review_findings_ord":14,"ord":4,"value":"title"}
+{"quest_id":"quest.main.mq03","review_findings_ord":15,"ord":0,"value":"stages.10"}
+{"quest_id":"quest.main.mq03","review_findings_ord":15,"ord":1,"value":"stages.12"}
+{"quest_id":"quest.main.mq03","review_findings_ord":15,"ord":2,"value":"stages.13"}
+{"quest_id":"quest.main.mq03","review_findings_ord":15,"ord":3,"value":"stages.15"}
+{"quest_id":"quest.main.mq03","review_findings_ord":15,"ord":4,"value":"stages.16"}
+{"quest_id":"quest.main.mq03","review_findings_ord":15,"ord":5,"value":"topics.topic.mq03-give-jar"}
 {"quest_id":"quest.main.mq04","review_findings_ord":0,"ord":0,"value":"settlement"}
 {"quest_id":"quest.main.mq04","review_findings_ord":0,"ord":1,"value":"things.thing.mq04.village"}
 {"quest_id":"quest.main.mq04","review_findings_ord":1,"ord":0,"value":"cast"}

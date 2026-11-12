@@ -40,19 +40,22 @@ The owner's "barge" is this ship. Character creation stays in the hold.
 ## MQ01 in three steps; MQ03 in two
 
 - MQ01 10: speak to Buys-The-Months on the pier (he speaks first); 20: find Nesh-Deeka in Salts-The-Catch's house; 30:
-  tell her you will work for the Veiled Reed (rank 0, fifty gold). Ends 90; fails 95 (the broker dead before 20) or
-  96 (Nesh-Deeka dead).
+  tell her you will work for the Veiled Reed (rank 0, fifty gold). Ends 90; fails 96 (Nesh-Deeka dead). If the player
+  kills the broker before he speaks, 21 sends them to look for work in Lilmoth with the marker on Nesh-Deeka, whose
+  line for a stranger tells the same story.
 - MQ03 10: ask Dives-Without-A-Rope for the jar in the ship's hold; her question's three answers move it: talked
   round (Speechcraft 25) to 15 or paid (20 gold) to 16, each giving her lockbox's key, or "Then I'll take it" to 12
-  (pick the Novice lock, or lift her key); her death moves it to 13 (the key on her body). 12, 13, 15 and 16 move on
-  taking the jar; 20: give it to Nesh-Deeka, whose question is answered by tasting it (or Alchemy 25 first), which
-  ends the quest with her page. Ends 90; fails 95 (Nesh-Deeka dead). The "sack" became vanilla's lockbox
-  (09424C:Skyrim.esm), the container base the census and the builder have.
+  (pick the Novice lock, or lift her key); her death moves it to 13 (the key on her body). At 12, 13, 15 and 16 the
+  fetch is settled at the hand-in: Nesh-Deeka's lines, gated on holding the jar however it was got, ask for a taste,
+  and tasting it (or Alchemy 25 first) ends the quest with her page. Ends 90; fails 95 (Nesh-Deeka dead). The "sack"
+  became vanilla's lockbox (09424C:Skyrim.esm).
 - Both records compile to the quest form (`python3 -m tools.questform compile`) and fit; `story/data/questform_owed.json`
-  no longer lists them. The form gives each objective one target and every objective of a stage the same completing
-  moves, so a stage can be moved only by acts that concern its one target: that is why MQ03's skill routes sit on
-  Dives-Without-A-Rope's question (10) and its fetch on the jar (12 to 16), and why no stage carries both a marker on
-  the thing and on the person it goes to. Lane A may want to lift that (several targets per objective).
+  no longer lists them. For lane A: the form gives each objective one target and every objective of a stage the same
+  completing moves, so a fetch cannot carry a marker on the thing and on the person it goes to at once (MQ03's
+  objective at 12 to 16 points at Nesh-Deeka; the journal says where the jar is); and who-must-live has no stage
+  window, so a person needed only early (the broker) cannot be one. For lane K: one placement per ref where both
+  records name a person or the lockbox; the jar goes into the placed lockbox; a death that happened before its stage
+  started (Dives-Without-A-Rope killed during MQ01) must still move stage 10 to 13.
 
 ## The story calls
 
@@ -120,6 +123,10 @@ another interior); the persuade prompt named the Reed ("the one I work for"); st
 asks for the taste and its two answers end the quest); the dream lacked QA18's dry voice (added); Dives-Without-A-Rope's
 npc row kept the cut camp's sleep socket (cleared). Also fixed: duplicate "Who are you?" prompts, a route-dependent
 after-line, buy and persuade after the key is taken, QA8's "nothing is written" narrowed, the old title.
+
+Round 2 (delta), blocking, both fixed: MQ01's broker as a who-must-live person would fail the quest at any stage
+(the form has no window): he is no longer one, and his early death goes to stage 21. MQ03's take triggers left a jar
+taken at stage 10 unhanded: stage 20 and the take triggers are cut, and the hand-in is open at 12, 13, 15 and 16.
 
 Left for the owner or later lanes: the camp is told, never visitable (the plan said "can go and see the day after";
 no structure may be added); the force-greet starts about 23 m from the deck door; the walk to the house is about

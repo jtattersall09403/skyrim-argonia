@@ -203,6 +203,11 @@
 {"quest_id":"quest.main.mq01","topics_ord":10,"ord":0,"value":"fact.mq01.jar"}
 {"quest_id":"quest.main.mq01","topics_ord":11,"ord":0,"value":"fact.mq01.no-name"}
 {"quest_id":"quest.main.mq01","topics_ord":12,"ord":0,"value":"fact.mq01.no-name"}
+{"quest_id":"quest.main.mq01","topics_ord":13,"ord":0,"value":"fact.mq01.reed"}
+{"quest_id":"quest.main.mq01","topics_ord":13,"ord":1,"value":"fact.mq01.camp-burned"}
+{"quest_id":"quest.main.mq01","topics_ord":13,"ord":2,"value":"fact.mq01.cutting-cut"}
+{"quest_id":"quest.main.mq01","topics_ord":13,"ord":3,"value":"fact.mq01.spared"}
+{"quest_id":"quest.main.mq01","topics_ord":13,"ord":4,"value":"fact.mq01.pulled-aboard"}
 {"quest_id":"quest.main.mq03","topics_ord":0,"ord":0,"value":"fact.mq03.jar-kept"}
 {"quest_id":"quest.main.mq03","topics_ord":1,"ord":0,"value":"fact.mq03.hear-tree"}
 {"quest_id":"quest.main.mq03","topics_ord":2,"ord":0,"value":"fact.mq03.jars-brought"}
