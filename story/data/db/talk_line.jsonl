@@ -219,16 +219,16 @@
 {"talker":"01CD0A:Black Marsh North.esp","topic":"talk.someone","ord":1,"text":"Ukka-Meesh stands guard at the town's centre, outlander. Thirty paces or so, south-south-east of here."}
 {"talker":"01CD0A:Black Marsh North.esp","topic":"talk.trade","ord":1,"text":"In a labourer's account the days of food outnumber the days of work, outlander. They always do."}
 {"talker":"01CD0A:Black Marsh North.esp","topic":"talk.trade","ord":2,"text":"I labour under my Owing. In my account the days I eat always outnumber the days I work."}
-{"talker":"02A1E7:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The dock, walker. Go north-east about three hundred paces, past the burnt-out house. Lilmoth Dock is there."}
-{"talker":"02A1E7:Black Marsh.esm","topic":"talk.directions","ord":2,"text":"Lilmoth. Go north about three hundred and thirty paces. Lilmoth is there."}
+{"talker":"02A1E7:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The dock, walker. Go north-east, a fair way. Pass the burnt-out house and you are at Lilmoth Dock."}
+{"talker":"02A1E7:Black Marsh.esm","topic":"talk.directions","ord":2,"text":"Lilmoth, walker. Go north a fair way and you will reach it. We stay clear of its rents."}
 {"talker":"02A1E7:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"Walker, my friend, welcome. Sit by the spit. There is always a place here for you."}
 {"talker":"02A1E7:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Walker. You stand at our spit. Say what you want and I will hear it."}
-{"talker":"02A1E7:Black Marsh.esm","topic":"talk.here","ord":1,"text":"This is our village, walker. A few families live here on the marsh outside Lilmoth. We pay no rents to it. The cooking spit is here. The carpenter's bench is five paces south-south-east and a food barrel stands five paces east-south-east."}
-{"talker":"02A1E7:Black Marsh.esm","topic":"talk.here","ord":2,"text":"We keep a second hearth about thirty paces west, on the west edge of the village. It has food barrels, a cooking pot and a bed. Use none of it without asking."}
+{"talker":"02A1E7:Black Marsh.esm","topic":"talk.here","ord":1,"text":"This is our village, walker. A few families live here on the marsh outside Lilmoth. We pay no rents to it. The cooking spit is here. The carpenter's bench is just south-south-east and a food barrel stands just east-south-east."}
+{"talker":"02A1E7:Black Marsh.esm","topic":"talk.here","ord":2,"text":"We keep a second hearth just west of here, on the west edge of the village. It has food barrels, a cooking pot and a bed. Use none of it without asking."}
 {"talker":"02A1E7:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"Lilmoth has no single ruler. A council of powerful merchants governs it and pays guards to patrol the streets. I want no seat among them. So it is."}
 {"talker":"02A1E7:Black Marsh.esm","topic":"talk.lore","ord":2,"text":"In Lilmoth people take their quarrels to their elders, retired Shadowscales among them, not to a court. We do the same here. The elders speak at this spit."}
 {"talker":"02A1E7:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Flaa Heet. I lead the families who live here. I stand at the spit because every quarrel and every catch comes to it in the end."}
-{"talker":"02A1E7:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Tseeta sells from her stall about ten paces north of here. She haggles hard, but the village is better for her. Okeeh-Jas sells from hers, five paces south-south-west."}
+{"talker":"02A1E7:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Tseeta sells from her stall just north of here. She haggles hard, but the village is better for her. Okeeh-Jas sells from hers, just south-south-west."}
 {"talker":"02A1E9:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"It is you, it is you! Did you see the boats come in? Huge, the big one, huge!"}
 {"talker":"02A1E9:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Who are you, big one? Where did you come from? What are you carrying? Is any of it shiny?"}
 {"talker":"02A1E9:Black Marsh.esm","topic":"talk.harvest","ord":1,"text":"Leeks? Wild leeks grow just north-west of here, by the fish barrels. I hate the fish barrels. Moss, too, big one. Emperor Parasol Moss, hanging, a short way north. Nobody tells me what it is for."}
