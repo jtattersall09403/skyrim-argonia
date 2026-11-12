@@ -762,14 +762,14 @@
 {"talker":"0C7260:Black Marsh.esm","topic":"talk.here","ord":1,"text":"The standing stone is just south of here. The tower is just north-north-west. I like sweets better than talking."}
 {"talker":"0C7260:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Skink. I play by the standing stone, where the other children do not come. I have no family. I hear things at the jail. I tell them for a sweet."}
 {"talker":"0C7260:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Pays-In-Reeds is nice. She weaves reeds into mats to work off what she owes. She is usually just east-south-east of here."}
-{"talker":"0C7263:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The cooking fire by the docks? Listen, water, a stranger wants to walk. Go south-east about seventy paces to the house. Then go south about a hundred and fifty paces. The cooking fire is there."}
+{"talker":"0C7263:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The cooking fire by the docks? Listen, water, a stranger wants to walk. Go just south-east until you reach the house. Then go south a short way, and the cooking fire is there."}
 {"talker":"0C7263:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"I told the water you would return. Come, sit by it and tell me what you have seen."}
 {"talker":"0C7263:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"You have the look of someone who does not know the water. What do you want?"}
-{"talker":"0C7263:Black Marsh.esm","topic":"talk.here","ord":1,"text":"Quiet, little ripples, we have a guest. The house is ten paces south-south-east of here. I keep my boat at the north landing."}
+{"talker":"0C7263:Black Marsh.esm","topic":"talk.here","ord":1,"text":"Quiet, little ripples, we have a guest. The house is just south-south-east of here. I keep my boat at the north landing."}
 {"talker":"0C7263:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"Long ago the bandit king Red Bramman ruled this country. He raided Topal Bay from here. The First Empire hunted him for years."}
 {"talker":"0C7263:Black Marsh.esm","topic":"talk.rumours","ord":1,"text":"Hush, water. You ask for news, stranger. In the Chainbreakers' house, in the north district, Never-Sold has saved coin to buy a woman free of her Owing at the estate north of Blackrose. Never-Sold is asking for a hand with it."}
 {"talker":"0C7263:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Talks-To-Water. I captain a boat out of the north landing. Yes, I talk to the water. My crew is used to it."}
-{"talker":"0C7263:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Zeeki, the child of the north district, is usually fifteen paces east-north-east of here. That one should be a sailor. I have said so."}
+{"talker":"0C7263:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Zeeki, the child of the north district, is usually just east-north-east of here. That one should be a sailor. I have said so."}
 {"talker":"0C7264:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The cooking fire? Walk south about eighty paces, until the longboat is on your left. Then the boards, west, about sixty-five paces. The fire is there."}
 {"talker":"0C7264:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"If you have a boat that leaks, bring it to me and I will patch it today."}
 {"talker":"0C7264:Black Marsh.esm","topic":"talk.greet-friend","ord":2,"text":"You are welcome here. Mind the boards, they are wet. What needs mending?"}
