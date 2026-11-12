@@ -143,22 +143,23 @@ Delivery lanes are Opus 5.5 at medium effort; code review is Fable 5.2 at medium
 worktree and is landed by the lead. Nothing is tested in game by an agent; nothing is deployed while the owner
 streams.
 
-| Lane | What | After | State |
-|---|---|---|---|
-| R1 | Research: what Morrowind-level scripting is in practice, and Skyrim's record for each piece | - | todo |
-| R2 | The post-mortem: the cause of each fault the owner saw in walk 6 | - | todo |
-| R3 | Research: why no marker could be followed; how Bethesda tracks a quest and marks things; force-greet; how many people are essential or protected | - | todo |
-| A | The quest form: its schema, the compiler from a quest record, the form check in the gate, the report of which of the 49 staged records fit | R1 | todo |
-| O | The opening re-authored as a record (quest-write, quest-review), with its place and person | R1, R2 | todo |
-| K | The generic builder and the generic scripts; markers; mortality and the message; force-greet; the block test quest rebuilt on them; old builders and scripts removed as quests move over | A, R3 | todo |
-| H | The paper game, the plugin reader, the designed-against-built comparison, the player runner and transcripts | A | todo |
-| H2 | The owner's page for playtest runs | H | todo |
-| Q1 to Q4 | The other ten built quests re-authored and moved to the form (main quest; Chainbreakers; Night-Reed; locals), each played on paper as designed | A, O | todo |
-| S | The 38 unbuilt staged records fitted to the form; the lines-and-factions review | A | todo |
-| D | Dialogue for what changed (dialogue-write with the Morrowind find step, text-review) | O, Q | todo |
-| I | Integration: one build of the merged tree, scripts compiled, every read-back, the comparison at zero differences, playtests on the built plugin, fixes | all | todo |
-| C | Code review of the new tools (Fable 5.2) and its fixes | K, H | todo |
-| W | The recipes rewritten; the owner's walk check posted; deploy when no stream is live | I, C | todo |
+| Lane | What | State (2026-11-13 00:40 UTC) |
+|---|---|---|
+| R1 | Research: Morrowind-level scripting in practice | done: [morrowind-level-scripting](../research/morrowind-level-scripting.md) |
+| R2 | The post-mortem of walk 6 | done: [walk-6-post-mortem](../research/walk-6-post-mortem.md) |
+| R3 | Engine facts: markers, force-greet, mortality, generic scripts | done: [quest-form-engine-facts](../research/skyrim/quest-form-engine-facts.md) |
+| A | The quest form: schema, compiler, checks, the gate's ratchet | done: [quest-form](../design/quest-form.md) |
+| O, D1 | The opening (MQ01) and the quest after it (MQ03) re-authored, with dialogue, played on paper | done |
+| Q1 to Q4 | MQ04, MQ05; the Chainbreakers' three; the Night-Reed's two; the two local quests: re-authored to the form | done (11 of 49 staged records fit) |
+| S | The 38 unbuilt staged records rowed back; the lines-and-factions review | done: story/design/quests/review/walk6-ceiling.md |
+| K | The generic builder, generic scripts (68 of 68 compiled), reader, mortality, markers on, the block test as forms | done |
+| H, H2, H3 | The paper game, the runner, the comparison, the owner's page | done: [paper-playtest](../design/paper-playtest.md), https://claude.ai/artifact/QjrYTSBXYjMrCvz56V5uDP |
+| D2a to D2c | Dialogue for the other nine quests, played on paper | running |
+| I1 | Compiler and record gaps the eleven quests found (locks, owners, carried things, a failed check's own words, the chain) | running |
+| I2 | Old per-quest builders retired; every quest built from its form; read-back and comparison at zero | running |
+| H4 | The paper game: containers, locks, theft, starting a later quest from true state, a reach check | running |
+| C | Code review of the new tools (Fable 5.2) and its fixes | todo |
+| W | The skills restructured as one set with the cleared findings; the owner's walk check posted; deploy when no stream is live | todo |
 
 ## The skills as one system, learning from the paper players (owner, 2026-11-12)
 
@@ -214,4 +215,16 @@ one re-authored quest of each line. Everything else rests on the gate, the compa
 
 ## Measured
 
-(filled in as lanes land)
+- **Why no marker could be followed:** our own stack setting wrote `bShowQuestMarkers=0` and
+  `bShowFloatingQuestMarkers=0` (a 2026-11-07 setting, "Morrowind's way"); no HUD mod hides them; no quest of ours
+  made itself the tracked one. Both are reversed in the build.
+- **The paper playtest, first use (the designed opening, three players, before dialogue):** all three followed the
+  chain and wanted to know why they were spared; all three said joining the Reed "felt hollow" and that people
+  showed under template names. After the join was given six optional topics and the lines were written, the
+  confirming player asked four of them and could say who the Reed are and why they joined. A run costs about
+  $0.04 to $0.07 and under a minute.
+- **What the paper game caught that reading did not:** MQ03's jar, key and lockpicks were not in the form at all;
+  a failed persuade showed the success line; a gated start line had an ungated copy; MQ04 was no longer started by
+  MQ03; placements nothing named were dropped (MQ05's wasps).
+- **Skills lost for now, to be restored once the form carries locks and owners:** the Chainbreakers' three quests
+  turn only on Speech or gold (their thefts were cut because the form had no owner or lock).
