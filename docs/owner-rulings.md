@@ -404,3 +404,11 @@ added here the day they are made, with the date and the issue.
   the studio it would be madness to re-place everything else)." An owner's edit of a placed thing in the world
   (remove, move, add) is its own record applied over the placement; it never re-places anything else, and a
   rebuild after it redoes only what that thing touches.
+- 2026-11-12 (in session, nw-03b and nw-04): (a) the owner needs a way into the new world from a phone with the
+  game pad alone, "whatever is simplest/easiest to deliver"; (b) a delivery must not leave the owner sitting
+  through Community Shaders' "compiling shaders" again: the cache is kept per card, archived, and proved complete
+  at the end of a deploy; (c) the grey untextured grass at ArgoniaNWStart: "find all cases (could be others beyond
+  this type) and fix"; groundcover changes are allowed for that fix ("I can rule back in groundcover changes for
+  dealing with that issue"); terrain, trees, scatter placement and LOD stay untouched in nw-03b; (d) hostile NPC
+  bands are "widely varied (in a lore consistent way) in terms of appearance and gear", gear quality and value by
+  danger band and by who they are (the owner's edit of the phase file).
