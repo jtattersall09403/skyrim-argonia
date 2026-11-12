@@ -195,17 +195,6 @@
    "objective text",
    "placement"
   ],
-  "quest.main.mq04": [
-   "any",
-   "grantServiceAccess",
-   "inZone",
-   "placement"
-  ],
-  "quest.main.mq05": [
-   "any",
-   "inZone",
-   "placement"
-  ],
   "quest.main.mq32": [
    "start"
   ],

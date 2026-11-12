@@ -597,30 +597,21 @@
 {"id":"fact.mq03.low-reed","claim":"Word has come to Nesh-Deeka that the Hist of Low-Reed Village, east of Lilmoth, has turned its face.","ord":7,"from_ref":"t3","quest_id":"quest.main.mq03"}
 {"id":"fact.mq03.sap-fresh","claim":"The sap is fresh, drawn from cut roots, and the stopper and the jar's neck carry the rings of other jars filled beside it.","ord":4,"from_ref":"t1","quest_id":"quest.main.mq03"}
 {"id":"fact.mq03.taster","claim":"Sap shows a taster visions, and shows a stranger something different; Nesh-Deeka wants the player to taste it while she writes.","ord":5,"from_ref":"t3","quest_id":"quest.main.mq03"}
-{"id":"fact.mq04.camp-jars","claim":"The camp holds jars of the Hist's sap and two men of the cell.","ord":10,"from_ref":"t6","quest_id":"quest.main.mq04"}
-{"id":"fact.mq04.cell-cord","claim":"The two men at the camp wear the knotted cord at the wrist, as the woman at the camp by Lilmoth's dock did.","ord":11,"from_ref":"t1","quest_id":"quest.main.mq04"}
-{"id":"fact.mq04.cell-known","claim":"The Reed has word of a cell that cuts a Hist's roots and draws its sap into jars; the camp by Lilmoth's dock was its work.","ord":0,"from_ref":"t1","quest_id":"quest.main.mq04"}
-{"id":"fact.mq04.gum-origin","claim":"The black gum is the gum the village's sap-workshop works, and the knife-peg by its door is empty.","ord":5,"from_ref":"t2","quest_id":"quest.main.mq04"}
-{"id":"fact.mq04.gum-trail","claim":"Black gum drips run north from the workshop to the leech water, and pick up again on its far side, to a camp past the last stilt house, where the reeds bend.","ord":9,"from_ref":"t6","quest_id":"quest.main.mq04"}
-{"id":"fact.mq04.knife-at-camp","claim":"Pays-Late's knife lies by the camp's fire, its edge black with gum.","ord":12,"from_ref":"t6","quest_id":"quest.main.mq04"}
-{"id":"fact.mq04.leech-effect","claim":"The leeches crowd only the cut root, where the sap weeps: they came to the sap, after the tree closed; they did not close it.","ord":3,"from_ref":"t3","quest_id":"quest.main.mq04"}
-{"id":"fact.mq04.minder-hid","claim":"Pays-Late found the cut and hid it, because the gum was his and his knife gone, and it would look like his work.","ord":6,"from_ref":"t4","quest_id":"quest.main.mq04"}
-{"id":"fact.mq04.minder-washes","claim":"Pays-Late goes down to the cut root every night after dark to wash it.","ord":7,"from_ref":"t4","quest_id":"quest.main.mq04"}
-{"id":"fact.mq04.root-cut","claim":"A root of the Hist was cut at the ring and sealed with black gum.","ord":4,"from_ref":"t2","quest_id":"quest.main.mq04"}
-{"id":"fact.mq04.strangers-seen","claim":"A boat came in from the north reeds on the netters' night and went back out.","ord":8,"from_ref":"t2","quest_id":"quest.main.mq04"}
-{"id":"fact.mq04.tree-closed","claim":"The Hist's light is out and its leaves are shut.","ord":1,"from_ref":"t3","quest_id":"quest.main.mq04"}
-{"id":"fact.mq04.uxith-dark","claim":"The village's uxith is dark, as the camp's was.","ord":2,"from_ref":"t3","quest_id":"quest.main.mq04"}
-{"id":"fact.mq05.basin-lethal","claim":"What walks in the basin round Helstrom dies, and the wardens at the gate say so.","ord":2,"from_ref":"t3","quest_id":"quest.main.mq05"}
-{"id":"fact.mq05.eituja-view","claim":"Ei-Tuja holds that a Hist's silence is its own act, to be read and not clamped.","ord":8,"from_ref":"t5","quest_id":"quest.main.mq05"}
-{"id":"fact.mq05.grove-whole","claim":"The grove's young Hist stands whole, its roots uncut and unsealed: Helstrom has not seen a cut root.","ord":10,"from_ref":"t5","quest_id":"quest.main.mq05"}
-{"id":"fact.mq05.kaska-view","claim":"Kaska-Meen holds that a Hist that falls silent must be watched by tree-minders alone.","ord":7,"from_ref":"t5","quest_id":"quest.main.mq05"}
-{"id":"fact.mq05.marsh-way","claim":"The way in from the landing is root and shallows through the Heart-Mud.","ord":3,"from_ref":"t3","quest_id":"quest.main.mq05"}
-{"id":"fact.mq05.reed-goal","claim":"The Reed wants Helstrom's tree-minders and Nisswo to hear what a cut Hist looks like, and wants it said by someone it can deny.","ord":1,"from_ref":"t2","quest_id":"quest.main.mq05"}
-{"id":"fact.mq05.reed-sent","claim":"The Reed sent me, and wants it unsaid.","ord":0,"from_ref":"t2","quest_id":"quest.main.mq05"}
-{"id":"fact.mq05.severance-not-silence","claim":"A Hist gone silent and a Hist whose root was cut are two things: silence kills no clutch, and the clutch at Low-Reed Village died of the cut.","ord":9,"from_ref":"t1","quest_id":"quest.main.mq05"}
-{"id":"fact.mq05.throne-empty","claim":"The Scalded Throne is a plain root-and-reed seat that has stood empty for centuries and may never have been filled.","ord":5,"from_ref":"t4","quest_id":"quest.main.mq05"}
-{"id":"fact.mq05.throne-swept","claim":"The seat is swept, and the city's traders sell in the room before it.","ord":6,"from_ref":"t4","quest_id":"quest.main.mq05"}
-{"id":"fact.mq05.wasps","claim":"Two giant wasps keep the way's far bend.","ord":4,"from_ref":"t3","quest_id":"quest.main.mq05"}
+{"id":"fact.mq04.camp-jars","claim":"Two men of the cell keep the jars of the tree's sap on a dry rise in the north reeds, past the leech water.","ord":6,"from_ref":"t6","quest_id":"quest.main.mq04"}
+{"id":"fact.mq04.cell-cord","claim":"The two men at the camp wear the knotted cord at the wrist, as the woman who burned the gang's camp did.","ord":7,"from_ref":"t1","quest_id":"quest.main.mq04"}
+{"id":"fact.mq04.cell-known","claim":"The cell that burned the gang's camp cut the cutting's roots and drew its sap into jars it brought.","ord":0,"from_ref":"t1","quest_id":"quest.main.mq04"}
+{"id":"fact.mq04.minder-hid","claim":"Pays-Late found the cut and hid it, because the gum was his and his knife gone, and it would look like his work.","ord":4,"from_ref":"t4","quest_id":"quest.main.mq04"}
+{"id":"fact.mq04.root-cut","claim":"A root of the Hist was cut under the stilts and its sap drawn off, and the cut was sealed with black gum from the village's sap-workshop.","ord":3,"from_ref":"t2","quest_id":"quest.main.mq04"}
+{"id":"fact.mq04.strangers-seen","claim":"A boat came in from the north reeds the night the tree shut and went back out.","ord":5,"from_ref":"t2","quest_id":"quest.main.mq04"}
+{"id":"fact.mq04.tree-closed","claim":"The Hist's light is out and its leaves are shut; the cut severed the eggs in its pool, and they died.","ord":1,"from_ref":"t3","quest_id":"quest.main.mq04"}
+{"id":"fact.mq04.village-blames","claim":"The village blames the leeches at the roots, and Pays-Late, who let them in.","ord":2,"from_ref":"t5","quest_id":"quest.main.mq04"}
+{"id":"fact.mq05.basin-lethal","claim":"What walks in the basin round Helstrom dies, and the levy at the gate says so.","ord":1,"from_ref":"t5","quest_id":"quest.main.mq05"}
+{"id":"fact.mq05.eituja-view","claim":"Ei-Tuja holds that a Hist's silence is its own act, to be read and not clamped.","ord":5,"from_ref":"t4","quest_id":"quest.main.mq05"}
+{"id":"fact.mq05.kaska-view","claim":"Kaska-Meen holds that a Hist that falls silent must be watched by tree-minders alone.","ord":4,"from_ref":"t4","quest_id":"quest.main.mq05"}
+{"id":"fact.mq05.mnemic-egg","claim":"A Hist that dies leaves a Mnemic Egg, a seed of its sap holding all its memories; the Dominion once used one to stop a generation of eggs hatching.","ord":0,"from_ref":"t6","quest_id":"quest.main.mq05"}
+{"id":"fact.mq05.reed-goal","claim":"The Reed wants Helstrom's tree-minders and Nisswo to hear what a cut Hist looks like, from someone it can deny.","ord":2,"from_ref":"t2","quest_id":"quest.main.mq05"}
+{"id":"fact.mq05.severance-not-silence","claim":"A Hist gone silent and a Hist cut at the root are two things: silence kills no clutch, and the eggs at Low-Reed Village died of the cut.","ord":6,"from_ref":"t1","quest_id":"quest.main.mq05"}
+{"id":"fact.mq05.wasps","claim":"Two giant wasps keep the marsh way's far bend.","ord":3,"from_ref":"t3","quest_id":"quest.main.mq05"}
 {"id":"fact.mr01.breach","claim":"In the deepest chamber of the drowned stair a channel has been cut by hand through the roots into a brine seam.","ord":3,"from_ref":"t1","quest_id":"quest.mr.mr01"}
 {"id":"fact.mr01.brine-backflow","claim":"Each flood pushes brine back up the old cut into Greenspring's taproots.","ord":7,"from_ref":"t3","quest_id":"quest.mr.mr01"}
 {"id":"fact.mr01.consent","claim":"No Hist speaks for all the Hist, and one tree's will does not bind another's people.","ord":9,"from_ref":"culture.faction.many-root-conclave#norms","quest_id":"quest.mr.mr01"}

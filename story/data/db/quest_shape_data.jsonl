@@ -59,26 +59,26 @@
 {"quest_id":"quest.main.mq03","section":"nodes"}
 {"quest_id":"quest.main.mq03","section":"rule","value":"the dream comes to whoever tastes the cell's sap (QA18)"}
 {"quest_id":"quest.main.mq03","section":"timeline","value":"two nights before: the cutters fill their jars at the cut roots and one jar is left by the fire; Dives-Without-A-Rope carries it aboard. The day the game opens: the player joins the Reed (MQ01); the jar comes out of the lockbox; at Nesh-Deeka's table the player tastes it and she writes down the dream."}
-{"quest_id":"quest.main.mq04","section":"cure","value":"the sap in the jars poured back at the cut root (QA11)"}
-{"quest_id":"quest.main.mq04","section":"fate","value":"the sap was drawn into jars and waits at the cell's camp for a larger boat"}
-{"quest_id":"quest.main.mq04","section":"firstIllLastWell","value":"the uxith's eggs first; the tree itself is closed, not sick"}
+{"quest_id":"quest.main.mq04","section":"cure","value":"the sap in the jars poured back at the cut root (QA11), if the jars go to Pays-Late or the root-herald"}
+{"quest_id":"quest.main.mq04","section":"fate","value":"the sap was drawn into jars and waits on a dry rise in the north reeds for the cell's larger boat"}
+{"quest_id":"quest.main.mq04","section":"firstIllLastWell","value":"the eggs first; the tree itself is shut, not sick"}
 {"quest_id":"quest.main.mq04","section":"ladder"}
-{"quest_id":"quest.main.mq04","section":"leads","value":"the root-herald to the tree; the root to the workshop and the tree-minder; the tree-minder and the egg-tender to the north reeds; the drips and the bent reeds to the camp"}
-{"quest_id":"quest.main.mq04","section":"misdiagnosis","wrong":"leeches let in by a tree-minder who failed his keeping","test":"the leeches crowd only the cut root; the cut is sealed with gum; the tree-minder washes it by night"}
+{"quest_id":"quest.main.mq04","section":"leads","value":"the root-herald points at Pays-Late; Pays-Late (talked round or shown his gum pot) or Turns-The-Clutch tells of the cut and the boat from the north reeds; the north reeds lead across the leech water to the dry rise"}
+{"quest_id":"quest.main.mq04","section":"misdiagnosis","wrong":"leeches let in by a tree-minder who failed his keeping","test":"Pays-Late's own gum on the cut, his knife gone, and a boat from the north reeds"}
 {"quest_id":"quest.main.mq04","section":"nodes"}
 {"quest_id":"quest.main.mq04","section":"openQuestions"}
 {"quest_id":"quest.main.mq04","section":"sign","value":"fact.mq04.tree-closed"}
-{"quest_id":"quest.main.mq04","section":"source","value":"the cut root of the Hist, sealed with black gum"}
-{"quest_id":"quest.main.mq04","section":"spread","value":"the weeping sap and the leeches it draws; the uxith dark"}
+{"quest_id":"quest.main.mq04","section":"source","value":"a root of the Hist cut under the stilts and its sap drawn into jars"}
+{"quest_id":"quest.main.mq04","section":"spread","value":"the weeping sap draws the leeches to the root; the eggs died"}
 {"quest_id":"quest.main.mq04","section":"trail"}
-{"quest_id":"quest.main.mq05","section":"gate","value":"The way's far bend, where two giant wasps keep the root: fought, or passed on the root at night by Sneak; then the gate, where the levy warden says what the basin does; the basin beyond the gate is LQ30's and is seen, not entered."}
-{"quest_id":"quest.main.mq05","section":"nonLethalFailure","value":"driven back by the wasps the player runs back down the way and tries again, by the other route if they choose; nothing is lost"}
-{"quest_id":"quest.main.mq05","section":"pointOfNoReturn","value":"none: the way can be walked back"}
+{"quest_id":"quest.main.mq05","section":"gate","value":"the way's far bend, where two giant wasps keep the root, fought or sneaked past"}
+{"quest_id":"quest.main.mq05","section":"nonLethalFailure","value":"driven back by the wasps, the player runs back down the way and tries again, or sneaks past"}
+{"quest_id":"quest.main.mq05","section":"pointOfNoReturn","value":"none: the way can be walked back and the ship taken again"}
 {"quest_id":"quest.main.mq05","section":"prepHints"}
-{"quest_id":"quest.main.mq05","section":"prize","value":"Kaska-Meen's or Ei-Tuja's word carried: whichever the player tells carries what the player saw to the interior's tree-minders or to the Nisswo."}
-{"quest_id":"quest.main.mq05","section":"return","value":"The player leaves a grove whose two quarrellers have each been told or left out."}
-{"quest_id":"quest.main.mq05","section":"route","value":"The Reed's house, then the coast ship's door at Lilmoth's stop (0AA837, pair 0AA664), then the ship's door to Helstrom's river landing (23D496, pair 0830A8, found by its place in the ship); from the landing the marsh way, root and shallows, to the levy warden at the gate; the hall of the Scalded Throne by the first street, the grove behind it."}
-{"quest_id":"quest.main.mq05","section":"rumour","value":"The Reed says the interior's tree-minders and Nisswo gather at Helstrom and carry news home, and that it cannot say a cut Hist's story there itself."}
+{"quest_id":"quest.main.mq05","section":"prize","value":"the word carried inland: by the tree-minders, who will close their trees to strangers, or by the Nisswo, who will preach it openly"}
+{"quest_id":"quest.main.mq05","section":"return","value":"the player stands in Helstrom, which the main line keeps as its seat"}
+{"quest_id":"quest.main.mq05","section":"route","value":"Salts-The-Catch's house; the coast ship's door at Lilmoth's stop; inside the ship, its door to Helstrom's river landing; from the landing the marsh way, root and shallows, past the wasps at the far bend, to the gate and the grove past it."}
+{"quest_id":"quest.main.mq05","section":"rumour","value":"Nesh-Deeka says the interior's tree-minders and Nisswo gather at Helstrom and carry news home, and that the Reed cannot say a cut Hist's story there itself."}
 {"quest_id":"quest.mr.mr01","section":"cure","value":"seal the cut (costs the roots it runs through), or reopen it downstream (floods the dead grove's land, where the founders' rival's descendants now fish)"}
 {"quest_id":"quest.mr.mr01","section":"firstIllLastWell","value":"the Hist's lowest roots first, then the spring, then the river landing last"}
 {"quest_id":"quest.mr.mr01","section":"gate","value":"the second landing is a full dive"}

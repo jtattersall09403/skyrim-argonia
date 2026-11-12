@@ -62,21 +62,21 @@
 {"quest_id":"quest.main.mq03","section":"nodes","ord":1,"value":"Dives-Without-A-Rope"}
 {"quest_id":"quest.main.mq03","section":"nodes","ord":2,"value":"Nesh-Deeka's reading of the sap"}
 {"quest_id":"quest.main.mq03","section":"nodes","ord":3,"value":"the page"}
-{"quest_id":"quest.main.mq04","section":"ladder","ord":0,"value":"day 0: the eggs die of the cut"}
-{"quest_id":"quest.main.mq04","section":"ladder","ord":1,"value":"until the jars come back the tree stays closed"}
-{"quest_id":"quest.main.mq04","section":"nodes","ord":0,"value":"the cut root"}
-{"quest_id":"quest.main.mq04","section":"nodes","ord":1,"value":"the workshop"}
-{"quest_id":"quest.main.mq04","section":"nodes","ord":2,"value":"the tree-minder at night"}
-{"quest_id":"quest.main.mq04","section":"nodes","ord":3,"value":"the egg-tender"}
-{"quest_id":"quest.main.mq04","section":"nodes","ord":4,"value":"the leech water"}
-{"quest_id":"quest.main.mq04","section":"nodes","ord":5,"value":"the camp"}
-{"quest_id":"quest.main.mq04","section":"openQuestions","ord":0,"value":"who sent the cell (MQ05 and later)"}
-{"quest_id":"quest.main.mq04","section":"trail","ord":0,"value":"the cut root"}
-{"quest_id":"quest.main.mq04","section":"trail","ord":1,"value":"the workshop (its gum, the empty knife-peg)"}
-{"quest_id":"quest.main.mq04","section":"trail","ord":2,"value":"the drips to the leech water"}
-{"quest_id":"quest.main.mq04","section":"trail","ord":3,"value":"the bent reeds on the far side"}
-{"quest_id":"quest.main.mq04","section":"trail","ord":4,"value":"the camp"}
-{"quest_id":"quest.main.mq05","section":"prepHints","ord":0,"value":"topic.mq05-the-word names the marsh way in; k3 shows it"}
+{"quest_id":"quest.main.mq04","section":"ladder","ord":0,"value":"eleven nights ago: the root cut, the eggs dead"}
+{"quest_id":"quest.main.mq04","section":"ladder","ord":1,"value":"until the sap comes back the tree stays shut"}
+{"quest_id":"quest.main.mq04","section":"nodes","ord":0,"value":"the root-herald"}
+{"quest_id":"quest.main.mq04","section":"nodes","ord":1,"value":"Pays-Late at the cut root"}
+{"quest_id":"quest.main.mq04","section":"nodes","ord":2,"value":"his gum box"}
+{"quest_id":"quest.main.mq04","section":"nodes","ord":3,"value":"Turns-The-Clutch at the egg pool"}
+{"quest_id":"quest.main.mq04","section":"nodes","ord":4,"value":"the dry rise and its jars"}
+{"quest_id":"quest.main.mq04","section":"openQuestions","ord":0,"value":"what the cell wants with jars of a living Hist's sap (MQ05 and Act II)"}
+{"quest_id":"quest.main.mq04","section":"trail","ord":0,"value":"the root-herald"}
+{"quest_id":"quest.main.mq04","section":"trail","ord":1,"value":"Pays-Late or Turns-The-Clutch"}
+{"quest_id":"quest.main.mq04","section":"trail","ord":2,"value":"the north reeds across the leech water"}
+{"quest_id":"quest.main.mq04","section":"trail","ord":3,"value":"the dry rise"}
+{"quest_id":"quest.main.mq05","section":"prepHints","ord":0,"value":"Nesh-Deeka names the wasps and the way in"}
+{"quest_id":"quest.main.mq05","section":"prepHints","ord":1,"value":"the landing's crew (LQ25)"}
+{"quest_id":"quest.main.mq05","section":"prepHints","ord":2,"value":"the levy at the gate (LQ30)"}
 {"quest_id":"quest.mr.mr01","section":"ladder","ord":0,"value":"at the start: leaves falling out of season"}
 {"quest_id":"quest.mr.mr01","section":"ladder","ord":1,"value":"from stage 20: the spring tastes of salt"}
 {"quest_id":"quest.mr.mr01","section":"ladder","ord":2,"value":"from stage 40: the sap stops at the naming bowl"}

@@ -32,17 +32,14 @@
 {"quest_id":"quest.main.mq03","ord":1,"skill":"Speechcraft","use":"persuade","reason":"she gives up the key to someone who can tell her the Reed means to find who cut her tree (Speechcraft 25)"}
 {"quest_id":"quest.main.mq03","ord":2,"skill":"Pickpocket","use":"lift","reason":"the key is on her"}
 {"quest_id":"quest.main.mq03","ord":3,"skill":"Alchemy","use":"test-a-sample","reason":"at Nesh-Deeka's table a tester reads the sap before the taste: fresh-drawn, and the rings of many jars on it"}
-{"quest_id":"quest.main.mq04","ord":0,"skill":"Speech","use":"persuade","reason":"the root-herald is wary of strangers from Lilmoth: a Speech check of 25, or bring her food, for leave to see the tree"}
-{"quest_id":"quest.main.mq04","ord":1,"skill":"OneHanded","use":"fight","reason":"the leeches crowd the cut root (fixed band 2)"}
-{"quest_id":"quest.main.mq04","ord":2,"skill":"destruction","use":"fight","reason":"the same leeches from the stilts above"}
-{"quest_id":"quest.main.mq04","ord":3,"skill":"sneak","use":"spy","reason":"the tree-minder washes the cut root after dark; watched unseen (not detected by him), he is seen at it"}
-{"quest_id":"quest.main.mq04","ord":4,"skill":"Speech","use":"persuade","reason":"or the egg-tender is talked round by day (a Speech check of 25) to tell of the boat"}
-{"quest_id":"quest.main.mq04","ord":5,"skill":"athletics","use":"swim","reason":"the gum trail breaks at the leech water and picks up on the far side"}
-{"quest_id":"quest.main.mq04","ord":6,"skill":"sneak","use":"sneak-past","reason":"a sentry keeps the cell's camp on the trail side"}
-{"quest_id":"quest.main.mq04","ord":7,"skill":"OneHanded","use":"fight","reason":"or the two at the camp are fought"}
-{"quest_id":"quest.main.mq05","ord":1,"skill":"oneHanded","use":"fight","reason":"two giant wasps the size of ponies (fauna-hazards) keep the way's far bend (fixed level, band 1): the quest's high point"}
-{"quest_id":"quest.main.mq05","ord":2,"skill":"sneak","use":"sneak-past","reason":"the other way past the wasps: on the root at night"}
-{"quest_id":"quest.main.mq05","ord":3,"skill":"speechcraft","use":"persuade","reason":"the player tells a tree-minder or a Nisswo what a cut Hist looks like"}
+{"quest_id":"quest.main.mq04","ord":0,"skill":"Speech","use":"persuade","reason":"Pays-Late is talked round to tell what he hid (Speech 25)"}
+{"quest_id":"quest.main.mq04","ord":1,"skill":"Sneak","use":"steal","reason":"his gum pot is taken from the gum box at his feet under his eyes; the crime engine sees a theft"}
+{"quest_id":"quest.main.mq04","ord":2,"skill":"Lockpicking","use":"pick-a-lock","reason":"the gum box is locked (Novice)"}
+{"quest_id":"quest.main.mq04","ord":3,"skill":"OneHanded","use":"fight","reason":"the two cell men at the camp are fought (fixed level, band 2)"}
+{"quest_id":"quest.main.mq04","ord":4,"skill":"Sneak","use":"sneak-past","reason":"or slipped past to the jars"}
+{"quest_id":"quest.main.mq05","ord":0,"skill":"OneHanded","use":"fight","reason":"two giant wasps the size of ponies keep the way's far bend (fixed level, band 1): the quest's high point"}
+{"quest_id":"quest.main.mq05","ord":1,"skill":"Sneak","use":"sneak-past","reason":"the other way past the wasps"}
+{"quest_id":"quest.main.mq05","ord":2,"skill":"Speech","use":"persuade","reason":"Kaska-Meen hears a stranger only if talked round (Speech 25)"}
 {"quest_id":"quest.mr.mr01","ord":0,"skill":"alchemy","use":"test-a-sample","reason":"the diagnosis is samples; the river test refutes the salt works"}
 {"quest_id":"quest.mr.mr01","ord":1,"skill":"swimming","use":"swim","reason":"three sampling sites in the drowned stair"}
 {"quest_id":"quest.mr.mr01","ord":2,"skill":"alteration","use":"water-breathe","reason":"the deepest chamber is beyond one breath"}

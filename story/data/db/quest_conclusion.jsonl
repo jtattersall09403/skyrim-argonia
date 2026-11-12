@@ -11,9 +11,9 @@
 {"quest_id":"quest.local.lq30","ord":0,"id":"c1","statement":"Sei-Wan is alive among the roots in the basin's shallows east of the gate, and a viper keeps him there."}
 {"quest_id":"quest.main.mq01","ord":0,"id":"c1","statement":"The woman with the knotted cord came for the courier's satchel and for the cutting's sap, not for the gang, and chose to leave the player alive."}
 {"quest_id":"quest.main.mq03","ord":0,"id":"c1","statement":"The cell came for the cutting's sap as much as for the satchel, with jars ready: a long work, not a raid."}
-{"quest_id":"quest.main.mq04","ord":0,"id":"c1","statement":"The tree was cut, not sickened, and not by its tree-minder."}
+{"quest_id":"quest.main.mq04","ord":0,"id":"c1","statement":"The tree was cut for its sap, not sickened by leeches, and not by its tree-minder."}
 {"quest_id":"quest.main.mq04","ord":1,"id":"c2","statement":"The cut sap went north to the cell's camp."}
-{"quest_id":"quest.main.mq05","ord":0,"id":"c2","statement":"Kaska-Meen and Ei-Tuja have each half of it, and neither has seen a cut root."}
+{"quest_id":"quest.main.mq05","ord":0,"id":"c2","statement":"Kaska-Meen and Ei-Tuja each hold half of what a silent Hist means, and neither has seen a cut root."}
 {"quest_id":"quest.mr.mr01","ord":0,"id":"c1","statement":"The salt works are not the cause."}
 {"quest_id":"quest.mr.mr01","ord":1,"id":"c2","statement":"The salt comes up from a breach below the village."}
 {"quest_id":"quest.mr.mr01","ord":2,"id":"c3","statement":"The founders cut the breach to kill a rival grove."}

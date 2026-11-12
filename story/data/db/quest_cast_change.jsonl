@@ -6,8 +6,10 @@
 {"quest_id":"quest.local.lq25","cast_ord":2,"ord":0,"at_stage":91,"fact":"fact.lq25.crew-baited","to":"knows"}
 {"quest_id":"quest.local.lq25","cast_ord":2,"ord":1,"at_stage":91,"fact":"fact.lq25.bait-drew-it","to":"knows"}
 {"quest_id":"quest.main.mq03","cast_ord":0,"ord":0,"at_stage":90,"fact":"fact.mq03.dream","to":"knows"}
-{"quest_id":"quest.main.mq05","cast_ord":2,"ord":0,"at_stage":91,"fact":"fact.mq05.severance-not-silence","to":"knows"}
-{"quest_id":"quest.main.mq05","cast_ord":3,"ord":0,"at_stage":92,"fact":"fact.mq05.severance-not-silence","to":"knows"}
+{"quest_id":"quest.main.mq04","cast_ord":0,"ord":0,"at_stage":91,"fact":"fact.mq04.minder-hid","to":"knows"}
+{"quest_id":"quest.main.mq04","cast_ord":5,"ord":0,"at_stage":46,"fact":"fact.mq04.camp-jars","to":"knows"}
+{"quest_id":"quest.main.mq05","cast_ord":1,"ord":0,"at_stage":45,"fact":"fact.mq05.severance-not-silence","to":"knows"}
+{"quest_id":"quest.main.mq05","cast_ord":2,"ord":0,"at_stage":40,"fact":"fact.mq05.severance-not-silence","to":"knows"}
 {"quest_id":"quest.mr.mr01","cast_ord":0,"ord":0,"at_stage":50,"fact":"fact.mr01.breach","to":"knows"}
 {"quest_id":"quest.mr.mr01","cast_ord":1,"ord":0,"at_stage":40,"fact":"fact.mr01.founders-stakes","to":"knows"}
 {"quest_id":"quest.mr.mr01","cast_ord":2,"ord":0,"at_stage":50,"fact":"fact.mr01.breach","to":"knows"}

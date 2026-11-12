@@ -1,0 +1,26 @@
+{
+ "_about": "What the player sees for the new items and places of MQ03, MQ04 and MQ05 (walk 6 lane Q1): the quests' own items have no row in the world database yet, and BM&V's cells carry editor ids, not the names the records give them.",
+ "names": {
+  "thing.mq03.lockpicks": "Lockpicks",
+  "thing.mq03.page": "Nesh-Deeka's Page",
+  "thing.mq03.sack": "Dives-Without-A-Rope's Lockbox",
+  "thing.mq03.sack-key": "Key to Dives-Without-A-Rope's Lockbox",
+  "thing.mq03.sap-jar": "Cutters' Jar of Sap",
+  "thing.mq04.sap-jars": "Jars of Hist Sap",
+  "thing.mq04.gum-pot": "Pays-Late's Gum Pot",
+  "thing.mq04.gum-box": "Pays-Late's Gum Box",
+  "thing.mq05.landing-door": "Door to Helstrom's River Landing",
+  "creature.mq05.wasp-1": "Giant Wasp",
+  "creature.mq05.wasp-2": "Giant Wasp"
+ },
+ "places": {
+  "0FE7F7:Black Marsh.esm": {"name": "Salts-The-Catch's House, Lilmoth", "interior": true, "entrance": {"x": 31553.0, "y": -7639.0}},
+  "03978F:Black Marsh.esm": {"name": "Low-Reed Village", "interior": false},
+  "039793:Black Marsh.esm": {"name": "a dry rise in the reeds north of Low-Reed Village", "interior": false},
+  "0AA665:Black Marsh.esm": {"name": "Coast Ship", "interior": true, "entrance": {"x": 32176.3, "y": -2430.5}},
+  "1562F8:Black Marsh.esm": {"name": "Helstrom's River Landing", "interior": false},
+  "0D76E1:Black Marsh.esm": {"name": "Helstrom's River Landing", "interior": false},
+  "0D787F:Black Marsh.esm": {"name": "the marsh way below Helstrom's gate", "interior": false},
+  "0D78C1:Black Marsh.esm": {"name": "Helstrom, the grove inside the gate", "interior": false}
+ }
+}
