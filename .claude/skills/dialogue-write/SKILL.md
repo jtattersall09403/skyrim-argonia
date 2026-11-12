@@ -68,7 +68,8 @@ changes:
 Every run finds its models first, a rewrite of one line included. The corpus
 (`$ARGONIA_PRIVATE/dialogue/morrowind/morrowind-full.json`, never committed; `ARGONIA_PRIVATE` is
 `/home/ubuntu/argonia-private`) is split by topic kind into `groups/` by `corpus_split.py` (run it once if the
-folder is missing). Spawn one `corpus-find` agent per group the brief's topics touch, in parallel, each given its
+folder is missing). The writer is started directly by the lane that orchestrates, never through a driver agent between them: only then can it
+start agents. Spawn one `corpus-find` agent per group the brief's topics touch, in parallel, each given its
 group file, the speaker (race, sex, role, chattiness, friendliness), its topics with their bands, and its report
 path `$ARGONIA_PRIVATE/dialogue/morrowind/finds/<speaker ref6 or brief name>/<group>.txt`. The groups: greetings
 (the speaker's race file) and refusals; trade and service; place and directions (with each route's shape from the

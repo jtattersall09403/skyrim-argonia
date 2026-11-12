@@ -269,4 +269,7 @@ with a target.
   lane never waits.
 - **Shared things** (the generator's call order, overrides, editor ids, a person two lanes use) are agreed in the
   briefs; a lane that runs out of room commits and leaves a hand-off note, and a fresh lane resumes from it.
+- **Writers are started by the lane that orchestrates.** A `dialogue-writer` starts its own `corpus-find` agents, and
+  an agent started by another agent cannot start agents, so the orchestrating lane starts each writer itself (four to
+  six at once), never through an intermediate driver agent.
 - **Costs** are measured per person and per quest and reported with each check-in.
