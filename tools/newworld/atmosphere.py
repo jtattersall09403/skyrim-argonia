@@ -566,10 +566,10 @@ def rows(plugin: Path) -> list[tuple[str, object, bool, str]]:
                 f"{clim and clim['EditorID']} {got['times']}",
                 bool(clim) and ws.get("Climate") == clim["FormKey"] and got == want, "" if got == want else f"read {got}, spec {want}"))
     # neighbouring regions are distinct, as much as Bethesda's own regions are from each other
-    from tools.newworld import identity
     cols = set_colours(rec, sp)
     keys = sorted(cols)
-    d = neighbour_distances(cols, identity.adjacency())
+    pairs = [p.split("|") for p in json.loads((IDENTITY.parent / "adjacency.json").read_text())["pairs"]]
+    d = neighbour_distances(cols, pairs)
     worst = min(d.items(), key=lambda kv: kv[1])
     ref = bethesda_floor()
     out.append((f"neighbours are distinct: every two neighbouring regions differ at least as much as Bethesda's closest two regions "
