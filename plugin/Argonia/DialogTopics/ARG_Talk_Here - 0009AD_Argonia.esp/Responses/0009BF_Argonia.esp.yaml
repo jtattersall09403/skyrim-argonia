@@ -6,7 +6,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: This is Thorn, hatchling. I have stood guard in it longer than anyone. The signpost is ten paces north of me, if you are lost.
+    Value: This is Thorn, hatchling. I have stood guard in it longer than anyone. If you are lost, the signpost is just north of where I stand.
   ScriptNotes: ''
   Edits: ''
 Conditions:

@@ -6,7 +6,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Lilmoth? Follow the shore east, three hundred paces and a little more. Lilmoth is there, dry-foot.
+    Value: Lilmoth? Follow the shore east a fair way and Lilmoth is there. Keep to the bank and out of the water, dry-foot.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 2
@@ -14,7 +14,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Hereguard Plantation? Follow the path west about thirty paces, until you reach the dead tree. Then follow the path south-west about ninety paces. That is Hereguard.
+    Value: Hereguard Plantation? Follow the path west just until you reach the dead tree. Then follow the path south-west a short way, and Hereguard is there. I buy my bait there.
   ScriptNotes: ''
   Edits: ''
 Conditions:

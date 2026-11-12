@@ -6,7 +6,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: This is the gate of Helstrom, outlander. Dwemer ruins stand about six paces south of me and seven north-north-west. A stone tower stands about twenty-three paces east-south-east.
+    Value: This is the gate of Helstrom, outlander. Dwemer ruins stand just south of me and just north-north-west. A stone tower stands just east-south-east.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 2
@@ -14,7 +14,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: A waterfall falls about thirty-three paces south-west of here. Two bridges cross the water near it, about thirty-four paces south-south-west and south-west. Do not wander far from the path.
+    Value: A waterfall falls just south-west of here. Two bridges cross the water beside it, one just south-south-west and one just south-west. Do not wander far from the path.
   ScriptNotes: ''
   Edits: ''
 Conditions:

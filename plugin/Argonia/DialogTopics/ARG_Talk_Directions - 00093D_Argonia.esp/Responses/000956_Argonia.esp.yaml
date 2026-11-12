@@ -6,7 +6,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: The big ship? Follow the boards south about a hundred and eighty paces, traveller. The big ship is there.
+    Value: The big ship, traveller? South a short way, along the boards. It lies at the dock. I would sooner be posted at that dock than here.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 2
@@ -14,7 +14,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Temple Pass is north, traveller. Follow the path north about a hundred and ninety paces, until the dead tree is on your right. Then walk north over open ground about seven hundred paces, and you are there.
+    Value: Temple Pass is north, traveller. Take the path north a short way, until you reach the dead tree on your right. Then cross the open ground north for a fair way. Temple Pass is there.
   ScriptNotes: ''
   Edits: ''
 Conditions:

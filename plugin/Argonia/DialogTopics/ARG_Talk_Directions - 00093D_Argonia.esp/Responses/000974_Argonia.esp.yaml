@@ -6,7 +6,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: The jail. North-east two hundred and sixty paces. The jail is there.
+    Value: The jail. Walk north-east a short way. It is there.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 2
@@ -14,7 +14,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Haven. South-east a hundred and ten paces, round the cliffs, to the boat on its rack. Then south-west two hundred and thirty paces, past the stone tower. Haven is there.
+    Value: Haven. Walk south-east a short way, round the cliffs, to the boat on its rack. Then walk south-west a short way, past the stone tower. Haven is there.
   ScriptNotes: ''
   Edits: ''
 Conditions:

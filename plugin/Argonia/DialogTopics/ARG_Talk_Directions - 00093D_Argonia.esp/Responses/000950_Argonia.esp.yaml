@@ -6,7 +6,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: The dock, walker. Go north-east about three hundred paces, past the burnt-out house. Lilmoth Dock is there.
+    Value: Lilmoth Dock, walker. Go north-east a fair way. The burnt-out house stands on the way, and the dock lies past it.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 2
@@ -14,7 +14,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Lilmoth. Go north about three hundred and thirty paces. Lilmoth is there.
+    Value: Lilmoth lies north, walker. It is a fair way on foot. We stay clear of its rents.
   ScriptNotes: ''
   Edits: ''
 Conditions:

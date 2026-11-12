@@ -6,7 +6,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: This is the north road into Black Rose. The northern marker post is about fifteen paces south of here. A boat lies about thirty-five paces east-south-east.
+    Value: This is the north road into Black Rose. The northern marker post is just south of here. A boat lies just east-south-east.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 2
@@ -14,7 +14,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: I keep watch here, above the northern marker post. The post is about fifteen paces south. There is a boat about thirty-five paces east-south-east of where we stand.
+    Value: I keep watch here, above the northern marker post. The post is just south. There is a boat just east-south-east of where we stand.
   ScriptNotes: ''
   Edits: ''
 Conditions:

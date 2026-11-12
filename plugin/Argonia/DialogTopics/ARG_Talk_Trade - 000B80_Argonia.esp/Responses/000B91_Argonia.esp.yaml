@@ -6,7 +6,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: I am a soldier of the levy. The stone tower stands about two paces west-south-west of here, and I keep its watch. Benches flank it, about three paces south-east and six paces west.
+    Value: I am a soldier of the levy. The stone tower stands just west-south-west of here, and I keep its watch. Benches flank it, just south-east of here and just west.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 2
@@ -14,7 +14,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: I serve the levy at the stone tower, two paces west-south-west of where we stand. Benches stand beside it, about three paces south-east and six paces west.
+    Value: I serve the levy at the stone tower, just west-south-west of where we stand. Benches stand beside it, one just south-east of here and one just west.
   ScriptNotes: ''
   Edits: ''
 Conditions:

@@ -6,7 +6,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: My house is about ten paces north-east of here. The dock is east-north-east, about twenty-five paces, where the small boats tie up.
+    Value: My house is just north-east of here. The dock is just east-north-east, where the small boats tie up.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 2
@@ -14,7 +14,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: North-east, ten paces, is my house. East-north-east, twenty-five paces, is the dock. I patch the boats there.
+    Value: Just north-east is my house. Just east-north-east is the dock. I patch the boats there.
   ScriptNotes: ''
   Edits: ''
 Conditions:

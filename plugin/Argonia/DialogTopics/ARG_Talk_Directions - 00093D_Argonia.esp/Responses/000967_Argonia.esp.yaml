@@ -6,7 +6,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Helstrom is close. Follow the shore south about one hundred and eight paces, past the old stone columns, until you see the boat on its rack on your left. Then follow the shore south-west about twenty-eight paces. Helstrom is there.
+    Value: Helstrom is close. Follow the shore south a short way, past the old stone columns, until you reach the boat on its rack on your left. Then follow the shore south-west, and Helstrom is just there.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 2
@@ -14,7 +14,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: The Dwarven Ruins lie beyond Helstrom. Follow the shore south about one hundred and forty paces past the old stone columns until Helstrom is on your right. Go along the boards south-east about one hundred and thirty-four paces until the big ship is on your right. Then climb south-east over open ground about five hundred and twelve paces until the standing stone is on your left. Then follow the shore south-east about one hundred and seventy-six paces to the ruins.
+    Value: The Dwarven Ruins lie beyond Helstrom. Follow the shore south a short way past the old stone columns until Helstrom is on your right. Go along the boards south-east a short way until the big ship is on your right. Then climb south-east over open ground a fair way until the standing stone is on your left. Follow the shore south-east a short way, and you will reach the ruins.
   ScriptNotes: ''
   Edits: ''
 Conditions:

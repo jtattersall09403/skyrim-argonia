@@ -6,7 +6,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: The rowing boat? You can see it from here. Walk about nineteen paces south and you will be standing in it.
+    Value: The rowing boat? It is just south of my stall. Look that way and there it is, so you cannot miss it.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 2
@@ -14,7 +14,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: The dock, is it? Walk north-east, about three hundred paces, past the rowing boat and the burnt-out house. Lilmoth Dock is there, you see?
+    Value: The dock is north-east a fair way. You pass the rowing boat first and then the burnt-out house, and there is Lilmoth Dock.
   ScriptNotes: ''
   Edits: ''
 Conditions:

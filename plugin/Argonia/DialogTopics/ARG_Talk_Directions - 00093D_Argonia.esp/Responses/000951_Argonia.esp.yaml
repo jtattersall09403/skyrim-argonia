@@ -6,7 +6,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Soulrest, buyer? That is where the real coin is. Follow the shore north-east, two hundred and ten paces or so, past the rowing boat, until the burnt-out house is on your right. Walk north-east eighty paces to the big ship, then follow the shore north-east a hundred paces or so until Lilmoth Dock is on your right. Climb south-east two hundred and seventy paces. Soulrest is there. Good trade.
+    Value: Soulrest, buyer? That is where the real coin is. Follow the shore north-east, a short way past the rowing boat, until the burnt-out house is on your right. Walk north-east a short way to the big ship, then follow the shore north-east a short way until Lilmoth Dock is on your right. From there climb south-east a fair way. Soulrest is there. Good trade.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 2
@@ -14,7 +14,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Hereguard? Walk north-west three hundred and ten paces, until Lilmoth is on your right, then follow the shore west a hundred and eighty or so until the dead tree is on your right. Walk south-west eighty-odd paces. Hereguard Plantation is there.
+    Value: Hereguard? Walk north-west a fair way until Lilmoth is on your right. Then follow the shore west a short way until you reach the dead tree on your right. Walk south-west a short way from the tree, and Hereguard Plantation is there.
   ScriptNotes: ''
   Edits: ''
 Conditions:

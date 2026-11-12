@@ -6,7 +6,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Lily pads? They float on the water west of here. Some are seven paces off. More are ten paces west-south-west. Why do you want them? Can you swim?
+    Value: Lily pads? They float on the water just west of here. More float just west-south-west.
   ScriptNotes: ''
   Edits: ''
 Conditions:

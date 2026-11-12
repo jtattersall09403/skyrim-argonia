@@ -6,7 +6,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Lilmoth Dock? Follow the shore north-east, three hundred paces, until Lilmoth is on your right. Then east, a hundred and ninety, to the burnt-out house on your left. South-east a hundred and thirty-five more, and the dock is there, passenger.
+    Value: Lilmoth Dock? Follow the shore north-east a fair way, passenger, until Lilmoth is on your right. Walk east a short way to the burnt-out house on your left. The dock lies a short way south-east of that house.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 2
@@ -14,7 +14,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Alten Merihall? Follow the shore north-east, three hundred paces, until Lilmoth is on your right. Then east, a hundred and ninety, to the burnt-out house on your left. South-east a hundred and thirty brings you to Lilmoth Dock. From there, ask again for Alten Merihall. It lies further south-east.
+    Value: Alten Merihall? Follow the shore north-east a fair way until Lilmoth is on your right. Walk east a short way to the burnt-out house on your left. South-east a short way more is Lilmoth Dock. Alten Merihall lies further south-east.
   ScriptNotes: ''
   Edits: ''
 Conditions:

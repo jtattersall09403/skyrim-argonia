@@ -6,7 +6,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: The bridge, visitor? Walk north-west from here, about three hundred paces, and the bridge is there. It is an easy walk. Take it slowly.
+    Value: The bridge, visitor? Walk north-west from here for a fair way. The walk is easy enough, so take it slowly.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 2
@@ -14,7 +14,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Looking for the bridge? Go north-west, three hundred paces and a few more, and you will be standing on it.
+    Value: Looking for the bridge? Go north-west for a fair way, and there it is.
   ScriptNotes: ''
   Edits: ''
 Conditions:

@@ -6,7 +6,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: See the door close by, five paces to the west-north-west? That is a house, about fifteen paces on to the north-west. A second door is some forty paces east. Hah.
+    Value: See the door close by, just west-north-west? That is a house, just north-west of here. A second door is just east. Hah.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 2
@@ -14,7 +14,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: A Dwemer ruin rises thirty paces to the north-north-east. Keep clear of it, buyer, unless you can pay for the trouble. Hah.
+    Value: A Dwemer ruin rises just north-north-east of here. Keep clear of it, buyer, unless you can pay for the trouble. Hah.
   ScriptNotes: ''
   Edits: ''
 Conditions:

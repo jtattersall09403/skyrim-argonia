@@ -6,7 +6,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Temple Pass, outlander? Walk north some sixty paces, until you reach the dead tree. Then walk north again, over open ground, a little over eight hundred and fifty paces, and you are there.
+    Value: Temple Pass, outlander? The dead tree stands just north of here; make for it. Beyond it, keep north over open ground a long walk, and Temple Pass is there.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 2
@@ -14,7 +14,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: You want Temple Pass. Keep north from here, some sixty paces, to the dead tree. From there go north over open ground, some eight hundred and fifty paces. It lies at the end of that walk.
+    Value: You want Temple Pass. Walk north to the dead tree, which you can see from here, and go on north from it across the open ground. It is a long walk, and the pass is at the end of it.
   ScriptNotes: ''
   Edits: ''
 Conditions:

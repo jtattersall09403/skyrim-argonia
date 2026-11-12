@@ -6,7 +6,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: The big ship? Walk south a hundred and seventy-five paces or so, outlander. It is there.
+    Value: The big ship lies a short way south, outlander. Keep walking and you will reach it.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 2
@@ -14,7 +14,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Walk south, a hundred and seventy-five paces or so, outlander. You will see the big ship.
+    Value: South, outlander, a short way. The big ship is there.
   ScriptNotes: ''
   Edits: ''
 Conditions:

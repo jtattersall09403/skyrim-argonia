@@ -6,7 +6,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Alten Merihall, traveller. Walk south-west about 175 paces until the giant tree is on your right. Then go west over open ground about 500 paces to reach it.
+    Value: Alten Merihall, traveller. Walk south-west a short way, until the giant tree is on your right. Then go west over open ground a fair way, and you will be there.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 2
@@ -14,7 +14,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Longmont is a plain way, traveller. Walk south-east about 200 paces until the giant tree is on your right, then walk east about 170 paces to reach it.
+    Value: Longmont is a plain way, traveller. Walk south-east a short way, until the giant tree is on your right. Then walk east a short way, and you will be there.
   ScriptNotes: ''
   Edits: ''
 Conditions:

@@ -6,7 +6,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: This is the road below the jail. There is a house about ten paces south-east of here.
+    Value: This is the road below the jail. You will find a house just to the south-east.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 2
@@ -14,7 +14,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: There is a house ten paces south-east of us. I keep watch near it.
+    Value: There is a house just south-east of us. I keep watch near it.
   ScriptNotes: ''
   Edits: ''
 Conditions:

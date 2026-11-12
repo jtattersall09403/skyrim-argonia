@@ -6,7 +6,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Dredges-The-Silt keeps the town's channels clear. I know no better company. You will usually find the dredger about five paces north-west of here.
+    Value: Dredges-The-Silt keeps the town's channels clear. I know no better company. You will usually find the dredger just north-west of here.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 2
@@ -14,7 +14,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: You want Dredges-The-Silt, the dredger who clears the town's channels. Look about five paces north-west of here.
+    Value: You want Dredges-The-Silt, the dredger who clears the town's channels. Look just north-west of here.
   ScriptNotes: ''
   Edits: ''
 Conditions:

@@ -6,7 +6,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Keep sparks off the huts, traveller. The cooking fire, some twenty paces north-east of here, is banked each night.
+    Value: Traveller, the cooking fire just north-east of here is banked each night. Keep sparks away from the huts.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 2
@@ -14,7 +14,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Mind the sparks. The cooking fire is about twenty paces north-east, and it is banked every night; see that nothing from it reaches the huts.
+    Value: Mind the huts on this side, traveller. The cooking fire just north-east of here is banked each night; carry no sparks from it to the huts.
   ScriptNotes: ''
   Edits: ''
 Conditions:

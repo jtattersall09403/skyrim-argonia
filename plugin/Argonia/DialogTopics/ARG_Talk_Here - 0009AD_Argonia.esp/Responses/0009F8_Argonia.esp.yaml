@@ -6,7 +6,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: The house is south-west of here, about twenty paces. Go and look at it yourself.
+    Value: The house is just south-west of here. Go and look at it yourself.
   ScriptNotes: ''
   Edits: ''
 Conditions:

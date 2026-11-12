@@ -6,7 +6,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Tuh-Weem is the guard at the north-east boat dock. She is usually about fifteen paces south-west of here. She should mind her own dock.
+    Value: Tuh-Weem is the guard at the north-east boat dock. He is usually just south-west of here. He should mind his own dock.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 2
@@ -14,7 +14,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: You want Tuh-Weem, the guard at the north-east boat dock. About fifteen paces south-west of here, as a rule. Go and ask her.
+    Value: You want Tuh-Weem, the guard at the north-east boat dock. As a rule he is just south-west of here. Go and ask him.
   ScriptNotes: ''
   Edits: ''
 Conditions:

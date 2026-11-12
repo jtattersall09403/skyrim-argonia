@@ -6,7 +6,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Haven? Walk south-east about two hundred and fifty paces, until you reach the stone tower. Then south-west a little over a hundred and thirty paces. Haven is there.
+    Value: Haven? Walk south-east a short way, until you reach the stone tower. Then walk south-west a short way. Haven is there.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 2
@@ -14,7 +14,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: The cooking fire? Walk east about two hundred and eighty paces. You will find it there.
+    Value: The cooking fire? Walk east a fair way. You will find it there.
   ScriptNotes: ''
   Edits: ''
 Conditions:

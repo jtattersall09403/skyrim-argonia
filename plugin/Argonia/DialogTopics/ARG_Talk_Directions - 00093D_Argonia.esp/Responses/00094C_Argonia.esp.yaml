@@ -6,7 +6,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: The stone tower? Climb north-west, traveller, some two hundred and thirty paces. It stands there.
+    Value: The stone tower, traveller? Climb north-west from the huts a short way, and you will come to it. Go softly.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 2
@@ -14,7 +14,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Go up to the north-west, about two hundred and thirty paces, and you will come to the stone tower. Speak softly on the way.
+    Value: Climb north-west from here a short way; you will see the stone tower. Keep your voice low.
   ScriptNotes: ''
   Edits: ''
 Conditions:

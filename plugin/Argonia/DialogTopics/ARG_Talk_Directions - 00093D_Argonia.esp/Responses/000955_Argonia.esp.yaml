@@ -6,7 +6,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: Flaa Heet, is it? Walk south-west, a hundred paces or so, till you come to the rowing boat. Then keep to the shore south-west another hundred paces. The village is there.
+    Value: Flaa Heet, is it? Walk south-west a short way, fellow, until you come to the rowing boat. Then follow the shore south-west another short way, and the village is there.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 2
@@ -14,7 +14,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: The dock? Look, fellow, it is there, north-north-east, seventy-odd paces. I have stared at it long enough to know.
+    Value: The dock? It is just north-north-east of here, fellow, in plain sight along the shore. I have watched it long enough to know.
   ScriptNotes: ''
   Edits: ''
 Conditions:

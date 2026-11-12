@@ -6,7 +6,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: The big ship? Head south along the boards, sixty-seven paces or so, until it's on your right. Then keep on south-east along the boards another fifty-four, and there it is.
+    Value: The big ship? Follow the boards just south, and when you have it on your right, turn south-east along the boards. It's right there, traveller.
   ScriptNotes: ''
   Edits: ''
 - ResponseNumber: 2
@@ -14,7 +14,7 @@ Responses:
   Unknown3: 0x000000
   Text:
     TargetLanguage: English
-    Value: You'll want the big ship. Go south along the boards, a little over sixty paces, till it's on your right; after that, south-east along the boards for fifty-odd paces and you're at it.
+    Value: You'll want the big ship. Keep to the boards south just until it's on your right; after that it's the boards south-east, and you're at it.
   ScriptNotes: ''
   Edits: ''
 Conditions:
