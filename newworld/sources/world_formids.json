@@ -455,7 +455,8 @@
    "copy:7FD0F7:King of the Murkmire.esp": "0x0024CB",
    "copy:7FD0F9:King of the Murkmire.esp": "0x00247A",
    "copy:7FD0FA:King of the Murkmire.esp": "0x002478",
-   "copy:82654E:King of the Murkmire.esp": "0x002512"
+   "copy:82654E:King of the Murkmire.esp": "0x002512",
+   "travel:give": "0x00F000"
   },
   "ground": {
    "copy:002896:Tropical Skyrim.esp": "0x000920",

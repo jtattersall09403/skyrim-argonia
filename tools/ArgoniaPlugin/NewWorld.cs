@@ -63,7 +63,7 @@ static class NewWorld
         "write" => Write(a[1], a[2], a[3], a.Length > 4 ? a[4] : Path.Combine(Path.GetDirectoryName(Path.GetFullPath(a[3]))!, "formids.json")),
         "check" => Check(a[1], a[2], a[3]),
         "navmesh" => NewWorldNavmesh.Run(a[1..]),
-        "travel" => NewWorldTravel.Try(a[1], a[2]),
+        "travel" => NewWorldTravel.Try(a[1], a[2], a.Length > 3 ? a[3] : null),
         _ => throw new ArgumentException("newworld write|check"),
     };
 

@@ -30,7 +30,7 @@ DO NOT change the terrain or trees or scatter or groundcover. Do not do anything
 - Skyrim's measures: `tools/newworld/ecology/measure.py` -> `newworld/sources/ecology/skyrim_measures.json` (creatures 25.5 per 100 cells; shore 77, forest 60, mountain 14, open 12, water 8; 70% levelled lists, 38% hostile; groups mean 1.56; harvestables shore 460, forest 386, mountain 79, water 75, open 12.5 per 100 cells; 278 encounter zones, mostly via locations).
 - Per-region ecology, all 24 regions: `newworld/sources/ecology/regions/*.json` (347 creature rows over five size classes, 100 signatures, no kind a signature in more than 2 regions, each row cited or a stated extrapolation; harvestables per region) and `npc_encounters.json` (23 of 24 regions have lore-backed hostile groups). The mod record behind each kind is not yet verified.
 - Harvestables already in the world: 31 King of the Murkmire FLOR bases with ingredients, 35,343 refs, placed by the flora stage.
-- Pad route: a lesser power "Argonia Travel" (nested menus, data in `newworld/sources/travel/menu.json`, scripts in `papyrus/ANW_Travel*.psc`); built at the next world rebuild, compiled by deploy.
+- Pad route: the New World card's new game starts at `ArgoniaNWStart` (Argonia.esp's MQ101 fragment finds the new world's marker and `ANW_TravelGive`: race menu, clothes, the power on the shout button; the Lilmoth opening is the other card's); a lesser power "Argonia Travel" (nested menus, data in `newworld/sources/travel/menu.json`, scripts in `papyrus/ANW_Travel*.psc`); built at the next world rebuild, compiled by deploy.
 
 # Delivered (round 2: the ecology stage)
 
@@ -39,3 +39,5 @@ DO NOT change the terrain or trees or scatter or groundcover. Do not do anything
 - Harvestables measured per region against Skyrim and the region tables (ecology.md, Harvestables); none added.
 
 Owed: the full rebuild and deploy, binding the regions' lore harvestables to FLOR and INGR records where a region lacks them (the sea first), and the owner's walk (nw-03b-walk.md).
+
+Pad route walk spots (menu page "Walk-check spots", `SPOTS` in `tools/newworld/teleports.py`): D1 Cape Percar (-43,-197); D5 Murkwood (-6,-141); fresh water Banujha Basin (-26,-175); salt water Aphon Isle (-69,-186); canopy Arnesian Jungle (47,-120) against open (44,-114); night insects Nushara Bayou (37,-177); hostile people band Chixathe Mesa (17,-133, a band in the small world's draw); harvestables Ultherus Swamp (13,-183); dry Aunike Ridge (-20,-163); sea shore Hatandros Bight (61,-133).

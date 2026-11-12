@@ -15,6 +15,7 @@ using Noggog;
 static class NewWorldTravel
 {
     const int MaxButtons = 10;
+    public const uint GiveId = 0x00F000;   // ARG_QF_MQ101.psc's NWGiveId
 
     public static void Attach(SkyrimMod mod, FormIds ids, string menuPath)
     {
@@ -94,25 +95,31 @@ static class NewWorldTravel
         // the quest that hands the power over: start game enabled, so a new game has it and so does any save the file joins
         var give = new Quest(K("give"), SkyrimRelease.SkyrimSE)
         {
+            // GiveId is the id ARG_QF_MQ101.psc names; the registry seeds it (newworld/sources/world_formids.json)
             EditorID = "ANW_TravelGive", Flags = Quest.Flag.StartGameEnabled | Quest.Flag.RunOnce, Priority = 0,
-            VirtualMachineAdapter = new QuestAdapter { Scripts = { new ScriptEntry { Name = "ANW_TravelGive", Properties = { new ScriptObjectProperty { Name = "Power", Object = spel.ToLink() } } } } },
+            VirtualMachineAdapter = new QuestAdapter { Scripts = { new ScriptEntry { Name = "ANW_TravelGive", Properties = {
+                new ScriptObjectProperty { Name = "Power", Object = spel.ToLink() },
+                new ScriptObjectProperty { Name = "Tunic", Object = new FormLink<ISkyrimMajorRecordGetter>(FormKey.Factory("03C9FE:Skyrim.esm")) },
+                new ScriptObjectProperty { Name = "Footwraps", Object = new FormLink<ISkyrimMajorRecordGetter>(FormKey.Factory("03CA00:Skyrim.esm")) } } } } },
         };
+        if (give.FormKey.ID != GiveId) throw new InvalidDataException($"travel:give holds {give.FormKey.ID:X6}, ARG_QF_MQ101 names {GiveId:X6}: seed it in world_formids.json");
         mod.Quests.Add(give);
         Console.WriteLine($"  travel menu: {pages.Count} pages, the power {spel.EditorID}, root {root}");
     }
 
     // `newworld travel <menu.json> <scratch.esm>`: the records written to a scratch file and read back (the menu's own proof).
-    public static int Try(string menuPath, string outPath)
+    public static int Try(string menuPath, string outPath, string? idsPath = null)
     {
         var key = ModKey.FromFileName("ArgoniaNewWorld.esm");
         var mod = new SkyrimMod(key, SkyrimRelease.SkyrimSE);
         mod.ModHeader.Flags |= SkyrimModHeader.HeaderFlag.Master;
-        Attach(mod, FormIds.Load(null), menuPath);
+        Attach(mod, FormIds.Load(idsPath), menuPath);
         mod.BeginWrite.ToPath(outPath).WithLoadOrder(new[] { ModKey.FromFileName("Skyrim.esm"), key }).WithNoDataFolder().Write();
         using var back = SkyrimMod.CreateFromBinaryOverlay(outPath, SkyrimRelease.SkyrimSE);
         var pages = back.Quests.Count(q => q.EditorID!.StartsWith("ANW_TravelPage_"));
         var btn = back.Messages.Sum(m => m.MenuButtons.Count);
-        var bad = back.Messages.Count != pages || back.Spells.Count != 1 || back.MagicEffects.Count != 1 || back.Quests.Count != pages + 1
+        var give = back.Quests.FirstOrDefault(q => q.EditorID == "ANW_TravelGive");
+        var bad = give is null || give.FormKey.ID != GiveId || back.Messages.Count != pages || back.Spells.Count != 1 || back.MagicEffects.Count != 1 || back.Quests.Count != pages + 1
             || back.Quests.Any(q => q.VirtualMachineAdapter is null) || back.MagicEffects.First().VirtualMachineAdapter is null;
         Console.WriteLine($"newworld travel: {pages} pages, {btn} buttons, {back.Quests.Count} quests, {back.Spells.Count} spell: " + (bad ? "FAIL" : "ok"));
         return bad ? 1 : 0;

@@ -1662,11 +1662,68 @@
    ]
   },
   "spots": {
-   "title": "Walk-check spots",
+   "title": "Walk-check spots (1 of 2)",
    "buttons": [
+    {
+     "label": "D1, the lowest danger: Cape Percar open coast",
+     "cell": "ANWSpotD1CapePercar"
+    },
+    {
+     "label": "D5, the highest danger: Murkwood cypress swamp",
+     "cell": "ANWSpotD5Murkwood"
+    },
+    {
+     "label": "Fresh black water creatures: Banujha Basin",
+     "cell": "ANWSpotFreshWater"
+    },
+    {
+     "label": "Salt water creatures: Aphon Isle coast",
+     "cell": "ANWSpotSaltWater"
+    },
+    {
+     "label": "Under the canopy: Arnesian Jungle",
+     "cell": "ANWSpotCanopy"
+    },
+    {
+     "label": "In the open: Arnesian Jungle grassland",
+     "cell": "ANWSpotOpen"
+    },
+    {
+     "label": "Night insects at dusk: Nushara Bayou reeds",
+     "cell": "ANWSpotDusk"
+    },
+    {
+     "label": "A hostile people band: Chixathe Mesa",
+     "cell": "ANWSpotHostileNpcs"
+    },
+    {
+     "label": "More",
+     "page": "spots-2"
+    },
     {
      "label": "Back",
      "page": "root"
+    }
+   ]
+  },
+  "spots-2": {
+   "title": "Walk-check spots (2 of 2)",
+   "buttons": [
+    {
+     "label": "Harvestable plants: Ultherus Swamp",
+     "cell": "ANWSpotSwampHarvest"
+    },
+    {
+     "label": "A dry region: Aunike Ridge scrub",
+     "cell": "ANWSpotDry"
+    },
+    {
+     "label": "A sea shore: Hatandros Bight beach",
+     "cell": "ANWSpotSeaShore"
+    },
+    {
+     "label": "Back",
+     "page": "spots"
     }
    ]
   },

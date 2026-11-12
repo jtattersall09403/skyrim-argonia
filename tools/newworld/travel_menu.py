@@ -7,9 +7,9 @@ a message menu of at most 10 buttons a page; a button opens another page or move
     {"root": "root", "pages": {"<id>": {"title": "...", "buttons": [{"label": "...", "page": "<id>"} |
                                                                      {"label": "...", "cell": "<coc name>"}]}}}
 
-`generate` writes the pages the world makes (the start, the places by region in a pager, the walk checks) from
-teleports.json and the place database, and keeps the page `spots` as it stands: a walk-check spot is one more row
-there, `{"label": "...", "cell": "ANW..."}`. `check` holds the file to the menu's rules (and, given a teleports.json,
+`generate` writes the pages the world makes (the start, the places by region in a pager, the walk-check waters and
+the ecology walk's spots) from teleports.json and the place database: a spot is a row of `SPOTS` in
+tools/newworld/teleports.py (a named cell with its reason). `check` holds the file to the menu's rules (and, given a teleports.json,
 to its cells):
 
     python3 -m tools.newworld.travel_menu generate [--plugin out/newworld/plugin]
@@ -43,20 +43,19 @@ def _chunks(prefix: str, title: str, items: list[dict], back: str) -> dict:
     return pages
 
 
-def generate(plugin: Path) -> dict:
-    tele = json.loads((plugin / "map/teleports.json").read_text())["teleports"]
+def generate(plugin: Path, tele: list[dict] | None = None) -> dict:
+    tele = tele if tele is not None else json.loads((plugin / "map/teleports.json").read_text())["teleports"]
     rows = lambda n: [json.loads(ln) for ln in (DB / n).read_text().splitlines() if ln.strip()]
     regions = {r["id"]: r["name"] for r in rows("region.jsonl")}
     place = {p["id"]: p for p in rows("place.jsonl")}
-    old = json.loads(MENU.read_text()) if MENU.exists() else {"pages": {}}
     pages: dict = {}
     by_region: dict[str, list[dict]] = {}
-    walk = []
+    walk, spots = [], []
     for t in tele:
         if t["kind"] == "place":
             by_region.setdefault(place[t["id"]]["region_id"], []).append({"label": t["what"], "cell": t["coc"]})
         else:
-            walk.append({"label": t["what"][:1].upper() + t["what"][1:], "cell": t["coc"]})
+            (spots if t["kind"] == "spot" else walk).append({"label": t["what"][:1].upper() + t["what"][1:], "cell": t["coc"]})
     region_items = []
     for rid in sorted(by_region, key=lambda r: regions[r]):
         items = sorted(by_region[rid], key=lambda b: b["label"])
@@ -64,7 +63,7 @@ def generate(plugin: Path) -> dict:
         region_items.append({"label": regions[rid], "page": f"r-{rid}"})
     pages.update(_chunks("regions", "Places by region", region_items, "root"))
     pages["walk"] = {"title": "Walk checks", "buttons": walk[:MAX_BUTTONS - 1] + [{"label": "Back", "page": "root"}]}
-    pages["spots"] = old["pages"].get("spots") or {"title": "Walk-check spots", "buttons": [{"label": "Back", "page": "root"}]}
+    pages.update(_chunks("spots", "Walk-check spots", spots, "root"))
     root = [{"label": "The start of the new world", "cell": "ArgoniaNWStart"},
             {"label": "Places by region", "page": "regions"},
             {"label": "Walk-check waters", "page": "walk"},

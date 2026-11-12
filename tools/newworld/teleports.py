@@ -64,6 +64,25 @@ WALK = [
     {"name": "ANWWalkHelstromRiver", "check": "Q", "what": "the river south-west of Helstrom", "water": "river-", "near": [-21, -140]},
 ]
 
+# The ecology walk's spots (nw-03b): a named cell at the exact cell, landing on its dry ground (`water` "" takes any
+# cell), each chosen from the region ecology table, the danger band and the landcover (what the cell holds). The
+# travel menu's page "spots" lists them (tools/newworld/travel_menu.py).
+SPOTS = [
+    {"name": "ANWSpotD1CapePercar", "what": "D1, the lowest danger: Cape Percar open coast", "near": [-43, -197]},
+    {"name": "ANWSpotD5Murkwood", "what": "D5, the highest danger: Murkwood cypress swamp", "near": [-6, -141]},
+    {"name": "ANWSpotFreshWater", "what": "fresh black water creatures: Banujha Basin", "near": [-26, -175]},
+    {"name": "ANWSpotSaltWater", "what": "salt water creatures: Aphon Isle coast", "near": [-69, -186]},
+    {"name": "ANWSpotCanopy", "what": "under the canopy: Arnesian Jungle", "near": [47, -120]},
+    {"name": "ANWSpotOpen", "what": "in the open: Arnesian Jungle grassland", "near": [44, -114]},
+    {"name": "ANWSpotDusk", "what": "night insects at dusk: Nushara Bayou reeds", "near": [37, -177]},
+    {"name": "ANWSpotHostileNpcs", "what": "a hostile people band: Chixathe Mesa", "near": [17, -133]},
+    {"name": "ANWSpotSwampHarvest", "what": "harvestable plants: Ultherus Swamp", "near": [13, -183]},
+    {"name": "ANWSpotDry", "what": "a dry region: Aunike Ridge scrub", "near": [-20, -163]},
+    {"name": "ANWSpotSeaShore", "what": "a sea shore: Hatandros Bight beach", "near": [61, -133]},
+]
+for _s in SPOTS:
+    WALK.append({**_s, "check": "E", "kind": "spot", "water": ""})
+
 
 def coc_name(name: str) -> str:
     """'Fort Gysilla' -> 'ANWFortGysilla': letters and digits only, each word capitalised."""
@@ -239,7 +258,7 @@ def build(plugin: Path, built: Path | None = PLACES, write: bool = True, world_r
         if lnd is None:
             raise ValueError(f"{w['name']}: no bank of {w['water']} within {SEARCH_CELLS} cells of {near}")
         n, shared = name_cell(lnd["cell"], w["name"])
-        out.append({"kind": "walk", "id": w["name"], "check": w["check"], "what": w["what"], "water": w["water"],
+        out.append({"kind": w.get("kind", "walk"), "id": w["name"], "check": w["check"], "what": w["what"], "water": w["water"],
                     "place_cell": list(near), "coc": n, "shared": shared, **lnd})
     doc = {"build_id": g.build_id, "world": WORLD, "marker_base": "000032:Skyrim.esm",  # COCMarkerHeading
            "cells": [{"coc": n, "cell": list(c)} for c, n in sorted(names.items(), key=lambda kv: kv[1]) if n != START_CELL],
