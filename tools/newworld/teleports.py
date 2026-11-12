@@ -79,6 +79,10 @@ SPOTS = [
     {"name": "ANWSpotSwampHarvest", "what": "harvestable plants: Ultherus Swamp", "near": [13, -183]},
     {"name": "ANWSpotDry", "what": "a dry region: Aunike Ridge scrub", "near": [-20, -163]},
     {"name": "ANWSpotSeaShore", "what": "a sea shore: Hatandros Bight beach", "near": [61, -133]},
+    {"name": "ANWSpotLakeUlaish", "what": "a lake shore: Lake Ulaish", "near": [18, -169]},
+    {"name": "ANWSpotBarsaebica", "what": "a cool fen: Barsaebica", "near": [-36, -112]},
+    {"name": "ANWSpotKotherra", "what": "red mud mangroves: Kotherra Mangroves", "near": [-63, -160]},
+    {"name": "ANWSpotValleyOfStorms", "what": "storm light: Valley of Storms", "near": [0, -116]},
 ]
 for _s in SPOTS:
     WALK.append({**_s, "check": "E", "kind": "spot", "water": ""})

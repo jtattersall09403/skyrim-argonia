@@ -1722,6 +1722,22 @@
      "cell": "ANWSpotSeaShore"
     },
     {
+     "label": "A lake shore: Lake Ulaish",
+     "cell": "ANWSpotLakeUlaish"
+    },
+    {
+     "label": "A cool fen: Barsaebica",
+     "cell": "ANWSpotBarsaebica"
+    },
+    {
+     "label": "Red mud mangroves: Kotherra Mangroves",
+     "cell": "ANWSpotKotherra"
+    },
+    {
+     "label": "Storm light: Valley of Storms",
+     "cell": "ANWSpotValleyOfStorms"
+    },
+    {
      "label": "Back",
      "page": "spots"
     }
