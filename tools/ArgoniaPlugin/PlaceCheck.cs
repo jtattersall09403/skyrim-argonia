@@ -18,6 +18,12 @@ using Noggog;
 //   Objects: the bottom of the bounds against the surface nearest it (the land, a static, furniture, a container; fail
 //   floating or sunk by more than 10); a structure (256 or more across) may stand sunk in the ground or the water as
 //   Bethesda sinks foundations, and fails only floating. Markers, zones, effects, lights and merchant chests are skipped.
+//   Inside: an object of ours (the same ones the Objects check covers) fails when its bounds (the base's, under the ref's
+//   rotation and scale, shrunk by 4 units on every side so the floor it rests on and a wall it leans on never count) are
+//   crossed by a triangle of the mesh of another winning static, moveable static, furniture or activator of the load order
+//   (separating-axis triangle-box test on the meshes, never the other's bounding box).
+//   Nordic: every object Argonia.esp places (ours and its overrides) fails when its base's model path holds a Nordic
+//   fragment (NordicFragments, decision 0006). Actors are not checked.
 // Settle (seed, after every builder): each object that fails is moved up or down onto the surface the check measured.
 // Game files are read only (decision 0003).
 static class PlaceCheck
@@ -40,7 +46,167 @@ static class PlaceCheck
         foreach (var r in models.Where(r => r.Fail != null)) Console.WriteLine($"  FAIL model {r.Where} {r.EditorId} ({r.Ref.IDString()}:{r.Ref.ModKey}): {r.Fail}");
         var mfailed = models.Count(r => r.Fail != null);
         Console.WriteLine($"placecheck models: {models.Count} checked ({models.Count(r => r.Ref.ModKey == ours.ModKey)} ours, {models.Count(r => r.Ref.ModKey != ours.ModKey)} hosts), {mfailed} failed");
-        return failed + mfailed == 0 ? 0 : 1;
+        var inside = Inside(mods.Append(ours).ToList(), ours.ModKey, new Surface.Assets(paths));
+        foreach (var r in inside.Where(r => r.Fail != null)) Console.WriteLine($"  FAIL inside {r.Where} {r.EditorId} ({r.Ref.IDString()}): {r.Fail}");
+        var ifailed = inside.Count(r => r.Fail != null);
+        Console.WriteLine($"placecheck inside: {inside.Count} checked, {ifailed} failed");
+        var nordic = NordicCheck(mods.Append(ours).ToList(), ours.ModKey);
+        foreach (var r in nordic.Where(r => r.Fail != null)) Console.WriteLine($"  FAIL nordic {r.EditorId} ({r.Ref.IDString()}): {r.Fail}");
+        var nfailed = nordic.Count(r => r.Fail != null);
+        Console.WriteLine($"placecheck nordic: {nordic.Count} checked, {nfailed} failed");
+        return failed + mfailed + ifailed + nfailed == 0 ? 0 : 1;
+    }
+
+    // Fragments of Skyrim's Nordic culture in a model path (decision 0006: nothing we add carries a Nordic element); the
+    // folders of the hold cities, the Nordic farm and ruin kits and Talos, as tools/places/check.py's NORDIC_MODEL lists them.
+    public static readonly string[] NordicFragments = ["WhiteRun", "Windhelm", "Solitude", "Markarth", "Riften", "Winterhold", "Dawnstar",
+        "Falkreath", "Morthal", "Riverwood", "Nordic", "Farmhouse", "Talos"];
+
+    // Every object Argonia.esp places (ours and its overrides) whose base's model path holds a Nordic fragment.
+    public static List<Result> NordicCheck(List<ISkyrimModGetter> all, ModKey ours)
+    {
+        var models = new Dictionary<FormKey, (string? EditorID, string? Model)>();
+        foreach (var m in all)
+            foreach (var r in m.EnumerateMajorRecords())
+                if (r is IModeledGetter md && r is not IPlacedGetter) models[r.FormKey] = (r.EditorID, md.Model?.File.DataRelativePath.Path);
+        var results = new List<Result>();
+        var mod = all.First(m => m.ModKey == ours);
+        foreach (var o in mod.EnumerateMajorRecords<IPlacedObjectGetter>())
+        {
+            if (!models.TryGetValue(o.Base.FormKey, out var b) || string.IsNullOrEmpty(b.Model)) continue;
+            var hit = NordicFragments.Any(f => b.Model.Contains(f, StringComparison.OrdinalIgnoreCase));
+            results.Add(new Result(o.FormKey, "", b.EditorID ?? o.EditorID, o.Placement?.Position ?? new P3Float(), hit ? b.Model : null, b.Model, null, false));
+        }
+        return results;
+    }
+
+    const float InsideMargin = 4;
+
+    // The inside check: see the header.
+    public static List<Result> Inside(List<ISkyrimModGetter> all, ModKey ours, Surface.Assets assets)
+    {
+        Surface.Bases(all);
+        var (types, bounds, containerModels) = BaseTypes(all);
+        Surface.AddBases(containerModels);
+        var (refsIn, mine) = Winners(all, ours);
+        var merchant = all.SelectMany(m => m.Factions).Select(f => f.MerchantContainer.FormKey).Where(k => !k.IsNull).ToHashSet();
+        static P3Float[] Corners(IObjectBoundsGetter ob, float[] rot, P3Float at, float s) =>
+            [.. new[] { ob.First.X, ob.Second.X }.SelectMany(x => new[] { ob.First.Y, ob.Second.Y }.SelectMany(y => new[] { ob.First.Z, ob.Second.Z }.Select(z => Surface.Add(at, Surface.Mul(rot, new P3Float(x, y, z), s)))))];
+        var results = new List<Result>();
+        foreach (var (key, (space, where)) in mine.OrderBy(e => e.Value.where).ThenBy(e => refsIn[e.Value.space][e.Key].EditorID))
+        {
+            if (refsIn[space][key] is not IPlacedObjectGetter o || o.Placement is not { } pl) continue;
+            if (merchant.Contains(key) || o.Primitive != null || SkipBase(types, o.Base.FormKey) || bounds.GetValueOrDefault(o.Base.FormKey) is not { } ob) continue;
+            var s = o.Scale ?? 1; var rot = Surface.RefRot(pl.Rotation);
+            var inv = new[] { rot[0], rot[3], rot[6], rot[1], rot[4], rot[7], rot[2], rot[5], rot[8] };
+            var cs = Corners(ob, rot, pl.Position, s);
+            var (x0, x1, y0, y1, z0, z1) = (cs.Min(c => c.X) - InsideMargin, cs.Max(c => c.X) + InsideMargin, cs.Min(c => c.Y) - InsideMargin, cs.Max(c => c.Y) + InsideMargin, cs.Min(c => c.Z) - InsideMargin, cs.Max(c => c.Z) + InsideMargin);
+            // the box in the ref's own frame, shrunk by the margin (world units) on every side, the floor under it included
+            float m = InsideMargin / s;
+            P3Float bc = new((ob.First.X + ob.Second.X) / 2, (ob.First.Y + ob.Second.Y) / 2, (ob.First.Z + ob.Second.Z) / 2);
+            float[] half = [(ob.Second.X - ob.First.X) / 2 - m, (ob.Second.Y - ob.First.Y) / 2 - m, (ob.Second.Z - ob.First.Z) / 2 - m];
+            if (half.Any(h => h <= 0)) continue;
+            (float depth, string name, FormKey id)? worst = null;
+            foreach (var other in refsIn[space].Values.OfType<IPlacedObjectGetter>())
+            {
+                if (other.FormKey == key || other.Placement is not { } op || (other.MajorRecordFlagsRaw & 0x800) != 0) continue;
+                if (types.GetValueOrDefault(other.Base.FormKey) is not ("STAT" or "MSTT" or "FURN" or "ACTI") || SkipBase(types, other.Base.FormKey)) continue;
+                if (Surface.Base(other.Base.FormKey) is not { } bs || bs.Model is not { } model || bs.ObjectBounds is not { } obo) continue;
+                var os = other.Scale ?? 1; var orot = Surface.RefRot(op.Rotation);
+                var oc = Corners(obo, orot, op.Position, os);
+                if (oc.Max(c => c.X) < x0 || oc.Min(c => c.X) > x1 || oc.Max(c => c.Y) < y0 || oc.Min(c => c.Y) > y1 || oc.Max(c => c.Z) < z0 || oc.Min(c => c.Z) > z1) continue;
+                if (Surface.Mesh(assets, model) is not { } tris) continue;
+                float best = 0;
+                foreach (var (a0, b0, c0) in tris)
+                {
+                    P3Float L(P3Float v) { var w = Surface.Add(op.Position, Surface.Mul(orot, v, os)); var d = Surface.Mul(inv, new P3Float(w.X - pl.Position.X, w.Y - pl.Position.Y, w.Z - pl.Position.Z), 1 / s); return new P3Float(d.X - bc.X, d.Y - bc.Y, d.Z - bc.Z); }
+                    var a = L(a0); var b = L(b0); var c = L(c0);
+                    if (!TriBox(a, b, c, half)) continue;
+                    // how far in: the smallest overlap of the triangle's extent with the unshrunk box over the three axes
+                    float Ov(Func<P3Float, float> f, float h) => MathF.Min(MathF.Max(f(a), MathF.Max(f(b), f(c))), h) - MathF.Max(MathF.Min(f(a), MathF.Min(f(b), f(c))), -h);
+                    var depth = MathF.Min(Ov(v => v.X, half[0] + m), MathF.Min(Ov(v => v.Y, half[1] + m), Ov(v => v.Z, half[2] + m))) * s;
+                    best = MathF.Max(best, depth);
+                }
+                if (best > 0 && (worst == null || best > worst.Value.depth)) worst = (best, bs.EditorID ?? model, other.FormKey);
+            }
+            var fail = worst is { } w ? $"inside {w.name} ({w.id.IDString()}:{w.id.ModKey}) by {w.depth:F0} units" : null;
+            results.Add(new Result(key, where, o.EditorID, pl.Position, fail, fail ?? "clear", null, false));
+        }
+        return results;
+    }
+
+    // Triangle-box overlap (Akenine-Moller): the box is centred on the origin with the half extents; the triangle is in the same frame.
+    static bool TriBox(P3Float a, P3Float b, P3Float c, float[] h)
+    {
+        static float[] V(P3Float p) => [p.X, p.Y, p.Z];
+        float[][] v = [V(a), V(b), V(c)];
+        float[][] e = [[b.X - a.X, b.Y - a.Y, b.Z - a.Z], [c.X - b.X, c.Y - b.Y, c.Z - b.Z], [a.X - c.X, a.Y - c.Y, a.Z - c.Z]];
+        static float[] Cr(float[] u, float[] w) => [u[1] * w[2] - u[2] * w[1], u[2] * w[0] - u[0] * w[2], u[0] * w[1] - u[1] * w[0]];
+        bool Sep(float[] ax)
+        {
+            if (MathF.Abs(ax[0]) + MathF.Abs(ax[1]) + MathF.Abs(ax[2]) < 1e-9f) return false;
+            float p0 = v[0][0] * ax[0] + v[0][1] * ax[1] + v[0][2] * ax[2], p1 = v[1][0] * ax[0] + v[1][1] * ax[1] + v[1][2] * ax[2], p2 = v[2][0] * ax[0] + v[2][1] * ax[1] + v[2][2] * ax[2];
+            var r = h[0] * MathF.Abs(ax[0]) + h[1] * MathF.Abs(ax[1]) + h[2] * MathF.Abs(ax[2]);
+            return MathF.Min(p0, MathF.Min(p1, p2)) > r || MathF.Max(p0, MathF.Max(p1, p2)) < -r;
+        }
+        for (var i = 0; i < 3; i++) if (v.Max(p => p[i]) < -h[i] || v.Min(p => p[i]) > h[i]) return false;
+        for (var i = 0; i < 3; i++)
+            for (var j = 0; j < 3; j++)
+            {
+                var u = new float[3]; u[j] = 1;
+                if (Sep(Cr(e[i], u))) return false;
+            }
+        return !Sep(Cr(e[0], e[1]));
+    }
+
+    static bool SkipBase(Dictionary<FormKey, string> types, FormKey b) => !types.TryGetValue(b, out var ty) || ty is "LIGH" or "SOUN" or "IDLM" or "DOOR"
+        || (Surface.Base(b)?.EditorID ?? "").Contains("Marker", StringComparison.OrdinalIgnoreCase) || (Surface.Base(b)?.Model ?? "").Contains("Effects", StringComparison.OrdinalIgnoreCase);
+
+    // The record type, bounds and model of every base the checks read (the load order's winners).
+    static (Dictionary<FormKey, string> types, Dictionary<FormKey, IObjectBoundsGetter> bounds, Dictionary<FormKey, (string? EditorID, string? Model, IObjectBoundsGetter? ObjectBounds)> containerModels) BaseTypes(List<ISkyrimModGetter> all)
+    {
+        var types = new Dictionary<FormKey, string>(); var bounds = new Dictionary<FormKey, IObjectBoundsGetter>();
+        void T<R>(IEnumerable<R> rs, string ty) where R : ISkyrimMajorRecordGetter
+        { foreach (var r in rs) { types[r.FormKey] = ty; if (r is IObjectBoundedGetter b && b.ObjectBounds != null) bounds[r.FormKey] = b.ObjectBounds; } }
+        var containerModels = new Dictionary<FormKey, (string? EditorID, string? Model, IObjectBoundsGetter? ObjectBounds)>();
+        foreach (var m in all)
+        {
+            T(m.Statics, "STAT"); T(m.MoveableStatics, "MSTT"); T(m.Furniture, "FURN"); T(m.Containers, "CONT");
+            T(m.Books, "BOOK"); T(m.MiscItems, "MISC"); T(m.Ingredients, "INGR"); T(m.Activators, "ACTI");
+            T(m.Lights, "LIGH"); T(m.Doors, "DOOR"); T(m.Florae, "FLOR"); T(m.Weapons, "WEAP");
+            T(m.Armors, "ARMO"); T(m.Ingestibles, "ALCH"); T(m.SoundMarkers, "SOUN"); T(m.IdleMarkers, "IDLM");
+            foreach (var c in m.Containers) containerModels[c.FormKey] = (c.EditorID, c.Model?.File.DataRelativePath.Path, c.ObjectBounds);
+            T(m.Trees, "TREE");
+            foreach (var t in m.Trees) containerModels[t.FormKey] = (t.EditorID, t.Model?.File.DataRelativePath.Path, t.ObjectBounds);
+        }
+        return (types, bounds, containerModels);
+    }
+
+    // The winning refs of every world and interior cell (the last plugin's copy wins), and ours to check.
+    static (Dictionary<FormKey, Dictionary<FormKey, IPlacedGetter>> refsIn, Dictionary<FormKey, (FormKey space, string where)> mine) Winners(List<ISkyrimModGetter> all, ModKey ours)
+    {
+        var refsIn = new Dictionary<FormKey, Dictionary<FormKey, IPlacedGetter>>();
+        var mine = new Dictionary<FormKey, (FormKey space, string where)>();
+        foreach (var m in all)
+        {
+            void Add(FormKey space, string where, IEnumerable<IPlacedGetter> rs)
+            {
+                if (!refsIn.TryGetValue(space, out var d)) refsIn[space] = d = [];
+                foreach (var r in rs)
+                {
+                    if ((r.MajorRecordFlagsRaw & 0x20) != 0) { d.Remove(r.FormKey); continue; } // deleted
+                    d[r.FormKey] = r;
+                    if (m.ModKey == ours && r.FormKey.ModKey == ours) mine[r.FormKey] = (space, where);
+                }
+            }
+            foreach (var w in m.Worldspaces)
+            {
+                if (w.TopCell != null) Add(w.FormKey, w.EditorID ?? "", w.TopCell.Persistent.Concat(w.TopCell.Temporary));
+                foreach (var c in w.SubCells.SelectMany(b => b.Items).SelectMany(s => s.Items)) Add(w.FormKey, w.EditorID ?? "", c.Persistent.Concat(c.Temporary));
+            }
+            foreach (var c in m.Cells.Records.SelectMany(b => b.SubBlocks).SelectMany(s => s.Cells)) Add(c.FormKey, c.EditorID ?? c.FormKey.ToString(), c.Persistent.Concat(c.Temporary));
+        }
+        return (refsIn, mine);
     }
 
     // Seed's last step: every object of ours that fails rests on the surface the check measured (same x, y; z only).

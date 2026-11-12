@@ -223,7 +223,8 @@ def _hand_in(fm: Form):
         for r in ln["results"]:
             if r["do"] != "take_item":
                 continue
-            if not any(c["is"] == "item_count_at_least" and c["item"] == r["item"] and c["count"] >= r["count"]
+            if not any(c["is"] == "item_count_at_least" and not c.get("not") and c["item"] == r["item"]
+                       and c["count"] >= r["count"]
                        for c in ln["conditions"]):
                 out.append(("hand-in", f"line {ln['id']} takes {r['item']} and is not gated on the player holding it"))
             for t in taken_bases.get(r["item"], []):

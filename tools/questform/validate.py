@@ -96,10 +96,15 @@ def errors(v, s: dict | None = None, path: str = "$") -> list[str]:
         for k in s.get("required", []):
             if k not in v:
                 out.append(f"{path}: missing {k!r}")
-        if s.get("additionalProperties") is False:
+        extra = s.get("additionalProperties")
+        if extra is False:
             for k in v:
                 if k not in props:
                     out.append(f"{path}: {k!r} is not a field of the form")
+        elif isinstance(extra, dict):          # a map: every key not a named field holds a value of this shape
+            for k in v:
+                if k not in props:
+                    out += errors(v[k], extra, f"{path}.{k}")
         for k, sub in props.items():
             if k in v:
                 out += errors(v[k], sub, f"{path}.{k}")

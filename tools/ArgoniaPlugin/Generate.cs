@@ -20,8 +20,32 @@ static class Generate
     // Dispel Self, Soul Trap Mass, Bound Shield.
     static readonly string[] TestSpells = ["000A8C", "000A8E", "0009EE", "00095C", "000A9B", "000A0A", "0009BE", "000AA5", "0009FB", "0009F2", "000ACD", "000991", "000823", "0009D3"];
 
+    // The old builders, each with the quest records it builds. Once every quest of a builder has a compiled quest form,
+    // the builder is skipped and QuestForm builds its quests; a lane that moves a builder's quests to the form deletes the
+    // builder, its checks and scripts, and its row here.
+    public static readonly (string Builder, string[] Quests)[] OldBuilders =
+    [
+        ("LocalQuests", ["quest.local.lq30", "quest.local.lq25"]),
+        ("NightReed", ["quest.tg.tg01", "quest.tg.tg02"]),
+        ("Chainbreakers", ["quest.bc.bc01", "quest.bc.bc02", "quest.bc.bc03"]),
+        ("MQ04", ["quest.main.mq04"]),
+        ("MQ05", ["quest.main.mq05"]),
+        ("MainQuest", ["quest.main.mq01", "quest.main.mq03"]),
+    ];
+    // The retired Phase 3 block test (now a quest form) held 0x803..0x832; they stay unused, so no later id moves.
+    const int RetiredBlockTestIds = 0x30;
+
     public static void Run(string outPath, string[] paths)
     {
+        var forms = QuestForm.Load(QuestForm.Dirs());
+        var formed = forms.Select(f => QuestForm.QuestIdOf(f.form)).ToHashSet();
+        bool Old(string builder)
+        {
+            var qs = OldBuilders.Single(b => b.Builder == builder).Quests;
+            var moved = qs.Count(formed.Contains);
+            if (moved > 0 && moved < qs.Length) throw new Exception($"{builder}: {moved} of its {qs.Length} quests have a quest form; move them all, then delete the builder");
+            return moved == 0;
+        }
         var plan = JsonDocument.Parse(File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "shutdown.json"))).RootElement;
         var mods = Survey.Load(paths);
         var quests = Survey.Winners<IQuestGetter>(mods);
@@ -53,8 +77,7 @@ static class Generate
         mod.Worldspaces.Add(world);
         // The world map's pan box on the four BM&V worlds (MapFix.cs); no new forms.
         MapFix.Apply(mod, mods, world);
-        // Phase 3's test quest (BlockTest.cs): allocated next, removed after the owner's walk.
-        BlockTest.Add(mod, mods, world, Spot);
+        for (var i = 0; i < RetiredBlockTestIds; i++) mod.GetNextFormKey();
 
         // The opening quest: started by MQ101's stage 0 (below), its script moves the player and sets stage 10.
         opening.Flags = Quest.Flag.RunOnce;
@@ -174,32 +197,44 @@ static class Generate
         // Skyrim's game music in BM&V's worlds (Music.cs): WRLD ZNAM only, no new forms; after Combat.
         Music.Apply(mod, mods);
         // Phase 4's local quests LQ30 and LQ25 (LocalQuests.cs) in BlackMarsh2; allocated after Combat.
-        LocalQuests.Add(mod, mods);
+        if (Old("LocalQuests")) LocalQuests.Add(mod, mods);
         // The Night-Reed line, TG01 and TG02 (NightReed.cs): allocated after Combat; its TIF fragments' Papyrus to papyrus/generated.
-        NightReed.Add(mod, mods);
-        NightReed.WritePsc("papyrus/generated");
+        if (Old("NightReed")) { NightReed.Add(mod, mods); NightReed.WritePsc("papyrus/generated"); }
         // Phase 4's Chainbreakers line (Chainbreakers.cs): BC03 on Soulrest's dock; allocated after LocalQuests.
-        Chainbreakers.Add(mod, mods);
+        if (Old("Chainbreakers")) Chainbreakers.Add(mod, mods);
         // The act's quests MQ04 and MQ05 (MQ04.cs, MQ05.cs): both quests first, so MQ04's ending can start MQ05.
-        var mq04 = mod.Quests.AddNew("ARG_MQ04");
-        var mq05 = mod.Quests.AddNew("ARG_MQ05");
-        MQ04.Add(mod, mods, mq04, mq05);
-        MQ05.Add(mod, mods, mq05);
+        if (Old("MQ04") != Old("MQ05")) throw new Exception("MQ04 and MQ05 are built together: move both to the quest form at once");
+        if (Old("MQ04"))
+        {
+            var mq04 = mod.Quests.AddNew("ARG_MQ04");
+            var mq05 = mod.Quests.AddNew("ARG_MQ05");
+            MQ04.Add(mod, mods, mq04, mq05);
+            MQ05.Add(mod, mods, mq05);
+        }
         // The opening act's MQ01 and MQ03 (MainQuest.cs): allocated after NightReed. MQ101's override starts ARG_MQ01 in the
         // barge hold; ARG_Opening keeps its forms (ids never move) and never starts: nothing starts it and its script is gone.
-        MainQuest.Add(mod, mods);
-        MQ05.AddNesh(mod); // MQ05's Nesh-Deeka topic and alias need her ref, placed by MainQuest
-        LocalQuests.Finish(mod); // LQ25's MQ05 >= 40 gate, once ARG_MQ05 exists
-        MainQuest.WritePsc("papyrus/generated");
-        mq101.VirtualMachineAdapter!.Scripts[0].Properties.AddRange([
-            new ScriptObjectProperty { Name = "StartQuest", Object = MainQuest.Mq01.ToLink() },
-            new ScriptObjectProperty { Name = "StartMarker", Object = MainQuest.StartMarker.ToLink() }]);
+        if (Old("MainQuest"))
+        {
+            MainQuest.Add(mod, mods);
+            if (Old("MQ05")) MQ05.AddNesh(mod); // MQ05's Nesh-Deeka topic and alias need her ref, placed by MainQuest
+            if (Old("LocalQuests") && Old("MQ05")) LocalQuests.Finish(mod); // LQ25's MQ05 >= 40 gate, once ARG_MQ05 exists
+            MainQuest.WritePsc("papyrus/generated");
+            mq101.VirtualMachineAdapter!.Scripts[0].Properties.AddRange([
+                new ScriptObjectProperty { Name = "StartQuest", Object = MainQuest.Mq01.ToLink() },
+                new ScriptObjectProperty { Name = "StartMarker", Object = MainQuest.StartMarker.ToLink() }]);
+            MainQuest.Finish(mod);
+        }
         opening.VirtualMachineAdapter = null;
-        MainQuest.Finish(mod);
         // Quest rumours (Talk.cs): talkers' rumours of a quest that can start, gated as its giver's opening; after every quest.
         Talk.Rumours(mod);
         Talk.QuestPeople(mod); // the slice quests' own people with no quest topic
         Talk.Voices(mod, mods); // every person we place has a voice
+        // Every quest with a quest form (QuestForm.cs): its form ids from the registry, so its place in this order moves none.
+        var ids = FormIds.Load(QuestForm.FormIdsPath);
+        var built = QuestForm.Build(mod, mods, forms, ids);
+        Console.WriteLine($"questform: {built.Count} quests built from forms ({string.Join(", ", built)})");
+        ids.Save();
+        Mortality.Clear(mod, mods); // nobody essential or protected, after every builder
         // Every object rests on the surface under it (PlaceCheck: floating or sunk more than 10 moves onto it); after every builder.
         Heights.Fix(mod, mods); // people at their race's height (Heights.cs)
         PlaceCheck.Settle(mod, mods, Surface.Paths);

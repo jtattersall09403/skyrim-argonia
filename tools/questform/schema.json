@@ -7,6 +7,7 @@
   "required": ["version", "quest", "stages", "objectives", "refs", "lines", "triggers", "must_live"],
   "properties": {
     "version": {"const": 1},
+    "names": {"type": "object", "additionalProperties": {"$ref": "#/$defs/text"}},
     "quest": {
       "type": "object",
       "additionalProperties": false,
@@ -124,6 +125,9 @@
           },
           "enabled": {"type": "boolean"},
           "hostile": {"type": "boolean"},
+          "name": {"$ref": "#/$defs/text"},
+          "destination": {"$ref": "#/$defs/text"},
+          "text": {"$ref": "#/$defs/text"},
           "at": {
             "type": "object",
             "additionalProperties": false,
@@ -203,7 +207,8 @@
         "properties": {
           "ref": {"$ref": "#/$defs/id"},
           "fail_stage": {"$ref": "#/$defs/stage"},
-          "main_message": {"type": "boolean"}
+          "main_message": {"type": "boolean"},
+          "message": {"$ref": "#/$defs/text"}
         }
       }
     }
@@ -232,15 +237,15 @@
     },
     "c_player": {
       "type": "object", "additionalProperties": false, "required": ["is", "value"],
-      "properties": {"is": {"enum": ["race_is", "sex_is"]}, "value": {"$ref": "#/$defs/id"}}
+      "properties": {"not": {"type": "boolean"}, "is": {"enum": ["race_is", "sex_is"]}, "value": {"$ref": "#/$defs/id"}}
     },
     "c_met": {
       "type": "object", "additionalProperties": false, "required": ["is"],
-      "properties": {"is": {"enum": ["spoken_before", "not_spoken_before"]}}
+      "properties": {"not": {"type": "boolean"}, "is": {"enum": ["spoken_before", "not_spoken_before"]}}
     },
     "c_quest_stage": {
       "type": "object", "additionalProperties": false, "required": ["is", "quest", "stage"],
-      "properties": {"is": {"enum": ["stage_is", "stage_at_least", "stage_done"]},
+      "properties": {"not": {"type": "boolean"}, "is": {"enum": ["stage_is", "stage_at_least", "stage_done"]},
                      "quest": {"$ref": "#/$defs/id"}, "stage": {"$ref": "#/$defs/stage"}}
     },
     "c_number": {
@@ -250,34 +255,34 @@
     },
     "c_faction": {
       "type": "object", "additionalProperties": false, "required": ["is", "faction"],
-      "properties": {"is": {"const": "in_faction"}, "faction": {"$ref": "#/$defs/id"}}
+      "properties": {"not": {"type": "boolean"}, "is": {"const": "in_faction"}, "faction": {"$ref": "#/$defs/id"}}
     },
     "c_rank": {
       "type": "object", "additionalProperties": false, "required": ["is", "faction", "rank"],
-      "properties": {"is": {"const": "rank_at_least"}, "faction": {"$ref": "#/$defs/id"},
+      "properties": {"not": {"type": "boolean"}, "is": {"const": "rank_at_least"}, "faction": {"$ref": "#/$defs/id"},
                      "rank": {"type": "integer", "minimum": 0}}
     },
     "c_item": {
       "type": "object", "additionalProperties": false, "required": ["is", "item", "count"],
-      "properties": {"is": {"const": "item_count_at_least"}, "item": {"$ref": "#/$defs/id"},
+      "properties": {"not": {"type": "boolean"}, "is": {"const": "item_count_at_least"}, "item": {"$ref": "#/$defs/id"},
                      "count": {"type": "integer", "minimum": 1}}
     },
     "c_gold": {
       "type": "object", "additionalProperties": false, "required": ["is", "gold"],
-      "properties": {"is": {"const": "gold_at_least"}, "gold": {"type": "integer", "minimum": 1}}
+      "properties": {"not": {"type": "boolean"}, "is": {"const": "gold_at_least"}, "gold": {"type": "integer", "minimum": 1}}
     },
     "c_skill": {
       "type": "object", "additionalProperties": false, "required": ["is", "skill", "value"],
-      "properties": {"is": {"const": "skill_at_least"}, "skill": {"$ref": "#/$defs/id"},
+      "properties": {"not": {"type": "boolean"}, "is": {"const": "skill_at_least"}, "skill": {"$ref": "#/$defs/id"},
                      "value": {"type": "integer", "minimum": 0}}
     },
     "c_ref": {
       "type": "object", "additionalProperties": false, "required": ["is", "ref"],
-      "properties": {"is": {"enum": ["alive", "dead", "speaker_is"]}, "ref": {"$ref": "#/$defs/id"}}
+      "properties": {"not": {"type": "boolean"}, "is": {"enum": ["alive", "dead", "speaker_is"]}, "ref": {"$ref": "#/$defs/id"}}
     },
     "c_regard": {
       "type": "object", "additionalProperties": false, "required": ["is", "ref", "value"],
-      "properties": {"is": {"const": "regard_at_least"}, "ref": {"$ref": "#/$defs/id"},
+      "properties": {"not": {"type": "boolean"}, "is": {"const": "regard_at_least"}, "ref": {"$ref": "#/$defs/id"},
                      "value": {"type": "integer"}}
     },
     "result": {

@@ -17,7 +17,6 @@ switch (args.FirstOrDefault())
     case "cleancheck": return CleanUp.Check(args[1], args[2..]);
     case "localcheck": return LocalQuestsCheck.Run(args[1], args[2], args[3..]);
     case "bccheck": return ChainbreakersCheck.Run(args[1], args[2], args[3..]);
-    case "blocktest": return BlockTestCheck.Run(args[1], args[2], args[3..]);
     case "mqcheck": return MQCheck.Run(args[1], args[2], args[3..]);
     case "mapprobe": MapFix.Probe(args[1..]); break;
     case "musicprobe": Music.Probe(args[1..]); break;
@@ -35,7 +34,8 @@ switch (args.FirstOrDefault())
     case "nwmap": return NewWorldMap.Run(args[1..]);
     case "placecheck": return PlaceCheck.Run(args[1], args[2..]);
     case "questcheck": return args.Length > 1 && args[1] == "--selftest" ? QuestCheck.SelfTest() : QuestCheck.Run(args[1], args[2], args[3..]);
+    case "questform-read": return QuestFormRead.Run(args[1], args[2], args[3..]);
     case "nightreedcheck": return NightReedCheck.Run(args[1], args[2], args[3..]);
-    default: Console.Error.WriteLine("ArgoniaPlugin seed <out.esp> <plugins...> | blocktest <esp> <pexdir> <plugins...> | list <esp> <md> | survey <plugins...> | study|quests|cell|find ..."); return 2;
+    default: Console.Error.WriteLine("ArgoniaPlugin seed <out.esp> <plugins...> | list <esp> <md> | survey <plugins...> | study|quests|cell|find ..."); return 2;
 }
 return 0;

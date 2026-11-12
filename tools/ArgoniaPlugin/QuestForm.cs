@@ -1,0 +1,1034 @@
+using System.Security.Cryptography;
+using System.Text;
+using System.Text.Json;
+using Mutagen.Bethesda;
+using Mutagen.Bethesda.Plugins;
+using Mutagen.Bethesda.Plugins.Records;
+using Mutagen.Bethesda.Skyrim;
+using Noggog;
+
+// QuestForm: the one generic builder. Every quest form (tools/questform/schema.json; docs/design/quest-form.md, "How a
+// form becomes records") becomes the same shape of records, and no quest has code of its own:
+//   the quest       QUST, Run Once, Main Quest (kind main) or Side Quest, Start Game Enabled when it runs from a new game;
+//                   one log entry per stage (text when shown; Complete or Fail Quest on an ending); its objectives
+//   the people and things  one forced-reference alias per ref (the alias's name is the ref id); an existing ref made
+//                   persistent; a new one placed from its anchor (Snap on the navmesh, or the Surface under it),
+//                   persistent; a person on a base of ours templated on the form's base (hostile: aggressive and brave);
+//                   a thing in a container by a create-in-container alias
+//   the stage rows  ARG_QuestStages on the quest: every stage's work as rows of three arrays (Op, What, Num) that
+//                   ARG_Effects carries out; one fragment per stage that has rows
+//   the lines       topics and responses; ARG_LineEffects on every response with the line's rows; the speaks-first
+//                   person's one force-greet package (template ForceGreet) and the same line under their greeting
+//   the triggers    vanilla's default alias scripts (take, use, read, death); another quest's stage as rows in that quest
+//   who must live   a failed ending on their death (vanilla's death script; for a main or faction quest the mortal
+//                   watch, ARG_MortalWatch, with the message box), and the start's check that they are alive
+// Form ids come from plugin/questform-formids.json (FormIds), named by the quest id and the ref or line id, so adding a
+// quest never moves another's. Anything the builder cannot build exactly fails the build with one line naming the quest
+// and the rule (Refused); it never approximates. `questform --selftest` proves each refusal on hand-made forms.
+static class QuestForm
+{
+    public sealed class Refused(string quest, string rule, string what) : Exception($"questform {quest}: {rule}: {what}")
+    {
+        public readonly string Rule = rule;
+    }
+
+    // ---- the operations of ARG_Effects (papyrus/ARG_Effects.psc; the numbers are the script's)
+    public static class Op
+    {
+        public const int SetStage = 1, ShowObjective = 2, CompleteObjective = 3, FailObjective = 4, SetActive = 5, StopQuest = 6,
+            IncSideQuests = 7, FailIfDead = 8, SetStageIfRunning = 9, IfStageDone = 10, IfQuestOpen = 11, StartOnStage = 12,
+            GiveItem = 20, TakeItem = 21, GiveGold = 22, TakeGold = 23, SetNumber = 24, AddNumber = 25, JoinFaction = 26,
+            SetRank = 27, ChangeRegard = 28, SwitchOn = 29, SwitchOff = 30, LockDoor = 31, UnlockDoor = 32, ShowMessage = 33,
+            SpeakerHostile = 34, StartQuest = 35;
+        public static readonly Dictionary<string, int> OfResult = new()
+        {
+            ["set_stage"] = SetStage, ["give_item"] = GiveItem, ["take_item"] = TakeItem, ["give_gold"] = GiveGold, ["take_gold"] = TakeGold,
+            ["set_number"] = SetNumber, ["add_number"] = AddNumber, ["join_faction"] = JoinFaction, ["set_rank"] = SetRank,
+            ["change_regard"] = ChangeRegard, ["switch_on"] = SwitchOn, ["switch_off"] = SwitchOff, ["lock_door"] = LockDoor,
+            ["unlock_door"] = UnlockDoor, ["show_message"] = ShowMessage, ["speaker_hostile"] = SpeakerHostile, ["start_quest"] = StartQuest,
+        };
+    }
+    public sealed record Row(int Op, FormKey What, float Num);
+    public const int MaxRows = 128;   // a Papyrus array made by `new` holds 128; no vanilla property array exceeds 35
+
+    public static readonly FormKey XMarker = FormKey.Factory("00003B:Skyrim.esm"), Player = FormKey.Factory("000014:Skyrim.esm"),
+        Gold = FormKey.Factory("00000F:Skyrim.esm"), Achievements = FormKey.Factory("0FC85D:Skyrim.esm"),
+        ForceGreetTemplate = FormKey.Factory("03C1C4:Skyrim.esm"), ForceGreetCopy = FormKey.Factory("01703F:Skyrim.esm"); // MS05InductionForcegreet
+    public const string StagesScript = "ARG_QuestStages", LineScript = "ARG_LineEffects", AliasScript = "ARG_AliasEffects";
+    public static readonly string FormIdsPath = Environment.GetEnvironmentVariable("QUESTFORM_IDS") ?? "plugin/questform-formids.json";
+    public const string Kind = "questform";
+    public const string WatchId = "ARG_MortalWatch";
+    public const string MainMessage = "With this death the root of what was to come is cut: the main story can no longer be finished. Load an earlier save to let it grow again, or go on in the marsh as it now is.";
+    public const string FactionMessage = "With this death the root of what was to come is cut: this faction's story can no longer be finished. Load an earlier save to let it grow again, or go on in the marsh as it now is.";
+    // The vanilla scripts a trigger or a who-must-live row puts on an alias (docs/research/skyrim/quest-form-engine-facts.md §5e).
+    public const string TakeScript = "defaultSetStageOnPlayerAcquire", UseScript = "defaultSetStageAliasScript",
+        ReadScript = "defaultSetStageOnCloseBook", DeathScript = "defaultSetStageOnDeathRefAlias";
+
+    // ---- the forms
+    /// Every quest form (*.json) of the directories, by file name; a directory not there holds none.
+    public static List<(string path, JsonElement form)> Load(IEnumerable<string> dirs) =>
+        [.. dirs.Where(Directory.Exists).SelectMany(d => Directory.GetFiles(d, "*.json")).OrderBy(Path.GetFileName, StringComparer.Ordinal)
+            .Select(p => (p, JsonDocument.Parse(File.ReadAllText(p)).RootElement))];
+    /// The directories the seed reads: QUESTFORM_DIRS (colon-separated), else the compiled forms and the block test's.
+    public static string[] Dirs() => (Environment.GetEnvironmentVariable("QUESTFORM_DIRS") ?? "out/questform:tools/questform/blocktest")
+        .Split(':', StringSplitOptions.RemoveEmptyEntries);
+    public static string QuestIdOf(JsonElement f) => f.GetProperty("quest").GetProperty("id").GetString()!;
+
+    static string S(JsonElement e, string k) => e.GetProperty(k).GetString()!;
+    static string? So(JsonElement e, string k) => e.TryGetProperty(k, out var v) && v.ValueKind == JsonValueKind.String ? v.GetString() : null;
+    static int I(JsonElement e, string k) => e.GetProperty(k).GetInt32();
+    static bool B(JsonElement e, string k) => e.TryGetProperty(k, out var v) && v.ValueKind == JsonValueKind.True;
+    static IEnumerable<JsonElement> A(JsonElement e, string k) => e.TryGetProperty(k, out var v) && v.ValueKind == JsonValueKind.Array ? v.EnumerateArray() : [];
+    public static string Slug(string id) => new([.. id.Select(c => char.IsAsciiLetterOrDigit(c) ? c : '_')]);
+    public static string Sha(string s) => Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes(s)))[..12].ToLowerInvariant();
+
+    // ---- what a ref became
+    sealed class Ref
+    {
+        public string Id = "", Kind = ""; public uint Alias; public JsonElement Json;
+        public FormKey Placed;              // the placed reference (null for a thing created in a container)
+        public FormKey Base;                // its base (the item for a thing in a container)
+        public bool Created, Enabled, Hostile, Npc;
+        public QuestAlias A = null!;
+    }
+    sealed class Built
+    {
+        public string Qid = "", Edid = "", Kind = ""; public JsonElement F; public Quest Q = null!;
+        public Dictionary<string, Ref> Refs = [];
+        public SortedDictionary<int, List<Row>> Own = [];          // a stage's own rows (the start check, results, objectives)
+        public SortedDictionary<int, List<Row>> From = [];         // rows other forms add to a stage (their starts and triggers)
+        public SortedDictionary<int, List<Row>> Tail = [];         // an ending's closing rows (every objective closed, the count)
+        public List<string> Labels = [];
+        public Dictionary<uint, List<ScriptEntry>> AliasScripts = [];
+        public HashSet<int> Endings = [];
+        public int Start;
+    }
+
+    // ---- the build
+    sealed class Ctx(SkyrimMod mod, List<ISkyrimModGetter> mods, FormIds ids)
+    {
+        public readonly SkyrimMod Mod = mod; public readonly List<ISkyrimModGetter> Mods = mods; public readonly FormIds Ids = ids;
+        public readonly Dictionary<string, Built> Quests = new(StringComparer.Ordinal);
+        public Dictionary<FormKey, (IPlacedGetter rec, ModKey from)> Placed = [];
+        public Dictionary<FormKey, (INpcGetter rec, ModKey from)> Npcs = [];
+        public Dictionary<FormKey, Where> Wheres = [];
+        public Dictionary<(FormKey world, int x, int y), FormKey> Grid = [];
+        public Dictionary<FormKey, FormKey> CellWorld = [];
+        public Dictionary<FormKey, P3Float> Arrivals = [];   // a load door: where the player comes out of it
+        public QuestKit? Kit;
+        public FormKey Key(string name) => new(Mod.ModKey, Ids.Take(Kind, name));
+        public string Q = ""; public Built? Cur;
+        public Refused No(string rule, string what) => new(Q, rule, what);
+    }
+    public sealed record Where(FormKey Cell, FormKey World, bool Interior, P3Float Pos);
+
+    /// Builds every form into the mod. The forms are first all allocated (so one may start or watch another), then built.
+    public static List<string> Build(SkyrimMod mod, List<ISkyrimModGetter> mods, IList<(string path, JsonElement form)> forms, FormIds ids)
+    {
+        var c = new Ctx(mod, mods, ids);
+        if (forms.Count == 0) return [];
+        c.Placed = Survey.Winners<IPlacedGetter>(mods);
+        c.Npcs = Survey.Winners<INpcGetter>(mods);
+        Index(c);
+        c.Kit = new QuestKit(mod, mods);
+        foreach (var (path, f) in forms)
+        {
+            var b = new Built { F = f, Qid = QuestIdOf(f), Edid = S(f.GetProperty("quest"), "editor_id"), Kind = S(f.GetProperty("quest"), "kind") };
+            c.Q = b.Qid; c.Cur = b;
+            if (c.Quests.ContainsKey(b.Qid)) throw c.No("unique", $"two forms of the quest ({path})");
+            if (mod.Quests.Any(q => q.EditorID == b.Edid)) throw c.No("old-builder", $"{b.Edid} is already built by an old builder: take it off Generate.OldBuilders' quests or delete the form");
+            b.Q = new Quest(c.Key("quest:" + b.Qid), SkyrimRelease.SkyrimSE) { EditorID = b.Edid };
+            mod.Quests.Add(b.Q);
+            c.Quests[b.Qid] = b;
+        }
+        foreach (var b in c.Quests.Values) { c.Q = b.Qid; c.Cur = b; Quest(c, b); }
+        foreach (var b in c.Quests.Values) { c.Q = b.Qid; c.Cur = b; Lines(c, b); }
+        foreach (var b in c.Quests.Values) { c.Q = b.Qid; c.Cur = b; Triggers(c, b); }
+        Watch(c);
+        foreach (var b in c.Quests.Values) { c.Q = b.Qid; c.Cur = b; Finish(c, b); }
+        return [.. c.Quests.Keys];
+    }
+
+    // Where every placed ref of the load order stands (cell, world, interior, position), and each world's grid of cells.
+    static void Index(Ctx c)
+    {
+        foreach (var m in c.Mods.Append(c.Mod))
+        {
+            foreach (var w in m.Worldspaces)
+            {
+                foreach (var r in w.TopCell?.Persistent ?? [])
+                    if (Arrive(c, r) && Pos(r) is { } p) c.Wheres[r.FormKey] = new Where(FormKey.Null, w.FormKey, false, p);
+                foreach (var cell in w.SubCells.SelectMany(b => b.Items).SelectMany(s => s.Items))
+                {
+                    if (cell.Grid != null) { c.Grid[(w.FormKey, cell.Grid.Point.X, cell.Grid.Point.Y)] = cell.FormKey; c.CellWorld[cell.FormKey] = w.FormKey; }
+                    foreach (var r in cell.Persistent.Concat(cell.Temporary))
+                        if (Arrive(c, r) && Pos(r) is { } p) c.Wheres[r.FormKey] = new Where(cell.FormKey, w.FormKey, false, p);
+                }
+            }
+            foreach (var cell in m.Cells.Records.SelectMany(b => b.SubBlocks).SelectMany(s => s.Cells))
+                foreach (var r in cell.Persistent.Concat(cell.Temporary))
+                    if (Arrive(c, r) && Pos(r) is { } p) c.Wheres[r.FormKey] = new Where(cell.FormKey, FormKey.Null, true, p);
+        }
+        foreach (var (k, w) in c.Wheres.ToList())
+            if (!w.Interior && w.Cell.IsNull) c.Wheres[k] = w with { Cell = CellAt(c, w.World, w.Pos) };
+    }
+    static bool Arrive(Ctx c, IMajorRecordGetter r)
+    {
+        if (r is IPlacedObjectGetter o && o.TeleportDestination is { } t && !t.Door.IsNull) c.Arrivals[t.Door.FormKey] = t.Position;
+        return true;
+    }
+    static P3Float? Pos(IMajorRecordGetter r) => r switch { IPlacedObjectGetter o => o.Placement?.Position, IPlacedNpcGetter n => n.Placement?.Position, _ => null };
+    static FormKey CellAt(Ctx c, FormKey world, P3Float p) =>
+        c.Grid.TryGetValue((world, (int)MathF.Floor(p.X / 4096), (int)MathF.Floor(p.Y / 4096)), out var k) ? k : FormKey.Null;
+
+    // ---- the quest, its stages, objectives, refs and results
+    static void Quest(Ctx c, Built b)
+    {
+        var f = b.F; var q = b.Q; var head = f.GetProperty("quest");
+        q.Name = S(head, "name");
+        q.Priority = 50;
+        q.Type = b.Kind == "main" ? Mutagen.Bethesda.Skyrim.Quest.TypeEnum.MainQuest : Mutagen.Bethesda.Skyrim.Quest.TypeEnum.SideQuest;
+        var start = head.GetProperty("start");
+        b.Start = I(start, "stage");
+        var byGame = S(start, "by") == "game";
+        q.Flags = Mutagen.Bethesda.Skyrim.Quest.Flag.RunOnce | (byGame ? Mutagen.Bethesda.Skyrim.Quest.Flag.StartGameEnabled : 0);
+        var stages = A(f, "stages").ToList();
+        if (stages.Count > 0 && !stages.Any(s => I(s, "number") == b.Start)) throw c.No("start", $"the start stage {b.Start} is not a stage");
+        foreach (var s in stages.OrderBy(s => I(s, "number")))
+        {
+            var n = I(s, "number"); var ending = S(s, "ending");
+            if (ending != "none") b.Endings.Add(n);
+            var shown = B(s, "shown");
+            q.Stages.Add(new QuestStage
+            {
+                Index = (ushort)n, Flags = byGame && n == b.Start ? QuestStage.Flag.StartUpStage : 0,
+                LogEntries = { new QuestLogEntry { Flags = ending == "completed" ? QuestLogEntry.Flag.CompleteQuest : ending == "failed" ? QuestLogEntry.Flag.FailQuest : 0,
+                    Entry = shown ? So(s, "journal") : null } },
+            });
+        }
+        if (!byGame)
+        {
+            var other = S(start, "quest");
+            if (!c.Quests.TryGetValue(other, out var o)) throw c.No("start", $"started by {other}, which is not built from a form");
+            Add(o.From, I(start, "quest_stage"), new Row(Op.StartOnStage, q.FormKey, b.Start));
+        }
+        Refs(c, b);
+        foreach (var o in A(f, "objectives"))
+        {
+            var obj = new QuestObjective { Index = (ushort)I(o, "number"), DisplayText = S(o, "text") };
+            foreach (var t in A(o, "targets"))
+                obj.Targets.Add(new QuestObjectiveTarget { AliasID = (int)RefOf(c, b, t.GetString()!, "objective target").Alias });
+            q.Objectives.Add(obj);
+        }
+        // must live: checked alive at the start, before anything else of the start stage
+        foreach (var m in A(f, "must_live"))
+        {
+            var r = RefOf(c, b, S(m, "ref"), "must live");
+            if (!r.Npc) throw c.No("must-live", $"{r.Id} is not a person");
+            Add(b.Own, b.Start, new Row(Op.FailIfDead, r.Placed, I(m, "fail_stage")));
+        }
+        foreach (var s in stages.OrderBy(s => I(s, "number")))
+            foreach (var res in A(s, "results"))
+            {
+                if (S(res, "do") == "speaker_hostile") throw c.No("vocabulary", $"stage {I(s, "number")}: speaker_hostile is a line's result");
+                Add(b.Own, I(s, "number"), Result(c, b, res, q.FormKey));
+            }
+        // objectives: completed, then shown; the stage that shows the first objective makes the quest the tracked one
+        var objs = A(f, "objectives").ToList();
+        var first = objs.SelectMany(o => A(o, "shown_at").Select(x => x.GetInt32())).DefaultIfEmpty(-1).Min();
+        foreach (var s in stages.Select(s => I(s, "number")).OrderBy(x => x))
+        {
+            foreach (var o in objs.Where(o => A(o, "completed_at").Any(x => x.GetInt32() == s)))
+                Add(b.Own, s, new Row(Op.CompleteObjective, FormKey.Null, I(o, "number")));
+            foreach (var o in objs.Where(o => A(o, "shown_at").Any(x => x.GetInt32() == s)))
+                Add(b.Own, s, new Row(Op.ShowObjective, FormKey.Null, I(o, "number")));
+            if (s == first) Add(b.Own, s, new Row(Op.SetActive, FormKey.Null, 0));
+        }
+        foreach (var s in stages.Where(s => S(s, "ending") != "none"))
+        {
+            var n = I(s, "number"); var done = S(s, "ending") == "completed";
+            foreach (var o in objs) Add(b.Tail, n, new Row(done ? Op.CompleteObjective : Op.FailObjective, FormKey.Null, I(o, "number")));
+            if (done && b.Kind != "main") Add(b.Tail, n, new Row(Op.IncSideQuests, Achievements, 0));
+        }
+        b.Labels.Add("quest=" + b.Qid);
+        b.Labels.Add("kind=" + b.Kind);
+    }
+    static void Add(SortedDictionary<int, List<Row>> rows, int stage, params Row[] r) { if (!rows.TryGetValue(stage, out var l)) rows[stage] = l = []; l.AddRange(r); }
+    static Ref RefOf(Ctx c, Built b, string id, string where) => b.Refs.TryGetValue(id, out var r) ? r : throw c.No("refs-exist", $"{where} names {id}, which is not a ref of the form");
+
+    // One form result as rows (`self` is the form's quest: a set_stage sets its stage).
+    static Row[] Result(Ctx c, Built b, JsonElement res, FormKey self)
+    {
+        var w = S(res, "do");
+        if (!Op.OfResult.TryGetValue(w, out var op)) throw c.No("vocabulary", $"no result {w}");
+        return w switch
+        {
+            "set_stage" => [new Row(op, FormKey.Null, I(res, "stage"))],
+            "give_item" or "take_item" => [new Row(op, Item(c, b, S(res, "item")), I(res, "count"))],
+            "give_gold" or "take_gold" => [new Row(op, Gold, I(res, "amount"))],
+            "set_number" or "add_number" => [new Row(op, Number(c, S(res, "number")), (float)res.GetProperty("value").GetDouble())],
+            "join_faction" => [new Row(op, Faction(c, S(res, "faction")), 0)],
+            "set_rank" => [new Row(op, Faction(c, S(res, "faction")), I(res, "rank"))],
+            "change_regard" => [new Row(op, PersonRef(c, b, S(res, "ref"), w), I(res, "by"))],
+            "switch_on" or "switch_off" => [new Row(op, PlacedRef(c, b, S(res, "ref"), w), 0)],
+            "lock_door" or "unlock_door" => [new Row(op, DoorRef(c, b, S(res, "ref"), w == "unlock_door"), 0)],
+            "show_message" => [new Row(op, Message(c, b, S(res, "text")), 0)],
+            "speaker_hostile" => [new Row(op, FormKey.Null, 0)],
+            "start_quest" => [new Row(op, QuestKey(c, S(res, "quest")), I(res, "stage"))],
+            _ => throw c.No("vocabulary", $"no result {w}"),
+        };
+    }
+    static FormKey PlacedRef(Ctx c, Built b, string id, string what)
+    {
+        var r = RefOf(c, b, id, what);
+        return r.Created ? throw c.No("created", $"{what} names {id}, a thing made in a container, which has no reference to act on") : r.Placed;
+    }
+    static FormKey PersonRef(Ctx c, Built b, string id, string what)
+    {
+        var r = RefOf(c, b, id, what);
+        return r.Npc ? r.Placed : throw c.No("person", $"{what} names {id}, which is not a person");
+    }
+    // A door a result locks or unlocks; one that is unlocked starts locked (requires a key, none given), as vanilla's quest doors.
+    static FormKey DoorRef(Ctx c, Built b, string id, bool unlocked)
+    {
+        var r = RefOf(c, b, id, "a lock");
+        if (r.Kind != "door") throw c.No("refs-exist", $"{id} is locked or unlocked and is not a door");
+        if (unlocked && Overrides.Placed(c.Mod, r.Placed) is PlacedObject o && o.Lock == null) o.Lock = new LockData { Level = LockLevel.RequiresKey };
+        return r.Placed;
+    }
+
+    // ---- what the vocabulary names
+    static readonly Dictionary<string, ActorValue> Skills = new(StringComparer.OrdinalIgnoreCase)
+    {
+        ["speech"] = ActorValue.Speech, ["speechcraft"] = ActorValue.Speech, ["mercantile"] = ActorValue.Speech,
+        ["lockpicking"] = ActorValue.Lockpicking, ["security"] = ActorValue.Lockpicking, ["sneak"] = ActorValue.Sneak,
+        ["pickpocket"] = ActorValue.Pickpocket, ["archery"] = ActorValue.Archery, ["marksman"] = ActorValue.Archery,
+        ["onehanded"] = ActorValue.OneHanded, ["short-blade"] = ActorValue.OneHanded, ["long-blade"] = ActorValue.OneHanded,
+        ["axe"] = ActorValue.OneHanded, ["blunt"] = ActorValue.OneHanded, ["twohanded"] = ActorValue.TwoHanded, ["spear"] = ActorValue.TwoHanded,
+        ["block"] = ActorValue.Block, ["heavyarmor"] = ActorValue.HeavyArmor, ["lightarmor"] = ActorValue.LightArmor,
+        ["smithing"] = ActorValue.Smithing, ["armorer"] = ActorValue.Smithing, ["alchemy"] = ActorValue.Alchemy,
+        ["enchanting"] = ActorValue.Enchanting, ["alteration"] = ActorValue.Alteration, ["conjuration"] = ActorValue.Conjuration,
+        ["destruction"] = ActorValue.Destruction, ["illusion"] = ActorValue.Illusion, ["restoration"] = ActorValue.Restoration,
+    };
+    /// The skill's actor value: a Skyrim skill's name, or a Morrowind skill that maps to it (blocks.md, C-skill).
+    public static ActorValue? Skill(string s) => Skills.TryGetValue(s.StartsWith("skill.") ? s[6..] : s, out var v) ? v : null;
+    /// The name the reader writes for an actor value: Skyrim's, lower case.
+    public static string SkillName(ActorValue v) => v.ToString().ToLowerInvariant();
+
+    // Each id the form names that the record it resolves to cannot carry (a number's id, a story item's or faction's id, a
+    // skill's own word) is kept as a label on the quest, "name=<kind>|<what it became>|<the form's word>", so the plugin
+    // reader writes the form's word back.
+    static FormKey Named(Ctx c, string kind, string given, FormKey k)
+    {
+        if (given != k.ToString()) Label(c, $"name={kind}|{k}|{given}");
+        return k;
+    }
+    static void Label(Ctx c, string l) { if (c.Cur is { } b && !b.Labels.Contains(l)) b.Labels.Add(l); }
+    static FormKey QuestKey(Ctx c, string qid) => c.Quests.ContainsKey(qid) ? QuestKey0(c, qid) : Named(c, "quest", qid, QuestKey0(c, qid));
+    static FormKey Number(Ctx c, string id) => Named(c, "number", id, Number0(c, id));
+    static FormKey Faction(Ctx c, string id) => Named(c, "faction", id, Faction0(c, id));
+    // an item named by a thing of the form is labelled "thing" (its base keeps its own word where it is placed)
+    static FormKey Item(Ctx c, Built b, string id) => Named(c, b.Refs.ContainsKey(id) ? "thing" : "item", id, Item0(c, b, id));
+    static FormKey Race(Ctx c, string v) => Named(c, "race", v, Race0(c, v));
+    static ActorValue SkillOf(Ctx c, string s)
+    {
+        var v = Skill(s) ?? throw c.No("vocabulary", $"no skill {s}");
+        if (s != SkillName(v)) Label(c, $"name=skill|{SkillName(v)}|{s}");
+        return v;
+    }
+
+    static FormKey QuestKey0(Ctx c, string qid)
+    {
+        if (c.Quests.TryGetValue(qid, out var o)) return o.Q.FormKey;
+        var code = QuestKit.Rows("quest").Where(r => r.GetProperty("id").GetString() == qid).Select(r => r.GetProperty("code").GetString()).FirstOrDefault();
+        var q = code == null ? null : c.Mod.Quests.FirstOrDefault(x => x.EditorID == "ARG_" + code);
+        return q?.FormKey ?? throw c.No("quest", $"{qid} is neither built from a form nor an old builder's quest");
+    }
+    static FormKey Number0(Ctx c, string id)
+    {
+        var k = c.Key("glob:" + id);
+        if (!c.Mod.Globals.Any(g => g.FormKey == k)) c.Mod.Globals.Add(new GlobalFloat(k, SkyrimRelease.SkyrimSE) { EditorID = "ARG_N_" + Slug(id), Data = 0 });
+        return k;
+    }
+    static FormKey Faction0(Ctx c, string id)
+    {
+        if (id.Contains(':')) return Exists<IFactionGetter>(c, id, "faction");
+        var k = c.Key("fac:" + id);
+        if (c.Mod.Factions.Any(g => g.FormKey == k)) return k;
+        var name = QuestKit.Rows("faction").Where(r => r.GetProperty("id").GetString() == id).Select(r => r.GetProperty("name").GetString()).FirstOrDefault();
+        c.Mod.Factions.Add(new Faction(k, SkyrimRelease.SkyrimSE) { EditorID = "ARG_F_" + Slug(id), Name = name ?? id });
+        return k;
+    }
+    static FormKey Exists<T>(Ctx c, string key, string what) where T : class, IMajorRecordGetter
+    {
+        FormKey k;
+        try { k = FormKey.Factory(key); } catch (Exception) { throw c.No("form-key", $"{what} {key} is no form key"); }
+        if (c.Mod.EnumerateMajorRecords<T>().Any(r => r.FormKey == k) || c.Mods.Any(m => m.EnumerateMajorRecords<T>().Any(r => r.FormKey == k))) return k;
+        throw c.No("form-key", $"{what} {key} is in no plugin of the load order");
+    }
+    static readonly string[] ItemTypes = ["MISC", "BOOK", "WEAP", "ARMO", "ALCH", "INGR", "KEYM", "SLGM", "AMMO", "SCRL", "LIGH"];
+    static Dictionary<string, FormKey>? itemsByEdid; static object? itemsFor;
+    /// An item: a form key; a ref id of a thing of the form (its base); or a story item whose first Skyrim record
+    /// (item_asset_record) is an item of the load order.
+    static FormKey Item0(Ctx c, Built b, string id)
+    {
+        if (id.Contains(':')) return Exists<IItemGetter>(c, id, "item");
+        if (b.Refs.TryGetValue(id, out var r)) return r.Kind == "thing" ? r.Base : throw c.No("item", $"{id} is a {r.Kind}, not a thing");
+        var edid = QuestKit.Rows("item_asset_record").Where(x => x.GetProperty("item_id").GetString() == id && x.GetProperty("ord").GetInt32() == 0)
+            .Select(x => x.GetProperty("value").GetString()).FirstOrDefault() ?? throw c.No("item", $"{id}: no form key, no thing of the form and no item_asset_record");
+        if (!ReferenceEquals(itemsFor, c.Mods))
+        {
+            itemsFor = c.Mods; itemsByEdid = new(StringComparer.OrdinalIgnoreCase);
+            foreach (var m in c.Mods) foreach (var it in m.EnumerateMajorRecords<IItemGetter>()) if (it.EditorID is { } e) itemsByEdid[e] = it.FormKey;
+        }
+        return itemsByEdid!.TryGetValue(edid, out var k) ? k : throw c.No("item", $"{id}: its record {edid} is no item of the load order");
+    }
+    static FormKey Message(Ctx c, Built b, string text)
+    {
+        var k = c.Key($"msg:{b.Qid}:{Sha(text)}");
+        if (!c.Mod.Messages.Any(m => m.FormKey == k))
+            c.Mod.Messages.Add(new Message(k, SkyrimRelease.SkyrimSE) { EditorID = $"{b.Edid}_Msg_{Sha(text)[..6]}", Description = text, Flags = Mutagen.Bethesda.Skyrim.Message.Flag.MessageBox });
+        return k;
+    }
+    static FormKey Race0(Ctx c, string v)
+    {
+        if (v.Contains(':')) return Exists<IRaceGetter>(c, v, "race");
+        var name = v.StartsWith("race.") ? v[5..] : v;
+        foreach (var m in Enumerable.Reverse(c.Mods))
+            foreach (var r in m.Races)
+                if (string.Equals(r.EditorID, name, StringComparison.OrdinalIgnoreCase) || string.Equals(r.EditorID, name + "Race", StringComparison.OrdinalIgnoreCase)) return r.FormKey;
+        throw c.No("race", $"no race {v} in the load order");
+    }
+
+    // ---- the refs
+    static void Refs(Ctx c, Built b)
+    {
+        uint n = 0;
+        var refs = A(b.F, "refs").ToList();
+        foreach (var j in refs)
+        {
+            var r = new Ref { Id = S(j, "id"), Kind = S(j, "kind"), Json = j, Alias = n++, Enabled = B(j, "enabled"), Hostile = B(j, "hostile") };
+            if (b.Refs.ContainsKey(r.Id)) throw c.No("unique-ids", $"two refs {r.Id}");
+            b.Refs[r.Id] = r;
+        }
+        // containers first: a thing in a container names the container's alias
+        foreach (var r in b.Refs.Values) Place(c, b, r);
+        foreach (var r in b.Refs.Values)
+        {
+            var a = new QuestAlias { ID = r.Alias, Type = QuestAlias.TypeEnum.Reference, Name = r.Id };
+            if (r.Created)
+            {
+                var cont = b.Refs[S(r.Json.GetProperty("placement"), "container")];
+                a.CreateReferenceToObject = new CreateReferenceToObject { AliasID = (short)cont.Alias, Create = CreateReferenceToObject.CreateEnum.In, Level = Level.Easy };
+                a.CreateReferenceToObject.Object.SetTo(r.Base);
+            }
+            else
+            {
+                a.ForcedReference.SetTo(r.Placed);
+                if (!r.Enabled) a.Flags = QuestAlias.Flag.AllowDisabled;
+            }
+            r.A = a;
+            b.Q.Aliases.Add(a);
+        }
+    }
+
+    static void Place(Ctx c, Built b, Ref r)
+    {
+        var j = r.Json; var p = j.GetProperty("placement");
+        if (r.Hostile && r.Kind != "person") throw c.No("hostile", $"{r.Id} is hostile and not a person");
+        if (p.TryGetProperty("existing", out var ex))
+        {
+            if (r.Hostile) throw c.No("hostile", $"{r.Id}: a person the player fights is a new placement (its base of ours is made aggressive)");
+            FormKey k;
+            try { k = FormKey.Factory(ex.GetString()!); } catch (Exception) { throw c.No("form-key", $"{r.Id}: {ex.GetString()} is no form key"); }
+            if (!c.Placed.TryGetValue(k, out var src) && Overrides.Placed(c.Mod, k) == null) throw c.No("placement", $"{r.Id}: {k} is no placed reference of the load order");
+            var rec = (IPlacedGetter?)Overrides.Placed(c.Mod, k) ?? src.rec;
+            r.Npc = rec is IPlacedNpcGetter;
+            if ((r.Kind == "person") != r.Npc) throw c.No("placement", $"{r.Id}: a {r.Kind} placed as {(r.Npc ? "an actor" : "an object")}");
+            r.Base = rec switch { IPlacedNpcGetter pn => pn.Base.FormKey, IPlacedObjectGetter po => po.Base.FormKey, _ => FormKey.Null };
+            if (r.Kind == "door" && !c.Mods.Any(m => m.Doors.Any(d => d.FormKey == r.Base))) throw c.No("placement", $"{r.Id}: {k} is not a door");
+            var parent = rec switch { IPlacedNpcGetter pn => pn.EnableParent, IPlacedObjectGetter po => po.EnableParent, _ => null };
+            if (parent != null && !parent.Reference.IsNull) throw c.No("placement", $"{r.Id}: {k} hangs on an enable parent, so the form cannot say when it is on");
+            r.Placed = k;
+            Persist(c, k, r.Enabled);
+            return;
+        }
+        var bas = p.GetProperty("base"); var bk = S(bas, "kind"); var bid = S(bas, "id");
+        if (p.TryGetProperty("container", out var cont))
+        {
+            if (p.TryGetProperty("anchor", out _)) throw c.No("placement", $"{r.Id}: both an anchor and a container");
+            if (r.Kind != "thing" || bk != "item") throw c.No("placement", $"{r.Id}: only an item thing sits in a container");
+            if (!r.Enabled) throw c.No("placement", $"{r.Id}: a thing made in a container is there from the quest's start (enabled)");
+            if (!b.Refs.TryGetValue(cont.GetString()!, out var box) || box.Kind != "thing") throw c.No("placement", $"{r.Id}: its container {cont.GetString()} is not a thing of the form");
+            r.Base = Item(c, b, bid); r.Created = true;
+            return;
+        }
+        if (!p.TryGetProperty("anchor", out var anchor)) throw c.No("placement", $"{r.Id}: a new placement with neither an anchor nor a container");
+        var (cell, world, interior, at) = Spot(c, b, r, anchor);
+        var key = c.Key($"ref:{b.Qid}:{r.Id}");
+        var edid = $"{b.Edid}_{Slug(r.Id)}";
+        var flags = 0x400 | (r.Enabled ? 0 : 0x800);
+        IPlaced placed;
+        if (r.Kind == "person")
+        {
+            if (bk != "template_person") throw c.No("placement", $"{r.Id}: a new person is a template_person");
+            var npc = Person(c, b, r, bid);
+            var a = new PlacedNpc(key, SkyrimRelease.SkyrimSE) { EditorID = edid, MajorRecordFlagsRaw = flags, Placement = new Placement { Position = at } };
+            a.Base.SetTo(npc); r.Base = npc; r.Npc = true; placed = a;
+        }
+        else
+        {
+            if (bk == "template_person") throw c.No("placement", $"{r.Id}: a {r.Kind} placed as a person");
+            r.Base = bk == "item" ? Item(c, b, bid) : Exists<IPlaceableObjectGetter>(c, bid, "base");
+            if (r.Kind == "door" && !c.Mods.Any(m => m.Doors.Any(d => d.FormKey == r.Base))) throw c.No("placement", $"{r.Id}: base {bid} is not a door");
+            var o = new PlacedObject(key, SkyrimRelease.SkyrimSE) { EditorID = edid, MajorRecordFlagsRaw = flags, Placement = new Placement { Position = at, Rotation = new P3Float() } };
+            o.Base.SetTo(r.Base); placed = o;
+        }
+        r.Placed = key;
+        if (interior) Overrides.Interior(c.Mod, c.Mods, cell).Persistent.Add(placed);
+        else Overrides.World(c.Mod, c.Mods, world).TopCell!.Persistent.Add(placed);
+        c.Wheres[key] = new Where(cell, world, interior, at);
+    }
+
+    // The spot a new placement stands on: from `at` when the form gives it, else the anchor ref's; then the rule:
+    // navmesh, the nearest free triangle centre of the cell's navmeshes; surface, the modelled surface or land under it
+    // nearest the spot's height.
+    static (FormKey cell, FormKey world, bool interior, P3Float at) Spot(Ctx c, Built b, Ref r, JsonElement anchor)
+    {
+        var rule = S(anchor, "rule");
+        FormKey cell, world; bool interior; P3Float p;
+        if (r.Json.TryGetProperty("at", out var at))
+        {
+            interior = B(at, "interior");
+            try { cell = FormKey.Factory(S(at, "cell")); } catch (Exception) { throw c.No("placement", $"{r.Id}: at.cell {S(at, "cell")} is no form key"); }
+            p = new P3Float((float)at.GetProperty("x").GetDouble(), (float)at.GetProperty("y").GetDouble(), (float)at.GetProperty("z").GetDouble());
+            world = interior ? FormKey.Null : c.CellWorld.TryGetValue(cell, out var w) ? w : throw c.No("placement", $"{r.Id}: exterior cell {cell} is in no world of the load order");
+            if (!interior && CellAt(c, world, p) != cell) throw c.No("placement", $"{r.Id}: {p.X:F0},{p.Y:F0} is not in cell {cell}");
+        }
+        else if (anchor.TryGetProperty("near", out var near))
+        {
+            FormKey nk;
+            try { nk = FormKey.Factory(near.GetString()!); } catch (Exception) { throw c.No("placement", $"{r.Id}: anchor {near.GetString()} is no form key"); }
+            if (!c.Wheres.TryGetValue(nk, out var wh)) throw c.No("placement", $"{r.Id}: anchor {nk} is no placed reference of the load order");
+            (cell, world, interior, p) = (wh.Cell, wh.World, wh.Interior, wh.Pos);
+            // a load door: where the player comes out of it, a step further on, so the spot is in front of it and
+            // clear of the player's own arrival point
+            if (c.Arrivals.TryGetValue(nk, out var arr))
+            {
+                float dx = arr.X - p.X, dy = arr.Y - p.Y, dl = MathF.Max(1, MathF.Sqrt(dx * dx + dy * dy));
+                p = new P3Float(arr.X + 100 * dx / dl, arr.Y + 100 * dy / dl, arr.Z);
+                if (!interior) cell = CellAt(c, world, p);
+            }
+        }
+        else throw c.No("placement", $"{r.Id}: a place anchor needs the form's `at` (where in the place it stands)");
+        if (rule == "navmesh")
+        {
+            var mesh = NearestMesh(c.Mods, Neighbours(c.Grid, cell, world, interior, p), p) ?? throw c.No("placement", $"{r.Id}: no navmesh in or beside cell {cell}");
+            var s = c.Kit!.Snap(mesh, p.X, p.Y);
+            if (MathF.Abs(s.X - p.X) > 300 || MathF.Abs(s.Y - p.Y) > 300) throw c.No("placement", $"{r.Id}: the nearest free navmesh of {cell} is {MathF.Sqrt((s.X - p.X) * (s.X - p.X) + (s.Y - p.Y) * (s.Y - p.Y)):F0} units from its spot");
+            return (cell, world, interior, s);
+        }
+        var assets = new Surface.Assets(Surface.Paths);
+        List<Surface.Hit> hits;
+        if (interior)
+        {
+            Surface.Bases(c.Mods);
+            var refs = c.Mods.SelectMany(m => m.Cells.Records.SelectMany(x => x.SubBlocks).SelectMany(x => x.Cells)).Where(x => x.FormKey == cell)
+                .SelectMany(x => x.Persistent.Concat(x.Temporary)).OfType<IPlacedObjectGetter>().GroupBy(o => o.FormKey).Select(g => g.Last()).Where(o => o.Placement != null);
+            hits = Surface.UnderRefs(refs, assets, p.X, p.Y, everyCrossing: true);
+        }
+        else hits = Surface.Under(c.Mods, assets, world, p.X, p.Y);
+        if (hits.Count == 0) throw c.No("placement", $"{r.Id}: no surface under {p.X:F0},{p.Y:F0}");
+        var top = hits.MinBy(h => MathF.Abs(h.Top - p.Z))!;
+        return (cell, world, interior, new P3Float(MathF.Round(p.X), MathF.Round(p.Y), MathF.Round(top.Top)));
+    }
+
+    /// The cells whose navmeshes may hold a spot: an interior's own; an exterior cell and the eight round it (a navmesh
+    /// of an exterior cell is kept in the cell its triangles start in).
+    public static List<FormKey> Neighbours(Dictionary<(FormKey world, int x, int y), FormKey> grid, FormKey cell, FormKey world, bool interior, P3Float p)
+    {
+        if (interior) return [cell];
+        int gx = (int)MathF.Floor(p.X / 4096), gy = (int)MathF.Floor(p.Y / 4096);
+        var l = new List<FormKey>();
+        for (var dx = -1; dx <= 1; dx++) for (var dy = -1; dy <= 1; dy++) if (grid.TryGetValue((world, gx + dx, gy + dy), out var k)) l.Add(k);
+        return l;
+    }
+    /// The winning navmesh of those cells with the triangle centre nearest the spot (in x and y), or null.
+    public static FormKey? NearestMesh(List<ISkyrimModGetter> mods, List<FormKey> cells, P3Float p)
+    {
+        var want = cells.ToHashSet();
+        var meshes = mods.SelectMany(m => m.EnumerateMajorRecords<ICellGetter>().Where(x => want.Contains(x.FormKey))).SelectMany(x => x.NavigationMeshes.Select(n => n.FormKey)).ToHashSet();
+        var win = new Dictionary<FormKey, INavigationMeshGetter>();
+        foreach (var m in mods) foreach (var n in m.EnumerateMajorRecords<INavigationMeshGetter>()) if (meshes.Contains(n.FormKey)) win[n.FormKey] = n;
+        FormKey? best = null; var bd = float.MaxValue;
+        foreach (var (k, n) in win)
+        {
+            if (n.Data is not { } d) continue;
+            foreach (var t in d.Triangles)
+            {
+                var a = d.Vertices[t.Vertices.X]; var b = d.Vertices[t.Vertices.Y]; var e = d.Vertices[t.Vertices.Z];
+                float x = (a.X + b.X + e.X) / 3 - p.X, y = (a.Y + b.Y + e.Y) / 3 - p.Y, dd = x * x + y * y;
+                if (dd < bd) { bd = dd; best = k; }
+            }
+        }
+        return best;
+    }
+
+    // A new person's base of ours: everything from the template but the stats (a fixed level, decision 0035) and, for a
+    // person the player fights, the AI data (aggressive and brave, so they attack and fight on).
+    static FormKey Person(Ctx c, Built b, Ref r, string tpl)
+    {
+        var tk = Exists<INpcGetter>(c, tpl, "template");
+        var t = c.Npcs.TryGetValue(tk, out var tw) ? tw.rec : c.Mod.Npcs.First(x => x.FormKey == tk);
+        var k = c.Key($"npc:{b.Qid}:{r.Id}");
+        var n = new Npc(k, SkyrimRelease.SkyrimSE) { EditorID = $"{b.Edid}_{Slug(r.Id)}_Base" };
+        n.Template.SetTo(tk);
+        n.Race.SetTo(t.Race.FormKey);
+        n.Class.SetTo(t.Class.FormKey);
+        const NpcConfiguration.TemplateFlag all = NpcConfiguration.TemplateFlag.Traits | NpcConfiguration.TemplateFlag.Factions | NpcConfiguration.TemplateFlag.SpellList
+            | NpcConfiguration.TemplateFlag.AIData | NpcConfiguration.TemplateFlag.AIPackages | NpcConfiguration.TemplateFlag.ModelAnimation | NpcConfiguration.TemplateFlag.BaseData
+            | NpcConfiguration.TemplateFlag.Inventory | NpcConfiguration.TemplateFlag.Script | NpcConfiguration.TemplateFlag.DefPackList | NpcConfiguration.TemplateFlag.AttackData
+            | NpcConfiguration.TemplateFlag.Keywords;
+        n.Configuration.TemplateFlags = r.Hostile ? all & ~NpcConfiguration.TemplateFlag.AIData : all;
+        n.Configuration.Level = new NpcLevel { Level = t.Configuration.Level is INpcLevelGetter l ? l.Level : Math.Max((short)1, t.Configuration.CalcMinLevel) };
+        n.Configuration.Flags = NpcConfiguration.Flag.AutoCalcStats | (t.Configuration.Flags & NpcConfiguration.Flag.Female);
+        if (r.Hostile)
+            n.AIData = new AIData { Aggression = Aggression.VeryAggressive, Confidence = Confidence.Brave, Responsibility = Responsibility.NoCrime, Assistance = Assistance.HelpsAllies };
+        c.Mod.Npcs.Add(n);
+        return k;
+    }
+
+    /// A ref of the load order made persistent in our plugin (an alias's forced ref must be), with its starting state.
+    static void Persist(Ctx c, FormKey key, bool enabled)
+    {
+        var mine = Overrides.Placed(c.Mod, key);
+        var wh = c.Wheres[key];
+        if (mine == null)
+        {
+            var src = c.Placed[key].rec;
+            var off = (src.MajorRecordFlagsRaw & 0x800) != 0;
+            if ((src.MajorRecordFlagsRaw & 0x400) != 0 && off == !enabled) return;
+            mine = (IPlaced)((IMajorRecordGetter)src).DeepCopy();
+            if (wh.Interior) Overrides.Interior(c.Mod, c.Mods, wh.Cell).Persistent.Add(mine);
+            else Overrides.World(c.Mod, c.Mods, wh.World).TopCell!.Persistent.Add(mine);
+        }
+        else if (!wh.Interior)
+        {
+            // another step overrode it in its exterior cell: move that override to the world's persistent cell
+            var world = Overrides.World(c.Mod, c.Mods, wh.World);
+            if (!world.TopCell!.Persistent.Contains(mine))
+            {
+                foreach (var bl in world.SubCells) foreach (var sb in bl.Items) foreach (var cl in sb.Items) { cl.Temporary.Remove(mine); cl.Persistent.Remove(mine); }
+                world.TopCell.Persistent.Add(mine);
+            }
+        }
+        else
+        {
+            var cell = Overrides.Interior(c.Mod, c.Mods, wh.Cell);
+            if (cell.Temporary.Remove(mine)) cell.Persistent.Add(mine);
+        }
+        mine.MajorRecordFlagsRaw = (mine.MajorRecordFlagsRaw | 0x400) & ~0x800 | (enabled ? 0 : 0x800);
+    }
+
+    // ---- the lines
+    static readonly char[] Ends = ['.', '!', '?'];
+    /// A line's words as responses: split at sentence ends into pieces of about 150 characters (a subtitle each).
+    public static List<string> Pieces(string text)
+    {
+        var lines = new List<string>();
+        foreach (var sentence in System.Text.RegularExpressions.Regex.Split(text.Trim(), @"(?<=[.!?])\s+"))
+            if (lines.Count > 0 && lines[^1].Length + 1 + sentence.Length <= 150) lines[^1] += " " + sentence; else lines.Add(sentence);
+        return lines;
+    }
+
+    static void Lines(Ctx c, Built b)
+    {
+        var lines = A(b.F, "lines").ToList();
+        var byId = new Dictionary<string, JsonElement>();
+        foreach (var l in lines) if (!byId.TryAdd(S(l, "id"), l)) throw c.No("unique-ids", $"two lines {S(l, "id")}");
+        var talk = c.Mod.Quests.FirstOrDefault(x => x.EditorID == "ARG_Talk");
+        var topics = new Dictionary<string, DialogTopic>();
+        var infos = new Dictionary<string, DialogResponses>();
+        // the owner of a line: the form's quest, or the always-running ARG_Talk for a line open only once the quest has
+        // ended (a stopped quest's topics are never offered; GetStage still reads its last stage)
+        Quest Owner(JsonElement l)
+        {
+            var first = I(l, "first_stage"); var last = I(l, "last_stage");
+            if (!b.Endings.Any(e => e >= first && e <= last)) return b.Q;
+            if (b.Endings.Min() > first) throw c.No("line-window", $"{S(l, "id")} is open before the first ending and into it");
+            return talk ?? throw c.No("owner", $"{S(l, "id")} is open after the quest ends, and there is no ARG_Talk to hold it");
+        }
+        DialogTopic Topic(string key, string edid, Quest owner, Func<DialogTopic, DialogBranch?> branch)
+        {
+            if (topics.TryGetValue(key, out var t)) return t;
+            t = new DialogTopic(c.Key($"dial:{b.Qid}:{key}"), SkyrimRelease.SkyrimSE) { EditorID = edid, Priority = 50 };
+            t.Quest.SetTo(owner.FormKey);
+            var br = branch(t);
+            if (br != null) t.Branch.SetTo(br.FormKey);
+            c.Mod.DialogTopics.Add(t);
+            return topics[key] = t;
+        }
+        DialogBranch Branch(string key, string edid, Quest owner, DialogTopic start, DialogBranch.Flag flags)
+        {
+            var br = new DialogBranch(c.Key($"branch:{b.Qid}:{key}"), SkyrimRelease.SkyrimSE) { EditorID = edid, Category = DialogBranch.CategoryType.Player, Flags = flags };
+            br.Quest.SetTo(owner.FormKey); br.StartingTopic.SetTo(start.FormKey);
+            c.Mod.DialogBranches.Add(br);
+            return br;
+        }
+        DialogTopic Hello(Quest owner)
+        {
+            var after = owner != b.Q;
+            return Topic(after ? "hello-after" : "hello", b.Edid + (after ? "_HelloAfter" : "_Hello"), owner, t =>
+            {
+                t.Category = DialogTopic.CategoryEnum.Misc; t.Subtype = DialogTopic.SubtypeEnum.Hello; t.SubtypeName = new RecordType("HELO");
+                return null;
+            });
+        }
+        DialogResponses Info(string name, JsonElement l, Quest owner, bool begin)
+        {
+            var id = S(l, "id");
+            var info = new DialogResponses(c.Key($"{name}:{b.Qid}:{id}"), SkyrimRelease.SkyrimSE) { Flags = new DialogResponseFlags() };
+            byte k = 1;
+            foreach (var piece in Pieces(S(l, "text"))) info.Responses.Add(new DialogResponse { Text = piece, ResponseNumber = k++, Emotion = Emotion.Neutral });
+            var speaker = PlacedRef(c, b, S(l, "speaker"), $"line {id}'s speaker");
+            if (!b.Refs[S(l, "speaker")].Npc) throw c.No("speaker", $"line {id}: {S(l, "speaker")} is not a person");
+            info.Conditions.Add(Cond(new GetIsReferenceConditionData { Target = { Link = { FormKey = speaker } } }, CompareOperator.EqualTo, 1));
+            info.Conditions.Add(Cond(StageData(b.Q.FormKey), CompareOperator.GreaterThanOrEqualTo, I(l, "first_stage")));
+            info.Conditions.Add(Cond(StageData(b.Q.FormKey), CompareOperator.LessThanOrEqualTo, I(l, "last_stage")));
+            foreach (var cd in A(l, "conditions")) info.Conditions.Add(Condition(c, b, cd));
+            var rows = A(l, "results").SelectMany(res => Result(c, b, res, b.Q.FormKey)).ToList();
+            if (rows.Count > MaxRows) throw c.No("result-limits", $"line {id} holds {rows.Count} rows, over {MaxRows}");
+            var script = new ScriptEntry { Name = LineScript };
+            script.Properties.AddRange(Arrays(rows));
+            script.Properties.Add(new ScriptObjectProperty { Name = "Owner", Object = new FormLink<ISkyrimMajorRecordGetter>(b.Q.FormKey) });
+            script.Properties.Add(new ScriptStringProperty { Name = "Line", Data = id });
+            script.Properties.Add(new ScriptBoolProperty { Name = "Written", Data = B(l, "written") });
+            info.VirtualMachineAdapter = new DialogResponsesAdapter { Scripts = { script } };
+            if (rows.Count > 0)
+            {
+                var frag = new ScriptFragment { ScriptName = LineScript, FragmentName = begin ? "Fragment_Begin" : "Fragment_End" };
+                info.VirtualMachineAdapter.ScriptFragments = begin ? new ScriptFragments { FileName = LineScript, OnBegin = frag } : new ScriptFragments { FileName = LineScript, OnEnd = frag };
+            }
+            infos[id] = info;
+            return info;
+        }
+        // the questions first, so each answer joins its question's branch
+        var answerBranch = new Dictionary<string, (DialogBranch br, Quest owner)>();
+        foreach (var l in lines)
+        {
+            var id = S(l, "id"); var kind = S(l, "kind"); var owner = Owner(l);
+            if (kind is "topic")
+            {
+                var prompt = So(l, "prompt") ?? throw c.No("schema", $"topic line {id} has no prompt");
+                var key = $"topic:{(owner == b.Q ? "" : "after:")}{prompt}";
+                DialogBranch? made = null;
+                var t = Topic(key, $"{b.Edid}_T_{Sha(key)[..8]}", owner, t =>
+                {
+                    t.Name = prompt; t.Category = DialogTopic.CategoryEnum.Topic; t.Subtype = DialogTopic.SubtypeEnum.Custom; t.SubtypeName = new RecordType("CUST");
+                    return made = Branch(key, $"{b.Edid}_B_{Sha(key)[..8]}", owner, t, DialogBranch.Flag.TopLevel);
+                });
+                t.Responses.Add(Info("info", l, owner, false));
+                foreach (var a in A(l, "answers"))
+                    if (!answerBranch.ContainsKey(a.GetString()!)) answerBranch[a.GetString()!] = (c.Mod.DialogBranches.First(x => x.FormKey == t.Branch.FormKey), owner);
+            }
+        }
+        foreach (var l in lines)
+        {
+            var id = S(l, "id"); var kind = S(l, "kind"); var owner = Owner(l);
+            switch (kind)
+            {
+                case "topic": break;
+                case "answer":
+                {
+                    if (!answerBranch.TryGetValue(id, out var ab)) throw c.No("answer", $"answer line {id} is no question's answer");
+                    var prompt = So(l, "prompt") ?? throw c.No("schema", $"answer line {id} has no prompt");
+                    var key = $"answer:{ab.br.EditorID}:{prompt}";
+                    var t = Topic(key, $"{b.Edid}_A_{Sha(key)[..8]}", ab.owner, t =>
+                    {
+                        t.Name = prompt; t.Category = DialogTopic.CategoryEnum.Topic; t.Subtype = DialogTopic.SubtypeEnum.Custom; t.SubtypeName = new RecordType("CUST");
+                        return ab.br;
+                    });
+                    t.Responses.Add(Info("info", l, ab.owner, false));
+                    break;
+                }
+                case "greeting":
+                    Hello(owner).Responses.Add(Info("info", l, owner, false));
+                    break;
+                case "speaks_first":
+                {
+                    if (owner != b.Q) throw c.No("speaks-first", $"{id} is open after the quest ends");
+                    var key = $"speaks-first:{id}";
+                    var t = Topic(key, $"{b.Edid}_SF_{Sha(key)[..8]}", owner, t =>
+                    {
+                        t.Category = DialogTopic.CategoryEnum.Topic; t.Subtype = DialogTopic.SubtypeEnum.Custom; t.SubtypeName = new RecordType("CUST");
+                        return Branch(key, $"{b.Edid}_SFB_{Sha(key)[..8]}", owner, t, DialogBranch.Flag.Blocking);
+                    });
+                    if (t.Responses.Count > 0) throw c.No("speaks-first", $"{id}: one speaks-first line per topic");
+                    t.Responses.Add(Info("info", l, owner, true));
+                    Hello(owner).Responses.Add(Info("hello", l, owner, true));
+                    ForceGreet(c, b, l, t);
+                    break;
+                }
+                default: throw c.No("vocabulary", $"line {id}: no kind {kind}");
+            }
+        }
+        foreach (var l in lines)
+            foreach (var a in A(l, "answers"))
+            {
+                if (!infos.ContainsKey(a.GetString()!) || !byId.TryGetValue(a.GetString()!, out var al) || S(al, "kind") != "answer") throw c.No("refs-exist", $"line {S(l, "id")}: its answer {a.GetString()} is not an answer line");
+                var target = topics.Values.First(t => t.Responses.Contains(infos[a.GetString()!]));
+                if (!infos[S(l, "id")].LinkTo.Any(x => x.FormKey == target.FormKey)) infos[S(l, "id")].LinkTo.Add(target.ToLink());
+            }
+        if (b.Q.Aliases.Count(a => a.PackageData.Count > 0) > 1) throw c.No("speaks-first", "more than one person speaks first");
+    }
+
+    /// The one package a quest has: its speaks-first person walks up and opens the line (a copy of vanilla's
+    /// MS05InductionForcegreet, template ForceGreet), while the line is open, never in combat or through a load door.
+    static void ForceGreet(Ctx c, Built b, JsonElement l, DialogTopic topic)
+    {
+        var r = b.Refs[S(l, "speaker")];
+        if (r.A.PackageData.Count > 0) throw c.No("speaks-first", $"{r.Id} speaks first twice");
+        var src = c.Mods[0].Packages.FirstOrDefault(p => p.FormKey == ForceGreetCopy) ?? throw c.No("speaks-first", "vanilla MS05InductionForcegreet is not in the load order");
+        var p = src.Duplicate(c.Key($"pack:{b.Qid}:{S(l, "id")}"));
+        p.EditorID = $"{b.Edid}_ForceGreet";
+        p.OwnerQuest.SetTo(b.Q.FormKey);
+        p.Conditions.Clear();
+        p.Conditions.Add(Cond(StageData(b.Q.FormKey), CompareOperator.GreaterThanOrEqualTo, I(l, "first_stage")));
+        p.Conditions.Add(Cond(StageData(b.Q.FormKey), CompareOperator.LessThanOrEqualTo, I(l, "last_stage")));
+        p.Conditions.Add(Cond(new IsInCombatConditionData(), CompareOperator.EqualTo, 0));
+        p.Conditions.Add(Cond(new IsPlayerMovingIntoNewSpaceConditionData(), CompareOperator.EqualTo, 0));
+        ((PackageDataTopic)p.Data[7]).Topics.Clear();
+        ((PackageDataTopic)p.Data[7]).Topics.Add(new TopicReference { Reference = { FormKey = topic.FormKey } });
+        var wait = new LocationTarget(); wait.Link.SetTo(r.Placed);
+        ((PackageDataLocation)p.Data[8]).Location = new LocationTargetRadius { Target = wait, Radius = 150 };
+        ((PackageDataLocation)p.Data[62]).Location.Radius = 500;   // the player within 500 of the package start greets
+        ((PackageDataLocation)p.Data[75]).Location.Radius = 300;   // he walks up to 300 from the player
+        c.Mod.Packages.Add(p);
+        r.A.PackageData.Add(p.ToLink());
+    }
+
+    // ---- conditions
+    static ConditionFloat Cond(ConditionData d, CompareOperator op, float v) => new() { CompareOperator = op, ComparisonValue = v, Data = d };
+    static GetStageConditionData StageData(FormKey q) { var d = new GetStageConditionData(); d.Quest.Link.SetTo(q); return d; }
+    static T OnPlayer<T>(T d) where T : ConditionData { d.RunOnType = Mutagen.Bethesda.Skyrim.Condition.RunOnType.Reference; d.Reference.SetTo(Player); return d; }
+    static T On<T>(T d, FormKey r) where T : ConditionData { d.RunOnType = Mutagen.Bethesda.Skyrim.Condition.RunOnType.Reference; d.Reference.SetTo(r); return d; }
+    static readonly Dictionary<string, CompareOperator> Ops = new() { ["="] = CompareOperator.EqualTo, ["!="] = CompareOperator.NotEqualTo, ["<"] = CompareOperator.LessThan,
+        ["<="] = CompareOperator.LessThanOrEqualTo, [">"] = CompareOperator.GreaterThan, [">="] = CompareOperator.GreaterThanOrEqualTo };
+    public static CompareOperator Negate(CompareOperator o) => o switch
+    {
+        CompareOperator.EqualTo => CompareOperator.NotEqualTo, CompareOperator.NotEqualTo => CompareOperator.EqualTo,
+        CompareOperator.GreaterThanOrEqualTo => CompareOperator.LessThan, CompareOperator.LessThan => CompareOperator.GreaterThanOrEqualTo,
+        CompareOperator.GreaterThan => CompareOperator.LessThanOrEqualTo, _ => CompareOperator.GreaterThan,
+    };
+    static ConditionFloat Condition(Ctx c, Built b, JsonElement cd)
+    {
+        var w = S(cd, "is");
+        var (d, op, v) = w switch
+        {
+            "stage_is" => ((ConditionData)StageData(QuestKey(c, S(cd, "quest"))), CompareOperator.EqualTo, (float)I(cd, "stage")),
+            "stage_at_least" => (StageData(QuestKey(c, S(cd, "quest"))), CompareOperator.GreaterThanOrEqualTo, I(cd, "stage")),
+            "stage_done" => (Done(QuestKey(c, S(cd, "quest")), I(cd, "stage")), CompareOperator.EqualTo, 1),
+            "number_compare" => (Glob(Number(c, S(cd, "number"))), Ops.TryGetValue(S(cd, "op"), out var o) ? o : throw c.No("vocabulary", $"no op {S(cd, "op")}"), (float)cd.GetProperty("value").GetDouble()),
+            "in_faction" => (OnPlayer(InFaction(Faction(c, S(cd, "faction")))), CompareOperator.EqualTo, 1),
+            "rank_at_least" => (OnPlayer(FactionRank(Faction(c, S(cd, "faction")))), CompareOperator.GreaterThanOrEqualTo, I(cd, "rank")),
+            "item_count_at_least" => (OnPlayer(Count(Item(c, b, S(cd, "item")))), CompareOperator.GreaterThanOrEqualTo, I(cd, "count")),
+            "gold_at_least" => (OnPlayer(Count(Gold)), CompareOperator.GreaterThanOrEqualTo, I(cd, "gold")),
+            "skill_at_least" => (OnPlayer(new GetActorValueConditionData { ActorValue = SkillOf(c, S(cd, "skill")) }), CompareOperator.GreaterThanOrEqualTo, I(cd, "value")),
+            "alive" => (On(new GetDeadConditionData(), PersonRef(c, b, S(cd, "ref"), "alive")), CompareOperator.EqualTo, 0),
+            "dead" => (On(new GetDeadConditionData(), PersonRef(c, b, S(cd, "ref"), "dead")), CompareOperator.EqualTo, 1),
+            "speaker_is" => (IsRef(PersonRef(c, b, S(cd, "ref"), "speaker_is")), CompareOperator.EqualTo, 1),
+            "regard_at_least" => (On(Rank(), PersonRef(c, b, S(cd, "ref"), "regard_at_least")), CompareOperator.GreaterThanOrEqualTo, I(cd, "value")),
+            "race_is" => (OnPlayer(RaceIs(Race(c, S(cd, "value")))), CompareOperator.EqualTo, 1),
+            "sex_is" => (OnPlayer(new GetIsSexConditionData { MaleFemaleGender = S(cd, "value") switch { "male" => MaleFemaleGender.Male, "female" => MaleFemaleGender.Female, var x => throw c.No("vocabulary", $"no sex {x}") } }), CompareOperator.EqualTo, 1),
+            "spoken_before" => (new GetTalkedToPCConditionData(), CompareOperator.EqualTo, 1),
+            "not_spoken_before" => (new GetTalkedToPCConditionData(), CompareOperator.EqualTo, 0),
+            _ => throw c.No("vocabulary", $"no condition {w}"),
+        };
+        if (B(cd, "not"))
+        {
+            if (w == "number_compare") throw c.No("vocabulary", "number_compare is never negated: its op says it");
+            op = Negate(op);
+        }
+        return Cond(d, op, v);
+    }
+    static GetStageDoneConditionData Done(FormKey q, int s) { var d = new GetStageDoneConditionData { Stage = s }; d.Quest.Link.SetTo(q); return d; }
+    static GetGlobalValueConditionData Glob(FormKey g) { var d = new GetGlobalValueConditionData(); d.Global.Link.SetTo(g); return d; }
+    static GetInFactionConditionData InFaction(FormKey f) { var d = new GetInFactionConditionData(); d.Faction.Link.SetTo(f); return d; }
+    static GetFactionRankConditionData FactionRank(FormKey f) { var d = new GetFactionRankConditionData(); d.Faction.Link.SetTo(f); return d; }
+    static GetItemCountConditionData Count(FormKey i) { var d = new GetItemCountConditionData(); d.ItemOrList.Link.SetTo(i); return d; }
+    static GetIsReferenceConditionData IsRef(FormKey r) { var d = new GetIsReferenceConditionData(); d.Target.Link.SetTo(r); return d; }
+    static GetRelationshipRankConditionData Rank() { var d = new GetRelationshipRankConditionData(); d.TargetNpc.Link.SetTo(Player); return d; }
+    static GetIsRaceConditionData RaceIs(FormKey r) { var d = new GetIsRaceConditionData(); d.Race.Link.SetTo(r); return d; }
+
+    // ---- triggers
+    static void Triggers(Ctx c, Built b)
+    {
+        var seen = new HashSet<string>();
+        foreach (var t in A(b.F, "triggers"))
+        {
+            var id = S(t, "id"); var kind = S(t, "kind"); var pre = I(t, "prerequisite"); var sets = I(t, "sets");
+            if (!seen.Add(id)) throw c.No("unique-ids", $"two triggers {id}");
+            if (kind == "quest_stage")
+            {
+                var other = S(t, "quest");
+                if (!c.Quests.TryGetValue(other, out var o)) throw c.No("trigger", $"{id}: {other} is not built from a form, so its stage cannot move this quest");
+                Add(o.From, I(t, "quest_stage"), new Row(Op.IfStageDone, b.Q.FormKey, pre), new Row(Op.SetStageIfRunning, b.Q.FormKey, sets));
+                b.Labels.Add($"trigger={id}|quest_stage|{other}|{I(t, "quest_stage")}|{pre}|{sets}|");
+                continue;
+            }
+            var r = RefOf(c, b, S(t, "ref"), $"trigger {id}");
+            ScriptEntry s = kind switch
+            {
+                "take" => r.Kind == "thing" ? QuestKit.Script(TakeScript, QuestKit.Obj("myQST", b.Q.FormKey), QuestKit.Int("preReqStage", pre), QuestKit.Int("StageToSet", sets))
+                    : throw c.No("trigger", $"{id}: only a thing is taken"),
+                "use" => r.Created ? throw c.No("trigger", $"{id}: a thing made in a container is taken, not used")
+                    : c.Mods.Any(m => m.Books.Any(x => x.FormKey == r.Base)) ? QuestKit.Script(ReadScript, QuestKit.Int("preReqStage", pre), QuestKit.Int("StageToSet", sets))
+                    : QuestKit.Script(UseScript, QuestKit.Int("stage", sets), QuestKit.Int("prereqStageOPT", pre), QuestKit.Int("TriggerType", 0)),
+                "death" => r.Npc ? QuestKit.OnDeath(b.Q, pre, sets) : throw c.No("trigger", $"{id}: only a person dies"),
+                _ => throw c.No("vocabulary", $"no trigger kind {kind}"),
+            };
+            AddAliasScript(c, b, r, s, id);
+            b.Labels.Add($"trigger={id}|{kind}|{r.Id}|{pre}|{sets}|{(B(t, "choice") ? "choice" : "")}");
+        }
+        // who must live, outside the mortal watch: vanilla's death script, from any stage, sets the failed ending
+        foreach (var m in A(b.F, "must_live"))
+        {
+            if (B(m, "main_message")) { if (b.Kind == "minor") throw c.No("main-message", $"{S(m, "ref")}: a minor quest's death shows no message"); continue; }
+            var r = b.Refs[S(m, "ref")];
+            AddAliasScript(c, b, r, QuestKit.OnDeath(b.Q, -1, I(m, "fail_stage")), $"must live {r.Id}");
+        }
+    }
+    static void AddAliasScript(Ctx c, Built b, Ref r, ScriptEntry s, string what)
+    {
+        if (!b.AliasScripts.TryGetValue(r.Alias, out var l)) b.AliasScripts[r.Alias] = l = [];
+        if (l.Any(x => x.Name == s.Name)) throw c.No("trigger", $"{what}: {r.Id} already carries {s.Name} (one trigger of a kind per ref)");
+        l.Add(s);
+    }
+
+    // ---- the mortal watch: one always-running quest holding every person a main or faction quest cannot go on without
+    static void Watch(Ctx c)
+    {
+        var rows = c.Quests.Values.SelectMany(b => A(b.F, "must_live").Where(m => B(m, "main_message")).Select(m => (b, m)))
+            .OrderBy(x => x.b.Qid, StringComparer.Ordinal).ThenBy(x => S(x.m, "ref"), StringComparer.Ordinal).ToList();
+        if (rows.Count == 0) return;
+        var w = new Quest(c.Key("watch"), SkyrimRelease.SkyrimSE)
+        {
+            EditorID = WatchId, Priority = 0, Type = Mutagen.Bethesda.Skyrim.Quest.TypeEnum.None,
+            Flags = Mutagen.Bethesda.Skyrim.Quest.Flag.StartGameEnabled | Mutagen.Bethesda.Skyrim.Quest.Flag.RunOnce,
+        };
+        c.Mod.Quests.Add(w);
+        var vm = new QuestAdapter();
+        uint id = 0;
+        foreach (var (b, m) in rows)
+        {
+            c.Q = b.Qid; c.Cur = b;
+            var r = b.Refs[S(m, "ref")];
+            var msg = c.Key("watchmsg:" + b.Kind);
+            if (!c.Mod.Messages.Any(x => x.FormKey == msg))
+                c.Mod.Messages.Add(new Message(msg, SkyrimRelease.SkyrimSE)
+                {
+                    EditorID = b.Kind == "main" ? "ARG_MortalWatchMain" : "ARG_MortalWatchFaction",
+                    Description = b.Kind == "main" ? MainMessage : FactionMessage, Flags = Mutagen.Bethesda.Skyrim.Message.Flag.MessageBox,
+                });
+            var a = new QuestAlias { ID = id, Type = QuestAlias.TypeEnum.Reference, Name = $"{b.Qid}|{r.Id}", Flags = QuestAlias.Flag.AllowDisabled | QuestAlias.Flag.Optional };
+            a.ForcedReference.SetTo(r.Placed);
+            w.Aliases.Add(a);
+            var s = new ScriptEntry { Name = AliasScript };
+            s.Properties.AddRange(Arrays([new Row(Op.IfQuestOpen, b.Q.FormKey, 0), new Row(Op.ShowMessage, msg, 0), new Row(Op.SetStageIfRunning, b.Q.FormKey, I(m, "fail_stage"))]));
+            var f = new QuestFragmentAlias { Property = new ScriptObjectProperty { Name = "", Object = new FormLink<ISkyrimMajorRecordGetter>(w.FormKey), Alias = (short)id } };
+            f.Scripts.Add(s);
+            vm.Aliases.Add(f);
+            id++;
+        }
+        w.VirtualMachineAdapter = vm;
+    }
+
+    // ---- the quest's script: every stage's rows in three arrays, a fragment per stage that has rows
+    static void Finish(Ctx c, Built b)
+    {
+        var rows = new List<Row>(); var stages = new List<int>(); var from = new List<int>(); var to = new List<int>();
+        foreach (var s in b.Q.Stages.Select(s => (int)s.Index).OrderBy(x => x))
+        {
+            var mine = b.Own.GetValueOrDefault(s) ?? [];
+            // the start check first, then the stage's results and objectives, then others' rows, then the ending's
+            // closing rows; Stop is always the last row
+            var all = mine.Where(r => r.Op == Op.FailIfDead).Concat(mine.Where(r => r.Op != Op.FailIfDead))
+                .Concat(b.From.GetValueOrDefault(s) ?? []).Concat(b.Tail.GetValueOrDefault(s) ?? []).ToList();
+            if (b.Endings.Contains(s)) all.Add(new Row(Op.StopQuest, FormKey.Null, 0));
+            if (all.Count == 0) continue;
+            stages.Add(s); from.Add(rows.Count); rows.AddRange(all); to.Add(rows.Count);
+        }
+        foreach (var s in b.From.Keys.Concat(b.Own.Keys).Concat(b.Tail.Keys)) if (!b.Q.Stages.Any(x => x.Index == s)) throw c.No("stages-exist", $"rows for stage {s}, which is not a stage");
+        if (rows.Count > MaxRows) throw c.No("result-limits", $"the stages hold {rows.Count} rows once built, over {MaxRows}");
+        var script = new ScriptEntry { Name = StagesScript };
+        script.Properties.AddRange(Arrays(rows));
+        script.Properties.Add(new ScriptIntListProperty { Name = "Stages", Data = stages.ToExtendedList() });
+        script.Properties.Add(new ScriptIntListProperty { Name = "StageFrom", Data = from.ToExtendedList() });
+        script.Properties.Add(new ScriptIntListProperty { Name = "StageTo", Data = to.ToExtendedList() });
+        script.Properties.Add(new ScriptStringProperty { Name = "QuestId", Data = b.Qid });
+        script.Properties.Add(new ScriptStringProperty { Name = "Kind", Data = b.Kind });
+        script.Properties.Add(new ScriptStringListProperty { Name = "Labels", Data = b.Labels.ToExtendedList() });
+        var vm = new QuestAdapter { FileName = StagesScript, Scripts = { script } };
+        foreach (var s in stages) vm.Fragments.Add(new QuestScriptFragment { Stage = (ushort)s, StageIndex = 0, ScriptName = StagesScript, FragmentName = $"Fragment_{s}" });
+        foreach (var (alias, scripts) in b.AliasScripts.OrderBy(x => x.Key))
+        {
+            var f = new QuestFragmentAlias { Property = new ScriptObjectProperty { Name = "", Object = new FormLink<ISkyrimMajorRecordGetter>(b.Q.FormKey), Alias = (short)alias } };
+            f.Scripts.AddRange(scripts);
+            vm.Aliases.Add(f);
+        }
+        b.Q.VirtualMachineAdapter = vm;
+    }
+
+    public static IEnumerable<ScriptProperty> Arrays(List<Row> rows) =>
+    [
+        new ScriptIntListProperty { Name = "Op", Data = rows.Select(r => r.Op).ToExtendedList() },
+        new ScriptObjectListProperty { Name = "What", Objects = rows.Select(r => new ScriptObjectProperty { Object = new FormLink<ISkyrimMajorRecordGetter>(r.What) }).ToExtendedList() },
+        new ScriptFloatListProperty { Name = "Num", Data = rows.Select(r => r.Num).ToExtendedList() },
+    ];
+}
+
+// Nobody is essential or protected (docs/research/skyrim/quest-form-engine-facts.md §3): at the end of the seed, every
+// person of ours, every base a person placed by us or by Black Marsh & Valenwood takes those flags from (through Use
+// Base Data templates), and every alias of a quest of ours is cleared of both. questcheck's `mortal` reads it back.
+static class Mortality
+{
+    const NpcConfiguration.Flag Both = NpcConfiguration.Flag.Essential | NpcConfiguration.Flag.Protected;
+    const QuestAlias.Flag AliasBoth = QuestAlias.Flag.Essential | QuestAlias.Flag.Protected;
+    /// The plugins whose placed people are ours to keep mortal: ours, and Black Marsh & Valenwood's.
+    public static bool Watched(ModKey m, ModKey ours) => m == ours || m.FileName.String.StartsWith("Black Marsh", StringComparison.OrdinalIgnoreCase)
+        || m.FileName.String.StartsWith("Valenwood", StringComparison.OrdinalIgnoreCase);
+
+    /// The record each placed person of the watched plugins takes Essential and Protected from: its base, or through a
+    /// template with Use Base Data, the end of that chain.
+    public static IEnumerable<FormKey> Holders(Func<FormKey, INpcGetter?> npc, IEnumerable<FormKey> bases)
+    {
+        foreach (var b in bases.Distinct())
+        {
+            var k = b; var guard = 0;
+            while (npc(k) is { } n && n.Configuration.TemplateFlags.HasFlag(NpcConfiguration.TemplateFlag.BaseData) && !n.Template.IsNull && guard++ < 16)
+                k = n.Template.FormKey;
+            if (npc(k) != null) yield return k;
+        }
+    }
+
+    public static void Clear(SkyrimMod mod, List<ISkyrimModGetter> mods)
+    {
+        var winners = Survey.Winners<INpcGetter>(mods);
+        INpcGetter? Npc(FormKey k) => (INpcGetter?)mod.Npcs.FirstOrDefault(n => n.FormKey == k) ?? (winners.TryGetValue(k, out var w) ? w.rec : null);
+        var bases = mods.Append(mod).SelectMany(m => m.EnumerateMajorRecords<IPlacedNpcGetter>().Where(r => Watched(r.FormKey.ModKey, mod.ModKey)).Select(r => r.Base.FormKey))
+            .Concat(mod.Npcs.Select(n => n.FormKey));
+        int npcs = 0, aliases = 0;
+        foreach (var k in Holders(Npc, bases).Distinct())
+        {
+            var n = Npc(k)!;
+            if ((n.Configuration.Flags & Both) == 0) continue;
+            var mine = mod.Npcs.FirstOrDefault(x => x.FormKey == k);
+            if (mine == null) { mine = (Npc)n.DeepCopy(); mod.Npcs.Add(mine); }
+            mine.Configuration.Flags &= ~Both;
+            npcs++;
+        }
+        foreach (var q in mod.Quests.Where(q => q.FormKey.ModKey == mod.ModKey))
+            foreach (var a in q.Aliases.Where(a => a.Flags is { } f && (f & AliasBoth) != 0)) { a.Flags &= ~AliasBoth; aliases++; }
+        Console.WriteLine($"mortality: {npcs} people's bases and {aliases} aliases cleared of Essential and Protected");
+    }
+}

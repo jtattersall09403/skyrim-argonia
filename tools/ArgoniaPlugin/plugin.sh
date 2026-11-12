@@ -4,7 +4,6 @@
 #                      needs the game data and staged profile), plugin/Argonia.ini -> out/Argonia.ini
 #   plugin.sh check    build, then serialize it back and diff with plugin/Argonia (round trip clean), then read the
 #                      ESP back (tools/ArgoniaPlugin list): every override carries its change; writes the records table
-#   plugin.sh blocktest  build, then Phase 3's agent check of ARG_BlockTest from the ESP and out/gpu/papyrus (the .pex)
 #   plugin.sh mqcheck  build, then the read-back of MQ04 and MQ05 from the ESP and out/gpu/papyrus against the record (MQCheck.cs)
 #   plugin.sh cleancheck  build, then read the slice's clean-ups back from the ESP (CleanUp.cs)
 #   plugin.sh bccheck  build, then read the Chainbreakers quests back from the ESP and the .pex (ChainbreakersCheck.cs)
@@ -13,14 +12,22 @@
 #                      endings, zones, people, offers, doors (QuestCheck.cs; --selftest runs its rules on hand-made models)
 #   plugin.sh placecheck build, then check every actor and object the plugin places against the winning navmesh, the
 #                      surface under it and the statics round it (PlaceCheck.cs)
-#   plugin.sh seed     regenerate plugin/Argonia from shutdown.json and the load order's winners (game data needed:
-#                      $ARGONIA_GAME_ROOT/Data or ~/games/skyrimse/Data, the staged profile ~/.argonia/stack/MO2)
+#   plugin.sh questform-read <dir>  build, then turn every quest of ours built from a quest form back into its form,
+#                      from the ESP alone (QuestFormRead.cs): <dir>/<quest id>.json
+#   plugin.sh questform-test  the generic builder end to end, off game: the block test's forms and the example opening's
+#                      pier copy (tools/tests/data/questform) seeded into a scratch plugin, read back, compared with the
+#                      forms (apart from resolved positions), the read-back forms checked, questcheck run on it
+#   plugin.sh seed     regenerate plugin/Argonia from shutdown.json, the load order's winners and the quest forms (every
+#                      quest record that fits, compiled fresh to out/questform, and tools/questform/blocktest); game data
+#                      needed: $ARGONIA_GAME_ROOT/Data or ~/games/skyrimse/Data, the staged profile ~/.argonia/stack/MO2
 set -euo pipefail
 repo=$(cd "$(dirname "$0")/../.." && pwd); cd "$repo"
 export DOTNET_ROOT="$HOME/.dotnet" PATH="$HOME/.dotnet:$PATH" DOTNET_CLI_TELEMETRY_OPTOUT=1 DOTNET_NOLOGO=1
 spriggit=("$HOME/.argonia/spriggit/0.41.0/Spriggit.CLI")  # pinned in infra/build-vm/toolchain.lock
 spr=(-p Spriggit.Yaml -v 0.41.0)
 yaml=plugin/Argonia; esp=out/Argonia.esp; bin=out/tools/ArgoniaPlugin
+py=$(ls "$HOME/.argonia/venv/bin/python" 2>/dev/null || echo python3)
+forms() { rm -rf out/questform; "$py" -m tools.questform compile --all --out out/questform --owed-ok >/dev/null; }  # every record that fits
 tool() { mkdir -p "$HOME/.argonia"; flock -o "$HOME/.argonia/dotnet-build.lock" dotnet build -c Release -o "$bin" tools/ArgoniaPlugin >/dev/null && dotnet "$bin/ArgoniaPlugin.dll" "$@"; }
 build() {
   mkdir -p out; "${spriggit[@]}" deserialize -i "$yaml" -o "$esp" "${spr[@]}" >/dev/null
@@ -54,7 +61,6 @@ case "${1:-}" in
   cleancheck) build; tool cleancheck "$esp" "${lo[@]}" ;;
   inspect) loadorder; [ -f "$esp" ] && lo+=("$esp"); tool inspect "$2" "${lo[@]}" ;;  # the load order, our built ESP last
   musicprobe) loadorder; tool musicprobe "${lo[@]}" ;;
-  blocktest) build; tool blocktest "$esp" out/gpu/papyrus "${lo[@]}" ;;
   mainquestcheck) build; tool mainquestcheck "$esp" out/gpu/papyrus "${lo[@]}" ;;
   localcheck) build; tool localcheck "$esp" out/gpu/papyrus "${lo[@]}" ;;
   bccheck) build; tool bccheck "$esp" out/gpu/papyrus "${lo[@]}" ;;
@@ -62,8 +68,18 @@ case "${1:-}" in
   questcheck) build; tool questcheck "$esp" papyrus "${lo[@]}" ;;
   nightreedcheck) build; tool nightreedcheck "$esp" out/gpu/papyrus "${lo[@]}" ;;
   placecheck) build; tool placecheck "$esp" "${lo[@]}" ;;
-  seed)
+  questform-read) build; tool questform-read "$esp" "$2" "${lo[@]}" ;;
+  questform-test)
     loadorder
+    tmp=$(mktemp -d); trap 'rm -rf "$tmp"' EXIT
+    cp plugin/questform-formids.json "$tmp/ids.json"
+    QUESTFORM_DIRS=tools/questform/blocktest:tools/tests/data/questform QUESTFORM_IDS="$tmp/ids.json" tool seed "$tmp/Argonia.esp" "${lo[@]}" | grep -E "^questform|^mortality"
+    tool questform-read "$tmp/Argonia.esp" "$tmp/read" "${lo[@]}"
+    "$py" -m tools.questform same tools/questform/blocktest/*.json tools/tests/data/questform/*.json --read "$tmp/read"
+    "$py" -m tools.questform check "$tmp"/read/*.json
+    tool questcheck "$tmp/Argonia.esp" papyrus "${lo[@]}" | tail -3 ;;
+  seed)
+    forms; loadorder
     tmp=$(mktemp -d); trap 'rm -rf "$tmp"' EXIT
     tool seed "$tmp/Argonia.esp" "${lo[@]}"
     "${spriggit[@]}" serialize -i "$tmp/Argonia.esp" -o "$tmp/y" -g SkyrimSE "${spr[@]}" >/dev/null

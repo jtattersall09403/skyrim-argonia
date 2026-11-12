@@ -1,7 +1,8 @@
 """The quest form's command line (docs/design/quest-form.md).
 
     python3 -m tools.questform check <form.json...>              # the schema and every structural rule
-    python3 -m tools.questform compile <quest id...|--all> [--out dir]   # quest record -> form (default out/questform)
+    python3 -m tools.questform compile <quest id...|--all> [--out dir] [--owed-ok]   # quest record -> form
+        (default out/questform; --owed-ok: a quest on the owed list that does not fit is not a failure; the seed's way)
     python3 -m tools.questform gate                              # make check: every staged record against the owed list
     python3 -m tools.questform owed --write                      # rewrite the listed quests' terms (never adds one)
     python3 -m tools.questform diff <designed> <built>           # every difference, designed form against built
@@ -84,6 +85,7 @@ def main(argv: list[str] | None = None) -> int:
     k.add_argument("quests", nargs="*")
     k.add_argument("--all", action="store_true")
     k.add_argument("--out", default=str(OUT))
+    k.add_argument("--owed-ok", action="store_true")
     sub.add_parser("gate")
     o = sub.add_parser("owed")
     o.add_argument("--write", action="store_true")
@@ -107,10 +109,14 @@ def main(argv: list[str] | None = None) -> int:
     if a.cmd == "compile":
         qids = qc.staged_quests(w) if a.all else a.quests
         bad = 0
+        owed = load_owed() if a.owed_ok else {}
         for qid in qids:
             form, terms, lines = terms_of(w, qid)
             if not terms:
                 print(f"{qid}: wrote {qc.write(form, Path(a.out))}")
+                continue
+            if qid in owed:
+                print(f"{qid}: owed, not built ({', '.join(terms)})")
                 continue
             bad += 1
             print(f"{qid}: does not fit ({', '.join(terms)})")

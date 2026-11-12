@@ -1,0 +1,53 @@
+{
+ "version": 1,
+ "quest": {
+  "id": "quest.test.blocktest-two",
+  "editor_id": "ARG_BlockTestTwo",
+  "name": "Block Test, the Second",
+  "kind": "minor",
+  "start": {"by": "quest_stage", "quest": "quest.test.blocktest", "quest_stage": 70, "stage": 10}
+ },
+ "stages": [
+  {"number": 10, "shown": true, "ending": "none", "results": [],
+   "journal": "The Dock Keeper's walker is waiting for me on the dock."},
+  {"number": 20, "shown": true, "ending": "none", "results": [],
+   "journal": "The walker told me to wait by the bollard until the Dock Keeper says I have passed."},
+  {"number": 30, "shown": false, "ending": "none", "results": [], "journal": null},
+  {"number": 90, "shown": true, "ending": "failed", "results": [],
+   "journal": "The walker is dead. The second block test failed."},
+  {"number": 100, "shown": true, "ending": "completed", "results": [],
+   "journal": "The Dock Keeper said I passed, so the second block test is done."}
+ ],
+ "objectives": [
+  {"number": 10, "text": "Speak to the walker on the dock.", "shown_at": [10], "completed_at": [20], "targets": ["person.test.walker"]},
+  {"number": 20, "text": "Wait by the bollard for the Dock Keeper's word.", "shown_at": [20], "completed_at": [100],
+   "targets": ["marker.test.bollard", "person.test.walker"]}
+ ],
+ "refs": [
+  {"id": "person.test.walker", "kind": "person", "enabled": true,
+   "placement": {"base": {"kind": "template_person", "id": "02A1EE:Black Marsh.esm"}, "anchor": {"near": "02A20A:Black Marsh.esm", "rule": "navmesh"}},
+   "at": {"cell": "005A21:Black Marsh.esm", "interior": false, "x": 30750.0, "y": -2850.0, "z": 3.0}},
+  {"id": "marker.test.bollard", "kind": "marker", "enabled": true,
+   "placement": {"base": {"kind": "existing_base", "id": "00003B:Skyrim.esm"}, "anchor": {"near": "02A20A:Black Marsh.esm", "rule": "navmesh"}},
+   "at": {"cell": "005A21:Black Marsh.esm", "interior": false, "x": 30760.0, "y": -2950.0, "z": 3.0}}
+ ],
+ "lines": [
+  {"id": "walker.talk", "speaker": "person.test.walker", "kind": "topic", "prompt": "The keeper sent me.",
+   "text": "Then wait by the bollard until the keeper says you have passed. Block test: this quest was started by the first one's stage.",
+   "written": true, "conditions": [], "results": [{"do": "set_stage", "stage": 20}],
+   "first_stage": 10, "last_stage": 10, "answers": []},
+  {"id": "walker.fight", "speaker": "person.test.walker", "kind": "topic", "prompt": "Fight me.",
+   "text": "If you want a fight, you have one. Block test: speaker_hostile.", "written": true, "conditions": [],
+   "results": [{"do": "speaker_hostile"}], "first_stage": 10, "last_stage": 30, "answers": []},
+  {"id": "walker.word", "speaker": "person.test.walker", "kind": "topic", "prompt": "Has the keeper given his word?",
+   "text": "He has: you passed. Block test: the first quest's stage moved this one (a quest-stage trigger).", "written": true,
+   "conditions": [], "results": [{"do": "set_stage", "stage": 100}], "first_stage": 30, "last_stage": 30, "answers": []}
+ ],
+ "triggers": [
+  {"id": "quest_stage.quest.test.blocktest.20-30", "kind": "quest_stage", "quest": "quest.test.blocktest", "quest_stage": 100,
+   "prerequisite": 20, "sets": 30}
+ ],
+ "must_live": [
+  {"ref": "person.test.walker", "fail_stage": 90, "main_message": false}
+ ]
+}
