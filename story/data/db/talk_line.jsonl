@@ -838,13 +838,13 @@
 {"talker":"0C72A4:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Watches-The-Road. I guard the north road into town. I report every lapse I see. That includes the lapses of other guards."}
 {"talker":"0C72A4:Black Marsh.esm","topic":"talk.self","ord":2,"text":"I am a guard. I watch the north road and I report what I find."}
 {"talker":"0C72A4:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Raxa-Tum, the guard at the north landing, is usually just north-north-west of here. He fishes on duty. He should be dismissed."}
-{"talker":"0C72A6:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The cooking fire? Walk south past the house, about three hundred paces. You will find it there."}
+{"talker":"0C72A6:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The cooking fire? Walk south a fair way, past the house. You will find it there."}
 {"talker":"0C72A6:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"The water is good today. Sit by me a while."}
 {"talker":"0C72A6:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"I am fishing, so please speak softly."}
-{"talker":"0C72A6:Black Marsh.esm","topic":"talk.here","ord":1,"text":"This is the north landing of Black Rose. My boat is there, forty paces to the north-north-east."}
+{"talker":"0C72A6:Black Marsh.esm","topic":"talk.here","ord":1,"text":"This is the north landing of Black Rose. My boat is just north-north-east of here."}
 {"talker":"0C72A6:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"Ask Keeps-The-Stone about the Lilmothiit. I know the water and the fish. That is enough for me."}
 {"talker":"0C72A6:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Okeemu. I fish from the north landing with my family. My boat is the oldest at the landing."}
-{"talker":"0C72A6:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Heshra, the fishwife at the north landing, is usually about five paces west of here."}
+{"talker":"0C72A6:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Heshra, the fishwife at the north landing, is usually just west of here."}
 {"talker":"0C72A7:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"Walk south-east about sixty-five paces. Black Rose will be on your left. Then south about eighty paces, until the statue is on your left. Then south-east about sixty-five paces, until the house is on your left. Then south about ninety paces. The longboat is there."}
 {"talker":"0C72A7:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"For you I will not haggle. Come closer and look at the catch."}
 {"talker":"0C72A7:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"What do you want? If you are buying, say what you want and what you will pay."}
