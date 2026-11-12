@@ -82,3 +82,18 @@ or LOD rebuild.
    and sourced again, until every region has its full range of sizes, its own signatures and no stand-ins.
 
 Later, with a LOD build: one landmark silhouette per region, and how open or closed the canopy is.
+
+# Delivered (round 4: integration, distinctiveness, deploy)
+
+- Every lane's work integrated and rebuilt once on the full world from `tools/newworld/rebuild.sh run`; terrain, land
+  and landcover untouched (skipped, same inputs); LOD not rebuilt (far billboards of seated or removed trees stay until
+  the next LOD build).
+- In the built world: 5,979 creatures and people at fixed levels by band (D0 26, D1 353, D2 1,745, D3 2,108, D4 1,189,
+  D5 558), 113 hostile bands, 9,218 critter spawners, 7,212 picking plants, 602 small signature things, Murkwood's Hist
+  lanterns near places; 59,547 floating things seated and 6,003 hanging moss strands removed; every region its own
+  weather set, sound beds, water variant, flower colour and music.
+- Fixes found by the integration: copied actors keep a fixed level (decision 0035); one record serving two sizes gets
+  an actor a size; the ecology overlap check judges neighbours; the water and mist read-backs read a region's water
+  variant as its kind; near-sighted regions' fair-weather fog leaves the sky; the level-up in Skyrim's two parts
+  ([level-up audio](../../research/skyrim/level-up-audio.md)); every ArgoniaPlugin build takes one lock.
+- The owner's walk: [nw-03b-walk](nw-03b-walk.md).
