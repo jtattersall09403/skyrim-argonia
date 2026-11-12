@@ -200,12 +200,12 @@
 {"talker":"01CD04:Black Marsh North.esp","topic":"talk.greet-friend","ord":1,"text":"Stand here, if you wish. I say that to very few, so do not make me regret it."}
 {"talker":"01CD04:Black Marsh North.esp","topic":"talk.greet-stranger","ord":1,"text":"Outlander. Say what you want and be brief; I am a slave, not a guide."}
 {"talker":"01CD04:Black Marsh North.esp","topic":"talk.greet-stranger","ord":2,"text":"What do you want, outlander? Speak plainly. I have no use for pleasantries."}
-{"talker":"01CD04:Black Marsh North.esp","topic":"talk.here","ord":1,"text":"Thorn, outlander, where I belong to someone else. There is a house about ten paces east of here, if that is what you came to see."}
+{"talker":"01CD04:Black Marsh North.esp","topic":"talk.here","ord":1,"text":"Thorn, outlander, where I belong to someone else. There is a house just east of here, if that is what you came to see."}
 {"talker":"01CD04:Black Marsh North.esp","topic":"talk.lore","ord":1,"text":"Black Marsh? Ask Doveth Aralen about the Dres, outlander. I know their history and my own part in it, and you will get it more gently from Doveth than from me."}
 {"talker":"01CD04:Black Marsh North.esp","topic":"talk.lore","ord":2,"text":"Ask Keeps-The-Lock how an Owing is sold, outlander. Mine has been sold twice, and Keeps-The-Lock bought part of one. I think of Keeps-The-Lock as a merchant in flesh."}
-{"talker":"01CD04:Black Marsh North.esp","topic":"talk.secret","ord":1,"text":"I tell this to no stranger, outlander. I will not tell it twice. My mother's son was sold away on the big ship, a hundred and sixty paces south of here."}
+{"talker":"01CD04:Black Marsh North.esp","topic":"talk.secret","ord":1,"text":"I tell this to no stranger, outlander. I will not tell it twice. My mother's son was sold away on the big ship, a short way south of here."}
 {"talker":"01CD04:Black Marsh North.esp","topic":"talk.self","ord":1,"text":"Myself? Ilvesa Drethan, a slave, outlander; the word is honest and I prefer honest words. My Owing has been sold twice, and each time it carried me further from my family."}
-{"talker":"01CD04:Black Marsh North.esp","topic":"talk.someone","ord":1,"text":"Wazei-Ru, the guard at the cage doors on the west side, is about twenty paces south-south-east of here. Kind, for a guard. Do not mistake that for much."}
+{"talker":"01CD04:Black Marsh North.esp","topic":"talk.someone","ord":1,"text":"Wazei-Ru, the guard at the cage doors on the west side, is just south-south-east of here. Kind, for a guard. Do not mistake that for much."}
 {"talker":"01CD0A:Black Marsh North.esp","topic":"talk.directions","ord":1,"text":"The big ship? Walk south a hundred and seventy-five paces or so, outlander. It is there."}
 {"talker":"01CD0A:Black Marsh North.esp","topic":"talk.directions","ord":2,"text":"Walk south, a hundred and seventy-five paces or so, outlander. You will see the big ship."}
 {"talker":"01CD0A:Black Marsh North.esp","topic":"talk.greet-friend","ord":1,"text":"Ah, you. Sit a moment. Have you eaten? You look thinner."}
