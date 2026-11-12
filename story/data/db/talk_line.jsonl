@@ -331,12 +331,12 @@
 {"talker":"03E413:Black Marsh North.esp","topic":"talk.greet-stranger","ord":1,"text":"Halt, citizen. State your business. Keep your hands clear of your weapon."}
 {"talker":"03E413:Black Marsh North.esp","topic":"talk.self","ord":1,"text":"I am Hard-Scale. I am a soldier in the pay of the Lilmoth council. I guard the south side of Hereguard, where the crop is grown. Nothing happens here while I stand watch."}
 {"talker":"03E413:Black Marsh North.esp","topic":"talk.someone","ord":1,"text":"Rakhee-Tul stands five paces north of this bench. He holds the easier post. He sleeps on it. Report to him if you must, citizen. Do not expect much."}
-{"talker":"03E415:Black Marsh North.esp","topic":"talk.advice","ord":1,"text":"If your gear needs tightening, boss, there is an armour workbench about twenty paces north-north-east of here. Use it before you go wandering, not after."}
-{"talker":"03E415:Black Marsh North.esp","topic":"talk.danger","ord":1,"text":"Mind the fly amanita, boss. It grows about thirty paces west-south-west of here. You do not want to eat it."}
+{"talker":"03E415:Black Marsh North.esp","topic":"talk.advice","ord":1,"text":"If your gear needs tightening, boss, there is an armour workbench just north-north-east of here. Use it before you go wandering, not after."}
+{"talker":"03E415:Black Marsh North.esp","topic":"talk.danger","ord":1,"text":"Mind the fly amanita, boss. It grows just west-south-west of here. You do not want to eat it."}
 {"talker":"03E415:Black Marsh North.esp","topic":"talk.greet-friend","ord":1,"text":"Well, look who it is. Come over, my friend. There is shade here and Hard-Scale is not looking. Sit a while."}
 {"talker":"03E415:Black Marsh North.esp","topic":"talk.greet-stranger","ord":1,"text":"Hm. New face, boss. Whatever you want, make it quick. I am on duty and Hard-Scale likes to count."}
-{"talker":"03E415:Black Marsh North.esp","topic":"talk.loot","ord":1,"text":"There is a beached ship about seventy paces south of here. Iron and leather armour, weapons, a silver plate and a captain's journal lie by it, untouched. I am only saying, boss."}
-{"talker":"03E415:Black Marsh North.esp","topic":"talk.loot","ord":2,"text":"A passage door near that ship leads in, about seventy-five paces south of here. Do not tell Hard-Scale you heard it from me."}
+{"talker":"03E415:Black Marsh North.esp","topic":"talk.loot","ord":1,"text":"There is a beached ship a short way south of here. Iron and leather armour, weapons, a silver plate and a captain's journal lie by it. I am only saying, boss."}
+{"talker":"03E415:Black Marsh North.esp","topic":"talk.loot","ord":2,"text":"A passage door near that ship leads in, a short way south of here. Do not tell Hard-Scale you heard it from me."}
 {"talker":"03E415:Black Marsh North.esp","topic":"talk.self","ord":1,"text":"Rakhee-Tul. The Lilmoth council pays me to guard the south side of this plantation with Hard-Scale. I took the post for the pay. I will not pretend otherwise."}
 {"talker":"03E418:Black Marsh North.esp","topic":"talk.greet-friend","ord":1,"text":"You have come back, my friend. Sit out of the rain and read something. I have kept the dry volumes for you."}
 {"talker":"03E418:Black Marsh North.esp","topic":"talk.greet-stranger","ord":1,"text":"Reader. Mind the pages, and keep your wet hands off the stock."}
