@@ -820,14 +820,14 @@
 {"talker":"0C729E:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"Hm. Ask Quintel about Emperor Pelagius. I would like to read his tale in a book one day."}
 {"talker":"0C729E:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Iron-Jaw. A cudgel struck my face in my first year. The name stayed with me. I have stood in the north district ever since. I can read well."}
 {"talker":"0C729E:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Shaleem is the person you want. Shaleem is a guard in the north district. She is the best guard in the town. You will usually find Shaleem just south-south-east of here."}
-{"talker":"0C72A3:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The cooking fire? Go south past Black Rose, about three hundred and thirty-five paces. The cooking fire is there."}
+{"talker":"0C72A3:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The cooking fire? South, a fair way past Black Rose. It is there."}
 {"talker":"0C72A3:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"Come and stand with me by the boats a while. I could use the company."}
 {"talker":"0C72A3:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"I do not know you. Why are you at the landing?"}
 {"talker":"0C72A3:Black Marsh.esm","topic":"talk.greet-stranger","ord":2,"text":"You are a stranger here. Keep clear of the boats."}
-{"talker":"0C72A3:Black Marsh.esm","topic":"talk.here","ord":1,"text":"There is a boat about twenty paces north-north-west of here. A rowing boat lies thirty-five paces north."}
+{"talker":"0C72A3:Black Marsh.esm","topic":"talk.here","ord":1,"text":"A boat lies just north-north-west of here. A rowing boat lies just north."}
 {"talker":"0C72A3:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"Black Rose and Lilmoth have been rivals for as long as anyone has kept count. I am a guard, not a teller of old tales."}
 {"talker":"0C72A3:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Raxa-Tum. I guard the north landing, where the fishing boats tie up. I was a fisher myself once."}
-{"talker":"0C72A3:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Okeemu is the best fisher in town. You will usually find Okeemu about twenty-five paces south-west of here, at the north landing."}
+{"talker":"0C72A3:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Okeemu is the best fisher in town. You will usually find Okeemu just south-west of here, at the north landing."}
 {"talker":"0C72A4:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The jail. Walk south-west about one hundred and seventy-five paces. Black Rose Jail is there."}
 {"talker":"0C72A4:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"You have come up the road again, my friend. I keep the road, as ever. Speak if you wish."}
 {"talker":"0C72A4:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"State your business on the north road."}
