@@ -42,6 +42,7 @@ RANGES = (
     ("added", 0x700000, 0x73FFFF, "a thing an edit added: given once by its row, counted (edits.py)", 0),
     ("counted", 0x740000, 0x7FFFFF, "a producer's reference without an id of its own (the mist), counted in shard order (NewWorld.cs)", 21604),
     ("water", 0x800000, 0xEFFFFF, "registry block: water types and their graded blends, registered since", 0),
+    ("ecology", 0xF00000, 0xFDFFFF, "an ecology actor: a slot by its identity's digest (ecology/place.py fid_of)", 0),
     ("teleports", 0xFE0000, 0xFEFFFF, "teleport marker k: 0xFE0000 + k (NewWorldMap.cs)", 266),
     ("map-markers", 0xFF0000, 0xFFFFFF, "map marker k: 0xFF0000 + k (NewWorldMap.cs)", 116),
 )
@@ -181,6 +182,11 @@ def faults(plugin: Path | None = None, producers: list[Path] | None = None, skip
         bare += b
     if bare:
         span_ids("counted", bare, "references counted in shard order")
+    eco = plugin / "ecology"
+    if "ecology" not in skip and eco.is_dir():
+        given, _ = shard_ids(eco)
+        counts["ecology"] = len(given)
+        take(given, "ecology actors", ("ecology",))
     if "map" not in skip:
         for f, name, key in (("map/teleports.json", "teleports", "teleports"), ("map/markers.json", "map-markers", "markers")):
             p = plugin / f

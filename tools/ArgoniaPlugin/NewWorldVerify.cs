@@ -117,6 +117,19 @@ static class NewWorldVerify
         cw.WriteLine("x\ty\tedid\tland\twater\twater_h\tregion\trefs\tnavm\tnavm_tris\tland_quads\tgrass_quads\th_min\th_max\th_mean");
         using var gz = new GZipStream(File.Create(Path.Combine(outDir, "refs.tsv.gz")), CompressionLevel.Fastest);
         using var rw = new StreamWriter(gz);
+        // placed actors (ecology): one row each, and our ANW_Eco_ NPC_ records with the level they carry
+        using var ew = new StreamWriter(Path.Combine(outDir, "ecology.tsv"));
+        ew.WriteLine("cx\tcy\tfid\tx\ty\tz\trz\tbase\tbase_edid\tsig");
+        using (var nw = new StreamWriter(Path.Combine(outDir, "eco_npcs.tsv")))
+        {
+            nw.WriteLine("edid\tkey\tlevel_kind\tlevel\tstats_template\tautocalc");
+            foreach (var n in mod.Npcs.Where(n => (n.EditorID ?? "").StartsWith("ANW_Eco_")))
+            {
+                var lv = n.Configuration.Level;
+                var (kind, val) = lv switch { INpcLevelGetter l when l is NpcLevel nl => ("fixed", (double)nl.Level), PcLevelMult pm => ("pc_mult", (double)pm.LevelMult), _ => ("other", 0d) };
+                nw.WriteLine($"{n.EditorID}\t{n.FormKey}\t{kind}\t{val}\t{n.Configuration.TemplateFlags.HasFlag(NpcConfiguration.TemplateFlag.Stats)}\t{n.Configuration.Flags.HasFlag(NpcConfiguration.Flag.AutoCalcStats)}");
+            }
+        }
         rw.WriteLine("cx\tcy\tbase\tsig\tedid\tmodel\tfrom\tx\ty\tz\trx\try\trz\tscale\tground\tgx\tgy\tfid");
         float water = ws.LandDefaults?.DefaultWaterHeight ?? 0;
         foreach (var b in ws.SubCells) foreach (var sb in b.Items) foreach (var c in sb.Items)
@@ -157,6 +170,12 @@ static class NewWorldVerify
                 int nref = 0;
                 foreach (var r in c.Temporary.Concat(c.Persistent))
                 {
+                    if (r is IPlacedNpcGetter pn && pn.Placement is { } pp)
+                    {
+                        recs.TryGetValue(pn.Base.FormKey, out var nb);
+                        ew.WriteLine($"{x}\t{y}\t{pn.FormKey.ID:X6}\t{pp.Position.X:F2}\t{pp.Position.Y:F2}\t{pp.Position.Z:F2}\t{pp.Rotation.Z:F5}\t{pn.Base.FormKey}\t{nb?.Edid}\t{nb?.Sig}");
+                        continue;
+                    }
                     if (r is not IPlacedObjectGetter po || po.Placement is null) continue;
                     var pos = po.Placement.Position; var rot = po.Placement.Rotation;
                     if (po.EditorID == "ArgoniaNWStartMarker")

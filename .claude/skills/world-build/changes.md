@@ -98,6 +98,7 @@ edit whose thing the rules no longer place. Answer each with a new edit or with 
 | The read-back | `tools/newworld/verify.py` | `readback`, `relief` | nothing | all else | nothing |
 | The table of form id ranges | `tools/newworld/idspace.py` | `place`, `edits` | every stage after `place` | `terrain` to `landings`, `paint`, `atmosphere` | as placement rules |
 | What a stage reads, or the rebuild itself | `tools/newworld/rebuild.py` | `readback` | nothing. A stage whose read is named more narrowly keeps its record while the wider read it recorded is unchanged: the main tree's next plan writes the record under the new name and nothing is built again | all else | nothing |
+| Creatures, hostile people or their rules | `newworld/sources/ecology/` (region tables, `bindings.json`, `npc_encounters.json`), `tools/newworld/ecology/place.py` | `ecology` | `esm`, `readback`, `upload` | everything before `ecology`: actors live in `plugin/ecology/`, beside `refs/`, so the navmesh and the LOD never read them | the world file only; no LOD |
 
 A tool fix that should change nothing is proved by the plan and the run together: the plan shows its one stage
 stale and the rest following, and the run's summary shows every following stage skipped. If a following stage

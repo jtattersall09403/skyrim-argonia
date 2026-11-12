@@ -106,9 +106,19 @@ sealed class ForeignCopy : IDisposable
         sourceOf[ours] = src.FormKey;
         var dup = (IMajorRecord)src.Duplicate(ours);
         dup.EditorID = $"ANW_{Initials(file)}_{src.EditorID ?? src.FormKey.IDString()}";
+        var placed = new Dictionary<FormKey, FormKey>();
         foreach (var l in src.EnumerateFormLinks().Select(l => l.FormKey).Distinct().ToList())
-            if (!l.IsNull && !allowed.Contains(l.ModKey) && !Map.ContainsKey(l)) Get(l, file);
+            if (!l.IsNull && !allowed.Contains(l.ModKey) && !Map.ContainsKey(l))
+            {
+                if (WorldBound(Find(l, file))) { placed[l] = FormKey.Null; continue; }
+                Get(l, file);
+            }
         dup.RemapLinks(Map);
+        if (placed.Count > 0)
+        {
+            dup.RemapLinks(placed);
+            Console.WriteLine($"foreign copy: {dup.EditorID}: {placed.Count} link(s) into the source's world (placed refs, cells, quests, dialogue) nulled");
+        }
         DropDangling(dup);
         mod.GetTopLevelGroup(dup.GetType()).AddUntyped(dup);
         Copies[ours] = dup;
@@ -116,6 +126,15 @@ sealed class ForeignCopy : IDisposable
     }
 
     public readonly Dictionary<FormKey, IMajorRecord> Copies = new();
+
+    // A record that belongs to its plugin's world or story (a placed reference, a cell, a worldspace, a quest, its
+    // dialogue, a navmesh, a story-manager node): a copy never carries one over; its link to it is nulled.
+    static bool WorldBound(IMajorRecordGetter? r) => r is IPlacedGetter or ICellGetter or IWorldspaceGetter or IQuestGetter
+        or IDialogTopicGetter or IDialogResponsesGetter or INavigationMeshGetter or ILandscapeGetter or IAStoryManagerNodeGetter;
+
+    IMajorRecordGetter? Find(FormKey fk, string file) =>
+        Plugin(file).EnumerateMajorRecords().FirstOrDefault(x => x.FormKey == fk)
+        ?? (Exists(fk) ? Plugin(fk.ModKey.FileName).EnumerateMajorRecords().FirstOrDefault(x => x.FormKey == fk) : null);
 
     // "Black Marsh North.esp" -> BMN, "King of the Murkmire.esp" -> KotM, "DepthsOfSkyrim.esp" -> DOS
     public static string Initials(string file) =>

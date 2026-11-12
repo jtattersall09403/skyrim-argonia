@@ -30,6 +30,7 @@ import csv
 import gzip
 import hashlib
 import json
+import math
 import os
 import re
 import shutil
@@ -62,7 +63,7 @@ def own_type(edid: str) -> str:
     return m.group(1) if m else edid
 MIST = re.compile(r"^FXMist", re.I)
 # group -> whose output it reads: the terrain build, the written ESM, or work done after it on other machines
-GROUPS = {"plugin": "esm", "land": "esm", "textures": "esm", "water": "esm", "refs": "esm", "mist": "esm",
+GROUPS = {"plugin": "esm", "land": "esm", "textures": "esm", "water": "esm", "refs": "esm", "ecology": "esm", "mist": "esm",
           "atmosphere": "esm", "height fog": "esm", "relief": "terrain", "navmesh": "esm", "lod": "lod", "map": "esm",
           "start": "esm", "deploy": "deploy", "places": "places"}
 
@@ -200,6 +201,10 @@ def run(plugin: Path, out: Path, do_dump: bool = True, only: set | None = None, 
     placed = [r for r in refs if r["edid"] not in ("MapMarker", "COCMarkerHeading")]   # markers: the map and teleports rows
     mist = [r for r in placed if MIST.match(r["edid"] or "")]
     natural = [r for r in placed if not MIST.match(r["edid"] or "")]
+
+    @section(rep, "ecology", want)
+    def _ecology():
+        ecology_rows(rep, plugin, d)
 
     @section(rep, "plugin", want)
     def _plugin():
@@ -568,6 +573,68 @@ def place_rows(rep: Report, natural: list[dict], out: Path) -> None:
          min(v["distinct_bases_per_region"].values()) >= 10),
     ]:
         rep.row("refs", req, val, ok)
+
+
+def read_tsv(p: Path) -> list[dict]:
+    with open(p, newline="", encoding="utf-8") as f:
+        return list(csv.DictReader(f, delimiter="\t"))
+
+
+def ecology_rows(rep: Report, plugin: Path, d: Path) -> None:
+    """The placed actors (tools/newworld/ecology/place.py's shards) read back from the ESM: each stands as an ACHR under
+    its own form id, in its cell, where the shard put it, on a base NPC_ of a fixed level (the shard's, no player-level
+    multiplier, no stats template), one such base per actor of actors.json, every id inside the ecology's range."""
+    eco = plugin / "ecology"
+    if not (eco / "actors.json").exists():
+        rep.row("ecology", "ecology actors", "no ecology", True, "no ecology/actors.json: nothing to read back")
+        return
+    if not (d / "ecology.tsv").exists():
+        rep.fail("ecology", "ecology actors read back", "the dump carries no ecology.tsv: run the dump again")
+        return
+    actors = jload(eco / "actors.json")["actors"]
+    level = {a["name"]: int(a["level"]) for a in actors}
+    got = {r["fid"].upper(): r for r in read_tsv(d / "ecology.tsv")}
+    npcs = {r["edid"]: r for r in read_tsv(d / "eco_npcs.tsv")}
+    base_level = {r["key"]: r for r in npcs.values()}
+    n = miss = moved = wrong = bad_lvl = 0
+    ex: list[str] = []
+    seen = set()
+    for f in sorted(eco.glob("cy*.jsonl")):
+        for ln in f.read_text(encoding="utf-8").splitlines():
+            if not ln:
+                continue
+            o = json.loads(ln)
+            n += 1
+            fid = o["fid"].upper()
+            seen.add(fid)
+            r = got.get(fid)
+            if r is None:
+                miss += 1
+                ex.append(f"{fid} absent")
+                continue
+            if max(abs(float(r["x"]) - o["x"]), abs(float(r["y"]) - o["y"]), abs(float(r["z"]) - o["z"])) > 1.0:
+                moved += 1
+                ex.append(f"{fid} moved")
+            if (int(r["cx"]), int(r["cy"])) != (math.floor(o["x"] / 4096), math.floor(o["y"] / 4096)):
+                wrong += 1
+                ex.append(f"{fid} in cell {r['cx']},{r['cy']}")
+            b = base_level.get(r["base"])
+            if b is None or b["level_kind"] != "fixed" or b["stats_template"] == "True" or int(float(b["level"])) != level.get(o["actor"], -1):
+                bad_lvl += 1
+                ex.append(f"{fid} base {r['base_edid']}")
+    rep.row("ecology", "every shard actor stands as an ACHR under its own form id, within 1 unit of its place",
+            f"{n - miss - moved}/{n}", n > 0 and not miss and not moved, "; ".join(ex[:4]) if miss or moved else "")
+    rep.row("ecology", "every shard actor stands in the cell holding its x,y", f"{n - wrong}/{n}", not wrong)
+    rep.row("ecology", "every actor's base NPC_ has the fixed level of actors.json (no player-level multiplier, no stats template)",
+            f"{n - bad_lvl}/{n}", not bad_lvl, "; ".join(ex[:4]) if bad_lvl else "")
+    eco_npcs = [r for r in npcs.values() if r["level_kind"] != "fixed" or r["stats_template"] == "True"]
+    rep.row("ecology", "no ANW_Eco_ NPC_ has a player-level multiplier or a stats template", len(eco_npcs), not eco_npcs,
+            ", ".join(r["edid"] for r in eco_npcs[:3]))
+    rep.row("ecology", "ANW_Eco_ NPC_ records = actors of actors.json", len(npcs), len(npcs) == len(actors), f"{len(actors)} actors")
+    out = [fid for fid in got if not 0xF00000 <= int(fid, 16) <= 0xFDFFFF]
+    rep.row("ecology", "no ecology ACHR outside 0xF00000..0xFDFFFF", len(out), not out, ", ".join(out[:4]))
+    extra = set(got) - seen
+    rep.row("ecology", "no ACHR in the ESM that no shard names", len(extra), not extra, ", ".join(sorted(extra)[:4]))
 
 
 def edit_rows(rep: Report, natural: list[dict], rows: list[dict]) -> list[dict]:

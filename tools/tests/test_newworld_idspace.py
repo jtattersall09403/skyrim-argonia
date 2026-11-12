@@ -13,6 +13,7 @@ from tools.newworld import atmosphere, idspace as I
 from tools.newworld import rebuild as R
 from tools.newworld.place import edits as E
 from tools.newworld.place import place as P
+from tools.newworld.ecology import place as ECO
 
 REPO = Path(__file__).resolve().parents[2]
 CS = REPO / "tools/ArgoniaPlugin"
@@ -53,6 +54,7 @@ def test_every_allocators_own_constants_are_its_row_of_the_table():
     assert stitch.NAVM_FIRST == I.SPAN["navmesh"][0]
     assert (P.FID_FIRST, P.FID_LAST) == I.PLACED == (I.SPAN["placed"][0], I.SPAN["placed-high"][1]) and P.FID_HOLE == I.HOLE
     assert (E.ADD_FIRST, E.ADD_LAST) == I.SPAN["added"]
+    assert (ECO.ECO_FIRST, ECO.ECO_LAST) == I.SPAN["ecology"]
     lo, hi = I.SPAN["atmosphere"]
     assert min(atmosphere.BASE.values()) == lo and all(lo <= v <= hi for v in atmosphere.BASE.values())
     doc = json.loads((REPO / "newworld/sources/world_formids.json").read_text(encoding="utf-8"))
@@ -131,10 +133,10 @@ def test_a_reference_on_a_navmesh_id_is_named_twice_over(tmp_path):
 
 def test_one_id_in_two_producers_shards_and_an_id_in_no_range_are_named(tmp_path):
     p = plugin(tmp_path, [0x200010, 0x200011])
-    shard(p / "refs/reeds", 3, [0x200011, 0x740000, 0xF00000])
+    shard(p / "refs/reeds", 3, [0x200011, 0x740000, 0x000810])
     bad, _ = I.faults(p)
     assert any("refs/reeds" in b and "used twice" in b and "200011 (held by references of refs/flora)" in b for b in bad)
-    assert any("refs/reeds" in b and "outside its range" in b and "740000 (counted's)" in b and "F00000 (no allocator's)" in b for b in bad)
+    assert any("refs/reeds" in b and "outside its range" in b and "740000 (counted's)" in b and "000810 (no allocator's)" in b for b in bad)
     assert any("counted in shard order" in b and "used twice" in b for b in bad)      # 740000 is the first counted id
 
 

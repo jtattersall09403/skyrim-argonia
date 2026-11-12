@@ -36,6 +36,7 @@ static class NewWorld
     // Every allocator's range is one table, tools/newworld/idspace.py; these are its numbers.
     const uint IdWorld = 0x800, IdTopCell = 0x801, IdMarker = 0x802, IdCells = 0x100000, IdRefs = 0x200000, IdRefsCounted = 0x740000, IdRefsEnd = 0x7FFFFF;
     const uint IdNavmesh = 0x600000, IdNavmeshEnd = 0x609677;
+    const uint IdEcology = 0xF00000, IdEcologyEnd = 0xFDFFFF;   // tools/newworld/idspace.py row `ecology`
     static readonly string[] Allowed = { "Skyrim.esm", "Update.esm", "Black Marsh.esm" };  // the only masters (verify.py MASTERS)
 
     record Manifest(JsonElement Root)
@@ -166,6 +167,7 @@ static class NewWorld
         Console.WriteLine("  water seams: " + string.Join(", ", blendReport.Select(kv => $"{kv.Key} {kv.Value}")));
         fc.Kind = "base";
         var refsByCell = Refs(plugDir, fc);
+        var actorsByCell = Ecology(plugDir, fc, ids, mod);
         uint refId = IdRefsCounted;
         var given = new HashSet<uint>();
         var mk = man.Marker;
@@ -225,6 +227,17 @@ static class NewWorld
                             Base = new FormLinkNullable<IPlaceableObjectGetter>(bk),
                             Placement = new Placement { Position = pos, Rotation = rot },
                             Scale = sc == 1f ? null : sc,
+                        });
+                    }
+                if (actorsByCell.TryGetValue((cx, cy), out var al))
+                    foreach (var (nk, pos, rz, fid) in al)
+                    {
+                        if (fid < IdEcology || fid > IdEcologyEnd || !given.Add(fid))
+                            throw new InvalidDataException($"an ecology actor's form id {fid:X6} is given twice or lies outside {IdEcology:X6}..{IdEcologyEnd:X6}");
+                        c.Temporary.Add(new PlacedNpc(K(fid), Rel)
+                        {
+                            Base = new FormLinkNullable<INpcGetter>(nk),
+                            Placement = new Placement { Position = pos, Rotation = new P3Float(0, 0, rz) },
                         });
                     }
                 if ((cx, cy) == mCell)
@@ -301,6 +314,64 @@ static class NewWorld
             ((dynamic)g).Clear();  // the typed group's own Clear: a group emptied record by record does not keep the order it is filled in
             foreach (var r in order) g.AddUntyped(r);
         }
+    }
+
+    // The ecology stage's actors (tools/newworld/ecology/place.py): <plugin dir>/ecology/actors.json names each band
+    // actor (the record it copies, its band's fixed level and health), copied whole by ForeignCopy and then given the
+    // band: a fixed level (never the player's: decision 0035), its stats its own (no template's), not unique,
+    // essential or protected, health times the band's. cy<+NNN>.jsonl places them, one ACHR a line.
+    static Dictionary<(int, int), List<(FormKey, P3Float, float, uint)>> Ecology(string plugDir, ForeignCopy fc, FormIds ids, SkyrimMod mod)
+    {
+        var res = new Dictionary<(int, int), List<(FormKey, P3Float, float, uint)>>();
+        var dir = Path.Combine(plugDir, "ecology");
+        var aj = Path.Combine(dir, "actors.json");
+        if (!File.Exists(aj)) return res;
+        var actor = new Dictionary<string, FormKey>();
+        foreach (var a in JsonDocument.Parse(File.ReadAllText(aj)).RootElement.GetProperty("actors").EnumerateArray())
+        {
+            var name = a.GetProperty("name").GetString()!;
+            var sp = a.GetProperty("src").GetString()!.Split(':', 2);
+            var src = mod.Npcs[fc.Get(sp[0], sp[1], forceCopy: true)];
+            var n = (Npc)src.Duplicate(new FormKey(mod.ModKey, ids.Take("base", "eco:" + name)));
+            var kit = name.Contains('~') ? "_" + name.Split('~')[1].Split('@')[0] : "";
+            n.EditorID = $"ANW_Eco_{src.EditorID}_{a.GetProperty("band").GetString()}{kit}";
+            var cfg = n.Configuration;
+            cfg.Level = new NpcLevel { Level = (short)a.GetProperty("level").GetInt32() };
+            cfg.TemplateFlags &= ~NpcConfiguration.TemplateFlag.Stats;
+            cfg.Flags &= ~(NpcConfiguration.Flag.Unique | NpcConfiguration.Flag.Essential | NpcConfiguration.Flag.Protected | NpcConfiguration.Flag.AutoCalcStats);
+            var hm = a.GetProperty("health_mult").GetDouble();
+            if (n.PlayerSkills is { } ps) ps.Health = (ushort)Math.Clamp(Math.Max((int)ps.Health, 20) * hm, 1, 65535);
+            cfg.HealthOffset = (short)Math.Clamp(cfg.HealthOffset * hm, short.MinValue, short.MaxValue);
+            // a people's kit for the band (place.py GEAR_TIER): an outfit of a plugin we hold, or our own flat outfit
+            // of the listed armour and weapons; never a levelled list
+            if (a.TryGetProperty("gear", out var gear))
+            {
+                FormKey G(string r) { var q = r.Split(':', 2); return fc.Get(q[0], q[1]); }
+                if (gear.TryGetProperty("outfit", out var ot)) n.DefaultOutfit = new FormLinkNullable<IOutfitGetter>(G(ot.GetString()!));
+                else
+                {
+                    var o = new Outfit(new FormKey(mod.ModKey, ids.Take("base", "eco-outfit:" + name)), Rel) { EditorID = n.EditorID + "_Outfit",
+                        Items = new ExtendedList<IFormLinkGetter<IOutfitTargetGetter>>(gear.GetProperty("items").EnumerateArray()
+                            .Select(i => (IFormLinkGetter<IOutfitTargetGetter>)new FormLink<IOutfitTargetGetter>(G(i.GetString()!)))) };
+                    mod.Outfits.Add(o);
+                    n.DefaultOutfit = new FormLinkNullable<IOutfitGetter>(o.FormKey);
+                }
+            }
+            mod.Npcs.Add(n);
+            actor[name] = n.FormKey;
+        }
+        foreach (var f in Directory.EnumerateFiles(dir, "cy*.jsonl").Order())
+            foreach (var line in File.ReadAllLines(f))
+            {
+                if (line.Length == 0) continue;
+                var o = JsonDocument.Parse(line).RootElement;
+                float G(string k) => (float)o.GetProperty(k).GetDouble();
+                var pos = new P3Float(G("x"), G("y"), G("z"));
+                var cell = ((int)Math.Floor(pos.X / CELL), (int)Math.Floor(pos.Y / CELL));
+                if (!res.TryGetValue(cell, out var l)) res[cell] = l = new();
+                l.Add((actor[o.GetProperty("actor").GetString()!], pos, G("rz"), uint.Parse(o.GetProperty("fid").GetString()!, System.Globalization.NumberStyles.HexNumber)));
+            }
+        return res;
     }
 
     // Placed refs from every producer's shards: <plugin dir>/refs/<producer>/cy<+NNN>.jsonl (format: cells.py).
