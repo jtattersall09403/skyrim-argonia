@@ -565,10 +565,10 @@
 {"talker":"0934BA:Black Marsh North.esp","topic":"talk.someone","ord":1,"text":"Decimus Pell, archer of my company, is just south-south-east of here. Ask him what you like, civilian. Keep it short."}
 {"talker":"0934BB:Black Marsh North.esp","topic":"talk.greet-friend","ord":1,"text":"It's you. Good. Stand where I can see the wind on you and tell me what you need."}
 {"talker":"0934BB:Black Marsh North.esp","topic":"talk.greet-stranger","ord":1,"text":"Stranger. State your business, and keep your hands where I can see them."}
-{"talker":"0934BB:Black Marsh North.esp","topic":"talk.here","ord":1,"text":"You want the dock, stranger? It's about twenty paces north-east of here."}
-{"talker":"0934BB:Black Marsh North.esp","topic":"talk.lore","ord":1,"text":"Those who defend the Owing say it's theirs. It came from their own arbitration, and it ends. A prison doesn't. I'd call that fair."}
+{"talker":"0934BB:Black Marsh North.esp","topic":"talk.here","ord":1,"text":"You want the dock, stranger? It's just north-east of here. You won't miss it."}
+{"talker":"0934BB:Black Marsh North.esp","topic":"talk.lore","ord":1,"text":"The Owing? Its defenders say it's theirs. It came from their own arbitration, and it ends. A prison doesn't. I'd call that fair."}
 {"talker":"0934BB:Black Marsh North.esp","topic":"talk.self","ord":1,"text":"Decimus Pell. I came with Aulus Varrenius's company, and I guard the ship with a bow. I keep to myself, stranger."}
-{"talker":"0934BB:Black Marsh North.esp","topic":"talk.someone","ord":1,"text":"Quintus Albero. Young soldier of our company. A dozen paces east-north-east of here. You'll hear him before you reach him."}
+{"talker":"0934BB:Black Marsh North.esp","topic":"talk.someone","ord":1,"text":"Quintus Albero. Young soldier of our company. Just east-north-east of here. You'll hear him before you reach him."}
 {"talker":"0934BB:Black Marsh North.esp","topic":"talk.trade","ord":1,"text":"I'm an archer. The company guards whoever pays it, and the field-owners pay now. That's the whole of it, stranger."}
 {"talker":"0934BC:Black Marsh North.esp","topic":"talk.greet-friend","ord":1,"text":"Oh, I was hoping you'd come by! It's good to talk to someone who isn't in the company. I'll tell you, I've been thinking of home all morning."}
 {"talker":"0934BC:Black Marsh North.esp","topic":"talk.greet-stranger","ord":1,"text":"Good day, sir or madam. Is there something I can do for you? I'm only one of the soldiers, mind, so I may not know much."}
