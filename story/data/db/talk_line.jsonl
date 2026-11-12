@@ -929,13 +929,13 @@
 {"talker":"1454F3:Black Marsh.esm","topic":"talk.rumours","ord":1,"text":"Hnn. Smoke rises from the stone house west-north-west of here. Third-Born Tsaxi stands at its door. People are shut in there."}
 {"talker":"1454F3:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Sleeps-Standing. I guard the dock at the eastern edge of Black Rose, where nothing happens. I have learned to sleep on my feet. I wake quickly when I must."}
 {"talker":"1454F3:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Ree-Shaal, the fisher at the far east dock? Usually just north-west of here. Ree-Shaal is a sour one. Ree-Shaal complains about me. Hnn."}
-{"talker":"1454F4:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"Go west along the boards, about a hundred paces, past the longboat. The cooking fire is there."}
+{"talker":"1454F4:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"Follow the boards west a short way, past the longboat. The cooking fire is there."}
 {"talker":"1454F4:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"You are a welcome sight after a day of crates. Sit a moment, if you can."}
 {"talker":"1454F4:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Yes. What do you want?"}
-{"talker":"1454F4:Black Marsh.esm","topic":"talk.here","ord":1,"text":"The big ship is some twenty paces west of here. My house is a few paces north-east, beside it."}
+{"talker":"1454F4:Black Marsh.esm","topic":"talk.here","ord":1,"text":"The big ship is just west of here. I live in the house just north-east of here, by its berth."}
 {"talker":"1454F4:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"Ask Tzeel-Vaa about those who come to Black Rose and stay. I came on a ship myself. I have not decided yet if I was wise to stay."}
 {"talker":"1454F4:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Ojeel. I unload the big ship whenever it comes in. I live in the house by its berth. I signed on to a crew once and walked off it here."}
-{"talker":"1454F4:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Tadpole, the child who plays around the big ships, is usually about forty paces south of here. That child should be kept off the ships."}
+{"talker":"1454F4:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Tadpole, the child who plays around the big ships, is usually just south of here. That child should be kept off the ships."}
 {"talker":"1454F5:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The cooking fire? Go along the boards north-west, only about a hundred and ten paces past the longboat. You will be at the fire. It is easy."}
 {"talker":"1454F5:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"Did you see the ship? Is it still there? I kept watch while you were gone."}
 {"talker":"1454F5:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Who are you? Are you here to see the ships? Did you drop a coin? I will look for it if you did."}
