@@ -439,3 +439,8 @@ added here the day they are made, with the date and the issue.
   the eighteen creature mods' rows in mods/sourcing-register.json (`permission`, `permission_condition`). Before
   release the creature mods' plugins become real masters of our world file rather than record copies (owed in
   docs/phases/5-scale.md).
+- 2026-11-12 (in session, nw-03b music and lanterns): (a) discovery sting: "Let's just use Skyrim's for now": in the
+  new world discovering a place plays Skyrim's own discovery music (our discovery override removed from
+  NewWorldMusic.cs and music/records.json; the slot stays in the pack unused); the death sting is ours and approved;
+  the level-up sting is recut from the owner's own Overture. (b) Wild Hist lanterns stay only near places ("they are
+  presumably placed there by people"): within 2 cells of a place in Murkwood, as built.
