@@ -157,6 +157,16 @@ function Wait-DataFree {
 switch ($Cmd) {
   'on' {
     Wait-DataFree
+    # One Community Shaders cache per card: the cards lay different shader sources (the New World card adds height
+    # fog), so one shared Data\ShaderCache was recompiled (~11 min) at every switch of card. The leaving card's cache
+    # is parked in $Root\shadercache\<card> and the arriving card's laid back; Data\ShaderCache\argonia-card names it.
+    $sc = "$Data\ShaderCache"; $was = if (Test-Path "$sc\argonia-card") { (Get-Content "$sc\argonia-card" -TotalCount 1).Trim() } elseif (Test-Path "$State\world") { (Get-Content "$State\world" -TotalCount 1).Trim() } else { '' }
+    if ($was -and $was -ne $World -and (Test-Path $sc)) {
+      New-Item -ItemType Directory -Force "$Root\shadercache" | Out-Null; Remove-Item "$Root\shadercache\$was" -Recurse -Force -EA SilentlyContinue
+      Set-Content "$sc\argonia-card" $was -Encoding ASCII; Move-Item $sc "$Root\shadercache\$was"
+      if (Test-Path "$Root\shadercache\$World") { Move-Item "$Root\shadercache\$World" $sc; "shader cache: $was parked, $World laid" } else { "shader cache: $was parked; none kept for $World" }
+    }
+    New-Item -ItemType Directory -Force $sc | Out-Null; Set-Content "$sc\argonia-card" $World -Encoding ASCII
     # Laid in place (game-12): what the profile lays is mapped first (the highest priority wins); a Data file that
     # already is that file (a hard link to it: the same length and write time) is left alone, so an unchanged file
     # is never deleted; everything else that is not vanilla goes, as `off` does.
