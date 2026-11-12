@@ -686,13 +686,13 @@
 {"talker":"0C7252:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"The people of Black Rose once sent an envoy to the Imperial court. Emperor Pelagius answered him in grunts and squeaks. I do not enjoy telling it, traveller."}
 {"talker":"0C7252:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Quintel, a guard at the west gate. I carry the name of the Imperial jailer who raised my grandmother. I answer to no other. My family has worn a uniform in Black Rose for three generations."}
 {"talker":"0C7252:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Ahkeeh, the fish smoker, works at the fire west of the gate. You will usually find Ahkeeh just north-west of here."}
-{"talker":"0C7253:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"Black Rose Jail. Go north-east for about a hundred and ten paces, until the statue with the sword is on your left. Then north for thirty more. The jail stands there."}
+{"talker":"0C7253:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"Black Rose Jail. Go north-east a short way, until the statue with the sword is on your left. Then north, just a little further. The jail stands there."}
 {"talker":"0C7253:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"I know your step now. Stand with me a while, if you wish."}
 {"talker":"0C7253:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Speak quietly here. This is a shrine. I do not know you yet."}
-{"talker":"0C7253:Black Marsh.esm","topic":"talk.here","ord":1,"text":"The standing stone is about ten paces south-south-west of here. Go to it slowly. Do not climb on it."}
+{"talker":"0C7253:Black Marsh.esm","topic":"talk.here","ord":1,"text":"The standing stone is just south-south-west of here. Go to it slowly. Do not climb on it."}
 {"talker":"0C7253:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"The first city here belonged to the Lilmothiit, the fox-folk. Every one of them died of a fever, long before Argonians claimed this place."}
 {"talker":"0C7253:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I guard the standing stone. The other guards did not want the post, so I asked for it. The stone is older than this town. I keep it as a shrine."}
-{"talker":"0C7253:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Mireel is a guard on the path above the south docks. You will usually find Mireel about seventy paces south-east of here. Do not expect much from the guards at the docks."}
+{"talker":"0C7253:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Mireel is a guard on the path above the south docks. You will usually find Mireel a short way south-east of here. Do not expect much from the guards at the docks."}
 {"talker":"0C7255:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The longboat? Go along the boards east for about a hundred and ten paces. The longboat is there. Do you have business aboard?"}
 {"talker":"0C7255:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"Sunned and warm? I am glad it is you. I have nothing to report today. Ask me what you like."}
 {"talker":"0C7255:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Halt. State your business on the boards. I was told to ask every stranger, so I am asking you."}
