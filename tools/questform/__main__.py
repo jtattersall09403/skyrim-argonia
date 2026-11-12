@@ -4,6 +4,7 @@
     python3 -m tools.questform compile <quest id...|--all> [--out dir]   # quest record -> form (default out/questform)
     python3 -m tools.questform gate                              # make check: every staged record against the owed list
     python3 -m tools.questform owed --write                      # rewrite the listed quests' terms (never adds one)
+    python3 -m tools.questform diff <designed> <built>           # every difference, designed form against built
 """
 from __future__ import annotations
 
@@ -86,7 +87,13 @@ def main(argv: list[str] | None = None) -> int:
     sub.add_parser("gate")
     o = sub.add_parser("owed")
     o.add_argument("--write", action="store_true")
+    df = sub.add_parser("diff")
+    df.add_argument("designed")
+    df.add_argument("built")
     a = ap.parse_args(argv)
+    if a.cmd == "diff":
+        from tools.questform import diff
+        return diff.main(a.designed, a.built)
     if a.cmd == "check":
         bad = 0
         for f in a.files:

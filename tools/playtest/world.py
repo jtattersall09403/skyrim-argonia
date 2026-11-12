@@ -1,0 +1,115 @@
+"""The world a paper game is played in (docs/design/paper-playtest.md): what the player sees beyond the quest forms.
+
+A snapshot, kept in the session so a run never changes under the player:
+- names: the name the player sees for each ref, item and cell id;
+- places: each cell's name, whether it is indoors, and for an interior the outside position of its door;
+- talkers: every authored talker standing in the places the forms involve (the cells of their refs, and the
+  settlements those cells belong to), with each topic's prompt, its lines in order, and its gate as the build makes
+  it (talk.md: every topic gated to the talker; the stranger greeting; a rumour gated on its quest's stages);
+- doors: where a door leads (the position of its other side), for a door the census knows.
+
+Sources, later winning: the world database (story/data/db), then each names file given (`--names`, JSON with
+"names" {id: name} and "places" {cell: {name, interior, entrance}}). A name nobody gives is a harness error at the
+start of the run (game.py), never made up.
+"""
+from __future__ import annotations
+
+import json
+import re
+from pathlib import Path
+
+QUEST_SOURCE = re.compile(r"^quest (ARG_\w+) stages? (\d+)(?:-(\d+))?;")
+
+
+def _cells(forms) -> set[str]:
+    return {r["at"]["cell"] for f in forms for r in f["refs"] if r.get("at")}
+
+
+def from_db(forms: list[dict]) -> dict:
+    """The snapshot's parts the world database knows. Empty parts when a form's keys are not in it."""
+    from tools.argonia_world import db
+    w = db.open()
+    names, places, doors = {}, {}, {}
+    cells = _cells(forms)
+    q = w.query
+    sets = {r["settlement"] for c in cells for r in q("SELECT settlement FROM bmv_settlement_cell WHERE cell = ?", c)}
+    rows = [dict(r) for r in q("SELECT b.*, t.known_as FROM bmv_talker b JOIN talker t ON t.id = b.id")]
+    here = [r for r in rows if r["cell"] in cells or (r["settlement"] and r["settlement"] in sets)]
+    prompts = {r["id"]: r["prompt"] for r in q("SELECT id, prompt FROM talk_topic")}
+    facts = {r["id"]: r["source"] for r in q("SELECT id, source FROM talk_fact WHERE topic = 'talk.rumours'")}
+    talkers = []
+    for r in here:
+        topics = []
+        for tt in q("SELECT topic, facts FROM talker_topic WHERE talker = ? ORDER BY topic", r["id"]):
+            lines = [x["text"] for x in q("SELECT text FROM talk_line WHERE talker = ? AND topic = ? ORDER BY ord",
+                                          r["id"], tt["topic"])]
+            if not lines:
+                continue
+            gate = None
+            for fid in (f.strip() for f in tt["facts"].split(",")):
+                m = QUEST_SOURCE.match(facts.get(fid, ""))
+                if m:
+                    gate = {"quest": m.group(1), "first": int(m.group(2)),
+                            "last": int(m.group(3)) if m.group(3) else None}
+                    break
+            topics.append({"topic": tt["topic"], "prompt": prompts.get(tt["topic"], tt["topic"]), "lines": lines,
+                           "gate": gate})
+        talkers.append({"id": r["id"], "name": r["known_as"], "cell": r["cell"], "interior": bool(r["interior"]),
+                        "x": float(r["x"]), "y": float(r["y"]), "topics": topics})
+    for c in cells | {t["cell"] for t in talkers}:
+        places[c] = _place(w, c)
+    for f in forms:
+        for ref in f["refs"]:
+            p = ref["placement"]
+            key = p.get("existing") or (p.get("base") or {}).get("id")
+            if not key:
+                continue
+            got = q("SELECT t.known_as AS n FROM talker t WHERE t.id = ?", key) or \
+                q("SELECT n.name AS n FROM bmv_placement p JOIN bmv_npc n ON n.id = p.npc WHERE p.id = ?", key) or \
+                q("SELECT name AS n FROM bmv_npc WHERE id = ?", key)
+            if got and got[0]["n"]:
+                names[ref["id"]] = got[0]["n"]
+            d = q("SELECT d.*, t.cell AS to_cell, t.x AS tx, t.y AS ty, t.z AS tz FROM bmv_door d "
+                  "LEFT JOIN bmv_door t ON t.id = d.target WHERE d.id = ?", key)
+            if d and d[0]["to_cell"]:
+                to = _place(w, d[0]["to_cell"])
+                places.setdefault(d[0]["to_cell"], to)
+                names.setdefault(ref["id"], f"Door to {to['name']}" if to.get("name") else "Door")
+                doors[ref["id"]] = {"cell": d[0]["to_cell"], "interior": to["interior"], "x": d[0]["tx"],
+                                    "y": d[0]["ty"], "z": d[0]["tz"]}
+    return {"names": names, "places": places, "talkers": talkers, "doors": doors}
+
+
+def _place(w, cell) -> dict:
+    c = w.query("SELECT name, interior FROM bmv_cell WHERE id = ?", cell)
+    if not c:
+        return {}
+    out = {"name": c[0]["name"], "interior": bool(c[0]["interior"])}
+    s = w.query("SELECT s.name FROM bmv_settlement_cell x JOIN bmv_settlement s ON s.id = x.settlement "
+                "WHERE x.cell = ?", cell)
+    if s and not out["interior"] and not out["name"]:
+        out["name"] = s[0]["name"]
+    elif s and out["interior"] and out["name"] and s[0]["name"] not in out["name"]:
+        out["name"] = f"{out['name']}, {s[0]['name']}"
+    if out["interior"]:
+        e = w.query("SELECT t.x, t.y FROM bmv_interior_exit x JOIN bmv_door d ON d.id = x.door "
+                    "JOIN bmv_door t ON t.id = d.target JOIN bmv_cell c ON c.id = t.cell "
+                    "WHERE x.interior = ? AND c.interior = 0", cell)
+        if e:
+            out["entrance"] = {"x": e[0]["x"], "y": e[0]["y"]}
+    return out
+
+
+def load_names(path: Path) -> dict:
+    d = json.loads(Path(path).read_text(encoding="utf-8"))
+    return {"names": d.get("names", {}), "places": d.get("places", {})}
+
+
+def snapshot(forms: list[dict], names_files: list[Path] = (), use_db: bool = True) -> dict:
+    snap = from_db(forms) if use_db else {"names": {}, "places": {}, "talkers": [], "doors": {}}
+    for p in names_files:
+        extra = load_names(p)
+        snap["names"].update(extra["names"])
+        for c, v in extra["places"].items():
+            snap["places"][c] = {**snap["places"].get(c, {}), **v}
+    return snap
