@@ -236,6 +236,16 @@ def test_persuade_checks_the_sheet():
     assert "I found Sample-Contact" in g.do("say 1")
 
 
+def test_the_story_vocabularys_skill_names_read_as_skyrims():
+    f = form()
+    f["lines"][2]["conditions"] = [{"is": "skill_at_least", "skill": "speechcraft", "value": 40}]
+    g = game(f)
+    g.do("go sample-contact")
+    assert "(Persuade) I was told you have work." in g.do("talk sample-contact")
+    assert "this needed 40" in g.do("persuade 1")
+    assert g._skill("Security") == g.s["sheet"]["skills"]["Lockpicking"]
+
+
 def test_talkers_show_their_topics_and_rumours_by_stage():
     talker = {"id": "0C0001:Example.esp", "name": "Reads-The-Shallows", "cell": "0A0100:Example.esp",
               "interior": False, "x": 1150.0, "y": 2050.0,

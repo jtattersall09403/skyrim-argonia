@@ -27,6 +27,8 @@ MAIN_MESSAGE = ("With this death the root of what was to come is cut: the main s
 SKILLS = ("Alchemy", "Alteration", "Archery", "Block", "Conjuration", "Destruction", "Enchanting", "Heavy Armor",
           "Illusion", "Light Armor", "Lockpicking", "One-handed", "Pickpocket", "Restoration", "Smithing", "Sneak",
           "Speech", "Two-handed")
+# The story vocabulary's skill ids (85-condition-vocabulary, skillAtLeast) that Skyrim names otherwise.
+SKILL_ALIASES = {"speechcraft": "speech", "security": "lockpicking", "marksman": "archery"}
 # A new character: every skill 15, the race's skills raised (+10 the first, +5 the rest), as Skyrim's races.
 RACE_SKILLS = {
     "argonian": ("Lockpicking", "Alteration", "Light Armor", "Pickpocket", "Restoration", "Sneak"),
@@ -348,7 +350,8 @@ class Game:
         out = []
         for q, ln in self._lines_of(who, ("topic",), skip_skill=True):
             label = ln["prompt"] or "(no prompt)"
-            if any(c["is"] == "skill_at_least" and c["skill"].lower() == "speech" for c in ln["conditions"]):
+            if any(c["is"] == "skill_at_least" and SKILL_ALIASES.get(c["skill"].lower(), c["skill"].lower()) == "speech"
+                   for c in ln["conditions"]):
                 label = f"(Persuade) {label}"
             elif not self.holds(q, [c for c in ln["conditions"] if c["is"] == "skill_at_least"], who):
                 continue
@@ -755,7 +758,8 @@ class Game:
         return "You wait an hour."
 
     def _skill(self, skill) -> int:
-        k = {"speechcraft": "speech"}.get(skill.lower(), skill.lower()).replace("-", "").replace(" ", "")  # the Morrowind word
+        k = skill.lower().replace("-", "").replace(" ", "")
+        k = SKILL_ALIASES.get(k, k)
         for s, v in self.s["sheet"]["skills"].items():
             if s.lower().replace("-", "").replace(" ", "") == k:
                 return v
