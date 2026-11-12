@@ -936,12 +936,12 @@
 {"talker":"1454F4:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"Ask Tzeel-Vaa about those who come to Black Rose and stay. I came on a ship myself. I have not decided yet if I was wise to stay."}
 {"talker":"1454F4:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Ojeel. I unload the big ship whenever it comes in. I live in the house by its berth. I signed on to a crew once and walked off it here."}
 {"talker":"1454F4:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Tadpole, the child who plays around the big ships, is usually just south of here. That child should be kept off the ships."}
-{"talker":"1454F5:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The cooking fire? Go along the boards north-west, only about a hundred and ten paces past the longboat. You will be at the fire. It is easy."}
+{"talker":"1454F5:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The cooking fire? Go along the boards north-west a short way, past the longboat. Then you are at the fire. It is easy."}
 {"talker":"1454F5:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"Did you see the ship? Is it still there? I kept watch while you were gone."}
 {"talker":"1454F5:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Who are you? Are you here to see the ships? Did you drop a coin? I will look for it if you did."}
-{"talker":"1454F5:Black Marsh.esm","topic":"talk.here","ord":1,"text":"This is the east docks. Can you not see the big ship? It is just there, twenty paces west-north-west. The dock is ten paces north-west. I know every board of it."}
+{"talker":"1454F5:Black Marsh.esm","topic":"talk.here","ord":1,"text":"This is the east docks. Can you not see the big ship? It is just west-north-west of here. The dock is just north-west. I know every board of it."}
 {"talker":"1454F5:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Tadpole. I play between the big ships and run errands for the crews. One day I will sail on one. Then you will hear of me. What is your name?"}
-{"talker":"1454F5:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Ojeel? He unloads the big ship. He is always about forty paces north of here. He chases me off the ship every time. Why do you want him?"}
+{"talker":"1454F5:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Ojeel? He unloads the big ship. He is usually just north of here. He chases me off the ship every time, so do not say I sent you."}
 {"talker":"1454FC:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"Haven? Walk south-east about two hundred and fifty paces, until you reach the stone tower. Then south-west a little over a hundred and thirty paces. Haven is there."}
 {"talker":"1454FC:Black Marsh.esm","topic":"talk.directions","ord":2,"text":"The cooking fire? Walk east about two hundred and eighty paces. You will find it there."}
 {"talker":"1454FC:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"The next fish will not be long, so sit by the fire."}
