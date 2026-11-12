@@ -357,11 +357,11 @@
 {"talker":"05D7C8:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Seeks-The-Channel, and I run a boat out of Soulrest, east of Lilmoth Dock. I wait here at the head of the landing between fares. I chose this place because no licence is asked for here."}
 {"talker":"05D7C9:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"You are back, my friend. Come to the stall. I will sell you what I have at last season's price, and not a coin more."}
 {"talker":"05D7C9:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Outsider. Buy something or move along. Do not touch the goods."}
-{"talker":"05D7C9:Black Marsh.esm","topic":"talk.harvest","ord":1,"text":"Gourds grow north-north-west of this stall, about twenty paces off. Pick your own. Mine are for sale."}
-{"talker":"05D7C9:Black Marsh.esm","topic":"talk.here","ord":1,"text":"This is Soulrest. Houses open onto it, one about fifteen paces south of me and another about twenty paces south-east. Keep your hands off the doors, outsider."}
+{"talker":"05D7C9:Black Marsh.esm","topic":"talk.harvest","ord":1,"text":"Gourds grow just north-north-west of this stall. Pick your own. Mine are for sale."}
+{"talker":"05D7C9:Black Marsh.esm","topic":"talk.here","ord":1,"text":"This is Soulrest. Houses open onto it, one just south of me and another just south-east. Keep your hands off the doors, outsider."}
 {"talker":"05D7C9:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Ushaa-Mei. I sell food here on the south-west side, between the houses. I remember what everything cost last season, so do not try to argue."}
 {"talker":"05D7C9:Black Marsh.esm","topic":"talk.services","ord":1,"text":"Food and small goods. I sell them at last season's price. I weigh it fair and I expect the coin to be good."}
-{"talker":"05D7C9:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Plaits-The-Reed sits about five paces west of me. I like her. Ask her yourself."}
+{"talker":"05D7C9:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Plaits-The-Reed sits just west of me. I like her. Ask her yourself."}
 {"talker":"05D7CA:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"Hello again! Sit by the fire with me, and I will tell you what the grown-ups said today."}
 {"talker":"05D7CA:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Hello, sir. Or miss. Please, do you smile?"}
 {"talker":"05D7CA:Black Marsh.esm","topic":"talk.harvest","ord":1,"text":"Deathbell, nightshade, jazbay and other flowers grow together, miss. They are about fifty paces south-east of here."}
