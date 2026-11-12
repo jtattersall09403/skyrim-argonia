@@ -513,39 +513,46 @@ def norm(s: str) -> str:
 POP_FLOOR = {"trader-general", "trader-innkeeper", "trader-blacksmith", "trader-apothecary", "trader-hunter",
              "trader-spells", "trader-jeweller", "trader-clothier", "trader-bookseller", "trader-fletcher", "trainer",
              "fence", "follower"}
-TIER_RANGE = {"city": (40, 400), "town": (18, 80), "village": (8, 30), "hamlet": (4, 14), "outpost": (2, 10),
-              "tribal-camp": (5, 20), "outlaw-camp": (6, 24), "fort": (6, 30), "keep": (4, 24), "prison": (6, 30),
-              "farm": (2, 8), "homestead": (1, 5), "estate": (4, 14), "logging-camp": (3, 10), "mine": (2, 12),
-              "lighthouse": (1, 5), "ferry": (2, 6), "station": (3, 12), "belvedere": (2, 8), "cave": (0, 8),
-              "quarry": (0, 8), "peak": (0, 2), "landmark": (0, 2)}
-
-
 def population(p: dict, gv: list, src: dict | None) -> tuple[int, str]:
-    """Baseline the allocated source's residents, then move toward what the record promises: halfway (in log) to
-    the record's own estimate, bounded by the kind's range, never under the people its gives name."""
+    """The allocated source's residents, as the source layout was built for them (owner, 2026-11-12): no blend
+    toward the record's estimate, no clamp to a kind's range. A place the record leaves empty stays 0; never fewer
+    than the people its gives name; a source with no counted residents falls back to the record's estimate."""
     before = p.get("population") or 0
     if p["status"] not in LIVED and before == 0:
         return 0, f"{p['status']}: the record says nobody lives here"
     need = sum(g.get("count", 1) for g in gv if g["give_kind_id"] in POP_FLOOR)
     base = (src or {}).get("residents", 0)
-    lo, hi = TIER_RANGE.get(p["place_kind_id"], (0, 400))
     if base == 0:
-        pop, why = max(before, need), f"source has no residents; record's {before} kept"
+        pop, why = max(before, need), f"fallback: the source counts no residents; the record's estimate of {before} kept"
     else:
-        f = math.sqrt(max(before, 1) / base)
-        f = min(2.0, max(0.5, f))
-        pop = round(base * f)
-        why = f"source {base} residents x{f:.2f} toward the record's {before}"
-    if pop < lo or pop > hi:
-        pop = min(max(pop, lo), hi)
-        why += f"; held to a {p['place_kind_id']}'s {lo}-{hi}"
+        pop, why = base, f"the source's {base} resident{'' if base == 1 else 's'}"
     if pop < need:
         pop = need
         why += f"; raised to the {need} people its gives name"
     return int(pop), why
 
 
+def repopulate() -> int:
+    """Rewrite only the population of each allocated row from the committed match (no re-match, no model)."""
+    places, gives = place_features()
+    byid = {p["id"]: p for p in places}
+    src = {json.loads(line)["id"]: json.loads(line) for line in (MATCH / "source_place.jsonl").open() if line.strip()}
+    rows = [json.loads(line) for line in (MATCH / "place_source.jsonl").open() if line.strip()]
+    for r in rows:
+        if r["rank"] == 0 and r["place_id"] in byid:
+            p = byid[r["place_id"]]
+            pop, why = population(p, gives.get(p["id"], []), src.get(r["source_place_id"]))
+            r.update(population_before=p.get("population"), population_after=pop, population_why=why)
+    write_jsonl(MATCH / "place_source.jsonl", rows)
+    a0 = [r for r in rows if r["rank"] == 0]
+    print(f"{len(a0)} places; population {sum(r['population_before'] or 0 for r in a0)} estimated -> "
+          f"{sum(r['population_after'] for r in a0)} from sources")
+    return 0
+
+
 def main(argv: list[str]) -> int:
+    if argv[:1] == ["--population"]:
+        return repopulate()
     from scipy.optimize import linear_sum_assignment
     from tools.places.search.embed import Embedder
     cands, dropped = load_candidates()

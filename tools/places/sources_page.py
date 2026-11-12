@@ -66,6 +66,7 @@ def main(argv: list[str]) -> int:
 
     w(f"<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content='width=device-width,initial-scale=1'>"
       f"<title>Source Place Matches</title><style>{CSS}</style></head><body><main>")
+    w("<p class=lead><strong>Approved by the owner on 2026-11-12; population now matches each source's residents.</strong></p>")
     w("<h1>Source places for our 258 places</h1><p class=lead>Each of our places has been given one source place out of "
       "a game or mod plugin we hold: its layout, buildings and interiors are what the place will be drafted from. "
       "No two places share a source. Below are the numbers, the major places one by one, and the matches most worth a "
@@ -167,19 +168,35 @@ def main(argv: list[str]) -> int:
           why=False)
 
     w("<h2>Population</h2>")
-    ch = Counter()
-    for r in a0:
-        ch[places[r["place_id"]]["place_kind_id"]] += (r.get("population_after") or 0) - (r.get("population_before") or 0)
-    w(f"<p>Total {pb} before, {pa} after. Each lived place starts from its source's residents and moves halfway toward the "
-      "record's own estimate, held inside its kind's range and never under the people its gives name; ruined, abandoned "
-      "and sunken places the record leaves empty stay at 0.</p><p class=muted>Change by kind: "
-      + ", ".join(f"{e(k)} {v:+d}" for k, v in ch.most_common() if v) + "</p>")
-    big = sorted(a0, key=lambda r: -abs((r.get("population_after") or 0) - (r.get("population_before") or 0)))[:20]
-    w("<div class=scroll><table><tr><th>Place</th><th>Kind</th><th class=n>Before</th><th class=n>After</th><th>Why</th></tr>")
+    try:
+        import subprocess
+        head = subprocess.run(["git", "show", "HEAD:newworld/sources/source_match/place_source.jsonl"], cwd=REPO,
+                              capture_output=True, text=True, check=True).stdout
+        prev = sum((json.loads(x).get("population_after") or 0) for x in head.splitlines() if x.strip() and json.loads(x)["rank"] == 0)
+    except Exception:
+        prev = None
+    w(f"<p>A lived place's population is now its source's residents: the people the source's layout was built for, "
+      "with hostile and levelled enemies left out. Nothing is blended toward the record's estimate or held to a kind's "
+      "range. Ruined, abandoned and sunken places the record leaves empty stay at 0; no place has fewer people than "
+      "its record names (traders, trainers, followers); a source whose miner counted nobody keeps the record's "
+      f"estimate.</p><p>Total: research estimate {pb}"
+      + (f", the cut-down version you saw {prev}" if prev is not None and prev != pa else "") + f", now {pa}.</p>")
+    big = sorted(a0, key=lambda r: -(r.get("population_after") or 0))[:20]
+    w("<h3>The 20 biggest</h3><div class=scroll><table><tr><th>Place</th><th>Kind</th><th>Source</th>"
+      "<th class=n>Estimate</th><th class=n>Now</th></tr>")
     for r in big:
         p = places[r["place_id"]]
-        w(f"<tr><td>{e(p['name'])}</td><td>{e(p['place_kind_id'])}</td><td class=n>{r.get('population_before')}</td>"
-          f"<td class=n>{r.get('population_after')}</td><td class=muted>{e(r.get('population_why'))}</td></tr>")
+        w(f"<tr><td>{e(p['name'])}</td><td>{e(p['place_kind_id'])}</td><td>{e(src.get(r['source_place_id'], {}).get('title', r['source_place_id']))}</td>"
+          f"<td class=n>{r.get('population_before')}</td><td class=n>{r.get('population_after')}</td></tr>")
+    w("</table></div>")
+    kept = [r for r in a0 if "fallback" in (r.get("population_why") or "") or "raised" in (r.get("population_why") or "")
+            or ((r.get("population_after") or 0) == 0)]
+    w(f"<h3>Kept at the estimate, raised, or at 0 ({len(kept)})</h3><div class=scroll><table><tr><th>Place</th><th>Kind</th>"
+      "<th class=n>Now</th><th>Why</th></tr>")
+    for r in sorted(kept, key=lambda r: (r.get("population_after") or 0) == 0):
+        p = places[r["place_id"]]
+        w(f"<tr><td>{e(p['name'])}</td><td>{e(p['place_kind_id'])}</td><td class=n>{r.get('population_after')}</td>"
+          f"<td class=muted>{e(r.get('population_why'))}</td></tr>")
     w("</table></div>")
 
     w("<h2>Plugins mined</h2><div class=scroll><table><tr><th>Group</th><th>Plugins</th><th>Mod</th><th class=n>Mined</th>"

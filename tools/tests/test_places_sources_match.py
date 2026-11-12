@@ -38,10 +38,15 @@ def test_counts_or_a_lair_never_make_a_settlement():
     assert classify(crowd)[0] not in ("city", "town", "village", "hamlet")
 
 
-def test_population_is_the_same_on_a_rerun():
+def test_population_is_the_sources_residents_and_the_same_on_a_rerun():
     from tools.places.sources_match import population
     p = {"status": "inhabited", "population": 100, "place_kind_id": "city"}
     assert population(p, [], {"residents": 322}) == population(p, [], {"residents": 322})
+    assert population(p, [], {"residents": 322})[0] == 322
+    assert population(p, [], {"residents": 0})[0] == 100
+    assert population({"status": "ruined", "population": 0, "place_kind_id": "city"}, [], {"residents": 9})[0] == 0
+    gv = [{"give_kind_id": "trader-general", "count": 3}]
+    assert population(p, gv, {"residents": 1})[0] == 3
 
 
 def test_two_clusters_in_one_cell_stay_two_places():

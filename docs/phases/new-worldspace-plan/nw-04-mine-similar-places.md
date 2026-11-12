@@ -23,7 +23,7 @@ Do not rebuild LOD at this point.
   culture 0.10, water 0.08, interior 0.06, plus 0.3 for the same name in a Black Marsh mod; one linear assignment
   with cost weighted by importance (1, 1.5, 2.5, 4, 6). Helstrom kept on bmv.helstrom.
 - Stored: newworld/sources/source_match/ into the database tables `source_place` and `place_source` (rank 0
-  allocated, 1-3 alternates, each score part); `place.population` from the allocated source, why in `place_source`.
+  allocated, 1-3 alternates, each score part); `place.population` is the allocated source's residents (below), why in `place_source`.
 - Loading: `python -m tools.places source <place_id> [--rank N]` writes the bundle (layout, interiors, bases, actors,
   navmesh, the source's terrain heights and land textures); importance 4-5 pre-extracted.
 - Sense check: `python -m tools.places sources-page` -> out/newworld/sources/index.html; the atlas shows "Source place".
@@ -35,3 +35,10 @@ Do not rebuild LOD at this point.
   Trading Posts, Caves of Morrowind, Bloodmoon Dungeons Restored, Solstheim Dungeonpack, Underwater Skyrim, Northwatch
   Coast, Explore Skyrim, Moonpath to Elsweyr; mined and dropped for winning nothing: Unmarked Locations Pack, Pargran
   Village Ruins, Windstad. No Nexus mod places Argonian tribal camps, toll posts or quarries.
+- Population (owner, #64, 2026-11-12: "make the population match the source population"): a lived place's
+  population is its allocated source's residents as the miner counts them (hostile and levelled enemies excluded), no
+  blend toward the record's estimate and no clamp to a kind's range; a place the record leaves empty stays 0; never
+  fewer than the people its gives name; a source with no counted residents keeps the record's estimate.
+  `python -m tools.places sources-match --population` rewrites only the population from the committed match
+  (idempotent from newworld/sources/research/places). Total 2055 estimated -> 3062 (the cut-down version was 2351).
+- Done: the owner's sense check passed on #64 (2026-11-12), with the population change.

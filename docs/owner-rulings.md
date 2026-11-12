@@ -454,6 +454,10 @@ added here the day they are made, with the date and the issue.
   with a fade ending near 7 s), reversing (a) above: our override of the four discovery music types is restored. The
   level-up follows Skyrim's two parts: the UI sound UILevelUp plays our 8 s sting (sting-levelup), the level-up music
   type a 19 s cut of the Overture (music-levelup).
+- 2026-11-12 (evening, nw-04 sense check, issue #64): "I think it looks good. Make the population match the source
+  population though don't cut it down like we have done so far, that will just make them feel weirdly empty." A lived
+  place's population is now its source's residents, with no blend or clamp (empty places stay 0; never under the
+  people the record names; a source counting nobody keeps the estimate).
 - 2026-11-12 (in session, dialogue): "please rewrite all the flagged dialogue in the BM&V version of our mod with the
   new updated skill." Every line the B13 lint and talk_check flag (a count of paces, yards or metres) is rewritten whole
   through the dialogue skills with the Morrowind find step: directions by landmarks, compass words and distance
