@@ -51,6 +51,57 @@
    "ended": "quest completed",
    "cost_usd": 0.031735400000000004,
    "minutes": 0.2
+  },
+  {
+   "path": "quest.main.mq01/20261112T222025Z-careful-designed",
+   "quest": "quest.main.mq01",
+   "player": "careful",
+   "source": "designed",
+   "model": "sonnet",
+   "created": "20261112T222025Z",
+   "forms_hash": "2c9e611eb7a43c9d",
+   "counts": {
+    "commands": 11,
+    "stalls": 0,
+    "harness_errors": 0
+   },
+   "ended": "quest completed",
+   "cost_usd": 0.0575816,
+   "minutes": 0.4
+  },
+  {
+   "path": "quest.main.mq01/20261112T222050Z-impatient-designed",
+   "quest": "quest.main.mq01",
+   "player": "impatient",
+   "source": "designed",
+   "model": "sonnet",
+   "created": "20261112T222050Z",
+   "forms_hash": "2c9e611eb7a43c9d",
+   "counts": {
+    "commands": 6,
+    "stalls": 0,
+    "harness_errors": 0
+   },
+   "ended": "quest completed",
+   "cost_usd": 0.0384091,
+   "minutes": 0.3
+  },
+  {
+   "path": "quest.main.mq01/20261112T222106Z-wanderer-designed",
+   "quest": "quest.main.mq01",
+   "player": "wanderer",
+   "source": "designed",
+   "model": "sonnet",
+   "created": "20261112T222106Z",
+   "forms_hash": "2c9e611eb7a43c9d",
+   "counts": {
+    "commands": 9,
+    "stalls": 0,
+    "harness_errors": 0
+   },
+   "ended": "quest completed",
+   "cost_usd": 0.049289900000000005,
+   "minutes": 0.3
   }
  ]
 }
