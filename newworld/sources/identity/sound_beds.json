@@ -1,0 +1,499 @@
+{
+ "about": "Each bed of the identity sheets (regions.json sound_beds) as the sound descriptors the load order holds, each entry with the weathers it plays in, its chance and the region it is taken from (`python -m tools.newworld.sound beds`). An entry with `hours` carries its own GetCurrentTime window; one without is copied by the spec for the sheet's day or night (copy_ids: ids of those copies in 0x80C00..0x80FFF, kept once given).",
+ "beds": {
+  "frog-chorus": [
+   {
+    "sound": "King of the Murkmire.esp:AMBrFrogsForestCypress01LPSD",
+    "chance": 0.01,
+    "flags": "Pleasant, Cloudy, Rainy, Snowy",
+    "source": "King of the Murkmire.esp:ArgoniaMurkmireSouth",
+    "hours": ""
+   },
+   {
+    "sound": "King of the Murkmire.esp:AMBrFrogsForestCypress02LPSD",
+    "chance": 0.01,
+    "flags": "Pleasant, Cloudy, Rainy, Snowy",
+    "source": "King of the Murkmire.esp:ArgoniaMurkmireSouth",
+    "hours": ""
+   },
+   {
+    "sound": "King of the Murkmire.esp:AMBrFrogsForestCypress03LPSD",
+    "chance": 0.005,
+    "flags": "Pleasant, Cloudy, Rainy, Snowy",
+    "source": "King of the Murkmire.esp:ArgoniaMurkmireSouth",
+    "hours": ""
+   },
+   {
+    "sound": "King of the Murkmire.esp:AMBrFrogsForestCypress04LPSD",
+    "chance": 0.005,
+    "flags": "Pleasant, Cloudy, Rainy, Snowy",
+    "source": "King of the Murkmire.esp:ArgoniaMurkmireSouth",
+    "hours": ""
+   },
+   {
+    "sound": "King of the Murkmire.esp:AMBrFrogsForestCypress05LPSD",
+    "chance": 0.005,
+    "flags": "Pleasant, Cloudy, Rainy, Snowy",
+    "source": "King of the Murkmire.esp:ArgoniaMurkmireSouth",
+    "hours": ""
+   },
+   {
+    "sound": "King of the Murkmire.esp:AMBrFrogsForestCypress06LPSD",
+    "chance": 0.005,
+    "flags": "Pleasant, Cloudy, Rainy, Snowy",
+    "source": "King of the Murkmire.esp:ArgoniaMurkmireSouth",
+    "hours": ""
+   },
+   {
+    "sound": "King of the Murkmire.esp:AMBrFrogsForestCypress07LPSD",
+    "chance": 0.005,
+    "flags": "Pleasant, Cloudy, Rainy, Snowy",
+    "source": "King of the Murkmire.esp:ArgoniaMurkmireSouth",
+    "hours": ""
+   }
+  ],
+  "cicadas": [
+   {
+    "sound": "Skyrim.esm:AMBrInsectsForestFallCicadas1MorningALP",
+    "chance": 1,
+    "flags": "Pleasant, Cloudy",
+    "source": "Skyrim.esm:WeatherFallForest",
+    "hours": "LessThanOrEqualTo11 GreaterThanOrEqualTo8.5"
+   },
+   {
+    "sound": "Skyrim.esm:AMBrInsectsForestFallCicadasBed1MorningLP",
+    "chance": 1,
+    "flags": "Pleasant, Cloudy",
+    "source": "Skyrim.esm:WeatherFallForest",
+    "hours": "LessThanOrEqualTo11.5 GreaterThanOrEqualTo8"
+   },
+   {
+    "sound": "Skyrim.esm:AMBrInsectsMarshCicadaSwellSD",
+    "chance": 0.04,
+    "flags": "Pleasant, Cloudy, Rainy",
+    "source": "Skyrim.esm:WeatherTundraMarsh",
+    "hours": "LessThan19 GreaterThanOrEqualTo11"
+   }
+  ],
+  "surf-gulls": [
+   {
+    "sound": "Skyrim.esm:AMBWaterCoastWavesLPSD",
+    "chance": 1,
+    "flags": "Pleasant, Cloudy, Rainy, Snowy",
+    "source": "Skyrim's coast waves loop, a chance-1 region loop as AMBrWindBedCoastLP in WeatherCoast",
+    "hours": ""
+   },
+   {
+    "sound": "Skyrim.esm:AMBrWindCoastGustA",
+    "chance": 0.1,
+    "flags": "Pleasant, Cloudy, Rainy, Snowy",
+    "source": "Skyrim.esm:WeatherCoast",
+    "hours": "LessThanOrEqualTo20 GreaterThanOrEqualTo8"
+   },
+   {
+    "sound": "Skyrim.esm:AMBrWindCoastGustB",
+    "chance": 0.1,
+    "flags": "Pleasant, Cloudy, Rainy, Snowy",
+    "source": "Skyrim.esm:WeatherCoast",
+    "hours": ""
+   },
+   {
+    "sound": "Tropical Skyrim -- Birds.esp:01BOSAudioSeagull",
+    "chance": 0.05,
+    "flags": "Pleasant, Cloudy, Rainy, Snowy",
+    "source": "Tropical Skyrim Birds' gull; one-shot at the chance of Skyrim's WeatherWinterhold day birds",
+    "hours": ""
+   }
+  ],
+  "sea-swell": [
+   {
+    "sound": "Skyrim.esm:AMBWaterCoastWavesLPSD",
+    "chance": 1,
+    "flags": "Pleasant, Cloudy, Rainy, Snowy",
+    "source": "Skyrim's coast waves loop",
+    "hours": ""
+   },
+   {
+    "sound": "Skyrim.esm:AMBWaterCoastWavesDistantLPSD",
+    "chance": 1,
+    "flags": "Pleasant, Cloudy, Rainy, Snowy",
+    "source": "Skyrim's distant coast waves loop",
+    "hours": ""
+   }
+  ],
+  "reed-wind": [
+   {
+    "sound": "Skyrim.esm:AMBrWindBedMarshLP",
+    "chance": 1,
+    "flags": "Pleasant, Cloudy, Rainy, Snowy",
+    "source": "the marsh wind bed, a chance-1 loop as WeatherTundraMarsh's AMBrWindBedReachLP",
+    "hours": ""
+   },
+   {
+    "sound": "Skyrim.esm:AMBrWindMarshGustA",
+    "chance": 0.08,
+    "flags": "Pleasant, Cloudy, Rainy, Snowy",
+    "source": "Skyrim.esm:WeatherTundraMarsh",
+    "hours": "LessThanOrEqualTo20 GreaterThanOrEqualTo8"
+   },
+   {
+    "sound": "Skyrim.esm:AMBrWindMarshGustB",
+    "chance": 0.08,
+    "flags": "Pleasant, Cloudy, Rainy, Snowy",
+    "source": "Skyrim.esm:WeatherTundraMarsh",
+    "hours": ""
+   }
+  ],
+  "rainforest-birds": [
+   {
+    "sound": "Tropical Skyrim.esp:AMBrJungleAmbience",
+    "chance": 0.14,
+    "flags": "Pleasant, Cloudy, Rainy, Snowy",
+    "source": "Tropical Skyrim.esp:WeatherTundraMarsh",
+    "hours": ""
+   },
+   {
+    "sound": "Skyrim.esm:AMBrBirdsMarsh1MorningA01SD",
+    "chance": 0.05,
+    "flags": "Pleasant, Cloudy, Rainy, Snowy",
+    "source": "Skyrim.esm:WeatherTundraMarsh",
+    "hours": "LessThan8 GreaterThanOrEqualTo4.5"
+   },
+   {
+    "sound": "Skyrim.esm:AMBrBirdsMarsh1MorningB01SD",
+    "chance": 0.05,
+    "flags": "Pleasant, Cloudy, Rainy, Snowy",
+    "source": "Skyrim.esm:WeatherTundraMarsh",
+    "hours": "LessThan10 GreaterThanOrEqualTo6"
+   },
+   {
+    "sound": "Skyrim.esm:AMBrBirdsMarsh2DayA01SD",
+    "chance": 0.04,
+    "flags": "Pleasant, Cloudy, Rainy, Snowy",
+    "source": "Skyrim.esm:WeatherTundraMarsh",
+    "hours": "LessThan18 GreaterThanOrEqualTo9"
+   },
+   {
+    "sound": "Skyrim.esm:AMBrBirdsMarsh2DayB01SD",
+    "chance": 0.04,
+    "flags": "Pleasant, Cloudy, Rainy, Snowy",
+    "source": "Skyrim.esm:WeatherTundraMarsh",
+    "hours": "LessThan19 GreaterThanOrEqualTo10"
+   },
+   {
+    "sound": "Skyrim.esm:AMBrBirdsMarsh2DayC01SD",
+    "chance": 0.04,
+    "flags": "Pleasant, Cloudy, Rainy, Snowy",
+    "source": "Skyrim.esm:WeatherTundraMarsh",
+    "hours": "LessThan20 GreaterThanOrEqualTo11"
+   },
+   {
+    "sound": "Skyrim.esm:AMBrBirdsMarsh2DayD01SD",
+    "chance": 0.04,
+    "flags": "Pleasant, Cloudy, Rainy, Snowy",
+    "source": "Skyrim.esm:WeatherTundraMarsh",
+    "hours": "LessThan21 GreaterThanOrEqualTo16"
+   }
+  ],
+  "deep-hush": [
+   {
+    "sound": "Skyrim.esm:AMBrWindBedMarshLP",
+    "chance": 0.0005,
+    "flags": "Pleasant, Cloudy, Rainy, Snowy",
+    "source": "King of the Murkmire.esp:ArgoniaMurkmireSouth",
+    "hours": ""
+   },
+   {
+    "sound": "Skyrim.esm:AMBrInsectsMarshC01",
+    "chance": 0.05,
+    "flags": "Pleasant, Cloudy, Rainy",
+    "source": "Skyrim.esm:WeatherTundraMarshNoPrecip",
+    "hours": ""
+   }
+  ],
+  "dusk-insects": [
+   {
+    "sound": "Skyrim.esm:AMBrInsectsForestFallCicadas2DayLP",
+    "chance": 1,
+    "flags": "Pleasant, Cloudy",
+    "source": "Skyrim.esm:WeatherFallForest",
+    "hours": "LessThanOrEqualTo20.5 GreaterThanOrEqualTo18"
+   },
+   {
+    "sound": "Skyrim.esm:AMBrInsectsForestFallCicadasBed2DayLP",
+    "chance": 1,
+    "flags": "Pleasant, Cloudy",
+    "source": "Skyrim.esm:WeatherFallForest",
+    "hours": "LessThanOrEqualTo21 GreaterThanOrEqualTo15.5"
+   },
+   {
+    "sound": "Skyrim.esm:AMBrInsectsReachA01",
+    "chance": 0.06,
+    "flags": "Pleasant, Cloudy, Rainy",
+    "source": "Skyrim.esm:WeatherReach",
+    "hours": "GreaterThanOrEqualTo20 LessThanOrEqualTo5"
+   }
+  ],
+  "rain-drip": [
+   {
+    "sound": "Skyrim.esm:AMBWeatherRainDrizzleLP",
+    "chance": 1,
+    "flags": "Cloudy, Rainy",
+    "source": "Skyrim's drizzle loop, only under cloud and rain",
+    "hours": ""
+   },
+   {
+    "sound": "Skyrim.esm:AMBWaterDripsSplashLPSD",
+    "chance": 0.05,
+    "flags": "Pleasant, Cloudy, Rainy, Snowy",
+    "source": "Skyrim's dripping-water loop, sparse",
+    "hours": ""
+   }
+  ],
+  "upland-wind": [
+   {
+    "sound": "Skyrim.esm:AMBrWindBedMountainsLP",
+    "chance": 1,
+    "flags": "Pleasant, Cloudy, Rainy, Snowy",
+    "source": "Skyrim.esm:WeatherWinterhold",
+    "hours": ""
+   },
+   {
+    "sound": "Skyrim.esm:AMBrWindMountainGustA",
+    "chance": 0.06,
+    "flags": "Pleasant, Cloudy, Rainy, Snowy",
+    "source": "Skyrim.esm:WeatherWinterhold",
+    "hours": "LessThanOrEqualTo20 GreaterThanOrEqualTo8"
+   },
+   {
+    "sound": "Skyrim.esm:AMBrWindMountainGustB",
+    "chance": 0.06,
+    "flags": "Pleasant, Cloudy, Rainy, Snowy",
+    "source": "Skyrim.esm:WeatherWinterhold",
+    "hours": ""
+   }
+  ],
+  "marsh-birds": [
+   {
+    "sound": "Skyrim.esm:AMBrBirdsMarsh1MorningA01SD",
+    "chance": 0.05,
+    "flags": "Pleasant, Cloudy, Rainy, Snowy",
+    "source": "Skyrim.esm:WeatherTundraMarsh",
+    "hours": "LessThan8 GreaterThanOrEqualTo4.5"
+   },
+   {
+    "sound": "Skyrim.esm:AMBrBirdsMarsh1MorningB01SD",
+    "chance": 0.05,
+    "flags": "Pleasant, Cloudy, Rainy, Snowy",
+    "source": "Skyrim.esm:WeatherTundraMarsh",
+    "hours": "LessThan10 GreaterThanOrEqualTo6"
+   },
+   {
+    "sound": "Skyrim.esm:AMBrBirdsMarsh2DayA01SD",
+    "chance": 0.04,
+    "flags": "Pleasant, Cloudy, Rainy, Snowy",
+    "source": "Skyrim.esm:WeatherTundraMarsh",
+    "hours": "LessThan18 GreaterThanOrEqualTo9"
+   },
+   {
+    "sound": "Skyrim.esm:AMBrBirdsMarsh2DayB01SD",
+    "chance": 0.04,
+    "flags": "Pleasant, Cloudy, Rainy, Snowy",
+    "source": "Skyrim.esm:WeatherTundraMarsh",
+    "hours": "LessThan19 GreaterThanOrEqualTo10"
+   },
+   {
+    "sound": "Skyrim.esm:AMBrBirdsMarsh2DayC01SD",
+    "chance": 0.04,
+    "flags": "Pleasant, Cloudy, Rainy, Snowy",
+    "source": "Skyrim.esm:WeatherTundraMarsh",
+    "hours": "LessThan20 GreaterThanOrEqualTo11"
+   },
+   {
+    "sound": "Skyrim.esm:AMBrBirdsMarsh2DayD01SD",
+    "chance": 0.04,
+    "flags": "Pleasant, Cloudy, Rainy, Snowy",
+    "source": "Skyrim.esm:WeatherTundraMarsh",
+    "hours": "LessThan21 GreaterThanOrEqualTo16"
+   },
+   {
+    "sound": "Skyrim.esm:AMBrInsectsMarshCicadaSwellSD",
+    "chance": 0.04,
+    "flags": "Pleasant, Cloudy, Rainy",
+    "source": "Skyrim.esm:WeatherTundraMarsh",
+    "hours": "LessThan19 GreaterThanOrEqualTo11"
+   }
+  ],
+  "night-crickets": [
+   {
+    "sound": "Skyrim.esm:AMBrCricketsMarshNight01LPSD",
+    "chance": 1,
+    "flags": "Pleasant, Cloudy, Rainy",
+    "source": "Skyrim.esm:WeatherTundraMarsh",
+    "hours": "LessThanOrEqualTo22.5 GreaterThanOrEqualTo22"
+   },
+   {
+    "sound": "Skyrim.esm:AMBrCricketsMarshNight02LPSD",
+    "chance": 1,
+    "flags": "Pleasant, Cloudy, Rainy",
+    "source": "Skyrim.esm:WeatherTundraMarsh",
+    "hours": "LessThanOrEqualTo23.5 GreaterThanOrEqualTo23"
+   },
+   {
+    "sound": "Skyrim.esm:AMBrCricketsMarshNight03LPSD",
+    "chance": 1,
+    "flags": "Pleasant, Cloudy, Rainy",
+    "source": "Skyrim.esm:WeatherTundraMarsh",
+    "hours": "LessThanOrEqualTo0.5 GreaterThanOrEqualTo0"
+   },
+   {
+    "sound": "Skyrim.esm:AMBrCricketsMarshNight04LPSD",
+    "chance": 1,
+    "flags": "Pleasant, Cloudy, Rainy",
+    "source": "Skyrim.esm:WeatherTundraMarsh",
+    "hours": "LessThanOrEqualTo1.5 GreaterThanOrEqualTo1"
+   },
+   {
+    "sound": "Skyrim.esm:AMBrCricketsMarshNight05LPSD",
+    "chance": 1,
+    "flags": "Pleasant, Cloudy, Rainy",
+    "source": "Skyrim.esm:WeatherTundraMarsh",
+    "hours": "LessThanOrEqualTo2.5 GreaterThanOrEqualTo2"
+   },
+   {
+    "sound": "Skyrim.esm:AMBrCricketsMarshNight06LPSD",
+    "chance": 1,
+    "flags": "Pleasant, Cloudy, Rainy",
+    "source": "Skyrim.esm:WeatherTundraMarsh",
+    "hours": "LessThanOrEqualTo3.5 GreaterThanOrEqualTo3"
+   },
+   {
+    "sound": "Skyrim.esm:AMBrCricketsMarshNight07LPSD",
+    "chance": 1,
+    "flags": "Pleasant, Cloudy, Rainy",
+    "source": "Skyrim.esm:WeatherTundraMarsh",
+    "hours": "LessThanOrEqualTo4.5 GreaterThanOrEqualTo4"
+   }
+  ],
+  "fly-drone": [
+   {
+    "sound": "Skyrim.esm:AMBrInsectsMarshC01",
+    "chance": 0.08,
+    "flags": "Pleasant, Cloudy, Rainy",
+    "source": "Skyrim.esm:WeatherVolcanicTundra",
+    "hours": ""
+   },
+   {
+    "sound": "Skyrim.esm:AMBrInsectsTundraDayA01SD",
+    "chance": 0.06,
+    "flags": "Pleasant, Cloudy, Rainy",
+    "source": "Skyrim.esm:WeatherTundra",
+    "hours": ""
+   },
+   {
+    "sound": "Skyrim.esm:AMBrInsectsTundraDayB01SD",
+    "chance": 0.06,
+    "flags": "Pleasant, Cloudy, Rainy",
+    "source": "Skyrim.esm:WeatherTundra",
+    "hours": ""
+   },
+   {
+    "sound": "Skyrim.esm:AMBrInsectsTundraDayC01SD",
+    "chance": 0.06,
+    "flags": "Pleasant, Cloudy, Rainy",
+    "source": "Skyrim.esm:WeatherTundra",
+    "hours": ""
+   }
+  ],
+  "owls": [
+   {
+    "sound": "Skyrim.esm:AMBrBirdsForestPine3NightOwlSD",
+    "chance": 0.03,
+    "flags": "Pleasant, Cloudy, Rainy, Snowy",
+    "source": "Skyrim.esm:WeatherPineForest",
+    "hours": "LessThan4 GreaterThanOrEqualTo22"
+   },
+   {
+    "sound": "Skyrim.esm:AMBrBirdsMarsh3NightA01SD",
+    "chance": 0.03,
+    "flags": "Pleasant, Cloudy, Rainy, Snowy",
+    "source": "Skyrim.esm:WeatherTundraMarsh",
+    "hours": "LessThan3 GreaterThanOrEqualTo22"
+   },
+   {
+    "sound": "Skyrim.esm:AMBrBirdsMarsh3NightB01SD",
+    "chance": 0.03,
+    "flags": "Pleasant, Cloudy, Rainy, Snowy",
+    "source": "Skyrim.esm:WeatherTundraMarsh",
+    "hours": "LessThan5 GreaterThanOrEqualTo21"
+   },
+   {
+    "sound": "Skyrim.esm:AMBrBirdsMarsh3NightC01SD",
+    "chance": 0.03,
+    "flags": "Pleasant, Cloudy, Rainy, Snowy",
+    "source": "Skyrim.esm:WeatherTundraMarsh",
+    "hours": "LessThan4 GreaterThanOrEqualTo22"
+   },
+   {
+    "sound": "Skyrim.esm:AMBrBirdsMarsh3NightD01SD",
+    "chance": 0.03,
+    "flags": "Pleasant, Cloudy, Rainy, Snowy",
+    "source": "Skyrim.esm:WeatherTundraMarsh",
+    "hours": "LessThan4 GreaterThanOrEqualTo23"
+   },
+   {
+    "sound": "Skyrim.esm:AMBrBirdsMarsh3NightE01SD",
+    "chance": 0.03,
+    "flags": "Pleasant, Cloudy, Rainy, Snowy",
+    "source": "Skyrim.esm:WeatherTundraMarsh",
+    "hours": "LessThan5 GreaterThanOrEqualTo23"
+   }
+  ]
+ },
+ "copy_ids": {
+  "Skyrim.esm:AMBrWindBedMarshLP|day": 527360,
+  "Skyrim.esm:AMBrWindBedMarshLP|night": 527361,
+  "Skyrim.esm:AMBrInsectsMarshC01|day": 527362,
+  "Skyrim.esm:AMBrInsectsMarshC01|night": 527363,
+  "Skyrim.esm:AMBrInsectsTundraDayA01SD|day": 527364,
+  "Skyrim.esm:AMBrInsectsTundraDayA01SD|night": 527365,
+  "Skyrim.esm:AMBrInsectsTundraDayB01SD|day": 527366,
+  "Skyrim.esm:AMBrInsectsTundraDayB01SD|night": 527367,
+  "Skyrim.esm:AMBrInsectsTundraDayC01SD|day": 527368,
+  "Skyrim.esm:AMBrInsectsTundraDayC01SD|night": 527369,
+  "King of the Murkmire.esp:AMBrFrogsForestCypress01LPSD|day": 527370,
+  "King of the Murkmire.esp:AMBrFrogsForestCypress01LPSD|night": 527371,
+  "King of the Murkmire.esp:AMBrFrogsForestCypress02LPSD|day": 527372,
+  "King of the Murkmire.esp:AMBrFrogsForestCypress02LPSD|night": 527373,
+  "King of the Murkmire.esp:AMBrFrogsForestCypress03LPSD|day": 527374,
+  "King of the Murkmire.esp:AMBrFrogsForestCypress03LPSD|night": 527375,
+  "King of the Murkmire.esp:AMBrFrogsForestCypress04LPSD|day": 527376,
+  "King of the Murkmire.esp:AMBrFrogsForestCypress04LPSD|night": 527377,
+  "King of the Murkmire.esp:AMBrFrogsForestCypress05LPSD|day": 527378,
+  "King of the Murkmire.esp:AMBrFrogsForestCypress05LPSD|night": 527379,
+  "King of the Murkmire.esp:AMBrFrogsForestCypress06LPSD|day": 527380,
+  "King of the Murkmire.esp:AMBrFrogsForestCypress06LPSD|night": 527381,
+  "King of the Murkmire.esp:AMBrFrogsForestCypress07LPSD|day": 527382,
+  "King of the Murkmire.esp:AMBrFrogsForestCypress07LPSD|night": 527383,
+  "Skyrim.esm:AMBWeatherRainDrizzleLP|day": 527384,
+  "Skyrim.esm:AMBWeatherRainDrizzleLP|night": 527385,
+  "Skyrim.esm:AMBWaterDripsSplashLPSD|day": 527386,
+  "Skyrim.esm:AMBWaterDripsSplashLPSD|night": 527387,
+  "Tropical Skyrim.esp:AMBrJungleAmbience|day": 527388,
+  "Tropical Skyrim.esp:AMBrJungleAmbience|night": 527389,
+  "Skyrim.esm:AMBrWindMarshGustB|day": 527390,
+  "Skyrim.esm:AMBrWindMarshGustB|night": 527391,
+  "Skyrim.esm:AMBWaterCoastWavesLPSD|day": 527392,
+  "Skyrim.esm:AMBWaterCoastWavesLPSD|night": 527393,
+  "Skyrim.esm:AMBWaterCoastWavesDistantLPSD|day": 527394,
+  "Skyrim.esm:AMBWaterCoastWavesDistantLPSD|night": 527395,
+  "Skyrim.esm:AMBrWindCoastGustB|day": 527396,
+  "Skyrim.esm:AMBrWindCoastGustB|night": 527397,
+  "Tropical Skyrim -- Birds.esp:01BOSAudioSeagull|day": 527398,
+  "Tropical Skyrim -- Birds.esp:01BOSAudioSeagull|night": 527399,
+  "Skyrim.esm:AMBrWindBedMountainsLP|day": 527400,
+  "Skyrim.esm:AMBrWindBedMountainsLP|night": 527401,
+  "Skyrim.esm:AMBrWindMountainGustB|day": 527402,
+  "Skyrim.esm:AMBrWindMountainGustB|night": 527403
+ }
+}

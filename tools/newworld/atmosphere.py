@@ -386,6 +386,8 @@ def build_spec(rec: Records, rc: dict[str, tuple[str, str]], ident: dict | None 
         ch = chances(with_identity(cls["classes"][cid], ident[rid]), {"chances": {}}, cls["kinds"])
         spec["sets"][rid] = [[w["edid"], ch[w["kind"]]] for w in part["weathers"]]
         spec["regions"][rid] = spec["sets"][rid]
+    from tools.newworld import sound
+    spec["sounds"], spec["sound_copies"] = sound.sound_spec(ident)
     cl = cls["climate"]
     home = min((r for r, cb in rc.items() if cb == (cl["default_class"], cl["default_band"])), default=min(rc))
     spec["climate"] = {"formid": BASE["CLMT"], "edid": "ANW_Climate", "copy": "Black Marsh.esm:BlackMarshClimate",
@@ -557,6 +559,22 @@ def rows(plugin: Path) -> list[tuple[str, object, bool, str]]:
                 not bad, f"e.g. {bad[:3]}"))
     out.append((f"every region's weather data overrides the climate (Override flag, priority at least {REGION_PRIORITY}, as Skyrim's "
                 "regional sets: 50 to 55)", f"{len(sp['regions']) - len(weak)}/{len(sp['regions'])}", not weak, f"e.g. {weak[:3]}"))
+    # the regions' sound data: every entry the spec's, read back by editor id (the study dumps REGN sounds and every SNDR)
+    sn = {r["FormKey"]: r["EditorID"] for p in st.values() for r in p.get("SNDR", [])}
+    rs = {r["EditorID"]: r for r in ours.get("REGNSounds", [])}
+    sbad, sweak = [], []
+    for rid, ents in sp["sounds"].items():
+        r = rs.get("ANW_Region_" + rid.replace("-", "_"))
+        want = [(e["sound"].split(":", 1)[1], e["flags"], round(e["chance"], 4)) for e in ents]
+        got = [(sn.get(k), f, round(c, 4)) for k, f, c in (r["Sounds"] if r else [])]
+        if len(got) != len(want) or any(g[1:] != w[1:] or not (g[0] or "").endswith(w[0]) for g, w in zip(got, want)):
+            sbad.append(rid)
+        if not r or "Override" not in r["Flags"] or r["Priority"] < REGION_PRIORITY:
+            sweak.append(rid)
+    out.append(("every region's sound data (its day and night beds' descriptors, weather flags and chances) is the spec's (read back)",
+                f"{len(sp['sounds']) - len(sbad)}/{len(sp['sounds'])}", not sbad, f"e.g. {sbad[:3]}"))
+    out.append((f"every region's sound data overrides the climate's (Override flag, priority at least {REGION_PRIORITY}, as Skyrim's exterior sets)",
+                f"{len(sp['sounds']) - len(sweak)}/{len(sp['sounds'])}", not sweak, f"e.g. {sweak[:3]}"))
     ws = ours["WRLD"][0] if ours["WRLD"] else {}
     c = sp["climate"]
     want = {"list": c["weathers"], "times": [c[k] for k in ("sunrise_begin", "sunrise_end", "sunset_begin", "sunset_end")]}

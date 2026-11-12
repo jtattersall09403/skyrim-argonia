@@ -1,0 +1,186 @@
+{
+ "about": "Measured by `python -m tools.newworld.sound study` (ArgoniaPlugin `sound study`): every REGN with Sounds data in the load order.",
+ "regions_with_sounds": {
+  "Skyrim.esm": 60,
+  "Tropical Skyrim.esp": 15,
+  "King of the Murkmire.esp": 9
+ },
+ "skyrim_regions": {
+  "count": 60,
+  "region_flags": {
+   "0": 52,
+   "Override": 8
+  },
+  "priority": {
+   "50": 54,
+   "51": 3,
+   "49": 1,
+   "52": 1,
+   "99": 1
+  },
+  "entry_weather_flags": {
+   "Pleasant, Cloudy, Rainy, Snowy": 539,
+   "Pleasant, Cloudy, Rainy": 129,
+   "Cloudy": 6,
+   "Pleasant, Cloudy": 12,
+   "Pleasant, Cloudy, Snowy": 1
+  },
+  "entries_per_region": [
+   0,
+   59
+  ],
+  "music_set": 28
+ },
+ "descriptors": {
+  "in_regions": 231,
+  "with_a_GetCurrentTime_window": 171,
+  "loops": 92,
+  "chance_of_loops": [
+   0.11,
+   0.14,
+   1
+  ],
+  "chance_of_one_shots": [
+   0.01,
+   0.1
+  ]
+ },
+ "day_and_night": "Every period's descriptors sit in one region list; each carries its own GetCurrentTime window (the marsh: AMBrBirdsMarsh1Morning, 2Day, 3Night, AMBrCricketsMarshDay/Morning/Night, AMBrInsectsMarshCicadaSwell 11 to 19), the region has no day/night switch.",
+ "examples": [
+  {
+   "region": "WeatherTundra",
+   "formkey": "0C5858:Skyrim.esm",
+   "flags": "Override",
+   "priority": 51,
+   "music": "Skyrim.esm:MUSExploreTundra",
+   "sounds": 11,
+   "with_an_hour": 5,
+   "chances": [
+    0.06,
+    0.1,
+    1
+   ]
+  },
+  {
+   "region": "WeatherFallForest",
+   "formkey": "0C5857:Skyrim.esm",
+   "flags": "0",
+   "priority": 50,
+   "music": "Skyrim.esm:MUSExploreForestPine",
+   "sounds": 43,
+   "with_an_hour": 40,
+   "chances": [
+    0.02,
+    0.03,
+    0.05,
+    0.09,
+    1
+   ]
+  },
+  {
+   "region": "WeatherReach",
+   "formkey": "0C5856:Skyrim.esm",
+   "flags": "0",
+   "priority": 50,
+   "music": "Skyrim.esm:MUSExploreTundra",
+   "sounds": 11,
+   "with_an_hour": 9,
+   "chances": [
+    0.06,
+    0.09,
+    1
+   ]
+  },
+  {
+   "region": "WeatherTundraMarsh",
+   "formkey": "0C5855:Skyrim.esm",
+   "flags": "0",
+   "priority": 50,
+   "music": "Skyrim.esm:MUSExploreTundra",
+   "sounds": 36,
+   "with_an_hour": 33,
+   "chances": [
+    0.03,
+    0.04,
+    0.05,
+    0.08,
+    1
+   ]
+  },
+  {
+   "region": "WeatherCoast",
+   "formkey": "0C5852:Skyrim.esm",
+   "flags": "0",
+   "priority": 50,
+   "music": "Skyrim.esm:MUSExploreMountain",
+   "sounds": 3,
+   "with_an_hour": 1,
+   "chances": [
+    0.1,
+    1
+   ]
+  },
+  {
+   "region": "WeatherPineForest",
+   "formkey": "02A72D:Skyrim.esm",
+   "flags": "0",
+   "priority": 50,
+   "music": "Skyrim.esm:MUSExploreForestPine",
+   "sounds": 59,
+   "with_an_hour": 56,
+   "chances": [
+    0.01,
+    0.02,
+    0.03,
+    0.05,
+    0.07,
+    0.09,
+    0.1,
+    1
+   ]
+  },
+  {
+   "region": "WeatherTundraMarsh",
+   "formkey": "0C5855:Skyrim.esm",
+   "flags": "0",
+   "priority": 50,
+   "music": "Skyrim.esm:MUSExploreTundra",
+   "sounds": 37,
+   "with_an_hour": 33,
+   "chances": [
+    0.03,
+    0.04,
+    0.05,
+    0.08,
+    0.14,
+    1
+   ]
+  },
+  {
+   "region": "ArgoniaMurkmireSouth",
+   "formkey": "AEA854:King of the Murkmire.esp",
+   "flags": "0",
+   "priority": 50,
+   "music": "King of the Murkmire.esp:MUSArgoniaJungle",
+   "sounds": 48,
+   "with_an_hour": 38,
+   "chances": [
+    0.0005,
+    0.005,
+    0.01,
+    0.02,
+    0.03
+   ]
+  }
+ ],
+ "not_in_any_region": [
+  "AMBWaterCoastWavesLPSD",
+  "AMBWaterCoastWavesDistantLPSD",
+  "AMBWeatherRainDrizzleLP",
+  "AMBrFrogsForestPineNightLPSD"
+ ],
+ "coast": "WeatherCoast carries only AMBrWindBedCoastLP (chance 1) and the two AMBrWindCoastGust (0.1); the waves are sound markers in the world.",
+ "needs_nothing_else": "Region sound data with its descriptors is the whole of Skyrim's exterior ambience; acoustic spaces (ASPC) belong to interiors and to reverb areas, and sound markers place the waves, falls and rivers.",
+ "kotm": "King of the Murkmire's regions run the same marsh lists at chances 0.0005 to 0.05 (ArgoniaMurkmireSouth, priority 50; ArgoniaMurkmireLilmoth priority 80) with its own AMBrFrogsForestCypress (7 one-shot frogs, no hour).",
+ "tropical": "Tropical Skyrim's regions carry Skyrim's lists plus AMBrJungleAmbience (a loop, chance 0.09 to 0.14)."
+}

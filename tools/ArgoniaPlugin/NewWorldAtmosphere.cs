@@ -1,7 +1,7 @@
 // The new world's atmosphere (walk 5, lane A): our own weathers, image spaces, volumetric lighting, climate and the
 // regions' weather lists, all from <plugin dir>/atmosphere.json (tools/newworld/atmosphere.py; the numbers and their
 // reasons are in docs/design/atmosphere.md). Called by NewWorld.cs's writer; also a study tool.
-//   atmos study <out.json> <plugin paths...>   every WTHR, CLMT, IMGS, VOLI and REGN weather list, as JSON (read only)
+//   atmos study <out.json> <plugin paths...>   every WTHR, CLMT, IMGS, VOLI and REGN weather list and sound data, as JSON (read only)
 // Records are copies of vanilla forms (the load order's winner), re-coloured and re-timed (never edits of vanilla
 // forms), at the fixed form ids the spec gives (atmosphere.py BASE: IMGS 0x80000.., VOLI 0x80400.., WTHR 0x80500..,
 // CLMT 0x80600), so the owner's `fw` commands stay the same from build to build (the registry's blocks stand clear
@@ -49,7 +49,7 @@ static class NewWorldAtmosphere
             mod.Regions.Add(new Region(new FormKey(modKey, rid++), SkyrimRelease.SkyrimSE)
             {
                 EditorID = "ANW_Region_" + r.Name.Replace("-", "_"), Worldspace = new FormLinkNullable<IWorldspaceGetter>(ws.FormKey),
-                Weather = RegionWeatherOf(lists(r.Name)),
+                Weather = RegionWeatherOf(lists(r.Name)), Sounds = RegionSoundsOf(r.Name),
             });
         var dir = Path.Combine(Path.GetDirectoryName(Path.GetFullPath(outPath))!, ".writing"); Directory.CreateDirectory(dir);
         var tmp = Path.Combine(dir, Path.GetFileName(outPath));
@@ -118,6 +118,12 @@ static class NewWorldAtmosphere
         Weathers = new ExtendedList<WeatherType>(list), Flags = RegionData.RegionDataFlag.Override, Priority = (byte)RegionPriority,
     };
 
+    // A region's sound data as Bethesda's regional sets carry it (Skyrim.esm: Override on the exterior sets, priority 50 to
+    // 52; each entry a sound descriptor, the weathers it plays in and a chance; day and night are the descriptors' own
+    // GetCurrentTime conditions). Set by Build from atmosphere.json's "sounds"; the region writer calls RegionSoundsOf.
+    static Func<string, RegionSounds?> regionSounds = _ => null;
+    public static RegionSounds? RegionSoundsOf(string region) => regionSounds(region);
+
     // ---- the writer's hook --------------------------------------------------------------------------------------
     // Builds every record of atmosphere.json into `mod`; returns the climate and each region's weather list.
     public static (FormKey Climate, Func<string, IEnumerable<WeatherType>> RegionWeathers) Build(SkyrimMod mod, ForeignCopy fc, string plugDir)
@@ -165,6 +171,34 @@ static class NewWorldAtmosphere
                 w.VolumetricLighting.Night.SetTo(keys[vl.GetProperty("Night").GetString()!]);
             }
             mod.Weathers.Add(w); keys[w.EditorID!] = w.FormKey;
+        }
+        // Sound descriptors: our time-gated copies (day: 6 <= hour < 20; night: hour < 6 or >= 20, the block test's hours), then
+        // each region's entries (a descriptor of the load order, linked or copied by ForeignCopy, or one of our copies).
+        if (spec.TryGetProperty("sound_copies", out var scs))
+            foreach (var e in scs.EnumerateArray())
+            {
+                var sp = e.GetProperty("copy").GetString()!.Split(':');
+                var d = (SoundDescriptor)fc.Find(sp[0], sp[1]).Duplicate(K(e.GetProperty("formid").GetUInt32()));
+                d.EditorID = e.GetProperty("edid").GetString();
+                var day = e.GetProperty("gate").GetString() == "day";
+                ConditionFloat H(CompareOperator op, float h, bool or) => new()
+                    { CompareOperator = op, ComparisonValue = h, Data = new GetCurrentTimeConditionData(), Flags = or ? Condition.Flag.OR : 0 };
+                if (day) { d.Conditions.Add(H(CompareOperator.GreaterThanOrEqualTo, 6, false)); d.Conditions.Add(H(CompareOperator.LessThan, 20, false)); }
+                else { d.Conditions.Add(H(CompareOperator.LessThan, 6, true)); d.Conditions.Add(H(CompareOperator.GreaterThanOrEqualTo, 20, false)); }
+                mod.SoundDescriptors.Add(d); keys[d.EditorID!] = d.FormKey;
+            }
+        if (spec.TryGetProperty("sounds", out var snd))
+        {
+            FormKey Snd(string s) { var sp = s.Split(':'); return keys.TryGetValue(sp[1], out var k) && sp[0] == "ANW" ? k : fc.Get(sp[0], sp[1]); }
+            regionSounds = rid => !snd.TryGetProperty(rid, out var l) ? null : new RegionSounds
+            {
+                Flags = RegionData.RegionDataFlag.Override, Priority = (byte)RegionPriority,
+                Sounds = new ExtendedList<RegionSound>(l.EnumerateArray().Select(x => new RegionSound
+                {
+                    Sound = new FormLink<ISoundDescriptorGetter>(Snd(x.GetProperty("sound").GetString()!)),
+                    Flags = Enum.Parse<RegionSound.Flag>(x.GetProperty("flags").GetString()!), Chance = x.GetProperty("chance").GetSingle(),
+                })),
+            };
         }
         IEnumerable<WeatherType> List(JsonElement l) => l.EnumerateArray().Select(x => new WeatherType
         {
@@ -236,6 +270,12 @@ static class NewWorldAtmosphere
             }
             Add("WTHR", m.Weathers); Add("CLMT", m.Climates); Add("IMGS", m.ImageSpaces); Add("VOLI", m.VolumetricLightings);
             Add("REGN", m.Regions.Where(r => r.Weather is not null));
+            recs["SNDR"] = m.SoundDescriptors.Select(d => (object)new Dictionary<string, object?> { ["FormKey"] = d.FormKey.ToString(), ["EditorID"] = d.EditorID }).ToList();
+            recs["REGNSounds"] = m.Regions.Where(r => r.Sounds is not null).Select(r => (object)new Dictionary<string, object?>
+            {
+                ["FormKey"] = r.FormKey.ToString(), ["EditorID"] = r.EditorID, ["Flags"] = r.Sounds!.Flags.ToString(), ["Priority"] = (int)r.Sounds.Priority,
+                ["Sounds"] = (r.Sounds.Sounds ?? new List<IRegionSoundGetter>()).Select(x => (object)new object[] { x.Sound.FormKey.ToString(), x.Flags.ToString(), x.Chance }).ToList(),
+            }).ToList();
             Add("WRLD", m.Worldspaces);
             res[Path.GetFileName(p)] = recs;
         }
