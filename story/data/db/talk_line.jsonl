@@ -743,13 +743,13 @@
 {"talker":"0C725D:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"Ask Wazei about what the families call the Rose. I would rather not say it myself. He is a danger to us all, so keep your voice low when you ask."}
 {"talker":"0C725D:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am a guard. I stand nearest the jail and keep my post. That is all there is to say."}
 {"talker":"0C725D:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Pays-In-Reeds is a reed-weaver. She is kind. You will usually find her just north-north-west of here, working off her owing in mats. Ask her, not me."}
-{"talker":"0C725E:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"Black Rose Jail? You can see it from here. It is about sixty paces south-west. Do not wander off the way."}
+{"talker":"0C725E:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"Black Rose Jail? You can see it from here. It is just south-west. Do not wander off the way."}
 {"talker":"0C725E:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"The north district is quiet today. I am glad of it. Stay as long as you like."}
 {"talker":"0C725E:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Keep to the road and keep your voice down. The families here are asleep or at their work."}
-{"talker":"0C725E:Black Marsh.esm","topic":"talk.here","ord":1,"text":"This is the north district, where the families live. I know every child in it by name. The house is twenty paces north-north-west of here."}
+{"talker":"0C725E:Black Marsh.esm","topic":"talk.here","ord":1,"text":"This is the north district, where the families live. I know every child in it by name. The house is just north-north-west of here."}
 {"talker":"0C725E:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"Ask Sakeeth about the Second Era tale that this town was gone. I guard the north district and leave tales to others."}
 {"talker":"0C725E:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Shaleem. I guard the north district, so mind how you behave in it."}
-{"talker":"0C725E:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Talks-To-Water is a boat captain in the north district. You will usually find him ten paces east-south-east of here. Tell him to take more care with his boat."}
+{"talker":"0C725E:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Talks-To-Water is a boat captain in the north district. You will usually find him just east-south-east of here. Tell him to take more care with his boat."}
 {"talker":"0C725F:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The cooking fire? Everyone knows that. Walk south about two hundred and fifteen paces past the house and you will be standing at it. Could you find it without me?"}
 {"talker":"0C725F:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"I have been watching the water for boats all day! Do you want to hear what I have noticed?"}
 {"talker":"0C725F:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"You are new here, are you not? I notice everyone new. Where did you come from? Did you come by boat?"}
