@@ -693,13 +693,13 @@
 {"talker":"0C7253:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"The first city here belonged to the Lilmothiit, the fox-folk. Every one of them died of a fever, long before Argonians claimed this place."}
 {"talker":"0C7253:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I guard the standing stone. The other guards did not want the post, so I asked for it. The stone is older than this town. I keep it as a shrine."}
 {"talker":"0C7253:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Mireel is a guard on the path above the south docks. You will usually find Mireel a short way south-east of here. Do not expect much from the guards at the docks."}
-{"talker":"0C7255:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The longboat? Go along the boards east for about a hundred and ten paces. The longboat is there. Do you have business aboard?"}
+{"talker":"0C7255:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The longboat? Go along the boards east a short way. The longboat is there. Do you have business aboard?"}
 {"talker":"0C7255:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"Sunned and warm? I am glad it is you. I have nothing to report today. Ask me what you like."}
 {"talker":"0C7255:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Halt. State your business on the boards. I was told to ask every stranger, so I am asking you."}
-{"talker":"0C7255:Black Marsh.esm","topic":"talk.here","ord":1,"text":"This is the dock walk below the market. I guard it. There is a cooking fire about twenty-five paces south-east of here. The dock is about thirty paces south. Is that what you wanted to know?"}
+{"talker":"0C7255:Black Marsh.esm","topic":"talk.here","ord":1,"text":"This is the dock walk below the market. I guard it. There is a cooking fire just south-east of here, and the dock is just south. Is that what you wanted to know?"}
 {"talker":"0C7255:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"When the fever came to Murkmire, the last of the Lilmothiit fled inland toward Black Rose. What became of them is not known. Have you seen any of them on the road?"}
 {"talker":"0C7255:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Okaw-Sei, guard of the dock walk. I walk the boards between the dock and the market all day. I was told to watch for anything unusual. I am newly hatched to the guard, but I mean to serve it well."}
-{"talker":"0C7255:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Teeda-Wan, the guard at the market, is the best fighter on the docks. You will usually find Teeda-Wan about twenty-five paces east-south-east of here."}
+{"talker":"0C7255:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Teeda-Wan, the guard at the market, is the best fighter on the docks. You will usually find Teeda-Wan just east-south-east of here."}
 {"talker":"0C7258:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"Walk south about a hundred and thirty paces. The cooking fire is there."}
 {"talker":"0C7258:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"Ah, it is you. I am glad of it. Stand by me a while, the road is quiet."}
 {"talker":"0C7258:Black Marsh.esm","topic":"talk.greet-friend","ord":2,"text":"You again. Good. Stay here with me and ask what you like."}
