@@ -36,6 +36,7 @@ RANGES = (
     ("base", 0x020000, 0x07FFFF, "registry block: placed bases and what they link to, and the travel menu's records, registered since", 0),
     ("atmosphere", 0x080000, 0x080FFF, "by formula from the spec (atmosphere.py BASE: the class sets, reserved; REGION_BASE: a set per region slot)", 817),
     ("travel-give", 0x090000, 0x09000F, "the travel power's give quest, by formula: 0x090000 (NewWorldTravel.cs GiveId; ARG_QF_MQ101.psc NWGiveId)", 1),
+    ("dressing", 0x0A0000, 0x0FFFFF, "a small signature thing: a slot by its identity's digest (dressing/place.py fid_of)", 0),
     ("cells", 0x100000, 0x1FFFFF, "cell k of the grid 0x100000 + 2k, its LAND + 1 (NewWorld.cs)", 2 * SCOPE[0] * SCOPE[1]),
     ("placed", 0x200000, 0x5FFFFF, "a reference placed by rule: a slot by its identity's digest (place.py form_ids)", 514240),
     ("navmesh", 0x600000, 0x609677, "the navmesh of grid cell k: 0x600000 + k (navmesh/stitch.py)", SCOPE[0] * SCOPE[1]),
@@ -188,6 +189,11 @@ def faults(plugin: Path | None = None, producers: list[Path] | None = None, skip
         given, _ = shard_ids(eco)
         counts["ecology"] = len(given)
         take(given, "ecology actors", ("ecology",))
+    dress = plugin / "dressing"
+    if "dressing" not in skip and dress.is_dir():
+        given, _ = shard_ids(dress)
+        counts["dressing"] = len(given)
+        take(given, "dressing references", ("dressing",))
     if "map" not in skip:
         for f, name, key in (("map/teleports.json", "teleports", "teleports"), ("map/markers.json", "map-markers", "markers")):
             p = plugin / f

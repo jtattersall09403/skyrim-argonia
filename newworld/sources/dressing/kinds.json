@@ -1,0 +1,300 @@
+{
+ "about": "Small signature things: each kind in one or two regions, no neighbour sharing it; bases from the load order (plugin:edid), placed by tools/newworld/dressing/place.py. sort: the Skyrim measure it is bounded by (skyrim_measures.json); per100: refs per 100 land cells of the region where its habitat holds; habitat: dressing habitat (place.py HABITATS). thing: the identity sheet's signature (newworld/sources/identity/regions.json) it delivers, or the lore line it rests on.",
+ "kinds": {
+  "glowing-fungi": {
+   "sort": "fungi",
+   "per100": 4,
+   "habitat": "canopy",
+   "regions": [
+    "arnesian-jungle",
+    "nushara-bayou"
+   ],
+   "thing": "glowing fungi on fallen hardwood (arnesian-jungle sheet); luminous fungus of the bayou hummocks",
+   "bases": [
+    "Skyrim.esm:BlackreachTinyMushroom02",
+    "Skyrim.esm:BlackreachTinyMushroom02Dirt01",
+    "Skyrim.esm:BlackreachSmallMushroom01",
+    "Skyrim.esm:BlackreachSmallMushroom03",
+    "Skyrim.esm:BlackreachSmallMushroom05"
+   ]
+  },
+  "bloatspore": {
+   "sort": "fungi",
+   "per100": 3,
+   "habitat": "forest",
+   "regions": [
+    "arnesian-jungle",
+    "aunike-ridge"
+   ],
+   "thing": "jungle bloatspore puffballs (Curse of Cipactli's jungle flora)",
+   "bases": [
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMJungleBloatspore"
+   ]
+  },
+  "xanmeer-bone-piles": {
+   "sort": "bones",
+   "per100": 8,
+   "habitat": "open",
+   "regions": [
+    "barsaebica",
+    "cape-percar"
+   ],
+   "thing": "bone piles by the Ayleid stones (barsaebica sheet); charred bones on the burn-scar (cape-percar)",
+   "bases": [
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMRuinsXanBonePile1",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMRuinsXanBonePile2",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMRuinsXanBonePile3"
+   ]
+  },
+  "cairn-skulls": {
+   "sort": "bones",
+   "per100": 8,
+   "habitat": "slope",
+   "regions": [
+    "blackwood",
+    "chixathe-mesa"
+   ],
+   "thing": "bone piles in the cairn-fields (blackwood sheet)",
+   "bases": [
+    "King of the Murkmire.esp:BoneArgSkullStatic",
+    "King of the Murkmire.esp:BoneArgSkullFullStatic",
+    "King of the Murkmire.esp:BoneArgTailStatic",
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMRuinsXanBonePile4"
+   ]
+  },
+  "beast-skeletons": {
+   "sort": "bones",
+   "per100": 6,
+   "habitat": "rock",
+   "regions": [
+    "chixathe-mesa",
+    "skeith-isle"
+   ],
+   "thing": "kagouti bone piles in the gorges (chixathe-mesa sheet); feral goat bones among the crags (skeith-isle sheet)",
+   "bases": [
+    "King of the Murkmire.esp:mihailgiantsnakeskull",
+    "Skyrim.esm:BoneHumanSpineStatic"
+   ]
+  },
+  "fireflies": {
+   "sort": "insects",
+   "per100": 10,
+   "habitat": "canopy",
+   "regions": [
+    "murkwood",
+    "kotherra-mangroves"
+   ],
+   "thing": "torchbug fireflies at dusk (murkwood sheet)",
+   "bases": [
+    "Skyrim.esm:critterSpawnFirefly24x7"
+   ]
+  },
+  "dragonflies": {
+   "sort": "insects",
+   "per100": 10,
+   "habitat": "reeds",
+   "regions": [
+    "nha-enasa",
+    "lake-ulaish"
+   ],
+   "thing": "dragonfly swarms over the reed banks (nha-enasa sheet)",
+   "bases": [
+    "Skyrim.esm:critterSpawnDragonflies24x7"
+   ]
+  },
+  "flesh-flies": {
+   "sort": "insects",
+   "per100": 10,
+   "habitat": "marsh",
+   "regions": [
+    "ultherus-swamp"
+   ],
+   "thing": "flesh-fly swarms over the channels (ultherus-swamp sheet)",
+   "bases": [
+    "Black Marsh.esm:01FleshFly1"
+   ]
+  },
+  "night-moths": {
+   "sort": "insects",
+   "per100": 8,
+   "habitat": "open",
+   "regions": [
+    "valley-of-storms",
+    "tulmek-washes"
+   ],
+   "thing": "pale moths over the flooded causeways at night, the lights the valley's wisp tales grow from (valley-of-storms sheet asks will-o'-the-wisps: no walk-through wisp asset held)",
+   "bases": [
+    "Skyrim.esm:MothSpawner"
+   ]
+  },
+  "torchbug-lanterns": {
+   "sort": "ambient_fx",
+   "per100": 3,
+   "habitat": "open",
+   "regions": [
+    "valley-of-storms",
+    "nha-enasa"
+   ],
+   "thing": "torchbug lanterns on the causeway mounds (King of the Murkmire's Argonian lantern)",
+   "bases": [
+    "King of the Murkmire.esp:TorchbugLantern01"
+   ]
+  },
+  "mist-vents": {
+   "sort": "ambient_fx",
+   "per100": 4,
+   "habitat": "marsh",
+   "regions": [
+    "ultherus-swamp",
+    "blackwood"
+   ],
+   "thing": "low mist drifting off the black water (deep-swamp air)",
+   "bases": [
+    "Skyrim.esm:FXSlowDustMist"
+   ]
+  },
+  "gar-eggs": {
+   "sort": "nests_eggs",
+   "per100": 6,
+   "habitat": "reeds",
+   "regions": [
+    "banujha-basin",
+    "nushara-bayou"
+   ],
+   "thing": "gar egg clutches in the reed margins (banujha-basin sheet)",
+   "bases": [
+    "King of the Murkmire.esp:ArgonianEggBlack01",
+    "King of the Murkmire.esp:ArgonianEggBlue01"
+   ]
+  },
+  "croc-nests": {
+   "sort": "nests_eggs",
+   "per100": 6,
+   "habitat": "shore",
+   "regions": [
+    "tulmek-washes"
+   ],
+   "thing": "crocodile egg clutches (tulmek-washes sheet)",
+   "bases": [
+    "King of the Murkmire.esp:ArgonianEggRed01"
+   ]
+  },
+  "bird-nests": {
+   "sort": "nests_eggs",
+   "per100": 6,
+   "habitat": "reeds",
+   "regions": [
+    "lake-ulaish",
+    "aphon-isle"
+   ],
+   "thing": "water-bird egg clutches in the reed beds (lake-ulaish sheet)",
+   "bases": [
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMHackwingNest"
+   ]
+  },
+  "hist-spawn": {
+   "sort": "nests_eggs",
+   "per100": 5,
+   "habitat": "marsh",
+   "regions": [
+    "okuwun-rahei"
+   ],
+   "thing": "hist-frog spawn in the pools (okuwun-rahei sheet)",
+   "bases": [
+    "King of the Murkmire.esp:ArgonianEggPale01",
+    "King of the Murkmire.esp:ArgonianEggBronze01"
+   ]
+  },
+  "ash-drifts": {
+   "sort": "ambient_fx",
+   "per100": 6,
+   "habitat": "open",
+   "regions": [
+    "cape-percar",
+    "okuwun-rahei"
+   ],
+   "thing": "ash and charcoal drifts on the burn-scar (cape-percar sheet)",
+   "bases": [
+    "Dragonborn.esm:RedoranAshPile01"
+   ]
+  },
+  "kelp-wrack": {
+   "sort": "shore_wrack",
+   "per100": 10,
+   "habitat": "shore",
+   "regions": [
+    "aphon-isle",
+    "hatandros-bight"
+   ],
+   "thing": "kelp wrack on the rocks (aphon-isle sheet)",
+   "bases": [
+    "Black Marsh.esm:01kelpshort"
+   ]
+  },
+  "snail-shells": {
+   "sort": "shore_wrack",
+   "per100": 5,
+   "habitat": "marsh",
+   "regions": [
+    "barsaebica",
+    "banujha-basin"
+   ],
+   "thing": "giant snail shells in the reed beds (King of the Murkmire)",
+   "bases": [
+    "King of the Murkmire.esp:GiantSnailShell01",
+    "King of the Murkmire.esp:GiantSnailShell02"
+   ]
+  },
+  "petal-drifts": {
+   "sort": "ambient_fx",
+   "per100": 4,
+   "habitat": "open",
+   "regions": [
+    "aunike-ridge",
+    "skeith-isle"
+   ],
+   "thing": "pollen drifts blown off the scrub (aunike-ridge sheet)",
+   "bases": [
+    "Dawnguard.esm:FXAmbPinkPetals"
+   ]
+  },
+  "hist-clutches": {
+   "sort": "nests_eggs",
+   "per100": 4,
+   "habitat": "canopy",
+   "regions": [
+    "murkwood"
+   ],
+   "thing": "Hist egg clutches among the roots of the groves (murkwood: Hist groves)",
+   "bases": [
+    "King of the Murkmire.esp:ArgonianEggNest01"
+   ]
+  },
+  "midges": {
+   "sort": "insects",
+   "per100": 10,
+   "habitat": "shore",
+   "regions": [
+    "kotherra-mangroves",
+    "althii-archipelago"
+   ],
+   "thing": "insect swarms over the mangrove mud (kotherra-mangroves, althii-archipelago: mangrove coasts)",
+   "bases": [
+    "Skyrim.esm:critterSpawnInsects_Many"
+   ]
+  },
+  "ground-nests": {
+   "sort": "nests_eggs",
+   "per100": 5,
+   "habitat": "shore",
+   "regions": [
+    "althii-archipelago",
+    "hatandros-bight"
+   ],
+   "thing": "shore-bird ground nests in the paddy margins and shore grass",
+   "bases": [
+    "Here There Be Monsters - Curse of Cipactli.esp:CIPHTBMBantamGuarNest"
+   ]
+  }
+ }
+}

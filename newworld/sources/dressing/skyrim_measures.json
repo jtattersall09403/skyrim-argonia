@@ -1,0 +1,13 @@
+{
+ "about": "Skyrim's own density of small found things outdoors (decision 0034), the dressing stage's density bound.",
+ "cells_with_refs": 6373,
+ "refs_per_100_cells": {
+  "bones": 34.05,
+  "fungi": 5.27,
+  "nests_eggs": 15.2,
+  "insects": 27.84,
+  "ambient_fx": 53.32,
+  "mounds": 5.23,
+  "shore_wrack": 44.01
+ }
+}
