@@ -865,13 +865,13 @@
 {"talker":"130773:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"Ask Watches-The-Road about the old rising against the Empire. I guard a path. I do not tell tales."}
 {"talker":"130773:Black Marsh.esm","topic":"talk.self","ord":1,"text":"They call me Holds-Fast. I was the last one standing in a brawl on the docks. The name stayed. I guard the south path. I would rather be feared than liked."}
 {"talker":"130773:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Ten-Coins guards between the south docks and the market. He is usually just north-north-east of here. He will hang one day."}
-{"talker":"130780:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The cooking fire? It is in plain sight, about seventy paces east. Walk straight towards it."}
+{"talker":"130780:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The cooking fire? It is just east of here, in plain sight. Walk straight towards it."}
 {"talker":"130780:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"At last I know your name. Stand easy. I do not say that to many."}
 {"talker":"130780:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"I do not know you. State your name and your business. Spell the name if it is unusual."}
-{"talker":"130780:Black Marsh.esm","topic":"talk.here","ord":1,"text":"This is Black Rose. The dock is about thirty-five paces south-east of here."}
+{"talker":"130780:Black Marsh.esm","topic":"talk.here","ord":1,"text":"This is Black Rose. The dock is just south-east of here."}
 {"talker":"130780:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"Ask Raxa-Tum about Black Rose and Lilmoth. I know Lilmoth. It is a midden."}
 {"talker":"130780:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Mireel. I came to Black Rose from Lilmoth and stayed. The guard took me because I can read. I keep the duty rolls for the south docks."}
-{"talker":"130780:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Holds-Fast is usually about fifteen paces south-south-east of here, on this same path. He is a brute, but a useful one."}
+{"talker":"130780:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Holds-Fast is usually just south-south-east of here, on this same path. He is a brute, but a useful one."}
 {"talker":"130789:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"Walk north about a hundred and seventy paces. You are at Black Rose Jail. I give this way free."}
 {"talker":"130789:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"Ah, there you are. Stand with me a while. Today I will name you no price."}
 {"talker":"130789:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Keep your purse close, stranger. Then we will get on well."}
