@@ -78,9 +78,11 @@ also shows the main quest's message). Results and conditions are closed vocabula
   in dialogue stay.
 - **Anyone can die.** No person of ours, and none of Black Marsh & Valenwood's, is essential or protected. A quest
   names the people it cannot go on without; if one dies the quest ends as failed with a journal entry that says so.
-  If the person belongs to the main quest, a message box appears once, in our words after Morrowind's ("the thread
-  of prophecy is severed"), saying the player may load an earlier save or go on in the world as it now is. One
-  always-running quest holds every main-quest person so the message also shows before their quest has begun.
+  If the person belongs to a major quest (the main quest or a faction's line; owner, 2026-11-12), a message box
+  appears once, in our words after Morrowind's ("the thread of prophecy is severed"), saying the player may load an
+  earlier save or go on in the world as it now is. A minor side quest only ends as failed, with its journal entry
+  and no message. One always-running quest holds every major-quest person so the message also shows before their
+  quest has begun.
 
 ### The opening, small
 

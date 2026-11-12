@@ -471,3 +471,8 @@ added here the day they are made, with the date and the issue.
   pick up or use. "Anyone in our game can die", with a message like Morrowind's when a main-quest person dies. An
   off-game paper playtest played by a fresh agent, on the game's own built version, part of authoring, never a
   gate, with a broad brief and an artifact to explore the runs. The plan: docs/phases/walk-6-quests.md, issue #68.
+- 2026-11-12 (in session, walk 6, anyone can die): "only people who are essential for *major* quests get our version
+  of the 'thread of prophecy' message if they die. Main quest and factions, not just any old minor side quest. If
+  you kill someone necessary for a minor side quest it should just close the quest as failed or something with a
+  journal update." The message shows for a person the main quest or a faction's quest line cannot go on without;
+  a minor side quest whose person dies ends as failed with a journal entry and no message.
