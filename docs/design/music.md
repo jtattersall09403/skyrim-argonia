@@ -122,11 +122,14 @@ Ours (`tools/ArgoniaPlugin/NewWorldMusic.cs`, data `newworld/sources/music/recor
 - one exploration type per atmosphere class (a copy of Skyrim's marsh type): the class's day pieces (06:00-20:00),
   then explore-night and explore-hist (20:00-06:00), each followed by Skyrim's silent spacer;
 - each of the 24 regions names its class's type; the worldspace names blackwater-swamp's as the fallback;
-- the battle pieces join MUSCombat (battle-last and battle-deep also MUSCombatBoss), the stings join
-  MUSSpecialDeath and MUSSpecialSuccess, each with `GetInWorldspace(new world) == 1`; every Skyrim track in those
+- the battle pieces join MUSCombat (battle-last and battle-deep also MUSCombatBoss), the death sting joins
+  MUSSpecialDeath, with with `GetInWorldspace(new world) == 1`; every Skyrim track in those
   types gets `GetInWorldspace(new world) == 0` put first, so Skyrim's music is not heard
   in the new world and is unchanged everywhere else. No plugin of the NewWorld profile overrides these records, so
   Skyrim.esm's are the load order's winners and the templates;
+- level-up: the UI sound UILevelUp (SNDR 057B44; Skyrim.esm is the load order's winner) plays our slot sting-levelup from
+  `Data\Sound\fx\argonia\sting-levelup.wav` (the pack carries that copy beside its music file); the level-up music
+  type (MUSSpecialSuccess) adds none of ours, its Skyrim tracks kept out, so the new world's level-up is the sting alone;
 - discovering a place plays Skyrim's own discovery stings (the four MUSDiscovery types are left as they are);
   the slot sting-discovery stays in the pack, unused.
 
