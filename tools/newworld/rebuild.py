@@ -389,7 +389,7 @@ STAGES: tuple[Stage, ...] = (
           checks=((PY, "-m", "tools.newworld.dressing.place", "check"),),
           reads=(LAND, LANDCOVER, "out:newworld/landcover/legend.json", FLORA, "out:newworld/plugin/map/teleports.json",
                  "db:cell", "src:newworld/sources/dressing/**/*", "src:newworld/sources/identity/adjacency.json",
-                 "src:newworld/sources/terrain_held.json", "src:tools/newworld/dressing/place.py",
+                 "src:newworld/sources/terrain_held.json", "src:tools/newworld/dressing/place.py", "src:tools/newworld/dressing/hang_points.py", "src:tools/newworld/place/seat.py",
                  "src:tools/newworld/ecology/place.py", "src:tools/newworld/world/texture.py", "src:tools/newworld/assets_audit.py",
                  "src:tools/places/assets/resolve.py", "src:tools/argonia_world/esm.py", IDSPACE_DRESSING),
           writes=("out:newworld/plugin/dressing/manifest.json", "out:newworld/plugin/dressing/check.json"),

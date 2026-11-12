@@ -158,15 +158,15 @@ def test_the_manifest_row_is_newworld_only_and_whole():
     cs = next(m for m in doc["mods"] if m["id"] == "community-shaders")
     assert cs["version"] == "1.9.1"
     cls = json.loads((A.SRC / "classes.json").read_text())
-    names = list(cls["classes"])
+    ident = json.loads((A.REPO / "newworld/sources/identity/regions.json").read_text())["regions"]
     weathers = [f for f in row["files"] if "/Weathers/" in f["path"]]
-    assert len(weathers) == 102
+    assert len(weathers) == len(ident) * len(cls["kinds"])       # each region its own weather set (atmosphere.py REGION_BASE)
     for f in weathers:
         meta = json.loads(f["text"])["_argonia"]
-        s = names.index(meta["class"]) * 3 + A.BANDS.index(meta["band"])
-        formid = A.BASE["WTHR"] + s * 8 + cls["kinds"].index(meta["kind"])   # atmosphere.py's fixed ids
+        rid = next(r for r in ident if A.camel(r) == meta["weather"].split("_")[2])
+        formid = A.REGION_BASE["WTHR"] + ident[rid]["slot"] * 8 + cls["kinds"].index(meta["kind"])   # atmosphere.py's fixed ids
         assert f["path"] == C.weather_file(formid)
-        assert meta["weather"] == f"ANW_W_{A.camel(meta['class'])}_{meta['band'].capitalize()}_{meta['kind'].capitalize()}"
+        assert meta["weather"] == f"ANW_W_{A.camel(rid)}_{meta['kind'].capitalize()}"
         block = json.loads(f["text"])["featureSettings"]["ExponentialHeightFog"]
         assert all(C.in_range(k, v) for k, v in block.items())
 
