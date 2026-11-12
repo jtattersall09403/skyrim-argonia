@@ -286,11 +286,11 @@
 {"talker":"02A207:Black Marsh.esm","topic":"talk.self","ord":1,"text":"Deep-In-His-Cups, they call me. I earned it. I was a boatman once, and I lost my boat. Sit a while and I will tell you how, fellow."}
 {"talker":"02A208:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"Come close, friend. Keep your voice low, eh? I know you. The dock is quiet."}
 {"talker":"02A208:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Hsst. Do not stand over me, cousin. I am only picking leeks."}
-{"talker":"02A208:Black Marsh.esm","topic":"talk.harvest","ord":1,"text":"Leeks? They grow right here, and more just west-south-west. Take what you like, but stay low while you do it."}
-{"talker":"02A208:Black Marsh.esm","topic":"talk.loot","ord":1,"text":"Past the bodies at the east end of the dock there is a chest, a short way east-north-east, eh? It is worth a look before anyone else gets there."}
-{"talker":"02A208:Black Marsh.esm","topic":"talk.loot","ord":2,"text":"Dunmer lie there as well, just north-east of here. They have not been looted yet. Keep quiet on the way."}
+{"talker":"02A208:Black Marsh.esm","topic":"talk.harvest","ord":1,"text":"Leeks grow all around me here, and more just west-south-west. Pick them slowly and look bored while you do it."}
+{"talker":"02A208:Black Marsh.esm","topic":"talk.loot","ord":1,"text":"Past the bodies at the dock's east end there is a chest, a short way east-north-east of here. Look in it before anyone else does, eh?"}
+{"talker":"02A208:Black Marsh.esm","topic":"talk.loot","ord":2,"text":"Dunmer lie just north-east of here, and nobody has searched them. Whoever gets to their pockets first keeps what is in them, so go quietly."}
 {"talker":"02A208:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Sheeh-Vos. I gather what the dock loses. I do not ask who owned it. Do not look at my hands for too long."}
-{"talker":"02A208:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Deep-In-His-Cups sits just south-south-east of here, eh? He sees everything at the dock and remembers half of it. Ask him, not me."}
+{"talker":"02A208:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Deep-In-His-Cups sits just south-south-east of here. He sees everything at the dock and remembers half of it, eh? Ask him, not me."}
 {"talker":"02A209:Black Marsh.esm","topic":"talk.danger","ord":1,"text":"The Walking Dead come out of the gravestones north of Lilmoth, honoured guest. They wander a short way north-west of here. I would not hurry there."}
 {"talker":"02A209:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"Ah. You came back, my friend. Stand here beside me, where the shadows are good, and tell me what you have seen."}
 {"talker":"02A209:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Honoured guest. You speak to me in plain sight, which I would not have chosen. Say what you want, slowly."}
