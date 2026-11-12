@@ -206,17 +206,17 @@
 {"talker":"01CD04:Black Marsh North.esp","topic":"talk.secret","ord":1,"text":"I tell this to no stranger, outlander. I will not tell it twice. My brother was sold away on the big ship, a short way south of here."}
 {"talker":"01CD04:Black Marsh North.esp","topic":"talk.self","ord":1,"text":"Myself? Ilvesa Drethan, a slave, outlander; the word is honest and I prefer honest words. My Owing has been sold twice, and each time it carried me further from my family."}
 {"talker":"01CD04:Black Marsh North.esp","topic":"talk.someone","ord":1,"text":"Wazei-Ru stands at the cage doors on the west side, just south-south-east of where I stand. Kind, for a guard. Do not mistake that for much."}
-{"talker":"01CD0A:Black Marsh North.esp","topic":"talk.directions","ord":1,"text":"The big ship? South of here, outlander, a short way. You will see it."}
-{"talker":"01CD0A:Black Marsh North.esp","topic":"talk.directions","ord":2,"text":"Not far, outlander. The big ship lies just south of here."}
+{"talker":"01CD0A:Black Marsh North.esp","topic":"talk.directions","ord":1,"text":"The big ship lies a short way south, outlander. Keep walking and you will reach it."}
+{"talker":"01CD0A:Black Marsh North.esp","topic":"talk.directions","ord":2,"text":"South, outlander, a short way. The big ship is there."}
 {"talker":"01CD0A:Black Marsh North.esp","topic":"talk.greet-friend","ord":1,"text":"Ah, you. Sit a moment. Have you eaten? You look thinner."}
 {"talker":"01CD0A:Black Marsh North.esp","topic":"talk.greet-stranger","ord":1,"text":"Outlander. Ask what you need to ask, and I will answer if I can."}
 {"talker":"01CD0A:Black Marsh North.esp","topic":"talk.greet-stranger","ord":2,"text":"Hm. Outlander. Speak plainly. I am tired."}
-{"talker":"01CD0A:Black Marsh North.esp","topic":"talk.here","ord":1,"text":"There is a signpost just south-south-east of here, outlander. That is where it stands."}
+{"talker":"01CD0A:Black Marsh North.esp","topic":"talk.here","ord":1,"text":"You will find the signpost just south-south-east of here, outlander."}
 {"talker":"01CD0A:Black Marsh North.esp","topic":"talk.lore","ord":1,"text":"Heita-Meen was a slave of Thorn, outlander. Heita-Meen killed Councillor Glathis Dres and took the Archein guard by duel. The freeing of the Argonians began here."}
 {"talker":"01CD0A:Black Marsh North.esp","topic":"talk.lore","ord":2,"text":"What is charged on an Owing is for Mils Ganthis to tell, outlander. I am tired, and I will not say it badly."}
 {"talker":"01CD0A:Black Marsh North.esp","topic":"talk.self","ord":1,"text":"I am Fendyl Omoren. I carry an Owing, outlander. It has grown so long that its charges outnumber my work."}
 {"talker":"01CD0A:Black Marsh North.esp","topic":"talk.self","ord":2,"text":"Most call me a slave, outlander. I have heard the name of Heita-Meen. I no longer think about walking away."}
-{"talker":"01CD0A:Black Marsh North.esp","topic":"talk.someone","ord":1,"text":"Ukka-Meesh stands guard at the town's centre, outlander. Just south-south-east of here."}
+{"talker":"01CD0A:Black Marsh North.esp","topic":"talk.someone","ord":1,"text":"Ukka-Meesh is the guard at the town's centre, outlander, just south-south-east of here."}
 {"talker":"01CD0A:Black Marsh North.esp","topic":"talk.trade","ord":1,"text":"In a labourer's account the days of food outnumber the days of work, outlander. They always do."}
 {"talker":"01CD0A:Black Marsh North.esp","topic":"talk.trade","ord":2,"text":"I labour under my Owing. In my account the days I eat always outnumber the days I work."}
 {"talker":"02A1E7:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The dock, walker. Go north-east, a fair way. Pass the burnt-out house and you are at Lilmoth Dock."}
