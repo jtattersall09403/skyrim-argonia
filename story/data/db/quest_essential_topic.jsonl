@@ -1,8 +1,5 @@
 {"quest_id":"quest.bc.bc01","ord":0,"value":"topic.bc01-the-estate"}
-{"quest_id":"quest.bc.bc01","ord":1,"value":"topic.bc01-buy-out"}
 {"quest_id":"quest.bc.bc02","ord":0,"value":"topic.bc02-the-fire"}
-{"quest_id":"quest.bc.bc03","ord":0,"value":"topic.bc03-soulrest"}
-{"quest_id":"quest.bc.bc03","ord":1,"value":"topic.bc03-last-season"}
 {"quest_id":"quest.bc.bc05","ord":0,"value":"topic.white-rose-graves"}
 {"quest_id":"quest.fg.fg07","ord":0,"value":"topic.broke-column-levy"}
 {"quest_id":"quest.local.ld65","ord":0,"value":"topic.wamasu-shrine-turn"}
@@ -74,3 +71,6 @@
 {"quest_id":"quest.tg.tg02","ord":0,"value":"topic.tg02-the-job"}
 {"quest_id":"quest.tg.tg04","ord":0,"value":"topic.flotilla-floating-house"}
 {"quest_id":"quest.tg.tg04","ord":1,"value":"topic.flotilla-tally-handover"}
+{"quest_id":"quest.bc.bc01","ord":1,"value":"topic.bc01-buy-out"}
+{"quest_id":"quest.bc.bc03","ord":0,"value":"topic.bc03-soulrest"}
+{"quest_id":"quest.bc.bc03","ord":1,"value":"topic.bc03-last-season"}

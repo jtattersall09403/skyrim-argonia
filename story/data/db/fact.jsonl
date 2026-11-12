@@ -38,20 +38,11 @@
 {"id":"fact.battle-of-argonia.last","says":"The Battle of Argonia broke the last organised Argonian army."}
 {"id":"fact.battle-of-argonia.settled","says":"The survivors of the battle settled at Helstrom."}
 {"id":"fact.battle-of-argonia.soldiers","says":"The Emperor would not send soldiers into the interior after the survivors."}
-{"id":"fact.bc01.boat-owing","claim":"Rows-For-Another damaged an estate boat and was assessed an Owing of four months, eleven years ago.","ord":0,"from_ref":"t1","quest_id":"quest.bc.bc01"}
-{"id":"fact.bc01.book-chest","claim":"The steward keeps the estate's book, with her page in it, by him on the bank.","ord":2,"from_ref":"t2","quest_id":"quest.bc.bc01"}
 {"id":"fact.bc01.book-true","claim":"Every line of the estate's debt book is true: her food, the boat's upkeep, her sick days.","ord":1,"from_ref":"t2","quest_id":"quest.bc.bc01"}
 {"id":"fact.bc01.channel","claim":"The channel runs from the landing out of the estate's reach, and she cannot drown in it.","ord":6,"from_ref":"t4","quest_id":"quest.bc.bc01"}
-{"id":"fact.bc01.night-men","claim":"If one held on the estate runs, the estate's men are rougher with the next one held.","ord":5,"from_ref":"t4","quest_id":"quest.bc.bc01"}
-{"id":"fact.bc01.put-by","claim":"Never-Sold has put by the Owing's first price; by custom an Owing paid at its assessed price is closed and never mentioned again.","ord":4,"from_ref":"t3","quest_id":"quest.bc.bc01"}
 {"id":"fact.bc01.washed-out","claim":"She has grown grey from years away from her tree.","ord":3,"from_ref":"t2","quest_id":"quest.bc.bc01"}
-{"id":"fact.bc02.fire","claim":"A fire went through the Rose, and the heirs keep three they brought out of the smoke at their outer post, the stone house on the shore at Blackrose's east edge, under Third-Born Tsaxi.","ord":0,"from_ref":"t1","quest_id":"quest.bc.bc02"}
-{"id":"fact.bc02.one-out","claim":"Tsaxi can count one of the three lost to the smoke; three would be his own neck.","ord":2,"from_ref":"t3","quest_id":"quest.bc.bc02"}
-{"id":"fact.bc02.three-held","claim":"The three owe the heirs work by the heirs' own reckoning: Says-It-Plain for speaking against them; Hides-In-Reeds for a killing; Keeps-The-Old-Count, Rows-For-Another's mother, for her shelter.","ord":1,"from_ref":"t2","quest_id":"quest.bc.bc02"}
-{"id":"fact.bc03.break","claim":"A crew that holds its own tokens owes Ussa-Rekh nothing more.","ord":3,"from_ref":"t1","quest_id":"quest.bc.bc03"}
 {"id":"fact.bc03.freed-and-hired","claim":"Ussa-Rekh bought out Owings for thirty years, and now hires out the crews he freed.","ord":0,"from_ref":"t1","quest_id":"quest.bc.bc03"}
 {"id":"fact.bc03.refused","claim":"Heavy-Rope's crew asked to end their last season early and were refused.","ord":2,"from_ref":"t2","quest_id":"quest.bc.bc03"}
-{"id":"fact.bc03.tokens","claim":"He keeps a crew's carved tokens until their last season is worked.","ord":1,"from_ref":"t1","quest_id":"quest.bc.bc03"}
 {"id":"fact.blackguards.brigands","says":"The Blackguards are Argonian pirates and brigands of the south coast."}
 {"id":"fact.blackguards.inmates","says":"The Blackguards descend from the inmates of Blackrose Prison."}
 {"id":"fact.blackguards.largest","says":"The Blackguards are the largest band of criminals in Murkmire."}
@@ -1159,3 +1150,12 @@
 {"id":"fact.xit-xaht.directs","says":"The Xit-Xaht's Hist directs the tribe."}
 {"id":"fact.xit-xaht.fear","says":"The other tribes fear the Xit-Xaht."}
 {"id":"fact.xit-xaht.stone","says":"The Xit-Xaht still build in stone."}
+{"id":"fact.bc01.boat-owing","claim":"Rows-For-Another damaged an estate boat and was assessed an Owing of four months, eleven years ago.","ord":0,"from_ref":"t1","quest_id":"quest.bc.bc01"}
+{"id":"fact.bc01.book-chest","claim":"The steward keeps the estate's book, with her page in it, by him on the bank.","ord":2,"from_ref":"t2","quest_id":"quest.bc.bc01"}
+{"id":"fact.bc01.night-men","claim":"If one held on the estate runs, the estate's men are rougher with the next one held.","ord":5,"from_ref":"t4","quest_id":"quest.bc.bc01"}
+{"id":"fact.bc01.put-by","claim":"Never-Sold has put by the Owing's first price; by custom an Owing paid at its assessed price is closed and never mentioned again.","ord":4,"from_ref":"t3","quest_id":"quest.bc.bc01"}
+{"id":"fact.bc02.fire","claim":"A fire went through the Rose, and the heirs keep three they brought out of the smoke at their outer post, the stone house on the shore at Blackrose's east edge, under Third-Born Tsaxi.","ord":0,"from_ref":"t1","quest_id":"quest.bc.bc02"}
+{"id":"fact.bc02.one-out","claim":"Tsaxi can count one of the three lost to the smoke; three would be his own neck.","ord":2,"from_ref":"t3","quest_id":"quest.bc.bc02"}
+{"id":"fact.bc02.three-held","claim":"The three owe the heirs work by the heirs' own reckoning: Says-It-Plain for speaking against them; Hides-In-Reeds for a killing; Keeps-The-Old-Count, Rows-For-Another's mother, for her shelter.","ord":1,"from_ref":"t2","quest_id":"quest.bc.bc02"}
+{"id":"fact.bc03.break","claim":"A crew that holds its own tokens owes Ussa-Rekh nothing more.","ord":3,"from_ref":"t1","quest_id":"quest.bc.bc03"}
+{"id":"fact.bc03.tokens","claim":"He keeps a crew's carved tokens until their last season is worked.","ord":1,"from_ref":"t1","quest_id":"quest.bc.bc03"}

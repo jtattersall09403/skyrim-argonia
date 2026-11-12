@@ -1,8 +1,6 @@
 {"quest_id":"quest.bc.bc01","ord":0,"id":"k1","form":"line","carrier":"npc.imperial-penal-south.blackrose.estate-steward"}
-{"quest_id":"quest.bc.bc01","ord":1,"id":"k2","form":"thing","carrier":"item.bc01.page"}
 {"quest_id":"quest.bc.bc01","ord":2,"id":"k3","form":"behaviour","carrier":"npc.imperial-penal-south.blackrose.estate-debtor"}
 {"quest_id":"quest.bc.bc02","ord":0,"id":"k1","form":"line","carrier":"npc.imperial-penal-south.blackrose.post-gatekeeper"}
-{"quest_id":"quest.bc.bc02","ord":1,"id":"k2","form":"line","carrier":"npc.imperial-penal-south.blackrose.held-speaker"}
 {"quest_id":"quest.bc.bc02","ord":2,"id":"k3","form":"line","carrier":"npc.imperial-penal-south.blackrose.chainbreaker-patron"}
 {"quest_id":"quest.bc.bc03","ord":0,"id":"k1","form":"line","carrier":"npc.imperial-penal-south.blackrose-prison.chainbreaker-envoy-camped-causeway"}
 {"quest_id":"quest.bc.bc03","ord":1,"id":"k2","form":"line","carrier":"npc.mercantile-coast.soulrest.crew-boss"}
@@ -74,3 +72,5 @@
 {"quest_id":"quest.tg.tg02","ord":1,"id":"k2","form":"thing","carrier":"item.tg02.neesak-charm"}
 {"quest_id":"quest.tg.tg02","ord":2,"id":"k3","form":"thing","carrier":"item.glass-bead-strand"}
 {"quest_id":"quest.tg.tg02","ord":3,"id":"k4","form":"line","carrier":"npc.mercantile-coast.lilmoth-divers-yard.night-reed-fence"}
+{"quest_id":"quest.bc.bc01","ord":1,"id":"k2","form":"thing","carrier":"item.bc01.page"}
+{"quest_id":"quest.bc.bc02","ord":1,"id":"k2","form":"line","carrier":"npc.imperial-penal-south.blackrose.held-speaker"}

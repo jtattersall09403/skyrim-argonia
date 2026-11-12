@@ -1,11 +1,3 @@
-{"quest_id":"quest.bc.bc01","ord":0,"skill":"speechcraft","use":"persuade","reason":"Hulm-Tei is talked into striking the page on the custom (Speechcraft 25)"}
-{"quest_id":"quest.bc.bc01","ord":1,"skill":"mercantile","use":"bribe","reason":"or paid the first price from Never-Sold's coin"}
-{"quest_id":"quest.bc.bc01","ord":2,"skill":"speechcraft","use":"persuade","reason":"or Rows-For-Another is talked into going down the channel now (Speechcraft 30)"}
-{"quest_id":"quest.bc.bc02","ord":0,"skill":"speechcraft","use":"persuade","reason":"Third-Born Tsaxi is talked into counting one lost to the smoke (Speechcraft 25)"}
-{"quest_id":"quest.bc.bc02","ord":1,"skill":"mercantile","use":"bribe","reason":"or he is paid Never-Sold's 100 gold for it"}
-{"quest_id":"quest.bc.bc03","ord":0,"skill":"speechcraft","use":"persuade","reason":"Ussa-Rekh is talked into giving up the tokens (Speechcraft 30)"}
-{"quest_id":"quest.bc.bc03","ord":1,"skill":"mercantile","use":"bribe","reason":"or paid the crew's coin for the last season"}
-{"quest_id":"quest.bc.bc03","ord":2,"skill":"speechcraft","use":"persuade","reason":"or Heavy-Rope is talked into taking the refusal (Speechcraft 30)"}
 {"quest_id":"quest.local.lf83","ord":0,"skill":"spear","use":"hunt","reason":"a crocodile has taken the deep pool under the clay cut below the ford, where the landing digs its plaster clay; the landing will not dig until it is dead"}
 {"quest_id":"quest.local.lf83","ord":1,"skill":"marksman","use":"snipe","reason":"or shoot it from the station's wall above the cut when it suns"}
 {"quest_id":"quest.local.lf83","ord":2,"skill":"speechcraft","use":"present-evidence","reason":"each keeper's objections are answered with what the player found (the cracked and re-mortared head, the silt, the ledger, the doubter's word) or by persuasion"}
@@ -60,3 +52,11 @@
 {"quest_id":"quest.tg.tg02","ord":2,"skill":"sneak","use":"sneak-past","reason":"the ripper eels in the water are slipped past by stealth and timing"}
 {"quest_id":"quest.tg.tg02","ord":3,"skill":"Lockpicking","use":"open-a-strongbox","reason":"the lockbox is opened where it lies on the floor of the deep water"}
 {"quest_id":"quest.tg.tg02","ord":4,"skill":"speechcraft","use":"persuade","reason":"each client is sold the thing they claimed at a fixed sum"}
+{"quest_id":"quest.bc.bc01","ord":0,"skill":"speechcraft","use":"persuade","reason":"Hulm-Tei is talked into striking the page on the custom (Speechcraft 25)"}
+{"quest_id":"quest.bc.bc01","ord":1,"skill":"mercantile","use":"bribe","reason":"or paid the first price from Never-Sold's coin"}
+{"quest_id":"quest.bc.bc01","ord":2,"skill":"speechcraft","use":"persuade","reason":"or Rows-For-Another is talked into going down the channel now (Speechcraft 30)"}
+{"quest_id":"quest.bc.bc02","ord":0,"skill":"speechcraft","use":"persuade","reason":"Third-Born Tsaxi is talked into counting one lost to the smoke (Speechcraft 25)"}
+{"quest_id":"quest.bc.bc02","ord":1,"skill":"mercantile","use":"bribe","reason":"or he is paid Never-Sold's 100 gold for it"}
+{"quest_id":"quest.bc.bc03","ord":0,"skill":"speechcraft","use":"persuade","reason":"Ussa-Rekh is talked into giving up the tokens (Speechcraft 30)"}
+{"quest_id":"quest.bc.bc03","ord":1,"skill":"mercantile","use":"bribe","reason":"or paid the crew's coin for the last season"}
+{"quest_id":"quest.bc.bc03","ord":2,"skill":"speechcraft","use":"persuade","reason":"or Heavy-Rope is talked into taking the refusal (Speechcraft 30)"}
