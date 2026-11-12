@@ -160,6 +160,13 @@ streams.
 | C | Code review of the new tools (Fable 5.2) and its fixes | K, H | todo |
 | W | The recipes rewritten; the owner's walk check posted; deploy when no stream is live | I, C | todo |
 
+## After this phase (owner, 2026-11-12)
+
+Once everything above is delivered, its lessons learned and the skills updated, this session also owns and delivers
+the new world phase that is the first pass of fitting the authored quests to the new world, using the updated
+skills. Its brief is minimal, so its plan is built out in its own phase file first (the owner's words kept as
+written, detail appended below them).
+
 ## What the owner will be asked to check
 
 Kept short, in [owner-walk-checks](../owner-walk-checks.md) when posted: the generic scripts' block test (each

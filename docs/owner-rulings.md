@@ -476,3 +476,10 @@ added here the day they are made, with the date and the issue.
   you kill someone necessary for a minor side quest it should just close the quest as failed or something with a
   journal update." The message shows for a person the main quest or a faction's quest line cannot go on without;
   a minor side quest whose person dies ends as failed with a journal entry and no message.
+- 2026-11-12 (in session, walk 6, what follows it): "Once you have delivered everything from your original goal,
+  learned all the lessons along the way, and updated all the relevant skills - please *then* also own and deliver
+  the new world phase that is about the first pass of fitting our authored quests to the new world (using
+  everything you've learned and the newly updated skills). The brief for it is very minimal from me currently so
+  you'll need to build it out in the phase plan." The walk 6 planner session owns that phase after walk 6 is
+  delivered: it builds out the phase's plan (the owner's own words in the phase file are kept as written, detail
+  appended below them) and delivers it.
