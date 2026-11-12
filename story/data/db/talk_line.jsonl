@@ -50,11 +50,11 @@
 {"talker":"01512E:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Tumeesh. I was sold on to Hereguard's labour by a broker in Lilmoth. He did not tell me. … I do not know who holds my months now."}
 {"talker":"015193:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"Come in and sit, my friend. We keep the house ready for you."}
 {"talker":"015193:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Good day, guest. Wipe your feet before you come near the house."}
-{"talker":"015193:Black Marsh.esm","topic":"talk.harvest","ord":1,"text":"Nightshade grows just east-north-east of here, guest. Keep it out of the kitchen. Do not carry it past the linen."}
-{"talker":"015193:Black Marsh.esm","topic":"talk.here","ord":1,"text":"This is the plantation house, and we keep it clean, guest. The tables, the bed and the dresser stand just west of here. Touch nothing with muddy hands."}
-{"talker":"015193:Black Marsh.esm","topic":"talk.secret","ord":1,"text":"The dresser stands just west-south-west, guest. I will say no more about it to a stranger; that is not for you to know."}
+{"talker":"015193:Black Marsh.esm","topic":"talk.harvest","ord":1,"text":"Nightshade grows just east-north-east of here, guest. Keep it out of the kitchen, and do not carry it past the linen."}
+{"talker":"015193:Black Marsh.esm","topic":"talk.here","ord":1,"text":"This is the plantation house, and we keep it clean, guest. Its tables, its bed and its dresser stand just west of here. Touch nothing with muddy hands."}
+{"talker":"015193:Black Marsh.esm","topic":"talk.secret","ord":1,"text":"The house dresser stands just west-south-west of here, guest. That is all I will say of it to a stranger. Ask me again when I know you better."}
 {"talker":"015193:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Neeta-Lei. I keep the plantation house clean and its linen folded. I stay near it in case I am called. We take some pride in it."}
-{"talker":"015193:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Looks-At-Books keeps her shelf just west of here. She is the only person here worth talking to. Hurz-Weel keeps the yard, just north-north-west. He tramps mud through the house. I do not forgive it."}
+{"talker":"015193:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Looks-At-Books has her shelf just west of here. She is the only person here worth talking to, guest. Hurz-Weel keeps the yard, just north-north-west. He tramps mud through the house, and I do not forgive it."}
 {"talker":"015195:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The dock, rider? Walk east a fair way until you reach Lilmoth on your right. Then walk east a short way until you reach the burnt-out house on your left. From there it is south-east a short way, and Lilmoth Dock is there."}
 {"talker":"015195:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"Hm, it is you. Come to the horses with me, friend. They are calmer when you are near."}
 {"talker":"015195:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Hm. Yes, rider? Speak up, I am busy."}
