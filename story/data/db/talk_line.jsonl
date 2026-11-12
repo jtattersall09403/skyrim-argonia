@@ -736,13 +736,13 @@
 {"talker":"0C725B:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"Ask Counts-The-Tolls about crossings and the owing set there. He has forgotten where he came from, so ask him plainly. I have worked mine off in the silt for nine seasons."}
 {"talker":"0C725B:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Dredges-The-Silt. I clear the channels around Black Rose so the boats can pass. It is owing work. It has taken me nine seasons so far."}
 {"talker":"0C725B:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Xuth-Ma is the guard on the road to the jail. You will usually find him just south-east of here. He is a good man. He is the one who listens to me in the evenings."}
-{"talker":"0C725D:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The cooking fire? Go south, a hundred and sixty paces or so. The fire is there."}
+{"talker":"0C725D:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The cooking fire? Go south, a short way. The fire is there."}
 {"talker":"0C725D:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"Keep your voice low, and stand by me a while. I will not mind the company."}
 {"talker":"0C725D:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Move along, if you please. I am on watch."}
-{"talker":"0C725D:Black Marsh.esm","topic":"talk.here","ord":1,"text":"The standing stone is some forty paces north-west of here. The jail is a little nearer, about thirty-five paces that way. I would not look at it for long."}
+{"talker":"0C725D:Black Marsh.esm","topic":"talk.here","ord":1,"text":"The standing stone is just north-west of here. The jail is there too, just beside it. I would not look at it for long."}
 {"talker":"0C725D:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"Ask Wazei about what the families call the Rose. I would rather not say it myself. He is a danger to us all, so keep your voice low when you ask."}
 {"talker":"0C725D:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am a guard. I stand nearest the jail and keep my post. That is all there is to say."}
-{"talker":"0C725D:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Pays-In-Reeds is a reed-weaver. She is kind. You will usually find her about twenty paces north-north-west of here, working off her owing in mats. Ask her, not me."}
+{"talker":"0C725D:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Pays-In-Reeds is a reed-weaver. She is kind. You will usually find her just north-north-west of here, working off her owing in mats. Ask her, not me."}
 {"talker":"0C725E:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"Black Rose Jail? You can see it from here. It is about sixty paces south-west. Do not wander off the way."}
 {"talker":"0C725E:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"The north district is quiet today. I am glad of it. Stay as long as you like."}
 {"talker":"0C725E:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Keep to the road and keep your voice down. The families here are asleep or at their work."}
