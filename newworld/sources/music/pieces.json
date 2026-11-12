@@ -498,9 +498,9 @@
       "id": "sting-levelup",
       "role": "sting: level up",
       "minutes": 0.25,
-      "axes": "A level-up fanfare sting, the whole piece is 8 seconds. [0:00-0:03] starts instantly with no intro: a fast low rolling swell of hollow log drums and low strings rising in a single crescendo. [0:03] one broad, bright, triumphant arrival in D major: full ensemble and a powerful wordless choir with conch shell horns stating the four-note call once. [0:04-0:08] the final major chord rings out and decays. [0:08 onward] silence.",
-      "feel": "What the player hears at a level-up in Skyrim (measured from Skyrim.esm and Skyrim - Sounds.bsa): the UI sound UILevelUp (SOUN 057B45 -> SNDR 057B44, UI_LevelUp.wav, 10.3 s file): about 4 s of body (peak at 2.8 s), then about 4 s of decay (-38 dB at 6.5 s, -47 dB by 8 s). Ours has the same shape: an arrival that lands inside 4 s, then 4 s of its own decay under a fade; about 8 s.",
-      "kept": "t9",
+      "axes": "Level-up victory sting for a fantasy adventure, 8 seconds total, instrumental. Begins in near silence with a quiet low drone, then a fast crescendo over three seconds: tremolo low strings, rolling hollow log drums, a wordless male choir rising in pitch. At 0:03 a single bright, heroic, triumphant arrival in D major: brass-like conch horns and full choir sing a four-note call (rise a perfect fourth, fall a half step, fall a whole step, hold). Then the final chord is held and rings out, fading to silence by 0:08. Cinematic, majestic, organic instruments, no synths, no drum kit, no lyrics.",
+      "feel": "What the player hears at a level-up in Skyrim (UILevelUp, SNDR 057B44, UI_LevelUp.wav, measured): about 4 s of body (peak at 2.8 s), then about 4 s of decay (-38 dB at 6.5 s, -47 dB by 8 s). Ours must pass two measured tests: it starts at a phrase start (200 ms RMS at least 12 dB under the following second) and it rises (loudness and brightness climb, the peak 2.5-4.5 s in and at least 8 dB over the first 0.5 s), then our 4 s fade.",
+      "kept": "r4-t5",
       "measured": {
         "seconds": 60.2,
         "peak_s": 2.2,
@@ -524,30 +524,40 @@
           -20
         ]
       },
-      "excerpt": {
-        "of": "theme",
-        "start_s": 129.5,
-        "end_s": 137.5,
-        "fade_in_s": 0.05,
-        "fade_out_s": 4.0,
-        "why": "A: the Overture's last bar from its downbeat (129.5 s) into the final chord at 133.4 s (3.9 s in), which then rings out on its own decay under a 4 s fade; 8.0 s"
+      "reference": {
+        "title": "the stock level-up sound (feel and shape only: no melody, harmony or audio taken)",
+        "length": "0:08",
+        "sources": "docs/design/music.md#sources"
       },
-      "excerpt_alternatives": [
+      "cut_s": 7.1,
+      "fade_from_s": 3.1,
+      "cut_why": "round-4 take t5: from near silence a swell to its arrival at 2.6 s (+26.4 dB over the first 0.5 s, brightness rising), cut at the arrival + 0.5 s with our 4 s fade; passes both tests by the widest margin",
+      "takes_round4": {
+        "t1": "01a1d110-4b4b-7693-9513-71e47d3ed6dc",
+        "t2": "01a1d110-4b9b-7fc2-a31a-22c8b63aabe5",
+        "t3": "01a1d110-4bdd-7200-94d8-24dcc94c1fd2",
+        "t4": "01a1d110-4b8d-78c2-958b-43a6ae120a09",
+        "t5": "01a1d110-4b88-75c3-afe4-5f255761101b",
+        "t6": "01a1d110-4ba0-7cd3-bb70-eb64e241cc09",
+        "t7": "01a1d110-4b49-7e93-b43d-a7eb9c8e5cdb",
+        "t8": "01a1d110-4bf1-7561-a2df-aa264f6861da"
+      },
+      "alternatives": [
         {
-          "of": "theme",
-          "start_s": 39.1,
-          "end_s": 47.1,
-          "fade_in_s": 0.05,
-          "fade_out_s": 4.0,
-          "why": "B: the first full-ensemble arrival (39.2 s) and the loudest bar of the piece (40.0 s), then a 4 s fade from 43.1 s that is well down before the next phrase at 45.3 s; 8.0 s"
+          "excerpt": {
+            "of": "theme",
+            "start_s": 0.1,
+            "end_s": 9.1,
+            "fade_in_s": 0.05,
+            "fade_out_s": 4.0
+          },
+          "why": "the Overture's opening from near silence, rising 39 dB to its first full arrival at 4.6 s, then our 4 s fade; the only Overture moment that passes both tests"
         },
         {
-          "of": "theme",
-          "start_s": 48.2,
-          "end_s": 56.2,
-          "fade_in_s": 0.05,
-          "fade_out_s": 4.0,
-          "why": "C: the climb to the peak at 50.0 s and the held chord 50.7-52.2 s, then a 4 s fade from 52.2 s over the next phrase's quiet start; 8.0 s"
+          "take": "s3://argonia-private-050977237313/nw/music/round4/sting-levelup-t6.mp3",
+          "cut_s": 7.2,
+          "fade_from_s": 3.2,
+          "why": "round-4 take t6: a swell to its arrival at 2.7 s (+15.8 dB), brightness barely rising (passes by the narrowest margin)"
         }
       ]
     },
@@ -613,7 +623,9 @@
           -19
         ]
       },
-      "cut_s": 10.5
+      "cut_s": 5.28,
+      "fade_from_s": 4.0,
+      "cut_why": "the first 4.0 s as made, then a fade out to the quietest point (200 ms RMS) between 4.0 and 7.5 s, measured at 5.28 s (owner, 2026-11-12)"
     }
   ]
 }

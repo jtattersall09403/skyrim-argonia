@@ -32,7 +32,7 @@ BUCKET = "s3://argonia-private-050977237313"
 OWNER, OURS = f"{BUCKET}/nw/music/owner/", f"{BUCKET}/nw/music/ours/"
 FORMATS = (".wav", ".mp3", ".flac", ".m4a")
 TARGET_LUFS, TRUE_PEAK = -16.0, -1.5  # integrated loudness every slot is set to; stings the same
-STING_SECONDS, FADE = 12, 2  # a sting's cut is its piece's `cut_s` (a phrase end picked by onset analysis), else 12 s
+STING_SECONDS, FADE = 12, 2  # a sting is cut at its `cut_s`, fading out from its `fade_from_s` (else FADE s before)
 TAR = "built-argonia-soundtrack.tar"
 FFMPEG = os.environ.get("FFMPEG", "ffmpeg")
 
@@ -46,7 +46,9 @@ def excerpts():
 
 
 def cuts():
-    return {p["id"]: p.get("cut_s", STING_SECONDS) for p in json.loads(PIECES.read_text())["pieces"]}
+    """sting -> (cut_s, fade_from_s): the cut, and where its fade out starts (default FADE seconds before the cut)."""
+    return {p["id"]: (c := p.get("cut_s", STING_SECONDS), p.get("fade_from_s", c - FADE))
+            for p in json.loads(PIECES.read_text())["pieces"]}
 
 
 def s3(*a):
@@ -97,8 +99,8 @@ def excerpt_filter(ex):
 
 
 def convert(src, dst, sting, ex=None):
-    cut = excerpt_filter(ex) if ex else ["-t", str(sting), "-af",
-           f"afade=t=out:st={sting - FADE}:d={FADE},loudnorm=I={TARGET_LUFS}:TP={TRUE_PEAK}:LRA=11"] if sting \
+    cut = excerpt_filter(ex) if ex else ["-t", str(sting[0]), "-af",
+           f"afade=t=out:st={sting[1]}:d={round(sting[0] - sting[1], 3)},loudnorm=I={TARGET_LUFS}:TP={TRUE_PEAK}:LRA=11"] if sting \
         else ["-af", f"loudnorm=I={TARGET_LUFS}:TP={TRUE_PEAK}:LRA=11"]
     subprocess.run([FFMPEG, "-v", "error", "-y", *(excerpt_input(ex) if ex else []), "-i", str(src), *cut,
                     "-ar", "44100", "-ac", "2", "-c:a", "pcm_s16le", str(dst)], check=True)

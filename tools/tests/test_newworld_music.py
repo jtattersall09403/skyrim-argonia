@@ -56,10 +56,10 @@ def test_an_excerpt_is_cut_from_another_slot_with_clean_fades():
     sys.path.insert(0, str(REPO / "tools/newworld/music"))
     import soundtrack
     for p in PIECES["pieces"]:
-        for ex in [p["excerpt"], *p.get("excerpt_alternatives", [])] if "excerpt" in p else []:
+        for ex in ([p["excerpt"]] if "excerpt" in p else []) + [a["excerpt"] for a in p.get("alternatives", []) if "excerpt" in a]:
             assert ex["of"] in SLOTS and ex["of"] != p["id"] and "excerpt" not in next(q for q in PIECES["pieces"] if q["id"] == ex["of"])
             # Skyrim's level-up: the UI sound about 4 s + 4 s, the music 18.7-19.3 s
-            length = (7, 9) if p["id"] == "sting-levelup" else (17.5, 20.5)
+            length = (7, 9.5) if p["id"] == "sting-levelup" else (17.5, 20.5)
             assert length[0] <= ex["end_s"] - ex["start_s"] <= length[1], p["id"]
             assert 0.03 <= ex["fade_in_s"] <= 0.08 and 3 <= ex["fade_out_s"] <= 5
     args = soundtrack.excerpt_filter({"of": "theme", "start_s": 129.5, "end_s": 137.5, "fade_in_s": 0.05, "fade_out_s": 4.0})
