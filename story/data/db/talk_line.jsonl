@@ -599,13 +599,13 @@
 {"talker":"0934BE:Black Marsh North.esp","topic":"talk.self","ord":1,"text":"Gaius Fennic, traveller. I was born in Black Marsh of Imperial parents, and I speak a little Jel besides. I've never seen the Empire, so I count myself as from here."}
 {"talker":"0934BE:Black Marsh North.esp","topic":"talk.someone","ord":1,"text":"That's Holds-The-Tally, the guard at the south dock, standing just south of here. I like him; he's a good sort, and he'll tell you straight."}
 {"talker":"0934BE:Black Marsh North.esp","topic":"talk.trade","ord":1,"text":"I'm one of the company's men, posted between the docks and the centre. We stand where the field-owners say, and that's about the size of it."}
-{"talker":"0934BF:Black Marsh North.esp","topic":"talk.directions","ord":1,"text":"Cage Door? Easy, stranger. Walk north near sixty paces, and when you come to the dead tree on your right, take the path north-west another fifty or so. Cage Door is right there."}
+{"talker":"0934BF:Black Marsh North.esp","topic":"talk.directions","ord":1,"text":"Cage Door? Easy, stranger. Head north just until you reach the dead tree on your right, then take the path north-west, and Cage Door is right there. Can't miss it."}
 {"talker":"0934BF:Black Marsh North.esp","topic":"talk.greet-friend","ord":1,"text":"Ha, there you are, my friend! Stand clear of the target line and stay a while. I'm feeling lucky today, and I have thrown well."}
 {"talker":"0934BF:Black Marsh North.esp","topic":"talk.greet-stranger","ord":1,"text":"Stranger. Mind where you stand, I'm shooting. What d'you want?"}
-{"talker":"0934BF:Black Marsh North.esp","topic":"talk.here","ord":1,"text":"Thorn? A fine place to get rich, stranger, if you've got nerve. The hut's about thirty paces west-north-west of here, if it's a bed you're after."}
+{"talker":"0934BF:Black Marsh North.esp","topic":"talk.here","ord":1,"text":"Thorn? A fine place to get rich, stranger, if you've got nerve. The hut is just west-north-west of here, if it's a bed you're after."}
 {"talker":"0934BF:Black Marsh North.esp","topic":"talk.lore","ord":1,"text":"Ask Bites-The-Coin what Thorn is called, stranger. I like her, and I'd bet she tells it better than I would."}
 {"talker":"0934BF:Black Marsh North.esp","topic":"talk.self","ord":1,"text":"Lucan Sevro, archer, hired by the Imperial company. I guard the centre with my bow, and I'm the best shot in Thorn. Ask anyone. Or better, bet on it."}
-{"talker":"0934BF:Black Marsh North.esp","topic":"talk.someone","ord":1,"text":"Sheel-Taza is a guard, about ten paces south-west of here. Sour as old milk, so don't expect a smile."}
+{"talker":"0934BF:Black Marsh North.esp","topic":"talk.someone","ord":1,"text":"Sheel-Taza is a guard, just south-west of here. Sour as old milk, so don't expect a smile."}
 {"talker":"0934C0:Black Marsh North.esp","topic":"talk.greet-friend","ord":1,"text":"Stay a while, if you like; I've nothing to watch but the crowd, and your company's better."}
 {"talker":"0934C0:Black Marsh North.esp","topic":"talk.greet-stranger","ord":1,"text":"Traveller. Is there something you need?"}
 {"talker":"0934C0:Black Marsh North.esp","topic":"talk.greet-stranger","ord":2,"text":"Good day, traveller. How can I help you?"}
