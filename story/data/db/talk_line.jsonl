@@ -299,15 +299,15 @@
 {"talker":"02A209:Black Marsh.esm","topic":"talk.secret","ord":1,"text":"There is a thing I know. I do not give it to a stranger, honoured guest. Come back when I have had cause to trust you. Perhaps I will speak then."}
 {"talker":"02A209:Black Marsh.esm","topic":"talk.secret","ord":2,"text":"Near the graves north of the walls, a short way north-west of here, there is a trapdoor in the ground. It leads down under the city. The chest beside it has already been emptied, so do not expect a reward."}
 {"talker":"02A209:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Waits-For-Lanterns. I plan small jobs and I wait for dark to do them. It is a slow season, honoured guest, nothing more. I stand nearest the dock, where I can count the lanterns and the guards between them."}
-{"talker":"037DFE:Black Marsh North.esp","topic":"talk.directions","ord":1,"text":"The big ship? Follow the boards south about a hundred and eighty paces, traveller. The big ship is there."}
-{"talker":"037DFE:Black Marsh North.esp","topic":"talk.directions","ord":2,"text":"Temple Pass is north, traveller. Follow the path north about a hundred and ninety paces, until the dead tree is on your right. Then walk north over open ground about seven hundred paces, and you are there."}
+{"talker":"037DFE:Black Marsh North.esp","topic":"talk.directions","ord":1,"text":"The big ship, traveller? Keep to the boards and head south a short way. It is there, you cannot miss it. I would sooner be posted at that dock than here."}
+{"talker":"037DFE:Black Marsh North.esp","topic":"talk.directions","ord":2,"text":"Temple Pass is north, traveller. Take the path north a short way, until the dead tree is on your right. Then cross the open ground north a fair way, and you are at Temple Pass."}
 {"talker":"037DFE:Black Marsh North.esp","topic":"talk.greet-friend","ord":1,"text":"Oh, good, it is you! Stand with me a while. Ukka-Meesh has told me another story, and I want to tell it to you."}
 {"talker":"037DFE:Black Marsh North.esp","topic":"talk.greet-stranger","ord":1,"text":"Be well, traveller. Do you have a question?"}
 {"talker":"037DFE:Black Marsh North.esp","topic":"talk.greet-stranger","ord":2,"text":"Tidings, traveller. I am on watch here, so speak quickly."}
 {"talker":"037DFE:Black Marsh North.esp","topic":"talk.here","ord":1,"text":"This is the middle of Thorn, traveller. The signpost is right beside me, to the south-west."}
 {"talker":"037DFE:Black Marsh North.esp","topic":"talk.lore","ord":1,"text":"Who founded Thorn? Ask Ma-Veesk, traveller. Ukka-Meesh has told me some of it, but Ma-Veesk can tell it to you properly."}
 {"talker":"037DFE:Black Marsh North.esp","topic":"talk.self","ord":1,"text":"I am Xeech-Nu, traveller. I am new to the watch, and I listen to the stories of Ukka-Meesh, a guard here. I would like a post on the docks."}
-{"talker":"037DFE:Black Marsh North.esp","topic":"talk.someone","ord":1,"text":"Ukka-Meesh is a guard at the centre, like me, traveller. He is about five paces east of here."}
+{"talker":"037DFE:Black Marsh North.esp","topic":"talk.someone","ord":1,"text":"Ukka-Meesh is a guard at the centre, like me, traveller. He is just east of here."}
 {"talker":"037DFE:Black Marsh North.esp","topic":"talk.trade","ord":1,"text":"I am a guard at the town's centre, traveller. New guards are posted to the centre until someone trusts them. I would rather be on the south dock."}
 {"talker":"037E00:Black Marsh North.esp","topic":"talk.greet-friend","ord":1,"text":"Ah, it is you. Sit a while, my friend. I am only half awake, but I am glad of the company."}
 {"talker":"037E00:Black Marsh North.esp","topic":"talk.greet-stranger","ord":1,"text":"Mm. Yes, traveller? Speak slowly. I have been on watch a long time."}
