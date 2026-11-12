@@ -189,14 +189,14 @@
 {"talker":"01CCFE:Black Marsh North.esp","topic":"talk.secret","ord":1,"text":"I do not tell this to strangers, so earn my trust before you ask for more. The far cage door, just south-south-east of here, is the one nobody checks at night."}
 {"talker":"01CCFE:Black Marsh North.esp","topic":"talk.self","ord":1,"text":"I am Ma-Veesk. I guard the north-west houses and the cages behind them. At home I speak Jel, and I have little else to say of myself."}
 {"talker":"01CCFE:Black Marsh North.esp","topic":"talk.someone","ord":1,"text":"Two-Bells guards the north-west houses with me. You will find Two-Bells just south-south-west of here."}
-{"talker":"01CD01:Black Marsh North.esp","topic":"talk.directions","ord":1,"text":"The stone tower? Ha! Climb north a hundred and ninety-five paces or so, and there is your stone tower."}
+{"talker":"01CD01:Black Marsh North.esp","topic":"talk.directions","ord":1,"text":"The stone tower? Ha! Climb north a short way, and the tower stands ahead of you, traveller."}
 {"talker":"01CD01:Black Marsh North.esp","topic":"talk.greet-friend","ord":1,"text":"Ho, there is my favourite traveller! Come, stand by me and tell me everything. What news do you bring from the road?"}
 {"talker":"01CD01:Black Marsh North.esp","topic":"talk.greet-stranger","ord":1,"text":"Ho, traveller! You heard my bells coming, did you not? Everyone does. What news do you bring?"}
 {"talker":"01CD01:Black Marsh North.esp","topic":"talk.greet-stranger","ord":2,"text":"A stranger! Speak up, traveller, I like a loud voice. I do not know your accent, so where have you come from?"}
-{"talker":"01CD01:Black Marsh North.esp","topic":"talk.here","ord":1,"text":"This place, traveller? It is the north-west houses, and I watch over them. There is a house about twenty paces east of here, if you want one. Now, what news do you bring?"}
+{"talker":"01CD01:Black Marsh North.esp","topic":"talk.here","ord":1,"text":"This place, traveller? It is the north-west houses, and I watch over them. There is a house just east of here, if you want one. Now, what news do you bring?"}
 {"talker":"01CD01:Black Marsh North.esp","topic":"talk.lore","ord":1,"text":"Black Marsh, traveller? I walked the Tear road for years, guarding carts. For the trade on it, ask Sheel-Taza; I only walked beside the carts. Now, what news do you bring?"}
 {"talker":"01CD01:Black Marsh North.esp","topic":"talk.self","ord":1,"text":"I am Two-Bells! The two bells on my belt gave me the name, so that I never sneak up on anyone. For years I guarded carts on the Tear road, and I like travellers still. The Imperials are the best company, I find."}
-{"talker":"01CD01:Black Marsh North.esp","topic":"talk.someone","ord":1,"text":"Ma-Veesk? The guard at the north-west houses, about five paces north-north-east of here. Ma-Veesk is far too serious for my taste, traveller."}
+{"talker":"01CD01:Black Marsh North.esp","topic":"talk.someone","ord":1,"text":"Ma-Veesk? The guard at the north-west houses, just north-north-east of here. Ma-Veesk is far too serious for my taste, traveller."}
 {"talker":"01CD04:Black Marsh North.esp","topic":"talk.greet-friend","ord":1,"text":"Stand here, if you wish. I say that to very few, so do not make me regret it."}
 {"talker":"01CD04:Black Marsh North.esp","topic":"talk.greet-stranger","ord":1,"text":"Outlander. Say what you want and be brief; I am a slave, not a guide."}
 {"talker":"01CD04:Black Marsh North.esp","topic":"talk.greet-stranger","ord":2,"text":"What do you want, outlander? Speak plainly. I have no use for pleasantries."}
