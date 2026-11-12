@@ -36,7 +36,8 @@ def facts(src: Path, block=small.BLOCK) -> dict:
             v = cells.get(f"{x},{y}") or {}
             region[v.get("region")] += 1
             if "water" in v:
-                water[v["water"].split("-")[0] if v["water"].split("-")[-1].isdigit() else v["water"]] += 1
+                w = v["water"].split("@")[0]       # a region's variant (<kind>[-<heading>]@<region>) counts as its kind
+                water[w.split("-")[0] if w.split("-")[-1].isdigit() else w] += 1
     lodmodels = set()
     for y in range(y0, y0 + ny):
         f = src / f"plugin/refs/flora/cy{y:+04d}.jsonl"
