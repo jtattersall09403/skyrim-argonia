@@ -656,13 +656,13 @@
 {"talker":"0934C5:Black Marsh North.esp","topic":"talk.self","ord":1,"text":"I am Breaks-The-Ledger. I fight for the rising, outlander. That is all you need to know."}
 {"talker":"0934C5:Black Marsh North.esp","topic":"talk.someone","ord":1,"text":"Owes-Nothing is a soldier of the rising, like me. You will find him sixty paces south-east of here. He is slower than I would like."}
 {"talker":"0934C5:Black Marsh North.esp","topic":"talk.trade","ord":1,"text":"I fight in the rising. We mean to break the Tax Heel's ledgers before anything else. The Tax Heel collect Owings and tolls for the field-owners."}
-{"talker":"0C724F:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The market's cooking fire? North-east, about a hundred and thirty paces. The fire is there."}
+{"talker":"0C724F:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The market's cooking fire? It is north-east of here, a short way. Go on, I have boats to watch."}
 {"talker":"0C724F:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"You are back, my friend. The water is quiet, so stay a while and talk."}
 {"talker":"0C724F:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Speak. I have boats to watch."}
-{"talker":"0C724F:Black Marsh.esm","topic":"talk.here","ord":1,"text":"This is Black Rose. The south landing's dock is thirty paces south of here. A boat lies thirty paces south-south-east. I know her hull."}
+{"talker":"0C724F:Black Marsh.esm","topic":"talk.here","ord":1,"text":"This is Black Rose. The south landing's dock is just south of here. A boat lies just south-south-east. I know her hull."}
 {"talker":"0C724F:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"In the Second Era, word went round the coast that Black Rose had fallen and was gone. It was not. It is still here. I watch its landing."}
 {"talker":"0C724F:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Sakeeth. I watch the south landing for boats that do not pay. I grew up hauling nets on these docks. I joined the guard to be issued boots."}
-{"talker":"0C724F:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Holds-Fast is the guard on the path above the south docks. He is usually about fifty paces east-north-east of here. I would trust him in a real fight."}
+{"talker":"0C724F:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Holds-Fast is the guard on the path above the south docks. He is usually just east-north-east of here. I would trust him in a real fight."}
 {"talker":"0C7250:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The jail. North-east two hundred and sixty paces. The jail is there."}
 {"talker":"0C7250:Black Marsh.esm","topic":"talk.directions","ord":2,"text":"Haven. South-east a hundred and ten paces, round the cliffs, to the boat on its rack. Then south-west two hundred and thirty paces, past the stone tower. Haven is there."}
 {"talker":"0C7250:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"It is you. Stand by the post a while, my friend. The road is quiet and I am glad of the company."}
