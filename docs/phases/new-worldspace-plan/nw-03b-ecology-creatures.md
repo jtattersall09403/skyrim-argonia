@@ -23,3 +23,13 @@ Deploy the above onto the play machine.
 
 DO NOT change the terrain or trees or scatter or groundcover. Do not do anything that would require rebuilding LOD. Do not rebuild the terrain or Helstrom or anything else that has already been built.
 
+
+# Delivered (round 1: sources and the pad route; the spawn stage is owed)
+
+- Census of creature and harvestable sources: `tools/newworld/ecology/census.py` (out/newworld/ecology/census.json). HTBM, Curse of Cipactli, King of the Murkmire and Tropical Skyrim are asset-only on the New World card, so their creatures must be copied into our world file (as the flora stage copies bases) to spawn.
+- Skyrim's measures: `tools/newworld/ecology/measure.py` -> `newworld/sources/ecology/skyrim_measures.json` (creatures 25.5 per 100 cells; shore 77, forest 60, mountain 14, open 12, water 8; 70% levelled lists, 38% hostile; groups mean 1.56; harvestables shore 460, forest 386, mountain 79, water 75, open 12.5 per 100 cells; 278 encounter zones, mostly via locations).
+- Per-region ecology, all 24 regions: `newworld/sources/ecology/regions/*.json` (347 creature rows over five size classes, 100 signatures, no kind a signature in more than 2 regions, each row cited or a stated extrapolation; harvestables per region) and `npc_encounters.json` (23 of 24 regions have lore-backed hostile groups). The mod record behind each kind is not yet verified.
+- Harvestables already in the world: 31 King of the Murkmire FLOR bases with ingredients, 35,343 refs, placed by the flora stage.
+- Pad route: a lesser power "Argonia Travel" (nested menus, data in `newworld/sources/travel/menu.json`, scripts in `papyrus/ANW_Travel*.psc`); built at the next world rebuild, compiled by deploy.
+
+Owed: the ecology stage (creature and NPC refs by band and habitat, new harvestables), its checks and readback, the rebuild and deploy, docs/design/ecology.md, the skill recipe, and the owner's walk (nw-03b-walk.md).
