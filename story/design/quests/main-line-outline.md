@@ -17,10 +17,9 @@ Line-wide rules:
 - **One carried choice.** Each quest below plays the same whatever came before. A quest may hold one local choice;
   its result is colour (a line, a body, a letter) and never changes a later quest's stages. Only the finale's CUT,
   CLAIM or MEND carries forward, into the closing message and the world's end states.
-- **Act I's flags** (`flag.mq01.saved-sal`, `flag.mq01.saved-deesh`,
-  `flag.mq03.reed-sworn`, `flag.mq03.reed-declined`, `flag.mq05.minders-hold`, `flag.mq05.nisswo-read`;
-  `flag.mq04.adopted` and `flag.mq04.reconciled` are set on every play) are read for one line of colour at most, or
-  not at all.
+- **Act I's flags** (`flag.mq01.reed-joined` and `flag.mq03.tasted` are set on every play; `flag.mq05.minders-hold`,
+  `flag.mq05.nisswo-read`; `flag.mq04.adopted` and `flag.mq04.reconciled` are set on every play) are read for one
+  line of colour at most, or not at all.
 - **Deaths.** Every principal is killable. Where a fallback sender or a document can carry the stage, it does
   (30-main-quest §23); a person the line cannot go on without is named by the quest, and their death fails it and
   shows the main quest's message once. The Eye cannot be lost.
@@ -39,15 +38,18 @@ Line-wide rules:
 
 ## Act I: the burnt camp (records; read, not changed)
 
-**Hook:** an Owing gang's camp has burned in the night; a woman took the courier's satchel from it, and a clutch
-has died in the egg. The player hears it and finds what is left; nothing of it is staged.
+**Hook:** an Owing gang's camp has burned in the night, and a woman with a knotted cord let the player live; the
+player woke after the fire and hears of it. Nothing of it is staged.
 
-MQ01 No Name on the Work Roll, MQ03 A Dead Prisoner's Use, MQ04 The Tree That Turned Its Face, MQ05 Helstrom Behind
-Its Marsh. What Act I hands on, on every ending: the player is the Reed's deniable hand,
-has heard of Cuts-the-Old-Knot, has dreamed the ring of trees and the unbuilt door (a message, on tasting the sap), knows the cell cut a Hist's root to take
-its sap, and stands in Helstrom having met Kaska-Meen and Ei-Tuja (one may be dead) and walked past the hall of the empty, swept
-Scalded Throne. The handler is Nesh-Deeka; if she died, Never-Writes-Twice, already in the Reed's house since MQ03,
-sends the Act II hook in her place (the sender line, N5).
+MQ01 No Name on the Work Roll, MQ03 The Cutters' Jar, MQ04 The Tree That Turned Its Face, MQ05 Helstrom Behind Its
+Marsh (MQ04 starts when MQ03 ends at stage 90). What Act I hands on: every player is in the Veiled Reed at rank 0,
+its deniable hand; carries Nesh-Deeka's page of the dream (the ship's hold with roots grown through its deck in a
+ring like trees, a door nobody built, a dry voice without words); knows the cell cuts a Hist's roots and draws its
+sap into jars it brings; has only heard of the woman with the knotted cord, Cuts-the-Old-Knot, never seen her; and
+stands in Helstrom having met Kaska-Meen and Ei-Tuja (one may be dead) and walked past the hall of the empty, swept
+Scalded Throne. There is no sworn or declined split and nobody was saved at the camp. The handler is Nesh-Deeka, at
+Salts-The-Catch's house; she is one the line cannot go on without, and if she dies the main quest fails with the
+thread-severed message (`flag.main.thread-severed`).
 
 ## Act II: the hunt (four quests)
 
@@ -92,7 +94,7 @@ noticed to walk into it carrying the jewel as bait.
   swimming and air pockets, climbing the Hist-chamber shaft, the inner door's lever, one guardian fight; the
   Collector's hired divers are already in the dry chambers (a fight, or sneak past). Taking the Eye brings the
   sap-dream unbidden, as a message: the ring of trees, the door. No choice. Reward: the Eye of Argonia.
-- **MQ18 A Sermon Against Roots.** Opening stage: Nesh-Deeka (fallback Never-Writes-Twice) sends the player to the
+- **MQ18 A Sermon Against Roots.** Opening stage: Nesh-Deeka sends the player to the
   Unbound Root's front door with the Eye as bait. The Unbound Root gathers in the undercroft of an abandoned temple
   in the north of the marsh; the preacher is the Collector, Opens-the-Last-Door, who knows the player and says
   nothing. His sermon, what he says when the player speaks to him, names the state's real abuse. Skills: speech to
@@ -104,8 +106,7 @@ noticed to walk into it carrying the jewel as bait.
   dreamers to mine them. Nesh-Deeka was caught altering the dreamers' files to free them, and Never-Writes-Twice's
   honest word has put her among them. A break-in and rescue (B2), no files: the Reed's dream-house, a guarded house
   near Thorn. Skills: sneak or lockpicking in, a fight or illusion past the keepers, and opening the cells; the
-  dreamers are gone when the player has reported to the Reed's house far away (no escort). If Nesh-Deeka died
-  earlier, the dreamers alone, and her cell holds her last letter. Choice: free Nesh-Deeka with the dreamers, or leave her (she knows the Reed best); colour only:
+  dreamers are gone when the player has reported to the Reed's house far away (no escort). Choice: free Nesh-Deeka with the dreamers, or leave her (she knows the Reed best); colour only:
   freed, she leaves the province and writes once at the end. Reward: fixed (row needed).
 - **MQ21 The Black Sap House.** The cult's laboratory in a cave of the north, where it has been waking the Egg with
   sap and volunteers, one of whom volunteered twice. Skills: alchemy to know what the pools are doing, sneak or
@@ -273,9 +274,9 @@ line_spirit:
 line_spirit_beat:
   - ord: 0
     beat: >-
-      Act I (MQ01 to MQ05, records): the Owing barge, and the camp found burned, where Cuts-the-Old-Knot took the
-      courier's satchel; a Hist turns its face and its clutch dies; the burnt camp read and the
-      Reed's offer; the first sap-dream (a ring of trees, a door not built, a voice); the cut tree at Low-Reed
+      Act I (MQ01 to MQ05, records): the Owing barge, the camp burned in the night and the woman with the knotted
+      cord heard of; the Veiled Reed takes the player in; the cutters' jar and Nesh-Deeka's page of the dream (a
+      ring of trees, a door not built, a voice); a Hist turns its face; the cut tree at Low-Reed
       Village and the cell's camp across the leech water; Helstrom, past the empty, swept
       Scalded Throne
   - ord: 1
