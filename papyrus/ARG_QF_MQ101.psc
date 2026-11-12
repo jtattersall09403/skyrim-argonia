@@ -8,10 +8,10 @@ Quest Property StartQuest Auto ; ARG_MQ01, the opening (MainQuest.cs)
 ObjectReference Property StartMarker Auto
 
 ; The new world's own start: with ArgoniaNewWorld.esm in the load order (the New World card) a new game begins at its
-; ArgoniaNWStartMarker (0x802) and ANW_TravelGive (0x00F000, seeded in newworld/sources/world_formids.json) runs character
+; ArgoniaNWStartMarker (0x802) and ANW_TravelGive (0x090000, tools/newworld/idspace.py row travel-give) runs character
 ; creation and puts the "Argonia Travel" power on the shout button, instead of the Lilmoth opening.
 Int Property NWMarkerId = 0x802 AutoReadOnly
-Int Property NWGiveId = 0xF000 AutoReadOnly
+Int Property NWGiveId = 0x90000 AutoReadOnly
 
 ;BEGIN FRAGMENT Fragment_0
 Function Fragment_0()

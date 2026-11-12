@@ -23,7 +23,7 @@ def test_every_walk_spot_is_a_menu_button_and_the_start_ids_agree():
     doc = json.loads(T.MENU.read_text())
     cells = {b["cell"] for p in doc["pages"].values() for b in p["buttons"] if "cell" in b}
     assert {s["name"] for s in tp.SPOTS} <= cells
-    reg = json.loads((T.REPO / "newworld/sources/world_formids.json").read_text())["ids"]["base"]
+    from tools.newworld import idspace
     cs = (T.REPO / "tools/ArgoniaPlugin/NewWorldTravel.cs").read_text()
     psc = (T.REPO / "papyrus/ARG_QF_MQ101.psc").read_text()
-    assert reg["travel:give"] == "0x00F000" and "GiveId = 0x00F000" in cs and "NWGiveId = 0xF000" in psc
+    assert idspace.SPAN["travel-give"][0] == 0x090000 and "GiveId = 0x090000" in cs and "NWGiveId = 0x90000" in psc
