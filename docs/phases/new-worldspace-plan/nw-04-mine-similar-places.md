@@ -27,3 +27,11 @@ Do not rebuild LOD at this point.
 - Loading: `python -m tools.places source <place_id> [--rank N]` writes the bundle (layout, interiors, bases, actors,
   navmesh, the source's terrain heights and land textures); importance 4-5 pre-extracted.
 - Sense check: `python -m tools.places sources-page` -> out/newworld/sources/index.html; the atlas shows "Source place".
+- Round two (owner, #64: Nordic layouts stay; more sources for the gaps): the miner links a plugin's buildings within
+  2048 units (a door into an interior weighs 6), so hamlets of a few huts, tent camps and ruin-piece clusters by
+  tileset are places of their own, told apart by quarter cells; Kothringi ruins take an abandoned hamlet or village or
+  an Imperial ruin by the lore (story/lore/topics/lost-peoples.md); every piece of fixed Helstrom leaves the pool.
+  Ten mods added as groups (mods/dependencies.json, asset-only; sourcing-register.json): Wyrmstooth, Nyhus, Skyrim
+  Trading Posts, Caves of Morrowind, Bloodmoon Dungeons Restored, Solstheim Dungeonpack, Underwater Skyrim, Northwatch
+  Coast, Explore Skyrim, Moonpath to Elsweyr; mined and dropped for winning nothing: Unmarked Locations Pack, Pargran
+  Village Ruins, Windstad. No Nexus mod places Argonian tribal camps, toll posts or quarries.

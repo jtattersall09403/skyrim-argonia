@@ -42,6 +42,16 @@ GROUPS: dict[str, tuple[list[str], list[str], str]] = {
     "greyquarter": (["Grey_Quarter_Overhaul.esp"], ["Grey_Quarter_Overhaul.esp"], "grey-quarter-overhaul"),
     "dawnofskyrim": (["Dawn of Skyrim.esp"], ["Dawn of Skyrim.esp"], "dawn-of-skyrim"),
     "dosgq": (["DOS - Grey Quarter Overhaul Patch.esp"], ["DOS - Grey Quarter Overhaul Patch.esp"], "dawn-of-grey-quarter"),
+    "cavesmw": (["CavesofMorrowind.esp"], ["CavesofMorrowind.esp"], "caves-of-morrowind"),
+    "moonpath": (["moonpath.esp"], ["moonpath.esp"], "moonpath-to-elsweyr"),
+    "wyrmstooth": (["Wyrmstooth.esp"], ["Wyrmstooth.esp"], "wyrmstooth"),
+    "nyhus": (["Nyhus.esp"], ["Nyhus.esp"], "nyhus"),
+    "bloodmoon": (["Forgotten Bloodmoon Dungeons.esp", "VendesMorrowindSolstheimDungeons.esp", "Bloodmoon Dungeons Restored - Fort Frostmoth Expansion.esp", "Berserkers N Fryse Hags.esp"], ["Forgotten Bloodmoon Dungeons.esp", "VendesMorrowindSolstheimDungeons.esp", "Bloodmoon Dungeons Restored - Fort Frostmoth Expansion.esp", "Berserkers N Fryse Hags.esp"], "bloodmoon-dungeons-restored"),
+    "soldungeons": (["SolsthDungeonPack.esp"], ["SolsthDungeonPack.esp"], "solstheim-dungeonpack"),
+    "tradingposts": (["Skyrim Trading Posts.esp"], ["Skyrim Trading Posts.esp"], "skyrim-trading-posts"),
+    "northwatch": (["Northwatch Coast.esp"], ["Northwatch Coast.esp"], "northwatch-coast"),
+    "exploreskyrim": (["ExploreSkyrim-ES.esp"], ["ExploreSkyrim-ES.esp"], "explore-skyrim"),
+    "underwater": (["UWRL_UnderWaterSkyrimRiversAndLakes.esp"], ["UWRL_UnderWaterSkyrimRiversAndLakes.esp"], "underwater-skyrim-rivers-and-lakes"),
 }
 
 

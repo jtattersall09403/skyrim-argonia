@@ -4068,7 +4068,9 @@
    ],
    "masters": [
     "Skyrim.esm",
-    "Update.esm"
+    "Update.esm",
+    "Dawnguard.esm",
+    "Dragonborn.esm"
    ],
    "runtime": "data only; plugins off (asset-only)",
    "conflicts": "not swept (plugins never active)",
@@ -4167,6 +4169,217 @@
    "permission_evidence": "Nexus API mod 4016 file 830473 (MAIN), read 2026-11-12",
    "plugins": [
     "Nyhus.esp"
+   ],
+   "masters": [
+    "Skyrim.esm",
+    "Update.esm"
+   ],
+   "runtime": "data only; plugins off (asset-only)",
+   "conflicts": "not swept (plugins never active)",
+   "linked_or_forked_by": "none: depended on as the player’s own download",
+   "asset_only": true
+  },
+  {
+   "id": "bloodmoon-dungeons-restored",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 151202,
+    "file": 820210
+   },
+   "name": "Morrowind's Bloodmoon Solstheim Content Restoration - Definitive Edition.",
+   "author": "Vende and Eldermaster28",
+   "version": "1.3.1.2",
+   "archive": "Bloodmoon Dungeons Restored 151202 1.3.1.2 2026-10-14T19-03Z pQ0AZ3UW0.zip",
+   "size_kb": 28431,
+   "why": "a source place for 2 of the new world's places (Solstheim Dunmer tombs and Daedric ruins; nw-04, newworld/sources/source_match/): its plugin read for layout, asset-only: its meshes and textures laid loose in the NewWorld profile alone, its plugins never active",
+   "required": true,
+   "profile": "newworld",
+   "sha256": "8539be1fbfd6d6a5dc6eb034474823d455f721517462755e97d3337306d39bf7",
+   "licence": "none stated",
+   "permission_summary": "The player's own download is fine as a dependency; placing its meshes/textures or copied records in our generated plugin is using its contents in our mod and needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API mod 151202 file 820210 (MAIN), read 2026-11-12",
+   "plugins": [
+    "Forgotten Bloodmoon Dungeons.esp",
+    "VendesMorrowindSolstheimDungeons.esp",
+    "Bloodmoon Dungeons Restored - Fort Frostmoth Expansion.esp",
+    "Berserkers N Fryse Hags.esp"
+   ],
+   "masters": [
+    "Skyrim.esm",
+    "Update.esm",
+    "Dawnguard.esm",
+    "Dragonborn.esm"
+   ],
+   "runtime": "data only; plugins off (asset-only)",
+   "conflicts": "not swept (plugins never active)",
+   "linked_or_forked_by": "none: depended on as the player’s own download",
+   "asset_only": true
+  },
+  {
+   "id": "solstheim-dungeonpack",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 54095,
+    "file": 224408
+   },
+   "name": "Solstheim Dungeonpack",
+   "author": "Leodoidao",
+   "version": "3.1",
+   "archive": "Solstheim Dungeonpack SE-54095-3-1-1630170430.zip",
+   "size_kb": 48302,
+   "why": "a source place for 2 of the new world's places (ancestral tombs; nw-04, newworld/sources/source_match/): its plugin read for layout, asset-only: its meshes and textures laid loose in the NewWorld profile alone, its plugins never active",
+   "required": true,
+   "profile": "newworld",
+   "sha256": "3f7cef97f289244369d5fb54a79fe4244c0ba97fd004c54ab7df89aff16aa8bd",
+   "licence": "none stated",
+   "permission_summary": "The player's own download is fine as a dependency; placing its meshes/textures or copied records in our generated plugin is using its contents in our mod and needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API mod 54095 file 224408 (MAIN), read 2026-11-12",
+   "plugins": [
+    "SolsthDungeonPack.esp"
+   ],
+   "masters": [
+    "Skyrim.esm",
+    "Update.esm",
+    "Dawnguard.esm",
+    "Dragonborn.esm"
+   ],
+   "runtime": "data only; plugins off (asset-only)",
+   "conflicts": "not swept (plugins never active)",
+   "linked_or_forked_by": "none: depended on as the player’s own download",
+   "asset_only": true
+  },
+  {
+   "id": "skyrim-trading-posts",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 23997,
+    "file": 367190
+   },
+   "name": "Skyrim Trading Posts Remastered - SSE",
+   "author": "DemonLord7654",
+   "version": "3.4",
+   "archive": "Skyrim Trading Posts Remastered 3.4-23997-3-4-1678472795.7z",
+   "size_kb": 1859,
+   "why": "a source place for 6 of the new world's places (roadside trading posts for outposts; nw-04, newworld/sources/source_match/): its plugin read for layout, asset-only: its meshes and textures laid loose in the NewWorld profile alone, its plugins never active",
+   "required": true,
+   "profile": "newworld",
+   "sha256": "c4687ebea52b7104c5924566c6922b0f856175a9fd203a80d693aecaef0ff1a8",
+   "licence": "none stated",
+   "permission_summary": "The player's own download is fine as a dependency; placing its meshes/textures or copied records in our generated plugin is using its contents in our mod and needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API mod 23997 file 367190 (MAIN), read 2026-11-12",
+   "plugins": [
+    "Skyrim Trading Posts.esp"
+   ],
+   "masters": [
+    "Skyrim.esm",
+    "Update.esm"
+   ],
+   "runtime": "data only; plugins off (asset-only)",
+   "conflicts": "not swept (plugins never active)",
+   "linked_or_forked_by": "none: depended on as the player’s own download",
+   "asset_only": true
+  },
+  {
+   "id": "northwatch-coast",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 71709,
+    "file": 306441
+   },
+   "name": "The Northwatch Coast",
+   "author": "Tesfiend",
+   "version": "0.8",
+   "archive": "Northwatch Coast main file-71709-0-8-1660172313.zip",
+   "size_kb": 82,
+   "why": "a source place for 2 of the new world's places (a fishing village and wrecks; nw-04, newworld/sources/source_match/): its plugin read for layout, asset-only: its meshes and textures laid loose in the NewWorld profile alone, its plugins never active",
+   "required": true,
+   "profile": "newworld",
+   "sha256": "81c79c5d306ad7c7a0e0d5366ae554d1a0e0e5acb79b388048ced599ac1b989d",
+   "licence": "none stated",
+   "permission_summary": "The player's own download is fine as a dependency; placing its meshes/textures or copied records in our generated plugin is using its contents in our mod and needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API mod 71709 file 306441 (MAIN), read 2026-11-12",
+   "plugins": [
+    "Northwatch Coast.esp"
+   ],
+   "masters": [
+    "Skyrim.esm",
+    "Update.esm"
+   ],
+   "runtime": "data only; plugins off (asset-only)",
+   "conflicts": "not swept (plugins never active)",
+   "linked_or_forked_by": "none: depended on as the player’s own download",
+   "asset_only": true
+  },
+  {
+   "id": "explore-skyrim",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 106724,
+    "file": 450748
+   },
+   "name": "Explore Skyrim Dungeon Pack",
+   "author": "SenterPat",
+   "version": "1",
+   "archive": "Explore Skyrim-106724-1-1702284442.zip",
+   "size_kb": 2208,
+   "why": "a source place for 1 of the new world's places (small dungeons and cottages; nw-04, newworld/sources/source_match/): its plugin read for layout, asset-only: its meshes and textures laid loose in the NewWorld profile alone, its plugins never active",
+   "required": true,
+   "profile": "newworld",
+   "sha256": "2f7b02024ea34ca303080c1b94d23edc0d9fc04a0546a413fee49f81ef2b1773",
+   "licence": "none stated",
+   "permission_summary": "The player's own download is fine as a dependency; placing its meshes/textures or copied records in our generated plugin is using its contents in our mod and needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API mod 106724 file 450748 (MAIN), read 2026-11-12",
+   "plugins": [
+    "ExploreSkyrim-ES.esp"
+   ],
+   "masters": [
+    "Skyrim.esm",
+    "Update.esm"
+   ],
+   "runtime": "data only; plugins off (asset-only)",
+   "conflicts": "not swept (plugins never active)",
+   "linked_or_forked_by": "none: depended on as the player’s own download",
+   "asset_only": true
+  },
+  {
+   "id": "underwater-skyrim-rivers-and-lakes",
+   "group": "newworld",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 146572,
+    "file": 795104
+   },
+   "name": "Underwater Skyrim- Rivers and Lakes",
+   "author": "YeahButIronically",
+   "version": "1.1.4",
+   "archive": "Underwater Skyrim- Rivers and Lakes 146572 1.1.4 2026-08-25T19-47Z vlGiB9OgT.7z",
+   "size_kb": 7266,
+   "why": "a source place for 3 of the new world's places (sunken ruins in waterways; nw-04, newworld/sources/source_match/): its plugin read for layout, asset-only: its meshes and textures laid loose in the NewWorld profile alone, its plugins never active",
+   "required": true,
+   "profile": "newworld",
+   "sha256": "041535007df884a46d163458a6792995ee7043bbb8bd6e92644c35ad722ebc29",
+   "licence": "none stated",
+   "permission_summary": "The player's own download is fine as a dependency; placing its meshes/textures or copied records in our generated plugin is using its contents in our mod and needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API mod 146572 file 795104 (MAIN), read 2026-11-12",
+   "plugins": [
+    "UWRL_UnderWaterSkyrimRiversAndLakes.esp"
    ],
    "masters": [
     "Skyrim.esm",

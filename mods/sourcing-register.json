@@ -1059,5 +1059,59 @@
   "used_by": "the NewWorld profile (asset-only; the player downloads it): creature records and assets of the new world's ecology (phase nw-03b)",
   "linked_or_forked_by": "none: depended on as the player's own download",
   "notes": "author Mihail. No terms stated on the page."
+ },
+ {
+  "name": "Morrowind's Bloodmoon Solstheim Content Restoration - Definitive Edition. (Nexus 151202)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/151202?tab=files&file_id=820210",
+  "version": "1.3.1.2 (mods/dependencies.json row bloodmoon-dungeons-restored)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it): a layout source for 2 new-world places (nw-04)",
+  "linked_or_forked_by": "none: depended on as the player’s own download; its plugins never active, never a master",
+  "notes": "author Vende and Eldermaster28. The player's own download is fine as a dependency; placing its meshes/textures or copied records in our generated plugin needs the author's permission."
+ },
+ {
+  "name": "Solstheim Dungeonpack (Nexus 54095)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/54095?tab=files&file_id=224408",
+  "version": "3.1 (mods/dependencies.json row solstheim-dungeonpack)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it): a layout source for 2 new-world places (nw-04)",
+  "linked_or_forked_by": "none: depended on as the player’s own download; its plugins never active, never a master",
+  "notes": "author Leodoidao. The player's own download is fine as a dependency; placing its meshes/textures or copied records in our generated plugin needs the author's permission."
+ },
+ {
+  "name": "Skyrim Trading Posts Remastered - SSE (Nexus 23997)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/23997?tab=files&file_id=367190",
+  "version": "3.4 (mods/dependencies.json row skyrim-trading-posts)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it): a layout source for 6 new-world places (nw-04)",
+  "linked_or_forked_by": "none: depended on as the player’s own download; its plugins never active, never a master",
+  "notes": "author DemonLord7654. The player's own download is fine as a dependency; placing its meshes/textures or copied records in our generated plugin needs the author's permission."
+ },
+ {
+  "name": "The Northwatch Coast (Nexus 71709)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/71709?tab=files&file_id=306441",
+  "version": "0.8 (mods/dependencies.json row northwatch-coast)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it): a layout source for 2 new-world places (nw-04)",
+  "linked_or_forked_by": "none: depended on as the player’s own download; its plugins never active, never a master",
+  "notes": "author Tesfiend. The player's own download is fine as a dependency; placing its meshes/textures or copied records in our generated plugin needs the author's permission."
+ },
+ {
+  "name": "Explore Skyrim Dungeon Pack (Nexus 106724)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/106724?tab=files&file_id=450748",
+  "version": "1 (mods/dependencies.json row explore-skyrim)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it): a layout source for 1 new-world places (nw-04)",
+  "linked_or_forked_by": "none: depended on as the player’s own download; its plugins never active, never a master",
+  "notes": "author SenterPat. The player's own download is fine as a dependency; placing its meshes/textures or copied records in our generated plugin needs the author's permission."
+ },
+ {
+  "name": "Underwater Skyrim- Rivers and Lakes (Nexus 146572)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/146572?tab=files&file_id=795104",
+  "version": "1.1.4 (mods/dependencies.json row underwater-skyrim-rivers-and-lakes)",
+  "licence": "none stated",
+  "used_by": "the NewWorld profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it): a layout source for 3 new-world places (nw-04)",
+  "linked_or_forked_by": "none: depended on as the player’s own download; its plugins never active, never a master",
+  "notes": "author YeahButIronically. The player's own download is fine as a dependency; placing its meshes/textures or copied records in our generated plugin needs the author's permission."
  }
 ]

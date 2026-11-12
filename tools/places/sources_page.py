@@ -95,10 +95,13 @@ def main(argv: list[str]) -> int:
     w("<h2>What changed since the first version</h2><p>You kept Skyrim's towns as layouts, so that call is gone. The miner "
       "now finds small places in the mods we hold: hamlets of a few huts, camps of tents and ruins by their tileset, "
       "each counted apart even when two share a cell. Kothringi ruins now take an abandoned village or an Imperial "
-      "ruin, as the lore describes them, never a cave or a Dwemer city.</p>")
-    w("<h2>Gaps that remain</h2><p class=muted>Places of each kind whose source is the same kind of place. The rest "
-      "need new mods; candidates are listed for you on the owner check, as their permission terms could not be read "
-      "here.</p><div class=scroll><table><tr><th>Our kind</th><th class=n>Places</th><th class=n>Same kind</th></tr>"
+      "ruin, as the lore describes them, never a cave or a Dwemer city. Ten more mods were mined and kept where "
+      "they won places: Wyrmstooth, Nyhus (Cyrodiil's border: Imperial forts and villages), Skyrim Trading Posts "
+      "(roadside posts for outposts), Caves of Morrowind, Bloodmoon Dungeons Restored and Solstheim Dungeonpack "
+      "(Velothi tombs), Underwater Skyrim (sunken ruins), Northwatch Coast, Explore Skyrim and Moonpath to Elsweyr. "
+      "Each is a download you make yourself, as the others are; nothing of theirs is shipped.</p>")
+    w("<h2>Gaps that remain</h2><p class=muted>Places of each kind whose source is the same kind of place. No mod on "
+      "Nexus places Argonian tribal camps, toll posts or quarries; those kinds take the nearest kind we hold.</p><div class=scroll><table><tr><th>Our kind</th><th class=n>Places</th><th class=n>Same kind</th></tr>"
       + "".join(f"<tr><td>{e(k)}</td><td class=n>{n}</td><td class=n>{f}</td></tr>" for k, (n, f) in gap.items())
       + "</table></div>")
     w("<h2>How similar, by importance</h2><p class=muted>Importance 5 shapes the province, 1 is local colour. The "
