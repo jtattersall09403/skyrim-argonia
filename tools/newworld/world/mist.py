@@ -129,7 +129,7 @@ def build(out: Path) -> dict:
             near = still[k] & (w | (SH[:, sc] < NEAR_STILL_M))
             p = per_site(np.where(near, np.maximum(c["density"] * wt, floor[k] * np.where(w, 1.0, NEAR_W)), c["density"] * wt))
             p[w & ~still[k] & ~flowing[k]] = 0  # the sea, bays and lakes
-            if cell.get("water") == "sea":
+            if cell.get("water", "land").split("@")[0] == "sea":   # a region's sea variant is the sea
                 p[ndi.binary_dilation(w, iterations=3)] = 0
             placed, cap = 0, max(0, min(CAP, REFS_CAP - natural.get((cx, cy), 0)))
             for a in range(n):
@@ -232,7 +232,7 @@ def rows(mist: list[dict], natural: list[dict], cells: dict) -> list[tuple[str, 
     acc: dict[str, list[int]] = {}
     mc = Counter(xy)
     for key, c in cells.items():
-        if c.get("water") != "sea" and c["region"] in rc:
+        if c.get("water", "land").split("@")[0] != "sea" and c["region"] in rc:   # a region's sea variant is the sea
             acc.setdefault(rc[c["region"]][0], []).append(mc.get(tuple(map(int, key.split(","))), 0))
     got = {cid: sum(v) / len(v) / CELL_HA for cid, v in acc.items() if v}
     order = sorted(got, key=lambda cid: cls["classes"][cid]["mist"]["density"])

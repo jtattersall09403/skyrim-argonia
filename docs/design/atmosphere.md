@@ -88,7 +88,9 @@ Skyrim's own way (Morthal's): always-on `FXMistLow01` statics, no script.
   of Hjaalmarch's) times the site's weight, raised over still water and its 20 m banks to the water kind's floor
   (blackwater swamp 2.0, green marsh 1.8, pond 1.2; banks 0.8 of it), so those waters carry their mist in any region.
 - Weights: still water and marsh or swamp habitats 1; banks of still water 0.8; mangrove 0.7, Hist grove 0.5,
-  hummock 0.45; flowing water 0.25; the sea, bays and lakes 0, nor within three samples of a sea cell's water.
+  hummock 0.45; flowing water 0.25; the sea, bays and lakes 0, nor within three samples of a sea cell's water. A
+  cell's water names its region's variant (`sea@topal-bay`, `pond@blackwood`): the stage and its read-back take the
+  kind before the `@`, so every region's sea is the sea.
 - Opacity: the class's full-opacity share (`mist.full_vis`, at least Hjaalmarch's 43 %) of `FXMistLow01Long` and
   `FXMistLow01` (57 : 43), the rest `FXMistLow01LongHalfVis` and `FXMistLow01HalfVis` (59 : 41).
 - Height: centre 0.9 to 1.4 m over the water or the ground under the ref (bilinear on the heightmap, as the game

@@ -41,7 +41,7 @@ BLOCK = (4, -134, 16, 16)        # south-west cell x, y; cells east, cells north
 # under the block says so instead of testing less.
 HOLDS = ("three regions (valley-of-storms, chixathe-mesa, arnesian-jungle) and the seams between them; still water "
          "(green marsh) beside flowing water (a river and streams, several headings); forest with TREE bases, static "
-         "trees flagged for tree LOD and our texture-repaired copies of masters' trees; rocky upland with rule-matched "
+         "trees flagged for tree LOD and our copies of other plugins' trees (a billboard of their own); rocky upland with rule-matched "
          "rocks, cliffs with LOD models of their own and a cliff drawn from a derived LOD model; a road with its "
          "dressing and four junctions; the pad of a place at the water (Tenmal)")
 # what the block's own LOD plan must hold of each mechanism (lodplan.json counts: bases), or the LOD selftest tests less

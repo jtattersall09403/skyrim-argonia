@@ -13,7 +13,6 @@ from tools.newworld import small
 
 DB = small.REPO / "newworld/story/data/db"
 STILL = ("pond", "green-marsh", "blackwater-swamp", "lake")
-MASTERS = ("Skyrim.esm", "Update.esm", "Black Marsh.esm")
 
 
 def _jsonl(p: Path) -> list:
@@ -52,8 +51,8 @@ def facts(src: Path, block=small.BLOCK) -> dict:
             t[p["mech"]] += 1
             if p["mech"] == "tree" and p["sig"] == "STAT":
                 t["static_tree"] += 1
-            if p["mech"] == "tree" and b and p["plugin"] == small.REAL_ESM and b["plugin"] in MASTERS:
-                t["repaired_copy"] += 1
+            if p["mech"] == "tree" and b and p["plugin"] == small.REAL_ESM and b.get("copied"):
+                t["repaired_copy"] += 1          # our copy of another plugin's tree: a billboard of its own
             if p["mech"] == "lodmodel":
                 lodmodels.add(p["edid"])
     flow = sum(small.in_block(*r["cell"], block) for r in json.loads((src / "water_flow_cells.json").read_text()))
@@ -75,7 +74,7 @@ ROWS = (
     ("dry land for forest and upland (60 cells)", lambda f: f["dry_cells"] >= 60),
     ("trees planned for a billboard", lambda f: f["tree"] >= 500),
     ("static trees flagged for tree LOD", lambda f: f["static_tree"] >= 50),
-    ("our texture-repaired copies of masters' trees", lambda f: f["repaired_copy"] >= 20),
+    ("our copies of other plugins' trees, each with a billboard of its own", lambda f: f["repaired_copy"] >= 20),
     ("rocks matched by a full-model rule", lambda f: f["object"] >= 5),
     ("cliffs and trims with LOD models of their own", lambda f: f["own"] >= 20),
     ("a base drawn from a derived LOD model", lambda f: len(f["lodmodel_bases"]) >= 1),

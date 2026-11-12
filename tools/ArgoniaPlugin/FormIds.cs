@@ -6,7 +6,9 @@
 //   alttex:<source form key>:<n>     the texture set of a copy's texture repair, 3D index n
 //   ltex:<material id>               the land texture of one material of tex/materials.json
 //   watr:<key>                       one water type of cells.json
-//   blend:<own type>|<mix>|<look>    one graded water record (WaterBlend.Blend)
+//   blend:<own type>|<mix>|<look>    one graded water record (WaterBlend.Blend), held in the file as its digest
+//                                    blend#<first 12 hex of the name's SHA-256>: the graded family runs to thousands
+//                                    of long names, and the file stays small (Key)
 //   region:<region id>               one region of cells.json
 //   var ids = FormIds.Load(path);  uint id = ids.Take("ground", "ltex:moss");  ...  ids.Save();
 // Take: a known name returns its id, whatever kind asks; a new name takes the next free id of its kind's block and is
@@ -64,7 +66,7 @@ sealed class FormIds
             if (root.TryGetProperty("seeded", out var sd)) r.seeded = Range(sd.GetString()!);
             foreach (var k in root.GetProperty("ids").EnumerateObject())
                 foreach (var e in k.Value.EnumerateObject())
-                    r.Put(k.Name, e.Name, Hex(e.Value.GetString()!));
+                    r.Put(k.Name, Key(e.Name), Hex(e.Value.GetString()!));
         }
         var all = r.blocks.OrderBy(b => b.Value.First).ToList();
         for (var i = 1; i < all.Count; i++)
@@ -91,8 +93,14 @@ sealed class FormIds
         m[name] = id;
     }
 
+    /// The name as the file holds it: a graded water record by its digest, every other name whole.
+    public static string Key(string name) => name.StartsWith("blend:", StringComparison.Ordinal)
+        ? "blend#" + Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(Encoding.UTF8.GetBytes(name)))[..12].ToLowerInvariant()
+        : name;
+
     public uint Take(string kind, string name)
     {
+        name = Key(name);
         if (byName.TryGetValue(name, out var id)) return id;
         if (!blocks.TryGetValue(kind, out var b)) throw new InvalidDataException($"form ids: kind '{kind}' has no block; {name} cannot be given an id");
         id = next[kind];
@@ -104,7 +112,7 @@ sealed class FormIds
         return id;
     }
 
-    public bool Knows(string name) => byName.ContainsKey(name);
+    public bool Knows(string name) => byName.ContainsKey(Key(name));
     public int Count => byName.Count;
 
     public string Text()
@@ -155,6 +163,8 @@ sealed class FormIds
         // one land texture more, one blend more: one id more each, nothing else moves
         Ok(one.Take("ground", "ltex:reeds") == 0x010004 && one.Take("water", "blend:sea|river:5|1,2,3") == 0x800002, "a new name did not take its block's next id");
         Ok(a1.All(e => one.Take("ground", e.Key) == e.Value) && basesA.All(n => one.Take("base", n) == b1[n]), "a new land texture or blend moved another id");
+        Ok(one.Knows("blend:sea|river:4|1,2,3") && one.Text().Contains("\"" + Key("blend:sea|river:4|1,2,3") + "\"") && !one.Text().Contains("blend:")
+           && Key("blend:sea|river:4|1,2,3") == "blend#" + Key("blend:sea|river:4|1,2,3")[6..] && Key("watr:sea") == "watr:sea", "a blend is not held by its digest");
         // a name keeps its id whatever kind asks later; a kind with no block and a full block stop the build
         Ok(one.Take("base", "copy:000A01:Tex.esp") == a1["copy:000A01:Tex.esp"], "a name known under another kind was given a second id");
         Ok(Throws(() => one.Take("sky", "x")), "a kind with no block was given an id");

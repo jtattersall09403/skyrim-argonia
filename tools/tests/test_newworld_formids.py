@@ -16,7 +16,7 @@ FILE = REPO / "newworld/sources/world_formids.json"
 DOTNET = Path.home() / ".dotnet"
 # ids placed by formula (tools/newworld/idspace.py: every allocator's range): no block may reach into them
 FORMULA = {k: v for k, v in idspace.SPAN.items() if k not in idspace.REGISTRY and k != "seeded"}
-NAME = re.compile(r"(copy:[0-9A-F]{6}:.+\.es[pml]|alttex:[0-9A-F]{6}:.+\.es[pml]:\d+|ltex:\S+|watr:\S+|blend:[^|]+\|[^|]*\|[\d,]+|region:[\w-]+|eco:.+@D\d.*|eco-damage:\d+|eco-outfit:.+@D\d.*|harvest(-ingr)?:\w+|travel:[\w:-]+)")
+NAME = re.compile(r"(copy:[0-9A-F]{6}:.+\.es[pml]|alttex:[0-9A-F]{6}:.+\.es[pml]:\d+|ltex:\S+|watr:\S+|blend#[0-9a-f]{12}|region:[\w-]+|eco:.+@D\d.*|eco-damage:\d+|eco-outfit:.+@D\d.*|harvest(-ingr)?:\w+|travel:[\w:-]+)")
 
 
 def span(s: str) -> tuple[int, int]:
