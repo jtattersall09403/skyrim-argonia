@@ -15,6 +15,10 @@ The source is newworld/sources/placed_edits.jsonl (committed): one row an edit, 
      (OWNER_STATED for the owner's own edit: no later row of a lower tier is applied to that thing),
      "at": when, "why": words, "confirmed": the placement rules the owner chose to break}
 `restore` takes a thing back to where the rules put it (an added thing: away).
+`seat` is a rule over one base, not a thing: {"n", "op": "seat", "base": plugin:edid, "to": {"embed_m": m}, "by", "at",
+"tier", "why"}; every thing of that base the rules placed (and no single-thing row names) is lowered until its mesh's
+lowest vertex sits embed_m into the ground (tools/newworld/place/seat.py), its identity, form id, x, y, rotation and
+scale kept; a thing already touching the ground is left as it is.
 
 `apply` reads the placement (out/newworld/plugin/placed/flora, place.PLACED) and writes the placed-refs hook
 (out/newworld/plugin/refs/flora, place.REFS): every shard the same bytes as the placement's but the rows of the
@@ -42,16 +46,18 @@ from pathlib import Path
 
 from tools.newworld import idspace
 from tools.newworld.place import place as P
+from tools.newworld.place.seat import Seater
 
 EDITS = P.REPO / "newworld/sources/placed_edits.jsonl"
 PLACES = P.REPO / "newworld/places"
 KEY = P.REPO / "newworld/sources/key.json"
 OWNER, OWNER_TIER, AGENT_TIER = "owner", "OWNER_STATED", "AGENT_INVENTED"
-OPS = ("remove", "move", "swap", "add", "restore")
+OPS = ("remove", "move", "swap", "add", "restore", "seat")
 REANCHOR = 70.0  # units (1 m): no two placed things stand closer, so the nearest of one base within it is the same thing
 ADD_FIRST, ADD_LAST = idspace.SPAN["added"]  # form ids of added things (NewWorld.cs); the rules' own are P.FID_FIRST..
 IDENT = re.compile(r"flora/(-?\d+),(-?\d+)/([0-9a-f]{10}|add\d{6})")
 HOVER_M = 0.5
+SEAT_EMBED_M = 0.1  # a seated thing's lowest vertex this far into the ground
 RULES = {"road": "it stands on a road's surface",
          "road-walk": "its collision reaches into a road's walking width",
          "flowing-water": "a tree in flowing water",
@@ -102,6 +108,12 @@ def validate(r: dict) -> None:
         raise EditError(f"row {r.get('n')}: {why}")
     if not isinstance(r.get("n"), int) or r.get("op") not in OPS:
         bad(f"op {r.get('op')!r} is none of {', '.join(OPS)}, or n is no number")
+    if r["op"] == "seat":                 # a rule over every thing of one base: no identity of its own
+        if not isinstance(r.get("base"), str) or not isinstance((r.get("to") or {}).get("embed_m", 0.0), (int, float)):
+            bad("seat needs base (plugin:edid) and may give to.embed_m")
+        if not r.get("by") or not r.get("at") or not r.get("tier"):
+            bad("by, at and tier are all needed")
+        return
     id_cell(r.get("id"))
     if not r.get("by") or not r.get("at") or not r.get("tier"):
         bad("by, at and tier are all needed")
@@ -126,8 +138,9 @@ def validate(r: dict) -> None:
         bad(f"confirmed names a rule that is none of {', '.join(RULES)}")
 
 
-def load(path: Path | None = None) -> list[dict]:
-    """The rows of the source file in order (no file: none); a malformed row or a number used twice stops the build."""
+def load(path: Path | None = None, seats: bool = False) -> list[dict]:
+    """The rows of the source file in order (no file: none); a malformed row or a number used twice stops the build.
+    The single-thing rows alone, or with `seats` every row (seat rows name a base, not a thing)."""
     path = Path(path or EDITS)
     if not path.exists():
         return []
@@ -138,7 +151,12 @@ def load(path: Path | None = None) -> list[dict]:
     fids = [r["fid"] for r in rows if r["op"] == "add"]
     if len(set(ns)) != len(ns) or len(set(fids)) != len(fids) or ns != sorted(ns):
         raise EditError(f"{path}: the rows' numbers are not rising and single, or two added things share a form id")
-    return rows
+    return rows if seats else [r for r in rows if r["op"] != "seat"]
+
+
+def seat_rows(path: Path | None = None) -> dict[str, float]:
+    """base (plugin:edid) -> how far its things' lowest vertex is set into the ground (the last seat row wins)."""
+    return {r["base"]: float((r.get("to") or {}).get("embed_m", SEAT_EMBED_M)) for r in load(path, seats=True) if r["op"] == "seat"}
 
 
 # ---- the placement, read a row at a time --------------------------------------------------------------------------
@@ -378,6 +396,8 @@ def apply(edits: Path | None = None, placed_dir: Path | None = None, refs_dir: P
     out = Path(refs_dir or P.REFS)
     out.mkdir(parents=True, exist_ok=True)
     rows = load(edits)
+    seats = seat_rows(edits)
+    seater, seated = (Seater() if seats else None), Counter()
     extra = new_bases(rows, placed)
     res = resolve(rows, placed, extra)
     bases = {**placed.bases, **extra}
@@ -394,6 +414,8 @@ def apply(edits: Path | None = None, placed_dir: Path | None = None, refs_dir: P
             here.setdefault(dest, {})
             arrive.setdefault(dest, []).append(ident)
     d = digest(res)
+    if seats:
+        d = hashlib.sha256((d + json.dumps(sorted(seats.items()))).encode()).hexdigest()[:12]
     key = placed.manifest["key"] + (f"+{d}" if d else "")
     man_path = out / "manifest.json"
     try:
@@ -404,11 +426,18 @@ def apply(edits: Path | None = None, placed_dir: Path | None = None, refs_dir: P
         man_path.unlink(missing_ok=True)      # a stopped pass leaves no manifest: the shards are compared again
     h, total, wrote = hashlib.sha256(), 0, []
     for cy in placed.rows:
-        if cy in here:
+        if cy in here or seats:
             lines = []
             for ln, o in placed.lines(cy):
-                if o["id"] not in here[cy]:
-                    lines.append(ln)
+                if o["id"] not in here.get(cy, ()):
+                    z = seater.seat(o, seats[o["base"]]) if o["base"] in seats else None
+                    if z is None:
+                        lines.append(ln)
+                    else:                    # a seated thing: its own z, all else as the rules placed it
+                        st = state_of(o)
+                        st["pos"][2] = z
+                        lines.append(_line(o["id"], st, bases))
+                        seated[o["base"]] += 1
                 elif here[cy][o["id"]] is not None:
                     lines.append(_line(o["id"], here[cy][o["id"]], bases))
             lines += [_line(i, res["final"][i], bases) for i in sorted(arrive.get(cy, ()))]
@@ -434,11 +463,12 @@ def apply(edits: Path | None = None, placed_dir: Path | None = None, refs_dir: P
            "rows": res["rows"],
            "things": [{"id": i, "fid": (st or res["was"][i])["fid"], "owner": i in res["owner"], "confirmed": res["confirmed"][i],
                        "was": res["was"][i], "now": st} for i, st in sorted(res["final"].items())],
-           "new_bases": sorted(extra)}
+           "new_bases": sorted(extra), "seated": dict(sorted(seated.items()))}
     _write(out / "edits.json", json.dumps(rec, indent=1))
     man = {**placed.manifest, "key": key, "refs": total, "shard_sha256": h.hexdigest()[:16],
            "placed": {k: placed.manifest.get(k) for k in ("key", "refs", "shard_sha256", "bases")}, "bases": len(bdoc["bases"]),
-           "edits": {"rows": len(rows), "things": len(res["final"]), "digest": d, **dict(sorted(tally.items()))}}
+           "edits": {"rows": len(rows) + len(seats), "things": len(res["final"]), "digest": d, "seated": sum(seated.values()),
+                     **dict(sorted(tally.items()))}}
     _write(man_path, json.dumps(man, indent=1))
     log(f"edits: {len(rows)} rows, {len(res['final'])} things changed; the placement itself untouched ({placed.manifest['refs']} references, "
         f"none placed again); shards written: {len(wrote)} of {len(placed.rows)}"
@@ -742,8 +772,8 @@ def edit(op: str, by: str, edits: Path | None = None, placed_dir: Path | None = 
     is appended only with `confirm` (the rules go into the row); another tier's is refused."""
     path = Path(edits or EDITS)
     placed = Placed(placed_dir)
-    rows = load(path)
-    res = resolve(rows, placed, {})
+    rows = load(path, seats=True)
+    res = resolve([r for r in rows if r["op"] != "seat"], placed, {})
     tier = tier or (OWNER_TIER if by == OWNER else AGENT_TIER)
     if tier not in tiers():
         raise EditError(f"tier {tier!r} is none of the statement tiers ({', '.join(tiers())})")
