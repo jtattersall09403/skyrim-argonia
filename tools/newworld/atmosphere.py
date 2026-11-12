@@ -41,6 +41,11 @@ WARM_SUN_K, WARM_SUN_W, WARM_FOG_W = 6000, 0.05, -0.10
 REGION_PRIORITY = 50     # NewWorldAtmosphere.cs RegionPriority: Skyrim's regional weather sets carry Override, 50 to 55
 # fixed form ids (NewWorldAtmosphere.cs takes them from the spec): set s = class index * 3 + band index
 BASE = {"IMGS": 0x80000, "VOLI": 0x80400, "WTHR": 0x80500, "CLMT": 0x80600}
+# the regions' own sets (identity sheets): set s = the region's slot (newworld/sources/identity/regions.json); the class
+# sets' ids above stay reserved and are no longer written
+REGION_BASE = {"IMGS": 0x80800, "VOLI": 0x80A40, "WTHR": 0x80B00}
+IDENTITY = REPO / "newworld/sources/identity/regions.json"
+DAWN_MIX = 0.5   # dawn and dusk haze: half the class's, half the region's mood
 SLOT_ROLE = {"SunlightColor": "sun", "EffectLightingColor": "sun", "FogNearColor": "haze", "FogFarColor": "far",
              "AmbientColor": "fill", "SkyUpperColor": "sky", "SkyLowerColor": "horizon", "HorizonColor": "horizon"}
 DALC_SIDES = ("DirectionalXPlus", "DirectionalXMinus", "DirectionalYPlus", "DirectionalYMinus")
@@ -226,13 +231,72 @@ def targets(c: dict, band: dict, tod: str) -> dict:
             "tint": mix(sun, haze, 0.3)}
 
 
-def weather_set(cls: dict, cid: str, band_id: str, rec: Records) -> dict:
-    """The records of one (class, band) set: 6 weathers, their 24 image spaces and 4 volumetric lightings."""
+def with_identity(c: dict, idr: dict) -> dict:
+    """The class's numbers with the region's identity over them: the day haze is the region's mood (dawn and dusk half
+    way to it), the fill and sky lean to it; brightness scales the fog, ambient and sun gains; saturation the class's."""
+    c = json.loads(json.dumps(c))
+    li, haze = idr["light"], idr["light"]["haze"]
+    c["haze"]["Day"] = haze
+    for tod in ("Sunrise", "Sunset"):
+        c["haze"][tod] = [round(v) for v in mix(c["haze"][tod], haze, DAWN_MIX)]
+    c["fill"]["Day"] = [round(v) for v in mix(c["fill"]["Day"], haze, 0.5)]
+    c["sky"]["Day"] = [round(v) for v in mix(c["sky"]["Day"], haze, 0.3)]
+    c["gain"] = {k: v * li["brightness"] for k, v in c["gain"].items()}
+    c["saturation"] = c["saturation"] * li["saturation"]
+    c["night_gain"] = li["night"]
+    c["chances"] = dict(idr["weather"]["chances"])
+    return c
+
+
+def extremes(rec: Records) -> dict:
+    """Skyrim's own range over its regional weathers (the Skyrim* weathers its regions list, snow and blizzard left
+    out): fog distances, each colour slot's luminance by hour, image space saturation. Ours are kept inside it."""
+    ws = {}
+    for (sig, _), r in rec.win.items():
+        if sig == "REGN":
+            for w in ((r.get("Weather") or {}).get("Weathers") or []):
+                x = rec.win.get(("WTHR", w["Weather"]))
+                e = (x or {}).get("EditorID") or ""
+                if e.startswith("Skyrim") and "Snow" not in e and "Blizzard" not in e:
+                    ws[e] = x
+    if not ws:
+        return {}
+    out = {f: (min(w[f] for w in ws.values()), max(w[f] for w in ws.values())) for f in ("FogDistanceDayFar", "FogDistanceNightFar")}
+    for slot in SLOT_ROLE:
+        for tod in TODS:
+            v = [lum(w[slot][tod]) for w in ws.values()]
+            out[f"{slot}.{tod}"] = (min(v), max(v))
+    sat = [rec.win[("IMGS", w["ImageSpaces"][t])]["Cinematic"]["Saturation"] for w in ws.values() for t in TODS
+           if ("IMGS", w["ImageSpaces"][t]) in rec.win and rec.win[("IMGS", w["ImageSpaces"][t])].get("Cinematic")]
+    out["Saturation"] = (min(sat), max(sat))
+    return out
+
+
+def clamp_lum(col: list[int], lo_hi) -> list[int]:
+    if not lo_hi:
+        return col
+    y = lum(col)
+    lo, hi = lo_hi
+    if y <= 0 or lo <= y <= hi:
+        return col
+    f = (lo if y < lo else hi) / y
+    return [int(round(min(255, max(0, v * f)))) for v in col]
+
+
+def weather_set(cls: dict, cid: str, band_id: str, rec: Records, rid: str | None = None, idr: dict | None = None,
+                lim: dict | None = None) -> dict:
+    """The records of one set: 6 weathers, their 24 image spaces and 4 volumetric lightings. A region's own set (rid
+    and its identity row idr) takes the region's light, sight and weather over its class (with_identity), its ids from
+    the region's slot, its values held inside Skyrim's range (lim, extremes())."""
     c, band = cls["classes"][cid], cls["bands"][band_id]
-    ci, bi = list(cls["classes"]).index(cid), BANDS.index(band_id)
-    s = ci * 3 + bi
-    name = f"{camel(cid)}_{band_id.capitalize()}"
-    vis = visibility(c, band, cls)
+    lim = lim or {}
+    if idr is not None:
+        c = with_identity(c, idr)
+        s, base, name, vis = idr["slot"], REGION_BASE, camel(rid), idr["sight"]["visibility"]
+    else:
+        ci, bi = list(cls["classes"]).index(cid), BANDS.index(band_id)
+        s, base, name, vis = ci * 3 + bi, BASE, f"{camel(cid)}_{band_id.capitalize()}", visibility(c, band, cls)
+    night_gain = c.get("night_gain", 1.0)
     fam = cls["families"][c["family"]]
     out = {"weathers": [], "imagespaces": [], "volumetric": []}
     voli_src = rec.get("WTHR", fam["fair"].split(":")[1])["VolumetricLighting"]
@@ -242,7 +306,7 @@ def weather_set(cls: dict, cid: str, band_id: str, rec: Records) -> dict:
         t = targets(c, band, tod)
         col = [v / 255 for v in recolour([255, 255, 255], t["haze"], 1.0)]
         edid = f"ANW_VL_{name}_{tod}"
-        out["volumetric"].append({"formid": BASE["VOLI"] + s * 4 + ti, "edid": edid, "copy": f"{rec.winner_file('VOLI', src)}:{src['EditorID']}",
+        out["volumetric"].append({"formid": base["VOLI"] + s * 4 + ti, "edid": edid, "copy": f"{rec.winner_file('VOLI', src)}:{src['EditorID']}",
                                   "set": {"CustomColorContribution": c["voli"]["colour_share"], "ColorR": round(col[0], 3),
                                           "ColorG": round(col[1], 3), "ColorB": round(col[2], 3),
                                           "DensityContribution": c["voli"]["density"]}})
@@ -264,19 +328,25 @@ def weather_set(cls: dict, cid: str, band_id: str, rec: Records) -> dict:
                     gain = c["gain"]["ambient"]
                 elif role == "sun" and day:
                     gain = c["gain"]["sun"]
+                if not day:
+                    gain *= night_gain
                 strength = st * (c["sky_mix"] if role in ("sky", "horizon") else 1.0)
-                sets[f"{slot}.{tod}"] = recolour(src[slot][tod], t[role], gain, strength)
+                sets[f"{slot}.{tod}"] = clamp_lum(recolour(src[slot][tod], t[role], gain, strength), lim.get(f"{slot}.{tod}"))
             d = src["DirectionalAmbientLightingColors"][tod]
+            ng = 1.0 if day else night_gain
             for side in DALC_SIDES:
-                sets[f"DirectionalAmbientLightingColors.{tod}.{side}"] = recolour(d[side], t["fill"], c["gain"]["ambient"], st)
+                sets[f"DirectionalAmbientLightingColors.{tod}.{side}"] = recolour(d[side], t["fill"], c["gain"]["ambient"] * ng, st)
             sets[f"DirectionalAmbientLightingColors.{tod}.DirectionalZPlus"] = recolour(d["DirectionalZPlus"], t["ground"], 1.0, st)
             sets[f"DirectionalAmbientLightingColors.{tod}.DirectionalZMinus"] = recolour(d["DirectionalZMinus"], t["zenith"], 1.0, st)
         ref = rec.get("WTHR", cls["reference_fog"][kind].split(":")[1])
         dfar = ref["FogDistanceDayFar"] * vis
         if steam:
             dfar *= c["steam_scale"]
-        sets.update({"FogDistanceDayNear": 0.0, "FogDistanceDayFar": round(dfar),
-                     "FogDistanceNightFar": round(ref["FogDistanceNightFar"] * vis)})
+        nfar = ref["FogDistanceNightFar"] * vis
+        if "FogDistanceDayFar" in lim:  # inside Skyrim's own range of regional fog distances
+            dfar = min(max(dfar, lim["FogDistanceDayFar"][0]), lim["FogDistanceDayFar"][1])
+            nfar = min(max(nfar, lim["FogDistanceNightFar"][0]), lim["FogDistanceNightFar"][1])
+        sets.update({"FogDistanceDayNear": 0.0, "FogDistanceDayFar": round(dfar), "FogDistanceNightFar": round(nfar)})
         if kind in ("fair", "cloudy"):  # the dawn mist: a dense Night slot lerped to Day across the sunrise window
             sets.update({"FogDistanceNightNear": 0.0, "FogDistanceNightFar": c["night_mist"]["far"],
                          "FogDistanceNightPower": 0.4, "FogDistanceNightMax": c["night_mist"]["max"]})
@@ -286,12 +356,14 @@ def weather_set(cls: dict, cid: str, band_id: str, rec: Records) -> dict:
             t = targets(c, band, tod)
             ie = f"ANW_IS_{name}_{kind.capitalize()}_{tod}"
             tint = recolour(isrc["Tint"]["Color"], t["tint"], 1.0, st)
-            out["imagespaces"].append({"formid": BASE["IMGS"] + s * 24 + ki * 4 + ti, "edid": ie,
+            sat = isrc["Cinematic"]["Saturation"] * (1 + (c["saturation"] - 1) * st)
+            if "Saturation" in lim:
+                sat = min(max(sat, lim["Saturation"][0]), lim["Saturation"][1])
+            out["imagespaces"].append({"formid": base["IMGS"] + s * 24 + ki * 4 + ti, "edid": ie,
                                        "copy": f"{rec.winner_file('IMGS', isrc)}:{isrc['EditorID']}",
-                                       "set": {"Tint.Color": tint,
-                                               "Cinematic.Saturation": round(isrc["Cinematic"]["Saturation"] * (1 + (c["saturation"] - 1) * st), 4)}})
+                                       "set": {"Tint.Color": tint, "Cinematic.Saturation": round(sat, 4)}})
             ims[tod] = ie
-        w = {"formid": BASE["WTHR"] + s * 8 + ki, "edid": edid, "kind": kind, "class": cid, "band": band_id,
+        w = {"formid": base["WTHR"] + s * 8 + ki, "edid": edid, "kind": kind, "class": cid, "band": band_id, "region": rid,
              "copy": f"{rec.winner_file('WTHR', src)}:{src['EditorID']}", "set": sets, "imagespaces": ims}
         if kind not in ("rain", "storm"):
             w["volumetric"] = vl
@@ -299,21 +371,25 @@ def weather_set(cls: dict, cid: str, band_id: str, rec: Records) -> dict:
     return out
 
 
-def build_spec(rec: Records, rc: dict[str, tuple[str, str]]) -> dict:
+def build_spec(rec: Records, rc: dict[str, tuple[str, str]], ident: dict | None = None) -> dict:
+    """Each region its own set (its class as the family, its identity sheet over it); the climate takes the default
+    class's region set nearest the middle (classes.json climate.default_class)."""
     cls, _ = load_sources()
-    used = sorted(set(rc.values()), key=lambda cb: (list(cls["classes"]).index(cb[0]), BANDS.index(cb[1])))
-    spec = {"weathers": [], "imagespaces": [], "volumetric": [], "regions": {}, "sets": {}}
-    for cid, band in used:
-        part = weather_set(cls, cid, band, rec)
+    ident = ident if ident is not None else json.loads(IDENTITY.read_text())["regions"]
+    lim = extremes(rec)
+    spec = {"weathers": [], "imagespaces": [], "volumetric": [], "regions": {}, "sets": {},
+            "limits": {k: [round(v[0], 2), round(v[1], 2)] for k, v in lim.items()}}
+    for rid, (cid, band) in sorted(rc.items(), key=lambda kv: ident[kv[0]]["slot"]):
+        part = weather_set(cls, cid, band, rec, rid, ident[rid], lim)
         for k in ("weathers", "imagespaces", "volumetric"):
             spec[k] += part[k]
-        ch = chances(cls["classes"][cid], cls["bands"][band], cls["kinds"])
-        spec["sets"][f"{cid}/{band}"] = [[w["edid"], ch[w["kind"]]] for w in part["weathers"]]
-    for rid, cb in sorted(rc.items()):
-        spec["regions"][rid] = spec["sets"][f"{cb[0]}/{cb[1]}"]
+        ch = chances(with_identity(cls["classes"][cid], ident[rid]), {"chances": {}}, cls["kinds"])
+        spec["sets"][rid] = [[w["edid"], ch[w["kind"]]] for w in part["weathers"]]
+        spec["regions"][rid] = spec["sets"][rid]
     cl = cls["climate"]
+    home = min((r for r, cb in rc.items() if cb == (cl["default_class"], cl["default_band"])), default=min(rc))
     spec["climate"] = {"formid": BASE["CLMT"], "edid": "ANW_Climate", "copy": "Black Marsh.esm:BlackMarshClimate",
-                       "weathers": spec["sets"][f"{cl['default_class']}/{cl['default_band']}"],
+                       "weathers": spec["sets"][home], "region": home,
                        **{k: cl[k] for k in ("sunrise_begin", "sunrise_end", "sunset_begin", "sunset_end")}}
     return spec
 
@@ -413,20 +489,11 @@ def study(out: Path, old: Path | None = None) -> dict:
 MEASURE_SLOTS = ("FogNearColor", "FogFarColor", "AmbientColor", "SunlightColor")
 
 
-def class_distances(cols: dict) -> dict[str, float]:
-    """Per pair of classes: the largest dE between their chance-weighted colours (MEASURE_SLOTS at dawn and noon),
-    the closest of their band sets: the measure Bethesda's regions are compared by (study())."""
-    best: dict[str, float] = {}
-    keys = sorted(cols)
-    for i, a in enumerate(keys):
-        for b in keys[i + 1:]:
-            ca, cb = a.split("/")[0], b.split("/")[0]
-            if ca == cb:
-                continue
-            dmax = max(delta_e(cols[a]["list"][s][t], cols[b]["list"][s][t]) for s in MEASURE_SLOTS for t in ("Sunrise", "Day"))
-            k = " vs ".join(sorted((ca, cb)))
-            best[k] = min(best.get(k, 1e9), dmax)
-    return best
+def neighbour_distances(cols: dict, pairs) -> dict[str, float]:
+    """Per pair of neighbouring regions (identity adjacency): the largest dE between their chance-weighted colours
+    (MEASURE_SLOTS at dawn and noon): the measure Bethesda's regions are compared by (study())."""
+    return {f"{a} vs {b}": max(delta_e(cols[a]["list"][s][t], cols[b]["list"][s][t]) for s in MEASURE_SLOTS for t in ("Sunrise", "Day"))
+            for a, b in pairs if a in cols and b in cols}
 
 
 def bethesda_floor() -> float:
@@ -486,7 +553,7 @@ def rows(plugin: Path) -> list[tuple[str, object, bool, str]]:
         wd = r["Weather"] if r else {}
         if "Override" not in str(wd.get("Flags", "")) or int(wd.get("Priority") or 0) < REGION_PRIORITY:
             weak.append(f"{rid} ({wd.get('Flags')}, {wd.get('Priority')})")
-    out.append(("every region's weather list is its class set (read back)", f"{len(sp['regions']) - len(bad)}/{len(sp['regions'])}",
+    out.append(("every region's weather list is its own set (read back)", f"{len(sp['regions']) - len(bad)}/{len(sp['regions'])}",
                 not bad, f"e.g. {bad[:3]}"))
     out.append((f"every region's weather data overrides the climate (Override flag, priority at least {REGION_PRIORITY}, as Skyrim's "
                 "regional sets: 50 to 55)", f"{len(sp['regions']) - len(weak)}/{len(sp['regions'])}", not weak, f"e.g. {weak[:3]}"))
@@ -498,15 +565,16 @@ def rows(plugin: Path) -> list[tuple[str, object, bool, str]]:
     out.append(("the worldspace's climate is ANW_Climate with the spec's weather list and chances and its four sun times",
                 f"{clim and clim['EditorID']} {got['times']}",
                 bool(clim) and ws.get("Climate") == clim["FormKey"] and got == want, "" if got == want else f"read {got}, spec {want}"))
-    # classes are distinct, as much as Bethesda's own regions are from each other
+    # neighbouring regions are distinct, as much as Bethesda's own regions are from each other
+    from tools.newworld import identity
     cols = set_colours(rec, sp)
     keys = sorted(cols)
-    d = class_distances(cols)
+    d = neighbour_distances(cols, identity.adjacency())
     worst = min(d.items(), key=lambda kv: kv[1])
     ref = bethesda_floor()
-    out.append((f"classes are distinct: every pair of classes differs at least as much as Bethesda's closest two regions (dE {ref:.1f}; "
-                "chance-weighted fog near, fog far, ambient, sunlight at dawn and noon)", round(worst[1], 1), worst[1] >= ref,
-                f"closest {worst[0]}"))
+    out.append((f"neighbours are distinct: every two neighbouring regions differ at least as much as Bethesda's closest two regions "
+                f"(dE {ref:.1f}; chance-weighted fog near, fog far, ambient, sunlight at dawn and noon)", round(worst[1], 1),
+                worst[1] >= ref, f"closest {worst[0]}"))
     # warmth: fixed thresholds, set against Skyrim's base weathers as BM&V's climate lists them (measured.json)
     refs = json.loads(MEASURED.read_text())["references"]
     province = mean_colour([(cols[k]["list"]["SunlightColor"]["Day"], 1) for k in keys])

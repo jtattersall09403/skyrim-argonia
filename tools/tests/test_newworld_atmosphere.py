@@ -115,29 +115,41 @@ def test_spec_over_synthetic_records():
     sp = A.build_spec(rec, rc)
     ids = [e["formid"] for k in ("weathers", "imagespaces", "volumetric") for e in sp[k]] + [sp["climate"]["formid"]]
     assert len(ids) == len(set(ids))
-    for sig, key in (("WTHR", "weathers"), ("IMGS", "imagespaces"), ("VOLI", "volumetric")):
-        lo = A.BASE[sig]
-        hi = min(v for v in A.BASE.values() if v > lo)
-        assert all(lo <= e["formid"] < hi for e in sp[key]), sig
+    for sig, key, n in (("WTHR", "weathers", 8), ("IMGS", "imagespaces", 24), ("VOLI", "volumetric", 4)):
+        lo = A.REGION_BASE[sig]
+        assert all(lo <= e["formid"] < lo + 24 * n for e in sp[key]), sig
+        assert all(not (A.BASE["IMGS"] <= e["formid"] <= A.BASE["CLMT"]) for e in sp[key]), "a class set's id reused"
     edids = {e["edid"] for e in sp["weathers"]}
     for rid, lst in sp["regions"].items():
         assert sum(ch for _, ch in lst) == 100 and all(w in edids for w, _ in lst), rid
         assert len(lst) == len(cls["kinds"])
     fair = next(e for e in sp["weathers"] if e["kind"] == "fair")
     assert fair["set"]["FogDistanceNightFar"] == cls["classes"][fair["class"]]["night_mist"]["far"]
-    steam = next(e for e in sp["weathers"] if e["kind"] == "steam" and e["class"] == fair["class"] and e["band"] == fair["band"])
-    mist = next(e for e in sp["weathers"] if e["kind"] == "mist" and e["class"] == fair["class"] and e["band"] == fair["band"])
+    steam = next(e for e in sp["weathers"] if e["kind"] == "steam" and e["region"] == fair["region"])
+    mist = next(e for e in sp["weathers"] if e["kind"] == "mist" and e["region"] == fair["region"])
     assert steam["set"]["FogDistanceDayFar"] < mist["set"]["FogDistanceDayFar"]
+    ident = json.loads(A.IDENTITY.read_text())["regions"]
+    for rid, lst in sp["regions"].items():  # the identity's weather mix, each region its own
+        assert {w.rsplit("_", 1)[1].lower(): ch for w, ch in lst} == ident[rid]["weather"]["chances"], rid
+    far = {e["region"]: e["set"]["FogDistanceDayFar"] for e in sp["weathers"] if e["kind"] == "cloudy"}
+    assert far["chixathe-mesa"] > 3 * far["murkwood"]  # visibility 1.2 against 0.3
     assert all("volumetric" not in e for e in sp["weathers"] if e["kind"] in ("rain", "storm"))
     json.dumps(sp)
 
 
-def test_class_distances_pick_the_closest_band_set():
+def test_neighbour_distances_take_the_largest_slot_difference():
     c = {"Day": [100, 100, 100], "Sunrise": [100, 100, 100]}
     far = {"Day": [200, 100, 50], "Sunrise": [200, 100, 50]}
-    cols = {"a/north": {"list": {s: c for s in A.MEASURE_SLOTS}}, "a/south": {"list": {s: far for s in A.MEASURE_SLOTS}},
-            "b/middle": {"list": {s: far for s in A.MEASURE_SLOTS}}}
-    assert A.class_distances(cols)["a vs b"] == pytest.approx(0.0)
+    cols = {"a": {"list": {s: c for s in A.MEASURE_SLOTS}}, "b": {"list": {s: far for s in A.MEASURE_SLOTS}},
+            "c": {"list": {s: c for s in A.MEASURE_SLOTS}}}
+    d = A.neighbour_distances(cols, [("a", "b"), ("a", "c")])
+    assert d["a vs c"] == pytest.approx(0.0) and d["a vs b"] > 30
+
+
+def test_values_stay_inside_skyrims_range():
+    assert A.clamp_lum([10, 10, 10], (50, 200)) == [50, 50, 50]
+    assert A.clamp_lum([250, 250, 250], (50, 200)) == [200, 200, 200]
+    assert A.clamp_lum([100, 90, 80], (50, 200)) == [100, 90, 80]
 
 
 def test_mist_measures():

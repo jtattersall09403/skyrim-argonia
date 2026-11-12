@@ -451,12 +451,12 @@
    "slot": 7,
    "light": {
     "haze": [
+     60,
      70,
-     85,
-     72
+     82
     ],
-    "mood": "dark grey-green gloom over the bogs",
-    "brightness": 0.7,
+    "mood": "dark blue-grey gloom over the bogs",
+    "brightness": 0.65,
     "saturation": 0.8,
     "night": 0.55,
     "cite": "newworld/story/data/db/region_note.jsonl#blackwood/climate",
@@ -625,12 +625,12 @@
    "slot": 10,
    "light": {
     "haze": [
-     175,
-     180,
-     185
+     200,
+     190,
+     165
     ],
-    "mood": "pearly sea fog over grey mud-flats",
-    "brightness": 1.0,
+    "mood": "pearly sand-coloured sea fog over grey mud-flats",
+    "brightness": 1.05,
     "saturation": 0.8,
     "night": 0.85,
     "cite": "newworld/story/data/db/region_note.jsonl#hatandros-bight/climate",
@@ -683,11 +683,11 @@
    "slot": 11,
    "light": {
     "haze": [
-     95,
-     105,
-     80
+     120,
+     110,
+     70
     ],
-    "mood": "dark mangrove olive",
+    "mood": "dark mangrove-mud olive",
     "brightness": 0.75,
     "saturation": 0.95,
     "night": 0.6,
@@ -1147,12 +1147,12 @@
    "slot": 19,
    "light": {
     "haze": [
-     130,
      140,
-     140
+     130,
+     115
     ],
-    "mood": "dark slate of sea-worn crags",
-    "brightness": 0.85,
+    "mood": "dark umber-grey of sea-worn crags",
+    "brightness": 0.8,
     "saturation": 0.75,
     "night": 0.65,
     "cite": "newworld/story/data/db/region_note.jsonl#skeith-isle/look",

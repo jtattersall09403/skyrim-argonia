@@ -34,7 +34,7 @@ RANGES = (
     ("seeded", 0x000900, 0x00FFFF, "registry: the ids the first world file held, kept as they were (ground, base and water names)", 7265),
     ("ground", 0x010000, 0x01FFFF, "registry block: land textures, their texture sets, grass, registered since", 0),
     ("base", 0x020000, 0x07FFFF, "registry block: placed bases and what they link to, and the travel menu's records, registered since", 0),
-    ("atmosphere", 0x080000, 0x080FFF, "by formula from the spec (atmosphere.py BASE)", 579),
+    ("atmosphere", 0x080000, 0x080FFF, "by formula from the spec (atmosphere.py BASE: the class sets, reserved; REGION_BASE: a set per region slot)", 817),
     ("travel-give", 0x090000, 0x09000F, "the travel power's give quest, by formula: 0x090000 (NewWorldTravel.cs GiveId; ARG_QF_MQ101.psc NWGiveId)", 1),
     ("cells", 0x100000, 0x1FFFFF, "cell k of the grid 0x100000 + 2k, its LAND + 1 (NewWorld.cs)", 2 * SCOPE[0] * SCOPE[1]),
     ("placed", 0x200000, 0x5FFFFF, "a reference placed by rule: a slot by its identity's digest (place.py form_ids)", 514240),
