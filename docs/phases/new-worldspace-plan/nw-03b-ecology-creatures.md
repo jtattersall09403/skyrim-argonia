@@ -96,4 +96,9 @@ Later, with a LOD build: one landmark silhouette per region, and how open or clo
   an actor a size; the ecology overlap check judges neighbours; the water and mist read-backs read a region's water
   variant as its kind; near-sighted regions' fair-weather fog leaves the sky; the level-up in Skyrim's two parts
   ([level-up audio](../../research/skyrim/level-up-audio.md)); every ArgoniaPlugin build takes one lock.
-- The owner's walk: [nw-03b-walk](nw-03b-walk.md).
+- Close-out: the low mist's sea guard read a region's sea variant (`sea@<region>`) as land, so about 130 mist refs sat
+  at the sea's edge and the read-back's graded-by-class row counted sea cells (0.68, red); both now take the kind
+  before the `@`. The id registry holds each graded water record by its name's digest (1.75 MB to 756 KB, all 18,549
+  ids unchanged). Rebuilt and deployed once: read-back 119 of 119 green on `ArgoniaNewWorld.esm` sha
+  f675ad741d0d0d37, the world uploaded; shader cache key unchanged.
+- Owed: the owner's walk: [nw-03b-walk](nw-03b-walk.md).

@@ -87,7 +87,7 @@ For each, reply ok if there are plenty and they look at home there, fault otherw
 
 ## How the regions differ
 
-Each pair below are neighbours. Go to the first, then the second, and reply ok if the two feel clearly different in
+Each pair below are neighbours. Go to the first, then the second. Reply ok if the two feel clearly different in
 light, how far you can see, weather, sound and the look of the water and ground; say which pair if not.
 
 - "A dry region: Aunike Ridge scrub" (clear, cool, wide views, upland wind) against "D5, the highest danger: Murkwood
@@ -106,8 +106,24 @@ light, how far you can see, weather, sound and the look of the water and ground;
   the old stones at Barsaebica, glowing fungi on fallen wood in the Arnesian Jungle, crab burrow mounds in the red mud
   at Kotherra. Reply ok if you find them and they sit on the ground.
 - Hist lanterns: lanterns hang in the limbs of Hist trees near places in Murkwood only, since people hung them there.
-  Go to Mud-Croak Camp, Tzel-Haar and Icalca, and Hiss-Bank Camp (all under "Places by region", Murkwood) and look up
-  into the Hist trees' limbs. A lantern may hang through low leaves. Reply ok if you see them hanging from the limbs.
+  Go to the four places Mud-Croak Camp, Tzel-Haar, Icalca and Hiss-Bank Camp (all under "Places by region",
+  Murkwood) and look up into the Hist trees' limbs. A lantern may hang through low leaves. Reply ok if you see them hanging from the limbs.
+
+## Low mist
+
+Low mist is the thin, knee-high mist that lies over still water, as it does in Skyrim's marsh round Morthal. Each
+region has its own amount. Use the "Walk-check waters" and "Walk-check spots" pages of the travel menu.
+
+- Thick over the water: "Black swamp water in the Banujha Basin", "A pond in Blackwood" and "Harvestable plants:
+  Ultherus Swamp" are the mistiest places in the world. Reply ok if mist lies low over the water there, below your
+  eye line.
+- Lighter: "Green marsh water in Okuwun-Rahei" has less. At "A river in the Tulmek Washes" only thin wisps lie on
+  the moving river, though the still swamp water beside it is misty. Reply ok if both read lighter than the Banujha
+  Basin.
+- Nearly clear: "A dry region: Aunike Ridge scrub" and "A hostile people band: Chixathe Mesa" (dry uplands) have
+  almost none. Reply ok if you see little or no low mist there.
+- None on the sea: at "The open sea, from its shore" and "A sea shore: Hatandros Bight beach" no low mist should lie
+  on the sea or at the water's edge. Reply fault if you see mist sitting on the sea.
 
 ## Music
 
@@ -134,6 +150,8 @@ instruments. You can hear the whole soundtrack outside the game at https://claud
 - Small critters (insects, fish, birds) may feel heavy in places; tell us where.
 - The flowers in the grass may feel too dense or too sparse; tell us where.
 - The water's colour per region is a deliberately small shift; it is easy to miss.
+- About 130 patches of low mist that sat at the edge of the sea were removed in a last rebuild before this walk;
+  nothing else you can see changed in that rebuild.
 - Velothi undead have no creature yet and are not in.
 - Helstrom's place is not in this deploy: it waits until you have finished editing its draft in the studio.
 - Creatures we had no model for were changed to the nearest kind that has one. Overrule any you dislike: the lore's
