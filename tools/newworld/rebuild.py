@@ -122,6 +122,10 @@ WRITER_CS = ("src:tools/ArgoniaPlugin/NewWorld.cs", "src:tools/ArgoniaPlugin/New
              "src:tools/ArgoniaPlugin/FormIds.cs", "src:tools/ArgoniaPlugin/NewWorldTravel.cs",
              "src:newworld/sources/travel/menu.json")
 IDSPACE = "src:tools/newworld/idspace.py"                # every allocator's range of the world file's form ids
+# A stage reads of the table only the rows it allocates from (`#row,row`): a row added for another stage moves none.
+IDSPACE_PLACE = IDSPACE + "#placed,placed-high,navmesh"
+IDSPACE_EDITS = IDSPACE + "#added,placed,placed-high,navmesh"
+IDSPACE_ECOLOGY = IDSPACE + "#ecology"
 FORMIDS = "src:newworld/sources/world_formids.json"       # the world file's form ids by name: the writer adds, never changes
 BUILT_PLACES = ("src:newworld/places/*/land.jsonl", "src:newworld/places/*/spaces/exterior/refs.jsonl")
 DBPY = "src:tools/argonia_world/db.py"
@@ -281,7 +285,7 @@ STAGES: tuple[Stage, ...] = (
                  "db:region_flora", "db:habitat", "db:road", "db:road_class", "db:road_node", "db:road_vertex", PLACE_MAP,
                  "db:water_kind", "db:region", "src:tools/newworld/place/__init__.py", "src:tools/newworld/place/__main__.py",
                  "src:tools/newworld/place/place.py",
-                 "src:tools/newworld/place/texsets.py", IDSPACE),
+                 "src:tools/newworld/place/texsets.py", IDSPACE_PLACE),
           check_reads=("src:tools/newworld/place/checks.py",),
           writes=("out:newworld/plugin/placed/flora/manifest.json", "out:newworld/plugin/placed/flora/bases.json"),
           agree=(("out:newworld/plugin/placed/flora/manifest.json#build_id", "out:newworld/terrain/build.json#id", "eq"),),
@@ -291,7 +295,7 @@ STAGES: tuple[Stage, ...] = (
           checks=((PY, "-m", "tools.newworld.place", "edits", "check", "--edits", EDITS_FILE),),
           reads=(PLACED, "out:newworld/plugin/placed/flora/bases.json", f"src:{EDITS_FILE}", LAID, "db:flora_base", "db:flora_family",
                  "src:newworld/sources/key.json", "src:tools/newworld/place/edits.py", "src:tools/newworld/place/__main__.py",
-                 "src:tools/newworld/place/__init__.py", IDSPACE),
+                 "src:tools/newworld/place/__init__.py", IDSPACE_EDITS),
           check_reads=(LAND, LANDCOVER, "out:newworld/landcover/legend.json", BUILD, "db:water_kind", "db:road", "db:road_class",
                        "db:road_vertex", "src:tools/navmesh/placed.py", "src:tools/navmesh/solid.py", "src:tools/navmesh/params.py"),
           writes=("out:newworld/plugin/refs/flora/manifest.json", "out:newworld/plugin/refs/flora/bases.json",
@@ -362,7 +366,7 @@ STAGES: tuple[Stage, ...] = (
           checks=((PY, "-m", "tools.newworld.ecology.place", "check", "--out", PLUGIN),),
           reads=(LAND, LANDCOVER, "out:newworld/landcover/legend.json", FLORA, "out:newworld/plugin/map/teleports.json",
                  "db:cell", "db:danger_band", "src:newworld/sources/ecology/**/*", "src:newworld/sources/terrain_held.json",
-                 "src:tools/newworld/ecology/place.py", IDSPACE),
+                 "src:tools/newworld/ecology/place.py", IDSPACE_ECOLOGY),
           writes=("out:newworld/plugin/ecology/manifest.json", "out:newworld/plugin/ecology/actors.json",
                   "out:newworld/plugin/ecology/check.json"),
           agree=(("out:newworld/plugin/ecology/manifest.json#build_id", "out:newworld/plugin/land/manifest.json#build_id", "eq"),),
@@ -505,6 +509,20 @@ class Tree:
                 return "unreadable"
         return self._remembered(p, f"{p}#{','.join(names)}", fields)
 
+    def _idspace_rows(self, p: Path, names: list[str]) -> str:
+        """The digest of the named rows (allocators) of the form id table, each row's range and nothing else."""
+        if not p.exists():
+            return "absent"
+        def rows() -> str:
+            ns: dict = {"__file__": str(p), "__name__": "_idspace_key"}
+            try:
+                exec(compile(p.read_text(encoding="utf-8"), str(p), "exec"), ns)     # the source itself, never a cached bytecode
+                got = {r[0]: [r[1], r[2]] for r in ns["RANGES"] if r[0] in names}
+            except Exception:
+                return "unreadable"
+            return hashlib.sha256(json.dumps(got, sort_keys=True).encode()).hexdigest()[:20]
+        return self._remembered(p, f"{p}#{','.join(names)}", rows)
+
     def _laid_digest(self, profile: str) -> str:
         """The stack as laid for a profile: its record's rows, plugins and files but for OWN_ROWS, and its load order."""
         rec, ml = self.stack / f"installed-{profile}.json", self.stack / "MO2/profiles" / profile / "modlist.txt"
@@ -563,6 +581,8 @@ class Tree:
             return h.hexdigest()[:20]
         root = self.repo if kind == "src" else self.out
         path, _, fields = rest.partition("#")
+        if fields and path.endswith("idspace.py"):
+            return self._idspace_rows(root / path, fields.split(","))
         if fields and (any(c in path for c in "*?[") or path.endswith(".jsonl") or "." in fields):
             hits, names = self._files(root, path), fields.split(",")
             if not hits:

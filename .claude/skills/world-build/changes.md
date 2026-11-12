@@ -20,6 +20,10 @@ database who gives which promise (`people.jsonl` `id`, `role` and `services`' `s
 `cells`' `x` and `y`), held against its row of `terrain_held.json`. A place build that changes none of them leaves
 every stage current.
 
+Of the form id table (`tools/newworld/idspace.py`) a stage reads only the rows it allocates from (`idspace.py#row,row`):
+placement the placed and navmesh rows, the edits the added row besides, the ecology its own. A range added or moved
+for another stage leaves every other stage current.
+
 A built place, in its turn, stands on records of the world file, never on the file's bytes: the LAND, the navmesh
 and the placed references of the cells it read (the ground bundle its whole reach, the build its own cells and the
 ring its navmesh joins), the bases those references name, the worldspace record, the land textures, the file's

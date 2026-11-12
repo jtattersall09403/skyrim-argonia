@@ -127,7 +127,7 @@ def test_each_stage_reads_the_code_its_tool_runs_on(s):
     """A stage goes stale with an edit to any file its commands import; a check's own imports may be check_reads."""
     no_lazy = {f for (n, f) in NO_LAZY if n == s.name}
     for cmds, specs in ((s.cmds, s.reads), (s.checks, s.reads + s.check_reads)):
-        globs = [r[4:] for r in specs if r.startswith("src:")]
+        globs = [r[4:].partition("#")[0] for r in specs if r.startswith("src:")]
         files = set().union(*[code_read(m, no_lazy) for c in cmds for m in R.tool_modules(c)]) if cmds else set()
         miss = sorted(f for f in files if not any(fnmatch.fnmatch(f, g) for g in globs) and (s.name, f) not in NOT_READ)
         assert not miss, f"{s.name} does not read {miss}"
@@ -708,6 +708,9 @@ def touch(t: Tree, spec: str, n: int) -> None:
         p = (t.repo if kind == "src" else t.out) / path.replace("**/*", "d/x").replace("**/", "d/").replace("*", "x")
         p = p if p.suffix else p / "x.jsonl"
         p.parent.mkdir(parents=True, exist_ok=True)
+        if path.endswith("idspace.py"):             # the form id table: the named rows' ranges
+            p.write_text("RANGES = (" + "".join(f'("{f}", {n}, {n + 1}, "x", 0),' for f in fields.split(",")) + ")\n")
+            return
         doc = {"other": f"v{n}"}
         for f in fields.split(",") if fields else ():
             at, *path = doc, *f.lstrip("-").split(".")         # a dotted name: the field inside the field
@@ -1182,3 +1185,21 @@ def test_after_a_run_only_the_places_whose_world_records_moved_are_named_stale(t
     monkeypatch.setattr(R, "place_stale", lambda t, p: ["under its build the world changed: 1 cell (3,-4)"])
     assert [d for d in R.downstream(tree, ["esm"]) if "built place" in d and "(helstrom)" in d]
     assert not [d for d in R.downstream(tree, ["water"]) if "built place" in d]
+
+
+def test_a_stage_keys_on_the_idspace_rows_it_allocates_from(tmp_path):
+    from tools.newworld import rebuild as R
+    d = tmp_path / "tools/newworld"
+    d.mkdir(parents=True)
+    src = (Path(R.__file__).parent / "idspace.py").read_text()
+    (d / "idspace.py").write_text(src)
+    tree = Tree(repo=tmp_path, stages=(), py=sys.executable, fresh=True)
+    place = lambda: (tree.digest(R.IDSPACE_PLACE), tree.digest(R.IDSPACE_EDITS), tree.digest(R.IDSPACE_ECOLOGY))
+    before = place()
+    row = '    ("fake", 0xF00000, 0xF000FF, "x", 0),\n'
+    (d / "idspace.py").write_text(src.replace('    ("teleports"', row + '    ("teleports"', 1))
+    after = place()
+    assert after[:2] == before[:2] and after[2] == before[2]
+    (d / "idspace.py").write_text(src.replace("0x700000, 0x73FFFF", "0x700000, 0x73FFFE", 1))
+    changed = place()
+    assert changed[1] != before[1] and changed[0] == before[0]
