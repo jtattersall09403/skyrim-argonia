@@ -784,6 +784,10 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
                                             nodes_our, paths_our, dec, ledger, G)
     lit = lights.station_lights(place_id, our, stations)   # what we add is lit as Skyrim lights it
     our.extend(lit)
+    from tools.places.draft import hang
+    hung, hb = hang.rows_for(place_id, our, bases, G)      # rope lanterns on the Hist and the trees round it
+    our.extend(hung)
+    bases.update({k: hb[k] for k in hang.LANTERNS if k in hb})
     seat_all(our, G)
 
     # --- write ---
@@ -835,6 +839,7 @@ def draft(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, r
         "factions": factions,
         "stations": stations,
         "lights": {"added": [{"id": r["id"], "base": r["base"], "on": r["seat"]["on"]} for r in lit]},
+        "hang": {"added": [{"id": r["id"], "base": r["base"], "on": r["seat"]["on"]} for r in hung]},
         "ground": {"bundle": f"ground.{place_id}", "sha": G.sha, "stamp": grd.stamp()},
         "source": {"bundle": f"src.{place['source_id']}", "stamp": src.stamp()},
         "radius_m": radius_m,

@@ -9,9 +9,9 @@ is textured as leaves, twigs, fronds, moss or vines, or is two-sided or vertex-a
 near-horizontal limb (a wood triangle facing down, normal z <= -NZ) that:
 - stands HEIGHT (2.5 to 7 m) above the mesh's ground point (its frame's z = 0);
 - is THICK enough to carry a rope (the wood straight above it is at least THICK units deep);
-- has clear air below: no triangle of the mesh, wood or leaf, within DROP units under it, nor under four points
-  CLEAR units round it (the lantern's width);
-- stands at least the trunk's radius plus CLEAR from the trunk's axis (the wood below 1 m).
+- has clear air below: no wood of the mesh within DROP units under it, nor under four points CLEAR units round it
+  (the lantern's width); leaf cards have no body, and a lantern hangs through them as a Hist's own crown hangs low;
+- stands at least the trunk's radius plus CLEAR from the trunk's axis (the wood 1.4 to 2.5 m up, over the roots).
 The best KEEP points (thickest limb first), at least SPACING apart, are kept. A base whose limbs give none gets none.
 
 Output: newworld/sources/dressing/hang_points.json, a committed source keyed by base (plugin:edid) with its mesh's
@@ -39,6 +39,7 @@ THICK = 8.0                      # units of wood above the point (a limb a rope 
 DROP = 160.0                     # the longest lantern and its swing room
 CLEAR = 30.0                     # the lantern's half-width and a margin
 SPACING = 60.0
+TRUNK_Z = (100.0, 175.0)         # the band the trunk's axis and radius are measured in (over the root flare)
 KEEP = 6
 LEAF = re.compile(r"leaf|leaves|frond|moss|vine|ivy|canopy|card|branchlod|hanging|grass|fern|lichen|spanish|twig|branch", re.I)
 WOOD = re.compile(r"bark|wood|trunk|root|limb", re.I)
@@ -89,8 +90,10 @@ def find_points(wood: np.ndarray, every: np.ndarray) -> list[list[float]]:
     """Hang points from wood triangles and all triangles (each (n, 3, 3) in the mesh frame)."""
     if not len(wood):
         return []
-    low = wood.reshape(-1, 3)
-    low = low[low[:, 2] < 70.0]
+    v = wood.reshape(-1, 3)
+    low = v[(v[:, 2] >= TRUNK_Z[0]) & (v[:, 2] < TRUNK_Z[1])]       # the trunk above its root flare
+    if not len(low):
+        low = v[v[:, 2] < TRUNK_Z[1]]
     if not len(low):
         return []
     axis = low[:, :2].mean(0)
@@ -140,7 +143,23 @@ def measure(data: bytes) -> list[list[float]]:
     from tools.places.assets import nifglb
     shapes = nifglb.drawable(nifglb.dump(data))
     wood = [s for s in shapes if not is_leaf(s)]
-    return find_points(tri_arrays(wood), tri_arrays(shapes))
+    return find_points(tri_arrays(wood), tri_arrays(wood))
+
+
+def lantern_shape(model: str) -> dict:
+    """A hanging thing's anchor (the top of its rope, mesh frame) and its drop below the anchor (units)."""
+    from tools.newworld.place.seat import mesh_points
+    p = mesh_points(model)
+    top = float(p[:, 2].max())
+    a = p[p[:, 2] > top - 2.0][:, :2].mean(0)
+    return {"anchor": [round(float(a[0]), 1), round(float(a[1]), 1), round(top, 1)], "drop": round(top - float(p[:, 2].min()), 1)}
+
+
+def hang_world(tree: dict, point) -> np.ndarray:
+    """A hang point (mesh frame) posed by the placed tree's rotation, scale and final position."""
+    from tools.newworld.place.seat import rot_matrix
+    return rot_matrix(tree["rx"], tree["ry"], tree["rz"]) @ (np.asarray(point[:3], float) * tree["scale"]) + \
+        np.array([tree["x"], tree["y"], tree["z"]], float)
 
 
 def tree_bases(out: Path) -> dict:

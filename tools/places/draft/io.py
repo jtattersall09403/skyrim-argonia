@@ -113,7 +113,7 @@ def catalogue_bases(keys: set[str], path: Path | None = None) -> dict[str, dict]
 
 def place_bases(src: "Bundle", grd: "Bundle", place: dict) -> dict[str, dict]:
     """Every base a draft may place: the source's, the ground's, and the catalogue's for the agent's choices and the
-    stations, lights and bridges the draft added (place.json). `nordic` is false on every base the source place
+    stations, lights, hanging things and bridges the draft added (place.json). `nordic` is false on every base the source place
     itself uses (accepted as it comes) and the review's or the folder rule's verdict on what we add from elsewhere."""
     decisions = place.get("draft") or {}
     bases = dict(src.bases)
@@ -124,6 +124,7 @@ def place_bases(src: "Bundle", grd: "Bundle", place: dict) -> dict[str, dict]:
         want.add(v["base"] if isinstance(v, dict) else v)
     want |= {a["base"] for a in decisions.get("add") or []}
     want |= {a["base"] for a in (place.get("stations") or {}).get("added") or []}
+    want |= {a["base"] for a in (place.get("hang") or {}).get("added") or []}
     lit = place.get("lights") or {}
     want_lights = {a["base"] for a in lit.get("added") or []} | {t["base"] for t in lit.get("twins") or []}
     review = nordic_review()

@@ -55,6 +55,9 @@ def check(place_id: str, bundles: Path = io.BUNDLES, places: Path = io.PLACES, g
         for r in sp.refs:
             if (sid, r["id"]) not in seen and not (whole and r.get("kind") != "actor"):
                 bad.append(f"unaccounted source ref {sid}/{r['id']}")
+    from tools.places.draft import hang
+    if any(r.get("base") in hang.LANTERNS for r in refs):   # each hanging lantern on a limb of the tree it hangs from
+        bad += hang.faults(refs, bases, *hang.measurers(bases))
     for r in ledger:
         if r["status"] not in ("placed", "adapted", "replaced", "dropped"):
             bad.append(f"ledger {r['src']}: unknown status {r['status']}")

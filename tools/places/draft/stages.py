@@ -21,6 +21,8 @@ owns changes nothing and fails.
   primitives each copied ref's primitive by its class: a collision box kept with the piece it belongs to, one on
              the source's ground and a trigger that reaches nothing of ours dropped
              (tools/places/draft/primitives.py)
+  hang       rope lanterns on the place's Hist and the trees round it, each on a hang point of its tree's own limbs
+             (tools/places/draft/hang.py)
 """
 from __future__ import annotations
 
@@ -51,6 +53,7 @@ OWNS: dict[str, dict[str, tuple]] = {
     "jail": {"spaces/*/refs.jsonl": (ANY, True), "place.json": ({"factions"}, False)},
     "primitives": {"spaces/exterior/refs.jsonl": ({"primitive", "pos", "rot", "seat", "cluster"}, True), "spaces/*/refs.jsonl": (ANY, True),
                    "ledger.jsonl": (ANY, True)},
+    "hang": {"spaces/exterior/refs.jsonl": (ANY, True), "place.json": ({"hang"}, False)},
 }
 STAGES = tuple(OWNS)
 BUILT = "formids.json"      # the build's own file in the place folder: no stage's, and no stage is judged by it
@@ -430,8 +433,14 @@ def primitives_stage(st: Standing, log=print) -> None:
     primitives.apply(st, log)
 
 
+def hang_stage(st: Standing, log=print) -> None:
+    from tools.places.draft import hang
+    hang.apply(st, log)
+
+
 RUN = {"fit": fit, "pieces": pieces, "seating": seating_stage, "clearance": clearance, "people": people_stage,
-       "lights": lights_stage, "stations": stations, "jail": jail_stage, "primitives": primitives_stage}
+       "lights": lights_stage, "stations": stations, "jail": jail_stage, "primitives": primitives_stage,
+       "hang": hang_stage}
 
 
 # --- the run: snapshot, stage, proof of ownership, counts ---

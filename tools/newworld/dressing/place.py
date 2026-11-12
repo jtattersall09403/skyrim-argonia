@@ -39,6 +39,7 @@ from pathlib import Path
 
 import numpy as np
 
+
 REPO = Path(__file__).resolve().parents[3]
 LC = REPO / "out/newworld/landcover"
 SRC = REPO / "newworld/sources/dressing"
@@ -108,20 +109,14 @@ def reed_near(out: Path) -> dict:
     return res
 
 
-def lantern_shape(model: str) -> dict:
-    """A hanging thing's anchor (the top of its rope, mesh frame) and its drop below the anchor (units)."""
-    from tools.newworld.place.seat import mesh_points
-    p = mesh_points(model)
-    top = float(p[:, 2].max())
-    a = p[p[:, 2] > top - 2.0][:, :2].mean(0)
-    return {"anchor": [round(float(a[0]), 1), round(float(a[1]), 1), round(top, 1)], "drop": round(top - float(p[:, 2].min()), 1)}
-
-
 def hang_world(tree: dict, point) -> np.ndarray:
-    """A hang point (mesh frame) posed by the placed tree's rotation, scale and final position."""
-    from tools.newworld.place.seat import rot_matrix
-    return rot_matrix(tree["rx"], tree["ry"], tree["rz"]) @ (np.asarray(point[:3], float) * tree["scale"]) + \
-        np.array([tree["x"], tree["y"], tree["z"]], float)
+    from tools.newworld.dressing.hang_points import hang_world as hw    # the shared hanging rules
+    return hw(tree, point)
+
+
+def lantern_shape(model: str) -> dict:
+    from tools.newworld.dressing.hang_points import lantern_shape as ls
+    return ls(model)
 
 
 def trees_by_cell(out: Path, bases: dict) -> dict:

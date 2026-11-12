@@ -57,11 +57,12 @@ there and nowhere next door. Both change records only: no terrain, tree, scatter
    (`refs/flora/bases.json`, the canopy and understorey classes) and keeps its wood, telling leaf cards from bark by
    texture name (leaves, twigs, fronds, moss, vines) and shader (two-sided or vertex alpha without a bark texture). A
    hang point is the underside of a near-horizontal limb (a wood face pointing down) 2.5 to 7 m above the mesh's
-   ground point, with at least 8 units of wood above it, no geometry of the mesh within 160 units below it or below
-   four points a lantern's half-width round it, and a lantern's width clear of the trunk. The six thickest, 60 units
+   ground point, with at least 8 units of wood above it, no wood within 160 units below it or below four points a
+   lantern's half-width round it (leaf cards have no body; a lantern hangs through a low crown), and a lantern's width
+   clear of the trunk (its axis and radius measured 1.4 to 2.5 m up, over the root flare). The six thickest, 60 units
    apart, are kept per base in its own frame. Output: `newworld/sources/dressing/hang_points.json`, a committed
    source keyed by base with its mesh's digest; a run measures only new or changed meshes, and `check` lists a placed
-   tree base not yet measured.
+   tree base not yet measured. The place tools read the same rules (`tools/places/draft/hang.py`, place-build).
 2. **The kind.** A kind whose habitat is `hang` (`hanging-hist-lanterns`: King of the Murkmire's rope lanterns
    `DLC2DarkElfLantern05Rope` and `04Rope`, self-lit by their glow shell, with no light reference, as the mod places
    them) hangs only from placed trees. Its numbers are the source mod's own, measured: King of the Murkmire hangs 23

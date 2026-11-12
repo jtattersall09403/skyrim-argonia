@@ -191,6 +191,16 @@ The tools lay the network by these rules.
   bridges and steps we lay carry no light unless the source lit its own walkways: count the source's walkway pieces
   with a light within 256 units and light ours at that rate, rounded: where 1 source piece in 63 is lit, ten laid
   pieces carry no light. The torch a guard carries is stock (the skill `place-stock`).
+- **Hanging things hang from a limb.** A place's Hist and the trees within 15 m of it carry King of the Murkmire's
+  rope lanterns (`DLC2DarkElfLantern05Rope`, `04Rope`; self-lit, so no light goes with them): each carrier takes a
+  count drawn from the mod's own counts per carrier (1 to 5, `newworld/sources/dressing/kinds.json`
+  `hanging-hist-lanterns.per_carrier`), each lantern on its own hang point of the tree's mesh (a limb underside 2.5 to
+  7 m up, measured by `tools/newworld/dressing/hang_points.py`), hung by its rope's top, never tilted, seated `on` the
+  tree. None hangs with under 60 units of air over the ground or inside another solid row. The whole draft adds them;
+  on a drafted place `draft hang <place>` makes them again from the standing trees (its dry run:
+  `python3 -m tools.places.draft.hang <place>`), and `draft check` fails a lantern not on a limb of its tree, so a
+  tree moved, turned or swapped in the studio shows its lanterns in the air. A source's own hanging lanterns come
+  with their cluster like any piece.
 - **A copied room keeps the source's own lights**, shadow casters among them, each on the base the source placed.
   There is no cap on shadow-casting lights in a room: the player's renderer settings decide how many it draws.
 - **Leftovers**: `draft.drop` `{source ref id: reason}` for anything the source placed that our place must not have.
