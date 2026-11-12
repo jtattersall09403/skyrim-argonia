@@ -609,10 +609,10 @@
 {"talker":"0934C0:Black Marsh North.esp","topic":"talk.greet-friend","ord":1,"text":"Stay a while, if you like; I've nothing to watch but the crowd, and your company's better."}
 {"talker":"0934C0:Black Marsh North.esp","topic":"talk.greet-stranger","ord":1,"text":"Traveller. Is there something you need?"}
 {"talker":"0934C0:Black Marsh North.esp","topic":"talk.greet-stranger","ord":2,"text":"Good day, traveller. How can I help you?"}
-{"talker":"0934C0:Black Marsh North.esp","topic":"talk.here","ord":1,"text":"If it's your bearings you want, traveller, the signpost is about a dozen paces south-south-east of here. The rest of the town I'm still learning myself."}
+{"talker":"0934C0:Black Marsh North.esp","topic":"talk.here","ord":1,"text":"If it's your bearings you want, traveller, the signpost is just south-south-east of here. The rest of the town I'm still learning myself."}
 {"talker":"0934C0:Black Marsh North.esp","topic":"talk.lore","ord":1,"text":"Ask Holds-The-Tally about the villages around Thorn, traveller. I am still learning who really rules here, and Holds-The-Tally is clever."}
 {"talker":"0934C0:Black Marsh North.esp","topic":"talk.self","ord":1,"text":"I'm Tertius Vallo, a soldier of the hired Imperial company. I stand here and watch the town; that's most of the work."}
-{"talker":"0934C0:Black Marsh North.esp","topic":"talk.someone","ord":1,"text":"Gaius Fennic, a soldier of our company, is about twenty paces east-south-east of here. You'll find him there, traveller."}
+{"talker":"0934C0:Black Marsh North.esp","topic":"talk.someone","ord":1,"text":"Gaius Fennic, a soldier of our company, is just east-south-east of here. You'll find him there, traveller."}
 {"talker":"0934C0:Black Marsh North.esp","topic":"talk.trade","ord":1,"text":"I'm a soldier of the hired company, traveller. Our posts run from the docks up to the signposts at the centre, and mine is just south of them."}
 {"talker":"0934C1:Black Marsh North.esp","topic":"talk.greet-friend","ord":1,"text":"Well. You've kept your head down and your hands clean, which is more than most manage. Good to see you, my friend."}
 {"talker":"0934C1:Black Marsh North.esp","topic":"talk.greet-stranger","ord":1,"text":"I'm on watch, civilian. State your business and keep your voice down."}
