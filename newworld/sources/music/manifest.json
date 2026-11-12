@@ -1,0 +1,26 @@
+{
+  "about": "Generation manifest: piece -> take -> fal request id (google/lyria-3.5, $0.10 per generation, 2026-11-12). A restart reads results by request id and never resubmits. Audio is never committed; kept files live at s3://argonia-private-050977237313/nw/music/.",
+  "model": "google/lyria-3.5 via fal.ai",
+  "takes": {
+    "theme": {"t1": "01a1d03f-67d8-7710-a6a2-6809d80d46e6"},
+    "explore-mist": {"t1": "01a1d041-0253-7330-986c-e2b1f8433720"},
+    "explore-canopy": {"t1": "01a1d041-013d-7dc0-b586-51f6f1adb5f1"},
+    "explore-river": {"t1": "01a1d041-0253-7330-986c-e2ac151e5909"},
+    "explore-hist": {"t1": "01a1d041-0250-7641-9174-d3755b619af6"},
+    "explore-coast": {"t1": "01a1d041-0228-7af0-9572-d4630a98daa1"},
+    "explore-highland": {"t1": "01a1d041-01e0-74d3-83a2-57e990d1d08b"},
+    "explore-night": {"t1": "01a1d041-0229-7222-b1a3-ee39e2da1f7f"},
+    "explore-rain": {"t1": "01a1d041-024e-7220-946d-4247ba37227d"},
+    "battle-ambush": {"t1": "01a1d041-08ef-7162-907f-42c6af27d6bf"},
+    "battle-hunt": {"t1": "01a1d041-08ed-7181-8838-ce44140e64a0"},
+    "battle-deep": {"t1": "01a1d041-08da-7621-9a15-9f71005ef6be"},
+    "battle-skirmish": {"t1": "01a1d041-08bc-7432-ba28-0d6ab7cb4540"},
+    "battle-war": {"t1": "01a1d041-0948-78a3-afa2-c033c4b22d52"},
+    "battle-water": {"t1": "01a1d041-0904-7070-ac86-bb1c46da2b0c"},
+    "battle-last": {"t1": "01a1d041-08b9-7751-829f-5c3fd0f3cd6a"},
+    "sting-levelup": {"t1": "01a1d041-08d4-7382-8a4a-23c839613de5"},
+    "sting-death": {"t1": "01a1d041-107e-7450-866a-ccafc2fbd91c"},
+    "sting-discovery": {"t1": "01a1d041-10d0-7d71-8bfc-1f37e8d9beba"}
+  },
+  "files": {"theme": {"t1": "https://v3b.fal.media/files/b/0ab22eb1/VQQHDfbLtYkEzgV4u-Lco_output.mp3"}}
+}
