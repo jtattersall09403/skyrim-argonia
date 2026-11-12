@@ -21,7 +21,7 @@
    40
   ]
  },
- "ended": "quest completed",
+ "ended": "all quests ended (quest.example.opening completed)",
  "take": true,
  "answers": true,
  "player_error": null,

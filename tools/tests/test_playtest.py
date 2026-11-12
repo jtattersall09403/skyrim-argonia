@@ -58,7 +58,7 @@ def test_example_played_to_its_ending_through_do(tmp_path):
     assert S.end(folder, take="It was short and clear.")[0] == 0
     assert S.end(folder, answers="1. Serve the Reed.")[0] == 0
     run = json.loads((folder / "run.json").read_text())
-    assert run["ended"] == "quest completed" and run["counts"] == {"commands": 7, "stalls": 0, "harness_errors": 0}
+    assert run["ended"] == "all quests ended (quest.example.opening completed)" and run["counts"] == {"commands": 7, "stalls": 0, "harness_errors": 0}
     assert (folder / "take.md").read_text().startswith("It was short")
     idx = json.loads(S.index(tmp_path / "runs").read_text())
     assert idx["runs"][0]["quest"] == "quest.example.opening"
@@ -290,3 +290,83 @@ def test_the_world_database_gives_the_talkers_standing_where_a_quest_is():
     g.do("go peeks-under-boats")
     out = g.do("talk peeks-under-boats")
     assert "I was told you have work." in out and "Yourself" in out
+
+
+# -- the chained run, the counts, our people's names, the final questions -----------------------------------------
+
+def test_a_run_over_chained_quests_is_not_over_when_the_first_ends(tmp_path):
+    from tools.playtest import runner
+    assert "more may follow after a quest completes" in runner.brief("play", "careful", "")
+    assert "active objective" in runner.brief("play", "careful", "")
+    second = form()
+    second["quest"]["id"] = "quest.example.second"
+    second["quest"]["start"] = {"by": "quest_stage", "quest": Q, "quest_stage": 40, "stage": 10}
+    sess = {"forms": [form(), second], "broken": None, "take": "t", "max_commands": 40}
+    st = {"commands": 5, "quests": {Q: {"ended": "completed"}}}
+    assert S.how_ended(sess, st) == f"stopped by the player ({Q} completed, quest.example.second not started)"
+    st["quests"]["quest.example.second"] = {"ended": None}
+    assert S.how_ended(sess, st).endswith(f"({Q} completed, quest.example.second active)")
+    st["quests"]["quest.example.second"] = {"ended": "failed"}
+    assert S.how_ended(sess, st) == f"all quests ended ({Q} completed, quest.example.second failed)"
+    st["commands"] = 40
+    st["quests"]["quest.example.second"] = {"ended": None}
+    sess["take"] = None
+    assert S.how_ended(sess, st).startswith("command limit")
+
+
+def test_counts_are_filled_on_every_path_and_the_index_recomputes_them(tmp_path):
+    folder, _ = new_session(tmp_path)
+    S.do(folder, "look", think="I look around")
+    run = S.write_run(folder, {"cost_usd": 0.1, "minutes": 1.0})      # the runner's path
+    assert run["counts"] == {"commands": 1, "stalls": 0, "harness_errors": 0}
+    p = folder / "run.json"
+    kept = json.loads(p.read_text())
+    kept["counts"] = {"commands": None, "stalls": None, "harness_errors": None}
+    p.write_text(json.dumps(kept))
+    idx = json.loads(S.index(tmp_path / "runs").read_text())
+    assert idx["runs"][0]["counts"] == {"commands": 1, "stalls": 0, "harness_errors": 0}
+    assert json.loads(p.read_text())["counts"]["commands"] == 1
+
+
+def templated(**extra):
+    return {"refs": [{"id": "npc.nesh-deeka", "kind": "person", "enabled": True, **extra,
+                      "placement": {"base": {"kind": "template_person", "id": "160E6A:Black Marsh.esm"}}}]}
+
+
+def test_a_refs_own_name_is_its_name_and_nothing_else(tmp_path, capsys):
+    from tools.playtest import world as W
+    f = tmp_path / "n.json"
+    f.write_text(json.dumps({"names": {"npc.nesh-deeka": "From The File"}, "places": {}}))
+    snap = W.snapshot([templated(name="Nesh-Deeka")], [f], use_db=False)
+    assert snap["names"]["npc.nesh-deeka"] == "Nesh-Deeka" and capsys.readouterr().err == ""
+
+
+def test_a_person_from_a_template_gets_the_casts_name_else_the_templates_with_a_warning(capsys):
+    from tools.playtest import world as W
+    snap = W.from_db([templated()])
+    assert snap["names"]["npc.nesh-deeka"] == "Nesh-Deeka" and snap["fallback"] == []
+    ref = templated()["refs"][0]
+    ref["id"] = "npc.nobody-we-wrote"
+    out = W.snapshot([{"refs": [ref]}])
+    assert out["fallback"] == ["npc.nobody-we-wrote"]
+    err = capsys.readouterr().err
+    assert err.count("WARNING") == 1 and "npc.nobody-we-wrote" in err and "template" in err
+
+
+def test_the_standing_questions_are_a_separate_numbered_final_turn(tmp_path):
+    from tools.playtest import runner
+    folder, _ = new_session(tmp_path)
+    S.do(folder, "look", think="I look around")
+    code, out = S.end(folder, take="A short take.", ask=True)
+    assert code == 0 and "answer these" not in out
+    asked = []
+    text = runner.ask_questions(folder, "sys", "m", tmp_path, ask=lambda p: asked.append(p) or "1. Go on.\n2. Nobody.")
+    assert "1. What do you think you are meant to do next?" in asked[0] and "A short take." in asked[0]
+    assert "4. What would you tell the writer?" in asked[0] and "look" in asked[0]
+    assert text.startswith("1. Go on.") and (folder / "answers.md").read_text().startswith("1. Go on.")
+
+
+def test_speechcraft_is_the_sheets_speech():
+    g = game()
+    g.s["sheet"]["skills"]["Speech"] = 33
+    assert g._skill("Speechcraft") == 33

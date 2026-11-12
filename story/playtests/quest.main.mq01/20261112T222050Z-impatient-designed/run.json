@@ -25,7 +25,7 @@
    10
   ]
  },
- "ended": "quest completed",
+ "ended": "stopped by the player (quest.main.mq01 completed, quest.main.mq03 active)",
  "take": true,
  "answers": true,
  "player_error": null,

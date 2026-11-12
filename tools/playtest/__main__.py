@@ -47,6 +47,7 @@ def main(argv=None) -> int:
     e.add_argument("session")
     e.add_argument("--take")
     e.add_argument("--answers")
+    e.add_argument("--ask-later", action="store_true", help="the runner asks the standing questions itself")
     r = sub.add_parser("run")
     _common(r)
     r.add_argument("--player", required=True)
@@ -79,7 +80,7 @@ def main(argv=None) -> int:
         print(screen)
         return code
     if a.cmd == "end":
-        code, screen = S.end(a.session, take=a.take, answers=a.answers)
+        code, screen = S.end(a.session, take=a.take, answers=a.answers, ask=a.ask_later)
         print(screen)
         return code
     if a.cmd == "probe":

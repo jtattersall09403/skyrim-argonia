@@ -755,7 +755,7 @@ class Game:
         return "You wait an hour."
 
     def _skill(self, skill) -> int:
-        k = skill.lower().replace("-", "").replace(" ", "")
+        k = {"speechcraft": "speech"}.get(skill.lower(), skill.lower()).replace("-", "").replace(" ", "")  # the Morrowind word
         for s, v in self.s["sheet"]["skills"].items():
             if s.lower().replace("-", "").replace(" ", "") == k:
                 return v

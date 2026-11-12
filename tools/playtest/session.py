@@ -123,15 +123,23 @@ def do(folder, command: str, think: str) -> tuple[int, str]:
     return code, screen
 
 
-def end(folder, take: str | None = None, answers: str | None = None) -> tuple[int, str]:
+def numbered_questions() -> str:
+    return "\n".join(f"{i}. {qq}" for i, qq in enumerate(QUESTIONS, 1))
+
+
+def end(folder, take: str | None = None, answers: str | None = None, ask: bool = False) -> tuple[int, str]:
+    """Store the take (then the questions are shown, unless `ask`: the runner asks them as its own final turn) or the
+    answers."""
     sess = _load(folder)
     if take is not None:
         sess["take"] = take
         (Path(folder) / "take.md").write_text(take.strip() + "\n", encoding="utf-8")
         _save(folder, sess)
         write_run(folder)
+        if ask:
+            return 0, "Thank you. Your take is kept; you can stop now."
         return 0, ("Thank you. Now, briefly, answer these in one reply with play answers '...':\n" +
-                   "\n".join(f"{i}. {qq}" for i, qq in enumerate(QUESTIONS, 1)))
+                   numbered_questions())
     if answers is not None:
         if sess["take"] is None:
             return 2, "Give your open take first: play end --take '...'"
@@ -141,6 +149,14 @@ def end(folder, take: str | None = None, answers: str | None = None) -> tuple[in
         write_run(folder)
         return 0, "Thank you. The session is closed; you can stop now."
     return 2, "end needs --take or --answers"
+
+
+def has_take(folder) -> bool:
+    return _load(folder)["take"] is not None
+
+
+def has_answers(folder) -> bool:
+    return _load(folder)["answers"] is not None
 
 
 def transcript(folder) -> list[dict]:
@@ -163,23 +179,33 @@ def stalls(rows: list[dict]) -> int:
     return n
 
 
+def how_ended(sess: dict, st: dict) -> str:
+    """Why the run is over, then how each quest stands. A run is over when every loaded quest that has started has
+    ended and none is waiting to start, or the player is stuck or stops, or the command limit is reached."""
+    each = {}
+    for q in (f["quest"]["id"] for f in sess["forms"]):
+        v = st["quests"].get(q)
+        each[q] = "not started" if v is None else (v["ended"] or "active")
+    if sess["broken"]:
+        why = "harness error"
+    elif all(v in ("completed", "failed") for v in each.values()):
+        why = "all quests ended"
+    elif st["commands"] >= sess["max_commands"]:
+        why = "command limit"
+    elif sess["take"] is not None:
+        why = "stopped by the player"
+    else:
+        why = "open"
+    return f"{why} ({', '.join(f'{q} {v}' for q, v in each.items())})"
+
+
 def write_run(folder, extra: dict | None = None) -> dict:
     folder = Path(folder)
     sess = _load(folder)
     rows = transcript(folder)
     old = json.loads((folder / "run.json").read_text()) if (folder / "run.json").exists() else {}
     st = sess["state"]
-    endings = {q: v["ended"] for q, v in st["quests"].items() if v["ended"]}
-    if sess["broken"]:
-        how = "harness error"
-    elif sess["quest"] in endings:
-        how = f"quest {endings[sess['quest']]}"
-    elif st["commands"] >= sess["max_commands"]:
-        how = "command limit"
-    elif sess["take"] is not None:
-        how = "stopped by the player"
-    else:
-        how = "open"
+    how = how_ended(sess, st)
     run = {**old, "quest": sess["quest"], "player": sess["player"], "source": sess["source"],
            "model": sess.get("model"), "form_files": [_rel(f) for f in sess["form_files"]],
            "forms_hash": sess["forms_hash"], "created": sess["created"],
@@ -201,6 +227,8 @@ def _rel(p: str) -> str:
 def index(root: Path = RUNS) -> Path:
     runs = []
     for p in sorted(Path(root).glob("*/*/run.json")):
+        if (p.parent / "session.json").exists():
+            write_run(p.parent)          # counts and endings come from the transcript and the state
         r = json.loads(p.read_text(encoding="utf-8"))
         runs.append({"path": str(p.parent.relative_to(root)), **{k: r.get(k) for k in (
             "quest", "player", "source", "model", "created", "forms_hash", "counts", "ended", "cost_usd",

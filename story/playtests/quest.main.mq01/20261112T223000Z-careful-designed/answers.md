@@ -1,0 +1,7 @@
+1. I think I'm meant to get the sap jar out of the lockbox, hand it to Nesh-Deeka, and let her read or taste it to confirm the Hist tree is being drained. That would move the Cutter's Jar quest on toward the cell, the turned Hist at Low-Reed Village, and the woman with the knotted cord. In practice I couldn't do any of it, because the jar never came out of the box.
+
+2. I work for the Veiled Reed, a secret state service, through Nesh-Deeka, who pays me. I took the job because I'm a hand nobody can claim, and it gave me a lead on the woman who spared me. I don't know how far to trust them. They're a hidden service and I know little about their aims.
+
+3. The most confusing moment was the lockbox. I paid for the key and opened the box, but no jar appeared. Taking the box didn't help, and using it later did nothing. Picking it said there was no lock. Nesh-Deeka then talked as if she already had the jar and offered me the "Here is the jar", read and taste options. Those returned text, but the journal never advanced. I couldn't tell whether I'd missed a step or the game was broken.
+
+4. I'd tell the writer the premise and hooks are good, but the placeholder "[not yet written; the gist:]" lines make the dialogue read like an outline, so I never got a sense of the characters' voices. The jar handoff needs fixing: the jar should be a separate item that appears when the box is opened, and the quest stage should move when it's delivered. The journal should also say what I'm supposed to do at each step, so I can tell a bug from a puzzle.

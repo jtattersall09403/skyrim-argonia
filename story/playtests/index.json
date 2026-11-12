@@ -14,7 +14,7 @@
     "stalls": 0,
     "harness_errors": 0
    },
-   "ended": "quest completed",
+   "ended": "all quests ended (quest.example.opening completed)",
    "cost_usd": 0.037889,
    "minutes": 0.3
   },
@@ -31,7 +31,7 @@
     "stalls": 0,
     "harness_errors": 0
    },
-   "ended": "quest completed",
+   "ended": "all quests ended (quest.example.opening completed)",
    "cost_usd": 0.034291,
    "minutes": 0.4
   },
@@ -48,7 +48,7 @@
     "stalls": 0,
     "harness_errors": 0
    },
-   "ended": "quest completed",
+   "ended": "all quests ended (quest.example.opening completed)",
    "cost_usd": 0.031735400000000004,
    "minutes": 0.2
   },
@@ -65,7 +65,7 @@
     "stalls": 0,
     "harness_errors": 0
    },
-   "ended": "quest completed",
+   "ended": "stopped by the player (quest.main.mq01 completed, quest.main.mq03 active)",
    "cost_usd": 0.0575816,
    "minutes": 0.4
   },
@@ -82,7 +82,7 @@
     "stalls": 0,
     "harness_errors": 0
    },
-   "ended": "quest completed",
+   "ended": "stopped by the player (quest.main.mq01 completed, quest.main.mq03 active)",
    "cost_usd": 0.0384091,
    "minutes": 0.3
   },
@@ -99,9 +99,26 @@
     "stalls": 0,
     "harness_errors": 0
    },
-   "ended": "quest completed",
+   "ended": "stopped by the player (quest.main.mq01 completed, quest.main.mq03 active)",
    "cost_usd": 0.049289900000000005,
    "minutes": 0.3
+  },
+  {
+   "path": "quest.main.mq01/20261112T223000Z-careful-designed",
+   "quest": "quest.main.mq01",
+   "player": "careful",
+   "source": "designed",
+   "model": "sonnet",
+   "created": "20261112T223000Z",
+   "forms_hash": "2c9e611eb7a43c9d",
+   "counts": {
+    "commands": 38,
+    "stalls": 0,
+    "harness_errors": 0
+   },
+   "ended": "stopped by the player (quest.main.mq01 completed, quest.main.mq03 active)",
+   "cost_usd": 0.1468656,
+   "minutes": 0.9
   }
  ]
 }

@@ -16,6 +16,7 @@ from __future__ import annotations
 
 import json
 import re
+import sys
 from pathlib import Path
 
 QUEST_SOURCE = re.compile(r"^quest (ARG_\w+) stages? (\d+)(?:-(\d+))?;")
@@ -58,13 +59,21 @@ def from_db(forms: list[dict]) -> dict:
                         "x": float(r["x"]), "y": float(r["y"]), "topics": topics})
     for c in cells | {t["cell"] for t in talkers}:
         places[c] = _place(w, c)
+    fallback = []
     for f in forms:
         for ref in f["refs"]:
             p = ref["placement"]
             key = p.get("existing") or (p.get("base") or {}).get("id")
             if not key:
                 continue
-            got = q("SELECT t.known_as AS n FROM talker t WHERE t.id = ?", key) or \
+            own = None
+            if not p.get("existing") and not ref.get("name") and ref.get("kind") == "person":
+                # a person placed from a template has no name of our own on the form: the quest cast's name
+                own = q("SELECT name AS n FROM npc WHERE id = ?", ref["id"])
+                own = own[0]["n"] if own and own[0]["n"] else None
+                if not own:
+                    fallback.append(ref["id"])
+            got = own and [{"n": own}] or q("SELECT t.known_as AS n FROM talker t WHERE t.id = ?", key) or \
                 q("SELECT n.name AS n FROM bmv_placement p JOIN bmv_npc n ON n.id = p.npc WHERE p.id = ?", key) or \
                 q("SELECT name AS n FROM bmv_npc WHERE id = ?", key)
             if got and got[0]["n"]:
@@ -77,7 +86,7 @@ def from_db(forms: list[dict]) -> dict:
                 names.setdefault(ref["id"], f"Door to {to['name']}" if to.get("name") else "Door")
                 doors[ref["id"]] = {"cell": d[0]["to_cell"], "interior": to["interior"], "x": d[0]["tx"],
                                     "y": d[0]["ty"], "z": d[0]["tz"]}
-    return {"names": names, "places": places, "talkers": talkers, "doors": doors}
+    return {"names": names, "places": places, "talkers": talkers, "doors": doors, "fallback": fallback}
 
 
 def _place(w, cell) -> dict:
@@ -106,10 +115,23 @@ def load_names(path: Path) -> dict:
 
 
 def snapshot(forms: list[dict], names_files: list[Path] = (), use_db: bool = True) -> dict:
-    snap = from_db(forms) if use_db else {"names": {}, "places": {}, "talkers": [], "doors": {}}
+    """A ref's own `name` field is its name and nothing else; a person placed from a template with no name of our
+    own gets the quest cast's name from the story database, else the template's, with one warning line saying so."""
+    snap = from_db(forms) if use_db else {"names": {}, "places": {}, "talkers": [], "doors": {}, "fallback": []}
+    given = set()
     for p in names_files:
         extra = load_names(p)
+        given |= set(extra["names"])
         snap["names"].update(extra["names"])
         for c, v in extra["places"].items():
             snap["places"][c] = {**snap["places"].get(c, {}), **v}
+    for f in forms:
+        for ref in f["refs"]:
+            if ref.get("name"):
+                snap["names"][ref["id"]] = ref["name"]
+    snap["fallback"] = [r for r in snap["fallback"] if r not in given]
+    for r in snap["fallback"]:
+        n = snap["names"].get(r)
+        print(f"WARNING: {r} is placed from a template with no name of its own on the form or in the story "
+              f"database; the player sees the template's name" + (f" ({n})" if n else "") + ".", file=sys.stderr)
     return snap

@@ -51,12 +51,15 @@ Use single quotes around each argument. Run one command at a time and read what 
 How you play: {temperament} Play as yourself, a real player meeting this game for the first time: follow what \
 interests you, form your own opinions about the people and the story, and do not try to test or break the game.
 
-Stop when the quest you are on ends, when you are truly stuck (say why in your last --think), or when the game \
-says you have used all your commands. Then give your own open take, in your own words, as long as it needs to be:
+A quest that ends may be followed by another: more may follow after a quest completes. Keep playing for as long \
+as your journal holds an active objective or something new has started; check the journal after each ending. Stop \
+only when nothing is left to do (no active objective and nothing new begins), when you are truly stuck (say why in \
+your last --think), or when the game says you have used all your commands. Then give your own open take, in your \
+own words, as long as it needs to be:
   {play} end --take '...'
 Say how it felt to play, whether you understood what was going on and who people were, whether it was fun, \
 whether you want to know what happens next, what made no sense, and anything else you noticed or would want. \
-After that the game asks you a few short questions; answer them in one reply with {play} answers '...'. Then stop.
+Then stop; you may be asked a few short questions afterwards.
 """
 
 
@@ -90,7 +93,7 @@ def wrapper(folder: Path) -> Path:
     play.write_text(f"""#!/bin/sh
 cd {S.REPO} || exit 1
 case "$1" in
-  end) shift; exec {py} -m tools.playtest end {sess} "$@" ;;
+  end) shift; exec {py} -m tools.playtest end {sess} --ask-later "$@" ;;
   answers) shift; exec {py} -m tools.playtest end {sess} --answers "$*" ;;
 esac
 exec {py} -m tools.playtest do {sess} "$@"
@@ -161,9 +164,37 @@ def _attempt(forms, player, model, know, names, at, start, source, sheet, max_co
                          "turns": res.get("num_turns"), "tokens": {k: usage.get(k) for k in (
                              "input_tokens", "output_tokens", "cache_read_input_tokens",
                              "cache_creation_input_tokens")}})
+    if S.has_take(folder) and not S.has_answers(folder):
+        ask_questions(folder, system, model, room)
+        run = S.write_run(folder)
     shutil.rmtree(room, ignore_errors=True)
     shutil.rmtree(play.parent, ignore_errors=True)
     return folder, not (err and run["counts"]["commands"] == 0)
+
+
+def questions_prompt(folder: Path) -> str:
+    """The final turn: what the player did and said, their take, then the standing questions, numbered."""
+    rows = [r for r in S.transcript(folder) if r["think"] is not None]
+    played = "\n".join(f"> {r['command']}\n  (you thought: {r['think']})" for r in rows)
+    take = (Path(folder) / "take.md").read_text(encoding="utf-8").strip()
+    return ("You have finished playing. This is what you did:\n\n" + played + "\n\nThis is the take you gave:\n\n" +
+            take + "\n\nNow answer these short questions, each by its number, in one reply, in your own words. "
+            "Answer every one; the take does not replace them.\n\n" + S.numbered_questions())
+
+
+def ask_questions(folder: Path, system: str, model: str, room: Path, ask=None) -> str:
+    """Ask the standing questions as a separate final turn after the take is stored, and store whatever comes back."""
+    prompt = questions_prompt(folder)
+    if ask is None:
+        def ask(p):
+            cmd = ["claude", "-p", p, "--output-format", "stream-json", "--verbose", "--model", model,
+                   "--system-prompt", system, "--tools", "", "--permission-mode", "dontAsk",
+                   "--setting-sources", "project", "--strict-mcp-config", "--no-session-persistence"]
+            return str(run_claude(cmd, Path(folder) / "answers-stream.jsonl", room).get("result") or "")
+    text = ask(prompt).strip()
+    if text:
+        S.end(folder, answers=text)
+    return text
 
 
 ATTEMPTS = 3      # a model refusal before the first command is retried in a fresh session

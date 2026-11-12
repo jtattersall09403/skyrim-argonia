@@ -63,7 +63,10 @@ The player runs from a new empty folder with its own system prompt, no setting s
 Bash allowed only to run the run's `play` wrapper; anything else is denied. `python3 -m tools.playtest probe`
 proves it cannot read the repo (its stream is kept in `story/playtests/probe/`). Its brief is a role, not a checklist: who they are, how to play, the temperament,
 when to stop, and to give an open take in their own words. The standing questions (what next, who they work for,
-the most confusing moment, what they would tell the writer) come only after the take.
+the most confusing moment, what they would tell the writer) are asked as a separate final turn after the take is stored,
+numbered, and whatever comes back is kept as `answers.md`. A run ends when every loaded quest that has started has ended
+and none is waiting to start, or the player is stuck, or the command limit is reached; the player is told more may
+follow after a quest completes.
 
 ## Reading a run
 
@@ -76,7 +79,7 @@ Each run is a folder `story/playtests/<quest id>/<utc>-<player>-<designed|built>
 | `stream.jsonl` | the model's whole stream (its own text between commands; its thinking where the stream carries it) |
 | `brief.md` | the system prompt and first message the player got |
 | `session.json` | the forms played, their hash, the world snapshot, the final state |
-| `run.json` | quest, form source and hash, player, model, counts (commands, stalls, harness errors), how it ended, cost, minutes |
+| `run.json` | quest, form source and hash, player, model, counts (commands, stalls, harness errors), how it ended and how each quest stands, cost, minutes |
 
 `python3 -m tools.playtest index` rebuilds `story/playtests/index.json`. A stall is a repeated command, a third
 journal or map view running, or a think that says stuck.
