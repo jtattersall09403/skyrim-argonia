@@ -789,15 +789,15 @@
 {"talker":"0C7266:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"Ask Tzeel-Vaa about who goes into Black Rose and who stays. I came on a prison barge as its cook, and I never got back on it. Have you eaten?"}
 {"talker":"0C7266:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Weeska. I cook at the fire and feed the dock hands. Sit, or move along."}
 {"talker":"0C7266:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Lux Ha mends nets at the market dock, usually just south-south-west of here. Lux Ha works too hard. I doubt that one has eaten."}
-{"talker":"0C7267:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The longboat? It is in plain sight. It lies about sixty-three paces east of here. You cannot miss it."}
+{"talker":"0C7267:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The longboat? Just east of here, in plain sight. You cannot miss it."}
 {"talker":"0C7267:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"Look at what the boats brought in today. If you have something to sell, I will give you a fair price."}
 {"talker":"0C7267:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Stranger. Buying or selling? I deal in both."}
 {"talker":"0C7267:Black Marsh.esm","topic":"talk.greet-stranger","ord":2,"text":"You want something. Say what it is, or show me what you carry."}
-{"talker":"0C7267:Black Marsh.esm","topic":"talk.here","ord":1,"text":"The market is where the trade is. The cooking fire is five paces west-north-west of my stall. The dock is ten paces north-north-east."}
+{"talker":"0C7267:Black Marsh.esm","topic":"talk.here","ord":1,"text":"The market is where the trade is. The cooking fire is just west-north-west of my stall, and the dock is just north-north-east."}
 {"talker":"0C7267:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Nuxi-Ra. I sell odds and ends here, whatever the boats bring in. I buy from every crew and I do not ask where a thing came from."}
 {"talker":"0C7267:Black Marsh.esm","topic":"talk.self","ord":2,"text":"Nuxi-Ra. I trade here at the market."}
 {"talker":"0C7267:Black Marsh.esm","topic":"talk.services","ord":1,"text":"I buy and I sell. My stall is at the market, by the cooking fire. My stock is whatever the boats bring in. Show me what you have and I will name a price."}
-{"talker":"0C7267:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Rows-Against-It captains a boat from the market dock, and is usually about twenty-five paces south-south-west of here. Of all the captains, that is the one who pays on time."}
+{"talker":"0C7267:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Rows-Against-It captains a boat from the market dock, and is usually just south-south-west of here. Of all the captains, that is the one who pays on time."}
 {"talker":"0C7268:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"Walk along the boards north-east, ninety paces or so. The longboat is there. You cannot miss it."}
 {"talker":"0C7268:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"Calm water today, and a fare I know. My boat is yours if you need her."}
 {"talker":"0C7268:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"You want a crossing, say where. If not, I have rope to mend."}
