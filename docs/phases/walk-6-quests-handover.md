@@ -67,6 +67,9 @@ ruling in docs/owner-rulings.md, and post any call that is truly the owner's as 
   counts of paces (linter rule B13, talk_check reads them back). All 403 flagged talk lines and 25 quest rows of
   the BM&V version were rewritten on 2026-11-12; see docs/phases/4a-talk-to-everyone.md and section 11 of
   docs/owner-walk-checks.md. Most unflagged dialogue was still written without the find step.
+- Directions lack landmarks at the source: of 57 rewritten direction lines checked on 2026-11-12, 31 name a
+  landmark; for 9 of 20 spot-checked lines the route facts given to the writer held no landmark at all. Enriching
+  the route data with named buildings and features (and the quest markers of deliverable 4) is yours to weigh.
 - The play machine: never deploy while the owner is streaming (a deploy on 2026-11-12 had to be stopped);
   infra/gpu-box/deploy.sh has no stream check of its own unless a later commit added one. Shader caches are kept per
   card (commit ff995e27).
