@@ -119,7 +119,8 @@ DLL = "out:tools/ArgoniaPlugin/ArgoniaPlugin.dll"
 WRITER_CS = ("src:tools/ArgoniaPlugin/NewWorld.cs", "src:tools/ArgoniaPlugin/NewWorldAtmosphere.cs",
              "src:tools/ArgoniaPlugin/NewWorldMap.cs", "src:tools/ArgoniaPlugin/NewWorldNavmesh.cs",
              "src:tools/ArgoniaPlugin/WaterBlend.cs", "src:tools/ArgoniaPlugin/ForeignCopy.cs",
-             "src:tools/ArgoniaPlugin/FormIds.cs")
+             "src:tools/ArgoniaPlugin/FormIds.cs", "src:tools/ArgoniaPlugin/NewWorldTravel.cs",
+             "src:newworld/sources/travel/menu.json")
 IDSPACE = "src:tools/newworld/idspace.py"                # every allocator's range of the world file's form ids
 FORMIDS = "src:newworld/sources/world_formids.json"       # the world file's form ids by name: the writer adds, never changes
 BUILT_PLACES = ("src:newworld/places/*/land.jsonl", "src:newworld/places/*/spaces/exterior/refs.jsonl")

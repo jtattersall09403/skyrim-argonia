@@ -62,6 +62,7 @@ static class NewWorld
         "write" => Write(a[1], a[2], a[3], a.Length > 4 ? a[4] : Path.Combine(Path.GetDirectoryName(Path.GetFullPath(a[3]))!, "formids.json")),
         "check" => Check(a[1], a[2], a[3]),
         "navmesh" => NewWorldNavmesh.Run(a[1..]),
+        "travel" => NewWorldTravel.Try(a[1], a[2]),
         _ => throw new ArgumentException("newworld write|check"),
     };
 
@@ -257,6 +258,9 @@ static class NewWorld
             }
             ws.SubCells.Add(b);
         }
+        // the travel menu (newworld/sources/travel/menu.json, beside the registry): the gamepad's way in, no console
+        var menu = Path.Combine(Path.GetDirectoryName(Path.GetFullPath(idsPath))!, "travel", "menu.json");
+        if (File.Exists(menu)) NewWorldTravel.Attach(mod, ids, menu);
         NewWorldNavmesh.Attach(mod, ws, outPath, man.BuildId);  // nw-02 step 10: the navmesh, when built for this land
         if (IdCells + 2 * k > IdRefs || refId > IdRefsEnd + 1 || k > IdNavmeshEnd - IdNavmesh + 1) throw new InvalidDataException($"cells ran to {IdCells + 2 * k:X6} or counted references to {refId:X6}, out of their ranges");
         InIdOrder(mod);

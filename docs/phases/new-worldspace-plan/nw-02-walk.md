@@ -25,6 +25,11 @@ cell, and you land on dry ground beside it. The checks below give the exact name
 commands were the fault you reported: the game cannot address this world's southern cells that way, and took
 Helstrom's numbers to open sea far to the north. Do not use them.
 
+**On the game pad (no console).** Once the new build is deployed, every game has the lesser power **Argonia
+Travel**: open the Magic menu, Powers, select it and cast it. A menu opens: "The start of the new world", places by
+region (a page a region, "More" for the next page), the walk-check waters and a page for walk-check spots. Pick a
+button to be there. New spots are rows of `newworld/sources/travel/menu.json` (`spots` page).
+
 **Commands for looking around** (type in the console, then close it):
 
 - `tgm`: you cannot be hurt. `tcl`: walk through anything and fly where you look (type again to stop).
