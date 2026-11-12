@@ -160,6 +160,22 @@ streams.
 | C | Code review of the new tools (Fable 5.2) and its fixes | K, H | todo |
 | W | The recipes rewritten; the owner's walk check posted; deploy when no stream is live | I, C | todo |
 
+## The skills as one system, learning from the paper players (owner, 2026-11-12)
+
+- **The loop.** Each paper player's finding is kept with the run. When a fix clears it (a later player is no longer
+  confused or bored at that point), the class of fault is written into the recipe that produced it, as a plain
+  instruction of how to do it right; a finding that is not yet cleared changes nothing in a skill. The findings and
+  what each became are listed in "Measured" below until they are folded in.
+- **The skill set, restructured** (lane W, after the builder and the first built playtests): the quest skills become
+  a connected set, each a clean recipe that names the skill before it and after it, so an agent entering at any
+  point knows the whole path. Planned shape, to be settled by what this phase teaches: `quest-system` (the map of the
+  set, the ceiling, the quest form, which skill to use when); `story-line` (the overall story of the main quest or a
+  faction line, written by Fable inside the ceiling); `quest-write` split by kind of quest where the kinds really
+  differ (a talk-and-choice quest, a fetch or theft, a hunt, an induction into a faction); `quest-review`;
+  `quest-playtest` (the paper playtest: when, how to read a run, what to do with a finding); `quest-build` (records
+  to the form, the generic builder, the comparison, the owner's check); `dialogue-write` and `text-review` as they
+  are, linked in. [quests-on-a-world](../design/quests-on-a-world.md) stays the one overview and points at them.
+
 ## After this phase (owner, 2026-11-12)
 
 Once everything above is delivered, its lessons learned and the skills updated, this session also owns and delivers

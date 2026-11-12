@@ -499,3 +499,13 @@ added here the day they are made, with the date and the issue.
   within the constraints of minimal scripting". The main quest's and each major faction's overall story is written
   by Fable (the lead, or a lane forced to Fable 5.2), with the quest rules and the Morrowind-level ceiling in its
   brief; delivery lanes on Opus build quests from that story.
+- 2026-11-12 (in session, walk 6, the skills learn from the paper players): "the feedback from these agent players
+  should be used to improve the skills as we go along (obeying the other rules about always having them simply as
+  clean recipes for how to deliver high quality output). Especially after agent players give good feedback on
+  something that was previously poor, that shows we figured something out and properly fixed it. With the quest
+  skill toolkit, you can create new skills if you think sensible (e.g. having different types of quest skills more
+  specifically tailored to different types of task), and/or restructure the whole set of skills however you see
+  fit (I'm imagining a sort of skill graph making up an overall system for creating our high quality quest system
+  or something)". A paper player's finding that a fix then clears (a later player is no longer confused or bored
+  there) is generalised into the recipe that produced the fault, as owner-verified fixes are; the lead may add,
+  split and restructure the quest skills into one connected set.
