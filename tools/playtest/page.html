@@ -91,6 +91,7 @@ button.linkish { font: inherit; background: none; border: 0; padding: 0; color: 
 .src.built { color: var(--reed); border-color: var(--reed); }
 .out { display: inline-flex; align-items: center; gap: .35rem; font-size: .8125rem; font-weight: 500; color: var(--tone); white-space: nowrap; }
 .out svg { flex: none; }
+.facts .out, .sgrid .out { white-space: normal; align-items: baseline; }
 .t-ok { --tone: var(--ok); } .t-bad { --tone: var(--bad); } .t-warn { --tone: var(--warn); } .t-mute { --tone: var(--ink-3); }
 
 /* the ribbon: a quest's stages as a line, every run drawn along it */
@@ -300,7 +301,7 @@ const D = JSON.parse(document.getElementById("data").textContent) || { runs: [],
 const RUNS = D.runs || [], FORMS = D.forms || {};
 const PLAYERS = ["careful", "impatient", "wanderer"];
 const OUT = {
-  completed: ["completed", "ok"], failed: ["failed", "bad"], cutoff: ["cut off", "warn"],
+  completed: ["completed", "ok"], failed: ["failed", "bad"], cutoff: ["cut off", "warn"], ended: ["ended", "mute"],
   stopped: ["stopped", "warn"], harness: ["harness error", "bad"], open: ["unfinished", "mute"], other: ["other", "mute"]
 };
 const FLAG = {
@@ -362,9 +363,14 @@ function glyph(outcome) {
   else g.append(s("circle", { cx: 6, cy: 6, r: 4.2, fill: "none", stroke: c, "stroke-width": 1.8, "stroke-dasharray": outcome === "open" ? "2 2" : null }));
   return g;
 }
+function longLabel(r) {
+  let s = r.outcome_label || "";
+  for (const [id, name] of Object.entries(meta(r).quests || {})) s = s.split(id).join(name);
+  return s;
+}
 function outEl(r, long) {
   const [word, tone] = OUT[r.outcome] || OUT.other;
-  return h("span", { class: "out t-" + tone, title: r.ended }, glyph(r.outcome), h("span", { class: "w" }, long ? r.outcome_label : word));
+  return h("span", { class: "out t-" + tone, title: r.ended }, glyph(r.outcome), h("span", { class: "w" }, long ? longLabel(r) : word));
 }
 const whoEl = r => h("span", { class: "who", style: pc(r.player) }, h("span", { class: "sw" }), cap(r.player));
 const srcEl = r => h("span", { class: "src " + r.source }, r.source);
@@ -454,7 +460,7 @@ function ribbon(runs, opts) {
     const idx = stages.map((st, i) => r.reached.has(st.n) ? i : -1).filter(i => i >= 0);
     const lo = Math.min(...idx), hi = Math.max(...idx);
     const row = h("a", { class: "rrow", href: runHref(r), style: pc(r.player),
-      "aria-label": `${cap(r.player)} player, ${r.source} form, ${r.outcome_label}: open the run` },
+      "aria-label": `${cap(r.player)} player, ${r.source} form, ${longLabel(r)}: open the run` },
       h("div", { class: "rlab" }, whoEl(r), h("span", { class: "sub" }, srcEl(r), opts && opts.dates ? h("span", { class: "dt" }, stamp(r.created)) : null)));
     stages.forEach((st, i) => {
       const a = r.at[st.n];
@@ -508,7 +514,7 @@ function findings(runs) {
   const unfinished = runs.filter(r => r.outcome !== "completed");
   if (unfinished.length) {
     out.push(h("p", { class: "finding" }, h("strong", null, "Did not complete: "),
-      unfinished.map((r, i) => [i ? "; " : "", `${cap(r.player)} (${r.outcome_label}, last at stage ${lastStage(r)})`]), "."));
+      unfinished.map((r, i) => [i ? "; " : "", `${cap(r.player)} (${longLabel(r)}, last at stage ${lastStage(r)})`]), "."));
   }
   const ph = runs.reduce((n, r) => n + r.steps.filter(x => x.flags.includes("placeholder")).length, 0);
   if (ph) out.push(h("p", { class: "finding" }, h("strong", null, "Unwritten lines met: "), `${ph} time${ph === 1 ? "" : "s"} across ${runs.length} run${runs.length === 1 ? "" : "s"}.`));
@@ -774,6 +780,11 @@ function stepEl(r, st, k, target) {
   const after = h("div", { class: "after" });
   if (st.stage != null) after.append(st.from != null || (k === 0) ? h("span", { class: "moved" }, st.from != null ? `Stage ${st.from} → ${st.stage}` : `Stage ${st.stage}`) : h("span", null, "Stage ", h("b", null, st.stage)));
   if (st.ended) after.append(h("span", { class: "moved" }, "Quest " + st.ended));
+  for (const [q, n] of Object.entries(st.others || {})) {
+    const was = k ? (r.steps[k - 1].others || {})[q] : undefined;
+    const name = (m.quests || {})[q] || q;
+    after.append(n !== was ? h("span", { class: "moved" }, `${name}: stage ${was != null ? was + " \u2192 " : ""}${n}`) : h("span", null, `${name}: stage `, h("b", null, n)));
+  }
   if (st.pos && st.pos.place) after.append(h("span", null, "At ", h("b", null, st.pos.place)));
   if (st.markers && st.markers.length) after.append(h("span", null, "Markers: ", st.markers.map(id => names[id] || id).join(", ")));
   if (st.talking) after.append(h("span", null, "Talking with ", names[st.talking] || st.talking));

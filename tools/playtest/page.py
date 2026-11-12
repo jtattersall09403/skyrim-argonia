@@ -17,14 +17,33 @@ from tools.playtest import session as S
 TEMPLATE = Path(__file__).with_name("page.html")
 DEFAULT_OUT = S.REPO / "out/playtest/index.html"
 
-OUTCOMES = {  # run.json "ended" -> (key, the word the page shows)
-    "quest completed": ("completed", "completed"),
-    "quest failed": ("failed", "failed"),
+WHY = {  # why a run is over -> (key, the words the page shows)
+    "harness error": ("harness", "harness error"),
     "command limit": ("cutoff", "cut off at the command limit"),
     "stopped by the player": ("stopped", "stopped by the player"),
-    "harness error": ("harness", "harness error"),
+    "all quests ended": ("ended", "every quest ended"),
     "open": ("open", "unfinished"),
 }
+
+
+def outcome(ended: str, quest: str) -> tuple[str, str, dict]:
+    """(key, label, how each quest stands) from run.json's "ended": "<why> (<quest> <state>, ...)", or the older
+    "quest completed" form. The run's own quest decides completed or failed; otherwise why the run stopped does."""
+    m = re.match(r"^(.*?)(?: \((.*)\))?$", ended or "open")
+    why, each = m.group(1), {}
+    for part in (m.group(2) or "").split(", "):
+        q, _, state = part.rpartition(" ")
+        if q:
+            each[q] = state
+    if why.startswith("quest ") and not each:
+        each[quest] = why.split(" ", 1)[1]
+        why = "all quests ended"
+    key, label = WHY.get(why, ("other", why))
+    own = each.get(quest)
+    if key != "harness" and own in ("completed", "failed"):
+        key = own
+    label = "; ".join([label] + [f"{q} {s}" for q, s in each.items()]) if each else label
+    return key, label, each
 
 _LINE_KINDS = (  # (kind, pattern) in order; the first match wins
     ("harness", re.compile(r"^HARNESS ERROR")),
@@ -162,6 +181,7 @@ def steps(rows: list[dict], quest: str) -> list[dict]:
             "i": i, "time": r.get("time"), "think": r.get("think"), "cmd": r.get("command"),
             "plain": plain(r.get("command") or "", menu, markers), "lines": lines,
             "stage": stage, "from": last_stage if stage != last_stage else None,
+            "others": {q: n for q, n in (s.get("stages") or {}).items() if q != quest},
             "pos": {k: pos.get(k) for k in ("cell", "place", "x", "y")} if pos else None,
             "markers": s.get("markers") or [], "talking": s.get("talking"),
             "ended": (s.get("ended") or {}).get(quest), "flags": flags,
@@ -195,8 +215,11 @@ def answers(text: str | None) -> list[dict]:
 def _forms_meta(sess: dict, quest: str) -> dict:
     """What the page needs of the forms played: the quest's name, stages and objectives; names, places and where
     each ref stands (for the map)."""
-    meta = {"name": quest, "kind": None, "stages": [], "objectives": [], "refs": {}}
+    meta = {"name": quest, "kind": None, "stages": [], "objectives": [], "refs": {}, "quests": {}}
     for f in sess.get("forms") or []:
+        qq = f.get("quest") or {}
+        if qq.get("id"):
+            meta["quests"][qq["id"]] = qq.get("name") or qq["id"]
         for ref in f.get("refs") or []:
             at = ref.get("at") or {}
             if at:
@@ -237,13 +260,13 @@ def collect(root: Path = S.RUNS) -> dict:
         if key not in forms:
             forms[key] = _forms_meta(sess, quest)
         ended = run.get("ended") or "open"
-        outcome, label = OUTCOMES.get(ended, ("other", ended))
+        how, label, each = outcome(ended, quest)
         st = steps(S.transcript(folder), quest)
         runs.append({
             "id": _slug(path), "path": path, "quest": quest, "qid": _slug(quest), "forms": key,
             "player": run.get("player") or "unknown", "source": run.get("source") or "designed",
-            "model": run.get("model"), "created": run.get("created"), "ended": ended, "outcome": outcome,
-            "outcome_label": label, "counts": run.get("counts") or {},
+            "model": run.get("model"), "created": run.get("created"), "ended": ended, "outcome": how,
+            "outcome_label": label, "quests": each, "counts": run.get("counts") or {},
             "stages_done": (run.get("stages") or {}).get(quest) or [],
             "cost_usd": run.get("cost_usd"), "minutes": run.get("minutes"), "turns": run.get("turns"),
             "know": sess.get("know"), "at": sess.get("at"),

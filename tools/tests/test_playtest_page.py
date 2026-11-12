@@ -67,4 +67,7 @@ def test_screen_lines_flags_and_plain_words():
 def test_answers_are_matched_to_the_questions():
     rows = P.answers("1. Go on. 2. The Reed, because I agreed. 3. The placeholder. 4. Write the lines.")
     assert [r["n"] for r in rows] == [1, 2, 3, 4] and rows[1]["q"] == S.QUESTIONS[1]
+    assert P.outcome("stopped by the player (q1 completed, q2 active)", "q1")[:1] == ("completed",)
+    assert P.outcome("command limit (q1 active)", "q1")[0] == "cutoff"
+    assert P.outcome("quest failed", "q1")[0] == "failed"
     assert P.answers("I would not go on.") == [{"q": None, "a": "I would not go on."}]
