@@ -454,3 +454,7 @@ added here the day they are made, with the date and the issue.
   with a fade ending near 7 s), reversing (a) above: our override of the four discovery music types is restored. The
   level-up follows Skyrim's two parts: the UI sound UILevelUp plays our 8 s sting (sting-levelup), the level-up music
   type a 19 s cut of the Overture (music-levelup).
+- 2026-11-12 (in session, dialogue): "please rewrite all the flagged dialogue in the BM&V version of our mod with the
+  new updated skill." Every line the B13 lint and talk_check flag (a count of paces, yards or metres) is rewritten whole
+  through the dialogue skills with the Morrowind find step: directions by landmarks, compass words and distance
+  words, never a number.
