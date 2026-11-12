@@ -64,7 +64,7 @@ missing, floats, sinks or looks wrong.
   Bight beach".
 - Giant leeches: in the water at "Fresh black water creatures: Banujha Basin" or "Harvestable plants: Ultherus Swamp".
 - Megalania (giant lizards): at "Red mud mangroves: Kotherra Mangroves" or "A lake shore: Lake Ulaish".
-- Medusa jellies: in the water at "A lake shore: Lake Ulaish" or "A cool fen: Barsaebica".
+- Medusa and gorgons (snake-haired monsters): at "A lake shore: Lake Ulaish" or "A cool fen: Barsaebica".
 - Hummingbirds: at "Under the canopy: Arnesian Jungle".
 - Sea fish (groupers, tuna, anglerfish, a whale): in the open sea, best seen from "Places by region", then Padomaic Ocean.
 
@@ -138,8 +138,10 @@ instruments. You can hear the whole soundtrack outside the game at https://claud
 - Death: our death sting plays when you die (you approved it).
 - Level up: when the LEVEL UP notice appears you hear our short sting. When you open the level-up menu to choose
   health, magicka or stamina, a soft 19 second piece plays. (If you open that menu within about 7 seconds of the
-  notice, the two overlap briefly.) Reply ok if both fit.
-- Discovering a place plays our discovery sting (a short cut, about 7 seconds). Reply ok if it fits.
+  notice, the two overlap briefly.) Three takes of that soft piece are on the soundtrack page; take 1 is in the
+  game, built a little quieter than the other music. Reply ok if both fit, or name the take you prefer and say
+  whether it should be louder or quieter.
+- Discovering a place plays our discovery sting (a short cut, about 5 seconds). Reply ok if it fits.
 - To put in a file of your own for any piece: upload it to the bucket folder nw/music/owner/ named after the piece's
   slot (for example theme.wav); we rebuild the pack from it.
 
@@ -154,8 +156,12 @@ instruments. You can hear the whole soundtrack outside the game at https://claud
   nothing else you can see changed in that rebuild.
 - Velothi undead have no creature yet and are not in.
 - Helstrom's place is not in this deploy: it waits until you have finished editing its draft in the studio.
-- Creatures we had no model for were changed to the nearest kind that has one. Overrule any you dislike: the lore's
-  bog dog is the nix-hound; regions' "sea skater" and "flying fish" have no creature and are left out; reed-borers and
+- Creatures we had no model for were changed to a kind that has one. Overrule any you dislike: sea lion became
+  sea otter; manta ray became goliath grouper; moray became megalania (a giant lizard); barracuda and sea snake
+  became anglerfish; heron became kingfisher; parrot became hummingbird; the small crabs became giant spider crabs;
+  giant wasp became giant mosquito. Under the lore's own names: kaj-thux are the giant snakes, haj mota the
+  armoured turtles, death hoppers the large frogs, the marsh giant a spriggan matron. The lore's bog dog is the
+  nix-hound; regions' "sea skater" and "flying fish" have no creature and are left out; reed-borers and
   flesh-flies have no creature and are left out (Nha-Enasa shows its restless dead instead).
 
 ## How to reply
