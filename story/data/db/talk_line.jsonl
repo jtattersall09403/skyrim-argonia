@@ -61,14 +61,14 @@
 {"talker":"015195:Black Marsh.esm","topic":"talk.here","ord":1,"text":"The horses, rider? Stand quiet and you will see them just west-north-west of here. One of them is a saddled black. Cows graze just west, and more just south."}
 {"talker":"015195:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Mazei-Tul. I serve in the house, but I keep the horses, because that is the work I like. One day I will be a rider."}
 {"talker":"015195:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Lifts-The-Sacks? Just east of here, in the middle of the yard. He helps me with the feed, so be civil to him."}
-{"talker":"01CCD9:Black Marsh North.esp","topic":"talk.directions","ord":1,"text":"Thorn? Walk south-west a short way and Thorn is there, outlander. It is no great walk."}
+{"talker":"01CCD9:Black Marsh North.esp","topic":"talk.directions","ord":1,"text":"Thorn? Walk south-west a short way and you will reach it, outlander. No great trouble, if nobody stops you."}
 {"talker":"01CCD9:Black Marsh North.esp","topic":"talk.greet-friend","ord":1,"text":"Ah, my friend. Come, stand here by me; nobody is counting us just now. What do you need?"}
 {"talker":"01CCD9:Black Marsh North.esp","topic":"talk.greet-stranger","ord":1,"text":"Outlander. If you are counting something, count it elsewhere. What do you want?"}
-{"talker":"01CCD9:Black Marsh North.esp","topic":"talk.here","ord":1,"text":"The house is just north-west of here. I labour there, as do the rest of us who owe."}
+{"talker":"01CCD9:Black Marsh North.esp","topic":"talk.here","ord":1,"text":"The house is just north-west of here, outlander. That is where I labour, and the rest of us who owe."}
 {"talker":"01CCD9:Black Marsh North.esp","topic":"talk.lore","ord":1,"text":"The Dres raided Thorn for slaves, long ago. That raid made them the first of the great Dunmer families in the trade. Curse them softly, outlander. Softly."}
 {"talker":"01CCD9:Black Marsh North.esp","topic":"talk.lore","ord":2,"text":"Folk of Thornmarsh learn a little magic, just enough to get by. Nothing a guard need hear of. I will say no more on it."}
 {"talker":"01CCD9:Black Marsh North.esp","topic":"talk.self","ord":1,"text":"Doveth Aralen. I was born owing, outlander. My mother's account came to me with her name. I have worked off three seasons and been charged for four."}
-{"talker":"01CCD9:Black Marsh North.esp","topic":"talk.someone","ord":1,"text":"Jeelus-Vax is guard captain over the east houses. He stands just south-south-west, there. Fair, as guards go."}
+{"talker":"01CCD9:Black Marsh North.esp","topic":"talk.someone","ord":1,"text":"Jeelus-Vax is the guard captain over the east houses. You will find him just south-south-west of here. Fair enough, for a guard."}
 {"talker":"01CCDE:Black Marsh North.esp","topic":"talk.directions","ord":1,"text":"The big ship? It lies a short way south, outlander. You cannot miss a ship."}
 {"talker":"01CCDE:Black Marsh North.esp","topic":"talk.greet-friend","ord":1,"text":"Ah, the one face in Thorn that has never asked me for coin. Sit if you like; the people here will not charge you for the ground. Yet."}
 {"talker":"01CCDE:Black Marsh North.esp","topic":"talk.greet-stranger","ord":1,"text":"Well, outlander. Come to look at the labour, or to buy some?"}
