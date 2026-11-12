@@ -1,24 +1,25 @@
 {"quest_id":"quest.bc.bc01","things_ord":0,"state":"all","value":"present"}
-{"quest_id":"quest.bc.bc01","things_ord":1,"state":"all","value":"present"}
-{"quest_id":"quest.bc.bc01","things_ord":2,"state":"after-90","value":"taken by Never-Sold"}
-{"quest_id":"quest.bc.bc01","things_ord":2,"state":"before-10","value":"absent"}
-{"quest_id":"quest.bc.bc01","things_ord":2,"state":"during","value":"in the chest, or carried"}
-{"quest_id":"quest.bc.bc01","things_ord":3,"state":"all","value":"present"}
-{"quest_id":"quest.bc.bc01","things_ord":4,"state":"after-10","value":"at the landing"}
-{"quest_id":"quest.bc.bc01","things_ord":4,"state":"after-90","value":"in the house"}
-{"quest_id":"quest.bc.bc01","things_ord":4,"state":"before-10","value":"in the house"}
-{"quest_id":"quest.bc.bc01","things_ord":5,"state":"all","value":"present"}
+{"quest_id":"quest.bc.bc01","things_ord":1,"state":"after-90","value":"taken by Never-Sold"}
+{"quest_id":"quest.bc.bc01","things_ord":1,"state":"during","value":"on the landing, or carried"}
+{"quest_id":"quest.bc.bc01","things_ord":2,"state":"after-90","value":"Rows-For-Another gone home"}
+{"quest_id":"quest.bc.bc01","things_ord":2,"state":"after-91","value":"Rows-For-Another gone down the channel"}
+{"quest_id":"quest.bc.bc01","things_ord":2,"state":"during","value":"both on the landing"}
+{"quest_id":"quest.bc.bc01","things_ord":3,"state":"all","value":"in the house"}
 {"quest_id":"quest.bc.bc02","things_ord":0,"state":"all","value":"present"}
 {"quest_id":"quest.bc.bc02","things_ord":1,"state":"all","value":"present"}
-{"quest_id":"quest.bc.bc02","things_ord":2,"state":"after-end","value":"as BM&V left it"}
-{"quest_id":"quest.bc.bc02","things_ord":2,"state":"during","value":"smoke under ref.bc02.smoke"}
-{"quest_id":"quest.bc.bc02","things_ord":3,"state":"all","value":"present"}
-{"quest_id":"quest.bc.bc02","things_ord":4,"state":"all","value":"present"}
+{"quest_id":"quest.bc.bc02","things_ord":2,"state":"after-91","value":"Says-It-Plain gone"}
+{"quest_id":"quest.bc.bc02","things_ord":2,"state":"after-92","value":"Hides-In-Reeds gone"}
+{"quest_id":"quest.bc.bc02","things_ord":2,"state":"after-93","value":"Keeps-The-Old-Count gone"}
+{"quest_id":"quest.bc.bc02","things_ord":2,"state":"during","value":"all four at the stone house"}
 {"quest_id":"quest.bc.bc03","things_ord":0,"state":"all","value":"present"}
 {"quest_id":"quest.bc.bc03","things_ord":1,"state":"all","value":"present"}
 {"quest_id":"quest.bc.bc03","things_ord":2,"state":"after-90","value":"broken"}
 {"quest_id":"quest.bc.bc03","things_ord":2,"state":"during","value":"in the chest, or carried"}
 {"quest_id":"quest.bc.bc03","things_ord":3,"state":"all","value":"present"}
+{"quest_id":"quest.bc.bc03","things_ord":1,"state":"after-90","value":"broken"}
+{"quest_id":"quest.bc.bc03","things_ord":1,"state":"during","value":"on the dock, or carried"}
+{"quest_id":"quest.bc.bc03","things_ord":2,"state":"all","value":"present"}
+{"quest_id":"quest.local.lf83","things_ord":0,"state":"after-40","value":"a band of fresh grey clay rammed in behind the coping and down the lining on the ford side (place_local_state_variants lf83-well-clayed)"}
 {"quest_id":"quest.local.lf83","things_ord":0,"state":"before-40","value":"a new crack a finger wide from the coping down the lining on the ford side, with old mortar lines of earlier mending beside it; examining it sets flag.lf83.crack-seen (an activator: handed to the planner, 16b)"}
 {"quest_id":"quest.local.lf83","things_ord":1,"state":"before-40","value":"a small clay jar of fine grey-brown silt, owned by Livia Varinius; taking it is theft if seen"}
 {"quest_id":"quest.local.lf83","things_ord":2,"state":"all","value":"the page for 3 to 6 Rain's Hand: buckets drawn, beds let, the poler's wife charged nothing for wash water, a new crack in the well head a finger wide, travellers asking why the landing charges them again; reading it where it lies sets flag.lf83.ledger-read (a document-read hook: handed to the planner, 16b)"}

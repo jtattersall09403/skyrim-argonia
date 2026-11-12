@@ -39,19 +39,19 @@
 {"id":"fact.battle-of-argonia.settled","says":"The survivors of the battle settled at Helstrom."}
 {"id":"fact.battle-of-argonia.soldiers","says":"The Emperor would not send soldiers into the interior after the survivors."}
 {"id":"fact.bc01.boat-owing","claim":"Rows-For-Another took a boat from the estate on an Owing of four months, eleven years ago.","ord":0,"from_ref":"t1","quest_id":"quest.bc.bc01"}
-{"id":"fact.bc01.book-chest","claim":"The steward keeps the debt book in a locked chest on the landing.","ord":2,"from_ref":"t2","quest_id":"quest.bc.bc01"}
+{"id":"fact.bc01.book-chest","claim":"The steward keeps the debt book by him on the landing.","ord":2,"from_ref":"t2","quest_id":"quest.bc.bc01"}
 {"id":"fact.bc01.book-true","claim":"Every line of the estate's debt book is true: her food, the boat's upkeep, her sick days.","ord":1,"from_ref":"t2","quest_id":"quest.bc.bc01"}
 {"id":"fact.bc01.channel","claim":"The channel runs from the landing out of the estate's reach, and she cannot drown in it.","ord":6,"from_ref":"t4","quest_id":"quest.bc.bc01"}
-{"id":"fact.bc01.night-men","claim":"Two estate men walk the landing at night.","ord":5,"from_ref":"t4","quest_id":"quest.bc.bc01"}
+{"id":"fact.bc01.night-men","claim":"If one held on the estate runs, the estate's men are rougher with the next one held.","ord":5,"from_ref":"t4","quest_id":"quest.bc.bc01"}
 {"id":"fact.bc01.put-by","claim":"Never-Sold has put by enough to buy out what the Owing was.","ord":4,"from_ref":"t3","quest_id":"quest.bc.bc01"}
 {"id":"fact.bc01.washed-out","claim":"She has grown grey from years away from her tree.","ord":3,"from_ref":"t2","quest_id":"quest.bc.bc01"}
-{"id":"fact.bc02.fire","claim":"The heirs' outer post, the old stone house on the shore at Blackrose's east edge, is burning, and nobody says how it started. Third-Born Tsaxi keeps its way in.","ord":0,"from_ref":"t1","quest_id":"quest.bc.bc02"}
-{"id":"fact.bc02.one-out","claim":"The way out will bear one trip; whoever is left inside burns.","ord":2,"from_ref":"t3","quest_id":"quest.bc.bc02"}
-{"id":"fact.bc02.three-held","claim":"Three are bound inside: Says-It-Plain, held for speaking against the heirs; Hides-In-Reeds, held for a killing; and Keeps-The-Old-Count, Rows-For-Another's mother, working off what the heirs reckon she owes.","ord":1,"from_ref":"t2","quest_id":"quest.bc.bc02"}
+{"id":"fact.bc02.fire","claim":"A fire went through the Rose, and the heirs keep three they brought out of the smoke at their outer post, the stone house on the shore at Blackrose's east edge, under Third-Born Tsaxi.","ord":0,"from_ref":"t1","quest_id":"quest.bc.bc02"}
+{"id":"fact.bc02.one-out","claim":"Tsaxi can count one of the three lost to the smoke; three would be his own neck.","ord":2,"from_ref":"t3","quest_id":"quest.bc.bc02"}
+{"id":"fact.bc02.three-held","claim":"The three are Says-It-Plain, held for speaking against the heirs; Hides-In-Reeds, held for a killing; and Keeps-The-Old-Count, Rows-For-Another's mother, working off what the heirs reckon she owes.","ord":1,"from_ref":"t2","quest_id":"quest.bc.bc02"}
 {"id":"fact.bc03.break","claim":"Ussa-Rekh promised that a crew who break their tokens before him are done with him.","ord":3,"from_ref":"t1","quest_id":"quest.bc.bc03"}
 {"id":"fact.bc03.freed-and-hired","claim":"Ussa-Rekh bought out Owings for thirty years, and now hires out the crews he freed.","ord":0,"from_ref":"t1","quest_id":"quest.bc.bc03"}
 {"id":"fact.bc03.refused","claim":"Heavy-Rope's crew asked to end their last season early and were refused.","ord":2,"from_ref":"t2","quest_id":"quest.bc.bc03"}
-{"id":"fact.bc03.tokens","claim":"He keeps a crew's carved tokens in the chest beside him on the dock until their last season is worked.","ord":1,"from_ref":"t1","quest_id":"quest.bc.bc03"}
+{"id":"fact.bc03.tokens","claim":"He keeps a crew's carved tokens by him on the dock until their last season is worked.","ord":1,"from_ref":"t1","quest_id":"quest.bc.bc03"}
 {"id":"fact.blackguards.brigands","says":"The Blackguards are Argonian pirates and brigands of the south coast."}
 {"id":"fact.blackguards.inmates","says":"The Blackguards descend from the inmates of Blackrose Prison."}
 {"id":"fact.blackguards.largest","says":"The Blackguards are the largest band of criminals in Murkmire."}

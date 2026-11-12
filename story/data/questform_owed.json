@@ -1,20 +1,6 @@
 {
  "_about": "Quest records with stages that do not yet fit the quest form, each with its refused terms (docs/design/quest-form.md). make check fails on a quest that does not fit and is not listed, on a listed quest that now fits, and on a listed quest whose terms changed; the list only shrinks (python3 -m tools.questform owed --write rewrites listed rows, never adds one).",
  "quests": {
-  "quest.bc.bc01": [
-   "inZone",
-   "moveRef",
-   "not",
-   "placement"
-  ],
-  "quest.bc.bc02": [
-   "inZone",
-   "placement"
-  ],
-  "quest.bc.bc03": [
-   "all",
-   "placement"
-  ],
   "quest.bc.bc05": [
    "objective target",
    "objective text",

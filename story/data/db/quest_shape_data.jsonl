@@ -1,16 +1,16 @@
-{"quest_id":"quest.bc.bc01","section":"aftermath","value":"Bought down, she greets the player in Blackrose by name; slipped away, she is gone."}
-{"quest_id":"quest.bc.bc01","section":"bondageSheet","value":"The debt: four months for a boat. The holder: the estate and its steward Hulm-Tei. The terms: her food, the boat's upkeep and sick days are added to it. The exit in law: worked off. The exit in practice: bought out, or gone. What she wants: to go home to her tree."}
-{"quest_id":"quest.bc.bc01","section":"costToTheBound","value":"Bought down, she owes nothing but the estate keeps her boat; slipped away, she can never go back to the swamp road, and the estate men are rougher with the next one held."}
-{"quest_id":"quest.bc.bc01","section":"deadline","value":"none: the Owing runs on; the channel is taken at night."}
-{"quest_id":"quest.bc.bc01","section":"revealOrder","value":"Her grey first (k3), then the steward's true account (k1), then the book itself (k2)."}
-{"quest_id":"quest.bc.bc02","section":"aftermath","value":"The one brought out greets the player and speaks the others' names to Never-Sold."}
-{"quest_id":"quest.bc.bc02","section":"bondageSheet","value":"The debt: Keeps-The-Old-Count's Owing as the heirs reckon it; Says-It-Plain held for words; Hides-In-Reeds for a killing. The holder: the heirs of the Rose. The exit in law: none they own to. The exit in practice: the fire. What each wants: out."}
-{"quest_id":"quest.bc.bc02","section":"costToTheBound","value":"Two of the three die in the smoke whichever the player chooses; the one brought out is in the Chainbreakers' keeping and cannot go back to the heirs."}
-{"quest_id":"quest.bc.bc02","section":"deadline","value":"the smoke: a line, not a timer; the fire takes the other two only when the first comes away."}
-{"quest_id":"quest.bc.bc02","section":"revealOrder","value":"The fire (k2 at the stone house), the three held, then the gate-keeper's word that only one comes out (k1)."}
-{"quest_id":"quest.bc.bc03","section":"aftermath","value":"A greeting on the dock changes; nothing later turns on it."}
+{"quest_id":"quest.bc.bc01","section":"aftermath","value":"Bought down, Never-Sold greets the player as the one who brought the book; slipped away, she greets them coolly. Rows-For-Another is gone from the landing either way."}
+{"quest_id":"quest.bc.bc01","section":"bondageSheet","value":"The debt: four months for a boat. The holder: the estate and its steward Hulm-Tei. The terms: her food, the boat's upkeep and sick days are added to it. The exit in law: worked off. The exit in practice: bought out at the first price with the book, or gone down the channel. What she wants: to go home to her tree."}
+{"quest_id":"quest.bc.bc01","section":"costToTheBound","value":"Bought down, she owes nothing but the estate keeps her boat; slipped away, she can never go back to the swamp road, and the estate's men are rougher with the next one held."}
+{"quest_id":"quest.bc.bc01","section":"deadline","value":"none: the Owing runs on."}
+{"quest_id":"quest.bc.bc01","section":"revealOrder","value":"Her grey and her own account first (k3), then the steward's true account (k1), then the book itself (k2)."}
+{"quest_id":"quest.bc.bc02","section":"aftermath","value":"The one freed is gone from the stone house; the other two stay held there, and greet the player by what they asked of them."}
+{"quest_id":"quest.bc.bc02","section":"bondageSheet","value":"The debt: Keeps-The-Old-Count's Owing as the heirs reckon it; Says-It-Plain held for words; Hides-In-Reeds for a killing. The holder: the heirs of the Rose. The exit in law: none they own to. The exit in practice: one counted lost to the smoke. What each wants: out."}
+{"quest_id":"quest.bc.bc02","section":"costToTheBound","value":"Two of the three stay held and go back to the Rose whichever the player chooses; the one freed can never go back to the heirs."}
+{"quest_id":"quest.bc.bc02","section":"deadline","value":"none: the heirs take them back once the Rose's fire damage is mended, which the quest never reaches."}
+{"quest_id":"quest.bc.bc02","section":"revealOrder","value":"The fire and the three (k3, from Never-Sold), the gate-keeper's count (k1), then each held person's own account (k2)."}
+{"quest_id":"quest.bc.bc03","section":"aftermath","value":"Both men's greetings on the docks change; nothing later turns on it."}
 {"quest_id":"quest.bc.bc03","section":"bondageSheet","value":"The debt: the crew's last season of hire, owed for the Owings he bought. The holder: Ussa-Rekh. The terms: he hires them out until it is worked. The exit in law: the season's end. The exit in practice: breaking the tokens before him. What they want: done a season early."}
-{"quest_id":"quest.bc.bc03","section":"costToTheBound","value":"With the crew, they lose his hire and must find their own on the dock; with him, they work the season out under him."}
+{"quest_id":"quest.bc.bc03","section":"costToTheBound","value":"With the crew, they lose his hire and must find their own on the docks; with him, they work the season out under him."}
 {"quest_id":"quest.bc.bc03","section":"deadline","value":"none: the season runs on."}
 {"quest_id":"quest.bc.bc03","section":"revealOrder","value":"The refusal (k2), his thirty years (k1), the tokens themselves (k3)."}
 {"quest_id":"quest.local.lf83","section":"aftermath"}
