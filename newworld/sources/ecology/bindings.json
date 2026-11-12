@@ -633,11 +633,11 @@
   },
   "bog-dog": {
    "records": [
-    "Black Marsh.esm:0wolfdrake"
+    "mihailnixcreatures.esp:mihailnixhound_NPC"
    ],
-   "why": "nearest: Forest Drake wolf-form",
+   "why": "Mihail's nix-hound (Nexus 54358), the lore's marsh hound; replaces the Forest Drake wolf-form nearest fit",
    "levels": [
-    10
+    1000
    ]
   },
   "red-wolf": {
@@ -852,12 +852,26 @@
    "nearest": null
   },
   "dreugh": {
-   "dropped": "no crustacean-humanoid actor in the mods",
-   "nearest": null
+   "records": [
+    "mihaildreughbundle.esp:mihaillanddreugh_NPC_orange",
+    "mihaildreughbundle.esp:mihaillanddreugh_NPC_red",
+    "mihaildreughbundle.esp:mihaillanddreugh_NPC_green"
+   ],
+   "why": "Mihail's land dreughs (Nexus 139898, owner-supplied): land dreugh, mating dreugh, broodmother; the lore dreugh on the shore",
+   "levels": [
+    1000,
+    1000,
+    1000
+   ]
   },
   "great-whale": {
-   "dropped": "no whale actor; the nearest are leviathans and Iku-Turso, which are sea monsters",
-   "nearest": null
+   "records": [
+    "Blue Whales.esp:EncBlueWhale"
+   ],
+   "why": "Skinwalker21's blue whale (Nexus 47619), an ocean whale",
+   "levels": [
+    1000
+   ]
   },
   "sea-lion": {
    "dropped": "no sea mammal actor",
@@ -880,12 +894,30 @@
    "nearest": null
   },
   "river-otter": {
-   "dropped": "no otter actor",
-   "nearest": null
+   "records": [
+    "Otters.esp:EncOtter",
+    "Otters.esp:EncOtter2",
+    "Otters.esp:EncOtter3",
+    "Otters.esp:EncOtter4"
+   ],
+   "why": "Skinwalker21's otters (Nexus 49518, owner-supplied); the benign otter, not the wolf-otter",
+   "levels": [
+    1,
+    1,
+    1,
+    1
+   ]
   },
   "kagouti": {
-   "dropped": "no kagouti actor; no fitting plain quadruped",
-   "nearest": null
+   "records": [
+    "mihailkagouti.esp:mihailkagouti",
+    "mihailkagouti.esp:mihailkagoutiBIG"
+   ],
+   "why": "Mihail's Morrowind kagouti (Nexus 27521): kagouti and mating kagouti",
+   "levels": [
+    1000,
+    1000
+   ]
   },
   "osheeja-gar": {
    "dropped": "no matching actor",
@@ -896,24 +928,56 @@
    "nearest": null
   },
   "lamia": {
-   "dropped": "no lamia actor (Naga are humanoid, not wild creatures)",
-   "nearest": null
+   "records": [
+    "LamiaEnemies.esp:zzzM150LE_Lamia_Actor_Template",
+    "LamiaEnemies.esp:zzzM150LE_Lamia_Actor_Template02",
+    "LamiaEnemies.esp:zzzM150LE_Lamia_Actor_Template03",
+    "LamiaEnemies.esp:zzzM150LE_Lamia_Actor_Template04"
+   ],
+   "why": "LamiaEnemies (Nexus 50880): footsoldier, battlecaller, spellslinger, diva",
+   "levels": [
+    10,
+    20,
+    35,
+    45
+   ]
   },
   "medusa": {
-   "dropped": "no medusa actor",
-   "nearest": null
+   "records": [
+    "Medusas ENG.esp:EncGorgon",
+    "Medusas ENG.esp:EncMedusa"
+   ],
+   "why": "Gorgons and Medusa in Skyrim (Nexus 100485): gorgon, then medusa",
+   "levels": [
+    1000,
+    1000
+   ]
   },
   "ancient-lamia-queen": {
-   "dropped": "no lamia actor",
-   "nearest": null
+   "records": [
+    "LamiaEnemies.esp:zzzM150LE_Lamia_Actor_005"
+   ],
+   "why": "LamiaEnemies' Lamia Queen (Nexus 50880)",
+   "levels": [
+    1000
+   ]
   },
   "feather-serpent": {
    "dropped": "no feathered serpent actor",
    "nearest": null
   },
   "giant-leech": {
-   "dropped": "no leech actor",
-   "nearest": null
+   "records": [
+    "BirbWalker21_Leeches.esp:BW21_EncLeechMedium0",
+    "BirbWalker21_Leeches.esp:BW21_EncLeechLarge0",
+    "BirbWalker21_Leeches.esp:BW21_EncLeechGiant0"
+   ],
+   "why": "Skinwalker21's swamp leeches (Nexus 104589): medium, large, giant",
+   "levels": [
+    3,
+    5,
+    10
+   ]
   },
   "hoarvor": {
    "dropped": "no matching actor",
