@@ -638,14 +638,14 @@
 {"talker":"0934C3:Black Marsh North.esp","topic":"talk.self","ord":1,"text":"I am Quill-Teeth, party, one of the Tax Heel. That is what the people of Thorn call the collectors the field-owners send. I am very good at my work."}
 {"talker":"0934C3:Black Marsh North.esp","topic":"talk.someone","ord":1,"text":"Doveth Aralen is a Dunmer held under an Owing, and the eldest of the house's labourers. You will find Doveth just south-south-east of here. Doveth is slow, party, so ask and then wait."}
 {"talker":"0934C3:Black Marsh North.esp","topic":"talk.trade","ord":1,"text":"I collect Owings for the field-owners, party. I also keep the ledger. A person called Owes-Nothing wants it burned, because Owes-Nothing is a debtor in hiding."}
-{"talker":"0934C4:Black Marsh North.esp","topic":"talk.directions","ord":1,"text":"The stone tower, party? Climb north-west, about one hundred and forty paces. One hundred and forty. The tower is there."}
+{"talker":"0934C4:Black Marsh North.esp","topic":"talk.directions","ord":1,"text":"The stone tower, party? Climb north-west a short way. A short way, no more. The tower is there."}
 {"talker":"0934C4:Black Marsh North.esp","topic":"talk.greet-friend","ord":1,"text":"It is good to see your face again, party. I do not say that to many."}
 {"talker":"0934C4:Black Marsh North.esp","topic":"talk.greet-stranger","ord":1,"text":"Party. Say what you want, and say it plainly. I see you are armed, so keep your hand away from the blade while you talk."}
-{"talker":"0934C4:Black Marsh North.esp","topic":"talk.here","ord":1,"text":"This is the north side, party, near the houses. A house stands about twenty paces south-east of here."}
+{"talker":"0934C4:Black Marsh North.esp","topic":"talk.here","ord":1,"text":"This is the north side, party, near the houses. A house stands just south-east of here."}
 {"talker":"0934C4:Black Marsh North.esp","topic":"talk.lore","ord":1,"text":"Ask Mils Ganthis about the charges on an Owing, party. I check every sum I write twice."}
 {"talker":"0934C4:Black Marsh North.esp","topic":"talk.lore","ord":2,"text":"Decimus Pell is the one to ask about the Owing, party. I say it is fair because it ends."}
 {"talker":"0934C4:Black Marsh North.esp","topic":"talk.self","ord":1,"text":"I am Tallies-Twice. I collect on the north side for the field-owners, and I face the rising across the north houses. I want it gone from this side."}
-{"talker":"0934C4:Black Marsh North.esp","topic":"talk.someone","ord":1,"text":"Breaks-The-Ledger is a soldier of the rising against the Owings. He is about thirty paces west of here, party. Thirty. Keep your weapon near when you go; I say he will strike."}
+{"talker":"0934C4:Black Marsh North.esp","topic":"talk.someone","ord":1,"text":"Breaks-The-Ledger is a soldier of the rising against the Owings. He is just west of here, party. Keep your weapon near when you go; I say he will strike."}
 {"talker":"0934C4:Black Marsh North.esp","topic":"talk.trade","ord":1,"text":"I am a Tax Heel, party. Tolls and Owings on the north side are mine to collect. I check every sum twice. Twice, always."}
 {"talker":"0934C5:Black Marsh North.esp","topic":"talk.greet-friend","ord":1,"text":"Stand with us, then. A sharp blade is always welcome here."}
 {"talker":"0934C5:Black Marsh North.esp","topic":"talk.greet-stranger","ord":1,"text":"Outlander. Say what you want, or leave me."}
