@@ -434,3 +434,8 @@ added here the day they are made, with the date and the issue.
   declined to generate music that recreates Morrowind's compositions; it delivers an original soundtrack to the
   same roles, and a music system with one named slot per role and a drop-in folder, so any file the owner makes
   himself replaces a piece without a code change.
+- 2026-11-12 (in session, creature mods of lanes C and D3): "I have checked and we have permission to use them in
+  this way if we don't ship their assets directly and we make their mods dependencies for ours." Recorded on each of
+  the eighteen creature mods' rows in mods/sourcing-register.json (`permission`, `permission_condition`). Before
+  release the creature mods' plugins become real masters of our world file rather than record copies (owed in
+  docs/phases/5-scale.md).

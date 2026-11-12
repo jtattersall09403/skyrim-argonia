@@ -20,6 +20,8 @@ How a cell is dressed (decision 0034: Skyrim's own numbers):
   shallow fresh water edges), reeds (within REED_M of a placed reed or fern, or a marsh habitat), shore (within
   SHORE_M of water). Never on a road (ROAD_M), in a held cell, a landing's cell, or water deeper than its edge.
 - Each thing sits on the ground (a floating kind `lift` units above it) with a random yaw and a scale in SCALE; spawners and effects sit as they are.
+- A hanging kind (habitat `hang`) hangs from the hang points (hang_points.json) of placed trees near a built place,
+  a road's edge or in a Hist grove, by its rope's top, never tilted (lanterns()); check_hung judges each one.
 Every draw is seeded by the cell and kind, so a rerun writes the same bytes. A reference's id is DRESS_FIRST + its
 identity's digest (cell, kind, ordinal) in the `dressing` idspace row, probed on a collision.
 """
@@ -52,6 +54,13 @@ MAX_HALF = 160.0                                # bounds half-extent (units): la
 CAP = 6                                         # dressing references in one cell
 LOD_FLAG = 0x8000                               # STAT "has distant LOD"
 TOLERANCE = (0.4, 1.6)                          # placed / expected per kind and region
+TREE_CLS = ("canopy_tree", "understorey")       # placed flora a hanging kind hangs from
+NEAR_CELLS = 2                                  # a tree this many cells from a built place is near a settlement
+EDGE_M = 40.0                                   # a road's edge: ROAD_M to EDGE_M from its centre line
+BELOW_MIN = 60.0                                # units of air under a hanging thing's bottom
+HANG_TRIES = 24                                 # draws of a tree and hang point for one hanging thing
+HANG_CAP = 2                                    # hanging things in one cell
+ANCHOR_TOL = 3.5                                # units (5 cm): a hanging thing's anchor from its tree's hang point
 
 
 def log(*a):
@@ -99,6 +108,150 @@ def reed_near(out: Path) -> dict:
     return res
 
 
+def lantern_shape(model: str) -> dict:
+    """A hanging thing's anchor (the top of its rope, mesh frame) and its drop below the anchor (units)."""
+    from tools.newworld.place.seat import mesh_points
+    p = mesh_points(model)
+    top = float(p[:, 2].max())
+    a = p[p[:, 2] > top - 2.0][:, :2].mean(0)
+    return {"anchor": [round(float(a[0]), 1), round(float(a[1]), 1), round(top, 1)], "drop": round(top - float(p[:, 2].min()), 1)}
+
+
+def hang_world(tree: dict, point) -> np.ndarray:
+    """A hang point (mesh frame) posed by the placed tree's rotation, scale and final position."""
+    from tools.newworld.place.seat import rot_matrix
+    return rot_matrix(tree["rx"], tree["ry"], tree["rz"]) @ (np.asarray(point[:3], float) * tree["scale"]) + \
+        np.array([tree["x"], tree["y"], tree["z"]], float)
+
+
+def trees_by_cell(out: Path, bases: dict) -> dict:
+    """(cx, cy) -> placed trees (after the edits), each with its bounds' inscribed sphere (the solid core of a tree:
+    the bounds' full sphere is mostly the open air under the canopy a lantern hangs in)."""
+    from tools.newworld.place.seat import rot_matrix
+    obnd = {b["ref"]: b.get("obnd") for b in json.loads((out / "refs/flora/bases.json").read_text())["bases"]}
+    res: dict = {}
+    for f in sorted((out / "refs/flora").glob("cy*.jsonl")):
+        for line in f.read_text().splitlines():
+            if not line:
+                continue
+            o = json.loads(line)
+            if o.get("cls") not in TREE_CLS:
+                continue
+            ob = obnd.get(o["base"]) or [0] * 6
+            mid = np.array([(ob[0] + ob[3]) / 2, (ob[1] + ob[4]) / 2, (ob[2] + ob[5]) / 2], float)
+            half = np.array([(ob[3] - ob[0]) / 2, (ob[4] - ob[1]) / 2, (ob[5] - ob[2]) / 2], float)
+            c = rot_matrix(o["rx"], o["ry"], o["rz"]) @ (mid * o["scale"]) + np.array([o["x"], o["y"], o["z"]])
+            t = {k: o[k] for k in ("base", "x", "y", "z", "rx", "ry", "rz", "scale", "id")}
+            t["sphere"] = (c, float(half.min()) * o["scale"])
+            t["hang"] = bases.get(o["base"], {}).get("points", [])
+            res.setdefault((math.floor(o["x"] / 4096), math.floor(o["y"] / 4096)), []).append(t)
+    return res
+
+
+class Raster:
+    """Landcover and height samples at a world point."""
+
+    def __init__(self, man: dict, legend: dict):
+        self.ox, self.oy = legend["origin_world"]
+        self.a = {k: np.load(LC / f"{k}.npy", mmap_mode="r") for k in ("habitat", "flags", "road")}
+        self.hm = np.load(man["heightmap"], mmap_mode="r")
+        self.grove = legend["habitats"].index("hist_grove")
+
+    def at(self, x: float, y: float) -> dict:
+        i = min(max(int(round((x - self.ox) / SAMPLE)), 0), self.hm.shape[1] - 1)
+        j = min(max(int(round((self.oy - y) / SAMPLE)), 0), self.hm.shape[0] - 1)
+        return {"ground": float(self.hm[j, i]), "water": bool(self.a["flags"][j, i] & 1),
+                "road": float(self.a["road"][j, i]) / 10, "grove": int(self.a["habitat"][j, i]) == self.grove}
+
+
+def near_held(cell: tuple, held: set) -> bool:
+    return any((cell[0] + dx, cell[1] + dy) in held for dx in range(-NEAR_CELLS, NEAR_CELLS + 1)
+               for dy in range(-NEAR_CELLS, NEAR_CELLS + 1))
+
+
+def hang_fit(t: dict, hp, shape: dict, rs: Raster, others: list) -> dict | None:
+    """The lantern under one hang point, or None: over water, a road or ground too close, or inside a neighbour."""
+    w = hang_world(t, hp)
+    s = rs.at(w[0], w[1])
+    bottom = w[2] - shape["drop"]
+    if s["water"] or s["road"] < ROAD_M or bottom - max(s["ground"], 0.0) < BELOW_MIN:
+        return None
+    for u in others:
+        if u is t:
+            continue
+        c, r = u["sphere"]
+        if np.linalg.norm(w - c) < r or np.linalg.norm(w - np.array([0, 0, shape["drop"]]) - c) < r:
+            return None
+    return {"w": w, "site": s}
+
+
+def lanterns(out: Path, ks: dict, cells: dict, held: set, man: dict, legend: dict) -> tuple[dict, dict]:
+    """({cy: hanging lanterns}, {"region|kind": eligible cells}): in each hanging kind's regions, from the hang points of placed trees near a built
+    place (within NEAR_CELLS), a road's edge (ROAD_M to EDGE_M) or in a Hist grove; Poisson at the kind's rate per
+    100 such cells, at most HANG_CAP a cell."""
+    from tools.newworld.dressing.hang_points import load
+    hang = {k: v for k, v in ks.items() if v["habitat"] == "hang"}
+    if not hang:
+        return {}, {}
+    trees = trees_by_cell(out, load())
+    rs = Raster(man, legend)
+    shapes: dict = {}
+    res: dict = {}
+    eligible = Counter()
+    for (cx, cy), ts in sorted(trees.items()):
+        c = cells.get((cx // 2, cy // 2))
+        if not c or c.get("margin") or (cx, cy) in held:
+            continue
+        reg = c.get("region_id")
+        settled = near_held((cx, cy), held)
+        for k, v in sorted(hang.items()):
+            if reg not in v["regions"]:
+                continue
+            for b in v["bases"]:
+                if b not in shapes:
+                    shapes[b] = lantern_shape(base_facts({b})[b]["mesh"])
+            others = [u for dx in (-1, 0, 1) for dy in (-1, 0, 1) for u in trees.get((cx + dx, cy + dy), [])]
+            fits = []
+            for t in ts:
+                if not t["hang"]:
+                    continue
+                s = rs.at(t["x"], t["y"])
+                if not (settled or s["grove"] or ROAD_M <= s["road"] <= EDGE_M):
+                    continue
+                for n, hp in enumerate(t["hang"]):
+                    fits.append((t, n, hp))
+            if not fits:
+                continue
+            eligible[(reg, k)] += 1
+            rate = min(v["per100"], v["bound_per100"]) / 100
+            rng = np.random.default_rng((0xD2E6, cx & 0xFFFF, cy & 0xFFFF, int(hashlib.sha256(k.encode()).hexdigest()[:6], 16)))
+            n = min(int(rng.poisson(rate)), HANG_CAP)
+            used: set = set()
+            for o in range(n):
+                for _ in range(HANG_TRIES):
+                    t, hn, hp = fits[int(rng.integers(len(fits)))]
+                    base = v["bases"][int(rng.integers(len(v["bases"])))]
+                    rz = float(rng.uniform(0, 360))
+                    if t["id"] in used:
+                        continue
+                    sh = shapes[base]
+                    f = hang_fit(t, hp, sh, rs, others)
+                    if f is None:
+                        continue
+                    used.add(t["id"])
+                    a = math.radians(rz)
+                    ax, ay = sh["anchor"][0], sh["anchor"][1]
+                    w = f["w"]
+                    x = w[0] - (ax * math.cos(a) - ay * math.sin(a))
+                    y = w[1] - (ax * math.sin(a) + ay * math.cos(a))
+                    res.setdefault(cy, []).append({
+                        "base": base, "x": round(x, 2), "y": round(y, 2), "z": round(w[2] - sh["anchor"][2], 2),
+                        "rz": round(rz, 1), "scale": 1.0, "kind": k, "region": reg, "cell": [cx, cy],
+                        "id": f"{cx},{cy}/{k}/{o}", "tree": t["id"], "hang": hn})
+                    break
+    return res, {f"{r}|{k}": n for (r, k), n in sorted(eligible.items())}
+
+
 def build(out: Path) -> dict:
     from tools.newworld.ecology.place import Cellview, flora_near, held_cells, jsonl
     man = json.loads((out / "land/manifest.json").read_text())
@@ -125,6 +278,10 @@ def build(out: Path) -> dict:
         old.unlink()
     given: set = set()
     tally, expect = Counter(), Counter()
+    hung, eligible = lanterns(out, ks, cells, held, man, legend)
+    for rk, n in eligible.items():
+        r, k = rk.split("|")
+        expect[(r, k)] += min(ks[k]["per100"], ks[k]["bound_per100"]) / 100 * n
     for cy in range(g["cy_top"], g["cy_bottom"] - 1, -1):
         north = (g["cy_top"] - cy) * 32
         rs = slice(north, north + 33)
@@ -143,6 +300,8 @@ def build(out: Path) -> dict:
             placed = []
             for k in by_region[reg]:
                 v = ks[k]
+                if v["habitat"] == "hang":
+                    continue
                 m = habitat_mask(cv, v["habitat"], rmask)
                 share = float(m.mean())
                 if share <= 0:
@@ -166,12 +325,17 @@ def build(out: Path) -> dict:
                 p["fid"] = f"{fid_of(p['id'], given):06X}"
                 lines.append(json.dumps(p, sort_keys=True))
                 tally[(p["region"], p["kind"])] += 1
+        for p in hung.get(cy, []):
+            p["fid"] = f"{fid_of(p['id'], given):06X}"
+            lines.append(json.dumps(p, sort_keys=True))
+            tally[(p["region"], p["kind"])] += 1
         (d / f"cy{cy:+04d}.jsonl").write_text("\n".join(lines) + ("\n" if lines else ""))
     h = hashlib.sha256()
     for f in sorted(d.glob("cy*.jsonl")):
         h.update(f.name.encode() + f.read_bytes())
     res = {"build_id": man["build_id"], "refs": sum(tally.values()), "shard_sha256": h.hexdigest(),
            "by_region_kind": {f"{r}|{k}": [n, round(expect[(r, k)], 2)] for (r, k), n in sorted(tally.items())},
+           "hang_eligible_cells": eligible,
            "expected_only": {f"{r}|{k}": round(e, 2) for (r, k), e in sorted(expect.items()) if (r, k) not in tally}}
     (d / "manifest.json").write_text(json.dumps(res, indent=1, sort_keys=True))
     log(f"dressing: {res['refs']} references in {len(res['by_region_kind'])} region kinds")
@@ -233,6 +397,49 @@ def check_kinds(ks: dict, facts: dict, adj: dict, land: list[str]) -> list[str]:
     return faults
 
 
+def check_hung(out: Path, ks: dict, man: dict, land_man: dict) -> list[str]:
+    """Each hanging thing hangs from a hang point of a tree that stands after the edits (anchor within ANCHOR_TOL),
+    with air, dry ground and no road below it; each kind under its bound per 100 eligible cells, HANG_CAP a cell."""
+    from tools.newworld.dressing.hang_points import load
+    hang = {k for k, v in ks.items() if v["habitat"] == "hang"}
+    if not hang:
+        return []
+    trees = {t["id"]: t for ts in trees_by_cell(out, load()).values() for t in ts}
+    rs = Raster(land_man, json.loads((LC / "legend.json").read_text()))
+    shapes: dict = {}
+    faults, per_cell, per_rk = [], Counter(), Counter()
+    for f in sorted((out / "dressing").glob("cy*.jsonl")):
+        for line in f.read_text().splitlines():
+            o = json.loads(line) if line else None
+            if not o or o["kind"] not in hang:
+                continue
+            per_cell[tuple(o["cell"])] += 1
+            per_rk[f"{o['region']}|{o['kind']}"] += 1
+            t = trees.get(o.get("tree"))
+            if t is None or o.get("hang", 99) >= len(t["hang"]):
+                faults.append(f"{o['id']}: its tree or hang point is not placed")
+                continue
+            if o["base"] not in shapes:
+                shapes[o["base"]] = lantern_shape(base_facts({o["base"]})[o["base"]]["mesh"])
+            sh = shapes[o["base"]]
+            a = math.radians(o["rz"])
+            ax, ay, az = sh["anchor"]
+            anchor = np.array([o["x"] + ax * math.cos(a) - ay * math.sin(a), o["y"] + ax * math.sin(a) + ay * math.cos(a), o["z"] + az])
+            if np.linalg.norm(anchor - hang_world(t, t["hang"][o["hang"]])) > ANCHOR_TOL:
+                faults.append(f"{o['id']}: anchor off its tree's hang point")
+            if hang_fit(t, t["hang"][o["hang"]], sh, rs, []) is None:
+                faults.append(f"{o['id']}: over water or a road, or too little air below")
+    for c, n in per_cell.items():
+        if n > HANG_CAP:
+            faults.append(f"{c}: {n} hanging things in one cell")
+    for rk, n in per_rk.items():
+        cells = man.get("hang_eligible_cells", {}).get(rk, 0)
+        bound = ks[rk.split("|")[1]]["bound_per100"]
+        if not cells or 100 * n / cells > bound:
+            faults.append(f"{rk}: {n} in {cells} eligible cells, over {bound} per 100")
+    return faults
+
+
 def check(out: Path) -> int:
     from tools.newworld.world.texture import PROVINCES
     ks = kinds()
@@ -264,6 +471,7 @@ def check(out: Path) -> int:
                     faults.append(f"{o['id']}: in a held cell")
                 if o["region"] not in ks[o["kind"]]["regions"]:
                     faults.append(f"{o['id']}: kind outside its regions")
+        faults += check_hung(out, ks, man, land_man)
         for rk, (n, e) in man["by_region_kind"].items():
             if e >= 5 and not TOLERANCE[0] <= n / e <= TOLERANCE[1]:
                 faults.append(f"{rk}: {n} placed against {e} expected")

@@ -322,9 +322,10 @@
     "cite": "newworld/story/data/db/region_note.jsonl#banujha-basin/look"
    },
    "signature": {
-    "thing": "gar egg clutches in the reed margins",
+    "thing": "gar egg clutches in the reed margins; rope lanterns the Hist-tenders hang from the trees by their settlements, roads and Hist groves",
     "cite": "newworld/story/data/db/region_note.jsonl#banujha-basin/ecology",
-    "extrapolation": "a small thing the region's named life or history would leave"
+    "extrapolation": "a small thing the region's named life or history would leave",
+    "also_cite": "newworld/story/data/db/region_note.jsonl#banujha-basin/present"
    },
    "creature": {
     "kind": "hackwing",
@@ -380,9 +381,10 @@
     "cite": "newworld/story/data/db/region_note.jsonl#barsaebica/look"
    },
    "signature": {
-    "thing": "bone piles by the Ayleid stones",
+    "thing": "bone piles by the Ayleid stones; rope lanterns the Hist-tenders hang from the trees by their settlements, roads and Hist groves",
     "cite": "newworld/story/data/db/region_note.jsonl#barsaebica/ecology",
-    "extrapolation": "a small thing the region's named life or history would leave"
+    "extrapolation": "a small thing the region's named life or history would leave",
+    "also_cite": "newworld/story/data/db/region_note.jsonl#barsaebica/faith"
    },
    "creature": {
     "kind": "lamia",

@@ -50,3 +50,30 @@ there and nowhere next door. Both change records only: no terrain, tree, scatter
 6. **The stage.** `dressing` runs after the navmesh and before `esm`, writes `out/newworld/plugin/dressing/`
    (`cy<+NNN>.jsonl`, `manifest.json`, `check.json`) beside `refs/`, and is read only by `esm` as plain REFR.
    `python -m tools.newworld.dressing.place check` judges the kinds and the placement.
+
+## Hanging things
+
+1. **Hang points.** `python -m tools.newworld.dressing.hang_points run` reads each placed tree base's mesh once
+   (`refs/flora/bases.json`, the canopy and understorey classes) and keeps its wood, telling leaf cards from bark by
+   texture name (leaves, twigs, fronds, moss, vines) and shader (two-sided or vertex alpha without a bark texture). A
+   hang point is the underside of a near-horizontal limb (a wood face pointing down) 2.5 to 7 m above the mesh's
+   ground point, with at least 8 units of wood above it, no geometry of the mesh within 160 units below it or below
+   four points a lantern's half-width round it, and a lantern's width clear of the trunk. The six thickest, 60 units
+   apart, are kept per base in its own frame. Output: `newworld/sources/dressing/hang_points.json`, a committed
+   source keyed by base with its mesh's digest; a run measures only new or changed meshes, and `check` lists a placed
+   tree base not yet measured.
+2. **The kind.** A kind whose habitat is `hang` (`hanging-hist-lanterns`: King of the Murkmire's rope lanterns
+   `DLC2DarkElfLantern05Rope` and `04Rope`, self-lit by their glow shell, with no light reference, as the mod places
+   them) hangs only from placed trees. Its bound is the source mod's own rate (`bound_per100`: King of the
+   Murkmire's lanterns per 100 of its cells), since Skyrim has no outdoor measure for it.
+3. **Where.** In the kind's regions, a tree (as the edits stage leaves it in `refs/flora`) is eligible when it stands
+   within two cells of a built place, at a road's edge (6 to 40 m from its centre line) or in a Hist grove, and never
+   in a held cell. A cell with an eligible tree draws its count by Poisson at the kind's rate, at most two a cell, one a
+   tree.
+4. **How it hangs.** The hang point is posed by the tree's rotation, scale and final position; the lantern hangs
+   from it by its rope's top (its mesh's highest vertices), with a free yaw and no tilt. It is refused over water or a
+   road, with less than 60 units of air between its bottom and the ground, or inside a neighbouring tree's solid
+   core (the inscribed sphere of its bounds).
+5. **The check.** Each hanging thing's anchor is within 5 cm of a hang point of a tree that stands after the edits;
+   it has the air, ground and road clearance of step 4; at most two hang in a cell; each region's count per 100
+   eligible cells is at most the kind's bound.

@@ -1,0 +1,1644 @@
+{
+ "about": "Hang points of each placed tree kind: where a rope lantern can hang from a limb, in the mesh's own frame. Each point: [x, y, z, limb depth] in units, mesh frame.",
+ "bases": {
+  "Black Marsh North.esp:01WillowDUPLICATE001": {
+   "digest": "adfba5aed4cd01b6",
+   "model": "landscape\\trees\\treewillow01d.nif",
+   "points": [
+    [
+     189.8,
+     -38.0,
+     418.2,
+     25.6
+    ],
+    [
+     -84.5,
+     -58.2,
+     456.5,
+     24.6
+    ],
+    [
+     53.3,
+     101.8,
+     430.1,
+     23.9
+    ],
+    [
+     256.6,
+     -63.3,
+     417.5,
+     22.6
+    ],
+    [
+     82.8,
+     165.9,
+     448.3,
+     22.4
+    ],
+    [
+     -112.8,
+     109.2,
+     476.0,
+     21.6
+    ]
+   ]
+  },
+  "Black Marsh North.esp:01browntigtree": {
+   "digest": "203000459c6b78a9",
+   "model": "landscape\\trees\\gkbjungletreenew6v2browntwigs.nif",
+   "points": []
+  },
+  "Black Marsh North.esp:01cypress": {
+   "digest": "c4f612e5eb0c2aa9",
+   "model": "landscape\\trees\\cypress3.nif",
+   "points": []
+  },
+  "Black Marsh North.esp:01cypress2": {
+   "digest": "0205f8f2fa409338",
+   "model": "landscape\\trees\\cypress1.nif",
+   "points": []
+  },
+  "Black Marsh North.esp:01drytree1": {
+   "digest": "8a4713f9840120b7",
+   "model": "landscape\\dry trees\\dryTree01.nif",
+   "points": []
+  },
+  "Black Marsh North.esp:01drytree3": {
+   "digest": "d2a43bbbe705bb20",
+   "model": "landscape\\dry trees\\dryTree03.nif",
+   "points": []
+  },
+  "Black Marsh North.esp:01drytreeDUPLICATE003": {
+   "digest": "7d24aef10c60a3dc",
+   "model": "landscape\\dry trees\\dryTree02.nif",
+   "points": []
+  },
+  "Black Marsh North.esp:01leafless": {
+   "digest": "78ebaac812ca3a73",
+   "model": "landscape\\trees\\leafless04.nif",
+   "points": [
+    [
+     -136.0,
+     23.2,
+     213.6,
+     12.8
+    ]
+   ]
+  },
+  "Black Marsh North.esp:01shrub2": {
+   "digest": "04416d088709b139",
+   "model": "landscape\\trees\\gkbfallforestshrub02.nif",
+   "points": []
+  },
+  "Black Marsh North.esp:01tree3": {
+   "digest": "ad5ff805261905f6",
+   "model": "landscape\\trees\\gkbjungletreenewsticktree11.nif",
+   "points": [
+    [
+     30.1,
+     -52.7,
+     198.4,
+     31.6
+    ],
+    [
+     -55.6,
+     33.5,
+     180.1,
+     24.2
+    ],
+    [
+     70.8,
+     -128.5,
+     334.8,
+     12.8
+    ],
+    [
+     55.4,
+     81.0,
+     275.2,
+     10.5
+    ],
+    [
+     22.4,
+     135.6,
+     314.5,
+     9.3
+    ]
+   ]
+  },
+  "Black Marsh North.esp:01tree4": {
+   "digest": "2ad1c309fe54a669",
+   "model": "landscape\\trees\\gkbjungletreenewsticktree20v2.nif",
+   "points": []
+  },
+  "Black Marsh North.esp:01tree9": {
+   "digest": "16a07fe2ca252dd4",
+   "model": "landscape\\trees\\gkbjungletreenew2v2browntwigs.nif",
+   "points": []
+  },
+  "Black Marsh North.esp:01treetwigs": {
+   "digest": "7caba96ee6573bca",
+   "model": "landscape\\trees\\gkbjungletreenew9v2twigs.nif",
+   "points": []
+  },
+  "Black Marsh North.esp:01tropicalshrub2": {
+   "digest": "14e1af85dacc4140",
+   "model": "landscape\\trees\\TropicalShrub05.nif",
+   "points": []
+  },
+  "Black Marsh North.esp:01willow1": {
+   "digest": "44018ee2d73cba2f",
+   "model": "landscape\\trees\\treewillow02a.nif",
+   "points": [
+    [
+     202.1,
+     -69.4,
+     474.5,
+     14.7
+    ],
+    [
+     265.1,
+     -93.5,
+     471.9,
+     13.3
+    ],
+    [
+     389.7,
+     -139.9,
+     444.6,
+     10.2
+    ],
+    [
+     32.5,
+     -479.9,
+     470.6,
+     8.7
+    ]
+   ]
+  },
+  "Black Marsh North.esp:01willow2": {
+   "digest": "51b744a400a0f5cd",
+   "model": "landscape\\trees\\treewillow03a.nif",
+   "points": []
+  },
+  "Black Marsh North.esp:01willowleafless": {
+   "digest": "c1a669eb4b31bd9c",
+   "model": "landscape\\trees\\treewillowleafless02.nif",
+   "points": []
+  },
+  "Black Marsh.esm:001yellowbush": {
+   "digest": "55a174dd84469046",
+   "model": "landscape\\trees\\ztGorsebush02lightyellow.nif",
+   "points": []
+  },
+  "Black Marsh.esm:00Leaningtree": {
+   "digest": "f28ce0ab72020016",
+   "model": "landscape\\trees\\gkbjungletreenew2.nif",
+   "points": []
+  },
+  "Black Marsh.esm:00orangeleeningtree": {
+   "digest": "87367ce715be0f91",
+   "model": "landscape\\trees\\gkbjungletreenew7v2orangebrown.nif",
+   "points": [
+    [
+     29.5,
+     133.6,
+     470.9,
+     17.2
+    ]
+   ]
+  },
+  "Black Marsh.esm:01BUSH": {
+   "digest": "acad753bf3758592",
+   "model": "landscape\\plants\\ESloeBush08.nif",
+   "points": []
+  },
+  "Black Marsh.esm:01BUSH1": {
+   "digest": "b1b0cc1618e7782f",
+   "model": "landscape\\plants\\bigshrub2(colorful).nif",
+   "points": []
+  },
+  "Black Marsh.esm:01DEAD": {
+   "digest": "759a2d9d7f1f5ef3",
+   "model": "landscape\\trees\\vurt_deadtree01.nif",
+   "points": [
+    [
+     166.6,
+     36.8,
+     486.6,
+     8.6
+    ]
+   ]
+  },
+  "Black Marsh.esm:01JUNGLETREE2": {
+   "digest": "91885ac0fd3dfb43",
+   "model": "landscape\\trees\\gkbjungletreenew6.nif",
+   "points": []
+  },
+  "Black Marsh.esm:01Juniper": {
+   "digest": "35d6c53efeb6fd0b",
+   "model": "landscape\\trees\\dwarfjunip01.nif",
+   "points": []
+  },
+  "Black Marsh.esm:01LEEFLESS": {
+   "digest": "8f18d56d7a4988e7",
+   "model": "landscape\\trees\\leafless01.nif",
+   "points": [
+    [
+     127.3,
+     -1.6,
+     314.9,
+     20.1
+    ],
+    [
+     128.9,
+     58.6,
+     396.5,
+     18.9
+    ],
+    [
+     165.0,
+     99.3,
+     437.1,
+     10.0
+    ],
+    [
+     175.7,
+     -75.2,
+     352.2,
+     9.4
+    ]
+   ]
+  },
+  "Black Marsh.esm:01MANGROVE": {
+   "digest": "d48f9d167945e842",
+   "model": "landscape\\trees\\mangrovereachtree0gkb2.nif",
+   "points": [
+    [
+     183.5,
+     107.5,
+     239.6,
+     10.9
+    ]
+   ]
+  },
+  "Black Marsh.esm:01MANGROVE2": {
+   "digest": "807713f14a3283ed",
+   "model": "landscape\\trees\\mangrovereachtree0gkb3.nif",
+   "points": []
+  },
+  "Black Marsh.esm:01MANGROVE3": {
+   "digest": "01cc986a975ca080",
+   "model": "landscape\\trees\\mangrovereachtree0gkb8.nif",
+   "points": []
+  },
+  "Black Marsh.esm:01MANGROVE4": {
+   "digest": "0c2ed22d30b0bab5",
+   "model": "landscape\\trees\\mangrovereachtree0gkb9.nif",
+   "points": []
+  },
+  "Black Marsh.esm:01Pinkbush": {
+   "digest": "9740da385e9bb9e5",
+   "model": "landscape\\trees\\ztGorsebush03pink.nif",
+   "points": []
+  },
+  "Black Marsh.esm:01Salixbushtree": {
+   "digest": "9df812ecc6959033",
+   "model": "landscape\\trees\\HodSalixGKB09.nif",
+   "points": []
+  },
+  "Black Marsh.esm:01Swamptree": {
+   "digest": "3775eba80f3eb3c3",
+   "model": "landscape\\trees\\ethas\\paradise-b.nif",
+   "points": [
+    [
+     105.6,
+     55.3,
+     464.6,
+     39.6
+    ],
+    [
+     -187.0,
+     -88.3,
+     323.8,
+     31.8
+    ]
+   ]
+  },
+  "Black Marsh.esm:01TROPICAL11": {
+   "digest": "f23931917da85bf0",
+   "model": "landscape\\plants\\ESalixshrub03.nif",
+   "points": []
+  },
+  "Black Marsh.esm:01Willow": {
+   "digest": "27d62e2c804bb3eb",
+   "model": "landscape\\trees\\treewillow01a.nif",
+   "points": [
+    [
+     189.8,
+     -38.0,
+     418.2,
+     25.6
+    ],
+    [
+     -84.5,
+     -58.2,
+     456.5,
+     24.6
+    ],
+    [
+     53.3,
+     101.8,
+     430.1,
+     23.9
+    ],
+    [
+     256.6,
+     -63.3,
+     417.5,
+     22.6
+    ],
+    [
+     82.8,
+     165.9,
+     448.3,
+     22.4
+    ],
+    [
+     -112.8,
+     109.2,
+     476.0,
+     21.6
+    ]
+   ]
+  },
+  "Black Marsh.esm:01alder": {
+   "digest": "d3f264906a0abb71",
+   "model": "landscape\\trees\\HodAlder01gkb.nif",
+   "points": []
+  },
+  "Black Marsh.esm:01briscone": {
+   "digest": "55944679af6905f7",
+   "model": "landscape\\trees\\vurt_bristlecone1.nif",
+   "points": []
+  },
+  "Black Marsh.esm:01cypressDUPLICATE001": {
+   "digest": "06c9eb61f1186d49",
+   "model": "landscape\\trees\\cypress5.nif",
+   "points": []
+  },
+  "Black Marsh.esm:01cypressmoss": {
+   "digest": "0205f8f2fa409338",
+   "model": "landscape\\trees\\cypress1.nif",
+   "points": []
+  },
+  "Black Marsh.esm:01drytree": {
+   "digest": "f711d26a65d7a693",
+   "model": "landscape\\dry trees\\dryTree06.nif",
+   "points": [
+    [
+     137.6,
+     83.0,
+     407.0,
+     18.5
+    ],
+    [
+     278.9,
+     44.4,
+     459.2,
+     9.9
+    ],
+    [
+     199.5,
+     2.4,
+     434.3,
+     9.3
+    ]
+   ]
+  },
+  "Black Marsh.esm:01drytree2": {
+   "digest": "3d32ef926d98f94d",
+   "model": "landscape\\dry trees\\dryTree05.nif",
+   "points": [
+    [
+     -207.9,
+     84.7,
+     484.3,
+     9.9
+    ]
+   ]
+  },
+  "Black Marsh.esm:01leefless2": {
+   "digest": "d449162846102314",
+   "model": "landscape\\trees\\leafless02.nif",
+   "points": [
+    [
+     -64.8,
+     -2.6,
+     288.5,
+     17.0
+    ],
+    [
+     103.8,
+     58.5,
+     204.0,
+     14.7
+    ],
+    [
+     49.1,
+     36.2,
+     395.5,
+     14.0
+    ],
+    [
+     -3.5,
+     -62.2,
+     335.8,
+     12.2
+    ],
+    [
+     -8.3,
+     174.1,
+     209.4,
+     10.4
+    ],
+    [
+     -66.6,
+     -101.7,
+     366.2,
+     8.9
+    ]
+   ]
+  },
+  "Black Marsh.esm:01oak1": {
+   "digest": "e0e9faeb076daae9",
+   "model": "landscape\\trees\\ethas\\oak-o.nif",
+   "points": []
+  },
+  "Black Marsh.esm:01popular": {
+   "digest": "a6963461d83db0b0",
+   "model": "landscape\\trees\\poplar.nif",
+   "points": []
+  },
+  "Black Marsh.esm:01swamptreecool": {
+   "digest": "3061388aab228a4b",
+   "model": "landscape\\trees\\gkbjungletreenew1.nif",
+   "points": []
+  },
+  "Black Marsh.esm:01tROPICAL2": {
+   "digest": "1a568de74f34fe87",
+   "model": "landscape\\trees\\TropicalPlant01.nif",
+   "points": []
+  },
+  "Black Marsh.esm:01thornbush": {
+   "digest": "7e20c769bcbada25",
+   "model": "landscape\\trees\\ZtSeaBuckthorn02Sp.nif",
+   "points": []
+  },
+  "Black Marsh.esm:01tropicalshrubDUPLICATE001": {
+   "digest": "608b7a47102a992e",
+   "model": "landscape\\trees\\TropicalShrub01.nif",
+   "points": []
+  },
+  "Black Marsh.esm:01willowflower": {
+   "digest": "0d228a26db210cb4",
+   "model": "Vurt_Shroom\\vurt_shroom_Medium1.nif",
+   "points": []
+  },
+  "Black Marsh.esm:0tropicplant": {
+   "digest": "719ae17c58666bf8",
+   "model": "landscape\\trees\\gkbjungletreenew7v2dark.nif",
+   "points": [
+    [
+     29.5,
+     133.6,
+     470.9,
+     17.2
+    ]
+   ]
+  },
+  "King of the Murkmire.esp:ArgoniaFloraFanikGoc": {
+   "digest": "3e0965168c89dba7",
+   "model": "argonia\\trees\\florafanikgoc.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaGroundplant01": {
+   "digest": "e29b157e04d5bd5b",
+   "model": "Plants\\Tamira\\New Plants\\PalmPlant.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaPalmLeaves01": {
+   "digest": "97ff40d01f750d68",
+   "model": "argonia\\trees\\anvil_palm foliage.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaPalmLeaves02": {
+   "digest": "578418a9b5aab48e",
+   "model": "argonia\\trees\\anvil_palm foliage02.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreeBamboo01": {
+   "digest": "2b45bf2f6aeeba7d",
+   "model": "argonia\\trees\\Bamboo01.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreeBamboo02": {
+   "digest": "08025c06acfe3141",
+   "model": "argonia\\trees\\Bamboo02.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreeBambooCluster01": {
+   "digest": "5b1bd3ec12f3ec4b",
+   "model": "argonia\\trees\\BamboCluster01.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreeBottle01": {
+   "digest": "3a97147696d5b727",
+   "model": "argonia\\trees\\Greguire\\BottlePlant01.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreeBottle02": {
+   "digest": "4d2f940a352b2ca1",
+   "model": "argonia\\trees\\Greguire\\BottlePlant02.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreeBottle03": {
+   "digest": "a241a79d12307f50",
+   "model": "argonia\\trees\\Greguire\\BottlePlant03.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreeCypressKnee01": {
+   "digest": "5b765994b11c01d8",
+   "model": "_ResourcePack\\Landscape\\Trees\\TreeBaldCypressKnee01.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreeCypressKnee02": {
+   "digest": "e8c0547c63053c3c",
+   "model": "_ResourcePack\\Landscape\\Trees\\TreeBaldCypressKnee02.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreeCypressKnee03": {
+   "digest": "ce354568c2370220",
+   "model": "_ResourcePack\\Landscape\\Trees\\TreeBaldCypressKnee03.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreeCypressKnee04": {
+   "digest": "0311885c9af6d7d6",
+   "model": "_ResourcePack\\Landscape\\Trees\\TreeBaldCypressKnee04.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreeCypressKneeGiant01": {
+   "digest": "84d1b3a3a0a4723c",
+   "model": "argonia\\trees\\CypressDebris\\GiantCypressKnee01.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreeCypressKneeGiant02": {
+   "digest": "e2c25a09525d0b17",
+   "model": "argonia\\trees\\CypressDebris\\GiantCypressKnee02.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreeCypressKneeGiant03": {
+   "digest": "8bd2780ff3168faa",
+   "model": "argonia\\trees\\CypressDebris\\GiantCypressKnee03.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreeCypressKneeGiant04": {
+   "digest": "9da1367232836149",
+   "model": "argonia\\trees\\CypressDebris\\GiantCypressKnee04.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreeCypressKneeGiant05": {
+   "digest": "c4825ea468596118",
+   "model": "argonia\\trees\\CypressDebris\\GiantCypressKnee05.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreeErut01": {
+   "digest": "50a442eda5b467de",
+   "model": "argonia\\trees\\Greguire\\ErutTree01.nif",
+   "points": [
+    [
+     -538.6,
+     138.1,
+     310.0,
+     17.4
+    ]
+   ]
+  },
+  "King of the Murkmire.esp:ArgoniaTreeErut02": {
+   "digest": "72b35cb113de106d",
+   "model": "argonia\\trees\\Greguire\\ErutTree02.nif",
+   "points": [
+    [
+     -544.2,
+     -101.6,
+     254.3,
+     28.4
+    ],
+    [
+     -461.9,
+     327.7,
+     275.5,
+     27.6
+    ],
+    [
+     -428.1,
+     -346.0,
+     256.9,
+     27.0
+    ],
+    [
+     -552.0,
+     7.1,
+     228.5,
+     22.0
+    ],
+    [
+     -726.8,
+     -79.9,
+     239.8,
+     16.4
+    ],
+    [
+     -511.8,
+     202.5,
+     182.8,
+     14.2
+    ]
+   ]
+  },
+  "King of the Murkmire.esp:ArgoniaTreeErut03": {
+   "digest": "5268b3e3f6eab78b",
+   "model": "argonia\\trees\\Greguire\\ErutTree03.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreeErut04": {
+   "digest": "91f27f36dfa03964",
+   "model": "argonia\\trees\\Greguire\\ErutTree04.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreeErut05": {
+   "digest": "57eea8787d3ad014",
+   "model": "argonia\\trees\\Greguire\\ErutTree01Tall.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreeErut06": {
+   "digest": "0c93068f0e3d4049",
+   "model": "argonia\\trees\\Greguire\\ErutTree02Tall.nif",
+   "points": [
+    [
+     -726.8,
+     -79.9,
+     220.2,
+     16.4
+    ],
+    [
+     -789.5,
+     -90.3,
+     198.2,
+     9.3
+    ]
+   ]
+  },
+  "King of the Murkmire.esp:ArgoniaTreeErut07": {
+   "digest": "7354305618c5576f",
+   "model": "argonia\\trees\\Greguire\\ErutTree03Tall.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreeErut08": {
+   "digest": "38594251b79b6f82",
+   "model": "argonia\\trees\\Greguire\\ErutTree04Tall.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreeHist01": {
+   "digest": "1b28264897aa6e1d",
+   "model": "argonia\\trees\\Hist trees\\HistTree01.nif",
+   "points": [
+    [
+     -87.5,
+     283.6,
+     406.4,
+     51.1
+    ],
+    [
+     263.5,
+     -260.3,
+     446.1,
+     45.8
+    ],
+    [
+     -124.5,
+     318.0,
+     348.9,
+     42.7
+    ],
+    [
+     223.6,
+     -224.3,
+     389.7,
+     38.7
+    ],
+    [
+     -280.1,
+     -66.5,
+     382.4,
+     36.4
+    ],
+    [
+     -100.6,
+     365.1,
+     377.8,
+     33.0
+    ]
+   ]
+  },
+  "King of the Murkmire.esp:ArgoniaTreeHist03": {
+   "digest": "239a5ca53d6bc738",
+   "model": "argonia\\trees\\Hist trees\\HistTree02a.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreeHist04": {
+   "digest": "433cb526aa68d64a",
+   "model": "argonia\\trees\\Hist trees\\HistTree02b.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreeJungle01": {
+   "digest": "d70d1a5668c17e24",
+   "model": "argonia\\trees\\rainforesttree01.nif",
+   "points": [
+    [
+     105.6,
+     55.3,
+     464.6,
+     39.6
+    ],
+    [
+     -187.0,
+     -88.3,
+     323.8,
+     31.8
+    ]
+   ]
+  },
+  "King of the Murkmire.esp:ArgoniaTreeJungle02": {
+   "digest": "0e560c93acf1920c",
+   "model": "argonia\\trees\\rainforesttree02.nif",
+   "points": [
+    [
+     -86.3,
+     108.1,
+     323.9,
+     17.4
+    ],
+    [
+     -107.0,
+     267.1,
+     479.7,
+     12.7
+    ]
+   ]
+  },
+  "King of the Murkmire.esp:ArgoniaTreeJungle03": {
+   "digest": "1b0a1bcbe8747e93",
+   "model": "argonia\\trees\\shrubtree07.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreeJungle09": {
+   "digest": "db6590e9ed313695",
+   "model": "argonia\\trees\\Greguire\\JungleTree05.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreeJungle10": {
+   "digest": "dd4060233d23cdac",
+   "model": "argonia\\trees\\Greguire\\JungleTree06.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreeJungleMid02": {
+   "digest": "b973dd6f8e7ea4a5",
+   "model": "argonia\\trees\\gkbjungletreenew12v3.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreeJungleMid03": {
+   "digest": "18b60bc86cce7877",
+   "model": "argonia\\trees\\gkbjungletreenew14v3.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreeKapok01": {
+   "digest": "b2b00443da913eec",
+   "model": "argonia\\trees\\CTQ_KapokTree01.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreeKapok04": {
+   "digest": "94e6d695cba5452e",
+   "model": "argonia\\trees\\CTQ_KapokTree04.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreeKapok05": {
+   "digest": "16e714652aa4bf22",
+   "model": "argonia\\trees\\CTQ_KapokTree05.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreeMega04": {
+   "digest": "c1aae1b6e503290b",
+   "model": "argonia\\trees\\Greguire\\MegaTree04.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreePalmBanana01": {
+   "digest": "6d3aa14275f84475",
+   "model": "argonia\\trees\\bananapalm01.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreePalmBanana02": {
+   "digest": "893566dfa3db5d35",
+   "model": "argonia\\trees\\bananapalm02.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreePalmFronds01": {
+   "digest": "edf6d46a58eab071",
+   "model": "argonia\\trees\\Greguire\\JunglePalmGrassTree01.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreePalmFronds02": {
+   "digest": "e0c495a5c65793af",
+   "model": "argonia\\trees\\Greguire\\JunglePalmGrassTree02.nif",
+   "points": [
+    [
+     -21.9,
+     243.7,
+     409.5,
+     18.9
+    ],
+    [
+     -42.1,
+     -204.0,
+     432.2,
+     13.5
+    ],
+    [
+     180.3,
+     52.9,
+     405.5,
+     10.6
+    ],
+    [
+     127.5,
+     64.1,
+     318.0,
+     10.0
+    ]
+   ]
+  },
+  "King of the Murkmire.esp:ArgoniaTreePalmLatan01": {
+   "digest": "5a879c410c1cec7b",
+   "model": "_ResourcePack\\Landscape\\Trees\\TreeLatanPalmTree01.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreePalmMadagascar01": {
+   "digest": "01ef9a747106f9af",
+   "model": "_ResourcePack\\Landscape\\Trees\\TreeMadagascarPalm01.nif",
+   "points": [
+    [
+     -122.1,
+     -13.3,
+     384.7,
+     31.7
+    ],
+    [
+     30.3,
+     -93.9,
+     347.2,
+     15.0
+    ],
+    [
+     105.1,
+     10.8,
+     423.4,
+     14.2
+    ]
+   ]
+  },
+  "King of the Murkmire.esp:ArgoniaTreePalmMadagascar02": {
+   "digest": "9c09d8d6f85ee8a8",
+   "model": "_ResourcePack\\Landscape\\Trees\\TreeMadagascarPalm02.nif",
+   "points": [
+    [
+     -93.6,
+     -17.5,
+     426.3,
+     23.6
+    ],
+    [
+     100.0,
+     11.8,
+     433.2,
+     12.3
+    ]
+   ]
+  },
+  "King of the Murkmire.esp:ArgoniaTreePalmWhiteElephant01": {
+   "digest": "b1e43916d46a41f8",
+   "model": "_ResourcePack\\Landscape\\Trees\\TreeWhiteElephantPalm01.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreePalmWhiteElephant02": {
+   "digest": "ceadff1acefbd333",
+   "model": "_ResourcePack\\Landscape\\Trees\\TreeWhiteElephantPalm02.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreeShrub01": {
+   "digest": "0139adc391dd8703",
+   "model": "argonia\\trees\\shrubtree01.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreeShrub02": {
+   "digest": "bd454b792bdf8404",
+   "model": "argonia\\trees\\shrubtree02.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreeShrub03": {
+   "digest": "8999b0201c4f8f48",
+   "model": "argonia\\trees\\shrubtree03.nif",
+   "points": [
+    [
+     -107.0,
+     -48.9,
+     334.6,
+     13.1
+    ],
+    [
+     147.1,
+     103.9,
+     236.5,
+     12.9
+    ],
+    [
+     204.3,
+     127.0,
+     256.3,
+     10.0
+    ]
+   ]
+  },
+  "King of the Murkmire.esp:ArgoniaTreeShrub04": {
+   "digest": "d5ca8dd7d9ccf956",
+   "model": "argonia\\trees\\shrubtree04.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreeSwamp01": {
+   "digest": "6b13d3af23d43a7d",
+   "model": "argonia\\trees\\Greguire\\SwampTreeTall01.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreeSwamp02": {
+   "digest": "9ae4390cfeef3ae4",
+   "model": "argonia\\trees\\Greguire\\SwampTreeTall02.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreeSwamp03": {
+   "digest": "6260abe858d720d2",
+   "model": "argonia\\trees\\Greguire\\SwampTreeTall03.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreeSwamp04": {
+   "digest": "0b92f4a25b01a04b",
+   "model": "argonia\\trees\\Greguire\\SwampTreeTall04.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreeSwamp05": {
+   "digest": "084da2a038e115d3",
+   "model": "argonia\\trees\\Greguire\\SwampTreeTallBent01.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreeSwamp06": {
+   "digest": "172bbc68f463317d",
+   "model": "argonia\\trees\\Greguire\\SwampTreeTallBent02.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreeSwamp07": {
+   "digest": "9f8b7c8866aaf386",
+   "model": "argonia\\trees\\Greguire\\SwampTreeTallDouble01.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreeSwamp08": {
+   "digest": "57ef409370890b2b",
+   "model": "argonia\\trees\\Greguire\\SwampTreeTallYoung01.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreeSwamp09": {
+   "digest": "1b368c77563a875e",
+   "model": "argonia\\trees\\Greguire\\SwampTreeTallSapling01.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreeSwampBroken01": {
+   "digest": "e2e92e54f3e3e194",
+   "model": "argonia\\trees\\Greguire\\SwampTreeTallBroken03.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreeSwampCypress01": {
+   "digest": "f2e4c99439a2ba38",
+   "model": "_ResourcePack\\Landscape\\Trees\\TreeBaldCypress01.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreeSwampCypress02": {
+   "digest": "ee6f6533fbd32d15",
+   "model": "_ResourcePack\\Landscape\\Trees\\TreeBaldCypress02.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreeSwampCypress03": {
+   "digest": "d795528e27251d2e",
+   "model": "argonia\\trees\\cypress1.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreeSwampCypress04": {
+   "digest": "86e6392d5403f160",
+   "model": "argonia\\trees\\cypress2.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreeSwampCypress05": {
+   "digest": "8d2e1865d1fdd512",
+   "model": "argonia\\trees\\cypress3.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreeSwampCypress06": {
+   "digest": "3323564bcd3b8d9a",
+   "model": "argonia\\trees\\cypress4.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreeSwampCypress07": {
+   "digest": "b4883906bb31389d",
+   "model": "argonia\\trees\\cypress5.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreeSwampCypressMoss01": {
+   "digest": "e762871b11936847",
+   "model": "argonia\\trees\\hangingmoss01.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreeSwampCypressMoss02": {
+   "digest": "ebfa6ba949c8e8df",
+   "model": "argonia\\trees\\hangingmoss02.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreeSwampCypressMoss03": {
+   "digest": "c26a6cdb8fadf8f0",
+   "model": "argonia\\trees\\hangingmoss03.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreeSwampDead01": {
+   "digest": "46b80028c994c6e3",
+   "model": "argonia\\trees\\Greguire\\SwampTreeTallDead01.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreeSwampDead02": {
+   "digest": "2e1e7d870eb0a65b",
+   "model": "argonia\\trees\\Greguire\\SwampTreeTall02Dead.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreeSwampDead03": {
+   "digest": "a9f877c9a323f1f3",
+   "model": "argonia\\trees\\Greguire\\SwampTreeTall03Dead.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreeSwampPlant01A": {
+   "digest": "ec01a3ea7d63737e",
+   "model": "argonia\\trees\\Greguire\\ScaledCollar01.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreeSwampPlant01B": {
+   "digest": "7453a865457bd0d4",
+   "model": "argonia\\trees\\Greguire\\ScaledCollar02.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreeSwampPlant02A": {
+   "digest": "2a2319bcccedae0a",
+   "model": "argonia\\trees\\Greguire\\SwampPlant08.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreeSwampPlant02B": {
+   "digest": "d496cc6b3eb2e0be",
+   "model": "argonia\\trees\\Greguire\\SwampPlant08a.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreeSwampPlant03A": {
+   "digest": "bb947d83a9712c25",
+   "model": "argonia\\trees\\Greguire\\SwampPlant06.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreeSwampPlant03B": {
+   "digest": "44115d0b5898e85c",
+   "model": "argonia\\trees\\Greguire\\SwampPlant06a.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreeUndergrowth01": {
+   "digest": "5539940b5263931f",
+   "model": "argonia\\trees\\undergrowth01.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreeUndergrowth01Jungle": {
+   "digest": "f4a041e787f795bb",
+   "model": "argonia\\trees\\undergrowth01jungle.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreeUndergrowth02": {
+   "digest": "2729d422f698e1e5",
+   "model": "argonia\\trees\\undergrowth02.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreeUndergrowth02Jungle": {
+   "digest": "99cac0c13b1c3f5e",
+   "model": "argonia\\trees\\undergrowth02jungle.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreeUndergrowth03": {
+   "digest": "b9fbd56ef45f0d33",
+   "model": "argonia\\trees\\undergrowth03.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreeUndergrowth03Jungle": {
+   "digest": "0616d83cd02c0e73",
+   "model": "argonia\\trees\\undergrowth03jungle.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreeUndergrowth04": {
+   "digest": "2cfc27b7768f5a0b",
+   "model": "argonia\\trees\\undergrowth04.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreeUndergrowth04Jungle": {
+   "digest": "bc3d52c1da94b1d9",
+   "model": "argonia\\trees\\undergrowth04jungle.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreeUndergrowth05": {
+   "digest": "620a1edb12423f7e",
+   "model": "argonia\\trees\\undergrowth05.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreeUndergrowth05Jungle": {
+   "digest": "01c2d099f8b86031",
+   "model": "argonia\\trees\\undergrowth05jungle.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreeUndergrowthJungle01": {
+   "digest": "36b26e21d0094e63",
+   "model": "argonia\\trees\\Greguire\\JunglePatch01.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreeUndergrowthJungle02": {
+   "digest": "f7c0dbbfd160b403",
+   "model": "argonia\\trees\\Greguire\\JungleBananaPlant01.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreeWillow01": {
+   "digest": "34500bf69a19d392",
+   "model": "argonia\\trees\\Willow01.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreeWillow02": {
+   "digest": "792a8fcd949a91fc",
+   "model": "_ResourcePack\\Landscape\\Trees\\TreeWeepingWillow01.nif",
+   "points": [
+    [
+     -2.4,
+     96.8,
+     292.3,
+     35.1
+    ],
+    [
+     -63.4,
+     95.5,
+     469.5,
+     24.7
+    ],
+    [
+     -93.5,
+     145.9,
+     489.9,
+     24.6
+    ],
+    [
+     -59.7,
+     -377.3,
+     346.3,
+     16.6
+    ],
+    [
+     -35.9,
+     -331.8,
+     399.1,
+     12.1
+    ]
+   ]
+  },
+  "King of the Murkmire.esp:ArgoniaTreeWillow03": {
+   "digest": "9361f28604622fe4",
+   "model": "argonia\\trees\\Willow03.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreeWillow04": {
+   "digest": "93f56d462f4a3eb2",
+   "model": "argonia\\trees\\Willow04.nif",
+   "points": [
+    [
+     -97.2,
+     -80.9,
+     186.0,
+     54.9
+    ],
+    [
+     -123.5,
+     -117.2,
+     227.9,
+     35.4
+    ],
+    [
+     -274.7,
+     39.7,
+     374.6,
+     29.4
+    ],
+    [
+     -404.5,
+     49.0,
+     331.8,
+     20.2
+    ],
+    [
+     -353.2,
+     -250.0,
+     354.8,
+     17.9
+    ],
+    [
+     51.3,
+     115.3,
+     274.1,
+     10.4
+    ]
+   ]
+  },
+  "King of the Murkmire.esp:ArgoniaTreeWillow05": {
+   "digest": "a8d3d9cc8518a0f7",
+   "model": "argonia\\trees\\Willow05.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:ArgoniaTreeWillow06": {
+   "digest": "3090c314d6346028",
+   "model": "_ResourcePack\\Landscape\\Trees\\TreeWeepingWillow02.nif",
+   "points": [
+    [
+     60.6,
+     54.9,
+     227.7,
+     26.2
+    ],
+    [
+     -16.7,
+     75.2,
+     363.3,
+     22.7
+    ],
+    [
+     -108.5,
+     11.5,
+     289.4,
+     20.9
+    ],
+    [
+     -59.4,
+     123.1,
+     431.0,
+     15.8
+    ],
+    [
+     -55.4,
+     -143.3,
+     445.6,
+     15.1
+    ],
+    [
+     -294.2,
+     15.7,
+     434.9,
+     12.2
+    ]
+   ]
+  },
+  "King of the Murkmire.esp:ArgoniaTreeWillow07": {
+   "digest": "7e6675faa97ca641",
+   "model": "argonia\\trees\\Willow07.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:HistGland01": {
+   "digest": "a71d480811e1c21a",
+   "model": "argonia\\trees\\Hist trees\\HistGland01.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:HistGland01Dead": {
+   "digest": "252072bdeb3c154e",
+   "model": "argonia\\trees\\Hist trees\\HistGland01Dead.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:HistGland02Dead": {
+   "digest": "ad13b0a427eef876",
+   "model": "argonia\\trees\\Hist trees\\HistGland02Dead.nif",
+   "points": [
+    [
+     -530.9,
+     -648.1,
+     408.6,
+     25.1
+    ],
+    [
+     648.1,
+     -530.9,
+     408.6,
+     25.1
+    ],
+    [
+     -648.1,
+     530.9,
+     408.6,
+     25.1
+    ],
+    [
+     530.9,
+     648.1,
+     408.6,
+     25.1
+    ]
+   ]
+  },
+  "King of the Murkmire.esp:HistGland03": {
+   "digest": "db3654a0742c907b",
+   "model": "argonia\\trees\\Hist trees\\HistGland03.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:HistGland03Dead": {
+   "digest": "841095f8d7a12bf2",
+   "model": "argonia\\trees\\Hist trees\\HistGland03Dead.nif",
+   "points": []
+  },
+  "King of the Murkmire.esp:HistTrunk01": {
+   "digest": "ad59066ef70adb02",
+   "model": "argonia\\trees\\Hist trees\\HistTreeTrunk01.nif",
+   "points": [
+    [
+     145.6,
+     1945.5,
+     187.0,
+     144.7
+    ],
+    [
+     93.5,
+     1724.5,
+     265.9,
+     129.3
+    ]
+   ]
+  },
+  "Skyrim.esm:TreeFallForestShrub01": {
+   "digest": "407674df0e358a5e",
+   "model": "Landscape\\Plants\\FallForestShrub01.nif",
+   "points": []
+  },
+  "Skyrim.esm:TreeFallForestShrub02": {
+   "digest": "02e025608628bd4f",
+   "model": "Landscape\\Plants\\FallForestShrub02.nif",
+   "points": []
+  },
+  "Skyrim.esm:TreeSwordFernCluster06": {
+   "digest": "ad6b2453de5d68ee",
+   "model": "Landscape\\Plants\\SwordFernCluster06.nif",
+   "points": []
+  },
+  "Valenwood.esp:01TreePlains4": {
+   "digest": "37df7669b13409e0",
+   "model": "landscape\\trees\\gkbjungletreenew11browntwigs.nif",
+   "points": [
+    [
+     27.6,
+     -51.6,
+     192.9,
+     30.5
+    ],
+    [
+     -55.6,
+     31.1,
+     179.8,
+     24.2
+    ],
+    [
+     70.8,
+     -130.9,
+     334.5,
+     12.8
+    ],
+    [
+     26.2,
+     117.9,
+     307.4,
+     9.9
+    ],
+    [
+     80.6,
+     91.1,
+     294.9,
+     9.5
+    ],
+    [
+     32.5,
+     60.7,
+     245.8,
+     8.5
+    ]
+   ]
+  },
+  "Valenwood.esp:01bamboo": {
+   "digest": "ee5985dca9085b19",
+   "model": "landscape\\trees\\BambooPlant.nif",
+   "points": []
+  },
+  "Valenwood.esp:01cypress2": {
+   "digest": "4b1e330f0c20943c",
+   "model": "landscape\\trees\\cypress4.nif",
+   "points": []
+  },
+  "Valenwood.esp:01cypress3": {
+   "digest": "6f27e31d03caa2c2",
+   "model": "landscape\\trees\\cypress2.nif",
+   "points": []
+  },
+  "Valenwood.esp:01junip2": {
+   "digest": "7e3a598187889f38",
+   "model": "landscape\\trees\\dwarfjunip06.nif",
+   "points": []
+  },
+  "Valenwood.esp:01juniper": {
+   "digest": "66b7745caf25be92",
+   "model": "landscape\\trees\\gkbjunipertree.nif",
+   "points": []
+  },
+  "Valenwood.esp:01oak": {
+   "digest": "7eacd02cb01f7262",
+   "model": "landscape\\trees\\treeoak03.nif",
+   "points": []
+  },
+  "Valenwood.esp:01oak2": {
+   "digest": "ef4e61dfb4e34aaf",
+   "model": "landscape\\trees\\treeoak08.nif",
+   "points": []
+  },
+  "Valenwood.esp:01palmplant": {
+   "digest": "e27cc360be8c867a",
+   "model": "landscape\\trees\\PalmPlant.nif",
+   "points": []
+  },
+  "Valenwood.esp:01palmplant2": {
+   "digest": "1a568de74f34fe87",
+   "model": "landscape\\trees\\TropicalPlant01.nif",
+   "points": []
+  },
+  "Valenwood.esp:01palmplant3": {
+   "digest": "f53d21ffa768c6d0",
+   "model": "landscape\\trees\\TropicalPlant02.nif",
+   "points": []
+  },
+  "Valenwood.esp:01plaintree2": {
+   "digest": "ac8e3c7b0ccf7cf3",
+   "model": "landscape\\trees\\dwarfjunip05.nif",
+   "points": []
+  },
+  "Valenwood.esp:01plaintree3": {
+   "digest": "5376c828512e176c",
+   "model": "landscape\\trees\\gkbjungletreenew13v2orangebrown.nif",
+   "points": []
+  },
+  "Valenwood.esp:01plaintree6": {
+   "digest": "46e62e3e001d3f99",
+   "model": "landscape\\dry trees\\dryTree04.nif",
+   "points": [
+    [
+     26.5,
+     -353.1,
+     378.9,
+     14.8
+    ],
+    [
+     106.8,
+     -248.9,
+     376.5,
+     12.7
+    ],
+    [
+     -86.7,
+     -257.0,
+     433.4,
+     11.6
+    ],
+    [
+     193.2,
+     -290.2,
+     330.3,
+     10.9
+    ]
+   ]
+  },
+  "Valenwood.esp:01plaintree9": {
+   "digest": "2ede985b59b53b21",
+   "model": "landscape\\dry trees\\dryTree07.nif",
+   "points": []
+  },
+  "Valenwood.esp:01swamp2": {
+   "digest": "c653f5cd802854f8",
+   "model": "landscape\\trees\\gkbjungletreenew12v3.nif",
+   "points": []
+  },
+  "Valenwood.esp:01swamp3": {
+   "digest": "a7ca1387d4193b69",
+   "model": "landscape\\trees\\gkbjungletreenew20.nif",
+   "points": []
+  },
+  "Valenwood.esp:01swamptree": {
+   "digest": "f28ce0ab72020016",
+   "model": "landscape\\trees\\gkbjungletreenew2.nif",
+   "points": []
+  },
+  "Valenwood.esp:AltWillow": {
+   "digest": "11b2c539abfdd399",
+   "model": "landscape\\trees\\gkbjungletreenew26v2weeping.nif",
+   "points": []
+  },
+  "Valenwood.esp:GRTree10": {
+   "digest": "5921d3d2bff1a5c2",
+   "model": "landscape\\trees\\gkbjungletreenew4.nif",
+   "points": []
+  },
+  "Valenwood.esp:GRTree11": {
+   "digest": "9bac365ef114e0cf",
+   "model": "landscape\\trees\\gkbjungletreenew5.nif",
+   "points": [
+    [
+     -182.1,
+     -73.8,
+     272.3,
+     10.2
+    ],
+    [
+     275.3,
+     161.2,
+     179.7,
+     8.2
+    ]
+   ]
+  },
+  "Valenwood.esp:GRTree12": {
+   "digest": "1ff2e9d7effc6ebe",
+   "model": "landscape\\trees\\gkbjungletreenew6v2dark.nif",
+   "points": []
+  },
+  "Valenwood.esp:GRTree13": {
+   "digest": "84e8a46757837859",
+   "model": "landscape\\trees\\gkbjungletreenew8.nif",
+   "points": []
+  },
+  "Valenwood.esp:GRTree14": {
+   "digest": "bdc7f0f97382df62",
+   "model": "landscape\\trees\\gkbjungletreenew12.nif",
+   "points": []
+  },
+  "Valenwood.esp:GRTree15": {
+   "digest": "00336fa9c80fed00",
+   "model": "landscape\\trees\\gkbjungletreenew15.nif",
+   "points": [
+    [
+     40.1,
+     -47.4,
+     314.3,
+     25.9
+    ],
+    [
+     48.6,
+     68.5,
+     350.3,
+     17.3
+    ],
+    [
+     73.7,
+     -86.0,
+     376.1,
+     14.2
+    ]
+   ]
+  },
+  "Valenwood.esp:GRTree16": {
+   "digest": "de2acd572574cc19",
+   "model": "landscape\\trees\\gkbjungletreenew17.nif",
+   "points": []
+  },
+  "Valenwood.esp:GRTree9": {
+   "digest": "b335ce70b185efcb",
+   "model": "landscape\\trees\\gkbjungletreenew3.nif",
+   "points": []
+  }
+ }
+}

@@ -20,3 +20,7 @@ band; items. Each milestone is one owner test.
   old repo's route: Flat World Map Framework, Nexus 29932, plus Flat Map Markers and our own fog-of-war chart over the
   map menu, `git show 93253542`) is days of work, needs a paper image per world (an owner ruling: we make no art) and
   its 1.7.104 support is unknown; only if the owner asks for it after seeing the native map.
+- **Before release: the creature mods become masters (owner ruling 2026-11-12).** The creature mods whose records
+  ArgoniaNewWorld.esm now copies (mods/sourcing-register.json rows with `permission_condition`) become real masters
+  of our world file, their records referenced rather than copied, so their mods are dependencies of ours and none of
+  their assets is shipped.
