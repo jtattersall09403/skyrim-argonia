@@ -52,7 +52,7 @@ KIND_FIT: dict[str, dict[str, float]] = {
     "town": {"town": 1, "city": 0.75, "village": 0.65},
     "village": {"village": 1, "hamlet": 0.75, "town": 0.6, "camp-tribal": 0.45},
     "hamlet": {"hamlet": 1, "village": 0.8, "homestead": 0.6, "farm": 0.6, "camp-tribal": 0.5, "dock": 0.4},
-    "abandoned-village": {"village": 0.85, "hamlet": 0.85, "ruin-argonian": 0.7, "ruin": 0.6, "homestead": 0.5},
+    "abandoned-village": {"village": 0.9, "hamlet": 0.9, "ruin-argonian": 0.7, "ruin": 0.6, "homestead": 0.5},
     "tribal-camp": {"camp-tribal": 1, "camp-outlaw": 0.7, "hamlet": 0.55, "camp-military": 0.5},
     "outlaw-camp": {"camp-outlaw": 1, "camp-tribal": 0.7, "cave": 0.5, "fort": 0.45},
     "outpost": {"hamlet": 0.9, "tower": 0.85, "camp-military": 0.8, "camp-tribal": 0.75, "dock": 0.6,
@@ -75,9 +75,13 @@ KIND_FIT: dict[str, dict[str, float]] = {
     "peak": {"peak": 1, "landmark": 0.85, "shrine": 0.6},
     "belvedere": {"tower": 0.85, "estate": 0.75, "landmark": 0.6, "homestead": 0.55},
     "imperial-ruin": {"ruin-imperial": 1, "fort": 0.55, "ruin": 0.6, "ruin-nordic": 0.45, "ruin-ayleid": 0.45},
-    "velothi-ruin": {"ruin-dunmer": 1, "ruin-daedric": 0.7, "ruin": 0.55, "ruin-dwemer": 0.5},
+    "velothi-ruin": {"ruin-dunmer": 1, "ruin-daedric": 0.8, "ruin": 0.55, "ruin-dwemer": 0.3},
     "ayleid-ruin": {"ruin-ayleid": 1, "ruin": 0.55, "ruin-imperial": 0.45},
-    "kothringi-ruin": {"ruin-argonian": 1, "ruin": 0.6, "cave": 0.45, "ruin-ayleid": 0.4},
+    # Kothringi: no tileset anywhere. By the lore (story/lore/topics/lost-peoples.md) they were human villagers
+    # of the swamp, later Imperial-influenced (Gideon's garrison), who buried their dead in cairns: an abandoned
+    # hamlet or village, an Imperial ruin, a native ruin; never a cave or a Dwemer city
+    "kothringi-ruin": {"hamlet": 0.9, "village": 0.9, "ruin-imperial": 0.85, "ruin-argonian": 0.75, "ruin": 0.7,
+                       "homestead": 0.6, "ruin-nordic": 0.4, "ruin-dwemer": 0.15, "ruin-falmer": 0.15},
     "lilmothiit-ruin": {"ruin-argonian": 1, "ruin": 0.6, "cave": 0.45, "ruin-ayleid": 0.4},
     "sunken-ruin": {"ruin-argonian": 0.95, "ruin": 0.6, "ruin-ayleid": 0.5, "ruin-imperial": 0.5, "shipwreck": 0.4},
 }
@@ -93,7 +97,7 @@ FAMILY = {
 }
 CULTURE_WANT = {
     "ayleid-ruin": ("ayleid",), "velothi-ruin": ("dunmer", "daedric"), "imperial-ruin": ("imperial",),
-    "kothringi-ruin": ("argonian",), "lilmothiit-ruin": ("argonian",), "sunken-ruin": ("argonian",),
+    "kothringi-ruin": ("imperial", "argonian"), "lilmothiit-ruin": ("argonian",), "sunken-ruin": ("argonian",),
     "fort": ("imperial", "argonian"), "keep": ("imperial", "argonian"), "prison": ("imperial", "argonian"),
     "belvedere": ("imperial", "argonian"), "estate": ("imperial", "argonian", "dunmer"),
 }
@@ -176,8 +180,28 @@ def settled(c: dict) -> bool:
         return False  # a lair Bethesda files under a town keyword is still a lair
     if kws & SETTLE_KW or (c.get("marker") or {}).get("type") in SETTLE_MARKER:
         return True
-    return "cluster" in kws and c["counts"].get("building", 0) >= 40 and c.get("residents", 0) > 0 \
-        and c["counts"].get("furniture", 0) > 0
+    return bool("cluster" in kws or c.get("marker")) and c["counts"].get("building", 0) >= SMALL_CLUSTER \
+        and (c["counts"].get("furniture", 0) > 0 or c.get("residents", 0) >= 3) and (c.get("residents", 0) > 0 or not c.get("enemies"))
+
+
+SMALL_CLUSTER = 6   # buildings: a few huts with beds or furniture are a hamlet (a cluster with nobody in it, an empty one)
+
+
+def cluster_kind(c: dict) -> tuple[str, str] | None:
+    """A built-up cluster (or a bare map marker's cell) under a town's size (Mine.cs links a plugin's own buildings within 2048 units): ruin
+    pieces of one tileset are a ruin of that culture, tents with people a camp (a tribe's when its tileset is a
+    native people's), a few huts with beds or people a hamlet; None leaves it to the rules for big clusters."""
+    t, b = c.get("tags") or {}, c["counts"].get("building", 0)
+    res, en, furn = c.get("residents", 0), c.get("enemies", 0), c["counts"].get("furniture", 0)
+    cult = culture_tags(c)
+    top = max(cult, key=cult.get) if cult else None
+    if t.get("ruin", 0) >= max(5, 0.3 * b) or (res == 0 and en > 0 and t.get("ruin", 0) >= 3):
+        return ruin_culture(t), f"cluster of ruin pieces ({top or 'no'} tileset)"
+    if t.get("camp", 0) >= 3 and b < 25 and (res or furn):
+        return ("camp-tribal" if top in ("argonian", "dunmer", "bosmer", "khajiit") else "camp-outlaw"), "cluster of tents"
+    if b < 40 and b >= SMALL_CLUSTER and (furn > 0 or res >= 3) and (res > 0 or not en):
+        return "hamlet", f"cluster of {b} buildings, {res} people"
+    return None
 
 
 def hostile_people(c: dict) -> None:
@@ -225,6 +249,9 @@ def classify(c: dict) -> tuple[str, str]:
             kind = "landmark"
         why = f"counts ({res} residents, {en} enemies)"
     blds = c["counts"].get("building", 0)
+    if ("cluster" in kws and kind in (None, "landmark", "ruin", "homestead", "ship", "shipwreck")
+            or not c.get("location") and kind in (None, "landmark")) and cluster_kind(c):
+        kind, why = cluster_kind(c)
     if "cluster" in kws and tags.get("ruin", 0) < 0.3 * blds and (
             kind in ("ship", "landmark", "homestead", "shipwreck", None) and blds >= 40 or blds >= 150 and res >= 10):
         kind = "city" if blds >= 400 else "town" if blds >= 150 else "village"
@@ -315,21 +342,34 @@ OVERHAULS = {"dawnofskyrim", "greyquarter", "dosgq"}   # mods that rebuild a van
 UNNAMED = re.compile(r"^\S+ -?\d+,-?\d+$")
 
 
+QUARTER = 1024.0   # a quarter of a cell's side, the grain places are told apart at
 CITY_WORLD = re.compile(r"^(Whiterun|Solitude|Markarth|Riften|Windhelm)World$")
 
 
 def footprint(c: dict) -> set:
-    """The cells that stand for a candidate when telling places apart: a bare map marker's own cell, else all;
-    a walled city's own worldspace is one place whatever cells of it a candidate holds."""
+    """The quarter cells (QUARTER) that stand for a candidate when telling places apart: a bare map marker's own
+    quarter, a cluster's bounds, else all its cells; an overhaul's cluster reaches a cell beyond it (it belongs to
+    the town it extends); a walled city's own worldspace is one place whatever cells of it a candidate holds."""
     m = CITY_WORLD.match(c.get("worldspace_edid") or "") or re.match(
         r"^(Whiterun|Solitude|Markarth|Riften|Windhelm)Location$", c.get("edid") or "")
     if m:
         return {("city", m.group(1))}
-    if c.get("marker") and not c.get("location") and "cluster" not in (c.get("keywords") or []):
-        return {(c["worldspace"], *c["marker"]["cell"])}
-    if c.get("group") in OVERHAULS:  # an overhaul's cluster belongs to the town it extends, a cell beyond it included
-        return {(c["worldspace"], x + dx, y + dy) for x, y in c["cells"] for dx in (-1, 0, 1) for dy in (-1, 0, 1)}
-    return {(c["worldspace"], x, y) for x, y in c["cells"]}
+    ws, q = c["worldspace"], QUARTER
+    mk = c.get("marker") or {}
+    if mk and not c.get("location") and "cluster" not in (c.get("keywords") or []):
+        if mk.get("x") is not None:
+            return {(ws, int(mk["x"] // q), int(mk["y"] // q))}
+        cells = [mk["cell"]]
+    elif c.get("box") and c.get("group") not in OVERHAULS:
+        x0, y0, x1, y1 = c["box"]
+        own = {(x, y) for x, y in c["cells"]}
+        return {(ws, i, j) for i in range(int(x0 // q), int(x1 // q) + 1) for j in range(int(y0 // q), int(y1 // q) + 1)
+                if (i // 4, j // 4) in own}
+    elif c.get("group") in OVERHAULS:
+        cells = {(x + dx, y + dy) for x, y in c["cells"] for dx in (-1, 0, 1) for dy in (-1, 0, 1)}
+    else:
+        cells = c["cells"]
+    return {(ws, 4 * x + i, 4 * y + j) for x, y in cells for i in range(4) for j in range(4)}
 
 
 def physical_groups(cands: list[dict]) -> list[dict]:
@@ -518,16 +558,16 @@ def main(argv: list[str]) -> int:
     # fixed allocations leave the pool first
     fixed = {}
     for place_id, (source_id, rx) in FIXED.items():
-        j = next((j for j, c in enumerate(cands) if rx.search(c["source_id"])
-                  or any(rx.search(a) for a in c.get("aliases") or [])), None)
-        fixed[place_id] = (source_id, j)
+        js = [j for j, c in enumerate(cands) if rx.search(c["source_id"]) or any(rx.search(a) for a in c.get("aliases") or [])]
+        fixed[place_id] = (source_id, js[0] if js else None, js)  # every piece of the fixed place leaves the pool
     cost = np.empty_like(total)
     for i, p in enumerate(places):
         cost[i] = (1 - total[i]) * IMPORTANCE_WEIGHT[p.get("importance") or 1]
     big = 1e6
-    for place_id, (_sid, j) in fixed.items():
+    for place_id, (_sid, j, js) in fixed.items():
+        for k in js:
+            cost[:, k] = big
         if j is not None:
-            cost[:, j] = big
             cost[pid[place_id], :] = big
             cost[pid[place_id], j] = 0
     rows, cols = linear_sum_assignment(cost)

@@ -83,23 +83,24 @@ def main(argv: list[str]) -> int:
              (f"{pb} → {pa}", "total population, before → after")]
     w("<div class=tiles>" + "".join(f"<div class=tile><b>{e(v)}</b><span>{e(t)}</span></div>" for v, t in tiles) + "</div>")
 
-    nordic = sorted(f"{places[r['place_id']]['name']} ({src[r['source_place_id']]['name']})" for r in a0
-                    if src[r["source_place_id"]]["mined_group"] == "skyrim" and src[r["source_place_id"]]["kind"] in ("city", "town")
-                    and places[r["place_id"]]["place_kind_id"] in ("city", "town"))
-    weak = Counter(places[r["place_id"]]["place_kind_id"] for r in a0
-                   if places[r["place_id"]]["place_kind_id"] in ("ayleid-ruin", "velothi-ruin", "kothringi-ruin", "lilmothiit-ruin", "sunken-ruin")
-                   and not src[r["source_place_id"]]["kind"].startswith("ruin-argonian")
-                   and src[r["source_place_id"]]["kind"] not in ("ruin-ayleid", "ruin-dunmer"))
-    w("<h2>Calls for you</h2><ol>"
-      f"<li><b>Skyrim's Nordic towns as layouts.</b> {len(nordic)} of our cities and towns take their street plan and "
-      f"buildings from a Skyrim town: {e('; '.join(nordic))}. Every Nordic piece would be swapped for a Black Marsh one "
-      "when the place is drafted, but the shape of the town stays Skyrim's. Is that acceptable, or should these wait "
-      "for a better source?</li>"
-      f"<li><b>Too few ruins of the right cultures.</b> {sum(weak.values())} of our ruins ("
-      + e(", ".join(f"{v} {k}" for k, v in weak.most_common()))
-      + ") got a ruin of another culture (mostly Dwemer ruins or caves), because the plugins we hold have few "
-      "Ayleid, Velothi or Argonian ruins. Do you want us to look for more ruin mods to mine?</li></ol>"
-      "<p class=muted>Reply on the owner check, or edit any place's source later in the studio.</p>")
+    from tools.places.sources_match import KIND_FIT
+    gap_kinds = ("village", "hamlet", "abandoned-village", "outpost", "kothringi-ruin", "velothi-ruin", "imperial-ruin",
+                 "lilmothiit-ruin", "quarry", "estate", "lighthouse")
+    gap = {k: [0, 0] for k in gap_kinds}
+    for r in a0:
+        k = places[r["place_id"]]["place_kind_id"]
+        if k in gap:
+            gap[k][0] += 1
+            gap[k][1] += KIND_FIT.get(k, {}).get(src[r["source_place_id"]]["kind"], 0) >= 0.85
+    w("<h2>What changed since the first version</h2><p>You kept Skyrim's towns as layouts, so that call is gone. The miner "
+      "now finds small places in the mods we hold: hamlets of a few huts, camps of tents and ruins by their tileset, "
+      "each counted apart even when two share a cell. Kothringi ruins now take an abandoned village or an Imperial "
+      "ruin, as the lore describes them, never a cave or a Dwemer city.</p>")
+    w("<h2>Gaps that remain</h2><p class=muted>Places of each kind whose source is the same kind of place. The rest "
+      "need new mods; candidates are listed for you on the owner check, as their permission terms could not be read "
+      "here.</p><div class=scroll><table><tr><th>Our kind</th><th class=n>Places</th><th class=n>Same kind</th></tr>"
+      + "".join(f"<tr><td>{e(k)}</td><td class=n>{n}</td><td class=n>{f}</td></tr>" for k, (n, f) in gap.items())
+      + "</table></div>")
     w("<h2>How similar, by importance</h2><p class=muted>Importance 5 shapes the province, 1 is local colour. The "
       "allocation weighs a major place six times a minor one, so the major places should score highest.</p>")
     w("<div class=scroll><table><tr><th>Importance</th><th class=n>Places</th><th class=n>Mean</th><th class=n>Lowest</th>"

@@ -152,11 +152,13 @@ static class Miner
         var usedExt = new HashSet<(FormKey, (int, int))>();
 
         void Emit(string id, string plugin, ILocationGetter? loc, (IPlacedObjectGetter r, FormKey ws, (int, int) g)? mk,
-                  List<(FormKey, (int, int))> cells, List<FormKey> ints0, List<string> keywords, string? parent)
+                  List<(FormKey, (int, int))> cells, List<FormKey> ints0, List<string> keywords, string? parent,
+                  (float, float, float, float)? box = null)
         {
             // interiors: those that name the location, then those behind doors of the gathered spaces (<= 3 hops)
             var ints = new List<FormKey>(ints0); var seen = new HashSet<FormKey>(ints0);
-            var frontier = cells.SelectMany(c => extRefs.TryGetValue(c, out var d) ? d.Values : Enumerable.Empty<IMajorRecordGetter>())
+            bool In(IMajorRecordGetter r) => box is not { } bx || Pos(r) is { } q && q.X >= bx.Item1 && q.X <= bx.Item3 && q.Y >= bx.Item2 && q.Y <= bx.Item4;
+            var frontier = cells.SelectMany(c => extRefs.TryGetValue(c, out var d) ? d.Values.Where(In) : Enumerable.Empty<IMajorRecordGetter>())
                 .Concat(ints0.SelectMany(c => intRefs[c].Values)).ToList();
             for (int hop = 0; hop < 3 && frontier.Count > 0; hop++)
             {
@@ -199,7 +201,7 @@ static class Miner
             }
             foreach (var c in cells)
             {
-                if (extRefs.TryGetValue(c, out var d)) foreach (var r in d.Values) Tally(r, true);
+                if (extRefs.TryGetValue(c, out var d)) foreach (var r in d.Values) if (In(r)) Tally(r, true);
                 var e = ext[c];
                 if (e.Cell.Landscape?.VertexHeightMap is { } hm)
                 {
@@ -231,6 +233,7 @@ static class Miner
                 ["footprint_m"] = minx <= maxx ? new[] { MathF.Round((maxx - minx) / 70f), MathF.Round((maxy - miny) / 70f) } : null,
                 ["centre"] = minx <= maxx ? new[] { (minx + maxx) / 2, (miny + maxy) / 2 } : (marker != null ? new[] { mk!.Value.r.Placement!.Position.X, mk.Value.r.Placement!.Position.Y } : null),
                 ["tags"] = tags,
+                ["box"] = box is { } bb ? new[] { bb.Item1, bb.Item2, bb.Item3, bb.Item4 } : null,
             };
             o.WriteLine(JsonSerializer.Serialize(row));
             foreach (var c in cells) usedExt.Add(c);
@@ -259,52 +262,64 @@ static class Miner
             var parent = l.ParentLocation.FormKey.IsNull ? null : (locs.TryGetValue(l.ParentLocation.FormKey, out var pl) ? pl.EditorID : Extractor.Key(l.ParentLocation.FormKey));
             Emit(Id(plugin, l.EditorID ?? Extractor.Key(l.FormKey)), plugin, l, mk, cells, ints, kws, parent);
         }
-        // 2. built-up clusters of the mined plugins' own refs that no location names (a plugin that places towns
-        //    by cells alone): 8-connected exterior cells holding >= 6 of its buildings or a door to an interior
+        // 2. built-up clusters of the mined plugins' own refs that no location names (a plugin that places towns,
+        //    hamlets, camps and ruins by cells alone): its buildings (a door into an interior weighs 6) linked when
+        //    within LINK of each other; a cluster weighing >= 6 is a place, counted only within its bounds plus
+        //    MARGIN, so two hamlets in one cell, or a village beside a ruin, stay two places
+        const float LINK = 2048f, MARGIN = 1024f;
         var clusterMarkers = new HashSet<FormKey>();
         if (cluster)
         {
-            var dense = new Dictionary<(FormKey, (int, int)), int>();
+            var an = new List<(FormKey ws, (int, int) g, float x, float y, int w)>();
             foreach (var (k, d) in extRefs)
             {
-                if (usedExt.Contains(k)) continue;
-                int b = 0;
+                if (usedExt.Contains(k) || !ext.ContainsKey(k)) continue;
                 foreach (var r in d.Values)
                 {
-                    if (!mine.Contains(r.FormKey.ModKey.FileName.String) || r is IPlacedNpcGetter) continue;
-                    var kind = Extractor.KindOfBase(Res(Extractor.BaseOf(r)));
-                    if (kind == "building") b++;
-                    else if (r is IPlacedObjectGetter po && po.TeleportDestination is { } t && refInt.ContainsKey(t.Door.FormKey)) b += 6;
+                    if (!mine.Contains(r.FormKey.ModKey.FileName.String) || r is IPlacedNpcGetter || Pos(r) is not { } p) continue;
+                    var w = Extractor.KindOfBase(Res(Extractor.BaseOf(r))) == "building" ? 1
+                        : r is IPlacedObjectGetter po && po.TeleportDestination is { } t && refInt.ContainsKey(t.Door.FormKey) ? 6 : 0;
+                    if (w > 0) an.Add((k.Item1, k.Item2, p.X, p.Y, w));
                 }
-                if (b >= 6 && ext.ContainsKey(k)) dense[k] = b;
             }
-            var done = new HashSet<(FormKey, (int, int))>();
-            foreach (var start in dense.Keys.OrderBy(k => k.Item2.Item1).ThenBy(k => k.Item2.Item2))
+            var par = Enumerable.Range(0, an.Count).ToArray();
+            int Root(int i) { while (par[i] != i) { par[i] = par[par[i]]; i = par[i]; } return i; }
+            var grid = new Dictionary<(FormKey, int, int), List<int>>();
+            for (int i = 0; i < an.Count; i++)
             {
-                if (!done.Add(start)) continue;
-                var comp = new List<(FormKey, (int, int))> { start }; var q = new Queue<(FormKey, (int, int))>(comp);
-                while (q.Count > 0)
-                {
-                    var (ws, (x, y)) = q.Dequeue();
-                    for (int dx = -1; dx <= 1; dx++) for (int dy = -1; dy <= 1; dy++)
-                    {
-                        var nb = (ws, (x + dx, y + dy));
-                        if (dense.ContainsKey(nb) && done.Add(nb)) { comp.Add(nb); q.Enqueue(nb); }
-                    }
-                }
-                if (comp.Count > 64) Console.Error.WriteLine($"cluster of {comp.Count} cells at {start.Item2} kept whole");
-                // its name: a marker in or beside it, else its interiors' or cells' commonest name
-                var compSet = comp.ToHashSet();
-                var mk = markers.Values.Where(m => m.ws == start.Item1 && comp.Any(c => Math.Abs(c.Item2.Item1 - m.g.Item1) <= 1 && Math.Abs(c.Item2.Item2 - m.g.Item2) <= 1))
-                    .OrderByDescending(m => compSet.Contains((m.ws, m.g)) ? 1 : 0).Cast<(IPlacedObjectGetter, FormKey, (int, int))?>().FirstOrDefault();
+                var (ws, _, x, y, _) = an[i];
+                int gx = (int)Math.Floor(x / LINK), gy = (int)Math.Floor(y / LINK);
+                for (int dx = -1; dx <= 1; dx++) for (int dy = -1; dy <= 1; dy++)
+                    if (grid.TryGetValue((ws, gx + dx, gy + dy), out var l))
+                        foreach (var jj in l)
+                            if ((an[jj].x - x) * (an[jj].x - x) + (an[jj].y - y) * (an[jj].y - y) <= LINK * LINK) par[Root(jj)] = Root(i);
+                if (!grid.TryGetValue((ws, gx, gy), out var own)) grid[(ws, gx, gy)] = own = new();
+                own.Add(i);
+            }
+            var comps = Enumerable.Range(0, an.Count).GroupBy(i => Root(i)).Select(g => g.ToList()).Where(g => g.Sum(i => an[i].w) >= 6)
+                .OrderBy(g => g.Min(i => an[i].g.Item1)).ThenBy(g => g.Min(i => an[i].g.Item2)).ToList();
+            foreach (var cm in comps)
+            {
+                var ws = an[cm[0]].ws;
+                var box = (cm.Min(i => an[i].x) - MARGIN, cm.Min(i => an[i].y) - MARGIN,
+                           cm.Max(i => an[i].x) + MARGIN, cm.Max(i => an[i].y) + MARGIN);
+                var comp = cm.Select(i => (ws, an[i].g)).Distinct().OrderBy(c => c.g.Item1).ThenBy(c => c.g.Item2).ToList();
+                var start = comp[0];
+                if (comp.Count > 64) Console.Error.WriteLine($"cluster of {comp.Count} cells at {start.g} kept whole");
+                // its name: the map marker nearest its middle within a cell of its bounds, else its cells' commonest name
+                float cx = (box.Item1 + box.Item3) / 2, cy = (box.Item2 + box.Item4) / 2;
+                var mk = markers.Values.Where(m => m.ws == ws && m.r.Placement is { } pl && pl.Position.X >= box.Item1 - 4096 && pl.Position.X <= box.Item3 + 4096
+                                               && pl.Position.Y >= box.Item2 - 4096 && pl.Position.Y <= box.Item4 + 4096)
+                    .OrderBy(m => Math.Pow(m.r.Placement!.Position.X - cx, 2) + Math.Pow(m.r.Placement!.Position.Y - cy, 2))
+                    .Cast<(IPlacedObjectGetter, FormKey, (int, int))?>().FirstOrDefault();
                 if (mk is { } mm) clusterMarkers.Add(mm.Item1.FormKey);
                 var nm = comp.Select(c => ext[c].Cell.Name?.String ?? ext[c].Cell.EditorID).Where(s => !string.IsNullOrEmpty(s))
                     .GroupBy(s => Regex.Replace(s!, @"\d+$|exterior|ext$", "", RegexOptions.IgnoreCase)).OrderByDescending(g => g.Count()).Select(g => g.Key).FirstOrDefault();
                 var plugin = comp.SelectMany(c => extRefs[c].Values).Select(r => r.FormKey.ModKey.FileName.String).Where(mine.Contains)
                     .GroupBy(s => s).OrderByDescending(g => g.Count()).First().Key;
-                var label = mk?.Item1.MapMarker?.Name?.String ?? nm ?? $"{wsEdid[start.Item1]} {start.Item2.Item1} {start.Item2.Item2}";
-                Emit(Id(plugin, "cluster." + label + $".{start.Item2.Item1}.{start.Item2.Item2}"), plugin, null, mk, comp, new(),
-                     new() { "cluster", "cell-name:" + (nm ?? "") }, null);
+                var label = mk?.Item1.MapMarker?.Name?.String ?? nm ?? $"{wsEdid[ws]} {start.g.Item1} {start.g.Item2}";
+                Emit(Id(plugin, "cluster." + label + $".{start.g.Item1}.{start.g.Item2}"), plugin, null, mk, comp, new(),
+                     new() { "cluster", "cell-name:" + (nm ?? "") }, null, box);
             }
         }
         // 3. map markers no location or cluster claims (a marker's own cell and its neighbours)

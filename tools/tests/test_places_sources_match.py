@@ -42,3 +42,20 @@ def test_population_is_the_same_on_a_rerun():
     from tools.places.sources_match import population
     p = {"status": "inhabited", "population": 100, "place_kind_id": "city"}
     assert population(p, [], {"residents": 322}) == population(p, [], {"residents": 322})
+
+
+def test_two_clusters_in_one_cell_stay_two_places():
+    a = cand("a", [[0, 0]], 100, keywords=["cluster"], location=None, box=[100, 100, 900, 900])
+    b = cand("b", [[0, 0]], 100, keywords=["cluster"], location=None, box=[2500, 2500, 3900, 3900])
+    assert len(physical_groups([a, b])) == 2
+    check_unique([a, b])
+
+
+def test_a_few_huts_with_beds_are_a_hamlet_and_ruin_pieces_a_ruin_of_their_tileset():
+    from tools.places.sources_match import classify
+    huts = cand("h", [[0, 0]], 120, keywords=["cluster"], location=None, residents=4, enemies=0,
+                counts={"refs": 120, "building": 8, "furniture": 6}, tags={"argonian": 20})
+    assert classify(huts)[0] == "hamlet"
+    ruin = cand("r", [[0, 0]], 120, keywords=["cluster"], location=None, residents=0, enemies=3,
+                counts={"refs": 120, "building": 12}, tags={"ayleid": 15, "ruin": 12})
+    assert classify(ruin)[0] == "ruin-ayleid"
