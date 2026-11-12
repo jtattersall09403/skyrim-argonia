@@ -41,3 +41,8 @@ DO NOT change the terrain or trees or scatter or groundcover. Do not do anything
 Owed: the full rebuild and deploy, binding the regions' lore harvestables to FLOR and INGR records where a region lacks them (the sea first), and the owner's walk (nw-03b-walk.md).
 
 Pad route walk spots (menu page "Walk-check spots", `SPOTS` in `tools/newworld/teleports.py`): D1 Cape Percar (-43,-197); D5 Murkwood (-6,-141); fresh water Banujha Basin (-26,-175); salt water Aphon Isle (-69,-186); canopy Arnesian Jungle (47,-120) against open (44,-114); night insects Nushara Bayou (37,-177); hostile people band Chixathe Mesa (17,-133, a band in the small world's draw); harvestables Ultherus Swamp (13,-183); dry Aunike Ridge (-20,-163); sea shore Hatandros Bight (61,-133).
+
+# Delivered (round 3: ready to rebuild)
+
+- Ecology critters, hostile people (38 of 39 groups), damage by band, harvestables and the pad route are written; stage keying is in the rebuild table; the readback stage also runs the assets audit.
+- Owed: the lead's rebuild (expected stale: paint, edits, mist, navmesh, map, ecology, esm, readback, plus place and edits once for the id-space key rename); the deploy (`stack.py stage`, then install the New World card with the texture aliases from `mods/texture-aliases.json`; the Papyrus compile and the C# build happen there); then the owner's walk, [nw-03b-walk.md](nw-03b-walk.md).
