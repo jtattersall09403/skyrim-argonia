@@ -11,7 +11,7 @@ using Mutagen.Bethesda.Skyrim;
 //     49, fade 12 s; _MUSExploreSILENT30TypeSpacer); day tracks carry GetCurrentTime >= 6 AND <= 20, night tracks
 //     GetCurrentTime >= 22 OR <= 5 (MUSExploreDay01, MUSExploreNight01); ours use 6..20 and 20..6, so no hour is silent;
 //   - combat, death and level-up music are the default object types (DOBJ SMTB MUSCombat, SMTD MUSSpecialDeath,
-//     SMCS/SMUL MUSSpecialSuccess); none can be set per world, so our
+//     SMCS/SMUL MUSSpecialSuccess) and discovery the four MUSDiscovery* types; none can be set per world, so our
 //     tracks are added to them with GetInWorldspace == ours, and each of Skyrim's tracks in them is overridden with
 //     GetInWorldspace != ours put first (an AND ahead of its own conditions). No plugin of the NewWorld profile
 //     (Update.esm, the DLCs, USSEP and the rest) overrides any of these records (measured 2026-11-12), so Skyrim.esm's
@@ -27,8 +27,8 @@ static class NewWorldMusic
     static readonly (string key, string type)[] Defaults =
     [
         ("combat", "03418E"), ("boss", "0D777A"), ("death", "013686"), ("levelup", "03B565"),
+        ("discovery", "0AC13D"), ("discovery", "0ABDA3"), ("discovery", "0ABDA4"), ("discovery", "0ABDA5"),
     ];
-    // Discovery (the four MUSDiscovery* types) is left as Skyrim's own: its tracks play in the new world too.
 
     // Slots in pieces.json order: a slot's index is its id's offset, so a slot keeps its ids for life.
     public static void Attach(SkyrimMod mod, Worldspace ws, string sourcesDir, string dataDir)
@@ -96,7 +96,7 @@ static class NewWorldMusic
         }
         ws.Music.SetTo(typeOf[rec.GetProperty("world").GetString()!]);
 
-        // combat, death, level-up: ours joined to Skyrim's types, Skyrim's tracks kept out of our world
+        // combat, death, level-up, discovery: ours joined to Skyrim's types, Skyrim's tracks kept out of our world
         var guarded = new HashSet<FormKey>();
         int joined = 0;
         foreach (var (key, id) in Defaults)

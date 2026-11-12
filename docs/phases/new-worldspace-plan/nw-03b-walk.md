@@ -120,9 +120,10 @@ instruments. You can hear the whole soundtrack outside the game at https://claud
   highland piece; the coasts the coast piece; at night the night pieces. Reply ok if the music fits where you are.
 - Combat: fight anything; our battle pieces play, and Skyrim's do not. Reply ok if it fits.
 - Death: our death sting plays when you die (you approved it).
-- Level up: when you level up you hear an 8 second cut of your Overture. If you would rather keep Skyrim's sting, or
-  have music follow it, say so.
-- Discovering a place plays Skyrim's own discovery music, as you chose.
+- Level up: when the level-up notice appears you hear an 8 second cut of your Overture; when you take the level in
+  the skills menu a longer cut plays, as Skyrim does with its own. If the two play over each other, tell us and the
+  longer one is removed.
+- Discovering a place plays our discovery sting (a short cut, about 7 seconds). Reply ok if it fits.
 - To put in a file of your own for any piece: upload it to the bucket folder nw/music/owner/ named after the piece's
   slot (for example theme.wav); we rebuild the pack from it.
 

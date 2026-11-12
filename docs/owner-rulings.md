@@ -450,3 +450,7 @@ added here the day they are made, with the date and the issue.
   people"); Helstrom gets its lanterns now, and Helstrom is deployed only "after I have done my editing and feedback
   on the draft in the studio". The flagged dialogue of the BM&V version is rewritten with the updated dialogue
   skill (directions in words, the Morrowind find step on every run).
+- 2026-11-12 (evening, nw-03b music): the discovery sting is ours again (slot sting-discovery, recut to its first 4 s
+  with a fade ending near 7 s), reversing (a) above: our override of the four discovery music types is restored. The
+  level-up follows Skyrim's two parts: the UI sound UILevelUp plays our 8 s sting (sting-levelup), the level-up music
+  type a 19 s cut of the Overture (music-levelup).
