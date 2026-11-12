@@ -57,7 +57,9 @@
 {"quest_id":"quest.main.mq01","ord":3,"value":"topic.mq01-join"}
 {"quest_id":"quest.main.mq03","ord":0,"value":"topic.mq03-errand"}
 {"quest_id":"quest.main.mq03","ord":1,"value":"topic.mq03-give-jar"}
-{"quest_id":"quest.main.mq03","ord":2,"value":"topic.mq03-taste"}
+{"quest_id":"quest.main.mq03","ord":2,"value":"topic.mq03-jar-ask"}
+{"quest_id":"quest.main.mq03","ord":3,"value":"topic.mq03-take-it"}
+{"quest_id":"quest.main.mq03","ord":4,"value":"topic.mq03-taste"}
 {"quest_id":"quest.main.mq04","ord":0,"value":"topic.mq04-the-village"}
 {"quest_id":"quest.main.mq04","ord":1,"value":"topic.mq04-the-cut"}
 {"quest_id":"quest.main.mq05","ord":0,"value":"topic.mq05-the-word"}

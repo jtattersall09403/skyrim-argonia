@@ -241,24 +241,6 @@
    "objective text",
    "placeCleared"
   ],
-  "quest.main.mq01": [
-   "all",
-   "inZone",
-   "knowsTopic",
-   "moveRef",
-   "placement",
-   "startScene"
-  ],
-  "quest.main.mq03": [
-   "all",
-   "any",
-   "grantHistStep",
-   "moveRef",
-   "placement",
-   "sceneEnded",
-   "setDoorAccess",
-   "startScene"
-  ],
   "quest.main.mq04": [
    "any",
    "grantServiceAccess",

@@ -42,9 +42,17 @@ The owner's "barge" is this ship. Character creation stays in the hold.
 - MQ01 10: speak to Buys-The-Months on the pier (he speaks first); 20: find Nesh-Deeka in Salts-The-Catch's house; 30:
   tell her you will work for the Veiled Reed (rank 0, fifty gold). Ends 90; fails 95 (the broker dead before 20) or
   96 (Nesh-Deeka dead).
-- MQ03 10: take the jar from Dives-Without-A-Rope's locked sack in the ship's hold (Lockpicking on a Novice lock, or
-  her key by Speechcraft 25, twenty gold or Pickpocket); 20: give it to Nesh-Deeka, whose question is answered by
-  tasting it (or Alchemy 25 first), which ends the quest with her page. Ends 90; fails 95 (Nesh-Deeka dead).
+- MQ03 10: ask Dives-Without-A-Rope for the jar in the ship's hold; her question's three answers move it: talked
+  round (Speechcraft 25) to 15 or paid (20 gold) to 16, each giving her lockbox's key, or "Then I'll take it" to 12
+  (pick the Novice lock, or lift her key); her death moves it to 13 (the key on her body). 12, 13, 15 and 16 move on
+  taking the jar; 20: give it to Nesh-Deeka, whose question is answered by tasting it (or Alchemy 25 first), which
+  ends the quest with her page. Ends 90; fails 95 (Nesh-Deeka dead). The "sack" became vanilla's lockbox
+  (09424C:Skyrim.esm), the container base the census and the builder have.
+- Both records compile to the quest form (`python3 -m tools.questform compile`) and fit; `story/data/questform_owed.json`
+  no longer lists them. The form gives each objective one target and every objective of a stage the same completing
+  moves, so a stage can be moved only by acts that concern its one target: that is why MQ03's skill routes sit on
+  Dives-Without-A-Rope's question (10) and its fetch on the jar (12 to 16), and why no stage carries both a marker on
+  the thing and on the person it goes to. Lane A may want to lift that (several targets per objective).
 
 ## The story calls
 
@@ -77,7 +85,7 @@ camp-clutter rows of `we.clean.hereguardplantation`, and `we.mq03.reed`, `.hurt`
 `.dream`. Kept: `we.mq01.start`, `.hold-location`, `.no-valenwood`, `.no-welcome`, `we.mq01.gang` (three standing in
 the hold), `we.mq01.broker` (one man on the pier), `we.mq03.house` (two standing in the house), `we.mq03.door` (the
 house's Riften and Whiterun door models swapped for BM&V's Lilmoth door, decision 0006), `we.clean.lilmoth`,
-`we.clean.hereguardplantation`. New: `we.mq03.sack` (a locked sack at the far side of the hold, its key on
+`we.clean.hereguardplantation`. New: `we.mq03.sack` (a locked lockbox at the far side of the hold, its key on
 Dives-Without-A-Rope, the jar in it, lockpicks beside it), switched on by MQ01's ending from another interior.
 
 ## What Act I hands on now (for the MQ04 and MQ05 lane)

@@ -58,7 +58,7 @@
 {"quest_id":"quest.main.mq03","section":"leads","value":"Nesh-Deeka's errand leads to the hold; Dives-Without-A-Rope tells that the cutters brought their jars; the jar shows fresh sap and the rings of other jars; Nesh-Deeka joins them into a long work; the taste gives the dream."}
 {"quest_id":"quest.main.mq03","section":"nodes"}
 {"quest_id":"quest.main.mq03","section":"rule","value":"the dream comes to whoever tastes the cell's sap (QA18)"}
-{"quest_id":"quest.main.mq03","section":"timeline","value":"two nights before: the cutters fill their jars at the cut roots and one jar is left by the fire; Dives-Without-A-Rope carries it aboard. The day the game opens: the player joins the Reed (MQ01); the jar comes out of the sack; at Nesh-Deeka's table the player tastes it and she writes down the dream."}
+{"quest_id":"quest.main.mq03","section":"timeline","value":"two nights before: the cutters fill their jars at the cut roots and one jar is left by the fire; Dives-Without-A-Rope carries it aboard. The day the game opens: the player joins the Reed (MQ01); the jar comes out of the lockbox; at Nesh-Deeka's table the player tastes it and she writes down the dream."}
 {"quest_id":"quest.main.mq04","section":"cure","value":"the sap in the jars poured back at the cut root (QA11)"}
 {"quest_id":"quest.main.mq04","section":"fate","value":"the sap was drawn into jars and waits at the cell's camp for a larger boat"}
 {"quest_id":"quest.main.mq04","section":"firstIllLastWell","value":"the uxith's eggs first; the tree itself is closed, not sick"}

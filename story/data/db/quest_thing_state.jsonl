@@ -69,7 +69,7 @@
 {"quest_id":"quest.main.mq03","things_ord":0,"state":"after-mq01-90","value":"locked, holding the jar until it is taken"}
 {"quest_id":"quest.main.mq03","things_ord":0,"state":"before-mq01-90","value":"off"}
 {"quest_id":"quest.main.mq03","things_ord":1,"state":"after-30","value":"with Nesh-Deeka (taken by topic.mq03-give-jar)"}
-{"quest_id":"quest.main.mq03","things_ord":1,"state":"before-30","value":"in the sack, or carried"}
+{"quest_id":"quest.main.mq03","things_ord":1,"state":"before-30","value":"in the lockbox, or carried"}
 {"quest_id":"quest.main.mq03","things_ord":2,"state":"all","value":"on Dives-Without-A-Rope, or carried"}
 {"quest_id":"quest.main.mq03","things_ord":3,"state":"all","value":"on the floor until taken"}
 {"quest_id":"quest.main.mq03","things_ord":4,"state":"after-90","value":"carried"}

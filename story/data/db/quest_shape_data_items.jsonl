@@ -59,7 +59,7 @@
 {"quest_id":"quest.local.lq30","section":"nodes","ord":1,"value":"the shallows east of the gate"}
 {"quest_id":"quest.local.lq30","section":"nodes","ord":2,"value":"the roots where Sei-Wan is pinned"}
 {"quest_id":"quest.local.lq30","section":"openQuestions","ord":0,"value":"whether the walk-out still counts if the player is seen"}
-{"quest_id":"quest.main.mq03","section":"nodes","ord":0,"value":"the jar in Dives-Without-A-Rope's sack"}
+{"quest_id":"quest.main.mq03","section":"nodes","ord":0,"value":"the jar in Dives-Without-A-Rope's lockbox"}
 {"quest_id":"quest.main.mq03","section":"nodes","ord":1,"value":"Dives-Without-A-Rope"}
 {"quest_id":"quest.main.mq03","section":"nodes","ord":2,"value":"Nesh-Deeka's reading of the sap"}
 {"quest_id":"quest.main.mq03","section":"nodes","ord":3,"value":"the page"}

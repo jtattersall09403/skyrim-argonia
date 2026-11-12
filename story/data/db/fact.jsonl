@@ -593,7 +593,7 @@
 {"id":"fact.mq01.washed-out","claim":"Dives-Without-A-Rope's colour has thinned from years away from Nine Bends, the tree her family answers to.","ord":5,"from_ref":"t0","quest_id":"quest.main.mq01"}
 {"id":"fact.mq03.dream","claim":"Under the sap I spoke of the ship's hold, empty, with roots grown up through its deck in a ring like trees, and a door at the top of its stairs that nobody built, and a dry voice I could not make into words.","ord":6,"from_ref":"t4","quest_id":"quest.main.mq03"}
 {"id":"fact.mq03.hear-tree","claim":"Dives-Without-A-Rope means to lick the jar's sap to hear her own tree, Nine Bends, once before the jar is taken from her.","ord":1,"from_ref":"t2","quest_id":"quest.main.mq03"}
-{"id":"fact.mq03.jar-kept","claim":"Dives-Without-A-Rope keeps the cutters' jar locked in a sack by her place in the ship's hold, with the key on her.","ord":0,"from_ref":"t2","quest_id":"quest.main.mq03"}
+{"id":"fact.mq03.jar-kept","claim":"Dives-Without-A-Rope keeps the cutters' jar locked in a lockbox by her place in the ship's hold, with the key on her.","ord":0,"from_ref":"t2","quest_id":"quest.main.mq03"}
 {"id":"fact.mq03.jars-brought","claim":"The cutters came off the water with empty jars and filled them from the cut roots.","ord":2,"from_ref":"t1","quest_id":"quest.main.mq03"}
 {"id":"fact.mq03.long-work","claim":"The sap was drawn fresh at the roots into jars the cutters brought: the cell means to keep what it draws, so it is a long work and not a raid.","ord":3,"from_ref":"t1","quest_id":"quest.main.mq03"}
 {"id":"fact.mq03.low-reed","claim":"Word has come to Nesh-Deeka that the Hist of Low-Reed Village, east of Lilmoth, has turned its face.","ord":7,"from_ref":"t3","quest_id":"quest.main.mq03"}

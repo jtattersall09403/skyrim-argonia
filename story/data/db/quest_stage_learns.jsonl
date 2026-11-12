@@ -69,10 +69,10 @@
 {"quest_id":"quest.main.mq01","stages_ord":2,"ord":3,"value":"fact.mq01.reed"}
 {"quest_id":"quest.main.mq01","stages_ord":2,"ord":4,"value":"fact.mq01.pulled-aboard"}
 {"quest_id":"quest.main.mq03","stages_ord":0,"ord":0,"value":"fact.mq03.jar-kept"}
-{"quest_id":"quest.main.mq03","stages_ord":1,"ord":0,"value":"fact.mq03.long-work"}
-{"quest_id":"quest.main.mq03","stages_ord":1,"ord":1,"value":"fact.mq03.taster"}
-{"quest_id":"quest.main.mq03","stages_ord":2,"ord":0,"value":"fact.mq03.dream"}
-{"quest_id":"quest.main.mq03","stages_ord":2,"ord":1,"value":"fact.mq03.low-reed"}
+{"quest_id":"quest.main.mq03","stages_ord":5,"ord":0,"value":"fact.mq03.long-work"}
+{"quest_id":"quest.main.mq03","stages_ord":5,"ord":1,"value":"fact.mq03.taster"}
+{"quest_id":"quest.main.mq03","stages_ord":6,"ord":0,"value":"fact.mq03.dream"}
+{"quest_id":"quest.main.mq03","stages_ord":6,"ord":1,"value":"fact.mq03.low-reed"}
 {"quest_id":"quest.main.mq04","stages_ord":0,"ord":0,"value":"fact.mq04.tree-closed"}
 {"quest_id":"quest.main.mq04","stages_ord":0,"ord":1,"value":"fact.mq04.uxith-dark"}
 {"quest_id":"quest.main.mq04","stages_ord":1,"ord":0,"value":"fact.mq04.root-cut"}

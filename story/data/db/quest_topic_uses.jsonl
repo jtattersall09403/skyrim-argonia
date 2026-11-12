@@ -202,6 +202,7 @@
 {"quest_id":"quest.main.mq01","topics_ord":9,"ord":0,"value":"fact.mq01.sap-cell"}
 {"quest_id":"quest.main.mq01","topics_ord":10,"ord":0,"value":"fact.mq01.jar"}
 {"quest_id":"quest.main.mq01","topics_ord":11,"ord":0,"value":"fact.mq01.no-name"}
+{"quest_id":"quest.main.mq01","topics_ord":12,"ord":0,"value":"fact.mq01.no-name"}
 {"quest_id":"quest.main.mq03","topics_ord":0,"ord":0,"value":"fact.mq03.jar-kept"}
 {"quest_id":"quest.main.mq03","topics_ord":1,"ord":0,"value":"fact.mq03.hear-tree"}
 {"quest_id":"quest.main.mq03","topics_ord":2,"ord":0,"value":"fact.mq03.jars-brought"}
@@ -214,6 +215,10 @@
 {"quest_id":"quest.main.mq03","topics_ord":8,"ord":0,"value":"fact.mq03.sap-fresh"}
 {"quest_id":"quest.main.mq03","topics_ord":8,"ord":1,"value":"fact.mq03.low-reed"}
 {"quest_id":"quest.main.mq03","topics_ord":9,"ord":0,"value":"fact.mq03.low-reed"}
+{"quest_id":"quest.main.mq03","topics_ord":10,"ord":0,"value":"fact.mq03.jar-kept"}
+{"quest_id":"quest.main.mq03","topics_ord":11,"ord":0,"value":"fact.mq03.low-reed"}
+{"quest_id":"quest.main.mq03","topics_ord":12,"ord":0,"value":"fact.mq03.hear-tree"}
+{"quest_id":"quest.main.mq03","topics_ord":13,"ord":0,"value":"fact.mq03.jar-kept"}
 {"quest_id":"quest.main.mq04","topics_ord":0,"ord":0,"value":"fact.mq04.tree-closed"}
 {"quest_id":"quest.main.mq04","topics_ord":0,"ord":1,"value":"fact.mq04.uxith-dark"}
 {"quest_id":"quest.main.mq04","topics_ord":0,"ord":2,"value":"fact.mq04.leech-effect"}
